@@ -151,17 +151,24 @@ class Profiler
 
 	/* static */ function logToDB($name, $timeSum, $eventCount) 
 	{
+		$breakdown = true;
+		if ( $breakdown ) {
+			$server = wfStrencode( $_ENV['HOSTNAME'] );
+		} else {
+			$server = '';
+		}
 		$name = wfStrencode( $name );
+
 		$sql = "UPDATE profiling ".
 			"SET pf_count=pf_count+{$eventCount}, ".
 			"pf_time=pf_time + {$timeSum} ".
-			"WHERE pf_name='{$name}'";
+			"WHERE pf_name='{$name}' AND pf_server='{$server}'";
 		wfQuery($sql , DB_WRITE);
 
 		$rc = wfAffectedRows();	
 		if( $rc == 0) {
-			$sql = "INSERT IGNORE INTO profiling (pf_name,pf_count,pf_time) ".
-				"VALUES ('{$name}', {$eventCount}, {$timeSum}) ";
+			$sql = "INSERT IGNORE INTO profiling (pf_name,pf_count,pf_time,pf_server) ".
+				"VALUES ('{$name}', {$eventCount}, {$timeSum}, '{$server}') ";
 			wfQuery($sql , DB_WRITE);
 			$rc = wfAffectedRows();    
 		}
