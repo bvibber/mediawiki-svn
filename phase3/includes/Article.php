@@ -34,6 +34,7 @@ class Article {
 	var $mTouched, $mFileCache, $mTitle;
 	var $mId, $mTable;
 	var $mForUpdate;
+	var $mOldId;
 	/**#@-*/
 
 	/**
@@ -388,7 +389,7 @@ class Article {
 			$oldid = IntVal( $oldid );
 			if ( $wgRequest->getVal( 'direction' ) == 'next' ) {
 				$nextid = $this->mTitle->getNextRevisionID( $oldid );
-				if ( $nextid ) {
+				if ( $nextid  ) {
 					$oldid = $nextid;
 				} else {
 					$wgOut->redirect( $this->mTitle->getFullURL( 'redirect=no' ) );
@@ -403,6 +404,7 @@ class Article {
 			}
 		}
 		$noredir = $noredir || ($wgRequest->getVal( 'redirect' ) == 'no');
+		$this->mOldId = $oldid;
 		$this->fetchContent( $oldid, $noredir, true );
 	}
 	
@@ -417,7 +419,7 @@ class Article {
 			return $this->mContent;
 		}
 		$dbr =& $this->getDB();
-		$fname = 'Article::loadContent';
+		$fname = 'Article::fetchContent';
 
 		# Pre-fill content with error message so that if something
 		# fails we'll have something telling us what we intended.
@@ -616,7 +618,7 @@ class Article {
 	function loadLastEdit() {
 		$this->loadContent();
 		return;
-		global $wgOut;
+		/*global $wgOut;
 		wfDebugDieBacktrace( "Shouldn't the content do this?" );
 		if ( -1 != $this->mUser ) return;
 
@@ -633,7 +635,7 @@ class Article {
 			$this->mTimestamp = wfTimestamp(TS_MW,$s->cur_timestamp);
 			$this->mComment = $s->cur_comment;
 			$this->mMinorEdit = $s->cur_minor_edit;
-		}
+		}*/
 	}
 
 	function getTimestamp() {
@@ -765,7 +767,7 @@ class Article {
 			# We're looking at an old revision
 
 			if ( !empty( $oldid ) ) {
-				$this->setOldSubtitle( $oldid );
+				$this->setOldSubtitle( isset($this->mOldId) ? $this->mOldId : $oldid );
 				$wgOut->setRobotpolicy( 'noindex,follow' );
 			}
 			if ( '' != $this->mRedirectedFrom ) {
@@ -1328,12 +1330,12 @@ class Article {
 
 		if ( $confirm ) {
 			$dbw =& wfGetDB( DB_MASTER );
-			$dbw->updateArray( 'cur',
+			$dbw->updateArray( 'page',
 				array( /* SET */
-					'cur_touched' => $dbw->timestamp(),
-					'cur_restrictions' => (string)$limit
+					'page_touched' => $dbw->timestamp(),
+					'page_restrictions' => (string)$limit
 				), array( /* WHERE */
-					'cur_id' => $id
+					'page_id' => $id
 				), 'Article::protect'
 			);
 
