@@ -1,0 +1,282 @@
+DB: 2: SELECT cur_restrictions FROM cur WHERE cur_id=5180
+Art: 1: SELECT cur_text, cur_timestamp, cur_counter, cur_params FROM cur WHERE cur_id=5180
+DB: 2: SELECT cur_restrictions FROM cur WHERE cur_id=5180
+STF: fname=wpName1
+
+STF: fname=wpPassword1
+
+STF: fname=wpName2
+
+STF: fname=wpPassword2
+
+STF: fname=wpRetype
+
+STF: fname=wpEmail
+
+STF: fname=wpTextbox1
+
+STF: fname=wpSummary
+
+STF: fname=wpTextbox2
+
+DB: 2: SELECT cur_restrictions FROM cur WHERE cur_id=5180
+Art: 1: SELECT cur_text, cur_timestamp, cur_counter, cur_params FROM cur WHERE cur_id=5180
+STF: fname=wpName1
+
+STF: fname=wpPassword1
+
+STF: fname=wpName2
+
+STF: fname=wpPassword2
+
+STF: fname=wpRetype
+
+STF: fname=wpEmail
+
+STF: fname=wpTextbox1
+
+STF: fname=wpSummary
+
+STF: fname=wpTextbox2
+
+DB: 2: SELECT cur_restrictions FROM cur WHERE cur_id=5180
+STF: wpSummary=
+STF: fname=wpName1
+$wpName1
+STF: fname=wpPassword1
+$wpPassword1
+STF: fname=wpName2
+$wpName2
+STF: fname=wpPassword2
+$wpPassword2
+STF: fname=wpRetype
+$wpRetype
+STF: fname=wpEmail
+$wpEmail
+STF: fname=wpTextbox1
+$wpTextbox1
+STF: fname=wpSummary
+$wpSummary
+STF: fname=wpTextbox2
+$wpTextbox2
+STF: wpSummary=
+DB: 2: SELECT cur_restrictions FROM cur WHERE cur_id=5180
+Art: 1: SELECT cur_text, cur_timestamp, cur_counter, cur_params FROM cur WHERE cur_id=5180
+STF: wpSummary=
+STF: fname=wpName1
+$wpName1
+STF: fname=wpPassword1
+$wpPassword1
+STF: fname=wpName2
+$wpName2
+STF: fname=wpPassword2
+$wpPassword2
+STF: fname=wpRetype
+$wpRetype
+STF: fname=wpEmail
+$wpEmail
+STF: fname=wpTextbox1
+$wpTextbox1
+STF: fname=wpSummary
+$wpSummary
+STF: fname=wpTextbox2
+$wpTextbox2
+STF: wpSummary=
+DB: 2: SELECT cur_restrictions FROM cur WHERE cur_id=5180
+STF: wpSummary=
+STF: fname=wpName1
+$wpName1
+STF: fname=wpPassword1
+$wpPassword1
+STF: fname=wpName2
+$wpName2
+STF: fname=wpPassword2
+$wpPassword2
+STF: fname=wpRetype
+$wpRetype
+STF: fname=wpEmail
+$wpEmail
+STF: fname=wpTextbox1
+$wpTextbox1
+STF: fname=wpSummary
+$wpSummary
+STF: fname=wpTextbox2
+$wpTextbox2
+STF: wpSummary=
+DB: 2: SELECT cur_restrictions FROM cur WHERE cur_id=5180
+Art: 1: SELECT cur_text, cur_timestamp, cur_counter, cur_params FROM cur WHERE cur_id=5180
+STF: wpSummary=
+STF: fname=wpName1
+$wpName1
+STF: fname=wpPassword1
+$wpPassword1
+STF: fname=wpName2
+$wpName2
+STF: fname=wpPassword2
+$wpPassword2
+STF: fname=wpRetype
+$wpRetype
+STF: fname=wpEmail
+$wpEmail
+STF: fname=wpTextbox1
+$wpTextbox1
+STF: fname=wpSummary
+$wpSummary
+STF: fname=wpTextbox2
+$wpTextbox2
+STF: wpSummary=
+DB: 2: SELECT cur_restrictions FROM cur WHERE cur_id=5180
+STF: wpSummary=
+STF: fname=wpName1
+$wpName1
+STF: fname=wpPassword1
+$wpPassword1
+STF: fname=wpName2
+$wpName2
+STF: fname=wpPassword2
+$wpPassword2
+STF: fname=wpRetype
+$wpRetype
+STF: fname=wpEmail
+$wpEmail
+STF: fname=wpTextbox1
+$wpTextbox1
+STF: fname=wpSummary
+$wpSummary
+STF: fname=wpTextbox2
+$wpTextbox2
+STF: wpSummary=
+DB: 2: SELECT cur_restrictions FROM cur WHERE cur_id=5180
+Art: 1: SELECT cur_text, cur_timestamp, cur_counter, cur_params FROM cur WHERE cur_id=5180
+STF: wpSummary=*
+STF: fname=wpName1
+$wpName1
+STF: fname=wpPassword1
+$wpPassword1
+STF: fname=wpName2
+$wpName2
+STF: fname=wpPassword2
+$wpPassword2
+STF: fname=wpRetype
+$wpRetype
+STF: fname=wpEmail
+$wpEmail
+STF: fname=wpTextbox1
+$wpTextbox1
+STF: fname=wpSummary
+$wpSummary
+STF: fname=wpSummary
+$wpSummary
+STF: fname=wpSummary
+$wpSummary
+STF: fname=wpTextbox2
+$wpTextbox2
+STF: wpSummary=*
+DB: 2: SELECT cur_restrictions FROM cur WHERE cur_id=5180
+STF: wpSummary=
+STF: fname=wpName1
+$wpName1
+STF: fname=wpPassword1
+$wpPassword1
+STF: fname=wpName2
+$wpName2
+STF: fname=wpPassword2
+$wpPassword2
+STF: fname=wpRetype
+$wpRetype
+STF: fname=wpEmail
+$wpEmail
+STF: fname=wpTextbox1
+$wpTextbox1
+STF: fname=wpSummary
+$wpSummary
+STF: fname=wpTextbox2
+$wpTextbox2
+STF: wpSummary=
+DB: 2: SELECT cur_restrictions FROM cur WHERE cur_id=5180
+Art: 1: SELECT cur_text, cur_timestamp, cur_counter, cur_params FROM cur WHERE cur_id=5180
+STF: wpSummary=*
+STF: fname=wpName1
+$wpName1
+STF: fname=wpPassword1
+$wpPassword1
+STF: fname=wpName2
+$wpName2
+STF: fname=wpPassword2
+$wpPassword2
+STF: fname=wpRetype
+$wpRetype
+STF: fname=wpEmail
+$wpEmail
+STF: fname=wpTextbox1
+$wpTextbox1
+STF: fname=wpTextbox1
+\'\'\'Chemistry\'\'\' is the study of the basic [[atomic]] building-blocks of nature and how they combine to form the [[solid]]s, [[liquid]]s, and [[gas]]es that make up life and everything else we know.  For the many different [[chemical element]]s and compounds, see:
+
+* The [[Periodic table]]
+* [[Inorganic chemistry]], which studies the basic principles that are applied in  [[mineralogy]] and [[Materials Science]] 
+* [[Organic chemistry]], which underlies [[biochemistry]]
+* [[Physical chemistry]], which includes the theoretical aspects of  [[computational chemistry]] and [[quantum chemistry]]
+* [[Analytical chemistry]], the basis of [[environmental chemistry]]
+
+For some basic concepts see:
+
+* [[Orbitals]]
+* [[Kinetics]]
+* [[Thermochemistry]]
+* [[Electrochemistry]]
+* [[chemical bond|Chemical bonding]]
+* [[isomer|Isomerism]]
+
+<b>What are our priorities for writing in this area?  To help develop a list of the most basic topics in Chemistry, please see [[Chemistry basic topics]].</b>
+
+History of Chemistry:
+*[[Alchemy]]
+*[[Discovery of the chemical elements]]
+
+[[International Union of Pure and Applied Chemistry]]
+
+[http://www.chem.qmw.ac.uk/iupac/ IUPAC Nomenclature Home Page]
+
+
+
+STF: fname=wpTextbox1
+'''Chemistry''' is the study of the basic [[atomic]] building-blocks of nature and how they combine to form the [[solid]]s, [[liquid]]s, and [[gas]]es that make up life and everything else we know.  For the many different [[chemical element]]s and compounds, see:
+
+* The [[Periodic table]]
+* [[Inorganic chemistry]], which studies the basic principles that are applied in  [[mineralogy]] and [[Materials Science]] 
+* [[Organic chemistry]], which underlies [[biochemistry]]
+* [[Physical chemistry]], which includes the theoretical aspects of  [[computational chemistry]] and [[quantum chemistry]]
+* [[Analytical chemistry]], the basis of [[environmental chemistry]]
+
+For some basic concepts see:
+
+* [[Orbitals]]
+* [[Kinetics]]
+* [[Thermochemistry]]
+* [[Electrochemistry]]
+* [[chemical bond|Chemical bonding]]
+* [[isomer|Isomerism]]
+
+<b>What are our priorities for writing in this area?  To help develop a list of the most basic topics in Chemistry, please see [[Chemistry basic topics]].</b>
+
+History of Chemistry:
+*[[Alchemy]]
+*[[Discovery of the chemical elements]]
+
+[[International Union of Pure and Applied Chemistry]]
+
+[http://www.chem.qmw.ac.uk/iupac/ IUPAC Nomenclature Home Page]
+
+
+
+STF: fname=wpSummary
+$wpSummary
+STF: fname=wpSummary
+*
+STF: fname=wpSummary
+*
+STF: fname=wpTextbox2
+$wpTextbox2
+STF: wpSummary=*
+DB: 2: SELECT cur_restrictions FROM cur WHERE cur_id=5180

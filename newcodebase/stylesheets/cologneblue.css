@@ -1,0 +1,48 @@
+body { background-color: #FFFFFF;
+ margin-top: 0px; margin-left: 0px; margin-right: 0px; margin: 0;
+}
+h1.pagetitle { padding-bottom: 0; margin-bottom: 0; }
+p.subtitle { padding-top: 0; margin-top: 0; }
+.header { background-color: #7089AA; }
+.footnote { font-size: 8pt; color: #666666; }
+p.topmenu { margin-bottom: 4px; text-transform: uppercase;
+ color: #FFFFFF; font-family: Verdana, sans-serif; font-size: 8pt;
+}
+a.topmenu { color: #FFFFFF; text-decoration: none; font-size: 10pt; }
+.tagline { color: #000000; text-transform: uppercase;
+ font-family: Verdana, sans-serif; font-size: 11px;
+}
+p, form, dl { font-family: Verdana, sans-serif; font-size: 10pt; }
+h1 { font-family: Arial, Helvetica, sans-serif;
+ color: #858585; font-size: 18pt; font-weight: bold;
+}
+span.spacer { font-family: sans-serif; font-size: 20px; }
+input { font-family: Verdana, sans-serif; font-size: 8pt; }
+p.menu { font-family: Verdana, sans-serif;
+ font-size: 8pt; line-height: 13pt;
+}
+span.menuhead { font-family: Verdana, sans-serif;
+ font-size: 8pt; font-weight: bold; color: #999999;
+}
+a.menulink { font-weight: bold;
+ text-decoration: none; color: #4B6587;
+}
+a:hover { text-decoration: underline; }
+.bodytext { font-family: Verdana, sans-serif;
+ font-size: 10pt; text-align: justify; margin: 0 1em;
+}
+a, a.external { color: #4B6587 }
+a.external { text-decoration: none; }
+a.interwiki { color: #3333BB; text-decoration: none; }
+a { text-decoration: none; }
+a.interwiki, a.external { color: #3333BB; text-decoration: none; }
+a.red { color: red; text-decoration: none; }
+a.green { color: blue; text-decoration: none; }
+a.syslink { color:white; text-decoration:none; }
+a.CBlink { color:#0000AA; text-decoration:none; font-size:12pt; }
+.topbar { border-bottom-width: 2; border-bottom-style: ridge; }
+.middle { background:white }
+.quickbar { background:#FFFFFF; border-nope-width: 2; border-nope-style: ridge; }
+.footer { border-top-color: black; border-top-width: 2; border-top-style: groove; }
+a.newlink { color: black; text-decoration: none; }
+.newlinkedge { display: inline; }

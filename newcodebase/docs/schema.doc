@@ -1,0 +1,90 @@
+SCHEMA.DOC
+
+Database schema for wikipedia software.
+
+user
+
+  user_id (integer, primary key, autoincrement)
+
+  user_name
+
+  user_password
+
+  user_rights
+
+  user_options
+
+  user_watch
+
+
+
+cur
+
+  cur_id (integer, primary key, autoincrement)
+
+  cur_title
+
+  cur_text
+
+  cur_comment
+
+  cur_user
+
+  cur_user_text
+
+  cur_old_version
+
+  cur_timestamp
+
+  cur_minor_edit
+
+  cur_restrictions
+
+  cur_params
+
+  cur_counter
+
+  cur_cache
+
+  cur_ind_title
+
+
+
+old
+
+  old_id
+
+  old_title
+
+  old_text
+
+  old_comment
+
+  old_user
+
+  old_user_text
+
+  old_old_version
+
+  old_timestamp
+
+  old_minor_edit
+
+
+
+linked
+
+  linked_to
+
+  linked_from
+
+
+
+unlinked
+
+  unlinked_from
+
+  unlinked_to
+
+
+

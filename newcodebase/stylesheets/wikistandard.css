@@ -1,0 +1,16 @@
+body { color: #000000; background: #eeeeee; }
+.bodytext { }
+h1.pagetitle { padding-bottom: 0; margin-bottom: 0; }
+p.subtitle { padding-top: 0; margin-top: 0; }
+a { text-decoration: none; }
+a.interwiki, a.external { color: #3333BB; text-decoration: none; }
+a.red { color: red; text-decoration: none; }
+a.green { color: blue; text-decoration: none; }
+a.syslink { color:white; text-decoration:none; }
+a.CBlink { color:#0000AA; text-decoration:none; font-size:12pt; }
+.topbar { border-bottom-width: 2px; border-bottom-style: ridge; }
+.middle { background:white }
+.quickbar { background: #eeeeee; border-left-width: 2px; border-left-style: ridge; }
+.footer { border-top-color: black; border-top-width: 2px; border-top-style: groove; }
+a.newlink { color: black; text-decoration: none; }
+.newlinkedge { display: inline; }
