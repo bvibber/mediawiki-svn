@@ -1102,14 +1102,14 @@ function upload () {
 
 		copy ( $Upload , "./upload/$Upload_name" ) ;
 		chmod ( "./upload/$Upload_name" , 0777 ) ;
-		$message = str_replace ( "$1" , $Upload_name , htmlspecialchars ( $wikiUploadSuccess ) ) ;
+		$message = str_replace ( "$1" , htmlspecialchars ( $Upload_name ), $wikiUploadSuccess ) ;
 
 		# Appending log page "log:Uploads"
 		global $REMODE_ADDR ;
 		$now = date ( "Y-m-d H:i:s" , time () ) ;
 		$userText = "[[user:$user->name|$user->name]]" ;
 		if ( $user->name == "" ) $userText = $REMODE_ADDR ;
-		$logText = str_replace ( "$1" , $now , str_replace ( "$2" , $userText , str_replace ( "$3" , $Upload_name , $wikiUploadSuccess1 ) ) ) ;
+		$logText = str_replace ( "$1" , $now , str_replace ( "$2" , $userText , str_replace ( "$3" , htmlspecialchars ( $Upload_name ) , $wikiUploadSuccess1 ) ) ) ;
 		makeLog ( "log:Uploads" , $logText , str_replace ( "$1" , $Upload_name , $wikiUploadSuccess2 ) ) ;
 
 		unset ( $Upload_name ) ;
@@ -1126,7 +1126,7 @@ function upload () {
 	$ret .= " <input type=submit name=Upload value=$wikiUploadButton>\n";
 	$ret .= "</form>\n";
 
-	global $wikiUploadPrev , $wikiUploadSize , $wikiFileRemoval , $wikiUploadRemove ;
+	global $wikiUploadPrev , $wikiUploadSize , $wikiFileRemoval , $wikiUploadRemove, $THESCRIPT ;
 
 	if (is_dir("upload")) {
 		$mydir = dir("upload");
@@ -1135,6 +1135,7 @@ function upload () {
 				$file = "yes";
 			}
 		$mydir->close();
+		$uploaddir = ereg_replace("/[A-Za-z0-9_.]+$", "/upload", $THESCRIPT);
 
 		if ($file == "yes") {
 			$ret .= "<h2>$wikiUploadPrev</h2>";
@@ -1148,7 +1149,7 @@ function upload () {
 			while ($entry = readdir($mydir)) {
 				if ($entry != '.' && $entry != '..') {
 					$ret .= "<tr><td align=center>" ;
-					$ret .= "<a href=\"upload/".rawurlencode($entry)."\">".htmlspecialchars($entry)."</a></td>";
+					$ret .= "<a href=\"$uploaddir/".rawurlencode($entry)."\">".htmlspecialchars($entry)."</a></td>";
 					$ret .= "<td align=center>".filesize("upload/$entry")." bytes</td>";
 					if ( $isSysop )  {
 						$ret .= "<td align=center><a href=\"".wikiLink("special:upload&removeFile=".urlencode($entry))."\">" ;
