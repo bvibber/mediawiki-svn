@@ -3,7 +3,7 @@
 function wfSpecialRecentchanges()
 {
 	global $wgUser, $wgOut, $wgLang, $wgTitle;
-	global $days, $limit; # From query string
+	global $days, $limit, $hideminor; # From query string
 	$fname = "wfSpecialRecentchanges";
 
 	$wgOut->addWikiText( wfMsg( "recentchangestext" ) );
@@ -34,6 +34,8 @@ function wfSpecialRecentchanges()
 	$note = str_replace( "$2", $days, $note );
 	$wgOut->addHTML( "\n<hr>\n{$note}\n<br>" );
 
+	$sk = $wgUser->getSkin();
+
 	$cl = rcCountLink( 50, $days ) . " | " . rcCountLink( 100, $days ) . " | " .
 	  rcCountLink( 250, $days ) . " | " . rcCountLink( 500, $days );
 	$dl = rcDaysLink( $limit, 1 ) . " | " . rcDaysLink( $limit, 3 ) . " | " .
@@ -41,6 +43,18 @@ function wfSpecialRecentchanges()
 	  rcDaysLink( $limit, 30 );
 	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
 	$note = str_replace( "$2", $dl, $note );
+
+	if ( ! isset( $hideminor ) ) {
+		$hideminor = $wgUser->getOption( "hideminor" );
+	}
+	if ( $hideminor ) {
+		$mlink = $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
+	  	  WfMsg( "show" ), "days={$days}&limit={$limit}&hideminor=0" );
+	} else {
+		$mlink = $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
+	  	  WfMsg( "hide" ), "days={$days}&limit={$limit}&hideminor=1" );
+	}
+	$note = str_replace( "$3", $mlink, $note);
 	$wgOut->addHTML( "{$note}\n" );
 
 	$count1 = wfNumRows( $res );
@@ -48,10 +62,7 @@ function wfSpecialRecentchanges()
 	$count2 = wfNumRows( $res2 );
 	$obj2 = wfFetchObject( $res2 );
 
-	$sk = $wgUser->getSkin();
-	$hideminor = $wgUser->getOption( "hideminor" );
 	$s = $sk->beginRecentChangesList();
-
 	while ( $limit ) {
 		if ( ( 0 == $count1 ) && ( 0 == $count2 ) ) { break; }
 

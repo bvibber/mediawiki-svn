@@ -2,7 +2,7 @@
 
 function wfSpecialContributions()
 {
-	global $wgUser, $wgOut, $wgLang, $target, $limit, $days;
+	global $wgUser, $wgOut, $wgLang, $target, $limit, $days, $hideminor;
 	$fname = "wfSpecialContributions";
 
 	if ( "" == $target ) {
@@ -27,27 +27,44 @@ function wfSpecialContributions()
 	$sub = str_replace( "$1", $ul, wfMsg( "contribsub" ) );
 	$wgOut->setSubtitle( $sub );
 
+	if ( ! isset( $hideminor ) ) {
+		$hideminor = $wgUser->getOption( "hideminor" );
+	}
+	if ( $hideminor ) {
+		$mlink = $sk->makeKnownLink( $wgLang->specialPage( "Contributions" ),
+	  	  WfMsg( "show" ), "target=" . wfEscapeHTML( $nt->getPrefixedURL() ) .
+		  "&days={$days}&limit={$limit}&hideminor=0" );
+	} else {
+		$mlink = $sk->makeKnownLink( $wgLang->specialPage( "Contributions" ),
+	  	  WfMsg( "hide" ), "target=" . wfEscapeHTML( $nt->getPrefixedURL() ) .
+		  "&days={$days}&limit={$limit}&hideminor=1" );
+	}
+	if ( $hideminor ) {
+		$cmq = "AND cur_minor_edit=0";
+		$omq = "AND old_minor_edit=0";
+	} else { $cmq = $omq = ""; }
+
 	if ( 0 == $id ) {
 		$sql = "SELECT cur_namespace,cur_title,cur_timestamp FROM cur " .
 		  "WHERE cur_timestamp > '{$cutoff}' AND cur_user_text='" .
-		  wfStrencode( $nt->getText() ) . "' AND cur_minor_edit=0 " .
+		  wfStrencode( $nt->getText() ) . "' {$cmq} " .
 		  "ORDER BY cur_timestamp DESC LIMIT {$limit}";
 		$res1 = wfQuery( $sql, $fname );
 
 		$sql = "SELECT old_namespace,old_title,old_timestamp FROM old " .
 		  "WHERE old_timestamp > '{$cutoff}' AND old_user_text='" .
-		  wfStrencode( $nt->getText() ) . "' AND old_minor_edit=0 " .
+		  wfStrencode( $nt->getText() ) . "' {$omq} " .
 		  "ORDER BY old_timestamp DESC LIMIT {$limit}";
 		$res2 = wfQuery( $sql, $fname );
 	} else {
 		$sql = "SELECT cur_namespace,cur_title,cur_timestamp FROM cur " .
 		  "WHERE cur_timestamp > '{$cutoff}' AND cur_user={$id} " .
-		  "AND cur_minor_edit=0 ORDER BY cur_timestamp DESC LIMIT {$limit}";
+		  "{$cmq} ORDER BY cur_timestamp DESC LIMIT {$limit}";
 		$res1 = wfQuery( $sql, $fname );
 
 		$sql = "SELECT old_namespace,old_title,old_timestamp FROM old " .
 		  "WHERE old_timestamp > '{$cutoff}' AND old_user={$id} " .
-		  "AND old_minor_edit=0 ORDER BY old_timestamp DESC LIMIT {$limit}";
+		  "{$omq} ORDER BY old_timestamp DESC LIMIT {$limit}";
 		$res2 = wfQuery( $sql, $fname );
 	}
 	$nCur = wfNumRows( $res1 );
@@ -64,6 +81,7 @@ function wfSpecialContributions()
 	  ucDaysLink( $limit, 30 );
 	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
 	$note = str_replace( "$2", $dl, $note );
+	$note = str_replace( "$3", $mlink, $note );
 	$wgOut->addHTML( "{$note}\n<p>" );
 
 	if ( 0 == $nCur && 0 == $nOld ) {
