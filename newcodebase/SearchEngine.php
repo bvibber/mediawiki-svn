@@ -127,7 +127,7 @@ class SearchEngine {
 				$cond .= " (match (##field##) against ('" .
 				  wfStrencode( $word ). "'))";
 				$last = $word;
-				array_push( $this->mSearchterms, $word );
+				array_push( $this->mSearchterms, "\\b" . $word . "\\b" );
 			}
 		}
 		$this->mTitlecond = "(" . str_replace( "##field##",
@@ -148,12 +148,12 @@ class SearchEngine {
 		$wgOut->addHTML( "<li>{$link}" );
 
 		$lines = explode( "\n", $row->cur_text );
-		$words = "/(.*)(" . implode( "|", $this->mSearchterms ) . ")(.*)/i";
+		$pat1 = "/(.*)(" . implode( "|", $this->mSearchterms ) . ")(.*)/i";
 		$lineno = 0;
 
 		foreach ( $lines as $line ) {
 			++$lineno;
-			if ( ! preg_match( $words, $line, $m ) ) { continue; }
+			if ( ! preg_match( $pat1, $line, $m ) ) { continue; }
 
 			$pre = $m[1];
 			if ( strlen( $pre ) > 60 ) {
@@ -169,7 +169,11 @@ class SearchEngine {
 			$post = wfEscapeHTML( $post );
 			$found = wfEscapeHTML( $m[2] );
 
-			$line = "{$pre}<font color='red'>{$found}</font>{$post}";
+			$line = "{$pre}{$found}{$post}";
+			$pat2 = "/(" . implode( "|", $this->mSearchterms ) . ")/i";
+			$line = preg_replace( $pat2,
+			  "<font color='red'>\\1</font>", $line );
+
 			$wgOut->addHTML( "<br><small>{$lineno}: {$line}</small>\n" );
 		}
 		$wgOut->addHTML( "</li>\n" );
