@@ -745,7 +745,7 @@ Kelkaj funkcioj povas stresi la datumbazon, do bonvolu ne reŝuti post ĉiu ripa
 "rclsub"		=> "(al paĝoj ligitaj de \"$1\")",
 "debug"			=> "Kontraŭcima",
 "newpages"		=> "Novaj paĝoj",
-"movethispage"	=> "Translokigi la paĝon",
+"movethispage"	=> "Movu la paĝon",
 "unusedimagestext" => "<p>Notu, ke aliaj TTT-ejoj, ekzemple
 la alilingvaj Vikipedioj, povas rekte ligi al dosier per URL.
 Tio ne estus enkalkutita en la jena listo.",
@@ -935,11 +935,28 @@ Vikipedio-programistoj.",
 "movepagetext"	=> "Per la jena formulo vi povas ŝanĝi la nomon de iu paĝo, kunportante
 ĝian historion de redaktoj je la nova nomo.
 La antaŭa titolo fariĝos alidirektilo al la nova titolo.
-Ligiloj al la antaŭa titolo <i>ne</i> estos ŝanĝitaj.
+Ligiloj al la antaŭa titolo <i>ne</i> estos ŝanĝitaj; uzu
+la [[Speciala:Maintenance|riparilojn kaj zorgilojn]] por certigi,
+ke ne restos duoblaj aŭ fuŝitaj alidirektiloj.
+Kiel movanto, vi respondecas pri ĝustigado de fuŝitaj ligiloj.
+
+Notu, ke la paĝo '''ne''' estos movita se jam ekzistas paĝo
+ĉe la nova titolo, krom se ĝi estas malplena aŭ alidirektilo
+al ĉi tiu paĝo, kaj sen antaŭa redaktohistorio. Pro tio, vi ja
+povos removi la paĝon je la antaŭa titolo se vi mistajpus, kaj
+neeblas ke vi neintence forviŝus ekzistantan paĝon per movo.
+
 <b>AVERTO!</b>
 Tio povas esti drasta kaj neatendita ŝanĝo por populara paĝo;
 bonvolu certigi vin, ke vi komprenas ties konsekvencojn antaŭ
 ol vi antaŭeniru.",
+
+"movepagetalktext" => "La movo aŭtomate kunportos la diskuto-paĝon, se tia ekzistas, '''krom se:'''
+*Vi movas la paĝon tra sekcioj (ekz de ''Nomo'' je ''Vikipediisto:Nomo''),
+*Ne malplena diskuto-paĝo jam ekzistas je la nova nomo, aŭ
+*Vi malelektas la suban ŝaltilon.
+
+Tiujokaze, vi nepre permane kunigu la diskuto-paĝojn se vi tion deziras.",
 "movearticle"	=> "Movu paĝon",
 "movenologin"	=> "Ne salutinta",
 "movenologintext" => "Vi nepre estu registrita uzulo kaj <a href=\"" .
@@ -952,6 +969,9 @@ por rajti movi paĝojn.",
 "articleexists" => "Aŭ tiel titolita paĝo jam ekzistas
 aŭ la de vi elektita titolo malvalidas.
 Bonvolu elekti alian nomon.",
+"talkexists"	=> "Oni ja sukcesis movi la paĝon mem, sed
+ne movis la diskuto-paĝon ĉar jam ekzistas tia ĉe la nova titolo.
+Bonvolu permane kunigi ilin.",
 "movedto"		=> "movis al",
 "movetalk"		=> "Movu ankaŭ la \"diskuto\"-paĝon, se tia ekzistas.",
 "talkpagemoved" => "La diskuto-paĝo estas ankaŭ movita.",
