@@ -1022,7 +1022,7 @@ class WikiPage extends WikiTitle {
 	                }
 
 		$ret .= "</small>&nbsp;</td></tr>\n" ;
-		$ret .= "<tr><td><div stype='height: 20px'>&nbsp;</div>\n</td></tr>" ;
+		$ret .= "<tr><td><div stype='height: 20px'>&nbsp;</div>\n</td></tr></table>" ;
 
 		return $ret ;
 		}
