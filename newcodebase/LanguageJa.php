@@ -1027,8 +1027,8 @@ class LanguageJa extends Language {
 		$s = preg_replace( "/({$hiragana}+|{$katakana}+|{$kanji}+)/", ' $1 ', $s );
 
 		# Double-width roman characters: ff00-ff5f ~= 0020-007f
-		$s = preg_replace( "/\xef\xbc([\x80-\xbf])/e", 'chr(ord("$1") & 0x3f + 0x20)', $s );
-		$s = preg_replace( "/\xef\xbd([\x80-\x99])/e", 'chr(ord("$1") & 0x3f + 0x60)', $s );
+		$s = preg_replace( '/\xef\xbc([\x80-\xbf])/e', 'chr((ord("$1") & 0x3f) + 0x20)', $s );
+		$s = preg_replace( '/\xef\xbd([\x80-\x99])/e', 'chr((ord("$1") & 0x3f) + 0x60)', $s );
 
 		return trim( preg_replace(
 		  "/([\\xc0-\\xff][\\x80-\\xbf]*)/e",
