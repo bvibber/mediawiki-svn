@@ -21,8 +21,163 @@ function replaceAllEntries ( $s , $f1 , $f2 , $r1 , $r2 ) {
 	return $s ;
 	}
 
+##############################################################
 # DISPLAY PARSER ; INCOMPLETE!!!!
+##############################################################
+
+function pingPongReplace ( $x , $s , $r1 , $r2 ) {
+	$xa = explode ( $s , $x ) ;
+	$ret = array_shift ( $xa ) ;
+	$r = $r1 ;
+	foreach ( $xa as $y ) {
+		$ret .= $r.$y ;
+		if ( $r == $r1 ) $r = $r2 ;
+		else $r = $r1 ;
+		}
+	if ( $r == $r2 ) $ret .= $r2 ;
+	return $ret ;
+	}
+
+function parseLinks ( $x ) {
+	global $title ;
+	$namespace = getNamespace ( $title ) ;
+	$name = stripNamespace ( $title ) ;
+	while ( substr_count ( $x , "[[" ) ) {
+		$p1 = spliti ( "\[\[" , $x , 2 ) ;
+		$p2 = spliti ( "\]\]" , $p1[1] , 2 ) ;
+		if ( count ( $p2 ) == 1 ) break ;
+		$p3 = spliti ( "\|" , $p2[0] , 2 ) ;
+		if ( count ( $p3 ) == 1 ) array_push ( $p3 , $p3[0] ) ;
+		$topic = $p3[0] ;
+		$text = $p3[1] ;
+
+		$topic = getSecureTitle ( $topic ) ;
+		if ( strpos ( $topic , ":" ) === false ) { #No namespace given, current is used
+			if ( strpos ( $title , ":" ) === true ) $topic = "$namespace:$topic" ;
+			}
+
+		if ( doesTopicExist ( $topic ) ) $enc = "<a href=\"$PHP_SELF?action=view&title=$topic\">$text</a>" ;
+		else {
+			if ( strpos ( $text , " " ) ) $text = "[$text]" ;
+			$enc = "$text<a href=\"$PHP_SELF?action=edit&title=$topic\">?</a>" ;
+			}
+
+		$x = $p1[0].$enc.$p2[1] ;
+		}	
+	return $x ;
+	}
+
+function parseExternalLinks ( $x , &$cnt ) {
+	while ( count ( spliti ( "\[http://" , $x , 2 ) ) > 1 ) {
+		$p1 = spliti ( "\[http://" , $x , 2 ) ;
+		$p2 = spliti ( "\]" , $p1[1] , 2 ) ;
+		if ( count ( $p2 ) == 1 ) break ;
+		$p3 = spliti ( " " , $p2[0] , 2 ) ;
+		if ( count ( $p3 ) == 1 ) array_push ( $p3 , $cnt ) ;
+		$topic = $p3[0] ;
+		$text = $p3[1] ;
+		$cnt++ ;
+
+		$x = "$p1[0]<a href=\"http://$topic\">[$text]</a>$p2[1]" ;
+		}	
+	return $x ;
+	}
+
+function parseVariables ( $s ) {
+	$var=date("m"); $s = str_replace ( "{{{CURRENTMONTH}}}" , $var , $s ) ;
+	$var=date("F"); $s = str_replace ( "{{{CURRENTMONTHNAME}}}" , $var , $s ) ;
+	$var=date("d"); $s = str_replace ( "{{{CURRENTDAY}}}" , $var , $s ) ;
+	$var=date("l"); $s = str_replace ( "{{{CURRENTDAYNAME}}}" , $var , $s ) ;
+	$var=date("Y"); $s = str_replace ( "{{{CURRENTYEAR}}}" , $var , $s ) ;
+
+	if ( strstr ( $s , "{{{NUMBEROFARTICLES}}}" ) ) {
+		$connection=getDBconnection() ;
+		mysql_select_db ( "nikipedia" , $connection ) ;
+		$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/Talk\" AND cur_title NOT LIKE \"%ikipedia%\" AND cur_text LIKE \"%,%\"" ;
+		$result = mysql_query ( $sql , $connection ) ;
+		$var = mysql_fetch_object ( $result ) ;
+		$var = $var->number ;
+		mysql_free_result ( $result ) ;
+		$s = str_replace ( "{{{NUMBEROFARTICLES}}}" , $var , $s ) ;
+		}
+	return $s ;
+	}
+
+function newParser ( $s ) {
+	$goodTags = array ( "b" , "/b" , "p" , "/p" , "i" , "/i" , "hr" , "br" ) ;
+	$obegin = "" ;
+
+	$cntEL = 0 ;
+	$as = explode ( "\n" , $s ) ;
+	foreach ( $as as $x ) {
+		
+		# Double blank line
+		if ( trim ( $x ) == "" ) $x = "<br>" ;
+
+		# Horizontal line		
+		$x = ereg_replace ( "-----*" , "<hr>" , $x ) ;
+
+		# Replacing wiki-tags with HTML-tags
+		$x = pingPongReplace ( $x , "'''" , "<b>" , "</b>" ) ;
+		$x = pingPongReplace ( $x , "''" , "<i>" , "</i>" ) ;
+
+		$xa = explode ( "<" , "$x" ) ;
+		if ( substr ( $x , 0 , 1 ) == "<" ) $x = "" ;
+		else $x = array_shift ( $xa ) ;
+		foreach ( $xa as $y ) {
+			$ya = explode ( ">" , $y , 2 ) ;
+			if ( count($ya) < 2 ) {
+				if ( $ya[0] != "" ) 
+					$x .= "&lt;$ya[0]" ;
+			} else {
+				if ( in_array ( $ya[0] , $goodTags ) ) $x .= "<$ya[0]>$ya[1]" ;
+				else $x .= "&lt;$ya[0]&gt;$ya[1]" ;
+				}
+			}
+
+		$x = parseLinks ( $x ) ;
+		$x = parseExternalLinks ( $x , $cntEL ) ;
+		$x = parseVariables ( $x ) ;
+
+		$fc = substr ( $x , 0 , 1 ) ;
+		$ofc = substr ( $obegin , 0 , 1 ) ;
+		for ( $a = 0 ; $x[$a] == $fc ; $a++ ) ;
+		$nbegin = substr ( $x , 0 , $a ) ;
+		$pre = "" ;
+
+		# Undoing obegin
+		if ( $ofc == $fc ) {
+			while ( $obegin > $nbegin ) {
+				if ( $fc == ":" ) $x .= "\n</DL>\n" ;
+				$obegin = substr ( $obegin , 1 ) ;
+				}
+			while ( $obegin < $nbegin ) {
+				if ( $fc == ":" ) $pre .= "<DL>" ;
+				$obegin .= $fc ;
+				}
+		} else {
+			for ( $a = 0 ; $a < $ofc ; $a++ ) {
+				if ( $ofc == ":" ) $x .= "\n</DL>\n" ;
+				}
+			}
+
+		#Inserting code
+		if ( $fc == ":" ) $pre .= "<dt><dd>" ;
+		$x = $pre.$x ;
+
+		$obegin = $nbegin ;
+
+		$ret .= "$x \n" ;
+		}
+	
+
+	return $ret ;
+	}
+
+############################################################################################################################
 function parseContent ( $s ) {
+	$newOutput = newParser ( $s ) ;
+	return $newOutput ;
 	global $title , $dummyArticle ;
 	if ( $s == "" ) $s = $dummyArticle ;
 	$s = str_replace ( "\r" , "" , $s ) ;
@@ -192,6 +347,10 @@ function parseContent ( $s ) {
 	# Final
 	$s = "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">".$s ; # Does this do anything good?
 
+
+	# Double display
+#	$s = "<table width=100%><tr><td valign=top width=50%>$s</td><td valign=top width=50%>$newOutput</td></tr></table>" ;
+	$s = "$newOutput\n<hr>\n$s" ;
 	return $s ;
 	}
 
