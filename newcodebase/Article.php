@@ -48,7 +48,7 @@ class Article {
 			} else {
 				$s = mysql_fetch_object( $res );
 				if ( ( "no" != $redirect ) &&
-				  ( preg_match( "/\\A#redirect/i", $s->cur_text ) ) ) {
+				  ( preg_match( "/^#redirect/i", $s->cur_text ) ) ) {
 					if ( preg_match( "/\\[\\[([^\\]\\|]+)[\\]\\|]/",
 					  $s->cur_text, $m ) ) {
 						$rt = Title::newFromText( $m[1] );
@@ -212,7 +212,7 @@ class Article {
 		global $wgServer, $wgScript;
 		global $wpTextbox1, $wpSummary, $wpSave, $wpPreview;
 		global $wpMinoredit, $wpEdittime, $wpTextbox2;
-		global $oldid;
+		global $oldid, $redirect;
 
 		$isConflict = false;
 		if ( "save" == $formtype ) {
@@ -222,7 +222,7 @@ class Article {
 			}
 			$aid = $wgTitle->getArticleID();
 			if ( 0 == $aid ) { # New aritlce
-				$this->insertNewArticle( $wpTextbox1, $wpSummary );
+				$this->insertNewArticle( $wpTextbox1, $wpSummary, $wpMinorEdit );
 				return;
 			}
 			# Check for edit conflict. TODO: check oldid here
@@ -266,6 +266,8 @@ class Article {
 		$cols = $wgUser->getOption( "cols" );
 		$action = "$wgServer$wgScript?title=" .
 		  $wgTitle->getPrefixedURL() . "&action=edit";
+		if ( "no" == $redirect ) { $action .= "&redirect=no"; }
+
 		$summary = wfMsg( "summary" );
 		$minor = wfMsg( "minoredit" );
 		$save = wfMsg( "savearticle" );
@@ -306,23 +308,26 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 	# leap of faith, and I want to be able to report database
 	# errors at some point.
 	#
-	/* private */ function insertNewArticle( $text, $summary )
+	/* private */ function insertNewArticle( $text, $summary, $isminor )
 	{
 		global $wgOut, $wgUser, $wgTitle, $wgLinkCache;
 
 		$ns = $wgTitle->getNamespace();
 		$ttl = $wgTitle->getDBkey();
 		$text = $this->preSaveTransform( $text );
+		if ( preg_match( "/^#redirect/i", $text ) ) { $redir = 1; }
+		else { $redir = 0; }
 
 		$conn = wfGetDB();
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
-		  "cur_restrictions,cur_ind_title,cur_user_text) " .
+		  "cur_restrictions,cur_ind_title,cur_user_text,cur_is_redirect) " .
 		  "VALUES ({$ns},'{$ttl}', '" . wfStrencode( $text ) . "', '" .
 		  wfStrencode( $summary ) . "', '" .
-		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', 0, 0, '', '" .
+		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', " .
+		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
 		  $wgTitle->getPrefixedText() . "', '" .
-		  $wgUser->getName() . "')";
+		  $wgUser->getName() . "', $redir)";
 
 		wfDebug( "Art: 2: $sql\n" );
 		$res = mysql_query( $sql, $conn );
@@ -344,6 +349,8 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		if ( $this->mMinorEdit ) { $me1 = 1; } else { $me1 = 0; }
 		if ( $minor ) { $me2 = 1; } else { $me2 = 0; }
+		if ( preg_match( "/^#redirect/i", $text ) ) { $redir = 1; }
+		else { $redir = 0; }
 		$this->loadLastEdit();
 
 		$text = $this->preSaveTransform( $text );
@@ -368,7 +375,8 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		  "',cur_comment='" .  wfStrencode( $summary ) .
 		  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
 		  ",cur_timestamp='" . date( "YmdHis" ) .
-		  "',cur_user_text='" . $wgUser->getName() . "' " .
+		  "',cur_user_text='" . $wgUser->getName() .
+		  "',cur_is_redirect={$redir} " .
 		  "WHERE cur_id=" . $this->getID();
 
 		wfDebug( "Art: 5: $sql\n" );
