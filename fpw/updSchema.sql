@@ -78,9 +78,9 @@
 # now run the script "updLinks.php".
 
 # ALTER TABLE linked ADD INDEX (linked_from);
-# ALTER TABLE linked ADD INDEX (linked_to)
-# ALTER TABLE unlinked ADD INDEX (unlinked_from),
-# ALTER TABLE unlinked ADD INDEX (unlinked_to)
+# ALTER TABLE linked ADD INDEX (linked_to);
+# ALTER TABLE unlinked ADD INDEX (unlinked_from);
+# ALTER TABLE unlinked ADD INDEX (unlinked_to);
 
 # ----- new instructions per 2002 February 24 ----
 
