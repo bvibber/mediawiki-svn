@@ -36,7 +36,8 @@ int i;
              textelement textelementnoboit textelementnobold textelementnoital textelementinlink
              textnoboit textnobold textnoital textinlink textorempty zeroormorenewlines
              zeroormorenewlinessave textintbl textelementintbl textintmpl textelementintmpl
-             template templatevar tablecaption linktrail linktrailtext externallink textinexternallink
+             template templatevar tablecaption linktrail 
+/*linktrailtext externallink textinexternallink*/
              TEXT EXTENSION
 %type <ad>   ATTRIBUTE
 %type <num>  HEADING ENDHEADING EQUALS ATTRAPO ATTRQ
@@ -46,7 +47,8 @@ int i;
         NEWLINE PRELINE LISTBULLET LISTNUMBERED LISTIDENT HEADING ENDHEADING APO5 APO3 APO2 TABLEBEGIN
         TABLECELL TABLEHEAD TABLEROW TABLEEND TABLECAPTION ATTRIBUTE EQUALS ATTRAPO ATTRQ
         OPENPENTUPLECURLY CLOSEPENTUPLECURLY OPENTEMPLATEVAR CLOSETEMPLATEVAR OPENTEMPLATE
-        CLOSETEMPLATE LINKTRAIL OPENEXTERNALLINK CLOSEEXTERNALLINK PROTOCOL PROTOCOLSEP
+        CLOSETEMPLATE
+/* LINKTRAIL OPENEXTERNALLINK CLOSEEXTERNALLINK PROTOCOL PROTOCOLSEP */
 	
 %start article
 
@@ -137,16 +139,19 @@ listseries      :   /* empty */                 { debugf ("listseries#1 "); $$ =
                 |   listseries LISTIDENT     { debugf ("listseries#6 "); $$ = nodeAddChild ($1, newNode (ListIdent)); }
 
 /* THIS IS BROKEN BEYOND BELIEF! */
+/*
 linktrailtext   : linktrailtext LINKTRAIL { $$ = $1 ; }
                 | LINKTRAIL { }
 
-linktrail       : CLOSEDBLSQBR linktrailtext { $$ = $2 } /* Don't know how to handle the trail; ignored so far */
+linktrail       : CLOSEDBLSQBR linktrailtext { $$ = $2 }
                 | CLOSEDBLSQBR {}
-		
-externallink	: OPENEXTERNALLINK textinexternallink CLOSEEXTERNALLINK { debugf ("externallink#1 "); $$ = nodeAddChild (newNodeI (LinkEtc, 0), nodeAddChild (newNode (LinkTarget), $2)); }
+*/
+linktrail       : CLOSEDBLSQBR {}
 
-linketc         :   externallink
-		|   OPENDBLSQBR textinlink linktrail
+/*externallink	: OPENEXTERNALLINK textinexternallink CLOSEEXTERNALLINK { debugf ("externallink#1 "); $$ = nodeAddChild (newNodeI (LinkEtc, 0), nodeAddChild (newNode (LinkTarget), $2)); }*/
+
+/*|   externallink*/
+linketc         :   OPENDBLSQBR textinlink linktrail
                         { debugf ("linketc#1 "); $$ = nodeAddChild (newNodeI (LinkEtc, 0), nodeAddChild (newNode (LinkTarget), $2)); }
                 |   OPENDBLSQBR textinlink PIPE linktrail
                         { debugf ("linketc#2 "); $$ = nodeAddChild (newNodeI (LinkEtc, 1), nodeAddChild (newNode (LinkTarget), $2)); }
@@ -529,10 +534,10 @@ textelementintmpl   :   TEXT                { debugf ("textelementintmpl#1 "); $
                     |   italicsorbold       { debugf ("textelementintmpl#18 "); $$ = $1; }
                     |   template            { debugf ("textelementintmpl#19 "); $$ = $1; }
                     |   templatevar         { debugf ("textelementintmpl#20 "); $$ = $1; }
-
+/*
 textinexternallink  :   TEXT                { debugf ("textelementintmpl#1 "); $$ = $1; }
 		    |   CLOSEEXTERNALLINK   { debugf ("textelementintmpl#4 "); $$ = newNodeS (TextToken, "]"); }
-
+*/
 template            :   OPENTEMPLATE textintmpl CLOSETEMPLATE
                             { debugf ("template#1 "); $$ = nodeAddChild (newNode (Template), $2); }
                     |   OPENPENTUPLECURLY textintmpl CLOSETEMPLATEVAR textintmpl CLOSETEMPLATE

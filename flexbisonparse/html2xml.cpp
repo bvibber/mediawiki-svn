@@ -18,7 +18,7 @@ class html2xml_tag
 	friend class html2xml ;
 	html2xml_tag () ;
 	
-	virtual string get_string () ;
+	virtual string get_string ( bool convert_to_wiki = false ) ;
 	virtual string get_debug_string () ;
 	virtual void invalidate_tag () ;
 	
@@ -36,7 +36,7 @@ class html2xml
 	virtual void add_to_allowed_tags ( string s ) ;
 	virtual void to_xml () ;
 	virtual void show_debug () ;
-	virtual string get_string () ;
+	virtual string get_string ( bool convert_to_wiki = false ) ;
 	
 	private :
 	virtual html2xml_tag *get_html_tag ( const string &s , int &start ) ;
@@ -82,18 +82,61 @@ void html2xml_tag::invalidate_tag ()
 	is_tag = is_close_tag = is_self_closed = false ;
 	}
 	
-string html2xml_tag::get_string ()
+string html2xml_tag::get_string ( bool convert_to_wiki )
 	{
 	string ret ;
 	ret.reserve ( text.length() * 2 ) ;
 	if ( is_tag )
 		{
-		ret = match ? "<" : "&lt;" ;
-		if ( is_close_tag ) ret += "/" ;
-		ret += tag_name ;
-		if ( text != "" ) ret += " " + text ;
-		if ( is_self_closed ) ret += "/" ;
-		ret += match ? ">" : "&gt" ;
+		bool done = false ;
+		if ( convert_to_wiki && !is_self_closed )
+			{
+			if ( tag_name == "b" ) { ret = "'''" ; done = true ; }
+			else if ( tag_name == "i" ) { ret = "''" ; done = true ; }
+			else if ( tag_name == "table" )
+				{
+				if ( is_close_tag ) ret = "\n|}\n" ;
+				else ret = "\n{" + text + "|\n" ;
+				done = true ;
+				}
+			else if ( tag_name == "caption" )
+				{
+				if ( !is_close_tag ) ret = "\n|" + text + "+" ;
+				done = true ;
+				}
+			else if ( tag_name == "tr" )
+				{
+				if ( !is_close_tag ) ret = "\n|" + text + "-\n" ;
+				done = true ;
+				}
+			else if ( tag_name == "td" )
+				{
+				if ( !is_close_tag )
+					{
+					ret = "\n|" ;
+					if ( text != "" ) ret += text + "|" ;
+					}
+				done = true ;
+				}
+			else if ( tag_name == "th" )
+				{
+				if ( !is_close_tag )
+					{
+					ret = "\n!" ;
+					if ( text != "" ) ret += text + "|" ;
+					}
+				done = true ;
+				}
+			}
+		if ( !done ) // No wiki format available/wanted or self-closed
+			{
+			ret = match ? "<" : "&lt;" ;
+			if ( is_close_tag ) ret += "/" ;
+			ret += tag_name ;
+			if ( text != "" ) ret += " " + text ;
+			if ( is_self_closed ) ret += "/" ;
+			ret += match ? ">" : "&gt" ;
+			}
 		}
 	else ret = text ;
 	return ret ;
@@ -346,13 +389,13 @@ void html2xml::show_debug ()
 		}
 	}
 
-string html2xml::get_string ()
+string html2xml::get_string ( bool convert_to_wiki )
 	{
 	int a ;
 	string ret ;
 	for ( a = 0 ; a < parts.size() ; a++ )
 		{
-		ret += parts[a]->get_string() ;
+		ret += parts[a]->get_string( convert_to_wiki ) ;
 		}
 	return ret ;
 	}
@@ -534,7 +577,7 @@ string get_xml ( const string &s )
 	hx.add_to_allowed_tags ( table_tags + "|" + markup_tags + "|" + block_tags + "|" + list_tags + "|" + wiki_tags ) ;
 	hx.scan_string ( s ) ;
 	hx.to_xml () ;
-	return hx.get_string () ;
+	return hx.get_string ( true ) ;
 	}
 
 // Testing with random strings
