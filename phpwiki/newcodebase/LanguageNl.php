@@ -16,6 +16,14 @@
 	7	=> "Overleg_afbeelding"
 );
 
+/* private */ $wgDefaultUserOptionsNl = array(
+	"quickbar" => 1, "underline" => 1, "hover" => 1,
+	"cols" => 80, "rows" => 25, "searchlimit" => 20,
+	"contextlines" => 5, "contextchars" => 50,
+	"skin" => 0, "rcdays" => 3, "rclimit" => 50,
+	"highlightbroken" => 0
+);
+
 /* private */ $wgQuickbarSettingsNl = array(
 	"Uitgeschakeld", "Links vast", "Rechts vast", "Links zwevend"
 );
@@ -750,6 +758,11 @@ te zijn om een pagina te verplaatsen.",
 );
 
 class LanguageNl extends Language {
+
+    function getDefaultUserOptions () {
+		global $wgDefaultUserOptionsNl ;
+		return $wgDefaultUserOptionsNl ;
+		}
 
 	function getNamespaces() {
 		global $wgNamespaceNamesNl;
