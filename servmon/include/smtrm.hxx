@@ -1,3 +1,4 @@
+/* $Header$ */
 #ifndef SM_SMTRM_HXX_INCLUDED_
 #define SM_SMTRM_HXX_INCLUDED_
 
@@ -7,6 +8,7 @@
 #include "smutl.hxx"
 #include "smauth.hxx"
 #include "smmon.hxx"
+#include "smqb.hxx"
 
 namespace smtrm {
 
@@ -65,6 +67,12 @@ public:
 	}
 	void rst(void) {
 		ps.resize(0);
+	}
+	void setdata(str data) const {
+		term.setdata(data);
+	}
+	str getdata(void) const {
+		return term.getdata();
 	}
 	tt& term; //XXX
 private:
@@ -175,6 +183,7 @@ cfgrt.install("function irc", chg_parser(ircrt, "%s(conf-irc)# "), "Configure In
 cfgrt.install("function monitor", chg_parser(monrt, "%s(conf-monit)# "), "Configure server monitoring");
 cfgrt.install("user %s password", cfg_userpass(), "Create a new account");
 cfgrt.install("no user %s", cfg_no_user(), "Remove a user account");
+cfgrt.install("function querybane", chg_parser(qbrt, "%s(conf-qb)# "), "Configure QueryBane operation");
 
 /* 'function irc' mode commands */
 ircrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit IRC configuration mode");
@@ -196,14 +205,22 @@ monrt.install("mysql username %s", cfg_monit_mysql_username(), "Set MySQL userna
 monrt.install("mysql password %s", cfg_monit_mysql_password(), "Set MySQL password");
 monrt.install("monitor-interval %s", cfg_monit_monitor_interval(), "Monitor interval in seconds");
 monrt.install("irc-status-interval %s", cfg_monit_ircinterval(), "IRC status interval in seconds");
-
 monrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit monitor configuration mode");
+
+/* 'function querybane' mode commands */
+qbrt.install("rule %s", cfg_qb_rule(), "Define a new rule");
+qbrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit querybane configuration mode");
+
+/* querybane 'rule' mode commands */
+qbrrt.install("exit", chg_parser(qbrt, "%s(conf-qb)# "), "Exit rule configuration mode");
+qbrrt.install("description %s", cfg_qbr_description(), "Rule description");
 	}
 	handler_node<tt> stdrt;
 	handler_node<tt> eblrt;
 	handler_node<tt> cfgrt;
 	handler_node<tt> ircrt;
 	handler_node<tt> monrt;
+	handler_node<tt> qbrt, qbrrt;
 };
 
 template<class intft>
@@ -467,6 +484,12 @@ end:
 	void error (std::string const & msg) {
 		wrtln(b::str(format("%% [E] %s") % msg));
 	}
+	void setdata(str data_) {
+		data = data_;
+	}
+	str getdata(void) {
+		return data;
+	}
 private:
 	intft intf;
 	std::map<u_char, boost::function<bool (char)> > binds;
@@ -483,6 +506,7 @@ private:
 	bool doecho;
 	bool rlip;
 	bool destroyme;
+	std::string data;
 };
 typedef trmsrv<smnet::inettnsrvp> inettrmsrv;
 typedef shared_ptr<inettrmsrv> inettrmsrvp;

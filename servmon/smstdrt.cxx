@@ -1,3 +1,4 @@
+/* $Header$ */
 #define HDL(x) struct x : handler<tt>
 #define EX bool execute(comdat<tt> const& cd)
 
@@ -315,6 +316,37 @@ HDL(cfg_monit_showintervals) {
 		} catch (smcfg::nokey&) {
 			cd.inform("IRC notification interval: <default>");
 		}
+		return true;
+	}
+};
+
+HDL(cfg_qb_rule) {
+	EX {
+		cd.setdata(cd.p(0));
+		cd.chgrt(&SMI(tmcmds)->qbrrt, "%s(conf-qb-rule)# ");
+		if (!SMI(smqb::cfg)->rule_exists(cd.p(0))) {
+			SMI(smqb::cfg)->create_rule(cd.p(0));
+			cd.inform("Creating new rule.");
+		}
+		return true;
+	}
+};
+
+HDL(cfg_qb_norule) {
+	EX {
+		if (!SMI(smqb::cfg)->rule_exists(cd.p(0))) {
+			cd.error("No such rule.");
+			return true;
+		}
+		SMI(smqb::cfg)->delete_rule(cd.p(0));
+		return true;
+	}
+};
+
+HDL(cfg_qbr_description) {
+	EX {
+		std::string const& r = cd.getdata();
+		SMI(smqb::cfg)->rule_description(r, cd.p(0));
 		return true;
 	}
 };
