@@ -547,9 +547,9 @@ class OutputPage {
 						$s .= $trail;
 					}
 				}
-			} else if ( 0 == strcmp( "##", substr( $link, 0, 2 ) ) ) {
-				$link = substr( $link, 2 );
-				$s .= "<a name=\"{$link}\">{$text}</a>{$trail}";
+#			} else if ( 0 == strcmp( "##", substr( $link, 0, 2 ) ) ) {
+#				$link = substr( $link, 2 );
+#				$s .= "<a name=\"{$link}\">{$text}</a>{$trail}";
 			} else {
 				if ( "" == $text ) { $text = $link; }
 				$s .= $sk->makeLink( $link, $text, "", $trail );
