@@ -1,3 +1,4 @@
+#!/usr/bin/php -q
 <?
 $THESCRIPT = "wiki.phtml" ;
 #include ( "./specialPages.php" ) ;
@@ -6,7 +7,7 @@ include ( "./basicFunctions.php" ) ;
 include ( "./wikiTitle.php" ) ;
 include ( "./wikiPage.php" ) ;
 include ( "./wikiUser.php" ) ;
-
+include ( "./wikiSettings.php" ) ;
 
 ## Language-dependant variables!
 
@@ -17,15 +18,18 @@ $wikiSeeAlso = "See also" ;
 $wikiConversionScript = "conversion script" ;
 $wikiAutomatedConversion = "Automated conversion" ;
 function recodeCharsetStub ( $text ) {
-	# Some languages may change the internal coding used in the database
-	# To convert ISO-8859-1 to UTF-8
-#	return encode_utf8 ( $text ) ;
+	# Temporarily, we are still using ISO-8859-1 in English
 	return $text;
 	}
+function recodeCharsetLatin1 ( $text ) {
+	# To convert ISO-8859-1 to UTF-8
+	return encode_utf8 ( $text ) ;
+	}
 	$recodeCharset = recodeCharsetStub ;
+	#$recodeCharset = recodeCharsetLatin1 ;
 
 ## Esperanto:
-/*
+if ( $wikiLanguage =="eo" ) {
 $wikiTalk = "Priparolu" ;
 $wikiSeeAlso = "Legu anka\xc5\xad" ;
 $wikiConversionScript = "konvertilo" ;
@@ -48,13 +52,16 @@ function recodeCharsetEo ( $text ) {
 	return str_replace ( $x , $u , $text ) ;
 	}
 	$recodeCharset = recodeCharsetEo ;
-*/
+}
 
 ## French
-#$wikiTalk = "Discuter" ;
+if ( $wikiLanguage == "fr" ) {
+	$wikiTalk = "Discuter" ;
+	$recodeCharset = recodeCharsetLatin1 ;
+	}
 
 ## Polish:
-
+if ( $wikiLanguage == "pl" ) {
 $wikiTalk = "Dyskusja" ;
 $fieldSeparator = "\xff";
 function RecodeCharsetPl ( $text ) {
@@ -79,17 +86,20 @@ function RecodeCharsetPl ( $text ) {
 	return strtr ( $text , $l2u8 ) ;
 	}
 	$recodeCharset = recodeCharsetPl ;
-
+}
 
 ## Spanish
-#$wikiTalk = "Discusión" ;
+if ( $wikiLanguage == "es" ) {
+	$wikiTalk = $recodeCharset ( "Discusión" ) ;
+	$recodeCharset = recodeCharsetLatin1 ;
+	}
 
 ## Where to get the old usemod database files from:
 #$rootDir = "/home/groups/w/wi/wikipedia/htdocs/fpw/wiki-de/lib-http/db/wiki/page/" ;
 #$rootDir = "/home/manske/wiki/lib-http/db/wiki/page/" ;
 $rootDir = "/stuff/wiki/lib-http/db/wiki/page/" ;
-$rootDir = "/tmp/home/wiki-pl/wiki/db/page/" ;
-#$rootDir = "/tmp/home/wiki-eo/lib-http/db/wiki/page/" ;
+#$rootDir = "/tmp/home/wiki-pl/wiki/db/page/" ;
+$rootDir = "/tmp/home/wiki-eo/lib-http/db/wiki/page/" ;
 
 $oldid = 100; # Need unique identifiers for page histories; increment each time we use it.
 
@@ -265,7 +275,7 @@ function getHistory ( $title , $st) {
 	$keptlist = explode ( $FS1 , implode ( "\n" , $fc ) ) ;
 	array_shift ( $keptlist ) ;
 
-	$lastoldid = 0; $sql = "";
+	$lastoldid = "0"; $sql = "";
 	
 	foreach ( $keptlist as $rev ) {
 		$section = splitHash ( $FS2 , $rev ) ;
@@ -274,11 +284,11 @@ function getHistory ( $title , $st) {
 		$user = makeSafe ( $section["username"] ? $section["username"] : $section["host"] ) ;
 		
 		if ( $text["text"] && $text["minor"] != "" && ( $section["ts"]*1 > 0 ) ) {
-			$sql .= "INSERT INTO old (old_id,old_title,old_text,old_comment,old_user,old_user_text,old_old_version,old_timestamp,old_minor_edit) "
-			. "VALUES ($oldid,\"$st\",\"" . makeSafe($text["text"]) . "\",\"" . makeSafe($text["summary"]) . "\","
+			$sql .= "INSERT INTO old (old_title,old_text,old_comment,old_user,old_user_text,old_old_version,old_timestamp,old_minor_edit) "
+			. "VALUES (\"$st\",\"" . makeSafe($text["text"]) . "\",\"" . makeSafe($text["summary"]) . "\","
 			. "0,\"$user\",$lastoldid,FROM_UNIXTIME(" . $section["ts"] . ")," . $text["minor"] . ");\n";
 			
-			$lastoldid = $oldid++ ;
+			$lastoldid = "LAST_INSERT_ID()" ;
 		} else {
 			echo " (note: skipped a bad old revision)";
 			}
@@ -289,6 +299,7 @@ function getHistory ( $title , $st) {
 
 function storeInDB ( $title , $text ) {
 	global $of , $npage , $ll , $ull , $wikiTalk , $recodeCharset , $oldid , $wikiAutomatedConversion , $wikiConversionScript ;
+	global $historyOnly , $noHistory , $connection ;
 	$ll = array () ;
 	$ull = array () ;
 	$title = str_replace ( "\\'" , "'" , $title ) ;
@@ -307,21 +318,42 @@ function storeInDB ( $title , $text ) {
 	if ( count ( $talk ) == 2 and $talk[1] == $wikiTalk ) $st = $wikiTalk.":".$talk[0] ;
 	if ( count ( $talk ) == 2 and $talk[1] == strtolower($wikiTalk) ) return ;
 
-	$lastoldid = $oldid;
+	$lastoldid = "0"; $sql = "" ;
+if ( ! $noHistory ) { # for testing { ****
 	$sql = getHistory ( $title , $st ) ;
-	if ($lastoldid == $oldid) $lastoldid = 0; else $lastoldid = $oldid ;
+	if ($sql) $lastoldid = "LAST_INSERT_ID()" ;
 	
 	# Insert untouched version as the last in the history chain
 	$user = makeSafe ( $text["username"] ? $text["username"] : $text["host"] ) ;
 	if ( $text["text"] && $text["minor"] != "" && ( $text["ts"]*1 > 0 ) ) {
-		$sql .= "INSERT INTO old (old_id,old_title,old_text,old_comment,old_user,old_user_text,old_old_version,old_timestamp,old_minor_edit) "
-		. "VALUES ($oldid,\"$st\",\"" . makeSafe($text["text"]) . "\",\"" . makeSafe($text["summary"]) . "\","
+		$sql .= "INSERT INTO old (old_title,old_text,old_comment,old_user,old_user_text,old_old_version,old_timestamp,old_minor_edit) "
+		. "VALUES (\"$st\",\"" . makeSafe($text["text"]) . "\",\"" . makeSafe($text["summary"]) . "\","
 		. "0,\"$user\",$lastoldid,FROM_UNIXTIME(" . $text["ts"] . ")," . $text["minor"] . ");\n";
-		$lastoldid = $oldid++ ;
+		$lastoldid = "LAST_INSERT_ID()" ;
 	} else {
 		echo " (skipping last old revision - $text[ts] $text[minor] $text[text])";
 		}
+} # for testing **** }
 
+	if ( $historyOnly ) {
+		if ( $sql ) {
+			$sql1 = "SELECT cur_old_version FROM cur WHERE cur_title=\"$st\"" ;
+			$result = mysql_query ( $sql1 , $connection ) ;
+			echo mysql_error () ;
+			if ( $s = mysql_fetch_object ( $result ) ) {
+				$oid = $s->cur_old_version ;
+				mysql_free_result ( $result ) ;
+			} else $oid = 0 ;
+			
+			if ( $oid )
+				$sql .= "UPDATE old SET old_old_version=LAST_INSERT_ID(),old_timestamp=old_timestamp WHERE old_old_version=0 AND old_title=\"$st\";\n" ;
+			else
+				$sql .= "UPDATE cur SET cur_old_version=LAST_INSERT_ID(),cur_timestamp=cur_timestamp WHERE cur_title=\"$st\";\n" ;
+
+			#mysql_query ( $sql , $connection ) ;
+			#echo mysql_error ();
+			}
+	} else {
 	$sql .= "INSERT INTO cur (cur_title,cur_ind_title,cur_text,cur_comment,cur_user,cur_user_text,cur_old_version,cur_minor_edit) VALUES ";
 	$sql .= "(\"$st\",\"$st\",\"$thetext\",";
 	$sql .= "\"$wikiAutomatedConversion\",0,\"$wikiConversionScript\",$lastoldid,1);\n" ;
@@ -331,6 +363,7 @@ function storeInDB ( $title , $text ) {
 	foreach ( $ull as $l ) {
 		$sql .= "INSERT INTO unlinked (unlinked_from,unlinked_to) VALUES (\"$st\",\"$l\");\n";
 		}
+	}
 	
 	fwrite ( $of , $sql ) ;
 	}
@@ -392,9 +425,12 @@ function getAllTopics () {
 	}
 
 # MAIN PROGRAM
-	global $rootDir ;
+	global $rootDir , $historyOnly , $connection ;
 
-	set_time_limit ( 30000 ) ; # Enough time for this script...
+	$historyOnly = in_array ( "--history" , $argv ) ; # To import only old histories into database
+	$noHistory = in_array ( "--nohistory" , $argv ) ; # For testing
+
+	set_time_limit ( 0 ) ; # Enough time for this script...
 
 	global $ll , $ull , $allTopics ;
 	$ll = array () ;
@@ -402,9 +438,22 @@ function getAllTopics () {
 	getAllTopics () ;
 
 	global $l , $of ;
-	$of = fopen ( "./newiki.sql" , "w" ) ;
-	fwrite ( $of , "DELETE FROM cur WHERE cur_title NOT LIKE \"%:%\";\n" ) ;
-	fwrite ( $of , "DELETE FROM cur WHERE cur_title LIKE \"$wikiTalk:%\";\n" ) ;
+	if ( ! $historyOnly ) {
+		$of = fopen ( "./newiki.sql" , "w" ) ;
+		$nw = file ( "./wikipedia.sql" ) ;
+		foreach ( $nw as $line ) fwrite ( $of , $line ) ;
+		fwrite ( $of , "DELETE FROM cur WHERE cur_title NOT LIKE \"%:%\";\n" ) ;
+		fwrite ( $of , "DELETE FROM cur WHERE cur_title LIKE \"$wikiTalk:%\";\n" ) ;
+	} else {
+		$of = fopen ( "./wikihistory.sql" , "w" ) ;
+		# We need a live database to check against to import the histories
+		//establish user connection
+		$connection = mysql_pconnect($wikiThisDBserver , $wikiThisDBuser , $wikiThisDBpassword )
+			or die("Could not get connection to database server.") ;
+		//open up database
+		mysql_select_db ($wikiSQLServer , $connection)
+			or die("Could not select database: $wikiSQLServer");
+		}
 	do {
 		if ( !isset ( $l ) ) $l = 65 ;
 		if ( $l == "other" ) $letter = "other" ;
