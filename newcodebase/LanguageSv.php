@@ -319,9 +319,9 @@ $wgValidSpecialPagesSv = array(
 "unprotectthispage"     => "Ta bort skydd av denna sida",
 "talkpage"              => "Diskussionssida",
 "subjectpage"           => "&Auml;mnessida",
-"userpage"              => "Visa anv&auml;ndarsida"
-"wikipediapage"         => "Visa metasida"
-"imagepage"             => "Visa bildsida"
+"userpage"              => "Visa anv&auml;ndarsida",
+"wikipediapage"         => "Visa metasida",
+"imagepage"             => "Visa bildsida",
 "otherlanguages"        => "Andra spr&aring;k",
 "redirectedfrom"        => "(Omdirigerad fr&aring;n $1)",
 "lastmodified"          => "Denna sida blev senast &auml;ndrad $1.",
@@ -595,7 +595,7 @@ Det &auml;r mycket viktigt att du inte l&auml;gger material p&aring;
 Wikipedia som andra &auml;ger upphovsr&auml;tten till. De r&auml;ttsliga konsekvenserna kan bli 
 mycket kostbara och skadligt f&ouml;r projektet, s&aring; v&auml;nligen l&aring;t bli, om du &auml;r os&auml;ker.
 Se ocks&aring; [http://meta.wikipedia.org/wiki/Special:Recentchanges 
-recent meta discussion] (oftast p&aring; engelska).", /"
+recent meta discussion] (oftast p&aring; engelska).",
 "rcloaderr"             => "L&auml;ser senaste redigerade sidor",
 "rcnote"                => "Nedanf&ouml;r &auml;r de senaste <strong>$1</strong> &auml;ndringarna under de 
 sista <strong>$2</strong> dagarna.",
