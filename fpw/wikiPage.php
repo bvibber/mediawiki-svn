@@ -1142,7 +1142,7 @@ class WikiPage extends WikiTitle {
 			$lc .= ", ".substr ( $this->timestamp , 8 , 2 ) ;
 			$lc .= ":".substr ( $this->timestamp , 10 , 2 ) ;
 			$lc = substr ( strstr ( $lc , ", " ) , 2 ) ;
-			$ret .= "Last edited [<a href=\"".wikiLink("$this->url&amp;diff=yes")."\">show diff</a>]:<br>\n<font size=-2>$lc</font><br>\n" ;
+			$ret .= "Last edited [<a class=CBlink href=\"".wikiLink("$this->url&amp;diff=yes")."\"><font size=-2>show diff</font></a>]:<br>\n<font size=-2>$lc</font><br>\n" ;
 			$ret .= "Requests : $this->counter" ;
 			}
 
