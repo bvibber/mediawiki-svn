@@ -60,4 +60,7 @@ $wgMiserMode = false; # Disable database-intensive features
 $wgUseTeX = true;
 $wgProfiling = false; # Enable for more detailed by-function times in debug log
 
+$wgAmericanDates = false; 	# Enable for English module to print dates
+				# as Mar 3, 2003 rather than 3 Mar 2003
+
 ?>

@@ -58,7 +58,6 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"watchdefault" => "Watch new and modified articles",
 	"minordefault" => "Mark all edits minor by default",
 	"previewontop" => "Show preview before edit box and not after it"
-	
 );
 
 /* private */ $wgBookstoreListEn = array(
@@ -1154,11 +1153,18 @@ class Language {
  
 	function date( $ts, $adj = false )
 	{
+		global $wgAmericanDates;
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
 
-		$d = $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
-		  " " . (0 + substr( $ts, 6, 2 )) . ", " .
-		  substr( $ts, 0, 4 );
+		if( $wgAmericanDates ) {
+			$d = $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
+			  " " . (0 + substr( $ts, 6, 2 )) . ", " .
+			  substr( $ts, 0, 4 );
+		} else {
+			$d = (0 + substr( $ts, 6, 2 )) . " " .
+			  $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) . " " .
+			  substr( $ts, 0, 4 );
+		}
 		return $d;
 	}
 
