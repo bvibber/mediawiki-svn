@@ -23,9 +23,9 @@ $wikiMetaDescription = "$1... Read more here at wikipedia, the free encyclopedia
 # Used in header/footer
 $wikiMainPageTitle = "Wikipedia : Wolna encyklopedia" ; # This is the title that is displayed on the main page
 $wikiArticleSubtitle = "Z Wikipedii, wolnej encyklopedii." ;
-$wikiPrintable = "Wresja dla drukarki" ;
+$wikiPrintable = "Wersja dla drukarki" ;
 $wikiWatch = "Obserwuj dla mnie ten artykuł" ;
-$wikiNoWatch = "Skończ obserwować dla mnie ten atykuł" ;
+$wikiNoWatch = "Skończ obserwować dla mnie ten artykuł" ;
 $wikiTitleTag = "$1: artykuł z Wikipedii" ;
 $wikiLogIn = "Zaloguj się" ;
 $wikiLogOut = "Wyloguj się" ;
@@ -88,7 +88,7 @@ $wikiListUsers = "Lista użytkowników" ;
 $wikiMyWatchlist = "Moja lista obserwowanych" ;
 $wikiBeginDiff = "POCZĄTEK RÓŻNIC" ;
 $wikiEndDiff = "KONIEC RÓŻNIC" ;
-$wikiDiffLegend = "<font color=#2AAA2A>Green text</font> was added or changed, <font color=#AAAA00>yellow text</font> was changed or deleted." ;
+$wikiDiffLegend = "<font color=#2AAA2A>Tekst na zielono</font> został dodany lub zmieniony, <font color=#AAAA00>tekst na żółto</font> został zmieniony lub skasowany." ;
 $wikiDiffFirstVersion = "To jest pierwsza wersja tego artykułu. Cały tekst jest nowy!<br>\n" ;
 $wikiDiffImpossible = "To jest pierwsza wersja tego artykułu. Cały tekst jest nowy<br>\n" ;
 $wikiSearch = "Szukaj" ;
@@ -103,53 +103,6 @@ $wikiBugReports = "Raporty o błędach" ;
 $wikiBugReportsLink = "wikipedia:Raporty o błędach" ;
 
 # Interwiki links
-$wikiInterwiki = array ( "w"=>"http://www.wikipedia.com/wiki/$1" , "m"=>"http://meta.wikipedia.com/wiki.phtml?title=$1" ) ;
-
-# Language interwiki links
-$wikiOtherLanguages = array (
-    "ar"=>"http://ar.wikipedia.com/wiki.cgi?$1" ,
-    "ca"=>"http://ca.wikipedia.com/wiki.cgi?$1" ,
-    "zh"=>"http://zh.wikipedia.com/wiki.cgi?$1" ,
-    "dk"=>"http://dk.wikipedia.com/wiki.cgi?$1" ,
-    "nl"=>"http://nl.wikipedia.com/wiki.cgi?$1" ,
-    "de"=>"http://de.wikipedia.com/wiki.cgi?$1" ,
-    "eo"=>"http://eo.wikipedia.com/wiki/$1" ,
-    "fr"=>"http://fr.wikipedia.com/wiki.cgi?$1" ,
-    "he"=>"http://he.wikipedia.com/wiki.cgi?$1" ,
-    "hu"=>"http://hu.wikipedia.com/wiki.cgi?$1" ,
-    "it"=>"http://it.wikipedia.com/wiki.cgi?$1" ,
-    "ja"=>"http://ja.wikipedia.com/wiki/$1" ,
-    "pl"=>"http://pl.wikipedia.com/wiki.cgi?$1" ,
-    "pt"=>"http://pt.wikipedia.com/wiki.cgi?$1" ,
-    "ru"=>"http://ru.wikipedia.com/wiki.cgi?$1" ,
-    "simple"=>"http://simple.wikipedia.com/wiki.cgi?$1" ,
-    "es"=>"http://es.wikipedia.com/wiki.cgi?$1" ,
-    "sv"=>"http://sv.wikipedia.com/wiki.cgi?$1" ,
-    "en"=>"http://www.wikipedia.com/wiki/$1"
-    ) ;
-
-# Language interwiki names
-$wikiLanguageNames = array (
-    "ar"=>"Arabska (Araby)" ,
-    "ca"=>"Kataleńska (Catala)" ,
-    "zh"=>"Chińska (Hanyu)" ,
-    "dk"=>"Duńska (Dansk)" ,
-    "nl"=>"Niderlandzka (Nederlands)" ,
-    "de"=>"Niemiecka (Deutsch)" ,
-    "eo"=>"Esperanto" ,
-    "fr"=>"Francuska (Francais)" ,
-    "he"=>"Hebrajska (Ivrit)" ,
-    "hu"=>"Węgierska (Magyar)" ,
-    "it"=>"Włoska (Italiano)" ,
-    "ja"=>"Japońska (Nihongo)" ,
-    "pl"=>"Polska" ,
-    "pt"=>"Portugalska (Portuguese)" ,
-    "ru"=>"Rosyjska (Russkiy)" ,
-    "simple"=>"Uproszczony Angielski" ,
-    "es"=>"Hiszpańska (Castellano)" ,
-    "sv"=>"Szwedzka (Svenska)" ,
-    "en"=>"Angielska (English)"
-    ) ;
 $wikiOtherLanguagesText = "Other languages : $1" ;
 
 # date
@@ -198,10 +151,10 @@ $wikiYourPassword = "Twoje hasło&nbsp;&nbsp; : " ;
 $wikiYourPasswordAgain = "Powtórz hasło : " ;
 $wikiNewUsersOnly = " (tylko nowi użytkownicy)" ;
 $wikiRememberMyPassword = "Zapamiętaj moje hasło (jako ciasteczko)." ;
-$wikiLoginProblem = "<b>Są problemy z twoim logowaniem.</b><br>Spróbuj ponownie!" ;
+$wikiLoginProblem = "<b>Są problemy z logowaniem.</b><br>Spróbuj ponownie!" ;
 $wikiAlreadyLoggedIn = "<font color=red><b>Użytkownik $1 już jest zalogowany!</b></font><br>\n" ;
 $wikiPleaseLogIn = "<h1>Proszę się zalogować:</h1>\n" ;
-$wikiAreYouNew = "Jeśli nie jesteś jeszcze zarejestrowany a chcesz się zarejestrować wpisz nazwe użytkownika oraz dwukrotnie hasło.<br>\n" ;
+$wikiAreYouNew = "Jeśli nie jesteś jeszcze zarejestrowany a chcesz się zarejestrować wpisz nazwę użytkownika oraz dwukrotnie hasło.<br>\n" ;
 $wikiLogIn = "Zaloguj się" ;
 
 # User preferences
@@ -223,7 +176,7 @@ $wikiStarTrek = "Star Trek" ;
 $wikiShowHoverBox = "Show hoverbox over wiki links" ;
 $wikiUnderlineLinks = "Podkreśl linki" ;
 $wikiNewTopicsRed = "Pokazuj nowe tematy na czerwono" ;
-$wikiJustifyParagraphs = "Justify paragraphs" ;
+$wikiJustifyParagraphs = "Wyrównanie akapitów" ;
 $wikiShowRecentChangesTable = "Pokazuj <i>Ostatnie zmiany</i> jako tablicę" ;
 $wikiHideMinorEdits = "Ukryj drobne zmiany w <i>Ostatnie Zmiany</i>" ;
 $wikiDoNumberHeadings = "Automatycznie numeruj nagłówki" ;
@@ -242,10 +195,10 @@ $wikiOutputEncoding = "Kodowanie Wyjściowe : ";
 # Search Page
 $wikiSearchTitle = "Szukaj" ;
 $wikiSearchedVoid = "Nie wpisałeś co chcesz znaleźć, więc nic nie zostało znalezione." ;
-$wikiNoSearchResult = "Przykro nam, ale nie możemy znaleźć artykułu odpowiadającego zapytaniu \"$1\" w tytule lub treści." ;
+$wikiNoSearchResult = "Niestety, ale nie można znaleźć artykułu odpowiadającego zapytaniu \"$1\" w tytule lub treści." ;
 $wikiSearchHelp = "Proszę zobaczyć [[wikipedia:Wyszukiwanie|pomoc dotyczącą wyszukiwania]]." ;
 $wikiFoundHeading = "Artykuły Wikipedii" ;
-$wikiFoundText = "Zapytanie ''$2'' zwróciło $1 artykułów. Dla każdego artykułu możesz tu zobaczyć pierwszy akapit i następny zawierający jedno z wyszukiwanych słów." ;
+$wikiFoundText = "Zapytanie ''$2'' zwróciło $1 artykułów. Dla każdego artykułu można tu zobaczyć pierwszy akapit i następny zawierający jedno z wyszukiwanych słów." ;
 # keywords used for boolean search operators
 # note: these must consist of character, no symbols allowed
 $and = "and";
@@ -254,12 +207,12 @@ $not = "not";
 # syntax errors for parser of boolean search queries
 $srchSyntErr = array (
                     "SYNTAX ERROR: brak '$1'; wstawione",
-                    "SYNTAX ERROR: nieoczekiwane '$1'; zignoromane",
-                    "SYNTAX ERROR: illegal symbol '$1'; zignoromane",
+                    "SYNTAX ERROR: nieoczekiwane '$1'; zignorowane",
+                    "SYNTAX ERROR: niedozwolony symbol '$1'; zignorowane",
                     "SYNTAX ERROR: słowo '$1' jest za krótkie, indeks wymag przynajmniej $2 znaków",
                     "SYNTAX ERROR: missing search word; wstawione"
                ) ;   
-$wikiSearchError = "Sorry, your boolean search query contains the following errors: " ;
+$wikiSearchError = "Niestety, wyszukiwanie złożone (boolowskie) zawiera następujące błędy : " ;
 
 # Misc
 $wikiLonelyPagesTitle = "Porzucone" ;
@@ -269,7 +222,7 @@ $wikiAllPagesText = "'''Oto wszystkie artykuły w bazie danych!'''\n\n" ;
 $wikiUnsuccessfulSearch = "Nieudane wyszukiwanie $1" ;
 $wikiUnsuccessfulSearches = "wikipedia:Nieudane wyszukiwania ($1)" ; # $1 becomes "YEAR-MONTH"
 $wikiUserlistTitle = "Lista Użytkowników" ;
-$wikiUserlistText = "'''To są wszyscy zarejestrowani wikipediści!'''" ;
+$wikiUserlistText = "'''To są wszyscy zarejestrowani wikipedyści!'''" ;
 $wikiRecentChangesTitle = "Ostatnie Zmiany" ;
 $wikiRecentChangesLastDays = "To ostatnie <b>$1</b> zmian dokonanych na Wikipedii w ciągu ostatnich <b>$2</b> dni." ;
 $wikiRecentChangesSince = "To ostatnie <b>$1</b> zmian dokonanych na Wikipedii od <b>$2</b>." ;
@@ -311,7 +264,7 @@ $wikiUploadTitle = "Upload" ;
 $wikiUploadDenied = "Nie jesteś edytorem ani adminem. Powróć na <a href=\"$THESCRIPT?action=upload\">stronę Upload</a>" ;
 $wikiUploadDeleted = "Plik <b>$1</b> skasowany!" ;
 $wikiUploadDelMsg1 = "*$3, [[użytkownik:$1|$1]] skasował plik '''$2'''\n" ;
-$wikiUploadDelMsg2 = "Deletion of file $1" ;
+$wikiUploadDelMsg2 = "Skasowanie pliku $1" ;
 $wikiUploadAffirm = "<nowiki>Musisz poświadczyć, że uploadując plik nie łamiesz praw autorskich. Powróć na <a href=\"$THESCRIPT?title=special:upload\">stronę Upload</a></nowiki>" ;
 $wikiUploadRestrictions = "<nowiki>Musisz się zalogować żeby uploadować plik!</nowiki>" ;
 $wikiUploadFull = "Przepraszamy ale prawie skończył nam się wolny obszar na dyskach. Możliwość uploadu plików jest na razie wyłączona." ;
@@ -337,7 +290,7 @@ $wikiUploadText .= "<li>Wiadomość poinformuje cię czy upload się powiódł.<
 $wikiUploadText .= "<li>Możesz uploadować tyle plików ile chcesz. Prosimy jednak o nie przepełnianie naszego serwera ;).</li>\n";
 $wikiUploadText .= "<li>Wszystkie uploady i skasowania są logowane w <a href=\"$THESCRIPT?title=Log:Uploady\">logu uploadów</a>.</li>\n";
 $wikiUploadText .= "</ul>\n";
-$wikiUploadAffirmText = "Niniejszym zaświadczam że plik ten <b>nie jest objęty prawem autoskim</b>, jest udostępniony na licencji zgodnej z GFDL, lub że posiadając prawa autorskie do tego pliku umieszam go an licencji GFDL." ;
+$wikiUploadAffirmText = "Niniejszym zaświadczam że plik ten <b>nie jest objęty prawem autorskim</b>, jest udostępniony na licencji zgodnej z GFDL, lub że posiadając prawa autorskie do tego pliku umieszam go na licencji GFDL." ;
 $wikiUploadButton = "Upload" ;
 $wikiUploadPrev = "Uploadowane pliki:" ;
 $wikiUploadSize = "Rozmiar (bajty)" ;
@@ -390,8 +343,8 @@ $wikiPopularPages = "Najpopularniejsze" ;
 $wikiPopularTitle = "Najpopularniejsze Artykuły" ;
 $wikiRefreshThisPage = "Odśwież tą stronę" ;
 $wikiResourcesWarning = "(Proszę robić to tylko jeśli to konieczne, ponieważ ta funkcja pochłania dużo zasobów systemowych)" ;
-$wikiNoRefresh = "(The page was last refreshed just $1 minutes ago; please wait another $2 minutes and try again.)" ;
-$wikiLastRefreshed = "Last refreshed $1" ;
+$wikiNoRefresh = "(Strona została ostatnio odświeżona zaledwie $1 minut temu; proszę odczekać jeszcze $2 minut i spróbować jeszcze raz.)" ;
+$wikiLastRefreshed = "Ostatnio odświeżona $1" ;
 $wikiValidate = "Sprawdź zgodność tej strony ze standardami W3C" ;
 $wikiBlockIP = "Zablokuj ten IP" ;
 $wikiNostalgy = "Nostalgia" ;
