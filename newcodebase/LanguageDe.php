@@ -340,6 +340,13 @@ und dem Text von $3 Artikeln überein.",
 "showingresults" => "Hier sind <b>$1</b> Ergebnisse, beginnend mit #<b>$2</b>.",
 "nonefound"		=> "<strong>Hinweis</strong>:
 Erfolglose Suchanfragen werden häufig verursacht durch den Versuch, nach 'gewöhnlichen' Worten zu suchen; diese sind nicht indiziert.",
+"powersearch" => "Suche",
+"powersearchtext" => "
+Suche in Namensräumen :<br>
+$1<br>
+$2 Zeige auch REDIRECTs &nbsp; Suche nach $3 $9",
+
+
 
 # Preferences page
 #

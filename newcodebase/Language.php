@@ -508,6 +508,12 @@ and the text of $3 articles.",
 often caused by searching for common words like \"have\" and \"from\",
 which are not indexed, or by specifying more than one search term (only pages
 containing all of the search terms will appear in the result).",
+"powersearch" => "Search",
+"powersearchtext" => "
+Search in namespaces :<br>
+$1<br>
+$2 List redirects &nbsp; Search for $3 $9",
+
 
 # Preferences page
 #
