@@ -24,41 +24,10 @@ void TDatabase::filterBackslashes ( TUCS &s )
 
 void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     {
-/*    long l ;
-    ifstream in ( fn_in.c_str() , ios::in | ios::binary ) ;
-    in.seekg (0, ios::end);
-    l = in.tellg();
-    in.seekg (0, ios::beg);    
-    char *t = new char[l+5] ;
-    in.read ( t , l ) ;
-    in.close () ;
-    t[l] = 0 ;
-    
-    vector <char*> vc ;
-    char *c ;
-    vc.push_back ( t ) ;
-    for ( c = t ; *c ; c++ )
-        {
-        if ( *c == '\n' )
-           {
-           *c = 0 ;
-           vc.push_back ( c+1 ) ;
-           }
-        }
-*/
-
     string cur ;
     sqlite *db = sqlite_open ( fn_out.c_str() , 0 , NULL ) ;
     sqlite_exec ( db , "BEGIN;" , 0 , 0 , 0 ) ;
-
-    //
     ifstream in ( fn_in.c_str() , ios::in ) ;
-    
-    // All lines now indexed in vc
-//    cout << vc.size() << " lines\n" ;
-    
-    TUCS unique = " " ;
-    unique[0] = 1 ;
     
     VTUCS index , keys ;
     TUCS table_name ;
@@ -69,11 +38,9 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     
     //
     bool creating = false ;
-//    for ( a = 0 ; a < vc.size() ; a++ )
     for ( a = 0 ; !in.eof() ; a++ )
         {
-        cout << a << " : " << creating << endl ;
-//        char *x = vc[a] ;
+        cout << "Converting line " << a << endl ;
 
         string vc ;
         getline ( in , vc ) ;
@@ -110,7 +77,6 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
               cur += table_name.getstring() ;
               cur += "(" + keys[b].getstring() + ");" ;
               create_indices += cur ;
-//              sqlite_exec ( db , cur.c_str() , 0 , 0 , 0 ) ;
 //              cout << cur << endl ;
               }
            
@@ -154,6 +120,8 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
            }
         else if ( *x == 'I' ) // INSERT INTO blah blah
            {
+           sqlite_exec ( db , "COMMIT;" , 0 , 0 , 0 ) ;
+           sqlite_exec ( db , "BEGIN;" , 0 , 0 , 0 ) ;
            uint l , b ;
            uint idx = 0 ;
            for ( b = 0 ; x[b] != '(' ; b++ ) ;
@@ -202,7 +170,7 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
         }
     
 //    delete t ;
-
+    cout << "Creating indices..." << endl ;
     sqlite_exec ( db , create_indices.c_str() , 0 , 0 , 0 ) ;
     sqlite_exec ( db , "COMMIT;" , 0 , 0 , 0 ) ;
     sqlite_close ( db ) ;
