@@ -360,18 +360,27 @@ recognized by the wiki.',
 #
 'error'			=> 'Error',
 'databaseerror' => 'Database error',
-'dberrortext'	=> "A database query syntax error has occurred.
-This could be because of an illegal search query (see $5),
+'dberrortext'	=> "
+You probably tried a search or other operation which took too long. Possible reasons include:
+
+<ul>
+<li>A search where all words are in quotes. Try searching without the quotes initially. If that isn't good enough, add a few more words or use a word or two outside the quotes to indicate the general topic area.
+<li>An exceptionally large personal watchlist (probably over 10,000 items) at busy times.
+<li>You may have been unlucky and tried when the database servers were termporarily exceptionally loaded. When under exceptional load many harmless tasks may be ended at once to quickly restore normal response times. Try again in five minutes if you know that what you are doing is normally fine.
+</ul>
+
+<p>The generic error message is:
+<p>
+A database error has occurred.
+This could be because of an unacceptable search query (see $5),
 or it may indicate a bug in the software.
 The last attempted database query was:
 <blockquote><tt>$1</tt></blockquote>
 from within function \"<tt>$2</tt>\".
-MySQL returned error \"<tt>$3: $4</tt>\".",
-'dberrortextcl' => "A database query syntax error has occurred.
-The last attempted database query was:
-\"$1\"
-from within function \"$2\".
-MySQL returned error \"$3: $4\".\n",
+MySQL returned error \"<tt>$3: $4</tt>\".
+
+<p>If the error above is 2013 your operation was ended by the database load manager. Please improve your search or try again at a less busy time. Sorry for the inconvenience.
+",
 'noconnect'		=> 'Sorry! The wiki is experiencing some technical difficulties, and cannot contact the database server. <br />
 $1',
 'nodb'			=> "Could not select database $1",
