@@ -1,4 +1,6 @@
-<?
+<?php
+
+include_once( "utf8Case.php" );
 
 # The names of the namespaces can be set here, but the numbers
 # are magical, so don't change or move them!  The Namespace class
@@ -34,7 +36,8 @@
 	"rememberpassword" => "Remember password across sessions",
 	"editwidth" => "Edit box has full width",
 	"editondblclick" => "Edit pages on double click (JavaScript)",
-	"watchdefault" => "Watch new and modified articles"
+	"watchdefault" => "Watch new and modified articles",
+	"minordefault" => "Mark all edits minor by default"
 );
 
 /* Native/local names should be available where known for consistency
@@ -68,7 +71,7 @@
 	"dk"	=> "Dansk (デンマーク語)", # 'da' is correct for the language.
 	"nl"	=> "Nederlands (オランダ語)",
 	"en"	=> "English (英語)",
-	"simple" => "簡単な英語",
+	"simple" => "Simple English (簡単な英語)",
 	"eo"	=> "Esperanto (エスペラント)",
 	"et"	=> "Eesti (エストニア語)",
 	"fo"	=> "フェロー語",
@@ -200,7 +203,7 @@
 /* private */ $wgValidSpecialPagesJa = array(
 	"Userlogin"		=> "",
 	"Userlogout"	=> "",
-	"Preferences"	=> "Set my user preferences",
+	"Preferences"	=> "ユーザ設定を保存",
 	"Watchlist"		=> "ウォッチリスト",
 	"Recentchanges" => "最近更新したページ",
 	"Upload"		=> "画像をアップロードする",
@@ -209,14 +212,14 @@
 	"Statistics"	=> "サイトの統計",
 	"Randompage"	=> "ランダム記事",
 
-	"Lonelypages"	=> "Orphaned articles",
-	"Unusedimages"	=> "Orphaned images",
-	"Popularpages"	=> "Popular articles",
-	"Wantedpages"	=> "Most wanted articles",
+	"Lonelypages"	=> "孤立したページ",
+	"Unusedimages"	=> "孤立した画像",
+	"Popularpages"	=> "人気の記事",
+	"Wantedpages"	=> "一番注目されている記事",
 	"Shortpages"	=> "短い記事",
 	"Longpages"		=> "長い記事",
 	"Newpages"		=> "新しく登場した記事",
-	"Allpages"		=> "All pages by title",
+	"Allpages"		=> "タイトル別全ページ",
 
 	"Ipblocklist"	=> "ブロックされたIPアドレス",
 	"Specialpages"  => "",
@@ -225,18 +228,18 @@
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => "",
 	"Movepage"		=> "",
-	"Booksources"	=> "External book sources"
+	"Booksources"	=> "外部の参考文献"
 );
 
 /* private */ $wgSysopSpecialPagesJa = array(
-	"Blockip"		=> "Block an IP address",
-	"Asksql"		=> "Query the database"
+	"Blockip"		=> "IPアドレスをブロック",
+	"Asksql"		=> "データベースに問い合わせ"
 );
 
 /* private */ $wgDeveloperSpecialPagesJa = array(
-	"Lockdb"		=> "Make database read-only",
-	"Unlockdb"		=> "Restore database write access",
-	"Debug"			=> "Debugging information"
+	"Lockdb"		=> "データベースを読み出し専用にする",
+	"Unlockdb"		=> "データベースを書き込み可能にする",
+	"Debug"			=> "デバッグ情報"
 );
 
 /* private */ $wgAllMessagesJa = array(
@@ -254,18 +257,18 @@
 "bugreportspage" => "Wikipedia:Bug_reports",
 "faq"			=> "FAQ",
 "faqpage"		=> "Wikipedia:FAQ",
-"edithelp"		=> "Editing help",
+"edithelp"		=> "ヘルプを編集",
 "edithelppage"	=> "Wikipedia:How_does_one_edit_a_page",
 "cancel"		=> "キャンセル",
-"qbfind"		=> "Find",
+"qbfind"		=> "検索",
 "qbbrowse"		=> "閲覧",
 "qbedit"		=> "編集",
 "qbpageoptions" => "ページ・オプション",
-"qbpageinfo"	=> "Page info",
-"qbmyoptions"	=> "My options",
+"qbpageinfo"	=> "ページ情報",
+"qbmyoptions"	=> "オプション",
 "mypage"		=> "マイ・ページ",
 "mytalk"		=> "マイ・トーク",
-"currentevents" => "Current events",
+"currentevents" => "現在のイベント",
 "errorpagetitle" => "エラー",
 "returnto"		=> "$1 に戻る。",
 "fromwikipedia"	=> "出典：フリー百科事典『Wikipedia（ウィキピディア）』",
@@ -278,8 +281,8 @@
 "deletethispage" => "このページを削除",
 "protectthispage" => "このページを保護",
 "unprotectthispage" => "ページ保護解除",
-"talkpage"		=> "Talk page",
-"subjectpage"	=> "Subject page",
+"talkpage"		=> "トーク・ページ",
+"subjectpage"	=> "サブジェクト・ページ",
 "otherlanguages" => "他の言語",
 "redirectedfrom" => "($1 から転送)",
 "lastmodified"	=> "最終更新 $1。",
@@ -301,27 +304,25 @@
 
 # Main script and global functions
 #
-"nosuchaction"	=> "No such action",
-"nosuchactiontext" => "The action specified by the URL is not
-recognized by the Wikipedia software",
-"nosuchspecialpage" => "No such special page",
-"nospecialpagetext" => "You have requested a special page that is not
-recognized by the Wikipedia software.",
+"nosuchaction"	=> "そのようなアクションはありません",
+"nosuchactiontext" => "URLで指定されたアクションはWikipediaで認識できません。",
+"nosuchspecialpage" => "そのような特別ページはありません。",
+"nospecialpagetext" => "その特別ページのリクエストはWikipediaには理解できません。",
 
 # General errors
 #
-"error"			=> "Error",
-"databaseerror" => "Database error",
-"dberrortext"	=> "A database query syntax error has occurred.
-This could be because of an illegal search query (see $5),
-or it may indicate a bug in the software.
-The last attempted database query was:
+"error"			=> "エラー",
+"databaseerror" => "データベース・エラー",
+"dberrortext"	=> "データベース検索の文法エラー。
+検索クエリーが間違っているか($5 を参照),
+あるいはソフトウエアのバグかもしれません。
+最後に実行を試みたクエリー: 
 <blockquote><tt>$1</tt></blockquote>
 from within function \"<tt>$2</tt>\".
 MySQL returned error \"<tt>$3: $4</tt>\".",
-"noconnect"		=> "Could not connect to DB on $1",
-"nodb"			=> "Could not select database $1",
-"readonly"		=> "Database locked",
+"noconnect"		=> "$1 のデータベースに接続できません。",
+"nodb"			=> "$1 のデータベースを選択できません。",
+"readonly"		=> "データベースはロックされています",
 "enterlockreason" => "Enter a reason for the lock, including an estimate
 of when the lock will be released",
 "readonlytext"	=> "The Wikipedia database is currently locked to new
@@ -350,10 +351,10 @@ Please report this to an administrator, making note of the URL.",
 You can continue to use Wikipedia anonymously, or you can log in
 again as the same or as a different user.\n",
 
-"welcomecreation" => "<h2>Welcome, $1!</h2><p>Your account has been created.
-Don't forget to personalize your wikipedia preferences.",
+"welcomecreation" => "<h2>$1 さん、ようこそ!</h2><p>あなたのアカウントができました。
+Wikipediaの個人オプションを修正することをお忘れなく。",
 
-"loginpagetitle" => "ユーザ ログイン",
+"loginpagetitle" => "ユーザ・ログイン",
 "yourname"		=> "あなたのユーザ名",
 "yourpassword"	=> "あなたのパスワード",
 "yourpasswordagain" => "パスワード再入力",
@@ -362,10 +363,8 @@ Don't forget to personalize your wikipedia preferences.",
 "loginproblem"	=> "<b>ログインでエラーが発生しました。</b><br>再度実行してください。",
 "alreadyloggedin" => "<font color=red><b>ユーザ $1 は、すでにログイン済みです。</b></font><br>\n",
 
-"areyounew"		=> "もし Wikipedia を使うのが初めてで、ユーザアカウントを登録したい方は、
-ユーザ名、パスワード、さらにパスワードを再入力してください。
-電子メールアドレスの登録は、必須ではありません。しかし、
-もしパスワードを忘れたときには、電子メールでパスワードを取り寄せることができるので便利です。<br>\n",
+"areyounew"		=> "もし Wikipedia を使うのが初めてで、ユーザアカウントを登録したい方は、ユーザ名、パスワード、さらにパスワードを再入力してください。
+電子メールアドレスの登録は、必須ではありません。しかし、もしパスワードを忘れたときには、電子メールでパスワードを取り寄せることができるので便利です。<br>\n",
 
 
 "login"			=> "ログイン",
@@ -387,32 +386,28 @@ Don't forget to personalize your wikipedia preferences.",
 "wrongpassword"	=> "パスワードが間違っています。再度入力してください。",
 "mailmypassword" => "新しいパスワードを、メールで送る",
 "passwordremindertitle" => "Password reminder from Wikipedia",
-"passwordremindertext" => "Someone (probably you, from IP address $1)
-requested that we send you a new Wikipedia login password.
-The password for user \"$2\" is now \"$3\".
-You should log in and change your password now.",
-"noemail"		=> "There is no e-mail address recorded for user \"$1\".",
-"passwordsent"	=> "A new password has been sent to the e-mail address
-registered for \"$1\".
-Please log in again after you receive it.",
+"passwordremindertext" => "だれかさん ($1 のIPアドレスの人)から、Wikipediaのログインパスワードの再発行の依頼がありました。
+ユーザ \"$2\" のパスワードを、 \"$3\" に変更しました。
+ログイン後、別のパスワードに変更しましょう。",
+"noemail"		=> "ユーザ \"$1\" のメールアドレスは登録されていません。",
+"passwordsent"	=> "あたらしいパスワードは \"$1\" さんの登録済みメールアドレスにお送りしました。メールを受け取ったら、再度ログインしてください。",
 
 # Edit pages
 #
-"summary"		=> "Summary",
-"minoredit"		=> "This is a minor edit.",
-"savearticle"	=> "Save page",
-"preview"		=> "Preview",
-"showpreview"	=> "Show preview",
-"blockedtitle"	=> "User is blocked",
-"blockedtext"	=> "Your user name or IP address has been blocked by $1.
-The reason given is this:<br>$2<p>You may contact the administrator to
-discuss the block.",
-"newarticle"	=> "(New)",
-"newarticletext" => "Put your text for the new page here.",
-"noarticletext" => "(There is currently no text in this page)",
-"updated"		=> "(Updated)",
+"summary"		=> "サマリー",
+"minoredit"		=> "これは細部の修正です。",
+"savearticle"	=> "ページを保存",
+"preview"		=> "プレビュー",
+"showpreview"	=> "プレビューを実行",
+"blockedtitle"	=> "ユーザはブロックされています。",
+"blockedtext"	=> "あなたのユーザ名またはIPアドレスは $1 によってブロックされています。
+その理由はつぎのとおりです。:<br>$2<p>詳細は管理者にお問い合わせください。",
+"newarticle"	=> "(新規)",
+"newarticletext" => "あたらしい記事を書き込んでください。",
+"noarticletext" => "(このページには現在記事がありません。)",
+"updated"		=> "(更新)",
 "note"			=> "<strong>Note:</strong> ",
-"previewnote"	=> "Remember that this is only a preview, and has not yet been saved!",
+"previewnote"	=> "これはプレビューです。まだ保存されていません！",
 "previewconflict" => "This preview reflects the text in the upper
 text editing area as it will appear if you choose to save.",
 "editing"		=> "Editing $1",
@@ -430,19 +425,18 @@ press \"Save page\".\n<p>",
 revision of this page.
 If you save it, any changes made since this revision will be lost.</strong>\n",
 "yourdiff"		=> "Differences",
-"copyrightwarning" => "Please note that all contributions to Wikipedia are
-considered to be released under the GNU Free Documentation License
-(see $1 for details).
+"copyrightwarning" => "Wikipediaに投稿された文書は、すべて GNU Free Documentation License によって発行されたものとみなされますので、留意してください。
+(詳細は $1 を参照)。
 If you don't want your writing to be edited mercilessly and redistributed
 at will, then don't submit it here.<br>
 You are also promising us that you wrote this yourself, or copied it from a
 public domain or similar free resource.
-<strong>DO NOT SUBMIT COPYRIGHTED WORK WITHOUT PERMISSION!</strong>",
+<strong>著作権のある作品を許諾なしに投稿してはいけません！</strong>",
 
 
 # History pages
 #
-"revhistory"	=> "Revision history",
+"revhistory"	=> "改訂履歴",
 "nohistory"		=> "There is no edit history for this page.",
 "revnotfound"	=> "Revision not found",
 "revnotfoundtext" => "The old revision of the page you asked for could not be found.
@@ -526,7 +520,7 @@ from server time (UTC).",
 
 # Recent changes
 #
-"recentchanges" => "最近更新",
+"recentchanges" => "最近更新したページ",
 "recentchangestext" => "Track the most recent changes to Wikipedia on this page.
 [[Wikipedia:Welcome,_newcomers|Welcome, newcomers]]!
 Please have a look at these pages: [[wikipedia:FAQ|Wikipedia FAQ]],
@@ -600,8 +594,8 @@ All times shown are server time (UTC).
 <ul>
 </ul>
 ",
-"filename"		=> "Filename",
-"filedesc"		=> "Summary",
+"filename"		=> "ファイル名",
+"filedesc"		=> "サマリー",
 "affirmation"	=> "I affirm that the copyright holder of this file
 agrees to license it under the terms of the $1.",
 "copyrightpage" => "Wikipedia:Copyrights",
@@ -651,9 +645,9 @@ this old version, (rev) = revert to this old version.
 
 # Statistics
 #
-"statistics"	=> "Statistics",
-"sitestats"		=> "Site statistics",
-"userstats"		=> "User statistics",
+"statistics"	=> "アクセス統計", # "Statistics",
+"sitestats"		=> "サイト全体の統計", # "Site statistics",
+"userstats"		=> "あなたの統計", # "User statistics",
 "sitestatstext" => "There are <b>$1</b> total pages in the database.
 This includes \"talk\" pages, pages about Wikipedia, minimal \"stub\"
 pages, redirects, and others that probably don't qualify as articles.
@@ -684,11 +678,11 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "sysopspheading" => "シスオペ用特別ページ",
 "developerspheading" => "開発者用特別ページ",
 "protectpage"	=> "Protect page",
-"recentchangeslinked" => "Watch links",
+"recentchangeslinked" => "リンクを見張る",
 "rclsub"		=> "(to pages linked from \"$1\")",
-"debug"			=> "Debug",
-"newpages"		=> "New pages",
-"movethispage"	=> "Move this page",
+"debug"			=> "デバッグ",
+"newpages"		=> "新しいページ",
+"movethispage"	=> "このページを移動する",
 "unusedimagestext" => "<p>Please note that other web sites
 such as the international Wikipedias may link to an image with
 a direct URL, and so may still be listed here despite being
@@ -718,24 +712,24 @@ to reply.",
 "noemailtitle"	=> "No e-mail address",
 "noemailtext"	=> "This user has not specified a valid e-mail address,
 or has chosen not to receive e-mail from other users.",
-"emailfrom"		=> "From",
-"emailto"		=> "To",
-"emailsubject"	=> "Subject",
-"emailmessage"	=> "Message",
-"emailsend"		=> "Send",
-"emailsent"		=> "E-mail sent",
+"emailfrom"		=> "自分のアドレス", # "From",
+"emailto"		=> "あて先", # "To",
+"emailsubject"	=> "題名", #"Subject",
+"emailmessage"	=> "本文", #"Message",
+"emailsend"		=> "メール送信", #"Send",
+"emailsent"		=> "メールを送りました", #"E-mail sent",
 "emailsenttext" => "Your e-mail message has been sent.",
 
 # Watchlist
 #
 "watchlist"		=> "Watch list",
 "watchlistsub"	=> "(for user \"$1\")",
-"nowatchlist"	=> "You have no items on your watchlist.",
-"watchnologin"	=> "Not logged in",
+"nowatchlist"	=> "あなたのウォッチリストは空です。", # "You have no items on your watchlist.",
+"watchnologin"	=> "ログインしてません", # "Not logged in",
 "watchnologintext"	=> "You must be <a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
 to modify your watchlist.",
-"addedwatch"	=> "Added to watchlist",
+"addedwatch"	=> "ウォッチリストに加えました", # "Added to watchlist",
 "addedwatchtext" => "The page \"$1\" has been added to your <a href=\"" .
   wfLocalUrl( "Special:Watchlist" ) . "\">watchlist</a>.
 Future changes to this page and its associated Talk page will be listed there,
@@ -744,10 +738,10 @@ and the page will appear <b>bolded</b> in the <a href=\"" .
 make it easier to pick out.</p>
 
 <p>If you want to remove the page from your watchlist later, click \"Stop watching\" in the sidebar.",
-"removedwatch"	=> "Removed from watchlist",
+"removedwatch"	=> "ウォッチリストから削除しました", # "Removed from watchlist",
 "removedwatchtext" => "The page \"$1\" has been removed from your watchlist.",
-"watchthispage"	=> "Watch this page",
-"unwatchthispage" => "Stop watching",
+"watchthispage"	=> "ウォッチリストに追加", # "Watch this page",
+"unwatchthispage" => "ウォッチリストから削除", # "Stop watching",
 "notanarticle"	=> "Not an article",
 
 # Delete/protect/revert
@@ -1012,6 +1006,37 @@ class LanguageJa extends Language {
 		else
 			return Language::getMessage($key);
 	}
+
+	function stripForSearch( $string ) {
+		# MySQL fulltext index doesn't grok utf-8, so we
+		# need to fold cases and convert to hex
+		global $wikiLowerChars;
+		$s = $string;
+
+		# Strip known punctuation ?
+		#$s = preg_replace( '/\xe3\x80[\x80-\xbf]/', '', $s ); # U3000-303f
+
+		# Space strings of like hiragana/katakana/kanji
+		$hiragana = '(?:\xe3(?:\x81[\x80-\xbf]|\x82[\x80-\x9f]))'; # U3040-309f
+		$katakana = '(?:\xe3(?:\x82[\xa0-\xbf]|\x83[\x80-\xbf]))'; # U30a0-30ff
+		$kanji = '(?:\xe3[\x88-\xbf][\x80-\xbf]'
+			. '|[\xe4-\xe8][\x80-\xbf]{2}'
+			. '|\xe9[\x80-\xa5][\x80-\xbf]'
+			. '|\xe9\xa6[\x80-\x99])';
+			# U3200-9999 = \xe3\x88\x80-\xe9\xa6\x99
+		$s = preg_replace( "/({$hiragana}+|{$katakana}+|{$kanji}+)/", ' $1 ', $s );
+
+		# Double-width roman characters: ff00-ff5f ~= 0020-007f
+		$s = preg_replace( "/\xef\xbc([\x80-\xbf])/e", 'chr(ord("$1") & 0x3f + 0x20)', $s );
+		$s = preg_replace( "/\xef\xbd([\x80-\x99])/e", 'chr(ord("$1") & 0x3f + 0x60)', $s );
+
+		return trim( preg_replace(
+		  "/([\\xc0-\\xff][\\x80-\\xbf]*)/e",
+		  "'U8' . bin2hex( strtr( \"\$1\", \$wikiLowerChars ) )",
+		  $s ) );
+		return $s;
+	}
+
 }
 
 ?>
