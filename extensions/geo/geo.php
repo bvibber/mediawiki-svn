@@ -189,12 +189,8 @@ class geo
 			}
 		}
 
-	function get_data ( &$params )
+	function scan_raw_data ( &$data , &$ret , &$params )
 		{
-		$ret = array () ;
-		if ( !isset ( $this->data["data"] ) ) return $ret ; # No data in this set
-		$data = $this->data["data"] ;
-		$data = array_shift ( $data ) ;
 		$data = explode ( " " , $data ) ;
 		foreach ( $data AS $a )
 			{
@@ -206,6 +202,35 @@ class geo
 				$params->data_to_real ( $x , $y ) ;
 				$ret[] = array ( $x , $y ) ;
 				}
+			}
+		}
+
+	function get_data ( &$params )
+		{
+		$ret = array () ;
+		if ( !isset ( $this->data["data"] ) ) return $ret ; # No data in this set
+		$data = $this->data["data"] ;
+		$data = array_shift ( $data ) ;
+		
+		$sets = explode ( ";" , $data ) ;
+		foreach ( $sets AS $data )
+			{
+			$data = trim ( strtolower ( $data ) ) ;
+			if ( substr ( $data , 0 , 9 ) == "reference" )
+				{
+				$data = trim ( substr ( $data , 9 ) ) ;
+				$data = trim ( substr ( $data , 1 , strlen ( $data ) - 2 ) ) ;
+				$data = explode ( "," , $data ) ;
+				foreach ( $data AS $v )
+					{
+					$v = $this->fullid ( $v ) ;
+					$ng = new geo ;
+					$ng->set_from_id ( $v , $params ) ;
+					$b = $ng->get_data ( $params ) ;
+					$this->add_reordered_data ( $ret , $b ) ;
+					}
+				}
+			else $this->scan_raw_data ( $data , $ret , $params ) ;
 			}
 		return $ret ;
 		}
@@ -322,8 +347,9 @@ class geo
 	function add_label ( $x , $y , &$params )
 		{
 		$text = $this->get_specs ( "name" , $params->languages ) ;
-		if ( $text == "" ) return "" ;
+		if ( $text == "" ) return "" ; # No label found
 		$text = utf8_decode ( $this->data[$text][0] ) ;
+		if ( $text == "" ) return "" ; # No point in showing an empty label
 		$x = floor ( $x ) ;
 		$y = floor ( $y ) ;
 		
