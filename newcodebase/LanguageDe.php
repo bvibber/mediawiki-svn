@@ -37,7 +37,7 @@
 	"nl" => "Holländisch", "de" => "Deutsch", "eo" => "Esperanto",
 	"fr" => "Französisch", "he" => "Hebräisch", "hu" => "Ungarisch",
 	"it" => "Italienisch", "ja" => "Japanisch", "no" => "Norwegisch",
-	"pl" => "Polnisch", "pt" => "Portugisisch", "ru" => "Russisch",
+	"pl" => "Polnisch", "pt" => "Portugiesisch", "ru" => "Russisch",
 	"sh" => "Serbocroatisch", "si" => "Slovenisch",
 	"simple" => "Einfaches Englisch", "es" => "Spanisch",
 	"sv" => "Swedisch", "en" => "Englisch"
