@@ -40,7 +40,8 @@
 	"pl" => "Polnisch", "pt" => "Portugiesisch", "ru" => "Russisch",
 	"sh" => "Serbocroatisch", "si" => "Slovenisch",
 	"simple" => "Einfaches Englisch", "es" => "Spanisch",
-	"sv" => "Schwedisch", "en" => "Englisch", "ia" => "Interlingua"
+	"sv" => "Schwedisch", "en" => "Englisch", "ia" => "Interlingua",
+	"la" => "Latein", "et" => "Estnisch"
 );
 
 /* private */ $wgWeekdayNamesDe = array(
