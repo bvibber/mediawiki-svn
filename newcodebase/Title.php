@@ -96,10 +96,20 @@ class Title {
 
 	function getIndexTitle()
 	{
+		global $wgDBminWordLen;
+
 		$lc = SearchEngine::legalSearchChars() . "&#;";
 		$t = preg_replace( "/[^{$lc}]+/", " ", $this->mTextform );
-		$t = preg_replace( "/\\b[{$lc}][{$lc}]\\b/", " ", $t );
-		$t = preg_replace( "/\\b[{$lc}]\\b/", " ", $t );
+
+		if ( $wgDBminWordLen > 3 ) {
+			$t = preg_replace( "/\\b[{$lc}][{$lc}][{$lc}]\\b/", " ", $t );
+		}
+		if ( $wgDBminWordLen > 2 ) {
+			$t = preg_replace( "/\\b[{$lc}][{$lc}]\\b/", " ", $t );
+		}
+		if ( $wgDBminWordLen > 1 ) {
+			$t = preg_replace( "/\\b[{$lc}]\\b/", " ", $t );
+		}
 		$t = preg_replace( "/\\s+/", " ", $t );
 
 		$t = strtolower( $t );

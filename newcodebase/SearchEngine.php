@@ -158,6 +158,8 @@ class SearchEngine {
 
 	function parseQuery()
 	{
+		global $wgDBminWordLen;
+
 		$lc = SearchEngine::legalSearchChars() . "()";
 		$q = preg_replace( "/([()])/", " \\1 ", $this->mUsertext );
 		$q = preg_replace( "/\\s+/", " ", $q );
@@ -169,7 +171,7 @@ class SearchEngine {
 			  || "(" == $word || ")" == $word ) {
 				$cond .= " " . strtoupper( $word );
 				$last = "";
-			} else if ( strlen( $word ) < 3 ) {
+			} else if ( strlen( $word ) < $wgDBminWordLen ) {
 				continue;
 			} else {
 				if ( "" != $last ) { $cond .= " AND"; }
