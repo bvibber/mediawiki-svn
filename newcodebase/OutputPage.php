@@ -1242,14 +1242,15 @@ class OutputPage {
 
 	/* private */ function headElement()
 	{
-		global $wgDocType, $wgUser;
+		global $wgDocType, $wgUser, $wgLanguageCode, $wgOutputEncoding;
 
 		$ret = "<!DOCTYPE HTML PUBLIC \"$wgDocType\">\n";
 
 		if ( "" == $this->mHTMLtitle ) {
 			$this->mHTMLtitle = $this->mPagetitle;
 		}
-		$ret .= "<html><head><title>{$this->mHTMLtitle}</title>\n";
+		$ret .= "<html lang=\"$wgLanguageCode\"><head><title>{$this->mHTMLtitle}</title>\n";
+		array_push( $this->mMetatags, array( "http:Content-type", "text/html; charset={$wgOutputEncoding}" ) );
 		foreach ( $this->mMetatags as $tag ) {
 			if ( 0 == strcasecmp( "http:", substr( $tag[0], 0, 5 ) ) ) {
 				$a = "http-equiv";

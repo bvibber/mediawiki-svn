@@ -23,6 +23,10 @@ global $wgArticle, $wgDeferredUpdateList, $wgLinkCache;
 
 $wgOut = new OutputPage();
 $wgLangClass = "Language" . ucfirst( $wgLanguageCode );
+if( !class_exists( $wgLangClass ) ) {
+	include_once( "utf8Case.php" );
+	$wgLangClass = "LanguageUtf8";
+}
 $wgLang = new $wgLangClass();
 
 $wgUser = new User();
