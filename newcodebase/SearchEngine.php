@@ -231,7 +231,7 @@ class SearchEngine {
 		}
 		if ( 0 == count( $this->mSearchterms ) ) { return; }
 
-		$cond = "MATCH (##field##) AGAINST('" . wfStrencode( $q) . "')";
+		## To disable boolean: ## $cond = "MATCH (##field##) AGAINST('" . wfStrencode( $q) . "')";
 		$this->mTitlecond = "(" . str_replace( "##field##",
 		  "si_title", $cond ) . " )";
 
