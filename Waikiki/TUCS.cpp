@@ -87,7 +87,9 @@ bool TUCS::submatch ( uint from , TUCS &x )
     uint *c1 = c_str() + from ;
     uint *c2 = x.c_str() ;
     while ( *c1 && *c2 && *c1 == *c2 ) { c1++ ; c2++ ; }
-    return ( !*c2) || ( *c1 == *c2 ) ;
+    if ( *c2 > 0 ) return false ;
+//    if ( *c1 != *c2 ) return false ;
+    return true ;
     }
         
 void TUCS::explode ( TUCS &seq , VTUCS &r )
@@ -214,7 +216,7 @@ uint TUCS::find ( TUCS what , uint start )
 
 void TUCS::modify ( uint from , uint len , TUCS repl )
     {
-    if ( from + len >= length() ) return ; // Failed
+    if ( from + len > length() ) return ; // Failed
     v.erase ( v.begin() + from , v.begin() + from + len ) ;
     v.insert ( v.begin() + from , repl.v.begin() , repl.v.end()-1 ) ;
     }

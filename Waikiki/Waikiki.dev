@@ -21,7 +21,7 @@ OverrideOutput=0
 OverrideOutputName=Waikiki.exe
 HostApplication=
 Folders=
-CommandLine=-sqlite="test.sqlite" -destfile="test.html" -title="A"
+CommandLine=-destfile="test.html" -sqlite="test.sqlite" -title="A"
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0

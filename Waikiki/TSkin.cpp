@@ -9,7 +9,7 @@ TSkin::TSkin ()
 
 void TSkin::doHeaderStuff ()
     {
-    OUTPUT->addHeaderLink ( "stylesheet" , "orig_dateien/wikistandard.css" ) ;
+    OUTPUT->addHeaderLink ( "stylesheet" , "wiki/wikistandard.css" ) ;
     
     OUTPUT->addHeader ( 
 "    
@@ -33,7 +33,17 @@ TUCS TSkin::getArticleHTML ()
         r += "<H1 class='pagetitle'>" ;
         r += article->getTitle().getNiceTitle() ;
         r += "</H1>\n" ;
-        r += "<P class='subtitle'>" + LNG("fromwikipedia") + "</P>\n" ;
+        r += "<P class='subtitle'>" ;
+        if ( article->redirectedFrom.empty() ) r += LNG("fromwikipedia") ;
+        else
+           {
+           TUCS u = LNG ( "redirectedfrom" ) ;
+           TTitle t2 ( article->redirectedFrom ) ;
+           TUCS u2 = getInternalLink ( t2 , "" , "" , "redirect=no" ) ;
+           u.replace ( "$1" , u2 ) ;
+           r += u ;
+           }
+        r += "</P>\n" ;
         TUCS s = article->getSource() ;
         r += p.parse ( s ) ;
         }
@@ -98,7 +108,7 @@ TUCS TSkin::getSideBar()
     {
     TUCS r ;
     r += "<div id='quickbar'>\n" ;
-    r += getImageLink ( TTitle ( "Main Page" ) , "orig_dateien/wiki.png" ) ;
+    r += getImageLink ( TTitle ( "Main Page" ) , "wiki/wiki.png" ) ;
     r += "<hr class='sep'>\n" ;
     r += getInternalLink ( TTitle ( LNG("mainpage") ) ) ;
     r += "<br>\n" + getSpecialLink ( "recentchanges" ) ;
@@ -180,6 +190,20 @@ TUCS TSkin::getHelpLink ( TUCS sep )
         
 // Basic link styles
     
+TUCS TSkin::getArticleLink ( TTitle t , TUCS text , TUCS params )
+    {
+    if ( DB->doesArticleExist ( t ) )
+        {
+        return getInternalLink ( t , text , "" , params ) ;
+        }
+    else
+        {
+        if ( params != "" ) params += "&" ;
+        params += "action=edit" ;
+        return getInternalLink ( t , text , "new" , params ) ;
+        }
+    }
+    
 TUCS TSkin::getInternalLink ( TTitle t , TUCS text , TUCS cl , TUCS params )
     {
     TUCS r ;
@@ -188,11 +212,11 @@ TUCS TSkin::getInternalLink ( TTitle t , TUCS text , TUCS cl , TUCS params )
     r = t.getURL() ;
     if ( params != "" )
         {
-        r = "./x?title=" + r + "&" + params ;
+        r = "./wiki.php?title=" + r + "&" + params ;
         }
     else
         {
-        r = "./" + r ;
+        r = "./wiki.php?title=" + r ;
         }
     r = "<a class=" + cl + " href=\"" + r + "\">" + text + "</a>" ;
     return r ;

@@ -74,7 +74,7 @@ bool TParser::parse_internal_link ( TUCS &s )
         OUTPUT->languageLinks.push_back ( x ) ;
         s = s.substr ( c ) ;
         }
-    else s = SKIN->getInternalLink ( t , text ) + s.substr ( c ) ;
+    else s = SKIN->getArticleLink ( t , text ) + s.substr ( c ) ;
     
     return true ;
     }

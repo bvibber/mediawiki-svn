@@ -20,6 +20,9 @@ class TArticle
     virtual TUCS getSource () ;
     virtual TTitle getTitle () ;
     
+    TUCS redirectedFrom ;
+    bool allowRedirect ;
+    
     private :
     TTitle *title ;
     TUCS source ;

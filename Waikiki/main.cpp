@@ -32,17 +32,20 @@ void TWikiInterface::run (int argc, char *argv[])
     bool loadFromFile = false ;
     string sourcefile , destfile ;
     TUCS forcetitle ;
+    
+    TUCS s ;
 
     // Parsing command line parameters
     int a ;
     for ( a = 1 ; a < argc ; a++ )
         {
-        TUCS s ( argv[a] ) ;
+        s = argv[a] ;
         VTUCS v ;
         s.explode ( "=" , v ) ;
         TUCS key = v[0] ;
         v.erase ( v.begin() , v.begin()+1 ) ;
         s.implode ( "=" , v ) ;
+        s.trim() ;
         key.toupper () ;
         if ( key == "-SOURCEFILE" )
            {
@@ -61,6 +64,23 @@ void TWikiInterface::run (int argc, char *argv[])
               v.pop_back () ;
               forcetitle.implode ( "." , v ) ;
               }
+           }
+        else if ( key == "-MYSQL2SQLITE" )
+           {
+           VTUCS v ;
+           s.explode ( "." , v ) ;
+           v.pop_back () ;
+           v.push_back ( "sqlite" ) ;
+           TUCS t ;
+           t.implode ( "." , v ) ;
+           DB->mysql2sqlite ( s.getstring() , t.getstring() ) ;
+           exit ( 0 ) ;
+//           DB->mysql2sqlite ( ".\\brief_cur_table.sql" , ".\\test.sqlite" ) ;
+           }
+        else if ( key == "-REDIRECT" )
+           {
+           s.toupper() ;
+           if ( s == "NO" ) art.allowRedirect = false ;
            }
         else if ( key == "-SQLITE" )
            {
@@ -91,7 +111,7 @@ void TWikiInterface::run (int argc, char *argv[])
 
     if ( loadFromFile )
         {
-        cout << "!" << forcetitle.getstring() << endl ;
+//        cout << "!" << forcetitle.getstring() << endl ;
         DB->getArticle ( TTitle ( forcetitle, FROM_TEXT ) , art ) ;
         }
     else
@@ -157,6 +177,11 @@ int main(int argc, char *argv[])
     TWikiInterface w ;
     LANG->loadPHP ( "Language.php" ) ;
     w.run ( argc , argv ) ;
+
+/*    TUCS s ( "A1B1C1" ) ;
+    VTUCS v ;
+    s.explode ( "1" , v ) ;
+    for ( int a = 0 ; a < v.size() ; a++ ) cout << a << ":" << v[a].getstring() << endl ;*/
 //    system("PAUSE");	
 
 

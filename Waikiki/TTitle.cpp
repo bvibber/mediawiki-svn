@@ -29,6 +29,7 @@ TUCS TTitle::getNiceTitle ()
     TUCS r ;
     if ( ns != "" ) r = ns + ":" ;
     r += title ;
+    r.replace ( "_" , " " ) ;
     return r ;
     }
     
@@ -52,3 +53,8 @@ TUCS TTitle::getNamespace ()
     return LANG->getUCfirst ( ns ) ;
     }
     
+int TTitle::getNamespaceID ()
+    {
+    if ( ns == "" ) return 0 ;
+    return 0 ; // DUMMY
+    }

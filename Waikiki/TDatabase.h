@@ -37,7 +37,8 @@ class TDatabase
     public :
     // Dummy methods
     virtual bool init ( string s1 ) ;
-    virtual void getArticle ( TTitle t , TArticle &art ) ;
+    virtual void getArticle ( TTitle t , TArticle &art , bool wasRedirected = false ) ;
+    virtual bool doesArticleExist ( TTitle &t ) ;
 
     // Useful methods
     void mysql2sqlite ( string fn_in , string fn_out ) ;
@@ -52,7 +53,7 @@ class TDatabaseFile : public TDatabase
     {
     public :
     virtual bool init ( string s1 ) ;
-    virtual void getArticle ( TTitle t , TArticle &art ) ;
+    virtual void getArticle ( TTitle t , TArticle &art , bool wasRedirected = false ) ;
     
     private :
     string filename ;
@@ -62,7 +63,8 @@ class TDatabaseSqlite : public TDatabase
     {
     public :
     virtual bool init ( string s1 ) ;
-    virtual void getArticle ( TTitle t , TArticle &art ) ;
+    virtual void getArticle ( TTitle t , TArticle &art , bool wasRedirected = false ) ;
+    virtual bool doesArticleExist ( TTitle &t ) ;
 
     TSQLresult results ;
     

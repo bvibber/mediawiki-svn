@@ -19,6 +19,7 @@ class TSkin
     virtual TUCS getImageLink ( TTitle t , TUCS url , TUCS alt = "" ) ;
     virtual TUCS getInternalLink ( TTitle t , TUCS text = "" , TUCS cl = "" , TUCS params = "" ) ;
     virtual TUCS getSpecialLink ( TUCS page , TUCS text = "" , TUCS params = "" ) ;
+    virtual TUCS getArticleLink ( TTitle t , TUCS text = "" , TUCS params = "" ) ;
     
     virtual TUCS getEditLink ( TUCS sep = "" ) ;
     virtual TUCS getWatchThisPageLink ( TUCS sep = "" ) ;

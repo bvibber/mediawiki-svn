@@ -5,7 +5,8 @@ TDatabase* TDatabase::current = NULL ;
 // TDatabase
 
 bool TDatabase::init ( string s1 ) { return false ; } ;
-void TDatabase::getArticle ( TTitle t , TArticle &art ) { } ;
+void TDatabase::getArticle ( TTitle t , TArticle &art , bool wasRedirected ) { } ;
+bool TDatabase::doesArticleExist ( TTitle &t ) { return false ; }
 
 void TDatabase::filterBackslashes ( TUCS &s )
     {
@@ -132,7 +133,7 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
 //              cout << "Creating " << s.getstring() << endl ;
               }
            }
-        else if ( *x == 'I' )
+        else if ( *x == 'I' ) // INSERT INTO blah blah
            {
            uint l , b ;
            uint idx = 0 ;
@@ -184,7 +185,7 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     delete t ;
     sqlite_exec ( db , "COMMIT;" , 0 , 0 , 0 ) ;
     sqlite_close ( db ) ;
-    system("PAUSE");	
+//    system("PAUSE");	
     }
 
 
@@ -198,7 +199,7 @@ bool TDatabaseFile::init ( string s1 )
     return true ;
     }
     
-void TDatabaseFile::getArticle ( TTitle t , TArticle &art )
+void TDatabaseFile::getArticle ( TTitle t , TArticle &art , bool wasRedirected )
     {
     TUCS source ;
     ifstream in ( filename.c_str() , ios::in ) ;
@@ -268,28 +269,58 @@ bool TDatabaseSqlite::init ( string s1 )
     return true ;
     }
 
-void TDatabaseSqlite::getArticle ( TTitle t , TArticle &art )
+void TDatabaseSqlite::getArticle ( TTitle t , TArticle &art , bool wasRedirected )
     {
     st = this ;
     results.clean() ;
     db = sqlite_open ( filename.c_str() , 0 , NULL ) ;
     
-    cout << t.getNiceTitle().getstring() << endl ;
-
     string sql ;
-    sql = "SELECT * FROM cur WHERE cur_namespace=0 AND cur_title ='" + t.getDBkey().getstring() + "' LIMIT 1" ;
-    cout << sql << endl ;
+    sql = "SELECT * FROM cur WHERE cur_namespace=" ;
+    sql += TUCS::fromint ( t.getNamespaceID() ) . getstring() ;
+    sql += " AND cur_title ='" ;
+    sql += t.getDBkey().getstring() ;
+    sql += "' LIMIT 1" ;
     sqlite_exec ( db , sql.c_str() , callback , 0 , 0 ) ;
     sqlite_close ( db ) ;
     
     
     if ( results.content.size() == 1 )
        {
-//       cout << results[0][results["cur_text"]] << endl ;
        TUCS s = results[0][results["cur_text"]] ;
+       TUCS u = s.substr ( 0 , 9 ) ;
+       u.toupper() ;
        filterBackslashes ( s ) ;
+       if ( u == "#REDIRECT" && !wasRedirected && art.allowRedirect )
+          {
+          VTUCS v ;
+          s.explode ( "\n" , v ) ;
+          s = v[0].substr ( 9 ) ;
+          s.replace ( "[[" , "" ) ;
+          s.replace ( "]]" , "" ) ;
+          s.trim() ;
+          art.redirectedFrom = t.getNiceTitle() ;
+          return getArticle ( TTitle ( s ) , art , true ) ;
+          }
        art.setSource ( s ) ;
        }
     art.setTitle ( t ) ;
     }
 
+bool TDatabaseSqlite::doesArticleExist ( TTitle &t )
+    {
+    string sql ;
+    sql = "SELECT cur_title FROM cur WHERE cur_namespace=" ;
+    sql += TUCS::fromint ( t.getNamespaceID() ) . getstring() ;
+    sql += " AND cur_title ='" ;
+    sql += t.getDBkey().getstring() ;
+    sql += "' LIMIT 1" ;
+
+    results.clean() ;
+    db = sqlite_open ( filename.c_str() , 0 , NULL ) ;
+    sqlite_exec ( db , sql.c_str() , callback , 0 , 0 ) ;
+    sqlite_close ( db ) ;
+    if ( results.content.size() == 1 ) return true ;
+    return false ;
+    }
+    

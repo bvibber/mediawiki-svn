@@ -15,6 +15,8 @@ class TTitle
     TUCS getNamespace () ;
     TUCS getDBkey () ;
     
+    int getNamespaceID () ;
+    
     private :
     virtual void initFromText ( TUCS s ) ;
     

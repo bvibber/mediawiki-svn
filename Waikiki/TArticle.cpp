@@ -10,6 +10,7 @@ TArticle TArticle::operator = ( const TArticle &x )
 TArticle::TArticle ()
     {
     title = new TTitle () ;
+    allowRedirect = true ;
     }
 
 TArticle::~TArticle ()
