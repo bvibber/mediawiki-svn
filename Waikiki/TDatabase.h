@@ -41,7 +41,7 @@ class TDatabase
     virtual void getArticle ( TTitle t , TArticle &art , bool wasRedirected = false ) ;
     virtual void getRandomArticle ( TArticle &art ) ;
     virtual bool doesArticleExist ( TTitle &t ) ;
-    virtual void findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) ;
+    virtual void findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext , int from = 0 , int num = 20 ) ;
     virtual void query ( TUCS s ) ;
     virtual string identify () { return "BASETYPE" ; }
     
@@ -75,7 +75,7 @@ class TDatabaseSqlite : public TDatabase
     virtual void getArticle ( TTitle t , TArticle &art , bool wasRedirected = false ) ;
     virtual void getRandomArticle ( TArticle &art ) ;
     virtual bool doesArticleExist ( TTitle &t ) ;
-    virtual void findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) ;
+    virtual void findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext , int from = 0 , int num = 20 ) ;
     virtual void query ( TUCS s ) ;
     virtual string identify () { return "SQLITE" ; }
     virtual int getNumberOfArticles() ;
@@ -83,7 +83,7 @@ class TDatabaseSqlite : public TDatabase
     TSQLresult results ;
     
     protected :
-    virtual void subSearch ( TUCS s , TUCS field , VTUCS &array ) ;
+    virtual void subSearch ( TUCS s , TUCS field , VTUCS &array , int from , int num ) ;
     string filename ;
     sqlite *db ;
     bool ignoreDBerror ;

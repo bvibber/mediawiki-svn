@@ -11,7 +11,7 @@ class TWikiInterface
     private :
     void readPostParams () ;
     virtual void edit ( TTitle s , TArticle &art ) ;
-    virtual void go ( TUCS s , TArticle &art ) ;
+    virtual void go ( TUCS s , TArticle &art , int from , int num ) ;
     virtual void load_ini ( VTUCS &v ) ;
     TSpecialPages *sp ;
     TUCS html ;
@@ -114,6 +114,7 @@ void TWikiInterface::run (int argc, char *argv[])
     bool loadFromFile = false ;
     string sourcefile , destfile ;
     TUCS forcetitle ;
+    int from = 0 , num = 20 ;
     
     TUCS s ;
     TUCS action = "VIEW" ;
@@ -151,6 +152,8 @@ void TWikiInterface::run (int argc, char *argv[])
               forcetitle.implode ( "." , v ) ;
               }
            }
+        else if ( key == "FROM" ) from = atoi ( s.getstring().c_str() ) ;
+        else if ( key == "NUM" ) num = atoi ( s.getstring().c_str() ) ;
         else if ( key == "USEONLINEIMAGES" )
            {
            s.toupper () ;
@@ -232,7 +235,7 @@ void TWikiInterface::run (int argc, char *argv[])
 
     if ( action == "GO" )
         {
-        go ( forcetitle , art ) ;
+        go ( forcetitle , art , from , num ) ;
         SKIN->setArticle ( &art ) ;
         html = SKIN->getArticleHTML() ;
         }
@@ -298,14 +301,16 @@ void TWikiInterface::run (int argc, char *argv[])
         
     }
 
-void TWikiInterface::go ( TUCS s , TArticle &art )
+void TWikiInterface::go ( TUCS s , TArticle &art , int from , int num )
     {
-    art.setTitle ( TTitle ( "Searching..." ) ) ;
+    art.setTitle ( TTitle ( LNG("searchresults") ) ) ;
     
     VTUCS bytitle , bytext ;
-    DB->findArticles ( s , bytitle , bytext ) ;
+    DB->findArticles ( s , bytitle , bytext , from , num ) ;
     
     uint a ;
+    if ( from < 0 ) from = 0 ;
+    if ( num < 5 ) num = 5 ;
 
     for ( a = 0 ; a < bytitle.size() ; a++ )
         bytitle[a] = SKIN->getInternalLink ( TTitle ( bytitle[a] ) ) ;
@@ -314,11 +319,32 @@ void TWikiInterface::go ( TUCS s , TArticle &art )
         bytext[a] = SKIN->getInternalLink ( TTitle ( bytext[a] ) ) ;
 
     TUCS t1 , t2 ;
-    t1.implode ( "<br>\n" , bytitle ) ;
-    t2.implode ( "<br>\n" , bytext ) ;
+    t1.implode ( "</li>\n<li>" , bytitle ) ;
+    t2.implode ( "</li>\n<li>" , bytext ) ;
+    if ( !t1.empty() ) t1 = "<ol>\n<li>" + t1 + "</li></ol>" ;
+    if ( !t2.empty() ) t2 = "<ol>\n<li>" + t2 + "</li></ol>" ;
     
-    TUCS t = "<h2>Title matches</h2>\n" + t1 ;
-    t += "<h2>Text matches</h2>\n" + t2 ;
+    TUCS t ;
+    if ( !t1.empty() ) t += "<h2>" + LNG("titlematches") + "</h2>\n" + t1 ;
+    if ( !t2.empty() ) t += "<h2>" + LNG("textmatches") + "</h2>\n" + t2 ;
+    
+    TUCS r = "./waikiki.exe?search=$1&go=$2&from=$3&num=$4" ;
+    r.replace ( "$1" , s ) ;
+    r.replace ( "$2" , "go" ) ;
+    r.replace ( "$4" , TUCS::fromint(num) ) ;
+    
+    TUCS r1 = r , r2 = r ;
+    r1.replace ( "$3" , TUCS::fromint(from-num) ) ;
+    r2.replace ( "$3" , TUCS::fromint(from+num) ) ;
+    
+    TUCS links , p = LNG("prevn") , n = LNG("nextn") ;
+    p.replace ( "$1" , TUCS::fromint(num) ) ;
+    n.replace ( "$1" , TUCS::fromint(num) ) ;
+    if ( from > 0 ) links += "<a href=\"" + r1 + "\">" + p + "</a> " ;
+    if ( bytitle.size() + bytext.size() == num ) links += "<a href=\"" + r2 + "\">" + n + "</a>" ;
+    
+    t = links + "<hr>\n" + t + "<hr>\n" + links ;
+    
     art.setSource ( t ) ;
     }
     

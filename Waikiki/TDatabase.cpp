@@ -10,7 +10,7 @@ void TDatabase::getArticle ( TTitle t , TArticle &art , bool wasRedirected ) { }
 void TDatabase::getRandomArticle ( TArticle &art ) {}
 bool TDatabase::doesArticleExist ( TTitle &t ) { return false ; }
 void TDatabase::query ( TUCS s ) {}
-void TDatabase::findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) { }
+void TDatabase::findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext , int from , int num ) { }
 void TDatabase::storeArticle ( TArticle &art , bool makeOldVersion ) { }
 int TDatabase::getNumberOfArticles() { return 0 ; }
 
@@ -514,13 +514,14 @@ bool TDatabaseSqlite::doesArticleExist ( TTitle &t )
     return false ;
     }
     
-void TDatabaseSqlite::findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext )
+void TDatabaseSqlite::findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext , int from , int num )
     {
-    subSearch ( s , "cur_title" , bytitle ) ;
-//    subSearch ( s , "cur_text" , bytext ) ;
+    subSearch ( s , "cur_title" , bytitle , from , num ) ;
+    if ( bytitle.size() < num )
+        subSearch ( s , "cur_text" , bytext , from , num - bytitle.size() ) ;
     }
     
-void TDatabaseSqlite::subSearch ( TUCS s , TUCS field , VTUCS &array )
+void TDatabaseSqlite::subSearch ( TUCS s , TUCS field , VTUCS &array , int from , int num )
     {
     TUCS sql , t ;
     VTUCS v1 , v2 ;
@@ -535,6 +536,8 @@ void TDatabaseSqlite::subSearch ( TUCS s , TUCS field , VTUCS &array )
         }
     t.implode ( " AND " , v2 ) ;
     sql += t ;
+    sql += " LIMIT " + TUCS::fromint ( num ) ;
+    sql += " OFFSET " + TUCS::fromint ( from ) ;
     
     query ( sql ) ;    
 
