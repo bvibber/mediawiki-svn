@@ -543,7 +543,7 @@ void html2xml::close_tag ( int &a )
 		stack.pop_back() ;
 		si.pop_back () ;
 		}
-//	else try_closing ( a , 3 ) ; // Experimental, try closing down three levels
+	else try_closing ( a , 3 ) ; // Experimental, try closing down three levels
 	}
 
 void html2xml::to_xml ()
@@ -563,11 +563,15 @@ void html2xml::to_xml ()
 			}
 		else // This is plain text, might need some tagging though
 			{
-/*
-			if ( stack_top() == "table" ) insert_tag ( a-- , "tr" ) ;
+			int b ;
+			for ( b = 0 ; b < t->text.length() &&
+						(	t->text[b] == ' ' ||
+							t->text[b] == '\n' ||
+							t->text[b] == '\r' ) ; b++ ) ;
+			if ( b == t->text.length() ) ; // Just blanks
+			else if ( stack_top() == "table" ) insert_tag ( a-- , "tr" ) ;
 			else if ( stack_top() == "tr" ) insert_tag ( a-- , "td" ) ;
 			else if ( in_tag_list ( stack_top() , list_tags ) ) insert_tag ( a-- , "li" ) ;
-*/
 			}
 		if ( a+1 == parts.size() && stack.size() > 0 ) // Need to close remaining tags
 			add_close_tag () ;
@@ -576,21 +580,15 @@ void html2xml::to_xml ()
 
 //*********************************************************************************************
 
-string get_xml ( const string &s )
+string get_xml ( const string &s , bool convert_to_wiki = false )
 	{
 	html2xml hx ;
 	hx.add_to_allowed_tags ( table_tags + "|" + markup_tags + "|" + block_tags + "|" + list_tags + "|" + wiki_tags ) ;
 	hx.scan_string ( s ) ;
 	hx.to_xml () ;
-	return hx.get_string ( true ) ;
+	return hx.get_string ( convert_to_wiki ) ;
 	}
 
-const char *get_xml ( const char *s )
-	{
-	string t = get_xml ( string ( s ) ) ;
-	return t.c_str() ;
-	}
-	
 // Testing with random strings
 void test ()
 	{
@@ -625,7 +623,7 @@ int main ( int argc , char *argv[] )
 	// The real stuff!
 	string s ;
 	while ( !cin.eof() ) s += cin.get() ;
-	cout << get_xml ( s ) << endl ;
+	cout << get_xml ( s , true ) << endl ;
 #endif
 
 	return 0 ;
