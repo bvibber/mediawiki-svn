@@ -7,7 +7,7 @@ function recentchanges () {
 	global $wikiRecentChangesLastDays , $wikiRecentChangesSince , $wikiViewLastDays , $wikiViewMaxNum , $wikiListOnlyNewChanges ;
 	$vpage->special ( $wikiRecentChangesTitle ) ;
 	$vpage->makeSecureTitle() ;
-	if ( !isset ( $maxcnt ) ) $maxcnt = 250 ;
+	if ( !isset ( $maxcnt ) ) $maxcnt = 50 ;
 	if ( !isset ( $daysAgo ) ) $daysAgo = 3 ;
 
 	$from2 = substr ( $from , 0 , 4 ) . "-" . substr ( $from , 4 , 2 ) . "-" . substr ( $from , 6 , 2 ) ;
