@@ -64,9 +64,9 @@ class SkinCologneBlue extends Skin {
 
 		$s .= $this->bottomLinks();
 		$s .= "\n<br>" . $this->makeKnownLink( wfMsg( "mainpage" ),
-		  wfMsg( "mainpage" ) ) . " | " . $this->makeKnownLink( wfMsg( "aboutpage" ),
-		  wfMsg( "aboutwikipedia" ) ) . " | " .
-		  $this->searchForm( wfMsg( "qbfind" ) );
+		  wfMsg( "mainpage" ) ) . " | "
+		  . $this->aboutLink() . " | "
+		  . $this->searchForm( wfMsg( "qbfind" ) );
 
 		$s .= "\n<br>" . $this->pageStats();
 

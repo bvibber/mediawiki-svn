@@ -229,6 +229,7 @@ class Skin {
 
 		$s .= $this->bottomLinks();
 		$s .= "\n<br>" . $this->mainPageLink()
+		  . " | " . $this->aboutLink()
 		  . " | " . $this->specialLink( "recentchanges" )
 		  . " | " . $this->searchForm()
 		  . "<br>" . $this->pageStats();
@@ -515,6 +516,20 @@ class Skin {
 	{
 		$mp = wfMsg( "mainpage" );
 		$s = $this->makeKnownLink( $mp, $mp );
+		return $s;
+	}
+
+	function copyrightLink()
+	{
+		$s = $this->makeKnownLink( wfMsg( "copyrightpage" ),
+		  wfMsg( "copyrightpagename" ) );
+		return $s;
+	}
+
+	function aboutLink()
+	{
+		$s = $this->makeKnownLink( wfMsg( "aboutpage" ),
+		  wfMsg( "aboutwikipedia" ) );
 		return $s;
 	}
 
