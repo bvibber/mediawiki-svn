@@ -50,9 +50,9 @@ nCleanUp() {
 nLatex() {
     if [[ ! -s "$1.$S_EXT" ]]; then
 	case "$2" in
-	    'music' ) { "$D_LIL"lilypond "$1" && psselect 1 "$1".ps "$1"_1.ps && mv "$1"_1.ps "$1".ps && "$D_MOG"mogrify -trim "$1".ps && "$D_CON"convert -transparent "#ffffff" "$1".ps "$1.$S_EXT"; } &> /dev/null;;
+	    'music' ) { lilypond "$1" && psselect 1 "$1".ps "$1"_1.ps && mv "$1"_1.ps "$1".ps && mogrify -trim "$1".ps && convert -transparent "#ffffff" "$1".ps "$1.$S_EXT"; } &> /dev/null;;
 	    'go' ) { sgf2tex "$1" -break 0 && tex "$1" && dvi2bitmap --output-type=gif --magnification=2 --scale=6 --font-mode=nechi --resolution=360 -h 360 -w 360 --process=blur,crop,transparent --output="$1".gif "$1".dvi; } &> /dev/null;;
-	    * )	{ "$D_LAT"latex "$1" --interaction=batchmode && "$D_DVI"dvi2bitmap --output-type="$S_EXT" --magnification=2 --scale=6 --font-mode=nechi --resolution=360 --process=blur,crop,transparent --output="$1.$S_EXT" "$1".dvi; } &> /dev/null;;
+	    * )	{ latex "$1" --interaction=batchmode && dvi2bitmap --output-type="$S_EXT" --magnification=2 --scale=6 --font-mode=nechi --resolution=360 --process=blur,crop,transparent --output="$1.$S_EXT" "$1".dvi; } &> /dev/null;;
 	esac;
     fi
 
@@ -76,7 +76,7 @@ nErr() {
     echo "$strErr" >"$strFile"
     nCleanUp "$2"
 
-    { "$D_LAT"latex "$strFile" --interaction=batchmode && "$D_DVI"dvi2bitmap --output-type="$S_EXT" --magnification=2 --scale=6 --font-mode=nechi --resolution=360 --process=blur,crop,transparent --output="$strFile.$S_EXT" "$strFile".dvi; } &> /dev/null
+    { latex "$strFile" --interaction=batchmode && "$D_DVI"dvi2bitmap --output-type="$S_EXT" --magnification=2 --scale=6 --font-mode=nechi --resolution=360 --process=blur,crop,transparent --output="$strFile.$S_EXT" "$strFile".dvi; } &> /dev/null
     nCleanUp "$strFile"
     echo "$S_T_FIL$S_REL$strFile.$S_EXT $S_T_CLA$S_CLA"
     exit

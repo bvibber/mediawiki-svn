@@ -1,5 +1,9 @@
 2004-09-06  Peter Danenberg  <danenberg at mitdasein dot com>
 
+	* README: clarified acquisition
+
+	* wikitex.php: added PHP4 constructor
+
 	* wikitex.php: updated parse code to phase3 standards;
 	WikiTeX now parses like pseudo-XML: <math></math>,
 	<chem></chem>, etc.
