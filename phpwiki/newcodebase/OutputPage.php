@@ -183,6 +183,10 @@ class OutputPage {
 		}
 		if ( "*" == $bestset ) { $bestset = "iso-8859-1"; }
 		$wgOutputEncoding = strtolower( $bestset );
+
+# Disable for now
+#
+		$wgOutputEncoding = $wgInputEncoding;
 	}
 
 	function reportTime()
