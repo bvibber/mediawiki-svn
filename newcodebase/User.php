@@ -257,6 +257,12 @@ class User {
 		return $this->mRights;
 	}
 
+	function isSysop()
+	{
+		$this->loadFromDatabase();
+		return in_array( "sysop", $this->mRights );
+	}
+
 	function &getSkin()
 	{
 		if ( ! isset( $this->mSkin ) ) {

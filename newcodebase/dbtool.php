@@ -15,14 +15,13 @@ $wgOldDBuser	= "wikiadmin";
 
 # Convert old (May 2002) database format.
 #
-convertUserTable();
-convertCurTable();
-convertOldTable();
+# convertUserTable();
+# convertCurTable();
+# convertOldTable();
 
 # Maintenance tasks.
 #
-rebuildLinkTables();
-
+# rebuildLinkTables();
 
 print "Done.\n";
 exit();
@@ -39,16 +38,16 @@ function convertUserTable()
 	$oldconn = getOldDB();
 	$sql = "SELECT user_id,user_name,user_rights,user_password," .
 	  "user_email,user_options,user_watch FROM user";
-	$oldres = mysql_query( $sql, $oldconn );
+	$oldres = dbQuery( $sql, $oldconn );
 	if ( ! $oldres ) $oldres = dbErr( $sql, "old" );
 
 	$newconn = getNewDB();
 	$sql = "DELETE FROM user";
-	$newres = mysql_query( $sql, $newconn );
+	$newres = dbQuery( $sql, $newconn );
 	if ( ! $newres ) $newres = dbErr( $sql );
 
 	$sql = "LOCK TABLES user WRITE";
-	$newres = mysql_query( $sql, $newconn );
+	$newres = dbQuery( $sql, $newconn );
 	if ( ! $newres ) $newres = dbErr( $sql );
 
 	$sql = "";
@@ -56,7 +55,7 @@ function convertUserTable()
 		if ( 0 == ( $count % 10 ) ) {
 			if ( 0 != $count ) {
 				$newconn = getNewDB();
-				$newres = mysql_query( $sql, $newconn );
+				$newres = dbQuery( $sql, $newconn );
 				if ( ! $newres ) $newres = dbErr( $sql );
 			}
 			$sql = "INSERT INTO user (user_id,user_name,user_rights," .
@@ -81,15 +80,15 @@ function convertUserTable()
 	}
 	if ( $sql ) {
 		$newconn = getNewDB();
-		$newres = mysql_query( $sql, $newconn );
+		$newres = dbQuery( $sql, $newconn );
 		if ( ! $newres ) $newres = dbErr( $sql );
 	}
 	print "$count records processed.\n";
 	mysql_free_result( $oldres );
 
 	$newconn = getNewDB();
-	$sql = "UNLOCK TABLES user";
-	$newres = mysql_query( $sql, $newconn );
+	$sql = "UNLOCK TABLES";
+	$newres = dbQuery( $sql, $newconn );
 	if ( ! $newres ) $newres = dbErr( $sql );
 }
 
@@ -104,16 +103,16 @@ function convertCurTable()
 	$sql = "SELECT cur_id,cur_title,cur_text,cur_comment,cur_user," .
 	  "cur_timestamp,cur_minor_edit,cur_restrictions," .
 	  "cur_counter,cur_ind_title,cur_user_text FROM cur";
-	$oldres = mysql_query( $sql, $oldconn );
+	$oldres = dbQuery( $sql, $oldconn );
 	if ( ! $oldres ) $oldres = dbErr( $sql, "old" );
 
 	$newconn = getNewDB();
 	$sql = "DELETE FROM cur";
-	$newres = mysql_query( $sql, $newconn );
+	$newres = dbQuery( $sql, $newconn );
 	if ( ! $newres ) $newres = dbErr( $sql );
 
 	$sql = "LOCK TABLES cur WRITE";
-	$newres = mysql_query( $sql, $newconn );
+	$newres = dbQuery( $sql, $newconn );
 	if ( ! $newres ) $newres = dbErr( $sql );
 
 	$sql = "";
@@ -121,7 +120,7 @@ function convertCurTable()
 		if ( 0 == ( $count % 10 ) ) {
 			if ( 0 != $count ) {
 				$newconn = getNewDB();
-				$newres = mysql_query( $sql, $newconn );
+				$newres = dbQuery( $sql, $newconn );
 				if ( ! $newres ) $newres = dbErr( $sql );
 			}
 			$sql = "INSERT INTO cur (cur_id,cur_namespace," .
@@ -144,9 +143,11 @@ function convertCurTable()
 			$ns = "Wikipedia";
 			$t .= " log";
 		}
+		$text = convertImageLinks( $row->cur_text );
+
 		$namespace = Namespace::getIndex( $ns );
 		$title = wfStrencode( $t );
-		$text = wfStrencode( $row->cur_text );
+		$text = wfStrencode( $text );
 		$com = wfStrencode( $row->cur_comment );
 		$cr = wfStrencode( $row->cur_restrictions );
 		$cit = wfStrencode( $row->cur_ind_title );
@@ -172,15 +173,15 @@ function convertCurTable()
 	}
 	if ( $sql ) {
 		$newconn = getNewDB();
-		$newres = mysql_query( $sql, $newconn );
+		$newres = dbQuery( $sql, $newconn );
 		if ( ! $newres ) $newres = dbErr( $sql );
 	}
 	print "$count records processed.\n";
 	mysql_free_result( $oldres );
 
 	$newconn = getNewDB();
-	$sql = "UNLOCK TABLES cur";
-	$newres = mysql_query( $sql, $newconn );
+	$sql = "UNLOCK TABLES";
+	$newres = dbQuery( $sql, $newconn );
 	if ( ! $newres ) $newres = dbErr( $sql );
 }
 
@@ -194,16 +195,16 @@ function convertOldTable()
 	$oldconn = getOldDB();
 	$sql = "SELECT old_id,old_title,old_text,old_comment,old_user," .
 	  "old_timestamp,old_minor_edit,old_user_text FROM old";
-	$oldres = mysql_query( $sql, $oldconn );
+	$oldres = dbQuery( $sql, $oldconn );
 	if ( ! $oldres ) $oldres = dbErr( $sql, "old" );
 
 	$newconn = getNewDB();
 	$sql = "DELETE FROM old";
-	$newres = mysql_query( $sql, $newconn );
+	$newres = dbQuery( $sql, $newconn );
 	if ( ! $newres ) $newres = dbErr( $sql );
 
 	$sql = "LOCK TABLES old WRITE";
-	$newres = mysql_query( $sql, $newconn );
+	$newres = dbQuery( $sql, $newconn );
 	if ( ! $newres ) $newres = dbErr( $sql );
 
 	$sql = "";
@@ -211,7 +212,7 @@ function convertOldTable()
 		if ( 0 == ( $count % 10 ) ) {
 			if ( 0 != $count ) {
 				$newconn = getNewDB();
-				$newres = mysql_query( $sql, $newconn );
+				$newres = dbQuery( $sql, $newconn );
 				if ( ! $newres ) $newres = dbErr( $sql );
 			}
 			$sql = "INSERT INTO old (old_id,old_namespace,old_title," .
@@ -231,9 +232,11 @@ function convertOldTable()
 		if ( 0 == strcasecmp( "Log", $ns ) ) {
 			continue;
 		}
+		$text = convertImageLinks( $row->old_text );
+
 		$namespace = Namespace::getIndex( $ns );
 		$title = wfStrencode( $t );
-		$text = wfStrencode( $row->old_text );
+		$text = wfStrencode( $text );
 		$com = wfStrencode( $row->old_comment );
 		$ot = wfStrencode( $row->old_user_text );
 		if ( "" == $ot ) { $ot = "Unknown"; }
@@ -248,16 +251,24 @@ function convertOldTable()
 	}
 	if ( $sql ) {
 		$newconn = getNewDB();
-		$newres = mysql_query( $sql, $newconn );
+		$newres = dbQuery( $sql, $newconn );
 		if ( ! $newres ) $newres = dbErr( $sql );
 	}
 	print "$count records processed.\n";
 	mysql_free_result( $oldres );
 
 	$newconn = getNewDB();
-	$sql = "UNLOCK TABLES old";
-	$newres = mysql_query( $sql, $newconn );
+	$sql = "UNLOCK TABLES";
+	$newres = dbQuery( $sql, $newconn );
 	if ( ! $newres ) $newres = dbErr( $sql );
+}
+
+function convertImageLinks( $text )
+{
+	$text = preg_replace(
+	  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/[a-z]+\/([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
+	  "\\1[[image:\\3.\\4]]", $text );
+	return $text;
 }
 
 # Empty and rebuild the "links" and "brokenlinks" tables.
@@ -274,17 +285,22 @@ function rebuildLinkTables()
 
 	$conn = getNewDB();
 	$sql = "DELETE FROM links";
-	$res = mysql_query( $sql, $conn );
+	$res = dbQuery( $sql, $conn );
 	if ( ! $res ) $res = dbErr( $sql );
 
 	$conn = getNewDB();
 	$sql = "DELETE FROM brokenlinks";
-	$res = mysql_query( $sql, $conn );
+	$res = dbQuery( $sql, $conn );
+	if ( ! $res ) $res = dbErr( $sql );
+
+	$conn = getNewDB();
+	$sql = "DELETE FROM imagelinks";
+	$res = dbQuery( $sql, $conn );
 	if ( ! $res ) $res = dbErr( $sql );
 
 	$conn = getNewDB();
 	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_text FROM cur";
-	$res = mysql_query( $sql, $conn );
+	$res = dbQuery( $sql, $conn );
 	if ( ! $res ) $res = dbErr( $sql );
 
 	while ( $row = mysql_fetch_object( $res ) ) {
@@ -313,9 +329,10 @@ function rebuildLinkTables()
 		}
 		if ( "" != $sql ) {
 			$conn = getNewDB();
-			$res2 = mysql_query( $sql, $conn );
+			$res2 = dbQuery( $sql, $conn );
 			if ( ! $res2 ) $res = dbErr( $sql );
 		}
+
 		$sql = "";
 		$a = $wgLinkCache->getBadLinks();
 		if ( 0 != count ( $a ) ) {
@@ -330,7 +347,25 @@ function rebuildLinkTables()
 		}
 		if ( "" != $sql ) {
 			$conn = getNewDB();
-			$res2 = mysql_query( $sql, $conn );
+			$res2 = dbQuery( $sql, $conn );
+			if ( ! $res2 ) $res = dbErr( $sql );
+		}
+
+		$sql = "";
+		$a = $wgLinkCache->getImageLinks();
+		if ( 0 != count ( $a ) ) {
+			$sql = "INSERT INTO imagelinks (il_from,il_to) VALUES ";
+			$first = true;
+			foreach( $a as $iname => $val ) {
+				if ( ! $first ) { $sql .= ","; }
+				$first = false;
+
+				$sql .= "($id,'" . wfStrencode( $iname ) . "')";
+			}
+		}
+		if ( "" != $sql ) {
+			$conn = getNewDB();
+			$res2 = dbQuery( $sql, $conn );
 			if ( ! $res2 ) $res = dbErr( $sql );
 		}
 
@@ -375,6 +410,12 @@ function getNewDB()
 	return $wgDBconnection;
 }
 
+function dbQuery( $sql, $conn )
+{
+	# error_log( "{$sql}\n", 3, "logfile" );
+	return mysql_query( $sql, $conn );
+}
+
 function dbErr( $query, $db = "" )
 {
 	global $wgDBconnection, $wgOldDBconnection;
@@ -395,7 +436,7 @@ function dbErr( $query, $db = "" )
 				unset( $wgDBconnection );
 				$c = getNewDB();
 			}
-			$r = mysql_query( $query, $c );
+			$r = dbQuery( $query, $c );
 			if ( $r ) { return $r; }
 
 			if ( 2006 != mysql_errno() ) break;
@@ -412,6 +453,8 @@ function dbErr( $query, $db = "" )
 
 function getInternalLinks ( $title, $text )
 {
+	global $wgLinkCache, $wgLang;
+
 	$text = preg_replace( "/<\\s*nowiki\\s*>.*<\\/\\s*nowiki\\s*>/i",
 	  "", $text );
 
@@ -429,6 +472,19 @@ function getInternalLinks ( $title, $text )
 			$link = $m[1];
 		} else {
 			continue;
+		}
+		if ( preg_match( "/^([a-z]+):(.*)$$/", $link,  $m ) ) {
+			$pre = strtolower( $m[1] );
+			$suf = $m[2];
+			if ( "image" == $pre ) {
+				$wgLinkCache->addImageLink( $suf );
+				continue;
+			} else {
+				$l = $wgLang->getLanguageName( $pre );
+				if ( "" != $l ) {
+					continue; # Language link
+				}
+			}
 		}
 		$nt = Title::newFromText( $link );
 		$id = $nt->getArticleID(); # To force caching

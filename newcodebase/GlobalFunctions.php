@@ -6,7 +6,7 @@ $wgValidSpecialPages = array( "Userlogin", "Userlogout", "Newpages",
 	"Popularpages", "Wantedpages", "Allpages", "Randompage",
 	"Shortpages", "Longpages", "Listusers", "Watchlist",
 	"Specialpages", "Preferences", "Deletepage", "Movepage",
-	"Protectpage", "Contributions", "Whatlinkshere",
+	"Protectpage", "Contributions", "Whatlinkshere", "Imagelist",
 	"Recentchangeslinked", "Sqldump", "Vote", "Debug" );
 
 $wgSysopSpecialPages = array( "Asksql", "Blockip" );
@@ -19,7 +19,9 @@ $wgFormTextFields = array(
 	"wpName", "wpPassword", "wpName", "wpPassword",
 	"wpRetype", "wpEmail",
 	# Edit form
-	"wpTextbox1", "wpSummary", "wpTextbox2"
+	"wpTextbox1", "wpSummary", "wpTextbox2",
+	# Upload form
+	"wpUploadFile", "wpUploadDescription"
 );
 
 $wgNumberOfArticles = -1; # Unset

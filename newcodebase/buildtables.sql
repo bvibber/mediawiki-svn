@@ -70,6 +70,13 @@ CREATE TABLE brokenlinks (
   INDEX bl_to (bl_to)
 ) TYPE=MyISAM;
 
+CREATE TABLE imagelinks (
+  il_from int(8) unsigned NOT NULL default '0',
+  il_to varchar(255) binary NOT NULL default '',
+  INDEX il_from (il_from),
+  INDEX il_to (il_to)
+) TYPE=MyISAM;
+
 # Site-wide statistics.
 #
 CREATE TABLE site_stats (
@@ -89,5 +96,15 @@ CREATE TABLE ipblocks (
   ipb_reason blob default '',
   INDEX ipb_address (ipb_address),
   INDEX ipb_user (ipb_user)
+) TYPE=MyISAM PACK_KEYS=1;
+
+CREATE TABLE image (
+  img_name varchar(40) binary NOT NULL,
+  img_size int(8) unsigned default '0',
+  img_description tinyblob,
+  img_user int(5) unsigned default '0',
+  img_user_text varchar(40) binary NOT NULL,
+  img_timestamp char(14) binary NOT NULL default '',
+  UNIQUE KEY img_name (img_name(8))
 ) TYPE=MyISAM PACK_KEYS=1;
 

@@ -8,6 +8,7 @@ $wgStyleSheetPath   = "$wgServer/style";
 $wgScript           = "/wiki/wiki.phtml";
 $wgArticlePath      = "$wgServer$wgScript?title=$1";
 $wgUploadPath       = "/upload";
+$wgUploadDirectory	= "/var/www/html/upload";
 
 # MySQL settings
 #

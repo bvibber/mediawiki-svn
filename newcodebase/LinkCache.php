@@ -4,12 +4,14 @@
 class LinkCache {
 
 	/* private */ var $mGoodLinks, $mBadLinks, $mActive;
+	/* private */ var $mImageLinks;
 
 	function LinkCache()
 	{
 		$this->mActive = true;
 		$this->mGoodLinks = array();
 		$this->mBadLinks = array();
+		$this->mImageLinks = array();
 	}
 
 	function getGoodLinkID( $title )
@@ -40,6 +42,13 @@ class LinkCache {
 		}
 	}
 
+	function addImageLink( $title )
+	{
+		if ( $this->mActive ) {
+			$this->mImageLinks[$title] = 1;
+		}
+	}
+
 	function clearBadLink( $title )
 	{
 		$index = array_search( $title, $this->mBadLinks );
@@ -52,6 +61,7 @@ class LinkCache {
 	function resume() { $this->mActive = true; }
 	function getGoodLinks() { return $this->mGoodLinks; }
 	function getBadLinks() { return $this->mBadLinks; }
+	function getImageLinks() { return $this->mImageLinks; }
 
 	function addLink( $title )
 	{

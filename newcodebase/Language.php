@@ -131,7 +131,6 @@ that it be to the address you give.<br>\n",
 "youremail"		=> "Your e-mail",
 "yournick"		=> "Your nickname (for signatures)",
 "emailforlost"	=> "If you forget your password, you can have a new one mailed to your e-mail address.",
-
 "loginerror"	=> "Login error",
 "noname"		=> "You must specify a user name.",
 "loginsuccesstitle" => "Login successful",
@@ -141,12 +140,10 @@ Check your spelling, or use the form below to create a new user account.",
 "wrongpassword"	=> "The password you entered is incorrect. Please try again.",
 "mailmypassword" => "Mail me a new password",
 "passwordremindertitle" => "Password reminder from Wikipedia",
-
 "passwordremindertext" => "Someone (probably you, from IP address $1)
 requested that we send you a new Wikipedia login password.
 The password for user \"$2\" is now \"$3\".
 You should log in and change your password now.",
-
 "noemail"		=> "There is no e-mail address recorded for user \"$1\".",
 "passwordsent"	=> "A new password has been sent to the e-mail address
 registered for \"$1\".
@@ -189,8 +186,7 @@ If you save it, any changes made since this revision will be lost.</strong>\n",
 "revhistory"	=> "Revision history",
 "nohistory"		=> "There is no edit history for this page.",
 "revnotfound"	=> "Revision not found",
-"revnotfoundtext" => "The old revision of the page you asked for could
-not be found.
+"revnotfoundtext" => "The old revision of the page you asked for could not be found.
 Please check the URL you used to access this page.\n",
 "loadhist"		=> "Loading article history",
 "currentrev"	=> "Current revision",
@@ -216,7 +212,6 @@ Please check the URL you used to access this page.\n",
   wfLocalLink( "Special:Userlogin" ) . "\">logged in</a>
 to set user preferences.",
 "prefsreset"	=> "Preferences have been reset from storage.",
-
 "qbsettings"	=> "Quickbar settings", 
 "changepassword" => "Change password",
 "skin"			=> "Skin",
@@ -260,6 +255,48 @@ See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges r
 # Upload
 #
 "upload"		=> "Upload",
+"reupload"		=> "Re-upload",
+"reuploaddesc"	=> "Return to the upload form.",
+"uploadfile"	=> "Upload file",
+"uploaderror"	=> "Upload error",
+"uploadtext"	=> "Use the form below to upload image files for
+use in illustrating your articles.
+On most browsers, you will see a \"Browse...\" button, which will
+bring up your operating system's standard file open dialog.
+Choosing a file will fill the name of that file into the text
+field next to the button.
+You must also check the box affirming that you are not
+violating any copyrights by uploading the file.
+Press the \"Upload\" button to finish the upload.
+This may take some time if you have a slow internet connection.
+<p> The preferred formats are JPEG for photographic images and PNG
+for drawings and other iconic images.
+To include the image in an article, use a link in the form
+<b>[[image:file.jpg]]</b> or <b>[[image:file.png|alt text]]</b>.",
+"uploadlog"		=> "upload log",
+"uploadlogtext" => "Uploads and deletions are logged on the $1",
+"filename"		=> "Filename",
+"filedesc"		=> "Description",
+"affirmation"	=> "I affirm that the copyright holder of this file
+agrees to license it under the terms of the $1.",
+"copyrightpage" => "Wikipedia:Copyrights",
+"copyrightpagename" => "Wikipedia copyright",
+"uploadedfiles"	=> "Uploaded files",
+"noaffirmation" => "You must affirm that your upload does not violate
+any copyrights.",
+"ignorewarning"	=> "Ignore warning and save file anyway.",
+"minlength"		=> "Image names must be at least three letters.",
+"badfilename"	=> "Image name has been changed to \"$1\".",
+"badfiletype"	=> "\".$1\" is not a recommended image file format.",
+"largefile"		=> "It is recommended that images not exceed 100k in size.",
+"successfulupload" => "Successful upload",
+"fileuploaded"	=> "File \"$1\" uploaded successfully.",
+"uploadwarning" => "Upload warning",
+"savefile"		=> "Save file",
+
+# Image list
+#
+"imagelist"	=> "Image list",
 
 # Statistics
 #

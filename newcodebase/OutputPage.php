@@ -302,6 +302,7 @@ class OutputPage {
 	/* private */ function replaceInternalLinks( $s )
 	{
 		global $wgTitle, $wgUser, $wgServer, $wgUploadPath, $wgLang;
+		global $wgLinkCache;
 
 		$tc = "[&;%\\-,.\\(\\)' _0-9A-Za-z\\/:\\x80-\\xff]";
 		$sk = $wgUser->getSkin();
@@ -332,8 +333,16 @@ class OutputPage {
 				$pre = strtolower( $m[1] );
 				$suf = $m[2];
 				if ( "image" == $pre ) {
-					$s .= $sk->makeImageLink( "$wgServer$wgUploadPath/"	.
-					  $suf, $text );
+					#
+					# Temp workaround: get images from wikipedia.com
+					# rather than from local server
+					#
+					# $s .= $sk->makeImageLink( "$wgServer$wgUploadPath/" .
+					#  $suf, $text );
+
+					$wgLinkCache->addImageLink( $suf );
+					$s .= $sk->makeImageLink(
+					  "http://www.wikipedia.com/upload/{$suf}", $text );
 					$s .= $trail;
 				} else {
 					$l = $wgLang->getLanguageName( $pre );
@@ -518,6 +527,12 @@ class OutputPage {
 		while ( $npl ) {
 			$text .= $this->closeList( $pref2{$npl-1} );
 			--$npl;
+		}
+		if ( "" != $this->mLastSection ) {
+			if ( "p" != $this->mLastSection ) {
+				$text .= "</" . $this->mLastSection . ">";
+			}
+			$this->mLastSection = "";
 		}
 		return $text;
 	}
