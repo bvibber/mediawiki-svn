@@ -242,7 +242,8 @@
 
 /* private */ $wgSysopSpecialPagesEn = array(
 	"Blockip"		=> "Block an IP address",
-	"Asksql"		=> "Query the database"
+	"Asksql"		=> "Query the database",
+	"Undelete"		=> "View and restore deleted pages"
 );
 
 /* private */ $wgDeveloperSpecialPagesEn = array(
@@ -790,6 +791,21 @@ All times shown are server time (UTC).
 "reverted"		=> "Reverted to earlier revision",
 "deletecomment"	=> "Reason for deletion",
 "imagereverted" => "Revert to earlier version was successful.",
+"undelete" => "Restore deleted page",
+"undeletepage" => "View and restore deleted pages",
+"undeletepagetext" => "The following pages have been deleted but are still in the archive and
+can be restored. The archive may be periodically cleaned out.",
+"undeletearticle" => "Restore deleted article",
+"undeleterevisions" => "$1 revisions archived",
+"undeletehistory" => "If you restore the page, all revisions will be restored to the history.
+If a new page with the same name has been created since the deletion, the restored
+revisions will appear in the prior history, and the current revision of the live page
+will not be automatically replaced.",
+"undeleterevision" => "Deleted revision as of $1",
+"undeletebtn" => "Restore!",
+"undeletedarticle" => "restored \"$1\"",
+"undeletedtext"   => "The article [[$1]] has been successfully restored.
+See [[Wikipedia:Deletion_log]] for a record of recent deletions and restorations.",
 
 # Contributions
 #
