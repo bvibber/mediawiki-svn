@@ -970,7 +970,7 @@ class WikiPage extends WikiTitle {
     # This generates the bar at the top and bottom of each page
     # Used by getHeader() and getFooter()
     function getLinkBar () {
-        global $wikiMainPage ;
+        global $wikiMainPage , $THESCRIPT ;
         global $user , $oldID , $version ;
         $editOldVersion = "" ;
         if ( $oldID != "" ) $editOldVersion="&amp;oldID=$oldID&amp;version=$version" ;
@@ -989,9 +989,9 @@ class WikiPage extends WikiTitle {
         global $wikiRecentChanges , $wikiRecentChangesLink , $wikiEditThisPage , $wikiHistory , $wikiRandomPage , $wikiSpecialPages ;
         global $wikiSpecialPagesLink ;
         $ret .= " | <a href=\"".wikiLink("special:$wikiRecentChangesLink")."\">$wikiRecentChanges</a>" ;
-        if ( $this->canEdit() ) $ret .= " | <a href=\"".wikiLink($this->url."$editOldVersion&amp;action=edit")."\">$wikiEditThisPage</a>" ;
+        if ( $this->canEdit() ) $ret .= " | <a href=\"$THESCRIPT?title=$this->url$editOldVersion&amp;action=edit\">$wikiEditThisPage</a>" ;
         else if ( !$this->isSpecialPage ) $ret .= " | Protected page" ;
-        if ( !$this->isSpecialPage ) $ret .= " | <a href=\"".wikiLink($this->url."&amp;action=history")."\">$wikiHistory</a>\n" ;
+        if ( !$this->isSpecialPage ) $ret .= " | <a href=\"$THESCRIPT?title=$this->url&amp;action=history\">$wikiHistory</a>\n" ;
         $ret .= " | <a href=\"".wikiLink("special:RandomPage")."\">$wikiRandomPage</a>" ;
         $ret .= " | <a href=\"".wikiLink("special:$wikiSpecialPagesLink")."\">$wikiSpecialPages</a>" ;
         return $ret ;
