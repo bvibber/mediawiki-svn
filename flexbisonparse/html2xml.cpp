@@ -89,19 +89,20 @@ string html2xml_tag::get_string ( bool convert_to_wiki )
 	if ( is_tag )
 		{
 		bool done = false ;
-		if ( convert_to_wiki && !is_self_closed )
+		if ( convert_to_wiki && !is_self_closed ) // Trying to replace the HTML with wiki code
 			{
 			if ( tag_name == "b" ) { ret = "'''" ; done = true ; }
 			else if ( tag_name == "i" ) { ret = "''" ; done = true ; }
 			else if ( tag_name == "table" )
 				{
 				if ( is_close_tag ) ret = "\n|}\n" ;
-				else ret = "\n{" + text + "|\n" ;
+				else ret = "\n{|" + text + "\n" ;
 				done = true ;
 				}
 			else if ( tag_name == "caption" )
 				{
 				if ( !is_close_tag ) ret = "\n|" + text + "+" ;
+				else ret = "\n" ;
 				done = true ;
 				}
 			else if ( tag_name == "tr" )
@@ -116,6 +117,7 @@ string html2xml_tag::get_string ( bool convert_to_wiki )
 					ret = "\n|" ;
 					if ( text != "" ) ret += text + "|" ;
 					}
+				else ret = "\n" ;
 				done = true ;
 				}
 			else if ( tag_name == "th" )
@@ -125,6 +127,7 @@ string html2xml_tag::get_string ( bool convert_to_wiki )
 					ret = "\n!" ;
 					if ( text != "" ) ret += text + "|" ;
 					}
+				else ret = "\n" ;
 				done = true ;
 				}
 			}
@@ -540,7 +543,7 @@ void html2xml::close_tag ( int &a )
 		stack.pop_back() ;
 		si.pop_back () ;
 		}
-	else try_closing ( a , 3 ) ; // Experimental, try closing down three levels
+//	else try_closing ( a , 3 ) ; // Experimental, try closing down three levels
 	}
 
 void html2xml::to_xml ()
@@ -560,9 +563,11 @@ void html2xml::to_xml ()
 			}
 		else // This is plain text, might need some tagging though
 			{
+/*
 			if ( stack_top() == "table" ) insert_tag ( a-- , "tr" ) ;
 			else if ( stack_top() == "tr" ) insert_tag ( a-- , "td" ) ;
 			else if ( in_tag_list ( stack_top() , list_tags ) ) insert_tag ( a-- , "li" ) ;
+*/
 			}
 		if ( a+1 == parts.size() && stack.size() > 0 ) // Need to close remaining tags
 			add_close_tag () ;
@@ -580,6 +585,12 @@ string get_xml ( const string &s )
 	return hx.get_string ( true ) ;
 	}
 
+const char *get_xml ( const char *s )
+	{
+	string t = get_xml ( string ( s ) ) ;
+	return t.c_str() ;
+	}
+	
 // Testing with random strings
 void test ()
 	{

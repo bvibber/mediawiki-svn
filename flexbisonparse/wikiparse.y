@@ -631,6 +631,7 @@ comment         :   BEGINCOMMENT text ENDCOMMENT
 int main() {
     int result;
 //    printf ("Parsing... ");
+
     result = yyparse();
     if (!result) printf ( outputXML (articlenode, 1024) ) ;
 //        printf ("\n\nXML output:\n\n%s\n\n", outputXML (articlenode, 1024));

@@ -2,6 +2,7 @@
 
 php_wikiparse.so : lex.yy.c wikiparse.tab.c parsetree.c parsetree.h
 	gcc -o wikiparse wikiparse.tab.c parsetree.c lex.yy.c
+	g++ -o html2xml html2xml.cpp
 
 lex.yy.c : wikilex.l
 	flex wikilex.l
