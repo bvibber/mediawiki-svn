@@ -14,7 +14,7 @@ $wikiCharset = "iso-8859-1" ;
 $wikiMainPage = "Main Page" ; # This is actual the title of the article in the database
 $wikiErrorPageTitle = "Yikes! An error!" ;
 $wikiErrorMessage = "<h2>$1!</h2>Return to the [[:Main Page|Main Page]]!" ;
-$wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","deletepage","protectpage","contributions","whatlinkshere");
+$wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","deletepage","protectpage","contributions","whatlinkshere");
 $wikiRecentChangesText = "Track the most recent changes to Wikipedia on this page. [[Welcome, newcomers]]! Please have a look at these pages: [[Wikipedia FAQ]], [[Wikipedia policy]] (especially [[naming conventions]] and [[neutral point of view]]), and [[most common Wikipedia faux pas]].<br>If you want to see the Wikipedia succeed, it's very important that you don't add material restricted by others' [[copyright]]s. The legal liability could really hurt the project, so please don't do it.<br>See also the [http://meta.wikipedia.com/wiki.phtml?title=special:RecentChanges recent meta discussion]" ;
 $wikiMetaDescription = "$1... Read more here at wikipedia, the free encyclopedia!" ;
 
@@ -323,8 +323,10 @@ $wikiLinkhereNoBacklink = "These articles are ''not'' linked back from [[$1]]:" 
 $wikiBacklinkNolink = "There are no articles that link to [[$1]]!" ;
 $wikiBacklinkFollowing = "The following articles link to [[$1]]:" ;
 $wikiWantedText = "'''These articles don't exist, but other articles link to them!''' (the top 50)<br>\n" ;
+$wikiWantedToggleNumbers = "Click here to toggle the display of page titles starting with numbers (currently $1)" ;
 $wikiWantedLine = "$1 is wanted by <b>$2</b> articles (see the <a href=\"$3\">pages that link to \"$4\"</a>)" ;
 $wikiLastChange = "Last edited $1" ;
+$wikiPopularPages = "Most popular" ;
 
 #---------------------------
 #Functions
