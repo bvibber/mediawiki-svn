@@ -445,7 +445,7 @@ Alle Zeiten sind U.S.-Westküste.
 diese alte Version, (Zurücksetzen) = verwende wieder diese alte Version.",
 "imagelinks"	=> "Bildverweise",
 "linkstoimage"	=> "Die folgenden Artikel benutzen dieses Bild:",
-"nolinkstoimage" => "Kein Artikel benutzt diese Bild.",
+"nolinkstoimage" => "Kein Artikel benutzt dieses Bild.",
 
 # Statistics
 #
