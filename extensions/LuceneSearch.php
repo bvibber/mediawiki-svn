@@ -54,7 +54,7 @@ class LuceneSearch extends SpecialPage
 		
 	function execute($par) {
 		global $wgRequest, $wgOut, $wgTitle, $wgContLang, $wgUser,
-			$wgLuceneCSSPath, $wgLSuseold, $wgOutputEncoding,
+			$wgLuceneCSSPath, $wgLSuseold, $wgInputEncoding,
 			$wgLuceneDisableTitleMatches, $wgLuceneDisableSuggestions,
 			$wgUser;
 		global $wgGoToEdit;
@@ -85,7 +85,7 @@ class LuceneSearch extends SpecialPage
 			$limit = $wgRequest->getInt("limit");
 			if ($limit < 1 || $limit > 50)
 				$limit = 20;
-			header("Content-Type: text/plain; charset=$wgOutputEncoding");
+			header("Content-Type: text/plain; charset=$wgInputEncoding");
 			if (strlen($q) < 1)
 				wfAbruptExit();
 
@@ -168,7 +168,6 @@ class LuceneSearch extends SpecialPage
 			$wgOut->setSubtitle(wfMsg('searchquery', htmlspecialchars($q)));
 
 
-			#$suggestion = trim($results);
 			if (is_string( $results ) ) {
 				$suggestion = trim( $results );
 			}
@@ -346,108 +345,150 @@ class LuceneSearch extends SpecialPage
 		return $text;
 	}
 
-	function doTitlePrefixSearch($query, $limit) {
-		global $wgLuceneHost, $wgLucenePort;
-		global $wgOutputEncoding;
-		
-		wfDebug("title prefix search: $query\n");
-		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-		@$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
-		if ($conn === FALSE)
-			return null;
-		$query = iconv($wgOutputEncoding, "UTF-8", $query);
-		@socket_write($sock, $wgDBname . "\n");
-		@socket_write($sock, "TITLEPREFIX\n" . urlencode($query) . "\n");
-		$results = array();
-		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE
-                       && count($results) <= $limit) {
-			$result = chop($result);
-			$result = iconv("UTF-8", $wgOutputEncoding, $result);
-			wfdebug("result: $result\n");
-			list($score, $namespace, $title) = split(" ", $result);
-			if (!in_array($namespace, $this->namespaces)) {
-				continue;
+	/**
+	 * Read an input line from a socket and convert it to local encoding.
+	 * Trailing newline is trimmed.
+	 * Will return FALSE if no more data or I/O error.
+	 *
+	 * @param resource $sock
+	 * @return string
+	 * @access private
+	 */
+	function inputLine( $sock ) {
+		$result = @socket_read( $sock, 1024, PHP_NORMAL_READ );
+		if( $result ) {
+			global $wgInputEncoding;
+			$result = chop( $result ); # Trim newline
+			if( $wgInputEncoding != 'utf-8' ) {
+				global $wgContLang;
+				$result = $wgContLang->iconv( 'utf-8', $wgInputEncoding, $result );
 			}
-			$fulltitle = Title::makeTitle($namespace, $title);
-			if ($fulltitle === null) {
-				continue;
-			}
-			$results[] = $fulltitle;
 		}
+		return $result;
+	}
+
+	/**
+	 * Read an input line from a socket and return a score & title pair.
+	 * Will return FALSE if no more data or I/O error.
+	 *
+	 * @param resource $sock
+	 * @return array (float, Title)
+	 * @access private
+	 */
+	function readResult( $sock ) {
+		$result = @socket_read( $sock, 1024, PHP_NORMAL_READ );
+		if( !$result ) {
+			return false;
+		}
+		$result = chop( $result ); # Trim newline
+		list( $score, $namespace, $title ) = split( ' ', $result );
+		
+		$score = FloatVal( $score );
+		$namespace = IntVal( $namespace );
+		$title = urldecode( $title );
+		
+		global $wgInputEncoding;
+		if( $wgInputEncoding != 'utf-8' ) {
+			global $wgContLang;
+			$title = $wgContLang->iconv( 'utf-8', $wgInputEncoding, $title );
+		}
+		
+		$fulltitle = Title::makeTitle( $namespace, $title );
+		return array( $score, $fulltitle );
+	}
+	
+	/**
+	 * Write given lines of text out to a socket.
+	 * Text is converted to UTF-8 if internal encoding is different,
+	 * URL-encoded, and a newline is automatically appended.
+	 *
+	 * @param resource $sock
+	 * @param array $lines
+	 * @return int Number of bytes written
+	 * @access private
+	 */
+	function sendLines( $sock, $lines ) {
+		global $wgInputEncoding;
+		if( $wgInputEncoding != 'utf-8' ) {
+			global $wgContLang;
+			foreach( $lines as $i => $text ) {
+				$lines[$i] = $wgContLang->iconv( $wgInputEncoding, 'utf-8', $text );
+			}
+		}
+		return socket_write( $sock,
+			implode( "\n",
+				array_map( 'urlencode',
+					$lines ) )
+			. "\n" );
+	}
+	
+	/**
+	 * @param string $method The protocol verb to use
+	 * @param string $query
+	 * @param int $limit
+	 * @return array
+	 * @access private
+	 */
+	function queryLuceneServer( $method, $query, $limit = 65536 ) {
+		global $wgLuceneHost, $wgLucenePort, $wgDBname;
+		$sock = socket_create( AF_INET, SOCK_STREAM, SOL_TCP );
+		@$conn = socket_connect( $sock, $wgLuceneHost, $wgLucenePort );
+		if( $conn === false ) {
+			return false;
+		}
+		$this->sendLines( $sock, array(
+			$wgDBname,
+			$method,
+			$query ) );
+		
+		if( $method == 'SEARCH' ) {
+			# This method outputs a summary line first.
+			$numresults = $this->inputLine( $sock );
+			if( $numresults === false ) {
+				# I/O error? this shouldn't happen
+				wfDebug( "Couldn't read summary line...\n" );
+				return array( 0, array() );
+			}
+			$numresults = IntVal( $numresults );
+			wfDebug("total [$numresults] hits\n");
+			if( $numresults == 0 ) {
+				# No results, but we got a suggestion...
+				$suggestion = urldecode( $this->inputLine( $sock ) );
+				wfdebug("no results; suggest: [$suggestion]\n");
+				return array( -1, $suggestion );
+			}
+		} else {
+			$numresults = null;
+		}
+		
+		$results = array();
+		while( ( $result = $this->readResult( $sock ) ) !== false
+				&& count( $results ) < $limit ) {
+			
+			if( !in_array( $result[1]->getNamespace(), $this->namespaces ) ) {
+				continue;
+			}
+			if( $method == 'SEARCH' ) { # quick hack
+				$results[] = $result;
+			} else {
+				$results[] = $result[1];
+			}
+		}
+		return array( $numresults, $results );
+	}
+	
+	function doTitlePrefixSearch($query, $limit) {
+		list( $numresults, $results ) = $this->queryLuceneServer( 'TITLEPREFIX', $query, $limit );
 		return $results;
 	}
 
 	function doTitleMatches($query) {
-		global $wgLuceneHost, $wgLucenePort;
-		global $wgOutputEncoding;
-		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-		$conn = @socket_connect($sock, $wgLuceneHost, $wgLucenePort);
-		$query = iconv($wgOutputEncoding, "UTF-8", $query);
-		@@socket_write($sock, $wgDBname . "\n");
-		@socket_write($sock, "TITLEMATCH\n" . urlencode($query) . "\n");
-		$results = array();
-		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE) {
-			$result = chop($result);
-			$result = iconv("UTF-8", $wgOutputEncoding, $result);
-			list($score, $namespace, $title) = split(" ", $result);
-			if (!in_array($namespace, $this->namespaces)) {
-				continue;
-			}
-			$fulltitle = Title::makeTitle($namespace, $title);
-			if ($fulltitle === null) {
-				continue;
-			}
-			$results[] = $fulltitle;
-		}
+		list( $numresults, $results ) = $this->queryLuceneServer( 'TITLEMATCH', $query, 10 );
 		return $results;
 	}
 
 	function doLuceneSearch($query, $max) {
-		global $wgLuceneHost, $wgLucenePort, $wgDBname;
-		global $wgOutputEncoding;
-		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-		@$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
-		if ($conn === FALSE)
-			return null;
-		$query = iconv($wgOutputEncoding, "UTF-8", $query);
-		if (@socket_write($sock, $wgDBname . "\n") === FALSE ||
-                    @socket_write($sock, "SEARCH\n" . urlencode($query) . "\n") === FALSE)
-			return null;
-		$results = array();
-
-		$numresults = @socket_read($sock, 1024, PHP_NORMAL_READ);
-		wfDebug("total [$numresults] hits\n");
-		if ($numresults === FALSE) {
-			return array( 0, array() );
-		}
-		$numresults = IntVal($numresults);
-
-		if ($numresults == 0) {
-			$suggestion = @socket_read($sock, 1024, PHP_NORMAL_READ);
-			wfdebug("no results; suggest: [$suggestion]\n");
-			return array(-1, urldecode($suggestion));
-		}
-
-		while( ($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE
-		        && count( $results ) <= $max ) {
-			wfDebug( $result );
-			$result = chop($result);
-			$result = iconv("UTF-8", $wgOutputEncoding, $result);
-			list($score, $namespace, $title) = split(" ", $result);
-			wfdebug("result: $namespace $title\n");
-			if (!in_array($namespace, $this->namespaces)) {
-				--$numresults;
-				continue;
-			}
-			$fulltitle = Title::makeTitle($namespace, $title);
-			if ($fulltitle === null) {
-				wfDebug("broken link: $namespace $title");
-				continue;
-			}
-			$results[] = array($score, $fulltitle);
-		}
-		socket_close($sock);
-		return array($numresults, $results);
+		return $this->queryLuceneServer( 'SEARCH', $query, $max );
 	}
 
 	function showShortDialog($term) {
