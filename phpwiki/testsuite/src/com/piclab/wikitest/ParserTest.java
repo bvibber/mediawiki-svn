@@ -132,13 +132,12 @@ private int part3() throws Exception {
 	  "\\(11\\) normal <em>italic's</em> normal",
 	  "\\(12\\) normal <em>italic's <strong>bold's italic</strong> italic's</em> normal",
 	  "\\(13\\) normal <strong><em>bold's italic</em> bold's</strong> normal",
-	/*  "\\(14\\) normal <em>italic</em>' normal",
-	  "\\(15\\) normal '<strong>bold</strong> normal",
+	/*"\\(14\\) normal <em>italic</em>' normal", */
+	/*"\\(15\\) normal '<strong>bold</strong> normal", */
 	  "\\(16\\) normal <em>italic</em> normal <em>italic</em> normal",
 	  "\\(17\\) normal <em>italic</em> normal <strong>bold</strong> normal",
 	  "\\(18\\) normal <strong>bold</strong> normal <strong>bold</strong> normal",
 	  "\\(19\\) normal <strong>bold</strong> normal <em>italic</em> normal"
-	*/
 	};
 
 	WebResponse wr = m_suite.viewPage( "Quotes" );
@@ -261,6 +260,14 @@ private int part5() throws Exception {
  */
 private int part6() throws Exception {
 	String[] pats = {
+	  "<h2>\\s*AAA 2\\s*</h2>", "<h3>\\s*BBB 3\\s*</h3>",
+	  "<h2>\\s*CCC 2\\s*</h2>", "<h3>\\s*DDD 3\\s*</h3>",
+	  "<h4>\\s*FFF 4\\s*</h4>", "<h3>\\s*GGG 3\\s*</h3>\\s*Extra",
+	/*"<h4>\\s*HHH 4\\s*</h4>\\s*Par", "<h4>\\s*III 4\\s*</h4>\\s*<p>\\s*Par",*/
+	  "\\(1\\)[^(]*---\\s", "\\(2\\)[^(]*[^-]<hr>[^-]", "\\(3\\)[^(]*[^-]<hr>[^-]",
+	  "\\(4\\)[^(]*<hr>\\s*XXX", "<h5>\\s*JJJ 5\\s*</h5>",
+	  "<h6>\\s*KKK 6\\s*</h6>", "<h3>\\s*LLL 3\\s*</h3>",
+	  "<h2>\\s*MMM 2\\s*</h2>"
 	};
 
 	WebResponse wr = m_suite.viewPage( "Headings" );
@@ -284,6 +291,8 @@ private int part6() throws Exception {
  */
 private int part7() throws Exception {
 	String[] pats = {
+	  "\\(1\\)\\s*<a\\s[^>]*Special:Booksources[^>]*1234567890[^>]*>\\s*ISBN 1234567890\\s*</a",
+	/*RFC not implemented*/
 	};
 
 	WebResponse wr = m_suite.viewPage( "Magics" );
