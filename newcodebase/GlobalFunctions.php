@@ -70,21 +70,21 @@ function wfLocalUrl( $a )
 
 function wfImageUrl( $img )
 {
-	global $wgServer, $wgUploadPath;
+	global $wgUploadPath;
 
 	$nt = Title::newFromText( $img );
 	$name = $nt->getDBkey();
 
-	$url = "{$wgServer}{$wgUploadPath}/" . $name{0} . "/" .
+	$url = "{$wgUploadPath}/" . $name{0} . "/" .
 	  substr( $name, 0, 2 ) . "/{$name}";
 	return $url;
 }
 
 function wfImageArchiveUrl( $name )
 {
-	global $wgServer, $wgUploadPath;
+	global $wgUploadPath;
 
-	$url = "{$wgServer}{$wgUploadPath}/archive/" . $name{15} . "/" .
+	$url = "{$wgUploadPath}/archive/" . $name{15} . "/" .
 	  substr( $name, 15, 2 ) . "/{$name}";
 	return $url;
 }

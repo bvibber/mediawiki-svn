@@ -299,11 +299,11 @@ class Skin {
 
 	function bottomLinks()
 	{ 
-		global $wgOut, $wgServer, $wgUploadPath;
+		global $wgOut, $wgUploadPath;
 
 		$s = "<a href=\"http://validator.w3.org/check/referer\">" . 
 		  "<img align=right border=0 height=31 width=88 alt=\"Valid HTML\" " .
-		  "src=\"$wgServer$wgUploadPath/valid-html401.png\"></a>";
+		  "src=\"$wgUploadPath/valid-html401.png\"></a>";
 		$s .= $this->topLinks();
 
 		if ( $wgOut->isArticle() ) {
