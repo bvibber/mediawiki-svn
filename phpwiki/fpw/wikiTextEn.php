@@ -16,7 +16,7 @@ $wikiLowerChars = "abcdefghijklmnopqrstuvwxyzàáâãäåæçèéêëìíîïğñòóôõöøùúûüış";
 $wikiMainPage = "Main Page" ; # This is actual the title of the article in the database
 $wikiErrorPageTitle = "Yikes! An error!" ;
 $wikiErrorMessage = "<h2>$1!</h2>Return to the [[:Main Page|Main Page]]!" ;
-$wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","longpages","listusers","watchlist","special_pages","editusersettings","deletepage","movepage","protectpage","contributions","whatlinkshere","recentchangeslinked","sqldump","vote");
+$wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","longpages","listusers","watchlist","special_pages","editusersettings","deletepage","movepage","protectpage","contributions","whatlinkshere","recentchangeslinked","sqldump","vote","edituser");
 $wikiRecentChangesText = "Track the most recent changes to Wikipedia on this page. [[wikipedia:Welcome, newcomers|Welcome, newcomers]]! Please have a look at these pages: [[wikipedia:FAQ|Wikipedia FAQ]], [[wikipedia:Policies and guidelines|Wikipedia policy]] (especially [[wikipedia:Naming conventions|naming conventions]], [[wikipedia:Neutral point of view|neutral point of view]]), and [[wikipedia:Most common Wikipedia faux pas|most common Wikipedia faux pas]].<br>If you want to see the Wikipedia succeed, it's very important that you don't add material restricted by others' [[wikipedia:Copyrights|copyrights]]. The legal liability could really hurt the project, so please don't do it.<br>See also the [http://meta.wikipedia.com/wiki.phtml?title=special:RecentChanges recent meta discussion]." ;
 $wikiMetaDescription = "$1... Read more here at wikipedia, the free encyclopedia!" ;
 
@@ -314,6 +314,11 @@ $wikiTimeDiff = "Time diff. : $1 hours" ;
 $wikiViewRecentChanges = "See the last $1 changes on ''Recent Changes''" ;
 $wikiOutputEncoding = "Output encoding : ";
 
+# User rights management
+$allowedRoles = array ( "is_sysop" => "System operator" , "is_developer" => "System developer" , "is_trusted" => "Trusted hand" ) ;
+$wikiChangeRights = "Change rights" ;
+$wikiCurrentUserRights = "Current rights of <b>$1</b> :<br>\n" ;
+
 # Search Page
 $wikiSearchTitle = "Search" ;
 $wikiSearchedVoid = "As you were searching for the void, you just found it." ;
@@ -480,6 +485,9 @@ $wikiNostalgy = "Nostalgia" ;
 $wikiCologneBlue = "Cologne Blue" ;
 $wikiUndiff = "undiff" ;
 $wikiReadOnlyText = "Sorry, this is a read-only copy of wikipedia. You can, of course, edit this article at <a href=\"http://www.wikipedia.com/wiki/$1&action=edit\">wikipedia.com</a>!" ;
+$wikiEditUserRights = "Edit user rights" ;
+$wikiPermissionDenied = "Permission denied!" ;
+$wikiEditUserTitle = "Edit user settings" ;
 
 # Vote
 $wikiVoteReason = "Reason to vote : " ;
