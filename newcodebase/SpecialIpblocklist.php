@@ -95,7 +95,7 @@ class IPUnblockForm {
 		while ( $row = wfFetchObject( $res ) ) {
 			$addr = $row->ipb_address;
 			$name = User::whoIs( $row->ipb_by );
-			$ulink = $sk->makeKnownLink( Namespace::getUser() . ":{$name}", $name );
+			$ulink = $sk->makeKnownLink( $wgLang->getNsText( Namespace::getUser() ). ":{$name}", $name );
 			$d = $wgLang->timeanddate( $row->ipb_timestamp, true );
 
 			$line = str_replace( "$1", $d, wfMsg( "blocklistline" ) );
