@@ -291,7 +291,7 @@ function convertImageDirectoriesX()
 
 function convertImageDirectories()
 {
-	global $wgImageDirectory, $wgUploadDirectory;
+	global $wgImageDirectory, $wgMetaImageDirectory, $wgUploadDirectory;
 	$count = 0;
 
 
@@ -329,7 +329,7 @@ function convertImageDirectories()
 		if ( copy( "{$wgImageDirectoryHash}/{$nname}", "{$dest}/{$nname}" )
 		  or copy( "{$wgImageDirectory}/{$oname}", "{$dest}/{$nname}" )
 		  or copy( "{$wgImageDirectory}/".strtolower($oname), "{$dest}/{$nname}" )
-          or copy( "{$wgMetaImageDirectory}/{$oname}", "{$dest}/{$nname}" ) ) {
+          or copy( "{$wgMetaImageDirectory}/{$oname}", "{$dest}/{$nname}" )
           or copy( "{$wgMetaImageDirectory}/".strtolower($oname), "{$dest}/{$nname}" ) ) {
 			++$count;
 
