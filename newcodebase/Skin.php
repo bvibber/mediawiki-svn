@@ -372,7 +372,7 @@ class Skin {
 
 	function quickBar()
 	{
-		global $wgOut, $wgTitle;
+		global $wgOut, $wgTitle, $wgUser;
 
 		$mp = wfMsg( "mainpage" );
 		$s = "\n<div id='quickbar'>";
@@ -385,8 +385,12 @@ class Skin {
 		  . $sep . $this->dateLink() . "\n<hr>";
 
 		if ( $wgOut->isArticle() ) {
-			$s .= $this->editThisPage()
-			  . $sep . $this->talkLink()
+			$s .= $this->editThisPage();
+
+			if ( $wgUser->isSysop() ) {
+				$s .= $sep . $this->deleteThisPage();
+			}
+			$s .= $sep . $this->talkLink()
 			  . $sep . $this->historyLink()
 			  . $sep . $this->whatLinksHere()
 			  . $sep . $this->watchPageLinksLink();
@@ -437,6 +441,21 @@ class Skin {
 				$oid = "&amp;oldid={$oldid}";
 			}
 			$s = $this->makeKnownLink( $n, $t, "action=edit{$oid}{$red}" );
+		} else {
+			$s = wfMsg( "protectedpage" );
+		}
+		return $s;
+	}
+
+	function deleteThisPage()
+	{
+		global $wgUser, $wgOut, $wgTitle, $diff;
+
+		if ( $wgOut->isArticle() && ( ! $diff ) && $wgUser->isSysop() ) {
+			$n = $wgTitle->getPrefixedText();
+			$t = wfMsg( "deletethispage" );
+
+			$s = $this->makeKnownLink( $n, $t, "action=delete" );
 		} else {
 			$s = wfMsg( "protectedpage" );
 		}

@@ -86,7 +86,7 @@ function processUpload()
 	$wgOut->addHTML( "<h2>" . wfMsg( "successfulupload" ) . "</h2>\n" );
 	$text = str_replace( "$1", $ilink, wfMsg( "fileuploaded" ) );
 	$wgOut->addHTML( "<p>{$text}\n" );
-	$wgOut->returnToMain();
+	$wgOut->returnToMain( false );
 }
 
 function saveUploadedFile()
