@@ -19,7 +19,7 @@
             <entry key="script" value="/newwiki/wiki.phtml" />
             <entry key="server" value="http://www.piclab.com" />
             <entry key="articlepath" value="" />
-            <entry key="uploadpath" value="http://images.piclab.com/upload/" />
+            <entry key="uploadpath" value="http://images.piclab.com/" />
             <entry key="mainpage" value="Main Page" />
           </map>
         </node>

@@ -1,4 +1,3 @@
-
 /*
  * WikiSuite is the driver class for the wiki test suite.
  * It represents the location of the wiki, and provides
