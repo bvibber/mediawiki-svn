@@ -10,19 +10,19 @@
  **/
 
 #include "parsetree.h"
+#include "fb_defines.h"
 #include <string.h>
 #include <stdio.h>
 
 int debug_indent = 0;
-/* - use this only if you need debug info
-void freeNode (Node node)
-{
-    debugpt3 ("freeNode (%u, %u)\n", node, node->type);
+/* - use this to find out if any nodes are allocated but never freed
+#define debugMemLeak_alloc(x,y) printf("alloc: %u (%u)\n", x, y);
+#define freeNode(node) \
+    printf("free: %u (%u)\n", node, node->type); \
     free (node);
-    debugpt_end;
-}
 /*/
-#define freeNode free
+#define debugMemLeak_alloc(x,y)
+#define freeNode(node) free(node)
 /**/
 
 Node newNode (NodeType newType)
@@ -31,6 +31,7 @@ Node newNode (NodeType newType)
     result->type = newType;
     result->firstChild = 0;
     result->nextSibling = 0;
+    debugMemLeak_alloc (result, newType);
     return result;
 }
 Node newNodeI (NodeType newType, int data)
@@ -158,7 +159,7 @@ void removeAndFreeFirstChild (Node node)
 Node processListHelper (Node start)
 {
     NodeType type, subtype;
-    Node result, curChild, examine, item, previous, l;
+    Node result, curChild, examine, item, previous, l, toBeFreed;
 
     if (!start) return 0;
     if (start->type != ListLine) return 0;
@@ -174,12 +175,17 @@ Node processListHelper (Node start)
 
     while (examine)
     {
+        toBeFreed = examine;
+
         /* We know that examine->firstChild is ListBullet, ListNumbered, etc. Remove it */
         removeAndFreeFirstChild (examine);
 
         /* Empty list item? */
         if (!examine->firstChild)
+        {
             examine = examine->nextSibling;
+            freeNode (toBeFreed);
+        }
 
         /* Does this item start a new list? */
         else if (examine->firstChild->type == ListBullet ||
@@ -210,6 +216,7 @@ Node processListHelper (Node start)
 
             /* trick recursive call into thinking list ends here */
             previous->nextSibling = 0;
+            /* notice that the recursive call will take care of freeing the node */
             nodeAddChild (curChild, processListHelper (examine));
             previous->nextSibling = l;
             examine = l;
@@ -224,6 +231,7 @@ Node processListHelper (Node start)
             curChild = item;
             nodeAddChild (curChild, examine->firstChild);
             examine = examine->nextSibling;
+            freeNode (toBeFreed);
         }
     }
     return result;
@@ -232,12 +240,16 @@ Node processListHelper (Node start)
 /* Parameter must be a ListBlock node. Returns a List node. */
 Node processListBlock (Node block)
 {
+    Node child;
+
     if (!block) return 0;
     if (block->type != ListBlock) return 0;
     if (!block->firstChild) return 0;
     if (block->firstChild->type != ListLine) return 0;
 
-    return processListHelper (block->firstChild);
+    child = block->firstChild;
+    freeNode (block);
+    return processListHelper (child);
 }
 
 /*  The PreBlock node returned by the grammar contains one or more PreLine

@@ -603,12 +603,14 @@ int main() {
     result = yyparse();
     if (!result)
         printf ("\n\nXML output:\n\n%s\n\n", outputXML (articlenode, 1024));
+    freeRecursively (articlenode);
     return result;
 }
 
 const char* wikiparse_do_parse (const char* input)
 {
     int result, i;
+    char* ret = "<error />";
 
     /* yy_scan_string copies the string into an internal buffer. During lexing, this internal
      * buffer may be modified. We don't really need the string anymore, so we probably don't mind
@@ -623,7 +625,8 @@ const char* wikiparse_do_parse (const char* input)
         /* Start with an output buffer twice the size of the input, but at least 1 KB. This should
          * normally be plenty. If it isn't, it will grow automatically. */
         i = 2*strlen (input);
-        return outputXML (articlenode, i < 1024 ? 1024 : i);
+        ret = outputXML (articlenode, i < 1024 ? 1024 : i);
+        freeRecursively (articlenode);
     }
-    return "<error />";
+    return ret;
 }
