@@ -913,7 +913,7 @@ enctype='application/x-www-form-urlencoded'>
 			# Image itself is now gone, and database is cleaned.
 			# Now we remove the image description page.
 
-			$nt = Title::newFromText( "Image:{$image}" );
+			$nt = Title::newFromText( $wgLang->getNsText( Namespace::getImage() ) . ":" . $image );
 			$this->doDeleteArticle( $nt );
 
 			$deleted = $image;
