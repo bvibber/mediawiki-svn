@@ -77,7 +77,7 @@
  "bi" => "Bislama",
  "km" => "Cambodjaans",
  "ca" => "Català",
- "cs" => "Cesky"
+ "cs" => "Cesky",
  "co" => "Corsicaans",
  "et" => "Eesti",
  "eu" => "Euskara",
@@ -179,9 +179,9 @@
  "wo" => "Wolof",
  "xh" => "isiXhosa",
  "za" => "Zhuang",
- "zu" => "isiZulu"
+ "zu" => "isiZulu",
  "simple" => "Simplified English",
- "dk" => "Gebruik voor Deens da",
+ "dk" => "Gebruik voor Deens da"
 );
 
 /* private */ $wgWeekdayNamesNl = array(
