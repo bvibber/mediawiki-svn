@@ -514,6 +514,7 @@ Im $2 finden Sie eine Liste der letzten Löschungen.",
 "deletionlog"	=> "Lösch-Logbuch",
 "reverted"		=> "Auf eine alte Version zurückgesetzt",
 "deletecomment"	=> "Grund der Löschung",
+"imagereverted" => "Auf eine alte version zurückgesetzt.",
 
 # Contributions
 #
