@@ -410,7 +410,7 @@ $wikiWantedTitle = "The Most Wanted Pages" ;
 $wikiWantedText = "'''These articles don't exist, but other articles link to them!''' (the top 50)<br>\n" ;
 $wikiWantedToggleNumbers = "Click here to toggle the display of page titles starting with numbers (currently $1)" ;
 $wikiWantedLine = "$1 is wanted by <b>$2</b> articles <nowiki>(see the <a href=\"$3\">pages that link to \"$4\"</a></nowiki>)" ;
-$wikiLastChange = "Last edited:<br>\n<font size=-2>$1</font>" ;
+$wikiLastChange = "Last edited:<br>\n<font size=-2>&nbsp;&nbsp;$1</font>" ;
 $wikiShowLastChange = "Show last change" ;
 $wikiProtectThisPage = "Protect this page" ;
 $wikiPopularPages = "Most popular" ;
