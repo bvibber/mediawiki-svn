@@ -18,7 +18,6 @@
     include_once ( "./wikiPage.php" ) ;
 
     set_time_limit ( 0 ) ;
-    $size = 1000;
 
     //establish user connection
     $connection = mysql_pconnect($wikiThisDBserver , $wikiThisDBuser , $wikiThisDBpassword )
@@ -34,8 +33,8 @@
         $row = mysql_fetch_object ( $result ) ;
         $all = $row->allPages;
     }
-    # Comment this out if you don't want batch mode.
-    $size = $all;
+    # Set &size=# to work in chunks.
+    if ( !isset ( $size ) ) $size = $all;
 
     if ( $offset <= $all ) {
 
@@ -83,7 +82,9 @@
         mysql_close ( $connection ) ;
     
         $next = $offset + $size ;
-        echo "<html><UL><LI>Number of processed records: $next <LI> Total number of records: $all <LI> <a href=rebuildLinks.php?offset=$next&all=$all>Click here to process the next $size records. </a></UL></html>" ;
+        echo "<html><UL><LI>Number of processed records: $next <LI> Total number of records: $all" ;
+	if ( $next < $all ) echo " <LI> <a href=rebuildLinks.php?size=$size&offset=$next&all=$all>Click here to process the next $size records. </a>" ;
+	echo "</UL></html>" ;
     } else
         echo "<html><h2>Ready!!</h2></html>" ;
     
