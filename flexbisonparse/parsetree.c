@@ -295,14 +295,18 @@ Node processPreBlock (Node block)
 Node processEndHeadingInText (int n)
 {
     char* ret;
+    int equalses, spaces, i;
 
-    if (n < 1) return 0;
-    /* Performance optimisation */
-    if (n == 1) return newNodeS (TextToken, "=");
+    equalses = n % 0x10000;
+    spaces   = n >> 16;
 
-    ret = (char*) malloc ((n+1) * sizeof (char));
-    ret[n] = '\0';
-    while (n) ret[--n] = '=';
+    if (equalses + spaces < 1) return 0;
+
+    ret = (char*) malloc ((equalses + spaces + 1) * sizeof (char));
+    i = 0;
+    while (equalses--) ret[i++] = '=';
+    while (spaces--)   ret[i++] = ' ';
+    ret[i] = '\0';
     return newNodeS (TextToken, ret);
 }
 
@@ -555,6 +559,18 @@ Node convertTableCellToText (int info)
 Node convertTableHeadToText (int info)
 {
     return newNodeS (TextToken, addSpaces (info % 2 ? "!" : "!!", info/2));
+}
+
+Node convertHeadingToText (int info)
+{
+    int i;
+    char* text;
+
+    text = (char*) malloc ((info + 1) * sizeof (char));
+    i = 0;
+    while (info--) text[i++] = '=';
+    text[i] = '\0';
+    return newNodeS (TextToken, text);
 }
 
 char* addSpaces (char* src, int spaces)

@@ -29,12 +29,27 @@ int encodeTableRowInfo (char* input, int initleng)
 {
     int i = 1;
     while (input[i] == '-') i++;
-    return ((i-1)*0x10000 + (initleng-i));
+    return (((i-1) << 16) | (initleng-i));
 }
 
 #define COMMONTOKENS \
     if (YY_START != inattributeapo && YY_START != inattributeq && YY_START != canbeheading) \
         BEGIN (cannotbelistorheadingorpre);
+
+#define APOSTROPHE_CATASTROPHE(len,debugstr,token)  \
+    if (yytext[len] == '\'')                        \
+    {                                               \
+        yyless (1);                                 \
+        yylval.node = newNodeS (TextToken, "'");    \
+        debuglex2 ("TEXT(%s) ", "'");               \
+        return TEXT;                                \
+    }                                               \
+    else                                            \
+    {                                               \
+        yyless (len);                               \
+        debuglex (debugstr);                        \
+        return token;                               \
+    }
 
 %}
 
@@ -122,9 +137,12 @@ int encodeTableRowInfo (char* input, int initleng)
 \}\}\}              { COMMONTOKENS; debuglex ("CLOSETEMPLATEVAR "); return CLOSETEMPLATEVAR; }
 \{\{                { COMMONTOKENS; debuglex ("OPENTEMPLATE "); return OPENTEMPLATE; }
 \}\}                { COMMONTOKENS; debuglex ("CLOSETEMPLATE "); return CLOSETEMPLATE; }
-'''''/[^']          { COMMONTOKENS; debuglex ("APO5 "); return APO5; }
-'''/[^']            { COMMONTOKENS; debuglex ("APO3 "); return APO3; }
-''/[^']             { COMMONTOKENS; debuglex ("APO2 "); return APO2; }
+'''''               { COMMONTOKENS; debuglex ("APO5 "); return APO5; }
+'''                 { COMMONTOKENS; debuglex ("APO3 "); return APO3; }
+''                  { COMMONTOKENS; debuglex ("APO2 "); return APO2; }
+'''''.              { COMMONTOKENS; APOSTROPHE_CATASTROPHE (5, "APO5 ", APO5); }
+'''.                { COMMONTOKENS; APOSTROPHE_CATASTROPHE (3, "APO3 ", APO3); }
+''.                 { COMMONTOKENS; APOSTROPHE_CATASTROPHE (2, "APO2 ", APO2); }
 \n                  { BEGIN (INITIAL); debuglex ("NEWLINE\n"); return NEWLINE; }
 \r                  { /* ignore this one */ debuglex ("<13> "); }
 
@@ -140,10 +158,12 @@ int encodeTableRowInfo (char* input, int initleng)
                                     debuglex2 ("HEADING(%d) ", yylval.num);
                                     return HEADING;
                                 }
-<canbeheading>"="+" "*          {
+<canbeheading>"="+" "*\r\n      |
+<canbeheading>"="+" "*\n        {
                                     yylval.num = 0;
                                     while (yytext [ yylval.num ] == '=')
                                         yylval.num++;
+                                    yylval.num |= (yyleng-yylval.num) << 16;
                                     debuglex2 ("ENDHEADING(%d) ", yylval.num);
                                     return ENDHEADING;
                                 }

@@ -89,6 +89,13 @@ blocknotbl      :   preblock                            { debugf ("blocknotbl#1 
                 |   table zeroormorenewlines            { debugf ("blocknotbl#5 "); $$ = $1; }
                 |   comment zeroormorenewlines          { debugf ("blocknotbl#6 "); $$ = $1; }
 
+heading         :   HEADING text ENDHEADING
+                        { debugf ("heading#1 "); $$ = nodeAddChild (newNodeI (Heading, $1), $2); }
+                |   HEADING text  /* for eof */
+                        { debugf ("heading#2 "); $$ = nodeAddChild (newNode (Paragraph), makeTextBlock (convertHeadingToText ($1), $2)); }
+                |   HEADING
+                        { debugf ("heading#3 "); $$ = nodeAddChild (newNode (Paragraph), convertHeadingToText ($1)); }
+
 preblock        :   preline             { debugf ("preblock#1 "); $$ = nodeAddChild (newNode (PreBlock), $1); }
                 |   preblock preline    { debugf ("preblock#2 "); $$ = nodeAddChild ($1, $2); }
 
@@ -225,20 +232,29 @@ italicsorbold   :   APO2 textnoital APO2
                             (TextToken, "'"), nodeAddChild (newNode (Italics), $2))); }
                 |   APO3 textnobold
                         { debugf ("italicsorbold#9 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"), $2); }
-                |   APO5 textnoboit APO3 textnoital APO2
+                |   APO5 textnoboit APO5
                         { debugf ("italicsorbold#10 "); $$ = nodeAddChild (newNode (Italics),
+                            nodeAddChild (newNode (Bold), $2)); }
+                |   APO5 textnoboit APO3 textnoital APO2
+                        { debugf ("italicsorbold#11 "); $$ = nodeAddChild (newNode (Italics),
                             makeTextBlock (nodeAddChild (newNode (Bold), $2), $4)); }
-                |   APO5 textnoboit APO2 textnobold APO3
-                        { debugf ("italicsorbold#11 "); $$ = nodeAddChild (newNode (Bold),
-                            makeTextBlock (nodeAddChild (newNode (Italics), $2), $4)); }
                 |   APO5 textnoboit APO3 textnoital
                         { debugf ("italicsorbold#12 "); $$ = makeTextBlock2 (newNodeS (TextToken, "''"),
                             nodeAddChild (newNode (Bold), $2), $4); }
+                |   APO5 textnoboit APO3
+                        { debugf ("italicsorbold#13 "); $$ = makeTextBlock (newNodeS (TextToken, "''"),
+                            nodeAddChild (newNode (Bold), $2)); }
+                |   APO5 textnoboit APO2 textnobold APO3
+                        { debugf ("italicsorbold#14 "); $$ = nodeAddChild (newNode (Bold),
+                            makeTextBlock (nodeAddChild (newNode (Italics), $2), $4)); }
                 |   APO5 textnoboit APO2 textnobold
-                        { debugf ("italicsorbold#13 "); $$ = makeTextBlock2 (newNodeS (TextToken, "'''"),
+                        { debugf ("italicsorbold#15 "); $$ = makeTextBlock2 (newNodeS (TextToken, "'''"),
                             nodeAddChild (newNode (Italics), $2), $4); }
+                |   APO5 textnoboit APO2
+                        { debugf ("italicsorbold#16 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"),
+                            nodeAddChild (newNode (Italics), $2)); }
                 |   APO5 textnoboit
-                        { debugf ("italicsorbold#14 ");
+                        { debugf ("italicsorbold#17 ");
                             $$ = makeTextBlock (newNodeS (TextToken, "'''''"), $2); }
 
 italorboldnotbl :   APO2 textnoitaltbl APO2
@@ -267,20 +283,29 @@ italorboldnotbl :   APO2 textnoitaltbl APO2
                             (TextToken, "'"), nodeAddChild (newNode (Italics), $2))); }
                 |   APO3 textnoboldtbl
                         { debugf ("italorboldnotbl#9 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"), $2); }
-                |   APO5 textnoboittbl APO3 textnoitaltbl APO2
+                |   APO5 textnoboittbl APO5
                         { debugf ("italorboldnotbl#10 "); $$ = nodeAddChild (newNode (Italics),
+                            nodeAddChild (newNode (Bold), $2)); }
+                |   APO5 textnoboittbl APO3 textnoitaltbl APO2
+                        { debugf ("italorboldnotbl#11 "); $$ = nodeAddChild (newNode (Italics),
                             makeTextBlock (nodeAddChild (newNode (Bold), $2), $4)); }
-                |   APO5 textnoboittbl APO2 textnoboldtbl APO3
-                        { debugf ("italorboldnotbl#11 "); $$ = nodeAddChild (newNode (Bold),
-                            makeTextBlock (nodeAddChild (newNode (Italics), $2), $4)); }
                 |   APO5 textnoboittbl APO3 textnoitaltbl
                         { debugf ("italorboldnotbl#12 "); $$ = makeTextBlock2 (newNodeS (TextToken, "''"),
                             nodeAddChild (newNode (Bold), $2), $4); }
+                |   APO5 textnoboittbl APO3
+                        { debugf ("italorboldnotbl#13 "); $$ = makeTextBlock (newNodeS (TextToken, "''"),
+                            nodeAddChild (newNode (Bold), $2)); }
+                |   APO5 textnoboittbl APO2 textnoboldtbl APO3
+                        { debugf ("italorboldnotbl#14 "); $$ = nodeAddChild (newNode (Bold),
+                            makeTextBlock (nodeAddChild (newNode (Italics), $2), $4)); }
                 |   APO5 textnoboittbl APO2 textnoboldtbl
-                        { debugf ("italorboldnotbl#13 "); $$ = makeTextBlock2 (newNodeS (TextToken, "'''"),
+                        { debugf ("italorboldnotbl#15 "); $$ = makeTextBlock2 (newNodeS (TextToken, "'''"),
                             nodeAddChild (newNode (Italics), $2), $4); }
+                |   APO5 textnoboittbl APO2
+                        { debugf ("italorboldnotbl#16 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"),
+                            nodeAddChild (newNode (Italics), $2)); }
                 |   APO5 textnoboittbl
-                        { debugf ("italorboldnotbl#14 ");
+                        { debugf ("italorboldnotbl#17 ");
                             $$ = makeTextBlock (newNodeS (TextToken, "'''''"), $2); }
 
 italicsnobold   :   APO2 textnoboit APO2
@@ -302,20 +327,6 @@ boldnoitalicstbl:   APO3 textnoboittbl APO3
                         { debugf ("boldnoitalics#1 "); $$ = nodeAddChild (newNode (Bold), $2); }
                 |   APO3 textnoboittbl
                         { debugf ("boldnoitalics#2 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"), $2); }
-
-/* In order to resolve a reduce/reduce conflict correctly, heading must come before textelement. */
-heading         :   HEADING text ENDHEADING NEWLINE
-                        { debugf ("heading#1 "); $$ = nodeAddChild (newNodeI (Heading, $1), $2); }
-                |   HEADING text ENDHEADING  /* for eof */
-                        { debugf ("heading#2 "); $$ = nodeAddChild (newNodeI (Heading, $1), $2); }
-                |   HEADING text NEWLINE
-                        { debugf ("heading#3 "); $$ = nodeAddChild (newNodeI (Heading, $1), $2); }
-                |   HEADING text  /* for eof */
-                        { debugf ("heading#4 "); $$ = nodeAddChild (newNodeI (Heading, $1), $2); }
-                |   HEADING NEWLINE
-                        { debugf ("heading#5 "); $$ = nodeAddChild (newNodeI (Heading, $1), newNodeS (TextToken, "?")); }
-                |   HEADING
-                        { debugf ("heading#6 "); $$ = nodeAddChild (newNodeI (Heading, $1), newNodeS (TextToken, "?")); }
 
 table           :   TABLEBEGIN attributes tablerows TABLEEND
                         { debugf ("table#1 "); $$ = nodeAddChild2 (newNode (Table), $2, $3); }
@@ -418,7 +429,6 @@ textnoboittbl   :   textelementnoboittbl                { debugf ("textnoboittbl
 textelement         :   TEXT            { debugf ("textelement#1 "); $$ = $1; }
                     |   EXTENSION       { debugf ("textelement#2 "); $$ = $1; }
                     |   PIPE            { debugf ("textelement#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   ENDHEADING      { debugf ("textelement#4 "); $$ = processEndHeadingInText ($1); }
                     |   APO2            { debugf ("textelement#5 "); $$ = newNodeS (TextToken, "''"); }
                     |   APO3            { debugf ("textelement#6 "); $$ = newNodeS (TextToken, "'''"); }
                     |   APO5            { debugf ("textelement#7 "); $$ = newNodeS (TextToken, "'''''"); }
@@ -436,7 +446,6 @@ textelement         :   TEXT            { debugf ("textelement#1 "); $$ = $1; }
 textelementnoital   :   TEXT            { debugf ("textelementnoital#1 "); $$ = $1; }
                     |   EXTENSION       { debugf ("textelementnoital#2 "); $$ = $1; }
                     |   PIPE            { debugf ("textelementnoital#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   ENDHEADING      { debugf ("textelementnoital#4 "); $$ = processEndHeadingInText ($1); }
                     |   TABLEBEGIN      { debugf ("textelementnoital#5 "); $$ = newNodeS (TextToken, addSpaces ("{|", $1)); }
                     |   TABLEEND        { debugf ("textelementnoital#6 "); $$ = newNodeS (TextToken, "|}"); }
                     |   TABLEROW        { debugf ("textelementnoital#7 "); $$ = convertTableRowToText ($1); }
@@ -449,7 +458,6 @@ textelementnoital   :   TEXT            { debugf ("textelementnoital#1 "); $$ = 
 textelementnobold   :   TEXT            { debugf ("textelementnobold#1 "); $$ = $1; }
                     |   EXTENSION       { debugf ("textelementnobold#2 "); $$ = $1; }
                     |   PIPE            { debugf ("textelementnobold#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   ENDHEADING      { debugf ("textelementnobold#4 "); $$ = processEndHeadingInText ($1); }
                     |   TABLEBEGIN      { debugf ("textelementnobold#5 "); $$ = newNodeS (TextToken, addSpaces ("{|", $1)); }
                     |   TABLEEND        { debugf ("textelementnobold#6 "); $$ = newNodeS (TextToken, "|}"); }
                     |   TABLEROW        { debugf ("textelementnobold#7 "); $$ = convertTableRowToText ($1); }
@@ -462,7 +470,6 @@ textelementnobold   :   TEXT            { debugf ("textelementnobold#1 "); $$ = 
 textelementnoboit   :   TEXT            { debugf ("textelementnoboit#1 "); $$ = $1; }
                     |   EXTENSION       { debugf ("textelementnoboit#2 "); $$ = $1; }
                     |   PIPE            { debugf ("textelementnoboit#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   ENDHEADING      { debugf ("textelementnoboit#4 "); $$ = processEndHeadingInText ($1); }
                     |   TABLEBEGIN      { debugf ("textelementnoboit#5 "); $$ = newNodeS (TextToken, addSpaces ("{|", $1)); }
                     |   TABLEEND        { debugf ("textelementnoboit#6 "); $$ = newNodeS (TextToken, "|}"); }
                     |   TABLEROW        { debugf ("textelementnoboit#7 "); $$ = convertTableRowToText ($1); }
@@ -474,7 +481,6 @@ textelementnoboit   :   TEXT            { debugf ("textelementnoboit#1 "); $$ = 
 textelementnotbl    :   TEXT            { debugf ("textelementnotbl#1 "); $$ = $1; }
                     |   EXTENSION       { debugf ("textelementnotbl#2 "); $$ = $1; }
                     |   PIPE            { debugf ("textelementnotbl#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   ENDHEADING      { debugf ("textelementnotbl#4 "); $$ = processEndHeadingInText ($1); }
                     |   APO2            { debugf ("textelementnotbl#5 "); $$ = newNodeS (TextToken, "''"); }
                     |   APO3            { debugf ("textelementnotbl#6 "); $$ = newNodeS (TextToken, "'''"); }
                     |   APO5            { debugf ("textelementnotbl#7 "); $$ = newNodeS (TextToken, "'''''"); }
@@ -486,7 +492,6 @@ textelementnotbl    :   TEXT            { debugf ("textelementnotbl#1 "); $$ = $
 textelementnoitaltbl:   TEXT            { debugf ("textelementnoitaltbl#1 "); $$ = $1; }
                     |   EXTENSION       { debugf ("textelementnoitaltbl#2 "); $$ = $1; }
                     |   PIPE            { debugf ("textelementnoitaltbl#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   ENDHEADING      { debugf ("textelementnoitaltbl#4 "); $$ = processEndHeadingInText ($1); }
                     |   comment         { debugf ("textelementnoitaltbl#5 "); $$ = $1; }
                     |   linketcnotbl    { debugf ("textelementnoitaltbl#6 "); $$ = $1; }
                     |   boldnoitalicstbl{ debugf ("textelementnoitaltbl#7 "); $$ = $1; }
@@ -494,7 +499,6 @@ textelementnoitaltbl:   TEXT            { debugf ("textelementnoitaltbl#1 "); $$
 textelementnoboldtbl:   TEXT            { debugf ("textelementnoboldtbl#1 "); $$ = $1; }
                     |   EXTENSION       { debugf ("textelementnoboldtbl#2 "); $$ = $1; }
                     |   PIPE            { debugf ("textelementnoboldtbl#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   ENDHEADING      { debugf ("textelementnoboldtbl#4 "); $$ = processEndHeadingInText ($1); }
                     |   comment         { debugf ("textelementnoboldtbl#5 "); $$ = $1; }
                     |   linketcnotbl    { debugf ("textelementnoboldtbl#6 "); $$ = $1; }
                     |   italicsnoboldtbl{ debugf ("textelementnoboldtbl#7 "); $$ = $1; }
@@ -502,7 +506,6 @@ textelementnoboldtbl:   TEXT            { debugf ("textelementnoboldtbl#1 "); $$
 textelementnoboittbl:   TEXT            { debugf ("textelementnoboittbl#1 "); $$ = $1; }
                     |   EXTENSION       { debugf ("textelementnoboittbl#2 "); $$ = $1; }
                     |   PIPE            { debugf ("textelementnoboittbl#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   ENDHEADING      { debugf ("textelementnoboittbl#4 "); $$ = processEndHeadingInText ($1); }
                     |   comment         { debugf ("textelementnoboittbl#5 "); $$ = $1; }
                     |   linketcnotbl    { debugf ("textelementnoboittbl#6 "); $$ = $1; }
 

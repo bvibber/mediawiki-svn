@@ -115,6 +115,7 @@ Node convertAttributeDataToText (AttributeData data);
 Node convertTableRowToText (int info);
 Node convertTableCellToText (int info);
 Node convertTableHeadToText (int info);
+Node convertHeadingToText (int info);
 
 /* Parameter must be a TextBlock. Turns something like
  * <italics>X<italics>Y</italics>Z</italics> into
