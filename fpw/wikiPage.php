@@ -856,7 +856,7 @@ class WikiPage extends WikiTitle {
 				}
 		} else {
 			$ret .= "<font size=\"+3\"><b><u>" ;
-			if ( $this->secureTitle == "Main_Page" and $action == "view" ) $ret .= $wikiMainPageTitle.$this->thisVersion ;
+			if ( $this->secureTitle == $wikiMainPage and $action == "view" ) $ret .= $wikiMainPageTitle.$this->thisVersion ;
 			else $ret .= $this->getNiceTitle($t).$this->thisVersion ;
 #			if ( $this->secureTitle == "Main_Page" and $action == "view" ) $ret .= "<font color=blue>$wikiMainPageTitle</font>$this->thisVersion" ;
 #			else $ret .= "<a href=\"".wikiLink("&search=$this->title")."\">".$this->getNiceTitle($t)."</a>$this->thisVersion" ;

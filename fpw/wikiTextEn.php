@@ -18,7 +18,7 @@ $THESCRIPT = "/wiki.phtml" ; # The name and location of the script. The $PHP_SEL
 $wikiCharset = "iso-8859-1" ;
 
 # Misc stuff
-$wikiMainPage = "Main Page" ; # This is actual the title of the article in the database
+$wikiMainPage = "Main_Page" ; # This is actual the title of the article in the database
 $wikiErrorPageTitle = "Yikes! An error!" ;
 $wikiErrorMessage = "<h2>$1!</h2>Return to the [[:Main Page|Main Page]]!" ;
 $wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","deletepage","protectpage","contributions","whatlinkshere");
