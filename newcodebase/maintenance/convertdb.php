@@ -15,6 +15,7 @@ $wgDBuser			= "wikiadmin";
 $wgDBpassword		= $wgDBadminpassword;
 # $wgImageDirectory	= "/usr/local/apache/htdocs/wikiimages";
 $wgImageDirectory	= "/usr/local/apache/htdocs/upload";
+$wgMetaImageDirectory   = "/usr/local/apache/htdocs-meta/upload";
 
 renameOldTables();
 buildTables();
@@ -235,7 +236,7 @@ function convertOldTable()
 
 function convertImageDirectoriesX()
 {
-	global $wgImageDirectory, $wgUploadDirectory;
+	global $wgImageDirectory, $wgMetaImageDirectory, $wgUploadDirectory;
 	$count = 0;
 
 	print "Moving image files.\n";
@@ -327,7 +328,9 @@ function convertImageDirectories()
 		
 		if ( copy( "{$wgImageDirectoryHash}/{$nname}", "{$dest}/{$nname}" )
 		  or copy( "{$wgImageDirectory}/{$oname}", "{$dest}/{$nname}" )
-		  or copy( "{$wgImageDirectory}/".strtolower($oname), "{$dest}/{$nname}" ) ) {
+		  or copy( "{$wgImageDirectory}/".strtolower($oname), "{$dest}/{$nname}" )
+          or copy( "{$wgMetaImageDirectory}/{$oname}", "{$dest}/{$nname}" ) ) {
+          or copy( "{$wgMetaImageDirectory}/".strtolower($oname), "{$dest}/{$nname}" ) ) {
 			++$count;
 
 			$sql = "DELETE FROM image WHERE img_name='" .
@@ -355,19 +358,19 @@ function convertMediaLinks( $text )
 
 	$q = $text;
 	$text = preg_replace(
-	  "/(^|[^[])http:\/\/(www.|)wikipedia.(?:com|org)\/upload\/(?:[0-9a-f]\/[0-9a-f][0-9a-f]\/|)" .
+	  "/(^|[^[])http:\/\/(www.||meta.)wikipedia.(?:com|org)\/upload\/(?:[0-9a-f]\/[0-9a-f][0-9a-f]\/|)" .
 	  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
 	  "\\1[[{$ins}:\\3.\\4]]", $text );
 	$text = preg_replace(
-	  "/(^|[^[])http:\/\/(www.|)wikipedia.(?:com|org)\/images\/uploads\/" .
+	  "/(^|[^[])http:\/\/(www.||meta.)wikipedia.(?:com|org)\/images\/uploads\/" .
 	  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
 	  "\\1[[{$ins}:\\3.\\4]]", $text );
 
 	$text = preg_replace(
-	  "/(^|[^[])http:\/\/(www.|)wikipedia.(?:com|org)\/upload\/(?:[0-9a-f]\/[0-9a-f][0-9a-f]\/|)" .
+	  "/(^|[^[])http:\/\/(www.||meta.)wikipedia.(?:com|org)\/upload\/(?:[0-9a-f]\/[0-9a-f][0-9a-f]\/|)" .
 	  "([a-zA-Z0-9_:.~\%\-]+)/", "\\1[[media:\\3]]", $text );
 	$text = preg_replace(
-	  "/(^|[^[])http:\/\/(www.|)wikipedia.(?:com|org)\/images\/uploads\/" .
+	  "/(^|[^[])http:\/\/(www.||meta.)wikipedia.(?:com|org)\/images\/uploads\/" .
 	  "([a-zA-Z0-9_:.~\%\-]+)/", "\\1[[media:\\3]]", $text );
 
 	if ($q != $text) echo "BOOF!"; else echo ".";
