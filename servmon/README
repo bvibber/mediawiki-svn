@@ -1,0 +1,7 @@
+Servmon is an automated server monitoring tool used on the Wikimedia servers.
+It's only designed for our use, but you could probably use it elsewhere with
+some work.  I may even fix bugs if you find them.
+
+This is "Servmon II", a C++ rewrite of the old Python code.  It's currently
+entirely unfinished and not useful.  If you want to help, please contact
+<kate.turner@gmail.com>.
