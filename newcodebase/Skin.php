@@ -115,14 +115,17 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 
 	function getBodyOptions()
 	{
-		global $wgUser, $wgTitle, $wgNamespaceBackgrounds, $wgOut, $oldid, $redirect, $diff;
+		global $wgUser, $wgTitle, $wgNamespaceBackgrounds, $wgOut, $oldid, $redirect, $diff,$action;
 
 		if ( 0 != $wgTitle->getNamespace() ) {
 			$a = array( "bgcolor" => "#FFFFDD" );
 		}
 		else $a = array( "bgcolor" => "#FFFFFF" );
 		if($wgOut->isArticle() && $wgUser->getOption("editondblclick")
-			&& !$wgTitle->isProtected()) {
+			&& 
+			(!$wgTitle->isProtected() || $wgUser->isSysop())
+			
+			) {
 			$n = $wgTitle->getPrefixedURL();
 			$t = wfMsg( "editthispage" );
 			$oid = $red = "";
@@ -134,6 +137,9 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			$s = "document.location = \"" .$s ."\";";
 			$a += array ("ondblclick" => $s);
 
+		}
+		if($action=="edit" && !$wgTitle->getArticleId()) { # new article
+			$a += array("onLoad"=>"document.editform.wpTextbox1.select()");	
 		}
 		return $a;
 	}

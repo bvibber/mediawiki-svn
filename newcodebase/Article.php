@@ -486,7 +486,7 @@ class Article {
 
 		$wgOut->addHTML( "
 <form method=post action=\"$action\"
-enctype='application/x-www-form-urlencoded'>
+enctype='application/x-www-form-urlencoded' name='editform'>
 <textarea tabindex=1 name='wpTextbox1' rows={$rows} cols={$cols}{$ew} wrap=virtual>" .
 $wgLang->recodeForEdit( $wpTextbox1 ) .
 "</textarea><br>
