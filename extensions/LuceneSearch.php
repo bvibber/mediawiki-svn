@@ -17,7 +17,7 @@ require_once("SearchEngine.php");
 if (defined('MEDIAWIKI')) {
 $wgExtensionFunctions[] = "wfLuceneSearch";
 
-define('LS_PER_PAGE', 20);
+define('LS_PER_PAGE', 10);
 
 function wfLuceneSearch() {
 global $IP;
@@ -31,6 +31,17 @@ class LuceneSearch extends SpecialPage
 		SpecialPage::SpecialPage("Search");
 	}
 
+	function makelink($term, $offset, $limit) {
+		global $wgRequest;
+		$link = "$wgScriptPath?title=Special:Search&amp;search=".
+			urlencode($term)."&amp;fulltext=Search";
+		foreach(SearchEngine::searchableNamespaces() as $ns => $name)
+			if ($wgRequest->getCheck("ns" . $ns))
+				$link .= "&amp;ns".$ns."=1";
+		$link .= "&amp;offset=$offset&amp;limit=$limit";
+		return $link;
+	}
+		
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgTitle, $wgContLang;
 
@@ -43,31 +54,57 @@ class LuceneSearch extends SpecialPage
 		if (count($this->namespaces) == 0)
 			$this->namespaces = array(0);
 
-		$q = $wgRequest->getText( 'search' );
+		$q = $wgRequest->getText('search');
+
+		if ($wgRequest->getText('go') === 'Go') {
+			$t = SearchEngine::getNearMatch($q);
+			if(!is_null($t)) {
+				$wgOut->redirect($t->getFullURL());
+				return;
+			}
+		}
+
 		$r = $this->doLuceneSearch($q);
 		$numresults = $r[0];
 		$results = $r[1];
 
-		list($limit, $offset) = $wgRequest->getLimitOffset(LS_PER_PAGE, 'searchlimit');
-                if($numresults || $offset) {
-                        $prevnext = wfViewPrevNext($offset, $limit,
-                                'Special:Search',
-                                wfArrayToCGI(
-                                        array('search' => $q)));
-                }
-
+		$limit = $wgRequest->getInt('limit');
+		$offset = $wgRequest->getInt('offset');
+		if ($limit == 0 || $limit > 100)
+			$limit = LS_PER_PAGE;
+		
 		$showresults = min($limit, count($results)-$numresults);
 		$wgOut->setSubtitle(wfMsg('searchquery', htmlspecialchars($q)));
 		$i = $offset;
 		$resq = trim(preg_replace("/[] \\|[()\"{}]+/", " ", $q));
 		$contextWords = implode("|", $wgContLang->convertForSearchResult(split(" ", $resq)));
 
-		$top = wfMsg("searchnumber", $offset + 1, min($numresults, $limit), $numresults);
-		$top .= $prevnext;
-		$out = "<ol start=".($offset + 1).">";
+		$top = wfMsg("searchnumber", $offset + 1, min($numresults, $offset+$limit), $numresults);
+		$out = "<ul start=".($offset + 1).">";
 		$chunks = array_chunk($results, $limit);
 		$numchunks = $numresults / $limit;
-		$whichchunk = ($offset / $limit);
+		$whichchunk = $offset / $limit;
+		$prevnext = "";
+		if ($whichchunk > 0)
+			$prevnext .= "<a href=\"".
+				$this->makelink($q, $offset-$limit, $limit)."\">".
+				wfMsg("searchprev")."</a> ";
+		$first = max($whichchunk - 11, 0);
+		$last = $whichchunk + 11;
+		for($i = $first; $i < $last; $i++) {
+			if ($i === $whichchunk)
+				$prevnext .= "<strong>".($i+1)."</strong> ";
+			else
+				$prevnext .= "<a href=\"".
+					$this->makelink($q, $limit*$i, 
+					$limit)."\">".($i+1)."</a> ";
+		}
+		if ($whichchuck < $numchunks)
+			$prevnext .= "<a href=\"".
+				$this->makelink($q, $offset + $limit, $limit)."\">".
+				wfMsg("searchnext")."</a> ";
+		$prevnext = "<div style='text-align: center'>$prevnext</div>";
+		$top .= $prevnext;
 		foreach ($chunks[$whichchunk] as $result) {
 			$out .= $this->showHit($result, $contextWords);
 		}
@@ -90,11 +127,10 @@ class LuceneSearch extends SpecialPage
                 }
                 $sk =& $wgUser->getSkin();
 
-                $contextlines = $wgUser->getOption( 'contextlines' );
-                if ( '' == $contextlines ) 
-			$contextlines = 5;
-                $contextchars = $wgUser->getOption( 'contextchars' );
-                if ( '' == $contextchars ) 
+                //$contextlines = $wgUser->getOption('contextlines');
+		$contextlines = 2;
+                $contextchars = $wgUser->getOption('contextchars');
+                if ('' == $contextchars) 
 			$contextchars = 50;
 
                 $link = $sk->makeKnownLinkObj($t, '');
@@ -135,11 +171,13 @@ class LuceneSearch extends SpecialPage
                         $line = preg_replace($pat2,
                           "<span class='searchmatch'>\\1</span>", $line);
 
-                        $extract .= "<br /><small>{$lineno}: {$line}</small>\n";
+                        $extract .= "<br /><small>{$line}</small>\n";
                 }
                 wfProfileOut( "$fname-extract" );
                 wfProfileOut( $fname );
-                return "<li style='padding-bottom: 1em'>{$link} ({$size}){$extract}</li>\n";
+		$date = $wgContLang->timeanddate($rev->getTimestamp());
+                return "<li style='padding-bottom: 1em'>{$link}{$extract}<br/>"
+			."<span style='color: green; font-size: small'>$size - $date</span></li>\n";
         }
 
 	function doLuceneSearch( $query ) {
@@ -206,7 +244,9 @@ class LuceneSearch extends SpecialPage
 
 global $wgMessageCache;
 SpecialPage::addPage( new LuceneSearch );
-$wgMessageCache->addMessage("searchnumber", "<strong>Results $1-$2 of $3</strong> &mdash; ");
+$wgMessageCache->addMessage("searchnumber", "<strong>Results $1-$2 of $3</strong>");
+$wgMessageCache->addMessage("searchprev", "&lt;&lt; Prev");
+$wgMessageCache->addMessage("searchnext", "Next &gt;&gt;");
 $wgMessageCache->addMessage("lucenepowersearchtext", "
 Search in namespaces:\n
 $1\n
