@@ -4,10 +4,12 @@
 # - Summaries via GTK
 # - Diffs
 # - Deal with UTF-8/iso8559-1 where possible
+# - Don't kill window on save
 #
 use Config::IniFiles;  # Module for config files in .ini syntax
 use LWP::UserAgent;    # Web agent module
 use URI::Escape;       # urlencode functions
+use Gtk2 '-init';
 
 # Pfad der Konfigurationsdatei ggf. anpassen!
 $cfgfile=$ENV{HOME}."/.ee-helper/ee.ini";
@@ -124,43 +126,95 @@ foreach $extensionlist(@extensionlists) {
 	}
 }
 
-system("$app $tempdir/$filename");
-# Some programs terminate immediately .. this is a quick hack to deal 
-# with them; optimally, we shouldn't proceed after the GTK summary
-# box, though.
-#system("kdialog --msgbox 'Text editor terminated.'");
-
-if($type eq "Edit file") {
-	$response=$browser->post($upload_url,
-	@ns_headers,Content_Type=>'form-data',Content=>
-	[
-	wpUploadFile=>["$tempdir/".$filename],
-	wpUploadDescription=>"Uploaded with External-Editor by Erik Moeller",
-	wpUploadAffirm=>"1",
-	wpUpload=>"Upload file",
-	wpIgnoreWarning=>"1"
-	]);
-} elsif($type eq "Edit text") {	
- 	open(TEXT,"<$tempdir/".$filename);
-	$/=undef;
-	while(<TEXT>) {
-		$text=$_;
-	}
-	close(TEXT);		
-	$response=$browser->post($edit_url,@ns_headers,Content=>
-	[
-        wpTextbox1=>$text,
-	wpSummary=>"Edited with External-Editor by Erik Moeller",
-	wpEdittime=>$time,
-	wpEditToken=>$token
-        ]);
-} elsif($type eq "Diff") {
-	die "Diffs not yet supported.\n";
-} else {
-
-	die "Undefined or unknown process in input file.";
-}
-
+system("$app $tempdir/$filename &");
+makegui();
 
 #close(DEBUGLOG);
-exit 0;
+#exit 0;
+
+sub makegui {
+
+	$vbox = Gtk2::VBox->new;
+	$hbox = Gtk2::HBox->new;
+	$label =  Gtk2::Label->new("Summary");
+	$entry = Gtk2::Entry->new;
+	$hbox->pack_start_defaults($label);
+	$hbox->pack_start_defaults($entry);
+	
+	$hbox2 = Gtk2::HBox->new;
+	$savebutton =  Gtk2::Button->new("Save");
+	$savecontbutton =  Gtk2::Button->new("Save and continue");
+	$cancelbutton = Gtk2::Button->new("Cancel");
+	$hbox2->pack_start_defaults($savebutton);
+	$hbox2->pack_start_defaults($savecontbutton);
+	$hbox2->pack_start_defaults($cancelbutton);
+	$vbox->pack_start_defaults($hbox);
+	$vbox->pack_start_defaults($hbox2);
+	
+	# Set up window
+	$window = Gtk2::Window->new;
+	$window->set_title ('Enter edit summary');
+	$window->signal_connect (delete_event => sub {Gtk2->main_quit});
+	$savebutton->signal_connect (clicked => \&save);
+	$savecontbutton->signal_connect ( clicked => \&savecont);
+	$cancelbutton->signal_connect (clicked => \&cancel);
+	
+	# Add vbox to window
+	$window->add($vbox);
+	$window->show_all;
+	Gtk2->main;
+
+} 
+
+sub savecont {
+	
+	save();
+	$window->hide_all;
+	makegui();
+	
+}
+sub save {
+
+	$summary=$entry->get_text();
+	if(length($summary)<190) {
+		$summary.=" (using [[Help:External editors|an external editor]])";
+	}
+	if($type eq "Edit file") {
+		$response=$browser->post($upload_url,
+		@ns_headers,Content_Type=>'form-data',Content=>
+		[
+		wpUploadFile=>["$tempdir/".$filename],
+		wpUploadDescription=>$summary,
+		wpUploadAffirm=>"1",
+		wpUpload=>"Upload file",
+		wpIgnoreWarning=>"1"
+		]);
+	} elsif($type eq "Edit text") {	
+		open(TEXT,"<$tempdir/".$filename);
+		$/=undef;
+		while(<TEXT>) {
+			$text=$_;
+		}
+		close(TEXT);		
+		$response=$browser->post($edit_url,@ns_headers,Content=>
+		[
+		wpTextbox1=>$text,
+		wpSummary=>$summary,
+		wpEdittime=>$time,
+		wpEditToken=>$token
+		]);
+	} elsif($type eq "Diff") {
+		die "Diffs not yet supported.\n";
+	} else {
+	
+		die "Undefined or unknown process in input file.";
+	}
+
+	Gtk2->main_quit;
+}
+sub cancel {
+
+	print "Quitting!\n";
+	Gtk2->main_quit;
+
+}
