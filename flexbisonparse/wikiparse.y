@@ -600,10 +600,10 @@ comment         :   BEGINCOMMENT text ENDCOMMENT
  * standard input and writes to standard output. */
 int main() {
     int result;
-    printf ("Parsing... ");
+//    printf ("Parsing... ");
     result = yyparse();
-    if (!result)
-        printf ("\n\nXML output:\n\n%s\n\n", outputXML (articlenode, 1024));
+    if (!result) printf ( outputXML (articlenode, 1024) ) ;
+//        printf ("\n\nXML output:\n\n%s\n\n", outputXML (articlenode, 1024));
     freeRecursively (articlenode);
     return result;
 }
