@@ -108,7 +108,7 @@ class LoadBalancer {
 							unset( $loads[$i] );
 						}
 					}
-				} while ( $i !== false && ( $conn === false || !$conn->isOpen() );
+				} while ( $i !== false && ( $conn === false || !$conn->isOpen() ) );
 				if ( $conn !== false && $conn->isOpen() ) {
 					$this->mReadIndex = $i;
 				}
