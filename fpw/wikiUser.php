@@ -18,7 +18,8 @@ class WikiUser {
 
 	# This sets the options for the standard skin
 	function skinBlank () {
-		$this->options["background"] = " BGCOLOR=\"#FFFFFF\"" ;
+		#$this->options["background"] = " BGCOLOR=\"#FFFFFF\"" ;
+		$this->options["background"] = "#FFFFFF" ;
 		$this->options["text"] = "" ;
 		$this->options["forceQuickBar"] = "" ;
 		$this->options["quickBarBackground"] = "" ;
@@ -34,8 +35,10 @@ class WikiUser {
 	# This sets the options for the StarTrek skin
 	function skinStarTrek () {
 		global $wikiStarTrekImage ;
-		$this->options["background"] = " BGCOLOR=\"#000000\" " ;
-		$this->options["text"] = " TEXT=\"#00BB00\" " ;
+		#$this->options["background"] = " BGCOLOR=\"#000000\" " ;
+		#$this->options["text"] = " TEXT=\"#00BB00\" " ;
+		$this->options["background"] = "#000000" ;
+		$this->options["text"] = "#00BB00" ;
 		$this->options["forceQuickBar"] = "left" ;
 		$this->options["quickBarBackground"] = " bgcolor=yellow " ;
 		$this->options["textTableBackground"] = " bgcolor=\"#444444\"" ;

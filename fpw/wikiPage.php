@@ -161,7 +161,8 @@ class WikiPage extends WikiTitle {
 			$dummy = new wikiTitle ;
 			$dummy->setTitle ( $n ) ;
 			if ( $dummy->doesTopicExist ( $connection ) )
-				array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"".wikiLink($n)."\">:".$this->getNiceTitle($n)."</a>" ) ;
+				#array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"".wikiLink($n)."\">:".$this->getNiceTitle($n)."</a>" ) ;
+				array_push ( $a , "<a class=\"green\" href=\"".wikiLink($n)."\">:".$this->getNiceTitle($n)."</a>" ) ;
 			}
 
 		if ( stristr ( $this->namespace , "talk" ) == false ) {
@@ -170,16 +171,18 @@ class WikiPage extends WikiTitle {
 			$n2 .= "Talk" ;
 			$dummy = new wikiTitle ;
 			$dummy->setTitle ( $n2.":$n" ) ;
-			if ( $dummy->doesTopicExist ( $connection ) ) $style = "color:green;text-decoration:none" ;
-			else $style = "color:red;text-decoration:none" ;
-			array_push ( $a , "<a style=\"$style\" href=\"".wikiLink($dummy->secureTitle)."\">$n2</a>" ) ;
+			#if ( $dummy->doesTopicExist ( $connection ) ) $style = "color:green;text-decoration:none" ;
+			#else $style = "color:red;text-decoration:none" ;
+			$style = $dummy->doesTopicExist ( $connection ) ? "green" : "red";
+			array_push ( $a , "<a class=\"$style\" href=\"".wikiLink($dummy->secureTitle)."\">$n2</a>" ) ;
 			}
 
 		while ( $s = mysql_fetch_object ( $result ) ) {
 			$t = explode ( ":" , $s->cur_title ) ;
 			$t = $u->getNiceTitle ( $t[0] ) ;
 			if ( strtolower ( substr ( $t , -4 ) ) != "talk" and strtolower ( $t ) != $this->namespace )
-				array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"".wikiLink("$t:$n")."\">$t</a>" ) ;
+				#array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"".wikiLink("$t:$n")."\">$t</a>" ) ;
+				array_push ( $a , "<a class=\"green\" href=\"".wikiLink("$t:$n")."\">$t</a>" ) ;
 			}
 		if ( $result != "" ) mysql_free_result ( $result ) ;
 		mysql_close ( $connection ) ;
@@ -298,36 +301,47 @@ class WikiPage extends WikiTitle {
 					$tt = ucfirst ( str_replace ( " " , "_" , $topic->mainTitle ) ) ;
 					$iwl = str_replace ( "$1" , $tt , $iwl ) ;
 					if ( $c[0] == $c[1] ) $text = $topic->getNiceTitle ( $topic->mainTitle ) ;
-					$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
+					#$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
+					$linkStyle = "class=\"interwiki\"";
 					$s .= "<a $linkStyle href=\"$iwl\">$text</a>" ;
 				} else if ( in_array ( strtolower ( $topic->namespace ) , array_keys ( $wikiOtherLanguages ) ) ) {
 					$tt = ucfirst ( str_replace ( " " , "_" , $topic->mainTitle ) ) ;
 					$iwl = str_replace ( "$1" , $tt , $wikiOtherLanguages[strtolower($topic->namespace)] ) ;
 					if ( $c[0] == $c[1] ) $text = $topic->getNiceTitle ( $topic->mainTitle ) ;
-					$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
+					#$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
+					$linkStyle = "class=\"interwiki\"";
 					$this->otherLanguages[$topic->namespace] = $iwl ;
 				} else if ( $doesItExist ) {
 					$linkedLinks[$topic->secureTitle]++ ;
 					if ( $user->options["showHover"] == "yes" ) $hover = "title=\"$link\"" ;
-					if ( $user->options["underlineLinks"] == "no" ) $linkStyle = " style=\"color:blue;text-decoration:none\"" ;
+					#if ( $user->options["underlineLinks"] == "no" ) $linkStyle = " style=\"color:blue;text-decoration:none\"" ;
 					$ulink = nurlencode ( $link ) ;
 					$s .= "<a href=\"".wikiLink($ulink)."\" $hover$linkStyle>$text</a>" ;
 				} else {
 					$unlinkedLinks[$link]++ ;
-					$text2 = $text ;
-					$style="" ;
+					#$text2 = $text ;
+					#$style="" ;
 					if ( $user->options["showHover"] == "yes" ) $hover = "title=\"Edit '$link'\"" ;
-					if ( substr_count ( $text2 , " " ) > 0 ) {
-						if ( $action == "print" ) $text2 = "<$wikiPrintLinksMarkup>$text2</$wikiPrintLinksMarkup>" ;
-						else $text2 = "[$text2]" ;
-						}
-					if ( $user->options["underlineLinks"] == "no" ) { $text = $text2 ; $style = ";text-decoration:none" ; }
-					$ulink = nurlencode ( $link ) ;
-					if ( $user->options["markupNewTopics"] == "red" )
-						$s .= "<a style=\"color:red$style\" href=\"".wikiLink("$ulink&action=edit")."\" $hover>$text</a>" ;
-					else if ( $user->options["markupNewTopics"] == "inverse" )
-						$s .= "<a style=\"color:white;background:blue$style\" href=\"".wikiLink("$ulink&action=edit")."\" $hover>$text</a>";
-					else $s .= "$text2<a href=\"".wikiLink("$ulink&action=edit")."\" $hover>?</a>" ;
+					#if ( substr_count ( $text2 , " " ) > 0 ) {
+					#	if ( $action == "print" ) $text2 = "<$wikiPrintLinksMarkup>$text2</$wikiPrintLinksMarkup>" ;
+					#	else $text2 = "[$text2]" ;
+					#	}
+					#if ( $user->options["underlineLinks"] == "no" ) { $text = $text2 ; $style = ";text-decoration:none" ; }
+					#$ulink = nurlencode ( $link ) ;
+					#if ( $user->options["markupNewTopics"] == "red" )
+					#	$s .= "<a style=\"color:red$style\" href=\"".wikiLink("$ulink&action=edit")."\" $hover>$text</a>" ;
+					#else if ( $user->options["markupNewTopics"] == "inverse" )
+					#	$s .= "<a style=\"color:white;background:blue$style\" href=\"".wikiLink("$ulink&action=edit")."\" $hover>$text</a>";
+					#else $s .= "$text2<a href=\"".wikiLink("$ulink&action=edit")."\" $hover>?</a>" ;
+					$ulink = wikilink( nurlencode ( $link ) . "&action=edit" ) ;
+					if ( substr_count ( $text , " " ) > 0 ) {
+						$s .= "<span class=\"newlinkedge\">[</span>";
+						$bracket = "]";
+					} else {
+						$bracket = "";
+					}
+					$s .= "<a class=\"newlink\" href=\"$ulink\" $hover>$text</a>" ;
+					$s .= "<span class=\"newlinkedge\">$bracket<a href=\"$ulink\" $hover>?</a></span>";
 					}
 				$s .= $b[1] ;
 				}
@@ -350,7 +364,8 @@ class WikiPage extends WikiTitle {
 		$s = array_shift ( $a ) ;
 		$s = substr ( $s , 1 ) ;
 		$image = "" ; # with an <img tag, this will be displayed before external links
-		$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
+		#$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
+		$linkStyle = "class=\"external\"";
 		foreach ( $a as $t ) {
 			$b = spliti ( "]" , $t , 2 ) ;
 			if ( count($b) < 2 ) $s .= "[Broken link : $b[0]]" ;
@@ -688,8 +703,8 @@ class WikiPage extends WikiTitle {
 
 		# Parsing through the text line by line
 		# The main thing happening here is handling of lines starting with * # : etc.
-		$justify = "" ;
-		if ( $user->options["justify"] == "yes" ) $justify = " align=justify" ;
+		$justify = " class=\"bodytext\"" ; # Justification is handled in the style sheet
+		#if ( $user->options["justify"] == "yes" ) $justify = " align=justify" ;
 		$a = explode ( "\n" , $s ) ;
 		$s = "<p$justify>" ;
 		$obegin = "" ;
