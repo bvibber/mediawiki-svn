@@ -122,7 +122,7 @@ function edit ( $title ) {
 	if ( $user->isLoggedIn == "yes" ) 
 		$ret .= "<input tabindex=3 type=checkbox name=MinorEdit $checked value=1>$wikiMinorEdit &nbsp; " ;
 	else
-		$ret .= "<input type=hidden name=MinorEdit value=1>" ;
+		$ret .= "<input type=hidden name=MinorEdit value=0>" ;
 	$ret .= "$wikiEditHelp<br>\n" ;
 	$ret .= "$wikiCopyrightNotice<br>\n" ;
 
