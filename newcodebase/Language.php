@@ -519,6 +519,7 @@ from server (U.S. Pacific) time.
 For example, for U.S. East coast, enter \"3\".",
 "localtime"	=> "Local time",
 "timezoneoffset" => "Offset",
+"emailflag"		=> "Disable e-mail from other users",
 
 # Recent changes
 #
@@ -702,8 +703,8 @@ The e-mail address you entered in your user preferences will appear
 as the \"From\" address of the mail, so the recipient will be able
 to reply.",
 "noemailtitle"	=> "No e-mail address",
-"noemailtext"	=> "This user has not specified a valid e-mail address
-in his user preferences.",
+"noemailtext"	=> "This user has not specified a valid e-mail address,
+or has chosen not to receive e-mail from other users.",
 "emailfrom"		=> "From",
 "emailto"		=> "To",
 "emailsubject"	=> "Subject",
