@@ -88,7 +88,8 @@ class Skin {
 			$a = array( "bgcolor" => "#FFFFDD" );
 		}
 		else $a = array( "bgcolor" => "#FFFFFF" );
-		if($wgOut->isArticle() && $wgUser->getOption("editondblclick") ) {
+		if($wgOut->isArticle() && $wgUser->getOption("editondblclick")
+			&& !$wgTitle->isProtected()) {
 			$n = $wgTitle->getPrefixedURL();
 			$t = wfMsg( "editthispage" );
 			$oid = $red = "";
