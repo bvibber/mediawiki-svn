@@ -324,11 +324,19 @@ class OutputPage {
 		$elapsed = $now - $start;
 
 		if ( "" != $wgDebugLogFile ) {
+			if( $forward = $HTTP_SERVER_VARS['HTTP_X_FORWARDED_FOR'] )
+				$forward = " forwarded for $forward";
+			if( $client = $HTTP_SERVER_VARS['HTTP_CLIENT_IP'] )
+				$forward .= " client IP $client";
+			if( $from = $HTTP_SERVER_VARS['HTTP_FROM'] )
+				$forward .= " from $from";
+			if( $forward )
+				$forward = "\t(proxied via {$HTTP_SERVER_VARS['REMOTE_ADDR']}{$forward})";
 			$log = sprintf( "%s\t%04.3f\t%s\n",
 			  date( "YmdHis" ), $elapsed,
-			  urldecode( $HTTP_SERVER_VARS['REQUEST_URI'] ) );
+			  urldecode( $HTTP_SERVER_VARS['REQUEST_URI'] . $forward ) );
 			error_log( $log, 3, $wgDebugLogFile );
-        }
+		}
 		$com = sprintf( "<!-- Time since request: %01.2f secs. -->",
 		  $elapsed );
 		return $com;
