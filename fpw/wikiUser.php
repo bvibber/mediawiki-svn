@@ -86,8 +86,16 @@ class WikiUser {
     # Creates a style sheet for the page from the skin & link style options
     function styleSheet( $action = "view" ) {
         global $namespaceBackground ;
+	$cb = "Cologne Blue" ;
+	$skin = $this->options[skin] ;
         $ret = "<style type=\"text/css\"><!--\n";
         $ret .= "body { ";
+	if ( $skin == $cb ) {
+		$ret .= "	background-color: #FFFFFF;\n" ;
+		$ret .= "	margin-top: 0px;\n" ;
+		$ret .= "	margin-left: 0px;\n" ;
+		$ret .= "	margin-right: 0px;\n" ;
+		}
         $textcolor = $this->options[text];
         $bgcolor = $this->options[background];
 	if ( $this->options["skin"] == "Nostalgy" OR $this->options[skin] == "Cologne Blue" ) $namespaceBackground = "" ;
@@ -102,17 +110,104 @@ class WikiUser {
             $ret .= "background: $bgcolor; ";
 	if ( $this->options[skin] == "Cologne Blue" ) $ret .= "margin: 0; " ;
         $ret .= "}\n";
-        
-        $ret .= ".bodytext { " . 
-		(($this->options[justify] == "yes") ? "text-align: justify; " : "") . 
-		(($this->options[skin] == "Cologne Blue") ? "font-family:verdana,serif; font-size:11pt; margin: 0 0.5em;" : "") . 
-		"}\n";
+
+	if ( $skin == $cb ) {
+		$ret .= "
+		.header {
+			background-color: #7089AA;
+		}
+
+		.footnote {
+			font-size: 8pt;
+			color: #666666;
+		}
+
+		p.topmenu {
+			margin-bottom: 4px;
+			text-transform: uppercase;
+			color: #FFFFFF;
+			font-family: Verdana, sans-serif;
+			font-size: 8pt;
+		}
+
+		a.topmenu {
+			color: #FFFFFF;
+			text-decoration: none;
+			font-size: 10pt;
+		}
+
+		.tagline {
+			color: #000000;
+			text-transform: uppercase;
+			font-family: Verdana, sans-serif;
+			font-size: 11px;
+		}
+
+		p, form, dl {
+			font-family: Verdana, sans-serif;
+			font-size: 10pt;
+		}
+
+		h1 {
+			font-family: Helvetica, Arial, sans-serif;
+			color: #858585;
+			font-size: 18pt;
+			font-weight: bold;
+		}
+		span.spacer {
+			font-family: sans-serif;
+			font-size: 20px;
+		}
+
+		input {
+			font-family: Verdana, sans-serif;
+			font-size: 8pt;
+		}
+
+		p.menu {
+			font-family: Verdana, sans-serif;
+			font-size: 8pt;
+			line-height: 13pt;
+		}
+
+		span.menuhead {
+			font-family: Verdana, sans-serif;
+			font-size: 8pt;
+			font-weight: bold;
+			color: #999999;
+		}
+
+		a.menulink {
+			font-weight: bold;
+			text-decoration: none;
+			color: #4B6587;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		.bodytext {
+			font-family: Verdana, sans-serif;
+			font-size: 10pt;
+			text-align: justify;
+		}
+		a, a.external {
+			color: #4B6587
+		}
+
+		a.external {
+			text-decoration: none;
+		}
+		a.interwiki { color: #3333BB; text-decoration: none; }
+		" ;
+		}
+
         $ret .= "a { text-decoration: " . (($this->options[underlineLinks] == "no") ? "none" : "underline") . "; }\n";
         
         $qbside = ( $this->options["quickBar"] == "left" ) ? "right" : "left";
 	if ( $this->options[skin] == "Cologne Blue" ) {
 		$qbside = "nope" ; # nope is a dummy, will be ignored
-		$ret .= "a:visited { color:blue; text-decoration: none; }\n" ;
 		}
         $ret .= "a.interwiki, a.external { color: #3333BB; text-decoration: none; }\n" .
             "a.red { color: red; text-decoration: none; }\n" .
@@ -131,7 +226,7 @@ class WikiUser {
             $ret .= "a.newlink { color: red; }\n.newlinkedge { display: none; }\n";
         } elseif ( $this->options[markupNewTopics] == "inverse") {
             $ret .= "a.newlink { color: white; background: blue; }\n.newlinkedge { display: inline; }\n";
-        } else {
+        } else if ( $skin != $cb ) {
             $ret .= "a.newlink { color: $textcolor; text-decoration: none; }\n.newlinkedge { display: inline; }\n";
             }
         $ret .= "//--></style>";
