@@ -67,10 +67,18 @@ for wikidb. Then run mysql as that user:
   mysql> source wikipedia.sql;
 in order to create the tables needed.
 
+The mysql server needs to use the same timezone as php, or else you
+will later get bogus edit conflicts. Do:
+  $ mysql -u wikiuser
+  mysql> select now();
+If the output is different from your current local time, you should
+start mysqld with the --timezone command line option, or set your TZ
+environment variable.
+
 You then need to edit the file wikiLocalSettings.php. Add lines like
 this:
 
-$wikiThisDBserver = "127.0.0.1";  # the address of the computer running mysqld
+$wikiThisDBserver = "127.0.0.1";  # the IP address of the computer running mysqld
 $wikiSQLServer = "wikidb";        # the mysql database used for Wikipedia
 $wikiThisDBuser = "wikiuser";     # the mysql user
 $wikiThisDBpassword = "xxx";      # mysql password
