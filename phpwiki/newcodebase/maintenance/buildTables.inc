@@ -18,11 +18,19 @@ function buildTables()
   user_password tinyblob NOT NULL default '',
   user_newpassword tinyblob NOT NULL default '',
   user_email tinytext NOT NULL default '',
-  user_options blob NOT NULL default '',
-  user_newtalk tinyint(1) unsigned NOT NULL default '1',
+  user_options blob NOT NULL default '',  
   UNIQUE KEY user_id (user_id)
 ) TYPE=MyISAM PACK_KEYS=1";
 	wfQuery( $sql );
+	
+	$sql ="CREATE TABLE user_newtalk (
+  user_id int(5) NOT NULL default '0',
+  user_ip varchar(40) NOT NULL default '',
+  PRIMARY KEY  (user_id),
+  KEY user_ip (user_ip)
+) TYPE=MyISAM";
+	wfQuery ($sql);
+
 
 	$sql = "DROP TABLE IF EXISTS cur";
 	wfQuery( $sql );

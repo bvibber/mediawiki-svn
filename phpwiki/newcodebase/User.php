@@ -164,9 +164,31 @@ class User {
 
 	function loadFromDatabase()
 	{
-		if ( 0 == $this->mId || $this->mDataLoaded ) { return; }
+		if ( $this->mDataLoaded ) { return; }		
+		# check in separate table if there are changes to the talk page
+		$this->mNewtalk=0; # reset talk page status
+		if($this->mId) {		
+			$sql = "SELECT user_id FROM user_newtalk WHERE user_id={$this->mId}";									
+			$res = wfQuery ($sql,  "User::loadFromDatabase" );
+
+			if (wfNumRows($res)>0) {				
+				$this->mNewtalk= 1;
+			}
+			wfFreeResult( $res );
+		} else {
+			
+			$sql = "SELECT user_id FROM user_newtalk WHERE user_ip='{$this->mName}'";			
+			$res = wfQuery ($sql,  "User::loadFromDatabase" );
+			
+			if (wfNumRows($res)>0) {				
+				$this->mNewtalk= 1;
+			}
+			wfFreeResult( $res );
+		}
+		if(!$this->mId) { return;} # the following stuff is for non-anonymous users only
+		
 		$sql = "SELECT user_name,user_password,user_newpassword,user_email," .
-		  "user_options,user_rights,user_newtalk FROM user WHERE user_id=" .
+		  "user_options,user_rights FROM user WHERE user_id=" .
 		  "{$this->mId}";
 		$res = wfQuery( $sql, "User::loadFromDatabase" );
 
@@ -178,8 +200,8 @@ class User {
 			$this->mNewpassword = $s->user_newpassword;
 			$this->decodeOptions( $s->user_options );
 			$this->mRights = explode( ",", strtolower( $s->user_rights ) );
-			$this->mNewtalk = $s->user_newtalk;
-		}
+		}				
+		
 		wfFreeResult( $res );
 		$this->mDataLoaded = true;
 	}
@@ -409,7 +431,23 @@ class User {
 
 	function saveSettings()
 	{
-		if ( 0 == $this->mId ) { return; }
+		global $wgUser;
+	
+		if(!$this->mNewtalk) {
+		
+			if($this->mId) {
+				$sql="DELETE FROM user_newtalk WHERE user_id={$this->mId}";
+				wfQuery ($sql,"User::saveSettings");
+			} else {
+			
+				
+				$sql="DELETE FROM user_newtalk WHERE user_ip='{$this->mName}'";
+				wfQuery ($sql,"User::saveSettings");
+				
+			}
+		}
+
+		if ( 0 == $this->mId ) { return; }					
 
 		$sql = "UPDATE user SET " .
 		  "user_name= '" . wfStrencode( $this->mName ) . "', " .
@@ -418,8 +456,7 @@ class User {
 		  "user_email= '" . wfStrencode( $this->mEmail ) . "', " .
 		  "user_options= '" . $this->encodeOptions() . "', " .
 		  "user_rights= '" . wfStrencode( implode( ",", $this->mRights ) ) .
-		  "', user_newtalk=" . ( $this->mNewtalk ? "1" : "0" ) .
-		  " WHERE user_id={$this->mId}";
+		  "' WHERE user_id={$this->mId}";
 		wfQuery( $sql, "User::saveSettings" );
 	}
 
@@ -447,13 +484,13 @@ class User {
 	function addToDatabase()
 	{
 		$sql = "INSERT INTO user (user_name,user_password,user_newpassword," .
-		  "user_email, user_rights, user_options, user_newtalk) " .
+		  "user_email, user_rights, user_options) " .
 		  " VALUES ('" . wfStrencode( $this->mName ) . "', '" .
 		  wfStrencode( $this->mPassword ) . "', '" .
 		  wfStrencode( $this->mNewpassword ) . "', '" .
 		  wfStrencode( $this->mEmail ) . "', '" .
 		  wfStrencode( implode( ",", $this->mRights ) ) . "', '" .
-		  $this->encodeOptions() . "', 0 )";
+		  $this->encodeOptions() . "')";
 		wfQuery( $sql, "User::addToDatabase" );
 		$this->mId = $this->idForName();
 	}

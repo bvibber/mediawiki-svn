@@ -341,6 +341,8 @@ See $1.",
 "sitetitle"		=> "Wikipedia",
 "sitesubtitle"	=> "The Free Encyclopedia",
 "retrievedfrom" => "Retrieved from \"$1\"",
+"newmessages" => "You have ",
+"newmessageslink" => "new messages.",
 
 # Main script and global functions
 #
@@ -458,6 +460,7 @@ The reason given is this:<br>''$2''<p>You may contact $1 or one of the other
 [[Wikipedia:administrators|administrators]] to discuss the block.",
 "newarticle"	=> "(New)",
 "newarticletext" => "Put your text for the new page here.",
+"anontalkpagetext" => "---- ''This is the discussion page for an anonymous user who has not created an account yet or who does not use it. We therefore have to use the numerical [[IP address]] to identify him/her. Such an IP address can be shared by several users. If you are an anonymous user and feel that irrelevant comments have been directed at you, please [[Special:Userlogin|create an account or log in]] to avoid future confusion with other anonymous users.'' ",
 "noarticletext" => "(There is currently no text in this page)",
 "updated"		=> "(Updated)",
 "note"			=> "<strong>Note:</strong> ",

@@ -52,3 +52,10 @@ the 'math' source subdirectory under the wiki's PHP directory and run
 TeX support requires TeX, OCaml, and ImageMagick. If you don't want
 to use TeX support on your wiki, you can globally disable it by
 setting $wgUseTeX=false in LocalSettings.php.
+
+* 2003-01-24: Talk pages for anonymous users
+A new table user_newtalk contains a list of talk pages that were
+changed, both pages by anonymous and those by non-anonymous users.
+
+Run patch-usernewtalk.sql if your database was created before
+this date.

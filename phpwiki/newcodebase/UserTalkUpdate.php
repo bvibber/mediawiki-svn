@@ -14,6 +14,7 @@ class UserTalkUpdate {
 
 	function doUpdate()
 	{
+	
 		global $wgUser, $wgLang;
 		$fname = "UserTalkUpdate::doUpdate";
 
@@ -25,21 +26,27 @@ class UserTalkUpdate {
 		}
 		# If the user talk page is our own, clear the flag
 		# whether we are reading it or writing it.
-
 		if ( 0 == strcmp( $this->mTitle, $wgUser->getName() ) ) {
-			$wgUser->setNewtalk( 0 );
+			
+			$wgUser->setNewtalk( 0 );			
 			$wgUser->saveSettings();
+
 		} else {
 			# Not ours.  If writing, mark it as modified.
 
-			if ( 1 == $this->mAction ) {
+			if ( 1 == $this->mAction ) {				
 				$id = User::idFromName( $this->mTitle );
-				if ( 0 == $id ) { return; }
-
-				$sql = "UPDATE LOW_PRIORITY user SET user_newtalk=1 WHERE user_id={$id}";
+				if ( 0 != $id ) {
+				$sql = "INSERT INTO user_newtalk (user_id) values ({$id})";
+				} else {
+				$sql = "INSERT INTO user_newtalk (user_id,user_ip) values (0,\"{$this->mTitle}\")";
+				}
+				
 				wfQuery( $sql, $fname );
 			}
 		}
+		
+	
 	}
 }
 

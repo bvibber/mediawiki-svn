@@ -48,20 +48,34 @@ class Article {
 
 	function getContent( $noredir = false )
 	{
-		global $action; # From query string
+		global $action,$wgTitle; # From query string
 		wfProfileIn( "Article::getContent" );
 
 		if ( 0 == $this->getID() ) {
-			global $wgTitle;
 			if ( "edit" == $action ) {
+			
+				global $wgTitle;
 				return wfMsg( "newarticletext" );
+				
+				
 			}
 			wfProfileOut();
 			return wfMsg( "noarticletext" );
 		} else {
 			$this->loadContent( $noredir );
 			wfProfileOut();
-			return $this->mContent;
+						
+			if(
+				# check if we're displaying a [[User talk:x.x.x.x]] anonymous talk page
+				( $wgTitle->getNamespace() == Namespace::getTalk( Namespace::getUser()) ) &&
+				  preg_match("/\d{1,3}\.\d{1,3}.\d{1,3}\.\d{1,3}/",$wgTitle->getText()) &&
+				  $action=="view"
+				) 
+				{
+				return $this->mContent . "\n" .wfMsg("anontalkpagetext"); }
+			else {
+				return $this->mContent;
+			}
 		}
 	}
 
