@@ -291,6 +291,14 @@ class User {
 
 		return in_array( "developer", $this->mRights );
 	}
+	
+	function isBot()
+	{
+		$this->loadFromDatabase();
+		if ( 0 == $this->mId ) { return false; }
+		
+		return in_array( "bot", $this->mRights );
+	}
 		
 	function &getSkin()
 	{
