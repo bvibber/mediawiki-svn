@@ -412,6 +412,9 @@ class Article {
 		}
 		$rows = $wgUser->getOption( "rows" );
 		$cols = $wgUser->getOption( "cols" );
+                $ew = $wgUser->getOption( "editwidth" );
+                if ( $ew ) $ew = " style='width:100%'";
+                else $ew = "" ;
 
 		$q = "action=submit";
 		if ( "no" == $redirect ) { $q .= "&redirect=no"; }
@@ -436,7 +439,7 @@ class Article {
 		$wgOut->addHTML( "
 <form method=post action=\"$action\"
 enctype='application/x-www-form-urlencoded'>
-<textarea tabindex=1 name='wpTextbox1' rows={$rows} cols={$cols} wrap=virtual>
+<textarea tabindex=1 name='wpTextbox1' rows={$rows} cols={$cols}{$ew} wrap=virtual>
 {$wpTextbox1}
 </textarea><br>
 {$summary}: <input tabindex=2 type=text value=\"{$wpSummary}\" name='wpSummary' maxlength=200>

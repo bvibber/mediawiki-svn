@@ -29,6 +29,7 @@
 	"hideminor" => "Keine kleinen Änderungen in Letzte Änderungen anzeigen",
 	"numberheadings" => "Überschriften automatisch numerieren",
 	"rememberpassword" => "Passwort merken",
+	"editwidth" => "Text-Eingabefeld mit voller Breite"
 );
 
 /* private */ $wgLanguageNamesDe = array(
