@@ -80,7 +80,7 @@
 	"mn"    => "http://mn.wikipedia.com/wiki.cgi?$1",
 	"mo"    => "http://mo.wikipedia.com/wiki.cgi?$1",
 	"mr"    => "http://mr.wikipedia.com/wiki.cgi?$1",
-	"ms"    => "http://ms.wikipedia.com/wiki.cgi?$1",
+	"ms"    => "http://ms.wikipedia.org/wiki/$1",
 	"my"    => "http://my.wikipedia.com/wiki.cgi?$1",
 	"na"    => "http://na.wikipedia.com/wiki.cgi?$1",
 	"ne"    => "http://ne.wikipedia.com/wiki.cgi?$1",
