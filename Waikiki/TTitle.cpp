@@ -54,7 +54,7 @@ TUCS TTitle::getDBkey ()
         
 TUCS TTitle::getNamespace ()
     {
-    return LANG->getUCfirst ( ns ) ;
+    return UC1 ( ns ) ;
     }
     
 int TTitle::getNamespaceID ()

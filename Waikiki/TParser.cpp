@@ -14,6 +14,7 @@ void TParser::parse_heading ( TUCS &s )
 
 // This attempts to parse a link
 // c initially points to the first '['
+/*
 uint *TParser::parse_internal_link ( uint *c , TUCS &s , TUCS &t )
     {
     uint *d ;
@@ -37,9 +38,18 @@ uint *TParser::parse_internal_link ( uint *c , TUCS &s , TUCS &t )
     if ( !intext ) text = link ;
     text += trail ;
     
-    t += SKIN->getInternalLink ( TTitle(link) , text ) ;
+    TTitle ti ( link ) ;
+    if ( ti.getNamespaceID() == 6 )
+        {
+//        unsigned char sig[MD5_SIZE] ;
+//        char *c = (char*) ti.getJustTitle().getstring().c_str() ;
+//        md5_buffer(c, strlen(c), sig);
+//        text = (char*) sig ;
+        t += SKIN->getInternalLink ( ti , text ) ;
+        }
+    else t += SKIN->getInternalLink ( ti , text ) ;
     return d ;
-    }
+    }*/
     
 bool TParser::parse_external_link ( TUCS &s )
     {
@@ -107,6 +117,16 @@ bool TParser::parse_internal_link ( TUCS &s )
         x += t.getJustTitle() + "\">" + text + "</a>" ;
         OUTPUT->languageLinks.push_back ( x ) ;
         s = s.substr ( c ) ;
+        }
+    else if ( t.getNamespaceID() == 6 )
+        {
+        unsigned char md5_sig[MD5_SIZE] ;
+        char *xx , *md5_c = (char*) t.getJustTitle().getstring().c_str() ;
+        for ( xx = md5_c ; *xx ; xx++ )
+           if ( *xx >= 'A' && *xx <= 'Z' ) *xx = *xx - 'A' + 'a' ;
+        md5_buffer(md5_c, strlen(md5_c), md5_sig);
+        text = (char*) md5_sig ;
+        s = SKIN->getArticleLink ( t , text ) + s.substr ( c ) ;
         }
     else s = SKIN->getArticleLink ( t , text ) + s.substr ( c ) ;
     
