@@ -130,10 +130,13 @@ void TWikiInterface::run (int argc, char *argv[])
         }
     }
 
-void loadMySQLdump ( string filename , vector <TArticle*> &va )
+
+//*****************************************************
+
+void makeMySQLdump ( string fn_in , string fn_out )
     {
     long l ;
-    ifstream in ( filename.c_str() , ios::in | ios::binary ) ;
+    ifstream in ( fn_in.c_str() , ios::in | ios::binary ) ;
     in.seekg (0, ios::end);
     l = in.tellg();
     in.seekg (0, ios::beg);    
@@ -141,6 +144,11 @@ void loadMySQLdump ( string filename , vector <TArticle*> &va )
     in.read ( t , l ) ;
     in.close () ;
     t[l] = 0 ;
+    
+    string cur ;
+    sqlite *db = sqlite_open ( fn_out.c_str() , 0 , NULL ) ;
+    sqlite_exec ( db , "BEGIN;" , 0 , 0 , 0 ) ;
+    
     
     vector <char*> vc ;
     char *c ;
@@ -158,18 +166,23 @@ void loadMySQLdump ( string filename , vector <TArticle*> &va )
     // All lines now indexed in vc
     cout << vc.size() << " lines\n" ;
     
+    TUCS unique = " " ;
+    unique[0] = 1 ;
+    
     VTUCS index ;
     TUCS table_name ;
+    vector <string> values ;
     uint a ;
     bool creating = false ;
     for ( a = 0 ; a < vc.size() ; a++ )
         {
         cout << a << endl ;
-        TUCS s ( vc[a] ) ;
-        s.trim() ;
-        if ( s.substr ( 0 , 2 ) == "--" || s.substr ( 0 , 2 ) == "/*" ) continue ;
-        if ( s.substr ( 0 , 7 ) == "CREATE " )
+        char *x = vc[a] ;
+        if ( *x == '-' && *(x+1) == '-' ) continue ;
+        else if ( *x == '/' && *(x+1) == '*' ) continue ;
+        else if ( *x == 'C' )
            {
+           TUCS s ( x ) ; s.trim() ;
            creating = true ;
            s += " " ;
            s.replace ( "CREATE" , "" ) ;
@@ -177,15 +190,21 @@ void loadMySQLdump ( string filename , vector <TArticle*> &va )
            s.replace ( "(" , "" ) ;
            s.trim() ;
            table_name = s ;
-//           cout << "Creating table '" << s.getstring() << "'\n" ;
+           cur = "CREATE TABLE " + s.getstring() + " ( " ;
            }
-        else if ( s.substr ( 0 , 1 ) == ")" && creating )
+        else if ( *x == ')' && creating )
            {
+           TUCS s ( x ) ; s.trim() ;
+           cur += ");" ;
+           sqlite_exec ( db , "DROP TABLE cur;" , 0 , 0 , 0 ) ;
+           sqlite_exec ( db , cur.c_str() , 0 , 0 , 0 ) ;
+           cur = "" ;
            creating = false ;
            }
         else if ( creating )
            {
-           TUCS q = " " + s + " " ;
+           TUCS s ( x ) ; s.trim() ;
+           TUCS q = " " + s.getstring() + " " ;
            if ( q.find ( " KEY " ) < q.length() )
               {
               }
@@ -193,42 +212,66 @@ void loadMySQLdump ( string filename , vector <TArticle*> &va )
               {
               s.trim () ;
               VTUCS x ;
+              s.replace ( "binary" , "" ) ;
+              s.replace ( "unsigned" , "" ) ;
+              s.replace ( " integer" , " int" ) ;
+              s.replace ( " int" , " integer" ) ;
+              s.replace ( "auto_increment" , "" ) ;
+              while ( s.replace ( "  " , " " ) > 0 ) ;
+              s.trim() ;
+              s.pop_back() ;
+
+              if ( index.size() > 0 ) cur += " , " ;
+              cur += s.getstring() + "\n" ;
+
               s.explode ( " " , x ) ;
               index.push_back ( x[0] ) ;
-//              cout << "Creating " << x[0].getstring() << endl ;
+//              cout << "Creating " << s.getstring() << endl ;
               }
            }
-        else if ( s.substr ( 0 , 12 ) == "INSERT INTO " )
+        else if ( *x == 'I' )
            {
            uint l , b ;
            uint idx = 0 ;
-           for ( b = 0 ; s[b] != '(' ; b++ ) ;
+           for ( b = 0 ; x[b] != '(' ; b++ ) ;
            l = b+1 ;
            bool quote = false ;
-           for ( b = l ; b < s.length() && ( quote || s[b] != ';' ) ; b++ )
+           for ( b = l ; x[b] && ( quote || x[b] != ';' ) ; b++ )
               {
-              if ( s[b] == SINGLE_QUOTE && s[b-1] != '\\' )
+              if ( x[b] == SINGLE_QUOTE && x[b-1] != '\\' )
                  {
                  quote = !quote ;
                  if ( quote ) l = b+1 ;
                  }
-              else if ( ( s[b] == ',' || s[b] == ')' ) && !quote )
+              else if ( ( x[b] == ',' || x[b] == ')' ) && !quote )
                  {
-                 TUCS t2 = s.substr ( l , b - l ) ;
-                 if ( t2[t2.length()-1] == SINGLE_QUOTE ) t2.pop_back() ;
+                 char y = x[b] ;
+                 x[b] = 0 ;
+                 
+                 if ( x[b-1] == SINGLE_QUOTE ) x[b-1] = 0 ;               
 
-                 if ( idx == 0 ) va.push_back ( new TArticle() ) ;
-                 TArticle *da = va[va.size()-1] ;
-                 if ( index[idx] == "cur_title" ) da->setTitle ( TTitle ( t2 , FROM_DBKEY ) ) ;
-                 if ( index[idx] == "cur_text" ) da->setSource ( t2 ) ;
+                 for ( char *z = x+l ; *z ; z++ )
+                    if ( *z == '\\' && *(z+1) == SINGLE_QUOTE )
+                       *z = SINGLE_QUOTE ;
+
+                 values.push_back ( x+l ) ;
 
                  idx++ ;
                  l = b+1 ;
-                 if ( s[b] == ')' )
+                 if ( y == ')' )
                     {
-                    while ( b < s.length() && s[b] != '(' ) b++ ;
+                    cur = "INSERT INTO " + table_name.getstring() + " VALUES ( " ;
+                    for ( idx = 0 ; idx < values.size() ; idx++ )
+                       {
+                       if ( idx > 0 ) cur += "," ;
+                       cur += "'" + values[idx] + "'" ;
+                       }
+                    cur += ");" ;
+                    sqlite_exec ( db , cur.c_str() , 0 , 0 , 0 ) ;
+                    b++ ;
+                    while ( x[b] && x[b+1] && x[b] != '(' ) b++ ;
                     l = b+1 ;
-                    idx = 0 ;
+                    values.clear() ;
                     }
                  }
               }
@@ -236,35 +279,11 @@ void loadMySQLdump ( string filename , vector <TArticle*> &va )
         }
     
     delete t ;
-//    system("PAUSE");	
+    sqlite_exec ( db , "COMMIT;" , 0 , 0 , 0 ) ;
+    system("PAUSE");	
     }
 
-void saveSQLITE ( string filename , vector <TArticle*> &va )
-    {
-    string cur = "CREATE TABLE cur (
-    cur_title varchar(255) NOT NULL default '',
-    cur_text mediumtext NOT NULL
-    );" ;
-    
-    sqlite *db = sqlite_open ( filename.c_str() , 0 , NULL ) ;
-//    sqlite_exec ( db , "BEGIN;" , 0 , 0 , 0 ) ;
-    sqlite_exec ( db , "DROP TABLE cur;" , 0 , 0 , 0 ) ;
-    sqlite_exec ( db , cur.c_str() , 0 , 0 , 0 ) ;
 
-    uint a ;
-    for ( a = 0 ; a < va.size() ; a++ )
-        {
-        string _ti , _tx ;
-        _ti = va[a]->getTitle().getNiceTitle().getstring() ;
-        _tx = va[a]->getSource().getstring() ;
-        sqlite_exec_printf(db,
-                "INSERT INTO cur VALUES('%q','%q');",
-                0, 0, 0, _ti.c_str(), _tx.c_str());
-        }
-//    sqlite_exec ( db , "COMMIT;" , 0 , 0 , 0 ) ;
-
-    sqlite_close ( db ) ;
-    }
 
 //************************************* MAIN
 
@@ -278,12 +297,8 @@ int main(int argc, char *argv[])
 /*
     // Convert a MySQL dump imto a sqlite file
     vector <TArticle*> va ;
-//    loadMySQLdump ( ".\\brief_cur_table.sql" , va ) ;
-    loadMySQLdump ( ".\\20030906_cur_table.sql" , va ) ;
-
-    saveSQLITE ( ".\\test.sqlite" , va ) ;
+    makeMySQLdump ( ".\\20030906_cur_table.sql" , ".\\test.sqlite" ) ;
 */
-
     return 0;
 }
 
