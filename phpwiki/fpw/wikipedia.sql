@@ -2,7 +2,7 @@
 #
 # Host: localhost    Database: wikipedia
 #--------------------------------------------------------
-# Server version	3.23.47-max-debug
+# Server version	3.23.47
 
 #
 # Table structure for table 'cur'
@@ -20,8 +20,6 @@ CREATE TABLE cur (
   cur_minor_edit tinyint(1) default '0',
   cur_restrictions tinyblob,
   cur_params mediumtext,
-  cur_linked_links mediumtext,
-  cur_unlinked_links mediumtext,
   cur_counter bigint(20) unsigned default '0',
   cur_cache mediumtext,
   cur_ind_title varchar(255) default NULL,
@@ -39,8 +37,8 @@ CREATE TABLE cur (
 CREATE TABLE linked (
   linked_to varchar(255) binary NOT NULL default '',
   linked_from varchar(255) binary NOT NULL default '',
-  KEY linked_from (linked_from),
-  KEY linked_to (linked_to)
+  KEY linked_to (linked_to),
+  KEY linked_from (linked_from)
 ) TYPE=MyISAM;
 
 #
