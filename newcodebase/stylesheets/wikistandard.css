@@ -1,28 +1,24 @@
+#article { padding: 4px; }
+#content { position: absolute; top: 0;  margin: 0; padding: 0; }
+#footer { padding: 4px; }
+#pagestats { font-size: 9pt; }
+#quickbar { width: 140px; padding: 4px; visibility: visible; z-index: 99; }
+#topbar { padding: 4px; }
 .bodytext { }
-h1.pagetitle {
- padding-top: 0; margin-top: 0; padding-bottom: 0; margin-bottom: 0;
-}
-p.subtitle { padding-top: 0; margin-top: 0; }
-p.subpages { font-size:small;}
 a.interwiki, a.external { color: #3366BB; }
-body { margin: 0px; padding: 4px; }
-a.stub { color:#772233; text-decoration:none; }
 a.printable { text-decoration: underline; }
 a.stub { color:#772233; text-decoration:none; }
+a.stub { color:#772233; text-decoration:none; }
+body { margin: 0px; padding: 4px; }
 form.inline { display: inline; }
-#content { position: absolute; top: 0;  margin: 0; padding: 0; }
-#topbar { padding: 4px; }
-td.top { border-bottom: 2px solid #000000; }
-#quickbar { width: 140px; padding: 4px; visibility: visible; z-index: 99; }
-#article { padding: 4px; }
-#footer { padding: 4px; }
-#pagestats {
- font-size: 9pt;
-}
-td.bottom { border-top: 2px solid #000000; }
-h2, h3, h4, h5, h6 { margin-bottom: 0; }
+h1.pagetitle { padding-top: 0; margin-top: 0; padding-bottom: 0; margin-bottom: 0; }
 h2 { font-size: 125%; }
+h2, h3, h4, h5, h6 { margin-bottom: 0; }
 h3 { font-size: 112.5%; }
 h4 { font-size: 106.25%; }
 h5 { font-size: 103.125%; }
 h6 { font-size: 100%; }
+p.subpages { font-size:small;}
+p.subtitle { padding-top: 0; margin-top: 0; }
+td.bottom { border-top: 2px solid #000000; }
+td.top { border-bottom: 2px solid #000000; }
