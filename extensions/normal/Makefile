@@ -8,7 +8,7 @@ php_$(PRODUCT).so : $(PRODUCT).cpp $(PRODUCT)_wrap.cpp
 	g++ -O2 `php-config --includes` -licuuc $(SHARED) -o php_$(PRODUCT).so $(PRODUCT).cpp $(PRODUCT)_wrap.cpp
 
 $(PRODUCT)_wrap.cpp : $(PRODUCT).i
-	swig -php4 -c++ $(PRODUCT).i
+	swig -Wall -php4 -c++ $(PRODUCT).i
 
 install : php_$(PRODUCT).so
 	cp php_$(PRODUCT).so "$(INSTALL_TARGET)"

@@ -15,13 +15,16 @@ $tests = array(
 	"こんにちは、世界" => "こんにちは、世界",
 	"a\xcc\x80" => "à",
 	"e\xcc\x81" => "é",
+	
+	"\xc0" => NULL, # Head byte at end is known to fail
+	"\xc0\x20" => "\xef\xbf\xbd\x20", # If followed, replacement char is ok
 );
 
 $failed = false;
 foreach( $tests as $input => $expect ) {
 	$output = utf8_normalize( $input, UNORM_NFC );
 	print "\"$input\" -> \"$output\"";
-	if( $output == $expect ) {
+	if( $output === $expect ) {
 		print " - ok\n";
 	} else {
 		print " - FAILED\n";

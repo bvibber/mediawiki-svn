@@ -16,23 +16,28 @@
 /**
  * Caller must free the returned string...
  */
-const char *utf8_normalize(const char *utf8_string, int mode) {
+char *utf8_normalize(const char *utf8_string, int mode) {
 	UnicodeString source( utf8_string, "UTF-8" );
-	UnicodeString dest;
-	UErrorCode status = U_ZERO_ERROR;
-	Normalizer::normalize(source, (UNormalizationMode)mode, 0, dest, status);
-	if( U_SUCCESS( status ) ) {
-		int length = dest.length();
-		int utf8_length = dest.extract( 0, length, NULL, "UTF-8" );
-		char *utf8_out = (char *)malloc( utf8_length + 1 );
-		dest.extract( 0, length, utf8_out, "UTF-8" );
-		return utf8_out;
-	} else {
+	if( source.isBogus() ) {
 #ifdef DEBUG
-		printf( "Failed: %s (%d)\n", u_errorName( status ), (int)status );
+		printf( "utf8_normalize given bogus string.\n" );
 #endif
-		char *utf8_out = (char *)malloc( 1 );
-		utf8_out[0] = 0;
-		return utf8_out;
+	} else {
+		UnicodeString dest;
+		UErrorCode status = U_ZERO_ERROR;
+		Normalizer::normalize(source, (UNormalizationMode)mode, 0, dest, status);
+		if( U_SUCCESS( status ) ) {
+			int length = dest.length();
+			int utf8_length = dest.extract( 0, length, NULL, "UTF-8" );
+			char *utf8_out = (char *)malloc( utf8_length + 1 );
+			dest.extract( 0, length, utf8_out, "UTF-8" );
+			return utf8_out;
+		} else {
+#ifdef DEBUG
+			printf( "utf8_normalize failed: %s (%d)\n", u_errorName( status ), (int)status );
+#endif
+		}
 	}
+	
+	return NULL;
 }
