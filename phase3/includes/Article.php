@@ -286,6 +286,13 @@ class Article {
 			wfProfileOut();
 			return;
 		}
+
+		if ( !isset( $oldid ) ) {
+			$this->checkTouched();
+			$wgOut->checkLastModified( $this->mTouched );
+			$this->tryFileCache();
+		}
+
 		$text = $this->getContent(); # May change wgTitle!
 		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 		$wgOut->setHTMLTitle( $wgTitle->getPrefixedText() .
@@ -304,8 +311,6 @@ class Article {
 			$s = str_replace( "$1", $redir, wfMsg( "redirectedfrom" ) );
 			$wgOut->setSubtitle( $s );
 		}
-		$wgOut->checkLastModified( $this->mTouched );
-		$this->tryFileCache();
 		$wgLinkCache->preFill( $wgTitle );
 		$wgOut->addWikiText( $text );
 
@@ -1687,6 +1692,18 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			and (!isset($redirect))
 			and (!isset($printable))
 			and (!$this->mRedirectedFrom);
+	}
+	
+	function checkTouched() {
+		$id = $this->getID();
+		$sql = "SELECT cur_touched,cur_is_redirect FROM cur WHERE cur_id=$id";
+		$res = wfQuery( $sql, "Article::checkTouched" );
+		if( $s = wfFetchObject( $res ) ) {
+			$this->mTouched = $s->cur_touched;
+			return !$s->cur_is_redirect;
+		} else {
+			return false;
+		}
 	}
 
 }
