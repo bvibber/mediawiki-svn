@@ -454,8 +454,8 @@ $wpTextbox2
 		$s = $sk->beginImageHistoryList();		
 
 		$line = mysql_fetch_object( $res );
-		$s .= $sk->imageHistoryLine( $line->img_timestamp,
-		  wfImageUrl( $wgTitle->getText() ),  $line->img_user,
+		$s .= $sk->imageHistoryLine( true, $line->img_timestamp,
+		  $wgTitle->getText(),  $line->img_user,
 		  $line->img_user_text, $line->img_size, $line->img_description );
 
 		$conn = wfGetDB();
@@ -466,8 +466,8 @@ $wpTextbox2
 		$res = wfQuery( $sql, $conn, $fname );
 
 		while ( $line = mysql_fetch_object( $res ) ) {
-			$s .= $sk->imageHistoryLine( $line->oi_timestamp,
-			  wfImageArchiveUrl( $line->oi_archive_name ), $line->oi_user,
+			$s .= $sk->imageHistoryLine( false, $line->oi_timestamp,
+			  $line->oi_archive_name, $line->oi_user,
 			  $line->oi_user_text, $line->oi_size, $line->oi_description );
 		}
 		$s .= $sk->endImageHistoryList();
@@ -544,6 +544,98 @@ $wpTextbox2
 		$wgOut->addHTML( $s );
 	}
 
+	function delete()
+	{
+		global $wgUser, $wgOut, $wgTitle;
+		global $wgServer, $wgScript;
+		global $wpConfirm, $image, $oldimage;
+
+		if ( ! $wgUser->isSysop() ) {
+			$wgOut->sysopRequired();
+			return;
+		}
+		if ( $oldimage || 1 == $wpConfirm ) {
+			$this->doDelete();
+			return;
+		}
+		$wgOut->setPagetitle( wfMsg( "confirmdelete" ) );
+		$sub = str_replace( "$1", $wgTitle->getPrefixedText(),
+		  wfMsg( "deletesub" ) );
+		$wgOut->setSubtitle( $sub );
+		$wgOut->addWikiText( wfMsg( "confirmdeletetext" ) );
+
+		$t = $wgTitle->getPrefixedURL();
+		$action = "{$wgServer}{$wgScript}?title={$t}" .
+		  "&amp;action=delete";
+		if ( $image ) { $action .= "&amp;image={$image}"; }
+		if ( $oldimage ) { $action .= "&amp;oldimage={$oldimage}"; }
+
+		$confirm = wfMsg( "confirm" );
+		$check = wfMsg( "confirmcheck" );
+
+		$wgOut->addHTML( "
+<form method=post action='{$action}'>
+<table border=0><tr><td>
+<input type=checkbox name='wpConfirm' value='1'>
+</td><td>{$check}</td>
+</tr><tr><td>&nbsp;</td><td>
+<input type=submit name='wpConfirmB' value='{$confirm}'>
+</td></tr></table></form>\n" );
+
+		$wgOut->returnToMain();
+	}
+
+	function doDelete()
+	{
+		global $wgOut, $wgTitle;
+		global $image, $oldimage;
+
+		if ( $image ) {
+			$deleted = $image;
+		} else if ( $oldimage ) {
+			$deleted = $oldimage;
+		} else {
+			$deleted = $wgTitle->getPrefixedText();
+		}
+		$wgOut->setPagetitle( wfMsg( "actioncomplete" ) );
+		$text = str_replace( "$1" , $deleted, wfMsg( "deletedtext" ) );
+		$wgOut->addHTML( "<p>" . $text );
+		$wgOut->returnToMain();
+	}
+
+	function revert()
+	{
+		global $wgOut;
+		global $oldimage;
+
+		if ( strlen( $oldimage ) < 16 ) {
+			$wgOut->unexpectedValueError( "oldimage", $oldimage );
+			return;
+		}
+		$name = substr( $oldimage, 15 );
+
+		$dest = wfImageDir( $name );
+		$archive = wfImageArchiveDir( $name );
+		$curfile = "{$dest}/{$name}";
+
+		if ( ! is_file( $curfile ) ) {
+			$wgOut->fileNotFoundError( $curfile );
+			return;
+		}
+		$oldver = date( "YmdHis" ) . "!{$name}";
+		$size = wfGetSQL( "oldimage", "oi_size", "oi_archive_name='" .
+		  wfStrencode( $oldimage ) . "'" );
+
+		if ( ! rename( $curfile, "${archive}/{$oldver}" ) ) {
+			$wgOut->fileRenameError( $curfile, "${archive}/{$oldver}" );
+			return;
+		}
+		if ( ! copy( "{$archive}/{$oldimage}", $curfile ) ) {
+			$wgOut->fileCopyError( "${archive}/{$oldimage}", $curfile );
+		}
+		wfRecordUpload( $name, $oldver, $size, "Reverted to earlier image" );
+	}
+
 	# Do standard deferred updates after page view
 	#
 	/* private */ function viewUpdates()
@@ -564,11 +656,12 @@ $wpTextbox2
 	{
 		global $wgDeferredUpdateList;
 
-		$u = new SiteStatsUpdate( 0, 1, 0 );
-		array_push( $wgDeferredUpdateList, $u );
-
-		$u = new LinksUpdate( $id, $title );
-		array_push( $wgDeferredUpdateList, $u );
+		if ( 0 != $id ) {
+			$u = new LinksUpdate( $id, $title );
+			array_push( $wgDeferredUpdateList, $u );
+			$u = new SiteStatsUpdate( 0, 1, 0 );
+			array_push( $wgDeferredUpdateList, $u );
+		}
 	}
 
 	/* private */ function setOldSubtitle()

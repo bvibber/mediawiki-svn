@@ -90,6 +90,9 @@ class Skin {
 	{
 		global $wgUser;
 
+		$link = urldecode( $link );
+		$link = str_replace( "_", " ", $link );
+
 		if ( $broken ) { $r = " class=\"new\""; }
 		else { $r = " class=\"internal\""; }
 
@@ -181,7 +184,8 @@ class Skin {
 		$q = $wgUser->getOption( "quickbar" );
 		if ( $wgOut->isQuickbarSupressed() ) { $q = 0; }
 
-		if ( ( ! $this->quickBarOff ) && "" != $q && 0 != $q && 1 != $q ) {
+		if ( ( ! $wgOut->isQuickbarSupressed() ) &&
+		  "" != $q && 0 != $q && 1 != $q ) {
 			$s .= "<td class=\"quickbar\" width=110 valign=top nowrap>";
 			$s .= $this->quickBar() . "</td>";
 		}
@@ -316,6 +320,7 @@ class Skin {
 
 		if ( ! $wgOut->isArticle() ) { return ""; }
 		if ( isset( $oldid ) || isset( $diff ) ) { return ""; }
+		if ( 0 == $wgArticle->getID() ) { return ""; }
 
 		$count = $wgArticle->getCount();
 		$s = str_replace( "$1", $count, wfMsg( "viewcount" ) );
@@ -769,20 +774,36 @@ class Skin {
 		return $s;
 	}
 
-	function imageHistoryLine( $ts, $url, $u, $ut, $size, $c )
+	function imageHistoryLine( $iscur, $ts, $img, $u, $ut, $size, $c )
 	{
-		global $wgLang;
+		global $wgUser, $wgLang, $wgTitle;
 
-		$rev = wfMsg( "revertimg" );
 		$dt = $wgLang->timeanddate( $ts );
+		$del = wfMsg( "deleteimg" );
+		$cur = wfMsg( "cur" );
 
-		$rlink = $rev;	# TODO: Implement revert
-
+		if ( $iscur ) {
+			$url = wfImageUrl( $img );
+			$rlink = $cur;
+			if ( $wgUser->isSysop() ) {
+				$dlink = $this->makeKnownLink( $wgTitle->getPrefixedText(),
+				  $del, "action=delete" );
+			} else {
+				$dlink = $cur;
+			}
+		} else {
+			$url = wfImageArchiveUrl( $img );
+			$rlink = $this->makeKnownLink( $wgTitle->getPrefixedText(),
+			  wfMsg( "revertimg" ), "action=revert&amp;oldimage=" .
+			  urlencode( $img ) );
+			$dlink = $this->makeKnownLink( $wgTitle->getPrefixedText(),
+			  $del, "action=delete&amp;oldimage=" . urlencode( $img ) );
+		}
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }
 
-		$s = "<li> ({$rlink}) <a href=\"{$url}\">{$dt}</a> . . {$ut}" .
-		  " ({$size} bytes)";
+		$s = "<li> ({$dlink}) ({$rlink}) <a href=\"{$url}\">{$dt}</a> . . " .
+		  "{$ut} ({$size} bytes)";
 
 		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
 		$s .= "</li>\n";

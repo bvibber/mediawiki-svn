@@ -47,34 +47,23 @@ function wfLastDBquery()
 
 function wfSetSQL( $table, $var, $value, $cond )
 {
-	global $wgOut;
-
 	$conn = wfGetDB();
 	$sql = "UPDATE $table SET $var = '" .
 	  wfStrencode( $value ) . "' WHERE ($cond)";
-
-	$result = wfQuery( $sql, $conn );
-
-	if ( false === $result ) {
-		$wgOut->databaseError( "wfSetSQL" );
-	}
+	wfQuery( $sql, $conn, "wfSetSQL" );
 }
 
 function wfGetSQL( $table, $var, $cond )
 {
-	global $wgOut;
 	$conn = wfGetDB();
 	$sql = "SELECT $var FROM $table WHERE ($cond)";
 
-	$result = wfQuery( $sql, $conn );
-	if ( false === $result ) {
-		$wgOut->databaseError( "wfGetSQL" );
-	}
+	$result = wfQuery( $sql, $conn, "wfGetSQL" );
+
 	$ret = "";
 	if ( mysql_num_rows( $result ) > 0 ) {
-		if ( $s = mysql_fetch_object( $result ) ) {
-			$ret = $s->$var;
-		}
+		$s = mysql_fetch_object( $result );
+		$ret = $s->$var;
 		mysql_free_result( $result );
 	}
 	return $ret;

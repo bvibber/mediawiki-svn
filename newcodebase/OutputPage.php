@@ -63,7 +63,7 @@ class OutputPage {
 			$p = preg_split( "/<\\s*nowiki\\s*>/i", $text, 2 );
 			$stripped .= $p[0];
 
-			if ( "" == $p[1] ) { $text = ""; }
+			if ( count( $p ) < 2 ||  "" == $p[1] ) { $text = ""; }
 			else {
 				$q = preg_split( "/<\\/\\s*nowiki\\s*>/i", $p[1], 2 );
 				++$nwsecs;
@@ -156,6 +156,18 @@ class OutputPage {
 		exit;
 	}
 
+	function sysopRequired()
+	{
+		$this->setHTMLTitle( wfMsg( "errorpagetitle" ) );
+		$this->setPageTitle( wfMsg( "sysoptitle" ) );
+		$this->setRobotpolicy( "noindex,nofollow" );
+		$this->setArticleFlag( false );
+
+		$this->mBodytext = "";
+		$this->addWikiText( wfMsg( "sysoptext" ) );
+		$this->returnToMain();
+	}
+
 	function databaseError( $fname )
 	{
 		$this->setPageTitle( wfMsg( "databaseerror" ) );
@@ -170,6 +182,50 @@ class OutputPage {
 		$this->mBodytext = $msg;
 		$this->output();
 		exit;
+	}
+
+	function fatalError( $message )
+	{
+		$this->setPageTitle( wfMsg( "internalerror" ) );
+		$this->setRobotpolicy( "noindex,nofollow" );
+		$this->setArticleFlag( false );
+
+		$this->mBodytext = $message;
+		$this->output();
+		exit;
+	}
+
+	function unexpectedValueError( $name, $val )
+	{
+		$msg = str_replace( "$1", $name, wfMsg( "unexpected" ) );
+		$msg = str_replace( "$2", $val, $msg );
+		$this->fatalError( $msg );
+	}
+
+	function fileCopyError( $old, $new )
+	{
+		$msg = str_replace( "$1", $old, wfMsg( "filecopyerror" ) );
+		$msg = str_replace( "$2", $new, $msg );
+		$this->fatalError( $msg );
+	}
+
+	function fileRenameError( $old, $new )
+	{
+		$msg = str_replace( "$1", $old, wfMsg( "filerenameerror" ) );
+		$msg = str_replace( "$2", $new, $msg );
+		$this->fatalError( $msg );
+	}
+
+	function fileDeleteError( $name )
+	{
+		$msg = str_replace( "$1", $name, wfMsg( "filedeleteerror" ) );
+		$this->fatalError( $msg );
+	}
+
+	function fileNotFoundError( $name )
+	{
+		$msg = str_replace( "$1", $name, wfMsg( "filenotfounderror" ) );
+		$this->fatalError( $msg );
 	}
 
 	function returnToMain()
