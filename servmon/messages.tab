@@ -19,7 +19,7 @@ INFORM ALRMSUMM hourly alarm summary: %1%
 WARN MTXFAIL could not lock mutex for check running.  Consider increasing check interval
 INFORM TRANSIT state transition for host \002%1%\002: old state \002%2%\002, new state \002%3%\002
 WARN ALRMSET alarm condition \002set\002 for host \002%1%\002: %2% = %3%
-INFORM ALRMCLR alerm condition \002cleared\002 for host \002%1%\002: %2% = %3%
+INFORM ALRMCLR alarm condition \002cleared\002 for host \002%1%\002: %2% = %3%
 FACILITY IRC
 INFORM NOCHAN no channels are currently configured
 INFORM NOSERV no servers are currently configured
