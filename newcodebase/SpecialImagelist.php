@@ -51,7 +51,7 @@ function wfSpecialImagelist()
 	$sub = wfMsg( "ilsubmit" );
 	$action = wfLocalUrlE( "Special:Imagelist", "sort=byname&limit={$limit}" );
 
-	$wgOut->addHTML( "<form method=get action=\"{$action}\">" .
+	$wgOut->addHTML( "<form method=post action=\"{$action}\">" .
 	  "{$cap}: <input type=text size=8 name='wpIlMatch' value=''> " .
 	  "<input type=submit name='wpIlSubmit' value='{$sub}'></form>" );
 
