@@ -422,13 +422,10 @@ function indexTitle( $in )
 
 function indexText( $text, $ititle )
 {
-	$lc = "A-Za-z_'0-9&#;\\x90-\\xFF\\-";
-	$titlewords = array();
-	$words = explode( " ", strtolower( trim( $ititle ) ) );
-	foreach ( $words as $w ) { $titlewords[$w] = 1; }
+	$lc = SearchEngine::legalSearchChars() . "&#;";
 
 	$text = preg_replace( "/<\\/?\\s*[A-Za-z][A-Za-z0-9]*\\s*([^>]*?)>/",
-	  " ", strtolower( $this->mText ) ); # Strip HTML markup
+	  " ", strtolower( " " . $text . " " ) ); # Strip HTML markup
 	$text = preg_replace( "/(^|\\n)\\s*==\\s+([^\\n]+)\\s+==\\s/sD",
 	  "\\2 \\2 \\2 ", $text ); # Emphasize headings
 
@@ -438,13 +435,13 @@ function indexText( $text, $ititle )
 	$pat = "/(^|[^\\[])({$protos}):[{$uc}]+([^{$uc}]|$)/";
 	$text = preg_replace( $pat, "\\1 \\3", $text );
 
-	$p1 = "/(^|[^\\[])\\[({$protos}):[{$uc}]+]/";
-	$p2 = "/(^|[^\\[])\\[({$protos}):[{$uc}]+\\s+([^\\]]+)]/";
+	$p1 = "/([^\\[])\\[({$protos}):[{$uc}]+]/";
+	$p2 = "/([^\\[])\\[({$protos}):[{$uc}]+\\s+([^\\]]+)]/";
 	$text = preg_replace( $p1, "\\1 ", $text );
 	$text = preg_replace( $p2, "\\1 \\3 ", $text );
 
 	# Internal image links
-	$pat2 = "/\\[\\[image:([{$uc}]+)\\.(png|jpg|jpeg)([^{$uc}])/i";
+	$pat2 = "/\\[\\[image:([{$uc}]+)\\.(gif|png|jpg|jpeg)([^{$uc}])/i";
 	$text = preg_replace( $pat2, " \\1 \\3", $text );
 
 	$text = preg_replace( "/([^{$lc}])([{$lc}]+)]]([a-z]+)/",
@@ -457,21 +454,18 @@ function indexText( $text, $ititle )
 	$text = preg_replace( "/([{$lc}]+)'s /", "\\1 \\1's ", $text );
 	$text = preg_replace( "/([{$lc}]+)s' /", "\\1s ", $text );
 
-	# Strip 1- and 2-letter words
-	$text = preg_replace( "/(^|[^{$lc}])[{$lc}][{$lc}]([^{$lc}]|$)/",
-	  "\\1 \\2", $text );
-	$text = preg_replace( "/(^|[^{$lc}])[{$lc}]([^{$lc}]|$)/",
-	  "\\1 \\2", $text );
-
 	# Strip wiki '' and '''
 	$text = preg_replace( "/''[']*/", " ", $text );
 
-	# Remove title words: those have already been found
-	foreach ( $titlewords as $w => $val ) {
-		$text = str_replace( $w, " ", $text );
-	}
-	$text = preg_replace( "/\\s+/", " ", $text );
-	return $text;
+	# Strip 1- and 2-letter words
+	$text = preg_replace( "/\\s[{$lc}][{$lc}]\\s/", " ", $text );
+	$text = preg_replace( "/\\s[{$lc}][{$lc}]\\s/", " ", $text );
+	$text = preg_replace( "/\\s[{$lc}]\\s/", " ", $text );
+	$text = preg_replace( "/\\s[{$lc}]\\s/", " ", $text );
+
+	$sql = "UPDATE cur SET cur_timestamp=cur_timestamp,cur_ind_text='" .
+	  wfStrencode( $text ) . "' WHERE cur_id={$this->mId}";
+	wfQuery( $sql, "SearchUpdate::doUpdate" );
 }
 
 function renameOldTables()
