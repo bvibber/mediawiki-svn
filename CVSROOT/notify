@@ -10,4 +10,3 @@
 #
 # For example:
 #ALL mail %s -s "CVS notification"
-ALL /usr/bin/perl $CVSROOT/CVSROOT/ciabot_cvs_1.12.pl %p %{s} %ni $USER 'mediawiki' 'lists@wikidev.net'
