@@ -167,8 +167,8 @@ class ImagePage extends Article {
 
 		# Better double-check that it hasn't been deleted yet!
 		$wgOut->setPagetitle( wfMsg( 'confirmdelete' ) );
-		if ( !is_null( $image ) ) {
-			if ( '' == trim( $image ) ) {
+		if ( ( !is_null( $image ) )
+		  && ( '' == trim( $image ) ) ) {
 				$wgOut->fatalError( wfMsg( 'cannotdelete' ) );
 				return;
 			}
