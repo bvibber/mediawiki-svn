@@ -312,6 +312,8 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 "wikititlesuffix" => "$wgSitename",
 "bugreports"	=> "Bug reports",
 "bugreportspage" => "$wgMetaNamespace:Bug_reports",
+"sitesupport"   => "Donations",
+"sitesupportpage" => "", # If not set, won't appear. Can be wiki page or URL
 "faq"			=> "FAQ",
 "faqpage"		=> "$wgMetaNamespace:FAQ",
 "edithelp"		=> "Editing help",
