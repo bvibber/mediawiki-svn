@@ -123,7 +123,7 @@
 	"ps"	=> "Pashto",
 	"fa"	=> "Persian",
 	"pl"	=> "Polish",
-	"pt"	=> "Portugese",
+	"pt"	=> "Portuguese",
 	"pa"	=> "Punjabi",
 	"qu"	=> "Quechua",
 	"rm"	=> "Rhaeto-Romance",
