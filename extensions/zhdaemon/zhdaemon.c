@@ -238,7 +238,8 @@ void processcmd(connection *c) {
       c->nextstate = ZHSTATE_CLOSING;
       return;
     }
-    if(strcmp(arg, "ZH-CN")!=0 &&
+    if(strcmp(arg, "ALL") != 0 &&
+       strcmp(arg, "ZH-CN")!=0 &&
        strcmp(arg, "ZH-TW")!=0 &&
        strcmp(arg, "ZH-HK")!=0 &&
        strcmp(arg, "ZH-SG")!=0) {
@@ -282,7 +283,9 @@ void processdata(connection *c) {
   }
   else if(strcmp(cmd, "CONV") == 0) {
     sscanf(c->cmdline, "%s %s", cmd, arg);
-    if(strcmp(arg, "ZH-CN") == 0)
+    if(strcmp(arg, "ALL") == 0)
+      dict = NULL;
+    else if(strcmp(arg, "ZH-CN") == 0)
       dict = dictToCN;
     else if(strcmp(arg, "ZH-TW") == 0)
       dict = dictToTW;
@@ -294,7 +297,44 @@ void processdata(connection *c) {
       fprintf(stderr, "Fatal: unknown language code %s shouldn't appear here...\n", arg);
       exit(-1);
     }
-    result = doConvert(c->input, c->isize, dict);
+    if(dict)
+      result = doConvert(c->input, c->isize, dict);
+    else { // want to get all variants
+      char info[1024];//holds result info
+      char *rcn, *rtw, *rhk, *rsg;
+      int lcn, ltw, lhk, lsg;
+      rcn = doConvert(c->input, c->isize, dictToCN);
+      rtw = doConvert(c->input, c->isize, dictToTW);
+      rhk = doConvert(c->input, c->isize, dictToHK);
+      rsg = doConvert(c->input, c->isize, dictToSG);
+      if(!rcn || !rtw || !rhk || !rsg) {
+	formerror(c, ZHERR_S_WORK);
+	return;
+      }
+      lcn = strlen(rcn);
+      ltw = strlen(rtw);
+      lhk = strlen(rhk);
+      lsg = strlen(rsg);
+      sprintf(info, "ZH-CN %d; ZH-TW %d; ZH-HK %d; ZH-SG %d|",
+	      lcn, ltw, lhk, lsg);
+      result = (unsigned char *)malloc(sizeof(unsigned char) * 
+				       (lcn + ltw + lhk + lsg + strlen(info)+1));
+      printf("Calculated length=%d\n",
+	     (lcn + ltw + lhk + lsg + strlen(info)+1));
+      if(!result) {
+	formerror(c, ZHERR_S_MEM);
+	free(rcn);
+	free(rtw);
+	free(rhk);
+	free(rsg);
+	return;
+      }
+      sprintf(result, "%s%s%s%s%s",
+	      info, rcn, rtw, rhk, rsg);
+      printf("actual length=%d\n",
+	     strlen(result));
+      printf("ALL: %s\n", result);
+    }
   }
   else {
     fprintf(stderr, "Fatal: unknown command %s shouldn't appear here...\n", cmd);
@@ -308,6 +348,7 @@ void processdata(connection *c) {
   c->output = result;
   c->osize = strlen(result);
   sprintf(c->cmdline, "OK %d\r\n", c->osize);
+  printf("Sending cmd: %s", c->cmdline);
   c->csize = strlen(c->cmdline);
   c->cpos = 0;
   c->state = ZHSTATE_WRITECMD;
