@@ -16,7 +16,6 @@ function wfSpecialWantedpages()
 
 	$wgOut->setRobotpolicy( "noindex,nofollow" );
 	global $wgMiserMode;
-	$wgMiserMode = true ;
 	if ( $wgMiserMode ) {
 		$s = "=== " . wfMsg( "perfdisabled" ) . " ===\n" ;
 		$s .= $log->getContent() ;
