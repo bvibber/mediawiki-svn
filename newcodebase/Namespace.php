@@ -1,12 +1,11 @@
 <?
 # This is a utility class with only static functions
-# for dealing with namespaces. Everything is hardcoded,
-# and will have to be internationalized.
+# for dealing with namespaces.  The actual text of the
+# names is in Language.php, but the namespaces have
+# special behaviors based on their index--those are
+# all hard-coded here.
 #
-# Note "Special" is treated, well, specially, and doesn't
-# really fit into the system--it has to be tested for
-# independently.
-#
+
 $wgNamespaceNamesEn = array(
 	0 => "", 1 => "Talk", 2 => "User", 3 => "User_talk",
 	4 => "Wikipedia", 5 => "Wikipedia_talk", 6 => "Image",
@@ -34,6 +33,7 @@ class Namespace {
 		return -1;
 	}
 
+	function getSpecialName() { return Namespace::getName( -1 ); }
 	function getUserIndex() { return 2; }
 	function getUserName() { return Namespace::getName( 2 ); }
 	function getWikipediaIndex() { return 4; }
