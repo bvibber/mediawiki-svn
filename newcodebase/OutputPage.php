@@ -449,7 +449,8 @@ class OutputPage {
 				continue;
 			}
 			$la = $sk->getExternalLinkAttributes( $link, $text );
-			$s .= "<a href=\"{$link}\"{$la}>{$text}</a>{$trail}";
+			$s .= "<a href='{$link}'{$la}>{$text}</a>{$trail}";
+
 		}
 		return $s;
 	}
@@ -492,6 +493,15 @@ class OutputPage {
 
 					$wgLinkCache->addImageLink( $name );
 					$s .= $sk->makeImageLink( $name,
+					  wfImageUrl( $name ), $text );
+					$s .= $trail;
+				} else if ( "media" == $pre ) {
+					$nt = Title::newFromText( $suf );
+					$name = $nt->getDBkey();
+					if ( "" == $text ) { $text = $nt->GetText(); }
+
+					$wgLinkCache->addImageLink( $name );
+					$s .= $sk->makeMediaLink( $name,
 					  wfImageUrl( $name ), $text );
 					$s .= $trail;
 				} else {

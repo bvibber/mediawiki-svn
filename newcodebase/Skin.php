@@ -131,9 +131,8 @@ class Skin {
 		global $wgUser, $wgOut;
 
 		if ( $wgOut->isPrintable() ) {
-			$s = "<h1 class=\"pagetitle\">" . $wgOut->getPageTitle() . "</h1>";
-			$s .= $this->pageSubtitle();
-			$s .= "\n<div class=\"bodytext\">";
+			$s = $this->pageTitle() . $this->pageSubtitle() . "\n";
+			$s .= "\n<div class='bodytext'>";
 			return $s;
 		}
 		return $this->doBeforeContent();
@@ -158,7 +157,7 @@ class Skin {
 		}
 		$s .= "<td class='top' align=left valign=top>";
 
-		$s .= $this->topLinks() ;#. "\n<br>";
+		$s .= $this->topLinks() ; # . "\n<br>";
 		$s .= $this->pageTitleLinks();
 
 		$s .= "</td>\n<td class='top' valign=top align=right width=200 nowrap>";
@@ -229,7 +228,7 @@ class Skin {
 		if ( "history" == $action ) { $q = "action=history&amp;"; }
 		else { $q = ""; }
 
-		$s = "<p class=\"subtitle\">"
+		$s = "<p class='subtitle'>"
 		  . $this->makeKnownLink( $wgTitle->getPrefixedText(),
 		  WfMsg( "printableversion" ), "{$q}printable=yes" );
 
@@ -255,7 +254,7 @@ class Skin {
 	{
 		global $wgOut, $wgTitle;
 
-		$s = "<h1 class=\"pagetitle\">" . $wgOut->getPageTitle() . "</h1>";
+		$s = "<h1 class='pagetitle'>" . $wgOut->getPageTitle() . "</h1>";
 		return $s;
 	}
 
@@ -693,9 +692,6 @@ class Skin {
 	{
 		global $wgOut, $wgUser;
 
-		if ( $wgOut->isPrintable() ) {
-			return $this->makePrintableLink( $title, $text, $query, $trail );
-		}
 		$nt = Title::newFromText( $title );
 
 		if ( 0 == $nt->getNamespace() && "" == $nt->getText() ) {
@@ -716,9 +712,6 @@ class Skin {
 	{
 		global $wgOut, $wgServer, $wgScript, $wgArticlePath, $wgTitle;
 
-		if ( $wgOut->isPrintable() ) {
-			return $this->makePrintableLink( $title, $text, $query, $trail );
-		}
 		$nt = Title::newFromText( $title );
 		$link = $nt->getPrefixedURL();
 
@@ -751,9 +744,6 @@ class Skin {
 	{
 		global $wgOut, $wgUser;
 
-		if ( $wgOut->isPrintable() ) {
-			return $this->makePrintableLink( $title, $text, $query, $trail );
-		}
 		$nt = Title::newFromText( $title );
 		$link = $nt->getEditURL();
 
@@ -795,8 +785,7 @@ class Skin {
 		global $wgOut;
 
 		if ( "" == $alt ) { $alt = "[Image]"; }
-		if ( $wgOut->isPrintable() ) { return $alt; }
-		$s = "<img src=\"$url\" alt=\"$alt\">";
+		$s = "<img src='$url' alt='$alt'>";
 		return $s;
 	}
 
@@ -806,12 +795,20 @@ class Skin {
 
 		$nt = Title::newFromText( "Image:{$name}" );
 		$link = $nt->getPrefixedURL();
-
 		if ( "" == $alt ) { $alt = $name; }
 
 		$u = str_replace( "$1", $link, $wgArticlePath );
-		$s = "<a href=\"{$u}\" class=\"image\" title=\"{$alt}\">" .
-		  "<img border=0 src=\"{$url}\" alt=\"{$alt}\"></a>";
+		$s = "<a href='{$u}' class='image' title='{$alt}'>" .
+		  "<img border=0 src='{$url}' alt='{$alt}'></a>";
+		return $s;
+	}
+
+	function makeMediaLink( $name, $url, $alt = "" )
+	{
+		global $wgOut, $wgServer, $wgScript, $wgArticlePath, $wgTitle;
+
+		if ( "" == $alt ) { $alt = $name; }
+		$s = "<a href='{$url}' class='media' title='{$alt}'>{$alt}</a>";
 		return $s;
 	}
 
