@@ -1,0 +1,1 @@
+cat ./test.txt  &&  echo  &&  flex wikilex.l  &&  bison -d wikiparse.y  &&  gcc -o wiki wikiparse.tab.c parsetree.c lex.yy.c  &&  ./wiki < ./test.txt 
