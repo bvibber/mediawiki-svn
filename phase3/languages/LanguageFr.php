@@ -191,6 +191,9 @@ Voir $1.",
 "retrievedfrom" => "Récupérée de \"$1\"",
 "newmessages"   => "Vous avez des $1.",
 "newmessageslink" => "nouveaux messages",
+"toc" => "Table",
+"showtoc" => "montre",
+"hidetoc" => "cacher",
 
 // Main script and global functions
 
