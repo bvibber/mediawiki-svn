@@ -158,7 +158,7 @@ class Title {
 		global $wgUser;
 
 		if ( -1 == $this->mNamespace ) { return false; }
-		if ( 0 == $this->getArticleID() ) { return false; }
+		# if ( 0 == $this->getArticleID() ) { return false; }
 
 		$ur = $wgUser->getRights();
 		foreach ( $this->getRestrictions() as $r ) {

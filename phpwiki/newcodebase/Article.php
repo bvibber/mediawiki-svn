@@ -559,8 +559,12 @@ $wpTextbox2
 			return;
 		}
 		$wgOut->setPagetitle( wfMsg( "confirmdelete" ) );
-		$sub = str_replace( "$1", $wgTitle->getPrefixedText(),
-		  wfMsg( "deletesub" ) );
+		if ( $image ) {
+			$sub = str_replace( "$1", $image, wfMsg( "deletesub" ) );
+		} else {
+			$sub = str_replace( "$1", $wgTitle->getPrefixedText(),
+			  wfMsg( "deletesub" ) );
+		}
 		$wgOut->setSubtitle( $sub );
 		$wgOut->addWikiText( wfMsg( "confirmdeletetext" ) );
 
@@ -589,28 +593,111 @@ $wpTextbox2
 	{
 		global $wgOut, $wgTitle;
 		global $image, $oldimage;
+		$fname = "Article::doDelete";
 
 		if ( $image ) {
-			$deleted = $image;
-		} else if ( $oldimage ) {
-			$deleted = $oldimage;
-			$name = substr( $oldimage, 15 );
-			$archive = wfImageArchiveDir( $name );
-			if ( ! unlink( "{$archive}/{$oldimage}" ) ) {
-				$wgOut->fileDeleteError( "{$archive}/{$oldimage}" );
+			$dest = wfImageDir( $image );
+			$archive = wfImageDir( $image );
+			if ( ! unlink( "{$dest}/{$image}" ) ) {
+				$wgOut->fileDeleteError( "{$dest}/{$image}" );
 				return;
 			}
 			$conn = wfGetDB();
+			$sql = "DELETE FROM image WHERE img_name='" .
+			  wfStrencode( $image ) . "'";
+			wfQuery( $sql, $conn, $fname );
+
+			$conn = wfGetDB();
+			$sql = "SELECT oi_archive_name FROM oldimage WHERE oi_name='" .
+			  wfStrencode( $image ) . "'";
+			$res = wfQuery( $sql, $conn, $fname );
+
+			while ( $s = mysql_fetch_object( $res ) ) {
+				$this->doDeleteOldImage( $s->oi_archive_name );
+			}	
+			$conn = wfGetDB();
+			$sql = "DELETE FROM oldimage WHERE oi_name='" .
+			  wfStrencode( $image ) . "'";
+			wfQuery( $sql, $conn, $fname );
+
+			$nt = Title::newFromText( "Image:{$image}" );
+			$this->doDeleteArticle( $nt );
+
+			$deleted = $image;
+		} else if ( $oldimage ) {
+			$this->doDeleteOldImage( $oldimage );
+			$conn = wfGetDB();
 			$sql = "DELETE FROM oldimage WHERE oi_archive_name='" .
 			  wfStrencode( $oldimage ) . "'";
-			wfQuery( $sql, $conn );
+			wfQuery( $sql, $conn, $fname );
+
+			$deleted = $oldimage;
 		} else {
+			$this->doDeleteArticle( $wgTitle );
 			$deleted = $wgTitle->getPrefixedText();
 		}
 		$wgOut->setPagetitle( wfMsg( "actioncomplete" ) );
 		$text = str_replace( "$1" , $deleted, wfMsg( "deletedtext" ) );
 		$wgOut->addHTML( "<p>" . $text );
 		$wgOut->returnToMain();
+	}
+
+	function doDeleteOldImage( $oldimage )
+	{
+		$name = substr( $oldimage, 15 );
+		$archive = wfImageArchiveDir( $name );
+		if ( ! unlink( "{$archive}/{$oldimage}" ) ) {
+			$wgOut->fileDeleteError( "{$archive}/{$oldimage}" );
+		}
+	}
+
+	function doDeleteArticle( $title )
+	{
+		global $wgUser, $wgOut, $wgLang;
+
+		$fname = "Article::doDeleteArticle";
+		$ns = $title->getNamespace();
+		$t = wfStrencode( $title->getDBkey() );
+
+		$conn = wfGetDB();
+		$sql = "DELETE FROM cur WHERE cur_namespace={$ns} AND " .
+		  "cur_title='{$t}'";
+		wfQuery( $sql, $conn, $fname );
+
+		$conn = wfGetDB();
+		$sql = "DELETE FROM old WHERE old_namespace={$ns} AND " .
+		  "old_title='{$t}'";
+		wfQuery( $sql, $conn, $fname );
+
+		$conn = wfGetDB();
+		$sql = "SELECT cur_id,cur_text FROM cur WHERE cur_namespace=" .
+		  Namespace::getIndex( "Wikipedia" ) . " AND cur_title='" .
+		  "Article_deletion_log'";
+		$res = wfQuery( $sql, $conn, $fname );
+
+		if ( 0 == mysql_num_rows( $res ) ) {
+			# Error: need Article deletion log article
+		}
+		$s = mysql_fetch_object( $res );
+		$text = $s->cur_text;
+		$id = $s->cur_id;
+
+		$ut = $wgUser->getName();
+		if ( 0 == $wgUser->getID() ) { $ul = $ut; }
+		else { $ul = "[[User:{$ut}|{$ut}]]"; }
+
+		$art = $title->getPrefixedText();
+		$d = $wgLang->timeanddate( date( "YmdHis" ) );
+
+		preg_match( "/^(.*?)<ul>(.*)$/sD", $text, $m );	
+		$da = str_replace( "$1", $art, wfMsg( "deletedarticle" ) );
+
+		$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}</li>\n{$m[2]}";
+
+		$conn = wfGetDB();
+		$sql = "UPDATE cur SET cur_text='" .
+		  wfStrencode( trim( $text ) ) . "' WHERE cur_id={$id}";
+		wfQuery( $sql, $conn, $fname );
 	}
 
 	function revert()
