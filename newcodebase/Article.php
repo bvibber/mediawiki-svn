@@ -3,9 +3,9 @@
 
 class Article {
 	/* private */ var $mContent, $mContentLoaded;
-	/* private */ var $mUser, $mTimestamp;
+	/* private */ var $mUser, $mTimestamp, $mUserText;
 	/* private */ var $mCounter, $mComment;
-	/* private */ var $mMinorEdit;
+	/* private */ var $mMinorEdit, $mRedirectedFrom;
 
 	function Article() { $this->clear(); }
 
@@ -13,6 +13,7 @@ class Article {
 	{
 		$this->mContentLoaded = false;
 		$this->mUser = $this->mCounter = -1; # Not loaded
+		$this->mRedirectedFrom = $this->mUserText =
 		$this->mTimestamp = $this->mComment = "";
 	}
 
@@ -28,7 +29,7 @@ class Article {
 
 	function loadContent()
 	{
-		global $wgOut, $oldid;
+		global $wgOut, $wgTitle, $oldid, $redirect;
 		if ( $this->mContentLoaded ) return;
 
 		if ( ! $oldid ) {
@@ -41,11 +42,32 @@ class Article {
 			wfDebug( "Art: 1: $sql\n" );
 			$res = mysql_query( $sql, $conn );
 
-			if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
+			if ( ( ! $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
 				$this->mContent = "Fatal database error.\n";
 				return;
 			} else {
 				$s = mysql_fetch_object( $res );
+				if ( ( "no" != $redirect ) &&
+				  ( preg_match( "/\\A#redirect/i", $s->cur_text ) ) ) {
+					if ( preg_match( "/\\[\\[([^\\]\\|]+)[\\]\\|]/",
+					  $s->cur_text, $m ) ) {
+						$rt = Title::newFromText( $m[1] );
+						$rid = $rt->getArticleID();
+						if ( 0 != $rid ) {
+							$conn = wfGetDB();
+							$sql = "SELECT cur_text,cur_timestamp,cur_user," .
+							  "cur_counter FROM cur WHERE cur_id=$rid";
+							wfDebug( "Art: 9: $sql\n" );
+							$res = mysql_query( $sql, $conn );
+
+							if ( $res && ( 0 != mysql_num_rows( $res ) ) ) {
+								$this->mRedirectedFrom = $wgTitle->getPrefixedText();
+								$wgTitle = $rt;
+								$s = mysql_fetch_object( $res );
+							}
+						}
+					}
+				}
 				$this->mContent = $s->cur_text;
 				$this->mUser = $s->cur_user;
 				$this->mCounter = $s->cur_counter;
@@ -70,6 +92,7 @@ class Article {
 				$this->mTimestamp = $s->old_timestamp;
 				mysql_free_result( $res );
 			}
+			# Don't follow redirects on historical articles
 		}
 		$this->mContentLoaded = true;
 	}
@@ -90,7 +113,7 @@ class Article {
 		if ( -1 != $this->mUser ) return;
 
 		$conn = wfGetDB();
-		$sql = "SELECT cur_user,cur_timestamp," .
+		$sql = "SELECT cur_user,cur_user_text,cur_timestamp," .
 		  "cur_comment,cur_minor_edit FROM cur WHERE " .
 		  "cur_id=" . $this->getID();
 		wfDebug( "Art: 3: $sql\n" );
@@ -99,6 +122,7 @@ class Article {
 		if ( $res && ( mysql_num_rows( $res ) > 0 ) ) {
 			$s = mysql_fetch_object( $res );
 			$this->mUser = $s->cur_user;
+			$this->mUserText = $s->cur_user_text;
 			$this->mTimestamp = $s->cur_timestamp;
 			$this->mComment = $s->cur_comment;
 			$this->mMinorEdit = $s->cur_minor_edit;
@@ -114,17 +138,43 @@ class Article {
 	function getUser()
 	{
 		$this->loadLastEdit();
-		return $this->mTimestamp;
+		return $this->mUser;
+	}
+
+	function getUserText()
+	{
+		$this->loadLastEdit();
+		return $this->mUserText;
+	}
+
+	function getComment()
+	{
+		$this->loadLastEdit();
+		return $this->mComment;
+	}
+
+	function getMinorEdit()
+	{
+		$this->loadLastEdit();
+		return $this->mMinorEdit;
 	}
 
 	function view()
 	{
-		global $wgOut, $wgTitle, $wgLang;
+		global $wgUser, $wgOut, $wgTitle, $wgLang;
 		global $oldid;
 
-		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 		$text = $this->getContent();
-		if ( $oldid ) { $this->setOldSUbtitle(); }
+		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
+
+		if ( $oldid ) { $this->setOldSubtitle(); }
+		if ( "" != $this->mRedirectedFrom ) {
+			$sk = $wgUser->getSkin();
+			$redir = $sk->makeLink( $this->mRedirectedFrom, "",
+			  "redirect=no&action=edit" );
+			$s = str_replace( "$1", $redir, wfMsg( "redirectedfrom" ) );
+			$wgOut->setSubtitle( $s );
+		}
 		$wgOut->addWikiText( $text );
 		$this->viewUpdates();
 	}
@@ -373,41 +423,31 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 			return;
 		}
 		$revs = mysql_num_rows( $res );
-		if ( 0 == $revs ) {
-			$wgOut->addHTML( wfMsg( "nohistory" ) );
-			return;
-		}
-		$s = $lastdate = "";
 		$sk = $wgUser->getSkin();
 
-		while ( $line = mysql_fetch_object( $res ) ) {
-			$id = $line->old_id;
+		$t = $this->getTimestamp();
+		$lastdate = $wgLang->dateFromTimestamp( $t );
+		$s = "<h4>{$lastdate}</h4>\n<ul>";
+
+		$s .= $sk->historyLine( $revs + 1, $t, $this->getUser(),
+		  $this->getUserText(), $wgTitle->getNamespace,
+		  $wgTitle->getText(), "", $this->getComment(),
+		  ( $this->getMinorEdit() > 0 ) );
+
+		while ( $revs ) {
+			$line = mysql_fetch_object( $res );
+
 			$t = $line->old_timestamp;
 			$d = $wgLang->dateFromTimestamp( $t );
-			$h = substr( $t, 8, 2 ) . ":" . substr( $t, 10, 2 );
-			$c = $line->old_comment;
-
-			if ( 0 == $line->old_user ) {
-				$u = $line->old_user_text;
-			} else {
-				$u = $sk->makeInternalLink( "User:{$line->old_user_text}",
-				  "{$line->old_user_text}" );
-			}
-			$t = Title::makeName( $line->old_namespace, $line->old_title );
-			$tl = $sk->makeInternalLink( "$t", "", "oldid={$id}" );
-
 			if ( $d != $lastdate ) {
-				if ( "" != $lastdate ) {
-					$s .= "</ul>\n";
-				}
-				$s .= "<h4>{$d}</h4>\n<ul>";
+				$s .= "</ul>\n<h4>{$d}</h4>\n<ul>";
 				$lastdate = $d;
 			}
-			$s .= "<li>({$revs}) {$tl}; {$h} . . . {$u}";
-			if ( "" != $c && "*" != $c ) {
-				$s .= " <em>({$c})</em>";
-			}
-			$s .= "</li>\n";
+			$s .= $sk->historyLine( $revs, $t, $line->old_user,
+			  $line->old_user_text, $line->old_namespace,
+			  $line->old_title, "oldid={$line->old_id}",
+			  $line->old_comment, ( $line->old_minor_edit > 0 ) );
+
 			--$revs;
 		}
 		$s .= "</ul>\n";

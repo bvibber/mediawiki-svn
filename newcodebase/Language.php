@@ -53,6 +53,7 @@
 "talkpage"		=> "Talk page",
 "subjectpage"	=> "Subject page",
 "otherlanguages" => "Other languages",
+"redirectedfrom" => "(Redirected from $1)",
 
 # Main script and global functions
 #
@@ -167,13 +168,14 @@ If you save it, any changes made since this revision will be lost.</strong>\n",
 
 # History pages
 #
-"revhistory"	=> "(Revision history)",
+"revhistory"	=> "Revision history",
 "nohistory"		=> "There is no edit history for this page.",
 "revnotfound"	=> "Revision not found",
 "revnotfoundtext" => "The old revision of the page you asked for could
 not be found.
 Please check the URL you used to access this page.\n",
 "loadhist"		=> "Loading article history",
+"currentrev"	=> "Current revision",
 
 # Preferences page
 #

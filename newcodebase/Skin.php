@@ -496,6 +496,31 @@ class Skin {
 		$pn = ucfirst( $key);
 		return $this->makeLink( "Special:$pn", wfMsg( $key ) );
 	}
+
+	# Called by history lists and recent changes
+	#
+	function historyLine( $rev, $ts, $u, $ut, $ns, $ttl, $q, $c, $isminor )
+	{
+		global $wgTitle;
+
+		$h = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
+        $t = $this->makeLink( Title::makeName( $ns, $ttl ), "", $q );
+
+        if ( 0 == $u ) { $ul = $ut; }
+        else { $ul = $this->makeInternalLink( "User:{$ut}", $ut ); }
+        $cr = wfMsg( "currentrev" );
+
+		if ( 0 == $rev ) { $s = "<li>"; }
+		else { $s = "<li>({$rev}) "; }
+        $s .= "{$t}; {$h}";
+		if ( 0 != $rev && "" == $q ) { $s .= " ({$cr})"; } # Is current
+		$s .= " . . . {$ul}";
+		if ( $isminor ) { $s .= " </strong>M</strong>"; }
+        if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
+        $s .= "</li>\n";
+
+		return $s;
+	}
 }
 
 include_once( "SkinStandard.php" );
