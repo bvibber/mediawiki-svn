@@ -37,18 +37,18 @@
         "highlightbroken"  => "Röda länkar till tomma sidor",
         "justify"          => "Justera indrag",
         "hideminor"        => "Göm små redigeringar vid senaste ändring",
-	"usenewrc" => "Enhanced recent changes (not for all browsers)",
+	"usenewrc"         => "Avancerad 'Senaste ändringar'",
         "numberheadings"   => "Automatisk numrering av överskrifter",
         "rememberpassword" => "Kom ihåg lösenord till nästa besök",
         "editwidth"        => "Redigeringsboxen har full bredd",
         "editondblclick"   => "Redigera sidor med dubbelklick (JavaScript)",
-	"editsection"=>"Enable section editing via [edit] links",
-	"editsectiononrightclick"=>"Enable section editing by right clicking<br> on section titles (JavaScript)",
-	"showtoc"=>"Show table of contents<br>(for articles with more than 3 headings)",
+	"editsection"      => "Visa [edit]-länkar för att redigera sektioner",
+	"editsectiononrightclick" => "Högerklick på rubriker redigerar sektioner",
+	"showtoc"          => "Visa automatisk innehållsförteckning (på sidor med mer än 3 sektioner)",
         "watchdefault"     => "Övervaka nya och ändrade artiklar",
         "minordefault"     => "Markera som standard alla ändringer som mindre",
-	"previewontop" => "Show preview before edit box and not after it",
-	"nocache" => "Disable page caching"
+	"previewontop"     => "Visa förhandsgranskning före textfältet istället för efter",
+	"nocache"          => "Slå av cachning av sidor"
 );
 
 /* private */ $wgBookstoreListSv = array(
@@ -144,6 +144,8 @@ $wgValidSpecialPagesSv = array(
 "wikititlesuffix"       => "Wikipedia",
 "bugreports"            => "Felrapporter",
 "bugreportspage"        => "Wikipedia:Felrapporter",
+"sitesupport"           => "Donationer",
+"sitesupportpage"       => "", # If not set, won't appear. Can be wiki page or URL
 "faq"                   => "FAQ",
 "faqpage"               => "Wikipedia:FAQ",
 "edithelp"              => "Redigeringshjälp",
@@ -154,7 +156,7 @@ $wgValidSpecialPagesSv = array(
 "qbedit"                => "Redigera",
 "qbpageoptions"         => "Sidinställningar",
 "qbpageinfo"            => "Sidinformation",
-"qbmyoptions"           => "Mina inställingar",
+"qbmyoptions"           => "Mina inställningar",
 "mypage"                => "Min sida",
 "mytalk"                => "Min diskussion",
 "currentevents"         => "-",
@@ -168,9 +170,11 @@ $wgValidSpecialPagesSv = array(
 "printableversion"      => "Skrivarvänlig version",
 "editthispage"          => "Redigera den här sidan",
 "deletethispage"        => "Radera den här sidan",
-"protectthispage"       => "Skydda den här sida",
+"protectthispage"       => "Skydda den här sidan",
 "unprotectthispage"     => "Ta bort skydd av denna sida",
 "talkpage"              => "Diskussionssida",
+"postcomment"           => "Skriv ett inlägg",
+"articlepage"           => "Tillbaka till artikeln",
 "subjectpage"           => "Ämnessida",
 "userpage"              => "Visa användarsida",
 "wikipediapage"         => "Visa metasida",
@@ -263,14 +267,15 @@ igen som samma eller annan användare.\n",
 
 "areyounew"             => "Om du är ny på Wikipedia och önskar ett användarkonto, så skriv in ett användarnamn, därefter skriver du ett lösenord som du sedan upprepar.
 
-Observera att det finns bättre och sämre val av användarnamn, försök välja något unikt, och där du löper mindre risk att en dag behöva dela detta användarnamn med ett större antal användare som kan ha rätt till det. Exempel: Johansson, eller Peter. Allra helst ser vi attt du använder ditt eget för och efternamn, men du bestämmer naturligtvis själv.
+Observera att det finns bättre och sämre val av användarnamn, försök välja något unikt, och där du löper mindre risk att en dag behöva dela detta användarnamn med ett större antal användare som kan ha rätt till det. Exempel: Johansson, eller Peter. Allra helst ser vi att du använder ditt eget för och efternamn, men du bestämmer naturligtvis själv.
 
-Din e-postadress är frivillig; men om du glömmer ditt lösenord kan du till exempel be om att få det tillsänt till den adress du har anget.<br>\n",
+Att ange e-postadress är frivilligt; men om du glömmer ditt lösenord kan du till exempel be om att få det tillsänt till den adress du har angett.<br>\n",
 
 "login"                 => "Logga in",
 "userlogin"             => "Logga in",
 "logout"                => "Logga ut",
 "userlogout"            => "Logga ut",
+"notloggedin" 		=> "Ej inloggad",
 "createaccount"         => "Skapa ett konto",
 "badretype"             => "De lösenord du uppgett överenstämmer inte med varandra.",
 "userexists"            => "Detta användarnamn används redan. Ange ett annat användarnamn.",
@@ -333,10 +338,10 @@ att betrakta som utgivna under GNU Free Documentation License
 (se $1 för detaljer).
 Om du inte vill ha din text redigerad och kopierad efter andras gottfinnade så skall du inte skriva någon text här.<br>
 Du lovar oss också att du skrev texten själv, eller kopierade från en
-public domain eller liknande fri resurs.
+public domain eller liknande fri resurs.<BR>
 
 <strong>
-LÄGG ALDRIG UT MATERIAL HÄR SOM SKYDDAS AV UPPHOVSRÄTTSLAGEN UTAN FÖRFATTARENS TILLÅTELSE!
+LÄGG ALDRIG UT UPPHOVSRÄTTSSKYDDAT MATERIAL HÄR UTAN FÖRFATTARENS TILLÅTELSE!
 </strong>", //'"
 
 
@@ -381,7 +386,7 @@ och texter i $3 artiklar.",
 "textmatches"           => "Artikel texter som överensstämmer med sökordet",
 "notextmatches"         => "Ingen artikel texter överensstämmer med sökordet",
 "prevn"                 => "förra $1",
-"nextn"                 => "nästa $2",
+"nextn"                 => "nästa $1",
 
 "viewprevnext"          => "Om ($1) ($2) ($3).",
 "showingresults"        => "Nedan visas <b>$1</b> resultat som startar med nummer <b>$2</b>.",
@@ -429,33 +434,17 @@ serverns klocka (UTC).
 Den blir automatiskt inställd efter svensk tid eller skulle man till exempel för svensk vintertid, endast ha \"1\" (och \"2\" när vi har sommartid).",
 "localtime"             => "Lokal tid",
 "timezoneoffset"        => "Utjämna",
-"emailflag"             => "Stoppa andra användare att skicka e-post till dig",
+"emailflag"             => "Hindra andra användare från att skicka e-post till dig",
 
 // Recent changes
 //
 "recentchanges"         => "Senaste ändringarna",
-"recentchangestext"     => "Se de senaste redigerade sidorna i Wikipedia på denna 
-sida.
-
-[[Wikipedia:Välkommen|Välkommen]]!
-Vänligen läs dessa sidor: [[wikipedia:FAQ|Ofta ställda 
-frågor]], [[Wikipedia:Policy|policy]]
-
-(särskilt [[wikipedia:Namngivning|namngivning]],
-[[wikipedia:Skriv Wikipedia ifrån en neutral synpunkt|Skriv Wikipedia ifrån en neutral synpunkt]],
-och [[wikipedia:Mest vanliga nybörjarfel på Wikipedia|Mest vanliga nybörjarfel på Wikipedia]]).
-
-Det är mycket viktigt att du inte lägger material på 
-Wikipedia som andra äger upphovsrätten till. De rättsliga konsekvenserna kan bli 
-mycket kostbara och skadligt för projektet, så vänligen låt bli, om du är osäker.
-Se också [http://meta.wikipedia.org/wiki/Special:Recentchanges 
-recent meta discussion] (oftast på engelska).",
+"recentchangestext"     => "Se de senaste redigerade sidorna i Wikipedia på denna sida.",
 "rcloaderr"             => "Läser senaste redigerade sidor",
-"rcnote"                => "Nedanför är de senaste <strong>$1</strong> ändringarna under de 
-sista <strong>$2</strong> dagarna.",
+"rcnote"                => "Nedanför är de senaste <strong>$1</strong> ändringarna under de sista <strong>$2</strong> dagarna.",
 "rcnotefrom"            => "Nedanför är ändringarna från <b>$2</b> till <b>$1</b> visade.",
 "rclistfrom"            => "Visa nya ändringar från och med $1",
-"rclinks"               => "Visa de senaste $1 ändringarna under de senaste $2 timmarna / $3 dagarna",
+"rclinks"               => "Visa de senaste $1 ändringarna under de senaste $2 dagarna",
 // "rclinks"             => "Visa de senaste $1 ändringarna under de senaste $2 dagarna",
 "rchide"                => "i $4 form; $1 mindre ändringar; $2 andra namnrum; $3 mer än en redigering.",
 "diff"                  => "skillnad",
@@ -681,6 +670,9 @@ och sidan kommer att markeras med <b>fet stil</b> i <a href=\"" .
 //
 "deletepage"            => "Ta bort sida",
 "confirm"               => "Bekräfta",
+"excontent"             => "före radering:",
+"exbeforeblank"         => "före tömning:",
+"exblank"               => "sidan var tom",
 "confirmdelete"         => "Bekräfta borttagning",
 "deletesub"             => "(Tar bort \"$1\")",
 "confirmdeletetext"     => "Du håller på och permanent ta bort en sida
@@ -724,6 +716,7 @@ Se [[Wikipedia:Borttagningslogg]] för en lista över nyligen gjorda borttagningar
 // Contributions
 //
 "contributions"         => "Användarbidrag",
+"mycontris"             => "Mina bidrag",
 "contribsub"            => "För $1",
 "nocontribs"            => "Inga ändringar var funna som motsvarar dessa kriterier",
 "ucnote"                => "Nedan visas dennes användares senaste <b>$1</b> ändringar, under de senaste <b>$2</b> dagarna.",
