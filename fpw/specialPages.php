@@ -272,12 +272,17 @@ function editUserSettings () {
 	}
 
 function WantedPages () {
-	global $THESCRIPT ;
-	global $linkedLinks , $unlinkedLinks , $vpage , $wikiWantedText , $wikiWantedLine ;
+	global $showNumberPages , $linkedLinks , $unlinkedLinks , $vpage , $wikiWantedText , $wikiWantedLine ;
+	global $wikiWantedToggleNumbers ;
 	$vpage->special ( "The Most Wanted Pages" ) ;
 	$vpage->namespace = "" ;
+	if ( $showNumberPages == "" ) $showNumberPages = "off" ;
+	if ( $showNumberPages == "off" ) $nsnp = "on" ;
+	else $nsnp = "off" ;
 	$allPages = array () ;
 	$ret = $wikiWantedText ;
+#	$ret .= "<nowiki><a href=\"".wikiLink("special:WantedPages?showNumberPages=$nsnp")."\">";
+#	$ret .= str_replace("$1",$showNumberPages,$wikiWantedToggleNumbers)."</a></nowiki><br>\n" ;
 
 	global $wikiSQLServer ;
 	$connection = getDBconnection () ;
@@ -286,14 +291,17 @@ function WantedPages () {
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) {
 		$allPages[ucfirst($s->cur_title)] = -999999999999 ; # Effectively removing existing topics from list
-		$u = explode ( "\n" , $s->cur_unlinked_links ) ;
-		$v = array () ;
-		foreach ( $u as $x ) {
-			$w = ucfirst ( $x ) ;
-			if ( $v[$w] != true ) # Count only one link per page
-				{
-				$allPages[$w] += 1 ;
-				$v[$w] = true ;
+		$fc = substr ( $s->cur_title , 0 , 1 ) ;
+		if ( $showNumberPages == "on" OR $fc < "0" OR $fc > "9" ) {
+			$u = explode ( "\n" , $s->cur_unlinked_links ) ;
+			$v = array () ;
+			foreach ( $u as $x ) {
+				$w = ucfirst ( $x ) ;
+				if ( $v[$w] != true ) # Count only one link per page
+					{
+					$allPages[$w] += 1 ;
+					$v[$w] = true ;
+					}
 				}
 			}
 		}
@@ -583,7 +591,7 @@ function recentchanges () {
 	global $wikiRecentChangesLastDays , $wikiRecentChangesSince , $wikiViewLastDays , $wikiViewMaxNum , $wikiListOnlyNewChanges ;
 	$vpage->special ( $wikiRecentChangesTitle ) ;
 	$vpage->makeSecureTitle() ;
-	if ( !isset ( $maxcnt ) ) $maxcnt = 100 ;
+	if ( !isset ( $maxcnt ) ) $maxcnt = 250 ;
 	if ( !isset ( $daysAgo ) ) $daysAgo = 3 ;
 
 	$from2 = substr ( $from , 0 , 4 ) . "-" . substr ( $from , 4 , 2 ) . "-" . substr ( $from , 6 , 2 ) ;
@@ -1493,6 +1501,30 @@ function whatLinksHere () {
 	if ( $ret == "" ) $ret = "<h1>".str_replace("$1",$niceTarget,$wikiBacklinkNolink)."</h1>" ;
 	else $ret = "<h1>".str_replace("$1",$niceTarget,$wikiBacklinkFollowing)."</h1>\n$ret" ;
 
+	return $ret ;
+	}
+
+function popularpages () {
+	global $wikiSQLServer , $vpage ;
+	$a = array () ;
+	$connection = getDBconnection () ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
+	$sql = "SELECT cur_title,cur_counter FROM cur GROUP BY cur_title ORDER BY cur_counter DESC LIMIT 100" ;
+	$result = mysql_query ( $sql , $connection ) ;
+	while ( $s = mysql_fetch_object ( $result ) )
+		array_push ( $a , $s ) ;
+	if ( $result != false ) mysql_free_result ( $result ) ;
+	mysql_close ( $connection ) ;
+
+	$ret = "" ;
+	$ret .= "<table>\n" ;
+	foreach ( $a as $x ) {
+		$ret .= "<tr>\n" ;
+		$ret .= "<td align=right nowrap>$x->cur_counter</td>\n" ;
+		$ret .= "<td>[[".$vpage->getNiceTitle($x->cur_title)."]]</td>\n" ;
+		$ret .= "</tr>\n" ;
+		}
+	$ret .= "</table>" ;
 	return $ret ;
 	}
 
