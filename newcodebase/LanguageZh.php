@@ -48,7 +48,8 @@
 	"hideminor" => "Hide minor edits in recent changes",
 	"numberheadings" => "Auto-number headings",
 	"rememberpassword" => "Remember password across sessions",
-	"editwidth" => "Edit box has full width"
+	"editwidth" => "Edit box has full width",
+	"editondblclick" => "Edit pages on double click (JavaScript)"
 );
 
 /* private */ $wgBookstoreListZh = array(
