@@ -146,18 +146,32 @@ function wfMsg( $key )
 function wfCleanFormFields( $fields )
 {
 	global $HTTP_POST_VARS;
+	global $wgInputEncoding, $wgOutputEncoding, $wgLang;
 
-	if ( ! get_magic_quotes_gpc() ) {
-		return;
-	}
-	foreach ( $fields as $fname ) {
-		if ( isset( $HTTP_POST_VARS[$fname] ) ) {
-			$HTTP_POST_VARS[$fname] = stripslashes(
-			  $HTTP_POST_VARS[$fname] );
+	if ( get_magic_quotes_gpc() ) {
+		foreach ( $fields as $fname ) {
+			if ( isset( $HTTP_POST_VARS[$fname] ) ) {
+				$HTTP_POST_VARS[$fname] = stripslashes(
+				  $HTTP_POST_VARS[$fname] );
+			}
+			global ${$fname};
+			if ( isset( ${$fname} ) ) {
+				${$fname} = stripslashes( ${$fname} );
+			}
 		}
-		global ${$fname};
-		if ( isset( ${$fname} ) ) {
-			${$fname} = stripslashes( ${$fname} );
+	}
+	if ( $wgInputEncoding != $wgOutputEncoding ) {
+		foreach ( $fields as $fname ) {
+			if ( isset( $HTTP_POST_VARS[$fname] ) ) {
+				$HTTP_POST_VARS[$fname] = $wgLang->iconv(
+				  $wgOutputEncoding, $wgInputEncoding,
+				  $HTTP_POST_VARS[$fname] );
+			}
+			global ${$fname};
+			if ( isset( ${$fname} ) ) {
+				${$fname} = $wgLang->iconv(
+				  $wgOutputEncoding, $wgInputEncoding, ${$fname} );
+			}
 		}
 	}
 }
