@@ -43,7 +43,8 @@ class LuceneSearch extends SpecialPage
 	}
 		
 	function execute($par) {
-		global $wgRequest, $wgOut, $wgTitle, $wgContLang, $wgUser;
+		global $wgRequest, $wgOut, $wgTitle, $wgContLang, $wgUser,
+			$wgLuceneCSSPath;
 
 		$this->setHeaders();
 
@@ -76,6 +77,15 @@ class LuceneSearch extends SpecialPage
 			}
 			wfAbruptExit();
 		}
+
+		$wgOut->addHTML($this->makeSuggestJS());
+		$wgOut->addLink(array(
+			"rel" => "stylesheet",
+			"type" => "text/css",
+			"media" => "screen,projection",
+			"href" => $wgLuceneCSSPath
+			)
+		);
 
 		$wgOut->addWikiText(wfMsg('searchresulttext'));
 		$wgOut->addHTML($this->showShortDialog($q));
@@ -329,16 +339,16 @@ class LuceneSearch extends SpecialPage
                 $searchButton = '<input type="submit" name="searchx" value="' .
                   htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
                 $searchField = "<div><input type='text' id='lsearchbox' onkeyup=\"resultType()\" "
-			. "name=\"search\" value=\""
-                        . htmlspecialchars($term) ."\" style='width: 50%;margin-left: 25%' "
+			. "style='margin-left: 25%; width: 50%' value=\""
+                        . htmlspecialchars($term) ."\""
 			. " autocomplete=\"off\" />\n"
 			. "<span id='loadStatus'></span>"
 			. $searchButton
 			. "<div id='results'></div></div>";
 
 		$ret = $searchField /*. $searchButton*/;
-                return $this->makeSuggestJS()
-		  . "<form id=\"search\" method=\"get\" "
+                return 
+		  "<form id=\"search\" method=\"get\" "
                   . "action=\"$action\">\n<div>{$ret}</div>\n</form>\n";
 	}
 
