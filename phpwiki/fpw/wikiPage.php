@@ -12,7 +12,10 @@ class WikiPage extends WikiTitle {
     var $timestamp ; # Time and date of last edit
     var $cache ; # For cached pages
     var $canBeCached ;
-    
+
+    var $dtOpen; # Used for handling DLs
+    var $lastSection; # Used for p/pre sections
+
 #### Database management functions
 
     # This loads an article from the database, or calls a special function instead (all pages with "special:" namespace)
@@ -403,7 +406,7 @@ class WikiPage extends WikiTitle {
 
     # This function replaces wiki-style image links with the HTML code to display them
     function parseImages ( $s ) {
-        $s = ereg_replace ( "([^[])http://([a-zA-Z0-9_/:.~\%\-]*)\.(png|jpg|jpeg|tif|tiff|gif)" , "\\1<img src=\"http://\\2.\\3\">" , $s ) ;
+        $s = ereg_replace ( "([^[])http://([a-zA-Z0-9_/:.~\%\-]*)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)" , "\\1<img src=\"http://\\2.\\3\">" , $s ) ;
         return $s ;
         }
 
@@ -696,7 +699,9 @@ class WikiPage extends WikiTitle {
         # I don't *think* these are dangerous
         "id", "class" , "name" , "style" );
 
-    # Yeah, it seems kinda ugly.
+    # Delete comments right up front
+    $s = preg_replace( "/<!--.*-->/", "", $s );
+
     $bits = explode ( "<" , $s ) ;
     $s = array_shift ( $bits ) ;
     $tagstack = array() ; $tablestack = array () ;
@@ -844,6 +849,91 @@ class WikiPage extends WikiTitle {
         return $s ;
         }
 
+    # Some functions here useful for processing */#/: lines:
+    #
+    # Regrettably, the fact that we allow miscellaneous HTML in
+    # in wiki text as well as our own markup makes it almost impossible
+    # to parse a full DOM and output nicely-balanced and checked
+    # XHTML, so we settle for HTML 4.0 and never close <p> tags (if
+    # we tried we'd have headings inside paragraphs and such muck).
+    # Someday...
+    
+    # getCommon() returns the length of the longest common substring
+    #
+    function closeParagraph( )
+    {
+        $result = "";
+        if ( 0 != strcmp( "p", $this->lastSection ) &&
+             0 != strcmp( "", $this->lastSection ) ) {
+            $result = "</" . $this->lastSection  . ">";
+        }
+        $this->lastSection = "";
+        return $result;
+    }
+    # of both arguments, starting at the beginning of both.
+    #
+    function getCommon( $st1, $st2 )
+    {
+        $fl = strlen( $st1 );
+        $shorter = strlen( $st2 );
+        if ($fl < $shorter) { $shorter = $fl; }
+
+        for ( $i = 0; $i < $shorter; ++$i ) {
+            if ( 0 != strcmp( substr( $st1, $i, 1 ), substr( $st2, $i, 1 ) ) ) {
+                break;
+            }
+        }
+        return $i;
+    }
+
+    # These next three functions open, continue, and close the list
+    # element appropriate to the prefix character passed into them.
+    #
+    function openList( $char )
+    {
+        $result = $this->closeParagraph();
+
+        if ( "*" == $char ) { $result .= "<ul><li>"; }
+        else if ( "#" == $char ) { $result .= "<ol><li>"; }
+        else if ( ":" == $char ) { $result .= "<dl><dd>"; }
+        else if ( ";" == $char ) { $result .= "<dl><dt>"; }
+        else { $result = "<!-- ERR 1 -->"; }
+
+        return $result;
+    }
+
+    function nextItem( $char )
+    {
+        if ( "*" == $char || "#" == $char ) { return "</li><li>"; }
+        else if ( ":" == $char || ";" == $char ) {
+            $close = "</dd>";
+            if ( $this->dtOpen ) { $close = "</dt>"; }
+            if ( ";" == $char ) {
+                $this->dtOpen = true;
+                return $close . "<dt>";
+            } else {
+                $this->dtOpen = false;
+                return $close . "<dd>";
+            }
+        }
+        return "<!-- ERR 2 -->";
+    }
+
+    function closeList( $char )
+    {
+        if ( "*" == $char ) { return "</li></ul>"; }
+        else if ( "#" == $char ) { return "</li></ol>"; }
+        else if ( ":" == $char ) {
+            if ( $this->dtOpen ) {
+                $this->dtOpen = false;
+                return "</dt></dl>";
+            } else {
+                return "</dd></dl>";
+            }
+        }
+        return "<!-- ERR 3 -->";
+    }
+
     # This function does the actual parsing of the wiki parts of the article, for regions NOT marked with <nowiki>
     function subParseContents ( $s ) {
         global $user ;
@@ -874,72 +964,87 @@ class WikiPage extends WikiTitle {
         # Parsing through the text line by line
         # The main thing happening here is handling of lines starting with * # : etc.
         $a = explode ( "\n" , $s ) ;
-        $s = "<p$justify>" ;
-        $obegin = "" ;
+        $s = "<p>" ;
+        $lastPref = "";
+        $lastSection = "";
+        $this->dtOpen = false;
+        $inBlockElem = false;
+
         foreach ( $a as $t ) {
-            $pre = "" ;
-            $post = "" ;
-            $ppre = "" ;
-            $ppost = "" ;
-            if ( trim ( $t ) == "" ) $post .= "</p><p>" ;
+            $oLine = $t;
+            $opl = strlen( $lastPref );
+            $npl = strspn( $t, "*#:;" );
+            $pref = substr( $t, 0, $npl );
+            $pref2 = str_replace( ";", ":", $pref );
+            $t = substr( $t, $npl );
 
-            if ( substr($t,0,1) == " " ) { $ppre = "<pre>\n " ; $ppost = "</pre>".$ppost ; $t = substr ( $t , 1 ) ; }
-            if ( substr($t,0,1) == "*" ) { $ppre .= "<li>" ; $ppost .= "</li>" ; }
-            if ( substr($t,0,1) == "#" ) { $ppre .= "<li>" ; $ppost .= "</li>" ; }
-            if ( substr($t,0,1) == ":" ) { $ppre .= "<dt><dd>" ; }
-            if ( substr($t,0,1) == ";" ) {
-                $ppre = "<DL>\n<dt> " ;
-                $t = str_replace ( ":" , "<dd>" , $t ) ;
-                $ppost = "</DL>".$ppost ;
-                $t = substr ( $t , 1 ) ;
+            if ( 0 != $npl && 0 == strcmp( $lastPref, $pref2 ) ) {
+                $s .= $this->nextItem( substr( $pref, -1 ) );
+
+                if ( ";" == substr( $pref, -1 ) ) {
+                    $cpos = strpos( $t, ":" );
+                    if ( false === $cpos ) {
+                        # PHP weirdness: need empty block here.
+                    } else {
+                        $term = substr( $t, 0, $cpos );
+                        $s .= $term . "</dt><dd>";
+                        $t = substr( $t, $cpos + 1 );
+                    }
                 }
+            } else if (0 != $npl || 0 != $opl) {
+                $cpl = $this->getCommon( $pref, $lastPref );
 
-            $nbegin = "" ;
-            while ( $t != "" and $obegin != "" and substr($obegin,0,1)==substr($t,0,1) ) {
-                $nbegin .= substr($obegin,0,1) ;
-                $t = substr ( $t , 1 ) ;
-                $obegin = substr ( $obegin , 1 ) ;
+                while ( $cpl < $opl ) {
+                    $s .= $this->closeList( substr( $lastPref, ($opl - 1), 1 ) );
+                    --$opl;
                 }
-            
-            $obegin = str_replace ( "*" , "</ul>" , $obegin ) ;
-            $obegin = str_replace ( "#" , "</ol>" , $obegin ) ;
-            $obegin = str_replace ( ":" , "</DL>" , $obegin ) ;
-            $pre .= $obegin ;
-            $obegin = $nbegin ;
+                while ( $npl > $cpl ) {
+                    $char = substr( $pref, $cpl, 1 );
+                    $s .= $this->openList( $char );
 
-            while ( substr ( $t , 0 , 1 ) == "*" ) {
-                $pre .= "<ul>" ;
-                $t = substr ( $t , 1 ) ;
-                $obegin .= "*" ;
+                    if ( ";" == $char ) {
+                        $cpos = strpos( $t, ":" );
+                        if ( false === $cpos ) {
+                        } else {
+                            $term = substr( $t, 0, $cpos );
+                            $s .= $term . "</dt><dd>";
+                            $t = substr( $t, $cpos + 1 );
+                        }
+                    }
+                    ++$cpl;
                 }
-
-            while ( substr ( $t , 0 , 1 ) == "#" ) {
-                $pre .= "<ol>" ;
-                $t = substr ( $t , 1 ) ;
-                $obegin .= "#" ;
-                }
-
-            while ( substr ( $t , 0 , 1 ) == ":" ) {
-                $pre .= "<DL>" ;
-                $t = substr ( $t , 1 ) ;
-                $obegin .= ":" ;
-                }
-
-            $t = str_replace ( "  " , "&nbsp; " , $t ) ;
-
-            $t = $pre.$ppre.$t.$ppost.$post ;
-            $s .= $t."\n" ;
+                $lastPref = $pref2;
             }
-        $s .= "</p>" ;
-
-        $s = str_replace ( "</li>\n&nbsp;<li>" , "</li>\n<li>" , $s ) ;
-        $s = str_replace ( "</pre>\n<pre>" , "" , $s ) ;
-        $s = str_replace ( "</dl>\n<dl>" , "" , $s ) ;
-
-        # Removing artefact empty paragraphs like <p></p>
-        $this->replaceAll ( "<p>\n</p>" , "<p></p>" , $s ) ;
-        $this->replaceAll ( "<p></p>" , "" , $s ) ;
-        $this->replaceAll ( "</p><p>" , "<p>" , $s ) ;
+            if ( 0 == $npl ) { # No prefix--go to paragraph mode
+                if ( preg_match( "/(<table|<blockquote|<h1|<h2|<h3|<h4|<h5|<h6)/i", $t ) ) {
+                    $s .= $this->closeParagraph();
+                    $inBlockElem = true;
+                }
+                if ( ! $inBlockElem ) {
+                    if ( 0 == strcmp( " ", substr( $t, 0, 1 ) ) ) {
+                        $newSection = "pre";
+                    } else {
+                        $newSection = "p";
+                    }
+                    if ( 0 == strcmp( "", trim( $oLine ) ) ) {
+                        $s .= $this->closeParagraph();
+                        $s .= "<" . $newSection . ">";
+                    } else if ( 0 != strcmp( $this->lastSection, $newSection ) ) {
+                        $s .= $this->closeParagraph();
+                        if ( 0 != strcmp( "p", $newSection ) ) {
+                            $s .= "<" . $newSection . ">";
+                        }
+                    }
+                    $this->lastSection = $newSection;
+                }
+                if ( $inBlockElem &&
+                     preg_match( "/(<\/table|<\/blockquote|<\/h1|<\/h2|<\/h3|<\/h4|<\/h5|<\/h6)/i", $t ) ) {
+                    $inBlockElem = false;
+                }
+            }
+            $s .= $t . "\n";
+        }
+        $s .= $this->closeParagraph();
 
         # Stuff for the skins
         if ( $user->options["textTableBackground"] != "" ) {
