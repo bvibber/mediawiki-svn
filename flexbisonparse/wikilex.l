@@ -134,6 +134,8 @@ int encodeTableRowInfo (char* input, int initleng)
 \|                  { COMMONTOKENS; debuglex ("PIPE "); return PIPE; }
 \{\{\{\{\{          { COMMONTOKENS; debuglex ("OPENPENTUPLECURLY "); return OPENPENTUPLECURLY; }
 \}\}\}\}\}          { COMMONTOKENS; debuglex ("CLOSEPENTUPLECURLY "); return CLOSEPENTUPLECURLY; }
+\{\{\{\{            { COMMONTOKENS; debuglex ("OPENTEMPLATE "); yyless (2); return OPENTEMPLATE; }
+\}\}\}\}            { COMMONTOKENS; debuglex ("CLOSETEMPLATE "); yyless (2); return CLOSETEMPLATE; }
 \{\{\{              { COMMONTOKENS; debuglex ("OPENTEMPLATEVAR "); return OPENTEMPLATEVAR; }
 \}\}\}              { COMMONTOKENS; debuglex ("CLOSETEMPLATEVAR "); return CLOSETEMPLATEVAR; }
 \{\{                { COMMONTOKENS; debuglex ("OPENTEMPLATE "); return OPENTEMPLATE; }
@@ -145,6 +147,7 @@ int encodeTableRowInfo (char* input, int initleng)
 '''.                { COMMONTOKENS; APOSTROPHE_CATASTROPHE (3, "APO3 ", APO3); }
 ''.                 { COMMONTOKENS; APOSTROPHE_CATASTROPHE (2, "APO2 ", APO2); }
 \n                  { BEGIN (INITIAL); debuglex ("NEWLINE\n"); return NEWLINE; }
+^" "*\n             { BEGIN (INITIAL); debuglex ("NEWLINE\n"); return NEWLINE; }
 \r                  { /* ignore this one */ debuglex ("<13> "); }
 
 ^" "                { BEGIN(cannotbelistorheadingorpre); debuglex ("PRELINE "); return PRELINE; }
