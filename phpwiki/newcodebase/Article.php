@@ -43,7 +43,7 @@ class Article {
 		return $n;
 	}
 
-	function getContent()
+	function getContent( $noredir = false )
 	{
 		global $action;
 
@@ -53,12 +53,12 @@ class Article {
 			}
 			return wfMsg( "noarticletext" );
 		} else {
-			$this->loadContent();
+			$this->loadContent( $noredir );
 			return $this->mContent;
 		}
 	}
 
-	function loadContent()
+	function loadContent( $noredir = false )
 	{
 		global $wgOut, $wgTitle, $oldid, $redirect;
 		if ( $this->mContentLoaded ) return;
@@ -79,7 +79,7 @@ class Article {
 			if ( 0 == wfNumRows( $res ) ) { return; }
 
 			$s = wfFetchObject( $res );
-			if ( ( "no" != $redirect ) &&
+			if ( ( "no" != $redirect ) && ( false == $noredir ) &&
 			  ( preg_match( "/^#redirect/i", $s->cur_text ) ) ) {
 				if ( preg_match( "/\\[\\[([^\\]\\|]+)[\\]\\|]/",
 				  $s->cur_text, $m ) ) {
@@ -454,13 +454,13 @@ enctype='application/x-www-form-urlencoded'>
 
 		$text = $this->preSaveTransform( $text );
 
-		if ( 0 != strcmp( $text, $this->getContent() ) ) {
+		if ( 0 != strcmp( $text, $this->getContent( true ) ) ) {
 			$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
 			  "old_comment,old_user,old_user_text,old_timestamp," .
 			  "old_minor_edit) VALUES (" .
 			  $wgTitle->getNamespace() . ", '" .
 			  wfStrencode( $wgTitle->getDBkey() ) . "', '" .
-			  wfStrencode( $this->getContent() ) . "', '" .
+			  wfStrencode( $this->getContent( true ) ) . "', '" .
 			  wfStrencode( $this->getComment() ) . "', " .
 			  $this->getUser() . ", '" .
 			  wfStrencode( $this->getUserText() ) . "', '" .
