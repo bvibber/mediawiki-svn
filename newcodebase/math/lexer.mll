@@ -7,7 +7,8 @@ let space = [' ' '\t' '\n' '\r']
 let alpha = ['a'-'z' 'A'-'Z']
 let literal_it = ['a'-'z' 'A'-'Z']
 let literal_rm = ['0'-'9']
-let literal_uf = ['+' '-' '*' ',' '=' '(' ')' ':' '/' ';' '?' '.' '!'  '|' '\'' ]
+let literal_uf_lt = [',' '(' ')' ':'  ';' '?' '.' '!' '\'']
+let literal_uf_op = ['+' '-' '*' '=' '/' '|']
 let boxchars  = ['0'-'9' 'a'-'z' 'A'-'Z' '+' '-' '*' ',' '=' '(' ')' ':' '/' ';' '?' '.' '!' ' ' '\128'-'\255']
 let aboxchars = ['0'-'9' 'a'-'z' 'A'-'Z' '+' '-' '*' ',' '=' '(' ')' ':' '/' ';' '?' '.' '!' ' ']
 
@@ -42,7 +43,8 @@ rule token = parse
 				  BOX ("\\vbox", String.sub str n (String.length str - n - 1)) }
   | literal_it			{ let str = Lexing.lexeme lexbuf in LITERAL (HTMLABLEC (FONT_IT, str,str)) }
   | literal_rm			{ let str = Lexing.lexeme lexbuf in LITERAL (HTMLABLEC (FONT_RM, str,str)) }
-  | literal_uf			{ let str = Lexing.lexeme lexbuf in LITERAL (HTMLABLEC (FONT_UFH, str,str)) }
+  | literal_uf_lt		{ let str = Lexing.lexeme lexbuf in LITERAL (HTMLABLEC (FONT_UFH, str,str)) }
+  | literal_uf_op		{ let str = Lexing.lexeme lexbuf in LITERAL (HTMLABLEC (FONT_UFH, str," "^str^" ")) }
   | "\\" alpha + 		{ Texutil.find (Lexing.lexeme lexbuf) }
   | "\\sqrt" space * "["	{ FUN_AR1opt "\\sqrt" }
   | "\\," 			{ LITERAL (HTMLABLE (FONT_UF, "\\,","&nbsp;")) }
@@ -57,6 +59,8 @@ rule token = parse
   | "\\%"			{ LITERAL (HTMLABLE (FONT_UFH,"\\%","%")) }
   | "&"				{ NEXT_CELL }
   | "\\\\"			{ NEXT_ROW }
+  | "\\begin{matrix}"		{ Texutil.tex_use_ams(); BEGIN__MATRIX }
+  | "\\end{matrix}"		{ END__MATRIX }
   | "\\begin{pmatrix}"		{ Texutil.tex_use_ams(); BEGIN_PMATRIX }
   | "\\end{pmatrix}"		{ END_PMATRIX }
   | "\\begin{bmatrix}"		{ Texutil.tex_use_ams(); BEGIN_BMATRIX }
@@ -67,8 +71,8 @@ rule token = parse
   | "\\end{vmatrix}"		{ END_VMATRIX }
   | "\\begin{Vmatrix}"		{ Texutil.tex_use_ams(); BEGIN_VVMATRIX }
   | "\\end{Vmatrix}"		{ END_VVMATRIX }
-  | '>'				{ LITERAL (HTMLABLEC(FONT_UFH,">","&gt;")) }
-  | '<'				{ LITERAL (HTMLABLEC(FONT_UFH,"<","&lt;")) }
+  | '>'				{ LITERAL (HTMLABLEC(FONT_UFH,">"," &gt; ")) }
+  | '<'				{ LITERAL (HTMLABLEC(FONT_UFH,"<"," &lt; ")) }
   | '%'				{ LITERAL (HTMLABLEC(FONT_UFH,"\\%","%")) }
   | '~'				{ LITERAL (HTMLABLE (FONT_UF, "~","&nbsp;")) }
   | '['				{ LITERAL (HTMLABLEC(FONT_UFH,"[","[")) }
