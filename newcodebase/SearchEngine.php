@@ -11,7 +11,8 @@ class SearchEngine {
         var $alternateTitle ;
         function queryNamespaces ()
                 {
-                return "cur_namespace=".implode ( " OR cur_namespace=" , $this->na ) ;
+                #return "cur_namespace=".implode ( " OR cur_namespace=" , $this->na ) ;
+                return "cur_namespace IN (" . implode( ",", $this->na ) . ")";
                 }
         function searchRedirects ()
                 {
@@ -134,15 +135,16 @@ class SearchEngine {
 		if ( ! $offset ) { $offset = 0; }
 
                 $searchnamespaces = $this->queryNamespaces () ;
+                $redircond = $this->searchRedirects();
 		$sql = "SELECT cur_id,cur_namespace,cur_title," .
 		  "cur_text FROM cur,searchindex " .
-		  "WHERE cur_id=si_page AND {$this->mTitlecond} AND ({$searchnamespaces}) " .
+		  "WHERE cur_id=si_page AND {$this->mTitlecond} AND {$searchnamespaces} {$redircond}" .
 		  "LIMIT {$offset}, {$limit}";
 		$res1 = wfQuery( $sql, $fname );
 
 		$sql = "SELECT cur_id,cur_namespace,cur_title," .
 		  "cur_text FROM cur,searchindex " .
-		  "WHERE cur_id=si_page AND {$this->mTextcond} AND ({$searchnamespaces}) " .
+		  "WHERE cur_id=si_page AND {$this->mTextcond} AND {$searchnamespaces} {$redircond} " .
 		  "LIMIT {$offset}, {$limit}";
 		$res2 = wfQuery( $sql, $fname );
 
