@@ -130,7 +130,10 @@ void TWikiInterface::run (int argc, char *argv[])
         }
     }
 
-
+/*
+// Experimental code to convert a MySQL dump to
+// the sqlite format. This has little to do with the
+// actual parser.
 void mysql2sqlite ( string fn_in , string fn_out )
     {
     VTUCS v ;
@@ -253,6 +256,7 @@ void mysql2sqlite ( string fn_in , string fn_out )
     
     system("PAUSE");	
     }
+*/
 
 //************************************* MAIN
 
