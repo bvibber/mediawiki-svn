@@ -1043,6 +1043,9 @@ class Skin {
 
 		$nt = Title::newFromText( $title );
 
+		if ( !$nt ) {
+			return "<!--a bad link-->{$text}{$inside}<!--/a-->{$trail}";
+		}
 		if ( $nt->isExternal() ) {
 			$u = $nt->getFullURL();
 			if ( "" == $text ) { $text = $nt->getPrefixedText(); }
@@ -1070,7 +1073,7 @@ class Skin {
                 } else {
                         $threshold = $wgUser->getOption("stubthreshold") ;
                         if ( $threshold > 0 ) {
-                                $res = wfQuery ( "SELECT HIGH_PRIORITY length(cur_text) AS x, cur_namespace, cur_is_redirect FROM cur WHERE cur_id='{$aid}'" ) ;
+                                $res = wfQuery ( "SELECT length(cur_text) AS x, cur_namespace, cur_is_redirect FROM cur WHERE cur_id='{$aid}'" ) ;
 
                                 if ( wfNumRows( $res ) > 0 ) {
                                         $s = wfFetchObject( $res );
@@ -1092,6 +1095,11 @@ class Skin {
 		global $wgOut, $wgTitle;
 
 		$nt = Title::newFromText( $title );
+		
+		if(!$nt) {
+			return "<!--a bad link-->{$text}{$inside}<!--/a-->{$trail}";
+		}
+		
 		$link = $nt->getPrefixedURL();
 
 		if ( "" == $link ) {
@@ -1122,6 +1130,9 @@ class Skin {
 		global $wgOut, $wgUser;
 
 		$nt = Title::newFromText( $title );
+		if(!$nt) {
+			return "<!--a bad edit link-->{$text}{$inside}<!--/a-->{$trail}";
+		}
 		$link = $nt->getPrefixedURL();
 
 		if ( "" == $query ) { $q = "action=edit"; }
@@ -1152,6 +1163,9 @@ class Skin {
                 global $wgOut, $wgUser;
 
                 $nt = Title::newFromText( $title );
+		if(!$nt) {
+			return "<!--a bad stub link-->{$text}{$inside}<!--/a-->{$trail}";
+		}
                 $link = $nt->getPrefixedURL();
 
                 $u = wfLocalUrlE( $link, $query );
