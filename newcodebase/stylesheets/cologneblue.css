@@ -13,9 +13,9 @@ body { margin: 0px; padding: 4px; }
 }
 #article p, #article ul, #article ol, #article dl {
  padding-top: 0; padding-bottom: 0;
- margin-top: 2ex; margin-bottom: 0;
+ margin-top: 1ex; margin-bottom: 0;
 }
-p, pre, td, th, li, dd, dt { line-height: 1.25; }
+p, pre, td, th, li, dd, dt { line-height: 12pt; }
 
 #footer { padding: 4px; }
 #footer form { display: inline; }
@@ -39,7 +39,7 @@ td.top a {
 }
 td.bottom {
  font-family: Verdana, Arial, sans-serif;
- font-size: 12pt;
+ font-size: 10pt;
  padding: 0;
 }
 #pagestats {
