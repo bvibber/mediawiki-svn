@@ -263,7 +263,7 @@
 "linktrail"     => "/^([a-z]+)(.*)$/sD",
 "mainpage"		=> "Hlavní strana",
 "about"			=> "Úvod",
-"aboutwikipedia" => "Pri Vikipedio", #FIXME
+"aboutwikipedia" => "O Wikipedii", #FIXME
 "aboutpage"		=> "Wikipedie:Úvod",
 "help"			=> "Nápověda",
 "helppage"		=> "Wikipedie:Nápověda",
@@ -415,7 +415,7 @@ která popsala příčinu takto:<br><p>Máte právo se spojit se správcem syst�
 "note"			=> "<strong>Noto:</strong> ", #FIXME: Where does this come from?
 "previewnote"	=> "Pamatujte, že toto je pouze náhled, ne uložení!",
 "previewconflict" => "Tento náhled ukazuje výše uvedený text, jak bude vypadat po uložení stránky.", #FIXME
-"editing"		=> "Redigujete vy ",
+"editing"		=> "Redakce stránky $1",
 "editconflict"	=> "Redakční konflikt: ",
 "explainconflict" => "Někdo změnil stránku poté, co jste ji napsal(a). Výše vidíte aktuální text článku. Vaše změny jsou uvedeny dole. Musíte sloučit své změny se stávajícím článkem.
 <b>Poue</b> výše uvedený text zůstane uchováná po kliknutí na  \"Uložit\".\n<p>" , #FIXME - double-check that this makes sense
