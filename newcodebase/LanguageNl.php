@@ -32,12 +32,19 @@
  "Standaard", "Nostalgie", "Keuls blauw"
 );
 
+/* private */ $wgMathNamesNl = array(
+           "Altijd PNG weergeven",
+           "HTML voor eenvoudige formules, anders PNG",
+           "HTML indien mogelijk, anders PNG",
+           "Laat de TeX broncode staan (voor tekstbrowsers)"   );
+
 /* private */ $wgUserTogglesNl = array(
  "hover"  => "Wikilinks in zwevend tekstvak tonen",
  "underline" => "Links onderstrepen",
  "highlightbroken" => "Links naar lege pagina's laten oplichten",
  "justify" => "Paragrafen uitvullen",
  "hideminor" => "Kleine wijzigingen verbergen in recente wijzigingen",
+ "usenewrc" => "Gebruik de uitgebreide Recente Wijzigingen-pagina (niet op alle browsers mogelijk)",
  "numberheadings" => "Koppen automatisch nummeren",
  "rememberpassword" => "Wachtwoord onthouden",
  "editwidth" => "Bewerkingsveld over volle breedte",
@@ -233,7 +240,7 @@
  "Whatlinkshere" => "",
  "Recentchangeslinked" => "",
  "Movepage"  => "",
- "Booksources" => "Boekwinkels"
+ "Booksources" => "Boekhandels"
 );
 
 /* private */ $wgSysopSpecialPagesNl = array(
@@ -282,23 +289,26 @@
 "whatlinkshere" => "Pagina's die hierheen verwijzen",
 "help"   => "Help",
 "search"  => "Zoeken",
+"go" => "Ga naar pagina",
 "history"  => "Voorgeschiedenis",
 "printableversion" => "Printer-vriendelijke versie",
 "editthispage" => "Pagina bewerken",
 "deletethispage" => "Verwijderen",
 "protectthispage" => "Beveiligen",
 "unprotectthispage" => "Beveiliging opheffen",
+"newpage" => "Nieuwe pagina",
 "talkpage"  => "Overlegpagina",
 "subjectpage" => "Artikel",
 "articlepage"   => "Artikel",
 "userpage" => "Gebruikerspagina",
 "wikipediapage" => "Artikel",
 "imagepage" => "Beschrijvingspagina",
+"viewtalkpage" => "Bekijk de overlegpagina",
 "otherlanguages" => "Andere talen",
 "redirectedfrom" => "(Doorverwezen vanaf $1)",
-"lastmodified" => "Deze pagina werd het laatst gewijzigd op $1.",
+"lastmodified" => "Het werd voor het laatst gewijzigd op $1.",
 "viewcount"  => "Deze pagina werd $1 maal bekeken.",
-"gnunote" => "Deze pagina valt onder de  <a class=internal href='/wiki/Gnu_Vrije_Documentatie_Licentie'>GNU FDL</a>.",
+"gnunote" => "Alle tekst op deze pagina valt onder de  <a class=internal href='/wiki/Gnu_Vrije_Documentatie_Licentie'>GNU FDL</a>.",
 "printsubtitle" => "(Uit http://nl.wikipedia.org)",
 "protectedpage" => "Beveiligde pagina",
 "administrators" => "Wikipedia:Systeembeheerders",
@@ -454,6 +464,7 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "badquery"  => "Slecht geformuleerde zoekopdracht",
 "badquerytext" => "Uw zoekopdracht kon niet worden uitgevoerd. Dit komt wellicht doordat u heeft geprobeerd een woord van minder dan drie letters te zoeken; dat wordt door de software niet ondersteund. Het is ook mogelijk dat u de zoekterm verkeerd hebt ingetypt, zoals bij \"vissen en en schubben\".",
 "matchtotals" => "De zoekterm \"$1\" is gevonden in $2 paginatitels en in de tekst van $3 pagina's.",
+"nogomatch" => "Er bestaat geen pagina met deze titel, op zoek naar pagina's waarin de tekst voorkomt.",
 "titlematches" => "Overeenkomst met volgende titels",
 "notitlematches" => "Geen enkele paginatitel gevonden met de opgegeven zoekterm",
 "textmatches" => "Overeenkomst met artikel inhoud",
@@ -461,7 +472,7 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "prevn"   => "vorige $1",
 "nextn"   => "volgende $1",
 "viewprevnext" => "($1) ($2) ($3) bekijken.",
-"showingresults" => "Hieronder de resultaten <b>$1</b> beginnend met #<b>$2</b>.",
+"showingresults" => "Hieronder de <b>$1</b> resultaten vanaf nummer <b>$2</b>."
 "nonefound"  => "<strong>Merk op:</strong> wanneer een zoekopdracht mislukt komt dat vaak door gebruik van (in het Engels) veel voorkomende woorden zoals \"of\" en \"be\", die niet geïndexeerd zijn, of door verschillende zoektermen tegelijk op te geven (u krijgt dan alleen in pagina's waaarin alle opgegeven termen voorkomen).",
 "powersearch" => "Zoeken",
 "powersearchtext" => "   
@@ -479,7 +490,13 @@ $2 Toon redirects &nbsp; Zoek: $3 $9",
 "prefsreset" => "Standaardvoorkeuren hersteld.",
 "qbsettings" => "Menubalkinstellingen", 
 "changepassword" => "Wachtwoord wijzigen",
-"skin"   => "Wikipedia-Uiterlijk",
+"skin" => "Wikipedia-Uiterlijk",
+"math" => "Wiskundige formules tonen",
+"math_failure" => "Wiskundige formule niet begrijpelijk",
+"math_unknown_error" => "Onbekende fout in formule",
+"math_unknown_function" => "Onbekende functie in formule",
+"math_lexing_error" => "Lexicografische fout in formule",
+"math_syntax_error" => "Syntax-fout in formule",
 "saveprefs"  => "Voorkeuren opslaan",
 "resetprefs" => "Standaardvoorkeuren herstellen",
 "oldpassword" => "Huidig wachtwoord",
@@ -502,6 +519,7 @@ $2 Toon redirects &nbsp; Zoek: $3 $9",
 
 # Recent changes
 # Recente wijzigingen
+"changes" => "wijzigingen",
 "recentchanges" => "Recente wijzigingen",
 "recentchangestext" => "Deze pagina toont de meest recente wijzigingen aan Wikipedia NL
 Mocht u hier nieuw zijn, dan welkom bij Wikipedia! Bekijk AUB de volgende pagina's eens: [[Wikipedia:Veel gestelde vragen|Veel gestelde vragen]], [[Wikipedia:Instructies|Instructies]], [[Wikipedia:Objectiviteit|Objectiviteit]] en [[Wikipedia:Wat je niet moet doen|Wat je NIET moet doen]].
@@ -510,7 +528,7 @@ Als u pagina's wilt verwijderen, ga naar [[Wikipedia:Te verwijderen pagina's|Te 
 "rcloaderr"  => "Meest recente wijzigingen laden",
 "rcnote"  => "Hieronder zijn de <strong>$1</strong> laatste wijzigingen gedaan in de laatste <strong>$2</strong> dagen.",
 "rcnotefrom"  => "Veranderingen sinds <b>$2</b> (met een maximum van <b>$1</b> veranderingen).",
-"rclistfrom"  => "Toon de veranderingen beginnend vanaf $1",
+"rclistfrom"  => "Toon de veranderingen vanaf $1",
 # "rclinks"  => "Bekijk de $1 laatste wijzigingen in de laatste $2 uren / laatste $3 dagen.",
 "rclinks"  => "Bekijk de $1 laatste wijzigingen in de laatste $2 dagen.",
 "rchide"  => "in $4 vorm; $1 kleine wijzigingen; $2 wijzigingen op speciale pagina's zoals overleg- en gebruikerspagina's; $3 meervoudige wijzigingen.",
@@ -651,7 +669,7 @@ Er is in totaal $3 maal een pagina bekeken, en $4 maal een pagina bewerkt. Dat g
 "newpages"  => "Nieuwe pagina's",
 "movethispage" => "Verplaats deze pagina",
 "unusedimagestext" => "<p>Let op! Het zou kunnen dat er via een directe link verwezen wordt naar een afbeelding, bijvoorbeeld vanuit een anderstalige Wikipedia. Het is daarom mogelijk dat een afbeelding hier vermeld staat terwijl het wel degelijk gebruikt wordt.",
-"booksources" => "Boekwinkels",
+"booksources" => "Boekhandels",
 "booksourcetext" => "Hieronder is een lijst van externe websites die boeken verkopen en ook verdere informatie hierover kunnen verstekken. Via een ISBN-nummer in een artikel kan u via deze pagina een werk opzoeken. <p>Deze dienst is enkel ter uwer informatie. Wikipedia NL heeft <u>geen enkele</u> relatie met deze websites.",
 
 # Email this user
@@ -867,6 +885,11 @@ class LanguageNl extends Language {
  function getSkinNames() {
   global $wgSkinNamesNl;
   return $wgSkinNamesNl;
+ }
+
+ function getMathNames() {
+  global $wgMathNamesNl;
+  return $wgMathNamesNl;
  }
 
  function getUserToggles() {
