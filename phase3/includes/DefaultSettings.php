@@ -78,7 +78,10 @@ $wgUseBetterLinksUpdate = true;
 $wgSysopUserBans        = false; # Allow sysops to ban logged-in users
 $wgIPBlockExpiration    = 86400; # IP blocks expire after this many seconds, 0=infinite
 $wgUserBlockExpiration  = 0; # As above, but for logged-in users
-
+$wgBadRanges 		= false;
+$wgBadUserAgents 	= false;
+$wgRangeBlockUser	= 0;
+$wgRangeBlockReason	= "";
 
 # Client-side caching:
 $wgCachePages       = true; # Allow client-side caching of pages
