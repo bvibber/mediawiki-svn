@@ -212,6 +212,8 @@ function getAllTopics () {
 #	$rootDir = "/home/manske/wiki/lib-http/db/wiki/page/" ;
 	$rootDir = "/stuff/wiki/lib-http/db/wiki/page/" ;
 
+	set_time_limit ( 30000 ) ; # Enough time for this script...
+
 	global $ll , $ull , $allTopics ;
 	$ll = array () ;
 	$ull = array () ;
