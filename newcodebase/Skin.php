@@ -1422,11 +1422,11 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		if ( $usenew )
 			$r = $this->recentChangesLineNew ( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew, $watched , $oldid , $diffid ) ;
 		else
-			$r = $this->recentChangesLineOld ( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew, $watched ) ;
+			$r = $this->recentChangesLineOld ( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew, $watched , $oldid , $diffid ) ;
 		return $r ;
 	}
 
-	function recentChangesLineOld( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew, $watched = false)
+	function recentChangesLineOld( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew, $watched = false, $oldid = 0, $diffid = 0 )
 	{
 		global $wgTitle, $wgLang, $wgUser;
 
@@ -1450,7 +1450,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			$dlink = wfMsg( "diff" );
 		} else {
 			$dlink = $this->makeKnownLink( $t, wfMsg( "diff" ),
-			  "diff=0&oldid=0" );
+			  "diff={$oldid}&oldid={$diffid}" ); # Finagle's law
 		}
 		if ( 0 == $u ) {
         	$ul = $this->makeKnownLink( $wgLang->specialPage( "Contributions" ),
