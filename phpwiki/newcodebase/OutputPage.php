@@ -96,7 +96,7 @@ class OutputPage {
 		header( "Pragma: no-cache" );
 		header( "Content-type: text/html; charset={$wgOutputEncoding}" );
 		header( "Content-language: {$wgLanguageCode}" );
-
+		
 		if ( "" != $this->mRedirect ) {
 			header( "Location: {$this->mRedirect}" );
 			return;
@@ -151,7 +151,7 @@ class OutputPage {
 		$s = $HTTP_SERVER_VARS['HTTP_ACCEPT_CHARSET'];
 		
 		if( $wgUser->getOption( 'altencoding' ) ) {
-			$wgOutputEncoding = $wgLang->getAltEncoding();
+			$wgLang->setAltEncoding();
 			return;
 		}
 
