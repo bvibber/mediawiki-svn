@@ -114,3 +114,8 @@ OutputPage.php User.php maintenance/buildTables.inc maintenance/patch-cache.sql 
 
 * 2003-05-30: File upload license fields
 Adds fields to 'image' table.
+
+
+* 2003-09: Ipblocks auto-expiry update
+patch-ipblocks.sql
+
