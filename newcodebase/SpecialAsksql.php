@@ -27,7 +27,6 @@ class SqlQueryForm {
 		$wgOut->addWikiText( wfMsg( "asksqltext" ) );
 
 		if ( "" != $err ) {
-			$wgOut->setSubtitle( wfMsg( "formerror" ) );
 			$wgOut->addHTML( "<p><font color='red' size='+1'>{$err}</font>\n" );
 		}
 		if ( ! $wpSqlQuery ) { $wpSqlQuery = "SELECT ... FROM ... WHERE ..."; }

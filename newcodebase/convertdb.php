@@ -207,7 +207,7 @@ function convertOldTable()
 		if ( 0 != $row->old_minor_edit ) { $isme = 1; }
 		else { $isme = 0; }
 
-		if ( preg_match( "/^#redirect /i", $text ) ) {
+		if ( preg_match( "/^#redirect/i", $text ) ) {
 			$redir = 1;
 			$text = fixRedirect( $text );
 		} else { $redir = 0; }
@@ -337,8 +337,7 @@ function fixUserOptions( $in )
 
 	$q = strtolower( $ops["quickBar"] );
 	if ( $q == "none" ) { $q = 0; }
-	else if ( $q == "left" ) { $q = 1; }
-	else { $q = 2; }
+	else { $q = 1; } # Default to left
 	$nops["quickbar"] = $q;
 
 	if ( $ops["markupNewTopics"] == "inverse" ) {
