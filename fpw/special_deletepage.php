@@ -4,8 +4,7 @@ include_once ( "special_makelog.php" ) ;
 function deletepage () {
     global $THESCRIPT , $target , $user , $iamsure ;
     global $vpage , $wikiSQLServer ;
-    $target = str_replace ( "\\\\" , "\\" , $target ) ;
-    $target = str_replace ( "\\\\" , "\\" , $target ) ;
+    $target = stripslashes ( $target ) ;
     $vpage = new WikiPage ;
     $vpage->title = $title ;
     $vpage->makeSecureTitle () ;
