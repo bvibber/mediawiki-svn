@@ -164,6 +164,7 @@ void insertentry(struct entry *e)
 
 void processqueue()
 {
+    /* Check event queue if there are any events for current or past time */
     struct timeval tv;
     struct entry *e = NULL;
 
@@ -197,6 +198,7 @@ main(int ac, char **av)
     struct timeval wait;
     fd_set readfds;
     int port=3130;
+    int nice=10;
     int remotemanage=0;
     int c;
     icp_opcode opcode=ICP_HIT;
@@ -210,33 +212,47 @@ main(int ac, char **av)
     float stepsum = 0;
     struct rlimit rlim;
 
-    while ((c = getopt(ac,av,"dmt:p:c")) != -1) {
+    /* Work with command line options */
+    while ((c = getopt(ac,av,"dmt:p:cn:")) != -1) {
         switch (c) {
             case 'p':
+                /* Port to bind at */
                 port=atoi(optarg);
                 break;
             case 'm':
+                /* Enable remote management */
                 remotemanage=1;
                 break;
             case 'c':
+                /* Allow core dump creation */     
                 rlim.rlim_cur=(1024*1024*10);
                 rlim.rlim_max=(1024*1024*10);
                 setrlimit(RLIMIT_CORE,&rlim); 
             case 'd':
+                /* Daemonize, don't change dir - does use files only on coredumps */
                 daemon(1,0);
                 break;
             case 't':
+                /* Predefined timeout value */
                 t=atof(optarg);
                 break;
+            case 'n':
+                /* Predefined nice value */
+                nice=atoi(optarg);
+                break;
             default:
-                fprintf(stderr, "Usage: icpagent [-d] [-t delay time] [-p port] -m\n");
+                fprintf(stderr, "Usage: icpagent [-d] [-t delay time] [-p port] [-n nice] -m\n");
                 exit(-1);
         }
     }
+
+    /* Initialize event queue */
     TAILQ_INIT(&head);
 
-    setpriority(PRIO_PROCESS,getpid(),10);
+    /* Renice */
+    setpriority(PRIO_PROCESS,getpid(),nice);
 
+    /* Initialize server socket */
     s = socket(PF_INET, SOCK_DGRAM, 0);
     bzero(&me, sizeof(me));
     me.sin_family = AF_INET;
@@ -246,6 +262,8 @@ main(int ac, char **av)
 	printf("Unable to bind a socket");
 	exit(-1);
     }
+
+    /* Static delays */
     t_int = (int)t;
     frac = 10*(t - t_int + 0.0001);
     if(frac > 0)
@@ -273,6 +291,10 @@ main(int ac, char **av)
             msgbuf[rlen]='\0';
 	    if (rlen != header.length)
 		continue;
+
+            /* enable or disable agent hit responses on management requests
+             * -m should be enabled for that 
+             */
             if (remotemanage && !strcmp(url,"agent://enable"))
                 opcode=ICP_HIT;
             else if (remotemanage && !strcmp(url,"agent://disable"))
