@@ -1,5 +1,6 @@
-set @oldname = 'At18'; 
-set @newname = 'Alfio';
+-- User variables not replicated
+-- set @newname = 'Moeffju'; 
+-- set @oldname = 'Matthias Bauer';
 
 update low_priority user set user_name=@newname where user_name=@oldname;
 update low_priority user_newtalk set user_ip=@newname where user_ip=@oldname;

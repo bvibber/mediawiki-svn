@@ -27,7 +27,7 @@ function convertLinks() {
 	$noKeys = false;
 
 
-	$logPerformance = false; # output performance data to a file
+	$logPerformance = true; # output performance data to a file
 	$perfLogFilename = "convLinksPerf.txt";
 	#--------------------------------------------------------------------
 
@@ -174,13 +174,13 @@ function createTempTable() {
 	if ( $noKeys ) {
 		$dbConn->query( "CREATE TABLE links_temp ( " .
 		"l_from int(8) unsigned NOT NULL default '0', " .
-		"l_to int(8) unsigned NOT NULL default '0')", DB_WRITE);
+		"l_to int(8) unsigned NOT NULL default '0') TYPE=InnoDB", DB_WRITE);
 	} else {
 		$dbConn->query( "CREATE TABLE links_temp ( " .
 		"l_from int(8) unsigned NOT NULL default '0', " .
 		"l_to int(8) unsigned NOT NULL default '0', " .
 		"UNIQUE KEY l_from(l_from,l_to), " .
-		"KEY (l_to))", DB_WRITE);
+		"KEY (l_to)) TYPE=InnoDB", DB_WRITE);
 	}
 	print " done.\n\n";
 }

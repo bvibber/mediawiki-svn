@@ -104,7 +104,7 @@ class LoadBalancer {
 						wfDebug( "Using reader #$i: {$this->mServers[$i]}\n" );
 
 						$conn =& $this->getConnection( $i );
-						if ( !$conn->isOpen() ) {
+						if ( $conn === false || !$conn->isOpen() ) {
 							unset( $loads[$i] );
 						}
 					}

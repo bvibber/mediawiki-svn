@@ -3,6 +3,7 @@
 function wfSpecialContributions( $par = "" )
 {
 	global $wgUser, $wgOut, $wgLang, $wgRequest, $wgIsPg;
+	global $wgLoadBalancer;
 	$fname = "wfSpecialContributions";
 	$sysop = $wgUser->isSysop();
 
@@ -15,7 +16,7 @@ function wfSpecialContributions( $par = "" )
 		$wgOut->errorpage( "notargettitle", "notargettext" );
 		return;
 	}
-	
+	$wgLoadBalancer->force(-1);
 	# FIXME: Change from numeric offsets to date offsets
 	list( $limit, $offset ) = wfCheckLimits( 50, "" );
 	$offlimit = $limit + $offset;
@@ -106,6 +107,7 @@ function wfSpecialContributions( $par = "" )
 
 	if ( 0 == $nCur && 0 == $nOld ) {
 		$wgOut->addHTML( "\n<p>" . wfMsg( "nocontribs" ) . "</p>\n" );
+		$wgLoadBalancer->force(0);
 		return;
 	}
 	if ( 0 != $nCur ) { $obj1 = wfFetchObject( $res1 ); }
@@ -113,8 +115,10 @@ function wfSpecialContributions( $par = "" )
 
 	$wgOut->addHTML( "<ul>\n" );
 	for( $n = 0; $n < $offlimit; $n++ ) {
+	        $wgLoadBalancer->force(0);
 		if ( 0 == $nCur && 0 == $nOld ) { break; }
-
+		$wgLoadBalancer->force(-1);
+		
 		if ( ( 0 == $nOld ) ||
 		  ( ( 0 != $nCur ) &&
 		  ( $obj1->cur_timestamp >= $obj2->old_timestamp ) ) ) {
@@ -146,6 +150,7 @@ function wfSpecialContributions( $par = "" )
 			ucListEdit( $sk, $ns, $t, $ts, $topmark, $comment, ( $me > 0), $isnew, $usertext );
 	}
 	$wgOut->addHTML( "</ul>\n" );
+	$wgLoadBalancer->force(0);
 }
 
 

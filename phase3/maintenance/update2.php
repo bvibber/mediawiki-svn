@@ -25,6 +25,7 @@ do_categorylinks_update(); flush();
 initialiseMessages(); flush();
 moveCustomMessages( 1 );
 
+/*
 if ( file_exists( $wgReadOnlyFile ) ) {
 	$alreadyExists = true;
 } else {
@@ -33,11 +34,14 @@ if ( file_exists( $wgReadOnlyFile ) ) {
 	fclose( $file );
 	$alreadyExists = false;
 }
-
+*/
 convertLinks();
-
+/*
 if ( !$alreadyExists ) {
 	unlink( $wgReadOnlyFile );
 }
-
+*/
+$file = fopen( "/home/wikipedia/logs/convertedwikt.log", "a" );
+fwrite( $file, "$lang\n" );
+fclose( $file );
 ?>

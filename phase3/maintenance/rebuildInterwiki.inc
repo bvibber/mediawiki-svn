@@ -35,11 +35,12 @@ function getRebuildInterwikiSQL() {
 	$dblist = array_map( "trim", file( "/home/wikipedia/common/all.dblist" ) );
 	
 	$specials = array( 
-		'sourceswiki' => 'sources.wikipedia.org',
+		'sourceswiki' => 'wikisource.org',
 		'quotewiki' => 'wikiquote.org',
 		'textbookwiki' => 'wikibooks.org',
 		'sep11wiki' => 'sep11.wikipedia.org',
 		'metawiki' => 'meta.wikimedia.org',
+		'hewikisource' => 'he.wikisource.org'
 	);
 
 	$extraLinks = array(
@@ -51,6 +52,8 @@ function getRebuildInterwikiSQL() {
 	$languageAliases = array(
 		'zh-cn' => 'zh',
 		'zh-tw' => 'zh',
+		'minnan' => 'zh-min-nan',
+		'zh-cfr' => 'zh-min-nan',
 		'dk' => 'da',
 	);
 

@@ -1,7 +1,8 @@
 <?php
 
 function compressOldPages( $start = 0 ) {
-	$chunksize = 50;
+	
+	$chunksize = 5;
 	print "Starting from old_id $start...\n";
 	do {
 		$end = $start + $chunksize;

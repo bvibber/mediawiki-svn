@@ -232,11 +232,22 @@ $wgDBConnections = array();
 $wgTitle = Title::newFromText( wfMsg( 'badtitle' ) );
 $wgArticle = new Article($wgTitle);
 
-if ( !empty( $wgSiteNotice ) && $wgSiteNotice{0} == ':' ) {
-	$key = substr( $wgSiteNotice, 1 );
-	$wgSiteNotice = wfMsg( $key );
-	if ( $wgSiteNotice == "&lt;$key&gt;" ) {
-		$wgSiteNotice = false;
+# Site notice
+
+$notice = wfMsg( 'sitenotice' );
+if($notice == '&lt;sitenotice&gt;') $notice = '';
+# Allow individual wikis to turn it off
+if ( $notice == '-' ) {
+	$wgSiteNotice = '';
+} else {
+	# if($wgSiteNotice) $notice .= $wgSiteNotice;
+	if ($notice == '') {
+		$notice = $wgSiteNotice;
+	}
+	if($notice != '-' && $notice != '') {
+		$specialparser = new Parser();
+		$parserOutput = $specialparser->parse( $notice, $wgTitle, $wgOut->mParserOptions, false );
+		$wgSiteNotice = $parserOutput->getText();
 	}
 }
 

@@ -9,7 +9,8 @@ class AncientPagesPage extends QueryPage {
 	}
 
 	function isExpensive() {
-		return parent::isExpensive() ;
+		return true;
+#		return parent::isExpensive() ;
 	}
 
 	function getSQL() {
@@ -39,6 +40,13 @@ class AncientPagesPage extends QueryPage {
 
 function wfSpecialAncientpages()
 {
+	global $wgOut;
+#	# disabling Special:Ancientpages, for which the queries take forever on big wikis - jeronim 2004-05-31
+#	$wgOut->addWikiText( wfMsg( "disabled" ) );
+#	return;
+#	######
+	
+
 	list( $limit, $offset ) = wfCheckLimits();
 
 	$app = new AncientPagesPage();

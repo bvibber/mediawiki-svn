@@ -83,8 +83,10 @@ class SqlQueryForm {
 	{
 		global $wgOut, $wgUser, $wgServer, $wgScript, $wgArticlePath, $wgLang;
 		global $wgDBserver, $wgDBsqluser, $wgDBsqlpassword, $wgDBname, $wgSqlTimeout;
+		#global $wgLoadBalancer;
 
-		# Use a limit, folks!
+		#$wgLoadBalancer->force(-1);
+                # Use a limit, folks!
 		$this->query = trim( $this->query );
 		if( preg_match( "/^SELECT/i", $this->query )
 			and !preg_match( "/LIMIT/i", $this->query ) ) {
@@ -165,6 +167,7 @@ class SqlQueryForm {
 		}
 		$this->showForm( wfMsg( "querysuccessful" ) );
 		$wgOut->addHTML( "<hr>{$r}\n" );
+		#$wgLoadBalancer->force(0);
 	}
 
 	function logQuery( $q ) {

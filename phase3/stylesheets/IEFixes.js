@@ -5,7 +5,7 @@ else var version = 0;
 
 window.attachEvent("onload", hookit);
 function hookit() {
-    fixalpha();
+//    fixalpha();
     relativeforfloats();
 }
 

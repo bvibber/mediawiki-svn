@@ -4,6 +4,9 @@
 # it contains passwords and other sensitive data, and there's currently no public
 # equivalent. 
 
+if (!defined('SITE_CONFIGURATION')) {
+define('SITE_CONFIGURATION', 1);
+
 class SiteConfiguration {
 	var $suffixes, $wikis, $settings;
 	var $localDatabases;
@@ -74,6 +77,6 @@ class SiteConfiguration {
 		return array( $site, $lang );
 	}
 }
-
+}
 	
 ?>

@@ -22,37 +22,37 @@ foreach ( $entries as $entry ) {
 	`gpg --batch --yes -do $outfile $infile`;
 	$lines = file( $outfile );
 	$cset = process_line( $lines[0] );
-	$vset = process_line( $lines[1] );
+	#$vset = process_line( $lines[1] );
 	foreach ( $cset as $c ) {
 		if  ( !array_key_exists( $c, $ctally ) ) {
 			$ctally[$c] = 0;
 		}
 		$ctally[$c]++;
-	}
+	}/*
 	foreach ( $vset as $v ) {
 		if  ( !array_key_exists( $v, $vtally ) ) {
 			$vtally[$v] = 0;
 		}
 
 		$vtally[$v]++;
-	}
+	}*/
 }
 
 unlink( $infile );
 unlink( $outfile );
 
 arsort( $ctally );
-arsort( $vtally );
+#arsort( $vtally );
 
 print "Contributing representative\n";
 foreach ( $ctally as $candidate => $tally ) {
 	printf( "%-30s%d\n", $candidate, $tally );
 }
-	
+	/*
 print "\nVolunteer representative\n";
 foreach ( $vtally as $candidate => $tally ) {
 	printf( "%-30s%d\n", $candidate, $tally );
-}
+}*/
 
 #-----------------------------------------------------------
 

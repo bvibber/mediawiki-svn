@@ -65,7 +65,7 @@ class QueryPage {
 	
 	function doQuery( $offset, $limit ) {
 		global $wgUser, $wgOut, $wgLang, $wgRequest;
-		global $wgMiserMode;
+		global $wgMiserMode, $wgLoadBalancer;
 
 		$sname = $this->getName();
 		$fname = get_class($this) . "::doQuery";
@@ -74,6 +74,10 @@ class QueryPage {
 		$wgOut->setSyndicated( true );
 		
 		if ( $this->isExpensive() ) {
+			# hard hack until query cache is fixed!
+			#$wgOut->addWikiText(wfMsg("perfdisabled"));
+			#return;
+
 			$type = wfStrencode( $sname );
 			$recache = $wgRequest->getBool( "recache" );
 			if( $recache && !$wgMiserMode)  {
@@ -98,8 +102,11 @@ class QueryPage {
 			}
 		}
 
+		#XXX Temporary hack for load balancer/ariel workout
+		$wgLoadBalancer->force(-1);
 		$res = wfQuery( $sql . $this->getOrderLimit( $offset, $limit ), DB_READ, $fname );
-		
+		$wgLoadBalancer->force(0);
+
 		$num = wfNumRows($res);
 		
 		$sk = $wgUser->getSkin( );

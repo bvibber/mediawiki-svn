@@ -15,8 +15,6 @@ $ircServer = "irc.freenode.net";
 
 ini_set( "display_errors", 1 );
 $wgCommandLineMode = true;
-$fmB = chr(2);
-$fmU = chr(31);
 
 require_once("../maintenance/commandLine.inc" );
 
@@ -33,15 +31,21 @@ $wgTitle = Title::newFromText( "RC dumper" );
 $wgCommandLineMode = true;
 set_time_limit(0);
 
+if ( empty($options['b']) ) {
+	$bots = "AND NOT(rc_bot)";
+} else {
+	$bots = "";
+}
+
 sleep(30);
 
-$res = wfQuery( "SELECT rc_timestamp FROM recentchanges ORDER BY rc_timestamp DESC LIMIT 1", DB_READ ); 
+$res = wfQuery( "SELECT MAX(rc_id) as m FROM recentchanges", DB_READ ); 
 $row = wfFetchObject( $res );
-$oldTimestamp = $row->rc_timestamp;
+$oldId = $row->m;
 $serverCount = 0;
 
 while (1) {
-	$res = wfQuery( "SELECT * FROM recentchanges WHERE rc_timestamp>'$oldTimestamp' ORDER BY rc_timestamp", DB_READ );
+	$res = wfQuery( "SELECT * FROM recentchanges WHERE rc_id>'$oldId' $bots ORDER BY rc_timestamp", DB_READ );
 	$rowIndex = 0;
 	while ( $row = wfFetchObject( $res ) ) {
 		if ( ++$serverCount % 20 == 0 ) {
@@ -78,8 +82,8 @@ while (1) {
 		$fullString = "\00303$title\0037 $flag\00310 $url \0037*\003 $user \0037*\003 $comment\n";
 
 		print( $fullString );
-		$oldTimestamp = $row->rc_timestamp;
-		sleep(2);
+		$oldId = max( $row->rc_id, $oldId );
+		sleep(1);
 	}
 	sleep(5);
 }

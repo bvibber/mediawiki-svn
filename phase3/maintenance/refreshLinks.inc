@@ -1,6 +1,6 @@
 <?php
 
-define( "REPORTING_INTERVAL", 50 );
+define( "REPORTING_INTERVAL", 5 );
 define( "PAUSE_INTERVAL", 50 );
 
 function refreshLinks( $start ) {
@@ -23,24 +23,63 @@ function refreshLinks( $start ) {
 		if ( !($id % PAUSE_INTERVAL) ) {
 			sleep(1);
 		}
-		
-		$wgTitle = Title::newFromID( $id );
-		if ( is_null( $wgTitle ) ) {
-			continue;
-		}
-		
-		$wgArticle = new Article( $wgTitle );
-		$text = $wgArticle->getContent( true );
-		$wgLinkCache = new LinkCache;
-		$wgOut->addWikiText( $text );
 
-		if ( $wgEnablePersistentLC ) {
-			$wgLinkCache->saveToLinkscc( $id, wfStrencode( $wgTitle->getPrefixedDBkey() ) );
-		}
-
-		$linksUpdate = new LinksUpdate( $id, $wgTitle->getPrefixedDBkey() );
-		$linksUpdate->doDumbUpdate();
-		$linksUpdate->fixBrokenLinks();
+		refreshLinksId( $id );
 	}
+}
+
+function refreshLinksByRC( $starttime ) {
+	global $wgUser, $wgTitle, $wgArticle, $wgEnablePersistentLC, $wgLinkCache, $wgOut;
+	$res = wfQuery("SELECT DISTINCT rc_cur_id FROM recentchanges WHERE rc_timestamp > \"{$starttime}\" order by rc_cur_id", DB_READ);
+	
+	$ids = array();
+
+	while ( $row=wfFetchObject($res) )
+	{
+		$ids[] = $row->rc_cur_id;
+	}
+	wfFreeResult( $res );
+	print count($ids). " Pages to do.\n";
+
+	$n=0;
+	foreach ( $ids as $id ) {
+		$n++;
+		if ( !($n% REPORTING_INTERVAL) ) {
+                        print "$n\n";
+		}
+
+		if ( !($n % PAUSE_INTERVAL) ) {
+                        sleep(1);
+                }
+
+		refreshLinksId( $id );
+#		print "$id\n";
+	}
+}
+
+function refreshLinksId( $id )
+{
+	global $wgUser, $wgTitle, $wgArticle, $wgEnablePersistentLC, $wgLinkCache, $wgOut;
+
+	if ( $id == 0 ) {
+		return;
+	}
+
+	$wgTitle = Title::newFromID( $id );
+	if ( is_null( $wgTitle ) ) {
+		return;
+	}
+	$wgArticle = new Article( $wgTitle );
+	$text = $wgArticle->getContent( true );
+	$wgLinkCache = new LinkCache;
+	$wgOut->addWikiText( $text );
+
+	if ( $wgEnablePersistentLC ) {
+		$wgLinkCache->saveToLinkscc( $id, wfStrencode( $wgTitle->getPrefixedDBkey() ) );
+	}
+
+	$linksUpdate = new LinksUpdate( $id, $wgTitle->getPrefixedDBkey() );
+	$linksUpdate->doDumbUpdate();
+	$linksUpdate->fixBrokenLinks();
 }
 ?>

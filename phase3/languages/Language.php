@@ -1390,8 +1390,6 @@ ta[\'ca-nstab-template\'] = new Array(\'c\',\'View the template\');
 ta[\'ca-nstab-help\'] = new Array(\'c\',\'View the help page\');
 ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');
 '
-
-
 );
 
 #--------------------------------------------------------------------------

@@ -82,6 +82,7 @@
 	'it' => 'Italiano',		# Italian
 	'iu' => '&#5123;&#5316;&#5251;&#5198;&#5200;&#5222;',	# Inuktitut
 	'ja' => '&#26085;&#26412;&#35486;',	# Japanese
+	'jbo' => 'Lojban',
 	'jv' => 'Bahasa Jawa',	# Javanese
 	'ka' => '&#4325;&#4304;&#4320;&#4311;&#4323;&#4314;&#4312;',	# Georgian
         'kg' => 'Kongo',		# Kongo (FIXME!)
@@ -109,6 +110,7 @@
 	'mg' => 'Malagasy',		# Malagasy - FIXME
 	'mh' => 'Ebon',			# Marshallese
 	'mi' => 'M&#257;ori',	# Maori
+	'minnan' => 'B&#226;n-l&#226;m-g&#250;', # Min-nan (also zh-min-nan)
 	'mk' => '&#1052;&#1072;&#1082;&#1077;&#1076;&#1086;&#1085;&#1089;&#1082;&#1080;',	# Macedonian
 	'ml' => '&#3374;&#3378;&#3375;&#3390;&#3379;&#3330;',	# Malayalam
 	'mn' => '&#1052;&#1086;&#1085;&#1075;&#1086;&#1083;',	# Mongoloian
@@ -198,8 +200,9 @@
 	'yo' => 'Yor&ugrave;b&aacute;',	# Yoruba
 	'za' => '(Cuengh)',		# Zhuang
 	'zh' => '&#20013;&#25991;',	# (Zh&#333;ng Wén) - Chinese
-	'zh-cfr' => '&#38313;&#21335;&#35486;', # Min-nan
+	'zh-cfr' => 'B&#226;n-l&#226;m-g&#250;', # Min-nan (also zh-min-nan)
 	'zh-cn' => '&#20013;&#25991;(&#31616;&#20307;)',	# Simplified
+	'zh-min-nan' => 'B&#226;n-l&#226;m-g&#250;', # Min-nan
 	'zh-tw' => '&#20013;&#25991;(&#32321;&#20307;)',	# Traditional
 	'zu' => 'isiZulu',		# Zulu
 );

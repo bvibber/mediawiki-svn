@@ -1,6 +1,6 @@
 -- Board of Trustees vote
 
-CREATE TABLE log (
+CREATE TABLE vote_log (
 	log_id int(5) not null auto_increment,
 	log_user int(5) not null default 0,
 	log_user_text varchar(255) binary not null default '',
