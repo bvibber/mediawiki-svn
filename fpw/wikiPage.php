@@ -124,8 +124,9 @@ class WikiPage extends WikiTitle {
             }
 
         if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" and !isset ($oldID) ) { # #REDIRECT
-	    if ( preg_match ( '/^#redirect\s*\[\[\s*([^\]\n]+)\s*\]\]/i' , $this->contents , $regs ) ) {
-              $target = $regs[1] ;
+	    # Lenient syntax: two or one or no brackets around the target
+	    if ( preg_match ( '/^#redirect(\s*\[\[\s*([^\]\n]+)\s*\]\]|\s*\[\s*([^\]\n]+)\s*\]|\s+([^\ \n]*))/i' , $this->contents , $regs ) ) {
+              $target = ($regs[2] ? $regs[2] : ($regs[3] ? $regs[3] : $regs[4]));
               $link = wikiLink ( $this->getNiceTitle() ) ;
               $link = "<a href=\"$link&amp;action=view&amp;redirect=no\">".$this->getNiceTitle()."</a>" ;
               $link = str_replace ( "$1" , $link , $wikiRedirectFrom ) ;
