@@ -110,9 +110,8 @@ class Skin {
 		global $wgUser, $wgOut;
 
 		if ( $wgOut->isPrintable() ) {
-			$sub = wfMsg( "printsubtitle" );
 			$s = "<h1 class=\"pagetitle\">" . $wgOut->getPageTitle() . "</h1>";
-			$s .= "<p class=\"subtitle\"><strong>{$sub}</strong>\n";
+			$s .= $this->pageSubtitle();
 			$s .= "<div class=\"bodytext\">";
 			return $s;
 		}
@@ -194,21 +193,20 @@ class Skin {
 
 	function pageTitle()
 	{
-		global $wgOut, $wgTitle, $oldid;
+		global $wgOut, $wgTitle, $oldid, $action;
 
 		$s = "<h1 class=\"pagetitle\">" . $wgOut->getPageTitle() . "</h1>";
-		$sub = $wgOut->getSubtitle();
-		if ( ( "" == $sub ) && $wgOut->isArticle() ) {
-			$sub = wfMsg( "fromwikipedia" );
-		}
-		if ( $sub ) {
-			$s .= "<p class=\"subtitle\"><strong>{$sub}</strong>\n";
-		}
+		$s .= $this->pageSubtitle();
+
+		if ( "history" == $action ) { $q = "action=history&"; }
+		else { $q = ""; }
+
+		$s .= "<p class=\"subtitle\">"
+		  . $this->makeKnownLink( $wgTitle->getPrefixedText(),
+		  WfMsg( "printableversion" ), "{$q}printable=yes" );
+
 		if ( $wgOut->isArticle() ) {
-			$s .= "<p class=\"subtitle\">"
-			  . $this->makeKnownLink( $wgTitle->getPrefixedText(),
-			  WfMsg( "printableversion" ), "action=print" )
-			  . " | " . $this->makeKnownLink( "Special:Whatlinkshere",
+			$s .= " | " . $this->makeKnownLink( "Special:Whatlinkshere",
 			  wfMsg( "whatlinkshere" ), "target=" . $wgTitle->getPrefixedURL() );
 
 			if ( $oldid ) {
@@ -217,6 +215,20 @@ class Skin {
 			}
 			$s .= $this->otherLanguages();
 		}
+		if ( "history" == $action ) {
+			$s .= " | " . $this->makeKnownLink( $wgTitle->getPrefixedText(),
+			  wfMsg( "currentrev" ) );
+		}
+		return $s;
+	}
+
+	function pageSubtitle()
+	{
+		global $wgOut;
+
+		$sub = $wgOut->getSubtitle();
+		if ( "" == $sub ) { $sub = wfMsg( "fromwikipedia" ); }
+		$s = "<p class=\"subtitle\"><strong>{$sub}</strong>\n";
 		return $s;
 	}
 

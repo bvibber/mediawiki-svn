@@ -72,7 +72,7 @@
 "redirectedfrom" => "(Redirected from $1)",
 "lastmodified"	=> "The page was last modified $1.",
 "viewcount"		=> "This page has been accessed $1 times.",
-"printsubtitle" => "(Article from http://www.wikipedia.com)",
+"printsubtitle" => "(From http://www.wikipedia.com)",
 
 # Main script and global functions
 #
