@@ -37,7 +37,8 @@ class SkinCologneBlue extends Skin {
 		$s .= "</td><td align=right>" ;
 
 		$s .= "<font size='-1'><span id='langlinks'>" ;
-		$s .= str_replace ( "<br>" , "" , $this->otherLanguages() );
+		$s .= $this->otherLanguages();
+		$s .= "<br>" . $this->pageTitleLinks();
 		$s .= "</span></font>";
 
 		$s .= "</td></tr></table>\n";
