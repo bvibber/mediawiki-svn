@@ -281,13 +281,13 @@ class Skin {
 	#
 	function afterContent()
 	{
-		global $wgUser, $wgOut, $wgServer, $HTTP_SERVER_VARS;
+		global $wgUser, $wgOut, $wgServer, $wgTitle;
 
 		if ( $wgOut->isPrintable() ) {
 			$s = "\n</div>\n";
 
-			$u = $wgServer . $HTTP_SERVER_VARS['REQUEST_URI'];
-			$u = preg_replace( "/[?&]printable=yes/", "", $u );
+ 			$u = htmlspecialchars( $wgServer . $wgTitle->getFullURL() );
+ 			$u = "<a href=\"$u\">$u</a>";
 			$rf = str_replace( "$1", $u, wfMsg( "retrievedfrom" ) );
 
 			if ( $wgOut->isArticle() ) {
@@ -387,9 +387,13 @@ class Skin {
 	{
 		global $wgOut, $wgTitle, $oldid, $action;
 
-		if ( "history" == $action ) { $q = "action=history&"; }
-		else { $q = ""; }
-
+		$q = "";
+		foreach( $_GET as $var => $val ) {
+			if( $var != "title" && $var != "printable" )
+				$q .= urlencode( $var ) . "=" . urlencode( $val );
+		}
+		if( !empty( $q ) ) $q .= "&";
+		
 		$s = $this->makeKnownLink( $wgTitle->getPrefixedText(),
 		  WfMsg( "printableversion" ), "{$q}printable=yes" );
 		return $s;
