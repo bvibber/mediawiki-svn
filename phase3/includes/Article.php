@@ -333,7 +333,9 @@ class Article {
 		if( !$oldid ) {
 			# Retrieve current version
 			$id = $this->getID();
-			if ( 0 == $id ) return;
+			if ( 0 == $id ) {
+				return false;
+			}
 
 			$s = $dbr->selectRow( array( 'text', 'revision', 'page' ),
 				$this->getContentFields(),
@@ -347,7 +349,7 @@ class Article {
 				$fname, $this->getSelectOptions() );
 		}
 		if ( $s === false ) {
-			return;
+			return false;
 		}
 
 		# If we got a redirect, follow it (unless we've been told
