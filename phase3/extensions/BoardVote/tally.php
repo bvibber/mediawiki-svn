@@ -1,7 +1,18 @@
 <?php
 
+if( php_sapi_name() != 'cli' ) {
+	die("");
+}
+
+if( !isset( $argv[1] ) ) {
+	die( "You must provide a vote log file on the command line.\n" );
+}
+
 $end = "-----END PGP MESSAGE-----";
 $contents = file_get_contents( $argv[1] );
+if( $contents === false ) {
+	die( "Couldn't open input file.\n" );
+}
 $entries = explode( $end, $contents );
 
 $ctally = array();
