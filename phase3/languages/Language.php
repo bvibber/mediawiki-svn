@@ -195,7 +195,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"sm"	=> "Samoan",
 	"sn"	=> "Shona",
 	"so" => "Soomaali",
-	"sq" => "Shqiptare",
+	"sq" => "Shqip",
 	"sr" => "Srpski",
 	"ss"	=> "Siswati",
 	"st"	=> "Sesotho",
@@ -355,7 +355,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 "lastmodified"	=> "This page was last modified $1.",
 "viewcount"		=> "This page has been accessed $1 times.",
 "gnunote" => "All text is available under the terms of the <a class=internal href='/wiki/GNU_FDL'>GNU Free Documentation License</a>.",
-"printsubtitle" => "(From http://www.wikipedia.org)",
+"printsubtitle" => "(From http://en.wikipedia.org)",
 "protectedpage" => "Protected page",
 "administrators" => "$wgMetaNamespace:Administrators",
 "sysoptitle"	=> "Sysop access required",
@@ -447,6 +447,7 @@ a number of reasons why this may be so, please see
 [[$wgMetaNamespace:Protected page]].
 
 You can view and copy the source of this page:",
+
 # Login and logout pages
 #
 "logouttitle"	=> "User logout",
