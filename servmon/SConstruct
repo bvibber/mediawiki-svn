@@ -19,7 +19,7 @@ import os
 
 srcs = Split(	'servmon.cxx csmplex.cxx smthr.cxx smnet.cxx smutl.cxx smcfg.cxx smirc.cxx '
 		'smauth.cxx smtmr.cxx smmon.cxx smqb.cxx smmc.cxx smalrm.cxx l_memcache.c '
-		'smlog.cxx')
+		'smlog.cxx smstdrt.cxx')
 		
 env = Environment(CPPFLAGS = cppflags + ' -DPFX="\\"' + prefix + '\\""',
 		CCFLAGS = cflags,

@@ -3,14 +3,8 @@
 #define SM_SMTRM_HXX_INCLUDED_
 
 #include "smstdinc.hxx"
-#include "smcfg.hxx"
-#include "smirc.hxx"
 #include "smutl.hxx"
-#include "smauth.hxx"
-#include "smmon.hxx"
-#include "smqb.hxx"
-#include "smmc.hxx"
-#include "smalrm.hxx"
+#include "smnet.hxx"
 
 namespace smtrm {
 
@@ -196,135 +190,8 @@ struct handler_node {
 };
 
 struct tmcmds : public smutl::singleton<tmcmds> {
-#include "../smstdrt.cxx"
-	tmcmds() {
-/* restricted non-logged commands */
-stdrt.install(1, "login", cmd_login(), "Authenticate to servmon");
-stdrt.install(1, "exit", cmd_exit(), "End session");
-/* standard mode commands (includes non-restricted non-logged in users) */
-stdrt.install(2, "show", "Show operational information");
-stdrt.install(2, "show version", cmd_show_version(), "Show software version");
-stdrt.install(2, "show irc", "Show IRC-related information");
-stdrt.install(2, "show irc server %s", cmd_irc_showserver(), "Describe a configured server");
-stdrt.install(2, "show irc server", cmd_irc_showserver(), "Describe all configured servers");
-stdrt.install(2, "show monitor", "Show monitoring information");
-stdrt.install(2, "show monitor server", cmd_monit_showservers(), "Show monitored servers");
-stdrt.install(2, "show monitor server %s", cmd_monit_showservers(), "Show information for a particular server");
-stdrt.install(2, "show monitor intervals", cmd_monit_showintervals(), "Show monitoring intervals");
-stdrt.install(2, "show querybane", "Show QueryBane information");
-stdrt.install(2, "show querybane rule", "Show a specific rule");
-stdrt.install(2, "show querybane rule %s", cmd_qb_show_rule(), "Rule name");
-stdrt.install(2, "show querybane rules", cmd_qb_show_rule(), "Show all QueryBane rules");
-stdrt.install(2, "show memcache", "Show memcache client information");
-stdrt.install(2, "show memcache server-list-command", cmd_mc_show_server_list_command(), "Show server list command");
-stdrt.install(2, "show parser", "Show MediaWiki parser-related information");
-stdrt.install(2, "show parser cache-statistics", cmd_mc_show_parser_cache(), "Show parser cache hit statistics");
-stdrt.install(3, "show irc channels", cmd_irc_showchannels(), "Show configured channels");
-stdrt.install(3, "enable", cmd_enable(), "Enter privileged mode");
+	tmcmds();
 
-/* 'enable' mode commands */
-stdrt.install(16, "disable", cmd_disable(), "Return to non-privileged mode");
-stdrt.install(16, "configure", chg_parser(cfgrt, "%s[%d](conf)#"), "Configure servmon");
-stdrt.install(16, "debug", "Runtime debugging functions");
-stdrt.install(16, "debug mysql", "Debug MySQL functions");
-stdrt.install(16, "debug mysql connect", cmd_debug_mysql_connect(), "Debug MySQL connections");
-stdrt.install(16, "debug mysql query", cmd_debug_mysql_query(), "Debug MySQL queries");
-stdrt.install(16, "debug mysql monitoring", cmd_debug_mysql_monitoring(), "Debug MySQL server monitoring");
-stdrt.install(16, "debug irc", cmd_debug_irc(), "Debug IRC connections");
-stdrt.install(16, "no debug", "Runtime debugging functions");
-stdrt.install(16, "no debug mysql", "Debug MySQL functions");
-stdrt.install(16, "no debug mysql connect", cmd_no_debug_mysql_connect(), "Debug MySQL connections");
-stdrt.install(16, "no debug mysql query", cmd_no_debug_mysql_query(), "Debug MySQL queries");
-stdrt.install(16, "no debug mysql monitoring", cmd_no_debug_mysql_monitoring(), "Debug MySQL server monitoring");
-stdrt.install(16, "no debug irc", cmd_no_debug_irc(), "Debug IRC connections");
-
-/* 'configure' mode commands */
-cfgrt.install(16, "exit", chg_parser(stdrt, "%s[%d]>"), "Exit configure mode");
-cfgrt.install(16, "enable password", cfg_eblpass(), "Change enable password");
-cfgrt.install(16, "function", "Configure a specific function");
-cfgrt.install(16, "function irc", chg_parser(ircrt, "%s[%d](conf-irc)#"), "Configure Internet Relay Chat connections");
-cfgrt.install(16, "function monitor", chg_parser(monrt, "%s[%d](conf-monit)#"), "Configure server monitoring");
-cfgrt.install(16, "function memcache", chg_parser(memrt, "%s[%d](conf-memcache)#"), "Configure memcached client");
-cfgrt.install(16, "user", "Define users");
-cfgrt.install(16, "user %s", "Username");
-cfgrt.install(16, "user %s password", cfg_userpass(), "Create a new account");
-cfgrt.install(16, "no", "Negate a setting");
-cfgrt.install(16, "no user", "Remove a user account");
-cfgrt.install(16, "no user %s", cfg_no_user(), "User name");
-cfgrt.install(16, "function querybane", chg_parser(qbrt, "%s[%d](conf-qb)#"), "Configure QueryBane operation");
-
-/* 'function irc' mode commands */
-ircrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)>"), "Exit IRC configuration mode");
-ircrt.install(16, "server", "Configure IRC servers");
-ircrt.install(16, "server %s primary-nickname %s", cfg_irc_servnick(), "Set primary nickname for IRC server");
-ircrt.install(16, "server %s secondary-nickname %s", cfg_irc_servsecnick(),	"Set secondary nickname for IRC server");
-ircrt.install(16, "no", "Negate a setting");
-ircrt.install(16, "no server %s", cfg_irc_noserver(), "Remove a configured server");
-ircrt.install(16, "no server %s enable", cfg_irc_noenableserver(), "Disable a server");
-ircrt.install(16, "server %s enable", cfg_irc_enableserver(), "Enable connection to a server");
-ircrt.install(16, "channel", "Configure channels");
-ircrt.install(16, "channel %s", cfg_irc_channel(), "Specify a channel to join");
-ircrt.install(16, "channel %s level", "Notification level for channel");
-ircrt.install(16, "channel %s level %s", cfg_irc_channel_level(), "Level (1-16)");
-ircrt.install(16, "no channel %s", cfg_irc_nochannel(), "Remove a channel");
-
-/* 'function monitor' mode commands */
-monrt.install(16, "server", "Configure servers to monitor");
-monrt.install(16, "server %s", "Server name");
-monrt.install(16, "server %s type", "Specify server type");
-monrt.install(16, "server %s type %s", cfg_monit_server_type(), "Create new server");
-monrt.install(16, "server %s mysql-master", cfg_monit_server_mysql_master(), "Set server as MySQL master");
-monrt.install(16, "mysql", "Configure global MySQL parameters");
-monrt.install(16, "mysql username", "MySQL username");
-monrt.install(16, "mysql password", "MySQL password");
-monrt.install(16, "mysql username %s", cfg_monit_mysql_username(), "Set MySQL username");
-monrt.install(16, "mysql password %s", cfg_monit_mysql_password(), "Set MySQL password");
-monrt.install(16, "monitor-interval", "Monitor interval in seconds");
-monrt.install(16, "monitor-interval %s", cfg_monit_monitor_interval(), "Monitor interval in seconds");
-monrt.install(16, "irc-status-interval", "IRC status interval in seconds");
-monrt.install(16, "irc-status-interval %s", cfg_monit_ircinterval(), "IRC status interval in seconds");
-monrt.install(16, "threshold", "Set alarm thresholds");
-monrt.install(16, "threshold mysql", "MySQL-related alarm thresholds");
-monrt.install(16, "threshold mysql replication-lag", "Maximum replication lag from master");
-monrt.install(16, "threshold mysql replication-lag %s", cfg_monit_alarm_mysql_replag(), "Maximum replication lag in seconds");
-monrt.install(16, "threshold mysql running-threads", "Maximum number of running threads");
-monrt.install(16, "threshold mysql running-threads %s", cfg_monit_alarm_mysql_threads(), "Maximum number of threads");
-monrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)>"), "Exit monitor configuration mode");
-
-/* 'function querybane' mode commands */
-qbrt.install(16, "rule", "Define a new rule");
-qbrt.install(16, "rule %s", cfg_qb_rule(), "Rule name");
-qbrt.install(16, "no", "Negate a setting");
-qbrt.install(16, "no rule", "Delete a rule");
-qbrt.install(16, "no rule %s", cfg_qb_norule(), "Rule name");
-qbrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)>"), "Exit querybane configuration mode");
-
-/* querybane 'rule' mode commands */
-qbrrt.install(16, "exit", chg_parser(qbrt, "%s[%d](conf-qb)>"), "Exit rule configuration mode");
-qbrrt.install(16, "description %S", cfg_qbr_description(), "Rule description");
-qbrrt.install(16, "match-if", "Specify parameters to match this rule");
-qbrrt.install(16, "match-if min-threads", "Match on miminum thread count");
-qbrrt.install(16, "match-if min-threads %s", cfg_qbr_matchif_minthreads(), "Miminum thread count");
-qbrrt.install(16, "match-if min-last-threads", "Match on minimum thread count previous check");
-qbrrt.install(16, "match-if min-last-threads %s", cfg_qbr_matchif_minlastthreads(), "Minimum thread count previous check");
-qbrrt.install(16, "match-if lowest-position", "Match on position");
-qbrrt.install(16, "match-if lowest-position %s", cfg_qbr_matchif_lowestpos(), "Only match if Nth longest running thread");
-qbrrt.install(16, "match-if user", "Match on username");
-qbrrt.install(16, "match-if user %S", cfg_qbr_matchif_user(), "Match threads owned by user");
-qbrrt.install(16, "match-if command", "Match command type");
-qbrrt.install(16, "match-if command %s", cfg_qbr_matchif_command(), "Match command type");
-qbrrt.install(16, "match-if min-run-time", "Match on minimum run time");
-qbrrt.install(16, "match-if min-run-time %s", cfg_qbr_matchif_minruntime(), "Only match after specified run time (seconds)");
-qbrrt.install(16, "match-if query-string", "Match on query string");
-qbrrt.install(16, "match-if query-string %S", cfg_qbr_matchif_querystring(), "Match specified query text");
-qbrrt.install(16, "enable", cfg_qbr_enable(), "Enable rule");
-
-/* 'function memcache' commands */
-memrt.install(16, "server-list-command", "Set command used to obtain server list");
-memrt.install(16, "server-list-command %S", cfg_mc_server_list_command(), "Command name");
-memrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)>"), "Exit memcache configuration mode");
-
-	}
 	handler_node stdrt;
 	handler_node cfgrt;
 	handler_node ircrt;

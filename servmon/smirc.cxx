@@ -18,8 +18,8 @@ namespace smirc {
 
 		irctrmsrv(ircclnt& client_)
 			: client(client_)
-			, cmds_root(SMI(smtrm::tmcmds)->stdrt)
 			, cd(*this)
+			, cmds_root(SMI(smtrm::tmcmds)->stdrt)
 			{
 			}
 
