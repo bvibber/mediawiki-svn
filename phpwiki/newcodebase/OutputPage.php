@@ -545,7 +545,8 @@ class OutputPage {
 					$s .= $trail;
 				} else {
 					$l = $wgLang->getLanguageName( $pre );
-					if ( "" == $l or !$wgInterwikiMagic) {
+					if ( "" == $l or !$wgInterwikiMagic or
+					  Namespace::isTalk( $wgTitle->getNamespace() ) ) {
 						if ( "" == $text ) { $text = $link; }
 						$s .= $sk->makeLink( $link, $text, "", $trail );
 					} else {
