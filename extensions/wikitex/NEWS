@@ -21,7 +21,7 @@ ment tags of the form:
 and likely of an external parser; where a lex/yacc  solution
 might  be attractive.  (Finite state recognition is probably
 what we're looking  for,  however,  rather  than  look-ahead
-right-to-left parsing; i.e. top-down recursive descent.)
+left-to-right parsing; i.e. top-down recursive descent.)
  
      If  WikiTeX'  sum scope, on the other hand, resembles a
 glue-script with regular-expression grinding,1 we might  not
