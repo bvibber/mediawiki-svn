@@ -436,6 +436,10 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 #
 "orphans"		=> "Orphaned pages",
 "lonelypages"	=> "Orphaned pages",
+"orphanprev"	=> "previous $1",
+"orphannext"	=> "next $1",
+"orphanlinks"	=> "View ($1) ($2) orphaned pages.",
+"showingorphans" => "Showing below <b>$1</b> orphaned pages starting with #<b>$2</b>.",
 
 # Popular pages
 #
