@@ -187,6 +187,16 @@ function buildTables()
   rc_last_oldid int(10) unsigned NOT NULL default '0'
 ) TYPE=MyISAM PACK_KEYS=1;";
 	wfQuery( $sql );
+
+$sql = "DROP TABLE IF EXISTS watchlist";
+wfQuery( $sql );
+$sql = "CREATE TABLE watchlist (
+  wl_user int(5) unsigned NOT NULL,
+  wl_page int(8) unsigned NOT NULL,
+  UNIQUE KEY (wl_user, wl_page)
+) TYPE=MyISAM PACK_KEYS=1";
+wfQuery( $sql );
+
 }
 
 function buildIndexes()
