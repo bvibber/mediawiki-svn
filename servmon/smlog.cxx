@@ -3,6 +3,7 @@
 #include "smlog.hxx"
 #include "smirc.hxx"
 #include "smthr.hxx"
+#include "smtrm.hxx"
 
 namespace smlog {
 
@@ -116,9 +117,10 @@ log::initialise(void)
 void
 log::logmsg(int irclvl, str message)
 {
-	std::string fmt = b::io::str(b::format("%% %s -- %s") % timestamp() % message);
+	std::string fmt = b::io::str(b::format("%% %s: %s") % smutl::fmttime() % message);
 	std::cout << fmt << '\n';
-
+	smtrm::terminal::broadcast(message);
+	
 	if (irclvl)
 		SMI(smirc::cfg)->conn()->msg(irclvl, fmt);
 }
@@ -130,17 +132,6 @@ log::debug(dbg_t func, str message)
 	logmsg(0, message);
 }
 	
-std::string
-log::timestamp(void)
-{
-	char buf[256];
-	struct tm now;
-	std::time_t nowt = std::time(0);
-	gmtime_r(&nowt, &now);
-	strftime(buf, sizeof buf, "%d-%b-%Y %H:%M:%S", &now);
-	return buf;
-}
-
 bool
 log::debugset(dbg_t f)
 {

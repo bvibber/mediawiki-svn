@@ -10,6 +10,8 @@
 #include "smmc.hxx"
 #include "smalrm.hxx"
 
+#include "msgtab.hxx"
+
 #define HDL(x) struct x : smtrm::handler
 #define EX0 bool execute(smtrm::comdat const&) const
 #define EX1(a) bool execute(smtrm::comdat const& a) const
@@ -332,7 +334,7 @@ HDL(cmd_monit_showservers) {
 			try {
 				servers[cd.p(0)] = SMI(smmon::cfg)->serv(cd.p(0));
 			} catch (smmon::noserv&) {
-				cd.term.error("Server does not exist.");
+				cd.term.message(SM$FAC_MONIT, SM$MSG_UNKSRV, cd.p(0));
 				return true;
 			}
 		}

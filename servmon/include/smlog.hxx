@@ -26,8 +26,6 @@ public:
 	void dontdebug(dbg_t f);
 	
 private:
-	std::string timestamp(void);
-
 	std::set<dbg_t> debugs;
 };
 } // namespace smlog

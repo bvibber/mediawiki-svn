@@ -19,6 +19,9 @@ namespace smirc {
 		std::string remote(void) const {
 			return "IRC:" + client.name;
 		}
+		void do_broadcast(str) {
+			/* don't broadcast to irc */
+		}
 		
 		irctrmsrv(ircclnt& client_)
 			: client(client_)

@@ -4,6 +4,8 @@
 #include "smutl.hxx"
 #include "smtrm.hxx"
 
+#include "msgtab.hxx"
+
 namespace smtrm {
 
 int terminal::idseq = 0;
@@ -11,8 +13,8 @@ std::map<int, terminal *> terminal::terms;
 	
 terminal::terminal(void)
 	: mode("exec")
-	, incl_reg(NULL)
 	, lastact(std::time(0))
+	, incl_reg(NULL)
 	, id(++idseq)
 {
 	terms[id] = this;
@@ -27,6 +29,14 @@ std::map<int, terminal *> const&
 terminal::getterms(void)
 {
 	return terms;
+}
+
+void
+terminal::broadcast(str message)
+{
+	for(std::map<int, terminal*>::const_iterator it = terms.begin(),
+		    end = terms.end(); it != end; ++it)
+		it->second->do_broadcast(message);
 }
 
 std::string
@@ -95,6 +105,12 @@ terminal::inform(str msg)
 	wrtln("% [I] " + msg);
 }
 
+void
+terminal::message(int fac, int msg, sm$msgarg a1, sm$msgarg a2, sm$msgarg a3)
+{
+	wrtln(sm$getmsg(fac, msg, a1, a2, a3));
+}
+		
 str
 terminal::getdata(str v) const
 {
@@ -419,12 +435,12 @@ trmsrv::prc_nl(char)
 		if (matches.size() > 1) {
 			wrt("\r\n", true);
 			wrtln(std::string(herelen, ' ') + '^');
-			wrtln("% [E] Ambiguous command.");
+			wrtln(sm$getmsg(SM$FAC_TRM, SM$MSG_AMBIG));
 			goto end;
 		} else if (matches.size() == 0) {
 			wrt("\r\n", true);
 			wrtln(std::string(herelen, ' ') + '^');
-			wrtln("% [E] Unknown command.");
+			wrtln(sm$getmsg(SM$FAC_TRM, SM$MSG_UNKCMD));
 			goto end;
 		}
 		herelen += word.size() + 1;
@@ -441,7 +457,7 @@ trmsrv::prc_nl(char)
 	if (!here->terminal) {
 		wrt("\r\n", true);
 		wrtln(std::string(herelen, ' ') + '^');
-		wrtln("% [E] Incomplete command.");
+		wrtln(sm$getmsg(SM$FAC_TRM, SM$MSG_INCOMP));
 		goto end;
 	}
 	
@@ -604,5 +620,25 @@ trmsrv::remote(void) const
 {
 	return intf->remote();
 }
-	
+
+void
+trmsrv::do_broadcast(str message)
+{
+	f_bol();
+	f_ceol();
+	wrtln("% " + smutl::fmttime() + ": " + message);
+	wrt(prm + ln);
+}
+
+void
+trmsrv::f_bol(void)
+{
+	wrt("\x18[0G");
+}
+
+void
+trmsrv::f_ceol(void)
+{
+	wrt("\x18[K");
+}
 } // namespace smtrm

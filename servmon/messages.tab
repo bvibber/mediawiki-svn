@@ -1,0 +1,7 @@
+# @(#) $Header$
+FACILITY TRM
+ERROR UNKCMD unknown command
+ERROR INCOMP incomplete command
+ERROR AMBIG ambigious command
+FACILITY MONIT
+ERROR UNKSRV server %1% does not exist

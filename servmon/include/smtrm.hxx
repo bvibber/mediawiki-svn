@@ -6,6 +6,8 @@
 #include "smutl.hxx"
 #include "smnet.hxx"
 
+#include "msgtab.hxx"
+
 namespace smtrm {
 
 class handler_node;
@@ -27,7 +29,7 @@ public:
 	virtual void error(str msg);
 	virtual void warn(str msg);
 	virtual void inform(str msg);
-
+	virtual void message(int fac, int msg, sm$msgarg = sm$msgarg(), sm$msgarg = sm$msgarg(), sm$msgarg = sm$msgarg());
 	virtual str getdata(str v) const;
 	virtual void setdata(str v, str d);
 	virtual void ersdata(str v);
@@ -52,8 +54,12 @@ public:
 	int getid(void) const;
 
 	static std::map<int, terminal *> const& getterms(void);
+
+	static void broadcast(str message);
 	
 protected:
+	virtual void do_broadcast(str message) = 0;
+	
 	std::map<std::string, std::string> m_data;
 	static std::map<int, terminal *> terms;
 	static int idseq;
@@ -133,28 +139,34 @@ class trmsrv : noncopyable, public terminal {
 public:
 	trmsrv(smnet::tnsrvp sckt_);
 	virtual ~trmsrv(void);
-	void stb_nrml(void);
-	void stb_readline(void);
-	void start(void);
-	void gd_cb(smnet::clntp, u_char c);
-	void cls_cb(smnet::clntp, smnet::sckterr&);
-	void echo(bool doecho_);
-	void wrtln(std::string const& s = "", bool force = false);
-	void wrt(u_char c, bool = false);
-	void wrt(std::string const& s, bool force = false);
-	void chgrt(handler_node* newrt);
+	
+	void stb_nrml     (void);
+	void stb_readline (void);
+
+	void f_bol  (void);
+	void f_ceol (void);
+	
+	void start   (void);
+	void gd_cb   (smnet::clntp, u_char c);
+	void cls_cb  (smnet::clntp, smnet::sckterr&);
+	void echo    (bool doecho_);
+	void wrtln   (str s = "", bool force = false);
+	void wrt     (u_char c, bool = false);
+	void wrt     (std::string const& s, bool force = false);
+	void chgrt   (handler_node* newrt);
 	void readline(readline_cb_t cb);
+	
 	std::string remote(void) const;
 	void setmode(str);
 	
-	bool prc_ign(char);
-	bool prc_nl(char);
-	bool prc_char(char);
-	bool prc_spc(char);
-	bool prc_help(char);
-	bool prc_redraw(char);
-	bool prc_del(char);
-	bool prc_erase(char);
+	bool prc_ign    (char);
+	bool prc_nl     (char);
+	bool prc_char   (char);
+	bool prc_spc    (char);
+	bool prc_help   (char);
+	bool prc_redraw (char);
+	bool prc_del    (char);
+	bool prc_erase  (char);
 	
 	void init(void);
 	void disconnect(void);
@@ -163,6 +175,9 @@ public:
 	void setprmbase(str base);
 	bool is_interactive(void) const;
 
+protected:
+	void do_broadcast(str);
+	
 private:
 	smnet::tnsrvp intf;
 	std::map<u_char, boost::function<bool (char)> > binds;

@@ -117,5 +117,18 @@ fmtboottime(void)
 	strftime(buf, sizeof buf, "%d-%b-%Y %H:%M:%S", &now);
 	return buf;
 }
-	
+
+std::string
+fmttime(std::time_t n)
+{
+	if (n == 0)
+		n = std::time(0);
+	char buf[256];
+	struct tm now;
+	gmtime_r(&n, &now);
+	strftime(buf, sizeof buf, "%d-%b-%Y %H:%M:%S", &now);
+	return buf;
+}
+
+
 } // namespace smutl

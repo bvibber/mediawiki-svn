@@ -23,7 +23,7 @@ except:
 
 srcs = Split(	'servmon.cxx csmplex.cxx smthr.cxx smnet.cxx smutl.cxx smcfg.cxx smirc.cxx '
 		'smauth.cxx smtmr.cxx smmon.cxx smqb.cxx smmc.cxx smalrm.cxx l_memcache.c '
-		'smlog.cxx smstdrt.cxx smtrm.cxx')
+		'smlog.cxx smstdrt.cxx smtrm.cxx msgtab.cxx')
 		
 env = Environment(CPPFLAGS = cppflags + ' -DPFX="\\"' + prefix + '\\""',
 		CCFLAGS = cflags,
@@ -33,7 +33,9 @@ env = Environment(CPPFLAGS = cppflags + ' -DPFX="\\"' + prefix + '\\""',
 		LIBPATH = '/usr/lib/mysql',
 		LIBS = ['pthread', 'boost_thread', 'boost_regex', 'netsnmp', 'ssl', 'mysqlclient'])
 env.Command('sminfo.cxx', 'sminfo.sh', '/bin/sh $SOURCE >$TARGET')
+env.Command(['msgtab.hxx', 'msgtab.cxx'], ['mktab', 'messages.tab'], './mktab messages.tab')
 
+env.Program ('mktab', ['mktab.cxx'])
 env.Program ('servmon', srcs)
 env.Program ('smlogmsg', ['smlogmsg.c'], LIBS = [])
 env.Program ('systatd', ['systatd.c'], LIBS = [])
