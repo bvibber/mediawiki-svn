@@ -338,7 +338,7 @@ class MovePageForm {
 
 	function moveToNewTitle()
 	{
-		global $wgUser;
+		global $wgUser, $wgLinkCache;
 		$fname = "MovePageForm::moveToNewTitle";
 		$mt = wfMsg( "movedto" );
 
@@ -348,6 +348,7 @@ class MovePageForm {
 		  "cur_namespace={$this->nns},cur_title='{$this->ndt}' " .
 		  "WHERE cur_id={$this->oldid}";
 		wfQuery( $sql, $fname );
+		$wgLinkCache->clearLink( $this->oft );
 
 		$common = "{$this->ons},'{$this->odt}'," .
 		  "'{$mt} \\\"{$this->nft}\\\"','" .
@@ -359,6 +360,7 @@ class MovePageForm {
 		  "VALUES ({$common},'{$won}','{$now}','#REDIRECT [[{$this->nft}]]\n',1,1)";
 		wfQuery( $sql, $fname );
 		$this->newid = wfInsertId();
+		$wgLinkCache->clearLink( $this->nft );
 
 		$sql = "UPDATE old SET " .
 		  "old_namespace={$this->nns},old_title='{$this->ndt}' WHERE " .
