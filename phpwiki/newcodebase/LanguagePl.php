@@ -1,6 +1,9 @@
 <?
 include("utf8Case.php");
 
+# NOTE: To turn off "Current Events" in the sidebar,
+# set "currentevents" => "-"
+
 # The names of the namespaces can be set here, but the numbers
 # are magical, so don't change or move them!  The Namespace class
 # encapsulates some of the magic-ness.
@@ -15,6 +18,14 @@ include("utf8Case.php");
 	5	=> "Dyskusja_Wikipedii",
 	6	=> "Grafika",
 	7	=> "Dyskusja_grafiki"
+);
+
+/* private */ $wgDefaultUserOptionsPl = array(
+	"quickbar" => 1, "underline" => 1, "hover" => 1,
+	"cols" => 80, "rows" => 25, "searchlimit" => 20,
+	"contextlines" => 5, "contextchars" => 50,
+	"skin" => 0, "rcdays" => 3, "rclimit" => 50,
+	"highlightbroken" => 1, "stubthreshold" => 0
 );
 
 /* private */ $wgQuickbarSettingsPl = array(
@@ -33,8 +44,17 @@ include("utf8Case.php");
 	"hideminor" => "Ukryj drobne zmiany w \"Ostatnich zmianach\"",
 	"numberheadings" => "Automatyczna numeracja nagłówków",
 	"rememberpassword" => "Pamiętaj hasło między sesjami",
-	"editondblclick" => "Edit pages on doubleclick (JavaScript)",
-	"watchdefault" => "Watch new and modified articles"
+	"editwidth" => "Obszar edycji o pełnej szerokości",
+	"editondblclick" => "Edycja strony poprzez podwójne kliknięcie (JavaScript)",
+	"watchdefault" => "Obserwuj nowe i zmodyfikowane artykuły",
+	"minordefault" => "Wszystkie zmiany zaznaczaj domyślnie jako drobne"
+);
+
+/* private */ $wgBookstoreListPl = array(
+	"AddALL" => "http://www.addall.com/New/Partner.cgi?query=$1&type=ISBN",
+	"PriceSCAN" => "http://www.pricescan.com/books/bookDetail.asp?isbn=$1",
+	"Barnes & Noble" => "http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$1",
+	"Amazon.com" => "http://www.amazon.com/exec/obidos/ISBN=$1"
 );
 
 /* private */ $wgLanguageNamesPl = array(
@@ -218,6 +238,7 @@ include("utf8Case.php");
 	"Allpages"		=> "Wszystkie",
 
 	"Ipblocklist"	=> "Zablokowane adresy IP",
+	"Maintenance"	=> "Prosta administracja",
 	"Specialpages"  => "",
 	"Contributions" => "",
 	"Emailuser"		=> "",
@@ -229,7 +250,9 @@ include("utf8Case.php");
 
 /* private */ $wgSysopSpecialPagesPl = array(
 	"Blockip"		=> "Zablokuj adres IP",
-	"Asksql"		=> "Zapytanie SQL"
+	"Asksql"		=> "Zapytanie SQL",
+	"Undelete"		=> "Odtwarzanie skasowanych stron"
+
 );
 
 /* private */ $wgDeveloperSpecialPagesPl = array(
@@ -242,6 +265,7 @@ include("utf8Case.php");
 
 # Bits of text used by many pages:
 #
+"linktrail"		=> "/^([a-z]+)(.*)\$/sD",
 "mainpage"		=> "Strona główna",
 "about"			=> "O Wikipedii",
 "aboutwikipedia" => "O Wikipedii",
@@ -266,7 +290,7 @@ include("utf8Case.php");
 "mytalk"		=> "Moja dyskusja",
 "currentevents" => "Bieżące wydarzenia",
 "errorpagetitle" => "Błąd",
-"returnto"		=> "Wróć do $1.",
+"returnto"		=> "Wróć do strony: $1.",
 "fromwikipedia"	=> "Z Wikipedii, wolnej encyklopedii.",
 "whatlinkshere"	=> "Strony, które odwołują się do tej",
 "help"			=> "Pomoc",
@@ -315,7 +339,7 @@ specjalnej strony.",
 "error"			=> "Błąd",
 "databaseerror" => "Błąd bazy danych",
 "dberrortext"	=> "Wystąpił błąd składni w zapytaniu do bazy danych.
-Mogło to być spowodowane przez złe sformułowanie zapytania (zobacz $1)
+Mogło to być spowodowane przez złe sformułowanie zapytania (zobacz $5)
 albo przez błąd w oprogramowaniu.
 Ostatnie, nieudane zapytanie to:
 <blockquote><tt>$1</tt></blockquote>
@@ -345,6 +369,12 @@ Zgłoś, proszę, ten fakt administratorowi podając także, o który URL chodzi
 "formerror"		=> "Błąd: nie można wysłać formularza",	
 "badarticleerror" => "Dla tej strony ta operacja nie może być wykonana.",
 "cannotdelete"	=> "Nie można skasować podanej strony lub obrazka.",
+"badtitle"		=> "Niepoprawny tytuł",
+"badtitletext"	=> "Podano niepoprawny tytuł strony. Prawdopodobnie zawiera
+zabronione znaki lub jest pusty.",
+
+"badtitletext"  => "The requested page title was invalid, empty, or 
+   an incorrectly linked inter-language or inter-wiki title.", 
 
 # Login and logout pages
 #
@@ -383,7 +413,7 @@ zapomnisz hasła możesz poprosić o przesłanie go na ów adres.<br>\n",
 "loginerror"	=> "Błąd logowania",
 "noname"		=> "To nie jest poprawna nazwa użytkownika.",
 "loginsuccesstitle" => "Udane logowanie",
-"loginsuccess"	=> "Zalogowano Cię do Wikipedia jako \"$1\".",
+"loginsuccess"	=> "Zalogowano Cię do Wikipedii jako \"$1\".",
 "nosuchuser"	=> "Nie ma użytkowniku nazywającego się \"$1\".
 Sprawdź pisownię lub użyj poniższego formularza by utworzyć nowe konto.",
 "wrongpassword"	=> "Podane przez Ciebie hasło jest nieprawidłowe. Spróbuj jeszcze raz.",
@@ -401,13 +431,14 @@ Po otrzymaniu go zaloguj się ponownie.",
 #
 "summary"		=> "Opis zmian",
 "minoredit"		=> "To jest drobna zmiana.",
+"watchthis"		=> "Obserwuj",
 "savearticle"	=> "Zapisz",
 "preview"		=> "Podgląd",
 "showpreview"	=> "Podgląd",
 "blockedtitle"	=> "Użytkownik jest zablokowany",
 "blockedtext"	=> "Twoje konto lub adres IP zostały zablokowane przez $1.
-Podany powód to:<br>$2<p>Możesz się skontaktować z administratorem by
-wyjaśnić sprawę zablokowania.",
+Podany powód to:<br>$2<p>. Możesz się skontaktować z $1 lub innym
+[[Wikipedia:Administratorzy|administratorem]] by wyjaśnić sprawę zablokowania.",
 "newarticle"	=> "(Nowy)",
 "newarticletext" => "Tutaj wpisz tekst artykułu.",
 "noarticletext" => "(Nie ma jeszcze artykułu o tym tytule. Wybierz ''Edytuj'' by go rozpocząć.)",
@@ -430,15 +461,14 @@ By wprowadzić swoje zmiany musisz zmodyfikować tekst z górnego pola.
 "editingold"	=> "<strong>OSTRZEŻENIE: Edytujesz inną niż bieżąca wersję tej strony.
 Jeśli zapiszesz ją wszystkie późniejsze wersje zostaną skasowne.</strong>\n",
 "yourdiff"		=> "Różnice",
-"copyrightwarning" => "Proszę pamiętać o tym, że przyjmuje się,
-iż wszelki wkład do Wikipedii jest
-udostępniany na zasadach GNU Free Documentation License (szczegóły w $1).
-Jeśli nie chcesz, żeby
-Twoje dzieło było bezlitośnie edytowane i rozpowszechniane bez ograniczeń,
-nie umieszczaj go w Wikipedii.<br>
-Niniejszym jednocześnie oświadczasz, że wkład jest Twoim
+"copyrightwarning" => "Proszę pamiętać o tym, że przyjmuje się, iż wszelki
+wkład do Wikipedii jest udostępniany na zasadach <i>GNU Free Documentation License</i>
+(szczegóły w $1).  <br>Jeśli nie chcesz, żeby
+Twój tekst było bezlitośnie edytowany i rozpowszechniany bez ograniczeń,
+nie umieszczaj go w Wikipedii.
+Niniejszym jednocześnie oświadczasz, że ten tekst jest Twoim
 dziełem lub pochodzi z materiałów dostępnych na zasadach public domain albo
-licencji GNU Free Documentation License lub kompatybilnej.
+licencji <i>GNU Free Documentation License</i> lub kompatybilnej.
 <br><strong>PROSZĘ NIE UŻYWAĆ BEZ POZWOLENIA MATERIAŁÓW OBJĘTYCH PRAWEM
 AUTORSKIM!</strong>",
 
@@ -525,6 +555,7 @@ Twój numer identyfikacyjny to $2.",
 "resultsperpage" => "Liczba wyników na stronie",
 "contextlines"	=> "Pierwsze wiersze artykułu",
 "contextchars"	=> "Litery kontekstu w linijce",
+"stubthreshold"  => "Maksymalny rozmiar artykułu prowizorycznego",
 "recentchangescount" => "Liczba pozycji na liście ostatnich zmian",
 "savedprefs"	=> "Twoje preferencje zostały zapisane.",
 "timezonetext"	=> "Podaj liczbę godzin różnicy między Twoim czasem,
@@ -549,12 +580,13 @@ oraz [[Wikipedia:Najczęstsze nieporozumienia|najczęstsze nieporozumienia]].
 Jeśli chcesz przyczynić się do sukcesu Wikipedii, nie dodawaj materiałów
 zastrzeżonych prawami autorskimi. Konsekwencje prawne złamania tej zasady
 mogłyby Wikipedii bardzo zaszkodzić.
-Zobacz także [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges ostatnie metadyskusje (po angielsku)].",
+Zobacz także [http://meta.wikipedia.org/wiki/Special:RecentChanges ostatnie metadyskusje].",
 "rcloaderr"		=> "Ładuję ostatnie zmiany",
 "rcnote"		=> "To ostatnie <strong>$1</strong> zmian dokonanych na Wikipedii w ciągu ostatnich <strong>$2</strong> dni.",
-# "rclinks"		=> "Show last $1 changes in last $2 hours / last $3 days",
+"rcnotefrom"	=> "Poniżej pokazano zmiany dokonane po <b>$2</b> (nie więcej niż <b>$1</b> pozycji).",
+"rclistfrom"	=> "Pokaż nowe zmiany począwszy od $1",
 "rclinks"		=> "Wyświetl ostatnie $1 zmian w ciągu ostatnich $2 dni.",
-"rchide"		=> "in $4 form; $1 drobne zmiany; $2 inne przestrzenie nazw; $3 wielokrotna edycja.",
+"rchide"		=> "in $4 form; $1 drobnych zmian; $2 innych przestrzeni nazw; $3 wielokrotnych edycji.",
 "diff"			=> "różn",
 "hist"			=> "hist",
 "hide"			=> "schowaj",
@@ -562,6 +594,8 @@ Zobacz także [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges 
 "tableform"		=> "tabelka",
 "listform"		=> "lista",
 "nchanges"		=> "$1 zmian",
+"minoreditletter" => "M",
+"newpageletter" => "N",
 
 # Upload
 #
@@ -585,7 +619,7 @@ przejdź do <a href=\"" . wfLocalUrlE( "Specjalna:Imagelist" ) .
 "\">listy dołączonych plików</a>.
 Wszystkie przesyłki i skasowania są odnotowane na
 specjalnych wykazach (<a href=\"" .  wfLocalUrlE( "Wikipedia:Dołączone" ) .
-"\">dołączone</a>, " . wfLocalUrlE( "Wikipedia:Usunięte" ) .
+"\">dołączone</a>, <a href=\"" . wfLocalUrlE( "Wikipedia:Usunięte" ) .
 "\">usunięte</a>).
 <p>By przesłać nowy plik mający zilustrować Twój artykuł skorzystaj
 z poniższego formularza.
@@ -606,7 +640,7 @@ Dla plików dźwiękowych link będzie miał postać <b>[[media:file.ogg]]</b>.
 <p>Pamiętaj, proszę, że tak jak w przypadku zwykłych stron Wikipedii,
 inni użytkownicy mogą edytować lub kasować przesłane przez Ciebie pliki,
 jeśli stwierdzą, że to będzie lepiej służyć całemu projektowi.
-Twoje prawo do przesyłania może zostać Ci odebrane jeśli nadużyjesz systemu.",
+Twoje prawo do przesyłania może zostać Ci odebrane, jeśli nadużyjesz systemu.",
 "uploadlog"		=> "Wykaz przesyłek",
 "uploadlogpage" => "Dołączone",
 "uploadlogpagetext" => "Oto lista ostatnio przesłanych plików.
@@ -619,7 +653,7 @@ Wszystkie czasy odnoszą się do strefy czasu uniwersalnego (UTC).
 "affirmation"	=> "Potwierdzam, że właściciel praw autorskich do tego pliku
 zgadza się udzielić licencji zgodnie z $1.",
 "copyrightpage" => "Wikipedia:Prawa_autorskie",
-"copyrightpagename" => "Prawa autorskie Wikipedii",
+"copyrightpagename" => "prawami autorskimi Wikipedii",
 "uploadedfiles"	=> "Przesłane pliki",
 "noaffirmation" => "Musisz potwierdzić, że Twoja przesyłka nie narusza żadnych
 praw autorskich.",
@@ -673,10 +707,48 @@ strony typu <i>stub</i> (prowizoryczne), strony przekierowujące, oraz inne, kt�
 uznać za artykuły. Wyłączając powyższe, jest prawdopodobnie <b>$2</b> stron, które można uznać
 za artykuły.<p>
 Było w sumie <b>$3</b> odwiedzin oraz <b>$4</b> edycji od kiedy dokonano
-upgrade'u oprogramowania (1 styczeń 2004 ;-).
+upgrade'u oprogramowania (22 listopada 2002).
 Daje to średnio <b>$5</b> edycji na jedną stronę i <b>$6</b> odwiedzin na jedną edycję.",
 "userstatstext" => "Jest <b>$1</b> zarejestrowanych użytkowników.
 Spośród nich <b>$2</b> ma status administratora (zobacz $3).",
+
+# Maintenance Page
+#
+"maintenance"		=> "Prosta administracja",
+"maintnancepagetext"	=> "Na tej stronie zgrupowano kilka użytecznych narzędzi
+pomagających w prostej administracji. Niektóre z nich obciążają bazę danych, proszę
+więc, by ich nie nadużywać.",
+"maintenancebacklink"	=> "Powrót do strony prostej administracji",
+"disambiguations"	=> "Strony ujednoznaczniające",
+"disambiguationspage"	=> "Wikipedia:Lista_stron_ujednoznaczniających",
+"disambiguationstext"	=> "Poniższe artykuły odwołują się do <i>stron
+ujednoznaczniających</i>, a powinny odwoływać się bezpośrednio do hasła
+związanego z treścią artykułu.<br> Strona uznawana jest za ujednoznaczniającą
+jeśli odwołuje się do niej $1.<br>Linki z innych przestrzeni nazw <i>nie</i>
+zostały tu uwzględnione.",
+"doubleredirects"	=> "Podwójne przekierowania",
+"doubleredirectstext"	=> "<b>Uwaga:</b> Na tej liście mogą znajdować się
+przekierowania pozorne. Oznacza to, że poniżej pierwszej linii artykułu,
+zawierającej \"#REDIRECT ...\", może znajdować się dodatkowy tekst.<br>Każdy
+wiersz listy zawiera odwołania do pierwszego i drugiego przekierowania oraz
+pierwszą linię tekstu drugiego przekierowania. Umożliwia to w większości
+przypadków odnalezienie właściwego artykułu, do którego powinno się
+przekierowywać.",
+"brokenredirects"	=> "Zerwane przekierowania",
+"brokenredirectstext"	=> "Poniższe przekierowania wskazują na nieistniejące artykuły.",
+"selflinks"		=> "Strony zawierające odwołania do siebie samych",
+"selflinkstext"		=> "Poniższe strony zawierają odnośniki do samych siebie
+(co nie powinno mieć miejsca).",
+"mispeelings"           => "Strony z <i>błędami pisowani</i>",
+"mispeelingstext"               => "Poniższe strony zawierają najczęstsze błędy
+pisowni (ich listę można znaleźć w $1). Poprawna pisowania może być podana (tak
+jak tu).", 
+"mispeelingspage"       => "Lista najczęstszych błędów pisowni",
+"missinglanguagelinks"  => "Brakujące odnośniki do innych wersji językowych",
+"missinglanguagelinksbutton"    => "Znajdź brakujące odnośniki, wersja",
+"missinglanguagelinkstext"      => "Dla wielu artykułów istnieje wersja $1.
+Artykuły umieszczone na poniższej liście <i>nie</i> odnoszą się do swojego
+odpowiednika w tym języku. Na tej liście <i>pominięto</i> podstrony oraz przekierowania.",
 
 # Miscellaneous special pages
 #
@@ -773,13 +845,13 @@ a nazwa samej strony zostanie <b>wytłuszczona</b> na <a href=\"" .
 lub plik z bazy danych razem z dotyczącą ich historią.
 Potwierdź, proszę, swoje zamiary, tzn., że rozumiesz konsekwencje,
 i że robisz to w zgodzie z
-[[Wikipedia:Zasady]].",
+[[Wikipedia:Zasady i wskazówki|zasadami Wikipedii]].",
 "confirmcheck"	=> "Tak, naprawdę chcę usunąć.",
 "actioncomplete" => "Operacja wykonana",
 "deletedtext"	=> "Usunięto \"$1\".
-Rejestr ostatnio dokonaych kasowań możesz obejrzeć tutaj: $2.",
-"deletedarticle" => ", usunięto \"$1\"",
-"dellogpage"	=> "Deletion_log",
+Rejestr ostatnio dokonanych kasowań możesz obejrzeć tutaj: $2.",
+"deletedarticle" => "usunięto \"$1\"",
+"dellogpage"	=> "Usunięte",
 "dellogpagetext" => "To jest lista ostatnio wykonanych kasowań.
 Podane czasy odnoszą się do strefy czasu uniwersalnego (UTC).
 <ul>
@@ -790,6 +862,25 @@ Podane czasy odnoszą się do strefy czasu uniwersalnego (UTC).
 "deletecomment"	=> "Powód usunięcia",
 "imagereverted" => "Przywrócenie wcześniejszej wersji powiodło się.",
 
+# Undelete
+#
+"undelete" => "Odtwórz skasowaną stronę",
+"undeletepage" => "Odtwarzanie skasowanychh stron",
+"undeletepagetext" => "Poniższe strony zostały skasowane, ale ich kopia wciąż
+znajduje się w archiwum.<br><b>Uwaga:</b> archiwum co jakiś czas także jest kasowane!",
+"undeletearticle" => "Odtwórz skasowany artykuł",
+"undeleterevisions" => "Zarchiwizowanych jest $1 wersji",
+"undeletehistory" => "Odtworzenie strony spowoduje przywrócenie także jej
+wszystkich poprzednich wersji. Jeśli od czasu skasowania ktoś utworzył nową stronę
+o tej nazwie, odtwarzane wersje znajdą się w jej historii, a obecna wersja
+pozostanie bez zmian.",
+"undeleterevision" => "Skasowano wersję z $1",
+"undeletebtn" => "Odtwórz!",
+"undeletedarticle" => "odtworzono \"$1\"",
+"undeletedtext"   => "Pomyślnie odtworzono artykuł [[$1]].
+Zobacz [[Wikipedia:Usunięte]], jeśli chcesz przejrzeć rejestr ostatnio
+skasowanych i odtworzonych stron.",
+
 # Contributions
 #
 "contributions"	=> "Wkład użytkownika",
@@ -798,6 +889,7 @@ Podane czasy odnoszą się do strefy czasu uniwersalnego (UTC).
 "ucnote"		=> "Oto lista ostatnich <b>$1</b> zmian dokonanych przez
 użytkownika w ciągu ostatnich <b>$2</b> dni.",
 "uclinks"		=> "Zobacz ostatnie $1 zmian; zobacz ostatnie $2 dni.",
+"uctop"			=> "(jako ostatnia)",
 
 # What links here
 #
@@ -816,7 +908,7 @@ ta operacja ma być wykonana.",
 "blockiptext"	=> "Użyj poniższego formularza aby zablokować prawo
 zapisu spod określonego adresu IP.
 Powinno się to robić jedynie by zapobiec wandalizmowi, a zarazem
-w zgodzie z [[Wikipedia:Zasady|zasadami Wikipedii]].
+w zgodzie z [[Wikipedia:Zasady i wskazówki|zasadami Wikipedii]].
 Podaj powód (np. umieszczając nazwy stron, na których dopuszczono
 się wandalizmu).",
 "ipaddress"		=> "Adres IP",
@@ -882,14 +974,28 @@ użytkowników o statusie Programisty.",
 "movepagetext"	=> "Za pomocą poniższego formularza zmienisz nazwę strony,
 przenosząc jednocześnie jej historę.
 Pod starym tytułem zostanie umieszczona strona przekierowująca.
-Linki do starego tytułu pozostaną niezmienione, a strona dyskusji,
-jeśli istnieje, nie zostanie przeniesiona.<br>
+Linki do starego tytułu pozostaną niezmienione.
+[[Specjalna:Maintenance|Upewnij się]], że uwzględniasz podwójne
+lub zerwane przekierowania. Odpowiadasz za to, żeby linki odnosiły
+się do właściwych artykułów!
+
+Strona '''nie''' będzie przeniesiona jeśli:
+*jest pusta i nigdy nie była edytowana
+*jest stroną przekierowującą
+*strona o nowej nazwie już istnieje
+
 <b>UWAGA!</b>
 Może to być drastyczna lub nieprzewidywalna zmiana w przypadku popularnych stron;
 upewnij się co do konsekwencji tej operacji zanim się na nią zdecydujesz.",
+"movepagetalktext" => "Odpowiednia strona dyskusji, jeśli istnieje, będzie
+przeniesiona automatycznie, pod warunkiem, że:
+*nie przenosisz strony do innej przestrzeni nazw
+*nie istnieje strona dyskusji o nowej nazwie
+W takich przypadkach tekst dyskusji trzeba przenieść, i ewentualnie połączyć
+z istniejącym, ręcznie.
+Możesz też zrezygnować z przeniesienia dyskusji (poniższy <i>checkbox</i>).",
 "movearticle"	=> "Przenieś stronę",
 "movenologin"	=> "Brak logowania",
-  //en wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
 "movenologintext" => "Musisz być zarejestrowanym i <a href=\"" .
   wfLocalUrl( "Specjalna:Userlogin" ) . "\">zalogowanym</a>
 użytkownikiem aby móc przenieść stronę.",
