@@ -7,6 +7,7 @@ session_register( "wsUserPassword" );
 include_once( "./LocalSettings.php" );
 include_once( "./GlobalFunctions.php" );
 include_once( "./InterText.php" );
+include_once( "./Namespace.php" );
 include_once( "./Skin.php" );
 include_once( "./OutputPage.php" );
 include_once( "./User.php" );
@@ -34,7 +35,7 @@ if ( "" == $action ) { $action = "view"; }
 if ( "" == $title ) { $title = wfMsg( "mainpage" ); }
 
 $wgTitle = Title::newFromURL( $title );
-if ( 0 == strcmp( "Special", $wgTitle->getNamespace() ) ) {
+if ( -1 == $wgTitle->getNamespace() ) {
 	wfSpecialPage();
 } else if ( "" != $search ) { wfSearch( $search ); }
 else {

@@ -7,7 +7,7 @@
 
 CREATE TABLE cur (
   cur_id mediumint(8) unsigned NOT NULL auto_increment,
-  cur_namespace varchar(20) binary NOT NULL default '',
+  cur_namespace tinyint(2) unsigned NOT NULL default '0',
   cur_title varchar(255) binary NOT NULL default '',
   cur_text mediumtext,
   cur_comment tinyblob,
@@ -21,6 +21,7 @@ CREATE TABLE cur (
   cur_counter bigint(20) unsigned default '0',
   cur_cache mediumtext,
   cur_ind_title varchar(255) default NULL,
+  INDEX cur_namespace (cur_namespace),
   INDEX cur_title (cur_title),
   UNIQUE KEY cur_id (cur_id),
   INDEX timeind (cur_timestamp),
@@ -45,7 +46,7 @@ CREATE TABLE linked (
 
 CREATE TABLE old (
   old_id mediumint(8) unsigned NOT NULL auto_increment,
-  old_namespace varchar(20) binary NOT NULL default '',
+  old_namespace tinyint(2) unsigned NOT NULL default '0',
   old_title varchar(255) binary NOT NULL default '',
   old_text mediumtext,
   old_comment tinyblob,

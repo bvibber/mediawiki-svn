@@ -48,10 +48,12 @@ function wfUrlencode ( $s )
 
 function wfDebug( $text )
 {
-	global $wgOut;
+	global $wgOut, $wgDebugLogFile;
 	$wgOut->debug( $text );
 
-	error_log( $text, 3, "/var/www/html/newwiki/logfile" );
+	if ( "" != $wgDebugLogFile ) {
+		error_log( $text, 3, $wgDebugLogFile );
+	}
 }
 
 function wfMsg( $key )

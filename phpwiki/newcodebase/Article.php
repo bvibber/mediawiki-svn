@@ -115,12 +115,20 @@ class Article {
 
 	function edit()
 	{
-		global $wgOut, $wgUser, $wgTitle;
+		global $wgOut, $wgUser, $wgTitle, $wgReadOnly;
 		global $wpTextbox1, $wpSummary, $wpSave, $wpPreview;
 		global $wpMinoredit, $wpEdittime, $wpTextbox2;
 
 		if ( ! $wgTitle->userCanEdit() ) {
 			$this->view();
+			return;
+		}
+		if ( $wgUser->isBlocked() ) {
+			$this->blockedIPpage();
+			return;
+		}
+		if ( $wgReadOnly ) {
+			$this->readOnlyPage();
 			return;
 		}
 		if ( isset( $wpSave ) ) {
@@ -351,6 +359,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		global $wgOut, $wgUser;
 
 		$wgOut->setPageTitle( wfMsg( "blockedtitle" ) );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
 		$id = $wgUser->blockedBy();
 		$reason = $wgUser->blockedFor();
 
@@ -360,6 +369,17 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		$text = str_replace( "$1", $link, wfMsg( "blockedtext" ) );
 		$text = str_replace( "$2", $reason, $text );
 		$wgOut->addWikiText( $text );
+		$wgOut->returnToMain();
+	}
+
+	function readOnlyPage()
+	{
+		global $wgOut, $wgUser;
+
+		$wgOut->setPageTitle( wfMsg( "readonly" ) );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
+		$wgOut->addWikiText( wfMsg( "readonlytext" ) );
+		$wgOut->returnToMain();
 	}
 }
 
