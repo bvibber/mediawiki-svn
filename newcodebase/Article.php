@@ -1000,7 +1000,7 @@ enctype='application/x-www-form-urlencoded'>
 		$reason = $wgUser->blockedFor();
 
 		$name = User::whoIs( $id );
-		$link = "[[" . $wglang->getNsText( Namespace::getUser() ) .
+		$link = "[[" . $wgLang->getNsText( Namespace::getUser() ) .
 		  ":{$name}|{$name}]]";
 
 		$text = str_replace( "$1", $link, wfMsg( "blockedtext" ) );
