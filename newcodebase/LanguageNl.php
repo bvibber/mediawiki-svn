@@ -40,16 +40,17 @@
  "hideminor" => "Kleine wijzigingen verbergen in recente wijzigingen",
  "numberheadings" => "Koppen automatisch nummeren",
  "rememberpassword" => "Wachtwoord onthouden",
- "editwidth" => "Edit box has full width",
+ "editwidth" => "Bewerkingsveld over volle breedte",
  "editondblclick" => "Edit pages on double click (JavaScript)",
- "watchdefault" => "Watch new and modified articles"
+ "watchdefault" => "Artikelen die u wijzigt automatisch volgen",
+ "minordefault" => "Maak 'kleine' veranderingen mijn stanaard"
 );
 
 /* private */ $wgLanguageNamesNl = array(
  "ab" => "Abchazisch",
  "aa" => "Afar",
  "af" => "Afrikaans",
- "sq" => "Albanees",
+ "sq" => "Shqiptare",
  "am" => "Amhaars",
  "ar" => "Arabisch",
  "hy" => "Armeens",
@@ -68,7 +69,7 @@
  "ca" => "Català",
  "zh" => "Hanyu",
  "co" => "Corsicaans",
- "hr" => "Kroatisch",
+ "hr" => "Hrvatsky",
  "cs" => "Tsjechisch",
  "da" => "Dansk", # Note two different subdomains. 
  "dk" => "Gebruik voor Deens DA", # 'da' is correct for the language.
@@ -117,7 +118,7 @@
  "lt" => "Litouws",
  "mk" => "Macedonisch",
  "mg" => "Malagasi",
- "ms" => "Maleis",
+ "ms" => "Bahasa Melayu",
  "ml" => "Malayalam",
  "mi" => "Maori",
  "mr" => "Marathi",
@@ -131,7 +132,7 @@
  "om" => "Oromo",
  "ps" => "Pashtu",
  "fa" => "Farsi",
- "pl" => "Polska",
+ "pl" => "Polski",
  "pt" => "Português",
  "pa" => "Punjabi",
  "qu" => "Quechua",
@@ -141,7 +142,7 @@
  "sm" => "Samoaans",
  "sg" => "Sangro",
  "sa" => "Sanskriet",
- "sr" => "Servisch",
+ "sr" => "Srpski",
  "sh" => "Srpskohrvatska",
  "st" => "Sesotho",
  "tn" => "Setswana",
@@ -152,10 +153,10 @@
  "sk" => "Slowaaks",
  "sl" => "Slovensko",
  "so" => "Somali",
- "es" => "Castellano",
+ "es" => "Español",
  "su" => "Soedanees",
  "sw" => "Swahili",
- "sv" => "Svensk",
+ "sv" => "Svenska",
  "tl" => "Tagalog",
  "tg" => "Tadzjieks",
  "ta" => "Tamil",
@@ -226,6 +227,7 @@
  "Allpages"  => "Alle paginatitels tonen",
 
  "Ipblocklist" => "Geblokkeerde IP-adressen tonen",
+ "Maintenance" => "Onderhoudspagina",
  "Specialpages"  => "",
  "Contributions" => "",
  "Emailuser"  => "",
@@ -237,7 +239,8 @@
 
 /* private */ $wgSysopSpecialPagesNl = array(
  "Blockip"  => "Blokkeer een IP-adres",
- "Asksql"  => "Raadpleeg de database"
+ "Asksql"  => "Raadpleeg de database",
+ "Undelete" => "Verwijderde pagina's herstellen"
 );
 
 /* private */ $wgDeveloperSpecialPagesNl = array(
@@ -250,6 +253,7 @@
 
 # Bits of text used by many pages:
 # Diverse stukjes tekst
+"linktrail" => "/^([a-z]+)(.*)\$/sD",
 "mainpage"  => "Hoofdpagina",
 "about"   => "Info",
 "aboutwikipedia" => "Over Wikipedia",
@@ -287,10 +291,15 @@
 "unprotectthispage" => "Beveiliging opheffen",
 "talkpage"  => "Overlegpagina",
 "subjectpage" => "Artikel",
+"articlepage"   => "Artikel",
+"userpage" => "Gebruikerspagina",
+"wikipediapage" => "Artikel",
+"imagepage" =>  "Beschrijvingspagina",
 "otherlanguages" => "Andere talen",
 "redirectedfrom" => "(Doorverwezen vanaf $1)",
 "lastmodified" => "Deze pagina werd het laatst gewijzigd op $1.",
 "viewcount"  => "Deze pagina werd $1 maal bekeken.",
+"gnunote" => "Deze pagina valt onder de  <a class=internal href='/wiki/Gnu_Vrije_Documentatie_Licentie'>GNU FDL</a>.",
 "printsubtitle" => "(Uit http://nl.wikipedia.org)",
 "protectedpage" => "Beveiligde pagina",
 "administrators" => "Wikipedia:Systeembeheerders",
@@ -321,7 +330,7 @@ Dit kan zijn veroorzaakt door een illegale zoekactie (zie $5),
  of het duidt op een fout in de software. 
 De laatste zoekpoging in de database was:
 <blockquote><tt>$1</tt></blockquote>
- vanuit de functie \"<tt>$2</tt>\".
+vanuit de functie \"<tt>$2</tt>\".
 MySQL gaf the foutmelding \"<tt>$3: $4</tt>\".",
 "noconnect"  => "Verbinden met de database op $1 was niet mogelijk",
 "nodb"   => "Selectie van database $1 niet mogelijk",
@@ -340,6 +349,9 @@ De verantwoordelijke systeembeheerder gaf hiervoor volgende reden op:
 "formerror"  => "Fout: kon formulier niet verzenden", 
 "badarticleerror" => "Deze handeling kan op deze pagina niet worden uitgevoerd.",
 "cannotdelete" => "Kon de pagina of afbeelding niet verwijderen.",
+"badtitle"              => "Ongeldige paginatitel", 
+"badtitletext"  => "De opgevraagde pagina is niet beschikbaar of leeg.",
+"perfdisabled" => "Om te voorkomen de database te overbelasten is deze pagina slechts tussen 03:00 en 15:00 (West-Europese zomertijd) beschikbaar.",
 
 # Login and logout pages
 # Aanmelden en afmelden
@@ -388,11 +400,12 @@ Gelieve na ontvangst opnieuw aan te melden.",
 # Pagina bewerken
 "summary"  => "Samenvatting",
 "minoredit"  => "Dit is een kleine wijziging",
+"watchthis" => "Volg deze pagina",
 "savearticle" => "Pagina opslaan",
 "preview"  => "Nakijken",
 "showpreview" => "Toon bewerking ter controle",
 "blockedtitle" => "Gebruiker is geblokkeerd",
-"blockedtext" => "Uw gebruikersnaam of IP-adres is door $1 geblokkeerd. De opgegeven reden:<br>$2<p>U kunt voor overleg contact opnemen met de systeembeheerders.",
+"blockedtext" => "Uw gebruikersnaam of IP-adres is door $1 geblokkeerd. De opgegeven reden:<br>$2<p>. U kunt voor overleg contact opnemen met de [[Wikipedia:Systeembeheerders|systeembeheerders]].",
 "newarticle" => "(Nieuw)",
 "newarticletext" => "Verwijder dit en beschrijf hier de nieuwe pagina.",
 "noarticletext" => "(Deze pagina bevat momenteel geen tekst)",
@@ -451,14 +464,18 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "viewprevnext" => "($1) ($2) ($3) bekijken.",
 "showingresults" => "Hieronder de resultaten <b>$1</b> beginnend met #<b>$2</b>.",
 "nonefound"  => "<strong>Merk op:</strong> wanneer een zoekopdracht mislukt komt dat vaak door gebruik van (in het Engels) veel voorkomende woorden zoals \"of\" en \"be\", die niet geïndexeerd zijn, of door verschillende zoektermen tegelijk op te geven (u krijgt dan alleen in pagina's waaarin alle opgegeven termen voorkomen).",
+"powersearch" => "Zoeken",
+"powersearchtext" => "   
+ Zoek in naamruimten :<br>
+ $1<br>
+ $2 Toon redirects &nbsp; Zoek: $3 $9",   
 
 # Preferences page
 # Voorkeuren
 "preferences" => "Voorkeuren",
 "prefsnologin" => "Niet aangemeld",
 "prefsnologintext" => "U dient <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">aangemeld</a> 
-te zijn om voorkeuren te kunnen instellen.",
+  wfLocalUrl( "Special:Userlogin" ) . "\">aangemeld</a> te zijn om voorkeuren te kunnen instellen.",
 "prefslogintext" => "U bent aangemeld als \"$1\". Uw interne identificatienummer is $2.",
 "prefsreset" => "Standaardvoorkeuren hersteld.",
 "qbsettings" => "Menubalkinstellingen", 
@@ -476,6 +493,7 @@ te zijn om voorkeuren te kunnen instellen.",
 "resultsperpage" => "Aantal per bladzijde te tonen zoekresultaten",
 "contextlines" => "Aantal regels per gevonden pagina",
 "contextchars" => "Aantal tekens van de context per regel",
+"stubthreshold" => "Grootte waaronder een pagina als 'stub' wordt aangegeven",
 "recentchangescount" => "Aantal titels in lijst recente wijzigingen",
 "savedprefs" => "Uw voorkeuren zijn opgeslagen.",
 "timezonetext" => "De tijd van de server is UTC (Coordinated Universal Time) Geef aan hoeveel uur de plaatselijke tijd in uw woonplaats verschilt met die van de server. Voor o.a. België en Nederland: +1 (+2 zomertijd); voor Suriname en voor de Nederlandse Antillen: -4; voor Zuid-Afrika: +2.",
@@ -488,9 +506,12 @@ te zijn om voorkeuren te kunnen instellen.",
 "recentchanges" => "Recente wijzigingen",
 "recentchangestext" => "Deze pagina toont de meest recente wijzigingen aan Wikipedia NL
 Mocht u hier nieuw zijn, dan welkom bij Wikipedia! Bekijk AUB de volgende pagina's eens: [[Wikipedia:Veel gestelde vragen|Veel gestelde vragen]], [[Wikipedia:Instructies|Instructies]], [[Wikipedia:Objectiviteit|Objectiviteit]] en [[Wikipedia:Wat je niet moet doen|Wat je NIET moet doen]].
-Om Wikipedia te laten slagen is het erg belangrijk geen materiaal toe te voegen waarop iemand anders copyright heeft, tenzij u daartoe toestemming heeft. De wettelijke gevolgen van inbreuk op de rechten van anderen zouden de hele onderneming zwaar kunnen schaden.",
+Als u pagina's wilt verwijderen, ga naar [[Wikipedia:Te verwijderen pagina's|Te verwijderen pagina's]], als u iets wilt bediscussi&euml;ren, ga naar [[Wikipedia:Overleg gewenst|Overleg gewenst]]. Er is ook een email-lijst voor WikipediaNL: [http://www.wikipedia.org/mailman/listinfo/wikinl-l WikiNL-l].
+<br>Om Wikipedia te laten slagen is het erg belangrijk '''geen''' materiaal toe te voegen waarop iemand anders auteursrechten heeft, tenzij u daartoe toestemming heeft. De wettelijke gevolgen van inbreuk op de rechten van anderen zouden de hele onderneming zwaar kunnen schaden.",
 "rcloaderr"  => "Meest recente wijzigingen laden",
 "rcnote"  => "Hieronder zijn de <strong>$1</strong> laatste wijzigingen gedaan in de laatste <strong>$2</strong> dagen.",
+"rcnotefrom"  => "Veranderingen sinds <b>$2</b> (met een maximum van <b>$1</b> veranderingen).",
+"rclistfrom"  => "Toon de veranderingen beginnend vanaf $1",
 # "rclinks"  => "Bekijk de $1 laatste wijzigingen in de laatste $2 uren / laatste $3 dagen.",
 "rclinks"  => "Bekijk de $1 laatste wijzigingen in de laatste $2 dagen.",
 "rchide"  => "in $4 vorm; $1 kleine wijzigingen; $2 wijzigingen op speciale pagina's zoals overleg- en gebruikerspagina's; $3 meervoudige wijzigingen.",
@@ -526,7 +547,7 @@ Uploads en verwijderingen worden bijgehouden in het <a href=\"" .
 wfLocalUrlE( "Wikipedia:Upload_logboek" ) . "\">upload logboek</a>.
 <p>Gebruik het onderstaande formulier om bestanden zoals afbeeldingen en geluidsbestanden die relevant zijn voor uw artikel te u-loaden. Bij de meeste browers zoals 'Internet Explorer' en 'Mozilla' zult u een \"Bladeren...\" of \"Browse..\" knop zien die een standaard dialoogscherm van uw bestuuringssysteem oproept. Kiest u een bestand, dan zal het ingevuld worden in het veld naast de \"Bladeren...\" knop. U dient ook het vakje aan te vinken waarmee u bevestigt dat er geen schending van auteursrechten plaatsvindt door het gebruik van dat bestand. Vul het veld \"Omschrijving\" in. Druk op de \"Upload\" knop om het uploaden te voltooien. Dit kan even duren als u een langzame internetverbinding gebruikt.
 <p>Gebruik bij voorkeur JPEG voor foto's, PNG voor tekeningen en dergelijke en OGG voor geluid. 
-Geef uw bestanden een duidelijk omschrijvende naam om verwarring te voorkomen. Om het bestand in een pagina te laten verschijnen, kunt u het volgende doen;  <b>[[afbeelding:uw_foto.jpg]]</b> of <b>[[afbeelding:uw_logo.png|alt text]]</b>  of <b>[[media:uw_geluid.ogg]]</b> voor audio.
+Geef uw bestanden een duidelijk omschrijvende naam om verwarring te voorkomen. Om het bestand in een pagina te laten verschijnen, kunt u het volgende doen;  <b>[[afbeelding:uw_foto.jpg]]</b> of <b>[[afbeelding:uw_logo.png|alt text]]</b> of <b>[[media:uw_geluid.ogg]]</b> voor audio.
 <p>Vergeet niet dat net als met andere pagina's op Wikipedia anderen de ge-uploade bestanden kunnen verwijderen indien men denkt dat dat in het voordeel van het project is. Bij misbruik van dit systeem kan u de toegang tot Wikipedia NL ontzegd worden.",
 "uploadlog"  => "upload logboek",
 "uploadlogpage" => "Upload_logboek",
@@ -584,6 +605,27 @@ Geef uw bestanden een duidelijk omschrijvende naam om verwarring te voorkomen. O
 "sitestatstext" => "Er zijn <b>$1</b> pagina's in de database. Hierbij zijn inbegrepen \"Overleg\" pagina's, pagina's over Wikipedia, extreem korte \"stub\" pagina's, redirects, en diverse andere pagina's die waarschijnlijk niet als artikel moeten worden geteld. Na uitsluiting daarvan, is er een geschat aantal van <b>$2</b> artikels.<p>
 Er is in totaal $3 maal een pagina bekeken, en $4 maal een pagina bewerkt. Dat geeft een gemiddelde van $5 bewerkingen per pagina, en $6 paginabezoeken per wijziging.",
 "userstatstext" => "Er zijn momenteel $1 geregistreerde gebruikers; hiervan zijn er $2 systeembeheerders (zie $3).",
+
+# Maintenance Page   
+#
+"maintenance"           => "Onderhoudspagina",
+"maintnancepagetext"    => "Op deze pagina vindt u een aantal handige zoekopdrachten om kleine alledaagse problemen in de Wikipedia te verhelpen. Sommige van deze zoekopdrachten vormen een grote belasting voor de database; ga dus niet na elke paar pagina's die u hersteld heeft, de pagina opnieuw laden.",
+"maintenancebacklink"   => "Terug naar de Onderhoudspagina",
+"disambiguations"       => "Doorverwijspagina's",
+"disambiguationspage"   => "Wikipedia:Doorverwijspagina",
+"disambiguationstext"   => "De onderstaande artikelen verwijzen naar een [[Wikipedia:Doorverwijspagina|doorverwijspagina]]. Deze zouden waarschijnlijk direct naar de onderwerpspagina moeten verwijzen. <br>Als doorverwijspagina's worden die pagina's beschouwd waar vanaf $1 naar verwezen wordt.<br>Opmerking: Deze lijst toont alleen pagina's vanuit de hoofdnaamruimte, en dus niet Overlegpagina's, Wikipedia:pagina's en dergelijke.",
+"doubleredirects"       => "Dubbele redirects",
+"doubleredirectstext"   => "<b>Let op:</b> Er kunnen in deze lijst redirects staan die er niet in thuishoren. Dat komt over het algemeen doordat er na de #REDIRECT nog andere links op de pagina staan.<br>\nOp elke regel vindt u de eerste redirectpagina, de tweede redirectpagina en de eerste regel van de tweede redirectpagina. Normaal gesproken bevat deze laatste de pagina waar de eerste redirect naartoe zou moeten verwijzen.",
+"brokenredirects"       => "Gebroken redirects",
+"brokenredirectstext"   => "De onderstaande redirectpagina's bevatten een redirect naar een niet-bestaande pagina.",
+"selflinks"             => "Pagina's die naar zichzelf verwijzen",
+"selflinkstext"         => "De volgende pagina's verwijzen naar zichzelf, wat niet hoort te gebeuren.",
+"mispeelings"           => "Pagina's met spelfouten",
+"mispeelingstext"       => "De volgende pagina's bevatten een veel voorkomende spel- of typfout, die staat aangegeven op de lijst in $1. Daar staat meestal ook (tussen haakjes) de juiste spelling.",
+"mispeelingspage"       => "Veel voorkomende spelfouten",
+"missinglanguagelinks"  => "Ontbrekende taallinks",
+"missinglanguagelinksbutton"    => "Vind ontbrekende taallinks voor",
+"missinglanguagelinkstext"      => "De onderstaande artikelen bevatten geen taallink naar een overeenkomende pagina in de taal \"$1\".",
 
 # Miscellaneous special pages
 # Diverse speciale pagina's
@@ -675,6 +717,21 @@ Ook zullen deze pagina's in het <b>vet</b> verschijnen in de <a href=\"" .
 "reverted"  => "Eerdere versie hersteld",
 "deletecomment" => "Reden voor verwijdering",
 "imagereverted" => "De omzetting naar de oudere versie is geslaagd.",
+"rollback"      => "Wijzigingen ongedaan maken",
+"cantrollback"  => "Ongedaan maken van wijzigingen onmogelijk: Dit artikel heeft slechts 1 auteur.",
+"revertpage"    => "Hersteld tot de versie na de laatste wijziging door $1.",
+
+# Undelete
+"undelete" => "Verwijderde pagina terugplaatsen",
+"undeletepage" => "Verwijderde pagina's bekijken en terugplaatsen",
+"undeletepagetext" => "De onderstaande pagina's zijn verwijderd, maar bevinden zich nog steeds in het archief, en kunnen teruggeplaatst worden.",
+"undeletearticle" => "Verwijderde pagina terugplaatsen",
+"undeleterevisions" => "$1 versies in het archief",
+"undeletehistory" => "Als u een pagina terugplaatst, worden alle versies als oude versies teruggeplaatst. Als er al een nieuwe pagina met dezelfde naam is aangemaakt, zullen deze versies als oude versies worden teruggeplaatst, maar de huidige versie niet gewijzigd worden.",
+"undeleterevision" => "Verwijderde versie van $1",
+"undeletebtn" => "Terugplaatsen!",
+"undeletedarticle" => "\"$1\" is teruggeplaatst.",
+"undeletedtext" =>"Het artikel [[$1]] is teruggeplaatst. Zie [[Wikipedia:Logboek verwijderde pagina's]] voor een lijst van de meest recente verwijderingen en terugplaatsingen.",
 
 # Contributions
 # Bijdragen
@@ -683,6 +740,7 @@ Ook zullen deze pagina's in het <b>vet</b> verschijnen in de <a href=\"" .
 "nocontribs" => "Geen wijzigingen gevonden die aan de gestelde criteria voldoen.",
 "ucnote"  => "Hieronder ziet u de laatste <b>$1</b> wijzigingen van deze gebruiker in de laatste <b>$2</b> dagen.",
 "uclinks"  => "Bekijk de laatste <b>$1</b> veranderingen; bekijk de laatste <b>$2</b> dagen.",
+"uctop" => " (laatste wijziging)",
 
 # What links here
 # Wat linkt hier
@@ -705,7 +763,7 @@ Ook zullen deze pagina's in het <b>vet</b> verschijnen in de <a href=\"" .
 "noblockreason" => "U dient een reden op te geven voor het blokkeren van een IP-adres.",
 "blockipsuccesssub" => "Blokkering gelukt",
 "blockipsuccesstext" => "Het IP-adres \"$1\" is geblokkeerd.<br>
-Zie de [[speciaal:IP block list|Lijst van geblokkeerde IP-adressen]].",
+Zie de [[speciaal:IPblocklist|Lijst van geblokkeerde IP-adressen]].",
 "unblockip"  => "De-blokkeer IP-adres",
 "unblockiptext" => "Gebruik het onderstaande formulier om terug schrijftoegang te geven aan een geblokkeerd IP-adres.",
 "ipusubmit"  => "De-blokkeer dit IP-adres.",
@@ -745,7 +803,11 @@ Vergeet niet de database opnieuw te de-blokkeren zodra u klaar bent met uw onder
 # Move page
 # Verplaats pagina
 "movepage"  => "Verplaats pagina",
-"movepagetext" => "Door middel van het onderstaande formulier kan u de titel van een pagina hernoemen. De voorgeschiedenis van de oude pagina zal deze van de nieuwe worden. De oude titel zal automatisch een doorverwijzing worden naar de nieuwe. Verwijzingen naar de oude pagina zullen niet aangepast worden en de overlegpagina, voor zover aanwezig, zal niet verplaatst worden.",
+"movepagetext" => "Door middel van het onderstaande formulier kan u de titel van een pagina hernoemen. De voorgeschiedenis van de oude pagina zal deze van de nieuwe worden. De oude titel zal automatisch een doorverwijzing worden naar de nieuwe. U kunt een dergelijke hernoeming alleen doen plaatsvinden, als er geen pagina bestaat met de nieuwe naam, of als er slechts een redirect zonder verdere geschiedenis is.",
+"movepagetalktext" => "De bijbehorende overlegpagina wordt ook verplaatst, maar '''niet''' in de volgende gevallen:
+* Als de pagina naar een andere naamruimte wordt verplaatst
+* Als er al een niet-lege Overlegpagina bestaat onder de andere naam
+* Als u de onderstaande radiobox niet aangevinkt laat",
 "movearticle" => "Verplaats pagina",
 "movenologin" => "Niet aangemeld",
 "movenologintext" => "U dient <a href=\"" .
@@ -756,6 +818,7 @@ te zijn om een pagina te verplaatsen.",
 "pagemovedsub" => "De verplaatsing was succesvol",
 "pagemovedtext" => "Pagina \"[[$1]]\" verplaatst naar \"[[$2]]\".",
 "articleexists" => "Er is reeds een pagina met deze titel of de titel is ongeldig. <br>Gelieve een andere titel te kiezen.",
+"talkexists" => "De pagina zelf is verplaatst, maar de Overlegpagina kon niet worden verplaatst, omdat de doeltitel al een niet-lege overlegpagina had. Combineer de overlegpagina's a.u.b. handmatig.",
 "movedto"  => "verplaatst naar",
 "movetalk"  => "Verplaats \"Overleg\" pagina ook indien aanwezig.",
 "talkpagemoved" => "De bijhorende overlegpagina is ook verplaatst.",
@@ -765,10 +828,15 @@ te zijn om een pagina te verplaatsen.",
 
 class LanguageNl extends Language {
 
-    function getDefaultUserOptions () {
+ function getDefaultUserOptions () {
   global $wgDefaultUserOptionsNl ;
   return $wgDefaultUserOptionsNl ;
   }
+
+ function getBookstoreList () {
+  global $wgBookstoreListNl ;
+  return $wgBookstoreListNl ;
+ }
 
  function getNamespaces() {
   global $wgNamespaceNamesNl;
@@ -789,9 +857,7 @@ class LanguageNl extends Language {
   return false;
  }
 
- function specialPage( $name ) {
-  return $this->getNsText( Namespace::getSpecial() ) . ":" . $name;
- }
+ # Inherit specialPage()
 
  function getQuickbarSettings() {
   global $wgQuickbarSettingsNl;
@@ -806,6 +872,11 @@ class LanguageNl extends Language {
  function getUserToggles() {
   global $wgUserTogglesNl;
   return $wgUserTogglesNl;
+ }
+
+ function getLanguageNames() {
+  global $wgLanguageNamesNl;
+  return $wgLanguageNamesEn;
  }
 
  function getLanguageName( $code ) {
@@ -887,6 +958,9 @@ class LanguageNl extends Language {
                 if ( "" == $m ) { return $wgAllMessagesEn[$key]; }
                 else return $m;
  }
-}
 
+ # Inherit iconv(), ucfirst(), stripForSearch(), recodeForEdit(), recodeInput()
+ # since they are same as English/Latin1
+
+}
 ?>
