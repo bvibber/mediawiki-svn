@@ -2,11 +2,15 @@
 
 function wfSpecialUpload()
 {
-	global $wpUpload, $wpReUpload, $action;
+	global $wgUser, $wgOut, $wpUpload, $wpReUpload, $action;
 
 	$fields = array( "wpUploadFile", "wpUploadDescription" );
 	wfCleanFormFields( $fields );
 
+	if ( 0 == $wgUser->getID() ) {
+		$wgOut->errorpage( "uploadnologin", "uploadnologintext" );
+		return;
+	}
 	if ( isset( $wpReUpload) ) {
 		unsaveUploadedFile();
 		mainUploadForm( "" );

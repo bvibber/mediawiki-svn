@@ -456,8 +456,10 @@ class Skin {
 			}
 			$s .= "\n<hr>";
 		}
-		$s .= $this->specialLink( "upload" )
-		  . $sep . $this->bugReportsLink()
+		if ( 0 != $wgUser->getID() ) {
+			$s .= $this->specialLink( "upload" ) . $sep;
+		}
+		$s .= $this->bugReportsLink()
 		  . $sep . $this->specialLink( "specialpages" );
 
 		$s .= "\n</div>\n";
