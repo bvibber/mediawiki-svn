@@ -35,5 +35,5 @@ env = Environment(CPPFLAGS = cppflags + ' -DPFX="\\"' + prefix + '\\""',
 env.Command('sminfo.cxx', 'sminfo.sh', '/bin/sh $SOURCE >$TARGET')
 
 env.Program ('servmon', srcs)
-env.Program ('smlogmsg', ['smlogmsg.c'], LIBS = [], LINKFLAGS = '-static')
+env.Program ('smlogmsg', ['smlogmsg.c'], LIBS = [])
 env.Alias('install', prefix)

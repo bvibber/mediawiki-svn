@@ -51,6 +51,12 @@ char **argv;
 		perror("listen");
 		exit(8);
 	}
+
+	if (daemon(0, 0) < 0) {
+		perror("daemon");
+		exit(8);
+	}
+
 	clilen = sizeof(cliaddr);
 	while ((cfd = accept(sfd, (struct sockaddr *) &cliaddr, &clilen)) > 0) {
 		FILE *f;

@@ -47,6 +47,7 @@ public:
 		virtual std::string type(void) const = 0;
 		void check(void);
 		virtual void _check(void) = 0;
+		void _stdchecks(void);
 		virtual std::string fmt4irc(void) const = 0;
 		virtual ~server() {}
 		std::string name;
@@ -67,6 +68,14 @@ public:
 		static std::string statestring(state_t s);
 		std::set<std::time_t> flaps;
 	};
+	
+	struct noneserver : public server {
+		noneserver(str name) : server(name) {}
+		std::string type(void) const { return "none"; };
+		std::string fmt4irc(void) const { return ""; };
+		void _check(void) {}
+	};
+		
 	typedef b::shared_ptr<server> serverp;
 	struct squidserver : public server {
 		squidserver(str name) : server(name), rpsv(0), hpsv(0) {}

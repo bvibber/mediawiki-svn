@@ -367,7 +367,41 @@ HDL(cfg_monit_server_type) {
 		return true;
 	}
 };
+
+HDL(cfg_monit_server_max_disk) {
+	EX1(cd) {
+		if (!SMI(smcfg::cfg)->listhas("/monit/server/"+cd.p(0)+"/disks", cd.p(1)))
+			SMI(smcfg::cfg)->addlist("/monit/server/"+cd.p(0)+"/disks", cd.p(1));
+		int thresh;
+		try {
+			thresh = lexical_cast<int>(cd.p(2));
+		} catch (bad_lexical_cast&) {
+			cd.term.error("Bad number");
+			return true;
+		}
+		SMI(smalrm::mgr)->set_thresh("disk free for "+cd.p(0)+":" + cd.p(1) + " (MB)", lexical_cast<int>(cd.p(2)),
+					     smalrm::type_preferlower);
+		return true;
+	}
+};
+
+HDL(cfg_monit_server_max_disk_low) {
+	EX1(cd) {
+		if (!SMI(smcfg::cfg)->listhas("/monit/server/"+cd.p(0)+"/disks", cd.p(1))) {
+			cd.term.error("Disk " + cd.p(1) + " is not configured for " + cd.p(0) + ".");
+			return true;
+		}
 		
+		try {
+			SMI(smalrm::mgr)->set_lowthresh("disk free for "+cd.p(0)+":"+cd.p(1)+" (MB)",
+							lexical_cast<int>(cd.p(2)));
+		} catch (bad_lexical_cast&) {
+			cd.term.error("Bad number");
+		}
+		return true;
+	}
+};
+
 HDL(cfg_monit_server_mysql_master) {
 	EX1(cd) {
 		try {
@@ -798,6 +832,9 @@ smtrm::tmcmds::tmcmds(void)
 	monrt.install(16, "server %s type", "Specify server type");
 	monrt.install(16, "server %s type %s", cfg_monit_server_type(), "Create new server");
 	monrt.install(16, "server %s mysql-master", cfg_monit_server_mysql_master(), "Set server as MySQL master");
+	monrt.install(16, "server %s minimum-disk-free", "Set disk-usage alarm for server");
+	monrt.install(16, "server %s minimum-disk-free %s", "Device mount point");
+	monrt.install(16, "server %s minimum-disk-free %s %s", cfg_monit_server_max_disk(), "Minimum number of MB free");
 	monrt.install(16, "mysql", "Configure global MySQL parameters");
 	monrt.install(16, "mysql username", "MySQL username");
 	monrt.install(16, "mysql password", "MySQL password");

@@ -47,6 +47,8 @@ public:
 	/* set service */
 	void svc(str srv_);
 
+	void setblocking(bool);
+	
 private:
 	friend class smpx;
 
@@ -55,6 +57,7 @@ protected:
 	int s;
 	int type;
 	int len;
+	bool blocking;
 
 	sckt(int, int, sockaddr const *, socklen_t);
 };		
@@ -367,6 +370,10 @@ private:
 };
 typedef shared_ptr<tnsrv> tnsrvp;
 
+class acl {
+	
+};
+	
 } // namespace smnet
 
 #endif

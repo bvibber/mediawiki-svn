@@ -17,6 +17,8 @@
 #include <cerrno>
 #include <cctype>
 #include <algorithm>
+using std::pair;
+using std::make_pair;
 using std::for_each;
 
 #include <boost/bind.hpp>
@@ -40,6 +42,7 @@ using boost::shared_ptr;
 using boost::lambda::var;
 using boost::static_pointer_cast;
 using boost::dynamic_pointer_cast;
+using boost::tie;
 namespace b = boost;
 namespace bl = boost::lambda;
 

@@ -208,11 +208,39 @@ cfg::initialise(void)
 	c->run();
 }
 
-void cfg::server::check(void)
+void
+cfg::server::_stdchecks(void)
+{
+	smnet::clntp s (new smnet::clnt);
+	s->setblocking(true);
+	s->svc("8576");
+	s->node(name);
+	std::vector<u_char> data;
+	try {
+		s->connect();
+		s->rd(data);
+	} catch (std::exception&) {
+		return;
+	}
+	std::stringstream strm;
+	std::copy(data.begin(), data.end(), std::ostream_iterator<u_char>(strm));
+	std::string part, spc, blocksz;
+	while (strm >> part >> spc >> blocksz) {
+		uint64_t space = lexical_cast<uint64_t>(spc) * lexical_cast<uint64_t>(blocksz);
+		space /= 1024 * 1024; /* MB */
+		std::cerr << "space for " << part << " on " << name << ": " << space << '\n';
+		SMI(smalrm::mgr)->value(name, "disk free for "+name+":" + part + " (MB)", space);
+	}
+}
+	
+void
+cfg::server::check(void)
 {
 	state_t oldstate = state, newstate;
 	nups = ndowns = 0;
 	_check();
+	_stdchecks();
+	
 	if (nups && ndowns) {
 		/* some checks succeeded and others failed.
 		   place server in fast-flap state */
@@ -558,7 +586,7 @@ cfg::squidserver::fmt4irc(void) const
 bool
 cfg::knowntype(str type)
 {
-	return type == "squid" || type == "mysql";
+	return type == "squid" || type == "mysql" || type == "none";
 }
 
 bool
@@ -589,6 +617,7 @@ cfg::server_fortype(str type, str name)
 {
 	if (type == "squid") return new squidserver(name);
 	if (type == "mysql") return new mysqlserver(name);
+	if (type == "none") return new noneserver(name);
 	throw notype();
 }
 	

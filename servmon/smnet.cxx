@@ -38,6 +38,11 @@ sckt::~sckt(void) {
 	close(s);
 }
 
+void
+sckt::setblocking(bool)
+{
+}
+	
 void sckt::svc(std::string const& s) {
 	if (type == internet) {
 		sockaddr_in *sa = (sockaddr_in *)&sin;

@@ -6,31 +6,58 @@
 namespace smalrm {
 
 void
-mgr::set_thresh(str metric, int thresh)
+mgr::set_thresh(str metric, int thresh, int type)
 {
 	SMI(smcfg::cfg)->storeint("/metrics/"+metric+"/thresh", thresh);
+	SMI(smcfg::cfg)->storeint("/metrics/"+metric+"/type", type);
 }
 
 int
+mgr::get_type(str metric)
+{
+	try {
+		return SMI(smcfg::cfg)->fetchint("/metrics/"+metric+"/type");
+	} catch (smcfg::nokey&) {
+		return type_preferhigher;
+	}
+}
+	
+pair<int, int>
 mgr::get_thresh(str metric)
 {
 	try {
-		return SMI(smcfg::cfg)->fetchint("/metrics/"+metric+"/thresh");
+		int low;
+		int high = SMI(smcfg::cfg)->fetchint("/metrics/"+metric+"/thresh");
+		try {
+			low = SMI(smcfg::cfg)->fetchint("/metrics/"+metric+"/low");
+		} catch (smcfg::nokey&) {
+			if (get_type(metric) == type_preferhigher) {
+				low = high * 0.75;
+			} else {
+				low = high / 0.75;
+			}
+		}
+		return make_pair(high, low == -1 ? low : high * 0.75);
 	} catch (smcfg::nokey&) {
-		return 0;
+		return make_pair(0, 0);
 	}
 }
 	
 void
 mgr::value(str host, str metric, int value)
 {
-	int thresh = get_thresh(metric);
-	if (!thresh) return;
-	if (value > thresh) {
+	int hthresh, lthresh;
+	tie(hthresh, lthresh) = get_thresh(metric);
+	int type = get_type(metric);
+	
+	if (!hthresh) return;
+	if ((type == type_preferhigher && value > hthresh)
+	    || (type == type_preferlower && value < hthresh)) {
 		if (hasalarm(host, metric))
 			return;
 		alarmup(host, metric, value);
-	} else if (value < low(thresh)) {
+	} else if ((type == type_preferhigher && value < lthresh)
+		   || (type == type_preferlower && value > lthresh)) {
 		if (!hasalarm(host, metric))
 			return;
 		alarmdown(host, metric, value);
@@ -46,12 +73,6 @@ mgr::hasalarm(str host, str metric)
 	if (hosts[host].find(metric) == hosts[host].end())
 		return false;
 	return true;
-}
-
-int
-mgr::low(int value)
-{
-	return int(value * 0.75);
 }
 
 void
