@@ -368,7 +368,7 @@ that it be to the address you give.<br>\n",
 "yournick"		=> "Your nickname (for signatures)",
 "emailforlost"	=> "If you forget your password, you can have a new one mailed to your e-mail address.",
 "loginerror"	=> "Login error",
-"noname"		=> "You must specify a user name.",
+"noname"		=> "You have not specified a valid user name.",
 "loginsuccesstitle" => "Login successful",
 "loginsuccess"	=> "You are now logged in to Wikipedia as \"$1\".",
 "nosuchuser"	=> "There is no user by the name \"$1\".

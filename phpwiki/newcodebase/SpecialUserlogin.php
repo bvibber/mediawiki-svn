@@ -29,7 +29,8 @@ function wfSpecialUserlogin()
 		mainLoginForm( wfMsg( "badretype" ) );
 		return;
 	}
-	if ( "" == $wpName ) {
+	if ( ( "" == $wpName ) ||
+	  preg_match( "/^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$/", $wpName ) ) {
 		mainLoginForm( wfMsg( "noname" ) );
 		return;
 	}
