@@ -185,7 +185,7 @@ class User {
 			wfFreeResult( $res );
 		} else {
 			
-			$sql = "SELECT user_id FROM user_newtalk WHERE user_ip='{$this->mName}'";			
+			$sql = "SELECT user_ip FROM user_newtalk WHERE user_ip='{$this->mName}'";			
 			$res = wfQuery ($sql,  "User::loadFromDatabase" );
 			
 			if (wfNumRows($res)>0) {				
