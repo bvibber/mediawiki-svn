@@ -13,6 +13,7 @@ $wgLogo				= "{$wgUploadPath}/wiki.png";
 $wgUploadDirectory	= "/usr/local/apache/htdocs/upload";
 $wgMathDirectory    = "/usr/local/apache/htdocs/math";
 $wgTmpDirectory     = "/usr/local/apache/htdocs/tmp";
+$wgEmergencyContact = "wikiadmin@" . getenv( "SERVER_NAME" );
 
 # which namespaces should support subpages? See Language.php
 # for a list of namespaces

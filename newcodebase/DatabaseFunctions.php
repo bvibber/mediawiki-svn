@@ -7,12 +7,14 @@ $wgLastDatabaseQuery = "";
 function wfGetDB( $altuser = "", $altpassword = "" )
 {
 	global $wgDBserver, $wgDBuser, $wgDBpassword;
-	global $wgDBname, $wgDBconnection;
+	global $wgDBname, $wgDBconnection, $wgEmergencyContact;
 
 	$noconn = str_replace( "$1", $wgDBserver, wfMsg( "noconnect" ) );
 	$nodb = str_replace( "$1", $wgDBname, wfMsg( "nodb" ) );
-	$helpme = "\n<p>If this error persists after reloading and clearing your browser cache,
-        please notify the <a href=\"mailto:wikidown@bomis.com\">Wikipedia developers</a>.</p>";
+
+	$helpme = "\n<p>If this error persists after reloading and clearing " .
+	  "your browser cache, please notify the <a href=\"mailto:" .
+	  $wgEmergencyContact . "\">Wikipedia developers</a>.</p>";
 
 	if ( $altuser != "" ) {
 		$wgDBconnection = mysql_connect( $wgDBserver, $altuser, $altpassword )
