@@ -6,6 +6,7 @@ class WikiPage extends WikiTitle {
 	var $contents ; # The actual article body
 	var $backLink ; # For redirects
 	var $knownLinkedLinks , $knownUnlinkedLinks ; # Used for faster display
+	var $otherLanguages ; # This article in other languages
 	
 #### Database management functions
 
@@ -222,7 +223,7 @@ class WikiPage extends WikiTitle {
 	# This function converts wiki-style internal links like [[Main Page]] with the appropriate HTML code
 	# It has to handle namespaces, subpages, and alternate names (as in [[namespace:page/subpage name]])
 	function replaceInternalLinks ( $s ) {
-		global $THESCRIPT , $wikiInterwiki , $action ;
+		global $THESCRIPT , $wikiInterwiki , $action , $wikiOtherLanguages ;
 		global $user , $unlinkedLinks , $linkedLinks , $wikiPrintLinksMarkup ;
 		if ( !isset ( $this->knownLinkedLinks ) ) $this->knownLinkedLinks = array () ;
 		$abc = " abcdefghijklmnopqrstuvwxyz" ;
@@ -265,6 +266,12 @@ class WikiPage extends WikiTitle {
 					if ( $c[0] == $c[1] ) $text = $topic->getNiceTitle ( $topic->mainTitle ) ;
 					$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
 					$s .= "<a $linkStyle href=\"$iwl\">$text</a>" ;
+				} else if ( in_array ( strtolower ( $topic->namespace ) , array_keys ( $wikiOtherLanguages ) ) ) {
+					$tt = ucfirst ( str_replace ( " " , "_" , $topic->mainTitle ) ) ;
+					$iwl = str_replace ( "$1" , $tt , $wikiOtherLanguages[strtolower($topic->namespace)] ) ;
+					if ( $c[0] == $c[1] ) $text = $topic->getNiceTitle ( $topic->mainTitle ) ;
+					$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
+					$this->otherLanguages[$topic->namespace] = $iwl ;
 				} else if ( $doesItExist ) {
 					$linkedLinks[$topic->secureTitle]++ ;
 					if ( $user->options["showHover"] == "yes" ) $hover = "title=\"$link\"" ;
@@ -394,6 +401,7 @@ class WikiPage extends WikiTitle {
 		global $linkedLinks , $unlinkedLinks ;
 		$linkedLinks = array () ;
 		$unlinkedLinks = array () ;
+		$this->otherLanguages = array () ;
 		$s .= "\n" ;
 
 		# Parsing <pre> here
@@ -646,7 +654,7 @@ class WikiPage extends WikiTitle {
 	function getHeader () {
 		global $THESCRIPT , $wikiMainPageTitle , $wikiArticleSubtitle , $wikiPrintable , $wikiWatch ;
 		global $user , $action , $wikiEditHelp , $wikiNoWatch , $wikiLogIn , $wikiLogOut , $wikiSearch ;
-		global $wikiHelp , $wikiHelpLink , $wikiPreferences ;
+		global $wikiHelp , $wikiHelpLink , $wikiPreferences , $wikiLanguageNames ;
 		$t = $this->getNiceTitle ( $this->title ) ;
 		if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirst ( $t ) ;
 		global $HTTP_USER_AGENT ;
@@ -677,6 +685,14 @@ class WikiPage extends WikiTitle {
 			if ( $this->namespace == "user" and $this->subpageTitle == "" )
 				array_push ( $subText , "<a href=\"$THESCRIPT?title=special:contributions&theuser=$this->mainTitle\">This user's contributions</a>" ) ;
 			$ret .= "<br>".implode ( " | " , $subText ) ;
+			if ( count ( $this->otherLanguages ) > 0 ) {
+				$ret .= "<br>This article is available in " ;
+				$subText = array () ;
+				$olk = array_keys ( $this->otherLanguages ) ;
+				foreach ( $olk as $x )
+					array_push ( $subText , "<a href=\"".$this->otherLanguages[$x]."\">".$wikiLanguageNames[$x]."</a>" ) ;
+				$ret .= implode ( ", " , $subText ) ;
+				}
 			}
 		$ret .= "</td>\n<td valign=top width=200 rowspan=2 nowrap>".$user->getLink()."<br>" ;
 		if ( $user->isLoggedIn ) $ret .= "<a href=\"$THESCRIPT?title=special:userLogout\">$wikiLogOut</a> | <a href=\"$THESCRIPT?title=special:editUserSettings\">$wikiPreferences</a>" ;
@@ -786,7 +802,9 @@ class WikiPage extends WikiTitle {
 			$ret = eregi_replace ( "\\]</a>" , "</a>" , $ret ) ;
 			$ret = eregi_replace ( "<a[^>]*>([^<]*)</a>" , "<$wikiPrintLinksMarkup>\\1</$wikiPrintLinksMarkup>" , $ret ) ;
 			return $ret.$footer ;
-		} else return $this->getHeader().$middle.$this->getFooter() ;
+		} else {
+			return $this->getHeader().$middle.$this->getFooter() ;
+			}
 		}
 
 	# This displays the diff. Currently, only diff with the last edit!
