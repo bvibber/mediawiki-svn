@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+
+java -classpath .:jars/httpunit.jar:jars/nekohtml.jar:jars/xercesImpl.jar:jars/xml-apis.jar com.piclab.wikitest.WikiSuite
+
