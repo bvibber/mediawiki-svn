@@ -144,9 +144,9 @@ Please log in again after you receive it.",
 "blockedtext"	=> "Your user name or IP address has been blocked by $1.
 The reason given is this:<br>$2<p>You may contact the administrator to
 discuss the block.",
-"newarticle"	=> "(New) $1",
+"newarticle"	=> "(New)",
 "newarticletext" => "Describe the new page here.",
-"updated"		=> "(Updated) $1",
+"updated"		=> "(Updated)",
 "note"			=> "<strong>Note:</strong> ",
 "previewnote"	=> "Remember that this is only a preview, and has not yet been saved!",
 "previewconflict" => "This preview reflects the text in the upper
@@ -164,8 +164,12 @@ press \"Save\".\n<p>",
 
 # History pages
 #
-"historyof"		=> "History of $1",
+"revhistory"	=> "(Revision history)",
 "nohistory"		=> "There is no edit history for this page.",
+"revnotfound"	=> "Revision not found",
+"revnotfoundtext" => "The old revision of the page you asked for could
+not be found.
+Please check the URL you used to access this page.\n",
 
 # Preferences page
 #

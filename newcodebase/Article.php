@@ -97,9 +97,32 @@ class Article {
 
 	function view()
 	{
-		global $wgOut, $wgTitle;
-		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
+		global $wgOut, $wgTitle, $wgLang;
+		global $oldid;
 
+		if ( $oldid ) {
+			$conn = wfGetDB();
+			$sql = "SELECT old_text,old_timestamp FROM old " .
+			  "WHERE old_id={$oldid}";
+			wfDebug( "Art: 7: $sql\n" );
+
+			$res = mysql_query( $sql, $conn );
+			if ( ( ! $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
+				$wgOut->errorpage( "revnotfound", "revnotfoundtext" );
+				return;
+			} else {
+				$row = mysql_fetch_object( $res );
+				$t = $row->old_timestamp;
+				$d = $wgLang->dateFromTimestamp( $t );
+				$h = substr( $t, 8, 2 ) . ":" . substr( $t, 10, 2 );
+
+				$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
+				$wgOut->setSubtitle( "(Revision as of {$h}, {$d})" );
+				$wgOut->addWikiText( $row->old_text );
+				return;
+			}
+		}
+		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 		$wgOut->addWikiText( $this->getContent() );
 		$this->viewUpdates();
 	}
@@ -249,9 +272,8 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		$wgTitle->resetArticleID();
 		$newid = $this->getID();
 
-		$s = str_replace( "$1", $wgTitle->getPrefixedText(),
-		  wfMsg( "newarticle" ) );
-		$wgOut->setPageTitle( $s );
+		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
+		$wgOut->setSubtitle( wfMsg( "newarticle" ) );
 		$wgOut->setArticleFlag( true );
 
 		$wgLinkCache = new LinkCache();
@@ -295,9 +317,8 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		wfDebug( "Art: 5: $sql\n" );
 		$res = mysql_query( $sql, $conn );
 
-		$s = str_replace( "$1", $wgTitle->getPrefixedText(),
-		  wfMsg( "updated" ) );
-		$wgOut->setPageTitle( $s );
+		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
+		$wgOut->setSubtitle( wfMsg( "updated" ) );
 		$wgOut->setArticleFlag( true );
 
 		$wgLinkCache = new LinkCache();
@@ -325,11 +346,10 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 	#
 	function history()
 	{
-        global $wgUser, $wgOut, $wgLang, $wgTitle;
+		global $wgUser, $wgOut, $wgLang, $wgTitle;
 
-		$t = str_replace( "$1", $wgTitle->getPRefixedText(),
-		  wfMsg( "historyof" ) );
-		$wgOut->setPageTitle( $t );
+		$wgOut->setPageTitle( $wgTitle->getPRefixedText() );
+		$wgOut->setSubtitle( wfMsg( "revhistory" ) );
 		$wgOut->setArticleFlag( false );
 
 		$conn = wfGetDB();
@@ -338,7 +358,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		  "WHERE old_namespace=" . $wgTitle->getNamespace() . " AND " .
 		  "old_title='" . $wgTitle->getDBkey() . "' " .
 		  "ORDER BY old_timestamp DESC";
-		wfDebug( "SC: 1: $sql\n" );
+		wfDebug( "Art: 6: $sql\n" );
 
 		$res = mysql_query( $sql, $conn );
 		if ( ! $res ) {
@@ -350,8 +370,9 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 			$wgOut->addHTML( wfMsg( "nohistory" ) );
 			return;
 		}
-		$s = "";
-		$lastdate = "";
+		$s = $lastdate = "";
+		$sk = $wgUser->getSkin();
+
 		while ( $line = mysql_fetch_object( $res ) ) {
 			$id = $line->old_id;
 			$t = $line->old_timestamp;
@@ -362,24 +383,30 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 			if ( 0 == $line->old_user ) {
 				$u = $line->old_user_text;
 			} else {
-				$u = "[[User:{$line->old_user_text}|{$line->old_user_text}]]";
+				$u = $sk->makeInternalLink( "User:{$line->old_user_text}",
+				  "{$line->old_user_text}" );
 			}
 			$nt = Title::newFromDBkey( $line->old_title );
 			$nt->setNamespace( $line->cur_namespace );
 			$t = $nt->getPrefixedText();
+			$tl = $sk->makeInternalLink( "$t", "", "oldid={$id}" );
 
 			if ( $d != $lastdate ) {
-				$s .= "'''{$d}'''\n";
+				if ( "" != $lastdate ) {
+					$s .= "</ul>\n";
+				}
+				$s .= "<h4>{$d}</h4>\n<ul>";
 				$lastdate = $d;
 			}
-			$s .= "* ({$revs}) [[{$t}]]; {$h} . . . {$u}";
+			$s .= "<li>({$revs}) {$tl}; {$h} . . . {$u}";
 			if ( "" != $c && "*" != $c ) {
-				$s .= "''' ({$c})'''";
+				$s .= " <em>({$c})</em>";
 			}
-			$s .= "\n";
+			$s .= "</li>\n";
 			--$revs;
 		}
-		$wgOut->addWikiText( $s );
+		$s .= "</ul>\n";
+		$wgOut->addHTML( $s );
 	}
 
 	# Do standard deferred updates after page view

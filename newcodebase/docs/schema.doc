@@ -1,90 +1,108 @@
 SCHEMA.DOC
 
-Database schema for wikipedia software.
+The script "buildtables.sql" always contains the latest
+database schema for wikipedia software.  I use it to create
+the test databases, so it has to be right.  Here's a few
+highlights:
 
-user
+user    (Wikipedia users)
 
-  user_id (integer, primary key, autoincrement)
-
+  user_id
+    integer, primary key, autoincrement
   user_name
-
   user_password
-
+  user_email
   user_rights
-
+    Comma-separated list of textual flags.
   user_options
-
+    Newline-separated list of name=value pairs.
   user_watch
+    Newline-separated list of page titles on watchlist.
 
 
+cur     (Wikipedia "current" articles)
 
-cur
-
-  cur_id (integer, primary key, autoincrement)
-
+  cur_id
+    integer, primary key, autoincrement
+  cur_namespace
+    integer index into list of namespaces.  See the
+    Namespace class for more details.
   cur_title
-
+    Title of article (in dbkey form--see Title), without
+    namespace.  The combination of namespace,title should
+    be unique in this table.
   cur_text
-
+    Wikitext of the article.
   cur_comment
-
+    The summary of the last change.
   cur_user
-
+    User id who made the last change, or 0 if unknown.
   cur_user_text
-
-  cur_old_version
-
+    Name of the user above, or IP address.
   cur_timestamp
-
+    Time of the last change.
   cur_minor_edit
-
+    Flag: 0 or 1 is last change was a "minor" edit.
   cur_restrictions
-
-  cur_params
-
+    Who may or may not edit the article.
   cur_counter
-
-  cur_cache
-
+    Number of times this page has been viewed.
   cur_ind_title
+    Text version of title for fulltext searches.
 
 
-
-old
+old     (Historical versions articles. Most fields
+        correspond to the same fields in "cur")
 
   old_id
-
+  old_namespace
   old_title
-
   old_text
-
   old_comment
-
   old_user
-
   old_user_text
-
-  old_old_version
-
   old_timestamp
-
   old_minor_edit
 
 
-
-linked
+links   (Internal links to existing articles)
 
   linked_to
-
+    ID of target article.
   linked_from
+    Title of source article.
 
 
-
-unlinked
+unlinked (Internal links to non-existent articles)
 
   unlinked_from
-
+    Title of target link.
   unlinked_to
+    ID of source link.
 
 
+ipblocks (IP addresses and users blocked from editing)
+
+  ipb_address
+    Blocked IP address in dotted-quad form or ""
+  ipb_user
+    Blocked user ID or 0.
+  ipb_by
+    User ID who made the block.
+  ipb_reason
+    Text comment made by blocker.
+
+
+site_stats (Site-wide statistics)
+
+  ss_row_id
+    Token for where clauses.  There's only one row in
+    this table.  At some point we might want to use a
+    date here so we can get stats-by-date.
+  ss_total_views
+    Number of total views of all pages.
+  ss_total_edits
+    Number of total page edits.
+  ss_good_articles
+    Number of "countable" articles.
 
