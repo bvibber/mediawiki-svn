@@ -17,6 +17,7 @@
     include_once ( "./wikiTitle.php" ) ;
     include_once ( "./wikiPage.php" ) ;
 
+    set_time_limit ( 0 ) ;
     $size = 1000;
 
     //establish user connection
@@ -28,13 +29,13 @@
 
     if ( !isset ( $offset ) ) $offset = 0;
     if ( !isset ( $all ) ) {
-    	echo "Rebuilding all links (batch mode)...\n";
-	set_time_limit ( 0 ) ;
         $sql = "SELECT COUNT(*) AS allPages FROM cur " ;
         $result = mysql_query ( $sql , $connection ) ;
         $row = mysql_fetch_object ( $result ) ;
         $all = $row->allPages;
     }
+    # Comment this out if you don't want batch mode.
+    $size = $all;
 
     if ( $offset <= $all ) {
 
