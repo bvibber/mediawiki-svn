@@ -572,4 +572,22 @@ function wfCheckLimits( $deflimit = 50, $optionname = "rclimit" ) {
 	return array( $limit, $offset );
 }
 
+function wfQuotedPrintable( $string, $charset = "" ) {
+	# Probably incomplete; see RFC 2045
+	if( empty( $charset ) ) {
+		global $wgInputEncoding;
+		$charset = $wgInputEncoding;
+	}
+	$charset = strtoupper( $charset );
+	$charset = str_replace( "ISO-8859", "ISO8859", $charset ); // ?
+	
+	$illegal = '\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\xff=';
+	$replace = $illegal . '\t ?_';
+	if( !preg_match( "/[$illegal]/", $string ) ) return $string;
+	$out = "=?$charset?Q?";
+	$out .= preg_replace( "/([$replace])/e", 'sprintf("=%02X",ord("$1"))', $string );
+	$out .= "?=";
+	return $out;
+}
+
 ?>

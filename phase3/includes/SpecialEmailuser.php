@@ -106,16 +106,17 @@ class EmailUserForm {
 		global $wgOut, $wgUser, $wgLang, $wgOutputEncoding;
 		global $wpSubject, $wpText, $target;
 
-		$from = $wgUser->getName() . " <" . $wgUser->getEmail() . ">";
+		$from = wfQuotedPrintable( $wgUser->getName() ) . " <" . $wgUser->getEmail() . ">";
+		$to = wfQuotedPrintable( $this->mAddress );
 		$headers =
 			"MIME-Version: 1.0\r\n" .
 			"Content-type: text/plain; charset={$wgOutputEncoding}\r\n" .
 			"Content-transfer-encoding: 8bit\r\n" .
 			"From: {$from}\r\n" .
 			"Reply-To: {$from}\r\n" .
-			"To: {$this->mAddress}\r\n" .
-			"X-Mailer: Pediawiki interuser e-mailer";
-		mail( $this->mAddress, $wpSubject, $wpText, $headers );
+			"To: {$to}\r\n" .
+			"X-Mailer: MediaWiki interuser e-mailer";
+		mail( $this->mAddress, wfQuotedPrintable( $wpSubject ), $wpText, $headers );
 
 		$success = wfLocalUrl( $wgLang->specialPage( "Emailuser" ),
 		  "target={$target}&action=success" );
