@@ -199,7 +199,9 @@ class gis_database {
 			      array(
 				'gis_id',
 				'gis_latitude_min',
+				'gis_latitude_max',
 				'gis_longitude_min',
+				'gis_longitude_max',
 				'gis_type',
 				'gis_region' ),
 			      $condition,
@@ -213,6 +215,21 @@ class gis_database {
 	function fetch_position()
 	{
 		return $this->db->fetchObject ( $this->result );
+	}
+
+	/**
+	 *  Get title of article, given the id
+	 */
+	function get_title( $id )
+	{
+		$fname = 'gis_database::get_title';
+
+		# FIXME: version 1.4 is different
+		$name_dbkey = $this->db->selectField( 'page',
+				      'page_title',
+				       array( 'page_id' => $id),
+				       $fname );
+		return str_replace( '_', ' ', $name_dbkey );
 	}
 }
 ?>

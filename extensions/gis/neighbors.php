@@ -77,14 +77,10 @@ class neighbors {
 			$out .= $this->title . ", ";
 		}
 		$out .= "coordinates "
-				. $lat0."&deg; ".$lon0
-				. "&deg;''<br>";
+				. $lat0."&deg; ".$lon0 . "&deg;''<br>";
 
 		$g = new gis_database();
 		$g->select_radius_m( $lat0, $lon0, $this->d * 1000);
-
-		# BUG: see below
-		$dbx =& wfGetDB( DB_MASTER );
 
 		while (($x = $g->fetch_position())) {
 			$id = $x->gis_id;
@@ -92,16 +88,12 @@ class neighbors {
 
 			if ( $type == "") $type = "unknown";
 
-			# BUG: use classes..
-			# BUG: version 1.4 is different
-			$name_dbkey = $dbx->selectField( 'page',
-				      'page_title',
-				       array( 'page_id' => $id),
-				       $fname );
-			$name_text = str_replace( '_', ' ', $name_dbkey );
+			$name_text = $g->get_title( $id );
 
-			$gc = new greatcircle( $x->gis_latitude_min, $x->gis_longitude_min,
-						$lat0, $lon0);
+			$gc = new greatcircle( 
+			       ($x->gis_latitude_min+$x->gis_latitude_max)/2,
+			       ($x->gis_longitude_min+$x->gis_longitude_max)/2,
+				$lat0, $lon0);
 			$d = $gc->distance;
 
 			$out .= "'''[[".$name_text."]]''' ";
