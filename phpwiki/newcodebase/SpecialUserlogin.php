@@ -181,7 +181,7 @@ function wfSpecialUserlogin()
 	} else {
 		$checked = "";
 	}
-	$action = wfLocalLink( "Special:Userlogin" );
+	$action = wfLocalUrl( "Special:Userlogin" );
 	if ( "" != $returnto ) { $action .= "&amp;returnto=$returnto"; }
 
 	$wpName = wfEscapeHTML( $wpName );

@@ -74,6 +74,7 @@
 "lastmodified"	=> "The page was last modified $1.",
 "viewcount"		=> "This page has been accessed $1 times.",
 "printsubtitle" => "(From http://www.wikipedia.com)",
+"protectedpage" => "Protected page",
 
 # Main script and global functions
 #
@@ -210,6 +211,7 @@ Please check the URL you used to access this page.\n",
 "difference"	=> "(Difference between revisions)",
 "loadingrev"	=> "loading revision for diff",
 "lineno"		=> "Line $1:",
+"editcurrent"	=> "Edit the current version of this page",
 
 # Preferences page
 #

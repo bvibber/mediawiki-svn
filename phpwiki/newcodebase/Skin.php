@@ -279,6 +279,7 @@ class Skin {
 
 		$s = $this->mainPageLink() . $sep
 		  . $this->specialLink( "recentchanges" );
+
 		if ( $wgOut->isArticle() ) {
 			$s .=  $sep . $this->editThisPage()
 			  . $sep . $this->historyLink();
@@ -308,8 +309,10 @@ class Skin {
 	function pageStats()
 	{
 		global $wgOut, $wgLang, $wgArticle;
+		global $oldid, $diff;
 
 		if ( ! $wgOut->isArticle() ) { return ""; }
+		if ( isset( $oldid ) || isset( $diff ) ) { return ""; }
 
 		$count = $wgArticle->getCount();
 		$s = str_replace( "$1", $count, wfMsg( "viewcount" ) );
@@ -362,20 +365,22 @@ class Skin {
 
 	function editThisPage()
 	{
-		global $wgOut, $wgTitle, $oldid, $redirect;
+		global $wgOut, $wgTitle, $oldid, $redirect, $diff;
 
-		if ( ! $wgOut->isArticle() ) {
-			$s = "(Special page)";
+		if ( ! $wgOut->isArticle() || $diff ) {
+			$s = wfMsg( "protectedpage" );
 		} else if ( $wgTitle->userCanEdit() ) {
 			$n = $wgTitle->getPrefixedText();
 			$t = wfMsg( "editthispage" );
 			$oid = $red = "";
 
-			if ( $oldid ) { $oid = "&amp;oldid={$oldid}"; }
 			if ( $redirect ) { $red = "&amp;redirect={$redirect}"; }
+			if ( $oldid && ! isset( $diff ) ) {
+				$oid = "&amp;oldid={$oldid}";
+			}
 			$s = $this->makeKnownLink( $n, $t, "action=edit{$oid}{$red}" );
 		} else {
-			$s = "Protected page";
+			$s = wfMsg( "protectedpage" );
 		}
 		return $s;
 	}

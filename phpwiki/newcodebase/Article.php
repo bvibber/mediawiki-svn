@@ -427,10 +427,43 @@ $wpTextbox2
 
 	function imageHistory()
 	{
-		global $wgOut, $wgTitle;
+		global $wgUser, $wgOut, $wgLang, $wgTitle;
 
 		$wgOut->addHTML( "\n<h2>" . wfMsg( "imghistory" ) . "</h2>\n" );
 		$wgOut->addHTML( "<p>(TODO: Image history)\n" );
+
+		$wgOut->setPageTitle( $wgTitle->getPRefixedText() );
+		$wgOut->setSubtitle( wfMsg( "revhistory" ) );
+		$wgOut->setArticleFlag( false );
+
+		$conn = wfGetDB();
+		$sql = "SELECT old_id,old_namespace,old_title,old_user," .
+		  "old_comment,old_user_text,old_timestamp,old_minor_edit FROM old " .
+		  "WHERE old_namespace=" . $wgTitle->getNamespace() . " AND " .
+		  "old_title='" . wfStrencode( $wgTitle->getDBkey() ) . "' " .
+		  "ORDER BY old_timestamp DESC";
+		$res = wfQuery( $sql, $conn, "Article::history" );
+
+		$revs = mysql_num_rows( $res );
+		$sk = $wgUser->getSkin();
+		$s = $sk->beginHistoryList();		
+
+		$s .= $sk->historyLine( $this->getTimestamp(), $this->getUser(),
+		  $this->getUserText(), $wgTitle->getNamespace(),
+		  $wgTitle->getText(), 0, $this->getComment(),
+		  ( $this->getMinorEdit() > 0 ) );
+
+		while ( $revs ) {
+			$line = mysql_fetch_object( $res );
+
+			$s .= $sk->historyLine( $line->old_timestamp, $line->old_user,
+			  $line->old_user_text, $line->old_namespace,
+			  $line->old_title, $line->old_id,
+			  $line->old_comment, ( $line->old_minor_edit > 0 ) );
+			--$revs;
+		}
+		$s .= $sk->endHistoryList();
+		$wgOut->addHTML( $s );
 	}
 
 	function watch()
@@ -451,7 +484,7 @@ $wpTextbox2
 		$sql = "SELECT old_id,old_namespace,old_title,old_user," .
 		  "old_comment,old_user_text,old_timestamp,old_minor_edit FROM old " .
 		  "WHERE old_namespace=" . $wgTitle->getNamespace() . " AND " .
-		  "old_title='" . $wgTitle->getDBkey() . "' " .
+		  "old_title='" . wfStrencode( $wgTitle->getDBkey() ) . "' " .
 		  "ORDER BY old_timestamp DESC";
 		$res = wfQuery( $sql, $conn, "Article::history" );
 

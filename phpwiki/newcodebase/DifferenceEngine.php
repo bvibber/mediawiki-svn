@@ -27,14 +27,7 @@ class DifferenceEngine {
 		}
 		$wgOut->supressQuickbar();
 		$wgOut->setSubtitle( wfMsg( "difference" ) );
-
-		if ( ( 0 == $this->mNewid || 0 == $this->mOldid )
-		  && $wgTitle->userCanEdit() ) {
-			$sk = $wgUser->getSkin();
-			$link = $sk->makeKnownLink( $wgTitle->getPrefixedText(),
-			  wfMsg( "editthispage" ), "action=edit" );
-			$wgOut->addHTML( "<p>{$link}\n<p>" );
-		}
+		$wgOut->setArticleFlag( true );
 
 		$wgOut->addHTML( "<table width='100%' border=0
 cellpadding=0 cellspacing='4px'><tr>
@@ -97,8 +90,8 @@ cellpadding=0 cellspacing='4px'><tr>
 		if ( 0 == $this->mOldid ) {
 			$sql = "SELECT old_timestamp,old_text FROM old WHERE (" .
 			  "old_namespace=" . $wgTitle->getNamespace() . " AND " .
-			  "old_title='" . $wgTitle->getDBkey() . "') ORDER BY " .
-			  "old_timestamp DESC LIMIT 1";
+			  "old_title='" . wfStrencode( $wgTitle->getDBkey() ) .
+			  "') ORDER BY old_timestamp DESC LIMIT 1";
 		} else {
 			$sql = "SELECT old_timestamp,old_text FROM old WHERE " .
 			  "old_id={$this->mOldid}";
