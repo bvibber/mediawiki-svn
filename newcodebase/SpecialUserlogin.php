@@ -3,7 +3,7 @@
 function wfSpecialUserlogin()
 {
 	global $wpCreateaccount, $wpLoginattempt, $wpMailmypassword;
-	global action;
+	global $action;
 
 	$fields = array( "wpName", "wpPassword", "wpName",
 	  "wpPassword", "wpRetype", "wpEmail" );
@@ -191,7 +191,7 @@ function wfSpecialUserlogin()
 		$checked = "";
 	}
 	$q = "action=submit";
-	if ( "" != $returnto ) { $ .= "&returnto={$returnto}"; }
+	if ( "" != $returnto ) { $q .= "&returnto={$returnto}"; }
 	$action = wfLocalUrlE( "Special:Userlogin", $q );
 
 	$wpName = wfEscapeHTML( $wpName );

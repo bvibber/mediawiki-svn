@@ -110,9 +110,9 @@ class SearchEngine {
 		return $top;
 	}
 
-	function viewPrevNext( $offset, $limit, $link, $query )
+	function viewPrevNext( $offset, $limit, $link, $query = "" )
 	{
-		global $wgUser, $wgServer, $wgScript;
+		global $wgUser;
 		$prev = str_replace( "$1", $limit, wfMsg( "prevn" ) );
 		$next = str_replace( "$1", $limit, wfMsg( "nextn" ) );
 
@@ -120,17 +120,16 @@ class SearchEngine {
 		if ( 0 != $offset ) {
 			$po = $offset - $limit;
 			if ( $po < 0 ) { $po = 0; }
-
-			$plink = "<a href=\"$wgServer$wgScript?{$link}" .
-			  "&amp;limit={$limit}&amp;offset={$po}\">{$prev}</a>";
+			$q = "limit={$limit}&offset={$po}";
+			if ( "" != $query ) { $q .= "&{$query}"; }
+			$plink = "<a href=\"" . wfLocalUrlE( $link, $q ) . "\">{$prev}</a>";
 		} else { $plink = $prev; }
 
 		$no = $offset + $limit;
 		$q = "limit={$limit}&offset={$no}";
 		if ( "" != $query ) { $q .= "&{$query}"; }
 
-		$nlink = "a href=\"" . wfEscapeHTML( wfLocalUrl( $link, $q ) ) .
-		  "\">{$next}</a>";
+		$nlink = "<a href=\"" . wfLocalUrlE( $link, $q ) . "\">{$next}</a>";
 		$nums = SearchEngine::numLink( $offset, 20, $link ) . " | " .
 		  SearchEngine::numLink( $offset, 50, $link ) . " | " .
 		  SearchEngine::numLink( $offset, 100, $link ) . " | " .
@@ -148,10 +147,10 @@ class SearchEngine {
 
 	function numLink( $offset, $limit, $link )
 	{
-		global $wgUser, $wgServer, $wgScript;
+		global $wgUser;
 
-		$s = "<a href=\"" . wfEscapeHTML( wfLocalUrl( $link,
-		  "limit={$limit}&offset={$offset}" ) ) . "\">{$limit}</a>";
+		$s = "<a href=\"" . wfLocalUrlE( $link,
+		  "limit={$limit}&offset={$offset}" ) . "\">{$limit}</a>";
 		return $s;
 	}
 
