@@ -140,6 +140,7 @@ class WikiUser {
 		if ( $this->options["encoding"] == "") $this->options["encoding"] = 0;
 		if ( $this->options["numberHeadings"] == "" ) $this->options["numberHeadings"] = "no" ;
 		if ( $this->options["viewFrames"] == "" ) $this->options["viewFrames"] = "no" ;
+		if ( $this->options["viewRecentChanges"] == "" ) $this->options["viewRecentChanges"] = "50" ;
 
 #		if ( $this->options["showStructure"] == "" ) # NO SUBPAGES ANYMORE
 		$this->options["showStructure"] = "no" ;
