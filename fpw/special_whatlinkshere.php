@@ -3,6 +3,7 @@ function whatLinksHere () {
     global $THESCRIPT , $target , $user , $protecting , $newrestrictions ;
     global $vpage , $target , $wikiLinkhereTitle ;
     global $wikiLinkhereBacklink , $wikiLinkhereNoBacklink , $wikiBacklinkNolink , $wikiBacklinkFollowing ;
+    global $wikiLinkVia , $wikiRedirectLinks ;
     
     $vpage = new WikiPage ;
     $vpage->title = $title ;
@@ -38,6 +39,9 @@ function whatLinksHere () {
     $dlb = "" ;     # the pages that $target links back to
     $dnlb = "" ;    # the pages that $target does not link back to
     
+    $links = array () ; # For checking redirects later...
+    $nice = array () ;
+    
     # we find out if $target has links
     $s3 = mysql_fetch_object ( $result3 ) ;
     if ( $s3 ) {    # yes, so we take $result1 and $result2 and split it into $dlb and $ndlb
@@ -53,6 +57,8 @@ function whatLinksHere () {
                         $dlb .= "\n* [[$nt]]" ;
                 else
                     $dnlb .= "\n* [[$nt]]" ;
+		array_push ( $links, $s1->lfrom ) ;
+		$nice[$s1->lfrom] = $nt ;
             }
         }
     } else {        # no, so we take $result1 and $result2 and put it in $dnlb
@@ -60,6 +66,8 @@ function whatLinksHere () {
             while ( $s1 =  mysql_fetch_object ( $aresult ) ) {
                 $nt = $vpage->getNiceTitle ( $s1->lfrom ) ;
                 $dnlb .= "\n* [[$nt]]" ;
+		array_push ( $links, $s1->lfrom ) ;
+		$nice[$s1->lfrom] = $nt ;
             }
             
         }    
@@ -75,6 +83,31 @@ function whatLinksHere () {
     if ( $ret == "" ) $ret = "<h1>".str_replace("$1",$niceTarget,$wikiBacklinkNolink)."</h1>" ;
     else $ret = "<h1>".str_replace("$1",$niceTarget,$wikiBacklinkFollowing)."</h1>\n$ret" ;
 
+    if ( count ( $links ) ) {
+	# Are we being redirected to?
+	$sql4 = "SELECT DISTINCT linked_from, linked_to
+    	    FROM cur, linked
+	    WHERE cur_title IN (\"".implode ( $links , '","' )."\")
+	    AND cur_text LIKE \"#REDIRECT%\"
+	    AND cur_title = linked_to
+	    ORDER BY linked_from" ;
+	$result4 = mysql_query ( $sql4 , $connection ) ;
+	#echo $sql4 ;
+	$redirlinks = "" ;
+	
+	if ( $result4 ) {
+	    while ( $redirs = mysql_fetch_object ( $result4 ) ) {
+	    	$from = $vpage->getNiceTitle ( $redirs->linked_from ) ;
+		$via = $nice[$redirs->linked_to] ;
+		$redirlinks .= "* [[$from]] " . str_replace ( "$1" , "[[$via]]" , $wikiLinkVia ) . "\n" ;
+		}
+	    mysql_free_result ( $result4 ) ;
+    	    }
+
+	if ( $redirlinks )
+	    $ret .= "\n\n<h3>$wikiRedirectLinks</h3>\n$redirlinks" ;
+	}
+    
     return $ret ;
 }
 
