@@ -103,6 +103,22 @@ class LuceneSearch extends SpecialPage
 				}
 			}
 
+			# No match, generate an edit URL
+			$t = Title::newFromText($q);
+			if(!$wgRequest->getText("go") || is_null($t)) {
+				$editurl = ''; # hrm...
+			} else {
+				# If the feature is enabled, go straight to the edit page
+				if ($wgGoToEdit) {
+					$wgOut->redirect($t->getFullURL('action=edit'));
+					return;
+				} else {
+					$editurl = $t->escapeLocalURL('action=edit');
+				}
+				# FIXME: HTML in wiki message
+				$wgOut->addHTML('<p>' . wfMsg('nogomatch', $editurl, 
+					htmlspecialchars($term)) . "</p>\n");
+			}
 			$limit = $wgRequest->getInt('limit');
 			$offset = $wgRequest->getInt('offset');
 
@@ -114,6 +130,7 @@ class LuceneSearch extends SpecialPage
 			$results = $r[1];
 
 			$wgOut->setSubtitle(wfMsg('searchquery', htmlspecialchars($q)));
+
 
 			$suggestion = trim($results);
 			if ($numresults == -1 && strlen($suggestion) > 0) {
