@@ -311,6 +311,7 @@
 "deletethispage" => "Delete this page",
 "protectthispage" => "Protect this page",
 "unprotectthispage" => "Unprotect this page",
+"newpage" => "New page",
 "talkpage"		=> "Discuss this page",
 "articlepage"	=> "View article",
 "subjectpage"	=> "View subject", # For compatibility
