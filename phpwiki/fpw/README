@@ -113,14 +113,12 @@ If everything is ok, you can access the URL wiki.phtml in your web
 site's wiki directory and you should get the (still empty) main page.
 
 If you want to test the performance of the code, you can install a
-realistically sized (23 MB) but outdated database from the mysql
-database dump
+recent Wikipedia database dump from
 
-     http://wikipedia.sourceforge.net/fpw/newiki.sql.gz
+     http://www.wikipedia.com/tarballs/
 
-Please do not use this database on a site visible to the public, to avoid
-confusion. This database uses an outdated table format; see Updating
-below about how to change it to the currently used format.
+This is an 80MB download. Please do not use this database on a wiki web
+site editable by the public, to avoid confusion.
 
 
 3. Updating to a newer version
@@ -131,7 +129,7 @@ on to your previous version of wikiLocalSettings.php.
 
 If the new version needs any change in the database schema, the mysql
 script updSchema.sql can be used. Before sourcing that file, uncomment
-those lines that need to be updated for your database.
+those lines that apply to you.
 
 
 4. Mailing list
