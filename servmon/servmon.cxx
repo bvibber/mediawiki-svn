@@ -15,7 +15,7 @@ test_event(void)
 int
 main(int argc, char *argv[])
 {
-	instance<smcfg::cfg>(); // force reading
+	SMI(smcfg::cfg); // force reading
 	SMI(smtmr::evthdlr)->install(smtmr::evtp(new smtmr::evt("test event", 5, true, &test_event)));
 	SMI(smirc::cfg)->initialise();
 	csmplex::csmplexd cm;

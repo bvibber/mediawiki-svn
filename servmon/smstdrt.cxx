@@ -139,8 +139,36 @@ struct cfg_irc_noserver : handler<tt> {
 	}
 };
 
+struct cfg_irc_showchannels : handler<tt> {
+	bool execute(comdat<tt> const& cd) {
+		try {
+			std::set<std::string> channels = SMI(smcfg::cfg)->fetchlist("/irc/channels");
+			cd.inform("Currently configured channels:");
+			FE_TC_AS(std::set<std::string>, channels, i) {
+				cd.wrtln("    " + *i);
+			}
+		} catch (smcfg::nokey&) {
+			cd.inform("No channels configured.");
+		}
+		return true;
+	}
+};
+
 struct cfg_irc_showserver : handler<tt> {
 	bool execute(comdat<tt> const& cd) {
+		if (cd.num_params() == 0) {
+			try {
+				std::set<std::string> servers = SMI(smcfg::cfg)->fetchlist("/irc/servers");
+				FE_TC_AS(std::set<std::string>, servers, i) {
+					comdat<tt> cd2(cd);
+					cd2.add_p(*i);
+					execute(cd2);
+				}
+			} catch (smcfg::nokey&) {
+				cd.inform("No servers configured");
+			}
+			return true;
+		}
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
 			cd.error("No such server.");
 			return true;

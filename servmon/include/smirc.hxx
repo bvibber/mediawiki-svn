@@ -26,7 +26,17 @@ private:
 	void doregister(void);
 	void data_cb(int what);
 	void connected(void);
+	void parseline(std::string line);
 
+	struct cbdata {
+		std::string command;
+		std::string prefix;
+		std::vector<std::string> args;
+	};
+	void cb_001(cbdata&);
+	typedef boost::function<void(cbdata&)> cbtype;
+
+	std::map<std::string, cbtype> cbs;
 	std::string name;
 	std::string linebuf;
 	bool cip;

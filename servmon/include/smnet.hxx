@@ -40,7 +40,6 @@ public:
 	}
 
 	virtual ~bsd(void) {
-		std::cerr << "destroying socket " << s << "\n";
 		close(s);
 	}
 
@@ -96,7 +95,6 @@ private:
 	uint _need_data(void) {
 		std::vector<u_char>& rdbuf = rdbufs[s];
 		if (!rdbuf.empty()) return 0;
-		std::cerr << "reading from " << s << '\n';
 		rdbuf.resize(maxrd);
 		int i = read(s, &rdbuf[0], maxrd);
 		if (i == 0) throw scktcls();
@@ -271,9 +269,7 @@ public:
 		FD_ZERO(&wfds);
 		int m = 0;
 		time_t now = std::time(0);
-		std::cout << "running pending events at " << now << "\n";
 		time_t nextevt = SMI(smtmr::evthdlr)->run_pend();
-		std::cout << "next event: " << nextevt;
 		struct timeval tv;
 		tv.tv_sec = nextevt - now;
 		tv.tv_usec = 0;
@@ -281,15 +277,12 @@ public:
 				it != end; ++it)
 		{
 			m = std::max(m, it->first + 1);
-			std::cout << "testing " << it->first << " f = " << it->second.fg << "\n";
 			if (it->second.fg & srd)
 				FD_SET(it->second.fd, &rfds);
 			if (it->second.fg & swr)
 				FD_SET(it->second.fd, &wfds);
 		}
-		std::cout << "selecting...\n";
 		int i = select(m, &rfds, &wfds, NULL, nextevt ? &tv : NULL);
-		std::cout << i << "\n";
 		if (i < 0) {
 			std::cerr << "select error: " << std::strerror(errno);
 			return;
@@ -298,9 +291,7 @@ public:
 		for (std::map<int,srec>::const_iterator it = cm.begin(), end = cm.end();
 				it != end; ++it)
 		{
-			std::cout << "testing fd " << it->first << "\n";
 			if (FD_ISSET(it->first, &rfds))	{
-				std::cerr << "fd " << it->first << " is ready\n";
 				it->second.cb(srd);
 			}
 			if (FD_ISSET(it->first, &wfds))
@@ -316,7 +307,6 @@ public:
 		r.fd = sckt->wr->s;
 		r.fg = flags;
 		fds[r.fd] = r;
-		std::cerr << "adding callback for fd " << r.fd << "\n";
 	}
 
 	template<class stype>

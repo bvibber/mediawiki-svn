@@ -23,10 +23,10 @@ std::string car(std::string&);
 } // namespace smutl
 
 template<class T>
-T* instance(void) {
+T* sminstance(void) {
 	return T::instance();
 }
-#define SMI(x) ::instance< x >()
+#define SMI(x) ::sminstance< x >()
 
 typedef std::string const& str;
 typedef std::string& strr;

@@ -57,7 +57,7 @@ public:
 	{
 		term.wrt(prompt);
 		term.echo(false);
-		std::string s;// = term.read();
+		std::string s;// = term.read(); /* XXX is this used anywhere? */
 		term.echo(true);
 		wrtln();
 		return s;
@@ -154,6 +154,8 @@ struct tmcmds : public smutl::singleton<tmcmds<tt> > {
 stdrt.install("show version", cmd_show_version(), "Show software version");
 stdrt.install("exit", cmd_exit(), "End session");
 stdrt.install("show irc server %s", cfg_irc_showserver(), "Describe a configured server");
+stdrt.install("show irc server", cfg_irc_showserver(), "Describe all configured servers");
+stdrt.install("show irc channels", cfg_irc_showchannels(), "Show configured channels");
 eblrt = stdrt;
 stdrt.install("enable", cmd_enable(), "Enter privileged mode");
 eblrt.install("disable", chg_parser(stdrt, "%s> "), "Return to non-privileged mode");
@@ -168,6 +170,8 @@ ircrt.install("server %s primary-nickname %s", cfg_irc_servnick(), "Set primary 
 ircrt.install("server %s secondary-nickname %s", cfg_irc_servsecnick(),	"Set secondary nickname for IRC server");
 ircrt.install("no server %s", cfg_irc_noserver(), "Remove a configured server");
 ircrt.install("show server %s", cfg_irc_showserver(), "Describe a configured server");
+ircrt.install("show server", cfg_irc_showserver(), "Describe all configured servers");
+ircrt.install("show channels", cfg_irc_showchannels(), "Show configured channels");
 ircrt.install("no server %s enable", cfg_irc_noenableserver(), "Disable a server");
 ircrt.install("server %s enable", cfg_irc_enableserver(), "Enable connection to a server");
 ircrt.install("channel %s", cfg_irc_channel(), "Specify a channel to join");
@@ -186,7 +190,7 @@ public:
 
 	trmsrv(intft sckt_)
 	: intf(sckt_)
-	, cmds_root(instance<tmcmds<trmsrv> >()->stdrt)
+	, cmds_root(SMI(tmcmds<trmsrv>)->stdrt)
 	, prm("servmon> ")
 	, cd(*this)
 	, doecho(true)
@@ -238,6 +242,7 @@ public:
 			disconnect();
 			return;
 		}
+		stb_nrml();
 	}
 	void gd_cb(smnet::inetclntp, u_char c) {
 		std::cerr << "read data: [" << c << "]\n";
@@ -377,6 +382,8 @@ end:
 				boost::io::group(std::left, std::setw(20), (**it).name)
 				% (**it).help));
 		}
+		if (hstack[0]->terminal)
+			wrtln("  <cr>");
 		wrt(prm + ln);
 		return true;
 	}
@@ -412,9 +419,9 @@ end:
 	bool prc_erase(char) {
 		for (int i = ln.size(); i; --i)
 			wrt("\b \b");
-		wrtln();
-		wrt(prm + ln);
 		init();
+		//wrtln();
+		//wrt(prm + ln);
 		return true;
 	}
 

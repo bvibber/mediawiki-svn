@@ -40,7 +40,7 @@ thrbase::thrbase(void)
 
 void thrbase::run(void)
 {
-	instance<thrmgr>()->crethr(boost::bind(&daemon::start, this));
+	SMI(thrmgr)->crethr(boost::bind(&daemon::start, this));
 }
 
 mtx::mtx(void)

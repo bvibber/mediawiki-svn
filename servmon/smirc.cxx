@@ -23,12 +23,10 @@ ircclnt::nick(str pnick_, str snick_)
 bool
 ircclnt::rdline(strr l) {
 	char c;
-	//std::cerr << "read: [";
 	try {
 		c = sckt->rd1();
-		if (c != '\r' && c != '\n') linebuf += c;
+                if (c != '\r' && c != '\n') linebuf += c;
 		else { l = linebuf; linebuf = ""; return true; }
-		//std::cerr << c << "] - ";
 	} catch (smnet::sckterr& e) {
 		std::cerr << "read error: " << e.what();
 	}
@@ -63,6 +61,17 @@ ircclnt::part(str channel)
 }
 
 void
+ircclnt::cb_001(cbdata&)
+{
+	try {
+		std::set<std::string> chans = SMI(smcfg::cfg)->fetchlist("/irc/channels");
+		FE_TC_AS(std::set<std::string>, chans, i)
+			join(*i);
+	} catch (smcfg::nokey&) {
+	}
+}
+
+void
 ircclnt::msg(str channel, str message)
 {
 	if (!sckt) return;
@@ -86,18 +95,52 @@ ircclnt::msg(str message)
 void
 ircclnt::data_cb(int what)
 {
-	std::cerr << "data_cb: what="<<what<<'\n';
 	if (what == smnet::smpx::srd) {
-		std::cerr << "read possible\n";
 		std::string line;
 		if (!rdline(line)) return;
-		std::cerr << "read line: [" << line << "]\n";
+		/* "empty" lines are caused by \r\n.  we could handle this
+		   further down by treating \r\n properly, but some servers
+		   (batamut) are broken and will only send \n in some circumstances.
+		*/
+		if (line.empty()) return;
+                parseline(line);
 	}
+}
+
+void
+ircclnt::parseline(std::string line)
+{
+	std::cerr << "parse line: [" << line << "]\n";
+	/* an IRC message has three basic parts: prefix, command and arguments.
+	   the first argument for numerics is the target (i.e. us). */
+	cbdata cbd;
+
+	/* prefix? */
+	if (line[0] == ':') {
+		cbd.prefix = smutl::car(line).substr(1);
+	}
+	cbd.command = smutl::car(line);
+	/* last argument */
+	std::size_t lpartp = line.find(" :");
+	std::string lpart;
+	if (lpartp != std::string::npos) {
+		lpart = line.substr(lpartp + 2);
+		line = line.substr(0, lpartp);
+	}
+	std::string s;
+	while ((s = smutl::car(line)) != "") {
+		cbd.args.push_back(s);
+	}
+	if (!lpart.empty()) cbd.args.push_back(lpart);
+	std::map<std::string, cbtype>::const_iterator it = cbs.find(cbd.command);
+	if (it == cbs.end()) return;
+	it->second(cbd);
 }
 
 ircclnt::ircclnt(std::string const& serv, int port)
 {
 	name = serv;
+	cbs["001"] = b::bind(&ircclnt::cb_001, this, _1);
 	pnick = SMI(smcfg::cfg)->fetchstr("/irc/server/"+serv+"/nickname");
 	std::cerr << "ircclnt: connecting to "<<serv<<":"<<port<<"...\n";
 	sckt = smnet::inetclntp(new smnet::inetclnt);

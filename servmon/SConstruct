@@ -1,15 +1,15 @@
 # Set build options here.
 #
 # Compiler
-cc = '/opt/gcc-3.4/bin/gcc'
-cxx = '/opt/gcc-3.4/bin/g++'
+cc = 'gcc'
+cxx = 'g++'
 
 #cflags = '-O2 -g -W -Wall'
 cflags = '-g -W -Wall'
 cppflags = ''
 
 # Where things are installed to.
-prefix = '/opt/servmon'
+prefix = ARGUMENTS.get('prefix', '/opt/servmon')
 
 # Don't change anything below here.
 ####################################
