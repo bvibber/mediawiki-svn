@@ -83,11 +83,31 @@ int main(int argc, char **argv)
     }
 
     db_create(&dbp, NULL, 0);
-    if ((ret = dbp->open(dbp, NULL, dbfile, NULL,
-			 DB_BTREE, DB_RDONLY, 0644)) != 0) {
-	dbp->err(dbp, ret, "%s", dbfile);
-	exit(1);
+#if DB_VERSION_MAJOR < 4
+    if ((ret = dbp->open(dbp,
+                         dbfile, NULL, DB_BTREE, DB_CREATE,
+                         0664)) != 0) {
+        dbp->err(dbp, ret, "%s", dbfile);
+        exit(1);
     }
+#else
+#if DB_VERSION_MINOR > 0
+    if ((ret = dbp->open(dbp,
+                         NULL, dbfile, NULL, DB_BTREE, DB_CREATE,
+                         0664)) != 0) {
+        dbp->err(dbp, ret, "%s", dbfile);
+        exit(1);
+    }
+#else
+    if ((ret = dbp->open(dbp,
+                         dbfile, NULL, DB_BTREE, DB_CREATE,
+                         0664)) != 0) {
+        dbp->err(dbp, ret, "%s", dbfile);
+        exit(1);
+    }
+#endif
+#endif
+
 
     if ((ret = dbp->cursor(dbp, NULL, &dbcp, 0)) != 0) {
 	dbp->err(dbp, ret, "DB->cursor");
@@ -122,7 +142,7 @@ int main(int argc, char **argv)
 		|| strncmp(prefix, key.data, prefixlen)))
 	    continue;
 	if ((it->exptime && it->exptime <= now) || it->time < oldest) {
-	    len = snprintf(&buf, sizeof(buf), "delete %.*s\r\n",
+	    len = snprintf((char *)&buf, sizeof(buf), "delete %.*s\r\n",
 			   (int) key.size, (char *) key.data);
 	    if (port && verbose)
 		printf("%.*s : ", (int) key.size,
