@@ -1167,7 +1167,7 @@ class WikiPage extends WikiTitle {
 		# Page options
 		if ( !$this->isSpecialPage ) {
 			$ret .= "</td></tr><tr><td><p class=menu>" ;
-			$ret .= "<span class=menuhead>$wikiPageOptions</span>\n" ;
+			$ret .= "<span class=menuhead>$wikiPageOptions</span><br>\n" ;
 			$ret .= "<a class=menulink href=\"".wikiLink($this->url."&action=print")."\">$wikiPrintable</a><br>\n" ;
 			$ret .= "<a class=menulink href=\"".wikiLink($this->url."&action=watch&mode=yes")."\">$wikiAddToWatchlist</a><br>\n" ;
 
