@@ -38,9 +38,33 @@ if ( -1 == $wgTitle->getNamespace() ) {
 } else if ( "" != $search ) {
 	if($go) {
 	
+		#first try to go to page as entered
 		$wgArticle=new Article();
 		$wgTitle=Title::newFromText($search);
-		$wgArticle->view();
+		if($wgArticle->getID()) {
+			$wgArticle->view();
+		} else {
+					
+			# now try all lower case (i.e. first letter capitalized)
+			$wgTitle=Title::newFromText(strtolower($search));
+			if($wgArticle->getID()) {
+				$wgArticle->view();
+			} else {
+		
+				# now try capitalized string, if that fails as well,
+				# run a search
+				$wgTitle=Title::newFromText(ucwords(strtolower($search)));
+				if($wgArticle->getID()) {
+					$wgArticle->view();
+				} else {					
+					
+					$wgOut->addHTML(wfMsg("nogomatch"));
+					wfSearch($search);
+					
+				}
+			}
+		}
+		
 		
 	} else {
 	
