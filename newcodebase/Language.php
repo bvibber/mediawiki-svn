@@ -464,7 +464,7 @@ consequences, and that you are doing this in accordance with
 #
 "asksql"		=> "SQL query",
 
-# Block IP
+# Block/unblock IP
 #
 "blockip"		=> "Block IP address",
 "blockiptext"	=> "Use the form below to block write access
@@ -479,8 +479,17 @@ pages that were vandalized).",
 "badipaddress"	=> "The IP address is badly formed.",
 "noblockreason" => "You must supply a reason for the block.",
 "blockipsuccesssub" => "Block succeeded",
-"blockipsuccesstext" => "The IP address \"$1\" has been blocked.",
-
+"blockipsuccesstext" => "The IP address \"$1\" has been blocked.
+<br>See [[Special:Ipblocklist|IP block list]] to review blocks.",
+"unblockip"		=> "Unblock IP address",
+"unblockiptext"	=> "Use the form below to restore write access
+to a previously blocked IP address.",
+"ipusubmit"		=> "Unblock this address",
+"ipusuccess"	=> "IP address \"$1\" unblocked",
+"ipblocklist"	=> "List of blocked IP addresses",
+"blocklistline"	=> "$1, $2 blocked $3",
+"blocklink"		=> "block",
+"unblocklink"	=> "unblock",
 
 # Debug page
 #
