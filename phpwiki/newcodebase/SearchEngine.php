@@ -341,5 +341,58 @@ class SearchEngine {
 		}
 		$wgOut->addHTML( "</li>\n" );
 	}
+	function goResult() {
+	
+	
+		global $wgOut,$wgArticle,$wgTitle,$search;
+		$fname = "SearchEngine::goResult";
+		
+		#first try to go to page as entered		
+		$wgArticle=new Article();
+		$wgTitle=Title::newFromText($search);
+		if($wgArticle->getID()) {
+			$wgArticle->view();
+		} else {
+					
+			# now try all lower case (i.e. first letter capitalized)
+			$wgTitle=Title::newFromText(strtolower($search));
+			if($wgArticle->getID()) {
+				$wgArticle->view();
+			} else {
+		
+				# now try capitalized string
+				$wgTitle=Title::newFromText(ucwords(strtolower($search)));
+				if($wgArticle->getID()) {
+					$wgArticle->view();
+				} else {					
+					
+					
+					# try a near match
+					$this->parseQuery();										
+					$sql = "SELECT cur_id,cur_title,cur_namespace,si_page FROM cur,searchindex " .
+					  "WHERE cur_id=si_page AND {$this->mTitlecond} " .
+					  "LIMIT 1";
+					if($this->mTitlecond) {
+						$res = wfQuery( $sql, $fname );
+					} 				
+					if (isset($res) && wfNumRows( $res )) {
+					
+						$s=wfFetchObject($res);
+						$wgTitle=Title::newFromDBkey($s->cur_title);
+						$wgTitle->setNamespace($s->cur_namespace);
+						$wgArticle->view();
+					
+					# run a normal search
+					} else {
+					
+						$wgOut->addHTML(wfMsg("nogomatch"));
+						$this->showResults();
+					}
+					
+				}
+			}
+		}
+	}
+
 }
 
