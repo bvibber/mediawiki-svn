@@ -1,14 +1,6 @@
 <?
 # See user.doc
 
-/* private */ $wgDefaultOptions = array(
-	"quickbar" => 1, "underline" => 1, "hover" => 1,
-	"cols" => 80, "rows" => 25, "searchlimit" => 20,
-	"contextlines" => 5, "contextchars" => 50,
-	"skin" => 0, "rcdays" => 3, "rclimit" => 50,
-	"highlightbroken" => 1
-);
-
 class User {
 	/* private */ var $mId, $mName, $mPassword, $mEmail, $mNewtalk;
 	/* private */ var $mRights, $mOptions;
@@ -68,14 +60,15 @@ class User {
 
 	function loadDefaults()
 	{
-		global $wgDefaultOptions;
+		global $wgLang ;
 
 		$this->mId = $this->mNewtalk = 0;
 		$this->mName = getenv( "REMOTE_ADDR" );
 		$this->mEmail = "";
 		$this->mPassword = $this->mNewpassword = "";
 		$this->mRights = array();
-		foreach ( $wgDefaultOptions as $oname => $val ) {
+		$defOpt = $wgLang->getDefaultUserOptions() ;
+		foreach ( $defOpt as $oname => $val ) {
 			$this->mOptions[$oname] = $val;
 		}
 		unset( $this->mSkin );
@@ -172,8 +165,6 @@ class User {
 
 	function loadFromDatabase()
 	{
-		global $wgDefaultOptions;
-
 		if ( 0 == $this->mId || $this->mDataLoaded ) { return; }
 		$sql = "SELECT user_name,user_password,user_newpassword,user_email," .
 		  "user_options,user_rights,user_newtalk FROM user WHERE user_id=" .
