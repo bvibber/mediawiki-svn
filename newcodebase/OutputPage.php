@@ -50,17 +50,18 @@ class OutputPage {
 	# First pass--just handle <nowiki> sections, pass the rest off
 	# to addWikiPass2() which does all the real work.
 	#
-	function addWikiText( $text )
+	function addWikiText( $text, $linestart = true )
 	{
 		while ( "" != $text ) {
 			$p = preg_split( "/<\\s*nowiki\\s*>/i", $text, 2 );
-			$this->addWikiPass2( $p[0] );
+			$this->addWikiPass2( $p[0], $linestart );
 
 			if ( "" == $p[1] ) { $text = ""; }
 			else {
 				$q = preg_split( "/<\\/\\s*nowiki\\s*>/i", $p[1], 2 );
 				$this->addHTML( $q[0] );
 				$text = $q[1];
+				$linestart = false;
 			}
 		}
 	}
@@ -151,7 +152,7 @@ class OutputPage {
 	# hard lifting is done inside PHP's regex code, it probably
 	# wouldn't speed things up much to add a real parser.
 	#
-	function addWikiPass2( $text )
+	function addWikiPass2( $text, $linestart )
 	{
 		global $wgUser;
 
@@ -163,7 +164,7 @@ class OutputPage {
 
 		$text = $this->doQuotes( $text );
 		$text = $this->doHeadings( $text );
-		$text = $this->doBlockLevels( $text );
+		$text = $this->doBlockLevels( $text, $linestart );
 
 		$text = $this->parseImages( $text );
 		$text = $this->replaceExternalLinks( $text );
@@ -179,6 +180,10 @@ class OutputPage {
 		$this->addHTML( $text );
 	}
 
+	# TODO: The algorithm here is from Usemod, but it can generate
+	# improperly nested HTML in the case of '''''xx''yy'''. That's
+	# not trivial to fix.
+	#
 	/* private */ function doQuotes( $text )
 	{
 		$text = preg_replace( "/('*)'''(.*?)'''/",
@@ -394,16 +399,17 @@ class OutputPage {
 		return "<!-- ERR 3 -->";
 	}
 
-	/* private */ function doBlockLevels( $text )
+	/* private */ function doBlockLevels( $text, $linestart )
 	{
 		# Parsing through the text line by line.  The main thing
 		# happening here is handling of block-level elements p, pre,
 		# and making lists from lines starting with * # : etc.
 		#
 		$a = explode( "\n", $text );
-		$text = $lastPref = $this->mLastSection = "";
+		$text = $lastPref = "";
 		$this->mDTopen = $inBlockElem = false;
 
+		if ( ! $linestart ) { $text .= array_shift( $a ); }
 		foreach ( $a as $t ) {
 			if ( "" != $text ) { $text .= "\n"; }
 

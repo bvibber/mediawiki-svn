@@ -164,14 +164,15 @@ class Article {
 		global $wgUser, $wgOut, $wgTitle, $wgLang;
 		global $oldid, $diff;
 
-		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 		if ( isset( $diff ) ) {
+			$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 			$wgOut->setArticleFlag( false );
 			$de = new DifferenceEngine( $oldid, $diff );
 			$de->showDiffs();
 			return;
 		}
 		$text = $this->getContent();
+		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 		if ( $oldid ) { $this->setOldSubtitle(); }
 
 		if ( "" != $this->mRedirectedFrom ) {
