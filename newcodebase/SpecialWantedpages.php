@@ -28,9 +28,14 @@ function wfSpecialWantedpages()
 
 	$s = "<ul>";
 	while ( $obj = wfFetchObject( $res ) ) {
+		$nt = Title::newFromDBkey( $obj->bl_to );
+
+		$plink = $sk->makeKnownLink( $nt->getPrefixedText(), "" );
 		$nl = str_replace( "$1", $obj->nlinks, wfMsg( "nlinks" ) );
-		$link = $sk->makeKnownLink( $obj->bl_to, "" );
-		$s .= "<li>{$link} ({$nl})</li>\n";
+		$nlink = $sk->makeKnownLink( "Special:Whatlinkshere", $nl,
+		  "target=" . $nt->getPrefixedURL() );
+
+		$s .= "<li>{$plink} ({$nlink})</li>\n";
 	}
 	wfFreeResult( $res );
 	$s .= "</ul>";

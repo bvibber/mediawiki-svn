@@ -131,7 +131,7 @@ function convertCurTable()
 			}
 			$sql = "INSERT INTO cur (cur_id,cur_namespace," .
 			  "cur_title,cur_text,cur_comment,cur_user," .
-			  "cur_timestamp,cur_minor_edit," .
+			  "cur_timestamp,cur_minor_edit,cur_is_new" .
 			  "cur_restrictions,cur_counter," .
 			  "cur_ind_title,cur_is_redirect,cur_user_text) VALUES ";
 		} else {
@@ -159,6 +159,9 @@ function convertCurTable()
 		$cit = wfStrencode( $row->cur_ind_title );
 		$cut = wfStrencode( $row->cur_user_text );
 		if ( "" == $cut ) { $cut = "Unknown"; }
+		if ( 2 == $row->cur_minor_edit ) { $isnew = 1; }
+		else { $isnew = 0; }
+		$isme = ( 0 != $row->cur_minor_edit );
 
 		$counter = $row->cur_counter;
 		if ( ! $counter ) { $counter = 0; }
@@ -170,7 +173,7 @@ function convertCurTable()
 
 		$sql .= "({$row->cur_id},$namespace,'$title','$text'," .
 		  "'$com',{$row->cur_user}," .
-		  "'{$row->cur_timestamp}',{$row->cur_minor_edit},'$cr'," .
+		  "'{$row->cur_timestamp}',{$isme},{$isnew},'$cr'," .
 		  "{$counter},'$cit',$redir,'$cut')";
 
 		if ( ( ++$count % 1000 ) == 0 ) {

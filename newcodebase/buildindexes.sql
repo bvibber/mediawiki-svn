@@ -5,6 +5,7 @@ ALTER TABLE user
   ADD INDEX user_name (user_name(10));
 
 ALTER TABLE cur
+  ADD INDEX cur_namespace (cur_namespace),
   ADD INDEX cur_title (cur_title(20)),
   ADD INDEX cur_timestamp (cur_timestamp),
   ADD FULLTEXT cur_ind_title (cur_ind_title),

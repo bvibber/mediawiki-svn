@@ -61,7 +61,6 @@
 	"Userlogout"	=> "",
 	"Preferences"	=> "Set my user preferences",
 	"Watchlist"		=> "Show my watchlist",
-	"Newpages"		=> "",
 	"Recentchanges" => "List recently updated pages",
 	"Upload"		=> "Upload image files",
 	"Imagelist"		=> "List uploaded images",
@@ -74,6 +73,8 @@
 	"Wantedpages"	=> "List most wanted articles",
 	"Shortpages"	=> "List short articles",
 	"Longpages"		=> "List long articles",
+	"Newpages"		=> "List newly created articles",
+	"Allpages"		=> "List all pages by title",
 
 	"Ipblocklist"	=> "List blocked IP addresses",
 	"Specialpages"  => "",
@@ -86,7 +87,6 @@
 	"Blockip"		=> "Block an IP address",
 	"Protectpage"	=> "Protect a page from user edits",
 	"Movepage"		=> "Rename a page and its links",
-	"Allpages"		=> "Show list of all pages",
 	"Asksql"		=> "Query the database"
 );
 
@@ -105,6 +105,8 @@
 "printableversion" => "Printable version",
 "editthispage"	=> "Edit this page",
 "deletethispage" => "Delete this page",
+"protectthispage" => "Protect this page",
+"unprotectthispage" => "Unprotect this page",
 "talkpage"		=> "Talk page",
 "subjectpage"	=> "Subject page",
 "otherlanguages" => "Other languages",
@@ -155,6 +157,7 @@ Please report this to an administrator, making note of the URL.",
 "filenotfound"	=> "Could not find file \"$1\".",
 "unexpected"	=> "Unexpected value: \"$1\"=\"$2\".",
 "formerror"		=> "Error: could not submit form",	
+"badarticleerror" => "This action cannot be performed on this article.",
 
 # Login and logout pages
 #
@@ -340,10 +343,6 @@ See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges r
 "diff"			=> "diff",
 "hist"			=> "hist",
 
-# New pages
-#
-"newpages"		=> "New pages",
-
 # Upload
 #
 "upload"		=> "Upload",
@@ -454,6 +453,7 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "rclsub"		=> "(to pages linked from \"$1\")",
 "asksql"		=> "SQL query",
 "debug"			=> "Debug",
+"newpages"		=> "New pages",
 
 # Watchlist
 #
@@ -472,7 +472,7 @@ to modify your watchlist.",
 "unwatchthispage" => "Stop watching",
 "notanarticle"	=> "Not an article",
 
-# Delete page
+# Delete/protect page
 #
 "deletepage"	=> "Delete page",
 "confirm"		=> "Confirm",

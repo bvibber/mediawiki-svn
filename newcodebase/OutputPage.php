@@ -104,14 +104,14 @@ class OutputPage {
 			if ( preg_match( "/^Expires:/", $t ) ) { $foundexp = true; }
 		}
 		if ( ! $foundexp ) {
-			if ( $this->mIsarticle ) {
-				header( "Expires: " . $wgLang->rfc1123( time() + 3600 ) );
-				header( "Cache-Control: public" );
-			} else {
+			# if ( $this->mIsarticle ) {
+			#	header( "Expires: " . $wgLang->rfc1123( time() + 3600 ) );
+			#	header( "Cache-Control: public" );
+			# } else {
 				header( "Expires: 0" );
 				header( "Cache-Control: no-cache" );
 				header( "Pragma: no-cache" );
-			}
+			# }
 		}
 		$exp = time() + $wgCookieExpiration;
 		foreach( $this->mCookies as $name => $val ) {
