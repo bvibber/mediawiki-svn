@@ -862,7 +862,7 @@ class _HWLDF_WordAccumulator {
     
     function _flushLine ($new_tag) {
         $this->_flushGroup($new_tag);
-        if ($this->_line)
+        if ($this->_line != '')
             $this->_lines[] = $this->_line;
         $this->_line = '';
     }
@@ -873,7 +873,7 @@ class _HWLDF_WordAccumulator {
 
         foreach ($words as $word) {
             // new-line should only come as first char of word.
-            if (!$word)
+            if ($word == '')
                 continue;
             if ($word[0] == "\n") {
                 $this->_group .= NBSP;
