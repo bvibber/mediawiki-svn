@@ -2,7 +2,7 @@
 
 function wfSpecialContributions()
 {
-	global $wgUser, $wgOut, $wgLang, $target, $limit, $days, $hideminor;
+	global $wgUser, $wgOut, $wgLang, $target, $offset, $limit, $hideminor;
 	$fname = "wfSpecialContributions";
 	$sysop = $wgUser->isSysop();
 
@@ -10,9 +10,10 @@ function wfSpecialContributions()
 		$wgOut->errorpage( "notargettitle", "notargettext" );
 		return;
 	}
-	if ( ! $days ) { $days = 14; }
-	if ( ! $limit ) { $limit = 50; }
-	$cutoff = date( "YmdHis", time() - ( $days * 86400 ) );
+	$offset = (int)$offset;
+	$limit = (int)$limit;
+	if( $offset < 0 ) { $offset = 0; }
+	if( $limit < 1 ) { $limit = 50; }
 
 	$target = wfCleanQueryVar( $target );
 	$nt = Title::newFromURL( $target );
@@ -32,81 +33,36 @@ function wfSpecialContributions()
 		$hideminor = $wgUser->getOption( "hideminor" );
 	}
 	if ( $hideminor ) {
-		$mlink = $sk->makeKnownLink( $wgLang->specialPage( "Contributions" ),
-	  	  WfMsg( "show" ), "target=" . wfEscapeHTML( $nt->getPrefixedURL() ) .
-		  "&days={$days}&limit={$limit}&hideminor=0" );
-	} else {
-		$mlink = $sk->makeKnownLink( $wgLang->specialPage( "Contributions" ),
-	  	  WfMsg( "hide" ), "target=" . wfEscapeHTML( $nt->getPrefixedURL() ) .
-		  "&days={$days}&limit={$limit}&hideminor=1" );
-	}
-	if ( $hideminor ) {
 		$cmq = "AND cur_minor_edit=0";
 		$omq = "AND old_minor_edit=0";
-		$rmq = "AND rc_minor=0";
-	} else { $cmq = $omq = $rmq = ""; }
+	} else { $cmq = $omq = ""; }
 
-	$note = str_replace( "$1", $limit, wfMsg( "ucnote" ) );
-	$note = str_replace( "$2", $days, $note );
-	$wgOut->addHTML( "<p>{$note}\n<br>" );
+	$top = wfShowingResults( $offset, $limit );
+	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$cl = ucCountLink( 50, $days ) . " | " . ucCountLink( 100, $days ) . " | " .
-	  ucCountLink( 250, $days ) . " | " . ucCountLink( 500, $days );
-	$dl = ucDaysLink( $limit, 1 ) . " | " . ucDaysLink( $limit, 3 ) . " | " .
-	  ucDaysLink( $limit, 7 ) . " | " . ucDaysLink( $limit, 14 ) . " | " .
-	  ucDaysLink( $limit, 30 );
-	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
-	$note = str_replace( "$2", $dl, $note );
-	$note = str_replace( "$3", $mlink, $note );
-	$wgOut->addHTML( "{$note}\n<p>" );
-
+	$sl = wfViewPrevNext( $offset, $limit,
+	  $wgLang->specialpage( "Contributions" ), "target=" . wfUrlEncode( $target ) );
+	$wgOut->addHTML( "<br>{$sl}\n" );
+	
 	# Sorting slowness on cur and especially old
 	# forces us to check RC table first
-	if( 0 == $id ) {
-		$rcusercheck = "rc_user_text='" . wfStrencode( $nt->getText() ) . "'";
-	} else {
-		$rcusercheck = "rc_user={$id}";
-	}
-	$sql = "SELECT rc_namespace,rc_title,rc_timestamp,rc_this_oldid,rc_comment
-		FROM recentchanges
-		WHERE rc_timestamp > '{$cutoff}' AND {$rcusercheck} {$rmq}
-		ORDER BY rc_timestamp DESC LIMIT {$limit}";
-	$res = wfQuery( $sql, $fname );
-
-	$rcrows = wfNumRows( $res );
-	$lastcutoffold = $lastcutoffcur = "";
-	while( $obj = wfFetchObject( $res ) ) {
-		ucListEdit( $sk, $obj->rc_namespace, $obj->rc_title,
-			$obj->rc_timestamp, ($obj->rc_this_oldid == 0), $obj->rc_comment );
-		$lastcutoffold = "AND old_timestamp < '{$obj->rc_timestamp}'";
-		$lastcutoffcur = "AND cur_timestamp < '{$obj->rc_timestamp}'";
-		$limit--;
-	}
-	
-	if( $limit > 0 ) {
-		# Need more still!
-
 	if ( 0 == $id ) {
 		$sql = "SELECT cur_namespace,cur_title,cur_timestamp,cur_comment FROM cur " .
-		  "WHERE cur_timestamp > '{$cutoff}' {$lastcutoffcur} AND cur_user_text='" .
-		  wfStrencode( $nt->getText() ) . "' {$cmq} " .
-		  "ORDER BY cur_timestamp DESC LIMIT {$limit}";
+		  "WHERE cur_user_text='" . wfStrencode( $nt->getText() ) . "' {$cmq} " .
+		  "ORDER BY inverse_timestamp LIMIT {$offset}, {$limit}";
 		$res1 = wfQuery( $sql, $fname );
 
 		$sql = "SELECT old_namespace,old_title,old_timestamp,old_comment FROM old " .
-		  "WHERE old_timestamp > '{$cutoff}' {$lastcutoffold} AND old_user_text='" .
-		  wfStrencode( $nt->getText() ) . "' {$omq} " .
-		  "ORDER BY old_timestamp DESC LIMIT {$limit}";
+		  "WHERE old_user_text='" . wfStrencode( $nt->getText() ) . "' {$omq} " .
+		  "ORDER BY inverse_timestamp LIMIT {$offset}, {$limit}";
 		$res2 = wfQuery( $sql, $fname );
 	} else {
 		$sql = "SELECT cur_namespace,cur_title,cur_timestamp,cur_comment FROM cur " .
-		  "WHERE cur_timestamp > '{$cutoff}' {$lastcutoffcur} AND cur_user={$id} " .
-		  "{$cmq} ORDER BY cur_timestamp DESC LIMIT {$limit}";
+		  "WHERE cur_user={$id} {$cmq} ORDER BY inverse_timestamp LIMIT {$offset}, {$limit}";
 		$res1 = wfQuery( $sql, $fname );
 
 		$sql = "SELECT old_namespace,old_title,old_timestamp,old_comment FROM old " .
-		  "WHERE old_timestamp > '{$cutoff}' {$lastcutoffold} AND old_user={$id} " .
-		  "{$omq} ORDER BY old_timestamp DESC LIMIT {$limit}";
+		  "WHERE old_user={$id} {$omq} ORDER BY inverse_timestamp LIMIT {$offset}, {$limit}";
 		$res2 = wfQuery( $sql, $fname );
 	}
 	$nCur = wfNumRows( $res1 );
@@ -114,7 +70,7 @@ function wfSpecialContributions()
 
 
 	if ( 0 == $nCur && 0 == $nOld && 0 == $rcrows ) {
-		$wgOut->addHTML( wfMsg( "nocontribs" ) );
+		$wgOut->addHTML( "\n<p>" . wfMsg( "nocontribs" ) . "</p>\n" );
 		return;
 	}
 	if ( 0 != $nCur ) { $obj1 = wfFetchObject( $res1 ); }
@@ -147,7 +103,6 @@ function wfSpecialContributions()
 		ucListEdit( $sk, $ns, $t, $ts, $topmark, $comment );
 
 		--$limit;
-	}
 	}
 	$wgOut->addHTML( "</ul>\n" );
 }

@@ -51,7 +51,7 @@ function wfSpecialWatchlist()
   FROM cur,watchlist
   WHERE wl_user={$uid} AND wl_title=cur_title
         AND (cur_namespace=wl_namespace OR cur_namespace=wl_namespace+1)
-  ORDER BY cur_timestamp DESC {$dolimit}";
+  ORDER BY inverse_timestamp {$dolimit}";
 	$res = wfQuery( $sql, $fname );
 	if ( wfNumRows( $res ) == 0 ) {
 		$wgOut->addHTML( wfMsg( "nowatchlist" ) );

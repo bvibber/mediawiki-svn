@@ -427,4 +427,57 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 	$log->addEntry( $da, $desc, $ta );
 }
 
+
+/* Some generic result counters, pulled out of SearchEngine */
+
+function wfShowingResults( $offset, $limit )
+{
+	$top = str_replace( "$1", $limit, wfMsg( "showingresults" ) );
+	$top = str_replace( "$2", $offset+1, $top );
+	return $top;
+}
+
+function wfViewPrevNext( $offset, $limit, $link, $query = "" )
+{
+	global $wgUser;
+	$prev = str_replace( "$1", $limit, wfMsg( "prevn" ) );
+	$next = str_replace( "$1", $limit, wfMsg( "nextn" ) );
+
+	$sk = $wgUser->getSkin();
+	if ( 0 != $offset ) {
+		$po = $offset - $limit;
+		if ( $po < 0 ) { $po = 0; }
+		$q = "limit={$limit}&offset={$po}";
+		if ( "" != $query ) { $q .= "&{$query}"; }
+		$plink = "<a href=\"" . wfLocalUrlE( $link, $q ) . "\">{$prev}</a>";
+	} else { $plink = $prev; }
+
+	$no = $offset + $limit;
+	$q = "limit={$limit}&offset={$no}";
+	if ( "" != $query ) { $q .= "&{$query}"; }
+
+	$nlink = "<a href=\"" . wfLocalUrlE( $link, $q ) . "\">{$next}</a>";
+	$nums = wfNumLink( $offset, 20, $link , $query ) . " | " .
+	  wfNumLink( $offset, 50, $link, $query ) . " | " .
+	  wfNumLink( $offset, 100, $link, $query ) . " | " .
+	  wfNumLink( $offset, 250, $link, $query ) . " | " .
+	  wfNumLink( $offset, 500, $link, $query );
+
+	$sl = str_replace( "$1", $plink, wfMsg( "viewprevnext" ) );
+	$sl = str_replace( "$2", $nlink, $sl );
+	$sl = str_replace( "$3", $nums, $sl );
+	return $sl;
+}
+
+function wfNumLink( $offset, $limit, $link, $query = "" )
+{
+	global $wgUser;
+	if ( "" == $query ) { $q = ""; }
+	else { $q = "{$query}&"; }
+	$q .= "limit={$limit}&offset={$offset}";
+
+	$s = "<a href=\"" . wfLocalUrlE( $link, $q ) . "\">{$limit}</a>";
+	return $s;
+}
+
 ?>

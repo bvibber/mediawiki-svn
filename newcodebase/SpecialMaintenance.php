@@ -116,10 +116,10 @@ function wfSpecialDisambiguations()
 	$top = "<p>".wfMsg("disambiguationstext")."</p><br>\n";
 	$top = str_replace ( "$1" , $sk->makeKnownLink ( $dp ) , $top ) ;
 	$top = getMaintenancePageBacklink().$top ;
-	$top .= SearchEngine::showingResults( $offset, $limit );
+	$top .= wfShowingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
+	$sl = wfViewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
 	$sl = str_replace ( "REPLACETHIS" , sns().":Maintenance&subfunction=disambiguations" , $sl ) ;
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
@@ -154,10 +154,10 @@ function wfSpecialDoubleRedirects()
 
 	$top = getMaintenancePageBacklink();
 	$top .= "<p>".wfMsg("doubleredirectstext")."</p><br>\n";
-	$top .= SearchEngine::showingResults( $offset, $limit );
+	$top .= wfShowingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
+	$sl = wfViewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
 	$sl = str_replace ( "REPLACETHIS" , sns().":Maintenance&subfunction=doubleredirects" , $sl ) ;
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
@@ -195,10 +195,10 @@ function wfSpecialBrokenRedirects()
 
 	$top = getMaintenancePageBacklink();
 	$top .= "<p>".wfMsg("brokenredirectstext")."</p><br>\n";
-	$top .= SearchEngine::showingResults( $offset, $limit );
+	$top .= wfShowingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
+	$sl = wfViewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
 	$sl = str_replace ( "REPLACETHIS" , sns().":Maintenance&subfunction=brokenredirects" , $sl ) ;
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
@@ -234,10 +234,10 @@ function wfSpecialSelfLinks()
 
 	$top = getMaintenancePageBacklink();
 	$top .= "<p>".wfMsg("selflinkstext")."</p><br>\n";
-	$top .= SearchEngine::showingResults( $offset, $limit );
+	$top .= wfShowingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
+	$sl = wfViewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
 	$sl = str_replace ( "REPLACETHIS" , sns().":Maintenance&subfunction=selflinks" , $sl ) ;
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
@@ -310,10 +310,10 @@ function wfSpecialMispeelings ()
                 }
         $top = getMaintenancePageBacklink();
         $top .= "<p>".str_replace("$1",$msl,wfMsg("mispeelingstext"))."</p><br>\n";
-        $top .= SearchEngine::showingResults( $offset, $limit );
+        $top .= wfShowingResults( $offset, $limit );
         $wgOut->addHTML( "<p>{$top}\n" );
 
-        $sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
+        $sl = wfViewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
         $sl = str_replace ( "REPLACETHIS" , sns().":Maintenance&subfunction=mispeelings" , $sl ) ;
         $wgOut->addHTML( "<br>{$sl}\n" );
 
@@ -348,10 +348,10 @@ function wfSpecialMissingLanguageLinks()
 
 	$top = getMaintenancePageBacklink();
 	$top .= "<p>$mll</p><br>";
-	$top .= SearchEngine::showingResults( $offset, $limit );
+	$top .= wfShowingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
+	$sl = wfViewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
 	$sl = str_replace ( "REPLACETHIS" , sns().":Maintenance&subfunction=missinglanguagelinks&thelang={$thelang}" , $sl ) ;
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
