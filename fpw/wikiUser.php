@@ -15,6 +15,7 @@ class WikiUser {
         $this->id = 0 ;
         $this->name = "" ;
         $this->isLoggedIn = false ;
+	$sqldata = "empty" ;
         if ( $WikiUserID > 0 and $WikiLoggedIn == "yes" ) {
             $connection = getDBconnection () ;
             $sql = "SELECT * FROM user WHERE user_id=$WikiUserID" ;
@@ -26,11 +27,12 @@ class WikiUser {
                     $this->password = $s->user_password ;
                     $this->id = $s->user_id ;
                     $this->isLoggedIn = true ;
+		    $sqldata = $s ;
                     }
                 mysql_free_result ( $result ) ;
-                }
+             }
             }
-        $this->loadSettings () ;
+        $this->loadSettings ( $sqldata ) ;
         $this->ensureDefaultOptions () ;
         }
 
@@ -61,26 +63,27 @@ class WikiUser {
         if ( $this->options["numberHeadings"] == "" ) $this->options["numberHeadings"] = "no" ;
         if ( $this->options["viewFrames"] == "" ) $this->options["viewFrames"] = "no" ;
         if ( $this->options["viewRecentChanges"] == "" ) $this->options["viewRecentChanges"] = "50" ;
-
 #       if ( $this->options["showStructure"] == "" ) # NO SUBPAGES ANYMORE
         $this->options["showStructure"] = "no" ;
         }
 
     # Loads the user settings from the database
-    function loadSettings () {
+    function loadSettings ( $sqldata = "empty" ) {
         $this->rights = array () ;
         
         # if the user is not logged in, there are no settings        
         if ( !$this->isLoggedIn ) return ;
-        
-        # get the settings from the database
-        $connection = getDBconnection() ;
-        $sql = "SELECT user_options, user_rights, user_password, user_email
-                FROM user
-                WHERE user_id = $this->id" ;
-        $result = mysql_query ( $sql , $connection ) ;
-        $t = mysql_fetch_object ( $result ) ;
-        mysql_free_result ( $result ) ;
+
+	if ( $sqldata != "empty" ) $t = $sqldata ;
+	else { # get the settings from the database
+	        $connection = getDBconnection() ;
+        	$sql = "SELECT user_options, user_rights, user_password, user_email
+	                FROM user
+        	        WHERE user_id = $this->id" ;
+	        $result = mysql_query ( $sql , $connection ) ;
+        	$t = mysql_fetch_object ( $result ) ;
+	        mysql_free_result ( $result ) ;
+		}
         
         # filling the settings variables
         $this->options = array () ;        
@@ -92,7 +95,6 @@ class WikiUser {
         $this->rights = explode ( "," , strtolower ( $t->user_rights ) ) ;
         $this->password = $t->user_password ; 
         $this->email = $t->user_email ;
-#        $this->skin () ;
     }
 
     # Saves/updates the user settings in the database
@@ -142,15 +144,7 @@ class WikiUser {
     function doesUserExist () {
         $s = trim ( $this->name ) ;
         if ( $s == "" ) return false ;
-        $connection = getDBconnection () ;
-        $sql = "SELECT user_id FROM user WHERE user_name=\"$s\"" ;
-        $result = mysql_query ( $sql , $connection ) ;
-        if ( $result == "" ) {
-            return false ;
-            }
-        $s = mysql_fetch_object ( $result ) ;
-        mysql_free_result ( $result ) ;
-        if ( $s == "" ) return false ;
+        if ( getMySQL ( "user" , "user_id" , "user_name=\"$s\"" ) == "" ) return false ;
         return true ;
         }
 
@@ -176,7 +170,7 @@ class WikiUser {
                 $ret = str_replace ( "$1" , $this->name , $wikiYouAreLoggedIn ) ;
                 $this->id = $s->user_id ;
                 $this->isLoggedIn = true ;
-                $this->loadSettings() ;
+                $this->loadSettings ( $s ) ;
             } else {
                 $ret = str_replace ( "$1" , $this->name , $wikiWrongPassword ) ;
                 }

@@ -155,4 +155,18 @@ function getmicrotime(){
 	return ((float)$usec + (float)$sec);
 }
 
+function loadSkin () {
+	global $user , $title , $doSkin ;
+	include_once ( "wikiSkins.php" ) ; # Dummy class only
+	if ( $user->isLoggedIn ) {
+		if ( strtolower ( $title ) == "special:editusersettings" AND $doSkin != "" ) { # Chose new skin!
+			$t = str_replace ( " " , "" , $doSkin ) ;
+		} else $t = str_replace ( " " , "" , $user->options["skin"] ) ;
+		if ( strtolower ( $t ) == "none" OR $t == "" ) $t = "Standard" ;
+		include_once ( "wikiSkin$t.php" ) ;
+	} else {
+		include_once ( "wikiSkinStandard.php" ) ;
+		}
+	}
+
 ?>
