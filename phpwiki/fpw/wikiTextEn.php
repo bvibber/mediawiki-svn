@@ -93,7 +93,7 @@ $wikiThisCategory = "Articles in this category" ;
 $wikiCounter = "This page has been accessed $1 times." ;
 
 # Interwiki links
-$wikiInterwiki = array ( "w"=>"http://www.wikipedia.com/wiki/$1" , "m"=>"http://meta.wikipedia.com" ) ;
+$wikiInterwiki = array ( "w"=>"http://www.wikipedia.com/wiki/$1" , "m"=>"http://meta.wikipedia.com/wiki.phtml?title=$1" ) ;
 
 # Language interwiki links
 $wikiOtherLanguages = array (

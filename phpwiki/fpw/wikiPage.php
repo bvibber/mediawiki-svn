@@ -319,38 +319,22 @@ class WikiPage extends WikiTitle {
                     $tt = ucfirst ( str_replace ( " " , "_" , $topic->mainTitle ) ) ;
                     $iwl = str_replace ( "$1" , $tt , $iwl ) ;
                     if ( $c[0] == $c[1] ) $text = $topic->getNiceTitle ( $topic->mainTitle ) ;
-                    #$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
                     $linkStyle = "class=\"interwiki\"";
                     $s .= "<a $linkStyle href=\"$iwl\">$text</a>" ;
                 } else if ( in_array ( strtolower ( $topic->namespace ) , array_keys ( $wikiOtherLanguages ) ) ) {
                     $tt = ucfirst ( str_replace ( " " , "_" , $topic->mainTitle ) ) ;
                     $iwl = str_replace ( "$1" , $tt , $wikiOtherLanguages[strtolower($topic->namespace)] ) ;
                     if ( $c[0] == $c[1] ) $text = $topic->getNiceTitle ( $topic->mainTitle ) ;
-                    #$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
-                    $linkStyle = "class=\"interwiki\"";
                     $this->otherLanguages[$topic->namespace] = $iwl ;
                 } else if ( $doesItExist ) {
                     $linkedLinks[$topic->secureTitle]++ ;
                     if ( $user->options["showHover"] == "yes" ) $hover = "title=\"" . htmlspecialchars ( $link ) . "\"" ;
                     #if ( $user->options["underlineLinks"] == "no" ) $linkStyle = " style=\"color:blue;text-decoration:none\"" ;
                     $ulink = nurlencode ( $link ) ;
-                    $s .= "<a href=\"".wikiLink($ulink)."\" $hover$linkStyle>$text</a>" ;
+                    $s .= "<a href=\"".wikiLink($ulink)."\" $hover>$text</a>" ;
                 } else {
                     $unlinkedLinks[$link]++ ;
-                    #$text2 = $text ;
-                    #$style="" ;
                     if ( $user->options["showHover"] == "yes" ) $hover = "title=\"Edit '" . htmlspecialchars ( $link ) . "'\"" ;
-                    #if ( substr_count ( $text2 , " " ) > 0 ) {
-                    #   if ( $action == "print" ) $text2 = "<$wikiPrintLinksMarkup>$text2</$wikiPrintLinksMarkup>" ;
-                    #   else $text2 = "[$text2]" ;
-                    #   }
-                    #if ( $user->options["underlineLinks"] == "no" ) { $text = $text2 ; $style = ";text-decoration:none" ; }
-                    #$ulink = nurlencode ( $link ) ;
-                    #if ( $user->options["markupNewTopics"] == "red" )
-                    #   $s .= "<a style=\"color:red$style\" href=\"".wikiLink("$ulink&action=edit")."\" $hover>$text</a>" ;
-                    #else if ( $user->options["markupNewTopics"] == "inverse" )
-                    #   $s .= "<a style=\"color:white;background:blue$style\" href=\"".wikiLink("$ulink&action=edit")."\" $hover>$text</a>";
-                    #else $s .= "$text2<a href=\"".wikiLink("$ulink&action=edit")."\" $hover>?</a>" ;
                     $ulink = wikilink( nurlencode ( $link ) . "&action=edit" ) ;
                     if ( substr_count ( $text , " " ) > 0 ) {
                         $s .= "<span class=\"newlinkedge\">[</span>";
@@ -1169,6 +1153,17 @@ class WikiPage extends WikiTitle {
             if ( $this->cache != "" ) { # Using cache
                 $middle = $this->cache ;
                 #$middle = "<p>(cached)</p>" . $this->cache ; #FIXME
+
+		# Need to check for other-language links, which do not appear in the link arrays
+		$this->otherLanguages = array () ;
+		global $wikiOtherLanguages ;
+		preg_replace ( "/\[\[([a-z]{2})\:\s*([^\]]+)\s*\]\]/ie" ,
+			"( ( ( \$langurl = \$wikiOtherLanguages[\$lang = strtolower ( \"\$1\" )] ) != '' )
+			? ( \$this->otherLanguages[\$lang] = str_replace ( '\\$1' ,
+				ucfirst ( str_replace ( array ( '+' , '%25' ) , array ( '_' , '%' ) , nurlencode ( \"\$2\" ) ) ) ,
+				\$langurl ) )
+			: '' )" ,
+			$this->contents ) ;
             } else {
                 $middle = $this->parseContents($middle) ;
                 if ( $this->canBeCached ) { # Generating cache
