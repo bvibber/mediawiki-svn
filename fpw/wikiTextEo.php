@@ -122,8 +122,8 @@ $wikiRedirectFrom = "(alidirektita el $1)" ;
 $wikiRecentChanges = "Lastaj Ŝanĝoj" ;
 $wikiRecentChangesLink = "RecentChanges" ; # "special:" is added automatically
 $wikiSpecialPagesLink = "Special_pages" ; # "special:" is added automatically
-$wikiEditThisPage = "Redaktu ĉi tiun paĝon" ;
-$wikiDeleteThisPage = "Forigu ĉi tiun paĝon" ;
+$wikiEditThisPage = "Redaktu paĝon" ;
+$wikiDeleteThisPage = "Forigu paĝon" ;
 $wikiUpload = "Alŝutu dosieron" ;
 $wikiHistory = "Historio" ;
 $wikiRandomPage = "Hazarda Paĝo" ;
@@ -134,7 +134,7 @@ $wikiNewPages = "Novaj paĝoj" ;
 $wikiOrphans = "Orfoj" ;
 $wikiMostWanted = "Plej dezirataj" ;
 $wikiAllPages = "Ĉiu paĝo" ;
-$wikiStubs = "Malplenaj artikoloj" ;
+$wikiStubs = "Artikoletoj" ;
 $wikiLongPages = "Longaj artikoloj" ;
 $wikiListUsers = "Listigu uzantojn" ;
 $wikiMyWatchlist = "Mia Atentataro" ;
@@ -159,8 +159,8 @@ Se vi certas, ke vi volas forbari ĉi tiun uzanton, bonvolu enskribi noteton pri
 en la malsupran skatolon kaj alklaku &quot;Forbaru&quot;. Vi povas skribi pli longan
 klarigon en [[$wikiTalkBlockedIPsLink]]." ;
 $wikiIPblocked = "<font color=\"red\" size=\"+1\">Vian IP-on oni forbaris! Viajn redaktojn la sistemo ne konservos. Bonvolu kontakti sistemestron por forigi la baradon, aŭ reprovu antaŭ iom de tempo.</font>" ;
-$wikiBugReports = "Raportu Teknikajn Problemojn" ;
-$wikiBugReportsLink = "vikipedio:Teknikaj Problemoj" ;
+$wikiBugReports = "Ĉu problemoj?" ;
+$wikiBugReportsLink = "vikipedio:Teknikaj problemoj" ;
 $wikiPrintFooter = "<hr>Ĉi tiu artikolo estis ĉerpita el <b>Wikipedia</b> (<a href=\"$1\">$1</a>),
 la libera, senpaga encikopedia surreta. La artikolo troviĝas ĉe <a href=\"$2\">$2</a>" ;
 
@@ -371,6 +371,7 @@ $wikiWantedToggleNumbers = "Klaku ĉi tien por ŝalti montri paĝtitolojn kiuj k
 $wikiWantedLine = "$1 deziras de <b>$2</b> artikoloj <nowiki>(vidu tiuj <a href=\"$3\">paĝojn kiuj ligas al \"$4\"</a></nowiki>)" ;
 $wikiLastChange = "Laste redaktita $1" ;
 $wikiLastChangeCologne = "Laste redaktita:<br>\n<font size=-2>&nbsp;&nbsp;$1</font>" ;
+$wikiShowLastChange = "Montru lastan ŝanĝon" ;
 $wikiPopularPages = "Plej vizitataj" ;
 $wikiPopularTitle = "Plej Vizitataj Paĝoj" ;
 $wikiRefreshThisPage = "Rekalkulu ĉi tiun liston" ;
