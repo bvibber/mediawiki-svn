@@ -11,9 +11,9 @@
 
 typedef enum NodeType {
     Article, Paragraph, Heading, TextBlock, TextToken, ExtensionToken,
-    Newlines, PreBlock, PreLine, Bold, Italics, LinkEtc, LinkTarget,
-    LinkOption, Table, TableRow, TableCell, TableHead,
-    Attribute, AttributeGroup, Comment /* 20 */,
+    Newlines, PreBlock, PreLine, Bold, Italics, Comment,
+    LinkEtc, LinkTarget, LinkOption, Template, TemplateVar,
+    Table, TableRow, TableCell, TableHead /* 20 */, Attribute, AttributeGroup,
 
     /* After first parse */
     ListBlock, ListLine, ListBullet, ListNumbered,
@@ -121,6 +121,9 @@ Node convertHeadingToText (int info);
  * <italics>X<italics>Y</italics>Z</italics> into
  * <italics>X</italics>Y<italics>Z</italics>. Returns node. */
 Node processNestedItalics (Node node);
+
+void freeRecursively (Node node);
+void freeRecursivelyWithSiblings (Node node);
 
 char* outputXML (Node node, int initialBufferSize);
 

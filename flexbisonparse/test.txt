@@ -12,3 +12,5 @@ The [[video game|computer game]] '''R-type''' is <nowiki>cool & stuff</nowiki> b
 |- || Version 2     || much better |}
 
 This is a || token in the middle of text.
+
+{{stub}}

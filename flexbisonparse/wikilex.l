@@ -168,7 +168,8 @@ int encodeTableRowInfo (char* input, int initleng)
                                     return ENDHEADING;
                                 }
 
-<cannotbelistorheadingorpre,canbeheading>[^\|\r\n][^\<\>\[\]\{\}\r\n\'\|\=\!]*      |
+<cannotbelistorheadingorpre,canbeheading>[^\!\|\r\n][^\<\>\[\]\{\}\r\n\'\|\=\!]*    |
+<cannotbelistorheadingorpre,canbeheading>\!                                         |
 
 <inattributeapo>[^\'\|\r\n][^\<\>\[\]\{\}\r\n\'\|\=\!]*                             |
 
@@ -177,17 +178,19 @@ int encodeTableRowInfo (char* input, int initleng)
     debuglex2 ("TEXT(%s) ", yytext);
     return TEXT;                                                                    }
 
-<canbelist>[^ \|\*\#\r\n][^\<\>\[\]\{\}\r\n\'\|\!]*                                 |
+<canbelist>[^ \!\|\*\#\r\n][^\<\>\[\]\{\}\r\n\'\|\!]*                               |
+<canbelist>\!                                                                       |
 
 <attributes>[^-a-zA-Z:_\r\n\|\=][^\<\>\[\]\{\}\r\n\'\|\!]*                          |
 
-<INITIAL>[^ \|\*\#\r\n\=][^\<\>\[\]\{\}\r\n\'\|\=\!]*                               {
+<INITIAL>[^ \!\|\*\#\r\n\=][^\<\>\[\]\{\}\r\n\'\|\=\!]*                             |
+<INITIAL>\!                                                                         {
     BEGIN(cannotbelistorheadingorpre);
     yylval.node = newNodeS (TextToken, strdup (yytext));
     debuglex2 ("TEXT(%s) ", yytext);
     return TEXT;                                                                    }
 
-<startattribute>[^ \t\r\n\'\"][^ \t\r\n]*" "*                                       {
+<startattribute>[^ \t\r\n\'\"\|][^ \t\r\n\|]*" "*                                   {
     BEGIN (attributes);
     yylval.node = newNodeS (TextToken, strdup (yytext));
     debuglex2 ("TEXT(%s) ", yytext);

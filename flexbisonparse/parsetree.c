@@ -114,6 +114,20 @@ void freeRecursively (Node node)
         freeRecursively (child);
         child = next;
     }
+
+    free (node);
+}
+
+void freeRecursivelyWithSiblings (Node node)
+{
+    Node next, sibling = node;
+
+    while (sibling)
+    {
+        next = sibling->nextSibling;
+        freeRecursively (sibling);
+        sibling = next;
+    }
 }
 
 void removeAndFreeFirstChild (Node node)
@@ -735,6 +749,8 @@ void outputNode (Node node)
         node->type == Bold          ? "bold"        :
         node->type == Italics       ? "italics"     :
         node->type == Comment       ? "comment"     :
+        node->type == Template      ? "template"    :
+        node->type == TemplateVar   ? "templatevar" :
 
         node->type == Table         ? "table"       :
         node->type == TableRow      ? "tablerow"    :

@@ -28,21 +28,15 @@ int i;
     int num;
     AttributeData ad;
 }
-%type <node> article blocks block paragraph heading textorempty zeroormorenewlines preblock
-             oneormorenewlines preline bulletlistline numberlistline listseries listblock
-             zeroormorenewlinessave oneormorenewlinessave bulletlistblock numberlistblock
-             textelement textelementnoboit textelementnobold textelementnoital italicsorbold
-             textnoboit textnobold textnoital boldnoitalics italicsnobold linketc pipeseries
-             text attribute attributes tablecells tablecell tablecellcontents tablerows
-             tablerow table comment blocksnotbl blocknotbl textnoitaltbl textnoboldtbl
-             textnoboittbl textnotbl textelementnotbl textelementnoboldtbl textelementnoitaltbl
-             textelementnoboittbl paragraphnotbl linketcnotbl italorboldnotbl boldnoitalicstbl
-             italicsnoboldtbl pipeseriesnotbl textelementnoblittbp textelementnobltbpp
-             textelementnoittbpp textelementnotblpipe textelementnobitp textelementnobldp
-             textelementnoitp textelementnopipe textnoboittblpipe textnoboldtblpipe
-             textnoitaltblpipe textnotblpipe textnoboitpipe textnoboldpipe textnoitalpipe
-             textnopipe italorboldnopipe italorboldnotblp boldnoitalicspp boldnoitaltblpp
-             italicsnoboldpp italnoboldtblpp
+%type <node> article attribute attributes block blockintbl blocks blocksintbl boldnoitalics
+             bulletlistblock bulletlistline comment heading italicsnobold italicsorbold linketc
+             listblock listseries numberlistblock numberlistline oneormorenewlines
+             oneormorenewlinessave paragraph paragraphintbl pipeseries preblock
+             preline table tablecell tablecellcontents tablecells tablerow tablerows text
+             textelement textelementnoboit textelementnobold textelementnoital textelementinlink
+             textnoboit textnobold textnoital textinlink textorempty zeroormorenewlines
+             zeroormorenewlinessave textintbl textelementintbl textintmpl textelementintmpl
+             template templatevar
              TEXT EXTENSION
 %type <ad>   ATTRIBUTE
 %type <num>  HEADING ENDHEADING TABLEBEGIN TABLECELL TABLEHEAD TABLEROW EQUALS ATTRAPO ATTRQ
@@ -77,8 +71,8 @@ article         :   /* empty */                        { debugf ("article#1 "); 
 blocks          :   block                   { debugf ("blocks#1 "); $$ = $1; }
                 |   blocks block            { debugf ("blocks#2 "); $$ = nodeAddSibling ($1, $2); }
 
-blocksnotbl     :   blocknotbl              { debugf ("blocksnotbl#1 "); $$ = $1; }
-                |   blocksnotbl blocknotbl  { debugf ("blocksnotbl#2 "); $$ = nodeAddSibling ($1, $2); }
+blocksintbl     :   blockintbl              { debugf ("blocksintbl#1 "); $$ = $1; }
+                |   blocksintbl blockintbl  { debugf ("blocksintbl#2 "); $$ = nodeAddSibling ($1, $2); }
 
 block           :   preblock                        { debugf ("block#1 "); $$ = processPreBlock ($1); }
                 |   heading zeroormorenewlines      { debugf ("block#2 "); $$ = $1; }
@@ -87,12 +81,12 @@ block           :   preblock                        { debugf ("block#1 "); $$ = 
                 |   table zeroormorenewlines        { debugf ("block#5 "); $$ = $1; }
                 |   comment zeroormorenewlines      { debugf ("block#6 "); $$ = $1; }
 
-blocknotbl      :   preblock                            { debugf ("blocknotbl#1 "); $$ = processPreBlock ($1); }
-                |   heading zeroormorenewlines          { debugf ("blocknotbl#2 "); $$ = $1; }
-                |   listblock zeroormorenewlines        { debugf ("blocknotbl#3 "); $$ = $1; }
-                |   paragraphnotbl zeroormorenewlines   { debugf ("blocknotbl#4 "); $$ = $1; }
-                |   table zeroormorenewlines            { debugf ("blocknotbl#5 "); $$ = $1; }
-                |   comment zeroormorenewlines          { debugf ("blocknotbl#6 "); $$ = $1; }
+blockintbl      :   preblock                            { debugf ("blockintbl#1 "); $$ = processPreBlock ($1); }
+                |   heading zeroormorenewlines          { debugf ("blockintbl#2 "); $$ = $1; }
+                |   listblock zeroormorenewlines        { debugf ("blockintbl#3 "); $$ = $1; }
+                |   paragraphintbl zeroormorenewlines   { debugf ("blockintbl#4 "); $$ = $1; }
+                |   table zeroormorenewlines            { debugf ("blockintbl#5 "); $$ = $1; }
+                |   comment zeroormorenewlines          { debugf ("blockintbl#6 "); $$ = $1; }
 
 heading         :   HEADING text ENDHEADING
                         { debugf ("heading#1 "); $$ = nodeAddChild (newNodeI (Heading, $1), $2); }
@@ -132,81 +126,43 @@ listseries      :   /* empty */                 { debugf ("listseries#1 "); $$ =
                 |   listseries LISTBULLET       { debugf ("listseries#4 "); $$ = nodeAddChild ($1, newNode (ListBullet)); }
                 |   listseries LISTNUMBERED     { debugf ("listseries#5 "); $$ = nodeAddChild ($1, newNode (ListNumbered)); }
 
-linketc         :   OPENDBLSQBR textnopipe CLOSEDBLSQBR
+linketc         :   OPENDBLSQBR textinlink CLOSEDBLSQBR
                         { debugf ("linketc#1 "); $$ = nodeAddChild (newNodeI (LinkEtc, 0), nodeAddChild (newNode (LinkTarget), $2)); }
-                |   OPENDBLSQBR textnopipe PIPE CLOSEDBLSQBR
+                |   OPENDBLSQBR textinlink PIPE CLOSEDBLSQBR
                         { debugf ("linketc#2 "); $$ = nodeAddChild (newNodeI (LinkEtc, 1), nodeAddChild (newNode (LinkTarget), $2)); }
-                |   OPENDBLSQBR textnopipe pipeseries CLOSEDBLSQBR
+                |   OPENDBLSQBR textinlink pipeseries CLOSEDBLSQBR
                         { debugf ("linketc#3 "); $$ = nodeAddChild2 (newNodeI (LinkEtc, 0), nodeAddChild (newNode (LinkTarget), $2), $3); }
-                |   OPENDBLSQBR textnopipe pipeseries PIPE CLOSEDBLSQBR
+                |   OPENDBLSQBR textinlink pipeseries PIPE CLOSEDBLSQBR
                         { debugf ("linketc#4 "); $$ = nodeAddChild2 (newNodeI (LinkEtc, 1), nodeAddChild (newNode (LinkTarget), $2), $3); }
-                |   OPENLINK textnopipe CLOSEDBLSQBR
+                |   OPENLINK textinlink CLOSEDBLSQBR
                         { debugf ("linketc#5 "); $$ = nodeAddChild (newNodeI (LinkEtc, 2), nodeAddChild (newNode (LinkTarget), $2)); }
-                |   OPENLINK textnopipe PIPE CLOSEDBLSQBR
+                |   OPENLINK textinlink PIPE CLOSEDBLSQBR
                         { debugf ("linketc#6 "); $$ = nodeAddChild (newNodeI (LinkEtc, 3), nodeAddChild (newNode (LinkTarget), $2)); }
-                |   OPENLINK textnopipe pipeseries CLOSEDBLSQBR
+                |   OPENLINK textinlink pipeseries CLOSEDBLSQBR
                         { debugf ("linketc#7 "); $$ = nodeAddChild2 (newNodeI (LinkEtc, 2), nodeAddChild (newNode (LinkTarget), $2), $3); }
-                |   OPENLINK textnopipe pipeseries PIPE CLOSEDBLSQBR
+                |   OPENLINK textinlink pipeseries PIPE CLOSEDBLSQBR
                         { debugf ("linketc#8 "); $$ = nodeAddChild2 (newNodeI (LinkEtc, 3), nodeAddChild (newNode (LinkTarget), $2), $3); }
                     /* ... and now everything again with the CLOSEDBLSQBR missing,
                      * to take care of invalid mark-up. */
-                |   OPENDBLSQBR textnopipe
+                |   OPENDBLSQBR textinlink
                         { debugf ("linketc#9 "); $$ = makeTextBlock (newNodeS (TextToken, "[["), $2); }
-                |   OPENDBLSQBR textnopipe PIPE
+                |   OPENDBLSQBR textinlink PIPE
                         { debugf ("linketc#10 "); $$ = makeTextBlock2 (newNodeS (TextToken, "[["), $2, newNodeS (TextToken, "|")); }
-                |   OPENDBLSQBR textnopipe pipeseries
+                |   OPENDBLSQBR textinlink pipeseries
                         { debugf ("linketc#11 "); $$ = makeTextBlock2 (newNodeS (TextToken, "[["), $2, convertPipeSeriesToText ($3)); }
-                |   OPENDBLSQBR textnopipe pipeseries PIPE
+                |   OPENDBLSQBR textinlink pipeseries PIPE
                         { debugf ("linketc#12 "); $$ = makeTextBlock3 (newNodeS (TextToken, "[["), $2, convertPipeSeriesToText ($3), newNodeS (TextToken, "|")); }
-                |   OPENLINK textnopipe
+                |   OPENLINK textinlink
                         { debugf ("linketc#13 "); $$ = makeTextBlock (newNodeS (TextToken, "[[:"), $2); }
-                |   OPENLINK textnopipe PIPE
+                |   OPENLINK textinlink PIPE
                         { debugf ("linketc#14 "); $$ = makeTextBlock2 (newNodeS (TextToken, "[[:"), $2, newNodeS (TextToken, "|")); }
-                |   OPENLINK textnopipe pipeseries
+                |   OPENLINK textinlink pipeseries
                         { debugf ("linketc#15 "); $$ = makeTextBlock2 (newNodeS (TextToken, "[[:"), $2, convertPipeSeriesToText ($3)); }
-                |   OPENLINK textnopipe pipeseries PIPE
+                |   OPENLINK textinlink pipeseries PIPE
                         { debugf ("linketc#16 "); $$ = makeTextBlock3 (newNodeS (TextToken, "[[:"), $2, convertPipeSeriesToText ($3), newNodeS (TextToken, "|")); }
 
-linketcnotbl    :   OPENDBLSQBR textnotblpipe CLOSEDBLSQBR
-                        { debugf ("linketcnotbl#1 "); $$ = nodeAddChild (newNodeI (LinkEtc, 0), nodeAddChild (newNode (LinkTarget), $2)); }
-                |   OPENDBLSQBR textnotblpipe PIPE CLOSEDBLSQBR
-                        { debugf ("linketcnotbl#2 "); $$ = nodeAddChild (newNodeI (LinkEtc, 1), nodeAddChild (newNode (LinkTarget), $2)); }
-                |   OPENDBLSQBR textnotblpipe pipeseriesnotbl CLOSEDBLSQBR
-                        { debugf ("linketcnotbl#3 "); $$ = nodeAddChild2 (newNodeI (LinkEtc, 0), nodeAddChild (newNode (LinkTarget), $2), $3); }
-                |   OPENDBLSQBR textnotblpipe pipeseriesnotbl PIPE CLOSEDBLSQBR
-                        { debugf ("linketcnotbl#4 "); $$ = nodeAddChild2 (newNodeI (LinkEtc, 1), nodeAddChild (newNode (LinkTarget), $2), $3); }
-                |   OPENLINK textnotblpipe CLOSEDBLSQBR
-                        { debugf ("linketcnotbl#5 "); $$ = nodeAddChild (newNodeI (LinkEtc, 2), nodeAddChild (newNode (LinkTarget), $2)); }
-                |   OPENLINK textnotblpipe PIPE CLOSEDBLSQBR
-                        { debugf ("linketcnotbl#6 "); $$ = nodeAddChild (newNodeI (LinkEtc, 3), nodeAddChild (newNode (LinkTarget), $2)); }
-                |   OPENLINK textnotblpipe pipeseriesnotbl CLOSEDBLSQBR
-                        { debugf ("linketcnotbl#7 "); $$ = nodeAddChild2 (newNodeI (LinkEtc, 2), nodeAddChild (newNode (LinkTarget), $2), $3); }
-                |   OPENLINK textnotblpipe pipeseriesnotbl PIPE CLOSEDBLSQBR
-                        { debugf ("linketcnotbl#8 "); $$ = nodeAddChild2 (newNodeI (LinkEtc, 3), nodeAddChild (newNode (LinkTarget), $2), $3); }
-                    /* ... and now everything again with the CLOSEDBLSQBR missing,
-                     * to take care of invalid mark-up. */
-                |   OPENDBLSQBR textnotblpipe
-                        { debugf ("linketcnotbl#9 "); $$ = makeTextBlock (newNodeS (TextToken, "[["), $2); }
-                |   OPENDBLSQBR textnotblpipe PIPE
-                        { debugf ("linketcnotbl#10 "); $$ = makeTextBlock2 (newNodeS (TextToken, "[["), $2, newNodeS (TextToken, "|")); }
-                |   OPENDBLSQBR textnotblpipe pipeseriesnotbl
-                        { debugf ("linketcnotbl#11 "); $$ = makeTextBlock2 (newNodeS (TextToken, "[["), $2, convertPipeSeriesToText ($3)); }
-                |   OPENDBLSQBR textnotblpipe pipeseriesnotbl PIPE
-                        { debugf ("linketcnotbl#12 "); $$ = makeTextBlock3 (newNodeS (TextToken, "[["), $2, convertPipeSeriesToText ($3), newNodeS (TextToken, "|")); }
-                |   OPENLINK textnotblpipe
-                        { debugf ("linketcnotbl#13 "); $$ = makeTextBlock (newNodeS (TextToken, "[[:"), $2); }
-                |   OPENLINK textnotblpipe PIPE
-                        { debugf ("linketcnotbl#14 "); $$ = makeTextBlock2 (newNodeS (TextToken, "[[:"), $2, newNodeS (TextToken, "|")); }
-                |   OPENLINK textnotblpipe pipeseriesnotbl
-                        { debugf ("linketcnotbl#15 "); $$ = makeTextBlock2 (newNodeS (TextToken, "[[:"), $2, convertPipeSeriesToText ($3)); }
-                |   OPENLINK textnotblpipe pipeseriesnotbl PIPE
-                        { debugf ("linketcnotbl#16 "); $$ = makeTextBlock3 (newNodeS (TextToken, "[[:"), $2, convertPipeSeriesToText ($3), newNodeS (TextToken, "|")); }
-
-pipeseries      :   PIPE textnopipe               { debugf ("pipeseries#1 "); $$ = nodeAddChild (newNode (LinkOption), $2); }
-                |   pipeseries PIPE textnopipe    { debugf ("pipeseries#2 "); $$ = nodeAddSibling ($1, nodeAddChild (newNode (LinkOption), $3)); }
-
-pipeseriesnotbl :   PIPE textnotblpipe                  { debugf ("pipeseriesnotbl#1 "); $$ = nodeAddChild (newNode (LinkOption), $2); }
-                |   pipeseriesnotbl PIPE textnotblpipe  { debugf ("pipeseriesnotbl#2 "); $$ = nodeAddSibling ($1, nodeAddChild (newNode (LinkOption), $3)); }
+pipeseries      :   PIPE textinlink               { debugf ("pipeseries#1 "); $$ = nodeAddChild (newNode (LinkOption), $2); }
+                |   pipeseries PIPE textinlink    { debugf ("pipeseries#2 "); $$ = nodeAddSibling ($1, nodeAddChild (newNode (LinkOption), $3)); }
 
 textorempty     :   /* empty */             { debugf ("textorempty#1 "); $$ = newNodeS (TextToken, ""); }
                 |   text                    { debugf ("textorempty#2 "); $$ = $1; }
@@ -262,150 +218,6 @@ italicsorbold   :   APO2 textnoital APO2
                         { debugf ("italicsorbold#17 ");
                             $$ = makeTextBlock (newNodeS (TextToken, "'''''"), $2); }
 
-italorboldnotbl :   APO2 textnoitaltbl APO2
-                        { debugf ("italorboldnotbl#1 "); $$ = nodeAddChild (newNode (Italics), $2); }
-                |   APO2 textnoitaltbl APO3 textnoboittbl APO5
-                        { debugf ("italorboldnotbl#2 "); $$ = nodeAddChild (newNode (Italics),
-                                makeTextBlock ($2, nodeAddChild (newNode (Bold), $4))); }
-                |   APO2 textnoitaltbl APO3 textnoboittbl
-                        { debugf ("italorboldnotbl#3 "); $$ =
-                        makeTextBlock2 (nodeAddChild (newNode (Italics), $2), newNodeS (TextToken, "'"), $4); }
-                |   APO2 textnoitaltbl
-                        { debugf ("italorboldnotbl#4 "); $$ = makeTextBlock (newNodeS (TextToken, "''"), $2); }
-                |   APO3 textnoboldtbl APO3
-                        { debugf ("italorboldnotbl#5 "); $$ = nodeAddChild (newNode (Bold), $2); }
-                |   APO3 textnoboldtbl APO2 textnoboittbl APO5
-                        { debugf ("italorboldnotbl#6 "); $$ = nodeAddChild (newNode (Bold),
-                            makeTextBlock ($2, nodeAddChild (newNode (Italics), $4))); }
-                |   APO3 textnoboldtbl APO2 textnoboittbl
-                        { debugf ("italorboldnotbl#7 "); $$ = processNestedItalics (makeTextBlock2 (newNodeS
-                            (TextToken, "'"), nodeAddChild (newNode (Italics), $2), $4)); }
-                |   APO3 textnoboldtbl APO2
-                        { debugf ("italorboldnotbl#8 "); $$ = processNestedItalics (makeTextBlock (newNodeS
-                            (TextToken, "'"), nodeAddChild (newNode (Italics), $2))); }
-                |   APO3 textnoboldtbl
-                        { debugf ("italorboldnotbl#9 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"), $2); }
-                |   APO5 textnoboittbl APO5
-                        { debugf ("italorboldnotbl#10 "); $$ = nodeAddChild (newNode (Italics),
-                            nodeAddChild (newNode (Bold), $2)); }
-                |   APO5 textnoboittbl APO3 textnoitaltbl APO2
-                        { debugf ("italorboldnotbl#11 "); $$ = nodeAddChild (newNode (Italics),
-                            makeTextBlock (nodeAddChild (newNode (Bold), $2), $4)); }
-                |   APO5 textnoboittbl APO3 textnoitaltbl
-                        { debugf ("italorboldnotbl#12 "); $$ = makeTextBlock2 (newNodeS (TextToken, "''"),
-                            nodeAddChild (newNode (Bold), $2), $4); }
-                |   APO5 textnoboittbl APO3
-                        { debugf ("italorboldnotbl#13 "); $$ = makeTextBlock (newNodeS (TextToken, "''"),
-                            nodeAddChild (newNode (Bold), $2)); }
-                |   APO5 textnoboittbl APO2 textnoboldtbl APO3
-                        { debugf ("italorboldnotbl#14 "); $$ = nodeAddChild (newNode (Bold),
-                            makeTextBlock (nodeAddChild (newNode (Italics), $2), $4)); }
-                |   APO5 textnoboittbl APO2 textnoboldtbl
-                        { debugf ("italorboldnotbl#15 "); $$ = makeTextBlock2 (newNodeS (TextToken, "'''"),
-                            nodeAddChild (newNode (Italics), $2), $4); }
-                |   APO5 textnoboittbl APO2
-                        { debugf ("italorboldnotbl#16 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"),
-                            nodeAddChild (newNode (Italics), $2)); }
-                |   APO5 textnoboittbl
-                        { debugf ("italorboldnotbl#17 ");
-                            $$ = makeTextBlock (newNodeS (TextToken, "'''''"), $2); }
-
-italorboldnopipe:   APO2 textnoitalpipe APO2
-                        { debugf ("italicsorbold#1 "); $$ = nodeAddChild (newNode (Italics), $2); }
-                |   APO2 textnoitalpipe APO3 textnoboitpipe APO5
-                        { debugf ("italicsorbold#2 "); $$ = nodeAddChild (newNode (Italics),
-                                makeTextBlock ($2, nodeAddChild (newNode (Bold), $4))); }
-                |   APO2 textnoitalpipe APO3 textnoboitpipe
-                        { debugf ("italicsorbold#3 "); $$ =
-                        makeTextBlock2 (nodeAddChild (newNode (Italics), $2), newNodeS (TextToken, "'"), $4); }
-                |   APO2 textnoitalpipe
-                        { debugf ("italicsorbold#4 "); $$ = makeTextBlock (newNodeS (TextToken, "''"), $2); }
-                |   APO3 textnoboldpipe APO3
-                        { debugf ("italicsorbold#5 "); $$ = nodeAddChild (newNode (Bold), $2); }
-                |   APO3 textnoboldpipe APO2 textnoboitpipe APO5
-                        { debugf ("italicsorbold#6 "); $$ = nodeAddChild (newNode (Bold),
-                            makeTextBlock ($2, nodeAddChild (newNode (Italics), $4))); }
-                |   APO3 textnoboldpipe APO2 textnoboitpipe
-                        { debugf ("italicsorbold#7 "); $$ = processNestedItalics (makeTextBlock2 (newNodeS
-                            (TextToken, "'"), nodeAddChild (newNode (Italics), $2), $4)); }
-                |   APO3 textnoboldpipe APO2
-                        { debugf ("italicsorbold#8 "); $$ = processNestedItalics (makeTextBlock (newNodeS
-                            (TextToken, "'"), nodeAddChild (newNode (Italics), $2))); }
-                |   APO3 textnoboldpipe
-                        { debugf ("italicsorbold#9 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"), $2); }
-                |   APO5 textnoboitpipe APO5
-                        { debugf ("italicsorbold#10 "); $$ = nodeAddChild (newNode (Italics),
-                            nodeAddChild (newNode (Bold), $2)); }
-                |   APO5 textnoboitpipe APO3 textnoitalpipe APO2
-                        { debugf ("italicsorbold#11 "); $$ = nodeAddChild (newNode (Italics),
-                            makeTextBlock (nodeAddChild (newNode (Bold), $2), $4)); }
-                |   APO5 textnoboitpipe APO3 textnoitalpipe
-                        { debugf ("italicsorbold#12 "); $$ = makeTextBlock2 (newNodeS (TextToken, "''"),
-                            nodeAddChild (newNode (Bold), $2), $4); }
-                |   APO5 textnoboitpipe APO3
-                        { debugf ("italicsorbold#13 "); $$ = makeTextBlock (newNodeS (TextToken, "''"),
-                            nodeAddChild (newNode (Bold), $2)); }
-                |   APO5 textnoboitpipe APO2 textnoboldpipe APO3
-                        { debugf ("italicsorbold#14 "); $$ = nodeAddChild (newNode (Bold),
-                            makeTextBlock (nodeAddChild (newNode (Italics), $2), $4)); }
-                |   APO5 textnoboitpipe APO2 textnoboldpipe
-                        { debugf ("italicsorbold#15 "); $$ = makeTextBlock2 (newNodeS (TextToken, "'''"),
-                            nodeAddChild (newNode (Italics), $2), $4); }
-                |   APO5 textnoboitpipe APO2
-                        { debugf ("italicsorbold#16 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"),
-                            nodeAddChild (newNode (Italics), $2)); }
-                |   APO5 textnoboitpipe
-                        { debugf ("italicsorbold#17 ");
-                            $$ = makeTextBlock (newNodeS (TextToken, "'''''"), $2); }
-
-italorboldnotblp:   APO2 textnoitaltblpipe APO2
-                        { debugf ("italorboldnotbl#1 "); $$ = nodeAddChild (newNode (Italics), $2); }
-                |   APO2 textnoitaltblpipe APO3 textnoboittblpipe APO5
-                        { debugf ("italorboldnotbl#2 "); $$ = nodeAddChild (newNode (Italics),
-                                makeTextBlock ($2, nodeAddChild (newNode (Bold), $4))); }
-                |   APO2 textnoitaltblpipe APO3 textnoboittblpipe
-                        { debugf ("italorboldnotbl#3 "); $$ =
-                        makeTextBlock2 (nodeAddChild (newNode (Italics), $2), newNodeS (TextToken, "'"), $4); }
-                |   APO2 textnoitaltblpipe
-                        { debugf ("italorboldnotbl#4 "); $$ = makeTextBlock (newNodeS (TextToken, "''"), $2); }
-                |   APO3 textnoboldtblpipe APO3
-                        { debugf ("italorboldnotbl#5 "); $$ = nodeAddChild (newNode (Bold), $2); }
-                |   APO3 textnoboldtblpipe APO2 textnoboittblpipe APO5
-                        { debugf ("italorboldnotbl#6 "); $$ = nodeAddChild (newNode (Bold),
-                            makeTextBlock ($2, nodeAddChild (newNode (Italics), $4))); }
-                |   APO3 textnoboldtblpipe APO2 textnoboittblpipe
-                        { debugf ("italorboldnotbl#7 "); $$ = processNestedItalics (makeTextBlock2 (newNodeS
-                            (TextToken, "'"), nodeAddChild (newNode (Italics), $2), $4)); }
-                |   APO3 textnoboldtblpipe APO2
-                        { debugf ("italorboldnotbl#8 "); $$ = processNestedItalics (makeTextBlock (newNodeS
-                            (TextToken, "'"), nodeAddChild (newNode (Italics), $2))); }
-                |   APO3 textnoboldtblpipe
-                        { debugf ("italorboldnotbl#9 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"), $2); }
-                |   APO5 textnoboittblpipe APO5
-                        { debugf ("italorboldnotbl#10 "); $$ = nodeAddChild (newNode (Italics),
-                            nodeAddChild (newNode (Bold), $2)); }
-                |   APO5 textnoboittblpipe APO3 textnoitaltblpipe APO2
-                        { debugf ("italorboldnotbl#11 "); $$ = nodeAddChild (newNode (Italics),
-                            makeTextBlock (nodeAddChild (newNode (Bold), $2), $4)); }
-                |   APO5 textnoboittblpipe APO3 textnoitaltblpipe
-                        { debugf ("italorboldnotbl#12 "); $$ = makeTextBlock2 (newNodeS (TextToken, "''"),
-                            nodeAddChild (newNode (Bold), $2), $4); }
-                |   APO5 textnoboittblpipe APO3
-                        { debugf ("italorboldnotbl#13 "); $$ = makeTextBlock (newNodeS (TextToken, "''"),
-                            nodeAddChild (newNode (Bold), $2)); }
-                |   APO5 textnoboittblpipe APO2 textnoboldtblpipe APO3
-                        { debugf ("italorboldnotbl#14 "); $$ = nodeAddChild (newNode (Bold),
-                            makeTextBlock (nodeAddChild (newNode (Italics), $2), $4)); }
-                |   APO5 textnoboittblpipe APO2 textnoboldtblpipe
-                        { debugf ("italorboldnotbl#15 "); $$ = makeTextBlock2 (newNodeS (TextToken, "'''"),
-                            nodeAddChild (newNode (Italics), $2), $4); }
-                |   APO5 textnoboittblpipe APO2
-                        { debugf ("italorboldnotbl#16 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"),
-                            nodeAddChild (newNode (Italics), $2)); }
-                |   APO5 textnoboittblpipe
-                        { debugf ("italorboldnotbl#17 ");
-                            $$ = makeTextBlock (newNodeS (TextToken, "'''''"), $2); }
-
 italicsnobold   :   APO2 textnoboit APO2
                         { debugf ("italicsnobold#1 "); $$ = nodeAddChild (newNode (Italics), $2); }
                 |   APO2 textnoboit
@@ -414,36 +226,6 @@ italicsnobold   :   APO2 textnoboit APO2
 boldnoitalics   :   APO3 textnoboit APO3
                         { debugf ("boldnoitalics#1 "); $$ = nodeAddChild (newNode (Bold), $2); }
                 |   APO3 textnoboit
-                        { debugf ("boldnoitalics#2 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"), $2); }
-
-italicsnoboldpp :   APO2 textnoboitpipe APO2
-                        { debugf ("italicsnobold#1 "); $$ = nodeAddChild (newNode (Italics), $2); }
-                |   APO2 textnoboitpipe
-                        { debugf ("italicsnobold#2 "); $$ = makeTextBlock (newNodeS (TextToken, "''"), $2); }
-
-boldnoitalicspp :   APO3 textnoboitpipe APO3
-                        { debugf ("boldnoitalics#1 "); $$ = nodeAddChild (newNode (Bold), $2); }
-                |   APO3 textnoboitpipe
-                        { debugf ("boldnoitalics#2 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"), $2); }
-
-italicsnoboldtbl:   APO2 textnoboittbl APO2
-                        { debugf ("italicsnobold#1 "); $$ = nodeAddChild (newNode (Italics), $2); }
-                |   APO2 textnoboittbl
-                        { debugf ("italicsnobold#2 "); $$ = makeTextBlock (newNodeS (TextToken, "''"), $2); }
-
-boldnoitalicstbl:   APO3 textnoboittbl APO3
-                        { debugf ("boldnoitalics#1 "); $$ = nodeAddChild (newNode (Bold), $2); }
-                |   APO3 textnoboittbl
-                        { debugf ("boldnoitalics#2 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"), $2); }
-
-italnoboldtblpp :   APO2 textnoboittblpipe APO2
-                        { debugf ("italicsnobold#1 "); $$ = nodeAddChild (newNode (Italics), $2); }
-                |   APO2 textnoboittblpipe
-                        { debugf ("italicsnobold#2 "); $$ = makeTextBlock (newNodeS (TextToken, "''"), $2); }
-
-boldnoitaltblpp :   APO3 textnoboittblpipe APO3
-                        { debugf ("boldnoitalics#1 "); $$ = nodeAddChild (newNode (Bold), $2); }
-                |   APO3 textnoboittblpipe
                         { debugf ("boldnoitalics#2 "); $$ = makeTextBlock (newNodeS (TextToken, "'''"), $2); }
 
 table           :   TABLEBEGIN attributes tablerows TABLEEND
@@ -474,6 +256,9 @@ table           :   TABLEBEGIN attributes tablerows TABLEEND
                 |   TABLEBEGIN text zeroormorenewlines
                         { debugf ("table#11 "); $$ = nodeAddChild (newNode (Paragraph),
                             makeTextBlock (newNodeS (TextToken, addSpaces ("{|", $1)), $3)); }
+                |   TABLEBEGIN oneormorenewlines
+                        { debugf ("table#12 "); $$ = nodeAddChild (newNode (Paragraph),
+                            newNodeS (TextToken, addSpaces ("{|", $1))); }
 
 tablerows       :   tablerow                { debugf ("tablerows#1 "); $$ = $1; }
                 |   tablerows tablerow      { debugf ("tablerows#2 "); $$ = nodeAddSibling ($1, $2); }
@@ -486,15 +271,18 @@ tablerow        :   TABLEROW attributes tablecells
                         { debugf ("tablerow#3 "); $$ = nodeAddChild2 (newNode (TableRow), $2, $4); }
                 |   TABLEROW oneormorenewlines tablecells
                         { debugf ("tablerow#4 "); $$ = nodeAddChild (newNode (TableRow), $3); }
-                |   TABLEROW text zeroormorenewlines
-                        { debugf ("tablerow#5 "); $$ = nodeAddChild (newNode (TableRow), nodeAddChild (newNode (TableCell), $2)); }
-                |   TABLEROW attributes text zeroormorenewlines
-                        { debugf ("tablerow#6 "); $$ = nodeAddChild (newNode (TableRow), nodeAddChild2 (newNode (TableCell), convertAttributesToText ($2), $3)); }
-                |   TABLEROW zeroormorenewlines
-                        { debugf ("tablerow#7 "); $$ = 0; }
                 /* It is possible for the first table row to have no TABLEROW token */
                 |   tablecells
-                        { debugf ("tablerow#8 "); $$ = nodeAddChild (newNode (TableRow), $1); }
+                        { debugf ("tablerow#5 "); $$ = nodeAddChild (newNode (TableRow), $1); }
+                /* Some invalid mark-up catering... */
+                |   TABLEROW attributes oneormorenewlines
+                        { debugf ("tablerow#6 "); freeRecursivelyWithSiblings ($2); $$ = 0; }
+                |   TABLEROW attributes
+                        { debugf ("tablerow#7 "); freeRecursivelyWithSiblings ($2); $$ = 0; }
+                |   TABLEROW oneormorenewlines
+                        { debugf ("tablerow#8 "); $$ = 0; }
+                |   TABLEROW
+                        { debugf ("tablerow#9 "); $$ = 0; }
 
 tablecells      :   tablecell               { debugf ("tablecells#1 "); $$ = $1; }
                 |   tablecells tablecell    { debugf ("tablecells#2 "); $$ = nodeAddSibling ($1, $2); }
@@ -503,10 +291,30 @@ tablecell       :   TABLECELL attributes PIPE tablecellcontents
                         { debugf ("tablecell#1 "); $$ = nodeAddChild2 (newNode (TableCell), $2, processTableCellContents ($4)); }
                 |   TABLECELL tablecellcontents
                         { debugf ("tablecell#2 "); $$ = nodeAddChild (newNode (TableCell), processTableCellContents ($2)); }
+                |   TABLECELL attributes PIPE oneormorenewlines
+                        { debugf ("tablecell#3 "); $$ = nodeAddChild (newNode (TableCell), $2); }
+                |   TABLECELL attributes PIPE
+                        { debugf ("tablecell#4 "); $$ = nodeAddChild (newNode (TableCell), $2); }
+                |   TABLECELL oneormorenewlines
+                        { debugf ("tablecell#5 "); $$ = newNode (TableCell); }
+                |   TABLECELL
+                        { debugf ("tablecell#6 "); $$ = newNode (TableCell); }
+                |   TABLEHEAD attributes PIPE tablecellcontents
+                        { debugf ("tablecell#7 "); $$ = nodeAddChild2 (newNode (TableHead), $2, processTableCellContents ($4)); }
+                |   TABLEHEAD tablecellcontents
+                        { debugf ("tablecell#8 "); $$ = nodeAddChild (newNode (TableHead), processTableCellContents ($2)); }
+                |   TABLEHEAD attributes PIPE oneormorenewlines
+                        { debugf ("tablecell#9 "); $$ = nodeAddChild (newNode (TableHead), $2); }
+                |   TABLEHEAD attributes PIPE
+                        { debugf ("tablecell#10 "); $$ = nodeAddChild (newNode (TableHead), $2); }
+                |   TABLEHEAD oneormorenewlines
+                        { debugf ("tablecell#11 "); $$ = newNode (TableHead); }
+                |   TABLEHEAD
+                        { debugf ("tablecell#12 "); $$ = newNode (TableHead); }
 
-tablecellcontents   :   blocksnotbl
+tablecellcontents   :   blocksintbl
                             { debugf ("tablecellcontents#1 "); $$ = $1; }
-                    |   oneormorenewlines blocksnotbl
+                    |   oneormorenewlines blocksintbl
                             { debugf ("tablecellcontents#2 "); $$ = $2; }
 
 /* In order to reduce the second one (ATTRIBUTE EQUALS TEXT) correctly, this rule must
@@ -535,200 +343,178 @@ textnobold      :   textelementnobold               { debugf ("textnobold#1 "); 
                 |   textnobold textelementnobold    { debugf ("textnobold#2 "); $$ = makeTextBlock ($1, $2); }
 textnoboit      :   textelementnoboit               { debugf ("textnoboit#1 "); $$ = $1; }
                 |   textnoboit textelementnoboit    { debugf ("textnoboit#2 "); $$ = makeTextBlock ($1, $2); }
-textnotbl       :   textelementnotbl                { debugf ("textnotbl#1 "); $$ = $1; }
-                |   textnotbl textelementnotbl      { debugf ("textnotbl#2 "); $$ = makeTextBlock ($1, $2); }
-textnoitaltbl   :   textelementnoitaltbl                { debugf ("textnoitaltbl#1 "); $$ = $1; }
-                |   textnoitaltbl textelementnoitaltbl  { debugf ("textnoitaltbl#2 "); $$ = makeTextBlock ($1, $2); }
-textnoboldtbl   :   textelementnoboldtbl                { debugf ("textnoboldtbl#1 "); $$ = $1; }
-                |   textnoboldtbl textelementnoboldtbl  { debugf ("textnoboldtbl#2 "); $$ = makeTextBlock ($1, $2); }
-textnoboittbl   :   textelementnoboittbl                { debugf ("textnoboittbl#1 "); $$ = $1; }
-                |   textnoboittbl textelementnoboittbl  { debugf ("textnoboittbl#2 "); $$ = makeTextBlock ($1, $2); }
-textnopipe          :   textelementnopipe                   { debugf ("textnopipe#1 "); $$ = $1; }
-                    |   textnopipe textelementnopipe        { debugf ("textnopipe#2 "); $$ = makeTextBlock ($1, $2); }
-textnoitalpipe      :   textelementnoitp                    { debugf ("textnoitalpipe#1 "); $$ = $1; }
-                    |   textnoitalpipe textelementnoitp     { debugf ("textnoitalpipe#2 "); $$ = makeTextBlock ($1, $2); }
-textnoboldpipe      :   textelementnobldp                   { debugf ("textnoboldpipe#1 "); $$ = $1; }
-                    |   textnoboldpipe textelementnobldp    { debugf ("textnoboldpipe#2 "); $$ = makeTextBlock ($1, $2); }
-textnoboitpipe      :   textelementnobitp                   { debugf ("textnoboitpipe#1 "); $$ = $1; }
-                    |   textnoboitpipe textelementnobitp    { debugf ("textnoboitpipe#2 "); $$ = makeTextBlock ($1, $2); }
-textnotblpipe       :   textelementnotblpipe                { debugf ("textnotblpipe#1 "); $$ = $1; }
-                    |   textnotblpipe textelementnotblpipe  { debugf ("textnotblpipe#2 "); $$ = makeTextBlock ($1, $2); }
-textnoitaltblpipe   :   textelementnoittbpp                     { debugf ("textnoitaltblpipe#1 "); $$ = $1; }
-                    |   textnoitaltblpipe textelementnoittbpp   { debugf ("textnoitaltblpipe#2 "); $$ = makeTextBlock ($1, $2); }
-textnoboldtblpipe   :   textelementnobltbpp                     { debugf ("textnoboldtblpipe#1 "); $$ = $1; }
-                    |   textnoboldtblpipe textelementnobltbpp   { debugf ("textnoboldtblpipe#2 "); $$ = makeTextBlock ($1, $2); }
-textnoboittblpipe   :   textelementnoblittbp                    { debugf ("textnoboittblpipe#1 "); $$ = $1; }
-                    |   textnoboittblpipe textelementnoblittbp  { debugf ("textnoboittblpipe#2 "); $$ = makeTextBlock ($1, $2); }
+textintbl       :   textelementintbl                { debugf ("textintbl#1 "); $$ = $1; }
+                |   textintbl textelementintbl      { debugf ("textintbl#2 "); $$ = makeTextBlock ($1, $2); }
+textinlink      :   textelementinlink               { debugf ("textinlink#1 "); $$ = $1; }
+                |   textinlink textelementinlink    { debugf ("textinlink#2 "); $$ = makeTextBlock ($1, $2); }
+textintmpl      :   textelementintmpl               { debugf ("textintmpl#1 "); $$ = $1; }
+                |   textintmpl textelementintmpl    { debugf ("textintmpl#2 "); $$ = makeTextBlock ($1, $2); }
 
-textelement         :   TEXT            { debugf ("textelement#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelement#2 "); $$ = $1; }
-                    |   PIPE            { debugf ("textelement#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   CLOSEDBLSQBR    { debugf ("textelement#4 "); $$ = newNodeS (TextToken, "]]"); }
-                    |   APO2            { debugf ("textelement#5 "); $$ = newNodeS (TextToken, "''"); }
-                    |   APO3            { debugf ("textelement#6 "); $$ = newNodeS (TextToken, "'''"); }
-                    |   APO5            { debugf ("textelement#7 "); $$ = newNodeS (TextToken, "'''''"); }
-                    |   EQUALS          { debugf ("textelement#8 "); $$ = newNodeS (TextToken, addSpaces ("=", $1)); }
-                    |   TABLEBEGIN      { debugf ("textelement#9 "); $$ = newNodeS (TextToken, addSpaces ("{|", $1)); }
-                    |   TABLEEND        { debugf ("textelement#10 "); $$ = newNodeS (TextToken, "|}"); }
-                    |   TABLEROW        { debugf ("textelement#11 "); $$ = convertTableRowToText ($1); }
-                    |   TABLECELL       { debugf ("textelement#12 "); $$ = convertTableCellToText ($1); }
-                    |   TABLEHEAD       { debugf ("textelement#13 "); $$ = convertTableHeadToText ($1); }
-                    |   ATTRIBUTE       { debugf ("textelement#14 "); $$ = convertAttributeDataToText ($1); }
-                    |   comment         { debugf ("textelement#15 "); $$ = $1; }
-                    |   linketc         { debugf ("textelement#16 "); $$ = $1; }
-                    |   italicsorbold   { debugf ("textelement#17 "); $$ = $1; }
+textelement         :   TEXT                { debugf ("textelement#1 "); $$ = $1; }
+                    |   EXTENSION           { debugf ("textelement#2 "); $$ = $1; }
+                    |   PIPE                { debugf ("textelement#3 "); $$ = newNodeS (TextToken, "|"); }
+                    |   CLOSEDBLSQBR        { debugf ("textelement#4 "); $$ = newNodeS (TextToken, "]]"); }
+                    |   APO2                { debugf ("textelement#5 "); $$ = newNodeS (TextToken, "''"); }
+                    |   APO3                { debugf ("textelement#6 "); $$ = newNodeS (TextToken, "'''"); }
+                    |   APO5                { debugf ("textelement#7 "); $$ = newNodeS (TextToken, "'''''"); }
+                    |   EQUALS              { debugf ("textelement#8 "); $$ = newNodeS (TextToken, addSpaces ("=", $1)); }
+                    |   TABLEBEGIN          { debugf ("textelement#9 "); $$ = newNodeS (TextToken, addSpaces ("    {|", $1)); }
+                    |   TABLEEND            { debugf ("textelement#10 "); $$ = newNodeS (TextToken, "|}"); }
+                    |   TABLEROW            { debugf ("textelement#11 "); $$ = convertTableRowToText ($1); }
+                    |   TABLECELL           { debugf ("textelement#12 "); $$ = convertTableCellToText ($1); }
+                    |   TABLEHEAD           { debugf ("textelement#13 "); $$ = convertTableHeadToText ($1); }
+                    |   ATTRIBUTE           { debugf ("textelement#14 "); $$ = convertAttributeDataToText ($1); }
+                    |   CLOSEPENTUPLECURLY  { debugf ("textelement#15 "); $$ = newNodeS (TextToken, "}}}}}"); }
+                    |   CLOSETEMPLATEVAR    { debugf ("textelement#16 "); $$ = newNodeS (TextToken, "}}}"); }
+                    |   CLOSETEMPLATE       { debugf ("textelement#17 "); $$ = newNodeS (TextToken, "}}"); }
+                    |   comment             { debugf ("textelement#18 "); $$ = $1; }
+                    |   linketc             { debugf ("textelement#19 "); $$ = $1; }
+                    |   italicsorbold       { debugf ("textelement#20 "); $$ = $1; }
+                    |   template            { debugf ("textelement#21 "); $$ = $1; }
+                    |   templatevar         { debugf ("textelement#22 "); $$ = $1; }
 
-textelementnoital   :   TEXT            { debugf ("textelementnoital#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnoital#2 "); $$ = $1; }
-                    |   PIPE            { debugf ("textelementnoital#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   CLOSEDBLSQBR    { debugf ("textelementnoital#4 "); $$ = newNodeS (TextToken, "]]"); }
-                    |   TABLEBEGIN      { debugf ("textelementnoital#5 "); $$ = newNodeS (TextToken, addSpaces ("{|", $1)); }
-                    |   TABLEEND        { debugf ("textelementnoital#6 "); $$ = newNodeS (TextToken, "|}"); }
-                    |   TABLEROW        { debugf ("textelementnoital#7 "); $$ = convertTableRowToText ($1); }
-                    |   TABLECELL       { debugf ("textelementnoital#8 "); $$ = convertTableCellToText ($1); }
-                    |   TABLEHEAD       { debugf ("textelementnoital#9 "); $$ = convertTableHeadToText ($1); }
-                    |   comment         { debugf ("textelementnoital#10 "); $$ = $1; }
-                    |   linketc         { debugf ("textelementnoital#11 "); $$ = $1; }
-                    |   boldnoitalics   { debugf ("textelementnoital#12 "); $$ = $1; }
+textelementnoital   :   TEXT                { debugf ("textelementnoital#1 "); $$ = $1; }
+                    |   EXTENSION           { debugf ("textelementnoital#2 "); $$ = $1; }
+                    |   PIPE                { debugf ("textelementnoital#3 "); $$ = newNodeS (TextToken, "|"); }
+                    |   CLOSEDBLSQBR        { debugf ("textelementnoital#4 "); $$ = newNodeS (TextToken, "]]"); }
+                    |   TABLEBEGIN          { debugf ("textelementnoital#5 "); $$ = newNodeS (TextToken, addSpaces ("    {|", $1)); }
+                    |   TABLEEND            { debugf ("textelementnoital#6 "); $$ = newNodeS (TextToken, "|}"); }
+                    |   TABLEROW            { debugf ("textelementnoital#7 "); $$ = convertTableRowToText ($1); }
+                    |   TABLECELL           { debugf ("textelementnoital#8 "); $$ = convertTableCellToText ($1); }
+                    |   TABLEHEAD           { debugf ("textelementnoital#9 "); $$ = convertTableHeadToText ($1); }
+                    |   ATTRIBUTE           { debugf ("textelementnoital#10 "); $$ = convertAttributeDataToText ($1); }
+                    |   CLOSEPENTUPLECURLY  { debugf ("textelementnoital#11 "); $$ = newNodeS (TextToken, "}}}}}"); }
+                    |   CLOSETEMPLATEVAR    { debugf ("textelementnoital#12 "); $$ = newNodeS (TextToken, "}}}"); }
+                    |   CLOSETEMPLATE       { debugf ("textelementnoital#13 "); $$ = newNodeS (TextToken, "}}"); }
+                    |   comment             { debugf ("textelementnoital#14 "); $$ = $1; }
+                    |   linketc             { debugf ("textelementnoital#15 "); $$ = $1; }
+                    |   boldnoitalics       { debugf ("textelementnoital#16 "); $$ = $1; }
+                    |   template            { debugf ("textelementnoital#17 "); $$ = $1; }
+                    |   templatevar         { debugf ("textelementnoital#18 "); $$ = $1; }
 
-textelementnobold   :   TEXT            { debugf ("textelementnobold#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnobold#2 "); $$ = $1; }
-                    |   PIPE            { debugf ("textelementnobold#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   CLOSEDBLSQBR    { debugf ("textelementnobold#4 "); $$ = newNodeS (TextToken, "]]"); }
-                    |   TABLEBEGIN      { debugf ("textelementnobold#5 "); $$ = newNodeS (TextToken, addSpaces ("{|", $1)); }
-                    |   TABLEEND        { debugf ("textelementnobold#6 "); $$ = newNodeS (TextToken, "|}"); }
-                    |   TABLEROW        { debugf ("textelementnobold#7 "); $$ = convertTableRowToText ($1); }
-                    |   TABLECELL       { debugf ("textelementnobold#8 "); $$ = convertTableCellToText ($1); }
-                    |   TABLEHEAD       { debugf ("textelementnobold#9 "); $$ = convertTableHeadToText ($1); }
-                    |   comment         { debugf ("textelementnobold#10 "); $$ = $1; }
-                    |   linketc         { debugf ("textelementnobold#11 "); $$ = $1; }
-                    |   italicsnobold   { debugf ("textelementnobold#12 "); $$ = $1; }
+textelementnobold   :   TEXT                { debugf ("textelementnobold#1 "); $$ = $1; }
+                    |   EXTENSION           { debugf ("textelementnobold#2 "); $$ = $1; }
+                    |   PIPE                { debugf ("textelementnobold#3 "); $$ = newNodeS (TextToken, "|"); }
+                    |   CLOSEDBLSQBR        { debugf ("textelementnobold#4 "); $$ = newNodeS (TextToken, "]]"); }
+                    |   TABLEBEGIN          { debugf ("textelementnobold#5 "); $$ = newNodeS (TextToken, addSpaces ("    {|", $1)); }
+                    |   TABLEEND            { debugf ("textelementnobold#6 "); $$ = newNodeS (TextToken, "|}"); }
+                    |   TABLEROW            { debugf ("textelementnobold#7 "); $$ = convertTableRowToText ($1); }
+                    |   TABLECELL           { debugf ("textelementnobold#8 "); $$ = convertTableCellToText ($1); }
+                    |   TABLEHEAD           { debugf ("textelementnobold#9 "); $$ = convertTableHeadToText ($1); }
+                    |   ATTRIBUTE           { debugf ("textelementnobold#10 "); $$ = convertAttributeDataToText ($1); }
+                    |   CLOSEPENTUPLECURLY  { debugf ("textelementnobold#11 "); $$ = newNodeS (TextToken, "}}}}}"); }
+                    |   CLOSETEMPLATEVAR    { debugf ("textelementnobold#12 "); $$ = newNodeS (TextToken, "}}}"); }
+                    |   CLOSETEMPLATE       { debugf ("textelementnobold#13 "); $$ = newNodeS (TextToken, "}}"); }
+                    |   comment             { debugf ("textelementnobold#14 "); $$ = $1; }
+                    |   linketc             { debugf ("textelementnobold#15 "); $$ = $1; }
+                    |   italicsnobold       { debugf ("textelementnobold#16 "); $$ = $1; }
+                    |   template            { debugf ("textelementnobold#17 "); $$ = $1; }
+                    |   templatevar         { debugf ("textelementnobold#18 "); $$ = $1; }
 
-textelementnoboit   :   TEXT            { debugf ("textelementnoboit#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnoboit#2 "); $$ = $1; }
-                    |   PIPE            { debugf ("textelementnoboit#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   CLOSEDBLSQBR    { debugf ("textelementnoboit#4 "); $$ = newNodeS (TextToken, "]]"); }
-                    |   TABLEBEGIN      { debugf ("textelementnoboit#5 "); $$ = newNodeS (TextToken, addSpaces ("{|", $1)); }
-                    |   TABLEEND        { debugf ("textelementnoboit#6 "); $$ = newNodeS (TextToken, "|}"); }
-                    |   TABLEROW        { debugf ("textelementnoboit#7 "); $$ = convertTableRowToText ($1); }
-                    |   TABLECELL       { debugf ("textelementnoboit#8 "); $$ = convertTableCellToText ($1); }
-                    |   TABLEHEAD       { debugf ("textelementnoboit#9 "); $$ = convertTableHeadToText ($1); }
-                    |   comment         { debugf ("textelementnoboit#10 "); $$ = $1; }
-                    |   linketc         { debugf ("textelementnoboit#11 "); $$ = $1; }
+textelementnoboit   :   TEXT                { debugf ("textelementnoboit#1 "); $$ = $1; }
+                    |   EXTENSION           { debugf ("textelementnoboit#2 "); $$ = $1; }
+                    |   PIPE                { debugf ("textelementnoboit#3 "); $$ = newNodeS (TextToken, "|"); }
+                    |   CLOSEDBLSQBR        { debugf ("textelementnoboit#4 "); $$ = newNodeS (TextToken, "]]"); }
+                    |   TABLEBEGIN          { debugf ("textelementnoboit#5 "); $$ = newNodeS (TextToken, addSpaces ("    {|", $1)); }
+                    |   TABLEEND            { debugf ("textelementnoboit#6 "); $$ = newNodeS (TextToken, "|}"); }
+                    |   TABLEROW            { debugf ("textelementnoboit#7 "); $$ = convertTableRowToText ($1); }
+                    |   TABLECELL           { debugf ("textelementnoboit#8 "); $$ = convertTableCellToText ($1); }
+                    |   TABLEHEAD           { debugf ("textelementnoboit#9 "); $$ = convertTableHeadToText ($1); }
+                    |   ATTRIBUTE           { debugf ("textelementnoital#10 "); $$ = convertAttributeDataToText ($1); }
+                    |   CLOSEPENTUPLECURLY  { debugf ("textelementnobold#11 "); $$ = newNodeS (TextToken, "}}}}}"); }
+                    |   CLOSETEMPLATEVAR    { debugf ("textelementnobold#12 "); $$ = newNodeS (TextToken, "}}}"); }
+                    |   CLOSETEMPLATE       { debugf ("textelementnobold#13 "); $$ = newNodeS (TextToken, "}}"); }
+                    |   comment             { debugf ("textelementnoboit#14 "); $$ = $1; }
+                    |   linketc             { debugf ("textelementnoboit#15 "); $$ = $1; }
+                    |   template            { debugf ("textelementnoboit#16 "); $$ = $1; }
+                    |   templatevar         { debugf ("textelementnoboit#17 "); $$ = $1; }
 
-textelementnotbl    :   TEXT            { debugf ("textelementnotbl#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnotbl#2 "); $$ = $1; }
-                    |   PIPE            { debugf ("textelementnotbl#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   CLOSEDBLSQBR    { debugf ("textelementnotbl#4 "); $$ = newNodeS (TextToken, "]]"); }
-                    |   APO2            { debugf ("textelementnotbl#5 "); $$ = newNodeS (TextToken, "''"); }
-                    |   APO3            { debugf ("textelementnotbl#6 "); $$ = newNodeS (TextToken, "'''"); }
-                    |   APO5            { debugf ("textelementnotbl#7 "); $$ = newNodeS (TextToken, "'''''"); }
-                    |   EQUALS          { debugf ("textelementnotbl#8 "); $$ = newNodeS (TextToken, addSpaces ("=", $1)); }
-                    |   comment         { debugf ("textelementnotbl#9 "); $$ = $1; }
-                    |   linketcnotbl    { debugf ("textelementnotbl#10 "); $$ = $1; }
-                    |   italorboldnotbl { debugf ("textelementnotbl#11 "); $$ = $1; }
+textelementintbl    :   TEXT                { debugf ("textelementintbl#1 "); $$ = $1; }
+                    |   EXTENSION           { debugf ("textelementintbl#2 "); $$ = $1; }
+                    |   PIPE                { debugf ("textelementintbl#3 "); $$ = newNodeS (TextToken, "|"); }
+                    |   CLOSEDBLSQBR        { debugf ("textelementintbl#4 "); $$ = newNodeS (TextToken, "]]"); }
+                    |   APO2                { debugf ("textelementintbl#5 "); $$ = newNodeS (TextToken, "''"); }
+                    |   APO3                { debugf ("textelementintbl#6 "); $$ = newNodeS (TextToken, "'''"); }
+                    |   APO5                { debugf ("textelementintbl#7 "); $$ = newNodeS (TextToken, "'''''"); }
+                    |   EQUALS              { debugf ("textelementintbl#8 "); $$ = newNodeS (TextToken, addSpaces ("=", $1)); }
+                    |   CLOSEPENTUPLECURLY  { debugf ("textelementintbl#9 "); $$ = newNodeS (TextToken, "}}}}}"); }
+                    |   CLOSETEMPLATEVAR    { debugf ("textelementintbl#10 "); $$ = newNodeS (TextToken, "}}}"); }
+                    |   CLOSETEMPLATE       { debugf ("textelementintbl#11 "); $$ = newNodeS (TextToken, "}}"); }
+                    |   comment             { debugf ("textelementintbl#12 "); $$ = $1; }
+                    |   linketc             { debugf ("textelementintbl#13 "); $$ = $1; }
+                    |   italicsorbold       { debugf ("textelementintbl#14 "); $$ = $1; }
+                    |   template            { debugf ("textelementintbl#15 "); $$ = $1; }
+                    |   templatevar         { debugf ("textelementintbl#16 "); $$ = $1; }
 
-textelementnoitaltbl:   TEXT            { debugf ("textelementnoitaltbl#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnoitaltbl#2 "); $$ = $1; }
-                    |   PIPE            { debugf ("textelementnoitaltbl#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   CLOSEDBLSQBR    { debugf ("textelementnoitaltbl#4 "); $$ = newNodeS (TextToken, "]]"); }
-                    |   comment         { debugf ("textelementnoitaltbl#5 "); $$ = $1; }
-                    |   linketcnotbl    { debugf ("textelementnoitaltbl#6 "); $$ = $1; }
-                    |   boldnoitalicstbl{ debugf ("textelementnoitaltbl#7 "); $$ = $1; }
+textelementinlink   :   TEXT                { debugf ("textelementinlink#1 "); $$ = $1; }
+                    |   EXTENSION           { debugf ("textelementinlink#2 "); $$ = $1; }
+                    |   APO2                { debugf ("textelementinlink#3 "); $$ = newNodeS (TextToken, "''"); }
+                    |   APO3                { debugf ("textelementinlink#4 "); $$ = newNodeS (TextToken, "'''"); }
+                    |   APO5                { debugf ("textelementinlink#5 "); $$ = newNodeS (TextToken, "'''''"); }
+                    |   EQUALS              { debugf ("textelementinlink#6 "); $$ = newNodeS (TextToken, addSpaces ("=", $1)); }
+                    |   TABLEBEGIN          { debugf ("textelementinlink#7 "); $$ = newNodeS (TextToken, addSpaces ("    {|", $1)); }
+                    |   TABLEEND            { debugf ("textelementinlink#8 "); $$ = newNodeS (TextToken, "|}"); }
+                    |   TABLEROW            { debugf ("textelementinlink#9 "); $$ = convertTableRowToText ($1); }
+                    |   TABLECELL           { debugf ("textelementinlink#10 "); $$ = convertTableCellToText ($1); }
+                    |   TABLEHEAD           { debugf ("textelementinlink#11 "); $$ = convertTableHeadToText ($1); }
+                    |   ATTRIBUTE           { debugf ("textelementinlink#12 "); $$ = convertAttributeDataToText ($1); }
+                    |   CLOSEPENTUPLECURLY  { debugf ("textelementinlink#13 "); $$ = newNodeS (TextToken, "}}}}}"); }
+                    |   CLOSETEMPLATEVAR    { debugf ("textelementinlink#14 "); $$ = newNodeS (TextToken, "}}}"); }
+                    |   CLOSETEMPLATE       { debugf ("textelementinlink#15 "); $$ = newNodeS (TextToken, "}}"); }
+                    |   comment             { debugf ("textelementinlink#16 "); $$ = $1; }
+                    |   linketc             { debugf ("textelementinlink#17 "); $$ = $1; }
+                    |   italicsorbold       { debugf ("textelementinlink#18 "); $$ = $1; }
+                    |   template            { debugf ("textelementinlink#19 "); $$ = $1; }
+                    |   templatevar         { debugf ("textelementinlink#20 "); $$ = $1; }
 
-textelementnoboldtbl:   TEXT            { debugf ("textelementnoboldtbl#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnoboldtbl#2 "); $$ = $1; }
-                    |   PIPE            { debugf ("textelementnoboldtbl#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   CLOSEDBLSQBR    { debugf ("textelementnoboldtbl#4 "); $$ = newNodeS (TextToken, "]]"); }
-                    |   comment         { debugf ("textelementnoboldtbl#5 "); $$ = $1; }
-                    |   linketcnotbl    { debugf ("textelementnoboldtbl#6 "); $$ = $1; }
-                    |   italicsnoboldtbl{ debugf ("textelementnoboldtbl#7 "); $$ = $1; }
+textelementintmpl   :   TEXT                { debugf ("textelementintmpl#1 "); $$ = $1; }
+                    |   EXTENSION           { debugf ("textelementintmpl#2 "); $$ = $1; }
+                    |   PIPE                { debugf ("textelementintmpl#3 "); $$ = newNodeS (TextToken, "|"); }
+                    |   CLOSEDBLSQBR        { debugf ("textelementintmpl#4 "); $$ = newNodeS (TextToken, "]]"); }
+                    |   APO2                { debugf ("textelementintmpl#5 "); $$ = newNodeS (TextToken, "''"); }
+                    |   APO3                { debugf ("textelementintmpl#6 "); $$ = newNodeS (TextToken, "'''"); }
+                    |   APO5                { debugf ("textelementintmpl#7 "); $$ = newNodeS (TextToken, "'''''"); }
+                    |   EQUALS              { debugf ("textelementintmpl#8 "); $$ = newNodeS (TextToken, addSpaces ("=", $1)); }
+                    |   TABLEBEGIN          { debugf ("textelementintmpl#9 "); $$ = newNodeS (TextToken, addSpaces ("    {|", $1)); }
+                    |   TABLEEND            { debugf ("textelementintmpl#10 "); $$ = newNodeS (TextToken, "|}"); }
+                    |   TABLEROW            { debugf ("textelementintmpl#11 "); $$ = convertTableRowToText ($1); }
+                    |   TABLECELL           { debugf ("textelementintmpl#12 "); $$ = convertTableCellToText ($1); }
+                    |   TABLEHEAD           { debugf ("textelementintmpl#13 "); $$ = convertTableHeadToText ($1); }
+                    |   ATTRIBUTE           { debugf ("textelementintmpl#14 "); $$ = convertAttributeDataToText ($1); }
+                    |   comment             { debugf ("textelementintmpl#15 "); $$ = $1; }
+                    |   linketc             { debugf ("textelementintmpl#16 "); $$ = $1; }
+                    |   italicsorbold       { debugf ("textelementintmpl#17 "); $$ = $1; }
+                    |   template            { debugf ("textelementintmpl#18 "); $$ = $1; }
+                    |   templatevar         { debugf ("textelementintmpl#19 "); $$ = $1; }
 
-textelementnoboittbl:   TEXT            { debugf ("textelementnoboittbl#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnoboittbl#2 "); $$ = $1; }
-                    |   PIPE            { debugf ("textelementnoboittbl#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   CLOSEDBLSQBR    { debugf ("textelementnoboittbl#4 "); $$ = newNodeS (TextToken, "]]"); }
-                    |   comment         { debugf ("textelementnoboittbl#5 "); $$ = $1; }
-                    |   linketcnotbl    { debugf ("textelementnoboittbl#6 "); $$ = $1; }
+template            :   OPENTEMPLATE textintmpl CLOSETEMPLATE
+                            { debugf ("template#1 "); $$ = nodeAddChild (newNode (Template), $2); }
+                    |   OPENPENTUPLECURLY textintmpl CLOSETEMPLATEVAR textintmpl CLOSETEMPLATE
+                            { debugf ("template#2 "); $$ = nodeAddChild (newNode (Template),
+                                makeTextBlock (nodeAddChild (newNode (TemplateVar), $2), $4)); }
+                    |   OPENTEMPLATE textintmpl OPENTEMPLATEVAR textintmpl CLOSEPENTUPLECURLY
+                            { debugf ("template#3 "); $$ = nodeAddChild (newNode (Template),
+                                makeTextBlock ($2, nodeAddChild (newNode (TemplateVar), $4))); }
+                    /* cater for invalid mark-up... */
+                    |   OPENTEMPLATE textintmpl
+                            { debugf ("template#4 "); $$ = makeTextBlock (newNodeS (TextToken, "{{"), $2); }
+                    |   OPENPENTUPLECURLY textintmpl CLOSETEMPLATEVAR textintmpl
+                            { debugf ("template#5 "); $$ = makeTextBlock3 (newNodeS (TextToken, "{{{{{"),
+                                $2, newNodeS (TextToken, "}}}"), $4); }
+                    |   OPENTEMPLATE textintmpl OPENTEMPLATEVAR textintmpl
+                            { debugf ("template#6 "); $$ = makeTextBlock3 (newNodeS (TextToken, "{{"),
+                                $2, newNodeS (TextToken, "{{{"), $4); }
 
-textelementnopipe   :   TEXT            { debugf ("textelementnopipe#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnopipe#2 "); $$ = $1; }
-                    |   APO2            { debugf ("textelementnopipe#3 "); $$ = newNodeS (TextToken, "''"); }
-                    |   APO3            { debugf ("textelementnopipe#4 "); $$ = newNodeS (TextToken, "'''"); }
-                    |   APO5            { debugf ("textelementnopipe#5 "); $$ = newNodeS (TextToken, "'''''"); }
-                    |   EQUALS          { debugf ("textelementnopipe#6 "); $$ = newNodeS (TextToken, addSpaces ("=", $1)); }
-                    |   TABLEBEGIN      { debugf ("textelementnopipe#7 "); $$ = newNodeS (TextToken, addSpaces ("{|", $1)); }
-                    |   TABLEEND        { debugf ("textelementnopipe#8 "); $$ = newNodeS (TextToken, "|}"); }
-                    |   TABLEROW        { debugf ("textelementnopipe#9 "); $$ = convertTableRowToText ($1); }
-                    |   TABLECELL       { debugf ("textelementnopipe#10 "); $$ = convertTableCellToText ($1); }
-                    |   TABLEHEAD       { debugf ("textelementnopipe#11 "); $$ = convertTableHeadToText ($1); }
-                    |   ATTRIBUTE       { debugf ("textelementnopipe#12 "); $$ = convertAttributeDataToText ($1); }
-                    |   comment         { debugf ("textelementnopipe#13 "); $$ = $1; }
-                    |   linketc         { debugf ("textelementnopipe#14 "); $$ = $1; }
-                    |   italorboldnopipe{ debugf ("textelementnopipe#15 "); $$ = $1; }
-
-textelementnoitp    :   TEXT            { debugf ("textelementnoitp#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnoitp#2 "); $$ = $1; }
-                    |   TABLEBEGIN      { debugf ("textelementnoitp#3 "); $$ = newNodeS (TextToken, addSpaces ("{|", $1)); }
-                    |   TABLEEND        { debugf ("textelementnoitp#4 "); $$ = newNodeS (TextToken, "|}"); }
-                    |   TABLEROW        { debugf ("textelementnoitp#5 "); $$ = convertTableRowToText ($1); }
-                    |   TABLECELL       { debugf ("textelementnoitp#6 "); $$ = convertTableCellToText ($1); }
-                    |   TABLEHEAD       { debugf ("textelementnoitp#7 "); $$ = convertTableHeadToText ($1); }
-                    |   comment         { debugf ("textelementnoitp#8 "); $$ = $1; }
-                    |   linketc         { debugf ("textelementnoitp#9 "); $$ = $1; }
-                    |   boldnoitalicspp { debugf ("textelementnoitp#10 "); $$ = $1; }
-
-textelementnobldp   :   TEXT            { debugf ("textelementnobldp#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnobldp#2 "); $$ = $1; }
-                    |   TABLEBEGIN      { debugf ("textelementnobldp#3 "); $$ = newNodeS (TextToken, addSpaces ("{|", $1)); }
-                    |   TABLEEND        { debugf ("textelementnobldp#4 "); $$ = newNodeS (TextToken, "|}"); }
-                    |   TABLEROW        { debugf ("textelementnobldp#5 "); $$ = convertTableRowToText ($1); }
-                    |   TABLECELL       { debugf ("textelementnobldp#6 "); $$ = convertTableCellToText ($1); }
-                    |   TABLEHEAD       { debugf ("textelementnobldp#7 "); $$ = convertTableHeadToText ($1); }
-                    |   comment         { debugf ("textelementnobldp#8 "); $$ = $1; }
-                    |   linketc         { debugf ("textelementnobldp#9 "); $$ = $1; }
-                    |   italicsnoboldpp { debugf ("textelementnobldp#10 "); $$ = $1; }
-
-textelementnobitp   :   TEXT            { debugf ("textelementnobitp#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnobitp#2 "); $$ = $1; }
-                    |   TABLEBEGIN      { debugf ("textelementnobitp#3 "); $$ = newNodeS (TextToken, addSpaces ("{|", $1)); }
-                    |   TABLEEND        { debugf ("textelementnobitp#4 "); $$ = newNodeS (TextToken, "|}"); }
-                    |   TABLEROW        { debugf ("textelementnobitp#5 "); $$ = convertTableRowToText ($1); }
-                    |   TABLECELL       { debugf ("textelementnobitp#6 "); $$ = convertTableCellToText ($1); }
-                    |   TABLEHEAD       { debugf ("textelementnobitp#7 "); $$ = convertTableHeadToText ($1); }
-                    |   comment         { debugf ("textelementnobitp#8 "); $$ = $1; }
-                    |   linketc         { debugf ("textelementnobitp#9 "); $$ = $1; }
-
-textelementnotblpipe:   TEXT            { debugf ("textelementnotblpipe#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnotblpipe#2 "); $$ = $1; }
-                    |   PIPE            { debugf ("textelementnotblpipe#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   APO2            { debugf ("textelementnotblpipe#4 "); $$ = newNodeS (TextToken, "''"); }
-                    |   APO3            { debugf ("textelementnotblpipe#5 "); $$ = newNodeS (TextToken, "'''"); }
-                    |   APO5            { debugf ("textelementnotblpipe#6 "); $$ = newNodeS (TextToken, "'''''"); }
-                    |   EQUALS          { debugf ("textelementnotblpipe#7 "); $$ = newNodeS (TextToken, addSpaces ("=", $1)); }
-                    |   comment         { debugf ("textelementnotblpipe#8 "); $$ = $1; }
-                    |   linketcnotbl    { debugf ("textelementnotblpipe#9 "); $$ = $1; }
-                    |   italorboldnotblp{ debugf ("textelementnotblpipe#10 "); $$ = $1; }
-
-textelementnoittbpp :   TEXT            { debugf ("textelementnoittbpp#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnoittbpp#2 "); $$ = $1; }
-                    |   PIPE            { debugf ("textelementnoittbpp#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   comment         { debugf ("textelementnoittbpp#4 "); $$ = $1; }
-                    |   linketcnotbl    { debugf ("textelementnoittbpp#5 "); $$ = $1; }
-                    |   boldnoitaltblpp { debugf ("textelementnoittbpp#6 "); $$ = $1; }
-
-textelementnobltbpp :   TEXT            { debugf ("textelementnobltbpp#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnobltbpp#2 "); $$ = $1; }
-                    |   PIPE            { debugf ("textelementnobltbpp#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   comment         { debugf ("textelementnobltbpp#4 "); $$ = $1; }
-                    |   linketcnotbl    { debugf ("textelementnobltbpp#5 "); $$ = $1; }
-                    |   italnoboldtblpp { debugf ("textelementnobltbpp#6 "); $$ = $1; }
-
-textelementnoblittbp:   TEXT            { debugf ("textelementnoblittbp#1 "); $$ = $1; }
-                    |   EXTENSION       { debugf ("textelementnoblittbp#2 "); $$ = $1; }
-                    |   PIPE            { debugf ("textelementnoblittbp#3 "); $$ = newNodeS (TextToken, "|"); }
-                    |   comment         { debugf ("textelementnoblittbp#4 "); $$ = $1; }
-                    |   linketcnotbl    { debugf ("textelementnoblittbp#5 "); $$ = $1; }
+templatevar         :   OPENTEMPLATEVAR textintmpl CLOSETEMPLATEVAR
+                            { debugf ("templatevar#1 "); $$ = nodeAddChild (newNode (TemplateVar), $2); }
+                    |   OPENPENTUPLECURLY textintmpl CLOSEPENTUPLECURLY
+                            { debugf ("templatevar#2 "); $$ =
+                                nodeAddChild (newNode (Template), nodeAddChild (newNode (TemplateVar), $2)); }
+                    /* cater for invalid mark-up... */
+                    |   OPENTEMPLATEVAR textintmpl
+                            { debugf ("templatevar#1 "); $$ = makeTextBlock (newNodeS (TextToken, "{{{"), $2); }
+                    |   OPENPENTUPLECURLY textintmpl
+                            { debugf ("templatevar#2 "); $$ = makeTextBlock (newNodeS (TextToken, "{{{{{"), $2); }
 
 zeroormorenewlines  :   /* empty */                 { debugf ("zeroormorenewlines#1 "); $$ = 0; }
                     |   oneormorenewlines           { debugf ("zeroormorenewlines#2 "); $$ = 0; }
@@ -754,31 +540,31 @@ paragraph       :   text NEWLINE
  * by way of convertAttributesToText() is necessary because, as a table cell begins, we simply
  * don't know whether there are attributes following or not. We parse them as attributes first,
  * but then convert them back to text if it turns out they're not. */
-paragraphnotbl  :   textnotbl NEWLINE
-                        { debugf ("paragraphnotbl#1 "); $$ = nodeAddChild (newNode (Paragraph), $1); }
-                |   attributes textnotbl NEWLINE
-                        { debugf ("paragraphnotbl#2 "); $$ = nodeAddChild2 (newNode (Paragraph), convertAttributesToText ($1), $2); }
+paragraphintbl  :   textintbl NEWLINE
+                        { debugf ("paragraphintbl#1 "); $$ = nodeAddChild (newNode (Paragraph), $1); }
+                |   attributes textintbl NEWLINE
+                        { debugf ("paragraphintbl#2 "); $$ = nodeAddChild2 (newNode (Paragraph), convertAttributesToText ($1), $2); }
                 |   attributes NEWLINE
-                        { debugf ("paragraphnotbl#3 "); $$ = nodeAddChild (newNode (Paragraph), convertAttributesToText ($1)); }
-                |   paragraphnotbl textnotbl NEWLINE
-                        { debugf ("paragraphnotbl#4 "); $$ = nodeAddChild2 ($1, newNodeS (TextToken, " "), $2); }
-                |   paragraphnotbl attributes textnotbl NEWLINE
-                        { debugf ("paragraphnotbl#5 "); $$ = nodeAddChild3 ($1, newNodeS (TextToken, " "), convertAttributesToText ($2), $3); }
-                |   paragraphnotbl attributes NEWLINE
-                        { debugf ("paragraphnotbl#6 "); $$ = nodeAddChild2 ($1, newNodeS (TextToken, " "), convertAttributesToText ($2)); }
+                        { debugf ("paragraphintbl#3 "); $$ = nodeAddChild (newNode (Paragraph), convertAttributesToText ($1)); }
+                |   paragraphintbl textintbl NEWLINE
+                        { debugf ("paragraphintbl#4 "); $$ = nodeAddChild2 ($1, newNodeS (TextToken, " "), $2); }
+                |   paragraphintbl attributes textintbl NEWLINE
+                        { debugf ("paragraphintbl#5 "); $$ = nodeAddChild3 ($1, newNodeS (TextToken, " "), convertAttributesToText ($2), $3); }
+                |   paragraphintbl attributes NEWLINE
+                        { debugf ("paragraphintbl#6 "); $$ = nodeAddChild2 ($1, newNodeS (TextToken, " "), convertAttributesToText ($2)); }
                 /* for eof ... */
-                |   textnotbl
-                        { debugf ("paragraphnotbl#7 "); $$ = nodeAddChild (newNode (Paragraph), $1); }
-                |   attributes textnotbl
-                        { debugf ("paragraphnotbl#8 "); $$ = nodeAddChild2 (newNode (Paragraph), convertAttributesToText ($1), $2); }
+                |   textintbl
+                        { debugf ("paragraphintbl#7 "); $$ = nodeAddChild (newNode (Paragraph), $1); }
+                |   attributes textintbl
+                        { debugf ("paragraphintbl#8 "); $$ = nodeAddChild2 (newNode (Paragraph), convertAttributesToText ($1), $2); }
                 |   attributes
-                        { debugf ("paragraphnotbl#9 "); $$ = nodeAddChild (newNode (Paragraph), convertAttributesToText ($1)); }
-                |   paragraphnotbl textnotbl
-                        { debugf ("paragraphnotbl#10 "); $$ = nodeAddChild2 ($1, newNodeS (TextToken, " "), $2); }
-                |   paragraphnotbl attributes textnotbl
-                        { debugf ("paragraphnotbl#11 "); $$ = nodeAddChild3 ($1, newNodeS (TextToken, " "), convertAttributesToText ($2), $3); }
-                |   paragraphnotbl attributes
-                        { debugf ("paragraphnotbl#12 "); $$ = nodeAddChild2 ($1, newNodeS (TextToken, " "), convertAttributesToText ($2)); }
+                        { debugf ("paragraphintbl#9 "); $$ = nodeAddChild (newNode (Paragraph), convertAttributesToText ($1)); }
+                |   paragraphintbl textintbl
+                        { debugf ("paragraphintbl#10 "); $$ = nodeAddChild2 ($1, newNodeS (TextToken, " "), $2); }
+                |   paragraphintbl attributes textintbl
+                        { debugf ("paragraphintbl#11 "); $$ = nodeAddChild3 ($1, newNodeS (TextToken, " "), convertAttributesToText ($2), $3); }
+                |   paragraphintbl attributes
+                        { debugf ("paragraphintbl#12 "); $$ = nodeAddChild2 ($1, newNodeS (TextToken, " "), convertAttributesToText ($2)); }
 
 comment         :   BEGINCOMMENT text ENDCOMMENT
                         { debugf ("comment#1 "); $$ = nodeAddChild (newNode (Comment), $2); }
