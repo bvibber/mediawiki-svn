@@ -894,11 +894,11 @@ class WikiPage extends WikiTitle {
 
 		# Text encoding
 		if(count($wikiEncodingNames) > 1) { # Shortcut for switching character encodings
-			$u = getenv("REQUEST_URI");
+			global $THESCRIPT;
+			$u = $THESCRIPT . "?" . getenv("QUERY_STRING");
 			$u = preg_replace("/[\?\&]encoding=[0-9]+/", "", $u);
-			$u .= (preg_match("/\?/", $u) ? "&" : "?");
-			reset($wikiEncodingNames);
-			while(list($i, $enc) = each($wikiEncodingNames)) {
+			$u .= (strchr($u, "?") ? "&" : "?");
+			foreach ( $wikiEncodingNames as $i => $enc ) {
 				if($i > 0) $ret .= " | ";
 				if($i == $user->options["encoding"]) $ret .= "<b>";
 				$ret .= "<a href=\"" . $u . "encoding=$i\">$enc</a>";
