@@ -1,0 +1,54 @@
+<?
+session_start();
+session_register( "wsUserID" );
+session_register( "wsUserName" );
+session_register( "wsUserPassword" );
+
+include_once( "./LocalSettings.php" );
+include_once( "./GlobalFunctions.php" );
+include_once( "./InterText.php" );
+include_once( "./Skin.php" );
+include_once( "./OutputPage.php" );
+include_once( "./User.php" );
+include_once( "./Title.php" );
+include_once( "./Article.php" );
+include_once( "./UpdateClasses.php" );
+
+global $action, $title, $search; # From query string
+global $wgUser, $wgLang, $wgOut, $wgTitle; # Objects to handle output
+global $wgArticle, $wgDeferredUpdateList;
+
+$wgOut = new OutputPage();
+$wgLang = new Language(); # Do these first so we can debug User, etc.
+$wgOut->addHeader( "Content-type", "text/html; charset=iso-8859-1" );
+
+$wgUser = new User();
+$wgUser->loadFromSession();
+$wgDeferredUpdateList = array();
+
+wfStripTextFields(); # Clean up PHP's mess
+
+$action = strtolower( trim( $action ) );
+if ( "" == $action ) { $action = "view"; }
+if ( "" == $title ) { $title = wfMsg( "mainpage" ); }
+
+$wgTitle = Title::newFromURL( $title );
+if ( 0 == strcmp( "Special", $wgTitle->getNamespace() ) ) {
+	wfSpecialPage();
+} else if ( "" != $search ) { wfSearch( $search ); }
+else {
+	$wgArticle = new Article( $wgTitle );
+
+	if ( "view" == $action ) { $wgArticle->view(); }
+	else if ( "edit" == $action ) { $wgArticle->edit(); }
+	else if ( "print" == $action ) { $wgArticle->viewprintable(); }
+	else if ( "watch" == $action ) { $wgArticle->watch(); }
+	else if ( "history" == $action ) { $wgArticle->history(); }
+	else { $wgOut->errorpage( "nosuchaction", "nosuchactiontext" ); }
+}
+
+$wgOut->output();
+
+foreach ( $wgDeferredUpdateList as $up ) { $up->doUpdate(); }
+
+?>
