@@ -1077,7 +1077,7 @@ class Skin {
 	{
 		global $wgTitle, $wgLang, $wgUser;
 
-		$d = $wgLang->date( $ts );
+		$d = $wgLang->date( $ts, true);
 		$s = "";
 		if ( $d != $this->lastdate ) {
 			if ( "" != $this->lastdate ) { $s .= "</ul>\n"; }
