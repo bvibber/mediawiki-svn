@@ -18,19 +18,23 @@ function wfSpecialUndelete( )
     }
     
     # List undeletable articles    
-    $sql = "SELECT ar_namespace,ar_title, COUNT(*) AS count FROM archive GROUP BY ar_namespace,ar_title";
+    $sql = "SELECT ar_namespace,ar_title, COUNT(*) AS count FROM archive GROUP BY ar_namespace,ar_title ORDER BY ar_title";
     $res = wfQuery( $sql );
     
 	$wgOut->setPagetitle( wfMsg( "undeletepage" ) );
 	$wgOut->addWikiText( wfMsg( "undeletepagetext" ) );
 
     $special = $wgLang->getNsText( Namespace::getSpecial() );
+    $sk = $wgUser->getSkin();
     $wgOut->addHTML( "<ul>\n" );
     while ($row = wfFetchObject( $res )) {
-    	$n = $wgLang->getNsText( $row->ar_namespace ) . ":" . $row->ar_title;
-    	$wgOut->addHTML( "<li><a href=\"" .
-    	  wfLocalUrl( "$special:Undelete" ) . "&target=" . urlencode($n) .
-    	  "\">{$n}</a> ".
+    	$n = ($row->ar_namespace ? 
+    		($wgLang->getNsText( $row->ar_namespace ) . ":") : "").
+    		$row->ar_title;
+
+    	$wgOut->addHTML( "<li>" .
+    	  $sk->makeKnownLink( $wgLang->specialPage( "Undelete" ),
+          $n, "target=" . urlencode($n) ) . " " .
     	  str_replace( '$1', $row->count, wfMsg( "undeleterevisions" )) );
     }
     $wgOut->addHTML( "</ul>\n" );
@@ -58,6 +62,7 @@ function wfSpecialUndelete( )
 /* private */ function doUndeleteShowHistory( $namespace, $title ) {
     global $wgLang, $wgUser, $wgOut, $action, $target, $timestamp, $restore;
     
+    $sk = $wgUser->getSkin();
     $wgOut->setPagetitle( wfMsg( "undeletepage" ) );
     $wgOut->addWikiText( wfMsg( "undeletehistory" ) . "\n<hr>\n" . $row->ar_text );
 
@@ -83,10 +88,13 @@ function wfSpecialUndelete( )
     $special = $wgLang->getNsText( Namespace::getSpecial() );
     $wgOut->addHTML("<ul>");
     while( $row = wfFetchObject( $ret ) ) {
-    	$wgOut->addHTML( "<li><a href=\"" .
-    	  wfLocalUrl("{$special}:Undelete") . "&target=" . urlencode($target) . "&timestamp={$row->ar_timestamp}" .
-    	  "\">" . $wgLang->timeanddate( $row->ar_timestamp, true ) . "</a> . . {$row->ar_user_text}" .
-    	  " <i>(" . htmlspecialchars($row->ar_comment) . "</i>)\n");
+        $wgOut->addHTML( "<li>" .
+    	  $sk->makeKnownLink( $wgLang->specialPage( "Undelete" ),
+          $wgLang->timeanddate( $row->ar_timestamp, true ),
+          "target=" . urlencode($target) . "&timestamp={$row->ar_timestamp}" ) . " " .
+    	  ". . {$row->ar_user_text}" .
+          " <i>(" . htmlspecialchars($row->ar_comment) . "</i>)\n");
+
     }
     $wgOut->addHTML("</ul>");
     
