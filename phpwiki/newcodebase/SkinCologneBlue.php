@@ -14,7 +14,6 @@ class SkinCologneBlue extends Skin {
 	function doBeforeContent()
 	{
 		global $wgUser, $wgOut, $wgTitle;
-		global $wgServer , $wgScript ;
 
 		$s = "";
 		$qb = $this->qbSetting();
@@ -24,7 +23,7 @@ class SkinCologneBlue extends Skin {
 		  "<table width='98%' border=0 cellspacing=0 cellpadding=8><tr>";
 
 		$s .= "<td class='top' align=left valign=center nowrap>";
-		$s .= "<a href='$wgServer$wgScript'>" ;
+		$s .= "<a href=\"" . wfLocalUrlE( wfMsg( "mainpage" ) ) . "\">";
 		$s .= "<font color=white size='+5'><span id='sitetitle'>" .
 		  wfMsg( "sitetitle" ) . "</span></font></a>";
 
@@ -188,9 +187,7 @@ class SkinCologneBlue extends Skin {
 
 	function searchForm()
 	{
-		global $wgServer, $wgScript;
-
-		$s = "<form method=get action=\"{$wgServer}{$wgScript}\">"
+		$s = "<form method=get action=\"" . wfLocalUrlE( "" ) . "\">"
 		  . "<input type=text name=\"search\" size=10 value=\"\">"
 		  . "<input type=submit value=\"" . wfMsg( "ok" ) . "\"></form>";
 

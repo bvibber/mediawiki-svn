@@ -226,6 +226,8 @@ class OutputPage {
 		$this->mBodytext = "";
 		$this->addHTML( "<p>" . wfMsg( $msg ) . "\n" );
 		$this->returnToMain( false );
+
+		$this->output();
 		exit;
 	}
 

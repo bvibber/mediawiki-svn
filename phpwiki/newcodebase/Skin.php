@@ -314,9 +314,7 @@ class Skin {
 
 	function searchForm()
 	{
-		global $wgServer, $wgScript;
-
-		$s = "<form method=get action=\"{$wgServer}{$wgScript}\">"
+		$s = "<form method=get action=\"" . wfLocalUrl( "" ) . "\">"
 		  . "<input type=text name=\"search\" size=16 value=\"\">\n"
 		  . "<input type=submit value=\"" . wfMsg( "search" )
 		  . "\"></form>";
@@ -472,15 +470,15 @@ class Skin {
 		$sp = wfMsg( "specialpages" );
 
 		$s = "<form method=get id='specialform' " .
-		  "action='{$wgServer}{$wgRedirectScript}'>\n";
+		  "action=\"{$wgServer}{$wgRedirectScript}\">\n";
 		$s .= "<select name='wpDropdown'>\n";
-		$s .= "<option value='Special:Specialpages'>{$sp}</option>\n";
+		$s .= "<option value=\"Special:Specialpages\">{$sp}</option>\n";
 
 		foreach ( $a as $name => $desc ) {
-			$s .= "<option value='Special:{$name}'>{$desc}</option>\n";
+			$s .= "<option value=\"Special:{$name}\">{$desc}</option>\n";
 		}
 		$s .= "</select>\n";
-		$s .= "<input type=submit value='{$go}' name=redirect>\n";
+		$s .= "<input type=submit value=\"{$go}\" name=redirect>\n";
 		$s .= "</form>\n";
 		return $s;
 	}
@@ -757,7 +755,7 @@ class Skin {
 
 	function makeKnownLink( $title, $text = "", $query = "", $trail = "" )
 	{
-		global $wgOut, $wgServer, $wgScript, $wgArticlePath, $wgTitle;
+		global $wgOut, $wgTitle;
 
 		$nt = Title::newFromText( $title );
 		$link = $nt->getPrefixedURL();
@@ -766,7 +764,7 @@ class Skin {
 			$u = "";
 			if ( "" == $text ) { $text = $nt->getFragment(); }
 		} else {
-			$u = wfEscapeHTML( wfLocalUrl( $link, $query ) );
+			$u = wfLocalUrlE( $link, $query );
 		}
 		if ( "" != $nt->getFragment() ) {
 			$u .= "#" . wfEscapeHTML( $nt->getFragment() );
@@ -823,13 +821,13 @@ class Skin {
 
 	function makeImageLink( $name, $url, $alt = "" )
 	{
-		global $wgOut, $wgServer, $wgScript, $wgArticlePath, $wgTitle;
+		global $wgOut, $wgTitle;
 
 		$nt = Title::newFromText( "Image:{$name}" );
 		$link = $nt->getPrefixedURL();
 		if ( "" == $alt ) { $alt = $name; }
 
-		$u = wfEscapeHTML( wfLocalUrl( $link ) );
+		$u = wfLocalUrlE( $link );
 		$s = "<a href=\"{$u}\" class='image' title=\"{$alt}\">" .
 		  "<img border=0 src=\"{$url}\" alt=\"{$alt}\"></a>";
 		return $s;
@@ -837,7 +835,7 @@ class Skin {
 
 	function makeMediaLink( $name, $url, $alt = "" )
 	{
-		global $wgOut, $wgServer, $wgScript, $wgArticlePath, $wgTitle;
+		global $wgOut, $wgTitle;
 
 		if ( "" == $alt ) { $alt = $name; }
 		$u = wfEscapeHTML( $url );
@@ -988,7 +986,6 @@ class Skin {
 	function imageHistoryLine( $iscur, $ts, $img, $u, $ut, $size, $c )
 	{
 		global $wgUser, $wgLang, $wgTitle;
-		global $wgServer, $wgScript;
 
 		$dt = $wgLang->timeanddate( $ts );
 		$del = wfMsg( "deleteimg" );
@@ -998,8 +995,8 @@ class Skin {
 			$url = wfImageUrl( $img );
 			$rlink = $cur;
 			if ( $wgUser->isSysop() ) {
-				$dlink = "<a href=\"$wgServer$wgScript?image=" .
-				  $wgTitle->getURL() . "&amp;action=delete\">{$del}</a>";
+				$dlink = "<a href=\"" . wfLocalUrlE( "", "image=" .
+				  $wgTitle->getURL() . "&action=delete" ) . "\">{$del}</a>";
 			} else {
 				$dlink = $del;
 			}
