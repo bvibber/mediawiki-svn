@@ -504,7 +504,17 @@ Please log in again after you receive it.",
 "blockedtitle"	=> "User is blocked",
 "blockedtext"	=> "Your user name or IP address has been blocked by $1.
 The reason given is this:<br>''$2''<p>You may contact $1 or one of the other
-[[$wgMetaNamespace:Administrators|administrators]] to discuss the block.",
+[[$wgMetaNamespace:Administrators|administrators]] to discuss the block. 
+
+Note that you may not use the \"email this user\" feature unless you have a valid email address registered in your [[Special:Preferences|user preferences]]. 
+
+Your IP address is $3. Please include this address in any queries you make.
+
+==Note to AOL users==
+Due to continuing acts of vandalism by one particular AOL user, Wikipedia often blocks AOL proxies. Unfortunately, a single proxy server may be used by a large number of AOL users, and hence innocent AOL users are often inadvertently blocked. We apologise for any inconvenience caused. 
+
+If this happens to you, please email an administrator, using an AOL email address. Be sure to include the IP address given above.
+",
 "newarticle"	=> "(New)",
 "newarticletext" =>
 "You've followed a link to a page that doesn't exist yet.

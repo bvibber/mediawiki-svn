@@ -1548,6 +1548,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 
 		$text = str_replace( "$1", $link, wfMsg( "blockedtext" ) );
 		$text = str_replace( "$2", $reason, $text );
+		$text = str_replace( "$3", getenv( "REMOTE_ADDR" ), $text );
 		$wgOut->addWikiText( $text );
 		$wgOut->returnToMain( false );
 	}
