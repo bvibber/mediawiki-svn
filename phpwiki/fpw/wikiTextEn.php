@@ -40,6 +40,7 @@ $wikiUser = "user" ;
 $wikiNamespaceTalk = "$1 Talk" ;
 $wikiWikipedia = "wikipedia" ;
 $wikiAllowedNamespaces = array ( $wikiWikipedia , $wikiTalk , $wikiUser , "" , "wikipedia $wikiTalk" , "$wikiUser $wikiTalk" ) ;
+$wikiSkins = array ( "Normal" => "" , "Star Trek" => "Star Trek" , "Nostalgia" => "Nostalgy" ) ;
 
 # Editing
 $wikiEditTitle = "Editing $1" ;
@@ -284,6 +285,8 @@ $wikiStatWikipediaNoTalk = "There are $1 that have \"ikipedi\" in the title and 
 $wikiStatSubNoTalk = "There are $1 subpages that are ''not'' '''Talk''' pages." ;
 $wikiStatNoTalk = "That means there are about $1 articles, including subpages (except '''Talk''')." ;
 $wikiStatArticles = "Or, there are about $1 articles, not counting any subpages!" ;
+$wikiStatRedirect = "There are about $1 #REDIRECT pages." ;
+$wikiStatSkin = "<font color=red>$1</font> of them use the \"$2\" skin." ;
 $wikiStatJunk = "Finally, there are about $1 junk pages :-(" ;
 $wikiStatOld = "And, there are $1 old page versions in the database, giving an average of $2 old pages on every active page." ;
 $wikiUserStatistics = "User statistics" ;
