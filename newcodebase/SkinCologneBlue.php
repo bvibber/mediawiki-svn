@@ -68,6 +68,8 @@ class SkinCologneBlue extends Skin {
 		  . " | " . $this->makeKnownLink( wfMsg( "aboutpage" ),
 		  wfMsg( "aboutwikipedia" ) ) . " | " .
 		  $this->searchForm( wfMsg( "qbfind" ) );
+
+		$s .= "\n<br>" . $this->bottomLinks();
 		$s .= "\n<br>" . $this->pageStats();
 
 		$s .= "</td>";
@@ -188,7 +190,8 @@ class SkinCologneBlue extends Skin {
 
 	function searchForm( $label = "" )
 	{
-		$s = "<form method=get action=\"" . wfLocalUrlE( "" ) . "\">";
+		$s = "<form method=get class='inline' action=\"" .
+		  wfLocalUrlE( "" ) . "\">";
 		if ( "" != $label ) { $s .= "{$label}: "; }
 
 		$s .= "<input type=text name=\"search\" size=10 value=\"\">"
