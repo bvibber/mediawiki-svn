@@ -406,8 +406,8 @@ class OutputPage {
 	{
 		for ( $i = 6; $i >= 2; --$i ) {
 			$h = substr( "======", 0, $i );
-			$text = preg_replace( "/(^|\\n)\\s*{$h}\\s+([^\\n]+)\\s+{$h}\\s/sD",
-			  "\\1<h{$i}>\\2</h{$i}>\n", $text );
+			$text = preg_replace( "/^(\\s*){$h}([^=]+){$h}(\\s|$)/m",
+			  "\\1<h{$i}>\\2</h{$i}>\\3", $text );
 		}
 		return $text;
 	}
