@@ -204,7 +204,6 @@ Please check the URL you used to access this page.\n",
 "difference"	=> "(Difference between revisions)",
 "loadingrev"	=> "loading revision for diff",
 "lineno"		=> "Line $1:",
-"diff"			=> "diff",
 
 # Preferences page
 #
@@ -248,6 +247,8 @@ See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges r
 "rcloaderr"		=> "Loading recent changes",
 "rcnote"		=> "Below are the last <b>$1</b> changes in the last <b>$2</b> days.",
 "rclinks"		=> "View the last $1 changes; view the last $2 days.",
+"diff"			=> "diff",
+"hist"			=> "hist",
 
 # New pages
 #

@@ -611,13 +611,14 @@ class Skin {
 		$h = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
 		$t = Title::makeName( $ns, $ttl );
 		$clink = $this->makeLink( $t, "" );
+		$hlink = $this->makeLink( $t, wfMsg( "hist" ), "action=history" );
 		$dlink = $this->makeLink( $t, wfMsg( "diff" ), "diff=0&oldid=0" );
 
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $this->makeInternalLink( "User:{$ut}", $ut ); }
 		$cr = wfMsg( "currentrev" );
 
-		$s .= "<li> ({$dlink}) . .";
+		$s .= "<li> ({$dlink}) ({$hlink}) . .";
 		if ( $isminor ) { $s .= " <strong>M</strong>"; }
 		$s .= " {$clink}; {$h} . . {$ul}";
 		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
