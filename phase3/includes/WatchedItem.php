@@ -9,6 +9,7 @@ class WatchedItem {
 		$wl->id = $user->getId();
 		$wl->ns = $title->getNamespace() & ~1;
 		$wl->ti = $title->getDBkey();
+		$wl->eti = wfStrencode( $wl->ti );
 		return $wl;
 	}
 
@@ -26,7 +27,7 @@ class WatchedItem {
 		$iswatched = $wgMemc->get( $key );
 		if( $iswatched !== false ) return $iswatched;
 		
-		$sql = "SELECT 1 FROM watchlist WHERE wl_user=$this->id AND wl_namespace=$this->ns AND wl_title='$this->ti'";
+		$sql = "SELECT 1 FROM watchlist WHERE wl_user=$this->id AND wl_namespace=$this->ns AND wl_title='$this->eti'";
 		$res = wfQuery( $sql );
 		$iswatched = (wfNumRows( $res ) > 0);
 		$wgMemc->set( $key, $iswatched );
@@ -37,7 +38,7 @@ class WatchedItem {
 	{
 		# REPLACE instead of INSERT because occasionally someone
 		# accidentally reloads a watch-add operation.
-		$sql = "REPLACE INTO watchlist (wl_user, wl_namespace,wl_title) VALUES ($this->id,$this->ns,'$this->ti')";
+		$sql = "REPLACE INTO watchlist (wl_user, wl_namespace,wl_title) VALUES ($this->id,$this->ns,'$this->eti')";
 		$res = wfQuery( $sql );
 		if( $res === false ) return false;
 		
@@ -48,7 +49,7 @@ class WatchedItem {
 
 	function removeWatch()
 	{
-		$sql = "DELETE FROM watchlist WHERE wl_user=$this->id AND wl_namespace=$this->ns AND wl_title='$this->ti' LIMIT 1";
+		$sql = "DELETE FROM watchlist WHERE wl_user=$this->id AND wl_namespace=$this->ns AND wl_title='$this->eti' LIMIT 1";
 		$res = wfQuery( $sql );
 		if( $res === false ) return false;
 		
