@@ -844,10 +844,7 @@ class WikiPage extends WikiTitle {
 		global $framed ; if ( isset ( $framed ) and $framed != "top" ) return "" ;
 		$t = $this->getNiceTitle ( $this->title ) ;
 		if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirst ( $t ) ;
-		global $HTTP_USER_AGENT ;
-		if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=below rules=none" ;
-		else $border = "border=0" ;
-		$ret = "<table ".$user->options["quickBarBackground"]." width=\"100%\" $border style=\"border-color:black\" cellspacing=0>\n<tr>" ;
+		$ret = "<table ".$user->options["quickBarBackground"]. "width=\"100%\" class=\"topbar\" cellspacing=0>\n<tr>" ;
 		if ( $user->options["leftImage"] != "" )
 			$ret .= "<td width=\"1%\" rowspan=2 bgcolor=\"#000000\"><img src=\"".$user->options["leftImage"]."\"></td>" ;
 		$ret .= "<td valign=top height=1>" ;
@@ -976,14 +973,10 @@ class WikiPage extends WikiTitle {
 			if ( !$this->isSpecialPage and $user->options["showStructure"]=="yes" and count ( $spl ) > 0 )
 				$column .= "<font size=-1>".$this->parseContents ( "<hr>".implode ( "<br>\n" , $spl ) )."</font>" ;
 
-			$column = "<td ".$user->options["quickBarBackground"]." width=110 valign=top nowrap>".$column."</td>" ;
+			$column = "<td class=\"quickbar\" ".$user->options["quickBarBackground"]." width=110 valign=top nowrap>".$column."</td>" ;
 			$ret = "<td valign=top>".$ret."</td>" ;
 
-			global $HTTP_USER_AGENT ;
-			if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=void rules=cols" ;
-			else $border = "border=0" ;
-
-			$table = "<table width=\"100%\" $border style=\"border-color:black\" cellpadding=2 cellspacing=0><tr>" ;
+			$table = "<table width=\"100%\" class=\"middle\" cellpadding=2 cellspacing=0><tr>" ;
 			$qb = $user->options["quickBar"] ;
 			if ( $user->options["forceQuickBar"] != "" ) $qb = $user->options["forceQuickBar"] ;
 
@@ -1006,10 +999,7 @@ class WikiPage extends WikiTitle {
 		global $wikiSearch , $wikiCategories , $wikiOtherNamespaces , $wikiCounter , $wikiLastChange ;
 		global $framed ; if ( isset ( $framed ) ) return "" ;
 		$ret = $this->getLinkBar() ;
-		global $HTTP_USER_AGENT ;
-		if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=above rules=none" ; 
-		else $border = "border=0" ;
-		$ret = "<table width=\"100%\" $border style=\"border-color:black\" cellspacing=0><tr><td>$ret</td></tr></table>" ;
+		$ret = "<table width=\"100%\" $border class=\"footer\" cellspacing=0><tr><td>$ret</td></tr></table>" ;
 
 		# Page counter
 		if ( !$this->isSpecialPage )
