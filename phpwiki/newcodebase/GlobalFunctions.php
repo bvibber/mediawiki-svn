@@ -35,14 +35,26 @@ function wfSeedRandom()
 	}
 }
 
-function wfLocalUrl( $a )
+function wfLocalUrl( $a, $q = "" )
 {
-	global $wgArticlePath;
+	global $wgServer, $wgScript, $wgArticlePath;
 
 	$a = str_replace( " ", "_", $a );
 	$a = urlencode( $a );
-	$a = str_replace( "$1", $a, $wgArticlePath );
+
+	if ( "" == $a ) {
+		$a = "{$wgServer}{$wgScript}?{$q}";	
+	} else if ( "" == $q ) {
+		$a = str_replace( "$1", $a, $wgArticlePath );
+	} else {
+		$a = "{$wgServer}{$wgScript}?title={$a}&{$q}";	
+	}
 	return $a;
+}
+
+function wfLocalUrlE( $a, $q = "" )
+{
+	return wfEscapeHTML( wfLocalUrl( $a, $q ) );
 }
 
 function wfImageUrl( $img )

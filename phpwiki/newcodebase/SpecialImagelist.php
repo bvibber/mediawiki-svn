@@ -3,7 +3,6 @@
 function wfSpecialImagelist()
 {
 	global $wgUser, $wgOut, $wgLang, $sort, $limit;
-	global $wgServer, $wgScript;
 	global $wpIlMatch, $wpIlSubmit;
 
 	$fields = array( 'wpIlMatch' );
@@ -50,11 +49,10 @@ function wfSpecialImagelist()
 	$sk = $wgUser->getSkin();
 	$cap = wfMsg( "ilshowmatch" );
 	$sub = wfMsg( "ilsubmit" );
-	$wgOut->addHTML( "<form method=get action='{$wgServer}{$wgScript}'>" .
+	$action = wfLocalUrlE( "Special:Imagelist", "sort=byname&limit={$limit}" );
+
+	$wgOut->addHTML( "<form method=get action=\"{$action}\">" .
 	  "{$cap}: <input type=text size=8 name='wpIlMatch' value=''> " .
-	  "<input type=hidden name='title' value='Special%3AImagelist'>\n" .
-	  "<input type=hidden name='sort' value='byname'>\n" .
-	  "<input type=hidden name='limit' value='{$limit}'>\n" .
 	  "<input type=submit name='wpIlSubmit' value='{$sub}'></form>" );
 
 	$nums = array( 50, 100, 250, 500, 1000, 2500, 5000 );
@@ -80,7 +78,7 @@ function wfSpecialImagelist()
 		$first = false;
 
 		$fill .= $sk->makeKnownLink( $here, $num,
-		  "sort=bydate&amp;limit={$num}" );
+		  "sort=bydate&limit={$num}" );
 	}
 	$text = str_replace( "$1", $fill, wfMsg( "showlast" ) );
 	$text = str_replace( "$2", $bydate, $text );

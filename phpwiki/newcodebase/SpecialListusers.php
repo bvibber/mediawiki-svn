@@ -13,8 +13,7 @@ function wfSpecialListusers()
 	$top = SearchEngine::showingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit,
-	  "title=Special%3AListusers" );
+	$sl = SearchEngine::viewPrevNext( $offset, $limit, "Special:Listusers" );
 	$wgOut->addHTML( "<br>{$sl}\n<ol start=" . ( $offset + 1 ) . ">" );
 
 	$sql = "SELECT user_name,user_rights FROM user ORDER BY " .

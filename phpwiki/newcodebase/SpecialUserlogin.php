@@ -3,6 +3,7 @@
 function wfSpecialUserlogin()
 {
 	global $wpCreateaccount, $wpLoginattempt, $wpMailmypassword;
+	global action;
 
 	$fields = array( "wpName", "wpPassword", "wpName",
 	  "wpPassword", "wpRetype", "wpEmail" );
@@ -10,10 +11,10 @@ function wfSpecialUserlogin()
 
 	if ( isset( $wpCreateaccount ) ) {
 		addNewAccount();
-	} else if ( isset( $wpLoginattempt ) ) {
-		processLogin();
 	} else if ( isset( $wpMailmypassword ) ) {
 		mailPassword();
+	} else if ( "submit" == $action || isset( $wpLoginattempt ) ) {
+		processLogin();
 	} else {
 		mainLoginForm( "" );
 	}
@@ -189,8 +190,9 @@ function wfSpecialUserlogin()
 	} else {
 		$checked = "";
 	}
-	$action = wfLocalUrl( "Special:Userlogin" );
-	if ( "" != $returnto ) { $action .= "&amp;returnto=$returnto"; }
+	$q = "action=submit";
+	if ( "" != $returnto ) { $ .= "&returnto={$returnto}"; }
+	$action = wfLocalUrlE( "Special:Userlogin", $q );
 
 	$wpName = wfEscapeHTML( $wpName );
 	$wpPassword = wfEscapeHTML( $wpPassword );

@@ -1,7 +1,7 @@
 <?
 function wfSpecialPreferences()
 {
-	global $wgUser, $wgOut;
+	global $wgUser, $wgOut, $action;
 	global $wpSaveprefs, $wpReset;
 
 	$fields = array( "wpOldpass", "wpNewpass", "wpRetype",
@@ -16,11 +16,11 @@ function wfSpecialPreferences()
 		$wgOut->readOnlyPage();
 		return;
 	}
-	if ( isset( $wpSaveprefs ) ) {
-		savePreferences();
-	} else if ( isset( $wpReset ) ) {
+	if ( isset( $wpReset ) ) {
 		resetPrefs();
 		mainPrefsForm( WfMsg( "prefsreset" ) );
+	} else if ( "submit" == $action || isset( $wpSaveprefs ) ) {
+		savePreferences();
 	} else {
 		resetPrefs();
 		mainPrefsForm( "" );
@@ -126,7 +126,7 @@ function wfSpecialPreferences()
 	$skins = $wgLang->getSkinNames();
 	$togs = $wgLang->getUserToggles();
 
-	$action = wfLocalUrl( "Special:Preferences" );
+	$action = wfLocalUrlE( "Special:Preferences", "action=submit" );
 	$qb = wfMsg( "qbsettings" );
 	$cp = wfMsg( "changepassword" );
 	$sk = wfMsg( "skin" );

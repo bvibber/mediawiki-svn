@@ -60,7 +60,7 @@ class SearchEngine {
 		$top = SearchEngine::showingResults( $offset, $limit );
 		$wgOut->addHTML( "<p>{$top}\n" );
 
-		$sl = SearchEngine::viewPrevNext( $offset, $limit,
+		$sl = SearchEngine::viewPrevNext( $offset, $limit, "",
 		  "search={$this->mUsertext}" );
 		$wgOut->addHTML( "<br>{$sl}\n" );
 
@@ -110,7 +110,7 @@ class SearchEngine {
 		return $top;
 	}
 
-	function viewPrevNext( $offset, $limit, $link )
+	function viewPrevNext( $offset, $limit, $link, $query )
 	{
 		global $wgUser, $wgServer, $wgScript;
 		$prev = str_replace( "$1", $limit, wfMsg( "prevn" ) );
@@ -126,9 +126,11 @@ class SearchEngine {
 		} else { $plink = $prev; }
 
 		$no = $offset + $limit;
-		$nlink = "<a href=\"{$wgServer}{$wgScript}?{$link}" .
-		  "&amp;limit={$limit}&amp;offset={$no}\">{$next}</a>";
+		$q = "limit={$limit}&offset={$no}";
+		if ( "" != $query ) { $q .= "&{$query}"; }
 
+		$nlink = "a href=\"" . wfEscapeHTML( wfLocalUrl( $link, $q ) ) .
+		  "\">{$next}</a>";
 		$nums = SearchEngine::numLink( $offset, 20, $link ) . " | " .
 		  SearchEngine::numLink( $offset, 50, $link ) . " | " .
 		  SearchEngine::numLink( $offset, 100, $link ) . " | " .
@@ -148,8 +150,8 @@ class SearchEngine {
 	{
 		global $wgUser, $wgServer, $wgScript;
 
-		$s = "<a href=\"{$wgServer}{$wgScript}?{$link}" .
-		  "&amp;limit={$limit}&amp;offset={$offset}\">{$limit}</a>";
+		$s = "<a href=\"" . wfEscapeHTML( wfLocalUrl( $link,
+		  "limit={$limit}&offset={$offset}" ) ) . "\">{$limit}</a>";
 		return $s;
 	}
 

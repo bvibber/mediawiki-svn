@@ -22,8 +22,7 @@ function wfSpecialUnusedimages()
 	$top = SearchEngine::showingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit,
-	  "title=Special%3AUnusedimages" );
+	$sl = SearchEngine::viewPrevNext( $offset, $limit, "Special:Unusedimages" );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$s = "<ol start=" . ( $offset + 1 ) . ">";

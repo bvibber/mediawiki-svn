@@ -276,7 +276,6 @@ class Article {
 	function editForm( $formtype )
 	{
 		global $wgOut, $wgUser, $wgTitle;
-		global $wgServer, $wgScript;
 		global $wpTextbox1, $wpSummary, $wpSave, $wpPreview;
 		global $wpMinoredit, $wpEdittime, $wpTextbox2, $wpCountable;
 		global $oldid, $redirect;
@@ -338,9 +337,10 @@ class Article {
 		}
 		$rows = $wgUser->getOption( "rows" );
 		$cols = $wgUser->getOption( "cols" );
-		$action = "$wgServer$wgScript?title=" .
-		  $wgTitle->getPrefixedURL() . "&amp;action=submit";
-		if ( "no" == $redirect ) { $action .= "&amp;redirect=no"; }
+
+		$q = "action=submit";
+		if ( "no" == $redirect ) { $q .= "&redirect=no"; }
+		$action = wfEscapeHTML( wfLocalUrl( $wgTitle->getPrefixedURL(), $q ) );
 
 		$summary = wfMsg( "summary" );
 		$minor = wfMsg( "minoredit" );
@@ -678,7 +678,6 @@ enctype='application/x-www-form-urlencoded'>
 	function delete()
 	{
 		global $wgUser, $wgOut, $wgTitle;
-		global $wgServer, $wgScript;
 		global $wpConfirm, $image, $oldimage;
 
 		if ( ( ! $oldimage ) && ( ! $wgUser->isSysop() ) ) {
@@ -705,21 +704,21 @@ enctype='application/x-www-form-urlencoded'>
 		$wgOut->addWikiText( wfMsg( "confirmdeletetext" ) );
 
 		$t = $wgTitle->getPrefixedURL();
-		$action = "{$wgServer}{$wgScript}?title={$t}" .
-		  "&amp;action=delete";
-		if ( $image ) { $action .= "&amp;image={$image}"; }
-		if ( $oldimage ) { $action .= "&amp;oldimage={$oldimage}"; }
+		$q = "action=delete";
+		if ( $image ) { $q .= "&image={$image}"; }
+		if ( $oldimage ) { $q .= "&oldimage={$oldimage}"; }
 
+		$action = wfEscapeHTML( wfLocalUrl( $t, $q ) );
 		$confirm = wfMsg( "confirm" );
 		$check = wfMsg( "confirmcheck" );
 
 		$wgOut->addHTML( "
-<form method=post action='{$action}'>
+<form method=post action=\"{$action}\">
 <table border=0><tr><td>
 <input type=checkbox name='wpConfirm' value='1'>
 </td><td>{$check}</td>
 </tr><tr><td>&nbsp;</td><td>
-<input type=submit name='wpConfirmB' value='{$confirm}'>
+<input type=submit name='wpConfirmB' value=\"{$confirm}\">
 </td></tr></table></form>\n" );
 
 		$wgOut->returnToMain( false );

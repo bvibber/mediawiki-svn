@@ -13,8 +13,7 @@ function wfSpecialAllpages()
 	$top = SearchEngine::showingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit,
-	  "title=Special%3AAllpages" );
+	$sl = SearchEngine::viewPrevNext( $offset, $limit, "Special:Allpages" );
 	$wgOut->addHTML( "<br>{$sl}\n<ol start=" . ( $offset + 1 ) . ">" );
 
 	$sql = "SELECT cur_namespace,cur_title FROM cur ORDER BY " .

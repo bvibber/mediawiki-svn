@@ -28,7 +28,7 @@ class IPUnblockForm {
 
 	function showForm( $err )
 	{
-		global $wgOut, $wgUser, $wgServer, $wgScript;
+		global $wgOut, $wgUser;
 		global $ip, $wpUnblockAddress;
 
 		$wgOut->setPagetitle( wfMsg( "unblockip" ) );
@@ -37,22 +37,21 @@ class IPUnblockForm {
 		if ( ! $wpUnblockAddress ) { $wpUnblockAddress = $ip; }
 		$ipa = wfMsg( "ipaddress" );
 		$ipus = wfMsg( "ipusubmit" );
-		$action = "$wgServer$wgScript?title=Special%3AIpblocklist&amp;" .
-		  "action=submit";
+		$action = wfLocalUrlE( "Special:Ipblocklist", "action=submit" );
 
 		if ( "" != $err ) {
 			$wgOut->setSubtitle( wfMsg( "formerror" ) );
 			$wgOut->addHTML( "<p><font color='red' size='+1'>{$err}</font>\n" );
 		}
 		$wgOut->addHTML( "<p>
-<form method=post action='{$action}'>
+<form method=post action=\"{$action}\">
 <table border=0><tr>
 <td align='right'>{$ipa}:</td>
 <td align='left'>
-<input tabindex=1 type=text size=20 name='wpUnblockAddress' value='{$wpUnblockAddress}'>
+<input tabindex=1 type=text size=20 name='wpUnblockAddress' value=\"{$wpUnblockAddress}\">
 </td></tr><tr>
 <td>&nbsp;</td><td align='left'>
-<input tabindex=2 type=submit name='wpBlock' value='{$ipus}'>
+<input tabindex=2 type=submit name='wpBlock' value=\"{$ipus}\">
 </td></tr></table>
 </form>\n" );
 
@@ -60,7 +59,7 @@ class IPUnblockForm {
 
 	function doSubmit()
 	{
-		global $wgOut, $wgUser, $wgServer, $wgScript;
+		global $wgOut, $wgUser;
 		global $ip, $wpUnblockAddress;
 		$fname = "IPUnblockForm::doSubmit";
 
@@ -72,14 +71,14 @@ class IPUnblockForm {
 		$sql = "DELETE FROM ipblocks WHERE ipb_address='{$wpUnblockAddress}'";
 		wfQuery( $sql, $fname );
 
-		$success = "$wgServer$wgScript?title=Special%3AIpblocklist" .
-		  "&action=success&ip={$wpUnblockAddress}";
+		$success = wfLocalUrl( "Special:Ipblocklist",
+		  "action=success&ip={$wpUnblockAddress}" );
 		$wgOut->redirect( $success );
 	}
 
 	function showList( $msg )
 	{
-		global $wgOut, $wgUser, $wgLang, $wgServer, $wgScript;
+		global $wgOut, $wgUser, $wgLang;
 		global $ip;
 
 		$wgOut->setPagetitle( wfMsg( "ipblocklist" ) );
@@ -103,10 +102,9 @@ class IPUnblockForm {
 
 			$wgOut->addHTML( "<li>{$line}" );
 			if ( $wgUser->isSysop() ) {
-				$ublink = "<a href=\"$wgServer$wgScript?title=" .
-				  "Special%3AIpblocklist&amp;action=unblock&amp;ip=" .
-				  $row->ipb_address . "\">" . wfMsg( "unblocklink" ) .
-				  "</a>";
+				$ublink = "<a href=\"" . wfLocalUrlE( "Special:Ipblocklist",
+				  "action=unblock&ip=" . $row->ipb_address ) . "\">" .
+				  wfMsg( "unblocklink" ) . "</a>";
 				$wgOut->addHTML( " ({$ublink})" );
 			}
 			if ( "" != $row->ipb_reason ) {

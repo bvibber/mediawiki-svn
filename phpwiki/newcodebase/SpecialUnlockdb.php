@@ -19,7 +19,7 @@ class DBUnlockForm {
 
 	function showForm( $err )
 	{
-		global $wgOut, $wgUser, $wgServer, $wgScript;
+		global $wgOut, $wgUser;
 		global $wpLockConfirm;
 
 		$wgOut->setPagetitle( wfMsg( "unlockdb" ) );
@@ -31,11 +31,10 @@ class DBUnlockForm {
 		}
 		$lc = wfMsg( "unlockconfirm" );
 		$lb = wfMsg( "unlockbtn" );
-		$action = "$wgServer$wgScript?title=Special%3AUnlockdb&amp;" .
-		  "action=submit";
+		$action = wfLocalUrlE( "Special:Unlockdb", "action=submit" );
 
 		$wgOut->addHTML( "<p>
-<form method=post action='{$action}'>
+<form method=post action=\"{$action}\">
 <table border=0><tr>
 <td align='right'>
 <input type=checkbox name='wpLockConfirm'>
@@ -43,7 +42,7 @@ class DBUnlockForm {
 <td align='left'>{$lc}<td>
 </tr><tr>
 <td>&nbsp;</td><td align='left'>
-<input type=submit name='wpLock' value='{$lb}'>
+<input type=submit name='wpLock' value=\"{$lb}\">
 </td></tr></table>
 </form>\n" );
 
@@ -51,7 +50,7 @@ class DBUnlockForm {
 
 	function doSubmit()
 	{
-		global $wgOut, $wgUser, $wgServer, $wgScript;
+		global $wgOut, $wgUser;
 		global $wpLockConfirm, $wgReadOnlyFile;
 
 		if ( ! $wpLockConfirm ) {
@@ -62,14 +61,13 @@ class DBUnlockForm {
 			$wgOut->fileDeleteError( $wgReadOnlyFile );
 			return;
 		}
-		$success = "$wgServer$wgScript?title=Special%3AUnlockdb" .
-		  "&action=success";
+		$success = wfLocalUrl( "Special:Unlockdb", "action=success" );
 		$wgOut->redirect( $success );
 	}
 
 	function showSuccess()
 	{
-		global $wgOut, $wgUser, $wgServer, $wgScript;
+		global $wgOut, $wgUser;
 		global $ip;
 
 		$wgOut->setPagetitle( wfMsg( "unlockdb" ) );
