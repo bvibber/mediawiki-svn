@@ -54,7 +54,7 @@ function recodeCharsetEo ( $text ) {
 #$wikiTalk = "Discuter" ;
 
 ## Polish:
-/*
+
 $wikiTalk = "Dyskusja" ;
 $fieldSeparator = "\xff";
 function RecodeCharsetPl ( $text ) {
@@ -79,7 +79,7 @@ function RecodeCharsetPl ( $text ) {
 	return strtr ( $text , $l2u8 ) ;
 	}
 	$recodeCharset = recodeCharsetPl ;
-*/
+
 
 ## Spanish
 #$wikiTalk = "Discusión" ;
@@ -88,7 +88,7 @@ function RecodeCharsetPl ( $text ) {
 #$rootDir = "/home/groups/w/wi/wikipedia/htdocs/fpw/wiki-de/lib-http/db/wiki/page/" ;
 #$rootDir = "/home/manske/wiki/lib-http/db/wiki/page/" ;
 $rootDir = "/stuff/wiki/lib-http/db/wiki/page/" ;
-#$rootDir = "/tmp/home/wiki-pl/wiki/db/page/" ;
+$rootDir = "/tmp/home/wiki-pl/wiki/db/page/" ;
 #$rootDir = "/tmp/home/wiki-eo/lib-http/db/wiki/page/" ;
 
 $oldid = 100; # Need unique identifiers for page histories; increment each time we use it.
@@ -345,10 +345,14 @@ function getTopics ( $dir ) {
 				$a = getTopics ( "$dir/$entry" ) ;
 				foreach ( $a as $x ) array_push ( $ret , "$entry/$x" ) ;
 			} else {
-				$x = substr ( $entry , 0 , strlen ( $entry ) - 3 ) ;
-				array_push ( $ret , $x ) ;
+				if (substr ($entry, strlen ( $entry ) - 3, 3) == '.db') {
+				    $x = substr ( $entry , 0 , strlen ( $entry ) - 3 ) ;
+				    array_push ( $ret , $x ) ;
+				} else {
+				    print "Warning: File <b>\"$entry\"</b> doesn't seem to contain an article<br>\n" ;
 				}
 			}
+		}
 	}
 	closedir($mydir);
 
