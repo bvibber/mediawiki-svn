@@ -155,6 +155,8 @@ class OutputPage {
 			return;
 		}
 		#$ismodsince = $_SERVER["HTTP_IF_MODIFIED_SINCE"];
+		if( $_SERVER["HTTP_IF_MODIFIED_SINCE"] != "" ) {
+
 		$ismodsince = wfUnix2Timestamp( strtotime( $_SERVER["HTTP_IF_MODIFIED_SINCE"] ) );
 		$lastmod = gmdate( "D, j M Y H:i:s", wfTimestamp2Unix(
 			max( $timestamp, $wgUser->mTouched ) ) ) . " GMT";
@@ -170,6 +172,7 @@ class OutputPage {
 		} else {
 			wfDebug( "READY  client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp\n", false );
 			$this->mLastModified = $lastmod;
+		}
 		}
 	}
 
