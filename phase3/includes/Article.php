@@ -451,8 +451,10 @@ class Article {
 			}
 			if ( ! $isConflict ) {
 				# All's well: update the article here
-				$this->updateArticle( $wpTextbox1, $wpSummary, $wpMinoredit, $wpWatchthis, $wpSection );
-				return;
+				if($this->updateArticle( $wpTextbox1, $wpSummary, $wpMinoredit, $wpWatchthis, $wpSection ))
+					return;
+				else
+					$isConflict = true;
 			}
 		}
 		# First time through: get contents, set time for conflict
@@ -719,6 +721,23 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$this->mCountAdjustment = $this->isCountable( $text )
 			  - $this->isCountable( $oldtext );
 
+			$now = wfTimestampNow();
+			$won = wfInvertTimestamp( $now );
+			$sql = "UPDATE cur SET cur_text='" . wfStrencode( $text ) .
+			  "',cur_comment='" .  wfStrencode( $summary ) .
+			  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
+			  ",cur_timestamp='{$now}',cur_user_text='" .
+			  wfStrencode( $wgUser->getName() ) .
+			  "',cur_is_redirect={$redir}, cur_is_new=0, cur_touched='{$now}', inverse_timestamp='{$won}' " .
+			  "WHERE cur_id=" . $this->getID() .
+			  " AND cur_timestamp='" . $this->getTimestamp() . "'";
+			$res = wfQuery( $sql, $fname );
+			
+			if( wfAffectedRows() == 0 ) {
+				/* Belated edit conflict! Run away!! */
+				return false;
+			}
+
 			$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
 			  "old_comment,old_user,old_user_text,old_timestamp," .
 			  "old_minor_edit,inverse_timestamp) VALUES (" .
@@ -732,17 +751,6 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			  wfInvertTimestamp( $this->getTimestamp() ) . "')";
 			$res = wfQuery( $sql, $fname );
 			$oldid = wfInsertID( $res );
-
-			$now = wfTimestampNow();
-			$won = wfInvertTimestamp( $now );
-			$sql = "UPDATE cur SET cur_text='" . wfStrencode( $text ) .
-			  "',cur_comment='" .  wfStrencode( $summary ) .
-			  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
-			  ",cur_timestamp='{$now}',cur_user_text='" .
-			  wfStrencode( $wgUser->getName() ) .
-			  "',cur_is_redirect={$redir}, cur_is_new=0, cur_touched='{$now}', inverse_timestamp='{$won}' " .
-			  "WHERE cur_id=" . $this->getID();
-			wfQuery( $sql, $fname );
 
 			$sql = "INSERT INTO recentchanges (rc_timestamp,rc_cur_time," .
 			  "rc_namespace,rc_title,rc_new,rc_minor,rc_bot,rc_cur_id,rc_user," .
@@ -778,7 +786,8 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			}
 		}
 
-		$this->showArticle( $text, wfMsg( "updated" ) ); 
+		$this->showArticle( $text, wfMsg( "updated" ) );
+		return true;
 	}
 
 	# After we've either updated or inserted the article, update
