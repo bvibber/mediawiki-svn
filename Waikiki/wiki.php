@@ -2,6 +2,7 @@
 # GLOBALS!!!
 # Set these to the appropriate values
 $wd = "C:\\Programme\\Dev-Cpp\\Mine\\Waikiki" ; # Path of waikiki.exe
+$db = "test.sqlite" ;
 
 
 
@@ -15,7 +16,7 @@ function getGet ( $p )
 
 # Now the real fun starts
 $prg = "waikiki.exe" ;
-$db = '-sqlite="test.sqlite"' ;
+$db = '-sqlite="' . $db . '"' ;
 $action = $_GET['action'] ;
 $title = $_GET['title'] ;
 
