@@ -343,7 +343,7 @@ class User {
 		if( $this->mId ) {
 			$sql = "SELECT COUNT(wl_user) AS count FROM watchlist
 			  WHERE wl_user={$this->mId} AND
-			  wl_namespace | 1 = " . ($title->getNamespace() | 1) . " AND
+			  wl_namespace = " . ($title->getNamespace() & 0xffff) . " AND
 			  wl_title='" . wfStrencode( $title->getDBkey() ) . "'";
 			$res = wfQuery( $sql );
 			$s = wfFetchObject( $res );
