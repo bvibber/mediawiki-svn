@@ -125,7 +125,7 @@ function getmicrotime(){
 	if ( $metaKeywords != "" ) $metaKeywords = "<META name=\"keywords\" content=\"$metaKeywords\">" ;
 	if ( $charset != "") $metaCharset = "<META HTTP-EQUIV=\"Content-type\" content=\"text/html; charset=$charset\">" ;
 
-	# Is there a better place to set up the style sheet?
+	# FIXME: Is there a better place to set up the style sheet?
 	$styleSheet = "<style type=\"text/css\"><!--\n";
 	$textcolor = $user->options["text"];
 	$bgcolor = $user->options["background"];
@@ -146,9 +146,14 @@ function getmicrotime(){
 	
 	$styleSheet .= "p.bodytext { " . (($user->options[justify] == yes) ? "text-align: justify; " : "") . "}\n";
 	$styleSheet .= "a { text-decoration: " . (($user->options[underlineLinks] == "no") ? "none" : "underline") . "; }\n";
+	$qbside = ( $user->options["quickBar"] == "left" ) ? "right" : "left";
 	$styleSheet .= "a.interwiki, a.external { color: #3333BB; text-decoration: none; }\n" .
 			"a.red { color: red; text-decoration: none; }\n" .
-			"a.green { color: green; text-decoration: none; }\n";
+			"a.green { color: green; text-decoration: none; }\n" .
+			".topbar { border-bottom-width: 2; border-bottom-style: ridge; }\n" .
+			".middle { }\n" .
+			".quickbar { border-$qbside-width: 2; border-$qbside-style: ridge; }\n" .
+			".footer { border-top-color: black; border-top-width: 2; border-top-style: groove; }\n";
 	if ( $user->options[markupNewTopics] == "red") {
 		$styleSheet .= "a.newlink { color: red; }\n.newlinkedge { display: none; }\n";
 	} elseif ( $user->options[markupNewTopics] == "inverse") {
