@@ -511,7 +511,7 @@ let find = function
     | "\\frac"             -> FUN_AR2h ("\\frac ", fun num den -> html_render [num], "<hr style=\"{background: black}\">", html_render [den])
     | "\\over"             -> FUN_INFIXh ("\\over ", fun num den -> html_render num, "<hr style=\"{background: black}\">", html_render den)
 (* ? *)
-    | "\\sqrt"             -> FUN_AR1hl ("\\sqrt ", ("sqrt(", ")"))
+    | "\\sqrt"             -> FUN_AR1 "\\sqrt "
     | "\\pmod"             -> FUN_AR1hl ("\\pmod ", ("(mod ", ")"))
     | "\\bmod"             -> FUN_AR1hl ("\\bmod ", ("mod ", ""))
     | "\\emph"             -> FUN_AR1 "\\emph "
