@@ -24,8 +24,6 @@
 	"highlightbroken" => 1
 );
 
-
-
 /* private */ $wgQuickbarSettingsDa = array(
 	"Ingen", "Fast venstre", "Fast højre", "Flydende venstre"
 );
@@ -35,6 +33,7 @@
 );
 
 /* private */ $wgUserTogglesDa = array(
+
 	"hover"		=> "Vis svævende tekst over wiki links",
 	"underline" => "Understreg links",
 	"highlightbroken" => "Fremhæv links til tomme sider",
@@ -42,6 +41,13 @@
 	"hideminor" => "Gem små redigeringer i sidste ændringer",
 	"numberheadings" => "Automatisk nummerering af overskrifter",
 	"rememberpassword" => "Husk password til næste besøg"
+);
+
+/* private */ $wgBookstoreListDa = array(
+	"AddALL" => "http://www.addall.com/New/Partner.cgi?query=$1&type=ISBN",
+	"PriceSCAN" => "http://www.pricescan.com/books/bookDetail.asp?isbn=$1",
+	"Barnes & Noble" => "http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$1",
+	"Amazon.com" => "http://www.amazon.com/exec/obidos/ISBN=$1"
 );
 
 /* private */ $wgLanguageNamesDa = array(
@@ -69,8 +75,8 @@
 	"co"	=> "Korsikansk",
 	"hr"	=> "Kroatisk",
 	"cs"	=> "Tjekkisk",
-#	"da"	=> "Dansk", # Note two different subdomains.
-#	"dk"	=> "Dansk", # 'da' is correct for the language.
+	"da"	=> "Dansk", # Note two different subdomains.
+	"dk"	=> "Dansk", # 'da' is correct for the language.
 	"nl"	=> "Hollandsk",
 	"en"	=> "Engelsk",
 	"w"	=> "Engelsk", # Should this be in list this?
@@ -206,17 +212,17 @@
 /* private */ $wgValidSpecialPagesDa = array(
 	"Userlogin"		=> "",
 	"Userlogout"	=> "",
-	"Preferences"	=> "Mine bruger indstillinger",
+	"Preferences"	=> "Mine brugerindstillinger",
 	"Watchlist"		=> "Min overvågningsliste",
-	"Recentchanges" => "Seneste opdaterede sider",
-	"Upload"		=> "Upload billedfiler",
-	"Imagelist"		=> "Billedeliste",
+	"Recentchanges" => "Seneste redigeringer",
+	"Upload"		=> "Upload filer",
+	"Imagelist"		=> "Billedliste",
 	"Listusers"		=> "Registrerede brugere",
-	"Statistics"	=> "Statistikker om siden",
+	"Statistics"	=> "Statistik om siden",
 	"Randompage"	=> "Tilfældig artikel",
 
 	"Lonelypages"	=> "Forældreløse artikler",
-	"Unusedimages"	=> "Forældreløse billeder",
+	"Unusedimages"	=> "Forældreløse filer",
 	"Popularpages"	=> "Populære artikler",
 	"Wantedpages"	=> "Mest ønskede artikler",
 	"Shortpages"	=> "Korte artikler",
@@ -240,9 +246,9 @@
 );
 
 /* private */ $wgDeveloperSpecialPagesDa = array(
-	"Lockdb"		=> "Lav databasen skrivebeskyttet",
+	"Lockdb"		=> "Skrivebeskyt databasen",
 	"Unlockdb"		=> "Gendan skriveadgangen til databasen",
-	"Debug"			=> "Debugging information"
+	"Debug"			=> "Debug information"
 );
 
 /* private */ $wgAllMessagesDa = array(
@@ -280,24 +286,24 @@
 "search"		=> "Søg",
 "history"		=> "Historie",
 "printableversion" => "Printervenlig version",
-"editthispage"	=> "Rediger denne side",
-"deletethispage" => "Slet denne side",
-"protectthispage" => "Beskyt denne side",
-"unprotectthispage" => "Fjern beskyttelse af denne side",
+"editthispage"	=> "Rediger side",
+"deletethispage" => "Slet side",
+"protectthispage" => "Beskyt side",
+"unprotectthispage" => "Fjern beskyttelse af side",
 "talkpage"		=> "Diskussionssiden",
 "subjectpage"	=> "Emnesiden",
 "otherlanguages" => "Andre sprog",
 "redirectedfrom" => "(Omdirigeret fra $1)",
 "lastmodified"	=> "Denne side blev sidst ændret $1.",
 "viewcount"		=> "Denne side er blevet set $1 gange.",
-"printsubtitle" => "(Fra http://www.wikipedia.org)",
+"printsubtitle" => "(Fra http://da.wikipedia.org)",
 "protectedpage" => "Beskyttet side",
 "administrators" => "Wikipedia:Administratorer",
 "sysoptitle"	=> "Sysop adgang påkrævet",
 "sysoptext"		=> "Den funktion du har bedt om kan kun
 udføres af brugere med \"sysop\" status.
 Se $1.",
-"developertitle" => "Udvikler adgang påkrævet",
+"developertitle" => "Developer adgang påkrævet",
 "developertext"	=> "Den funktion du har bedt om kan kun
 udføres af brugere med \"developer\" status.
 Se $1.",
@@ -332,13 +338,10 @@ MySQL returnerede fejlen \"<tt>$3: $4</tt>\".",
 "nodb"			=> "Kunne ikke vælge databasen $1",
 "readonly"		=> "Databasen er skrivebeskyttet",
 "enterlockreason" => "Skriv en begrundelse for skrivebeskyttelsen, inklusive 
-et estimat
-på hvornår skrivebeskyttelsen vil blive ophævet igen",
+et estimat på hvornår skrivebeskyttelsen vil blive ophævet igen",
 "readonlytext"	=> "Wikipedia databasen er for øjeblikket skrivebeskyttet for 
-nye
-sider og andre modifikationer, sandsynligvis for rutinemæssig database 
-vedligeholdelse,
-hvorefter den vil returnere til normal.
+nye sider og andre modifikationer, sandsynligvis for rutinemæssig database 
+vedligeholdelse, hvorefter den vil returnere til normal.
 Den administrator der skrivebeskyttede den har denne forklaring:
 <p>$1",
 "missingarticle" => "Databasen fandt ikke teksten på en side
@@ -351,16 +354,16 @@ URL'en.",
 "filerenameerror" => "Kunne ikke omdøbe filen \"$1\" til \"$2\".",
 "filedeleteerror" => "Kunne ikke slette filen \"$1\".",
 "filenotfound"	=> "Kunne ikke finde filen \"$1\".",
-"unexpected"	=> "Uventet værdie: \"$1\"=\"$2\".",
+"unexpected"	=> "Uventet værdi: \"$1\"=\"$2\".",
 "formerror"		=> "Fejl: kunne ikke afsende form",
 "badarticleerror" => "Denne funktion kan ikke udføres på denne side.",
-"cannotdelete"	=> "Kunne ikke slette siden eller billeder der blev 
+"cannotdelete"	=> "Kunne ikke slette siden eller filen der blev 
 specificeret.",
 
 # Login and logout pages
 #
 "logouttitle"	=> "Bruger log af",
-"logouttext"	=> "Du er nu logged af.
+"logouttext"	=> "Du er nu logget af.
 Du kan fortsætte med at bruge Wikipedia anonymt, eller du kan logge på
 igen som den samme eller en anden bruger.\n",
 
@@ -376,13 +379,10 @@ Glem ikke at personliggøre dine Wikipedia indstillinger.",
 "remembermypassword" => "Husk mit password til næste gang.",
 "loginproblem"	=> "<b>Der har været et problem med at logge dig 
 på.</b><br>Prøv igen!",
-"alreadyloggedin" => "<font color=red><b>Bruger $1, du er allerede logged 
+"alreadyloggedin" => "<font color=red><b>Bruger $1, du er allerede logget 
 på!</b></font><br>\n",
 
-"areyounew"		=> "Hvis du er ny på Wikipedia og gerne vil have en bruger 
-konto,
-så indtast et brugernavn, derefter indtaster du et password og gentager 
-samme password.
+"areyounew"		=> "Hvis du er ny på Wikipedia og gerne vil have en bruger konto, så indtast et brugernavn, derefter indtaster du et password og gentager samme password.
 Din e-mail adresse er valgfri; hvis du mister dit password kan du bede om
 at få det sendt til den adresse du har oplyst.<br>\n",
 
@@ -400,8 +400,8 @@ venligst et andet brugernavn.",
 til din e-mail adresse.",
 "loginerror"	=> "Fejl med at logge på",
 "noname"		=> "Du har ikke specificeret et gyldigt brugernavn.",
-"loginsuccesstitle" => "Logged på med success",
-"loginsuccess"	=> "Du er nu logged på Wikipedia som \"$1\".",
+"loginsuccesstitle" => "Logget på med success",
+"loginsuccess"	=> "Du er nu logget på Wikipedia som \"$1\".",
 "nosuchuser"	=> "Der er ingen bruger med navnet \"$1\".
 Check stavemåden igen, eller brug formen herunder til at lave en ny bruger 
 konto.",
@@ -423,13 +423,12 @@ Du bør logge på og ændre dit password straks efter du har modtaget det.",
 "minoredit"		=> "Dette er en mindre ændring.",
 "savearticle"	=> "Gem side",
 "preview"		=> "Forhåndsvisning",
-"showpreview"	=> "Vis forhåndsvisning",
+"showpreview"	=> "Forhåndsvisning",
 "blockedtitle"	=> "Brugeren er blokeret",
 "blockedtext"	=> "Dit brugernavn eller din IP adresse er blevet blokeret af 
 $1.
 Begrundelsen der er blevet givet er denne:<br>$2<p>Du kan kontakte 
-administratoren for
-at diskutere blokeringen.",
+administratoren for at diskutere blokeringen.",
 "newarticle"	=> "(Ny)",
 "newarticletext" => "Skriv din tekst til den nye side her.",
 "noarticletext" => "(Der er på nuværende tidspunkt ingen tekst på denne 
@@ -474,18 +473,16 @@ DERES TILLADELSE!</strong>",
 "nohistory"		=> "Der er ingen versionshistorie for denne side.",
 "revnotfound"	=> "Versionen er ikke fundet",
 "revnotfoundtext" => "Den gamle version af den side du spurgte efter kan 
-ikke findes.
-Check den URL du brugte til at få adgang til denne side.\n",
+ikke findes. Check den URL du brugte til at få adgang til denne side.\n",
 "loadhist"		=> "Læser sidens historie",
 "currentrev"	=> "Nuværende version",
 "revisionasof"	=> "Versionen fra $1",
 "cur"			=> "nuværende",
 "next"			=> "næste",
-"last"			=> "sidste",
+"last"			=> "forrige",
 "orig"			=> "originale",
 "histlegend"	=> "Forklaring: (nuværende) = forskel til den nuværende 
-version,
-(sidste) = forskel til den forrige version, M = mindre ændring",
+version, (forrige) = forskel til den forrige version, M = mindre ændring",
 
 # Diffs
 #
@@ -519,24 +516,23 @@ og teksten i $3 artikler.",
 "nextn"			=> "næste $1",
 "viewprevnext"	=> "Vis ($1) ($2) ($3).",
 "showingresults" => "Nedenfor vises <b>$1</b> resultater startende med 
-#<b>$2</b>.",
+nummer <b>$2</b>.",
 "nonefound"		=> "<strong>Note</strong>: søgning uden success er tit
 forårsaget af at man søger efter almindelige ord som \"har\" og \"fra\",
 som ikke er indekseret, eller ved at specificere mere end et søgeord (kun 
-sider
-der indeholder alle søgeordene vil blive fundet).",
+sider der indeholder alle søgeordene vil blive fundet).",
 
 # Preferences page
 #
 "preferences"	=> "Indstillinger",
-"prefsnologin" => "Ikke logged på",
+"prefsnologin" => "Ikke logget på",
 "prefsnologintext"	=> "Du skal være <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">logged på</a>
+  wfLocalUrl( "Speciel:Userlogin" ) . "\">logget på</a>
 for at ændre bruger indstillinger.",
 "prefsreset"	=> "Indstillingerne er blevet gendannet fra lageret.",
 "qbsettings"	=> "Indstillinger for hurtigmenu",
 "changepassword" => "Skift password",
-"skin"			=> "Skin",
+"skin"			=> "Skind",
 "saveprefs"		=> "Gem indstillinger",
 "resetprefs"	=> "Gendan indstillinger",
 "oldpassword"	=> "Gammelt password",
@@ -549,24 +545,23 @@ for at ændre bruger indstillinger.",
 "resultsperpage" => "Resultater pr. side",
 "contextlines"	=> "Linier pr. resultat",
 "contextchars"	=> "Karakterer pr. linie i resultatet",
-"recentchangescount" => "Antallet af titler på \"seneste opdaterede sider\" 
+"recentchangescount" => "Antallet af titler på \"seneste redigeringer\" 
 siden",
 "savedprefs"	=> "Dine indstillinger er blevet gemt.",
 "timezonetext"	=> "Indtast antal timer din lokale tid er forskellig
 fra server (UTC) tiden.
-For eksempel for Dansk vintertid, indtast \"1\" (og \"2\" når vi er på 
-sommertid).",
+Der bliver automatisk tilpasset til dansk tid, ellers skulle man for eksempel for Dansk vintertid, indtaste \"1\" (og \"2\" når vi er på sommertid).",
 "localtime"	=> "Lokal tid",
 "timezoneoffset" => "Forskel",
-"emailflag"		=> "Fravælg muligheden for at få e-mail fra andre brugere",
+"emailflag"	=> "Fravælg muligheden for at få e-mail fra andre brugere",
 
 # Recent changes
 #
-"recentchanges" => "Seneste opdaterede sider",
-"recentchangestext" => "Se de seneste opdaterede sider i Wikipedia på denne 
+"recentchanges" => "Seneste redigeringer",
+"recentchangestext" => "Se de seneste redigerede sider i Wikipedia på denne 
 side.
 
-[[Wikipedia:Velkommen nybegyndere|Velkommen nybegyndere]]!
+[[Wikipedia:Velkommen nybegynder|Velkommen nybegynder]]!
 Kig venligst på disse sider: [[wikipedia:OSS|Wikipedia Ofte Stillede 
 Spørgsmål]],
 [[Wikipedia:Politik|Wikipedia politik]]
@@ -583,7 +578,7 @@ kostbare og besværlige
 for projektet, så lad venligst være med det.
 Se også [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges 
 recent meta discussion] (på engelsk).",
-"rcloaderr"		=> "Læser seneste opdaterede sider",
+"rcloaderr"		=> "Læser seneste redigerede sider",
 "rcnote"		=> "Nedenfor er de seneste <strong>$1</strong> ændringer i de 
 sidste <strong>$2</strong> dage.",
 # "rclinks"		=> "Vis seneste $1 ændringer i de sidste $2 timer / sidste $3 dage",
@@ -602,12 +597,12 @@ en redigering.",
 #
 "upload"		=> "Upload",
 "uploadbtn"		=> "Upload fil",
-"uploadlink"	=> "Upload billede",
+"uploadlink"	=> "Upload fil",
 "reupload"		=> "Gen-upload",
 "reuploaddesc"	=> "Tilbage til upload formen.",
-"uploadnologin" => "Ikke logged på",
+"uploadnologin" => "Ikke logget på",
 "uploadnologintext"	=> "Du skal være <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">logged på</a>
+  wfLocalUrl( "Speciel:Userlogin" ) . "\">logget på</a>
 for at kunne uploade filer.",
 "uploadfile"	=> "Upload fil",
 "uploaderror"	=> "Upload fejl",
@@ -616,9 +611,9 @@ så vær sikker på du har læst og følger Wikipedias <a href=\"" .
 wfLocalUrlE( "Wikipedia:Politik om brug af billeder" ) . "\">politik om brug 
 af billeder</a>.
 <p>For at se eller søge i tidligere uploadede billeder,
-gå til <a href=\"" . wfLocalUrlE( "Special:Imagelist" ) .
+gå til <a href=\"" . wfLocalUrlE( "Speciel:Imagelist" ) .
 "\">listen af uploadede billeder</a>.
-Uploads og sletninger are logged i <a href=\"" .
+Uploads og sletninger er logget i <a href=\"" .
 wfLocalUrlE( "Wikipedia:Upload_log" ) . "\">upload log</a>.
 <p>Brug formularen herunder til at uploade nye billeder til at bruge
 som illustration i dine artikler.
@@ -660,10 +655,10 @@ er enig i at filen udgives under betingelserne for $1.",
 "noaffirmation" => "Du skal bekræfte at du ikke bryder nogens ophavsret
 ved at uploade denne fil.",
 "ignorewarning"	=> "Ignorer advarslen og gem filen alligevel.",
-"minlength"		=> "Navnet på billedet skal være på mindst tre bogstaver.",
-"badfilename"	=> "Navnet på billedet er blevet ændret til \"$1\".",
+"minlength"		=> "Navnet på filen skal være på mindst tre bogstaver.",
+"badfilename"	=> "Navnet på filen er blevet ændret til \"$1\".",
 "badfiletype"	=> "\".$1\" er ikke et af de anbefalede fil formater.",
-"largefile"		=> "Det anbefales at billeder ikke fylder mere end 100kb.",
+"largefile"		=> "Det anbefales at filer ikke fylder mere end 100kb.",
 "successfulupload" => "Upload gennemført med success",
 "fileuploaded"	=> "Filen \"$1\" er uploadeded med success.
 Følg dette link: ($2) til siden med beskrivelse og udfyld
@@ -675,9 +670,9 @@ og af hvem, og andre ting du ved om filen.",
 
 # Image list
 #
-"imagelist"		=> "Billede liste",
+"imagelist"		=> "Billedliste",
 "imagelisttext"	=> "Herunder er en liste med $1 billeder sorteret $2.",
-"getimagelist"	=> "henter billede liste",
+"getimagelist"	=> "henter billedliste",
 "ilshowmatch"	=> "Vis alle billeder med navne der matcher",
 "ilsubmit"		=> "Søg",
 "showlast"		=> "Vis de sidste $1 billeder sorteret $2.",
@@ -688,12 +683,11 @@ og af hvem, og andre ting du ved om filen.",
 "imgdelete"		=> "slet",
 "imgdesc"		=> "beskrivelse",
 "imglegend"		=> "Legend: (beskrivelse) = vis/rediger billede beskrivelse.",
-"imghistory"	=> "Billede historie",
+"imghistory"	=> "Billedhistorie",
 "revertimg"		=> "gendan",
 "deleteimg"		=> "slet",
 "imghistlegend" => "Legend: (nuværende) = dette er det nuværende billede, 
-(slet) = slet
-denne gamle version, (gendan) = gendan en gammel version.
+(slet) = slet denne gamle version, (gendan) = gendan en gammel version.
 <br><i>Klik på en dato for at se billedet som er uploaded den dag</i>.",
 "imagelinks"	=> "Billede links",
 "linkstoimage"	=> "De følgende sider linker til dette billede:",
@@ -702,17 +696,16 @@ denne gamle version, (gendan) = gendan en gammel version.
 # Statistics
 #
 "statistics"	=> "Statistik",
-"sitestats"		=> "Side statistikker",
-"userstats"		=> "Bruger statistikker",
+"sitestats"		=> "Side statistik",
+"userstats"		=> "Bruger statistik",
 "sitestatstext" => "Der er ialt <b>$1</b> sider i databasen.
 Dette inkluderer \"diskussion\" sider, sider om Wikipedia, minimale \"stub\"
 sider, redirect sider, og andre der sikkert ikke kan kvalificeres som 
 artikler.
 Hvis man ekskludere disse, så er der <b>$2</b> sider som sandsynligvis er 
-rigtige
-artikler.<p>
+rigtige artikler.<p>
 Der har ialt været <b>$3</b> viste sider, og <b>$4</b> redigeringer af sider
-siden softwaren blev opdateret (14. september 2002).
+siden softwaren blev opdateret (25. september 2002).
 Det vil sige der har været <b>$5</b> gennemsnitlige redigeringer per side, 
 og <b>$6</b> visninger per redigering.",
 "userstatstext" => "Der er  <b>$1</b> registrerede brugere.
@@ -735,16 +728,16 @@ og <b>$6</b> visninger per redigering.",
 "specialpages"	=> "Specielle sider",
 "spheading"		=> "Specielle sider",
 "sysopspheading" => "Specielle sider til sysop brug",
-"developerspheading" => "Specielle sider til udvikler brug",
+"developerspheading" => "Specielle sider til developer brug",
 "protectpage"	=> "Beskyt side",
 "recentchangeslinked" => "Overvåg links",
-"rclsub"		=> "(til sider linked fra \"$1\")",
+"rclsub"		=> "(til sider linket fra \"$1\")",
 "debug"			=> "Debug",
 "newpages"		=> "Nye sider",
-"movethispage"	=> "Flyt denne side",
+"movethispage"	=> "Flyt side",
 "unusedimagestext" => "<p>Læg mærke til at andre web sider
 såsom de andre internationale Wikipediaer måske linker til et billede med
-en direkte URL, så det kan stadig være listet here selvom det er
+en direkte URL, så det kan stadig være listet her selvom det er
 i aktivt brug.",
 "booksources"	=> "Bog kilder",
 "booksourcetext" => "Herunder er en liste af links til steder der
@@ -757,9 +750,9 @@ og denne liste skal ikke ses som en anbefaling af disse.",
 #
 "mailnologin"	=> "Ingen sende adresse",
 "mailnologintext" => "Du skal være <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">logged på</a>
+  wfLocalUrl( "Speciel:Userlogin" ) . "\">logget på</a>
 og have en gyldig e-mail adresse sat i dine <a href=\"" .
-  wfLocalUrl( "Special:Preferences" ) . "\">indstillinger</a>
+  wfLocalUrl( "Speciel:Preferences" ) . "\">indstillinger</a>
 for at sende e-mail til andre brugere.",
 "emailuser"		=> "E-mail til denne bruger",
 "emailpage"		=> "E-mail bruger",
@@ -784,19 +777,18 @@ eller har valgt ikke at modtage e-mail fra andre brugere.",
 "watchlist"		=> "Overvågningsliste",
 "watchlistsub"	=> "(for bruger \"$1\")",
 "nowatchlist"	=> "Du har ingenting i din overvågningsliste.",
-"watchnologin"	=> "Ikke logged på",
+"watchnologin"	=> "Ikke logget på",
 "watchnologintext"	=> "Du skal være <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">logged på</a>
+  wfLocalUrl( "Speciel:Userlogin" ) . "\">logget på</a>
 for at kunne ændre din overvågningsliste.",
 "addedwatch"	=> "Tilføjet til din overvågningsliste",
 "addedwatchtext" => "Siden \"$1\" er blevet tilføjet til din <a href=\"" .
-  wfLocalUrl( "Special:Watchlist" ) . "\">overvågningsliste</a>.
+  wfLocalUrl( "Speciel:Watchlist" ) . "\">overvågningsliste</a>.
 Fremtidige ændringer til denne side og den tilhørende diskussion side vil 
 blive listet her,
 og siden vil fremstå <b>fremhævet</b> i <a href=\"" .
-  wfLocalUrl( "Special:Recentchanges" ) . "\">listen med de seneste 
-ændringer</a> for
-at gøre det lettere at finde den.</p>
+  wfLocalUrl( "Speciel:Recentchanges" ) . "\">listen med de seneste 
+ændringer</a> for at gøre det lettere at finde den.</p>
 
 <p>Hvis du senere vil fjerne siden fra din overvågningsliste, så klik 
 \"Fjern overvågning\" ude i siden.",
@@ -823,13 +815,13 @@ konsekvenserne, og at du gør dette i overensstemmelse med
 "deletedtext"	=> "\"$1\" er slettet.
 Se $2 for en fortegnelse over de nyeste sletninger.",
 "deletedarticle" => "slettet \"$1\"",
-"dellogpage"	=> "Sletning_log",
+"dellogpage"	=> "Sletningslog",
 "dellogpagetext" => "Herunder er en liste over de nyeste sletninger.
 Alle tider er server (UTC) tider.
 <ul>
 </ul>
 ",
-"deletionlog"	=> "sletning log",
+"deletionlog"	=> "sletningslog",
 "reverted"		=> "Gendannet en tidligere version",
 "deletecomment"	=> "Begrundelse for sletning",
 "imagereverted" => "Gendannelse af en tidligere version gennemført med 
@@ -871,7 +863,7 @@ sider der har været udsat for vandalisme).",
 "noblockreason" => "Du skal angive en begrundelse for denne blokering.",
 "blockipsuccesssub" => "Blokering udført med success",
 "blockipsuccesstext" => "IP adressen \"$1\" er blevet blokeret.
-<br>Se [[Special:Ipblocklist|IP blokeringslisten]] for alle blokeringer.",
+<br>Se [[Speciel:Ipblocklist|IP blokeringslisten]] for alle blokeringer.",
 "unblockip"		=> "Ophæv blokeringen af IP adresse",
 "unblockiptext"	=> "Brug formularen herunder for at gendanne skriveadgangen
 for en tidligere blokeret IP adresse.",
@@ -929,28 +921,25 @@ Wikipedia udviklere.",
 #
 "movepage"		=> "Flyt side",
 "movepagetext"	=> "Når du bruger formularen herunder vil du få omdøbt en 
-side, flyttet hele
-sidens historie til det nye navn.
+side, flyttet hele sidens historie til det nye navn.
 Den gamle titel vil blive en omdirigeringsside til den nye titel.
 Links til den gamle titel vil ikke blive ændret. Hvis der er en diskussion 
-side,
-vil den ikke blive flyttet.
+side, vil den ikke blive flyttet.
 <b>ADVARSEL!</b>
 Dette kan være en drastisk og uventet ændring for en populær side;
 vær sikker på at du forstår konsekvenserne af dette før du
 fortsætter.",
 "movearticle"	=> "Flyt side",
-"movenologin"	=> "Ikke logged på",
+"movenologin"	=> "Ikke logget på",
 "movenologintext" => "Du skal være registreret bruger og være <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">logged på</a>
+  wfLocalUrl( "Speciel:Userlogin" ) . "\">logget på</a>
 for at flytte en side.",
 "newtitle"		=> "Til ny titel",
 "movepagebtn"	=> "Flyt side",
 "pagemovedsub"	=> "Flytning gennemført",
 "pagemovedtext" => "Siden \"[[$1]]\" er flyttet til \"[[$2]]\".",
 "articleexists" => "En side med det navn eksisterer allerede, eller det
-navn du har valgt er ikke gyldigt.
-Vælg et andet navn.",
+navn du har valgt er ikke gyldigt. Vælg et andet navn.",
 "movedto"		=> "flyttet til",
 "movetalk"		=> "Flyt også \"diskussion\" siden, hvis den eksistere.",
 "talkpagemoved" => "Den tilhørende diskussion side blev også flyttet.",
@@ -964,6 +953,11 @@ class LanguageDa extends Language {
 	function getNamespaces() {
 		global $wgNamespaceNamesDa;
 		return $wgNamespaceNamesDa;
+	}
+
+	function getBookstoreList () {
+		global $wgBookstoreListDa ;
+		return $wgBookstoreListDa ;
 	}
 
 	function getDefaultUserOptions () {
@@ -1065,7 +1059,7 @@ class LanguageDa extends Language {
 
 	function timeanddate( $ts, $adj = false )
 	{
-		return "d." . $this->date( $ts, $adj ) . " kl." . $this->time( $ts, $adj );
+		return $this->date( $ts, $adj ) . " kl." . $this->time( $ts, $adj );
 	}
 
 	function rfc1123( $ts )
