@@ -1056,7 +1056,7 @@ class WikiPage extends WikiTitle {
             } else {
                 $middle = $this->parseContents($middle) ;
                 if ( $this->canBeCached ) { # Generating cache
-	        $this->cache = str_replace ( "\"" , "\\\"" , $middle ) ;
+	        $this->cache = addslashes($middle);
 	        $connection = getDBconnection () ;
 	        $sql = "UPDATE cur SET cur_cache=\"$this->cache\", cur_timestamp=cur_timestamp WHERE cur_title=\"$this->secureTitle\"" ;
 	        mysql_query ( $sql , $connection ) ;
