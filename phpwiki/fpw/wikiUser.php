@@ -38,7 +38,7 @@ class WikiUser {
     function skinCologneBlue () {
         $this->options["background"] = "#FFFFFF" ;
         $this->options["text"] = "" ;
-        $this->options["forceQuickBar"] = "" ;
+        $this->options["forceQuickBar"] = "anywhere" ;
         $this->options["quickBarBackground"] = " bgcolor=blue" ;
         $this->options["textTableBackground"] = "" ;
         $this->options["forceLinks"] = "" ;
@@ -104,12 +104,15 @@ class WikiUser {
         
         $ret .= ".bodytext { " . 
 		(($this->options[justify] == "yes") ? "text-align: justify; " : "") . 
-		(($this->options[skin] == "Cologne Blue") ? "font-family:verdana,times; font-size:12pt; " : "") . 
+		(($this->options[skin] == "Cologne Blue") ? "font-family:verdana,times; font-size:11pt; " : "") . 
 		"}\n";
         $ret .= "a { text-decoration: " . (($this->options[underlineLinks] == "no") ? "none" : "underline") . "; }\n";
         
         $qbside = ( $this->options["quickBar"] == "left" ) ? "right" : "left";
-	if ( $this->options[skin] == "Cologne Blue" ) $qbside = "nope" ; # nope is a dummy, will be ignored
+	if ( $this->options[skin] == "Cologne Blue" ) {
+		$qbside = "nope" ; # nope is a dummy, will be ignored
+		$ret .= "a:visited { color:blue; text-decoration: none; }\n" ;
+		}
         $ret .= "a.interwiki, a.external { color: #3333BB; text-decoration: none; }\n" .
             "a.red { color: red; text-decoration: none; }\n" .
             "a.green { color: blue; text-decoration: none; }\n" .
