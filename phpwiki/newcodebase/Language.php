@@ -826,6 +826,8 @@ All times shown are server time (UTC).
 "reverted"		=> "Reverted to earlier revision",
 "deletecomment"	=> "Reason for deletion",
 "imagereverted" => "Revert to earlier version was successful.",
+
+# Undelete
 "undelete" => "Restore deleted page",
 "undeletepage" => "View and restore deleted pages",
 "undeletepagetext" => "The following pages have been deleted but are still in the archive and

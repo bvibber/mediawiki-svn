@@ -140,7 +140,8 @@
 
 /* private */ $wgSysopSpecialPagesDe = array(
 	"Blockip"		=> "Blockiere eine IP-Addresse",
-	"Asksql"		=> "Datenbank-Abfrage"
+	"Asksql"		=> "Datenbank-Abfrage",
+	"Undelete"              => "Gelöschte Seiten anzeigen und wiederherstellen"
 );
 
 /* private */ $wgDeveloperSpecialPagesDe = array(
@@ -622,6 +623,22 @@ Im $2 finden Sie eine Liste der letzten Löschungen.",
 "reverted"		=> "Auf eine alte Version zurückgesetzt",
 "deletecomment"	=> "Grund der Löschung",
 "imagereverted" => "Auf eine alte version zurückgesetzt.",
+
+# Undelete
+"undelete" => "Gelöschte Seite wiederherstellen",
+"undeletepage" => "Gelöschte Seiten anzeigen und wiederherstellen",
+"undeletepagetext" => "Die folgenden Seiten wurden gelöscht, sind aber immer noch
+gespeichert und können wiederhergestellt werden.",
+"undeletearticle" => "Gelöschten Artikel wiederherstellen",
+"undeleterevisions" => "$1 Versionen archiviert",
+"undeletehistory" => "Wenn Sie diese Seite wiederherstellen, werden auch alle alten
+Versionen wiederhergestellt. Wenn seit der Löschung ein neuer Artikel gleichen
+Namens erstellt wurde, werden die wiederhergestellten Versionen als alte Versionen
+dieses Artikels erscheinen.",
+"undeleterevision" => "Gelöschte Version vom $1",
+"undeletebtn" => "Wiederherstellen!",
+"undeletedarticle" => "\"$1\" wiederhergestellt",
+"undeletedtext"   => "Der Artikel [[$1]] wurde erfolgreich wiederhergestellt.",
 
 # Contributions
 #
