@@ -33,7 +33,9 @@ class WikiPage extends WikiTitle {
 				return ;
 				}
 			$this->title = $call ;
-			include_once ( "./specialPages.php") ;
+			$inc = "./special_".strtolower($call).".php" ;
+			include_once ( $inc ) ;
+#			include_once ( "./specialPages.php") ;
 			$this->contents = $call () ;
 			$this->isSpecialPage = true ;
 			return ; # contents of special page is returned here!!!
