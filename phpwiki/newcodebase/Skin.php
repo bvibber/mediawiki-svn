@@ -102,34 +102,6 @@ class Skin {
 		return $wgLogo;
 	}
 
-	# Frame functions
-	#
-	function getFrameset ( $url )
-	{
-		$ret = "" ;
-		$ret .= "<FRAMESET rows=\"140,*,20\" border=1>\n" ;
-		$ret .= "<FRAME src=\"".$url."&viewFrames=top\" marginwidth=0 marginheight=0 noresize scrolling=no>\n" ;
-
-		$ret .= "<FRAMESET cols=\"*,120\" border=1>\n" ;
-
-		$ret .= "<FRAME src=\"".$url."&viewFrames=content\" marginwidth=0 marginheight=0 noresize scrolling=auto>\n" ;
-		$ret .= "<FRAME src=\"".$url."&viewFrames=sidebar\" marginwidth=0 marginheight=0 noresize scrolling=no>\n" ;
-
-
-		$ret .= "</FRAMESET>\n" ;
-		$ret .= "<FRAME src=\"".$url."&viewFrames=bottom\" marginwidth=0 marginheight=0 noresize scrolling=no>\n" ;
-		$ret .= "</FRAMESET>\n" ;
-		return $ret ;
-	}
-
-	function getFrame ( $frame ) {
-		if ( "top" == $frame ) return $this->beforeContent();
-		if ( "bottom" == $frame ) return $this->bottomLinks() ;
-		if ( "sidebar" == $frame ) return $this->quickBar() ;
-		return "" ;
-		}
-	
-
 	# This will be called immediately after the <body> tag.  Split into
 	# two functions to make it easier to subclass.
 	#
@@ -165,11 +137,6 @@ class Skin {
 
 		$s .= "<tr><td valign=bottom>" . $this->topLinks()
 		  . "</td></tr></table>\n";
-
-		# Frames?
-		if ( $wgUser->getOption("viewframes") )
-			return $s ;
-
 
 		$s .= "<table width=\"100%\" class=\"middle\" cellpadding=2 "
 		  . "cellspacing=0><tr>";
@@ -536,7 +503,7 @@ class Skin {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
 		if ( 0 == $nt->getArticleID() ) {
-			return $this->makeBrokenLink( $title, $text ) .$trail;
+			return $this->makeBrokenLink( $title, $text ) . $trail;
 		} else {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
