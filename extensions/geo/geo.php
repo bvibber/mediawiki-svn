@@ -112,7 +112,7 @@ class geo_params
 	# *Much* slower than the function above
 	function read_from_url ( $id )
 		{
-		$indedx = "http://127.0.0.1/phase3/index.php" ;
+		$index = "http://127.0.0.1/phase3/index.php" ;
 		$filename = "{$index}?title=Geo:{$id}&action=raw" ;
 		$handle = fopen($filename, "r");
 		$contents = '';
@@ -130,9 +130,9 @@ class geo_params
 		if ( isset ( $geo_cache[$id] ) ) # Try the cache first...
 			return $geo_cache[$id] ;
 	
-		if ( MEDIAWIKI )
+		if ( MEDIAWIKI ) # Direct connection to mediawiki database via Article/Title class
 			$contents = $this->read_from_article ( $id ) ;
-		else
+		else # Over-the-net connection via URL "&action=raw", much slower
 			$contents = $this->read_from_url ( $id ) ;
 	
 		# Return text
@@ -212,16 +212,23 @@ class geo_params
 			if ( $p['font-size'] == "" ) $p['font-size'] = "medium" ;
 			if ( $p['font-size'] == "medium" ) $p['font-size'] = $medium_font_size . "pt" ;
 
+			# Link?
+			if ( isset ( $l['style']['href'] ) )
+				{
+				$href = $l['style']['href'] ;
+				unset ( $l['style']['href'] ) ; # Don't want this to show up in the style attribute
+				}
+			else $href = "" ;
+
 			# Make a style parameter string
 			foreach ( $p AS $pk => $pv )
 				$s .= "{$pk}: {$pv}; " ;
 			
 			$s .= "' x='{$x}' y='{$y}'>{$text}</text>" ;
-			if ( isset ( $l['style']['href'] ) )
-				{
-				$href = $l['style']['href'] ;
+			
+			if ( $href != "" )
 				$s = "<a xlink:href=\"{$href}\">{$s}</a>" ;
-				}
+			
 			$ret .= $s."\n" ;
 			}
 		return $ret ;
@@ -461,9 +468,8 @@ class geo
 			{
 			$b = $this->get_data ( $params ) ;
 			$b = $b[0] ; # Only one point for cities...
-			if ( isset ( $this->data['magnitude'] ) ) $r = $this->data['magnitude'] * 100 ;
+			if ( isset ( $this->data['magnitude'][0] ) ) $r = floor ( trim ( $this->data['magnitude'][0] ) ) * 100 ;
 			else $r = 300 ;
-			$params->data_to_real ( $b[0] , $b[1] ) ;
 			$ret .= "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"red\" style=\"fill-opacity:0.5\"/>\n" ;
 			$this->add_label ( $b[0] , $b[1] , $params ) ;
 			}
