@@ -443,8 +443,9 @@ class Article {
 		$wpTextbox2 = wfEscapeHTML( $wpTextbox2 );
 		$wpSummary = wfEscapeHTML( $wpSummary );
 		
-		// activate checkbox if user wants it to be always active
-		if ($wgUser->getOption("watchdefault")) $wpWatchthis=1;
+		// activate checkboxes if user wants them to be always active
+		if (!$wpPreview && $wgUser->getOption("watchdefault")) $wpWatchthis=1;
+		if (!$wpPreview && $wgUser->getOption("minordefault")) $wpMinoredit=1;		
 		
 		// activate checkbox also if user is already watching the page,
 		// require wpWatchthis to be unset so that second condition is not
