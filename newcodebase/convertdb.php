@@ -354,6 +354,10 @@ function fixUserOptions( $in )
 	if ( "yes" == $u || "on" == $u ) { $nops["underline"] = 1; }
 	else { $nops["underline"] = 0; }
 
+	$t = ( (int) ($ops["hourDiff"]) );
+	if ( $t < -23 || $t > 23 ) { $t = 0; }
+	if ( 0 != $t ) { $nops["timecorrection"] = $t; }
+
 	$j = strtolower( $ops["justify"] );
 	if ( "yes" == $j || "on" == $j ) { $nops["justify"] = 1; }
 	$n = strtolower( $ops["numberHeadings"] );
