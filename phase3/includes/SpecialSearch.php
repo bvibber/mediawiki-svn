@@ -298,7 +298,7 @@ class SpecialSearch {
 	function showHit( $row, $terms ) {
 		global $wgUser, $wgContLang;
 
-		$t = Title::makeName( $row->cur_namespace, $row->cur_title );
+		$t = Title::makeName( $row->page_namespace, $row->page_title );
 		if( is_null( $t ) ) {
 			return "<!-- Broken link in search result -->\n";
 		}
@@ -310,9 +310,10 @@ class SpecialSearch {
 		if ( '' == $contextchars ) { $contextchars = 50; }
 
 		$link = $sk->makeKnownLink( $t, '' );
-		$size = wfMsg( 'nbytes', strlen( $row->cur_text ) );
+		$text = Article::getRevisionText( $row );
+		$size = wfMsg( 'nbytes', strlen( $text ) );
 
-		$lines = explode( "\n", $row->cur_text );
+		$lines = explode( "\n", $text );
 		$pat1 = "/(.*)($terms)(.*)/i";
 		$lineno = 0;
 		
