@@ -452,13 +452,24 @@ class OutputPage {
 
 
 		$unique = "4jzAfzB8hNvf4sqyO9Edd8pSmk9rE2in0Tgw3";
-		$uc = "A-Za-z0-9_\\/:.,~%\\-+&;#?!=()@\\x80-\\xFF";
+		$uc = "A-Za-z0-9_\\/~%\\-+&#?!=()@\\x80-\\xFF";
+		
+		# this is  the list of separators that should be ignored if they 
+		# are the last character of an URL but that should be included
+		# if they occur within the URL, e.g. "go to www.foo.com, where .."
+		# in this case, the last comma should not become part of the URL,
+		# but in "www.foo.com/123,2342,32.htm" it should.
+		$sep = ",;\.:";   
 		$fnc = "A-Za-z0-9_.,~%\\-+&;#?!=()@\\x80-\\xFF";
 		$images = "gif|png|jpg|jpeg";
 
-		$e1 = "/(^|[^\\[])({$protocol}:)([{$uc}]+)\\/([{$fnc}]+)\\." .
+		# PLEASE NOTE: The curly braces { } are not part of the regex,
+		# they are interpreted as part of the string (used to tell PHP
+		# that the content of the string should be inserted there).
+		$e1 = "/(^|[^\\[])({$protocol}:)([{$uc}{$sep}]+)\\/([{$fnc}]+)\\." .
 		  "((?i){$images})([^{$uc}]|$)/";
-		$e2 = "/(^|[^\\[])({$protocol}:)([{$uc}]+)([^{$uc}]|$)/";
+		  
+		$e2 = "/(^|[^\\[])({$protocol}:)(([".$uc."]|[".$sep."][".$uc."])+)([^". $uc . $sep. "]|[".$sep."]|$)/";
 		$sk = $wgUser->getSkin();
 
 		if ( $autonumber and $wgAllowExternalImages) { # Use img tags only for HTTP urls
@@ -468,15 +479,15 @@ class OutputPage {
 		$s = preg_replace( $e2, "\\1" . "<a href=\"{$unique}:\\3\"" .
 		  $sk->getExternalLinkAttributes( "{$unique}:\\3", wfEscapeHTML(
 		  "{$unique}:\\3" ) ) . ">" . wfEscapeHTML( "{$unique}:\\3" ) .
-		  "</a>\\4", $s );
+		  "</a>\\5", $s );
 		$s = str_replace( $unique, $protocol, $s );
 
 		$a = explode( "[{$protocol}:", " " . $s );
 		$s = array_shift( $a );
 		$s = substr( $s, 1 );
 
-		$e1 = "/^([{$uc}]+)](.*)\$/sD";
-		$e2 = "/^([{$uc}]+)\\s+([^\\]]+)](.*)\$/sD";
+		$e1 = "/^([{$uc}"."{$sep}]+)](.*)\$/sD";
+		$e2 = "/^([{$uc}"."{$sep}]+)\\s+([^\\]]+)](.*)\$/sD";
 
 		foreach ( $a as $line ) {
 			if ( preg_match( $e1, $line, $m ) ) {
