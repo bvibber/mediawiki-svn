@@ -17,9 +17,13 @@ class FindSpamPage extends SpecialPage
 	}
 
 	function execute( $par ) {
-		global $wgRequest, $wgOut, $wgTitle, $wgLocalDatabases, $conf, $wgCanonicalNamespaceNames, $wgLang;
+		global $wgRequest, $wgOut, $wgTitle, $wgLocalDatabases, $wgUser;
+		global $conf, $wgCanonicalNamespaceNames, $wgLang;
 
 		$this->setHeaders();
+		if ( !$this->userCanExecute( $wgUser ) ) {
+			$this->displayRestrictionError();
+		}
 
 		$ip = trim( $wgRequest->getText( 'ip' ) );
 		$encQ = htmlspecialchars( $ip );
