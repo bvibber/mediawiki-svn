@@ -95,7 +95,7 @@ class MessageCache
 			}
 
 			if ( !is_array( $this->mCache ) ) {
-				wfMsg( "MessageCache::load(): individual message mode\n" );
+				wfDebug( "MessageCache::load(): individual message mode\n" );
 				# If it is 'loading' or 'error', switch to individual message mode, otherwise disable
 				# Causing too much DB load, disabling -- TS
 				$this->mDisable = true;
@@ -155,11 +155,6 @@ class MessageCache
 	 */
 	function isCacheable( $key ) {
 		return true;
-		/*
-		global $wgAllMessagesEn, $wgLang;
-		return array_key_exists( $wgLang->lcfirst( $key ), $wgAllMessagesEn ) ||
-			array_key_exists( $key, $wgAllMessagesEn );
-		*/
 	}
 
 	function replace( $title, $text ) {
