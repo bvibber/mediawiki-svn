@@ -184,10 +184,15 @@ class Skin {
 	#
 	function afterContent()
 	{
-		global $wgUser, $wgOut;
+		global $wgUser, $wgOut, $wgServer, $HTTP_SERVER_VARS;
 
 		if ( $wgOut->isPrintable() ) {
 			$s = "\n</div>\n";
+
+			$u = $wgServer . $HTTP_SERVER_VARS['REQUEST_URI'];
+			$rf = str_replace( "$1", $u, wfMsg( "retrievedfrom" ) );
+
+			$s .= "<p><em>{$rf}</em>\n";
 			return $s;
 		}
 		return $this->doAfterContent();
@@ -368,7 +373,8 @@ class Skin {
 		$count = $wgArticle->getCount();
 		$s = str_replace( "$1", $count, wfMsg( "viewcount" ) );
 
-		$d = $wgLang->timeanddate( $wgArticle->getTimestamp() );
+		$d = $wgLang->timeanddate( $wgArticle->getTimestamp() ) .
+		  " (" . date( "T" ) . ")";
 		$s .= " " . str_replace( "$1", $d, wfMsg( "lastmodified" ) );
 		return "<span id='pagestats'>{$s}</span>";
 	}
