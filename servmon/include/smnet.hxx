@@ -161,9 +161,10 @@ public:
 		memcpy(&sin->sin_addr, *pptr, sizeof(struct in_addr));
 		// XXX: try other addresses
 	}
-	void connect(void) {
+	bool connect(void) {
 		if ((::connect(s, &addr, len) < 0) && errno != EWOULDBLOCK)
 			throw sckterr();
+		return (errno == EWOULDBLOCK) ? false : true;
 	}
 	void lsn(void) {
 		_bsd_lsn();
@@ -231,8 +232,8 @@ public:
 	void endpt(std::string const& host) {
 		sckt<fmly>::wr->endpt(host);
 	}
-	void connect(void) {
-		sckt<fmly>::wr->connect();
+	bool connect(void) {
+		return sckt<fmly>::wr->connect();
 	}
 
 private:

@@ -8,7 +8,8 @@
 void
 test_event(void)
 {
-	std::cerr << "test event ran at " << std::time(0) << '\n';
+	static int count = 0;
+	SMI(smirc::cfg)->conn()->msg(b::io::str(b::format("test event ran at %d (count %d)") % std::time(0) % ++count));
 }
 
 int

@@ -170,6 +170,8 @@ ircrt.install("no server %s", cfg_irc_noserver(), "Remove a configured server");
 ircrt.install("show server %s", cfg_irc_showserver(), "Describe a configured server");
 ircrt.install("no server %s enable", cfg_irc_noenableserver(), "Disable a server");
 ircrt.install("server %s enable", cfg_irc_enableserver(), "Enable connection to a server");
+ircrt.install("channel %s", cfg_irc_channel(), "Specify a channel to join");
+ircrt.install("no channel %s", cfg_irc_nochannel(), "Remove a channel");
 	}
 	handler_node<tt> stdrt;
 	handler_node<tt> eblrt;

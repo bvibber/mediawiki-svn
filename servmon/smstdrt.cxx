@@ -113,6 +113,21 @@ struct cfg_irc_servsecnick : handler<tt> {
 	}
 };
 
+struct cfg_irc_channel : handler<tt> {
+	bool execute(comdat<tt> const& cd) {
+		SMI(smirc::cfg)->channel(cd.p(0));
+		return true;
+	}
+};
+
+struct cfg_irc_nochannel : handler<tt> {
+	bool execute(comdat<tt> const& cd) {
+		if (!SMI(smirc::cfg)->nochannel(cd.p(0)))
+			cd.error("No such channel.");
+		return true;
+	}
+};
+
 struct cfg_irc_noserver : handler<tt> {
 	bool execute(comdat<tt> const& cd) {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {

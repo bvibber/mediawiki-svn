@@ -6,49 +6,114 @@
 
 namespace smirc {
 
-class ircclnt {
-public:
-	ircclnt(std::string const& serv, int port) {
-		std::cerr << "ircclnt: connecting to "<<serv<<":"<<port<<"...\n";
-		sckt = smnet::inetclntp(new smnet::inetclnt);
-		sckt->svc(lexical_cast<std::string>(port));
-		sckt->endpt(serv);
-		sckt->connect();
-		boost::function<void(smnet::inetclntp, int)> f = 
-			boost::bind(&ircclnt::data_cb, this, _2);
-		SMI(smnet::smpx)->add(f, sckt, smnet::smpx::srd /*| smnet::smpx::swr*/);
-		cip = true;
-	}
-	void data_cb(int what) {
-		std::cerr << "data_cb: what="<<what<<'\n';
-		if (what == smnet::smpx::srd && cip) {
-			std::cerr << "read possible\n";
-			std::string line;
-			if (!rdline(line)) return;
-			std::cerr << "read line: [" << line << "]\n";
-		}
-	}
+void
+ircclnt::nick(str pnick_)
+{
+	std::cerr << "nick: ["<<pnick_<<"]\n";
+	pnick = pnick_;
+}
 
-	bool rdline(strr l) {
-		char c;
-		std::cerr << "read: [";
-		try {
-			c = sckt->rd1();
-			if (c != '\r' && c != '\n') linebuf += c;
-			else { l = linebuf; linebuf = ""; return true; }
-			std::cerr << c << "] - ";
-		} catch (smnet::sckterr& e) {
-			std::cerr << "read error: " << e.what();
-		}
-		return false;
-		std::cerr << "\n";
+void
+ircclnt::nick(str pnick_, str snick_)
+{
+	pnick = pnick_;
+	snick = snick_;
+}
+
+bool
+ircclnt::rdline(strr l) {
+	char c;
+	//std::cerr << "read: [";
+	try {
+		c = sckt->rd1();
+		if (c != '\r' && c != '\n') linebuf += c;
+		else { l = linebuf; linebuf = ""; return true; }
+		//std::cerr << c << "] - ";
+	} catch (smnet::sckterr& e) {
+		std::cerr << "read error: " << e.what();
 	}
-	
-private:
-	std::string linebuf;
-	bool cip;
-	smnet::inetclntp sckt;
-};
+	return false;
+	std::cerr << "\n";
+}
+
+void
+ircclnt::connected()
+{
+	doregister();
+}
+
+void
+ircclnt::doregister()
+{
+	std::cout << "registering...\n";
+	sckt->wrt("USER servmon servmon servmon :servmon\r\n");
+	sckt->wrt(b::io::str(b::format("NICK %s\r\n") % pnick));
+}
+
+void
+ircclnt::join(str channel)
+{
+	sckt->wrt("JOIN " + channel + "\r\n");
+}
+
+void
+ircclnt::part(str channel)
+{
+	sckt->wrt("PART " + channel + "\r\n");
+}
+
+void
+ircclnt::msg(str channel, str message)
+{
+	if (!sckt) return;
+	sckt->wrt("PRIVMSG " + channel + " :" + message + "\r\n");
+}
+
+void
+ircclnt::msg(str message)
+{
+	std::set<std::string> chans;
+	try {
+		chans = SMI(smcfg::cfg)->fetchlist("/irc/channels");
+	} catch (smcfg::nokey&) {
+		/* no channels */
+		return;
+	}
+	FE_TC_AS(std::set<std::string>, chans, i)
+		msg(*i, message);
+}
+
+void
+ircclnt::data_cb(int what)
+{
+	std::cerr << "data_cb: what="<<what<<'\n';
+	if (what == smnet::smpx::srd) {
+		std::cerr << "read possible\n";
+		std::string line;
+		if (!rdline(line)) return;
+		std::cerr << "read line: [" << line << "]\n";
+	}
+}
+
+ircclnt::ircclnt(std::string const& serv, int port)
+{
+	name = serv;
+	pnick = SMI(smcfg::cfg)->fetchstr("/irc/server/"+serv+"/nickname");
+	std::cerr << "ircclnt: connecting to "<<serv<<":"<<port<<"...\n";
+	sckt = smnet::inetclntp(new smnet::inetclnt);
+	sckt->svc(lexical_cast<std::string>(port));
+	sckt->endpt(serv);
+	cip = true;
+	if (sckt->connect()) { cip = false; connected(); }
+	boost::function<void(smnet::inetclntp, int)> f =
+			boost::bind(&ircclnt::data_cb, this, _2);
+	SMI(smnet::smpx)->add(f, sckt, smnet::smpx::srd /*| smnet::smpx::swr*/);
+}
+
+ircclnt::ircclnt(void)
+{
+	cip = false;
+}
 
 void
 cfg::initialise(void)
@@ -103,6 +168,12 @@ cfg::connect(void)
 	return;
 }
 
+ircclntp
+cfg::conn(void)
+{
+	return connection ? connection : ircclntp(new ircclnt);
+}
+
 void
 cfg::newserv_or_chgnick(str server, str nick)
 {
@@ -150,6 +221,25 @@ cfg::server_enabled(str server)
 	} catch (smcfg::nokey&) {
 		return false;
 	}
+}
+
+void
+cfg::channel(str channel)
+{
+	if (SMI(smcfg::cfg)->listhas("/irc/channels", channel))
+		return;
+	SMI(smcfg::cfg)->addlist("/irc/channels", channel);
+	conn()->join(channel);
+}
+
+bool
+cfg::nochannel(str channel)
+{
+	if (!SMI(smcfg::cfg)->listhas("/irc/channels", channel))
+		return false;
+	SMI(smcfg::cfg)->dellist("/irc/channels", channel);
+	conn()->part(channel);
+	return true;
 }
 
 int 

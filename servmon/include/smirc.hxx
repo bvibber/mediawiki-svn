@@ -3,10 +3,37 @@
 
 #include "smstdinc.hxx"
 #include "smutl.hxx"
+#include "smnet.hxx"
 
 namespace smirc {
 
-class ircclnt;
+class ircclnt {
+public:
+	ircclnt(std::string const& serv, int port);
+	ircclnt();
+
+	void nick(str pnick);
+	void nick(str pnick, str snick);
+
+	void join(str channel);
+	void part(str channel);
+
+	void msg(str message);
+	void msg(str channel, str message);
+
+private:
+	bool rdline(strr l);
+	void doregister(void);
+	void data_cb(int what);
+	void connected(void);
+
+	std::string name;
+	std::string linebuf;
+	bool cip;
+	smnet::inetclntp sckt;
+	std::string pnick, snick;
+};
+
 typedef b::shared_ptr<ircclnt> ircclntp;
 
 class cfg : public smutl::singleton<cfg> {
@@ -26,6 +53,11 @@ public:
 	
 	void enable_server(str server, bool ebl);
 	bool server_enabled(str server);
+
+	void channel(str channel);
+	bool nochannel(str channel);
+
+	ircclntp conn();
 
 private:
 	bool cip, connected;
