@@ -70,6 +70,27 @@ if($wgMetaNamespace === FALSE)
         'MathML dersom mogleg (eksperimentell)'
 );
 
+/* private */ $wgUserTogglesNn = array(
+'hover'		        => 'Vis svevetekst over wikilenkjer',
+'underline'             => 'Understrek lenkjer',
+'highlightbroken'       => 'Formatér lenkjer til tomme sider <a href="" class="new">slik</a> (alternativt slik<a href="" class="internal">?</a>)',
+'justify'	        => 'Blokkjusterte avsnitt',
+'hideminor'             => 'Skjul "uviktige redigeringar" på "siste endringar" sida',
+'usenewrc'              => 'Utvida funksjonalitet på "siste endringar" sida',
+'numberheadings'        => 'Nummerér overskrifter',
+'showtoolbar'           => 'Vis redigeringsknappar',
+'editondblclick'        => 'Redigér sider med dobbelklikk (JavaScript)',
+'editsection'           => 'Redigér avsnitt med hjelp av [redigér]-lenkje',
+'editsectiononrightclick' => 'Redigér avsnitt med å høgreklikke på avsnittsoverskrift (JavaScript)',
+'showtoc'               => 'Vis innhaldsliste (for sider med meir enn tre delar)',
+'rememberpassword'      => 'Hugs passordet til neste gong',
+'editwidth'             => 'Gje redigeringsboksen full breidd',
+'watchdefault'          => 'Legg sider eg redigerer i overvakingslista mi',
+'minordefault'          => 'Markér redigeringar uviktige som standard',
+'previewontop'          => 'Vis førehandsvisinga føre redigeringsboksen, ikkje etter',
+'previewonfirst'        => 'Førehandsvis første redigering',
+'nocache'               => 'Sidene skal ikkje leggjast i nettlesaren sitt mellomlager (cache)'
+);
 
 /* private */ $wgDateFormatsNn = array(
 	'Ingen preferanse',
@@ -88,8 +109,21 @@ if($wgMetaNamespace === FALSE)
 	'Amazon.com'   => 'http://www.amazon.com/exec/obidos/ISBN=$1'
 );
 
+/* private */ $wgWeekdayNamesNn = array(
+        'søndag', 'måndag', 'tysdag', 'onsdag', 'torsdag',
+        'fredag', 'laurdag'
+);
 
+/* private */ $wgMonthNamesNn = array(
+        'januar', 'februar', 'mars', 'april', 'mai', 'juni',
+        'juli', 'august', 'september', 'oktober', 'november',
+        'desember'
+);
 
+/* private */ $wgMonthAbbreviationsNn = array(
+        'jan', 'feb', 'mar', 'apr', 'mai', 'jun', 'jul', 'aug',
+        'sep', 'okt', 'nov', 'des'
+);
 
 # Note to translators:
 #   Please include the English words as synonyms.  This allows people
@@ -142,64 +176,6 @@ if($wgMetaNamespace === FALSE)
 # the regex in MagicWord::initRegex
 
 /* private */ $wgAllMessagesNn = array(
-'special_version_prefix' => '',
-'special_version_postfix' => '',
-
-
-'tog-hover'		        => 'Vis svevetekst over wikilenkjer',
-'tog-underline'             => 'Understrek lenkjer',
-'tog-highlightbroken'       => 'Formatér lenkjer til tomme sider <a href="" class="new">slik</a> (alternativt slik<a href="" class="internal">?</a>)',
-'tog-justify'	        => 'Blokkjusterte avsnitt',
-'tog-hideminor'             => 'Skjul "uviktige redigeringar" på "siste endringar" sida',
-'tog-usenewrc'              => 'Utvida funksjonalitet på "siste endringar" sida',
-'tog-numberheadings'        => 'Nummerér overskrifter',
-'tog-showtoolbar'           => 'Vis redigeringsknappar',
-'tog-editondblclick'        => 'Redigér sider med dobbelklikk (JavaScript)',
-'tog-editsection'           => 'Redigér avsnitt med hjelp av [redigér]-lenkje',
-'tog-editsectiononrightclick' => 'Redigér avsnitt med å høgreklikke på avsnittsoverskrift (JavaScript)',
-'tog-showtoc'               => 'Vis innhaldsliste (for sider med meir enn tre delar)',
-'tog-rememberpassword'      => 'Hugs passordet til neste gong',
-'tog-editwidth'             => 'Gje redigeringsboksen full breidd',
-'tog-watchdefault'          => 'Legg sider eg redigerer i overvakingslista mi',
-'tog-minordefault'          => 'Markér redigeringar uviktige som standard',
-'tog-previewontop'          => 'Vis førehandsvisinga føre redigeringsboksen, ikkje etter',
-'tog-previewonfirst'        => 'Førehandsvis første redigering',
-'tog-nocache'               => 'Sidene skal ikkje leggjast i nettlesaren sitt mellomlager (cache)',
-
-'sunday'	=> 'søndag',
-'monday'	=> 'måndag',
-'tuesday'	=> 'tysdag',
-'wednesday'	=> 'onsdag',
-'thursday'	=> 'torsdag',
-'friday'	=> 'fredag',
-'saturday'	=> 'laurdag',
-
-'january'	=> 'januar',
-'february'	=> 'februar',
-'march'		=> 'mars',
-'april'		=> 'april',
-'may_long'	=> 'mai',
-'june'		=> 'juni',
-'july'		=> 'juli',
-'august'	=> 'august',
-'september'	=> 'september',
-'october'	=> 'oktober',
-'november'	=> 'november',
-'december'	=> 'desember',
-
-'jan' => 'jan', 
-'feb' => 'feb', 
-'mar' => 'mar', 
-'apr' => 'apr', 
-'may' => 'mai', 
-'jun' => 'jun', 
-'jul' => 'jul', 
-'aug' => 'aug',
-'sep' => 'sep', 
-'oct' => 'okt', 
-'nov' => 'nov', 
-'dec' => 'des'
-
 # Bits of text used by many pages:
 'categories'              => 'Kategoriar',
 'category'                => 'kategori',
@@ -1341,6 +1317,11 @@ class LanguageNn extends LanguageUtf8 {
 		return $wgMathNamesNn;
 	}
 
+	function getUserToggles() {
+		global $wgUserTogglesNn;
+		return $wgUserTogglesNn;
+	}
+
 	function getDateFormats() {
 		global $wgDateFormatsNn;
 		return $wgDateFormatsNn;
@@ -1349,6 +1330,21 @@ class LanguageNn extends LanguageUtf8 {
 	function getBookstoreList () {
 		global $wgBookstoreListNn ;
 		return $wgBookstoreListNn ;
+	}
+
+	function getWeekdayName( $key ) {
+		global $wgWeekdayNamesNn;
+		return $wgWeekdayNamesNn[$key-1];
+	}
+
+	function getMonthName( $key ) {
+		global $wgMonthNamesNn;
+		return $wgMonthNamesNn[$key-1];
+	}
+
+	function getMonthAbbreviation( $key ) {
+		global $wgMonthAbbreviationsNn;
+		return $wgMonthAbbreviationsNn[$key-1];
 	}
 
 	function getMagicWords() 
