@@ -298,6 +298,8 @@ the Wikipedia database.",
 # List users
 #
 "listusers"		=> "User list",
+"getuserlist"	=> "fetching user list",
+"userlisttext"	=> "Below is a list of all registered users.",
 
 # Watchlist
 #
