@@ -195,7 +195,7 @@ function srchStrParse ( $state ) {
                     } else {
                         $sym = $search{$pos} ;
                         $pos++;
-                        $res2 = srchStrParse ( 3 ) ;    # presume the current symbol is redundant
+                        $res2 = srchStrParse ( 4 ) ;    # presume the current symbol is redundant
                         $res = syntErr ( 2, $sym ) . " $res2" ;                
                     }
                 }
