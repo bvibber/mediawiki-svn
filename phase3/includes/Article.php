@@ -1047,6 +1047,9 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		  "cur_restrictions='sysop' WHERE cur_id={$id}";
 		wfQuery( $sql, "Article::protect" );
 
+		$log = new LogPage( wfMsg( "protectlogpage" ), wfMsg( "protectlogtext" ) );
+		$log->addEntry( wfMsg( "protectedarticle", $wgTitle->getPrefixedText() ), "" );
+
 		$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL() ) );
 	}
 
@@ -1070,6 +1073,9 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$sql = "UPDATE cur SET cur_touched='" . wfTimestampNow() . "'," .
 		  "cur_restrictions='' WHERE cur_id={$id}";
 		wfQuery( $sql, "Article::unprotect" );
+
+		$log = new LogPage( wfMsg( "protectlogpage" ), wfMsg( "protectlogtext" ) );
+		$log->addEntry( wfMsg( "unprotectedarticle", $wgTitle->getPrefixedText() ), "" );
 
 		$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL() ) );
 	}
