@@ -31,4 +31,6 @@ T* instance(void) {
 typedef std::string const& str;
 typedef std::string& strr;
 
+#define FE_TC_AS(T, c, i) for(T::iterator i = c.begin(), i ## _end = c.end(); i != i ## _end; ++i)
+
 #endif

@@ -3,6 +3,7 @@
 
 #include "smstdinc.hxx"
 #include "smthr.hxx"
+#include "smtmr.hxx"
 
 #undef unix
 #undef bsd
@@ -277,10 +278,20 @@ public:
 			if (it->second.fg & swr)
 				FD_SET(it->second.fd, &wfds);
 		}
+		time_t now = std::time(0);
+		std::cout << "running pending events at " << now << "\n";
+		time_t nextevt = SMI(smtmr::evthdlr)->run_pend();
+		std::cout << "next event: " << nextevt;
+		struct timeval tv;
+		tv.tv_sec = nextevt - now;
+		tv.tv_usec = 0;
 		std::cout << "selecting...\n";
-		int i = select(m, &rfds, &wfds, NULL, NULL);
+		int i = select(m, &rfds, &wfds, NULL, nextevt ? &tv : NULL);
 		std::cout << i << "\n";
-		if (i < 0) return;
+		if (i < 0) {
+			std::cerr << "select error: " << std::strerror(errno);
+			return;
+		}
 		std::map<int,srec> cm = fds;
 		for (std::map<int,srec>::const_iterator it = cm.begin(), end = cm.end();
 				it != end; ++it)

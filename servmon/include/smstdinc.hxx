@@ -10,6 +10,7 @@
 #include <utility>
 #include <functional>
 #include <set>
+#include <list>
 #include <cerrno>
 using std::for_each;
 
