@@ -20,6 +20,9 @@ $wgFieldSeparator = "\xb3"; # Some wikis may use different char
 	$FS2 = $FS."2" ;
 	$FS3 = $FS."3" ;
 
+# Images to import
+$imageimport = '(http:\/\/(?:www\.|meta\.|)wikipedia\.(?:com|org)\/upload\/(?:[a-z]\/[a-z][0-9]\/)?(.*\.(?:gif|jpg|jpeg|png)))';
+
 # Number of *seconds to add* to timestamp to get UTC/GMT
 #$wgTimezoneCorrection = 0;		# GMT
 $wgTimezoneCorrection = 8*3600;	# PST - California
@@ -29,12 +32,14 @@ $historyonly = false;		# Don't add converted revisions to cur table; just get ol
 $lasthistoryonly = false;	# Only add the _original_ form of the _current_ revision
 
 /* Vary by language */
-$namespaces = array( 0 => "", 1 => "Talk:", 2 => "User:", 3 => "User_talk:", 4 => "Wikipedia:", 5 => "Wikipedia_talk:" );
+$namespaces = array( 0 => "", 1 => "Talk:", 2 => "User:", 3 => "User_talk:", 4
+=> "Wikipedia:", 5 => "Wikipedia_talk:", 6 => "Image:", 7 => "Image_talk:" );
 $talkending = "Talk";
+$mediatext = "Media";
 $conversionscript = "Conversion script";
 $conversioncomment = "Automatic conversion";
 $redirectcomment = "Automatic converion, moved to \$1";
-$conversiontime = date( "YmdHis" ); # Conversions will be marked with this timestamp
+$conversiontime = gmdate( "YmdHis" ); # Conversions will be marked with this timestamp
 
 # Stats and caches
 $oldtitles = array();
@@ -42,8 +47,22 @@ $usercache = array();
 $titlecache = array();
 $linkcache = array();
 
-firstPass();
-secondPass();
+# Some oversimplified test types
+class Title {
+	var $title, $namespace;
+	function fromData( $namespace, $title ) {
+		$x = new Title;
+		$x->namespace = $namespace;
+		$x->title = $title;
+		return $x;
+	}
+}
+
+# See tests in importTests.php
+if( ! $testingonly ) {
+	firstPass();
+	secondPass();
+}
 
 # ------------------------------------------------------------------------------
 
@@ -65,7 +84,7 @@ function firstPass()
 
 function firstPassDirectory( $dir )
 {
-	global titlecache;
+	global $titlecache;
 	
 	$mydir = opendir( $dir );
 	while( $entry = readdir( $mydir ) ) {
@@ -107,12 +126,20 @@ function secondPass()
 	*/
 function fetchUser( $uid )
 {
-	return NULL;
+	global $FS,$FS2,$FS3, $wgRootDirectory;
+	
+	$fname = $wgRootDirectory . "/pages/" . $title;
+	if( !file_exists( $fname ) ) return false;
+	
+	$data = splitHash( implode( "", file( $fname ) ) );
+	# enough?
+	
+	return $data;
 }
 
 function fetchPage( $title )
 {
-	global $FS,$FS2,FS3, $wgRootDirectory;
+	global $FS,$FS2,$FS3, $wgRootDirectory;
 	
 	$fname = $wgRootDirectory . "/pages/" . $title;
 	if( !file_exists( $fname ) ) return false;
@@ -145,7 +172,7 @@ function fetchKeptPages( $title )
 				"minor" => $text["minor"] , "ts" => $section["ts"] ,
 				"username" => $section["username"] , "host" => $section["host"] ) );
 		} else {
-			echo "-- skipepd a bad old revision\n";
+			echo "-- skipped a bad old revision\n";
 		}
 	}
 	return $revisions;
@@ -173,15 +200,24 @@ function splitHash ( $sep , $str ) {
 	*/
 function importUser( $uid )
 {
-	global $last_uid, $user_list;
+	global $last_uid, $user_list, $wgTimestampCorrection;
 
 	return "";
 
 	$stuff = fetchUser( $uid );
 	$last_uid++;
-	$name = wfStrencode( $stuff->name );
+
+	$name = wfStrencode( $stuff->username );
 	$hash = md5hash( $stuff->password ); # Doable?
-	$options = "..."; #???
+	$tzoffset = $stuff['tzoffset'] - ($wgTimestampCorrection / 3600); # -8 to 0; +9 to +1
+	$hideminor = ($stuff['rcall'] ? 0 : 1);
+	$options = "cols={$stuff['editcols']}
+rows={$stuff['editrows']}
+rcdays={$stuff['rcdays']}
+timecorrection={$tzoffset}
+hideminor={$hideminor}
+	";
+	
 	$sql = "INSERT
 		INTO user (user_id,user_name,user_password,user_options)
 		VALUES ({$last_uid},'{$name}','{$hash}','{$options}');\n";
@@ -235,14 +271,14 @@ function importPage( $title )
 	$sql .= "INSERT
 		INTO old (old_namespace,old_title,old_text,old_comment,old_user,old_user_text,old_timestamp,old_minor_edit)
 		VALUES";
-	$sqlfinal = "\t\t($namespace,'$newtitle','$text','$comment',$userid,'$username','$timestamp',$minor)\n"
+	$sqlfinal = "\t\t($namespace,'$newtitle','$text','$comment',$userid,'$username','$timestamp',$minor)\n";
 
 	# History
 	if( !$lasthistoryonly ) {
 		$revisions = fetchKeptPages( $title );
 		foreach( $revisions as $rev ) {
-			$text = wfStrencode( rev->text );
-			$minor = (rev->minor ? 1 : 0);
+			$text = wfStrencode( $rev->text );
+			$minor = ($rev->minor ? 1 : 0);
 			list( $userid, $username ) = checkUserCache( $rev->username, $rev->host );
 			$timestamp = wfUnix2Timestamp( $rev->timestamp + $wgTimezoneCorrection );
 			$sql .= "\t\t($namespace,'$newtitle','$text','$comment',$userid,'$username','$timestamp',$redirect,$minor),\n";
@@ -294,7 +330,6 @@ function renamePage( $title )
 		if ( $count > $maxcount ) {
 			$maxcount = $count ;
 			$maxform = $linkform ;
-			}
 		}
 	}
 	if( $maxform != $t->title) {
@@ -322,21 +357,72 @@ function doRenamePage( $title, $maxform )
 function rewritePage( $title, $text )
 {
 	# ...
+	$text = removeTalkLink( $text );
+	$text = preg_replace( '/(^|<nowiki>).+?(<\/nowiki>|$)/esD',
+		'rewritePageBits( $title, "$1")',
+		$text );
 	return $text;
+}
+
+function rewritePageBits( $title, $text ) {
+	$text = fixSubpages( $title, $text );
+	$text = fixMedialinks( $text );
+	$text = fixImagelinks( $text );
+	return $text;
+}
+
+function removeTalkLink( &$text ) {
+	global $talkending;
+	return preg_replace( "[\\n*(?:\[\[)?/{$talkending}(?:\]\])?\\s*]sDi", '', $text );
+}
+
+function fixSubpages( $text, &$title ) {
+	$old = preg_quote( $text );
+	$text = preg_replace( "<(^|\s)/([A-Z\xc0-\xdf].*?)\b>",
+		"$1[[$title/$2|/$2]]", $text );
+	$text = preg_replace( "<\[\[/([^|]*?)\]\]>e",
+		"\"[[$title/\" . ucfirst( \"$1|/$1]]\" )", $text );
+	$text = preg_replace( "<\[\[/(.*?)\]\]>e",
+		"\"[[$title/\" . ucfirst( \"$1]]\" )", $text );
+	return $text;
+}
+
+function fixImagelinks( &$text ) {
+	global $imageimport, $namespaces;
+	return preg_replace( "/$imageimport/e",
+		'"[[{$namespaces[6]}" . fetchMediaFile( "$1", "$2" ) . "]]"',
+		$text );
+}
+
+function fixMedialinks( &$text ) {
+	global $imageimport, $mediatext;
+	$text = preg_replace( "/\[$imageimport\]/e",
+		'"[[$mediatext:" . fetchMediaFile( "$1", "$2" ) . "]]"',
+		$text );
+	return preg_replace( "/\[$imageimport (.+?)\]/e",
+		'"[[$mediatext:" . fetchMediaFile( "$1", "$2" ) . "|$3]]"',
+		$text );
+}
+
+function fetchMediaFile( $url, $filename )
+{
+	# Copy an image file into local upload space
+	# FIXME
+	return ucfirst( $filename );
 }
 
 # Simple move of talk pages, etc
 function transformTitle( $title, $dorename = false )
 {
 	global $talkending;
-	if( preg_match( "/^(.+)[ _]?\\/[ _]?($talkending)/", $title, $m ) ) {
+	if( preg_match( "/^(.+)[ _]?\\/[ _]?($talkending)/i", $title, $m ) ) {
 		$thetitle = $m[1];
 		$namespace = 1;
 	} else {
 		$thetitle = $title;
 		$namespace = 0;
 	}
-	return array( 'title' => $thetitle, 'namespace' => $namespace );
+	return Title::fromData( $namespace, $thetitle );
 }
 
 # Translated out of old usemod wiki...
@@ -368,12 +454,12 @@ function recodeInput( $text )
 }
 
 function wfUnix2Timestamp( $unixtime ) {
-        return date( "YmdHis", $timestamp );
+        return gmdate( "YmdHis", $timestamp );
 }
 
 function wfTimestamp2Unix( $ts )
 {
-        return mktime( ( (int)substr( $ts, 8, 2) ),
+        return gmmktime( ( (int)substr( $ts, 8, 2) ),
                   (int)substr( $ts, 10, 2 ), (int)substr( $ts, 12, 2 ),
                   (int)substr( $ts, 4, 2 ), (int)substr( $ts, 6, 2 ),
                   (int)substr( $ts, 0, 4 ) );
