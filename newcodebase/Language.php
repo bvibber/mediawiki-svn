@@ -524,10 +524,13 @@ consequences, and that you are doing this in accordance with
 [[Wikipedia:Policy]].",
 "confirmcheck"	=> "Yes, I really want to delete this.",
 "actioncomplete" => "Action complete",
-"deletedtext"	=> "\"$1\" has been deleted.",
+"deletedtext"	=> "\"$1\" has been deleted.
+See $2 for a record or recent deletions.",
 "deletedarticle" => "deleted \"$1\"",
-"deletionlog"	=> "Article_deletion_log",
+"dellogpage"	=> "Article_deletion_log",
+"deletionlog"	=> "deletion log",
 "reverted"		=> "Reverted to earlier revision",
+"deletecomment"	=> "Reason for deletion",
 
 # Contributions
 #
