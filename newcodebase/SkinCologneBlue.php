@@ -30,7 +30,7 @@ class SkinCologneBlue extends Skin {
 		$s .= "</td><td class='top' align=right valign=bottom width='100%'>";
 		$s .= $this->sysLinks();
 		$s .= "</td></tr>" ;
-		$s .= "<tr background=white><td>" ;
+		$s .= "<tr bgcolor=white><td>" ;
 
 		$s .= "<font size='-1'><span id='sitesub'>";
 		$s .= wfMsg( "sitesubtitle" ) . "</span></font>";
