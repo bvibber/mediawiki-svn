@@ -800,7 +800,9 @@ Wikipedia developers.",
 of its history to the new name.
 The old title will become a redirect page to the new title.
 Links to the old page title will not be changed, and the talk
-page, if any, will not be moved.",
+page, if any, will not be moved.
+Please be sure you understand the consequences of this before
+proceeding.",
 "movearticle"	=> "Move article",
 "newtitle"		=> "To new title",
 "movepagebtn"	=> "Move page",
