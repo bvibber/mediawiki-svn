@@ -687,6 +687,11 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			}
 		}
 		
+		# The talk page isn't in the regular link tables, so we need to update manually:
+		$talkns = $ns ^ 1; # talk -> normal; normal -> talk
+		$sql = "UPDATE cur set cur_touched='$now' WHERE cur_namespace=$talkns AND cur_title='" . wfStrencode( $ttl ) . "'";
+		wfQuery( $sql );
+		
 		$this->showArticle( $text, wfMsg( "newarticle" ) );
 	}
 
