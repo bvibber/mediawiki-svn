@@ -79,7 +79,7 @@ function go() {
 }
 
 function graph() {
-    PUT=$("dot -Tpng ${HASH} > ${HASH}${EXT}") || wt_error 'dot' "${PUT}" $E_FAIL
+    wt_exec "dot -Tpng -o ${HASH}${EXT} ${HASH}"
     wt_img "${OUT}${HASH}${EXT}"
     wt_anch
 }
@@ -92,7 +92,7 @@ function music() {
 }
 
 function plot() {
-    PUT=$("gnuplot ${HASH} > ${HASH}${EXT}") || wt_error 'gnuplot' "${PUT}" $E_FAIL
+    gnuplot ${HASH} > ${HASH}${EXT}
     wt_img "${OUT}${HASH}${EXT}"
     wt_anch
 }
