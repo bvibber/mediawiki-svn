@@ -1,7 +1,7 @@
 2002-08-06
 
 This is a new codebase for the Wikipedia project
-(http://www.wikipedia.com), though it is intended to be
+(http://www.wikipedia.org), though it is intended to be
 usable for other wiki sites without much headache.
 
 The code as a whole is Copyright 2002 by Lee Daniel Crocker
@@ -29,7 +29,7 @@ bugs and make feature requests there:
 The code is written in PHP.  It was tested mainly on version 4.06,
 but it is known to run in later versions.  I requires MySQL 3.23
 or later, and PHP-MySQL.  It is now running with PHP 4.2.2 and
-MySQL 3.23.49 at http://www.wikipedia.com .
+MySQL 3.23.49 at http://www.wikipedia.org .
 
 -- Lee Daniel Crocker <lee@piclab.com>
 
