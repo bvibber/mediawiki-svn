@@ -38,7 +38,7 @@
 	"fr" => "Französisch", "he" => "Hebräisch", "hu" => "Ungarisch",
 	"it" => "Italienisch", "ja" => "Japanisch", "no" => "Norwegisch",
 	"pl" => "Polnisch", "pt" => "Portugiesisch", "ru" => "Russisch",
-	"sh" => "Serbocroatisch", "si" => "Slovenisch",
+	"sh" => "Serbocroatisch", "sl" => "Slovenisch",
 	"simple" => "Einfaches Englisch", "es" => "Spanisch",
 	"sv" => "Schwedisch", "en" => "Englisch", "ia" => "Interlingua",
 	"la" => "Latein", "et" => "Estnisch"
