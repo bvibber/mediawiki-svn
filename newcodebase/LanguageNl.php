@@ -3,11 +3,11 @@
 # The names of the namespaces can be set here, but the numbers
 # are magical, so don't change or move them!  The Namespace class
 # encapsulates some of the magic-ness.
-# Dutch file – Nederlandstalige versie 2
+# Dutch file ? Nederlandstalige versie 2
 /* private */ $wgNamespaceNamesNl = array(
 	-1	=> "Speciaal",
 	0	=> "",
-	1	=> "Overleg,
+	1	=> "Overleg",
 	2	=> "Gebruiker",
 	3	=> "Overleg_gebruiker",
 	4	=> "Wikipedia",
@@ -368,7 +368,7 @@ Invoeren van uw e-mailadres is niet verplicht; het is handig als u uw wachtwoord
 "wrongpassword"	=> "Het ingegeven wachtwoord is niet juist. Probeer het opnieuw.",
 "mailmypassword" => "Stuur mij een nieuw wachtwoord op",
 "passwordremindertitle" => "Herinnering wachtwoord Wikipedia NL",
-"passwordremindertext" => "Iemand (waarschijnlijk uzelf) vanaf IP-adres $1 heeft verzocht u een nieuw wachtwoord voor Wikipedia NL toe te zenden. Het nieuwe wachtwoord voor gebruiker \"$2\" is \"$3\"." Advies: nu inloggen en wachtwoord wijzigigen.",
+"passwordremindertext" => "Iemand (waarschijnlijk uzelf) vanaf IP-adres $1 heeft verzocht u een nieuw wachtwoord voor Wikipedia NL toe te zenden. Het nieuwe wachtwoord voor gebruiker \"$2\" is \"$3\". Advies: nu inloggen en wachtwoord wijzigigen.",
 "noemail"		=> "Er is geen e-mailadres geregistreerd voor \"$1\".",
 "passwordsent"	=> "Er is een nieuw wachtwoord verzonden naar het e-mailadres wat geregistreerd staat voor \"$1\".
 Gelieve na ontvangst opnieuw in te loggen.",
@@ -394,7 +394,7 @@ Gelieve na ontvangst opnieuw in te loggen.",
 "explainconflict" => "Iemand anders heeft deze pagina gewijzigd nadat u aan deze bewerking bent begonnen. Het bovenste tekstveld toont de huidige versie van de pagina. U zal uw eigen wijzigingen moeten integreren in die tekst. Alleen de tekst in het bovenste veld wordt bewaard wanneer u kiest voor \"Pagina opslaan\".\n<p>",
 "yourtext"		=> "Uw tekst",
 "storedversion" => "Opgeslagen versie",
-"editingold"	=> "<strong>WAARSCHUWING: U bent bezig een oude versie van deze pagina te bewerken. Wanneer u uw bewerking opslaat, gaan alle wijzigingen die na deze versie gedaan zijn verloren.\n".</strong>\n",
+"editingold"	=> "<strong>WAARSCHUWING: U bent bezig een oude versie van deze pagina te bewerken. Wanneer u uw bewerking opslaat, gaan alle wijzigingen die na deze versie gedaan zijn verloren.\n.</strong>\n",
 "yourdiff"		=> "Wijzigingen",
 "copyrightwarning" => "Opgelet: Alle bijdragen aan Wikipedia worden geacht te zijn vrijgegeven onder de GNU Free Documentation License. Als u niet wil dat uw tekst door anderen naar believen bewerkt en verspreid kan worden, kies dan niet voor 'Pagina Opslaan'.<br> Hierbij belooft u ons tevens dat u deze tekst zelf hebt geschreven, of overgenomen uit een vrije, openbare bron.<br> <strong>GEBRUIK GEEN MATERIAAL WAT BESCHERMD WORDT DOOR AUTEURSRECHT ZONDER TOESTEMMING!</strong>",
 
@@ -655,10 +655,7 @@ Ook zullen deze pagina's in het <b>vet</b> verschijnen in de <a href=\"" .
 "deletedtext"	=> "\"$1\" is verwijderd. Zie $2 voor een overzicht van recente verwijderingen.",
 "deletedarticle" => "\"$1\" is verwijderd",
 "dellogpage"	=> "Lijst van verwijderingen",
-"dellogpagetext" => "Hieronder ziet u een lijst van de meest recentelijk verwijderde pagina's en afbeeldingen. Alle tijden zijn servertijd, UTC-0."
-<ul>
-</ul>
-",
+"dellogpagetext" => "Hieronder ziet u een lijst van de meest recentelijk verwijderde pagina's en afbeeldingen. Alle tijden zijn servertijd, UTC-0.",
 "deletionlog"	=> "Lijst van verwijderingen",
 "reverted"		=> "Eerdere versie hersteld",
 "deletecomment"	=> "Reden voor verwijdering",
@@ -822,7 +819,7 @@ class LanguageNl extends Language {
 		global $wgUser;
 
 		$diff = $wgUser->getOption( "timecorrection" );
-		if ( ! $diff ) { $diff = 0; }
+		if ( ! is_numeric($diff) ) { $diff = 2; } # Tweak this further
 		if ( 0 == $diff ) { return $ts; }
 
 		$t = mktime( ( (int)substr( $ts, 8, 2) ) + $diff,
@@ -887,7 +884,5 @@ class LanguageNl extends Language {
                 else return $m;
 	}
 }
-
-include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );
 
 ?>
