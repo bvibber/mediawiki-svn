@@ -896,6 +896,11 @@ class WikiPage extends WikiTitle {
                     $s .= $this->closeList( substr( $lastPref, ($opl - 1), 1 ) );
                     --$opl;
                 }
+                
+                if ( $npl <= $cpl && $cpl > 0 ) { 
+                    $s .= $this->nextItem( substr( $pref, ($cpl - 1), 1 ) );
+                }
+
                 while ( $npl > $cpl ) {
                     $char = substr( $pref, $cpl, 1 );
                     $s .= $this->openList( $char );
