@@ -64,9 +64,9 @@ class WikiTitle {
 	# Generates a "secure" title
 	function makeSecureTitle () {
 		$this->splitTitle () ;
-		$s = ucfirst ( trim ( $this->namespace ) ) ;
+		$s = ucfirstIntl ( trim ( $this->namespace ) ) ;
 		if ( $s != "" ) $s .= ":" ;
-		$s .= ucfirst ( trim ( $this->mainTitle ) ) ;
+		$s .= ucfirstIntl ( trim ( $this->mainTitle ) ) ;
 		if ( trim ( $this->subpageTitle ) != "" ) $s .= "/".trim($this->subpageTitle) ;
 		
 		# Unescape apostrophes (does this always work?)
@@ -105,7 +105,7 @@ class WikiTitle {
 		$s = str_replace ( "_" , " " , $s ) ;
 		$s = str_replace ( "\\'" , "'" , $s ) ;
 		$s = str_replace ( "\\\\" , "\\" , $s ) ;
-		return ucfirst ( $s ) ;
+		return ucfirstIntl ( $s ) ;
 		}
 
 	# Takes apart a title by namespace, subpage...

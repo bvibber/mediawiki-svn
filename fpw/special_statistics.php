@@ -11,7 +11,7 @@ function statistics () {
 	$nf1 = "<font color=red><b>" ;
 	$nf2 = "</b></font>" ;
 	
-	$Talk = ucfirst ( $wikiTalk ) ;
+	$Talk = ucfirstIntl ( $wikiTalk ) ;
 	$talk = $wikiTalk ;
 
 	# TOTAL	

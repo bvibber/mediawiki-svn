@@ -15,8 +15,8 @@ function fixTalk ( $title ) {
 	$sp = explode ( "/" , $title ) ;
 	$ns = explode ( ":" , $title ) ;
 	$lsp = array_pop ( $sp ) ;
-	if ( strtolower ( $lsp ) == $wikiTalk and count ( $sp ) > 0 ) {
-		if ( count ( $ns ) == 1 or strtolower ( $ns[0] ) == $wikiTalk )
+	if ( strtolowerIntl ( $lsp ) == $wikiTalk and count ( $sp ) > 0 ) {
+		if ( count ( $ns ) == 1 or strtolowerIntl ( $ns[0] ) == $wikiTalk )
 			$title = "$wikiTalk:".implode ( "/" , $sp ) ;
 		}
 	return $title ;

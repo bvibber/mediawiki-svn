@@ -13,7 +13,7 @@ function pagesThatLinkHere ( $t , $connection ) {
 	}
 
 function ShortPages () {
-	global $THESCRIPT , $user , $vpage , $startat , $wikiStubTitle , $wikiStubText , $showLinksThere , $wikiStubShowLinks ;
+	global $THESCRIPT , $user , $vpage , $startat , $wikiStubTitle , $wikiStubText , $showLinksThere , $wikiStubShowLinks , $wikiShowLinks ;
 	if ( !isset ( $startat ) ) $startat = 1 ;
 	$perpage = $user->options["resultsPerPage"] ;
 	if ( $perpage == 0 ) $perpage = 20 ;
@@ -23,7 +23,7 @@ function ShortPages () {
 	if ( $showLinksThere == 1 ) $sLT2 = 0 ;
 	else $sLT2 = 1 ;
 	$ret = $wikiStubText ;
-	$ret .= str_replace ( "$1" , $sLT2 , $wikiStubShowLinks ) ;
+	$ret .= "<nowiki><a href=\"$THESCRIPT?title=special:ShortPages&showLinksThere=$sLT2\">$wikiStubShowLinks</a><br></nowiki>\n";
 	$connection = getDBconnection () ;
 	$sql = "SELECT COUNT(*) AS number FROM cur WHERE cur_title NOT LIKE \"%:%\" AND cur_text NOT LIKE \"#redirect%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
@@ -70,7 +70,7 @@ function ShortPages () {
 				$lf .= ")</font>" ;
 				}
 			$ret .= "<td$color width=\"100%\" valign=top>".str_replace("$1",count($lh),$wikiStubLinkHere)."$lf</td>\n";
-		} else $ret .= "<td$color valign=top><nowiki><a href=\"".wikiLink("special:whatlinkshere&target=$k->url")."\">Show pages that link to \"".$k->getNiceTitle()."\"</a></nowiki></td>\n" ;
+		} else $ret .= "<td$color valign=top><nowiki><a href=\"".wikiLink("special:whatlinkshere&target=$k->url")."\">" . str_replace ( "$1" , $k->getNiceTitle() , $wikiShowLinks ) . "\"</a></nowiki></td>\n" ;
 
 		$ret .= "</tr>" ;
 		if ( $color == $color1 ) $color = $color2 ;
