@@ -58,8 +58,8 @@ void
 mgr::alarmup(str host, str metric, int value)
 {
 	hosts[host][metric] = value;
-	SMI(smirc::cfg)->conn()->msg(10, b::io::str(b::format("%% Alarm condition \002set\002 for host \002%s\002: %s = %d")
-						    % host % metric % value));
+	SMI(smlog::log)->logmsg(10, b::io::str(b::format("Alarm condition \002set\002 for host \002%s\002: %s = %d")
+					       % host % metric % value));
 }
 
 void
@@ -72,8 +72,8 @@ mgr::alarmdown(str host, str metric, int value)
 	hit->second.erase(mit);
 	if (hit->second.begin() == hit->second.end())
 		hosts.erase(hit);
-	SMI(smirc::cfg)->conn()->msg(10, b::io::str(b::format("%% Alarm condition \002cleared\002 for host \002%s\002: %s = %d")
-						    % host % metric % value));
+	SMI(smlog::log)->logmsg(10, b::io::str(b::format("Alarm condition \002cleared\002 for host \002%s\002: %s = %d")
+						% host % metric % value));
 }
 	
 } // namespace smalrm

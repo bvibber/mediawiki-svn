@@ -54,14 +54,16 @@ namespace smirc {
 				matches = here->find_matches(word, wild);
 
 				if (matches.size() > 1) {
-					wrtln(line);
-					wrtln(std::string(herelen, ' ') + '^');
-					wrtln("% [E] Ambiguous command.");
+					wrtln(b::io::str(b::format("%% Ambiguous command: %s\037%s\037%s")
+							 % line.substr(0, herelen)
+							 % line.substr(herelen, 1)
+							 % line.substr(herelen + 1)));
 					return;
 				} else if (matches.size() == 0) {
-					wrtln(line);
-					wrtln(std::string(herelen, ' ') + '^');
-					wrtln("% [E] Unknown command.");
+					wrtln(b::io::str(b::format("%% Unknown command: %s\037%s\037%s")
+							 % line.substr(0, herelen)
+							 % line.substr(herelen, 1)
+							 % line.substr(herelen + 1)));
 					return;
 				}
 				herelen += word.size() + 1;
@@ -76,9 +78,7 @@ namespace smirc {
 			}
 
 			if (!here->terminal) {
-				wrtln(line);
-				wrtln(std::string(herelen, ' ') + '^');
-				wrtln("% [E] Incomplete command.");
+				wrtln(b::io::str(b::format("%% Incomplete command: %s") % line));
 				return;
 			}
 			b = matches[0]->terminal->execute(cd);

@@ -73,14 +73,14 @@ public:
 			if (status == STAT_SUCCESS) {
 				std::string error = "SNMP error for host " + hostport + ": ";
 				error += snmp_errstring(response->errstat);
-				SMI(smlog::log)->logmsg(0, error);
+				//SMI(smlog::log)->logmsg(0, error);
 			} else {
 				std::string error = "SNMP error for host " + hostport + ": ";
 				char           *err;
 				snmp_error(ss, NULL, NULL, &err);
 				error += err;
 				SNMP_FREE(err);
-				SMI(smlog::log)->logmsg(0, error);
+				//SMI(smlog::log)->logmsg(0, error);
 			}
 		}
 		snmp_free_pdu(response);
@@ -335,7 +335,7 @@ cfg::state_transition(str serv, cfg::server::state_t oldstate, cfg::server::stat
 {
 	std::string oldstatename = server::statestring(oldstate),
 		newstatename = server::statestring(newstate);
-	std::string s = b::io::str(b::format("%% State transition for host \002%s\002: old state \002%s\002, new state \002%s\002")
+	std::string s = b::io::str(b::format("State transition for host \002%s\002: old state \002%s\002, new state \002%s\002")
 				   % serv % oldstatename % newstatename);
 	SMI(smlog::log)->logmsg(10, s);
 }

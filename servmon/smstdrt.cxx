@@ -155,7 +155,7 @@ HDL(cfg_irc_noserver) {
 	}
 };
 
-HDL(cfg_irc_showchannels) {
+HDL(cmd_irc_showchannels) {
 	EX {
 		try {
 			std::set<std::string> channels = SMI(smcfg::cfg)->fetchlist("/irc/channels");
@@ -170,7 +170,7 @@ HDL(cfg_irc_showchannels) {
 	}
 };
 
-HDL(cfg_irc_showserver) {
+HDL(cmd_irc_showserver) {
 	EX {
 		if (cd.num_params() == 0) {
 			try {
@@ -231,7 +231,7 @@ HDL(cfg_irc_noenableserver) {
 	}
 };
 
-HDL(cfg_monit_showservers) {
+HDL(cmd_monit_showservers) {
 	EX {
 		std::map<std::string, smmon::cfg::serverp> servers;
 		if (cd.num_params() == 0) {
@@ -338,7 +338,7 @@ HDL(cfg_monit_ircinterval) {
 	}
 };
 
-HDL(cfg_monit_showintervals) {
+HDL(cmd_monit_showintervals) {
 	EX {
 		try {
 			cd.inform("Monitor interval         : " + b::lexical_cast<std::string>(SMI(smcfg::cfg)->fetchint("/monit/interval")));
@@ -385,7 +385,7 @@ HDL(cfg_qbr_description) {
 	}
 };
 
-HDL(cfg_qb_show_rule) {
+HDL(cmd_qb_show_rule) {
 	EX {
 		std::vector<smqb::rule> rules;
 		if (cd.num_params() == 0) {
@@ -507,7 +507,7 @@ HDL(cfg_mc_server_list_command) {
 	}
 };
 
-HDL(cfg_mc_show_server_list_command) {
+HDL(cmd_mc_show_server_list_command) {
 	EX {
 		try {
 			cd.wrtln(SMI(smcfg::cfg)->fetchstr("/mc/servercmd"));
@@ -518,7 +518,7 @@ HDL(cfg_mc_show_server_list_command) {
 	}
 };
 
-HDL(cfg_mc_show_parser_cache) {
+HDL(cmd_mc_show_parser_cache) {
 	EX {
 		float hits, invalid, expired, absent, total;
 		std::string dbname = cd.num_params() ? cd.p(0) : "enwiki";
@@ -582,6 +582,62 @@ HDL(cfg_monit_alarm_mysql_threads) {
 			return true;
 		}
 		SMI(smalrm::mgr)->set_thresh("running threads", v);
+		return true;
+	}
+};
+
+HDL(cmd_debug_mysql_connect) {
+	EX {
+		SMI(smlog::log)->dodebug(smlog::mysql_connect);
+		return true;
+	}
+};
+
+HDL(cmd_no_debug_mysql_connect) {
+	EX {
+		SMI(smlog::log)->dontdebug(smlog::mysql_connect);
+		return true;
+	}
+};
+
+HDL(cmd_debug_mysql_query) {
+	EX {
+		SMI(smlog::log)->dodebug(smlog::mysql_query);
+		return true;
+	}
+};
+
+HDL(cmd_no_debug_mysql_query) {
+	EX {
+		SMI(smlog::log)->dontdebug(smlog::mysql_query);
+		return true;
+	}
+};
+
+HDL(cmd_debug_mysql_monitoring) {
+	EX {
+		SMI(smlog::log)->dodebug(smlog::mysql_monitoring);
+		return true;
+	}
+};
+
+HDL(cmd_no_debug_mysql_monitoring) {
+	EX {
+		SMI(smlog::log)->dontdebug(smlog::mysql_monitoring);
+		return true;
+	}
+};
+
+HDL(cmd_debug_irc) {
+	EX {
+		SMI(smlog::log)->dodebug(smlog::irc);
+		return true;
+	}
+};
+
+HDL(cmd_no_debug_irc) {
+	EX {
+		SMI(smlog::log)->dontdebug(smlog::irc);
 		return true;
 	}
 };
