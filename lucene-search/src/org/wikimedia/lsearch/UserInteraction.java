@@ -40,8 +40,8 @@ public class UserInteraction extends Thread {
 			return;
 		if (hits > 0 && logFailOnly)
 			return;
-		System.out.printf("%s: query=[%s] parsed=[%s] hits=[%d]\n",
-				dbname, query, parsed, hits);
+		System.out.println(dbname + ": query=[" + query +
+				"] parsed=[" + parsed + "] hit=[" + hits + "]");
 	}
 	
 	public void run() {
@@ -75,8 +75,8 @@ public class UserInteraction extends Thread {
 						} else {
 							logQueries = false;
 						}
-						System.out.printf("Will %slog queries.\n",
-								logQueries ? "" : "not ");
+						System.out.println("Will " + (logQueries ? "" : "not ") +
+								"log queries.");
 					}
 				} else if (c[0].equals("lr")) {
 					if (c.length < 2) {
@@ -87,11 +87,11 @@ public class UserInteraction extends Thread {
 						} else {
 							logFailOnly = false;
 						}
-						System.out.printf("Will %sonly log queries with no results.\n",
-								!logQueries ? "" : "not ");
+						System.out.print("Will " + (!logQueries ? "" : "not ") +
+							"only log queries with no results.");
 					}					
 				} else {
-					System.out.printf("?Unknown command (%s)\n", c[0]);
+					System.out.println("?Unknown command (" + c[0] + ")");
 				}
 			} catch (IOException e) {
 				System.out.println("Read error from stdin...");

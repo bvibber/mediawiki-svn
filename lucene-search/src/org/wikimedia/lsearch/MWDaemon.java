@@ -50,7 +50,7 @@ public class MWDaemon {
 	public static void main(String[] args) {
 		System.out.println(
 				"MediaWiki Lucene search indexer - runtime search daemon.\n" +
-				"Version 20041225, copyright 2004 Kate Turner.\n"
+				"Version 20050103, copyright 2004 Kate Turner.\n"
 				);
 		int i = 0;
 		while (i < args.length - 1) {
@@ -105,7 +105,8 @@ public class MWDaemon {
 			SearchClientReader clnt = new SearchClientReader(client);
 			clnt.start();
 		}*/
-		List<SearchClientReader> threads = new ArrayList<SearchClientReader>();
+		//List<SearchClientReader> threads = new ArrayList<SearchClientReader>();
+		List threads = new ArrayList();
 		for (int j = 0; j < 50; ++j) {
 			++numthreads;
 			SearchClientReader c = new SearchClientReader(j);

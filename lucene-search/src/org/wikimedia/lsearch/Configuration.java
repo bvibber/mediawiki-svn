@@ -28,6 +28,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.Iterator;
 
 /**
  * @author Kate Turner
@@ -69,9 +70,14 @@ public class Configuration {
 	}
 	public boolean islatin1(String dbname) {
 		String[] latin1dbs = getArray("mwsearch.latin1dbs");
-		for (String s : latin1dbs)
+		if (latin1dbs == null)
+			return false;
+		//for (String s : latin1dbs)
+		for (int i = 0; i < latin1dbs.length; i++) {
+			String s = latin1dbs[i];
 			if (s.equals(dbname))
 				return true;
+		}
 		return false;
 	}
 	public boolean getBoolean(String name) {

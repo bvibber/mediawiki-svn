@@ -36,6 +36,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Iterator;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.Term;
@@ -82,20 +83,25 @@ public class SearchClientReader extends Thread {
 		num = i;
 	}
 	int num;
-	Map<String, SearchState> myStates;
+	//Map<String, SearchState> myStates;
+	Map myStates;
 	private SearchState getMyState(String dbname) {
-		SearchState ret = myStates.get(dbname);
+		SearchState ret = (SearchState)myStates.get(dbname);
 		if (ret != null)
 			return ret;
 		try {
 			ret = SearchState.forWiki(dbname);
 		} catch (SQLException e) {
+			// Couldn't load state?
+			// We'll crap out later on the NULL.
 		}
 		myStates.put(dbname, ret);
 		return ret;
 	}
+	
 	public void run() {
-		myStates = new HashMap<String, SearchState>();
+		//myStates = new HashMap<String, SearchState>();
+		myStates = new HashMap();
 		System.out.println("starting handler #" + num);
 		for (;;) {
 			try {
@@ -180,8 +186,7 @@ public class SearchClientReader extends Thread {
 		
 		ostrm.write(numhits + "\n");
 		
-		int i = 0;
-		while (i < numhits) {
+		for (int i = 0; i < numhits; i++) {
 			Document doc = hits.doc(i);
 			float score = hits.score(i);
 			String namespace = doc.get("namespace");
@@ -200,21 +205,22 @@ public class SearchClientReader extends Thread {
 		try {
 			String terms[] = term.split(" +");
 			term = "";
-			for (String t : terms)
+			//for (String t : terms)
+			for (int i = 0; i < terms.length; i++) {
+				String t = terms[i];
 				term += t + "~ ";
+			}
 			searchterm = "title:(" + term + ")";
 			
 			Query query = state.parser.parse(searchterm);
 			Hits hits = state.searcher.search(query);
 			int numhits = hits.length();
-			int i = 0;
-			while (i < numhits && i < 10) {
+			for (int i = 0; i < numhits && i < 10; i++) {
 				Document doc = hits.doc(i);
 				float score = hits.score(i);
 				String namespace = doc.get("namespace");
 				String title = doc.get("title");
 				ostrm.write(score + " " + namespace + " " + title.replaceAll(" ", "_") + "\n");
-				++i;
 			}
 			ostrm.flush();
 		} catch (IOException e) {
@@ -234,9 +240,12 @@ public class SearchClientReader extends Thread {
 		if (searchterm.length() < 1)
 			return;
 		
-		List<Title> matches = state.matcher.getMatches(
+		//List<Title> matches = state.matcher.getMatches(
+		List matches = state.matcher.getMatches(
 				TitlePrefixMatcher.stripTitle(searchterm));
-		for (Title match : matches) {
+		//for (Title match : matches) {
+		for (Iterator iter = matches.iterator(); iter.hasNext();) {
+			Title match = (Title)iter.next();
 			ostrm.write("0 " + match.namespace + " " + match.title.replaceAll(" ", "_") + "\n");
 		}
 	}

@@ -50,7 +50,7 @@ public class ArticleIterator implements Iterator {
 		return !atend;
 	}
 
-	public Article next() {
+	public Object next() {
 		try {
 			if (atend)
 				throw new NoSuchElementException();
@@ -61,7 +61,7 @@ public class ArticleIterator implements Iterator {
 			atend = !rs.next();
 			return new Article(dbname, namespace, title, contents, timestamp);
 		} catch (SQLException e) {
-			System.err.printf("Warning: SQL exception: %s\n", e.getMessage());
+			System.err.println("Warning: SQL exception: " + e.getMessage());
 			return null;
 		}
 	}

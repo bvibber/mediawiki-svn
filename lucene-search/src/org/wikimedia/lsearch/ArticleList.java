@@ -30,7 +30,8 @@ import java.sql.ResultSet;
  * @author Kate Turner
  *
  */
-public class ArticleList implements Iterable<Article> {
+//public class ArticleList implements Iterable {
+public class ArticleList {
 	private ResultSet rs;
 	private String dbname;
 	

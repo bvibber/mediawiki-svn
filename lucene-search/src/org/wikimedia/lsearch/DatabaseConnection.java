@@ -35,16 +35,18 @@ import java.util.Map;
  *
  */
 public class DatabaseConnection {
-	private static Map<String, DatabaseConnection> dbconns;
+	//private static Map<String, DatabaseConnection> dbconns;
+	private static Map dbconns;
 	private static Configuration config;
 	static {
-		dbconns = new HashMap<String, DatabaseConnection>();
+		//dbconns = new HashMap<String, DatabaseConnection>();
+		dbconns = new HashMap();
 	}
 	public static DatabaseConnection forWiki(String dbname) throws SQLException {
 		if (config == null)
 			config = Configuration.open();
 		
-		DatabaseConnection t = dbconns.get(dbname);
+		DatabaseConnection t = (DatabaseConnection)dbconns.get(dbname);
 		if (t != null) {
 			t.refcount++;
 			return t;
@@ -58,8 +60,11 @@ public class DatabaseConnection {
 	private int refcount;
 	
 	private DatabaseConnection(String dbname) throws SQLException {
+		if (config.getString("mwsearch.dburl") == null) {
+			throw(new SQLException("You must set mwsearch.dburl in the config file. Aborting..."));
+		}
 		String dburl = MessageFormat.format(config.getString("mwsearch.dburl"),
-				config.getString("mwsearch.database.host"), dbname);
+				new Object[] { config.getString("mwsearch.database.host"), dbname });
 		Connection dbconn = DriverManager.getConnection(dburl,
 				config.getString("mwsearch.username"),
 				config.getString("mwsearch.password"));

@@ -33,6 +33,7 @@ import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
+import java.util.Iterator;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
@@ -51,17 +52,19 @@ import com.sleepycat.je.DatabaseException;
  */
 public class SearchState {
 	//private static Stack<SearchState> states;
-	private static Map<String, SearchState> openWikis;
+	//private static Map<String, SearchState> openWikis;
+	private static Map openWikis;
 	static {
 		//states = new Stack<SearchState>();
-		openWikis = new HashMap<String, SearchState>();
+		//openWikis = new HashMap<String, SearchState>();
+		openWikis = new HashMap();
 	}
 	public static SearchState forWiki(String dbname) throws SQLException {
 		System.out.println("lookup " + dbname);
 		SearchState t = null;
 		synchronized (openWikis) {
 			System.out.println("got lock");
-			t = openWikis.get(dbname);
+			t = (SearchState)openWikis.get(dbname);
 			if (t != null)
 				return t;
 		//}
@@ -89,8 +92,11 @@ public class SearchState {
 	
 	public static void resetStates() {
 		synchronized (openWikis) {
-			for (SearchState state : openWikis.values())
+			//for (SearchState state : openWikis.values()) {
+			for (Iterator iter = openWikis.values().iterator(); iter.hasNext();) {
+				SearchState state = (SearchState)iter.next();
 				state.reopen();
+			}
 		}
 	}
 
@@ -108,21 +114,21 @@ public class SearchState {
 	private SearchState(String dbname) throws SQLException {
 		config = Configuration.open();
 		indexpath = MessageFormat.format(config.getString("mwsearch.indexpath"),
-				dbname);
+				new Object[] { dbname });
 		File f = new File(indexpath);
 		if (!f.exists())
 			f.mkdirs();
 		
-		System.out.printf("%s: opening state\n", dbname);
+		System.out.println(dbname + ": opening state");
 		analyzer = new EnglishAnalyzer();
 		parser = new QueryParser("contents", analyzer);
 		try {
 			reader = IndexReader.open(indexpath);
 			searcher = new IndexSearcher(reader);
 		} catch (IOException e) {
-			System.out.printf("%s: warning: open for read failed\n", dbname);
+			System.out.println(dbname + ": warning: open for read failed");
 		}
-		System.out.printf("%s: reading title index...\n", dbname);
+		System.out.println(dbname + ": reading title index...");
 		matcher = new TitlePrefixMatcher(dbname);
 		mydbname = dbname;
 	}
@@ -149,7 +155,8 @@ public class SearchState {
 		if (writable)
 			return;
 		writer = new IndexWriter(
-				MessageFormat.format(config.getString("mwsearch.indexpath"), mydbname),
+				MessageFormat.format(config.getString("mwsearch.indexpath"),
+						new Object[] { mydbname }),
 				new EnglishAnalyzer(), true);
 		writable = true;
 	}
@@ -159,13 +166,15 @@ public class SearchState {
 		Connection conn = dbconn.getConn();
 		String query;
 		PreparedStatement pstmt;
+		String tablePrefix = config.getString("mwsearch.tableprefix");
+		if (tablePrefix == null) tablePrefix = "";
 		
 		if (!config.getBoolean("mwsearch.oldmediawiki"))
 			query = "SELECT page_namespace,page_title,old_text,page_timestamp " +
-				"FROM page, text WHERE old_id=page_latest AND page_is_redirect=0";
+				"FROM " + tablePrefix + "page, " + tablePrefix + "text WHERE old_id=page_latest AND page_is_redirect=0";
 		else
 			query = "SELECT cur_namespace,cur_title,cur_text,cur_timestamp " +
-				"FROM cur WHERE cur_is_redirect=0";
+				"FROM " + tablePrefix + "cur WHERE cur_is_redirect=0";
 
 		pstmt = conn.prepareStatement(query, ResultSet.TYPE_FORWARD_ONLY,
 				ResultSet.CONCUR_READ_ONLY);

@@ -66,7 +66,8 @@ public class TitlePrefixMatcher {
 		}
 		try {
 			String pfxdir;
-			pfxdir = MessageFormat.format(config.getString("mwsearch.titledb"), dbname);
+			pfxdir = MessageFormat.format(config.getString("mwsearch.titledb"),
+					new Object[] { dbname });
 			File f = new File(pfxdir);
 			if (!f.exists())
 				f.mkdirs();
@@ -79,8 +80,8 @@ public class TitlePrefixMatcher {
 			dbconfig.setAllowCreate(true);
 			dbconfig.setTransactional(true);
 			Transaction txn = dbenv.beginTransaction(null, null);
-			System.out.printf("%s: title prefix database location: %s\n",
-					dbname, pfxdir);
+			System.out.println(dbname + ": title prefix database location: " +
+					pfxdir);
 			db = dbenv.openDatabase(txn, "db", dbconfig);
 			miscdb = dbenv.openDatabase(txn, "miscdb", dbconfig);
 			catalog = new StoredClassCatalog(db);
@@ -88,13 +89,15 @@ public class TitlePrefixMatcher {
 			valuebind = new SerialBinding(catalog, Title.class);
 			txn.commit();
 		} catch (DatabaseException e) {
-			System.out.printf("%s: error: database exception: %s\n",
-					dbname, e.getMessage());
+			System.out.println(dbname + ": error: database exception: " +
+					e.getMessage());
 			System.exit(1);
 		}
-		System.out.printf("%s: opened title database okay\n", dbname);
+		System.out.println(dbname + ": opened title database okay");
 	}
-	public List<Title> getMatches(String prefix) {
+	
+	//public List<Title> getMatches(String prefix) {
+	public List getMatches(String prefix) {
 		String first = prefix;
 		String last;
 		if (prefix.length() >= 2) {
@@ -104,7 +107,8 @@ public class TitlePrefixMatcher {
 		} else {
 			last = Character.toString((char)(prefix.charAt(0) + 1));
 		}
-		List<Title> l = new ArrayList<Title>();
+		//List<Title> l = new ArrayList<Title>();
+		List l = new ArrayList();
 		int i = 0;
 		try {
 			Cursor c = db.openCursor(null, null);
@@ -131,6 +135,7 @@ public class TitlePrefixMatcher {
 		}
 		return l;
 	}
+	
 	public static String stripTitle(String title) {
 		title = title.toLowerCase();
 		String res = "";
@@ -142,10 +147,11 @@ public class TitlePrefixMatcher {
 		}
 		return res;
 	}
+	
 	public void addArticle(Article article) throws DatabaseException {
 		Transaction txn = dbenv.beginTransaction(null, null);
 		String stripped = TitlePrefixMatcher.stripTitle(article.getTitle());
-		Title t = new Title(Integer.valueOf(article.getNamespace()), article.getTitle());
+		Title t = new Title(Integer.valueOf(article.getNamespace()).intValue(), article.getTitle());
 		DatabaseEntry dbkey = new DatabaseEntry();
 		DatabaseEntry data = new DatabaseEntry();
 		StringBinding tkeybind = new StringBinding();

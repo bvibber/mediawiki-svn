@@ -35,7 +35,8 @@ public class SearchIndexUpdater extends Thread {
 	static private final int DEFAULT_DELAY = 10*60; // seconds
 	private int delay;
 	IndexWriter writer;
-	private Map<String, String> curTimestamps;
+	//private Map<String, String> curTimestamps;
+	private Map curTimestamps;
 	Configuration config;
 	
 	SearchIndexUpdater() {
