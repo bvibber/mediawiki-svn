@@ -48,9 +48,9 @@ while (1) {
 	$res = wfQuery( "SELECT * FROM recentchanges WHERE rc_id>'$oldId' $bots ORDER BY rc_timestamp", DB_READ );
 	$rowIndex = 0;
 	while ( $row = wfFetchObject( $res ) ) {
-		if ( ++$serverCount % 20 == 0 ) {
-			print "/server $ircServer\n";
-		}
+		#if ( ++$serverCount % 20 == 0 ) {
+			#	print "/server $ircServer\n";
+			#}
 		$ns = $wgLang->getNsText( $row->rc_namespace ) ;
 		if ( $ns ) {
 			$title = "$ns:{$row->rc_title}";
