@@ -198,13 +198,23 @@ class WikiPage extends WikiTitle {
         $this->makeSecureTitle () ;
         if ( $this->doesTopicExist() ) return ;
         $connection = getDBconnection () ;
-        $sql = "INSERT INTO cur (cur_title, cur_ind_title) VALUES (\"$this->secureTitle\", REPLACE(\"$this->secureTitle\",'_',' '))" ;
+        $sql = "INSERT INTO cur (cur_title, cur_ind_title)
+                VALUES (\"$this->secureTitle\", REPLACE(\"$this->secureTitle\",'_',' '))" ;
         mysql_query ( $sql , $connection ) ;
-        if ( $useCachedPages ) { # Flushing cache for all pages that linked to the empty topic
+        # since the page now exists we move all links in the table unlinked to the table linked
+        $sql = "INSERT INTO linked ( linked_from, linked_to )
+                SELECT unlinked_from, unlinked_to
+                FROM unlinked
+                WHERE unlinked_to = \"$this->secureTitle\"" ;
+        mysql_query ( $sql , $connection ) ;
+        $sql = "DELETE FROM unlinked WHERE unlinked_to = \"$this->secureTitle\"" ;
+        mysql_query ( $sql , $connection ) ;
+        # Flushing cache for all pages that linked to the empty topic
+        if ( $useCachedPages ) {
             $sql = "UPDATE cur SET cur_cache=\"\", cur_timestamp=cur_timestamp WHERE cur_linked_links LIKE \"%$this->secureTitle%\" OR cur_unlinked_links LIKE \"%$this->secureTitle%\"" ;
             mysql_query ( $sql , $connection ) ;
-            }
         }
+    }
 
     # This function performs a backup from the "cur" to the "old" table, building a
     #  single-linked chain with the cur_old_version/old_old_version entries
@@ -240,14 +250,42 @@ class WikiPage extends WikiTitle {
         $cond = "cur_title=\"$this->secureTitle\"" ;
 
         global $linkedLinks , $unlinkedLinks ;
+        
+        $connection = getDBconnection () ;        
+        
         $this->parseContents ( $text , true ) ; # Calling with savingMode flag set, so only internal Links are parsed
         $ll = implode ( "\n" , array_keys ( $linkedLinks ) ) ;
+
+        # store linked links in linked table
+        $sql = "DELETE FROM linked WHERE linked_from = \"$this->secureTitle\" ;" ;
+        $r = mysql_query ( $sql , $connection ) ;
+        $linkTitle = new wikiTitle ;
+        foreach ( array_keys ( $linkedLinks ) as $linked_link ) { 
+            $linkTitle->title = $linked_link ;
+            $linkTitle->makeSecureTitle () ;
+            $secureLinkTitle = $linkTitle->secureTitle ;
+            $sql = "INSERT INTO linked (linked_from, linked_to) VALUES ( \"$this->secureTitle\" , \"$secureLinkTitle\" ) ;" ;
+            $r = mysql_query ( $sql , $connection ) ;
+        }
+
         $ull = implode ( "\n" , array_keys ( $unlinkedLinks ) ) ;
+
+        # store unlinked links in unlinked table
+        $sql = "DELETE FROM unlinked WHERE unlinked_from = \"$this->secureTitle\" ;" ;
+        $r = mysql_query ( $sql , $connection ) ;
+        $linkTitle = new wikiTitle ;        
+        foreach ( array_keys ( $unlinkedLinks ) as $unlinked_link ) {
+            $linkTitle->title = $unlinked_link ;
+            $linkTitle->makeSecureTitle () ;
+            $secureLinkTitle = $linkTitle->secureTitle ;
+            $sql = "INSERT INTO unlinked (unlinked_from, unlinked_to) VALUES ( \"$this->secureTitle\" , \"$secureLinkTitle\" ) ;" ;
+            $r = mysql_query ( $sql , $connection ) ;
+        }
+        
         $pa = implode ( "\n" , $this->params ) ;
 
         if ( $useCachedPages ) $addCache = "cur_cache=\"\"," ;
 
-        $connection = getDBconnection () ;
         $text = str_replace ( "\"" , "\\\"" , $text ) ;
 #       $comment = str_replace ( "\"" , "\\\"" , $comment ) ;
         $userName = str_replace ( "\"" , "\\\"" , $userName ) ;

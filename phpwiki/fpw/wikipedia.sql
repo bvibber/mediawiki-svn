@@ -2,7 +2,7 @@
 #
 # Host: localhost    Database: wikipedia
 #--------------------------------------------------------
-# Server version	3.23.47
+# Server version	3.23.47-max-debug
 
 #
 # Table structure for table 'cur'
@@ -33,6 +33,17 @@ CREATE TABLE cur (
 ) TYPE=MyISAM PACK_KEYS=1;
 
 #
+# Table structure for table 'linked'
+#
+
+CREATE TABLE linked (
+  linked_to varchar(255) binary NOT NULL default '',
+  linked_from varchar(255) binary NOT NULL default '',
+  KEY linked_from (linked_from),
+  KEY linked_to (linked_to)
+) TYPE=MyISAM;
+
+#
 # Table structure for table 'old'
 #
 
@@ -50,6 +61,17 @@ CREATE TABLE old (
   KEY timeind (old_timestamp),
   KEY old_title (old_title)
 ) TYPE=MyISAM PACK_KEYS=1;
+
+#
+# Table structure for table 'unlinked'
+#
+
+CREATE TABLE unlinked (
+  unlinked_from varchar(255) binary NOT NULL default '',
+  unlinked_to varchar(255) binary NOT NULL default '',
+  KEY unlinked_from (unlinked_from),
+  KEY unlinked_to (unlinked_to)
+) TYPE=MyISAM;
 
 #
 # Table structure for table 'user'
