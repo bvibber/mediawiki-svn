@@ -1098,7 +1098,7 @@ class WikiPage extends WikiTitle {
 		$ret .= $this->getLinkBar()."<hr>\n" ;
 
 	} else {
-	        $ret .= "<FORM method=get action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
+	        $ret .= "<FORM method=get action=\"$THESCRIPT\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
         	$ret .= "</td>\n<td rowspan=2 width=1><a href=\"".wikiLink("")."\"><img border=0 src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a></td></tr>\n" ;
 	        $ret .= "<tr><td valign=bottom>".$this->getLinkBar()."</td></tr></table>" ;
 		}
