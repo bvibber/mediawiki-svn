@@ -4,6 +4,7 @@ function wfSpecialContributions()
 {
 	global $wgUser, $wgOut, $wgLang, $target, $limit, $days, $hideminor;
 	$fname = "wfSpecialContributions";
+	$sysop = $wgUser->isSysop();
 
 	if ( "" == $target ) {
 		$wgOut->errorpage( "notargettitle", "notargettext" );
@@ -115,6 +116,9 @@ function wfSpecialContributions()
 		}
 		$page = Title::makeName( $ns, $t );
 		$link = $sk->makeKnownLink( $page, "" );
+		if($sysop && $topmark != "") {
+			$topmark .= " [". $sk->makeKnownLink( $page, "rollback", "action=rollback" ) ."]";
+		}
 		$d = $wgLang->timeanddate( $ts, true );
 
 		$wgOut->addHTML( "<li>{$d} {$link}{$topmark}</li>\n" );
