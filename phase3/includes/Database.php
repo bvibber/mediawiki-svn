@@ -64,7 +64,6 @@ class Database {
 	{
 		global $wgOut;
 		$this->mOut = $wgOut;
-	
 	}
 	
 	/* static */ function newFromParams( $server, $user, $password, $dbName, 
@@ -93,21 +92,21 @@ class Database {
 		$success = false;
 		
 		@$this->mConn = mysql_connect( $server, $user, $password );
-		if ( $dbName != "" ) {
-			if ( $this->mConn !== false ) {
+		if ( $this->mConn !== false ) {
+			if ( $dbName == "" ) {
+				# Delay database selection
+				$success = true;
+			} else {
 				$success = @mysql_select_db( $dbName, $this->mConn );
 				if ( !$success ) {
 					wfDebug( "Error selecting database \"$dbName\": " . $this->lastError() . "\n" );
 				}
-			} else {
-				wfDebug( "DB connect error: " . $this->lastError() . "\n" );
-				wfDebug( "Server: $server, User: $user, Password: " . 
-					substr( $password, 0, 3 ) . "...\n" );
-				$success = false;
 			}
 		} else {
-			# Delay USE
-			$success = true;
+			wfDebug( "DB connect error: " . $this->lastError() . "\n" );
+			wfDebug( "Server: $server, User: $user, Password: " . 
+				substr( $password, 0, 3 ) . "...\n" );
+			$success = false;
 		}
 		
 		if ( !$success ) {
@@ -130,11 +129,12 @@ class Database {
 		}
 	}
 	
-	/* private */ function reportConnectionError( $msg = "")
+	function reportConnectionError( $msg = "")
 	{
 		if ( $this->mFailFunction ) {
 			if ( !is_int( $this->mFailFunction ) ) {
-				$this->$mFailFunction( $this );
+				$fn = $this->mFailFunction;
+				$fn( $this );
 			}
 		} else {
 			wfEmergencyAbort( $this );

@@ -45,9 +45,10 @@ global $wgArticle, $wgDeferredUpdateList, $wgLinkCache;
 global $wgMemc, $wgMagicWords, $wgMwRedir, $wgDebugLogFile;
 global $wgMessageCache, $wgUseMemCached, $wgUseDatabaseMessages;
 global $wgMsgCacheExpiry, $wgDBname, $wgCommandLineMode;
+global $wgLoadBalancer, $wgDBservers, $wgDBloads, $wgDBuser, $wgDBpassword;
 
 class MemCachedClientforWiki extends memcached {
-	function _debugprint( $text ) {
+	function _debug( $text ) {
 		wfDebug( "memcached: $text\n" );
 	}
 }
@@ -92,6 +93,16 @@ if( $wgUseMemCached ) {
 }
 
 wfProfileOut( "$fname-memcached" );
+wfProfileIn( "$fname-database" );
+
+if ( !$wgDBservers ) {
+	$wgDBservers = array( $wgDBserver );
+	$wgDBloads = array( 1 );
+}
+$wgLoadBalancer = LoadBalancer::newFromParams( $wgDBservers, $wgDBloads, $wgDBuser, $wgDBpassword, $wgDBname );
+$wgLoadBalancer->force(0);
+
+wfProfileOut( "$fname-database" );
 wfProfileIn( "$fname-misc" );
 
 include_once( "Language.php" );
