@@ -45,6 +45,8 @@ if(defined('MEDIAWIKI'))
       "ThreadOpen"      => "Créer le sujet",
       "ThreadExist"     => "Ce sujet existe déjà, veuillez choisir un autre titre !",
       "ThreadInvalid"   => "Le titre de ce sujet est invalide, veuillez choisir un autre titre !",
+      "ThreadSHAlt"     => "voir", // thread show/hide bouton 'alt' text
+      "ThreadSHTip"     => "Cliquer ici pour montrer ou cacher le contenu de ce sujet", // thread show/hide bouton 'title' text (tip)
    );
 } // end if(defined('MEDIAWIKI'))
 

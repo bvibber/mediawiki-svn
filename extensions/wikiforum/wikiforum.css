@@ -43,15 +43,21 @@ div.wf.create_thread
 
 table.wf.thread_table
 {
+	width:100%;
+	border-collapse:collapse;
+	margin:0 0 1em 0;
+}
+
+table.wf.thread_table tr.wf.thread_row
+{
 	border-style:solid;
 	border-color:#aaaaaa;
 	border-width:1px;
-	margin:0 0 1em 0;
 }
 
 tr.wf.thread_row {}
 
-th.wf.thread_row#threadtablehead
+tr.wf.thread_row#threadtablehead
 {
 	background:#F0F0F0;
 	font-weight:bold;
@@ -60,14 +66,14 @@ th.wf.thread_row#threadtablehead
 
 tr.wf.thread_row.thread_list.odd  { background:#F8F8F8; }
 tr.wf.thread_row.thread_list.peer { background:#FFFFFF; }
-tr.wf.thread_row.thread_inc.odd   { background:#F0F0F0; }
-tr.wf.thread_row.thread_inc.peer  { background:#F0F0F0; }
+tr.wf.thread_row.thread_inc.odd   { background:#F8F8F8; }
+tr.wf.thread_row.thread_inc.peer  { background:#F8F8F8; }
 
 tr.wf.thread_row.thread_inc td
 {
-	border-style:solid;
+	/*border-style:solid;
 	border-color:#aaaaaa;
-	border-width:1px 0 0 0;
+	border-width:1px 0 0 0;*/
 }
 tr.wf.thread_row.thread_inc.odd td  {}
 tr.wf.thread_row.thread_inc.peer td {}
@@ -81,11 +87,16 @@ tr.wf.thread_row.thread_body td
 tr.wf.thread_row.thread_body.odd td  {}
 tr.wf.thread_row.thread_body.peer td {}
 
+tr.wf#thread_interval
+{
+    height:1em;
+}
+
 div.wf.threadcontent
 {
-	border-style:solid;
+	/*border-style:solid;
 	border-color:#aaaaaa;
-	border-width:1px;
+	border-width:1px;*/
 	background-color:white;
 	padding:1em;
 	margin:0 0 1em 0;

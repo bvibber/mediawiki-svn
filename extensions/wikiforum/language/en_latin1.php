@@ -45,6 +45,8 @@ if(defined('MEDIAWIKI'))
       "ThreadOpen"      => "Open thread",
       "ThreadExist"     => "This thread already exist, please chose an other name!",
       "ThreadInvalid"   => "This thread title is invalid, please chose an other name!",
+      "ThreadSHAlt"     => "Show/Hide", // thread show/hide bouton 'alt' text
+      "ThreadSHTip"     => "Click here to show or hide this thread content", // thread show/hide bouton 'title' text (tip)
    );
 } // end if(defined('MEDIAWIKI'))
 
