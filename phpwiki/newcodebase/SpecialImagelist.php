@@ -3,22 +3,34 @@
 function wfSpecialImagelist()
 {
 	global $wgUser, $wgOut, $wgLang, $sort, $limit;
+	global $wgServer, $wgScript;
+	global $wpIlMatch, $wpIlSubmit;
+
+	$fields = array( 'wpIlMatch' );
+	wfCleanFormFields( $fields );
 
 	$sql = "SELECT img_size,img_name,img_user,img_user_text," .
-	  "img_description,img_timestamp FROM image ORDER BY ";
+	  "img_description,img_timestamp FROM image";
 
 	$byname = wfMsg( "byname" );
 	$bydate = wfMsg( "bydate" );
 	$bysize = wfMsg( "bysize" );
 
 	if ( "bysize" == $sort ) {
-		$sql .= "img_size DESC";
+		$sql .= " ORDER BY img_size DESC";
 		$st = $bysize;
 	} else if ( "byname" == $sort ) {
-		$sql .= "img_name";
+		if ( $wpIlMatch ) {
+			$nt = Title::newFromUrl( $wpIlMatch );
+			$m = wfStrencode( strtolower( $nt->getDBkey() ) );
+			$m = str_replace( "%", "\\%", $m );
+			$m = str_replace( "_", "\\_", $m );
+			$sql .= " WHERE LCASE(img_name) LIKE '%{$m}%'";
+		}
+		$sql .= " ORDER BY img_name";
 		$st = $byname;
 	} else {
-		$sql .= "img_timestamp DESC";
+		$sql .= " ORDER BY img_timestamp DESC";
 		$st = $bydate;
 	}
 	if ( ! isset( $limit ) ) { $limit = 50; }
@@ -30,16 +42,20 @@ function wfSpecialImagelist()
 	}
 	$wgOut->addHTML( "<p>" . wfMsg( "imglegend" ) . "\n" );
 
-	$text = str_replace( "$1", "<strong>{$lt}</strong>", wfMsg( "imagelisttext" ) );
+	$text = str_replace( "$1", "<strong>{$lt}</strong>",
+	  wfMsg( "imagelisttext" ) );
 	$text = str_replace( "$2", "<strong>{$st}</strong>", $text );
 	$wgOut->addHTML( "<p>{$text}\n<p>" );
 
 	$sk = $wgUser->getSkin();
-	$here = "Special:Imagelist";
-	$link = $sk->makeKnownLink( $here, $byname, "sort=byname&amp;limit=0" );
-
-	$text = str_replace( "$1", $link, wfMsg( "showall" ) );
-	$wgOut->addHTML( "{$text}<br>\n" );
+	$cap = wfMsg( "ilshowmatch" );
+	$sub = wfMsg( "ilsubmit" );
+	$wgOut->addHTML( "<form method=get action='{$wgServer}{$wgScript}'>" .
+	  "{$cap}: <input type=text size=8 name='wpIlMatch' value=''> " .
+	  "<input type=hidden name='title' value='Special%3AImagelist'>\n" .
+	  "<input type=hidden name='sort' value='byname'>\n" .
+	  "<input type=hidden name='limit' value='{$limit}'>\n" .
+	  "<input type=submit name='wpIlSubmit' value='{$sub}'></form>" );
 
 	$nums = array( 50, 100, 250, 500, 1000, 2500, 5000 );
 
