@@ -110,15 +110,16 @@ if(defined('MEDIAWIKI'))
 			$titleObj = Title::makeTitle( NS_SPECIAL, "Newthread" );
 			$action = $titleObj->escapeLocalURL( "action=submit" );
 			
-			$title = $wgRequest->getVal('threadTitle', "");
-			$desc  = $wgRequest->getVal('threadDescription', "");
+			$title = htmlspecialchars( $wgRequest->getVal('threadTitle', "") );
+			$desc  = htmlspecialchars( $wgRequest->getVal('threadDescription', "") );
 
-			$rows = $wgUser->getOption( "rows" );
-			$cols = $wgUser->getOption( "cols" );
+			$rows = IntVal( $wgUser->getOption( "rows" ) );
+			$cols = IntVal( $wgUser->getOption( "cols" ) );
 			$wgOut->addHTML("<form class='wf new_thread' method='post' action='{$action}'>\n".
-			                WF_Msg('ThreadTitle').": <input type='text' size='40' name='threadTitle' value='$title'/><br />\n".
+			                WF_Msg('ThreadTitle').": <input type='text' size='40' name='threadTitle' value=\"$title\" /><br />\n".
 			                "<textarea rows='$rows' cols='$cols' name='threadDescription'>$desc</textarea>\n".
-			                "<input type='submit' value='".WF_Msg('ThreadOpen')."'/>\n".
+			                "<input type='hidden' name='wpEditToken' value=\"" . htmlspecialchars( $wgUser->editToken() ) . "\" />\n" .
+			                "<input type='submit' value='".WF_Msg('ThreadOpen')."' />\n".
 			                "</form>\n");
 		}
 
@@ -136,8 +137,20 @@ if(defined('MEDIAWIKI'))
 			}
 			else if($title->getArticleID() == 0) // article don't exist
 			{
-				$article = new Article( $title );
-				$article->insertNewArticle($wgRequest->getVal('threadDescription', ""), WF_Msg('ThreadNew'), false, false);
+				if( $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) )
+				    || $wgUser->getId() == 0 ) {
+					$article = new Article( $title );
+					$article->insertNewArticle($wgRequest->getVal('threadDescription', ""), WF_Msg('ThreadNew'), false, false);
+				} else {
+					# Edit token mismatch: request may be a form submission
+					# from an offsite JavaScript hack trying to hijack the
+					# user's authentication credentials to make an edit.
+					#
+					# On the other hand, the user's session may simply
+					# have expired. Show the form, and the user may push
+					# the button to try again...
+					$this->showForm();
+				}
 			}
 			else // thread already exist
 			{
@@ -216,7 +229,7 @@ if(defined('MEDIAWIKI'))
 			));
 			if(FORUM_USE_JS)
 			{
-				$wgOut->addHTML("<script type=\"text/javascript\" language=\"JavaScript\">\n".
+				$wgOut->addHTML("<script type=\"text/javascript\">\n".
 				                "function toggleElement(id, type)\n".
 				                "{\n".
 				                "   var elem = document.getElementById(id);\n".
