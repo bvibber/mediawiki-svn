@@ -10,7 +10,7 @@
 #}
 
 # Includes the necessary parts
-include_once ( "./wikiText.php" ) ;
+include_once ( "./wikiSettings.php" ) ;
 include_once ( "./basicFunctions.php" ) ;
 include_once ( "./databaseFunctions.php" ) ;
 include_once ( "./wikiTitle.php" ) ;
@@ -121,7 +121,7 @@ function getmicrotime(){
 
 	# Cleaning up, setting <title>, etc.
 	global $bodyOptions , $headerScript , $styleSheet;
-	global $wikiEditTitle ;
+	global $wikiEditTitle , $wikiRecodeOutput ;
 	if ( $action == edit ) $pageTitle = str_replace ( "$1" , $title , $wikiEditTitle ) ;
 	$pageTitle = str_replace ( "_" , " " , $pageTitle ) ;
 	$pageTitle = str_replace ( "$1" , $pageTitle , $wikiTitleTag ) ;
@@ -148,5 +148,5 @@ function getmicrotime(){
 	$out = $head.$out.$tail.$append ;
 	if ( isset ( $framed ) ) $out = str_replace ( "<a " , "<a target=_top " , $out ) ;
 
-	print wikiRecodeOutput($out) ; # FINALLY!!!!
+	print $wikiRecodeOutput ( $out ) ; # FINALLY!!!!
 ?>

@@ -31,7 +31,7 @@ function tsc ( $t ) {
 function edit ( $title ) {
 	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit , $FromEditForm ;
 	global $user , $CommentBox , $vpage , $EditTime , $wikiDescribePage ;
-	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend , $wikiEditHelp ;
+	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend , $wikiEditHelp , $wikiRecodeInput ;
 	global $wikiSummary , $wikiMinorEdit , $wikiCopyrightNotice , $wikiSave , $wikiPreview , $wikiDontSaveChanges ;
 	$npage = new WikiPage ;
 	$npage->title = $title ;
@@ -44,7 +44,8 @@ function edit ( $title ) {
 	if ( isset($FromEditForm) and !isset($SaveButton) and !isset($PreviewButton) ) $SaveButton = "yes" ;
 
 	# Landuage recoding
-	$EditBox = wikiRecodeInput ( $EditBox ) ;
+	$EditBox = $wikiRecodeInput ( $EditBox ) ;
+	$CommentBox = $wikiRecodeInput ( $CommentBox ) ;
 
 	if ( isset ( $SaveButton ) ) { # The edit is finished, someone pressed the "Save" button
 		unset ( $SaveButton ) ;

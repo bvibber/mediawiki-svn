@@ -7,14 +7,7 @@
 # This contains the strings for international/specialized wikis
 #---------------------------------------------------------------
 
-# Essential stuff, so the script knows where it is, whar database to use, etc.
-#$wikiCurrentServer = "http://127.0.0.1" ;
-$wikiCurrentServer = "http://" . getenv("SERVER_NAME");
-$wikiSQLServer = "wikipedia" ; # The name of the database, actually...
-$wikiArticleSource = "$wikiCurrentServer/wiki/$1" ;
-$wikiLogoFile = "/wiki.png" ;
-$wikiStarTrekImage = "/startrek.png" ;
-$THESCRIPT = "/wiki.phtml" ; # The name and location of the script. The $PHP_SELF variable doesn't work with Netscape
+# Basic character set and locale settings
 $wikiCharset = "iso-8859-1" ;
 
 # Misc stuff
@@ -342,7 +335,7 @@ $wikiLastRefreshed = "Last refreshed $1" ;
 
 #---------------------------
 #Functions
-function wikiGetDate ( $x ) { # Used in RecentChangesLayout in special_functions.php
+function wikiGetDateEn ( $x ) { # Used in RecentChangesLayout in special_functions.php
 	global $wikiDate ;
 	$dayName = $wikiDate [ strtolower ( date ( "l" , $x ) ) ];
 	$monthName = $wikiDate [ strtolower ( date ( "F" , $x ) ) ];
@@ -350,30 +343,27 @@ function wikiGetDate ( $x ) { # Used in RecentChangesLayout in special_functions
 	$year = date ( "Y" , $x ) ;
 	return "$dayName, $monthName $dayNumber, $year" ;
 	}
-
+$wikiGetDate = wikiGetDateEn;
 
 # In theory, this could be expanded to allow general conversion of the
 # character encoding used in the database to another encoding optionally
 # used on the browser end.
 
-$wikiEncodingCharsets = array($wikiCharset);
-$wikiEncodingNames = array($wikiCharset); # Localised names
+# Define these arrays if you need to set up conversion.
+# $wikiEncodingCharsets = array("iso-8859-1");
+# $wikiEncodingNames = array("Latin-1"); # Localised names
 
-function wikiRecodeOutput($text) {
+function wikiRecodeOutputEn($text) {
   # Stub
   # global $user;  # $user->options["encoding"] is an index into the above arrays
   return $text;
 }
 
-function wikiRecodeInput($text) {
+function wikiRecodeInputEn($text) {
   # Stub
   return $text;
 }
 
-function wikiLink ( $a ) {
-	global $wikiArticleSource ;
-	$a = str_replace ( " " , "+" , $a ) ;
-	$a = str_replace ( "$1" , $a , $wikiArticleSource ) ;
-	return $a ;
-	}
+$wikiRecodeOutput = wikiRecodeOutputEn;
+$wikiRecodeInput = wikiRecodeInputEn;
 ?>
