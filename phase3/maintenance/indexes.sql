@@ -63,3 +63,6 @@ ALTER TABLE recentchanges
 ALTER TABLE archive
   ADD KEY `name_title_timestamp` (`ar_namespace`,`ar_title`,`ar_timestamp`);
 
+ALTER TABLE watchlist
+  ADD KEY namespace_title (wl_namespace,wl_title);
+
