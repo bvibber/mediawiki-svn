@@ -28,7 +28,7 @@ if( $wgMetaNamespace == "Wikipedia" ) {
     NS_USER             => "Wikipedysta",
     NS_USER_TALK        => "Dyskusja_Wikipedysty",
     NS_WIKIPEDIA        => $wgMetaNamespace,
-    NS_WIKIPEDIA_TALK   => $wgMetaTalkNamespace,
+    NS_WIKIPEDIA_TALK   => "Dyskusja_".$wgMetaNamespace,
     NS_IMAGE            => "Grafika",
     NS_IMAGE_TALK       => "Dyskusja_grafiki",
     NS_MEDIAWIKI        => "MediaWiki",
