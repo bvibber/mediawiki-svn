@@ -640,8 +640,11 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$wgOut->addWikiText( $text ); # Just to update links
 
 		$this->editUpdates( $text );
-		$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL(),
-		  "redirect=no" ) );
+		if( preg_match( "/^#redirect/i", $text ) )
+			$r = "redirect=no";
+		else
+			$r = "";
+		$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL(), $r ) );
 	}
 
 	# If the page we've just displayed is in the "Image" namespace,
