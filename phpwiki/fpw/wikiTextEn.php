@@ -303,7 +303,7 @@ $wikiStatSysops = "$1 of them have sysop status." ;
 $wikiUploadTitle = "Upload page" ;
 $wikiUploadDenied = "You are neither an editor nor a sysop. Return to the <a href=\"$THESCRIPT?action=upload\">Upload page</a>" ;
 $wikiUploadDeleted = "File <b>$1</b> deleted!" ;
-$wikiUploadDelMsg1 = "*On $now, [[user:$1|$1]] deleted file '''$2'''\n" ;
+$wikiUploadDelMsg1 = "*On $3, [[user:$1|$1]] deleted file '''$2'''\n" ;
 $wikiUploadDelMsg2 = "Deletion of file $1" ;
 $wikiUploadAffirm = "<nowiki>You need to affirm that the file is not violating copygights. Return to the <a href=\"$THESCRIPT?title=special:upload\">Upload page</a></nowiki>" ;
 $wikiUploadRestrictions = "<nowiki>You have to log in to upload a file!</nowiki>" ;
