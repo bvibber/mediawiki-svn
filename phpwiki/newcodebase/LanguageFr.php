@@ -528,6 +528,8 @@ La responsabilité juridique pourrait compromettre le projet, alors s'il vous pla
 Voyez aussi [http://meta.wikipedia.org/wiki/Special:Recentchanges les dernières discussions sur le site meta-wiki].",
 "rcloaderr"  => "Chargement des dernières modifications",
 "rcnote"  => "Voici les <strong>$1</strong> dernières modifications effectuées au cours des <strong>$2</strong> derniers jours.",
+"rcnotefrom"	=> "Voici les modifications effectuées depuis <strong>$2</strong> (jusqu'à <b>$1</b>).",
+"rclistfrom"	=> "Afficher les nouvelles modifications depuis $1",
 # "rclinks"  => "Afficher les $1 dernières modifications effectuées au cours des $2 dernières heures / $3 derniers jours",
 "rclinks"  => "Afficher les $1 dernières modifications effectuées au cours des $2 derniers jours.",
 "rchide"  => "in $4 form; $1 minor edits; $2 secondary namespaces; $3 multiple edits.",
