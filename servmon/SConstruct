@@ -18,13 +18,13 @@ prefix = ARGUMENTS.get('prefix', '/opt/servmon')
 import os
 
 srcs = Split(	'servmon.cxx csmplex.cxx smthr.cxx smnet.cxx smutl.cxx smcfg.cxx smirc.cxx '
-		'smauth.cxx smtmr.cxx smmon.cxx smqb.cxx smmc.cxx')
+		'smauth.cxx smtmr.cxx smmon.cxx smqb.cxx smmc.cxx l_memcache.c')
 env = Environment(CPPFLAGS = cppflags + ' -DPFX="\\"' + prefix + '\\""',
 		CCFLAGS = cflags,
 		CC = cc,
 		CXX = cxx,
 		CPPPATH = 'include')
 
-env.Program ('servmon', srcs, LIBS = ['pthread', 'boost_thread', 'netsnmp', 'ssl', 'mysqlclient', 'memcache'], LIBPATH = '/usr/lib/mysql')
+env.Program ('servmon', srcs, LIBS = ['pthread', 'boost_thread', 'netsnmp', 'ssl', 'mysqlclient'], LIBPATH = '/usr/lib/mysql')
 env.Program ('initconf', ['initconf.cxx', 'smcfg.cxx', 'smauth.cxx'], LIBS = ['pthread', 'boost_thread'])
 env.Alias('install', prefix)

@@ -9,6 +9,10 @@ struct memcache;
 
 namespace smmc {
 
+struct nokey : public std::runtime_error {
+	nokey() : std::runtime_error("memcache key does not exist") {}
+};
+	
 /* memcached client */       
 class mc : public smutl::singleton<mc> {
 public:

@@ -28,6 +28,7 @@ snarf(str cmd)
 	char b[1024]; /* XXX */
 	if (!f) return r;
 	while (fgets(b, sizeof b, f)) {
+		b[strlen(b) - 1] = '\0';
 		r.push_back(b);
 	}
 	pclose(f);

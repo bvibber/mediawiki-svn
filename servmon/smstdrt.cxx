@@ -475,3 +475,63 @@ HDL(cfg_qbr_noenable) {
 		return true;
 	}
 };
+
+HDL(cfg_mc_server_list_command) {
+	EX {
+		SMI(smcfg::cfg)->storestr("/mc/servercmd", cd.p(0));
+		SMI(smmc::mc)->reload_servers();
+		return true;
+	}
+};
+
+HDL(cfg_mc_show_server_list_command) {
+	EX {
+		try {
+			cd.wrtln(SMI(smcfg::cfg)->fetchstr("/mc/servercmd"));
+		} catch (smcfg::nokey&) {
+			cd.inform("Server list command not configured");
+		}
+		return true;
+	}
+};
+
+HDL(cfg_mc_show_parser_cache) {
+	EX {
+		float hits, invalid, expired, absent, total;
+		std::string dbname = cd.num_params() ? cd.p(0) : "enwiki";
+		try {
+			std::string hitss, invalids, expireds, absents;
+			hitss = SMI(smmc::mc)->get(dbname + ":stats:pcache_hit");
+			invalids = SMI(smmc::mc)->get(dbname + ":stats:pcache_miss_invalid");
+			expireds = SMI(smmc::mc)->get(dbname + ":stats:pcache_miss_expired");
+			absents = SMI(smmc::mc)->get(dbname + ":stats:pcache_miss_absent");
+			std::cerr << "hits: ["<<hits<<"] invalid: ["<<invalids<<"] expired: ["<<expireds<<"] absent: ["<<absents<<"]\n";
+			hits = b::lexical_cast<int>(hitss);
+			invalid = b::lexical_cast<int>(invalids);
+			expired = b::lexical_cast<int>(expireds);
+			absent = b::lexical_cast<int>(absents);
+		} catch (smmc::nokey& e) {
+			std::string s = "Key not found: ";
+			s += e.what();
+			cd.error(s);
+			return true;
+		} catch (b::bad_lexical_cast& e) {
+			std::string s = "Invalid number in cache data: ";
+			s += e.what();
+			cd.error(s);
+			return true;
+		}
+		total = hits + invalid + expired + absent;
+		if (!total) {
+			cd.inform("No data available.");
+			return true;
+		}
+		cd.wrtln(b::io::str(b::format("Hits:    %-10d %6.2f%%") % hits    % (hits/total*100)));
+		cd.wrtln(b::io::str(b::format("Invalid: %-10d %6.2f%%") % invalid % (invalid/total*100)));
+		cd.wrtln(b::io::str(b::format("Expired: %-10d %6.2f%%") % expired % (expired/total*100)));
+		cd.wrtln(b::io::str(b::format("Absent:  %-10d %6.2f%%") % absent  % (absent/total*100)));
+		cd.wrtln();
+		cd.wrtln(b::io::str(b::format("Total:   %-10d %6.2f%%") % total   % 100));
+		return true;
+	}
+};

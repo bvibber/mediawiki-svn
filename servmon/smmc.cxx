@@ -2,7 +2,7 @@
 #include "smmc.hxx"
 #include "smcfg.hxx"
 
-#include <memcache.h>
+#include "l_memcache.h"
 
 namespace smmc {
 
@@ -14,7 +14,12 @@ mc::mc()
 void
 mc::reload_servers(void)
 {
-	std::string servercmd = SMI(smcfg::cfg)->fetchstr("/mc/servercmd");
+	std::string servercmd;
+	try {
+		servercmd = SMI(smcfg::cfg)->fetchstr("/mc/servercmd");
+	} catch (smcfg::nokey&) {
+		return;
+	}
 	std::vector<std::string> servers = smutl::snarf(servercmd);
 	
 	FE_TC_AS(std::vector<std::string>, servers, i)
@@ -36,8 +41,14 @@ mc::initialise(void)
 std::string
 mc::get(str key)
 {
-	void *p = mc_aget(mcp, key.c_str(), key.size());
-	std::string r = static_cast<char const *>(p);
+	void *p;
+	uint32_t len;
+	mc_aget(mcp, key.c_str(), key.size(), &p, &len);
+	if (!p)
+		throw nokey();
+	char const *s = static_cast<char const *>(p);
+	std::string r (s, s + len);
+	std::cerr << "mc::get: r=["<<r<<"]\n";
 	std::free(p);
 	return r;
 }

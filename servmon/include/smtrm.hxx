@@ -9,6 +9,7 @@
 #include "smauth.hxx"
 #include "smmon.hxx"
 #include "smqb.hxx"
+#include "smmc.hxx"
 
 namespace smtrm {
 
@@ -179,6 +180,10 @@ stdrt.install("show querybane", "Show QueryBane information");
 stdrt.install("show querybane rule", "Show a specific rule");
 stdrt.install("show querybane rule %s", cfg_qb_show_rule(), "Rule name");
 stdrt.install("show querybane rules", cfg_qb_show_rule(), "Show all QueryBane rules");
+stdrt.install("show memcache", "Show memcache client information");
+stdrt.install("show memcache server-list-command", cfg_mc_show_server_list_command(), "Show server list command");
+stdrt.install("show parser", "Show MediaWiki parser-related information");
+stdrt.install("show parser cache-statistics", cfg_mc_show_parser_cache(), "Show parser cache hit statistics");
 eblrt = stdrt;
 stdrt.install("enable", cmd_enable(), "Enter privileged mode");
 
@@ -192,6 +197,7 @@ cfgrt.install("enable password", cfg_eblpass(), "Change enable password");
 cfgrt.install("function", "Configure a specific function");
 cfgrt.install("function irc", chg_parser(ircrt, "%s(conf-irc)# "), "Configure Internet Relay Chat connections");
 cfgrt.install("function monitor", chg_parser(monrt, "%s(conf-monit)# "), "Configure server monitoring");
+cfgrt.install("function memcache", chg_parser(memrt, "%s(conf-memcache)# "), "Configure memcached client");
 cfgrt.install("user", "Define users");
 cfgrt.install("user %s", "Username");
 cfgrt.install("user %s password", cfg_userpass(), "Create a new account");
@@ -259,12 +265,19 @@ qbrrt.install("match-if min-run-time %s", cfg_qbr_matchif_minruntime(), "Only ma
 qbrrt.install("match-if query-string", "Match on query string");
 qbrrt.install("match-if query-string %S", cfg_qbr_matchif_querystring(), "Match specified query text");
 qbrrt.install("enable", cfg_qbr_enable(), "Enable rule");
+
+/* 'function memcache' commands */
+memrt.install("server-list-command", "Set command used to obtain server list");
+memrt.install("server-list-command %S", cfg_mc_server_list_command(), "Command name");
+memrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit memcache configuration mode");
+
 	}
 	handler_node<tt> stdrt;
 	handler_node<tt> eblrt;
 	handler_node<tt> cfgrt;
 	handler_node<tt> ircrt;
 	handler_node<tt> monrt;
+	handler_node<tt> memrt;
 	handler_node<tt> qbrt, qbrrt;
 };
 
