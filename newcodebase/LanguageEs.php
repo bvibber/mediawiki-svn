@@ -78,7 +78,6 @@
 	"dk"	=> "Dansk(Danés)", # 'da' is correct for the language.
 	"nl"	=> "Holandés",
 	"en"	=> "English(Inglés)",
-	"w"	=> "Inglés", # Should this be in list this?
 	"simple" => "Inglés Simple",
 	"eo"	=> "Esperanto",
 	"et"	=> "Estoniano",
@@ -89,7 +88,7 @@
 	"fy"	=> "Frisio",
 	"gl"	=> "Gallego",
 	"ka"	=> "Georgiano",
-	"de"	=> "Deutsh(Alemán)",
+	"de"	=> "Deutsch(Alemán)",
 	"el"	=> "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; (Ellenika,Griego)",
 	"kl"	=> "Groenlandés",
 	"gn"	=> "Guarani",
@@ -562,7 +561,7 @@ Si quieres que Wikipedia tenga éxito, es muy importante que no agregues
 material restringido por [[wikipedia:Copyrights|derechos de autor]].
 La responsabilidad legal realmente podría dañar  el proyecto, así que por favor no lo hagas.
 
-Ve también [http://meta.wikipedia.org/wiki.phtml?title=Special:RecentChanges discusión reciente en Meta (multilingüe)].",
+Ve también [http://meta.wikipedia.org/wiki/Special:Recentchanges discusión reciente en Meta (multilingüe)].",
 "rcloaderr"		=> "cargando cambios recientes",
 "rcnote"		=> "Abajo están los últimos <b>$1</b> cambios en los últimos <b>$2</b> días.",
 "rclinks"		=> "Ve los últimos $1 cambios; ve los últimos $2 días; $3 ediciones menores.",
