@@ -20,7 +20,7 @@ case 'Wikisłownik':
 case 'Wikicytaty':
 	$wgMetaTalkNamespace = 'Dyskusja_Wikicytatów'; break;
 default:
-	$wgMetaTalkNamespace = 'Dyskusja_$wgMetaNamespace';
+	$wgMetaTalkNamespace = 'Dyskusja_'.$wgMetaNamespace;
 }
 
 /* private */ $wgNamespaceNamesPl = array(
