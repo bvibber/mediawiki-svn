@@ -10,15 +10,18 @@ class WikiTitle {
 ####### # User rights
 	# Can the current user delete this page?
 	function canEdit () {
-		global $action ;
-#		global $oldID ; if ( isset ( $oldID ) ) return false ;
+		global $action , $user , $wikiAllowedNamespaces ;
 		if ( !$this->validateTitle() ) return false ;
 		if ( $this->isSpecialPage and $action != "edit" ) return false ;
 		if ( $this->namespace == "special" ) return false ;
 
+		$r = explode ( "," , trim ( getMySQL ( "cur" , "cur_restrictions" , "cur_title=\"$this->secureTitle\"" ) ) ) ;
+		if ( $r[0] == "" ) array_shift ( $r ) ;
+		$x = array_intersect ( $r , $user->rights ) ;
+		if ( count ( $r ) > 0 and count ( $x ) == 0 ) return false ;
+
 		# Allowing only a handful of namespaces
-		$allowed = array ( "wikipedia" , "talk" , "user" , "" ) ;
-		if ( !in_array ( strtolower ( $this->namespace ) , $allowed ) ) return false ;
+		if ( !in_array ( str_replace ( "_" , " " , strtolower ( $this->namespace ) ) , $wikiAllowedNamespaces ) ) return false ;
 
 		return true ;
 		}

@@ -18,6 +18,8 @@ $wikiLogOut = "Log out" ;
 $wikiHelp = "Help" ;
 $wikiHelpLink = "Help" ; # "special:" is added automatically
 $wikiPreferences = "Preferences" ;
+$wikiPrintLinksMarkup = "i" ; # will be used as <$wikiPrintLinksMarkup> and </$wikiPrintLinksMarkup>
+$wikiAllowedNamespaces = array ( "wikipedia" , "talk" , "user" , "" , "wikipedia talk" , "user talk" ) ;
 
 # Editing
 $wikiEditTitle = "Editing $1" ;
