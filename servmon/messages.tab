@@ -2,7 +2,7 @@
 FACILITY TRM
 ERROR UNKCMD unknown command
 ERROR INCOMP incomplete command
-ERROR AMBIG ambigious command
+ERROR AMBIG ambiguous command
 ERROR BADNUM invalid number: %1%
 ERROR BATCHTERM cannot perform this operation on a non-interactive terminal
 ERROR NOCONF action not confirmed

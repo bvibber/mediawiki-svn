@@ -163,7 +163,6 @@ terminal::remove_modifiers(str s)
 		++nt;
 	std::string n = s.substr(0, t + 1), mod = s.substr(nt);
 	std::string what = smutl::car(mod);
-	std::cerr << "what=["<<what<<"] mod=["<<mod<<"] n=["<<n<<"]\n";
 	if (what.empty())
 		return n;
 	else if (what == "include")
