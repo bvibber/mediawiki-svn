@@ -123,9 +123,9 @@ Check your spelling, or use the form below to create a new user account.",
 "mailmypassword" => "Mail me a new password",
 "passwordremindertitle" => "Password reminder from Wikipedia",
 
-"passwordremindertext" => "Someone (probably you) requested that we send
-you a new Wikipedia login password.  The password for
-user \"$1\" is now \"$2\".
+"passwordremindertext" => "Someone (probably you, from IP address $1)
+requested that we send you a new Wikipedia login password.
+The password for user \"$2\" is now \"$3\".
 You should log in and change your password now.",
 
 "noemail"		=> "There is no e-mail address recorded for user \"$1\".",
