@@ -7,11 +7,39 @@ include ( "./wikiTitle.php" ) ;
 include ( "./wikiPage.php" ) ;
 include ( "./wikiUser.php" ) ;
 
+
+## Language-dependant variables!
+
+## Default/English:
+$wikiTalk = "Talk";
+$fieldSeparator = "³" ;
+
+## Esperanto:
+#$wikiTalk = "Priparolu" ;
+
+## French
+#$wikiTalk = "Discuter" ;
+
+## Polish:
+#$wikiTalk = "Dyskusja" ;
+#$fieldSeparator = "\xff";
+
+## Spanish
+#$wikiTalk = "Discusión" ;
+
+## Where to get the old usemod database files from:
+#$rootDir = "/home/groups/w/wi/wikipedia/htdocs/fpw/wiki-de/lib-http/db/wiki/page/" ;
+#$rootDir = "/home/manske/wiki/lib-http/db/wiki/page/" ;
+$rootDir = "/stuff/wiki/lib-http/db/wiki/page/" ;
+#$rootDir = "/tmp/home/wiki-pl/wiki/db/page/" ;
+
 function scanText2 ( $fn ) {
+	global $fieldSeparator ;
 	$ret = "" ;
 
 	#CONSTANTS
-	$FS = "³" ;
+	#$FS = "³" ;
+	$FS = $fieldSeparator ;
 	$FS1 = $FS."1" ;
 	$FS2 = $FS."2" ;
 	$FS3 = $FS."3" ;
@@ -58,9 +86,10 @@ function getFileName ( $an ) {
 
 function fixLinks ( $s ) {
 	global $npage , $ll , $ull , $allTopics ;
+	global $wikiTalk ;
 
 	$talk = explode ( "/" , $npage->secureTitle ) ;
-	if ( count($talk)==2 and strtolower($talk[1])=="talk" ) $isTalkPage = true ;
+	if ( count($talk)==2 and strtolower($talk[1])==strtolower($wikiTalk) ) $isTalkPage = true ;
 	else $isTalkPage = false ;
 
 	# Automatic backlink from a subpage to a "main" page
@@ -103,7 +132,7 @@ function fixLinks ( $s ) {
 				$link = $talk[0] ;
 				if ( count ( $talk ) == 2 ) $link .= "/".$talk[1] ;
 				}
-			if ( count ( $talk ) == 2 and strtolower($talk[1]) == "talk" ) $link = "talk:".$talk[0] ;
+			if ( count ( $talk ) == 2 and strtolower($talk[1]) == strtolower($wikiTalk) ) $link = strtolower($wikiTalk).":".$talk[0] ;
 			else if ( $isTalkPage ) {
 				if ( count ( $c ) == 1 ) array_push ( $c , $link ) ;
 				$link = ":".$link ;
@@ -136,7 +165,7 @@ function convertText ( $s ) {
 	}
 
 function storeInDB ( $title , $text ) {
-	global $of , $npage , $ll , $ull ;
+	global $of , $npage , $ll , $ull , $wikiTalk ;
 	$ll = array () ;
 	$ull = array () ;
 	$title = str_replace ( "\\'" , "'" , $title ) ;
@@ -152,11 +181,11 @@ function storeInDB ( $title , $text ) {
 	# Move talk pages to talk namespace
 	$talk = explode ( "/" , $st ) ;
 	if ( $talk[0] == "HomePage" ) { $talk[0] = "Main_Page" ; $st = $talk[0] ; }
-	if ( count ( $talk ) == 2 and $talk[1] == "Talk" ) $st = "Talk:".$talk[0] ;
-	if ( count ( $talk ) == 2 and $talk[1] == "talk" ) return ;
+	if ( count ( $talk ) == 2 and $talk[1] == $wikiTalk ) $st = $wikiTalk.":".$talk[0] ;
+	if ( count ( $talk ) == 2 and $talk[1] == strtolower($wikiTalk) ) return ;
 
-	$sql = "INSERT INTO cur (cur_title,cur_text,cur_comment,cur_user,cur_user_text,cur_old_version,cur_minor_edit,cur_linked_links,cur_unlinked_links) VALUES ";
-	$sql .= "(\"$st\",\"$text\",";
+	$sql = "INSERT INTO cur (cur_title,cur_ind_title,cur_text,cur_comment,cur_user,cur_user_text,cur_old_version,cur_minor_edit,cur_linked_links,cur_unlinked_links) VALUES ";
+	$sql .= "(\"$st\",\"$st\",\"$text\",";
 	$sql .= "\"Automated conversion\",0,\"conversion script\",0,1,\"$ll1\",\"$ull1\");\n" ;
 	fwrite ( $of , $sql ) ;
 	}
@@ -200,7 +229,7 @@ function dir2DB ( $letter )  {
 	}
 
 function getAllTopics () {
-	global $allTopics , $rootDir ;
+	global $allTopics , $rootDir , $wikiTalk;
 	$allTopics = array () ;
 	for ( $c = 65 ; chr($c) <= "Z" ; $c++ ) $allTopics[chr($c)] = getTopics ( "$rootDir/".chr($c) ) ;
 	$allTopics["0"] = getTopics ( "$rootDir/other" ) ;
@@ -208,9 +237,6 @@ function getAllTopics () {
 
 # MAIN PROGRAM
 	global $rootDir ;
-#	$rootDir = "/home/groups/w/wi/wikipedia/htdocs/fpw/wiki-de/lib-http/db/wiki/page/" ;
-#	$rootDir = "/home/manske/wiki/lib-http/db/wiki/page/" ;
-	$rootDir = "/stuff/wiki/lib-http/db/wiki/page/" ;
 
 	set_time_limit ( 30000 ) ; # Enough time for this script...
 
@@ -222,7 +248,7 @@ function getAllTopics () {
 	global $l , $of ;
 	$of = fopen ( "./newiki.sql" , "w" ) ;
 	fwrite ( $of , "DELETE FROM cur WHERE cur_title NOT LIKE \"%:%\";\n" ) ;
-	fwrite ( $of , "DELETE FROM cur WHERE cur_title LIKE \"Talk:%\";\n" ) ;
+	fwrite ( $of , "DELETE FROM cur WHERE cur_title LIKE \"$wikiTalk:%\";\n" ) ;
 	do {
 		if ( !isset ( $l ) ) $l = 65 ;
 		if ( $l == "other" ) $letter = "other" ;
