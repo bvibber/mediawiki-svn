@@ -503,7 +503,7 @@ class Skin {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
 		if ( 0 == $nt->getArticleID() ) {
-			return $this->makeBrokenLink( $title, $text ) . $trail;
+			return $this->makeBrokenLink( $title, $text ) .$trail;
 		} else {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
