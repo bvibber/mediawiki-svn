@@ -68,10 +68,10 @@ function recentchanges () {
       # the SQL query that retrieves all information
       $sql = "SELECT cur_timestamp, cur_title, cur_comment, cur_user,
                      cur_user_text, cur_minor_edit,
-                     COUNT(old_id) + (IF(cur_old_version = 0,0,1)) AS changes
+                     COUNT(old_id) + (IF(cur_minor_edit = 2,0,1)) AS changes
               FROM cur LEFT OUTER JOIN old ON cur_title = old_title
                 AND old_timestamp > SUBDATE(CURRENT_TIMESTAMP, INTERVAL $daysAgo DAY)
-                AND old_old_version <> 0
+                AND old_minor_edit <> 2
                 $fromCondOld
               WHERE cur_timestamp > SUBDATE(CURRENT_TIMESTAMP, INTERVAL $daysAgo DAY)
                 $fromCondCur              
@@ -121,10 +121,10 @@ function recentchanges () {
                FROM old AS o1, old AS o2
                WHERE o1.old_title = o2.old_title
                  AND o2.old_timestamp > SUBDATE(CURRENT_TIMESTAMP, INTERVAL $daysAgo DAY)
-                 AND o2.old_old_version <> 0 AND o2.old_minor_edit != 1
+                 AND o2.old_minor_edit = 0
                  $fromCondOld2                       
                  AND o1.old_timestamp > SUBDATE(CURRENT_TIMESTAMP, INTERVAL $daysAgo DAY)
-                 AND o1.old_minor_edit != 1
+                 AND o1.old_minor_edit = 0
                  $fromCondOld1
                GROUP BY o1.old_title, o1.old_timestamp
                HAVING cur_timestamp = MAX(o2.old_timestamp)
