@@ -20,22 +20,7 @@
         7       => "Bild_diskussion"
 );
 
-/* private */ $wgDefaultUserOptionsSv = array(
-        "quickbar" => 1,
-	"underline" => 1,
-	"hover" => 1,
-        "cols" => 80,
-	"rows" => 25,
-	"searchlimit" => 20,
-        "contextlines" => 5,
-	"contextchars" => 50,
-        "skin" => 0,
-	"math" => 1, 
-	"rcdays" => 7,
-	"rclimit" => 50,
-        "highlightbroken" => 1,
-	"stubthreshold" => 0
-);
+/* inherit standard defaults */
 
 /* private */ $wgQuickbarSettingsSv = array(
         "Ingen", "Fast vänster", "Fast höger", "Flytande vänster"
@@ -51,12 +36,18 @@
         "highlightbroken"  => "Röda länkar till tomma sidor",
         "justify"          => "Justera indrag",
         "hideminor"        => "Göm små redigeringar vid senaste ändring",
+	"usenewrc" => "Enhanced recent changes (not for all browsers)",
         "numberheadings"   => "Automatisk numrering av överskrifter",
         "rememberpassword" => "Kom ihåg lösenord till nästa besök",
         "editwidth"        => "Redigeringsboxen har full bredd",
         "editondblclick"   => "Redigera sidor med dubbelklick (JavaScript)",
+	"editsection"=>"Enable section editing via [edit] links",
+	"editsectiononrightclick"=>"Enable section editing by right clicking<br> on section titles (JavaScript)",
+	"showtoc"=>"Show table of contents<br>(for articles with more than 3 headings)",
         "watchdefault"     => "Övervaka nya och ändrade artiklar",
-        "minordefault"     => "Markera som standard alla ändringer som mindre"
+        "minordefault"     => "Markera som standard alla ändringer som mindre",
+	"previewontop" => "Show preview before edit box and not after it",
+	"nocache" => "Disable page caching"
 );
 
 /* private */ $wgBookstoreListSv = array(
@@ -69,147 +60,6 @@
 /* Note: native names of languages are preferred where known to maximize
    ease of navigation -- people should be able to recognize their own
    languages! */
-/* private */ $wgLanguageNamesSv = array(
-        "aa" => "Afar",
-        "ab" => "Abkhasiska",
-        "af" => "Afrikaans",
-        "am" => "Amhariska",
-        "ar" => "Arabiska",
-        "as" => "Assami",
-        "ay" => "Aymara",
-        "az" => "Aserbajdsjanska",
-        "ba" => "Basjkiriska",
-        "be" => "Vitryska",
-        "bh" => "Bihari",
-        "bi" => "Bislama",
-        "bn" => "Bengali",
-        "bo" => "Tibetanska",
-        "br" => "Bretonska",
-        "ca" => "Katalanska",
-        "ch" => "Chamorro",
-        "co" => "Korsikanska",
-        "cs" => "Tjeckiska",
-        "cy" => "Walesiska",
-        "da" => "Danska", # Note two different subdomains. 
-        "dk" => "Danska", # 'da' is correct for the language.
-        "de" => "Tyska",
-        "dz" => "Bhutanesiska",
-        "el" => "Grekiska",
-        "en" => "Engelska",
-        "eo" => "Esperanto",
-        "es" => "Spanska",
-        "et" => "Estniska",
-        "eu" => "Baskiska",
-        "fa" => "Persiska",
-        "fi" => "Finska",
-        "fj" => "Fidjianska",
-        "fo" => "Färöiska",
-        "fr" => "Franska",
-        "fy" => "Frisiska",
-        "ga" => "Irländska",
-        "gl" => "Galiciska",
-        "gn" => "Guarani",
-        "gu" => "Gujarati",
-        "ha" => "Hausa",
-        "he" => "Hebreiska",
-        "hi" => "Hindi",
-        "hr" => "Kroatiska",
-        "hu" => "Ungerska",
-        "hy" => "Armeniska",
-        "ia" => "Interlingua",
-        "id" => "Indonesiska",
-        "ik" => "Inupiaq",
-        "is" => "Isländska",
-        "it" => "Italienska",
-        "iu" => "Inuktitut",
-        "ja" => "Japanska",
-        "jv" => "Javanesiska",
-        "ka" => "Georgiska",
-        "kk" => "Kazakiska",
-        "kl" => "Grönländska",
-        "km" => "Kambodjanska",
-        "kn" => "Kanaresiska",
-        "ko" => "Koreanska",
-        "ks" => "Kashmiri",
-        "kw" => "Corniska",
-        "ky" => "Kirgisiska",
-        "la" => "Latin",
-        "ln" => "Lingala",
-        "lo" => "Laotiska",
-        "lt" => "Litauiska",
-        "lv" => "Lettiska",
-        "mg" => "Malagassiska",
-        "mi" => "Maori",
-        "mk" => "Makedoniska",
-        "ml" => "Malyalam",
-        "mn" => "Mongoliska",
-        "mo" => "Moldaviska",
-        "mr" => "Marathi",
-        "ms" => "Malajiska",
-        "my" => "Burmesiska",
-        "na" => "Nauriska",
-        "ne" => "Nepaliska",
-        "nl" => "Nederländska",
-	"nn" => "Nynorska",
-        "no" => "Norska",
-        "oc" => "Occitanska",
-        "om" => "Afan Oromoo",
-        "or" => "Oriya",
-        "pa" => "Punjabi",
-        "pl" => "Polska",
-        "ps" => "Pashto",
-        "pt" => "Portugisiska",
-        "qu" => "Quechua",
-        "rm" => "Rätoromanska",
-        "rn" => "Rundi",
-        "ro" => "Rumänska",
-        "ru" => "Ryska", 
-        "rw" => "Rwanda",
-        "sa" => "Sanskrit",
-        "sd" => "Sindhi",
-        "sg" => "Sango",
-        "sh" => "Serbokroatiska",
-        "si" => "Singalesiska",
-        "simple" => "enkel Engelska",
-        "sk" => "Slovakiska",
-        "sl" => "Slovenska",
-        "sm" => "Samoanska",
-        "sn" => "Shona",
-        "so" => "Somaliska",
-        "sq" => "Albanska",
-        "sr" => "Serbiska",
-        "ss" => "Siswati",
-        "st" => "Sotho",
-        "su" => "Sudanesiska",
-        "sv" => "Svenska",
-        "sw" => "Swahili",
-        "ta" => "Tamil",
-        "te" => "Telugo",
-        "tg" => "Tadjikiska",
-        "th" => "Thailändska",
-        "ti" => "Tigrinya",
-        "tk" => "Turkmeniska",
-        "tl" => "Tagalog",
-        "tn" => "Tswana",
-        "to" => "Tonga",
-        "tr" => "Turkiska",
-        "ts" => "Tsonga",
-        "tt" => "Tatariska",
-        "tw" => "Twi",
-        "ug" => "Uiguriska",
-        "uk" => "Ukrainska",
-        "ur" => "Urdu",
-        "uz" => "Uzbekiska",
-        "vi" => "Vietnamesiska",
-        "vo" => "Volap&#252;k",
-        "wo" => "Wolof",
-        "xh" => "Xhosa",
-        "yi" => "Jiddisch",
-        "yo" => "Yoruba",
-        "za" => "Zhuang",
-        "zh" => "Kinesiska",
-        "zu" => "Zulu"
-);
 
 /* private */ $wgWeekdayNamesSv = array(
         "söndag", "måndag", "tisdag", "onsdag", "torsdag",
@@ -287,6 +137,7 @@ $wgValidSpecialPagesSv = array(
 "about"                 => "Om",
 "aboutwikipedia"        => "Om Wikipedia",
 "aboutpage"             => "Wikipedia:Om",
+
 "help"                  => "Hjälp",
 "helppage"              => "Wikipedia:Hjälp",
 "wikititlesuffix"       => "Wikipedia",
@@ -397,7 +248,6 @@ URL:en.",
 "logouttext"            => "Du är nu utloggad.
 Du kan fortsätta som anonym Wikipediaanvändare, eller så kan du logga in
 igen som samma eller annan användare.\n",
-
 
 "welcomecreation"       => "<h2>Välkommen, $1!</h2><p>Ditt konto har skapats. Glöm inte att anpassa dina Wikipediainställningar.",
 
@@ -797,7 +647,7 @@ valt att inte ta emot något mail från andra användare.",
 "emailsubject"          => "Ämne",
 "emailmessage"          => "Meddelande",
 "emailsend"             => "Skickat",
-"emailsent"             => "E-post sskickat",
+"emailsent"             => "E-post är nu skickat",
 "emailsenttext"         => "Din e-post har skickats.",
 
 // Watchlist
@@ -981,11 +831,6 @@ class LanguageSv extends Language {
                 return $wgBookstoreListSv ;
         }
 
-        function getDefaultUserOptions () {
-                global $wgDefaultUserOptionsSv ;
-                return $wgDefaultUserOptionsSv ;
-                }
-
         function getNsText( $index ) {
                 global $wgNamespaceNamesSv;
                 return $wgNamespaceNamesSv[$index];
@@ -1018,19 +863,6 @@ class LanguageSv extends Language {
         function getUserToggles() {
                 global $wgUserTogglesSv;
                 return $wgUserTogglesSv;
-        }
-
-        function getLanguageNames() {
-                global $wgLanguageNamesSv;
-                return $wgLanguageNamesSv;
-        }
-
-        function getLanguageName( $code ) {
-                global $wgLanguageNamesSv;
-                if ( ! array_key_exists( $code, $wgLanguageNamesSv ) ) {
-                        return "";
-                }
-                return $wgLanguageNamesSv[$code];
         }
 
         function getMonthName( $key )
