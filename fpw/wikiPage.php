@@ -627,10 +627,10 @@ class WikiPage extends WikiTitle {
     function removeHTMLtags ( $s ) {
         # Only allow known tags
         $htmlpairs = array( "b", "i", "u", "font", "big", "small", "sub", "sup", "h1", "h2", "h3", "h4", "h5", "h6",
-            "cite", "code", "em", "s", "strike", "strong", "tt", "var", "div", "center", "blockquote", "q" , "ol",
-            "ul", "dl", "table", "caption", "pre" , "span" , "abbr" , "acronym" , "var");
+            "cite", "code", "em", "s", "strike", "strong", "tt", "var", "div", "center", "blockquote", "ol",
+            "ul", "dl", "table", "caption", "pre" );
         $htmlsingle = array( "br", "p", "hr", "li", "dt", "dd" );
-	$tabletags = array ( "td" , "th" , "tr" , "tfoot" , "tbody" , "thead" , "colgroup" , "col" ) ;
+	$tabletags = array ( "td" , "th" , "tr" ) ;
 
 	$htmlsingle = array_merge ( $tabletags , $htmlsingle ) ;
         $htmlpairs = array_merge ( $htmlsingle , $htmlpairs );
@@ -820,10 +820,10 @@ class WikiPage extends WikiTitle {
         $s = $this->pingPongReplace ( "'''" , "<b>" , "</b>" , $s ) ;
         $s = $this->pingPongReplace ( "''" , "<i>" , "</i>" , $s ) ;
 
-        $s = preg_replace ( "/(^|>|\\n)==== ([^\\n]*) ====\s*(\\r|<|$)/" , "\\1<h4>\\2</h4>\\3" , $s ) ;
-        $s = preg_replace ( "/(^|>|\\n)=== ([^\\n]*) ===\s*(\\r|<|$)/" , "\\1<h3>\\2</h3>\\3" , $s ) ;
-        $s = preg_replace ( "/(^|>|\\n)== ([^\\n]*) ==\s*(\\r|<|$)/" , "\\1<h2>\\2</h2>\\3" , $s ) ;
-        $s = preg_replace ( "/(^|>|\\n)= ([^\\n]*) =\s*(\\r|<|$)/" , "\\1<h1>\\2</h1>\\3" , $s ) ;
+        $s = preg_replace ( "/(^|\\n)==== ([^\\n]*) ====\s*(\\r|$)/" , "\\1<h4>\\2</h4>\\3" , $s ) ;
+        $s = preg_replace ( "/(^|\\n)=== ([^\\n]*) ===\s*(\\r|$)/" , "\\1<h3>\\2</h3>\\3" , $s ) ;
+        $s = preg_replace ( "/(^|\\n)== ([^\\n]*) ==\s*(\\r|$)/" , "\\1<h2>\\2</h2>\\3" , $s ) ;
+        $s = preg_replace ( "/(^|\\n)= ([^\\n]*) =\s*(\\r|$)/" , "\\1<h1>\\2</h1>\\3" , $s ) ;
 
         $s = ereg_replace ( "\n====*" , "<hr>" , $s ) ;
 
