@@ -224,8 +224,10 @@ $wikiRememberMyPassword = "Remember my password (as a cookie)." ;
 $wikiLoginProblem = "<b>There has been a problem with your login.</b><br>Try again!" ;
 $wikiAlreadyLoggedIn = "<font color=red><b>User $1, you are already logged in!</b></font><br>\n" ;
 $wikiPleaseLogIn = "<h1>Please log in:</h1>\n" ;
-$wikiAreYouNew = "If you are new to wikipedia and want to get a user account, enter a user name, type and re-type a password.<br>\n" ;
+$wikiAreYouNew = "If you are new to wikipedia and want to get a user account, enter a user name, type and re-type a password.
+Your e-mail address is optional; if you lose your password you can request a new one to be sent to the address you give.<br>\n" ;
 $wikiLogIn = "Log in" ;
+$wikiCreateAccount = "Create new account" ;
 
 # User preferences
 $wikiUserSettings = "User Settings" ;
@@ -410,7 +412,8 @@ $wikiWantedTitle = "The Most Wanted Pages" ;
 $wikiWantedText = "'''These articles don't exist, but other articles link to them!''' (the top 50)<br>\n" ;
 $wikiWantedToggleNumbers = "Click here to toggle the display of page titles starting with numbers (currently $1)" ;
 $wikiWantedLine = "$1 is wanted by <b>$2</b> articles <nowiki>(see the <a href=\"$3\">pages that link to \"$4\"</a></nowiki>)" ;
-$wikiLastChange = "Last edited:<br>\n<font size=-2>&nbsp;&nbsp;$1</font>" ;
+$wikiLastChange = "Last edited: $1" ;
+$wikiLastChangeCologne = "Last edited:<br>\n<font size=-2>&nbsp;&nbsp;$1</font>" ;
 $wikiShowLastChange = "Show last change" ;
 $wikiProtectThisPage = "Protect this page" ;
 $wikiPopularPages = "Most popular" ;
