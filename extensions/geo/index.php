@@ -13,7 +13,7 @@ $p->settings ( "
 languages:de,en
 show:germany
 fit:germany
-style:germany[state]=fill:#CCCCCC; stroke:black; stroke-width:10
+style:germany[state],germany[isle]=fill:#CCCCCC; stroke:black; stroke-width:10
 style:germany.hamburg=fill:red
 " ) ;
 
