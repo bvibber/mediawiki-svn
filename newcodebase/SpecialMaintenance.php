@@ -158,7 +158,8 @@ function wfSpecialDoubleRedirects()
 		$n = $n[0] ;
 		$l1 = $sk->makeKnownLink ( $obj->l_from , "" , "redirect=no" ) ;
 		$l2 = $sk->makeKnownLink ( $obj->ti , "" , "redirect=no" ) ;
-		$s .= "<li>{$l1} => {$l2} (\"{$n}\")</li>\n" ;
+		$l3 = $sk->makeBrokenLink ( $obj->l_from , "(".wfMsg("qbedit").")" , "redirect=no" ) ;
+		$s .= "<li>{$l1} {$l3} => {$l2} (\"{$n}\")</li>\n" ;
 	}
 	wfFreeResult( $res );
 	$s .= "</ol>";
