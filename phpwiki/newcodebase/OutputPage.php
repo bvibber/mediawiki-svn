@@ -114,7 +114,7 @@ class OutputPage {
 	{
 		global $wgLang;
 		$ismodsince = $_SERVER["HTTP_IF_MODIFIED_SINCE"];
-		$lastmod = $wgLang->rfc1123( wfTimestamp2Unix( $timestamp ) );
+		$lastmod = gmdate( "D, j M Y H:i:s", wfTimestamp2Unix( $timestamp ) ) . " GMT";
 		
 		if( $ismodsince == $lastmod ) {
 			# Make sure you're in a place you can leave when you call us!
@@ -238,15 +238,15 @@ class OutputPage {
 		$sk = $wgUser->getSkin();
 
 		wfProfileIn( "OutputPage::output-headers" );
-		header( "Expires: Thu, 01 Dec 1994 16:00:00 GMT" ); # Cachers always validate the page!
 		if( $this->mLastModified != "" ) {
+			header( "Cache-Control: private, must-revalidate, max-age=0" );
 			header( "Last-modified: {$this->mLastModified}" );
-			header( "Cache-Control: must-revalidate" );
 		} else {
-			header( "Cache-Control: no-cache" );
+			header( "Cache-Control: no-cache" ); # Experimental - see below
 			header( "Pragma: no-cache" );
 			header( "Last-modified: " . gmdate( "D, j M Y H:i:s" ) . " GMT" );
 		}
+		header( "Expires: Mon, 15 Jan 2001 00:00:00 GMT" ); # Cachers always validate the page!
 
 		header( "Content-type: text/html; charset={$wgOutputEncoding}" );
 		header( "Content-language: {$wgLanguageCode}" );
