@@ -64,7 +64,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"editondblclick" => "Edit pages on double click (JavaScript)",
 	"editsection"=>"Enable section editing via [edit] links",
 	"editsectiononrightclick"=>"Enable section editing by right clicking<br> on section titles (JavaScript)",
-	"showtoc"=>"Show table of contents<br>(for articles with more than 3 headings)",
+	"showtoc"=>"Show table of contents<br>(for pages with more than 3 headings)",
 	"rememberpassword" => "Remember password across sessions",
 	"editwidth" => "Edit box has full width",
 	"watchdefault" => "Add pages you edit to your watchlist",
@@ -140,7 +140,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"kk"	=> "Kazakh",
 	"kl"	=> "Greenlandic",
 	"km"	=> "Cambodian",
-	"kn"	=> "Kannada",
+	"kn"	=> "&#3221;&#3240;&#3277;&#3240;&#3233; (Kannada)",
 	"ko" => "&#54620;&#44397;&#50612; (Hangukeo)",
 	"ks"	=> "Kashmiri",
 	"kw" => "Kernewek",
@@ -194,8 +194,8 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"su"	=> "Sudanese",
 	"sv" => "Svenska",
 	"sw" => "Kiswahili",
-	"ta"	=> "Tamil",
-	"te"	=> "Telugu",
+	"ta"	=> "&#2980;&#2990;&#3007;&#2996;&#3021; (Tamil)",
+	"te"	=> "&#3108;&#3142;&#3122;&#3137;&#3095;&#3137; (Telugu)",
 	"tg"	=> "Tajik",
 	"th"	=> "Thai",
 	"ti"	=> "Tigrinya",
@@ -491,7 +491,7 @@ Please log in again after you receive it.",
 "summary"		=> "Summary",
 "subject"		=> "Subject/headline",
 "minoredit"		=> "This is a minor edit",
-"watchthis"		=> "Watch this article",
+"watchthis"		=> "Watch this page",
 "savearticle"	=> "Save page",
 "preview"		=> "Preview",
 "showpreview"	=> "Show preview",
@@ -502,7 +502,7 @@ The reason given is this:<br>''$2''<p>You may contact $1 or one of the other
 "newarticle"	=> "(New)",
 "newarticletext" =>
 "You've followed a link to a page that doesn't exist yet.
-To create the page, start typing in the box below 
+To create the page, start typing in the box below
 (see the [[Wikipedia:Help|help page]] for more info).
 If you are here by mistake, just click your browser's '''back''' button.",
 "anontalkpagetext" => "---- ''This is the discussion page for an anonymous user who has not created an account yet or who does not use it. We therefore have to use the numerical [[IP address]] to identify him/her. Such an IP address can be shared by several users. If you are an anonymous user and feel that irrelevant comments have been directed at you, please [[Special:Userlogin|create an account or log in]] to avoid future confusion with other anonymous users.'' ",
@@ -586,13 +586,13 @@ word fewer than three letters long, which is not yet supported.
 It could also be that you have mistyped the expression, for
 example \"fish and and scales\".
 Please try another query.",
-"matchtotals"	=> "The query \"$1\" matched $2 article titles
+"matchtotals"	=> "The query \"$1\" matched $2 page titles
 and the text of $3 articles.",
 "nogomatch" => "No page with this exact title exists, trying full text search.",
-"titlematches"	=> "Article title matches",
-"notitlematches" => "No article title matches",
-"textmatches"	=> "Article text matches",
-"notextmatches"	=> "No article text matches",
+"titlematches"	=> "Page title matches",
+"notitlematches" => "No page title matches",
+"textmatches"	=> "Page text matches",
+"notextmatches"	=> "No page text matches",
 "prevn"			=> "previous $1",
 "nextn"			=> "next $1",
 "viewprevnext"	=> "View ($1) ($2) ($3).",
@@ -810,7 +810,7 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "disambiguationspage"	=> "Wikipedia:Links_to_disambiguating_pages",
 "disambiguationstext"	=> "The following articles link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br>A page is treated as dismbiguation if it is linked from $1.<br>Links from other namespaces are <i>not</i> listed here.",
 "doubleredirects"	=> "Double Redirects",
-"doubleredirectstext"	=> "<b>Attention:</b> This list may contain false positives. That usually means there is additional text with links below the first #REDIRECT.<br>\nEach row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" taget article, which the first redirect should point to.",
+"doubleredirectstext"	=> "<b>Attention:</b> This list may contain false positives. That usually means there is additional text with links below the first #REDIRECT.<br>\nEach row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" target article, which the first redirect should point to.",
 "brokenredirects"	=> "Broken Redirects",
 "brokenredirectstext"	=> "The following redirects link to a non-existing article.",
 "selflinks"		=> "Pages with Self Links",
@@ -963,7 +963,7 @@ All times shown are server time (UTC).
 "rollbackfailed" => "Rollback failed",
 "cantrollback"	=> "Cannot revert edit; last contributor is only author of this article.",
 "alreadyrolled"	=> "Cannot rollback last edit of [[$1]]
-by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled back the article already. 
+by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled back the page already.
 
 Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]). ",
 #   only shown if there is an edit comment
@@ -984,7 +984,7 @@ will not be automatically replaced.",
 "undeleterevision" => "Deleted revision as of $1",
 "undeletebtn" => "Restore!",
 "undeletedarticle" => "restored \"$1\"",
-"undeletedtext"   => "The article [[$1]] has been successfully restored.
+"undeletedtext"   => "The page [[$1]] has been successfully restored.
 See [[Wikipedia:Deletion_log]] for a record of recent deletions and restorations.",
 
 # Contributions
