@@ -18,45 +18,6 @@ void TParser::parse_heading ( TUCS &s )
     s = "<" + t + ">" + s + "</" + t + ">" ;
     }
 
-// This attempts to parse a link
-// c initially points to the first '['
-/*
-uint *TParser::parse_internal_link ( uint *c , TUCS &s , TUCS &t )
-    {
-    uint *d ;
-    bool intext = false ;
-    TUCS link , text , trail ;
-    for ( d = c+2 ; *d && ( ( *d != '[' && *d != ']' ) || *d != *(d+1) ) ; d++ )
-        {
-        if ( *d == '|' ) intext = true ;
-        else if ( intext ) text += *d ;
-        else link += *d ;
-        }
-
-    if ( *d != ']' || *(d+1) != ']' ) // Not a valid link
-        {
-        t += "[[" ;
-        return c+2 ;
-        }
-        
-    for ( d += 2 ; TUCS::isChar ( *d ) ; d++ ) trail += *d ;
-
-    if ( !intext ) text = link ;
-    text += trail ;
-    
-    TTitle ti ( link ) ;
-    if ( ti.getNamespaceID() == 6 )
-        {
-//        unsigned char sig[MD5_SIZE] ;
-//        char *c = (char*) ti.getJustTitle().getstring().c_str() ;
-//        md5_buffer(c, strlen(c), sig);
-//        text = (char*) sig ;
-        t += SKIN->getInternalLink ( ti , text ) ;
-        }
-    else t += SKIN->getInternalLink ( ti , text ) ;
-    return d ;
-    }*/
-    
 bool TParser::parse_external_link ( TUCS &s )
     {
     uint a , b , c ;

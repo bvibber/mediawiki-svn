@@ -162,7 +162,7 @@ TUCS TSkin::getTopBar()
     TUCS r ;
     r += "<div id='topbar'>\n" ;
     r += "<table width='98%' border='0' cellspacing='0'>" ;
-    r += "<tbody>" ;
+//    r += "<tbody>" ;
     
     // Row one
     r += "<tr>" ;
@@ -201,7 +201,7 @@ TUCS TSkin::getTopBar()
     r += ll ;
     r += "</td>" ;
     r += "</tr>" ;
-    r += "</tbody>" ;
+//    r += "</tbody>" ;
     r += "</table>" ;
     r += "</div>\n" ;
     return r ;
