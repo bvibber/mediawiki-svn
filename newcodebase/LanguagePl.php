@@ -218,7 +218,7 @@ include_once("utf8Case.php");
 );
 
 /* private */ $wgMonthNamesGenPl = array(
-	"stycznia", "lutego", "marca", "kwietna", "maja", "czerwca",
+	"stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca",
 	"lipca", "sierpnia", "wrzeĹnia", "paĹşdziernika", "listopada",
 	"grudnia"
 );
