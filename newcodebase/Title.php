@@ -134,7 +134,13 @@ class Title {
 	{
 		$s = $this->prefix( $this->mDbkeyform );
 		$s = str_replace( " ", "_", $s );
-		return urlencode( $s );
+		$s = urlencode ( $s ) ;
+		# Cleaning up URL to make it look nice -- is this safe?
+		# $s = preg_replace( "/%3[Aa]/", ":", $s );
+		# $s = preg_replace( "/%2[Ff]/", "/", $s );
+		# $s = str_replace( "%28", "(", $s );
+		# $s = str_replace( "%29", ")", $s );
+		return $s;
 	}
 
 	function getFullURL()
