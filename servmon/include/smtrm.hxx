@@ -5,6 +5,7 @@
 #include "smcfg.hxx"
 #include "smirc.hxx"
 #include "smutl.hxx"
+#include "smauth.hxx"
 
 namespace smtrm {
 
@@ -29,16 +30,19 @@ public:
 		ps.push_back(p); 
 	}
 	void warn (std::string const & msg) const {
-		term.wrtln(str(format("%% [W] %s") % msg));
+		term.warn(msg);
 	}
 	void inform (std::string const & msg) const {
-		term.wrtln(str(format("%% [I] %s") % msg)); 
+		term.inform(msg); 
 	}
 	void error (std::string const & msg) const {
-		term.wrtln(str(format("%% [E] %s") % msg));
+		term.error(msg);
 	}
 	void wrtln (std::string const & msg = "") const {
 		term.wrtln(msg);
+	}
+	void wrt (std::string const & msg) const {
+		term.wrt(msg);
 	}
 	void chgrt (handler_node<tt>* newrt, std::string const& prm) const {
 		term.chgrt(newrt, prm);
@@ -180,11 +184,11 @@ struct tmcmds : public smutl::singleton<tmcmds<tt> > {
 template<class intft>
 class trmsrv : noncopyable {
 public:
-	typedef boost::function<void(std::string const&)> rl_cb_t;
+	typedef boost::function<void(trmsrv&, std::string const&)> rl_cb_t;
 
 	trmsrv(intft sckt_)
 	: intf(sckt_)
-	, cmds_root(&instance<tmcmds<trmsrv> >()->stdrt)
+	, cmds_root(instance<tmcmds<trmsrv> >()->stdrt)
 	, prm("servmon> ")
 	, cd(*this)
 	, doecho(true)
@@ -220,32 +224,22 @@ public:
 		std::string user, pass;
 		wrtln();
 		wrt("Username: ");
-		readline(boost::bind(&trmsrv::gt_usr_cb, this, _1));
+		readline(boost::bind(&trmsrv::gt_usr_cb, this, _2));
 	}
 	void gt_usr_cb(std::string const& user) {
 		usrnam = user;
 		echo(false);
 		wrt("Password: ");
-		readline(boost::bind(&trmsrv::gt_psw_cb, this, _1));
+		readline(boost::bind(&trmsrv::gt_psw_cb, this, _2));
 	}
 	void gt_psw_cb(std::string const& pass) {
 		echo(true);
 		wrtln();
-		std::string rpass;
-		try {
-			rpass = instance<smcfg::cfg>()->fetchstr(
-					str(format("/users/%s/password") % usrnam));
-		} catch (smcfg::nokey&) {
+		if (!smauth::login_usr(usrnam, pass)) {
 			wrtln("% [E] Username or password incorrect.");
 			disconnect();
 			return;
 		}
-		if (rpass != pass) {
-			wrtln("% [E] Username or password incorrect.");
-			disconnect();
-			return;
-		}
-		wrt(prm);
 	}
 	void gd_cb(smnet::inetclntp s, u_char c) {
 		std::cerr << "read data: [" << c << "]\n";
@@ -267,7 +261,7 @@ public:
 		intf->wrt(s);
 	}
 	void chgrt(handler_node<trmsrv>* newrt, std::string const& prompt) {
-		cmds_root = newrt;
+		cmds_root = *newrt;
 		prm = str(format(prompt) % "servmon");
 	}
 	void readline(rl_cb_t cb) {
@@ -284,8 +278,9 @@ public:
 			stb_nrml();
 			rlip = false;
 			wrtln();
-			rl_cb(ln);
+			rl_cb(*this, ln);
 			ln = "";
+			if (!rlip) wrt(prm);
 			return true;
 		}
 		bool b = true;
@@ -325,7 +320,7 @@ public:
 end:
 		if (b) {
 			init();
-			wrt(prm + ln);
+			if (!rlip) wrt(prm + ln);
 		}
 		return b;
 	}
@@ -425,13 +420,22 @@ end:
 
 	void init(void) {
 		hstack.resize(1);
-		hstack[0] = cmds_root;
+		hstack[0] = &cmds_root;
 		cd.rst();
 		ln = thisword = "";
 	}
 
 	void disconnect(void) {
 		destroyme = true;
+	}
+	void warn (std::string const & msg) {
+		wrtln(str(format("%% [W] %s") % msg));
+	}
+	void inform (std::string const & msg) {
+		wrtln(str(format("%% [I] %s") % msg)); 
+	}
+	void error (std::string const & msg) {
+		wrtln(str(format("%% [E] %s") % msg));
 	}
 private:
 	intft intf;
@@ -443,7 +447,7 @@ private:
 	std::string thisword;
 	typedef handler_node<trmsrv> handler_node_t;
 	std::vector<handler_node_t *> hstack;
-	handler_node_t* cmds_root;
+	handler_node_t cmds_root;
 	std::string prm;
 	comdat<trmsrv> cd;
 	bool doecho;

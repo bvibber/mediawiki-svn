@@ -7,18 +7,17 @@ struct cmd_show_version : handler<tt> {
 
 struct cmd_enable : handler<tt> {
 	bool execute(comdat<tt> const& cd) {
-		std::string pass = cd.getpass("% Password: "), rpass;
-		try {
-			rpass = instance<smcfg::cfg>()->fetchstr("/core/enable_password");
-		} catch (smcfg::nokey&) {
-			cd.error("Password incorrect.");
-			return true;
-		}
-		if (pass == rpass)
-			cd.chgrt(&instance<tmcmds>()->eblrt, "%s# ");
-		else
-			cd.error("Password incorrect.");
+		cd.wrt("Password: ");
+		cd.term.echo(false);
+		cd.term.readline(boost::bind(&cmd_enable::vfypass, this, _1, _2));
 		return true;
+	}
+	void vfypass(tt& trm, std::string const& pass) {
+		trm.echo(true);
+		if (smauth::authebl(pass))
+			trm.chgrt(&SMI(tmcmds)->eblrt, "%s# ");
+		else
+			trm.error("Authentication failure.");
 	}
 };
 

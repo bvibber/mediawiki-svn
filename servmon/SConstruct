@@ -15,7 +15,8 @@ prefix = '/opt/servmon'
 ####################################
 import os
 
-srcs = Split('servmon.cxx csmplex.cxx smthr.cxx smnet.cxx smutl.cxx smcfg.cxx smirc.cxx')
+srcs = Split(	'servmon.cxx csmplex.cxx smthr.cxx smnet.cxx smutl.cxx smcfg.cxx smirc.cxx '
+		'smauth.cxx')
 env = Environment(CPPFLAGS = cppflags + ' -DPFX="\\"' + prefix + '\\""',
 		CCFLAGS = cflags,
 		CC = cc,
