@@ -473,7 +473,10 @@ any copyrights.",
 "badfiletype"	=> "\".$1\" is not a recommended image file format.",
 "largefile"		=> "It is recommended that images not exceed 100k in size.",
 "successfulupload" => "Successful upload",
-"fileuploaded"	=> "File \"$1\" uploaded successfully.",
+"fileuploaded"	=> "File uploaded successfully.
+Please follow this link: >> $1 << to the description page and fill
+in information about the file, such as where it came from, when it was
+created and by whom, and anything else you may know about it.",
 "uploadwarning" => "Upload warning",
 "savefile"		=> "Save file",
 "uploadedimage" => "uploaded \"$1\"",
