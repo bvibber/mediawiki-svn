@@ -77,3 +77,16 @@ Rerun patch-math.sql to recreate it.
 
 * 2003-02-03: Index added to USER table for performance reasons. Run
 patch-userindex.sql to create it.
+
+
+* 2003-02-09: Random table & inverse timestamps
+The random page queue table has been removed in favor of a column
+in the cur table. This eliminates the ssllooww queue refill step;
+pre-storing random indices in an indexed column means we can do the
+random sort instantly; each element is re-randomized upon selection.
+
+Also, an inverse_timestamp field has been added to the cur and old
+tables. This will allow fast index-based sorting in history lists,
+user contribs, linked recentchanges, etc with MySQL 3, which doesn't
+allow DESC ordering on an indexed field. This may be removed later
+when MySQL is found to be stable.
