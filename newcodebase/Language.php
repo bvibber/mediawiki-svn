@@ -118,6 +118,7 @@
 "sysoptext"		=> "The action you have requested can only be
 performed by users with \"sysop\" status.
 See $1.",
+"nbytes"		=> "$1 bytes",
 
 # Main script and global functions
 #
@@ -283,10 +284,10 @@ and the text of $3 articles.",
 "notitlematches" => "No article title matches",
 "textmatches"	=> "Article text matches",
 "notextmatches"	=> "No article text matches",
-"searchprev"	=> "previous $1",
-"searchnext"	=> "next $1",
-"searchlinks"	=> "View ($1) ($2) search results.",
-"showingmatches" => "Showing below <b>$1</b> matches starting with #<b>$2</b>.",
+"prevn"			=> "previous $1",
+"nextn"			=> "next $1",
+"viewprevnext"	=> "View ($1) ($2).",
+"showingresults" => "Showing below <b>$1</b> results starting with #<b>$2</b>.",
 "nonefound"		=> "<strong>Note</strong>: unsuccessful searches are
 often caused by searching for common words like \"have\" and \"from\",
 which are not indexed, or by specifying more than one search term (only pages
@@ -436,10 +437,6 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 #
 "orphans"		=> "Orphaned pages",
 "lonelypages"	=> "Orphaned pages",
-"orphanprev"	=> "previous $1",
-"orphannext"	=> "next $1",
-"orphanlinks"	=> "View ($1) ($2) orphaned pages.",
-"showingorphans" => "Showing below <b>$1</b> orphaned pages starting with #<b>$2</b>.",
 
 # Popular pages
 #

@@ -905,8 +905,9 @@ class Skin {
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }
 
+		$nb = str_replace( "$1", $size, wfMsg( "nbytes" ) );
 		$s = "<li> ({$dlink}) ({$rlink}) <a href=\"{$url}\">{$dt}</a> . . " .
-		  "{$ut} ({$size} bytes)";
+		  "{$ut} ({$nb})";
 
 		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
 		$s .= "</li>\n";

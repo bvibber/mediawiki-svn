@@ -17,7 +17,6 @@ class SearchEngine {
 	function showResults()
 	{
 		global $wgUser, $wgTitle, $wgOut, $wgLang;
-		global $wgServer, $wgScript;
 		global $offset, $limit;
 		$fname = "SearchEngine::showResults";
 
@@ -51,25 +50,11 @@ class SearchEngine {
 		  "LIMIT {$offset}, {$limit}";
 		$res2 = wfQuery( $sql, $fname );
 
-		$top = str_replace( "$1", $limit, wfMsg( "showingmatches" ) );
-		$top = str_replace( "$2", $offset+1, $top );
+		$top = SearchEngine::showingResults( $offset, $limit );
 		$wgOut->addHTML( "<p>{$top}\n" );
 
-		$prev = str_replace( "$1", $limit, wfMsg( "searchprev" ) );
-		$next = str_replace( "$1", $limit, wfMsg( "searchnext" ) );
-
-		$sk = $wgUser->getSkin();
-		if ( 0 != $offset ) {
-			$po = $offset - $limit;
-			$plink = "<a href=\"$wgServer$wgScript?search={$this->mUsertext}" .
-			  "&amp;limit={$limit}&amp;offset={$po}\">{$prev}</a>";
-		} else { $plink = $prev; }
-		$no = $offset + $limit;
-		$nlink = "<a href=\"$wgServer$wgScript?search={$this->mUsertext}" .
-		  "&amp;limit={$limit}&amp;offset={$no}\">{$next}</a>";
-
-		$sl = str_replace( "$1", $plink, wfMsg( "searchlinks" ) );
-		$sl = str_replace( "$2", $nlink, $sl );
+		$sl = SearchEngine::viewPrevNext( $offset, $limit,
+		  "search={$this->mUsertext}" );
 		$wgOut->addHTML( "<br>{$sl}\n" );
 
 		$foundsome = false;
@@ -109,6 +94,37 @@ class SearchEngine {
 	{
 		$lc = "A-Za-z_'0-9\\x90-\\xFF\\-";
 		return $lc;
+	}
+
+	function showingResults( $offset, $limit )
+	{
+		$top = str_replace( "$1", $limit, wfMsg( "showingresults" ) );
+		$top = str_replace( "$2", $offset+1, $top );
+		return $top;
+	}
+
+	function viewPrevNext( $offset, $limit, $link )
+	{
+		global $wgUser, $wgServer, $wgScript;
+		$prev = str_replace( "$1", $limit, wfMsg( "prevn" ) );
+		$next = str_replace( "$1", $limit, wfMsg( "nextn" ) );
+
+		$sk = $wgUser->getSkin();
+		if ( 0 != $offset ) {
+			$po = $offset - $limit;
+			if ( $po < 0 ) { $po = 0; }
+
+			$plink = "<a href=\"$wgServer$wgScript?{$link}" .
+			  "&amp;limit={$limit}&amp;offset={$po}\">{$prev}</a>";
+		} else { $plink = $prev; }
+
+		$no = $offset + $limit;
+		$nlink = "<a href=\"$wgServer$wgScript?{$link}" .
+		  "&amp;limit={$limit}&amp;offset={$no}\">{$next}</a>";
+
+		$sl = str_replace( "$1", $plink, wfMsg( "viewprevnext" ) );
+		$sl = str_replace( "$2", $nlink, $sl );
+		return $sl;
 	}
 
 	function parseQuery()

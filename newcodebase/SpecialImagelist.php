@@ -95,9 +95,10 @@ function wfSpecialImagelist()
 		$ilink = "<a href=\"" . wfImageUrl( $name ) .
 		  "\">{$name}</a>";
 
+		$nb = str_replace( "$1", $s->img_size, wfMsg( "nbytes" ) );
 		$l = "(" .
 		  $sk->makeKnownLink( "Image:{$name}", wfMsg( "imgdesc" ) ) .
-		  ") {$ilink} . . {$s->img_size} bytes . . {$ul} . . " .
+		  ") {$ilink} . . {$nb} . . {$ul} . . " .
 		  $wgLang->timeanddate( $s->img_timestamp );
 
 		if ( "" != $s->img_description ) {
