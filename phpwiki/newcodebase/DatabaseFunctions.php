@@ -12,6 +12,7 @@ function wfGetDB()
 		  $wgDBpassword ) or die( $noconn );
 		mysql_select_db( $wgDBname, $wgDBconnection ) or die( $nodb );
 	}
+	# mysql_ping( $wgDBconnection );
 	return $wgDBconnection;
 }
 
@@ -33,7 +34,7 @@ function wfGetSQL( $table, $var, $cond )
 	wfDebug( "DB: 2: $sql\n" );
 	$result = mysql_query( $sql, $conn );
 	$ret = "";
-	if ( ! ( false === $result ) ) {
+	if ( $result && ( mysql_num_rows( $result ) > 0 ) ) {
 		if ( $s = mysql_fetch_object( $result ) ) {
 			$ret = $s->$var;
 		}

@@ -1,34 +1,17 @@
 <?
+# Main wiki script
+#
 session_start();
 session_register( "wsUserID" );
 session_register( "wsUserName" );
 session_register( "wsUserPassword" );
 
-include_once( "LocalSettings.php" );
-include_once( "GlobalFunctions.php" );
-include_once( "Language.php" );
-include_once( "Namespace.php" );
-include_once( "Skin.php" );
-include_once( "OutputPage.php" );
-include_once( "User.php" );
-include_once( "LinkCache.php" );
-include_once( "Title.php" );
-include_once( "Article.php" );
+include_once( "Setup.php" );
 
+# Query string fields
+#
 global $action, $title, $search, $target;
 global $target, $returnto;
-global $wgUser, $wgLang, $wgOut, $wgTitle; # Objects to handle output
-global $wgArticle, $wgDeferredUpdateList, $wgLinkCache;
-
-$wgOut = new OutputPage();
-$wgLangClass = "Language" . ucfirst( $wgLanguageCode );
-$wgLang = new $wgLangClass();
-$wgOut->addHeader( "Content-type", "text/html; charset=iso-8859-1" );
-
-$wgUser = new User();
-$wgUser->loadFromSession();
-$wgDeferredUpdateList = array();
-$wgLinkCache = new LinkCache();
 
 wfStripTextFields(); # Clean up PHP mess
 
@@ -41,7 +24,7 @@ if ( -1 == $wgTitle->getNamespace() ) {
 	wfSpecialPage();
 } else if ( "" != $search ) { wfSearch( $search ); }
 else {
-	$wgArticle = new Article( $wgTitle );
+	$wgArticle = new Article();
 
 	if ( "view" == $action ) { $wgArticle->view(); }
 	else if ( "edit" == $action ) { $wgArticle->edit(); }

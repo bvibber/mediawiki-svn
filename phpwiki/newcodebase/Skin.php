@@ -244,7 +244,6 @@ class Skin {
 
 		$d = $wgLang->dateFromTimestamp( $wgArticle->getTimestamp() );
 		$s .= "Last modified $d.\n";
-
 		return $s;
 	}
 
@@ -355,16 +354,26 @@ class Skin {
 
 	function dateLink()
 	{
+		global $wgLinkCache;
 		$t1 = Title::newFromText( date( "F j" ) );
 		$t2 = Title::newFromText( date( "Y" ) );
 
-		if ( 0 == $t1->getArticleID() ) {
+		$wgLinkCache->suspend();
+		$id = $t1->getArticleID();
+		$wgLinkCache->resume();
+
+		if ( 0 == $id ) {
 			$s = $this->makeBrokenLink( $t1->getText() );
 		} else {
 			$s = $this->makeLink( $t1->getText() );
 		}
 		$s .= ", ";
-		if ( 0 == $t2->getArticleID() ) {
+
+		$wgLinkCache->suspend();
+		$id = $t2->getArticleID();
+		$wgLinkCache->resume();
+
+		if ( 0 == $id ) {
 			$s .= $this->makeBrokenLink( $t2->getText() );
 		} else {
 			$s .= $this->makeLink( $t2->getText() );
@@ -374,7 +383,7 @@ class Skin {
 
 	function talkLink()
 	{
-		global $wgTitle;
+		global $wgTitle, $wgLinkCache;
 
 		$tns = $wgTitle->getNamespace();
 		if ( -1 == $tns ) { return ""; }
@@ -394,7 +403,10 @@ class Skin {
 		if ( "" == $n ) { $link = $pn; }
 		else { $link = "$n:$pn"; }
 
+		$wgLinkCache->suspend();
 		$s = $this->makeInternalLink( $link, $text );
+		$wgLinkCache->resume();
+
 		return $s;
 	}
 

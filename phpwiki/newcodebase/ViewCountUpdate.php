@@ -3,18 +3,20 @@
 
 class ViewCountUpdate {
 
-	var $mPageID, $mCount;
+	var $mPageID;
 
-	function ViewCountUpdate( $pageid, $count )
+	function ViewCountUpdate( $pageid )
 	{
 		$this->mPageID = $pageid;
-		$this->mCount = $count;
 	}
 
 	function doUpdate()
 	{
-		wfSetSQL( "cur", "cur_counter", $this->mCount,
-		  "cur_id={$this->mPageID}" );
+		$conn = wfGetDB();
+		$sql = "UPDATE cur SET cur_counter=(1+cur_counter)," .
+		  "cur_timestamp=cur_timestamp WHERE cur_id={$this->mPageID}";
+		wfDebug( "VCU: $sql\n" );
+		$res = mysql_query( $sql, $conn );
 	}
 }
 

@@ -89,7 +89,7 @@ function wfSpecialPage()
 	$wgOut->setArticleFlag( false );
 	$wgOut->setPageTitle( wfMsg( strtolower( $wgTitle->getText() ) ) );
 
-	$t = $wgTitle->getDBKey();
+	$t = $wgTitle->getDBkey();
 	if ( in_array( $t, $wgValidSpecialPages ) ||
 	  ( $wgUser->isSysop() && in_array( $t, $wgSysopSpecialPages ) ) ) {
 		$inc = "Special" . $t . ".php";

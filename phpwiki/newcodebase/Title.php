@@ -29,7 +29,6 @@ class Title {
 	/* private */ var $mTextform, $mUrlform, $mDbkeyform;
 	/* private */ var $mNamespace, $mInterwiki;
 	/* private */ var $mArticleID, $mRestrictions, $mRestrictionsLoaded;
-	/* private */ var $mNamespacesLoaded;
 
 	/* private */ function Title()
 	{
@@ -37,13 +36,13 @@ class Title {
 		$this->mTextform = $this->mDbkeyform = "";
 		$this->mArticleID = -1;
 		$this->mNamespace = 0;
-		$this->mNamespacesLoaded = $this->mRestrictionsLoaded = false;
+		$this->mRestrictionsLoaded = false;
 		$this->mRestrictions = array();
 	}
 
 	# Static factory methods
 	#
-	function newFromDBKey( $key )
+	function newFromDBkey( $key )
 	{
 		$t = new Title();
 		$t->mDbkeyform = $key;
@@ -84,8 +83,9 @@ class Title {
 
 	function getText() { return $this->mTextform; }
 	function getURL() { return $this->mUrlform; }
-	function getDBKey() { return $this->mDbkeyform; }
+	function getDBkey() { return $this->mDbkeyform; }
 	function getNamespace() { return $this->mNamespace; }
+	function setNamespace( $n ) { $this->mNamespace = $n; }
 	function getInterwiki() { return $this->mInterwiki; }
 
 	function getPrefixedDBkey()
@@ -169,6 +169,16 @@ class Title {
 		$this->mArticleID = $wgLinkCache->addLink(
 		  $this->getPrefixedDBkey() );
 		return $this->mArticleID;
+	}
+
+	function resetArticleID()
+	{
+		global $wgLinkCache;
+		$wgLinkCache->clearBadLink( $this->getPrefixedDBkey() );
+
+		$this->mArticleID = -1;
+		$this->mRestrictionsLoaded = false;
+		$this->mRestrictions = array();
 	}
 
 	/* private */ function prefix( $name )
