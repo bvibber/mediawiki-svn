@@ -1019,7 +1019,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$delcom = wfMsg( "deletecomment" );
 
 		$wgOut->addHTML( "
-<form method=post action=\"{$formaction}\">
+<form name='deleteconfirm' method=post action=\"{$formaction}\">
 <table border=0><tr><td align=right>
 {$delcom}:</td><td align=left>
 <input type=text size=20 name='wpReason' value=\"{$wpReason}\">

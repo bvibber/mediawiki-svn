@@ -36,7 +36,7 @@ class SqlQueryForm {
 		  "action=submit" );
 
 		$wgOut->addHTML( "<p>
-<form method=post action=\"{$action}\">
+<form name='asksql' method=post action=\"{$action}\">
 <table border=0><tr>
 <td align=right>{$q}:</td>
 <td align=left>

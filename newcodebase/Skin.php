@@ -453,7 +453,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 	function searchForm()
 	{
 		global $search;
-		$s = "<form class='inline' method=get action=\""
+		$s = "<form name='search' class='inline' method=get action=\""
 		  . wfLocalUrl( "" ) . "\">"
 		  . "<input type=text name=\"search\" size=19 value=\""
 		  . htmlspecialchars(substr($search,0,256)) . "\">\n"
@@ -719,7 +719,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		$sp = wfMsg( "specialpages" );
 		$spp = $wgLang->specialPage( "Specialpages" );
 
-		$s = "<form method=get class='inline' " .
+		$s = "<form name='specialpages' method=get class='inline' " .
 		  "action=\"{$wgServer}{$wgRedirectScript}\">\n";
 		$s .= "<select name='wpDropdown'>\n";
 		$s .= "<option value=\"{$spp}\">{$sp}</option>\n";

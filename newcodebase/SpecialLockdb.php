@@ -39,7 +39,7 @@ class DBLockForm {
 		  "action=submit" );
 
 		$wgOut->addHTML( "<p>
-<form method=post action=\"{$action}\">
+<form name='lockdb' method=post action=\"{$action}\">
 {$elr}:
 <textarea name='wpLockReason' rows=10 cols=60 wrap=virtual>
 </textarea>

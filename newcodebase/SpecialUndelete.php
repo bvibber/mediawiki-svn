@@ -68,7 +68,7 @@ function wfSpecialUndelete( )
 
 	$action = wfLocalUrlE( $wgLang->specialPage( "Undelete" ), "action=submit" );
 	$wgOut->addHTML("<p>
-<form method=post action=\"{$action}\">
+<form name='undelete' method=post action=\"{$action}\">
 <input type=hidden name='target' value=\"{$target}\">
 <input type=submit name='restore' value=\"".wfMsg("undeletebtn")."\">
 </form>");

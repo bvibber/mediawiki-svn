@@ -208,7 +208,7 @@ function wfSpecialUserlogin()
 	$wpEmail = wfEscapeHTML( $wpEmail );
 
 	$wgOut->addHTML( "
-<form method=post action=\"{$action}\">
+<form name='userlogin' method=post action=\"{$action}\">
 <table border=0><tr>
 <td align=right>$yn:</td>
 <td colspan=2 align=left>
