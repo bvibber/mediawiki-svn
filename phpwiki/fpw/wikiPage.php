@@ -88,9 +88,9 @@ class WikiPage extends WikiTitle {
             }
 
         if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" ) { # #REDIRECT
-	    $z = wikiLink ( $this->getNiceTitle() ) ;
-	    $z = "<a href=\"$z&action=edit\">".$this->getNiceTitle()."</a>" ;
-	    $this->backLink = str_replace ( "$1" , $z , $wikiRedirectFrom ) ;
+        $z = wikiLink ( $this->getNiceTitle() ) ;
+        $z = "<a href=\"$z&action=edit\">".$this->getNiceTitle()."</a>" ;
+        $this->backLink = str_replace ( "$1" , $z , $wikiRedirectFrom ) ;
             $z = $this->contents ;
             $z = substr ( $z , 10 ) ;
             $z = explode ( "\n" , $z ) ; # Ignoring comments after redirect
@@ -204,7 +204,7 @@ class WikiPage extends WikiTitle {
         global $wikiSQLServer ;
         $connection = getDBconnection () ;
         mysql_select_db ( $wikiSQLServer , $connection ) ;
-	$sql = "INSERT INTO cur (cur_title, cur_ind_title) VALUES (\"$this->secureTitle\", \"$this->secureTitle\")" ;
+    $sql = "INSERT INTO cur (cur_title, cur_ind_title) VALUES (\"$this->secureTitle\", \"$this->secureTitle\")" ;
         mysql_query ( $sql , $connection ) ;
         if ( $useCachedPages ) { # Flushing cache for all pages that linked to the empty topic
             $sql = "UPDATE cur SET cur_cache=\"\", cur_timestamp=cur_timestamp WHERE cur_linked_links LIKE \"%$this->secureTitle%\" OR cur_unlinked_links LIKE \"%$this->secureTitle%\"" ;
@@ -535,7 +535,7 @@ class WikiPage extends WikiTitle {
             if ( count ( $b ) == 1 ) $s .= "&lt;pre&gt;$x" ;
             else {
                 #$x = htmlentities ( $b[0] ) ;
-		$x = str_replace ( array ( "<" , ">" ) , array ( "&lt;" , "&gt;" ) , $b[0] ) ;
+        $x = str_replace ( array ( "<" , ">" ) , array ( "&lt;" , "&gt;" ) , $b[0] ) ;
                 $s .= "<pre>$x</pre>$b[1]" ;
                 }
             }
@@ -606,83 +606,83 @@ class WikiPage extends WikiTitle {
             "cite", "code", "em", "s", "strike", "strong", "tt", "var", "div", "center", "blockquote", "ol",
             "ul", "dl", "table", "caption", "pre" );
         $htmlsingle = array( "br", "p", "hr", "li", "dt", "dd" );
-	$tabletags = array ( "td" , "th" , "tr" ) ;
+    $tabletags = array ( "td" , "th" , "tr" ) ;
 
-	$htmlsingle = array_merge ( $tabletags , $htmlsingle ) ;
+    $htmlsingle = array_merge ( $tabletags , $htmlsingle ) ;
         $htmlpairs = array_merge ( $htmlsingle , $htmlpairs );
 
         # Allowed attributes -- we don't want scripting, etc
         $htmlattrs = array(
-		# General
-		"title" , "align" , "lang" , "dir" , "width" , "height" , "bgcolor" ,
-		#br 
-		"clear" ,
-		# hr
-		"noshade" , 
-		# blockquote, q
-		"cite" ,
-		# font
-		"size" , "face" , "color" ,
-		# lists
-		"type" , "start" , "value", "compact" , # All deprecated, BTW
-		# tables
-		"summary" , "width" , "border" , "frame" , "rules" , "cellspacing" , "cellpadding" ,
-		"valign" , "char" , "charoff" , "colgroup" , "col" , "span" , "abbr" , "axis" , "headers" , "scope" , "rowspan" , "colspan" ,
-		# I don't *think* these are dangerous
-		"id", "class" , "name" , "style" );
+        # General
+        "title" , "align" , "lang" , "dir" , "width" , "height" , "bgcolor" ,
+        #br 
+        "clear" ,
+        # hr
+        "noshade" , 
+        # blockquote, q
+        "cite" ,
+        # font
+        "size" , "face" , "color" ,
+        # lists
+        "type" , "start" , "value", "compact" , # All deprecated, BTW
+        # tables
+        "summary" , "width" , "border" , "frame" , "rules" , "cellspacing" , "cellpadding" ,
+        "valign" , "char" , "charoff" , "colgroup" , "col" , "span" , "abbr" , "axis" , "headers" , "scope" , "rowspan" , "colspan" ,
+        # I don't *think* these are dangerous
+        "id", "class" , "name" , "style" );
 
-	# Yeah, it seems kinda ugly.
-	$bits = explode ( "<" , $s ) ;
-	$s = array_shift ( $bits ) ;
-	$tagcount = array() ; $tablecount = array();
-	foreach ( $bits as $x ) {
-		preg_match ( "/^(\/?)(\w+)([^>]*)(\/{0,1}>)([^<]*)$/", $x, $regs );
-		list ( $qbar , $slash , $t , $params , $brace , $rest ) = $regs;
-		#echo "($slash|$t|$params|$brace|$rest)";
-		if ( in_array ( $t = strtolower ( $t ) , $htmlpairs ) ) {
-			if ( $tagcount["table"] < 1 && in_array ( $t , $tabletags ) )
-				break;
-				
-			# Don't allow more closing tags than opening tags; normalize tables
-			if ( $slash ) {
-				if ( $tagcount[$t] < 1 )
-					break;
-				--$tagcount[$t];
-				if($t == "table")
-					foreach ( $tabletags as $tt )
-						$tagcount[$tt] = array_pop ( $tablecount[$tt] ) ;
-			} else {
-				if ( in_array ( $t , $htmlsingle ) )
-					$tagcount[$t] = 1;  # Single tags can't be nested... right?
-				else
-					++$tagcount[$t];
-				if($t == "table")
-					foreach ( $tabletags as $tt ) {
-						if ( ! isset ( $tablecount[$tt] ) ) $tablecount[$tt] = array () ;
-						array_push ( $tablecount[$tt] , $tagcount[$tt] ) ;
-						}
-				}
+    # Yeah, it seems kinda ugly.
+    $bits = explode ( "<" , $s ) ;
+    $s = array_shift ( $bits ) ;
+    $tagcount = array() ; $tablecount = array();
+    foreach ( $bits as $x ) {
+        preg_match ( "/^(\/?)(\w+)([^>]*)(\/{0,1}>)([^<]*)$/", $x, $regs );
+        list ( $qbar , $slash , $t , $params , $brace , $rest ) = $regs;
+        #echo "($slash|$t|$params|$brace|$rest)";
+        if ( in_array ( $t = strtolower ( $t ) , $htmlpairs ) ) {
+            if ( $tagcount["table"] < 1 && in_array ( $t , $tabletags ) )
+                break;
+                
+            # Don't allow more closing tags than opening tags; normalize tables
+            if ( $slash ) {
+                if ( $tagcount[$t] < 1 )
+                    break;
+                --$tagcount[$t];
+                if($t == "table")
+                    foreach ( $tabletags as $tt )
+                        $tagcount[$tt] = array_pop ( $tablecount[$tt] ) ;
+            } else {
+                if ( in_array ( $t , $htmlsingle ) )
+                    $tagcount[$t] = 1;  # Single tags can't be nested... right?
+                else
+                    ++$tagcount[$t];
+                if($t == "table")
+                    foreach ( $tabletags as $tt ) {
+                        if ( ! isset ( $tablecount[$tt] ) ) $tablecount[$tt] = array () ;
+                        array_push ( $tablecount[$tt] , $tagcount[$tt] ) ;
+                        }
+                }
 
-			# Strip non-approved attributes from the tag
-			$newparams = preg_replace (
-				"/(\w+)(\s*=\s*([\w,.\/:&%#@-]+|\"[^\"]*\"))?/e" ,
-				"(in_array(strtolower(\"\$1\"),\$htmlattrs)?(\"\$1\".(\"\$3\"?\"=\$3\":'')):'')" ,
-				$params) ;
+            # Strip non-approved attributes from the tag
+            $newparams = preg_replace (
+                "/(\w+)(\s*=\s*([\w,.\/:&%#@-]+|\"[^\"]*\"))?/e" ,
+                "(in_array(strtolower(\"\$1\"),\$htmlattrs)?(\"\$1\".(\"\$3\"?\"=\$3\":'')):'')" ,
+                $params) ;
 
-			$rest = str_replace ( ">" , "&gt;" , $rest ) ;
-			#echo "($slash)($t)($params)->($newparams)($brace)($rest)";
-			$s .= "<$slash$t$newparams$brace$rest";
-			continue;
-			}
-		$x = str_replace ( ">" , "&gt;" , $x ) ;
-		$s .= "&lt;$x" ;
-		}
-	
-	foreach ( $htmlpairs as $t ) # Need to use specified order, as some tags must be inside of others
-		for ( $i = $tagcount[$t] ; $i > 0; --$i )
-			$s .= "</$t>";
-	
-	return $s;
+            $rest = str_replace ( ">" , "&gt;" , $rest ) ;
+            #echo "($slash)($t)($params)->($newparams)($brace)($rest)";
+            $s .= "<$slash$t$newparams$brace$rest";
+            continue;
+            }
+        $x = str_replace ( ">" , "&gt;" , $x ) ;
+        $s .= "&lt;$x" ;
+        }
+    
+    foreach ( $htmlpairs as $t ) # Need to use specified order, as some tags must be inside of others
+        for ( $i = $tagcount[$t] ; $i > 0; --$i )
+            $s .= "</$t>";
+    
+    return $s;
 
 /*
         $htmlpairs = array( "b", "i", "u", "font", "big", "small", "sub", "sup", "h1", "h2", "h3", "h4", "h5", "h6",
@@ -923,7 +923,9 @@ class WikiPage extends WikiTitle {
         global $user , $action , $wikiNoWatch , $wikiLogIn , $wikiLogOut , $wikiSearch ;
         global $wikiHelp , $wikiHelpLink , $wikiPreferences , $wikiLanguageNames , $wikiWhatLinksHere ;
         global $wikiCharset , $wikiEncodingCharsets , $wikiEncodingNames , $wikiLogoFile , $wikiEditHelp ;
-        global $framed ; if ( isset ( $framed ) and $framed != "top" ) return "" ;
+        global $framed,  $search ;
+        
+        if ( isset ( $framed ) and $framed != "top" ) return "" ;
         $t = $this->getNiceTitle ( $this->title ) ;
         if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirst ( $t ) ;
         $ret = "<table ".$user->options["quickBarBackground"]. "width=\"100%\" class=\"topbar\" cellspacing=0>\n<tr>" ;
@@ -985,7 +987,7 @@ class WikiPage extends WikiTitle {
             }
         }
 
-        $ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
+        $ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=$search><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
         $ret .= "</td>\n<td rowspan=2 width=1><a href=\"".wikiLink("")."\"><img border=0 src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a></td></tr>\n" ;
         $ret .= "<tr><td valign=bottom>".$this->getLinkBar()."</td></tr></table>" ;
         return $ret ;
@@ -1004,17 +1006,17 @@ class WikiPage extends WikiTitle {
         if ( $this->canEdit() ) $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."$editOldVersion&action=edit")."\">$wikiEditThisPage</a>\n" ;
         else if ( !$this->isSpecialPage ) $column .= "<br>Protected page\n" ;
 
-	$temp = $this->isSpecialPage ;
-	if ( $action == "" ) $this->isSpecialPage = false ;
+    $temp = $this->isSpecialPage ;
+    if ( $action == "" ) $this->isSpecialPage = false ;
         if ( $this->canDelete() ) $column .= "<br><a href=\"".wikiLink("special:deletepage&target=".urldecode($this->url))."\">$wikiDeleteThisPage</a>\n" ;
-	$this->isSpecialPage = $temp ;
+    $this->isSpecialPage = $temp ;
 
 
         if ( $this->canProtect() ) $column .= "<br><a href=\"".wikiLink("special:protectpage&target=".urldecode($this->url))."\">Protect this page</a>\n" ;
 # To be implemented later
 #       if ( $this->canAdvance() ) $column .= "<br><a href=\"".wikiLink("special:Advance&topic=$this->safeTitle")."\">Advance</a>\n" ;
 
-	if ( in_array ( "is_sysop" , $user->rights ) ) $column .= "<br><a href=\"".wikiLink("special:AskSQL")."\">$wikiAskSQL</a>\n" ;
+    if ( in_array ( "is_sysop" , $user->rights ) ) $column .= "<br><a href=\"".wikiLink("special:AskSQL")."\">$wikiAskSQL</a>\n" ;
         if ( !$this->isSpecialPage ) $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."&action=history")."\">$wikiHistory</a>\n" ;
         $column .= "<br><a href=\"".wikiLink("special:Upload")."\">$wikiUpload</a>\n" ;
         $column .= "<hr>" ;
@@ -1087,7 +1089,9 @@ class WikiPage extends WikiTitle {
     # This generates the footer with link bar, search box, etc.
     function getFooter () {
         global $wikiSearch , $wikiCategories , $wikiOtherNamespaces , $wikiCounter , $wikiLastChange , $wikiDiff;
-        global $wikiGetDate , $framed ; if ( isset ( $framed ) ) return "" ;
+        global $wikiGetDate , $framed, $search ;
+        
+        if ( isset ( $framed ) ) return "" ;
         $ret = $this->getLinkBar() ;
         $ret = "<table width=\"100%\" $border class=\"footer\" cellspacing=0><tr><td>$ret</td></tr></table>" ;
 
@@ -1124,7 +1128,7 @@ class WikiPage extends WikiTitle {
             }
 */
 
-        $ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16><INPUT TYPE=submit value=\"$wikiSearch\">" ;
+        $ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=$search><INPUT TYPE=submit value=\"$wikiSearch\">" ;
         $ret .= " &nbsp; &nbsp; <a href=\"http://validator.w3.org/check/referer\" target=blank>Validate this page</a>" ;
         $ret .= "</FORM>" ;
 
@@ -1146,16 +1150,16 @@ class WikiPage extends WikiTitle {
                 $middle = $this->cache ;
                 #$middle = "<p>(cached)</p>" . $this->cache ; #FIXME
 
-		# Need to check for other-language links, which do not appear in the link arrays
-		$this->otherLanguages = array () ;
-		global $wikiOtherLanguages ;
-		preg_replace ( "/\[\[([a-z]{2})\:\s*([^\]]+)\s*\]\]/ie" ,
-			"( ( ( \$langurl = \$wikiOtherLanguages[\$lang = strtolower ( \"\$1\" )] ) != '' )
-			? ( \$this->otherLanguages[\$lang] = str_replace ( '\\$1' ,
-				ucfirst ( str_replace ( array ( '+' , '%25' ) , array ( '_' , '%' ) , nurlencode ( \"\$2\" ) ) ) ,
-				\$langurl ) )
-			: '' )" ,
-			$this->contents ) ;
+        # Need to check for other-language links, which do not appear in the link arrays
+        $this->otherLanguages = array () ;
+        global $wikiOtherLanguages ;
+        preg_replace ( "/\[\[([a-z]{2})\:\s*([^\]]+)\s*\]\]/ie" ,
+            "( ( ( \$langurl = \$wikiOtherLanguages[\$lang = strtolower ( \"\$1\" )] ) != '' )
+            ? ( \$this->otherLanguages[\$lang] = str_replace ( '\\$1' ,
+                ucfirst ( str_replace ( array ( '+' , '%25' ) , array ( '_' , '%' ) , nurlencode ( \"\$2\" ) ) ) ,
+                \$langurl ) )
+            : '' )" ,
+            $this->contents ) ;
             } else {
                 $middle = $this->parseContents($middle) ;
                 if ( $this->canBeCached ) { # Generating cache
