@@ -32,7 +32,6 @@ function edit ( $title ) {
 		global $wasSaved ;
 		$wasSaved = true ;
 		return "" ;
-#		return "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL='$PHP_SELF?title=$title'\">" ;
 	} else if ( isset ( $PreviewButton ) ) {
 		unset ( $PreviewButton ) ;
 		$text = $EditBox ;
@@ -882,6 +881,15 @@ function doHistory ( $title ) {
 	$ret = $vpage->getHeader() ;
 	$ret .= $vpage->getMiddle($t) ;
 	$ret .= $vpage->getFooter() ;
+	return $ret ;
+	}
+
+function special_pages () {
+	global $vpage , $user ;
+	$vpage->special ( "Special Pages" ) ;
+	$ret = "<b>This is a list of special pages.</b><br>" ;
+	$ret .= "Some of them are only available if you are logged in. If you are logged in, you can have this list automatically displayed on the right or left of each page as a QuickBar.<br><br>" ;
+	$ret .= $vpage->getQuickBar () ;
 	return $ret ;
 	}
 ?>

@@ -3,7 +3,8 @@ class WikiPage extends WikiTitle {
 	var $contents ;
 	
 	#Functions
-	function load ( $t ) {
+	function load ( $t , $doRedirect = true ) {
+		global $action ;
 		$this->title = $t ;
 		$this->makeSecureTitle () ;
 		$this->isSpecialPage = false ;
@@ -41,6 +42,13 @@ class WikiPage extends WikiTitle {
 		mysql_close ( $connection ) ;
 		$this->makeURL () ;
 		$this->splitTitle () ;
+		if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" ) {
+			$z = $this->contents ;
+			$z = strstr ( $z , "[[" ) ;
+			$z = str_replace ( "[[" , "" , $z ) ;
+			$z = str_replace ( "]]" , "" , $z ) ;
+			$this->load ( trim($z) , false ) ;
+			}
 		}
 	function special ( $t ) {
 		$this->title = $t ;
@@ -340,14 +348,15 @@ class WikiPage extends WikiTitle {
 		$spl = $this->getSubpageList () ;
 		if ( count ( $spl ) > 0 and $this->subpageTitle != "" ) {
 			$zz = trim ( $this->parseContents ( $spl[0] ) ) ;
-			$zz = str_replace ( "<p " , "<something " , $zz ) ;
+			$zz = strstr ( $zz , "<a"  ) ;
+			$zz = str_replace ( "</p>" , "" , $zz ) ;
 			$ret .= " | ".$zz ;
-#			$ret .= " | <a href=\"".$spl[0]."\">".$spl[0]."</a>" ;
 			}
 
 		$ret .= " | <a href=\"$PHP_SELF?title=special:RecentChanges\">Recent Changes</a>" ;
 		if ( $this->canEdit() ) $ret .= " | <a href=\"$PHP_SELF?action=edit&title=$this->url\">Edit this page</a>" ;
 		$ret .= " | <a href=\"$PHP_SELF?title=special:RandomPage\">Random Page</a>" ;
+		$ret .= " | <a href=\"$PHP_SELF?title=special:Special_pages\">Special Pages</a>" ;
 		return $ret ;
 		}
 	function getHeader () {
@@ -380,29 +389,34 @@ class WikiPage extends WikiTitle {
 		$ret .= "<tr><td valign=bottom>".$this->getLinkBar()."</td></tr></table>" ;
 		return $ret ; 
 		}
+	function getQuickBar () {
+		global $user ;
+		$column = "<nowiki>" ;
+		$column .= "<a href=\"$PHP_SELF?title=HomePage\">HomePage</a>\n" ;
+		$column .= "<br><a href=\"$PHP_SELF?title=special:RecentChanges\">Recent Changes</a>\n" ;
+		if ( $this->canEdit() ) $column .= "<br><a href=\"$PHP_SELF?action=edit&title=$this->url\">Edit this page</a>\n" ;
+		if ( $this->canDelete() ) $column .= "<br><a href=\"$PHP_SELF?action=deletepage&title=$this->url\">Delete this page</a>\n" ;
+		if ( $this->canProtect() ) $column .= "<br><a href=\"$PHP_SELF?action=protectpage&title=$this->url\">Protect this page</a>\n" ;
+		if ( $this->canAdvance() ) $column .= "<br><a href=\"$PHP_SELF?title=special:Advance&topic=$this->safeTitle\">Advance</a>\n" ;
+		if ( !$this->isSpecialPage ) $column .= "<br><a href=\"$PHP_SELF?action=history&title=$this->url\">History</a>\n" ;
+		$column .= "<br><a href=\"$PHP_SELF?title=special:Upload\">Upload files</a>\n" ;
+		$column .= "<hr>" ;
+		$column .= "<a href=\"$PHP_SELF?title=special:Statistics\">Statistics</a>" ;
+		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:LonelyPages\">Lonely pages</a>" ;
+		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:WantedPages\">Most wanted</a>" ;
+		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:AllPages\">All pages</a>" ;
+		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:RandomPage\">Random Page</a>" ;
+		if ( $user->isLoggedIn ) {
+			$column .= "<br>\n<a href=\"$PHP_SELF?title=special:WatchList\">My watchlist</a>" ;
+			}
+		return $column."</nowiki>" ;
+		}
 	function getMiddle ( $ret ) {
 		global $user , $action ;
 		$oaction = $action ;
 		if ( $action == "edit" ) $action = "" ;
 		if ( $user->options["quickBar"] == "right" or $user->options["quickBar"] == "left" or $user->options["forceQuickBar"] != "" ) {
-			$column .= "<a href=\"$PHP_SELF?title=HomePage\">HomePage</a>\n" ;
-			$column .= "<br><a href=\"$PHP_SELF?title=special:RecentChanges\">Recent Changes</a>\n" ;
-			if ( $this->canEdit() ) $column .= "<br><a href=\"$PHP_SELF?action=edit&title=$this->url\">Edit this page</a>\n" ;
-			if ( $this->canDelete() ) $column .= "<br><a href=\"$PHP_SELF?action=deletepage&title=$this->url\">Delete this page</a>\n" ;
-			if ( $this->canProtect() ) $column .= "<br><a href=\"$PHP_SELF?action=protectpage&title=$this->url\">Protect this page</a>\n" ;
-			if ( $this->canAdvance() ) $column .= "<br><a href=\"$PHP_SELF?title=special:Advance&topic=$this->safeTitle\">Advance</a>\n" ;
-			if ( !$this->isSpecialPage ) $column .= "<br><a href=\"$PHP_SELF?action=history&title=$this->url\">History</a>\n" ;
-			$column .= "<br><a href=\"$PHP_SELF?title=special:Upload\">Upload files</a>\n" ;
-			$column .= "<hr>" ;
-			$column .= "<a href=\"$PHP_SELF?title=special:Statistics\">Statistics</a>" ;
-			$column .= "<br>\n<a href=\"$PHP_SELF?title=special:LonelyPages\">Lonely pages</a>" ;
-			$column .= "<br>\n<a href=\"$PHP_SELF?title=special:WantedPages\">Most wanted</a>" ;
-			$column .= "<br>\n<a href=\"$PHP_SELF?title=special:AllPages\">All pages</a>" ;
-			$column .= "<br>\n<a href=\"$PHP_SELF?title=special:RandomPage\">Random Page</a>" ;
-			if ( $user->isLoggedIn ) {
-				$column .= "<br>\n<a href=\"$PHP_SELF?title=special:WatchList\">My watchlist</a>" ;
-				}
-
+			$column = $this->getQuickBar();
 			$spl = $this->getSubpageList () ;
 			if ( count ( $spl ) > 0 ) $column .= "<font size=-1>".$this->parseContents ( "<hr>".implode ( "<br>\n" , $spl ) )."</font>" ;
 

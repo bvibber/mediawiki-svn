@@ -46,6 +46,7 @@ class WikiTitle {
 		$s .= ucfirst ( trim ( $this->mainTitle ) ) ;
 		if ( trim ( $this->subpageTitle ) != "" ) $s .= "/".trim($this->subpageTitle) ;
 		$s = str_replace ( "\"" , "_" , $s ) ;
+		$s = str_replace ( "\\'" , "'" , $s ) ;
 
 		# Make it compatible with old wiki
 		$s = str_replace ( "'" , "" , $s ) ;
@@ -59,6 +60,8 @@ class WikiTitle {
 	function getNiceTitle ( $s  ) {
 		if ( !isset ( $s ) ) $s = $this->secureTitle ;
 		$s = str_replace ( "_" , " " , $s ) ;
+		$s = str_replace ( "\\'" , "'" , $s ) ;
+		$s = str_replace ( "\\\"" , "\"" , $s ) ;
 		return ucfirst ( $s ) ;
 		}
 	function splitTitle () {
