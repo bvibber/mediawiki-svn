@@ -140,9 +140,7 @@ class MovePageForm {
 			$this->moveToNewTitle();
 		}
 
-		if( $this->ot->userIsWatching() ) {
-			$wgUser->addWatch( $this->nt );
-		}
+		$this->updateWatchlists();
 
 		# Move talk page if (1) the checkbox says to, (2) the source
 		# and target namespaces are identical, (3) the namespaces are not
@@ -389,5 +387,29 @@ class MovePageForm {
 		$sql = "UPDATE imagelinks SET il_from='{$this->nft}' WHERE il_from='{$this->oft}'";
 		wfQuery( $sql, $fname );
 	}
+
+	function updateWatchlists()
+	{
+		$oldnamespace = $this->ons & ~1;
+		$newnamespace = $this->nns & ~1;
+		$oldtitle = $this->odt;
+		$newtitle = $this->ndt;
+
+		if( $oldnamespace == $newnamespace and $oldtitle == $newtitle )
+			return;
+
+		$sql = "SELECT wl_user FROM watchlist
+			WHERE wl_namespace={$oldnamespace} AND wl_title='{$oldtitle}'";
+		$res = wfQuery( $sql, $fname );
+		if( $s = wfFetchObject( $res ) ) {
+			$sql = "REPLACE INTO watchlist (wl_user,wl_namespace,wl_title)
+				VALUES ({$s->wl_user},{$newnamespace},'{$newtitle}')";
+			while( $s = wfFetchObject( $res ) ) {
+				$sql .= ",({$s->wl_user},{$newnamespace},'{$newtitle}')";
+			}
+			wfQuery( $sql, $fname );
+		}
+	}
+
 }
 ?>
