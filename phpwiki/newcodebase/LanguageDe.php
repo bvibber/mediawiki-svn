@@ -6,7 +6,7 @@
 	0	=> "",
 	1	=> "Diskussion",
 	2	=> "Benutzer",
-	3	=> "Benutzer_Discussion",
+	3	=> "Benutzer_Diskussion",
 	4	=> "Wikipedia",
 	5	=> "Wikipedia_Diskussion",
 	6	=> "Bild",
@@ -124,6 +124,7 @@
 "qbpageinfo"	=> "Seitendaten",
 "qbmyoptions"	=> "Einstellungen",
 "mypage"		=> "Meine Seite",
+"mytalk"		=> "Meine Diskussion",
 "currentevents" => "Aktuelles",
 "errorpagetitle" => "Fehler",
 "returnto"		=> "Zurück zu $1.",
@@ -191,7 +192,7 @@ MySQL meldete den Fehler \"<tt>$3: $4</tt>\".",
 # Login and logout pages
 #
 "logouttitle"	=> "Benutzer-Abmeldung",
-"logouttext"	=> "Sie sind nun abgemldet.
+"logouttext"	=> "Sie sind nun abgemeldet.
 Sie können Wikipedia jetzt anonym weiterbenutzen, oder sich under dem selben oder einem anderen Benutzernamen wieder anmelden.\n",
 
 "welcomecreation" => "<h2>Willkommen, $1!</h2><p>Ihr Benutzerkonto wurde eingerichtet.
@@ -202,7 +203,7 @@ Vergessen Sie nicht, Ihre Wikipedia-Einstellungen anzupassen.",
 "yourpassword"	=> "Ihr Passwort",
 "yourpasswordagain" => "Passwort wiederholen",
 "newusersonly"	=> " (nur für neue Mitglieder)",
-"remembermypassword" => "Mein Passwort marken.",
+"remembermypassword" => "Mein Passwort merken.",
 "loginproblem"	=> "<b>Es gab ein Problem mit Ihrer Anmeldung.</b><br>Bitte versuchen Sie es nochmal!",
 "alreadyloggedin" => "<font color=red><b>Benutzer $1, Sie sind bereits angemeldet!</b></font><br>\n",
 
@@ -325,9 +326,9 @@ Erfolglose Suchanfragen werden häufig verursacht durch den Versuch, nach 'gewöhn
 # Preferences page
 #
 "preferences"	=> "Einstellungen",
-"prefsnologin" => "Niche angemeldet",
+"prefsnologin" => "Nicht angemeldet",
 "prefsnologintext"	=> "Sie müssen <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">angemeldet</a>
+  wfLocalUrl( "Spezial:Userlogin" ) . "\">angemeldet</a>
 sein, um Ihre Einstellungen zu ändern.",
 "prefsreset"	=> "Einstellungen wuden auf Standard zurückgesetzt.",
 "qbsettings"	=> "Seitenleiste", 
@@ -350,13 +351,14 @@ sein, um Ihre Einstellungen zu ändern.",
 "timezonetext"	=> "Geben Sie die Anzahl der Stunden ein, die zwischen Ihrer Zeitzone und U.S.-Westküstenzeit liegen. Für Deutschland \"9\" eintragen.",
 "localtime"	=> "Ortszeit",
 "timezoneoffset" => "Unterschied",
+"emailflag"		=> "Keine E-mail von anderen Benutzern erhalten",
 
 # Recent changes
 #
 "recentchanges" => "Letzte Änderungen",
 "recentchangestext" => "
 Diese Seite wird beim Laden automatisch aktualisiert. Angezeigt werden Seiten, die zuletzt bearbeitet bzw. geändert wurden, sowie die Zeit und der Name des Autors.<br>
-Falls Sie neu bei Wikipedia sind, lesen Sie bitte die [[Wikipedia:Willkommen|Willkommensseite der Wikipedia]] an. Dort bekommen Sie eine erste Einführung.<br>
+Falls Sie neu bei Wikipedia sind, lesen Sie bitte die [[Wikipedia:Willkommen|Willkommensseite der Wikipedia]]. Dort bekommen Sie eine erste Einführung.<br>
 Wenn Sie möchten, dass Wikipedia zu einem Erfolg wird, dann fügen Sie bitte keine Texte hinzu, die dem Urheberrecht anderer unterliegen. Dies könnte dem Projekt sonst schweren Schaden zufügen.",
 "rcloaderr"		=> "Lade Letzte Änderungen",
 "rcnote"		=> "Hier sind die letzten <b>$1</b> Änderungen der letzten <b>$2</b> Tage.",
@@ -371,11 +373,15 @@ Wenn Sie möchten, dass Wikipedia zu einem Erfolg wird, dann fügen Sie bitte kein
 "uploadlink"		=> "Bilder hochladen",
 "reupload"		=> "Erneut hochladen",
 "reuploaddesc"	=> "Zurück zur Hochladen-Seite.",
+"uploadnologin" => "Nicht angemeldet",
+"uploadnologintext"	=> "Sie müssen <a href=\"" .
+  wfLocalUrl( "Spezial:Userlogin" ) . "\">angemeldet sein</a>
+um Dateinen hochladen zu können.",
 "uploadfile"	=> "Datei hochladen",
 "uploaderror"	=> "Fehler beim Hochladen",
 "uploadtext"	=> "
 Um hochgeladene Bilder zu suchen und anzusehen,
-gehen Sie zu der <a href=\"" . wfLocalUrl( "Special:Imagelist" ) .
+gehen Sie zu der <a href=\"" . wfLocalUrl( "Spezial:Imagelist" ) .
 "\">Liste hochgeladener Bilder</a>.
 <p>Benutzen Sie das Formular, um neue Bilder hochzuladen und
 sie in Artikeln zu verwenden.
@@ -383,7 +389,7 @@ In den meisten Browsern werden Sie ein \"Durchsuchen\"-Feld sehen,
 das einen Standard-Dateidialog öffnet.
 Suchen Sie sich eine Datei aus. Die Datei wird dann im Textfeld angezeigt.
 Bestätigen Sie dann die Copyright-Vereinbarung.
-Schliesslich drücken Sie den \"Hochladen\"-Knopf.
+Schließlich drücken Sie den \"Hochladen\"-Knopf.
 Dies kann eine Weile dauern, besonders bei einer langsamen Internet-Verbindung.
 <p>Für Photos wird das JPEG-Format, für Zeichnungen und Symbole das PNG-Format bevorzugt.
 Um ein Bild in einem Artikel zu verwenden, schreiben Sie an Stelle des Bildes
@@ -476,6 +482,27 @@ Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
 "debug"			=> "Debug",
 "newpages"		=> "Neue Artikel",
 "movethispage"	=> "Artikel verschieben",
+"unusedimagestext" => "<p>Bitte beachten Sie, dass andere Wikipedias, die noch die alte Software verwenden, möglicherweise einige dieser Bilder benutzen.",
+
+# Email this user
+#
+"mailnologin"	=> "Sie sind nicht angemeldet.",
+"mailnologintext" => "Sie müssen <a href=\"" .
+  wfLocalUrl( "Spezial:Userlogin" ) . "\">angemeldet sein</a>
+und eine gültige E-mail-Addresse haben, um anderen Benutzern E-mail zu schicken.",
+"emailuser"		=> "E-mail an diesen Benutzer",
+"emailpage"		=> "E-mail an Benutzer",
+"emailpagetext"	=> "Wenn dieser Benutzer eine gültige E-mail-Addresse angegeben hat, können Sie ihm mit dem untenstehenden Formular eine E-mail senden. Als Absender wird die E-Mail-Addresse aus Ihren Einstellungen eingetragen, damit der Benutzer Ihnen antworten kann.",
+"noemailtitle"	=> "Keine E-mail-Addresse",
+"noemailtext"	=> "Dieser Benutzer hat keine gültige E-Mail-Addresse angegeben, oder möchte keine E-Mail von anderen Benutzern empfangen.",
+"emailfrom"		=> "Von",
+"emailto"		=> "An",
+"emailsubject"	=> "Betreff",
+"emailmessage"	=> "Nachricht",
+"emailsend"		=> "Senden",
+"emailsent"		=> "E-mail verschickt",
+"emailsenttext" => "Ihre E-Mail wurde verschickt.",
+
 
 # Watchlist
 #
@@ -484,7 +511,7 @@ Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
 "nowatchlist"	=> "Sie haben keine Einträge auf Ihrer Watchlist.",
 "watchnologin"	=> "Sie sind nicht angemeldet",
 "watchnologintext"	=> "Sie müssen <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">angemeldet</a>
+  wfLocalUrl( "Spezial:Userlogin" ) . "\">angemeldet</a>
 sein, um Ihre Watchlist zu bearbeiten.",
 "addedwatch"	=> "Zur Watchlist hinzugefügt",
 "addedwatchtext" => "Der Artikel \"$1\" wurde zu Ihrer Watchlist hinzugefügt.",
@@ -548,7 +575,7 @@ Bitte tragen Sie den Grund für die Blockade ein.",
 "noblockreason" => "Sie müssen einen Grung für die Blockade angeben.",
 "blockipsuccesssub" => "Blockade erfolgreich",
 "blockipsuccesstext" => "Die IP-Addresse \"$1\" wurde blockiert.
-<br>Auf [[Special:Ipblocklist|IP block list]] ist eine Liste der Blockaden.",
+<br>Auf [[Spezial:Ipblocklist|IP block list]] ist eine Liste der Blockaden.",
 "unblockip"		=> "IP-Addresse freigeben",
 "unblockiptext"	=> "Benutzen Sie das Formular, um eine blockierte IP-Addresse freizugeben.",
 "ipusubmit"		=> "Diese Addresse freigeben",
@@ -591,7 +618,7 @@ Bitte diese Funktion vorsichtig benutzen!",
 #
 "movepage"		=> "Artikel verschieben",
 "movepagetext"	=> "Mit diesem Formular können Sie einen Artikel umbenennen, mitsamt allen Revisionen. Der alte Titel wird zum neuen weiterleiten. Verweise auf den alten Titel werden nicht geändert, und die Diskussionsseite wird auch nicht mitverschoben.",
-"movearticle"	=> "Artikel verschiben",
+"movearticle"	=> "Artikel verschieben",
 "newtitle"		=> "Zu neuem Titel",
 "movepagebtn"	=> "Artikel verschieben",
 "pagemovedsub"	=> "Verschiebung erfolgreich",
@@ -599,6 +626,9 @@ Bitte diese Funktion vorsichtig benutzen!",
 "articleexists" => "Unter diesem Namen existiert bereits ein Artikel.
 Bitte wählen Sie einen anderen Namen.",
 "movedto"		=> " verschoben nach",
+"movetalk"		=> "Die \"Diskussions\"-Seite mitverschieben, wenn möglich.",
+"talkpagemoved" => "Die \"Diskussions\"-Seite wurde ebenfalls verschoben.",
+"talkpagenotmoved" => "Die \"Diskussions\"-Seite wurde <strong>nicht</strong> verschoben.",
 
 );
 
