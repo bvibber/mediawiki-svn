@@ -138,6 +138,7 @@ function convertCurTable()
 		$cr = wfStrencode( $row->cur_restrictions );
 		$cit = wfStrencode( $row->cur_ind_title );
 		$cut = wfStrencode( $row->cur_user_text );
+		if ( "" == $cut ) { $cut = "Unknown"; }
 
 		$counter = $row->cur_counter;
 		if ( ! $counter ) { $counter = 0; }
@@ -213,6 +214,7 @@ function convertOldTable()
 		$text = wfStrencode( $row->old_text );
 		$com = wfStrencode( $row->old_comment );
 		$ot = wfStrencode( $row->old_user_text );
+		if ( "" == $ot ) { $ot = "Unknown"; }
 
 		$sql .= "({$row->old_id},$namespace,'$title','$text'," .
 		  "'$com',{$row->old_user}," .

@@ -23,7 +23,7 @@ function wfSpecialPreferences()
 {
 	global $wgUser, $wgLang, $wgDeferredUpdateList;
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
-	global $wpSkin, $wpEmail, $wpSearch, $wpRecent;
+	global $wpSkin, $wpEmail, $wpNick, $wpSearch, $wpRecent;
 	global $wpRows, $wpCols, $HTTP_POST_VARS;
 
 	if ( "" != $wpNewpass ) {
@@ -38,6 +38,7 @@ function wfSpecialPreferences()
 		$wgUser->setPassword( $wgNewpass );
 	}
 	$wgUser->setEmail( $wpEmail );
+	$wgUser->setOption( "nickname", $wpNick );
 	$wgUser->setOption( "quickbar", $wpQuickbar );
 	$wgUser->setOption( "skin", $wpSkin );
 	$wgUser->setOption( "searchlimit", $wpSearch );
@@ -59,11 +60,12 @@ function wfSpecialPreferences()
 {
 	global $wgUser, $wgLang;
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
-	global $wpRows, $wpCols, $wpSkin, $wpEmail;
+	global $wpRows, $wpCols, $wpSkin, $wpEmail, $wpNick;
 	global $wpSearch, $wpRecent, $HTTP_POST_VARS;
 
 	$wpOldpass = $wpNewpass = $wpRetype = "";
 	$wpEmail = $wgUser->getEmail();
+	$wpNick = $wgUser->getOption( "nickname" );
 
 	$wpQuickbar = $wgUser->getOption( "quickbar" );
 	$wpSkin = $wgUser->getOption( "skin" );
@@ -82,7 +84,7 @@ function wfSpecialPreferences()
 {
 	global $wgUser, $wgOut, $wgLang;
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
-	global $wpSkin, $wpEmail, $wpSearch, $wpRecent;
+	global $wpSkin, $wpEmail, $wpNick, $wpSearch, $wpRecent;
 	global $wpRows, $wpCols, $wpSaveprefs, $wpReset;
 
 	$wgOut->setPageTitle( wfMsg( "preferences" ) );
@@ -115,6 +117,7 @@ function wfSpecialPreferences()
 	$tbr = wfMsg( "rows" );
 	$tbc = wfMsg( "columns" );
 	$yem = wfMsg( "youremail" );
+	$ynn = wfMsg( "yournick" );
 	$rpp = wfMsg( "resultsperpage" );
 	$rcc = wfMsg( "recentchangescount" );
 
@@ -173,6 +176,7 @@ $tbc: <input type=text name=\"wpCols\" value=\"$wpCols\" size=6>
 	#
 	$wgOut->addHTML( "<td valign=top nowrap>
 $yem: <input type=text name=\"wpEmail\" value=\"$wpEmail\" size=20><br>
+$ynn: <input type=text name=\"wpNick\" value=\"$wpNick\" size=12><br>
 $rpp: <input type=text name=\"wpSearch\" value=\"$wpSearch\" size=6><br>
 $rcc: <input type=text name=\"wpRecent\" value=\"$wpRecent\" size=6></td>
 </tr><tr>

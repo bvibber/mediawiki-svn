@@ -29,6 +29,14 @@ $wgTotalEdits = -1;
 include_once( "DatabaseFunctions.php" );
 include_once( "UpdateClasses.php" );
 
+# PHP 4.06 workaround
+#
+if ( phpversion() < "4.1" ) {
+	function array_key_exists( $k, $a ) {
+		return key_exists( $k, $a );
+	}
+}
+
 function wfLocalLink( $a )
 {
 	global $wgArticlePath;
