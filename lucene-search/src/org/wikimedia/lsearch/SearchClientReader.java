@@ -101,9 +101,10 @@ public class SearchClientReader extends Thread {
 	        int i = 0;
 	        while (i < numhits) {
 	        	Document doc = hits.doc(i);
+	        	float score = hits.score(i);
 	        	String namespace = doc.get("namespace");
 	        	String title = doc.get("title");
-	        	ostrm.write(namespace + " " + title + "\n");
+	        	ostrm.write(score + " " + namespace + " " + title + "\n");
 	        	++i;
 	        }
 	        ostrm.flush();
