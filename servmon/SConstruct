@@ -23,6 +23,6 @@ env = Environment(CPPFLAGS = cppflags + ' -DPFX="\\"' + prefix + '\\""',
 		CXX = cxx,
 		CPPPATH = 'include')
 
-env.Program ('servmon', srcs, LIBS = ['pthread', 'boost_thread', 'netsnmp', 'ssl'])
+env.Program ('servmon', srcs, LIBS = ['pthread', 'boost_thread', 'netsnmp', 'ssl', 'mysqlclient'], LIBPATH = '/usr/lib/mysql')
 env.Program ('initconf', ['initconf.cxx', 'smcfg.cxx', 'smauth.cxx'], LIBS = ['pthread', 'boost_thread'])
 env.Alias('install', prefix)

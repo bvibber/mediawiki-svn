@@ -256,4 +256,28 @@ HDL(cfg_monit_server_type) {
 	}
 };
 		
-		
+HDL(cfg_monit_server_mysql_master) {
+	EX {
+		try {
+			std::string curmaster = SMI(smcfg::cfg)->fetchstr("/monit/mysql/master");
+			cd.inform("Removing MySQL master status from " + curmaster);
+		} catch (smcfg::nokey&) {}
+		SMI(smcfg::cfg)->storestr("/monit/mysql/master", cd.p(0));
+		return true;
+	}
+};
+
+HDL(cfg_monit_mysql_username) {
+	EX {
+		SMI(smcfg::cfg)->storestr("/monit/mysql/username", cd.p(0));
+		return true;
+	}
+};
+
+HDL(cfg_monit_mysql_password) {
+	EX {
+		SMI(smcfg::cfg)->storestr("/monit/mysql/password", cd.p(0));
+		return true;
+	}
+};
+

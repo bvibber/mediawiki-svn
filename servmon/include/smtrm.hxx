@@ -152,6 +152,7 @@ template<class tt>
 struct tmcmds : public smutl::singleton<tmcmds<tt> > {
 #include "../smstdrt.cxx"
 	tmcmds() {
+/* standard mode commands */
 stdrt.install("show version", cmd_show_version(), "Show software version");
 stdrt.install("exit", cmd_exit(), "End session");
 stdrt.install("show irc server %s", cfg_irc_showserver(), "Describe a configured server");
@@ -161,14 +162,20 @@ stdrt.install("show monitor server", cfg_monit_showservers(), "Show monitored se
 stdrt.install("show monitor server %s", cfg_monit_showservers(), "Show information for a particular server");
 eblrt = stdrt;
 stdrt.install("enable", cmd_enable(), "Enter privileged mode");
+
+/* 'enable' mode commands */
 eblrt.install("disable", chg_parser(stdrt, "%s> "), "Return to non-privileged mode");
 eblrt.install("configure", chg_parser(cfgrt, "%s(conf)# "), "Configure servmon");
+
+/* 'configure' mode commands */
 cfgrt.install("exit", chg_parser(eblrt, "%s# "), "Exit configure mode");
 cfgrt.install("enable password", cfg_eblpass(), "Change enable password");
 cfgrt.install("function irc", chg_parser(ircrt, "%s(conf-irc)# "), "Configure Internet Relay Chat connections");
 cfgrt.install("function monitor", chg_parser(monrt, "%s(conf-monit)# "), "Configure server monitoring");
 cfgrt.install("user %s password", cfg_userpass(), "Create a new account");
 cfgrt.install("no user %s", cfg_no_user(), "Remove a user account");
+
+/* 'function irc' mode commands */
 ircrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit IRC configuration mode");
 ircrt.install("server %s primary-nickname %s", cfg_irc_servnick(), "Set primary nickname for IRC server");
 ircrt.install("server %s secondary-nickname %s", cfg_irc_servsecnick(),	"Set secondary nickname for IRC server");
@@ -180,7 +187,13 @@ ircrt.install("no server %s enable", cfg_irc_noenableserver(), "Disable a server
 ircrt.install("server %s enable", cfg_irc_enableserver(), "Enable connection to a server");
 ircrt.install("channel %s", cfg_irc_channel(), "Specify a channel to join");
 ircrt.install("no channel %s", cfg_irc_nochannel(), "Remove a channel");
+
+/* 'function monitor' mode commands */
 monrt.install("server %s type %s", cfg_monit_server_type(), "Monitor a server");
+monrt.install("server %s mysql-master", cfg_monit_server_mysql_master(), "Set server as MySQL master");
+monrt.install("mysql username %s", cfg_monit_mysql_username(), "Set MySQL username");
+monrt.install("mysql password %s", cfg_monit_mysql_password(), "Set MySQL password");
+
 monrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit monitor configuration mode");
 	}
 	handler_node<tt> stdrt;

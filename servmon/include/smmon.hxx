@@ -22,6 +22,9 @@ private:
 	uint32_t v;
 	std::time_t l;
 };
+
+class mysqlclient;
+typedef b::shared_ptr<mysqlclient> mysqlclientp;
 	
 class cfg : public smutl::singleton<cfg> {
 public:
@@ -50,7 +53,7 @@ public:
 		uint32_t rpsv, hpsv;
 	};
 	struct mysqlserver : public server {
-		mysqlserver(str name) : server(name), qps(0) {}
+		mysqlserver(str name) : server(name), qpsv(0) {}
 		std::string type(void) const { return "MySQL"; }
 		std::string fmt4irc(void) const;
 		void check();
@@ -77,6 +80,7 @@ public:
 private:
 	server* server_fortype(str type, str name);
 	std::map<std::string, serverp> serverlist;
+	mysqlclientp sqlp;
 };
 	
 } // namespace smmon

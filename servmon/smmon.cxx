@@ -10,6 +10,8 @@
 #include <net-snmp/net-snmp-config.h>
 #include <net-snmp/net-snmp-includes.h>
 
+#include <mysql/mysql.h>
+
 namespace smmon {
 
 class snmpclient {
@@ -64,7 +66,7 @@ public:
 				std::cerr << "result type str: " << s << "\n";
 			} else if (vars->type == 0x41) { /* Counter32 */
 				uint32_t i = 0;
-				memcpy(&i, vars->val.bitstring, vars->val_len);
+				memcpy(&i, vars->val.bitstring, std::max(std::size_t(4), vars->val_len));
 				res = i;
 				std::cerr << "result type counter32: " << i << "\n";
 			} else if (vars->type == ASN_INTEGER) {
@@ -87,7 +89,79 @@ private:
 	std::string hostport;
 };
 
+struct mysqlerr : public std::runtime_error {
+	mysqlerr(str s) : std::runtime_error(s) {}
+};
+	
+class mysqlclient {
+public:
+	mysqlclient(str host_, int port_ = 0)
+	: host(host_)
+	, port(port_)
+	, connected(false)
+	{}
+	void connect(void) {
+		mysql_init(&connection);
+		mysql_options(&connection, MYSQL_READ_DEFAULT_GROUP, "servmon");
+		unsigned int tm = 5;
+		mysql_options(&connection, MYSQL_OPT_CONNECT_TIMEOUT, reinterpret_cast<char const *>(&tm));
+		std::string user, pass;
+		try {
+			user = SMI(smcfg::cfg)->fetchstr("/monit/mysql/username");
+			pass = SMI(smcfg::cfg)->fetchstr("/monit/mysql/password");
+		} catch (smcfg::nokey&) {
+			throw mysqlerr("username/password not specified");
+		}
+		if (!mysql_real_connect(&connection, host.c_str(), user.c_str(), pass.c_str(),
+					NULL, port, NULL, 0)) {
+			throw mysqlerr(mysql_error(&connection));
+		}
+		connected = true;
+	}
+	typedef std::map<std::string, std::string> row;
+	typedef std::vector<row> resultset;
+	resultset query(str query) {
+		if (!connected) connect();
+		int ret = mysql_real_query(&connection, query.c_str(), query.size());
+		if (ret) throw mysqlerr(mysql_error(&connection));
+		MYSQL_RES *res = mysql_store_result(&connection);
+		MYSQL_ROW mr;
+		MYSQL_FIELD *fields = mysql_fetch_fields(res);
+		resultset resset;
+		int numrows = mysql_num_fields(res);
+		while (mr = mysql_fetch_row(res)) {
+			row r;
+			unsigned long *lengths = mysql_fetch_lengths(res);
+			for (int i = 0; i < numrows; ++i) {
+				std::string cname = fields[i].name;
+				std::string data;
+				if (mr[i])
+					data.assign(mr[i], mr[i] + lengths[i]);
+				r[cname] = data;
+			}
+			resset.push_back(r);
+		}
+				
+		mysql_free_result(res);
+		return resset;
+	}
+	static mysqlclientp forhost(str host) {
+		std::map<std::string, mysqlclientp>::iterator it = clients.find(host);
+		if (it != clients.end()) return it->second;
+		return clients[host] = mysqlclientp(new mysqlclient(host));
+	}
+private:
+	static std::map<std::string, mysqlclientp> clients;
+	bool connected;
+	
+	std::string host;
+	int port;
+	MYSQL connection;
+};
+std::map<std::string, mysqlclientp> mysqlclient::clients;
+	
 xomitr::xomitr() : v(0), l(0) {}
+	
 uint32_t
 xomitr::val(uint32_t newval)
 {
@@ -161,6 +235,14 @@ cfg::checker::start(void)
 			squidperc = (float(squidhits)/squidreqs)*100;
 		else squidperc = 0;
 		rep += b::io::str(b::format("\002total:\002 \00311%d\003/\00303%d\003/\0036%.02f%%\003") % squidreqs % squidhits % squidperc);
+
+		/* mysql */
+		for(std::map<std::string, serverp>::const_iterator
+			    it = serverlist.begin(), end = serverlist.end(); it != end; ++it) {
+			if (it->second->type() != "MySQL") continue;
+			b::shared_ptr<mysqlserver> s = b::dynamic_pointer_cast<mysqlserver>(it->second);
+			rep += " \002" + it->first + "\002: " + s->fmt4irc();
+		}
 		SMI(smirc::cfg)->conn()->msg(rep);
 	}
 }
@@ -181,6 +263,39 @@ cfg::squidserver::check(void) {
 	hpsv = hps.val(hits);
 }
 
+void
+cfg::mysqlserver::check(void)
+{
+	std::cerr << "mysql: checking " << name << "\n";
+	mysqlclientp client = mysqlclient::forhost(name);
+	uint32_t queries;
+	try {
+		mysqlclient::resultset res = client->query("SHOW STATUS LIKE 'QUESTIONS'");
+		if (res.size() < 1) {
+			std::cerr << "oh no, didn't get a result\n";
+			queries = 0;
+		} else {
+			try {
+				std::cerr << "value: [" << res[0]["Value"] << "]\n";
+				queries = b::lexical_cast<uint32_t>(res[0]["Value"]);
+			} catch (b::bad_lexical_cast&) {
+				std::cerr << "cast failed...\n";
+				queries = 0;
+			}
+		}
+	} catch (mysqlerr& e) {
+		std::cerr << "mysql err: " << e.what() << "\n";
+	}
+	qpsv = qps.val(queries);
+}
+
+std::string
+cfg::mysqlserver::fmt4irc(void) const
+{
+	std::string rep = b::io::str(b::format("\00311%d\003") % qpsv);
+	return rep;
+}
+	
 std::string
 cfg::squidserver::fmt4irc(void) const
 {
@@ -195,7 +310,7 @@ cfg::squidserver::fmt4irc(void) const
 bool
 cfg::knowntype(str type)
 {
-	return type == "squid";
+	return type == "squid" || type == "mysql";
 }
 
 bool
@@ -223,6 +338,7 @@ cfg::server*
 cfg::server_fortype(str type, str name)
 {
 	if (type == "squid") return new squidserver(name);
+	if (type == "mysql") return new mysqlserver(name);
 	throw notype();
 }
 	
