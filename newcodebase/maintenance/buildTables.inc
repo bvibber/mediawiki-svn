@@ -317,11 +317,25 @@ function initializeTables()
 	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text) " .
 	  "VALUES (0,'{$mp}','Put main page text here.')";
 	wfQuery( $sql );
-
+/*
 	$sql = "INSERT INTO random(ra_current,ra_title) SELECT 1, cur_title " .
 	  "FROM cur WHERE cur_namespace=0 AND cur_is_redirect=0 " .
 	  "ORDER BY RAND() LIMIT 1000";
 	wfQuery( $sql );
+*/
+}
+
+function cleanDatabase()
+{
+	$tables = array( "archive", "brokenlinks", "cur", "image",
+		"imagelinks", "ipblocks", "links", "math", "old", "oldimage",
+		"recentchanges", "searchindex", "site_stats", "user",
+		"user_newtalk", "watchlist" );
+
+	foreach ($tables AS $t) {
+		$sql = "DELETE FROM {$t}";
+		wfQuery( $sql );
+	}
 }
 
 ?>
