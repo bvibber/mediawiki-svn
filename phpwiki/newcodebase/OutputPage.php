@@ -753,10 +753,12 @@ class OutputPage {
 		$text = str_replace( "{{CURRENTMONTHNAME}}", $v, $text );
 		$v = date( "j" );
 		$text = str_replace( "{{CURRENTDAY}}", $v, $text );
-		$v = date( "l" );
+		$v = $wgLang->getWeekdayName( date( "w" )+1 );
 		$text = str_replace( "{{CURRENTDAYNAME}}", $v, $text );
 		$v = date( "Y" );
 		$text = str_replace( "{{CURRENTYEAR}}", $v, $text );
+		$v = $wgLang->time( date( "YmdHis" ), false );
+        $text = str_replace( "{{CURRENTTIME}}", $v, $text );
 
 		if ( false !== strstr( $text, "{{NUMBEROFARTICLES}}" ) ) {
 			$v = wfNumberOfArticles();
