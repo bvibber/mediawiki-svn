@@ -332,9 +332,11 @@ void TDatabaseSqlite::getRandomArticle ( TArticle &art )
 
 bool TDatabaseSqlite::doesArticleExist ( TTitle &t )
     {
+    int nsid = t.getNamespaceID() ;
+    if ( nsid == -1 ) return true ;
     string sql ;
     sql = "SELECT cur_title FROM cur WHERE cur_namespace=" ;
-    sql += TUCS::fromint ( t.getNamespaceID() ) . getstring() ;
+    sql += TUCS::fromint ( nsid ) . getstring() ;
     sql += " AND cur_title ='" ;
     sql += t.getDBkey().getstring() ;
     sql += "' LIMIT 1" ;

@@ -59,9 +59,18 @@ TUCS TTitle::getNamespace ()
     
 int TTitle::getNamespaceID ()
     {
-    TUCS special = LNG("NamespaceNames:-1") ;
     if ( ns == "" ) return 0 ;
+
+    TUCS special = LNG("NamespaceNames:-1") ;
     if ( ns == special ) return -1 ;
+    char b[100] ;
+    strcpy ( b , "NamespaceNames:0" ) ;
+    for ( uint a = 1 ; a <= 7 ; a++ )
+        {
+        b[15] = '0' + a ;
+        TUCS c = LNG(b) ;
+        if ( ns == c ) return a ;
+        }
     return 0 ; // DUMMY
     }
     

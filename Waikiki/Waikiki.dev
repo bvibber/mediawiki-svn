@@ -1,7 +1,7 @@
 [Project]
 FileName=Waikiki.dev
 Name=Projekt1
-UnitCount=24
+UnitCount=27
 Type=1
 Ver=1
 ObjFiles=
@@ -20,7 +20,7 @@ ObjectOutput=
 OverrideOutput=0
 OverrideOutputName=Waikiki.exe
 HostApplication=
-Folders=
+Folders=Languages,"Third party"
 CommandLine=
 IncludeVersionInfo=0
 SupportXPThemes=0
@@ -98,7 +98,7 @@ BuildCmd=
 [Unit7]
 FileName=TOutput.cpp
 CompileCpp=1
-Folder=Projekt1
+Folder=
 Compile=1
 Link=1
 Priority=1000
@@ -148,7 +148,7 @@ BuildCmd=
 [Unit12]
 FileName=main.h
 CompileCpp=1
-Folder=Projekt1
+Folder=
 Compile=1
 Link=1
 Priority=1000
@@ -278,7 +278,37 @@ BuildCmd=
 [Unit24]
 FileName=LanguageEN.cpp
 CompileCpp=1
-Folder=Projekt1
+Folder=Languages
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit25]
+FileName=md5.c
+CompileCpp=1
+Folder=Third party
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit26]
+FileName=md5.h
+CompileCpp=1
+Folder=Third party
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit27]
+FileName=md5_loc.h
+CompileCpp=1
+Folder=Third party
 Compile=1
 Link=1
 Priority=1000

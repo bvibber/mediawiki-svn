@@ -252,6 +252,22 @@ void TParser::remove_evil_HTML ( TUCS &s )
     {
     }
     
+void TParser::replace_variables ( TUCS &s )
+    {
+    time_t rawtime;
+    struct tm * timeinfo;
+
+    time ( &rawtime );
+    timeinfo = localtime ( &rawtime );    
+    
+    TUCS currentday = TUCS::fromint ( timeinfo->tm_mday ) ;
+    TUCS currentmonthname = TUCS::fromint ( timeinfo->tm_mon ) ;
+    currentmonthname = LANG->getTranslation ( "MonthNames:" + currentmonthname ) ;
+
+    s.replace ( "{{CURRENTDAY}}" , currentday ) ;
+    s.replace ( "{{CURRENTMONTHNAME}}" , currentmonthname ) ;
+    }
+    
 void TParser::store_nowiki ( TUCS &s )
     {
     int a ;
@@ -306,6 +322,7 @@ TUCS TParser::parse ( TUCS &source )
     if ( source.replace ( "__NOTOC__" , "" ) > 0 ) notoc = true ;
     else notoc = false ;
     remove_evil_HTML ( source ) ;
+    replace_variables ( source ) ;
     source.explode ( "\n" , vs ) ;
     FOREACH ( vs , a )
         parse_line ( vs[a] ) ;

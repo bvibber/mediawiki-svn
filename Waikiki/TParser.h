@@ -2,6 +2,7 @@
 #define _TPARSER_H_
 
 #include "main.h"
+#include <time.h>
 
 using namespace std ;
 
@@ -24,6 +25,7 @@ class TParser
     virtual void remove_evil_HTML ( TUCS &s ) ;
     virtual void store_nowiki ( TUCS &s ) ;
     virtual void recall_nowiki ( TUCS &s ) ;
+    virtual void replace_variables ( TUCS &s ) ;
     
     // Variables
     TUCS bullets ;

@@ -7,6 +7,7 @@
 #define FROM_URL 1
 #define FROM_DBKEY 2
 
+#include "md5.h"
 #include <fstream>
 #include "TUCS.h"
 #include "TLanguage.h"
