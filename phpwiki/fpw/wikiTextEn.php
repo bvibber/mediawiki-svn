@@ -241,6 +241,8 @@ $wikiNewPagesTitle = "New pages" ;
 $wikiNewPagesText = "These are the last <b>$1</b> new pages on Wikipedia in the last <b>$2</b> days." ;
 $wikiRCLegend = " <b>Legend :</b> $1=Minor edit ; $2=New article." ;
 $wikiDiff = "(diff)" ;
+$wikiChange = "change" ;
+$wikiChanges = "changes" ;
 $wikiWatchYes = "\"$1\" was added to your [[special:WatchList|watch list]]." ;
 $wikiWatchNo = "\"$1\" was removed from your [[special:WatchList|watch list]]." ;
 $wikiWatchlistTitle = "Watch list" ;
@@ -291,7 +293,7 @@ $wikiUploadText .= "<li>A message will tell you when the file has successfully u
 $wikiUploadText .= "<li>You can upload as many files you like. Please don't try to crash our server, ha ha.</li>\n";
 $wikiUploadText .= "<li>All uploads and deletions are logged in the <a href=\"$THESCRIPT?title=Log:Uploads\">uploads log</a>.</li>\n";
 $wikiUploadText .= "</ul>\n";
-$wikiUploadAffirmText = "I hereby affirm that this file is <b>not copyrighted</b>, or that I own the copyright for this file and place it under GPL licence." ;
+$wikiUploadAffirmText = "I hereby affirm that this file is <b>not copyrighted</b>, or that I own the copyright for this file and place it under GFDL licence." ;
 $wikiUploadButton = "Upload" ;
 $wikiUploadPrev = "Previously-uploaded files:" ;
 $wikiUploadSize = "Size (byte)" ;
