@@ -128,8 +128,10 @@ class WikiPage extends WikiTitle {
             $link = "<a href=\"$link&amp;action=view&amp;redirect=no\">".$this->getNiceTitle()."</a>" ;
             $link = str_replace ( "$1" , $link , $wikiRedirectFrom ) ;
             $this->backLink = $link ;
-	    $target = preg_replace ( '/^#redirect\s+\[\[\s*([^\]\n]+)\s*\]\].*$/i' , '$1' , $this->contents ) ;
-            $this->load ( trim($target) , false ) ;
+	    if ( preg_match ( '/^#redirect\s*\[\[\s*([^\]\n]+)\s*\]\].*$/i' , $this->contents , $regs ) ) {
+	    	$target = $regs[1] ;
+            	$this->load ( trim($target) , false ) ;
+		}
             }
 	    #echo "***canbecached = $this->canBeCached***"; FIXME
         }
