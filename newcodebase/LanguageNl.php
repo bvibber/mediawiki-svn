@@ -3,7 +3,7 @@
 # The names of the namespaces can be set here, but the numbers
 # are magical, so don't change or move them!  The Namespace class
 # encapsulates some of the magic-ness.
-# Dutch file - Nederlandstalige versie 2.2.a
+
 /* private */ $wgNamespaceNamesNl = array(
  -1 => "Speciaal",
  0 => "",
@@ -234,6 +234,7 @@
  "Shortpages" => "Korte artikels tonen",
  "Longpages"  => "Lange artikels tonen",
  "Newpages"  => "Nieuwe artikels tonen",
+ "Intl" => "Taallinks",
  "Allpages"  => "Alle paginatitels tonen",
 
  "Ipblocklist" => "Geblokkeerde IP-adressen tonen",
@@ -366,7 +367,7 @@ De verantwoordelijke systeembeheerder gaf hiervoor volgende reden op:
 "cannotdelete" => "Kon de pagina of afbeelding niet verwijderen.",
 "badtitle"              => "Ongeldige paginatitel", 
 "badtitletext"  => "De opgevraagde pagina is niet beschikbaar of leeg.",
-"perfdisabled" => "Om te voorkomen de database te overbelasten is deze pagina slechts tussen 03:00 en 15:00 (West-Europese zomertijd) beschikbaar.",
+"perfdisabled" => "Om overbelasting van het systeem te voorkomen, is deze optie momenteel niet bruikbaar.",
 
 # Login and logout pages
 # Aanmelden en afmelden
@@ -397,7 +398,7 @@ Invoeren van uw e-mailadres is niet verplicht; het is handig als u uw wachtwoord
 "userexists" => "De gebruikersnaam die u heeft ingevoerd is al in gebruik. Gelieve een andere naam te kiezen.",
 "youremail"  => "Uw e-mailadres",
 "yournick"  => "Uw bijnaam (voor handtekeningen)",
-"emailforlost" => "Als u uw wachtwoord bent vergeten kun u een nieuw naar uw e-mailadres laten opsturen.",
+"emailforlost" => "Het opgeven van een e-mailadres is niet verplicht.<br>Het geeft anderen de mogelijkheid u via de website te e-mailen zonder dat uw e-mailadres bekend wordt, en als u uw paswoord vergeet, kan u een nieuw paswoord opgestuurd worden.",
 "loginerror" => "Inlogfout",
 "noname"  => "U dient een gebruikersnaam op te geven.",
 "loginsuccesstitle" => "Aanmelden gelukt.",
@@ -674,6 +675,7 @@ Er is in totaal $3 maal een pagina bekeken, en $4 maal een pagina bewerkt. Dat g
 "rclsub"  => "(van pagina's waarnaar \"$1\" verwijst)",
 "debug"   => "Bugreparatie",
 "newpages"  => "Nieuwe pagina's",
+"intl" => "Taallinks",
 "movethispage" => "Verplaats deze pagina",
 "unusedimagestext" => "<p>Let op! Het zou kunnen dat er via een directe link verwezen wordt naar een afbeelding, bijvoorbeeld vanuit een anderstalige Wikipedia. Het is daarom mogelijk dat een afbeelding hier vermeld staat terwijl het wel degelijk gebruikt wordt.",
 "booksources" => "Boekhandels",
@@ -968,7 +970,7 @@ class LanguageNl extends Language {
 
  function timeanddate( $ts, $adj = false )
  {
-  return $this->time( $ts, $adj ) . " " . $this->date( $ts, $adj );
+  return $this->date( $ts, $adj ) . " " . $this->time( $ts, $adj );
  }
 
  function getValidSpecialPages()
