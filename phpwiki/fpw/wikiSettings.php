@@ -24,8 +24,8 @@ $wikiDBconnection = "";  # global variable to hold the current DB
 # Namespace backgrounds
 $wikiNamespaceBackground = array () ;
 $wikiNamespaceBackground[$wikiTalk] = "#eeFFFF" ;
-$wikiNamespaceBackground["user_talk"] = $wikiNamespaceBackground["talk"] ;
-$wikiNamespaceBackground["wikipedia_talk"] = $wikiNamespaceBackground["talk"] ;
+$wikiNamespaceBackground["user_talk"] = $wikiNamespaceBackground[$wikiTalk] ;
+$wikiNamespaceBackground["wikipedia_talk"] = $wikiNamespaceBackground[$wikiTalk] ;
 $wikiNamespaceBackground[$wikiUser] = "#FFeeee" ;
 $wikiNamespaceBackground[$wikiWikipedia] = "#eeFFee" ;
 $wikiNamespaceBackground["log"] = "#FFFFcc" ;

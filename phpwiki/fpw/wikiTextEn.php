@@ -38,7 +38,6 @@ $wikiTalkBlockedIPsLink = "Wikipedia_talk:Blocked_IPs" ; # Don't forget the unde
 $wikiPreferences = "Preferences" ;
 $wikiWhatLinksHere = "Pages that link here" ;
 $wikiPrintLinksMarkup = "i" ; # will be used as <$wikiPrintLinksMarkup> and </$wikiPrintLinksMarkup>
-#$wikiAllowedNamespaces = array ( "wikipedia" , "talk" , "user" , "" , "wikipedia talk" , "user talk" ) ;
 $wikiTalk = "talk" ;
 $wikiUser = "user" ;
 $wikiNamespaceTalk = "$1 Talk" ;
@@ -501,6 +500,12 @@ $wikiVoteChoices = "
 Reason to vote : <input type=text value=\"\" name=CommentBox size=20> <input type=submit value=\"Vote\" name=doVote>
 " ;
 
+
+# Talk pages array
+$wikiArticle = "Article" ;
+$wikiNS2Talk = array ( "" => $wikiTalk , $wikiWikipedia => $wikiWikipedia."_".$wikiTalk , $wikiUser => $wikiUser."_".$wikiTalk ) ;
+$wikiTalk2NS = array () ;
+foreach ( array_keys ( $wikiNS2Talk ) as $x ) $wikiTalk2NS[$wikiNS2Talk[$x]] = $x ;
 
 #---------------------------
 #Functions
