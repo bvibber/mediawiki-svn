@@ -23,14 +23,16 @@ $wgDBname           = "yaw";
 $wgDBuser           = "wikiadmin";
 $wgDBpassword       = "oberon";
 
-# Turn this on during database maintenance
+# Creating the file below makes the DB read-only; do this
+# during database maintenance.
 #
-# $wgReadOnly = true;
+$wgReadOnlyFile		= "/var/www/html/upload/readonly";
 
-# Turn this on to get HTML debug comments
+# Turn this on to get debug comments.  Logfile should only
+# be used during testing, never in production.
 #
 $wgDebugComments	= true;
-$wgDebugLogFile 	= "/var/www/html/wikitest/logfile";
+$wgDebugLogFile 	= "/var/www/html/upload/logfile";
 
 # Which interwiki prefix represents _this_ wiki?  This
 # only needs to be set when installing the software on

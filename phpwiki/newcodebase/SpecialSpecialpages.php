@@ -17,17 +17,30 @@ function wfSpecialSpecialpages()
 	}
 	$wgOut->addHTML( "</ul>\n" );
 
-	if ( ! $wgUser->isSysop() ) { return; }
+	if ( $wgUser->isSysop() ) {
+		$sysopSP = $wgLang->getSysopSpecialPages();
+		$wgOut->addHTML( "<h2>" . wfMsg( "sysopspheading" ) . "</h2>\n<ul>" );
 
-	$sysopSP = $wgLang->getSysopSpecialPages();
-	$wgOut->addHTML( "<h2>" . wfMsg( "sysopspheading" ) . "</h2>\n<ul>" );
-
-	foreach ( $sysopSP as $name => $desc ) {
-		if ( "" == $desc ) { continue; }
-		$link = $sk->makeKnownLink( "Special:{$name}", $desc );
-		$wgOut->addHTML( "<li>{$link}</li>\n" );
+		foreach ( $sysopSP as $name => $desc ) {
+			if ( "" == $desc ) { continue; }
+			$link = $sk->makeKnownLink( "Special:{$name}", $desc );
+			$wgOut->addHTML( "<li>{$link}</li>\n" );
+		}
+		$wgOut->addHTML( "</ul>\n" );
 	}
-	$wgOut->addHTML( "</ul>\n" );
+
+	if ( $wgUser->isDeveloper() ) {
+		$devSP = $wgLang->getDeveloperSpecialPages();
+		$wgOut->addHTML( "<h2>" . wfMsg( "developerspheading" ) .
+		  "</h2>\n<ul>" );
+
+		foreach ( $devSP as $name => $desc ) {
+			if ( "" == $desc ) { continue; }
+			$link = $sk->makeKnownLink( "Special:{$name}", $desc );
+			$wgOut->addHTML( "<li>{$link}</li>\n" );
+		}
+		$wgOut->addHTML( "</ul>\n" );
+	}
 }
 
 ?>

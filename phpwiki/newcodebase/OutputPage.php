@@ -236,6 +236,23 @@ class OutputPage {
 		$this->returnToMain();
 	}
 
+	function developerRequired()
+	{
+		global $wgUser;
+
+		$this->setHTMLTitle( wfMsg( "errorpagetitle" ) );
+		$this->setPageTitle( wfMsg( "developertitle" ) );
+		$this->setRobotpolicy( "noindex,nofollow" );
+		$this->setArticleFlag( false );
+		$this->mBodytext = "";
+
+		$sk = $wgUser->getSkin();
+		$ap = $sk->makeKnownLink( wfMsg( "administrators" ), "" );	
+		$text = str_replace( "$1", $ap, wfMsg( "developertext" ) );
+		$this->addHTML( $text );
+		$this->returnToMain();
+	}
+
 	function databaseError( $fname )
 	{
 		$this->setPageTitle( wfMsg( "databaseerror" ) );
@@ -250,6 +267,18 @@ class OutputPage {
 		$this->mBodytext = $msg;
 		$this->output();
 		exit;
+	}
+
+	function readOnlyPage()
+	{
+		global $wgUser;
+
+		$this->setPageTitle( wfMsg( "readonly" ) );
+		$this->setRobotpolicy( "noindex,nofollow" );
+		$this->setArticleFlag( false );
+
+		$this->addHTML( "<p>" . wfMsg( "readonlytext" ) );
+		$this->returnToMain();
 	}
 
 	function fatalError( $message )

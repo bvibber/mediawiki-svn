@@ -12,6 +12,10 @@ function wfSpecialPreferences()
 		$wgOut->errorpage( "prefsnologin", "prefsnologintext" );
 		return;
 	}
+	if ( wfReadOnly() ) {
+		$wgOut->readOnlyPage();
+		return;
+	}
 	if ( isset( $wpSaveprefs ) ) {
 		savePreferences();
 	} else if ( isset( $wpReset ) ) {

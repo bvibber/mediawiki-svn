@@ -90,6 +90,13 @@
 	"Asksql"		=> "Query the database"
 );
 
+/* private */ $wgDeveloperSpecialPagesEn = array(
+	"Lockdb"		=> "Make database read-only",
+	"Unlockdb"		=> "Restore database read access",
+	"Rebuildlinks"	=> "Rebuild link tables",
+	"Debug"			=> "Show debugging information"
+);
+
 /* private */ $wgAllMessagesEn = array(
 
 # Bits of text used by many pages:
@@ -121,6 +128,10 @@
 "sysoptext"		=> "The action you have requested can only be
 performed by users with \"sysop\" status.
 See $1.",
+"developertitle" => "Developer access required",
+"developertext"	=> "The action you have requested can only be
+performed by users with \"developer\" status.
+See $1.",
 "nbytes"		=> "$1 bytes",
 "go"			=> "Go",
 
@@ -145,8 +156,8 @@ MySQL returned error \"<tt>$3: $4</tt>\".",
 "noconnect"		=> "Could not connect to DB on $1",
 "nodb"			=> "Could not select database $1",
 "readonly"		=> "Database locked",
-"readonlytext"	=> "The Wikipedia database is currently locked to
-new entries, probably because of database maintenance.
+"readonlytext"	=> "The Wikipedia database is currently locked to new
+entries and other modifications, probably for routine database maintenance.
 Please try again later.\n",
 "missingarticle" => "The database did not find the text of an article
 that it should have found, named \"$1\".
@@ -450,6 +461,7 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "specialpages"	=> "Special pages",
 "spheading"		=> "Special pages",
 "sysopspheading" => "Special pages for sysop use",
+"developerspheading" => "Special pages for developer use",
 "movepage"		=> "Move page",
 "protectpage"	=> "Protect page",
 "recentchangeslinked" => "Watch links",
@@ -539,6 +551,30 @@ to a previously blocked IP address.",
 "blocklink"		=> "block",
 "unblocklink"	=> "unblock",
 
+# Lock/unlock DB
+#
+"lockdb"		=> "Lock database",
+"unlockdb"		=> "Unlock database",
+"lockdbtext"	=> "Locking the database will suspend the ability of all
+users to edit pages, change their preferences, edit their watchlists, and
+other things requiring changes in the database.
+Please confirm that this is what you intend to do, and that you will
+unlock the database when your maintenance is done.",
+"unlockdbtext"	=> "Unlocking the database will restore the ability of all
+users to edit pages, change their preferences, edit their watchlists, and
+other things requiring changes in the database.
+Please confirm that this is what you intend to do.",
+"lockconfirm"	=> "Yes, I really want to lock the database.",
+"unlockconfirm"	=> "Yes, I really want to unlock the database.",
+"lockbtn"		=> "Lock database",
+"unlockbtn"		=> "Unlock database",
+"locknoconfirm" => "You did not check the confirmation box.",
+"lockdbsuccesssub" => "Database lock succeeded",
+"unlockdbsuccesssub" => "Database lock removed",
+"lockdbsuccesstext" => "The Wikipedia database has been locked.
+<br>Remember to remove the lock after your maintenance is complete.",
+"unlockdbsuccesstext" => "The Wikipedia database has been unlocked.",
+
 );
 
 class Language {
@@ -623,6 +659,12 @@ class Language {
 	{
 		global $wgSysopSpecialPagesEn;
 		return $wgSysopSpecialPagesEn;
+	}
+
+	function getDeveloperSpecialPages()
+	{
+		global $wgDeveloperSpecialPagesEn;
+		return $wgDeveloperSpecialPagesEn;
 	}
 
 	function getMessage( $key )
