@@ -443,6 +443,7 @@ static int callback (void *NotUsed, int argc, char **argv, char **azColName)
 bool TDatabaseSqlite::init ( string s1 )
     {
     filename = s1 ;
+    ignoreDBerror = false ;
     return true ;
     }
 
@@ -515,6 +516,12 @@ bool TDatabaseSqlite::doesArticleExist ( TTitle &t )
     
 void TDatabaseSqlite::findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext )
     {
+    subSearch ( s , "cur_title" , bytitle ) ;
+//    subSearch ( s , "cur_text" , bytext ) ;
+    }
+    
+void TDatabaseSqlite::subSearch ( TUCS s , TUCS field , VTUCS &array )
+    {
     TUCS sql , t ;
     VTUCS v1 , v2 ;
     uint a ;
@@ -524,11 +531,11 @@ void TDatabaseSqlite::findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext )
     for ( a = 0 ; a < v1.size() ; a++ )
         {
         v1[a].trim() ;
-        if ( !v1[a].empty() ) v2.push_back ( "cur_title LIKE \"%" + v1[a] + "%\"" ) ;
+        if ( !v1[a].empty() ) v2.push_back ( field + " LIKE \"%" + v1[a] + "%\"" ) ;
         }
-    t.implode ( " OR " , v2 ) ;
+    t.implode ( " AND " , v2 ) ;
     sql += t ;
-
+    
     query ( sql ) ;    
 
     for ( a = 0 ; a < results.content.size() ; a++ )
@@ -538,7 +545,7 @@ void TDatabaseSqlite::findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext )
         t = LNG(t);
         if ( !t.empty() ) t += ":" ;
         t += results[a][results["cur_title"]] ;
-        bytitle.push_back ( t ) ;
+        array.push_back ( t ) ;
         }
         
     }
@@ -549,7 +556,7 @@ void TDatabaseSqlite::query ( TUCS s )
     results.clean() ;
     db = sqlite_open ( filename.c_str() , 0 , NULL ) ;
     int error = sqlite_exec ( db , s.getstring().c_str() , callback , 0 , 0 ) ;
-    if ( SQLITE_OK != error )
+    if ( SQLITE_OK != error && !ignoreDBerror )
         {
         cout << "SQLITE error " << error << "! Query was :<br>" << endl ;
         cout << s.getstring() << endl ;
@@ -592,7 +599,9 @@ void TDatabaseSqlite::storeArticle ( TArticle &art , bool makeOldVersion )
 
 int TDatabaseSqlite::getNumberOfArticles()
     {
+    ignoreDBerror = true ;
     query ( "SELECT s_value FROM stuff WHERE s_key='NUMBEROFARTICLES'" ) ;
+    ignoreDBerror = false ;
     if ( results.content.size() == 1 ) return atoi ( results[0][0].c_str() ) ;
 
     query ( "create table stuff ( s_key tinytext, s_value tinytext )" ) ;

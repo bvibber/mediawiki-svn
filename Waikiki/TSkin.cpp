@@ -223,7 +223,8 @@ TUCS TSkin::getSideBar()
         r += "<br>\n" + getSpecialLink ( "contributions" , "mycontris" , "target="+USER->getURLname() ) ;
         }
 
-    r += "<br>\n" + getInternalLink ( TTitle ( LNG("currentevents") ) ) ;
+    if ( TUCS(LNG("currentevents")) != "-" )
+        r += "<br>\n" + getInternalLink ( TTitle ( LNG("currentevents") ) ) ;
     r += "<hr class='sep'>\n" ;
 
     r += getEditLink ( "<br>\n" ) ;
@@ -233,9 +234,7 @@ TUCS TSkin::getSideBar()
     r += getProtectLink ( "<br>\n" ) ;
 
     // Talk page
-/*    r += "
-<a href='http://www.wikipedia.org/wiki/Wikipedia_talk:How_to_edit_a_page' class='internal'>Discuss this page</a><br>
-    " ;*/
+//    r += "<a href='http://www.wikipedia.org/wiki/Wikipedia_talk:How_to_edit_a_page' class='internal'>Discuss this page</a><br>    " ;
 
     r += getHistoryLink ( "<br>\n" ) ;
     r += getSpecialLink ( "whatlinkshere" , "" , "target="+article->getTitle().getURL() ) + "<br>\n" ;

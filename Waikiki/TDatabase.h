@@ -83,8 +83,10 @@ class TDatabaseSqlite : public TDatabase
     TSQLresult results ;
     
     protected :
+    virtual void subSearch ( TUCS s , TUCS field , VTUCS &array ) ;
     string filename ;
     sqlite *db ;
+    bool ignoreDBerror ;
     } ;
 
 class TDatabaseMySQL : public TDatabase

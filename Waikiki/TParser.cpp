@@ -273,12 +273,14 @@ void TParser::replace_variables ( TUCS &s )
     
     TUCS currentday = TUCS::fromint ( timeinfo->tm_mday ) ;
     TUCS currentmonthname = TUCS::fromint ( timeinfo->tm_mon ) ;
+    TUCS currentyear = TUCS::fromint ( timeinfo->tm_year + 1900 ) ;
     currentmonthname = LANG->getTranslation ( "MonthNames:" + currentmonthname ) ;
     TUCS numberofarticles = TUCS::fromint ( DB->getNumberOfArticles() ) ;
 
     s.replace ( "{{CURRENTDAY}}" , currentday ) ;
     s.replace ( "{{CURRENTMONTHNAME}}" , currentmonthname ) ;
-    s.replace ( "{{CURRENTDAY}}" , currentday ) ;
+    s.replace ( "{{CURRENTYEAR}}" , currentyear ) ;
+    s.replace ( "{{NUMBEROFARTICLES}}" , numberofarticles ) ;
     }
     
 void TParser::store_nowiki ( TUCS &s )

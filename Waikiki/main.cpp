@@ -233,10 +233,13 @@ void TWikiInterface::run (int argc, char *argv[])
     if ( action == "GO" )
         {
         go ( forcetitle , art ) ;
+        SKIN->setArticle ( &art ) ;
+        html = SKIN->getArticleHTML() ;
         }
     else if ( ft.getNamespaceID() == -1 ) // Special page
         {
         sp->render ( ft.getJustTitle() , art ) ;
+        SKIN->setArticle ( &art ) ;
         }
     else if ( loadFromFile )
         {
@@ -274,6 +277,7 @@ void TWikiInterface::run (int argc, char *argv[])
     html += TUCS::fromint ( (clock()-start)*100/CLK_TCK ) ;
     html += " ms -->" ;
     
+    
     SKIN->doHeaderStuff () ;
     OUTPUT->addHTML ( "<div id='content'>\n" ) ;
     OUTPUT->addHTML ( SKIN->getTopBar() ) ;
@@ -302,15 +306,19 @@ void TWikiInterface::go ( TUCS s , TArticle &art )
     DB->findArticles ( s , bytitle , bytext ) ;
     
     uint a ;
+
     for ( a = 0 ; a < bytitle.size() ; a++ )
-        {
-        TTitle t ( bytitle[a] ) ;
-        bytitle[a] = SKIN->getInternalLink ( t ) ;
-        }
+        bytitle[a] = SKIN->getInternalLink ( TTitle ( bytitle[a] ) ) ;
+
+    for ( a = 0 ; a < bytext.size() ; a++ )
+        bytext[a] = SKIN->getInternalLink ( TTitle ( bytext[a] ) ) ;
+
+    TUCS t1 , t2 ;
+    t1.implode ( "<br>\n" , bytitle ) ;
+    t2.implode ( "<br>\n" , bytext ) ;
     
-    TUCS t ;
-    t.implode ( "<br>\n" , bytitle ) ;
-    
+    TUCS t = "<h2>Title matches</h2>\n" + t1 ;
+    t += "<h2>Text matches</h2>\n" + t2 ;
     art.setSource ( t ) ;
     }
     
