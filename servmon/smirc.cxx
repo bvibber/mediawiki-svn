@@ -342,7 +342,8 @@ ircclnt::ircclnt(std::string const& serv, int port)
 
 ircclnt::~ircclnt()
 {
-	SMI(smnet::smpx)->rm(sckt);
+	if (sckt)
+		SMI(smnet::smpx)->rm(sckt);
 	delete trmpimpl;
 }
 

@@ -38,8 +38,49 @@
  * included, therefore it is assumed that this code is public
  * domain.  Attribution still noted. */
 
+
+/*	$NetBSD: err.c,v 1.23 2003/10/27 00:12:42 lukem Exp $	*/
+/*	$NetBSD: errx.c,v 1.11 2003/10/27 00:12:42 lukem Exp $	*/
+/*	$NetBSD: warn.c,v 1.11 2003/10/27 00:12:42 lukem Exp $	*/
+/*	$NetBSD: warnx.c,v 1.10 2003/10/27 00:12:42 lukem Exp $	*/
+/*	$NetBSD: verr.c,v 1.12 2003/10/27 02:17:18 lukem Exp $	*/
+/*	$NetBSD: verrx.c,v 1.12 2003/10/27 00:12:42 lukem Exp $	*/
+/*	$NetBSD: vwarn.c,v 1.12 2003/10/27 00:12:42 lukem Exp $	*/
+/*	$NetBSD: vwarnx.c,v 1.12 2003/10/27 00:12:42 lukem Exp $	*/
+
+/*-
+ * Copyright (c) 1993
+ *	The Regents of the University of California.  All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. Neither the name of the University nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ */
+
 #include <ctype.h>
-#include <err.h>
+#ifdef HAVE_ERR_H
+# include <err.h>
+#endif
 #include <string.h>
 #include <strings.h>
 #include <stdio.h>
@@ -72,9 +113,9 @@ static int			 mcm_server_resolve(struct memcache_server *ms);
 
 
 /* Prototypes for static functions that require a memory context */
-static u_int32_t		 mcm_atomic_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc,
+static uint32_t		 mcm_atomic_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc,
 						const char *cmd, const size_t cmd_len,
-						const char *key, const size_t key_len, const u_int32_t val);
+						const char *key, const size_t key_len, const uint32_t val);
 static void			 mcm_fetch_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc,
 					       struct memcache_req *req, const char *cmd, const size_t cmd_len);
 static char			*mcm_get_line(const struct memcache_ctxt *ctxt, struct memcache *mc,
@@ -87,7 +128,7 @@ static int			 mcm_storage_cmd(const struct memcache_ctxt *ctxt, struct memcache 
 						 const char *cmd, const size_t cmd_len,
 						 const char *key, const size_t key_len,
 						 const void *val, const size_t bytes,
-						 const time_t expire, const u_int16_t flags);
+						 const time_t expire, const uint16_t flags);
 
 
 #ifdef __STRICT_ANSI__
@@ -133,6 +174,110 @@ static const size_t	str_space_len = MCM_CSTRLEN(str_space);
 /* # endif */
 /* #endif */
 
+#define SM_COMPILER_SHIMS_ONLY
+#include "smstdinc.hxx"
+
+#define PROGNAME "servmon"
+
+SM_NORETURN void
+verr(eval, fmt, ap)
+	int eval;
+	const char *fmt;
+	va_list ap;
+{
+	int sverrno;
+
+	sverrno = errno;
+	(void)fprintf(stderr, "%s: ", PROGNAME);
+	if (fmt != NULL) {
+		(void)vfprintf(stderr, fmt, ap);
+		(void)fprintf(stderr, ": ");
+	}
+	(void)fprintf(stderr, "%s\n", strerror(sverrno));
+	exit(eval);
+}
+
+SM_NORETURN void
+verrx(eval, fmt, ap)
+	int eval;
+	const char *fmt;
+	va_list ap;
+{
+	(void)fprintf(stderr, "%s: ", PROGNAME);
+	if (fmt != NULL)
+		(void)vfprintf(stderr, fmt, ap);
+	(void)fprintf(stderr, "\n");
+	exit(eval);
+}
+
+
+void
+vwarn(fmt, ap)
+	const char *fmt;
+	va_list ap;
+{
+	int sverrno;
+
+	sverrno = errno;
+	(void)fprintf(stderr, "%s: ", PROGNAME);
+	if (fmt != NULL) {
+		(void)vfprintf(stderr, fmt, ap);
+		(void)fprintf(stderr, ": ");
+	}
+	(void)fprintf(stderr, "%s\n", strerror(sverrno));
+}
+
+void
+vwarnx(fmt, ap)
+	const char *fmt;
+	va_list ap;
+{
+	(void)fprintf(stderr, "%s: ", PROGNAME);
+	if (fmt != NULL)
+		(void)vfprintf(stderr, fmt, ap);
+	(void)fprintf(stderr, "\n");
+}
+
+SM_NORETURN void
+err(int eval, const char *fmt, ...)
+{
+	va_list ap;
+
+	va_start(ap, fmt);
+	verr(eval, fmt, ap);
+	va_end(ap);
+}
+
+void
+warn(const char *fmt, ...)
+{
+	va_list ap;
+
+	va_start(ap, fmt);
+	vwarn(fmt, ap);
+	va_end(ap);
+}
+
+void
+warnx(const char *fmt, ...)
+{
+	va_list ap;
+
+	va_start(ap, fmt);
+	vwarnx(fmt, ap);
+	va_end(ap);
+}
+
+SM_NORETURN void
+errx(int eval, const char *fmt, ...)
+{
+	va_list ap;
+
+	va_start(ap, fmt);
+	verrx(eval, fmt, ap);
+	va_end(ap);
+}
+
 /* Set the default memory handling routines to be system defaults. */
 static struct memcache_ctxt mcGlobalCtxt = {
   (mcFreeFunc)free,
@@ -146,13 +291,13 @@ int
 mc_add(struct memcache *mc,
        const char *key, const size_t key_len,
        const void *val, const size_t bytes,
-       const time_t expire, const u_int16_t flags) {
+       const time_t expire, const uint16_t flags) {
   return mcm_storage_cmd(&mcGlobalCtxt, mc, str_add_cmd, str_add_len, key, key_len, val, bytes, expire, flags);
 }
 
 
 void
-mc_aget(struct memcache *mc, const char *key, const size_t len, void **value, u_int32_t *value_len) {
+mc_aget(struct memcache *mc, const char *key, const size_t len, void **value, uint32_t *value_len) {
   mcm_aget(&mcGlobalCtxt, mc, key, len, value, value_len);
 }
 
@@ -163,8 +308,8 @@ mc_arefresh(struct memcache *mc, const char *key, const size_t len) {
 }
 
 
-u_int32_t
-mc_decr(struct memcache *mc, const char *key, const size_t key_len, const u_int32_t val) {
+uint32_t
+mc_decr(struct memcache *mc, const char *key, const size_t key_len, const uint32_t val) {
   return mcm_atomic_cmd(&mcGlobalCtxt, mc, str_decr_cmd, str_decr_len, key, key_len, val);
 }
 
@@ -199,8 +344,8 @@ mc_get(struct memcache *mc, struct memcache_req *req) {
 }
 
 
-u_int32_t
-mc_incr(struct memcache *mc, const char *key, const size_t key_len, const u_int32_t val) {
+uint32_t
+mc_incr(struct memcache *mc, const char *key, const size_t key_len, const uint32_t val) {
   return mcm_atomic_cmd(&mcGlobalCtxt, mc, str_incr_cmd, str_incr_len, key, key_len, val);
 }
 
@@ -217,7 +362,7 @@ mc_refresh(struct memcache *mc, struct memcache_req *req) {
 }
 
 
-u_int32_t
+uint32_t
 mc_reldate(void) {
   return MEMCACHE_RELDATE;
 }
@@ -227,7 +372,7 @@ int
 mc_replace(struct memcache *mc,
 	   const char *key, const size_t key_len,
 	   const void *val, const size_t bytes,
-	   const time_t expire, const u_int16_t flags) {
+	   const time_t expire, const uint16_t flags) {
   return mcm_storage_cmd(&mcGlobalCtxt, mc, str_replace_cmd, str_replace_len, key, key_len, val, bytes, expire, flags);
 }
 
@@ -298,7 +443,7 @@ mc_server_add4(struct memcache *mc, const char *hostport) {
 
 
 struct memcache_server *
-mc_server_find(struct memcache *mc, const u_int32_t hash) {
+mc_server_find(struct memcache *mc, const uint32_t hash) {
   return mcm_server_find(mc, hash);
 }
 
@@ -331,7 +476,7 @@ int
 mc_set(struct memcache *mc,
        const char *key, const size_t key_len,
        const void *val, const size_t bytes,
-       const time_t expire, const u_int16_t flags) {
+       const time_t expire, const uint16_t flags) {
   return mcm_storage_cmd(&mcGlobalCtxt, mc, str_set_cmd, str_set_len, key, key_len, val, bytes, expire, flags);
 }
 
@@ -354,7 +499,7 @@ mc_strndup(const char *str, const size_t len) {
 }
 
 
-u_int32_t
+uint32_t
 mc_vernum(void) {
   return MEMCACHE_VERNUM;
 }
@@ -372,7 +517,7 @@ int
 mcm_add(const struct memcache_ctxt *ctxt, struct memcache *mc,
 	const char *key, const size_t key_len,
 	const void *val, const size_t bytes,
-	const time_t expire, const u_int16_t flags) {
+	const time_t expire, const uint16_t flags) {
   return mcm_storage_cmd(ctxt, mc, str_add_cmd, str_add_len, key, key_len, val, bytes, expire, flags);
 }
 
@@ -381,7 +526,7 @@ mcm_add(const struct memcache_ctxt *ctxt, struct memcache *mc,
  * the key.  The result is mcMalloc(3)'ed and it is assumed that the
  * caller is required to mcFree(3) the memory. */
 void
-mcm_aget(const struct memcache_ctxt *ctxt, struct memcache *mc, const char *key, const size_t len, void **value, u_int32_t *value_len) {
+mcm_aget(const struct memcache_ctxt *ctxt, struct memcache *mc, const char *key, const size_t len, void **value, uint32_t *value_len) {
   struct memcache_req *req;
   struct memcache_res *res;
 
@@ -414,16 +559,16 @@ mcm_arefresh(const struct memcache_ctxt *ctxt, struct memcache *mc, const char *
 }
 
 
-static u_int32_t
+static uint32_t
 mcm_atomic_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc,
 	       const char *cmd, const size_t cmd_len,
-	      const char *key, const size_t key_len, const u_int32_t val) {
+	      const char *key, const size_t key_len, const uint32_t val) {
   struct memcache_server *ms;
-  u_int32_t hash;
+  uint32_t hash;
   char *cp, *cur;
   size_t buf_left, i;
   struct iovec av[5];
-  u_int32_t ret;
+  uint32_t ret;
 
   /* If we have only one server, don't bother actually hashing. */
   if (mc->num_live_servers == 1)
@@ -483,7 +628,7 @@ mcm_atomic_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc,
 
   /* Try converting the value to an integer. If it succeeds, we've got
    * a winner. */
-  ret = (u_int32_t)strtol(cur, &cp, 10);
+  ret = (uint32_t)strtol(cur, &cp, 10);
   if (ret == 0 && (errno == EINVAL || errno == ERANGE))
     err(EX_PROTOCOL, "%s:%u\tstrtol(): invalid value \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
 
@@ -496,8 +641,8 @@ mcm_atomic_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc,
 }
 
 
-u_int32_t
-mcm_decr(const struct memcache_ctxt *ctxt, struct memcache *mc, const char *key, const size_t key_len, const u_int32_t val) {
+uint32_t
+mcm_decr(const struct memcache_ctxt *ctxt, struct memcache *mc, const char *key, const size_t key_len, const uint32_t val) {
   return mcm_atomic_cmd(ctxt, mc, str_decr_cmd, str_decr_len, key, key_len, val);
 }
 
@@ -506,7 +651,7 @@ int
 mcm_delete(const struct memcache_ctxt *ctxt, struct memcache *mc,
 	   const char *key, const size_t key_len, const time_t hold) {
   struct memcache_server *ms;
-  u_int32_t hash;
+  uint32_t hash;
   char *cur;
   size_t buf_left, i;
   struct iovec dv[5];
@@ -579,7 +724,7 @@ mcm_fetch_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memc
   struct memcache_res_cb *cb;
   struct memcache_server *ms;
   struct iovec *rv;
-  u_int32_t i, num_vec;
+  uint32_t i, num_vec;
 
   if (req->num_keys == 0)
     return;
@@ -884,7 +1029,7 @@ mcm_retrieve_data(const struct memcache_ctxt *ctxt, struct memcache_req *req,
   size_t bytes;
   size_t read_cur_offset;
   size_t cp_offset;
-  u_int16_t flags;
+  uint16_t flags;
   int ret;
 
   cp = ms->read_cur = ms->start = ms->cur = ms->buf;
@@ -984,7 +1129,7 @@ next_value:
       cp = &cp[res->len];
       end = ms->read_cur;
 
-      flags = (u_int16_t)strtol(cp, &end, 10);
+      flags = (uint16_t)strtol(cp, &end, 10);
       if (flags == 0 && (errno == EINVAL || errno == ERANGE)) {
 	warn("%s:%u\tstrtol(): invalid flags", __FILE__, __LINE__);
       }
@@ -1064,10 +1209,10 @@ next_value:
 #endif /* USE_CRC32_HASH */
 
 
-u_int32_t
+uint32_t
 mc_hash_key(const char *key, const size_t len) {
 	unsigned char res[MD5_DIGEST_LENGTH];
-	u_int32_t i;
+	uint32_t i;
 	int j;
 	char result[33];
 	char php[9] = {};
@@ -1089,9 +1234,9 @@ mc_hash_key(const char *key, const size_t len) {
 }
 
 
-u_int32_t
+uint32_t
 mcm_incr(const struct memcache_ctxt *ctxt, struct memcache *mc,
-	 const char *key, const size_t key_len, const u_int32_t val) {
+	 const char *key, const size_t key_len, const uint32_t val) {
   return mcm_atomic_cmd(ctxt, mc, str_incr_cmd, str_incr_len, key, key_len, val);
 }
 
@@ -1124,7 +1269,7 @@ int
 mcm_replace(const struct memcache_ctxt *ctxt, struct memcache *mc,
 	    const char *key, const size_t key_len,
 	    const void *val, const size_t bytes,
-	    const time_t expire, const u_int16_t flags) {
+	    const time_t expire, const uint16_t flags) {
   return mcm_storage_cmd(ctxt, mc, str_replace_cmd, str_replace_len, key, key_len, val, bytes, expire, flags);
 }
 
@@ -1587,7 +1732,7 @@ mcm_server_connect(struct memcache *mc, struct memcache_server *ms) {
 void
 mc_server_deactivate(struct memcache *mc,
 		      struct memcache_server *ms) {
-  u_int32_t i, found;
+  uint32_t i, found;
 
   /* Since adding servers is so rare, and servers do come back, don't
    * bother mcRealloc(3)'ing mc->live_servers.  Instead, just find the
@@ -1645,7 +1790,7 @@ mcm_server_disconnect_all(const struct memcache *mc) {
 
 
 struct memcache_server *
-mcm_server_find(struct memcache *mc, const u_int32_t hash) {
+mcm_server_find(struct memcache *mc, const uint32_t hash) {
   if (mc->num_live_servers < 1)
     return NULL;
 
@@ -1831,82 +1976,82 @@ mcm_server_stats(const struct memcache_ctxt *ctxt, struct memcache *mc, struct m
 	}
       } else if (memcmp(cur, "curr_items ", MCM_CSTRLEN("curr_items ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("curr_items ")];
-	s->curr_items = (u_int32_t)strtol(cur, &cp, 10);
+	s->curr_items = (uint32_t)strtol(cur, &cp, 10);
 	if (s->curr_items == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtol(): invalid curr_items \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "total_items ", MCM_CSTRLEN("total_items ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("total_items ")];
-	s->total_items = (u_int64_t)strtoll(cur, &cp, 10);
+	s->total_items = (uint64_t)strtoll(cur, &cp, 10);
 	if (s->total_items == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtoll(): invalid total_items \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "bytes ", MCM_CSTRLEN("bytes ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("bytes")];
-	s->bytes = (u_int64_t)strtoll(cur, &cp, 10);
+	s->bytes = (uint64_t)strtoll(cur, &cp, 10);
 	if (s->bytes == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtol(): invalid bytes \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "curr_connections ", MCM_CSTRLEN("curr_connections ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("curr_connections ")];
-	s->curr_connections = (u_int32_t)strtol(cur, &cp, 10);
+	s->curr_connections = (uint32_t)strtol(cur, &cp, 10);
 	if (s->curr_connections == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtol(): invalid curr_connections \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "total_connections ", MCM_CSTRLEN("total_connections ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("total_connections ")];
-	s->total_connections = (u_int64_t)strtoll(cur, &cp, 10);
+	s->total_connections = (uint64_t)strtoll(cur, &cp, 10);
 	if (s->total_connections == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtoll(): invalid total_connections \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "connection_structures ", MCM_CSTRLEN("connection_structures ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("connection_structures ")];
-	s->connection_structures = (u_int32_t)strtol(cur, &cp, 10);
+	s->connection_structures = (uint32_t)strtol(cur, &cp, 10);
 	if (s->connection_structures == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtol(): invalid connection_structures \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "cmd_get ", MCM_CSTRLEN("cmd_get ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("cmd_get ")];
-	s->cmd_get = (u_int64_t)strtoll(cur, &cp, 10);
+	s->cmd_get = (uint64_t)strtoll(cur, &cp, 10);
 	if (s->cmd_get == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtoll(): invalid cmd_get \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "cmd_refresh ", MCM_CSTRLEN("cmd_refresh ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("cmd_refresh ")];
-	s->cmd_refresh = (u_int64_t)strtoll(cur, &cp, 10);
+	s->cmd_refresh = (uint64_t)strtoll(cur, &cp, 10);
 	if (s->cmd_refresh == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtoll(): invalid cmd_refresh \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "cmd_set ", MCM_CSTRLEN("cmd_set ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("cmd_set ")];
-	s->cmd_set = (u_int64_t)strtoll(cur, &cp, 10);
+	s->cmd_set = (uint64_t)strtoll(cur, &cp, 10);
 	if (s->cmd_set == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtoll(): invalid cmd_set \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "get_hits ", MCM_CSTRLEN("get_hits ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("get_hits ")];
-	s->get_hits = (u_int64_t)strtoll(cur, &cp, 10);
+	s->get_hits = (uint64_t)strtoll(cur, &cp, 10);
 	if (s->get_hits == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtoll(): invalid get_hits \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "get_misses ", MCM_CSTRLEN("get_misses ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("get_misses ")];
-	s->get_misses = (u_int64_t)strtoll(cur, &cp, 10);
+	s->get_misses = (uint64_t)strtoll(cur, &cp, 10);
 	if (s->get_misses == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtoll(): invalid get_misses \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "refresh_hits ", MCM_CSTRLEN("refresh_hits ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("refresh_hits ")];
-	s->refresh_hits = (u_int64_t)strtoll(cur, &cp, 10);
+	s->refresh_hits = (uint64_t)strtoll(cur, &cp, 10);
 	if (s->refresh_hits == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtoll(): invalid refresh_hits \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "refresh_misses ", MCM_CSTRLEN("refresh_misses ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("refresh_misses ")];
-	s->refresh_misses = (u_int64_t)strtoll(cur, &cp, 10);
+	s->refresh_misses = (uint64_t)strtoll(cur, &cp, 10);
 	if (s->refresh_misses == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtoll(): invalid refresh_misses \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "bytes_read ", MCM_CSTRLEN("bytes_read ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("bytes_read ")];
-	s->bytes_read = (u_int64_t)strtoll(cur, &cp, 10);
+	s->bytes_read = (uint64_t)strtoll(cur, &cp, 10);
 	if (s->bytes_read == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtoll(): invalid bytes_read \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "bytes_written ", MCM_CSTRLEN("bytes_written ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("bytes_written ")];
-	s->bytes_written = (u_int64_t)strtoll(cur, &cp, 10);
+	s->bytes_written = (uint64_t)strtoll(cur, &cp, 10);
 	if (s->bytes_written == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtoll(): invalid bytes_written \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else if (memcmp(cur, "limit_maxbytes ", MCM_CSTRLEN("limit_maxbytes ")) == 0) {
 	cur = &cur[MCM_CSTRLEN("limit_maxbytes ")];
-	s->limit_maxbytes = (u_int64_t)strtoll(cur, &cp, 10);
+	s->limit_maxbytes = (uint64_t)strtoll(cur, &cp, 10);
 	if (s->limit_maxbytes == 0 && (errno == EINVAL || errno == ERANGE))
 	  err(EX_PROTOCOL, "%s:%u\tstrtoll(): invalid limit_maxbytes \"%.*s\"", __FILE__, __LINE__, (int)(cp - cur), cur);
       } else {
@@ -1962,7 +2107,7 @@ int
 mcm_set(const struct memcache_ctxt *ctxt, struct memcache *mc,
 	const char *key, const size_t key_len,
 	const void *val, const size_t bytes,
-	const time_t expire, const u_int16_t flags) {
+	const time_t expire, const uint16_t flags) {
   return mcm_storage_cmd(ctxt, mc, str_set_cmd, str_set_len, key, key_len, val, bytes, expire, flags);
 }
 
@@ -2029,9 +2174,9 @@ mcm_storage_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc,
 		const char *cmd, const size_t cmd_len,
 		const char *key, const size_t key_len,
 		const void *val, const size_t bytes,
-		const time_t expire, const u_int16_t flags) {
+		const time_t expire, const uint16_t flags) {
   struct memcache_server *ms;
-  u_int32_t hash;
+  uint32_t hash;
   char *cur;
   size_t buf_left, i;
   struct iovec wv[11];

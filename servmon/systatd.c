@@ -11,16 +11,38 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <paths.h>
+#ifdef HAVE_PATHS_H
+# include <paths.h>
+#endif
+
+#ifdef HAVE_MNTENT_H
+# include <mntent.h>
+#endif
+
+#ifdef HAVE_SYS_MNTTAB_H
+# include <sys/mnttab.h>
+#endif
+
 #include <unistd.h>
-#include <mntent.h>
 #include <errno.h>
 
-#ifdef _PATH_MOUNTED
+#ifdef _PATH_MOUNTED /* BSD, glibc */
 # define PATH_MTAB _PATH_MOUNTED
 #else
-# define PATH_MTAB "/etc/mtab"
+# ifdef MNTTAB /* SVr4 */
+#  define PATH_MTAB MNTTAB
+# else
+#  define PATH_MTAB "/etc/mtab" /* Others */
+# endif
 #endif
+
+/*
+ * SVr4 doesn't provide daemon() itself, but libresolv includes it
+ * so we win anyway.
+ */
+#if defined(HAVE_DAEMON) && defined(__svr4__)
+	int daemon(int, int);
+#endif 
 
 #define PORT 8576
 
@@ -73,22 +95,81 @@ main(void)
 	return 0;
 }
 
+/*
+ * There are two different *mntent APIs.
+ *
+ * BSD:
+ *   setmntent() and endmntent() are available.
+ *   getmntent() returns a struct mntent*
+ *   the name of the mount point is mnt_dir.
+ *
+ * SVr4:
+ *   setmntent() and endmntent() are not available; getmntent() 
+ *     expects us to fopen() and fclose() ourselves.
+ *   getmntent() takes the address of a struct mntent as an argment
+ *     and return !0 on error.
+ *   the name of the mount point is mnt_mountp.
+ *
+ * We emulate the BSD set/endmntent(), but the SVr4 getmntent(),
+ * because it makes memory allocation easier (and it's also thread-safe
+ * on SVr4, but we aren't threaded here anyway...).
+ */
+#ifndef __svr4__
+# define mnt_mountp mnt_dir
+#endif
+
+#ifndef HAVE_SETMNTENT
+static FILE*
+setmntent(path, mode)
+	char const *path, *mode;
+{
+	return fopen(path, mode);
+}
+#endif
+
+#ifndef HAVE_ENDMNTENT
+static int
+endmntent(mtab)
+	FILE *mtab;
+{
+	return fclose(mtab);
+}
+#endif
+
+static int
+my_getmntent(mtab, ent)
+	FILE *mtab;
+	struct mnttab *ent;
+{
+#ifdef __svr4__
+	return getmntent(mtab, ent) == 0 ? 0 : -1;
+#else /* BSD */
+	struct mnttab 	*tent;
+
+	if ((tent = getmntent(mtab)) == NULL)
+		return -1;
+
+	memcpy(ent, tent, sizeof(*ent));
+	return 0;
+#endif /* SVr4 */
+}
+	
 static void
 print_mntents(where)
-FILE *where;
+	FILE *where;
 {
-	struct mntent  *ent;
 	struct statvfs  sbuf;
         FILE           *mtab;
 	fsblkcnt_t      cnt;
-	
+	struct mnttab	ent;
+
 	if ((mtab = setmntent(PATH_MTAB, "r")) == NULL) {
-		perror("setmntent");
+		perror(PATH_MTAB);
 		return;
 	}
 
-	while ((ent = getmntent(mtab)) != NULL) {
-		if (statvfs(ent->mnt_dir, &sbuf) < 0) {
+	while (my_getmntent(mtab, &ent) == 0) {
+		if (statvfs(ent.mnt_mountp, &sbuf) < 0) {
 			perror("statvfs");
 			goto end;
 		}
@@ -96,7 +177,7 @@ FILE *where;
 		cnt = sbuf.f_bavail;
 		if (cnt == 0)
 			continue;
-		fprintf(where, "%s %lu %lu\n", ent->mnt_dir, (unsigned long) cnt, sbuf.f_bsize);
+		fprintf(where, "%s %lu %lu\n", ent.mnt_mountp, (unsigned long) cnt, sbuf.f_bsize);
 		
 	}
 

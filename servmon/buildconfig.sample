@@ -1,0 +1,24 @@
+# $Id$
+
+# C compiler
+cc = 'cc'
+
+# C++ compiler
+cxx = 'c++'
+
+# Where to install to
+prefix = '/opt/servmon'
+
+# Options to pass to compiler
+cflags = '-W -Wall -g'
+
+# Options to pass to compiler when not linking
+cppflags = ''
+
+# Options to pass to the compiler when linking
+ldflags = ''
+
+# If your boost libraries are installed with names like
+# "libboost_signals-gcc-mt-d", set this to the suffix part
+# (i.e. "-gcc-mt-d").
+boostsuffix = ''

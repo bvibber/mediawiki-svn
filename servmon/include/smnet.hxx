@@ -9,6 +9,7 @@
 
 #undef unix
 #undef bsd
+#undef sun
 
 namespace smnet {
 

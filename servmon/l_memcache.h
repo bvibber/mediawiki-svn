@@ -216,7 +216,7 @@ struct memcache_server {
   /* The number of addresses in the cached copy.  If there is more
    * than one per DNS entry (discouraged), we establish a connection
    * to them all. */
-  u_int32_t num_addrs;
+  uint32_t num_addrs;
 
 #ifdef HAVE_SELECT
   /* Reduces the amount of user time required when reading data. */
@@ -255,22 +255,22 @@ struct memcache_server_stats {
   char *version;
   struct timeval rusage_user;
   struct timeval rusage_system;
-  u_int32_t curr_items;
-  u_int64_t total_items;
-  u_int64_t bytes;
-  u_int32_t curr_connections;
-  u_int64_t total_connections;
-  u_int32_t connection_structures;
-  u_int64_t cmd_get;
-  u_int64_t cmd_refresh;
-  u_int64_t cmd_set;
-  u_int64_t get_hits;
-  u_int64_t get_misses;
-  u_int64_t refresh_hits;
-  u_int64_t refresh_misses;
-  u_int64_t bytes_read;
-  u_int64_t bytes_written;
-  u_int64_t limit_maxbytes;
+  uint32_t curr_items;
+  uint64_t total_items;
+  uint64_t bytes;
+  uint32_t curr_connections;
+  uint64_t total_connections;
+  uint32_t connection_structures;
+  uint64_t cmd_get;
+  uint64_t cmd_refresh;
+  uint64_t cmd_set;
+  uint64_t get_hits;
+  uint64_t get_misses;
+  uint64_t refresh_hits;
+  uint64_t refresh_misses;
+  uint64_t bytes_read;
+  uint64_t bytes_written;
+  uint64_t limit_maxbytes;
 };
 
 
@@ -285,7 +285,7 @@ struct memcache {
 
   /* The number of servers in live_servers in the live_servers
    * list. */
-  u_int32_t num_live_servers;
+  uint32_t num_live_servers;
 
   /* A generic pointer not used by memcache(3), but can be used by
    * calling programs. */
@@ -334,7 +334,7 @@ struct memcache_ctxt {
 struct memcache_res {
   const char *key;	/* key */
   size_t len;		/* length of key */
-  u_int32_t hash;	/* hash of the key */
+  uint32_t hash;	/* hash of the key */
   void *val;		/* the value */
   size_t bytes;		/* length of val */
 
@@ -359,7 +359,7 @@ struct memcache_res {
   /* This is the client supplied flags.  Please note, this flags is
    * very different than _flags (_flags is an internal bit and
    * shouldn't be read/changed, etc). */
-  u_int16_t flags;
+  uint16_t flags;
 
   /* If _flags has 0x01 set, val will be free(3)'ed on when this
    * struct is cleaned up via mc_res_free() or the request is cleaned
@@ -380,7 +380,7 @@ struct memcache_req {
 
   TAILQ_HEAD(memcache_res_list, memcache_res) query;
   TAILQ_HEAD(memcache_res_cb_list, memcache_res_cb) cb;
-  u_int16_t num_keys;
+  uint16_t num_keys;
 };
 
 
@@ -443,12 +443,12 @@ struct memcache_res_cb {
 int			 mc_add(struct memcache *mc,
 				const char *key, const size_t key_len,
 				const void *val, const size_t bytes,
-				const time_t expire, const u_int16_t flags);
+				const time_t expire, const uint16_t flags);
 
 /* Gets the value from memcache and allocates the data for the caller.
  * It is the caller's responsibility to free the returned value.
  * mc_get() is the preferred interface, however. */
-void			mc_aget(struct memcache *mc, const char *key, const size_t len, void**, u_int32_t*);
+void			mc_aget(struct memcache *mc, const char *key, const size_t len, void**, uint32_t*);
 
 /* Gets the value from memcache and allocates the data for the caller.
  * It is the caller's responsibility to free the returned value.
@@ -456,7 +456,7 @@ void			mc_aget(struct memcache *mc, const char *key, const size_t len, void**, u
 void			*mc_arefresh(struct memcache *mc, const char *key, const size_t len);
 
 /* Decrements a given key */
-u_int32_t		 mc_decr(struct memcache *mc, const char *key, const size_t key_len, const u_int32_t val);
+uint32_t		 mc_decr(struct memcache *mc, const char *key, const size_t key_len, const uint32_t val);
 
 /* Deletes a given key */
 int			 mc_delete(struct memcache *mc, const char *key, const size_t key_len, const time_t hold);
@@ -477,7 +477,7 @@ void			 mc_free(struct memcache *mc);
 void			 mc_get(struct memcache *mc, struct memcache_req *req);
 
 /* Increments a given key */
-u_int32_t		 mc_incr(struct memcache *mc, const char *key, const size_t key_len, const u_int32_t val);
+uint32_t		 mc_incr(struct memcache *mc, const char *key, const size_t key_len, const uint32_t val);
 
 /* Allocates a new memcache object */
 struct memcache	*mc_new(void);
@@ -492,13 +492,13 @@ struct memcache	*mc_new(void);
 void			 mc_refresh(struct memcache *mc, struct memcache_req *req);
 
 /* Returns the release date for the library */
-u_int32_t		 mc_reldate(void);
+uint32_t		 mc_reldate(void);
 
 /* Replaces a given key to the cache */
 int			 mc_replace(struct memcache *mc,
 				    const char *key, const size_t key_len,
 				    const void *val, const size_t bytes,
-				    const time_t expire, const u_int16_t flags);
+				    const time_t expire, const uint16_t flags);
 
 /* Safely adds a key to a given request (the key is mc_strdup()'ed).
    See mc_req_add_ref() to avoid the mc_strdup(): note the warning in
@@ -594,7 +594,7 @@ struct memcache_server_stats	*mc_server_stats(struct memcache *mc, struct memcac
 int			 mc_set(struct memcache *mc,
 				const char *key, const size_t key_len,
 				const void *val, const size_t bytes,
-				const time_t expire, const u_int16_t flags);
+				const time_t expire, const uint16_t flags);
 
 /* Creates a stats object for all available servers and returns the
  * cumulative stats.  Per host-specific data is generally the same as
@@ -613,7 +613,7 @@ char			*mc_strndup(const char *str, const size_t len);
 void			 mc_timeout(struct memcache *mc, const int sec, const int usec);
 
 /* Returns a numeric version of the library */
-u_int32_t		 mc_vernum(void);
+uint32_t		 mc_vernum(void);
 
 /* Returns a string version of the library */
 const char		*mc_version(void);
@@ -669,13 +669,13 @@ int			 mcMemSetupCtxt(struct memcache_ctxt *ctxt, mcFreeFunc freeFunc,
 int			 mcm_add(const struct memcache_ctxt *ctxt, struct memcache *mc,
 				 const char *key, const size_t key_len,
 				 const void *val, const size_t bytes,
-				 const time_t expire, const u_int16_t flags);
+				 const time_t expire, const uint16_t flags);
 void			mcm_aget(const struct memcache_ctxt *ctxt, struct memcache *mc,
-				 const char *key, const size_t len, void**, u_int32_t*);
+				 const char *key, const size_t len, void**, uint32_t*);
 void			*mcm_arefresh(const struct memcache_ctxt *ctxt, struct memcache *mc,
 				      const char *key, const size_t len);
-u_int32_t		 mcm_decr(const struct memcache_ctxt *ctxt, struct memcache *mc,
-				  const char *key, const size_t key_len, const u_int32_t val);
+uint32_t		 mcm_decr(const struct memcache_ctxt *ctxt, struct memcache *mc,
+				  const char *key, const size_t key_len, const uint32_t val);
 int			 mcm_delete(const struct memcache_ctxt *ctxt, struct memcache *mc,
 				    const char *key, const size_t key_len, const time_t hold);
 int			 mcm_flush(const struct memcache_ctxt *ctxt, struct memcache *mc,
@@ -683,16 +683,16 @@ int			 mcm_flush(const struct memcache_ctxt *ctxt, struct memcache *mc,
 int			 mcm_flush_all(const struct memcache_ctxt *ctxt, struct memcache *mc);
 void			 mcm_free(const struct memcache_ctxt *ctxt, struct memcache *mc);
 void			 mcm_get(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memcache_req *req);
-u_int32_t		 mc_hash_key(const char *key, const size_t len);
-u_int32_t		 mcm_incr(const struct memcache_ctxt *ctxt, struct memcache *mc,
-				  const char *key, const size_t key_len, const u_int32_t val);
+uint32_t		 mc_hash_key(const char *key, const size_t len);
+uint32_t		 mcm_incr(const struct memcache_ctxt *ctxt, struct memcache *mc,
+				  const char *key, const size_t key_len, const uint32_t val);
 struct memcache		*mcm_new(const struct memcache_ctxt *ctxt);
 void			 mcm_refresh(const struct memcache_ctxt *ctxt, struct memcache *mc,
 				     struct memcache_req *req);
 int			 mcm_replace(const struct memcache_ctxt *ctxt, struct memcache *mc,
 				     const char *key, const size_t key_len,
 				     const void *val, const size_t bytes,
-				     const time_t expire, const u_int16_t flags);
+				     const time_t expire, const uint16_t flags);
 struct memcache_res	*mcm_req_add(const struct memcache_ctxt *ctxt, struct memcache_req *req,
 				     const char *key, const size_t len);
 struct memcache_res	*mcm_req_add_ref(const struct memcache_ctxt *ctxt, struct memcache_req *req,
@@ -716,7 +716,7 @@ void			 mc_server_deactivate(struct memcache *mc,
 					       struct memcache_server *ms);
 void			 mcm_server_disconnect(struct memcache_server *ms);
 void			 mcm_server_disconnect_all(const struct memcache *mc);
-struct memcache_server	*mcm_server_find(struct memcache *mc, const u_int32_t hash);
+struct memcache_server	*mcm_server_find(struct memcache *mc, const uint32_t hash);
 void			 mcm_server_free(const struct memcache_ctxt *ctxt, struct memcache_server *ms);
 struct memcache_server	*mcm_server_new(const struct memcache_ctxt *ctxt);
 void			 mcm_server_stats_free(const struct memcache_ctxt *ctxt, struct memcache_server_stats *s);
@@ -724,12 +724,12 @@ struct memcache_server_stats	*mcm_server_stats(const struct memcache_ctxt *ctxt,
 int			 mcm_set(const struct memcache_ctxt *ctxt, struct memcache *mc,
 				 const char *key, const size_t key_len,
 				 const void *val, const size_t bytes,
-				 const time_t expire, const u_int16_t flags);
+				 const time_t expire, const uint16_t flags);
 struct memcache_server_stats	*mcm_stats(const struct memcache_ctxt *ctxt, struct memcache *mc);
 char			*mcm_strdup(const struct memcache_ctxt *ctxt, const char *str);
 char			*mcm_strndup(const struct memcache_ctxt *ctxt, const char *str, const size_t len);
 void			 mcm_timeout(struct memcache *mc, const int sec, const int usec);
-u_int32_t		 mcm_vernum(const struct memcache_ctxt *ctxt);
+uint32_t		 mcm_vernum(const struct memcache_ctxt *ctxt);
 const char		*mcm_version(const struct memcache_ctxt *ctxt);
 /* END memory management API functions */
 
