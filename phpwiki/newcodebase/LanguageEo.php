@@ -580,7 +580,7 @@ kaj [[vikipedio:Oftaj eraroj|Oftaj vikipediaj eraroj]].
 
 
 Se vi volas, ke la Vikipedio sukcesu, tre gravas ke vi ne aldonu
-materialojn kiujn oni ne laŭleĝe rajtas aldoni pro [[kopirajtoj|kopirajto]].
+materialojn kiujn oni ne laŭleĝe rajtas aldoni pro [[Vikipedio:Kopirajto|kopirajto]].
 La leĝa respondeco vere povus malhelpi la projekton,
 do bonvolu ne fari tion.
 
@@ -942,14 +942,31 @@ Vikipedio-programistoj.",
 # Move page
 #
 "movepage"		=> "Movu paĝon",
-"movepagetext"	=> "Per la jena formularo vi povas ŝanĝi la nomon de paĝo, kunportante
-ĝian historion de redaktoj al la nova nomo.
+"movepagetext"	=> "Per la jena formulo vi povas ŝanĝi la nomon de iu paĝo, kunportante
+ĝian historion de redaktoj je la nova nomo.
 La antaŭa titolo fariĝos alidirektilo al la nova titolo.
-Ligiloj al la antaŭa titolo <i>ne</i> estos ŝanĝitaj.
+Ligiloj al la antaŭa titolo <i>ne</i> estos ŝanĝitaj; uzu
+la [[Speciala:Maintenance|riparilojn kaj zorgilojn]] por certigi,
+ke ne restos duoblaj aŭ fuŝitaj alidirektiloj.
+Kiel movanto, vi respondecas pri ĝustigado de fuŝitaj ligiloj.
+
+Notu, ke la paĝo '''ne''' estos movita se jam ekzistas paĝo
+ĉe la nova titolo, krom se ĝi estas malplena aŭ alidirektilo
+al ĉi tiu paĝo, kaj sen antaŭa redaktohistorio. Pro tio, vi ja
+povos removi la paĝon je la antaŭa titolo se vi mistajpus, kaj
+neeblas ke vi neintence forviŝus ekzistantan paĝon per movo.
+
 <b>AVERTO!</b>
 Tio povas esti drasta kaj neatendita ŝanĝo por populara paĝo;
-bonvolu certiĝi, ke vi komprenas la sekvojn antaŭ
-ol pluiri.",
+bonvolu certigi vin, ke vi komprenas ties konsekvencojn antaŭ
+ol vi antaŭeniru.",
+
+"movepagetalktext" => "La movo aŭtomate kunportos la diskuto-paĝon, se tia ekzistas, '''krom se:'''
+*Vi movas la paĝon tra sekcioj (ekz de ''Nomo'' je ''Vikipediisto:Nomo''),
+*Ne malplena diskuto-paĝo jam ekzistas je la nova nomo, aŭ
+*Vi malelektas la suban ŝaltilon.
+
+Tiujokaze, vi nepre permane kunigu la diskuto-paĝojn se vi tion deziras.",
 "movearticle"	=> "Movu paĝon",
 "movenologin"	=> "Ne ensalutinta",
 "movenologintext" => "Vi nepre estu registrita uzulo kaj <a href=\"" .
@@ -961,6 +978,9 @@ por rajti movi paĝojn.",
 "pagemovedtext" => "Paĝo \"[[$1]]\" estas movita al \"[[$2]]\".",
 "articleexists" => "Paĝo kun tiu nomo jam ekzistas, aŭ la nomo kiun vi elektis ne validas.
 Bonvolu elekti alian nomon.",
+"talkexists"	=> "Oni ja sukcesis movi la paĝon mem, sed
+ne movis la diskuto-paĝon ĉar jam ekzistas tia ĉe la nova titolo.
+Bonvolu permane kunigi ilin.",
 "movedto"		=> "movis al",
 "movetalk"		=> "Movu ankaŭ la \"diskuto\"-paĝon, se ĝi ekzistas.",
 "talkpagemoved" => "Ankaŭ la diskutpaĝo estas movita.",
@@ -1120,11 +1140,11 @@ class LanguageEo extends Language {
 				"Ux" => "\xc5\xac" , "UX" => "\xc5\xac" ,
 				"ux" => "\xc5\xad" , "uX" => "\xc5\xad"
 				) ;
-			return preg_replace ( "/([cghjsux]x)(?=(?:xx)*[^x\$])/ei" , "\$xu[\"\$1\"]" , $string ) ;
+			return preg_replace ( '/([cghjsu]x?)((?:xx)*)(?!x)/ei',
+			  'strtr( "$1", $xu ) . strtr( "$2", $xu )', $string );
 		} else if( strcasecmp( $in, "UTF-8" ) == 0 and strcasecmp( $out, "x" ) == 0 ) {
-			# FIXME: For output
 			$ux = array (
-				#"x" => "xx" , "X" => "Xx" ,
+				"x" => "xx" , "X" => "Xx" ,
 				"\xc4\x88" => "Cx" , "\xc4\x89" => "cx" ,
 				"\xc4\x9c" => "Gx" , "\xc4\x9d" => "gx" ,
 				"\xc4\xa4" => "Hx" , "\xc4\xa5" => "hx" ,
@@ -1132,12 +1152,9 @@ class LanguageEo extends Language {
 				"\xc5\x9c" => "Sx" , "\xc5\x9d" => "sx" ,
 				"\xc5\xac" => "Ux" , "\xc5\xad" => "ux"
 			) ;
-			# Double Xs only if they follow cxapelutaj literoj or other Xs.
-			# It's not canon, but it's a lot prettier
-			$string = preg_replace( '/([cghjsux]|\xc4[\x88\x89\x9c\x9d\xa4\xa5\xb4\xb5]'.
-				'|\xc5[\x9c\x9d\xac\xad])(?=x)/i', '$1x', $string );
-			return strtr ( $string , $ux ) ;
-			#return $textregs[1] . preg_replace ( "/((?:^|[^cghjsux])x)x(?!x)/i" , "\$1" , $text ) ;
+			# Double Xs only if they follow cxapelutaj literoj.
+			return preg_replace( '/((?:[cghjsu]|\xc4[\x88\x89\x9c\x9d\xa4\xa5\xb4\xb5]'.
+			  '|\xc5[\x9c\x9d\xac\xad])x*)/ei', 'strtr( "$1", $ux )', $string );
 		}
 		return iconv( $in, $out, $string );
 	}
