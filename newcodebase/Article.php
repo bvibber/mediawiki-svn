@@ -381,10 +381,12 @@ class Article {
 			}
 			# If article is new, insert it.
 
-			$aid = $wgTitle->getArticleID();
+			$aid = $wgTitle->getArticleID();			
 			if ( 0 == $aid ) {
+				# we need to strip Windoze linebreaks because some browsers 
+				# append them and the string comparison fails
 				if ( ( "" == $wpTextbox1 ) ||
-				  ( wfMsg( "newarticletext" ) == rtrim( $wpTextbox1 ) ) ) {
+				  ( wfMsg( "newarticletext" ) == rtrim( preg_replace("/\r/","",$wpTextbox1) ) ) ) {
 					$wgOut->redirect(  wfLocalUrl(
 					  $wgTitle->getPrefixedURL() ) );
 					return;
