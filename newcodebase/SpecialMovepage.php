@@ -106,7 +106,7 @@ class MovePageForm {
 		  "{$mt} \"{$ndt}\"','" .
 		  $wgUser->getID() . "','" . date( "YmdHis" ) . "',0,0,'','" .
 		  wfStrencode( $ot->getIndexTitle() ) . "','" .
-		  wfStrencode( $wgUser->getName() ) . "',1,0)";
+		  wfStrencode( $wgUser->getName() ) . "',1,1)";
 		wfQuery( $sql, $fname );
 		$newid = wfInsertId();
 

@@ -160,17 +160,18 @@ function convertCurTable()
 	  "ss_total_edits,ss_good_articles) VALUES (1,0,0,{$countables})";
 	wfQuery( $sql );
 
-	$wns = Namespace::getIndex( "Wikipedia" );
+	$wns = Namespace::getWikipediaIndex();
+	$ulp = wfMsg( "uploadlogpage" );
+	$dlp = wfMsg( "dellogpage" );
+
 	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
-	  "cur_restrictions) VALUES ({$wns},'Upload_log'," .
-	  "'Below is a list of the most recent file uploads:\\n<ul>\\n</ul>\\n'," .
-	  "'sysop')";
+	  "cur_restrictions) VALUES ({$wns},'{$ulp}','" .
+	  wfStrencode( wfMsg( "uploadlogpagetext" ) ) . "','sysop')";
 	wfQuery( $sql );
 
 	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
-	  "cur_restrictions) VALUES ({$wns},'Article_deletion_log'," .
-	  "'Below is a list of the most recent deletions:\\n<ul>\\n</ul>\\n'," .
-	  "'sysop')";
+	  "cur_restrictions) VALUES ({$wns},'{$dlp}','" .
+	  wfStrencode( wfMsg( "dellogpagetext" ) ) . "','sysop')";
 	wfQuery( $sql );
 
 	$sql = "UNLOCK TABLES";

@@ -160,7 +160,7 @@ class SkinCologneBlue extends Skin {
 			  . $sep . $this->whatLinksHere()
 			  . $sep . $this->watchPageLinksLink();
 
-			if ( Namespace::getIndex( "User" ) == $wgTitle->getNamespace() ) {
+			if ( Namespace::getUserIndex() == $wgTitle->getNamespace() ) {
 				$s .= $sep . $this->userContribsLink();
 			}
 			$s .= $sep;
@@ -168,7 +168,7 @@ class SkinCologneBlue extends Skin {
 		$s .= $this->menuHead( "qbmyoptions" );
 		if ( 0 != $wgUser->getID() ) {
 			$name = $wgUser->getName();
-			$s .= $this->makeKnownLink( "User:{$name}",
+			$s .= $this->makeKnownLink( Namespace::getUserName() . ":{$name}",
 			  wfMsg( "mypage" ) )
 			  . $sep . $this->specialLink( "watchlist" )
 		  	  . $sep . $this->specialLink( "preferences" )

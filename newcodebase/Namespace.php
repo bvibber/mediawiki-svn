@@ -34,6 +34,13 @@ class Namespace {
 		return -1;
 	}
 
+	function getUserIndex() { return 2; }
+	function getUserName() { return Namespace::getName( 2 ); }
+	function getWikipediaIndex() { return 4; }
+	function getWikipediaName() { return Namespace::getName( 4 ); }
+	function getImageIndex() { return 6; }
+	function getImageName() { return Namespace::getName( 6 ); }
+
 	function isMovable( $index )
 	{
 		if ( $index < 0 || $index > 5 ) { return false; }

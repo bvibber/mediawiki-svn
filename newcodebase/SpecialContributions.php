@@ -15,7 +15,7 @@ function wfSpecialContributions()
 
 	$target = wfCleanQueryVar( $target );
 	$nt = Title::newFromURL( $target );
-	$nt->setNamespace( Namespace::getIndex( "User" ) );
+	$nt->setNamespace( Namespace::getUserIndex() );
 
 	$sk = $wgUser->getSkin();
 	$id = User::idFromName( $nt->getDBkey() );

@@ -89,14 +89,16 @@ function wfSpecialImagelist()
 		$name = $s->img_name;
 		$ut = $s->img_user_text;
 		if ( 0 == $s->img_user ) { $ul = $ut; }
-		else { $ul = $sk->makeLink( "User:{$ut}", $ut ); }
+		else { $ul = $sk->makeLink( Namespace::getUserName() . ":{$ut}",
+		  $ut ); }
 
 		$ilink = "<a href=\"" . wfImageUrl( $name ) .
 		  "\">{$name}</a>";
 
 		$nb = str_replace( "$1", $s->img_size, wfMsg( "nbytes" ) );
 		$l = "(" .
-		  $sk->makeKnownLink( "Image:{$name}", wfMsg( "imgdesc" ) ) .
+		  $sk->makeKnownLink( Namespace::getImageName() . ":{$name}",
+		  wfMsg( "imgdesc" ) ) .
 		  ") {$ilink} . . {$nb} . . {$ul} . . " .
 		  $wgLang->timeanddate( $s->img_timestamp, true );
 

@@ -227,8 +227,7 @@ class Article {
 		}
 		$wgOut->addWikiText( $text );
 		
-		$ins = Namespace::getIndex( "Image" );
-		if ( $ins == $wgTitle->getNamespace() ) {
+		if ( Namespace::getImageIndex() == $wgTitle->getNamespace() ) {
 			$this->imageHistory();
 			$this->imageLinks();
 		}
@@ -792,8 +791,8 @@ enctype='application/x-www-form-urlencoded'>
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 
 		$sk = $wgUser->getSkin();
-		$loglink = $sk->makeKnownLink( "Wikipedia:" . wfMsg( "dellogpage" ),
-		  wfMsg( "deletionlog" ) );
+		$loglink = $sk->makeKnownLink( Namespace::getWikipediaName() .
+		  ":" . wfMsg( "dellogpage" ), wfMsg( "deletionlog" ) );
 
 		$text = str_replace( "$1" , $deleted, wfMsg( "deletedtext" ) );
 		$text = str_replace( "$2", $loglink, $text );
@@ -863,7 +862,7 @@ enctype='application/x-www-form-urlencoded'>
 		}
 		$logpage = wfStrencode( wfMsg( "dellogpage" ) );
 		$sql = "SELECT cur_id,cur_text FROM cur WHERE cur_namespace=" .
-		  Namespace::getIndex( "Wikipedia" ) . " AND cur_title='" .
+		  Namespace::getWikipediaIndex() . " AND cur_title='" .
 		  "{$logpage}'";
 		$res = wfQuery( $sql, $fname );
 
@@ -877,7 +876,7 @@ enctype='application/x-www-form-urlencoded'>
 		$uid = $wgUser->getID();
 		$ut = $wgUser->getName();
 		if ( 0 == $uid ) { $ul = $ut; }
-		else { $ul = "[[User:{$ut}|{$ut}]]"; }
+		else { $ul = "[[" . Namespace::getUserName() . ":{$ut}|{$ut}]]"; }
 
 		$art = $title->getPrefixedText();
 		$d = $wgLang->timeanddate( date( "YmdHis" ), true );
@@ -892,7 +891,6 @@ enctype='application/x-www-form-urlencoded'>
 			$lcom = "{$da}: {$wpReason}";
 			$com = " <em>({$wpReason})</em>";
 		}
-	
 		$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}{$com}</li>\n{$m[2]}";
 
 		$sql = "UPDATE cur SET cur_timestamp='" . date( "YmdHis" ) .
@@ -995,7 +993,7 @@ enctype='application/x-www-form-urlencoded'>
 		$reason = $wgUser->blockedFor();
 
 		$name = User::whoIs( $id );
-		$link = "[[User:$name|$name]]";
+		$link = "[[" . Namespace::getUserName() . ":{$name}|{$name}]]";
 
 		$text = str_replace( "$1", $link, wfMsg( "blockedtext" ) );
 		$text = str_replace( "$2", $reason, $text );
@@ -1035,8 +1033,10 @@ enctype='application/x-www-form-urlencoded'>
 		$d = $wgLang->timeanddate( date( "YmdHis" ), false ) .
 		  " (" . date( "T" ) . ")";
 
-		$text = preg_replace( "/~~~~/", "[[User:$n|$k]] $d", $text );
-		$text = preg_replace( "/~~~/", "[[User:$n|$k]]", $text );
+		$text = preg_replace( "/~~~~/", "[[" . Namespace::getUserName() .
+		  ":$n|$k]] $d", $text );
+		$text = preg_replace( "/~~~/", "[[" . Namespace::getUserName() .
+		  ":$n|$k]]", $text );
 
 		# Context links: [[|name]] and [[name (context)|]]
 		#
