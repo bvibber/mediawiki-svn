@@ -640,7 +640,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			*/			
 			if ( 0 != $wgUser->getID() && $articleExists) {
 				if($action!="edit" && $action!="history" &&
-                                   $action !=submit) 
+                                   $action != "submit" ) 
 				{$s .= $sep . $this->watchThisPage(); }
 				if ( $wgTitle->userCanEdit() ) $s .= $sep . $this->moveThisPage();
 			}
