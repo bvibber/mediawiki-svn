@@ -560,13 +560,14 @@ See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges r
 to upload files.",
 "uploadfile"	=> "Upload file",
 "uploaderror"	=> "Upload error",
-"uploadtext"	=> "To view or search previously uploaded images,
+"uploadtext"	=> "<strong>STOP!</strong> Before you upload here,
+make sure to read and follow Wikipedia's <a href=\"" .
+wfLocalUrlE( "Wikipedia:Image_use_policy" ) . "\">image use policy</a>.
+<p>To view or search previously uploaded images,
 go to the <a href=\"" . wfLocalUrlE( "Special:Imagelist" ) .
 "\">list of uploaded images</a>.
 Uploads and deletions are logged on the <a href=\"" .
 wfLocalUrlE( "Wikipedia:Upload_log" ) . "\">upload log</a>.
-See also <a href=\"" . wfLocalUrlE( "Wikipedia:Image_use_policy" ) .
-"\">image use policy</a>.
 <p>Use the form below to upload new image files for use in
 illustrating your articles.
 On most browsers, you will see a \"Browse...\" button, which will
