@@ -40,7 +40,9 @@ class SqlQueryForm {
 <table border=0><tr>
 <td align=right>{$q}:</td>
 <td align=left>
-<input type=text size=80 name='wpSqlQuery' value=\"" . htmlspecialchars($wpSqlQuery) ."\">
+<textarea name=\"wpSqlQuery\" cols=\"80\" rows=\"4\" wrap=\"virtual\">"
+. htmlspecialchars($wpSqlQuery) ."
+</textarea>
 </td>
 </tr><tr>
 <td>&nbsp;</td><td align='left'>
