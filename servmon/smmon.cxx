@@ -334,6 +334,7 @@ cfg::mysqlserver::check(void)
 	uint32_t queries = getqueries();
 	qpsv = qps.val(queries);
 	procv = getnumprocesses();
+	replag = getreplag();
 }
 
 uint64_t
@@ -346,7 +347,13 @@ cfg::mysqlserver::getmasterpos(void)
 		return 0;
 	}
 	mysqlclientp client = mysqlclient::forhost(mastername);
-	mysqlclient::resultset r = client->query("SELECT MAX(rc_timestamp) AS ts FROM recentchanges");
+	mysqlclient::resultset r;
+	try {
+		r = client->query("SELECT MAX(rc_timestamp) AS ts FROM enwiki.recentchanges");
+	} catch (mysqlerr& e) {
+		std::cerr << "mysql error: " << e.what() << "\n";
+		return 0;
+	}
 	if (r.size() < 1) return 0;
 	return b::lexical_cast<uint64_t>(r[0]["ts"]);
 }
@@ -355,7 +362,13 @@ uint64_t
 cfg::mysqlserver::getmypos(void)
 {
 	mysqlclientp client = getconn();
-	mysqlclient::resultset r = client->query("SELECT MAX(rc_timestamp) AS ts FROM recentchanges");
+	mysqlclient::resultset r;
+	try {
+		r = client->query("SELECT MAX(rc_timestamp) AS ts FROM enwiki.recentchanges");
+	} catch (mysqlerr& e) {
+		std::cerr << "mysql error: " << e.what() << "\n";
+		return 0;
+	}
 	if (r.size() < 1) return 0;
 	return b::lexical_cast<uint64_t>(r[0]["ts"]);
 }
@@ -363,7 +376,9 @@ cfg::mysqlserver::getmypos(void)
 uint64_t
 cfg::mysqlserver::getreplag(void)
 {
-	return getmasterpos() - getmypos();
+	uint64_t masterpos = getmasterpos(), mypos = getmypos();
+	std::cerr << "master pos: " << masterpos << " mypos: " << mypos;
+	return masterpos - mypos;
 }
 	
 std::string
