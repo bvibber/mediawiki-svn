@@ -282,7 +282,7 @@ $wikiWatchYes = "\"$1\" was added to your [[special:WatchList|watch list]]." ;
 $wikiWatchNo = "\"$1\" was removed from your [[special:WatchList|watch list]]." ;
 $wikiWatchlistTitle = "Watch list" ;
 $wikiWatchlistExistText = "'''Currently, you are watching the following existing articles :'''" ;
-$wikiWatchlistNotExistText = "\n====\n'''Currently, you are watching the following non-existing articles :'''" ;
+$wikiWatchlistNotExistText = "'''Currently, you are watching the following non-existing articles :'''" ;
 
 # Statistics
 $wikiStatisticsTitle = "Article statistics" ;
@@ -354,7 +354,7 @@ $wikiAskSQLtext = "This function is available for sysops only.<br>''Please, do n
 $wikiStubDelete = "<b>Delete this page!</b>" ;
 $wikiStubLinkHere = "$1 articles link here." ;
 $wikiStubShowLinks = "Toggle \"show links\" option" ;
-$wikiShowLinks = "Show pages that link to $1" ;
+$wikiShowLinks = "Show pages that link to \"$1\"" ;
 $wikiRecentChangesLinkedTitle = "Recent changes on pages linked from $1" ;
 $wikiDeleteTitle = "Deleting article '$1'" ;
 $wikiDeleteDenied = "<font size=\"+3\">You are not allowed to delete this page!</font>" ;
