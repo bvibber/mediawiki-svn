@@ -155,8 +155,9 @@ class WikiUser {
 		else $s = getenv ( REMOTE_ADDR ) ;
 
 
-		$s = explode ( "." , $s ) ;
-		$s = $s[0].".".$s[1].".".$s[2].".xxx" ;
+#		THIS USED TO CHANGE THE URL OF NON LOGGED-IN USERS TO ".xxx" ;
+#		$s = explode ( "." , $s ) ;
+#		$s = $s[0].".".$s[1].".".$s[2].".xxx" ;
 		return $s ;
 		}
 
