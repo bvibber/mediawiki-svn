@@ -136,7 +136,7 @@ class Title {
 
 		if ( "" != $this->mInterwiki ) { return ""; }
 		$s = "$wgServer$wgScript?title=" .
-		  $this->getPrefixedURL() . "&action=edit";
+		  $this->getPrefixedURL() . "&amp;action=edit";
 
 		return $s;
 	}
