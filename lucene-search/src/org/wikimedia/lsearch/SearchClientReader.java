@@ -55,6 +55,7 @@ public class SearchClientReader extends Thread {
 	String searchterm;
 	BufferedReader istrm;
 	BufferedWriter ostrm;
+	String what;
 	
 	static Searcher searcher = null;
 	static Analyzer analyzer = null;
@@ -68,7 +69,7 @@ public class SearchClientReader extends Thread {
 			//"\\(", "\\)"
 	};
 
-	static {
+	public static void init() {
 		try {
 			analyzer = new StandardAnalyzer();
 			parser = new QueryParser("contents", analyzer);
@@ -89,13 +90,23 @@ public class SearchClientReader extends Thread {
 		try {
 			istrm = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			ostrm = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+			what = istrm.readLine();
 			rawsearchterm = istrm.readLine();
 			rawsearchterm = URLDecoder.decode(rawsearchterm, "UTF-8");
-			for (int i = 0; i < specialChars.length; ++i)
-				rawsearchterm = rawsearchterm.replaceAll(specialChars[i], 
-						"\\" + specialChars[i]);
-			searchterm = "title:(" + rawsearchterm + ")^4 OR contents:(" 
-				+ rawsearchterm + ")";
+			//for (int i = 0; i < specialChars.length; ++i)
+			//	rawsearchterm = rawsearchterm.replaceAll(specialChars[i], 
+			//			"\\" + specialChars[i]);
+			String escaped = "";
+			for (int i = 0; i < rawsearchterm.length(); ++i)
+				escaped += "\\" + rawsearchterm.charAt(i);
+
+			if (what.equals("TITLEMATCH")) {
+				doTitleMatches(escaped);
+				return;
+			}
+			
+			searchterm = "title:(" + escaped + ")^4 OR contents:(" 
+				+ escaped + ")";
 			
 			System.out.println("Query: " + searchterm);
 			Query query = parser.parse(searchterm);
@@ -110,7 +121,8 @@ public class SearchClientReader extends Thread {
 	        	float score = hits.score(i);
 	        	String namespace = doc.get("namespace");
 	        	String title = doc.get("title");
-	        	ostrm.write(score + " " + namespace + " " + title + "\n");
+	        	ostrm.write(score + " " + namespace + " " + 
+	        			title.replaceAll(" ", "_") + "\n");
 	        	++i;
 	        }
 	        if (numhits == 0) {
@@ -121,6 +133,46 @@ public class SearchClientReader extends Thread {
 		} catch (IOException e) {
 		} catch (Exception e) {
 			System.out.println("Unexpected exception: " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			try {
+				istrm.close();
+				ostrm.flush();
+				ostrm.close();
+			} catch (IOException e) {}
+		}
+	}
+	
+	void doTitleMatches(String term) {
+		try {
+			String terms[] = term.split(" +");
+			term = "";
+			for (int i = 0; i < terms.length; ++i) {
+				term += terms[i] + "~ ";
+			}
+			searchterm = "title:(" + term + ")";
+			
+			System.out.println("Query: " + searchterm);
+			Query query = parser.parse(searchterm);
+			System.out.println("Parsed: [" + query.toString() + "]");
+			Hits hits = searcher.search(query);
+			int numhits = hits.length();
+			System.out.println(numhits + " hits");
+			int i = 0;
+			while (i < numhits && i < 10) {
+				Document doc = hits.doc(i);
+				float score = hits.score(i);
+				String namespace = doc.get("namespace");
+				String title = doc.get("title");
+				ostrm.write(score + " " + namespace + " " + 
+						title.replaceAll(" ", "_") + "\n");
+				++i;
+			}
+			ostrm.flush();
+		} catch (IOException e) {
+		} catch (Exception e) {
+			System.out.println("Unexpected exception: " + e.getMessage());
+			e.printStackTrace();
 		} finally {
 			try {
 				istrm.close();
@@ -141,7 +193,7 @@ public class SearchClientReader extends Thread {
 				String bestmatch = terms[i];
 				double bestscore = -1;
 				FuzzyTermEnum enum = new FuzzyTermEnum(reader, 
-						new Term("contents", terms[i]), 0.5f, 2);
+						new Term("contents", terms[i]), 0.5f, 1);
 				while (enum.next()) {
 					Term term = enum.term();
 					int score = editDistance(terms[i], term.text(), terms[i].length(),

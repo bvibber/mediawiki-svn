@@ -61,6 +61,7 @@ public class MWDaemon {
 			return;
 		}
 		indexPath = p.getProperty("mwsearch.indexpath");
+		SearchClientReader.init();
 		System.out.println("Binding server to port " + port);
 		
 		try {

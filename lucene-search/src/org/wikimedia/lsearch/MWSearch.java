@@ -120,7 +120,7 @@ public class MWSearch {
 		long now = System.currentTimeMillis();
 		long numArticles = 0;
 		
-		String query = "SELECT old_namespace,old_title,old_text " +
+		String query = "SELECT page_namespace,page_title,old_text " +
 			"FROM page, text WHERE old_id=page_latest AND page_is_redirect=0";
 		PreparedStatement pstmt;
 		try {
@@ -128,7 +128,7 @@ public class MWSearch {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				String namespace = rs.getString(1);
-				String title = rs.getString(2);
+				String title = rs.getString(2).replaceAll("_", " ");
 				String content = rs.getString(3);
 				if (!latin1) {
 					try {
@@ -136,8 +136,10 @@ public class MWSearch {
 						content = new String(content.getBytes("ISO-8859-1"), "UTF-8");
 					} catch (UnsupportedEncodingException e) {}
 				}
-				System.out.println("article " + namespace + ":" + title +
-						content.length());
+				if (title.equals("Post-it")) {
+					System.out.println("namespace="+namespace+" title="+title+
+							"content=["+content+"]");
+				}
 				Document d = new Document();
 				d.add(Field.Text("namespace", namespace));
 				d.add(Field.Text("title", title));
@@ -149,13 +151,19 @@ public class MWSearch {
 							+ ":" + title + "]: " + e5.getMessage());
 					return;
 				}
-				++numArticles;
+				if ((++numArticles % 1000) == 0) {
+					System.out.println(numArticles + "...");
+				}
 			}
+			writer.close();
 		} catch (SQLException e) {
 			System.out.println("Error: SQL error: " + e.getMessage());
 			return;
 		} catch (OutOfMemoryError em) {
 			em.printStackTrace();
+			return;
+		} catch (IOException e) {
+			System.out.println("Error: closing index: " + e.getMessage());
 			return;
 		}
 		double totaltime = (System.currentTimeMillis() - now) / 1000;
@@ -168,7 +176,6 @@ public class MWSearch {
 		i = text.indexOf("[[Image:");
 		if (i == -1) i = text.indexOf("[[image:");
 		int l = i;
-		System.out.println("1");
 		while (i > -1) {
 			j = text.indexOf("[[", i + 2);
 			k = text.indexOf("]]", i + 2);
@@ -186,7 +193,6 @@ public class MWSearch {
 				l = i;
 			}
 		}
-		System.out.println("2");
 
 		while ((i = text.indexOf("<!--")) != -1) {
 			if ((j = text.indexOf("-->", i)) == -1)
@@ -196,7 +202,6 @@ public class MWSearch {
 			else
 				text = text.substring(0, i) + text.substring(j + 4);
 		}
-		System.out.println("3");
 		text = text.replaceAll("\\{\\|(.*?)\\|\\}", "")
 			.replaceAll("\\[\\[[A-Za-z_-]+:([^|]+?)\\]\\]", "")
 			.replaceAll("\\[\\[([^|]+?)\\]\\]", "$1")
@@ -207,7 +212,6 @@ public class MWSearch {
 			.replaceAll("('''|</?[bB]>)", "")
 			.replaceAll("''", "")
 			.replaceAll("</?[uU]>", "");
-		System.out.println("4");
 		return text;
 	}
 }
