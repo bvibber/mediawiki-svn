@@ -36,6 +36,7 @@ if ( -1 == $wgTitle->getNamespace() ) {
 
 	if ( "view" == $action ) { $wgArticle->view(); }
 	else if ( "edit" == $action ) { $wgArticle->edit(); }
+	else if ( "submit" == $action ) { $wgArticle->submit(); }
 	else if ( "print" == $action ) { $wgArticle->view(); }
 	else if ( "watch" == $action ) { $wgArticle->watch(); }
 	else if ( "unwatch" == $action ) { $wgArticle->unwatch(); }
