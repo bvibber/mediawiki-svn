@@ -100,7 +100,7 @@ class Skin {
 		else { $r = " class='external'"; }
 
 		if ( 1 == $wgUser->getOption( "hover" ) ) {
-			$r .= " title='{$link}'";
+			$r .= " title=\"{$link}\"";
 		}
 		return $r;
 	}
@@ -117,7 +117,7 @@ class Skin {
 		else { $r = " class='internal'"; }
 
 		if ( 1 == $wgUser->getOption( "hover" ) ) {
-			$r .= " title='{$link}'";
+			$r .= " title=\"{$link}\"";
 		}
 		return $r;
 	}
