@@ -27,3 +27,7 @@ You can also configurate the forum with the fellowing functions:
  $wgForum->SetThreadNumber(10);        // set the total number of threads
  $wgForum->SetIncludeNumber(3);        // set the total number of full included threads
  $wgForum->SetSummaryMaxLength(10);    // set the maximum length of summary into threads table
+
+
+NOTE: this extension is not fully functionaly for MediaWiki version 1.5 due to
+a database schema change. You will not be able to list the threads.
