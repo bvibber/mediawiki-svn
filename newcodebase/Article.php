@@ -33,7 +33,7 @@ class Article {
 
 	/* static */ function nameOf( $id )
 	{
-		$sql = "SELECT HIGH_PRIORITY cur_namespace,cur_title FROM cur WHERE " .
+		$sql = "SELECT cur_namespace,cur_title FROM cur WHERE " .
 		  "cur_id={$id}";
 		$res = wfQuery( $sql, "Article::nameOf" );
 		if ( 0 == wfNumRows( $res ) ) { return NULL; }
@@ -99,7 +99,7 @@ class Article {
 			$id = $this->getID();
 			if ( 0 == $id ) return;
 
-			$sql = "SELECT HIGH_PRIORITY " .
+			$sql = "SELECT " .
 			  "cur_text,cur_timestamp,cur_user,cur_counter,cur_restrictions " .
 			  "FROM cur WHERE cur_id={$id}";
 			$res = wfQuery( $sql, $fname );
@@ -131,7 +131,7 @@ class Article {
 					}
 					$rid = $rt->getArticleID();
 					if ( 0 != $rid ) {
-						$sql = "SELECT HIGH_PRIORITY cur_text,cur_timestamp,cur_user," .
+						$sql = "SELECT cur_text,cur_timestamp,cur_user," .
 						  "cur_counter FROM cur WHERE cur_id={$rid}";
 						$res = wfQuery( $sql, $fname );
 
@@ -832,6 +832,11 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 	{
 		global $wgUser, $wgOut, $wgLang, $wgTitle;
 
+		# If page hasn't changed, client can cache this
+		
+		$wgOut->checkLastModified( $this->getTimestamp() );
+		wfProfileIn( "Article::history" );
+
 		$wgOut->setPageTitle( $wgTitle->getPRefixedText() );
 		$wgOut->setSubtitle( wfMsg( "revhistory" ) );
 		$wgOut->setArticleFlag( false );
@@ -839,6 +844,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 
 		if( $wgTitle->getArticleID() == 0 ) {
 			$wgOut->addHTML( wfMsg( "nohistory" ) );
+			wfProfileOut();
 			return;
 		}
 		
@@ -846,12 +852,13 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		  "old_comment,old_user_text,old_timestamp,old_minor_edit FROM old " .
 		  "WHERE old_namespace=" . $wgTitle->getNamespace() . " AND " .
 		  "old_title='" . wfStrencode( $wgTitle->getDBkey() ) . "' " .
-		  "ORDER BY old_timestamp DESC";
+		  "ORDER BY old_timestamp DESC LIMIT 100";
 		$res = wfQuery( $sql, "Article::history" );
 
 		$revs = wfNumRows( $res );
 		if( $wgTitle->getArticleID() == 0 ) {
 			$wgOut->addHTML( wfMsg( "nohistory" ) );
+			wfProfileOut();
 			return;
 		}
 		
@@ -874,6 +881,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		}
 		$s .= $sk->endHistoryList();
 		$wgOut->addHTML( $s );
+		wfProfileOut();
 	}
 
 	function protect()

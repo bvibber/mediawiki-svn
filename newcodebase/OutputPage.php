@@ -113,6 +113,10 @@ class OutputPage {
 	function checkLastModified ( $timestamp )
 	{
 		global $wgLang;
+		if( strstr( $_SERVER["HTTP_USER_AGENT"], "Gecko" ) ) {
+			# Mozilla has probs with our caching
+			return;
+		}
 		$ismodsince = $_SERVER["HTTP_IF_MODIFIED_SINCE"];
 		$lastmod = gmdate( "D, j M Y H:i:s", wfTimestamp2Unix( $timestamp ) ) . " GMT";
 		
