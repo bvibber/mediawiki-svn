@@ -429,9 +429,8 @@ class OutputPage {
 
 	/* private */ function replaceExternalLinks( $text )
 	{
-		global $wgAllowExternalImages;
-		$text = $this->subReplaceExternalLinks( $text, "http", true and $wgAllowExternalImages );
-		$text = $this->subReplaceExternalLinks( $text, "https", true and $wgAllowExternalImages );
+		$text = $this->subReplaceExternalLinks( $text, "http", true );
+		$text = $this->subReplaceExternalLinks( $text, "https", true );
 		$text = $this->subReplaceExternalLinks( $text, "ftp", false );
 		$text = $this->subReplaceExternalLinks( $text, "gopher", false );
 		$text = $this->subReplaceExternalLinks( $text, "news", false );
@@ -442,6 +441,8 @@ class OutputPage {
 	/* private */ function subReplaceExternalLinks( $s, $protocol, $autonumber )
 	{
 		global $wgUser, $printable;
+		global $wgAllowExternalImages;
+
 
 		$unique = "4jzAfzB8hNvf4sqyO9Edd8pSmk9rE2in0Tgw3";
 		$uc = "A-Za-z0-9_\\/:.,~%\\-+&;#?!=()@\\x80-\\xFF";
@@ -453,7 +454,7 @@ class OutputPage {
 		$e2 = "/(^|[^\\[])({$protocol}:)([{$uc}]+)([^{$uc}]|$)/";
 		$sk = $wgUser->getSkin();
 
-		if ( $autonumber ) { # Use img tags only for HTTP urls
+		if ( $autonumber and $wgAllowExternalImages) { # Use img tags only for HTTP urls
 			$s = preg_replace( $e1, "\\1" . $sk->makeImage( "{$unique}:\\3" .
 			  "/\\4.\\5", "\\4.\\5" ) . "\\6", $s );
 		}
