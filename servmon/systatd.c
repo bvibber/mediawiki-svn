@@ -78,7 +78,7 @@ FILE *where;
 	
 	if ((mtab = setmntent(PATH_MTAB, "r")) == NULL) {
 		perror("setmntent");
-		goto end;
+		return;
 	}
 
 	while ((ent = getmntent(mtab)) != NULL) {
