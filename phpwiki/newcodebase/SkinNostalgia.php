@@ -65,7 +65,9 @@ class SkinNostalgia extends Skin {
 
 		$s .= $this->bottomLinks();
 		$s .= "\n<br>" . $this->pageStats();
-		$s .= "\n<br>" . $this->searchForm();
+		$s .= "\n<br>" . $this->mainPageLink()
+		  . " | " . $this->aboutLink()
+		  . " | " . $this->searchForm();
 
 		$s .= "\n</div>\n</div>\n";
 
