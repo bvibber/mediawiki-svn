@@ -86,6 +86,7 @@ function rebuildLinkTablesPass2()
 	wfQuery( $sql );
 
 	$ins = $wgLang->getNsText( Namespace::getImage() );
+	$inslen = strlen($ins)+1;
 	$sql = "SELECT rl_f_title,rl_to FROM rebuildlinks " .
 	  "WHERE rl_to LIKE '$ins:%'";
 	$res = wfQuery( $sql );
@@ -115,7 +116,7 @@ function rebuildLinkTablesPass2()
 	$total = wfNumRows( $res );
 
 	while ( $row = wfFetchObject( $res ) ) {
-		if ( 0 == strncmp( "$ins:", $row->rl_to, 6 ) ) { continue; }
+		if ( 0 == strncmp( "$ins:", $row->rl_to, $inslen ) ) { continue; }
 
 		$nt = Title::newFromDBkey( $row->rl_to );
 		$id = $nt->getArticleID();
