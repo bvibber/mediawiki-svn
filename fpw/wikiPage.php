@@ -978,9 +978,8 @@ class WikiPage extends WikiTitle {
 
 	# This generated the special "Cologne Blue" header
 	function getCologneBlueHeader () {
-		global $wikiHome , $wikiAbout , $wikiFAQ , $wikiSpecialPages , $wikiLogIn , $wikiHeaderSubtitle , $wikiWikipediaFAQ ;
-		$bgc1 = "#6666FF" ;
-		$bgc2 = "#0000FF" ;
+		global $wikiHome , $wikiAbout , $wikiFAQ , $wikiSpecialPages , $wikiLogIn , $wikiLogOut , $wikiHeaderSubtitle , $wikiWikipediaFAQ , $user ;
+		$bgc1 = "#7089AA" ;
 		$fonts = "face=verdena,times color=white" ;
 		$ret .= "<table width='100%' border=0 cellspacing=0 cellpadding=1>\n" ;
 
@@ -993,7 +992,10 @@ class WikiPage extends WikiTitle {
 		$ret .= "<a class=syslink href='".WikiLink("Wikipedia")."'>" . strtoupperIntl ( $wikiAbout ) . "</a> | " ;
 		$ret .= "<a class=syslink href='".WikiLink("$wikiWikipediaFAQ")."'>" . strtoupperIntl ( $wikiFAQ ) . "</a> | " ;
 		$ret .= "<a class=syslink href='".WikiLink("special:Special_pages")."'>" . strtoupperIntl ( $wikiSpecialPages ) . "</a> | " ;
-		$ret .= "<a class=syslink href='".WikiLink("special:userLogin")."'>!" . strtoupperIntl ( $wikiLogIn ) ."</a> " ;
+		if ( $user->isLoggedIn )
+			$ret .= "<a class=syslink href='".WikiLink("special:userLogout")."'>" . strtoupperIntl ( $wikiLogOut ) ."</a> " ;
+		else
+			$ret .= "<a class=syslink href='".WikiLink("special:userLogin")."'>" . strtoupperIntl ( $wikiLogIn ) ."</a> " ;
 		$ret .= "</font></td></tr>\n" ;
 
 		#Row 2
@@ -1094,15 +1096,15 @@ class WikiPage extends WikiTitle {
         }
 
 	function getCologneBlueQuickBar () { # Generates the special "Cologne Blue" QUickBar
-	        global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages , $action ;
-        	global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
+	        global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages , $action , $wikiHome ;
+        	global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL , $wikiUser ;
 	        global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
         	global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate , $wikiGetDate , $wikiDiff ;
 		global $wikiMyself , $wikiLogOut , $wikiMySettings , $wikiShortPages , $wikiLongPages , $wikiUserList , $wikiEditingHistory , $wikiTopics ;
 		global $wikiAddToWatchlist , $wikiEditPage , $wikiPrintPage , $wikiTalk , $wikiEdit , $wikiPageOptions , $wikiBrowse , $wikiFind , $wikiOK;
 
 		$fonts = "face=verdana,arial" ;
-		$bg = "bgcolor=#ddddFF nowrap" ;
+		$bg = "bgcolor=#EEF1F5 nowrap" ;
 		$ret = "" ;
 
 	        $ret .= "<FORM method=get action=\"".wikiLink("")."\">" ;
@@ -1110,21 +1112,19 @@ class WikiPage extends WikiTitle {
 		$ret .= "<INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiOK\"></FORM><br>" ;
 		$ret .= "<font $fonts>\n<table border=0 cellspacing=3 cellpadding=2 width='100%'><tr><td $bg>" ;
 
-#		$ret .= "<a class=CBlink href=\"".wikiLink("__")."\">__</a><br>\n" ;
-
 		$ret .= "<font color=#666666><b>$wikiBrowse</b></font><br>\n" ;
-		$ret .= "<a class=CBlink href=\"".wikiLink("")."\">!$wikiTopics</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("")."\">$wikiHome</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:RecentChanges")."\">$wikiRecentChanges</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:NewPages")."\">$wikiNewPages</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:PopularPages")."\">$wikiPopularPages</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:WantedPages")."\">$wikiMostWanted</a><br>\n" ;
-		$ret .= "<a class=CBlink href=\"".wikiLink("special:ShortPages")."\">Short Pages</a><br>\n" ;
-		$ret .= "<a class=CBlink href=\"".wikiLink("special:LongPages")."\">Long Pages</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:ShortPages")."\">$wikiShortPagesShort Pages</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:LongPages")."\">$wikiLongPages</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:LonelyPages")."\">$wikiOrphans</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:RandomPage")."\">$wikiRandomPage</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:AllPages")."\">$wikiAllPages</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:Statistics")."\">$wikiStatistics</a><br>\n" ;
-		$ret .= "<a class=CBlink href=\"".wikiLink("special:ListUsers")."\">User list</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:ListUsers")."\">$wikiUserList</a><br>\n" ;
 
 
 		$ret .= "</td></tr><tr><td $bg>" ;
@@ -1136,8 +1136,17 @@ class WikiPage extends WikiTitle {
 		if ( !$this->isSpecialPage ) {
 			$ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=edit")."\">$wikiEditPage</a><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=print")."\">$wikiPrintPage</a><br>\n" ;
-			$ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=watch&mode=yes")."\">!$wikiAddToWatchlist</a><br>\n" ;
-			$ret .= "<a class=CBlink href=\"".wikiLink(nurlencode($this->getTalkPage()))."\">!" . ucfirstIntl ( $wikiTalk ) . "</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=watch&mode=yes")."\">$wikiAddToWatchlist</a><br>\n" ;
+
+			$n = $this->namespace ;
+			if ( stristr ( $n , "talk" ) == false ) {
+				$ret .= "<a class=CBlink href=\"".wikiLink(nurlencode($this->getTalkPage()))."\">" . ucfirstIntl ( $wikiTalk ) . "</a><br>\n" ;
+			} else {
+				$nn = str_replace ( "Talk" , "" , $this->namespace ) ;
+				$nn = str_replace ( "_" , " " , $nn ) ;
+				$nn = trim ( str_replace ( "talk" , "" , $nn ) ) ;
+				$ret .= "<a class=CBlink href=\"".wikiLink(nurlencode($nn.":".$this->mainTitle))."\">" . "Topic" . "</a><br>\n" ;
+				}
 			}
 
 		if ( !$this->isSpecialPage ) {
@@ -1162,7 +1171,10 @@ class WikiPage extends WikiTitle {
 			$ret .= "<a class=CBlink href=\"".wikiLink(nurlencode("$wikiUser:$user->name"))."\">$wikiMyself</a><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink("special:watchlist")."\">$wikiMyWatchlist</a><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink("special:editUserSettings")."\">$wikiMySettings</a><br>\n" ;
-			$ret .= "<a class=CBlink href=\"".wikiLink("special:userLogout")."\">!$wikiLogOut</a><br>\n" ;
+			if ( $user->isLoggedIn )
+				$ret .= "<a class=CBlink href=\"".wikiLink("special:userLogout")."\">$wikiLogOut</a><br>\n" ;
+			else
+				$ret .= "<a class=CBlink href=\"".wikiLink("special:userLogin")."\">$wikiLogIn</a><br>\n" ;
 			}
 
 		$ret .= "</td></tr></table></font>" ;
