@@ -167,6 +167,35 @@ class WikiPage extends WikiTitle {
     function getOtherNamespaces () {
         $a = array () ;
         if ( $this->isSpecialPage ) return $a ;
+
+
+	global $wikiNS2Talk , $wikiTalk2NS , $wikiTalk , $wikiArticle ;
+	$ns = strtolower ( $this->namespace ) ;
+	$link = "" ;
+	if ( isset ( $wikiNS2Talk[$ns] ) ) {
+		$link = $wikiNS2Talk[$ns] ;
+		$text = $wikiTalk ;
+	} else if ( isset ( $wikiTalk2NS[$ns] ) ) {
+		$link = $wikiTalk2NS[$ns] ;
+		$text = $wikiArticle ;
+		}
+
+	if ( $link != "" ) $link .= ":" ;	
+	$link .= $this->mainTitle ;
+
+	if ( $link != "" ) {
+		$text = ucfirstIntl ( $text ) ;
+		$t = new wikiTitle ;
+		$t->setTitle ( $link ) ;
+		$id = getMySQL ( "cur" , "cur_id" , "cur_title=\"".$t->secureTitle."\"" ) ;
+		if ( $id != "" ) $class = "green" ;
+		else $class = "red" ;
+		array_push ( $a , "<a class=\"$class\" href=\"".wikiLink($link)."\">$text</a>" ) ;
+		}
+
+	return $a ;
+	# THe following is outdated
+
         $n = explode ( ":" , $this->title ) ;
         if ( count ( $n ) == 1 ) $n = $n[0] ;
         else $n = $n[1] ;
