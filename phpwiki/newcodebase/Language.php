@@ -509,6 +509,9 @@ public domain or similar free resource.
 "longpagewarning" => "WARNING: This page is $1 kilobytes long; some
 browsers may have problems editing pages approaching or longer than 32kb.
 Please consider breaking the page into smaller sections.",
+"readonlywarning" => "WARNING: The database has been locked for maintenance,
+so you will not be able to save your edits right now. You may wish to cut-n-paste
+the text into a text file and save it for later.",
 
 # History pages
 #

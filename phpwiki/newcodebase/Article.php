@@ -18,7 +18,7 @@ class Article {
 		$this->mRedirectedFrom = $this->mUserText =
 		$this->mTimestamp = $this->mComment = "";
 		$this->mCountAdjustment = 0;
-        $this->mTouched = "19700101000000";
+		$this->mTouched = "19700101000000";
 	}
 
 	/* static */ function newFromID( $newid )
@@ -323,7 +323,11 @@ class Article {
 			return;
 		}
 		if ( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
+			if( isset( $wpSave ) or isset( $wpPreview ) ) {
+				$this->editForm( "preview" );
+			} else {
+				$wgOut->readOnlyPage();
+			}
 			return;
 		}
 		if ( $_SERVER['REQUEST_METHOD'] != "POST" ) unset( $wpSave );
@@ -450,6 +454,12 @@ class Article {
 				$this->setOldSubtitle();
 				$wgOut->addHTML( wfMsg( "editingold" ) );
 			}
+		}
+
+		if( wfReadOnly() ) {
+			$wgOut->addHTML( "<strong>" .
+				wfMsg( "readonlywarning" ) .
+				"</strong>" );
 		}
 
 		$kblength = (int)(strlen( $wpTextbox1 ) / 1024);
