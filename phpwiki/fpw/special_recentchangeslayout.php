@@ -9,7 +9,7 @@ function timestampAddHour ( $x , $d ) {
 
 function recentChangesLayout ( &$arr ) {
 	if ( count ( $arr ) == 0 ) return "" ;
-	global $THESCRIPT , $user , $wikiDiff , $wikiGetDate;
+	global $THESCRIPT , $user , $wikiDiff , $wikiGetDate , $wikiUser ;
 	$lastDay = "" ;
 	$color1 = $user->options["tabLine1"] ;
 	$color2 = $user->options["tabLine2"] ;
@@ -49,7 +49,7 @@ function recentChangesLayout ( &$arr ) {
 		$u = $s->cur_user_text ;
 		if ( $s->cur_user != 0 ) {
 			$xyz->SetTitle ( $u ) ;
-			$u = "<a href=\"".wikiLink("user:$xyz->url")."\">$u</a>" ;
+			$u = "<a href=\"".wikiLink("$wikiUser:$xyz->url")."\">$u</a>" ;
 		} elseif ( !$isSysop ) {
 			$u = explode ( "." , $u ) ;
 			$u = $u[0].".".$u[1].".".$u[2].".xxx" ;
@@ -92,7 +92,7 @@ function recentChangesLayout ( &$arr ) {
 			$v->SetTitle ( $s->cur_user_text ) ;
 			if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top nowrap>" ;
 			if ( $s->cur_user == 0 ) $t .= "$s->cur_user_text</td>" ;
-			else $t .= "<a href=\"".wikiLink("user:$v->url")."\">$s->cur_user_text</a></td>" ;
+			else $t .= "<a href=\"".wikiLink("$wikiUser:$v->url")."\">$s->cur_user_text</a></td>" ;
 			if ( $user->options["changesLayout"] == "table" ) $t .= "</td>" ;
 			else $t .= "; " ;
 			}

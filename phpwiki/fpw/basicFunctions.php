@@ -30,7 +30,7 @@ function tsc ( $t ) {
 # Called when editing/saving a page
 function edit ( $title ) {
 	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit , $FromEditForm ;
-	global $user , $CommentBox , $vpage , $EditTime , $wikiDescribePage ;
+	global $user , $CommentBox , $vpage , $EditTime , $wikiDescribePage , $wikiUser ;
 	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend , $wikiEditHelp , $wikiRecodeInput ;
 	global $wikiSummary , $wikiMinorEdit , $wikiCopyrightNotice , $wikiSave , $wikiPreview , $wikiDontSaveChanges ;
 	$npage = new WikiPage ;
@@ -73,7 +73,7 @@ function edit ( $title ) {
 			$text = str_replace ( "\\\"" , "\"" , $text ) ;
 #			$text = urldecode ( $text ) ;
 #			$text = str_replace ( "&" , "&amp;" , $text ) ;
-			if ( $user->isLoggedIn ) $text = str_replace ( "~~~" , "[[user:$user->name|$user->name]]" , $text ) ;
+			if ( $user->isLoggedIn ) $text = str_replace ( "~~~" , "[[$wikiUser:$user->name|$user->name]]" , $text ) ;
 			else $text = str_replace ( "~~~" , $user->getLink() , $text ) ;
 			$title = str_replace ( "\\'" , "'" , $title ) ;
 			$title = str_replace ( "\\\"" , "\"" , $title ) ;
