@@ -217,7 +217,10 @@ class User {
 	}
 
 	function getID() { return $this->mId; }
-	function setID( $v ) { $this->mId = $v; }
+	function setID( $v ) {
+		$this->mId = $v;
+		$this->mDataLoaded = false;
+	}
 
 	function getName() {
 		$this->loadFromDatabase();
