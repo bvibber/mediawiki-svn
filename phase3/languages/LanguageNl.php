@@ -321,6 +321,7 @@
 "helppage"  => "Wikipedia:Help",
 "wikititlesuffix" => "Wikipedia NL",
 "bugreports" => "Foutenrapportage",
+"sitesupport" => "Financieel bijdragen",
 "bugreportspage" => "Wikipedia:Foutenrapportage",
 "faq"   => "FAQ",
 "faqpage"  => "Wikipedia:Veel gestelde vragen",
@@ -407,7 +408,7 @@ MySQL gaf the foutmelding \"<tt>$3: $4</tt>\".",
 \"$1\"
 Vanuit de functie \"$2\"
 MySQL gaf de volgende foutmelding: \"$3: $4\".\n",
-"noconnect"  => "Verbinden met de database op $1 was niet mogelijk",
+"noconnect"  => "De database is momenteel niet bereikbaar.",
 "nodb"   => "Selectie van database $1 niet mogelijk",
 "cachederror" => "Hieronder wordt een versie uit de cache getoond. Dit is mogelijk niet de meest recente versie.",
 "readonly"  => "Database geblokeerd",
@@ -434,9 +435,9 @@ De verantwoordelijke systeembeheerder gaf hiervoor volgende reden op:
 # Aanmelden en afmelden
 "logouttitle" => "Afmelden gebruiker",
 "logouttext" => "U bent nu afgemeld.
-U kan Wikipedia anoniem blijven gebruiken, of u opnieuw aanmelden onder dezelfde of onder een andere naam.\n",
+U kunt Wikipedia anoniem blijven gebruiken, of u opnieuw aanmelden onder dezelfde of onder een andere naam.\n",
 
-"welcomecreation" => "<h2>Welkom, $1!</h2><p>Uw gebruikersprofiel is aangemaakt. U kan nu uw persoonlijke voorkeuren instellen.",
+"welcomecreation" => "<h2>Welkom, $1!</h2><p>Uw gebruikersprofiel is aangemaakt. U kunt nu uw persoonlijke voorkeuren instellen.",
 
 "loginpagetitle" => "Gebruikersnaam",
 "yourname"  => "Uw gebruikersnaam",
@@ -461,7 +462,7 @@ Invoeren van uw e-mailadres is niet verplicht; het is handig als u uw wachtwoord
 "userexists" => "De gebruikersnaam die u heeft ingevoerd is al in gebruik. Gelieve een andere naam te kiezen.",
 "youremail"  => "Uw e-mailadres",
 "yournick"  => "Uw bijnaam (voor handtekeningen)",
-"emailforlost" => "Het opgeven van een e-mailadres is niet verplicht.<br>Enkel als er een email-adres beschikbaar is, kan u een nieuw wachtwoord aanvragen indien u het oude vergeten bent.<br>Een emailadres geeft andere gebruikers de mogelijkheid u een email te sturen via een formulier. U kan die functie eventueel uitzetten via de voorkeuren.",
+"emailforlost" => "Het opgeven van een e-mailadres is niet verplicht.<br>Enkel als er een email-adres beschikbaar is, kunt u een nieuw wachtwoord aanvragen indien u het oude vergeten bent.<br>Een emailadres geeft andere gebruikers de mogelijkheid u een email te sturen via een formulier. U kunt die functie eventueel uitzetten via de voorkeuren.",
 "loginerror" => "Inlogfout",
 "noname"  => "U dient een gebruikersnaam op te geven.",
 "loginsuccesstitle" => "Aanmelden gelukt.",
@@ -569,7 +570,7 @@ $1<br>
 $2 Toon redirects &nbsp; Zoek: $3 $9",   
 "searchdisabled" => "Wegens een overbelasting van de server zijn sommige functies die het systeem extra belasten tijdelijk niet beschikbaar.
  Hierdoor is in de interne zoekfunctie van Wikipedia (vermoedelijk) niet beschikbaar voor onbepaalde duur.<p>
-Via google kan u zoeken op Wikipedia. <br>
+Via google kunt u zoeken op Wikipedia. <br>
 <form method=\"get\" action=\"http://www.google.com/search\">
 <table bgcolor=\"#ffffff\" style=\"width: 752px; height: 76px;\"><tbody><tr><td>
 <a href=\"http://www.google.com/\">
@@ -789,7 +790,7 @@ Er is in totaal $3 maal een pagina bekeken, en $4 maal een pagina bewerkt. Dat g
 "movethispage" => "Verplaats deze pagina",
 "unusedimagestext" => "<p>Let op! Het zou kunnen dat er via een directe link verwezen wordt naar een afbeelding, bijvoorbeeld vanuit een anderstalige Wikipedia. Het is daarom mogelijk dat een afbeelding hier vermeld staat terwijl het wel degelijk gebruikt wordt.",
 "booksources" => "Boekhandels",
-"booksourcetext" => "Hieronder is een lijst van externe websites die boeken verkopen en ook verdere informatie hierover kunnen verstekken. Via een ISBN-nummer in een artikel kan u via deze pagina een werk opzoeken. <p>Deze dienst is enkel ter uwer informatie. Wikipedia NL heeft <u>geen enkele</u> relatie met deze websites.",
+"booksourcetext" => "Hieronder is een lijst van externe websites die boeken verkopen en ook verdere informatie hierover kunnen verstekken. Via een ISBN-nummer in een artikel kunt u via deze pagina een werk opzoeken. <p>Deze dienst is enkel ter uwer informatie. Wikipedia NL heeft <u>geen enkele</u> relatie met deze websites.",
 "alphaindexline" => "$1 tot $2",
 
 # Email this user
@@ -802,7 +803,7 @@ en een geldig e-mailadres in uw <a href=\"" .
 te vermelden om deze functie te kunnen gebruiken.",
 "emailuser"  => "E-mail deze gebruiker",
 "emailpage"  => "E-mail gebruiker",
-"emailpagetext" => "Indien deze gebruiker een geldig e-mailadres heeft opgegeven dan kan u via dit formulier een bericht verzenden. Het e-mailadres dat u heeft opgegeven bij uw voorkeuren zal als afzender gebruikt worden.",
+"emailpagetext" => "Indien deze gebruiker een geldig e-mailadres heeft opgegeven dan kunt u via dit formulier een bericht verzenden. Het e-mailadres dat u heeft opgegeven bij uw voorkeuren zal als afzender gebruikt worden.",
 "noemailtitle" => "Geen e-mailadres gekend voor deze gebruiker",
 "noemailtext" => "Deze gebruiker heeft geen geldig e-mailadres opgegeven of heeft deze functie uitgeschakelt.",
 "emailfrom"  => "Van",
@@ -827,7 +828,7 @@ te zijn.",
   wfLocalUrl( "Speciaal:Watchlist" ) . "\">volglijst</a> toegevoegd.
 Toekomstige wijzigingen aan deze pagina en overlegpagina zullen hier vermeld worden. 
 Ook zullen deze pagina's in het <b>vet</b> verschijnen in de <a href=\"" .
-  wfLocalUrl( "Speciaal:Recentchanges" ) . "\">lijst van recente wijzigingen</a> zodat u ze eenvoudiger kan opmerken.</p>
+  wfLocalUrl( "Speciaal:Recentchanges" ) . "\">lijst van recente wijzigingen</a> zodat u ze eenvoudiger kunt opmerken.</p>
 
 <p>Indien u een pagina wenst te verwijderen van uw volglijst klik dan op \"Van volglijst verwijderen\" in de menubalk.",
 "removedwatch" => "Van volglijst verwijderen",
@@ -965,7 +966,7 @@ Vergeet niet de database opnieuw te de-blokkeren zodra u klaar bent met uw onder
 # Move page
 # Verplaats pagina
 "movepage"  => "Verplaats pagina",
-"movepagetext" => "Door middel van het onderstaande formulier kan u de titel van een pagina hernoemen. De voorgeschiedenis van de oude pagina zal deze van de nieuwe worden. De oude titel zal automatisch een doorverwijzing worden naar de nieuwe. U kunt een dergelijke hernoeming alleen doen plaatsvinden, als er geen pagina bestaat met de nieuwe naam, of als er slechts een redirect zonder verdere geschiedenis is.",
+"movepagetext" => "Door middel van het onderstaande formulier kunt u de titel van een pagina hernoemen. De voorgeschiedenis van de oude pagina zal deze van de nieuwe worden. De oude titel zal automatisch een doorverwijzing worden naar de nieuwe. U kunt een dergelijke hernoeming alleen doen plaatsvinden, als er geen pagina bestaat met de nieuwe naam, of als er slechts een redirect zonder verdere geschiedenis is.",
 "movepagetalktext" => "De bijbehorende overlegpagina wordt ook verplaatst, maar '''niet''' in de volgende gevallen:
 * Als de pagina naar een andere naamruimte wordt verplaatst
 * Als er al een niet-lege Overlegpagina bestaat onder de andere naam
