@@ -32,6 +32,7 @@ function userLogin () {
 			if ( $user->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $user->password , $expiration ) ;
 			$user->options["rememberPassword"] = $REMEMBERPASSWORD ;
 			$user->saveSettings() ;
+			loadSkin () ;
 		} else if ( isset ( $createaccount ) and $USERPASSWORD == $RETYPE and !($nu->doesUserExist()) ) {
 			$user = new wikiUser ;
 			$nu->name = ucfirstIntl ( $nu->name ) ;
@@ -46,15 +47,7 @@ function userLogin () {
 			# FIXME: user_email always comes up null in the database. Don't know why.
 			if ( isset ( $EMAILADDR ) ) $user->email = $EMAILADDR ;
 			$user->saveSettings() ;
-
-		if ( $user->options["rememberPassword"] == "on" ) $check = "checked" ;
-	  	#$s .= "<FORM action=\"".wikiLink("special:userLogin")."\" method=post><tt>\n" ;
-	  	#$s .= "$wikiYourName<INPUT TABINDEX=1 TYPE=text NAME=USERNAME VALUE=\"$user->name\" SIZE=20><br>\n" ;
-	  	#$s .= "$wikiYourPassword<INPUT TABINDEX=2 TYPE=password NAME=USERPASSWORD VALUE=\"$user->password\" SIZE=20><br>\n" ;
-  		#$s .= "<INPUT TABINDEX=4 TYPE=checkbox NAME=REMEMBERPASSWORD $check>$wikiRememberMyPassword<br>\n" ;
-	  	#$s .= "<input TABINDEX=5 type=submit name=loginattempt value=\"$wikiLogIn\">\n" ;
-  		#$s .= "</tt></FORM>\n" ;
-
+			if ( $user->options["rememberPassword"] == "on" ) $check = "checked" ;
 		} else {
 			$s .= $wikiLoginProblem ;
 			}
