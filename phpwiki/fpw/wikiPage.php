@@ -342,10 +342,6 @@ class WikiPage extends WikiTitle {
 
                 $topic = new WikiTitle ;
                 $topic->setTitle ( $link ) ;
-		if ( !$topic->validateTitle() ) {
-			$s .= "[[".$b[0]."]]";
-			continue ;
-			}
                 $link = $this->getLinkTo ( $topic ) ;
                 $topic->setTitle ( $link ) ;
 
@@ -358,6 +354,7 @@ class WikiPage extends WikiTitle {
 
                 if ( in_array ( $topic->secureTitle , $this->knownLinkedLinks ) ) $doesItExist = true ;
                 else $doesItExist = $topic->doesTopicExist( $connection ) ;
+		$isItValid = $topic->validateTitle() ;
 
                 # Check for interwiki links
                 $iwl = "" ;
@@ -375,13 +372,13 @@ class WikiPage extends WikiTitle {
                     $iwl = str_replace ( "$1" , $tt , $wikiOtherLanguages[strtolower($topic->namespace)] ) ;
                     if ( $c[0] == $c[1] ) $text = $topic->getNiceTitle ( $topic->mainTitle ) ;
                     $this->otherLanguages[$topic->namespace] = $iwl ;
-                } else if ( $doesItExist ) {
+                } else if ( $doesItExist && $isItValid ) {
                     $linkedLinks[$topic->secureTitle]++ ;
                     if ( $user->options["showHover"] == "yes" ) $hover = "title=\"" . htmlspecialchars ( $link ) . "\"" ;
                     #if ( $user->options["underlineLinks"] == "no" ) $linkStyle = " style=\"color:blue;text-decoration:none\"" ;
                     $ulink = nurlencode ( $link ) ;
                     $s .= "<a href=\"".wikiLink($ulink)."\" $hover>$text</a>" ;
-                } else {
+                } else if ($isItValid ) {
                     $unlinkedLinks[$link]++ ;
                     if ( $user->options["showHover"] == "yes" ) $hover = "title=\"Edit '" . htmlspecialchars ( $link ) . "'\"" ;
                     $ulink = wikiLink( nurlencode ( $link ) . "&amp;action=edit" ) ;
@@ -393,7 +390,12 @@ class WikiPage extends WikiTitle {
                     }
                     $s .= "<a class=\"newlink\" href=\"$ulink\" $hover>$text</a>" ;
                     $s .= "<span class=\"newlinkedge\">$bracket<a href=\"$ulink\" $hover>?</a></span>";
-                    }
+                } else {
+		    # Invalid local link
+		    $s .= "[[".$b[0]."]]";
+		    continue ;
+		    }
+
                 $s .= $b[1] ;
                 }
             }
