@@ -8,7 +8,7 @@ class OutputPage {
 	var $mSubtitle;
 
 	var $mDTopen, $mLastSection; # Used for processing DL, PRE
-	var $mLanguageLinks;
+	var $mLanguageLinks, $mSupressQuickbar;
 
 	function OutputPage()
 	{
@@ -17,6 +17,7 @@ class OutputPage {
 		$this->mHTMLtitle = $this->mPagetitle = $this->mBodytext =
 		$this->mSubtitle = $this->mDebugtext = $this->mRobotpolicy = "";
 		$this->mIsarticle = $this->mPrintable = true;
+		$this->mSupressQuickbar = false;
 		$this->mLanguageLinks = array();
 	}
 
@@ -39,6 +40,9 @@ class OutputPage {
 	function setPrintable() { $this->mPrintable = true; }
 	function isPrintable() { return $this->mPrintable; }
 	function getLanguageLinks() { return $this->mLanguageLinks; }
+
+	function supressQuickbar() { $this->mSupressQuickbar = true; }
+	function isQuickbarSupressed() { return $this->mSupressQuickbar; }
 
 	function addHTML( $text ) { $this->mBodytext .= $text; }
 	function debug( $text ) { $this->mDebugtext .= $text; }
