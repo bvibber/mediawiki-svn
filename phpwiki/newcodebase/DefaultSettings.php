@@ -8,8 +8,12 @@ $wgScript           = "{$wgScriptPath}/wiki.phtml";
 $wgStyleSheetPath   = "{$wgServer}/style";
 $wgArticlePath      = "{$wgServer}{$wgScript}?title=$1";
 $wgUploadPath       = "{$wgServer}/upload";
+$wgMathPath         = "{$wgServer}/math";
 $wgLogo				= "{$wgUploadPath}/wiki.png";
 $wgUploadDirectory	= "/usr/local/apache/htdocs/upload";
+$wgMathDirectory    = "/usr/local/apache/htdocs/math";
+$wgTmpDirectory     = "/usr/local/apache/htdocs/tmp";
+
 
 # MySQL settings
 #
@@ -34,5 +38,6 @@ $wgCookieExpiration = 2592000;
 
 $wgAllowExternalImages = true;
 $wgMiserMode = false; # Disable database-intensive features
+$wgUseTeX = true;
 
 ?>

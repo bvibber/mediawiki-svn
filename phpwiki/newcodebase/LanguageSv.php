@@ -30,6 +30,7 @@
         "contextlines" => 5,
 	"contextchars" => 50,
         "skin" => 0,
+	"math" => 1, 
 	"rcdays" => 7,
 	"rclimit" => 50,
         "highlightbroken" => 1,

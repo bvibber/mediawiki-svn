@@ -23,7 +23,7 @@
 	"quickbar" => 1, "underline" => 1, "hover" => 1,
 	"cols" => 80, "rows" => 25, "searchlimit" => 20,
 	"contextlines" => 5, "contextchars" => 50,
-	"skin" => 0, "rcdays" => 7, "rclimit" => 50,
+	"skin" => 0, "math" => 1, "rcdays" => 7, "rclimit" => 50,
 	"highlightbroken" => 1, "stubthreshold" => 0
 );
 
@@ -33,6 +33,10 @@
 
 /* private */ $wgSkinNamesEn = array(
 	"Standard", "Nostalgia", "Cologne Blue"
+);
+
+/* private */ $wgMathNamesEn = array(
+	"Aways render PNG", "Try HTML first, fallback to PNG if too complex", "Leave it as TeX (for text browsers)"
 );
 
 /* private */ $wgUserTogglesEn = array(
@@ -551,6 +555,12 @@ Your internal ID number is $2.",
 "qbsettings"	=> "Quickbar settings", 
 "changepassword" => "Change password",
 "skin"			=> "Skin",
+"math"			=> "Rendering math",
+"math_failure"		=> "Failed to parse",
+"math_unknown_error"	=> "unknown error",
+"math_unknown_function"	=> "unknown function ",
+"math_lexing_error"	=> "lexing error",
+"math_syntax_error"	=> "syntax error",
 "saveprefs"		=> "Save preferences",
 "resetprefs"	=> "Reset preferences",
 "oldpassword"	=> "Old password",
@@ -1049,6 +1059,11 @@ class Language {
 	function getSkinNames() {
 		global $wgSkinNamesEn;
 		return $wgSkinNamesEn;
+	}
+
+	function getMathNames() {
+		global $wgMathNamesEn;
+		return $wgMathNamesEn;
 	}
 
 	function getUserToggles() {

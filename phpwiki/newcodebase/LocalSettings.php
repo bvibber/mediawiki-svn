@@ -13,6 +13,9 @@ $wgRedirectScript	= "/redirect.phtml";
 $wgArticlePath      = "$wgServer$wgScript?title=$1";
 $wgUploadPath       = "http://www.myhost.com/upload";
 $wgUploadDirectory	= "/usr/local/apache/htdocs/upload";
+$wgMathPath         = "http://wroclaw.taw.pl.eu.org/~taw/wiki/math";
+$wgMathDirectory    = "/usr/local/apache/htdocs/math/";
+$wgTmpDirectory     = "/usr/local/apache/htdocs/tmp/";
 $wgLogo				= "$wgUploadPath/wiki.png";
 
 # MySQL settings

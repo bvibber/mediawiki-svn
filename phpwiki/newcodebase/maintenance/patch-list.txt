@@ -38,3 +38,17 @@ and whatnot.
 Run patch-watchlist.sql against your database. If all is well, drop
 the oldwatchlist table which is no longer needed. (Note that this update
 also drops the vestigial user_watchlist column.)
+
+
+
+* 2002-12-26: TeX math rendering adds 'math' table
+A new 'math' table is used to cache TeX sections.
+
+Run patch-math.sql against your database, and add 'tmp' and 'math'
+subdirectories to your tree alongside the upload directory, and copy
+the 'math' source subdirectory under the wiki's PHP directory and run
+"make" to compile the texvc evaluator. (whew!)
+
+TeX support requires TeX, OCaml, and ImageMagick. If you don't want
+to use TeX support on your wiki, you can globally disable it by
+setting $wgUseTeX=false in LocalSettings.php.

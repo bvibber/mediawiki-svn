@@ -1,6 +1,83 @@
 <?
 # See design.doc
 
+function linkToMathImage ( $tex, $outputhash )
+{
+    global $wgMathPath;
+    return "<img src=\"".$wgMathPath."/".$outputhash.".png\" alt=\"".wfEscapeHTML($tex)."\">";
+}
+
+function renderMath( $tex )
+{
+    global $wgUser, $wgMathDirectory, $wgTmpDirectory, $wgInputEncoding;
+    $mf   = wfMsg( "math_failure" );
+    $munk = wfMsg( "math_unknown_error" );
+
+    $fname = "renderMath";
+
+    $math = $wgUser->getOption("math");
+    if ($math == 3)
+	return ('$ '.wfEscapeHTML($tex).' $');
+
+    $md5 = md5($tex);
+    $md5_sql = mysql_escape_string(pack("H32", $md5));
+    if ($math == 0)
+	$sql = "SELECT math_outputhash FROM math WHERE math_inputhash = '".$md5_sql."'";
+    else
+	$sql = "SELECT math_outputhash,math_conservative,math_html FROM math WHERE math_inputhash = '".$md5_sql."	'";
+
+    $res = wfQuery( $sql, $fname );
+    if ( wfNumRows( $res ) == 0 )
+    {
+	$cmd = "./math/texvc ".escapeshellarg($wgTmpDirectory)." ".
+		      escapeshellarg($wgMathDirectory)." ".escapeshellarg($tex)." ".escapeshellarg($wgInputEncoding);
+	$contents = `$cmd`;
+
+	if (strlen($contents) == 0)
+	    return "<b>".$mf." (".$munk."): ".wfEscapeHTML($tex)."</b>";
+	$retval = substr ($contents, 0, 1);
+	if ($retval != "+" && $retval != 'C')
+	{
+	    if ($retval == "L")
+		$errmsg = wfMsg( "math_lexing_error" );
+	    else if ($retval == "S")
+		$errmsg = wfMsg( "math_syntax_error" );
+	    else if ($retval == "F")
+		$errmsg = wfMsg( "math_unknown_function" );
+	    else
+		$errmsg = $munk;
+	    return "<b>".$mf." (".$errmsg.substr($contents, 1)."): ".wfEscapeHTML($tex)."</b>";
+	}
+
+	$outmd5 = substr ($contents, 1, 32);
+	if (!preg_match("/^[a-f0-9]{32}$/", $outmd5))
+	    return "<b>".$mf." (".$munk."): ".wfEscapeHTML($tex)."</b>";
+
+	$outmd5_sql = mysql_escape_string(pack("H32", $outmd5));
+	$outhtml = substr ($contents, 33);
+	
+	if ($retval == "+")
+		$sql = "INSERT INTO math VALUES ('".$md5_sql."', '".$outmd5_sql."', 0, '". wfStrencode($outhtml) . "')";
+	else
+		$sql = "INSERT INTO math VALUES ('".$md5_sql."', '".$outmd5_sql."', 1, '". wfStrencode($outhtml) . "')";
+	$res = wfQuery( $sql, $fname );
+	# we don't really care if it fails
+
+	if ( ($outhtml != "") && (($math == 2) || (($math == 1) && ($retval == "C"))))
+	    return $outhtml;
+	else
+	    return linkToMathImage($tex, $outmd5);
+    } else {
+	$rpage = wfFetchObject ( $res );
+	$outputhash = unpack ("H32md5", $rpage->math_outputhash);
+	$outputhash = $outputhash ['md5'];
+	if ( ($math == 0) || ($rpage->math_html == '') || (($math == 1) && ($rpage->math_conservative == 0)) )
+	    return linkToMathImage ( $tex, $outputhash );
+	else
+	    return $rpage->math_html;
+    }
+}
+
 class OutputPage {
 	var $mHeaders, $mCookies, $mMetatags, $mKeywords;
 	var $mLinktags, $mPagetitle, $mBodytext, $mDebugtext;
@@ -57,10 +134,19 @@ class OutputPage {
 
 	function addWikiText( $text, $linestart = true )
 	{
-		$unique = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv4";
+		global $wgUseTeX;
+		$unique  = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv4";
+		$unique2 = "4LIQ9nXtiYFPCSfitVwDw7EYwQlL4GeeQ7qSO";
+		$unique3 = "fPaA8gDfdLBqzj68Yjg9Hil3qEF8JGO0uszIp";
 		$nwlist = array();
 		$nwsecs = 0;
+		$mathlist = array();
+		$mathsecs = 0;
+		$prelist = array ();
+		$presecs = 0;
 		$stripped = "";
+		$stripped2 = "";
+		$stripped3 = "";
 
 		while ( "" != $text ) {
 			$p = preg_split( "/<\\s*nowiki\\s*>/i", $text, 2 );
@@ -69,15 +155,54 @@ class OutputPage {
 			else {
 				$q = preg_split( "/<\\/\\s*nowiki\\s*>/i", $p[1], 2 );
 				++$nwsecs;
-				$nwlist[$nwsecs] = $q[0];
+				$nwlist[$nwsecs] = wfEscapeHTML($q[0]);
 				$stripped .= $unique;
 				$text = $q[1];
 			}
 		}
-		$text = $this->doWikiPass2( $stripped, $linestart );
+
+		if( $wgUseTeX ) {
+			while ( "" != $stripped ) {
+				$p = preg_split( "/<\\s*math\\s*>/i", $stripped, 2 );
+				$stripped2 .= $p[0];
+				if ( ( count( $p ) < 2 ) || ( "" == $p[1] ) ) { $stripped = ""; }
+				else {
+					$q = preg_split( "/<\\/\\s*math\\s*>/i", $p[1], 2 );
+					++$mathsecs;
+					$mathlist[$mathsecs] = renderMath($q[0]);
+					$stripped2 .= $unique2;
+					$stripped = $q[1];
+				}
+			}
+		} else {
+			$stripped2 = $stripped;
+		}
+
+		while ( "" != $stripped2 ) {
+			$p = preg_split( "/<\\s*pre\\s*>/i", $stripped2, 2 );
+			$stripped3 .= $p[0];
+			if ( ( count( $p ) < 2 ) || ( "" == $p[1] ) ) { $stripped2 = ""; }
+			else {
+				$q = preg_split( "/<\\/\\s*pre\\s*>/i", $p[1], 2 );
+				++$presecs;
+				$prelist[$presecs] = "<pre>". wfEscapeHTML($q[0]). "</pre>";
+				$stripped3 .= $unique3;
+				$stripped2 = $q[1];
+			}
+		}
+
+		$text = $this->doWikiPass2( $stripped3, $linestart );
+
+		for ( $i = 1; $i <= $presecs; ++$i ) {
+			$text = preg_replace( "/{$unique3}/", str_replace( '$', '\$', $prelist[$i] ), $text, 1 );
+		}
+
+		for ( $i = 1; $i <= $mathsecs; ++$i ) {
+			$text = preg_replace( "/{$unique2}/", str_replace( '$', '\$', $mathlist[$i] ), $text, 1 );
+		}
+
 		for ( $i = 1; $i <= $nwsecs; ++$i ) {
-			$text = preg_replace( "/{$unique}/", str_replace( '$', '\$', wfEscapeHTML( $nwlist[$i] ) ),
-			  $text, 1 );
+			$text = preg_replace( "/{$unique}/", str_replace( '$', '\$', $nwlist[$i] ), $text, 1 );
 		}
 		$this->addHTML( $text );
 	}
