@@ -1,0 +1,23 @@
+# $Id$
+
+# C compiler
+cc = 'cc'
+
+# Where to install to
+prefix = '/opt/rdcp'
+
+# Options to pass to compiler
+cflags = '-W -Wall -g'
+
+# Options to pass to compiler when not linking
+cppflags = ''
+
+# Options to pass to the compiler when linking
+ldflags = ''
+
+# Option to pass to compiler when not linking
+cppflags = ''
+
+# Places to find include files and libraries
+cpppath = []
+libpath = []
