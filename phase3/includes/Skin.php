@@ -1713,8 +1713,10 @@ class Skin {
 
 	function editSectionLink($section) {
 
+		global $printable;
 		global $wgTitle,$wgUser,$oldid;
 		if($oldid) return "";
+		if ($printable) return "";
 		$editurl="&section={$section}";
 		$url=$this->makeKnownLink($wgTitle->getPrefixedText(),wfMsg("editsection"),"action=edit".$editurl);
 		return "<div style=\"float:right;margin-left:5px;\"><small>[".$url."]</small></div>";

@@ -86,7 +86,13 @@ $wgProfiling = false; # Enable for more detailed by-function times in debug log
 # but this will increase CPU usage.
 # Requires zlib support enabled in PHP.
 $wgUseGzip = false;
-$wgCompressByDefault = true;
+
+# For security, the user password hashes include "salt" to
+# make it more difficult for someone who somehow gets ahold
+# of the hashes to crack them all at once.
+# 
+# For compatibility with old installations, set to false.
+$wgPasswordSalt = true;
 
 # Which namespaces should support subpages?
 # See Language.php for a list of namespaces.

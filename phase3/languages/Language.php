@@ -394,8 +394,9 @@ The last attempted database query was:
 \"$1\"
 from within function \"$2\".
 MySQL returned error \"$3: $4\".\n",
-"noconnect"		=> "Could not connect to DB on $1",
+"noconnect"		=> "Sorry! The wiki is experiencing some technical difficulties, and cannot contact the database server.",
 "nodb"			=> "Could not select database $1",
+"cachederror"	=> "The following is a cached copy of the requested page, and may not be up to date.",
 "readonly"		=> "Database locked",
 "enterlockreason" => "Enter a reason for the lock, including an estimate
 of when the lock will be released",
@@ -908,6 +909,24 @@ make it easier to pick out.</p>
 "watchthispage"	=> "Watch this page",
 "unwatchthispage" => "Stop watching",
 "notanarticle"	=> "Not an article",
+"watchnochange" => "None of your watched items were edited in the time period displayed.",
+"watchdetails" => "($1 pages watched not counting talk pages;
+$2 total pages edited since cutoff;
+$3...
+<a href='$4'>show and edit complete list</a>.)",
+"watchmethod-recent" => "checking recent edits for watched pages",
+"watchmethod-list" => "checking watched pages for recent edits",
+"removechecked" => "Remove checked items from watchlist",
+"watchlistcontains" => "Your watchlist contains $1 pages.",
+"watcheditlist" => "Here's an alphabetical list of your
+watched pages. Check the boxes of pages you want to remove
+from your watchlist and click the 'remove checked' button
+at the bottom of the screen.",
+"removingchecked" => "Removing requested items from watchlist...",
+"couldntremove" => "Couldn't remove item '$1'...",
+"iteminvalidname" => "Problem with item '$1', invalid name...",
+"wlnote" => "Below are the last $1 changes in the last <b>$2</b> hours.",
+
 
 # Delete/protect/revert
 #
