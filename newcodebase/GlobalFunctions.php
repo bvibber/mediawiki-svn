@@ -264,6 +264,14 @@ function wfSearch( $s )
 	$se->showResults();
 }
 
+function wfGo($s) { # pick the nearest match
+
+	$se = new SearchEngine( wfCleanQueryVar( $s ) );
+	$se->goResult();
+
+
+}
+
 function wfNumberOfArticles()
 {
 	global $wgNumberOfArticles;
