@@ -315,7 +315,13 @@ ircclnt::ircclnt(std::string const& serv, int port)
 	sckt->svc(lexical_cast<std::string>(port));
 	sckt->node(serv);
 	cip = true;
-	if (sckt->connect()) { cip = false; connected(); }
+	try {
+		if (sckt->connect()) { cip = false; connected(); }
+	} catch (smnet::sckterr& e) {
+		SMI(smlog::log)->logmsg(0, std::string("IRC connection failed: ") + e.what());
+		cip = false;
+		return;
+	}
 	boost::function<void(smnet::scktp, int)> f =
 			boost::bind(&ircclnt::data_cb, this, _2);
 	SMI(smnet::smpx)->add(f, static_pointer_cast<smnet::sckt>(sckt), smnet::smpx::srd /*| smnet::smpx::swr*/);

@@ -16,6 +16,8 @@ enum dbg_t {
 	
 class log : public smutl::singleton<log> {
 public:
+	void initialise(void);
+	
 	void logmsg(int ircvl, str message);
 	void debug(dbg_t func, str message);
 

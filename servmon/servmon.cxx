@@ -29,6 +29,7 @@ main(int argc, char *argv[])
 	SMI(smcfg::cfg); // force reading
 	SMI(smirc::cfg)->initialise();
 	SMI(smmon::cfg)->initialise();
+	SMI(smlog::log)->initialise();
 	SMI(smmc::mc)->initialise();
 	csmplex::csmplexd cm;
 	cm.start();

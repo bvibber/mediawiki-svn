@@ -12,6 +12,10 @@
 
 namespace smnet {
 
+static const int
+	internet = 1,
+	unix = 2;
+	
 struct sckterr : public std::runtime_error {
 	sckterr(void) : std::runtime_error(std::strerror(errno)), err(errno) {};
 	sckterr(char const *s) : std::runtime_error(s), err(0) {}
@@ -32,7 +36,7 @@ class smpx;
 
 class sckt {
 public:
-	sckt(void);
+	sckt(int type = internet);
 	virtual ~sckt(void);
 	
 	/*
@@ -47,17 +51,21 @@ private:
 	friend class smpx;
 
 protected:
-	sockaddr_in sin;
+	sockaddr_storage sin;
 	int s;
+	int type;
+	int len;
 
-	sckt(int, sockaddr_in const *, socklen_t);
+	sckt(int, int, sockaddr const *, socklen_t);
 };		
 
 typedef shared_ptr<sckt> scktp;
 	
 class clnt : public sckt {
 public:
-	clnt(void) {};
+	clnt(int type = internet)
+		: sckt(type)
+		{}
 
 	bool connect(void);
 
@@ -79,8 +87,8 @@ public:
 private:
 	friend class lsnr;
 
-	clnt(int s_, sockaddr_in const * sin_, socklen_t len_)
-		: sckt(s_, sin_, len_)
+	clnt(int type, int s_, sockaddr const * sin_, socklen_t len_)
+		: sckt(type, s_, sin_, len_)
 		{}
 	
 	uint _need_data(void);
@@ -91,6 +99,9 @@ typedef shared_ptr<clnt> clntp;
 
 class lsnr : public sckt {
 public:
+	lsnr(int type = internet)
+		: sckt(type)
+		{}
 	void lsn(void);
 	shared_ptr<clnt> wt_acc(void);
 };
