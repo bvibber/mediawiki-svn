@@ -663,6 +663,10 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "debug"			=> "Debug",
 "newpages"		=> "New pages",
 "movethispage"	=> "Move this page",
+"unusedimagestext" => "<p>Please note that other web sites
+such as the international Wikipedias may link to an image with
+a direct URL, and so may still be listed here despite being
+in active use.",
 
 # Watchlist
 #
