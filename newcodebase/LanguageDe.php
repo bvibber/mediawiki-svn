@@ -587,7 +587,7 @@ Im $2 finden Sie eine Liste der letzten Löschungen.",
 "contributions"	=> "Benutzerbeiträge",
 "contribsub"	=> "Für $1",
 "nocontribs"	=> "Es wurden keine Änderungen für diese Kriterien gefunden.",
-"ucnote"		=> "Dies sinde die letzter <b>$1</b> Beiträge des Benutzers in den letzten <b>$2</b> Tagen.",
+"ucnote"		=> "Dies sind die letzten <b>$1</b> Beiträge des Benutzers in den letzten <b>$2</b> Tagen.",
 "uclinks"		=> "Zeige die letzten $1 Beiträge; zeige die letzten $2 Tage.",
 
 # What links here
