@@ -2,10 +2,11 @@
 
 function wfSpecialMaintenance ()
 	{
-	global $wgUser, $wgOut, $wgLang, $wgTitle, $subfunction;
+	global $wgUser, $wgOut, $wgLang, $wgTitle, $subfunction, $wgLanguageCode, $submitmll;
 	if ( $subfunction == "disambiguations" ) return wfSpecialDisambiguations() ;
 	if ( $subfunction == "doubleredirects" ) return wfSpecialDoubleRedirects() ;
 	if ( $subfunction == "selflinks" ) return wfSpecialSelfLinks() ;
+	if ( isset ( $submitmll ) ) return wfSpecialMissingLanguageLinks() ;
 
 	$sk = $wgUser->getSkin();
 	$ns = $wgLang->getNamespaces() ;
@@ -14,6 +15,27 @@ function wfSpecialMaintenance ()
 	$r .= "<li>".getMPL("disambiguations")."</li>\n" ;
 	$r .= "<li>".getMPL("doubleredirects")."</li>\n" ;
 	$r .= "<li>".getMPL("selflinks")."</li>\n" ;
+
+	$r .= "<li>";
+	$l = getMPL("missinglanguagelinks");
+	$l = str_replace ( "</a>" , "" , $l ) ;
+	$l = str_replace ( "<a " , "<FORM method=post " , $l ) ;
+	$l = explode ( ">" , $l ) ;
+	$l = $l[0] ;
+	$r .= $l."\n" ;
+	$r .= "<input type=submit name='submitmll' value='" ;
+	$r .= wfMsg("missinglanguagelinksbutton");
+	$r .= "'>\n" ;
+	$r .= "<select name=thelang>\n" ;
+	$a = $wgLang->getLanguageNames();
+	$ak = array_keys ( $a ) ;
+	foreach ( $ak AS $k ) {
+		if ( $k != $wgLanguageCode )
+			$r .= "<option value='{$k}'>{$a[$k]}</option>\n" ;
+		}
+	$r .= "</select>\n" ;
+	$r .= "</FORM>\n</li>" ;
+
 	$r .= "</UL>\n" ;
 	$wgOut->addHTML ( $r ) ;
 	}
@@ -158,6 +180,47 @@ function wfSpecialSelfLinks()
 
 	$sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
 	$sl = str_replace ( "REPLACETHIS" , "Special:Maintenance&subfunction=selflinks" , $sl ) ;
+	$wgOut->addHTML( "<br>{$sl}\n" );
+
+	$sk = $wgUser->getSkin();
+	$s = "<ol start=" . ( $offset + 1 ) . ">";
+	while ( $obj = wfFetchObject( $res ) )
+		$s .= "<li>".$sk->makeKnownLink ( $obj->cur_title )."</li>\n" ;
+	wfFreeResult( $res );
+	$s .= "</ol>";
+	$wgOut->addHTML( $s );
+	$wgOut->addHTML( "<p>{$sl}\n" );
+}
+
+function wfSpecialMissingLanguageLinks()
+{
+	global $wgUser, $wgOut, $wgLang, $wgTitle, $thelang, $subfunction;
+	global $limit, $offset; # From query string
+	$fname = "wfSpecialMissingLanguageLinks";
+	$subfunction = "missinglanguagelinks" ;
+	if ( $thelang == "w" ) $thelang = "en" ; # Fix for international wikis
+
+	if ( ! $limit ) {
+		$limit = $wgUser->getOption( "rclimit" );
+		if ( ! $limit ) { $limit = 50; }
+	}
+	if ( ! $offset ) { $offset = 0; }
+
+	$sql = "SELECT cur_title FROM cur WHERE cur_namespace=0 AND cur_is_redirect=0 AND cur_title NOT LIKE '%/%' AND cur_text NOT LIKE '%[[{$thelang}:%' LIMIT {$offset}, {$limit}";
+
+	$res = wfQuery( $sql, $fname );
+
+
+	$mll = wfMsg("missinglanguagelinkstext");
+	$mll = str_replace ( "$1" , $wgLang->getLanguageName($thelang) , $mll ) ;
+
+	$top = getMaintenancePageBacklink();
+	$top .= "<p>$mll</p><br>";
+	$top .= SearchEngine::showingResults( $offset, $limit );
+	$wgOut->addHTML( "<p>{$top}\n" );
+
+	$sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
+	$sl = str_replace ( "REPLACETHIS" , "Special:Maintenance&subfunction=missinglanguagelinks&thelang={$thelang}" , $sl ) ;
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$sk = $wgUser->getSkin();

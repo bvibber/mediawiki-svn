@@ -488,6 +488,9 @@ Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
 "doubleredirectstext"	=> "<b>Achtung:</b> Diese Liste kann \"falsche Positive\"enthalten. Das ist dann der Fall, wenn ein Redirect ausser dem Redirect-Verweis noch weiteren Text mit anderen Verweisen enthält. Letztere sollten dann entfernt werden.",
 "selflinks"		=> "Seiten, die auf sich selbst verweisen",
 "selflinkstext"		=> "Die folgenden Artikel verweisen auf sich selbst, was sie nicht sollten.",
+"missinglanguagelinks"  => "Fehlende Sprachverweise",
+"missinglanguagelinksbutton"    => "Zeige fehlende Sprachversweise nach",
+"missinglanguagelinkstext"      => "Diese Artikel haben <i>keinen</i> Verweis zu ihrem Gegenstück in $1. Redirects und Unterseiten werden <i>nicht</i> angezeigt.",
 
 
 # Miscellaneous special pages
@@ -714,6 +717,11 @@ class LanguageDe extends Language {
 	function getUserToggles() {
 		global $wgUserTogglesDe;
 		return $wgUserTogglesDe;
+	}
+
+	function getLanguageNames() {
+		global $wgLanguageNamesDe;
+		return $wgLanguageNamesDe;
 	}
 
 	function getLanguageName( $code ) {

@@ -693,6 +693,10 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "doubleredirectstext"	=> "<b>Attention:</b> This list may contain false positives. That usually means there is additional text with links below the first #REDIRECT.<br>\nEach row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" taget article, which the first redirect should point to.",
 "selflinks"		=> "Pages with Self Links",
 "selflinkstext"		=> "The following pages contain a link to themselves, which they should not.",
+"missinglanguagelinks"  => "Missing Language Links",
+"missinglanguagelinksbutton"    => "Find missing language links for",
+"missinglanguagelinkstext"      => "These articles do <i>not</i> link to their counterpart in $1. Redirects and subpages are <i>not</i> shown.",
+
 
 # Miscellaneous special pages
 #
@@ -985,6 +989,11 @@ class Language {
 	function getUserToggles() {
 		global $wgUserTogglesEn;
 		return $wgUserTogglesEn;
+	}
+
+	function getLanguageNames() {
+		global $wgLanguageNamesEn;
+		return $wgLanguageNamesEn;
 	}
 
 	function getLanguageName( $code ) {
