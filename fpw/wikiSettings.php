@@ -36,6 +36,7 @@ if ( ! isset ( $wikiEncodingNames ) ) $wikiEncodingNames = array($wikiCharset); 
 # Functions
 
 # Is there any reason to localise this function? Ever?
+# Not for a language, but other servers, if others want to use this software!
 function wikiLink ( $a ) {
 	global $wikiArticleSource ;
 	$a = str_replace ( " " , "+" , $a ) ;
