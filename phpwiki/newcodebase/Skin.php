@@ -70,7 +70,7 @@ class Skin {
 			  "text-decoration: none; }\n";
 		}
 		if ( 1 == $wgUser->getOption( "highlightbroken" ) ) {
-			$s .= "a.new { color: #880000; }\n";
+			$s .= "a.new { color: #CC2200; background-color: white; }\n";
 		}
 		if ( 1 == $wgUser->getOption( "justify" ) ) {
 			$s .= "#article { text-align: justify; }\n";
@@ -95,6 +95,7 @@ class Skin {
 
 		$link = urldecode( $link );
 		$link = str_replace( "_", " ", $link );
+		$link = wfEscapeHTML( $link );
 
 		if ( $wgOut->isPrintable() ) { $r = " class='printable'"; }
 		else { $r = " class='external'"; }
@@ -111,6 +112,7 @@ class Skin {
 
 		$link = urldecode( $link );
 		$link = str_replace( "_", " ", $link );
+		$link = wfEscapeHTML( $link );
 
 		if ( $wgOut->isPrintable() ) { $r = " class='printable'"; }
 		else if ( $broken ) { $r = " class='new'"; }

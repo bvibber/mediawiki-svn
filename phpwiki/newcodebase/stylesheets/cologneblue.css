@@ -8,7 +8,7 @@ body { margin: 0px; padding: 4px; }
 }
 #article, #article td, #article th, #article p {
  font-family: Verdana, Arial, sans-serif;
- font-size: 10pt; color: black;
+ font-size: 10pt; color: black; background-color: white;
  padding: 0;
 }
 #article p, #article ul, #article ol, #article dl {
@@ -21,19 +21,20 @@ p, pre, td, th, li, dd, dt { line-height: 1.25; }
 #footer form { display: inline; }
 
 #sitetitle {
- font-family: Times, serif; color: white;
- font-weight: none; font-size: 32pt;
+ font-family: Times, serif; color: white; background-color: #6688AA;
+ font-weight: normal; font-size: 32pt;
  padding-bottom: 0;
 }
 td.top {
- background-color: #6688AA;
+ background-color: #6688AA; color: white;
  margin-bottom: 4px; text-transform: uppercase;
  padding:1px;
- color: white; font-family: Verdana, Arial, sans-serif; font-size: 8pt;
+ font-family: Verdana, Arial, sans-serif; font-size: 8pt;
 }
 td.top a {
  font-family: Verdana, Arial, sans-serif;
- color: white; text-decoration: none; font-size: 10pt;
+ background-color: #6688AA; color: white;
+ text-decoration: none; font-size: 10pt;
 }
 td.bottom {
  font-family: Verdana, Arial, sans-serif;
@@ -41,38 +42,43 @@ td.bottom {
  padding: 0;
 }
 #pagestats {
- font-family: Times, serif; color: black;
+ font-family: Times, serif;
+ color: black; background-color: white;
  font-size: 9pt;
 }
 #sitesub {
  font-family: Verdana, Arial, sans-serif;
- font-size: 9pt; font-weight: bold; color: black;
+ font-size: 9pt; font-weight: bold;
+ color: black; background-color: white;
  padding-top: 0;
 }
 #quickbar {
  font-family: Verdana, Arial, sans-serif;
  font-size: 8pt; font-weight: bold; line-height: 1.25;
- text-decoration: none; color: black;
+ text-decoration: none;
+ color: black; background-color: white;
  padding: 0; margin-top: 0;
 }
-#quickbar a { color: #446688; }
+#quickbar a { color: #446688; background-color: white; }
 
 #quickbar h6 {
  font-family: Verdana, Arial, sans-serif;
  font-size: 10pt; font-weight: bold; line-height: 1.25;
- text-decoration: none; color: #777777;
+ text-decoration: none;
+ color: #777777; background-color: white;
  padding: 0; margin-bottom: 2px; margin-top: 6px;
 }
 #quickbar form { padding: 0; margin-top: 0; }
 
 h1 { font-family: Arial, Helvetica, sans-serif;
- color: #777777; font-family: Verdana, Arial, sans-serif;
+ color: #777777; background-color: white;
+ font-family: Verdana, Arial, sans-serif;
  font-size: 18pt; font-weight: bold;
 }
 h1.pagetitle { padding-bottom: 0; margin-bottom: 0; }
 p.subtitle { padding-top: 0; margin-top: 0; }
 
-a { color: #223366; }
-a.external { color: #336644; }
+a { color: #223366; background-color: white; }
+a.external { color: #336644; background-color: white; }
 a.printable { text-decoration: underline; }
 
