@@ -121,6 +121,7 @@ function wfSpecialUserlogin()
 
 	$wgOut->setPageTitle( wfMsg( "loginsuccesstitle" ) );
 	$wgOut->setRobotpolicy( "noindex,nofollow" );
+	$wgOut->setArticleFlag( false );
 	$wgOut->addHTML( $msg . "\n<p>" );
 	$wgOut->returnToMain();
 }
@@ -162,6 +163,7 @@ function wfSpecialUserlogin()
 	}
 	$wgOut->setPageTitle( wfMsg( "userlogin" ) );
 	$wgOut->setRobotpolicy( "noindex,nofollow" );
+	$wgOut->setArticleFlag( false );
 
 	if ( "" == $err ) {
 		$wgOut->addHTML( "<h2>$li:</h2>\n" );

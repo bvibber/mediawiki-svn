@@ -16,7 +16,7 @@
 /* private */ $wgUserTogglesEn = array(
 	"showHover"	=> "Show hoverbox over wiki links",
 	"underlineLinks" => "Underline links",
-	"markupNewTopics" => "Show links to empty topics in red",
+	"markupNewTopics" => "Highlight links to empty topics",
 	"justify"	=> "Justify paragraphs",
 	"hideMinor" => "Hide minor edits in recent changes",
 	"numberHeadings" => "Auto-number headings",
@@ -354,6 +354,6 @@ class Language {
 	}
 }
 
-include_once( "./Language" . ucfirst( $wgLanguageCode ) . ".php" );
+include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );
 
 ?>

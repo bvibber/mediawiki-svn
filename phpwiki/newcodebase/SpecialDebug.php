@@ -4,8 +4,6 @@ function wfSpecialDebug()
 {
 	global $wgUser, $wgOut;
 
-	$wgOut->setPageTitle( "Debug" );
-
 	$wgOut->addWikiText( "
 
 == Heading ==

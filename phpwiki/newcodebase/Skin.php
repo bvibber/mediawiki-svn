@@ -38,7 +38,7 @@ class Skin {
 			$s .= "a { text-decoration: none; }\n";
 		}
 		if ( 1 == $wgUser->getOption( "markupNewTopics" ) ) {
-			$s .= "a.new { color: red; text-decoration: none; }\n";
+			$s .= "a.new { color: white; background: blue; }\n";
 		}
 		$s .= "//--></style>\n";
 		return $s;
@@ -478,9 +478,9 @@ class Skin {
 	}
 }
 
-include_once( "./SkinStandard.php" );
-include_once( "./SkinStarTrek.php" );
-include_once( "./SkinNostalgia.php" );
-include_once( "./SkinCologneBlue.php" );
+include_once( "SkinStandard.php" );
+include_once( "SkinStarTrek.php" );
+include_once( "SkinNostalgia.php" );
+include_once( "SkinCologneBlue.php" );
 
 ?>

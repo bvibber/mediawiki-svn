@@ -2,7 +2,7 @@
 # For local site-specific settings.  This should be the
 # only thing you need to configure to install the software.
 
-include_once( "./DefaultSettings.php" );
+include_once( "DefaultSettings.php" );
 
 # URLs for the wiki site
 #

@@ -26,8 +26,8 @@ $wgNumberOfArticles = -1; # Unset
 $wgTotalViews = -1;
 $wgTotalEdits = -1;
 
-include_once( "./DatabaseFunctions.php" );
-include_once( "./UpdateClasses.php" );
+include_once( "DatabaseFunctions.php" );
+include_once( "UpdateClasses.php" );
 
 function wfLocalLink( $a )
 {
@@ -87,7 +87,7 @@ function wfSpecialPage()
 	global $wgValidSpecialPages, $wgSysopSpecialPages;
 
 	$wgOut->setArticleFlag( false );
-	$wgOut->setPageTitle( $wgTitle->getText() );
+	$wgOut->setPageTitle( wfMsg( strtolower( $wgTitle->getText() ) ) );
 
 	$t = $wgTitle->getDBKey();
 	if ( in_array( $t, $wgValidSpecialPages ) ||
