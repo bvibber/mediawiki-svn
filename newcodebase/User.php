@@ -154,7 +154,7 @@ class User {
 		  ( $sPass == $this->mNewpassword ) ) ) {
 			return;
 		}
-		$this->mId = 0; # Can't log in from session
+		$this->loadDefaults(); # Can't log in from session
 	}
 
 	function loadFromDatabase()

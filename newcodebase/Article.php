@@ -309,7 +309,8 @@ $wpTextbox2
 				$wgOut->addHTML( "<h2>" . wfMsg( "previewconflict" ) .
 				  "</h2>\n" );
 			}
-			$wgOut->addWikiText( $wpTextbox1 );
+			$previewtext = wfUnescapeHTML( $wpTextbox1 );
+			$wgOut->addWikiText( $previewtext );
 			$wgOut->addHTML( "<p><large>" . wfMsg( "note" ) .
 			  wfMsg( "previewnote" ) . "</large>\n" );
 		}
@@ -496,10 +497,8 @@ $wpTextbox2
 	{
 		global $wgLang, $wgOut;
 
-		$d = $wgLang->dateFromTimestamp( $this->mTimestamp );
-		$h = substr( $this->mTimestamp, 8, 2 ) . ":" .
-		  substr( $this->mTimestamp, 10, 2 ) ;
-		$r = str_replace( "$1", "{$h}, {$d}", wfMsg( "revisionasof" ) );
+		$td = $wgLang->timeanddate( $this->mTimestamp );
+		$r = str_replace( "$1", "{$td}", wfMsg( "revisionasof" ) );
 		$wgOut->setSubtitle( "({$r})" );
 	}
 
@@ -562,7 +561,7 @@ $wpTextbox2
 		$n = $wgUser->getName();
 		$k = $wgUser->getOption( "nickname" );
 		if ( "" == $k ) { $k = $n; }
-		$d = $wgLang->dateFromTimestamp( date( "YmdHis" ) );
+		$d = $wgLang->timeanddate( date( "YmdHis" ) );
 
 		$text = preg_replace( "/~~~~/", "[[User:$n|$k]] $d", $text );
 		$text = preg_replace( "/~~~/", "[[User:$n|$k]]", $text );

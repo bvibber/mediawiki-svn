@@ -165,14 +165,6 @@ class LanguageDe {
 		return $wgWeekDaysDe[$key-1];
 	}
 
-	function dateFromTimestamp( $ts )
-	{
-		$d = substr( $ts, 0, 4 ) . "-" .
-		  substr( $ts, 4, 2 ) . "-" .
-		  substr( $ts, 6, 2 );
-		return $d;
-	}
-
 	function getMessage( $key )
 	{
 		global $wgAllMessagesEn, $wgAllMessagesDe;
