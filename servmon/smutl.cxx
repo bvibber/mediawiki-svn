@@ -61,5 +61,46 @@ wf2time_t(str wf)
 	t.tm_yday = t.tm_wday = t.tm_isdst = 0;
 	return mktime(&t);
 }
+
+std::string
+fmtuptime(void)
+{
+	long uptime = std::time(0) - boottime;
+	int secs = 0, mins = 0, hours = 0, days = 0, weeks = 0;
+#define WEEK (60 * 60 * 24 * 7)
+#define DAY (60 * 60 * 24)
+#define HOUR (60 * 60)
+#define MIN (60)
+	
+	while (uptime > WEEK) {
+		++weeks;
+		uptime -= WEEK;
+	}
+	while (uptime > DAY) {
+		++days;
+		uptime -= DAY;
+	}
+	while (uptime > HOUR) {
+		++hours;
+		uptime -= HOUR;
+	}
+	while (uptime > MIN) {
+		++mins;
+		uptime -= MIN;
+	}
+	secs = uptime;
+	return b::io::str(format("%d weeks, %d days, %d hours, %d minutes, %d seconds")
+			  % weeks % days % hours % mins % secs);
+}
+
+std::string
+fmtboottime(void)
+{
+	char buf[256];
+	struct tm now;
+	gmtime_r(&boottime, &now);
+	strftime(buf, sizeof buf, "%d-%b-%Y %H:%M:%S", &now);
+	return buf;
+}
 	
 } // namespace smutl

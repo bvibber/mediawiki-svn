@@ -94,9 +94,11 @@ terminal::remove_modifiers(str s)
 	do {
 		--t;
 	} while (t && s[t] == ' ');
-	while (s.size() < nt && s[nt] == ' ')
+	if (t < 1)
+		return s;
+	while (nt < s.size() && s[nt] == ' ')
 		++nt;
-	std::string n = s.substr(0, t), mod = s.substr(nt);
+	std::string n = s.substr(0, t + 1), mod = s.substr(nt);
 	std::string what = smutl::car(mod);
 	std::cerr << "what=["<<what<<"] mod=["<<mod<<"] n=["<<n<<"]\n";
 	if (what.empty())

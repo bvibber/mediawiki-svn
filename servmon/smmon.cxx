@@ -228,7 +228,6 @@ cfg::server::_stdchecks(void)
 	while (strm >> part >> spc >> blocksz) {
 		uint64_t space = lexical_cast<uint64_t>(spc) * lexical_cast<uint64_t>(blocksz);
 		space /= 1024 * 1024; /* MB */
-		std::cerr << "space for " << part << " on " << name << ": " << space << '\n';
 		SMI(smalrm::mgr)->value(name, "disk free for "+name+":" + part + " (MB)", space);
 	}
 }

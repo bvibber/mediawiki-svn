@@ -4,6 +4,12 @@
 
 #define SM_VERSION "2.1.0.0-pre"
 
+#define SM_RELCVS     1 /* CVS version */
+#define SM_RELBRANCH  2 /* Release branch */
+#define SM_RELRELEASE 3 /* Release */
+
+#define SM_RELTYPE SM_RELCVS
+
 #include <iostream>
 #include <fstream>
 #include <iomanip>

@@ -11,10 +11,16 @@ struct nokey : public std::runtime_error {
 	nokey() : std::runtime_error("configuration option invalid") {}
 };
 
+struct wrerr : std::runtime_error {
+	wrerr() : std::runtime_error("short write in config file") {}
+};
+
 class cfg : public smutl::singleton<cfg> {
 public:
 	cfg();
 
+	void write(bool startup = true);
+	
 	std::string const& fetchstr(std::string const& key);
 	int fetchint(std::string const& key);
 	bool fetchbool(std::string const& key);
@@ -32,8 +38,6 @@ private:
 	std::map<std::string, int> intvals;
 	std::map<std::string, bool> boolvals;
 	std::map<std::string, std::set<std::string> > listvals;
-
-	void wrcfg(void);
 };
 
 } // namespace smcfg

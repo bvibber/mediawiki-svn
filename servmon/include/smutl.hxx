@@ -2,8 +2,12 @@
 #ifndef SM_SMUTL_HXX_INCLUDED_
 #define SM_SMUTL_HXX_INCLUDED_
 
+#include "smstdinc.hxx"
+
 typedef std::string const& str;
 typedef std::string& strr;
+
+extern std::time_t boottime;
 
 namespace smutl {
 
@@ -25,6 +29,9 @@ std::string lower(std::string s);
 
 std::vector<std::string> snarf(str);
 std::time_t wf2time_t(str wf);
+
+std::string fmtuptime(void);
+std::string fmtboottime(void);
 } // namespace smutl
 
 template<class T>

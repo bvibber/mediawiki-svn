@@ -9,18 +9,23 @@
 #include "smmc.hxx"
 #include "smauth.hxx"
 
+std::time_t boottime;
+
 void
 initconf(void)
 {
 	smcfg::cfg& c = *SMI(smcfg::cfg);
 	smauth::add_usr("system", "default");
 	c.storestr("/core/enable_password", "default");
+	c.write();
 	std::cout << "% Wrote initial configuration file.\n";
 }
 
 int
 main(int argc, char *argv[])
 {
+	boottime = std::time(0);
+	
 	if (argc > 1 && !strcmp(argv[1], "-initconf")) {
 		initconf();
 		return 0;

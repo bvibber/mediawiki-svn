@@ -20,31 +20,35 @@ struct shrtrd : std::runtime_error {
 	shrtrd() : std::runtime_error("short read in config file") {}
 };
 
-struct shrtwr : std::runtime_error {
-	shrtwr() : std::runtime_error("short write in config file") {}
-};
-
 struct mlfrmcfg : std::runtime_error {
 	mlfrmcfg(str error) : std::runtime_error("config file seems malformed: " + error) {}
 	mlfrmcfg() : std::runtime_error("config file seems malformed: unspecified error") {}
 };
 
-void wrtchar(int f, char c) {
-	flthr(write(f, &c, 1), shrtwr);
+void
+wrtchar(int f, char c)
+{
+	flthr(write(f, &c, 1), wrerr);
 }
 
-void wrtint(int f, uint32_t i) {
-	flthr(write(f, (char *)&i, sizeof i), shrtwr);
+void
+wrtint(int f, uint32_t i)
+{
+	flthr(write(f, (char *)&i, sizeof i), wrerr);
 }
 
-void wrtstr(int f, str s) {
+void
+wrtstr(int f, str s)
+{
 	wrtint(f, s.size());
-	flthr(write(f, s.data(), s.size()), shrtwr);
+	flthr(write(f, s.data(), s.size()), wrerr);
 }
 
-void wrtbool(int f, bool b) {
+void
+wrtbool(int f, bool b)
+{
 	uint32_t i = b;
-	flthr(write(f, (char *)&i, sizeof i), shrtwr);
+	flthr(write(f, (char *)&i, sizeof i), wrerr);
 }
 
 uint32_t
@@ -131,13 +135,16 @@ try {
 }
 
 void 
-cfg::wrcfg(void)
+cfg::write(bool startup)
 try {
 	int f = open(cfgtemp.c_str(), O_CREAT|O_NOFOLLOW|O_TRUNC|O_WRONLY,
 				S_IRUSR|S_IWUSR);
 	if (f < 0) {
-		SMI(smlog::log)->logmsg(0, b::io::str(b::format("Warning: could not write configuration file %s: %s")
-						   % cfgtemp % strerror(errno)));
+		if (startup)
+			SMI(smlog::log)->logmsg(0, b::io::str(b::format("Warning: could not write configuration file %s: %s")
+							      % cfgtemp % strerror(errno)));
+		else
+			throw wrerr();
 		return;
 	}
 	for(std::map<std::string,std::string>::const_iterator it = strvals.begin(),
@@ -186,56 +193,63 @@ try {
 						% strerror(errno)));
 		return;
 	}
-} catch (shrtwr&) {
+} catch (wrerr&) {
 	SMI(smlog::log)->logmsg(0, "Short write in configuration file");
+	if (!startup)
+		throw;
 }
 
-
-void cfg::storestr(std::string const& key, std::string const& value)
+void
+cfg::storestr(std::string const& key, std::string const& value)
 {
 	strvals[key] = value;
-	wrcfg();
-}
-void cfg::storeint(std::string const& key, int value)
-{
-	intvals[key] = value;
-	wrcfg();
-}
-void cfg::storebool(std::string const& key, bool value)
-{
-	boolvals[key] = value;
-	wrcfg();
 }
 
-std::string const& cfg::fetchstr(std::string const& key)
+void
+cfg::storeint(std::string const& key, int value)
+{
+	intvals[key] = value;
+}
+void
+cfg::storebool(std::string const& key, bool value)
+{
+	boolvals[key] = value;
+}
+
+std::string const&
+cfg::fetchstr(std::string const& key)
 {
 	if (strvals.find(key) == strvals.end())
 		throw nokey();
 	return strvals[key];
 }
 
-int cfg::fetchint(std::string const& key)
+int
+cfg::fetchint(std::string const& key)
 {
 	if (intvals.find(key) == intvals.end())
 		throw nokey();
 	return intvals[key];
 }
 
-bool cfg::fetchbool(std::string const& key)
+bool
+cfg::fetchbool(std::string const& key)
 {
 	if (boolvals.find(key) == boolvals.end())
 		throw nokey();
 	return boolvals[key];
 }
 
-std::set<std::string> const& cfg::fetchlist(std::string const& key)
+std::set<std::string> const&
+cfg::fetchlist(std::string const& key)
 {
 	if (listvals.find(key) == listvals.end())
 		throw nokey();
 	return listvals[key];
 }
 
-bool cfg::listhas(std::string const& list, std::string const& value)
+bool
+cfg::listhas(std::string const& list, std::string const& value)
 {
 	try {
 		std::set<std::string> const& l = fetchlist(list);
@@ -245,20 +259,20 @@ bool cfg::listhas(std::string const& list, std::string const& value)
 	}
 }
 
-void cfg::addlist(std::string const& list, std::string const& value)
+void
+cfg::addlist(std::string const& list, std::string const& value)
 {
 	listvals[list].insert(value);
-	wrcfg();
 }
 
-void cfg::dellist(std::string const& list, std::string const& value)
+void
+cfg::dellist(std::string const& list, std::string const& value)
 {
 	std::map<std::string, std::set<std::string> >::iterator lt = listvals.find(list);
 	if (lt == listvals.end())
 		throw nokey();
 	std::set<std::string>& l = lt->second;
 	l.erase(value);
-	wrcfg();
 }
 
 } // namespace smcfg

@@ -18,10 +18,31 @@
 
 HDL(cmd_show_version) {
 	EX1(cd) {
-		cd.term.wrtln(b::io::str(format("Version %s, compiled %s by %s::%s")
+		cd.term.wrtln(b::io::str(format("servmon version %s, compiled %s by %s::%s")
 					 % SM_VERSION % sm$compile_time % sm$compile_host % sm$compile_user));
 		if (cd.term.prefer_short_output())
 			return true;
+
+		cd.term.wrtln();
+#if SM_RELTYPE == SM_RELCVS
+		cd.term.wrtln("This is an unsupported development version of servmon.");
+#elif SM_RELTYPE == SM_RELBRANCH
+		cd.term.wrtln("This is a supported development branch snapshot of servmon.");
+#elif SM_RELTYPE == SM_RELRELEASE
+		cd.term.wrtln("This is a supported release version of servmon.");
+#endif
+		cd.term.wrtln();
+		cd.term.wrtln("servmon uptime is " + smutl::fmtuptime());
+		cd.term.wrtln("Startup at " + smutl::fmtboottime());
+		cd.term.wrtln();
+		cd.term.wrtln("servmon is a product of Kate Turner/Wikimedia Foundation, Inc.,");
+		cd.term.wrtln("  and is released into the public domain.");
+		cd.term.wrtln();
+		cd.term.wrtln("servmon includes a memcached API, which is copyright (c) 2004-2005");
+		cd.term.wrtln("  Sean Chittenden, and includes source code which is copyright (c)");
+		cd.term.wrtln("  1991, 1993 The Regents of the University of California.  All rights reserved.");
+		cd.term.wrtln();
+
 		cd.term.wrtln();
 		cd.term.wrtln(b::io::str(format("Compile host type: %s %s (%s)")
 					 % sm$compile_os % sm$compile_release % sm$compile_arch));
@@ -754,6 +775,17 @@ HDL(cmd_no_debug_irc) {
 	}
 };
 
+HDL(cmd_write_config) {
+	EX1(cd) {
+		try {
+			SMI(smcfg::cfg)->write();
+		} catch (smcfg::wrerr& e) {
+			cd.term.error(e.what());
+		}
+		return true;
+	}
+};
+
 smtrm::tmcmds::tmcmds(void)
 {
 	/* restricted non-logged commands */
@@ -783,6 +815,9 @@ smtrm::tmcmds::tmcmds(void)
 	/* 'enable' mode commands */
 	stdrt.install(16, "disable", cmd_disable(), "Return to non-privileged mode");
 	stdrt.install(16, "configure", chg_parser(cfgrt, "%s [%d] conf>"), "Configure servmon");
+	stdrt.install(16, "copy", "Copy configuration file");
+	stdrt.install(16, "copy running-configuration", "Copy from current system configuration");
+	stdrt.install(16, "copy running-configuration startup-configuration", cmd_write_config(), "Copy to startup configuration");
 	stdrt.install(16, "debug", "Runtime debugging functions");
 	stdrt.install(16, "debug mysql", "Debug MySQL functions");
 	stdrt.install(16, "debug mysql connect", cmd_debug_mysql_connect(), "Debug MySQL connections");
