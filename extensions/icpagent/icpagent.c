@@ -201,8 +201,6 @@ main(int ac, char **av)
     struct timeval wait;
     fd_set readfds;
 
-    wait.tv_sec = 0;
-    wait.tv_usec = 1000;
 
 
     TAILQ_INIT(&head);
@@ -222,6 +220,8 @@ main(int ac, char **av)
 	processqueue();
 	FD_ZERO(&readfds);
 	FD_SET(s,&readfds);
+        wait.tv_sec = 0;
+        wait.tv_usec = 1000;
 	select(s+1,&readfds,NULL,NULL,(TAILQ_EMPTY(&head)?NULL:&wait));
 	if (FD_ISSET(s,&readfds)) {
 	rlen =
