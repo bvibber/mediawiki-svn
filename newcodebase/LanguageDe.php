@@ -38,7 +38,8 @@
 	"numberheadings" => "Überschriften automatisch numerieren",
 	"rememberpassword" => "Passwort merken",
 	"editwidth" => "Text-Eingabefeld mit voller Breite",
-	"editondblclick" => "Seiten mit Doppelklick bearbeiten (JavaScript)"
+	"editondblclick" => "Seiten mit Doppelklick bearbeiten (JavaScript)",
+	"watchdefault" => "Neue und geänderte Seiten beobachten"
 );
 
 /* private */ $wgLanguageNamesDe = array(
@@ -294,6 +295,7 @@ Bitte melden Si sich an, sobald Sie es erhalten.",
 #
 "summary"		=> "Zusammenfassung",
 "minoredit"		=> "Nur Kleinigkeiten wurden verändert.",
+"watchthis" => "Diesen Artikel beobachten",
 "savearticle"	=> "Artikel speichern",
 "preview"		=> "Vorschau",
 "showpreview"	=> "Vorschau zeigen",

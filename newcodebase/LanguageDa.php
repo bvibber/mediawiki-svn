@@ -41,7 +41,8 @@
 	"numberheadings" => "Automatisk nummerering af overskrifter",
 	"rememberpassword" => "Husk password til næste besøg",
 	"editwidth" => "Redigeringsboksen har fuld bredde",
-	"editondblclick" => "Edit pages on double click (JavaScript)"
+	"editondblclick" => "Edit pages on double click (JavaScript)",
+	"watchdefault" => "Watch new and modified articles"
 );
 
 /* private */ $wgBookstoreListDa = array(

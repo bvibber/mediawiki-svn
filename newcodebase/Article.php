@@ -329,7 +329,8 @@ class Article {
 	function editForm( $formtype )
 	{
 		global $wgOut, $wgUser, $wgTitle;
-		global $wpTextbox1, $wpSummary, $wpSave, $wpPreview;
+		global $wpTextbox1, $wpSummary, $wpWatchthis;
+		global $wpSave, $wpPreview;
 		global $wpMinoredit, $wpEdittime, $wpTextbox2, $wpCountable;
 		global $oldid, $redirect;
 
@@ -362,7 +363,7 @@ class Article {
 					return;
 				}
 				$this->mCountAdjustment = $this->isCountable( $wpTextbox1 );
-				$this->insertNewArticle( $wpTextbox1, $wpSummary, $wpMinoredit );
+				$this->insertNewArticle( $wpTextbox1, $wpSummary, $wpMinoredit, $wpWatchthis );
 				return;
 			}
 			# Article exists. Check for edit conflict.
@@ -381,7 +382,7 @@ class Article {
 
 				$this->mCountAdjustment = $this->isCountable( $wpTextbox1 ) -
 				  $wpCountable;
-				$this->updateArticle( $wpTextbox1, $wpSummary, $wpMinoredit );
+				$this->updateArticle( $wpTextbox1, $wpSummary, $wpMinoredit, $wpWatchthis );
 				return;
 			}
 		}
@@ -425,8 +426,9 @@ class Article {
 		if ( "no" == $redirect ) { $q .= "&redirect=no"; }
 		$action = wfEscapeHTML( wfLocalUrl( $wgTitle->getPrefixedURL(), $q ) );
 
-		$summary = wfMsg( "summary" );
+		$summary = wfMsg( "summary" );		
 		$minor = wfMsg( "minoredit" );
+		$watchthis = wfMsg ("watchthis");
 		$save = wfMsg( "savearticle" );
 		$prev = wfMsg( "showpreview" );
 
@@ -440,6 +442,21 @@ class Article {
 		$wpTextbox1 = wfEscapeHTML( $wpTextbox1 );
 		$wpTextbox2 = wfEscapeHTML( $wpTextbox2 );
 		$wpSummary = wfEscapeHTML( $wpSummary );
+		
+		// activate checkbox if user wants it to be always active
+		if ($wgUser->getOption("watchdefault")) $wpWatchthis=1;
+		
+		// activate checkbox also if user is already watching the page,
+		// require wpWatchthis to be unset so that second condition is not
+		// checked unnecessarily
+		if (!$wpWatchthis && !$wpPreview && $wgTitle->userIsWatching()) $wpWatchthis=1;
+		
+		if ( 0 != $wgUser->getID() ) {
+		
+			$watchhtml="<input tabindex=4 type=checkbox name='wpWatchthis'".($wpWatchthis?" checked":"").">{$watchthis}<br>";
+		} else {
+			$watchhtml="<br>";
+		}
 
 		$wgOut->addHTML( "
 <form method=post action=\"$action\"
@@ -448,9 +465,10 @@ enctype='application/x-www-form-urlencoded'>
 {$wpTextbox1}
 </textarea><br>
 {$summary}: <input tabindex=2 type=text value=\"{$wpSummary}\" name='wpSummary' maxlength=200>
-<input tabindex=3 type=checkbox value=1 name='wpMinoredit'".($wpMinoredit?" checked":"").">{$minor}<br>
-<input tabindex=4 type=submit value=\"{$save}\" name='wpSave'>
-<input tabindex=5 type=submit value=\"{$prev}\" name='wpPreview'>
+<input tabindex=3 type=checkbox value=1 name='wpMinoredit'".($wpMinoredit?" checked":"").">{$minor}
+{$watchhtml}
+<input tabindex=5 type=submit value=\"{$save}\" name='wpSave'>
+<input tabindex=6 type=submit value=\"{$prev}\" name='wpPreview'>
 <em>{$cancel}</em> | <em>{$edithelp}</em>
 <br><br>{$copywarn}
 <input type=hidden value=\"{$wpEdittime}\" name='wpEdittime'>
@@ -486,7 +504,7 @@ enctype='application/x-www-form-urlencoded'>
 	# leap of faith, and I want to be able to report database
 	# errors at some point.
 
-	/* private */ function insertNewArticle( $text, $summary, $isminor )
+	/* private */ function insertNewArticle( $text, $summary, $isminor, $watchthis )
 	{
 		global $wgOut, $wgUser, $wgTitle, $wgLinkCache;
 		$fname = "Article::insertNewArticle";
@@ -521,17 +539,24 @@ enctype='application/x-www-form-urlencoded'>
 		  wfStrencode( $wgUser->getName() ) . "','" .
 		  wfStrencode( $summary ) . "',0,0)";
 		wfQuery( $sql, $fname );
-
+		if ($watchthis ) { 
+			$this->watch(); 
+		} else {
+			if ( $wgTitle->userIsWatching() ) {
+				$this->unwatch();
+			}
+		}
+		
 		$this->showArticle( $text, wfMsg( "newarticle" ) );
 	}
 
-	function updateArticle( $text, $summary, $minor )
+	function updateArticle( $text, $summary, $minor, $watchthis )
 	{
 		global $wgOut, $wgUser, $wgTitle, $wgLinkCache;
 		$fname = "Article::updateArticle";
 
 		if ( $this->mMinorEdit ) { $me1 = 1; } else { $me1 = 0; }
-		if ( $minor ) { $me2 = 1; } else { $me2 = 0; }
+		if ( $minor ) { $me2 = 1; } else { $me2 = 0; }		
 		if ( preg_match( "/^(#redirect[^\\n]+)/i", $text, $m ) ) {
 			$redir = 1;
 			$text = $m[1] . "\n"; # Remove all content but redirect
@@ -587,7 +612,16 @@ enctype='application/x-www-form-urlencoded'>
 			  "WHERE rc_cur_id=" . $this->getID();
 			wfQuery( $sql, $fname );
 		}
-		$this->showArticle( $text, wfMsg( "updated" ) );
+		
+		if ($watchthis ) { 
+			$this->watch();
+		} else {
+			if ( $wgTitle->userIsWatching() ) {
+				$this->unwatch();
+			}
+		}
+
+		$this->showArticle( $text, wfMsg( "updated" ) ); 
 	}
 
 	# After we've either updated or inserted the article, update

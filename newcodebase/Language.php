@@ -44,7 +44,8 @@
 	"numberheadings" => "Auto-number headings",
 	"rememberpassword" => "Remember password across sessions",
 	"editwidth" => "Edit box has full width",
-	"editondblclick" => "Edit pages on double click (JavaScript)"
+	"editondblclick" => "Edit pages on double click (JavaScript)",
+	"watchdefault" => "Watch new and modified articles"
 );
 
 /* private */ $wgBookstoreListEn = array(
@@ -425,7 +426,8 @@ Please log in again after you receive it.",
 # Edit pages
 #
 "summary"		=> "Summary",
-"minoredit"		=> "This is a minor edit.",
+"minoredit"		=> "This is a minor edit",
+"watchthis"		=> "Watch this article",
 "savearticle"	=> "Save page",
 "preview"		=> "Preview",
 "showpreview"	=> "Show preview",

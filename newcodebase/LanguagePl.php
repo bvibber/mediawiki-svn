@@ -31,7 +31,9 @@
 	"justify"	=> "Wyrównuj tekst artykułu w kolumnie",
 	"hideminor" => "Ukryj drobne zmiany w \"Ostatnich zmianach\"",
 	"numberheadings" => "Automatyczna numeracja nagłówków",
-	"rememberpassword" => "Pamiętaj hasło między sesjami"
+	"rememberpassword" => "Pamiętaj hasło między sesjami",
+	"editondblclick" => "Edit pages on doubleclick (JavaScript)",
+	"watchdefault" => "Watch new and modified articles"
 );
 
 /* private */ $wgLanguageNamesPl = array(
