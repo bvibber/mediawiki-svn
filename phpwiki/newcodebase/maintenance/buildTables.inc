@@ -39,8 +39,6 @@ function buildTables()
   cur_timestamp char(14) binary NOT NULL default '',
   cur_restrictions tinyblob NOT NULL default '',
   cur_counter bigint(20) unsigned NOT NULL default '0',
-  cur_ind_title varchar(255) NOT NULL default '',
-  cur_ind_text mediumtext NOT NULL default '',
   cur_is_redirect tinyint(1) unsigned NOT NULL default '0',
   cur_minor_edit tinyint(1) unsigned NOT NULL default '0',
   cur_is_new tinyint(1) unsigned NOT NULL default '0',
@@ -198,6 +196,16 @@ $sql = "CREATE TABLE watchlist (
 ) TYPE=MyISAM PACK_KEYS=1";
 wfQuery( $sql );
 
+$sql = "DROP TABLE IF EXISTS searchindex";
+wfQuery( $sql );
+$sql = "CREATE TABLE searchindex (
+  si_page int(8) unsigned NOT NULL,
+  si_title varchar(255) NOT NULL default '',
+  si_text mediumtext NOT NULL default '',
+  UNIQUE KEY (si_page)
+) TYPE=MyISAM PACK_KEYS=1";
+wfQuery( $sql );
+
 }
 
 function buildIndexes()
@@ -253,6 +261,11 @@ function buildIndexes()
 
 	$sql = "ALTER TABLE oldimage
   ADD INDEX oi_name (oi_name(10))";
+	wfQuery( $sql );
+	
+	$sql = "ALTER TABLE searchindex
+  ADD FULLTEXT si_title (si_title),
+  ADD FULLTEXT si_text (si_text)";
 	wfQuery( $sql );
 }
 

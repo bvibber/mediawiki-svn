@@ -3,15 +3,16 @@
 
 class SearchUpdate {
 
-	/* private */ var $mId, $mTitle, $mText;
+	/* private */ var $mId, $mNamespace, $mTitle, $mText;
 	/* private */ var $mTitleWords;
 
-	function SearchUpdate( $id, $title, $text )
+	function SearchUpdate( $id, $title, $text = false )
 	{
 		$this->mId = $id;
 		$this->mText = $text;
 
 		$nt = Title::newFromText( $title );
+		$this->mNamespace = $nt->getNamespace();
 		$this->mTitle = $nt->getText(); # Discard namespace
 
 		$this->mTitleWords = $this->mTextWords = array();
@@ -21,6 +22,15 @@ class SearchUpdate {
 	{
 		global $wgDBminWordLen, $wgLang;
 		$lc = SearchEngine::legalSearchChars() . "&#;";
+		
+		if( $this->mText == false ) {
+			# Just update the title
+			$sql = "UPDATE searchindex SET si_title='" .
+			  wfStrencode( Title::indexTitle( $this->mNamespace, $this->mTitle ) ) .
+			  "' WHERE si_page={$this->mId}";
+			wfQuery( $sql, "SearchUpdate::doUpdate" );
+			return;
+		}
 		
 		# Language-specific strip/conversion
 		$text = $wgLang->stripForSearch( $this->mText );
@@ -58,8 +68,9 @@ class SearchUpdate {
 		# Strip wiki '' and '''
 		$text = preg_replace( "/''[']*/", " ", $text );
 
-		$sql = "UPDATE LOW_PRIORITY cur SET cur_timestamp=cur_timestamp,cur_ind_text='" .
-		  wfStrencode( $text ) . "' WHERE cur_id={$this->mId}";
+		$sql = "REPLACE INTO searchindex (si_page,si_title,si_text) VALUES ({$this->mId},'" .
+		  wfStrencode( Title::indexTitle( $this->mNamespace, $this->mTitle ) ) . "','" .
+		  wfStrencode( $text ) . "')";
 		wfQuery( $sql, "SearchUpdate::doUpdate" );
 	}
 }

@@ -18,7 +18,7 @@ Database fields:
     and "is_sysop".
 
   user_password
-    Plain text (ugh!) user login password.  If user option to
+    md5 hash of user login password.  If user option to
     remember password is set, this is stored in cookie
     "$WikiUserPassword".
 

@@ -318,7 +318,7 @@ function wfImageArchiveDir( $fname )
 
 function wfRecordUpload( $name, $oldver, $size, $desc )
 {
-	global $wgUser, $wgLang, $wgTitle, $wgOut;
+	global $wgUser, $wgLang, $wgTitle, $wgOut, $wgDeferredUpdateList;
 	$fname = "wfRecordUpload";
 
 	$sql = "SELECT img_name,img_size,img_timestamp,img_description,img_user," .
@@ -347,16 +347,17 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 			  "',1";
 			$sql = "INSERT INTO cur (cur_namespace,cur_title," .
 			  "cur_comment,cur_user,cur_user_text,cur_timestamp,cur_is_new," .
-			  "cur_ind_title,cur_text) VALUES (" .
+			  "cur_text) VALUES (" .
 			  $common .
-			  ",'" . wfStrencode( Title::indexTitle( Namespace::getImage(), $name ) ) .
-			  "','" . wfStrencode( $desc ) . "')";
+			  ",'" . wfStrencode( $desc ) . "')";
 			wfQuery( $sql, $fname );
 			$id = wfInsertId() or 0; # We should throw an error instead
 			$sql = "INSERT INTO recentchanges (rc_namespace,rc_title,
 				rc_comment,rc_user,rc_user_text,rc_timestamp,rc_new,
 				rc_cur_id,rc_cur_time) VALUES ({$common},{$id},'{$now}')";
             wfQuery( $sql, $fname );
+			$u = new SearchUpdate( $id, $name, $desc );
+			array_push( $wgDeferredUpdateList, $u );
 		}
 	} else {
 		$s = wfFetchObject( $res );

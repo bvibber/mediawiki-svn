@@ -519,14 +519,13 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$now = date( "YmdHis" );
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
-		  "cur_restrictions,cur_ind_title,cur_user_text,cur_is_redirect," .
+		  "cur_restrictions,cur_user_text,cur_is_redirect," .
 		  "cur_is_new) VALUES ({$ns},'" . wfStrencode( $ttl ) . "', '" .
 		  wfStrencode( $text ) . "', '" .
 		  wfStrencode( $summary ) . "', '" .
 		  $wgUser->getID() . "', '{$now}', " .
 		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
-		  wfStrencode( $wgTitle->getIndexTitle() ) .
-		  "', '" . wfStrencode( $wgUser->getName() ) . "', $redir, 1)";
+		  wfStrencode( $wgUser->getName() ) . "', $redir, 1)";
 		$res = wfQuery( $sql, $fname );
 
 		$newid = wfInsertId();
