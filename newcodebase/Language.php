@@ -400,8 +400,8 @@ Please report this to an administrator, making note of the URL.",
 an incorrectly linked inter-language or inter-wiki title.",
 "perfdisabled" => "Sorry! This feature has been temporarily disabled
 because it slows the database down to the point that no one can use
-the wiki. Which is bad. It will be rewritten for efficiency in the near
-future (possibly by you! we're open source after all)",
+the wiki.",
+"perfdisabledsub" => "Here's a saved copy from $1:",
 
 # Login and logout pages
 #
