@@ -661,7 +661,7 @@ class Title {
 			if ( $wgUseLatin1 ) {
 				$rxTc = "/[^" . Title::legalChars() . "]|\\xa0/";
 			} else {
-				$rxTc = '/\\xc2\\xa0|[^' . Title::legalChars() . ']/';
+				$rxTc = '/\\xc2\\xa0|[^' . Title::legalChars() . ']|%[0-9A-Fa-f]{2}/';
 			}
 		}
 		
