@@ -4,6 +4,17 @@
 # are magical, so don't change or move them!  The Namespace class
 # encapsulates some of the magic-ness.
 #
+# Should I leave all the '''*:'''\'s in English, or may I change
+# them into Korean. Ultimately should we have '''(korean):'''\'s.
+# Am I right? And I could creat a (korean):(korea) page manually.
+# --[[en:User:Xaos]]
+
+# Yes, (korean):(korean) page titles work fine, just not as
+# the 'magic' namespaces for talk page linking, automatic filtering
+# in searches etc. Once the bug is fixed, I can adjust the pages
+# in the database. --Brion
+
+
 /* private */ $wgNamespaceNamesKo = array(
 	-1	=> "Special",
 	0	=> "",
@@ -15,6 +26,7 @@
 	6	=> "Image",
 	7	=> "Image_talk"
 # Non-ASCII chars don't work yet in namespaces. This is a bug that will be fixed.
+#	-1	=> "특수기능",
 #	1	=> "토론",
 #	2	=> "사용자",
 #	3	=> "사용자토론",
@@ -32,23 +44,31 @@
 	"highlightbroken" => 1, "stubthreshold" => 0
 );
 
+# where do these appear? Do they appear only in user preference?
+# May I translate them?
+
+# Yes, these appear in the preferences box and are freely translatable.
+
 /* private */ $wgQuickbarSettingsKo = array(
-	"None", "Fixed left", "Fixed right", "Floating left"
+#	"None", "Fixed left", "Fixed right", "Floating left"
+	"없음", "왼쪽 붙박이", "오른쪽 붙박이", "왼쪽 떠다님"
+
 );
 
 /* private */ $wgSkinNamesKo = array(
-	"Standard", "Nostalgia", "Cologne Blue"
+#	"Standard", "Nostalgia", "Cologne Blue"
+	"보통", "그리움", "쾰른 파랑"
 );
 
 /* private */ $wgUserTogglesKo = array(
-	"hover"		=> "Show hoverbox over wiki links",
+	"hover"		=> "위키고리 풍선상자로 보이기",
 	"underline" => "고리에 밑줄치기",
 	"highlightbroken" => "없는 문서로의 고리 돋보이기",
-	"justify"	=> "Justify paragraphs",
-	"hideminor" => "사소한 편집 최근 고침에서 숨기기",
-	"numberheadings" => "Auto-number headings",
+	"justify"	=> "문단 정렬",
+	"hideminor" => "사소한 편집 최근 바뀜에서 숨기기",
+	"numberheadings" => "머릿글 번호 매기기",
 	"rememberpassword" => "세션동안 암호 기억",
-	"editwidth" => "편집창너비 최대"
+	"editwidth" => "편집상자 너비 최대"
 );
 
 /* private */ $wgBookstoreListKo = array(
@@ -56,6 +76,8 @@
 	"PriceSCAN" => "http://www.pricescan.com/books/bookDetail.asp?isbn=$1",
 	"Barnes & Noble" => "http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$1",
 	"Amazon.com" => "http://www.amazon.com/exec/obidos/ISBN=$1"
+#	<b>"aladdin.co.kr" => ""</b>
+
 );
 
 /* These should preferably be the native names of the languages; the
@@ -121,10 +143,25 @@
 	"zh" => "&#20013;&#25991; (Zhongwen)"
 );
 
-
 /* private */ $wgWeekdayNamesKo = array(
 	"일요일", "월요일", "화요일", "수요일", "목요일",
 	"금요일", "토요일"
+);
+
+# In Korean, we need less monthname abbreviation, 
+# but we need weekdayname abbreviation. If you know
+# Japanese, you should understand what I mean.
+#
+# And currently the date showed in Korean wiki isn't
+# the Krean convention. We write YY, MM, DD, (Weekday)
+# 年 = 년; 月 = 월; 日 = 일
+#
+# (Okay, I think I got it right now. This can be adjusted
+#  in the 'date' function down at the bottom. --Brion)
+#
+/* private */ $wgWeekdayAbbreviationsKo = array(
+	"일", "월", "화", "수", "목",
+	"금", "토"
 );
 
 /* private */ $wgMonthNamesKo = array(
@@ -134,25 +171,25 @@
 );
 
 /* private */ $wgMonthAbbreviationsKo = array(
-	"1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월",
-	 "9월", "10월", "11월",	"12월"
+	"1", "2", "3", "4", "5", "6", "7", "8",
+	 "9", "10", "11",	"12"
 );
 
 # All special pages have to be listed here: a description of ""
 # will make them not show up on the "Special Pages" page, which
 # is the right thing for some of them (such as the "targeted" ones).
 #
-# article 문서 user 사용자
+
 
 /* private */ $wgValidSpecialPagesKo = array(
 	"Userlogin"		=> "들어가기",
 	"Userlogout"	=> "나오기",
-	"Preferences"	=> "자기 설정",
-	"Watchlist"		=> "눈여겨보는항목",
+	"Preferences"	=> "개인 맞춤",
+	"Watchlist"		=> "눈여겨보기목록",
 	"Recentchanges" => "최근 바뀜",
 	"Upload"		=> "파일 올리기",
-	"Imagelist"		=> "그림목록",
-	"Listusers"		=> "등록된 사용자",
+	"Imagelist"		=> "그림 목록",
+	"Listusers"		=> "사용자 목록",
 	"Statistics"	=> "누리터 통계",
 	"Randompage"	=> "아무거나",
 
@@ -163,18 +200,24 @@
 	"Shortpages"	=> "짧은 문서",
 	"Longpages"		=> "긴 문서",
 	"Newpages"		=> "새 문서",
-	"Allpages"		=> "모두 가나다순으로",
+	"Allpages"		=> "모두 나열",
 
 	"Ipblocklist"	=> "막힌 IP",
+
 	"Maintenance" => "관리",
-	"Specialpages"  => "특별문서",
+	"Specialpages"  => "특수기능문서",
 	"Contributions" => "기여한 문서",
-	"Emailuser"		=> "사용자에게 편지보내기",
-	"Whatlinkshere" => "여기 걸린 문서",
-	"Recentchangeslinked" => "고리 최근바뀜",
+	"Emailuser"		=> "편지보내기",
+	"Whatlinkshere" => "여기 가리키는 문서",
+	"Recentchangeslinked" => "여기서 가리키는 문서",
 	"Movepage"		=> "문서 옮기기",
 	"Booksources"	=> "외부 책방"
 );
+
+# I'll leave this part in english, for it's more likely that
+# there will probably no Korean for the maintaining this site
+# in near future, and if any shows up, he would possibly speak
+# both Korean and English. And he can later koreanize this part.
 
 /* private */ $wgSysopSpecialPagesKo = array(
 	"Blockip"		=> "Block an IP address",
@@ -193,32 +236,36 @@
 # Bits of text used by many pages:
 #
 "mainpage"		=> "대문",
-"about"			=> "About",
+"about"			=> "소개",
 "aboutwikipedia" => "위키백과란",
-"aboutpage"		=> "위키백과:About",
+"aboutpage"		=> "위키백과:소개",
 "help"			=> "도움말",
 "helppage"		=> "위키백과:도움말",
 "wikititlesuffix" => "위키백과",
-"bugreports"	=> "Bug reports",
-"bugreportspage" => "위키백과:Bug_reports",
-"faq"			=> "잦은질문",
-"faqpage"		=> "위키백과:잦은질문",
+"bugreports"	=> "벌레 발견",
+"bugreportspage" => "위키백과:벌레_발견",
+"faq"			=> "잦은질문(FAQ)",
+"faqpage"		=> "위키백과:잦은질문(FAQ)",
 "edithelp"		=> "편집 도움말",
 "edithelppage"	=> "위키백과:문서_편집_방법",
 "cancel"		=> "취소",
 "qbfind"		=> "찾기",
-"qbbrowse"		=> "Browse",
-"qbedit"		=> "편집",
+# where does this "browse" appear? I haven't seen it.
+# and therefore no idea what its function is.
+# (Select the Cologne Blue skin; it's a section header
+#  in the sidebar over 'main page', 'recent changes', etc.)
+"qbbrowse"		=> "훑어보기",
+"qbedit"		=> "고치기",
 "qbpageoptions" => "문서 옵션",
 "qbpageinfo"	=> "문서 정보",
 "qbmyoptions"	=> "자기 옵션",
 "mypage"		=> "자기 문서",
 "mytalk"		=> "자기 토론",
-"currentevents" => "요즘 관심사",
+"currentevents" => "요즈음 화제",
 "errorpagetitle" => "오류",
 "returnto"		=> "$1 로 돌아가기.",
 "fromwikipedia"	=> "위키백과, 우리 모두의 백과사전.",
-"whatlinkshere"	=> "여기에 걸린 문서",
+"whatlinkshere"	=> "여기 가리키는 문서",
 "help"			=> "도움말",
 "search"		=> "찾기",
 "history"		=> "문서역사",
@@ -231,37 +278,36 @@
 "subjectpage"	=> "본 문서",
 "otherlanguages" => "다른 언어",
 "redirectedfrom" => "($1에서 넘어옴.)",
-"lastmodified"	=> "이 문서는 최근 $1 에 편집되었습니다.",
-"viewcount"		=> "이 문서는 $1 번 접근되었습니다.",
-"printsubtitle" => "(출처 http://www.wikipedia.org)",
+"lastmodified"	=> "이 문서는 최근 $1에 바뀌었습니다.",
+"viewcount"		=> "이 문서는 총 $1번 읽혔습니다.",
+"printsubtitle" => "(http://www.wikipedia.org에서)",
 "protectedpage" => "보호되는 문서",
 "administrators" => "위키백과:관리자",
-"sysoptitle"	=> "Sysop access required",
-"sysoptext"		=> "The action you have requested can only be
-performed by users with \"sysop\" status.
-See $1.",
-"developertitle" => "Developer access required",
-"developertext"	=> "The action you have requested can only be
-performed by users with \"developer\" status.
-See $1.",
+"sysoptitle"	=> "Sysop 권한 필요",
+"sysoptext"		=> "해당 action은 \"Sysop\"만 실행할 수 있습니다.
+참조 $1.",
+"developertitle" => "Developer 권한 필요",
+"developertext"	=> "해당 action은 \"developer\"만 실행할 수 있습니다.
+참조 $1.",
 "nbytes"		=> "$1 바이트",
 "go"			=> "가기",
 "ok"			=> "확인",
 "sitetitle"		=> "위키백과",
 "sitesubtitle"	=> "우리 모두의 백과사전",
-"retrievedfrom" => "Retrieved from \"$1\"",
+"retrievedfrom" => "\"$1\"에서",
 
 # Main script and global functions
 #
-"nosuchaction"	=> "No such action",
-"nosuchactiontext" => "The action specified by the URL is not
-recognized by the Wikipedia software",
-"nosuchspecialpage" => "그런 특별문서는 없습니다.",
-"nospecialpagetext" => "You have requested a special page that is not
-recognized by the Wikipedia software.",
+"nosuchaction"	=> "그런 action은 없습니다.",
+"nosuchactiontext" => "위키백과 무른모는 URL로 주어진 action을
+모릅니다.",
+"nosuchspecialpage" => "그런 특수기능문서는 없습니다.",
+"nospecialpagetext" => "위키백과 무른모는 요청한 특수기능을
+모릅니다.",
 
 # General errors
 #
+# I'll leave this part in English for admins who don't understand Korean.
 "error"			=> "Error",
 "databaseerror" => "Database error",
 "dberrortext"	=> "A database query syntax error has occurred.
@@ -297,31 +343,34 @@ Please report this to an administrator, making note of the URL.",
 
 # Login and logout pages
 #
-"logouttitle"	=> "들어가기",
+"logouttitle"	=> "나오기",
 "logouttext"	=> "위키백과에서 나왔습니다.
-계속 이름없이 위키백과를 사용하거나, 먼저 들어갔던 또이름, 혹은 다른 또이름으로 들어갈 수 있습니다.\n",
+이대로 이름없이 위키백과를 이용하거나, 방금 사용했던 또이름, 혹은 다른 또이름으로 들어가서 이용하세요.\n",
 
 "welcomecreation" => "<h2>$1 님, 환영합니다!</h2><p>또이름이 만들어 졌습니다.
-사용자 설정을 편하게 맞추는 것도 잊지 마세요.",
+개인 맞춤에서 자잘한 환경들을 바꾸어 보세요.",
 
 "loginpagetitle" => "들어가기",
-"yourname"		=> "당신의 또이름",
-"yourpassword"	=> "당신의 암호",
-"yourpasswordagain" => "다시한번 암호입력",
-"newusersonly"	=> " (새로운 사용자만)",
+"yourname"		=> "또이름은",
+"yourpassword"	=> "암호는",
+"yourpasswordagain" => "암호 또 한번",
+"newusersonly"	=> " (새로운 사용자)",
 "remembermypassword" => "세쎤동안 암호를 기억합니다.",
-"loginproblem"	=> "<b>들어가는 데 문제가 발생했습니다.</b><br>다시 시도하세요!",
-"alreadyloggedin" => "<font color=red><b>$1 님, 이미 들어와 있습니다!</b></font><br>\n",
+"loginproblem"	=> "<b>들어가는 데 문제가 있습니다.</b><br>다시 해 보세요!",
+"alreadyloggedin" => "<font color=red><b>$1 님, 벌써 들어와 있습니다!</b></font><br>\n",
 
-"areyounew"		=> "위키백과에 처음이고, 이곳에 또이름을 갖고 싶다면, 또이름을 하나 만들어 또이름란에 써 넣고, 암호를 두번 써 넣으세요. 누리편지 주소를 반드시 넣을 필요는 없습니다. 암호를 잊었을 때, 편지로 암호를 받을 수 있습니다.<br>\n",
+"areyounew"		=> "위키백과에 처음 왔나요? 위키백과의 한 사람이 되고 싶다면, 
+또이름을 하나 지어 또이름란에 써 넣고, 암호를 두번 써 넣으세요. 
+누리편지주소는 넣지 않아도 됩니다. 다만,  
+암호를 잊었을 때, 편지로 새 암호를 보내드립니다.<br>\n",
 
 "login"			=> "들어가기",
 "userlogin"		=> "들어가기",
 "logout"		=> "나오기",
 "userlogout"	=> "나오기",
 "createaccount"	=> "또이름 새로 만들기",
-"badretype"		=> "암호가 틀립니다.",
-"userexists"	=> "써 넣은 또이름은 이미 사용중입니다. 다른 또이름을 고르세요.",
+"badretype"		=> "암호가 서로 다릅니다.",
+"userexists"	=> "또이름이 벌써 사용중입니다. 다른 또이름을 지으세요.",
 "youremail"		=> "당신의 누리편지",
 "yournick"		=> "당신의 별명 (서명용)",
 "emailforlost"	=> "암호를 잊었을 때, 새 암호를 누리편지로 받을 수 있습니다.",
@@ -329,105 +378,123 @@ Please report this to an administrator, making note of the URL.",
 "noname"		=> "또이름이 틀립니다.",
 "loginsuccesstitle" => "들어가기 성공",
 "loginsuccess"	=> "\"$1\" 위키백과에 들어왔습니다.",
-"nosuchuser"	=> "\"$1\" 또이름은 존재하지 않습니다.".
-"철자가 틀리지 않았는지 확인하고, 아직 또이름을 안 만들었다면, 아래 폼으로 새 또이름을 만드세요.",
+"nosuchuser"	=> "\"$1\"란 또이름은 없습니다.".
+"철자가 맞는지 확인하고, 아직 또이름이 없다면, 아래를 채워 또이름을 새로이 만드세요.",
 "wrongpassword"	=> "암호가 틀립니다. 다시 시도하세요.",
 "mailmypassword" => "새 암호를 누리편지로 보냅니다.",
 "passwordremindertitle" => "위키백과에서 보내는 새 암호",
 "passwordremindertext" => "누군가가 (IP $1 을 사용했던, 아마도 당신이)
 새 위키백과 암호를 보내달라고 부탁했습니다.
-또이름 \"$2\" 의 암호는 이제 \"$3\" 입니다.
+또이름 \"$2\"의 암호는 이제 \"$3\"입니다.
 새 암호로 위키백과에 들어와서, 암호를 바꾸세요.",
-"noemail"		=> "또이름 \"$1\" 는 누리편지주소정보가 없습니다.",
-"passwordsent"	=> "\"$1\" 의 새로운 암호를 누리편지로 보냈습니다.
+"noemail"		=> "또이름 \"$1\"에 딸린 누리편지주소정보가 없습니다.",
+"passwordsent"	=> "\"$1\"의 새 암호를 누리편지로 보냈습니다.
 암호를 받고 다시 들어오세요.",
 
 # Edit pages
 #
-"summary"		=> "편집내용 간추림",
+"summary"		=> "바꾼내용 간추리기",
 "minoredit"		=> "사소한 편집",
 "savearticle"	=> "저장",
 "preview"		=> "미리보기",
 "showpreview"	=> "미리보기",
 "blockedtitle"	=> "사용자 접근금지",
-"blockedtext"	=> "당신의 또이름이나 IP를 $1 가 막아놨습니다.
+"blockedtext"	=> "$1 가 당신의 또이름이나 IP를 막았습니다.
 이유는 다음과 같습니다:<br>$2<p> 접근금지에 대해선 관리자와 상의하십시오.",
 "newarticle"	=> "(새문서)",
 "newarticletext" => "새문서에 내용을 써 넣으세요.",
-"noarticletext" => "(현재 이 문서는 비었습니다.)",
+"noarticletext" => "(현재 문서는 비어 있습니다.)",
 "updated"		=> "(바뀜)",
 "note"			=> "<strong>주의:</strong> ",
-"previewnote"	=> "지금 미리보기에서 보이는 내용은 아직 저장되지 않았습니다!",
+"previewnote"	=> "지금 미리보기로 보고 있는 내용은 아직 저장되지 않았습니다!",
+
+# when does this message show up? I have encountered it yet, I guess.
+# And what does it have to do with conflict? The message sound quite normal.
+# (I don't think it _can_ show up. It's only used if you preview and get
+# an edit conflict, but edit conflict is tripped only if you're saving.)
 "previewconflict" => "This preview reflects the text in the upper
 text editing area as it will appear if you choose to save.",
-"editing"		=> "Editing $1", # 편집중? 편집하기?
+
+"editing"		=> "$1 고쳐쓰기", 
 "editconflict"	=> "고치기 충돌: $1",
-"explainconflict" => "문서를 고쳐쓰는 동안에 다른 누군가가 문서를 바꾸어 놓았습니다.
-위쪽이 현재 문서의 내용이고, 아래쪽이 당신이 고친 내용입니다.
-당신이 고친내용을 현재 문서와 합쳐야 할 것입니다.
-지금 \"저장하기\"를 누르면, 
-<b>오직</b> 위쪽에 있는 내용만 저장될 것입니다.\n<p>",
+"explainconflict" => "문서를 고쳐쓰는 동안, 문서가 바뀌었습니다.
+위쪽이 바뀐 현재 문서이고, 아래쪽이 당신이 고쳐쓴 내용입니다.
+당신이 고쳐쓴 내용을 현재 문서에 다시 집어 넣어야 할 것입니다.
+지금 \"저장\"을 눌러도, 
+<b>오직</b> 위쪽에 있는 내용만 저장됩니다.\n<p>",
 "yourtext"		=> "당신이 고쳐쓴 것",
-"storedversion" => "저장되어 있는 것",
-"editingold"	=> "<strong>WARNING: You are editing an out-of-date
-revision of this page.
-If you save it, any changes made since this revision will be lost.</strong>\n",
+"storedversion" => "바뀐 현재 문서",
+"editingold"	=> "<strong>경고: 지금 옛날 버젼의 문서를 고치고 있습니다.
+만약, 지금 여기서 저장을 하면, 그 때 이후의 모든 버젼을 잃게 됩니다.</strong>\n",
 "yourdiff"		=> "차이",
-"copyrightwarning" => "위키백과에 당신이 기여한 것은 모두 the GNU Free Documentation License
-(자세한 것은 $1 에서)에 따라 배포됩니다.
-당신이 써 넣은 내용이 제한없이 고쳐지고, 재배포되는 것에 반대할 때에는, 여기에 쓰지 마시길 바랍니다.<br>
-또, 여기 써 넣은 내용이 당신 스스로 쓴 것이거나, 유사한 공개 소스에서 복사해 온 것임을 약속해야 합니다.
-<strong>저작권이 있는 내용을 허가없이 보내지 마십시오!</strong>",
+"copyrightwarning" => "위키백과에 당신이 기여한 것은 모두 GNU 자유 문서 사용허가서(GFDL)
+($1참조)에 따라 배포됩니다.
+당신이 써 넣은 내용이 제한없이 고쳐지고, 재배포되는 것이 싫다면, 저장하지 마십시오.에 반대할 때에는, 여기에 쓰지 마시길 바랍니다.<br>
+또한, 여기 써 넣은 내용을 스스로 썼음을, 혹은 모두에게 공개된 자료에서 빌어왔음을
+같이 약속해야 합니다.
+<strong>저작권의 보호를 받는 내용을 저작권자의 허가없이 여기 보내지 마십시오!</strong>",
 
 
 # History pages
 #
-"revhistory"	=> "문서역사",
-"nohistory"		=> "이 문서에는 역사가 없습니다.",
-"revnotfound"	=> "변경사항이 없습니다.",
-"revnotfoundtext" => "The old revision of the page you asked for could not be found.
-Please check the URL you used to access this page.\n",
+"revhistory"	=> "바뀐역사",
+"nohistory"		=> "이 문서는 역사가 없습니다.",
+"revnotfound"	=> "버젼 찾지 못함",
+"revnotfoundtext" => "요청한 이 문서의 옛 버젼을 찾지 못했습니다.
+이 문서에 접근할 때의 URL을 확인해 주십시오.\n",
 "loadhist"		=> "문서역사를 받고 있습니다.",
-"currentrev"	=> "현재 revision",
-"revisionasof"	=> "$1 의 Revision",
+"currentrev"	=> "현재 버젼",
+"revisionasof"	=> "$1 버젼",
 "cur"			=> "현재",
 "next"			=> "다음",
 "last"			=> "이전",
-"orig"			=> "orig",
-"histlegend"	=> "Legend: (현재) = 현재 버전과의 차이,
-(이전) = 바로 이전 버전과의 차이, M = 사소한 고침",
+"orig"			=> "처음",
+"histlegend"	=> "상세설명: (현재) = 현재 버젼과의 차이,
+(이전) = 바로 이전 버전과의 차이, 少 = 사소한 편집",
 
 # Diffs
 #
-"difference"	=> "(Difference between revisions)",
-"loadingrev"	=> "loading revision for diff",
-"lineno"		=> "$1 째 줄:",
+"difference"	=> "(버젼사이 차이)",
+"loadingrev"	=> "버젼 차이를 받고 있습니다.",
+"lineno"		=> "$1째 줄:",
 "editcurrent"	=> "현재 버전의 문서를 고칩니다.",
 
 # Search results
 #
-"searchresults" => "찾은 결과",
+"searchresults" => "찾아본 결과",
 "searchhelppage" => "위키백과:찾기",
 "searchingwikipedia" => "위키백과 찾기",
 "searchresulttext" => "위키백과 찾기에 대해 자세한 정보는 $1 를 보세요.",
-"searchquery"	=> "For query \"$1\"",
-"badquery"		=> "Badly formed search query",
+"searchquery"	=> "열쇠말 \"$1\"",
+"badquery"		=> "좋지 않은 열쇠말",
+
+# I think we should enable the less-than-3-letter query in Korean.
+# One korean letter corresponds to one syllable. And when I do a search
+# in google or yahoo. The query I type in is mostly 3, 4 of letters
+# and it works. I'll leave this part in English. I'll wait for the
+# software to be developed to be compitable three letter search.
+
+# It's really 3 bytes, not 3 letters. Any Korean letter in UTF-8 encoding
+# is 3 bytes, so in theory it should work. However, searches for Korean
+# text don't work anyway. I'll have to bang it into shape... --Brion
+
 "badquerytext"	=> "We could not process your query.
 This is probably because you have attempted to search for a
 word fewer than three letters long, which is not yet supported.
 It could also be that you have mistyped the expression, for
 example \"fish and and scales\".
 Please try another query.",
-"matchtotals"	=> "The query \"$1\" matched $2 article titles
-and the text of $3 articles.",
+
+"matchtotals"	=> "열쇠말 \"$1\"이 제목에 들어있는 문서는 $2개 이고,
+내용에 담고있는 문서는 $3개 입니다.",
 "titlematches"	=> "문서 제목 일치",
-"notitlematches" => "제목과 일치하는 문서가 없습니다.",
+"notitlematches" => "제목과 맞는 문서가 없습니다.",
 "textmatches"	=> "문서 내용 일치",
-"notextmatches"	=> "No article text matches",
+"notextmatches"	=> "내용에 열쇠말을 담고 있은 문서가 없습니다.",
 "prevn"			=> "이전 $1",
 "nextn"			=> "다음 $1",
-"viewprevnext"	=> "View ($1) ($2) ($3).",
-"showingresults" => "Showing below <b>$1</b> results starting with #<b>$2</b>.",
+"viewprevnext"	=> "($1) ($2) 보기 ($3).",
+"showingresults" => "<b>$2</b>번 부터 <b>$1</b>개의 결과 입니다.",
 "nonefound"		=> "<strong>Note</strong>: unsuccessful searches are
 often caused by searching for common words like \"have\" and \"from\",
 which are not indexed, or by specifying more than one search term (only pages
@@ -441,64 +508,68 @@ $2 List redirects &nbsp; Search for $3 $9",
 
 # Preferences page
 #
-"preferences"	=> "설정",
+"preferences"	=> "개인 맞춤",
 "prefsnologin" => "나와 있습니다.",
-"prefsnologintext"	=> "You must be <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
-to set user preferences.",
-"prefslogintext" => "You are logged in as \"$1\".
-당신의 내부 인식 번호는 $2.",
-"prefsreset"	=> "Preferences have been reset from storage.",
-"qbsettings"	=> "Quickbar settings", 
+"prefsnologintext"	=> "<a href=\"" .
+  wfLocalUrl( "Special:Userlogin" ) . "\">들어와</a> 있을 때에만,
+# Special:Userlogin => 특수기능:들어가기 개인 환경을 맞출 수 있습니다.",
+"prefslogintext" => "당신은 \"$1\", 맞죠?
+당신의 내부 ID 번호는 $2입니다.",
+"prefsreset"	=> "개인 맞춤을 보통으로 되돌렸습니다.",
+"qbsettings"	=> "빨리가기 맞춤", 
 "changepassword" => "암호 바꾸기",
-"skin"			=> "Skin",
-"saveprefs"		=> "설정 저장",
-"resetprefs"	=> "설정 처음으로",
+"skin"			=> "옷",
+"saveprefs"		=> "맞춤 저장",
+"resetprefs"	=> "맞춤 보통으로",
 "oldpassword"	=> "현재 암호",
-"newpassword"	=> "새로운 암호",
-"retypenew"		=> "새 암호 다시 쳐 넣기",
+"newpassword"	=> "새 암호",
+"retypenew"		=> "새 암호 또 한번",
 "textboxsize"	=> "문서상자 크기",
-"rows"			=> "열수",
-"columns"		=> "행수",
-"searchresultshead" => "찾기 결과 설정",
-"resultsperpage" => "Hits to show per page",
-"contextlines"	=> "Lines to show per hit",
-"contextchars"	=> "Characters of context per line",
-"stubthreshold" => "Threshold for stub display",
+"rows"			=> "줄수",
+"columns"		=> "너비",
+"searchresultshead" => "찾기 결과 맞춤",
+"resultsperpage" => "쪽마다 보이는 결과",
+"contextlines"	=> "결과마다 보이는 줄수",
+"contextchars"	=> "줄수마다 보이는 글잣수",
+"stubthreshold" => "씨앗보기 문턱값",
 "recentchangescount" => "최근 바뀜에 보이는 항목 수",
-"savedprefs"	=> "새 설정이 저장되었습니다.",
-"timezonetext"	=> "Enter number of hours your local time differs
-from server time (UTC).",
+"savedprefs"	=> "새 설정을 저장했습니다.",
+"timezonetext"	=> "현지 시간과 서버 시간(UTC)과 차이를 써 넣으세요.",
 "localtime"	=> "현지 시각",
-"timezoneoffset" => "Offset",
-"emailflag"		=> "다른 사용자로부터 누리편지 안 받음",
+"timezoneoffset" => "시간차",
+"emailflag"		=> "다른 사용자에게서 누리편지 안 받음",
 
 # Recent changes
 #
-"recentchanges" => "최근 바뀐 항목",
-"recentchangestext" => "여기에서 가장 최근에 바뀐 문서 목록을 볼 수 있습니다.
-[[위키백과:새내기_환영|새내기, 환영]]!
-새내기들은 다음 문서를 읽어 보세요.: [[위키백과:잦은질문|위키백과 잦은질문]],
+"recentchanges" => "최근 바뀜",
+"recentchangestext" => "아래 나열된 문서들이 최근에 바뀌었습니다.
+[[위키백과:새내기_환영|새내기, 환영합니다]]!
+새내기들은 다음 문서를 읽어 보세요.: [[위키백과:잦은질문(FAQ)|위키백과 잦은질문(FAQ)]],
 [[위키백과:정책과 지침|위키백과 정책]]
 (특별히 [[위키백과:제목달기 규칙|제목달기 규칙]],
 [[위키백과:중립적인 시각|중립적인 시각]]),
-그리고 [[위키백과:Most common Wikipedia faux pas|most common Wikipedia faux pas]].
+그리고 [[위키백과:범하기_쉬운_실수|범하기 쉬운 실수]].
 
-위키백과가 성공하길 바란다면, 다른 사람들이 사용을 제한하는 정보를 이곳에 올리지 않는 것이 중요합니다.' [[위키백과:저작권|저작권]].
-The legal liability could really hurt the project, so please don't do it.
-그리고, [http://meta.wikipedia.org/wiki/Special:Recentchanges 최근 메타 토론]도 보세요.",
+위키백과가 성공하려면, 여러분이 저작권에 저촉되는 내용을 이곳에 써 넣지 않는 것이
+매우 중요합니다.' [[위키백과:저작권|저작권]].
+법적 문제가 프로젝트를 망칠 수 있습니다. 저작권에 유의해 주세요.
+또, [http://meta.wikipedia.org/wiki/Special:Recentchanges 최근 메타 토론]도 
+읽어 보세요.",
 "rcloaderr"		=> "최근 바뀜을 받고 있습니다.",
 "rcnote"		=> "다음이 최근 <strong>$2</strong>일간 바뀐  <strong>$1</strong>개의 문서입니다. days.",
-# "rclinks"		=> "최근 $3일 $2시간 동안에 바뀐 $1개",
-"rclinks"		=> "Show last $1 changes in last $2 days.",
+"rclinks"		=> "최근 $3일 $2시간 동안에 바뀐 $1개의 문서입니다.",
+
+# where does rchide appear?
+# It doesn't, currently. I think it was proposed at one point.
 "rchide"		=> "in $4 form; $1 minor edits; $2 secondary namespaces; $3 multiple edits.",
+
 "diff"			=> "차이",
 "hist"			=> "역사",
 "hide"			=> "숨김",
-"show"			=> "show",
-"tableform"		=> "table",
-"listform"		=> "목록",
-"nchanges"		=> "$1 바뀜",
+"show"			=> "보임",
+"tableform"		=> "표로",
+"listform"		=> "목록으로",
+"nchanges"		=> "$1개 바뀜",
 "minoreditletter" => "少",
 "newpageletter" => "新",
 
@@ -508,109 +579,121 @@ The legal liability could really hurt the project, so please don't do it.
 "uploadbtn"		=> "파일 올리기",
 "uploadlink"	=> "그림 올리기",
 "reupload"		=> "다시 올리기",
-"reuploaddesc"	=> "다시 올리기 form으로",
+"reuploaddesc"	=> "올리기 틀로 돌아감",
 "uploadnologin" => "나와있습니다.",
-"uploadnologintext"	=> "You must be <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
-to upload files.",
+"uploadnologintext"	=> "위키백과에 <a href=\"" .
+  wfLocalUrl( "Special:Userlogin" ) . "\">들어와</a> 있을 때에만
+# special:userlogin 특수기능:들어가기
+파일을 올릴 수 있습니다.",
 "uploadfile"	=> "파일 올리기",
 "uploaderror"	=> "올리기 오류",
 "uploadtext"	=> "<strong>잠깐!</strong> 여기 그림을 올리기 전에,
 위키백과의 <a href=\"" .
-wfLocalUrlE( "Wikipedia:Image_use_policy" ) . "\">그림 사용 정책</a>읽고 따를 것을 명심해 주세요.
-<p>To view or search previously uploaded images,
-go to the <a href=\"" . wfLocalUrlE( "Special:Imagelist" ) .
-"\">list of uploaded images</a>.
-Uploads and deletions are logged on the <a href=\"" .
-wfLocalUrlE( "Wikipedia:Upload_log" ) . "\">upload log</a>.
-<p>Use the form below to upload new image files for use in
-illustrating your articles.
-On most browsers, you will see a \"Browse...\" button, which will
-bring up your operating system's standard file open dialog.
-Choosing a file will fill the name of that file into the text
-field next to the button.
-You must also check the box affirming that you are not
-violating any copyrights by uploading the file.
-Press the \"Upload\" button to finish the upload.
-This may take some time if you have a slow internet connection.
-<p>The preferred formats are JPEG for photographic images, PNG
-for drawings and other iconic images, and OGG for sounds.
-Please name your files descriptively to avoid confusion.
-To include the image in an article, use a link in the form
-<b>[[image:file.jpg]]</b> or <b>[[image:file.png|alt text]]</b>
-or <b>[[media:file.ogg]]</b> for sounds.
-<p>Please note that as with Wikipedia pages, others may edit or
-delete your uploads if they think it serves the encyclopedia, and
-you may be blocked from uploading if you abuse the system.",
-"uploadlog"		=> "upload log",
-"uploadlogpage" => "Upload_log",
-"uploadlogpagetext" => "Below is a list of the most recent file uploads.
-All times shown are server time (UTC).
+wfLocalUrlE( "Wikipedia:Image_use_policy" ) . "\">그림 사용 정책</a>읽고 따라 주세요.
+<p>
+이미 올라온 그림을 찾아 보려면, <a href=\"" . wfLocalUrlE( "Special:Imagelist" ) .
+"\">올라온 그림 목록</a>으로 가세요.
+# Special:Image list  특수기능:그림_목록
+그림을 올리거나 지우면 <a href=\"" .
+wfLocalUrlE( "Wikipedia:Upload_log" ) . "\">올리기 기록</a>에 그 사실이 남습니다.
+# wikipedia:Upload_log 위키백과:올리기_기록
+
+<p>
+밑에 있는 틀을 이용해서 문서에 담을 파일을 올리세요.
+대부분의 누리그물 훑개(browser)는, 아래 \"찾아보기...\" (영문 \"Browse...\") 단추로
+ 자기 컴퓨터의 파일을 찾게 해 줍니다.
+원하는 파일을 고르면, 단추 옆의 공간에 파일이름이 채워질 것입니다.
+또한, 저작권에 저촉되지 않는 파일을 올린다는 사실도
+확인해야 합니다.
+마지막으로, \"올리기\" 단추를 누르면 올라갑니다. 누리그물 연결이 느리면, 
+시간이 걸릴 수 있습니다.
+<p>
+위키백과는 사진은 JPEG형식을, 보통 그림, 아이콘은 PNG형식을, 소리는
+OGG형식을 더 좋아합니다.
+이름은 햇갈리지 않고, 내용을 잘 나타내는 것으로 지어주세요. 그림을 문서에
+담을 때에는 <b>[[image:file.jpg]]</b> 또는 <b>[[image:file.png|alt text]]</b>
+처럼, 소리를 담을 때에는<b>[[media:file.ogg]]</b>처럼 써서 고리를 걸어주면
+됩니다.
+<p>
+다른 사람들이 올린 파일을 고치거나 지울 수 있다는 것을 알아두십시오.
+또한, 시스템을 남용할 때에는, 파일 올리기가 금지될 수도 있습니다.
+",
+"uploadlog"		=> "올리기 기록",
+"uploadlogpage" => "올리기_기록",
+"uploadlogpagetext" => "최근 올라온 그림 목록입니다.
+모든 시간은 서버 기준(UTC)입니다.
 <ul>
 </ul>
 ",
-"filename"		=> "파일명",
+"filename"		=> "파일이름",
 "filedesc"		=> "짧은설명",
-"affirmation"	=> "I affirm that the copyright holder of this file
-agrees to license it under the terms of the $1.",
+"affirmation"	=> "파일의 저작권자가
+$1의 조건으로 사용을 허가했음을 확인합니다.",
 "copyrightpage" => "위키백과:저작권",
 "copyrightpagename" => "위키백과 저작권",
 "uploadedfiles"	=> "파일 올리기",
-"noaffirmation" => "You must affirm that your upload does not violate
-any copyrights.",
+"noaffirmation" => "올리는 파일이 어떤 저작권에도 저촉되지 않음을
+확인해야 합니다.",
 "ignorewarning"	=> "경고 무시하고, 파일 저장",
-"minlength"		=> "그림이름은 최소한 세글자여야 합니다.",
+
+# three alphabets and how many for Korean character?
+"minlength"		=> "그림이름은 두글자가 넘어야 합니다.",
+
 "badfilename"	=> "그림이름이 \"$1\"로 바뀌었습니다.",
 "badfiletype"	=> "\".$1\" 형식은 권장하지 않습니다.",
 "largefile"		=> "그림크기는 100k이하를 권장합니다.",
 "successfulupload" => "올리기 성공",
 "fileuploaded"	=> "\"$1\"가 올라갔습니다.
-다음 고리($2)를 따라 가서, 설명문서에 파일에 대한 정보를 (어디서 구했는지, 누가 언제 만들었는지, 또 알고 있는 다른 사항들) 채우세요.",
+다음 고리($2)를 따라 가서, 설명문서에 파일에 대한 정보를(어디서 구했는지, 
+누가 언제 만들었는지, 또 그 이외 필요한 사항들을) 채우세요.",
 "uploadwarning" => "올리기 경고",
 "savefile"		=> "파일 저장",
-"uploadedimage" => "uploaded \"$1\"",
+"uploadedimage" => "\"$1\"를 올렸습니다.",
 
 # Image list
 #
 "imagelist"		=> "그림 목록",
-"imagelisttext"	=> "다음은 $2순으로 정리된 $1개의 그림들 입니다.",
+"imagelisttext"	=> "$2순으로 정리된 $1개의 그림입니다.",
 "getimagelist"	=> "그림 목록 가져오기",
-"ilshowmatch"	=> "이름이 일치하는 그림 모두 보이기",
+"ilshowmatch"	=> "이름이 맞는 그림 모두 보이기",
 "ilsubmit"		=> "찾기",
-"showlast"		=> "$2순으로 last $1개의 그림 보이기",
+"showlast"		=> "$2순으로 이전 $1개의 그림 보이기",
 "all"			=> "모두",
 "byname"		=> "이름",
 "bydate"		=> "날짜",
 "bysize"		=> "크기",
-"imgdelete"		=> "지우기",
+"imgdelete"		=> "지움",
 
-"imgdesc"		=> "desc",
-"imglegend"		=> "Legend: (desc) = show/edit image description.",
+"imgdesc"		=> "설명",
+"imglegend"		=> "상세설명: (설명) = 그림 설명을 보입니다/고칩니다.",
 "imghistory"	=> "그림역사",
-"revertimg"		=> "rev",
+"revertimg"		=> "돌림",
 "deleteimg"		=> "지우기",
-"imghistlegend" => "Legend: (cur) = this is the current image, (del) = delete
-this old version, (rev) = revert to this old version.
-<br><i>Click on date to see image uploaded on that date</i>.",
+"imghistlegend" => "상세설명: (현재) = 현재의 그림입니다, (지움) = 옛 버젼을 지웁니다, (돌림) = 옛 버젼으로 되돌려 놓습니다.
+<br><i>특정 날짜에 올라온 그림을 보려면, 날짜를 찍어 주세요</i>.",
 "imagelinks"	=> "그림고리",
-"linkstoimage"	=> "다음 문서들이 이 그림을 걸고있습니다:",
-"nolinkstoimage" => "이 그림을 걸고 있는 문서는 없습니다.",
+"linkstoimage"	=> "다음 문서들이 이 그림을 담고 있습니다:",
+"nolinkstoimage" => "이 그림을 담고 있는 문서는 없습니다.",
 
 # Statistics
 #
 "statistics"	=> "통계",
 "sitestats"		=> "누리터 통계",
 "userstats"		=> "사용자 통계",
-"sitestatstext" => "이곳 정보창고(db)에는 총 <b>$1</b>개의 문서가 있습니다.
-이 숫자는 \"토론\" 문서, 위키백과 자체에 관한 문서, 최소한의 \"씨앗\" 문서, 넘기기, 그리고 아직 어린 문서들을 모두 포함한 것입니다.
-그들을 제외하고, <b>$2</b>개의 문서가 있습니다.<p>
-또, 무른모 업그레이드가 있었던 2002년 7월 20일 이래, 총 <b>$3</b>번 문서가 읽혔고, <b>$4</b>번 고쳐졌습니다. 
-따라서, 평균적으론 한 문서를 <b>$5</b>번 고쳤고, 한 편집당 <b>$6</b>번 읽은 셈이 됩니다.",
+"sitestatstext" => "이곳 정보창고(DB)에는 총 <b>$1</b>개의 문서가 있습니다.
+이 숫자는 \"토론\" 문서, 위키백과 자체에 관한 문서, 자라기를 기다리는 \"씨앗\" 문서, 
+넘겨주기 문서, 그리고 아직 사전항목으로 부족한 문서들을 모두 포함한 것입니다.
+이들을 제외하면, <b>$2</b>개의 문서가 있습니다.<p>
+또, 무른모 업그레이드가 있었던 2002년 7월 20일 이래, 여러분은 총 <b>$3</b>번 문서를 
+읽었고, <b>$4</b>번 고쳤습니다. 
+따라서, 평균적으로 문서 하나가 <b>$5</b>번 바뀌었고, 한번 바뀔 때마다 <b>$6</b>번 읽힌
+셈이 됩니다.",
 "userstatstext" => "<b>$1</b>명의 사용자가 등록되어 있습니다.
-이 중 <b>$2</b>명은 관리자입니다.($3 참조)",
+이 중 관리자는 <b>$2</b>명입니다.($3 참조)",
 
 # Maintenance Page
-#
+# I leave it in english.
+
 "maintenance"		=> "Maintenance page",
 "maintnancepagetext"	=> "This page includes several handy tools for everyday maintenance. Some of these functions tend to stress the database, so please do not hit reload after every item you fixed ;-)",
 "maintenancebacklink"	=> "Back to Maintenance Page",
@@ -630,7 +713,7 @@ this old version, (rev) = revert to this old version.
 #
 "orphans"		=> "외톨이 문서",
 "lonelypages"	=> "외톨이 문서",
-"unusedimages"	=> "안 쓰이는 그림",
+"unusedimages"	=> "안 쓰는 그림",
 "popularpages"	=> "인기있는 문서",
 "nviews"		=> "$1 번 읽음",
 "wantedpages"	=> "필요한 문서",
@@ -640,77 +723,76 @@ this old version, (rev) = revert to this old version.
 "shortpages"	=> "짧은 문서",
 "longpages"		=> "긴 문서",
 "listusers"		=> "사용자들",
-"specialpages"	=> "특수 문서",
-"spheading"		=> "특수 문서",
+"specialpages"	=> "특수기능문서",
+"spheading"		=> "특수기능문서",
 "sysopspheading" => "Special pages for sysop use",
 "developerspheading" => "Special pages for developer use",
 "protectpage"	=> "보호된 문서",
-"recentchangeslinked" => "고리 보기",
-"rclsub"		=> "(to pages linked from \"$1\")",
+"recentchangeslinked" => "여기서 가리키는 문서",
+"rclsub"		=> "(\"$1\"의 고리들이 가리키는)",
 "debug"			=> "Debug",
 "newpages"		=> "새 문서",
 "movethispage"	=> "문서 옮기기",
-"unusedimagestext" => "<p>다음중 어떤 그림은, 다른 언어의 위키백과등 다른 누리터에서 URL바로걸기로 사용하고 있을 수도 있습니다.",
-"booksources"	=> "Book sources",
-"booksourcetext" => "Below is a list of links to other sites that
-sell new and used books, and may also have further information
-about books you are looking for.
-Wikipedia is not affiliated with any of these businesses, and
-this list should not be construed as an endorsement.",
+"unusedimagestext" => "<p>다음 그림중 어떤 것은, 다른 언어의 위키백과등 다른 
+누리터에서 URL바로걸기로 사용하고 있을 지도 모릅니다.",
+"booksources"	=> "외부 책방",
+"booksourcetext" => "새책이나 헌책을 파는 몇몇 누리터입니다. 찾고 있는 책의
+정보를 담고 있을 수 있습니다.
+위키백과는 다음 중 어떤 기업과도 관련이 없으며,
+아래 목록이 상업적 광고로 오해되지 않기를 바랍니다.",
 
 # Email this user
 #
 "mailnologin"	=> "누리편지주소 없음",
-"mailnologintext" => "<a href=\"" .
-  wfLocalUrl( "Special:Preferences" ) . "\">자기 설정</a>에서 옳바른 누리편지주소를
-넣고 위키백과에 <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
-and have a valid e-mail address in your 
-to send e-mail to other users.",
-"emailuser"		=> "사용자에게 편지보내기",
-"emailpage"		=> "E-mail user",
-"emailpagetext"	=> "If this user has entered a valid e-mail address in
-is user preferences, the form below will send a single message.
-The e-mail address you entered in your user preferences will appear
-as the \"From\" address of the mail, so the recipient will be able
-to reply.",
-"noemailtitle"	=> "No e-mail address",
-"noemailtext"	=> "This user has not specified a valid e-mail address,
-or has chosen not to receive e-mail from other users.",
-"emailfrom"		=> "From",
-"emailto"		=> "To",
-"emailsubject"	=> "Subject",
-"emailmessage"	=> "Message",
-"emailsend"		=> "Send",
-"emailsent"		=> "E-mail sent",
-"emailsenttext" => "Your e-mail message has been sent.",
+"mailnologintext" => "위키백과에 <a href=\"" .
+  wfLocalUrl( "Special:Userlogin" ) . "\">들어와</a> 있을 때, 또,
+<a href=\"" .
+  wfLocalUrl( "Special:Preferences" ) . "\">개인 맞춤</a>에 
+자기의 누리편지주소를 기억시켰을 때에만,
+다른 사용자에게 편지를 보낼 수 있습니다.",
+"emailuser"		=> "사용자에게 편지쓰기",
+"emailpage"		=> "누리편지 쓰기",
+"emailpagetext"	=> "이 사용자가 개인맞춤에 옳바른 주소를 써 넣었다면,
+아래 틀을 이용하여 편지를 보낼 수 있습니다.
+이 사용자가 바로 답장할 수 있도록, 당신의 개인맞춤에 넣었던 주소가,
+\"보낸이\" 주소에 들어갑니다.",
+"noemailtitle"	=> "누리편지 없음",
+"noemailtext"	=> "이 사용자는 누리편지를 받지않음에 맞추어 놓았거나,
+옳바른 주소를 써 넣지 않았습니다.",
+"emailfrom"		=> "보낸이",
+"emailto"		=> "받는이",
+"emailsubject"	=> "제목",
+"emailmessage"	=> "편지내용",
+"emailsend"		=> "보내기",
+"emailsent"		=> "편지 보냄",
+"emailsenttext" => "누리편지를 보냈습니다.",
 
 # Watchlist
 #
-"watchlist"		=> "Watch list",
-"watchlistsub"	=> "(for user \"$1\")",
-"nowatchlist"	=> "You have no items on your watchlist.",
-"watchnologin"	=> "Not logged in",
-"watchnologintext"	=> "You must be <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
-to modify your watchlist.",
-"addedwatch"	=> "Added to watchlist",
-"addedwatchtext" => "The page \"$1\" has been added to your <a href=\"" .
-  wfLocalUrl( "Special:Watchlist" ) . "\">watchlist</a>.
-Future changes to this page and its associated Talk page will be listed there,
-and the page will appear <b>bolded</b> in the <a href=\"" .
-  wfLocalUrl( "Special:Recentchanges" ) . "\">list of recent changes</a> to
-make it easier to pick out.</p>
+"watchlist"		=> "눈여기보기 목록",
+"watchlistsub"	=> "(\"$1\"의)",
+"nowatchlist"	=> "눈여겨보는 문서가 아직 없습니다.",
+"watchnologin"	=> "나와있습니다.",
+"watchnologintext"	=> "<a href=\"" .
+  wfLocalUrl( "Special:Userlogin" ) . "\">들어와</a>
+있을 때에만 눈여겨보기 목록을 볼 수 있습니다.",
+"addedwatch"	=> "눈여겨 봅니다.",
+"addedwatchtext" => "앞으로 \"$1\"문서와 딸린 토론를
+<a href=\"" .
+  wfLocalUrl( "Special:Watchlist" ) . "\">눈여겨보기 목록</a>에서
+관찰할 수 있으며,<a href=\"" .
+  wfLocalUrl( "Special:Recentchanges" ) . "\">최근 바뀜</a>에는 금방 눈에 
+띄도록 <b>두터운 글씨체</b>로 나타납니다.</p>
 
-<p>If you want to remove the page from your watchlist later, click \"Stop watching\" in the sidebar.",
-"removedwatch"	=> "Removed from watchlist",
-"removedwatchtext" => "The page \"$1\" has been removed from your watchlist.",
-"watchthispage"	=> "Watch this page",
-"unwatchthispage" => "Stop watching",
-"notanarticle"	=> "Not an article",
+<p>더 이상 눈여겨 보지 않아도 될 때에는, 옆의 \"눈여겨 보지 않음\"을 누르면 됩니다.",
+"removedwatch"	=> "눈여겨 보지 않음",
+"removedwatchtext" => "\"$1\"를 더 이상 눈여겨 보지 않습니다.",
+"watchthispage"	=> "눈여겨보기",
+"unwatchthispage" => "눈여겨 보지 않음",
+"notanarticle"	=> "문서가 아님",
 
 # Delete/protect/revert
-#
+# I'll leave it in eng.
 "deletepage"	=> "Delete page",
 "confirm"		=> "Confirm",
 "confirmdelete" => "Confirm delete",
@@ -753,25 +835,25 @@ See [[Wikipedia:Deletion_log]] for a record of recent deletions and restorations
 
 # Contributions
 #
-"contributions"	=> "User contributions",
-"contribsub"	=> "For $1",
-"nocontribs"	=> "No changes were found matching these criteria.",
-"ucnote"		=> "Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
-"uclinks"		=> "View the last $1 changes; view the last $2 days.",
+"contributions"	=> "사용자 기여",
+"contribsub"	=> "$1의",
+"nocontribs"	=> "이 사용는 어디에도 기여하지 않았습니다.",
+"ucnote"		=> "<b>$2</b>일 동안 이 사용자가 바꾼 <b>$1</b>개의 문서입니다.",
+"uclinks"		=> "최근 $1개 보기; 최근 $2일 보기",
 
 # What links here
 #
-"whatlinkshere"	=> "여기 걸린 문서",
-"notargettitle" => "No target",
-"notargettext"	=> "You have not specified a target page or user
-to perform this function on.",
-"linklistsub"	=> "(List of links)",
-"linkshere"		=> "The following pages link to here:",
-"nolinkshere"	=> "No pages link to here.",
-"isredirect"	=> "redirect page",
+"whatlinkshere"	=> "여기 가리키는 문서",
+"notargettitle" => "문서 없음",
+"notargettext"	=> "기능을 수행할 목표 문서나 목표 사용자를
+지정하지 않았습니다.",
+"linklistsub"	=> "(고리 목록)",
+"linkshere"		=> "다음 문서들이 여기를 가리키고 있습니다.",
+"nolinkshere"	=> "어떤 문서도 이곳을 가리키지 않습니다.",
+"isredirect"	=> "넘겨주기 문서",
 
 # Block/unblock IP
-#
+# leave it in eng
 "blockip"		=> "Block IP address",
 "blockiptext"	=> "Use the form below to block write access
 from a specific IP address.
@@ -838,32 +920,30 @@ Wikipedia developers.",
 
 # Move page
 #
-"movepage"		=> "Move page",
-"movepagetext"	=> "Using the form below will rename a page, moving all
-of its history to the new name.
-The old title will become a redirect page to the new title.
-Links to the old page title will not be changed, and the talk
-page, if any, will not be moved.
-<b>WARNING!</b>
-This can be a drastic and unexpected change for a popular page;
-please be sure you understand the consequences of this before
-proceeding.",
-"movearticle"	=> "Move page",
-"movenologin"	=> "Not logged in",
-"movenologintext" => "You must be a registered user and <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
-to move a page.",
-"newtitle"		=> "To new title",
-"movepagebtn"	=> "Move page",
-"pagemovedsub"	=> "Move succeeded",
-"pagemovedtext" => "Page \"[[$1]]\" moved to \"[[$2]]\".",
-"articleexists" => "A page of that name already exists, or the
-name you have chosen is not valid.
-Please choose another name.",
-"movedto"		=> "moved to",
-"movetalk"		=> "Move \"talk\" page as well, if applicable.",
-"talkpagemoved" => "The corresponding talk page was also moved.",
-"talkpagenotmoved" => "The corresponding talk page was <strong>not</strong> moved.",
+"movepage"		=> "문서 옮기기",
+"movepagetext"	=> "아래 틀을 채워 문서이름을 바꾸세요. 
+문서역사도 함께 새문서로 갑니다.
+기존의 문서는 새이름의 문서로 넘겨주는 역할만 하는 넘겨주기 문서가 됩니다.
+기존 문서로의 고리도 바뀌지 않습니다. 딸린토론이 있어도, 옮기지
+않습니다.
+<b>경고!</b>
+인기있는 문서를 옮기면 예상치 못한 엄청난 결과를 가져올 수 있습니다.
+옮기는 것이 옳다는 확신이 들 때에만 진행하세요.",
+"movearticle"	=> "문서 옮기기",
+"movenologin"	=> "나와 있습니다.",
+"movenologintext" => "위키백과에 <a href=\"" .
+  wfLocalUrl( "Special:Userlogin" ) . "\">들어와</a> 있을 때에만
+문서를 옮길 수 있습니다.",
+"newtitle"		=> "새 이름",
+"movepagebtn"	=> "옮기기",
+"pagemovedsub"	=> "문서 옮김",
+"pagemovedtext" => "\"[[$1]]\"를 \"[[$2]]\"로 옮겼습니다.",
+"articleexists" => "그 이름의 문서가 이미 존재하거나, 새 이름이 옳바르지
+않습니다. 이름을 다시 지으세요.",
+"movedto"		=> "새 이름",
+"movetalk"		=> "딸린 \"토론\"도 함께 옮깁니다.",
+"talkpagemoved" => "딸린토론도 옮겼습니다.",
+"talkpagenotmoved" => "딸린토론은 옮기지 <strong>않았습니다</strong>.",
 
 );
 
@@ -967,11 +1047,19 @@ class LanguageKo extends Language {
  
 	function date( $ts, $adj = false )
 	{
+		global $wgWeekdayAbbreviationsKo;
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
 
-		$d = $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
-		  " " . (0 + substr( $ts, 6, 2 )) . ", " .
-		  substr( $ts, 0, 4 );
+        # This is horribly inefficient; I need to rework this
+        $x = getdate(mktime(( (int)substr( $ts, 8, 2) ) + $diff,
+		  (int)substr( $ts, 10, 2 ), (int)substr( $ts, 12, 2 ),
+		  (int)substr( $ts, 4, 2 ), (int)substr( $ts, 6, 2 ),
+          (int)substr( $ts, 0, 4 )));
+        
+        $d = substr( $ts, 0, 4 ) . "년 " .
+		  $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) . "월 " .
+		  (0 + substr( $ts, 6, 2 )) . "일 " .
+		  "(" . $wgWeekdayAbbreviationsKo[$x["wday"]] . ")";
 		return $d;
 	}
 
@@ -1020,10 +1108,7 @@ class LanguageKo extends Language {
 		else return $m;
 	}
 	
-	function iconv( $in, $out, $string ) {
-		# For most languages, this is a wrapper for iconv
-		return iconv( $in, $out, $string );
-	}
+	# Inherit default iconv()
 	
 	function ucfirst( $string ) {
         #return ucfirst( $string );
