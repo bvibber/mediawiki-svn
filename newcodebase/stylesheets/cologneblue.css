@@ -85,4 +85,6 @@ h1.pagetitle { padding-bottom: 0; margin-bottom: 0; }
 a { color: #223366; }
 a.external { color: #336644; }
 a.printable { text-decoration: underline; }
+a.stub { color:#772233; text-decoration:none; }
 h2, h3, h4, h5, h6 { margin-bottom: 0; }
+a.stub { color:#772233; text-decoration:none; }

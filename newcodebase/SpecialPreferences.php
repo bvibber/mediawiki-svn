@@ -32,7 +32,7 @@ function wfSpecialPreferences()
 	global $wgUser, $wgLang, $wgDeferredUpdateList;
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
 	global $wpSkin, $wpEmail, $wpEmailFlag, $wpNick, $wpSearch, $wpRecent;
-	global $wpSearchLines, $wpSearchChars;
+	global $wpSearchLines, $wpSearchChars, $wpStubs;
 	global $wpRows, $wpCols, $wpHourDiff, $HTTP_POST_VARS;
 
 	if ( "" != $wpNewpass ) {
@@ -59,6 +59,7 @@ function wfSpecialPreferences()
 	$wgUser->setOption( "rclimit", $wpRecent );
 	$wgUser->setOption( "rows", $wpRows );
 	$wgUser->setOption( "cols", $wpCols );
+	$wgUser->setOption( "stubthreshold", $wpStubs );
 	$wgUser->setOption( "timecorrection", $wpHourDiff );
 
 	if ( $wpEmailFlag ) { $wgUser->setOption( "disablemail", 1 ); }
@@ -81,7 +82,7 @@ function wfSpecialPreferences()
 /* private */ function resetPrefs()
 {
 	global $wgUser, $wgLang;
-	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
+	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype, $wpStubs;
 	global $wpRows, $wpCols, $wpSkin, $wpEmail, $wpEmailFlag, $wpNick;
 	global $wpSearch, $wpRecent, $HTTP_POST_VARS;
 	global $wpHourDiff, $wpSearchLines, $wpSearchChars;
@@ -96,6 +97,7 @@ function wfSpecialPreferences()
 	$wpSkin = $wgUser->getOption( "skin" );
 	$wpRows = $wgUser->getOption( "rows" );
 	$wpCols = $wgUser->getOption( "cols" );
+	$wpStubs = $wgUser->getOption( "stubthreshold" );
 	$wpHourDiff = $wgUser->getOption( "timecorrection" );
 	$wpSearch = $wgUser->getOption( "searchlimit" );
 	$wpSearchLines = $wgUser->getOption( "contextlines" );
@@ -114,7 +116,7 @@ function wfSpecialPreferences()
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
 	global $wpSkin, $wpEmail, $wpEmailFlag, $wpNick, $wpSearch, $wpRecent;
 	global $wpRows, $wpCols, $wpSaveprefs, $wpReset, $wpHourDiff;
-	global $wpSearchLines, $wpSearchChars;
+	global $wpSearchLines, $wpSearchChars, $wpStubs;
 
 	$wgOut->setPageTitle( wfMsg( "preferences" ) );
 	$wgOut->setArticleFlag( false );
@@ -152,6 +154,7 @@ function wfSpecialPreferences()
 	$yem = wfMsg( "youremail" );
 	$emf = wfMsg( "emailflag" );
 	$ynn = wfMsg( "yournick" );
+        $stt = wfMsg ( "stubthreshold" ) ;
 	$srh = wfMsg( "searchresultshead" );
 	$rpp = wfMsg( "resultsperpage" );
 	$scl = wfMsg( "contextlines" );
@@ -227,6 +230,7 @@ $yem: <input type=text name=\"wpEmail\" value=\"{$wpEmail}\" size=20><br>
 <input type=checkbox $emfc value=\"1\" name=\"wpEmailFlag\"> $emf<br>
 $ynn: <input type=text name=\"wpNick\" value=\"{$wpNick}\" size=12><br>
 $rcc: <input type=text name=\"wpRecent\" value=\"$wpRecent\" size=6><br>
+$stt: <input type=text name=\"wpStubs\" value=\"$wpStubs\" size=6><br>
 <strong>{$srh}:</strong><br>
 $rpp: <input type=text name=\"wpSearch\" value=\"$wpSearch\" size=6><br>
 $scl: <input type=text name=\"wpSearchLines\" value=\"$wpSearchLines\" size=6><br>

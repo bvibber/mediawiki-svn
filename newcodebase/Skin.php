@@ -64,10 +64,10 @@ class Skin {
 
 		$s = "";
 		if ( 1 == $wgUser->getOption( "underline" ) ) {
-			$s .= "a.new, a.internal, a.external { " .
+			$s .= "a.stub, a.new, a.internal, a.external { " .
 			  "text-decoration: underline; }\n";
 		} else {
-			$s .= "a.new, a.internal, a.external { " .
+			$s .= "a.stub, a.new, a.internal, a.external { " .
 			  "text-decoration: none; }\n";
 		}
 		if ( 1 == $wgUser->getOption( "highlightbroken" ) ) {
@@ -117,7 +117,8 @@ class Skin {
 		$link = wfEscapeHTML( $link );
 
 		if ( $wgOut->isPrintable() ) { $r = " class='printable'"; }
-		else if ( $broken ) { $r = " class='new'"; }
+                else if ( $broken == "stub" ) { $r = " class='stub'"; }
+		else if ( $broken == "yes" ) { $r = " class='new'"; }
 		else { $r = " class='internal'"; }
 
 		if ( 1 == $wgUser->getOption( "hover" ) ) {
@@ -819,12 +820,28 @@ class Skin {
           ( Namespace::getImage() == $nt->getNamespace() ) ) {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
-		if ( 0 == $nt->getArticleID() ) {
-			return $this->makeBrokenLink( $title, $text, $query, $trail );
-		} else {
-			return $this->makeKnownLink( $title, $text, $query, $trail );
-		}
-	}
+                $aid = $nt->getArticleID() ;
+                if ( 0 == $aid ) {
+                        return $this->makeBrokenLink( $title, $text, $query, $trail );
+                } else {
+                        $threshold = $wgUser->getOption("stubthreshold") ;
+                        if ( $threshold > 0 ) {
+                                $res = wfQuery ( "SELECT length(cur_text) AS x, cur_namespace, cur_is_redirect FROM cur WHERE cur_id='{$aid}'" ) ;
+
+                                if ( mysql_num_rows( $res ) > 0 ) {
+                                        $s = mysql_fetch_object( $res );
+                                        $size = $s->x;
+                                        if ( $s->cur_is_redirect OR $s->cur_namespace != 0 )
+                                                $size = $threshold*2 ; # Really big
+                                        mysql_free_result( $res );
+                                } else $size = $threshold*2 ; # Really big
+                        } else $size = 1 ;
+
+                        if ( $size < $threshold )
+                                return $this->makeStubLink( $title, $text, $query, $trail );
+                        return $this->makeKnownLink( $title, $text, $query, $trail );
+                }
+        }
 
 	function makeKnownLink( $title, $text = "", $query = "", $trail = "" )
 	{
@@ -868,7 +885,7 @@ class Skin {
 		$u = wfLocalUrlE( $link, $q );
 
 		if ( "" == $text ) { $text = $nt->getPrefixedText(); }
-		$style = $this->getInternalLinkAttributes( $link, $text, true );
+		$style = $this->getInternalLinkAttributes( $link, $text, "yes" );
 
 		$inside = "";
 		if ( "" != $trail ) {
@@ -885,6 +902,34 @@ class Skin {
 		}
 		return $s;
 	}
+
+        function makeStubLink( $title, $text = "", $query = "", $trail = "" )
+        {
+                global $wgOut, $wgUser;
+
+                $nt = Title::newFromText( $title );
+                $link = $nt->getPrefixedURL();
+
+                $u = wfLocalUrlE( $link, $query );
+
+                if ( "" == $text ) { $text = $nt->getPrefixedText(); }
+                $style = $this->getInternalLinkAttributes( $link, $text, "stub" );
+
+                $inside = "";
+                if ( "" != $trail ) {
+                        if ( preg_match( "/^([a-z]+)(.*)\$/sD", $trail, $m ) ) {
+                                $inside = $m[1];
+                                $trail = $m[2];
+                        }
+                }
+                if ( $wgOut->isPrintable() ||
+                  ( 1 == $wgUser->getOption( "highlightbroken" ) ) ) {
+                        $s = "<a href=\"{$u}\"{$style}>{$text}{$inside}</a>{$trail}";
+                } else {
+                        $s = "{$text}{$inside}<a href=\"{$u}\"{$style}>!</a>{$trail}";
+                }
+                return $s;
+        }
 
 	function fnamePart( $url )
 	{

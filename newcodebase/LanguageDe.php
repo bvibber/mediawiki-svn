@@ -18,7 +18,7 @@
 	"cols" => 80, "rows" => 25, "searchlimit" => 20,
 	"contextlines" => 5, "contextchars" => 50,
 	"skin" => 0, "rcdays" => 3, "rclimit" => 50,
-	"highlightbroken" => 1
+	"highlightbroken" => 1, "stubthreshold" => 0
 );
 
 /* private */ $wgQuickbarSettingsDe = array(
@@ -364,6 +364,7 @@ sein, um Ihre Einstellungen zu ändern.",
 "resultsperpage" => "Treffer pro Seite",
 "contextlines"	=> "Zeilen pro Treffer",
 "contextchars"	=> "Zeichen pro Zeile",
+"stubthreshold" => "Kurze Artikel markieren bis",
 "recentchangescount" => "Anzahl \"Letzte Änderungen\"",
 "savedprefs"	=> "Ihre Einstellungen wurden gespeichert.",
 "timezonetext"	=> "Geben Sie die Anzahl der Stunden ein, die zwischen Ihrer Zeitzone und UTC liegen.",
