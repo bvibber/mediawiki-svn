@@ -86,7 +86,7 @@ function editUserSettings () {
 	$ret .= "<input type=radio value=\"Star Trek\" ".$sk["Star Trek"]." name=doSkin>$wikiStarTrek<br>\n" ;
 
 #----------------------------------------------
-	$ret .= "<td valign=top nowrap>" ;
+	$ret .= "</td><td valign=top nowrap>" ;
 
 	# Show Hover
 	$sh[$user->options["showHover"]] = "CHECKED" ;
