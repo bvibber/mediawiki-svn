@@ -645,7 +645,7 @@ class OutputPage {
 		$v = date( "Y" );
 		$text = str_replace( "{{CURRENTYEAR}}", $v, $text );
 
-		if ( ! ( strstr( $text, "{{NUMBEROFARTICLES}}" ) === false ) ) {
+		if ( false !== strstr( $text, "{{NUMBEROFARTICLES}}" ) ) {
 			$v = wfNumberOfArticles();
 			$text = str_replace( "{{NUMBEROFARTICLES}}", $v, $text );
 		}
