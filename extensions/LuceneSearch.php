@@ -180,14 +180,16 @@ class LuceneSearch extends SpecialPage
 								$limit)."\">".($i+1)."</a> ";
 					}
 				}
-				if ($whichchuck < $last-1)
+				if ($whichchunk < $last-1)
 					$prevnext .= "<a href=\"".
 						$this->makelink($q, $offset + $limit, $limit)."\">".
 						wfMsg("searchnext")."</a> ";
 				$prevnext = "<div style='text-align: center'>$prevnext</div>";
 				$top .= $prevnext;
-				foreach ($chunks[$whichchunk] as $result) {
-					$out .= $this->showHit($result[0], $result[1], $contextWords);
+				if ($chunks && count($chunks) > 0) {
+					foreach ($chunks[$whichchunk] as $result) {
+						$out .= $this->showHit($result[0], $result[1], $contextWords);
+					}
 				}
 				$out .= "</ul>";
 			}
