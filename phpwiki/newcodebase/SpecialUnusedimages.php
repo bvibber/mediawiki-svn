@@ -19,6 +19,7 @@ function wfSpecialUnusedimages()
 
 	$sk = $wgUser->getSkin();
 
+	$wgOut->addHTML( wfMsg( "unusedimagestext" ) );
 	$top = SearchEngine::showingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
