@@ -196,27 +196,29 @@ class Article {
 	function view()
 	{
 		global $wgUser, $wgOut, $wgTitle, $wgLang;
-		global $oldid, $diff;
+		global $oldid, $diff, $frame;
 
 		# $wgOut->addHeader( "Expires", $wgLang->rfc1123( time() + 3600 ) );
 		# $wgOut->addHeader( "Cache-Control", "private" );
 
 		$wgOut->setArticleFlag( true );
 		$wgOut->setRobotpolicy( "index,follow" );
+		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 
 		if ( isset( $diff ) ) {
-			$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
+			if ( "body" != $frame ) {
+				$wgOut->frameOnly();
+				return;
+			}
 			$de = new DifferenceEngine( $oldid, $diff );
 			$de->showDiffPage();
 			return;
 		}
-		$text = $this->getContent();
-		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
-
 		if ( $oldid ) {
 			$this->setOldSubtitle();
 			$wgOut->setRobotpolicy( "noindex,follow" );
 		}
+		$text = $this->getContent();
 
 		if ( "" != $this->mRedirectedFrom ) {
 			$sk = $wgUser->getSkin();
@@ -224,6 +226,10 @@ class Article {
 			  "redirect=no" );
 			$s = str_replace( "$1", $redir, wfMsg( "redirectedfrom" ) );
 			$wgOut->setSubtitle( $s );
+		}
+		if ( "body" != $frame ) {
+			$wgOut->frameOnly();
+			return;
 		}
 		$wgOut->addWikiText( $text );
 		
@@ -240,10 +246,23 @@ class Article {
 		global $wgOut, $wgUser, $wgTitle;
 		global $wpTextbox1, $wpSummary, $wpSave, $wpPreview;
 		global $wpMinoredit, $wpEdittime, $wpTextbox2;
+		global $frame, $oldid;
 
 		$fields = array( "wpTextbox1", "wpSummary", "wpTextbox2" );
 		wfCleanFormFields( $fields );
 
+		$s = str_replace( "$1", $wgTitle->getPrefixedText(),
+		  wfMsg( "editing" ) );
+		$wgOut->setPageTitle( $s );
+		if ( $oldid ) { $this->setOldSubtitle(); }
+
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
+		$wgOut->setArticleFlag( false );
+
+		if ( "body" != $frame ) {
+			$wgOut->frameOnly();
+			return;
+		}
 		if ( ! $wgTitle->userCanEdit() ) {
 			$this->view();
 			return;
@@ -288,6 +307,9 @@ class Article {
 			# Check for edit conflict. TODO: check oldid here?
 			#
 			$this->clear(); # Force reload
+wfDebug( "\nts=" . $this->getTimestamp() . "\n" );
+wfDebug( "\net=" . $wpEditTime . "\n" );
+wfDebug( "\nu=" . $wgUser->getID() . "\n" );
 			if ( $this->getTimestamp() > $wpEdittime ) { $isConflict = true; }
 			$u = $wgUser->getID();
 			if ( ( 0 != $u ) && ( $this->getUser() == $u ) ) {
@@ -307,31 +329,15 @@ class Article {
 			$wpCountable = $this->isCountable( $wpTextbox1 );
 			$wpSummary = "";
 		}
-		$wgOut->setRobotpolicy( "noindex,nofollow" );
-		$wgOut->setArticleFlag( false );
-
 		if ( $isConflict ) {
-			$s = str_replace( "$1", $wgTitle->getPrefixedText(),
-			  wfMsg( "editconflict" ) );
-			$wgOut->setPageTitle( $s );
-			$wgOut->addHTML( wfMsg( "explainconflict" ) );
-
 			$wpTextbox2 = $wpTextbox1;
 			$wpTextbox1 = $this->getContent();
 			$wpEdittime = $this->getTimestamp();
-		} else {
-			$s = str_replace( "$1", $wgTitle->getPrefixedText(),
-			  wfMsg( "editing" ) );
-			$wgOut->setPageTitle( $s );
-			if ( $oldid ) {
-				$this->setOldSubtitle();
-				$wgOut->addHTML( wfMsg( "editingold" ) );
-			}
 		}
 		$rows = $wgUser->getOption( "rows" );
 		$cols = $wgUser->getOption( "cols" );
 		$action = "$wgServer$wgScript?title=" .
-		  $wgTitle->getPrefixedURL() . "&amp;action=edit";
+		  $wgTitle->getPrefixedURL() . "&amp;action=edit&amp;frame=body";
 		if ( "no" == $redirect ) { $action .= "&amp;redirect=no"; }
 
 		$summary = wfMsg( "summary" );
@@ -343,8 +349,14 @@ class Article {
 		$wpTextbox2 = wfEscapeHTML( $wpTextbox2 );
 		$wpSummary = wfEscapeHTML( $wpSummary );
 
+		if ( $isConflict ) {
+			$wgOut->addHTML( "<h2>" . wfMsg( "editconflict" ) . "</h2>\n" );
+			$wgOut->addHTML( wfMsg( "explainconflict" ) );
+		} else if ( $oldid ) {
+			$wgOut->addHTML( wfMsg( "editingold" ) );
+		}
 		$wgOut->addHTML( "
-<form method=post action='$action'
+<form method=post action=\"{$action}\" target=\"_self\"
 enctype='application/x-www-form-urlencoded'>
 <textarea tabindex=1 name='wpTextbox1' rows=$rows cols=$cols wrap=virtual>
 $wpTextbox1
@@ -526,8 +538,15 @@ $wpTextbox2
 	function watch()
 	{
 		global $wgUser, $wgTitle, $wgOut, $wgLang;
-		global $wgDeferredUpdateList;
+		global $frame, $wgDeferredUpdateList;
 
+		$wgOut->setPagetitle( wfMsg( "addedwatch" ) );
+		$wgOut->setRobotpolicy( "noindex,follow" );
+
+		if ( "body" != $frame ) {
+			$wgOut->frameOnly();
+			return;
+		}
 		if ( 0 == $wgUser->getID() ) {
 			$wgOut->errorpage( "watchnologin", "watchnologintext" );
 			return;
@@ -537,9 +556,6 @@ $wpTextbox2
 			return;
 		}
 		$wgUser->addWatch( $wgTitle->getPrefixedDBkey() );
-
-		$wgOut->setPagetitle( wfMsg( "addedwatch" ) );
-		$wgOut->setRobotpolicy( "noindex,follow" );
 
 		$text = str_replace( "$1", $wgTitle->getPrefixedText(),
 		  wfMsg( "addedwatchtext" ) );
@@ -554,8 +570,15 @@ $wpTextbox2
 	function unwatch()
 	{
 		global $wgUser, $wgTitle, $wgOut, $wgLang;
-		global $wgDeferredUpdateList;
+		global $frame, $wgDeferredUpdateList;
 
+		$wgOut->setPagetitle( wfMsg( "removedwatch" ) );
+		$wgOut->setRobotpolicy( "noindex,follow" );
+
+		if ( "body" != $frame ) {
+			$wgOut->frameOnly();
+			return;
+		}
 		if ( 0 == $wgUser->getID() ) {
 			$wgOut->errorpage( "watchnologin", "watchnologintext" );
 			return;
@@ -565,9 +588,6 @@ $wpTextbox2
 			return;
 		}
 		$wgUser->removeWatch( $wgTitle->getPrefixedDBkey() );
-
-		$wgOut->setPagetitle( wfMsg( "removedwatch" ) );
-		$wgOut->setRobotpolicy( "noindex,follow" );
 
 		$text = str_replace( "$1", $wgTitle->getPrefixedText(),
 		  wfMsg( "removedwatchtext" ) );
@@ -583,13 +603,17 @@ $wpTextbox2
 	#
 	function history()
 	{
-		global $wgUser, $wgOut, $wgLang, $wgTitle;
+		global $wgUser, $wgOut, $wgLang, $wgTitle, $frame;
 
 		$wgOut->setPageTitle( $wgTitle->getPRefixedText() );
 		$wgOut->setSubtitle( wfMsg( "revhistory" ) );
 		$wgOut->setArticleFlag( false );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 
+		if ( "body" != $frame ) {
+			$wgOut->frameOnly();
+			return;
+		}
 		$sql = "SELECT old_id,old_namespace,old_title,old_user," .
 		  "old_comment,old_user_text,old_timestamp,old_minor_edit FROM old " .
 		  "WHERE old_namespace=" . $wgTitle->getNamespace() . " AND " .
@@ -621,8 +645,12 @@ $wpTextbox2
 
 	function protect()
 	{
-		global $wgUser, $wgOut, $wgTitle;
+		global $wgUser, $wgOut, $wgTitle, $frame;
 
+		if ( "body" != $frame ) {
+			$wgOut->frameOnly();
+			return;
+		}
 		if ( ! $wgUser->isSysop() ) {
 			$wgOut->sysopRequired();
 			return;
@@ -645,8 +673,12 @@ $wpTextbox2
 
 	function unprotect()
 	{
-		global $wgUser, $wgOut, $wgTitle;
+		global $wgUser, $wgOut, $wgTitle, $frame;
 
+		if ( "body" != $frame ) {
+			$wgOut->frameOnly();
+			return;
+		}
 		if ( ! $wgUser->isSysop() ) {
 			$wgOut->sysopRequired();
 			return;
@@ -669,7 +701,7 @@ $wpTextbox2
 
 	function delete()
 	{
-		global $wgUser, $wgOut, $wgTitle;
+		global $wgUser, $wgOut, $wgTitle, $frame;
 		global $wgServer, $wgScript;
 		global $wpConfirm, $image, $oldimage;
 
@@ -694,6 +726,11 @@ $wpTextbox2
 		}
 		$wgOut->setSubtitle( $sub );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
+
+		if ( "body" != $frame ) {
+			$wgOut->frameOnly();
+			return;
+		}
 		$wgOut->addWikiText( wfMsg( "confirmdeletetext" ) );
 
 		$t = $wgTitle->getPrefixedURL();
@@ -720,9 +757,16 @@ $wpTextbox2
 	function doDelete()
 	{
 		global $wgOut, $wgTitle;
-		global $image, $oldimage;
+		global $frame, $image, $oldimage;
 		$fname = "Article::doDelete";
 
+		$wgOut->setPagetitle( wfMsg( "actioncomplete" ) );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
+
+		if ( "body" != $frame ) {
+			$wgOut->frameOnly();
+			return;
+		}
 		if ( $image ) {
 			$dest = wfImageDir( $image );
 			$archive = wfImageDir( $image );
@@ -760,9 +804,6 @@ $wpTextbox2
 			$this->doDeleteArticle( $wgTitle );
 			$deleted = $wgTitle->getPrefixedText();
 		}
-		$wgOut->setPagetitle( wfMsg( "actioncomplete" ) );
-		$wgOut->setRobotpolicy( "noindex,nofollow" );
-
 		$text = str_replace( "$1" , $deleted, wfMsg( "deletedtext" ) );
 		$wgOut->addHTML( "<p>" . $text );
 		$wgOut->returnToMain( false );
@@ -860,8 +901,15 @@ $wpTextbox2
 	function revert()
 	{
 		global $wgOut;
-		global $oldimage;
+		global $oldimage, $frame;
 
+		$wgOut->setPagetitle( wfMsg( "actioncomplete" ) );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
+
+		if ( "body" != $frame ) {
+			$wgOut->frameOnly();
+			return;
+		}
 		if ( strlen( $oldimage ) < 16 ) {
 			$wgOut->unexpectedValueError( "oldimage", $oldimage );
 			return;
@@ -893,8 +941,6 @@ $wpTextbox2
 		}
 		wfRecordUpload( $name, $oldver, $size, "Reverted to earlier image" );
 
-		$wgOut->setPagetitle( wfMsg( "actioncomplete" ) );
-		$wgOut->setRobotpolicy( "noindex,nofollow" );
 		$wgOut->addHTML( wfMsg( "imagereverted" ) );
 		$wgOut->returnToMain( false );
 	}
@@ -945,6 +991,10 @@ $wpTextbox2
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 		$wgOut->setArticleFlag( false );
 
+		if ( "body" != $frame ) {
+			$wgOut->frameOnly();
+			return;
+		}
 		$id = $wgUser->blockedBy();
 		$reason = $wgUser->blockedFor();
 

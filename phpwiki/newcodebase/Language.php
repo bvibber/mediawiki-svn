@@ -11,7 +11,7 @@
 );
 
 /* private */ $wgSkinNamesEn = array(
-	"Standard", "Nostalgia", "Cologne Blue"
+	"Standard", "Nostalgia", "Cologne Blue", "Framed"
 );
 
 /* private */ $wgUserTogglesEn = array(
@@ -244,7 +244,7 @@ discuss the block.",
 "previewconflict" => "This preview reflects the text in the upper
 text editing area as it will appear if you choose to save.",
 "editing"		=> "Editing $1",
-"editconflict"	=> "Edit conflict: $1",
+"editconflict"	=> "<font color=red>Edit conflict.</font>",
 "explainconflict" => "Someone else has changed this article since you
 started editing it.
 The upper text area contains the article text as it currently exists.

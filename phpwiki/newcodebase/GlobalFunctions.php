@@ -151,7 +151,7 @@ function wfCleanQueryVar( $var )
 
 function wfSpecialPage()
 {
-	global $wgUser, $wgOut, $wgTitle, $wgLang;
+	global $frame, $wgUser, $wgOut, $wgTitle, $wgLang;
 
 	$validSP = $wgLang->getValidSpecialPages();
 	$sysopSP = $wgLang->getSysopSpecialPages();
@@ -161,6 +161,10 @@ function wfSpecialPage()
 	$wgOut->setRobotpolicy( "noindex,follow" );
 	$wgOut->setPageTitle( wfMsg( strtolower( $wgTitle->getText() ) ) );
 
+	if ( "body" != $frame ) {
+		$wgOut->frameOnly();
+		return;
+	}
 	$t = $wgTitle->getDBkey();
 	if ( array_key_exists( $t, $validSP ) ||
 	  ( $wgUser->isSysop() && array_key_exists( $t, $sysopSP ) ) ||
@@ -180,8 +184,12 @@ function wfSpecialPage()
 
 function wfSearch( $s )
 {
-	global $search;
+	global $search, $frame;
 
+	if ( "body" != $frame ) {
+		$wgOut->frameOnly();
+		return;
+	}
 	$se = new SearchEngine( wfCleanQueryVar( $search ) );
 	$se->showResults();
 }

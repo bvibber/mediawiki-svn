@@ -16,10 +16,15 @@ OutputPage::setEncodings();
 # Query string fields
 #
 global $action, $title, $search, $target, $printable;
-global $returnto, $diff, $oldid;
+global $returnto, $diff, $oldid, $frame;
 
 $action = strtolower( trim( $action ) );
 if ( "" == $action ) { $action = "view"; }
+if ( "" == $frame ) {
+	$sk = $wgUser->getSkin();
+	if ( $sk->isFramed() ) { $frame = "set"; }
+	else { $frame = "body"; }
+}
 if ( "yes" == $printable ) { $wgOut->setPrintable(); }
 
 if ( "" == $title ) {
@@ -47,7 +52,9 @@ if ( -1 == $wgTitle->getNamespace() ) {
 	else { $wgOut->errorpage( "nosuchaction", "nosuchactiontext" ); }
 }
 
-$wgOut->output();
-foreach ( $wgDeferredUpdateList as $up ) { $up->doUpdate(); }
+if ( "body" == $frame ) {
+	$wgOut->output();
+	foreach ( $wgDeferredUpdateList as $up ) { $up->doUpdate(); }
+}
 
 ?>
