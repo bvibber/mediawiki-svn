@@ -141,6 +141,8 @@ class LinksUpdate {
 			$sql = "COMMIT";
 			wfQuery( $sql, $fname );
 		}
+
+		$wgLinkCache->clearPreFill( $this->mTitleEnc );
 		wfProfileOut();
 	}
 
@@ -216,6 +218,8 @@ class LinksUpdate {
 			$sql = "COMMIT";
 			wfQuery( $sql, $fname );
 		}
+
+		$wgLinkCache->clearPreFill( $this->mTitleEnc );
 		wfProfileOut();
 	}
 	
@@ -223,10 +227,11 @@ class LinksUpdate {
 		/* Update any brokenlinks *to* this page */
 		/* Call for a newly created page, or just to make sure state is consistent */
 		
-		$sql = "SELECT bl_from FROM brokenlinks WHERE bl_to='{$this->mTitleEnc}'";
+		$sql = "SELECT bl_from,cur_namespace,cur_title FROM brokenlinks,cur WHERE bl_to='{$this->mTitleEnc}' and bl_from=cur_id";
 		$res = wfQuery( $sql, $fname );
 		if ( 0 == wfNumRows( $res ) ) { return; }
 
+		global $wgLinkCache;
 		$sql = "INSERT INTO links (l_from,l_to) VALUES ";
 		$now = wfTimestampNow();
 		$sql2 = "UPDATE cur SET cur_touched='{$now}' WHERE cur_id IN (";
@@ -238,6 +243,8 @@ class LinksUpdate {
 
 			$sql .= "('{$nl}',{$this->mId})";
 			$sql2 .= $row->bl_from;
+			$t = Title::makeTitle( $row->cur_namespace, $row->cur_title );
+			$wgLinkCache->clearPreFill( $t->getPrefixedDBKey() );
 		}
 		$sql2 .= ")";
 		wfQuery( $sql, $fname );
