@@ -1042,7 +1042,9 @@ class Skin {
 			$s .= " ({$blink})";
 		}
 
-		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
+		if ( "" != $c && "*" != $c ) {
+			$s .= " <em>(" . wfEscapeHTML( $c ) . ")</em>";
+		}
 		$s .= "</li>\n";
 
 		return $s;
@@ -1086,7 +1088,9 @@ class Skin {
 		$s = "<li> ({$dlink}) ({$rlink}) <a href=\"{$url}\"{$style}>{$dt}</a>"
 		  . " . . {$ul} ({$nb})";
 
-		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
+		if ( "" != $c && "*" != $c ) {
+			$s .= " <em>(" . wfEscapeHTML( $c ) . ")</em>";
+		}
 		$s .= "</li>\n";
 		return $s;
 	}
