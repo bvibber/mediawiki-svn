@@ -649,7 +649,7 @@ class LanguageDe extends Language {
 		global $wgNamespaceNamesDe;
 
 		foreach ( $wgNamespaceNamesDe as $i => $n ) {
-			if ( 0 == strcmp( $n, $text ) ) { return $i; }
+			if ( 0 == strcasecmp( $n, $text ) ) { return $i; }
 		}
 		return false;
 	}
