@@ -571,7 +571,7 @@ class OutputPage {
 
 	# Some functions here used by doBlockLevels()
 	#
-	/* private */ function closeParagraph( )
+	/* private */ function closeParagraph()
 	{
 		$result = "";
 		if ( 0 != strcmp( "p", $this->mLastSection ) &&
