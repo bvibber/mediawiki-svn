@@ -217,6 +217,7 @@
 	"Ipblocklist"	=> "Blocked IP addresses",
 	"Specialpages"  => "",
 	"Contributions" => "",
+	"Emailuser"		=> "",
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => "",
 	"Movepage"		=> ""
@@ -687,6 +688,27 @@ such as the international Wikipedias may link to an image with
 a direct URL, and so may still be listed here despite being
 in active use.",
 
+# Email this user
+#
+"mailnologin"	=> "Not logged in",
+"mailnologintext" => "You must be <a href=\"" .
+  wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
+and have a valid e-mail address to send e-mail to other users.",
+"emailuser"		=> "E-mail this user",
+"emailpage"		=> "E-mail user",
+"emailpagetext"	=> "If this user has entered a valid e-mail address in
+is user preferences, the form below will send a single message.",
+"noemailtitle"	=> "No e-mail address",
+"noemailtext"	=> "This user has not specified a valid e-mail address
+in his user preferences.",
+"emailfrom"		=> "From",
+"emailto"		=> "To",
+"emailsubject"	=> "Subject",
+"emailmessage"	=> "Message",
+"emailsend"		=> "Send",
+"emailsent"		=> "E-mail sent",
+"emailsenttext" => "Your e-mail message has been sent.",
+
 # Watchlist
 #
 "watchlist"		=> "Watch list",
@@ -742,8 +764,8 @@ All times shown are server (U.S. Pacific) time.
 # What links here
 #
 "whatlinkshere"	=> "What links here",
-"notargettitle" => "No target page",
-"notargettext"	=> "You have not specified which page
+"notargettitle" => "No target",
+"notargettext"	=> "You have not specified a target page or user
 to perform this function on.",
 "linklistsub"	=> "(List of links)",
 "linkshere"		=> "The following pages link to here:",

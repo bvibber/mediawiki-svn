@@ -373,6 +373,9 @@ class Skin {
 
 			if ( Namespace::getUser() == $wgTitle->getNamespace() ) {
 				$s .= $sep . $this->userContribsLink();
+				if ( 0 != $wgUser->getID() ) {
+					$s .= $sep . $this->emailUserLink();
+				}
 			}
 			if ( $wgUser->isSysop() ) {
 				$s .= "\n<br>" . $this->deleteThisPage() .
@@ -453,6 +456,9 @@ class Skin {
 
 			if ( Namespace::getUser() == $wgTitle->getNamespace() ) {
 				$s .= $sep . $this->userContribsLink();
+				if ( 0 != $wgUser->getID() ) {
+					$s .= $sep . $this->emailUserLink();
+				}
 			}
 			$s .= "\n<hr>";
 		}
@@ -651,6 +657,15 @@ class Skin {
 
 		$s = $this->makeKnownLink( $wgLang->specialPage( "Contributions" ),
 		  wfMsg( "contributions" ), "target=" . $wgTitle->getURL() );
+		return $s;
+	}
+
+	function emailUserLink()
+	{
+		global $wgTitle, $wgLang;
+
+		$s = $this->makeKnownLink( $wgLang->specialPage( "Emailuser" ),
+		  wfMsg( "emailuser" ), "target=" . $wgTitle->getURL() );
 		return $s;
 	}
 
