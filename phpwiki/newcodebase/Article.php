@@ -448,6 +448,14 @@ class Article {
 				$wgOut->addHTML( wfMsg( "editingold" ) );
 			}
 		}
+
+		$kblength = (int)(strlen( $wpTextbox1 ) / 1024);
+		if( $kblength > 29 ) {
+			$wgOut->addHTML( "<strong>" . 
+				str_replace( '$1', $kblength , wfMsg( "longpagewarning" ) )
+				. "</strong>" );
+		}
+		
 		$rows = $wgUser->getOption( "rows" );
 		$cols = $wgUser->getOption( "cols" );
                 $ew = $wgUser->getOption( "editwidth" );
