@@ -1,29 +1,35 @@
 <?
 include_once ( "special_makelog.php" ) ;
 
-# The following function should be localized because it is languages specific
-# It splits a string into an array of separate words as I believe
-# the MATCH operator in MySQL also does. Right now it select words
-# consisting of readable ISO-8895-1 characters
+# The following function splits a string into an array of separate words as I believe
+# the MATCH operator in MySQL also does.
 
 function allWords ( $str ) {
-  preg_match_all ( "/([0-9a-zA-Z\xCO-\xFF]+)/", $str, $m );
-  return $m[0];
+  $sp = preg_split ( "/\b\s*\b/", $str );
+  $res = array ();
+  foreach ( $sp as $s ) {   # filter empty strings out
+    if ( $s ) array_push( $res , $s );
+  }
+  return $res;
 }
 
 function searchLineDisplay ( $v , $words) {
     $v = trim(str_replace("\n","",$v)) ;
     $v = str_replace ( "'''" , "" , $v ) ;
+    $v = eregi_replace ( "</?b>" , "" , $v ) ;
     $v = str_replace ( "''" , "" , $v ) ;
+    $v = eregi_replace ( "</?i>" , "" , $v ) ;
     $v = ereg_replace ( "\{\{\{.*\}\}\}" , "?" , $v ) ;
+    $v = eregi_replace ( "</?h[1-6]>" , "" , $v ) ;
+    $v = str_replace ( "^={1,6}|={1,6}$" , "" , $v ) ;
     $v = trim ( $v ) ;
     while ( substr($v,0,1) == ":" ) $v = substr($v,1) ;
     while ( substr($v,0,1) == "*" ) $v = substr($v,1) ;
     while ( substr($v,0,1) == "#" ) $v = substr($v,1) ;
     foreach ( $words as $w ) {
-        #$v = eregi_replace ( $w , "'''".$w."'''" , $v ) ;
-        $v = eregi_replace ( "(^|\])([^\[]+)($w)", "\\1\\2<b>\\3</b>", $v ) ; # highlight search terms NOT in [[links]]
-        $v = eregi_replace ( "(\[+[^\]]*)($w)([^\[]*\]+)" , "<b>\\1\\2\\3</b>" , $v ) ; # highlight entire links that contain name. Ugly but works for now
+        $v = preg_replace ( "/(".preg_quote( $w, "/" ).")/i" , "'''\\1'''" , $v ) ;    # highlight search term
+        $v = preg_replace ( "/(\[\[[^\[\]]*)'''([^\[\]]*)'''([^\[\]]*\]\])/i", "'''\\1\\2\\3'''", $v ) ;
+                                                                    # but NOT in [[links]]
     }
 
     $v = "<font size=-1>$v</font>" ;
@@ -118,8 +124,8 @@ function doSearch () {
 
             $result1 = mysql_query ( $sql1 , $connection );
 
-            $offset2 = max ( $startat - $titleSearch - 1, 1 );
-            $limit2 = max ( $perpage - max( $titleSearch - $startat, 0 ) , 0 ); 
+            $offset2 = max ( $startat - $titleSearch - 1, 0 );
+            $limit2 = max ( $perpage - max( $titleSearch - $startat, 1 ) , 0 ); 
             $sql2 = "SELECT cur_title, cur_text
                     FROM cur
                     WHERE MATCH (cur_text) AGAINST (\"$search\") AND
@@ -139,18 +145,23 @@ function doSearch () {
             $words = allWords ( $search );                              # split string into separate words
             foreach ( array ($result1, $result2) as $result ) {
                 while ( $row = mysql_fetch_object ( $result ) ) {
-                    $ct = preg_split ( "/(\\n)|<br>|<BR>/", $row->cur_text, 100 ) ;        # let's see the first 100 paragraphs
+                    $ct = preg_split ( "/\\n|<br>|<BR>|\ --\ /", $row->cur_text ) ;    # We split everything in paragraphs
                     $y = searchLineDisplay( array_shift( $ct ), $words ) ;
                     $foundpar = false;                    
                     foreach ( $ct as $par ) {
-                        foreach ( $words as $w ) {                      # mark words of $words in $par
-                            if ( stristr( $par, $w ) and strlen( $par ) < 100000 ) {    # prevent choking on absurd paragraphs
-                                $y .= "...<br>..." . searchLineDisplay( "$par\n", $words ) ;
-                                $foundpar = 1;
-                                break ;
+                        if ( strlen ( $par ) > 500 )      # if the paragraph is too big we cut it up in sentences
+                          $pars = preg_split ( "/\.\s+\b/", $par );
+                        else
+                          $pars = array ( $par );
+                        foreach ( $pars as $p ) {
+                            foreach ( $words as $w ) {                      # mark words of $words in $par
+                                if ( stristr( $p, $w ) ) {
+                                    $y .= "...<br>..." . searchLineDisplay( "$p\n", $words ) ;
+                                    $foundpar = 1;
+                                    break 3;
+                                }
                             }
                         }
-                        if ( $foundpar ) break;
                     }
                     for ( $z = $realcnt ; strlen ( $z ) < strlen ( $allSearch ) ; $z = "0$z" ) ;
                     $ct = $vpage->getNiceTitle ( $row->cur_title ) ;
