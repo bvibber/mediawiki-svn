@@ -42,7 +42,7 @@ function recentChangesLayout ( &$arr ) {
         $time = date ( "H:i" , tsc ( $s->cur_timestamp ) ) ;
         if ( $day != $lastDay ) {
             $lastDay = $day ;
-            $tday = $wikiGetDate ( tsc ( $s->cur_timestamp ) ) ;
+            $tday = ucfirst ( $wikiGetDate ( tsc ( $s->cur_timestamp ) ) ) ;
             if ( $user->options["changesLayout"] == "table" )
               $ret.="<tr><td width=\"100%\" colspan=7".$user->options["tabLine0"]."><b>$tday</b></td></tr>";
             else $ret .= "</ul><b>$tday</b><ul>\n" ;
