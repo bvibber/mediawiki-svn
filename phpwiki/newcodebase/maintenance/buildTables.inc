@@ -19,6 +19,7 @@ function buildTables()
   user_newpassword tinyblob NOT NULL default '',
   user_email tinytext NOT NULL default '',
   user_options blob NOT NULL default '',  
+  user_touched char(14) binary NOT NULL default '',
   UNIQUE KEY user_id (user_id)
 ) TYPE=MyISAM PACK_KEYS=1";
 	wfQuery( $sql );
@@ -53,6 +54,7 @@ function buildTables()
   cur_minor_edit tinyint(1) unsigned NOT NULL default '0',
   cur_is_new tinyint(1) unsigned NOT NULL default '0',
   cur_random real unsigned NOT NULL,
+  cur_touched char(14) binary NOT NULL default '',
   inverse_timestamp char(14) binary NOT NULL default '',
   UNIQUE KEY cur_id (cur_id)
 ) TYPE=MyISAM PACK_KEYS=1";

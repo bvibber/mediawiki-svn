@@ -81,15 +81,20 @@ class LinksUpdate {
 		if ( 0 == wfNumRows( $res ) ) { return; }
 
 		$sql = "INSERT INTO links (l_from,l_to) VALUES ";
+		$now = wfTimestampNow();
+		$sql2 = "UPDATE cur SET cur_touched='{$now}' WHERE cur_id IN (";
 		$first = true;
 		while ( $row = wfFetchObject( $res ) ) {
-			if ( ! $first ) { $sql .= ","; }
+			if ( ! $first ) { $sql .= ","; $sql2 .= ","; }
 			$first = false;
 			$nl = wfStrencode( Article::nameOf( $row->bl_from ) );
 
 			$sql .= "('{$nl}',{$this->mId})";
+			$sql2 .= $row->bl_from;
 		}
+		$sql2 .= ")";
 		wfQuery( $sql, $fname );
+		wfQuery( $sql2, $fname );
 
 		$sql = "DELETE FROM brokenlinks WHERE bl_to='{$t}'";
 		wfQuery( $sql, $fname );

@@ -7,6 +7,7 @@ class Article {
 	/* private */ var $mUser, $mTimestamp, $mUserText;
 	/* private */ var $mCounter, $mComment, $mCountAdjustment;
 	/* private */ var $mMinorEdit, $mRedirectedFrom;
+	/* private */ var $mTouched;
 
 	function Article() { $this->clear(); }
 
@@ -17,6 +18,7 @@ class Article {
 		$this->mRedirectedFrom = $this->mUserText =
 		$this->mTimestamp = $this->mComment = "";
 		$this->mCountAdjustment = 0;
+        $this->mTouched = "19700101000000";
 	}
 
 	/* static */ function newFromID( $newid )
@@ -100,7 +102,7 @@ class Article {
 			if ( 0 == $id ) return;
 
 			$sql = "SELECT " .
-			  "cur_text,cur_timestamp,cur_user,cur_counter,cur_restrictions " .
+			  "cur_text,cur_timestamp,cur_user,cur_counter,cur_restrictions,cur_touched " .
 			  "FROM cur WHERE cur_id={$id}";
 			$res = wfQuery( $sql, $fname );
 			if ( 0 == wfNumRows( $res ) ) { return; }
@@ -132,7 +134,7 @@ class Article {
 					$rid = $rt->getArticleID();
 					if ( 0 != $rid ) {
 						$sql = "SELECT cur_text,cur_timestamp,cur_user," .
-						  "cur_counter FROM cur WHERE cur_id={$rid}";
+						  "cur_counter,cur_touched FROM cur WHERE cur_id={$rid}";
 						$res = wfQuery( $sql, $fname );
 
 						if ( 0 != wfNumRows( $res ) ) {
@@ -147,6 +149,7 @@ class Article {
 			$this->mUser = $s->cur_user;
 			$this->mCounter = $s->cur_counter;
 			$this->mTimestamp = $s->cur_timestamp;
+			$this->mTouched = $s->cur_touched;
 			$wgTitle->mRestrictions = explode( ",", trim( $s->cur_restrictions ) );
 			$wgTitle->mRestrictionsLoaded = true;
 			wfFreeResult( $res );
@@ -284,7 +287,7 @@ class Article {
 			$s = str_replace( "$1", $redir, wfMsg( "redirectedfrom" ) );
 			$wgOut->setSubtitle( $s );
 		}
-		$wgOut->checkLastModified( $this->mTimestamp );
+		$wgOut->checkLastModified( $this->mTouched );
 		$wgLinkCache->preFill( $wgTitle );
 		$wgOut->addWikiText( $text );
 
@@ -573,12 +576,12 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
 		  "cur_restrictions,cur_user_text,cur_is_redirect," .
-		  "cur_is_new,cur_random,inverse_timestamp) VALUES ({$ns},'" . wfStrencode( $ttl ) . "', '" .
+		  "cur_is_new,cur_random,cur_touched,inverse_timestamp) VALUES ({$ns},'" . wfStrencode( $ttl ) . "', '" .
 		  wfStrencode( $text ) . "', '" .
 		  wfStrencode( $summary ) . "', '" .
 		  $wgUser->getID() . "', '{$now}', " .
 		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
-		  wfStrencode( $wgUser->getName() ) . "', $redir, 1, RAND(), '{$won}')";
+		  wfStrencode( $wgUser->getName() ) . "', $redir, 1, RAND(), '{$now}', '{$won}')";
 		$res = wfQuery( $sql, $fname );
 
 		$newid = wfInsertId();
@@ -622,16 +625,16 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$text = $this->preSaveTransform( $text );
 		
 		# Update article, but only if changed.
+
+		if( $wgDBtransactions ) {
+			$sql = "BEGIN";
+			wfQuery( $sql );
+		}
 		$oldtext = $this->getContent( true );
 
 		if ( 0 != strcmp( $text, $oldtext ) ) {
 			$this->mCountAdjustment = $this->isCountable( $text )
 			  - $this->isCountable( $oldtext );
-
-			if( $wgDBtransactions ) {
-				$sql = "BEGIN";
-				wfQuery( $sql );
-			}
 
 			$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
 			  "old_comment,old_user,old_user_text,old_timestamp," .
@@ -654,7 +657,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
 			  ",cur_timestamp='{$now}',cur_user_text='" .
 			  wfStrencode( $wgUser->getName() ) .
-			  "',cur_is_redirect={$redir}, cur_is_new=0, inverse_timestamp='{$won}' " .
+			  "',cur_is_redirect={$redir}, cur_is_new=0, cur_touched='{$now}', inverse_timestamp='{$won}' " .
 			  "WHERE cur_id=" . $this->getID();
 			wfQuery( $sql, $fname );
 
@@ -678,11 +681,10 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$sql = "UPDATE recentchanges SET rc_cur_time='{$now}' " .
 			  "WHERE rc_cur_id=" . $this->getID();
 			wfQuery( $sql, $fname );
-			
-			if( $wgDBtransactions ) {
-				$sql = "COMMIT";
-				wfQuery( $sql );
-			}
+		}
+		if( $wgDBtransactions ) {
+			$sql = "COMMIT";
+			wfQuery( $sql );
 		}
 		
 		if ($watchthis) { 
@@ -927,7 +929,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$wgOut->fatalEror( wfMsg( "badarticleerror" ) );
 			return;
 		}
-		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp," .
+        $sql = "UPDATE cur SET cur_touched='" . wfTimestampNow() . "'," .
 		  "cur_restrictions='sysop' WHERE cur_id={$id}";
 		wfQuery( $sql, "Article::protect" );
 
@@ -951,7 +953,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$wgOut->fatalEror( wfMsg( "badarticleerror" ) );
 			return;
 		}
-		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp," .
+		$sql = "UPDATE cur SET cur_touched='" . wfTimestampNow() . "'," .
 		  "cur_restrictions='' WHERE cur_id={$id}";
 		wfQuery( $sql, "Article::unprotect" );
 
@@ -1160,17 +1162,24 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$res = wfQuery( $sql, $fname );
 
 			$sql = "INSERT INTO brokenlinks (bl_from,bl_to) VALUES ";
+            $now = wfTimestampNow();
+			$sql2 = "UPDATE cur SET cur_touched='{$now}' WHERE cur_id IN (";
 			$first = true;
 
 			while ( $s = wfFetchObject( $res ) ) {
 				$nt = Title::newFromDBkey( $s->l_from );
 				$lid = $nt->getArticleID();
 
-				if ( ! $first ) { $sql .= ","; }
+				if ( ! $first ) { $sql .= ","; $sql2 .= ","; }
 				$first = false;
 				$sql .= "({$lid},'{$t}')";
+				$sql2 .= "{$lid}";
 			}
-			if ( ! $first ) { wfQuery( $sql, $fname ); }
+			$sql2 .= ")";
+			if ( ! $first ) {
+				wfQuery( $sql, $fname );
+				wfQuery( $sql2, $fname );
+			}
 			wfFreeResult( $res );
 
 			$sql = "DELETE FROM links WHERE l_to={$id}";
