@@ -57,7 +57,7 @@ class LuceneSearch extends SpecialPage
 		if( $wgRequest->getVal( 'gen' ) == 'titlematch' ) {
 			# NOP; avoid initializing the message cache
 		} else {
-			return parent::getDescription();
+			return parent::setHeaders();
 		}
 	}
 		
@@ -91,23 +91,11 @@ class LuceneSearch extends SpecialPage
 			$q = str_replace("_", " ", $bits[1]);
 		else
 			$q = $wgRequest->getText('search');
+		$limit = $wgRequest->getInt('limit');
+		$offset = $wgRequest->getInt('offset');
 
-		if ($wgRequest->getText('gen') == 'titlematch') {
-			$wgOut->disable();
-			$limit = $wgRequest->getInt("limit");
-			if ($limit < 1 || $limit > 50)
-				$limit = 20;
-			header("Content-Type: text/plain; charset=$wgInputEncoding");
-			if (strlen($q) < 1) {
-				wfProfileOut( $fname );
-				return;
-			}
-
-			$results = $this->doTitlePrefixSearch($q, $limit);
-			if ($results && count($results) > 0)
-				foreach ($results as $result) {
-					echo $result->getPrefixedUrl() . "\n";
-				}
+		if( $wgRequest->getVal( 'gen' ) == 'titlematch' ) {
+			$this->sendTitlePrefixes( $q, $limit );
 			wfProfileOut( $fname );
 			return;
 		}
@@ -150,8 +138,6 @@ class LuceneSearch extends SpecialPage
 				$wgOut->addHTML('<p>' . wfMsg('nogomatch', $editurl, 
 					htmlspecialchars($q)) . "</p>\n");
 			}
-			$limit = $wgRequest->getInt('limit');
-			$offset = $wgRequest->getInt('offset');
 
 			$maxresults = $offset + $limit;
 			if ($maxresults < 10)
@@ -272,76 +258,105 @@ class LuceneSearch extends SpecialPage
 		$wgOut->setRobotpolicy('noindex,nofollow');
 		wfProfileOut( $fname );
 	}
+	
+	/**
+	 * Send a list of titles starting with the given prefix.
+	 * These are read by JavaScript code via an XmlHttpRequest
+	 * and displayed in a drop-down box for selection.
+	 *
+	 * @param string $query
+	 * @param int $limit
+	 * @return void - side effects only
+	 * @access private
+	 */
+	function sendTitlePrefixes( $query, $limit ) {
+		global $wgOut, $wgInputEncoding;
+		$wgOut->disable();
+		
+		if( $limit < 1 || $limit > 50 )
+			$limit = 20;
+		header("Content-Type: text/plain; charset=$wgInputEncoding");
+		if( strlen( $query ) < 1 ) {
+			return;
+		}
 
-        function showHit($score, $t, $terms) {
-                $fname = 'LuceneSearch::showHit';
-                wfProfileIn($fname);
-                global $wgUser, $wgContLang, $wgLSuseold;
+		$results = $this->doTitlePrefixSearch( $query, $limit );
+		if( $results && count( $results ) > 0 ) {
+			foreach( $results as $result ) {
+				echo $result->getPrefixedUrl() . "\n";
+			}
+		}
+	}
 
-                if(is_null($t)) {
-                        wfProfileOut($fname);
-                        return "<!-- Broken link in search result -->\n";
-                }
-                $sk =& $wgUser->getSkin();
+	function showHit($score, $t, $terms) {
+		$fname = 'LuceneSearch::showHit';
+		wfProfileIn($fname);
+		global $wgUser, $wgContLang, $wgLSuseold;
 
-                //$contextlines = $wgUser->getOption('contextlines');
+		if(is_null($t)) {
+			wfProfileOut($fname);
+			return "<!-- Broken link in search result -->\n";
+		}
+		$sk =& $wgUser->getSkin();
+
+		//$contextlines = $wgUser->getOption('contextlines');
 		$contextlines = 2;
-                $contextchars = $wgUser->getOption('contextchars');
-                if ('' == $contextchars) 
+		$contextchars = $wgUser->getOption('contextchars');
+		if ('' == $contextchars) 
 			$contextchars = 50;
 
-                $link = $sk->makeKnownLinkObj($t, '');
+		$link = $sk->makeKnownLinkObj($t, '');
 
 		$rev = $wgLSuseold ? new Article($t) : Revision::newFromTitle($t);
 		if ($rev === null)
 			return "<!--Broken link in search results: ".$t->getDBKey()."-->\n";
 		
 		$text = $wgLSuseold ? $rev->getContent(false) : $rev->getText();
-                $size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024), str_word_count($text));
+				$size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024), str_word_count($text));
 		$text = $this->removeWiki($text);
+	
+		$lines = explode("\n", $text);
 
-                $lines = explode("\n", $text);
+		$max = IntVal($contextchars) + 1;
+		$pat1 = "/(.*)($terms)(.{0,$max})/i";
 
-                $max = IntVal($contextchars) + 1;
-                $pat1 = "/(.*)($terms)(.{0,$max})/i";
+		$lineno = 0;
 
-                $lineno = 0;
+		$extract = '';
+		wfProfileIn("$fname-extract");
+		foreach ($lines as $line) {
+			if (0 == $contextlines) 
+				break;
+			++$lineno;
+			if (!preg_match($pat1, $line, $m))
+				continue;
+			--$contextlines;
+			$pre = $wgContLang->truncate($m[1], -$contextchars, '...');
 
-                $extract = '';
-                wfProfileIn("$fname-extract");
-                foreach ($lines as $line) {
-                        if (0 == $contextlines) 
-                                break;
-                        ++$lineno;
-                        if (!preg_match($pat1, $line, $m))
-                                continue;
-                        --$contextlines;
-                        $pre = $wgContLang->truncate($m[1], -$contextchars, '...');
+			if (count($m) < 3)
+				$post = '';
+			else
+				$post = $wgContLang->truncate($m[3], $contextchars, '...');
 
-                        if (count($m) < 3)
-                                $post = '';
-                        else
-                                $post = $wgContLang->truncate($m[3], $contextchars, '...');
+			$found = $m[2];
 
-                        $found = $m[2];
+			$line = htmlspecialchars($pre . $found . $post);
+			$pat2 = '/([^ ]*(' . $terms . ")[^ ]*)/i";
+			$line = preg_replace($pat2,
+			  "<span class='searchmatch'>\\1</span>", $line);
 
-                        $line = htmlspecialchars($pre . $found . $post);
-                        $pat2 = '/([^ ]*(' . $terms . ")[^ ]*)/i";
-                        $line = preg_replace($pat2,
-                          "<span class='searchmatch'>\\1</span>", $line);
-
-                        $extract .= "<br /><small>{$line}</small>\n";
-                }
-                wfProfileOut("$fname-extract");
-                wfProfileOut($fname);
+			$extract .= "<br /><small>{$line}</small>\n";
+		}
+		wfProfileOut("$fname-extract");
+		wfProfileOut($fname);
 		$date = $wgContLang->timeanddate($rev->getTimestamp());
 		$percent = sprintf("%2.1f%%", $score * 100);
 		//$score = wfMsg("searchscore", $percent);
 		$url = $t->getFullURL();
-                return "<li style='padding-bottom: 1em'>{$link}{$extract}<br/>"
+		return "<li style='padding-bottom: 1em'>{$link}{$extract}<br/>"
 			."<span style='color: green; font-size: small'>"
 			."$url - $size - $date</span></li>\n";
-        }
+	}
 
 	/* Basic wikitext removal */
 	function removeWiki($text) {
@@ -446,10 +461,14 @@ class LuceneSearch extends SpecialPage
 	 * @access private
 	 */
 	function queryLuceneServer( $method, $query, $limit = 65536 ) {
+		$fname = 'LuceneSearch::queryLuceneServer';
+		wfProfileIn( $fname );
+		
 		global $wgLuceneHost, $wgLucenePort, $wgDBname;
 		$sock = socket_create( AF_INET, SOCK_STREAM, SOL_TCP );
 		@$conn = socket_connect( $sock, $wgLuceneHost, $wgLucenePort );
 		if( $conn === false ) {
+			wfProfileOut( $fname );
 			return false;
 		}
 		$this->sendLines( $sock, array(
@@ -463,6 +482,7 @@ class LuceneSearch extends SpecialPage
 			if( $numresults === false ) {
 				# I/O error? this shouldn't happen
 				wfDebug( "Couldn't read summary line...\n" );
+				wfProfileOut( $fname );
 				return array( 0, array() );
 			}
 			$numresults = IntVal( $numresults );
@@ -471,6 +491,7 @@ class LuceneSearch extends SpecialPage
 				# No results, but we got a suggestion...
 				$suggestion = urldecode( $this->inputLine( $sock ) );
 				wfdebug("no results; suggest: [$suggestion]\n");
+				wfProfileOut( $fname );
 				return array( -1, $suggestion );
 			}
 		} else {
@@ -490,6 +511,7 @@ class LuceneSearch extends SpecialPage
 				$results[] = $result[1];
 			}
 		}
+		wfProfileOut( $fname );
 		return array( $numresults, $results );
 	}
 	
