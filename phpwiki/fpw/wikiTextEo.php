@@ -30,6 +30,7 @@ $wikiMetaDescription = "$1... Legu pli ĉi tie ĉe Vikipedio, la libera enciklop
 # Used in header/footer
 $wikiMainPageTitle = "Wikipedia : La libera enciklopedio" ; # This is the title that is displayed on the main page
 $wikiArticleSubtitle = "Ĉe Wikipedia, la libera enciklopedio." ;
+$wikiHeaderSubtitle = "La libera enciklopedio" ;
 $wikiPrintable = "Presebla versio" ;
 $wikiWatch = "Atentigu min pri ŝanĝoj en la artikolo" ;
 $wikiNoWatch = "Ne atentigu min pri ŝanĝoj en la artikolo" ;
@@ -39,7 +40,7 @@ $wikiLogOut = "Adiaŭu" ;
 $wikiHelp = "Helpo" ;
 $wikiHelpLink = "vikipedio:Helpo" ;
 $wikiPreferences = "Preferoj" ;
-$wikiWhatLinksHere = "Paĝoj kiuj ligas ĉi tien" ;
+$wikiWhatLinksHere = "Paĝoj ligantaj ĉi tien" ;
 $wikiPrintLinksMarkup = "i" ; # will be used as <$wikiPrintLinksMarkup> and </$wikiPrintLinksMarkup>
 #$wikiAllowedNamespaces = array ( "wikipedia" , "talk" , "user" , "" , "wikipedia talk" , "user talk" ) ;
 $wikiTalk = "priparolu" ;
@@ -47,6 +48,34 @@ $wikiUser = "uzanto" ;
 $wikiWikipedia = "vikipedio" ;
 $wikiNamespaceTalk = "Priparolu $1n" ;
 $wikiAllowedNamespaces = array ( "vikipedio" , $wikiTalk , $wikiUser , "" , "priparolu vikipedion" , "priparolu uzanton" ) ;
+$wikiMyOptions = "Personaĵoj" ;
+$wikiMySettings = "Miaj preferoj" ;
+$wikiMyself = "Mia paĝo" ;
+$wikiShortPages = "Mallongaj paĝoj";
+$wikiLongPages = "Longaj paĝoj" ;
+$wikiUserList = "Listo de uzantoj" ;
+$wikiEditingHistory = "Historio de redaktoj" ;
+$wikiAddToWatchlist = "Aldonu al mia atentaro" ;
+$wikiEditPage = "Redaktu la paĝon" ;
+$wikiHome = "Hejmo" ;
+$wikiAbout = "Enkonduko" ;
+$wikiFAQ = "Oftaj demandoj" ;
+$wikiPageInfo = "Paĝinformo" ;
+$wikiLinkedPages = "Alligitaj paĝoj" ;
+$wikiShowDiff = "montru ŝanĝojn" ;
+$wikiRequests = "Legata $1foje" ;
+$wikiEdit = "Redaktado" ;
+$wikiPageOptions = "Paĝagadoj" ;
+$wikiBrowse = "Foliumado" ;
+$wikiFind = "Serĉu" ;
+$wikiOK = "Ek!" ;
+$wikiFindMore = "Serĉu";
+$wikiWikipediaHome = "Ĉefpaĝo" ;
+$wikiAboutWikipedia = "Pri Vikipedio" ;
+$wikiAutoWikify = "Aŭto-vikiigado (eksperimenta!)" ;
+$wikiTopics = "Temoj" ; #??
+$wikiWikipediaFAQ = "vikipedio:Oftaj demandoj" ;
+$wikiVoteForPage = "Voĉdonu pri la paĝo" ; #??
 
 $wikiNamespaceBackground[$wikiTalk] = "#eeFFFF" ;
 $wikiNamespaceBackground[strtr(" ", "_", str_replace("$1", $wikiUser, $wikiNamespaceTalk))] = $wikiNamespaceBackground[$wikiTalk] ;
@@ -58,6 +87,8 @@ $wikiNamespaceBackground["special"] = "#eeeeee" ;
 
 
 # Editing
+$wikiEditingHelp = "Helpo: kiel redakti?" ;
+$wikiWikipediaEditingHelp = "vikipedio:Kiel oni redaktas paĝon" ;
 $wikiEditTitle = "Redaktante $1" ;
 $wikiCannotEditPage = "<h3>Vi ne rajtas redakti ĉi tiun paĝon!</h3>" ;
 $wikiEditConflictMessage = "<h1>Redakta konflikto!</h1>\n<b>Iu ŝanĝis la paĝon post kiam vi ekskribis. La supra tekstujo havas la konservitan tekston. Nur la teksto en la supra tekstujo estos konservita.</b><br>\nRulumu malsupren por vidi vian tekston redaktitan kaj la malsamojn inter la du versioj.<br>\n" ;
@@ -115,7 +146,7 @@ $wikiCategories = "<b>Kategorioj :</b> " ;
 $wikiThisCategory = "Artikoloj en ĉi tiu kategorio" ;
 $wikiCounter = "$1 foje oni jam legis ĉi tiun paĝon." ;
 $wikiBlockIPTitle = "Forbaru IP-on (nur sistemestroj)" ;
-$wikiBlockIPText = "IP-on $1 forbaris $2" ;
+$wikiBlockIPText = "IP $1 estis forbarita de $2" ;
 $wikiIPblocked = "<font color=\"red\" size=\"+1\">Vian IP-on oni forbaris! Viajn redaktojn la sistemo ne konservos. Bonvolu kontakti sistemestron por forigi la baradon, aŭ reprovu antaŭ iom de tempo.</font>" ;
 $wikiBugReports = "Raportu Teknikajn Problemojn" ;
 $wikiBugReportsLink = "vikipedio:Teknikaj Problemoj" ;
@@ -123,27 +154,6 @@ $wikiPrintFooter = "<hr>Ĉi tiu artikolo estis ĉerpita el <b>Wikipedia</b> (<a 
 la libera, senpaga encikopedia surreta. La artikolo troviĝas ĉe <a href=\"$2\">$2</a>" ;
 
 # Language interwiki names
-$wikiLanguageNames = array (
-	"ar"=>"Araba (Araby)" ,
-	"ca"=>"Kataluna (Catalá)" ,
-	"zh"=>"Ĉina (Hányǔ)" ,
-	"dk"=>"Dana (Dansk)" ,
-	"nl"=>"Nederlanda (Nederlands)" ,
-	"de"=>"Germana (Deutsch)" ,
-	"eo"=>"Esperanto" ,
-	"fr"=>"Franca (Français)" ,
-	"he"=>"Hebrea (Ivrit)" ,
-	"hu"=>"Hungara (Magyar)" ,
-	"it"=>"Itala (Italiano)" ,
-	"ja"=>"Japana (Nihongo)" ,
-	"pl"=>"Pola (Polska)" ,
-	"pt"=>"Portugala (Português)" ,
-	"ru"=>"Rusa (Russkiy)" ,
-	"simple"=>"Simpligita Angla (Simplified English)" ,
-	"es"=>"Hispana (Castellano)" ,
-	"sv"=>"Sveda (Svenska)" ,
-	"en"=>"Angla (English)"
-	) ;
 $wikiOtherLanguagesText = "Aliaj lingvoj : $1" ;
 
 # date
@@ -183,7 +193,8 @@ $wikiRememberMyPassword = "Memoru mian pasvorton (per kuketo)." ;
 $wikiLoginProblem = "<b>Okazis problemon pri via salutado.</b><br>Bonvolu reprovu!" ;
 $wikiAlreadyLoggedIn = "<font color=red><b>Uzanto $1, via estas jam salutinta!</b></font><br>\n" ;
 $wikiPleaseLogIn = "<h1>Bonvolu saluti:</h1>\n" ;
-$wikiAreYouNew = "Se vi estas nove ĉe vikipedio kaj volas akiri uzantokonton, bonvolu tajpu salutonomon, pasvorton, kaj refoje pasvorton.<br>\n" ;
+$wikiAreYouNew = "Se vi estas nove ĉe vikipedio kaj volas akiri uzantokonton, bonvolu tajpu salutonomon, pasvorton, kaj refoje pasvorton.<br>\n
+Laŭvole vi rajtas enmeti vian retpoŝtadreson por ke ni povu sendu al vi novan pasvorton se vi perdas la nunan." ;
 $wikiLogIn = "Salutu" ;
 
 # User preferences
@@ -289,7 +300,7 @@ kiun vi volas alŝuti, en via disko. Ĉi tiu malfermiĝos &quot;Elektu Dosieron&
 <li>Kiam vi trovis la dosieron, alklaku &quot;Malfermu&quot;.
 Ĉi tiu elektos la dosieron kaj malfermos la &quot;Elektu Dosieron&quot; fenestron.</li>
 <li>Ne forgesu, jesi la aserton pri kopirajto!</li>
-<li>Tiam, alklaku &quot;Alŝutu&quot;. La dosiero komencos alŝutiĝi.
+<li>Tiam, alklaku &quot;Alutu&quot;. La dosiero komencos alŝutiĝi.
 Tio ĉi eble daŭros iom, se ĝi estas granda dosiero kaj via Interret-konektado estas malrapida.</li>
 <li>Mesaĝo informos vin, kiam la dosiero estas sukcese alŝutita.</li>
 <li>Vi povas alŝuti iom ajn da dosieroj, kiom vi volas. Bonvolu ne provu paneigi nian servilon, ha ha.</li>
@@ -346,6 +357,7 @@ $wikiWantedText = "'''La jenaj artikoloj ne ekzistas, sed aliaj artikoloj ligas 
 $wikiWantedToggleNumbers = "Klaku ĉi tien por ŝalti montri paĝtitolojn kiuj komencas per cifroj (aktuale $1)" ;
 $wikiWantedLine = "$1 deziras de <b>$2</b> artikoloj <nowiki>(vidu tiuj <a href=\"$3\">paĝojn kiuj ligas al \"$4\"</a></nowiki>)" ;
 $wikiLastChange = "Laste redaktita $1" ;
+$wikiLastChangeCologne = "Laste redaktita:<br>\n<font size=-2>&nbsp;&nbsp;$1</font>" ;
 $wikiPopularPages = "Plej vizitataj" ;
 $wikiPopularTitle = "Plej Vizitataj Paĝoj" ;
 $wikiRefreshThisPage = "Rekalkulu ĉi tiun liston" ;
@@ -353,6 +365,13 @@ $wikiResourcesWarning = "(Bonvolu faru ĉi tion nur malofte, ĉar tiu funkcio al
 $wikiNoRefresh = "(La paĝon estis rekalkulita antaŭ nur $1 minutoj; bonvolu atendi kaj reprovi post $2 minutoj.)" ;
 $wikiLastRefreshed = "Laste rekalkulita $1" ;
 $wikiValidate = "Kontroli la laŭnormecon de ĉi tiu paĝo" ;
+
+$wikiBlockIP = "Forbaru ĉi tiun retuzanton" ;
+$wikiNostalgy = "Nostalgio" ;
+$wikiCologneBlue = "Kolonja Bluo" ;
+
+# Vote
+$wikiVoteReason = "Kialo por voĉdoni : " ;
 
 
 #---------------------------
