@@ -459,7 +459,15 @@ Please log in again after you receive it.",
 The reason given is this:<br>''$2''<p>You may contact $1 or one of the other
 [[Wikipedia:administrators|administrators]] to discuss the block.",
 "newarticle"	=> "(New)",
-"newarticletext" => "Put your text for the new page here.",
+"newarticletext" =>
+"You've followed a link to a page that doesn't exist yet. If you'd
+like to create a new page under this title, delete this message and
+get typing! Click the 'Help' link up top if you haven't used a
+Wiki before and aren't sure how to go about it.
+
+If you didn't mean to create a new page, just click the 'back'
+button in your browser, or use the search box at the top of the
+screen to find existing articles.",
 "anontalkpagetext" => "---- ''This is the discussion page for an anonymous user who has not created an account yet or who does not use it. We therefore have to use the numerical [[IP address]] to identify him/her. Such an IP address can be shared by several users. If you are an anonymous user and feel that irrelevant comments have been directed at you, please [[Special:Userlogin|create an account or log in]] to avoid future confusion with other anonymous users.'' ",
 "noarticletext" => "(There is currently no text in this page)",
 "updated"		=> "(Updated)",
