@@ -549,6 +549,8 @@ See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges r
 "uploadtext"	=> "To view or search previously uploaded images,
 go to the <a href=\"" . wfLocalUrl( "Special:Imagelist" ) .
 "\">list of uploaded images</a>.
+Uploads and deletions are logged on the <a href=\"" .
+wfLocalUrl( "Wikipedia:Upload_log" ) . "\">upload log</a>.
 <p>Use the form below to upload new image files for use in
 illustrating your articles.
 On most browsers, you will see a \"Browse...\" button, which will
@@ -559,10 +561,12 @@ You must also check the box affirming that you are not
 violating any copyrights by uploading the file.
 Press the \"Upload\" button to finish the upload.
 This may take some time if you have a slow internet connection.
-<p> The preferred formats are JPEG for photographic images and PNG
-for drawings and other iconic images.
+<p>The preferred formats are JPEG for photographic images, PNG
+for drawings and other iconic images, and OGG for sounds.
+Please name your files descriptively to avoid confusion.
 To include the image in an article, use a link in the form
-<b>[[image:file.jpg]]</b> or <b>[[image:file.png|alt text]]</b>.
+<b>[[image:file.jpg]]</b> or <b>[[image:file.png|alt text]]</b>
+or <b>[[media:file.ogg]]</b> for sounds.
 <p>Please note that as with Wikipedia articles, others may edit or
 delete your uploads if they think it serves the encyclopedia, and
 you may be blocked from uploading if you abuse the system.",
@@ -573,7 +577,6 @@ All times shown are server (U.S. Pacific) time.
 <ul>
 </ul>
 ",
-"uploadlogtext" => "Uploads and deletions are logged on the $1.",
 "filename"		=> "Filename",
 "filedesc"		=> "Summary",
 "affirmation"	=> "I affirm that the copyright holder of this file
@@ -589,8 +592,8 @@ any copyrights.",
 "badfiletype"	=> "\".$1\" is not a recommended image file format.",
 "largefile"		=> "It is recommended that images not exceed 100k in size.",
 "successfulupload" => "Successful upload",
-"fileuploaded"	=> "File uploaded successfully.
-Please follow this link: >> $1 << to the description page and fill
+"fileuploaded"	=> "File \"$1\" uploaded successfully.
+Please follow this link: ($2) to the description page and fill
 in information about the file, such as where it came from, when it was
 created and by whom, and anything else you may know about it.",
 "uploadwarning" => "Upload warning",

@@ -23,7 +23,7 @@ function processUpload()
 	global $wpUploadDescription, $wpIgnoreWarning;
 	global $HTTP_POST_FILES, $wgUploadDirectory;
 	global $wpUploadSaveName, $wpUploadTempName, $wpUploadSize;
-	global $wgSavedFile, $wgUploadOldVersion;
+	global $wgSavedFile, $wgUploadOldVersion, $wpUploadOldVersion;
 
 	if ( 1 != $wpUploadAffirm ) {
 		mainUploadForm( WfMsg( "noaffirmation" ) );
@@ -73,18 +73,23 @@ function processUpload()
 		}
 		if ( ( ! $wpIgnoreWarning ) && ( $wpUploadSize > 100000 ) ) {
 			return uploadWarning( WfMsg( "largefile" ) );
-			return;
 		}
+	}
+	if ( isset( $wpUploadOldVersion ) ) {
+		$wgUploadOldVersion = $wpUploadOldVersion;
 	}
 	wfRecordUpload( $wpUploadSaveName, $wgUploadOldVersion,
 	  $wpUploadSize, $wpUploadDescription );
 
 	$sk = $wgUser->getSkin();
-	$ilink = $sk->makeKnownLink( $wgLang->getNsText(
-	  Namespace::getImage() ) . ":{$wpUploadSaveName}", $wpUploadSaveName );
+	$ilink = $sk->makeMediaLink( $wpUploadSaveName, wfImageUrl(
+	  $wpUploadSaveName ) );
+	$dname = $wgLang->getNsText( Namespace::getImage() ) . ":{$wpUploadSaveName}";
+	$dlink = $sk->makeKnownLink( $dname, $dname );
 
 	$wgOut->addHTML( "<h2>" . wfMsg( "successfulupload" ) . "</h2>\n" );
 	$text = str_replace( "$1", $ilink, wfMsg( "fileuploaded" ) );
+	$text = str_replace( "$2", $dlink, $text );
 	$wgOut->addHTML( "<p>{$text}\n" );
 	$wgOut->returnToMain( false );
 }
@@ -195,12 +200,6 @@ function mainUploadForm( $msg )
 	}
 	$wgOut->addHTML( "<p>" . wfMsg( "uploadtext" ) );
 	$sk = $wgUser->getSkin();
-
-	$link = $sk->makeKnownLink( $wgLang->getNsText(
-	  Namespace::getWikipedia() ) .
-	  ":" . wfMsg( "uploadlogpage" ), wfMsg( "uploadlog" ) );
-	$ult = str_replace( "$1", $link, wfMsg( "uploadlogtext" ) );
-	$wgOut->addHTML( "\n<p>{$ult}\n" );
 
 	$fn = wfMsg( "filename" );
 	$fd = wfMsg( "filedesc" );
