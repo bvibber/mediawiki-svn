@@ -1,8 +1,0 @@
-#!/bin/sh
-#
-# Doesn't seem worth the bother of make or ant yet--
-# just compile everything.
-#
-
-javac -classpath .:jars/httpunit.jar:jars/nekohtml.jar:jars/xercesImpl.jar:jars/xml-apis.jar com/piclab/wikitest/*.java
-
