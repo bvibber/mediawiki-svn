@@ -7,7 +7,7 @@
 DBFILE='"/var/db/dbcache"'
 
 # change it into your installed db3/db4{0,1,2} library name
-DBLIB=db
+DBLIB=db41
 
 # FreeBSD file locations
 LIBS=-l${DBLIB} -levent
