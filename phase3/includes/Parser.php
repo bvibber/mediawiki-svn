@@ -384,11 +384,18 @@ class Parser
 		$data = array () ;
 		$id = $this->mTitle->getArticleID() ;
 
+		# HACK HACK HACK: load balancer explicit on
+		global $wgLoadBalancer;
+		$wgLoadBalancer->force( -1 );
+		
 		# FIXME: add limits
 		$t = wfStrencode( $this->mTitle->getDBKey() );
 		$sql = "SELECT DISTINCT cur_title,cur_namespace FROM cur,categorylinks WHERE cl_to='$t' AND cl_from=cur_id ORDER BY cl_sortkey" ;
 		$res = wfQuery ( $sql, DB_READ ) ;
 		while ( $x = wfFetchObject ( $res ) ) $data[] = $x ;
+		
+		# HACK HACK HACK: put load balancer back off
+		$wgLoadBalancer->force( 0 );
 
 		# For all pages that link to this category
 		foreach ( $data AS $x )
