@@ -16,7 +16,7 @@ OutputPage::setEncodings();
 # Query string fields
 #
 global $action, $title, $search, $target, $printable;
-global $returnto, $diff, $oldid, $frame;
+global $returnto, $diff, $oldid;
 
 $action = strtolower( trim( $action ) );
 if ( "" == $action ) { $action = "view"; }
@@ -27,14 +27,11 @@ if ( "" == $title ) {
 } else {
 	$wgTitle = Title::newFromURL( $title );
 }
-
-if ( "top" == $frame || "side" == $frame ) {
-	$wgOut->frameOnly();
-	exit;
-} else if ( -1 == $wgTitle->getNamespace() ) {
+if ( -1 == $wgTitle->getNamespace() ) {
 	wfSpecialPage();
-} else if ( "" != $search ) { wfSearch( $search ); }
-else {
+} else if ( "" != $search ) {
+	wfSearch( $search );
+} else {
 	$wgArticle = new Article();
 
 	if ( "view" == $action ) { $wgArticle->view(); }
@@ -51,7 +48,6 @@ else {
 }
 
 $wgOut->output();
-
 foreach ( $wgDeferredUpdateList as $up ) { $up->doUpdate(); }
 
 ?>

@@ -2,7 +2,6 @@
 # See design.doc
 
 class OutputPage {
-	/* All members private */
 	var $mHeaders, $mCookies, $mMetatags, $mKeywords;
 	var $mLinktags, $mPagetitle, $mBodytext, $mDebugtext;
 	var $mHTMLtitle, $mRobotpolicy, $mIsarticle, $mPrintable;
@@ -121,62 +120,23 @@ class OutputPage {
 		$sk->initPage();
 		$this->out( $this->headElement() );
 
-		if ( $sk->useBodyTag() ) {
-			$this->out( "\n<body" );
-			$ops = $sk->getBodyOptions();
-			foreach ( $ops as $name => $val ) {
-				$this->out( " $name='$val'" );
-			}
-			$this->out( ">\n" );
+		$this->out( "\n<body" );
+		$ops = $sk->getBodyOptions();
+		foreach ( $ops as $name => $val ) {
+			$this->out( " $name='$val'" );
 		}
+		$this->out( ">\n" );
 		if ( $wgDebugComments ) {
 			$this->out( "<!-- Wiki debugging output:\n" .
 			  $this->mDebugtext . "-->\n" );
 		}
 		$this->out( $sk->beforeContent() );
-		$this->out( $sk->transformContent( $this->mBodytext ) );
+		$this->out( $this->mBodytext );
 		$this->out( $sk->afterContent() );
 
 		$this->out( $this->reportTime() );
 
-		if ( $sk->useBodyTag() ) { $this->out( "\n</body>" ); }
-		$this->out( "\n</html>" );
-		flush();
-	}
-
-	function frameOnly()
-	{
-		global $wgUser, $wgLang, $wgDebugComments, $wgCookieExpiration;
-		global $frame, $wgInputEncoding, $wgOutputEncoding;
-		$sk = $wgUser->getSkin();
-
-		$foundexp = false;
-		foreach( $this->mHeaders as $t ) {
-			header( $t );
-			if ( preg_match( "/^Expires:/", $t ) ) { $foundexp = true; }
-		}
-		if ( ! $foundexp ) {
-			header( "Expires: 0" );
-			header( "Cache-Control: no-cache" );
-			header( "Pragma: no-cache" );
-		}
-		$sk->initPage();
-		$this->out( $this->headElement() );
-
-		if ( $sk->useBodyTag() ) {
-			$this->out( "\n<body" );
-			$ops = $sk->getBodyOptions();
-			foreach ( $ops as $name => $val ) {
-				$this->out( " $name='$val'" );
-			}
-			$this->out( ">\n" );
-		}
-		$this->out( $sk->beforeContent() );
-		$this->out( $sk->transformContent( "" ) );
-		$this->out( $sk->afterContent() );
-
-		if ( $sk->useBodyTag() ) { $this->out( "\n</body>" ); }
-		$this->out( "\n</html>" );
+		$this->out( "\n</body></html>" );
 		flush();
 	}
 
@@ -974,15 +934,12 @@ class OutputPage {
 	{
 		global $wgDocType, $wgUser;
 
-		$sk = $wgUser->getSkin();
 		$ret = "<!DOCTYPE HTML PUBLIC \"$wgDocType\">\n";
 
 		if ( "" == $this->mHTMLtitle ) {
 			$this->mHTMLtitle = $this->mPagetitle;
 		}
 		$ret .= "<html><head><title>{$this->mHTMLtitle}</title>\n";
-		$ret .= $sk->getBaseTag();
-
 		foreach ( $this->mMetatags as $tag ) {
 			if ( 0 == strcasecmp( "http:", substr( $tag[0], 0, 5 ) ) ) {
 				$a = "http-equiv";
@@ -1006,6 +963,7 @@ class OutputPage {
 			if ( "" != $tag[1] ) { $ret .= "rev=\"{$tag[1]}\" "; }
 			$ret .= "href=\"{$tag[2]}\">\n";
 		}
+		$sk = $wgUser->getSkin();
 		$ret .= $sk->getHeadScripts();
 		$ret .= $sk->getUserStyles();
 
