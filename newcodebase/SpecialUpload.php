@@ -95,15 +95,21 @@ function saveUploadedFile()
 	$dest .= "/" . substr( $wpUploadSaveName, 0, 2 );
 	if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
 
+	$archive = "{$wgUploadDirectory}/archive";
+	if ( ! is_dir( $archive ) ) { mkdir( $archive, 0777 ); }
+	$archive .= "/" . $wpUploadSaveName{0};
+	if ( ! is_dir( $archive ) ) { mkdir( $archive, 0777 ); }
+	$archive .= "/" . substr( $wpUploadSaveName, 0, 2 );
+	if ( ! is_dir( $archive ) ) { mkdir( $archive, 0777 ); }
+
 	$wgSavedFile = "{$dest}/{$wpUploadSaveName}";
 	wfDebug( "Upl: wgSavedFile={$wgSavedFile}\n" );
 
 	if ( is_file( $wgSavedFile ) ) {
-		if ( ! is_dir( "{$dest}/old" ) ) { mkdir( "{$dest}/old", 0777 ); }
 		$wgUploadOldVersion = date( "YmdHis" ) . "!{$wpUploadSaveName}";
 
-		if ( ! rename( $wgSavedFile, "${dest}/old/{$wgUploadOldVersion}" ) ) {
-			wfDebug( "Upl: rename failed.\n" );
+		if ( ! rename( $wgSavedFile, "${archive}/{$wgUploadOldVersion}" ) ) {
+			wfDebug( "Upl: archive rename failed.\n" );
 		}
 	} else {
 		$wgUploadOldVersion = "";
@@ -125,10 +131,10 @@ function unsaveUploadedFile()
 
 	unlink( $wgSavedFile );
 	if ( "" != $wgUploadOldVersion ) {
-		$dest = $wgUploadDirectory . "/" . $wgUploadOldVersion{15} .
+		$archive = "{$wgUploadDirectory}/archive/" . $wgUploadOldVersion{15} .
 	  	"/" . substr( $wgUploadOldVersion, 15, 2 );
 
-		rename( "{$dest}/old/{$wgUploadOldVersion}", $wgSavedFile );
+		rename( "{$archive}/{$wgUploadOldVersion}", $wgSavedFile );
 	}
 }
 
