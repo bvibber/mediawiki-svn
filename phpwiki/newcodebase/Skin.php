@@ -334,24 +334,18 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		}
 
 		if ( $wgUser->getNewtalk() ) {
-			
-			
 			# do not show "You have new messages" text when we are viewing our 
 			# own talk page 
 			
 			if(!(strcmp($wgTitle->getText(),$wgUser->getName()) == 0 &&
 			     $wgTitle->getNamespace()==Namespace::getTalk(Namespace::getUser()))) {
-								
 				$n =$wgUser->getName();
 				$tl = $this->makeKnownLink( $wgLang->getNsText(
 				Namespace::getTalk( Namespace::getUser() ) ) . ":{$n}",
 				wfMsg("newmessageslink") );
-				$s.=" | <B>".wfMsg("newmessages") . $tl ."</B>";
+				$s.=" | <strong>". str_replace( "$1", $tl, wfMsg("newmessages") ) . "</strong>";
 			}
-			
-			
 		}
-		
 		return $s;
 	}
 

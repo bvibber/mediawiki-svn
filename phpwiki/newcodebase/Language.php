@@ -342,8 +342,8 @@ See $1.",
 "sitetitle"		=> "Wikipedia",
 "sitesubtitle"	=> "The Free Encyclopedia",
 "retrievedfrom" => "Retrieved from \"$1\"",
-"newmessages" => "You have ",
-"newmessageslink" => "new messages.",
+"newmessages" => "You have $1.",
+"newmessageslink" => "new messages",
 
 # Main script and global functions
 #

@@ -343,7 +343,8 @@ Vidu $1.",
 "sitetitle"		=> "Vikipedio", # Wikipedia
 "sitesubtitle"	=> "La Libera Enciklopedio",
 "retrievedfrom" => "Citita el \"$1\"", #FIXME: Aperas post presita paĝo
-
+"newmessages"	=> "Jen $1 por vi.",
+"newmessageslink" => "nova mesaĝo",
 # Main script and global functions
 #
 "nosuchaction"	=> "Ne ekzistas tia ago",
@@ -457,7 +458,15 @@ Bonvolu saluti denove ricevinte ĝin.",
 kiu priskribis la kialon jene:<br>$2
 <p>Vi rajtas kontakti tiun administranton por pridiskuti la forbaradon.", #FIXME - sistemestro?
 "newarticle"	=> "(Nova)",
-"newarticletext" => "Enmetu tekston por la nova artikolo ĉi tie.", #FIXME?
+"newarticletext" => "
+Vi sekvis ligilon al paĝo jam ne ekzistanta.
+Se vi volas krei ĝin, ektajpu sube (vidu la [[Vikipedio:Helpo|helpopaĝo]] por klarigoj.)
+Se vi malintence alvenis ĉi tien, simple alklaku la "reen" butonon de via retumilo.",
+"anontalkpagetext" => "---- ''Jen diskutopaĝo por iu anonima kontribuanto kiu ne jam kreis
+konton aŭ ne uzas ĝin. Ni tial devas uzi la cifran [[IP-adreso]] por tiun identigi.
+Tia IA-adreso povas kundividiĝi de pluraj uzuloj. Se vi estas anonimulo kaj preferus
+eviti tiajn maltrafajn komentojn kaj konfuziĝon kun aliaj anonimuloj ĉe via retero,
+bonvolu [[Speciala:Userlogin|kreu konton aŭ ensalutu]].",
 "noarticletext" => "(La paĝo nun estas malplena)", #FIXME
 "updated"		=> "(Ŝanĝo registrita)", #FIXME: ?
 "note"			=> "<strong>Noto:</strong> ", #FIXME: Where does this come from?
@@ -483,7 +492,9 @@ Se vi volas, ke via verkaĵo ne estu redaktota senkompate kaj disvastigota
 laŭvole, ne alklaku \"Konservu\".
 Vi ankaŭ ĵuras, ke vi mem verkis la tekston, aŭ ke vi kopiis ĝin el
 fonto senkopirajta. <strong>NE UZU KOPIRAJTAJN VERKOJN SENPERMESE!</strong>",
-
+"longpagewarning" => "AVERTO: Tiu ĉi paĝo longas $1 kilobitokojn; kelkaj retumiloj
+povas fuŝi redaktante paĝojn je longo proksime aŭ preter 32kb.
+Se eble, bonvolu disigi la paĝon al malpli grandajn paĝerojn.",
 
 # History pages
 #
