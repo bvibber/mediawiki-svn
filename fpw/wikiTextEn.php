@@ -22,6 +22,7 @@ $wikiMetaDescription = "$1... Read more here at wikipedia, the free encyclopedia
 
 # Used in header/footer
 $wikiMainPageTitle = "Wikipedia : The free encyclopedia" ; # This is the title that is displayed on the main page
+$wikiHeaderSubtitle = "The free encyclopedia" ;
 $wikiArticleSubtitle = "From Wikipedia, the free encyclopedia." ;
 $wikiPrintable = "Printable version" ;
 $wikiWatch = "Watch this article for me" ;
@@ -41,6 +42,32 @@ $wikiNamespaceTalk = "$1 Talk" ;
 $wikiWikipedia = "wikipedia" ;
 $wikiAllowedNamespaces = array ( $wikiWikipedia , $wikiTalk , $wikiUser , "" , "wikipedia $wikiTalk" , "$wikiUser $wikiTalk" ) ;
 $wikiSkins = array ( "Normal" => "" , "Star Trek" => "Star Trek" , "Nostalgia" => "Nostalgy" , "Cologne Blue" => "Cologne Blue" ) ;
+$wikiMySettings = "My Settings" ;
+$wikiMyself = "Myself" ;
+$wikiShortPages = "Short Pages";
+$wikiLongPages = "Long Pages" ;
+$wikiUserList = "User List" ;
+$wikiEditingHistory = "Editing History" ;
+$wikiAddToWatchlist = "Add to Watchlist" ;
+$wikiEditPage = "Edit Page" ;
+$wikiPrintPage = "Print Page" ;
+$wikiHome = "Home" ;
+$wikiAbout = "About" ;
+$wikiFAQ = "FAQ" ;
+$wikiPageInfo = "Page Info" ;
+$wikiLinkedPages = "Linked Pages" ;
+$wikiShowDiff = "show diff" ;
+$wikiRequests = "Requests" ;
+$wikiEdit = "Edit" ;
+$wikiPageOptions = "Page Options" ;
+$wikiBrowse = "Browse" ;
+$wikiFind = "Find" ;
+$wikiOK = "OK" ;
+$wikiFindMore = "Find more";
+$wikiWikipediaHome = "Wikipedia Home" ;
+$wikiAboutWikipedia = "About Wikipedia" ;
+$wikiTopics = "Topics" ;
+$wikiWikipediaFAQ = "wikipedia:FAQ" ;
 
 # Editing
 $wikiEditTitle = "Editing $1" ;
