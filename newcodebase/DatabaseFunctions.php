@@ -114,7 +114,7 @@ function wfTimestamp2Unix( $ts ) {
 }
 
 function wfUnix2Timestamp( $unixtime ) {
-	return date( "YmdHis", $timestamp );
+	return date( "YmdHis", $unixtime );
 }
 
 function wfTimestampNow() {

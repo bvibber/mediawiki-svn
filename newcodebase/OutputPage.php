@@ -148,23 +148,27 @@ class OutputPage {
 
 	function checkLastModified ( $timestamp )
 	{
-		global $wgLang, $wgCachePages;
+		global $wgLang, $wgCachePages, $wgUser;
 		if( !$wgCachePages ) return;
-		if( !preg_match( '/MSIE (5\.5|[6-9])/', $_SERVER["HTTP_USER_AGENT"] ) ) {
-			# Mozilla and IE 5.0 have probs with our caching
+		if( preg_match( '/MSIE ([1-4]|5\.0)/', $_SERVER["HTTP_USER_AGENT"] ) ) {
+			# IE 5.0 has probs with our caching
 			return;
 		}
-		$ismodsince = $_SERVER["HTTP_IF_MODIFIED_SINCE"];
-		$lastmod = gmdate( "D, j M Y H:i:s", wfTimestamp2Unix( $timestamp ) ) . " GMT";
+		#$ismodsince = $_SERVER["HTTP_IF_MODIFIED_SINCE"];
+		$ismodsince = wfUnix2Timestamp( strtotime( $_SERVER["HTTP_IF_MODIFIED_SINCE"] ) );
+		$lastmod = gmdate( "D, j M Y H:i:s", wfTimestamp2Unix(
+			max( $timestamp, $wgUser->mTouched ) ) ) . " GMT";
 		
-		if( $ismodsince == $lastmod ) {
+		if( ($ismodsince >= $timestamp ) and $wgUser->validateCache( $ismodsince ) ) {
 			# Make sure you're in a place you can leave when you call us!
 			header( "HTTP/1.0 304 Not Modified" );
 			header( "Expires: Mon, 15 Jan 2001 00:00:00 GMT" ); # Cachers always validate the page!
 			header( "Cache-Control: private, must-revalidate, max-age=0" );
 			header( "Last-Modified: {$lastmod}" );			
+			wfDebug( "CACHED client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp\n", false );
 			exit;
 		} else {
+			wfDebug( "READY  client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp\n", false );
 			$this->mLastModified = $lastmod;
 		}
 	}

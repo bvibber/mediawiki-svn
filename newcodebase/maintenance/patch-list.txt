@@ -90,3 +90,18 @@ tables. This will allow fast index-based sorting in history lists,
 user contribs, linked recentchanges, etc with MySQL 3, which doesn't
 allow DESC ordering on an indexed field. This may be removed later
 when MySQL is found to be stable.
+
+
+* 2003-03-22: Last touched fields for caching
+'Last touched' timestamp fields have been added to the cur and user
+tables to aid in maintaining cache consistency. Web clients will
+be forced to reload a page if it has been touched since the client's
+cached copy (this will catch indirect changes like creation of
+linked pages) or if a user changes preferences or logs in anew (so
+visual changes and login status are taken into account).
+
+Run patch-cache.sql on the database to set these fields up. This is
+required for changes to OutputPage.php and elsewhere to continue
+working on an older database.
+
+OutputPage.php User.php maintenance/buildTables.inc maintenance/patch-cache.sql maintenance/patch-list.txt

@@ -260,12 +260,13 @@ class MovePageForm {
 		$fname = "MovePageForm::moveOverExistingRedirect";
 		$mt = wfMsg( "movedto" );
 
-		$sql = "UPDATE cur SET " .
+        $now = wfTimestampNow();
+		$sql = "UPDATE cur SET cur_touched='{$now}'," .
 		  "cur_namespace={$this->nns},cur_title='{$this->ndt}' " .
 		  "WHERE cur_id={$this->oldid}";
 		wfQuery( $sql, $fname );
 
-		$sql = "UPDATE cur SET " .
+		$sql = "UPDATE cur SET cur_touched='{$now}'," .
 		  "cur_namespace={$this->ons},cur_title='{$this->odt}'," .
 		  "cur_text='#REDIRECT [[{$this->nft}]]\n',cur_comment='" .
 		  "{$mt} \\\"{$this->nft}\\\"',cur_user='" .  $wgUser->getID() .
@@ -284,7 +285,6 @@ class MovePageForm {
 			"rc_cur_id={$this->oldid}";
         wfQuery( $sql, $fname );
 
-        $now = wfTimestampNow();
 		$sql = "INSERT INTO recentchanges (rc_namespace,rc_title,
 			rc_comment,rc_user,rc_user_text,rc_timestamp,
 			rc_cur_time,rc_cur_id,rc_new)
@@ -331,7 +331,7 @@ class MovePageForm {
 		$fname = "MovePageForm::moveToNewTitle";
 		$mt = wfMsg( "movedto" );
 
-		$sql = "UPDATE cur SET " .
+		$sql = "UPDATE cur SET cur_touched='{$now}'," .
 		  "cur_namespace={$this->nns},cur_title='{$this->ndt}' " .
 		  "WHERE cur_id={$this->oldid}";
 		wfQuery( $sql, $fname );
@@ -344,8 +344,8 @@ class MovePageForm {
           "','{$now}'";
 		$sql = "INSERT INTO cur (cur_namespace,cur_title," .
 		  "cur_comment,cur_user,cur_user_text,cur_timestamp,inverse_timestamp," .
-		  "cur_text,cur_is_redirect,cur_is_new) " .
-		  "VALUES ({$common},'{$won}','#REDIRECT [[{$this->nft}]]\n',1,1)";
+		  "cur_touched,cur_text,cur_is_redirect,cur_is_new) " .
+		  "VALUES ({$common},'{$won}','{$now}','#REDIRECT [[{$this->nft}]]\n',1,1)";
 		wfQuery( $sql, $fname );
 		$this->newid = wfInsertId();
 

@@ -45,7 +45,7 @@ $wgDBtransactions	= false; # Set to true if using InnoDB tables
 
 $wgReadOnlyFile		= "/usr/local/apache/htdocs/upload/dblockflag838942";
 $wgDebugComments	= false;
-$wgCachePages		= false;
+$wgCachePages		= true;	# Allow client-side caching of pages
 
 $wgLanguageCode     = "en";
 $wgInterwikiMagic	= true; # Treat language links as magic connectors, not inline links

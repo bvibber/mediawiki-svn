@@ -7,6 +7,7 @@ class User {
 	/* private */ var $mDataLoaded, $mNewpassword;
 	/* private */ var $mSkin;
 	/* private */ var $mBlockedby, $mBlockreason;
+	/* private */ var $mTouched;
 
 	function User()
 	{
@@ -82,6 +83,7 @@ class User {
 		unset( $this->mSkin );
 		$this->mDataLoaded = false;
 		$this->mBlockedby = -1; # Unset
+		$this->mTouched = '0'; # Allow any pages to be cached
 	}
 
 	/* private */ function getBlockedStatus()
@@ -198,7 +200,7 @@ class User {
 		} # the following stuff is for non-anonymous users only
 		
 		$sql = "SELECT user_name,user_password,user_newpassword,user_email," .
-		  "user_options,user_rights FROM user WHERE user_id=" .
+		  "user_options,user_rights,user_touched FROM user WHERE user_id=" .
 		  "{$this->mId}";
 		$res = wfQuery( $sql, "User::loadFromDatabase" );
 
@@ -210,6 +212,7 @@ class User {
 			$this->mNewpassword = $s->user_newpassword;
 			$this->decodeOptions( $s->user_options );
 			$this->mRights = explode( ",", strtolower( $s->user_rights ) );
+			$this->mTouched = $s->user_touched;
 		}				
 		
 		wfFreeResult( $res );
@@ -243,6 +246,19 @@ class User {
 	{
 		$this->loadFromDatabase();
 		$this->mNewtalk = $val;
+		$this->invalidateCache();
+	}
+	
+	function invalidateCache() {
+		$this->loadFromDatabase();
+		$this->mTouched = wfTimestampNow();
+		# Don't forget to save the options after this or
+		# it won't take effect!
+	}
+	
+	function validateCache( $timestamp ) {
+		$this->loadFromDatabase();
+		return ($timestamp >= $this->mTouched);
 	}
 	
 	function getPassword()
@@ -302,6 +318,7 @@ class User {
 	{
 		$this->loadFromDatabase();
 		$this->mOptions[$oname] = $val;
+		$this->invalidateCache();
 	}
 
 	function getRights()
@@ -374,6 +391,7 @@ class User {
 			  VALUES ({$this->mId}," . (($title->getNamespace() | 1) - 1) .
 			  ",'" . wfStrencode( $title->getDBkey() ) . "')";
 			wfQuery( $sql );
+			$this->invalidateCache();
 		}
 	}
 
@@ -384,6 +402,7 @@ class User {
 			  wl_namespace=" . (($title->getNamespace() | 1) - 1) .
 			  " AND wl_title='" . wfStrencode( $title->getDBkey() ) . "'";
 			wfQuery( $sql );
+            $this->invalidateCache();
 		}
 	}
 
@@ -467,7 +486,8 @@ class User {
 		  "user_newpassword= '" . wfStrencode( $this->mNewpassword ) . "', " .
 		  "user_email= '" . wfStrencode( $this->mEmail ) . "', " .
 		  "user_options= '" . $this->encodeOptions() . "', " .
-		  "user_rights= '" . wfStrencode( implode( ",", $this->mRights ) ) .
+		  "user_rights= '" . wfStrencode( implode( ",", $this->mRights ) ) . "', " .
+		  "user_touched= '" . wfStrencode( $this->mTouched ) .
 		  "' WHERE user_id={$this->mId}";
 		wfQuery( $sql, "User::saveSettings" );
 	}
