@@ -47,7 +47,7 @@ function wfSpecialRecentchanges()
 
 	$uid = $wgUser->getID();
 	$sql2 = "SELECT rc_cur_id,rc_namespace,rc_title,rc_user,rc_new," .
-	  "rc_comment,rc_user_text,rc_timestamp,rc_minor,rc_bot" . ($uid ? ",wl_user" : "") . " FROM recentchanges " .
+	  "rc_comment,rc_user_text,rc_timestamp,rc_minor,rc_this_oldid,rc_last_oldid,rc_bot" . ($uid ? ",wl_user" : "") . " FROM recentchanges " .
 	  ($uid ? "LEFT OUTER JOIN watchlist ON wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace & 65534 " : "") .
 	  "WHERE rc_timestamp > '{$cutoff}' {$hidem} " .
 	  "ORDER BY rc_timestamp DESC LIMIT {$limit}";
@@ -88,12 +88,14 @@ function wfSpecialRecentchanges()
 			$me = ( $obj1->rc_minor > 0 );
 			$new = ( $obj1->rc_new > 0 );
 			$watched = ($obj1->wl_user > 0);
+			$oldid = $obj1->rc_this_oldid ;
+			$diffid = $obj1->rc_last_oldid ;
 
 			$obj1 = wfFetchObject( $res );
 			--$count1;
 		if ( ! ( $hideminor && $me ) ) {
 			$s .= $sk->recentChangesLine( $ts, $u, $ut, $ns, $ttl,
-			  $com, $me, $new, $watched );
+			  $com, $me, $new, $watched, $oldid , $diffid );
 			--$limit;
 		}
 	}

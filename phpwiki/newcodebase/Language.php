@@ -41,6 +41,7 @@
 	"highlightbroken" => "Highlight links to empty topics",
 	"justify"	=> "Justify paragraphs",
 	"hideminor" => "Hide minor edits in recent changes",
+	"usenewrc" => "Enhanced recent changes (not for all browsers)",
 	"numberheadings" => "Auto-number headings",
 	"rememberpassword" => "Remember password across sessions",
 	"editwidth" => "Edit box has full width",
@@ -573,6 +574,7 @@ from server time (UTC).",
 
 # Recent changes
 #
+"changes" => "changes",
 "recentchanges" => "Recent changes",
 "recentchangestext" => "Track the most recent changes to Wikipedia on this page.
 [[Wikipedia:Welcome,_newcomers|Welcome, newcomers]]!

@@ -35,6 +35,7 @@
 	"highlightbroken" => "Verweise auf leere Themen hervorheben",
 	"justify"	=> "Text als Blocksatz",
 	"hideminor" => "Keine kleinen Änderungen in Letzte Änderungen anzeigen",
+	"usenewrc" => "Enhanced recent changes (not for all browsers)",
 	"numberheadings" => "Überschriften automatisch numerieren",
 	"rememberpassword" => "Passwort merken",
 	"editwidth" => "Text-Eingabefeld mit voller Breite",
@@ -422,6 +423,7 @@ sein, um Ihre Einstellungen zu ändern.",
 
 # Recent changes
 #
+"changes" => "Änderungen",
 "recentchanges" => "Letzte Änderungen",
 "recentchangestext" => "
 Diese Seite wird beim Laden automatisch aktualisiert. Angezeigt werden Seiten, die zuletzt bearbeitet wurden, sowie die Zeit und der Name des Autors.<br>

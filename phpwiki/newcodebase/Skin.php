@@ -13,6 +13,12 @@ class Skin {
 
 	/* private */ var $lastdate, $lastline;
 
+	var $rcc ; # Recent Changes Cache for better display
+	var $rccc ; # Recent Changes Cache Counter for visibility toggle
+	var $rcchl ; # History links
+	var $rcco ; # Old versions for total diff
+
+
 	function Skin()
 	{
 	}
@@ -48,7 +54,27 @@ class Skin {
 		$wgOut->addLink( "stylesheet", "", "{$wgStyleSheetPath}/{$ss}" );
 	}
 
-	function getHeadScripts() { return ""; }
+	function getHeadScripts() {
+		$r = "
+<SCRIPT>
+function toggleVisibility( _levelId, _otherId, _linkId) {
+	var thisLevel = document.getElementById( _levelId );
+	var otherLevel = document.getElementById( _otherId );
+	var linkLevel = document.getElementById( _linkId );
+	if ( thisLevel.style.display == 'none' ) {
+		thisLevel.style.display = 'block';
+		otherLevel.style.display = 'none';
+		linkLevel.style.display = 'inline';
+	} else {
+		thisLevel.style.display = 'none';
+		otherLevel.style.display = 'inline';
+		linkLevel.style.display = 'none';
+		}
+	}
+</SCRIPT>
+		" ;
+		return $r;
+	}
 
 	function getUserStyles()
 	{
@@ -1026,6 +1052,10 @@ class Skin {
 
 	function beginRecentChangesList()
 	{
+		$rccc = 0 ;
+		$this->rcc = array() ;
+		$this->rcchl = array() ;
+		$this->rcco = array() ;
 		$this->lastdate = "";
 		return "";
 	}
@@ -1046,7 +1076,8 @@ class Skin {
 
 	function endRecentChangesList()
 	{
-		$s = "</ul>\n";
+		$s = $this->recentChangesBlock() ;
+		$s .= "</ul>\n";
 		return $s;
 	}
 
@@ -1112,7 +1143,55 @@ class Skin {
 		return $ret;
 	}
 
-	function recentChangesLine( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew, $watched = false)
+	function recentChangesBlock ()
+	{
+		global $wgUploadPath ;
+		$r = "" ;
+		if ( count ( $this->rcc ) == 0 ) return "" ;
+		$k = array_keys ( $this->rcc ) ;
+		foreach ( $k AS $x )
+			{
+			$a = $this->rcc[$x] ;
+			if ( count ( $a ) < 2 )
+				{
+				$y = array_shift ( $a ) ;
+				$r .= "<li>{$y}</li>\n" ;
+				}
+			else
+				{
+				$noc = count ( $a ) ;
+				$rci = "RCI{$this->rccc}" ;
+				$rcl = "RCL{$this->rccc}" ;
+				$rcm = "RCM{$this->rccc}" ;
+				$tl = "<a href='javascript:toggleVisibility(\"{$rci}\",\"{$rcm}\",\"{$rcl}\")'>" ;
+				$tl .= "<span id='{$rcm}'><img src='{$wgUploadPath}/Arr_r.png' width=12 height=12 border=0></span>" ;
+				$tl .= "<span id='{$rcl}' style='display:none'><img src='{$wgUploadPath}/Arr_d.png' width=12 height=12 border=0></span>" ;
+				$tl .= "</a>" ;
+				$dlink = $this->rcco[$x] ;
+				$r .= "{$tl} ({$dlink}) {$x} ({$noc} " ;
+				$r .= "{$this->rcchl[$x]})<br>\n" ;
+				$r .= "<div id='{$rci}' style='display:none'>" ;
+				foreach ( $a AS $y )
+					$r .= "<dd>{$y}\n" ;
+				$r .= "</div>\n" ;
+				$this->rccc++ ;
+				}
+			}
+		return $r ;
+	}
+
+	function recentChangesLine( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew, $watched = false, $oldid = 0 , $diffid = 0 )
+	{
+		global $wgUser ;
+		$usenew = $wgUser->getOption( "usenewrc" );
+		if ( $usenew )
+			$r = $this->recentChangesLineNew ( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew, $watched , $oldid , $diffid ) ;
+		else
+			$r = $this->recentChangesLineOld ( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew, $watched ) ;
+		return $r ;
+	}
+
+	function recentChangesLineOld( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew, $watched = false)
 	{
 		global $wgTitle, $wgLang, $wgUser;
 
@@ -1165,6 +1244,81 @@ class Skin {
 
 		return $s;
 	}
+
+	function recentChangesLineNew( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew, $watched = false, $oldid = 0 , $diffid = 0 )
+	{
+		global $wgTitle, $wgLang, $wgUser;
+
+		$d = $wgLang->date( $ts, true);
+		$s = "";
+		$ret = "" ;
+		if ( $d != $this->lastdate ) {
+			$ret = $this->recentChangesBlock () ;
+			$this->rcc = array() ;
+			$ret .= "<h4>{$d}</h4>\n";
+			$this->lastdate = $d;
+		}
+		$h = $wgLang->time( $ts, true );
+		$t = Title::makeName( $ns, $ttl );
+		$clink = $this->makeKnownLink( $t, "" ) ;
+		if ( $oldid == 0 ) $c2link = $clink ;
+		else $c2link = $this->makeKnownLink( $t, "" , "oldid={$oldid}" );
+		$nt = Title::newFromText( $t );
+
+		if ( $watched ) {
+			$clink = "<strong>{$clink}</strong>";
+		}
+
+		if ( ( $isnew && $oldid == 0 ) || $nt->isLog() ) {
+			$dlink = wfMsg( "cur" );
+		} else {
+			$dlink = $this->makeKnownLink( $t, wfMsg( "cur" ),
+			  "diff=0&oldid={$oldid}" );
+		}
+
+		if ( $diffid == 0 || $nt->isLog() ) {
+			$plink = wfMsg( "last" );
+		} else {
+			$plink = $this->makeKnownLink( $t, wfMsg( "last" ),
+			  "diff={$oldid}&oldid={$diffid}" );
+		}
+
+		if ( 0 == $u ) {
+        	$ul = $this->makeKnownLink( $wgLang->specialPage( "Contributions" ),
+			$ut, "target=" . $ut );
+		} else { $ul = $this->makeLink( $wgLang->getNsText(
+		  Namespace::getUser() ) . ":{$ut}", $ut ); }
+		$cr = wfMsg( "currentrev" );
+
+		# Here was <li>
+		$s .= "({$dlink}) ({$plink}) . .";
+		$M = wfMsg( "minoreditletter" );
+		$N = wfMsg( "newpageletter" );
+		if ( $isnew ) { $s .= " <strong>{$N}</strong>"; }
+		if ( $isminor ) { $s .= "<strong>{$M}</strong>"; }
+		$s .= " {$c2link}; {$h} . . {$ul}";
+
+		if ( ( 0 == $u ) && $wgUser->isSysop() ) {
+			$blink = $this->makeKnownLink( $wgLang->specialPage(
+			  "Blockip" ), wfMsg( "blocklink" ), "ip={$ut}" );
+			$s .= " ({$blink})";
+		}
+
+		if ( "" != $c && "*" != $c ) {
+			$s .= " <em>(" . wfEscapeHTML( $c ) . ")</em>";
+		}
+
+		# Here was </li>
+		$s .= "<br>\n";
+
+		$xt = $clink ;
+		if ( !isset ( $this->rcc[$xt] ) ) $this->rcc[$xt] = array() ;
+		array_push ( $this->rcc[$xt] , $s ) ;
+		$this->rcchl[$xt] = $this->makeKnownLink( $t, wfMsg( "changes" ), "action=history" );
+		$this->rcco[$xt] = $dlink ;
+		return $ret;
+	}
+
 
 	function imageHistoryLine( $iscur, $ts, $img, $u, $ut, $size, $c )
 	{
