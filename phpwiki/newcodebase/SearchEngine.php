@@ -38,15 +38,15 @@ class SearchEngine {
 		$conn = wfGetDB();
 		$sql = "SELECT cur_id,cur_namespace,cur_title," .
 		  "cur_text FROM cur " .
-		  "WHERE {$this->mTitlecond} AND (cur_namespace=0) AND " .
-		  "(cur_is_redirect = 0) LIMIT {$offset}, {$limit}";
+		  "WHERE {$this->mTitlecond} AND (cur_namespace=0) " .
+		  "LIMIT {$offset}, {$limit}";
 		$res1 = wfQuery( $sql, $conn );
 
 		$conn = wfGetDB();
 		$sql = "SELECT cur_id,cur_namespace,cur_title," .
 		  "cur_text FROM cur " .
-		  "WHERE {$this->mTextcond} AND (cur_namespace=0) AND " .
-		  "(cur_is_redirect = 0) LIMIT {$offset}, {$limit}";
+		  "WHERE {$this->mTextcond} AND (cur_namespace=0) " .
+		  "LIMIT {$offset}, {$limit}";
 		$res2 = wfQuery( $sql, $conn );
 
 		$top = str_replace( "$1", $limit, wfMsg( "showingmatches" ) );
@@ -133,8 +133,9 @@ class SearchEngine {
 		}
 		$this->mTitlecond = "(" . str_replace( "##field##",
 		  "cur_ind_title", $cond ) . " )";
+
 		$this->mTextcond = "(" . str_replace( "##field##",
-		  "cur_ind_text", $cond ) . " )";
+		  "cur_ind_text", $cond ) . " AND (cur_is_redirect=0) )";
 	}
 
 	function showHit( $row )

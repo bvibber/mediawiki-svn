@@ -424,20 +424,12 @@ $wpTextbox2
 	{
 		global $wgOut, $wgTitle, $wgUser, $wgLinkCache;
 
-		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
-		$wgOut->setSubtitle( $subtitle );
-		$wgOut->setArticleFlag( true );
-
 		$wgLinkCache = new LinkCache();
-		$wgOut->addWikiText( $text );
+		$wgOut->addWikiText( $text ); # Just to update links
 
-		$ins = Namespace::getIndex( "Image" );
-		if ( $ins == $wgTitle->getNamespace() ) {
-			$this->imageHistory();
-			$this->imageLinks();
-		}
 		$this->editUpdates( $this->getID(), $wgTitle->getPrefixedDBkey(),
 		  $text );
+		$wgOut->redirect( $wgTitle->getFullURL() );
 	}
 
 	function imageHistory()
