@@ -109,9 +109,15 @@ class Article {
 		# fails we'll have something telling us what we intended.
 
 		$t = $wgTitle->getPrefixedText();
-		if ( $oldid ) { $t .= ",oldid={$oldid}"; }
-		if ( $redirect ) { $t .= ",redirect={$redirect}"; }
-		$this->mContent = str_replace( "$1", $t, wfMsg( "missingarticle" ) );
+		if ( isset( $oldid ) ) {
+			$oldid = IntVal( $oldid );
+			$t .= ",oldid={$oldid}";
+		}
+		if ( isset( $redirect ) ) {
+			$redirect = ($redirect == "no") ? "no" : "yes";
+			$t .= ",redirect={$redirect}";
+		}
+		$this->mContent = wfMsg( "missingarticle", $t );
 
 		if ( ! $oldid ) {	# Retrieve current version
 			$id = $this->getID();
