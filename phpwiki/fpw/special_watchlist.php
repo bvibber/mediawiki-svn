@@ -18,6 +18,9 @@ function watch ( $t , $m ) {
     
     if ( !$user->isLoggedIn ) return $wikiUserSettingsError ;
 
+    # Watchlist is namespace-independant
+    $t = preg_replace ( "/^(.*:)/" , "" , $t ) ;
+
     # Modifying user_watch
     $separator = "\n" ;
     $a = getMySQL ( "user" , "user_watch" , "user_id=$user->id" ) ;
@@ -56,11 +59,14 @@ function WatchList () {
         if ( $x != "" ) {
             $sql = "SELECT cur_timestamp, cur_title, cur_comment, cur_user, cur_user_text, cur_minor_edit
                     FROM cur
-                    WHERE cur_title=\"$x\"" ;
+                    WHERE cur_title=\"$x\" OR cur_title LIKE \"%:$x\"" ;
             $result = mysql_query ( $sql , $connection ) ;
             $s = mysql_fetch_object ( $result ) ;
             if ( $s )
-                array_push ( $arr , $s ) ;    # don't push if page no longer exists
+                while ($s) {
+		    array_push ( $arr , $s ) ;    # don't push if page no longer exists
+		    $s = mysql_fetch_object ( $result ) ;
+		    }
             else
                 $notexist .= "\n* [[".$vpage->getNiceTitle( $x )."]]" ;
             mysql_free_result ( $result ) ;
