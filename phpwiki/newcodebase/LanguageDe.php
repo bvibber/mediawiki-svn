@@ -83,6 +83,7 @@
 	"Ipblocklist"	=> "Zeige blockierte IP-Addressen",
 	"Specialpages"  => "",
 	"Contributions" => "",
+	"Movepage"		=> "",
 	"Emailuser"	=> "",
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => ""
@@ -90,7 +91,6 @@
 
 /* private */ $wgSysopSpecialPagesDe = array(
 	"Blockip"		=> "Blockiere eine IP-Addresse",
-	"Movepage"		=> "",
 	"Asksql"		=> "Datenbank-Abfrage"
 );
 
