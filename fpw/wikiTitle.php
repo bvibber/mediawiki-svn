@@ -104,9 +104,10 @@ class WikiTitle {
 			$this->hasNamespace = true ;
 			$rest = $a[1] ;
 			}
+		
 		$a = explode ( "/" , $rest , 2 ) ;
 		$this->mainTitle = $a[0] ;
-		if ( count ( $a ) == 1 ) $this->$subpageTitle = "" ;
+		if ( count ( $a ) == 1 ) $this->subpageTitle = "" ;
 		else $this->subpageTitle = $a[1] ;
 		$this->namespace = strtolower ( $this->namespace ) ;
 		}
