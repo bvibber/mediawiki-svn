@@ -14,31 +14,32 @@ public LinkTest( WikiSuite ws ) { super(ws); }
 
 public String testName() { return "Links"; }
 
-protected boolean runTestInner() {
-	try {
-		m_resp = m_suite.fetchPage( m_conv, "" );
-		WikiTest.showResponse( m_resp );
+protected boolean runTest() throws Exception {
+	boolean result = true;
+	WebResponse wr = m_suite.viewPage( "" ); /* Main page */
 
-		WebLink l = m_resp.getFirstMatchingLink(
-		  WebLink.MATCH_CONTAINED_TEXT, "physics" );
-		m_resp = l.click();
-		WikiTest.showResponse( m_resp );
+	WebLink l = wr.getFirstMatchingLink(
+	  WebLink.MATCH_CONTAINED_TEXT, "game" );
+	wr = l.click();
+	WikiSuite.showResponseTitle( wr );
 
-		l = m_resp.getFirstMatchingLink(
-		  WebLink.MATCH_CONTAINED_TEXT, "radio" );
-		m_resp = l.click();
-		WikiTest.showResponse( m_resp );
-	} catch (Exception e) {
-		System.err.println( "Exception: " + e );
-		return false;
-	}
-	return true;
+	l = wr.getFirstMatchingLink(
+	  WebLink.MATCH_CONTAINED_TEXT, "card" );
+	wr = l.click();
+	WikiSuite.showResponseTitle( wr );
+
+	l = wr.getFirstMatchingLink(
+	  WebLink.MATCH_CONTAINED_TEXT, "poker" );
+	wr = l.click();
+	WikiSuite.showResponseTitle( wr );
+
+	return result;
 }
 
 public static void main( String[] params ) {
 	WikiSuite ws = new WikiSuite();
 	LinkTest wt = new LinkTest( ws );
-	wt.runTestAndReport();
+	wt.run();
 }
 
 }
