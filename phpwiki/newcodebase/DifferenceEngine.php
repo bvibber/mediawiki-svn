@@ -12,7 +12,7 @@ class DifferenceEngine {
 		$this->mNewid = $new;
 	}
 
-	function showDiffs()
+	function showDiffPage()
 	{
 		global $wgUser, $wgTitle, $wgOut, $wgLang;
 
@@ -29,26 +29,33 @@ class DifferenceEngine {
 		$wgOut->setSubtitle( wfMsg( "difference" ) );
 		$wgOut->setArticleFlag( true );
 
+		DifferenceEngine::showDiff( $this->mOldtext, $this->mNewtext,
+		  $this->mOldtitle, $this->mNewtitle );
+		$wgOut->addHTML( "<hr><h2>{$this->mNewtitle}</h2>\n" );
+		$wgOut->addWikiText( $this->mNewtext );
+	}
+
+	function showDiff( $otext, $ntext, $otitle, $ntitle )
+	{
+		global $wgOut;
+
+		$ota =explode( "\n", str_replace( "\r\n", "\n",
+			  htmlspecialchars( $otext ) ) );
+		$nta =explode( "\n", str_replace( "\r\n", "\n",
+			  htmlspecialchars( $ntext ) ) );
+
 		$wgOut->addHTML( "<table width='100%' border=0
 cellpadding=0 cellspacing='4px'><tr>
 <td colspan=2 width='50%' align=center bgcolor='#cccccc'>
-<strong>{$this->mOldtitle}</strong></td>
+<strong>{$otitle}</strong></td>
 <td colspan=2 width='50%' align=center bgcolor='#cccccc'>
-<strong>{$this->mNewtitle}</strong></td>
+<strong>{$ntitle}</strong></td>
 </tr>\n" );
-
-		$nta =explode( "\n", str_replace( "\r\n", "\n",
-			  htmlspecialchars( $this->mNewtext ) ) );
-		$ota =explode( "\n", str_replace( "\r\n", "\n",
-			  htmlspecialchars( $this->mOldtext ) ) );
 
 		$diffs = new Diff( $ota, $nta );
 		$formatter = new TableDiffFormatter();
 		$formatter->format( $diffs );
 		$wgOut->addHTML( "</table>\n" );
-
-		$wgOut->addHTML( "<hr><h2>{$this->mNewtitle}</h2>\n" );
-		$wgOut->addWikiText( $this->mNewtext );
 	}
 
 	# Load the text of the articles to compare.  If newid is 0, then compare

@@ -12,6 +12,7 @@ include_once( "Namespace.php" );
 include_once( "Skin.php" );
 include_once( "OutputPage.php" );
 include_once( "DifferenceEngine.php" );
+include_once( "SearchEngine.php" );
 include_once( "User.php" );
 include_once( "LinkCache.php" );
 include_once( "Title.php" );

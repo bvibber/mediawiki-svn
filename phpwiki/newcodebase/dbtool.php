@@ -20,11 +20,12 @@ $wgOldImageDir	= "/rfs/backups/lee/wikiimages";
 # convertCurTable();
 # convertOldTable();
 
-convertImageDirectories();
+# convertImageDirectories();
 
 # Maintenance tasks.
 #
-# rebuildLinkTables();
+
+rebuildLinkTables();
 
 print "Done.\n";
 exit();
@@ -323,6 +324,14 @@ function convertImageDirectories()
 		$nt = Title::newFromText( $oname );
 		$nname = $nt->getDBkey();
 
+		$exts = array( "png", "gif", "jpg", "jpeg" );
+		$ext = strrchr( $nname, "." );
+		if ( false === $ext ) { $ext = ""; }
+		else { $ext = strtolower( substr( $ext, 1 ) ); }
+		if ( ! in_array( $ext, $exts ) ) {
+			print "Skipping \"{$oname}\"\n";
+			continue;
+		}
 		$oldumask = umask(0);
 		$dest = $wgUploadDirectory . "/" . $nname{0};
 		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
@@ -336,15 +345,21 @@ function convertImageDirectories()
 			++$count;
 
 			$conn = getNewDB();
+			$sql = "DELETE FROM image WHERE img_name='" .
+			  wfStrencode( $nname ) . "'";
+			$res2 = dbQuery( $sql, $conn );
+
+			$conn = getNewDB();
 			$sql = "INSERT INTO image (img_name,img_timestamp,img_user," .
-			  "img_user_text,img_size,img_description) VALUES ('{$nname}','" .
+			  "img_user_text,img_size,img_description) VALUES ('" .
+			  wfStrencode( $nname ) . "','" .
 			  date( "YmdHis" ) . "',0,'(Automated conversion)','" .
 			  filesize( "{$dest}/{$nname}" ) . "','')";
 			$res2 = dbQuery( $sql, $conn );
 			if ( ! $res2 ) $res2 = dbErr( $sql );
 		}
 	}
-	print "{$count} unlinked images moved.\n";
+	print "{$count} images moved.\n";
 }
 
 
@@ -393,6 +408,25 @@ function rebuildLinkTables()
 		getInternalLinks( $title, $text );
 
 		$sql = "";
+		$a = $wgLinkCache->getImageLinks();
+		if ( 0 != count ( $a ) ) {
+			$sql = "INSERT INTO imagelinks (il_from,il_to) VALUES ";
+			$first = true;
+			foreach( $a as $iname => $val ) {
+				if ( ! $first ) { $sql .= ","; }
+				$first = false;
+
+				$sql .= "('" . wfStrencode( $title ) . "','" .
+				  wfStrencode( $iname ) . "')";
+			}
+		}
+		if ( "" != $sql ) {
+			$conn = getNewDB();
+			$res2 = dbQuery( $sql, $conn );
+			if ( ! $res2 ) $res = dbErr( $sql );
+		}
+
+		$sql = "";
 		$a = $wgLinkCache->getGoodLinks();
 		if ( 0 != count( $a ) ) {
 			$sql = "INSERT INTO links (l_from,l_to) VALUES ";
@@ -420,24 +454,6 @@ function rebuildLinkTables()
 				$first = false;
 
 				$sql .= "($id,'" . wfStrencode( $blt ) . "')";
-			}
-		}
-		if ( "" != $sql ) {
-			$conn = getNewDB();
-			$res2 = dbQuery( $sql, $conn );
-			if ( ! $res2 ) $res = dbErr( $sql );
-		}
-
-		$sql = "";
-		$a = $wgLinkCache->getImageLinks();
-		if ( 0 != count ( $a ) ) {
-			$sql = "INSERT INTO imagelinks (il_from,il_to) VALUES ";
-			$first = true;
-			foreach( $a as $iname => $val ) {
-				if ( ! $first ) { $sql .= ","; }
-				$first = false;
-
-				$sql .= "($id,'" . wfStrencode( $iname ) . "')";
 			}
 		}
 		if ( "" != $sql ) {
