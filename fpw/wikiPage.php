@@ -839,10 +839,12 @@ class WikiPage extends WikiTitle {
 				$ret .= " | <a href=\"".wikiLink("wikipedia:How does one edit a page")."\">$wikiEditHelp</a>" ;
 				}
 		} else {
-			$ret .= "<font size=\"+3\"><b>" ;
-			if ( $this->secureTitle == "Main_Page" and $action == "view" ) $ret .= "<font color=blue>$wikiMainPageTitle</font>$this->thisVersion" ;
-			else $ret .= "<a href=\"".wikiLink("&search=$this->title")."\">".$this->getNiceTitle($t)."</a>$this->thisVersion" ;
-			$ret .= "</b></font>" ;
+			$ret .= "<font size=\"+3\"><b><u>" ;
+			if ( $this->secureTitle == "Main_Page" and $action == "view" ) $ret .= $wikiMainPageTitle.$this->thisVersion ;
+			else $ret .= $this->getNiceTitle($t).$this->thisVersion ;
+#			if ( $this->secureTitle == "Main_Page" and $action == "view" ) $ret .= "<font color=blue>$wikiMainPageTitle</font>$this->thisVersion" ;
+#			else $ret .= "<a href=\"".wikiLink("&search=$this->title")."\">".$this->getNiceTitle($t)."</a>$this->thisVersion" ;
+			$ret .= "</u></b></font>" ;
 			$subText = array () ;
 			if ( $action == "view" and !$this->isSpecialPage ) $ret .=  "<br>$wikiArticleSubtitle\n" ;
 			if ( $user->isLoggedIn ) {
