@@ -206,7 +206,7 @@
 	"Randompage"	=> "Losowa strona",
 
 	"Lonelypages"	=> "Porzucone artykuły",
-	"Unusedimages"	=> "Porzucone obrazki",
+	"Unusedimages"	=> "Porzucone pliki",
 	"Popularpages"	=> "Najpopularniejsze",
 	"Wantedpages"	=> "Najbardziej potrzebne",
 	"Shortpages"	=> "Najkrótsze",
@@ -226,13 +226,13 @@
 
 /* private */ $wgSysopSpecialPagesPl = array(
 	"Blockip"		=> "Zablokuj adres IP",
-	"Asksql"		=> "Zapytanie w SQL"
+	"Asksql"		=> "Zapytanie SQL"
 );
 
 /* private */ $wgDeveloperSpecialPagesPl = array(
 	"Lockdb"		=> "Zablokuj zapis do bazy danych",
 	"Unlockdb"		=> "Odblokuj zapis do bazy danych",
-	"Debug"			=> "Debugging information"
+	"Debug"			=> "Odpluskwianie"
 );
 
 /* private */ $wgAllMessagesPl = array(
@@ -240,7 +240,7 @@
 # Bits of text used by many pages:
 #
 "mainpage"		=> "Strona główna",
-"about"			=> "O",
+"about"			=> "O Wikipedii",
 "aboutwikipedia" => "O Wikipedii",
 "aboutpage"		=> "Wikipedia:O_Wikipedii",
 "help"			=> "Pomoc",
@@ -271,14 +271,14 @@
 "history"		=> "Historia strony",
 "printableversion" => "Wersja do druku",
 "editthispage"	=> "Edytuj",
-"deletethispage" => "Usuń tą stronę",
-"protectthispage" => "Zabezpiecz tą stronę",
-"unprotectthispage" => "Odbezpiecz tą stronę",
+"deletethispage" => "Usuń",
+"protectthispage" => "Zabezpiecz",
+"unprotectthispage" => "Odbezpiecz",
 "talkpage"		=> "Dyskusja",
 "subjectpage"	=> "Strona dyskutowana",
 "otherlanguages" => "Wersja",
 "redirectedfrom" => "(Przekierowano z $1)",
-"lastmodified"	=> "Ostatnio zmodyfikowana o $1.",
+"lastmodified"	=> "Ostatnio zmodyfikowano o $1.",
 "viewcount"		=> "Tą stronę obejrzano $1 razy.",
 "printsubtitle" => "(z http://pl.wikipedia.org)",
 "protectedpage" => "Strona zabezpieczona",
@@ -437,7 +437,7 @@ Niniejszym jednocześnie oświadczasz, że wkład jest Twoim
 dziełem lub pochodzi z materiałów dostępnych na zasadach public domain albo
 licencji GNU Free Documentation License lub kompatybilnej.
 <strong>PROSZĘ NIE UŻYWAĆ BEZ POZWOLENIA MATERIAŁÓW OBJĘTYCH PRAWEM
-AUTORSKIM!<strong>",
+AUTORSKIM!</strong>",
 
 
 # History pages
@@ -520,7 +520,7 @@ przez zmianą swoich preferencji.",
 "recentchangescount" => "Liczba pozycji na liście ostatnich zmian",
 "savedprefs"	=> "Twoje preferencje zostały zapisane.",
 "timezonetext"	=> "Podaj liczbę godzin różnicy między Twoim czasem
-a czasem serwera (UTC). Np. dla Polski jest to liczba \"9\".",
+a czasem serwera (UTC). Np. dla Polski jest to liczba \"2\".",
 "localtime"	=> "Twój czas",
 "timezoneoffset" => "Różnica",
 "emailflag"		=> "Nie chcę otrzymywać e-maili od innych użytkowników",
@@ -540,14 +540,14 @@ oraz [[wikipedia:Most common Wikipedia faux pas|najczęstsze nieporozumienia]].
 Jeśli chcesz przyczynić się do sukcesu Wikipedii, nie dodawaj materiałów
 zastrzeżonych prawami autorskimi. Konsekwencje prawne złamania tej zasady
 mogłyby Wikipedii bardzo zaszkodzić.
-Zobacz także [http://meta.wikipedia.com/wiki.phtml?title=Specjalna:RecentChanges ostatnie metadyskusje (po angielsku)].",
+Zobacz także [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges ostatnie metadyskusje (po angielsku)].",
 "rcloaderr"		=> "Ładuję ostatnie zmiany",
 "rcnote"		=> "To ostatnie <strong>$1</strong> zmian dokonanych na Wikipedii w ciągu ostatnich <strong>$2</strong> dni.",
 # "rclinks"		=> "Show last $1 changes in last $2 hours / last $3 days",
 "rclinks"		=> "Wyświetl ostatnie $1 zmian w ciągu ostatnich $2 dni.",
 "rchide"		=> "in $4 form; $1 drobne zmiany; $2 inne przestrzenie nazw; $3 wielokrotna edycja.",
-"diff"			=> "różnice",
-"hist"			=> "historia",
+"diff"			=> "różn",
+"hist"			=> "hist",
 "hide"			=> "schowaj",
 "show"			=> "pokaż",
 "tableform"		=> "tabelka",
@@ -556,9 +556,9 @@ Zobacz także [http://meta.wikipedia.com/wiki.phtml?title=Specjalna:RecentChange
 
 # Upload
 #
-"upload"		=> "Prześlij",
+"upload"		=> "Prześlij plik",
 "uploadbtn"		=> "Prześlij plik",
-"uploadlink"	=> "Prześlij zdjęcia",
+"uploadlink"	=> "Prześlij obrazki",
 "reupload"		=> "Prześlij ponownie",
 "reuploaddesc"	=> "Wróć do formularza wysyłki.",
 "uploadnologin" => "Brak logowania",
@@ -590,7 +590,7 @@ Może zająć kilka chwil, zwłaszcza jeśli masz wolne połączenie z internete
 i obrazków o charakterze ikon oraz OGG dla dźwięków.
 Aby uniknąć nieporozumień nadawaj plikom nazwy związane z zawartością.
 Aby umieścić obrazek w artykule, użyj linku w postaci
-<b>[[image:obrazek.jpg]]</b> lub <b>[[image:obrazek.png|alt text]]</b>
+<b>[[image:obrazek.jpg]]</b> lub <b>[[grafika:obrazek.png|opcjonalny tekst]]</b>.
 Dla plików dźwiękowych link będzie miał postać <b>[[media:file.ogg]]</b>.
 <p>Pamiętaj, proszę, że tak jak w przypadku zwykłych stron Wikipedii,
 inni użytkownicy mogą edytować lub kasować przesłane przez Ciebie pliki,
@@ -619,7 +619,7 @@ praw autorskich.",
 "largefile"		=> "Zalecane jest aby rozmiar pliku z obrazkiem nie był większy niż 100 kilobajtów.",
 "successfulupload" => "Wysyłka powiodła się",
 "fileuploaded"	=> "Plik \"$1\" został pomyślnie przesłany.
-Przejdź, proszę, do: ($2) - strony opisu pliku i podaj dotyczące go informacje
+Przejdź, proszę, do strony opisu pliku ($2) i podaj dotyczące go informacje
 takie jak: pochodzenie pliku, kiedy i przez kogo został utworzony
 i cokolwiek co wiesz o pliku, a wydaje Ci się ważne.",
 "uploadwarning" => "Ostrzeżenie o przesyłce",
@@ -644,8 +644,8 @@ i cokolwiek co wiesz o pliku, a wydaje Ci się ważne.",
 "imghistory"	=> "Historia pliku",
 "revertimg"		=> "przywróć",
 "deleteimg"		=> "usuń",
-"imghistlegend" => "Legenda: (cur) = to jest obecny plik, (usuń) = usuń
-tą starszą wersję, (przywróc) = przywróć tą starszą wersję.
+"imghistlegend" => "Legenda: (bież) = to jest obecny plik, (usuń) = usuń
+tą starszą wersję, (przywróć) = przywróć tą starszą wersję.
 <br><i>Kliknij na datę aby zobaczyć jakie pliki przesłano tego dnia</i>.",
 "imagelinks"	=> "Linki do pliku",
 "linkstoimage"	=> "Oto strony odwołujące się do tego pliku:",
@@ -690,7 +690,7 @@ Spośród nich <b>$2</b> ma status administratora (zobacz $3).",
 "rclsub"		=> "(dla stron dolinkowanych do \"$1\")",
 "debug"			=> "Odpluskwianie",
 "newpages"		=> "Nowe strony",
-"movethispage"	=> "Przenieś stronę",
+"movethispage"	=> "Przenieś",
 "unusedimagestext" => "<p>Pamiętaj, proszę, że inne witryny,
 np. Wikipedie w innych językach, mogą odwoływać się do tych plików
 używając bezpośrednio URL. Dlatego też niektóre z plików mogą się znajdować
@@ -711,7 +711,7 @@ i mieć wpisany aktualny adres e-mailowy w swoich <a href=\"" .
   wfLocalUrl( "Specjalna:Preferencje" ) . "\">preferencjach</a>,
 aby móc wysłać e-mail do innych użytkowaników.",
 "emailuser"		=> "Wyślij e-mail do tego użytkownika",
-"emailpage"		=> "Wysłij E-mail do użytkownika",
+"emailpage"		=> "Wyślij e-mail do użytkownika",
 "emailpagetext"	=> "Jeśli ten użytkownik wpisał poprawny adres e-mailowy
 w swoich preferencjach, to poniższy formularz umożliwi Ci wysłanie jednej wiadomości.
 Adres e-mailowy, który został przez Ciebie wprowadzony w Twoich preferencjach
@@ -739,10 +739,10 @@ przed modyfikacją listy obserwowanych artykułów.",
 "addedwatch"	=> "Dodana do listy obserwowanych",
 "addedwatchtext" => "Strona \"$1\" została dodana do Twojej <a href=\"" .
   wfLocalUrl( "Specjalna:Watchlist" ) . "\">listy obserwowanych</a>.
-Na tej liście znajdą się przyszłe zmiany tej strony i stowarzyszonej z nią strony Dyskusji,
+Na tej liście znajdzie się rejestr przyszłych zmian tej strony i stowarzyszonej z nią strony Dyskusji,
 a nazwa samej strony zostanie <b>wytłuszczona</b> na <a href=\"" .
   wfLocalUrl( "Specjalna:Recentchanges" ) . "\">liście ostatnich zmian</a> aby
-łatwiej było Ci fakt zmiany zauważyć.</p>
+łatwiej było Ci sam fakt zmiany zauważyć.</p>
 
 <p>Jeśli chcesz usunąć stronę ze swojej listy obserwowanych, kliknij na
 \"Przestań obserwować\".",
@@ -795,7 +795,7 @@ użytkownika w ciągu ostatnich <b>$2</b> dni.",
 "notargettext"	=> "Nie podano strony albo użytkownika, dla których
 ta operacja ma być wykonana.",
 "linklistsub"	=> "(Lista linków)",
-"linkshere"		=> "Do tej strony odwołują się następujące strony:",
+"linkshere"		=> "Do tej strony odwołują się następujące inne strony:",
 "nolinkshere"	=> "Do tej strony nie odwołuje się do żadna inna.",
 "isredirect"	=> "strona przekierowująca",
 
@@ -804,8 +804,8 @@ ta operacja ma być wykonana.",
 "blockip"		=> "Zablokuj adres IP",
 "blockiptext"	=> "Użyj poniższego formularza aby zablokować prawo
 zapisu spod określonego adresu IP.
-To można zrobić jedynie by zapobiec wandalizmowi i powinno być
-zgodne z [[Wikipedia:Policy|Wikipedia policy]].
+Powinno się to robić jedynie by zapobiec wandalizmowi, a zarazem
+w zgodzie z [[Wikipedia:Policy|polityką Wikipedii]].
 Podaj powód (np. umieszczając nazwy stron, na których dopuszczono
 się wandalizmu).",
 "ipaddress"		=> "Adres IP",
@@ -833,12 +833,12 @@ dla poprzednio zablokowanego adresu IP.",
 "unlockdb"		=> "Odblokuj bazę danych",
 "lockdbtext"	=> "Zablokowanie bazy danych uniemożliwi wszystkim użytkownikom
 edycję stron, zmianę preferencji, edycję list obserwowanych artykułów oraz inne
-rzeczy wymagające dostępu do bazy danych.
+czynności wymagające dostępu do bazy danych.
 Potwierdź, proszę, że to jest zgodne z Twoimi zamiarami, i że odblokujesz
-bazę danych gdy tylko zakończysz zadania administracyjne.",
+bazę danych, gdy tylko zakończysz zadania administracyjne.",
 "unlockdbtext"	=> "Odblokowanie bazy danych umożliwi wszystkim użytkownikom
 edycję stron, zmianę preferencji, edycję list
-obserwowanych artykułów oraz inne rzeczy związane ze zmianami w bazie danych.
+obserwowanych artykułów oraz inne czynności związane ze zmianami w bazie danych.
 Potwierdź, proszę, że to jest zgodne z Twoimi zamiarami.",
 "lockconfirm"	=> "Tak, naprawdę chcę zablokować bazę danych.",
 "unlockconfirm"	=> "Tak, naprawdę chcę odblokowac bazę danych.",
@@ -853,10 +853,10 @@ Potwierdź, proszę, że to jest zgodne z Twoimi zamiarami.",
 
 # SQL query
 #
-"asksql"		=> "Zapytanie w SQL-u",
+"asksql"		=> "Zapytanie SQL",
 "asksqltext"	=> "Użyj poniższego formularza by wysłać bezpośrednie zapytanie
 do bazy danych Wikipedii.
-Do ograniczania literałów łańcuchowych używaj pojedynczych cudzysłowó ('tak jak tu').
+Do ograniczania literałów łańcuchowych używaj pojedynczych cudzysłowów ('tak jak tu').
 Twoje zapytanie może poważnie obciążyć serwer, więc używaj tej możliwości
 z rozwagą.",
 "sqlquery"		=> "Podaj zapytanie",
@@ -997,7 +997,7 @@ class LanguagePl extends Language {
 
 	function timeanddate( $ts, $adj = false )
 	{
-		return $this->time( $ts, $adj ) . " " . $this->date( $ts, $adj );
+		return $this->time( $ts, $adj ) . ", " . $this->date( $ts, $adj );
 	}
 
 	function rfc1123( $ts )
