@@ -1106,7 +1106,7 @@ class LanguageEo extends Language {
 		if( strcasecmp( $in, "x" ) == 0 and strcasecmp( $out, "utf-8" ) == 0) {
 			$xu = array (
 				"xx" => "x" , "xX" => "x" ,
-				"Xx" => "X" , "XX" => "XX" ,
+				"Xx" => "X" , "XX" => "X" ,
 				"Cx" => "\xc4\x88" , "CX" => "\xc4\x88" ,
 				"cx" => "\xc4\x89" , "cX" => "\xc4\x89" ,
 				"Gx" => "\xc4\x9c" , "GX" => "\xc4\x9c" ,
