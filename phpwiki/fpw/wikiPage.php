@@ -1125,6 +1125,7 @@ class WikiPage extends WikiTitle {
 		global $wikiMyOptions, $wikiMyself , $wikiLogOut , $wikiMySettings , $wikiShortPages , $wikiLongPages , $wikiUserList , $wikiEditingHistory , $wikiTopics ;
 		global $wikiAddToWatchlist , $wikiEditPage , $wikiPrintable , $wikiTalk , $wikiEdit , $wikiPageOptions , $wikiBrowse , $wikiFind , $wikiOK;
 		global $wikiEditingHelp , $wikiWikipediaEditingHelp , $wikiShowLastChange , $wikiProtectThisPage , $wikiMainPage , $THESCRIPT , $wikiVoteForPage ;
+		global $wikiMoveThisPage ;
 
 		$fonts = "face=verdana,arial" ;
 		$bg = "nowrap" ;
@@ -1158,6 +1159,7 @@ class WikiPage extends WikiTitle {
 		if ( !$this->isSpecialPage ) {
 			if ( $this->canEdit() ) $ret .= "<a class=menulink href=\"".wikiLink($this->url."&action=edit")."\"><font size='+1'>$wikiEditPage</font></a><br>\n" ;
 			if ( $this->canDelete() ) $ret .= "<a class=menulink href=\"".wikiLink("special:deletepage&target=".$this->url)."\">$wikiDeleteThisPage</a><br>\n" ;
+			if ( $this->canDelete() ) $ret .= "<a class=menulink href=\"".wikiLink("special:movepage&target=".$this->url)."\">$wikiMoveThisPage</a><br>\n" ;
 			if ( $this->canProtect() ) $ret .= "<a class=menulink href=\"".wikiLink("special:protectpage&target=".$this->url)."\">$wikiProtectThisPage</a><br>\n" ;
 			if ( $user->isLoggedIn ) $ret .= "<a class=menulink href=\"".wikiLink("special:vote&target=".$this->url)."\">$wikiVoteForPage</a><br>\n" ;
 			}
@@ -1217,7 +1219,7 @@ class WikiPage extends WikiTitle {
         global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
         global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
         global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate , $wikiProtectThisPage ;
-	global $wikiVoteForPage ;
+	global $wikiVoteForPage , $wikiMoveThisPage;
 
 	if ( $user->options[skin] == "Cologne Blue" ) return $this->getCologneBlueQuickBar () ;
 
@@ -1235,6 +1237,7 @@ class WikiPage extends WikiTitle {
         $temp = $this->isSpecialPage ;
         if ( $action == "" ) $this->isSpecialPage = false ;
         if ( $this->canDelete() ) $column .= "<br><a href=\"".wikiLink("special:deletepage&amp;target=".$this->url)."\">$wikiDeleteThisPage</a>\n" ;
+	if ( $this->canDelete() ) $column .= "<br><a href=\"".wikiLink("special:movepage&amp;target=".$this->url)."\">$wikiMoveThisPage</a>\n" ;
         $this->isSpecialPage = $temp ;
 
         if ( $this->canProtect() ) $column .= "<br><a href=\"".wikiLink("special:protectpage&amp;target=".$this->url)."\">$wikiProtectThisPage</a>\n" ;
@@ -1400,6 +1403,7 @@ class WikiPage extends WikiTitle {
 		$lc = substr ( strstr ( $lc , ", " ) , 2 ) ;*/
 
 		$ret .= "<span class=footnote>".str_replace ( '$1' , $lc , $wikiLastChangeCologne ) ;
+		$ret .= " <a href=\"".wikiLink("$this->url&amp;diff=yes")."\">$wikiDiff</a> " ;
 		$ret .= "; ".str_replace ( '$1' , $this->counter , $wikiRequests ) ;
 
 		# User contributions
