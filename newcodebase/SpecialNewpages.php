@@ -32,7 +32,7 @@ function wfSpecialNewpages()
 		$ut = $obj->cur_user_text;
 		$c = $obj->cur_comment;
 		if ( 0 == $u ) { $ul = $ut; }
-		else { $ul = $sk->makeLink( "User:{$ut}", $ut ); }
+		else { $ul = $sk->makeLink( $wgLang->getNsText(2).":{$ut}", $ut ); }
 
 		$d = $wgLang->timeanddate( $obj->cur_timestamp, true );
 		$link = $sk->makeKnownLink( $obj->cur_title, "" );
