@@ -3,6 +3,8 @@
 # Update already-installed software
 #
 
+$wgCommandLineMode = true;
+
 if ( ! ( is_readable( "./LocalSettings.php" )
   && is_readable( "./AdminSettings.php" ) ) ) {
 	print "A copy of your installation's LocalSettings.php\n" .
@@ -26,7 +28,6 @@ set_time_limit( 0 );
 include_once( "Version.php" );
 include_once( "{$IP}/Setup.php" );
 $wgTitle = Title::newFromText( "Update script" );
-$wgCommandLineMode = true;
 
 do_revision_updates();
 alter_ipblocks();
@@ -34,7 +35,7 @@ alter_ipblocks();
 #
 # Run ALTER TABLE queries.
 #
-if ( count( $wgAlterSpecs ) ) {
+#if ( count( $wgAlterSpecs ) ) {
 	$rconn = mysql_connect( $wgDBserver, $wgDBadminuser, $wgDBadminpassword );
 	mysql_select_db( $wgDBname );
 	print "\n";
@@ -46,8 +47,12 @@ if ( count( $wgAlterSpecs ) ) {
 			print "MySQL error: " . mysql_error( $rconn ) . "\n";
 		}
 	}
+	
+	do_interwiki_update();
+	do_index_update();
+
 	mysql_close( $rconn );
-}
+#}
 
 #
 # Copy files into installation directories
@@ -168,6 +173,34 @@ function alter_ipblocks() {
 		"ADD PRIMARY KEY (ipb_id)";
 }
 
+function do_interwiki_update() {
+	# Check that interwiki table exists; if it doesn't source it
+	if( database_exists( "interwiki" ) ) {
+		echo "...already have interwiki table\n";
+		return true;
+	}
+	echo "Creating interwiki table: ";
+	source_sql( "maintenance/archives/patch-interwiki.sql" );
+	echo "ok\n";
+	echo "Adding default interwiki definitions: ";
+	source_sql( "maintenance/interwiki.sql" );
+	echo "ok\n";
+}
+
+function do_index_update() {
+	# Check that proper indexes are in place
+	$meta = field_info( "recentchanges", "rc_timestamp" );
+	if( $meta->multiple_key == 0 ) {
+		echo "Updating indexes to 20031107: ";
+		source_sql( "maintenance/archives/patch-indexes.sql" );
+		echo "ok\n";
+		return true;
+	}
+	echo "...indexes seem up to 20031107 standards\n";
+	return false;
+}
+
+
 function field_exists( $table, $field ) {
 	$fname = "Update script: field_exists";
 	$res = wfQuery( "DESCRIBE $table", $fname );
@@ -181,4 +214,60 @@ function field_exists( $table, $field ) {
 	}
 	return $found;
 }
+
+
+function database_exists( $db ) {
+	global $wgDBname;
+	$res = mysql_list_tables( $wgDBname );
+	if( !$res ) {
+		echo "** " . mysql_error() . "\n";
+		return false;
+	}
+	for( $i = mysql_num_rows( $res ) - 1; $i--; $i > 0 ) {
+		if( mysql_tablename( $res, $i ) == $db ) return true;
+	}
+	return false;
+}
+
+function field_info( $table, $field ) {
+	$res = mysql_query( "SELECT * FROM $table LIMIT 1" );
+	$n = mysql_num_fields( $res );
+	for( $i = 0; $i < $n; $i++ ) {
+		$meta = mysql_fetch_field( $res, $i );
+		if( $field == $meta->name ) {
+			return $meta;
+		}
+	}
+	return false;
+}
+
+function source_sql( $filename ) {
+	$strings = file( $filename );
+	if($strings === false ) {
+		echo "\n** Could not open $filename\n";
+		return false;
+	}
+	$n = 0;
+	$last = 1;
+	$incoming = "";
+	foreach( $strings as $line ) {
+		$n++;
+		if( preg_match( '/^--/', $line ) ) {
+			continue;
+		} elseif( preg_match( '/^(.*);$/', $line ) ) { #FIXME
+			$incoming .= $line;
+			$res = mysql_query( $incoming );
+			if( $res === false ) {
+				echo "\n** error around line $last-$n in $filename: " . mysql_error() . "\n";
+				return false;
+			}
+			$incoming = "";
+			$last = $n+1;
+		} else {
+			$incoming .= $line;
+		}
+	}
+	return true;
+}
+
 ?>
