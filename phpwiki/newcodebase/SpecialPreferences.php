@@ -51,7 +51,9 @@ function wfSpecialPreferences()
 
 	$togs = $wgLang->getUserToggles();
 	foreach ( $togs as $tname => $ttext ) {
-		$wgUser->setOption( $tname, $HTTP_POST_VARS["wpOp$tname"] );
+		if ( array_key_exists( "wpOp$tname", $HTTP_POST_VARS ) ) {
+			$wgUser->setOption( $tname, $HTTP_POST_VARS["wpOp$tname"] );
+		}
 	}
 	$wgUser->setCookies();
 	$up = new UserUpdate();
