@@ -564,19 +564,31 @@ function tsc ( $t ) {
 	}
 
 function recentchanges () {
-	global $vpage , $maxcnt ;
+	global $vpage , $maxcnt , $daysAgo ;
 	$vpage->special ( "Recent Changes" ) ;
 	$vpage->makeSecureTitle() ;
 	if ( !isset ( $maxcnt ) ) $maxcnt = 100 ;
-	$daysAgo = 3 ;
+	if ( !isset ( $daysAgo ) ) $daysAgo = 3 ;
 
 	$ret = "<nowiki>" ;
-	$ret .= "These are the last <b>$maxcnt</b> of the changes made on Wikipedia in the last $daysAgo days. View the last " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=50\">50</a> / " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=100\">100</a> / " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=250\">250</a> / " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=500\">500</a> " ;
-	$ret .= "changes.<br></nowiki>" ;
+	$ret .= "These are the last <b>$maxcnt</b> of the changes made on Wikipedia in the last <b>$daysAgo</b> days.<br>\n" ;
+	$ret .= "View the last " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=50\">50</a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=100\">100</a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=250\">250</a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=500\">500</a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=1000\">1000</a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=2500\">2500</a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=5000\">5000</a> " ;
+	$ret .= "changes.<br>\n" ; 
+	$ret .= "View the last " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=1\">1 day</a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=2\">2 days</a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=3\">3 days</a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=5\">5 days</a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=7\">7 days</a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=14\">14 days</a><br>\n" ;
+	$ret .= "</nowiki>" ;
 	$arr = array () ;
 
 	$mindate = date ( "Ymd000000" , time () - $daysAgo*24*60*60 ) ;
@@ -597,8 +609,8 @@ function recentChangesLayout ( &$arr ) {
 	$color1 = $user->options["tabLine1"] ;
 	$color2 = $user->options["tabLine2"] ;
 	$xyz = new WikiTitle ;
-	$editTypes = array ( "0"=>"" , "1"=>"<font color=green>M</font>" , "2"=>"<font color=red>N</font>" ) ;
-	$ret = " (<b>Legend :</b> ".$editTypes["1"]."=Minor edit ; ".$editTypes["2"]."=New article.)" ;
+	$editTypes = array ( "0"=>"" , "1"=>"<font color=cyan>M</font>" , "2"=>"<font color=green>N</font>" ) ;
+	$ret = " <b>Legend :</b> ".$editTypes["1"]."=Minor edit ; ".$editTypes["2"]."=New article." ;
 	if ( $user->options["changesLayout"] == "table" ) $ret .= "<table width=100% border=0 cellpadding=2 cellspacing=0>\n" ;
 	else $ret .= "<ul>\n" ; 
 	$dummy = "$THESCRIPT?x=y" ;
@@ -638,7 +650,7 @@ function recentChangesLayout ( &$arr ) {
 		else $t .= "<a href=\"$THESCRIPT?title=$s->cur_title\">$nt</a>" ;
 
 		if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top width=0% nowrap>$time</td>" ;
-		else $t = str_replace ( "</td>" , "; " , $t ) . " ($time) " ;
+		else $t = str_replace ( "</td>" , "; " , $t ) . " $time . . . " ;
 		if ( $s->version != "" ) {
 			$v = new wikiTitle ;
 			$v->title = $s->cur_user_text ;
@@ -656,7 +668,7 @@ function recentChangesLayout ( &$arr ) {
 		if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top>$minor</td>" ;
 		else $t .= " $minor" ;
 		if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color >$comment</td>" ;
-		else $t .= " <b>$comment</b>" ;
+		else if ( $comment != "" ) $t .= " <b>[$comment]</b>" ;
 		if ( $user->options["changesLayout"] == "table" ) $t .= "</tr>\n" ;
 		else $t .= "</li>\n" ;
 		$ret .= $t ;
