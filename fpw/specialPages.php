@@ -1072,14 +1072,24 @@ function deletepage () {
 	$vpage->makeSecureTitle () ;
 	if ( !in_array ( "is_sysop" , $user->rights ) ) return "<h1>You are not allowed to delete this page!</h1>" ;
 	if ( $iamsure == "yes" ) {
+		$ret = "<h2>'$target' has been removed.</h2>" ;
 		$connection = getDBconnection () ;
 		mysql_select_db ( "wikipedia" , $connection ) ;
 		$sql = "DELETE FROM cur WHERE cur_title=\"$target\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		mysql_close ( $connection ) ;
+
+		# Appending log page "log:Page Deletions"
+		$log = getMySQL ( "cur" , "cur_text" , "cur_title=\"Log:Page_Deletions\"" ) ;
+		$now = date ( "Y-m-d H:i:s" , time () ) ;
+		$log = "*On $now, [[user:$user->name|$user->name]] permanently deleted page \"$target\"\n$log" ;
+		$np = new wikiPage ;
+		$np->setTitle ( "log:Page Deletions" ) ;
+		$np->ensureExistence () ;
+		$np->setEntry ( $log , "Permanent deletion of \"$target\"" , $user->id , $user->name , 1 ) ;
+
 		removeFromLinkList ( "cur_linked_links" , $target ) ;
 		removeFromLinkList ( "cur_unlinked_links" , $target ) ;
-		$ret = "<h2>'$target' has been removed.</h2>" ;
 	} else {
 		$ret = "<h2>You are about to delete the article \"$target\" and its complete history!<br>\n" ;
 		$ret .= "If you are absolutely sure you want to do this, " ;
