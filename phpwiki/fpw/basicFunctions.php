@@ -99,9 +99,7 @@ function edit ( $title ) {
 				$doSave = false ;
 				$ret .= $wikiEditConflictMessage ;
 				$oldSubmittedText = $EditBox ;
-				$oldSubmittedText = str_replace ( "\\'" , "'" , $oldSubmittedText ) ;
-				$oldSubmittedText = str_replace ( "\\\"" , "\"" , $oldSubmittedText ) ;
-				$oldSubmittedText = str_replace ( "\\\\" , "\\" , $oldSubmittedText ) ;
+				$oldSubmittedText = stripslashes ( $oldSubmittedText ) ;
 				#$oldSubmittedText = str_replace ( "&" , "&amp;" , $oldSubmittedText ) ;
 				$EditTime = date ( "YmdHis" ) ; # reset time counter
 				$npage->load ( $npage->title ) ;
@@ -113,8 +111,7 @@ function edit ( $title ) {
 			}
 		if ( $doSave ) { # Actually saving the article!
 			$text = $EditBox ;
-			$text = str_replace ( "\\'" , "'" , $text ) ;
-			$text = str_replace ( "\\\"" , "\"" , $text ) ;
+			$text = stripslashes ( $text ) ;
 
 			if ( $user->isLoggedIn ) $replText = "[[$wikiUser:$user->name|$user->name]]" ;
 			else $replText = $user->getLink() ;
@@ -123,9 +120,7 @@ function edit ( $title ) {
 			$text = str_replace ( "~~~~" , "$replText, $dt" , $text ) ;
 			$text = str_replace ( "~~~" , $replText , $text ) ;
 
-			$title = str_replace ( "\\'" , "'" , $title ) ;
-			$title = str_replace ( "\\\"" , "\"" , $title ) ;
-			$title = str_replace ( "\\\\" , "\\" , $title ) ;
+			$title = stripslashes ( $title ) ;
 			$npage->title = $title ;
 			$npage->makeAll () ;
 			if ( $npage->doesTopicExist() ) $npage->backup() ;
@@ -143,9 +138,7 @@ function edit ( $title ) {
 	} else if ( $PreviewButton ) { # Generating a preview to append to the page
 		$PreviewButton = "" ;
 		$text = $EditBox ;
-		$text = str_replace ( "\\'" , "'" , $text ) ;
-		$text = str_replace ( "\\\"" , "\"" , $text ) ;
-		$text = str_replace ( "\\\\" , "\\" , $text ) ;
+		$text = stripslashes ( $text ) ;
 		$append = str_replace ( "$1" , $npage->parseContents($text) , $wikiPreviewAppend ) ;
 	} else if ( $npage->doesTopicExist() ) { # The initial edit request for an existing page
 		$npage->load ( $npage->title ) ;
@@ -159,7 +152,7 @@ function edit ( $title ) {
 	if ( $MinorEdit ) $checked = "checked" ;
 	else $checked = "" ;
 	if ( $CommentBox == "" ) $CommentBox = "*" ;
-	$CommentBox = str_replace ( array ( "\\'", "\\\"", "\\\\" ) , array ( "'" , "\"", "\\" ) , $CommentBox );
+	$CommentBox = stripslashes ( $CommentBox );
 	$CommentBox = htmlspecialchars ( $CommentBox );
 
 	# Just trying to set the initial keyboard focus to the edit window; doesn't work, though...
