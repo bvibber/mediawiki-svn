@@ -16,7 +16,7 @@ $wikiLowerChars = "abcdefghijklmnopqrstuvwxyzàáâãäåæçèéêëìíîïğñòóôõöøùúûüúş";
 $wikiMainPage = "Main Page" ; # This is actual the title of the article in the database
 $wikiErrorPageTitle = "Yikes! An error!" ;
 $wikiErrorMessage = "<h2>$1!</h2>Return to the [[:Main Page|Main Page]]!" ;
-$wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","longpages","listusers","watchlist","special_pages","editusersettings","deletepage","protectpage","contributions","whatlinkshere","recentchangeslinked","sqldump");
+$wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","longpages","listusers","watchlist","special_pages","editusersettings","deletepage","protectpage","contributions","whatlinkshere","recentchangeslinked","sqldump","vote");
 $wikiRecentChangesText = "Track the most recent changes to Wikipedia on this page. [[Welcome, newcomers]]! Please have a look at these pages: [[Wikipedia FAQ]], [[Wikipedia policy]] (especially [[naming conventions]] and [[neutral point of view]]), and [[most common Wikipedia faux pas]].<br>If you want to see the Wikipedia succeed, it's very important that you don't add material restricted by others' [[copyright]]s. The legal liability could really hurt the project, so please don't do it.<br>See also the [http://meta.wikipedia.com/wiki.phtml?title=special:RecentChanges recent meta discussion]" ;
 $wikiMetaDescription = "$1... Read more here at wikipedia, the free encyclopedia!" ;
 
@@ -69,6 +69,7 @@ $wikiWikipediaHome = "Wikipedia Home" ;
 $wikiAboutWikipedia = "About Wikipedia" ;
 $wikiTopics = "Topics" ;
 $wikiWikipediaFAQ = "wikipedia:FAQ" ;
+$wikiVoteForPage = "Vote for this page" ;
 
 # Editing
 $wikiEditingHelp = "Editing help" ;
@@ -450,6 +451,9 @@ $wikiValidate = "Validate this page" ;
 $wikiBlockIP = "Block this IP" ;
 $wikiNostalgy = "Nostalgia" ;
 $wikiCologneBlue = "Cologne Blue" ;
+
+# Vote
+$wikiVoteReason = "Reason to vote : " ;
 
 #---------------------------
 #Functions
