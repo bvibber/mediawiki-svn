@@ -17,7 +17,7 @@ encyclopedia at
 Among the software's features are:
 
   * Users can edit all articles on the web site running the script.
-  * Articles are stored in a mysql database.
+  * Articles are stored in a MySQL database.
   * Articles can belong to different namespaces, thus allowing to
     distinguish between encyclopedia articles proper and technical,
     user and discussion articles surrounding the project.
@@ -37,23 +37,23 @@ Among the software's features are:
 2. First-time installation
 ==========================
 
-You need apache, php and mysql. Make sure that those three work well
+You need Apache, PHP and MySQL. Make sure that those three work well
 together before you continue to install the wikipedia script.
 
 The following versions have been reported to work together:
-  * mysql 3.23.37, Apache 1.3.23, php 4.0.4pl1 on Linux 
+  * MySQL 3.23.37, Apache 1.3.23, PHP 4.0.4pl1 on Linux 
     (these are the versions running on wikipedia.com)
-  * mysql 3.23.41, Apache 1.3.23, php 4.1.1 on Linux
-  * mysql 3.23.47-max, Apache 1.3.20, php 4.1.1 on Windows
+  * MySQL 3.23.41, Apache 1.3.23, PHP 4.1.1 on Linux
+  * MySQL 3.23.47-max, Apache 1.3.20, PHP 4.1.1 on Windows
 
 Mysql 4.0.0 alpha causes problems and should be avoided for now.
 
-Note that php can either use its own built in mysql libraries, or the
-mysql libraries from the mysql distribution. If you choose the latter
-option, and you upgrade mysql later, then you also need to recompile php.
+Note that PHP can either use its own built in MySQL libraries, or the
+MySQL libraries from the MySQL distribution. If you choose the latter
+option, and you upgrade MySQL later, then you also need to recompile PHP.
 
-Create a directory in your apache htdocs directory to hold the
-Wikipedia php scripts. In the sequel, we will use the directory
+Create a directory in your Apache htdocs directory to hold the
+Wikipedia PHP scripts. In the sequel, we will use the directory
 "/wiki". Copy all *.php and *.phtml files there. Create a subdirectory
 "/upload". Make sure that the web server process has permission to
 write to that directory.
@@ -64,8 +64,8 @@ This is needed because the main wikipedia script has the extension .phtml.
 
 Move the images wiki.png and startrek.png somewhere on your web server.
 
-Create a new mysql database to be used for Wikipedia (we are using "wikidb"
-in the sequel). Then create a mysql user and password (we use
+Create a new MySQL database to be used for Wikipedia (we are using "wikidb"
+in the sequel). Then create a MySQL user and password (we use
 "wikiuser" and "xxx" below) and grant that user read and write rights
 for wikidb. Then run mysql as that user:
   $ mysql -u wikiuser
@@ -73,7 +73,7 @@ for wikidb. Then run mysql as that user:
   mysql> source wikipedia.sql;
 in order to create the tables needed.
 
-The mysql server needs to use the same timezone as php, or else you
+The MySQL server needs to use the same timezone as PHP, or else you
 will later get bogus edit conflicts. Do:
   $ mysql -u wikiuser
   mysql> select now();
@@ -96,7 +96,7 @@ $wikiCurrentServer = "http://wikipedia.mydomain.org";
 $THESCRIPT = "/wiki/wiki.phtml";
 
 # How to access an article on your site. Change this if you use
-# apache's rewrite module to produce nicer URLs on your site (as is
+# Apache's rewrite module to produce nicer URLs on your site (as is
 # done on wikipedia.com)
 $wikiArticleSource = "$wikiCurrentServer$THESCRIPT?title=$1";    
 
@@ -131,7 +131,7 @@ public, to avoid confusion.
 When updating to a new version of the PHP script, you may want to hold
 on to your previous version of wikiLocalSettings.php.
 
-If the new version needs any change in the database schema, the mysql
+If the new version needs any change in the database schema, the MySQL
 script updSchema.sql can be used. Before sourcing that file, uncomment
 those lines that apply to you.
 
@@ -156,7 +156,7 @@ be very desirable, but doesn't exist yet. So you have to read the
 source. The file wiki.phtml is the entry point which is called by the
 web server.
 
-When debugging php code, the user_error() function is very useful for
+When debugging PHP code, the user_error() function is very useful for
 examining variable values.
 
 To review what changes have been checked into the cvs repository in the
