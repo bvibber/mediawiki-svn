@@ -1049,10 +1049,12 @@ class Language {
 
 	function userAdjust( $ts )
 	{
-		global $wgUser;
+		global $wgUser, $wgLocalTZoffset;
 
 		$diff = $wgUser->getOption( "timecorrection" );
-		if ( ! $diff ) { $diff = 0; }
+		if ( ! is_numeric( $diff ) ) {
+			$diff = isset( $wgLocalTZoffset ) ? $wgLocalTZoffset : 0;
+		}
 		if ( 0 == $diff ) { return $ts; }
 
 		$t = mktime( ( (int)substr( $ts, 8, 2) ) + $diff,
