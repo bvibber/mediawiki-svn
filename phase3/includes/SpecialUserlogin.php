@@ -218,7 +218,7 @@ color='red'>$err</font>\n" );
 	$wpEmail = wfEscapeHTML( $wpEmail );
 
 	$wgOut->addHTML( "
-<form id=\"userlogin\" method=\"post\" action=\"{$action}\">
+<form name=\"userlogin\" id=\"userlogin\" method=\"post\" action=\"{$action}\">
 <table border=0><tr>
 <td align=right>$yn:</td>
 <td colspan=2 align=left>

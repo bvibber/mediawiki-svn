@@ -4,8 +4,8 @@ function wfSpecialPreferences()
 	global $wgUser, $wgOut, $wgUseDynamicDates, $action;
 	global $wpSaveprefs, $wpReset;
 
-	$fields = array( "wpOldpass", "wpNewpass", "wpRetype",
-	  "wpEmail", "wpNick" );
+	$fields = array( "wpOldpass", "wpNewpass", "wpRetypePass",
+	  "wpUserEmail", "wpNick" );
 	wfCleanFormFields( $fields );
 
 	if ( 0 == $wgUser->getID() ) {
@@ -61,14 +61,14 @@ function wfSpecialPreferences()
 /* private */ function savePreferences()
 {
 	global $wgUser, $wgLang, $wgDeferredUpdateList;
-	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
-	global $wpSkin, $wpMath, $wpDate, $wpEmail, $wpEmailFlag, $wpNick, $wpSearch, $wpRecent;
+	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetypePass;
+	global $wpSkin, $wpMath, $wpDate, $wpUserEmail, $wpEmailFlag, $wpNick, $wpSearch, $wpRecent;
 	global $wpSearchLines, $wpSearchChars, $wpStubs;
 	global $wpRows, $wpCols, $wpHourDiff, $HTTP_POST_VARS;
 	global $wpNs0, $wpNs1, $wpNs2, $wpNs3, $wpNs4, $wpNs5, $wpNs6, $wpNs7;
 
 	if ( "" != $wpNewpass ) {
-		if ( $wpNewpass != $wpRetype ) {
+		if ( $wpNewpass != $wpRetypePass ) {
 			mainPrefsForm( wfMsg( "badretype" ) );			
 			return;
 		}
@@ -81,7 +81,7 @@ function wfSpecialPreferences()
 		}
 		$wgUser->setPassword( $wpNewpass );
 	}
-	$wgUser->setEmail( $wpEmail );
+	$wgUser->setEmail( $wpUserEmail );
 	$wgUser->setOption( "nickname", $wpNick );
 	$wgUser->setOption( "quickbar", $wpQuickbar );
 	$wgUser->setOption( "skin", $wpSkin );
@@ -125,13 +125,13 @@ function wfSpecialPreferences()
 /* private */ function resetPrefs()
 {
 	global $wgUser, $wgLang;
-	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype, $wpStubs;
-	global $wpRows, $wpCols, $wpSkin, $wpMath, $wpDate, $wpEmail, $wpEmailFlag, $wpNick;
+	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetypePass, $wpStubs;
+	global $wpRows, $wpCols, $wpSkin, $wpMath, $wpDate, $wpUserEmail, $wpEmailFlag, $wpNick;
 	global $wpSearch, $wpRecent, $HTTP_POST_VARS;
 	global $wpHourDiff, $wpSearchLines, $wpSearchChars;
 
-	$wpOldpass = $wpNewpass = $wpRetype = "";
-	$wpEmail = $wgUser->getEmail();
+	$wpOldpass = $wpNewpass = $wpRetypePass = "";
+	$wpUserEmail = $wgUser->getEmail();
 	if ( 1 == $wgUser->getOption( "disablemail" ) ) { $wpEmailFlag = 1; }
 	else { $wpEmailFlag = 0; }
 	$wpNick = $wgUser->getOption( "nickname" );
@@ -197,8 +197,8 @@ function wfSpecialPreferences()
 /* private */ function mainPrefsForm( $err )
 {
 	global $wgUser, $wgOut, $wgLang, $wgUseDynamicDates;
-	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
-	global $wpSkin, $wpMath, $wpDate, $wpEmail, $wpEmailFlag, $wpNick, $wpSearch, $wpRecent;
+	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetypePass;
+	global $wpSkin, $wpMath, $wpDate, $wpUserEmail, $wpEmailFlag, $wpNick, $wpSearch, $wpRecent;
 	global $wpRows, $wpCols, $wpSaveprefs, $wpReset, $wpHourDiff;
 	global $wpSearchLines, $wpSearchChars, $wpStubs;
 
@@ -267,12 +267,12 @@ value=\"$i\"$checked> {$qbs[$i]}</label><br>\n" );
 	#
 	$wpOldpass = wfEscapeHTML( $wpOldpass );
 	$wpNewpass = wfEscapeHTML( $wpNewpass );
-	$wpRetype = wfEscapeHTML( $wpRetype );
+	$wpRetypePass = wfEscapeHTML( $wpRetypePass );
 
 	$wgOut->addHTML( "</td><td vaign=top nowrap><b>$cp:</b><br>
 <label>$opw: <input type=password name=\"wpOldpass\" value=\"$wpOldpass\" size=20></label><br>
 <label>$npw: <input type=password name=\"wpNewpass\" value=\"$wpNewpass\" size=20></label><br>
-<label>$rpw: <input type=password name=\"wpRetype\" value=\"$wpRetype\" size=20></label><br>
+<label>$rpw: <input type=password name=\"wpRetypePass\" value=\"$wpRetypePass\" size=20></label><br>
 </td></tr>\n" );
 
 	# Skin setting
@@ -345,7 +345,7 @@ value=\"$i\"$checked> {$mathopts[$i]}</label><br>\n" );
 
 	# Email, etc.
 	#
-	$wpEmail = wfEscapeHTML( $wpEmail );
+	$wpUserEmail = wfEscapeHTML( $wpUserEmail );
 	$wpNick = wfEscapeHTML( $wpNick );
 	if ( $wpEmailFlag ) { $emfc = "checked"; }
 	else { $emfc = ""; }
@@ -353,7 +353,7 @@ value=\"$i\"$checked> {$mathopts[$i]}</label><br>\n" );
 	$ps = namespacesCheckboxes();
 
 	$wgOut->addHTML( "<td valign=top nowrap>
-<label>$yem: <input type=text name=\"wpEmail\" value=\"{$wpEmail}\" size=20></label><br>
+<label>$yem: <input type=text name=\"wpUserEmail\" value=\"{$wpUserEmail}\" size=20></label><br>
 <label><input type=checkbox $emfc value=\"1\" name=\"wpEmailFlag\"> $emf</label><br>
 <label>$ynn: <input type=text name=\"wpNick\" value=\"{$wpNick}\" size=12></label><br>
 <label>$rcc: <input type=text name=\"wpRecent\" value=\"$wpRecent\" size=6></label><br>
