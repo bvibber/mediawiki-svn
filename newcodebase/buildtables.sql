@@ -57,7 +57,7 @@ CREATE TABLE old (
 # Internal links
 #
 CREATE TABLE links (
-  l_from varchar(40) binary NOT NULL default '',
+  l_from varchar(64) binary NOT NULL default '',
   l_to int(8) unsigned NOT NULL default '0',
   INDEX l_from (l_from),
   INDEX l_to (l_to)
@@ -65,14 +65,14 @@ CREATE TABLE links (
 
 CREATE TABLE brokenlinks (
   bl_from int(8) unsigned NOT NULL default '0',
-  bl_to varchar(40) binary NOT NULL default '',
+  bl_to varchar(64) binary NOT NULL default '',
   INDEX bl_from (bl_from),
   INDEX bl_to (bl_to)
 ) TYPE=MyISAM;
 
 CREATE TABLE imagelinks (
-  il_from varchar(40) binary NOT NULL default '',
-  il_to varchar(40) binary NOT NULL default '',
+  il_from varchar(64) binary NOT NULL default '',
+  il_to varchar(64) binary NOT NULL default '',
   INDEX il_from (il_from(10)),
   INDEX il_to (il_to(10))
 ) TYPE=MyISAM;
@@ -99,7 +99,7 @@ CREATE TABLE ipblocks (
 ) TYPE=MyISAM PACK_KEYS=1;
 
 CREATE TABLE image (
-  img_name varchar(40) binary NOT NULL,
+  img_name varchar(64) binary NOT NULL,
   img_size int(8) unsigned default '0',
   img_description tinyblob,
   img_user int(5) unsigned default '0',
@@ -111,8 +111,8 @@ CREATE TABLE image (
 ) TYPE=MyISAM PACK_KEYS=1;
 
 CREATE TABLE oldimage (
-  oi_name varchar(40) binary NOT NULL,
-  oi_archive_name varchar(50) binary NOT NULL,
+  oi_name varchar(64) binary NOT NULL,
+  oi_archive_name varchar(80) binary NOT NULL,
   oi_size int(8) unsigned default 0,
   oi_description tinyblob,
   oi_user int(5) unsigned default '0',

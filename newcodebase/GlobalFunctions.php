@@ -160,10 +160,10 @@ function wfSpecialPage()
 
 function wfSearch( $s )
 {
-	global $wgOut;
+	global $search;
 
-	$wgOut->setPageTitle( "Search" );
-	$wgOut->addHTML( "<p>(TODO: Search for \"$s\")" );
+	$se = new SearchEngine( $search );
+	$se->showResults();
 }
 
 function wfNumberOfArticles()

@@ -67,13 +67,13 @@ class LinksUpdate {
 		$a = $wgLinkCache->getImageLinks();
 		$sql = "";
 		if ( 0 != count ( $a ) ) {
-			$sql = "INSERT INTO imagelinks (il_from,il_to) VALUES ('";
+			$sql = "INSERT INTO imagelinks (il_from,il_to) VALUES ";
 			$first = true;
 			foreach( $a as $iname => $val ) {
 				if ( ! $first ) { $sql .= ","; }
 				$first = false;
 
-				$sql .= wfStrencode( $this->mTitle ) . "','" .
+				$sql .= "('" . wfStrencode( $this->mTitle ) . "','" .
 				  wfStrencode( $iname ) . "')";
 			}
 		}

@@ -186,9 +186,11 @@ You will have to merge your changes into the existing text.
 <b>Only</b> the text in the upper text area will be saved when you
 press \"Save\".\n<p>",
 "yourtext"		=> "Your text",
+"storedversion" => "Stored version",
 "editingold"	=> "<strong>WARNING: You are editing an out-of-date
 revision of this article.
 If you save it, any changes made since this revision will be lost.</strong>\n",
+"yourdiff"		=> "Differences",
 
 # History pages
 #
@@ -213,6 +215,18 @@ Please check the URL you used to access this page.\n",
 "loadingrev"	=> "loading revision for diff",
 "lineno"		=> "Line $1:",
 "editcurrent"	=> "Edit the current version of this page",
+
+# Search results
+#
+"searchresults" => "Search results",
+"searchquery"	=> "For query \"$1\"",
+"badquery"		=> "Badly formed search query",
+"badquerytext"	=> "We could not process your query.
+This is probably because you have attempted to search for a
+word fewer than four letters long, which is not yet supported.
+It could also be that you have mistyped the expression, for
+example \"fish and and scales\".
+Please try another query.",
 
 # Preferences page
 #

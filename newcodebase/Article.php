@@ -187,7 +187,7 @@ class Article {
 			$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 			$wgOut->setArticleFlag( false );
 			$de = new DifferenceEngine( $oldid, $diff );
-			$de->showDiffs();
+			$de->showDiffPage();
 			return;
 		}
 		$text = $this->getContent();
@@ -259,8 +259,9 @@ class Article {
 			}
 			# Check for edit conflict. TODO: check oldid here?
 			#
+			$this->clear(); # Force reload
 			if ( $this->getUser() != $wgUser->getID() &&
-			  $this->mTimestamp > $wpEdittime ) {
+			  $this->getTimestamp() > $wpEdittime ) {
 				$isConflict = true;
 			} else {
 				# All's well: save the article here
@@ -322,7 +323,11 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 <input type=hidden value='$wpEdittime' name='wpEdittime'>\n" );
 
 		if ( $isConflict ) {
-			$wgOut->AddHTML( "<h2>" . wfMsg( "yourtext" ) . "</h2>
+			$wgOut->addHTML( "<h2>" . wfMsg( "yourdiff" ) . "</h2>\n" );
+			DifferenceEngine::showDiff( $wpTextbox2, $wpTextbox1,
+			  wfMsg( "yourtext" ), wfMsg( "storedversion" ) );
+
+			$wgOut->addHTML( "<h2>" . wfMsg( "yourtext" ) . "</h2>
 <textarea tabindex=6 name='wpTextbox2' rows=$rows cols=$cols style='width:100%' wrap=virtual>
 $wpTextbox2
 </textarea>" );
@@ -365,8 +370,8 @@ $wpTextbox2
 		  wfStrencode( $summary ) . "', '" .
 		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', " .
 		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
-		  wfStrencode( $wgTitle->getPrefixedText() ) . "', '" .
-		  wfStrencode( $wgUser->getName() ) . "', $redir)";
+		  wfStrencode( wfStripForSearch( $wgTitle->getPrefixedText() ) ) .
+		  "', '" . wfStrencode( $wgUser->getName() ) . "', $redir)";
 		$res = wfQuery( $sql, $conn, "Article::insertNewArticle" );
 
 		$newid = mysql_insert_id( $conn );

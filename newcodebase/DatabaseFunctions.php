@@ -92,4 +92,11 @@ function wfStrencode( $s )
 	$s = str_replace( "\0", "\\0", $s );
 	return $s;
 }
+
+function wfStripForSearch( $in )
+{
+	$out = preg_replace( "/[^A-Za-z0-9_\\xA0-\\xFF]+/", "", $in );
+	return $out;
+}
+
 ?>
