@@ -217,6 +217,7 @@ class Title {
 
 		if ( -1 == $this->mNamespace ) { return false; }
 		# if ( 0 == $this->getArticleID() ) { return false; }
+		if ( $this->mDbkeyform == "_" ) { return false; }
 
 		$ur = $wgUser->getRights();
 		foreach ( $this->getRestrictions() as $r ) {
