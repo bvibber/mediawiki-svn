@@ -6,6 +6,9 @@
 namespace smtrm {
 
 template<class tt>
+class handler_node;
+
+template<class tt>
 class comdat {
 public:
 	comdat(tt& term_)
@@ -23,16 +26,19 @@ public:
 		ps.push_back(p); 
 	}
 	void warn (std::string const & msg) const {
-		term.wrtln(format("%% [W] %s") % msg);
+		term.wrtln(str(format("%% [W] %s") % msg));
 	}
 	void inform (std::string const & msg) const {
-		term.wrtln(format("%% [I] %s") % msg); 
+		term.wrtln(str(format("%% [I] %s") % msg)); 
 	}
 	void error (std::string const & msg) const {
-		term.wrtln(format("%% [E] %s") % msg);
+		term.wrtln(str(format("%% [E] %s") % msg));
 	}
 	void wrtln (std::string const & msg) const {
 		term.wrtln(msg);
+	}
+	void chgrt (handler_node<tt>* newrt, std::string const& prm) const {
+		term.chgrt(newrt, prm);
 	}
 	std::string read_string (std::string const& prompt) const {
 		term.wrt(prompt);
@@ -58,7 +64,7 @@ private:
 template<class tt>
 class handler {
 public:
-	virtual void execute (comdat<tt> const&) = 0;
+	virtual bool execute (comdat<tt> const&) = 0;
 };
 
 template<class tt>
@@ -128,20 +134,20 @@ struct handler_node {
 	bool _install (std::string const &command, handler_t *h, std::string const &desc) {
 		return add_child(command, h, desc); 
 	}
-
-
-
-
 };
 
-#include "../smstdrt.cxx"
 
 template<class tt>
 struct tmcmds : public smutl::singleton<tmcmds<tt> > {
+#include "../smstdrt.cxx"
 	tmcmds() {
-		stdrt.install("show version", cmd_show_version<tt>(), "Show software version");
+		stdrt.install("show version", cmd_show_version(), "Show software version");
+		stdrt.install("configure", cmd_config(), "Configure servmon");
+		stdrt.install("exit", cmd_exit(), "End session");
+		cfgrt.install("exit", cfg_exit(), "Exit configure mode");
 	}
 	handler_node<tt> stdrt;
+	handler_node<tt> cfgrt;
 };
 
 template<class intft>
@@ -149,7 +155,7 @@ class trmsrv {
 public:
 	trmsrv(intft& intf_)
 	: intf(intf_)
-	, cmds_root(instance<tmcmds<trmsrv> >()->stdrt)
+	, cmds_root(&instance<tmcmds<trmsrv> >()->stdrt)
 	, prm("servmon> ")
 	, cd(*this)
 	{
@@ -169,7 +175,9 @@ public:
 		init();
 		for (;;) {
 			u_char c = intf.rd1();
-			binds[c](c);
+			if (!binds[c](c)) {
+				return;
+			}
 		}	
 	}
 
@@ -182,11 +190,16 @@ public:
 	void wrt(std::string const& s) {
 		intf.wrt(s);
 	}
+	void chgrt(handler_node<trmsrv>* newrt, std::string const& prompt) {
+		cmds_root = newrt;
+		prm = str(format(prompt) % "servmon") + "> ";
+	}
 	bool prc_ign(char) {
 		return true;
 	}
 	bool prc_nl(char) {
 		std::cerr << "read: [" << ln << "]\n";
+		bool b = true;
 		if (ln[ln.size() - 1] == ' ') {
 			while (ln[ln.size() - 1] == ' ') 
 				ln.erase(ln.end() - 1);
@@ -218,11 +231,11 @@ public:
 		else
 			wrt(matches[0]->name.substr(thisword.size()));
 		wrtln();
-		matches[0]->terminal->execute(cd);
+		b = matches[0]->terminal->execute(cd);
 	
 end:
-		init();
-		return true;
+		if (b) init();
+		return b;
 	}
 	bool prc_char(char c) {
 		bool waswild;
@@ -312,7 +325,7 @@ end:
 
 	void init(void) {
 		hstack.resize(1);
-		hstack[0] = &cmds_root;
+		hstack[0] = cmds_root;
 		cd.rst();
 		ln = thisword = "";
 		intf.wrt(prm);
@@ -326,7 +339,7 @@ private:
 	std::string thisword;
 	typedef handler_node<trmsrv> handler_node_t;
 	std::vector<handler_node_t *> hstack;
-	handler_node_t& cmds_root;
+	handler_node_t* cmds_root;
 	std::string prm;
 	comdat<trmsrv> cd;
 };
