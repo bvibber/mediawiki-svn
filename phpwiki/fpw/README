@@ -112,13 +112,17 @@ $wikiLanguage = "de"; #for German
 If everything is ok, you can access the URL wiki.phtml in your web
 site's wiki directory and you should get the (still empty) main page.
 
-If you want to test the performance of the code, you can install a
-recent Wikipedia database dump from
+If you want to test the performance of the code, you can install an
+(outdated) Wikipedia database dump from
 
-     http://www.wikipedia.com/tarballs/
+     http://wikipedia.sourceforge.net/wikidb.sql.gz  (25MB)
 
-This is an 80MB download. Please do not use this database on a wiki web
-site editable by the public, to avoid confusion.
+or a more recent database dump from 
+
+     http://www.wikipedia.com/tarballs/ (80MB)
+
+Please do not use these databases on a wiki web site editable by the
+public, to avoid confusion.
 
 
 3. Updating to a newer version
