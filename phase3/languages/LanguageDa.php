@@ -200,7 +200,7 @@
 	"sr" => "&#1057;&#1088;&#1087;&#1089;&#1082;&#1080; (Srpski)",
 	"ss"	=> "Siswati",
 	"st"	=> "Sesotho",
-	su"	=> "Sudanesisk",
+	"su"	=> "Sudanesisk",
 	"sv" => "Svenska",
 	"sw" => "Kiswahili",
 	"ta"	=> "&#2980;&#2990;&#3007;&#2996;&#3021; (Tamil)",
