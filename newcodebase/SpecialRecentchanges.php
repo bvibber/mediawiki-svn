@@ -31,7 +31,7 @@ function wfSpecialRecentchanges()
 
 	if(isset($from)) {
 		$note = str_replace( "$1", $limit, wfMsg( "rcnotefrom" ) );
-		$note = str_replace( "$2", $wgLang->timeanddate($from), $note );
+		$note = str_replace( "$2", $wgLang->timeanddate( $from, true ), $note );
 	} else {
 		$note = str_replace( "$1", $limit, wfMsg( "rcnote" ) );
 		$note = str_replace( "$2", $days, $note );
@@ -63,7 +63,7 @@ function wfSpecialRecentchanges()
 	$now = date( "YmdHis" );
 	$note .= "<br>\n" . str_replace( "$1",
 	  $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
-	  $wgLang->timeanddate( $now ), "from=$now" ),
+	  $wgLang->timeanddate( $now, true ), "from=$now" ),
 	  wfMsg( "rclistfrom" ) );
 
 	$wgOut->addHTML( "{$note}\n" );
