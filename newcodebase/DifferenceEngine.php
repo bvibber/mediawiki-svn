@@ -1012,7 +1012,8 @@ class WordLevelDiff extends MappedDiff
 
     function _split($lines) {
         // FIXME: fix POSIX char class.
-        if (!preg_match_all('/ ( [^\S\n]+ | [[:alnum:]]+ | . ) (?: (?!< \n) [^\S\n])? /xs',
+#        if (!preg_match_all('/ ( [^\S\n]+ | [[:alnum:]]+ | . ) (?: (?!< \n) [^\S\n])? /xs',
+        if (!preg_match_all('/ ( [^\S\n]+ | [0-9_A-Za-z\x80-\xff]+ | . ) (?: (?!< \n) [^\S\n])? /xs',
                             implode("\n", $lines),
                             $m)) {
             return array(array(''), array(''));
