@@ -19,7 +19,7 @@ class TWikiInterface
 
 TWikiInterface::TWikiInterface ()
     {
-    LANG = new TLanguage ( "EN" ) ;
+    LANG = new TLanguage ( "DE" ) ;
     USER = new TUser ;
     OUTPUT = new TOutput ;
     DB = new TDatabase ;
@@ -173,7 +173,7 @@ void TWikiInterface::run (int argc, char *argv[])
            }
         else if ( key == "PHP2C" )
            {
-           LANG->loadPHP ( "Language.php" ) ;
+           LANG->loadPHP ( "LanguageDe.php" ) ;
            LANG->dumpCfile () ;
            exit ( 0 ) ;
            }

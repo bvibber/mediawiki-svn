@@ -104,6 +104,18 @@ bool TParser::parse_internal_link ( TUCS &s )
            x += "/" + tt ;
            text = x + "\" title=\"" + text + "\">" ;
            }
+        else if ( LANG->getData ( "IMAGESOURCE" ) != "" )
+           {
+           TUCS x = "<img border=0 src=\"" ;
+           x += LANG->getData ( "IMAGESOURCE" ) ;
+           x += "/" ;
+           x += hex[0] ;
+           x += "/" ;
+           x += hex[0] ;
+           x += hex[1] ;
+           x += "/" + tt ;
+           text = x + "\" title=\"" + text + "\">" ;
+           }
         
         s = SKIN->getArticleLink ( t , text ) + s.substr ( c ) ;
         }
@@ -262,9 +274,11 @@ void TParser::replace_variables ( TUCS &s )
     TUCS currentday = TUCS::fromint ( timeinfo->tm_mday ) ;
     TUCS currentmonthname = TUCS::fromint ( timeinfo->tm_mon ) ;
     currentmonthname = LANG->getTranslation ( "MonthNames:" + currentmonthname ) ;
+    TUCS numberofarticles = TUCS::fromint ( DB->getNumberOfArticles() ) ;
 
     s.replace ( "{{CURRENTDAY}}" , currentday ) ;
     s.replace ( "{{CURRENTMONTHNAME}}" , currentmonthname ) ;
+    s.replace ( "{{CURRENTDAY}}" , currentday ) ;
     }
     
 void TParser::store_nowiki ( TUCS &s )

@@ -1,3 +1,5 @@
+// THIS FILE WAS AUTOMATICALLY GENERATED FROM A Language.php FILE.
+// YOU CAN CONVERT A Language.php FILE BY RUNNING THE PROGRAM // WITH THE 'PHP2C' PARAMETER
 #include "TLanguage.h"
 
 void TLanguage::initEN ()

@@ -32,7 +32,9 @@ void TLanguage::loadPHP ( string file )
     s.replace ( x , "\\\"" ) ;
     
     VTUCS varr , vname ;
+    s.replace ( "{$wg" , x ) ;
     s.explode ( "$wg" , v ) ;
+    for ( a = 0 ; a < v.size() ; a++ ) v[a].replace ( x , "{$wg" ) ;
     tg.clear() ;
     for ( a = 1 ; a < v.size() ; a++ )
         {
@@ -133,22 +135,24 @@ void TLanguage::dumpCfile ()
     out << "#include \"TLanguage.h\"" << endl << endl ;
     out << "void TLanguage::init" << lid << " ()" << endl ;
     out << "  {" << endl ;
-    out << "  tg.clear() ;" << endl ;
+//    out << "  tg.clear() ;" << endl ;
     out << "  int cnt = 0 ;" << endl ;
     for ( a = 0 ; a < tg.size() ; a++ )
         {
-        out << "  tg.push_back ( TLangGroup () ) ;" << endl ;
-        out << "  tg[cnt].name = \"" ;
-        out << tg[a].name.getstring() << "\" ;" << endl ;
+//        out << "  tg.push_back ( TLangGroup () ) ;" << endl ;
+//        out << "  tg[cnt].name = \"" ;
+//        out << tg[a].name.getstring() << "\" ;" << endl ;
+        out << "  cnt = getGroup ( \"" ;
+        out << tg[a].name.getstring() << "\" ) ;" << endl ;
         VTUCS k = tg[a].getKeys() ;
         for ( b = 0 ; b < k.size() ; b++ )
            {
            TUCS v = tg[a].getTrans ( k[b] ) ;
-           out << "  tg[cnt].addTrans ( \"" ;
+           out << "  tg[cnt].setTrans ( \"" ;
            out << k[b].getstring() << "\" , \"" ;
            out << v.getstring() << "\" ) ;" << endl ;
            }
-        out << "  cnt++ ;" << endl ;
+//        out << "  cnt++ ;" << endl ;
         }
     out << "  }" << endl ;
     }
@@ -156,7 +160,9 @@ void TLanguage::dumpCfile ()
 TLanguage::TLanguage ( string l )
     {
     lid = l ;
-    if ( lid == "EN" ) initEN () ;
+    initEN () ; // Default
+    if ( lid == "EN" ) {}
+    else if ( lid == "DE" ) initDE () ;
     else loadPHP ( "Language.php" ) ; // Fallback
     }
     

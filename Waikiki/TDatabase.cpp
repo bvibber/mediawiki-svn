@@ -12,6 +12,7 @@ bool TDatabase::doesArticleExist ( TTitle &t ) { return false ; }
 void TDatabase::query ( TUCS s ) {}
 void TDatabase::findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) { }
 void TDatabase::storeArticle ( TArticle &art , bool makeOldVersion ) { }
+int TDatabase::getNumberOfArticles() { return 0 ; }
 
 void TDatabase::addKeyValue ( TUCS &s1 , TUCS &s2 , TUCS t1 , TUCS t2 )
     {
@@ -53,7 +54,7 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
 //    sqlite_exec ( db , "BEGIN;" , 0 , 0 , 0 ) ;
     ifstream in ( fn_in.c_str() , ios::in | ios::binary ) ;
     
-    VTUCS index , keys ;
+    VTUCS index , keys ; 
     TUCS table_name ;
     vector <string> values ;
     uint a , b ;
@@ -102,14 +103,7 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
            cur = "" ;
            
            create_indices = "CREATE INDEX k_cur_title ON cur ( cur_title ) ;" ;
-/*           for ( b = 0 ; b < keys.size() ; b++ )
-              {
-              cur = "CREATE INDEX k_" + keys[b].getstring() + " ON " ;
-              cur += table_name.getstring() ;
-              cur += "(" + keys[b].getstring() + ");" ;
-              create_indices += cur ;
-              }*/
-           
+
            creating = false ;
            }
         else if ( creating )
@@ -211,7 +205,7 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     system ( cmd.c_str() ) ;
     cout << time(NULL)-start << " seconds total" << endl ;
     }
-
+*/
 
 
 void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
@@ -370,7 +364,7 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     cout << time(NULL)-start << "seconds total" << endl ;
     system("pause");
     }
-*/
+
 
 // *****************************************************************************
 // TDatabaseFile
@@ -594,5 +588,19 @@ void TDatabaseSqlite::storeArticle ( TArticle &art , bool makeOldVersion )
     sql = "INSERT INTO cur (" + s1 + ") VALUES (" + s2 + ")" ;
 //    cout << sql.getstring() << endl ;
     query ( sql ) ;
+    }
+
+int TDatabaseSqlite::getNumberOfArticles()
+    {
+    query ( "SELECT s_value FROM stuff WHERE s_key='NUMBEROFARTICLES'" ) ;
+    if ( results.content.size() == 1 ) return atoi ( results[0][0].c_str() ) ;
+
+    query ( "create table stuff ( s_key tinytext, s_value tinytext )" ) ;
+    query ( "SELECT count(*) from cur WHERE cur_namespace=0 AND cur_text LIKE '%,%'" ) ;
+    int noa = atoi ( results[0][0].c_str() ) ;
+    TUCS sql = TUCS::fromint ( noa ) ;
+    sql = "INSERT INTO stuff (s_key,s_value) VALUES ('NUMBEROFARTICLES','" + sql + "')" ;
+    query ( sql.getstring().c_str() ) ;
+    return noa ;
     }
 

@@ -47,6 +47,7 @@ class TDatabase
     
     // Useful methods
     virtual void mysql2sqlite ( string fn_in , string fn_out ) ;
+    virtual int getNumberOfArticles() ;
     
     static TDatabase *current ;
     
@@ -77,6 +78,7 @@ class TDatabaseSqlite : public TDatabase
     virtual void findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) ;
     virtual void query ( TUCS s ) ;
     virtual string identify () { return "SQLITE" ; }
+    virtual int getNumberOfArticles() ;
 
     TSQLresult results ;
     

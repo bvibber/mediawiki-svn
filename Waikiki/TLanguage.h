@@ -46,6 +46,7 @@ class TLanguage
 
     private :
     virtual void initEN () ;
+    virtual void initDE () ;
     virtual uint getGroup ( TUCS s ) ;
     vector <TLangGroup> tg ;
     } ;
