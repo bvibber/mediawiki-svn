@@ -22,9 +22,11 @@ GRANT SELECT (user_id,user_name,user_options) ON `{$wgDBname}`.user
  TO {$wgDBsqluser}@'%' IDENTIFIED BY '{$wgDBsqlpassword}';
 GRANT SELECT ON `{$wgDBname}`.user_rights
  TO {$wgDBsqluser}@'%' IDENTIFIED BY '{$wgDBsqlpassword}';
-GRANT SELECT ON `{$wgDBname}`.cur
+GRANT SELECT ON `{$wgDBname}`.revision
  TO {$wgDBsqluser}@'%' IDENTIFIED BY '{$wgDBsqlpassword}';
-GRANT SELECT ON `{$wgDBname}`.old
+GRANT SELECT ON `{$wgDBname}`.page
+ TO {$wgDBsqluser}@'%' IDENTIFIED BY '{$wgDBsqlpassword}';
+GRANT SELECT ON `{$wgDBname}`.text
  TO {$wgDBsqluser}@'%' IDENTIFIED BY '{$wgDBsqlpassword}';
 GRANT SELECT ON `{$wgDBname}`.archive
  TO {$wgDBsqluser}@'%' IDENTIFIED BY '{$wgDBsqlpassword}';
@@ -54,9 +56,11 @@ GRANT SELECT (user_id,user_name,user_options)
  TO {$wgDBsqluser}@localhost IDENTIFIED BY '{$wgDBsqlpassword}';
 GRANT SELECT ON `{$wgDBname}`.user_rights
  TO {$wgDBsqluser}@localhost IDENTIFIED BY '{$wgDBsqlpassword}';
-GRANT SELECT ON `{$wgDBname}`.cur
+GRANT SELECT ON `{$wgDBname}`.revision
  TO {$wgDBsqluser}@localhost IDENTIFIED BY '{$wgDBsqlpassword}';
-GRANT SELECT ON `{$wgDBname}`.old
+GRANT SELECT ON `{$wgDBname}`.page
+ TO {$wgDBsqluser}@localhost IDENTIFIED BY '{$wgDBsqlpassword}';
+GRANT SELECT ON `{$wgDBname}`.text
  TO {$wgDBsqluser}@localhost IDENTIFIED BY '{$wgDBsqlpassword}';
 GRANT SELECT ON `{$wgDBname}`.archive
  TO {$wgDBsqluser}@localhost IDENTIFIED BY '{$wgDBsqlpassword}';
@@ -86,9 +90,11 @@ GRANT SELECT (user_id,user_name,user_options)
  TO {$wgDBsqluser}@localhost.localdomain IDENTIFIED BY '{$wgDBsqlpassword}';
 GRANT SELECT ON `{$wgDBname}`.user_rights
  TO {$wgDBsqluser}@localhost.localdomain IDENTIFIED BY '{$wgDBsqlpassword}';
-GRANT SELECT ON `{$wgDBname}`.cur
+GRANT SELECT ON `{$wgDBname}`.revision
  TO {$wgDBsqluser}@localhost.localdomain IDENTIFIED BY '{$wgDBsqlpassword}';
-GRANT SELECT ON `{$wgDBname}`.old
+GRANT SELECT ON `{$wgDBname}`.page
+ TO {$wgDBsqluser}@localhost.localdomain IDENTIFIED BY '{$wgDBsqlpassword}';
+GRANT SELECT ON `{$wgDBname}`.text
  TO {$wgDBsqluser}@localhost.localdomain IDENTIFIED BY '{$wgDBsqlpassword}';
 GRANT SELECT ON `{$wgDBname}`.archive
  TO {$wgDBsqluser}@localhost.localdomain IDENTIFIED BY '{$wgDBsqlpassword}';
