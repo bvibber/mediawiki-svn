@@ -307,7 +307,7 @@ class skinCologneBlue extends skinClass {
 			p.menu {
 				font-family: Verdana, sans-serif;
 				font-size: 8pt;
-				line-height: 13pt;
+/*				line-height: 13pt;*/
 			}
 
 			span.menuhead {
