@@ -136,10 +136,12 @@ public class MWSearch {
 						content = new String(content.getBytes("ISO-8859-1"), "UTF-8");
 					} catch (UnsupportedEncodingException e) {}
 				}
+				System.out.println("article " + namespace + ":" + title +
+						content.length());
 				Document d = new Document();
 				d.add(Field.Text("namespace", namespace));
 				d.add(Field.Text("title", title));
-				d.add(new Field("contents", content, false, true, true));
+				d.add(new Field("contents", stripWiki(content), false, true, true));
 				try {
 					writer.addDocument(d);
 				} catch (IOException e5) {
@@ -152,9 +154,60 @@ public class MWSearch {
 		} catch (SQLException e) {
 			System.out.println("Error: SQL error: " + e.getMessage());
 			return;
+		} catch (OutOfMemoryError em) {
+			em.printStackTrace();
+			return;
 		}
 		double totaltime = (System.currentTimeMillis() - now) / 1000;
 		System.out.println("Done, indexed " + numArticles + " articles in "
 				+ totaltime + " seconds");
+	}
+	
+	private static String stripWiki(String text) {
+		int i = 0, j, k;
+		i = text.indexOf("[[Image:");
+		if (i == -1) i = text.indexOf("[[image:");
+		int l = i;
+		System.out.println("1");
+		while (i > -1) {
+			j = text.indexOf("[[", i + 2);
+			k = text.indexOf("]]", i + 2);
+			if (j != -1 && j < k && k > -1) {
+				i = k;
+				continue;
+			} else {
+				if (k == -1)
+					text = text.substring(0, l);
+				else
+					text = text.substring(0, l) + 
+						text.substring(k + 2);
+				i = text.indexOf("[[Image:");
+				if (i == -1) i = text.indexOf("[[image:");		
+				l = i;
+			}
+		}
+		System.out.println("2");
+
+		while ((i = text.indexOf("<!--")) != -1) {
+			if ((j = text.indexOf("-->", i)) == -1)
+				break;
+			if (j + 4 >= text.length())
+				text = text.substring(0, i);
+			else
+				text = text.substring(0, i) + text.substring(j + 4);
+		}
+		System.out.println("3");
+		text = text.replaceAll("\\{\\|(.*?)\\|\\}", "")
+			.replaceAll("\\[\\[[A-Za-z_-]+:([^|]+?)\\]\\]", "")
+			.replaceAll("\\[\\[([^|]+?)\\]\\]", "$1")
+			.replaceAll("\\[\\[([^|]+\\|)(.*?)\\]\\]", "$2")
+			.replaceAll("(^|\n):*''[^'].*\n", "")
+			.replaceAll("^----.*", "")
+			.replaceAll("'''''", "")
+			.replaceAll("('''|</?[bB]>)", "")
+			.replaceAll("''", "")
+			.replaceAll("</?[uU]>", "");
+		System.out.println("4");
+		return text;
 	}
 }
