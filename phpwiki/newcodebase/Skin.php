@@ -76,6 +76,9 @@ class Skin {
 	{
 		global $wgUser;
 
+		$link = urldecode( $link );
+		$link = str_replace( "_", " ", $link );
+
 		$r = " class=\"external\"";
 		if ( 1 == $wgUser->getOption( "hover" ) ) {
 			$r .= " title=\"$link\"";

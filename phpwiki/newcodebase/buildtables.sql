@@ -57,7 +57,7 @@ CREATE TABLE old (
 # Internal links
 #
 CREATE TABLE links (
-  l_from varchar(255) binary NOT NULL default '',
+  l_from varchar(40) binary NOT NULL default '',
   l_to int(8) unsigned NOT NULL default '0',
   INDEX l_from (l_from),
   INDEX l_to (l_to)
@@ -65,16 +65,16 @@ CREATE TABLE links (
 
 CREATE TABLE brokenlinks (
   bl_from int(8) unsigned NOT NULL default '0',
-  bl_to varchar(255) binary NOT NULL default '',
+  bl_to varchar(40) binary NOT NULL default '',
   INDEX bl_from (bl_from),
   INDEX bl_to (bl_to)
 ) TYPE=MyISAM;
 
 CREATE TABLE imagelinks (
-  il_from int(8) unsigned NOT NULL default '0',
-  il_to varchar(255) binary NOT NULL default '',
-  INDEX il_from (il_from),
-  INDEX il_to (il_to)
+  il_from varchar(40) binary NOT NULL default '',
+  il_to varchar(40) binary NOT NULL default '',
+  INDEX il_from (il_from(10)),
+  INDEX il_to (il_to(10))
 ) TYPE=MyISAM;
 
 # Site-wide statistics.

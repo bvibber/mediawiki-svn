@@ -39,8 +39,13 @@ class Article {
 
 	function getContent()
 	{
+		global $action;
+
 		if ( 0 == $this->getID() ) {
-			return wfMsg( "newarticletext" );
+			if ( "edit" == $action ) {
+				return wfMsg( "newarticletext" );
+			}
+			return wfMsg( "noarticletext" );
 		} else {
 			$this->loadContent();
 			return $this->mContent;
@@ -201,6 +206,7 @@ class Article {
 		$ins = Namespace::getIndex( "Image" );
 		if ( $ins == $wgTitle->getNamespace() ) {
 			$this->imageHistory();
+			$this->imageLinks();
 		}
 		$this->viewUpdates();
 	}
@@ -423,6 +429,7 @@ $wpTextbox2
 		$ins = Namespace::getIndex( "Image" );
 		if ( $ins == $wgTitle->getNamespace() ) {
 			$this->imageHistory();
+			$this->imageLinks();
 		}
 		$this->editUpdates( $this->getID(), $wgTitle->getPrefixedDBkey() );
 	}
@@ -460,6 +467,32 @@ $wpTextbox2
 		}
 		$s .= $sk->endImageHistoryList();
 		$wgOut->addHTML( $s );
+	}
+
+	function imageLinks()
+	{
+		global $wgUser, $wgOut, $wgTitle;
+
+		$wgOut->addHTML( "<h2>" . wfMsg( "imagelinks" ) . "</h2>\n" );
+
+		$conn = wfGetDB();
+		$sql = "SELECT il_from FROM imagelinks WHERE il_to='" .
+		  wfStrencode( $wgTitle->getDBkey() ) . "'";
+		$res = wfQuery( $sql, $conn, "Article::imageLinks" );
+
+		if ( 0 == mysql_num_rows( $res ) ) {
+			$wgOut->addHtml( "<p>" . wfMsg( "nolinkstoimage" ) . "\n" );
+			return;
+		}
+		$wgOut->addHTML( "<p>" . wfMsg( "linkstoimage" ) .  "\n<ul>" );
+
+		$sk = $wgUser->getSkin();
+		while ( $s = mysql_fetch_object( $res ) ) {
+			$name = $s->il_from;
+			$link = $sk->makeKnownLink( $name, "" );
+			$wgOut->addHTML( "<li>{$link}</li>\n" );
+		}
+		$wgOut->addHTML( "</ul>\n" );
 	}
 
 	function watch()
