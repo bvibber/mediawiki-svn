@@ -16,7 +16,7 @@ function wfSpecialIntl()
 
 	# Connecting to the wiki-intl database
 	$c = $wgDBconnection ;
-	if ( !mysql_select_db ( "wiki-intl" , $c ) ) {
+	if ( !mysql_select_db ( $wgDBIntlName, $c ) ) {
 		$wgOut->addHTML( htmlspecialchars(mysql_error()) );
 		return ;
 		}
