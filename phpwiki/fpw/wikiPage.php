@@ -106,12 +106,7 @@ class WikiPage extends WikiTitle {
             $link = "<a href=\"$link&amp;action=view&amp;redirect=no\">".$this->getNiceTitle()."</a>" ;
             $link = str_replace ( "$1" , $link , $wikiRedirectFrom ) ;
             $this->backLink = $link ;
-            $target = $this->contents ;
-            $target = substr ( $target , 10 ) ;
-            $target = explode ( "\n" , $target ) ; # Ignoring comments after redirect
-            $target = $target[0] ;
-            $target = str_replace ( "[" , "" , $target ) ;
-            $target = str_replace ( "]" , "" , $target ) ;
+	    $target = preg_replace ( '/^#redirect\s+\[\[\s*([^\]\n]+)\s*\]\].*$/i' , '$1' , $this->contents ) ;
             $this->load ( trim($target) , false , $backLink ) ;
             }
         }
