@@ -82,12 +82,25 @@ class Skin {
 
 	function getBodyOptions()
 	{
-		global $wgUser, $wgTitle, $wgNamespaceBackgrounds;
+		global $wgUser, $wgTitle, $wgNamespaceBackgrounds, $wgOut, $oldid, $redirect, $diff;
 
 		if ( 0 != $wgTitle->getNamespace() ) {
 			$a = array( "bgcolor" => "#FFFFDD" );
 		}
 		else $a = array( "bgcolor" => "#FFFFFF" );
+		if($wgOut->isArticle() && $wgUser->getOption("editondblclick") ) {
+			$n = $wgTitle->getURL();
+			$t = wfMsg( "editthispage" );
+			$oid = $red = "";
+			if ( $redirect ) { $red = "&redirect={$redirect}"; }
+			if ( $oldid && ! isset( $diff ) ) {
+				$oid = "&oldid={$oldid}";
+			}
+			$s = wfLocalUrlE($n,"action=edit{$oid}{$red}");
+			$s = "document.location = \"" .$s ."\";";
+			$a += array ("ondblclick" => $s);
+
+		}
 		return $a;
 	}
 

@@ -31,7 +31,9 @@
 	"justify"	=> "Justify paragraphs",
 	"hideminor" => "Hide minor edits in recent changes",
 	"numberheadings" => "Auto-number headings",
-	"rememberpassword" => "Remember password across sessions"
+	"rememberpassword" => "Remember password across sessions",
+	"editwidth" => "Edit box has full width",
+	"editondblclick" => "Edit pages on double click (JavaScript)"
 );
 
 /* private */ $wgLanguageNamesJa = array(

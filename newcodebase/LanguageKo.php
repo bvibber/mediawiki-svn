@@ -52,7 +52,8 @@
 	"hideminor" => "사소한 편집 최근 바뀜에서 숨기기",
 	"numberheadings" => "머릿글 번호 매기기",
 	"rememberpassword" => "세션동안 암호 기억",
-	"editwidth" => "편집상자 너비 최대"
+	"editwidth" => "편집상자 너비 최대",
+	"editondblclick" => "Edit pages on double click (JavaScript)"
 );
 
 /* private */ $wgBookstoreListKo = array(

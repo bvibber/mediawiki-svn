@@ -40,7 +40,8 @@
 	"hideminor" => "Gem små redigeringer i sidste ændringer",
 	"numberheadings" => "Automatisk nummerering af overskrifter",
 	"rememberpassword" => "Husk password til næste besøg",
-	"editwidth" => "Redigeringsboksen har fuld bredde"
+	"editwidth" => "Redigeringsboksen har fuld bredde",
+	"editondblclick" => "Edit pages on double click (JavaScript)"
 );
 
 /* private */ $wgBookstoreListDa = array(
