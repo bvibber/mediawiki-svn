@@ -7,8 +7,7 @@ function recentchanges () {
     global $wikiRecentChangesLastDays , $wikiRecentChangesSince , $wikiViewLastDays , $wikiViewMaxNum , $wikiListOnlyNewChanges ;
     $vpage->special ( $wikiRecentChangesTitle ) ;
     $vpage->makeSecureTitle() ;
-    if ( !isset ( $maxcnt ) ) $maxcnt = $user->options["viewRecentChanges"] ;
-    if ( $maxcnt == "" ) $maxcnt = 50 ;
+    if ( !isset ( $maxcnt ) ) $maxcnt = 50 ;
     if ( !isset ( $daysAgo ) ) $daysAgo = 3 ;
     
     $from2 = substr ( $from , 0 , 4 ) . "-" . substr ( $from , 4 , 2 ) . "-" . substr ( $from , 6 , 2 ) ;
@@ -99,7 +98,7 @@ function recentchanges () {
               WHERE cur_timestamp > SUBDATE(CURRENT_TIMESTAMP, INTERVAL $daysAgo DAY)
                 AND cur_minor_edit != 1
                 $fromCondCur              
-              ORDER BY cur_title
+              ORDER BY cur_timestamp DESC
               LIMIT $maxcnt" ;
 
       # store result in $arr1
@@ -128,7 +127,7 @@ function recentchanges () {
                  $fromCondOld1
                GROUP BY o1.old_title, o1.old_timestamp
                HAVING cur_timestamp = MAX(o2.old_timestamp)
-               ORDER BY o1.old_title
+               ORDER BY o1.old_timestamp DESC
                LIMIT $maxcnt";
 
       # store result in $arr2
@@ -137,32 +136,30 @@ function recentchanges () {
       while ( $s = mysql_fetch_object ( $result ) ) array_push ( $arr2 , $s ) ;
       mysql_free_result ( $result ) ;
 
-      # Now we merge the two results.
+      # Now we merge the two results while making sure that there
+      # is only one entry per title.
       # Evidently this is better done by the database,
       # but MySQL doesn't implement enough SQL for that.
-      foreach ( $arr1 as $row1 ) {
-        while ( $arr2 and ( $arr2[0]->cur_title < $row1->cur_title ) )
-          array_push ( $arr, array_shift ( $arr2 ) );        
-        $extra = ($row1->cur_minor_edit == 2) ? 0 : 1;
-        if ( $arr2 and ( $arr2[0]->cur_title == $row1->cur_title ) ) {
-          $arr2[0]->changes += $extra;
-          array_push ( $arr, array_shift ( $arr2 ) );
+      
+      $titleIndex = array ();   # maps titles to where the page is stored in $arr
+      $index = 0;
+      
+      foreach ( $arr2 as $row2 ) {
+        while ( $arr1 and ( $arr1[0]->cur_timestamp >= $row2->cur_timestamp ) ) {
+          $row1 = array_shift ( $arr1 );
+          $titleIndex[$row1->cur_title] = $index;
+          $row1->changes = 1;
+          $index = array_push ( $arr, $row1 );
+        }  
+        if ( array_key_exists( $row2->cur_title, $titleIndex ) ) {
+          $arr[ $titleIndex[ $row2->cur_title ] ]->changes += $row2->changes;
         } else {
-          $row1->changes = $extra;
-          array_push ( $arr, $row1 );
+          $titleIndex[$row2->cur_title] = $index;
+          $index = array_push ( $arr, $row2 );
         }
       }
-      $arr = array_merge ($arr, $arr2);
+      $arr = array_merge ($arr, $arr1);
       
-      # Now we sort the result on the timestamp
-      function cmp ($a, $b) {
-        $x = $a->cur_timestamp;
-        $y = $b->cur_timestamp;
-        if ( $x == $y ) return 0;
-        return ($x > $y) ? -1 : 1;
-      }
-
-      usort ($arr, "cmp");
     }
 
     #mysql_close ( $connection ) ;
