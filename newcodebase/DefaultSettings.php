@@ -24,8 +24,8 @@ $wgDebugComments	= false;
 $wgCachePages		= false;
 
 $wgLanguageCode     = "en";
-$wgInputEncoding	= "ISO-8851-1";
-$wgOutputEncoding	= "ISO-8851-1";
+$wgInputEncoding	= "ISO-8859-1";
+$wgOutputEncoding	= "ISO-8859-1";
 
 $wgDocType          = "-//W3C//DTD HTML 4.01 Transitional//EN";
 $wgCookieExpiration = 2592000;
