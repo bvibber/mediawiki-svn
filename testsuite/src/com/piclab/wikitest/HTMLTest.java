@@ -40,7 +40,7 @@ public String testName() { return "HTML"; }
 
 
 protected int initTest() throws Exception {
-	m_suite.logout();
+	logout();
 	/*
 	 * Pre-compile the regexes.
 	 */
@@ -66,23 +66,29 @@ protected int runTest() throws Exception {
 }
 
 private int part1() throws Exception {
-	WebResponse wr = m_suite.loginAs( "Fred", "Fred" );
+	WebResponse wr = loginAs( "Fred", "Fred" );
 	Document doc = wr.getDOM();
 	if ( ! matchesAll( wr.getText() ) ) { return 101; }
 
-	wr = setPref( "wpOpnumberheadings", null );
-	wr = setPref( "wpOphighlightbroken", "1" );
+	WebRequest req = openPrefs();
+	req.removeParameter( "wpOpnumberheadings" );
+	req.setParameter( "wpOphighlightbroken", "1" );
+	wr = getResponse( req );
 	WikiSuite.fine( "Standard settings" );
 
 	int c = 0;
 	if ( 0 != ( c = part1inner() ) ) { return 110 + c; }
 
-	wr = setPref( "wpOpnumberheadings", "1" );
+	req = openPrefs();
+	req.setParameter( "wpOpnumberheadings", "1" );
+	wr = getResponse( req );
 	WikiSuite.fine( "Numbered headings" );
 
 	if ( 0 != ( c = part1inner() ) ) { return 120 + c; }
 
-	wr = setPref( "wpOphighlightbroken", "1" );
+	req = openPrefs();
+	req.setParameter( "wpOphighlightbroken", "1" );
+	wr = getResponse( req );
 	WikiSuite.fine( "Question-mark links" );
 
 	if ( 0 != ( c = part1inner() ) ) { return 130 + c; }
@@ -90,30 +96,30 @@ private int part1() throws Exception {
 }
 
 private int part1inner() throws Exception {
-	WebResponse wr = m_suite.viewPage( "" );
+	WebResponse wr = viewPage( "" );
 	/*
 	 * Will throw exception if not parseable:
 	 */
 	Document doc = wr.getDOM();
 	if ( ! matchesAll( wr.getText() ) ) { return 1; }
 
-	wr = m_suite.viewPage( "Opera" );
+	wr = viewPage( "Opera" );
 	doc = wr.getDOM();
 	if ( ! matchesAll( wr.getText() ) ) { return 2; }
 
-	wr = m_suite.viewPage( "User:Fred" );
+	wr = viewPage( "User:Fred" );
 	doc = wr.getDOM();
 	if ( ! matchesAll( wr.getText() ) ) { return 3; }
 
-	wr = m_suite.viewPage( "Special:Recentchanges" );
+	wr = viewPage( "Special:Recentchanges" );
 	doc = wr.getDOM();
 	if ( ! matchesAll( wr.getText() ) ) { return 4; }
 
-	wr = m_suite.viewPage( "Talk:Poker" );
+	wr = viewPage( "Talk:Poker" );
 	doc = wr.getDOM();
 	if ( ! matchesAll( wr.getText() ) ) { return 5; }
 
-	wr = m_suite.viewPage( "Wikipedia:Upload_log" );
+	wr = viewPage( "Wikipedia:Upload_log" );
 	doc = wr.getDOM();
 	if ( ! matchesAll( wr.getText() ) ) { return 6; }
 
@@ -121,37 +127,44 @@ private int part1inner() throws Exception {
 }
 
 private int part2() throws Exception {
-	WebResponse wr = m_suite.loginAs( "Barney", "Barney" );
+	WebResponse wr = loginAs( "Barney", "Barney" );
 	Document doc = wr.getDOM();
 	if ( ! matchesAll( wr.getText() ) ) { return 201; }
 
-	wr = setPref( "wpOpnumberheadings", null );
-	wr = setPref( "wpOphighlightbroken", "1" );
+	WebRequest req = openPrefs();
+	req.removeParameter( "wpOpnumberheadings" );
+	req.setParameter( "wpOphighlightbroken", "1" );
+	wr = getResponse( req );
 
 	for (int q = 0; q < 4; ++q) {
-		wr = setPref( "wpQuickbar", String.valueOf( q ) );
+		req = openPrefs();
+		req.setParameter( "wpQuickbar", String.valueOf( q ) );
+		wr = getResponse( req );
+
 		doc = wr.getDOM();
 		if ( ! matchesAll( wr.getText() ) ) { return 200 + 10 * q; }
 		WikiSuite.finer( "Set quickbar to " + q );
 
 		for (int s = 0; s < 3; ++s) {
-			wr = setPref( "wpSkin", String.valueOf( s ) );
+			req = openPrefs();
+			req.setParameter( "wpSkin", String.valueOf( s ) );
+			wr = getResponse( req );
 			WikiSuite.finer( "Set skin to " + s );
 
 			double r = Math.random();
 			if ( r < .5 ) {
-				wr = m_suite.viewPage( WikiSuite.preloadedPages[
+				wr = viewPage( WikiSuite.preloadedPages[
 				  (int)(r * 100.0)] );
 			} else if ( r < .6 ) {
-				wr = m_suite.viewPage( "User:Fred" );
+				wr = viewPage( "User:Fred" );
 			} else if ( r < .7 ) {
-				wr = m_suite.viewPage( "Special:Recentchanges" );
+				wr = viewPage( "Special:Recentchanges" );
 			} else if ( r < .8 ) {
-				wr = m_suite.editPage( "Talk:Sport" );
+				wr = editPage( "Talk:Sport" );
 			} else if ( r < .9 ) {
-				wr = m_suite.editPage( "Wikipedia:Upload_log" );
+				wr = editPage( "Wikipedia:Upload_log" );
 			} else {
-				wr = m_suite.viewPage( "" );
+				wr = viewPage( "" );
 			}
 			doc = wr.getDOM();
 			if ( ! matchesAll( wr.getText() ) ) { return 201 + 10 * q + s; }
@@ -180,18 +193,6 @@ private boolean matchesAll( String text ) {
 		}
 	}
 	return true;
-}
-
-private WebResponse setPref( String name, String value )
-throws Exception {
-	WebResponse wr = m_suite.viewPage( "Special:Preferences" );
-    WebForm pform = WikiSuite.getFormByName( wr, "preferences" );
-	WebRequest req = pform.getRequest( "wpSaveprefs" );
-
-	if ( value == null) {	req.removeParameter( name ); }
-	else {					req.setParameter( name, value ); }
-
-	return m_suite.getResponse( req );
 }
 
 public static void main( String[] params ) {

@@ -7,6 +7,8 @@
 
 package com.piclab.wikitest;
 import com.meterware.httpunit.*;
+import org.w3c.dom.*;
+import java.util.regex.*;
 
 public class WikiTest {
 
@@ -55,7 +57,7 @@ private void run() {
 	} catch ( Exception e ) {
 		WikiSuite.error( "Exception (" + e + ") initializing test \"" +
 		  testName() + "\"" );
-		e.printStackTrace( new java.io.PrintWriter( System.err ) );
+		e.printStackTrace();
 		result = 1;
 	}
 	if ( result != 0 ) {
@@ -71,7 +73,7 @@ private void run() {
 	} catch (Exception e) {
 		WikiSuite.error( "Exception (" + e + ") running test \"" +
 		  testName() + "\"" );
-		e.printStackTrace( new java.io.PrintWriter( System.err ) );
+		e.printStackTrace();
 		result = 2;
 	}
 	m_stop = System.currentTimeMillis();
@@ -89,12 +91,291 @@ private void run() {
 }
 
 /*
- * General utility function
+ * General utility functions
  */
 
-protected int fail( int code ) {
+public int fail( int code ) {
 	WikiSuite.error( "Test \"" + testName() + "\" failed with code " + code );
 	return code;
+}
+
+public void clearCookies() { m_suite.getConv().clearContents(); }
+
+public static String viewUrl( String title, String query ) {
+	StringBuffer url = new StringBuffer(200);
+	String t = WikiSuite.titleToUrl( title );
+
+	url.append( WikiSuite.getServer() )
+	  .append( WikiSuite.getScript() ).append( "?title=" ).append( t )
+	  .append( "&" ).append( query );
+	return url.toString();
+}
+
+public static String viewUrl( String title ) {
+	StringBuffer url = new StringBuffer(200);
+	String t = WikiSuite.titleToUrl( title );
+	String ap = WikiSuite.getArticlePath();
+
+	int p = ap.indexOf( "$1" );
+	if ( p >= 0 ) {
+		url.append( ap );
+		url.replace( p, p+2, t );
+	} else {
+		url.append( WikiSuite.getServer() )
+		  .append( WikiSuite.getScript() ).append( "?title=" ).append( t );
+	}
+	return url.toString();
+}
+
+public WebResponse getResponse( String url )
+throws WikiSuiteFailureException {
+	WebResponse r = null;
+	String msg = null;
+
+	try {
+		r = m_suite.getConv().getResponse( url );
+	} catch (org.xml.sax.SAXException e) {
+		msg = "Error parsing received page \"" + url + "\"";
+		WikiSuite.warning( msg );
+	} catch (java.net.MalformedURLException e) {
+		msg = "Badly formed URL \"" + url + "\"";
+		WikiSuite.fatal( msg );
+		throw new WikiSuiteFailureException( msg );
+	} catch (java.io.IOException e) {
+		WikiSuite.warning( "I/O Error receiving page \"" + url + "\"" );
+	}
+	return r;
+}
+
+public WebResponse getResponse( WebRequest req ) {
+	WebResponse r = null;
+
+	try {
+		r = m_suite.getConv().getResponse( req );
+	} catch (org.xml.sax.SAXException e) {
+		WikiSuite.warning( "Error parsing received page." );
+	} catch (java.io.IOException e) {
+		WikiSuite.warning( "I/O Error receiving page." );
+	}
+	return r;
+}
+
+public void showResponseTitle( WebResponse wr )
+throws WikiSuiteFailureException {
+	String t = null;
+
+	try {
+		t = wr.getTitle();
+		if ( "Error".equals( t ) || "Database error".equals( t ) ) {
+			throw new WikiSuiteFailureException( "Got wiki error page." );
+		}
+		WikiSuite.fine( "Viewing \"" + t + "\"" );
+	} catch (org.xml.sax.SAXException e) {
+		WikiSuite.error( "Exception (" + e + ")" );
+		throw new WikiSuiteFailureException( "Couldn't parse title." );
+	}
+}
+
+public WebResponse viewPage( String title )
+throws WikiSuiteFailureException {
+	WebResponse wr = getResponse( viewUrl( title ) );
+	showResponseTitle( wr );
+	return wr;
+}
+
+public WebResponse viewPage( String title, String query )
+throws WikiSuiteFailureException {
+	StringBuffer url = new StringBuffer( 200 );
+	String t = WikiSuite.titleToUrl( title );
+
+	url.append( m_suite.getServer() )
+	  .append( m_suite.getScript() ).append( "?title=" )
+	  .append( t ).append( "&" ).append( query );
+
+	WebResponse wr = getResponse( url.toString() );
+	showResponseTitle( wr );
+	return wr;
+}
+
+public WebResponse editPage( String title )
+throws WikiSuiteFailureException {
+	return viewPage( title, "action=edit" );
+}
+
+public static WebForm getFormByName( WebResponse resp, String name )
+throws WikiSuiteFailureException {
+	String msg = null;
+	WebForm[] forms = null;
+
+
+	try {
+		forms = resp.getForms();
+	} catch ( org.xml.sax.SAXException e ) {
+		msg = "Couldn't find form \"" + name + "\"";
+		WikiSuite.error( msg );
+		return null;
+	}
+	for (int i=0; i < forms.length; ++i) {
+		Node formNode = forms[i].getDOMSubtree();
+		NamedNodeMap nnm = formNode.getAttributes();
+		Node nameNode = nnm.getNamedItem( "name" );
+
+		if (nameNode == null) continue;
+		if (nameNode.getNodeValue().equalsIgnoreCase( name )) {
+			return forms[i];
+		}
+	}
+	return null;
+}
+
+public WebResponse loginAs( String name, String password )
+throws WikiSuiteFailureException {
+	WebResponse wr = null;
+	WebRequest req = null;
+
+	wr = viewPage( "Special:Userlogin" );
+
+	WebForm loginform = getFormByName( wr, "userlogin" );
+	req = loginform.getRequest( "wpLoginattempt" );
+	req.setParameter( "wpName", name );
+	req.setParameter( "wpPassword", password );
+   	wr = getResponse( req );
+
+	WikiSuite.fine( "Logged in as " + name );
+	return wr;
+}
+
+public WebResponse logout()
+throws WikiSuiteFailureException {
+	WebResponse wr = viewPage( "Special:Userlogout" );
+	clearCookies();
+	return wr;
+}
+
+public WebResponse deletePage( String title )
+throws WikiSuiteFailureException {
+	WebResponse wr = null;
+
+	wr = loginAs( "WikiSysop", m_suite.getSysopPass() );
+	wr = viewPage( title, "action=delete" );
+
+	String rt = null;
+	try {
+		rt = wr.getTitle();
+	} catch ( org.xml.sax.SAXException e ) {
+		WikiSuite.error( "Could not parse response to delete request." );
+		wr = logout();
+		return null;
+	}
+
+	if ( rt.equals( "Internal error" ) ) {
+		wr = logout();
+		return null;
+		/* Can't delete because it doesn't exist: no problem */
+	}
+
+	WebForm delform = getFormByName( wr, "deleteconfirm" );
+	WebRequest req = delform.getRequest( "wpConfirmB" );
+
+	req.setParameter( "wpReason", "Deletion for testing" );
+	req.setParameter( "wpConfirm", "1" );
+
+	WebResponse ret = getResponse( req );
+	WikiSuite.fine( "Deleted \"" + title + "\"" );
+
+	wr = logout();
+	return ret;
+}
+
+public WebResponse replacePage( String page, String text )
+throws WikiSuiteFailureException {
+	WebResponse wr = editPage( page );
+
+	WebForm editform = getFormByName( wr, "editform" );
+	WebRequest req = editform.getRequest( "wpSave" );
+	req.setParameter( "wpTextbox1", text );
+	return getResponse( req );
+}
+
+public WebResponse addText( String page, String text )
+throws WikiSuiteFailureException {
+	WebResponse wr = editPage( page );
+
+	WebForm editform = getFormByName( wr, "editform" );
+	WebRequest req = editform.getRequest( "wpSave" );
+	String old = req.getParameter( "wpTextbox1" );
+	
+	req.setParameter( "wpTextbox1", old + "\n" + text );
+	req.setParameter( "wpSummary", "Wikitest addition to " + page );
+
+	return getResponse( req );
+}
+
+public WebRequest openPrefs() throws WikiSuiteFailureException {
+	WebResponse wr = viewPage( "Special:Preferences" );
+    WebForm pform = getFormByName( wr, "preferences" );
+	return pform.getRequest( "wpSaveprefs" );
+}
+
+private static Pattern m_startdiv = null, m_enddiv = null;
+
+public String getArticle( WebResponse wr )
+throws WikiSuiteFailureException {
+	String msg = null;
+	String text = null;
+	Matcher m = null;
+
+	if ( m_startdiv == null ) {
+		m_startdiv = Pattern.compile( "<div\\s[^>]*id\\s*=\\s*.article[^>]*>",
+		  Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
+		m_enddiv = Pattern.compile( "</div[^>]*>",
+		  Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
+	}
+	try {
+		text = wr.getText();
+	} catch ( java.io.IOException e ) {
+		msg = "Error (" + e + ") parsing page.";
+		WikiSuite.error( msg );
+		throw new WikiSuiteFailureException( msg );
+	}
+	m = m_startdiv.matcher( text );
+	if (! m.find()) {
+		throw new WikiSuiteFailureException( "Can't find article div start." );
+	}
+
+	text = text.substring( m.end() );
+	m = m_enddiv.matcher( text );
+	if (! m.find()) {
+		throw new WikiSuiteFailureException( "Can't find article div end." );
+	}
+	text = text.substring( 0, m.start() );
+	return text;
+}
+
+public int checkGoodPatterns( String text, String[] pats ) {
+	Pattern p = null;
+	Matcher m = null;
+
+	for ( int i = 0; i < pats.length; ++i ) {
+		p = Pattern.compile( pats[i], Pattern.CASE_INSENSITIVE );
+		m = p.matcher( text );
+
+		if ( ! m.find() ) { return 1 + i; }
+	}
+	return 0;
+}
+
+public int checkBadPatterns( String text, String[] badpats ) {
+	Pattern p = null;
+	Matcher m = null;
+
+	for ( int i = 0; i < badpats.length; ++i ) {
+		p = Pattern.compile( badpats[i], Pattern.CASE_INSENSITIVE );
+		m = p.matcher( text );
+
+		if ( m.find() ) { return 1 + i; }
+	}
+	return 0;
 }
 
 /*

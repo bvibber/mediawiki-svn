@@ -11,7 +11,7 @@ public class UploadTest extends WikiTest {
 public String testName() { return "Uploads"; }
 
 protected int initTest() throws Exception {
-	m_suite.logout();
+	logout();
 	return 0;
 }
 

@@ -12,7 +12,7 @@ public class ParserTest extends WikiTest {
 public String testName() { return "Parsing"; }
 
 protected int initTest() throws Exception {
-	m_suite.logout();
+	logout();
 	return 0;
 }
 
@@ -39,7 +39,7 @@ private int part1() throws Exception {
 	  "Time: \\d\\d:\\d\\d", "Number of articles: \\d+"
 	};
 
-	WebResponse wr = m_suite.viewPage( "Bracketvars" );
+	WebResponse wr = viewPage( "Bracketvars" );
 	String text = getArticle( wr );
 
 	Pattern p = null;
@@ -98,7 +98,7 @@ private int part2() throws Exception {
 	    "[^<]*</dd>\\s*</dl>\\s*</dd>\\s*</dl>\\s*</dd>\\s*</dl>\\s*Par"
 	};
 
-	WebResponse wr = m_suite.viewPage( "Blocklevels" );
+	WebResponse wr = viewPage( "Blocklevels" );
 	String text = getArticle( wr );
 
 	Pattern p = null;
@@ -140,7 +140,7 @@ private int part3() throws Exception {
 	  "\\(19\\) normal <strong>bold</strong> normal <em>italic</em> normal"
 	};
 
-	WebResponse wr = m_suite.viewPage( "Quotes" );
+	WebResponse wr = viewPage( "Quotes" );
 	String text = getArticle( wr );
 
 	Pattern p = null;
@@ -193,7 +193,7 @@ private int part4() throws Exception {
 	  "\\(15\\) <a\\s[^>]*class\\s*=\\s*.external.[^>]*>http://d/e/f</a[^>]*>, More"
 	};
 
-	WebResponse wr = m_suite.viewPage( "ExternalLinks" );
+	WebResponse wr = viewPage( "ExternalLinks" );
 	String text = getArticle( wr );
 
 	Pattern p = null;
@@ -239,7 +239,7 @@ private int part5() throws Exception {
 	  "\\(10\\) <a\\s[^>]*href\\s*=[^>]*Game[^s][^>]*>Games</a"
 	};
 
-	WebResponse wr = m_suite.viewPage( "InternalLinks" );
+	WebResponse wr = viewPage( "InternalLinks" );
 	String text = getArticle( wr );
 
 	Pattern p = null;
@@ -270,7 +270,7 @@ private int part6() throws Exception {
 	  "<h2>\\s*MMM 2\\s*</h2>"
 	};
 
-	WebResponse wr = m_suite.viewPage( "Headings" );
+	WebResponse wr = viewPage( "Headings" );
 	String text = getArticle( wr );
 
 	Pattern p = null;
@@ -295,7 +295,7 @@ private int part7() throws Exception {
 	/*RFC not implemented*/
 	};
 
-	WebResponse wr = m_suite.viewPage( "Magics" );
+	WebResponse wr = viewPage( "Magics" );
 	String text = getArticle( wr );
 
 	Pattern p = null;
@@ -311,32 +311,6 @@ private int part7() throws Exception {
 	return 0;
 }
 
-private Pattern m_startdiv = null, m_enddiv = null;
-
-private String getArticle( WebResponse wr ) throws Exception {
-	String text = wr.getText();
-	Matcher m = null;
-
-	if ( m_startdiv == null ) {
-		m_startdiv = Pattern.compile( "<div\\s[^>]*id\\s*=\\s*.article[^>]*>",
-		  Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
-		m_enddiv = Pattern.compile( "</div[^>]*>",
-		  Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
-	}
-
-	m = m_startdiv.matcher( text );
-	if (! m.find()) {
-		throw new WikiSuiteFailureException( "Can't find article div start." );
-	}
-
-	text = text.substring( m.end() );
-	m = m_enddiv.matcher( text );
-	if (! m.find()) {
-		throw new WikiSuiteFailureException( "Can't find article div end." );
-	}
-	text = text.substring( 0, m.start() );
-	return text;
-}
 
 public static void main( String[] params ) {
 	(new ParserTest()).runSingle( params );
