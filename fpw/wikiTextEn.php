@@ -93,6 +93,8 @@ $wikiOtherNamespaces = "<b>Other namespaces :</b> " ;
 $wikiCategories = "<b>Categories :</b> " ;
 $wikiThisCategory = "Articles in this category" ;
 $wikiCounter = "This page has been accessed $1 times." ;
+$wikiBlockIPTitle = "Block an IP (sysops only)" ;
+$wikiBlockIPText = "IP $1 was blocked by $2" ;
 
 # Interwiki links
 $wikiInterwiki = array ( "w"=>"http://www.wikipedia.com/wiki/$1" , "m"=>"http://meta.wikipedia.com/wiki.phtml?title=$1" ) ;

@@ -28,7 +28,10 @@ class WikiPage extends WikiTitle {
         $this->revision = "current" ;
         if ( $this->namespace == "special" ) { # Special page, calling appropriate function
             $allowed = $wikiAllowedSpecialPages ; # List of allowed special pages
-            if ( in_array ( "is_sysop" , $user->rights ) ) array_push ( $allowed , "asksql" ) ; # Another function just for sysops
+            if ( in_array ( "is_sysop" , $user->rights ) ) { # Functions just for sysops
+		array_push ( $allowed , "asksql" ) ;
+		array_push ( $allowed , "blockip" ) ;
+		}
             $call = $this->mainTitle ;
             if ( !in_array ( strtolower ( $call ) , $allowed ) ) {
                 $this->isSpecialPage = true ;
