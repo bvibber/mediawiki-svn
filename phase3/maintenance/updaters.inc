@@ -184,4 +184,15 @@ function do_categorylinks_update() {
 		echo "ok\n";
 	}
 }
+
+function do_hashs_update() {
+	global $wgDatabase;
+	if( $wgDatabase->tableExists( "hashs" ) ) {
+		echo "...have hashs table.\n";
+	} else {
+		echo "Adding hashs table... ";
+		dbsource( "maintenance/archives/patch-hashs.sql", $wgDatabase );
+		echo "ok\n";
+	}
+}
 ?>
