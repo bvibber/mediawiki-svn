@@ -1,0 +1,6 @@
+<?
+include_once( "LocalSettings.php" );
+global $wpDropdown, $wgServer, $wgScript;
+$url = "{$wgServer}{$wgScript}?title={$wpDropdown}";
+header( "Location: {$url}" );
+?>
