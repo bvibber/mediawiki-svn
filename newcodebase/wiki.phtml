@@ -15,7 +15,7 @@ OutputPage::setEncodings(); # Not really used yet
 
 # Query string fields
 #
-global $action, $title, $search, $target, $printable;
+global $action, $title, $search, $go, $target, $printable;
 global $returnto, $diff, $oldid;
 
 $action = strtolower( trim( $action ) );
@@ -36,7 +36,18 @@ if ( "" == $title && "delete" != $action ) {
 if ( -1 == $wgTitle->getNamespace() ) {
 	wfSpecialPage();
 } else if ( "" != $search ) {
-	wfSearch( $search );
+	if($go) {
+	
+		$wgArticle=new Article();
+		$wgTitle=Title::newFromText($search);
+		$wgArticle->view();
+		
+	} else {
+	
+		wfSearch( $search );
+		
+	}
+		
 } else {
 	$wgArticle = new Article();
 

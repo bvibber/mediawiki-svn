@@ -304,6 +304,7 @@
 "whatlinkshere"	=> "Pages that link here",
 "help"			=> "Help",
 "search"		=> "Search",
+"go"		=> "Go",
 "history"		=> "Older versions",
 "printableversion" => "Printable version",
 "editthispage"	=> "Edit this page",
