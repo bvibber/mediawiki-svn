@@ -8,6 +8,10 @@ function wfSpecialMovepage()
 		$wgOut->errorpage( "movenologin", "movenologintext" );
 		return;
 	}
+	if ( wfReadOnly() ) {
+		$wgOut->readOnlyPage();
+		return;
+	}
 	$fields = array( "wpNewTitle", "wpOldTitle" );
 	wfCleanFormFields( $fields );
 
