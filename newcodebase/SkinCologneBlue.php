@@ -129,9 +129,9 @@ class SkinCologneBlue extends Skin {
 		  . $sep . $this->specialLink( "imagelist" ) 
 		  . $sep . $this->specialLink( "statistics" ) 
 		  . $sep . $this->specialLink( "specialpages" ) 
-		  . $sep . $this->bugReportsLink()
-		  . $sep . $this->makeKnownLink( wfMsg( "currentevents" ), "" )
-		  . $sep; # . $this->dateLink() . $sep;
+		  . $sep . $this->bugReportsLink() ;
+                if ( wfMsg ( "currentevents" ) != "-" ) $s .= $sep . $this->makeKnownLink( wfMsg( "currentevents" ), "" ) ;
+                $s .= "\n";
 
 		if ( $wgOut->isArticle() ) {
 			$s .= $this->menuHead( "qbedit" );
