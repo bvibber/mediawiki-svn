@@ -405,11 +405,12 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 
 	$now = wfTimestampNow();
 	$won = wfInvertTimestamp( $now );
+	$size = IntVal( $size );
 	
 	if ( 0 == wfNumRows( $res ) ) {
 		$sql = "INSERT INTO image (img_name,img_size,img_timestamp," .
 		  "img_description,img_user,img_user_text) VALUES ('" .
-		  wfStrencode( $name ) . "'," . (int)$size . ",{$now}','" .
+		  wfStrencode( $name ) . "',$size,'{$now}','" .
 		  wfStrencode( $desc ) . "', '" . $wgUser->getID() .
 		  "', '" . wfStrencode( $wgUser->getName() ) . "')";
 		wfQuery( $sql, $fname );
