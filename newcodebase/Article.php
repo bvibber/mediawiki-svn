@@ -776,6 +776,11 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$wgOut->setArticleFlag( false );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 
+		if( $wgTitle->getArticleID() == 0 ) {
+			$wgOut->addHTML( wfMsg( "nohistory" ) );
+			return;
+		}
+		
 		$sql = "SELECT old_id,old_namespace,old_title,old_user," .
 		  "old_comment,old_user_text,old_timestamp,old_minor_edit FROM old " .
 		  "WHERE old_namespace=" . $wgTitle->getNamespace() . " AND " .
@@ -784,7 +789,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$res = wfQuery( $sql, "Article::history" );
 
 		$revs = wfNumRows( $res );
-		if( $revs == 0 ) {
+		if( $wgTitle->getArticleID() == 0 ) {
 			$wgOut->addHTML( wfMsg( "nohistory" ) );
 			return;
 		}
