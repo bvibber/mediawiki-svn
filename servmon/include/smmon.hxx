@@ -13,6 +13,15 @@ struct notype : public std::runtime_error {
 struct noserv : public std::runtime_error {
 	noserv() : std::runtime_error("server does not exist") {}
 };
+
+class xomitr {
+public:
+	xomitr();
+	uint32_t val(uint32_t newval);
+private:
+	uint32_t v;
+	std::time_t l;
+};
 	
 class cfg : public smutl::singleton<cfg> {
 public:
@@ -36,6 +45,7 @@ public:
 		squidserver(str name) : server(name) {}
 		std::string type() const { return "Squid"; }
 		void check();
+		xomitr rps;
 	};
 	std::map<std::string, serverp> const& servers() const {
 		return serverlist;

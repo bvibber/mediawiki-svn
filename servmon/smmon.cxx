@@ -62,7 +62,7 @@ public:
 				res = s;
 				std::cerr << "result type str: " << s << "\n";
 			} else if (vars->type == 0x41) { /* Counter32 */
-				int i;
+				uint32_t i = 0;
 				memcpy(&i, vars->val.bitstring, vars->val_len);
 				res = i;
 				std::cerr << "result type counter32: " << i << "\n";
@@ -85,6 +85,23 @@ private:
 	int port;
 	std::string hostport;
 };
+
+xomitr::xomitr() : v(0), l(0) {}
+uint32_t
+xomitr::val(uint32_t newval)
+{
+	std::time_t then = l;
+	if (v == 0) v = newval;
+	std::time_t now = std::time(0);
+	l = now;
+	uint64_t q = v, nv = newval;
+	v = nv;
+	if (nv < q)
+		nv = uint64_t(4294967296LL) + nv;
+	std::cerr << "nv: " << newval << "then: " << then << " now: " << now << " q: " << q << "\n";
+	std::cerr << "(q - nv) / (then - now) = " << ((nv - q) / (now - then)) << "\n";
+	return (nv - q) / (now - then);
+}
 	
 void
 cfg::initialise(void)
@@ -132,14 +149,15 @@ void
 cfg::squidserver::check(void) {
 	std::cerr << "squid: checking " << name << '\n';
 	snmpclient c(name, 3401);
-	int requests;
+	uint32_t requests;
 	try {
-		requests = b::any_cast<int>(c.getoid("1.3.6.1.4.1.3495.1.3.2.1.1"));
+		requests = b::any_cast<uint32_t>(c.getoid("1.3.6.1.4.1.3495.1.3.2.1.1"));
 	} catch (b::bad_any_cast&) {
 		std::cerr << "cast failed...\n";
 		return;
 	}
-	std::cerr << "\trequests: " << requests << '\n';
+	uint32_t rpsv = rps.val(requests);
+	std::cerr << "\trequests: " << requests << " (" << rpsv << "/sec)\n";
 }
        
 bool
