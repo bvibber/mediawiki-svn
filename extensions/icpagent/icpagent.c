@@ -206,14 +206,22 @@ main(int ac, char **av)
     int remotemanage=0;
     int c;
     icp_opcode opcode=ICP_HIT;
+    struct rlimit rlim;
 
-    while ((c = getopt(ac,av,"mp:")) != -1) {
+    while ((c = getopt(ac,av,"dmp:c")) != -1) {
         switch (c) {
             case 'p':
                 port=atoi(optarg);
                 break;
             case 'm':
                 remotemanage=1;
+                break;
+            case 'c':
+                rlim.rlim_cur=(1024*1024*10);
+                rlim.rlim_max=(1024*1024*10);
+                setrlimit(RLIMIT_CORE,&rlim); 
+            case 'd':
+                daemon(1,0);
                 break;
             default:
                 fprintf(stderr, "Usage: icpagent [-p port] -m\n");
