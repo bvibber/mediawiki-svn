@@ -1,12 +1,15 @@
-struct cmd_show_version : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
+#define HDL(x) struct x : handler<tt>
+#define EX bool execute(comdat<tt> const& cd)
+
+HDL(cmd_show_version) {
+	EX {
 		cd.inform("servmon pre-release");
 		return true;
 	}
 };
 
-struct cmd_enable : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
+HDL(cmd_enable) {
+	EX {
 		cd.wrt("Password: ");
 		cd.term.echo(false);
 		cd.term.readline(boost::bind(&cmd_enable::vfypass, this, _1, _2));
@@ -21,16 +24,16 @@ struct cmd_enable : handler<tt> {
 	}
 };
 
-struct cmd_exit : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
+HDL(cmd_exit) {
+	EX {
 		cd.inform("Bye");
 		return false;
 	}
 };
 
-struct cfg_eblpass : handler<tt> {
+HDL(cfg_eblpass) {
 	std::string p1;
-	bool execute(comdat<tt> const& cd) {
+	EX {
 		cd.term.echo(false);
 		cd.wrt("Enter new password: ");
 		cd.term.readline(boost::bind(&cfg_eblpass::gotp1, this, _1, _2));
@@ -52,12 +55,13 @@ struct cfg_eblpass : handler<tt> {
 	}
 };
 
-struct chg_parser : handler<tt> {
+HDL(chg_parser) {
 	chg_parser(handler_node<tt>& newp_, std::string const& prm_)
 	: newp(newp_)
 	, prm(prm_)
-	{}
-	bool execute(comdat<tt> const& cd) {
+	{
+	}
+	EX {
 		cd.chgrt(&newp, prm);
 		return true;
 	}
@@ -65,9 +69,9 @@ struct chg_parser : handler<tt> {
 	std::string prm;
 };
 
-struct cfg_userpass : handler<tt> {
+HDL(cfg_userpass) {
 	std::string usr;
-	bool execute(comdat<tt> const& cd) {
+	EX {
 		if (smauth::usr_exists(cd.p(0))) {
 			cd.error("User already exists.");
 			return true;
@@ -84,8 +88,8 @@ struct cfg_userpass : handler<tt> {
 	}
 };
 
-struct cfg_no_user : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
+HDL(cfg_no_user) {
+	EX {
 		if (!smauth::usr_exists(cd.p(0))) {
 			cd.error("No such user.");
 			return true;
@@ -95,15 +99,15 @@ struct cfg_no_user : handler<tt> {
 	}
 };
 
-struct cfg_irc_servnick : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
+HDL(cfg_irc_servnick) {
+	EX {
 		SMI(smirc::cfg)->newserv_or_chgnick(cd.p(0), cd.p(1));
 		return true;
 	}
 };
 
-struct cfg_irc_servsecnick : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
+HDL(cfg_irc_servsecnick) {
+	EX {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
 			cd.error("No such server.");
 			return true;
@@ -113,23 +117,23 @@ struct cfg_irc_servsecnick : handler<tt> {
 	}
 };
 
-struct cfg_irc_channel : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
+HDL(cfg_irc_channel) {
+	EX {
 		SMI(smirc::cfg)->channel(cd.p(0));
 		return true;
 	}
 };
 
-struct cfg_irc_nochannel : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
+HDL(cfg_irc_nochannel) {
+	EX {
 		if (!SMI(smirc::cfg)->nochannel(cd.p(0)))
 			cd.error("No such channel.");
 		return true;
 	}
 };
 
-struct cfg_irc_noserver : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
+HDL(cfg_irc_noserver) {
+	EX {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
 			cd.error("No such server.");
 			return true;
@@ -139,8 +143,8 @@ struct cfg_irc_noserver : handler<tt> {
 	}
 };
 
-struct cfg_irc_showchannels : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
+HDL(cfg_irc_showchannels) {
+	EX {
 		try {
 			std::set<std::string> channels = SMI(smcfg::cfg)->fetchlist("/irc/channels");
 			cd.inform("Currently configured channels:");
@@ -154,8 +158,8 @@ struct cfg_irc_showchannels : handler<tt> {
 	}
 };
 
-struct cfg_irc_showserver : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
+HDL(cfg_irc_showserver) {
+	EX {
 		if (cd.num_params() == 0) {
 			try {
 				std::set<std::string> servers = SMI(smcfg::cfg)->fetchlist("/irc/servers");
@@ -193,8 +197,8 @@ struct cfg_irc_showserver : handler<tt> {
 	}
 };
 
-struct cfg_irc_enableserver : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
+HDL(cfg_irc_enableserver) {
+	EX {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
 			cd.error("No such server.");
 			return true;
@@ -204,8 +208,8 @@ struct cfg_irc_enableserver : handler<tt> {
 	}
 };
 
-struct cfg_irc_noenableserver : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
+HDL(cfg_irc_noenableserver) {
+	EX {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
 			cd.error("No such server.");
 			return true;
@@ -214,3 +218,42 @@ struct cfg_irc_noenableserver : handler<tt> {
 		return true;
 	}
 };
+
+HDL(cfg_monit_showservers) {
+	EX {
+		std::map<std::string, smmon::cfg::serverp> servers;
+		if (cd.num_params() == 0) {
+			servers = SMI(smmon::cfg)->servers();
+		} else {
+			try {
+				servers[cd.p(0)] = SMI(smmon::cfg)->serv(cd.p(0));
+			} catch (smmon::noserv&) {
+				cd.error("Server does not exist.");
+				return true;
+			}
+		}
+		for(std::map<std::string, smmon::cfg::serverp>::const_iterator i
+			    = servers.begin(), end = servers.end(); i != end; ++i) {
+			cd.wrtln(i->first + ":");
+			cd.wrtln("  Type:  " + i->second->type());
+		}
+		return true;
+	}
+};
+
+HDL(cfg_monit_server_type) {
+	EX {
+		if (!SMI(smmon::cfg)->knowntype(cd.p(1))) {
+			cd.error(b::io::str(b::format("Unknown monitor type %s.") % cd.p(1)));
+			return true;
+		}
+		if (SMI(smmon::cfg)->server_exists(cd.p(0))) {
+			cd.error("Server already exists.");
+			return true;
+		}
+		SMI(smmon::cfg)->create_server(cd.p(0), cd.p(1));
+		return true;
+	}
+};
+		
+		

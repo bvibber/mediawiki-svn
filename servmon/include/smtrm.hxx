@@ -6,6 +6,7 @@
 #include "smirc.hxx"
 #include "smutl.hxx"
 #include "smauth.hxx"
+#include "smmon.hxx"
 
 namespace smtrm {
 
@@ -156,6 +157,8 @@ stdrt.install("exit", cmd_exit(), "End session");
 stdrt.install("show irc server %s", cfg_irc_showserver(), "Describe a configured server");
 stdrt.install("show irc server", cfg_irc_showserver(), "Describe all configured servers");
 stdrt.install("show irc channels", cfg_irc_showchannels(), "Show configured channels");
+stdrt.install("show monitor server", cfg_monit_showservers(), "Show monitored servers");
+stdrt.install("show monitor server %s", cfg_monit_showservers(), "Show information for a particular server");
 eblrt = stdrt;
 stdrt.install("enable", cmd_enable(), "Enter privileged mode");
 eblrt.install("disable", chg_parser(stdrt, "%s> "), "Return to non-privileged mode");
@@ -163,6 +166,7 @@ eblrt.install("configure", chg_parser(cfgrt, "%s(conf)# "), "Configure servmon")
 cfgrt.install("exit", chg_parser(eblrt, "%s# "), "Exit configure mode");
 cfgrt.install("enable password", cfg_eblpass(), "Change enable password");
 cfgrt.install("function irc", chg_parser(ircrt, "%s(conf-irc)# "), "Configure Internet Relay Chat connections");
+cfgrt.install("function monitor", chg_parser(monrt, "%s(conf-monit)# "), "Configure server monitoring");
 cfgrt.install("user %s password", cfg_userpass(), "Create a new account");
 cfgrt.install("no user %s", cfg_no_user(), "Remove a user account");
 ircrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit IRC configuration mode");
@@ -176,11 +180,14 @@ ircrt.install("no server %s enable", cfg_irc_noenableserver(), "Disable a server
 ircrt.install("server %s enable", cfg_irc_enableserver(), "Enable connection to a server");
 ircrt.install("channel %s", cfg_irc_channel(), "Specify a channel to join");
 ircrt.install("no channel %s", cfg_irc_nochannel(), "Remove a channel");
+monrt.install("server %s type %s", cfg_monit_server_type(), "Monitor a server");
+monrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit monitor configuration mode");
 	}
 	handler_node<tt> stdrt;
 	handler_node<tt> eblrt;
 	handler_node<tt> cfgrt;
 	handler_node<tt> ircrt;
+	handler_node<tt> monrt;
 };
 
 template<class intft>
