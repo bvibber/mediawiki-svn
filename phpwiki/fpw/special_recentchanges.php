@@ -8,7 +8,7 @@ function recentchanges () {
     $vpage->special ( $wikiRecentChangesTitle ) ;
     $vpage->makeSecureTitle() ;
     if ( !isset ( $maxcnt ) ) $maxcnt = $user->options["viewRecentChanges"] ;
-    if ( !isset ( $daysAgo ) ) $daysAgo = 14 ;
+    if ( !isset ( $daysAgo ) ) $daysAgo = 3 ;
     
     $from2 = substr ( $from , 0 , 4 ) . "-" . substr ( $from , 4 , 2 ) . "-" . substr ( $from , 6 , 2 ) ;
     $from2 .= " " . substr ( $from , 8 , 2 ) . ":" . substr ( $from , 10 , 2 ) . ":" . substr ( $from , 12 , 2 ) ;
