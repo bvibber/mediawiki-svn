@@ -504,6 +504,23 @@ class Article {
 			$checkboxhtml="";
 		}
 
+
+		
+		if ( "preview" == $formtype) {
+		
+			$previewhead="<h2>" . wfMsg( "preview" ) . "</h2>\n<p><large><center><font color=\"#cc0000\">" . 
+			wfMsg( "note" ) . wfMsg( "previewnote" ) . "</font></center></large><P>\n";
+			if ( $isConflict ) {
+				$previewhead.="<h2>" . wfMsg( "previewconflict" ) .
+				  "</h2>\n";
+			}
+			$previewtext = wfUnescapeHTML( $wpTextbox1 );
+			
+			if($wgUser->getOption("previewontop")) {
+				$wgOut->addHTML($previewhead);
+				$wgOut->addWikiText( $this->preSaveTransform( $previewtext ) ."\n\n");
+			}
+		}
 		$wgOut->addHTML( "
 <form method=post action=\"$action\"
 enctype='application/x-www-form-urlencoded' name='editform'>
@@ -529,23 +546,16 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 "</textarea>" );
 		}
 		$wgOut->addHTML( "</form>\n" );
-
-		if ( "preview" == $formtype ) {
-			$wgOut->addHTML( "<h2>" . wfMsg( "preview" ) . "</h2>\n" );
-			if ( $isConflict ) {
-				$wgOut->addHTML( "<h2>" . wfMsg( "previewconflict" ) .
-				  "</h2>\n" );
-			}
-			$previewtext = wfUnescapeHTML( $wpTextbox1 );
+		if($formtype =="preview" && !$wgUser->getOption("previewontop")) {
+			$wgOut->addHTML($previewhead);
 			$wgOut->addWikiText( $this->preSaveTransform( $previewtext ) );
-			$wgOut->addHTML( "<p><large>" . wfMsg( "note" ) .
-			  wfMsg( "previewnote" ) . "</large>\n" );
 		}
+
 	}
 
 	# Theoretically we could defer these whole insert and update
 	# functions for after display, but that's taking a big leap
-	# leap of faith, and I want to be able to report database
+	# of faith, and we want to be able to report database
 	# errors at some point.
 
 	/* private */ function insertNewArticle( $text, $summary, $isminor, $watchthis )
