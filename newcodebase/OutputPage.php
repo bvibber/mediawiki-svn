@@ -308,9 +308,9 @@ class OutputPage {
 
 	/* private */ function doHeadings( $text )
 	{
-		for ( $i = 6; $i >= 1; --$i ) {
+		for ( $i = 6; $i >= 2; --$i ) {
 			$h = substr( "======", 0, $i );
-			$text = preg_replace( "/(^|\\n)\\s*{$h}\\s+([^\\n]+)\\s+{$h}/",
+			$text = preg_replace( "/(^|\\n)\\s*{$h}\\s+([^\\n]+)\\s+{$h}/sD",
 			  "\\1<h{$i}>\\2</h{$i}>", $text );
 		}
 		return $text;
@@ -322,18 +322,22 @@ class OutputPage {
 		$sk = $wgUser->getSkin();
 
 		$text = preg_replace(
-		  "/(^|[^[])http:\/\/([a-zA-Z0-9_\/:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
+		  "/(^|[^[])http:\\/\\/([a-zA-Z0-9_\\/:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
 		  "\\1" . $sk->makeImage( "http://\\2.\\3", "[Image]" ), $text );
 		return $text;
 	}
 
+	# Note: we have to do external links before the internal ones,
+	# and otherwise take great care in the order of things here, so
+	# that we don't end up interpreting some URLs twice.
+
 	/* private */ function replaceExternalLinks( $text )
 	{
-		$text = $this->subReplaceExternalLinks( $text, "http:", true );
-		$text = $this->subReplaceExternalLinks( $text, "ftp:", false );
-		$text = $this->subReplaceExternalLinks( $text, "gopher:", false );
-		$text = $this->subReplaceExternalLinks( $text, "news:", false );
-		$text = $this->subReplaceExternalLinks( $text, "mailto:", false );
+		$text = $this->subReplaceExternalLinks( $text, "http", true );
+		$text = $this->subReplaceExternalLinks( $text, "ftp", false );
+		$text = $this->subReplaceExternalLinks( $text, "gopher", false );
+		$text = $this->subReplaceExternalLinks( $text, "news", false );
+		$text = $this->subReplaceExternalLinks( $text, "mailto", false );
 		return $text;
 	}
 
@@ -341,45 +345,38 @@ class OutputPage {
 	{
 		global $wgUser;
 
-		if ( strstr( $s, "[$protocol" ) === false ) { return $s; }
-		$cnt = 1;
-		$a = explode( "[$protocol", " " . $s );
+		$sk = $wgUser->getSkin();
+		$uc = "A-Za-z0-9_\\/:.,~%\\-+&;#?!=()@\\xA0-\\xFF";
+
+		$s = preg_replace( "/(^|[^[{$uc}])({$protocol}:[{$uc}]+)/",
+		  "\\1<a href=\"\\2\"" . $sk->getExternalLinkAttributes( "\\2",
+		  "\\2" ) . ">" . wfEscapeHTML( "\\2" ) . "</a>", $s );
+
+		$a = explode( "[{$protocol}:", " " . $s );
 		$s = array_shift( $a );
 		$s = substr( $s, 1 );
-		$image = "";
-		$sk = $wgUser->getSkin();
 
-		foreach ( $a as $t ) {
-			$b = spliti( "]", $t, 2 );
-			if ( count($b) < 2 ) { $s .= "[Broken link: $b[0]]"; }
-			else {
-				$c = explode( " ", $b[0], 2 );
-				if ( count ( $c ) == 1 ) { array_push( $c, "" ); }
-				$link = $c[0];
-				$text = trim( $c[1] );
+		$e1 = "/^([{$uc}]+)](.*)\$/sD";
+		$e2 = "/^([{$uc}]+)\\s+([^\\]]+)](.*)\$/sD";
+		$auto = 0;
 
-				if ( "" == $text ) {
-					if ( $autonumber ) { $text = "[" . $cnt++ . "]"; }
-					else { $text = "[$protocol$link]"; }
-				} else {
-					if ( ! ( strstr( $text, " " ) === false ) &&
-					  1 == $wgUser->getOption( "underline" ) ) {
-						$text = "[$text]";
-					}
-				}
-				if ( ! strstr( $b[1], "<hr>" ) === false ) { $cnt = 1; }
-				$link = "~$protocol" . $link;
-
-				$linkStyle = $sk->getExternalLinkAttributes( $link, $text );
-				$theLink = "<a href=\"$link\"$linkStyle>$image$text</a>";
-				$s .= $theLink . $b[1];
+		foreach ( $a as $line ) {
+			if ( preg_match( $e1, $line, $m ) ) {
+				$link = "{$protocol}:{$m[1]}";
+				$trail = $m[2];
+				if ( $autonumber ) { $text = "[" . ++$auto . "]"; }
+				else { $text = wfEscapeHTML( $link ); }
+			} else if ( preg_match( $e2, $line, $m ) ) {
+				$link = "{$protocol}:{$m[1]}";
+				$text = $m[2];
+				$trail = $m[3];
+			} else {
+				$s .= "[{$protocol}:" . $line;
+				continue;
 			}
+			$la = $sk->getExternalLinkAttributes( $link, $text );
+			$s .= "<a href=\"{$link}\"{$la}>{$text}</a>{$trail}";
 		}
-        $o_no_dot = "A-Za-z0-9_~/=?\:\%\+\&\#\-";
-        $o = "\.$o_no_dot";
-        $s = eregi_replace( "([^~\"])http://([$o]+[$o_no_dot])([^$o_no_dot])",
-		  "\\1<a href=\"http://\\2\">".$image."http://\\2</a>\\3", $s );
-        $s = str_replace( "~$protocol", "$protocol", $s );
 		return $s;
 	}
 
@@ -395,10 +392,10 @@ class OutputPage {
 		$s = array_shift( $a );
 		$s = substr( $s, 1 );
 
-		foreach ( $a as $line ) {
-			$e1 = "/^([{$tc}]+)\\|([^]]+)]](.*)\$/sD";
-			$e2 = "/^([{$tc}]+)]](.*)\$/sD";
+		$e1 = "/^([{$tc}]+)\\|([^]]+)]](.*)\$/sD";
+		$e2 = "/^([{$tc}]+)]](.*)\$/sD";
 
+		foreach ( $a as $line ) {
 			if ( preg_match( $e1, $line, $m ) ) {
 				$link = $m[1];
 				$text = $m[2];

@@ -36,7 +36,7 @@ class Namespace {
 
 	function isTalk( $index )
 	{
-		if ( 1 == $index || 3 == $index || 5 == $index ) {
+		if ( 1 == $index || 3 == $index || 5 == $index || 7 == $index ) {
 			return true;
 		}
 		return false;

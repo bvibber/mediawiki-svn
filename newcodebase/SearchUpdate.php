@@ -28,11 +28,17 @@ class SearchUpdate {
 		$words = explode( " ", strtolower( trim( $t ) ) );
 		foreach ( $words as $w ) { $this->mTitleWords[$w] = 1; }
 
-		# TODO: do something special for 's and ]]s
-		#
 		$text = preg_replace( "/<\\/?\\s*[A-Za-z][A-Za-z0-9]*\\s*([^>]*?)>/",
-		  " ", strtolower( $this->mText ) );
+		  " ", strtolower( $this->mText ) ); # Strip HTML markup
+		$text = preg_replace( "/([^{$lc}])([{$lc}]+)]]([a-z]+)/",
+		  "\\1\\2 \\2\\3", $text ); # Handle [[game]]s
+
 		$text = preg_replace( "/[^{$lc}]+/", " ", $text );
+		$text = preg_replace( "/([{$lc}]+)'s /", "\\1 \\1's ", $text );
+		$text = preg_replace( "/([{$lc}]+)s' /", "\\1s ", $text );
+
+		# Need to strip external links?
+
 		$text = preg_replace( "/(^|[^{$lc}])[{$lc}][{$lc}]([^{$lc}]|$)/",
 		  "\\1 \\2", $text );
 		$text = preg_replace( "/(^|[^{$lc}])[{$lc}]([^{$lc}]|$)/",
