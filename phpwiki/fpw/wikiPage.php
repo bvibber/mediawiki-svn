@@ -65,6 +65,13 @@ class WikiPage extends WikiTitle {
         if ( isset ( $oldID ) ) { # an old article version
             $sql = "SELECT * FROM old WHERE old_id=$oldID" ;
             $result = mysql_query ( $sql , $connection ) ;
+	    if ( ! $result ) {
+	    	global $wikiErrorPageTitle , $wikiErrorMessage ;
+	    	$this->canBeCached = false ;
+		$this->SetTitle ( $wikiErrorTitle ) ;
+		$this->contents = str_replace ( "$1" , htmlspecialchars ( mysql_error() ) , $wikiErrorMessage ) ;
+	    	return ;
+		}
             if ( $s = mysql_fetch_object ( $result ) ) {
                 $this->SetTitle ( $s->old_title ) ;
                 $this->contents = $s->old_text ;
