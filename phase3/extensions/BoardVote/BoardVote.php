@@ -24,7 +24,7 @@ function wfBoardvoteSetup()
 
 class BoardVotePage extends SpecialPage {
 	var $mPosted, $mContributing, $mVolunteer, $mDBname, $mUserDays, $mUserEdits;
-	var $mHasVoted, $mAction, $mUserKey, $mId;
+	var $mHasVoted, $mAction, $mUserKey, $mId, $mFinished;
 
 	function BoardVotePage() {
 		SpecialPage::SpecialPage( "Boardvote" );
@@ -50,6 +50,11 @@ class BoardVotePage extends SpecialPage {
 
 		$this->setHeaders();
 
+		if ( time() > 1087084800 ) {
+			$this->mFinished = true; 
+		} else {
+			$this->mFinished = false;
+		}
 		if ( $this->mAction == "list" ) {
 			$this->displayList();
 		} elseif ( $this->mAction == "dump" ) {
@@ -58,7 +63,7 @@ class BoardVotePage extends SpecialPage {
 			$this->strike( $this->mId, false );
 		} elseif ( $this->mAction == "unstrike" ) {
 			$this->strike( $this->mId, true );
-		} elseif( $this->mAction == "vote" ) {
+		} elseif( $this->mAction == "vote" && !$this->mFinished ) {
 			if ( !$wgUser->getID() ) {
 				$this->notLoggedIn();
 			} else {
