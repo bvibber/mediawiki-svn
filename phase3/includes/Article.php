@@ -1640,8 +1640,14 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		global $wgTitle;
 		
 		if($this->isFileCacheable()) {
+			$touched = $this->mTouched;
+			if( strpos( $this->mContent, "{{" ) !== false ) {
+				# Expire pages with variable replacements in an hour
+				$expire = wfUnix2Timestamp( time() - 3600 );
+				$touched = max( $expire, $touched );
+			}
 			$cache = new CacheManager( $wgTitle );
-			if($cache->isFileCacheGood( $this->mTouched )) {
+			if($cache->isFileCacheGood( $touched )) {
 				wfDebug( " tryFileCache() - about to load\n" );
 				$cache->loadFromFileCache();
 				exit;
