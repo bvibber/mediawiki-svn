@@ -1,0 +1,13 @@
+ICP agent can be used as ICP responder in squid-apache web server cluster.
+It does delay requests to frontend caches 
+at high loads and might be remotely turned 
+on or off.
+
+Options:
+-m      - enable remote management
+-p #    - port number to listen at
+
+Example of remote management:
+
+echoping -i agent://enable webserver:3130
+echoping -i agent://disable webserver:3130
