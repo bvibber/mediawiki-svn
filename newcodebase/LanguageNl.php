@@ -498,6 +498,8 @@ Om Wikipedia te laten slagen is het erg belangrijk geen materiaal toe te voegen 
 "tableform"  => "tabel",
 "listform"  => "lijst",
 "nchanges"  => "$1 wijzigingen",
+"minoreditletter" => "K",
+"newpageletter" => "N",
 
 # Upload
 #
