@@ -382,7 +382,7 @@ class OutputPage {
 
 	/* private */ function replaceInternalLinks( $s )
 	{
-		global $wgTitle, $wgUser, $wgServer, $wgUploadPath, $wgLang;
+		global $wgTitle, $wgUser, $wgLang;
 		global $wgLinkCache;
 
 		$tc = Title::legalChars() . "#";

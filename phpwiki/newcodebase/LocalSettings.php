@@ -11,16 +11,16 @@ $wgDirectory	    = "/wiki";
 $wgStyleSheetPath   = "$wgServer$wgDirectory/stylesheets";
 $wgScript           = "$wgDirectory/wiki.phtml";
 $wgArticlePath      = "$wgServer$wgScript?title=$1";
-$wgUploadPath       = "$wgDirectory/upload";
+$wgUploadPath       = "$wgServer/upload";
 $wgUploadDirectory	= "/var/www/html/upload";
-$wgLogo		    	= "$wgServer$wgUploadPath/wiki.png";
+$wgLogo		    	= "$wgUploadPath/wiki.png";
 
 # MySQL settings
 #
 $wgDBserver         = "127.0.0.1";
 $wgDBname           = "newwiki";
 $wgDBuser           = "wikiuser";
-$wgDBpassword       = "oberon";
+$wgDBpassword       = "xxx";
 
 # Turn this on during database maintenance
 #
