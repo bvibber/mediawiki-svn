@@ -9,6 +9,7 @@ function upload () {
 	global $wikiUploadAffirm , $wikiUploadFull , $wikiUploadRestrictions ;
 	global $wikiUploadSuccess , $wikiUploadSuccess1 , $wikiUploadSuccess2 ;
 	global $wikiUploadAffirmText , $wikiUploadButton , $wikiUser , $wikiCurrentServer , $wikiDescription , $wikiRecodeInput , $CommentBox ;
+	global $wikiUploadShowFiles , $showfiles ;
 	$vpage->special ( $wikiUploadTitle ) ;
 	$isSysop = in_array ( "is_sysop" , $user->rights ) ;
 	$xtitle = $wikiUploadPage ;
@@ -66,6 +67,7 @@ function upload () {
 
 	if ( $message != "" ) $ret .= "<font color=red>$message</font><br>\n" ;
 	$ret .= $wikiUploadText ;
+	if ( !isset($showfiles) ) $ret .= str_replace ( "$1" , wikiLink("special:upload")."&showfiles=yes" , $wikiUploadShowFiles ) ;
 	$ret .= " <form enctype=\"multipart/form-data\" action=\"".wikiLink("special:upload")."\" method=post>\n";
 	$ret .= " <input type=hidden name=max value=20096>\n";
 	$ret .= " <input name=Upload type=\"file\"><br>\n";
@@ -78,7 +80,7 @@ function upload () {
 
 	global $wikiUploadPrev , $wikiUploadSize , $wikiFileRemoval , $wikiUploadRemove, $THESCRIPT ;
 
-	if (is_dir("upload")) {
+	if (is_dir("upload") AND isset($showfiles)) {
 		$mydir = dir("upload");
 			while ($entry = $mydir->read()) {
 			if ($entry != "." and $entry != "..")

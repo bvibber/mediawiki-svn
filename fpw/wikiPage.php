@@ -1138,7 +1138,8 @@ class WikiPage extends WikiTitle {
 		if ( $this->skinLoaded ) return ;
 
 		$s = "skin".str_replace ( " " , "" , $user->options['skin'] ) ;
-		if ( $s == "skin" OR $s == "skinNone" ) $s = "skinStandard" ;
+		if ( $s == "skin" OR $s == "skinNone" ) $s = "skinCologneBlue" ;#$s = "skinStandard" ;
+		include_once ( "wiki".ucfirst($s).".php" ) ;
 		$this->skin = new $s ;
 
 		$this->skinLoaded = true ;

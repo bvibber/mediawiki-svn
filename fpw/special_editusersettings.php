@@ -57,7 +57,7 @@ function editUserSettings () {
 	global $wikiQuickBarSettings , $wikiSettingsNone , $wikiSettingsStandard , $wikiSettingsLeft , $wikiSettingsRight ;
 	global $wikiOldPassword , $wikiNewPassword , $wikiYourPasswordAgain , $wikiSkin , $wikiStarTrek , $wikiNostalgy ;
 	global $wikiShowHoverBox , $wikiUnderlineLinks , $wikiNewTopicsRed , $wikiJustifyParagraphs , $wikiShowRecentChangesTable ;
-	global $wikiDoNumberHeadings , $wikiViewWithFrames , $wikiTurnedOn , $wikiTurnedOff ;
+	global $wikiDoNumberHeadings , $wikiViewWithFrames , $wikiTurnedOn , $wikiTurnedOff , $wikiSkinClassic ;
 	global $wikiTextboxDimensions , $wikiCols , $wikiRows , $wikiYourEmail , $wikiResultsPerPage , $wikiTimeDiff , $wikiSave , $wikiReset ;
 	global $wikiEncodingNames, $wikiOutputEncoding , $wikiHideMinorEdits , $wikiCologneBlue , $wikiAutoWikify ;
 
@@ -83,10 +83,11 @@ function editUserSettings () {
 	# Skin
 	$sk[$user->options["skin"]] = "checked" ;
 	$ret .= "<tr><td valign=top nowrap><b>$wikiSkin</b><br>\n" ;
-	$ret .= "<input type=radio value=None ".$sk["None"]." name=doSkin>$wikiSettingsNone ($wikiSettingsStandard)<br>\n" ;
+	$ret .= "<input type=radio value=\"Cologne Blue\" ".$sk["Cologne Blue"]." name=doSkin>$wikiCologneBlue ($wikiSettingsStandard)<br>\n" ;
+#	$ret .= "<input type=radio value=None ".$sk["None"]." name=doSkin>$wikiSettingsNone<br>\n" ;
+	$ret .= "<input type=radio value=Standard ".$sk["Standard"]." name=doSkin>$wikiSkinClassic<br>\n" ;
 	$ret .= "<input type=radio value=\"Star Trek\" ".$sk["Star Trek"]." name=doSkin>$wikiStarTrek<br>\n" ;
 	$ret .= "<input type=radio value=\"Nostalgy\" ".$sk["Nostalgy"]." name=doSkin>$wikiNostalgy<br>\n" ;
-	$ret .= "<input type=radio value=\"Cologne Blue\" ".$sk["Cologne Blue"]." name=doSkin>$wikiCologneBlue<br>\n" ;
 
 #----------------------------------------------
 	$ret .= "</td><td valign=top nowrap>" ;

@@ -69,7 +69,7 @@ class skinCologneBlue extends skinClass {
 		global $wikiMyOptions, $wikiMyself , $wikiLogOut , $wikiMySettings , $wikiShortPages , $wikiLongPages , $wikiUserList , $wikiEditingHistory , $wikiTopics ;
 		global $wikiAddToWatchlist , $wikiEditPage , $wikiPrintable , $wikiTalk , $wikiEdit , $wikiPageOptions , $wikiBrowse , $wikiFind , $wikiOK;
 		global $wikiEditingHelp , $wikiWikipediaEditingHelp , $wikiShowLastChange , $wikiProtectThisPage , $wikiMainPage , $THESCRIPT , $wikiVoteForPage ;
-		global $wikiMoveThisPage , $search;
+		global $wikiMoveThisPage , $search , $wikiMaintenance ;
 
 		$fonts = "face=verdana,arial" ;
 		$bg = "nowrap" ;
@@ -94,6 +94,10 @@ class skinCologneBlue extends skinClass {
 #		$ret .= "<a class=menulink href=\"".wikiLink("special:AllPages")."\">$wikiAllPages</a><br>\n" ; # Took out due to request
 		$ret .= "<a class=menulink href=\"".wikiLink("special:ListUsers")."\">$wikiUserList</a><br>\n" ;
 		$ret .= "<a class=menulink href=\"".wikiLink("special:Statistics")."\">$wikiStatistics</a><br>\n" ;
+		if ( in_array ( "is_sysop" , $user->rights ) ) {
+			$ret .= "<a class=menulink href=\"".wikiLink("special:AskSQL")."\">$wikiAskSQL</a><br>\n" ;
+			$ret .= "<a class=menulink href=\"".wikiLink("special:maintenance")."\">$wikiMaintenance</a><br>\n" ;
+			}
 		$ret .= "<a class=menulink href=\"".wikiLink($wikiBugReportsLink)."\">$wikiBugReports</a>\n" ;
 		$ret .= "</p>\n" ;
 
