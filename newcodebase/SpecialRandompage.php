@@ -25,7 +25,7 @@ function wfSpecialRandompage()
 	  "ORDER BY RAND() LIMIT 1";
 	$res = wfQuery( $sql, $fname );
 	$s = wfFetchObject( $res );
-	$rt = $s->ra_title;
+	$rt = wfUrlEncode( $s->ra_title );
 
 	$wgOut->reportTime(); # for logfile
 	$wgOut->redirect( wfLocalUrl( $rt ) );
