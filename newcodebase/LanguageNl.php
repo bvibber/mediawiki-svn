@@ -323,7 +323,7 @@
 "sitesubtitle" => "De vrije encyclopedie",
 "retrievedfrom" => "Afkomstig van Wikipedia NL, de Vrije Encyclopedie. \"$1\"",
 "newmessages" => "Er zijn ",
-"newmessageslink" => "nieuwe berichten voor u".
+"newmessageslink" => "nieuwe berichten voor u",
 
 # Main script and global functions
 # Algemene functies
@@ -418,8 +418,8 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "blockedtitle" => "Gebruiker is geblokkeerd",
 "blockedtext" => "Uw gebruikersnaam of IP-adres is door $1 geblokkeerd. De opgegeven reden:<br>$2<p>. U kunt voor overleg contact opnemen met de [[Wikipedia:Systeembeheerders|systeembeheerders]].",
 "newarticle" => "(Nieuw)",
-"newarticletext" => " Er bestaat nog geen artikel over dit onderwerp.<br>Als u wilt, kunt u een artikel beginnen door deze tekst te verwijderen en te vervangen door de nieuwe tekst van het artikel.<br>Was dit niet de bedoeling, gebruik dan de 'Terug' knop van uw browser."
-"anontalkpagetext" => "Deze overlegpagina hoort bij een anonieme gebruiker die hetzij geen loginnaam heeft, hetzij deze niet gebruikt. We gebruiken daarom het IP-adres ter identificatie. Het kan echter zijn dat meerdere personen hetzelfde IP-adres gebruiken. Het kan daarom zijn dat u hier berichten ontvangt die niet voor u bedoeld zijn. Mocht u dat willen voorkomen, dan kunt u [[Speciaal:Userlogin|een gebruikersnaam aanvragen of u aanmelden]].
+"newarticletext" => "Er bestaat nog geen artikel over dit onderwerp.<br>Als u wilt, kunt u een artikel beginnen door deze tekst te verwijderen en te vervangen door de nieuwe tekst van het artikel.<br>Was dit niet de bedoeling, gebruik dan de 'Terug' knop van uw browser.",
+"anontalkpagetext" => "Deze overlegpagina hoort bij een anonieme gebruiker die hetzij geen loginnaam heeft, hetzij deze niet gebruikt. We gebruiken daarom het IP-adres ter identificatie. Het kan echter zijn dat meerdere personen hetzelfde IP-adres gebruiken. Het kan daarom zijn dat u hier berichten ontvangt die niet voor u bedoeld zijn. Mocht u dat willen voorkomen, dan kunt u [[Speciaal:Userlogin|een gebruikersnaam aanvragen of u aanmelden]].",
 "noarticletext" => "(Deze pagina bevat momenteel geen tekst)",
 "updated"  => "(Bijgewerkt)",
 "note"   => "<strong>Opmerking:</strong> ",
@@ -475,7 +475,7 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "prevn"   => "vorige $1",
 "nextn"   => "volgende $1",
 "viewprevnext" => "($1) ($2) ($3) bekijken.",
-"showingresults" => "Hieronder de <b>$1</b> resultaten vanaf nummer <b>$2</b>."
+"showingresults" => "Hieronder de <b>$1</b> resultaten vanaf nummer <b>$2</b>.",
 "nonefound"  => "<strong>Merk op:</strong> wanneer een zoekopdracht mislukt komt dat vaak door gebruik van (in het Engels) veel voorkomende woorden zoals \"of\" en \"be\", die niet geïndexeerd zijn, of door verschillende zoektermen tegelijk op te geven (u krijgt dan alleen in pagina's waaarin alle opgegeven termen voorkomen).",
 "powersearch" => "Zoeken",
 "powersearchtext" => "   
