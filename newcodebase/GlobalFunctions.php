@@ -376,7 +376,8 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 		  wfStrencode( $name ) . "'";
 		$res = wfQuery( $sql, $fname );
 		if ( 0 == wfNumRows( $res ) ) {
-			$now = date( "YmdHis" );
+			$now = wfTimestampNow();
+			$won = wfInvertTimestamp( $now );
             $common =
 			  Namespace::getImage() . ",'" .
 			  wfStrencode( $name ) . "','" .
@@ -385,9 +386,9 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 			  "',1";
 			$sql = "INSERT INTO cur (cur_namespace,cur_title," .
 			  "cur_comment,cur_user,cur_user_text,cur_timestamp,cur_is_new," .
-			  "cur_text) VALUES (" .
+			  "cur_text,inverse_timestamp) VALUES (" .
 			  $common .
-			  ",'" . wfStrencode( $desc ) . "')";
+			  ",'" . wfStrencode( $desc ) . "','{$won}')";
 			wfQuery( $sql, $fname );
 			$id = wfInsertId() or 0; # We should throw an error instead
 			$sql = "INSERT INTO recentchanges (rc_namespace,rc_title,
