@@ -22,7 +22,7 @@
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @todo Charset conversion for Latin-1 wikis
- * @todo Add hooks to update the updates table!
+ * @todo Check update hooks for all actions
  * @todo Make sure identifiers are correct format
  * @todo Configurable bits n pieces
  * @todo Test for conformance & error conditions
@@ -610,7 +610,7 @@ class WikiOAIRecord extends OAIRecord {
 	function WikiOAIRecord( $row ) {
 		$this->_id        = $row->up_page;
 		$this->_timestamp = $row->up_timestamp;
-		$this->_deleted   = ($row->up_action == 'delete');
+		$this->_deleted   = is_null( $row->title );
 		$this->_row       = $row;
 	}
 	
@@ -687,9 +687,52 @@ class WikiOAIRecord extends OAIRecord {
 	
 }
 
+function oaiUpdatePage( $id, $action ) {
+	$dbw =& wfGetDB( DB_MASTER );
+	$dbw->replace( 'updates',
+		array( 'up_page' ),
+		array( 'up_page'      => $id,
+		       'up_action'    => $action,
+		       'up_timestamp' => $dbw->timestamp(),
+		       'up_sequence'  => null ), # FIXME
+		'oaiUpdatePage' );
+}
+
+function oaiUpdateSave( $article, $user, $text, $summary, $isminor, $iswatch, $section ) {
+	$id = $article->getID();
+	oaiUpdatePage( $id, 'modify' );
+	return true;
+}
+
+function oaiUpdateDeleteSetup( $article, $user, $reason ) {
+	global $oaiDeleteIds;
+	$title = $article->mTitle->getPrefixedText();
+	$oaiDeleteIds[$title] = $article->getID();
+	return true;
+}
+
+function oaiUpdateDelete( $article, $user, $reason ) {
+	global $oaiDeleteIds;
+	$title = $article->mTitle->getPrefixedText();
+	if( isset( $oaiDeleteIds[$title] ) ) {
+		oaiUpdatePage( $oaiDeleteIds[$title], 'delete' );
+	}
+	return true;
+}
+
+	/* Set up the repository entry point */
 	SpecialPage::addPage( new OAIRepository );
 	global $wgMessageCache;
 	$wgMessageCache->addMessage( "oairepository", "OAI Repository" );
+	
+	/* Add update hooks */
+	global $oaiDeleteIds;
+	$oaiDeleteIds = array();
+	
+	global $wgHooks;
+	$wgHooks['ArticleSaveComplete'  ][] = 'oaiUpdateSave';
+	$wgHooks['ArticleDelete'        ][] = 'oaiUpdateDeleteSetup';
+	$wgHooks['ArticleDeleteComplete'][] = 'oaiUpdateDelete';
 }
 
 ?>
