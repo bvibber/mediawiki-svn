@@ -37,8 +37,8 @@
 
 /* private */ $wgMathNamesDa = array(
 	"Vis altid som PNG",
-	"HTML vis meget simpel ellers PNG",
-	"HTML vis muligt ellers PNG",
+	"HTML hvis meget simpel ellers PNG",
+	"HTML hvis muligt ellers PNG",
 	"Lad være som TeX (for tekst browsere)"
 );
 
@@ -342,6 +342,8 @@ udføres af brugere med \"developer\" status. Se $1.",
 "sitetitle"		=> "Wikipedia",
 "sitesubtitle"	=> "Den frie encyklopædi",
 "retrievedfrom" => "Hentet fra \"$1\"",
+"newmessages" => "Du har $1.",
+"newmessageslink" => "nye beskeder",
 
 # Main script and global functions
 #
@@ -415,9 +417,10 @@ oprettet. Glem ikke at personliggøre dine Wikipedia indstillinger.",
 på.</b><br>Prøv igen!",
 "alreadyloggedin" => "<font color=red><b>Bruger $1, du er allerede logget 
 på!</b></font><br>\n",
-
-"areyounew"		=> "Hvis du er ny på Wikipedia og gerne vil have en bruger konto, så indtast et brugernavn, derefter indtaster du et password og gentager samme password.
-Din e-mail adresse er valgfri; hvis du mister dit password kan du bede om
+"areyounew"		=> "Hvis du er ny på Wikipedia og gerne vil have en 
+bruger konto, så indtast et brugernavn, derefter indtaster du et 
+password og gentager samme password. Din e-mail adresse er valgfri; 
+hvis du mister dit password kan du bede om
 at få det sendt til den adresse du har oplyst.<br>\n",
 
 "login"			=> "Log på",
@@ -464,10 +467,16 @@ Du bør logge på og ændre dit password straks efter du har modtaget det.",
 $1. Begrundelsen der er blevet givet er denne:<br>$2<p>Du kan kontakte 
 administratoren for at diskutere blokeringen.",
 "newarticle"	=> "(Ny)",
-"newarticletext" => "Der er på nuværende tidspunkt ingen tekst på denne 
-side.<br>
-Du kan slette denne tekst og begynde en artikel.<br>
-Hvis det ikke var din mening så tryk på 'Tilbage' eller 'Back' knappen.",
+"newarticletext" => "Der er på nuværende tidspunkt ingen tekst på denne side.
+Du kan slette denne tekst og begynde en artikel.
+Hvis det ikke var din mening så tryk på '''Tilbage''' eller '''Back''' knappen.",
+"anontalkpagetext" => "---- ''Dette er en diskussionsside for anonyme brugere der 
+ikke har oprettet en konto endnu eller ikke bruger den. Vi er derfor nødt til at 
+bruge den nummeriske [[IP adresse]] til at identificere ham eller hende.
+En IP adresse kan være delt mellem flere brugere. Hvis du er en anonym bruger 
+og syntes at du har fået irrelevante kommentarer på sådan en side, så vær 
+venlig og [[Speciel:Userlogin|logge på]] så vi undgår fremtidige 
+forvekslinger med andre anonyme brugere.'' ",
 "noarticletext" => "(Der er på nuværende tidspunkt ingen tekst på denne 
 side)",
 "updated"		=> "(Opdateret)",
@@ -502,7 +511,9 @@ Du lover os også at du skrev teksten selv, eller kopierede fra en
 public domain eller lignende fri resurce.
 <strong>LÆG ALDRIG MATERIALE HER SOM ER BESKYTTET AF ANDRES OPHAVSRET UDEN 
 DERES TILLADELSE!</strong>",
-
+"longpagewarning" => "ADVARSEL: Denne side er $1 kilobytes lang; nogle
+browsere kan have problemer med at redigerer sider der nærmer sig eller 
+er længere end 32kb. Overvej om ikke siden kan splittes op i mindre dele.",
 
 # History pages
 #
@@ -603,14 +614,16 @@ Dit interne ID nummer er $2.",
 siden",
 "savedprefs"	=> "Dine indstillinger er blevet gemt.",
 "timezonetext"	=> "Indtast antal timer din lokale tid er forskellig
-fra server (UTC) tiden.
-Der bliver automatisk tilpasset til dansk tid, ellers skulle man for eksempel for Dansk vintertid, indtaste \"1\" (og \"2\" når vi er på sommertid).",
+fra server (UTC) tiden. Der bliver automatisk tilpasset til dansk tid, 
+ellers skulle man for eksempel for Dansk vintertid, indtaste \"1\" 
+(og \"2\" når vi er på sommertid).",
 "localtime"	=> "Lokal tid",
 "timezoneoffset" => "Forskel",
 "emailflag"	=> "Fravælg muligheden for at få e-mail fra andre brugere",
 
 # Recent changes
 #
+"changes" => "ændringer",
 "recentchanges" => "Seneste ændringer",
 "recentchangestext" => "Se de senest ændrede sider i Wikipedia på denne 
 side.
