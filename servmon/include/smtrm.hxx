@@ -28,8 +28,10 @@ public:
 	virtual void warn(str msg);
 	virtual void inform(str msg);
 
-	virtual str getdata(void) const;
-	virtual void setdata(str d);
+	virtual str getdata(str v) const;
+	virtual void setdata(str v, str d);
+	virtual void ersdata(str v);
+	
 	virtual int getlevel(void) const;
 	virtual void setlevel(int level);
 	virtual ~terminal(void);
@@ -41,13 +43,11 @@ public:
 	virtual std::string remove_modifiers(str s);
 	
 private:
-	std::string m_data;
+	std::map<std::string, std::string> m_data;
 	int m_level;
 	regex *incl_reg;
 };
 	
-class handler_node;
-
 struct non_interactive_terminal : std::runtime_error {
 	non_interactive_terminal() : std::runtime_error("terminal does not support interaction") {}
 };
@@ -69,7 +69,7 @@ private:
 class handler {
 public:
 	virtual ~handler();
-	virtual bool execute (comdat const&) = 0;
+	virtual bool execute (comdat const&) const = 0;
 };
 
 struct handler_node {
@@ -127,6 +127,7 @@ public:
 	void wrt(std::string const& s, bool force = false);
 	void chgrt(handler_node* newrt);
 	void readline(readline_cb_t cb);
+	
 	bool prc_ign(char);
 	bool prc_nl(char);
 	bool prc_char(char);
@@ -135,6 +136,7 @@ public:
 	bool prc_redraw(char);
 	bool prc_del(char);
 	bool prc_erase(char);
+	
 	void init(void);
 	void disconnect(void);
 	void setlevel(int level);

@@ -40,15 +40,24 @@ terminal::inform(str msg)
 }
 
 str
-terminal::getdata(void) const
+terminal::getdata(str v) const
 {
-	return m_data;
+	static std::string const nulld = "";
+	std::map<std::string, std::string>::const_iterator it =
+		m_data.find(v);
+	return (it == m_data.end()) ? nulld : it->second;
 }
 
 void
-terminal::setdata(str d)
+terminal::ersdata(str v)
 {
-	m_data = d;
+	m_data.erase(v);
+}
+
+void
+terminal::setdata(str v, str d)
+{
+	m_data[v] = d;
 }
 
 int

@@ -11,8 +11,8 @@
 #include "smalrm.hxx"
 
 #define HDL(x) struct x : smtrm::handler
-#define EX0 bool execute(smtrm::comdat const&)
-#define EX1(a) bool execute(smtrm::comdat const& a)
+#define EX0 bool execute(smtrm::comdat const&) const
+#define EX1(a) bool execute(smtrm::comdat const& a) const
 
 #include "sminfo.cxx"
 
@@ -67,7 +67,7 @@ HDL(cmd_enable) {
 		cd.term.readline(boost::bind(&cmd_enable::vfypass, this, _1, _2));
 		return true;
 	}
-	void vfypass(smtrm::terminal& trm, std::string const& pass) {
+	void vfypass(smtrm::terminal& trm, std::string const& pass) const {
 		trm.echo(true);
 		if (smauth::authebl(pass))
 			trm.setlevel(16);
@@ -84,9 +84,6 @@ HDL(cmd_disable) {
 };
 
 HDL(cmd_login) {
-	std::string username; /* because otherwise the referenced is destroyed            */
-	                      /* need some kind of standardised question/response system. */
-	
 	EX1(cd) {
 		if (!cd.term.is_interactive()) {
 			cd.term.error("Cannot log in on a non-interactive terminal.");
@@ -97,20 +94,21 @@ HDL(cmd_login) {
 		
 		return true;
 	}
-	void vfyusername(smtrm::terminal& trm, std::string const& user) {
+	void vfyusername(smtrm::terminal& trm, std::string const& user) const {
 		trm.echo(false);
 		trm.wrt("Type password: ");
-		trm.readline(boost::bind(&cmd_login::vfypassword, this, _1, /* ick */ username = user, _2));
+		trm.setdata("username", user);
+		trm.readline(boost::bind(&cmd_login::vfypassword, this, _1, _2));
 	}
-	void vfypassword(smtrm::terminal& trm, std::string user, std::string const& pass) {
+	void vfypassword(smtrm::terminal& trm, std::string const& pass) const {
 		trm.echo(true);
 		trm.wrtln("");
-		if (!smauth::login_usr(user, pass)) {
+		if (!smauth::login_usr(trm.getdata("username"), pass)) {
 			trm.wrtln("% [E] Username or password incorrect.");
-			return;
 		} else {
 			trm.setlevel(3);
 		}
+		trm.ersdata("username");
 	}
 };
 
@@ -130,26 +128,25 @@ HDL(cmd_exit) {
 };
 
 HDL(cfg_eblpass) {
-	std::string p1;
 	EX1(cd) {
 		cd.term.echo(false);
 		cd.term.wrt("Enter new password: ");
 		cd.term.readline(boost::bind(&cfg_eblpass::gotp1, this, _1, _2));
 		return true;
 	}
-	void gotp1(smtrm::terminal& trm, std::string const& pass) {
-		p1 = pass;
+	void gotp1(smtrm::terminal& trm, std::string const& pass) const {
+		trm.setdata("pass", pass);
 		trm.wrt("Confirm new password: ");
 		trm.readline(boost::bind(&cfg_eblpass::gotp2, this, _1, _2));
-		return;
 	}
-	void gotp2(smtrm::terminal& trm, std::string const& p2) {
+	void gotp2(smtrm::terminal& trm, std::string const& p2) const {
 		trm.echo(true);
-		if (p1 != p2) {
+		if (trm.getdata("pass") != p2) {
 			trm.error("Not confirmed.");
-			return;
+		} else {
+			SMI(smcfg::cfg)->storestr("/core/enable_password", p2);
 		}
-		SMI(smcfg::cfg)->storestr("/core/enable_password", p1);
+		trm.ersdata("pass");
 	}
 };
 
@@ -169,21 +166,21 @@ HDL(chg_parser) {
 };
 
 HDL(cfg_userpass) {
-	std::string usr;
 	EX1(cd) {
 		if (smauth::usr_exists(cd.p(0))) {
 			cd.term.error("User already exists.");
 			return true;
 		}
-		usr = cd.p(0);
+		cd.term.setdata("username", cd.p(0));
 		cd.term.echo(false);
 		cd.term.wrt("Enter password: ");
 		cd.term.readline(boost::bind(&cfg_userpass::gotpass, this, _1, _2));
 		return true;
 	}
-	void gotpass(smtrm::terminal& trm, std::string const& pass) {
+	void gotpass(smtrm::terminal& trm, std::string const& pass) const {
 		trm.echo(true);
-		smauth::add_usr(usr, pass);
+		smauth::add_usr(trm.getdata("username"), pass);
+		trm.ersdata("username");
 	}
 };
 
@@ -488,7 +485,7 @@ HDL(cmd_monit_showintervals) {
 
 HDL(cfg_qb_rule) {
 	EX1(cd) {
-		cd.term.setdata(cd.p(0));
+		cd.term.setdata("qb-rule", cd.p(0));
 		cd.term.chgrt(&SMI(smtrm::tmcmds)->qbrrt);
 		cd.term.setprmbase("%s [%d] conf-qb-rule>");
 		if (!SMI(smqb::cfg)->rule_exists(cd.p(0))) {
@@ -512,7 +509,7 @@ HDL(cfg_qb_norule) {
 
 HDL(cfg_qbr_description) {
 	EX1(cd) {
-		std::string const& r = cd.term.getdata();
+		std::string const& r = cd.term.getdata("qb-rule");
 		SMI(smqb::cfg)->rule_description(r, cd.p(0));
 		return true;
 	}
@@ -556,7 +553,7 @@ HDL(cmd_qb_show_rule) {
 HDL(cfg_qbr_matchif_minthreads) {
 	EX1(cd) {
 		try {
-			SMI(smqb::cfg)->set_minthreads(cd.term.getdata(), b::lexical_cast<int>(cd.p(0)));
+			SMI(smqb::cfg)->set_minthreads(cd.term.getdata("qb-rule"), b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
 			cd.term.error("Bad number.");
 		}
@@ -567,7 +564,7 @@ HDL(cfg_qbr_matchif_minthreads) {
 HDL(cfg_qbr_matchif_minlastthreads) {
 	EX1(cd) {
 		try {
-			SMI(smqb::cfg)->set_minlastthreads(cd.term.getdata(), b::lexical_cast<int>(cd.p(0)));
+			SMI(smqb::cfg)->set_minlastthreads(cd.term.getdata("qb-rule"), b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
 			cd.term.error("Bad number.");
 		}
@@ -578,7 +575,7 @@ HDL(cfg_qbr_matchif_minlastthreads) {
 HDL(cfg_qbr_matchif_lowestpos) {
 	EX1(cd) {
 		try {
-			SMI(smqb::cfg)->set_lowestpos(cd.term.getdata(), b::lexical_cast<int>(cd.p(0)));
+			SMI(smqb::cfg)->set_lowestpos(cd.term.getdata("qb-rule"), b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
 			cd.term.error("Bad number.");
 		}
@@ -589,7 +586,7 @@ HDL(cfg_qbr_matchif_lowestpos) {
 HDL(cfg_qbr_matchif_minruntime) {
 	EX1(cd) {
 		try {
-			SMI(smqb::cfg)->set_minruntime(cd.term.getdata(), b::lexical_cast<int>(cd.p(0)));
+			SMI(smqb::cfg)->set_minruntime(cd.term.getdata("qb-rule"), b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
 			cd.term.error("Bad number.");
 		}
@@ -599,35 +596,35 @@ HDL(cfg_qbr_matchif_minruntime) {
 
 HDL(cfg_qbr_matchif_user) {
 	EX1(cd) {
-		SMI(smqb::cfg)->set_user(cd.term.getdata(), cd.p(0));
+		SMI(smqb::cfg)->set_user(cd.term.getdata("qb-rule"), cd.p(0));
 		return true;
 	}
 };
 
 HDL(cfg_qbr_matchif_command) {
 	EX1(cd) {
-		SMI(smqb::cfg)->set_command(cd.term.getdata(), cd.p(0));
+		SMI(smqb::cfg)->set_command(cd.term.getdata("qb-rule"), cd.p(0));
 		return true;
 	}
 };
 
 HDL(cfg_qbr_matchif_querystring) {
 	EX1(cd) {
-		SMI(smqb::cfg)->set_querystring(cd.term.getdata(), cd.p(0));
+		SMI(smqb::cfg)->set_querystring(cd.term.getdata("qb-rule"), cd.p(0));
 		return true;
 	}
 };
 
 HDL(cfg_qbr_enable) {
 	EX1(cd) {
-		SMI(smqb::cfg)->set_enabled(cd.term.getdata());
+		SMI(smqb::cfg)->set_enabled(cd.term.getdata("qb-rule"));
 		return true;
 	}
 };
 
 HDL(cfg_qbr_noenable) {
 	EX1(cd) {
-		SMI(smqb::cfg)->set_disabled(cd.term.getdata());
+		SMI(smqb::cfg)->set_disabled(cd.term.getdata("qb-rule"));
 		return true;
 	}
 };
