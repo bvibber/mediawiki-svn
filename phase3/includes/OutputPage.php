@@ -799,8 +799,10 @@ class OutputPage {
 			if ( strpos( $link, ":" ) !== false
 			  && preg_match( "/^((?:i|x|[a-z]{2,3})(?:-[a-z0-9]+)?|[A-Za-z\\x80-\\xff]+):(.*)\$/", $link,  $m ) ) {
 				$pre = strtolower( $m[1] );
-				$suf = $m[2];
-				if ( $wgLang->getNsIndex( $pre ) ==
+				$suf = trim($m[2]);
+				if( empty( $suf ) ) {
+					$s .= $trail;
+				} else if ( $wgLang->getNsIndex( $pre ) ==
 				  Namespace::getImage() ) {
 					$nt = Title::newFromText( $suf );
 					$name = $nt->getDBkey();
