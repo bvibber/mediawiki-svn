@@ -74,3 +74,35 @@ struct cfg_irc_servsecnick : handler<tt> {
 	}
 };
 
+struct cfg_irc_noserver : handler<tt> {
+	bool execute(comdat<tt> const& cd) {
+		if (!smirc::cfg.server_exists(cd.p(0))) {
+			cd.error("No such server.");
+			return true;
+		}
+		smirc::cfg.remove_server(cd.p(0));
+		return true;
+	}
+};
+
+struct cfg_irc_showserver : handler<tt> {
+	bool execute(comdat<tt> const& cd) {
+		if (!smirc::cfg.server_exists(cd.p(0))) {
+			cd.error("No such server.");
+			return true;
+		}
+		std::string pnick, snick;
+		pnick = instance<smcfg::cfg>()->fetchstr(
+				str(format("/irc/servers/%s/nickname") % cd.p(0)));
+		try {
+			snick = instance<smcfg::cfg>()->fetchstr(
+					str(format("/irc/servers/%s/secnickname") % cd.p(0)));
+		} catch (smcfg::nokey&) {
+			snick = "<none>";
+		}
+		cd.wrtln(cd.p(0));
+		cd.wrtln("  primary nickname:   " + pnick);
+		cd.wrtln("  secondary nickname: " + snick);
+		return true;
+	}
+};

@@ -26,4 +26,11 @@ bool irccfg::server_exists(std::string const& server)
 	return instance<smcfg::cfg>()->listhas("/irc/servers", server);
 }
 
+void irccfg::remove_server(std::string const& server)
+{
+	try {
+		instance<smcfg::cfg>()->dellist("/irc/servers", server);
+	} catch (smcfg::nokey&) {
+	}
+}
 } // namespace smirc

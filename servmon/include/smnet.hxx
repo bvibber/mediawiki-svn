@@ -16,45 +16,29 @@ struct scktcls : public std::exception {
 	scktcls(void) {}
 };
 
-class bsd {
+class smpx;
+
+class bsd : noncopyable {
 public:
 	bsd(void) {}
 
-	bsd(int s_) : s(s_) {
-		_locked_inc();
-	}
+	bsd(int s_) 
+	: s(s_) 
+	{}
 
 	bsd(int s_, sockaddr* addr_, socklen_t len_)
 	: s(s_)
 	, addr(*addr_)
 	, len(len_)
-	{
-		_locked_inc();
-	}
-
-	bsd(bsd const& o)
-	: s(o.s)
-	, addr(o.addr)
-	, len(o.len)
-	{
-		_locked_inc();
-	}
-
-	bsd& operator= (bsd const& o) {
-		s = o.s;
-		addr = o.addr;
-		len = o.len;
-		_locked_inc();
-		return *this;
-	}
+	{}
 
 	void _bsd_iam(int s_) {
 		s = s_;
-		_locked_inc();
 	}
 
 	virtual ~bsd(void) {
-		if (_locked_dec() == 0) close(s);
+		std::cerr << "destroying socket " << s << "\n";
+		close(s);
 	}
 
 	void _bsd_lsn(void) {
@@ -107,6 +91,7 @@ private:
 	uint _need_data(void) {
 		std::vector<u_char>& rdbuf = rdbufs[s];
 		if (!rdbuf.empty()) return 0;
+		std::cerr << "reading from " << s << '\n';
 		rdbuf.resize(maxrd);
 		int i = read(s, &rdbuf[0], maxrd);
 		if (i == 0) throw scktcls();
@@ -115,28 +100,12 @@ private:
 		return i;
 	}
 
-	int _locked_inc(void) {
-		smthr::lck l(mrl);
-		return ++refs[s];
-	}
-
-	int _locked_dec(void) {
-		smthr::lck l(mrl);
-		int i = --refs[s];
-		if (i == 0) {
-			refs.erase(s);
-			rdbufs.erase(s);
-		}
-		return i;
-	}
-		
 protected:
 	int s;
 	sockaddr addr;
 	socklen_t len;
-	static std::map<int,int> refs;
 	static std::map<int, std::vector<u_char> > rdbufs;
-	smthr::mtx mrl;
+	friend class smpx;
 };
 
 class inet : public bsd {
@@ -159,10 +128,12 @@ public:
 		ctmkaddr();
 	}
 
+#if 0
 	inet(inet const& o)
 	: bsd(o) {
 		ctmkaddr();
 	}
+#endif
 
 	void ctmkaddr(void) {
 		sockaddr_in *sin = (sockaddr_in*) &addr;
@@ -181,11 +152,12 @@ public:
 		_bsd_lsn();
 	}
 
-	inet wt_acc(void) {
+	shared_ptr<inet> wt_acc(void) {
 		sockaddr_in caddr;
 		socklen_t clen = sizeof(caddr);
 		int i = _bsd_wt_acc((sockaddr*)&caddr, &clen);
-		return inet(i, (sockaddr*) &caddr, clen);
+		inet *n = new inet(i, (sockaddr*) &caddr, clen);
+		return shared_ptr<inet>(n);
 	}
 
 private:
@@ -196,18 +168,16 @@ class unix {
 };
 
 template<class fmly>
-class sckt {
+class sckt : noncopyable {
 public:
-	sckt(void) {}
-	sckt(sckt<fmly> const& s)
-	: wr(s.wr)
+	sckt(void)
+	: wr(new fmly)
 	{}
-
 	virtual ~sckt(void) {
 	}
 
 	void svc(std::string const& s) {
-		wr.svc(s);
+		wr->svc(s);
 	}
 
 	template<class fmly_>
@@ -218,54 +188,129 @@ public:
 
 protected:
 	sckt(int s) : wr(s) {}
-	sckt(fmly wr_) : wr(wr_) {}
-	fmly wr;
+	sckt(shared_ptr<fmly> wr_) : wr(wr_) {}
+	shared_ptr<fmly> wr;
+	friend class smpx;
 };
 
 template<class fmly>
 class clnt : public sckt<fmly> {
 public:
 	clnt(void) {};
-	clnt(fmly wr_) : sckt<fmly>(wr_) {};
-	clnt(clnt<fmly> const& s)
-	: sckt<fmly>(s) {}
+	clnt(shared_ptr<fmly> wr_) : sckt<fmly>(wr_) {};
 
 	void wrt(u_char const* d, std::size_t l) {
-		return sckt<fmly>::wr.wrt(d, l);
+		sckt<fmly>::wr->wrt(d, l);
 	}
 	void wrt(std::string const& s) {
-		return sckt<fmly>::wr.wrt((u_char *) s.data(), s.size());
+		sckt<fmly>::wr->wrt((u_char *) s.data(), s.size());
 	}
 	void rd(std::vector<u_char>& v, uint m = fmly::maxrd) {
-		sckt<fmly>::wr.rd(v, m);
+		sckt<fmly>::wr->rd(v, m);
 	}
 	inline char rd1(void) {
 		return sckt<fmly>::wr.rd1();
 	}
 };
+typedef clnt<inet> inetclnt;
+typedef shared_ptr<inetclnt> inetclntp;
 
 template<class fmly>
 class lsnr : public sckt<fmly> {
 public:
 	void lsn(void) {
-		sckt<fmly>::wr.lsn();
+		sckt<fmly>::wr->lsn();
 	}
-	clnt<fmly> wt_acc(void) {
-		return clnt<fmly>(sckt<fmly>::wr.wt_acc());
+	shared_ptr<clnt<fmly> > wt_acc(void) {
+		return shared_ptr<clnt<fmly> > (new clnt<fmly>(sckt<fmly>::wr->wt_acc()));
 	}
 };
+typedef lsnr<inet> inetlsnr;
+typedef shared_ptr<inetlsnr> inetlsnrp;
 
 struct tn2long : public std::runtime_error {
 	tn2long(void) : std::runtime_error("received line too long") {}
 };
 
-template<class fmly>
-class tnsrv {
+class smpx : public smutl::singleton<smpx> {
 public:
-	tnsrv(clnt<fmly> c)
+	void run(void) {
+		for(;;) poll();
+	}
+
+	void poll(void) {
+		fd_set rfds, wfds;
+		FD_ZERO(&rfds);
+		FD_ZERO(&wfds);
+		int m = 0;
+		for (std::map<int,srec>::const_iterator it = fds.begin(), end = fds.end();
+				it != end; ++it)
+		{
+			m = std::max(m, it->first + 1);
+			std::cout << "testing " << it->first << " f = " << it->second.fg << "\n";
+			if (it->second.fg & srd)
+				FD_SET(it->second.fd, &rfds);
+			if (it->second.fg & swr)
+				FD_SET(it->second.fd, &wfds);
+		}
+		std::cout << "selecting...\n";
+		int i = select(m, &rfds, &wfds, NULL, NULL);
+		std::cout << i << "\n";
+		if (i < 0) return;
+		std::map<int,srec> cm = fds;
+		for (std::map<int,srec>::const_iterator it = cm.begin(), end = cm.end();
+				it != end; ++it)
+		{
+			std::cout << "testing fd " << it->first << "\n";
+			if (FD_ISSET(it->first, &rfds))
+			{
+				std::cerr << "fd " << it->first << " is ready\n";
+				it->second.cb(srd);
+			}
+			if (FD_ISSET(it->first, &wfds))
+				it->second.cb(swr);
+		}
+	}
+
+	template<class stype>
+	void add(boost::function<void(stype, int)> f, stype sckt, int flags)
+	{
+		srec r;
+		r.cb = boost::bind(f, sckt, _1);
+		r.fd = sckt->wr->s;
+		r.fg = flags;
+		fds[r.fd] = r;
+		std::cerr << "adding callback for fd " << r.fd << "\n";
+	}
+
+	template<class stype>
+	void rm(stype& sckt)
+	{
+		fds.erase(sckt->wr->s);
+	}
+
+	static const int
+		srd = 0x01,
+		swr = 0x02
+		;
+private:
+	struct srec {
+		int fd, fg;
+		boost::function<void(int)> cb;
+	};
+	std::map<int,srec> fds;
+};
+
+template<class fmly>
+class tnsrv : noncopyable {
+public:
+	typedef shared_ptr<clnt<fmly> > sckt_t;
+	tnsrv(sckt_t c)
 	: sc(c)
 	, stt(nrml)
 	, doecho(true)
+	, gd_cb(boost::function<void(sckt_t, u_char)>(
+				boost::bind(&tnsrv::nullcb, this, _1, _2)))
 	{
 		wewill.insert(tnsga);
 		wewill.insert(tnecho);
@@ -278,13 +323,40 @@ public:
 		will(tnsga);
 		dont(tnecho);
 		dont(tnlinemode);
+		boost::function<void(sckt_t, int)> f = 
+			boost::bind(&tnsrv::data_cb, this, _2);
+		SMI(smpx)->add(f, sc, smpx::srd);
 	}
+
+	virtual ~tnsrv(void) {
+		SMI(smpx)->rm(sc);
+	}
+
+	void cb(boost::function<void(sckt_t, u_char)> f) {
+		gd_cb = f;
+	}
+
+	void nullcb(sckt_t, u_char) {}
+
+	void data_cb(int fl) {
+		if (fl != smpx::srd) return;
+		std::vector<u_char> d(maxrd);
+		sc->rd(d, maxrd);
+		for (std::vector<u_char>::iterator it = d.begin(), end = d.end(); it != end; ++it)
+		{
+			u_char c;
+			bool b = rd1(*it, c);
+			if (b)
+				gd_cb(sc, c);
+		}
+	}
+
 	void echo(bool doecho_) {
 		doecho = doecho_;
 	}
 	void tnsth(u_char sth, u_char what) {
 		u_char a[] = {tniac, sth, what};
-		sc.wrt(a, sizeof a);
+		sc->wrt(a, sizeof a);
 	}
 	void do_(u_char what) {
 		tnsth(tndo, what);
@@ -312,89 +384,90 @@ public:
 	void crnl(void) {
 		if (!doecho) return;
 		static u_char a[] = {'\r', '\n'};
-		sc.wrt(a, sizeof a);
+		sc->wrt(a, sizeof a);
 	}
-	u_char rd1(void) {
-		for (;;) {
-			u_char c = sc.rd1();
-			switch (stt) {
+	bool rd1(u_char c, u_char& data) {
+		switch (stt) {
+		case iac:
+			switch (c) {
+			case tnwill:
+				stt = gwill; break;
+			case tnwont:
+				stt = gwont; break;
+			case tndo:
+				stt = gdo; break;
+			case tndont:
+				stt = gdont; break;
+			case tnsb:
+				stt = sb;
+				break;
 			case iac:
-				switch (c) {
-				case tnwill:
-					shouldyou(sc.rd1()); stt = nrml; break;
-				case tnwont:
-					sc.rd1(); stt = nrml;
-					break;
-				case tndo:
-					shouldwe(sc.rd1()); stt = nrml; break;
-				case tndont:
-					shouldntwe(sc.rd1()); stt = nrml; break;
-				case tnsb:
-					stt = sb;
-					break;
-				case iac:
-					stt = nrml;
-					return iac;
-					break;
-				default:
-					// ???
-					std::cerr << "i don't understand option code " << int(c) << "\n";
-					stt = nrml;
-					break;
-				}
-				break;
-			case sb:
-				switch (c) {
-				case tniac:
-					stt = sb_iac;
-					break;
-				default:
-					break;
-				}
-				break;
-			case sb_iac:
-				switch (c) {
-				case tniac:
-					stt = sb;
-					break;
-				case tnse:
-					stt = nrml;
-					break;
-				}
-				break;
+				stt = nrml;
+				data = iac;
+				return true;
 			default:	
-				switch (c) {
-				case tniac:
-					stt = iac;
-					break;
-				case '\n': case '\0':
-					break;
-				default:
-					return c;
-				}
+				// ???
+				std::cerr << "i don't understand option code " << int(c) << "\n";
+				stt = nrml;
+				stt = nrml; 
 				break;
 			}
+			break;
+		case gwill:
+			shouldyou(c);
+			stt = nrml;
+			break;
+		case gwont:
+			stt = nrml;
+			break;
+		case gdo:
+			shouldwe(c); 
+			stt = nrml; 
+			break;
+		case gdont:
+			shouldntwe(c); 
+			stt = nrml; 
+			break;
+		case sb:
+			switch (c) {
+			case tniac:
+				stt = sb_iac;
+				break;
+			default:
+				break;
+			}
+			break;
+		case sb_iac:
+			switch (c) {
+			case tniac:
+				stt = sb;
+				break;
+			case tnse:
+				stt = nrml;
+				break;
+			}
+			break;
+		default:	
+			switch (c) {
+			case tniac:
+				stt = iac;
+				break;
+			case '\n': case '\0':
+				break;
+			default:
+				data = c;
+				return true;
+			}
+			break;
 		}
+		return false;
 	}
 
-	std::string rdln(std::size_t m = maxln) {
-		std::string lnbuf;
-		for (;;) {
-			u_char c = rd1();
-			if (c == '\r') break;
-			lnbuf += c;
-			if (doecho) sc.wrt(&c, 1);
-			if (lnbuf.size() > m)
-				throw tn2long();
-		}
-		crnl();
-		return lnbuf;
-	}
 	void wrt(u_char const* d, std::size_t l) {
-		return sc.wrt(d, l);
+		return sc->wrt(d, l);
 	}
 	void wrt(std::string const& s) {
-		return sc.wrt((u_char *) s.data(), s.size());
+		return sc->wrt((u_char *) s.data(), s.size());
 	}
 
 	static const int
@@ -410,12 +483,16 @@ public:
 		tnlinemode = 34
 		;
 	std::set<u_char> wewill, wecan, youshould, youshouldnt;
-	static const int maxln = 4096;
+	static const int maxln = 4096, maxrd = 4096;
 private:
-	clnt<fmly> sc;
-	enum { nrml, iac, sb, sb_iac, nl, cr } stt;
+	shared_ptr<clnt<fmly> > sc;
+	enum { nrml, iac, sb, sb_iac, nl, cr,
+       		gwill, gwont, gdo, gdont } stt;
 	bool doecho;
+	boost::function<void(shared_ptr<clnt<fmly> >, u_char)> gd_cb;
 };
+typedef tnsrv<inet> inettnsrv;
+typedef shared_ptr<inettnsrv> inettnsrvp;
 
 } // namespace smnet
 

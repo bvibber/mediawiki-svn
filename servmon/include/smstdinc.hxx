@@ -17,8 +17,12 @@ using std::for_each;
 #include <boost/function.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/format.hpp>
+#include <boost/utility.hpp>
+#include <boost/shared_ptr.hpp>
 using boost::lexical_cast;
 using boost::format;
+using boost::noncopyable;
+using boost::shared_ptr;
 
 #include <sys/types.h>
 #include <sys/socket.h>

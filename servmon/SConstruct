@@ -4,7 +4,8 @@
 cc = '/opt/gcc-3.4/bin/gcc'
 cxx = '/opt/gcc-3.4/bin/g++'
 
-cflags = '-O2 -g -W -Wall'
+#cflags = '-O2 -g -W -Wall'
+cflags = '-g -W -Wall'
 cppflags = ''
 
 # Where things are installed to.

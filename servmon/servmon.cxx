@@ -8,8 +8,7 @@ main(int argc, char *argv[])
 {
 	instance<smcfg::cfg>(); // force reading
 	csmplex::csmplexd cm;
-	cm.run();
-
-	instance<smthr::thrmgr>()->wait();
+	cm.start();
+	SMI(smnet::smpx)->run();
 }
 

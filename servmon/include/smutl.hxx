@@ -6,7 +6,7 @@
 namespace smutl {
 
 template<class T>
-class singleton {
+class singleton : noncopyable {
 public:
 	static T* instance(void) {
 		return mT ? mT : (mT = new T);
@@ -26,5 +26,6 @@ template<class T>
 T* instance(void) {
 	return T::instance();
 }
+#define SMI(x) instance< x >()
 
 #endif

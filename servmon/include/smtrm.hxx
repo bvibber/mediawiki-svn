@@ -4,6 +4,7 @@
 #include "smstdinc.hxx"
 #include "smcfg.hxx"
 #include "smirc.hxx"
+#include "smutl.hxx"
 
 namespace smtrm {
 
@@ -52,7 +53,7 @@ public:
 	{
 		term.wrt(prompt);
 		term.echo(false);
-		std::string s = term.read();
+		std::string s;// = term.read();
 		term.echo(true);
 		wrtln();
 		return s;
@@ -60,8 +61,8 @@ public:
 	void rst(void) {
 		ps.resize(0);
 	}
+	tt& term; //XXX
 private:
-	tt& term;
 	std::vector<std::string> ps;
 };
 
@@ -148,6 +149,8 @@ struct tmcmds : public smutl::singleton<tmcmds<tt> > {
 	tmcmds() {
 		stdrt.install("show version", cmd_show_version(), "Show software version");
 		stdrt.install("exit", cmd_exit(), "End session");
+		stdrt.install("show irc server %s", cfg_irc_showserver(), 
+				"Describe a configured server");
 		eblrt = stdrt;
 		stdrt.install("enable", cmd_enable(), "Enter privileged mode");
 		eblrt.install("disable", chg_parser(stdrt, "%s> "), 
@@ -163,6 +166,10 @@ struct tmcmds : public smutl::singleton<tmcmds<tt> > {
 				"Set primary nickname for IRC server");
 		ircrt.install("server %s secondary-nickname %s", cfg_irc_servsecnick(),
 				"Set secondary nickname for IRC server");
+		ircrt.install("no server %s", cfg_irc_noserver(),
+				"Remove a configured server");
+		ircrt.install("show server %s", cfg_irc_showserver(),
+				"Describe a configured server");
 	}
 	handler_node<tt> stdrt;
 	handler_node<tt> eblrt;
@@ -171,15 +178,26 @@ struct tmcmds : public smutl::singleton<tmcmds<tt> > {
 };
 
 template<class intft>
-class trmsrv {
+class trmsrv : noncopyable {
 public:
-	trmsrv(intft& intf_)
-	: intf(intf_)
+	typedef boost::function<void(std::string const&)> rl_cb_t;
+
+	trmsrv(intft sckt_)
+	: intf(sckt_)
 	, cmds_root(&instance<tmcmds<trmsrv> >()->stdrt)
 	, prm("servmon> ")
 	, cd(*this)
 	, doecho(true)
+	, rlip(false)
+	, destroyme(false)
 	{
+		stb_nrml();
+	}
+
+	virtual ~trmsrv(void) {
+		std::cerr << "trmsrv dtor\n";
+	}
+	void stb_nrml(void) {
 		for (int i = 0; i < 32; ++i)
 			binds[i] = boost::bind(&trmsrv::prc_ign, this, _1);
 		for (int i = 32; i <= 255; ++i)
@@ -191,62 +209,86 @@ public:
 		binds[0177] = binds['\b'] = boost::bind(&trmsrv::prc_del, this, _1);
 		binds[0x15] = boost::bind(&trmsrv::prc_erase, this, _1); // ^U
 	}
-	
-	void run(void) {
+	void stb_readline(void) {
+		binds[' '] = binds['?'] =
+			boost::bind(&trmsrv::prc_char, this, _1);
+	}
+
+	void start(void) {
+		init();
+		intf->cb(boost::bind(&trmsrv::gd_cb, this, _1, _2));
 		std::string user, pass;
+		wrtln();
 		wrt("Username: ");
-		user = intf.rdln();
+		readline(boost::bind(&trmsrv::gt_usr_cb, this, _1));
+	}
+	void gt_usr_cb(std::string const& user) {
+		usrnam = user;
 		echo(false);
 		wrt("Password: ");
-		pass = intf.rdln();
+		readline(boost::bind(&trmsrv::gt_psw_cb, this, _1));
+	}
+	void gt_psw_cb(std::string const& pass) {
 		echo(true);
 		wrtln();
 		std::string rpass;
+		std::cerr << "user = ["<<usrnam<<"] pass=["<<pass<<"]\n";
 		try {
 			rpass = instance<smcfg::cfg>()->fetchstr(
-					str(format("/users/%s/password") % user));
+					str(format("/users/%s/password") % usrnam));
 		} catch (smcfg::nokey&) {
 			wrtln("% [E] Username or password incorrect.");
+			disconnect();
 			return;
 		}
 		if (rpass != pass) {
 			wrtln("% [E] Username or password incorrect.");
+			disconnect();
 			return;
 		}
-
-		init();
-		for (;;) {
-			u_char c = intf.rd1();
-			if (!binds[c](c)) {
-				return;
-			}
-		}	
+		wrt(prm + ln);
+	}
+	void gd_cb(smnet::inetclntp s, u_char c) {
+		std::cerr << "read data: [" << c << "]\n";
+		if (!binds[c](c))
+			disconnect();
+		if (destroyme) delete this;
 	}
 	void echo(bool doecho_) {
-		intf.echo(doecho = doecho_);
+		intf->echo(doecho = doecho_);
 	}
 
 	void wrtln(std::string const& s = "") {
 		wrt(s); wrt("\r\n");
 	}
 	void wrt(u_char c) {
-		intf.wrt(&c, 1);
+		intf->wrt(&c, 1);
 	}
 	void wrt(std::string const& s) {
-		intf.wrt(s);
-	}
-	std::string read(void) {
-		return intf.rdln();
+		intf->wrt(s);
 	}
 	void chgrt(handler_node<trmsrv>* newrt, std::string const& prompt) {
 		cmds_root = newrt;
 		prm = str(format(prompt) % "servmon");
+	}
+	void readline(rl_cb_t cb) {
+		rl_cb = cb;
+		rlip = true;
+		stb_readline();
 	}
 	bool prc_ign(char) {
 		return true;
 	}
 	bool prc_nl(char) {
 		std::cerr << "read: [" << ln << "]\n";
+		if (rlip) {
+			stb_nrml();
+			rlip = false;
+			wrtln();
+			rl_cb(ln);
+			ln = "";
+			return true;
+		}
 		bool b = true;
 		if (ln[ln.size() - 1] == ' ') {
 			while (ln[ln.size() - 1] == ' ') 
@@ -282,10 +324,18 @@ public:
 		b = matches[0]->terminal->execute(cd);
 	
 end:
-		if (b) init();
+		if (b) {
+			init();
+			wrt(prm + ln);
+		}
 		return b;
 	}
 	bool prc_char(char c) {
+		if (rlip) {
+			ln += c;
+			if (doecho) wrt(c);
+			return true;
+		}
 		bool waswild;
 		std::vector<handler_node_t *> matches =
 		       hstack[0]->find_matches(thisword + c, waswild);
@@ -369,6 +419,7 @@ end:
 		for (int i = ln.size(); i; --i)
 			wrt("\b \b");
 		wrtln();
+		wrt(prm + ln);
 		init();
 		return true;
 	}
@@ -378,13 +429,17 @@ end:
 		hstack[0] = cmds_root;
 		cd.rst();
 		ln = thisword = "";
-		intf.wrt(prm);
 	}
 
+	void disconnect(void) {
+		destroyme = true;
+	}
 private:
-	intft& intf;
+	intft intf;
 	std::map<u_char, boost::function<bool (char)> > binds;
+	std::string usrnam;
 	// bookkeeping for parser
+	rl_cb_t rl_cb;
 	std::string ln;
 	std::string thisword;
 	typedef handler_node<trmsrv> handler_node_t;
@@ -393,7 +448,11 @@ private:
 	std::string prm;
 	comdat<trmsrv> cd;
 	bool doecho;
+	bool rlip;
+	bool destroyme;
 };
+typedef trmsrv<smnet::inettnsrvp> inettrmsrv;
+typedef shared_ptr<inettrmsrv> inettrmsrvp;
 
 } // namespace smtrm
 #endif
