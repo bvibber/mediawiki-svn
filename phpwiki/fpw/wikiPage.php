@@ -62,11 +62,11 @@ class WikiPage extends WikiTitle {
         $thisVersion = "" ;
         $this->params = array () ;
         global $oldID , $version , $wikiOldVersion , $wikiDescribePage , $wikiRedirectFrom ;
+    	global $wikiErrorPageTitle , $wikiErrorMessage ;
         if ( isset ( $oldID ) ) { # an old article version
             $sql = "SELECT * FROM old WHERE old_id=$oldID" ;
             $result = mysql_query ( $sql , $connection ) ;
 	    if ( ! $result ) {
-	    	global $wikiErrorPageTitle , $wikiErrorMessage ;
 	    	$this->canBeCached = false ;
 		$this->SetTitle ( $wikiErrorTitle ) ;
 		$this->contents = str_replace ( "$1" , htmlspecialchars ( mysql_error() ) , $wikiErrorMessage ) ;
@@ -86,6 +86,12 @@ class WikiPage extends WikiTitle {
                     FROM cur
                     WHERE cur_title=\"".$this->secureTitle."\"" ;
             $result = mysql_query ( $sql , $connection ) ;
+	    if ( ! $result ) {
+	    	$this->canBeCached = false ;
+		$this->SetTitle ( $wikiErrorTitle ) ;
+		$this->contents = str_replace ( "$1" , htmlspecialchars ( mysql_error() ) , $wikiErrorMessage ) ;
+	    	return ;
+		}
             if ( $s = mysql_fetch_object ( $result ) ) {
                 $this->SetTitle ( $s->cur_title ) ;
                 $this->contents = $s->cur_text ;
