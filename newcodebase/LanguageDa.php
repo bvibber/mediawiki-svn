@@ -16,6 +16,16 @@
 	7	=> "Billede_diskussion"
 );
 
+/* private */ $wgDefaultUserOptionsDa = array(
+	"quickbar" => 1, "underline" => 1, "hover" => 1,
+	"cols" => 80, "rows" => 25, "searchlimit" => 20,
+	"contextlines" => 5, "contextchars" => 50,
+	"skin" => 0, "rcdays" => 3, "rclimit" => 50,
+	"highlightbroken" => 1
+);
+
+
+
 /* private */ $wgQuickbarSettingsDa = array(
 	"Ingen", "Fast venstre", "Fast højre", "Flydende venstre"
 );
@@ -576,8 +586,7 @@ recent meta discussion] (på engelsk).",
 "rcloaderr"		=> "Læser seneste opdaterede sider",
 "rcnote"		=> "Nedenfor er de seneste <strong>$1</strong> ændringer i de 
 sidste <strong>$2</strong> dage.",
-# "rclinks"		=> "Vis seneste $1 ændringer i de sidste $2 timer / sidste $3 
-dage",
+# "rclinks"		=> "Vis seneste $1 ændringer i de sidste $2 timer / sidste $3 dage",
 "rclinks"		=> "Vis seneste $1 ændringer i de sidste $2 dage.",
 "rchide"		=> "i $4 form; $1 mindre ændringer; $2 andre navnerum; $3 mere end 
 en redigering.",
@@ -950,12 +959,17 @@ Vælg et andet navn.",
 
 );
 
-class Language {
+class LanguageDa extends Language {
 
 	function getNamespaces() {
 		global $wgNamespaceNamesDa;
 		return $wgNamespaceNamesDa;
 	}
+
+	function getDefaultUserOptions () {
+		global $wgDefaultUserOptionsDa ;
+		return $wgDefaultUserOptionsDa ;
+		}
 
 	function getNsText( $index ) {
 		global $wgNamespaceNamesDa;
@@ -1021,7 +1035,7 @@ class Language {
 		global $wgUser;
 
 		$diff = $wgUser->getOption( "timecorrection" );
-		if ( ! $diff ) { $diff = 0; }
+		if ( !is_numeric( $diff )) { $diff = 2; }
 		if ( 0 == $diff ) { return $ts; }
 
 		$t = mktime( ( (int)substr( $ts, 8, 2) ) + $diff,
@@ -1051,7 +1065,7 @@ class Language {
 
 	function timeanddate( $ts, $adj = false )
 	{
-		return "d." . $this->date( $ts, $adj ) . " kl." . $this->time( $ts, $adj )
+		return "d." . $this->date( $ts, $adj ) . " kl." . $this->time( $ts, $adj );
 	}
 
 	function rfc1123( $ts )
@@ -1087,7 +1101,4 @@ class Language {
 	}
 }
 
-include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );
-
 ?>
-
