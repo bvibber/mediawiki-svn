@@ -164,6 +164,9 @@ class SkinCologneBlue extends Skin {
 
 			if ( Namespace::getUser() == $wgTitle->getNamespace() ) {
 				$s .= $sep . $this->userContribsLink();
+				if ( 0 != $wgUser->getID() ) {
+					$s .= $sep . $this->emailUserLink();
+				}
 			}
 			$s .= $sep;
 		}
