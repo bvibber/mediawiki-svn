@@ -42,7 +42,9 @@ class UserTalkUpdate {
 					$wgMemc->delete( "$wgDBname:user:id:$id" );
 				} else {
 					#anon
-					if(preg_match("/^\d{1,3}\.\d{1,3}.\d{1,3}\.\d{1,3}$/",$this->mTitle)) { #real anon (user:xxx.xxx.xxx.xxx)
+					if(preg_match("/^\d{1,3}\.\d{1,3}.\d{1,3}\.\d{1,3}$/",$this->mTitle)
+					   || preg_match("/^[0-9a-fA-F]+:[0-9a-fA-F:*]+$/",$this->mTitle)) { 
+						#real anon (user:xxx.xxx.xxx.xxx)
 						$sql = "INSERT INTO user_newtalk (user_id,user_ip) values (0,\"{$this->mTitle}\")";		
 						$wgMemc->delete( "$wgDBname:newtalk:ip:$this->mTitle" );
 					}
