@@ -63,7 +63,7 @@ class LuceneSearch extends SpecialPage
 
 		$bits = split("/", $wgRequest->getVal("title"), 2);
 		if(!empty($bits[1]))
-			$q = $bits[1];
+			$q = str_replace("_", " ", $bits[1]);
 		else
 			$q = $wgRequest->getText('search');
 
