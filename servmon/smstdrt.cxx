@@ -549,12 +549,12 @@ HDL(cfg_mc_show_parser_cache) {
 			cd.inform("No data available.");
 			return true;
 		}
-		cd.wrtln(b::io::str(b::format("Hits:    %-10d %6.2f%%") % hits    % (hits/total*100)));
-		cd.wrtln(b::io::str(b::format("Invalid: %-10d %6.2f%%") % invalid % (invalid/total*100)));
-		cd.wrtln(b::io::str(b::format("Expired: %-10d %6.2f%%") % expired % (expired/total*100)));
-		cd.wrtln(b::io::str(b::format("Absent:  %-10d %6.2f%%") % absent  % (absent/total*100)));
+		cd.wrtln(b::io::str(b::format("Hits:    %-10d %6.2f%%") % b::io::group(std::fixed, hits)    % (hits/total*100)));
+		cd.wrtln(b::io::str(b::format("Invalid: %-10d %6.2f%%") % b::io::group(std::fixed, invalid) % (invalid/total*100)));
+		cd.wrtln(b::io::str(b::format("Expired: %-10d %6.2f%%") % b::io::group(std::fixed, expired) % (expired/total*100)));
+		cd.wrtln(b::io::str(b::format("Absent:  %-10d %6.2f%%") % b::io::group(std::fixed, absent)  % (absent/total*100)));
 		cd.wrtln();
-		cd.wrtln(b::io::str(b::format("Total:   %-10d %6.2f%%") % total   % 100));
+		cd.wrtln(b::io::str(b::format("Total:   %-10d %6.2f%%") % b::io::group(std::fixed, total)   % 100.0));
 		return true;
 	}
 };

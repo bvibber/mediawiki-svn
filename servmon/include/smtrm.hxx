@@ -210,12 +210,6 @@ cfgrt.install("user %s password", cfg_userpass(), "Create a new account");
 cfgrt.install("no", "Negate a setting");
 cfgrt.install("no user", "Remove a user account");
 cfgrt.install("no user %s", cfg_no_user(), "User name");
-cfgrt.install("threshold", "Set alarm thresholds");
-cfgrt.install("threshold mysql", "MySQL-related alarm thresholds");
-cfgrt.install("threshold mysql replication-lag", "Maximum replication lag from master");
-cfgrt.install("threshold mysql replication-lag %s", cfg_monit_alarm_mysql_replag(), "Maximum replication lag in seconds");
-cfgrt.install("threshold mysql running-threads", "Maximum number of running threads");
-cfgrt.install("threshold mysql running-threads %s", cfg_monit_alarm_mysql_threads(), "Maximum number of threads");
 cfgrt.install("function querybane", chg_parser(qbrt, "%s(conf-qb)# "), "Configure QueryBane operation");
 
 /* 'function irc' mode commands */
@@ -248,6 +242,12 @@ monrt.install("monitor-interval", "Monitor interval in seconds");
 monrt.install("monitor-interval %s", cfg_monit_monitor_interval(), "Monitor interval in seconds");
 monrt.install("irc-status-interval", "IRC status interval in seconds");
 monrt.install("irc-status-interval %s", cfg_monit_ircinterval(), "IRC status interval in seconds");
+monrt.install("threshold", "Set alarm thresholds");
+monrt.install("threshold mysql", "MySQL-related alarm thresholds");
+monrt.install("threshold mysql replication-lag", "Maximum replication lag from master");
+monrt.install("threshold mysql replication-lag %s", cfg_monit_alarm_mysql_replag(), "Maximum replication lag in seconds");
+monrt.install("threshold mysql running-threads", "Maximum number of running threads");
+monrt.install("threshold mysql running-threads %s", cfg_monit_alarm_mysql_threads(), "Maximum number of threads");
 monrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit monitor configuration mode");
 
 /* 'function querybane' mode commands */

@@ -410,7 +410,7 @@ cfg::mysqlserver::check(void)
 	SMI(smalrm::mgr)->value(name, "replication lag", replag);
 }
 
-uint64_t
+std::time_t
 cfg::mysqlserver::getmasterpos(void)
 {
 	std::string mastername;
@@ -428,10 +428,10 @@ cfg::mysqlserver::getmasterpos(void)
 		return 0;
 	}
 	if (r.size() < 1) return 0;
-	return b::lexical_cast<uint64_t>(r[0]["ts"]);
+	return smutl::wf2time_t(r[0]["ts"]);
 }
 
-uint64_t
+std::time_t
 cfg::mysqlserver::getmypos(void)
 {
 	mysqlclientp client = getconn();
@@ -445,13 +445,13 @@ cfg::mysqlserver::getmypos(void)
 	}
 	markup();
 	if (r.size() < 1) return 0;
-	return b::lexical_cast<uint64_t>(r[0]["ts"]);
+	return smutl::wf2time_t(r[0]["ts"]);
 }
 
-uint64_t
+std::time_t
 cfg::mysqlserver::getreplag(void)
 {
-	uint64_t masterpos = getmasterpos(), mypos = getmypos();
+	std::time_t masterpos = getmasterpos(), mypos = getmypos();
 	std::cerr << "master pos: " << masterpos << " mypos: " << mypos;
 	if (!masterpos || !mypos) return 0;
 	return masterpos - mypos;

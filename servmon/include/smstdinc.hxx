@@ -26,6 +26,7 @@ using std::for_each;
 #include <boost/thread/mutex.hpp>
 #include <boost/any.hpp>
 using boost::lexical_cast;
+using boost::bad_lexical_cast;
 using boost::format;
 using boost::noncopyable;
 using boost::shared_ptr;

@@ -35,4 +35,25 @@ snarf(str cmd)
 	return r;
 }
 
+std::time_t
+wf2time_t(str wf)
+{
+	struct tm t;
+	/* 2005 03 07 03 59 50 */
+	/* 0123 45 67 89 01 23 */
+	/* yyyy mm dd hh mm ss */
+	try {
+		t.tm_sec = lexical_cast<int>(wf.substr(12, 14));
+		t.tm_min = lexical_cast<int>(wf.substr(10, 12));
+		t.tm_hour = lexical_cast<int>(wf.substr(8, 10));
+		t.tm_mday = lexical_cast<int>(wf.substr(6, 8));
+		t.tm_mon = lexical_cast<int>(wf.substr(4, 6));
+		t.tm_year = lexical_cast<int>(wf.substr(0, 4));
+	} catch (bad_lexical_cast&) {
+		return 0;
+	}
+	t.tm_yday = t.tm_wday = t.tm_isdst = 0;
+	return mktime(&t);
+}
+	
 } // namespace smutl

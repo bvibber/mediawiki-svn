@@ -66,13 +66,13 @@ public:
 		void check();
 		xomitr qps;
 		uint32_t qpsv, procv;
-		uint64_t replag;
+		std::time_t replag;
 		
 		uint32_t getqueries(void);
 		uint32_t getnumprocesses(void);
-		uint64_t getmasterpos(void);
-		uint64_t getmypos(void);
-		uint64_t getreplag(void);
+		std::time_t getmasterpos(void);
+		std::time_t getmypos(void);
+		std::time_t getreplag(void);
 		
 		mysqlclientp getconn(void);
 		mysqlclientp clnt;
