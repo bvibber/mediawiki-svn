@@ -4,7 +4,7 @@
 
 Tnode *loadSegmentationDictionary(const char *fname) {
   FILE *fp;
-  char buf[1024];
+  unsigned char buf[1024];
   Tnode *tree=NULL;
   int i=1;
   fp = fopen(fname, "r");
@@ -25,8 +25,8 @@ Tnode *loadSegmentationDictionary(const char *fname) {
 /* parse a line in the conversion table. fill in the
    FROM field and return the TO field
 */
-char *parseConversionLine(char *line, char *from) {
-  char *to;
+unsigned char *parseConversionLine(unsigned char *line, unsigned char *from) {
+  unsigned char *to;
   int i, s, e;
   for(s=0; line[s]!='"'; s++);
   for(e=s+1; line[e]!='"'; e++);
@@ -36,7 +36,7 @@ char *parseConversionLine(char *line, char *from) {
   
   for(s=e+1; line[s]!='"'; s++);
   for(e=s+1; line[e]!='"'; e++);
-  to=(char*)malloc(sizeof(char) * (e-s+1));
+  to=(unsigned char*)malloc(sizeof(unsigned char) * (e-s+1));
   for(i=0;i<e-s-1;i++)
     to[i]=line[s+i+1];
   to[i]='\0';
@@ -45,7 +45,7 @@ char *parseConversionLine(char *line, char *from) {
 
 Tnode *loadConversionDictionary(const char *fname) {
   FILE *fp;
-  char buf[1024], from[512], *to;
+  unsigned char buf[1024], from[512], *to;
   Tnode *tree=NULL;
   fp = fopen(fname, "r");
   if(!fp) {
@@ -66,7 +66,7 @@ Tnode *loadConversionDictionary(const char *fname) {
 
 Tnode *loadAdditionalConversionDictionary(Tnode *tree, const char *fname) {
   FILE *fp;
-  char buf[1024], from[512], *to;
+  unsigned char buf[1024], from[512], *to;
 
   fp = fopen(fname, "r");
   if(!fp) {
