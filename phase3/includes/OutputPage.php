@@ -868,21 +868,14 @@ class OutputPage {
 		$s = array_shift( $a );
 		$s = substr( $s, 1 );
 
-		$e1 = "/^([{$tc}]+)\\|([^]]+)]](.*)\$/sD";
-		$e2 = "/^([{$tc}]+)]](.*)\$/sD";
+		$e1 = "/^([{$tc}]+)(?:\\|([^]]+))?]](.*)\$/sD";
 		wfProfileOut();
 
 		wfProfileIn( "$fname-loop" );
 		foreach ( $a as $line ) {
-			if ( preg_match( $e1, $line, $m ) ) { # page with alternate text
-				
+			if ( preg_match( $e1, $line, $m ) ) { # page with normal text or alt
 				$text = $m[2];
 				$trail = $m[3];				
-			
-			} else if ( preg_match( $e2, $line, $m ) ) { # page with normal text
-			
-				$text = "";
-				$trail = $m[2];			
 			}
 			
 			else { # Invalid form; output directly
@@ -909,7 +902,8 @@ class OutputPage {
 				$link = $m[1]; 
 			}
 
-			if ( preg_match( "/^((?:i|x|[a-z]{2,3})(?:-[a-z0-9]+)?|[A-Za-z\\x80-\\xff]+):(.*)\$/", $link,  $m ) ) {
+			if ( strpos( $link, ":" ) !== false
+			  && preg_match( "/^((?:i|x|[a-z]{2,3})(?:-[a-z0-9]+)?|[A-Za-z\\x80-\\xff]+):(.*)\$/", $link,  $m ) ) {
 				$pre = strtolower( $m[1] );
 				$suf = $m[2];
 				if ( $wgLang->getNsIndex( $pre ) ==
