@@ -111,9 +111,10 @@ function wikify ( $s ) {
 		}
 
 	# Link magic
+	global $wikiTalk ;
 	$talkPage = $nt ;
-	if ( count ( explode ( ":" , $talkPage ) ) > 1 ) $talkPage = str_replace ( ":" , " Talk:" , $talkPage ) ;
-	else $talkPage = "Talk:$talkPage" ;
+	if ( count ( explode ( ":" , $talkPage ) ) > 1 ) $talkPage = str_replace ( ":" , " $wikiTalk:" , $talkPage ) ;
+	else $talkPage = "$wikiTalk:$talkPage" ;
 
 	$a = explode ( "[[" , " $s" ) ;
 	$l = array () ;
