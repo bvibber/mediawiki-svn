@@ -25,11 +25,6 @@
 	"en"	=> "http://www.wikipedia.com/wiki/$1"
 );
 
-# This array is kept globally for existence-checking
-# internal links and such
-#
-$wgArticleIDcache = array();
-
 class Title {
 	/* private */ var $mTextform, $mUrlform, $mDbkeyform;
 	/* private */ var $mNamespace, $mInterwiki;
@@ -163,29 +158,11 @@ class Title {
 
 	function getArticleID()
 	{
-		global $wgArticleIDcache;
+		global $wgLinkCache;
 
 		if ( -1 != $this->mArticleID ) { return $this->mArticleID; }
-
-		$pt = $this->getPrefixedDBkey();
-		if ( key_exists( $pt, $wgArticleIDcache ) ) {
-			$this->mArticleID = $wgArticleIDcache[$pt];
-		} else {
-			$conn = wfGetDB();
-			$sql = "SELECT cur_id FROM cur WHERE (cur_namespace=" .
-			  "{$this->mNamespace} AND cur_title='{$this->mDbkeyform}')";
-			# wfDebug( "Title: 1: $sql\n" );
-			$res = mysql_query( $sql, $conn );
-
-			if ( ( false === $res ) || 0 == mysql_num_rows( $res ) ) {
-				$this->mArticleID = 0;
-			} else {
-				$s = mysql_fetch_object( $res );
-				$this->mArticleID = $s->cur_id;
-				mysql_free_result( $res );
-			}
-		}
-		$wgArticleIDcache[$pt] = $this->mArticleID;
+		$this->mArticleID = $wgLinkCache->addLink(
+		  $this->getPrefixedDBkey() );
 		return $this->mArticleID;
 	}
 

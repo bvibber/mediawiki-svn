@@ -402,7 +402,7 @@ class Skin {
 	# a final pass through here for things like table backgrounds.
 	#
 	function transformContent( $text )
-	{
+ 	{
 		return $text;
 	}
 

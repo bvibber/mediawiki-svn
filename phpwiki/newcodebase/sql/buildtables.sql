@@ -54,13 +54,20 @@ CREATE TABLE old (
   INDEX old_timestamp (old_timestamp)
 ) TYPE=MyISAM PACK_KEYS=1;
 
-# Internal links: values are external keys into cur
+# Internal links
 #
-CREATE TABLE linked (
-  linked_from int(8) unsigned NOT NULL default '0',
-  linked_to int(8) unsigned NOT NULL default '0',
-  INDEX linked_from (linked_from),
-  INDEX linked_to (linked_to)
+CREATE TABLE links (
+  l_from varchar(255) binary NOT NULL default '',
+  l_to int(8) unsigned NOT NULL default '0',
+  INDEX l_from (l_from),
+  INDEX l_to (l_to)
+) TYPE=MyISAM;
+
+CREATE TABLE brokenlinks (
+  bl_from int(8) unsigned NOT NULL default '0',
+  bl_to varchar(255) binary NOT NULL default '',
+  INDEX bl_from (bl_from),
+  INDEX bl_to (bl_to)
 ) TYPE=MyISAM;
 
 # Site-wide statistics.
