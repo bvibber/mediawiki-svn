@@ -897,7 +897,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 
 	function otherLanguages()
 	{
-		global $wgOut, $wgLang, $wgUseNewInterlanguage ;
+		global $wgOut, $wgLang, $wgTitle , $wgUseNewInterlanguage ;
 
 		$a = $wgOut->getLanguageLinks();
 		if ( 0 == count( $a ) ) {
@@ -914,7 +914,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			$s = wfMsg( "otherlanguages" ) . ": ";
 		} else {
 			global $wgLanguageCode ;
-			 $x = "mode=zoom&xt=".$wgTitle->getDBkey() ;
+			$x = "mode=zoom&xt=".$wgTitle->getDBkey() ;
 			$x .= "&xl=".$wgLanguageCode ;
 			$s =  $this->makeKnownLink( $wgLang->specialPage( "Intl" ),
 				  wfMsg( "otherlanguages" ) , $x ) . ": " ;

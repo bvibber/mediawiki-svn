@@ -248,6 +248,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"Shortpages"	=> "Short articles",
 	"Longpages"		=> "Long articles",
 	"Newpages"		=> "Newly created articles",
+	"Intl"		=> "International issues",
 	"Allpages"		=> "All pages by title",
 
 	"Ipblocklist"	=> "Blocked IP addresses",
@@ -794,6 +795,7 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "rclsub"		=> "(to pages linked from \"$1\")",
 "debug"			=> "Debug",
 "newpages"		=> "New pages",
+"intl"		=> "International issues",
 "movethispage"	=> "Move this page",
 "unusedimagestext" => "<p>Please note that other web sites
 such as the international Wikipedias may link to an image with
