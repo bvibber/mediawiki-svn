@@ -420,7 +420,7 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "next"   => "volgende",
 "last"   => "vorige",
 "orig"   => "orig",
-"histlegend" => "Verklaring afkortingen: (wijz) = verschil met huidige versie, (vorige) = verschil met voorgaande versie, M = kleine wijziging",
+"histlegend" => "Verklaring afkortingen: (wijz) = verschil met huidige versie, (vorige) = verschil met voorgaande versie, K = kleine wijziging",
 
 # Diffs
 # Verschil
