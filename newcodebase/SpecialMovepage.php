@@ -85,7 +85,8 @@ class MovePageForm {
 		$oft = wfStrencode( $ot->getPrefixedDBkey() );
 		$oldid = $ot->getArticleID();
 
-		if ( 0 != $nt->getArticleID() ) {
+		if ( ( strlen( trim( $ndt ) ) < 2 )
+		  || ( 0 != $nt->getArticleID() ) ) {
 			$this->showForm( wfMsg( "articleexists" ) );
 			return;
 		}
