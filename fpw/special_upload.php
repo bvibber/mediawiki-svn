@@ -8,7 +8,7 @@ function upload () {
 	global $wikiUploadDeleted , $wikiUploadDelMsg1 , $wikiUploadDelMsg2 ;
 	global $wikiUploadAffirm , $wikiUploadFull ;
 	global $wikiUploadSuccess , $wikiUploadSuccess1 , $wikiUploadSuccess2 ;
-	global $wikiUploadAffirmText , $wikiUploadButton ;
+	global $wikiUploadAffirmText , $wikiUploadButton , $wikiUser ;
 	$vpage->special ( $wikiUploadTitle ) ;
 	$isSysop = in_array ( "is_sysop" , $user->rights ) ;
 	$xtitle = $wikiUploadPage ;
@@ -48,7 +48,7 @@ function upload () {
 		# Appending log page "log:Uploads"
 		global $REMODE_ADDR ;
 		$now = date ( "Y-m-d H:i:s" , time () ) ;
-		$userText = "[[user:$user->name|$user->name]]" ;
+		$userText = "[[$wikiUser:$user->name|$user->name]]" ;
 		if ( $user->name == "" ) $userText = $REMODE_ADDR ;
 		$logText = str_replace ( "$1" , $now , str_replace ( "$2" , $userText , str_replace ( "$3" , htmlspecialchars ( $Upload_name ) , $wikiUploadSuccess1 ) ) ) ;
 		makeLog ( "log:Uploads" , $logText , str_replace ( "$1" , $Upload_name , $wikiUploadSuccess2 ) ) ;

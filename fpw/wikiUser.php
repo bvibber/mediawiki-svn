@@ -184,9 +184,10 @@ class WikiUser {
 
 	# Creates a link to the user home page, or returns the IP
 	function getLink () {
+		global $wikiUser ;
 		if ( $this->isLoggedIn ) {
 			$s = new WikiPage ;
-			$s = $s->parseContents ( "[[user:$this->name|$this->name]]" ) ;
+			$s = $s->parseContents ( "[[$wikiUser:$this->name|$this->name]]" ) ;
 			$s = substr ( strstr ( $s , ">" ) , 1 ) ;
 			$s = str_replace ( "</p>" , "" , $s ) ;
 			return $s ;

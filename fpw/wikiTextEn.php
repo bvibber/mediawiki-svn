@@ -32,7 +32,10 @@ $wikiHelpLink = "Help" ; # "special:" is added automatically
 $wikiPreferences = "Preferences" ;
 $wikiWhatLinksHere = "Pages that link here" ;
 $wikiPrintLinksMarkup = "i" ; # will be used as <$wikiPrintLinksMarkup> and </$wikiPrintLinksMarkup>
-$wikiAllowedNamespaces = array ( "wikipedia" , "talk" , "user" , "" , "wikipedia talk" , "user talk" ) ;
+#$wikiAllowedNamespaces = array ( "wikipedia" , "talk" , "user" , "" , "wikipedia talk" , "user talk" ) ;
+$wikiTalk = "talk" ;
+$wikiUser = "user" ;
+$wikiAllowedNamespaces = array ( "wikipedia" , $wikiTalk , $wikiUser , "" , "wikipedia $wikiTalk" , "$wikiUser $wikiTalk" ) ;
 
 # Editing
 $wikiEditTitle = "Editing $1" ;

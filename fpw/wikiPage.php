@@ -153,7 +153,7 @@ class WikiPage extends WikiTitle {
 		$n = explode ( ":" , $this->title ) ;
 		if ( count ( $n ) == 1 ) $n = $n[0] ;
 		else $n = $n[1] ;
-		global $wikiSQLServer ;
+		global $wikiSQLServer , $wikiTalk , $wikiUser ;
 		$connection = getDBconnection () ;
 		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "SELECT cur_title FROM cur WHERE cur_title LIKE \"%:$n\"" ;
@@ -167,10 +167,10 @@ class WikiPage extends WikiTitle {
 				array_push ( $a , "<a class=\"green\" href=\"".wikiLink($n)."\">:".$this->getNiceTitle($n)."</a>" ) ;
 			}
 
-		if ( stristr ( $this->namespace , "talk" ) == false ) {
+		if ( stristr ( $this->namespace , $wikiTalk ) == false ) {
 			$n2 = ucfirst ( $this->namespace ) ;
 			if ( $n2 != "" ) $n2 .= " " ;
-			$n2 .= "Talk" ;
+			$n2 .= ucfirst ( $wikiTalk ) ;
 			$dummy = new wikiTitle ;
 			$dummy->setTitle ( $n2.":$n" ) ;
 			#if ( $dummy->doesTopicExist ( $connection ) ) $style = "color:green;text-decoration:none" ;
@@ -182,7 +182,7 @@ class WikiPage extends WikiTitle {
 		while ( $s = mysql_fetch_object ( $result ) ) {
 			$t = explode ( ":" , $s->cur_title ) ;
 			$t = $u->getNiceTitle ( $t[0] ) ;
-			if ( strtolower ( substr ( $t , -4 ) ) != "talk" and strtolower ( $t ) != $this->namespace )
+			if ( strtolower ( substr ( $t , -strlen($wikiTalk) ) ) != $wikiTalk and strtolower ( $t ) != $this->namespace )
 				#array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"".wikiLink("$t:$n")."\">$t</a>" ) ;
 				array_push ( $a , "<a class=\"green\" href=\"".wikiLink("$t:$n")."\">$t</a>" ) ;
 			}

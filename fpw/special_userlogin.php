@@ -1,7 +1,7 @@
 <?
 function userLogin () {
 	global $WikiUserPassword , $WikiLoggedIn ;
-	global $loginattempt , $user , $vpage , $WikiUserID , $expiration , $wikiLogIn ;
+	global $loginattempt , $user , $vpage , $WikiUserID , $expiration , $wikiLogIn , $wikiRecodeInput ;
 	global $wikiYourName , $wikiYourPassword , $wikiYourPasswordAgain , $wikiNewUsersOnly , $wikiRememberMyPassword , $wikiLoginProblem , $wikiLoginPageTitle ;
 	$vpage->title = $wikiLoginPageTitle ;
 
