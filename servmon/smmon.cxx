@@ -54,10 +54,10 @@ public:
 		read_objid(oidname.c_str(), anoid, &anoidlen);
 		snmp_add_null_var(pdu, anoid, anoidlen);
 		status = snmp_synch_response(ss, pdu, &response);
+		b::any res;
 		if (status == STAT_SUCCESS && response->errstat == SNMP_ERR_NOERROR) {
 			vars = response->variables;
 			print_variable(vars->name, vars->name_length, vars);
-			b::any res;
 			std::cerr << "get a reply of type: " << int(vars->type) << "\n";
 			if (vars->type == ASN_OCTET_STR) {
 				std::string s;
@@ -73,14 +73,14 @@ public:
 				res = *vars->val.integer;
 				std::cerr << "result type int: " << *vars->val.integer << "\n";
 			}
-			return res;
 		} else {
 			if (status == STAT_SUCCESS)
 				std::cerr << snmp_errstring(response->errstat);
 			else
 				snmp_sess_perror("snmpget", ss);
-			return b::any();
 		}
+		snmp_close(&session);
+		return res;
 	}
 		
 private:
@@ -100,6 +100,12 @@ public:
 	, port(port_)
 	, connected(false)
 	{}
+	
+	~mysqlclient() {
+		if (connected)
+			mysql_close(&connection);
+	}
+	
 	void connect(void) {
 		mysql_init(&connection);
 		mysql_options(&connection, MYSQL_READ_DEFAULT_GROUP, "servmon");
@@ -209,8 +215,17 @@ void
 cfg::checker::start(void)
 {
 	std::cerr << "checker starting...\n";
+	static int lastirc = 0;
 	for (;;) {
-		sleep(5);
+		int interval = 10, ircinterval = 60;
+		try {
+			interval = SMI(smcfg::cfg)->fetchint("/monit/interval");
+		} catch (smcfg::nokey&) {}
+		try {
+			ircinterval = SMI(smcfg::cfg)->fetchint("/monit/ircinterval");
+		} catch (smcfg::nokey&) {}
+		
+		sleep(interval);
 		std::cerr << "checker iter...\n";
 		chk1();
 
@@ -219,6 +234,29 @@ cfg::checker::start(void)
 		b::try_mutex::scoped_lock m (chk_m);
 		std::map<std::string, serverp>& serverlist = SMI(cfg)->servers();
 
+                /* mysql */
+		std::map<std::string, std::string> mysqlreps;
+		for(std::map<std::string, serverp>::const_iterator
+			    it = serverlist.begin(), end = serverlist.end(); it != end; ++it) {
+			if (it->second->type() != "MySQL") continue;
+			b::shared_ptr<mysqlserver> s = b::dynamic_pointer_cast<mysqlserver>(it->second);
+			mysqlreps[it->first] = "\002" + it->first + "\002: " + s->fmt4irc() + " ";
+		}
+		/* do master first, then the rest */
+		std::string mastername;
+		try {
+			mastername = SMI(smcfg::cfg)->fetchstr("/monit/mysql/master");
+			std::map<std::string,std::string>::iterator it = mysqlreps.find(mastername);
+			if (it != mysqlreps.end()) {
+				rep += it->second;
+				mysqlreps.erase(it);
+			}
+		} catch (smcfg::nokey&) {}
+		for(std::map<std::string,std::string>::iterator it = mysqlreps.begin(),
+			    end = mysqlreps.end(); it != end; ++it) {
+			rep += it->second;
+		}
+	       
 		/* squids */
 		int squidreqs = 0, squidhits = 0;
 		for(std::map<std::string, serverp>::const_iterator
@@ -236,14 +274,12 @@ cfg::checker::start(void)
 		else squidperc = 0;
 		rep += b::io::str(b::format("\002total:\002 \00311%d\003/\00303%d\003/\0036%.02f%%\003") % squidreqs % squidhits % squidperc);
 
-		/* mysql */
-		for(std::map<std::string, serverp>::const_iterator
-			    it = serverlist.begin(), end = serverlist.end(); it != end; ++it) {
-			if (it->second->type() != "MySQL") continue;
-			b::shared_ptr<mysqlserver> s = b::dynamic_pointer_cast<mysqlserver>(it->second);
-			rep += " \002" + it->first + "\002: " + s->fmt4irc();
+		std::time_t now = std::time(0);
+		if ((now - ircinterval) > lastirc) {
+			SMI(smirc::cfg)->conn()->msg(rep);
+			lastirc = now;
 		}
-		SMI(smirc::cfg)->conn()->msg(rep);
+		
 	}
 }
 
@@ -263,11 +299,10 @@ cfg::squidserver::check(void) {
 	hpsv = hps.val(hits);
 }
 
-void
-cfg::mysqlserver::check(void)
+uint32_t
+cfg::mysqlserver::getqueries(void)
 {
-	std::cerr << "mysql: checking " << name << "\n";
-	mysqlclientp client = mysqlclient::forhost(name);
+	mysqlclientp client = getconn();
 	uint32_t queries;
 	try {
 		mysqlclient::resultset res = client->query("SHOW STATUS LIKE 'QUESTIONS'");
@@ -283,16 +318,78 @@ cfg::mysqlserver::check(void)
 				queries = 0;
 			}
 		}
-	} catch (mysqlerr& e) {
-		std::cerr << "mysql err: " << e.what() << "\n";
-	}
-	qpsv = qps.val(queries);
+	} catch (mysqlerr&) { queries = 0; }
+	return queries;
 }
 
+mysqlclientp
+cfg::mysqlserver::getconn(void)
+{
+	return mysqlclient::forhost(name);
+}
+	
+uint32_t
+cfg::mysqlserver::getnumprocesses(void)
+{
+	mysqlclientp client = getconn();
+	mysqlclient::resultset res = client->query("SHOW PROCESSLIST");
+	int numproc = 0;
+	for (uint i = 0; i < res.size(); ++i) {
+		if ((res[i]["User"] != "repl" && res[i]["User"] != "system user") && res[i]["Command"] != "Sleep")
+			numproc++;
+	}
+	return numproc;
+}
+			
+void
+cfg::mysqlserver::check(void)
+{
+	std::cerr << "mysql: checking " << name << "\n";
+	uint32_t queries = getqueries();
+	qpsv = qps.val(queries);
+	procv = getnumprocesses();
+}
+
+uint64_t
+cfg::mysqlserver::getmasterpos(void)
+{
+	std::string mastername;
+	try {
+		mastername = SMI(smcfg::cfg)->fetchstr("/monit/mysql/master");
+	} catch (smcfg::nokey&) {
+		std::cerr << "mysql master not configured...\n";
+		return 0;
+	}
+	mysqlclientp client = mysqlclient::forhost(mastername);
+	mysqlclient::resultset r = client->query("SELECT MAX(rc_timestamp) AS ts FROM recentchanges");
+	if (r.size() < 1) return 0;
+	return b::lexical_cast<uint64_t>(r[0]["ts"]);
+}
+
+uint64_t
+cfg::mysqlserver::getmypos(void)
+{
+	mysqlclientp client = getconn();
+	mysqlclient::resultset r = client->query("SELECT MAX(rc_timestamp) AS ts FROM recentchanges");
+	if (r.size() < 1) return 0;
+	return b::lexical_cast<uint64_t>(r[0]["ts"]);
+}
+
+uint64_t
+cfg::mysqlserver::getreplag(void)
+{
+	return getmasterpos() - getmypos();
+}
+	
 std::string
 cfg::mysqlserver::fmt4irc(void) const
 {
-	std::string rep = b::io::str(b::format("\00311%d\003") % qpsv);
+	std::string rep = b::io::str(b::format("\00311%d\003/\00303%d\003") % procv % qpsv);
+	try {
+		if (SMI(smcfg::cfg)->fetchstr("/monit/mysql/master") != name) {
+			rep += b::io::str(b::format("/\00306%d\003") % replag);
+		}
+	} catch (smcfg::nokey&) {}
 	return rep;
 }
 	

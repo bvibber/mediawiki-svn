@@ -281,3 +281,40 @@ HDL(cfg_monit_mysql_password) {
 	}
 };
 
+HDL(cfg_monit_monitor_interval) {
+	EX {
+		try {
+			SMI(smcfg::cfg)->storeint("/monit/interval", b::lexical_cast<int>(cd.p(0)));
+		} catch (b::bad_lexical_cast&) {
+			cd.error("Bad number.");
+		}
+		return true;
+	}
+};
+
+HDL(cfg_monit_ircinterval) {
+	EX {
+		try {
+			SMI(smcfg::cfg)->storeint("/monit/ircinterval", b::lexical_cast<int>(cd.p(0)));
+		} catch (b::bad_lexical_cast&) {
+			cd.error("Bad number.");
+		}
+		return true;
+	}
+};
+
+HDL(cfg_monit_showintervals) {
+	EX {
+		try {
+			cd.inform("Monitor interval         : " + b::lexical_cast<std::string>(SMI(smcfg::cfg)->fetchint("/monit/interval")));
+		} catch (smcfg::nokey&) {
+			cd.inform("Monitor interval         : <default>");
+		}
+		try {
+			cd.inform("IRC notification interval: " + b::lexical_cast<std::string>(SMI(smcfg::cfg)->fetchint("/monit/ircinterval")));
+		} catch (smcfg::nokey&) {
+			cd.inform("IRC notification interval: <default>");
+		}
+		return true;
+	}
+};

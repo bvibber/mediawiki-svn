@@ -160,6 +160,7 @@ stdrt.install("show irc server", cfg_irc_showserver(), "Describe all configured 
 stdrt.install("show irc channels", cfg_irc_showchannels(), "Show configured channels");
 stdrt.install("show monitor server", cfg_monit_showservers(), "Show monitored servers");
 stdrt.install("show monitor server %s", cfg_monit_showservers(), "Show information for a particular server");
+stdrt.install("show monitor intervals", cfg_monit_showintervals(), "Show monitoring intervals");
 eblrt = stdrt;
 stdrt.install("enable", cmd_enable(), "Enter privileged mode");
 
@@ -193,6 +194,8 @@ monrt.install("server %s type %s", cfg_monit_server_type(), "Monitor a server");
 monrt.install("server %s mysql-master", cfg_monit_server_mysql_master(), "Set server as MySQL master");
 monrt.install("mysql username %s", cfg_monit_mysql_username(), "Set MySQL username");
 monrt.install("mysql password %s", cfg_monit_mysql_password(), "Set MySQL password");
+monrt.install("monitor-interval %s", cfg_monit_monitor_interval(), "Monitor interval in seconds");
+monrt.install("irc-status-interval %s", cfg_monit_ircinterval(), "IRC status interval in seconds");
 
 monrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit monitor configuration mode");
 	}
@@ -431,7 +434,7 @@ end:
 		}
 		if (ln.size() > 1 && ln[ln.size() - 1] != ' ') {
 			ln.resize(ln.size() - 1);
-			thisword.resize(thisword.size() - 1);
+			thisword.resize(thisword.size() ? thisword.size() - 1 : 0);
 			return true;
 		}
 		return true;

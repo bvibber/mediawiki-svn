@@ -58,7 +58,17 @@ public:
 		std::string fmt4irc(void) const;
 		void check();
 		xomitr qps;
-		uint32_t qpsv;
+		uint32_t qpsv, procv;
+		uint64_t replag;
+		
+		uint32_t getqueries(void);
+		uint32_t getnumprocesses(void);
+		uint64_t getmasterpos(void);
+		uint64_t getmypos(void);
+		uint64_t getreplag(void);
+		
+		mysqlclientp getconn(void);
+		mysqlclientp clnt;
 	};
 	std::map<std::string, serverp> const& servers() const {
 		return serverlist;
