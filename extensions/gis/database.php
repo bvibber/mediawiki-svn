@@ -95,9 +95,14 @@ class gis_database {
 	var $db;
 	var $result;
 
+	var $version;
+
 	function gis_database()
 	{
 		$this->db =& wfGetDB( DB_MASTER );
+
+		global $wgVersion;
+		$this->version = explode('.',$wgVersion);
 	}
 
 
@@ -140,8 +145,9 @@ class gis_database {
 
 	/**
 	 *  Select entities with a certain radius expressed in meters
-	 *  FIXME: Does not work properly around the poles...
 	 *  Also select by globe and type if specified
+	 *  Note that the bounding box created by this function will
+	 *  by nature also include points beyond the given radius
 	 */
 	 function select_radius_m( $lat, $lon, $r, $globe, $type, $type_arg )
 	 {
@@ -155,8 +161,14 @@ class gis_database {
 
 		$latmin = $lat - $delta_lat;
 		$latmax = $lat + $delta_lat;
-		$lonmin = $lon - $delta_lon;
-		$lonmax = $lon + $delta_lon;
+		if ($latmax > 90 or $latmin < -90) {
+			# we cross the poles, so look all over the place
+			$lonmin = -180;
+			$lonmax = 180;
+		} else {
+			$lonmin = $lon - $delta_lon;
+			$lonmax = $lon + $delta_lon;
+		}
 		return $this->select_area( $latmin, $lonmin, $latmax, $lonmax,
 					   $globe, $type, $type_arg );
 	}
@@ -201,6 +213,7 @@ class gis_database {
 	 {
 		$fname = 'gis_database::select_position';
 
+		# BUG: use selectRow instead
 		$this->result = $this->db->select( 'gis',
 			      array(
 				'gis_page',
@@ -230,11 +243,23 @@ class gis_database {
 	{
 		$fname = 'gis_database::get_title';
 
-		# FIXME: version 1.4 is different
-		$name_dbkey = $this->db->selectField( 'page',
+		global $wgVersion;
+		$v = substr($wgVersion,0,3);
+		$out .= $v;
+
+		if ($this->version[0] <= 1 and $this->version[1] <= 4) {
+			# version 1.4 uses 'cur'
+			$name_dbkey = $this->db->selectField( 'cur',
+				      'cur_title',
+				       array( 'cur_id' => $id),
+				       $fname );
+		} else {
+			# version 1.5 uses 'page'
+			$name_dbkey = $this->db->selectField( 'page',
 				      'page_title',
 				       array( 'page_id' => $id),
 				       $fname );
+		}
 		return str_replace( '_', ' ', $name_dbkey );
 	}
 }
