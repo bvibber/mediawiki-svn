@@ -11,8 +11,9 @@
 namespace smnet {
 
 struct sckterr : public std::runtime_error {
-	sckterr(void) : std::runtime_error(std::strerror(errno)) {};
-	sckterr(char const *s) : std::runtime_error(s) {}
+	sckterr(void) : std::runtime_error(std::strerror(errno)), err(errno) {};
+	sckterr(char const *s) : std::runtime_error(s), err(0) {}
+	int err;
 };
 struct scktcls : public std::exception {
 	scktcls(void) {}
@@ -225,7 +226,7 @@ public:
 		sckt<fmly>::wr->rd(v, m);
 	}
 	inline char rd1(void) {
-		return sckt<fmly>::wr.rd1();
+		return sckt<fmly>::wr->rd1();
 	}
 	void endpt(std::string const& host) {
 		sckt<fmly>::wr->endpt(host);
@@ -268,6 +269,13 @@ public:
 		FD_ZERO(&rfds);
 		FD_ZERO(&wfds);
 		int m = 0;
+		time_t now = std::time(0);
+		std::cout << "running pending events at " << now << "\n";
+		time_t nextevt = SMI(smtmr::evthdlr)->run_pend();
+		std::cout << "next event: " << nextevt;
+		struct timeval tv;
+		tv.tv_sec = nextevt - now;
+		tv.tv_usec = 0;
 		for (std::map<int,srec>::const_iterator it = fds.begin(), end = fds.end();
 				it != end; ++it)
 		{
@@ -278,13 +286,6 @@ public:
 			if (it->second.fg & swr)
 				FD_SET(it->second.fd, &wfds);
 		}
-		time_t now = std::time(0);
-		std::cout << "running pending events at " << now << "\n";
-		time_t nextevt = SMI(smtmr::evthdlr)->run_pend();
-		std::cout << "next event: " << nextevt;
-		struct timeval tv;
-		tv.tv_sec = nextevt - now;
-		tv.tv_usec = 0;
 		std::cout << "selecting...\n";
 		int i = select(m, &rfds, &wfds, NULL, nextevt ? &tv : NULL);
 		std::cout << i << "\n";

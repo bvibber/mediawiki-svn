@@ -20,11 +20,14 @@ using std::for_each;
 #include <boost/format.hpp>
 #include <boost/utility.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/lambda/lambda.hpp>
 using boost::lexical_cast;
 using boost::format;
 using boost::noncopyable;
 using boost::shared_ptr;
+using boost::lambda::var;
 namespace b = boost;
+namespace bl = boost::lambda;
 
 #include <sys/types.h>
 #include <sys/socket.h>
