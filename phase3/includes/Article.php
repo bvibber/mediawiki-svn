@@ -78,8 +78,9 @@ class Article {
 			else {				
 				if($action=="edit") {
 					if($section!="") {
+						if($section=="new") { return ""; }
 
-						$secs=preg_split("/(^=+.*?=+)/m",
+						$secs=preg_split("/(^=+.*?=+|^<h[1-6].*?>.*?<\/h[1-6].*?>)/mi",
 						 $this->mContent, -1,
 						 PREG_SPLIT_DELIM_CAPTURE);
 						if($section==0) {
@@ -427,9 +428,10 @@ class Article {
 				return;
 			}
 			# Article exists. Check for edit conflict.
+			# Don't check for conflict when appending a comment - this should always work
 
 			$this->clear(); # Force reload of dates, etc.
-			if ( $this->getTimestamp() != $wpEdittime ) { $isConflict = true; }
+			if ( $section!="new" && ( $this->getTimestamp() != $wpEdittime ) ) { $isConflict = true; }
 			$u = $wgUser->getID();
 
 			# Supress edit conflict with self
@@ -467,7 +469,13 @@ class Article {
 			$s = str_replace( "$1", $wgTitle->getPrefixedText(),
 			  wfMsg( "editing" ) );
 
-			if($section!="") { $s.=wfMsg("sectionedit");}
+			if($section!="") { 
+				if($section=="new") {
+					$s.=wfMsg("commentedit");
+				} else {
+					$s.=wfMsg("sectionedit");
+				}
+			}
 			$wgOut->setPageTitle( $s );
 			if ( $oldid ) {
 				$this->setOldSubtitle();
@@ -504,6 +512,7 @@ class Article {
 		$action = wfEscapeHTML( wfLocalUrl( $wgTitle->getPrefixedURL(), $q ) );
 
 		$summary = wfMsg( "summary" );		
+		$subject = wfMsg("subject");
 		$minor = wfMsg( "minoredit" );
 		$watchthis = wfMsg ("watchthis");
 		$save = wfMsg( "savearticle" );
@@ -555,16 +564,27 @@ class Article {
 			}
 			$wgOut->addHTML( "<br clear=\"all\" />\n" );
 		}
+
+		# if this is a comment, show a subject line at the top, which is also the edit summary.
+		# Otherwise, show a summary field at the bottom
+		if($section=="new") {
+
+			$commentsubject="{$subject}: <input tabindex=1 type=text value=\"{$wpSummary}\" name=\"wpSummary\" maxlength=200 size=60><br>";
+		} else {
+
+			$editsummary="{$summary}: <input tabindex=3 type=text value=\"{$wpSummary}\" name=\"wpSummary\" maxlength=200 size=60><br>";
+		}
+
 		$wgOut->addHTML( "
 <form id=\"editform\" name=\"editform\" method=\"post\" action=\"$action\"
 enctype=\"application/x-www-form-urlencoded\">
-<textarea tabindex=1 name=\"wpTextbox1\" rows={$rows}
+{$commentsubject}
+<textarea tabindex=2 name=\"wpTextbox1\" rows={$rows}
 cols={$cols}{$ew} wrap=\"virtual\">" .
 $wgLang->recodeForEdit( $wpTextbox1 ) .
 "
-</textarea><br>
-{$summary}: <input tabindex=2 type=text value=\"{$wpSummary}\"
-name=\"wpSummary\" maxlength=200 size=60><br>
+</textarea>
+<br>{$editsummary}
 {$checkboxhtml}
 <input tabindex=5 type=submit value=\"{$save}\" name=\"wpSave\">
 <input tabindex=6 type=submit value=\"{$prev}\" name=\"wpPreview\">
@@ -611,7 +631,7 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 		$now = wfTimestampNow();
 		$won = wfInvertTimestamp( $now );
 		wfSeedRandom();
-		$rand = mt_rand() / mt_getrandmax();
+		$rand = number_format( mt_rand() / mt_getrandmax(), 12, ".", "" );
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
 		  "cur_restrictions,cur_user_text,cur_is_redirect," .
@@ -654,12 +674,18 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 
 		// insert updated section into old text if we have only edited part 
 		// of the article
-		if ($section != "") {
+		if ($section != "") {			
 			$oldtext=$this->getContent();
-			$secs=preg_split("/(^=+.*?=+)/m",$oldtext,-1,PREG_SPLIT_DELIM_CAPTURE);
-			$secs[$section*2]=$text."\n\n"; // replace with edited
-			if($section) { $secs[$section*2-1]=""; } // erase old headline
-			$text=join("",$secs);		
+			if($section=="new") {
+				if($summary) $summary="== {$summary} ==\n\n";
+				$text=$oldtext."\n\n".$summary.$text;
+			} else {
+				$secs=preg_split("/(^=+.*?=+|^<h[1-6].*?>.*?<\/h[1-6].*?>)/mi",
+				  $oldtext,-1,PREG_SPLIT_DELIM_CAPTURE);
+				$secs[$section*2]=$text."\n\n"; // replace with edited
+				if($section) { $secs[$section*2-1]=""; } // erase old headline
+				$text=join("",$secs);		
+			}
 		}
 		if ( $this->mMinorEdit ) { $me1 = 1; } else { $me1 = 0; }
 		if ( $minor ) { $me2 = 1; } else { $me2 = 0; }		
@@ -1641,8 +1667,8 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 		global $wgUser, $wgCacheEpoch;
 		if(!file_exists( $fn = $this->fileCacheName() ) ) return false;
 		$cachetime = wfUnix2Timestamp( filemtime( $fn ) );
-		$good = ( $this->mTouched <= $cachetime ) &&
-			($wgCacheEpoch <= $cachetime );
+		$good = (( $this->mTouched <= $cachetime ) &&
+			($wgCacheEpoch <= $cachetime ));
         wfDebug(" isFileCacheGood() - cachetime $cachetime, touched {$this->mTouched} epoch {$wgCacheEpoch}, good $good\n");
 		return $good;
 	}
@@ -1652,6 +1678,7 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 		wfDebug(" loadFromFileCache()\n");
 		$filename=$this->fileCacheName();
 		$filenamegz = "{$filename}.gz";
+		$wgOut->sendCacheControl();
 		if( $wgUseGzip
 			&& wfClientAcceptsGzip()
 			&& file_exists( $filenamegz)
@@ -1661,19 +1688,20 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 			header( "Vary: Accept-Encoding" );
 			$filename = $filenamegz;
 		}
-		$wgOut->sendCacheControl();
 		readfile( $filename );
 	}
 	
 	function saveToFileCache( $text ) {
 		global $wgUseGzip, $wgCompressByDefault;
+		if(strcmp($text,"") == 0) return "";
 		
-        wfDebug(" saveToFileCache()\n");
+        wfDebug(" saveToFileCache()\n", false);
 		$filename=$this->fileCacheName();
                 $mydir2=substr($filename,0,strrpos($filename,"/")); # subdirectory level 2
 		$mydir1=substr($mydir2,0,strrpos($mydir2,"/")); # subdirectory level 1
-		if(!file_exists($mydir1)) { mkdir($mydir1,0777); } # create if necessary
-		if(!file_exists($mydir2)) { mkdir($mydir2,0777); }			
+		if(!file_exists($mydir1)) { mkdir($mydir1,0775); } # create if necessary
+		if(!file_exists($mydir2)) { mkdir($mydir2,0775); }
+		
 		$f = fopen( $filename, "w" );
 		if($f) {
 			$now = wfTimestampNow();
@@ -1707,6 +1735,7 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 				if(wfClientAcceptsGzip()) {
 					header( "Content-Encoding: gzip" );
 					header( "Vary: Accept-Encoding" );
+					wfDebug("  sending NEW gzip now...\n" );
 					return $gzout;
 				}
 			}

@@ -100,7 +100,7 @@ class SearchEngine {
 				array_push( $this->namespacesToSearch, $i );
 			}
 			$name = str_replace( "_", " ", $ns[$i] );
-			if ( "" == $name ) { $name = "(Main)"; }
+			if ( "" == $name ) { $name = wfMsg( "blanknamespace" ); }
 
 			if ( 0 != $i ) { $r1 .= " "; }
 			$r1 .= "<input type=checkbox value=\"1\" name=\"" .
@@ -312,7 +312,8 @@ class SearchEngine {
 		#	$this->mUsertext );
 		
 		$q = $this->mUsertext;
-		$qq = wfStrencode( $q );
+		$qq = wfStrencode( $wgLang->stripForSearch( $q ) );
+		$this->mSearchterms = preg_split( '/\s+/', $q );
 		$this->mTitlecond = " MATCH(si_title) AGAINST('$qq' IN BOOLEAN MODE)";
 		$this->mTextcond = " (MATCH(si_text) AGAINST('$qq' IN BOOLEAN MODE) AND cur_is_redirect=0)";
 	}
@@ -387,7 +388,7 @@ class SearchEngine {
 		$wgTitle = Title::newFromText( $search );
 
 		if ( 0 != $wgArticle->getID() ) {
-			$wgArticle->view();
+			$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL() ) );
 			return;
 		}
 
@@ -395,7 +396,7 @@ class SearchEngine {
 		#
 		$wgTitle = Title::newFromText( strtolower( $search ) );
 		if ( 0 != $wgArticle->getID() ) {
-			$wgArticle->view();
+			$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL() ) );
 			return;
 		}
 
@@ -403,7 +404,7 @@ class SearchEngine {
 		#
 		$wgTitle=Title::newFromText( ucwords( strtolower( $search ) ) );
 		if ( 0 != $wgArticle->getID() ) {
-			$wgArticle->view();
+			$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL() ) );
 			return;
 		}
 
@@ -411,7 +412,7 @@ class SearchEngine {
 		#
 		$wgTitle = Title::newFromText( strtoupper( $search ) );
 		if ( 0 != $wgArticle->getID() ) {
-			$wgArticle->view();
+			$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL() ) );
 			return;
 		}
 
@@ -429,7 +430,7 @@ class SearchEngine {
 
 			$wgTitle = Title::newFromDBkey( $s->cur_title );
 			$wgTitle->setNamespace( $s->cur_namespace );
-			$wgArticle->view();
+			$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL() ) );
 			return;
 		}
 		$wgOut->addHTML( wfMsg("nogomatch", 

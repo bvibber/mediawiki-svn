@@ -149,20 +149,27 @@ class OutputPage {
 	function checkLastModified ( $timestamp )
 	{
 		global $wgLang, $wgCachePages, $wgUser;
-		if( !$wgCachePages ) return;
-		if( preg_match( '/MSIE ([1-4]|5\.0)/', $_SERVER["HTTP_USER_AGENT"] ) ) {
-			# IE 5.0 has probs with our caching
-			#wfDebug( "-- bad client, not caching\n", false );
+		if( !$wgCachePages ) {
+			wfDebug( "CACHE DISABLED\n", false );
 			return;
 		}
-		if( $wgUser->getOption( "nocache" ) ) return;
+		if( preg_match( '/MSIE ([1-4]|5\.0)/', $_SERVER["HTTP_USER_AGENT"] ) ) {
+			# IE 5.0 has probs with our caching
+			wfDebug( "-- bad client, not caching\n", false );
+			return;
+		}
+		if( $wgUser->getOption( "nocache" ) ) {
+			wfDebug( "USER DISABLED CACHE\n", false );
+			return;
+		}
 
+		$lastmod = gmdate( "D, j M Y H:i:s", wfTimestamp2Unix(
+			max( $timestamp, $wgUser->mTouched ) ) ) . " GMT";
+		
 		if( $_SERVER["HTTP_IF_MODIFIED_SINCE"] != "" ) {
 			$ismodsince = wfUnix2Timestamp( strtotime( $_SERVER["HTTP_IF_MODIFIED_SINCE"] ) );
-			#wfDebug( "-- client send If-Modified-Since: " . $_SERVER["HTTP_IF_MODIFIED_SINCE"] . "\n", false );
-			$lastmod = gmdate( "D, j M Y H:i:s", wfTimestamp2Unix(
-				max( $timestamp, $wgUser->mTouched ) ) ) . " GMT";
-			#wfDebug( "--  we might send Last-Modified : $lastmod\n", false ); 
+			wfDebug( "-- client send If-Modified-Since: " . $_SERVER["HTTP_IF_MODIFIED_SINCE"] . "\n", false );
+			wfDebug( "--  we might send Last-Modified : $lastmod\n", false ); 
 		
 			if( ($ismodsince >= $timestamp ) and $wgUser->validateCache( $ismodsince ) ) {
 				# Make sure you're in a place you can leave when you call us!
@@ -170,12 +177,15 @@ class OutputPage {
 				header( "Expires: Mon, 15 Jan 2001 00:00:00 GMT" ); # Cachers always validate the page!
 				header( "Cache-Control: private, must-revalidate, max-age=0" );
 				header( "Last-Modified: {$lastmod}" );			
-				#wfDebug( "CACHED client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp\n", false );
+				wfDebug( "CACHED client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp\n", false );
 				exit;
 			} else {
-				#wfDebug( "READY  client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp\n", false );
+				wfDebug( "READY  client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp\n", false );
 				$this->mLastModified = $lastmod;
 			}
+		} else {
+			wfDebug( "We're confused.\n", false );
+			$this->mLastModified = $lastmod;
 		}
 	}
 
@@ -310,9 +320,11 @@ class OutputPage {
 
 	function sendCacheControl() {
 		if( $this->mLastModified != "" ) {
+			wfDebug( "** private caching; {$this->mLastModified} **\n", false );
 			header( "Cache-Control: private, must-revalidate, max-age=0" );
 			header( "Last-modified: {$this->mLastModified}" );
 		} else {
+			wfDebug( "** no caching **\n", false );
 			header( "Cache-Control: no-cache" ); # Experimental - see below
 			header( "Pragma: no-cache" );
 			header( "Last-modified: " . gmdate( "D, j M Y H:i:s" ) . " GMT" );
@@ -667,7 +679,7 @@ class OutputPage {
 		$text = preg_replace( "/(^|\n)-----*/", "\\1<hr>", $text );
 		$text = str_replace ( "<HR>", "<hr>", $text );
 
-		$text = $this->doQuotes( $text );
+		$text = $this->doAllQuotes( $text );
 		$text = $this->doHeadings( $text );
 		$text = $this->doBlockLevels( $text, $linestart );
 		
@@ -689,11 +701,62 @@ class OutputPage {
 		return $text;
 	}
 
-	/* private */ function doQuotes( $text )
+	/* private */ function doAllQuotes( $text )
 	{
-		$text = preg_replace( "/'''(.+)'''/mU", "<strong>\$1</strong>", $text );
-		$text = preg_replace( "/''(.+)''/mU", "<em>\$1</em>", $text );
-		return $text;
+		$outtext = "";
+		$lines = explode( "\r\n", $text );
+		foreach ( $lines as $line ) {
+			$outtext .= $this->doQuotes ( "", $line, "" ) . "\r\n";
+		}
+		return $outtext;
+	}
+
+	/* private */ function doQuotes( $pre, $text, $mode )
+	{
+		if ( preg_match( "/^(.*)''(.*)$/sU", $text, $m ) ) {
+			$m1_strong = ($m[1] == "") ? "" : "<strong>{$m[1]}</strong>";
+			$m1_em = ($m[1] == "") ? "" : "<em>{$m[1]}</em>";
+			if ( substr ($m[2], 0, 1) == "'" ) {
+				$m[2] = substr ($m[2], 1);
+				if ($mode == "em") {
+					return $this->doQuotes ( $m[1], $m[2], ($m[1] == "") ? "both" : "emstrong" );
+				} else if ($mode == "strong") {
+					return $m1_strong . $this->doQuotes ( "", $m[2], "" );
+				} else if (($mode == "emstrong") || ($mode == "both")) {
+					return $this->doQuotes ( "", $pre.$m1_strong.$m[2], "em" );
+				} else if ($mode == "strongem") {
+					return "<strong>{$pre}{$m1_em}</strong>" . $this->doQuotes ( "", $m[2], "em" );
+				} else {
+					return $m[1] . $this->doQuotes ( "", $m[2], "strong" );
+				}
+			} else {
+				if ($mode == "strong") {
+					return $this->doQuotes ( $m[1], $m[2], ($m[1] == "") ? "both" : "strongem" );
+				} else if ($mode == "em") {
+					return $m1_em . $this->doQuotes ( "", $m[2], "" );
+				} else if ($mode == "emstrong") {
+					return "<em>{$pre}{$m1_strong}</em>" . $this->doQuotes ( "", $m[2], "strong" );
+				} else if (($mode == "strongem") || ($mode == "both")) {
+					return $this->doQuotes ( "", $pre.$m1_em.$m[2], "strong" );
+				} else {
+					return $m[1] . $this->doQuotes ( "", $m[2], "em" );
+				}
+			}
+		} else {
+			$text_strong = ($text == "") ? "" : "<strong>{$text}</strong>";
+			$text_em = ($text == "") ? "" : "<em>{$text}</em>";
+			if ($mode == "") {
+				return $pre . $text;
+			} else if ($mode == "em") {
+				return $pre . $text_em;
+			} else if ($mode == "strong") {
+				return $pre . $text_strong;
+			} else if ($mode == "strongem") {
+				return (($pre == "") && ($text == "")) ? "" : "<strong>{$pre}{$text_em}</strong>";
+			} else {
+				return (($pre == "") && ($text == "")) ? "" : "<em>{$pre}{$text_strong}</em>";
+			}
+		}
 	}
 
 	/* private */ function doHeadings( $text )
@@ -1226,14 +1289,36 @@ class OutputPage {
 		global $wgUser,$wgArticle,$wgTitle,$wpPreview;
 		$nh=$wgUser->getOption( "numberheadings" );
 		$st=$wgUser->getOption( "showtoc" );
-		$es=$wgUser->getID() && $wgUser->getOption( "editsection" );
+		if(!$wgTitle->userCanEdit()) {
+			$es=0;
+			$esr=0;
+		} else {
+			$es=$wgUser->getID() && $wgUser->getOption( "editsection" );
+			$esr=$wgUser->getID() && $wgUser->getOption( "editsectiononrightclick" );
+		}
+		# if the string __NOTOC__ (not case-sensitive) occurs in the HTML, do not 
+		# add TOC
+		if($st && preg_match("/__NOTOC__/i",$text)) { 
+			$text=preg_replace("/__NOTOC__/i","",$text);
+			$st=0; 
+		}
+
+		# never add the TOC to the Main Page. This is an entry page that should not
+		# be more than 1-2 screens large anyway
 		if($wgTitle->getPrefixedText()==wfMsg("mainpage")) {$st=0;}
 
+		# We need this to perform operations on the HTML
 		$sk=$wgUser->getSkin();
-		preg_match_all("/<H([1-6])(.*?>)(.*?)<\/H[1-6]>/i",$text,$matches);
 
+		# Get all headlines for numbering them and adding funky stuff like [edit]
+		# links
+		preg_match_all("/<H([1-6])(.*?>)(.*?)<\/H[1-6]>/i",$text,$matches);
+		
+		# headline counter
 		$c=0;
 
+		# Ugh .. the TOC should have neat indentation levels which can be
+		# passed to the skin functions. These are determined here
 		foreach($matches[3] as $headline) {
 			if($level) { $prevlevel=$level;}
 			$level=$matches[1][$c];
@@ -1289,6 +1374,9 @@ class OutputPage {
 			 .$headline
 			 ."</a>"
 			 ."</H".$level.">";
+			if($esr && !isset($wpPreview)) {
+				$head[$c]=$sk->editSectionScript($c+1,$head[$c]);	
+			}
 			$numbering="";
 			$c++;
 			$dot=0;
@@ -1307,11 +1395,14 @@ class OutputPage {
 
 
 		foreach($blocks as $block) {
-			if($es && !isset($wpPreview) && $c>0 && $i==0) {
+			if(($es) && !isset($wpPreview) && $c>0 && $i==0) {
+			    # This is the [edit] link that appears for the top block of text when 
+				# section editing is enabled
 				$full.=$sk->editSectionLink(0);				
 			}
 			$full.=$block;
 			if($st && $toclines>3 && !$i) {
+				# Let's add a top anchor just in case we want to link to the top of the page
 				$full="<a name=\"top\"></a>".$full.$toc;
 			}
 
@@ -1361,14 +1452,15 @@ class OutputPage {
 
 	/* private */ function headElement()
 	{
-		global $wgDocType, $wgDTD, $wgUser, $wgLanguageCode, $wgOutputEncoding;
+		global $wgDocType, $wgDTD, $wgUser, $wgLanguageCode, $wgOutputEncoding, $wgLang;
 
 		$ret = "<!DOCTYPE HTML PUBLIC \"$wgDocType\"\n        \"$wgDTD\">\n";
 
 		if ( "" == $this->mHTMLtitle ) {
 			$this->mHTMLtitle = $this->mPagetitle;
 		}
-		$ret .= "<html lang=\"$wgLanguageCode\"><head><title>{$this->mHTMLtitle}</title>\n";
+		$rtl = $wgLang->isRTL() ? " dir='RTL'" : "";
+		$ret .= "<html lang=\"$wgLanguageCode\"$rtl><head><title>{$this->mHTMLtitle}</title>\n";
 		array_push( $this->mMetatags, array( "http:Content-type", "text/html; charset={$wgOutputEncoding}" ) );
 		foreach ( $this->mMetatags as $tag ) {
 			if ( 0 == strcasecmp( "http:", substr( $tag[0], 0, 5 ) ) ) {

@@ -18,7 +18,8 @@
 	"cols" => 80, "rows" => 25, "searchlimit" => 20,
 	"contextlines" => 5, "contextchars" => 50,
 	"skin" => 0, "math" => 1, "rcdays" => 3, "rclimit" => 50,
-	"highlightbroken" => 1, "stubthreshold" => 0
+	"highlightbroken" => 1, "stubthreshold" => 0,
+        "editsection" => 0, "showtoc" => 0, "date" => 0
 );
 
 /* private */ $wgQuickbarSettingsDe = array(
@@ -45,6 +46,9 @@
 	"hideminor" => "Keine kleinen Änderungen in Letzte Änderungen anzeigen",
 	"usenewrc" => "Erweiterte letzte Änderungen (nicht für alle Browser geeignet)",
 	"numberheadings" => "Überschriften automatisch numerieren",
+  "editsection" => "Links zum Editieren einzelner Absätze anzeigen",
+  "showtoc" => "Anzeigen eines Inhaltsverzeichnisses bei Artikeln mit mehr
+  als 3 Überschriften",
 	"rememberpassword" => "Passwort merken",
 	"editwidth" => "Text-Eingabefeld mit voller Breite",
 	"editondblclick" => "Seiten mit Doppelklick bearbeiten (JavaScript)",
@@ -328,6 +332,10 @@
 "retrievedfrom" => "Von \"$1\"",
 "newmessages" => "Sie haben $1.",
 "newmessageslink" => "neue Nachrichten",
+"editsection" => "Editieren",
+"toc" => "Inhaltsverzeichnis",
+"showtoc" => "Anzeigen",
+"hidetoc" => "Verbergen",
 
 # Main script and global functions
 #
@@ -441,6 +449,7 @@ Als Grund wurde angegeben:<br>$2<p>Bitte kontaktieren Sie den Administrator, um 
 "previewnote"	=> "Dies ist nur eine Vorschau, der Artikel wurde noch nicht gespeichert!",
 "previewconflict" => "Diese Vorschau gibt den Inhalt des oberen Textfeldes wieder; so wird der Artikel aussehen, wenn Sie jetzt speichern.",
 "editing"		=> "Bearbeiten von $1",
+"sectionedit" => " (Absatz)",
 "editconflict"	=> "Bearbeitungs-Konflikt: $1",
 "explainconflict" => "Jemand anders hat diesen Artikel geändert, nachdem Sie angefangen haben, ihn zu bearbeiten.
 Das obere Textfeld enthält den aktuellen Artikel.
@@ -542,6 +551,7 @@ Ihre interne ID-Nummer ist $2.",
 "changepassword" => "Passwort ändern",
 "skin"			=> "Skin",
 "math"			=> "TeX darstellen",
+"dateformat" => "Datumsformat",
 "math_failure"		=> "Parser-Fehler",
 "math_unknown_error"	=> "Unbekannter Fehler",
 "math_unknown_function"	=> "Unbekannte Funktion ",
@@ -784,12 +794,12 @@ sein, um Ihre Beobachtungsliste zu bearbeiten.",
 "deletepage"	=> "Seite löschen",
 "confirm"		=> "Bestätigen",
 "excontent" => "Alter Inhalt:",
-"exbeforeblank" => "Inhalt for dem leeren der Seite:",
+"exbeforeblank" => "Inhalt vor dem Leeren der Seite:",
 "exblank" => "Seite war leer",
 "confirmdelete" => "Löschung bestätigen",
 "deletesub"		=> "(Lösche \"$1\")",
-"historywarning" => "WARNUNG: Die Seite die Sie zu löscheni gedenken hat
-eine Versionsgeschichte:",
+"historywarning" => "WARNUNG: Die Seite die Sie zu löschen gedenken hat
+eine Versionsgeschichte: ",
 "confirmdeletetext" => "Sie sind dabei, einen Artikel oder ein Bild und alle älteren Versionen permanent aus der Datenbank zu löschen.
 Bitte bestätigen Sie Ihre Absicht, dies zu tun, dass Sie sich der Konsequenzen bewusst sind, und dass Sie in Übereinstimmung mit [[Wikipedia:Leitlinien|den Wikipedia Leitlinien]] handeln.",
 "confirmcheck"	=> "Ja, ich möchte den Löschvorgang fortsetzen.",
@@ -905,6 +915,8 @@ Bitte tragen Sie den Grund für die Blockade ein.",
 Datenbank-Abfrage. Benutze einzelne Hochkommata ('so'), um Text zu begrenzen.
 Bitte diese Funktion vorsichtig benutzen! Das abschließende ';' wird
 automatisch ergänzt.",
+"sqlislogged" => "Bitte beachten Sie das alle SQL-Abfrage mitprotokolliert
+werden.",
 "sqlquery"		=> "Abfrage eingeben",
 "querybtn"		=> "Abfrage starten",
 "selectonly"	=> "Andere Abfragen als \"SELECT\" können nur von Entwicklern benutzt werden.",

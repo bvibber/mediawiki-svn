@@ -21,7 +21,7 @@ class SkinStandard extends Skin {
 
 		$s = parent::getUserStyles();
 		if ( 3 == $this->qbSetting() ) { # Floating left
-			$s .= "<style type='text/css' media='screen'>\n" .
+			$s .= "<style type='text/css'>\n" .
 			  "@import '{$wgStyleSheetPath}/quickbar.css';\n</style>\n";
 		}
 		return $s;
@@ -40,7 +40,7 @@ class SkinStandard extends Skin {
 			  "#article { margin-left: 4px; margin-right: 152px; }\n";
 		} else if ( 1 == $qb || 3 == $qb ) {
 			$s .= "#quickbar { position: absolute; top: 4px; left: 4px; " .
-			  "border-right: 2px solid #000000; }\n" .
+			  "border-right: 1px solid gray; }\n" .
 			  "#article { margin-left: 152px; margin-right: 4px; }\n";
 		}
 		return $s;
@@ -51,7 +51,12 @@ class SkinStandard extends Skin {
 		$a = parent::getBodyOptions();
 
 		if ( 3 == $this->qbSetting() ) { # Floating left
-			$a["onload"] = "setup(\"quickbar\")";
+			$qb = "setup(\"quickbar\")";
+			if($a["onload"]) {
+				$a["onload"] .= ";$qb";
+			} else {
+				$a["onload"] = $qb;
+			}
 		}
 		return $a;
 	}

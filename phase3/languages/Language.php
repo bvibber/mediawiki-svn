@@ -25,7 +25,7 @@
 	"contextlines" => 5, "contextchars" => 50,
 	"skin" => 0, "math" => 1, "rcdays" => 7, "rclimit" => 50,
 	"highlightbroken" => 1, "stubthreshold" => 0,
-	"previewontop" => 1, "editsection"=>1, "showtoc"=>1,
+	"previewontop" => 1, "editsection"=>1,"editsectiononrightclick"=>0, "showtoc"=>1,
 	"date" => 0
 );
 
@@ -61,12 +61,13 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"hideminor" => "Hide minor edits in recent changes",
 	"usenewrc" => "Enhanced recent changes (not for all browsers)",
 	"numberheadings" => "Auto-number headings",
-	"editsection"=>"Show links for editing individual sections",
-	"showtoc"=>"Show table of contents for articles with more than 3 headings",
+	"editondblclick" => "Edit pages on double click (JavaScript)",
+	"editsection"=>"Enable section editing via [edit] links",
+	"editsectiononrightclick"=>"Enable section editing by right clicking<br> on section titles (JavaScript)",
+	"showtoc"=>"Show table of contents<br>(for articles with more than 3 headings)",
 	"rememberpassword" => "Remember password across sessions",
 	"editwidth" => "Edit box has full width",
-	"editondblclick" => "Edit pages on double click (JavaScript)",
-	"watchdefault" => "Watch new and modified articles",
+	"watchdefault" => "Add pages you edit to your watchlist",
 	"minordefault" => "Mark all edits minor by default",
 	"previewontop" => "Show preview before edit box and not after it",
 	"nocache" => "Disable page caching"
@@ -333,6 +334,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 "unprotectthispage" => "Unprotect this page",
 "newpage" => "New page",
 "talkpage"		=> "Discuss this page",
+"postcomment"   => "Post a comment",
 "articlepage"	=> "View article",
 "subjectpage"	=> "View subject", # For compatibility
 "userpage" => "View user page",
@@ -365,6 +367,8 @@ See $1.",
 "newmessageslink" => "new messages",
 "editsection"=>"edit",
 "toc" => "Table of contents",
+"showtoc" => "show",
+"hidetoc" => "hide",
 
 # Main script and global functions
 #
@@ -485,6 +489,7 @@ Please log in again after you receive it.",
 # Edit pages
 #
 "summary"		=> "Summary",
+"subject"		=> "Subject/headline",
 "minoredit"		=> "This is a minor edit",
 "watchthis"		=> "Watch this article",
 "savearticle"	=> "Save page",
@@ -509,6 +514,7 @@ If you are here by mistake, just click your browser's '''back''' button.",
 text editing area as it will appear if you choose to save.",
 "editing"		=> "Editing $1",
 "sectionedit"	=> " (section)",
+"commentedit"	=> " (comment)",
 "editconflict"	=> "Edit conflict: $1",
 "explainconflict" => "Someone else has changed this page since you
 started editing it.
@@ -601,7 +607,7 @@ containing all of the search terms will appear in the result).",
 Search in namespaces :<br>
 $1<br>
 $2 List redirects &nbsp; Search for $3 $9",
-
+"blanknamespace" => "(Main)",
 
 # Preferences page
 #
@@ -611,7 +617,9 @@ $2 List redirects &nbsp; Search for $3 $9",
   wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
 to set user preferences.",
 "prefslogintext" => "You are logged in as \"$1\".
-Your internal ID number is $2.",
+Your internal ID number is $2.
+
+See [[Wikipedia:User preferences help]] for help deciphering the options.",
 "prefsreset"	=> "Preferences have been reset from storage.",
 "qbsettings"	=> "Quickbar settings", 
 "changepassword" => "Change password",
@@ -693,7 +701,7 @@ See also the [http://meta.wikipedia.org/wiki/Special:Recentchanges recent meta d
 "uploadnologintext"	=> "You must be <a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
 to upload files.",
-"uploadfile"	=> "Upload file",
+"uploadfile"	=> "Upload images, sounds, documents etc.",
 "uploaderror"	=> "Upload error",
 "uploadtext"	=> "<strong>STOP!</strong> Before you upload here,
 make sure to read and follow Wikipedia's <a href=\"" .
@@ -830,9 +838,9 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "longpages"		=> "Long pages",
 "listusers"		=> "User list",
 "specialpages"	=> "Special pages",
-"spheading"		=> "Special pages",
-"sysopspheading" => "Special pages for sysop use",
-"developerspheading" => "Special pages for developer use",
+"spheading"		=> "Special pages for all users",
+"sysopspheading" => "For sysop use only",
+"developerspheading" => "For developer use only",
 "protectpage"	=> "Protect page",
 "recentchangeslinked" => "Related changes",
 "rclsub"		=> "(to pages linked from \"$1\")",
@@ -1386,7 +1394,7 @@ class Language {
 		
 		$datePreference = $wgUser->getOption( 'date' );
 
-		static $monthNames = "", $rxDM, $rxMD, $rxY, $rxDMY, $rxYMD, $rxMDY, $rxYMD;
+		static $monthNames = "", $rxDM, $rxMD, $rxY, $rxDMY, $rxYDM, $rxMDY, $rxYMD;
 		if ( $monthNames == "" ) {
 			$monthNames = $this->getMonthRegex();
 			
@@ -1446,6 +1454,9 @@ class Language {
 		}
 		return $text;
 	}
+
+	# For right-to-left language support
+	function isRTL() { return false; }
 }
 
 global $IP;
