@@ -35,7 +35,7 @@ class SkinStandard extends Skin {
 		$qb = $this->qbSetting();
 
 		if ( 2 == $qb ) { # Right
-			$s .= "#quickbar { position: absolute; top: 4px; right: 4px; " .
+			$s .= "#quickbar { position: absolute; top: 4px; right: 4px; left: auto; " .
 			  "border-left: 2px solid #000000; }\n" .
 			  "#article { margin-left: 4px; margin-right: 152px; }\n";
 		} else if ( 1 == $qb || 3 == $qb ) {

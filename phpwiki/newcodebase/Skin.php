@@ -150,7 +150,7 @@ class Skin {
 		if ( 0 == $qb ) {
 			$s .= "<td class='top' align=left valign=top>" .
 			  $this->logoText() . "</td>";
-		} else if ( 1 == $qb || 3 == $qb ) {
+		} else if ( 1 == $qb || 3 == $qb ) { # Left
 			$s .= "<td width='152'>&nbsp;</td>";
 		}
 		$s .= "<td class='top' align=left valign=top>";
@@ -162,7 +162,7 @@ class Skin {
 		$s .= $this->nameAndLogin();
 		$s .= "\n<br>" . $this->searchForm() . "</td>";
 
-		if ( 2 == $qb ) {
+		if ( 2 == $qb ) { # Right
 			$s .= "<td width='152'>&nbsp;</td>";
 		}
 		$s .= "</tr></table>\n</div>\n";
@@ -196,7 +196,7 @@ class Skin {
 		$s .= "<table width='98%' border=0 cellspacing=0><tr>";
 
 		$qb = $this->qbSetting();
-		if ( 1 == $qb || 3 == $qb ) {
+		if ( 1 == $qb || 3 == $qb ) { # Left
 			$s .= "<td width='152'>&nbsp;</td>";
 		}
 		$s .= "<td class='bottom' align=left valign=top>";
@@ -206,7 +206,7 @@ class Skin {
 		$s .= "\n<br>" . $this->searchForm();
 
 		$s .= "</td>";
-		if ( 2 == $qb ) {
+		if ( 2 == $qb ) { # Right
 			$s .= "<td width='152'>&nbsp;</td>";
 		}
 		$s .= "</tr></table>\n</div>\n";
@@ -878,6 +878,13 @@ class Skin {
 		$h = $wgLang->time( $ts );
 		$t = Title::makeName( $ns, $ttl );
 		$clink = $this->makeKnownLink( $t, "" );
+
+		if ( 0 != $wgUser->getID() ) {
+			$nt = Title::newFromText( $t );
+			if ( $nt->userIsWatching() ) {
+				$clink = "<strong>{$clink}</strong>";
+			}
+		}
 		$hlink = $this->makeKnownLink( $t, wfMsg( "hist" ), "action=history" );
 		$dlink = $this->makeKnownLink( $t, wfMsg( "diff" ), "diff=0&amp;oldid=0" );
 

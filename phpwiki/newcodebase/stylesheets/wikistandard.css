@@ -1,8 +1,6 @@
 .bodytext { }
 h1.pagetitle { padding-bottom: 0; margin-bottom: 0; }
 p.subtitle { padding-top: 0; margin-top: 0; }
-a { text-decoration: none; }
-a.interwiki, a.external { color: #3333BB; text-decoration: none; }
 
 body { margin: 0px; padding: 4px; }
 #topbar { padding: 4px; }
@@ -11,5 +9,3 @@ td.top { border-bottom: 2px solid #000000; }
 #article { padding: 4px; }
 #footer { padding: 4px; }
 td.bottom { border-top: 2px solid #000000; }
-a.newlink { color: black; text-decoration: none; }
-.newlinkedge { display: inline; }
