@@ -17,7 +17,8 @@ class WikiPage extends WikiTitle {
 
     # This loads an article from the database, or calls a special function instead (all pages with "special:" namespace)
     function load ( $t , $doRedirect = true ) {
-        global $action , $user , $wikiNoSuchSpecialPage , $wikiAllowedSpecialPages ;
+        global $action , $user , $wikiNoSuchSpecialPage , $wikiAllowedSpecialPages , $diff ;
+	if ( $diff == "yes" ) $doRedirect = false ;
         if ( $doRedirect ) $this->backLink = "" ;
         $updateCounter = "" ;
         $this->knownLinkedLinks = array () ;
