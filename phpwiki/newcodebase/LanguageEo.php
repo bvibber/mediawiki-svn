@@ -899,6 +899,7 @@ Vidu [[Vikipedio:Loglibro de forigoj]] por registro de lastatempaj forigoj kaj r
 # Contributions
 #
 "contributions"	=> "Kontribuoj de Vikipediisto",
+"mycontris"	=> "Miaj kontribuoj",
 "contribsub"	=> "De $1",
 "nocontribs"	=> "Trovis neniajn redaktojn laŭ tiu kriterio.",
 "ucnote"		=> "Jen la <b>$1</b> lastaj redaktoj de tiu Vikipediisto dum la <b>$2</b> lastaj tagoj.",
