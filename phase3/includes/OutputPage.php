@@ -469,25 +469,30 @@ class OutputPage {
 		exit();
 	}
 
-	function readOnlyPage( $source = "" )
+	function readOnlyPage( $source = "", $protected = false )
 	{
 		global $wgUser, $wgReadOnlyFile;
 
-		$this->setPageTitle( wfMsg( "readonly" ) );
 		$this->setRobotpolicy( "noindex,nofollow" );
 		$this->setArticleFlag( false );
 
-		$reason = implode( "", file( $wgReadOnlyFile ) );
-		$text = str_replace( "$1", $reason, wfMsg( "readonlytext" ) );
+		if( $protected ) {
+			$this->setPageTitle( wfMsg( "viewsource" ) );
+			$this->addWikiText( wfMsg( "protectedtext" ) );
+		} else {
+			$this->setPageTitle( wfMsg( "readonly" ) );
+			$reason = file_get_contents( $wgReadOnlyFile );
+			$this->addHTML( wfMsg( "readonlytext", $reason ) );
+		}
 		
 		if($source) {
 			$rows = $wgUser->getOption( "rows" );
 			$cols = $wgUser->getOption( "cols" );
 			$text .= "</p>\n<textarea cols='$cols' rows='$rows' readonly>" .
 				htmlspecialchars( $source ) . "\n</textarea>";
+			$this->addHTML( $text );
 		}
 		
-		$this->addHTML( $text );
 		$this->returnToMain( false );
 	}
 

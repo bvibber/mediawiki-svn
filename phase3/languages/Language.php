@@ -439,7 +439,12 @@ an incorrectly linked inter-language or inter-wiki title.",
 because it slows the database down to the point that no one can use
 the wiki.",
 "perfdisabledsub" => "Here's a saved copy from $1:",
+"viewsource" => "View source",
+"protectedtext" => "This page has been locked to prevent editing; there are
+a number of reasons why this may be so, please see
+[[$wgMetaNamespace:Protected page]].
 
+You can view and copy the source of this page:",
 # Login and logout pages
 #
 "logouttitle"	=> "User logout",

@@ -338,7 +338,7 @@ class Article {
 		wfCleanFormFields( $fields );
 
 		if ( ! $wgTitle->userCanEdit() ) {
-			$this->view();
+			$wgOut->readOnlyPage( $this->getContent(), true );
 			return;
 		}
 		if ( $wgUser->isBlocked() ) {
