@@ -499,6 +499,10 @@ class OutputPage {
 			}
 			$text .= $t;
 		}
+		while ( $npl ) {
+			$text .= $this->closeList( $pref2{$npl-1} );
+			--$npl;
+		}
 		return $text;
 	}
 
