@@ -169,7 +169,11 @@ template<class tt>
 struct tmcmds : public smutl::singleton<tmcmds<tt> > {
 #include "../smstdrt.cxx"
 	tmcmds() {
-/* standard mode commands */
+/* restricted non-logged commands */
+logrt.install("login", cmd_login(), "Authenticate to servmon");
+logrt.install("exit", cmd_exit(), "End session");
+/* standard mode commands (includes non-restricted non-logged in users) */
+basrt = logrt;
 basrt.install("show", "Show operational information");
 basrt.install("show version", cmd_show_version(), "Show software version");
 basrt.install("show irc", "Show IRC-related information");
@@ -189,7 +193,6 @@ basrt.install("show parser", "Show MediaWiki parser-related information");
 basrt.install("show parser cache-statistics", cmd_mc_show_parser_cache(), "Show parser cache hit statistics");
 stdrt = basrt;
 stdrt.install("show irc channels", cmd_irc_showchannels(), "Show configured channels");
-stdrt.install("exit", cmd_exit(), "End session");
 eblrt = stdrt;
 stdrt.install("enable", cmd_enable(), "Enter privileged mode");
 
@@ -296,6 +299,7 @@ memrt.install("server-list-command %S", cfg_mc_server_list_command(), "Command n
 memrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit memcache configuration mode");
 
 	}
+	handler_node<tt> logrt;
 	handler_node<tt> basrt;
 	handler_node<tt> stdrt;
 	handler_node<tt> eblrt;
@@ -313,7 +317,7 @@ public:
 
 	trmsrv(intft sckt_)
 	: intf(sckt_)
-	, cmds_root(SMI(tmcmds<trmsrv>)->stdrt)
+	, cmds_root(SMI(tmcmds<trmsrv>)->basrt)
 	, prm("servmon> ")
 	, cd(*this)
 	, doecho(true)
@@ -345,26 +349,8 @@ public:
 	void start(void) {
 		init();
 		intf->cb(boost::bind(&trmsrv::gd_cb, this, _1, _2));
-		std::string user, pass;
-		wrtln();
-		wrt("Username: ");
-		readline(boost::bind(&trmsrv::gt_usr_cb, this, _2));
-	}
-	void gt_usr_cb(std::string const& user) {
-		usrnam = user;
-		echo(false);
-		wrt("Password: ");
-		readline(boost::bind(&trmsrv::gt_psw_cb, this, _2));
-	}
-	void gt_psw_cb(std::string const& pass) {
-		echo(true);
-		wrtln();
-		if (!smauth::login_usr(usrnam, pass)) {
-			wrtln("% [E] Username or password incorrect.");
-			disconnect();
-			return;
-		}
 		stb_nrml();
+		wrt(prm);
 	}
 	void gd_cb(smnet::inetclntp, u_char c) {
 		if (!binds[c](c))

@@ -26,8 +26,46 @@ HDL(cmd_enable) {
 	}
 };
 
+HDL(cmd_login) {
+	std::string username; /* because otherwise the referenced is destroyed            */
+	                      /* need some kind of standardised question/response system. */
+	
+	EX1(cd) {
+                cd.wrt("Type username: ");
+		try {
+			cd.term.readline(boost::bind(&cmd_login::vfyusername, this, _1, _2));
+		} catch (non_interactive_terminal&) {
+			cd.error("Cannot log in on a non-interactive terminal.");
+		}
+		return true;
+	}
+	void vfyusername(tt& trm, std::string const& user) {
+		trm.echo(false);
+		trm.wrt("Type password: ");
+		trm.readline(boost::bind(&cmd_login::vfypassword, this, _1, /* ick */ username = user, _2));
+	}
+	void vfypassword(tt& trm, std::string user, std::string const& pass) {
+		trm.echo(true);
+		trm.wrtln("");
+		if (!smauth::login_usr(user, pass)) {
+			trm.wrtln("% [E] Username or password incorrect.");
+			return;
+		} else {
+			trm.chgrt(&SMI(tmcmds)->stdrt, "%s$ ");
+		}
+	}
+};
+
 HDL(cmd_exit) {
 	EX1(cd) {
+		/*
+		 * this will "succeed" even on non-interactive terminals like
+		 * IRC commands.  however, it won't actually exit on such
+		 * terminals.  the message in that case is confusing, and a
+		 * better method would be to mark terminals as non-interactive
+		 * and refuse the command.  not done yet pending untemplatification
+		 * of the terminal system.
+		 */
 		cd.inform("Bye");
 		return false;
 	}
