@@ -5,8 +5,12 @@ exactly, modulo some bugs and some things I don't like) the
 functionality of Magnus Manske's PHP Wikipedia software.  I've
 stolen a lot of Magnus and Brion's code, and nearly all of their
 database structure and output design, changing only those things
-I thought needed fixing (namepsaces are in a separate database
-field, for example, and I made the stylesheets external).
+I thought needed fixing (mostly for performance--no more complex
+or non-indexed database queries, for example).
+
+The only major changes from the user's point of view are the
+new image upload system, side-by-side diffs, and a few minor
+features like more links in recent changes and history.
 
 This new codebase, however, should be much easier to test, debug,
 enchance, and customize.  My primary motivation, in fact, is
@@ -14,16 +18,18 @@ wanting to have this software for my own site, and not being
 happy with either the limited functionality of UseMod or the
 incomprehensible code of the existing PHP stuff.
 
-In its present state, it is minimally functional, and will do
-only the basic Wiki view pages and edit pages, and user logins.
-It has hooks for future internationalization, but no other
-languages are currently ported.  The existing code had dozens
-of little bits of English text still hardcoded, and kept text
-to be intenationalized in globals.  I've taken care of both of
-those problems, and the new code should be fully localizable
-by changing just the one class.
+In its present state, it is fairly functional, and will do
+the basic Wiki view pages and edit pages, and user logins, and
+a few special pages like recent changes and random page.  It has
+hooks for future internationalization, but no other languages are
+currently ported.  The existing code had dozens of little bits of
+English text still hardcoded, and kept text to be
+intenationalized in globals.  I've taken care of both of those
+problems, and the new code should be fully localizable by
+changing just the one class.
 
-You'll need to convert the database before you run it as well.
+You'll need to convert the database before you run it as well,
+and the dbtool.php script can be used for that.
 There's a running installation on
 http://www.piclab.com/newwiki/wiki.phtml , and I can be talked
 into giving accounts there, though I think it should be possible
@@ -38,7 +44,8 @@ almost verbatim.  So, it is safe to use any of this code under
 GPL terms.  If you want to use some particular part of it under
 less restrictive terms, you'll have to figure out if I wrote it
 or not--probably the easiest way to do that is to ask me.  But
-I'm not coing to bother cataloguing every line.
+I'm not going to bother cataloguing every line until the issue
+comes up.
 
 -- Lee Daniel Crocker <lee@piclab.com>
 
