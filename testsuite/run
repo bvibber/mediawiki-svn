@@ -1,8 +1,4 @@
 #!/bin/sh
-#
 
 if [[ "$1" == "" ]]; then CLASS=WikiSuite; else CLASS=$1; fi
-echo Running $CLASS
-
-java -classpath ./build:jars/httpunit.jar:jars/nekohtml.jar:jars/xercesImpl.jar:jars/xml-apis.jar com.piclab.wikitest.$CLASS
-
+java -classpath ./build:jars/httpunit.jar:jars/nekohtml.jar:jars/xercesImpl.jar:jars/xml-apis.jar com.piclab.wikitest.$CLASS $2 $3 $4 $5 $6 $7 $8 $9
