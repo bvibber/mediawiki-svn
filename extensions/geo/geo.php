@@ -150,6 +150,7 @@ class geo_params
 		return implode ( "; " , $ret ) ;
 		}
 		
+/*
 	function get_styles ( $id , $type )
 		{
 		# Universal constants; rivers are blue!
@@ -171,7 +172,7 @@ class geo_params
 
 		return $ret ;
 		}
-
+*/
 	function data_to_real ( &$x , &$y )
 		{
 		$x = coordinate_to_number ( coordinate_take_apart ( $x ) ) ;
@@ -232,8 +233,11 @@ class geo_params
 					$p[$k] = $v ;
 				}
 
+			# Fix font size shortcuts
+			if ( $p['font-size'] == "" ) $p['font-size'] = "medium" ;
 			if ( $p['font-size'] == "medium" ) $p['font-size'] = $medium_font_size . "pt" ;
-			
+
+			# Make a style parameter string
 			foreach ( $p AS $pk => $pv )
 				$s .= "{$pk}: {$pv}; " ;
 			
@@ -392,13 +396,6 @@ class geo
 		return $t ;
 		}
 
-	function get_current_style ( &$params )
-		{
-		$t = trim ( strtolower ( $this->get_current_type ( $params ) ) ) ;
-		$s = $params->get_styles ( $this->id , $t ) ;
-		return "style=\"{$s}\"" ;
-		}
-	
 	function fullid ( $id )
 		{
 		$id = trim ( strtolower ( $id ) ) ;
@@ -469,7 +466,11 @@ class geo
 		
 		$a = array ( "text" => $text , "x" => $x , "y" => $y , "font-size" => "medium" ) ;
 		$a['style'] = $this->get_label_style ( &$params ) ;
-#		print implode ( "," , $a['style'] ) . "\n" ;
+		if ( isset ( $a['style']['clickable'] ) )
+			{
+			unset ( $a['style']['clickable'] ) ; # Shouldn't show up in style list
+			$a['style']['href'] = "http://www.google.de" ;
+			}
 		$params->add_label ( $a ) ;
 		}
 	
@@ -524,9 +525,19 @@ class geo
 		$sobj = trim ( array_shift ( $a ) ) ;
 		$stype = trim ( str_replace ( "]" , "" , array_shift ( $a ) ) ) ;
 		$type = $this->get_current_type ( $params ) ;
-#		print "I am a {$type} within " . implode ( "," , $params->object_tree ) . " and compared to a {$stype} of {$sobj}\n" ;
-		if ( in_array ( $sobj , $params->object_tree ) AND $stype == $type ) return true ;
+		if ( ( $sobj == "" OR in_array ( $sobj , $params->object_tree ) ) AND $stype == $type ) return true ;
 		return false ;
+		}
+
+	function my_matches ( &$haystack , &$params )
+		{
+		$ret = array () ;
+		foreach ( $haystack AS $k => $v )
+			{
+			if ( $k == $this->id OR $this->is_in_list ( $k , $params ) )
+				$ret[] = $k ;
+			}
+		return $ret ;
 		}
 
 	function get_label_style ( &$params )
@@ -539,22 +550,30 @@ class geo
 			foreach ( $a AS $k => $v )
 				{
 				$k = trim ( $k ) ;
-				if ( $k != "" ) $ret[$k] = $v ;
+				if ( $k != "" ) $ret[strtolower($k)] = strtolower($v) ;
 				}
 			}
 		return $ret ;
 		}
 
-	function my_matches ( &$haystack , &$params )
+	function get_current_style ( &$params )
 		{
+		$matches = $this->my_matches ( $params->styles , $params ) ;
 		$ret = array () ;
-		foreach ( $haystack AS $k => $v )
+		foreach ( $matches AS $m )
 			{
-			if ( $k == $this->id OR $this->is_in_list ( $k , $params ) )
-				$ret[] = $k ;
+			$a = $params->styles[$m] ;
+			foreach ( $a AS $k => $v )
+				{
+				$k = trim ( $k ) ;
+				if ( $k != "" ) $ret[strtolower($k)] = strtolower($v) ;
+				}
 			}
-#		print implode ( "," , $ret ) . "\n" ;
+		$ret = "style=\"" . implode ( "; " , $ret ) . "\"" ;
 		return $ret ;
+#		$t = trim ( strtolower ( $this->get_current_type ( $params ) ) ) ;
+#		$s = $params->get_styles ( $this->id , $t ) ;
+#		return "style=\"{$s}\"" ;
 		}
 	}
 
