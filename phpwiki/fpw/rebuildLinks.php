@@ -28,6 +28,7 @@
 
     if ( !isset ( $offset ) ) $offset = 0;
     if ( !isset ( $all ) ) {
+        echo "Counting articles...\n" ;
         $sql = "SELECT COUNT(*) AS allPages FROM cur " ;
         $result = mysql_query ( $sql , $connection ) ;
         $row = mysql_fetch_object ( $result ) ;
@@ -40,9 +41,13 @@
 
         $thisPage = new wikiPage ;
 
+	echo "Retrieving article list...\n";
         $sql1 = "SELECT cur_title FROM cur LIMIT $offset, $size ;" ;
         $result = mysql_query ( $sql1 , $connection ) ;
+	echo "Rebuilding links: \n";
+	$i = 0 ;
         while ( $row = mysql_fetch_object ( $result ) ) {
+	    $i++ ; echo "$i of $all: $row->cur_title\n" ;
             $thisPage->load ( $row->cur_title );
             
             $linkedLinks = array () ;
