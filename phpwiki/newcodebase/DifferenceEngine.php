@@ -28,6 +28,14 @@ class DifferenceEngine {
 		$wgOut->supressQuickbar();
 		$wgOut->setSubtitle( wfMsg( "difference" ) );
 
+		if ( ( 0 == $this->mNewid || 0 == $this->mOldid )
+		  && $wgTitle->userCanEdit() ) {
+			$sk = $wgUser->getSkin();
+			$link = $sk->makeKnownLink( $wgTitle->getPrefixedText(),
+			  wfMsg( "editthispage" ), "action=edit" );
+			$wgOut->addHTML( "<p>{$link}\n<p>" );
+		}
+
 		$wgOut->addHTML( "<table width='100%' border=0
 cellpadding=0 cellspacing='4px'><tr>
 <td colspan=2 width='50%' align=center bgcolor='#cccccc'>
@@ -46,11 +54,11 @@ cellpadding=0 cellspacing='4px'><tr>
 		$formatter->format( $diffs );
 		$wgOut->addHTML( "</table>\n" );
 
-		$wgOut->addHTML( "<hr><h1>{$this->mNewtitle}</h2>\n" );
+		$wgOut->addHTML( "<hr><h2>{$this->mNewtitle}</h2>\n" );
 		$wgOut->addWikiText( $this->mNewtext );
 	}
 
-	# Load the text of the articles to compate.  If newid is 0, then compare
+	# Load the text of the articles to compare.  If newid is 0, then compare
 	# the old article in oldid to the current article; if oldid is 0, then
 	# compare the current article to the immediately previous one (ignoring
 	# the value of newid).
