@@ -58,13 +58,25 @@ function wfSeedRandom()
 	}
 }
 
-function wfLocalLink( $a )
+function wfLocalUrl( $a )
 {
 	global $wgArticlePath;
 
 	$a = str_replace( " ", "_", $a );
 	$a = str_replace( "$1", $a, $wgArticlePath );
 	return $a;
+}
+
+function wfImageUrl( $img )
+{
+	global $wgServer, $wgUploadPath;
+
+	$nt = Title::newFromText( $img );
+	$name = $nt->getDBkey();
+
+	$url = "{$wgServer}{$wgUploadPath}/" . $name{0} . "/" .
+	  substr( $name, 0, 2 ) . "/{$name}";
+	return $url;
 }
 
 function wfUrlencode ( $s )

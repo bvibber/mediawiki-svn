@@ -131,7 +131,7 @@ class Skin {
 		$s .= "\n<br>" . $this->searchForm();
 
 		$mp = wfMsg( "mainpage" );
-		$s .= "</td>\n<td rowspan=2 width=1><a href=\"" . wfLocalLink( $mp )
+		$s .= "</td>\n<td rowspan=2 width=1><a href=\"" . wfLocalUrl( $mp )
 		  . "\"><img border=0 src=\"" . $this->getLogo() . "\" alt=\""
 		  . "[$mp]\"></a></td></tr>\n";
 
@@ -206,12 +206,13 @@ class Skin {
 		  WfMsg( "printableversion" ), "{$q}printable=yes" );
 
 		if ( $wgOut->isArticle() ) {
-			$s .= " | " . $this->makeKnownLink( "Special:Whatlinkshere",
-			  wfMsg( "whatlinkshere" ), "target=" . $wgTitle->getPrefixedURL() );
-
 			if ( $oldid ) {
 				$s .= " | " . $this->makeKnownLink( $wgTitle->getPrefixedText(),
 				  wfMsg( "currentrev" ) );
+			}
+			if ( $wgTitle->getNamespace() == Namespace::getIndex( "Image" ) ) {
+				$name = $wgTitle->getDBkey();
+				$s .= " | <a href=\"" . wfImageUrl( $name ) . "\">{$name}</a>";
 			}
 			$s .= $this->otherLanguages();
 		}
@@ -324,27 +325,31 @@ class Skin {
 
 		$sep = "\n<br>";
 		$s = $this->mainPageLink()
-		  . $sep . $this->specialLink( "recentchanges" );
+		  . $sep . $this->specialLink( "recentchanges" )
+		  . $sep . $this->specialLink( "randompage" ) 
+		  . $sep . $this->dateLink() . "\n<hr>";
+
 		if ( $wgOut->isArticle() ) {
-			$s .= $sep . $this->watchPageLinksLink()
-		  . $sep . $this->editThisPage()
-		  . $sep . $this->historyLink();
+		  $s .= $this->editThisPage()
+		  . $sep . $this->talkLink()
+		  . $sep . $this->historyLink()
+		  . $sep . $this->whatLinksHere()
+		  . $sep . $this->watchPageLinksLink() . "\n<hr>";
 		}
-		$s .= $sep . $this->specialLink( "upload" )
+		$s .= $this->specialLink( "upload" )
 		  . $sep . $this->specialLink( "imagelist" )
-		  . $sep . "<hr>" . $this->specialLink( "statistics" )
+		  . $sep . $this->specialLink( "listusers" )
+		  . $sep . $this->specialLink( "statistics" )
+		  . $sep
 		  . $sep . $this->specialLink( "newpages" )
 		  . $sep . $this->specialLink( "lonelypages" )
 		  . $sep . $this->specialLink( "wantedpages" )
 		  . $sep . $this->specialLink( "popularpages" )
-		  . $sep . $this->specialLink( "randompage" )
 		  . $sep . $this->specialLink( "shortpages" )
-		  . $sep . $this->specialLink( "longpages" )
-		  . $sep . $this->specialLink( "listusers" )
-		  . $sep . $this->bugReportsLink()
-		  . $sep . $this->dateLink() . "\n<hr>";
+		  . $sep . $this->specialLink( "longpages" );
 
-		if ( $wgOut->isArticle() ) { $s .= $this->talkLink(); }
+		$s .= $sep . $this->bugReportsLink();
+
 		return $s;
 	}
 
@@ -381,6 +386,15 @@ class Skin {
 
 		$s = $this->makeKnownLink( $wgTitle->getPrefixedText(),
 		  wfMsg( "history" ), "action=history" );
+		return $s;
+	}
+
+	function whatLinksHere()
+	{
+		global $wgTitle;
+
+		$s = $this->makeKnownLink( "Special:Whatlinkshere",
+		  wfMsg( "whatlinkshere" ), "target=" . $wgTitle->getPrefixedURL() );
 		return $s;
 	}
 
@@ -588,7 +602,7 @@ class Skin {
 		return $r;
 	}
 
-	function makeImageLink( $url, $alt = "" )
+	function makeImage( $url, $alt = "" )
 	{
 		global $wgOut;
 

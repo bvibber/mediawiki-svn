@@ -149,7 +149,7 @@ class OutputPage {
 		$msg = str_replace( "$3", mysql_errno(), $msg );
 		$msg = str_replace( "$4", mysql_error(), $msg );
 
-		$this->mBodytext = msg;
+		$this->mBodytext = $msg;
 		$this->output();
 		exit;
 	}
@@ -163,7 +163,7 @@ class OutputPage {
 		} else {
 			$r = str_replace( "$1", $returnto, wfMsg( "returnto" ) );
 			$wgOut->addMeta( "http:Refresh", "10;url=" .
-			  wfLocalLink( $returnto ) );
+			  wfLocalUrl( $returnto ) );
 		}
 		$wgOut->addWikiText( "\n<p>$r\n" );
 	}
@@ -245,7 +245,7 @@ class OutputPage {
 
 		$text = preg_replace(
 		  "/(^|[^[])http:\/\/([a-zA-Z0-9_\/:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
-		  "\\1" . $sk->makeImageLink( "http://\\2.\\3", "[Image]" ), $text );
+		  "\\1" . $sk->makeImage( "http://\\2.\\3", "[Image]" ), $text );
 		return $text;
 	}
 
@@ -339,17 +339,12 @@ class OutputPage {
 				$pre = strtolower( $m[1] );
 				$suf = $m[2];
 				if ( "image" == $pre ) {
-					#
-					# Temp workaround: get images from wikipedia.com
-					# rather than from local server
-					#
-					# $s .= $sk->makeImageLink( "$wgServer$wgUploadPath/" .
-					#  $suf, $text );
+					$nt = Title::newFromText( $suf );
+					$name = $nt->getDBkey();
 
-					$wgLinkCache->addImageLink( $suf );
-					$s .= $sk->makeImageLink(
-					  "http://www.wikipedia.com/upload/{$suf}", $text );
-					$s .= $trail;
+					$wgLinkCache->addImageLink( $name );
+					$img = $sk->makeImage( wfImageUrl( $name ), $text );
+					$s .= $sk->makeLink( "Image:{$name}", $img, "", $trail );
 				} else {
 					$l = $wgLang->getLanguageName( $pre );
 					if ( "" == $l ) {

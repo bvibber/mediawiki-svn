@@ -90,9 +90,9 @@ recognized by the Wikipedia software",
 "dberrortext"	=> "An unrecoverable database error has occurred.
 Please report this to an administrator.
 The last attempted database query was:
-<blockquote>$1</blockquote>
-from within function \"$2\".
-MySQL returned error $3: \"$4\".",
+<blockquote><tt>$1</tt></blockquote>
+from within function \"<tt>$2</tt>\".
+MySQL returned error \"<tt>$3: $4</tt>\".",
 "noconnect"		=> "Could not connect to DB on $1",
 "nodb"			=> "Could not select database $1",
 "readonly"		=> "Database locked",
@@ -202,7 +202,7 @@ Please check the URL you used to access this page.\n",
 "next"			=> "next",
 "last"			=> "last",
 "orig"			=> "orig",
-"histlegend"	=> "(cur) = difference with current version,
+"histlegend"	=> "Legend: (cur) = difference with current version,
 (last) = difference with preceding version, M = minor edit",
 
 # Diffs
@@ -216,7 +216,7 @@ Please check the URL you used to access this page.\n",
 "preferences"	=> "Preferences",
 "prefsnologin" => "Not logged in",
 "prefsnologintext"	=> "You must be <a href=\"" .
-  wfLocalLink( "Special:Userlogin" ) . "\">logged in</a>
+  wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
 to set user preferences.",
 "prefsreset"	=> "Preferences have been reset from storage.",
 "qbsettings"	=> "Quickbar settings", 
@@ -304,12 +304,18 @@ any copyrights.",
 # Image list
 #
 "imagelist"		=> "Image list",
-"imagelisttext"	=> "Below is a list of all uploaded images.",
+"imagelisttext"	=> "Below is a list of $1 images sorted $2.",
 "getimagelist"	=> "fetching image list",
-"sortby"		=> "Sort by:",
-"byname"		=> "Name",
-"bydate"		=> "Date",
-"bysize"		=> "Size",
+"showall"		=> "Show all images sorted $1.",
+"showlast"		=> "Show last $1 images sorted $2.",
+"all"			=> "all",
+"byname"		=> "by name",
+"bydate"		=> "by date",
+"bysize"		=> "by size",
+"imgdelete"		=> "del",
+"imgdesc"		=> "desc",
+"imglegend"		=> "Legend: (del) = delete image, (desc) = show/edit image description.",
+"imghistory"	=> "Image history",
 
 # Statistics
 #
@@ -384,7 +390,7 @@ the Wikipedia database.",
 
 # Recent changes linked
 #
-"recentchangeslinked" => "Watch page links",
+"recentchangeslinked" => "Watch links",
 
 # SQL dump
 #
