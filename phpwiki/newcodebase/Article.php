@@ -784,6 +784,11 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$res = wfQuery( $sql, "Article::history" );
 
 		$revs = wfNumRows( $res );
+		if( $revs == 0 ) {
+			$wgOut->addHTML( wfMsg( "nohistory" ) );
+			return;
+		}
+		
 		$sk = $wgUser->getSkin();
 		$s = $sk->beginHistoryList();		
 
