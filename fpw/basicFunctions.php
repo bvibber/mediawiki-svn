@@ -187,10 +187,9 @@ function edit ( $title ) {
 	if ( $editConflict ) {
 		# Add the diffs between the two competing versions:
 		$ret .= "<br><hr><nowiki><font color=red><b>$wikiBeginDiff</b></font><br>\n\n" ;
-		$old_lines = explode ( "\n" , htmlspecialchars( $oldSubmittedText ) ) ;
-		$new_lines = explode ( "\n" , htmlspecialchars( $text ) ) ;
-		#$old_lines = explode ( "\n" , $oldSubmittedText ) ;
-		#$new_lines = explode ( "\n" , $text ) ;
+		# cut into lines, don't distinguish between different line-end conventions:
+		$old_lines = explode ( "\n" , str_replace( "\r\n", "\n", htmlspecialchars( $oldSubmittedText ) ) ) ;
+		$new_lines = explode ( "\n" , str_replace( "\r\n", "\n", htmlspecialchars( $text ) ) ) ;
 		include_once( "./difflib.php" );
 		$diffs = new Diff($old_lines, $new_lines);
 		$formatter = new TableDiffFormatter();

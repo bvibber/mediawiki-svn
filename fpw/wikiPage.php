@@ -1427,8 +1427,9 @@ class WikiPage extends WikiTitle {
         if ( $result != "" and $s->old_old_version != 0 ) {
             $s = mysql_fetch_object ( $result ) ;
             mysql_free_result ( $result ) ;
-            $old_lines = explode ( "\n" , htmlspecialchars( $s->old_text ) ) ;
-            $new_lines = explode ( "\n" , htmlspecialchars( $this->contents ) ) ;
+            # cut into lines, don't distinguish between different line-end conventions:
+            $old_lines = explode ( "\n" , str_replace( "\r\n", "\n", htmlspecialchars( $s->old_text ) ) );
+            $new_lines = explode ( "\n" , str_replace( "\r\n", "\n", htmlspecialchars( $this->contents ) ) ) ;
             include_once( "./difflib.php" );
             $diffs = new Diff($old_lines, $new_lines);
             $formatter = new TableDiffFormatter();
