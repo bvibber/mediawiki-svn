@@ -11,6 +11,18 @@ include_once ( "./wikiTitle.php" ) ;
 include_once ( "./wikiPage.php" ) ;
 include_once ( "./wikiUser.php" ) ;
 
+# Checking for talk subpage
+function fixTalk ( $title ) {
+	$sp = explode ( "/" , $title ) ;
+	$ns = explode ( ":" , $title ) ;
+	$lsp = array_pop ( $sp ) ;
+	if ( strtolower ( $lsp ) == "talk" and count ( $sp ) > 0 ) {
+		if ( count ( $ns ) == 1 or strtolower ( $ns[0] ) == "talk" )
+			$title = "talk:".implode ( "/" , $sp ) ;
+		}
+	return $title ;
+	}
+
 # Main program
 	global $action , $title , $pageTitle ;
 	global $user , $search , $expiration ;
@@ -24,8 +36,9 @@ include_once ( "./wikiUser.php" ) ;
 
 	# Default settings
 	if ( $action == "" ) $action = "view" ;
-	if ( $title == "" ) $title = "HomePage" ;
-	
+	if ( $title == "" ) $title = "Main Page" ;
+
+	$title = fixTalk ( $title ) ;
 	$theTitle = new wikiTitle ;
 	$theTitle->title = urldecode ( $title ) ;
 	$theTitle->makeSecureTitle () ;

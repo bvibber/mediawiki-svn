@@ -1,8 +1,8 @@
 <?
 function getDBconnection () {
 	$server="127.0.0.1" ;
-	$user="root" ;
-	$passwd="" ;
+	$user="manske" ;
+	$passwd="KMnO4" ;
 	$connection=mysql_connect ( $server , $user , $passwd ) ;
 	return $connection ;
 	}

@@ -81,8 +81,8 @@ class WikiTitle {
 		}
 
 	# Converts a secure title back to a nice-looking one
-	function getNiceTitle ( $s  ) {
-		if ( !isset ( $s ) ) $s = $this->secureTitle ;
+	function getNiceTitle ( $s = "" ) {
+		if ( $s == "" ) $s = $this->secureTitle ;
 		$s = str_replace ( "_" , " " , $s ) ;
 		$s = str_replace ( "\\'" , "'" , $s ) ;
 		$s = str_replace ( "\\\\" , "\\" , $s ) ;
