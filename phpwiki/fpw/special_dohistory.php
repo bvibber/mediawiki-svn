@@ -2,13 +2,14 @@
 include_once ( "special_recentchangeslayout.php" ) ;
 
 function doHistory ( $title ) {
-    global $THESCRIPT , $vpage , $wikiHistoryTitle , $wikiCurrentVersion , $wikiHistoryHeader , $wikiBlockIP , $wikiWatch , $wikiNoWatch , $user;
+    global $THESCRIPT , $vpage , $wikiHistoryTitle , $wikiCurrentVersion , $wikiHistoryHeader , $wikiBlockIP , $wikiWatch , $wikiNoWatch , $user , $pageTitle ;
     $vpage = new WikiPage ;
     $vpage->SetTitle ( $title ) ;
     $ti = $vpage->secureTitle ;
     $url = $vpage->url;
     $vpage->special ( str_replace ( "$1" , $title , $wikiHistoryTitle ) ) ;
     $vpage->makeSecureTitle () ;
+    $pageTitle = $vpage->getNiceTitle () ;
 
     $a = array () ;
     $connection = getDBconnection () ;

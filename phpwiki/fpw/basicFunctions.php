@@ -159,6 +159,47 @@ function wikify ( $s ) {
 	return $s ;
 	}
 
+# Signature gets its own function
+function signature ( $s ) {
+	global $user , $wikiGetDate , $wikiUser ;
+
+	# Fixing <nowiki> and <pre> tags first
+        $s = str_replace ( "<pre>" , "<pre><nowiki>" , $s ) ;
+        $s = str_replace ( "</pre>" , "</nowiki></pre>" , $s ) ;
+        $a = spliti ( "<nowiki>" , $s ) ;
+        # $nowikikey needs to contain a unique string - this can be altered at will, as long it stays unique!
+        $nowikikey = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv" ;
+        $nowikistorage = array () ;
+        $s = array_shift ( $a ) ;
+        foreach ( $a as $x ) {
+            $c = spliti ( "</nowiki>" , $x , 2 ) ;
+            if ( count ( $c ) == 2 ) {
+                array_push ( $nowikistorage , $c[0] ) ;
+                $s .= $nowikikey.$c[1] ;
+            } else $s .= "<nowiki>".$x ;
+            }
+
+	
+	if ( $user->isLoggedIn ) $replText = "[[$wikiUser:$user->name|$user->name]]" ;
+	else $replText = $user->getLink() ;
+	$dt = $wikiGetDate ( time() ) ;
+
+	$s = str_replace ( "~~~~" , "$replText, $dt" , $s ) ;
+	$s = str_replace ( "~~~" , $replText , $s ) ;
+
+
+        # replacing $nowikikey with the actual nowiki contents
+        $a = spliti ( $nowikikey , $s ) ;
+        $s = array_shift ( $a ) ;
+        foreach ( $a as $x ) {
+            $nw = array_shift ( $nowikistorage ) ;
+            $s .= "<nowiki>$nw</nowiki>$x" ;
+            }
+        $s = str_replace ( "<pre><nowiki>" , "<pre>" , $s ) ;
+        $s = str_replace ( "</nowiki></pre>" , "</pre>" , $s ) ;
+	return $s ;
+	}
+
 # Called when editing/saving a page
 function edit ( $title ) {
 	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit , $FromEditForm , $wikiIPblocked ;
@@ -204,12 +245,7 @@ function edit ( $title ) {
 			$text = $EditBox ;
 			$text = stripslashes ( $text ) ;
 
-			if ( $user->isLoggedIn ) $replText = "[[$wikiUser:$user->name|$user->name]]" ;
-			else $replText = $user->getLink() ;
-			$dt = $wikiGetDate ( time() ) ;
-
-			$text = str_replace ( "~~~~" , "$replText, $dt" , $text ) ;
-			$text = str_replace ( "~~~" , $replText , $text ) ;
+			$text = signature ( $text ) ;
 
 			$title = stripslashes ( $title ) ;
 			$npage->title = $title ;
@@ -230,12 +266,14 @@ function edit ( $title ) {
 		$WikifyButton = "" ;
 		$text = $EditBox ;
 		$text = stripslashes ( $text ) ;
+		$text = signature ( $text ) ;
 		$text = wikify ( $text ) ;
 		$append = str_replace ( "$1" , $npage->parseContents($text) , $wikiPreviewAppend ) ;
 	} else if ( $PreviewButton ) { # Generating a preview to append to the page
 		$PreviewButton = "" ;
 		$text = $EditBox ;
 		$text = stripslashes ( $text ) ;
+		$text = signature ( $text ) ;
 		$append = str_replace ( "$1" , $npage->parseContents($text) , $wikiPreviewAppend ) ;
 	} else if ( $npage->doesTopicExist() ) { # The initial edit request for an existing page
 		$npage->load ( $npage->title ) ;

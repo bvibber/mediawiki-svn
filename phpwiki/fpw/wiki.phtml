@@ -137,7 +137,11 @@ function getmicrotime(){
 	global $wikiEditTitle , $wikiRecodeOutput ;
 	if ( $action == edit ) $pageTitle = str_replace ( "$1" , $title , $wikiEditTitle ) ;
 	$pageTitle = str_replace ( "_" , " " , $pageTitle ) ;
-	$pageTitle = str_replace ( "$1" , $pageTitle , $wikiTitleTag ) ;
+
+	if ( !isset ( $vpage ) or !$vpage->isSpecialPage )
+		$pageTitle = str_replace ( "$1" , $pageTitle , $wikiTitleTag ) ;
+
+
 	#if ( $user->options["underlineLinks"] == "no" ) $bodyOptions .= " link=blue vlink=blue alink=blue " ;
 	$styleSheet = $user->styleSheet ( $action ) ;
 	# Netscape 4 doesn't do well with the stylesheet text/background color
