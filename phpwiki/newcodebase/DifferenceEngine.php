@@ -20,6 +20,7 @@ class DifferenceEngine {
 		  "{$this->mNewid})";
 		$mtext = str_replace( "$1", $t, wfMsg( "missingarticle" ) );
 
+		$wgOut->setArticleFlag( false );
 		if ( ! $this->loadText() ) {
 			$wgOut->setPagetitle( wfMsg( "errorpagetitle" ) );
 			$wgOut->addHTML( $mtext );
@@ -27,7 +28,6 @@ class DifferenceEngine {
 		}
 		$wgOut->supressQuickbar();
 		$wgOut->setSubtitle( wfMsg( "difference" ) );
-		$wgOut->setArticleFlag( true );
 		$wgOut->setRobotpolicy( "noindex,follow" );
 
 		DifferenceEngine::showDiff( $this->mOldtext, $this->mNewtext,
@@ -40,10 +40,10 @@ class DifferenceEngine {
 	{
 		global $wgOut;
 
-		$ota =explode( "\n", str_replace( "\r\n", "\n",
-			  htmlspecialchars( $otext ) ) );
-		$nta =explode( "\n", str_replace( "\r\n", "\n",
-			  htmlspecialchars( $ntext ) ) );
+		$ota = explode( "\n", str_replace( "\r\n", "\n",
+		  htmlspecialchars( $otext ) ) );
+		$nta = explode( "\n", str_replace( "\r\n", "\n",
+		  htmlspecialchars( $ntext ) ) );
 
 		$wgOut->addHTML( "<table width='98%' border=0
 cellpadding=0 cellspacing='4px'><tr>
@@ -70,6 +70,7 @@ cellpadding=0 cellspacing='4px'><tr>
 		$fname = "DifferenceEngine::loadText";
 
 		if ( 0 == $this->mNewid || 0 == $this->mOldid ) {
+			$wgOut->setArticleFlag( true );
 			$this->mNewtitle = wfMsg( "currentrev" );
 			$id = $wgTitle->getArticleID();
 
