@@ -313,6 +313,7 @@ Bitte melden Si sich an, sobald Sie es erhalten.",
 Als Grund wurde angeeben:<br>$2<p>Bitte kontaktieren Sie den Administrator, um über die Blockierung zu sprechen.",
 "newarticle"	=> "(Neu)",
 "newarticletext" => "Hier den Text des neuen Artikels eintragen.\nBitte nur in ganzen Sätzen schreiben und keine urheberrechtsgeschützten Texte anderer verwenden.",
+"anontalkpagetext" => "---- ''Dies ist Die Diskussions-Seite eines nicht angemeldeten Benutzers. Wir müssen hier die numerische [[IP-Adresse]] zur Identifizierung verwenden. Eine solche Adresse kann nacheinander von mehreren Benutzer verwendet werden. Wenn Sie ein anonymer Benutzer sind und denken, dass irrelevante Kommentare an Sie gerichtet wurden, [[Spezial:Userlogin|melden Sie sich bitte an]], um zukünftige Verwirrung zu vermeiden. ''",
 "noarticletext" => "(Dieser Artikel enthält momentan keinen Text)",
 "updated"		=> "(Geändert)",
 "note"			=> "<strong>Hinweis:</strong> ",
@@ -400,6 +401,8 @@ $2 Zeige auch REDIRECTs &nbsp; Suche nach $3 $9",
 "prefsnologintext"	=> "Sie müssen <a href=\"" .
   wfLocalUrl( "Spezial:Userlogin" ) . "\">angemeldet</a>
 sein, um Ihre Einstellungen zu ändern.",
+"prefslogintext" => "Sie sind angemeldet als \"$1\".
+Ihre interne ID-Nummer ist $2.",
 "prefsreset"	=> "Einstellungen wuden auf Standard zurückgesetzt.",
 "qbsettings"	=> "Seitenleiste", 
 "changepassword" => "Passwort ändern",

@@ -23,7 +23,7 @@ TO wikiuser@localhost.localdomain IDENTIFIED BY 'userpass';
 # wikisql user is for direct sql queries by sysops
 # We don't want to give out e-mails or passwords on
 # a public site where sysops are only _mostly_ trusted.
-GRANT SELECT (user_id,user_name,user_rights,user_options,user_newtalk) on wikidb.user
+GRANT SELECT (user_id,user_name,user_rights,user_options) on wikidb.user
 TO wikisql@'%' IDENTIFIED BY 'sqlpass';
 GRANT SELECT on wikidb.cur TO wikisql@'%' IDENTIFIED BY 'sqlpass';
 GRANT SELECT on wikidb.old TO wikisql@'%' IDENTIFIED BY 'sqlpass';

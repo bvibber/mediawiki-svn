@@ -11,7 +11,7 @@
 
 class RecentChangesClass {
 	var $secureName , $displayName , $link , $namespace ;
-	var $oldid , $diffid , $timestamp , $curlink , $lastlink , $blockuser , $versionlink ;
+	var $oldid , $diffid , $timestamp , $curlink , $lastlink , $usertalklink , $versionlink ;
 	var $usercomment , $userlink ;
 	var $isminor , $isnew , $watched , $islog ;
 	} ;
@@ -310,7 +310,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 
 	function pageTitleLinks()
 	{
-		global $wgOut, $wgTitle, $oldid, $action, $diff;
+		global $wgOut, $wgTitle, $oldid, $action, $diff, $wgUser, $wgLang;
 
 		$s = $this->printableLink();
 
@@ -326,6 +326,26 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			$s .= " | " . $this->makeKnownLink( $wgTitle->getPrefixedText(),
 			  wfMsg( "currentrev" ) );
 		}
+
+		if ( $wgUser->getNewtalk() ) {
+			
+			
+			# do not show "You have new messages" text when we are viewing our 
+			# own talk page 
+			
+			if(!(strcmp($wgTitle->getText(),$wgUser->getName()) == 0 &&
+			     $wgTitle->getNamespace()==Namespace::getTalk(Namespace::getUser()))) {
+								
+				$n =$wgUser->getName();
+				$tl = $this->makeKnownLink( $wgLang->getNsText(
+				Namespace::getTalk( Namespace::getUser() ) ) . ":{$n}",
+				wfMsg("newmessageslink") );
+				$s.=" | <B>".wfMsg("newmessages") . $tl ."</B>";
+			}
+			
+			
+		}
+		
 		return $s;
 	}
 
@@ -374,8 +394,16 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 				$q = "";
 			} else { $q = "returnto={$rt}"; }
 
-			$s .= $n . "\n<br>" . $this->makeKnownLink( $li,
+			  
+  			$tl = $this->makeKnownLink( $wgLang->getNsText(
+			  Namespace::getTalk( Namespace::getUser() ) ) . ":{$n}",
+			  $wgLang->getNsText( Namespace::getTalk( 0 ) ) );
+			  
+			$s .= $n .  " (".$tl.")" . "\n<br>" . $this->makeKnownLink( $li,
 			  wfMsg( "login" ), $q );
+			  
+			$tl = " ({$tl})"; 
+			
 		} else {
 			$n = $wgUser->getName();
 			$rt = $wgTitle->getPrefixedURL();
@@ -383,9 +411,8 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			  Namespace::getTalk( Namespace::getUser() ) ) . ":{$n}",
 			  $wgLang->getNsText( Namespace::getTalk( 0 ) ) );
 
-			if ( 0 == $wgUser->getNewtalk() ) { $tl = " ({$tl})"; }
-			else { $tl = " (*{$tl})"; }
-
+			$tl = " ({$tl})"; 
+			
 			$s .= $this->makeKnownLink( $wgLang->getNsText(
 			  Namespace::getUser() ) . ":{$n}", $n ) . "{$tl}<br>" .
 			  $this->makeKnownLink( $lo, wfMsg( "logout" ),
@@ -406,7 +433,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		  . "<input type=text name=\"search\" size=19 value=\""
 		  . htmlspecialchars(substr($search,0,256)) . "\">\n"
 		  . "<input type=submit value=\"" . wfMsg( "search" )
-		  . "\">&nbsp;<input type=submit name=\"go\"value=\"" . wfMsg ("go") . "\"></form>";
+		  . "\">&nbsp;<input type=submit name=\"go\"value=\"" . wfMsg ("go") . "\"></form>";		  
 
 		return $s;
 	}
@@ -1238,7 +1265,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		$r .= $this->makeKnownLink( $y->secureName, wfMsg( "hist" ), "action=history" );
 
 		$r .= ") . . ".$y->userlink ;
-		$r .= $y->blockuser ;
+		$r .= $y->usertalklink ;
 		if ( $y->usercomment != "" )
 			$r .= " <em>(".wfEscapeHTML($y->usercomment).")</em>" ;
 		$r .= "<br>\n" ;
@@ -1334,7 +1361,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			$r .= "; " ;
 			$r .= $x->lastlink ;
 			$r .= ") . . ".$x->userlink ;
-			$r .= $x->blockuser ;
+			$r .= $x->usertalklink ;
 			if ( $x->usercomment != "" )
 				$r .= " <em>(".wfEscapeHTML($x->usercomment).")</em>" ;
 			$r .= "<br>\n" ;
@@ -1387,7 +1414,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		}
 		$h = $wgLang->time( $ts, true );
 		$t = Title::makeName( $ns, $ttl );
-		$clink = $this->makeKnownLink( $t, "" );
+		$clink = $this->makeKnownLink( $t , "" );
 		$nt = Title::newFromText( $t );
 
 		if ( $watched ) {
@@ -1402,9 +1429,13 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		}
 		if ( 0 == $u ) {
         	$ul = $this->makeKnownLink( $wgLang->specialPage( "Contributions" ),
-			$ut, "target=" . $ut );
+			$ut, "target=" . $ut );					
 		} else { $ul = $this->makeLink( $wgLang->getNsText(
 		  Namespace::getUser() ) . ":{$ut}", $ut ); }
+		  
+		$utns=$wgLang->getNsText(Namespace::getTalk(Namespace::getUser()));
+		$talkname=$wgLang->getNsText(Namespace::getTalk(0)); # use the shorter name
+		$utl= $this->makeLink($utns . ":{$ut}", $talkname );
 		$cr = wfMsg( "currentrev" );
 
 		$s .= "<li> ({$dlink}) ({$hlink}) . .";
@@ -1414,11 +1445,18 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		if ( $isnew ) { $s .= "<strong>{$N}</strong>"; }
 		$s .= " {$clink}; {$h} . . {$ul}";
 
+		$blink="";
 		if ( ( 0 == $u ) && $wgUser->isSysop() ) {
 			$blink = $this->makeKnownLink( $wgLang->specialPage(
 			  "Blockip" ), wfMsg( "blocklink" ), "ip={$ut}" );
-			$s .= " ({$blink})";
+			
 		}
+		if(!$blink) { 
+			$utl = "({$utl})";
+		} else {
+			$utl = "({$utl} | {$blink})";
+		}
+		$s.=" {$utl}";
 
 		if ( "" != $c && "*" != $c ) {
 			$s .= " <em>(" . wfEscapeHTML( $c ) . ")</em>";
@@ -1486,10 +1524,16 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		$rc->lastlink = $plink ;
 		$rc->curlink = $dlink ;
 
+		$utns=$wgLang->getNsText(Namespace::getTalk(Namespace::getUser()));
+		$talkname=$wgLang->getNsText(Namespace::getTalk(0)); # use the shorter name
+		$utl= $this->makeLink($utns . ":{$ut}", $talkname );						
+
 		if ( ( 0 == $u ) && $wgUser->isSysop() ) {
 			$blink = $this->makeKnownLink( $wgLang->specialPage(
 			  "Blockip" ), wfMsg( "blocklink" ), "ip={$ut}" );
-			$rc->blockuser = " ({$blink})";
+			$rc->usertalklink= " ({$utl} | {$blink})";
+		} else {
+			$rc->usertalklink=" ({$utl})";
 		}
 
 		if ( !isset ( $this->rc_cache[$t] ) ) $this->rc_cache[$t] = array() ;
