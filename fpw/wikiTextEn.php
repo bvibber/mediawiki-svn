@@ -22,13 +22,13 @@ $wikiMetaDescription = "$1... Read more here at wikipedia, the free encyclopedia
 
 # Namespace backgrounds
 $wikiNamespaceBackground = array () ;
-$wikiNamespaceBackground["talk"] = "#CCCCCC" ;
+$wikiNamespaceBackground["talk"] = "#CCFFFF" ;
 $wikiNamespaceBackground["user_talk"] = $wikiNamespaceBackground["talk"] ;
 $wikiNamespaceBackground["wikipedia_talk"] = $wikiNamespaceBackground["talk"] ;
-$wikiNamespaceBackground["user"] = "#CCFFFF" ;
+$wikiNamespaceBackground["user"] = "#FFCCCC" ;
 $wikiNamespaceBackground["wikipedia"] = "#CCFFCC" ;
-$wikiNamespaceBackground["log"] = "#FFCCCC" ;
-$wikiNamespaceBackground["special"] = "#FFCC66" ;
+$wikiNamespaceBackground["log"] = "#FFFF99" ;
+$wikiNamespaceBackground["special"] = "#CCCCCC" ;
 
 # Used in header/footer
 $wikiMainPageTitle = "Wikipedia : The free encyclopedia" ; # This is the title that is displayed on the main page
