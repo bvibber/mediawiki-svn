@@ -36,7 +36,7 @@ class UserTalkUpdate {
 				$id = User::idFromName( $this->mTitle );
 				if ( 0 == $id ) { return; }
 
-				$sql = "UPDATE user SET user_newtalk=1 WHERE user_id={$id}";
+				$sql = "UPDATE LOW_PRIORITY user SET user_newtalk=1 WHERE user_id={$id}";
 				wfQuery( $sql, $fname );
 			}
 		}

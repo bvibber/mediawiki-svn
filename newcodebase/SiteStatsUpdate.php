@@ -31,7 +31,7 @@ class SiteStatsUpdate {
 		else $m = "";
 		array_push( $a, "ss_good_articles=(ss_good_articles$m)" );
 
-		$sql = "UPDATE site_stats SET " . implode ( ",", $a ) .
+		$sql = "UPDATE LOW_PRIORITY site_stats SET " . implode ( ",", $a ) .
 		  " WHERE ss_row_id=1";
 		wfQuery( $sql, "SiteStatsUpdate::doUpdate" );
 	}
