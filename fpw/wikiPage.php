@@ -997,7 +997,10 @@ class WikiPage extends WikiTitle {
 		$ret .= "<tr class=header>\n" ;
 		$ret .= "<td><span class=spacer>&nbsp;&nbsp;</span></td>\n" ;
 		$ret .= "<td align=left>" ;
-		$ret .= "<font size='+4' $fonts><a class=syslink href=\"".WikiLink("")."\">".strtoupperIntl($wikiWikipedia)."</a></font></td>\n" ;
+		$ret .= "<a class=syslink href=\"".WikiLink("")."\">" ;
+		$ret .= "<font size='+5' $fonts>" ; 
+		$ret .= strtoupperIntl($wikiWikipedia) ;
+		$ret .= "</font></a></td>\n" ;
 		$ret .= "<td align=right valign=bottom nowrap>\n" ;
 		$ret .= "<p class=topmenu>" ;
 		$ret .= "<a class=topmenu href='".WikiLink("")."'>" . strtoupperIntl ( $wikiHome ) . "</a> | " ;
@@ -1169,7 +1172,7 @@ class WikiPage extends WikiTitle {
 		$ret .= "</td></tr><tr><td><p class=menu>\n" ;
 		$ret .= "<span class=menuhead>$wikiEdit</span><br>\n" ;
 		if ( !$this->isSpecialPage ) {
-			if ( $this->canEdit() ) $ret .= "<a class=menulink href=\"".wikiLink($this->url."&action=edit")."\"><font size='+1'>$wikiEditPage</font></a><br>\n" ;
+			if ( $this->canEdit() ) $ret .= "<a class=menulink href=\"".wikiLink($this->url."&action=edit")."\"><font size='2'>$wikiEditPage</font></a><br>\n" ;
 			if ( $this->canDelete() ) $ret .= "<a class=menulink href=\"".wikiLink("special:deletepage&target=".$this->url)."\">$wikiDeleteThisPage</a><br>\n" ;
 			if ( $this->canDelete() ) $ret .= "<a class=menulink href=\"".wikiLink("special:movepage&target=".$this->url)."\">$wikiMoveThisPage</a><br>\n" ;
 			if ( $this->canProtect() ) $ret .= "<a class=menulink href=\"".wikiLink("special:protectpage&target=".$this->url)."\">$wikiProtectThisPage</a><br>\n" ;
