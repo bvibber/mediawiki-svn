@@ -10,8 +10,10 @@ set_time_limit(0);
 $wgDBuser			= "wikiadmin";
 $wgDBpassword		= $wgDBadminpassword;
 
+# May run faster if you drop the index; but will break attempts to search
+# while it's running if you're online.
 #echo "Dropping index...\n";
-$sql = "ALTER TABLE DROP INDEX cur_ind_title, DROP INDEX cur_ind_text";
+##$sql = "ALTER TABLE searchindex DROP INDEX si_title, DROP INDEX si_text";
 #$res = wfQuery($sql);
 
 $sql = "SELECT COUNT(*) AS count FROM cur";
@@ -23,10 +25,6 @@ $n = 0;
 $sql = "SELECT cur_id, cur_namespace, cur_title, cur_text FROM cur";
 $res = wfQuery($sql);
 while( $s = wfFetchObject($res)) {
-	$t = wfStrencode( Title::indexTitle( $s->cur_namespace,
-		str_replace("_", " ", $s->cur_title ) ) );
-	$sql2 = "UPDATE cur SET cur_ind_title='{$t}' WHERE cur_id={$s->cur_id}";
-	$res2 = wfQuery( $sql2 );
 	$u = new SearchUpdate( $s->cur_id, $s->cur_title, $s->cur_text );
 	$u->doUpdate();
 	if ( ( (++$n) % 500) == 0) {
@@ -36,8 +34,8 @@ while( $s = wfFetchObject($res)) {
 wfFreeResult( $res );
 
 #echo "Rebuild the index...\n";
-$sql = "ALTER TABLE ADD FULLTEXT cur_ind_title (cur_ind_title),
-  ADD FULLTEXT cur_ind_text (cur_ind_text)";
+##$sql = "ALTER TABLE searchindex ADD FULLTEXT si_title (si_title),
+##  ADD FULLTEXT si_text (si_text)";
 #$res = wfQuery($sql);
 
 print "Done.\n";
