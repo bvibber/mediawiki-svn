@@ -29,6 +29,14 @@
 	"Standard", "Nostalgia", "Cologne Blue"
 );
 
+/* private */ $wgMathNamesDe = array(
+	"Immer als PNG",
+	"Einfaches TeX als HTML, sonst PNG",
+	"HTML wenn möglich, sonst PNG",
+	"Als TeX belassen (für Textbrowser)"
+);
+
+
 /* private */ $wgUserTogglesDe = array(
 	"hover"	=> "Hinweis über internen Verweisen",
 	"underline" => "Verweise unterstreichen",
@@ -312,7 +320,7 @@ Bitte melden Si sich an, sobald Sie es erhalten.",
 "blockedtext"	=> "Ihr Benutzername oder Ihre IP-Addresse wurde von $1 blockiert.
 Als Grund wurde angeeben:<br>$2<p>Bitte kontaktieren Sie den Administrator, um über die Blockierung zu sprechen.",
 "newarticle"	=> "(Neu)",
-"newarticletext" => "Hier den Text des neuen Artikels eintragen.\nBitte nur in ganzen Sätzen schreiben und keine urheberrechtsgeschützten Texte anderer verwenden.",
+"newarticletext" => "Hier den Text des neuen Artikels eintragen.\nBitte nur in ganzen Sätzen schreiben und keine urheberrechtsgeschützten Texte anderer kopieren.",
 "anontalkpagetext" => "---- ''Dies ist Die Diskussions-Seite eines nicht angemeldeten Benutzers. Wir müssen hier die numerische [[IP-Adresse]] zur Identifizierung verwenden. Eine solche Adresse kann nacheinander von mehreren Benutzer verwendet werden. Wenn Sie ein anonymer Benutzer sind und denken, dass irrelevante Kommentare an Sie gerichtet wurden, [[Spezial:Userlogin|melden Sie sich bitte an]], um zukünftige Verwirrung zu vermeiden. ''",
 "noarticletext" => "(Dieser Artikel enthält momentan keinen Text)",
 "updated"		=> "(Geändert)",
@@ -407,6 +415,12 @@ Ihre interne ID-Nummer ist $2.",
 "qbsettings"	=> "Seitenleiste", 
 "changepassword" => "Passwort ändern",
 "skin"			=> "Skin",
+"math"			=> "TeX darstellen",
+"math_failure"		=> "Parser-Fehler",
+"math_unknown_error"	=> "Unbekannter Fehler",
+"math_unknown_function"	=> "Unbekannte Funktion ",
+"math_lexing_error"	=> "'Lexing'-Fehler",
+"math_syntax_error"	=> "Syntaxfehler",
 "saveprefs"		=> "Einstellungen speichern",
 "resetprefs"	=> "Einstellungen zurücksetzen",
 "oldpassword"	=> "Altes Passwort",
@@ -798,6 +812,11 @@ class LanguageDe extends Language {
 	function getSkinNames() {
 		global $wgSkinNamesDe;
 		return $wgSkinNamesDe;
+	}
+
+	function getMathNames() {
+		global $wgMathNamesDe;
+		return $wgMathNamesDe;
 	}
 
 	function getUserToggles() {
