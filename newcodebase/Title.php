@@ -27,9 +27,9 @@
 	"co"    => "http://co.wikipedia.com/wiki.cgi?$1",
 	"cs"    => "http://cs.wikipedia.com/wiki.cgi?$1",
 	"cy"    => "http://cy.wikipedia.com/wiki.cgi?$1",
-	"da"    => "http://da.wikipedia.com/wiki.cgi?$1",
+	"da"    => "http://da.wikipedia.org/wiki/$1",
 	"de"	=> "http://de.wikipedia.org/wiki/$1",
-	"dk"	=> "http://dk.wikipedia.com/wiki.cgi?$1",
+	"dk"    => "http://da.wikipedia.org/wiki/$1",
 	"dz"    => "http://dz.wikipedia.com/wiki.cgi?$1",
 	"el"    => "http://el.wikipedia.com/wiki.cgi?$1",
 	"en"	=> "http://www.wikipedia.org/wiki/$1",    # May in future be renamed to en.wikipedia.org; should work as alternate
