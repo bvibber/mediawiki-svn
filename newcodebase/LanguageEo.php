@@ -39,7 +39,7 @@ $wgEditEncoding		= "x";
 	"justify"	=> "Alkadrigu liniojn",
 	"hideminor" => "Kaŝu malgrandajn redaktetojn ĉe <i>Lastaj ŝanĝoj</i>",
 	"numberheadings" => "Aŭtomate numeru sekciojn",
-	"rememberpassword" => "Rememoru mian pasvorton",
+	"rememberpassword" => "Memoru mian pasvorton",
 	"editwidth" => "Redaktilo estu plenlarĝa",
 	"editondblclick" => "Redaktu per duobla alklako (JavaScript)",
 	"watchdefault" => "Priatentu paĝojn de vi redaktintajn",
@@ -145,7 +145,7 @@ $wgEditEncoding		= "x";
 	"oc"	=> "Okcitana",
 	"or"	=> "Orijo",
 	"om"	=> "Oroma",
-    "pa"    => "Panĥaba",
+    "pa"    => "Panĝaba",
 
 	"ps"	=> "Paŝtua",
 	"fa"	=> "Persa",
@@ -236,7 +236,7 @@ $wgEditEncoding		= "x";
 	"Wantedpages"	=> "Plej dezirataj paĝoj",
 	"Shortpages"	=> "Mallongaj artikoloj",
 	"Longpages"		=> "Longegaj artikoloj",
-	"Newpages"		=> "Novkreitaj artikoloj",
+	"Newpages"		=> "Novaj artikoloj",
 	"Allpages"		=> "Ĉiu paĝo laŭ titolo",
 
 	"Ipblocklist"	=> "Forbaritaj IP-adresoj",
@@ -323,7 +323,7 @@ Bonvolu legi $1.", #FIXME
 Vidu $1.",
 "nbytes"		=> "$1 bitokoj",
 "go"			=> "Ek!", #FIXME
-"ok"			=> "O kej!", #FIXME
+"ok"			=> "Ek!", #FIXME
 "sitetitle"		=> "Vikipedio", # Wikipedia
 "sitesubtitle"	=> "La Libera Enciklopedio",
 "retrievedfrom" => "Citita el \"$1\"", #FIXME: Aperas post presita paĝo
@@ -347,7 +347,7 @@ aŭ eble tio indikas cimon en la programaro.
 Jen la plej laste provita informmendo:
 <blockquote><tt><nowiki>$1</nowiki></tt></blockquote>
 el la funkcio \"<tt>$2</tt>\". 
-MySQL redonis eraron  \"<tt><nowiki>$3: $4</nowiki></tt>\".",
+MySQL redonis eraron  \"<tt>$3: $4</tt>\".",
 "noconnect"		=> "Neeblis konekti al la datumbazo je $1",
 "nodb"			=> "Neeblis elekti datumaron $1",
 "readonly"		=> "Datumaro ŝlosita, nurlega",
@@ -529,7 +529,7 @@ montriĝos en la rezulto).",
 "powersearchtext" => "
 Serĉu en sekcioj: :<br>
 $1<br>
-$2 Kun alidirektiloj &nbsp; Serĉu $3 $9",
+$2 Kun alidirektiloj   Serĉu $3 $9",
 
 # Preferences page
 #
@@ -740,7 +740,7 @@ Kelkaj funkcioj povas streĉi la datumbazon, do bonvolu ne reŝuti post ĉiu rip
 "popularpages"	=> "Plej vizitataj paĝoj",
 "nviews"		=> "$1-foje",
 "wantedpages"	=> "Dezirataj paĝoj",
-"nlinks"		=> "$1 ligiloj",
+"nlinks"		=> " ligiloj",
 "allpages"		=> "Ĉiuj paĝoj",
 "randompage"	=> "Hazarda paĝo",
 "shortpages"	=> "Paĝetoj",
@@ -753,7 +753,7 @@ Kelkaj funkcioj povas streĉi la datumbazon, do bonvolu ne reŝuti post ĉiu rip
 "protectpage"	=> "Protektu paĝon",
 "recentchangeslinked" => "Rilataj paĝoj",
 "rclsub"		=> "(al paĝoj ligitaj de \"$1\")",
-"debug"			=> "Kontraŭcima", #CHUCK cxu "malcimigu"? | Pli bone "sencimigi" /Bertilo
+"debug"			=> "Kontraŭcima", #CHUCK ĉu "malcimigu"? | Pli bone "sencimigi" /Bertilo
 "newpages"		=> "Novaj paĝoj",
 "movethispage"	=> "Movu la paĝon",
 "unusedimagestext" => "<p>Notu, ke aliaj TTT-ejoj, ekzemple
@@ -1165,8 +1165,8 @@ class LanguageEo extends Language {
 		# But that doesn't work right in a UTF-8 locale
 		global $wikiUpperChars, $wikiLowerChars;
         return preg_replace (
-        	"/^([\\x00-\\x7f]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
-        	"strtr ( \"\$1\" , \$wikiUpperChars )",
+        	"/^([\x00-\x7f]|[\xc0-\xff][\x80-\xbf]*)/e",
+        	"strtr ( \"\\" , \$wikiUpperChars )",
         	$string );
 	}
 	
@@ -1175,7 +1175,7 @@ class LanguageEo extends Language {
 		# need to fold cases and convert to hex
 		global $wikiLowerChars;
 		return preg_replace(
-		  "/([\\xc0-\\xff][\\x80-\\xbf]*)/e",
+		  "/([\xc0-\xff][\x80-\xbf]*)/e",
 		  "'U8' . bin2hex( strtr( \"\$1\", \$wikiLowerChars ) )",
 		  $string );
 	}
