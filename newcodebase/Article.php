@@ -376,7 +376,7 @@ enctype='application/x-www-form-urlencoded'>
 {$wpTextbox1}
 </textarea><br>
 {$summary}: <input tabindex=2 type=text value=\"{$wpSummary}\" name='wpSummary' maxlength=200>
-<input tabindex=3 type=checkbox value=1 name='wpMinoredit'>{$minor}<br>
+<input tabindex=3 type=checkbox value=1 name='wpMinoredit'".($wpMinoredit?" checked":"").">{$minor}<br>
 <input tabindex=4 type=submit value=\"{$save}\" name='wpSave'>
 <input tabindex=5 type=submit value=\"{$prev}\" name='wpPreview'>
 <em>{$cancel}</em> | <em>{$edithelp}</em>
