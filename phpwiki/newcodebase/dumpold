@@ -1,0 +1,21 @@
+set -x
+# Local: path to mysql/mysqldump, database, user name, password
+#
+MB=/usr/local/mysql/bin
+MD=wikidb
+MU=wikiadmin
+MP=oberon
+
+# Clean cache for dump
+#
+$MB/mysql -u $MU -p$MP -e 'UPDATE cur SET cur_timestamp=cur_timestamp,cur_cache=""' $MD
+
+# Dump tables.
+# You may want to comment out "user" and "old" for some tasks.
+#
+$MB/mysqldump -u $MU -p$MP --opt $MD user >user_table.sql
+gzip user_table.sql
+$MB/mysqldump -u $MU -p$MP --opt $MD cur >cur_table.sql
+gzip cur_table.sql
+$MB/mysqldump -u $MU -p$MP --opt $MD old >old_table.sql
+gzip old_table.sql

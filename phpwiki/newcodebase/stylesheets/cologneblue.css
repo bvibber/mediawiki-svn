@@ -6,11 +6,16 @@ body { margin: 0px; padding: 4px; }
 #quickbar {
  width: 140px; top: 14ex; padding: 2px; visibility: visible; z-index: 99;
 }
-#article {
+#article, #article td, #article th, #article p {
  font-family: Verdana, Arial, sans-serif;
  font-size: 10pt; color: black;
- padding: 4px;
+ padding: 0;
 }
+#article p, #article ul, #article ol, #article dl {
+ padding: 0; margin-top: 2ex; margin-bottom: 1ex;
+}
+p, pre, td, th, li, dd, dt { line-height: 1.25; }
+
 #footer { padding: 4px; }
 #footer form { display: inline; }
 

@@ -696,7 +696,10 @@ class OutputPage {
 					$inBlockElem = true;
 				}
 				if ( ! $inBlockElem ) {
-					if ( " " == $t{0} ) { $newSection = "pre"; }
+					if ( " " == $t{0} ) {
+						$newSection = "pre";
+						# $t = wfEscapeHTML( $t );
+					}
 					else { $newSection = "p"; }
 
 					if ( 0 == strcmp( "", trim( $oLine ) ) ) {

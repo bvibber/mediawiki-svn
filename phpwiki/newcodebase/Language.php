@@ -93,7 +93,6 @@
 /* private */ $wgDeveloperSpecialPagesEn = array(
 	"Lockdb"		=> "Make database read-only",
 	"Unlockdb"		=> "Restore database read access",
-	"Rebuildlinks"	=> "Rebuild link tables",
 	"Debug"			=> "Show debugging information"
 );
 
@@ -575,7 +574,7 @@ to a previously blocked IP address.",
 "blocklink"		=> "block",
 "unblocklink"	=> "unblock",
 
-# Lock/unlock DB
+# Developer tools
 #
 "lockdb"		=> "Lock database",
 "unlockdb"		=> "Unlock database",

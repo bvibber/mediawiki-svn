@@ -1,100 +1,82 @@
 <?
-# Script for doing various database maintenance tasks.
-# Intended to be run from the php command line.  It has
-# to be run from the same directory as the code so that
-# all the includes work.
+
+# Database conversion (from May 2002 format).  Assumes that
+# the "buildtables.sql" script has been run to create the new
+# empty tables, and that the old tables have been read in from
+# a database dump, renamed "old_*".
 
 include_once( "Setup.php" );
 set_time_limit(0);
 
-# Need to have separate connection to "old" database.
-#
-$wgOldDBname	= "wikidb";
-$wgOldDBuser	= "wikiadmin";
-$wgOldImageDir	= "/rfs/backups/lee/wikiimages";
+$wgDBname			= "wikidb";
+$wgDBuser			= "wikiadmin";
+$wgDBpassword		= "oberon";
+$wgImageDirectory	= "/rfs/backups/lee/wikiimages";
+$wgUploadDirectory	= "/rfs/upload";
 
-# Convert old (May 2002) database format.
-#
+$wgFullCache		= array();
+
 # convertUserTable();
-# convertCurTable();
 # convertOldTable();
-
+# convertCurTable();
 # convertImageDirectories();
 
-# Maintenance tasks.
-#
-
 rebuildLinkTables();
-
-# rebuildIndText();
 
 print "Done.\n";
 exit();
 
 ########## End of script, beginning of functions.
 
-# Convert May 2002 version of database into new format.
-#
-function cconvertUserTable()
+function convertUserTable()
 {
 	$count = 0;
 	print "Converting USER table.\n";
 
-	$oldconn = getOldDB();
+	$sql = "LOCK TABLES old_user READ, user WRITE";
+	$newres = wfQuery( $sql );
+
 	$sql = "SELECT user_id,user_name,user_rights,user_password," .
-	  "user_email,user_options,user_watch FROM user";
-	$oldres = dbQuery( $sql, $oldconn );
-	if ( ! $oldres ) $oldres = dbErr( $sql, "old" );
+	  "user_email,user_options,user_watch FROM old_user";
+	$oldres = wfQuery( $sql );
 
-	$newconn = getNewDB();
 	$sql = "DELETE FROM user";
-	$newres = dbQuery( $sql, $newconn );
-	if ( ! $newres ) $newres = dbErr( $sql );
-
-	$sql = "LOCK TABLES user WRITE";
-	$newres = dbQuery( $sql, $newconn );
-	if ( ! $newres ) $newres = dbErr( $sql );
+	$newres = wfQuery( $sql );
 
 	$sql = "";
 	while ( $row = mysql_fetch_object( $oldres ) ) {
 		if ( 0 == ( $count % 10 ) ) {
-			if ( 0 != $count ) {
-				$newconn = getNewDB();
-				$newres = dbQuery( $sql, $newconn );
-				if ( ! $newres ) $newres = dbErr( $sql );
-			}
+			if ( 0 != $count ) { $newres = wfQuery( $sql ); }
+
 			$sql = "INSERT INTO user (user_id,user_name,user_rights," .
-			  "user_password,user_oldpassword,user_email,user_options," .
+			  "user_password,user_newpassword,user_email,user_options," .
 			  "user_watch) VALUES ";
 		} else {
 			$sql .= ",";
 		}
-		$ops = fixUserOptions( $row->user_options );
-		$name = wfStrencode( $row->user_name );
-		$rights = wfStrencode( $row->user_rights );
-		$email = wfStrencode( $row->user_email );
-		$pwd = wfStrencode( User::encryptPassword( $row->user_password ) );
-		$watch = wfStrencode( $row->user_watch );
+		$ops = addslashes( fixUserOptions( $row->user_options ) );
+		$name = addslashes( fixUserName( $row->user_name ) );
+		$rights = addslashes( fixUserRights( $row->user_rights ) );
+		$email = addslashes( $row->user_email );
+		$pwd = addslashes( md5( $row->user_password ) );
+		$watch = addslashes( $row->user_watch );
 
-		$sql .= "({$row->user_id},'$name','$rights','$pwd','','$email'," .
-		  "'$ops','$watch')";
+		if ( "" == $name ) continue; # Don't convert illegal names
+
+		$sql .= "({$row->user_id},'{$name}','{$rights}','{$pwd}',''," .
+		  "'{$email}','{$ops}','{$watch}')";
 
 		if ( ( ++$count % 1000 ) == 0 ) {
-			print "$count records processed.\n";
+			print "$count user records processed.\n";
 		}
 	}
-	if ( $sql ) {
-		$newconn = getNewDB();
-		$newres = dbQuery( $sql, $newconn );
-		if ( ! $newres ) $newres = dbErr( $sql );
-	}
-	print "$count records processed.\n";
+	if ( $sql ) { $newres = wfQuery( $sql ); }
+
+	print "$count user records processed.\n";
 	mysql_free_result( $oldres );
 
-	$newconn = getNewDB();
 	$sql = "UNLOCK TABLES";
-	$newres = dbQuery( $sql, $newconn );
-	if ( ! $newres ) $newres = dbErr( $sql );
+	$newres = wfQuery( $sql );
 }
 
 # Convert May 2002 version of database into new format.
@@ -104,93 +86,65 @@ function convertCurTable()
 	$count = 0;
 	print "Converting CUR table.\n";
 
-	$oldconn = getOldDB();
+	$sql = "LOCK TABLES old_cur READ, cur WRITE";
+	$newres = wfQuery( $sql );
+
 	$sql = "SELECT cur_id,cur_title,cur_text,cur_comment,cur_user," .
 	  "cur_timestamp,cur_minor_edit,cur_restrictions," .
-	  "cur_counter,cur_ind_title,cur_user_text FROM cur";
-	$oldres = dbQuery( $sql, $oldconn );
-	if ( ! $oldres ) $oldres = dbErr( $sql, "old" );
+	  "cur_counter,cur_ind_title,cur_user_text FROM old_cur";
+	$oldres = wfQuery( $sql );
 
-	$newconn = getNewDB();
 	$sql = "DELETE FROM cur";
-	$newres = dbQuery( $sql, $newconn );
-	if ( ! $newres ) $newres = dbErr( $sql );
-
-	$sql = "LOCK TABLES cur WRITE";
-	$newres = dbQuery( $sql, $newconn );
-	if ( ! $newres ) $newres = dbErr( $sql );
+	$newres = wfQuery( $sql );
 
 	$sql = "";
 	while ( $row = mysql_fetch_object( $oldres ) ) {
-		if ( 0 == ( $count % 10 ) ) {
-			if ( 0 != $count ) {
-				$newconn = getNewDB();
-				$newres = dbQuery( $sql, $newconn );
-				if ( ! $newres ) $newres = dbErr( $sql );
-			}
-			$sql = "INSERT INTO cur (cur_id,cur_namespace," .
-			  "cur_title,cur_text,cur_comment,cur_user," .
-			  "cur_timestamp,cur_minor_edit,cur_is_new" .
-			  "cur_restrictions,cur_counter," .
-			  "cur_ind_title,cur_is_redirect,cur_user_text) VALUES ";
-		} else {
-			$sql .= ",";
-		}
-		if ( preg_match( "/^([A-Za-z][A-Za-z0-9 _]*):(.*)$/",
-		  $row->cur_title, $m ) ) {
-			$ns = $m[1];
-			$t = $m[2];
-		} else {
-			$ns = "";
-			$t = $row->cur_title;
-		}
-		if ( 0 == strcasecmp( "Log", $ns ) ) {
-			$ns = "Wikipedia";
-			$t .= " log";
-		}
-		$text = convertImageLinks( $row->cur_text );
+		$nt = Title::newFromDBkey( $row->cur_title );
+		$title = addslashes( $nt->getDBkey() );
+		$ns = $nt->getNamespace();
+		$text = addslashes( convertMediaLinks( $row->cur_text ) );
 
-		$namespace = Namespace::getIndex( $ns );
-		$title = wfStrencode( $t );
-		$text = wfStrencode( $text );
-		$com = wfStrencode( $row->cur_comment );
-		$cr = wfStrencode( $row->cur_restrictions );
-		$cit = wfStrencode( $row->cur_ind_title );
-		$cut = wfStrencode( $row->cur_user_text );
+		$ititle = addslashes( indexTitle( $nt->getText() ) );
+		$itext = addslashes( indexText( $text, $ititle ) );
+
+		$com = addslashes( $row->cur_comment );
+		$cr = addslashes( $row->cur_restrictions );
+		$cut = addslashes( $row->cur_user_text );
 		if ( "" == $cut ) { $cut = "Unknown"; }
+
 		if ( 2 == $row->cur_minor_edit ) { $isnew = 1; }
 		else { $isnew = 0; }
-		$isme = ( 0 != $row->cur_minor_edit );
+		if ( 0 != $row->cur_minor_edit ) { $isme = 1; }
+		else { $isme = 0; }
 
-		$counter = $row->cur_counter;
-		if ( ! $counter ) { $counter = 0; }
+		# $counter = $row->cur_counter;
+		# if ( ! $counter ) { $counter = 0; }
 
 		if ( preg_match( "/^#redirect /i", $text ) ) {
 			$redir = 1;
 			$text = fixRedirect( $text );
 		} else { $redir = 0; }
 
-		$sql .= "({$row->cur_id},$namespace,'$title','$text'," .
-		  "'$com',{$row->cur_user}," .
-		  "'{$row->cur_timestamp}',{$isme},{$isnew},'$cr'," .
-		  "{$counter},'$cit',$redir,'$cut')";
+		$sql = "INSERT INTO cur (cur_id,cur_namespace," .
+		  "cur_title,cur_text,cur_comment,cur_user," .
+		  "cur_timestamp,cur_minor_edit,cur_is_new," .
+		  "cur_restrictions,cur_counter,cur_ind_title," .
+		  "cur_ind_text,cur_is_redirect,cur_user_text) VALUES ";
+		$sql .= "({$row->cur_id},{$ns},'{$title}','{$text}'," .
+		  "'{$com}',{$row->cur_user},'{$row->cur_timestamp}'," .
+		  "{$isme},{$isnew},'{$cr}',0,'{$ititle}','{$itext}'," .
+		  "{$redir},'{$cut}')";
+		wfQuery( $sql );
 
 		if ( ( ++$count % 1000 ) == 0 ) {
-			print "$count records processed.\n";
+			print "$count article records processed.\n";
 		}
 	}
-	if ( $sql ) {
-		$newconn = getNewDB();
-		$newres = dbQuery( $sql, $newconn );
-		if ( ! $newres ) $newres = dbErr( $sql );
-	}
-	print "$count records processed.\n";
+	print "$count article records processed.\n";
 	mysql_free_result( $oldres );
 
-	$newconn = getNewDB();
 	$sql = "UNLOCK TABLES";
-	$newres = dbQuery( $sql, $newconn );
-	if ( ! $newres ) $newres = dbErr( $sql );
+	$newres = wfQuery( $sql );
 }
 
 # Convert May 2002 version of database into new format.
@@ -200,128 +154,60 @@ function convertOldTable()
 	$count = 0;
 	print "Converting OLD table.\n";
 
-	$oldconn = getOldDB();
+	$sql = "LOCK TABLES old_old READ, old WRITE";
+	$newres = wfQuery( $sql );
+
 	$sql = "SELECT old_id,old_title,old_text,old_comment,old_user," .
-	  "old_timestamp,old_minor_edit,old_user_text FROM old";
-	$oldres = dbQuery( $sql, $oldconn );
-	if ( ! $oldres ) $oldres = dbErr( $sql, "old" );
+	  "old_timestamp,old_minor_edit,old_user_text FROM old_old";
+	$oldres = wfQuery( $sql );
 
-	$newconn = getNewDB();
 	$sql = "DELETE FROM old";
-	$newres = dbQuery( $sql, $newconn );
-	if ( ! $newres ) $newres = dbErr( $sql );
+	$newres = wfQuery( $sql );
 
-	$sql = "LOCK TABLES old WRITE";
-	$newres = dbQuery( $sql, $newconn );
-	if ( ! $newres ) $newres = dbErr( $sql );
-
-	$sql = "";
 	while ( $row = mysql_fetch_object( $oldres ) ) {
-		if ( 0 == ( $count % 10 ) ) {
-			if ( 0 != $count ) {
-				$newconn = getNewDB();
-				$newres = dbQuery( $sql, $newconn );
-				if ( ! $newres ) $newres = dbErr( $sql );
-			}
-			$sql = "INSERT INTO old (old_id,old_namespace,old_title," .
-			  "old_text,old_comment,old_user," .
-			  "old_timestamp,old_minor_edit,old_user_text) VALUES ";
-		} else {
-			$sql .= ",";
-		}
-		if ( preg_match( "/^([A-Za-z][A-Za-z0-9 _]*):(.*)$/",
-		  $row->old_title, $m ) ) {
-			$ns = $m[1];
-			$t = $m[2];
-		} else {
-			$ns = "";
-			$t = $row->old_title;
-		}
-		if ( 0 == strcasecmp( "Log", $ns ) ) {
-			continue;
-		}
-		$text = convertImageLinks( $row->old_text );
+		$nt = Title::newFromDBkey( $row->old_title );
+		$title = addslashes( $nt->getDBkey() );
+		$ns = $nt->getNamespace();
+		$text = addslashes( convertMediaLinks( $row->old_text ) );
 
-		$namespace = Namespace::getIndex( $ns );
-		$title = wfStrencode( $t );
-		$text = wfStrencode( $text );
-		$com = wfStrencode( $row->old_comment );
-		$ot = wfStrencode( $row->old_user_text );
-		if ( "" == $ot ) { $ot = "Unknown"; }
+		$com = addslashes( $row->old_comment );
+		$cut = addslashes( $row->old_user_text );
+		if ( "" == $cut ) { $cut = "Unknown"; }
 
-		$sql .= "({$row->old_id},$namespace,'$title','$text'," .
-		  "'$com',{$row->old_user}," .
-		  "'{$row->old_timestamp}',{$row->old_minor_edit},'$ot')";
+		if ( 0 != $row->old_minor_edit ) { $isme = 1; }
+		else { $isme = 0; }
+
+		if ( preg_match( "/^#redirect /i", $text ) ) {
+			$redir = 1;
+			$text = fixRedirect( $text );
+		} else { $redir = 0; }
+
+		$sql = "INSERT INTO old (old_id,old_namespace,old_title," .
+		  "old_text,old_comment,old_user," .
+		  "old_timestamp,old_minor_edit,old_user_text) VALUES ";
+		$sql .= "({$row->old_id},{$ns},'{$title}','{$text}'," .
+		  "'{$com}',{$row->old_user},'{$row->old_timestamp}'," .
+		  "{$isme},'{$cut}')";
+		wfQuery( $sql );
 
 		if ( ( ++$count % 1000 ) == 0 ) {
-			print "$count records processed.\n";
+			print "$count history records processed.\n";
 		}
 	}
-	if ( $sql ) {
-		$newconn = getNewDB();
-		$newres = dbQuery( $sql, $newconn );
-		if ( ! $newres ) $newres = dbErr( $sql );
-	}
-	print "$count records processed.\n";
+	print "$count history records processed.\n";
 	mysql_free_result( $oldres );
 
-	$newconn = getNewDB();
 	$sql = "UNLOCK TABLES";
-	$newres = dbQuery( $sql, $newconn );
-	if ( ! $newres ) $newres = dbErr( $sql );
+	$newres = wfQuery( $sql );
 }
-
 
 function convertImageDirectories()
 {
-	global $wgOldImageDir, $wgUploadDirectory;
+	global $wgImageDirectory, $wgUploadDirectory;
 	$count = 0;
 
 	print "Moving image files.\n";
-/*
-	$conn = getNewDB();
-	$sql = "SELECT DISTINCT il_to FROM imagelinks";
-	$res = dbQuery( $sql, $conn );
-	if ( ! $res ) $res = dbErr( $sql );
-
-	while ( $row = mysql_fetch_object( $res ) ) {
-		$oname = $row->il_to;
-
-		$nt = Title::newFromText( $oname );
-		$nname = $nt->getDBkey();
-	
-		$oldumask = umask(0);
-		$dest = $wgUploadDirectory . "/" . $nname{0};
-		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
-		$dest .= "/" . substr( $nname, 0, 2 );
-		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
-		umask( $oldumask );
-
-		print "{$wgOldImageDir}/{$oname} => {$dest}/{$nname}\n";
-
-		if ( copy( "{$wgOldImageDir}/{$oname}", "{$dest}/{$nname}" ) ) {
-			++$count;
-
-			$conn = getNewDB();
-			$sql = "UPDATE imagelinks SET il_to='{$nname}' " .
-			  "WHERE il_to='{$oname}'";
-			$res2 = dbQuery( $sql, $conn );
-			if ( ! $res2 ) $res2 = dbErr( $sql );
-
-			$conn = getNewDB();
-			$sql = "INSERT INTO image (img_name,img_timestamp,img_user," .
-			  "img_user_text,img_size,img_description) VALUES ('{$nname}','" .
-			  date( "YmdHis" ) . "',0,'(Automated conversion)','" .
-			  filesize( "{$dest}/{$nname}" ) . "','')";
-			$res2 = dbQuery( $sql, $conn );
-			if ( ! $res2 ) $res2 = dbErr( $sql );
-		}
-	}
-	mysql_free_result( $res );
-	print "{$count} images moved.\n";
-*/
-	$count = 0;
-	$dir = opendir( $wgOldImageDir );
+	$dir = opendir( $wgImageDirectory );
 	while ( false !== ( $oname = readdir( $dir ) ) ) {
 		if ( "." == $oname{0} ) continue;
 
@@ -344,29 +230,25 @@ function convertImageDirectories()
 		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
 		umask( $oldumask );
 
-		print "{$wgOldImageDir}/{$oname} => {$dest}/{$nname}\n";
+		print "{$wgImageDirectory}/{$oname} => {$dest}/{$nname}\n";
 
-		if ( copy( "{$wgOldImageDir}/{$oname}", "{$dest}/{$nname}" ) ) {
+		if ( copy( "{$wgImageDirectory}/{$oname}", "{$dest}/{$nname}" ) ) {
 			++$count;
 
-			$conn = getNewDB();
 			$sql = "DELETE FROM image WHERE img_name='" .
-			  wfStrencode( $nname ) . "'";
-			$res2 = dbQuery( $sql, $conn );
+			  addslashes( $nname ) . "'";
+			$res = wfQuery( $sql );
 
-			$conn = getNewDB();
 			$sql = "INSERT INTO image (img_name,img_timestamp,img_user," .
 			  "img_user_text,img_size,img_description) VALUES ('" .
-			  wfStrencode( $nname ) . "','" .
+			  addslashes( $nname ) . "','" .
 			  date( "YmdHis" ) . "',0,'(Automated conversion)','" .
 			  filesize( "{$dest}/{$nname}" ) . "','')";
-			$res2 = dbQuery( $sql, $conn );
-			if ( ! $res2 ) $res2 = dbErr( $sql );
+			$res = wfQuery( $sql );
 		}
 	}
 	print "{$count} images moved.\n";
 }
-
 
 # Empty and rebuild the "links" and "brokenlinks" tables.
 # This can be done at any time for the new database, and
@@ -380,25 +262,21 @@ function rebuildLinkTables()
 
 	print "Rebuilding link tables.\n";
 
-	$conn = getNewDB();
+	$sql = "LOCK TABLES cur READ, links WRITE, " .
+	  "brokenlinks WRITE, imagelinks WRITE";
+	wfQuery( $sql );
+
 	$sql = "DELETE FROM links";
-	$res = dbQuery( $sql, $conn );
-	if ( ! $res ) $res = dbErr( $sql );
+	wfQuery( $sql );
 
-	$conn = getNewDB();
 	$sql = "DELETE FROM brokenlinks";
-	$res = dbQuery( $sql, $conn );
-	if ( ! $res ) $res = dbErr( $sql );
+	wfQuery( $sql );
 
-	$conn = getNewDB();
 	$sql = "DELETE FROM imagelinks";
-	$res = dbQuery( $sql, $conn );
-	if ( ! $res ) $res = dbErr( $sql );
+	wfQuery( $sql );
 
-	$conn = getNewDB();
 	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_text FROM cur";
-	$res = dbQuery( $sql, $conn );
-	if ( ! $res ) $res = dbErr( $sql );
+	$res = wfQuery( $sql );
 
 	while ( $row = mysql_fetch_object( $res ) ) {
 		$id = $row->cur_id;
@@ -409,6 +287,7 @@ function rebuildLinkTables()
 			$title = "$ns:{$row->cur_title}";
 		}
 		$text = $row->cur_text;
+
 		$wgLinkCache = new LinkCache();
 		getInternalLinks( $title, $text );
 
@@ -425,11 +304,7 @@ function rebuildLinkTables()
 				  wfStrencode( $iname ) . "')";
 			}
 		}
-		if ( "" != $sql ) {
-			$conn = getNewDB();
-			$res2 = dbQuery( $sql, $conn );
-			if ( ! $res2 ) $res = dbErr( $sql );
-		}
+		if ( "" != $sql ) { wfQuery( $sql ); }
 
 		$sql = "";
 		$a = $wgLinkCache->getGoodLinks();
@@ -443,11 +318,7 @@ function rebuildLinkTables()
 				$sql .= "('" . wfStrencode( $title ) . "',$lid)";
 			}
 		}
-		if ( "" != $sql ) {
-			$conn = getNewDB();
-			$res2 = dbQuery( $sql, $conn );
-			if ( ! $res2 ) $res = dbErr( $sql );
-		}
+		if ( "" != $sql ) { wfQuery( $sql ); }
 
 		$sql = "";
 		$a = $wgLinkCache->getBadLinks();
@@ -461,153 +332,39 @@ function rebuildLinkTables()
 				$sql .= "($id,'" . wfStrencode( $blt ) . "')";
 			}
 		}
-		if ( "" != $sql ) {
-			$conn = getNewDB();
-			$res2 = dbQuery( $sql, $conn );
-			if ( ! $res2 ) $res = dbErr( $sql );
-		}
+		if ( "" != $sql ) { wfQuery( $sql ); }
 
 		if ( ( ++$count % 1000 ) == 0 ) {
-			print "$count records processed.\n";
+			print "$count articles processed.\n";
 		}
 	}
-	print "$count records processed.\n";
-	mysql_free_result( $res );
-}
-
-# This is a handy function to modify for doing any big transform
-# on every page.
-#
-
-function rebuildIndText()
-{
-	$count = 0;
-	print "Rebuilding fulltext index fields.\n";
-
-	$conn = getNewDB();
-	$sql = "LOCK TABLES cur WRITE";
-	$res = dbQuery( $sql, $conn );
-	if ( ! $res ) $res = dbErr( $sql );
-
-	$sql = "SELECT cur_id,cur_title,cur_text FROM cur";
-	$res = dbQuery( $sql, $conn );
-	if ( ! $res ) $res = dbErr( $sql );
-
-	$sql = "";
-	while ( $row = mysql_fetch_object( $res ) ) {
-		$u = new SearchUpdate( $row->cur_id, $row->cur_title,
-		  $row->cur_text );
-		$u->doUpdate();
-
-		if ( ( ++$count % 1000 ) == 0 ) {
-			print "$count records processed.\n";
-		}
-	}
-	print "$count records processed.\n";
+	print "$count articles processed.\n";
 	mysql_free_result( $res );
 
-	$conn = getNewDB();
 	$sql = "UNLOCK TABLES";
-	$res = dbQuery( $sql, $conn );
-	if ( ! $res ) $res = dbErr( $sql );
+	wfQuery( $sql );
 }
 # Utility functions for the above.
 #
-
-function convertImageLinks( $text )
+function convertMediaLinks( $text )
 {
-	$re = "/(^|[^[])http:\/\/(www.|)wikipedia.com\/upload\/" .
-	  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/";
+	$text = preg_replace(
+	  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/upload\/" .
+	  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
+	  "\\1[[image:\\3.\\4]]", $text );
+	$text = preg_replace(
+	  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/images\/uploads\/" .
+	  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
+	  "\\1[[image:\\3.\\4]]", $text );
 
-	while ( preg_match( $re, $text, $m ) ) {
-		$nt = Title::newFromText( $m[3] . "." . $m[4] );
-		$nname = $nt->getDBkey();
+	$text = preg_replace(
+	  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/upload\/" .
+	  "([a-zA-Z0-9_:.~\%\-]+)/", "\\1[[media:\\3]]", $text );
+	$text = preg_replace(
+	  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/images\/uploads\/" .
+	  "([a-zA-Z0-9_:.~\%\-]+)/", "\\1[[media:\\3]]", $text );
 
-		print "{$m[3]}.{$m[4]} => {$nname}\n";
-		preg_replace( $re, "\\1[[image:{$nname}]]", $text, 1 );
-	}
-	$re = "/(^|[^[])http:\/\/(www.|)wikipedia.com\/images\/uploads\/" .
-	  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/";
-
-	while ( preg_match( $re, $text, $m ) ) {
-		$nt = Title::newFromText( $m[3] . "." . $m[4] );
-		$nname = $nt->getDBkey();
-
-		print "{$m[3]}.{$m[4]} => {$nname}\n";
-		preg_replace( $re, "\\1[[image:{$nname}]]", $text, 1 );
-	}
 	return $text;
-}
-
-function getOldDB()
-{
-	global $wgDBserver, $wgDBpassword;
-	global $wgOldDBuser, $wgOldDBname;
-	global $wgOldDBconnection;
-
-	if ( ! $wgOldDBconnection ) {
-		$wgOldDBconnection = mysql_connect( $wgDBserver, $wgOldDBuser,
-		  $wgDBpassword ) or die( "Can't connect to old database." );
-		mysql_select_db( $wgOldDBname, $wgOldDBconnection ) or die(
-		  "Can't select old database." );
-	}
-	return $wgOldDBconnection;
-}
-
-function getNewDB()
-{
-	global $wgDBserver, $wgDBpassword;
-	global $wgDBuser, $wgDBname;
-	global $wgDBconnection;
-
-	if ( ! $wgDBconnection ) {
-		$wgDBconnection = mysql_connect( $wgDBserver, $wgDBuser,
-		  $wgDBpassword ) or die( "Can't connect to new database." );
-		mysql_select_db( $wgDBname, $wgDBconnection ) or die(
-		  "Can't select new database." );
-	}
-	return $wgDBconnection;
-}
-
-function dbQuery( $sql, $conn )
-{
-	# error_log( "{$sql}\n", 3, "logfile" );
-	return mysql_query( $sql, $conn );
-}
-
-function dbErr( $query, $db = "" )
-{
-	global $wgDBconnection, $wgOldDBconnection;
-
-	$e = mysql_errno();
-	$em = mysql_error();
-
-	if ( 2006 == $e ) {
-		$retries = 5;
-		while ( $retries > 0 ) {
-			print "Lost connection...retrying.\n";
-			sleep( rand( 1, 5 ) );
-
-			if ( "old" == $db ) {
-				unset( $wgOldDBconnection );
-				$c = getOldDB();
-			} else {
-				unset( $wgDBconnection );
-				$c = getNewDB();
-			}
-			$r = dbQuery( $query, $c );
-			if ( $r ) { return $r; }
-
-			if ( 2006 != mysql_errno() ) break;
-			--$retries;
-		}
-	}
-	if ( strlen( $query ) > 1000 ) {
-		$query = substr( $query, 0, 1000 ) . "...";
-	}
-	print "Query: $query\n";
-	print "Error {$e}: {$em}\n";
-	die();
 }
 
 function getInternalLinks ( $title, $text )
@@ -635,7 +392,7 @@ function getInternalLinks ( $title, $text )
 		if ( preg_match( "/^([a-z]+):(.*)$$/", $link,  $m ) ) {
 			$pre = strtolower( $m[1] );
 			$suf = $m[2];
-			if ( "image" == $pre ) {
+			if ( "image" == $pre || "media" == $pre ) {
 				$nt = Title::newFromText( $suf );
 				$t = $nt->getDBkey();
 				$wgLinkCache->addImageLink( $t );
@@ -648,7 +405,11 @@ function getInternalLinks ( $title, $text )
 			}
 		}
 		$nt = Title::newFromText( $link );
-		$id = $nt->getArticleID(); # To force caching
+		$ft = $nt->getPrefixedDBkey();
+		$id = getArticleID( $nt->getNamespace(), $nt->getDBkey(), $ft );
+
+		if ( 0 == $id ) { $wgLinkCache->addBadLink( $ft ); }
+		else { $wgLinkCache->addGoodLink( $id, $ft ); }
 	}
 }
 
@@ -678,9 +439,6 @@ function fixUserOptions( $in )
 	}
 	$nops = array();
 
-	if ( "" != $ops["viewFrames"] ) { $nops["frames"] = 1; }
-	if ( "" != $ops["autowikify"] ) { $nops["advanced"] = 1; }
-
 	$q = strtolower( $ops["quickBar"] );
 	if ( $q == "none" ) { $q = 0; }
 	else if ( $q == "left" ) { $q = 1; }
@@ -691,9 +449,9 @@ function fixUserOptions( $in )
 		$nops["highlightbroken"] = 1;
 	}
 	$sk = substr( strtolower( $ops["skin"] ), 0, 4 );
-	if ( "star" == $sk ) { $sk = 1; }
-	else if ( "nost" == $sk ) { $sk = 2; }
-	else if ( "colo" == $sk ) { $sk = 3; }
+	if ( "star" == $sk ) { $sk = 0; }
+	else if ( "nost" == $sk ) { $sk = 1; }
+	else if ( "colo" == $sk ) { $sk = 2; }
 	else { $sk = 0; }
 	$nops["skin"] = $sk;
 
@@ -713,16 +471,16 @@ function fixUserOptions( $in )
 	if ( "yes" == $s || "on" == $s ) { $nops["hover"] = 1; }
 
 	$c = $ops["cols"];
-	if ( $c < 20 || c > 200 ) { $nops["cols"] = 60; }
+	if ( $c < 20 || c > 200 ) { $nops["cols"] = 80; }
 	else { $nops["cols"] = $c; }
 	$r = $ops["rows"];
 	if ( $r < 5 || $r > 100 ) { $nops["rows"] = 20; }
 	else { $nops["rows"] = $r; }
 	$r = $ops["resultsPerPage"];
-	if ( $r < 5 || $r > 500 ) { $nops["searchlimit"] = 20; }
+	if ( $r < 3 || $r > 500 ) { $nops["searchlimit"] = 20; }
 	else { $nops["searchlimit"] = $r; }
 	$r = $ops["viewRecentChanges"];
-	if ( $r < 5 || $r > 500 ) { $nops["rclimit"] = 20; }
+	if ( $r < 10 || $r > 1000 ) { $nops["rclimit"] = 50; }
 	else { $nops["rclimit"] = $r; }
 	$nops["rcdays"] = 3;
 
@@ -731,7 +489,117 @@ function fixUserOptions( $in )
 		array_push( $a, "$oname=$oval" );
 	}
 	$s = implode( "\n", $a );
-	return urlencode( $s );
+	return $s;
+}
+
+function fixUserRights( $in )
+{
+	$a = explode( ",", $in );
+	$b = array();
+	foreach ( $a as $r ) {
+		if ( "is_developer" == strtolower( trim( $r ) ) ) {
+			array_push( $b, "developer" );
+		} else if ( "is_sysop" == strtolower( trim( $r ) ) ) {
+			array_push( $b, "sysop" );
+		}
+	}
+	$out = implode( ",", $b );
+	return $out;
+}
+
+function fixUserName( $in )
+{
+	$lc = "-,.()' _0-9A-Za-z\\/:\\xA0-\\xFF";
+	$out = preg_replace( "/[^{$lc}]/", "", $in );
+	$out = ucfirst( trim( str_replace( "_", " ", $out ) ) );
+	return $out;
+}
+
+function indexTitle( $in )
+{
+	$lc = "A-Za-z_'0-9&#;\\x90-\\xFF\\-";
+	$t = preg_replace( "/[^{$lc}]+/", " ", $in );
+	$t = preg_replace( "/\\b[{$lc}][{$lc}]\\b/", " ", $t );
+	$t = preg_replace( "/\\b[{$lc}]\\b/", " ", $t );
+	$t = preg_replace( "/\\s+/", " ", $t );
+	return $t;
+}
+
+function indexText( $text, $ititle )
+{
+	$lc = "A-Za-z_'0-9&#;\\x90-\\xFF\\-";
+	$titlewords = array();
+	$words = explode( " ", strtolower( trim( $ititle ) ) );
+	foreach ( $words as $w ) { $titlewords[$w] = 1; }
+
+	$text = preg_replace( "/<\\/?\\s*[A-Za-z][A-Za-z0-9]*\\s*([^>]*?)>/",
+	  " ", strtolower( $this->mText ) ); # Strip HTML markup
+	$text = preg_replace( "/(^|\\n)\\s*==\\s+([^\\n]+)\\s+==\\s/sD",
+	  "\\2 \\2 \\2 ", $text ); # Emphasize headings
+
+	# Strip external URLs
+	$uc = "A-Za-z0-9_\\/:.,~%\\-+&;#?!=()@\\xA0-\\xFF";
+	$protos = "http|https|ftp|mailto|news|gopher";
+	$pat = "/(^|[^\\[])({$protos}):[{$uc}]+([^{$uc}]|$)/";
+	$text = preg_replace( $pat, "\\1 \\3", $text );
+
+	$p1 = "/(^|[^\\[])\\[({$protos}):[{$uc}]+]/";
+	$p2 = "/(^|[^\\[])\\[({$protos}):[{$uc}]+\\s+([^\\]]+)]/";
+	$text = preg_replace( $p1, "\\1 ", $text );
+	$text = preg_replace( $p2, "\\1 \\3 ", $text );
+
+	# Internal image links
+	$pat2 = "/\\[\\[image:([{$uc}]+)\\.(png|jpg|jpeg)([^{$uc}])/i";
+	$text = preg_replace( $pat2, " \\1 \\3", $text );
+
+	$text = preg_replace( "/([^{$lc}])([{$lc}]+)]]([a-z]+)/",
+	  "\\1\\2 \\2\\3", $text ); # Handle [[game]]s
+
+	# Strip all remaining non-search characters
+	$text = preg_replace( "/[^{$lc}]+/", " ", $text );
+
+	# Handle 's, s'
+	$text = preg_replace( "/([{$lc}]+)'s /", "\\1 \\1's ", $text );
+	$text = preg_replace( "/([{$lc}]+)s' /", "\\1s ", $text );
+
+	# Strip 1- and 2-letter words
+	$text = preg_replace( "/(^|[^{$lc}])[{$lc}][{$lc}]([^{$lc}]|$)/",
+	  "\\1 \\2", $text );
+	$text = preg_replace( "/(^|[^{$lc}])[{$lc}]([^{$lc}]|$)/",
+	  "\\1 \\2", $text );
+
+	# Strip wiki '' and '''
+	$text = preg_replace( "/''[']*/", " ", $text );
+
+	# Remove title words: those have already been found
+	foreach ( $titlewords as $w => $val ) {
+		$text = str_replace( $w, " ", $text );
+	}
+	$text = preg_replace( "/\\s+/", " ", $text );
+	return $text;
+}
+
+# To rebuild link tables faster, we want to cache article ID
+# lookups across all pages, not just per-page as in live code.
+#
+
+function getArticleID( $namespace, $title, $fulltitle )
+{
+	global $wgFullCache;
+
+	if ( ! array_key_exists( $fulltitle, $wgFullCache ) ) {
+		$sql = "SELECT cur_id FROM cur WHERE (cur_namespace=" .
+		  "{$namespace} AND cur_title='" . wfStrencode( $title ) . "')";
+		$res = wfQuery( $sql );
+
+		if ( 0 == wfNumRows( $res ) ) { $id = 0; }
+		else {
+			$s = wfFetchObject( $res );
+			$id = $s->cur_id;
+		}
+		$wgFullCache[$fulltitle] = $id;
+	}
+	return $wgFullCache[$fulltitle];
 }
 
 ?>

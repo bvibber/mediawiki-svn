@@ -81,7 +81,7 @@ class Skin {
 		global $wgUser, $wgTitle, $wgNamespaceBackgrounds;
 
 		if ( 0 != $wgTitle->getNamespace() ) {
-			$a = array( "bgcolor" => "#FFEECC" );
+			$a = array( "bgcolor" => "#FFFFDD" );
 		}
 		else $a = array( "bgcolor" => "#FFFFFF" );
 		return $a;
