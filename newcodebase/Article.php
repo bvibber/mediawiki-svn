@@ -383,7 +383,7 @@ enctype='application/x-www-form-urlencoded'>
 				  "</h2>\n" );
 			}
 			$previewtext = wfUnescapeHTML( $wpTextbox1 );
-			$wgOut->addWikiText( $previewtext );
+			$wgOut->addWikiText( $this->preSaveTransform( $previewtext ) );
 			$wgOut->addHTML( "<p><large>" . wfMsg( "note" ) .
 			  wfMsg( "previewnote" ) . "</large>\n" );
 		}

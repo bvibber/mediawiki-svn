@@ -167,6 +167,8 @@ class SearchEngine {
 			  || "(" == $word || ")" == $word ) {
 				$cond .= " " . strtoupper( $word );
 				$last = "";
+			} else if ( strlen( $word ) < 3 ) {
+				continue;
 			} else {
 				if ( "" != $last ) { $cond .= " AND"; }
 				$cond .= " (MATCH (##field##) AGAINST ('" .
@@ -175,6 +177,8 @@ class SearchEngine {
 				array_push( $this->mSearchterms, "\\b" . $word . "\\b" );
 			}
 		}
+		if ( 0 == count( $this->mSearchterms ) ) { return; }
+
 		$this->mTitlecond = "(" . str_replace( "##field##",
 		  "cur_ind_title", $cond ) . " )";
 
