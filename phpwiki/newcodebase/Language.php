@@ -549,6 +549,7 @@ to perform this function on.",
 "linklistsub"	=> "(List of links)",
 "linkshere"		=> "The following pages link to here:",
 "nolinkshere"	=> "No pages link to here.",
+"isredirect"	=> "redirect page",
 
 # Block/unblock IP
 #

@@ -15,9 +15,10 @@ function wfSpecialWhatlinkshere()
 
 	$id = $nt->getArticleID();
 	$sk = $wgUser->getSkin();
+	$isredir = " (" . wfMsg( "isredirect" ) . ")\n";
 
 	if ( 0 == $id ) {
-		$sql = "SELECT bl_from FROM brokenlinks WHERE bl_to='" .
+		$sql = "SELECT DISTINCT bl_from FROM brokenlinks WHERE bl_to='" .
 		  wfStrencode( $nt->getPrefixedDBkey() ) . "'";
 		$res = wfQuery( $sql, $fname );
 
@@ -28,31 +29,73 @@ function wfSpecialWhatlinkshere()
 			$wgOut->addHTML( "\n<ul>" );
 
 			while ( $row = wfFetchObject( $res ) ) {
-				$n = Article::nameOf( $row->bl_from );
-				$link = $sk->makeKnownLink( $n, "" );
-				$wgOut->addHTML( "<li>{$link}</li>\n" );
+				$lid = $row->bl_from;
+				$sql = "SELECT cur_namespace,cur_title,cur_is_redirect " .
+				  "FROM cur WHERE cur_id={$lid}";
+				$res2 = wfQuery( $sql, $fname );
+				$s = wfFetchObject( $res2 );
+
+				$n = Title::makeName( $s->cur_namespace, $s->cur_title );
+				$link = $sk->makeKnownLink( $n, "", "redirect=no" );
+				$wgOut->addHTML( "<li>{$link}" );
+
+				if ( 1 == $s->cur_is_redirect ) {
+					$wgOut->addHTML( $isredir );
+					wfShowIndirectLinks( 1, $lid );
+				}
+				$wgOut->addHTML( "</li>\n" );
 			}
 			$wgOut->addHTML( "</ul>\n" );
 			wfFreeResult( $res );
 		}
 	} else {
-		$sql = "SELECT l_from FROM links WHERE l_to={$id}";
-		$res = wfQuery( $sql, $fname );
-
-		if ( 0 == wfNumRows( $res ) ) {
-			$wgOut->addHTML( wfMsg( "nolinkshere" ) );
-		} else {
-			$wgOut->addHTML( wfMsg( "linkshere" ) );
-			$wgOut->addHTML( "\n<ul>" );
-
-			while ( $row = wfFetchObject( $res ) ) {
-				$link = $sk->makeKnownLink( $row->l_from, "" );
-				$wgOut->addHTML( "<li>{$link}</li>\n" );
-			}
-			$wgOut->addHTML( "</ul>\n" );
-			wfFreeResult( $res );
-		}
+		wfShowIndirectLinks( 0, $id );
 	}
+}
+
+function wfShowIndirectLinks( $level, $lid )
+{
+	global $wgOut, $wgUser;
+	$fname = "wfShowIndirectLinks";
+
+	$sql = "SELECT l_from FROM links WHERE l_to={$lid}";
+	$res = wfQuery( $sql, $fname );
+
+	if ( 0 == wfNumRows( $res ) ) {
+		if ( 0 == $level ) {
+			$wgOut->addHTML( wfMsg( "nolinkshere" ) );
+		}
+		return;
+	}
+	if ( 0 == $level ) {
+		$wgOut->addHTML( wfMsg( "linkshere" ) );
+	}
+	$sk = $wgUser->getSkin();
+	$isredir = " (" . wfMsg( "isredirect" ) . ")\n";
+
+	$wgOut->addHTML( "<ul>" );
+	while ( $row = wfFetchObject( $res ) ) {
+		$nt = Title::newFromDBkey( $row->l_from );
+		$ns = $nt->getNamespace();
+		$t = wfStrencode( $nt->getDBkey() );
+
+		$link = $sk->makeKnownLink( $row->l_from, "", "redirect=no" );
+		$wgOut->addHTML( "<li>{$link}" );
+
+		$sql = "SELECT cur_id,cur_is_redirect FROM cur " .
+		  "WHERE cur_namespace={$ns} AND cur_title='{$t}'";
+		$res2 = wfQuery( $sql, $fname );
+		$s = wfFetchObject( $res2 );
+
+		if ( 1 == $s->cur_is_redirect ) {
+			$wgOut->addHTML( $isredir );
+			if ( $level < 2 ) {
+				wfShowIndirectLinks( $level + 1, $s->cur_id );
+			}
+		}
+		$wgOut->addHTML( "</il>\n" );
+	}
+	$wgOut->addHTML( "</ul>\n" );
 }
 
 ?>
