@@ -60,7 +60,7 @@ $wikiNamespaceBackground["special"] = "#eeeeee" ;
 # Editing
 $wikiEditTitle = "Redaktante $1" ;
 $wikiCannotEditPage = "<h3>Vi ne rajtas redakti ĉi tiun paĝon!</h3>" ;
-$wikiEditConflictMessage = "<h1>Redakta konflikto!</h1>\n<b>Iu ŝanĝis la paĝon post kiam vi ekskribis. La supra tekstujo havas la konservitan tekston. Nur la teksto en la supra tekstujo estos konservita.</b><br>\nRulumu malsupren por vidi vian tekston redaktitan.<br>\n" ;
+$wikiEditConflictMessage = "<h1>Redakta konflikto!</h1>\n<b>Iu ŝanĝis la paĝon post kiam vi ekskribis. La supra tekstujo havas la konservitan tekston. Nur la teksto en la supra tekstujo estos konservita.</b><br>\nRulumu malsupren por vidi vian tekston redaktitan kaj la malsamojn inter la du versioj.<br>\n" ;
 $wikiPreviewAppend = "<hr>\n<h2>Antaŭrigardo :</h2>\n$1<hr><h3>Memoru, ĉi tiu estas nur la antaŭrigardo kaj ne jam konservita!</h3>" ;
 $wikiSummary = "Resumo:" ;
 $wikiMinorEdit = "Ĉi tiu ŝanĝo estas redakteto." ;
@@ -113,6 +113,13 @@ $wikiOtherNamespaces = "<b>Aliaj funkcioj :</b> " ; # Not sure what to call thes
 $wikiCategories = "<b>Kategorioj :</b> " ;
 $wikiThisCategory = "Artikoloj en ĉi tiu kategorio" ;
 $wikiCounter = "$1 foje oni jam legis ĉi tiun paĝon." ;
+$wikiBlockIPTitle = "Forbaru IP-on (nur sistemestroj)" ;
+$wikiBlockIPText = "IP-on $1 forbaris $2" ;
+$wikiIPblocked = "<font color=\"red\" size=\"+1\">Vian IP-on oni forbaris! Viajn redaktojn la sistemo ne konservos. Bonvolu kontakti sistemestron por forigi la baradon, aŭ reprovu antaŭ iom de tempo.</font>" ;
+$wikiBugReports = "Raportu Teknikajn Problemojn" ;
+$wikiBugReportsLink = "vikipedio:Teknikaj Problemoj" ;
+$wikiPrintFooter = "<hr>Ĉi tiu artikolo estis ĉerpita el <b>Wikipedia</b> (<a href=\"$1\">$1</a>),
+la libera, senpaga encikopedia surreta. La artikolo troviĝas ĉe <a href=\"$2\">$2</a>" ;
 
 # Language interwiki names
 $wikiLanguageNames = array (
@@ -391,9 +398,9 @@ function wikiRecodeOutputEo($text) {
 		return preg_replace_callback ( "/(^|>)((?:.|\n)*?)(?=<|$)/" , "wikiRecodeOutputRaw" , $text ) ;
 	} else {
 		# We have to escape Xs in <textarea> and <input> to keep the input conversion working
-		$fixXs = "\"\$1\" . strtr(\"\$2\" , array ( \"x\" => \"xx\" , \"X\" => \"Xx\", \"\\'\" => \"'\") )" ;
-		$text = preg_replace ( "/(<textarea[^>]*>)((?:.|\n)*)(?=<\/textarea)/ie", $fixXs , $text ) ;
-		return preg_replace ( "/(<input[^>]+type\=\"?text\"?[^>]+value\=\")([^\"]*)(?=\")/ie", $fixXs , $text ) ;
+		#$fixXs = "\"\$1\" . strtr(\"\$2\" , array ( \"x\" => \"xx\" , \"X\" => \"Xx\", \"\\'\" => \"'\") )" ;
+		$text = preg_replace_callback ( "/(<textarea[^>]*>)((?:.|\n)*?)(?=<\/textarea)/i", "wikiRecodeOutputRaw" , $text ) ;
+		return preg_replace_callback ( "/(<input[^>]+type\=\"?text\"?[^>]+value\=\")([^\"]*)(?=\")/i", "wikiRecodeOutputRaw" , $text ) ;
 	}
 	return $text;
 	}

@@ -1249,10 +1249,10 @@ class WikiPage extends WikiTitle {
             }
         $middle = $this->getMiddle($middle) ;
         if ( $doPrint ) {
+	    global $wikiPrintFooter ;
             $header = "<h1>".$this->getNiceTitle($pageTitle)."</h1>\n" ;
             $link = str_replace ( "$1" , $this->url , $wikiArticleSource ) ;
-            $footer = "<hr>This article is from <b>Wikipedia</b> (<a href=\"$wikiCurrentServer\">$wikiCurrentServer</a>), " ;
-            $footer .= "the free online encyclopedia. You can find this article at <a href=\"$link\">$link</a>" ;
+	    $footer = str_replace ( array ( "$1" , "$2" ) , array ( $wikiCurrentServer , $link ) , $wikiPrintFooter ) ;
             $ret = $header.$middle ;
             $ret = eregi_replace ( "<a[^>]*>\\?</a>" , "" , $ret ) ;
             $ret = eregi_replace ( "<a[^>]*>\\[" , "<a>" , $ret ) ;
