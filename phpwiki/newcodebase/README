@@ -1,13 +1,13 @@
 2002-08-06
 
-This is a new codebase for the Wikipedia project
+This is the "Phase III" codebase for the Wikipedia project
 (http://www.wikipedia.org). It is possibly usable as a
-general-purpose wiki, but it was not intended as such
-and there is little or no support available for using
-it as such from the developers, who are busy full time
-supporting the Wikipedia project. There are many good
-general-purpose Wikis in the world. I personally
-recommend UseMod (http://www.usemod.com/).
+general-purpose wiki, but it was not intended as such and
+there is little or no support available for using it as such
+from the developers, who are busy full time supporting the
+Wikipedia project. There are many good general-purpose Wikis
+in the world. I personally recommend UseMod
+(http://www.usemod.com/).
 
 The code as a whole is Copyright 2002 by Lee Daniel Crocker
 and others, licensed under the terms of the GNU General Public
@@ -31,10 +31,13 @@ bugs and make feature requests there:
 
   http://wikipedia.sourceforge.net
 
-The code is written in PHP.  It was tested mainly on version 4.06,
-but it is known to run in later versions.  I requires MySQL 3.23
-or later, and PHP-MySQL.  It is now running with PHP 4.2.2 and
-MySQL 3.23.49 at http://www.wikipedia.org .
+The code is written in PHP. It was tested mainly on version
+4.06, but it is known to run in later versions.  I requires
+MySQL 3.23 or later, and PHP-MySQL. It is now running with
+PHP 4.2.2 and MySQL 3.23.49 at http://www.wikipedia.org .
+The code was written on and for Linux, and no attempt has
+been made to make it portable to other OSs, though it may
+happen to run on some.
 
 -- Lee Daniel Crocker <lee@piclab.com>
 
