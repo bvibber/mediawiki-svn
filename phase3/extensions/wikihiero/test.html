@@ -1,123 +1,132 @@
 <html>
-<head>
-<style>
-span.hiero 
-{
-  white-space: nowrap;
-  display: block;
-  text-align: center;
-  vertical-align: center;
-  white-space: nowrap;
-}
-span.hiero span,
-span.hiero span span,
-span.hiero span span span 
-{
-  white-space: nowrap;
-  margin: 0;
-  padding: 0;
-  background-position: center;
-  display: block;
-  text-align: center;
-  vertical-align: center;
-  overflow: visible;
-}
-/* be nice to screenreaders, display: none nodes aren't read by some */
-span.hiero span code,
-span.hiero span span code,
-span.hiero span span span code 
-{
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-span.hiero-row-s span,
-span.hiero-row-s span span,
-span.hiero-row-s span span span 
-{
-  height: 23px;
-}
-</style>
-</head>
-<body>
-  <h3>ROW:</h3>
+  <head>
+    <style>
+      span.hiero {
+	white-space: nowrap;
+	text-align: center;
+	display: block;
+	height: 46px;
+      }
+      span.hiero span,
+      span.hiero span span,
+      span.hiero span span span {
+	margin: 0;
+	padding: 0;
+	background-position: center;
+	background-repeat:no-repeat;
+	text-align: center;
+	vertical-align: center;
+	display: block;
+	float: left;
+      }
+      span.hiero span {
+	height: 38px;
+	width: 29px;
+      }
+      span.hiero span span {
+	height: 20px;
+	width:20px;
+      }
+      span.hiero span span span {
+	height: 12px;
+	width:14px;
+      }
+      /* be nice to bad screenreaders, display: none nodes aren't
+      ** read by some, most notably claws.
+      */
+      span.hiero * code {
+	display: block;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+      }
+      /* debugging */
+      /*span.hiero span span  {
+	border: 1px solid Red;
+      }*/
+    </style>
+  </head>
+  <body>
+    <h3>ROW:</h3>
 
-<tt>&lt;hiero&gt;A1-A2-Aa1*Aa2:Aa3-A3-A4&lt;/hiero&gt;</tt>
+    <tt>&lt;hiero&gt;A1-A2-Aa1*Aa2:Aa3-A3-A4&lt;/hiero&gt;</tt>
 
-<hr>
-<h3>TABLE:</h3>
+    <hr>
+    <h3>TABLE:</h3>
 
-<table border='0' cellspacing='0' cellpadding='0'>
-  <tr>
-    <td><img src='img/hiero_A1.png' /></td>
-    <td><img src='img/hiero_A2.png' /></td>
-    <td>
-      <table cellspacing='0' cellpadding='0'>
-        <tr><td><img src='img/hiero_Aa1.png' /><img src='img/hiero_Aa2.png' /></td></td>
-      </table>
-      <center><img src='img/hiero_Aa3.png' /></center>
-    </td>
-    <td><img src='img/hiero_A3.png' /></td>
-    <td><img src='img/hiero_A4.png' /></td>
-  </tr>
-</table>
+    <table border='0' cellspacing='0' cellpadding='0'>
+      <tr>
+	<td><img src='img/hiero_A1.png' /></td>
+	<td><img src='img/hiero_A2.png' /></td>
+	<td>
+	  <table cellspacing='0' cellpadding='0'>
+	    <tr><td><img src='img/hiero_Aa1.png' /><img src='img/hiero_Aa2.png' /></td></td>
+	  </table>
+	  <center><img src='img/hiero_Aa3.png' /></center>
+	</td>
+	<td><img src='img/hiero_A3.png' /></td>
+	<td><img src='img/hiero_A4.png' /></td>
+      </tr>
+    </table>
 
-<hr>
-<h3>SPAN:</h3>
+    <hr>
+    <h3>SPAN:</h3>
 
-<span class="hiero hiero-row-s">
-  <span style="background: url("img/hiero_A1.png"); width=23px;">- H -</span>
-  <span style="background: url("img/hiero_A1.png"); width=23px;">- H -</span>
-  <span>
-    <span style="background: url("img/hiero_Aa1.png"); width=20px;">a</span>
-    <span style="background: url("img/hiero_Aa2.png"); width=26px;">b</span><br/>
-    <span style="background: url("img/hiero_Aa3.png"); width=23px;">c</span>
-  </span>
-  <span style="background: url("img/hiero_A1.png"); width=23px;">- h -</span>
-  <span style="background: url("img/hiero_A1.png"); width=23px;">- h -</span>
-</span>
-
-<hr>
-<h3>ROW:</h3>
-
-<tt>&lt;hiero&gt;A1-A2-(Aa1-Aa2:Aa3):Aa4-A3-A4&lt;/hiero&gt;</tt>
-
-<hr>
-<h3>TABLE:</h3>
-
-<table border='0' cellspacing='0' cellpadding='0'>
-  <tr>
-    <td><img src='img/hiero_A1.png' /></td>
-    <td><img src='img/hiero_A2.png' /></td>
-    <td>
-      <table cellspacing='0' cellpadding='0'>
-        <tr>
-          <td><img src='img/hiero_Aa1.png' height='12' /></td>
-          <td><center><img src='img/hiero_Aa2.png' height='12' /><br /><img src='img/hiero_Aa3.png' height='12' /></center></td>
-        </tr>
-      </table>
-      <center><img src='img/hiero_Aa4.png' height='12' /><center>
-    </td>
-    <td><img src='img/hiero_A3.png' /></td>
-    <td><img src='img/hiero_A4.png' /></td>
-  </tr>
-</table>
-
-<hr>
-<h3>SPAN:</h3>
-
-<span class="hiero hiero-row-s">
-  <span style='background:url("- H -.png");width=23px;'><code>- H -</code></span>
-  <span style='background:url("- H -.png");width=23px;'><code>- H -</code></span>
-  <span>
-    <span style='background:url("a.png");width=21px;'><code>a</code></span>
-    <span>    
-        <span style='background:url("b.png");width=25px;'><code>b</code></span><br/>
-        <span style='background:url("d.png");width=22px;'><code>d</code></span>
+    <span class="hiero hiero-row-s">
+      <span style='background-image: url("img/hiero_A1.png");'><code>- H -</code></span>
+      <span style='background-image: url("img/hiero_A2.png");'><code>- H -</code></span>
+      <span style="width:40px;">
+	<span style='background-image:url("img/hiero_Aa1.png"); width:20px;'><code>a</code></span>
+	<span style='background-image:url("img/hiero_Aa2.png"); width:20px;'><code>b</code></span>
+	<span style='background-image:url("img/hiero_Aa3.png"); width:40px;clear:left;'><code>c</code></span>
+      </span>
+      <span style='background-image:url("img/hiero_A3.png");'><code>- h -</code></span>
+      <span style='background-image:url("img/hiero_A4.png");'><code>- h -</code></span>
     </span>
-  <span style='background:url("- H -.png");width=23px;'><code>- H -</code></span>
-  <span style='background:url("- H -.png");width=23px;'><code>- H -</code></span>
-</span>
 
-</body>
-</html>
+    <hr>
+    <h3>ROW:</h3>
+
+    <tt>&lt;hiero&gt;A1-A2-(Aa1-Aa2:Aa3):Aa4-A3-A4&lt;/hiero&gt;</tt>
+
+    <hr>
+    <h3>TABLE:</h3>
+
+    <table border='0' cellspacing='0' cellpadding='0'>
+      <tr>
+	<td><img src='img/hiero_A1.png' /></td>
+	<td><img src='img/hiero_A2.png' /></td>
+	<td>
+	  <table cellspacing='0' cellpadding='0'>
+	    <tr>
+	      <td><img src='img/hiero_Aa1.png' height='12' /></td>
+	      <td><center><img src='img/hiero_Aa2.png' height='12' /><br /><img src='img/hiero_Aa3.png' height='12' /></center></td>
+	    </tr>
+	  </table>
+	  <center><img src='img/hiero_Aa4.png' height='12' /><center>
+	    </td>
+	    <td><img src='img/hiero_A3.png' /></td>
+	    <td><img src='img/hiero_A4.png' /></td>
+	  </tr>
+	</table>
+
+	<hr>
+	<h3>SPAN:</h3>
+
+	<span class="hiero hiero-row-s">
+	  <span style='background-image:url("img/hiero_A1.png");'><code>- H -</code></span>
+	  <span style='background-image:url("img/hiero_A2.png");'><code>- H -</code></span>
+	  <span>
+	    <span style='background-image:url("img/hiero_Aa1.png");width:12px;'><code>b</code></span>
+	    <span style="width:12px">
+	      <span style='background-image:url("img/hiero_Aa2.png");'><code>d</code></span>
+	      <span style='background-image:url("img/hiero_Aa3.png");clear:left;'><code>d</code></span>
+	    </span>
+	    <span style='background-image:url("img/hiero_Aa4.png");clear:left;width:29px;'><code>a</code></span>
+	  </span>
+	  <span style='background-image:url("img/hiero_A3.png");width:29px;'><code>- H -</code></span>
+	  <span style='background-image:url("img/hiero_A4.png");width:29px;'><code>- H -</code></span>
+	</span>
+
+      </body>
+    </html>
