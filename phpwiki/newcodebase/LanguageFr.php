@@ -73,8 +73,7 @@
 	"de" => "Deutsch",
 	"dz" => "Bhoutani",
 	"el" => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; (Ellenika)",
-	"en" => "Anglais",
-    "w" => "English", # Should this be in list this?
+	"en" => "English",
     "simple" => "Anglais simplifié",
 	"eo" => "Esperanto",
 	"es" => "Español",
@@ -84,7 +83,6 @@
 	"fi" => "Suomi",
 	"fj" => "Fidjien",
 	"fo" => "Féroïen",
-	"fr" => "Français",
 	"fy" => "Frison",
 	"ga" => "Gaeilge",
 	"gl" => "Galicien",
