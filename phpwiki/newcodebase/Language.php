@@ -20,8 +20,7 @@
 	"justify"	=> "Justify paragraphs",
 	"hideminor" => "Hide minor edits in recent changes",
 	"numberheadings" => "Auto-number headings",
-	"rememberpassword" => "Remember password across sessions",
-	"viewframes" => "View framed pages"
+	"rememberpassword" => "Remember password across sessions"
 );
 
 /* private */ $wgLanguageNamesEn = array(
@@ -198,8 +197,10 @@ Please check the URL you used to access this page.\n",
 "revisionasof"	=> "Revision as of $1",
 "cur"			=> "cur",
 "next"			=> "next",
+"last"			=> "last",
+"orig"			=> "orig",
 "histlegend"	=> "(cur) = difference with current version,
-(next) = difference with next version, M = minor edit",
+(last) = difference with preceding version, M = minor edit",
 
 # Diffs
 #
