@@ -16,24 +16,7 @@
 	7 => "Discussion_Image"
 );
 
-/* private */ $wgDefaultUserOptionsFr = array(
-	"quickbar"      => 1, 
-	"underline"     => 1, 
-	"hover"         => 1,
-	"cols"          => 80, 
-	"rows"          => 25, 
-	"searchlimit"   => 20,
-	"contextlines"  => 5, 
-	"contextchars"  => 50,
-	"skin"          => 0, 
-	"math"          => 1, 
-	"rcdays"        => 7, 
-	"rclimit"       => 50,
-	"highlightbroken" => 1, 
-	"stubthreshold" => 0
-);
-
-/* Some default options can be changed - see Language.php */
+/* using default options */
 
 /* private */ $wgQuickbarSettingsFr = array(
 	"Aucune", "Gauche", "Droite", "Flottante à gauche"
@@ -47,7 +30,7 @@
 	"Toujours produire une image PNG",  
 	"HTML si très simple, autrement PNG", 
 	"HTML si possible, autrement PNG", 
-	"Produire le TeX original, pour les navigateurs à base de texte",	"Pour les navigateurs modernes"
+	"Produire le TeX original, pour<br> les navigateurs à base de texte",	"Pour les navigateurs modernes"
 );
 
 /* private */ $wgUserTogglesFr = array(
@@ -56,153 +39,20 @@
 	"highlightbroken" => "Liens vers les sujets non existants en rouge",
 	"justify" => "Paragraphes justifiés",
 	"hideminor" => "Cacher les <i>Modifications récentes</i> mineures",
-    "usenewrc" => "Modifications récentes améliorées (certains navigateurs seulement)",
+    "usenewrc" => "Modifications récentes améliorées<br> (certains navigateurs seulement)",
 	"numberheadings" => "Numérotation automatique des titres",
 	"rememberpassword" => "Se souvenir de mon mot de passe (cookie)",
 	"editwidth" => "La fenêtre d'édition s'affiche en pleine largeur",
 	"editondblclick" => "Double cliquer pour éditer une page (JavaScript)",
+	"editsection"=>"Enable section editing via [edit] links",
+	"editsectiononrightclick"=>"Enable section editing by right clicking<br> on section titles (JavaScript)",
+	"showtoc"=>"Show table of contents<br>(for articles with more than 3 headings)",
 	"watchdefault" => "Suivre les articles que je crée ou modifie",
-	"minordefault" => "Mes modifications sont considérées comme mineures par défaut",
-	"previewontop" => "La prévisualisation s'affiche au dessus de la boite de rédaction"
+	"minordefault" => "Mes modifications sont considérées<br> comme mineures par défaut",
+	"previewontop" => "La prévisualisation s'affiche au<br> dessus de la boite de rédaction",
+	"nocache" => "Disable page caching"
 );
 
-
-/* private */ $wgLanguageNamesFr = array(
-    "aa" => "Afar",
-    "ab" => "Abkhazien",
-	"af" => "Afrikaans",
-	"am" => "Amharique",
-	"ar" => "&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1617;&#1577; (Araby)",
-	"as" => "Assamais",
-	"ay" => "Aymara",
-	"az" => "Azerbaïjanais",
-	"ba" => "Bashkir",
-	"be" => "Biélorusse",
-	"bh" => "Bihari",
-	"bi" => "Bislama",
-	"bn" => "Bengali",
-	"bo" => "Tibétain",
-	"ca" => "Català",
-	"co" => "Corse",
-	"cs" => "&#268;esky (Tchèque)",
-	"cy" => "Cymraeg",
-	"da" => "Dansk", # Note two different subdomains.
-	"dk" => "Dansk", # 'da' is correct for the language.
-	"de" => "Deutsch",
-	"dz" => "Bhoutani",
-	"el" => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; (Ellenika)",
-	"en" => "English",
-    "simple" => "Anglais simplifié",
-	"eo" => "Esperanto",
-	"es" => "Español",
-	"et" => "Eesti",
-	"eu" => "Euskara",
-	"fa" => "Persan",
-	"fi" => "Suomi",
-	"fj" => "Fidjien",
-	"fo" => "Féroïen",
-	"fy" => "Frison",
-	"ga" => "Gaeilge",
-	"gl" => "Galicien",
-	"gn" => "Guarani",
-	"gu" => "Goujarati",
-	"ha" => "Haoussa",
-	"he" => "&#1506;&#1489;&#1512;&#1497;&#1514; (Ivrit)",
-	"hi" => "&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)",
-	"hr" => "Hrvatski",
-	"hu" => "Magyar",
-	"hy" => "Arménien",
-	"ia" => "Interlingua",
-	"id" => "Indonesia",
-	"ik" => "Inupiak",
-	"is" => "Íslenska",
-	"it" => "Italiano",
-	"iu" => "Inuktitut",
-	"ja" => "&#26085;&#26412;&#35486; (Nihongo)",
-	"jv" => "Javanais",
-	"ka" => "Géorgien",
-	"kk" => "Kazakh",
-	"kl" => "Groenlandais",
-	"km" => "Cambodgien",
-	"kn" => "Kannada",
-	"ko" => "&#54620;&#44397;&#50612; (Hangukeo)",
-	"ks" => "Kashmiri",
-	"ky" => "Kirghize",
-	"la" => "Latin",
-	"ln" => "Lingala",
-	"lo" => "Laotien",
-	"lt" => "Lietuvi&#371;",
-	"lv" => "Letton",
-	"mg" => "Malgache",
-	"mi" => "Maori",
-	"mk" => "Macédonien",
-	"ml" => "Malayalam",
-	"mn" => "Mongol",
-	"mo" => "Moldave",
-	"mr" => "Marathe",
-	"ms" => "Malais",
-	"my" => "Birman",
-	"na" => "Nauri",
-	"ne" => "Népalais",
-	"nl" => "Nederlands",
-	"no" => "Norsk",
-	"oc" => "Occitan",
-	"om" => "Oromo",
-	"or" => "Oriya",
-	"pa" => "Pendjabi",
-	"pl" => "Polski",
-	"ps" => "Pashto",
-	"pt" => "Português",
-	"qu" => "Quechua",
-	"rm" => "Rhéto-Roman",
-	"rn" => "Kirundi",
-	"ro" => "Român&#259;",
-	"ru" => "&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081; (Russkij)",
-	"rw" => "Kinyarwanda",
-	"sa" => "Sanscrit",
-	"sd" => "Sindhi",
-	"sg" => "Sango",
-	"sh" => "Serbo-croate",
-	"si" => "Singhalais",
-	"sk" => "Slovaque",
-	"sl" => "Slovensko",
-	"sm" => "Samoan",
-	"sn" => "Shona",
-	"so" => "Somali",
-	"sq" => "Albanais",
-	"sr" => "Serbe",
-	"ss" => "Siswati",
-	"st" => "Sésotho",
-	"su" => "Soudanais",
-	"sv" => "Svenska",
-	"sw" => "Kiswahili",
-	"ta" => "Tamoul",
-	"te" => "Télougou",
-	"tg" => "Tadjik",
-	"th" => "Thaï",
-	"ti" => "Tigrinya",
-	"tk" => "Turkmène",
-	"tl" => "Tagalog",
-	"tn" => "Setchwana",
-	"to" => "Tonga",
-	"tr" => "Türkçe",
-	"ts" => "Tsonga",
-	"tt" => "Tatar",
-	"tw" => "Tchi",
-	"ug" => "Ouïgour",
-	"uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072; (Ukrayins`ka)",
-	"ur" => "Ourdou",
-	"uz" => "Ouzbek",
-	"vi" => "Vietnamien",
-	"vo" => "Volapük",
-	"wo" => "Ouolof",
-	"xh" => "isiXhosa",
-	"yi" => "Yiddish",
-	"yo" => "Yorouba",
-	"za" => "Zhuang",
-	"zh" => "&#20013;&#25991; (Zhongwen)",
-	"zu" => "Zoulou"
-);
 
 /* private */ $wgWeekdayNamesFr = array(
 	"dimanche", "lundi", "mardi", "mercredi", "jeudi",
@@ -243,6 +93,7 @@
 	"Shortpages"    => "Articles courts",
 	"Longpages"     => "Articles longs",
 	"Newpages"      => "Nouvelles pages",
+	"Intl"		=> "Liens inter-langues",
 	"Allpages"      => "Toutes les pages",
 
 	"Ipblocklist"   => "Adresses IP bloquées",
@@ -519,35 +370,37 @@ $2 List redirects &nbsp; Search for $3 $9",
 
 // Preferences page
 
-"preferences" => "Préférences",
-"prefsnologin" => "Non connecté",
-"prefsnologintext" => "Vous devez être <a href=\"" .
+"preferences"       => "Préférences",
+"prefsnologin"      => "Non connecté",
+"prefsnologintext"  => "Vous devez être <a href=\"" .
 		wfLocalUrl( "Special:Userlogin" ) . "\">connecté</a>
 pour modifier vos préférences d'utilisateur.",
-"prefsreset" => "Les préférences ont été rétablies à partir de la version enregistrée.",
-"qbsettings" => "Personnalisation de la barre outils",
-"changepassword" => "Modification du mot de passe",
-"skin"   => "Apparence",
-"saveprefs"  => "Enregistrer les préférences",
-"resetprefs" => "Rétablir les préférences",
-"oldpassword" => "Ancien mot de passe",
-"newpassword" => "Nouveau mot de passe",
-"retypenew"  => "Confirmation du nouveau mot de passe",
-"textboxsize" => "Taille de la fenêtre d'édition",
-"rows"   => "Rangées",
-"columns"  => "Colonnes",
+"prefsreset"        => "Les préférences ont été rétablies à partir de la version enregistrée.",
+"qbsettings"        => "Personnalisation de la barre outils",
+"changepassword"    => "Modification du mot de passe",
+"skin"              => "Apparence",
+"saveprefs"         => "Enregistrer les préférences",
+"resetprefs"        => "Rétablir les préférences",
+"oldpassword"       => "Ancien mot de passe",
+"newpassword"       => "Nouveau mot de passe",
+"retypenew"         => "Confirmation du nouveau<br> mot de passe",
+"textboxsize"       => "Taille de la fenêtre d'édition",
+"rows"              => "Rangées",
+"columns"           => "Colonnes",
 "searchresultshead" => "Affichage des résultats de recherche",
-"resultsperpage" => "Nombre de réponses sur chaque page",
-"contextlines" => "Nombre de lignes pour chaque réponse",
-"contextchars" => "Nombre de caractères du contexte sur chaque ligne",
-"stubthreshold" => " Taille minimale d'affichage des articles courts.", // AOI "Threshold for stub display",
-"recentchangescount" => "Nombre de titres dans les modifications récentes",
-"savedprefs" => "Les préférences ont été sauvegardées.",
-"timezonetext" => "Si vous ne précisez pas de décalage horaire, c'est l'heure de l'Europe de l'ouest qui sera utilisée.",
-"localtime" => "Heure locale",
-"timezoneoffset" => "Décalage horaire",
-
-"emailflag"  => "Ne pas recevoir de courrier électronique des autres utilisateurs",
+"resultsperpage"    => "Nombre de réponses sur chaque page",
+"contextlines"      => "Nombre de lignes pour chaque réponse",
+"contextchars"      => "Nombre de caractères du contexte<br> sur chaque ligne",
+"stubthreshold"     => " Taille minimale d'affichage<br> des articles courts.", // AOI "Threshold for stub display",
+"recentchangescount" => "Nombre de titres dans les<br> modifications récentes",
+"savedprefs"        => "Les préférences ont été sauvegardées.",
+"timezonetext"      => "Si vous ne précisez pas de décalage horaire, c'est l'heure de l'Europe de l'ouest qui sera utilisée.",
+"localtime"         => "Heure locale",
+"timezoneoffset"    => "Décalage horaire",
+"servertime"	    => "Server time is now", //FIXME
+"guesstimezone"     => "Fill in from browser", //FIXME
+"emailflag"         => "Ne pas recevoir de courrier électronique<br> des autres utilisateurs",
+"defaultns"         => "Search in these namespaces by default:", //FIXME
 
 // Recent changes
 
@@ -729,6 +582,7 @@ Parmi ceux-ci, <b>$2</b> ont le statut d'administrateur (voir $3).",
 "rclsub"        => "(des pages liées à \"$1\")",
 "debug"         => "Déboguer",
 "newpages"      => "Nouvelles pages",
+"intl"		    => "Liens inter-langues",
 "movethispage"  => "Déplacer la page",
 "unusedimagestext" => "<p>N'oubliez pas que d'autres sites, comme certains Wikipédias non francophones, peuvent contenir un lien direct vers cette image, et que celle-ci peut être placée dans cette liste alors qu'elle est en réalité utilisée.",
 "booksources"   => "Ouvrages de référence",
@@ -798,7 +652,7 @@ Veuillez confirmer que c'est bien là ce que vous voulez faire, que vous en compr
 "deletedtext" => "\"$1\" a été supprimé.
 Voir $2 pour une liste des suppressions récentes.",
 "deletedarticle" => "effacement de \"$1\"",
-"dellogpage" => "Trace des effacements",
+"dellogpage" => " Trace des effacements",
 "dellogpagetext" => "Voici la liste des suppressions récentes.
 L'heure indiquée est celle du serveur (UTC).
 <ul>
@@ -948,12 +802,6 @@ Veuillez en choisir un autre.",
 class LanguageFr extends Language
 {
 
-	function getDefaultUserOptions ()
-    {
-		global $wgDefaultUserOptionsFr;
-		return $wgDefaultUserOptionsFr;
-    }
-
     function getNamespaces()
 	{
 		global $wgNamespaceNamesFr;
@@ -1007,16 +855,6 @@ class LanguageFr extends Language
 	{
 		global $wgUserTogglesFr;
 		return $wgUserTogglesFr;
-	}
-
-	function getLanguageName( $code )
-    {
-		global $wgLanguageNamesFr;
-		if ( ! array_key_exists( $code, $wgLanguageNamesFr ) ) 
-		{
-			return "";
-		}
-		return $wgLanguageNamesFr[$code];
 	}
 
 	function getMonthName( $key )
