@@ -9,6 +9,7 @@
 #include <functional>
 #include <set>
 #include <cerrno>
+#include <fstream>
 using std::for_each;
 
 #include <boost/bind.hpp>

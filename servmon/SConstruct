@@ -14,15 +14,12 @@ prefix = '/opt/servmon'
 ####################################
 import os
 
-bindir = prefix + '/bin'
-libdir = prefix + '/lib'
-incdir = prefix + '/include/temple'
-
-srcs = Split('servmon.cxx csmplex.cxx smthr.cxx smnet.cxx smutl.cxx')
-env = Environment(CPPFLAGS = cppflags,
+srcs = Split('servmon.cxx csmplex.cxx smthr.cxx smnet.cxx smutl.cxx smcfg.cxx')
+env = Environment(CPPFLAGS = cppflags + ' -DPFX="\\"' + prefix + '\\""',
 		CCFLAGS = cflags,
 		CC = cc,
 		CXX = cxx,
 		CPPPATH = 'include')
 env.Program ('servmon', srcs, LIBS = 'pthread')
+env.Program ('initconf', ['initconf.cxx', 'smcfg.cxx'], LIBS = 'pthread')
 env.Alias('install', prefix)
