@@ -9,23 +9,30 @@ function allWords ( $str ) {
   return $matches[0] ;
 }
 
+$allTags = array ( "b", "i", "u", "font", "big", "small", "sub", "sup", "h1", "h2", "h3", "h4", "h5", "h6",
+            "cite", "code", "em", "s", "strike", "strong", "tt", "var", "div", "center", "blockquote", "ol",
+            "ul", "dl", "table", "caption", "pre", "br", "p", "hr", "li", "dt", "dd", "td" , "th" , "tr" );
+
 function searchLineDisplay ( $v , $words) {
-    $v = trim(str_replace("\n","",$v)) ;
+    global $allTags;
+    
+    # replace all allowed HTML tags
+    foreach ( $allTags as $tn ) {
+        $v = preg_replace ( "/<(\/?)".$tn."[^>]*>/iU" , " " , $v ) ;
+    }
+
+    # replace / remove / neutralize wiki markup
+    $v = trim(str_replace("\n"," ",$v)) ;
     $v = str_replace ( "'''" , "" , $v ) ;
-    $v = preg_replace ( "/<\/?table[^>]*>/iU" , "" , $v ) ; # kill table HTML to prevent lay-out upsets
-    $v = preg_replace ( "/<\/?tr[^>]*>/iU" , " | " , $v ) ; # kill table HTML to prevent lay-out upsets
-    $v = preg_replace ( "/<\/?td[^>]*>/iU" , " | " , $v ) ; # kill table HTML to prevent lay-out upsets
-    $v = preg_replace ( "/<\/?br[^>]*>/iU" , " " , $v ) ; # kill <br>
-    $v = eregi_replace ( "</?b>" , "" , $v ) ;
     $v = str_replace ( "''" , "" , $v ) ;
-    $v = eregi_replace ( "</?i>" , "" , $v ) ;
     $v = ereg_replace ( "\{\{\{.*\}\}\}" , "?" , $v ) ;
-    $v = eregi_replace ( "</?h[1-6]>" , "" , $v ) ;
-    $v = str_replace ( "^={1,6}|={1,6}$" , "" , $v ) ;
     $v = trim ( $v ) ;
-    while ( substr($v,0,1) == ":" ) $v = substr($v,1) ;
-    while ( substr($v,0,1) == "*" ) $v = substr($v,1) ;
-    while ( substr($v,0,1) == "#" ) $v = substr($v,1) ;
+    if ( substr($v,0,1) == ":" ) $v = " $v" ;
+    if ( substr($v,0,1) == "*" ) $v = " $v" ;
+    if ( substr($v,0,1) == "#" ) $v = " $v" ;
+    if ( substr($v,0,1) == "-" ) $v = " $v" ;
+    
+    # highlight the search terms
     foreach ( $words as $w ) {
         $v = preg_replace ( "/(".preg_quote( $w, "/" ).")/i" , "'''\\1'''" , $v ) ;    # highlight search term
         # move highlighting outside link, if link is not already highlighted
