@@ -768,6 +768,7 @@ class OutputPage {
 		$image = Namespace::getImage();
 		$special = Namespace::getSpecial();
 		$media = Namespace::getMedia();
+		$nottalk = !Namespace::isTalk( $wgTitle->getNamespace() );
 		wfProfileOut();
 
 		wfProfileIn( "$fname-loop" );
@@ -819,7 +820,7 @@ class OutputPage {
 			$ns = $nt->getNamespace();
 			$iw = $nt->getInterWiki();
 			if( $noforce ) {
-				if( $iw && $wgInterwikiMagic && $wgLang->getLanguageName( $iw ) ) {
+				if( $iw && $wgInterwikiMagic && $nottalk && $wgLang->getLanguageName( $iw ) ) {
 					array_push( $this->mLanguageLinks, $nt->getPrefixedText() );
 					$s .= $trail;
 					continue;

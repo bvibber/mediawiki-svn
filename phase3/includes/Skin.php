@@ -1290,7 +1290,6 @@ class Skin {
 		if ( empty( $alt ) ) {
 			$alt = preg_replace( '/\.(.+?)^/', '', $name );
 		}
-		$alt = htmlspecialchars( $alt );
 
 		$u = htmlspecialchars( $url );
 		$s = "<a href=\"{$u}\" class='internal' title=\"{$alt}\">{$alt}</a>";
