@@ -516,7 +516,7 @@ pour modifier vos préférences d'utilisateur.",
 "recentchanges" => "Modifications récentes",
 "recentchangestext" => "Suivez sur cette page les dernières modifications de Wikipédia.
 [[Wikipédia:Bienvenue|Bienvenue]] aux nouveaux participants!
-Jetez un coup d'?il sur ces pages: [[wikipédia:FAQ|Foire aux questions]],
+Jetez un coup d'&oelig;il sur ces pages: [[wikipédia:FAQ|Foire aux questions]],
 [[Wikipédia:Recommandations Et Règles à Suivre|Recommandations et règles à suivre]]
 (notamment [[Wikipédia:Règles De Nommage|Conventions de nommage]],
 [[Wikipédia:La Neutralité De Point De Vue|La neutralité de point de vue]]),
