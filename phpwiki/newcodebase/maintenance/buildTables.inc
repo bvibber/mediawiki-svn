@@ -174,6 +174,7 @@ function buildTables()
 
 	$sql = "CREATE TABLE recentchanges (
   rc_timestamp varchar(14) binary NOT NULL default '',
+  rc_cur_time varchar(14) binary NOT NULL default '',
   rc_user int(10) unsigned NOT NULL default '0',
   rc_user_text varchar(255) binary NOT NULL default '',
   rc_namespace tinyint(3) unsigned NOT NULL default '0',
