@@ -85,7 +85,7 @@ int main(int argc, char **argv)
     db_create(&dbp, NULL, 0);
 #if DB_VERSION_MAJOR < 4
     if ((ret = dbp->open(dbp,
-                         dbfile, NULL, DB_BTREE, DB_CREATE,
+                         dbfile, NULL, DB_BTREE, DB_RDONLY,
                          0664)) != 0) {
         dbp->err(dbp, ret, "%s", dbfile);
         exit(1);
@@ -93,14 +93,14 @@ int main(int argc, char **argv)
 #else
 #if DB_VERSION_MINOR > 0
     if ((ret = dbp->open(dbp,
-                         NULL, dbfile, NULL, DB_BTREE, DB_CREATE,
+                         NULL, dbfile, NULL, DB_BTREE, DB_RDONLY,
                          0664)) != 0) {
         dbp->err(dbp, ret, "%s", dbfile);
         exit(1);
     }
 #else
     if ((ret = dbp->open(dbp,
-                         dbfile, NULL, DB_BTREE, DB_CREATE,
+                         dbfile, NULL, DB_BTREE, DB_RDONLY,
                          0664)) != 0) {
         dbp->err(dbp, ret, "%s", dbfile);
         exit(1);
