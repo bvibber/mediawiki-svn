@@ -1,5 +1,6 @@
 <?
-# See design.doc
+# Class representing a Wikipedia article and history.
+# See design.doc for an overview.
 
 class Article {
 	/* private */ var $mContent, $mContentLoaded;
@@ -43,9 +44,12 @@ class Article {
 		return $n;
 	}
 
+	# Note that getContent/loadContent may follow redirects if
+	# not told otherwise, and so may cause a change to wgTitle.
+
 	function getContent( $noredir = false )
 	{
-		global $action;
+		global $action; # From query string
 
 		if ( 0 == $this->getID() ) {
 			if ( "edit" == $action ) {
@@ -60,16 +64,21 @@ class Article {
 
 	function loadContent( $noredir = false )
 	{
-		global $wgOut, $wgTitle, $oldid, $redirect;
+		global $wgOut, $wgTitle;
+		global $oldid, $redirect; # From query
+
 		if ( $this->mContentLoaded ) return;
 		$fname = "Article::loadContent";
+
+		# Pre-fill content with error message so that if something
+		# fails we'll have something telling us what we intended.
 
 		$t = $wgTitle->getPrefixedText();
 		if ( $oldid ) { $t .= ",oldid={$oldid}"; }
 		if ( $redirect ) { $t .= ",redirect={$redirect}"; }
 		$this->mContent = str_replace( "$1", $t, wfMsg( "missingarticle" ) );
 
-		if ( ! $oldid ) {
+		if ( ! $oldid ) {	# Retrieve current version
 			$id = $this->getID();
 			if ( 0 == $id ) return;
 
@@ -79,11 +88,20 @@ class Article {
 			if ( 0 == wfNumRows( $res ) ) { return; }
 
 			$s = wfFetchObject( $res );
+
+			# If we got a redirect, follow it (unless we've been told
+			# not to by either the function parameter or the query
+
 			if ( ( "no" != $redirect ) && ( false == $noredir ) &&
 			  ( preg_match( "/^#redirect/i", $s->cur_text ) ) ) {
 				if ( preg_match( "/\\[\\[([^\\]\\|]+)[\\]\\|]/",
 				  $s->cur_text, $m ) ) {
 					$rt = Title::newFromText( $m[1] );
+
+					# Gotta hand redirects to special pages differently:
+					# Fill the HTTP response "Localtion" header and ignore
+					# the rest of the page we're on.
+
 					if ( $rt->getNamespace() == Namespace::getSpecial() ) {
 						$wgOut->redirect( wfLocalUrl(
 						  $rt->getPrefixedURL() ) );
@@ -108,7 +126,7 @@ class Article {
 			$this->mCounter = $s->cur_counter;
 			$this->mTimestamp = $s->cur_timestamp;
 			wfFreeResult( $res );
-		} else {
+		} else { # oldid set, retrieve historical version
 			$sql = "SELECT old_text,old_timestamp,old_user FROM old " .
 			  "WHERE old_id={$oldid}";
 			$res = wfQuery( $sql, $fname );
@@ -147,6 +165,9 @@ class Article {
 		if ( false === strstr( $text, "," ) ) { return 0; }
 		return 1;
 	}
+
+	# Load the field related to the last edit time of the article.
+	# This isn't necessary for all uses, so it's only done if needed.
 
 	/* private */ function loadLastEdit()
 	{
@@ -198,16 +219,19 @@ class Article {
 		return $this->mMinorEdit;
 	}
 
+	# This is the default action of the script: just view the page of
+	# the given title.
+
 	function view()
 	{
 		global $wgUser, $wgOut, $wgTitle, $wgLang;
-		global $oldid, $diff;
-
-		# $wgOut->addHeader( "Expires", $wgLang->rfc1123( time() + 3600 ) );
-		# $wgOut->addHeader( "Cache-Control", "private" );
+		global $oldid, $diff; # From query
 
 		$wgOut->setArticleFlag( true );
 		$wgOut->setRobotpolicy( "index,follow" );
+
+		# If we got diff and oldid in the query, we want to see a
+		# diff page instead of the article.
 
 		if ( isset( $diff ) ) {
 			$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
@@ -215,14 +239,15 @@ class Article {
 			$de->showDiffPage();
 			return;
 		}
-		$text = $this->getContent();
+		$text = $this->getContent(); # May change wgTitle!
 		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
+
+		# We're looking at an old revision
 
 		if ( $oldid ) {
 			$this->setOldSubtitle();
 			$wgOut->setRobotpolicy( "noindex,follow" );
 		}
-
 		if ( "" != $this->mRedirectedFrom ) {
 			$sk = $wgUser->getSkin();
 			$redir = $sk->makeKnownLink( $this->mRedirectedFrom, "",
@@ -231,13 +256,19 @@ class Article {
 			$wgOut->setSubtitle( $s );
 		}
 		$wgOut->addWikiText( $text );
-		
+
+		# If the article we've just shown is in the "Image" namespace,
+		# follow it with the history list and link list for the image
+		# it describes.
+
 		if ( Namespace::getImage() == $wgTitle->getNamespace() ) {
 			$this->imageHistory();
 			$this->imageLinks();
 		}
 		$this->viewUpdates();
 	}
+
+	# This is the function that gets called for "action=edit".
 
 	function edit()
 	{
@@ -269,6 +300,12 @@ class Article {
 		}
 	}
 
+	# Since there is only one text field on the edit form,
+	# pressing <enter> will cause the form to be submitted, but
+	# the submit button value won't appear in the query, so we
+	# Fake it here before going back to edit().  This is kind of
+	# ugly, but it helps some old URLs to still work.
+
 	function submit()
 	{
 		global $wpSave, $wpPreview;
@@ -276,6 +313,12 @@ class Article {
 
 		$this->edit();
 	}
+
+	# The edit form is self-submitting, so that when things like
+	# preview and edit conflicts occur, we get the same form back
+	# with the extra stuff added.  Only when the final submission
+	# is made and all is well do we actually save and redirect to
+	# the newly-edited page.
 
 	function editForm( $formtype )
 	{
@@ -286,11 +329,23 @@ class Article {
 
 		$sk = $wgUser->getSkin();
 		$isConflict = false;
+
+		# Attempt submission here.  This will check for edit conflicts,
+		# and redundantly check for locked database, blocked IPs, etc.
+		# that edit() already checked just in case someone tries to sneak
+		# in the back door with a hand-edited submission URL.
+
 		if ( "save" == $formtype ) {
 			if ( $wgUser->isBlocked() ) {
 				$this->blockedIPpage();
 				return;
 			}
+			if ( wfReadOnly() ) {
+				$wgOut->readOnlyPage();
+				return;
+			}
+			# If article is new, insert it.
+
 			$aid = $wgTitle->getArticleID();
 			if ( 0 == $aid ) {
 				if ( ( "" == $wpTextbox1 ) ||
@@ -303,22 +358,29 @@ class Article {
 				$this->insertNewArticle( $wpTextbox1, $wpSummary, $wpMinoredit );
 				return;
 			}
-			# Check for edit conflict. TODO: check oldid here?
-			#
-			$this->clear(); # Force reload
+			# Article exists. Check for edit conflict.
+
+			$this->clear(); # Force reload of dates, etc.
 			if ( $this->getTimestamp() > $wpEdittime ) { $isConflict = true; }
 			$u = $wgUser->getID();
+
+			# Supress edit conflict with self
+
 			if ( ( 0 != $u ) && ( $this->getUser() == $u ) ) {
 				$isConflict = false;
 			}
 			if ( ! $isConflict ) {
-				# All's well: save the article here
+				# All's well: update the article here
+
 				$this->mCountAdjustment = $this->isCountable( $wpTextbox1 ) -
 				  $wpCountable;
 				$this->updateArticle( $wpTextbox1, $wpSummary, $wpMinoredit );
 				return;
 			}
 		}
+		# First time through: get contents, set time for conflict
+		# checking, etc.
+
 		if ( "initial" == $formtype ) {
 			$wpEdittime = $this->getTimestamp();
 			$wpTextbox1 = $this->getContent();
@@ -454,6 +516,8 @@ enctype='application/x-www-form-urlencoded'>
 
 		$text = $this->preSaveTransform( $text );
 
+		# Update article, but only if changed.
+
 		if ( 0 != strcmp( $text, $this->getContent( true ) ) ) {
 			$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
 			  "old_comment,old_user,old_user_text,old_timestamp," .
@@ -478,6 +542,9 @@ enctype='application/x-www-form-urlencoded'>
 		}
 		$this->showArticle( $text, wfMsg( "updated" ) );
 	}
+
+	# After we've either updated or inserted the article, update
+	# the link tables and redirect to the new page.
 
 	function showArticle( $text, $subtitle )
 	{

@@ -1,5 +1,5 @@
 <?
-# Main wiki script
+# Main wiki script; see design.doc
 #
 $wgRequestTime = microtime();
 
@@ -11,7 +11,7 @@ session_register( "wsUserPassword" );
 
 include_once( "Setup.php" );
 
-OutputPage::setEncodings();
+OutputPage::setEncodings(); # Not really used yet
 
 # Query string fields
 #

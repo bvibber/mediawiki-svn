@@ -9,7 +9,7 @@ $wgStyleSheetPath   = "{$wgServer}/style";
 $wgArticlePath      = "{$wgServer}{$wgScript}?title=$1";
 $wgUploadPath       = "{$wgServer}/upload";
 $wgLogo				= "{$wgUploadPath}/wiki.png";
-$wgUploadDirectory	= "/var/www/html/upload";
+$wgUploadDirectory	= "/usr/local/apache/htdocs/upload";
 
 # MySQL settings
 #
@@ -19,7 +19,7 @@ $wgDBuser           = "wikiuser";
 $wgDBpassword       = "userpwd";
 $wgDBconnection     = "";
 
-$wgReadOnlyFile		= "";
+$wgReadOnlyFile		= "/usr/local/apache/htdocs/upload/dblockflag838942";
 $wgDebugComments	= false;
 $wgCachePages		= false;
 
