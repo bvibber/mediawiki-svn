@@ -6,6 +6,12 @@ function wfSpecialPopularpages()
 	global $limit, $offset; # From query string
 	$fname = "wfSpecialPopularpages";
 
+	global $wgMiserMode;
+	if ( $wgMiserMode ) {
+		$wgOut->addWikiText( wfMsg( "perfdisabled" ) );
+		return;
+	}
+
 	if ( ! $limit ) {
 		$limit = $wgUser->getOption( "rclimit" );
 		if ( ! $limit ) { $limit = 50; }
