@@ -64,7 +64,6 @@ class WikiPage extends WikiTitle {
         $this->params = array () ;
         global $oldID , $version , $wikiOldVersion , $wikiDescribePage , $wikiRedirectFrom ;
         if ( isset ( $oldID ) ) { # an old article version
-	    $this->canBeCached = false ;
             $sql = "SELECT * FROM old WHERE old_id=$oldID" ;
             $result = mysql_query ( $sql , $connection ) ;
 	    if ( ! $result ) {
@@ -131,7 +130,6 @@ class WikiPage extends WikiTitle {
 	    $target = preg_replace ( '/^#redirect\s+\[\[\s*([^\]\n]+)\s*\]\].*$/i' , '$1' , $this->contents ) ;
             $this->load ( trim($target) , false , $backLink ) ;
             }
-	    #echo "***canbecached = $this->canBeCached***"; FIXME
         }
 
     # This function - well, you know...
@@ -862,7 +860,7 @@ class WikiPage extends WikiTitle {
         $a = explode ( "\n" , $s ) ;
         $s = "<p>" ;
         $lastPref = "";
-        $lastSection = "";
+        $this->lastSection = "";
         $this->dtOpen = false;
         $inBlockElem = false;
 
@@ -1029,8 +1027,8 @@ class WikiPage extends WikiTitle {
 
         if ( $useCachedPages and !$this->isSpecialPage and $this->canBeCached) {
             if ( $this->cache != "" ) { # Using cache
-                #$middle = $this->cache ;
-                $middle = $this->cache . "<!-- cached -->" ; #FIXME
+                $middle = $this->cache ;
+                #$middle = "<p>(cached)</p>" . $this->cache ; #FIXME
 
 	        # Need to check for other-language links, which do not appear in the link arrays
 	        $this->otherLanguages = array () ;
