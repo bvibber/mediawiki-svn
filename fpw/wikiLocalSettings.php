@@ -1,12 +1,12 @@
 <?
 # For local site-specific settings. The default configuration is set up
-# in wikiSettings.php; DO NOT makes changes there.
+# in wikiSettings.php; DO NOT makes changes there. The settings here
+# override the settings in that file.
 
-## Load localised message strings:
-# include_once ( "wikiTextDe.php" ) ; # Deutsch (German)
-# include_once ( "wikiTextEo.php" ) ; # Esperanto
+## Language to use. Default is "En" (English).
+# $wikiLanguage = "De"; # Deutsch (German)
+# $wikiLanguage = "Eo"; # Esperanto
 
-## Various local options
 $useCachedPages = false; # Disable page cache
 # $wikiReadOnly = true; # Don't allow page editing
 
