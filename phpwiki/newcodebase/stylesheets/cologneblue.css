@@ -1,8 +1,8 @@
 
-body { margin: 0px; padding: 4px; }
+body { margin: 0px; padding: 0px; }
 #specialform { display: inline; }
 #content { position: absolute; top: 0; margin: 0; padding: 0; }
-#topbar { padding: 4px; }
+#topbar { padding: 0px; }
 #quickbar {
  width: 140px; top: 18ex; padding: 2px; visibility: visible; z-index: 99;
 }
