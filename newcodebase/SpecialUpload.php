@@ -4,6 +4,9 @@ function wfSpecialUpload()
 {
 	global $wpUpload, $wpReUpload;
 
+	$fields = array( "wpUploadFile", "wpUploadDescription" );
+	wfCleanFormFields( $fields );
+
 	if ( isset( $wpUpload ) ) {
 		processUpload();
 	} else {

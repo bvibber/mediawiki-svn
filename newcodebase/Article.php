@@ -217,6 +217,9 @@ class Article {
 		global $wpTextbox1, $wpSummary, $wpSave, $wpPreview;
 		global $wpMinoredit, $wpEdittime, $wpTextbox2;
 
+		$fields = array( "wpTextbox1", "wpSummary", "wpTextbox2" );
+		wfCleanFormFields( $fields );
+
 		if ( ! $wgTitle->userCanEdit() ) {
 			$this->view();
 			return;
