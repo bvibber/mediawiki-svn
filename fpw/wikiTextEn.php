@@ -292,7 +292,7 @@ $wikiUploadText .= "<li>A message will tell you when the file has successfully u
 $wikiUploadText .= "<li>You can upload as many files you like. Please don't try to crash our server, ha ha.</li>\n";
 $wikiUploadText .= "<li>All uploads and deletions are logged in the <a href=\"$THESCRIPT?title=Log:Uploads\">uploads log</a>.</li>\n";
 $wikiUploadText .= "</ul>\n";
-$wikiUploadAffirmText = "I hereby affirm that this file is <b>not copyrighted</b>, or that I own the copyright for this file and donate it to Wikipedia." ;
+$wikiUploadAffirmText = "I hereby affirm that this file is <b>not copyrighted</b>, or that I own the copyright for this file and place it under GPL licence." ;
 $wikiUploadButton = "Upload" ;
 $wikiUploadPrev = "Previously-uploaded files:" ;
 $wikiUploadSize = "Size (byte)" ;
