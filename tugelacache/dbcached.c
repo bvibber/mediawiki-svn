@@ -21,7 +21,6 @@
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/socket.h>
-#include <sys/signal.h>
 #include <sys/resource.h>
 /* some POSIX systems need the following definition
  * to get mlockall flags out of sys/mman.h.  */
@@ -43,6 +42,7 @@
 #include <event.h>
 #include <assert.h>
 #include <db.h>
+#include <signal.h>
 
 
 #ifdef HAVE_MALLOC_H
