@@ -55,8 +55,9 @@ class WikiUser {
 		$this->name = "" ;
 		$this->isLoggedIn = false ;
 		if ( $WikiUserID > 0 and $WikiLoggedIn == "yes" ) {
+			global $wikiSQLServer ;
 			$connection = getDBconnection () ;
-			mysql_select_db ( "wikipedia" , $connection ) ;
+			mysql_select_db ( $wikiSQLServer , $connection ) ;
 			$sql = "SELECT * FROM user WHERE user_id=$WikiUserID" ;
 			$result = mysql_query ( $sql , $connection ) ;
 			if ( $result ) {
@@ -82,7 +83,6 @@ class WikiUser {
 		if ( $this->options["markupNewTopics"] == "" ) $this->options["markupNewTopics"] = "normal" ;
 		if ( $this->options["underlineLinks"] == "" ) $this->options["underlineLinks"] = "yes" ;
 		if ( $this->options["showHover"] == "" ) $this->options["showHover"] = "yes" ;
-		if ( $this->options["autoTalk"] == "" ) $this->options["autoTalk"] = "no" ;
 		if ( $this->options["cols"] == "" ) $this->options["cols"] = "60" ;
 		if ( $this->options["rows"] == "" ) $this->options["rows"] = "20" ;
 		if ( $this->options["changesLayout"] == "" ) $this->options["changesLayout"] = "classic" ;
@@ -91,6 +91,7 @@ class WikiUser {
 		if ( $this->options["skin"] == "" ) $this->options["skin"] = "None" ;
 		if ( $this->options["hourDiff"] == "" ) $this->options["hourDiff"] = "0" ;
 		if ( $this->options["numberHeadings"] == "" ) $this->options["numberHeadings"] = "yes" ;
+		if ( $this->options["viewFrames"] == "" ) $this->options["viewFrames"] = "no" ;
 
 #		if ( $this->options["showStructure"] == "" ) # NO SUBPAGES ANYMORE
 		$this->options["showStructure"] = "no" ;
@@ -127,7 +128,7 @@ class WikiUser {
 				$t .= $x."=".$this->options[$x] ;
 				}
 			}
-		setMySQL ( "user" , "user_options" , urlencode ( $t ) , "user_id=".$this->id ) ;
+		setMySQL ( "user" , "user_options" , nurlencode ( $t ) , "user_id=".$this->id ) ;
 		setMySQL ( "user" , "user_password" , $this->password , "user_id=".$this->id ) ;
 		setMySQL ( "user" , "user_email" , $this->email , "user_id=".$this->id ) ;
 		if ( $this->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $this->password , $expiration ) ;
@@ -153,8 +154,9 @@ class WikiUser {
 	function doesUserExist () {
 		$s = trim ( $this->name ) ;
 		if ( $s == "" ) return false ;
+		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "SELECT user_id FROM user WHERE user_name=\"$s\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		if ( $result == "" ) {
@@ -170,8 +172,9 @@ class WikiUser {
 
 	# Adds a new user to the database
 	function addToDatabase () {
+		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "INSERT INTO user (user_name,user_password) VALUES (\"$this->name\",\"$this->password\")" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		mysql_close ( $connection ) ;		
@@ -182,8 +185,9 @@ class WikiUser {
 		global $wikiNoSuchUser , $wikiWrongPassword , $wikiYouAreLoggedIn , $wikiUserError ;
 		$this->isLoggedIn = false ;
 		if ( !$this->doesUserExist() ) return str_replace ( "$1" , $this->name , $wikiNoSuchUser ) ;
+		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "SELECT * FROM user WHERE user_name=\"$this->name\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		if ( $result == "" ) return str_replace ( "$1" , $this->name , $wikiNoSuchUser ) ;

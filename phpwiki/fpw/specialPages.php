@@ -17,6 +17,7 @@
 # - statistics
 # - delete (a page; for sysops only!)
 # - askSQL (for sysops only!)
+# and many others...
 
 function userLogout () {
 	global $user , $vpage ;
@@ -24,14 +25,16 @@ function userLogout () {
 	setcookie ( "WikiLoggedIn" , "" , time()-3600 ) ;
 	if ( $user->options["rememberPassword"] != "on" ) setcookie ( "WikiUserPassword" , "" , time()-3600 ) ;
 	$user->isLoggedIn = false ;
-	return "<h1>Goodbye, $user->name!</h1>" ;
+	global $wikiGoodbye ;
+	return str_replace ( "$1" , $user->name , $wikiGoodbye ) ;
 	}
 
 function userLogin () {
 	global $THESCRIPT ;
 	global $WikiUserPassword , $WikiLoggedIn ;
-	global $loginattempt , $user , $vpage , $WikiUserID , $expiration ;
-	$vpage->title = "User login" ;
+	global $loginattempt , $user , $vpage , $WikiUserID , $expiration , $wikiLogIn ;
+	global $wikiYourName , $wikiYourPassword , $wikiYourPasswordAgain , $wikiNewUsersOnly , $wikiRememberMyPassword , $wikiLoginProblem , $wikiLoginPageTitle ;
+	$vpage->title = $wikiLoginPageTitle ;
 
 	if ( isset ( $loginattempt ) ) {
 		unset ( $loginattempt ) ;
@@ -56,8 +59,8 @@ function userLogin () {
 			$user = new wikiUser ;
 			$nu->addToDatabase () ;
 			$user = $nu ;
-			$s = "<h1>Welcome, $user->name!</h1><font color=red>Don't forget to personalize your wikipedia preferences!</font>" ;
-			$s .= "<br>Your account has been created. Please press \"Log in\" once more to log in!" ;
+			global $wikiWelcomeCreation ;
+			$s = str_replace ( "$1" , $user->name , $wikiWelcomeCreation ) ;
 			setcookie ( "WikiLoggedIn" , "yes" , $expiration ) ;
 			setcookie ( "WikiUserID" , $user->id , $expiration ) ;
 			if ( $user->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $user->password , $expiration ) ;
@@ -66,20 +69,20 @@ function userLogin () {
 
 		if ( $user->options["rememberPassword"] == "on" ) $check = "checked" ;
 	  	$s .= "<FORM action=\"$THESCRIPT?title=special:userLogin\" method=post><font face=courier>\n" ;
-	  	$s .= "Your user name&nbsp; : <INPUT TABINDEX=1 TYPE=text NAME=USERNAME VALUE=\"$user->name\" SIZE=20><br>\n" ;
-	  	$s .= "Your password&nbsp;&nbsp; : <INPUT TABINDEX=2 TYPE=password NAME=USERPASSWORD VALUE=\"$user->password\" SIZE=20><br>\n" ;
-  		$s .= "<INPUT TABINDEX=4 TYPE=checkbox NAME=REMEMBERPASSWORD $check>Remember my password (as a cookie).<br>\n" ;
-	  	$s .= "<input TABINDEX=5 type=submit name=loginattempt value=\"Log in\">\n" ;
+	  	$s .= "$wikiYourName<INPUT TABINDEX=1 TYPE=text NAME=USERNAME VALUE=\"$user->name\" SIZE=20><br>\n" ;
+	  	$s .= "$wikiYourPassword<INPUT TABINDEX=2 TYPE=password NAME=USERPASSWORD VALUE=\"$user->password\" SIZE=20><br>\n" ;
+  		$s .= "<INPUT TABINDEX=4 TYPE=checkbox NAME=REMEMBERPASSWORD $check>$wikiRememberMyPassword<br>\n" ;
+	  	$s .= "<input TABINDEX=5 type=submit name=loginattempt value=\"$wikiLogIn\">\n" ;
   		$s .= "</font></FORM>\n" ;
 
 		} else {
-			$s .= "<h2>Problem with login</h2>" ;
-			$s .= "Try again!" ;
+			$s .= $wikiLoginProblem ;
 			}
 	} else {
+		global $wikiAlreadyLoggedIn , $wikiPleaseLogIn , $wikiAreYouNew ;
 		$s = "" ;
-		if ( $user->isLoggedIn ) $s .= "<font color=red><b>User $user->name, you are already logged in!</b></font><br>\n" ;
-	  	$s .= "<h1>Please log in:</h1>\n" ;
+		if ( $user->isLoggedIn ) $s .= str_replace ( "$" , $user->name , $wikiAlreadyLoggedIn ) ;
+	  	$s .= $wikiPleaseLogIn ;
 		global $WikiUserID , $WikiUserPassword , $WikiLoggedIn ;
 		if ( $WikiUserID != "" ) {
 			$user->name = getMySQL ( "user" , "user_name" , "user_id=$WikiUserID" ) ;
@@ -92,13 +95,13 @@ function userLogin () {
 				$user->password = $WikiUserPassword ;
 			}
 		if ( $user->options["rememberPassword"] == "on" ) $check = "checked" ;
-		$s .= "If you are new to wikipedia and want to get a user account, enter a user name, type and re-type a password.<br>\n" ;
+		$s .= $wikiAreYouNew ;
 	  	$s .= "<FORM action=\"$THESCRIPT?title=special:userLogin\" method=post><font face=courier>\n" ;
-	  	$s .= "Your user name&nbsp; : <INPUT TABINDEX=1 TYPE=text NAME=USERNAME VALUE=\"$user->name\" SIZE=20><br>\n" ;
-	  	$s .= "Your password&nbsp;&nbsp; : <INPUT TABINDEX=2 TYPE=password NAME=USERPASSWORD VALUE=\"$user->password\" SIZE=20><br>\n" ;
-	  	$s .= "Retype password : <INPUT TABINDEX=2 TYPE=password NAME=RETYPE VALUE=\"\" SIZE=20> (new users only)<br>\n" ;
-  		$s .= "<INPUT TABINDEX=4 TYPE=checkbox NAME=REMEMBERPASSWORD $check>Remember my password (as a cookie).<br>\n" ;
-	  	$s .= "<input TABINDEX=5 type=submit name=loginattempt value=\"Log in\">\n" ;
+	  	$s .= "$wikiYourName<INPUT TABINDEX=1 TYPE=text NAME=USERNAME VALUE=\"$user->name\" SIZE=20><br>\n" ;
+	  	$s .= "$wikiYourPassword<INPUT TABINDEX=2 TYPE=password NAME=USERPASSWORD VALUE=\"$user->password\" SIZE=20><br>\n" ;
+	  	$s .= "$wikiYourPasswordAgain<INPUT TABINDEX=2 TYPE=password NAME=RETYPE VALUE=\"\" SIZE=20>$wikiNewUsersOnly<br>\n" ;
+  		$s .= "<INPUT TABINDEX=4 TYPE=checkbox NAME=REMEMBERPASSWORD $check>$wikiRememberMyPassword<br>\n" ;
+	  	$s .= "<input TABINDEX=5 type=submit name=loginattempt value=\"$wikiLogIn\">\n" ;
   		$s .= "</font></FORM>\n" ;
 		}
 
@@ -109,20 +112,30 @@ function editUserSettings () {
 	global $THESCRIPT ;
 	global $ButtonSave ;
 	global $vpage , $user ;
-	$vpage->title = "User Settings" ;
-	if ( !$user->isLoggedIn ) return "You are not logged in! [[special:userLogin|Log in]] or go to the [[:Main Page|Main Page]]" ;
+	global $wikiUserSettings , $wikiUserSettingsError , $wikiUserSettingsSaved ;
+	$vpage->title = $wikiUserSettings ;
+	if ( !$user->isLoggedIn ) return $wikiUserSettingsError ;
 	$ret = "" ;
 
 	if ( isset ( $ButtonSave ) ) {
 		unset ( $ButtonSave ) ;
-		global $QuickBar , $NewTopics , $UnderlineLinks , $AutoTalk , $ShowHover , $ROWS , $COLS , $doSkin ;
+		global $QuickBar , $NewTopics , $UnderlineLinks , $ShowHover , $ROWS , $COLS , $doSkin ;
 		global $OLDPASSWORD , $NEWPASSWORD , $RETYPEPASSWORD , $EMAIL , $RESULTSPERPAGE , $doJustify , $ChangesLayout ;
-		global $SHOWSTRUCTURE , $HOURDIFF , $NumberHeadings ;
+		global $SHOWSTRUCTURE , $HOURDIFF , $NumberHeadings , $ViewFrames ;
 		if ( $RESULTSPERPAGE < 2 ) $RESULTSPERPAGE = 20 ;
+
+		# Checkbox fixing
+		if ( $ShowHover == "" ) $ShowHover = "no" ;
+		if ( $UnderlineLinks == "" ) $UnderlineLinks = "no" ;
+		if ( $NewTopics == "" ) $NewTopics = "normal" ;
+		if ( $doJustify == "" ) $doJustify = "no" ;
+		if ( $ChangesLayout == "" ) $ChangesLayout = "classic" ;
+		if ( $NumberHeadings == "" ) $NumberHeadings = "no" ;
+
 		$user->options["quickBar"] = $QuickBar ;
 		$user->options["markupNewTopics"] = $NewTopics ;
 		$user->options["underlineLinks"] = $UnderlineLinks ;
-		$user->options["autoTalk"] = $AutoTalk ;
+		$user->options["viewFrames"] = $ViewFrames ;
 		$user->options["showHover"] = $ShowHover ;
 		$user->options["cols"] = $COLS ;
 		$user->options["rows"] = $ROWS ;
@@ -137,117 +150,105 @@ function editUserSettings () {
 		$user->options["hourDiff"] = $HOURDIFF ;
 
 		if ( $OLDPASSWORD == $user->password ) {
+			global $wikiUserSettingsNewPasswordError ;
 			if ( $NEWPASSWORD == $RETYPEPASSWORD ) $user->password = $NEWPASSWORD ;
-			else $ret .= "<h1><font color=red>The new passwords didn't match. PASSWORD UNCHANGED!</font></h1>\n" ;
+			else $ret .= $wikiUserSettingsNewPasswordError ;
 			}
 
 		$user->saveSettings () ;
 		$user->loadSettings () ;
-		$msg = "<font color=red size=+1>Your settings have been saved!</font>" ;
+		$msg = $wikiUserSettingsSaved ;
 		}
 
-	$ret .= "<b>You are logged in as [[user:$user->name|$user->name]]. ";
-	$ret .= "Your internal ID is $user->id.</b><br>\n";
-	$ret .= "You can get help [[wikipedia:Help/User preferences|here]].\n" ;
+	global $wikiLoggedInAs , $wikiID_Help ;
+	global $wikiQuickBarSettings , $wikiSettingsNone , $wikiSettingsStandard , $wikiSettingsLeft , $wikiSettingsRight ;
+	global $wikiOldPassword , $wikiNewPassword , $wikiYourPasswordAgain , $wikiSkin , $wikiStarTrek ;
+	global $wikiShowHoverBox , $wikiUnderlineLinks , $wikiNewTopicsRed , $wikiJustifyParagraphs , $wikiShowRecentChangesTable ;
+	global $wikiDoNumberHeadings , $wikiViewWithFrames , $wikiTurnedOn , $wikiTurnedOff ;
+	global $wikiTextboxDimensions , $wikiCols , $wikiRows , $wikiYourEmail , $wikiResultsPerPage , $wikiTimeDiff , $wikiSave , $wikiReset ;
+
+	$ret .= str_replace ( "$1" , $user->name , $wikiLoggedInAs ) ;
+	$ret .= str_replace ( "$1" , $user->id , $wikiID_Help)."\n" ;
 	$ret .= "<nowiki><FORM action=\"$THESCRIPT?title=special:editUserSettings\" method=post>" ;
 	$ret .= "<table border=1 bordercolor=".$user->options["borderColor"]." cellspacing=0 cellpadding=2>" ;
 
 	# QuickBar options
 	$qb[$user->options["quickBar"]] = "checked" ;
-	$ret .= "<tr><td valign=top nowrap><b>QuickBar Settings :</b><br>\n" ;
-	$ret .= "<input type=radio value=none ".$qb["none"]." name=QuickBar>None (Standard)<br>\n" ;
-	$ret .= "<input type=radio value=left ".$qb["left"]." name=QuickBar>Left<br>\n" ;
-	$ret .= "<input type=radio value=right ".$qb["right"]." name=QuickBar>Right\n" ;
+	$ret .= "<tr><td valign=top nowrap><b>$wikiQuickBarSettings</b><br>\n" ;
+	$ret .= "<input type=radio value=none ".$qb["none"]." name=QuickBar>$wikiSettingsNone ($wikiSettingsStandard)<br>\n" ;
+	$ret .= "<input type=radio value=left ".$qb["left"]." name=QuickBar>$wikiSettingsLeft<br>\n" ;
+	$ret .= "<input type=radio value=right ".$qb["right"]." name=QuickBar>$wikiSettingsRight\n" ;
 
 	# Password change
 	$ret .= "</td><td valign=top nowrap><b>Change password :</b><br><font face=courier>\n" ;
-  	$ret .= "Old password&nbsp; &nbsp; : <INPUT TYPE=password NAME=OLDPASSWORD VALUE=\"\" SIZE=20><br>\n" ;
-  	$ret .= "New password&nbsp; &nbsp; : <INPUT TYPE=password NAME=NEWPASSWORD VALUE=\"\" SIZE=20><br>\n" ;
-  	$ret .= "Retype password : <INPUT TYPE=password NAME=RETYPEPASSWORD VALUE=\"\" SIZE=20>\n" ;
+  	$ret .= "$wikiOldPassword<INPUT TYPE=password NAME=OLDPASSWORD VALUE=\"\" SIZE=20><br>\n" ;
+  	$ret .= "$wikiNewPassword<INPUT TYPE=password NAME=NEWPASSWORD VALUE=\"\" SIZE=20><br>\n" ;
+  	$ret .= "$wikiYourPasswordAgain<INPUT TYPE=password NAME=RETYPEPASSWORD VALUE=\"\" SIZE=20>\n" ;
 	$ret .= "</font></td></tr>" ;
-
-	# Underline Links options
-	$ul[$user->options["underlineLinks"]] = "checked" ;
-	$ret .= "<tr><td valign=top nowrap><b>Underline Links :</b><br>\n" ;
-	$ret .= "<input type=radio value=yes ".$ul["yes"]." name=UnderlineLinks>Yes (Standard)<br>\n" ;
-	$ret .= "<input type=radio value=no ".$ul["no"]." name=UnderlineLinks>No<br>\n" ;
-
-	# New Topics options
-	$nt[$user->options["markupNewTopics"]] = "checked" ;
-	$ret .= "</td><td valign=top nowrap><b>New Topics :</b><br>\n" ;
-	$ret .= "<input type=radio value=normal ".$nt["normal"]." name=NewTopics>Normal (Standard)<br>\n" ;
-	$ret .= "<input type=radio value=red ".$nt["red"]." name=NewTopics>Red<br>\n" ;
-	$ret .= "</td></tr>" ;
-
-	# Automatic Talk page
-	$at[$user->options["autoTalk"]] = "checked" ;
-	$ret .= "<tr><td valign=top nowrap><b>Automatic /Talk page :</b><br>\n" ;
-	$ret .= "<input type=radio value=yes ".$at["yes"]." name=AutoTalk>Yes<br>\n" ;
-	$ret .= "<input type=radio value=no ".$at["no"]." name=AutoTalk>No (Standard)<br>\n" ;
-
-	# Show Hover
-	$sh[$user->options["showHover"]] = "checked" ;
-	$ret .= "</td><td valign=top nowrap><b>Show hoverbox over wiki links :</b><br>\n" ;
-	$ret .= "<input type=radio value=yes ".$sh["yes"]." name=ShowHover>Yes (Standard)<br>\n" ;
-	$ret .= "<input type=radio value=no ".$sh["no"]." name=ShowHover>No<br>\n" ;
-	$ret .= "</td></tr>" ;
-
-	# Cols and rows
-	$ret .= "<tr><td valign=top rowspan=3 nowrap><b>Textbox dimensions :</b><br><font face=courier>\n" ;
-  	$ret .= "Cols : <INPUT TYPE=text NAME=COLS VALUE=\"".$user->options["cols"]."\" SIZE=5><br>\n" ;
-  	$ret .= "Rows : <INPUT TYPE=text NAME=ROWS VALUE=\"".$user->options["rows"]."\" SIZE=5></font><br><br>\n" ;
-	$ret .= "<font face=courier size=-1>Recommended sizes:<br>";
-	$ret .= "1280x1024 : 135x40<br>\n" ;
-	$ret .= "1024x 768 : <br>\n" ;
-	$ret .= "&nbsp;800x 600 : </font>\n" ;
-
-	$ret .= "</td><td valign=top nowrap><b>Your email address :</b><br>" ;
-  	$ret .= "<font face=courier>Email : <INPUT TYPE=text NAME=EMAIL VALUE=\"".$user->email."\" SIZE=35></font>\n" ;
-
-	$ret .= "</td></tr><tr><td valign=top nowrap>" ;
-	$ret .= "<b>Search Settings :</b><br>" ;
-  	$ret .= "<font face=courier>Results per page : ";
-	$ret .= "<INPUT TYPE=text NAME=RESULTSPERPAGE VALUE=\"".$user->options["resultsPerPage"]."\" SIZE=18></font>\n" ;
-
-	$jf[$user->options["justify"]] = "checked" ;
-	$ret .= "</td></tr><tr><td><b>Justify paragraphs :</b><br>" ;
-	$ret .= "<input type=radio value=yes ".$jf["yes"]." name=doJustify>Yes<br>\n" ;
-	$ret .= "<input type=radio value=no ".$jf["no"]." name=doJustify>No (Standard)\n" ;
-	$ret .= "</td></tr>" ;
 
 	# Skin
 	$sk[$user->options["skin"]] = "checked" ;
-	$ret .= "<tr><td valign=top nowrap><b>Skin :</b><br>\n" ;
-	$ret .= "<input type=radio value=None ".$sk["None"]." name=doSkin>None (Standard)<br>\n" ;
-	$ret .= "<input type=radio value=\"Star Trek\" ".$sk["Star Trek"]." name=doSkin>Star Trek<br>\n" ;
+	$ret .= "<tr><td valign=top nowrap><b>$wikiSkin</b><br>\n" ;
+	$ret .= "<input type=radio value=None ".$sk["None"]." name=doSkin>$wikiSettingsNone ($wikiSettingsStandard)<br>\n" ;
+	$ret .= "<input type=radio value=\"Star Trek\" ".$sk["Star Trek"]." name=doSkin>$wikiStarTrek<br>\n" ;
 
-	# Changes layout
+#----------------------------------------------
+	$ret .= "<td valign=top nowrap>" ;
+
+	# Show Hover
+	$sh[$user->options["showHover"]] = "CHECKED" ;
+	$ret .= "<input type=checkbox value=yes name=ShowHover ".$sh["yes"].">" ;
+	$ret .= "$wikiShowHoverBox ($wikiSettingsStandard:$wikiTurnedOn)<br>\n" ;
+
+	# Underline Links
+	$ul[$user->options["underlineLinks"]] = "checked" ;
+	$ret .= "<input type=checkbox value=yes name=UnderlineLinks ".$ul["yes"].">" ;
+	$ret .= "$wikiUnderlineLinks ($wikiSettingsStandard:$wikiTurnedOn)<br>\n" ;
+
+	# New topics
+	$nt[$user->options["markupNewTopics"]] = "checked" ;
+	$ret .= "<input type=checkbox value=red name=NewTopics ".$nt["red"].">" ;
+	$ret .= "$wikiNewTopicsRed ($wikiSettingsStandard:$wikiTurnedOff)<br>\n" ;
+
+	# Justify paragraphs
+	$jf[$user->options["justify"]] = "checked" ;
+	$ret .= "<input type=checkbox value=yes name=doJustify ".$jf["yes"].">" ;
+	$ret .= "$wikiJustifyParagraphs ($wikiSettingsStandard:$wikiTurnedOff)<br>\n" ;
+
+	# Recent changes layout
 	$cl[$user->options["changesLayout"]] = "checked" ;
-	$ret .= "</td><td valign=top nowrap><b>New Topics :</b><br>\n" ;
-	$ret .= "<input type=radio value=classic ".$cl["classic"]." name=ChangesLayout>Classic (Standard)<br>\n" ;
-	$ret .= "<input type=radio value=table ".$cl["table"]." name=ChangesLayout>As a table<br>\n" ;
-	$ret .= "</td></tr>" ;
+	$ret .= "<input type=checkbox value=table name=ChangesLayout ".$cl["table"].">" ;
+	$ret .= "$wikiShowRecentChangesTable ($wikiSettingsStandard:$wikiTurnedOff)<br>\n" ;
 
-	# hourDiff
-	$ret .= "<tr><td><b>Time difference :</b><br>\n" ;
-  	$ret .= "<font face=courier><INPUT TYPE=text NAME=HOURDIFF VALUE=\"".$user->options["hourDiff"]."\" SIZE=3> hours</font>\n" ;
-
-
-	# Show parent page and subpage structure in QuickBar    TURNED OFF
-#	$shs[$user->options["showStructure"]] = "checked" ;
-#	$ret .= "<tr><td valign=top nowrap><b>Show subpage structure :</b><br>\n" ;
-#	$ret .= "<input type=radio value=yes ".$shs["yes"]." name=SHOWSTRUCTURE>Yes<br>\n" ;
-#	$ret .= "<input type=radio value=no ".$shs["no"]." name=SHOWSTRUCTURE>No (Standard)<br>\n" ;
-
-	# UNUSED
+	# Auto number headings
 	$nh[$user->options["numberHeadings"]] = "checked" ;
-	$ret .= "</td><td valign=top nowrap><b>Auto-number headings :</b><br>\n" ;
-	$ret .= "<input type=radio value=yes ".$nh["yes"]." name=NumberHeadings>Yes (Standard)<br>\n" ;
-	$ret .= "<input type=radio value=no ".$nh["no"]." name=NumberHeadings>No<br>\n" ;
+	$ret .= "<input type=checkbox value=yes name=NumberHeadings ".$nh["yes"].">" ;
+	$ret .= "$wikiDoNumberHeadings ($wikiSettingsStandard:$wikiTurnedOff)<br>\n" ;
+
+	# View frames
+	$vf[$user->options["viewFrames"]] = "checked" ;
+	$ret .= "<input type=checkbox value=yes name=ViewFrames ".$vf["yes"].">" ;
+	$ret .= "$wikiViewWithFrames ($wikiSettingsStandard:$wikiTurnedOff)<br>\n" ;
+
+	$ret .= "</td></tr>" ;
+#----------------------------------------------
+
+	# Cols and rows
+	$ret .= "<tr><td valign=top nowrap><b>$wikiTextboxDimensions</b><br><font face=courier>\n" ;
+  	$ret .= "$wikiCols<INPUT TYPE=text NAME=COLS VALUE=\"".$user->options["cols"]."\" SIZE=5><br>\n" ;
+  	$ret .= "$wikiRows<INPUT TYPE=text NAME=ROWS VALUE=\"".$user->options["rows"]."\" SIZE=5></font><br><br>\n" ;
+#	$ret .= "<font face=courier size=-1>Recommended sizes:<br>1280x1024 : 135x40<br>1024x 768 : <br>&nbsp;800x 600 : </font>" ;
+
+	$ret .= "</td><td valign=top nowrap>" ;
+  	$ret .= "<font face=courier>$wikiYourEmail</font><INPUT TYPE=text NAME=EMAIL VALUE=\"".$user->email."\" SIZE=25><br>\n" ;
+	$n = explode ( "$1" , $wikiResultsPerPage ) ;
+	$ret .= "<font face=courier>".$n[0]."</font><INPUT TYPE=text NAME=RESULTSPERPAGE VALUE=\"".$user->options["resultsPerPage"]."\" SIZE=4>".$n[1]."<br>\n" ;
+	$n = explode ( "$1" , $wikiTimeDiff ) ;
+  	$ret .= "<font face=courier>".$n[0]."</font><INPUT TYPE=text NAME=HOURDIFF VALUE=\"".$user->options["hourDiff"]."\" SIZE=4>".$n[1]."\n" ;
 	$ret .= "</td></tr>" ;
 
-	$ret .= "<tr><td><center><input type=submit value=Save name=ButtonSave></center></td>" ;
-	$ret .= "<td><center><input type=reset value=Reset name=ButtonReset></center></td></tr>" ;
+	$ret .= "<tr><td><center><input type=submit value=\"$wikiSave\" name=ButtonSave></center></td>" ;
+	$ret .= "<td><center><input type=reset value=\"$wikiReset\" name=ButtonReset></center></td></tr>" ;
 
 	$ret .= "</table></FORM>$msg</nowiki>" ;
 	return $ret ;
@@ -261,8 +262,9 @@ function WantedPages () {
 	$allPages = array () ;
 	$ret = "'''These articles don't exist, but other articles link to them!''' (the top 50)<br>\n" ;
 
+	global $wikiSQLServer ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( "wikipedia" , $connection ) ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT cur_title,cur_linked_links,cur_unlinked_links FROM cur" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) {
@@ -294,14 +296,15 @@ function WantedPages () {
 function LonelyPages () {
 	global $THESCRIPT ;
 	global $linkedLinks , $unlinkedLinks , $vpage ;
-	$vpage->special ( "The Orphans" ) ;
+	global $wikiLonelyPagesTitle , $wikiLonelyPagesText ;
+	$vpage->special ( $wikiLonelyPagesTitle ) ;
 	$vpage->namespace = "" ;
 	$allPages = array () ;
-	$ret = "'''These articles exist, but no articles link to them!''' (the first 50)<br>" ;
-	$ret .= "''Talk: pages, empty pages and #REDIRECTs are '''not''' listed here.''\n\n" ;
+	$ret = $wikiLonelyPagesText ;
 
+	global $wikiSQLServer ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( "wikipedia" , $connection ) ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT cur_title,cur_linked_links,cur_unlinked_links FROM cur WHERE cur_title NOT LIKE \"Talk:%\" AND cur_text NOT LIKE \"#redirect%\" AND cur_text != \"\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) {
@@ -331,11 +334,13 @@ function LonelyPages () {
 function AllPages () {
 	global $THESCRIPT ;
 	global $linkedLinks , $unlinkedLinks , $vpage ;
-	$vpage->special ( "All Pages Index" ) ;
+	global $wikiAllPagesTitle , $wikiAllPagesText ;
+	$vpage->special ( $wikiAllPagesTitle ) ;
 	$vpage->namespace = "" ;
-	$ret = "'''These are all the articles in the database!'''\n\n" ;
+	$ret = $wikiAllPagesText ;
+	global $wikiSQLServer ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( "wikipedia" , $connection ) ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT cur_title FROM cur ORDER BY cur_title" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$ret .= "<nowiki>" ;
@@ -365,17 +370,19 @@ function searchLineDisplay ( $v ) {
 function doSearch () {
 	global $THESCRIPT ;
 	global $vpage , $search , $startat , $user ;
+	global $wikiSearchTitle , $wikiSearchedVoid , $wikiNoSearchResult ;
 	$vpage = new WikiPage ;
-	$vpage->special ( "Search" ) ;
+	$vpage->special ( $wikiSearchTitle ) ;
 	$r = array () ;
 	$s = "" ;
 
-	if ( $search == "" ) $s = "<h2>As you were searching for the void, you just found it.</h2>" ;
+	if ( $search == "" ) $s = $wikiSearchedVoid ;
 	else {
 		if ( !isset ( $startat ) ) $startat = 1 ;
 		$perpage = $user->options["resultsPerPage"] ;
+		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "SELECT * FROM cur WHERE cur_title LIKE \"%$search%\" OR cur_text LIKE \"%$search%\" ORDER BY cur_title" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		if ( $result != "" ) {
@@ -391,14 +398,20 @@ function doSearch () {
 		}
 
 	if ( $s == "" and count ( $r ) == 0 ) {
-		$s = "<h2>Sorry, we were unable to find an article containing \"$search\" in any article title or body.</h2>" ;
+		global $wikiUnsuccessfulSearch , $wikiUnsuccessfulSearches ;
+		$s = "<h2>".str_replace("$1",$search,$wikiNoSearchResult)."</h2>" ;
+		# Appending log page "wikpedia:Unsuccessful searches"
+		$now = date ( "Y-m" , time() ) ;
+		$logText = "*[[$search]]\n" ;
+		makeLog ( str_replace ( "$1" , $now , $wikiUnsuccessfulSearches ) , $logText , str_replace ( "$1" , $search , $wikiUnsuccessfulSearch ) ) ;
+
 	} else if ( $s == "" ) {
+		global $wikiFoundHeading , $wikiFoundText ;
 		$n = count ( $r ) ;
-		if ( $n > 1 ) { $z1 = "s" ; $z2 = "were" ; }
-		else $z2 = "was" ;
-		$s .= "<table width=100% bgcolor=#FFFFCC><tr><td><font size=+1><b>Wikipedia Articles</b></font><br>\n" ;
-		$s .= "$totalcnt occurence$z1 of ''$search'' $z2 found. " ;
-		$s .= "For each article, you can see its first paragraph and the first paragraph that contains ''$search''.</td></tr></table>\n" ;
+		$s .= "<table width=100% bgcolor=#FFFFCC><tr><td><font size=+1><b>$wikiFoundHeading</b></font><br>\n" ;
+		$n = str_replace ( "$1" , $totalcnt , $wikiFoundText ) ;
+		$n = str_replace ( "$2" , $search , $n ) ;
+		$s .= "$n</td></tr></table>\n" ;
 		$s .= "<table>" ;
 		$realcnt = $startat ;
 		$minlen = strlen ( $realcnt + count ( $r ) ) ;
@@ -446,12 +459,13 @@ function listUsers () {
 	if ( !isset ( $startat ) ) $startat = 1 ;
 	$perpage = $user->options["resultsPerPage"] ;
 	if ( $perpage == 0 ) $perpage = 20 ;
-
-	$vpage->special ( "User List" ) ;
+	global $wikiUserlistTitle , $wikiUserlistText ;
+	$vpage->special ( $wikiUserlistTitle ) ;
 	$vpage->namespace = "" ;
-	$ret = "'''These are all wikipedia users (that have an account)!'''\n\n" ;
+	$ret = "$wikiUserlistText\n\n" ;
+	global $wikiSQLServer ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( "wikipedia" , $connection ) ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT * from user" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) {
@@ -465,8 +479,9 @@ function listUsers () {
 
 function randompage () {
 	global $THESCRIPT , $headerScript , $vpage ;
+	global $wikiSQLServer ;
 	$connection=getDBconnection() ;
-	mysql_select_db ( "wikipedia" , $connection ) ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT COUNT(*) AS number FROM cur" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
@@ -483,7 +498,7 @@ function randompage () {
 	$thelink = $s->cur_title ;
 	$nt = $vpage->getNiceTitle($thelink) ;
 	if ( count ( explode ( ":" , $thelink ) ) == 1 ) $thelink = ":".$thelink ;
-	$ret = "<h2>Loading random page [[$thelink|".$nt."]]...</h2>" ;
+	$ret = "<h2>--> [[$thelink|".$nt."]]...</h2>" ;
 	$headerScript .= "<nowiki><META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$THESCRIPT?title=$thelink\"></nowiki>" ;
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
@@ -494,9 +509,9 @@ function randompage () {
 
 function recentchanges () {
 	global $THESCRIPT , $user ;
-	global $vpage , $maxcnt , $daysAgo ;
-	global $from , $wikiRecentChangesText ;
-	$vpage->special ( "Recent Changes" ) ;
+	global $vpage , $maxcnt , $daysAgo , $from , $wikiRecentChangesText , $wikiRecentChangesTitle ;
+	global $wikiRecentChangesLastDays , $wikiRecentChangesSince , $wikiViewLastDays , $wikiViewMaxNum , $wikiListOnlyNewChanges ;
+	$vpage->special ( $wikiRecentChangesTitle ) ;
 	$vpage->makeSecureTitle() ;
 	if ( !isset ( $maxcnt ) ) $maxcnt = 100 ;
 	if ( !isset ( $daysAgo ) ) $daysAgo = 3 ;
@@ -508,9 +523,12 @@ function recentchanges () {
 	if ( $wikiRecentChangesText != "" ) $ret .= "$wikiRecentChangesText<br><br>" ;
 
 	$ret .= "<nowiki>" ;
-	if ( !isset($from) ) $ret .= "These are the last <b>$maxcnt</b> of the changes made on Wikipedia in the last <b>$daysAgo</b> days.<br>\n" ;
-	else $ret .= "These are the last <b>$maxcnt</b> of the changes made on Wikipedia since <b>".$from2."</b>.<br>\n" ;
-	$ret .= "View the last " ;
+	if ( !isset($from) ) $ret .= str_replace ( "$1" , $maxcnt , str_replace ( "$2" , $daysAgo , $wikiRecentChangesLastDays ) ) ;
+	else $ret .= str_replace ( "$1" , $maxcnt , str_replace ( "$2" , $from2 , $wikiRecentChangesSince ) ) ;
+
+	$ret .= "<br>\n" ;
+	$n = explode ( "$1" , $wikiViewMaxNum ) ;
+	$ret .= $n[0] ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=50\">50</a> | " ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=100\">100</a> | " ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=250\">250</a> | " ;
@@ -518,14 +536,15 @@ function recentchanges () {
 	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=1000\">1000</a> | " ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=2500\">2500</a> | " ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=5000\">5000</a> " ;
-	$ret .= "changes.<br>\n" ; 
-	$ret .= "View the last " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=1\">1 day</a> | " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=2\">2 days</a> | " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=3\">3 days</a> | " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=5\">5 days</a> | " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=7\">7 days</a> | " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=14\">14 days</a> | \n" ;
+	$ret .= $n[1]."; \n" ;
+	$n = explode ( "$1" , $wikiViewLastDays ) ;
+	$ret .= $n[0] ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=1\">1 </a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=2\">2 </a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=3\">3 </a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=5\">5 </a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=7\">7 </a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=14\">14 </a> ".$n[1]."; \n" ;
 
 	$mindate = date ( "Ymd000000" , time () - $daysAgo*24*60*60 ) ;
 	$mindate = timestampAddHour ( $mindate , $user->options["hourDiff"] ) ;
@@ -533,15 +552,16 @@ function recentchanges () {
 	$now = date ( "YmdHis" , time() ) ;
 	$now = timestampAddHour ( $now , $user->options["hourDiff"] ) ;
 
-	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&from=$now\">List only new changes</a>" ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&from=$now\">$wikiListOnlyNewChanges</a>" ;
 	$ret .= "</nowiki>" ;
 	$ret .= "\n----\n" ;
 	$arr = array () ;
 
 	if ( $from != "" ) $mindate = $from ;
 
+	global $wikiSQLServer ;
 	$connection=getDBconnection() ;
-	mysql_select_db ( "wikipedia" , $connection ) ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT cur_timestamp,cur_title,cur_comment,cur_user,cur_user_text,cur_minor_edit FROM cur WHERE cur_timestamp>$mindate ORDER BY cur_timestamp DESC LIMIT $maxcnt" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) array_push ( $arr , $s ) ;
@@ -581,16 +601,18 @@ function newPages_timeSort ( $a , $b ) { # This belongs to newpages alone!
 
 function newpages () {
 	global $THESCRIPT , $user ;
-	global $vpage , $maxcnt , $daysAgo ;
-	$vpage->special ( "New pages" ) ;
+	global $vpage , $maxcnt , $daysAgo , $wikiNewPagesTitle , $wikiNewPagesText ;
+	global $wikiRecentChangesLastDays , $wikiRecentChangesSince , $wikiViewLastDays , $wikiViewMaxNum , $wikiListOnlyNewChanges ;
+	$vpage->special ( $wikiNewPagesTitle ) ;
 	$vpage->makeSecureTitle() ;
 	if ( !isset ( $maxcnt ) ) $maxcnt = 100 ;
 	if ( !isset ( $daysAgo ) ) $daysAgo = 3 ;
 	$names = array () ;
 
 	$ret = "<nowiki>" ;
-	$ret .= "These are the last <b>$maxcnt</b> new pages on Wikipedia in the last <b>$daysAgo</b> days.<br>\n" ;
-	$ret .= "View the last " ;
+	$ret .= str_replace ( "$1" , $maxcnt , str_replace ( "$2" , $daysAgo , $wikiNewPagesText ) )."<br>\n" ;
+	$n = explode ( "$1" , $wikiViewMaxNum ) ;
+	$ret .= $n[0] ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&daysAgo=$daysAgo&maxcnt=50\">50</a> | " ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&daysAgo=$daysAgo&maxcnt=100\">100</a> | " ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&daysAgo=$daysAgo&maxcnt=250\">250</a> | " ;
@@ -598,21 +620,23 @@ function newpages () {
 	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&daysAgo=$daysAgo&maxcnt=1000\">1000</a> | " ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&daysAgo=$daysAgo&maxcnt=2500\">2500</a> | " ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&daysAgo=$daysAgo&maxcnt=5000\">5000</a> " ;
-	$ret .= "new pages.<br>\n" ; 
-	$ret .= "View the last " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&maxcnt=$maxcnt&daysAgo=1\">1 day</a> | " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&maxcnt=$maxcnt&daysAgo=2\">2 days</a> | " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&maxcnt=$maxcnt&daysAgo=3\">3 days</a> | " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&maxcnt=$maxcnt&daysAgo=5\">5 days</a> | " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&maxcnt=$maxcnt&daysAgo=7\">7 days</a> | " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&maxcnt=$maxcnt&daysAgo=14\">14 days</a><br>\n" ;
+	$ret .= $n[1]."; \n" ; 
+	$n = explode ( "$1" , $wikiViewLastDays ) ;
+	$ret .= $n[0] ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&maxcnt=$maxcnt&daysAgo=1\">1 </a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&maxcnt=$maxcnt&daysAgo=2\">2 </a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&maxcnt=$maxcnt&daysAgo=3\">3 </a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&maxcnt=$maxcnt&daysAgo=5\">5 </a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&maxcnt=$maxcnt&daysAgo=7\">7 </a> | " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:NewPages&maxcnt=$maxcnt&daysAgo=14\">14 </a> ".$n[1]."<br>\n" ;
 	$ret .= "</nowiki>" ;
 	$arr = array () ;
 
 	$mindate = date ( "Ymd000000" , time () - $daysAgo*24*60*60 ) ;
 	$mindate = timestampAddHour ( $mindate , $user->options["hourDiff"] ) ;
+	global $wikiSQLServer ;
 	$connection=getDBconnection() ;
-	mysql_select_db ( "wikipedia" , $connection ) ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
 
 	# Looking at the "cur" table
 	$sql = "SELECT cur_title FROM cur WHERE cur_minor_edit=2 AND cur_timestamp>$mindate ORDER BY cur_timestamp DESC LIMIT $maxcnt" ;
@@ -656,8 +680,8 @@ function timestampAddHour ( $x , $d ) {
 	}
 
 function recentChangesLayout ( &$arr ) {
-	global $THESCRIPT ;
-	global $user ;
+	if ( count ( $arr ) == 0 ) return "" ;
+	global $THESCRIPT , $user , $wikiDiff ;
 	$lastDay = "" ;
 	$color1 = $user->options["tabLine1"] ;
 	$color2 = $user->options["tabLine2"] ;
@@ -671,9 +695,11 @@ function recentChangesLayout ( &$arr ) {
 	$arr = $arr2 ;
 	$arr2 = array () ;
 
+	global $wikiRCLegend ;
+
 	$xyz = new WikiTitle ;
 	$editTypes = array ( "0"=>"" , "1"=>"<font color=cyan>M</font>" , "2"=>"<font color=green>N</font>" ) ;
-	$ret = " <b>Legend :</b> ".$editTypes["1"]."=Minor edit ; ".$editTypes["2"]."=New article." ;
+	$ret = str_replace ( "$1" , $editTypes["1"] , str_replace ( "$2" , $editTypes["2"] ,  $wikiRCLegend ) ) ;
 	if ( $user->options["changesLayout"] == "table" ) $ret .= "<table width=100% border=0 cellpadding=2 cellspacing=0>\n" ;
 	else $ret .= "<ul>\n" ; 
 	$dummy = "$THESCRIPT?x=y" ;
@@ -683,8 +709,9 @@ function recentChangesLayout ( &$arr ) {
 		$time = date ( "H:i" , tsc ( $s->cur_timestamp ) ) ;
 		if ( $day != $lastDay ) {
 			$lastDay = $day ;
-			if ( $user->options["changesLayout"] == "table" ) $ret.="<tr><td width=100% colspan=7".$user->options["tabLine0"]."><b>$day</b></td></tr>";
-			else $ret .= "</ul><b>$day</b><ul>\n" ;
+			$tday = wikiGetDate ( tsc ( $s->cur_timestamp ) ) ;
+			if ( $user->options["changesLayout"] == "table" ) $ret.="<tr><td width=100% colspan=7".$user->options["tabLine0"]."><b>$tday</b></td></tr>";
+			else $ret .= "</ul><b>$tday</b><ul>\n" ;
 			$color = $color1 ;
 			}
 		$u = $s->cur_user_text ;
@@ -693,7 +720,7 @@ function recentChangesLayout ( &$arr ) {
 			$xyz->makeSecureTitle () ;
 			$u = "<a href=\"$THESCRIPT?title=user:$xyz->secureTitle\">$u</a>" ;
 			}
-		else $u = "<font color=red>$u</font>" ;
+#		else $u = "<font color=red>$u</font>" ; # IPs in red, deactivated
 		$comment = trim($s->cur_comment) ;
 		if ( $comment == "*" ) $comment = "" ;
 		$o_comment = $comment ;
@@ -703,9 +730,9 @@ function recentChangesLayout ( &$arr ) {
 		if ( $user->options["changesLayout"] == "table" ) $t = "<tr><td$color valign=top width=0%>" ;
 		else $t = "<li>" ;
 
-		if ( $s->version == "current" ) $t .= "<a href=\"$THESCRIPT?title=$s->cur_title&diff=yes\">(diff)</a>&nbsp;" ;
-		else if ( $s->version != "" ) $t .= "<a href=\"$THESCRIPT?title=$s->cur_title&oldID=$s->old_id&version=$s->version&diff=yes\">(diff)</a>&nbsp;" ;
-		else $t .= "<a href=\"$THESCRIPT?title=$s->cur_title&diff=yes\">(diff)</a>" ;
+		if ( $s->version == "current" ) $t .= "<a href=\"$THESCRIPT?title=$s->cur_title&diff=yes\">$wikiDiff</a>&nbsp;" ;
+		else if ( $s->version != "" ) $t .= "<a href=\"$THESCRIPT?title=$s->cur_title&oldID=$s->old_id&version=$s->version&diff=yes\">$wikiDiff</a>&nbsp;";
+		else $t .= "<a href=\"$THESCRIPT?title=$s->cur_title&diff=yes\">$wikiDiff</a>" ;
 
 		if ( $user->options["changesLayout"] == "table" ) $t .= "</td><td$color valign=top>" ;
 		else $t .= " " ;
@@ -770,9 +797,8 @@ function modifyArray ( $a , $sep , $rem , $add = "" ) {
 	}
 
 function watch ( $t , $m ) {
-	global $THESCRIPT ;
-	global $user ;
-	if ( !$user->isLoggedIn ) return "NOT LOGGED IN!" ;
+	global $THESCRIPT , $user , $wikiUserSettingsError , $wikiWatchYes , $wikiWatchNo ;
+	if ( !$user->isLoggedIn ) return $wikiUserSettingsError ;
 
 	# Modifying user_watch
 	$separator = "\n" ;
@@ -781,16 +807,17 @@ function watch ( $t , $m ) {
 	else $a = modifyArray ( $a , $separator , $t ) ;
 	setMySQL ( "user" , "user_watch" , $a , "user_id=$user->id" ) ;
 
-	$ret = "Watching $t ($m)" ;
-	$ret .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL='$THESCRIPT?title=".urlencode($t)."'\">" ;
+	if ( $m == "yes" ) $ret = str_replace ( "$1" , $t , $wikiWatchYes ) ;
+	else str_replace ( "$1" , $t , $wikiWatchNo ) ;
+	$ret .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL='$THESCRIPT?title=".nurlencode($t)."'\">" ;
 	return $ret ;
 	}
 
 function WatchList () {
 	global $THESCRIPT ;
-	global $vpage , $user ;
-	$vpage->special ( "My watchlist" ) ;
-	$ret = "'''Currently, you are watching the following articles :''' " ;
+	global $vpage , $user , $wikiWatchlistTitle , $wikiWatchlistText ;
+	$vpage->special ( $wikiWatchlistTitle ) ;
+	$ret = $wikiWatchlistText ;
 	$a = getMySQL ( "user" , "user_watch" , "user_id=$user->id" ) ;
 	$separator = "\n" ;
 	$b = explode ( $separator , $a ) ;
@@ -802,28 +829,34 @@ function WatchList () {
 	arsort ( $n ) ;
 	$k = array_keys ( $n ) ;
 
+	global $wikiSQLServer ;
 	$connection=getDBconnection() ;
-	mysql_select_db ( "wikipedia" , $connection ) ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$arr = array () ;
+	$any = false ;
 	foreach ( $k as $x ) {
-		$sql = "SELECT * FROM cur WHERE cur_title=\"$x\"" ;
-		$result = mysql_query ( $sql , $connection ) ;
-		$s = mysql_fetch_object ( $result ) ;
-		array_push ( $arr , $s ) ;
-		mysql_free_result ( $result ) ;
+		if ( $x != "" ) {
+			$sql = "SELECT * FROM cur WHERE cur_title=\"$x\"" ;
+			$result = mysql_query ( $sql , $connection ) ;
+			$s = mysql_fetch_object ( $result ) ;
+			array_push ( $arr , $s ) ;
+			mysql_free_result ( $result ) ;
+			$any = true ;
+			}
 		}
 	mysql_close ( $connection ) ;
-	$ret .= recentChangesLayout ( $arr ) ;	
+	if ( $any ) $ret .= recentChangesLayout ( $arr ) ;
 
 	return $ret ;
 	}
 
 function statistics () {
-	global $THESCRIPT ;
+	global $THESCRIPT , $wikiSQLServer , $wikiStatisticsTitle , $wikiStatTotalPages ;
+	global $wikiStatTalkPages , $wikiStatCommaPages , $wikiStatWikipediaNoTalk , $wikiStatSubNoTalk , $wikiStatNoTalk , $wikiStatArticles , $wikiStatJunk , $wikiStatOld , $wikiStatUsers , $wikiStatSysops ;
 	$connection=getDBconnection() ;
-	mysql_select_db ( "wikipedia" , $connection ) ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$ret = "" ;
-	$ret .= "<h2>Article statistics</h2><ul>" ;
+	$ret .= "<h2>$wikiStatisticsTitle</h2><ul>" ;
 
 	$nf1 = "<font color=red><b>" ;
 	$nf2 = "</b></font>" ;
@@ -833,7 +866,7 @@ function statistics () {
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$totalPages = $s->number ;
-	$ret .= "<li>There are $nf1$totalPages$nf2 pages in the database</li>" ;
+	$ret .= "<li>".str_replace ( "$1" , "$nf1$totalPages$nf2" , $wikiStatTotalPages )."</li>" ;
 	mysql_free_result ( $result ) ;
 
 	# /TALK
@@ -841,7 +874,7 @@ function statistics () {
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$talkPages = $s->number ;
-	$ret .= "<li>There are $nf1$talkPages$nf2 <b>Talk</b> pages</li>" ;
+	$ret .= "<li>".str_replace ( "$1" , "$nf1$talkPages$nf2" , $wikiStatTalkPages )."</li>" ;
 	mysql_free_result ( $result ) ;
 
 	# , NOT /TALK
@@ -849,7 +882,7 @@ function statistics () {
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$commaPages = $s->number ;
-	$ret .= "<li>There are $nf1$commaPages$nf2 with a comma that are <i>not</i> <b>/Talk</b> pages</li>" ;
+	$ret .= "<li>".str_replace ( "$1" , "$nf1$commaPages$nf2" , $wikiStatCommaPages )."</li>" ;
 	mysql_free_result ( $result ) ;
 
 	# WIKIPEDIA NOT /TALK
@@ -857,7 +890,7 @@ function statistics () {
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$wikiPages = $s->number ;
-	$ret .= "<li>There are $nf1$wikiPages$nf2 that have \"ikipedia\" in the title and are <i>not</i> <b>/Talk</b> pages</li>" ;
+	$ret .= "<li>".str_replace ( "$1" , "$nf1$wikiPages$nf2" , $wikiStatWikipediaNoTalk )."</li>" ;
 	mysql_free_result ( $result ) ;
 
 	# WIKIPEDIA NOT /TALK
@@ -865,24 +898,23 @@ function statistics () {
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$subPages = $s->number - $talkPages;
-	$ret .= "<li>There are $nf1$subPages$nf2 subpages that are <i>not</i> <b>/Talk</b> pages</li>" ;
+	$ret .= "<li>".str_replace ( "$1" , "$nf1$subPages$nf2" , $wikiStatSubNoTalk )."</li>" ;
 	mysql_free_result ( $result ) ;
 
 	# RESULT
 	$x = $commaPages - $wikiPages ; # Comma (no /Talk) - wiki pages = articles, including subpages
-	$ret .= "<li>That means there are about $nf1$x$nf2 articles, including subpages (except <b>/Talk</b>).</li>" ;
+	$ret .= "<li>".str_replace ( "$1" , "$nf1$x$nf2" , $wikiStatNoTalk )."</li>" ;
 	$y = $x - $subPages ;
-	$ret .= "<li>Or, there are about $nf1$y$nf2 articles, not counting any subpages!</li>" ;
+	$ret .= "<li>".str_replace ( "$1" , "$nf1$y$nf2" , $wikiStatArticles )."</li>" ;
 	$z = $totalPages - $talkPages - $commaPages ;
-	$ret .= "<li>Finally, there are about $nf1$z$nf2 junk pages :-(</li>" ;
+	$ret .= "<li>".str_replace ( "$1" , "$nf1$z$nf2" , $wikiStatJunk )."</li>" ;
 
 	# OLD PAGES
 	$sql = "SELECT COUNT(*) as number FROM old" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
-#	$oldPages = $s->number - $talkPages;
 	$p = round ( $oldPages / $totalPages , 2 ) ;
-	$ret .= "<li>And, there are $nf1$oldPages$nf2 old page versions in the database, giving an average of $p old pages on every active page.</li>" ;
+	$ret .= "<li>".str_replace ( "$1" , "$nf1$oldPages$nf2" , str_replace ( "$2" , $p , $wikiStatOld ) )."</li>" ;
 	mysql_free_result ( $result ) ;
 
 
@@ -894,7 +926,7 @@ function statistics () {
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$numUser = $s->number ;
-	$ret .= "<li>There are currently $nf1$numUser$nf2 [[special:ListUsers|users]] signed up.</li>" ;
+	$ret .= "<li>".str_replace ( "$1" , "$nf1$numUser$nf2" , $wikiStatUsers )."</li>" ;
 	mysql_free_result ( $result ) ;
 	
 	# EDITORS AND SYSOPS
@@ -902,7 +934,7 @@ function statistics () {
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$numEditors = $s->number ;
-	$ret .= "<li>$nf1$numEditors$nf2 of them have sysop status.</li>" ;
+	$ret .= "<li>".str_replace ( "$1" , "$nf1$numEditors$nf2" , $wikiStatSysops )."</li>" ;
 	mysql_free_result ( $result ) ;
 
 	mysql_close ( $connection ) ;
@@ -913,27 +945,31 @@ function statistics () {
 function upload () {
 	global $THESCRIPT ;
 	global $removeFile , $xtitle , $removeFile , $Upload , $Upload_name , $no_copyright ;
-	global $user , $vpage ;
-	$vpage->special ( "Upload Page" ) ;
+	global $user , $vpage , $wikiUploadTitle , $wikiUploadText , $wikiUploadDenied ;
+	global $wikiUploadDeleted , $wikiUploadDelMsg1 , $wikiUploadDelMsg2 ;
+	global $wikiUploadAffirm , $wikiUploadFull ;
+	global $wikiUploadSuccess , $wikiUploadSuccess1 , $wikiUploadSuccess2 ;
+	global $wikiUploadAffirmText , $wikiUploadButton ;
+	$vpage->special ( $wikiUploadTitle ) ;
 	$isSysop = in_array ( "is_sysop" , $user->rights ) ;
-	$xtitle = "File upload page";
+	$xtitle = $wikiUploadPage ;
 	$ret = "<nowiki>" ;
 
 	$message = "" ;
 
 	if (isset($removeFile)) {
-		if ( !$isSysop ) return "You are neither an editor nor a sysop. Return to the <a href=\"$THESCRIPT?action=upload\">Upload page</a>" ;
+		if ( !$isSysop ) return $wikiUploadDenied ;
 		if (is_file("upload/$removeFile") ) unlink ("./upload/$removeFile");
-		$message = "File <b>$removeFile</b> deleted!" ;
+		$message = str_replace ( "$1" , $removeFile , $wikiUploadDeleted ) ;
 
 		# Appending log page "log:Uploads"
 		$now = date ( "Y-m-d H:i:s" , time () ) ;
-		$logText = "*On $now, [[user:$user->name|$user->name]] deleted file '''$removeFile'''\n" ;
-		makeLog ( "log:Uploads" , $logText , "Deletion of file $removeFile" ) ;
+		$logText = str_replace ( "$1" , $user->name , str_replace ( "$2" , $removeFile , $wikiUploadDelMsg1 ) ) ;
+		makeLog ( "log:Uploads" , $logText , str_replace ( "$1" , $removeFile , $wikiUploadDelMsg2 ) ) ;
 
 		unset ( $removeFile ) ;
 	} else if (isset($Upload_name) or isset($Upload)) {
-		if ( $no_copyright != "AFFIRMED" ) return "<nowiki>You need to affirm that the file is not violating copygights. Return to the <a href=\"$THESCRIPT?title=special:upload\">Upload page</a></nowiki>" ;
+		if ( $no_copyright != "AFFIRMED" ) return $wikiUploadAffirm ;
 #		$Upload_name = ereg_replace(" ", "_", $Upload_name);
 		$abc = split("\.", $Upload_name);
 
@@ -942,56 +978,37 @@ function upload () {
 
 		if ($readata > 96) {
 			$ret .= "<body bgcolor=white>\n";
-			$ret .= "<br><b>Sorry, we are almost out of disk space. We can't let you upload any files right now.</b>\n";
+			$ret .= "<br><b>$wikiUploadFull</b>\n";
 			return $ret ;
 			}
 
 		copy ( $Upload , "./upload/$Upload_name" ) ;
 		system ("chmod 777 ./upload/$Upload_name");
-		$message = "File <b>$Upload_name</b> was successfully uploaded!" ;
+		$message = str_replace ( "$1" , $Upload_name , $wikiUploadSuccess ) ;
 
 		# Appending log page "log:Uploads"
 		global $REMODE_ADDR ;
 		$now = date ( "Y-m-d H:i:s" , time () ) ;
 		$userText = "[[user:$user->name|$user->name]]" ;
 		if ( $user->name == "" ) $userText = $REMODE_ADDR ;
-		$logText = "*On $now, $userText uploaded file '''$Upload_name'''\n" ;
-		makeLog ( "log:Uploads" , $logText , "Upload of file $UploadName" ) ;
+		$logText = str_replace ( "$1" , $now , str_replace ( "$2" , $userText , str_replace ( "$3" , $Upload_name , $wikiUploadSuccess1 ) ) ) ;
+		makeLog ( "log:Uploads" , $logText , str_replace ( "$1" , $Upload_name , $wikiUploadSuccess2 ) ) ;
 
 		unset ( $Upload_name ) ;
 	}
 
 	if ( $message != "" ) $ret .= "<font color=red>$message</font><br>\n" ;
-
-	$ret .= "<h2>Instructions:</h2><ul>\n";
-	$ret .= "<li><strong>Use this form to upload various files</strong></li>\n";
-	$ret .= "<li>To replace a previously-uploaded file (e.g., a\n";
-	$ret .= "new version of the article), simply re-upload the\n";
-	$ret .= "same file. But first look below and make sure you\n";
-	$ret .= "haven't changed the name.</li>\n";
-	$ret .= "<li><strong>Here's how to upload your file. </strong>Click\n";
-	$ret .= "&quot;Browse...&quot; to your find the file you\n";
-	$ret .= "want to upload on your hard drive. This will open\n";
-	$ret .= "a &quot;Choose file&quot; dialogue window.</li>\n";
-	$ret .= "<li>When you've found the file, click &quot;Open.&quot;\n";
-	$ret .= "This will select the file and close the &quot;Choose\n";
-	$ret .= "file&quot; dialogue window.</li>\n";
-	$ret .= "<li>Don't forget to check the copyright statement!</li>\n";
-	$ret .= "<li>Then click &quot;Upload.&quot; The file will start uploading. This may take some time, if it's\n";
-	$ret .= "a big file and you have a slow Internet connection.</li>\n";
-	$ret .= "<li>A message will tell you when the file has successfully uploaded.</li>\n";
-	$ret .= "<li>You can upload as many files you like. Please don't try to crash our server, ha ha.</li>\n";
-	$ret .= "<li>All uploads and deletions are logged in the <a href=\"$THESCRIPT?title=Log:Uploads\">uploads log</a>.</li>\n";
-	$ret .= "</ul>\n";
-
+	$ret .= $wikiUploadText ;
 	$ret .= " <form enctype=\"multipart/form-data\" action=\"$THESCRIPT?title=special:upload\" method=post>\n";
 	$ret .= " <input type=hidden name=max value=20096>\n";
 	$ret .= " <input name=Upload type=\"file\"><br>\n";
 	$ret .= " <input type=hidden name=update value=1>\n";
 	$ret .= " <input type=hidden name=step value=$step>\n";
-	$ret .= "<INPUT TYPE=checkbox NAME=\"no_copyright\" VALUE=\"AFFIRMED\">I hereby affirm that this file is <b>not copyrighted</b>, or that I own the copyright for this file and donate it to Wikipedia.<br>\n" ;
-	$ret .= " <input type=submit value=UPLOAD>\n";
+	$ret .= "<INPUT TYPE=checkbox NAME=\"no_copyright\" VALUE=\"AFFIRMED\">$wikiUploadAffirmText<br>\n" ;
+	$ret .= " <input type=submit name=Upload value=$wikiUploadButton>\n";
 	$ret .= "</form>\n";
+
+	global $wikiUploadPrev , $wikiUploadSize , $wikiFileRemoval , $wikiUploadRemove ;
 
 	if (is_dir("upload")) {
 		$mydir = dir("upload");
@@ -1002,21 +1019,24 @@ function upload () {
 		$mydir->close();
 
 		if ($file == "yes") {
-			$ret .= "<h2>Previously-uploaded files:</h2>";
+			$ret .= "<h2>$wikiUploadPrev</h2>";
 			$mydir = opendir("upload");
 			$i = 0;
 			$ret .= "<table border=1 width=\"100%\">\n";
-			$ret .= "<tr><th>File</th><th>Size (byte)</th>";
+			$ret .= "<tr><th>File</th><th>$wikiUploadSize</th>";
 			if ( $isSysop )
-				$ret .= "<th>File removal</th>";
+				$ret .= "<th>$wikiFileRemoval</th>";
 			$ret .= "</tr>\n" ;
 			while ($entry = readdir($mydir)) {
 				if ($entry != '.' && $entry != '..') {
 					$ret .= "<tr><td align=center>" ;
 					$ret .= "<a href=upload/$entry>$entry</a></td>";
 					$ret .= "<td align=center>".filesize("upload/$entry")." bytes</td>";
-					if ( $isSysop )
-						$ret .= "<td align=center><a href=\"$THESCRIPT?title=special:upload&removeFile=$entry\">Click here to remove $entry.</a></td>" ;
+					if ( $isSysop )  {
+						$ret .= "<td align=center><a href=\"$THESCRIPT?title=special:upload&removeFile=$entry\">" ;
+						$ret .= str_replace ( "$1" , $entry , $wikiUploadRemove ) ;
+						$ret .= "</a></td>" ;
+						}
 					$ret .= "</tr>" ;
 					$i++;
 				}
@@ -1030,18 +1050,17 @@ function upload () {
 	}
 
 function doHistory ( $title ) {
-	global $THESCRIPT ;
-	global $vpage ;
+	global $THESCRIPT , $vpage , $wikiSQLServer , $wikiHistoryTitle , $wikiCurrentVersion , $wikiHistoryHeader ;
 	$vpage = new WikiPage ;
 	$vpage->title = $title ;
 	$vpage->makeSecureTitle () ;
 	$ti = $vpage->secureTitle ;
-	$vpage->special ( "History of $title" ) ;
+	$vpage->special ( str_replace ( "$1" , $title , $wikiHistoryTitle ) ) ;
 	$vpage->makeSecureTitle () ;
 
 	$a = array () ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( "wikipedia" , $connection ) ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT * FROM cur WHERE cur_title=\"$ti\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
@@ -1069,12 +1088,12 @@ function doHistory ( $title ) {
 	$k = array_keys ( $a ) ;
 	foreach ( $k as $x ) {
 		if ( $i != count ( $a ) ) $a[$x]->version = $i ;
-		else $a[$x]->version = "current" ;
+		else $a[$x]->version = $wikiCurrentVersion ;
 		$i-- ;
 		}
 
 	$t = recentChangesLayout ( $a ) ;
-	$t = "<b>This is the history of <a href=\"$THESCRIPT?title=$title\">$title</a></b>".$t ;
+	$t = "<b>".str_replace("$1",$title,$wikiHistoryHeader)."</b>".$t ;
 
 	$ret = $vpage->getHeader() ;
 	$ret .= $vpage->getMiddle($t) ;
@@ -1083,11 +1102,9 @@ function doHistory ( $title ) {
 	}
 
 function special_pages () {
-	global $THESCRIPT ;
-	global $vpage , $user ;
-	$vpage->special ( "Special Pages" ) ;
-	$ret = "<b>This is a list of special pages.</b><br>" ;
-	$ret .= "Some of them are only available if you are logged in. If you are logged in, you can have this list automatically displayed on the right or left of each page as a QuickBar.<br><br>" ;
+	global $THESCRIPT , $vpage , $user , $wikiSpecialTitle , $wikiSpecialText ;
+	$vpage->special ( $wikiSpecialTitle ) ;
+	$ret = $wikiSpecialText ;
 	$ret .= $vpage->getQuickBar () ;
 	return $ret ;
 	}
@@ -1106,18 +1123,15 @@ function pagesThatLinkHere ( $t , $connection ) {
 	}
 
 function ShortPages () {
-	global $THESCRIPT ;
-	global $user , $vpage , $startat ;
+	global $THESCRIPT , $wikiSQLServer , $user , $vpage , $startat , $wikiStubTitle , $wikiStubText ;
 	if ( !isset ( $startat ) ) $startat = 1 ;
 	$perpage = $user->options["resultsPerPage"] ;
 	if ( $perpage == 0 ) $perpage = 20 ;
-	
-	$vpage->special ( "Short 'stub' articles" ) ;
+	$vpage->special ( $wikiStubTitle ) ;
 	$vpage->namespace = "" ;
-	$ret = "'''These are all the articles in the database, sorted by length.'''<br>" ;
-	$ret .= "''#REDIRECT pages and pages within a namespace (like Talk:) are '''not''' listed here!''\n\n" ;
+	$ret = $wikiStubText ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( "wikipedia" , $connection ) ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT COUNT(*) AS number FROM cur WHERE cur_title NOT LIKE \"%:%\" AND cur_text NOT LIKE \"#redirect%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
@@ -1139,15 +1153,16 @@ function ShortPages () {
 		}
 	mysql_free_result ( $result ) ;
 
+	global $wikiStubChars , $wikiStubDelete , $wikiStubLinkHere ;
 
 	foreach ( $ar as $s ) {
 		$k = new wikiTitle ;
 		$k->setTitle ( $s->cur_title ) ;
 		$ret .= "<tr><td$color align=right valign=top nowrap>$s->cnt</td>" ;
-		$ret .= "<td$color align=right valign=top nowrap>($s->len chars)</td>\n" ;
+		$ret .= "<td$color align=right valign=top nowrap>(".str_replace("$1",$s->len,$wikiStubChars).")</td>\n" ;
 		$ret .= "<td$color nowrap valign=top>[[$s->cur_title|".$k->getNiceTitle()."]]</td>\n";
 		if ( in_array ( "is_sysop" , $user->rights ) )
-			$ret .= "<td$color valign=top nowrap><nowiki><a href=\"$THESCRIPT?title=special:deletepage&target=$s->cur_title\"><b>Delete this page!</b></a></nowiki></td>" ;
+			$ret .= "<td$color valign=top nowrap><nowiki><a href=\"$THESCRIPT?title=special:deletepage&target=$s->cur_title\">$wikiStubDelete</a></nowiki></td>" ;
 		else $ret .= "<td$color width=100% nowrap>&nbsp;</td>" ;
 
 		$lf = "" ;
@@ -1160,7 +1175,7 @@ function ShortPages () {
 				}
 			$lf .= ")</font>" ;
 			}
-		$ret .= "<td$color width=100% valign=top>".count($lh)." articles link here.$lf</td>\n";
+		$ret .= "<td$color width=100% valign=top>".str_replace("$1",count($lh),$wikiStubLinkHere)."$lf</td>\n";
 		$ret .= "</tr>" ;
 		if ( $color == $color1 ) $color = $color2 ;
 		else $color = $color1 ;
@@ -1178,8 +1193,9 @@ function ShortPages () {
 	}
 
 function removeFromLinkList ( $item , $link ) {
+	global $wikiSQLServer ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( "wikipedia" , $connection ) ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT cur_id FROM cur WHERE $item LIKE \"%$link%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$ids = array () ;
@@ -1220,20 +1236,22 @@ function makeLog ( $logPage , $logText , $logMessage , $doAppend = true ) {
 
 function deletepage () {
 	global $THESCRIPT , $target , $user , $iamsure ;
-	global $vpage ;
+	global $vpage , $wikiSQLServer ;
 	$target = str_replace ( "\\\\" , "\\" , $target ) ;
 	$target = str_replace ( "\\\\" , "\\" , $target ) ;
 	$vpage = new WikiPage ;
 	$vpage->title = $title ;
 	$vpage->makeSecureTitle () ;
 	$ti = $vpage->secureTitle ;
-	$vpage->special ( "Deleting article '$target'" ) ;
+
+	global $wikiDeleteTitle , $wikiDeleteDenied , $wikiDeleteSuccess , $wikiDeleteMsg1 , $wikiDeleteMsg2 , $wikiDeleteAsk ;
+	$vpage->special ( str_replace ( "$1" , $target , $wikiDeleteTitle ) ) ;
 	$vpage->makeSecureTitle () ;
-	if ( !in_array ( "is_sysop" , $user->rights ) ) return "<font size=+3>You are not allowed to delete this page!</font>" ;
+	if ( !in_array ( "is_sysop" , $user->rights ) ) return $wikiDeleteDenied ;
 	if ( $iamsure == "yes" ) {
-		$ret = "<h2>'$target' has been removed.</h2>" ;
+		$ret = "<h2>".str_replace("$1",$target,$wikiDeleteSuccess)."</h2>" ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "DELETE FROM cur WHERE cur_title=\"$target\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		mysql_close ( $connection ) ;
@@ -1241,31 +1259,29 @@ function deletepage () {
 		# Appending log page "log:Page Deletions"
 		$now = date ( "Y-m-d H:i:s" , time () ) ;
 		$logTarget = $vpage->getNiceTitle ( $target ) ;
-		$logText = "*On $now, [[user:$user->name|$user->name]] permanently deleted page '''$logTarget'''\n" ;
-		makeLog ( "log:Page Deletions" , $logText , "Permanent deletion of $logTarget" ) ;
+		$logText = str_replace("$1",$now,str_replace("$2",$user->name,str_replace("$3",$logTarget,$wikiDeleteMsg1))) ;
+		makeLog ( "log:Page Deletions" , $logText , str_replace("$1",$logTarget,$wikiDeleteMsg2)) ;
 
 		removeFromLinkList ( "cur_linked_links" , $target ) ;
 		removeFromLinkList ( "cur_unlinked_links" , $target ) ;
 	} else {
-		$ret = "<font size=+2>You are about to delete the article \"$target\" and its complete history!<br>\n" ;
-		$ret .= "If you are absolutely sure you want to do this, " ;
-		$ret .= "<a href=\"$THESCRIPT?title=special:deletepage&target=$target&iamsure=yes\">click here</a>.</font>" ;
+		$ret = "<font size=+2>".str_replace("$1",$target,$wikiDeleteAsk)."</font>" ;
 		}
 	return "<nowiki>$ret</nowiki>" ;
 	}
 
 function protectpage () {
-	global $THESCRIPT , $target , $user , $protecting , $newrestrictions ;
-	global $vpage ;
+	global $THESCRIPT , $target , $user , $protecting , $newrestrictions , $vpage ;
+	global $wikiProtectTitle , $wikiProtectDenied , $wikiProtectNow , $wikiProtectText , $wikiProtectCurrent ;
 	$target = str_replace ( "\\\\" , "\\" , $target ) ;
 	$target = str_replace ( "\\\\" , "\\" , $target ) ;
 	$vpage = new WikiPage ;
 	$vpage->title = $title ;
 	$vpage->makeSecureTitle () ;
 	$ti = $vpage->secureTitle ;
-	$vpage->special ( "Protecting article '$target'" ) ;
+	$vpage->special ( str_replace ( "$1" , $target , $wikiProtectTitle ) ) ;
 	$vpage->makeSecureTitle () ;
-	if ( !in_array ( "is_sysop" , $user->rights ) ) return "<font size=+3>You are not allowed to protect this page!</font>" ;
+	if ( !in_array ( "is_sysop" , $user->rights ) ) return $wikiProtectDenied ;
 	if ( $protecting == "yes" ) {
 		$r = explode ( "," , $newrestrictions ) ;
 		$nr = array () ;
@@ -1275,13 +1291,13 @@ function protectpage () {
 		$nr = implode ( "," , $nr ) ;
 		$t = getMySQL ( "cur" , "cur_timestamp" , "cur_title=\"$target\"" ) ;
 		setMySQL ( "cur" , "cur_restrictions" , $nr , "cur_title=\"$target\"" ) ;
-		$ret = "<font size=+2>Page '$target' is now protected as $nr.</font>" ;
+		$ret = "<font size=+2>".str_replace("$1",$target,str_replace("$2",$nr,$wikiProtectNow))."</font>" ;
 		setMySQL ( "cur" , "cur_timestamp" , $t , "cur_title=\"$target\"" ) ;
 	} else {
 		$p = getMySQL ( "cur" , "cur_restrictions" , "cur_title=\"$target\"" ) ;
-		$ret = "<font size=+2>You can now edit the protection for '$target'</font><br>" ;
-		$ret .= "<i>For example, use \"is_sysop\" to prevent anyone but sysops from editing that page. Separate several allowances by \",\"</i>" ;
-		$ret .= "<br><br><FORM action=\"$THESCRIPT?title=special:protectpage&target=$target&protecting=yes\" method=post>Current protection : \n" ;
+
+		$ret = str_replace("$1",$target,$wikiProtectText) ;
+		$ret .= "<br><br><FORM action=\"$THESCRIPT?title=special:protectpage&target=$target&protecting=yes\" method=post>$wikiProtectCurrent\n" ;
 		$ret .= "<INPUT TABINDEX=1 TYPE=text NAME=newrestrictions VALUE=\"$p\" SIZE=30>\n" ;
 		$ret .= "<INPUT TABINDEX=2 TYPE=submit NAME=save VALUE=\"Save\">" ;
 		$ret .= "</FORM>\n" ;
@@ -1292,21 +1308,21 @@ function protectpage () {
 # This function list the contributions of a user
 function contributions () {
 	global $THESCRIPT , $target , $user , $protecting , $newrestrictions ;
-	global $vpage , $theuser ;
+	global $vpage , $theuser , $wikiSQLServer ;
+	global $wikiContribTitle , $wikiContribText , $wikiContribDenied ;
 	$vpage = new WikiPage ;
 	$vpage->title = $title ;
 	$vpage->makeSecureTitle () ;
 	$ti = $vpage->secureTitle ;
-	$vpage->special ( "Contributions of $theuser" ) ;
+	$vpage->special ( str_replace ( "$1" , $theuser , $wikiContribTitle ) ) ;
 	$vpage->makeSecureTitle () ;
-	if ( $theuser == "" ) return "<nowiki><h1>State a user name!</h1></nowiki>" ;
+	if ( $theuser == "" ) return "<nowiki><h1>$wikiContribDenied</h1></nowiki>" ;
 	$theuser = str_replace ( "_" , " " , $theuser ) ;
-	$ret = "<nowiki><h1>$theuser's contributions :</h1></nowiki>\n" ;
-	$ret .= "(With the exception of ''talk'' and ''log'' pages)\n" ;
+	$ret = "<nowiki>".str_replace("$1",$theuser,$wikiContribText)."</nowiki>\n" ;
 
 	$ac = array () ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( "wikipedia" , $connection ) ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$question = "SELECT cur_title FROM cur WHERE cur_user_text=\"$theuser\"" ;
 	$result = mysql_query ( $question , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) array_push ( $ac , $s->cur_title ) ;
@@ -1331,6 +1347,71 @@ function contributions () {
 	return $ret ;
 	}
 
+function whatLinksHere () {
+	global $THESCRIPT , $target , $user , $protecting , $newrestrictions ;
+	global $vpage , $target , $wikiLinkhereTitle ;
+	global $wikiLinkhereBacklink , $wikiLinkhereNoBacklink , $wikiBacklinkNolink , $wikiBacklinkFollowing ;
+	$vpage = new WikiPage ;
+	$vpage->title = $title ;
+	$vpage->makeSecureTitle () ;
+	$ti = $vpage->secureTitle ;
+	$niceTarget = $vpage->getNiceTitle ( $target ) ;
+	$vpage->special ( str_replace ( "$1" , $niceTarget , $wikiLinkhereTitle ) ) ;
+	$vpage->makeSecureTitle () ;
+
+	global $wikiSQLServer ;
+	$connection = getDBconnection () ;
+	mysql_select_db ( $wikiSQLServer , $connection ) ;
+
+	# The question is kinda long, but I don't want to sort everything out manually, so...
+	$question = "SELECT cur_title FROM cur WHERE" ;
+	$question .= " cur_linked_links LIKE \"$target\" OR " ;
+	$question .= " cur_linked_links LIKE \"$target\n%\" OR" ;
+	$question .= " cur_linked_links LIKE \"%\n$target\n%\" OR" ;
+	$question .= " cur_linked_links LIKE \"%\n$target\" OR " ;
+	$question .= " cur_unlinked_links LIKE \"$target\" OR " ;
+	$question .= " cur_unlinked_links LIKE \"$target\n%\" OR" ;
+	$question .= " cur_unlinked_links LIKE \"%\n$target\n%\" OR" ;
+	$question .= " cur_unlinked_links LIKE \"%\n$target\"" ;
+
+	$result = mysql_query ( $question , $connection ) ;
+	$p = array () ;
+	if ( $result != "" ) {
+		while ( $s = mysql_fetch_object ( $result ) ) array_push ( $p , $s->cur_title ) ;
+		mysql_free_result ( $result ) ;
+		}
+
+	$question = "SELECT cur_linked_links,cur_unlinked_links FROM cur WHERE cur_title=\"$target\"" ;
+	$result = mysql_query ( $question , $connection ) ;
+	$s = mysql_fetch_object ( $result ) ;
+	mysql_free_result ( $result ) ;
+	mysql_close ( $connection ) ;
+
+	$out = explode ( "\n" , $s->cur_linked_links."\n".$s->cur_unlinked_links ) ;
+	$dlb = array () ;
+	$dnlb = array () ;
+
+	foreach ( $p as $x ) {
+		$y = $vpage->getNiceTitle ( $x ) ;
+		if ( in_array ( $x , $out ) ) array_push ( $dlb , $y ) ;
+		else array_push ( $dnlb , $y ) ;
+		}
+	
+	asort ( $dlb ) ;
+	$dlb = implode ( "]]\n*[[" , $dlb ) ;
+	if ( $dlb != "" ) $dlb = "<h3>".str_replace("$1",$niceTarget,$wikiLinkhereBacklink)."</h3>\n*[[$dlb]]\n" ;
+
+	asort ( $dnlb ) ;
+	$dnlb = implode ( "]]\n*[[" , $dnlb ) ;
+	if ( $dnlb != "" ) $dnlb = "<h3>".str_replace("$1",$niceTarget,$wikiLinkhereBacklink)."</h3>\n*[[$dnlb]]\n" ;
+
+	$ret = $dnlb.$dlb ;
+	if ( $ret == "" ) $ret = "<h1>".str_replace("$1",$niceTarget,$wikiBacklinkNolink)."</h1>" ;
+	else $ret = "<h1>".str_replace("$1",$niceTarget,$wikiBacklinkFollowing)."</h1>\n$ret" ;
+
+	return $ret ;
+	}
+
 # A little hack for direct MySQL access; for sysops only!
 function askSQL () {
 	global $THESCRIPT ;
@@ -1339,8 +1420,9 @@ function askSQL () {
 	if ( isset ( $Save ) ) {
 		$ret .= "$question<br>" ;
 		unset ( $Save ) ;
+		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$question = str_replace ( "\\\"" , "\"" , $question ) ;
 		$result = mysql_query ( $question , $connection ) ;
 		$n = mysql_num_fields ( $result ) ;

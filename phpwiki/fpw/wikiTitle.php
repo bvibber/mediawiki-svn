@@ -80,7 +80,7 @@ class WikiTitle {
 
 	# Converts the secure title to an even more secure one (URL-style)
 	function makeURL () {		
-		$this->url = urlencode ( $this->secureTitle ) ;
+		$this->url = nurlencode ( $this->secureTitle ) ;
 		}
 
 	# Converts a secure title back to a nice-looking one
@@ -139,11 +139,12 @@ class WikiTitle {
 
 	# Checks the database if this topic already exists
 	function doesTopicExist ( $conn = "" ) {
+		global $wikiSQLServer ;
 		$this->makeSecureTitle () ;
 		if ( $this->namespace == "special" ) return true ;
 		if ( $conn == "" ) $connection = getDBconnection () ;
 		else $connection = $conn ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "SELECT cur_id FROM cur WHERE cur_title=\"$this->secureTitle\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		if ( $result == "" ) return false ;
