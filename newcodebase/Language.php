@@ -1112,16 +1112,18 @@ class Language {
 		
         # Check for UTF-8 URLs; Internet Explorer produces these if you
 		# type non-ASCII chars in the URL bar or follow unescaped links.
-		if( $wgInputEncoding != "UTF-8" and preg_match( '/[\x80-\xff]/', $s ) ) {
-			if( preg_match( '/^([\x00-\x7f]|[\xc0-\xdf][\x80-\xbf]|' .
-				'[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xf7][\x80-\xbf]{3})+$/',
-				$s ) ) {
-				$s = iconv( "UTF-8", $wgInputEncoding, $s );
-			}
-		}
+        $ishigh = preg_match( '/[\x80-\xff]/', $s);
+		$isutf = ($ishigh ? preg_match( '/^([\x00-\x7f]|[\xc0-\xdf][\x80-\xbf]|' .
+                '[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xf7][\x80-\xbf]{3})+$/', $s ) : true );
+
+		if( ($wgInputEncoding != "utf-8") and $ishigh and $isutf )
+			return iconv( "UTF-8", $wgInputEncoding, $s );
 		
-		# Other languages can safely ignore this function, or replace
-		# it with one to detect and convert a legacy encoding.
+		if( ($wgInputEncoding == "utf-8") and $ishigh and !$isutf )
+			return utf8_encode( $s );
+		
+		# Other languages can safely leave this function, or replace
+		# it with one to detect and convert another legacy encoding.
 		return $s;
 	}
 
