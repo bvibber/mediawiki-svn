@@ -221,11 +221,11 @@ function storeInDB ( $title , $text ) {
 	$title = str_replace ( "\\'" , "'" , $title ) ;
 	$title = str_replace ( "\\\"" , "\"" , $title ) ;
 	$npage = new wikiPage ;
-	$npage->title = $title ;
+	$npage->title = $recodeCharset ( $title ) ;
 	$npage->makeAll () ;
-	$text = convertText ( $text ) ;
-	$ll1 = implode ( "\n" , $ll ) ;
-	$ull1 = implode ( "\n" , $ull ) ;
+	$text = $recodeCharset ( convertText ( $text ) ) ;
+	#$ll1 = implode ( "\n" , $ll ) ;
+	#$ull1 = implode ( "\n" , $ull ) ;
 	$st = $npage->secureTitle ;
 
 	# Move talk pages to talk namespace
@@ -235,8 +235,14 @@ function storeInDB ( $title , $text ) {
 	if ( count ( $talk ) == 2 and $talk[1] == strtolower($wikiTalk) ) return ;
 
 	$sql = "INSERT INTO cur (cur_title,cur_ind_title,cur_text,cur_comment,cur_user,cur_user_text,cur_old_version,cur_minor_edit) VALUES ";
-	$sql .= "(\"" . $recodeCharset ( $st ) . "\",\"" . $recodeCharset ( $st ) . "\",\"" . $recodeCharset ( $text ) . "\",";
+	$sql .= "(\"$st\",\"$st\",\"$text\",";
 	$sql .= "\"Automated conversion\",0,\"conversion script\",0,1);\n" ; # ,\"" . $recodeCharset ( $ll1 ) . "\",\"" . $recodeCharset ( $ull1 ) . "\"
+	foreach ( $ll as $l ) {
+		$sql .= "INSERT INTO linked (linked_from,linked_to) VALUES (\"$st\",\"" . $recodeCharset ( $l ) . "\");\n";
+		}
+	foreach ( $ull as $l ) {
+		$sql .= "INSERT INTO unlinked (unlinked_from,unlinked_to) VALUES (\"$st\",\"" . $recodeCharset ( $l ) . "\");\n";
+		}
 	fwrite ( $of , $sql ) ;
 	}
 
