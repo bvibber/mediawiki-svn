@@ -122,3 +122,9 @@ your changes!
 Run patch-interwiki.sql to create the interwiki table, then the
 plain interwiki.sql to load up the default set of mappings.
 
+* 2003-11: Indexes
+Fixes up indexes on links, brokenlinks, recentchanges, watchlist,
+and archive tables to boost speed.
+
+Run patch-indexes.sql.
+
