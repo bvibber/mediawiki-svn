@@ -298,6 +298,8 @@ function buildIndexes()
 
 function initializeTables()
 {
+	global $wgDBpassword;
+
 	$sql = "INSERT INTO site_stats (ss_row_id,ss_total_views," .
 	  "ss_total_edits,ss_good_articles) VALUES (1,0,0,0)";
 	wfQuery( $sql );

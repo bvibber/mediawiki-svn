@@ -5,12 +5,13 @@
 
 include_once( "Setup.php" );
 $wgTitle = Title::newFromText( "Database creation script" );
-include_once( "./buildTables.inc" );
-set_time_limit(0);
 
 #$wgDBname			= "wikidb";
 #$wgDBuser			= "wikiadmin";
 #$wgDBpassword		= "adminpass";
+
+include_once( "./buildTables.inc" );
+set_time_limit(0);
 
 print "\n  * * *\nWarning! This script will completely erase the\n" .
   "existing database '" . $wgDBname . "' and all its contents.\n" .
