@@ -16,7 +16,7 @@ OutputPage::setEncodings();
 # Query string fields
 #
 global $action, $title, $search, $target, $printable;
-global $target, $returnto;
+global $returnto, $diff, $oldid;
 
 $action = strtolower( trim( $action ) );
 if ( "" == $action ) { $action = "view"; }
@@ -37,6 +37,7 @@ else {
 	else if ( "edit" == $action ) { $wgArticle->edit(); }
 	else if ( "print" == $action ) { $wgArticle->view(); }
 	else if ( "watch" == $action ) { $wgArticle->watch(); }
+	else if ( "unwatch" == $action ) { $wgArticle->unwatch(); }
 	else if ( "history" == $action ) { $wgArticle->history(); }
 	else if ( "delete" == $action ) { $wgArticle->delete(); }
 	else if ( "revert" == $action ) { $wgArticle->revert(); }

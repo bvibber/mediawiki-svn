@@ -59,7 +59,8 @@
 /* private */ $wgValidSpecialPagesEn = array(
 	"Userlogin"		=> "",
 	"Userlogout"	=> "",
-	"Preferences"	=> "",
+	"Preferences"	=> "Set my user preferences",
+	"Watchlist"		=> "Show my watchlist",
 	"Newpages"		=> "",
 	"Recentchanges" => "List recently updated pages",
 	"Upload"		=> "Upload image files",
@@ -75,7 +76,6 @@
 	"Longpages"		=> "List long articles",
 
 	"Ipblocklist"	=> "List blocked IP addresses",
-	"Watchlist"		=> "Show my watchlist",
 	"Specialpages"  => "",
 	"Contributions" => "",
 	"Whatlinkshere" => "",
@@ -83,11 +83,11 @@
 );
 
 /* private */ $wgSysopSpecialPagesEn = array(
-	"Allpages"		=> "Show list of all pages",
-	"Movepage"		=> "Rename a page and its links",
-	"Asksql"		=> "Query the database",
+	"Blockip"		=> "Block an IP address",
 	"Protectpage"	=> "Protect a page from user edits",
-	"Blockip"		=> "Block an IP address"
+	"Movepage"		=> "Rename a page and its links",
+	"Allpages"		=> "Show list of all pages",
+	"Asksql"		=> "Query the database"
 );
 
 /* private */ $wgAllMessagesEn = array(
@@ -352,8 +352,11 @@ See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges r
 "reuploaddesc"	=> "Return to the upload form.",
 "uploadfile"	=> "Upload file",
 "uploaderror"	=> "Upload error",
-"uploadtext"	=> "Use the form below to upload image files for
-use in illustrating your articles.
+"uploadtext"	=> "To view or search previously uploaded images,
+go to the <a href=\"" . wfLocalUrl( "Special:Imagelist" ) .
+"\">list of uploaded images</a>.
+<p>Use the form below to upload new image files for use in
+illustrating your articles.
 On most browsers, you will see a \"Browse...\" button, which will
 bring up your operating system's standard file open dialog.
 Choosing a file will fill the name of that file into the text
@@ -367,6 +370,7 @@ for drawings and other iconic images.
 To include the image in an article, use a link in the form
 <b>[[image:file.jpg]]</b> or <b>[[image:file.png|alt text]]</b>.",
 "uploadlog"		=> "upload log",
+"uploadlogpage" => "Upload_log",
 "uploadlogtext" => "Uploads and deletions are logged on the $1",
 "filename"		=> "Filename",
 "filedesc"		=> "Summary",
@@ -386,6 +390,7 @@ any copyrights.",
 "fileuploaded"	=> "File \"$1\" uploaded successfully.",
 "uploadwarning" => "Upload warning",
 "savefile"		=> "Save file",
+"uploadedimage" => "uploaded \"$1\"",
 
 # Image list
 #
@@ -469,6 +474,19 @@ the Wikipedia database.",
 # Watchlist
 #
 "watchlist"		=> "Watch list",
+"watchlistsub"	=> "(for user \"$1\")",
+"nowatchlist"	=> "You have no items on your watchlist.",
+"watchnologin"	=> "Not logged in",
+"watchnologintext"	=> "You must be <a href=\"" .
+  wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
+to modify your watchlist.",
+"addedwatch"	=> "Added to watchist",
+"addedwatchtext" => "The page \"$1\" has been added to your watchlist.",
+"removedwatch"	=> "Removed from watchlist",
+"removedwatchtext" => "The page \"$1\" has been removed from your watchlist.",
+"watchthispage"	=> "Watch this page",
+"unwatchthispage" => "Stop watching",
+"notanarticle"	=> "Not an article",
 
 # Special pages
 #
@@ -491,6 +509,7 @@ consequences, and that you are doing this in accordance with
 "actioncomplete" => "Action complete",
 "deletedtext"	=> "\"$1\" has been deleted.",
 "deletedarticle" => "deleted \"$1\"",
+"deletionlog"	=> "Article_deletion_log",
 
 # Move page
 #
@@ -521,14 +540,7 @@ to perform this function on.",
 # Recent changes linked
 #
 "recentchangeslinked" => "Watch links",
-
-# SQL dump
-#
-"sqldump"		=> "SQL dump",
-
-# Vote
-#
-"vote"			=> "Vote for page",
+"rclsub"		=> "(to pages linked from \"$1\")",
 
 # Asksql
 #

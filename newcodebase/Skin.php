@@ -374,10 +374,13 @@ class Skin {
 		$s .= $this->mainPageLink()
 		  . $sep . $this->specialLink( "recentchanges" )
 		  . $sep . $this->specialLink( "randompage" ) 
+		  . $sep . $this->specialLink( "watchlist" )
 		  . $sep . $this->dateLink() . "\n<hr>";
 
 		if ( $wgOut->isArticle() ) {
-			$s .= $this->editThisPage();
+			$s .= $this->editThisPage()
+			  . $sep . $this->watchThisPage()
+			  . $sep . $this->unwatchThisPage();
 
 			if ( $wgUser->isSysop() ) {
 				$s .= $sep . $this->deleteThisPage();
@@ -393,12 +396,8 @@ class Skin {
 			$s .= "\n<hr>";
 		}
 		$s .= $this->specialLink( "upload" )
-		  . $sep . $this->specialLink( "imagelist" )
-		  . $sep . $this->specialLink( "listusers" )
-		  . $sep . $this->specialLink( "statistics" )
+		  . $sep . $this->bugReportsLink()
 		  . $sep . $this->specialLink( "specialpages" );
-
-		$s .= $sep . $this->bugReportsLink();
 
 		$s .= "\n</div>\n";
 		return $s;
@@ -447,6 +446,37 @@ class Skin {
 		}
 		return $s;
 	}
+
+	function watchThisPage()
+	{
+		global $wgUser, $wgOut, $wgTitle, $diff;
+
+		if ( $wgOut->isArticle() && ( ! $diff ) ) {
+			$n = $wgTitle->getPrefixedText();
+			$t = wfMsg( "watchthispage" );
+
+			$s = $this->makeKnownLink( $n, $t, "action=watch" );
+		} else {
+			$s = wfMsg( "notanarticle" );
+		}
+		return $s;
+	}
+
+	function unwatchThisPage()
+	{
+		global $wgUser, $wgOut, $wgTitle, $diff;
+
+		if ( $wgOut->isArticle() && ( ! $diff ) ) {
+			$n = $wgTitle->getPrefixedText();
+			$t = wfMsg( "unwatchthispage" );
+
+			$s = $this->makeKnownLink( $n, $t, "action=unwatch" );
+		} else {
+			$s = wfMsg( "notanarticle" );
+		}
+		return $s;
+	}
+
 
 	function historyLink()
 	{
