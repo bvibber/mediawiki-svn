@@ -57,6 +57,7 @@ function edit ( $title ) {
 				$oldSubmittedText = $EditBox ;
 				$oldSubmittedText = str_replace ( "\\'" , "'" , $oldSubmittedText ) ;
 				$oldSubmittedText = str_replace ( "\\\"" , "\"" , $oldSubmittedText ) ;
+				$oldSubmittedText = str_replace ( "\\\\" , "\\" , $oldSubmittedText ) ;
 				$oldSubmittedText = str_replace ( "&" , "&amp;" , $oldSubmittedText ) ;
 				$EditTime = date ( "YmdHis" ) ; # reset time counter
 				$npage->load ( $npage->title ) ;
@@ -75,6 +76,7 @@ function edit ( $title ) {
 			else $text = str_replace ( "~~~" , $user->getLink() , $text ) ;
 			$title = str_replace ( "\\'" , "'" , $title ) ;
 			$title = str_replace ( "\\\"" , "\"" , $title ) ;
+			$title = str_replace ( "\\\\" , "\\" , $title ) ;
 			$npage->title = $title ;
 			$npage->makeAll () ;
 			if ( $npage->doesTopicExist() ) $npage->backup() ;
@@ -89,7 +91,6 @@ function edit ( $title ) {
 		unset ( $PreviewButton ) ;
 		$text = $EditBox ;
 		$text = str_replace ( "\\'" , "'" , $text ) ;
-		$text = str_replace ( "\\\"" , "\"" , $text ) ;
 		$text = str_replace ( "\\\"" , "\"" , $text ) ;
 		$text = str_replace ( "\\\\" , "\\" , $text ) ;
 #		$text = urldecode ( $text ) ;
@@ -106,7 +107,7 @@ function edit ( $title ) {
 	if ( $MinorEdit ) $checked = "checked" ;
 	else $checked = "" ;
 	if ( $CommentBox == "" ) $CommentBox = "*" ;
-	$CommentBox = str_replace ( array ( "\\'", "\\\"" ) , array ( "'" , "\"" ) , $CommentBox );
+	$CommentBox = str_replace ( array ( "\\'", "\\\"", "\\\\" ) , array ( "'" , "\"", "\\" ) , $CommentBox );
 	$CommentBox = htmlspecialchars ( $CommentBox );
 
 	# Just trying to set the initial keyboard focus to the edit window; doesn't work, though...
