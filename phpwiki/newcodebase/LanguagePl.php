@@ -1,5 +1,5 @@
 <?
-include_once( "utf8Case.php" );
+include_once("utf8Case.php");
 
 # NOTE: To turn off "Current Events" in the sidebar,
 # set "currentevents" => "-"
@@ -302,11 +302,16 @@ include_once( "utf8Case.php" );
 "protectthispage" => "Zabezpiecz",
 "unprotectthispage" => "Odbezpiecz",
 "talkpage"		=> "Dyskusja",
-"subjectpage"	=> "Strona dyskutowana",
+"subjectpage"	=> "Strona dyskutowana", # for compatibility
+"articlepage"   => "Strona dyskutowana", 
+"userpage" => "Strona wikipedysty", 
+"wikipediapage" => "Strona dyskutowana", 
+"imagepage" =>  "Strona grafiki", 
 "otherlanguages" => "Wersja",
 "redirectedfrom" => "(Przekierowano z $1)",
-"lastmodified"	=> "Ostatnio zmodyfikowano o $1.",
-"viewcount"		=> "Tą stronę obejrzano $1 razy.",
+"lastmodified"	=> "ostatnio zmodyfikowano o $1;",
+"viewcount"		=> "Tą stronę obejrzano $1 razy;",
+"gnunote" => "udostępniana jest w oparciu o licencję <a class=internal href='/wiki/GNU_FDL'>GNU FDL</a>.",
 "printsubtitle" => "(z http://pl.wikipedia.org)",
 "protectedpage" => "Strona zabezpieczona",
 "administrators" => "Wikipedia:Administratorzy",
@@ -372,9 +377,9 @@ Zgłoś, proszę, ten fakt administratorowi podając także, o który URL chodzi
 "badtitle"		=> "Niepoprawny tytuł",
 "badtitletext"	=> "Podano niepoprawny tytuł strony. Prawdopodobnie zawiera
 zabronione znaki lub jest pusty.",
-
-"badtitletext"  => "The requested page title was invalid, empty, or 
-   an incorrectly linked inter-language or inter-wiki title.", 
+"perfdisabled" => "Przepraszamy! By odciążyć serwer, wykonanie tej czynności
+zostało w okresie szczytu tymczasowo uniemożliwione. Wróć, proszę,
+i spróbuj jeszcze raz między 02:00 a 14:00 czasu UTC.",
 
 # Login and logout pages
 #
@@ -577,7 +582,6 @@ zapoznaj się, proszę, z tymi stronami: [[wikipedia:FAQ|Wikipedia FAQ]],
 [[Wikipedia:Neutralny punkt widzenia|neutralny punkt widzenia]])
 oraz [[Wikipedia:Najczęstsze nieporozumienia|najczęstsze nieporozumienia]].
 
-
 Jeśli chcesz przyczynić się do sukcesu Wikipedii, nie dodawaj materiałów
 zastrzeżonych prawami autorskimi. Konsekwencje prawne złamania tej zasady
 mogłyby Wikipedii bardzo zaszkodzić.
@@ -670,7 +674,7 @@ takie jak: pochodzenie pliku, kiedy i przez kogo został utworzony
 i cokolwiek co wiesz o pliku, a wydaje Ci się ważne.",
 "uploadwarning" => "Ostrzeżenie o przesyłce",
 "savefile"		=> "Zapisz plik",
-"uploadedimage" => ", przesłano \"$1\"",
+"uploadedimage" => "przesłano \"$1\"",
 
 # Image list
 #
@@ -862,11 +866,15 @@ Podane czasy odnoszą się do strefy czasu uniwersalnego (UTC).
 "reverted"		=> "Przywrócono starszą wersję",
 "deletecomment"	=> "Powód usunięcia",
 "imagereverted" => "Przywrócenie wcześniejszej wersji powiodło się.",
+"rollback"              => "Cofnij edycję", 
+"rollbacklink"	=> "cofnij",
+"cantrollback"  => "Nie można cofnąć edycji; jest tylko jedna wersja tego artykułu.",
+"revertpage"    => "Przywrócono przedostatnią wersję, jej autor to $1", 
 
 # Undelete
 #
 "undelete" => "Odtwórz skasowaną stronę",
-"undeletepage" => "Odtwarzanie skasowanychh stron",
+"undeletepage" => "Odtwarzanie skasowanych stron",
 "undeletepagetext" => "Poniższe strony zostały skasowane, ale ich kopia wciąż
 znajduje się w archiwum.<br><b>Uwaga:</b> archiwum co jakiś czas także jest kasowane!",
 "undeletearticle" => "Odtwórz skasowany artykuł",
@@ -890,7 +898,7 @@ skasowanych i odtworzonych stron.",
 "ucnote"		=> "Oto lista ostatnich <b>$1</b> zmian dokonanych przez
 użytkownika w ciągu ostatnich <b>$2</b> dni.",
 "uclinks"		=> "Zobacz ostatnie $1 zmian; zobacz ostatnie $2 dni.",
-"uctop"			=> "(jako ostatnia)",
+"uctop"			=> " (jako ostatnia)",
 
 # What links here
 #
@@ -1047,7 +1055,6 @@ class LanguagePl extends LanguageUtf8 {
 
 	function getUserToggles() {
 		global $wgUserTogglesPl;
-
 		return $wgUserTogglesPl;
 	}
 
@@ -1147,8 +1154,8 @@ class LanguagePl extends LanguageUtf8 {
 			return Language::getMessage($key);
 	}
 
-	# Inherit ucfirst() and stripForSearch() from LangugeUtf8
-	
+	# Inherit ucfirst() and stripForSearch() from LanguageUtf8
+
 	function checkTitleEncoding( $s ) {
         # Check for Latin-2 backwards-compatibility URLs
 		$ishigh = preg_match( '/[\x80-\xff]/', $s);

@@ -117,7 +117,8 @@ function wfSpecialContributions()
 		$page = Title::makeName( $ns, $t );
 		$link = $sk->makeKnownLink( $page, "" );
 		if($sysop && $topmark != "") {
-			$topmark .= " [". $sk->makeKnownLink( $page, "rollback", "action=rollback" ) ."]";
+			$topmark .= " [". $sk->makeKnownLink( $page,
+			  wfMsg( "rollbacklink" ), "action=rollback" ) ."]";
 		}
 		$d = $wgLang->timeanddate( $ts, true );
 
