@@ -2,6 +2,8 @@
 #define SM_SMSTDINC_HXX_INCLUDED_
 
 #include <iostream>
+#include <fstream>
+#include <iomanip>
 #include <string>
 #include <map>
 #include <vector>
@@ -9,7 +11,6 @@
 #include <functional>
 #include <set>
 #include <cerrno>
-#include <fstream>
 using std::for_each;
 
 #include <boost/bind.hpp>

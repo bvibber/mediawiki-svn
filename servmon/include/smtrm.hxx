@@ -35,7 +35,7 @@ public:
 	void error (std::string const & msg) const {
 		term.wrtln(str(format("%% [E] %s") % msg));
 	}
-	void wrtln (std::string const & msg) const {
+	void wrtln (std::string const & msg = "") const {
 		term.wrtln(msg);
 	}
 	void chgrt (handler_node<tt>* newrt, std::string const& prm) const {
@@ -50,8 +50,10 @@ public:
 	std::string getpass (std::string const& prompt) const
 	{
 		term.wrt(prompt);
-		std::string s;
-		term.read(s);
+		term.echo(false);
+		std::string s = term.read();
+		term.echo(true);
+		wrtln();
 		return s;
 	}
 	void rst(void) {
@@ -143,11 +145,16 @@ struct tmcmds : public smutl::singleton<tmcmds<tt> > {
 #include "../smstdrt.cxx"
 	tmcmds() {
 		stdrt.install("show version", cmd_show_version(), "Show software version");
-		stdrt.install("configure", cmd_config(), "Configure servmon");
 		stdrt.install("exit", cmd_exit(), "End session");
+		eblrt = stdrt;
+		stdrt.install("enable", cmd_enable(), "Enter privileged mode");
+		eblrt.install("disable", ebl_disable(), "Return to non-privileged mode");
+		eblrt.install("configure", ebl_config(), "Configure servmon");
 		cfgrt.install("exit", cfg_exit(), "Exit configure mode");
+		cfgrt.install("enable password", cfg_eblpass(), "Change enable password");
 	}
 	handler_node<tt> stdrt;
+	handler_node<tt> eblrt;
 	handler_node<tt> cfgrt;
 };
 
@@ -216,9 +223,12 @@ public:
 	void wrt(std::string const& s) {
 		intf.wrt(s);
 	}
+	std::string read(void) {
+		return intf.rdln();
+	}
 	void chgrt(handler_node<trmsrv>* newrt, std::string const& prompt) {
 		cmds_root = newrt;
-		prm = str(format(prompt) % "servmon") + "> ";
+		prm = str(format(prompt) % "servmon");
 	}
 	bool prc_ign(char) {
 		return true;
@@ -307,7 +317,9 @@ end:
 		std::vector<handler_node_t *> matches = hstack[0]->find_matches(thisword, waswild);
 		for (typename std::vector<handler_node_t *>::iterator it = matches.begin(),
 			 end = matches.end(); it != end; ++it) {
-			wrtln(str(format("  %s %s") % (**it).name % (**it).help));
+			wrtln(str(format("  %s %s") % 
+				boost::io::group(std::left, std::setw(20), (**it).name)
+				% (**it).help));
 		}
 		wrt(prm + ln);
 		return true;

@@ -112,6 +112,7 @@ void cfg::wrcfg(void)
 		u_char d = it->second;
 		write(f, (char *)&d, sizeof d);
 	}
+	close(f);
 }
 
 void cfg::storestr(std::string const& key, std::string const& value)
