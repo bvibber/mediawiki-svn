@@ -9,6 +9,7 @@ class WikiUser {
 
 #### Skin functions
 
+/*
     # Creates the options for the currently selected skin by calling the appropriate function
     function skin () {
         if ( $this->options["skin"] == "" ) $this->skinBlank () ;
@@ -82,7 +83,8 @@ class WikiUser {
 #        $this->options["tabLine1"] = "" ;
 #        $this->options["tabLine2"] = " bgcolor=\"#333333\"" ;
         }
-    
+*/
+
     # Creates a style sheet for the page from the skin & link style options
     function styleSheet( $action = "view" ) {
         global $namespaceBackground ;
@@ -259,7 +261,7 @@ class WikiUser {
             }
         $this->loadSettings () ;
         $this->ensureDefaultOptions () ;
-        $this->skin () ;
+#        $this->skin () ;
         }
 
     # This sets the default options for new and no-log-in users
@@ -320,7 +322,7 @@ class WikiUser {
         $this->rights = explode ( "," , strtolower ( $t->user_rights ) ) ;
         $this->password = $t->user_password ; 
         $this->email = $t->user_email ;
-        $this->skin () ;
+#        $this->skin () ;
     }
 
     # Saves/updates the user settings in the database
