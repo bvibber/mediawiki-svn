@@ -332,6 +332,7 @@ Please report this to an administrator, making note of the URL.",
 "unexpected"	=> "Unexpected value: \"$1\"=\"$2\".",
 "formerror"		=> "Error: could not submit form",	
 "badarticleerror" => "This action cannot be performed on this page.",
+"cannotdelete"	=> "Could not delete the page or image specified.",
 
 # Login and logout pages
 #
