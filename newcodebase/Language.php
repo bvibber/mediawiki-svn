@@ -11,7 +11,7 @@
 );
 
 /* private */ $wgSkinNamesEn = array(
-	"Standard", "Nostalgia", "Cologne Blue"
+	"Standard", "Nostalgia", "Cologne Blue", "Framed"
 );
 
 /* private */ $wgUserTogglesEn = array(
