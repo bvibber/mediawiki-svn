@@ -311,7 +311,7 @@ class Skin {
 		} else {
 			$n = $wgUser->getName();
 			$rt = $wgTitle->getPrefixedURL();
-			$s .= $this->makeKnownLink( $wgUser->getNsText(
+			$s .= $this->makeKnownLink( $wgLang->getNsText(
 			  Namespace::getUser() ) . ":{$n}", $n ) . "<br>" .
 			  $this->makeKnownLink( $lo, wfMsg( "logout" ),
 			  "returnto={$rt}" ) . " | " .
