@@ -169,7 +169,8 @@ class OutputPage {
 				$best = $q;
 			}
 		}
-		if ( "*" == $bestset ) { $bestset = "iso-8859-1"; }
+		#if ( "*" == $bestset ) { $bestset = "iso-8859-1"; }
+		if ( "*" == $bestset ) { $bestset = $wgOutputEncoding; }
 		$wgOutputEncoding = strtolower( $bestset );
 
 # Disable for now
