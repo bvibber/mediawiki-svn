@@ -203,10 +203,15 @@ function fixLinks ( $s ) {
 	}
 
 function convertText ( $s ) {
+	global $recodeCharset ;
+	/*
 	$s = str_replace ( "\\'" , "'" , $s ) ;
 	$s = str_replace ( "\\\"" , "\"" , $s ) ;
 	$s = str_replace ( "\"" , "\\\"" , $s ) ;
 	$s = str_replace ( "'" , "\\'" , $s ) ;
+	*/
+	$s = strtr ( $recodeCharset ( $s ) ,
+		array ( "\\" => "\\\\" , "\"" => "\\\"" , "'" => "\\'" ) ) ;
 
 	$a = spliti ( "<nowiki>" , $s ) ;
 	$s = fixLinks ( array_shift ( $a ) ) ;
@@ -255,7 +260,7 @@ function getHistory ( $title , $st) {
 		
 		if ( $text["text"] && $text["minor"] != "" ) {
 			$sql .= "INSERT INTO old (old_id,old_title,old_text,old_comment,old_user,old_user_text,old_old_version,old_timestamp,old_minor_edit) "
-			. "VALUES ($oldid,\"$st\",\"" . $recodeCharset ( convertText($text["text"]) ) . "\",\"" . makeSafe($text["summary"]) . "\","
+			. "VALUES ($oldid,\"$st\",\"" . convertText($text["text"]) . "\",\"" . makeSafe($text["summary"]) . "\","
 			. "0,\"$user\",$lastoldid,FROM_UNIXTIME(" . $section["ts"] . ")," . $text["minor"] . ");\n";
 			
 			$lastoldid = $oldid++ ;
@@ -274,7 +279,7 @@ function storeInDB ( $title , $text ) {
 	$npage = new wikiPage ;
 	$npage->title = $recodeCharset ( $title ) ;
 	$npage->makeAll () ;
-	$text = $recodeCharset ( convertText ( $text ) ) ;
+	$text = convertText ( $text ) ;
 	#$ll1 = implode ( "\n" , $ll ) ;
 	#$ull1 = implode ( "\n" , $ull ) ;
 	$st = $npage->secureTitle ;
@@ -293,10 +298,10 @@ function storeInDB ( $title , $text ) {
 	$sql .= "(\"$st\",\"$st\",\"$text\",";
 	$sql .= "\"Automated conversion\",0,\"conversion script\",$lastoldid,1);\n" ; # ,\"" . $recodeCharset ( $ll1 ) . "\",\"" . $recodeCharset ( $ull1 ) . "\"
 	foreach ( $ll as $l ) {
-		$sql .= "INSERT INTO linked (linked_from,linked_to) VALUES (\"$st\",\"" . $recodeCharset ( $l ) . "\");\n";
+		$sql .= "INSERT INTO linked (linked_from,linked_to) VALUES (\"$st\",\"$l\");\n";
 		}
 	foreach ( $ull as $l ) {
-		$sql .= "INSERT INTO unlinked (unlinked_from,unlinked_to) VALUES (\"$st\",\"" . $recodeCharset ( $l ) . "\");\n";
+		$sql .= "INSERT INTO unlinked (unlinked_from,unlinked_to) VALUES (\"$st\",\"$l\");\n";
 		}
 	
 	fwrite ( $of , $sql ) ;
