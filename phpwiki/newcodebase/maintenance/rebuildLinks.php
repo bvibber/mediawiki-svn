@@ -1,12 +1,10 @@
 <?
 
-# Database conversion (from May 2002 format).  Assumes that
-# the "buildtables.sql" script has been run to create the new
-# empty tables, and that the old tables have been read in from
-# a database dump, renamed "old_*".
+# Rebuild link tracking tables from scratch.  This takes several
+# hours, depending on the database size and server configuration.
 
 include_once( "Setup.php" );
-include_once( "./rebuildlinksfunction.php" );
+include_once( "./rebuildLinks.inc" );
 $wgTitle = Title::newFromText( "Rebuild links script" );
 set_time_limit(0);
 
