@@ -33,6 +33,8 @@ $wikiLogIn = "Log in" ;
 $wikiLogOut = "Log out" ;
 $wikiHelp = "Help" ;
 $wikiHelpLink = "wikipedia:Help" ;
+$wikiBlockedIPsLink = "wikipedia:Blocked_IPs" ; # Don't forget the underscore if the translation also has a space!
+$wikiTalkBlockedIPsLink = "wikipedia_talk:Blocked_IPs" ; # Don't forget the underscore if the translation also has a space!
 $wikiPreferences = "Preferences" ;
 $wikiWhatLinksHere = "Pages that link here" ;
 $wikiPrintLinksMarkup = "i" ; # will be used as <$wikiPrintLinksMarkup> and </$wikiPrintLinksMarkup>
@@ -134,6 +136,14 @@ $wikiThisCategory = "Articles in this category" ;
 $wikiCounter = "This page has been accessed $1 times." ;
 $wikiBlockIPTitle = "Block an IP (sysops only)" ;
 $wikiBlockIPText = "IP $1 was blocked by $2" ;
+$wikiBlockInvalidIPAddress = "\"$1\" is not a valid IP address; cannot block." ;
+$wikiBlockExplain = "You are about to block the IP address
+[$wikiCurrentServer$THESCRIPT?title=special:contributions&theuser=\$1 \$1]. Once blocked,
+visitors to the Wikipedia from that IP address will not be able to edit articles unless
+a sysop removes them from the list of blocked IP addresses at [[$wikiBlockedIPsLink]].
+If you are sure you want to block this user, please enter a brief note about your reasons
+in the box below and click &quot;Block This IP&quot;. You may write a longer explanation
+in [[$wikiTalkBlockedIPsLink]]." ;
 $wikiIPblocked = "<font color=red size='+1'>Your IP has been blocked! Your edits will not be saved. Please contact a sysop to have the block removed, or try again later.</font>" ;
 $wikiBugReports = "Bug reports" ;
 $wikiBugReportsLink = "wikipedia:Bug Reports" ;

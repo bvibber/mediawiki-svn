@@ -39,6 +39,8 @@ $wikiLogIn = "Salutu" ;
 $wikiLogOut = "Adiaŭu" ;
 $wikiHelp = "Helpo" ;
 $wikiHelpLink = "vikipedio:Helpo" ;
+$wikiBlockedIPsLink = "vikipedio:Forbaritaj_Uzantoj" ;
+$wikiTalkBlockedIPsLink = "priparolu_vikipedion:Forbaritaj_Uzantoj" ;
 $wikiPreferences = "Preferoj" ;
 $wikiWhatLinksHere = "Paĝoj ligantaj ĉi tien" ;
 $wikiPrintLinksMarkup = "i" ; # will be used as <$wikiPrintLinksMarkup> and </$wikiPrintLinksMarkup>
@@ -96,9 +98,9 @@ $wikiPreviewAppend = "<hr>\n<h2>Antaŭrigardo :</h2>\n$1<hr><h3>Memoru, ĉi tiu 
 $wikiSummary = "Resumo:" ;
 $wikiDescription = "Priskribo:" ;
 $wikiMinorEdit = "Ĉi tiu ŝanĝo estas redakteto." ;
-$wikiCopyrightNotice = "Bonvolu noti, ke ĉiun kontribuaĵon al la Vikipedio estu konsiderata eldonita laŭ la
+$wikiCopyrightNotice = "Bonvolu noti, ke ĉiu kontribuaĵo al la Vikipedio estu konsiderata eldonita laŭ la
 <a href=\"$THESCRIPT?title=GFDL\">GNU Free Documentation License</a>.
-Se vi volas, ke via verkaĵo ne estu redaktota senkompate kaj disvastigota laŭvole, ne presu \"Konservu\".
+Se vi volas, ke via verkaĵo ne estu redaktota senkompate kaj disvastigota laŭvole, ne alklaku \"Konservu\".
 Vi ankaŭ ĵuras, ke vi mem verkis ĉi tiun, aŭ ke vi kopiis ĝin el fonto senkopirajta. <b>NE UZU KOPIRAJTITAJN VERKOJN SENPERMESE!</b>" ;
 $wikiSave = "Konservu" ;
 $wikiPreview = "Antaŭrigardu" ;
@@ -147,6 +149,14 @@ $wikiThisCategory = "Artikoloj en ĉi tiu kategorio" ;
 $wikiCounter = "$1 foje oni jam legis ĉi tiun paĝon." ;
 $wikiBlockIPTitle = "Forbaru IP-on (nur sistemestroj)" ;
 $wikiBlockIPText = "IP $1 estis forbarita de $2" ;
+$wikiBlockInvalidIPAddress = "\"$1\" estas malvalida IP-adreso; neeblas forbari tiun." ;
+$wikiBlockExplain = "Vi forbaros la IP-adreson
+[$wikiCurrentServer$THESCRIPT?title=special:contributions&theuser=\$1 \$1]. Depost vi forbaros ĝin,
+Vikipedio-vizitantoj el tiu IP-adreso ne povos redakti artikolojn, krom se sistemestro
+poste fortranĉus ĝin el la listo de forbaritoj ĉe [[$wikiBlockedIPsLink]].
+Se vi certas, ke vi volas forbari ĉi tiun uzanton, bonvolu enskribi noteton pri la kialo
+en la malsupran skatolon kaj alklaku &quot;Forbaru&quot;. Vi povas skribi pli longan
+klarigon en [[$wikiTalkBlockedIPsLink]]." ;
 $wikiIPblocked = "<font color=\"red\" size=\"+1\">Vian IP-on oni forbaris! Viajn redaktojn la sistemo ne konservos. Bonvolu kontakti sistemestron por forigi la baradon, aŭ reprovu antaŭ iom de tempo.</font>" ;
 $wikiBugReports = "Raportu Teknikajn Problemojn" ;
 $wikiBugReportsLink = "vikipedio:Teknikaj Problemoj" ;

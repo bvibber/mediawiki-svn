@@ -61,9 +61,9 @@ function strtolowerIntl ( $str ) {
 	}
 
 function isBlockedIP () {
-	global $wikiWikipedia ;
+	global $wikiBlockedIPsLink ;
 	$ip = getenv ( REMOTE_ADDR ) ;
-	$list = getMySQL ( "cur" , "cur_text" , "cur_title=\"$wikiWikipedia:Blocked_IPs\"" ) ;
+	$list = getMySQL ( "cur" , "cur_text" , "cur_title=\"$wikiBlockedIPsLink\"" ) ;
 	$list = explode ( "*$ip (" , $list ) ; # The most memory-wasting substring search ever!
 	if ( count ( $list ) > 1 ) return true ;
 	return false ;
