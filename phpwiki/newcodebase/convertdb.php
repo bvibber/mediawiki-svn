@@ -129,7 +129,7 @@ function convertCurTable()
 		# $counter = $row->cur_counter;
 		# if ( ! $counter ) { $counter = 0; }
 
-		if ( preg_match( "/^#redirect /i", $text ) ) {
+		if ( preg_match( "/^#redirect/i", $text ) ) {
 			$redir = 1;
 			$text = fixRedirect( $text );
 		} else { $redir = 0; }
