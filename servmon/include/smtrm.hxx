@@ -151,31 +151,25 @@ template<class tt>
 struct tmcmds : public smutl::singleton<tmcmds<tt> > {
 #include "../smstdrt.cxx"
 	tmcmds() {
-		stdrt.install("show version", cmd_show_version(), "Show software version");
-		stdrt.install("exit", cmd_exit(), "End session");
-		stdrt.install("show irc server %s", cfg_irc_showserver(), 
-				"Describe a configured server");
-		eblrt = stdrt;
-		stdrt.install("enable", cmd_enable(), "Enter privileged mode");
-		eblrt.install("disable", chg_parser(stdrt, "%s> "), 
-				"Return to non-privileged mode");
-		eblrt.install("configure", chg_parser(cfgrt, "%s(conf)# "), "Configure servmon");
-		cfgrt.install("exit", chg_parser(eblrt, "%s# "), "Exit configure mode");
-		cfgrt.install("enable password", cfg_eblpass(), "Change enable password");
-		cfgrt.install("function irc", chg_parser(ircrt, "%s(conf-irc)# "), 
-				"Configure Internet Relay Chat connections");
-		cfgrt.install("user %s password", cfg_userpass(), "Create a new account");
-		cfgrt.install("no user %s", cfg_no_user(), "Remove a user account");
-		ircrt.install("exit", chg_parser(cfgrt, "%s(conf)# "),
-				"Exit IRC configuration mode");
-		ircrt.install("server %s primary-nickname %s", cfg_irc_servnick(),
-				"Set primary nickname for IRC server");
-		ircrt.install("server %s secondary-nickname %s", cfg_irc_servsecnick(),
-				"Set secondary nickname for IRC server");
-		ircrt.install("no server %s", cfg_irc_noserver(),
-				"Remove a configured server");
-		ircrt.install("show server %s", cfg_irc_showserver(),
-				"Describe a configured server");
+stdrt.install("show version", cmd_show_version(), "Show software version");
+stdrt.install("exit", cmd_exit(), "End session");
+stdrt.install("show irc server %s", cfg_irc_showserver(), "Describe a configured server");
+eblrt = stdrt;
+stdrt.install("enable", cmd_enable(), "Enter privileged mode");
+eblrt.install("disable", chg_parser(stdrt, "%s> "), "Return to non-privileged mode");
+eblrt.install("configure", chg_parser(cfgrt, "%s(conf)# "), "Configure servmon");
+cfgrt.install("exit", chg_parser(eblrt, "%s# "), "Exit configure mode");
+cfgrt.install("enable password", cfg_eblpass(), "Change enable password");
+cfgrt.install("function irc", chg_parser(ircrt, "%s(conf-irc)# "), "Configure Internet Relay Chat connections");
+cfgrt.install("user %s password", cfg_userpass(), "Create a new account");
+cfgrt.install("no user %s", cfg_no_user(), "Remove a user account");
+ircrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit IRC configuration mode");
+ircrt.install("server %s primary-nickname %s", cfg_irc_servnick(), "Set primary nickname for IRC server");
+ircrt.install("server %s secondary-nickname %s", cfg_irc_servsecnick(),	"Set secondary nickname for IRC server");
+ircrt.install("no server %s", cfg_irc_noserver(), "Remove a configured server");
+ircrt.install("show server %s", cfg_irc_showserver(), "Describe a configured server");
+ircrt.install("no server %s enable", cfg_irc_noenableserver(), "Disable a server");
+ircrt.install("server %s enable", cfg_irc_enableserver(), "Enable connection to a server");
 	}
 	handler_node<tt> stdrt;
 	handler_node<tt> eblrt;
@@ -243,7 +237,7 @@ public:
 			return;
 		}
 	}
-	void gd_cb(smnet::inetclntp s, u_char c) {
+	void gd_cb(smnet::inetclntp, u_char c) {
 		std::cerr << "read data: [" << c << "]\n";
 		if (!binds[c](c))
 			disconnect();
@@ -266,7 +260,7 @@ public:
 	}
 	void chgrt(handler_node<trmsrv>* newrt, std::string const& prompt) {
 		cmds_root = *newrt;
-		prm = str(format(prompt) % "servmon");
+		prm = b::str(format(prompt) % "servmon");
 	}
 	void readline(rl_cb_t cb) {
 		rl_cb = cb;
@@ -377,7 +371,7 @@ end:
 		std::vector<handler_node_t *> matches = hstack[0]->find_matches(thisword, waswild);
 		for (typename std::vector<handler_node_t *>::iterator it = matches.begin(),
 			 end = matches.end(); it != end; ++it) {
-			wrtln(str(format("  %s %s") % 
+			wrtln(b::str(format("  %s %s") % 
 				boost::io::group(std::left, std::setw(20), (**it).name)
 				% (**it).help));
 		}
@@ -433,13 +427,13 @@ end:
 		destroyme = true;
 	}
 	void warn (std::string const & msg) {
-		wrtln(str(format("%% [W] %s") % msg));
+		wrtln(b::str(format("%% [W] %s") % msg));
 	}
 	void inform (std::string const & msg) {
-		wrtln(str(format("%% [I] %s") % msg)); 
+		wrtln(b::str(format("%% [I] %s") % msg)); 
 	}
 	void error (std::string const & msg) {
-		wrtln(str(format("%% [E] %s") % msg));
+		wrtln(b::str(format("%% [E] %s") % msg));
 	}
 private:
 	intft intf;

@@ -11,7 +11,7 @@ bool login_usr(std::string const& usr, std::string const& pass)
 	if (!usr_exists(usr)) return false;
 
 	try {
-		rpass = SMI(smcfg::cfg)->fetchstr(str(format("/core/users/%s/password") % usr));
+		rpass = SMI(smcfg::cfg)->fetchstr(b::str(format("/core/users/%s/password") % usr));
 	} catch (smcfg::nokey&) {
 		return false;
 	}
@@ -37,9 +37,10 @@ bool usr_exists(std::string const& usr)
 
 void add_usr(std::string const& usr, std::string const& pass)
 {
+	std::cerr << "add_usr: usr=["<<usr<<"]\n";
 	if (!usr_exists(usr))
 		SMI(smcfg::cfg)->addlist("/core/users", usr);
-	SMI(smcfg::cfg)->storestr(str(format("/core/users/%s/password") % usr), pass);
+	SMI(smcfg::cfg)->storestr(b::str(format("/core/users/%s/password") % usr), pass);
 }
 
 void del_usr(std::string const& usr)

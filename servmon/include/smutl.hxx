@@ -7,7 +7,7 @@ namespace smutl {
 
 template<class T>
 class singleton : noncopyable {
-public:
+public:	
 	static T* instance(void) {
 		return mT ? mT : (mT = new T);
 	}
@@ -16,7 +16,7 @@ private:
 };
 
 template<class T>
-T* singleton<T>::mT;
+T* singleton<T>::mT = 0;
 
 std::string car(std::string&);
 

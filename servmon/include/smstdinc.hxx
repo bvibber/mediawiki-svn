@@ -23,6 +23,7 @@ using boost::lexical_cast;
 using boost::format;
 using boost::noncopyable;
 using boost::shared_ptr;
+namespace b = boost;
 
 #include <sys/types.h>
 #include <sys/socket.h>

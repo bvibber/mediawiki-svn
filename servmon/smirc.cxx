@@ -39,7 +39,7 @@ cfg::newserv_or_chgnick(str server, str nick)
 {
 	if (!SMI(smcfg::cfg)->listhas("/irc/servers", server))
 		SMI(smcfg::cfg)->addlist("/irc/servers", server);
-	SMI(smcfg::cfg)->storestr(str(format("/irc/servers/%s/nickname") % server), nick);
+	setkeystr(server, "nickname", nick);
 }
 
 void 
@@ -47,7 +47,7 @@ cfg::server_set_secnick(str server, str nick)
 {
 	if (!SMI(smcfg::cfg)->listhas("/irc/servers", server))
 		return;
-	SMI(smcfg::cfg)->storestr(str(format("/irc/servers/%s/secnickname") % server), nick);
+	setkeystr(server, "secnickname", nick);
 }
 
 bool 
@@ -84,42 +84,42 @@ cfg::server_enabled(str server)
 int 
 cfg::getkeyint(str server, str key)
 {
-	return SMI(smcfg::cfg)->fetchint(str(format("/irc/server/%s/%s")
+	return SMI(smcfg::cfg)->fetchint(b::str(format("/irc/server/%s/%s")
 		% server % key));
 }
 
 bool 
 cfg::getkeybool(str server, str key)
 {
-	return SMI(smcfg::cfg)->fetchbool(str(format("/irc/server/%s/%s")
+	return SMI(smcfg::cfg)->fetchbool(b::str(format("/irc/server/%s/%s")
 		% server % key));
 }
 
 str
 cfg::getkeystr(str server, str key)
 {
-	return SMI(smcfg::cfg)->fetchstr(str(format("/irc/server/%s/%s")
+	return SMI(smcfg::cfg)->fetchstr(b::str(format("/irc/server/%s/%s")
 		% server % key));
 }
 
 void
 cfg::setkeyint(str server, str key, int value)
 {
-	SMI(smcfg::cfg)->storeint(str(format("/irc/server/%s/%s")
+	SMI(smcfg::cfg)->storeint(b::str(format("/irc/server/%s/%s")
 		% server % key), value);
 }
 
 void
 cfg::setkeystr(str server, str key, str value)
 {
-	SMI(smcfg::cfg)->storestr(str(format("/irc/server/%s/%s")
+	SMI(smcfg::cfg)->storestr(b::str(format("/irc/server/%s/%s")
 		% server % key), value);
 }
 
 void
 cfg::setkeybool(str server, str key, bool value)
 {
-	SMI(smcfg::cfg)->storebool(str(format("/irc/server/%s/%s")
+	SMI(smcfg::cfg)->storebool(b::str(format("/irc/server/%s/%s")
 		% server % key), value);
 }
 

@@ -132,16 +132,38 @@ struct cfg_irc_showserver : handler<tt> {
 		}
 		std::string pnick, snick;
 		pnick = SMI(smcfg::cfg)->fetchstr(
-				str(format("/irc/servers/%s/nickname") % cd.p(0)));
+				b::str(format("/irc/servers/%s/nickname") % cd.p(0)));
 		try {
 			snick = SMI(smcfg::cfg)->fetchstr(
-					str(format("/irc/servers/%s/secnickname") % cd.p(0)));
+					b::str(format("/irc/servers/%s/secnickname") % cd.p(0)));
 		} catch (smcfg::nokey&) {
 			snick = "<none>";
 		}
 		cd.wrtln(cd.p(0));
 		cd.wrtln("  primary nickname:   " + pnick);
 		cd.wrtln("  secondary nickname: " + snick);
+		return true;
+	}
+};
+
+struct cfg_irc_enableserver : handler<tt> {
+	bool execute(comdat<tt> const& cd) {
+		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
+			cd.error("No such server.");
+			return true;
+		}
+		SMI(smirc::cfg)->enable_server(cd.p(0), true);
+		return true;
+	}
+};
+
+struct cfg_irc_noenableserver : handler<tt> {
+	bool execute(comdat<tt> const& cd) {
+		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
+			cd.error("No such server.");
+			return true;
+		}
+		SMI(smirc::cfg)->enable_server(cd.p(0), false);
 		return true;
 	}
 };

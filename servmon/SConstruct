@@ -23,5 +23,5 @@ env = Environment(CPPFLAGS = cppflags + ' -DPFX="\\"' + prefix + '\\""',
 		CXX = cxx,
 		CPPPATH = 'include')
 env.Program ('servmon', srcs, LIBS = 'pthread')
-env.Program ('initconf', ['initconf.cxx', 'smcfg.cxx'], LIBS = 'pthread')
+env.Program ('initconf', ['initconf.cxx', 'smcfg.cxx', 'smauth.cxx'], LIBS = 'pthread')
 env.Alias('install', prefix)
