@@ -12,7 +12,7 @@ function blockIP () {
 	$logText = "$target (".time().")" ;
 	$line = str_replace ( array("$1","$2") ,
 	array($target,$user->name) , $wikiBlockIPText ) ;
-	makeLog ( "wikipedia:Blocked IPs" , "*$logText : $line\n" , $line ) ;
+	makeLog ( "wikipedia:Blocked IPs" , "*$logText : $line\n" , $line , false ) ;
 
 	 return "<font size='+3' color=red>$line</font>" ;
 	 }
