@@ -36,12 +36,12 @@ public void run() {
 	while ( m_running ) {
 		r = Math.random();
 		if ( r < 0.1 ) {
-			url = WikiSuite.viewUrl( "" ); /* Main page */
+			url = WikiTest.viewUrl( "" ); /* Main page */
 		} else if ( r < 0.15 ) {
-			url = WikiSuite.viewUrl( "Special:Recentchanges" );
+			url = WikiTest.viewUrl( "Special:Recentchanges" );
 		} else {
 			if ( ++index >= WikiSuite.preloadedPages.length ) { index = 0; }
-			url = WikiSuite.editUrl( WikiSuite.preloadedPages[index] );
+			url = WikiTest.viewUrl( WikiSuite.preloadedPages[index] );
 		}
 
 		start = System.currentTimeMillis();
