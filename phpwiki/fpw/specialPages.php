@@ -117,7 +117,7 @@ function editUserSettings () {
 		unset ( $ButtonSave ) ;
 		global $QuickBar , $NewTopics , $UnderlineLinks , $AutoTalk , $ShowHover , $ROWS , $COLS , $doSkin ;
 		global $OLDPASSWORD , $NEWPASSWORD , $RETYPEPASSWORD , $EMAIL , $RESULTSPERPAGE , $doJustify , $ChangesLayout ;
-		global $SHOWSTRUCTURE , $HOURDIFF ;
+		global $SHOWSTRUCTURE , $HOURDIFF , $NumberHeadings ;
 		if ( $RESULTSPERPAGE < 2 ) $RESULTSPERPAGE = 20 ;
 		$user->options["quickBar"] = $QuickBar ;
 		$user->options["markupNewTopics"] = $NewTopics ;
@@ -131,6 +131,7 @@ function editUserSettings () {
 		$user->options["skin"] = $doSkin ;
 #		$user->options["showStructure"] = $SHOWSTRUCTURE ;
 		$user->options["showStructure"] = "no" ; #Subpages turned off
+		$user->options["numberHeadings"] = $NumberHeadings ;
 		$user->options["changesLayout"] = $ChangesLayout ;
 		$user->email = $EMAIL ;
 		$user->options["hourDiff"] = $HOURDIFF ;
@@ -239,10 +240,10 @@ function editUserSettings () {
 #	$ret .= "<input type=radio value=no ".$shs["no"]." name=SHOWSTRUCTURE>No (Standard)<br>\n" ;
 
 	# UNUSED
-#	$cl[$user->options["changesLayout"]] = "checked" ;
-#	$ret .= "</td><td valign=top nowrap><b>New Topics :</b><br>\n" ;
-#	$ret .= "<input type=radio value=classic ".$cl["classic"]." name=ChangesLayout>Classic (Standard)<br>\n" ;
-#	$ret .= "<input type=radio value=table ".$cl["table"]." name=ChangesLayout>As a table<br>\n" ;
+	$nh[$user->options["numberHeadings"]] = "checked" ;
+	$ret .= "</td><td valign=top nowrap><b>Auto-number headings :</b><br>\n" ;
+	$ret .= "<input type=radio value=yes ".$nh["yes"]." name=NumberHeadings>Yes (Standard)<br>\n" ;
+	$ret .= "<input type=radio value=no ".$nh["no"]." name=NumberHeadings>No<br>\n" ;
 	$ret .= "</td></tr>" ;
 
 	$ret .= "<tr><td><center><input type=submit value=Save name=ButtonSave></center></td>" ;
@@ -527,6 +528,27 @@ function recentchanges () {
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) array_push ( $arr , $s ) ;
 	mysql_free_result ( $result ) ;
+
+	$d = array () ;
+	foreach ( $arr as $s ) {
+		$i = 0 ;
+		$j = tsc ( $s->cur_timestamp ) ;
+		$ja = date ( "Ymd000000" , $j ) ;
+		$jb = date ( "Ymd000000" , $j + 24*60*60 ) ;
+		$sql = "SELECT count(old_id) AS cnt FROM old WHERE old_title=\"".$s->cur_title."\" AND old_timestamp>=$ja AND old_timestamp<=$jb" ;
+		$result = mysql_query ( $sql , $connection ) ;
+		if ( $result != "" ) {
+			$t = mysql_fetch_object ( $result ) ;
+			if ( $t != "" ) $i = $t->cnt + 1 ;
+			mysql_free_result ( $result ) ;
+			}
+		if ( $i < 2 ) $i = "" ;
+		$s->changes = $i ;
+		array_push ( $d , $s ) ;
+		}
+	$arr = $d ;
+	$d = array () ;
+
 	mysql_close ( $connection ) ;
 	$ret .= recentChangesLayout($arr) ;
 	return $ret ;
@@ -643,7 +665,7 @@ function recentChangesLayout ( &$arr ) {
 		$time = date ( "H:i" , tsc ( $s->cur_timestamp ) ) ;
 		if ( $day != $lastDay ) {
 			$lastDay = $day ;
-			if ( $user->options["changesLayout"] == "table" ) $ret.="<tr><td width=100% colspan=6".$user->options["tabLine0"]."><b>$day</b></td></tr>";
+			if ( $user->options["changesLayout"] == "table" ) $ret.="<tr><td width=100% colspan=7".$user->options["tabLine0"]."><b>$day</b></td></tr>";
 			else $ret .= "</ul><b>$day</b><ul>\n" ;
 			$color = $color1 ;
 			}
@@ -674,7 +696,17 @@ function recentChangesLayout ( &$arr ) {
 		else $t .= "<a href=\"$THESCRIPT?title=$s->cur_title\">$nt</a>" ;
 
 		if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top width=0% nowrap>$time</td>" ;
-		else $t = str_replace ( "</td>" , "; " , $t ) . " $time . . . " ;
+		else $t = str_replace ( "</td>" , "; " , $t ) . " $time" ;
+
+		$noc = $s->changes ;
+		if ( $noc > 1 ) $noc = "$noc <a href=\"$THESCRIPT?action=history&title=$s->cur_title\">changes</a>" ;
+		if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top width=0% nowrap>$noc</td>" ;
+		else { 
+			if ( $noc != "" ) $t .= " ($noc)" ;
+			$t .= " . . . " ;
+			}
+
+
 		if ( $s->version != "" ) {
 			$v = new wikiTitle ;
 			$v->title = $s->cur_user_text ;

@@ -340,20 +340,22 @@ class WikiPage extends WikiTitle {
 		}
 
 	# This function is called to replace wiki-style tags with HTML, e.g., the first occurrence of ''' with <b>, the second with </b>
-	function pingPongReplace ( $f , $r1 , $r2 , $s ) {
+	function pingPongReplace ( $f , $r1 , $r2 , $s , $startAtLine = false ) {
 		$ret = "" ;
 		$lines = explode ( "\n" , $s ) ;
 		foreach ( $lines as $s ) {
-			$a = explode ( $f , " ".$s ) ;
-			$app = "" ;
-			$s = substr ( array_shift ( $a ) , 1 ) ;
-			$r = $r1 ;
-			if ( count ( $a ) % 2 != 0 ) $app = $f.array_pop ( $a ) ;
-			foreach ( $a as $t ) {
-				$s .= $r.$t ;
-				if ( $r == $r1 ) $r = $r2 ;
-				else $r = $r1 ;
-				}
+			if ( $startAtLine == false or substr ( $s , 0 , strlen ( $f ) ) == $f ) {
+				$a = explode ( $f , " ".$s ) ;
+				$app = "" ;
+				$s = substr ( array_shift ( $a ) , 1 ) ;
+				$r = $r1 ;
+				if ( count ( $a ) % 2 != 0 ) $app = $f.array_pop ( $a ) ;
+				foreach ( $a as $t ) {
+					$s .= $r.$t ;
+					if ( $r == $r1 ) $r = $r2 ;
+					else $r = $r1 ;
+					}
+			}
 			if ( $ret != "" ) $ret .= "\n" ;
 			$ret .= $s.$app ;
 			}
@@ -416,7 +418,7 @@ class WikiPage extends WikiTitle {
 		while ( count ( spliti ( "<h" , $s , 2 ) ) == 2 ) {
 			$a = spliti ( "<h" , $s , 2 ) ;
 			$j = substr ( $a[1] , 0 , 1 ) ;
-			$t .= $a[0]."<h".$i.">" ;
+			$t .= $a[0]."<h".$j.">" ;
 
 			$v[$j]++ ;
 			$b = array () ;
@@ -444,9 +446,9 @@ class WikiPage extends WikiTitle {
 		$s = $this->pingPongReplace ( "'''''" , "<i><b>" , "</b></i>" , $s ) ;
 		$s = $this->pingPongReplace ( "'''" , "<b>" , "</b>" , $s ) ;
 		$s = $this->pingPongReplace ( "''" , "<i>" , "</i>" , $s ) ;
-		$s = $this->pingPongReplace ( "====" , "<h4>" , "</h4>" , $s ) ;
-		$s = $this->pingPongReplace ( "===" , "<h3>" , "</h3>" , $s ) ;
-		$s = $this->pingPongReplace ( "==" , "<h2>" , "</h2>" , $s ) ;
+		$s = $this->pingPongReplace ( "====" , "<h4>" , "</h4>" , $s , true ) ;
+		$s = $this->pingPongReplace ( "===" , "<h3>" , "</h3>" , $s , true ) ;
+		$s = $this->pingPongReplace ( "==" , "<h2>" , "</h2>" , $s , true ) ;
 
 		# Automatic links to subpages (e.g., /Talk -> [[/Talk]]   #DEACTIVATED
 #		$s = ereg_replace ( "([\n ])/([a-zA-Z0-9]+)" , "\\1[[/\\2|/\\2]]" , $s ) ;
@@ -483,7 +485,7 @@ class WikiPage extends WikiTitle {
 			$pre .= $obegin ;
 			$obegin = $nbegin ;
 
-			while ( substr ( $t , 0 , 1 ) == " " ) {
+			if ( substr ( $t , 0 , 1 ) == " " ) {
 				$pre .= "&nbsp;" ;
 				$t = substr ( $t , 1 ) ;
 				$obegin .= " " ;
@@ -514,6 +516,8 @@ class WikiPage extends WikiTitle {
 			}
 		$s .= "</p>" ;
 
+		$s = str_replace ( "</li>\n&nbsp;<li>" , "</li>\n<li>" , $s ) ;
+
 		# Removing artefact empty paragraphs like <p></p>
 		$this->replaceAll ( "<p$justify>\n</p>" , "<p$justify></p>" , $s ) ;
 		$this->replaceAll ( "<p$justify></p>" , "" , $s ) ;
@@ -527,7 +531,7 @@ class WikiPage extends WikiTitle {
 		$s = $this->parseImages ( $s ) ;
 		$s = $this->replaceExternalLinks ( $s ) ;
 		$s = $this->replaceInternalLinks ( $s ) ;
-		$s = $this->autoNumberHeadings ( $s ) ;
+		if ( $user->options["numberHeadings"] == "yes" ) $s = $this->autoNumberHeadings ( $s ) ;
 		return $s ;
 		}
 

@@ -90,6 +90,7 @@ class WikiUser {
 		if ( $this->options["resultsPerPage"] == "" ) $this->options["resultsPerPage"] = "20" ;
 		if ( $this->options["skin"] == "" ) $this->options["skin"] = "None" ;
 		if ( $this->options["hourDiff"] == "" ) $this->options["hourDiff"] = "0" ;
+		if ( $this->options["numberHeadings"] == "" ) $this->options["numberHeadings"] = "yes" ;
 
 #		if ( $this->options["showStructure"] == "" ) # NO SUBPAGES ANYMORE
 		$this->options["showStructure"] = "no" ;
