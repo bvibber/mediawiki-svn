@@ -3,7 +3,7 @@
 function wfSpecialRecentchanges()
 {
 	global $wgUser, $wgOut, $wgLang, $wgTitle;
-	global $days, $limit, $hideminor; # From query string
+	global $days, $limit, $hideminor, $from; # From query string
 	$fname = "wfSpecialRecentchanges";
 
 	$wgOut->addWikiText( wfMsg( "recentchangestext" ) );
@@ -17,6 +17,11 @@ function wfSpecialRecentchanges()
 		if ( ! $limit ) { $limit = 100; }
 	}
 	$cutoff = date( "YmdHis", time() - ( $days * 86400 ) );
+	if(preg_match('/^[0-9]{14}$/', $from) and $from > $cutoff) {
+		$cutoff = $from;
+	} else {
+		unset($from);
+	}
 
 	$sql = "SELECT rc_cur_id,rc_namespace,rc_title,rc_user,rc_new," .
 	  "rc_comment,rc_user_text,rc_timestamp,rc_minor FROM recentchanges " .
@@ -24,8 +29,13 @@ function wfSpecialRecentchanges()
 	  "ORDER BY rc_timestamp DESC LIMIT {$limit}";
 	$res = wfQuery( $sql, $fname );
 
-	$note = str_replace( "$1", $limit, wfMsg( "rcnote" ) );
-	$note = str_replace( "$2", $days, $note );
+	if(isset($from)) {
+		$note = str_replace( "$1", $limit, wfMsg( "rcnotefrom" ) );
+		$note = str_replace( "$2", $wgLang->timeanddate($from), $note );
+	} else {
+		$note = str_replace( "$1", $limit, wfMsg( "rcnote" ) );
+		$note = str_replace( "$2", $days, $note );
+	}
 	$wgOut->addHTML( "\n<hr>\n{$note}\n<br>" );
 
 	$sk = $wgUser->getSkin();
@@ -49,6 +59,13 @@ function wfSpecialRecentchanges()
 	  	  WfMsg( "hide" ), "days={$days}&limit={$limit}&hideminor=1" );
 	}
 	$note = str_replace( "$3", $mlink, $note);
+
+	$now = date( "YmdHis" );
+	$note .= "<br>\n" . str_replace( "$1",
+	  $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
+	  $wgLang->timeanddate( $now ), "from=$now" ),
+	  wfMsg( "rclistfrom" ) );
+
 	$wgOut->addHTML( "{$note}\n" );
 
 	$count1 = wfNumRows( $res );
