@@ -25,6 +25,7 @@ include ( "./wikiUser.php" ) ;
 		$out = watch ( $title , $mode ) ;
 	} else if ( $action == "view" ) $out = view ( $title ) ;
 	else if ( $action == "edit" ) $out = doEdit ( $title ) ;
+	else if ( $action == "history" ) $out = doHistory ( $title ) ;
 	else $out = error ( "No such action \"$action\"" ) ;
 
 	global $bodyOptions , $headerScript ;
@@ -37,8 +38,6 @@ include ( "./wikiUser.php" ) ;
 	$linkStyle = "style=\"color:blue\"" ;
 	if ( $user->options["underlineLinks"] == "no" ) $linkStyle = "style=\"color:blue;text-decoration:none\"" ;
 	if ( $user->options["forceLinks"] != "" ) $linkStyle = $user->options["forceLinks"] ;
-#	$out = str_replace ( "<a href=" , "<a style=\"color:blue;text-decoration:none\" href=" , $out ) ;
-#	else 
 	$out = str_replace ( "<a href=" , "<a $linkStyle href=" , $out ) ;
 	$out = str_replace ( "&lt;a style=\"color:blue\"" , "&lt;a " , $out ) ; # Correcting weird replacement above
 

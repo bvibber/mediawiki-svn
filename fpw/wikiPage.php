@@ -17,14 +17,26 @@ class WikiPage extends WikiTitle {
 			}
 		$connection = getDBconnection () ;
 		mysql_select_db ( "wikipedia" , $connection ) ;
-		$sql = "SELECT * FROM cur WHERE cur_title=\"".$this->secureTitle."\"" ;
-		$result = mysql_query ( $sql , $connection ) ;
-		if ( $s = mysql_fetch_object ( $result ) ) {
-			$this->title=$s->cur_title ;
-			$this->makeSecureTitle () ;
-			$this->contents = $s->cur_text ;
+		global $oldID ;
+		if ( isset ( $oldID ) ) {
+			$sql = "SELECT * FROM old WHERE old_id=$oldID" ;
+			$result = mysql_query ( $sql , $connection ) ;
+			if ( $s = mysql_fetch_object ( $result ) ) {
+				$this->title=$s->old_title ;
+				$this->makeSecureTitle () ;
+				$this->contents = $s->old_text ;
+				}
+			else $this->contents = "Describe the new page here." ;
+		} else {
+			$sql = "SELECT * FROM cur WHERE cur_title=\"".$this->secureTitle."\"" ;
+			$result = mysql_query ( $sql , $connection ) ;
+			if ( $s = mysql_fetch_object ( $result ) ) {
+				$this->title=$s->cur_title ;
+				$this->makeSecureTitle () ;
+				$this->contents = $s->cur_text ;
+				}
+			else $this->contents = "Describe the new page here." ;
 			}
-		else $this->contents = "Describe the new page here." ;
 		mysql_free_result ( $result ) ;
 		mysql_close ( $connection ) ;
 		$this->makeURL () ;
@@ -68,10 +80,10 @@ class WikiPage extends WikiTitle {
 		}
 	function backup () {
 		$id = getMySQL ( "cur" , "cur_id" , "cur_title=\"$this->secureTitle\"" ) ;
-		$oid = getMySQL ( "cur" , "cur_old_version" , "cur_title=\"$this->secureTitle\"" ) ;
+		$oid = getMySQL ( "cur" , "cur_old_version" , "cur_id=$id" ) ;
+
 		$connection = getDBconnection () ;
 		mysql_select_db ( "wikipedia" , $connection ) ;
-
 		$sql = "SELECT * FROM cur WHERE cur_id=$id" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		$s = mysql_fetch_object ( $result ) ;
@@ -80,6 +92,15 @@ class WikiPage extends WikiTitle {
 		$sql = "INSERT INTO old (old_title,old_old_version,old_text,old_comment,old_user,old_user_text,old_minor_edit)";
 		$sql .= " VALUES (\"$this->secureTitle\",$oid,\"$s->cur_text\",\"$s->cur_comment\",$s->cur_user,\"$s->cur_user_text\",$s->cur_minor_edit)" ;
 		mysql_query ( $sql , $connection ) ;
+
+		$sql = "SELECT old_id FROM old WHERE old_old_version=$oid AND old_title=\"$this->secureTitle\"" ;
+		$result = mysql_query ( $sql , $connection ) ;
+		$s = mysql_fetch_object ( $result ) ;
+		mysql_free_result ( $result ) ;
+
+		$oid = $s->old_id ;
+		setMySQL ( "cur" , "cur_old_version" , $oid , "cur_id=$id" ) ;
+
 		mysql_close ( $connection ) ;
 		}
 	function setEntry ( $text , $comment , $userID , $userName , $minorEdit ) {
@@ -315,6 +336,15 @@ class WikiPage extends WikiTitle {
 	# Header and footer section
 	function getLinkBar () {
 		$ret = "<a href=\"$PHP_SELF?\">HomePage</a>" ;
+
+		$spl = $this->getSubpageList () ;
+		if ( count ( $spl ) > 0 and $this->subpageTitle != "" ) {
+			$zz = trim ( $this->parseContents ( $spl[0] ) ) ;
+			$zz = str_replace ( "<p " , "<something " , $zz ) ;
+			$ret .= " | ".$zz ;
+#			$ret .= " | <a href=\"".$spl[0]."\">".$spl[0]."</a>" ;
+			}
+
 		$ret .= " | <a href=\"$PHP_SELF?title=special:RecentChanges\">Recent Changes</a>" ;
 		if ( $this->canEdit() ) $ret .= " | <a href=\"$PHP_SELF?action=edit&title=$this->url\">Edit this page</a>" ;
 		$ret .= " | <a href=\"$PHP_SELF?title=special:RandomPage\">Random Page</a>" ;
