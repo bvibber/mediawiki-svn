@@ -1094,7 +1094,7 @@ class WikiPage extends WikiTitle {
 
     # This generates the footer with link bar, search box, etc.
     function getFooter () {
-        global $wikiSearch , $wikiCategories , $wikiOtherNamespaces , $wikiCounter , $wikiLastChange ;
+        global $wikiSearch , $wikiCategories , $wikiOtherNamespaces , $wikiCounter , $wikiLastChange , $wikiDiff;
         global $wikiGetDate , $framed ; if ( isset ( $framed ) ) return "" ;
         $ret = $this->getLinkBar() ;
         $ret = "<table width=\"100%\" $border class=\"footer\" cellspacing=0><tr><td>$ret</td></tr></table>" ;
@@ -1114,7 +1114,7 @@ class WikiPage extends WikiTitle {
             $lc .= ":".substr ( $this->timestamp , 10 , 2 ) ;
             $ret .= "<br>\n" ;
             $ret .= str_replace ( "$1" , $lc , $wikiLastChange ) ;
-            $ret .= " <a href=\"".wikiLink("$this->url&diff=yes")."\">(diff)</a> " ;
+            $ret .= " <a href=\"".wikiLink("$this->url&diff=yes")."\">$wikiDiff</a> " ;
             }
 
 /*
