@@ -201,9 +201,10 @@ main(int ac, char **av)
     int c;
     icp_opcode opcode=ICP_HIT;
     int d;
+    int t=5;;
     struct rlimit rlim;
 
-    while ((c = getopt(ac,av,"dmp:c")) != -1) {
+    while ((c = getopt(ac,av,"dmt:p:c")) != -1) {
         switch (c) {
             case 'p':
                 port=atoi(optarg);
@@ -218,14 +219,17 @@ main(int ac, char **av)
             case 'd':
                 daemon(1,0);
                 break;
+            case 't':
+                t=atoi(optarg);
+                break;
             default:
-                fprintf(stderr, "Usage: icpagent [-p port] -m\n");
+                fprintf(stderr, "Usage: icpagent [-d] [-t delay time] [-p port] -m\n");
                 exit(-1);
         }
     }
     TAILQ_INIT(&head);
 
-    setpriority(PRIO_PROCESS,getpid(),20);
+    setpriority(PRIO_PROCESS,getpid(),10);
 
     s = socket(PF_INET, SOCK_DGRAM, 0);
     bzero(&me, sizeof(me));
@@ -262,11 +266,10 @@ main(int ac, char **av)
                 opcode=ICP_HIT;
             else if (remotemanage && !strcmp(url,"agent://disable"))
                 opcode=ICP_MISS;
-            d=delay();
-                if (d<0) 
-                    queuereply(them,ICP_MISS, url, header.reqnum,0);
-                else
-                    queuereply(them, opcode, url, header.reqnum, delay());
+	    if (t<0) 
+		    queuereply(them,ICP_MISS, url, header.reqnum,0);
+	    else
+		    queuereply(them, opcode, url, header.reqnum, t);
 	}
     }
 }

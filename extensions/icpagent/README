@@ -6,6 +6,8 @@ on or off.
 Options:
 -m      - enable remote management
 -p #    - port number to listen at
+-t #    - static delay time in milliseconds, defaults to 5
+	  use negative number to send icp misses only
 
 Example of remote management:
 
