@@ -352,7 +352,7 @@ class Skin {
 			($n = $wgTitle->isDeleted() ) ) {
 				$s .= " | " . wfMsg( "thisisdeleted",
 					$this->makeKnownLink(
-					$wgLang->SpecialPage( "Undelete/" . $wgTitle->getText() ),
+					$wgLang->SpecialPage( "Undelete/" . $wgTitle->getPrefixedDBkey() ),
 					wfMsg( "restorelink", $n ) ) );
 		}
 		return $s;
