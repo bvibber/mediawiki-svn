@@ -218,12 +218,12 @@
 	"Specialpages"  => "",
 	"Contributions" => "",
 	"Whatlinkshere" => "",
-	"Recentchangeslinked" => ""
+	"Recentchangeslinked" => "",
+	"Movepage"		=> ""
 );
 
 /* private */ $wgSysopSpecialPagesEn = array(
 	"Blockip"		=> "Block an IP address",
-	"Movepage"		=> "",
 	"Asksql"		=> "Query the database"
 );
 
@@ -818,7 +818,9 @@ of its history to the new name.
 The old title will become a redirect page to the new title.
 Links to the old page title will not be changed, and the talk
 page, if any, will not be moved.
-Please be sure you understand the consequences of this before
+<b>WARNING!</b>
+This can be a drastic and unexpected change for a popular page;
+please be sure you understand the consequences of this before
 proceeding.",
 "movearticle"	=> "Move page",
 "movenologin"	=> "Not logged in",
