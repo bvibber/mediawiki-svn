@@ -605,14 +605,20 @@ function recentChangesLayout ( &$arr ) {
 
 		$minor = $editTypes[$s->cur_minor_edit] ;
 
-		$t = "<tr>" ;
-		$t .= "<td$color valign=top>(diff)&nbsp;</td>" ;
-		if ( $s->version == "current" ) $t .= "<td$color valign=top><a href=\"$PHP_SELF?$s->cur_title\">$nt</a></td>" ;
-		else if ( $s->version != "" ) $t .= "<td$color valign=top><a href=\"$PHP_SELF?$s->cur_title&oldID=$s->old_id\">$nt ($s->version)</a></td>" ;
-		else $t .= "<td$color valign=top>[[$s->cur_title|$nt]]</td>" ;
-		$t .= "<td$color valign=top>$time</td>" ;
+		$t = "<tr><td$color valign=top width=0%>" ;
+		if ( $s->version == "current" ) $t .= "<a href=\"$PHP_SELF?$s->cur_title&diff=yes\">(diff)</a>&nbsp;" ;
+		else if ( $s->version != "" ) $t .= "<a href=\"$PHP_SELF?$s->cur_title&oldID=$s->old_id&version=$s->version&diff=yes\">(diff)</a>&nbsp;" ;
+		$t .= "</td><td$color valign=top>" ;
+		if ( $s->version == "current" ) $t .= "<a href=\"$PHP_SELF?$s->cur_title\">$nt</a></td>" ;
+		else if ( $s->version != "" ) $t .= "<a href=\"$PHP_SELF?$s->cur_title&oldID=$s->old_id&version=$s->version\">$nt ($s->version)</a></td>" ;
+		else $t .= "[[$s->cur_title|$nt]]</td>" ;
+		$t .= "<td$color valign=top width=0% nowrap>$time</td>" ;
 		if ( $s->version != "" ) {
-			$t .= "<td$color valign=top nowrap>$s->cur_user_text</td>" ;
+			$v = new wikiTitle ;
+			$v->title = $s->cur_user_text ;
+			$v->makeSecureTitle () ;
+			if ( $s->cur_user == 0 ) $t .= "<td$color valign=top nowrap>$s->cur_user_text!!</td>" ;
+			else $t .= "<td$color valign=top nowrap><a href=\"$PHP_SELF?title=user:$v->secureTitle\">$s->cur_user_text</a></td>" ;
 			}
 		else $t .= "<td$color valign=top nowrap>$u</td>" ;
 		$t .= "<td$color valign=top>$minor</td>" ;
@@ -905,9 +911,11 @@ function doHistory ( $title ) {
 		$sql = "SELECT * FROM old WHERE old_id=$o" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		$s = mysql_fetch_object ( $result ) ;
+#		print "<font color=red>$s->old_timestamp:</font> ".$s->old_text."<br>" ;
 		$s->cur_timestamp = $s->old_timestamp ;
 		$s->cur_title = $s->old_title ;
 		$s->cur_user = $s->old_user ;
+		$s->cur_comment = $s->old_comment ;
 		$s->cur_user_text = $s->old_user_text ;
 		$s->cur_minor_edit = $s->old_minor_edit ;
 		array_push ( $a , $s ) ;
@@ -924,7 +932,8 @@ function doHistory ( $title ) {
 		$i-- ;
 		}
 
-	$t = "<b>This is the history of <a href=\"$PHP_SELF?title=$title\">$title</a></b>".recentChangesLayout ( $a ) ;
+	$t = recentChangesLayout ( $a ) ;
+	$t = "<b>This is the history of <a href=\"$PHP_SELF?title=$title\">$title</a></b>".$t ;
 
 	$ret = $vpage->getHeader() ;
 	$ret .= $vpage->getMiddle($t) ;
@@ -984,5 +993,41 @@ function ShortPages () {
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
 	return $ret ;
+	}
+
+# select old_id,old_title,old_timestamp,old_old_version from old order by old_timestamp desc
+function askSQL () {
+	global $Save , $question ;
+	$ret = "" ;
+	if ( isset ( $Save ) ) {
+		unset ( $Save ) ;
+		$connection = getDBconnection () ;
+		mysql_select_db ( "wikipedia" , $connection ) ;
+		$result = mysql_query ( $question , $connection ) ;
+		$n = mysql_num_fields ( $result ) ;
+		$k = array () ;
+		for ( $x = 0 ; $x < $n ; $x++ ) array_push ( $k , mysql_field_name ( $result , $x ) ) ;
+		$a = array () ;
+		while ( $s = mysql_fetch_object ( $result ) ) {
+			array_push ( $a , $s ) ;
+			}
+		mysql_free_result ( $result ) ;
+		mysql_close ( $connection ) ;
+
+		$ret .= "<table width=100% border=1 bordercolor=black cellspacing=0 cellpadding=2><tr>" ;
+		foreach ( $k as $x ) $ret .= "<th>$x</th>" ;
+		$ret .= "</tr><tr>" ;
+		foreach ( $a as $y ) {
+			foreach ( $k as $x ) $ret .= "<td>".$y->$x."</td>" ;
+			$ret .= "</tr><tr>" ;
+			}
+		$ret .= "</tr></table>" ;
+		}
+	$form = "" ;
+	$form .= "<FORM method=POST>" ;
+	$form .= "<input type=text value=\"$question\" name=question size=150> \n" ;
+	$form .= "<input type=submit value=Ask name=Save> \n" ;
+	$form .= "</FORM>" ;
+	return $form.$ret ;
 	}
 ?>
