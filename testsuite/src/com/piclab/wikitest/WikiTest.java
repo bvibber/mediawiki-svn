@@ -55,6 +55,7 @@ private void run() {
 	} catch ( Exception e ) {
 		WikiSuite.error( "Exception (" + e + ") initializing test \"" +
 		  testName() + "\"" );
+		e.printStackTrace( new java.io.PrintWriter( System.err ) );
 		result = 1;
 	}
 	if ( result != 0 ) {
@@ -70,6 +71,7 @@ private void run() {
 	} catch (Exception e) {
 		WikiSuite.error( "Exception (" + e + ") running test \"" +
 		  testName() + "\"" );
+		e.printStackTrace( new java.io.PrintWriter( System.err ) );
 		result = 2;
 	}
 	m_stop = System.currentTimeMillis();

@@ -474,6 +474,7 @@ private void initializeDatabase() {
 		}
 	}
 	info( "Preloading database with test pages." );
+/*
 	for (int i = 0; i < preloadedPages.length; ++i) {
 		try {
 			wr = loadPageFromFile( preloadedPages[i] );
@@ -484,6 +485,7 @@ private void initializeDatabase() {
 			fine( "Loaded \"" + preloadedPages[i] + "\"" );
 		}
 	}
+*/
 	info( "Creating test users." );
 	try {
 		wr = viewPage( "Special:Userlogin" );
