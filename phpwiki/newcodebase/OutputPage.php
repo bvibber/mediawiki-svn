@@ -102,6 +102,18 @@ class OutputPage {
 		$sk->initPage();
 		print $this->headElement();
 
+		# Frames?
+		if ( $wgUser->getOption("viewframes") ) {
+			global $viewFrames , $title , $action ;
+			if ( "" == $viewFrames ) {
+				$url = "http://192.168.0.14/newwiki/$title&action=$action" ;
+				print $sk->getFrameset ( $url ) ;
+				print "</HTML>" ;
+				flush () ;
+				return ;
+			}
+		}
+
 		print "<body";
 		$ops = $sk->getBodyOptions();
 		foreach ( $ops as $name => $val ) {
@@ -112,9 +124,28 @@ class OutputPage {
 			print "<!-- Wiki debugging output:\n" .
 			  $this->mDebugtext . "-->\n";
 		}
-		print $sk->beforeContent();
-		print $this->mBodytext;
-		print $sk->afterContent();
+
+		# Frames?
+		if ( !$wgUser->getOption("viewframes") ) {
+			print $sk->beforeContent();
+			print $this->mBodytext;
+			print $sk->afterContent();
+		} else {
+			$s = $sk->getFrame ( $viewFrames ) ;
+			if ( $s == "" ) print $this->mBodytext ;
+			else print $s ;
+		}
+
+/*		} else if ( "top" == $viewFrames ) {
+			print $sk->beforeContent();
+		} else if ( "content" == $viewFrames ) {
+			print $this->mBodytext;
+		} else if ( "sidebar" == $viewFrames ) {
+			print "SIDEBAR" ;
+		} else if ( "bottom" == $viewFrames ) {
+			print $sk->bottomLinks () ;
+		}*/
+
 		print "</body></html>";
 		flush();
 	}
@@ -709,6 +740,7 @@ class OutputPage {
 			$this->mHTMLtitle = $this->mPagetitle;
 		}
 		$ret .= "<html><head><title>{$this->mHTMLtitle}</title>\n";
+		if ( $wgUser->getOption("viewframes") ) $ret .= "<BASE TARGET=_top>\n" ;
 		foreach ( $this->mMetatags as $tag ) {
 			if ( 0 == strcasecmp( "http:", substr( $tag[0], 0, 5 ) ) ) {
 				$a = "http-equiv";
