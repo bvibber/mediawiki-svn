@@ -670,7 +670,7 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "watchnologintext"	=> "You must be <a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
 to modify your watchlist.",
-"addedwatch"	=> "Added to watchist",
+"addedwatch"	=> "Added to watchlist",
 "addedwatchtext" => "The page \"$1\" has been added to your watchlist.",
 "removedwatch"	=> "Removed from watchlist",
 "removedwatchtext" => "The page \"$1\" has been removed from your watchlist.",
