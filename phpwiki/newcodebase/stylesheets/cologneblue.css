@@ -12,7 +12,8 @@ body { margin: 0px; padding: 4px; }
  padding: 0;
 }
 #article p, #article ul, #article ol, #article dl {
- padding: 0; margin-top: 2ex; margin-bottom: 1ex;
+ padding-top: 0; padding-bottom: 0;
+ margin-top: 2ex; margin-bottom: 0;
 }
 p, pre, td, th, li, dd, dt { line-height: 1.25; }
 
