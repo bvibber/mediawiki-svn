@@ -55,6 +55,13 @@ TUCS TTitle::getNamespace ()
     
 int TTitle::getNamespaceID ()
     {
+    TUCS special = LNG("NamespaceNames:-1") ;
     if ( ns == "" ) return 0 ;
+    if ( ns == special ) return -1 ;
     return 0 ; // DUMMY
+    }
+    
+TUCS TTitle::getJustTitle ()
+    {
+    return title ;
     }

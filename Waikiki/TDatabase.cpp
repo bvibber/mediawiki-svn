@@ -4,12 +4,12 @@ TDatabase* TDatabase::current = NULL ;
 
 // TDatabase
 
-bool TDatabase::init ( string s1 ) { return false ; } ;
-void TDatabase::getArticle ( TTitle t , TArticle &art , bool wasRedirected ) { } ;
+bool TDatabase::init ( string s1 ) { return false ; }
+void TDatabase::getArticle ( TTitle t , TArticle &art , bool wasRedirected ) { }
+void TDatabase::getRandomArticle ( TArticle &art ) {}
 bool TDatabase::doesArticleExist ( TTitle &t ) { return false ; }
 void TDatabase::query ( TUCS s ) {}
-
-void TDatabase::findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) { } ;
+void TDatabase::findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) { }
 
 void TDatabase::filterBackslashes ( TUCS &s )
     {
@@ -306,6 +306,24 @@ void TDatabaseSqlite::getArticle ( TTitle t , TArticle &art , bool wasRedirected
        art.setSource ( s ) ;
        }
     art.setTitle ( t ) ;
+    }
+
+void TDatabaseSqlite::getRandomArticle ( TArticle &art )
+    {
+    results.clean() ;
+    
+    string sql ;
+    sql = "SELECT * FROM cur WHERE cur_namespace=0 AND cur_is_redirect=0 ORDER BY random() LIMIT 1" ;
+    
+    query ( sql ) ;
+    
+    if ( results.content.size() == 1 )
+       {
+       TUCS s = results[0][results["cur_text"]] ;
+       filterBackslashes ( s ) ;
+       art.setSource ( s ) ;
+       }
+    art.setTitle ( TTitle ( results[0][results["cur_title"]] ) ) ;
     }
 
 bool TDatabaseSqlite::doesArticleExist ( TTitle &t )

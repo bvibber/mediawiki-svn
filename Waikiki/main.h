@@ -17,6 +17,7 @@
 #include "TTitle.h"
 #include "TArticle.h"
 #include "TDatabase.h"
+#include "TSpecialPages.h"
 
 #define FOREACH(_a,_b) for ( _b = 0 ; _b < _a.size() ; _b++ )
 

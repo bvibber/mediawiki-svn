@@ -14,6 +14,7 @@ class TTitle
     TUCS getURL () ;
     TUCS getNamespace () ;
     TUCS getDBkey () ;
+    TUCS getJustTitle () ;
     
     int getNamespaceID () ;
     

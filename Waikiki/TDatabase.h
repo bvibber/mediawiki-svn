@@ -38,6 +38,7 @@ class TDatabase
     // Dummy methods
     virtual bool init ( string s1 ) ;
     virtual void getArticle ( TTitle t , TArticle &art , bool wasRedirected = false ) ;
+    virtual void getRandomArticle ( TArticle &art ) ;
     virtual bool doesArticleExist ( TTitle &t ) ;
     virtual void findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) ;
     virtual void query ( TUCS s ) ;
@@ -66,6 +67,7 @@ class TDatabaseSqlite : public TDatabase
     public :
     virtual bool init ( string s1 ) ;
     virtual void getArticle ( TTitle t , TArticle &art , bool wasRedirected = false ) ;
+    virtual void getRandomArticle ( TArticle &art ) ;
     virtual bool doesArticleExist ( TTitle &t ) ;
     virtual void findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) ;
     virtual void query ( TUCS s ) ;

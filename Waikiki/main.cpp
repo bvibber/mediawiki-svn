@@ -8,6 +8,9 @@ class TWikiInterface
     ~TWikiInterface () ;
     void run (int argc, char *argv[]) ;
     void go ( TUCS s , TArticle &art ) ;
+    
+    private :
+    TSpecialPages *sp ;
     } ;
 
 TWikiInterface::TWikiInterface ()
@@ -16,6 +19,7 @@ TWikiInterface::TWikiInterface ()
     TUser::current = new TUser ;
     TOutput::current = new TOutput ;
     DB = new TDatabase ;
+    sp = new TSpecialPages ;
     }
     
 TWikiInterface::~TWikiInterface ()
@@ -24,6 +28,7 @@ TWikiInterface::~TWikiInterface ()
     delete TOutput::current ;
     delete TLanguage::current ;
     delete DB ;
+    delete sp ;
     }
     
 void TWikiInterface::run (int argc, char *argv[])
@@ -116,13 +121,19 @@ void TWikiInterface::run (int argc, char *argv[])
            }
         }
 
+    TTitle ft ( forcetitle , FROM_TEXT ) ;
+
     if ( action == "GO" )
         {
         go ( forcetitle , art ) ;
         }
+    else if ( ft.getNamespaceID() == -1 ) // Special page
+        {
+        sp->render ( ft.getJustTitle() , art ) ;
+        }
     else if ( loadFromFile ) // View
         {
-        DB->getArticle ( TTitle ( forcetitle, FROM_TEXT ) , art ) ;
+        DB->getArticle ( ft , art ) ;
         }
     else
         {
@@ -135,7 +146,7 @@ void TWikiInterface::run (int argc, char *argv[])
            t2 += "\n" ;
            }
         art.setSource ( t2 ) ;
-        art.setTitle ( TTitle ( forcetitle, FROM_TEXT ) ) ;
+        art.setTitle ( ft ) ;
         }
         
 
