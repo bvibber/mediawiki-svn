@@ -25,5 +25,5 @@
 # or
 #DEFAULT (echo ""; id; echo %{sVv}; date; cat) >> $CVSROOT/CVSROOT/commitlog
 
-DEFAULT /cvsroot/sitedocs/CVSROOT/cvstools/syncmail %{sVv} mediawiki-cvs@wikimedia.org
 ALL /usr/bin/perl $CVSROOT/CVSROOT/ciabot_cvs_1.12.pl %p %{s} %ni $USER 'mediawiki' 'lists@wikidev.net'
+DEFAULT /cvsroot/sitedocs/CVSROOT/cvstools/syncmail %{sVv} mediawiki-cvs@wikimedia.org
