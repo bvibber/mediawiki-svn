@@ -17,7 +17,7 @@
 
 class Skin {
 
-	/* private */ var $lastdate, $nextid;
+	/* private */ var $lastdate, $lastline;
 
 	function Skin()
 	{
@@ -609,8 +609,7 @@ class Skin {
 
 	function beginHistoryList()
 	{
-		$this->lastdate = "";
-		$this->nextid = 0;
+		$this->lastdate = $this->lastline = "";
 		$s = "\n<p>" . wfMsg( "histlegend" ) . "\n<ul>";
 		return $s;
 	}
@@ -623,7 +622,10 @@ class Skin {
 
 	function endHistoryList()
 	{
-		$s = "</ul>\n";
+		$last = wfMsg( "last" );
+
+		$s = preg_replace( "/!OLDID![0-9]+!/", $last, $this->lastline );
+		$s .= "</ul>\n";
 		return $s;
 	}
 
@@ -631,6 +633,17 @@ class Skin {
 	{
 		global $wgLang;
 
+		$artname = Title::makeName( $ns, $ttl );
+		$last = wfMsg( "last" );
+		$cur = wfMsg( "cur" );
+		$cr = wfMsg( "currentrev" );
+
+		if ( $oid && $this->lastline ) {
+			$ret = preg_replace( "/!OLDID!([0-9]+)!/", $this->makeKnownLink(
+			  $artname, $last, "diff=\\1&oldid={$oid}" ), $this->lastline );
+		} else {
+			$ret = "";
+		}
 		$m = $wgLang->getMonthAbbreviation( substr( $ts, 4, 2 ) );
 		$d = 0 + substr( $ts, 6, 2 );
 		$h = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
@@ -638,33 +651,20 @@ class Skin {
 
 		if ( $oid ) { $q = "oldid={$oid}"; }
 		else { $q = ""; }
-		$artname = Title::makeName( $ns, $ttl );
 		$link = $this->makeKnownLink( $artname, $dt, $q );
 
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }
 
-		$cur = wfMsg( "cur" );
-		$next = wfMsg( "next" );
-		$cr = wfMsg( "currentrev" );
-
 		$s = "<li>";
 		if ( $oid ) {
 			$curlink = $this->makeKnownLink( $artname, $cur,
 			  "diff=0&oldid={$oid}" );
-
-			if ( $this->nextid ) {
-				$nextlink = $this->makeKnownLink( $artname, $next,
-				  "diff={$this->nextid}&oldid={$oid}" );
-			} else {
-				$nextlink = $next;
-			}
-			$this->nextid = $oid;
-
-			$s .= "({$curlink}) ({$nextlink}) . .";
 		} else {
-			$s .= "({$cr}) . .";
+			$curlink = $cur;
 		}
+		$s .= "({$curlink}) (!OLDID!{$oid}!) . .";
+
 		if ( $isminor ) { $s .= " <strong>M</strong>"; }
 		$s .= " {$link} . . {$ul}";
 
@@ -672,7 +672,9 @@ class Skin {
 			$s .= " <em>({$c})</em>";
 		}
 		$s .= "</li>\n";
-		return $s;
+
+		$this->lastline = $s;
+		return $ret;
 	}
 
 	function recentChangesLine( $ts, $u, $ut, $ns, $ttl, $c, $isminor )
