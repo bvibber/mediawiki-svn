@@ -61,7 +61,7 @@ class LuceneSearch extends SpecialPage
 			$limit = $wgRequest->getInt("limit");
 			if ($limit < 1 || $limit > 50)
 				$limit = 20;
-			header("Content-Type: text/plain; charset=ISO_8859-1");
+			header("Content-Type: text/plain; charset=UTF-8");
 			if (strlen($q) < 1)
 				wfAbruptExit();
 
@@ -121,16 +121,16 @@ class LuceneSearch extends SpecialPage
 				$titles = $this->doTitleMatches($q);
 				if (count($titles) > 0) {
 					$sk =& $wgUser->getSkin();
-					$nmtext = "<p>".wfMsg('searchnearmatches');
+					$nmtext = "<p>".wfMsg('searchnearmatches')."</p>";
 					$i = 0;
-					$wgOut->addHTML("<ul>");
+					$nmtext .= "<ul>";
 					foreach ($titles as $title) {
 						if (++$i > 5) break;
 						$nmtext .= wfMsg('searchnearmatch',
 							$sk->makeKnownLinkObj($title, ''));
 					}
 					$nmtext .= "</ul>";
-					$nmtext .= "<hr/></p>";
+					$nmtext .= "<hr/>";
 				}
 			}
 	
@@ -151,7 +151,7 @@ class LuceneSearch extends SpecialPage
 
 				$top = wfMsg("searchnumber", $offset + 1, 
 					min($numresults, $offset+$limit), $numresults);
-				$out = "<ul start=".($offset + 1).">";
+				$out = "<ul>";
 				$chunks = array_chunk($results, $limit);
 				$numchunks = ceil($numresults / $limit);
 				$whichchunk = $offset / $limit;
@@ -182,7 +182,7 @@ class LuceneSearch extends SpecialPage
 				foreach ($chunks[$whichchunk] as $result) {
 					$out .= $this->showHit($result[0], $result[1], $contextWords);
 				}
-				$out .= "</ol>";
+				$out .= "</ul>";
 			}
 			$wgOut->addHTML("<hr/>" . $top . $out);
 			$wgOut->addHTML("<hr/>" . $prevnext);
@@ -389,7 +389,7 @@ class LuceneSearch extends SpecialPage
 	function makeSuggestJS() {
 		global $wgScript;
 		return <<<___EOF___
-<script language="javascript">
+<script type="text/javascript"><!--
 
 var xmlHttp = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
 var searchCache = {};
@@ -398,14 +398,12 @@ var searchTimeout;
 
 function getResults()
 {
-//  alert(searchStr)
-  //xmlHttp.open("GET", "$wgScript?title=Special:Search?gen=titlematch&ns0=0&limit=10&search=" + escape(searchStr), true);
   var encStr = escape(searchStr.replace(/ /g, '_'));
-  xmlHttp.open("GET", "/w/Special:Search?gen=titlematch&ns0=0&limit=10&search=" + encStr, true);
+  xmlHttp.open("GET", "$wgScript?title=Special:Search&gen=titlematch&ns0=0&limit=10&search=" 
+    + encStr, true);
 
   xmlHttp.onreadystatechange = parseResults;
   xmlHttp.send(null);
-  //document.getElementById("results").innerHTML = "Loading...";
 }
 
 function parseResults()
@@ -460,7 +458,7 @@ function resultType()
     document.getElementById("results").style.display = "none";
   }
 }
-</script>
+//--></script>
 ___EOF___;
 	}
 }
