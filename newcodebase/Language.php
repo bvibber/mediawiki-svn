@@ -202,6 +202,7 @@ material restricted by others' [[wikipedia:Copyrights|copyrights]].
 The legal liability could really hurt the project, so please don't do it.
 
 See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges recent meta discussion].",
+"rcloaderr"		=> "Loading recent changes",
 
 # New pages
 #

@@ -3,10 +3,11 @@
 
 class LinkCache {
 
-	/* private */ var $mGoodLinks, $mBadLinks;
+	/* private */ var $mGoodLinks, $mBadLinks, $mActive;
 
 	function LinkCache()
 	{
+		$this->mActive = true;
 		$this->mGoodLinks = array();
 		$this->mBadLinks = array();
 	}
@@ -27,16 +28,28 @@ class LinkCache {
 
 	function addGoodLink( $id, $title )
 	{
-		$this->mGoodLinks[$title] = $id;
+		if ( $this->mActive ) {
+			$this->mGoodLinks[$title] = $id;
+		}
 	}
 
 	function addBadLink( $title )
 	{
-		if ( ! $this->isBadLink( $title ) ) {
+		if ( $this->mActive && ( ! $this->isBadLink( $title ) ) ) {
 			array_push( $this->mBadLinks, $title );
 		}
 	}
 
+	function clearBadLink( $title )
+	{
+		$index = array_search( $title, $this->mBadLinks );
+		if ( isset( $index ) ) {
+			unset( $this->mBadLinks[$index] );
+		}
+	}
+
+	function suspend() { $this->mActive = false; }
+	function resume() { $this->mActive = true; }
 	function getGoodLinks() { return $this->mGoodLinks; }
 	function getBadLinks() { return $this->mBadLinks; }
 
@@ -46,9 +59,9 @@ class LinkCache {
 		$id = $this->getGoodLinkID( $title );
 		if ( 0 != $id ) { return $id; }
 
-		$nt = Title::newFromDBKey( $title );
+		$nt = Title::newFromDBkey( $title );
 		$ns = $nt->getNamespace();
-		$t = $nt->getDBKey();
+		$t = $nt->getDBkey();
 
 		$conn = wfGetDB();
 		$sql = "SELECT cur_id FROM cur WHERE (cur_namespace=" .

@@ -2,19 +2,18 @@
 # See design.doc
 
 class Article {
-	/* private */ var $mTitle; # WikiTitle object
 	/* private */ var $mContent, $mContentLoaded;
 	/* private */ var $mUser, $mTimestamp;
-	/* private */ var $mCounter, $mComment, $mOldversion;
+	/* private */ var $mCounter, $mComment;
 	/* private */ var $mMinorEdit;
 
-	function Article( $t )
+	function Article() { $this->clear(); }
+
+	/* private */ function clear()
 	{
-		$this->mTitle = $t;
 		$this->mContentLoaded = false;
 		$this->mUser = $this->mCounter = -1; # Not loaded
 		$this->mTimestamp = $this->mComment = "";
-		$this->mOldversion = 0;
 	}
 
 	function getContent()
@@ -53,7 +52,7 @@ class Article {
 		$this->mContentLoaded = true;
 	}
 
-	function getID() { return $this->mTitle->getArticleID(); }
+	function getID() { global $wgTitle; return $wgTitle->getArticleID(); }
 
 	function getCount()
 	{
@@ -69,18 +68,17 @@ class Article {
 		if ( -1 != $this->mUser ) return;
 
 		$conn = wfGetDB();
-		$sql = "SELECT cur_user,cur_timestamp,cur_old_version," .
+		$sql = "SELECT cur_user,cur_timestamp," .
 		  "cur_comment,cur_minor_edit FROM cur WHERE " .
 		  "cur_id=" . $this->getID();
 		wfDebug( "Art: 3: $sql\n" );
 
 		$res = mysql_query( $sql, $conn );
-		if ( ! ( false === $res ) ) {
+		if ( $res && ( mysql_num_rows( $res ) > 0 ) ) {
 			$s = mysql_fetch_object( $res );
 			$this->mUser = $s->cur_user;
 			$this->mTimestamp = $s->cur_timestamp;
 			$this->mComment = $s->cur_comment;
-			$this->mOldversion = $s->cur_old_version;
 			$this->mMinorEdit = $s->cur_minor_edit;
 		}
 	}
@@ -99,17 +97,11 @@ class Article {
 
 	function view()
 	{
-		global $wgOut;
-		$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+		global $wgOut, $wgTitle;
+		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 
-		$this->showArticle();
-		$this->viewUpdates();
-	}
-
-	/* private */ function showArticle()
-	{
-		global $wgOut;
 		$wgOut->addWikiText( $this->getContent() );
+		$this->viewUpdates();
 	}
 
 	function edit()
@@ -154,7 +146,7 @@ class Article {
 			}
 			$aid = $wgTitle->getArticleID();
 			if ( 0 == $aid ) { # New aritlce
-				$this->insertArticle( $wpTextbox1, $wpSummary );
+				$this->insertNewArticle( $wpTextbox1, $wpSummary );
 				return;
 			}
 			# Check for edit conflict
@@ -234,34 +226,42 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 	# leap of faith, and I want to be able to report database
 	# errors at some point.
 	#
-	/* private */ function insertArticle( $text, $summary )
+	/* private */ function insertNewArticle( $text, $summary )
 	{
-		global $wgOut, $wgUser, $wgTitle;
+		global $wgOut, $wgUser, $wgTitle, $wgLinkCache;
 
+		$ns = $wgTitle->getNamespace();
+		$ttl = $wgTitle->getDBkey();
 		$text = $this->preSaveTransform( $text );
+
 		$conn = wfGetDB();
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
-		  "cur_restrictions,cur_old_version,cur_ind_title) VALUES (" .
-		  $this->mTitle->getNamespace() . ", '" .
-		  $this->mTitle->getDBKey() . "', '" .
-		  wfStrencode( $text ) . "', '" . wfStrencode( $summary ) . "', '" .
-		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', 0, 0, '', 0, '" .
-		  $this->mTitle->getPrefixedText() . "')";
+		  "cur_restrictions,cur_ind_title,cur_user_text) " .
+		  "VALUES ({$ns},'{$ttl}', '" . wfStrencode( $text ) . "', '" .
+		  wfStrencode( $summary ) . "', '" .
+		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', 0, 0, '', '" .
+		  $wgTitle->getPrefixedText() . "', '" .
+		  $wgUser->getName() . "')";
 
 		wfDebug( "Art: 2: $sql\n" );
 		$res = mysql_query( $sql, $conn );
-		$this->editUpdates();
+		$wgTitle->resetArticleID();
+		$newid = $this->getID();
 
-		$s = str_replace( "$1", $wgTitle->getPrefixedText,
+		$s = str_replace( "$1", $wgTitle->getPrefixedText(),
 		  wfMsg( "newarticle" ) );
 		$wgOut->setPageTitle( $s );
+		$wgOut->setArticleFlag( true );
+
+		$wgLinkCache = new LinkCache();
 		$wgOut->addWikiText( $text );
+		$this->editUpdates( $newid, $wgTitle->getPrefixedDBkey() );
 	}
 
 	function updateArticle( $text, $summary, $minor )
 	{
-		global $wgOut, $wgUser, $wgTitle;
+		global $wgOut, $wgUser, $wgTitle, $wgLinkCache;
 
 		if ( $this->mMinorEdit ) { $me1 = 1; } else { $me1 = 0; }
 		if ( $minor ) { $me2 = 1; } else { $me2 = 0; }
@@ -270,13 +270,12 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		$text = $this->preSaveTransform( $text );
 		$conn = wfGetDB();
 		$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
-		  "old_comment,old_user,old_old_version,old_timestamp," .
-		  "old_minor_edit) VALUES (" .
-		  $this->mTitle->getNamespace() . ", '" .
-		  $this->mTitle->getDBKey() . "', '" .
+		  "old_comment,old_user,old_timestamp,old_minor_edit) VALUES (" .
+		  $wgTitle->getNamespace() . ", '" .
+		  $wgTitle->getDBkey() . "', '" .
 		  wfStrencode( $this->getContent() ) . "', '" .
 		  wfStrencode( $this->mComment ) . "', " .
-		  $this->mUser . ", " . $this->mOldversion . ", '" .
+		  $this->mUser . ", '" .
 		  $this->mTimestamp . "', " . $me1 . ")";
 
 		wfDebug( "Art: 4: $sql\n" );
@@ -285,37 +284,32 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 			$wgOut->databaseError( wfMsg( "updatingarticle" ) );
 			return;
 		}
-		$cond = "(old_namespace=" . $this->mTitle->getNamespace() .
-		  " AND old_title='" . $this->mTitle->getDBKey() .
-		  "' AND old_old_version={$this->mOldversion})";
-		$newid = wfGetSQL( "old", "old_id", $cond );
-		if ( 0 == $newid ) {
-			$wgOut->databaseError( wfMsg( "updatingarticle" ) );
-			return;
-		}
 		$conn = wfGetDB();
 		$sql = "UPDATE cur SET cur_text='" .  wfStrencode( $text ) .
 		  "',cur_comment='" .  wfStrencode( $summary ) .
 		  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
-		  ", cur_timestamp='" . date( "YmdHis" ) .
-		  "',cur_old_version=$newid " . 
+		  ",cur_timestamp='" . date( "YmdHis" ) .
+		  "',cur_user_text='" . $wgUser->getName() . "' " .
 		  "WHERE cur_id=" . $this->getID();
 
 		wfDebug( "Art: 5: $sql\n" );
 		$res = mysql_query( $sql, $conn );
-		$this->editUpdates();
 
 		$s = str_replace( "$1", $wgTitle->getPrefixedText(),
 		  wfMsg( "updated" ) );
 		$wgOut->setPageTitle( $s );
+		$wgOut->setArticleFlag( true );
+
+		$wgLinkCache = new LinkCache();
 		$wgOut->addWikiText( $text );
+		$this->editUpdates( $this->getID(), $wgTitle->getPrefixedDBkey() );
 	}
 
 	function viewprintable()
 	{
 		global $wgOut, $wgUser, $wgTitle;
 
-		$n = $this->mTitle->getPrefixedText();
+		$n = $wgTitle->getPrefixedText();
 		$wgOut->setPageTitle( $n );
 		$wgOut->setPrintable();
 		$wgOut->addWikiText( $this->getContent() );
@@ -338,8 +332,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		global $wgDeferredUpdateList;
 
 		if ( 0 != $this->getID() ) {
-			$u = new ViewCountUpdate( $this->getID(),
-			  ( $this->getCount() + 1 ) );
+			$u = new ViewCountUpdate( $this->getID() );
 			array_push( $wgDeferredUpdateList, $u );
 			$u = new SiteStatsUpdate( 1, 0, 0 );
 			array_push( $wgDeferredUpdateList, $u );
@@ -348,11 +341,14 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 	# Do standard deferred updates after page edit
 	#
-	/* private */ function editUpdates()
+	/* private */ function editUpdates( $id, $title )
 	{
 		global $wgDeferredUpdateList;
 
 		$u = new SiteStatsUpdate( 0, 1, 0 );
+		array_push( $wgDeferredUpdateList, $u );
+
+		$u = new LinksUpdate( $id, $title );
 		array_push( $wgDeferredUpdateList, $u );
 	}
 
@@ -389,7 +385,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 	}
 
 	# This function is called right before saving the wikitext,
-	# so we can do things like signatures.
+	# so we can do things like signatures and links-in-context.
 	#
 	function preSaveTransform( $text )
 	{
@@ -410,7 +406,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 	/* private */ function pstPass2( $text )
 	{
-		global $wgUser, $wgLang;
+		global $wgUser, $wgLang, $wgTitle;
 
 		$n = $wgUser->getName();
 		$k = $wgUser->getOption( "nickname" );
@@ -420,6 +416,25 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		$text = preg_replace( "/~~~~/", "[[User:$n|$k]] $d", $text );
 		$text = preg_replace( "/~~~/", "[[User:$n|$k]]", $text );
 
+		$tc = "[&;%\\-,.\\(\\)' _0-9A-Za-z\\/:\\x80-\\xff]";
+		$np = "[&;%\\-,.' _0-9A-Za-z\\/:\\x80-\\xff]"; # No parens
+		$conpat = "/^({$np}+) \\(({$tc}+)\\)$/";
+
+		$p1 = "/\[\[({$np}+) \\(({$np}+)\\)\\|]]/"; # [[page (context)|]]
+		$p2 = "/\[\[\\|({$tc}+)]]/"; # [[|page]]
+
+		$context = "";
+		$t = $wgTitle->getText();
+		if ( preg_match( $conpat, $t, $m ) ) {
+			$context = $m[2];
+		}
+		$text = preg_replace( $p1, "[[\\1 (\\2)|\\1]]", $text );
+
+		if ( "" == $context ) {
+			$text = preg_replace( $p2, "[[\\1]]", $text );
+		} else {
+			$text = preg_replace( $p2, "[[\\1 ({$context})|\\1]]", $text );
+		}
 		return $text;
 	}
 }

@@ -150,16 +150,15 @@ class User {
 		if ( 0 == $this->mId || $this->mDataLoaded ) { return; }
 		$conn = wfGetDB();
 		$sql = "SELECT user_name,user_password,user_email,user_options," .
-		  "user_rights FROM user WHERE user_id=" . $this->mId;
+		  "user_rights FROM user WHERE user_id={$this->mId}";
 
 		wfDebug( "User: 1: $sql\n" );
 		$res = mysql_query( $sql, $conn );
 
-		if ( ! ( false === $res ) ) {
+		if ( $res && ( mysql_num_rows( $res ) > 0 ) ) {
 			$s = mysql_fetch_object( $res );
 			$this->mName = $s->user_name;
 			$this->mEmail = $s->user_email;
-
 			$this->mPassword = $s->user_password;
 			$this->decodeOptions( $s->user_options );
 			$this->mRights = explode( ",", strtolower( $s->user_rights ) );
@@ -173,6 +172,7 @@ class User {
 
 	function getName() {
 		$this->loadFromDatabase();
+wfDebug( "U3: {$this->mName}\n" );
 		return $this->mName;
 	}
 
@@ -373,7 +373,7 @@ class User {
 
 		wfDebug( "User: 3: $sql\n" );
 		$res = mysql_query( $sql , $conn );
-		if ( false === $res ) return 0;
+		if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) return 0;
 
 		$s = mysql_fetch_object( $res );
 		if ( "" == $s ) return 0;

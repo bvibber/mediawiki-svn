@@ -66,6 +66,10 @@ class OutputPage {
 		global $wgUser, $wgDebugComments, $wgCookieExpiration;
 		$sk = $wgUser->getSkin();
 
+		# TODO: Internationalization
+		$this->addHeader( "Content-type",
+		  "text/html; charset=iso-8859-1" );
+
 		foreach( $this->mHeaders as $t ) {
 			header( $t );
 		}
@@ -171,8 +175,8 @@ class OutputPage {
 	/* private */ function doQuotes( $text )
 	{
 		$text = preg_replace( "/('*)'''(.*?)'''/",
-		  "$1<strong>$2</strong>", $text );
-		$text = preg_replace( "/''(.*?)''/", "<em>$1</em>", $text );
+		  "\\1<strong>\\2</strong>", $text );
+		$text = preg_replace( "/''(.*?)''/", "<em>\\1</em>", $text );
 		return $text;
 	}
 
@@ -181,7 +185,7 @@ class OutputPage {
 		for ( $i = 6; $i >= 1; --$i ) {
 			$h = substr( "======", 0, $i );
 			$text = preg_replace( "/(^|\\n)\\s*{$h}\\s+([^\\n]+)\\s+{$h}/",
-			  "$1<h{$i}>$2</h{$i}>", $text );
+			  "\\1<h{$i}>\\2</h{$i}>", $text );
 		}
 		return $text;
 	}
@@ -193,7 +197,7 @@ class OutputPage {
 
 		$text = preg_replace(
 		  "/(^|[^[])http:\/\/([a-zA-Z0-9_\/:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
-		  "$1" . $sk->makeImageLink( "http://$2.$3", "[Image]" ), $text );
+		  "\\1" . $sk->makeImageLink( "http://\\2.\\3", "[Image]" ), $text );
 		return $text;
 	}
 
@@ -265,52 +269,24 @@ class OutputPage {
 		$s = substr( $s, 1 );
 
 		foreach ( $a as $line ) {
-			$dropContext = $addContext = false;
 			$e1 = "/^({$tc}+)\\|([^]]+)]](.*)$$/sD";
-			$e2 = "/^({$tc}+)(\\|?)]](.*)$$/sD";
-			$e3 = "/^\\|([^\\]]+)]](.*)$$/sD";
+			$e2 = "/^({$tc}+)]](.*)$$/sD";
 
 			if ( preg_match( $e1, $line, $m ) ) {
-				# Full form: [[title|text]]
 				$link = $m[1];
 				$text = $m[2];
 				$trail = $m[3];
 			} else if ( preg_match( $e2, $line, $m ) ) {
-				# [[title]] or [[title|]]
 				$link = $m[1];
 				$text = "";
-				$dropContext = ( "|" == $m[2] );
-				$trail = $m[3];
-			} else if ( preg_match( $e3, $line, $m ) ) {
-				# [[|text]]
-				$link = "";
-				$text = $m[1];
 				$trail = $m[2];
-				$addContext = true;
-			} else {
-				# Invalid form; output directly
+			} else { # Invalid form; output directly
 				$s .= "[[" . $line;
 				continue;
 			}
-			if ( $addContext ) {
-				if ( preg_match( "/ \\(([^)]+)\\)$/", 
-				  $wgTitle->getText(), $m ) ) {
-					$link = $text . " (" . $m[1] . ")";
-				} else {
-					$link = $text;
-				}
-			}
-			if ( $dropContext ) {
-				if ( preg_match( "/^({$tc}*) \\(([^)]+)\\)$/",
-				  $link, $m ) ) {
-					$text = $m[1];
-				}
-			}
 			if ( "" == $text ) { $text = $link; }
 
-			# $link, $text, and $trail should all be set now
-			#
-			if ( preg_match( "/^([a-z]+):(.*)/", $link,  $m ) ) {
+			if ( preg_match( "/^([a-z]+):(.*)$$/", $link,  $m ) ) {
 				$pre = strtolower( $m[1] );
 				$suf = $m[2];
 				if ( "image" == $pre ) {
