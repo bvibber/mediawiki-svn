@@ -287,13 +287,16 @@ class Skin {
 
 	function editThisPage()
 	{
-		global $wgOut, $wgTitle;
+		global $wgOut, $wgTitle, $oldid;
 
 		if ( ! $wgOut->isArticle() ) {
 			$s = "(Special page)";
 		} else if ( $wgTitle->userCanEdit() ) {
-			$s = $this->makeLink( $wgTitle->getPrefixedText(),
-			  wfMsg( "editthispage" ), "action=edit" );
+			$n = $wgTitle->getPrefixedText();
+			$t = wfMsg( "editthispage" );
+			$oid = "";
+			if ( $oldid ) { $oid = "&oldid={$oldid}"; }
+			$s = $this->makeLink( $n, $t, "action=edit{$oid}" );
 		} else {
 			$s = "Protected page";
 		}
