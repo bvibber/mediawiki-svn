@@ -876,7 +876,7 @@ class LanguageNl extends Language {
 
  function getLanguageNames() {
   global $wgLanguageNamesNl;
-  return $wgLanguageNamesEn;
+  return $wgLanguageNamesNl;
  }
 
  function getLanguageName( $code ) {
