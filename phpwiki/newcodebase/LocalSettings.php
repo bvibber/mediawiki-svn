@@ -33,5 +33,6 @@ $wgDebugComments = true;
 # on of the sites recognized as an interwiki.
 #
 $wgLocalInterwiki   = "w";
+#$wgLanguageCode		= "en";
 
 ?>

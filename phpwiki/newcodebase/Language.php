@@ -10,7 +10,7 @@
 );
 
 /* private */ $wgSkinNamesEn = array(
-	"Standard", "StarTrek", "Nostalgia", "CologneBlue"
+	"Standard", "Star Trek", "Nostalgia", "Cologne Blue"
 );
 
 /* private */ $wgUserTogglesEn = array(
@@ -326,3 +326,6 @@ class Language {
 	}
 }
 
+include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );
+
+?>
