@@ -243,6 +243,7 @@ void TWikiInterface::run (int argc, char *argv[])
         {
         sp->render ( ft.getJustTitle() , art ) ;
         SKIN->setArticle ( &art ) ;
+        html = SKIN->getArticleHTML() ;
         }
     else if ( loadFromFile )
         {

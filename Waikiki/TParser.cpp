@@ -355,8 +355,9 @@ void TParser::insertTOC ( VTUCS &vs )
     level = 1 ;
     while ( lastlevel > level ) { thetoc += "</div>" ; lastlevel-- ; }
     
-    thetoc = "<table border=0 id=toc><tr><td align=center>
-              <b>Table of contents</b>
+    thetoc = "<table border=0 id=toc><tr><td align=center><b>" +
+              LNG("toc") +
+              "</b>
               <script type='text/javascript'>showTocToggle('show','hide')</script>
               </td></tr>
               <tr id=tocinside><td align=left>" +

@@ -1,4 +1,5 @@
 #include "TDatabase.h"
+#include <time.h>
 //#include "zlib.h"
 
 TDatabase* TDatabase::current = NULL ;
@@ -483,18 +484,31 @@ void TDatabaseSqlite::getArticle ( TTitle t , TArticle &art , bool wasRedirected
 
 void TDatabaseSqlite::getRandomArticle ( TArticle &art )
     {
-    string sql ;
+    TUCS sql ;
+    int noa = getNumberOfArticles () - 1 ;
+    results.content.clear () ;
+    
+    
+    srand ( time(NULL) ) ;
+    do {
+        int x = int ( (double)noa * rand() / (double)(RAND_MAX+1) ) ;
+        sql = "SELECT * FROM cur WHERE cur_namespace=0 LIMIT 1 OFFSET " ;
+        sql += TUCS::fromint ( x ) ;
+        query ( sql.getstring() ) ;
+       } while ( results.content.size() == 1 && results[0][results["cur_is_redirect"]] == "1" ) ;
+    
+    /*
     sql = "SELECT * FROM cur WHERE cur_namespace=0 AND cur_is_redirect=0 ORDER BY random() LIMIT 1" ;
     
-    query ( sql ) ;
+    query ( sql ) ;*/
     
     if ( results.content.size() == 1 )
        {
        TUCS s = results[0][results["cur_text"]] ;
        filterBackslashes ( s ) ;
        art.setSource ( s ) ;
+       art.setTitle ( TTitle ( results[0][results["cur_title"]] ) ) ;
        }
-    art.setTitle ( TTitle ( results[0][results["cur_title"]] ) ) ;
     }
 
 bool TDatabaseSqlite::doesArticleExist ( TTitle &t )
