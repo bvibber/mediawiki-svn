@@ -1914,6 +1914,34 @@ class Article {
 			}
 		}
 	}
+
+	function callHook( $fn ) {
+		global $wgArticlePlugins;
+		$done = false;
+		foreach ( $wgArticlePlugins as $plugin ) {
+			if ( method_exists( $plugin, $fn ) ) {
+				$done = $plugin->$fn( $this );
+				break;
+			}
+		}
+		return $done;
+	}
+
+	function purge() {
+		if ( $this->callHook( 'purge' ) ) {
+			return;
+		} else {
+			$this->_purge();
+		}
+	}
+
+	function _purge() {
+		global $wgOut, $wgSquidMaxage;
+		wfPurgeSquidServers(array($this->mTitle->getInternalURL()));
+		$wgOut->setSquidMaxage( $wgSquidMaxage );
+		$this->mTitle->invalidateCache();
+		$this->view();
+	}
 }
 
 ?>

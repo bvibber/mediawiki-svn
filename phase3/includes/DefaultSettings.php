@@ -498,5 +498,7 @@ $wgDisableNewsURLs=false;
 
 # put md5 hashes in hashs table?
 $wgUseHashTable = false;
+
+$wgArticlePlugins = array();
 }
 ?>

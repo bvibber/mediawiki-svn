@@ -73,6 +73,7 @@ if( !is_null( $search ) && $search !== '' ) {
 	$wgTitle = Title::newFromText( wfMsg( "badtitle" ) );
 	$wgOut->errorpage( "badtitle", "badtitletext" );
 } else if ( $wgTitle->getInterwiki() != "" ) {
+	# Interwiki redirection
 	$url = $wgTitle->getFullURL();
 	# Check for a redirect loop
 	if ( !preg_match( "/^" . preg_quote( $wgServer, "/" ) . "/", $url ) && $wgTitle->isLocal() ) {
@@ -119,6 +120,7 @@ if( !is_null( $search ) && $search !== '' ) {
 		case "protect":
 		case "unprotect":
 		case "info":
+		case "purge":
 			$wgArticle->$action();
 			break;
 		case "print":
@@ -165,12 +167,6 @@ if( !is_null( $search ) && $search !== '' ) {
 			require_once( "includes/RawPage.php" );
 			$raw = new RawPage( $wgArticle );
 			$raw->view();
-			break;
-		case "purge":
-			wfPurgeSquidServers(array($wgTitle->getInternalURL()));
-			$wgOut->setSquidMaxage( $wgSquidMaxage );
-			$wgTitle->invalidateCache();
-			$wgArticle->view();
 			break;
 		default:
 			$wgOut->errorpage( "nosuchaction", "nosuchactiontext" );
