@@ -1,6 +1,6 @@
-<?
+<?php
 
-# Converts a string like "-123456" into array ( "-12" , "34" , "56" )
+# Converts a string like "-123456" into array ( "-1", "12" , "34" , "56" )
 function coordinate_take_apart ( $c )
 	{
 	if ( substr ( $c , 0 , 1 ) == "-" )
@@ -14,13 +14,12 @@ function coordinate_take_apart ( $c )
 	if ( strlen ( $c ) <= 6 )
 		{
 		while ( strlen ( $c ) < 6 ) $c .= "0" ;
-		$c = array ( substr ( $c , 0 , 2 ) , substr ( $c , 2 , 2 ) , substr ( $c , 4 , 2 ) ) ;
+		$c = array ( $mul, substr ( $c , 0 , 2 ) , substr ( $c , 2 , 2 ) , substr ( $c , 4 , 2 ) ) ;
 		}
 	else
 		{
-		$c = array ( substr ( $c , 0 , 3 ) , substr ( $c , 3 , 2 ) , substr ( $c , 5 , 2 ) ) ;
+		$c = array ( $mul, substr ( $c , 0 , 3 ) , substr ( $c , 3 , 2 ) , substr ( $c , 5 , 2 ) ) ;
 		}
-	$c[0] *= $mul ;
 	return $c ;
 	}
 
@@ -39,12 +38,11 @@ function coordinate_write ( $a )
 	return $r ;
 	}
 
+# Converts an array like ( "-1", "12" , "34" , "56" ) into a mumber
 function coordinate_to_number ( $a )
 	{
 	if ( is_string ( $a ) ) $a = coordinate_take_apart ( $a ) ;
-	if ( $a[0] < 0 ) $mul = -1 ;
-	else $mul = 1 ;
-	return $mul * ( $a[2] + $a[1] * 60 + $a[0] * 3600 * $mul ) ;
+	return $a[0] * ( $a[3] + $a[2] * 60 + $a[1] * 3600 ) ;
 	}
 
 function number_to_coordinate ( $a )
