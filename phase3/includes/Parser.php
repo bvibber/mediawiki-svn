@@ -1032,6 +1032,7 @@ cl_sortkey" ;
 	# that we don't end up interpreting some URLs twice.
 
 	/* private */ function replaceExternalLinks( $text ) {
+		global $wgDisableNewsURLs;
 		$fname = 'Parser::replaceExternalLinks';
 		wfProfileIn( $fname );
 		$text = $this->subReplaceExternalLinks( $text, 'http', true );
@@ -1039,7 +1040,9 @@ cl_sortkey" ;
 		$text = $this->subReplaceExternalLinks( $text, 'ftp', false );
 		$text = $this->subReplaceExternalLinks( $text, 'irc', false );
 		$text = $this->subReplaceExternalLinks( $text, 'gopher', false );
-		$text = $this->subReplaceExternalLinks( $text, 'news', false );
+		if(!$wgDisableNewsURLs) {
+			$text = $this->subReplaceExternalLinks( $text, 'news', false );
+		}
 		$text = $this->subReplaceExternalLinks( $text, 'mailto', false );
 		wfProfileOut( $fname );
 		return $text;

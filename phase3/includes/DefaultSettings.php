@@ -493,6 +493,8 @@ $wgAllowPageInfo = false;
 #	      102 => "Aide", 
 #	      103 => "Discussion_Aide");
 $wgExtraNamespaces = NULL;
+# hack for 1.3a + Wikinews
+$wgDisableNewsURLs=false;
 
 }
 ?>
