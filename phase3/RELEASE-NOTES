@@ -17,12 +17,10 @@ that we're running on Wikipedia as of this date.
 * Q-encode headers on outgoing inter-user e-mail
 * Updates to some translations.
 * Added table of contents border/bg to Cologne Blue, Nostalgia skins
+* Protected pages no longer appear unprotected when visited via redirect
+* Swapped old Wikipedia logo for the MediaWiki sunflower logo
 * install.php, update.php print warning on old PHP versions,
   added compatibility functions that might or might not help
-* Protected pages no longer appear unprotected when visited via redirect
-* Fix some minor errors on PHP 4.1.x; may still be problematic.
-  4.3.x is recommended; Debian users, the version in testing is too
-  old! Pull it from unstable or install PHP from source.
 
 No database changes since 20031107; upgrading should be clean.
 
