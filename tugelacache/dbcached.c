@@ -1404,6 +1404,8 @@ int main(int argc, char **argv)
 	exit(1);
     }
 
+    atexit(syncdb);
+
     /* create the listening socket and bind it */
     l_socket = server_socket(settings.port);
     if (l_socket == -1) {
@@ -1480,4 +1482,8 @@ void cleanup_dbt()
 {
     memset(&dbkey, 0, sizeof(dbkey));
     memset(&dbdata, 0, sizeof(dbdata));
+}
+
+void syncdb() {
+    dbp->sync(dbp,NULL);
 }
