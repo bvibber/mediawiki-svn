@@ -691,7 +691,7 @@ class WikiPage extends WikiTitle {
             # Don't allow more closing tags than opening tags; normalize tables
             if ( $slash ) {
                 if ( $tagcount[$t] < 1 )
-                    break;
+                    continue;
                 --$tagcount[$t];
                 if($t == "table")
                     foreach ( $tabletags as $tt )
@@ -1020,8 +1020,8 @@ class WikiPage extends WikiTitle {
         # Text encoding
         if(count($wikiEncodingNames) > 1) { # Shortcut for switching character encodings
             global $THESCRIPT;
-            $u = $THESCRIPT . "?" . getenv("QUERY_STRING");
-        $u = getenv ( "REQUEST_URI" ) ;
+            #$u = $THESCRIPT . "?" . getenv("QUERY_STRING");
+	    $u = getenv ( "REQUEST_URI" ) ;
             $u = preg_replace("/[\?\&]encoding=[0-9]+/", "", $u);
             $u .= ((!strchr($u, "?") && strstr($THESCRIPT,$u)) ? "?" : "&");
             foreach ( $wikiEncodingNames as $i => $enc ) {
