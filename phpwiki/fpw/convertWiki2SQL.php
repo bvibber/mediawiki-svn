@@ -25,8 +25,8 @@ function recodeCharsetLatin1 ( $text ) {
 	# To convert ISO-8859-1 to UTF-8
 	return utf8_encode ( $text ) ;
 	}
-	#$recodeCharset = recodeCharsetStub ;
-	$recodeCharset = recodeCharsetLatin1 ; # Future conversions should all go to UTF-8
+	$recodeCharset = recodeCharsetStub ;
+	#$recodeCharset = recodeCharsetLatin1 ; # Future conversions should all go to UTF-8
 
 function firstIsLowercaseEn ( $text ) {
     $first = ord(substr($text, 0, 1));
@@ -59,7 +59,7 @@ if ( $wikiLanguage =="eo" ) {
 ## French
 if ( $wikiLanguage == "fr" ) {
 	$wikiTalk = "Discuter" ;
-	$recodeCharset = recodeCharsetLatin1 ;
+	#$recodeCharset = recodeCharsetLatin1 ;
 	}
 
 ## Polish:
@@ -93,19 +93,19 @@ function RecodeCharsetPl ( $text ) {
 
 ## Spanish
 if ( $wikiLanguage == "es" ) {
-	$recodeCharset = recodeCharsetLatin1 ;
+	#$recodeCharset = recodeCharsetLatin1 ;
 	$wikiTalk = $recodeCharset ( "Discusión" ) ;
 	}
 
 ## German
 if ( $wikiLanguage == "de" ) {
-	$recodeCharset = recodeCharsetLatin1 ;
+	#$recodeCharset = recodeCharsetLatin1 ;
 	$wikiTalk = "Diskussion" ;
 	}
 
 ## Dutch
 if ( $wikiLanguage == "nl" ) {
-	$recodeCharset = recodeCharsetLatin1 ;
+	#$recodeCharset = recodeCharsetLatin1 ;
 	$wikiTalk = "Overleg" ;
 	}
 
@@ -114,12 +114,18 @@ if ( $wikiLanguage == "ja" ) {
 	# Will need iconv support compiled into PHP
 	}
 
+## Danish
+if ( $wikiLanguage == "da" ) {
+	$wikiTalk = "Diskussion" ;
+	}
+
 ## Where to get the old usemod database files from:
 #$rootDir = "/home/groups/w/wi/wikipedia/htdocs/fpw/wiki-de/lib-http/db/wiki/page/" ;
 #$rootDir = "/home/manske/wiki/lib-http/db/wiki/page/" ;
 $rootDir = "/stuff/wiki/lib-http/db/wiki/page/" ;
 #$rootDir = "/tmp/home/wiki-pl/wiki/db/page/" ;
 $rootDir = "/tmp/home/wiki-eo/lib-http/db/wiki/page/" ;
+$rootDir = "/home/brion/esp/wiki-eo/lib-http/db/wiki/page/";
 
 $oldid = 100; # Need unique identifiers for page histories; increment each time we use it.
 
@@ -243,6 +249,11 @@ function fixLinks ( $s ) {
 			$s .= "]]".$b[1] ;
 			}
 		}
+	# Get rid of standalone talk links
+	$q = preg_quote($npage->secureTitle, "/");
+	$s1 = preg_replace($buzz="/^\s*\[\[$wikiTalk:$q\\|\\/?$wikiTalk\]\]\s*$/mi", "", $s);
+	if ($s1 != $s) echo " ZOOM - $buzz";
+	$s = $s1;
 	if ( $backLink != "" ) $backLink = "\n:''$wikiSeeAlso :'' [[$backLink]]" ;
 	return substr ( $s , 1 ).$backLink ;
 	}
