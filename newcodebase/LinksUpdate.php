@@ -17,7 +17,8 @@ class LinksUpdate {
 		$fname = "LinksUpdate::doUpdate";
 
 		$conn = wfGetDB();
-		$sql = "DELETE FROM links WHERE l_from='{$this->mTitle}'";
+		$sql = "DELETE FROM links WHERE l_from='" .
+		  wfStrencode( $this->mTitle ) . "'";
 		wfQuery( $sql, $conn, $fname );
 
 		$a = $wgLinkCache->getGoodLinks();

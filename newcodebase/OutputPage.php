@@ -328,7 +328,7 @@ class OutputPage {
 		global $wgTitle, $wgUser, $wgServer, $wgUploadPath, $wgLang;
 		global $wgLinkCache;
 
-		$tc = "[&;%\\-,.\\(\\)' _0-9A-Za-z\\/:\\x80-\\xff]";
+		$tc = Title::legalChars() . "#";
 		$sk = $wgUser->getSkin();
 
 		$a = explode( "[[", " " . $s );
@@ -336,8 +336,8 @@ class OutputPage {
 		$s = substr( $s, 1 );
 
 		foreach ( $a as $line ) {
-			$e1 = "/^({$tc}+)\\|([^]]+)]](.*)$$/sD";
-			$e2 = "/^({$tc}+)]](.*)$$/sD";
+			$e1 = "/^([{$tc}]+)\\|([^]]+)]](.*)\$/sD";
+			$e2 = "/^([{$tc}]+)]](.*)\$/sD";
 
 			if ( preg_match( $e1, $line, $m ) ) {
 				$link = $m[1];
@@ -351,7 +351,7 @@ class OutputPage {
 				$s .= "[[" . $line;
 				continue;
 			}
-			if ( preg_match( "/^([A-Za-z]+):(.*)$$/", $link,  $m ) ) {
+			if ( preg_match( "/^([A-Za-z]+):(.*)\$/", $link,  $m ) ) {
 				$pre = strtolower( $m[1] );
 				$suf = $m[2];
 				if ( "image" == $pre ) {
@@ -359,8 +359,8 @@ class OutputPage {
 					$name = $nt->getDBkey();
 
 					$wgLinkCache->addImageLink( $name );
-
-					$s .= $sk->makeImageLink( $name, wfImageUrl( $name ), $text );
+					$s .= $sk->makeImageLink( $name,
+					  wfImageUrl( $name ), $text );
 					$s .= $trail;
 				} else {
 					$l = $wgLang->getLanguageName( $pre );
@@ -371,6 +371,9 @@ class OutputPage {
 						$s .= $trail;
 					}
 				}
+			} else if ( 0 == strcmp( "##", substr( $link, 0, 2 ) ) ) {
+				$link = substr( $link, 2 );
+				$s .= "<a name=\"{$link}\">{$text}</a>{$trail}";
 			} else {
 				$s .= $sk->makeLink( $link, $text, "", $trail );
 			}
