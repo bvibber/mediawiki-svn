@@ -6,11 +6,15 @@
 
 namespace smcfg {
 
+struct nokey : public std::runtime_error {
+	nokey() : std::runtime_error("configuration option invalid") {}
+};
+
 class cfg : public smutl::singleton<cfg> {
 public:
 	cfg();
 
-	std::string fetchstr(std::string const& key);
+	std::string const& fetchstr(std::string const& key);
 	int fetchint(std::string const& key);
 	bool fetchbool(std::string const& key);
 	void storestr(std::string const& key, std::string const& value);

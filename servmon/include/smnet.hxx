@@ -265,6 +265,7 @@ public:
 	tnsrv(clnt<fmly> c)
 	: sc(c)
 	, stt(nrml)
+	, doecho(true)
 	{
 		wewill.insert(tnsga);
 		wewill.insert(tnecho);
@@ -277,6 +278,9 @@ public:
 		will(tnsga);
 		dont(tnecho);
 		dont(tnlinemode);
+	}
+	void echo(bool doecho_) {
+		doecho = doecho_;
 	}
 	void tnsth(u_char sth, u_char what) {
 		u_char a[] = {tniac, sth, what};
@@ -306,6 +310,7 @@ public:
 		wont(what);
 	}
 	void crnl(void) {
+		if (!doecho) return;
 		static u_char a[] = {'\r', '\n'};
 		sc.wrt(a, sizeof a);
 	}
@@ -372,13 +377,13 @@ public:
 		}
 	}
 
-	std::string rdln(int m = maxln) {
+	std::string rdln(std::size_t m = maxln) {
 		std::string lnbuf;
 		for (;;) {
 			u_char c = rd1();
 			if (c == '\r') break;
 			lnbuf += c;
-			sc.wrt(&c, 1);
+			if (doecho) sc.wrt(&c, 1);
 			if (lnbuf.size() > m)
 				throw tn2long();
 		}
@@ -409,6 +414,7 @@ public:
 private:
 	clnt<fmly> sc;
 	enum { nrml, iac, sb, sb_iac, nl, cr } stt;
+	bool doecho;
 };
 
 } // namespace smnet

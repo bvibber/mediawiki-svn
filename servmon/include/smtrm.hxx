@@ -2,6 +2,7 @@
 #define SM_SMTRM_HXX_INCLUDED_
 
 #include "smstdinc.hxx"
+#include "smcfg.hxx"
 
 namespace smtrm {
 
@@ -158,6 +159,7 @@ public:
 	, cmds_root(&instance<tmcmds<trmsrv> >()->stdrt)
 	, prm("servmon> ")
 	, cd(*this)
+	, doecho(true)
 	{
 		for (int i = 0; i < 32; ++i)
 			binds[i] = boost::bind(&trmsrv::prc_ign, this, _1);
@@ -172,6 +174,27 @@ public:
 	}
 	
 	void run(void) {
+		std::string user, pass;
+		wrt("Username: ");
+		user = intf.rdln();
+		echo(false);
+		wrt("Password: ");
+		pass = intf.rdln();
+		echo(true);
+		wrtln();
+		std::string rpass;
+		try {
+			rpass = instance<smcfg::cfg>()->fetchstr(
+					str(format("/users/%s/password") % user));
+		} catch (smcfg::nokey&) {
+			wrtln("% [E] Username or password incorrect.");
+			return;
+		}
+		if (rpass != pass) {
+			wrtln("% [E] Username or password incorrect.");
+			return;
+		}
+
 		init();
 		for (;;) {
 			u_char c = intf.rd1();
@@ -179,6 +202,9 @@ public:
 				return;
 			}
 		}	
+	}
+	void echo(bool doecho_) {
+		intf.echo(doecho = doecho_);
 	}
 
 	void wrtln(std::string const& s = "") {
@@ -249,7 +275,7 @@ end:
 		}
 		ln += c;
 		thisword += c;
-		wrt(c);
+		if (doecho) wrt(c);
 		return true;
 	}
 	bool prc_spc(char c) {
@@ -270,14 +296,14 @@ end:
 			wrt(comp);
 		} else
 			cd.add_p(thisword);
-		wrt(' ');
+		if (doecho) wrt(' ');
 		thisword = "";
 		ln += comp + c;
 		return true;
 	}
 	bool prc_help(char) {
 		bool waswild;
-		wrtln("?");
+		if (doecho) wrtln("?");
 		std::vector<handler_node_t *> matches = hstack[0]->find_matches(thisword, waswild);
 		for (typename std::vector<handler_node_t *>::iterator it = matches.begin(),
 			 end = matches.end(); it != end; ++it) {
@@ -342,6 +368,7 @@ private:
 	handler_node_t* cmds_root;
 	std::string prm;
 	comdat<trmsrv> cd;
+	bool doecho;
 };
 
 } // namespace smtrm

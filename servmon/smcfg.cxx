@@ -75,40 +75,42 @@ cfg::cfg(void) {
 
 void cfg::wrcfg(void)
 {
-	std::ofstream f(cfgfile.c_str());
-	if (!f) {
-		std::cerr << "warning: could not write config file!\n";
+	int f = open(cfgfile.c_str(), O_CREAT|O_NOFOLLOW|O_TRUNC|O_WRONLY,
+				S_IRUSR|S_IWUSR);
+	if (f < 0) {
+		std::cerr << "warning: could not write config file: " <<
+			std::strerror(errno) << "\n";
 		return;
 	}
 	for(std::map<std::string,std::string>::const_iterator it = strvals.begin(),
 			end = strvals.end(); it != end; ++it)
 	{
-		f.write((char *)&tystr, sizeof tystr);
+		write(f, (char *)&tystr, sizeof tystr);
 		uint32_t size = it->first.size();
-		f.write((char *)&size, sizeof size);
-		f.write(it->first.data(), it->first.size());
+		write(f, (char *)&size, sizeof size);
+		write(f, it->first.data(), it->first.size());
 		size = it->second.size();
-		f.write((char *)&size, sizeof size);
-		f.write(it->second.data(), it->second.size());
+		write(f, (char *)&size, sizeof size);
+		write(f, it->second.data(), it->second.size());
 	}
 	for(std::map<std::string,int>::const_iterator it = intvals.begin(),
 			end = intvals.end(); it != end; ++it)
 	{
-		f.write((char *)&tyint, sizeof tyint);
+		write(f, (char *)&tyint, sizeof tyint);
 		uint32_t size = it->first.size();
-		f.write((char *)&size, sizeof size);
-		f.write(it->first.data(), it->first.size());
-		f.write((char *)&it->second, sizeof it->second);
+		write(f, (char *)&size, sizeof size);
+		write(f, it->first.data(), it->first.size());
+		write(f, (char *)&it->second, sizeof it->second);
 	}
 	for(std::map<std::string,int>::const_iterator it = intvals.begin(),
 			end = intvals.end(); it != end; ++it)
 	{
-		f.write((char *)&tybool, sizeof tybool);
+		write(f, (char *)&tybool, sizeof tybool);
 		uint32_t size = it->first.size();
-		f.write((char *)&size, sizeof size);
-		f.write(it->first.data(), it->first.size());
+		write(f, (char *)&size, sizeof size);
+		write(f, it->first.data(), it->first.size());
 		u_char d = it->second;
-		f.write((char *)&d, sizeof d);
+		write(f, (char *)&d, sizeof d);
 	}
 }
 
@@ -126,6 +128,27 @@ void cfg::storebool(std::string const& key, bool value)
 {
 	boolvals[key] = value;
 	wrcfg();
+}
+
+std::string const& cfg::fetchstr(std::string const& key)
+{
+	if (strvals.find(key) == strvals.end())
+		throw nokey();
+	return strvals[key];
+}
+
+int cfg::fetchint(std::string const& key)
+{
+	if (intvals.find(key) == intvals.end())
+		throw nokey();
+	return intvals[key];
+}
+
+bool cfg::fetchbool(std::string const& key)
+{
+	if (boolvals.find(key) == boolvals.end())
+		throw nokey();
+	return boolvals[key];
 }
 
 } // namespace smcfg
