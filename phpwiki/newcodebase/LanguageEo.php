@@ -458,10 +458,9 @@ Bonvolu saluti denove ricevinte ĝin.",
 kiu priskribis la kialon jene:<br>$2
 <p>Vi rajtas kontakti tiun administranton por pridiskuti la forbaradon.", #FIXME - sistemestro?
 "newarticle"	=> "(Nova)",
-"newarticletext" => "
-Vi sekvis ligilon al paĝo jam ne ekzistanta.
+"newarticletext" => "Vi sekvis ligilon al paĝo jam ne ekzistanta.
 Se vi volas krei ĝin, ektajpu sube (vidu la [[Vikipedio:Helpo|helpopaĝo]] por klarigoj.)
-Se vi malintence alvenis ĉi tien, simple alklaku la "reen" butonon de via retumilo.",
+Se vi malintence alvenis ĉi tien, simple alklaku la \"reen\" butonon de via retumilo.",
 "anontalkpagetext" => "---- ''Jen diskutopaĝo por iu anonima kontribuanto kiu ne jam kreis
 konton aŭ ne uzas ĝin. Ni tial devas uzi la cifran [[IP-adreso]] por tiun identigi.
 Tia IA-adreso povas kundividiĝi de pluraj uzuloj. Se vi estas anonimulo kaj preferus
