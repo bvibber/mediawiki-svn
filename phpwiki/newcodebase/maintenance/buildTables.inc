@@ -46,8 +46,6 @@ function buildTables()
   cur_timestamp char(14) binary NOT NULL default '',
   cur_restrictions tinyblob NOT NULL default '',
   cur_counter bigint(20) unsigned NOT NULL default '0',
-  cur_ind_title varchar(255) NOT NULL default '',
-  cur_ind_text mediumtext NOT NULL default '',
   cur_is_redirect tinyint(1) unsigned NOT NULL default '0',
   cur_minor_edit tinyint(1) unsigned NOT NULL default '0',
   cur_is_new tinyint(1) unsigned NOT NULL default '0',
@@ -209,13 +207,25 @@ wfQuery( $sql );
 $sql = "DROP TABLE IF EXISTS math";
 wfQuery( $sql );
 $sql = "CREATE TABLE math (
-  math_inputhash char(16) NOT NULL,
-  math_outputhash char(16) NOT NULL,
-  math_conservative BOOL NOT NULL,
-  math_html text NOT NULL,
-  UNIQUE KEY math_inputhash (math_inputhash)
+    math_inputhash varchar(16) NOT NULL,
+    math_outputhash varchar(16) NOT NULL,
+    math_html_conservativeness tinyint(1) NOT NULL,
+    math_html text,
+    math_mathml text,
+    UNIQUE KEY math_inputhash (math_inputhash)
 )";
 wfQuery( $sql );
+
+$sql = "DROP TABLE IF EXISTS searchindex";
+wfQuery( $sql );
+$sql = "CREATE TABLE searchindex (
+  si_page int(8) unsigned NOT NULL,
+  si_title varchar(255) NOT NULL default '',
+  si_text mediumtext NOT NULL default '',
+  UNIQUE KEY (si_page)
+) TYPE=MyISAM PACK_KEYS=1"; # Must be MyISAM for fulltext support
+wfQuery( $sql );
+
 }
 
 function buildIndexes()
@@ -231,9 +241,7 @@ function buildIndexes()
   ADD INDEX cur_title (cur_title(20)),
   ADD INDEX cur_timestamp (cur_timestamp),
   ADD INDEX cur_user (cur_user),
-  ADD INDEX cur_user_text (cur_user_text(8)),
-  ADD FULLTEXT cur_ind_title (cur_ind_title),
-  ADD FULLTEXT cur_ind_text (cur_ind_text)";
+  ADD INDEX cur_user_text (cur_user_text(8))";
 	wfQuery( $sql );
 
 	$sql = "ALTER TABLE old
@@ -271,6 +279,11 @@ function buildIndexes()
 
 	$sql = "ALTER TABLE oldimage
   ADD INDEX oi_name (oi_name(10))";
+	wfQuery( $sql );
+
+	$sql = "ALTER TABLE searchindex
+  ADD FULLTEXT si_title (si_title),
+  ADD FULLTEXT si_text (si_text)";
 	wfQuery( $sql );
 }
 
