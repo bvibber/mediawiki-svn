@@ -7,6 +7,7 @@ $wikiCurrentServer = "http://127.0.0.1" ;
 $wikiSQLServer = "wikipedia" ; # The name of the database, actually...
 $wikiArticleSource = "$wikiCurrentServer/wiki/$1" ;
 $wikiLogoFile = "/fpw/wiki.png" ;
+$wikiStarTrekImage = "/fpw/startrek.png" ;
 $THESCRIPT = "/fpw/wiki.phtml" ; # The name and location of the script. The $PHP_SELF variable doesn't work with Netscape
 $wikiCharset = "iso-8859-1" ;
 

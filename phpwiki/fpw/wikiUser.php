@@ -33,13 +33,14 @@ class WikiUser {
 
 	# This sets the options for the StarTrek skin
 	function skinStarTrek () {
+		global $wikiStarTrekImage ;
 		$this->options["background"] = " BGCOLOR=\"#000000\" " ;
 		$this->options["text"] = " TEXT=\"#00BB00\" " ;
 		$this->options["forceQuickBar"] = "left" ;
 		$this->options["quickBarBackground"] = " bgcolor=yellow " ;
 		$this->options["textTableBackground"] = " bgcolor=\"#444444\"" ;
 		$this->options["forceLinks"] = " style=\"color:#0000FF;text-decoration:none\" " ;
-		$this->options["leftImage"] = "startrek.png" ;
+		$this->options["leftImage"] = $wikiStarTrekImage ;
 		$this->options["borderColor"] = "yellow" ;
 		$this->options["tabLine0"] = " bgcolor=\"#550055\" " ;
 		$this->options["tabLine1"] = "" ;
