@@ -506,7 +506,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
                 if ( wfMsg ( "currentevents" ) != "-" ) $s .= $sep . $this->makeKnownLink( wfMsg( "currentevents" ), "" ) ;
                 $s .= "\n<hr>";
 		$articleExists = $wgTitle->getArticleId();
-		if ( $wgOut->isArticle() || $action =="edit" || $action =="history" || $action="submit") {
+		if ( $wgOut->isArticle() || $action =="edit" || $action =="history") {
 						
 			if($wgOut->isArticle()) {
 				$s .= "<strong>" . $this->editThisPage() . "</strong>";
