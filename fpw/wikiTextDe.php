@@ -10,27 +10,25 @@ include_once ( "utf8Case.php" ) ;
 #---------------------------------------------------------------
 
 # Basic character set and locale settings
-$wikiCharset = "iso-8859-1" ;
-$wikiUpperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞÄÖÜ";
-$wikiLowerChars = "abcdefghijklmnopqrstuvwxyzàáâãäåæçèéêëìíîïðñòóôõöøùúûüúþäöü";
+$wikiCharset = "utf-8" ;
 
 # Misc stuff
 $wikiMainPage = "Hauptseite" ; # This is actual the title of the article in the database
 $wikiErrorPageTitle = "Verflixt! Ein Fehler!" ;
-$wikiErrorMessage = "<h2>$1!</h2>Zurück zur [[:Hauptseite|Hauptseite]]!" ;
+$wikiErrorMessage = "<h2>$1!</h2>ZurÃ¼ck zur [[:Hauptseite|Hauptseite]]!" ;
 $wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","longpages","listusers","watchlist","special_pages","editusersettings","deletepage","movepage","protectpage","contributions","whatlinkshere","recentchangeslinked","sqldump","vote");
-$wikiRecentChangesText = "Diese Seite wird beim Laden automatisch aktualisiert. Angezeigt werden Seiten, die zuletzt bearbeitet bzw. geändert wurden, sowie die Zeit und der Name des Autors. Falls Du neu hier bist, dann schau Dir bitte die [[Wikipedia Willkommen|Willkommensseite]] der Wikipedia an, dort bekommst Du eine erste Einführung. Falls Du willst, dass Wikipedia zu einem Erfolg wird, dann füge bitte keine Texte hinzu, die dem Urheberrecht anderer unterliegen. Dies könnte dem Projekt sonst schweren Schaden zufügen." ;
-$wikiMetaDescription = "$1... Lesen Sie mehr hier auf Wikipedia, der freien Enzyklopädie!" ;
+$wikiRecentChangesText = "Diese Seite wird beim Laden automatisch aktualisiert. Angezeigt werden Seiten, die zuletzt bearbeitet bzw. geÃ¤ndert wurden, sowie die Zeit und der Name des Autors. Falls Du neu hier bist, dann schau Dir bitte die [[Wikipedia Willkommen|Willkommensseite]] der Wikipedia an, dort bekommst Du eine erste EinfÃ¼hrung. Falls Du willst, dass Wikipedia zu einem Erfolg wird, dann fÃ¼ge bitte keine Texte hinzu, die dem Urheberrecht anderer unterliegen. Dies kÃ¶nnte dem Projekt sonst schweren Schaden zufÃ¼gen." ;
+$wikiMetaDescription = "$1... Lesen Sie mehr hier auf Wikipedia, der freien EnzyklopÃ¤die!" ;
 
 # Used in header/footer
 $wikiWikipediaHelp = "wikipedia:Hilfe" ;
-$wikiMainPageTitle = "Wikipedia : Die freie Enzyklopädie" ; # This is the title that is displayed on the main page
-$wikiHeaderSubtitle = "Die freie Enzykolpädie" ;
-$wikiArticleSubtitle = "Von Wikipedia, der freien Enzyklopädie." ;
+$wikiMainPageTitle = "Wikipedia : Die freie EnzyklopÃ¤die" ; # This is the title that is displayed on the main page
+$wikiHeaderSubtitle = "Die freie EnzykolpÃ¤die" ;
+$wikiArticleSubtitle = "Von Wikipedia, der freien EnzyklopÃ¤die." ;
 $wikiPrintable = "Druckversion" ;
-$wikiWatch = "Diesen Artikel für mich beobachten." ;
-$wikiNoWatch = "Diesen Artikel nicht mehr für mich beobachten." ;
-$wikiTitleTag = "$1: Enzykolpädieartikel von Wikipedia" ;
+$wikiWatch = "Diesen Artikel fÃ¼r mich beobachten." ;
+$wikiNoWatch = "Diesen Artikel nicht mehr fÃ¼r mich beobachten." ;
+$wikiTitleTag = "$1: EnzykolpÃ¤dieartikel von Wikipedia" ;
 $wikiLogIn = "Einloggen" ;
 $wikiLogOut = "Ausloggen" ;
 $wikiHelp = "Hilfe" ;
@@ -55,7 +53,7 @@ $wikiEditingHistory = "Revisionen" ;
 $wikiAddToWatchlist = "Beobachten" ;
 $wikiEditPage = "Jetzt bearbeiten" ;
 $wikiHome = "Hauptseite" ;
-$wikiAbout = "Über" ;
+$wikiAbout = "Ãœber" ;
 $wikiFAQ = "FAQ" ;
 $wikiPageInfo = "Seiteninformation" ;
 $wikiLinkedPages = "Verlinkte Seiten" ;
@@ -63,12 +61,12 @@ $wikiShowDiff = "zeige Unterschiede" ;
 $wikiRequests = "Anfragen: $1" ;
 $wikiEdit = "Bearbeiten" ;
 $wikiPageOptions = "Seitenoptionen" ;
-$wikiBrowse = "Blättern" ;
+$wikiBrowse = "BlÃ¤ttern" ;
 $wikiFind = "Finden" ;
 $wikiOK = "OK" ;
 $wikiFindMore = "Mehr finden";
 $wikiWikipediaHome = "Hauptseite" ;
-$wikiAboutWikipedia = "Über Wikipedia" ;
+$wikiAboutWikipedia = "Ãœber Wikipedia" ;
 $wikiAutoWikify = "Auto-wikifikation (umsichtig benutzen!)" ;
 $wikiTopics = "Themen" ;
 $wikiWikipediaFAQ = "wikipedia:FAQ" ;
@@ -78,22 +76,22 @@ $wikiVoteForPage = "Abstimmen" ;
 $wikiEditingHelp = "Hilfe zum Bearbeiten" ;
 $wikiWikipediaEditingHelp = "wikipedia:Wie bearbeite ich einen Artikel" ;
 $wikiEditTitle = "Bearbeiten von $1" ;
-$wikiCannotEditPage = "<h3>Sie können diese Seite nicht bearbeiten!</h3>" ;
-$wikiEditConflictMessage = "<h1>Edit conflict!</h1>\n<b>Jemand hat eine neue Version dieser Seite gespeichert, während Sie sie bearbeitet haben. Der obere Kasten enthält die aktuelle Version, der untere Ihre Änderungen. Nur der obere Text wird gespeichert werden!</b><br>\n" ;
+$wikiCannotEditPage = "<h3>Sie kÃ¶nnen diese Seite nicht bearbeiten!</h3>" ;
+$wikiEditConflictMessage = "<h1>Edit conflict!</h1>\n<b>Jemand hat eine neue Version dieser Seite gespeichert, wÃ¤hrend Sie sie bearbeitet haben. Der obere Kasten enthÃ¤lt die aktuelle Version, der untere Ihre Ã„nderungen. Nur der obere Text wird gespeichert werden!</b><br>\n" ;
 $wikiPreviewAppend = "<hr>\n<h2>Voransicht :</h2>\n$1<hr><h3>Achtung: Dies ist nur eine Voransicht, der Text wurde noch nicht gespeichert!</h3>" ;
 $wikiSummary = "Zusammenfassung:" ;
 $wikiDescription = "Beschreibung:" ;
-$wikiMinorEdit = "Es wurden nur Kleinigkeiten verändert." ;
-$wikiCopyrightNotice = "Bitte beachte, dass alle Beiträge zur Wikipedia unter der \"GNU Freie Dokumentationslizenz\" stehen. Falls Du nicht willst, dass Dein Geschriebenes von anderen verändert und weiterverbreitet wird, dann solltest Du nicht auf \"Speichern\" drücken. Du gibst uns außerdem Deine Zusage, dass Du den Text selbst verfasst hast, oder es von einer Quelle kopiert hast, die sich in öffentlichem Besitz befindet (public domain). <b>BENUTZE KEINE URHEBERRECHTLICH GESCHÜTZTEN WERKE OHNE ERLAUBNIS DES AUTORS!</b>";
+$wikiMinorEdit = "Es wurden nur Kleinigkeiten verÃ¤ndert." ;
+$wikiCopyrightNotice = "Bitte beachte, dass alle BeitrÃ¤ge zur Wikipedia unter der \"GNU Freie Dokumentationslizenz\" stehen. Falls Du nicht willst, dass Dein Geschriebenes von anderen verÃ¤ndert und weiterverbreitet wird, dann solltest Du nicht auf \"Speichern\" drÃ¼cken. Du gibst uns auÃŸerdem Deine Zusage, dass Du den Text selbst verfasst hast, oder es von einer Quelle kopiert hast, die sich in Ã¶ffentlichem Besitz befindet (public domain). <b>BENUTZE KEINE URHEBERRECHTLICH GESCHÃœTZTEN WERKE OHNE ERLAUBNIS DES AUTORS!</b>";
 $wikiSave = "Speichern" ;
 $wikiPreview = "Vorschau" ;
-$wikiReset = "Zurücksetzten" ;
+$wikiReset = "ZurÃ¼cksetzten" ;
 $wikiDontSaveChanges = "<i>Abbrechen</i>" ;
 $wikiDescribePage = "Beschreibe hier die neue Seite." ;
 
 # wikiUser
 $wikiNoSuchUser = "<font color=red>Unbekannter Benutzer '$1'!</font>" ;
-$wikiWrongPassword = "<font color=red>Falsches Passwort für Benutzer '$1'!</font>" ;
+$wikiWrongPassword = "<font color=red>Falsches Passwort fÃ¼r Benutzer '$1'!</font>" ;
 $wikiYouAreLoggedIn = "$1, sie sind eingeloggt!" ; 
 $wikiUserError = "Problem mit '$1'" ;
 
@@ -101,24 +99,24 @@ $wikiUserError = "Problem mit '$1'" ;
 $wikiNoSuchSpecialPage = "<h1>Es gibt keine Spezielle Seite \"$1\"!</h1>" ;
 $wikiOldVersion = "<br><font size=\"-1\">Dies ist die alte Version #$1; die aktuelle Version befindet sich <a href=\"$THESCRIPT?title=$2\">hier</a></font>" ;
 $wikiRedirectFrom = "(weitergeleitet von $1)" ;
-$wikiRecentChanges = "Letzte Änderungen" ;
+$wikiRecentChanges = "Letzte Ã„nderungen" ;
 $wikiRecentChangesLink = "RecentChanges" ; # "special:" is added automatically
-$wikiRecentLinked = "Geänderte Verweise" ;
+$wikiRecentLinked = "GeÃ¤nderte Verweise" ;
 $wikiRecentLinkedLink = "Recentchangeslinked" ;
 $wikiSpecialPagesLink = "Special_pages" ; # "special:" is added automatically
 $wikiEditThisPage = "Jetzt bearbeiten" ;
 $wikiMoveThisPage = "Seite veschieben" ;
-$wikiDeleteThisPage = "Seite löschen" ;
+$wikiDeleteThisPage = "Seite lÃ¶schen" ;
 $wikiUpload = "Dateien hochladen" ;
 $wikiHistory = "Revisionen" ;
-$wikiRandomPage = "Zufällige Seite" ;
+$wikiRandomPage = "ZufÃ¤llige Seite" ;
 $wikiSpecialPages = "Spezielle Seiten" ;
 $wikiEditHelp = "<i>Hilfe zum Bearbeiten</i>" ;
 $wikiEditHelpLink = "wikipedia:Wie_bearbeite_ich_einen_Artikel" ;
 $wikiStatistics = "Statistik" ;
 $wikiNewPages = "Neue Seiten" ;
 $wikiOrphans = "Verwaiste Seiten" ;
-$wikiMostWanted = "Gewünschte Seiten" ;
+$wikiMostWanted = "GewÃ¼nschte Seiten" ;
 $wikiAllPages = "Alle Seiten" ;
 $wikiStubs = "Kurze Seiten" ;
 $wikiLongPages = "Lange Seiten" ;
@@ -126,93 +124,21 @@ $wikiListUsers = "Benutzerverzeichnis" ;
 $wikiMyWatchlist = "Meine watchlist" ;
 $wikiBeginDiff = "ANFANG DER UNTERSCHIEDE" ;
 $wikiEndDiff = "ENDE DER UNTERSCHIEDE" ;
-$wikiDiffLegend = "<font color=#2AAA2A>Text in Grün</font> wurde hinzugefügt oder verändert, <font color=#AAAA00>Text in Gelb</font> wurde verändert oder gelöscht." ;
+$wikiDiffLegend = "<font color=#2AAA2A>Text in GrÃ¼n</font> wurde hinzugefÃ¼gt oder verÃ¤ndert, <font color=#AAAA00>Text in Gelb</font> wurde verÃ¤ndert oder gelÃ¶scht." ;
 $wikiDiffFirstVersion = "Dies ist die erste Revision dieses Artikels. Der Text ist komplett neu!<br>\n" ;
 $wikiDiffImpossible = "Dies ist die erste Revision dieses Artikels. Der Text ist komplett neu!<br>\n" ;
 $wikiSearch = "Suchen" ;
-$wikiOtherNamespaces = "<b>Andere Namensräume :</b> " ;
+$wikiOtherNamespaces = "<b>Andere NamensrÃ¤ume :</b> " ;
 $wikiCategories = "<b>Kategorien :</b> " ;
 $wikiThisCategory = "Artikel in dieser Kategorie" ;
 $wikiCounter = "Auf diese Seite wurde $1mal zugegriffen." ;
-$wikiBlockIPTitle = "IP-Adresse blockieren (nur für Systemadministratoren)" ;
+$wikiBlockIPTitle = "IP-Adresse blockieren (nur fÃ¼r Systemadministratoren)" ;
 $wikiBlockIPText = "IP $1 wurde von $2 blockiert" ;
-$wikiIPblocked = "<font color=red size='+1'>Ihre IP-Adresse wurde blockiert! Ihre Änderungen werden nicht gespeichert werden. Bitte kontaktieren die einen Systemadministrator, um die Blockierung aufzuheben, oder versuchen Sie es später noch einmal.</font>" ;
+$wikiIPblocked = "<font color=red size='+1'>Ihre IP-Adresse wurde blockiert! Ihre Ã„nderungen werden nicht gespeichert werden. Bitte kontaktieren die einen Systemadministrator, um die Blockierung aufzuheben, oder versuchen Sie es spÃ¤ter noch einmal.</font>" ;
 $wikiBugReports = "Beobachtere Fehler" ;
 $wikiBugReportsLink = "wikipedia:Beobachtete Fehler" ;
-$wikiPrintFooter = "<hr>Dieser Artikel stammt von <b>Wikipedia</b> (<a href=\"$1\">$1</a>), der freien Online-Enzylopädie. Sie können diesen Artikel online finden unter <a href=\"$2\">$2</a>" ;
+$wikiPrintFooter = "<hr>Dieser Artikel stammt von <b>Wikipedia</b> (<a href=\"$1\">$1</a>), der freien Online-EnzylopÃ¤die. Sie kÃ¶nnen diesen Artikel online finden unter <a href=\"$2\">$2</a>" ;
 
-# Interwiki links
-$wikiInterwiki = array ( "w"=>"http://www.wikipedia.com/wiki/$1" , "m"=>"http://meta.wikipedia.com/wiki.phtml?title=$1" ) ;
-
-# Language interwiki links
-$wikiOtherLanguages = array (
-    "ar"=>"http://ar.wikipedia.com/wiki.cgi?$1" ,
-    "ca"=>"http://ca.wikipedia.com/wiki.cgi?$1" ,
-    "zh"=>"http://zh.wikipedia.com/wiki.cgi?$1" ,
-    "dk"=>"http://dk.wikipedia.com/wiki.cgi?$1" ,
-    "nl"=>"http://nl.wikipedia.com/wiki.cgi?$1" ,
-    "de"=>"http://de.wikipedia.com/wiki.cgi?$1" ,
-    "eo"=>"http://eo.wikipedia.com/wiki/$1" ,
-    "fr"=>"http://fr.wikipedia.com/wiki.cgi?$1" ,
-    "he"=>"http://he.wikipedia.com/wiki.cgi?$1" ,
-    "hu"=>"http://hu.wikipedia.com/wiki.cgi?$1" ,
-    "it"=>"http://it.wikipedia.com/wiki.cgi?$1" ,
-    "ja"=>"http://ja.wikipedia.com/wiki/$1" ,
-    "pl"=>"http://pl.wikipedia.com/wiki.cgi?$1" ,
-    "pt"=>"http://pt.wikipedia.com/wiki.cgi?$1" ,
-    "ru"=>"http://ru.wikipedia.com/wiki.cgi?$1" ,
-    "simple"=>"http://simple.wikipedia.com/wiki.cgi?$1" ,
-    "es"=>"http://es.wikipedia.com/wiki.cgi?$1" ,
-    "sv"=>"http://sv.wikipedia.com/wiki.cgi?$1" ,
-    "en"=>"http://www.wikipedia.com/wiki/$1"
-    ) ;
-
-# Language interwiki names
-$wikiLanguageNames = array (
-#    "ar"=>"Arabic (Araby)" ,
-#    "ca"=>"Catalan (Catala)" ,
-#    "zh"=>"Chinese (Hanyu)" ,
-#    "dk"=>"Danish (Dansk)" ,
-#    "nl"=>"Dutch (Nederlands)" ,
-#    "de"=>"German (Deutsch)" ,
-#    "eo"=>"Esperanto" ,
-#    "fr"=>"French (Francais)" ,
-#    "he"=>"Hebrew (Ivrit)" ,
-#    "hu"=>"Hungarian (Magyar)" ,
-#    "it"=>"Italian (Italiano)" ,
-#    "ja"=>"Japanese (Nihongo)" ,
-#    "pl"=>"Polish (Polska)" ,
-#    "pt"=>"Portuguese (Portuguese)" ,
-#    "ru"=>"Russian (Russkiy)" ,
-#    "simple"=>"Simplified English" ,
-#    "es"=>"Spanish (Castellano)" ,
-#    "sv"=>"Swedish (Svenska)" ,
-#    "en"=>"English"
-	"af" => "Afrikaans",
-	"ar" => "Araby",
-	"es" => "Castellano",
-	"ca" => "Catal&agrave;",
-	"sh" => "Croatoserbian",
-	"dk" => "Dansk",
-	"de" => "Deutsch",
-	"en" => "English",
-	"simple" => "English (simplified)",
-	"eu" => "Euskara",
-	"fr" => "Fran&ccedil;ais",
-	"zh" => "Hanyu",
-	"ia" => "Interlingua",
-	"it" => "Italiano",
-	"he" => "Ivrit",
-	"hu" => "Magyar",
-	"nl" => "Nederlands",
-	"ja" => "Nihongo",
-	"no" => "Norsk",
-	"pl" => "Polska",
-	"pt" => "Portugu&ecirc;s",
-	"ru" => "Russkiy",
-	"sv" => "Svensk",
-	"vo" => "Volap&uuml;k"
-    ) ;
 $wikiOtherLanguagesText = "Andere Sprachen : $1" ;
 
 # date
@@ -226,7 +152,7 @@ $wikiDate["saturday"] = "Sonnabend" ;
 $wikiDate["sunday"] = "Sontag" ;
 $wikiDate["january"] = "Januar" ;
 $wikiDate["february"] = "Februar" ;
-$wikiDate["march"] = "März" ;
+$wikiDate["march"] = "MÃ¤rz" ;
 $wikiDate["april"] = "April" ;
 $wikiDate["may"] = "Mai" ;
 $wikiDate["june"] = "Juni" ;
@@ -244,7 +170,7 @@ $wikiDate["december"] = "Dezember" ;
 $wikiMoveRedirectMessage = "Verschoben nach $1" ;
 $wikiMoveMoved = "$1 wurde erfolgreich nach $2 verschoben." ;
 $wikiMoveRedirected = " EIne Weiterleitung wurde erzeugt." ;
-$wikiMoveWarning = "<font color=red><b>'$1' existiert bereits! Bitte wählen Sie einen anderen Namen.</b></font><br><br>\n" ;
+$wikiMoveWarning = "<font color=red><b>'$1' existiert bereits! Bitte wÃ¤hlen Sie einen anderen Namen.</b></font><br><br>\n" ;
 $wikiMoveForm = "
 <h2>Sie sind dabei, '$1' und alle Revisionen zu einem neuen Titel zu verschieben.</h2>\n
 <FORM method=post>\n
@@ -255,7 +181,7 @@ Neuer Titel : <INPUT type=text value='$2' name=newname size=40 maxlength=250><br
 
 # Log out / log in
 $wikiGoodbye = "<h1>Bis bald, $1!</h1>" ;
-$wikiWelcomeCreation = "<h1>Willkommen, $1!</h1><font color=red>Vergessen Sie nicht, Ihre persönlichen Einstellungen anzupassen!</font><br>Ihr Benutzerkonto wurde erzeugt. Bitte klicken Sie auf \"Einloggen\", um endgültig einzuloggen!" ; ;
+$wikiWelcomeCreation = "<h1>Willkommen, $1!</h1><font color=red>Vergessen Sie nicht, Ihre persÃ¶nlichen Einstellungen anzupassen!</font><br>Ihr Benutzerkonto wurde erzeugt. Bitte klicken Sie auf \"Einloggen\", um endgÃ¼ltig einzuloggen!" ; ;
 $wikiLoginPageTitle = "Einloggen" ;
 $wikiYourName = "Ihr Benutzername&nbsp; : " ;
 $wikiYourPassword = "Ihr Passwort&nbsp; : " ;
@@ -265,7 +191,7 @@ $wikiRememberMyPassword = "Mein Passwort als Cookie speichern." ;
 $wikiLoginProblem = "<b>Es gab ein Problem beim Einloggen.</b><br>Bitte versuchen Sie es noch einmal!" ;
 $wikiAlreadyLoggedIn = "<font color=red><b>$1, Sie sind bereits eingeloggt!</b></font><br>\n" ;
 $wikiPleaseLogIn = "<h1>Bitte einloggen:</h1>\n" ;
-$wikiAreYouNew = "Wenn Sie neu bei EIkipedia sind und ein Benutzerkonto möchten, geben Sie bitte einen Benutzernamen und ein Passwort ein. Wiederholen Sie das Passwort.
+$wikiAreYouNew = "Wenn Sie neu bei EIkipedia sind und ein Benutzerkonto mÃ¶chten, geben Sie bitte einen Benutzernamen und ein Passwort ein. Wiederholen Sie das Passwort.
 Die Angabe einer email-Adresse ist freiwillig; falls Sie Ihr Passwort verlieren, kann Ihnen ein neues zu dieser Adresse geschickt werden.<br>\n" ;
 $wikiLogIn = "Einloggen" ;
 $wikiCreateAccount = "Ein neues Benutzerkonto anlegen" ;
@@ -273,7 +199,7 @@ $wikiCreateAccount = "Ein neues Benutzerkonto anlegen" ;
 # User preferences
 $wikiUserSettings = "Benutzereinstellungen" ;
 $wikiUserSettingsError = "Sie sind nicht eingeloggt! [[special:userLogin|Loggen Sie sich ein]] oder gehen sie zur [[:Hauptseite|Hauptseite]]" ;
-$wikiUserSettingsNewPasswordError = "<h1><font color=red>Die beiden Passwörter sind verschieden. DAS PASSWORT WURDE NICHT GEÄNDERT!</font></h1>\n" ;
+$wikiUserSettingsNewPasswordError = "<h1><font color=red>Die beiden PasswÃ¶rter sind verschieden. DAS PASSWORT WURDE NICHT GEÃ„NDERT!</font></h1>\n" ;
 $wikiUserSettingsSaved = "<font color=red size=\"+1\">Ihre Einstellungen wurden gespeichert!</font>" ;
 $wikiLoggedInAs = "<b>Sie sind eingeloggt als [[benutzer:$1|$1]]. ";
 $wikiID_Help = "Ihre interne ID ist $1.</b> [[wikipedia:Hilfe/Benutzereinstellungen|Hier]] werden Sie geholfen :)" ;
@@ -286,23 +212,23 @@ $wikiOldPassword = "Altes Passwort&nbsp; &nbsp; : " ;
 $wikiNewPassword = "Neues Passwort&nbsp; &nbsp; : " ;
 $wikiSkin = "Skin :" ;
 $wikiStarTrek = "Star Trek" ;
-$wikiShowHoverBox = "Schwebender Titel über Wikipedia-Verweisen" ;
+$wikiShowHoverBox = "Schwebender Titel Ã¼ber Wikipedia-Verweisen" ;
 $wikiUnderlineLinks = "Verweise unterstreichen" ;
 $wikiNewTopicsRed = "Nicht existierende Themen in Rot zeigen" ;
-$wikiJustifyParagraphs = "Bündige Absätze" ;
-$wikiShowRecentChangesTable = "<i>Letzte Änderungen</i> als Tabelle zeigen" ;
-$wikiHideMinorEdits = "Kleinere Änderungen nicht in den <i>letzten Änderungen</i> anzeigen" ;
-$wikiDoNumberHeadings = "Überschriften automatisch nummerieren" ;
+$wikiJustifyParagraphs = "BÃ¼ndige AbsÃ¤tze" ;
+$wikiShowRecentChangesTable = "<i>Letzte Ã„nderungen</i> als Tabelle zeigen" ;
+$wikiHideMinorEdits = "Kleinere Ã„nderungen nicht in den <i>letzten Ã„nderungen</i> anzeigen" ;
+$wikiDoNumberHeadings = "Ãœberschriften automatisch nummerieren" ;
 $wikiViewWithFrames = "Seiten als Frames anzeigen <i>(experimentell, NUR im Linux-Konqueror!)</i>" ;
 $wikiTurnedOn = "ja" ;
 $wikiTurnedOff = "nein" ;
-$wikiTextboxDimensions = "Größe des Textrahmens beim Bearbeiten :" ;
+$wikiTextboxDimensions = "GrÃ¶ÃŸe des Textrahmens beim Bearbeiten :" ;
 $wikiCols = "Spalten : " ;
 $wikiRows = "Zeilen&nbsp; : " ;
 $wikiYourEmail = "Ihre email : " ;
 $wikiResultsPerPage = "Bis zu $1 Suchergebnisse pro Seite anzeigen" ;
 $wikiTimeDiff = "Zeitunterschied zum Server : $1 Stunden" ;
-$wikiViewRecentChanges = "Die letzten $1 ''letzten Änderungen'' anzeigen" ;
+$wikiViewRecentChanges = "Die letzten $1 ''letzten Ã„nderungen'' anzeigen" ;
 $wikiOutputEncoding = "Ausgabeeinstellungen : ";
 
 # Search Page
@@ -311,7 +237,7 @@ $wikiSearchedVoid = "Da Sie nach nichts gesucht haben, haben Sie nichts gefunden
 $wikiNoSearchResult = "Es wurden keine Artikel mit \"$1\" im Titel oder Text gefunden." ;
 $wikiSearchHelp = "Bitte beachten Sie den [[wikipedia:Suchen|Hilfstext zum Suchen]]." ;
 $wikiFoundHeading = "Artikel im der deutschen Wikipedia" ;
-$wikiFoundText = "Die Anfrage ''$2'' ergab $1 Artikel. Für jeden dieser Artikel sehen Sie den ersten Absatz und einen Absatz, der mindestens einen der Suchbegriffe enthält." ;
+$wikiFoundText = "Die Anfrage ''$2'' ergab $1 Artikel. FÃ¼r jeden dieser Artikel sehen Sie den ersten Absatz und einen Absatz, der mindestens einen der Suchbegriffe enthÃ¤lt." ;
 # keywords used for boolean search operators
 # note: these must consist of character, no symbols allowed
 $and = "und";
@@ -319,11 +245,11 @@ $or = "oder";
 $not = "nicht";
 # syntax errors for parser of boolean search queries
 $srchSyntErr = array (
-                    "SYNTAXFEHLER: fehlendes '$1'; eingefügt",
+                    "SYNTAXFEHLER: fehlendes '$1'; eingefÃ¼gt",
                     "SYNTAXFEHLER: unerwartetes '$1'; ignoriert",
                     "SYNTAXFEHLER: nicht erlaubtes Symbol '$1'; ignoriert",
-                    "SYNTAXFEHLER: das Wort '$1' ist zu kurz, der Index enthält nur Worte ab $2 Zeichen Länge",
-                    "SYNTAXFEHLER: fehlendes Suchwort; eingefügt"
+                    "SYNTAXFEHLER: das Wort '$1' ist zu kurz, der Index enthÃ¤lt nur Worte ab $2 Zeichen LÃ¤nge",
+                    "SYNTAXFEHLER: fehlendes Suchwort; eingefÃ¼gt"
                ) ;   
 $wikiSearchError = "Entschuldigung, Ihre Suchanfrage enthielt die folgenden Fehler : " ;
 
@@ -336,23 +262,23 @@ $wikiUnsuccessfulSearch = "Ergebnislose Suche nach '$1'" ;
 $wikiUnsuccessfulSearches = "wikipedia:Ergebnislose Suchanfragen ($1)" ; # $1 becomes "YEAR-MONTH"
 $wikiUserlistTitle = "Benutzerverzeichnis" ;
 $wikiUserlistText = "'''Dies sind alle eingetragenen Benutzer der deutschen Wikipedia!'''" ;
-$wikiRecentChangesTitle = "Letzte Änderungen" ;
-$wikiRecentChangesLastDays = "Dies sind die letzten <b>$1</b> Änderungen, die in den letzten <b>$2</b> Tagen hier gemacht wurden." ;
-$wikiRecentChangesSince = "Dies sind die letzten <b>$1</b> Änderungen seit dem <b>$2</b>." ;
+$wikiRecentChangesTitle = "Letzte Ã„nderungen" ;
+$wikiRecentChangesLastDays = "Dies sind die letzten <b>$1</b> Ã„nderungen, die in den letzten <b>$2</b> Tagen hier gemacht wurden." ;
+$wikiRecentChangesSince = "Dies sind die letzten <b>$1</b> Ã„nderungen seit dem <b>$2</b>." ;
 $wikiEditTypes = array ( "0"=>"" , "1"=>"<font color=cyan>K</font>" , "2"=>"<font color=green>N</font>" ) ; #Abbreviations for minor edits (1) and new pages (2) to be used on RecentChanges
 $wikiViewLastDays = "Zeige die letzten $1 Tage an" ;
-$wikiViewMaxNum = "Zeige die letzten $1 Änderungen an" ;
-$wikiListOnlyNewChanges = "Nur neue Änderungen zeigen" ;
+$wikiViewMaxNum = "Zeige die letzten $1 Ã„nderungen an" ;
+$wikiListOnlyNewChanges = "Nur neue Ã„nderungen zeigen" ;
 $wikiNewPagesTitle = "Neue Seiten" ;
 $wikiNewPagesText = "Dies sind die letzten <b>$1</b> neuen Seiten, die in den letzten <b>$2</b> Tagen erstellt wurden." ;
-$wikiRCLegend = " <b>Legende :</b> $1=Kleine Änderung ; $2=Neuer Artikel." ;
+$wikiRCLegend = " <b>Legende :</b> $1=Kleine Ã„nderung ; $2=Neuer Artikel." ;
 $wikiDiff = "(Unterschiede)" ;
-$wikiChange = "Änderung" ;
-$wikiChanges = "Änderungen" ;
-$wikiWatchYes = "\"$1\" wurde zu Ihrer [[special:WatchList|watchlist]] hinzugefügt." ;
+$wikiChange = "Ã„nderung" ;
+$wikiChanges = "Ã„nderungen" ;
+$wikiWatchYes = "\"$1\" wurde zu Ihrer [[special:WatchList|watchlist]] hinzugefÃ¼gt." ;
 $wikiWatchNo = "\"$1\" wurde von Ihrer [[special:WatchList|watch list]] entfernt." ;
 $wikiWatchlistTitle = "Watchlist" ;
-$wikiWatchlistExistText = "'''Im Moment beobachtet das System die folgenden Artikel für Sie :'''" ;
+$wikiWatchlistExistText = "'''Im Moment beobachtet das System die folgenden Artikel fÃ¼r Sie :'''" ;
 $wikiWatchlistNotExistText = "'''Im Moment beobachten Sie die folgenden nichtexistierenden Artikel :'''" ;
 
 # Statistics
@@ -373,37 +299,37 @@ $wikiStatUsers = "Es gibt $1 [[special:ListUsers|eingetragene Benutzer]]." ;
 $wikiStatSysops = "$1 von ihnen sind Systemadministratoren." ;
 
 # Upload
-$wikiUploadTitle = "Auf dieser Seite können Sie Dateien ins System hochladen" ;
-$wikiUploadDenied = "Sie sind weder ein Systemadministrator noch ein Editor. Kehren sie zur <a href=\"$THESCRIPT?action=upload\">Upload-Seite</a> zurück." ;
-$wikiUploadDeleted = "Datei <b>$1</b> wurde gelöscht!" ;
-$wikiUploadDelMsg1 = "*Benutzer [[user:$1|$1]] hat die Datei '''$2''' gelöscht ($3)\n" ;
-$wikiUploadDelMsg2 = "'$1' wurde gelöscht" ;
-$wikiUploadAffirm = "<nowiki>Sie müssen angeben, dass diese Datei kein Copyright verletzt. Kehren Sie zur <a href=\"$THESCRIPT?title=special:upload\">Upload-Seite</a> zurück</nowiki>" ;
-$wikiUploadRestrictions = "<nowiki>Um eine Datei hichzuladen, müssen Sie sich einloggen!</nowiki>" ;
+$wikiUploadTitle = "Auf dieser Seite kÃ¶nnen Sie Dateien ins System hochladen" ;
+$wikiUploadDenied = "Sie sind weder ein Systemadministrator noch ein Editor. Kehren sie zur <a href=\"$THESCRIPT?action=upload\">Upload-Seite</a> zurÃ¼ck." ;
+$wikiUploadDeleted = "Datei <b>$1</b> wurde gelÃ¶scht!" ;
+$wikiUploadDelMsg1 = "*Benutzer [[user:$1|$1]] hat die Datei '''$2''' gelÃ¶scht ($3)\n" ;
+$wikiUploadDelMsg2 = "'$1' wurde gelÃ¶scht" ;
+$wikiUploadAffirm = "<nowiki>Sie mÃ¼ssen angeben, dass diese Datei kein Copyright verletzt. Kehren Sie zur <a href=\"$THESCRIPT?title=special:upload\">Upload-Seite</a> zurÃ¼ck</nowiki>" ;
+$wikiUploadRestrictions = "<nowiki>Um eine Datei hichzuladen, mÃ¼ssen Sie sich einloggen!</nowiki>" ;
 $wikiUploadFull = "Die Platte ist voll :(" ;
 $wikiUploadSuccess = "Die Datei <b>$1</b> wurde erfolgreich hochgeladen!" ;
 $wikiUploadSuccess1 = "*Benutzer $2 hat die Datei '''$3'''$4 hochgeladen ($1)\n" ;
 $wikiUploadSuccess2 = "Datei '$1' wurde hochgeladen" ;
 $wikiUploadText = "<h2>Anleitung:</h2><ul>\n" ;
 $wikiUploadText .= "<li><strong>Benutzen Sie dieses Formular, um Dateien hochzuladen</strong></li>\n";
-$wikiUploadText .= "<li>Um eine alte Datei zu ersetzen, können Sie einfach eine\n";
+$wikiUploadText .= "<li>Um eine alte Datei zu ersetzen, kÃ¶nnen Sie einfach eine\n";
 $wikiUploadText .= "neue Datei mit dem selben Namen hochladen.\n";
 $wikiUploadText .= "<li><strong>Und so funktioniert es. </strong>Click\n";
 $wikiUploadText .= "&quot;Finden...&quot; Sie die Datei auf ihrer Festpolatte \n";
 $wikiUploadText .= "in einem Dateidialog.</li>\n";
-$wikiUploadText .= "<li>Klicken Sie dann auf &quot;Öffnen.&quot;\n";
-$wikiUploadText .= "<li>Vergessen Sie nicht, das Copyright zu bestätigen!</li>\n";
+$wikiUploadText .= "<li>Klicken Sie dann auf &quot;Ã–ffnen.&quot;\n";
+$wikiUploadText .= "<li>Vergessen Sie nicht, das Copyright zu bestÃ¤tigen!</li>\n";
 $wikiUploadText .= "<li>Klicken SIe dann aud &quot;Hochladen.&quot; Das kann eine Weile dauern.</li>\n";
-$wikiUploadText .= "<li>Das System wird das erfolgreiche Hochladen bestätigen.</li>\n";
-$wikiUploadText .= "<li>Sie können so viele Dateien hochladen wie Sie wollen.</li>\n";
-$wikiUploadText .= "<li>Jedes Hochladen und Löschen wird im <a href=\"$THESCRIPT?title=Log:Uploads\">Uploads-Log</a> vermerkt.</li>\n";
+$wikiUploadText .= "<li>Das System wird das erfolgreiche Hochladen bestÃ¤tigen.</li>\n";
+$wikiUploadText .= "<li>Sie kÃ¶nnen so viele Dateien hochladen wie Sie wollen.</li>\n";
+$wikiUploadText .= "<li>Jedes Hochladen und LÃ¶schen wird im <a href=\"$THESCRIPT?title=Log:Uploads\">Uploads-Log</a> vermerkt.</li>\n";
 $wikiUploadText .= "</ul>\n";
-$wikiUploadAffirmText = "Hiermit bestätige ich, dass diese Datei <b>keinem Copyright unterliegt</b>, oder dass ich das Copyright für diese Datei besitzt und diese hiermit unter GFDL-Lizenz stelle." ;
+$wikiUploadAffirmText = "Hiermit bestÃ¤tige ich, dass diese Datei <b>keinem Copyright unterliegt</b>, oder dass ich das Copyright fÃ¼r diese Datei besitzt und diese hiermit unter GFDL-Lizenz stelle." ;
 $wikiUploadButton = "Hochladen" ;
 $wikiUploadPrev = "Bereits hochgeladene Dateien:" ;
-$wikiUploadSize = "Größe (byte)" ;
-$wikiFileRemoval = "Datei löschen" ;
-$wikiUploadRemove = "Hier klicken, um $1 zu löschen." ;
+$wikiUploadSize = "GrÃ¶ÃŸe (byte)" ;
+$wikiFileRemoval = "Datei lÃ¶schen" ;
+$wikiUploadRemove = "Hier klicken, um $1 zu lÃ¶schen." ;
 
 
 # Misc
@@ -411,75 +337,75 @@ $wikiHistoryTitle = "Revisionen von $1" ;
 $wikiHistoryHeader = "Dies sind alle Revisionen von <a href=\"$THESCRIPT?title=$1\">$2</a>" ;
 $wikiCurrentVersion = "aktuell" ;
 $wikiSpecialTitle = "Spezielle Seiten" ;
-$wikiSpecialText = "<b>Dies ist eine Liste spezieller Seiten.</b> Einige von ihnen stehen nur eingeloggten Benutzern zur Verfügung. Wenn Sie eingeloggt sind, können Sie einen Teil dieser Liste stets als Seitenleiste eingeblendet lassen.<br><br>" ;
+$wikiSpecialText = "<b>Dies ist eine Liste spezieller Seiten.</b> Einige von ihnen stehen nur eingeloggten Benutzern zur VerfÃ¼gung. Wenn Sie eingeloggt sind, kÃ¶nnen Sie einen Teil dieser Liste stets als Seitenleiste eingeblendet lassen.<br><br>" ;
 $wikiStubTitle = "Kurze Artikel" ;
-$wikiLongPagesTitle = "Die längsten Artikel" ;
-$wikiStubText = "'''Dies sind alle Artikel in der Datenbank, sortiert nach Länge, mit den kürzesten zuerst.'''<br>''Weitergeleitete (#REDIRECTed) Seiten und Seiten in Namensräumen (z.B. Diskussion:) werden hier '''nicht''' angezeigt!''\n\n" ;
-$wikiLongPagesText = "'''Dies sind alle Artikel in der Datenbank, sortiert nach Länge, mit den längsten zuerst.'''<br>''Weitergeleitete (#REDIRECTed) Seiten und Seiten in Namensräumen (z.B. Diskussion:) werden hier '''nicht''' angezeigt!''\n\n" ;
+$wikiLongPagesTitle = "Die lÃ¤ngsten Artikel" ;
+$wikiStubText = "'''Dies sind alle Artikel in der Datenbank, sortiert nach LÃ¤nge, mit den kÃ¼rzesten zuerst.'''<br>''Weitergeleitete (#REDIRECTed) Seiten und Seiten in NamensrÃ¤umen (z.B. Diskussion:) werden hier '''nicht''' angezeigt!''\n\n" ;
+$wikiLongPagesText = "'''Dies sind alle Artikel in der Datenbank, sortiert nach LÃ¤nge, mit den lÃ¤ngsten zuerst.'''<br>''Weitergeleitete (#REDIRECTed) Seiten und Seiten in NamensrÃ¤umen (z.B. Diskussion:) werden hier '''nicht''' angezeigt!''\n\n" ;
 $wikiStubChars = "$1 Zeichen" ;
 $wikiAskSQL = "MySQL-Zugang" ;
-$wikiAskSQLtext = "Diese Funktion ist nur für Systemadministratoren zugänglich.<br>''Bitte nicht Eingabe drücken, '''immer''' nur mit der Maus auf den Knopf klicken!''" ;
-$wikiSQLSafetyMessage = "Da Sie keinen Entwicklerstatus haben, können Sie nur SELECT-Kommandos ausführen." ;
-$wikiStubDelete = "<b>Diese Seite löschen!</b>" ;
+$wikiAskSQLtext = "Diese Funktion ist nur fÃ¼r Systemadministratoren zugÃ¤nglich.<br>''Bitte nicht Eingabe drÃ¼cken, '''immer''' nur mit der Maus auf den Knopf klicken!''" ;
+$wikiSQLSafetyMessage = "Da Sie keinen Entwicklerstatus haben, kÃ¶nnen Sie nur SELECT-Kommandos ausfÃ¼hren." ;
+$wikiStubDelete = "<b>Diese Seite lÃ¶schen!</b>" ;
 $wikiStubLinkHere = "$1 Artikel verweisen auf diesen." ;
 $wikiStubShowLinks = "Die \"Verweisanzeige\" umschalten" ;
 $wikiShowLinks = "Zeige Seiten, die nach \"$1\" verweisen" ;
-$wikiRecentChangesLinkedTitle = "Die letzten Änderungen auf Seiten, zu denen '$1' verweist" ;
-$wikiDeleteTitle = "Löschen des Artikels '$1'" ;
-$wikiDeleteDenied = "<font size=\"+3\">Sie sind nicht berechtigt, diese Seite zu löschen!</font>" ;
-$wikiDeleteSuccess = "'$1' wurde gelöscht." ;
-$wikiDeleteMsg1 = "*[[user:$2|$2]] hat die Seite '''$3''' permanent gelöscht ($1)\n" ;
-$wikiDeleteMsg2 = "Permanente Löschung von '$1'" ;
-$wikiDeleteAsk = "Sie sind dabei, den Artikel \"$1\" und alle seine Revisionen zu löschen!<br>\nWenn Sie genau wissen, was Sie tun, klicken Sie bitte <a href=\"$2&iamsure=yes\">hier</a>." ;
-$wikiProtectTitle = "Schützen des Artikels '$1'" ;
-$wikiProtectDenied = "<font size=\"+3\">Sie sind nicht berechtigt, diese Seite zu schützen!</font>" ;
-$wikiProtectNow = "Die Seite '$1' ist nun geschützt ($2)." ;
-$wikiProtectText = "<font size=\"+2\">Sie können nun die Seite '$1' schützen</font><br><i>Zum Bleistift, \"is_sysop\" wird verhindern, dass jemand anderes als ein Systemadministrator diese Seite ändert. Mehrere Berechtigungen werden durch \",\" getrennt.</i>" ;
-$wikiProtectCurrent = "Gegenwärtiger Schutz : " ;
-$wikiContribTitle = "Beiträge von $1" ;
-$wikiContribText = "<h1>Beiträge von $1' :</h1>\n(Ausnahmen: Kleine Veränderungen sowie ''Disskussion'' und ''Log''-Seiten)" ;
+$wikiRecentChangesLinkedTitle = "Die letzten Ã„nderungen auf Seiten, zu denen '$1' verweist" ;
+$wikiDeleteTitle = "LÃ¶schen des Artikels '$1'" ;
+$wikiDeleteDenied = "<font size=\"+3\">Sie sind nicht berechtigt, diese Seite zu lÃ¶schen!</font>" ;
+$wikiDeleteSuccess = "'$1' wurde gelÃ¶scht." ;
+$wikiDeleteMsg1 = "*[[user:$2|$2]] hat die Seite '''$3''' permanent gelÃ¶scht ($1)\n" ;
+$wikiDeleteMsg2 = "Permanente LÃ¶schung von '$1'" ;
+$wikiDeleteAsk = "Sie sind dabei, den Artikel \"$1\" und alle seine Revisionen zu lÃ¶schen!<br>\nWenn Sie genau wissen, was Sie tun, klicken Sie bitte <a href=\"$2&iamsure=yes\">hier</a>." ;
+$wikiProtectTitle = "SchÃ¼tzen des Artikels '$1'" ;
+$wikiProtectDenied = "<font size=\"+3\">Sie sind nicht berechtigt, diese Seite zu schÃ¼tzen!</font>" ;
+$wikiProtectNow = "Die Seite '$1' ist nun geschÃ¼tzt ($2)." ;
+$wikiProtectText = "<font size=\"+2\">Sie kÃ¶nnen nun die Seite '$1' schÃ¼tzen</font><br><i>Zum Bleistift, \"is_sysop\" wird verhindern, dass jemand anderes als ein Systemadministrator diese Seite Ã¤ndert. Mehrere Berechtigungen werden durch \",\" getrennt.</i>" ;
+$wikiProtectCurrent = "GegenwÃ¤rtiger Schutz : " ;
+$wikiContribTitle = "BeitrÃ¤ge von $1" ;
+$wikiContribText = "<h1>BeitrÃ¤ge von $1' :</h1>\n(Ausnahmen: Kleine VerÃ¤nderungen sowie ''Disskussion'' und ''Log''-Seiten)" ;
 $wikiContribDenied = "Geben Sie einen Benutzernamen an!" ;
 $wikiLinkhereTitle = "Seiten, die nach '$1' verweisen" ;
-$wikiLinkhereBacklink = "[[$1]] verweist zurück auf diese Artikel:" ;
-$wikiLinkhereNoBacklink = "[[$1]] verweist ''nicht'' zurück auf diese Artikel:" ;
+$wikiLinkhereBacklink = "[[$1]] verweist zurÃ¼ck auf diese Artikel:" ;
+$wikiLinkhereNoBacklink = "[[$1]] verweist ''nicht'' zurÃ¼ck auf diese Artikel:" ;
 $wikiBacklinkNolink = "Es gibt keine Artikel, die nach [[$1]] verweisen!" ;
 $wikiBacklinkFollowing = "Die folgenden Artikel verweisen auf [[$1]]:" ;
-$wikiWantedTitle = "Die am meisten gewünschten Seiten" ;
+$wikiWantedTitle = "Die am meisten gewÃ¼nschten Seiten" ;
 $wikiWantedText = "'''Diese Artikel existieren noch nicht, aber andere Artikel verweisen auf sie!''' (die \"Top 50\")<br>\n" ;
 $wikiWantedToggleNumbers = "Hier klicken, um die Anzeige von Artikeln, die mit Ziffern beginnen, umzuschalten (momentan $1)" ;
 $wikiWantedLine = "<b>$2</b> Artikel verweisen auf $1 <nowiki>(<a href=\"$3\">diese Seiten verweisen auf \"$4\"</a></nowiki>)" ;
-$wikiLastChange = "Letzte Änderung: $1" ;
-$wikiLastChangeCologne = "Letzte Änderung dieser Seite: $1" ;
-$wikiShowLastChange = "Die letzten Änderungen" ;
-$wikiProtectThisPage = "Diese Seite schützen" ;
-$wikiPopularPages = "Populäre Seiten" ;
-$wikiPopularTitle = "Die populärsten Seiten" ;
+$wikiLastChange = "Letzte Ã„nderung: $1" ;
+$wikiLastChangeCologne = "Letzte Ã„nderung dieser Seite: $1" ;
+$wikiShowLastChange = "Die letzten Ã„nderungen" ;
+$wikiProtectThisPage = "Diese Seite schÃ¼tzen" ;
+$wikiPopularPages = "PopulÃ¤re Seiten" ;
+$wikiPopularTitle = "Die populÃ¤rsten Seiten" ;
 $wikiRefreshThisPage = "Seite neu laden" ;
-$wikiResourcesWarning = "(Bitte nur, wenn notwendig, da diese Funktion viel Rechenkapazität benötigt)" ;
+$wikiResourcesWarning = "(Bitte nur, wenn notwendig, da diese Funktion viel RechenkapazitÃ¤t benÃ¶tigt)" ;
 $wikiNoRefresh = "(Diese Seite wurde erst von $1 Minuten aufrefrischt; bitte warten sie noch $2 Minuten und versuchen Sie es dann erneut.)" ;
 $wikiLastRefreshed = "Zuletzt aufgefrischt: $1" ;
-$wikiValidate = "Den HTML-Code dieser Seite überprüfen" ;
+$wikiValidate = "Den HTML-Code dieser Seite Ã¼berprÃ¼fen" ;
 $wikiBlockIP = "Diese IP-Adresse blockieren" ;
 $wikiNostalgy = "Nostalgie" ;
 $wikiCologneBlue = "Cologne Blue" ;
 $wikiUndiff = "Unterschiede ausblenden" ;
-$wikiReadOnlyText = "Diese Kopie von Wikipedia ist nur zum Lesen gedacht. Selbstverständlich können Sie diesen Artikel in der <a href=\"http://de.wikipedia.com/wiki/$1&action=edit\">deutschen Wikipedia</a> bearbeiten!" ;
+$wikiReadOnlyText = "Diese Kopie von Wikipedia ist nur zum Lesen gedacht. SelbstverstÃ¤ndlich kÃ¶nnen Sie diesen Artikel in der <a href=\"http://de.wikipedia.com/wiki/$1&action=edit\">deutschen Wikipedia</a> bearbeiten!" ;
 
 # Vote
-$wikiVoteReason = "Grund für diese Stimme : " ;
+$wikiVoteReason = "Grund fÃ¼r diese Stimme : " ;
 $wikiVoteBecause = ", denn : <i>$1</i>" ;
-$wikiVoteMessage = "Stimme von $1 für $2" ;
-$wikiVoteWarn = "<font size=+2>Sie haben nicht gesagt, wofür Sie stimmen möchten! <a href=\"$1\">Nochmal versuchen</a>.</font>" ;
-$wikiVotes = array ( "delete"=>"Stimmen für 'Löschen'" , "rewrite"=>"Stimmen für 'Neu Schreiben'" , "wikify"=>"Stimmen für 'wikifizieren'" , "NPOV"=>"Stimmen für 'NPOV'" , "aotd"=>"Stimmen für 'Artikel des Tages'" ) ;
-$wikiVoteAdded = "<font size=+2>$1 wurde zu <a href=\"$2\">$3</a> hinzugefügt!</font>" ;
+$wikiVoteMessage = "Stimme von $1 fÃ¼r $2" ;
+$wikiVoteWarn = "<font size=+2>Sie haben nicht gesagt, wofÃ¼r Sie stimmen mÃ¶chten! <a href=\"$1\">Nochmal versuchen</a>.</font>" ;
+$wikiVotes = array ( "delete"=>"Stimmen fÃ¼r 'LÃ¶schen'" , "rewrite"=>"Stimmen fÃ¼r 'Neu Schreiben'" , "wikify"=>"Stimmen fÃ¼r 'wikifizieren'" , "NPOV"=>"Stimmen fÃ¼r 'NPOV'" , "aotd"=>"Stimmen fÃ¼r 'Artikel des Tages'" ) ;
+$wikiVoteAdded = "<font size=+2>$1 wurde zu <a href=\"$2\">$3</a> hinzugefÃ¼gt!</font>" ;
 $wikiVoteError = "<font size=+2>Hier ist was richtig schiefgelaufen!</font>" ;
 $wikiVoteChoices = "
-<input type=radio value=delete name=voted>löschen<br>
+<input type=radio value=delete name=voted>lÃ¶schen<br>
 <input type=radio value=rewrite name=voted>neu schreiben<br>
 <input type=radio value=NPOV name=voted>NPOV<br>
 <input type=radio value=wikify name=voted>wikifizieren<br>
 <input type=radio value=aotd name=voted>Artikel des Tages<br><br>
-Grund für diese Stimme : <input type=text value=\"\" name=CommentBox size=35> <input type=submit value=\"Vote\" name=doVote>
+Grund fÃ¼r diese Stimme : <input type=text value=\"\" name=CommentBox size=35> <input type=submit value=\"Vote\" name=doVote>
 " ;
 
 
