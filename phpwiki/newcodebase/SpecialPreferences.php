@@ -50,7 +50,6 @@ function wfSpecialPreferences()
 		$wgUser->setOption( $tname, $HTTP_POST_VARS["wpOp$tname"] );
 	}
 	$wgUser->setCookies();
-
 	$up = new UserUpdate();
 	array_push( $wgDeferredUpdateList, $up );
 	mainPrefsForm( wfMsg( "savedprefs" ) );

@@ -118,7 +118,7 @@ function wfSpecialUserlogin()
 {
 	global $wgOut;
 
-	$wgOut->setPageTitle( "loginsuccesstitle" );
+	$wgOut->setPageTitle( wfMsg( "loginsuccesstitle" ) );
 	$wgOut->setRobotpolicy( "noindex,nofollow" );
 	$wgOut->addHTML( $msg . "\n<p>" );
 	$wgOut->addWikiText( wfMsg( "returntomain" ) );

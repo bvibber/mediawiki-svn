@@ -97,7 +97,8 @@ CREATE TABLE site_stats (
 CREATE TABLE ipblocks (
   ipb_address varchar(40) binary default '',
   ipb_user mediumint(8) unsigned default '0',
-  ipb_reason mediumtext,
+  ipb_by mediumint(8) unsigned default '0',
+  ipb_reason mediumtext default '',
   INDEX ipb_address (ipb_address),
   INDEX ipb_user (ipb_user)
 ) TYPE=MyISAM;

@@ -145,7 +145,9 @@ class Title {
 			wfDebug( "Title: 2: $sql\n" );
 
 			$res = mysql_query( $sql, $conn );
-			if ( ! $res ) { return $this->mOtherNamespaces; }
+			if ( ! $res || 0 == mysql_num_rows( $res ) ) {
+				return $this->mOtherNamespaces;
+			}
 
 			while ( $row = mysql_fetch_object( $res ) ) {
 				$ns = $row->cur_namespace;
@@ -186,7 +188,7 @@ class Title {
 			# wfDebug( "Title: 1: $sql\n" );
 			$res = mysql_query( $sql, $conn );
 
-			if ( ! $res ) {
+			if ( ! $res || 0 == mysql_num_rows( $res ) ) {
 				$this->mArticleID = 0;
 			} else {
 				$s = mysql_fetch_object( $res );

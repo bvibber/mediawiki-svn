@@ -118,11 +118,26 @@ Please log in again after you receive it.",
 "preview"		=> "Preview",
 "showpreview"	=> "Show preview",
 "blockedtitle"	=> "User is blocked",
-"blockedtext"	=> "Your user name or IP addressed has been blocked by $1.
-The reason given is this:<br>$2<p>You may contact that administrator to
+"blockedtext"	=> "Your user name or IP address has been blocked by $1.
+The reason given is this:<br>$2<p>You may contact the administrator to
 discuss the block.",
-"newarticle"	=> "New article",
+"newarticle"	=> "New article: $1",
 "newarticletext" => "Describe the new page here.",
+"updated"		=> "Updated: $1",
+"note"			=> "<strong>Note:</strong> ",
+"previewnote"	=> "Remember that this is only a preview, and has not yet been saved!",
+"previewconflict" => "This preview reflects the text in the upper
+text editing area as it will appear if you choose to save.",
+"editing"		=> "Editing $1",
+"editconflict"	=> "Edit conflict: $1",
+"explainconflict" => "Someone else has changed this article since you
+started editing it.
+The upper text area contains the article text as it currently exists.
+Your changes are shown in the lower text area.
+You will have to merge your changes into the existing text.
+<b>Only</b> the text in the upper text area will be saved when you
+press \"Save\".\n<p>",
+"yourtext"		=> "Your text",
 
 # Preferences page
 #

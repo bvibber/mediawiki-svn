@@ -46,8 +46,7 @@ class User {
 		global $wgDefaultOptions;
 
 		$this->mId = 0;
-		$remaddr = getenv( "REMOTE_ADDR" );
-		$this->mName = preg_replace( "/\d+$/", "xxx", $remaddr );
+		$this->mName = getenv( "REMOTE_ADDR" );
 		$this->mEmail = "";
 		$this->mPassword = "";
 		$this->mRights = array();
@@ -62,7 +61,7 @@ class User {
 
 	/* private */ function getBlockedStatus()
 	{
-		if ( -1 != $this->mBlockedby ) { return ; }
+		if ( -1 != $this->mBlockedby ) { return; }
 
 		$remaddr = getenv( "REMOTE_ADDR" );
 		$conn = wfGetDB();
@@ -71,15 +70,18 @@ class User {
 		wfDebug( "User: 5: $sql\n" );
 
 		$res = mysql_query( $sql, $conn );
-		if ( ! $res ) {
+		if ( ( ! $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
 			if ( 0 == $this->mId ) {
 				$this->mBlockedby = 0;
 				return;
 			}
+			$conn = wfGetDB();
 			$sql = "SELECT ipb_by,ipb_reason FROM ipblocks WHERE " .
 			  "ipb_user={$this->mId}";
 			wfDebug( "User: 6: $sql\n" );
-			if ( ! $res ) {
+
+			$res = mysql_query( $sql, $conn );
+			if ( ( ! $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
 				$this->mBlockedby = 0;
 				return;
 			}
@@ -368,7 +370,6 @@ class User {
 			wfSetSQL( "user", "user_watch", implode( "\n", $this->mWatchlist ),
 			  "user_id={$this->mId}" );
 		}
-		$this->setCookies();
 	}
 
     # Checks if a user with the given name exists
