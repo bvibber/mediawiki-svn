@@ -109,7 +109,7 @@ function ucCountLink( $lim, $d )
 
 	$sk = $wgUser->getSkin();
 	$s = $sk->makeKnownLink( "Special:Contributions", "{$lim}",
-	  "target={$target}&amp;days={$d}&amp;limit={$lim}" );
+	  "target={$target}&days={$d}&limit={$lim}" );
 	return $s;
 }
 
@@ -119,7 +119,7 @@ function ucDaysLink( $lim, $d )
 
 	$sk = $wgUser->getSkin();
 	$s = $sk->makeKnownLink( "Special:Contributions", "{$d}",
-	  "target={$target}&amp;days={$d}&amp;limit={$lim}" );
+	  "target={$target}&days={$d}&limit={$lim}" );
 	return $s;
 }
 ?>
