@@ -29,9 +29,9 @@ class WikiPage extends WikiTitle {
         if ( $this->namespace == "special" ) { # Special page, calling appropriate function
             $allowed = $wikiAllowedSpecialPages ; # List of allowed special pages
             if ( in_array ( "is_sysop" , $user->rights ) ) { # Functions just for sysops
-		array_push ( $allowed , "asksql" ) ;
-		array_push ( $allowed , "blockip" ) ;
-		}
+        array_push ( $allowed , "asksql" ) ;
+        array_push ( $allowed , "blockip" ) ;
+        }
             $call = $this->mainTitle ;
             if ( !in_array ( strtolower ( $call ) , $allowed ) ) {
                 $this->isSpecialPage = true ;
@@ -566,7 +566,7 @@ class WikiPage extends WikiTitle {
             if ( count ( $b ) == 1 ) $s .= "&lt;pre&gt;$x" ;
             else {
                 #$x = htmlspecialchars ( $b[0] ) ;
-		$x = str_replace ( array ( "<" , ">" ) , array ( "&lt;" , "&gt;" ) , $b[0] ) ;
+        $x = str_replace ( array ( "<" , ">" ) , array ( "&lt;" , "&gt;" ) , $b[0] ) ;
                 $s .= "<pre>$x</pre>$b[1]" ;
                 }
             }
@@ -1007,7 +1007,7 @@ class WikiPage extends WikiTitle {
         if(count($wikiEncodingNames) > 1) { # Shortcut for switching character encodings
             global $THESCRIPT;
             $u = $THESCRIPT . "?" . getenv("QUERY_STRING");
-	    $u = getenv ( "REQUEST_URI" ) ;
+        $u = getenv ( "REQUEST_URI" ) ;
             $u = preg_replace("/[\?\&]encoding=[0-9]+/", "", $u);
             $u .= ((!strchr($u, "?") && strstr($THESCRIPT,$u)) ? "?" : "&");
             foreach ( $wikiEncodingNames as $i => $enc ) {
@@ -1029,26 +1029,30 @@ class WikiPage extends WikiTitle {
         global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages , $action ;
         global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
         global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
-	global $wikiBugReports , $wikiBugReportsLink ;
+        global $wikiRecentLinked, $wikiRecentLinkedLink ;
+        global $wikiBugReports , $wikiBugReportsLink ;
+
         $editOldVersion = "" ;
         if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
         $column = "" ;
         $column .= "<a href=\"".wikiLink("")."\">$wikiMainPage</a>\n" ;
         $column .= "<br><a href=\"".wikiLink("special:$wikiRecentChangesLink")."\">$wikiRecentChanges</a>\n" ;
-        if ( $this->canEdit() ) $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."$editOldVersion&action=edit")."\">$wikiEditThisPage</a>\n" ;
+        if ( !$this->isSpecialPage )
+            $column .= "<br><a href=\"".wikiLink("special:$wikiRecentLinkedLink&target=".urldecode($this->url))."\">$wikiRecentLinked</a>\n" ;
+        if ( $this->canEdit() )
+            $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."$editOldVersion&action=edit")."\">$wikiEditThisPage</a>\n" ;
         else if ( !$this->isSpecialPage ) $column .= "<br>Protected page\n" ;
 
-    $temp = $this->isSpecialPage ;
-    if ( $action == "" ) $this->isSpecialPage = false ;
+        $temp = $this->isSpecialPage ;
+        if ( $action == "" ) $this->isSpecialPage = false ;
         if ( $this->canDelete() ) $column .= "<br><a href=\"".wikiLink("special:deletepage&target=".urldecode($this->url))."\">$wikiDeleteThisPage</a>\n" ;
-    $this->isSpecialPage = $temp ;
-
+        $this->isSpecialPage = $temp ;
 
         if ( $this->canProtect() ) $column .= "<br><a href=\"".wikiLink("special:protectpage&target=".urldecode($this->url))."\">Protect this page</a>\n" ;
 # To be implemented later
 #       if ( $this->canAdvance() ) $column .= "<br><a href=\"".wikiLink("special:Advance&topic=$this->safeTitle")."\">Advance</a>\n" ;
 
-    if ( in_array ( "is_sysop" , $user->rights ) ) $column .= "<br><a href=\"".wikiLink("special:AskSQL")."\">$wikiAskSQL</a>\n" ;
+        if ( in_array ( "is_sysop" , $user->rights ) ) $column .= "<br><a href=\"".wikiLink("special:AskSQL")."\">$wikiAskSQL</a>\n" ;
         if ( !$this->isSpecialPage ) $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."&action=history")."\">$wikiHistory</a>\n" ;
         $column .= "<br><a href=\"".wikiLink("special:Upload")."\">$wikiUpload</a>\n" ;
         $column .= "<hr>" ;
@@ -1065,7 +1069,7 @@ class WikiPage extends WikiTitle {
         if ( $user->isLoggedIn ) {
             $column .= "<br>\n<a href=\"".wikiLink("special:WatchList")."\">$wikiMyWatchlist</a>" ;
             }
-	$column .= "<br>\n<a href=\"".wikiLink($wikiBugReportsLink)."\">$wikiBugReports</a>" ;
+    $column .= "<br>\n<a href=\"".wikiLink($wikiBugReportsLink)."\">$wikiBugReports</a>" ;
         $a = $this->getOtherNamespaces () ;
         if ( count ( $a ) > 0 ) $column .= "<hr>".implode ( "<br>\n" , $a ) ;
 
@@ -1183,16 +1187,16 @@ class WikiPage extends WikiTitle {
                 $middle = $this->cache ;
                 #$middle = "<p>(cached)</p>" . $this->cache ; #FIXME
 
-		# Need to check for other-language links, which do not appear in the link arrays
-		$this->otherLanguages = array () ;
-		global $wikiOtherLanguages ;
-		preg_replace ( "/\[\[([a-z]{2})\:\s*([^\]]+)\s*\]\]/ie" ,
-			"( ( ( \$langurl = \$wikiOtherLanguages[\$lang = strtolower ( \"\$1\" )] ) != '' )
-			? ( \$this->otherLanguages[\$lang] = str_replace ( '\\$1' ,
-				ucfirstIntl ( str_replace ( array ( '+' , '%25' ) , array ( '_' , '%' ) , nurlencode ( \"\$2\" ) ) ) ,
-				\$langurl ) )
-			: '' )" ,
-			$this->contents ) ;
+        # Need to check for other-language links, which do not appear in the link arrays
+        $this->otherLanguages = array () ;
+        global $wikiOtherLanguages ;
+        preg_replace ( "/\[\[([a-z]{2})\:\s*([^\]]+)\s*\]\]/ie" ,
+            "( ( ( \$langurl = \$wikiOtherLanguages[\$lang = strtolower ( \"\$1\" )] ) != '' )
+            ? ( \$this->otherLanguages[\$lang] = str_replace ( '\\$1' ,
+                ucfirstIntl ( str_replace ( array ( '+' , '%25' ) , array ( '_' , '%' ) , nurlencode ( \"\$2\" ) ) ) ,
+                \$langurl ) )
+            : '' )" ,
+            $this->contents ) ;
             } else {
                 $middle = $this->parseContents($middle) ;
                 if ( $this->canBeCached ) { # Generating cache
