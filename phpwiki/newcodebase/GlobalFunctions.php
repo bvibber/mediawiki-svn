@@ -357,7 +357,7 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 				rc_cur_id,rc_cur_time) VALUES ({$common},{$id},'{$now}')";
             wfQuery( $sql, $fname );
 			$u = new SearchUpdate( $id, $name, $desc );
-			array_push( $wgDeferredUpdateList, $u );
+			$u->doUpdate();
 		}
 	} else {
 		$s = wfFetchObject( $res );
