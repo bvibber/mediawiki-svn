@@ -10,8 +10,8 @@
 %token <string*(Tex.t->Tex.t->string*string*string)> FUN_AR2h
 %token <string*(Tex.t list->Tex.t list->string*string*string)> FUN_INFIXh
 %token EOF CURLY_OPEN CURLY_CLOSE SUB SUP SQ_CLOSE NEXT_CELL NEXT_ROW
-%token BEGIN_PMATRIX BEGIN_BMATRIX BEGIN_BBMATRIX BEGIN_VMATRIX BEGIN_VVMATRIX
-%token END_PMATRIX END_BMATRIX END_BBMATRIX END_VMATRIX END_VVMATRIX
+%token BEGIN__MATRIX BEGIN_PMATRIX BEGIN_BMATRIX BEGIN_BBMATRIX BEGIN_VMATRIX BEGIN_VVMATRIX
+%token END__MATRIX END_PMATRIX END_BMATRIX END_BBMATRIX END_VMATRIX END_VVMATRIX
 
 %type <Tex.t list> tex_expr
 %start tex_expr
@@ -74,6 +74,7 @@ lit:
 				{ TEX_INFIX($3,$2,$4) }
   | CURLY_OPEN ne_expr FUN_INFIXh ne_expr CURLY_CLOSE
 				{ let t,h=$3 in TEX_INFIXh(t,h,$2,$4) }
+  | BEGIN__MATRIX  matrix END__MATRIX	{ TEX_MATRIX ("matrix", $2) }
   | BEGIN_PMATRIX  matrix END_PMATRIX	{ TEX_MATRIX ("pmatrix", $2) }
   | BEGIN_BMATRIX  matrix END_BMATRIX	{ TEX_MATRIX ("bmatrix", $2) }
   | BEGIN_BBMATRIX matrix END_BBMATRIX	{ TEX_MATRIX ("Bmatrix", $2) }

@@ -58,10 +58,12 @@ let rec html_render_flat ctx = function
   | TEX_FUN1hf (_,ff,a)::r -> (html_render_flat (new_ctx ff) [a])^html_render_flat ctx r
   | TEX_DECLh (_,ff,a)::r -> (html_render_flat (new_ctx ff) a)^html_render_flat ctx r
   | TEX_CURLY ls::r -> html_render_flat ctx (ls @ r)
-  | TEX_DQ (a,b)::r  -> (let bs = html_render_flat ctx [b] in match html_render_size ctx a with
+  | TEX_DQ (a,b)::r  -> (html_conservative := false;
+			 let bs = html_render_flat ctx [b] in match html_render_size ctx a with
 		         true, s -> raise Too_difficult_for_html
 		       | false, s -> s^"<sub>"^bs^"</sub>")^html_render_flat ctx r
-  | TEX_UQ (a,b)::r  -> (let bs = html_render_flat ctx [b] in match html_render_size ctx a with
+  | TEX_UQ (a,b)::r  -> (html_conservative := false;
+		         let bs = html_render_flat ctx [b] in match html_render_size ctx a with
 		         true, s ->  raise Too_difficult_for_html
 		       | false, s -> s^"<sup>"^bs^"</sup>")^html_render_flat ctx r
   | TEX_FQ (a,b,c)::r -> (html_conservative := false;
@@ -307,6 +309,9 @@ let find = function
     | "\\hookleftarrow"    -> LITERAL (TEX_ONLY "\\hookleftarrow ")
     | "\\mp"               -> LITERAL (TEX_ONLY "\\mp ")
     | "\\approx"           -> LITERAL (TEX_ONLY "\\approx ")
+    | "\\flat"             -> LITERAL (TEX_ONLY "\\flat ")
+    | "\\sharp"            -> LITERAL (TEX_ONLY "\\sharp ")
+    | "\\natural"          -> LITERAL (TEX_ONLY "\\natural ")
     | "\\int"	           -> LITERAL (HTMLABLE_BIG ("\\int ", "&int;"))
     | "\\sum"	           -> LITERAL (HTMLABLE_BIG ("\\sum ", "&sum;"))
     | "\\prod"	           -> LITERAL (HTMLABLE_BIG ("\\prod ", "&prod;"))
