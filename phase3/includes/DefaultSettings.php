@@ -48,7 +48,7 @@ $wgAmericanDates    = false; # Enable for English module to print dates
 							 # as eg 'May 12' instead of '12 May'
 $wgLocalInterwiki   = "w";
 $wgShowIPinHeader	= true; # For non-logged in users
-$wgUseDynamicDates	= true; # Allows the user to pick their preferred date format
+$wgUseDynamicDates	= false; # Allows the user to pick their preferred date format
 
 # Miscellaneous configuration settings
 #
