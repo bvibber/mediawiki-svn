@@ -76,8 +76,9 @@ class WikiTitle {
 		$s = str_replace ( "\\\"" , "" , $s ) ;
 		#$s = str_replace ( "\"" , "" , $s ) ;
 		# All non-alpha ASCII chars: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~\127
-		# FIXME: Decide exactly which ones to forbid.
-		$s = preg_replace ( "/[\"\#\$\%\&\\<>\[\]\{\|\}\127]/", "", $s);
+		# FIXME: Currently following Usemod rules for forbidding chars, except for /, :, and 0x80-0xc0 range for UTF-8
+		# Do we want that?
+		$s = preg_replace ( "/([^-,.()' _0-9A-Za-z\/:\x80-\xff])/", "", $s);
 		
 		# Make it compatible with old wiki
 		$s = str_replace ( " " , "_" , $s ) ;
