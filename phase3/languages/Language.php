@@ -795,6 +795,7 @@ created and by whom, and anything else you may know about it.",
 "uploadwarning" => "Upload warning",
 "savefile"		=> "Save file",
 "uploadedimage" => "uploaded \"$1\"",
+"uploaddisabled" => "Sorry, uploads have been disabled on this server.",
 
 # Image list
 #

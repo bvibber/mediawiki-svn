@@ -88,6 +88,9 @@ $wgMiserMode = false; # Disable database-intensive features
 $wgUseTeX = false;
 $wgProfiling = false; # Enable for more detailed by-function times in debug log
 
+$wgDisableTextSearch = false;
+$wgDisableUploads = false;
+
 # We can serve pages compressed in order to save bandwidth,
 # but this will increase CPU usage.
 # Requires zlib support enabled in PHP.
