@@ -19,17 +19,20 @@ function watch ( $t , $m ) {
     if ( !$user->isLoggedIn ) return $wikiUserSettingsError ;
 
     # Watchlist is namespace-independant
-    $t = preg_replace ( "/^(.*:)/" , "" , $t ) ;
+    $tbare = preg_replace ( "/^(.*:)/" , "" , $t ) ;
 
     # Modifying user_watch
     $separator = "\n" ;
     $a = getMySQL ( "user" , "user_watch" , "user_id=$user->id" ) ;
-    if ( $m == "yes" ) $a = modifyArray ( $a , $separator , $t , $t ) ;
-    else $a = modifyArray ( $a , $separator , $t ) ;
+    if ( $m == "yes" ) $a = modifyArray ( $a , $separator , $tbare , $tbare ) ;
+    else {
+    	$a = modifyArray ( $a , $separator , $t ) ; # For older watchlists which may contain specific entries
+    	$a = modifyArray ( $a , $separator , $tbare ) ;
+    }
     setMySQL ( "user" , "user_watch" , $a , "user_id=$user->id" ) ;
 
-    if ( $m == "yes" ) $ret = str_replace ( "$1" , $t , $wikiWatchYes ) ;
-    else str_replace ( "$1" , $t , $wikiWatchNo ) ;
+    if ( $m == "yes" ) $ret = str_replace ( "$1" , $tbare , $wikiWatchYes ) ;
+    else str_replace ( "$1" , $tbare , $wikiWatchNo ) ;
     $ret .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL='".wikiLink(nurlencode($t))."'\">" ;
     return $ret ;
     }
@@ -37,6 +40,7 @@ function watch ( $t , $m ) {
 function WatchList () {
     global $THESCRIPT ;
     global $vpage , $user , $wikiWatchlistTitle , $wikiWatchlistExistText , $wikiWatchlistNotExistText, $wikiTalk ;
+    global $wikiAllowedNamespaces , $wikiErrorPageTitle , $wikiErrorMessage ;
 
     $vpage->special ( $wikiWatchlistTitle ) ;
     $ret = "$wikiWatchlistExistText\n\n" ;
@@ -45,17 +49,56 @@ function WatchList () {
     $b = explode ( $separator , $a ) ;
     $vpage->namespace = "" ;
 
+/*  # The database can sort things by date!!
     $n = array () ;
     foreach ( $b as $x )
         $n[$x] = getMySQL ( "cur" , "cur_timestamp" , "cur_title=\"$x\"" ) ;
     arsort ( $n ) ;
     $k = array_keys ( $n ) ;
+*/
 
     $connection=getDBconnection() ;
     $arr = array () ;
+    $foundtitles = array () ;
     $any = false ;
     $notexist = "" ;
     $talk = ucfirstIntl ( $wikiTalk ) ;
+    
+    # Dirty hack to make all namespaces work until we have separate namespace and subtitle fields in the database
+    $watchedtitles = array () ;
+    foreach ( $wikiAllowedNamespaces as $namespace ) {
+    	if ( $ns = $namespace ) $ns = ucfirstIntl ( $namespace ) . ":" ;
+    	foreach ( $b as $title ) {
+	    array_push ( $watchedtitles , $ns . $title ) ;
+	    }
+    	}
+    
+    # Get existing pages...
+    $sql = "SELECT cur_timestamp, cur_title, cur_comment, cur_user, cur_user_text, cur_minor_edit
+    	FROM cur
+	WHERE cur_title IN (\"" . implode ( "\",\"" , $watchedtitles ) . "\") ORDER BY cur_timestamp DESC";
+    if ( $result = mysql_query ( $sql , $connection ) ) {
+	$s = mysql_fetch_object ( $result ) ;
+	if ( $s ) {
+            while ($s) {
+		    array_push ( $arr , $s ) ;
+		    array_push ( $foundtitles , $s->cur_title ) ;
+		    $s = mysql_fetch_object ( $result ) ;
+		    }
+            mysql_free_result ( $result ) ;
+            $any = true ;
+	    }
+    } else {
+    	return $wikiErrorPageTitle . str_replace ( "$1" , htmlspecialchars ( mysql_error () ) , $wikiErrorMessage ) ;
+    	}
+
+    # This could be done more efficiently.
+    $nonexistent = array_diff ( $b , $foundtitles ) ;
+    foreach ( $nonexistent as $x ) {
+	$notexist .= "\n* [[".$vpage->getNiceTitle( $x )."]]" ;
+	}
+
+/*  # There is no need to make a billion separate database requests
     foreach ( $k as $x ) {
         if ( $x != "" ) {
             #$sql = "SELECT cur_timestamp, cur_title, cur_comment, cur_user, cur_user_text, cur_minor_edit
@@ -77,6 +120,7 @@ function WatchList () {
             $any = true ;
             }
         }
+*/
     if ( $any )
         $ret .= recentChangesLayout ( $arr ) ;
         
