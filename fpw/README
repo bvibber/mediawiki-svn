@@ -54,7 +54,10 @@ option, and you upgrade mysql later, then you also need to recompile php.
 
 Create a directory in your apache htdocs directory to hold the
 Wikipedia php scripts. In the sequel, we will use the directory
-"/wiki". Copy all *.php and *.phtml files there.
+"/wiki". Copy all *.php and *.phtml files there. Create a subdirectory
+"/upload". Make sure that the web server process has permission to
+write to that directory.
+
 To your http.conf file, add the line
    AddType application/x-httpd-php .php .phtml
 This is needed because the main wikipedia script has the extension .phtml.
