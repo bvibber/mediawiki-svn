@@ -17,21 +17,34 @@ include_once( "$IP/User.php" );
 include_once( "$IP/LinkCache.php" );
 include_once( "$IP/Title.php" );
 include_once( "$IP/Article.php" );
+include_once( "$IP/MemCachedClient.inc.php" );
 include_once( "$IP/Block.php" );
 
 global $wgUser, $wgLang, $wgOut, $wgTitle;
 global $wgArticle, $wgDeferredUpdateList, $wgLinkCache;
+global $wgMemc, $wgUseMemCached, $wgMemCachedDebug;
+
+class MemCachedClientforWiki extends MemCachedClient {
+	function _debug( $text ) {
+		wfDebug( "memcached: $text\n" );
+	}
+}
+
+$wgMemc = new MemCachedClientforWiki();
+if( $wgUseMemCached ) {
+	$wgMemc->set_servers( $wgMemCachedServers );
+	$wgMemc->set_debug( $wgMemCachedDebug );
+}
 
 $wgOut = new OutputPage();
 $wgLangClass = "Language" . ucfirst( $wgLanguageCode );
 if( ! class_exists( $wgLangClass ) ) {
-	include_once( "$IP/Utf8Case.php" );
+	include_once( "$IP/LanguageUtf8.php" );
 	$wgLangClass = "LanguageUtf8";
 }
 $wgLang = new $wgLangClass();
 
-$wgUser = new User();
-$wgUser->loadFromSession();
+$wgUser = User::loadFromSession();
 $wgDeferredUpdateList = array();
 $wgLinkCache = new LinkCache();
 

@@ -92,11 +92,23 @@ class Title {
 
 	function getInterwikiLink( $key )
 	{
-		global $wgValidInterwikis;
-
-		if ( array_key_exists( $key, $wgValidInterwikis ) ) {
-			return $wgValidInterwikis[$key];
-		} else return "";
+		global $wgMemc, $wgDBname;
+		$k = "$wgDBname:interwiki:$key";
+		$s = $wgMemc->get( $k );
+		if( $s !== false ) return $s->iw_url;
+		
+		$dkey = wfStrencode( $key );
+		$query = "SELECT iw_url FROM interwiki WHERE iw_prefix='$dkey'";
+		$res = wfQuery( $query, "Title::getInterwikiLink" );
+		if(!$res) return "";
+		
+		$s = wfFetchObject( $res );
+		if(!$s) {
+			$s = (object)false;
+			$s->iw_url = "";
+		}
+		$wgMemc->set( $k, $s );
+		return $s->iw_url;
 	}
 
 	function getText() { return $this->mTextform; }
@@ -146,8 +158,11 @@ class Title {
 	{
 		$t = new Title();
 		$t->mDbkeyform = Title::makeName( $ns, $title );
-		$t->secureAndSplit();
-		return $t;
+		if( $t->secureAndSplit() ) {
+			return $t;
+		} else {
+			return NULL;
+		}
 	}
 
 	function getPrefixedDBkey()
@@ -185,7 +200,7 @@ class Title {
 		if ( "" == $this->mInterwiki ) {
 			$p = $wgArticlePath;
 		} else {
-			$p = $wgValidInterwikis[$this->mInterwiki];
+			$p = $this->getInterwikiLink( $this->mInterwiki );
 		}
 		$n = $wgLang->getNsText( $this->mNamespace );
 		if ( "" != $n ) { $n .= ":"; }
@@ -324,9 +339,9 @@ class Title {
 	#
 	/* private */ function secureAndSplit()
 	{
-		global $wgLang, $wgValidInterwikis, $wgLocalInterwiki;
-		wfProfileIn( "Title::secureAndSplit" );
-
+		global $wgLang, $wgLocalInterwiki;
+ 		wfProfileIn( "Title::secureAndSplit" );
+		
 		$validNamespaces = $wgLang->getNamespaces();
 		unset( $validNamespaces[0] );
 
@@ -338,8 +353,6 @@ class Title {
 		$l = strlen( $t );
 		if ( $l && ( "_" == $t{$l-1} ) ) { $t = substr( $t, 0, $l-1 ); }
 		if ( "" == $t ) {
-			$t = "_";
-			wfProfileOut();
 			return false;
 		}
 
@@ -356,7 +369,10 @@ class Title {
 	 		if ( preg_match( "/^((?:i|x|[a-z]{2,3})(?:-[a-z0-9]+)?|[A-Za-z0-9_\\x80-\\xff]+):(.*)$/", $t, $m ) ) {
 				#$p = strtolower( $m[1] );
 				$p = $m[1];
-				if ( array_key_exists( $p, $wgValidInterwikis ) ) {
+				if ( $ns = $wgLang->getNsIndex( strtolower( $p ) )) {
+					$t = $m[2];
+					$this->mNamespace = $ns;
+				} elseif ( $this->getInterwikiLink( $p ) ) {
 					$t = $m[2];
 					$this->mInterwiki = $p;
 
@@ -368,20 +384,6 @@ class Title {
 					}
 					if($this->mInterwiki != $wgLocalInterwiki)
 						$done = true;
-				}
-				if ( ! $done ) {
-					if ( $ns = $wgLang->getNsIndex( str_replace( " ", "_", $p ))) {
-						$t = $m[2];
-						$this->mNamespace = $ns;
-					}
-				#	foreach ( $validNamespaces as $ns ) {
-				#		if ( 0 == strcasecmp( $p, $ns ) ) {
-				#			$t = $m[2];
-				#			$this->mNamespace = $wgLang->getNsIndex(
-				#			  str_replace( " ", "_", $p ) );
-				#			break;
-				#		}
-				#	}
 				}
 			}
 			$r = $t;

@@ -1,7 +1,7 @@
 <?
 # See language.doc
 global $IP;
-include_once("$IP/Utf8Case.php");
+include_once("LanguageUtf8.php");
 
 class LanguageSl extends LanguageUtf8 {
 	# Inherit everything

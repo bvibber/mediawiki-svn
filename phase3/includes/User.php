@@ -122,23 +122,22 @@ class User {
 		return $this->mBlockreason;
 	}
 
-	function loadFromSession()
+	/* static */ function loadFromSession()
 	{
 		global $HTTP_COOKIE_VARS, $wsUserID, $wsUserName, $wsUserPassword;
+		global $wgMemc, $wgDBname;
 
 		if ( isset( $wsUserID ) ) {
 			if ( 0 != $wsUserID ) {
 				$sId = $wsUserID;
 			} else {
-				$this->mId = 0;
-				return;
+				return new User();
 			}
 		} else if ( isset( $HTTP_COOKIE_VARS["wcUserID"] ) ) {
 			$sId = $HTTP_COOKIE_VARS["wcUserID"];
 			$wsUserID = $sId;
 		} else {
-			$this->mId = 0;
-			return;
+			return new User();
 		}
 		if ( isset( $wsUserName ) ) {
 			$sName = $wsUserName;
@@ -146,56 +145,71 @@ class User {
 			$sName = $HTTP_COOKIE_VARS["wcUserName"];
 			$wsUserName = $sName;
 		} else {
-			$this->mId = 0;
-			return;
+			return new User();
 		}
 
 		$passwordCorrect = FALSE;
-		$this->mId = $sId;
-		$this->loadFromDatabase();
+		$user = $wgMemc->get( $key = "$wgDBname:user:id:$sId" );
+		if($makenew = !$user) {
+			wfDebug( "User::loadFromSession() unable to load from memcached\n" );
+			$user = new User();
+			$user->mId = $sId;
+			$user->loadFromDatabase();
+		} else {
+			wfDebug( "User::loadFromSession() got from cache!\n" );
+		}
 
 		if ( isset( $wsUserPassword ) ) {
-			$passwordCorrect = $wsUserPassword == $this->mPassword;
+			$passwordCorrect = $wsUserPassword == $user->mPassword;
 		} else if ( isset( $HTTP_COOKIE_VARS["wcUserPassword"] ) ) {
-			$this->mCookiePassword = $HTTP_COOKIE_VARS["wcUserPassword"];
-			$wsUserPassword = $this->addSalt( $this->mCookiePassword );
-			$passwordCorrect = $wsUserPassword == $this->mPassword;
+			$user->mCookiePassword = $HTTP_COOKIE_VARS["wcUserPassword"];
+			$wsUserPassword = $user->addSalt( $user->mCookiePassword );
+			$passwordCorrect = $wsUserPassword == $user->mPassword;
 		} else {
-			$this->mId = 0;
-			$this->loadDefaults(); # Can't log in from session
-			return;
+			return new User(); # Can't log in from session
 		}
 
-		if ( ( $sName == $this->mName ) && $passwordCorrect ) {
-			$this->spreadBlock();
-			return;
+		if ( ( $sName == $user->mName ) && $passwordCorrect ) {
+			if($makenew) {
+				if($wgMemc->set( $key, $user ))
+					wfDebug( "User::loadFromSession() successfully saved user\n" );
+				else
+					wfDebug( "User::loadFromSession() unable to save to memcached\n" );
+			}
+			$user->spreadBlock();
+			return $user;
 		}
-		$this->loadDefaults(); # Can't log in from session
+		return new User(); # Can't log in from session
 	}
 
 	function loadFromDatabase()
 	{
 		if ( $this->mDataLoaded ) { return; }
-		
-		global $wgDisableAnonTalk;
 		# check in separate table if there are changes to the talk page
 		$this->mNewtalk=0; # reset talk page status
 		if($this->mId) {
 			$sql = "SELECT 1 FROM user_newtalk WHERE user_id={$this->mId}";
-			$res = wfQuery ($sql,  "User::loadFromDatabase" );
+			$res = wfQuery ($sql, DB_READ, "User::loadFromDatabase" );
 
 			if (wfNumRows($res)>0) {
 				$this->mNewtalk= 1;
 			}
 			wfFreeResult( $res );
-		} elseif( !$wgDisableAnonTalk ) {
-			$sql = "SELECT 1 FROM user_newtalk WHERE user_ip='{$this->mName}'";
-			$res = wfQuery ($sql,  "User::loadFromDatabase" );
+		} else {
+			global $wgDBname, $wgMemc;
+			$key = "$wgDBname:newtalk:ip:{$this->mName}";
+			$newtalk = $wgMemc->get( $key );
+			if($newtalk === false) {
+				$sql = "SELECT 1 FROM user_newtalk WHERE user_ip='{$this->mName}'";
+				$res = wfQuery ($sql, DB_READ, "User::loadFromDatabase" );
 
-			if (wfNumRows($res)>0) {
-				$this->mNewtalk= 1;
+				$this->mNewtalk = (wfNumRows($res)>0) ? 1 : 0;
+				wfFreeResult( $res );
+
+				$wgMemc->set( $key, $this->mNewtalk, time() ); // + 1800 );
+			} else {
+				$this->mNewtalk = $newtalk ? 1 : 0;
 			}
-			wfFreeResult( $res );
 		}
 		if(!$this->mId) {
 			$this->mDataLoaded = true;
@@ -205,7 +219,7 @@ class User {
 		$sql = "SELECT user_name,user_password,user_newpassword,user_email," .
 		  "user_options,user_rights,user_touched FROM user WHERE user_id=" .
 		  "{$this->mId}";
-		$res = wfQuery( $sql, "User::loadFromDatabase" );
+		$res = wfQuery( $sql, DB_READ, "User::loadFromDatabase" );
 
 		if ( wfNumRows( $res ) > 0 ) {
 			$s = wfFetchObject( $res );
@@ -487,7 +501,7 @@ class User {
 
 	function saveSettings()
 	{
-		global $wgUser;
+		global $wgMemc, $wgDBname;
 
 		if ( ! $this->mNewtalk ) {
 			if( $this->mId ) {
@@ -496,6 +510,7 @@ class User {
 			} else {
 				$sql="DELETE FROM user_newtalk WHERE user_ip='{$this->mName}'";
 				wfQuery ($sql,"User::saveSettings");
+				$wgMemc->delete( "$wgDBname:newtalk:ip:{$this->mName}" );
 			}
 		}
 		if ( 0 == $this->mId ) { return; }
@@ -511,6 +526,7 @@ class User {
 		  "user_touched= '" . wfStrencode( $this->mTouched ) .
 		  "' WHERE user_id={$this->mId}";
 		wfQuery( $sql, "User::saveSettings" );
+		$wgMemc->delete( "$wgDBname:user:id:$this->mId" );
 	}
 
 	# Checks if a user with the given name exists
