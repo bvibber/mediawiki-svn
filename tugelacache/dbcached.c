@@ -298,7 +298,7 @@ void complete_nread(conn * c)
 	    dbkey.data = ITEM_key(it);
 	    dbkey.size = strlen(ITEM_key(it));
 	    dbkey.dlen = 40;
-	    if ((ret = dbp->get(dbp, NULL, &dbkey, &dbdata, NULL)) == 0) {
+	    if ((ret = dbp->get(dbp, NULL, &dbkey, &dbdata, 0)) == 0) {
 		/* old data exists */
 		testit = dbdata.data;
 		if (testit && testit->exptime && testit->exptime < now) {
