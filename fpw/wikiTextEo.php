@@ -70,7 +70,7 @@ $wikiUserError = "Eraro okazis pri \"$1\"" ;
 # wikiPage
 $wikiNoSuchSpecialPage = "<h1>Ne ekzistas speciala pagxo \"$1\"!</h1>" ;
 $wikiOldVersion = "<br><font size=-1>Cxi tiu estas la malnova version #$1; vidu la <a href=\"$THESCRIPT?title=$2\">aktualan version</a></font>" ;
-$wikiRedirectFrom = "(alidirektita el <a href=\"$THESCRIPT?action=edit&title=$1\">$2</a>)" ;
+$wikiRedirectFrom = "(alidirektita el $1)" ;
 $wikiRecentChanges = "Lastaj Sxangxoj" ;
 $wikiRecentChangesLink = "RecentChanges" ; # "special:" is added automatically
 $wikiSpecialPagesLink = "Special_pages" ; # "special:" is added automatically
