@@ -1,4 +1,4 @@
-<?
+<?php
 
 # This file is only needed temporarily and will be deleted
 require_once ( "geo_functions.php" ) ;

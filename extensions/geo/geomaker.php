@@ -1,4 +1,4 @@
-<?
+<?php
 require_once ( "geo_functions.php" ) ;
 
 function get_any_value ( $key )

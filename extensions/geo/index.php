@@ -1,4 +1,4 @@
-<?
+<?php
 include_once ( "geosettings.php" ) ;
 
 if ( isset ( $wikibasedir ) )
