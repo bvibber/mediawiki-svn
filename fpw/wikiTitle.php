@@ -11,6 +11,11 @@ class WikiTitle {
 		if ( !$this->validateTitle() ) return false ;
 		if ( $this->isSpecialPage and $action != "edit" ) return false ;
 		if ( $this->namespace == "special" ) return false ;
+
+		# Allowing only a handful of namespaces
+		$allowed = array ( "wikipedia" , "talk" , "user" , "" ) ;
+		if ( !in_array ( strtolower ( $this->namespace ) , $allowed ) ) return false ;
+
 		return true ;
 		}
 	function canDelete () {
@@ -94,6 +99,12 @@ class WikiTitle {
 		}
 	function makeAll () { $this->makeSecureTitle(); $this->makeURL(); }
 	function setTitle ( $t ) { $this->title = $t ; $this->makeAll() ; }
+	function getMainTitle () {
+		$r = $this->title ;
+		if ( $this->hasNamespace and $this->namespace != "" ) $r = $this->namespace.":$r" ;
+		if ( $this->subpageTitle != "" ) $r .= "/".$this->subpageTitle ;
+		return $r ;
+		}
 	function doesTopicExist ( $conn = "" ) {
 		$this->makeSecureTitle () ;
 		if ( $this->namespace == "special" ) return true ;

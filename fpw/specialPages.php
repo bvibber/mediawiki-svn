@@ -8,15 +8,22 @@ function error ( $error ) {
 
 function edit ( $title ) {
 	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit ;
-	global $user , $CommentBox , $vpage ;
+	global $user , $CommentBox , $vpage , $EditTime ;
 	$npage = new WikiPage ;
 	$npage->title = $title ;
 	$npage->makeAll () ;
 	$ret = "" ;
 	if ( !$vpage->canEdit() ) return "<h3>You cannot edit this page!</h3>" ;
 
+	if ( $EditTime == "" ) $EditTime = date ( "YmdHis" ) ;
+
+
 	if ( isset ( $SaveButton ) ) {
 		unset ( $SaveButton ) ;
+		if ( $vpage->doesTopicExist() ) {
+			$lastTime = getMySQL ( "cur" , "cur_timestamp" , "cur_title=\"$vpage->secureTitle\"" ) ;
+			if ( tsc($EditTime) < tsc($lastTime) ) return "<h1>While you were typing, someone saved another version of this article!</h1>" ;
+			}
 		$text = $EditBox ;
 		$text = str_replace ( "\\'" , "'" , $text ) ;
 		$text = str_replace ( "\\\"" , "\"" , $text ) ;
@@ -62,6 +69,7 @@ function edit ( $title ) {
 	$ret .= "<input tabindex=3 type=checkbox name=MinorEdit $checked value=1>This is a minor edit \n" ;
 	$ret .= "<input tabindex=4 type=submit value=Save name=SaveButton> \n" ;
 	$ret .= "<input tabindex=5 type=submit value=Preview name=PreviewButton>\n" ;
+	$ret .= "<input type=hidden value=\"$EditTime\" name=EditTime>\n" ;
 	$ret .= "</form>" ;
 
 	return $ret.$append ;
@@ -81,7 +89,7 @@ function doEdit ( $title ) {
 	$action = "" ;
 	$ret .= $vpage->getFooter() ;
 	$action = "edit" ;
-	if ( $wasSaved ) return view ( $title ) ;
+	if ( $wasSaved ) $ret .= "<h1>Your page was successfully saved!</h1><META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$PHP_SELF?title=$vpage->secureTitle\">" ;
 	return $ret ;
 	}
 
@@ -176,7 +184,7 @@ function editUserSettings () {
 	if ( isset ( $ButtonSave ) ) {
 		unset ( $ButtonSave ) ;
 		global $QuickBar , $NewTopics , $UnderlineLinks , $AutoTalk , $ShowHover , $ROWS , $COLS , $doSkin ;
-		global $OLDPASSWORD , $NEWPASSWORD , $RETYPEPASSWORD , $EMAIL , $RESULTSPERPAGE , $doJustify ;
+		global $OLDPASSWORD , $NEWPASSWORD , $RETYPEPASSWORD , $EMAIL , $RESULTSPERPAGE , $doJustify , $ChangesLayout ;
 		if ( $RESULTSPERPAGE < 2 ) $RESULTSPERPAGE = 20 ;
 		$user->options["quickBar"] = $QuickBar ;
 		$user->options["markupNewTopics"] = $NewTopics ;
@@ -188,6 +196,7 @@ function editUserSettings () {
 		$user->options["justify"] = $doJustify ;
 		$user->options["resultsPerPage"] = $RESULTSPERPAGE ;
 		$user->options["skin"] = $doSkin ;
+		$user->options["changesLayout"] = $ChangesLayout ;
 		$user->email = $EMAIL ;
 
 		if ( $OLDPASSWORD == $user->password ) {
@@ -275,14 +284,12 @@ function editUserSettings () {
 	$ret .= "<input type=radio value=None ".$sk["None"]." name=doSkin>None (Standard)<br>\n" ;
 	$ret .= "<input type=radio value=\"Star Trek\" ".$sk["Star Trek"]." name=doSkin>Star Trek<br>\n" ;
 
-	# ??
-	$ret .= "</td>" ;
-	$ret .= "<td></td></tr>" ;
-#	$nt[$user->options["markupNewTopics"]] = "checked" ;
-#	$ret .= "</td><td valign=top nowrap><b>New Topics :</b><br>\n" ;
-#	$ret .= "<input type=radio value=normal ".$nt["normal"]." name=NewTopics>Normal (Standard)<br>\n" ;
-#	$ret .= "<input type=radio value=red ".$nt["red"]." name=NewTopics>Red<br>\n" ;
-#	$ret .= "</td></tr>" ;
+	# Changes layout
+	$cl[$user->options["changesLayout"]] = "checked" ;
+	$ret .= "</td><td valign=top nowrap><b>New Topics :</b><br>\n" ;
+	$ret .= "<input type=radio value=classic ".$cl["classic"]." name=ChangesLayout>Classic (Standard)<br>\n" ;
+	$ret .= "<input type=radio value=table ".$cl["table"]." name=ChangesLayout>As a table<br>\n" ;
+	$ret .= "</td></tr>" ;
 
 	$ret .= "<tr><td><center><input type=submit value=Save name=ButtonSave></center></td>" ;
 	$ret .= "<td><center><input type=reset value=Reset name=ButtonReset></center></td></tr>" ;
@@ -588,7 +595,8 @@ function recentChangesLayout ( &$arr ) {
 	$xyz = new WikiTitle ;
 	$editTypes = array ( "0"=>"" , "1"=>"<font color=green>M</font>" , "2"=>"<font color=red>N</font>" ) ;
 	$ret = " (<b>Legend :</b> ".$editTypes["1"]."=Minor edit ; ".$editTypes["2"]."=New article.)" ;
-	$ret .= "<table width=100% border=0 cellpadding=2 cellspacing=0>\n" ;
+	if ( $user->options["changesLayout"] == "table" ) $ret .= "<table width=100% border=0 cellpadding=2 cellspacing=0>\n" ;
+	else $ret .= "<ul>\n" ; 
 	$dummy = "$PHP_SELF?x=y" ;
 	foreach ( $arr as $s ) {
 		$nt = $xyz->getNiceTitle ( $s->cur_title ) ;
@@ -596,7 +604,8 @@ function recentChangesLayout ( &$arr ) {
 		$time = date ( "H:i" , tsc ( $s->cur_timestamp ) ) ;
 		if ( $day != $lastDay ) {
 			$lastDay = $day ;
-			$ret .= "<tr><td width=100% colspan=6".$user->options["tabLine0"]."><b>$day</b></td></tr>" ;
+			if ( $user->options["changesLayout"] == "table" ) $ret.="<tr><td width=100% colspan=6".$user->options["tabLine0"]."><b>$day</b></td></tr>";
+			else $ret .= "</ul><b>$day</b><ul>\n" ;
 			$color = $color1 ;
 			}
 		$u = $s->cur_user_text ;
@@ -608,33 +617,53 @@ function recentChangesLayout ( &$arr ) {
 		$comment = trim($s->cur_comment) ;
 		if ( $comment == "*" ) $comment = "" ;
 		if ( $s->cur_minor_edit == 1 ) $comment = "<font size=-1><i>$comment</i></font>" ;
-
 		$minor = $editTypes[$s->cur_minor_edit] ;
 
-		$t = "<tr><td$color valign=top width=0%>" ;
+		if ( $user->options["changesLayout"] == "table" ) $t = "<tr><td$color valign=top width=0%>" ;
+		else $t = "<li>" ;
+
 		if ( $s->version == "current" ) $t .= "<a href=\"$PHP_SELF?title=$s->cur_title&diff=yes\">(diff)</a>&nbsp;" ;
 		else if ( $s->version != "" ) $t .= "<a href=\"$PHP_SELF?title=$s->cur_title&oldID=$s->old_id&version=$s->version&diff=yes\">(diff)</a>&nbsp;" ;
 		else $t .= "<a href=\"$PHP_SELF?title=$s->cur_title&diff=yes\">(diff)</a>" ;
-		$t .= "</td><td$color valign=top>" ;
+
+		if ( $user->options["changesLayout"] == "table" ) $t .= "</td><td$color valign=top>" ;
+		else $t .= " " ;
+
 		if ( $s->version == "current" ) $t .= "<a href=\"$PHP_SELF?$s->cur_title\">$nt</a></td>" ;
 		else if ( $s->version != "" ) $t .= "<a href=\"$PHP_SELF?$s->cur_title&oldID=$s->old_id&version=$s->version\">$nt ($s->version)</a></td>" ;
 		else $t .= "<a href=\"$PHP_SELF?title=$s->cur_title\">$nt</a>" ;
-		$t .= "<td$color valign=top width=0% nowrap>$time</td>" ;
+
+		if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top width=0% nowrap>$time</td>" ;
+		else $t = str_replace ( "</td>" , "; " , $t ) . " ($time) " ;
 		if ( $s->version != "" ) {
 			$v = new wikiTitle ;
 			$v->title = $s->cur_user_text ;
 			$v->makeSecureTitle () ;
-			if ( $s->cur_user == 0 ) $t .= "<td$color valign=top nowrap>$s->cur_user_text!!</td>" ;
-			else $t .= "<td$color valign=top nowrap><a href=\"$PHP_SELF?title=user:$v->secureTitle\">$s->cur_user_text</a></td>" ;
+			if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top nowrap>" ;
+			if ( $s->cur_user == 0 ) $t .= "$s->cur_user_text!!</td>" ;
+			else $t .= "<a href=\"$PHP_SELF?title=user:$v->secureTitle\">$s->cur_user_text</a></td>" ;
+			if ( $user->options["changesLayout"] == "table" ) $t .= "</td>" ;
+			else $t .= "; " ;
 			}
-		else $t .= "<td$color valign=top nowrap>$u</td>" ;
-		$t .= "<td$color valign=top>$minor</td>" ;
-		$t .= "<td$color >$comment</td>" ;
-		$ret .= $t."</tr>\n" ;
+		else {
+			if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top nowrap>$u</td>" ;
+			else $t .= $u ;
+			}
+		if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top>$minor</td>" ;
+		else $t .= " $minor" ;
+		if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color >$comment</td>" ;
+		else $t .= " <b>$comment</b>" ;
+		if ( $user->options["changesLayout"] == "table" ) $t .= "</tr>\n" ;
+		else $t .= "</li>\n" ;
+		$ret .= $t ;
 		if ( $color == $color1 ) $color = $color2 ;
 		else $color = $color1 ;
 		}
-	$ret .= "</table>" ;
+	if ( $user->options["changesLayout"] == "table" ) $ret .= "</table>" ;
+	else {
+		$ret = "$ret</ul>\n" ;
+		$ret = str_replace ( "</td>" , "" , $ret ) ;
+		}
 	return "<nowiki>$ret</nowiki>" ;
 	}
 
@@ -1002,7 +1031,7 @@ function ShortPages () {
 	return $ret ;
 	}
 
-# select old_id,old_title,old_timestamp,old_old_version from old order by old_timestamp desc
+# A little hack; disabled; to enable, allow function call in wikiPage->load()
 function askSQL () {
 	global $Save , $question ;
 	$ret = "" ;
