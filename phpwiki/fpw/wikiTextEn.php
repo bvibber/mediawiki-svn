@@ -35,6 +35,7 @@ $wikiPrintLinksMarkup = "i" ; # will be used as <$wikiPrintLinksMarkup> and </$w
 #$wikiAllowedNamespaces = array ( "wikipedia" , "talk" , "user" , "" , "wikipedia talk" , "user talk" ) ;
 $wikiTalk = "talk" ;
 $wikiUser = "user" ;
+$wikiNamespaceTalk = "$1 Talk" ;
 $wikiAllowedNamespaces = array ( "wikipedia" , $wikiTalk , $wikiUser , "" , "wikipedia $wikiTalk" , "$wikiUser $wikiTalk" ) ;
 
 # Editing
