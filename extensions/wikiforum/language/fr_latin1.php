@@ -28,25 +28,25 @@ if(defined('MEDIAWIKI'))
 {
    $wf_language = array
    (
-      "Thread"          => "Sujet",
-      "ThreadTalk"      => "Discussion_Sujet",
-      "ThreadName"      => "Sujet",
-      "ThreadView"      => "Lu",
-      "ThreadUser"      => "Modifié par",
-      "ThreadComment"   => "Commentaire",
-      "ThreadTime"      => "Date",
-      "ThreadEdit"      => "Modifier",
-      "ThreadCreate"    => "Créer un nouveau sujet",
-      "ThreadAll"       => "Voir tout les sujets",
-      "ThreadLastest"   => "$1 derniers sujets",
-      "ThreadIncluded"  => "$1 sujets inclus",
-      "ThreadNew"       => "Nouveau sujet",
-      "ThreadTitle"     => "Titre",
-      "ThreadOpen"      => "Créer le sujet",
-      "ThreadExist"     => "Ce sujet existe déjà, veuillez choisir un autre titre !",
-      "ThreadInvalid"   => "Le titre de ce sujet est invalide, veuillez choisir un autre titre !",
-      "ThreadSHAlt"     => "voir", // thread show/hide bouton 'alt' text
-      "ThreadSHTip"     => "Cliquer ici pour montrer ou cacher le contenu de ce sujet", // thread show/hide bouton 'title' text (tip)
+      'Thread'          => 'Sujet',
+      'ThreadTalk'      => 'Discussion_Sujet',
+      'ThreadName'      => 'Sujet',
+      'ThreadView'      => 'Lu',
+      'ThreadUser'      => 'Modifiï¿½ par',
+      'ThreadComment'   => 'Commentaire',
+      'ThreadTime'      => 'Date',
+      'ThreadEdit'      => 'Modifier',
+      'ThreadCreate'    => 'Crï¿½er un nouveau sujet',
+      'ThreadAll'       => 'Voir tout les sujets',
+      'ThreadLastest'   => '$1 derniers sujets',
+      'ThreadIncluded'  => '$1 sujets inclus',
+      'ThreadNew'       => 'Nouveau sujet',
+      'ThreadTitle'     => 'Titre',
+      'ThreadOpen'      => 'Crï¿½er le sujet',
+      'ThreadExist'     => 'Ce sujet existe dï¿½jï¿½, veuillez choisir un autre titre !',
+      'ThreadInvalid'   => 'Le titre de ce sujet est invalide, veuillez choisir un autre titre !',
+      'ThreadSHAlt'     => 'voir', // thread show/hide bouton 'alt' text
+      'ThreadSHTip'     => 'Cliquer ici pour montrer ou cacher le contenu de ce sujet', // thread show/hide bouton 'title' text (tip)
    );
 } // end if(defined('MEDIAWIKI'))
 

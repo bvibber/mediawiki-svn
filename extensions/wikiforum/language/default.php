@@ -28,25 +28,25 @@ if(defined('MEDIAWIKI'))
 {
    $wf_language_default = array
    (
-      "Thread"          => "Thread",
-      "ThreadTalk"      => "Thread_talk",
-      "ThreadName"      => "Name",
-      "ThreadView"      => "View",
-      "ThreadUser"      => "Last user",
-      "ThreadComment"   => "Last comment",
-      "ThreadTime"      => "Time",
-      "ThreadEdit"      => "edit",
-      "ThreadCreate"    => "Create a new thread",
-      "ThreadAll"       => "View all threads",
-      "ThreadLastest"   => "$1 lastest threads",
-      "ThreadIncluded"  => "$1 included threads",
-      "ThreadNew"       => "New thread",
-      "ThreadTitle"     => "Thread title",
-      "ThreadOpen"      => "Open thread",
-      "ThreadExist"     => "This thread already exist, please chose an other name!",
-      "ThreadInvalid"   => "This thread title is invalid, please chose an other name!",
-      "ThreadSHAlt"     => "Show/Hide", // thread show/hide bouton 'alt' text
-      "ThreadSHTip"     => "Click here to show or hide this thread content", // thread show/hide bouton 'title' text (tip)
+      'Thread'          => 'Thread',
+      'ThreadTalk'      => 'Thread_talk',
+      'ThreadName'      => 'Name',
+      'ThreadView'      => 'View',
+      'ThreadUser'      => 'Last user',
+      'ThreadComment'   => 'Last comment',
+      'ThreadTime'      => 'Time',
+      'ThreadEdit'      => 'edit',
+      'ThreadCreate'    => 'Create a new thread',
+      'ThreadAll'       => 'View all threads',
+      'ThreadLastest'   => '$1 lastest threads',
+      'ThreadIncluded'  => '$1 included threads',
+      'ThreadNew'       => 'New thread',
+      'ThreadTitle'     => 'Thread title',
+      'ThreadOpen'      => 'Open thread',
+      'ThreadExist'     => 'This thread already exist, please chose an other name!',
+      'ThreadInvalid'   => 'This thread title is invalid, please chose an other name!',
+      'ThreadSHAlt'     => 'Show/Hide', // thread show/hide bouton 'alt' text
+      'ThreadSHTip'     => 'Click here to show or hide this thread content', // thread show/hide bouton 'title' text (tip)
    );
 } // end if(defined('MEDIAWIKI'))
 

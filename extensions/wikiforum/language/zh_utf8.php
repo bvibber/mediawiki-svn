@@ -28,25 +28,25 @@ if(defined('MEDIAWIKI'))
 {
 	$wf_language = array
 	(
-		"Thread"          => "Thread",
-		"ThreadTalk"      => "Thread_talk",
-		"ThreadName"      => "主题",
-		"ThreadView"      => "浏览",
-		"ThreadUser"      => "最后发表的用户",
-		"ThreadComment"   => "最新的评论",
-		"ThreadTime"      => "时间",
-		"ThreadEdit"      => "编辑",
-		"ThreadCreate"    => "创建一个新主题",
-		"ThreadAll"       => "浏览全部主题",
-		"ThreadLastest"   => "$1个最新的主题",
-		"ThreadIncluded"  => "共有$1个主题",
-		"ThreadNew"       => "新主题",
-		"ThreadTitle"     => "主题标题",
-		"ThreadOpen"      => "公开的主题",
-		"ThreadExist"     => "这个主题已经存在，请选择一个其它的名称！",
-		"ThreadInvalid"   => "这个主题的标题有错误，请选择一个其它的名字！",
-		"ThreadSHAlt"     => "显示/隐藏", // thread show/hide bouton 'alt' text
-		"ThreadSHTip"     => "点击这里显示或隐藏该主题的内容", // thread show/hide bouton 'title' text (tip)
+		'Thread'          => 'Thread',
+		'ThreadTalk'      => 'Thread_talk',
+		'ThreadName'      => '主题',
+		'ThreadView'      => '浏览',
+		'ThreadUser'      => '最后发表的用户',
+		'ThreadComment'   => '最新的评论',
+		'ThreadTime'      => '时间',
+		'ThreadEdit'      => '编辑',
+		'ThreadCreate'    => '创建一个新主题',
+		'ThreadAll'       => '浏览全部主题',
+		'ThreadLastest'   => '$1个最新的主题',
+		'ThreadIncluded'  => '共有$1个主题',
+		'ThreadNew'       => '新主题',
+		'ThreadTitle'     => '主题标题',
+		'ThreadOpen'      => '公开的主题',
+		'ThreadExist'     => '这个主题已经存在，请选择一个其它的名称！',
+		'ThreadInvalid'   => '这个主题的标题有错误，请选择一个其它的名字！',
+		'ThreadSHAlt'     => '显示/隐藏', // thread show/hide bouton 'alt' text
+		'ThreadSHTip'     => '点击这里显示或隐藏该主题的内容', // thread show/hide bouton 'title' text (tip)
 		);
 	} // end if(defined('MEDIAWIKI'))
 
