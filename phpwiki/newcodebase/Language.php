@@ -21,7 +21,7 @@
 	"cols" => 80, "rows" => 25, "searchlimit" => 20,
 	"contextlines" => 5, "contextchars" => 50,
 	"skin" => 0, "rcdays" => 3, "rclimit" => 50,
-	"highlightbroken" => 1
+	"highlightbroken" => 1, "stubthreshold" => 0
 );
 
 /* private */ $wgQuickbarSettingsEn = array(
@@ -534,6 +534,7 @@ Your internal ID number is $2.",
 "resultsperpage" => "Hits to show per page",
 "contextlines"	=> "Lines to show per hit",
 "contextchars"	=> "Characters of context per line",
+"stubthreshold" => "Threshold for stub display",
 "recentchangescount" => "Number of titles in recent changes",
 "savedprefs"	=> "Your preferences have been saved.",
 "timezonetext"	=> "Enter number of hours your local time differs
