@@ -98,7 +98,8 @@ class maparea {
 			      . ";type:" . $type . "\r\n";
 
 			if ($type == "city") {
-				$a = $x->gis_type_arg;
+				/* look at population, ignoring commas */
+				$a = str_replace( ',', '', $x->gis_type_arg);
 				if ($a >= 3000000) {
 					$m = 6;
 				} elseif ($a >= 1000000) {
