@@ -123,7 +123,7 @@ include_once("utf8Case.php");
 	"rn"	=> "w urundi",
 	"ko"	=> "koreańska",
 	"lo"	=> "laotańska",
-	"la"	=> "w łacinie",
+	"la"	=> "łacińska",
 	"lv"	=> "łotewska",
 	"ln"	=> "w lingala",
 	"lt"	=> "litewska",
@@ -463,8 +463,8 @@ By wprowadzić swoje zmiany musisz zmodyfikować tekst z górnego pola.
 \"Zapisz\".\n<p>",
 "yourtext"		=> "Twój tekst",
 "storedversion" => "Zapisana wersja",
-"editingold"	=> "<strong>OSTRZEŻENIE: Edytujesz inną niż bieżąca wersję tej strony.
-Jeśli zapiszesz ją wszystkie późniejsze wersje zostaną skasowne.</strong>\n",
+"editingold"	=> "<font color="red"><strong>OSTRZEŻENIE: Edytujesz inną niż bieżąca wersję tej strony.
+Jeśli zapiszesz ją wszystkie późniejsze wersje zostaną skasowane.</strong></font>\n",
 "yourdiff"		=> "Różnice",
 "copyrightwarning" => "Proszę pamiętać o tym, że przyjmuje się, iż wszelki
 wkład do Wikipedii jest udostępniany na zasadach <i>GNU Free Documentation License</i>
@@ -472,7 +472,7 @@ wkład do Wikipedii jest udostępniany na zasadach <i>GNU Free Documentation Lic
 Twój tekst było bezlitośnie edytowany i rozpowszechniany bez ograniczeń,
 nie umieszczaj go w Wikipedii.
 Niniejszym jednocześnie oświadczasz, że ten tekst jest Twoim
-dziełem lub pochodzi z materiałów dostępnych na zasadach public domain albo
+dziełem lub pochodzi z materiałów dostępnych na zasadach <i>public domain</i> albo
 licencji <i>GNU Free Documentation License</i> lub kompatybilnej.
 <br><strong>PROSZĘ NIE UŻYWAĆ BEZ POZWOLENIA MATERIAŁÓW OBJĘTYCH PRAWEM
 AUTORSKIM!</strong>",
@@ -728,7 +728,7 @@ więc, by ich nie nadużywać.",
 "disambiguationspage"	=> "Wikipedia:Strony_ujednoznaczniające",
 "disambiguationstext"	=> "Poniższe artykuły odwołują się do <i>stron
 ujednoznaczniających</i>, a powinny odwoływać się bezpośrednio do hasła
-związanego z treścią artykułu.<br> Strona uznawana jest za ujednoznaczniającą
+związanego z treścią artykułu.<br>Strona uznawana jest za ujednoznaczniającą
 jeśli odwołuje się do niej $1.<br>Linki z innych przestrzeni nazw <i>nie</i>
 zostały tu uwzględnione.",
 "doubleredirects"	=> "Podwójne przekierowania",
@@ -746,8 +746,8 @@ przekierowywać.",
 (co nie powinno mieć miejsca).",
 "mispeelings"           => "Strony z błędami pisowani",
 "mispeelingstext"               => "Poniższe strony zawierają najczęstsze błędy
-pisowni (ich listę można znaleźć w $1). Poprawna pisowania może być podana (tak
-jak tu).", 
+pisowni (ich listę można znaleźć w $1). Poprawna pisowania może być podana obok w
+nawiasach.", 
 "mispeelingspage"       => "Lista najczęstszych błędów pisowni",
 "missinglanguagelinks"  => "Brakujące odnośniki do innych wersji językowych",
 "missinglanguagelinksbutton"    => "Znajdź brakujące odnośniki, wersja",
@@ -761,7 +761,7 @@ odpowiednika w tym języku. Na tej liście <i>pominięto</i> podstrony oraz prze
 "lonelypages"	=> "Porzucone strony",
 "unusedimages"	=> "Nie używane pliki",
 "popularpages"	=> "Najpopularniejsze strony",
-"nviews"		=> "$1 odwiedzin",
+"nviews"		=> "odwiedzono $1 razy",
 "wantedpages"	=> "Najpotrzebniejsze strony",
 "nlinks"		=> "$1 linków",
 "allpages"		=> "Wszystkie strony",
@@ -878,7 +878,7 @@ Podane czasy odnoszą się do strefy czasu uniwersalnego (UTC).
 "undeletepagetext" => "Poniższe strony zostały skasowane, ale ich kopia wciąż
 znajduje się w archiwum.<br><b>Uwaga:</b> archiwum co jakiś czas także jest kasowane!",
 "undeletearticle" => "Odtwórz skasowany artykuł",
-"undeleterevisions" => "Zarchiwizowanych jest $1 wersji",
+"undeleterevisions" => "Liczba zarchiwizowanych wersji: $1",
 "undeletehistory" => "Odtworzenie strony spowoduje przywrócenie także jej
 wszystkich poprzednich wersji. Jeśli od czasu skasowania ktoś utworzył nową stronę
 o tej nazwie, odtwarzane wersje znajdą się w jej historii, a obecna wersja
