@@ -200,7 +200,8 @@ class SearchEngine {
 		if ( "" == $contextchars ) { $contextchars = 50; }
 
 		$link = $sk->makeKnownLink( $t, "" );
-		$wgOut->addHTML( "<li>{$link}" );
+		$size = str_replace( "$1", strlen( $row->cur_text ), WfMsg( "nbytes" ) );
+		$wgOut->addHTML( "<li>{$link} ({$size})" );
 
 		$lines = explode( "\n", $row->cur_text );
 		$pat1 = "/(.*)(" . implode( "|", $this->mSearchterms ) . ")(.*)/i";
