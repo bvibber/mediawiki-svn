@@ -27,7 +27,7 @@ class SqlQueryForm {
 		$wgOut->addWikiText( wfMsg( "asksqltext" ) );
 
 		if ( "" != $err ) {
-			$wgOut->addHTML( "<p><font color='red' size='+1'>{$err}</font>\n" );
+			$wgOut->addHTML( "<p><font color='red' size='+1'>" . htmlspecialchars($err) . "</font>\n" );
 		}
 		if ( ! $wpSqlQuery ) { $wpSqlQuery = "SELECT ... FROM ... WHERE ..."; }
 		$q = wfMsg( "sqlquery" );
@@ -40,7 +40,7 @@ class SqlQueryForm {
 <table border=0><tr>
 <td align=right>{$q}:</td>
 <td align=left>
-<input type=text size=80 name='wpSqlQuery' value=\"{$wpSqlQuery}\">
+<input type=text size=80 name='wpSqlQuery' value=\"" . htmlspecialchars($wpSqlQuery) ."\">
 </td>
 </tr><tr>
 <td>&nbsp;</td><td align='left'>
