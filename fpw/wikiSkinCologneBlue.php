@@ -161,7 +161,7 @@ class skinCologneBlue extends skinClass {
 	function getMiddle ( &$page , $text ) {
 	        global $user , $action ;
 		if ( $action != "print" )
-			$ret = "<h1>".$page->getNiceTitle($page->title)."</h1>\n".$ret ;
+			$text = "<h1>".$page->getNiceTitle($page->title)."</h1>\n".$text ;
 
 		$ret = "\n<div class=\"bodytext\">$text</div>" ;
 	        if ( $action == "print" ) return $ret ;
