@@ -1,15 +1,14 @@
 #!/usr/bin/perl
 # To do:
 # - Preview
-# - Summaries via GTK
 # - Diffs
-# - Deal with UTF-8/iso8559-1 where possible
-# - Don't kill window on save
+# - Edit conflicts
 #
 use Config::IniFiles;  # Module for config files in .ini syntax
 use LWP::UserAgent;    # Web agent module
 use URI::Escape;       # urlencode functions
 use Gtk2 '-init';
+use Encode qw(encode);
 
 # Pfad der Konfigurationsdatei ggf. anpassen!
 $cfgfile=$ENV{HOME}."/.ee-helper/ee.ini";
@@ -99,7 +98,12 @@ if($type eq "Edit file") {
 	close(OUTPUT);
 
 }elsif($type eq "Edit text") {
-	
+
+	# Do we need to convert UTF-8 into ISO 8859-1?
+	if($cfg->val("Settings","Transcode UTF-8") eq "true") {
+		$transcode=1;
+	}	
+	$ct=$response->header('Content-Type');
 	$editpage=$response->content;
 	$editpage=~m|<input type='hidden' value="(.*?)" name="wpEditToken" />|i;
 	$token=$1;
@@ -107,6 +111,15 @@ if($type eq "Edit file") {
 	$text=$1;
 	$editpage=~m|<input type='hidden' value="(.*?)" name="wpEdittime" />|i;
 	$time=$1;
+	
+	# Convert to ISO for easy editing
+	if($ct=~m/charset=utf-8/i) {
+		$is_utf8=1; 
+	}
+	if($is_utf8 && $transcode) {
+		Encode::from_to($text,'utf8','iso-8859-1');
+	}
+
 	open(OUTPUT,">$tempdir/".$filename);
 	print OUTPUT $text;
 	close(OUTPUT);
@@ -128,9 +141,6 @@ foreach $extensionlist(@extensionlists) {
 
 system("$app $tempdir/$filename &");
 makegui();
-
-#close(DEBUGLOG);
-#exit 0;
 
 sub makegui {
 
@@ -168,16 +178,22 @@ sub makegui {
 
 sub savecont {
 	
-	save();
-	$window->hide_all;
-	makegui();
+	save("continue");
 	
 }
 sub save {
 
-	$summary=$entry->get_text();
+	my $cont=shift;
+	my $summary=$entry->get_text();
 	if(length($summary)<190) {
-		$summary.=" (using [[Help:External editors|an external editor]])";
+		my $tosummary="using [[Help:External editors|an external editor]]";
+		if(length($summary)>0) {
+			$tosummary=" [".$tosummary."]";
+		}
+		$summary.=$tosummary;
+	}
+	if($is_utf8) {
+		$summary=Encode::encode('utf8',$summary);	
 	}
 	if($type eq "Edit file") {
 		$response=$browser->post($upload_url,
@@ -195,7 +211,10 @@ sub save {
 		while(<TEXT>) {
 			$text=$_;
 		}
-		close(TEXT);		
+		close(TEXT);
+		if($is_utf8 && $transcode) {
+			Encode::from_to($text,'iso-8859-1','utf8');		
+		}
 		$response=$browser->post($edit_url,@ns_headers,Content=>
 		[
 		wpTextbox1=>$text,
@@ -209,8 +228,10 @@ sub save {
 	
 		die "Undefined or unknown process in input file.";
 	}
-
-	Gtk2->main_quit;
+	if($cont ne "continue") {
+		Gtk2->main_quit;
+		exit 0;
+	}
 }
 sub cancel {
 
