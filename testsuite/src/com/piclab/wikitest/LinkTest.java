@@ -10,46 +10,50 @@ import com.meterware.httpunit.*;
 
 public class LinkTest extends WikiTest {
 
-public LinkTest( WikiSuite ws ) { super(ws); }
-
 public String testName() { return "Links"; }
 
-protected boolean runTest() throws Exception {
+protected int initTest() throws Exception {
 	WebResponse wr = m_suite.deletePage( "Talk:Poker" ); /* Will logout */
-
-	/* java.util.logging.Level l = WikiSuite.setLoggingLevel(
-	  java.util.logging.Level.ALL ); */
-
-	WikiSuite.fine( "Starting test \"" + testName() + "\"" );
-	if ( ! part1() ) { throw new WikiSuiteFailureException( "Part 1" ); }
-	if ( ! part2() ) { throw new WikiSuiteFailureException( "Part 2" ); }
-	if ( ! part3() ) { throw new WikiSuiteFailureException( "Part 3" ); }
-	if ( ! part4() ) { throw new WikiSuiteFailureException( "Part 4" ); }
-	if ( ! part5() ) { throw new WikiSuiteFailureException( "Part 5" ); }
-
-	/* WikiSuite.setLoggingLevel( l ); */
-	return true;
+	return 0;
 }
 
-private boolean part1() throws Exception {
+protected int runTest() throws Exception {
+	int c = 0;
+
+	if ( 0 != ( c = part1() ) ) { return fail( c ); }
+	if ( 0 != ( c = part2() ) ) { return fail( c ); }
+	if ( 0 != ( c = part3() ) ) { return fail( c ); }
+	if ( 0 != ( c = part4() ) ) { return fail( c ); }
+	if ( 0 != ( c = part5() ) ) { return fail( c ); }
+	return 0;
+}
+
+private int part1() throws Exception {
 	/*
 	 * Check that we can click through from main page to games,
 	 * card games, poker, world series.
 	 */
 	WebResponse wr = m_suite.viewPage( "" ); /* Main page */
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Game" );
-	wr = l.click();
-	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Card" );
-	wr = l.click();
-	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Poker" );
-	wr = l.click();
-	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "World Series" );
+	if ( l == null ) { return 101; }
 	wr = l.click();
 
-	return true;
+	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Card" );
+	if ( l == null ) { return 102; }
+	wr = l.click();
+
+	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Poker" );
+	if ( l == null ) { return 103; }
+	wr = l.click();
+
+	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "World Series" );
+	if ( l == null ) { return 104; }
+	wr = l.click();
+
+	return 0;
 }
 
-private boolean part2() throws Exception {
+private int part2() throws Exception {
 	/* 
 	 * Poker page should have some standard links on it, and should
 	 * _not_ have an upload link or user stat links on it because we
@@ -57,21 +61,21 @@ private boolean part2() throws Exception {
 	 */
 	WebResponse wr = m_suite.viewPage( "Poker" );
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Printable version" );
-	if ( l == null ) { return false; }
+	if ( l == null ) { return 201; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Related changes" );
-	if ( l == null ) { return false; }
+	if ( l == null ) { return 202; }
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Upload file" );
-	if ( l != null ) { return false; }
+	if ( l != null ) { return 203; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "My watchlist" );
-	if ( l != null ) { return false; }
+	if ( l != null ) { return 204; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "My contributions" );
-	if ( l != null ) { return false; }
+	if ( l != null ) { return 205; }
 
-	return true;
+	return 0;
 }
 
-private boolean part3() throws Exception {
+private int part3() throws Exception {
 	/*
 	 * Talk:Poker was not preloaded, so we should be on an edit form
 	 * when we click that link from the Poker page.  Add a comment,
@@ -80,6 +84,7 @@ private boolean part3() throws Exception {
 	 */
 	WebResponse wr = m_suite.viewPage( "Poker" );
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Discuss this page" );
+	if ( l == null ) { return 301; }
 	wr = l.click();
 
 	WebForm editform = WikiSuite.getFormByName( wr, "editform" );
@@ -89,69 +94,65 @@ private boolean part3() throws Exception {
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "View article" );
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Older versions" );
+	if ( l == null ) { return 302; }
 	wr = l.click();
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Current revision" );
-	if ( l == null ) { return false; }
+	if ( l == null ) { return 303; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "View discussion" );
-	if ( l == null ) { return false; }
+	if ( l == null ) { return 304; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "View article" );
+	if ( l == null ) { return 305; }
 	wr = l.click();
 
-	return true;
+	return 0;
 }
 
-private boolean part4() throws Exception {
+private int part4() throws Exception {
 	/*
 	 * Let's log in now and verify that things are changed.
 	 */
 	WebResponse wr = m_suite.viewPage( "Poker" );
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Log in" );
+	if ( l == null ) { return 401; }
 	wr = l.click();
 
-	WebForm loginform = WikiSuite.getFormByName( wr, "userlogin" );
-	WebRequest req = loginform.getRequest( "wpLoginattempt" );
-	req.setParameter( "wpName", "Fred" );
-	req.setParameter( "wpPassword", "Fred" );
-	wr = m_suite.getResponse( req );
-
-	String text = wr.getText();
-	if ( text.indexOf( "successful" ) < 0 ) { throw new
-	  WikiSuiteFailureException( "Could not log in" ); }
-
-	/*
-	 * Should have a "return to" link.
-	 */
-	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Poker" );
-	wr = l.click();
+	wr = m_suite.loginAs( "Fred", "Fred" );
+	wr = m_suite.viewPage( "Poker" );
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "My watchlist" );
-	if ( l == null ) { return false; }
+	if ( l == null ) { return 402; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "My contributions" );
-	if ( l == null ) { return false; }
+	if ( l == null ) { return 403; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "new messages" );
-	if ( l != null ) { return false; }
+	if ( l != null ) { return 404; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Upload file" );
+	if ( l == null ) { return 405; }
 	wr = l.click();
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "list of uploaded images" );
-	if ( l == null ) { return false; }
+	if ( l == null ) { return 406; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "upload log" );
-	if ( l == null ) { return false; }
+	if ( l == null ) { return 407; }
 
-	return true;
+	return 0;
 }
 
-private boolean part5() throws Exception {
+private int part5() throws Exception {
 	/*
 	 * Verify that the user page and user talk page are OK.
 	 */
 	WebResponse wr = m_suite.viewPage( "" );
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Fred" );
+	if ( l == null ) { return 501; }
 	wr = l.click();
+
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "User contributions" );
+	if ( l == null ) { return 502; }
 	wr = l.click();
+
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Talk" );
+	if ( l == null ) { return 503; }
 	wr = l.click();
 
 	/*
@@ -159,6 +160,7 @@ private boolean part5() throws Exception {
 	 * verify "new messages" link.
 	 */
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Log out" );
+	if ( l == null ) { return 504; }
 	wr = l.click();
 	m_suite.clearCookies();
 
@@ -169,8 +171,11 @@ private boolean part5() throws Exception {
     wr = m_suite.getResponse( req );
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Main Page" );
+	if ( l == null ) { return 505; }
 	wr = l.click();
+
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Log in" );
+	if ( l == null ) { return 506; }
 	wr = l.click();
 
 	WebForm loginform = WikiSuite.getFormByName( wr, "userlogin" );
@@ -180,19 +185,21 @@ private boolean part5() throws Exception {
 	wr = m_suite.getResponse( req );
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "new messages" );
+	if ( l == null ) { return 507; }
 	wr = l.click();
-	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Main Page" );
-	wr = l.click();
-	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "new messages" );
-	if ( l != null ) { return false; }
 
-	return true;
+	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Main Page" );
+	if ( l == null ) { return 508; }
+	wr = l.click();
+
+	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "new messages" );
+	if ( l != null ) { return 509; }
+
+	return 0;
 }
 
 public static void main( String[] params ) {
-	WikiSuite ws = new WikiSuite();
-	LinkTest wt = new LinkTest( ws );
-	wt.run();
+	(new LinkTest()).runSingle( params );
 }
 
 }
