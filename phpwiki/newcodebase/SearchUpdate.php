@@ -55,7 +55,7 @@ class SearchUpdate {
 		# Strip wiki '' and '''
 		$text = preg_replace( "/''[']*/", " ", $text );
 
-		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp,cur_ind_text='" .
+		$sql = "UPDATE LOW_PRIORITY cur SET cur_timestamp=cur_timestamp,cur_ind_text='" .
 		  wfStrencode( $text ) . "' WHERE cur_id={$this->mId}";
 		wfQuery( $sql, "SearchUpdate::doUpdate" );
 	}

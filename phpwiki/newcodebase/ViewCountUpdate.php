@@ -12,7 +12,7 @@ class ViewCountUpdate {
 
 	function doUpdate()
 	{
-		$sql = "UPDATE cur SET cur_counter=(1+cur_counter)," .
+		$sql = "UPDATE LOW_PRIORITY cur SET cur_counter=(1+cur_counter)," .
 		  "cur_timestamp=cur_timestamp WHERE cur_id={$this->mPageID}";
 		$res = wfQuery( $sql, "ViewCountUpdate::doUpdate" );
 	}
