@@ -1072,10 +1072,9 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		global $wgUser, $wgOut, $wgTitle;
 		global $wpConfirm, $wpReason, $image, $oldimage;
 
-		# Anybody can delete old revisions of images; only sysops
-		# can delete articles and current images
-
-		if ( ( ! $oldimage ) && ( ! $wgUser->isSysop() ) ) {
+		# This code desperately needs to be totally rewritten
+		
+		if ( ( ! $wgUser->isSysop() ) ) {
 			$wgOut->sysopRequired();
 			return;
 		}
