@@ -35,6 +35,13 @@
 	"editwidth" => "Edit box has full width"
 );
 
+/* private */ $wgBookstoreListEn = array(
+	"AddALL" => "http://www.addall.com/New/Partner.cgi?query=$1&type=ISBN",
+	"PriceSCAN" => "http://www.pricescan.com/books/bookDetail.asp?isbn=$1",
+	"Barnes & Noble" => "http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$1",
+	"Amazon.com" => "http://www.amazon.com/exec/obidos/ISBN=$1"
+);
+
 /* private */ $wgLanguageNamesEn = array(
 	"ab"	=> "Abkhazian",
 	"aa"	=> "Afar",
@@ -891,6 +898,11 @@ Please choose another name.",
 );
 
 class Language {
+
+	function getBookstoreList () {
+		global $wgBookstoreListEn ;
+		return $wgBookstoreListEn ;
+	}
 
 	function getNamespaces() {
 		global $wgNamespaceNamesEn;
