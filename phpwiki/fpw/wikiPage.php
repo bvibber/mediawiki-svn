@@ -232,8 +232,8 @@ class WikiPage extends WikiTitle {
         mysql_free_result ( $result ) ;
 
         $s->cur_text = str_replace ( "\"" , "\\\"" , $s->cur_text ) ;
-        $sql = "INSERT INTO old (old_title,old_old_version,old_text,old_comment,old_user,old_user_text,old_minor_edit)";
-        $sql .= " VALUES (\"$this->secureTitle\",\"$oid\",\"".$s->cur_text."\",\"".$s->cur_comment."\",\"$s->cur_user\",\"$s->cur_user_text\",$s->cur_minor_edit)" ;
+        $sql = "INSERT INTO old (old_title,old_old_version,old_text,old_comment,old_user,old_user_text,old_timestamp,old_minor_edit)";
+        $sql .= " VALUES (\"$this->secureTitle\",\"$oid\",\"".$s->cur_text."\",\"".$s->cur_comment."\",\"$s->cur_user\",\"$s->cur_user_text\",$s->cur_timestamp,$s->cur_minor_edit)" ;
         mysql_query ( $sql , $connection ) ;
 
         $sql = "SELECT old_id FROM old WHERE old_old_version=\"$oid\" AND old_title=\"$this->secureTitle\"" ;
