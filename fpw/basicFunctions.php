@@ -230,6 +230,7 @@ function doEdit ( $title ) {
 
 function view ( $title ) {
 	global $FromEditForm , $action , $namespaceBackground , $wikiNamespaceBackground ;
+	global $redirect ;
 	global $vpage , $wikiDescribePage ;
 	if ( $FromEditForm ) {
 		$s = doEdit ( $title ) ;
@@ -239,7 +240,11 @@ function view ( $title ) {
 		$action = "view" ;
 		}
 	$vpage = new WikiPage ;
-	$vpage->load ( $title ) ;
+	if ( $redirect == "no" )
+	    # Don't follow redirects if global $redirect is "no":
+	    $vpage->load ( $title, false) ;
+	else 
+	    $vpage->load ( $title, true) ;
 	if ( $vpage->namespace ) $namespaceBackground = $wikiNamespaceBackground[strtolower($vpage->namespace)] ;
 	if ( $vpage->contents == $wikiDescribePage ) {
 		$action = "edit" ;

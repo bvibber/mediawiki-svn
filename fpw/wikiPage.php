@@ -29,9 +29,9 @@ class WikiPage extends WikiTitle {
         if ( $this->namespace == "special" ) { # Special page, calling appropriate function
             $allowed = $wikiAllowedSpecialPages ; # List of allowed special pages
             if ( in_array ( "is_sysop" , $user->rights ) ) { # Functions just for sysops
-        array_push ( $allowed , "asksql" ) ;
-        array_push ( $allowed , "blockip" ) ;
-        }
+               array_push ( $allowed , "asksql" ) ;
+               array_push ( $allowed , "blockip" ) ;
+            }
             $call = $this->mainTitle ;
             if ( !in_array ( strtolower ( $call ) , $allowed ) ) {
                 $this->isSpecialPage = true ;
@@ -101,17 +101,18 @@ class WikiPage extends WikiTitle {
             $result = mysql_query ( $sql , $connection ) ;
             }
 
-        if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" ) { # #REDIRECT
-        $z = wikiLink ( $this->getNiceTitle() ) ;
-        $z = "<a href=\"$z&amp;action=edit\">".$this->getNiceTitle()."</a>" ;
-        $this->backLink = str_replace ( "$1" , $z , $wikiRedirectFrom ) ;
-            $z = $this->contents ;
-            $z = substr ( $z , 10 ) ;
-            $z = explode ( "\n" , $z ) ; # Ignoring comments after redirect
-            $z = $z[0] ;
-            $z = str_replace ( "[" , "" , $z ) ;
-            $z = str_replace ( "]" , "" , $z ) ;
-            $this->load ( trim($z) , false , $backLink ) ;
+        if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" and !isset ($oldID) ) { # #REDIRECT
+            $link = wikiLink ( $this->getNiceTitle() ) ;
+            $link = "<a href=\"$link&amp;action=view&amp;redirect=no\">".$this->getNiceTitle()."</a>" ;
+            $link = str_replace ( "$1" , $link , $wikiRedirectFrom ) ;
+            $this->backLink = $link ;
+            $target = $this->contents ;
+            $target = substr ( $target , 10 ) ;
+            $target = explode ( "\n" , $target ) ; # Ignoring comments after redirect
+            $target = $target[0] ;
+            $target = str_replace ( "[" , "" , $target ) ;
+            $target = str_replace ( "]" , "" , $target ) ;
+            $this->load ( trim($target) , false , $backLink ) ;
             }
         }
 
