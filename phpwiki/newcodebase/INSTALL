@@ -1,0 +1,23 @@
+This software requires Apache, MySQL, and PHP.  Apache and
+MySQL versions are reasonably sane, so it shouldn't make
+much difference which you use.  But PHP seems to make major
+changes to the language on a whim with each release, so it's
+not unlikely that you'll have to make some changes depending
+on which version you have.
+
+The most recent test setup was Apache 1.3.26, MySQL 3.23.49,
+and PHP 4.2.1.  The output-recoding feature requires that
+PHP be compiled with libiconv.  If you don't need that
+feature, just turn it off.  Wikipedia's live installation
+also uses APC, but that's not required.
+
+To install the software, either put all the scripts in the
+same directory or else put the .phtml files in one directory
+and the .php files in PHP's include path.
+
+Use "buildtables.sql", "initializedb.sql", and
+"buildindexes.sql" (in that order) to initialize the database.
+
+Edit LocalSettings.php to reflect local installation paths
+and such.
+
