@@ -291,6 +291,23 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 		  wfStrencode( $desc ) . "', '" . $wgUser->getID() .
 		  "', '" . wfStrencode( $wgUser->getName() ) . "')";
 		wfQuery( $sql, $fname );
+
+		$sql = "SELECT cur_id,cur_text FROM cur WHERE cur_namespace=" .
+		  Namespace::getImage() . " AND cur_title='" .
+		  wfStrencode( $name ) . "'";
+		$res = wfQuery( $sql, $fname );
+		if ( 0 == wfNumRows( $res ) ) {
+			$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
+			  "cur_comment,cur_user,cur_user_text,cur_timestamp,cur_minor_edit," .
+			  "cur_counter,cur_restrictions,cur_ind_title,cur_is_redirect," .
+			  "cur_is_new) VALUES (" . Namespace::getImage() . ",'" .
+			  wfStrencode( $name ) . "','" . wfStrencode( $desc ) . "','" .
+			  wfStrencode( $desc ) . "','" . $wgUser->getID() . "','" .
+			  wfStrencode( $wgUser->getName() ) . "','" . date( "YmdHis" ) .
+			  "',0,0,'','" . Title::indexTitle( Namespace::getImage(), $name ) .
+			  "',0,0)";
+			wfQuery( $sql, $fname );
+		}
 	} else {
 		$s = wfFetchObject( $res );
 
