@@ -185,11 +185,12 @@ class Article {
 
 	function isCountable( $text )
 	{
-		global $wgTitle;
+		global $wgTitle, $wgUseCommaCount;
 
 		if ( 0 != $wgTitle->getNamespace() ) { return 0; }
 		if ( preg_match( "/^#redirect/i", $text ) ) { return 0; }
-		if ( false === strstr( $text, "," ) ) { return 0; }
+		$token = ($wgUseCommaCount ? "," : "[[" );
+		if ( false === strstr( $text, $token ) ) { return 0; }
 		return 1;
 	}
 

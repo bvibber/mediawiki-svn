@@ -58,11 +58,16 @@ $wgCookieExpiration = 2592000;
 
 $wgAllowExternalImages = true;
 $wgMiserMode = false; # Disable database-intensive features
-$wgUseTeX = false;
+$wgUseTeX = true; #false;
 $wgUseNewInterlanguage = false;
 $wgProfiling = false; # Enable for more detailed by-function times in debug log
 
 $wgAmericanDates = false; 	# Enable for English module to print dates
 				# as Mar 3, 2003 rather than 3 Mar 2003
+
+$wgUseCommaCount = false;	# If true, article count will only include
+				# those with commas (","). If false, will only
+				# count those with links ("[[").
+
 
 ?>
