@@ -27,24 +27,24 @@ function wfSpecialContributions()
 	if ( 0 == $id ) {
 		$sql = "SELECT cur_namespace,cur_title,cur_timestamp FROM cur " .
 		  "WHERE cur_timestamp > '{$cutoff}' AND cur_user_text='" .
-		  wfStrencode( $nt->getText() ) . "' " .
+		  wfStrencode( $nt->getText() ) . "' AND cur_minor_edit=0 " .
 		  "ORDER BY cur_timestamp DESC LIMIT {$limit}";
 		$res1 = wfQuery( $sql, $fname );
 
 		$sql = "SELECT old_namespace,old_title,old_timestamp FROM old " .
 		  "WHERE old_timestamp > '{$cutoff}' AND old_user_text='" .
-		  wfStrencode( $nt->getText() ) . "' " .
+		  wfStrencode( $nt->getText() ) . "' AND old_minor_edit=0 " .
 		  "ORDER BY old_timestamp DESC LIMIT {$limit}";
 		$res2 = wfQuery( $sql, $fname );
 	} else {
 		$sql = "SELECT cur_namespace,cur_title,cur_timestamp FROM cur " .
 		  "WHERE cur_timestamp > '{$cutoff}' AND cur_user={$id} " .
-		  "ORDER BY cur_timestamp DESC LIMIT {$limit}";
+		  "AND cur_minor_edit=0 ORDER BY cur_timestamp DESC LIMIT {$limit}";
 		$res1 = wfQuery( $sql, $fname );
 
 		$sql = "SELECT old_namespace,old_title,old_timestamp FROM old " .
 		  "WHERE old_timestamp > '{$cutoff}' AND old_user={$id} " .
-		  "ORDER BY old_timestamp DESC LIMIT {$limit}";
+		  "AND old_minor_edit=0 ORDER BY old_timestamp DESC LIMIT {$limit}";
 		$res2 = wfQuery( $sql, $fname );
 	}
 	$nCur = wfNumRows( $res1 );
