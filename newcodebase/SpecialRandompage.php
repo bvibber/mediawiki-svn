@@ -2,11 +2,11 @@
 
 function wfSpecialRandompage()
 {
-	global $wgOut, $wgTitle, $wgArticle;
+	global $wgOut, $wgTitle, $wgArticle, $force;
 	$fname = "wfSpecialRandompage";
 
 	wfSeedRandom();
-	if ( 0 == mt_rand( 0, 899 ) ) { # Time to reload
+	if ( 0 == mt_rand( 0, 899 ) or $force == "yes") { # Time to reload
 		# Reload 1000 random titles into random table.  Doing it this
 		# roundabout way avoids the need for any locking.
 		#
