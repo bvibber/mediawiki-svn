@@ -7,8 +7,10 @@ let space = [' ' '\t' '\n' '\r']
 let alpha = ['a'-'z' 'A'-'Z']
 let literal_id = ['a'-'z' 'A'-'Z']
 let literal_mn = ['0'-'9']
-let literal_uf_lt = [',' '(' ')' ':'  ';' '?' '.' '!' '\'']
-let literal_uf_op = ['+' '-' '*' '=' '/' '|']
+let literal_uf_lt = [',' ':' ';' '?' '!' '\'']
+let delimiter_uf_lt = ['(' ')' '.']
+let literal_uf_op = ['+' '-' '*' '=']
+let delimiter_uf_op = ['/' '|']
 let boxchars  = ['0'-'9' 'a'-'z' 'A'-'Z' '+' '-' '*' ',' '=' '(' ')' ':' '/' ';' '?' '.' '!' ' ' '\128'-'\255']
 let aboxchars = ['0'-'9' 'a'-'z' 'A'-'Z' '+' '-' '*' ',' '=' '(' ')' ':' '/' ';' '?' '.' '!' ' ']
 
@@ -44,16 +46,18 @@ rule token = parse
   | literal_id			{ let str = Lexing.lexeme lexbuf in LITERAL (MHTMLABLEC (FONT_IT, str,str,MI,str)) }
   | literal_mn			{ let str = Lexing.lexeme lexbuf in LITERAL (MHTMLABLEC (FONT_RM, str,str,MN,str)) }
   | literal_uf_lt		{ let str = Lexing.lexeme lexbuf in LITERAL (HTMLABLEC (FONT_UFH, str,str)) }
+  | delimiter_uf_lt		{ let str = Lexing.lexeme lexbuf in DELIMITER (HTMLABLEC (FONT_UFH, str,str)) }
   | literal_uf_op		{ let str = Lexing.lexeme lexbuf in LITERAL (MHTMLABLEC (FONT_UFH, str," "^str^" ",MO,str)) }
+  | delimiter_uf_op		{ let str = Lexing.lexeme lexbuf in DELIMITER (MHTMLABLEC (FONT_UFH, str," "^str^" ",MO,str)) }
   | "\\" alpha + 		{ Texutil.find (Lexing.lexeme lexbuf) }
   | "\\sqrt" space * "["	{ FUN_AR1opt "\\sqrt" }
   | "\\," 			{ LITERAL (HTMLABLE (FONT_UF, "\\,","&nbsp;")) }
   | "\\ " 			{ LITERAL (HTMLABLE (FONT_UF, "\\ ","&nbsp;")) }
   | "\\;" 			{ LITERAL (HTMLABLE (FONT_UF, "\\;","&nbsp;")) }
   | "\\!" 			{ LITERAL (TEX_ONLY "\\!") }
-  | "\\{" 			{ LITERAL (HTMLABLEC(FONT_UFH,"\\{","{")) }
-  | "\\}" 			{ LITERAL (HTMLABLEC(FONT_UFH,"\\}","}")) }
-  | "\\|" 			{ LITERAL (HTMLABLE (FONT_UFH,"\\|","||")) }
+  | "\\{" 			{ DELIMITER (HTMLABLEC(FONT_UFH,"\\{","{")) }
+  | "\\}" 			{ DELIMITER (HTMLABLEC(FONT_UFH,"\\}","}")) }
+  | "\\|" 			{ DELIMITER (HTMLABLE (FONT_UFH,"\\|","||")) }
   | "\\_" 			{ LITERAL (HTMLABLEC(FONT_UFH,"\\_","_")) }
   | "\\#" 			{ LITERAL (HTMLABLE (FONT_UFH,"\\#","#")) }
   | "\\%"			{ LITERAL (HTMLABLE (FONT_UFH,"\\%","%")) }
@@ -71,11 +75,13 @@ rule token = parse
   | "\\end{vmatrix}"		{ END_VMATRIX }
   | "\\begin{Vmatrix}"		{ Texutil.tex_use_ams(); BEGIN_VVMATRIX }
   | "\\end{Vmatrix}"		{ END_VVMATRIX }
+  | "\\begin{cases}"		{ Texutil.tex_use_ams(); BEGIN_CASES }
+  | "\\end{cases}"		{ END_CASES }
   | '>'				{ LITERAL (HTMLABLEC(FONT_UFH,">"," &gt; ")) }
   | '<'				{ LITERAL (HTMLABLEC(FONT_UFH,"<"," &lt; ")) }
   | '%'				{ LITERAL (HTMLABLEC(FONT_UFH,"\\%","%")) }
   | '~'				{ LITERAL (HTMLABLE (FONT_UF, "~","&nbsp;")) }
-  | '['				{ LITERAL (HTMLABLEC(FONT_UFH,"[","[")) }
+  | '['				{ DELIMITER (HTMLABLEC(FONT_UFH,"[","[")) }
   | ']'				{ SQ_CLOSE }
   | '{'				{ CURLY_OPEN }
   | '}'				{ CURLY_CLOSE }
