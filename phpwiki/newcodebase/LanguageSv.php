@@ -398,6 +398,7 @@ URL:en.",
 Du kan fortsätta som anonym Wikipediaanvändare, eller så kan du logga in
 igen som samma eller annan användare.\n",
 
+
 "welcomecreation"       => "<h2>Välkommen, $1!</h2><p>Ditt konto har skapats. Glöm inte att anpassa dina Wikipediainställningar.",
 
 "loginpagetitle"        => "Logga in Användare",
@@ -530,6 +531,7 @@ och texter i $3 artiklar.",
 "notextmatches"         => "Ingen artikel texter överensstämmer med sökordet",
 "prevn"                 => "förra $1",
 "nextn"                 => "nästa $2",
+
 "viewprevnext"          => "Om ($1) ($2) ($3).",
 "showingresults"        => "Nedan visas <b>$1</b> resultat som startar med nummer <b>$2</b>.",
 "nonefound"             => "<strong>Note</strong>: Misslyckade sökningar förorsakas ofta av
@@ -569,7 +571,7 @@ Ditt IP-nummer är $2.",
 "contextlines"          => "Linjer att visa per sida",
 "contextchars"          => "Antalet bokstäver per linje i resultatet",
 "stubthreshold"         => "Gränser för visning av stubs",
-"recentchangescount"    => "Antalet aritklar i \"senaste ändringarna\" ",
+"recentchangescount"    => "Antalet artiklar i \"senaste ändringarna\" ",
 "savedprefs"            => "Dina inställningar har blivit sparade",
 "timezonetext"          => "Skriv in antalet timmar som din lokal tid skiljer sig från
 serverns klocka (UTC).
@@ -600,8 +602,8 @@ recent meta discussion] (oftast på engelska).",
 "rcloaderr"             => "Läser senaste redigerade sidor",
 "rcnote"                => "Nedanför är de senaste <strong>$1</strong> ändringarna under de 
 sista <strong>$2</strong> dagarna.",
-"rcnotefrom"            => "Nedanför är ändringerne från <b>$2</b> till <b>$1</b> visade.",
-"rclistfrom"            => "Visa nya ändringer från och med $1",
+"rcnotefrom"            => "Nedanför är ändringarna från <b>$2</b> till <b>$1</b> visade.",
+"rclistfrom"            => "Visa nya ändringar från och med $1",
 "rclinks"               => "Visa de senaste $1 ändringarna under de senaste $2 timmarna / $3 dagarna",
 // "rclinks"             => "Visa de senaste $1 ändringarna under de senaste $2 dagarna",
 "rchide"                => "i $4 form; $1 mindre ändringar; $2 andra namnrum; $3 mer än en redigering.",
@@ -659,7 +661,7 @@ Alla tider visas efter serverns tid (UTC).
 ",
 "filename"              => "Filnamn",
 "filedesc"              => "Beskrivning",
-"affirmation"           => "Jag bekräftar att ägaren till uppehovsrätten accepterar att licensiera enligt följande avtal $1.",
+"affirmation"           => "Jag bekräftar att ägaren till upphovsrätten accepterar att licensiera enligt följande avtal $1.",
 "copyrightpage"         => "Wikipedia:copyright",
 "copyrightpagename"     => "Wikipedia copyright",
 "uploadedfiles"         => "Uppladdade filer",
@@ -674,7 +676,7 @@ Alla tider visas efter serverns tid (UTC).
 Följ denna länk: ($2) till beskrivningssidan och fyll i
 information om filen, som till exempel var den kommer ifrån, 
 när den skapades och vem som gjort den och allt annat du vet om den.",
-"uploadwarning"         => "Uppladnings varning",
+"uploadwarning"         => "Uppladdnings varning",
 "savefile"              => "Spara fil",
 "uploadedimage"         => "uppladdad \"$1\"",
 
@@ -908,6 +910,7 @@ Fyll i anledningen till blockering nedan (till exempel vilka artiklar som klottr
 "unblockiptext"         => "Använd nedanstående formulär för att återställa skrivrättigheten för en tidigare blockerad IP-adress.",
 "ipusubmit"             => "Ta bort blockering för denna adress",
 "ipusuccess"            => "Blockeringen för IP-adressen \"$1\" har tagits bort",
+
 "ipblocklist"           => "Lista över blockerade IP-adresser",
 "blocklistline"         => "$1, $2 blockerade $3",
 "blocklink"             => "blockera",
