@@ -23,6 +23,10 @@
  */
 
 /** */
+if( isset( $_SERVER['argv'] ) && in_array( '--icu', $_SERVER['argv'] ) ) {
+	dl( 'php_utfnormal.so' );
+}
+
 require_once 'UtfNormalUtil.php';
 require_once 'UtfNormal.php';
 
@@ -36,7 +40,7 @@ $testfiles = array(
 	'testdata/washington.txt' => 'English text',
 	'testdata/berlin.txt' => 'German text',
 	'testdata/tokyo.txt' => 'Japanese text',
-	'testdata/byzantium.txt' => 'Korean text'
+	'testdata/sociology.txt' => 'Korean text'
 );
 $normalizer = new UtfNormal;
 foreach( $testfiles as $file => $desc ) {
