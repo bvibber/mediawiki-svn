@@ -9,6 +9,7 @@ function wfSpecialRandompage()
 	$sqlget = "SELECT cur_id,cur_title
 		FROM cur USE INDEX (cur_random)
 		WHERE cur_namespace=0 AND cur_is_redirect=0
+		AND cur_random>RAND()
 		ORDER BY cur_random
 		LIMIT 1";
 	$res = wfQuery( $sqlget, $fname );
