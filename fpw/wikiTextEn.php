@@ -466,6 +466,7 @@ $wikiValidate = "Validate this page" ;
 $wikiBlockIP = "Block this IP" ;
 $wikiNostalgy = "Nostalgia" ;
 $wikiCologneBlue = "Cologne Blue" ;
+$wikiUndiff = "undiff" ;
 
 # Vote
 $wikiVoteReason = "Reason to vote : " ;

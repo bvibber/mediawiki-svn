@@ -1500,9 +1500,9 @@ class WikiPage extends WikiTitle {
 
     # This displays the diff. Currently, only diff with the last edit!
     function doDiff () {
-        global $oldID , $version , $user ;
+        global $oldID , $version , $user , $title , $wikiUndiff ;
         global $wikiBeginDiff , $wikiEndDiff , $wikiDiffLegend , $wikiDiffFirstVersion , $wikiDiffImpossible ;
-        $ret = "<nowiki><font color=red><b>$wikiBeginDiff</b></font><br>\n\n" ;
+        $ret = "<nowiki><font color=red><b>$wikiBeginDiff</b></font> (<a href=\"".wikiLink($title)."\">$wikiUndiff</a>)<br>\n\n" ;
         $connection = getDBconnection () ;
 
         if ( isset ( $oldID ) ) { # Diff between old versions
