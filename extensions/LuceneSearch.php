@@ -68,49 +68,62 @@ class LuceneSearch extends SpecialPage
 		$numresults = $r[0];
 		$results = $r[1];
 
-		$limit = $wgRequest->getInt('limit');
-		$offset = $wgRequest->getInt('offset');
-		if ($limit == 0 || $limit > 100)
-			$limit = LS_PER_PAGE;
-		
-		$showresults = min($limit, count($results)-$numresults);
 		$wgOut->setSubtitle(wfMsg('searchquery', htmlspecialchars($q)));
-		$i = $offset;
-		$resq = trim(preg_replace("/[] \\|[()\"{}]+/", " ", $q));
-		$contextWords = implode("|", $wgContLang->convertForSearchResult(split(" ", $resq)));
-
-		$top = wfMsg("searchnumber", $offset + 1, min($numresults, $offset+$limit), $numresults);
-		$out = "<ul start=".($offset + 1).">";
-		$chunks = array_chunk($results, $limit);
-		$numchunks = $numresults / $limit;
-		$whichchunk = $offset / $limit;
-		$prevnext = "";
-		if ($whichchunk > 0)
-			$prevnext .= "<a href=\"".
-				$this->makelink($q, $offset-$limit, $limit)."\">".
-				wfMsg("searchprev")."</a> ";
-		$first = max($whichchunk - 11, 0);
-		$last = $whichchunk + 11;
-		for($i = $first; $i < $last; $i++) {
-			if ($i === $whichchunk)
-				$prevnext .= "<strong>".($i+1)."</strong> ";
-			else
-				$prevnext .= "<a href=\"".
-					$this->makelink($q, $limit*$i, 
-					$limit)."\">".($i+1)."</a> ";
-		}
-		if ($whichchuck < $numchunks)
-			$prevnext .= "<a href=\"".
-				$this->makelink($q, $offset + $limit, $limit)."\">".
-				wfMsg("searchnext")."</a> ";
-		$prevnext = "<div style='text-align: center'>$prevnext</div>";
-		$top .= $prevnext;
-		foreach ($chunks[$whichchunk] as $result) {
-			$out .= $this->showHit($result[0], $result[1], $contextWords);
-		}
-		$out .= "</ol>";
 		$wgOut->addWikiText(wfMsg('searchresulttext'));
 		$wgOut->addHTML($this->showShortDialog($q));
+
+		if ($numresults == 0) {
+			$wgOut->addWikiText(wfMsg("searchnoresults"));
+			$suggestion = trim($results);
+			if (strlen($suggestion) > 0) {
+				$wgOut->addHTML(wfMsg("searchdidyoumean", 
+						$this->makelink($suggestion, $offset, $limit),
+						htmlspecialchars($suggestion)));
+			}
+		} else {
+			$limit = $wgRequest->getInt('limit');
+			$offset = $wgRequest->getInt('offset');
+			if ($limit == 0 || $limit > 100)
+				$limit = LS_PER_PAGE;
+			
+			$showresults = min($limit, count($results)-$numresults);
+			$i = $offset;
+			$resq = trim(preg_replace("/[] \\|[()\"{}]+/", " ", $q));
+			$contextWords = implode("|", 
+				$wgContLang->convertForSearchResult(split(" ", $resq)));
+
+			$top = wfMsg("searchnumber", $offset + 1, 
+				min($numresults, $offset+$limit), $numresults);
+			$out = "<ul start=".($offset + 1).">";
+			$chunks = array_chunk($results, $limit);
+			$numchunks = $numresults / $limit;
+			$whichchunk = $offset / $limit;
+			$prevnext = "";
+			if ($whichchunk > 0)
+				$prevnext .= "<a href=\"".
+					$this->makelink($q, $offset-$limit, $limit)."\">".
+					wfMsg("searchprev")."</a> ";
+			$first = max($whichchunk - 11, 0);
+			$last = min($numchunks, $whichchunk + 11);
+			for($i = $first; $i < $last; $i++) {
+				if ($i === $whichchunk)
+					$prevnext .= "<strong>".($i+1)."</strong> ";
+				else
+					$prevnext .= "<a href=\"".
+						$this->makelink($q, $limit*$i, 
+						$limit)."\">".($i+1)."</a> ";
+			}
+			if ($whichchuck < $numchunks)
+				$prevnext .= "<a href=\"".
+					$this->makelink($q, $offset + $limit, $limit)."\">".
+					wfMsg("searchnext")."</a> ";
+			$prevnext = "<div style='text-align: center'>$prevnext</div>";
+			$top .= $prevnext;
+			foreach ($chunks[$whichchunk] as $result) {
+				$out .= $this->showHit($result[0], $result[1], $contextWords);
+			}
+			$out .= "</ol>";
+		}
 		$wgOut->addHTML("<hr/>" . $top . $out);
 		$wgOut->addHTML("<hr/>" . $prevnext);
 		$wgOut->addHTML($this->showFullDialog($q));
@@ -140,7 +153,7 @@ class LuceneSearch extends SpecialPage
 			return "<b>Broken link in search results: ".$t->getDBKey()."</b>";
 
 		$text = $rev->getText();
-                $size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024));
+                $size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024), str_word_count($text));
 		$text = $this->removeWiki($text);
 
                 $lines = explode("\n", $text);
@@ -179,10 +192,11 @@ class LuceneSearch extends SpecialPage
                 wfProfileOut( $fname );
 		$date = $wgContLang->timeanddate($rev->getTimestamp());
 		$percent = sprintf("%2.1f%%", $score * 100);
-		$score = wfMsg("searchscore", $percent);
+		//$score = wfMsg("searchscore", $percent);
+		$url = $t->getFullURL();
                 return "<li style='padding-bottom: 1em'>{$link}{$extract}<br/>"
 			."<span style='color: green; font-size: small'>"
-			."$score; $size - $date</span></li>\n";
+			."$url - $size - $date</span></li>\n";
         }
 
 	/* Basic wikitext removal */
@@ -214,7 +228,13 @@ class LuceneSearch extends SpecialPage
 		wfDebug("total [$numresults] hits\n");
 		if ($numresults === FALSE)
 			return array();
-		$numresults = chop($numresults);
+		$numresults = 0 + chop($numresults);
+
+		if ($numresults == 0) {
+			$suggestion = @socket_read($sock, 1024, PHP_NORMAL_READ);
+			wfdebug("no results; suggest: [$suggestion]\n");
+			return array($numresults, urldecode($suggestion));
+		}
 
 		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE) {
 			$result = chop($result);
@@ -282,7 +302,9 @@ $wgMessageCache->addMessage("searchnumber", "<strong>Results $1-$2 of $3</strong
 $wgMessageCache->addMessage("searchprev", "&#x00AB; <span style='font-size: small'>Prev</span>");
 $wgMessageCache->addMessage("searchnext", "<span style='font-size: small'>Next</span> &#x00BB;");
 $wgMessageCache->addMessage("searchscore", "Relevancy: $1");
-$wgMessageCache->addMessage("searchsize", "$1k");
+$wgMessageCache->addMessage("searchsize", "$1k ($2 words)");
+$wgMessageCache->addMessage("searchdidyoumean", "Did you mean \"<a href=\"$1\">$2</a>\"?");
+$wgMessageCache->addMessage("searchnoresults", "Sorry, there were no matches to your query.");
 $wgMessageCache->addMessage("lucenepowersearchtext", "
 Search in namespaces:\n
 $1\n

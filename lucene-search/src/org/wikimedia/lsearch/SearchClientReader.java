@@ -30,16 +30,21 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
+import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.queryParser.QueryParser;
+import org.apache.lucene.search.FuzzyTermEnum;
 import org.apache.lucene.search.Hits;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.Searcher;
+import org.apache.lucene.search.TermQuery;
 
 /**
  * @author Kate Turner
@@ -55,19 +60,21 @@ public class SearchClientReader extends Thread {
 	static Searcher searcher = null;
 	static Analyzer analyzer = null;
 	static QueryParser parser = null;
-
+	static IndexReader reader = null;
+	
 	// lucene special chars: + - && || ! ( ) { } [ ] ^ " ~ * ? : \
 	static String[] specialChars = {
-			//"\\+", "-", "&&", "\\|\\|", "!", "\\(", "\\)", "\\{", "\\}", "\\[", "\\]",
-			//"\\^", "\"", "~", "\\*", "\\?", ":", "\\\\"
-			"\\(", "\\)"
+			"\\+", "-", "&&", "\\|\\|", "!", "\\(", "\\)", "\\{", "\\}", "\\[", "\\]",
+			"\\^", "\"", "~", "\\*", "\\?", ":", "\\\\"
+			//"\\(", "\\)"
 	};
 
 	static {
 		try {
-			searcher = new IndexSearcher(MWDaemon.indexPath);
 			analyzer = new StandardAnalyzer();
 			parser = new QueryParser("contents", analyzer);
+			reader = IndexReader.open(MWDaemon.indexPath);
+			searcher = new IndexSearcher(reader);
 		} catch (IOException e) {
 			System.err.println("Could not initialise search reader: " 
 					+ e.getMessage());
@@ -107,6 +114,10 @@ public class SearchClientReader extends Thread {
 	        	ostrm.write(score + " " + namespace + " " + title + "\n");
 	        	++i;
 	        }
+	        if (numhits == 0) {
+	        	String spelfix = makeSpelFix(rawsearchterm);
+	        	ostrm.write(URLEncoder.encode(spelfix) + "\n");
+	        }
 	        ostrm.flush();
 		} catch (IOException e) {
 		} catch (Exception e) {
@@ -117,6 +128,35 @@ public class SearchClientReader extends Thread {
 				ostrm.flush();
 				ostrm.close();
 			} catch (IOException e) {}
+		}
+	}
+	
+	String makeSpelFix(String query) {
+		try {
+			String[] terms = query.split(" +");
+			String ret = "";
+			System.out.println("spelcheck: [" + query + "]");
+			for (int i = 0; i < terms.length; ++i) {
+				System.out.println("trying [" + terms[i] + "]");
+				String bestmatch = terms[i];
+				int bestscore = 0;
+				FuzzyTermEnum enum = new FuzzyTermEnum(reader, 
+						new Term("contents", terms[i]), 0.71f, 3);
+				while (enum.next()) {
+					Term term = enum.term();
+					Query q = new TermQuery(term);
+					Hits h = searcher.search(q);
+					System.out.println("match: ["+term.text()+"] score " + h.length());
+					if (h.length() > bestscore) {
+						bestscore = h.length();
+						bestmatch = term.text();
+					}
+				}
+				ret += bestmatch + " ";
+			}
+			return ret;
+		} catch (IOException e) {
+			return "";
 		}
 	}
 }
