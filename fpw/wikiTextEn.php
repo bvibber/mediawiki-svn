@@ -97,49 +97,49 @@ $wikiInterwiki = array ( "w"=>"http://www.wikipedia.com/wiki/$1" , "m"=>"http://
 
 # Language interwiki links
 $wikiOtherLanguages = array (
-	"ar"=>"http://ar.wikipedia.com/wiki/$1" ,
-	"ca"=>"http://ca.wikipedia.com/wiki/$1" ,
-	"zh"=>"http://zh.wikipedia.com/wiki/$1" ,
-	"dk"=>"http://dk.wikipedia.com/wiki/$1" ,
-	"nl"=>"http://nl.wikipedia.com/wiki/$1" ,
-	"de"=>"http://de.wikipedia.com/wiki/$1" ,
-	"eo"=>"http://eo.wikipedia.com/wiki/$1" ,
-	"fr"=>"http://fr.wikipedia.com/wiki/$1" ,
-	"he"=>"http://he.wikipedia.com/wiki/$1" ,
-	"hu"=>"http://hu.wikipedia.com/wiki/$1" ,
-	"it"=>"http://it.wikipedia.com/wiki/$1" ,
-	"ja"=>"http://ja.wikipedia.com/wiki/$1" ,
-	"pl"=>"http://pl.wikipedia.com/wiki/$1" ,
-	"pt"=>"http://pt.wikipedia.com/wiki/$1" ,
-	"ru"=>"http://ru.wikipedia.com/wiki/$1" ,
-	"simple"=>"http://simple.wikipedia.com/wiki/$1" ,
-	"es"=>"http://es.wikipedia.com/wiki/$1" ,
-	"sv"=>"http://sv.wikipedia.com/wiki/$1" ,
-	"en"=>"http://www.wikipedia.com/wiki/$1"
-	) ;
+    "ar"=>"http://ar.wikipedia.com/wiki/$1" ,
+    "ca"=>"http://ca.wikipedia.com/wiki/$1" ,
+    "zh"=>"http://zh.wikipedia.com/wiki/$1" ,
+    "dk"=>"http://dk.wikipedia.com/wiki/$1" ,
+    "nl"=>"http://nl.wikipedia.com/wiki/$1" ,
+    "de"=>"http://de.wikipedia.com/wiki/$1" ,
+    "eo"=>"http://eo.wikipedia.com/wiki/$1" ,
+    "fr"=>"http://fr.wikipedia.com/wiki/$1" ,
+    "he"=>"http://he.wikipedia.com/wiki/$1" ,
+    "hu"=>"http://hu.wikipedia.com/wiki/$1" ,
+    "it"=>"http://it.wikipedia.com/wiki/$1" ,
+    "ja"=>"http://ja.wikipedia.com/wiki/$1" ,
+    "pl"=>"http://pl.wikipedia.com/wiki/$1" ,
+    "pt"=>"http://pt.wikipedia.com/wiki/$1" ,
+    "ru"=>"http://ru.wikipedia.com/wiki/$1" ,
+    "simple"=>"http://simple.wikipedia.com/wiki/$1" ,
+    "es"=>"http://es.wikipedia.com/wiki/$1" ,
+    "sv"=>"http://sv.wikipedia.com/wiki/$1" ,
+    "en"=>"http://www.wikipedia.com/wiki/$1"
+    ) ;
 
 # Language interwiki names
 $wikiLanguageNames = array (
-	"ar"=>"Arabic (Araby)" ,
-	"ca"=>"Catalan (Catala)" ,
-	"zh"=>"Chinese (Hanyu)" ,
-	"dk"=>"Danish (Dansk)" ,
-	"nl"=>"Dutch (Nederlands)" ,
-	"de"=>"German (Deutsch)" ,
-	"eo"=>"Esperanto" ,
-	"fr"=>"French (Francais)" ,
-	"he"=>"Hebrew (Ivrit)" ,
-	"hu"=>"Hungarian (Magyar)" ,
-	"it"=>"Italian (Italiano)" ,
-	"ja"=>"Japanese (Nihongo)" ,
-	"pl"=>"Polish (Polska)" ,
-	"pt"=>"Portuguese (Portuguese)" ,
-	"ru"=>"Russian (Russkiy)" ,
-	"simple"=>"Simplified English" ,
-	"es"=>"Spanish (Castellano)" ,
-	"sv"=>"Swedish (Svenska)" ,
-	"en"=>"English"
-	) ;
+    "ar"=>"Arabic (Araby)" ,
+    "ca"=>"Catalan (Catala)" ,
+    "zh"=>"Chinese (Hanyu)" ,
+    "dk"=>"Danish (Dansk)" ,
+    "nl"=>"Dutch (Nederlands)" ,
+    "de"=>"German (Deutsch)" ,
+    "eo"=>"Esperanto" ,
+    "fr"=>"French (Francais)" ,
+    "he"=>"Hebrew (Ivrit)" ,
+    "hu"=>"Hungarian (Magyar)" ,
+    "it"=>"Italian (Italiano)" ,
+    "ja"=>"Japanese (Nihongo)" ,
+    "pl"=>"Polish (Polska)" ,
+    "pt"=>"Portuguese (Portuguese)" ,
+    "ru"=>"Russian (Russkiy)" ,
+    "simple"=>"Simplified English" ,
+    "es"=>"Spanish (Castellano)" ,
+    "sv"=>"Swedish (Svenska)" ,
+    "en"=>"English"
+    ) ;
 $wikiOtherLanguagesText = "Other languages : $1" ;
 
 # date
@@ -217,18 +217,34 @@ $wikiTimeDiff = "Time diff. : $1 hours" ;
 $wikiViewRecentChanges = "See the last $1 changes on ''Recent Changes''" ;
 $wikiOutputEncoding = "Output encoding : ";
 
+# Search Page
+$wikiSearchTitle = "Search" ;
+$wikiSearchedVoid = "As you were searching for the void, you just found it." ;
+$wikiNoSearchResult = "Sorry, we were unable to find an article matching the query \"$1\" in the title or body." ;
+$wikiFoundHeading = "Wikipedia articles" ;
+$wikiFoundText = "The query ''$2'' resulted in $1 articles. For each article, you can see its first paragraph and the next paragraph that contains one of the search words in the query." ;
+# keywords used for boolean search operators
+# note: these must consist of character, no symbols allowed
+$and = "and";
+$or = "or";
+$not = "not";
+# syntax errors for parser of boolean search queries
+$srchSyntErr = array (
+                    "SYNTAX ERROR: missing '$1'; inserted",
+                    "SYNTAX ERROR: unexpected '$1'; ignored",
+                    "SYNTAX ERROR: illegal symbol '$1'; ignored",
+                    "SYNTAX ERROR: the word '$1' is too short, the index requires at least $2 characters",
+                    "SYNTAX ERROR: missing search word; inserted"
+               ) ;   
+$wikiSearchError = "Sorry, your boolean search query contains the following errors: " ;
+
 # Misc
 $wikiLonelyPagesTitle = "The Orphans" ;
 $wikiLonelyPagesText = "'''These articles exist, but no articles link to them!'''<br>''Talk: pages, empty pages and #REDIRECTs are '''not''' listed here.''\n\n" ;
 $wikiAllPagesTitle = "All Pages Index" ;
 $wikiAllPagesText = "'''These are all the articles in the database!'''\n\n" ;
-$wikiSearchTitle = "Search" ;
-$wikiSearchedVoid = "As you were searching for the void, you just found it." ;
-$wikiNoSearchResult = "Sorry, we were unable to find an article containing \"$1\" in any article title or body.</h2>" ;
 $wikiUnsuccessfulSearch = "Unsuccessful search for $1" ;
 $wikiUnsuccessfulSearches = "wikipedia:Unsuccessful searches ($1)" ; # $1 becomes "YEAR-MONTH"
-$wikiFoundHeading = "Wikipedia articles" ;
-$wikiFoundText = "Found $1 occurences of ''$2''. For each article, you can see its first paragraph and the first paragraph that contains ''$2''." ;
 $wikiUserlistTitle = "User List" ;
 $wikiUserlistText = "'''These are all wikipedia users (that have an account)!'''" ;
 $wikiRecentChangesTitle = "Recent Changes" ;
@@ -348,13 +364,13 @@ $wikiLastRefreshed = "Last refreshed $1" ;
 #---------------------------
 #Functions
 function wikiGetDateEn ( $x ) { # Used in RecentChangesLayout in special_functions.php
-	global $wikiDate ;
-	$dayName = $wikiDate [ strtolower ( date ( "l" , $x ) ) ];
-	$monthName = $wikiDate [ strtolower ( date ( "F" , $x ) ) ];
-	$dayNumber = date ( "j" , $x ) ;
-	$year = date ( "Y" , $x ) ;
-	return "$dayName, $monthName $dayNumber, $year" ;
-	}
+    global $wikiDate ;
+    $dayName = $wikiDate [ strtolower ( date ( "l" , $x ) ) ];
+    $monthName = $wikiDate [ strtolower ( date ( "F" , $x ) ) ];
+    $dayNumber = date ( "j" , $x ) ;
+    $year = date ( "Y" , $x ) ;
+    return "$dayName, $monthName $dayNumber, $year" ;
+    }
 $wikiGetDate = wikiGetDateEn;
 
 # In theory, this could be expanded to allow general conversion of the

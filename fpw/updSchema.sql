@@ -47,3 +47,9 @@
 
 # ALTER TABLE cur ADD FULLTEXT ( cur_ind_title );
 # ALTER TABLE cur ADD FULLTEXT ( cur_text );
+
+# ----- new instructions per 2002 February 17 ----
+
+# this replaces '_'with ' ' for better search results
+
+# UPDATE cur SET cur_ind_title = REPLACE ( cur_title, '_', ' ' );

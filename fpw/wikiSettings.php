@@ -16,6 +16,8 @@ $THESCRIPT = "/wiki.phtml" ; # The name and location of the script. The $PHP_SEL
 $wikiThisDBserver = "127.0.0.1" ;
 $wikiThisDBuser = "root" ;
 $wikiThisDBpassword = "" ;
+$minSrchSize = 4;   # this is smallest word size that is indexed by the MySQL fulltext index
+# (can be changed by recompiling MySQL and rebuilding the indexes.)
 
 # Cache system enabled by default
 $useCachedPages = true ;
@@ -37,7 +39,7 @@ if ( ! isset ( $wikiEncodingNames ) ) $wikiEncodingNames = array($wikiCharset); 
 # since variables such as $THESCRIPT are being used.
 include_once ( "wikiTextEn.php" ) ;
 if ( $wikiLanguage != "en" ) {
-	include_once ( "wikiText" . ucfirst ( $wikiLanguage ) . ".php" ) ;
+    include_once ( "wikiText" . ucfirst ( $wikiLanguage ) . ".php" ) ;
 }
 
 # Functions
@@ -45,10 +47,10 @@ if ( $wikiLanguage != "en" ) {
 # Is there any reason to localise this function? Ever?
 # Not for a language, but other servers, if others want to use this software!
 function wikiLink ( $a ) {
-	global $wikiArticleSource ;
-	$a = str_replace ( " " , "+" , $a ) ;
-	$a = str_replace ( "$1" , $a , $wikiArticleSource ) ;
-	return $a ;
-	}
+    global $wikiArticleSource ;
+    $a = str_replace ( " " , "+" , $a ) ;
+    $a = str_replace ( "$1" , $a , $wikiArticleSource ) ;
+    return $a ;
+    }
 
 ?>
