@@ -10,7 +10,7 @@ class SkinCologneBlue extends Skin {
 		$wgOut->addLink( "stylesheet", "",
 		  "$wgStyleSheetPath/cologneblue.css" );
 	}
-	# Just inherit everything else
+
 }
 
 ?>

@@ -283,10 +283,12 @@ class Article {
 			# Check for edit conflict. TODO: check oldid here?
 			#
 			$this->clear(); # Force reload
-			if ( $this->getUser() != $wgUser->getID() &&
-			  $this->getTimestamp() > $wpEdittime ) {
-				$isConflict = true;
-			} else {
+			if ( $this->getTimestamp() > $wpEdittime ) { $isConflict = true; }
+			$u = $wgUser->getID();
+			if ( ( 0 != $u ) && ( $this->getUser() == $u ) ) {
+				$isConflict = false;
+			}
+			if ( ! $isConflict ) {
 				# All's well: save the article here
 				$this->mCountAdjustment = $this->isCountable( $wpTextbox1 ) -
 				  $wpCountable;
@@ -781,7 +783,7 @@ $wpTextbox2
 			$sql = "DELETE FROM links WHERE l_to={$id}";
 			wfQuery( $sql, $fname );
 
-			$sql = "DELETE FROM links WHERE l_from={$t}";
+			$sql = "DELETE FROM links WHERE l_from='{$t}'";
 			wfQuery( $sql, $fname );
 
 			$sql = "DELETE FROM brokenlinks WHERE bl_from={$id}";

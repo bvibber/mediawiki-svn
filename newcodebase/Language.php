@@ -7,11 +7,11 @@
 );
 
 /* private */ $wgQuickbarSettingsEn = array(
-	"None", "Floating left", "Floating right", "Fixed left", "Fixed right"
+	"None", "Fixed left", "Fixed right", "Floating left"
 );
 
 /* private */ $wgSkinNamesEn = array(
-	"Standard", "StarTrek", "Nostalgia", "CologneBlue"
+	"Standard", "Nostalgia", "Cologne Blue"
 );
 
 /* private */ $wgUserTogglesEn = array(

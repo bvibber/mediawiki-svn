@@ -12,16 +12,12 @@ function wfSpecialWatchlist()
 
 	$wl = $wgUser->getWatchlist();
 	$nw = count( $wl );
-	if ( 0 == $nw ) {
-		$wgOut->addHTML( wfMsg( "nowatchlist" ) );
-		return;
-	}
 	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_user,cur_comment," .
 	  "cur_user_text,cur_timestamp,cur_minor_edit FROM cur WHERE (";
 
 	$first = true;
 	foreach ( $wl as $title ) {
-		if ( "" == $title ) { continue; }
+		if ( "" == trim( $title ) ) { continue; }
 		$nt = Title::newFromDBkey( $title );
 		if ( ! $first ) { $sql .= " OR "; }
 		$first = false;
@@ -34,6 +30,10 @@ function wfSpecialWatchlist()
 			$tns = Namespace::getTalk( $ns );
 			$sql .= " OR (cur_namespace={$tns} AND cur_title='{$t}')";
 		}
+	}
+	if ( $first ) {
+		$wgOut->addHTML( wfMsg( "nowatchlist" ) );
+		return;
 	}
 	$sql .= ") ORDER BY cur_timestamp DESC";
 	$res = wfQuery( $sql, $fname );

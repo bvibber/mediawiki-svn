@@ -925,6 +925,7 @@ class OutputPage {
 			$ret .= "href=\"{$tag[2]}\">\n";
 		}
 		$sk = $wgUser->getSkin();
+		$ret .= $sk->getHeadScripts();
 		$ret .= $sk->getUserStyles();
 
 		$ret .= "</head>\n";
