@@ -1,10 +1,10 @@
 <?
 
 function WantedPages () {
-    global $vpage , $wikiWantedText , $wikiWantedLine ;
+    global $vpage , $wikiWantedText , $wikiWantedLine , $wikiWantedTitle ;
     global $wikiGetDate ;
 
-    $vpage->special ( "The Most Wanted Pages" ) ;
+    $vpage->special ( $wikiWantedTitle ) ;
     $vpage->namespace = "" ;
 
     $ret = $wikiWantedText ;
