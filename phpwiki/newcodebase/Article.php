@@ -1015,7 +1015,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 
 	function doDeleteArticle( $title )
 	{
-		global $wgUser, $wgOut, $wgLang, $wpReason, $wgTitle;
+		global $wgUser, $wgOut, $wgLang, $wpReason, $wgTitle, $wgDeferredUpdateList;
 
 		$fname = "Article::doDeleteArticle";
 		$ns = $title->getNamespace();
@@ -1026,8 +1026,11 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$wgOut->fatalError( wfMsg( "cannotdelete" ) );
 			return;
 		}
-		# Move article and history to the "archive" table
 
+		$u = new SiteStatsUpdate( 0, 1, -$this->isCountable( $this->getContent( true ) ) );
+		array_push( $wgDeferredUpdateList, $u );
+
+		# Move article and history to the "archive" table
 		$sql = "INSERT INTO archive (ar_namespace,ar_title,ar_text," .
 		  "ar_comment,ar_user,ar_user_text,ar_timestamp,ar_minor_edit," .
 		  "ar_flags) SELECT cur_namespace,cur_title,cur_text,cur_comment," .
