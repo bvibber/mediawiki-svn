@@ -205,7 +205,8 @@ function getCurrentUserText () {
 		$u = "$REMOTE_ADDR<br>\n<a href=\"$PHP_SELF?action=login\">log in</a>" ;
 		}
 	else {
-		$u = "$USERNAME<br>\n<a href=\"$PHP_SELF?action=logout\">log out</a>" ;
+		$v = getSecureTitle ( $USERNAME ) ;
+		$u = "<a href=\"$PHP_SELF?action=view&title=user:$v\">$USERNAME</a><br>\n<a href=\"$PHP_SELF?action=logout\">log out</a>" ;
 		$u .= " <a href=\"$PHP_SELF?action=prefs\">Preferences</a>" ;
 		}
 	return $u ;
