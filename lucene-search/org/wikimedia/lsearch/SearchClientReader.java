@@ -112,14 +112,18 @@ public class SearchClientReader extends Thread {
 			}
 			try {
 				handle();
+				System.out.println("request handled.");
 			} catch (IOException e) {
 				try {
 					istrm.close();
 					ostrm.flush();
 					ostrm.close();
-				} catch (IOException e2) {}
+				} catch (IOException e2) {
+					e.printStackTrace();
+				}
 			} catch (Exception e) {
 				System.out.println("Unexpected exception: " + e.getMessage());
+				e.printStackTrace();
 			}
 		}
 	}
@@ -130,7 +134,7 @@ public class SearchClientReader extends Thread {
 		/* The protocol format is "database\noperation\nsearchterm"
 		 * Search term is urlencoded.
 		 */
-		dbname = istrm.readLine();
+		dbname = readInputLine();
 		state = getMyState(dbname);
 		if (state == null) {
 			istrm.close();
@@ -140,9 +144,11 @@ public class SearchClientReader extends Thread {
 			--MWDaemon.numthreads;
 			return;
 		}
-		what = istrm.readLine();
-		rawsearchterm = istrm.readLine();
+		what = readInputLine();
+		System.out.println("Request type: " + what);
+		rawsearchterm = readInputLine();
 		searchterm = URLDecoder.decode(rawsearchterm, "UTF-8");
+		System.out.println("Search term: " + rawsearchterm);
 		
 		if (what.equals("TITLEMATCH")) {
 			doTitleMatches();
@@ -150,6 +156,16 @@ public class SearchClientReader extends Thread {
 			doTitlePrefix();
 		} else if (what.equals("SEARCH")) {
 			doNormalSearch();
+		} else {
+			System.out.println("Unknown request type; ignoring.");
+		}
+		
+		try {
+			ostrm.flush();
+			ostrm.close();
+			istrm.close();
+		} catch (IOException e) {
+			// Silent...
 		}
 	}
 	
@@ -184,19 +200,18 @@ public class SearchClientReader extends Thread {
 		int numhits = hits.length();
 		UserInteraction.instance.logQuery(dbname, searchterm, query.toString(), numhits);
 		
-		ostrm.write(numhits + "\n");
+		sendOutputLine(numhits + "");
 		
 		for (int i = 0; i < numhits; i++) {
 			Document doc = hits.doc(i);
 			float score = hits.score(i);
 			String namespace = doc.get("namespace");
 			String title = doc.get("title");
-			ostrm.write(score + " " + namespace + " " + title.replaceAll(" ", "_") + "\n");
-			++i;
+			sendOutputLine(score + " " + namespace + " " + title.replaceAll(" ", "_"));
 		}
 		if (numhits == 0) {
 			String spelfix = makeSpelFix(rawsearchterm);
-			ostrm.write(URLEncoder.encode(spelfix, "UTF-8") + "\n");
+			sendOutputLine(URLEncoder.encode(spelfix, "UTF-8"));
 		}
 	}
 	
@@ -220,10 +235,11 @@ public class SearchClientReader extends Thread {
 				float score = hits.score(i);
 				String namespace = doc.get("namespace");
 				String title = doc.get("title");
-				ostrm.write(score + " " + namespace + " " + title.replaceAll(" ", "_") + "\n");
+				sendOutputLine(score + " " + namespace + " " + title.replaceAll(" ", "_"));
 			}
 			ostrm.flush();
 		} catch (IOException e) {
+			e.printStackTrace();
 		} catch (Exception e) {
 			System.out.println("Unexpected exception: " + e.getMessage());
 			e.printStackTrace();
@@ -232,7 +248,9 @@ public class SearchClientReader extends Thread {
 				istrm.close();
 				ostrm.flush();
 				ostrm.close();
-			} catch (IOException e) {}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -246,7 +264,7 @@ public class SearchClientReader extends Thread {
 		//for (Title match : matches) {
 		for (Iterator iter = matches.iterator(); iter.hasNext();) {
 			Title match = (Title)iter.next();
-			ostrm.write("0 " + match.namespace + " " + match.title.replaceAll(" ", "_") + "\n");
+			sendOutputLine("0 " + match.namespace + " " + match.title.replaceAll(" ", "_"));
 		}
 	}
 
@@ -319,5 +337,16 @@ public class SearchClientReader extends Thread {
 
         // we got the result!
         return d[n][m];
+    }
+    
+    void sendOutputLine(String out) throws IOException {
+        System.out.println(">>>" + out);
+        ostrm.write(out + "\n");
+    	}
+    
+    String readInputLine() throws IOException {
+    		String in = istrm.readLine();
+    		System.out.println("<<<" + in);
+    		return in;
     }
 }
