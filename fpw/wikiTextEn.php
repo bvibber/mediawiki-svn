@@ -373,17 +373,11 @@ $wikiWatchlistNotExistText = "'''Currently, you are watching the following non-e
 
 # Statistics
 $wikiStatisticsTitle = "Article statistics" ;
-$wikiStatTotalPages = "There are $1 pages in the database." ;
-$wikiStatTalkPages = "There are $1 '''Talk''' pages." ;
-$wikiStatCommaPages = "There are $1 pages with a comma that are ''not'' '''Talk''' pages." ;
-$wikiStatWikipediaNoTalk = "There are $1 that have \"ikipedi\" in the title and are ''not'' '''Talk''' pages." ;
-$wikiStatSubNoTalk = "There are $1 subpages that are ''not'' '''Talk''' pages." ;
-$wikiStatNoTalk = "That means there are about $1 articles, including subpages (except '''Talk''')." ;
-$wikiStatArticles = "Or, there are about $1 articles, not counting any subpages!" ;
-$wikiStatRedirect = "There are about $1 #REDIRECT pages." ;
+$wikiStatTotalPages = "There are $1 pages in the database. This includes '''Talk''' pages, pages about Wikipedia (defined as pages that have \"ikipedi\" in their title), #REDIRECT pages, subpages of genuine articles, as well as short \"junk\" pages that don't even contain a comma." ;
+$wikiStatArticles = "Excluding all of those, we have $1 genuine encyclopedia articles!" ;
+$wikiStatNoTalk = "If we include non-'''Talk''' subpages, we have a total of $1 articles." ;
 $wikiStatSkin = "<font color=red>$1</font> of them use the \"$2\" skin." ;
-$wikiStatJunk = "Finally, there are about $1 junk pages :-(" ;
-$wikiStatOld = "And, there are $1 old page versions in the database, giving an average of $2 old pages on every active page." ;
+$wikiStatOld = "And, there are $1 old page versions in the database, giving an average of $2 old versions for every active page." ;
 $wikiUserStatistics = "User statistics" ;
 $wikiStatUsers = "There are currently $1 [[special:ListUsers|users]] signed up." ;
 $wikiStatSysops = "$1 of them have sysop status." ;
