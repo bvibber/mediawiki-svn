@@ -813,7 +813,7 @@ class Article {
 
 	function doDeleteArticle( $title )
 	{
-		global $wgUser, $wgOut, $wgLang, $wpReason, $wgDeferredUpdateList;
+		global $wgUser, $wgOut, $wgLang, $wpReason;
 		global  $wgUseSquid, $wgDeferredUpdateList, $wgInternalServer;
 
 		$fname = "Article::doDeleteArticle";
