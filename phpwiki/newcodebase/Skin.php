@@ -1001,8 +1001,10 @@ class Skin {
 		else { $q = ""; }
 		$link = $this->makeKnownLink( $artname, $dt, $q );
 
-		if ( 0 == $u ) { $ul = $ut; }
-		else { $ul = $this->makeLink( $wgLang->getNsText(
+		if ( 0 == $u ) {
+            $ul = $this->makeKnownLink( $wgLang->specialPage( "Contributions" ),
+			$ut, "target=" . $ut );
+		} else { $ul = $this->makeLink( $wgLang->getNsText(
 		  Namespace::getUser() ) . ":{$ut}", $ut ); }
 
 		$s = "<li>";
