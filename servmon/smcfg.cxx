@@ -9,6 +9,8 @@ u_char const tystr = 0;
 u_char const tyint = 1;
 u_char const tybool = 2;
 u_char const tylist = 3;
+uint32_t const str_maxlen = 65535;
+
 #define flthr(x,e) if ((x) < 0) throw e();
 
 struct shrtrd : std::runtime_error {
@@ -17,6 +19,11 @@ struct shrtrd : std::runtime_error {
 
 struct shrtwr : std::runtime_error {
 	shrtwr() : std::runtime_error("short write in config file") {}
+};
+
+struct mlfrmcfg : std::runtime_error {
+	mlfrmcfg(str error) : std::runtime_error("config file seems malformed: " + error) {}
+	mlfrmcfg() : std::runtime_error("config file seems malformed: unspecified error") {}
 };
 
 void wrtchar(int f, char c) {
@@ -54,6 +61,8 @@ std::string
 rdstr(std::istream& f)
 {
 	uint32_t len = rdint(f);
+	if (len > str_maxlen)
+		throw mlfrmcfg(b::io::str(b::format("string seems too long (%d bytes)") % len));
 	std::vector<char> b(len);
 	if (!f.read(&b[0], len))
 		throw shrtrd();
@@ -68,7 +77,7 @@ rdchar(std::istream& f)
 		throw shrtrd();
 	return c;
 }
-#define rdbool rdchar
+#define rdbool rdint
 
 #undef flthr
 
@@ -124,6 +133,9 @@ try {
 	}
 } catch (shrtrd&) {
 	std::cerr << "short read in config file\n";
+	std::exit(1);
+} catch (mlfrmcfg& e) {
+	std::cerr << e.what() << '\n';
 	std::exit(1);
 }
 

@@ -131,13 +131,17 @@ struct cfg_irc_showserver : handler<tt> {
 			return true;
 		}
 		std::string pnick, snick;
-		pnick = SMI(smcfg::cfg)->fetchstr(
-				b::str(format("/irc/servers/%s/nickname") % cd.p(0)));
+		try {
+			pnick = SMI(smcfg::cfg)->fetchstr(
+					b::str(format("/irc/server/%s/nickname") % cd.p(0)));
+		} catch (smcfg::nokey&) {
+			pnick = "<not set>";
+		}
 		try {
 			snick = SMI(smcfg::cfg)->fetchstr(
-					b::str(format("/irc/servers/%s/secnickname") % cd.p(0)));
+					b::str(format("/irc/server/%s/secnickname") % cd.p(0)));
 		} catch (smcfg::nokey&) {
-			snick = "<none>";
+			snick = "<not set>";
 		}
 		cd.wrtln(cd.p(0));
 		cd.wrtln("  primary nickname:   " + pnick);

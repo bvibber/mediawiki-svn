@@ -68,7 +68,7 @@ cfg::remove_server(str server)
 void 
 cfg::enable_server(str server, bool ebl) 
 {
-	setkeybool(server, "/irc/servers/%s/enabled", ebl);
+	setkeybool(server, "enabled", ebl);
 }
 
 bool 
