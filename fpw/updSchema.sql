@@ -3,4 +3,4 @@
 # fills new columns with appropriate values.
 
 ALTER TABLE cur ADD INDEX timeind (cur_timestamp);
-ALTER TABLE old ADD INDEX timeind (cur_timestamp);
+ALTER TABLE old ADD INDEX timeind (old_timestamp);
