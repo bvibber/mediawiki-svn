@@ -1045,7 +1045,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		}
 		$id = $wgTitle->getArticleID();
 		if ( 0 == $id ) {
-			$wgOut->fatalEror( wfMsg( "badarticleerror" ) );
+			$wgOut->fatalError( wfMsg( "badarticleerror" ) );
 			return;
 		}
         $sql = "UPDATE cur SET cur_touched='" . wfTimestampNow() . "'," .
