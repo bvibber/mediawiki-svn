@@ -175,12 +175,13 @@ function edit ( $title ) {
 	$ret .= "<input type=hidden value=yes name=FromEditForm>\n" ;
 	$ret .= " <a href=\"".wikiLink($vpage->url)."\">$wikiDontSaveChanges</a>\n" ; 
 	$ret .= " | <a href=\"".wikiLink("wikipedia:How_does_one_edit_a_page")."\">$wikiEditHelp</a>\n" ;
-	$ret .= " </form>\n" ;
 
 	if ( $editConflict ) {
 		$ret .= "<br><hr><br><b>This is the text you submitted :</b><br>\n" ;
 		$ret .= "<textarea name=NotIMPORTANT rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>$oldSubmittedText</textarea><br>\n" ;
 		}
+
+	$ret .= " </form>\n" ;
 
 	return $ret.$append ;
 	}
