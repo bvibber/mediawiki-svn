@@ -973,15 +973,20 @@ class WikiPage extends WikiTitle {
         if ( isset ( $framed ) and $framed != "top" ) return "" ;
         $t = $this->getNiceTitle ( $this->title ) ;
         if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirstIntl ( $t ) ;
-        $ret = "<table ".$user->options["quickBarBackground"]. "width=\"100%\" class=\"topbar\" cellspacing=0>\n<tr>" ;
-        if ( $user->options["leftImage"] != "" )
-            $ret .= "<td width=\"1%\" rowspan=2 bgcolor=\"#000000\"><img src=\"".$user->options["leftImage"]."\"></td>" ;
-        $ret .= "<td valign=top height=1>" ;
-        if ( $this->isSpecialPage ) {
-            $ret .= "<font size=\"+3\">".$t."</font>" ;
-            if ( $action == "" ) {
-                $ret .= "<br>\n<br>\n<a href=\"".wikiLink("special:whatlinkshere&target=$this->url")."\">$wikiWhatLinksHere</a>" ;
-                }
+
+	if ( $user->options["skin"] == "Nostalgy" ) {
+        	$ret = "<a href=\"".wikiLink("")."\"><img border=0 align=right src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a>\n" ;
+	} else {
+	        $ret = "<table ".$user->options["quickBarBackground"]. "width=\"100%\" class=\"topbar\" cellspacing=0>\n<tr>" ;
+	        if ( $user->options["leftImage"] != "" )
+        	    $ret .= "<td width=\"1%\" rowspan=2 bgcolor=\"#000000\"><img src=\"".$user->options["leftImage"]."\"></td>" ;
+	        $ret .= "<td valign=top height=1>" ;
+        	if ( $this->isSpecialPage ) {
+	            $ret .= "<font size=\"+3\">".$t."</font>" ;
+		}
+	}
+	if ( $action == "" ) {
+       	        $ret .= "<br>\n<br>\n<a href=\"".wikiLink("special:whatlinkshere&target=$this->url")."\">$wikiWhatLinksHere</a>" ;
         } else {
             $ret .= "<font size=\"+3\"><b><u>" ;
             if ( $this->secureTitle == $wikiMainPage and $action == "view" ) $ret .= $wikiMainPageTitle.$this->thisVersion ;
@@ -1012,10 +1017,13 @@ class WikiPage extends WikiTitle {
                 $ret .= "<br>".str_replace ( "$1" , $subText , $wikiOtherLanguagesText ) ;
                 }
             }
-        $ret .= "</td>\n<td valign=top width=200 rowspan=2 nowrap>".$user->getLink()."<br>" ;
+
+	if ( $user->options["skin"] == "Nostalgy" ) $ret .= " | <b>".$user->getLink()."</b> | " ;
+	else $ret .= "</td>\n<td valign=top width=200 rowspan=2 nowrap>".$user->getLink()."<br>" ;
+
         if ( $user->isLoggedIn ) $ret .= "<a href=\"".wikiLink("special:userLogout")."\">$wikiLogOut</a> | <a href=\"".wikiLink("special:editUserSettings")."\">$wikiPreferences</a>" ;
         else $ret .= "<a href=\"".wikiLink("special:userLogin")."\">$wikiLogIn</a>" ;
-        $ret .= " | <a href=\"".wikiLink($wikiHelpLink)."\">$wikiHelp</a><br>\n" ;
+       	$ret .= " | <a href=\"".wikiLink($wikiHelpLink)."\">$wikiHelp</a><br>\n" ;
 
         # Text encoding
         if(count($wikiEncodingNames) > 1) { # Shortcut for switching character encodings
@@ -1032,9 +1040,14 @@ class WikiPage extends WikiTitle {
             }
         }
 
-        $ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
-        $ret .= "</td>\n<td rowspan=2 width=1><a href=\"".wikiLink("")."\"><img border=0 src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a></td></tr>\n" ;
-        $ret .= "<tr><td valign=bottom>".$this->getLinkBar()."</td></tr></table>" ;
+	if ( $user->options["skin"] == "Nostalgy" ) {
+		$ret .= $this->getLinkBar()."<hr>\n" ;
+
+	} else {
+	        $ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
+        	$ret .= "</td>\n<td rowspan=2 width=1><a href=\"".wikiLink("")."\"><img border=0 src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a></td></tr>\n" ;
+	        $ret .= "<tr><td valign=bottom>".$this->getLinkBar()."</td></tr></table>" ;
+		}
         return $ret ;
         }
 
@@ -1043,8 +1056,7 @@ class WikiPage extends WikiTitle {
         global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages , $action ;
         global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
         global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
-        global $wikiRecentLinked, $wikiRecentLinkedLink ;
-        global $wikiBugReports , $wikiBugReportsLink ;
+        global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink ;
 
         $editOldVersion = "" ;
         if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
