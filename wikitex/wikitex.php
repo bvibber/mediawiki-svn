@@ -83,7 +83,7 @@ class objRend
       $arrBlack['plot'] = array('cd', 'call', 'exit', 'load', 'pause', 'print', 'pwd', 'quit', 'replot', 'reread', 'reset', 'save', 'shell', 'system', 'test', 'update', '!', 'data-file', 'loadpath', 'fontpath', 'historysize', 'mouse', 'x11_mouse', 'output', 'terminal', 'file', '"', '\'');
 
       // merge arrays, if specific present
-      if (!empty($arr[$strClass])) {
+      if (!empty($arrBlack[$strClass])) {
 	$arrBlack['rend'] = array_merge($arrBlack[$strClass], $arrBlack['rend']);
       }
     
