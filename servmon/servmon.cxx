@@ -17,7 +17,7 @@ int
 main(int argc, char *argv[])
 {
 	SMI(smcfg::cfg); // force reading
-	SMI(smtmr::evthdlr)->install(smtmr::evtp(new smtmr::evt("test event", 5, true, &test_event)));
+//	SMI(smtmr::evthdlr)->install(smtmr::evtp(new smtmr::evt("test event", 5, true, &test_event)));
 	SMI(smirc::cfg)->initialise();
 	SMI(smmon::cfg)->initialise();
 	csmplex::csmplexd cm;

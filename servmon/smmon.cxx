@@ -3,6 +3,7 @@
 #include "smmon.hxx"
 #include "smtmr.hxx"
 #include "smcfg.hxx"
+#include "smirc.hxx"
 
 /* this should be in smstdinc, but i'd rather not pollute the entire
    namespace with C crud */
@@ -98,16 +99,12 @@ xomitr::val(uint32_t newval)
 	v = nv;
 	if (nv < q)
 		nv = uint64_t(4294967296LL) + nv;
-	std::cerr << "nv: " << newval << "then: " << then << " now: " << now << " q: " << q << "\n";
-	std::cerr << "(q - nv) / (then - now) = " << ((nv - q) / (now - then)) << "\n";
 	return (nv - q) / (now - then);
 }
 	
 void
 cfg::initialise(void)
 {
-//	SMI(smtmr::evthdlr)->install(smtmr::evtp(new smtmr::evt("Monitor: periodic check", 30, true,
-//								b::bind(&smmon::chk, this))));
 	try {
 		std::set<std::string> servers = SMI(smcfg::cfg)->fetchlist("/monit/servers");
 		FE_TC_AS(std::set<std::string>, servers, i) {
@@ -142,6 +139,29 @@ cfg::checker::start(void)
 		sleep(5);
 		std::cerr << "checker iter...\n";
 		chk1();
+
+		/* IRC report */
+		std::string rep;
+		b::try_mutex::scoped_lock m (chk_m);
+		std::map<std::string, serverp>& serverlist = SMI(cfg)->servers();
+
+		/* squids */
+		int squidreqs = 0, squidhits = 0;
+		for(std::map<std::string, serverp>::const_iterator
+			    it = serverlist.begin(), end = serverlist.end(); it != end; ++it) {
+			if (it->second->type() != "Squid") continue;
+			b::shared_ptr<squidserver> s = b::dynamic_pointer_cast<squidserver>(it->second);
+			rep += "\002" + it->first + "\002: ";
+			rep += s->fmt4irc() + " ";
+			squidreqs += s->rpsv;
+			squidhits += s->hpsv;
+		}
+		float squidperc;
+		if (squidhits && squidreqs)
+			squidperc = (float(squidhits)/squidreqs)*100;
+		else squidperc = 0;
+		rep += b::io::str(b::format("\002total:\002 \00311%d\003/\00303%d\003/\0036%.02f%%\003") % squidreqs % squidhits % squidperc);
+		SMI(smirc::cfg)->conn()->msg(rep);
 	}
 }
 
@@ -149,17 +169,29 @@ void
 cfg::squidserver::check(void) {
 	std::cerr << "squid: checking " << name << '\n';
 	snmpclient c(name, 3401);
-	uint32_t requests;
+	uint32_t requests, hits;
 	try {
 		requests = b::any_cast<uint32_t>(c.getoid("1.3.6.1.4.1.3495.1.3.2.1.1"));
+		hits = b::any_cast<uint32_t>(c.getoid("1.3.6.1.4.1.3495.1.3.2.1.2"));
 	} catch (b::bad_any_cast&) {
 		std::cerr << "cast failed...\n";
 		return;
 	}
-	uint32_t rpsv = rps.val(requests);
-	std::cerr << "\trequests: " << requests << " (" << rpsv << "/sec)\n";
+	rpsv = rps.val(requests);
+	hpsv = hps.val(hits);
 }
-       
+
+std::string
+cfg::squidserver::fmt4irc(void) const
+{
+	float perc;
+	if (rpsv && hpsv)
+		perc = (float(hpsv)/rpsv)*100;
+	else perc = 0;
+	std::string rep = b::io::str(b::format("\00311%d\003/\00303%d\003/\0036%.02f%%\003") % rpsv % hpsv % perc);
+	return rep;
+}
+
 bool
 cfg::knowntype(str type)
 {

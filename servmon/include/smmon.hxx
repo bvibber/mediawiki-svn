@@ -34,18 +34,28 @@ public:
 
 	struct server {
 		server(str name_) : name(name_) {}
-		virtual std::string type() const = 0;
-		virtual void check() = 0;
-
+		virtual std::string type(void) const = 0;
+		virtual void check(void) = 0;
+		virtual std::string fmt4irc(void) const = 0;
 		virtual ~server() {}
 		std::string name;
 	};
 	typedef b::shared_ptr<server> serverp;
 	struct squidserver : public server {
-		squidserver(str name) : server(name) {}
-		std::string type() const { return "Squid"; }
+		squidserver(str name) : server(name), rpsv(0), hpsv(0) {}
+		std::string type(void) const { return "Squid"; }
+		std::string fmt4irc(void) const;
 		void check();
-		xomitr rps;
+		xomitr rps, hps;
+		uint32_t rpsv, hpsv;
+	};
+	struct mysqlserver : public server {
+		mysqlserver(str name) : server(name), qps(0) {}
+		std::string type(void) const { return "MySQL"; }
+		std::string fmt4irc(void) const;
+		void check();
+		xomitr qps;
+		uint32_t qpsv;
 	};
 	std::map<std::string, serverp> const& servers() const {
 		return serverlist;
