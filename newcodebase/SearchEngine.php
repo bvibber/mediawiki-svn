@@ -130,7 +130,7 @@ class SearchEngine {
 		if ( "" != $query ) { $q .= "&{$query}"; }
 
 		$nlink = "<a href=\"" . wfLocalUrlE( $link, $q ) . "\">{$next}</a>";
-		$nums = SearchEngine::numLink( $offset, 20, $link ) . " | " .
+		$nums = SearchEngine::numLink( $offset, 20, $link , $query ) . " | " .
 		  SearchEngine::numLink( $offset, 50, $link, $query ) . " | " .
 		  SearchEngine::numLink( $offset, 100, $link, $query ) . " | " .
 		  SearchEngine::numLink( $offset, 250, $link, $query ) . " | " .
