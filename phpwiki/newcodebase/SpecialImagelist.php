@@ -58,6 +58,7 @@ function wfSpecialImagelist()
 	  "<input type=submit name='wpIlSubmit' value='{$sub}'></form>" );
 
 	$nums = array( 50, 100, 250, 500, 1000, 2500, 5000 );
+	$here = "Special:Imagelist";
 
 	$fill = "";
 	$first = true;

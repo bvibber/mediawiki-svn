@@ -18,7 +18,7 @@ function wfSpecialRecentchanges()
 	}
 	$cutoff = date( "YmdHis", time() - ( $days * 86400 ) );
 
-	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_user," .
+	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_user,cur_is_new," .
 	  "cur_comment,cur_user_text,cur_timestamp,cur_minor_edit FROM cur " .
 	  "WHERE cur_timestamp > '{$cutoff}' " .
 	  "ORDER BY cur_timestamp DESC LIMIT {$limit}";
@@ -66,6 +66,7 @@ function wfSpecialRecentchanges()
 			$ttl = $obj1->cur_title;
 			$com = $obj1->cur_comment;
 			$me = ( $obj1->cur_minor_edit > 0 );
+			$new = ( $obj1->cur_is_new > 0 );
 
 			$obj1 = wfFetchObject( $res );
 			--$count1;
@@ -77,11 +78,12 @@ function wfSpecialRecentchanges()
 			$ttl = $obj2->old_title;
 			$com = $obj2->old_comment;
 			$me = ( $obj2->old_minor_edit > 0 );
+			$new = 0;
 
 			$obj2 = wfFetchObject( $res2 );
 			--$count2;
 		}
-		$s .= $sk->recentChangesLine( $ts, $u, $ut, $ns, $ttl, $com, $me );
+		$s .= $sk->recentChangesLine( $ts, $u, $ut, $ns, $ttl, $com, $me, $new );
 		--$limit;
 	}
 	$s .= $sk->endRecentChangesList();
