@@ -88,8 +88,9 @@ class WikiPage extends WikiTitle {
             }
 
         if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" ) { # #REDIRECT
-            $this->backLink = str_replace ( "$1" , $this->url , $wikiRedirectFrom ) ;
-            $this->backLink = str_replace ( "$2" , $this->getNiceTitle() , $this->backLink ) ;
+	    $z = wikiLink ( $this->getNiceTitle() ) ;
+	    $z = "<a href=\"$z&action=edit\">".$this->getNiceTitle()."</a>" ;
+	    $this->backLink = str_replace ( "$1" , $z , $wikiRedirectFrom ) ;
             $z = $this->contents ;
             $z = substr ( $z , 10 ) ;
             $z = explode ( "\n" , $z ) ; # Ignoring comments after redirect

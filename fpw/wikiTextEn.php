@@ -61,7 +61,7 @@ $wikiUserError = "Error with \"$1\"" ;
 # wikiPage
 $wikiNoSuchSpecialPage = "<h1>No such special page \"$1\"!</h1>" ;
 $wikiOldVersion = "<br><font size=\"-1\">This is the old version #$1; see the <a href=\"$THESCRIPT?title=$2\">current version</a></font>" ;
-$wikiRedirectFrom = "(redirected from <a href=\"$THESCRIPT?action=edit&title=$1\">$2</a>)" ;
+$wikiRedirectFrom = "(redirected from $1)" ;
 $wikiRecentChanges = "Recent Changes" ;
 $wikiRecentChangesLink = "RecentChanges" ; # "special:" is added automatically
 $wikiSpecialPagesLink = "Special_pages" ; # "special:" is added automatically
