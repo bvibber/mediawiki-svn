@@ -36,10 +36,18 @@ cellpadding=0 cellspacing='4px'><tr>
 <strong>{$this->mNewtitle}</strong></td>
 </tr>\n" );
 
-		$diffs = new Diff( $this->mOldtext, $this->mNewtext );
+		$nta =explode( "\n", str_replace( "\r\n", "\n",
+			  htmlspecialchars( $this->mNewtext ) ) );
+		$ota =explode( "\n", str_replace( "\r\n", "\n",
+			  htmlspecialchars( $this->mOldtext ) ) );
+
+		$diffs = new Diff( $ota, $nta );
 		$formatter = new TableDiffFormatter();
 		$formatter->format( $diffs );
 		$wgOut->addHTML( "</table>\n" );
+
+		$wgOut->addHTML( "<hr><h1>{$this->mNewtitle}</h2>\n" );
+		$wgOut->addWikiText( $this->mNewtext );
 	}
 
 	# Load the text of the articles to compate.  If newid is 0, then compare
@@ -62,8 +70,7 @@ cellpadding=0 cellspacing='4px'><tr>
 			if ( 0 == mysql_num_rows( $res ) ) { return false; }
 
 			$s = mysql_fetch_object( $res );
-			$this->mNewtext = explode( "\n", str_replace( "\r\n", "\n",
-			  htmlspecialchars( $s->cur_text ) ) );
+			$this->mNewtext = $s->cur_text;
 		} else {
 			$sql = "SELECT old_timestamp,old_text FROM old WHERE " .
 			  "old_id={$this->mNewid}";
@@ -72,8 +79,7 @@ cellpadding=0 cellspacing='4px'><tr>
 			if ( 0 == mysql_num_rows( $res ) ) { return false; }
 
 			$s = mysql_fetch_object( $res );
-			$this->mNewtext = explode( "\n", str_replace( "\r\n", "\n",
-			  htmlspecialchars( $s->old_text ) ) );
+			$this->mNewtext = $s->old_text;
 
 			$t = $wgLang->timeanddate( $s->old_timestamp );
 			$this->mNewtitle = str_replace( "$1", "{$t}",
@@ -93,8 +99,7 @@ cellpadding=0 cellspacing='4px'><tr>
 		if ( 0 == mysql_num_rows( $res ) ) { return false; }
 
 		$s = mysql_fetch_object( $res );
-		$this->mOldtext = explode( "\n", str_replace( "\r\n", "\n",
-		  htmlspecialchars( $s->old_text ) ) );
+		$this->mOldtext = $s->old_text;
 
 		$t = $wgLang->timeanddate( $s->old_timestamp );
 		$this->mOldtitle = str_replace( "$1", "{$t}",
