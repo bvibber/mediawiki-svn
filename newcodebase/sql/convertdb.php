@@ -13,12 +13,14 @@ include_once( "GlobalFunctions.php" );
 include_once( "Language.php" );
 include_once( "Namespace.php" );
 include_once( "User.php" );
+include_once( "LinkCache.php" );
 include_once( "Title.php" );
 include_once( "Article.php" );
 
-global $wgUser, $wgLang, $wgOut, $wgTitle;
+global $wgUser, $wgLang, $wgOut, $wgTitle, $wgLinkCache;
 $wgLangClass = "Language" . ucfirst( $wgLanguageCode );
 $wgLang = new $wgLangClass();
+$wgLinkCache = new LinkCache();
 
 # Name of old databse, SQL file to produce, and global progress counter.
 #
@@ -33,9 +35,10 @@ set_time_limit(0);
 $outf = fopen( $outfilename, "w" ) or die( "Can't open output file.\n" );
 
 
-convertUserTable();
-convertCurTable();
-convertOldTable();
+# convertUserTable();
+# convertCurTable();
+# convertOldTable();
+rebuildLinkTables();
 
 
 # All done
@@ -198,6 +201,10 @@ function convertOldTable()
 	print "$count records processed.\n";
 	mysql_free_result( $res );
 	fwrite( $outf, ";\n" );
+}
+
+function rebuildLinkTables()
+{
 }
 
 function fixUserOptions( $in )
