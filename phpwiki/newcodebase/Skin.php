@@ -305,7 +305,7 @@ class Skin {
 
 	function editThisPage()
 	{
-		global $wgOut, $wgTitle, $oldid;
+		global $wgOut, $wgTitle, $oldid, $redirect;
 
 		if ( ! $wgOut->isArticle() ) {
 			$s = "(Special page)";
@@ -314,7 +314,8 @@ class Skin {
 			$t = wfMsg( "editthispage" );
 			$oid = "";
 			if ( $oldid ) { $oid = "&oldid={$oldid}"; }
-			$s = $this->makeLink( $n, $t, "action=edit{$oid}" );
+			if ( $redirect ) { $red = "&redirect={$redirect}"; }
+			$s = $this->makeLink( $n, $t, "action=edit{$oid}{$red}" );
 		} else {
 			$s = "Protected page";
 		}
@@ -582,7 +583,7 @@ class Skin {
 		} else {
 			$s .= "({$cr}) . .";
 		}
-		if ( $isminor ) { $s .= " M"; }
+		if ( $isminor ) { $s .= " <strong>M</strong>"; }
 		$s .= " {$link} . . {$ul}";
 
 		if ( "" != $c && "*" != $c ) {
@@ -604,17 +605,17 @@ class Skin {
 			$this->lastdate = $d;
 		}
 		$h = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
-		$t = $this->makeLink( Title::makeName( $ns, $ttl ), "" );
+		$t = Title::makeName( $ns, $ttl );
+		$clink = $this->makeLink( $t, "" );
+		$dlink = $this->makeLink( $t, wfMsg( "diff" ), "diff=0&oldid=0" );
 
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $this->makeInternalLink( "User:{$ut}", $ut ); }
 		$cr = wfMsg( "currentrev" );
 
-		if ( 0 == $rev ) { $s .= "<li>"; }
-		else { $s .= "<li>({$rev}) "; }
-		$s .= "{$t}; {$h}";
-		$s .= " . . . {$ul}";
-		if ( $isminor ) { $s .= " </strong>M</strong>"; }
+		$s .= "<li> ({$dlink}) . .";
+		if ( $isminor ) { $s .= " <strong>M</strong>"; }
+		$s .= " {$clink}; {$h} . . {$ul}";
 		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
 		$s .= "</li>\n";
 

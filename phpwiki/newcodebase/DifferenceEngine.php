@@ -35,12 +35,17 @@ cellpadding=0 cellspacing='4px'><tr>
 		$wgOut->addHTML( "</table>\n" );
 	}
 
+	# Load the text of the articles to compate.  If newid is 0, then compare
+	# the old article in oldid to the current article; if oldid is 0, then
+	# compare the current article to the immediately previous one (ignoring
+	# the value of newid).
+	#
 	function loadText()
 	{
 		global $wgTitle, $wgOut, $wgLang;
 
 		$conn = wfGetDB();
-		if ( 0 == $this->mNewid ) {
+		if ( 0 == $this->mNewid || 0 == $this->mOldid ) {
 			$this->mNewtitle = wfMsg( "currentrev" );
 			$id = $wgTitle->getArticleID();
 
@@ -72,9 +77,17 @@ cellpadding=0 cellspacing='4px'><tr>
 			  wfMsg( "revisionasof" ) );
 		}
 		$conn = wfGetDB();
-		$sql = "SELECT old_timestamp,old_text FROM old WHERE " .
-		  "old_id={$this->mOldid}";
-		wfDebug( "Diff:3: $sql\n" );
+		if ( 0 == $this->mOldid ) {
+			$sql = "SELECT old_timestamp,old_text FROM old WHERE (" .
+			  "old_namespace=" . $wgTitle->getNamespace() . " AND " .
+			  "old_title='" . $wgTitle->getDBkey() . "') ORDER BY " .
+			  "old_timestamp DESC LIMIT 1";
+			wfDebug( "Diff:4: $sql\n" );
+		} else {
+			$sql = "SELECT old_timestamp,old_text FROM old WHERE " .
+			  "old_id={$this->mOldid}";
+			wfDebug( "Diff:3: $sql\n" );
+		}
 		$res = mysql_query( $sql, $conn );
 		if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
 			$wgOut->databaseError( wfMsg( "loadingrev" ) );
