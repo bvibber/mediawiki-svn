@@ -316,16 +316,11 @@ function initializeTables()
 	  wfStrencode( wfMsg( "dellogpagetext" ) ) . "','sysop')";
 	wfQuery( $sql );
 
-	$mp = wfStrencode( wfMsg( "mainpage" ) );
-	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text) " .
-	  "VALUES (0,'{$mp}','Put main page text here.')";
+	$sql = "INSERT INTO user (user_name,user_password,user_rights) " .
+	  "VALUES ('WikiSysop','" . User::encryptPassword( $wgDBpassword ) .
+	  "','sysop'),('WikiDeveloper','" . User::encryptPassword(
+	  $wgDBpassword ) . "','sysop,developer')";
 	wfQuery( $sql );
-/*
-	$sql = "INSERT INTO random(ra_current,ra_title) SELECT 1, cur_title " .
-	  "FROM cur WHERE cur_namespace=0 AND cur_is_redirect=0 " .
-	  "ORDER BY RAND() LIMIT 1000";
-	wfQuery( $sql );
-*/
 }
 
 function cleanDatabase()
