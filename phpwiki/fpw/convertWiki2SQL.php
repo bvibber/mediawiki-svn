@@ -25,34 +25,17 @@ function recodeCharsetLatin1 ( $text ) {
 	# To convert ISO-8859-1 to UTF-8
 	return encode_utf8 ( $text ) ;
 	}
-	$recodeCharset = recodeCharsetStub ;
-	#$recodeCharset = recodeCharsetLatin1 ;
+	#$recodeCharset = recodeCharsetStub ;
+	$recodeCharset = recodeCharsetLatin1 ; # Future conversions should all go to UTF-8
 
 ## Esperanto:
 if ( $wikiLanguage =="eo" ) {
-$wikiTalk = "Priparolu" ;
-$wikiSeeAlso = "Legu anka\xc5\xad" ;
-$wikiConversionScript = "konvertilo" ;
-$wikiAutomatedConversion = "A\xc5\xadtomata konvertado" ;
-function recodeCharsetEo ( $text ) {
-	  $x = array(
-	  	"Cx", "cx",  "CX", "cX",
-		"Gx", "gx",  "GX", "gX",
-		"Hx", "hx",  "HX", "hX",
-		"Jx", "jx",  "JX", "jX",
-		"Sx", "sx",  "SX", "sX",
-		"Ux", "ux",  "UX", "uX");
-	  $u = array(
-		"\xc4\x88", "\xc4\x89",  "\xc4\x88", "\xc4\x89",
-		"\xc4\x9c", "\xc4\x9d",  "\xc4\x9c", "\xc4\x9d",
-		"\xc4\xa4", "\xc4\xa5",  "\xc4\xa4", "\xc4\xa5",
-		"\xc4\xb4", "\xc4\xb5",  "\xc4\xb4", "\xc4\xb5",
-		"\xc5\x9c", "\xc5\x9d",  "\xc5\x9c", "\xc5\x9d",
-		"\xc5\xac", "\xc5\xad",  "\xc5\xac", "\xc5\xad");
-	return str_replace ( $x , $u , $text ) ;
+	$wikiTalk = "Priparolu" ;
+	$wikiSeeAlso = "Legu anka\xc5\xad" ;
+	$wikiConversionScript = "konvertilo" ;
+	$wikiAutomatedConversion = "A\xc5\xadtomata konvertado" ;
+	$recodeCharset = wikiRecodeCharsetEo ;
 	}
-	$recodeCharset = recodeCharsetEo ;
-}
 
 ## French
 if ( $wikiLanguage == "fr" ) {
@@ -90,8 +73,25 @@ function RecodeCharsetPl ( $text ) {
 
 ## Spanish
 if ( $wikiLanguage == "es" ) {
-	$wikiTalk = $recodeCharset ( "Discusión" ) ;
 	$recodeCharset = recodeCharsetLatin1 ;
+	$wikiTalk = $recodeCharset ( "Discusión" ) ;
+	}
+
+## German
+if ( $wikiLanguage == "de" ) {
+	$recodeCharset = recodeCharsetLatin1 ;
+	$wikiTalk = "Diskussion" ;
+	}
+
+## Dutch
+if ( $wikiLanguage == "nl" ) {
+	$recodeCharset = recodeCharsetLatin1 ;
+	$wikiTalk = "Overleg" ;
+	}
+
+## Japanese
+if ( $wikiLanguage == "ja" ) {
+	# Will need iconv support compiled into PHP
 	}
 
 ## Where to get the old usemod database files from:
