@@ -117,19 +117,19 @@ function recentchanges () {
                       o1.old_comment AS cur_comment, o1.old_user AS cur_user,
                       o1.old_user_text AS cur_user_text, o1.old_minor_edit,
                       COUNT(DISTINCT o2.old_id ) AS changes
-               FROM old AS o1 LEFT OUTER JOIN old AS o2
-                    ON o1.old_title = o2.old_title
-                       AND o2.old_timestamp > SUBDATE(CURRENT_TIMESTAMP, INTERVAL 3 DAY)
-                       AND o2.old_old_version <> 0 AND o2.old_minor_edit != 1
-                       $fromCondOld2                       
-               WHERE o1.old_timestamp > SUBDATE(CURRENT_TIMESTAMP, INTERVAL 3 DAY)
-                     AND o1.old_minor_edit != 1
-                     $fromCondOld1
+               FROM old AS o1, old AS o2
+               WHERE o1.old_title = o2.old_title
+                 AND o2.old_timestamp > SUBDATE(CURRENT_TIMESTAMP, INTERVAL $daysAgo DAY)
+                 AND o2.old_old_version <> 0 AND o2.old_minor_edit != 1
+                 $fromCondOld2                       
+                 AND o1.old_timestamp > SUBDATE(CURRENT_TIMESTAMP, INTERVAL $daysAgo DAY)
+                 AND o1.old_minor_edit != 1
+                 $fromCondOld1
                GROUP BY o1.old_title, o1.old_timestamp
                HAVING cur_timestamp = MAX(o2.old_timestamp)
                ORDER BY o1.old_title
                LIMIT $maxcnt";
-               
+
       # store result in $arr2
       $arr2 = array () ;
       $result = mysql_query ( $sql2 , $connection ) ;
