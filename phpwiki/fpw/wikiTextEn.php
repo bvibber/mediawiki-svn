@@ -214,6 +214,7 @@ $wikiRows = "Rows : " ;
 $wikiYourEmail = "Your email : " ;
 $wikiResultsPerPage = "Return up to $1 search results per page" ;
 $wikiTimeDiff = "Time diff. : $1 hours" ;
+$wikiViewRecentChanges = "See the last $1 changes on ''Recent Changes''" ;
 $wikiOutputEncoding = "Output encoding : ";
 
 # Misc

@@ -9,7 +9,7 @@ function editUserSettings () {
 
 	if ( isset ( $ButtonSave ) ) {
 		unset ( $ButtonSave ) ;
-		global $QuickBar , $NewTopics , $UnderlineLinks , $ShowHover , $ROWS , $COLS , $doSkin ;
+		global $QuickBar , $NewTopics , $UnderlineLinks , $ShowHover , $ROWS , $COLS , $doSkin , $VIEWRC ;
 		global $OLDPASSWORD , $NEWPASSWORD , $RETYPEPASSWORD , $EMAIL , $RESULTSPERPAGE , $doJustify , $ChangesLayout ;
 		global $SHOWSTRUCTURE , $HOURDIFF , $NumberHeadings , $ViewFrames , $encoding , $HideMinor ;
 		if ( $RESULTSPERPAGE < 2 ) $RESULTSPERPAGE = 20 ;
@@ -40,6 +40,7 @@ function editUserSettings () {
 		$user->email = $EMAIL ;
 		$user->options["hourDiff"] = $HOURDIFF ;
 		$user->options["encoding"] = $encoding ;
+		$user->options["viewRecentChanges"] = $VIEWRC ;
 
 		if ( $OLDPASSWORD == $user->password ) {
 			global $wikiUserSettingsNewPasswordError ;
@@ -52,7 +53,7 @@ function editUserSettings () {
 		$msg = $wikiUserSettingsSaved ;
 		}
 
-	global $wikiLoggedInAs , $wikiID_Help ;
+	global $wikiLoggedInAs , $wikiID_Help , $wikiViewRecentChanges ;
 	global $wikiQuickBarSettings , $wikiSettingsNone , $wikiSettingsStandard , $wikiSettingsLeft , $wikiSettingsRight ;
 	global $wikiOldPassword , $wikiNewPassword , $wikiYourPasswordAgain , $wikiSkin , $wikiStarTrek ;
 	global $wikiShowHoverBox , $wikiUnderlineLinks , $wikiNewTopicsRed , $wikiJustifyParagraphs , $wikiShowRecentChangesTable ;
@@ -142,7 +143,9 @@ function editUserSettings () {
 	$n = explode ( "$1" , $wikiResultsPerPage ) ;
 	$ret .= "<font face=courier>".$n[0]."</font><INPUT TYPE=text NAME=RESULTSPERPAGE VALUE=\"".$user->options["resultsPerPage"]."\" SIZE=4>".$n[1]."<br>\n" ;
 	$n = explode ( "$1" , $wikiTimeDiff ) ;
-  	$ret .= "<font face=courier>".$n[0]."</font><INPUT TYPE=text NAME=HOURDIFF VALUE=\"".$user->options["hourDiff"]."\" SIZE=4>".$n[1]."\n" ;
+  	$ret .= "<font face=courier>".$n[0]."</font><INPUT TYPE=text NAME=HOURDIFF VALUE=\"".$user->options["hourDiff"]."\" SIZE=4>".$n[1]."<br>\n" ;
+	$n = explode ( "$1" , $wikiViewRecentChanges ) ;
+  	$ret .= "<font face=courier>".$n[0]."</font><INPUT TYPE=text NAME=VIEWRC VALUE=\"".$user->options["viewRecentChanges"]."\" SIZE=4>".$n[1]."\n" ;
 
 	# Encoding
 	if(count($wikiEncodingNames) > 1) {
