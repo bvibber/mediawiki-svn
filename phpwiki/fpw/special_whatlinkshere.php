@@ -11,9 +11,7 @@ function whatLinksHere () {
 	$vpage->special ( str_replace ( "$1" , $niceTarget , $wikiLinkhereTitle ) ) ;
 	$vpage->makeSecureTitle () ;
 
-	global $wikiSQLServer ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( $wikiSQLServer , $connection ) ;
 
 	# The question is kinda long, but I don't want to sort everything out manually, so...
 	$question = "SELECT cur_title FROM cur WHERE" ;

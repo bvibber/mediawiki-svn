@@ -101,9 +101,7 @@ class WikiUser {
 		$this->name = "" ;
 		$this->isLoggedIn = false ;
 		if ( $WikiUserID > 0 and $WikiLoggedIn == "yes" ) {
-			global $wikiSQLServer ;
 			$connection = getDBconnection () ;
-			mysql_select_db ( $wikiSQLServer , $connection ) ;
 			$sql = "SELECT * FROM user WHERE user_id=$WikiUserID" ;
 			$result = mysql_query ( $sql , $connection ) ;
 			if ( $result ) {
@@ -211,9 +209,7 @@ class WikiUser {
 	function doesUserExist () {
 		$s = trim ( $this->name ) ;
 		if ( $s == "" ) return false ;
-		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "SELECT user_id FROM user WHERE user_name=\"$s\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		if ( $result == "" ) {
@@ -227,9 +223,7 @@ class WikiUser {
 
 	# Adds a new user to the database
 	function addToDatabase () {
-		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "INSERT INTO user (user_name,user_password) VALUES (\"$this->name\",\"$this->password\")" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		}
@@ -239,9 +233,7 @@ class WikiUser {
 		global $wikiNoSuchUser , $wikiWrongPassword , $wikiYouAreLoggedIn , $wikiUserError ;
 		$this->isLoggedIn = false ;
 		if ( !$this->doesUserExist() ) return str_replace ( "$1" , $this->name , $wikiNoSuchUser ) ;
-		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "SELECT * FROM user WHERE user_name=\"$this->name\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		if ( $result == "" ) return str_replace ( "$1" , $this->name , $wikiNoSuchUser ) ;

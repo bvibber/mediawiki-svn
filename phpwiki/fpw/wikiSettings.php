@@ -18,7 +18,9 @@ $wikiThisDBuser = "root" ;
 $wikiThisDBpassword = "" ;
 $minSrchSize = 4;   # this is smallest word size that is indexed by the MySQL fulltext index
 # (can be changed by recompiling MySQL and rebuilding the indexes.)
-
+$wikiDBconnection = "";  # global variable to hold the current DB
+			 # connection; should be empty initially.
+ 
 # Cache system enabled by default
 $useCachedPages = true ;
 

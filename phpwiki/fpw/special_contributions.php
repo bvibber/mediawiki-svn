@@ -2,7 +2,7 @@
 # This function list the contributions of a user
 function contributions () {
 	global $THESCRIPT , $target , $user , $protecting , $newrestrictions ;
-	global $vpage , $theuser , $wikiSQLServer ;
+	global $vpage , $theuser ;
 	global $wikiContribTitle , $wikiContribText , $wikiContribDenied ;
 	$vpage = new WikiPage ;
 	$vpage->title = $title ;
@@ -16,7 +16,6 @@ function contributions () {
 
 	$ac = array () ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( $wikiSQLServer , $connection ) ;
 
 	$question = "SELECT cur_title FROM cur WHERE cur_user_text=\"$theuser\" AND cur_minor_edit<>1" ;
 	$result = mysql_query ( $question , $connection ) ;

@@ -43,9 +43,7 @@ function newpages () {
 
 	$mindate = date ( "Ymd000000" , time () - $daysAgo*24*60*60 ) ;
 	$mindate = timestampAddHour ( $mindate , $user->options["hourDiff"] ) ;
-	global $wikiSQLServer ;
 	$connection=getDBconnection() ;
-	mysql_select_db ( $wikiSQLServer , $connection ) ;
 
 	# Looking at the "cur" table
 	$sql = "SELECT cur_title FROM cur WHERE cur_minor_edit=2 AND cur_timestamp>$mindate ORDER BY cur_timestamp DESC LIMIT $maxcnt" ;

@@ -2,9 +2,7 @@
 include_once ( "special_makelog.php" ) ;
 
 function removeFromLinkList ( $item , $link ) {
-	global $wikiSQLServer ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT cur_id FROM cur WHERE $item LIKE \"%$link%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$ids = array () ;
@@ -46,7 +44,6 @@ function deletepage () {
 	if ( $iamsure == "yes" ) {
 		$ret = "<h2>".str_replace("$1",$target,$wikiDeleteSuccess)."</h2>" ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "DELETE FROM cur WHERE cur_title=\"$target\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 

@@ -51,9 +51,7 @@ function recentchanges () {
     $ret .= "\n----\n" ;
     $arr = array () ;
 
-    global $wikiSQLServer ;
     $connection=getDBconnection() ;
-    mysql_select_db ( $wikiSQLServer , $connection ) ;
 
     if ( $user->options["hideMinor"] != "yes" ) {
     

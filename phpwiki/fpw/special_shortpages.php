@@ -13,7 +13,7 @@ function pagesThatLinkHere ( $t , $connection ) {
 	}
 
 function ShortPages () {
-	global $THESCRIPT , $wikiSQLServer , $user , $vpage , $startat , $wikiStubTitle , $wikiStubText , $showLinksThere , $wikiStubShowLinks ;
+	global $THESCRIPT , $user , $vpage , $startat , $wikiStubTitle , $wikiStubText , $showLinksThere , $wikiStubShowLinks ;
 	if ( !isset ( $startat ) ) $startat = 1 ;
 	$perpage = $user->options["resultsPerPage"] ;
 	if ( $perpage == 0 ) $perpage = 20 ;
@@ -25,7 +25,6 @@ function ShortPages () {
 	$ret = $wikiStubText ;
 	$ret .= str_replace ( "$1" , $sLT2 , $wikiStubShowLinks ) ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT COUNT(*) AS number FROM cur WHERE cur_title NOT LIKE \"%:%\" AND cur_text NOT LIKE \"#redirect%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;

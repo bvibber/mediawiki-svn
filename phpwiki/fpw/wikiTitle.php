@@ -157,12 +157,10 @@ class WikiTitle {
 
 	# Checks the database if this topic already exists
 	function doesTopicExist ( $conn = "" ) {
-		global $wikiSQLServer ;
 		$this->makeSecureTitle () ;
 		if ( $this->namespace == "special" ) return true ;
 		if ( $conn == "" ) $connection = getDBconnection () ;
 		else $connection = $conn ;
-		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "SELECT cur_id FROM cur WHERE cur_title=\"$this->secureTitle\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		if ( $result == "" ) return false ;

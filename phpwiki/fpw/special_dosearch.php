@@ -268,9 +268,7 @@ function doSearch () {
         $search = $wikiRecodeInput ( $search ) ;
         if ( !isset ( $startat ) ) $startat = 1 ;
         $perpage = $user->options["resultsPerPage"] ;
-        global $wikiSQLServer ;
         $connection = getDBconnection () ;
-        mysql_select_db ( $wikiSQLServer , $connection ) ;
         
         $parsedCond = srchStrParse ( 0 ) ;     # translate search to semi-SQL
         

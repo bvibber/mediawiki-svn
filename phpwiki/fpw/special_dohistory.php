@@ -2,7 +2,7 @@
 include_once ( "special_recentchangeslayout.php" ) ;
 
 function doHistory ( $title ) {
-    global $THESCRIPT , $vpage , $wikiSQLServer , $wikiHistoryTitle , $wikiCurrentVersion , $wikiHistoryHeader ;
+    global $THESCRIPT , $vpage , $wikiHistoryTitle , $wikiCurrentVersion , $wikiHistoryHeader ;
     $vpage = new WikiPage ;
     $vpage->SetTitle ( $title ) ;
     $ti = $vpage->secureTitle ;
@@ -12,7 +12,6 @@ function doHistory ( $title ) {
 
     $a = array () ;
     $connection = getDBconnection () ;
-    mysql_select_db ( $wikiSQLServer , $connection ) ;
     
     # first we get the current record
     $sql1 = "SELECT cur_timestamp, cur_title, cur_comment, cur_user,
