@@ -542,9 +542,13 @@ See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges r
 #
 "upload"		=> "Upload",
 "uploadbtn"		=> "Upload file",
-"uploadlink"		=> "Upload images",
+"uploadlink"	=> "Upload images",
 "reupload"		=> "Re-upload",
 "reuploaddesc"	=> "Return to the upload form.",
+"uploadnologin" => "Not logged in",
+"uploadnologintext"	=> "You must be <a href=\"" .
+  wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
+to upload files.",
 "uploadfile"	=> "Upload file",
 "uploaderror"	=> "Upload error",
 "uploadtext"	=> "To view or search previously uploaded images,

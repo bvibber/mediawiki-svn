@@ -137,9 +137,11 @@ class SkinCologneBlue extends Skin {
 			$s .= $this->menuHead( "qbedit" );
 			$s .= "<strong>" . $this->editThisPage() . "</strong>"
 			  . $sep . $this->makeKnownLink( wfMsg( "edithelppage" ),
-			  wfMsg( "edithelp" ) )
-			  . $sep . $this->specialLink( "upload" );
+			  wfMsg( "edithelp" ) );
 
+			if ( 0 != $wgUser->getID() ) {
+				$s .= $sep . $this->specialLink( "upload" );
+			}
 			if ( $wgUser->isSysop() ) {
 				$s .= $sep . $this->deleteThisPage() .
 				$sep . $this->protectThisPage() .
