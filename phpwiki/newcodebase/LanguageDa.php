@@ -1,5 +1,8 @@
 <?
 
+# NOTE: To turn off "Current Events" in the sidebar,
+# set "currentevents" => "-"
+
 # The names of the namespaces can be set here, but the numbers
 # are magical, so don't change or move them!  The Namespace class
 # encapsulates some of the magic-ness.
@@ -20,7 +23,7 @@
 	"quickbar" => 1, "underline" => 1, "hover" => 1,
 	"cols" => 80, "rows" => 25, "searchlimit" => 20,
 	"contextlines" => 5, "contextchars" => 50,
-	"skin" => 0, "rcdays" => 3, "rclimit" => 50,
+	"skin" => 0, "rcdays" => 7, "rclimit" => 50,
 	"highlightbroken" => 1, "stubthreshold" => 0
 );
 
@@ -42,7 +45,9 @@
 	"rememberpassword" => "Husk password til næste besøg",
 	"editwidth" => "Redigeringsboksen har fuld bredde",
 	"editondblclick" => "Rediger sider med dobbeltklik (JavaScript)",
-	"watchdefault" => "Overvåg nye og ændrede artikler"
+	"watchdefault" => "Overvåg nye og ændrede artikler",
+	"minordefault" => "Marker som standard alle ændringer som mindre"
+	
 );
 
 /* private */ $wgBookstoreListDa = array(
@@ -267,6 +272,7 @@
 
 # Bits of text used by many pages:
 #
+"linktrail"		=> "/^([a-z|æ|ø|å]+)(.*)\$/sD",
 "mainpage"		=> "Forside",
 "about"			=> "Om",
 "aboutwikipedia" => "Om Wikipedia",
@@ -303,11 +309,16 @@
 "protectthispage" => "Beskyt side",
 "unprotectthispage" => "Fjern beskyttelse af side",
 "talkpage"		=> "Diskussionssiden",
-"subjectpage"	=> "Emnesiden",
+"articlepage"	=> "Se artikelen",
+"subjectpage"	=> "Se emnesiden",
+"userpage" => "Se brugersiden",
+"wikipediapage" => "Se metasiden",
+"imagepage" => 	"Se billedsiden",
 "otherlanguages" => "Andre sprog",
 "redirectedfrom" => "(Omdirigeret fra $1)",
 "lastmodified"	=> "Denne side blev sidst ændret $1.",
 "viewcount"		=> "Denne side er blevet set $1 gange.",
+"gnunote" => "Denne side er udgivet under <a class=internal href='/wiki/GNU_FDL'>GNU FDL</a>.",
 "printsubtitle" => "(Fra http://da.wikipedia.org)",
 "protectedpage" => "Beskyttet side",
 "administrators" => "Wikipedia:Administratorer",
@@ -359,9 +370,8 @@ Den administrator der skrivebeskyttede den har denne forklaring:
 "missingarticle" => "Databasen fandt ikke teksten på en side
 som den skulle have fundet, med navnet \"$1\".
 Dette er ikke en database fejl, men sandsynligvis en fejl i softwaren.
-Send venligst en rapport om dette til en administrator, hvor du også nævner 
-
-URL'en.",
+Send venligst en rapport om dette til en administrator, 
+hvor du også nævner URL'en.",
 "internalerror" => "Intern fejl",
 "filecopyerror" => "Kunne ikke kopiere filen \"$1\" til \"$2\".",
 "filerenameerror" => "Kunne ikke omdøbe filen \"$1\" til \"$2\".",
@@ -372,6 +382,9 @@ URL'en.",
 "badarticleerror" => "Denne funktion kan ikke udføres på denne side.",
 "cannotdelete"	=> "Kunne ikke slette siden eller filen der blev 
 specificeret.",
+"badtitle"		=> "Forkert titel",
+"badtitletext"	=> "Den ønskede sides titel var ulovlig, tom eller siden
+er forkert linket fra en Wikipedia på et andet sprog.",
 
 # Login and logout pages
 #
@@ -390,7 +403,6 @@ oprettet. Glem ikke at personliggøre dine Wikipedia indstillinger.",
 "newusersonly"	=> " (kun nye brugere)",
 "remembermypassword" => "Husk mit password til næste gang.",
 "loginproblem"	=> "<b>Der har været et problem med at logge dig 
-
 på.</b><br>Prøv igen!",
 "alreadyloggedin" => "<font color=red><b>Bruger $1, du er allerede logget 
 på!</b></font><br>\n",
@@ -537,7 +549,7 @@ sider der indeholder alle søgeordene vil blive fundet).",
 "powersearchtext" => "
 Søg i navnerum :<br>
 $1<br>
-$2 List redirects &nbsp; Søg efter $3 $9",
+$2 List omdirigeringer &nbsp; Søg efter $3 $9",
 
 
 # Preferences page
@@ -583,24 +595,36 @@ Der bliver automatisk tilpasset til dansk tid, ellers skulle man for eksempel fo
 side.
 
 [[Wikipedia:Velkommen nybegynder|Velkommen nybegynder]]!
-Kig venligst på disse sider: [[wikipedia:OSS|Ofte Stillede 
-Spørgsmål]], [[Wikipedia:Politik|politik]]
-
-(specielt [[wikipedia:Navngivning|navngivning]],
-[[wikipedia:Skriv Wikipedia fra et neutralt synspunkt|skriv Wikipedia fra et 
-neutralt synspunkt]],
-og [[wikipedia:Mest almindelige begynderfejl på Wikipedia|mest almindelige 
-begynderfejl på Wikipedia]]).
+Kig venligst på disse sider: [[Wikipedia:Hjælp|Hjælp]], 
+[[Wikipedia:OSS|Ofte Stillede Spørgsmål]] og 
+[[Wikipedia:Mest almindelige begynderfejl på Wikipedia|mest almindelige begynderfejl på Wikipedia]]).
 
 Det er meget vigtigt for Wikipedias success, at du ikke lægger materiale på 
 Wikipedia som andre har ophavsret til. De retslige konsekvenser kan blive 
 meget kostbare og besværlige
 for projektet, så lad venligst være med det.
-Se også [http://meta.wikipedia.org/wiki/Special:Recentchanges 
-recent meta discussion] (mest på engelsk).",
+
+Se også seneste ændringer for andre sprog: 
+[http://meta.wikipedia.org/wiki/Special:Recentchanges meta], 
+[http://de.wikipedia.org/wiki/Spezial:Recentchanges de], 
+[http://www.wikipedia.org/wiki/Special:Recentchanges en], 
+[http://eo.wikipedia.org/wiki/Speciala:Recentchanges eo], 
+[http://es.wikipedia.org/wiki/Especial:Recentchanges es], 
+[http://et.wikipedia.com/wiki.cgi?Recent_Changes et], 
+[http://fr.wikipedia.org/wiki/Special:Recentchanges fr], 
+[http://it.wikipedia.com/wiki.cgi?RecentChanges it], 
+[http://la.wikipedia.com/wiki.cgi?Recent_Changes la], 
+[http://nl.wikipedia.org/wiki/Speciaal:Recentchanges nl], 
+[http://no.wikipedia.com/wiki.cgi?Recent_Changes no], 
+[http://pl.wikipedia.org/wiki/Specjalna:Recentchanges pl], 
+[http://pt.wikipedia.com/wiki.cgi?RecentChanges pt], 
+[http://ru.wikipedia.org/wiki/Special:Recentchanges ru] og 
+[http://sv.wikipedia.org/wiki/Special:Recentchanges sv].",
 "rcloaderr"		=> "Læser seneste redigerede sider",
 "rcnote"		=> "Nedenfor er de seneste <strong>$1</strong> ændringer i de 
 sidste <strong>$2</strong> dage.",
+"rcnotefrom"	=> "Nedenfor er ændringerne fra <b>$2</b> indtil <b>$1</b> vist.",
+"rclistfrom"	=> "Vis nye ændringer startende fra $1",
 # "rclinks"		=> "Vis seneste $1 ændringer i de sidste $2 timer / sidste $3 dage",
 "rclinks"		=> "Vis seneste $1 ændringer i de sidste $2 dage.",
 "rchide"		=> "i $4 form; $1 mindre ændringer; $2 andre navnerum; $3 mere end 
@@ -641,7 +665,6 @@ wfLocalUrlE( "Wikipedia:Upload_log" ) . "\">upload log</a>.
 som illustration i dine artikler.
 På de fleste browsere vil du se en \"Browse...\" knap eller en 
 \"Gennemse...\" knap, som vil
-
 bringe dig til operativsystemets standard fil åben dialog.
 Når du vælger en fil vil navnet på filen dukke op i tekst feltet
 ved siden af knappen.
@@ -662,9 +685,8 @@ slette dine uploadede filer hvis de mener det hjælper encyklopædien, og
 du kan blive blokeret fra at uploade hvis du misbruger systemet.",
 "uploadlog"		=> "upload log",
 "uploadlogpage" => "Upload_log",
-"uploadlogpagetext" => "Herunder er der en liste af de seneste uploadede 
-filer.
-Alle de viste tider er server (UTC) tider.
+"uploadlogpagetext" => "Herunder er der en liste af de seneste 
+uploadede filer. Alle de viste tider er server (UTC) tider.
 <ul>
 </ul>
 ",
@@ -739,7 +761,6 @@ og <b>$6</b> visninger per redigering.",
 "maintenance"		=> "Vedligeholdelsesside",
 "maintnancepagetext"	=> "På denne side er der forskellige smarte 
 værktøjer til at vedligeholde Wikipedia. Nogle af disse funktioner er ret 
-
 hårde for databasen (de tager lang tid), så lad være med at refreshe siden 
 hver gang du har rettet en enkelt ting ;-)",
 "maintenancebacklink"	=> "Tilbage til vedligeholdelsessiden",
@@ -756,9 +777,17 @@ første #REDIRECT.<br>\nHver linie indeholder links til den første og den
 anden omdirigering, og den første linie fra den anden omdirigeringstekst, 
 det giver som regel den \"rigtige\" mål artikel, som den første omdirigering 
 skulle have peget på.",
+"brokenredirects"	=> "Dårlige omdirigeringer",
+"brokenredirectstext"	=> "De følgende omdirigeringer peger på en side der 
+ikke eksisterer.",
 "selflinks"		=> "Sider der linker til sig selv",
 "selflinkstext"		=> "De følgende sider indeholder links til sig selv, 
 men det burde de ikke.",
+"mispeelings"           => "Sider med stavefejl",
+"mispeelingstext"               => "De følgende sider indeholder en af de 
+almindelig stavefejl, som er listet på $1. Den korrekte stavemåde kan 
+angives i paranteser efter den fejlagtige stavemåde (sådan her).",
+"mispeelingspage"       => "Liste af almindelige stavefejl",
 "missinglanguagelinks"  => "Manglende sprog links",
 "missinglanguagelinksbutton"    => "Find manglende sprog links for",
 "missinglanguagelinkstext"      => "Disse artikler har <i>ikke</i> noget 
@@ -880,6 +909,13 @@ Alle tider er server (UTC) tider.
 "deletecomment"	=> "Begrundelse for sletning",
 "imagereverted" => "Gendannelse af en tidligere version gennemført med 
 success.",
+"rollback"		=> "Fjern redigeringer",
+
+"rollbacklink"	=> "fjern redigering",
+"cantrollback"	=> "Kan ikke fjerne redigering; den sidste bruger er den eneste forfatter.",
+"revertpage"	=> "Fjernet den seneste redigering lavet af $1",
+
+# Undelete
 "undelete" => "Gendan en slettet side",
 "undeletepage" => "Se og gendan slettede sider",
 "undeletepagetext" => "De følgende sider er slettede, men de findes 
@@ -906,6 +942,7 @@ sletninger og gendannelser.",
 "ucnote"		=> "Herunder er denne brugers sidste <b>$1</b> ændringer i de 
 sidste <b>$2</b> dage.",
 "uclinks"		=> "Vis de sidste $1 ændringer; vis de sidste $2 dage.",
+"uctop"		=> " (top)" ,
 
 # What links here
 #
@@ -983,8 +1020,7 @@ Dette kan ofte belaste serveren kraftigt, så brug venligst denne funktion
 med omtanke.",
 "sqlquery"		=> "Indtast forespørgsel",
 "querybtn"		=> "Afsend forespørgsel",
-"selectonly"	=> "Forespørgsler andre end \"SELECT\" er forbeholdt
-
+"selectonly"	=> "Forespørgsler andre end \"SELECT\" er forbeholdt 
 Wikipedia udviklere.",
 "querysuccessful" => "Forespørgsel gennemført med success",
 
@@ -994,12 +1030,27 @@ Wikipedia udviklere.",
 "movepagetext"	=> "Når du bruger formularen herunder vil du få omdøbt en 
 side, flyttet hele sidens historie til det nye navn.
 Den gamle titel vil blive en omdirigeringsside til den nye titel.
-Links til den gamle titel vil ikke blive ændret. Hvis der er en diskussion 
-side, vil den ikke blive flyttet.
+Links til den gamle titel vil ikke blive ændret. Sørg for at 
+[[Speciel:Maintenance|checke]] for dobbelte eller dårlige omdirigeringer. 
+Du er ansvarlig for, at alle links stadig peger på der hvor det er 
+meningen de skal pege.
+
+Bemærk at siden '''ikke''' kan flyttes hvis der allerede er en side 
+med den nye titel, medmindre den side er tom eller er en omdirigering 
+uden nogen historie. Det betyder at du kan flytte en side tilbage hvor 
+den kom fra, hvis du kommer til at lave en fejl.
+
 <b>ADVARSEL!</b>
 Dette kan være en drastisk og uventet ændring for en populær side;
 vær sikker på at du forstår konsekvenserne af dette før du
 fortsætter.",
+"movepagetalktext" => "Den tilhørende diskussionsside, hvis der er en, 
+vil automatisk blive flyttet med siden '''medmindre:'''
+*Du flyttet siden til et andet navnerum,
+*En ikke-tom diskussionsside allerede eksisterer under det nye navn, eller
+*Du fjerner markeringen i boksen nedenunder.
+
+I disse tilfælde er du nødt til at flytte eller sammenflette siden manuelt.",
 "movearticle"	=> "Flyt side",
 "movenologin"	=> "Ikke logget på",
 "movenologintext" => "Du skal være registreret bruger og være <a href=\"" .
@@ -1011,6 +1062,9 @@ for at flytte en side.",
 "pagemovedtext" => "Siden \"[[$1]]\" er flyttet til \"[[$2]]\".",
 "articleexists" => "En side med det navn eksisterer allerede, eller det
 navn du har valgt er ikke gyldigt. Vælg et andet navn.",
+"talkexists"	=> "Siden blev flyttet korrekt, men den tilhørende 
+diskussionsside kunne ikke flyttes, fordi der allerede eksisterer en 
+med den nye titel. Du er nødt til at flette dem sammen manuelt.",
 "movedto"		=> "flyttet til",
 "movetalk"		=> "Flyt også \"diskussion\" siden, hvis den eksistere.",
 "talkpagemoved" => "Den tilhørende diskussion side blev også flyttet.",
