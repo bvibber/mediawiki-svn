@@ -9,6 +9,7 @@
 #         1.00.30 romanm        2003-11-07 |    minor changes
 #         1.00.31 romanm        2003-11-11 |    merged incorrectly broken lines
 #         1.00.32 romanm        2003-11-19 |    merged incorrectly broken lines
+#         1.00.40 romanm        2003-11-21 |    fixed Google search
 #
 
 include_once( "LanguageUtf8.php" );
@@ -401,14 +402,14 @@ $2 Seznam se preusmerja   Iskanje za $3 $9",
 "searchdisabled" => "<p>Oprostite! Iskanje po celotni bazi je zaradi hitrejšega delovanja Wikipedije trenutno onomogočena. Lahko pa se poslužite z Googlovim iskalnikom.</p>
 
 <!-- SiteSearch Google -->
-<FORM method=GET action=\"http://www.google.com/intl/sl/search\">
+<FORM method=GET action=\"http://www.google.com/search\">
 <TABLE bgcolor=\"#FFFFFF\"><tr><td>
 <A HREF=\"http://www.google.com/intl/sl/\">
 <IMG SRC=\"http://www.google.com/logos/Logo_40wht.gif\"
 border=\"0\" ALT=\"Google\"></A>
 </td>
 <td>
-<INPUT TYPE=hidden name=hl value=sr>
+<INPUT TYPE=hidden name=hl value=sl>
 <INPUT TYPE=hidden name=ie value=UTF-8>
 <INPUT TYPE=hidden name=oe value=UTF-8>
 <INPUT TYPE=text name=q size=31 maxlength=255 value=\"\">
