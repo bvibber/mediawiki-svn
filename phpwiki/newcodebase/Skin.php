@@ -89,7 +89,7 @@ class Skin {
 		}
 		else $a = array( "bgcolor" => "#FFFFFF" );
 		if($wgOut->isArticle() && $wgUser->getOption("editondblclick") ) {
-			$n = $wgTitle->getURL();
+			$n = $wgTitle->getPrefixedURL();
 			$t = wfMsg( "editthispage" );
 			$oid = $red = "";
 			if ( $redirect ) { $red = "&redirect={$redirect}"; }
