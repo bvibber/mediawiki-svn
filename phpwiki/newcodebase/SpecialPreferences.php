@@ -31,11 +31,12 @@ function wfSpecialPreferences()
 			mainPrefsForm( wfMsg( "badretype" ) );			
 			return;
 		}
-		if ( $wpOldpass != $wgUser->getPassword() ) {
+		$ep = User::encryptPassword( $wpOldpass );
+		if ( $ep != $wgUser->getPassword() ) {
 			mainPrefsForm( wfMsg( "wrongpassword" ) );
 			return;
 		}
-		$wgUser->setPassword( $wgNewpass );
+		$wgUser->setPassword( $wpNewpass );
 	}
 	$wgUser->setEmail( $wpEmail );
 	$wgUser->setOption( "nickname", $wpNick );

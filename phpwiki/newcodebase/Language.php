@@ -111,7 +111,7 @@ that it be to the address you give.<br>\n",
 "userexists"	=> "The user name you entered is already in use. Please choosea different name.",
 "youremail"		=> "Your e-mail",
 "yournick"		=> "Your nickname (for signatures)",
-"emailforlost"	=> "If you forget your password, you can have it mailed to your e-mail address.",
+"emailforlost"	=> "If you forget your password, you can have a new one mailed to your e-mail address.",
 
 "loginerror"	=> "Login error",
 "noname"		=> "You must specify a user name.",
@@ -120,18 +120,16 @@ that it be to the address you give.<br>\n",
 "nosuchuser"	=> "There is no user by the name \"$1\".
 Check your spelling, or use the form below to create a new user account.",
 "wrongpassword"	=> "The password you entered is incorrect. Please try again.",
-"mailmypassword" => "Mail me my password",
+"mailmypassword" => "Mail me a new password",
 "passwordremindertitle" => "Password reminder from Wikipedia",
 
 "passwordremindertext" => "Someone (probably you) requested that we send
-you a reminder of your Wikipedia login password.  The password for
-user \"$1\" is \"$2\".
-If you did not make this request, you may want to change your password now,
-as there may have been an attempt to learn your password by intercepting
-this mail.",
+you a new Wikipedia login password.  The password for
+user \"$1\" is now \"$2\".
+You should log in and change your password now.",
 
 "noemail"		=> "There is no e-mail address recorded for user \"$1\".",
-"passwordsent"	=> "A password has been sent to the e-mail address
+"passwordsent"	=> "A new password has been sent to the e-mail address
 registered for \"$1\".
 Please log in again after you receive it.",
 

@@ -180,13 +180,19 @@ class Skin {
 
 		if ( 0 == $wgUser->getID() ) {
 			$n = getenv( "REMOTE_ADDR" );
+			$rt = $wgTitle->getPrefixedURL();
+			if ( 0 == strcasecmp( urlencode("Special:Userlogout"), $rt ) ) {
+				$q = "";
+			} else { $q = "returnto={$rt}"; }
+
 			$s .= $n . "\n<br>" . $this->makeLink( "Special:Userlogin",
-			  wfMsg( "login" ), "returnto=" . $wgTitle->getPrefixedURL() );
+			  wfMsg( "login" ), $q );
 		} else {
 			$n = $wgUser->getName();
+			$rt = $wgTitle->getPrefixedURL();
 			$s .= $this->makeLink( "User:$n", $n ) . "<br>" .
-			  $this->makeLink( "Special:Userlogout", wfMsg( "logout" ),
-			  "returnto=" . $wgTitle->getPrefixedURL() ) . " | " .
+			  $this->makeLink( "Special:Userlogout",
+			  wfMsg( "logout" ), "returnto={$rt}" ) . " | " .
 			  $this->specialLink( "preferences" );
 		}
 		$s .= " | " . $this->makeLink( "Wikipedia:Help", wfMsg( "help" ) ); 

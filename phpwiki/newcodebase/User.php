@@ -37,6 +37,19 @@ class User {
 		return wfGetSQL( "user", "user_name", "user_id=$id" );
 	}
 
+	/* static */ function randomPassword()
+	{
+		$pwchars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz";
+		$l = strlen( $pwchars ) - 1;
+
+		wfSeedRandom();
+		$np = $pwchars{mt_rand( 0, $l )} . $pwchars{mt_rand( 0, $l )} .
+		  $pwchars{mt_rand( 0, $l )} . chr( mt_rand(48, 57) ) .
+		  $pwchars{mt_rand( 0, $l )} . $pwchars{mt_rand( 0, $l )} .
+		  $pwchars{mt_rand( 0, $l )};
+		return $np;
+	}
+
 	function loadDefaults()
 	{
 		global $wgDefaultOptions;
@@ -172,7 +185,6 @@ class User {
 
 	function getName() {
 		$this->loadFromDatabase();
-wfDebug( "U3: {$this->mName}\n" );
 		return $this->mName;
 	}
 
@@ -188,10 +200,17 @@ wfDebug( "U3: {$this->mName}\n" );
 		return $this->mPassword;
 	}
 
+	/* static */ function encryptPassword( $p )
+	{
+		$np = md5( $p );
+		wfDebug( "User: 9: {$p} = {$np}\n" );
+		return $np;
+	}
+
 	function setPassword( $str )
 	{
 		$this->loadFromDatabase();
-		$this->mPassword = $str;
+		$this->mPassword = User::encryptPassword( $str );
 	}
 
 	function getEmail()
@@ -328,12 +347,13 @@ wfDebug( "U3: {$this->mName}\n" );
 
 	function logout()
 	{
-		global $wsUserID, $HTTP_COOKIE_VARS;
+		global $wsUserID;
 		$this->mId = 0;
 
 		$wsUserID = 0;
-		unset( $HTTP_COOKIE_VARS["wcUserID"] );
-		unset( $HTTP_COOKIE_VARS["wcUserPassword"] );
+
+		setcookie( "wcUserID", "", time() - 3600 );
+		setcookie( "wcUserPassword", "", time() - 3600 );
 	}
 
 	function saveSettings()

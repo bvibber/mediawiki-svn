@@ -64,7 +64,8 @@ function wfSpecialUserlogin()
 	}
 	$u->setId( $id );
 	$u->loadFromDatabase();
-	if ( 0 != strcmp( $u->getPassword(), $wpPassword ) ) {
+	$ep = User::encryptPassword( $wpPassword );
+	if ( 0 != strcmp( $ep, $u->getPassword() ) ) {
 		mainLoginForm( wfMsg( "wrongpassword" ) );
 		return;
 	}
@@ -81,7 +82,7 @@ function wfSpecialUserlogin()
 
 /* private */ function mailPassword()
 {
-	global $wpName;
+	global $wgUser, $wpName, $wgDeferredUpdateList;
 
 	if ( "" == $wpName ) {
 		mainLoginForm( wfMsg( "noname" ) );
@@ -102,8 +103,13 @@ function wfSpecialUserlogin()
 		mainLoginForm( $m );
 		return;
 	}
+	$np = User::randomPassword();
+	$u->setPassword( $np );
+	setcookie( "wcUserPassword", "", time() - 3600 );
+	$u->saveSettings();
+
 	$m = str_replace( "$1", $u->getName(), wfMsg( "passwordremindertext" ) );
-	$m = str_replace( "$2", $u->getPassword(), $m );
+	$m = str_replace( "$2", $np, $m );
 
 	mail( $u->getEmail(), wfMsg( "passwordremindertitle" ), $m );
 	$m = str_replace( "$1", $u->getName(), wfMsg( "passwordsent" ) );
@@ -154,13 +160,7 @@ function wfSpecialUserlogin()
 		}
 	}
 	$pwd = $wpPassword;
-	if ( "" == $pwd ) {
-		if ( 0 != $wgUser->getID() ) {
-			$pwd = $wgUser->getPassword();
-		} else {
-			$pwd = $HTTP_COOKIE_VARS["wcUserPassword"];
-		}
-	}
+
 	$wgOut->setPageTitle( wfMsg( "userlogin" ) );
 	$wgOut->setRobotpolicy( "noindex,nofollow" );
 	$wgOut->setArticleFlag( false );
