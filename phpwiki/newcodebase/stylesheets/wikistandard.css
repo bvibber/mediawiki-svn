@@ -15,6 +15,9 @@ td.top { border-bottom: 2px solid #000000; }
 #quickbar { width: 140px; padding: 4px; visibility: visible; z-index: 99; }
 #article { padding: 4px; }
 #footer { padding: 4px; }
+#pagestats {
+ font-size: 9pt;
+}
 td.bottom { border-top: 2px solid #000000; }
 h2, h3, h4, h5, h6 { margin-bottom: 0; }
 h2 { font-size: 125%; }
