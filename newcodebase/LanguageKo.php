@@ -31,7 +31,7 @@ include_once( "utf8Case.php" );
 	"quickbar" => 1, "underline" => 1, "hover" => 1,
 	"cols" => 80, "rows" => 25, "searchlimit" => 20,
 	"contextlines" => 5, "contextchars" => 50,
-	"skin" => 0, "rcdays" => 14, "rclimit" => 50,
+	"skin" => 0, "math" => 1, "rcdays" => 14, "rclimit" => 50,
 	"highlightbroken" => 1, "stubthreshold" => 0
 );
 

@@ -19,7 +19,7 @@ function wfSpecialWhatlinkshere()
 
 	if ( 0 == $id ) {
 		$sql = "SELECT DISTINCT bl_from FROM brokenlinks WHERE bl_to='" .
-		  wfStrencode( $nt->getPrefixedDBkey() ) . "'";
+		  wfStrencode( $nt->getPrefixedDBkey() ) . "' LIMIT 500";
 		$res = wfQuery( $sql, $fname );
 
 		if ( 0 == wfNumRows( $res ) ) {
@@ -58,7 +58,7 @@ function wfShowIndirectLinks( $level, $lid )
 	global $wgOut, $wgUser;
 	$fname = "wfShowIndirectLinks";
 
-	$sql = "SELECT DISTINCT l_from FROM links WHERE l_to={$lid}";
+	$sql = "SELECT DISTINCT l_from FROM links WHERE l_to={$lid} LIMIT 500";
 	$res = wfQuery( $sql, $fname );
 
 	if ( 0 == wfNumRows( $res ) ) {

@@ -31,7 +31,7 @@ function wfSpecialPreferences()
 {
 	global $wgUser, $wgLang, $wgDeferredUpdateList;
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
-	global $wpSkin, $wpEmail, $wpEmailFlag, $wpNick, $wpSearch, $wpRecent;
+	global $wpSkin, $wpMath, $wpEmail, $wpEmailFlag, $wpNick, $wpSearch, $wpRecent;
 	global $wpSearchLines, $wpSearchChars, $wpStubs;
 	global $wpRows, $wpCols, $wpHourDiff, $HTTP_POST_VARS;
 
@@ -53,6 +53,7 @@ function wfSpecialPreferences()
 	$wgUser->setOption( "nickname", $wpNick );
 	$wgUser->setOption( "quickbar", $wpQuickbar );
 	$wgUser->setOption( "skin", $wpSkin );
+	$wgUser->setOption( "math", $wpMath );
 	$wgUser->setOption( "searchlimit", $wpSearch );
 	$wgUser->setOption( "contextlines", $wpSearchLines );
 	$wgUser->setOption( "contextchars", $wpSearchChars );
@@ -83,7 +84,7 @@ function wfSpecialPreferences()
 {
 	global $wgUser, $wgLang;
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype, $wpStubs;
-	global $wpRows, $wpCols, $wpSkin, $wpEmail, $wpEmailFlag, $wpNick;
+	global $wpRows, $wpCols, $wpSkin, $wpMath, $wpEmail, $wpEmailFlag, $wpNick;
 	global $wpSearch, $wpRecent, $HTTP_POST_VARS;
 	global $wpHourDiff, $wpSearchLines, $wpSearchChars;
 
@@ -95,6 +96,7 @@ function wfSpecialPreferences()
 
 	$wpQuickbar = $wgUser->getOption( "quickbar" );
 	$wpSkin = $wgUser->getOption( "skin" );
+	$wpMath = $wgUser->getOption( "math" );
 	$wpRows = $wgUser->getOption( "rows" );
 	$wpCols = $wgUser->getOption( "cols" );
 	$wpStubs = $wgUser->getOption( "stubthreshold" );
@@ -114,7 +116,7 @@ function wfSpecialPreferences()
 {
 	global $wgUser, $wgOut, $wgLang;
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
-	global $wpSkin, $wpEmail, $wpEmailFlag, $wpNick, $wpSearch, $wpRecent;
+	global $wpSkin, $wpMath, $wpEmail, $wpEmailFlag, $wpNick, $wpSearch, $wpRecent;
 	global $wpRows, $wpCols, $wpSaveprefs, $wpReset, $wpHourDiff;
 	global $wpSearchLines, $wpSearchChars, $wpStubs;
 
@@ -133,6 +135,7 @@ function wfSpecialPreferences()
 
 	$qbs = $wgLang->getQuickbarSettings();
 	$skins = $wgLang->getSkinNames();
+	$mathopts = $wgLang->getMathNames();
 	$togs = $wgLang->getUserToggles();
 
 	$action = wfLocalUrlE( $wgLang->specialPage( "Preferences" ),
@@ -140,6 +143,7 @@ function wfSpecialPreferences()
 	$qb = wfMsg( "qbsettings" );
 	$cp = wfMsg( "changepassword" );
 	$sk = wfMsg( "skin" );
+	$math = wfMsg( "math" );
 	$opw = wfMsg( "oldpassword" );
 	$npw = wfMsg( "newpassword" );
 	$rpw = wfMsg( "retypenew" );
@@ -197,7 +201,7 @@ value=\"$i\"$checked> {$skins[$i]}<br>\n" );
 
 	# Various checkbox options
 	#
-	$wgOut->addHTML( "</td><td valign=top nowrap>\n" );
+	$wgOut->addHTML( "</td><td rowspan=2 valign=top nowrap>\n" );
 	foreach ( $togs as $tname => $ttext ) {
 		if ( 1 == $wgUser->getOption( $tname ) ) {
 			$checked = " checked";
@@ -207,6 +211,18 @@ value=\"$i\"$checked> {$skins[$i]}<br>\n" );
 		$wgOut->addHTML( "<input type=checkbox value=\"1\" "
 		  . "name=\"wpOp$tname\"$checked>$ttext<br>\n" );
 	}
+	$wgOut->addHTML( "</td>" );
+
+	# Math setting
+	#
+	$wgOut->addHTML( "<tr><td valign=top nowrap><b>$math:</b><br>\n" );
+	for ( $i = 0; $i < count( $mathopts ); ++$i ) {
+		if ( $i == $wpMath ) { $checked = " checked"; }
+		else { $checked = ""; }
+		$wgOut->addHTML( "<input type=radio name=\"wpMath\"
+value=\"$i\"$checked> {$mathopts[$i]}<br>\n" );
+	}
+
 	$wgOut->addHTML( "</td></tr><tr>" );
 
 	# Textbox rows, cols

@@ -198,6 +198,16 @@ $sql = "CREATE TABLE watchlist (
 ) TYPE=MyISAM PACK_KEYS=1";
 wfQuery( $sql );
 
+$sql = "DROP TABLE IF EXISTS math";
+wfQuery( $sql );
+$sql = "CREATE TABLE math (
+  math_inputhash char(16) NOT NULL,
+  math_outputhash char(16) NOT NULL,
+  math_conservative BOOL NOT NULL,
+  math_html text NOT NULL,
+  UNIQUE KEY math_inputhash (math_inputhash)
+)";
+wfQuery( $sql );
 }
 
 function buildIndexes()

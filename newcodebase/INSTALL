@@ -37,6 +37,10 @@ Downloads:
   php-4.2.1.tar.gz
   apc-cvs.tar.gz
 
+And for TeX support:
+  ocaml-3.06.tar.gz
+  (TeTeX and ImageMagick come with most Linux distros)
+
 1. MySQL strongly recommends using gcc 2.95 to compile MySQL.
   RedHat Linux comes with 2.96 by default, so you'll have to install
   2.95 first.  Use "../gcc*/configure --enable-shared"
@@ -57,13 +61,19 @@ Downloads:
   There should be a script in the maintenance directory to help with
   that.
 
-4. Optionally, install libiconv.  Currently the code doesn't use this,
-  but some later versions probably will (especially foreign versions).
+4. Optionally, install libiconv.  This will be used by some language
+  packages for converting native-charset URLs to and from UTF-8.
 
 5. Unpack Apache distribution and begin configuring, but don't finish
   build yet.  Configure with:
 
    OPTIM='-O2 -mpentiumpro' ./configure --with-layout=Apache
+
+5a. If using recommended mod_rewrite configuration, install the included
+  patch 'apache-ampersand.diff' which is needed to support page titles
+  with ampersands in them:
+
+   patch -p0 < /path/to/maintenance/apache-ampersand.diff
 
 6. Unpack and configure PHP.  Configure with:
 
@@ -91,9 +101,27 @@ Downloads:
     </IfModule>
   </Directory>
   RewriteEngine On
-  RewriteRule ^/wiki/(.*)$ /wiki.phtml?title=$1
-  RewriteRule ^/wiki/wiki.phtml(.*) /wiki.phtml$1
+  RewriteMap ampescape int:ampescape
+  RewriteRule ^/wiki/(.*)$ /wiki.phtml?title=${ampescape:$1} [L]
 
 8. Optionally, install APC, following standard instructions for
   installing as a Zend extension.
+
+9. If using embedded TeX support, be sure TeX and ImageMagick are
+  installed (they are common on most Linux distros and freely
+  downloadable). Also get and install OCaml according to its
+  instructions.
+
+  You'll need to compile the 'texvc' helper script; enter the 'math'
+  subdirectory of the source tree and run 'make'.
+
+  If you don't want tmbeddex TeX support, disable it by setting
+
+   $wgUseTex = false;
+
+  in LocalSettings.php
+
+10. Create 'upload' and (for TeX) 'math' and 'tmp' directories which
+  are writable by the apache process and web-accessible. Set the pathnames
+  and URLs for these appropriately in LocalSettings.php.
 
