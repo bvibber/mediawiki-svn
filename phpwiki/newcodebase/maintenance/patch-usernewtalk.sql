@@ -7,8 +7,14 @@
 CREATE TABLE user_newtalk (
   user_id int(5) NOT NULL default '0',
   user_ip varchar(40) NOT NULL default '',
-  PRIMARY KEY  (user_id),
+  KEY user_id (user_id),
   KEY user_ip (user_ip)
 ) TYPE=MyISAM;
+
+INSERT INTO
+  user_newtalk (user_id, user_ip)
+  SELECT user_id, ''
+    FROM user
+    WHERE user_newtalk != 0;
 
 ALTER TABLE user DROP COLUMN user_newtalk;
