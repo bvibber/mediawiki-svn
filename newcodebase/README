@@ -1,0 +1,28 @@
+2002-05-20
+
+This is a new codebase that attempts to reproduce (more or less
+exactly, modulo some bugs and some things I don't like) the
+functionality of Magnus Manske's PHP Wikipedia software.  I've
+stolen a lot of Magnus and Brion's code, and nearly all of their
+database structure and output design, changing only those things
+I thought needed fixing (namepsaces are in a separate database
+field, for example, and I made the stylesheets external).
+
+This new codebase, however, should be much easier to test, debug,
+enchance, and customize.  My primary motivation, in fact, is
+wanting to have this software for my own site, and not being
+happy with either the limited functionality of UseMod or the
+incomprehensible code of the existing PHP stuff.
+
+In its present state, it is minimally functional, and will do
+only the basic Wiki view pages and edit pages, and user logins.
+It has hooks for future internationalization, but no other
+languages are currently ported.
+
+You'll need to convert the database before you run it as well.
+There's a running installation on piclab.com/newwiki, and I can
+be talked into giving accounts there, though I think it should
+be possible to get this running on SourceForge as well.
+
+-- Lee Daniel Crocker <lee@piclab.com>
+
