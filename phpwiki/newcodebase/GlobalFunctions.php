@@ -63,6 +63,7 @@ function wfLocalUrl( $a )
 	global $wgArticlePath;
 
 	$a = str_replace( " ", "_", $a );
+	$a = urlencode( $a );
 	$a = str_replace( "$1", $a, $wgArticlePath );
 	return $a;
 }
@@ -209,6 +210,81 @@ function wfUnescapeHTML( $in )
 	$in = str_replace( "&quot;", "\"", $in );
 	$in = str_replace( "&amp;", "&", $in );
 	return $in;
+}
+
+function wfImageDir( $fname )
+{
+	global $wgUploadDirectory;
+
+	$oldumask = umask(0);
+	$dest = $wgUploadDirectory . "/" . $fname{0};
+	if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
+	$dest .= "/" . substr( $fname, 0, 2 );
+	if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
+	
+	umask( $oldumask );
+	return $dest;
+}
+
+function wfImageArchiveDir( $fname )
+{
+	global $wgUploadDirectory;
+
+	$oldumask = umask(0);
+	$archive = "{$wgUploadDirectory}/archive";
+	if ( ! is_dir( $archive ) ) { mkdir( $archive, 0777 ); }
+	$archive .= "/" . $fname{0};
+	if ( ! is_dir( $archive ) ) { mkdir( $archive, 0777 ); }
+	$archive .= "/" . substr( $fname, 0, 2 );
+	if ( ! is_dir( $archive ) ) { mkdir( $archive, 0777 ); }
+
+	umask( $oldumask );
+	return $archive;
+}
+
+function wfRecordUpload( $name, $oldver, $size, $desc )
+{
+	global $wgUser;
+	$fname = "wfRecordUpload";
+
+wfDebug( "Rec: $name, $oldver, $size, $desc\n" );
+
+	$conn = wfGetDB();
+	$sql = "SELECT img_name,img_size,img_timestamp,img_description,img_user," .
+	  "img_user_text FROM image WHERE img_name='{$name}'";
+	$res = wfQuery( $sql, $conn, $fname );
+
+	if ( 0 == mysql_num_rows( $res ) ) {
+		$conn = wfGetDB();
+		$sql = "INSERT INTO image (img_name,img_size,img_timestamp," .
+		  "img_description,img_user,img_user_text) VALUES ('" .
+		  wfStrencode( $name ) . "',{$size},'" . date( "YmdHis" ) . "','" .
+		  wfStrencode( $description ) . "', '" . $wgUser->getID() .
+		  "', '" . wfStrencode( $wgUser->getName() ) . "')";
+		wfQuery( $sql, $conn, $fname );
+	} else {
+		$s = mysql_fetch_object( $res );
+
+		$conn = wfGetDB();
+		$sql = "INSERT INTO oldimage (oi_name,oi_archive_name,oi_size," .
+		  "oi_timestamp,oi_description,oi_user,oi_user_text) VALUES ('" .
+		  wfStrencode( $s->img_name ) . "','" .
+		  wfStrencode( $oldver ) .
+		  "',{$s->img_size},'{$s->img_timestamp}','" .
+		  wfStrencode( $s->img_description ) . "','" .
+		  wfStrencode( $s->img_user ) . "','" .
+		  wfStrencode( $s->img_user_text) . "')";
+		wfQuery( $sql, $conn, $fname );
+
+		$conn = wfGetDB();
+		$sql = "UPDATE image SET img_size={$size}," .
+		  "img_timestamp='" . date( "YmdHis" ) . "',img_user='" .
+		  $wgUser->getID() . "',img_user_text='" .
+		  wfStrencode( $wgUser->getName() ) . "', img_description='" .
+		  wfStrencode( $desc ) . "' WHERE img_name='" .
+		  wfStrencode( $name ) . "'";
+		wfQuery( $sql, $conn, $fname );
+	}
 }
 
 ?>

@@ -1,12 +1,14 @@
 <?
 # Main wiki script
 #
+$wgRequestTime = microtime();
+error_reporting( E_ALL );
+
 session_start();
 session_register( "wsUserID" );
 session_register( "wsUserName" );
 session_register( "wsUserPassword" );
 
-$wgRequestTime = microtime();
 include_once( "Setup.php" );
 
 # Query string fields
@@ -36,6 +38,8 @@ else {
 	else if ( "print" == $action ) { $wgArticle->view(); }
 	else if ( "watch" == $action ) { $wgArticle->watch(); }
 	else if ( "history" == $action ) { $wgArticle->history(); }
+	else if ( "delete" == $action ) { $wgArticle->delete(); }
+	else if ( "revert" == $action ) { $wgArticle->revert(); }
 	else { $wgOut->errorpage( "nosuchaction", "nosuchactiontext" ); }
 }
 

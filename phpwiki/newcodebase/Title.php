@@ -158,6 +158,8 @@ class Title {
 		global $wgUser;
 
 		if ( -1 == $this->mNamespace ) { return false; }
+		if ( 0 == $this->getArticleID() ) { return false; }
+
 		$ur = $wgUser->getRights();
 		foreach ( $this->getRestrictions() as $r ) {
 			if ( "" != $r && ( ! in_array( $r, $ur ) ) ) {
@@ -170,6 +172,8 @@ class Title {
 	function getRestrictions()
 	{
 		$id = $this->getArticleID();
+		if ( 0 == $id ) { return array(); }
+
 		if ( ! $this->mRestrictionsLoaded ) {
 			$res = wfGetSQL( "cur", "cur_restrictions", "cur_id=$id" );
 			$this->mRestrictions = explode( ",", trim( $res ) );

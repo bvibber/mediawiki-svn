@@ -75,6 +75,10 @@
 "viewcount"		=> "This page has been accessed $1 times.",
 "printsubtitle" => "(From http://www.wikipedia.com)",
 "protectedpage" => "Protected page",
+"sysoptitle"	=> "Sysop access required",
+"sysoptext"		=> "The action you have requested can only be
+performed by users with \"sysop\" status.
+See [[Wikipedia:Administrators]].",
 
 # Main script and global functions
 #
@@ -85,7 +89,7 @@ recognized by the Wikipedia software",
 "nospecialpagetext" => "You have requested a special page that is not
 recognized by the Wikipedia software",
 
-# Database errors
+# General errors
 #
 "databaseerror" => "Database error",
 "dberrortext"	=> "An unrecoverable database error has occurred.
@@ -104,6 +108,12 @@ Please try again later.\n",
 that it should have found, named \"$1\".
 This is not a database error, but likely a bug in the software.
 Please report this to an administrator, making note of the URL.",
+"internalerror" => "Internal error",
+"filecopyerror" => "Could not copy file \"$1\" to \"$2\".",
+"filerenameerror" => "Could not rename file \"$1\" to \"$2\".",
+"filedeleteerror" => "Could not delete file \"$1\".",
+"filenotfound"	=> "Could not find file \"$1\".",
+"unexpected"	=> "Unexpected value: \"$1\"=\"$2\".",
 
 # Login and logout pages
 #
@@ -335,7 +345,8 @@ any copyrights.",
 "imghistory"	=> "Image history",
 "revertimg"		=> "rev",
 "deleteimg"		=> "del",
-"imghistlegend" => "Legend: (rev) = revert to earlier image.",
+"imghistlegend" => "Legend: (cur) = this is the current image, (del) = delete
+this old version, (rev) = revert to this old version.",
 "imagelinks"	=> "Image links",
 "linkstoimage"	=> "The following articles link to this image:",
 "nolinkstoimage" => "There are no articles that link to this image.",
@@ -394,6 +405,17 @@ the Wikipedia database.",
 # Delete page
 #
 "deletepage"	=> "Delete page",
+"confirm"		=> "Confirm",
+"confirmdelete" => "Confirm delete",
+"deletesub"		=> "(Deleting \"$1\")",
+"confirmdeletetext" => "You are about to permanently delete an article
+or image along with all of its history from the database.
+Please confirm that you intend to do this, that you understand the
+consequences, and that you are doing this in accordance with
+[[Wikipedia:Policy]].",
+"confirmcheck"	=> "Yes, I really want to delete this.",
+"actioncomplete" => "Action complete",
+"deletedtext"	=> "\"$1\" has been deleted.",
 
 # Move page
 #
@@ -461,6 +483,9 @@ class Language {
 
 	function getLanguageName( $code ) {
 		global $wgLanguageNamesEn;
+		if ( ! array_key_exists( $code, $wgLanguageNamesEn ) ) {
+			return "";
+		}
 		return $wgLanguageNamesEn[$code];
 	}
 
