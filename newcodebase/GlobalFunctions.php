@@ -220,7 +220,7 @@ function wfNumberOfArticles()
 	else {
 		$s = wfFetchObject( $res );
 		$wgTotalViews = $s->ss_total_views;
-		$wgTotalEdits = $s->ss_total_Edits;
+		$wgTotalEdits = $s->ss_total_edits;
 		$wgNumberOfArticles = $s->ss_good_articles;
 	}
 }
