@@ -117,7 +117,8 @@ function wfSpecialDisambiguations()
 	while ( $obj = wfFetchObject( $res ) ) {
 		$l1 = $sk->makeKnownLink ( $obj->source , "" , "redirect=no" ) ;
 		$l2 = $sk->makeKnownLink ( $obj->dt ) ;
-		$s .= "<li>{$l1} => {$l2}</li>\n" ;
+		$l3 = $sk->makeBrokenLink ( $obj->source , "(".wfMsg("qbedit").")" , "redirect=no" ) ;
+		$s .= "<li>{$l1} {$l3} => {$l2}</li>\n" ;
 	}
 	wfFreeResult( $res );
 	$s .= "</ol>";
