@@ -19,6 +19,10 @@ class Skin {
 
 	/* private */ var $lastdate, $nextid;
 
+	function Skin()
+	{
+	}
+
 	function getSkinNames() { return $wgValidSkinNames; }
 
 	function initPage()
@@ -115,13 +119,14 @@ class Skin {
 		  . "cellspacing=0><tr>";
 
 		$q = $wgUser->getOption( "quickbar" );
+		if ( $wgOut->isQuickbarSupressed() ) { $q = 0; }
 
-		if ( 1 == $q ) { # "Left"
+		if ( 0 == $q || "" == $q ) { # "None"
+			$s .= "<td colspan=2 valign=top>\n";
+		} else if ( 1 == $q ) { # "Left"
 			$s .= "<td class=\"quickbar\" width=110 valign=top nowrap>";
 			$s .= $this->quickBar();
 			$s .= "</td><td valign=top>\n";
-		} else if ( 0 == $q || "" == $q ) { # "None"
-			$s .= "<td colspan=2 valign=top>\n";
 		} else { # Right, default
 			$s .= "<td valign=top>\n";
 		}
@@ -133,12 +138,13 @@ class Skin {
 	#
 	function afterContent()
 	{
-		global $wgUser;
+		global $wgUser, $wgOut;
 
 		$s = "</div></td>";
 		$q = $wgUser->getOption( "quickbar" );
+		if ( $wgOut->isQuickbarSupressed() ) { $q = 0; }
 
-		if ( "" != $q && 0 != $q && 1 != $q ) {
+		if ( ( ! $this->quickBarOff ) && "" != $q && 0 != $q && 1 != $q ) {
 			$s .= "<td class=\"quickbar\" width=110 valign=top nowrap>";
 			$s .= $this->quickBar() . "</td>";
 		}

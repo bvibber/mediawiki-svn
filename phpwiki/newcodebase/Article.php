@@ -162,12 +162,17 @@ class Article {
 	function view()
 	{
 		global $wgUser, $wgOut, $wgTitle, $wgLang;
-		global $oldid;
+		global $oldid, $diff;
 
-		$text = $this->getContent();
 		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
-
+		if ( $oldid && isset( $diff ) ) {
+			$de = new DifferenceEngine( $oldid, $diff );
+			$de->showDiffs();
+			return;
+		}
+		$text = $this->getContent();
 		if ( $oldid ) { $this->setOldSubtitle(); }
+
 		if ( "" != $this->mRedirectedFrom ) {
 			$sk = $wgUser->getSkin();
 			$redir = $sk->makeLink( $this->mRedirectedFrom, "",
@@ -493,7 +498,8 @@ $wpTextbox2
 		$d = $wgLang->dateFromTimestamp( $this->mTimestamp );
 		$h = substr( $this->mTimestamp, 8, 2 ) . ":" .
 		  substr( $this->mTimestamp, 10, 2 ) ;
-		$wgOut->setSubtitle( "(Revision as of {$h}, {$d})" );
+		$r = str_replace( "$1", "{$h}, {$d}", wfMsg( "revisionasof" ) );
+		$wgOut->setSubtitle( "({$r})" );
 	}
 
 	function blockedIPpage()
