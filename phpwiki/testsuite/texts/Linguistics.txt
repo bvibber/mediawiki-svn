@@ -1,0 +1,58 @@
+[[de:Linguistik]]
+[[eo:Lingvistiko]]
+[[fr:Linguistique]]
+[[nl:Taalkunde]]
+[[pl:Lingwistyka]]
+
+'''Linguistics''' is the study of [[language]]. One who engages in this study is called a [[linguist]].
+
+Note that, at least in the United States, those who identify themselves as linguists tend to use the term &quot;linguistics&quot; to refer to a fairly technical subset of language study. &quot;Linguistics&quot;, for them, does not include learning to speak foreign languages (except insofar as this helps to perform more technical analysis) or to literary analysis, for example. Nor is &quot;linguistics&quot; usually meant to include such proscriptive efforts as found in Strunk and White's &lt;i&gt;The Elements of Style&lt;/i&gt;; linguistics usually seeks to study what people do, not what they &lt;i&gt;should&lt;/i&gt; do.
+
+----
+&lt;b&gt;research areas of linguistics:&lt;/b&gt; 
+[[phonetics]], [[phonology]], [[syntax]], [[semantics]], [[pragmatics]], [[etymology]], [[lexicology]], [[lexicography]], [[theoretical linguistics]], [[historical-comparative linguistics]] and [[descriptive linguistics]], [[pragmatics]], [[etymology]], [[computational linguistics]], [[corpus linguistics]],  [[semiotics]]. 
+
+----
+&lt;b&gt;inter-disciplinary linguistic research:&lt;/b&gt;
+
+[[historical linguistics]], [[Orthography]], [[Writing Systems]], [[comparative linguistics]],  [[cryptanalysis]], [[decipherment]], [[sociolinguistics]], [[psycholinguistics]], [[language acquisition]], [[evolutionary linguistics]], [[anthropological linguistics]], [[stratificational linguistics]], [[cognitive science]], [[neurolinguistics]], automated [[speech recognition|speech]] and [[speaker recognition]], or more generally, [[speech processing]]
+
+----
+
+Linguists generally see language as having several [[linguistics layers]], and assume that all natural languages have the same number of layers.
+
+
+A speaker of English recognizes that &quot;make&quot; is a different word from &quot;makes,&quot; so the s-suffix is a distinct morpheme.  This example also illustrates the two kinds of morphemes, unbound (which are meaningful on their own) and bound (which have meaning when combined with another morpheme).  Thus, the word &quot;schoolyard&quot; consists of two unbound morphemes (&quot;school&quot; and &quot;yard&quot;), while the word &quot;morpheme&quot; consists, or traditionally consisted, of two bound morphemes (&quot;morph&quot; and &quot;eme&quot;).  As the example of &quot;morpheme&quot; reveals, bounded morphemes may become unbounded: &quot;morph&quot; has been adopted in linguistics for the phonological realization of a morpheme, and the verb &quot;morph&quot; was coined to describe a type of visual effect done with computers.
+
+A morpheme may have different realizations (morphs) in different contexts. For example, the verb morpheme &quot;do&quot; of English has three quite distinct pronunciations in the words &quot;do&quot;, &quot;does&quot; (with suffix &quot;-s&quot;), and &quot;don't&quot; (with &quot;-n't&quot;). Such alternating morphs of a morpheme are called its allomorphs.
+
+Patterns of combinations of words of a language are known as [[syntax]]. The term grammar usually covers syntax plus [[Morphology in linguistics |morphology]], the study of word formation.
+
+[[Semantics]] is the study of the meanings of words and of syntactic constructions.
+
+
+[[Noam Chomsky|Noam Chomsky's]] formal model of language, [[transformational-generative grammar]], developed under the influence of his teacher [[Zellig Harris]], who was in turn strongly influenced by Bloomfield, has been the dominant one from the [[1960s]].
+* [[Transformational-generative grammar]]
+
+
+* [[cognitive linguistics]]
+
+A few of the important figures in this movement are [[Michael Halliday]], whose [[systemic-functional grammar]] is pursued widely in the [[United Kingdom|U.K.]], [[Canada]], [[Australia]], [[China]], and [[Japan]]; [[Dell Hymes]], who developed a pragmatic approach called The Ethnography of Speaking; [[George Lakoff]], [[Len Talmy]], and [[Ronald Langacker]], who were pioneers in cognitive linguistics; [[Charles Fillmore]] and [[Adele Goldberg]], who are associated with [[construction grammar]]; and linguists developing several varieties of what they call functional grammar, including [[Talmy Givon]] and [[Robert Van Valin, Jr.]]
+
+
+One speaks also of [[philology]].
+
+
+
+
+
+Representation of speech:
+
+* [[International Phonetic Alphabet]] (IPA), a system used to write down and reproduce the sounds of human speech.
+* [[SAMPA]], an [[ASCII]]-only transcription for the IPA used by some authors. See also http://www.phon.ucl.ac.uk/home/sampa/home.htm
+
+What are our priorities for writing in this area?  To help develop a list of the most basic topics in Linguistics,  please see [[Linguistics basic topics]].
+
+----
+&lt;b&gt;see also:&lt;/b&gt; [[famous linguists]], [[history of linguistics]], [[linguist]], [[structuralism]]
+
