@@ -248,8 +248,8 @@ function initializeTables()
 	wfQuery( $sql );
 
 	$wns = Namespace::getWikipedia();
-	$ulp = wfMsg( "uploadlogpage" );
-	$dlp = wfMsg( "dellogpage" );
+	$ulp = addslashes( wfMsg( "uploadlogpage" ) );
+	$dlp = addslashes( wfMsg( "dellogpage" ) );
 
 	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 	  "cur_restrictions) VALUES ({$wns},'{$ulp}','" .
