@@ -404,17 +404,7 @@ class MovePageForm {
 		if( $oldnamespace == $newnamespace and $oldtitle == $newtitle )
 			return;
 
-		$sql = "SELECT wl_user FROM watchlist
-			WHERE wl_namespace={$oldnamespace} AND wl_title='{$oldtitle}'";
-		$res = wfQuery( $sql, $fname );
-		if( $s = wfFetchObject( $res ) ) {
-			$sql = "REPLACE INTO watchlist (wl_user,wl_namespace,wl_title)
-				VALUES ({$s->wl_user},{$newnamespace},'{$newtitle}')";
-			while( $s = wfFetchObject( $res ) ) {
-				$sql .= ",({$s->wl_user},{$newnamespace},'{$newtitle}')";
-			}
-			wfQuery( $sql, $fname );
-		}
+		WatchedItem::duplicateEntries( $this->ot, $this->nt );
 	}
 
 }
