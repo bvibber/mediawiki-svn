@@ -587,7 +587,17 @@ class LuceneSearch extends SpecialPage
 		return <<<___EOF___
 <script type="text/javascript"><!--
 
-var xmlHttp = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
+function openXMLHttpRequest() {
+	if( window.XMLHttpRequest ) {
+		return new XMLHttpRequest();
+	} else if( window.ActiveXObject && navigator.platform != 'MacPPC' ) {
+		// IE/Mac has an ActiveXObject but it doesn't work.
+		return new ActiveXObject("Microsoft.XMLHTTP");
+	} else {
+		return null;
+	}
+}
+var xmlHttp = openXMLHttpRequest();
 var searchCache = {};
 var searchStr;
 var searchTimeout;
@@ -639,6 +649,7 @@ function showResults(resultArr)
 
 function resultType()
 {
+  if (!xmlHttp) return;
   searchStr = document.getElementById("lsearchbox").value;
   if (searchTimeout) clearTimeout(searchTimeout);
 
