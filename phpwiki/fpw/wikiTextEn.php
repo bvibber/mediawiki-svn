@@ -10,7 +10,7 @@
 # Basic character set and locale settings
 $wikiCharset = "iso-8859-1" ;
 $wikiUpperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİŞ";
-$wikiLowerChars = "abcdefghijklmnopqrstuvwxyzàáâãäåæçèéêëìíîïğñòóôõöøùúûüúş";
+$wikiLowerChars = "abcdefghijklmnopqrstuvwxyzàáâãäåæçèéêëìíîïğñòóôõöøùúûüış";
 
 # Misc stuff
 $wikiMainPage = "Main Page" ; # This is actual the title of the article in the database
@@ -413,7 +413,7 @@ $wikiUploadText .= "<li>A message will tell you when the file has successfully u
 $wikiUploadText .= "<li>You can upload as many files you like. Please don't try to crash our server, ha ha.</li>\n";
 $wikiUploadText .= "<li>All uploads and deletions are logged in the <a href=\"$THESCRIPT?title=Log:Uploads\">uploads log</a>.</li>\n";
 $wikiUploadText .= "</ul>\n";
-$wikiUploadAffirmText = "I hereby affirm that this file is not copyrighted, or that the copyright holder agrees to license it under the terms of the <a href="http://www.wikipedia.com/wiki/Wikipedia:Copyrights">Wikipedia copyright</a>." ;
+$wikiUploadAffirmText = "I hereby affirm that this file is not copyrighted, or that the copyright holder agrees to license it under the terms of the <a href=\"http://www.wikipedia.com/wiki/Wikipedia:Copyrights\">Wikipedia copyright</a>." ;
 $wikiUploadButton = "Upload" ;
 $wikiUploadPrev = "Previously-uploaded files:" ;
 $wikiUploadSize = "Size (byte)" ;
