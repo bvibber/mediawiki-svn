@@ -125,53 +125,15 @@ function getmicrotime(){
 	if ( $action == edit ) $pageTitle = str_replace ( "$1" , $title , $wikiEditTitle ) ;
 	$pageTitle = str_replace ( "_" , " " , $pageTitle ) ;
 	$pageTitle = str_replace ( "$1" , $pageTitle , $wikiTitleTag ) ;
-	#$bodyOptions .= $user->options["background"] ;
-	#$bodyOptions .= $user->options["text"] ;
-	if ( $user->options["underlineLinks"] == "no" ) $bodyOptions .= " link=blue vlink=blue alink=blue " ;
+	#if ( $user->options["underlineLinks"] == "no" ) $bodyOptions .= " link=blue vlink=blue alink=blue " ;
+	$styleSheet = $user->styleSheet ( $action ) ;
+	# Netscape 4 doesn't do well with the stylesheet text/background color
+	if ( $user->options[text] != "" ) $bodyOptions .= " textcolor=\"" . $user->options[text] . "\"";
+	if ( $user->options[background] != "" ) $bodyOptions .= " bgcolor=\"" . $user->options[background] . "\"";
 
 	if ( $metaDescription != "" ) $metaDescription = "<META name=\"description\" content=\"$metaDescription\">" ;
 	if ( $metaKeywords != "" ) $metaKeywords = "<META name=\"keywords\" content=\"$metaKeywords\">" ;
 	if ( $charset != "") $metaCharset = "<META HTTP-EQUIV=\"Content-type\" content=\"text/html; charset=$charset\">" ;
-
-	# FIXME: Is there a better place to set up the style sheet?
-	$styleSheet = "<style type=\"text/css\"><!--\n";
-	$textcolor = $user->options["text"];
-	$bgcolor = $user->options["background"];
-	$styleSheet .= "body { ";
-	if ( $textcolor == "" ) {
-		$textcolor = "black"; # A reasonable default, I guess?
-	} else {
-		$styleSheet .= "color: $textcolor; ";
-		$bodyOptions .= " textcolor=\"$textcolor\"";
-	}
-	if ( $bgcolor == "" ) {
-		$bgcolor = "white";
-	} else {
-		$styleSheet .= "background: $bgcolor; ";
-		$bodyOptions .= " bgcolor=\"$bgcolor\"";
-	}
-	$styleSheet .= "}\n";
-
-	$styleSheet .= "p.bodytext { " . (($user->options[justify] == yes) ? "text-align: justify; " : "") . "}\n";
-	$styleSheet .= "a { text-decoration: " . (($user->options[underlineLinks] == "no") ? "none" : "underline") . "; }\n";
-	$qbside = ( $user->options["quickBar"] == "left" ) ? "right" : "left";
-	$styleSheet .= "a.interwiki, a.external { color: #3333BB; text-decoration: none; }\n" .
-			"a.red { color: red; text-decoration: none; }\n" .
-			"a.green { color: green; text-decoration: none; }\n" .
-			".topbar { border-bottom-width: 2; border-bottom-style: ridge; }\n" .
-			".middle { }\n" .
-			".quickbar { border-$qbside-width: 2; border-$qbside-style: ridge; }\n" .
-			".footer { border-top-color: black; border-top-width: 2; border-top-style: groove; }\n";
-	if ( $user->options[markupNewTopics] == "red") {
-		$styleSheet .= "a.newlink { color: red; }\n.newlinkedge { display: none; }\n";
-	} elseif ( $user->options[markupNewTopics] == "inverse") {
-		$styleSheet .= "a.newlink { color: white; background: blue; }\n";
-		$styleSheet .= ".newlinkedge { display: inline; }\n";
-	} else {
-		$styleSheet .= "a.newlink { color: $textcolor; text-decoration: none; }\n";
-		$styleSheet .= ".newlinkedge { display: inline; }\n";
-	}
-	$styleSheet .= "//--></style>";
 
 	$head = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">\n" ;
 	$head .= "<HTML><HEAD><TITLE>$pageTitle</TITLE>\n" ;
