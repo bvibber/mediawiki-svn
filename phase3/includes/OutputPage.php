@@ -182,6 +182,7 @@ class OutputPage {
 				header( "Cache-Control: private, must-revalidate, max-age=0" );
 				header( "Last-Modified: {$lastmod}" );			
 				wfDebug( "CACHED client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp\n", false );
+				$this->reportTime(); # For profiling
 				exit;
 			} else {
 				wfDebug( "READY  client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp\n", false );
@@ -439,7 +440,7 @@ class OutputPage {
 	function reportTime()
 	{
 		global $wgRequestTime, $wgDebugLogFile, $HTTP_SERVER_VARS;
-		global $wgProfiling, $wgProfileStack, $wgUser;
+		global $wgProfiling, $wgProfileStack, $wgProfileLimit, $wgUser;
 
 		list( $usec, $sec ) = explode( " ", microtime() );
 		$now = (float)$sec + (float)$usec;
@@ -448,23 +449,24 @@ class OutputPage {
 		$start = (float)$sec + (float)$usec;
 		$elapsed = $now - $start;
 
-		if ( "" != $wgDebugLogFile ) {
+		if ( "" != $wgDebugLogFile && $elapsed >= $wgProfileLimit ) {
 			$prof = "";
 			if( $wgProfiling and count( $wgProfileStack ) ) {
 				$lasttime = $start;
 				foreach( $wgProfileStack as $ile ) {
-					# "foo::bar 99 0.12345 1 0.23456 2"
-					if( preg_match( '/^(\S+)\s+([0-9]+)\s+([0-9\.]+)\s+([0-9\.]+)\s+([0-9\.]+)\s+([0-9\.]+)/', $ile, $m ) ) {
+					# "foo::bar\t99 0.12345 1 0.23456 2"
+					if( preg_match( '/^(.+)\t(.+?) (.+?) (.+?) (.+?) (.+)/', $ile, $m ) ) {
 						$thisstart = (float)$m[3] + (float)$m[4] - $start;
 						$thisend = (float)$m[5] + (float)$m[6] - $start;
 						$thiselapsed = $thisend - $thisstart;
 						$thispercent = $thiselapsed / $elapsed * 100.0;
 						
-						$prof .= sprintf( "\tat %04.3f in %04.3f (%2.1f%%) - %s %s\n",
+						$qwert = sprintf( "at %04.3f in %04.3f (%2.1f%%) - %s %s",
 							$thisstart, $thiselapsed, $thispercent,
 							str_repeat( "*", $m[2] ), $m[1] );
+						$prof .= "\t$qwert\n";
+						
 						$lasttime = $thistime;
-						#$prof .= "\t(^ $ile)\n";
 					} else {
 						$prof .= "\t?broken? $ile\n";
 					}

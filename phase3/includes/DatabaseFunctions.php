@@ -88,22 +88,18 @@ function wfEmergencyAbort( $msg = "" ) {
 function wfQuery( $sql, $fname = "" )
 {
 	global $wgLastDatabaseQuery, $wgOut;
-##	wfProfileIn( "wfQuery" );
+	wfProfileIn( "wfQuery(\"" .
+		strtr( substr($sql, 0, 80 ), "\t\n\r", "   " ) . "...\")" );
 	$wgLastDatabaseQuery = $sql;
 
 	$conn = wfGetDB();
 	$ret = mysql_query( $sql, $conn );
 
-	if ( "" != $fname ) {
-#		wfDebug( "{$fname}:SQL: {$sql}\n", true );
-	} else {
-#		wfDebug( "SQL: {$sql}\n", true );
-	}
 	if ( false === $ret ) {
 		$wgOut->databaseError( $fname );
 		exit;
 	}
-##	wfProfileOut();
+	wfProfileOut();
 	return $ret;
 }
 

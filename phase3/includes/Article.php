@@ -1651,8 +1651,10 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			}
 			$cache = new CacheManager( $wgTitle );
 			if($cache->isFileCacheGood( $touched )) {
+				global $wgOut;
 				wfDebug( " tryFileCache() - about to load\n" );
 				$cache->loadFromFileCache();
+				$wgOut->reportTime(); # For profiling
 				exit;
 			} else {
 				wfDebug( " tryFileCache() - starting buffer\n" );			

@@ -87,6 +87,8 @@ $wgAllowExternalImages = true;
 $wgMiserMode = false; # Disable database-intensive features
 $wgUseTeX = false;
 $wgProfiling = false; # Enable for more detailed by-function times in debug log
+$wgProfileLimit = 0.0; # Only record profiling info for pages that took longer than this
+$wgProfileOnly = false; # Don't put non-profiling info into log file
 
 $wgDisableCounters = false;
 $wgDisableTextSearch = false;

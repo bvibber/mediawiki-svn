@@ -132,12 +132,12 @@ function wfMungeToUtf8($string) {
 
 function wfDebug( $text, $logonly = false )
 {
-	global $wgOut, $wgDebugLogFile, $wgDebugComments;
+	global $wgOut, $wgDebugLogFile, $wgDebugComments, $wgProfileOnly;
 
 	if ( $wgDebugComments && !$logonly ) {
 		$wgOut->debug( $text );
 	}
-	if ( "" != $wgDebugLogFile ) {
+	if ( "" != $wgDebugLogFile && !$wgProfileOnly ) {
 		error_log( $text, 3, $wgDebugLogFile );
 	}
 }
@@ -151,7 +151,7 @@ if( $wgProfiling ) {
 	function wfProfileIn( $functionname )
 	{
 		global $wgProfileStack, $wgProfileWorkStack;
-		array_push( $wgProfileWorkStack, "$functionname " .
+		array_push( $wgProfileWorkStack, "$functionname\t" .
 			count( $wgProfileWorkStack ) . " " . microtime() );
 	}
 
