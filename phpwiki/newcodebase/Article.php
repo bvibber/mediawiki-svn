@@ -911,6 +911,20 @@ enctype='application/x-www-form-urlencoded'>
 			$wgOut->fatalError( wfMsg( "cannotdelete" ) );
 			return;
 		}
+		$sql = "INSERT INTO archive (ar_namespace,ar_title,ar_text," .
+		  "ar_comment,ar_user,ar_user_text,ar_timestamp,ar_minor_edit," .
+		  "ar_flags) SELECT cur_namespace,cur_title,cur_text,cur_comment," .
+		  "cur_user,cur_user_text,cur_timestamp,cur_minor_edit,0 FROM cur " .
+		  "WHERE cur_namespace={$ns} AND cur_title='{$t}'";
+		wfQuery( $sql, $fname );
+
+		$sql = "INSERT INTO archive (ar_namespace,ar_title,ar_text," .
+		  "ar_comment,ar_user,ar_user_text,ar_timestamp,ar_minor_edit," .
+		  "ar_flags) SELECT old_namespace,old_title,old_text,old_comment," .
+		  "old_user,old_user_text,old_timestamp,old_minor_edit,old_flags " .
+		  "FROM old WHERE old_namespace={$ns} AND old_title='{$t}'";
+		wfQuery( $sql, $fname );
+
 		$sql = "DELETE FROM cur WHERE cur_namespace={$ns} AND " .
 		  "cur_title='{$t}'";
 		wfQuery( $sql, $fname );
