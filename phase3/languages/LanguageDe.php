@@ -19,7 +19,8 @@
 	"contextlines" => 5, "contextchars" => 50,
 	"skin" => 0, "math" => 1, "rcdays" => 3, "rclimit" => 50,
 	"highlightbroken" => 1, "stubthreshold" => 0,
-        "editsection" => 1, "showtoc" => 1, "date" => 0
+        "editsection" => 0, "showtoc" => 0, "date" => 0,
+	"previewontop" => 0, "editsectiononrightclick" => 0
 );
 
 /* private */ $wgQuickbarSettingsDe = array(
@@ -34,36 +35,40 @@
 	"Immer als PNG",
 	"Einfaches TeX als HTML, sonst PNG",
 	"HTML wenn möglich, sonst PNG",
-	"Als TeX belassen (für Textbrowser)"
+	"Als TeX belassen (für Textbrowser)",
+	"Empfehlenswert für moderne Browser"
 );
 
 
 /* private */ $wgUserTogglesDe = array(
-	"hover"	=> "Hinweis über interne Verweise",
-	"underline" => "Verweise unterstreichen",
-	"highlightbroken" => "Verweise auf leere Themen hervorheben",
-	"justify"	=> "Text als Blocksatz",
-	"hideminor" => "Keine kleinen Änderungen in Letzte Änderungen anzeigen",
-	"usenewrc" => "Erweiterte letzte Änderungen (nicht für alle Browser geeignet)",
-	"numberheadings" => "Überschriften automatisch numerieren",
-  "editsection" => "Links zum Editieren einzelner Absätze anzeigen",
-  "editsectiononrightclick"=>"Abschnitte mit rechtem Mausklick auf die &Uuml;berschrift bearbeiten (JavaScript)",
-  "showtoc" => "Anzeigen eines Inhaltsverzeichnisses bei Artikeln mit mehr
-  als 3 Überschriften",
-	"rememberpassword" => "Passwort merken",
-	"editwidth" => "Text-Eingabefeld mit voller Breite",
-	"editondblclick" => "Seiten mit Doppelklick bearbeiten (JavaScript)",
-	"watchdefault" => "Neue und geänderte Seiten beobachten",
-	"minordefault" => "Alle Änderungen als geringfügig markieren",
-	"previewontop" => "Vorschau vor dem Editierfenster anzeigen"
+  "hover"	            => "Hinweis über interne Verweise",
+  "underline"               => "Verweise unterstreichen",
+  "highlightbroken"         => "Verweise auf leere Themen hervorheben",
+  "justify"                 => "Text als Blocksatz",
+  "hideminor"               => "Keine kleinen Änderungen in Letzte Änderungen anzeigen",
+  "usenewrc"                => "Erweiterte letzte Änderungen (nicht für alle Browser geeignet)",
+  "numberheadings"          => "Überschriften automatisch numerieren",
+  "editondblclick"          => "Seiten mit Doppelklick bearbeiten (JavaScript)",
+  "editsection"             => "Links zum Editieren einzelner Absätze anzeigen",
+  "editsectiononrightclick" => "Einzelne Absätze per Rechtsklick editieren (Javascript)",
+  "showtoc"                 => "Anzeigen eines Inhaltsverzeichnisses bei Artikeln mit mehr als 3 Überschriften",
+  "rememberpassword"        => "Dauerhaftes Einloggen",
+  "editwidth"               => "Text-Eingabefeld mit voller Breite",
+  "editondblclick"          => "Seiten mit Doppelklick bearbeiten (JavaScript)",
+  "watchdefault"            => "Neue und geänderte Seiten beobachten",
+  "minordefault"            => "Alle Änderungen als geringfügig markieren",
+  "previewontop"            => "Vorschau vor dem Editierfenster anzeigen",
+  "nocache"                 => "Seitencache deaktivieren"
 );
 
 /* private */ $wgLanguageNamesDe = array(
   "aa" => "Afar",
   "ab" => "Abkhazian",
-	"af" => "Afrikaans",
+  "af" => "Afrikaans",
   "am" => "Amharic",
-	"ar" => "&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1617;&#1577; (Araby)",
+  "ar" => "&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1617;&#1577; (Araby)",
+  "as" => "Assamese",
+  "ay" => "Aymara",
   "az" => "Azerbaijani",
   "ba" => "Bashkir",
   "be" => "&#1041;&#1077;&#1083;&#1072;&#1088;&#1091;&#1089;&#1082;&#1080;",
@@ -73,57 +78,57 @@
   "bo" => "Tibetan",
   "br" => "Brezhoneg",
   "bs" => "Bosnian",
-	"ca" => "Català",
+  "ca" => "Català",
   "ch" => "Chamoru",
   "co" => "Corsican",
-	"cs" => "&#268;esky",
-	"cy" => "Cymraeg",
-	"da" => "Dansk",
-	"dk" => "Dansk",
+  "cs" => "&#268;esky",
+  "cy" => "Cymraeg",
+  "da" => "Dansk",
+  "dk" => "Dansk",
   "dz" => "Bhutani",
-	"el" => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; (Ellinika)",
-	"en" => "English",
-	"eo" => "Esperanto",
-	"es" => "Español",
-	"et" => "Eesti",
-	"eu" => "Euskara",
+  "el" => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; (Ellinika)",
+  "en" => "English",
+  "eo" => "Esperanto",
+  "es" => "Español",
+  "et" => "Eesti",
+  "eu" => "Euskara",
   "fa" => "&#8238;&#1601;&#1585;&#1587;&#1609;&#8236; (Farsi)",
-	"fi" => "Suomi",
+  "fi" => "Suomi",
   "fj" => "Fijian",
   "fo" => "Faeroese",
-	"fr" => "Français",
-	"fy" => "Frysk",
-	"ga" => "Gaeilge",
+  "fr" => "Français",
+  "fy" => "Frysk",
+  "ga" => "Gaeilge",
   "gl" => "Galician",
   "gn" => "Guarani",
   "gu" => "&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752; (Gujarati)",
   "ha" => "Hausa",
-	"he" => "&#1506;&#1489;&#1512;&#1497;&#1514; (Ivrit)",
+  "he" => "&#1506;&#1489;&#1512;&#1497;&#1514; (Ivrit)",
   "hi" => "&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)",
-	"hr" => "Hrvatski",
-	"hu" => "Magyar",
+  "hr" => "Hrvatski",
+  "hu" => "Magyar",
   "hy" => "Armenian",
-	"ia" => "Interlingua",
-	"id" => "Indonesia",
+  "ia" => "Interlingua",
+  "id" => "Indonesia",
   "ik" => "Inupiak",
-	"is" => "Íslenska",
-	"it" => "Italiano",
+  "is" => "Íslenska",
+  "it" => "Italiano",
   "iu" => "Inuktitut",
-	"ja" => "&#26085;&#26412;&#35486; (Nihongo)",
+  "ja" => "&#26085;&#26412;&#35486; (Nihongo)",
   "jv" => "Javanese",
   "ka" => "&#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4312; (Kartuli)",
   "kk" => "Kazakh",
   "kl" => "Greenlandic",
   "km" => "Cambodian",
   "kn" => "Kannada",
-	"ko" => "&#54620;&#44397;&#50612; (Hangul)",
+  "ko" => "&#54620;&#44397;&#50612; (Hangul)",
   "ks" => "Kashmiri",
   "kw" => "Kernewek",
   "ky" => "Kirghiz",
-	"la" => "Latina",
+  "la" => "Latina",
   "ln" => "Lingala",
   "lo" => "Laotian",
-	"lt" => "Lietuvi&#371;",
+  "lt" => "Lietuvi&#371;",
   "lv" => "Latvian",
   "mg" => "Malagasy",
   "mi" => "Maori",
@@ -136,29 +141,29 @@
   "my" => "Burmese",
   "na" => "Nauru",
   "ne" => "&#2344;&#2375;&#2346;&#2366;&#2354;&#2368; (Nepali)",
-	"nl" => "Nederlands",
-	"no" => "Norsk",
+  "nl" => "Nederlands",
+  "no" => "Norsk",
   "oc" => "Occitan",
   "om" => "Oromo",
   "or" => "Oriya",
   "pa" => "Punjabi",
-	"pl" => "Polski",
+  "pl" => "Polski",
   "ps" => "Pashto",
-	"pt" => "Português",
+  "pt" => "Português",
   "qu" => "Quechua",
   "rm" => "Rhaeto-Romance",
   "rn" => "Kirundi",
-	"ro" => "Român&#259;",
-	"ru" => "&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081; (Russkij)",
+  "ro" => "Român&#259;",
+  "ru" => "&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081; (Russkij)",
   "rw" => "Kinyarwanda",
   "sa" => "&#2360;&#2306;&#2360;&#2381;&#2325;&#2371;&#2340; (Samskrta)",
   "sd" => "Sindhi",
   "sg" => "Sangro",
-	"sh" => "Serbocroatisch",
+  "sh" => "Serbocroatisch",
   "si" => "Sinhalese",
-	"simple" => "Einfaches Englisch",
+  "simple" => "Einfaches Englisch",
   "sk" => "Slovak",
-	"sl" => "Slovensko",
+  "sl" => "Slovensko",
   "sm" => "Samoan",
   "sn" => "Shona",
   "so" => "Soomaali",
@@ -166,9 +171,9 @@
   "sr" => "Srpski",
   "ss" => "Siswati",
   "st" => "Sesotho",
-  "su" => "Sudanese",
-	"sv" => "Svenska",
-	"sw" => "Kiswahili",
+  "su" => "Sundanese",
+  "sv" => "Svenska",
+  "sw" => "Kiswahili",
   "ta" => "Tamil",
   "te" => "Telugu",
   "tg" => "Tajik",
@@ -178,12 +183,12 @@
   "tl" => "Tagalog",
   "tn" => "Setswana",
   "to" => "Tonga",
-	"tr" => "Türkçe",
+  "tr" => "Türkçe",
   "ts" => "Tsonga",
   "tt" => "Tatar",
   "tw" => "Twi",
   "ug" => "Uighur",
- 	"uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072; (Ukrayins`ka)",
+  "uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072; (Ukrayins`ka)",
   "ur" => "Urdu",
   "uz" => "Uzbek",
   "vi" => "Vietnamese",
@@ -193,7 +198,9 @@
   "yi" => "Yiddish",
   "yo" => "Yoruba",
   "za" => "Zhuang",
- 	"zh" => "&#20013;&#25991; (Zhongwen)",
+  "zh" => "&#20013;&#25991; (Zhongwen)",
+  "zh-cn" => "&#20013;&#25991;(&#31616;&#20307;) (Simplified Chinese)",
+  "zh-tw" => "&#20013;&#25991;(&#32321;&#20307;) (Traditional Chinese)",
   "zu" => "Zulu"
 );
 
@@ -221,40 +228,42 @@
 );
 
 /* private */ $wgValidSpecialPagesDe = array(
-	"Userlogin"	=> "",
-	"Userlogout"	=> "",
-	"Preferences"	=> "Meine Benutzereinstellungen",
-	"Watchlist"	=> "Meine Beobachtungsliste",
-	"Recentchanges" => "Letzte Änderungen",
-	"Upload"	=> "Dateien hochladen",
-	"Imagelist"	=> "Hochgeladene Dateien",
-	"Listusers"	=> "Registrierte Benutzer",
-	"Statistics"	=> "Seitenstatistik",
-	"Randompage"	=> "Zufälliger Artikel",
+  "Userlogin"           => "",
+  "Userlogout"          => "",
+  "Preferences"         => "Meine Benutzereinstellungen",
+  "Watchlist"           => "Meine Beobachtungsliste",
+  "Recentchanges"       => "Letzte Änderungen",
+  "Upload"              => "Dateien hochladen",
+  "Imagelist"           => "Hochgeladene Dateien",
+  "Listusers"           => "Registrierte Benutzer",
+  "Statistics"          => "Seitenstatistik",
+  "Randompage"          => "Zufälliger Artikel",
 
-	"Lonelypages"	=> "Verwaiste Artikel",
-	"Unusedimages"	=> "Verwaiste Dateien",
-	"Popularpages"	=> "Beliebte Artikel",
-	"Wantedpages"	=> "Gewünschte Artikel",
-	"Shortpages"	=> "Kurze Artikel",
-	"Longpages"	=> "Lange Artikel",
-	"Newpages"	=> "Neue Artikel",
-  "Ancientpages"  => "Älteste Artikel",
-	"Allpages"	=> "Alle Artikel (alphabetisch)",
+  "Lonelypages"         => "Verwaiste Artikel",
+  "Unusedimages"        => "Verwaiste Dateien",
+  "Popularpages"        => "Beliebte Artikel",
+  "Wantedpages"         => "Gewünschte Artikel",
+  "Shortpages"          => "Kurze Artikel",
+  "Longpages"           => "Lange Artikel",
+  "Newpages"            => "Neue Artikel",
+  "Ancientpages"        => "Älteste Artikel",
+#  "Intl"                => "Interlanguage Links",
+  "Allpages"            => "Alle Artikel (alphabetisch)",
 
-	"Ipblocklist"	=> "Blockierte IP-Addressen",
-	"Maintenance"	=> "Wartungsseite",
-	"Specialpages"  => "",
-	"Contributions" => "",
-	"Movepage"	=> "",
-	"Emailuser"	=> "",
-	"Whatlinkshere" => "",
-	"Recentchangeslinked" => "",
-	"Booksources"	=> "Externe Buchhandlungen"
+  "Ipblocklist"         => "Blockierte IP-Adressen",
+  "Maintenance"         => "Wartungsseite",
+  "Specialpages"        => "",
+  "Contributions"       => "",
+  "Movepage"            => "",
+  "Emailuser"           => "",
+  "Whatlinkshere"       => "",
+  "Recentchangeslinked" => "",
+  "Booksources"         => "Externe Buchhandlungen",
+  "Categories"          => "Seiten Kategorien"
 );
 
 /* private */ $wgSysopSpecialPagesDe = array(
-	"Blockip"		=> "Blockiere eine IP-Addresse",
+	"Blockip"		=> "Blockiere eine IP-Adresse",
 	"Asksql"		=> "Datenbank-Abfrage",
 	"Undelete"              => "Gelöschte Seiten wiederherstellen"
 );
@@ -269,6 +278,10 @@
 
 # Bits of text used by many pages:
 #
+"categories" => "Seiten Kategorien",
+"category" => "Kategorie",
+"category_header" => "Artikel in der Kategorie \"$1\"",
+"subcategories" => "Unterkategorien",
 "linktrail"		=> "/^([ä|ö|ü|ß|a-z]+)(.*)\$/sD",
 "mainpage"		=> "Hauptseite",
 "mainpagetext"          => "Die Wiki Software wurde erfolgreich installiert.",
@@ -308,6 +321,7 @@
 "unprotectthispage" => "Schutz aufheben",
 "newpage" => "Neue Seite",
 "talkpage"		=> "Diskussion",
+"postcomment" => "Kommentar hinzufügen",
 "articlepage"	=> "Artikel",
 "wikipediapage" => "Wikipedia-Text",
 "userpage" => "Benutzerseite",
@@ -337,6 +351,9 @@
 "toc" => "Inhaltsverzeichnis",
 "showtoc" => "Anzeigen",
 "hidetoc" => "Verbergen",
+"thisisdeleted" => "Ansehen oder wiederherstellen von $1?",
+"restorelink" => "$1 gelöschte Editiervorgänge",
+
 
 # Main script and global functions
 #
@@ -360,6 +377,7 @@ Die letzte Datenbankabfrage lautete: \"$1\" aus der Funktion \"<tt>$2</tt>\".
 MySQL meldete den Fehler: \"<tt>$3: $4</tt>\".\n",
 "noconnect"		=> "Konnte keine Verbindung zur Datenbank auf $1 herstellen",
 "nodb"			=> "Konnte Datenbank $1 nicht auswählen",
+"cachederror" => "Das folgende ist eine Kopie aus dem Cache und möglicherweise nicht aktuell.",
 "readonly"		=> "Datenbank ist geperrt",
 "enterlockreason" => "Bitte geben Sie einen Grund ein, warum die Datenbank
 gesperrt werden soll und eine Abschätzung über die Dauer der Sperrung",
@@ -394,13 +412,13 @@ Vergessen Sie nicht, Ihre Wikipedia-Einstellungen anzupassen.",
 "yourpassword"	=> "Ihr Passwort",
 "yourpasswordagain" => "Passwort wiederholen",
 "newusersonly"	=> " (nur für neue Mitglieder)",
-"remembermypassword" => "Mein Passwort merken.",
+"remembermypassword" => "Dauerhaftes einloggen",
 "loginproblem"	=> "<b>Es gab ein Problem mit Ihrer Anmeldung.</b><br>Bitte versuchen Sie es nochmal!",
 "alreadyloggedin" => "<font color=red><b>Benutzer $1, Sie sind bereits angemeldet!</b></font><br>\n",
 
 "areyounew"		=> "Wenn Sie neu bei Wikipedia sind und ein Benutzerkonto möchten,
 geben Sie bitte ihren Benutzernamen und ihr Passwort ein und wiederholen sie das Passwort.
-Ihre E-Mail-Addresse brauchen Sie nicht anzugeben, aber falls Sie Ihr Passwort vergessen sollten, können Sie sich ein neues zuschicken lassen.<br>\n",
+Ihre E-Mail-Adresse brauchen Sie nicht anzugeben, aber falls Sie Ihr Passwort vergessen sollten, können Sie sich ein neues zuschicken lassen.<br>\n",
 
 "login"			=> "Anmelden",
 "userlogin"		=> "Anmelden",
@@ -408,11 +426,12 @@ Ihre E-Mail-Addresse brauchen Sie nicht anzugeben, aber falls Sie Ihr Passwort v
 "userlogout"	=> "Abmelden",
 "notloggedin" => "Nicht angemeldet",
 "createaccount"	=> "Neues Benutzerkonto anlegen",
+"createaccountmail" => "über eMail",
 "badretype"		=> "Die beiden Passwörter stimmen nicht überein.",
 "userexists"	=> "Dieser Benutzername ist schon vergeben. Bitte wählen Sie einen anderen.",
 "youremail"		=> "Ihre E-Mail",
 "yournick"		=> "Ihr \"Spitzname\" (zum \"Unterschreiben\")",
-"emailforlost"	=> "Falls Sie Ihr Passwort vergessen, kann Ihnen ein neues an Ihre E-Mail-Addresse gesendet werden.",
+"emailforlost"	=> "Falls Sie Ihr Passwort vergessen haben, kann Ihnen ein neues an Ihre E-Mail-Adresse gesendet werden.",
 "loginerror"	=> "Fehler bei der Anmeldung",
 "noname"		=> "Sie müssen einen Benutzernamen angeben.",
 "loginsuccesstitle" => "Anmeldung erfolgreich",
@@ -422,28 +441,39 @@ Ihre E-Mail-Addresse brauchen Sie nicht anzugeben, aber falls Sie Ihr Passwort v
 "wrongpassword"	=> "Das Passwort ist falsch. Bitte versuchen Sie es erneut.",
 "mailmypassword" => "Ein neues Passwort schicken",
 "passwordremindertitle" => "Wikipedia Passwort",
-"passwordremindertext" => "Jemand (IP-Addresse $1)
+"passwordremindertext" => "Jemand (IP-Adresse $1)
 hat um ein neues Passwort für die Anmeldung bei Wikipedia gebeten.
 Das Passwort für Benutzer \"$2\" lautet nun \"$3\".
 Sie sollten sich jetzt anmelden und Ihr Passwort ändern.",
-"noemail"		=> "Benutzer \"$1\" hat keine E-Mail-Addresse angegeben.",
-"passwordsent"	=> "Ein neues Passwort wurde an die E-Mail-Addresse von Benutzer \"$1\" gesendet.
+"noemail"		=> "Benutzer \"$1\" hat keine E-Mail-Adresse angegeben.",
+"passwordsent"	=> "Ein neues Passwort wurde an die E-Mail-Adresse von Benutzer \"$1\" gesendet.
 Bitte melden Sie sich an, sobald Sie es erhalten.",
 
 # Edit pages
 #
-"summary"		=> "Zusammenfassung",
-"minoredit"		=> "Nur Kleinigkeiten wurden verändert.",
-"watchthis" => "Diesen Artikel beobachten",
+"summary"	=> "Zusammenfassung",
+#"subject"       => "Betreff/Schlagzeile",
+"subject"       => "Betreff",
+"minoredit"	=> "Nur Kleinigkeiten wurden verändert.",
+"watchthis"     => "Diesen Artikel beobachten",
 "savearticle"	=> "Artikel speichern",
-"preview"		=> "Vorschau",
+"preview"	=> "Vorschau",
 "showpreview"	=> "Vorschau zeigen",
 "blockedtitle"	=> "Benutzer ist blockiert",
-"blockedtext"	=> "Ihr Benutzername oder Ihre IP-Addresse wurde von $1 blockiert.
+"blockedtext"	=> "Ihr Benutzername oder Ihre IP-Adresse wurde von $1 blockiert.
 Als Grund wurde angegeben:<br>$2<p>Bitte kontaktieren Sie den Administrator, um über die Blockierung zu sprechen.",
+"whitelistedittitle" => "Zum Editieren ist es erforderlich angemeldet zu sein",
+"whitelistedittext" => "Sie müssen sich [[Spezial:Userlogin|hier anmelden]] um Artikel bearbeiten zu können.",
+"whitelistreadtitle" => "Zum Lesen ist es erforderlich angemeldet zu sein",
+"whitelistreadtext" => "Sie müssen sich [[Spezial:Userlogin|hier anmelden]] um Artikel lesen zu können.",
+"whitelistacctitle" => "Sie sind nicht berechtigt einen Account zu erzeugen",
+"whitelistacctext" => "Um in diesem Wiki Accounts anlegen zu dürfen müssen Sie sich [[Spezial:Userlogin|hier anmelden]] und die nötigen Berechtigungen haben.",
+"accmailtitle" => "Passwort wurde verschickt.",
+"accmailtext" => "Das Passwort von $1 wurde an $2 geschickt.",
 "newarticle"	=> "(Neu)",
 "newarticletext" => "Hier den Text des neuen Artikels eintragen.\nBitte nur in ganzen Sätzen schreiben und keine urheberrechtsgeschützten Texte anderer kopieren.",
-"anontalkpagetext" => "---- ''Dies ist die Diskussions-Seite eines nicht angemeldeten Benutzers. Wir müssen hier die numerische [[IP-Adresse]] zur Identifizierung verwenden. Eine solche Adresse kann nacheinander von mehreren Benutzern verwendet werden. Wenn Sie ein anonymer Benutzer sind und denken, dass irrelevante Kommentare an Sie gerichtet wurden, [[Spezial:Userlogin|melden Sie sich bitte an]], um zukünftige Verwirrung zu vermeiden. ''",
+"anontalkpagetext" => "---- ''Dies ist die Diskussions-Seite eines nicht angemeldeten Benutzers. Wir müssen hier die numerische [[IP-Adresse]] zur Identifizierung verwenden. Eine solche Adresse kann nacheinander von mehreren Benutzern verwendet werden. Wenn Sie ein anonymer Benutzer sind und denken, dass irrelevante Kommentare an Sie gerichtet wurden, [[Spezial:Userlogin|melden Sie sich bitte
+ an]], um zukünftige Verwirrung zu vermeiden. ''",
 "noarticletext" => "(Dieser Artikel enthält momentan keinen Text)",
 "updated"		=> "(Geändert)",
 "note"			=> "<strong>Hinweis:</strong> ",
@@ -451,6 +481,7 @@ Als Grund wurde angegeben:<br>$2<p>Bitte kontaktieren Sie den Administrator, um 
 "previewconflict" => "Diese Vorschau gibt den Inhalt des oberen Textfeldes wieder; so wird der Artikel aussehen, wenn Sie jetzt speichern.",
 "editing"		=> "Bearbeiten von $1",
 "sectionedit" => " (Absatz)",
+"commentedit" => " (Kommentar)",
 "editconflict"	=> "Bearbeitungs-Konflikt: $1",
 "explainconflict" => "Jemand anders hat diesen Artikel geändert, nachdem Sie angefangen haben, ihn zu bearbeiten.
 Das obere Textfeld enthält den aktuellen Artikel.
@@ -535,8 +566,7 @@ Erfolglose Suchanfragen werden häufig verursacht durch den Versuch, nach 'gewöhn
 Suche in Namensräumen :<br>
 $1<br>
 $2 Zeige auch REDIRECTs &nbsp; Suche nach $3 $9",
-
-
+"blanknamespace" => "(Haupt-)",
 
 # Preferences page
 #
@@ -597,8 +627,8 @@ Beachten Sie auch die letzten Änderungen auf [[m:Special:Recentchanges|Metawikip
 "rclinks"		=> "Zeige die letzten $1 Änderungen; zeige die letzten $2 Tage.",
 "diff"			=> "Unterschied",
 "hist"			=> "Versionen",
-"hide"			=> "Verbergen",
-"show"			=> "Anzeigen",
+"hide"			=> "Ausblenden",
+"show"			=> "Einblenden",
 "tableform"		=> "Tabelle",
 "listform"		=> "Liste",
 "nchanges"		=> "$1 Änderungen",
@@ -758,12 +788,12 @@ Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
 "mailnologin"	=> "Sie sind nicht angemeldet.",
 "mailnologintext" => "Sie müssen <a href=\"" .
   wfLocalUrl( "Spezial:Userlogin" ) . "\">angemeldet sein</a>
-und eine gültige E-Mail-Addresse haben, um anderen Benutzern E-Mail zu schicken.",
+und eine gültige E-Mail-Adresse haben, um anderen Benutzern E-Mail zu schicken.",
 "emailuser"		=> "E-Mail an diesen Benutzer",
 "emailpage"		=> "E-Mail an Benutzer",
-"emailpagetext"	=> "Wenn dieser Benutzer eine gültige E-Mail-Addresse angegeben hat, können Sie ihm mit dem untenstehenden Formular eine E-Mail senden. Als Absender wird die E-Mail-Addresse aus Ihren Einstellungen eingetragen, damit der Benutzer Ihnen antworten kann.",
-"noemailtitle"	=> "Keine E-Mail-Addresse",
-"noemailtext"	=> "Dieser Benutzer hat keine gültige E-Mail-Addresse angegeben, oder möchte keine E-Mail von anderen Benutzern empfangen.",
+"emailpagetext"	=> "Wenn dieser Benutzer eine gültige E-Mail-Adresse angegeben hat, können Sie ihm mit dem untenstehenden Formular eine E-Mail senden. Als Absender wird die E-Mail-Adresse aus Ihren Einstellungen eingetragen, damit der Benutzer Ihnen antworten kann.",
+"noemailtitle"	=> "Keine E-Mail-Adresse",
+"noemailtext"	=> "Dieser Benutzer hat keine gültige E-Mail-Adresse angegeben, oder möchte keine E-Mail von anderen Benutzern empfangen.",
 "emailfrom"		=> "Von",
 "emailto"		=> "An",
 "emailsubject"	=> "Betreff",
@@ -783,12 +813,32 @@ und eine gültige E-Mail-Addresse haben, um anderen Benutzern E-Mail zu schicken.
   wfLocalUrl( "Spezial:Userlogin" ) . "\">angemeldet</a>
 sein, um Ihre Beobachtungsliste zu bearbeiten.",
 "addedwatch"	=> "Zur Beobachtungsliste hinzugefügt",
-"addedwatchtext" => "Der Artikel \"$1\" wurde zu Ihrer Beobachtungsliste hinzugefügt.",
+"addedwatchtext" => "Der Artikel \"$1\" wurde zu Ihrer <a href=\"" .
+wfLocalUrl( "Spezial:Watchlist" ) . "\">Beobachtungsliste</a> hinzugefügt.
+Spätere Änderungen an diesem Artikel und der zugehörigen Diskussions-Seite
+werden dort gelistet und der Artikel wird in der <a href=\"" . wfLocalUrl(
+"Spezial:Recentchanges" ) . "\">Liste der letzten Änderungen</a>
+<b>fett</b> angezeigt. <p>Wenn Sie den Artikel wieder von ihrer
+Beobachtungsliste entfernen wollen, klicken Sie auf \"Nicht mehr beobachten\"
+am Ende des Artikels.",
 "removedwatch"	=> "Von der Beobachtungsliste entfernt",
 "removedwatchtext" => "Der Artikel \"$1\" wurde von Ihrer Beobachtungsliste entfernt.",
 "watchthispage"	=> "Seite beobachten",
 "unwatchthispage" => "Nicht mehr beobachten",
 "notanarticle"	=> "Kein Artikel",
+"watchnochange" => "Keine Ihrer beobachteten Artikel wurde während des angezeigten Zeitraums bearbeitet.",
+"watchdetails" => "($1 Artikel werden beobachtet (ohne Diskussionsseiten);
+$2 Artikel insgesamt bearbeitet in eingestelltem Zeitraum;
+$3... <a href='$4'>zeige und editiere komplette Liste</a>.)",
+"watchmethod-recent" => "überprüfen der letzten Bearbeitungen für die Beobachtungsliste",
+"watchmethod-list" => "überprüfen der Beobachtungsliste nach letzten Bearbeitungen",
+"removechecked" => "Markierte Einträge löschen",
+"watchlistcontains" => "Ihre Beobachtungsliste enthält $1 Seiten.",
+"watcheditlist" => "Hier ist eine alphabetische Liste der von Ihnen beobachteten Seiten. Markieren Sie die Seiten die Sie von der Beobachtungsliste löschen wollen und betätigen Sie den 'markierte Einträge löschen' Knopf am Ende der Seite.",
+"removingchecked" => "Wunschgemäß werden die Einträge aus der Beobachtungsliste entfernt...",
+"couldntremove" => "Der Eintrag '$1' kann nicht gelöscht werden...",
+"iteminvalidname" => "Ploblem mit dem Eintrag '$1', ungültiger Name...",
+"wlnote" => "Es folgen die letzten $1 Änderungen der letzten <b>$2</b> Stunden.",
 
 # Delete/protect/revert
 #
@@ -870,27 +920,28 @@ dieses Artikels erscheinen.",
 
 # Block/unblock IP
 #
-"blockip"		=> "IP-Addresse blockieren",
-"blockiptext"	=> "Benutzen Sie das Formular, um eine IP-Addresse zu blockieren.
+"blockip"		=> "IP-Adresse blockieren",
+"blockiptext"	=> "Benutzen Sie das Formular, um eine IP-Adresse zu blockieren.
 Dies sollte nur erfolgen, um Vandalismus zu verhindern, in Übereinstimmung mit den [[Wikipedia:Leitlinien|Wikipedia-Leitlinien]].
 Bitte tragen Sie den Grund für die Blockade ein.",
-"ipaddress"		=> "IP-Addresse",
+"ipaddress"		=> "IP-Adresse",
 "ipbreason"		=> "Grund",
-"ipbsubmit"		=> "Addresse blockieren",
-"badipaddress"	=> "Die IP-Addresse hat ein falsches Format.",
-"noblockreason" => "Sie müssen einen Grung für die Blockade angeben.",
+"ipbsubmit"		=> "Adresse blockieren",
+"badipaddress"	=> "Die IP-Adresse hat ein falsches Format.",
+"noblockreason" => "Sie müssen einen Grund für die Blockade angeben.",
 "blockipsuccesssub" => "Blockade erfolgreich",
-"blockipsuccesstext" => "Die IP-Addresse \"$1\" wurde blockiert.
+"blockipsuccesstext" => "Die IP-Adresse \"$1\" wurde blockiert.
 <br>Auf [[Spezial:Ipblocklist|IP block list]] ist eine Liste der Blockaden.",
-"unblockip"		=> "IP-Addresse freigeben",
-"unblockiptext"	=> "Benutzen Sie das Formular, um eine blockierte IP-Addresse freizugeben.",
-"ipusubmit"		=> "Diese Addresse freigeben",
-"ipusuccess"	=> "IP-Addresse \"$1\" wurde freigegeben",
-"ipblocklist"	=> "Liste blockierter IP-Addressen",
+"unblockip"		=> "IP-Adresse freigeben",
+"unblockiptext"	=> "Benutzen Sie das Formular, um eine blockierte IP-Adresse freizugeben.",
+"ipusubmit"		=> "Diese Adresse freigeben",
+"ipusuccess"	=> "IP-Adresse \"$1\" wurde freigegeben",
+"ipblocklist"	=> "Liste blockierter IP-Adressen",
 "blocklistline"	=> "$1, $2 blockierte $3",
 "blocklink"		=> "blockieren",
 "unblocklink"	=> "freigeben",
 "contribslink"	=> "Beiträge",
+"autoblocker" => "Automatische Blockierung, da Sie eine IP-Adresse benutzen mit \"$1\". Grund: \"$2\".",
 
 # Developer tools
 #
