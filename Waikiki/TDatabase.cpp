@@ -1,4 +1,5 @@
 #include "TDatabase.h"
+//#include "zlib.h"
 
 TDatabase* TDatabase::current = NULL ;
 
@@ -41,6 +42,177 @@ void TDatabase::filterBackslashes ( TUCS &s )
     s.replace ( "\\m" , "" ) ;
     s.replace ( "\\\\" , "\\" ) ;
     }
+//..\..\..\..\burn\Magnus\tinyweb\www\cgi-bin
+/*
+void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
+    {
+    string tmpf = fn_out + ".tmp" ;
+    ofstream out ( tmpf.c_str() , ios::out ) ;
+    string cur ;
+//    sqlite *db = sqlite_open ( fn_out.c_str() , 0 , NULL ) ;
+//    sqlite_exec ( db , "BEGIN;" , 0 , 0 , 0 ) ;
+    ifstream in ( fn_in.c_str() , ios::in | ios::binary ) ;
+    
+    VTUCS index , keys ;
+    TUCS table_name ;
+    vector <string> values ;
+    uint a , b ;
+    
+    string create_indices ;
+    
+    time_t start = time ( NULL ) ;
+    
+    out << "PRAGMA synchronous=OFF;" << endl ;
+    
+    bool creating = false ;
+    for ( a = 0 ; !in.eof() ; a++ )
+        {
+        cout << "." ;
+//        cout << "Converting line " << a << endl ;
+
+        string vc ;
+        getline ( in , vc ) ;
+        if ( vc == "" ) continue ;
+        char *x = (char*) vc.c_str() ;
+
+
+        if ( *x == '-' && *(x+1) == '-' ) continue ;
+        else if ( *x == '/' && *(x+1) == '*' ) continue ;
+        else if ( *x == 'C' )
+           {
+           TUCS s ( x ) ; s.trim() ;
+           creating = true ;
+           s += " " ;
+           s.replace ( "CREATE" , "" ) ;
+           s.replace ( "TABLE" , "" ) ;
+           s.replace ( "(" , "" ) ;
+           s.trim() ;
+           table_name = s ;
+           cur = "CREATE TABLE " + s.getstring() + " ( " ;
+           }
+        else if ( *x == ')' && creating )
+           {
+           TUCS s ( x ) ; s.trim() ;
+           cur += ");" ;
+           out << "DROP TABLE cur;" << endl ;
+           out << cur << endl ;
+//           sqlite_exec ( db , "DROP TABLE cur;" , 0 , 0 , 0 ) ;
+//           sqlite_exec ( db , cur.c_str() , 0 , 0 , 0 ) ;
+//           cout << cur << endl ;
+           cur = "" ;
+           
+           create_indices = "CREATE INDEX k_cur_title ON cur ( cur_title ) ;" ;
+/*           for ( b = 0 ; b < keys.size() ; b++ )
+              {
+              cur = "CREATE INDEX k_" + keys[b].getstring() + " ON " ;
+              cur += table_name.getstring() ;
+              cur += "(" + keys[b].getstring() + ");" ;
+              create_indices += cur ;
+              }*/
+           
+           creating = false ;
+           }
+        else if ( creating )
+           {
+           TUCS s ( x ) ;
+           s.trim() ;
+           TUCS q = " " + s.getstring() + " " ;
+           if ( q.find ( " KEY " ) < q.length() )
+              {
+              if ( s.substr ( 0 , 3 ) == "KEY" )
+                 {
+                 VTUCS w ;
+                 s.explode ( " " , w ) ;
+                 s = w[1] ;
+                 keys.push_back ( s ) ;
+                 }
+              }
+           else
+              {
+              s.trim () ;
+              VTUCS x ;
+              s.replace ( "binary" , "" ) ;
+              s.replace ( " NOT NULL" , "" ) ;
+              s.replace ( "unsigned" , "" ) ;
+              s.replace ( " integer" , " int" ) ;
+              s.replace ( " int" , " integer" ) ;
+              s.replace ( "auto_increment" , "PRIMARY KEY" ) ;
+              while ( s.replace ( "  " , " " ) > 0 ) ;
+              s.trim() ;
+              s.pop_back() ;
+
+              if ( index.size() > 0 ) cur += " , " ;
+              cur += s.getstring() + "\n" ;
+
+              s.explode ( " " , x ) ;
+              index.push_back ( x[0] ) ;
+//              cout << "Creating " << s.getstring() << endl ;
+              }
+           }
+        else if ( *x == 'I' ) // INSERT INTO blah blah
+           {
+//           sqlite_exec ( db , "COMMIT;" , 0 , 0 , 0 ) ;
+//           sqlite_exec ( db , "BEGIN;" , 0 , 0 , 0 ) ;
+           uint l , b ;
+           uint idx = 0 ;
+           for ( b = 0 ; x[b] != '(' ; b++ ) ;
+           l = b+1 ;
+           bool quote = false ;
+           for ( b = l ; x[b] && ( quote || x[b] != ';' ) ; b++ )
+              {
+              if ( x[b] == SINGLE_QUOTE && x[b-1] != '\\' )
+                 {
+                 quote = !quote ;
+                 if ( quote ) l = b+1 ;
+                 }
+              else if ( ( x[b] == ',' || x[b] == ')' ) && !quote )
+                 {
+                 char y = x[b] ;
+                 x[b] = 0 ;
+                 
+                 if ( x[b-1] == SINGLE_QUOTE ) x[b-1] = 0 ;               
+
+                 for ( char *z = x+l ; *z ; z++ )
+                    if ( *z == '\\' && *(z+1) == SINGLE_QUOTE )
+                       *z = SINGLE_QUOTE ;
+
+                 values.push_back ( x+l ) ;
+
+                 idx++ ;
+                 l = b+1 ;
+                 if ( y == ')' )
+                    {
+                    cur = "INSERT INTO " + table_name.getstring() + " VALUES ( " ;
+                    for ( idx = 0 ; idx < values.size() ; idx++ )
+                       {
+                       if ( idx > 0 ) cur += "," ;
+                       cur += "'" + values[idx] + "'" ;
+                       }
+                    cur += ");" ;
+                    out << cur << endl ;
+//                    sqlite_exec ( db , cur.c_str() , 0 , 0 , 0 ) ;
+                    b++ ;
+                    while ( x[b] && x[b+1] && x[b] != '(' ) b++ ;
+                    l = b+1 ;
+                    values.clear() ;
+                    }
+                 }
+              }
+           }
+        }
+        
+    out << create_indices << endl ;
+    cout << endl ;
+    cout << time(NULL)-start << " seconds for conversion" << endl ;
+    
+    string cmd = "sqlite.exe " + fn_out + " <" + tmpf ;
+    system ( cmd.c_str() ) ;
+    cmd = "del " + tmpf ;
+    system ( cmd.c_str() ) ;
+    cout << time(NULL)-start << " seconds total" << endl ;
+    }
+
+
 
 void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     {
@@ -198,7 +370,7 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     cout << time(NULL)-start << "seconds total" << endl ;
     system("pause");
     }
-
+*/
 
 // *****************************************************************************
 // TDatabaseFile
