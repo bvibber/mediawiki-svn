@@ -178,13 +178,7 @@ void processqueue()
 	if (np->tv.tv_sec == tv.tv_sec && np->tv.tv_usec > tv.tv_usec)
 	    return;
 	e = np;
-	if (e->operation == AGENT_END)
-	    exit(0);
-	else if (e->operation == AGENT_REPLY)
-	    sendreply(e);
-	else if (e->operation == AGENT_SLEEP)
-	    sleep(e->reqnum);
-
+	sendreply(e);
     }
     if (e) {
 	TAILQ_REMOVE(&head, e, entries);
@@ -206,6 +200,7 @@ main(int ac, char **av)
     int remotemanage=0;
     int c;
     icp_opcode opcode=ICP_HIT;
+    int d;
     struct rlimit rlim;
 
     while ((c = getopt(ac,av,"dmp:c")) != -1) {
@@ -267,7 +262,11 @@ main(int ac, char **av)
                 opcode=ICP_HIT;
             else if (remotemanage && !strcmp(url,"agent://disable"))
                 opcode=ICP_MISS;
-            queuereply(them, opcode, url, header.reqnum, delay());
+            d=delay();
+                if (d<0) 
+                    queuereply(them,ICP_MISS, url, header.reqnum,0);
+                else
+                    queuereply(them, opcode, url, header.reqnum, delay());
 	}
     }
 }
