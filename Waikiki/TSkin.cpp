@@ -45,6 +45,11 @@ TUCS TSkin::getArticleHTML ()
            }
         r += "</P>\n" ;
         TUCS s = article->getSource() ;
+        if ( article->getTitle().getNamespaceID() == 6 ) // Image page
+           {
+           TUCS img = "<center>[[" + article->getTitle().getNiceTitle() + "]]</center>\n" ;
+           s = img + s ;
+           }
         r += p.parse ( s ) ;
         }
     r += "</div>\n" ;

@@ -139,6 +139,9 @@ bool TParser::parse_internal_link ( TUCS &s )
     else if ( t.getNamespaceID() == 6 ) // Image link
         {
         MD5 md ;
+        TUCS link2 = link ;
+        link2.replace ( " " , "_" ) ;
+        t = TTitle ( link2 ) ;
         TUCS tt = t.getJustTitle() ;
         
         VTUCS vip ;
@@ -207,20 +210,23 @@ bool TParser::parse_internal_link ( TUCS &s )
            x += "/" ;
            x += hex[0] ;
            x += hex[1] ;
-           x += "/" + tt ;
+           x += "/" ;
+           x += tt ;
            x += "\" title=\"" + text + "\">" ;
            }
            
-        s = SKIN->getArticleLink ( t , x ) + s.substr ( c ) ;
+        TUCS append = s.substr ( c ) ;
+        s = SKIN->getArticleLink ( t , x ) ;
 
         if ( thumbnail )
            {
            x = "<div class='thumbnail-" + align + "' width='180px'>" ;
            x += s ;
-           x += "<br>\n" + text ;
-           x += "</div>" ;
+           x += "<br>\n<table width='180px'><tr><td><font size='-1'>" + text ;
+           x += "</font></td></tr></table></div>" ;
            }
-        s = x ;
+        else x = s ;
+        s = x + append ;
         
         }
     else s = SKIN->getArticleLink ( t , text ) + s.substr ( c ) ;
