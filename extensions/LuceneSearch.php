@@ -618,6 +618,7 @@ function parseResults()
   {
     document.getElementById("loadStatus").innerHTML = "";
     var resultArr = xmlHttp.responseText.split("\\n");
+    resultArr.pop(); // trim final newline
     searchCache[searchStr.toLowerCase()] = resultArr;
     showResults(resultArr);
   }
@@ -628,7 +629,7 @@ function showResults(resultArr)
   var returnStr = "";
   var resultsEl = document.getElementById("results");
 
-  if (resultArr.length < 2)
+  if (resultArr.length < 1)
     resultsEl.innerHTML = "No results";
   else
   {
