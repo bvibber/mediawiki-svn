@@ -1081,6 +1081,8 @@ class WikiPage extends WikiTitle {
 		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "UPDATE cur SET cur_cache=\"$this->cache\", cur_timestamp=cur_timestamp WHERE cur_title=\"$this->secureTitle\"" ;
 		mysql_query ( $sql , $connection ) ;
+		$sql = "UPDATE cur SET cur_text=\"\", cur_timestamp=cur_timestamp WHERE cur_title=\"Log:RecentChanges\"" ;
+		mysql_query ( $sql , $connection ) ;
 		#mysql_close ( $connection ) ;
 
 					
