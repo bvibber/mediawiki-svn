@@ -422,7 +422,7 @@ class OutputPage {
 
 	/* private */ function doHeadings( $text )
 	{
-		for ( $i = 6; $i >= 2; --$i ) {
+		for ( $i = 6; $i >= 1; --$i ) {
 			$h = substr( "======", 0, $i );
 			$text = preg_replace( "/^(\\s*){$h}([^=]+){$h}(\\s|$)/m",
 			  "\\1<h{$i}>\\2</h{$i}>\\3", $text );
