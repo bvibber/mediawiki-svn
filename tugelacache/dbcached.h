@@ -209,3 +209,5 @@ char *item_cachedump(unsigned int slabs_clsid, unsigned int limit,
 		     unsigned int *bytes);
 char *item_stats_sizes(int *bytes);
 void item_stats(char *buffer, int buflen);
+
+void syncdb(void);
