@@ -18,7 +18,7 @@ CREATE TABLE /*$wgDBprefix*/gis (
 	gis_type char(12) binary,
 	gis_type_arg real NOT NULL default 0,
 
-	KEY gis_id (gis_id),
+	KEY gis_page (gis_page),
 	INDEX gis_globe (gis_globe),
 	INDEX gis_type (gis_type),
 	INDEX gis_type_arg (gis_type_arg)
