@@ -1,24 +1,4 @@
 <?php
-# Copyright (C) 2004 Thomas V. <thomasV1@gmx.de>
-# http://www.mediawiki.org/
-# http://wikisource.org/wiki/Proposed_extension
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-# http://www.gnu.org/copyleft/gpl.html
-
-if (defined('MEDIAWIKI')) {
 
 $wgExtensionFunctions[] = "wfRegister";
 
@@ -30,112 +10,164 @@ function wfRegister() {
     $wgParser->setHook( "enumcat_it", "enumCategoryItalian"    );
     $wgParser->setHook( "enumcat_es", "enumCategorySpanish"    );
     $wgParser->setHook( "enumcat_pt", "enumCategoryPortuguese" );
+    $wgParser->setHook( "enumcat_da", "enumCategoryDanish"     );
+    $wgParser->setHook( "enumcat_pl", "enumCategoryPolish"     );
     $wgParser->setHook( "enumcat",    "enumCategory" );
 }
 
 function enumCategoryFrench($input)
 {
-    $r=enumCategory($input);
-    $r = str_replace( 'french',     'français',$r);
-    $r = str_replace( 'german',     'allemand',       $r);
-    $r = str_replace( 'english',    'anglais',        $r);
-    $r = str_replace( 'italian',    'italien',        $r);
-    $r = str_replace( 'spanish',    'espagnol',       $r);
-    $r = str_replace( 'portuguese', 'portuguais',     $r);
+    $table = array(
+           'french'    => 'fran&ccedil;ais',
+           'german'    => 'allemand',
+    	   'english'   => 'anglais',
+           'italian'   => 'italien',
+           'spanish'   => 'espagnol',
+           'portuguese'=> 'portuguais',
+           'danish'    => 'danois',
+           'polish'    => 'polonais'
+        );
+    $r = enumCategory($input,$table);
     return $r;
 }
 
 function enumCategoryEnglish($input)
 {
-    $r=enumCategory($input);
-    $r = str_replace( 'french',     'French',    $r);
-    $r = str_replace( 'german',     'German',    $r);
-    $r = str_replace( 'english',    'English',   $r);
-    $r = str_replace( 'italian',    'Italian',   $r);
-    $r = str_replace( 'spanish',    'Spanish',   $r);
-    $r = str_replace( 'portuguese', 'Portuguese',$r);
+    $table = array(
+           'french'    => 'French',
+           'german'    => 'German',   
+    	   'english'   => 'English',   
+           'italian'   => 'Italian',  
+           'spanish'   => 'Spanish',  
+           'portuguese'=> 'Portuguese',
+           'danish'    => 'Danish',
+           'polish'    => 'Polish'
+        );
+    $r = enumCategory($input,$table);
     return $r;
 }
 
 function enumCategoryGerman($input)
 {
-    $r=enumCategory($input);
-    $r = str_replace( 'french',     'französisch', $r);
-    $r = str_replace( 'german',     'deutsch',      $r);
-    $r = str_replace( 'english',    'englisch',     $r);
-    $r = str_replace( 'italian',    'italienisch',  $r);
-    $r = str_replace( 'spanish',    'spanisch',     $r);
-    $r = str_replace( 'portuguese', 'portugiesisch',$r);
+    $table = array(
+           'french'    => 'franz&ouml;sisch', 
+           'german'    => 'deutsch',     
+    	   'english'   => 'englisch',    
+           'italian'   => 'italienisch', 
+           'spanish'   => 'spanisch',    
+           'portuguese'=> 'portugiesisch',
+           'danish'    => 'd&auml;nisch',
+           'polish'    => 'polnisch'
+        );
+    $r = enumCategory($input,$table);
     return $r;
 }
 
 function enumCategorySpanish($input)
 {
-    $r=enumCategory($input);
-    $r = str_replace( 'french',     'francés',  $r);
-    $r = str_replace( 'german',     'alemán',   $r);
-    $r = str_replace( 'english',    'inglés',   $r);
-    $r = str_replace( 'italian',    'italiano',        $r);
-    $r = str_replace( 'spanish',    'español',  $r);
-    $r = str_replace( 'portuguese', 'portugués',$r);
+    $table = array(
+           'french'    => 'franc&eacute;s', 
+           'german'    => 'alem&aacute;n',  
+    	   'english'   => 'ingl&eacute;s',  
+           'italian'   => 'italiano',       
+           'spanish'   => 'espa&ntilde;ol', 
+           'portuguese'=> 'portugu&eacute;s',
+    	   'danish'    => 'dan&eacute;s',
+           'polish'    => 'pulimento'
+        );
+    $r = enumCategory($input,$table);
     return $r;
 }
 
 function enumCategoryItalian($input)
 {
-    $r=enumCategory($input);    
-    $r = str_replace( 'french',     'francese',  $r);
-    $r = str_replace( 'german',     'tedesco',   $r);
-    $r = str_replace( 'english',    'inglese',   $r);
-    $r = str_replace( 'italian',    'italiano',  $r);
-    $r = str_replace( 'spanish',    'spagnolo',  $r);
-    $r = str_replace( 'portuguese', 'portoghese',$r);
+    $table = array(
+           'french'    => 'francese', 
+           'german'    => 'tedesco',  
+    	   'english'   => 'inglese',  
+           'italian'   => 'italiano', 
+           'spanish'   => 'spagnolo', 
+           'portuguese'=> 'portoghese',
+    	   'danish'    => 'danese',
+           'polish'    => 'polacco'
+        );
+    $r = enumCategory($input,$table);
     return $r;
 }
 
 function enumCategoryPortuguese($input)
 {
-    $r=enumCategory($input);    
-    $r = str_replace( 'french',     'francês',  $r);
-    $r = str_replace( 'german',     'alemão',  $r);
-    $r = str_replace( 'english',    'inglês',   $r);
-    $r = str_replace( 'italian',    'italiano',       $r);
-    $r = str_replace( 'spanish',    'espanhol',       $r);
-    $r = str_replace( 'portuguese', 'português',$r);
+    $table = array(
+           'french'    => 'franc&ecirc;s', 
+           'german'    => 'alem&atilde;o', 
+    	   'english'   => 'ingl&ecirc;s',  
+           'italian'   => 'italiano',      
+           'spanish'   => 'espanhol',      
+           'portuguese'=> 'portugu&ecirc;s',
+           'danish'    => 'dinamarqu&ecirc;s',
+           'polish'    => 'polon&ecirc;s'
+        );
+    $r = enumCategory($input,$table);
+    return $r;
+}
+
+
+function enumCategoryDanish($input)
+{
+    $table = array(
+           'french'    => 'fransk',
+           'german'    => 'tysk',
+    	   'english'   => 'engelsk',
+           'italian'   => 'italiensk',
+           'spanish'   => 'spansk',
+           'portuguese'=> 'portugisisk',
+           'danish'    => 'dansk',
+           'polish'    => 'polsk'
+        );
+    $r = enumCategory($input,$table);
+    return $r;
+}
+
+
+function enumCategoryPolish($input)
+{
+    $table = array(
+           'french'    => 'J&#281;zyku francuskim',
+           'german'    => 'Niemcu',
+    	   'english'   => 'J&#281;zyku angielskim',
+           'italian'   => 'W&#322;ochu',
+           'spanish'   => 'J&#281;zyku hiszpa&#324;skim ',
+           'portuguese'=> 'Portugalczyku',
+           'danish'    => 'J&#281;zyku du&#324;skim',
+           'polish'    => 'J&#281;zyku polskim '
+        );
+    $r = enumCategory($input,$table);
     return $r;
 }
 
 
 
-function enumCategory($input) {
+function enumCategory($input, $table = null) {
 
-        global $wgContLang,$wgUser;
-        $sk =& $wgUser->getSkin();
-        $r = "";
-        $articles = array() ;
-        $dbr =& wfGetDB( DB_SLAVE );
-        $cur = $dbr->tableName( 'cur' );
-        $categorylinks = $dbr->tableName( 'categorylinks' );
-        $t= $input;
-        $sql = "SELECT DISTINCT cur_title,cur_namespace,cl_sortkey FROM " .
-                "$cur,$categorylinks WHERE cl_to='$t' AND cl_from=cur_id AND cur_is_redirect=0 ORDER BY cl_sortkey" ;
-        $res = $dbr->query ( $sql ) ;
-        while ( $x = $dbr->fetchObject ( $res ) )
-        {
-                $t = $ns = $wgContLang->getNsText ( $x->cur_namespace ) ;
-                if ( $t != '' ) $t .= ':' ;
-                $t .= $x->cur_title ;
-                $ctitle = str_replace( '_',' ',$x->cur_title );
-                array_push ( $articles , $sk->makeKnownLink ( $t, $x->cl_sortkey ) ) ; 
-        }
-        $dbr->freeResult ( $res ) ;
-        if ( count($articles) > 0) {
-                $r .= ' '.$articles[0].' ';
-                for ($index = 1; $index < count($articles); $index++ )
-                        $r .= "| {$articles[$index]} ";
-        }
-        return $r;
+	global $wgContLang,$wgUser;
+	$sk =& $wgUser->getSkin();
+	$articles = array() ;
+	$dbr =& wfGetDB( DB_SLAVE );
+	$cur = $dbr->tableName( 'cur' );
+	$categorylinks = $dbr->tableName( 'categorylinks' );
+	$sql = "SELECT DISTINCT cur_title,cur_namespace,cl_sortkey FROM $cur,$categorylinks "
+		."WHERE cl_to=? AND cl_from=cur_id AND cur_is_redirect=0 ORDER BY cl_sortkey LIMIT 100" ;
+	$res = $dbr->safeQuery ( $sql, $input ) ;
+	while( $x = $dbr->fetchObject ( $res ) ){
+		$t = Title::makeTitle ($x->cur_namespace, $x->cur_title);
+		if ($table !=null)
+			$linkname = $table[$x->cl_sortkey];
+		else 
+			$linkname = $x->cl_sortkey;
+		array_push ( $articles , $sk->makeLinkObj(  $t, $linkname ) ) ; 
+	}
+	$dbr->freeResult ( $res ) ;
+	return implode ( ' | ' , $articles ) ;
 }
 
-} // end of if defined(MEDIAWIKI)
 ?>
