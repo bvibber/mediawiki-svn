@@ -54,7 +54,7 @@
 	"bi"	=> "Bislama",
 	"my"	=> "Birmaans",
 	"km"	=> "Cambodjaans",
-	"ca"	=> "Català",
+	"ca"	=> "CatalÃ ",
 	"zh"	=> "Hanyu",
 	"co"	=> "Corsicaans",
 	"hr"	=> "Kroatisch",
@@ -70,7 +70,7 @@
 	"fo"	=> "Faeroers",
 	"fj"	=> "Fijisch",
 	"fi"	=> "Suomi",
-	"fr"	=> "Français",
+	"fr"	=> "FranÃ§ais",
 	"fy"	=> "Frysk",
 	"gl"	=> "Galicisch",
 	"ka"	=> "Georgisch",
@@ -121,7 +121,7 @@
 	"ps"	=> "Pashtu",
 	"fa"	=> "Farsi",
 	"pl"	=> "Polska",
-	"pt"	=> "Português",
+	"pt"	=> "PortuguÃªs",
 	"pa"	=> "Punjabi",
 	"qu"	=> "Quechua",
 	"rm"	=> "Reto-Romaans",
@@ -159,7 +159,7 @@
 	"tk"	=> "Turkmeens",
 	"tw"	=> "Twi",
 	"ug"	=> "Oeigoers",
-	"uk"	=> "Oekraïens",
+	"uk"	=> "OekraÃ¯ens",
 	"ur"	=> "Urdu",
 	"uz"	=> "Oezbeeks",
 	"vi"	=> "Vietnamees",
@@ -264,7 +264,7 @@
 "currentevents" => "In het nieuws",
 "errorpagetitle" => "Fout",
 "returnto"		=> "Terugkeren naar $1.",
-"fromwikipedia"	=> "",
+"fromwikipedia"	=> " ",
 "whatlinkshere"	=> "Pagina's die hierheen verwijzen",
 "help"			=> "Help",
 "search"		=> "Zoeken",
@@ -288,11 +288,11 @@
 "developertitle" => "Toegang alleen voor systeemontwikkelaars",
 "developertext"	=> "De gevraagde handeling kan enkel uitgevoerd worden door systeemontwikkelaars. Zie $1.",
 "nbytes"		=> "$1 bytes",
-"go"			=> "Verbinden",
+"go"			=> "Doen",
 "ok"			=> "OK",
 "sitetitle"		=> "Wikipedia NL",
 "sitesubtitle"	=> "De vrije encyclopedie",
-"retrievedfrom" => "Verkregen van \"$1\"",
+"retrievedfrom" => "Afkomstig van \"$1\"",
 
 # Main script and global functions
 # Algemene functies
@@ -321,7 +321,7 @@ De verantwoordelijke systeembeheerder gaf hiervoor volgende reden op:
 <p>$1",
 "missingarticle" => "De database heeft een paginatekst (\"$1\") die het zou moeten vinden niet gevonden. Dit is geen fout in de database, maar waarschijnlijk in de software. Meld dit a.u.b. aan een beheerder, met vermelding van de URL.",
 "internalerror" => "Interne fout",
-"filecopyerror" => "Bestand \"$1\" naar \"$2\" kopiëren niet mogelijk.",
+"filecopyerror" => "Bestand \"$1\" naar \"$2\" kopiÃ«ren niet mogelijk.",
 "filerenameerror" => "Wijziging titel bestand \"$1\" in \"$2\" niet mogelijk.",
 "filedeleteerror" => "Kon bestand \"$1\" niet verwijderen.",
 "filenotfound"	=> "Kon bestand \"$1\" niet vinden.",
@@ -332,9 +332,9 @@ De verantwoordelijke systeembeheerder gaf hiervoor volgende reden op:
 
 # Login and logout pages
 # Aanmelden en afmelden
-"logouttitle"	=> "Uitloggen gebruiker",
+"logouttitle"	=> "Afmelden gebruiker",
 "logouttext"	=> "U bent nu uitgelogd.
-U kan Wikipedia anoniem blijven gebruiken, of opnieuw inloggen onder dezelfde of onder een andere naam.\n",
+U kan Wikipedia anoniem blijven gebruiken, of u opnieuw aanmelden onder dezelfde of onder een andere naam.\n",
 
 "welcomecreation" => "<h2>Welkom, $1!</h2><p>Uw gebruikersprofiel is aangemaakt. U kan nu uw persoonlijke voorkeuren instellen.",
 
@@ -344,16 +344,16 @@ U kan Wikipedia anoniem blijven gebruiken, of opnieuw inloggen onder dezelfde of
 "yourpasswordagain" => "Wachtwoord opnieuw ingeven",
 "newusersonly"	=> " (alleen nieuwe gebruikers)",
 "remembermypassword" => "Mijn wachtwoord onthouden voor latere sessies.",
-"loginproblem"	=> "<b>Er is een probleem met het inloggen.</b><br>Probeer het opnieuw a.u.b.",
+"loginproblem"	=> "<b>Er is een probleem met het aanmelden.</b><br>Probeer het opnieuw a.u.b.",
 "alreadyloggedin" => "<font color=red><b>Gebruiker $1, u bent al ingelogd.</b></font><br>\n",
 
 "areyounew"		=> "Bent u nieuw op Wikipedia en wilt u een gebruikersprofiel aanmaken, voer dan een gebruikersnaam in en voer tweemaal hetzelfde wachtwoord in.
-Invoeren van uw e-mailadres is niet verplicht; het is handig als u uw wachtwoord bent vergeten; dat kan dan per e-mail worden opgestuurd.<br>\n",
+Invoeren van uw e-mailadres is niet verplicht; het is handig als u uw wachtwoord bent vergeten; dat kan dan per e-mail worden opgestuurd. Als u alleen maar even rond wilt kijken, kunt u inloggen als 'gast', wachtwoord 'gast'.<br>\n",
 
-"login"			=> "Inloggen",
-"userlogin"		=> "Inloggen",
-"logout"		=> "Uitloggen",
-"userlogout"	=> "Uitloggen",
+"login"			=> "Aanmelden",
+"userlogin"		=> "Aanmelding",
+"logout"		=> "Afmelden",
+"userlogout"	=> "Afmelding",
 "createaccount"	=> "Nieuw gebruikersprofiel aanmaken.",
 "badretype"		=> "De ingevoerde wachtwoorden verschillen van elkaar.",
 "userexists"	=> "De gebruikersnaam die u heeft ingevoerd is al in gebruik. Gelieve een andere naam te kiezen.",
@@ -362,16 +362,16 @@ Invoeren van uw e-mailadres is niet verplicht; het is handig als u uw wachtwoord
 "emailforlost"	=> "Als u uw wachtwoord bent vergeten kun u een nieuw naar uw e-mailadres laten opsturen.",
 "loginerror"	=> "Inlogfout",
 "noname"		=> "U dient een gebruikersnaam op te geven.",
-"loginsuccesstitle" => "Inloggen geluk.",
+"loginsuccesstitle" => "Aanmelden gelukt.",
 "loginsuccess"	=> "U bent nu ingelogd bij Wikipedia NL als \"$1\".",
 "nosuchuser"	=> "Er bestaat geen gebruiker met de naam \"$1\". Controleer uw spelling, of gebruik onderstaand formulier om een nieuw gebruikersprofiel aan te maken.",
 "wrongpassword"	=> "Het ingegeven wachtwoord is niet juist. Probeer het opnieuw.",
 "mailmypassword" => "Stuur mij een nieuw wachtwoord op",
 "passwordremindertitle" => "Herinnering wachtwoord Wikipedia NL",
-"passwordremindertext" => "Iemand (waarschijnlijk uzelf) vanaf IP-adres $1 heeft verzocht u een nieuw wachtwoord voor Wikipedia NL toe te zenden. Het nieuwe wachtwoord voor gebruiker \"$2\" is \"$3\". Advies: nu inloggen en wachtwoord wijzigigen.",
+"passwordremindertext" => "Iemand (waarschijnlijk uzelf) vanaf IP-adres $1 heeft verzocht u een nieuw wachtwoord voor Wikipedia NL toe te zenden. Het nieuwe wachtwoord voor gebruiker \"$2\" is \"$3\". Advies: nu aanmelden en uw wachtwoord wijzigigen.",
 "noemail"		=> "Er is geen e-mailadres geregistreerd voor \"$1\".",
 "passwordsent"	=> "Er is een nieuw wachtwoord verzonden naar het e-mailadres wat geregistreerd staat voor \"$1\".
-Gelieve na ontvangst opnieuw in te loggen.",
+Gelieve na ontvangst opnieuw aan te melden.",
 
 # Edit pages
 # Pagina bewerken
@@ -408,7 +408,7 @@ Gelieve na ontvangst opnieuw in te loggen.",
 "loadhist"		=> "Bezig met het laden van de paginageschiedenis",
 "currentrev"	=> "Huidige versie",
 "revisionasof"	=> "Versie op $1",
-"cur"			=> "wijz",
+"cur"			=> "huidig",
 "next"			=> "volgende",
 "last"			=> "vorige",
 "orig"			=> "orig",
@@ -439,7 +439,7 @@ Gelieve na ontvangst opnieuw in te loggen.",
 "nextn"			=> "volgende $1",
 "viewprevnext"	=> "($1) ($2) ($3) bekijken.",
 "showingresults" => "Hieronder de resultaten <b>$1</b> beginnend met #<b>$2</b>.",
-"nonefound"		=> "<strong>Merk op:</strong> wanneer een zoekopdracht mislukt komt dat vaak door gebruik van (in het Engels) veel voorkomende woorden zoals \"of\" en \"be\", die niet geïndexeerd zijn, of door verschillende zoektermen tegelijk op te geven (u krijgt dan alleen in pagina's waaarin alle opgegeven termen voorkomen).",
+"nonefound"		=> "<strong>Merk op:</strong> wanneer een zoekopdracht mislukt komt dat vaak door gebruik van (in het Engels) veel voorkomende woorden zoals \"of\" en \"be\", die niet geÃ¯ndexeerd zijn, of door verschillende zoektermen tegelijk op te geven (u krijgt dan alleen in pagina's waaarin alle opgegeven termen voorkomen).",
 
 # Preferences page
 # Voorkeuren
@@ -453,7 +453,7 @@ Gelieve na ontvangst opnieuw in te loggen.",
 "changepassword" => "Wachtwoord wijzigen",
 "skin"			=> "Wikipedia-Uiterlijk",
 "saveprefs"		=> "Voorkeuren opslaan",
-"resetprefs"	=> "Voorkeuren opnieuw instellen",
+"resetprefs"	=> "Standaardvoorkeuren herstellen",
 "oldpassword"	=> "Huidig wachtwoord",
 "newpassword"	=> "Nieuw wachtwoord",
 "retypenew"		=> "Voer het nieuwe wachtwoord nogmaals in",
@@ -466,7 +466,7 @@ Gelieve na ontvangst opnieuw in te loggen.",
 "contextchars"	=> "Aantal tekens van de context per regel",
 "recentchangescount" => "Aantal titels in lijst recente wijzigingen",
 "savedprefs"	=> "Uw voorkeuren zijn opgeslagen.",
-"timezonetext"	=> "De tijd van de server is UTC (Coordinated Universal Time) Geef aan hoeveel uur de plaatselijke tijd in uw woonplaats verschilt met die van de server. Voor o.a. België en Nederland: +1 (+2 zomertijd); voor Suriname en voor de Nederlandse Antillen: -4; voor Zuid-Afrika: +2.",
+"timezonetext"	=> "De tijd van de server is UTC (Coordinated Universal Time) Geef aan hoeveel uur de plaatselijke tijd in uw woonplaats verschilt met die van de server. Voor o.a. BelgiÃ« en Nederland: +1 (+2 zomertijd); voor Suriname en voor de Nederlandse Antillen: -4; voor Zuid-Afrika: +2.",
 "localtime"	=> "Plaatselijke tijd",
 "timezoneoffset" => "Tijdsverschil",
 "emailflag"		=> "E-mail ontvangen van andere gebruiken uitschakelen",
@@ -492,25 +492,25 @@ Om Wikipedia te laten slagen is het erg belangrijk geen materiaal toe te voegen 
 
 # Upload
 #
-"upload"		=> "Up-load",
-"uploadbtn"		=> "Up-load bestand",
-"uploadlink"	=> "Up-load afbeelding",
-"reupload"		=> "Opnieuw up-loaden",
+"upload"		=> "upload",
+"uploadbtn"		=> "upload bestand",
+"uploadlink"	=> "upload afbeelding",
+"reupload"		=> "Opnieuw uploaden",
 "reuploaddesc"	=> "Terug naar het uploadformulier.",
 "uploadnologin" => "Niet ingelogd",
 "uploadnologintext"	=> "U dient <a href=\"" .
   wfLocalUrl( "Speciaal:Userlogin" ) . "\">ingelogd te zijn</a>
 om bestanden te uploaden.",
-"uploadfile"	=> "Up-load bestand",
-"uploaderror"	=> "Up-load fout",
-"uploadtext"	=> "<strong>STOP!</strong> Voor u iets hier up-load,
+"uploadfile"	=> "upload bestand",
+"uploaderror"	=> "upload fout",
+"uploadtext"	=> "<strong>STOP!</strong> Voor u iets hier upload,
 wees zeker dat het in overeenkomst is met het Wikipedia NL <a href=\"" .
 wfLocalUrlE( "Wikipedia:Beleid_voor_gebruik_van_afbeeldingen" ) . "\">afbeeldingsbeleid</a>.
 <p>Om de reeds ge-uploade bestanden te bekijken of te zoeken ga naar de <a href=\"" . wfLocalUrlE( "Speciaal:Imagelist" ) .
-"\">lijst van ge-up-loade bestanden</a>.
+"\">lijst van ge-uploade bestanden</a>.
 Uploads en verwijderingen worden bijgehouden in het <a href=\"" .
-wfLocalUrlE( "Wikipedia:Up-load_logboek" ) . "\">up-load logboek</a>.
-<p>Gebruik het onderstaande formulier om bestanden zoals afbeeldingen en geluidsbestanden die relevant zijn voor uw artikel te u-loaden. Bij de meeste browers zoals 'Internet Explorer' en 'Mozilla' zult u een \"Bladeren...\" of \"Browse..\" knop zien die een standaard dialoogscherm van uw bestuuringssysteem oproept. Kiest u een bestand, dan zal het ingevuld worden in het veld naast de \"Bladeren...\" knop. U dient ook het vakje aan te vinken waarmee u bevestigt dat er geen schending van auteursrechten plaatsvindt door het gebruik van dat bestand. Vul het veld \"Omschrijving\" in. Druk op de \"Upload\" knop om het up-loaden te voltooien. Dit kan even duren als u een langzame internetverbinding gebruikt.
+wfLocalUrlE( "Wikipedia:Upload_logboek" ) . "\">upload logboek</a>.
+<p>Gebruik het onderstaande formulier om bestanden zoals afbeeldingen en geluidsbestanden die relevant zijn voor uw artikel te u-loaden. Bij de meeste browers zoals 'Internet Explorer' en 'Mozilla' zult u een \"Bladeren...\" of \"Browse..\" knop zien die een standaard dialoogscherm van uw bestuuringssysteem oproept. Kiest u een bestand, dan zal het ingevuld worden in het veld naast de \"Bladeren...\" knop. U dient ook het vakje aan te vinken waarmee u bevestigt dat er geen schending van auteursrechten plaatsvindt door het gebruik van dat bestand. Vul het veld \"Omschrijving\" in. Druk op de \"Upload\" knop om het uploaden te voltooien. Dit kan even duren als u een langzame internetverbinding gebruikt.
 <p>Gebruik bij voorkeur JPEG voor foto's, PNG voor tekeningen en dergelijke en OGG voor geluid. 
 Geef uw bestanden een duidelijk omschrijvende naam om verwarring te voorkomen. Om het bestand in een pagina te laten verschijnen, kunt u het volgende doen;  <b>[[afbeelding:uw_foto.jpg]]</b> of <b>[[afbeelding:uw_logo.png|alt text]]</b>  of <b>[[media:uw_geluid.ogg]]</b> voor audio.
 <p>Vergeet niet dat net als met andere pagina's op Wikipedia anderen de ge-uploade bestanden kunnen verwijderen indien men denkt dat dat in het voordeel van het project is. Bij misbruik van dit systeem kan u de toegang tot Wikipedia NL ontzegd worden.",
@@ -552,11 +552,11 @@ Geef uw bestanden een duidelijk omschrijvende naam om verwarring te voorkomen. O
 "bysize"		=> "op grootte",
 "imgdelete"		=> "verw",
 "imgdesc"		=> "besc",
-"imglegend"		=> "Onderschrift: (besc) = toon/verander beschrijving van de afbeelding.",
+"imglegend"		=> "Verklaring: (besc) = toon/verander beschrijving van de afbeelding, (verw) = verwijdering de afbeelding.",
 "imghistory"	=> "Geschiedenis van de afbeelding",
 "revertimg"		=> "rev",
-"deleteimg"		=> "del",
-"imghistlegend" => "Onderschrift: (cur)= huidige afbeelding, (del) = verwijder de oude versie, (rev) = breng oude versie terug.<br>
+"deleteimg"		=> "verw",
+"imghistlegend" => "Verklaring: (cur)= huidige afbeelding, (verw) = verwijder de oude versie, (rev) = breng oude versie terug.<br>
 <i>Klik op de datum om de afbeeldingen die ge-upload zijn op die datum te zien</i>.",
 "imagelinks"	=> "Afbeeldingsverwijzingen",
 "linkstoimage"	=> "Deze afbeelding wordt gebruikt op de volgende pagina's:",
@@ -721,7 +721,7 @@ Vergeet niet de database opnieuw te de-blokkeren zodra u klaar bent met uw onder
 # SQL query
 # SQL raadplegen
 "asksql"		=> "SQL raadplegen",
-"asksqltext"	=> "Gebruik het onderstaande formulier om een direct verzoek naar de database van Wikipedia NL te zenden. Use single quotes ('like this') voor letterlijke teksten. Dit kan vaak de sever extra belasten. Gelieve dit spaarzaam te gebruiken.",
+"asksqltext"	=> "Gebruik het onderstaande formulier om een direct verzoek naar de database van Wikipedia NL te zenden. Gebruik enkelvoudige aanhalingstekens ('zoals hier') voor letterlijke teksten. Een ingewikkelde aanvraag kan vaak de sever extra belasten. Gelieve deze mogelijkheid daarom spaarzaam te gebruiken.",
 "sqlquery"		=> "Voer opdracht in",
 "querybtn"		=> "Verstuur opdracht",
 "selectonly"	=> "Opdrachten anders dan \"SELECT\" zijn voorbehouden aan Wikipedia ontwikkelaars.",
