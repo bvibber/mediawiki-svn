@@ -158,4 +158,13 @@ function wfNumberOfArticles()
 	}
 }
 
+function wfEscapeHTML( $in )
+{
+	$in = str_replace( "&", "&amp;", $in );
+	$in = str_replace( "\"", "&quot;", $in );
+	$in = str_replace( ">", "&gt;", $in );
+	$in = str_replace( "<", "&lt;", $in );
+	return $in;
+}
+
 ?>

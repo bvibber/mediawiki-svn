@@ -273,6 +273,10 @@ class Article {
 		$save = wfMsg( "savearticle" );
 		$prev = wfMsg( "showpreview" );
 
+		$wpTextbox1 = wfEscapeHTML( $wpTextbox1 );
+		$wpTextbox2 = wfEscapeHTML( $wpTextbox2 );
+		$wpSummary = wfEscapeHTML( $wpSummary );
+
 		$wgOut->addHTML( "
 <form method=post action='$action'
 enctype='application/x-www-form-urlencoded'>
@@ -287,7 +291,9 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		if ( $isConflict ) {
 			$wgOut->AddHTML( "<h2>" . wfMsg( "yourtext" ) . "</h2>
-<textarea tabindex=6 name='wpTextbox2' rows=$rows cols=$cols style='width:100%' wrap=virtual>\n" );
+<textarea tabindex=6 name='wpTextbox2' rows=$rows cols=$cols style='width:100%' wrap=virtual>
+$wpTextbox2
+</textarea>" );
 		}
 		$wgOut->addHTML( "</form>\n" );
 
@@ -437,7 +443,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		$s .= $sk->historyLine( $this->getTimestamp(), $this->getUser(),
 		  $this->getUserText(), $wgTitle->getNamespace(),
-		  $wgTitle->getText(), "", $this->getComment(),
+		  $wgTitle->getText(), 0, $this->getComment(),
 		  ( $this->getMinorEdit() > 0 ) );
 
 		while ( $revs ) {
@@ -445,7 +451,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 			$s .= $sk->historyLine( $line->old_timestamp, $line->old_user,
 			  $line->old_user_text, $line->old_namespace,
-			  $line->old_title, "oldid={$line->old_id}",
+			  $line->old_title, $line->old_id,
 			  $line->old_comment, ( $line->old_minor_edit > 0 ) );
 			--$revs;
 		}

@@ -45,6 +45,8 @@ function wfGetSQL( $table, $var, $cond )
 
 function wfStrencode( $s )
 {
+	return addslashes( $s );
+
 	$s = str_replace( "\\", "\\\\", $s );
 	$s = str_replace( "\r", "\\r", $s );
 	$s = str_replace( "\n", "\\n", $s );

@@ -184,6 +184,11 @@ function wfSpecialUserlogin()
 	$action = wfLocalLink( "Special:Userlogin" );
 	if ( "" != $returnto ) { $action .= "&returnto=$returnto"; }
 
+	$wpName = wfEscapeHTML( $wpName );
+	$wpPassword = wfEscapeHTML( $wpPassword );
+	$wpRetype = wfEscapeHTML( $wpRetype );
+	$wpEmail = wfEscapeHTML( $wpEmail );
+
 	$wgOut->addHTML( "
 <form method=post action='$action'>
 <table border=0><tr>

@@ -26,16 +26,13 @@ class LanguageDe extends Language {
 );
 
 /* private */ $wgWeekdaysDe = array(
-	"monday" => "Montag", "tuesday" = "Dienstag", "wednesday" = "Mittwoch",
-	"thursday" => "Donnerstag", "friday" => "Freitag",
-	"saturday" => "Sonnabend", "sunday" => Sontag"
+	"Sontag", "Montag", "Dienstag", "Mittwoch", "Donnerstag",
+	"Freitag", "Sonnabend"
 );
 
 /* private */ $wgMonthsDe = array(
-	"january" => "Januar", "february" => "Februar", "march" => "März",
-	"april" => "April", "may" => "Mai", "june" => "Juni", "july" => "Juli",
-	"august" => "August", "september" => "September", "october" => "Oktober",
-	"november" => "November", "december" => "Dezember"
+	"Januar", "Februar", "März", "April", "Mai", "Juni", "Juli",
+	"August", "September", "Oktober", "November", "Dezember"
 );
 
 /* private */ $wgAllMessagesDe = array(
@@ -159,13 +156,13 @@ class LanguageDe {
 	function getMonthName( $key )
 	{
 		global $wgMonthsDe;
-		return $wgMonthsDe[$key];
+		return $wgMonthsDe[$key-1];
 	}
 
 	function getWeekdayName( $key )
 	{
 		global $wgWeekDaysDe;
-		return $wgWeekDaysDe[$key];
+		return $wgWeekDaysDe[$key-1];
 	}
 
 	function dateFromTimestamp( $ts )
