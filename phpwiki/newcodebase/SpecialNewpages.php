@@ -34,7 +34,7 @@ function wfSpecialNewpages()
 	while ( $obj = wfFetchObject( $res ) ) {
 		$u = $obj->cur_user;
 		$ut = $obj->cur_user_text;
-		$c = $obj->cur_comment;
+		$c = wfEscapeHTML( $obj->cur_comment );
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $sk->makeLink( $wgLang->getNsText(2).":{$ut}", $ut ); }
 
