@@ -26,54 +26,31 @@ function statistics () {
 	$ret .= "<li>".str_replace ( "$1" , "$nf1$totalPages$nf2" , $wikiStatTotalPages )."</li>" ;
 	mysql_free_result ( $result ) ;
 
-	# /TALK
-	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title LIKE \"%/$Talk\" OR cur_title LIKE \"$Talk:%\"" ;
+        # GENUINE ENCYCLOPEDIA
+	$sql = "SELECT COUNT(*) AS number FROM cur WHERE 
+                  cur_title NOT LIKE \"%/%\" AND
+                  cur_title NOT LIKE \"$Talk:%\" AND 
+                  cur_title NOT LIKE \"%ikipedi%\" AND 
+                  cur_text LIKE \"%,%\" AND
+                  cur_text NOT LIKE \"#REDIRECT\"";
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
-	$talkPages = $s->number ;
-	$ret .= "<li>".str_replace ( "$1" , "$nf1$talkPages$nf2" , $wikiStatTalkPages )."</li>" ;
+	$genuinePages = $s->number ;
+	$ret .= "<li>".str_replace ( "$1" , "$nf1$genuinePages$nf2" , $wikiStatArticles )."</li>" ;
 	mysql_free_result ( $result ) ;
 
-	# , NOT /TALK
-	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/$Talk\" AND cur_title NOT LIKE \"$talk:%\" AND cur_text LIKE \"%,%\"" ;
+        # INCLUDING SUBPAGES
+	$sql = "SELECT COUNT(*) AS number FROM cur WHERE 
+                  cur_title NOT LIKE \"%/$Talk\" AND
+                  cur_title NOT LIKE \"$Talk:%\" AND 
+                  cur_title NOT LIKE \"%ikipedi%\" AND 
+                  cur_text LIKE \"%,%\" AND
+                  cur_text NOT LIKE \"#REDIRECT\"";
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
-	$commaPages = $s->number ;
-	$ret .= "<li>".str_replace ( "$1" , "$nf1$commaPages$nf2" , $wikiStatCommaPages )."</li>" ;
+	$genuineIncludingSubPages = $s->number ;
+	$ret .= "<li>".str_replace ( "$1" , "$nf1$genuineIncludingSubPages$nf2" , $wikiStatNoTalk )."</li>" ;
 	mysql_free_result ( $result ) ;
-
-	# WIKIPEDIA NOT /TALK
-	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/$Talk\" AND cur_title NOT LIKE \"$talk:%\" AND cur_title LIKE \"%ikipedi%\"" ;
-	$result = mysql_query ( $sql , $connection ) ;
-	$s = mysql_fetch_object ( $result ) ;
-	$wikiPages = $s->number ;
-	$ret .= "<li>".str_replace ( "$1" , "$nf1$wikiPages$nf2" , $wikiStatWikipediaNoTalk )."</li>" ;
-	mysql_free_result ( $result ) ;
-
-	# WIKIPEDIA NOT /TALK
-	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title LIKE \"%/%\"" ;
-	$result = mysql_query ( $sql , $connection ) ;
-	$s = mysql_fetch_object ( $result ) ;
-	$subPages = $s->number - $talkPages;
-	$ret .= "<li>".str_replace ( "$1" , "$nf1$subPages$nf2" , $wikiStatSubNoTalk )."</li>" ;
-	mysql_free_result ( $result ) ;
-
-	# REDIRECT PAGES
-	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_text LIKE \"#REDIRECT%\"" ;
-	$result = mysql_query ( $sql , $connection ) ;
-	$s = mysql_fetch_object ( $result ) ;
-	$redirectPages = $s->number ;
-	$ret .= "<li>".str_replace ( "$1" , "$nf1$redirectPages$nf2" , $wikiStatRedirect )."</li>" ;
-	mysql_free_result ( $result ) ;
-
-
-	# RESULT
-	$x = $commaPages - $wikiPages ; # Comma (no /Talk) - wiki pages = articles, including subpages
-	$ret .= "<li>".str_replace ( "$1" , "$nf1$x$nf2" , $wikiStatNoTalk )."</li>" ;
-	$y = $x - $subPages ;
-	$ret .= "<li>".str_replace ( "$1" , "$nf1$y$nf2" , $wikiStatArticles )."</li>" ;
-	$z = $totalPages - $talkPages - $commaPages - $redirectPages ;
-	$ret .= "<li>".str_replace ( "$1" , "$nf1$z$nf2" , $wikiStatJunk )."</li>" ;
 
 	# OLD PAGES
 	$sql = "SELECT COUNT(*) as number FROM old" ;
