@@ -17,8 +17,10 @@ $wikiMainPage = "Main Page" ; # This is actual the title of the article in the d
 $wikiErrorPageTitle = "Yikes! An error!" ;
 $wikiErrorMessage = "<h2>$1!</h2>Return to the [[:Main Page|Main Page]]!" ;
 $wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","longpages","listusers","watchlist","special_pages","editusersettings","deletepage","movepage","protectpage","contributions","whatlinkshere","recentchangeslinked","sqldump","vote","edituser");
+
 $wikiRecentChangesText = "Track the most recent changes to Wikipedia on this page. [[wikipedia:Welcome, newcomers|Welcome, newcomers]]! Please have a look at these pages: [[wikipedia:FAQ|Wikipedia FAQ]], [[wikipedia:Policies and guidelines|Wikipedia policy]] (especially [[wikipedia:Naming conventions|naming conventions]], [[wikipedia:Neutral point of view|neutral point of view]]), and [[wikipedia:Most common Wikipedia faux pas|most common Wikipedia faux pas]].<br>If you want to see the Wikipedia succeed, it's very important that you don't add material restricted by others' [[wikipedia:Copyrights|copyrights]]. The legal liability could really hurt the project, so please don't do it.<br>See also the [http://meta.wikipedia.com/wiki.phtml?title=special:RecentChanges recent meta discussion]." ;
 $wikiMetaDescription = "$1... Read more here at wikipedia, the free encyclopedia!" ;
+$wikiRecentChangesHeaderPage = "wikipedia:Recent Changes header" ;
 
 # Used in header/footer
 $wikiWikipediaHelp = "wikipedia:Help" ;
