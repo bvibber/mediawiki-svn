@@ -25,6 +25,17 @@ if ( phpversion() == "4.0.6" ) {
 	}
 }
 
+if( !function_exists('iconv') ) {
+	# Assume will only ever use utf-8 and iso-8859-1.
+	# This will *not* work in all circumstances.
+	function iconv( $from, $to, $string ) {
+		if(strcasecmp( $from, to ) == 0) return $string;
+		if(strcasecmp( $from, "utf-8" ) == 0) return utf8_decode( $string );
+		if(strcasecmp( $to, "utf-8" ) == 0) return utf8_encode( $string );
+		return $string;
+	}
+}
+
 $wgRandomSeeded = false;
 
 function wfSeedRandom()
