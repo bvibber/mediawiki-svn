@@ -74,7 +74,7 @@ class WikiUser {
         $qbside = ( $this->options["quickBar"] == "left" ) ? "right" : "left";
         $ret .= "a.interwiki, a.external { color: #3333BB; text-decoration: none; }\n" .
             "a.red { color: red; text-decoration: none; }\n" .
-            "a.green { color: green; text-decoration: none; }\n" .
+            "a.green { color: blue; text-decoration: none; }\n" .
             ".topbar { border-bottom-width: 2; border-bottom-style: ridge; }\n" .
             ".middle { }\n" .
             ".quickbar { border-$qbside-width: 2; border-$qbside-style: ridge; }\n" .
