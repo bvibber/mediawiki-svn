@@ -454,10 +454,12 @@ class Article {
 		if (!$wpWatchthis && !$wpPreview && $wgTitle->userIsWatching()) $wpWatchthis=1;
 		
 		if ( 0 != $wgUser->getID() ) {
-		
-			$watchhtml="<input tabindex=4 type=checkbox name='wpWatchthis'".($wpWatchthis?" checked":"").">{$watchthis}<br>";
+			$checkboxhtml=
+			"<input tabindex=3 type=checkbox value=1 name='wpMinoredit'".($wpMinoredit?" checked":"").">{$minor}".
+			"<input tabindex=4 type=checkbox name='wpWatchthis'".($wpWatchthis?" checked":"").">{$watchthis}<br>";
+			
 		} else {
-			$watchhtml="<br>";
+			$checkboxhtml="";
 		}
 
 		$wgOut->addHTML( "
@@ -467,8 +469,7 @@ enctype='application/x-www-form-urlencoded'>
 $wgLang->recodeForEdit( $wpTextbox1 ) .
 "</textarea><br>
 {$summary}: <input tabindex=2 type=text value=\"{$wpSummary}\" name='wpSummary' maxlength=200 size=60><br>
-<input tabindex=3 type=checkbox value=1 name='wpMinoredit'".($wpMinoredit?" checked":"").">{$minor}
-{$watchhtml}
+{$checkboxhtml}
 <input tabindex=5 type=submit value=\"{$save}\" name='wpSave'>
 <input tabindex=6 type=submit value=\"{$prev}\" name='wpPreview'>
 <em>{$cancel}</em> | <em>{$edithelp}</em>
