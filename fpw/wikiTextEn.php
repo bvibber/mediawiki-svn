@@ -337,6 +337,8 @@ $wikiLastChange = "Last edited $1" ;
 $wikiPopularPages = "Most popular" ;
 $wikiRefreshThisPage = "Refresh this page" ;
 $wikiResourcesWarning = "(Please, do this only when necessary, as this function uses a high amount of system resources)" ;
+$wikiNoRefresh = "(The page was last refreshed just $1 minutes ago; please wait another $2 minutes and try again.)" ;
+$wikiLastRefreshed = "Last refreshed $1" ;
 
 #---------------------------
 #Functions
