@@ -103,9 +103,11 @@
 "mainpage"		=> "Main Page",
 "about"			=> "About",
 "aboutwikipedia" => "About Wikipedia",
-"aboutpage"		=> "Wikipedia:about",
+"aboutpage"		=> "Wikipedia:About",
 "help"			=> "Help",
 "helppage"		=> "Wikipedia:Help",
+"bugreports"	=> "Bug reports",
+"bugreportspage" => "Wikipedia:Bug_reports",
 "faq"			=> "FAQ",
 "faqpage"		=> "Wikipedia:FAQ",
 "edithelp"		=> "Editing help",
@@ -425,6 +427,11 @@ delete your uploads if they think it serves the encyclopedia, and
 you may be blocked from uploading if you abuse the system.",
 "uploadlog"		=> "upload log",
 "uploadlogpage" => "Upload_log",
+"uploadlogpagetext" => "Below is a list of the most recent file uploads.
+All times shown are server (U.S. Pacific) time.
+<ul>
+</ul>
+",
 "uploadlogtext" => "Uploads and deletions are logged on the $1.",
 "filename"		=> "Filename",
 "filedesc"		=> "Summary",
@@ -544,6 +551,11 @@ consequences, and that you are doing this in accordance with
 See $2 for a record or recent deletions.",
 "deletedarticle" => "deleted \"$1\"",
 "dellogpage"	=> "Article_deletion_log",
+"dellogpagetext" => "Below is a list of the most recent deletions.
+All times shown are server (U.S. Pacific) time.
+<ul>
+</ul>
+",
 "deletionlog"	=> "deletion log",
 "reverted"		=> "Reverted to earlier revision",
 "deletecomment"	=> "Reason for deletion",

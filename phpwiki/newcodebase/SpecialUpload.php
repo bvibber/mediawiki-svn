@@ -80,8 +80,8 @@ function processUpload()
 	  $wpUploadSize, $wpUploadDescription );
 
 	$sk = $wgUser->getSkin();
-	$ilink = $sk->makeKnownLink( "Image:{$wpUploadSaveName}",
-	  $wpUploadSaveName );
+	$ilink = $sk->makeKnownLink( Namespace::getImagename() .
+	  ":{$wpUploadSaveName}", $wpUploadSaveName );
 
 	$wgOut->addHTML( "<h2>" . wfMsg( "successfulupload" ) . "</h2>\n" );
 	$text = str_replace( "$1", $ilink, wfMsg( "fileuploaded" ) );
@@ -195,8 +195,8 @@ function mainUploadForm( $msg )
 	$wgOut->addHTML( "<p>" . wfMsg( "uploadtext" ) );
 	$sk = $wgUser->getSkin();
 
-	$link = $sk->makeKnownLink( "Wikipedia:Upload log",
-	  wfMsg( "uploadlog" ) );
+	$link = $sk->makeKnownLink( Namespace::getWikipediaName() .
+	  ":" . wfMsg( "uploadlogpage" ), wfMsg( "uploadlog" ) );
 	$ult = str_replace( "$1", $link, wfMsg( "uploadlogtext" ) );
 	$wgOut->addHTML( "\n<p>{$ult}\n" );
 

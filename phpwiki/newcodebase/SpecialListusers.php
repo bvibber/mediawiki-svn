@@ -25,11 +25,10 @@ function wfSpecialListusers()
 		$n = $s->user_name;
 		$r = $s->user_rights;
 
-		$l = $sk->makeLink( "User:{$n}", $n );
+		$l = $sk->makeLink( Namespace::getUserName() . ":{$n}", $n );
 
 		if ( "" != $r ) {
-			$link = $sk->makeKnownLink(
-			  "Wikipedia:Administrators", $r );
+			$link = $sk->makeKnownLink( wfMsg( "administrators" ), $r );
 			$l .= " ({$link})";
 		}
 		$wgOut->addHTML( "<li>{$l}</li>\n" );

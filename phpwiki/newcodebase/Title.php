@@ -113,7 +113,7 @@ class Title {
 		$t = preg_replace( "/\\s+/", " ", $t );
 
 		$t = strtolower( $t );
-		if ( Namespace::getIndex( "Image" ) == $this->mNamespace ) {
+		if ( Namespace::getImageIndex() == $this->mNamespace ) {
 			$t = preg_replace( "/ (png|gif|jpg|jpeg)$/", "", $t );
 		}
 		return trim( $t );
@@ -193,11 +193,11 @@ class Title {
 
 	function isLog()
 	{
-		if ( $this->mNamespace != Namespace::getIndex( "Wikipedia" ) ) {
+		if ( $this->mNamespace != Namespace::getWikipediaIndex() ) {
 			return false;
 		}
-		if ( ( 0 == strcmp( "Upload_log", $this->mDbkeyform ) ) ||
-		  ( 0 == strcmp( "Article_deletion_log", $this->mDbkeyform ) ) ) {
+		if ( ( 0 == strcmp( wfMsg( "uploadlogpage" ), $this->mDbkeyform ) ) ||
+		  ( 0 == strcmp( wfMsg( "dellogpage" ), $this->mDbkeyform ) ) ) {
 			return true;
 		}
 		return false;
@@ -303,7 +303,10 @@ class Title {
 		$this->mDbkeyform = $t;
 		$done = false;
 
-		if ( 0 == strncasecmp( ":Image:", $t, 7 ) ) { $t = substr( $t, 1 ); }
+		$imgpre = ":" . Namespace::getImageName() . ":";
+		if ( 0 == strncasecmp( $imgpre, $t, strlen( $imgpre ) ) ) {
+			$t = substr( $t, 1 );
+		}
 		if ( ":" == $t{0} ) {
 			$r = substr( $t, 1 );
 		} else {

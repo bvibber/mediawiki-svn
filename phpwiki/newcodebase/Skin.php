@@ -247,9 +247,11 @@ class Skin {
 		$s = $this->printableLink();
 
 		if ( $wgOut->isArticle() ) {
-			if ( $wgTitle->getNamespace() == Namespace::getIndex( "Image" ) ) {
+			if ( $wgTitle->getNamespace() == Namespace::getImageIndex() ) {
 				$name = $wgTitle->getDBkey();
-				$s .= " | <a href=\"" . wfImageUrl( $name ) . "\">{$name}</a>";
+				$link = wfEscapeHTML( wfImageUrl( $name ) );
+				$style = $this->getInternalLinkAttributes( $link, $name );
+				$s .= " | <a href=\"{$link}\"{$style}>{$name}</a>";
 			}
 		}
 		if ( "history" == $action || isset( $diff ) || isset( $oldid ) ) {
@@ -306,12 +308,14 @@ class Skin {
 		} else {
 			$n = $wgUser->getName();
 			$rt = $wgTitle->getPrefixedURL();
-			$s .= $this->makeKnownLink( "User:$n", $n ) . "<br>" .
+			$s .= $this->makeKnownLink( Namespace::getUserName() . ":{$n}",
+			  $n ) . "<br>" .
 			  $this->makeKnownLink( "Special:Userlogout",
 			  wfMsg( "logout" ), "returnto={$rt}" ) . " | " .
 			  $this->specialLink( "preferences" );
 		}
-		$s .= " | " . $this->makeKnownLink( "Wikipedia:Help", wfMsg( "help" ) ); 
+		$s .= " | " . $this->makeKnownLink( wfMsg( "helppage" ),
+		  wfMsg( "help" ) ); 
 
 		return $s;
 	}
@@ -360,7 +364,7 @@ class Skin {
 			  . $sep . $this->whatLinksHere()
 			  . $sep . $this->watchPageLinksLink();
 
-			if ( Namespace::getIndex( "User" ) == $wgTitle->getNamespace() ) {
+			if ( Namespace::getUserIndex() == $wgTitle->getNamespace() ) {
 				$s .= $sep . $this->userContribsLink();
 			}
 			if ( $wgUser->isSysop() ) {
@@ -404,8 +408,8 @@ class Skin {
 		else { $a = ""; }
 
 		$mp = wfMsg( "mainpage" );
-		$s = "<a href=\"" . wfLocalUrl( $mp ) . "\"><img{$a} border=0 src=\"" .
-		  $this->getLogo() . "\" alt=\"" . "[{$mp}]\"></a>";
+		$s = "<a href=\"" . wfLocalUrlE( $mp ) . "\"><img{$a} border=0 src=\""
+		  . $this->getLogo() . "\" alt=\"" . "[{$mp}]\"></a>";
 		return $s;
 	}
 
@@ -440,7 +444,7 @@ class Skin {
 			  . $sep . $this->whatLinksHere()
 			  . $sep . $this->watchPageLinksLink();
 
-			if ( Namespace::getIndex( "User" ) == $wgTitle->getNamespace() ) {
+			if ( Namespace::getUserIndex() == $wgTitle->getNamespace() ) {
 				$s .= $sep . $this->userContribsLink();
 			}
 			$s .= "\n<hr>";
@@ -655,14 +659,15 @@ class Skin {
 
 			if ( "" == $text ) { $text = $link; }
 			$style = $this->getExternalLinkAttributes( $link, $text );
-			$s .= "<a href=\"$url\"$style>$text</a>";
+			$s .= "<a href=\"{$url}\"{$style}>{$text}</a>";
 		}
 		return "\n<br>{$s}\n";
 	}
 
 	function bugReportsLink()
 	{
-		$s = $this->makeKnownLink( "Wikipedia:Bug_reports", "Bug reports" );
+		$s = $this->makeKnownLink( wfMsg( "bugreportspage" ),
+		  wfMsg( "bugreports" ) );
 		return $s;
 	}
 
@@ -753,13 +758,13 @@ class Skin {
 					$trail = $m[2];
 				}
 			}
-			return "<a href=\"$u\"$style>$text$inside</a>$trail";
+			return "<a href=\"{$u}\"{$style}>{$text}{$inside}</a>{$trail}";
 		}
 		if ( 0 == $nt->getNamespace() && "" == $nt->getText() ) {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
 		if ( ( -1 == $nt->getNamespace() ) ||
-          ( Namespace::getIndex( "Image" ) == $nt->getNamespace() ) ) {
+          ( Namespace::getImageIndex() == $nt->getNamespace() ) ) {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
 		if ( 0 == $nt->getArticleID() ) {
@@ -850,7 +855,7 @@ class Skin {
 	{
 		global $wgOut, $wgTitle;
 
-		$nt = Title::newFromText( "Image:{$name}" );
+		$nt = Title::newFromText( Namespace::getImageName() . ":{$name}" );
 		$link = $nt->getPrefixedURL();
 		if ( "" == $alt ) { $alt = $name; }
 
@@ -943,7 +948,8 @@ class Skin {
 		$link = $this->makeKnownLink( $artname, $dt, $q );
 
 		if ( 0 == $u ) { $ul = $ut; }
-		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }
+		else { $ul = $this->makeLink( Namespace::getUserName() . ":{$ut}",
+		  $ut ); }
 
 		$s = "<li>";
 		if ( $oid ) {
@@ -993,7 +999,8 @@ class Skin {
 			  "diff=0&oldid=0" );
 		}
 		if ( 0 == $u ) { $ul = $ut; }
-		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }
+		else { $ul = $this->makeLink( Namespace::getUserName() . ":{$ut}",
+		  $ut ); }
 		$cr = wfMsg( "currentrev" );
 
 		$s .= "<li> ({$dlink}) ({$hlink}) . .";
@@ -1025,13 +1032,16 @@ class Skin {
 			$url = wfImageUrl( $img );
 			$rlink = $cur;
 			if ( $wgUser->isSysop() ) {
-				$dlink = "<a href=\"" . wfLocalUrlE( "", "image=" .
-				  $wgTitle->getURL() . "&action=delete" ) . "\">{$del}</a>";
+				$link = wfLocalUrlE( "", "image=" . $wgTitle->getURL() .
+				  "&action=delete" );
+				$style = $this->getInternalLinkAttributes( $link, $del );
+
+				$dlink = "<a href=\"{$link}\"{$style}>{$del}</a>";
 			} else {
 				$dlink = $del;
 			}
 		} else {
-			$url = wfImageArchiveUrl( $img );
+			$url = wfEscapeHTML( wfImageArchiveUrl( $img ) );
 			$rlink = $this->makeKnownLink( $wgTitle->getPrefixedText(),
 			  wfMsg( "revertimg" ), "action=revert&oldimage=" .
 			  urlencode( $img ) );
@@ -1039,11 +1049,14 @@ class Skin {
 			  $del, "action=delete&oldimage=" . urlencode( $img ) );
 		}
 		if ( 0 == $u ) { $ul = $ut; }
-		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }
+		else { $ul = $this->makeLink( Namespace::getUserName() . ":{$ut}",
+		  $ut ); }
 
 		$nb = str_replace( "$1", $size, wfMsg( "nbytes" ) );
-		$s = "<li> ({$dlink}) ({$rlink}) <a href=\"{$url}\">{$dt}</a> . . " .
-		  "{$ul} ({$nb})";
+		$style = $this->getInternalLinkAttributes( $url, $dt );
+
+		$s = "<li> ({$dlink}) ({$rlink}) <a href=\"{$url}\"{$style}>{$dt}</a>"
+		  . " . . {$ul} ({$nb})";
 
 		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
 		$s .= "</li>\n";
