@@ -396,29 +396,8 @@ class OutputPage {
 
 	/* private */ function doQuotes( $text )
 	{
-		$text = preg_replace( "/(^|[^'])(')([^']|$)/", "\\1&apos;\\3", $text );
-
-		while ( preg_match( "/^([^']*)('+)([^']+)('+)(.*)$/sD", $text, $m ) ) {
-			$lq = strlen( $m[2] );
-			$rq = strlen( $m[4] );
-
-			if ( $lq >= 3 && $rq >= 3 ) {
-				$lq -= 3; $rq -= 3;
-				$l = ( $lq ? str_repeat( "'", $lq ) : "" );
-				$r = ( $rq ? str_repeat( "'", $rq ) : "" );
-				$text = "{$m[1]}{$l}<strong>{$m[3]}</strong>{$r}{$m[5]}";
-			} else if ( $lq >= 2 && $rq >= 2 ) {
-				$lq -= 2; $rq -= 2;
-				$l = ( $lq ? str_repeat( "'", $lq ) : "" );
-				$r = ( $rq ? str_repeat( "'", $rq ) : "" );
-				$text = "{$m[1]}{$l}<em>{$m[3]}</em>{$r}{$m[5]}";
-			} else if ( 1 == $lq ) {
-				$text = "{$m[1]}&apos;{$m[3]}{$m[4]}{$m[5]}";
-			} else /* 1 == $rq */ {
-				$text = "{$m[1]}{$m[2]}{$m[3]}&apos;{$m[5]}";
-			}
-		}
-		$text = str_replace( "&apos;", "'", $text );
+		$text = preg_replace( "/'''(.+)'''/mU", "<strong>\$1</strong>", $text );
+		$text = preg_replace( "/''(.+)''/mU", "<em>\$1</em>", $text );
 		return $text;
 	}
 
