@@ -11,7 +11,7 @@ class LogPage {
 		# and log pages always go in Wikipedia namespace
 		$this->mTitle = $title;
 		$this->mId = 0;
-		$this->$mUpdateRecentChanges = true ;
+		$this->mUpdateRecentChanges = true ;
 		$this->mContentLoaded = false;
 		$this->getContent( $defaulttext );
 	}
@@ -66,7 +66,7 @@ class LogPage {
 		}
 		
 		# And update recentchanges
-		if ( $mUpdateRecentChanges ) {
+		if ( $this->mUpdateRecentChanges ) {
 			$sql = "INSERT INTO recentchanges (rc_timestamp,rc_cur_time,
         	        rc_user,rc_user_text,rc_namespace,rc_title,rc_comment,
                 	rc_cur_id) VALUES ('{$now}','{$now}',{$uid},'{$ut}',4,'" .
