@@ -7,7 +7,7 @@ var theLayer;
 // Setup variables for sliding.
 // lastY and staticYOffset should match your CSS top definition.
 
-lastY=10;YOffset=0;staticYOffset=10;refreshMS=25;
+lastY=4;YOffset=0;staticYOffset=4;refreshMS=25;
 
 
 // Setup function that runs when the page loads.
