@@ -13,11 +13,11 @@ $p->settings ( "
 languages:de,en
 show:germany
 fit:germany
+draw:germany[state],germany.bavaria[city]
 draw:germany.sh.cities#kiel
-draw:germany.bavaria.cities#munich
 style:germany[state],germany[isle]=fill:#CCCCCC; stroke:black; stroke-width:10
 style:germany.hamburg=fill:red
-label:germany.bavaria.cities#munich=font-size:medium;fill-opacity:1.0;clickable:yes
+label:germany.bavaria[city]=font-size:medium;fill-opacity:1.0;clickable:yes
 label:germany[state]=font-size:medium;fill-opacity:0.7
 " ) ;
 

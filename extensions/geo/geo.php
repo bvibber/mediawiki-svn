@@ -9,6 +9,7 @@ class geo_params
 	var $max_x = -1000000 ;
 	var $min_y = 1000000 ;
 	var $max_y = -1000000 ;
+	var $draw = array () ; # What to draw
 	var $labels = array () ; # The text labels
 	var $languages = array ( "en" ) ; # Default language
 	var $styles = array ( "default" => "fill:#EEEEEE;" ) ; # All the styles
@@ -32,27 +33,23 @@ class geo_params
 					{
 					$this->languages = explode ( ";" , str_replace ( "," , ";" , $value ) ) ; # "," and ";" are valid separators
 					}
-				else if ( $key == "style" || $key == "label" )
+				else if ( $key == "style" || $key == "label" || $key == "draw" )
 					{
 					$a = explode ( "=" , $value , 2 ) ;
-					if ( count ( $a ) == 2 )
+					if ( count ( $a ) == 1 ) $a[] = "1" ;
+					$b = explode ( ";" , str_replace ( "," , ";" , $a[0] ) ) ;
+					foreach ( $b AS $c )
 						{
-						$b = explode ( ";" , str_replace ( "," , ";" , $a[0] ) ) ;
-						foreach ( $b AS $c )
+						$d = explode ( ";" , str_replace ( "," , ";" , $a[1] ) ) ;
+						foreach ( $d AS $e )
 							{
-#							if ( $key == "style" )
-								{
-								$d = explode ( ";" , str_replace ( "," , ";" , $a[1] ) ) ;
-								foreach ( $d AS $e )
-									{
-									$e = explode ( ":" , $e ) ;
-									$va = trim ( strtolower ( $e[0] ) ) ;
-									if ( count ( $e ) < 2 ) $vb = "" ; #/*$this->styles*/$kv[$c][$e[0]] = "" ;
-									else $vb = trim ( strtolower ( $e[1] ) ) ;# /*$this->styles*/$kv[$c][$e[0]] = trim ( strtolower ( $e[1] ) ) ;
-									if ( $key == "style" ) $this->styles[$c][$va] = $vb ;
-									else $this->label_styles[$c][$va] = $vb ;
-									}
-								}
+							$e = explode ( ":" , $e ) ;
+							$va = trim ( strtolower ( $e[0] ) ) ;
+							if ( count ( $e ) < 2 ) $vb = "" ; #/*$this->styles*/$kv[$c][$e[0]] = "" ;
+							else $vb = trim ( strtolower ( $e[1] ) ) ;# /*$this->styles*/$kv[$c][$e[0]] = trim ( strtolower ( $e[1] ) ) ;
+							if ( $key == "style" ) $this->styles[$c][$va] = $vb ;
+							else if ( $key == "label" ) $this->label_styles[$c][$va] = $vb ;
+							else if ( $key == "draw" ) $this->draw[$c][$va] = $vb ;
 							}
 						}
 					}
@@ -437,7 +434,7 @@ class geo
 		if ( !$this->label_this ( $params ) ) return ;
 		$text = $this->get_specs ( "name" , $params->languages ) ;
 		if ( $text == "" ) return "" ; # No label found
-		$text = $this->data[$text][0] ;
+		$text = trim ( $this->data[$text][0] ) ;
 		if ( $text == "" ) return "" ; # No point in showing an empty label
 		$x = floor ( $x ) ;
 		$y = floor ( $y ) ;
@@ -464,7 +461,9 @@ class geo
 			{
 			$b = $this->get_data ( $params ) ;
 			$b = $b[0] ; # Only one point for cities...
-			$r = 300 ;
+			if ( isset ( $this->data['magnitude'] ) ) $r = $this->data['magnitude'] * 100 ;
+			else $r = 300 ;
+			$params->data_to_real ( $b[0] , $b[1] ) ;
 			$ret .= "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"red\" style=\"fill-opacity:0.5\"/>\n" ;
 			$this->add_label ( $b[0] , $b[1] , $params ) ;
 			}
@@ -487,7 +486,9 @@ class geo
 
 	function draw_this ( &$params )
 		{
-		return true ;
+		$a = $this->my_matches ( $params->draw , $params ) ;
+		if ( count ( $a ) > 0 ) return true ;
+		return false ;
 		}
 
 	function label_this ( &$params )
