@@ -8,4 +8,6 @@ $wikiThisDBpassword = "" ;
 $wikiLogoFile = "/fpw/wiki.png" ;
 $wikiStarTrekImage = "/fpw/startrek.png" ;
 
+#$useCachedPages = true ;
+
 ?>
