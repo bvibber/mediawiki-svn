@@ -29,6 +29,7 @@ namespace smirc {
 		void parse(str line) {
 			std::string ln = line;
 			if (!ln.size()) return;
+			cd.rst();
 			int wild;
 			bool b = true;
 			std::vector<handler_node_t *> matches;

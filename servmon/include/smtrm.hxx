@@ -174,7 +174,6 @@ basrt.install("show version", cmd_show_version(), "Show software version");
 basrt.install("show irc", "Show IRC-related information");
 basrt.install("show irc server %s", cfg_irc_showserver(), "Describe a configured server");
 basrt.install("show irc server", cfg_irc_showserver(), "Describe all configured servers");
-basrt.install("show irc channels", cfg_irc_showchannels(), "Show configured channels");
 basrt.install("show monitor", "Show monitoring information");
 basrt.install("show monitor server", cfg_monit_showservers(), "Show monitored servers");
 basrt.install("show monitor server %s", cfg_monit_showservers(), "Show information for a particular server");
@@ -188,6 +187,7 @@ basrt.install("show memcache server-list-command", cfg_mc_show_server_list_comma
 basrt.install("show parser", "Show MediaWiki parser-related information");
 basrt.install("show parser cache-statistics", cfg_mc_show_parser_cache(), "Show parser cache hit statistics");
 stdrt = basrt;
+stdrt.install("show irc channels", cfg_irc_showchannels(), "Show configured channels");
 stdrt.install("exit", cmd_exit(), "End session");
 eblrt = stdrt;
 stdrt.install("enable", cmd_enable(), "Enter privileged mode");
