@@ -127,7 +127,7 @@
 	"tl"    => "http://tl.wikipedia.com/wiki.cgi?$1",
 	"tn"    => "http://tn.wikipedia.com/wiki.cgi?$1",
 	"to"    => "http://to.wikipedia.com/wiki.cgi?$1",
-	"tr"    => "http://tr.wikipedia.com/wiki.cgi?$1",
+	"tr"    => "http://tr.wikipedia.org/wiki/$1",
 	"ts"    => "http://ts.wikipedia.com/wiki.cgi?$1",
 	"tt"    => "http://tt.wikipedia.com/wiki.cgi?$1",
 	"tw"    => "http://tw.wikipedia.com/wiki.cgi?$1",
