@@ -139,8 +139,10 @@ class MovePageForm {
 		} else { # Target didn't exist, do normal move.
 			$this->moveToNewTitle();
 		}
-
-		$this->updateWatchlists();
+		$u = new SearchUpdate( $this->oldid, $this->nt->getPrefixedDBkey() );
+		$u->doUpdate();
+		$u = new SearchUpdate( $this->newid, $this->ot->getPrefixedDBkey(), "" );
+		$u->doUpdate();
 
 		# Move talk page if (1) the checkbox says to, (2) the source
 		# and target namespaces are identical, (3) the namespaces are not
@@ -177,6 +179,10 @@ class MovePageForm {
 					$this->moveToNewTitle();
 					$this->talkmoved = 1;
 				}
+				$u = new SearchUpdate( $this->oldid, $this->nt->getPrefixedDBkey() );
+				$u->doUpdate();
+				$u = new SearchUpdate( $this->newid, $this->ot->getPrefixedDBkey(), "" );
+				$u->doUpdate();
 			}
 		}
 		$success = wfLocalUrl( $wgLang->specialPage( "Movepage" ),
@@ -252,9 +258,8 @@ class MovePageForm {
 		$mt = wfMsg( "movedto" );
 
 		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp," .
-		  "cur_namespace={$this->nns},cur_title='{$this->ndt}'," .
-		  "cur_ind_title='" . wfStrencode( $this->nt->getIndexTitle() ) .
-		  "' WHERE cur_id={$this->oldid}";
+		  "cur_namespace={$this->nns},cur_title='{$this->ndt}' " .
+		  "WHERE cur_id={$this->oldid}";
 		wfQuery( $sql, $fname );
 
 		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp," .
@@ -262,8 +267,7 @@ class MovePageForm {
 		  "cur_text='#REDIRECT [[{$this->nft}]]\n',cur_comment='" .
 		  "{$mt} \\\"{$this->nft}\\\"',cur_user='" .  $wgUser->getID() .
 		  "',cur_minor_edit=0,cur_counter=0,cur_restrictions=''," .
-		  "cur_ind_title='" . wfStrencode( $this->ot->getIndexTitle() ) .
-		  "',cur_user_text='" . wfStrencode( $wgUser->getName() ) . "'," .
+		  "cur_user_text='" . wfStrencode( $wgUser->getName() ) . "'," .
 		  "cur_is_redirect=1,cur_is_new=0 WHERE cur_id={$this->newid}";
 		wfQuery( $sql, $fname );
 
@@ -325,9 +329,8 @@ class MovePageForm {
 		$mt = wfMsg( "movedto" );
 
 		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp," .
-		  "cur_namespace={$this->nns},cur_title='{$this->ndt}'," .
-		  "cur_ind_title='" . wfStrencode( $this->nt->getIndexTitle() ) .
-		  "' WHERE cur_id={$this->oldid}";
+		  "cur_namespace={$this->nns},cur_title='{$this->ndt}' " .
+		  "WHERE cur_id={$this->oldid}";
 		wfQuery( $sql, $fname );
 
 		$now = date( "YmdHis" );
@@ -337,10 +340,8 @@ class MovePageForm {
           "','{$now}'";
 		$sql = "INSERT INTO cur (cur_namespace,cur_title," .
 		  "cur_comment,cur_user,cur_user_text,cur_timestamp," .
-		  "cur_text,cur_ind_title,cur_is_redirect,cur_is_new) " .
-		  "VALUES ({$common},'#REDIRECT [[{$this->nft}]]\n','" .
-		  wfStrencode( $this->ot->getIndexTitle() ) .
-		  "',1,1)";
+		  "cur_text,cur_is_redirect,cur_is_new) " .
+		  "VALUES ({$common},'#REDIRECT [[{$this->nft}]]\n',1,1)";
 		wfQuery( $sql, $fname );
 		$this->newid = wfInsertId();
 

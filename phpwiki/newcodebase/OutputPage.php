@@ -150,11 +150,11 @@ class OutputPage {
 		$stripped3 = "";
 
 		while ( "" != $text ) {
-			$p = preg_split( "/<\\s*nowiki\\s*>/i", $text, 2 );
+			$p = preg_split( "/<nowiki\\s*>/i", $text, 2 );
 			$stripped .= $p[0];
 			if ( ( count( $p ) < 2 ) || ( "" == $p[1] ) ) { $text = ""; }
 			else {
-				$q = preg_split( "/<\\/\\s*nowiki\\s*>/i", $p[1], 2 );
+				$q = preg_split( "/<\\/nowiki\\s*>/i", $p[1], 2 );
 				++$nwsecs;
 				$nwlist[$nwsecs] = wfEscapeHTMLTagsOnly($q[0]);
 				$stripped .= $unique;
@@ -164,11 +164,11 @@ class OutputPage {
 
 		if( $wgUseTeX ) {
 			while ( "" != $stripped ) {
-				$p = preg_split( "/<\\s*math\\s*>/i", $stripped, 2 );
+				$p = preg_split( "/<math\\s*>/i", $stripped, 2 );
 				$stripped2 .= $p[0];
 				if ( ( count( $p ) < 2 ) || ( "" == $p[1] ) ) { $stripped = ""; }
 				else {
-					$q = preg_split( "/<\\/\\s*math\\s*>/i", $p[1], 2 );
+					$q = preg_split( "/<\\/math\\s*>/i", $p[1], 2 );
 					++$mathsecs;
 					$mathlist[$mathsecs] = renderMath($q[0]);
 					$stripped2 .= $unique2;
@@ -180,11 +180,11 @@ class OutputPage {
 		}
 
 		while ( "" != $stripped2 ) {
-			$p = preg_split( "/<\\s*pre\\s*>/i", $stripped2, 2 );
+			$p = preg_split( "/<pre\\s*>/i", $stripped2, 2 );
 			$stripped3 .= $p[0];
 			if ( ( count( $p ) < 2 ) || ( "" == $p[1] ) ) { $stripped2 = ""; }
 			else {
-				$q = preg_split( "/<\\/\\s*pre\\s*>/i", $p[1], 2 );
+				$q = preg_split( "/<\\/pre\\s*>/i", $p[1], 2 );
 				++$presecs;
 				$prelist[$presecs] = "<pre>". wfEscapeHTMLTagsOnly($q[0]). "</pre>";
 				$stripped3 .= $unique3;
@@ -196,6 +196,8 @@ class OutputPage {
 
 		for ( $i = 1; $i <= $presecs; ++$i ) {
 			$text = preg_replace( "/{$unique3}/", str_replace( '$', '\$', $prelist[$i] ), $text, 1 );
+			#$rep = str_replace( array( '$', '\' ), array( '\$', '\\' ), $prelist[$i] );
+			#$text = preg_replace( "/{$unique3}/", $bit, $text, 1 );
 		}
 
 		for ( $i = 1; $i <= $mathsecs; ++$i ) {

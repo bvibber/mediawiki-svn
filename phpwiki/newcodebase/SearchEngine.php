@@ -134,14 +134,14 @@ class SearchEngine {
 
                 $searchnamespaces = $this->queryNamespaces () ;
 		$sql = "SELECT cur_id,cur_namespace,cur_title," .
-		  "cur_text FROM cur " .
-		  "WHERE {$this->mTitlecond} AND ({$searchnamespaces}) " .
+		  "cur_text FROM cur,searchindex " .
+		  "WHERE cur_id=si_page AND {$this->mTitlecond} AND ({$searchnamespaces}) " .
 		  "LIMIT {$offset}, {$limit}";
 		$res1 = wfQuery( $sql, $fname );
 
 		$sql = "SELECT cur_id,cur_namespace,cur_title," .
-		  "cur_text FROM cur " .
-		  "WHERE {$this->mTextcond} AND ({$searchnamespaces}) " .
+		  "cur_text FROM cur,searchindex " .
+		  "WHERE cur_id=si_page AND {$this->mTextcond} AND ({$searchnamespaces}) " .
 		  "LIMIT {$offset}, {$limit}";
 		$res2 = wfQuery( $sql, $fname );
 
@@ -279,10 +279,10 @@ class SearchEngine {
 		if ( 0 == count( $this->mSearchterms ) ) { return; }
 
 		$this->mTitlecond = "(" . str_replace( "##field##",
-		  "cur_ind_title", $cond ) . " )";
+		  "si_title", $cond ) . " )";
 
 		$this->mTextcond = "(" . str_replace( "##field##",
-		  "cur_ind_text", $cond ) . " AND (cur_is_redirect=0) )";
+		  "si_text", $cond ) . " AND (cur_is_redirect=0) )";
 	}
 
 	function showHit( $row )

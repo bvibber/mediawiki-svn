@@ -13,10 +13,16 @@ class LinksUpdate {
 
 	function doUpdate()
 	{
-		global $wgLinkCache;
+		global $wgLinkCache, $wgDBtransactions;
 		$fname = "LinksUpdate::doUpdate";
+		wfProfileIn( $fname );
 		$t = wfStrencode( $this->mTitle );
 
+		if( $wgDBtransactions ) {
+			$sql = "BEGIN";
+			wfQuery( $sql, $fname );
+		}
+		
 		$sql = "DELETE FROM links WHERE l_from='{$t}'";
 		wfQuery( $sql, $fname );
 
@@ -87,6 +93,12 @@ class LinksUpdate {
 
 		$sql = "DELETE FROM brokenlinks WHERE bl_to='{$t}'";
 		wfQuery( $sql, $fname );
+
+		if( $wgDBtransactions ) {
+			$sql = "COMMIT";
+			wfQuery( $sql, $fname );
+		}
+		wfProfileOut();
 	}
 }
 

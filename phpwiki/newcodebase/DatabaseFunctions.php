@@ -42,6 +42,7 @@ function wfGetDB( $altuser = "", $altpassword = "" )
 function wfQuery( $sql, $fname = "" )
 {
 	global $wgLastDatabaseQuery, $wgOut;
+##	wfProfileIn( "wfQuery" );
 	$wgLastDatabaseQuery = $sql;
 
 	$conn = wfGetDB();
@@ -56,6 +57,7 @@ function wfQuery( $sql, $fname = "" )
 		$wgOut->databaseError( $fname );
 		exit;
 	}
+##	wfProfileOut();
 	return $ret;
 }
 
