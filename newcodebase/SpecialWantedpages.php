@@ -13,9 +13,9 @@ function wfSpecialWantedpages()
 	}
 	if ( ! $offset ) { $offset = 0; }
 
-	$sql = "SELECT bl_to, COUNT( bl_from ) as nlinks " .
-	  "FROM brokenlinks GROUP BY bl_to ORDER BY nlinks DESC " .
-	  "LIMIT {$offset}, {$limit}";
+	$sql = "SELECT bl_to, COUNT( bl_to ) as nlinks " .
+	  "FROM brokenlinks GROUP BY bl_to HAVING nlinks > 1 " .
+	  "ORDER BY nlinks DESC LIMIT {$offset}, {$limit}";
 	$res = wfQuery( $sql, $fname );
 
 	$sk = $wgUser->getSkin();
