@@ -1,5 +1,5 @@
 <?
-include("utf8Case.php");
+include_once( "utf8Case.php" );
 
 # NOTE: To turn off "Current Events" in the sidebar,
 # set "currentevents" => "-"
@@ -1014,7 +1014,7 @@ Wybierz, proszę, nową nazwę.",
 
 );
 
-class LanguagePl extends Language {
+class LanguagePl extends LanguageUtf8 {
 
 	function getNamespaces() {
 		global $wgNamespaceNamesPl;
@@ -1033,10 +1033,6 @@ class LanguagePl extends Language {
 			if ( 0 == strcasecmp( $n, $text ) ) { return $i; }
 		}
 		return false;
-	}
-
-	function specialPage( $name ) {
-		return $this->getNsText( Namespace::getSpecial() ) . ":" . $name;
 	}
 
 	function getQuickbarSettings() {
@@ -1151,26 +1147,8 @@ class LanguagePl extends Language {
 			return Language::getMessage($key);
 	}
 
-	function ucfirst( $string ) {
-		# For most languages, this is a wrapper for ucfirst()
-		# But that doesn't work right in a UTF-8 locale
-		global $wikiUpperChars;
-        return preg_replace (
-        	"/^([\\x00-\\x7f]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
-        	"strtr ( \"\$1\" , \$wikiUpperChars )",
-        	$string );
-	}
+	# Inherit ucfirst() and stripForSearch() from LangugeUtf8
 	
-	function stripForSearch( $string ) {
-		# MySQL fulltext index doesn't grok utf-8, so we
-		# need to fold cases and convert to hex
-		global $wikiLowerChars;
-		return preg_replace(
-		  "/([\\xc0-\\xff][\\x80-\\xbf]*)/e",
-		  "'U8' . bin2hex( strtr( \"\$1\", \$wikiLowerChars ) )",
-		  $string );
-	}
-
 	function checkTitleEncoding( $s ) {
         # Check for Latin-2 backwards-compatibility URLs
 		$ishigh = preg_match( '/[\x80-\xff]/', $s);

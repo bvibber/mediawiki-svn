@@ -1,5 +1,5 @@
 <?
-include("utf8Case.php");
+include_once( "utf8Case.php" );
 
 # NOTE: To turn off "Current Events" in the sidebar,
 # set "currentevents" => "-"
@@ -995,7 +995,7 @@ Please choose another name.",
 
 );
 
-class LanguageZh extends Language {
+class LanguageZh extends LanguageUtf8 {
 
 	function getDefaultUserOptions () {
 		global $wgDefaultUserOptionsZh ;
@@ -1026,10 +1026,6 @@ class LanguageZh extends Language {
 		# Aliases
         if ( 0 == strcasecmp( "Special", $text ) ) { return -1; }
 		return false;
-	}
-
-	function specialPage( $name ) {
-		return $this->getNsText( Namespace::getSpecial() ) . ":" . $name;
 	}
 
 	function getQuickbarSettings() {
@@ -1138,16 +1134,6 @@ class LanguageZh extends Language {
 	
 	# inherit default iconv(), ucfirst(), checkTitleEncoding()
 
-	function ucfirst( $string ) {
-		# For most languages, this is a wrapper for ucfirst()
-		# But that doesn't work right in a UTF-8 locale
-		global $wikiUpperChars, $wikiLowerChars;
-		return preg_replace (
-		  "/^([\\x00-\\x7f]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
-		  "strtr ( \"\$1\" , \$wikiUpperChars )",
-		  $string );
-	}
-	
 	function stripForSearch( $string ) {
 		# MySQL fulltext index doesn't grok utf-8, so we
 		# need to fold cases and convert to hex
