@@ -24,6 +24,7 @@ $wgDebugComments	= false;
 $wgCachePages		= false;
 
 $wgLanguageCode     = "en";
+$wgInterwikiMagic	= true; # Treat language links as magic connectors, not inline links
 $wgInputEncoding	= "ISO-8859-1";
 $wgOutputEncoding	= "ISO-8859-1";
 
