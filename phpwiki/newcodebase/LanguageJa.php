@@ -450,10 +450,10 @@ press \"Save page\".\n<p>" */,
 "storedversion" => "保存された版",
 "editingold"	=> "<strong>警告: あなたはこのページの古い版を
 編集しています。もしもこの文章を保存すると、この版以降に追加された
-全ての変更が無効になってしまいます。</strong>
+全ての変更が無効になってしまいます。</strong>",
 /* <p><strong>WARNING: You are editing an out-of-date
 revision of this page.
-If you save it, any changes made since this revision will be lost.</strong>\n" */,
+If you save it, any changes made since this revision will be lost.</strong>\n" */
 "yourdiff"		=> "あなたの更新内容",
 "copyrightwarning" => "Wikipediaに投稿された文書は、すべて GNU Free Documentation License によって発行されたものとみなされますので、留意してください。
 <p>(詳細は $1 を参照, また、参考までに非公式日本語訳は &lt;http://www.opensource.jp/fdl/fdl.ja.html&gt;　を参照)。
@@ -645,7 +645,7 @@ wfLocalUrlE( "Wikipedia:Upload_log" ) . "\">にあります。</a>.
 ウィキペディアの他のページと同じく、あなたがアップロードしたファイルも、より
 よい百科事典作成のために他のユーザーによって編集、削除されることがあります。
 また、アップロード機能を乱用した利用者は、アップロード機能の使用を禁じされることも
-ありますのでご承知下さい。
+ありますのでご承知下さい。",
 
 /* <strong>STOP!</strong> Before you upload here,
 make sure to read and follow Wikipedia's <a href=\"" .
@@ -674,7 +674,7 @@ To include the image in an article, use a link in the form
 or <b>[[media:file.ogg]]</b> for sounds.
 <p>Please note that as with Wikipedia pages, others may edit or
 delete your uploads if they think it serves the encyclopedia, and
-you may be blocked from uploading if you abuse the system." */,
+you may be blocked from uploading if you abuse the system." */
 "uploadlog"		=> "upload log",
 "uploadlogpage" => "Upload_log",
 "uploadlogpagetext" => "以下は最近のファイルのアップロードのログです。
@@ -838,12 +838,12 @@ to modify your watchlist." */,
 に追加しました。
 このページと、付属のノートのページに変更があった際にはそれをウォッチリストで
 知ることができます。また、
- wfLocalUrl( "特別:Recentchanges" ) . "\">最近更新したページ</a> では
+<a href=\"" . wfLocalUrl( "特別:Recentchanges" ) . "\">最近更新したページ</a> では
 ウォッチリストに含まれているページは<b>ボールド体</b>で表示され、見つけやすく
 なります。</p>
 
 <p>もしもウォッチリストから特定のページを削除したい場合には、サイドバーにある
-\"ウォッチリストから削除\" のリンクをクリックして下さい。"
+\"ウォッチリストから削除\" のリンクをクリックして下さい。",
 
 /* The page \"$1\" has been added to your <a href=\"" .
   wfLocalUrl( "Special:Watchlist" ) . "\">watchlist</a>.
@@ -852,7 +852,7 @@ and the page will appear <b>bolded</b> in the <a href=\"" .
   wfLocalUrl( "Special:Recentchanges" ) . "\">list of recent changes</a> to
 make it easier to pick out.</p> 
 
-<p>If you want to remove the page from your watchlist later, click \"Stop watching\" in the sidebar." */,
+<p>If you want to remove the page from your watchlist later, click \"Stop watching\" in the sidebar." */
 
 "removedwatch"	=> "ウォッチリストから削除しました" /* "Removed from watchlist" */,
 "removedwatchtext" => "ページ\"$1\はウォッチリストから削除されました。" /* "The page \"$1\" has been removed from your watchlist." */,
