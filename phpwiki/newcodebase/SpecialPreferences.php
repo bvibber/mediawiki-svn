@@ -79,7 +79,7 @@ function wfSpecialPreferences()
 
 	$togs = $wgLang->getUserToggles();
 	foreach ( $togs as $tname => $ttext ) {
-		$HTTP_POST_VARS["wpOp$tname"] = $wgUser->getOption( $name );
+		$HTTP_POST_VARS["wpOp$tname"] = $wgUser->getOption( $tname );
 	}
 }
 
