@@ -102,11 +102,11 @@ function edit ( $title ) {
 				$oldSubmittedText = str_replace ( "\\'" , "'" , $oldSubmittedText ) ;
 				$oldSubmittedText = str_replace ( "\\\"" , "\"" , $oldSubmittedText ) ;
 				$oldSubmittedText = str_replace ( "\\\\" , "\\" , $oldSubmittedText ) ;
-				$oldSubmittedText = str_replace ( "&" , "&amp;" , $oldSubmittedText ) ;
+				#$oldSubmittedText = str_replace ( "&" , "&amp;" , $oldSubmittedText ) ;
 				$EditTime = date ( "YmdHis" ) ; # reset time counter
 				$npage->load ( $npage->title ) ;
 				$text = $npage->contents ;
-				$text = str_replace ( "&" , "&amp;" , $text ) ;
+				#$text = str_replace ( "&" , "&amp;" , $text ) ;
 
 				$editConflict = true ;
 				}
@@ -154,7 +154,7 @@ function edit ( $title ) {
 		$text = $wikiDescribePage ;
 		}
 
-	$text = htmlspecialchars ( $text ) ;
+	#$text = htmlspecialchars ( $text ) ;
 
 	if ( $MinorEdit ) $checked = "checked" ;
 	else $checked = "" ;
@@ -169,7 +169,7 @@ function edit ( $title ) {
 #	$bodyOptions = " onLoad=setfocus()" ;
 
 	$ret .= "<form method=POST action=\"".wikiLink($npage->url)."\" name=f\" enctype=\"application/x-www-form-urlencoded\">" ;
-	$ret .= "<textarea tabindex=1 name=EditBox rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>".$text."</textarea><br>\n" ;
+	$ret .= "<textarea tabindex=1 name=EditBox rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>".htmlspecialchars ( $text )."</textarea><br>\n" ;
 	$ret .= "$wikiSummary<input tabindex=2 type=text value=\"$CommentBox\" name=CommentBox size=50 maxlength=200> \n" ;
 	if ( $user->isLoggedIn == "yes" ) 
 		$ret .= "<input tabindex=3 type=checkbox name=MinorEdit $checked value=1>$wikiMinorEdit &nbsp; " ;
@@ -185,17 +185,19 @@ function edit ( $title ) {
 	$ret .= " | <a href=\"".wikiLink("wikipedia:How_does_one_edit_a_page")."\">$wikiEditHelp</a>\n" ;
 
 	if ( $editConflict ) {
-		$ret .= "<br><hr><br><b>This is the text you submitted :</b><br>\n" ;
-		$ret .= "<textarea name=NotIMPORTANT rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>$oldSubmittedText</textarea><br>\n" ;
 		# Add the diffs between the two competing versions:
-		$ret .= "<nowiki><font color=red><b>$wikiBeginDiff</b></font><br>\n\n" ;
+		$ret .= "<br><hr><nowiki><font color=red><b>$wikiBeginDiff</b></font><br>\n\n" ;
 		$old_lines = explode ( "\n" , htmlspecialchars( $oldSubmittedText ) ) ;
 		$new_lines = explode ( "\n" , htmlspecialchars( $text ) ) ;
+		#$old_lines = explode ( "\n" , $oldSubmittedText ) ;
+		#$new_lines = explode ( "\n" , $text ) ;
 		include_once( "./difflib.php" );
 		$diffs = new Diff($old_lines, $new_lines);
 		$formatter = new TableDiffFormatter();
 		$ret .= $formatter->format($diffs);
 		$ret .= "<font color=red><b>$wikiEndDiff</b></font><hr></nowiki>\n" ;
+		$ret .= "<br><b>This is the text you submitted :</b><br>\n" ;
+		$ret .= "<textarea name=NotIMPORTANT rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>" . htmlspecialchars ( $oldSubmittedText ) . "</textarea><br>\n" ;
 	      }
 
 	$ret .= " </form>\n" ;
