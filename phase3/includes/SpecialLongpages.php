@@ -3,20 +3,20 @@
 function wfSpecialLongpages()
 {
 	global $wgUser, $wgOut, $wgLang, $wgTitle;
-	global $limit, $offset; # From query string
 	$fname = "wfSpecialLongpages";
+
+	# Cache
+	$vsp = $wgLang->getValidSpecialPages();
+	$log = new LogPage( $vsp["Longpages"] );
+	$log->mUpdateRecentChanges = false;
 
 	global $wgMiserMode;
 	if ( $wgMiserMode ) {
-		$wgOut->addWikiText( wfMsg( "perfdisabled" ) );
+		$log->showAsDisabledPage();
 		return;
 	}
 
-	if ( ! $limit ) {
-		$limit = $wgUser->getOption( "rclimit" );
-		if ( ! $limit ) { $limit = 50; }
-	}
-	if ( ! $offset ) { $offset = 0; }
+	list( $limit, $offset ) = wfCheckLimits();
 
 	$sql = "SELECT cur_title, LENGTH(cur_text) AS len FROM cur " .
 	  "WHERE cur_namespace=0 AND cur_is_redirect=0 ORDER BY " .
@@ -42,6 +42,10 @@ function wfSpecialLongpages()
 	$s .= "</ol>";
 	$wgOut->addHTML( $s );
 	$wgOut->addHTML( "<p>{$sl}\n" );
+
+	# Saving cache
+	if ( $offset > 0 OR $limit < 50 ) return ; #Not suitable
+	$log->replaceContent( $s );
 }
 
 ?>

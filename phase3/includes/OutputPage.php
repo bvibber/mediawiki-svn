@@ -93,7 +93,7 @@ function renderMath( $tex )
 
 	$outmd5_sql = mysql_escape_string(pack("H32", $outmd5));
 
-	$sql = "INSERT INTO math VALUES ('".$md5_sql."', '".$outmd5_sql."', ".$conservativeness.", ".$sql_html.", ".$sql_mathml.")";
+	$sql = "REPLACE INTO math VALUES ('".$md5_sql."', '".$outmd5_sql."', ".$conservativeness.", ".$sql_html.", ".$sql_mathml.")";
 	
 	$res = wfQuery( $sql, $fname );
 	# we don't really care if it fails
@@ -152,13 +152,17 @@ class OutputPage {
 		if( !$wgCachePages ) return;
 		if( preg_match( '/MSIE ([1-4]|5\.0)/', $_SERVER["HTTP_USER_AGENT"] ) ) {
 			# IE 5.0 has probs with our caching
+			#wfDebug( "-- bad client, not caching\n", false );
 			return;
 		}
+		if( $wgUser->getOption( "nocache" ) ) return;
 
 		if( $_SERVER["HTTP_IF_MODIFIED_SINCE"] != "" ) {
 			$ismodsince = wfUnix2Timestamp( strtotime( $_SERVER["HTTP_IF_MODIFIED_SINCE"] ) );
+			#wfDebug( "-- client send If-Modified-Since: " . $_SERVER["HTTP_IF_MODIFIED_SINCE"] . "\n", false );
 			$lastmod = gmdate( "D, j M Y H:i:s", wfTimestamp2Unix(
 				max( $timestamp, $wgUser->mTouched ) ) ) . " GMT";
+			#wfDebug( "--  we might send Last-Modified : $lastmod\n", false ); 
 		
 			if( ($ismodsince >= $timestamp ) and $wgUser->validateCache( $ismodsince ) ) {
 				# Make sure you're in a place you can leave when you call us!
@@ -283,22 +287,39 @@ class OutputPage {
 		}
 
 		$text = $this->doWikiPass2( $stripped3, $linestart );
-
+		
+		$specialChars = array("\\", "$");
+		$escapedChars = array("\\\\", "\\$");
 		for ( $i = 1; $i <= $presecs; ++$i ) {
-			$text = preg_replace( "/{$unique3}/", str_replace( '$', '\$', $prelist[$i] ), $text, 1 );
+			$text = preg_replace( "/{$unique3}/", str_replace( $specialChars, 
+				$escapedChars, $prelist[$i] ), $text, 1 );
 		}
 
 		for ( $i = 1; $i <= $mathsecs; ++$i ) {
-			$text = preg_replace( "/{$unique2}/", str_replace( '$', '\$', $mathlist[$i] ), $text, 1 );
+			$text = preg_replace( "/{$unique2}/", str_replace( $specialChars, 
+				$escapedChars, $mathlist[$i] ), $text, 1 );
 		}
 
 		for ( $i = 1; $i <= $nwsecs; ++$i ) {
-			$text = preg_replace( "/{$unique}/", str_replace( '$', '\$', $nwlist[$i] ), $text, 1 );
+			$text = preg_replace( "/{$unique}/", str_replace( $specialChars, 
+				$escapedChars, $nwlist[$i] ), $text, 1 );
 		}
 		$this->addHTML( $text );
 		wfProfileOut();
 	}
 
+	function sendCacheControl() {
+		if( $this->mLastModified != "" ) {
+			header( "Cache-Control: private, must-revalidate, max-age=0" );
+			header( "Last-modified: {$this->mLastModified}" );
+		} else {
+			header( "Cache-Control: no-cache" ); # Experimental - see below
+			header( "Pragma: no-cache" );
+			header( "Last-modified: " . gmdate( "D, j M Y H:i:s" ) . " GMT" );
+		}
+		header( "Expires: Mon, 15 Jan 2001 00:00:00 GMT" ); # Cachers always validate the page!
+	}
+	
 	# Finally, all the text has been munged and accumulated into
 	# the object, let's actually output it:
 	#
@@ -310,15 +331,7 @@ class OutputPage {
 		$sk = $wgUser->getSkin();
 
 		wfProfileIn( "OutputPage::output-headers" );
-		if( $this->mLastModified != "" ) {
-			header( "Cache-Control: private, must-revalidate, max-age=0" );
-			header( "Last-modified: {$this->mLastModified}" );
-		} else {
-			header( "Cache-Control: no-cache" ); # Experimental - see below
-			header( "Pragma: no-cache" );
-			header( "Last-modified: " . gmdate( "D, j M Y H:i:s" ) . " GMT" );
-		}
-		header( "Expires: Mon, 15 Jan 2001 00:00:00 GMT" ); # Cachers always validate the page!
+		$this->sendCacheControl();
 
 		header( "Content-type: text/html; charset={$wgOutputEncoding}" );
 		header( "Content-language: {$wgLanguageCode}" );
@@ -424,7 +437,7 @@ class OutputPage {
 	function reportTime()
 	{
 		global $wgRequestTime, $wgDebugLogFile, $HTTP_SERVER_VARS;
-		global $wgProfiling, $wgProfileStack;
+		global $wgProfiling, $wgProfileStack, $wgUser;
 
 		list( $usec, $sec ) = explode( " ", microtime() );
 		$now = (float)$sec + (float)$usec;
@@ -464,8 +477,10 @@ class OutputPage {
 				$forward .= " from $from";
 			if( $forward )
 				$forward = "\t(proxied via {$HTTP_SERVER_VARS['REMOTE_ADDR']}{$forward})";
+			if($wgUser->getId() == 0)
+				$forward .= " anon";
 			$log = sprintf( "%s\t%04.3f\t%s\n",
-			  date( "YmdHis" ), $elapsed,
+			  gmdate( "YmdHis" ), $elapsed,
 			  urldecode( $HTTP_SERVER_VARS['REQUEST_URI'] . $forward ) );
 			error_log( $log . $prof, 3, $wgDebugLogFile );
 		}
@@ -531,17 +546,26 @@ class OutputPage {
 
 	function databaseError( $fname )
 	{
-		global $wgUser;
+		global $wgUser, $wgCommandLineMode;
 
 		$this->setPageTitle( wfMsg( "databaseerror" ) );
 		$this->setRobotpolicy( "noindex,nofollow" );
 		$this->setArticleFlag( false );
 
-		$msg = str_replace( "$1", htmlspecialchars( wfLastDBquery() ), wfMsg( "dberrortext" ) );
+		if ( $wgCommandLineMode ) {
+			$msg = wfMsg( "dberrortextcl" );
+		} else {
+			$msg = wfMsg( "dberrortextcl" );
+		}
+		$msg = str_replace( "$1", htmlspecialchars( wfLastDBquery() ), $msg );
 		$msg = str_replace( "$2", htmlspecialchars( $fname ), $msg );
 		$msg = str_replace( "$3", wfLastErrno(), $msg );
 		$msg = str_replace( "$4", htmlspecialchars( wfLastError() ), $msg );
 
+		if ( $wgCommandLineMode ) {
+			print $msg;
+			exit();
+		}
 		$sk = $wgUser->getSkin();
 		$shlink = $sk->makeKnownLink( wfMsg( "searchhelppage" ),
 		  wfMsg( "searchingwikipedia" ) );
@@ -634,9 +658,9 @@ class OutputPage {
 	#
 	function doWikiPass2( $text, $linestart )
 	{
-		global $wgUser;
+		global $wgUser, $wgLang, $wgUseDynamicDates;
 		wfProfileIn( "OutputPage::doWikiPass2" );
-
+		
 		$text = $this->removeHTMLtags( $text );
 		$text = $this->replaceVariables( $text );
 
@@ -646,13 +670,17 @@ class OutputPage {
 		$text = $this->doQuotes( $text );
 		$text = $this->doHeadings( $text );
 		$text = $this->doBlockLevels( $text, $linestart );
+		
+		if($wgUseDynamicDates) {
+			$text = $wgLang->replaceDates( $text );
+		}
 
 		$text = $this->replaceExternalLinks( $text );
 		$text = $this->replaceInternalLinks ( $text );
 
 		$text = $this->magicISBN( $text );
 		$text = $this->magicRFC( $text );
-		$text = $this->autoNumberHeadings( $text );
+		$text = $this->formatHeadings( $text );
 
 		$sk = $wgUser->getSkin();
 		$text = $sk->transformContent( $text );
@@ -694,7 +722,7 @@ class OutputPage {
 		wfProfileOut();
 		return $text;
 	}
-
+	
 	/* private */ function subReplaceExternalLinks( $s, $protocol, $autonumber )
 	{
 		global $wgUser, $printable;
@@ -766,9 +794,10 @@ class OutputPage {
 	{
 		global $wgTitle, $wgUser, $wgLang;
 		global $wgLinkCache, $wgInterwikiMagic;
-		global $wgNamespacesWithSubpages;
-		wfProfileIn( "OutputPage::replaceInternalLinks" );
+		global $wgNamespacesWithSubpages, $wgLanguageCode;
+		wfProfileIn( $fname = "OutputPage::replaceInternalLinks" );
 
+		wfProfileIn( "$fname-setup" );
 		$tc = Title::legalChars() . "#";
 		$sk = $wgUser->getSkin();
 
@@ -778,7 +807,9 @@ class OutputPage {
 
 		$e1 = "/^([{$tc}]+)\\|([^]]+)]](.*)\$/sD";
 		$e2 = "/^([{$tc}]+)]](.*)\$/sD";
+		wfProfileOut();
 
+		wfProfileIn( "$fname-loop" );
 		foreach ( $a as $line ) {
 			if ( preg_match( $e1, $line, $m ) ) { # page with alternate text
 				
@@ -815,7 +846,7 @@ class OutputPage {
 				$link = $m[1]; 
 			}
 
-			if ( preg_match( "/^([A-Za-z\\x80-\\xff]+):(.*)\$/", $link,  $m ) ) {
+			if ( preg_match( "/^((?:i|x|[a-z]{2,3})(?:-[a-z0-9]+)?|[A-Za-z\\x80-\\xff]+):(.*)\$/", $link,  $m ) ) {
 				$pre = strtolower( $m[1] );
 				$suf = $m[2];
 				if ( $wgLang->getNsIndex( $pre ) ==
@@ -843,7 +874,7 @@ class OutputPage {
 					  Namespace::isTalk( $wgTitle->getNamespace() ) ) {
 						if ( "" == $text ) { $text = $link; }
 						$s .= $sk->makeLink( $link, $text, "", $trail );
-					} else {
+					} else if ( $pre != $wgLanguageCode ) {
 						array_push( $this->mLanguageLinks, "$pre:$suf" );
 						$s .= $trail;
 					}
@@ -856,6 +887,7 @@ class OutputPage {
 				$s .= $sk->makeLink( $link, $text, "", $trail );
 			}
 		}
+		wfProfileOut();
 		wfProfileOut();
 		return $s;
 	}
@@ -1047,6 +1079,8 @@ class OutputPage {
 		global $wgLang;
 		wfProfileIn( "OutputPage:replaceVariables" );
 
+		/* As with sigs, use server's local time --
+		   ensure this is appropriate for your audience! */
 		$v = date( "m" );
 		$text = str_replace( "{{CURRENTMONTH}}", $v, $text );
 		$v = $wgLang->getMonthName( date( "n" ) );
@@ -1059,7 +1093,7 @@ class OutputPage {
 		$text = str_replace( "{{CURRENTDAYNAME}}", $v, $text );
 		$v = date( "Y" );
 		$text = str_replace( "{{CURRENTYEAR}}", $v, $text );
-		$v = $wgLang->time( date( "YmdHis" ), false );
+		$v = $wgLang->time( wfTimestampNow(), false );
 		$text = str_replace( "{{CURRENTTIME}}", $v, $text );
 
 		if ( false !== strstr( $text, "{{NUMBEROFARTICLES}}" ) ) {
@@ -1174,41 +1208,117 @@ class OutputPage {
 		return $text;
 	}
 
-	/* private */ function autoNumberHeadings( $text )
+
+/* 
+ * 
+ * This function accomplishes several tasks:
+ * 1) Auto-number headings if that option is enabled
+ * 2) Add an [edit] link to sections for logged in users who have enabled the option
+ * 3) Add a Table of contents on the top for users who have enabled the option
+ * 4) Auto-anchor headings
+ *
+ * It loops through all headlines, collects the necessary data, then splits up the
+ * string and re-inserts the newly formatted headlines.
+ *
+ * */
+	/* private */ function formatHeadings( $text )
 	{
-		global $wgUser;
-		if ( 1 != $wgUser->getOption( "numberheadings" ) ) {
-			return $text;
-		}
-		$j = 0;
-		$n = -1;
-		for ( $i = 0; $i < 9; ++$i ) {
-			if ( stristr( $text, "<h$i>" ) != false ) {
-				++$j;
-				if ( $n == -1 ) $n = $i;
+		global $wgUser,$wgArticle,$wgTitle,$wpPreview;
+		$nh=$wgUser->getOption( "numberheadings" );
+		$st=$wgUser->getOption( "showtoc" );
+		$es=$wgUser->getID() && $wgUser->getOption( "editsection" );
+		if($wgTitle->getPrefixedText()==wfMsg("mainpage")) {$st=0;}
+
+		$sk=$wgUser->getSkin();
+		preg_match_all("/<H([1-6])(.*?>)(.*?)<\/H[1-6]>/i",$text,$matches);
+
+		$c=0;
+
+		foreach($matches[3] as $headline) {
+			if($level) { $prevlevel=$level;}
+			$level=$matches[1][$c];
+			if(($nh||$st) && $prevlevel && $level>$prevlevel) { 
+							
+				$h[$level]=0; // reset when we enter a new level				
+				$toc.=$sk->tocIndent($level-$prevlevel);
+				$toclevel+=$level-$prevlevel;
+			
+			} 
+			if(($nh||$st) && $level<$prevlevel) {
+				$h[$level+1]=0; // reset when we step back a level
+				$toc.=$sk->tocUnindent($prevlevel-$level);
+				$toclevel-=$prevlevel-$level;
+
 			}
-		}
-		if ( $j < 2 ) return $text;
-		$i = $n;
-		$v = array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 );
-		$t = "";
-		while ( count( spliti( "<h", $text, 2 ) ) == 2 ) {
-			$a = spliti( "<h", $text, 2 );
-			$j = substr( $a[1], 0, 1 );
-			if ( strtolower( $j ) != "r" ) {
-				$t .= $a[0] . "<h" . $j . ">";
-				++$v[$j];
-				$b = array();
-				for ( $k = $i; $k <= $j; $k++ ) array_push( $b, $v[$k] );
-				for ( $k = $j+1; $k < 9; $k++ ) $v[$k] = 0;
-				$t .= implode( ".", $b ) . " ";
-                $text = substr( $a[1] , 2 ) ;
-			} else { # <HR> tag, not a heading!
-				$t .= $a[0] . "<hr>";
-				$text = substr( $a[1], 2 );
+			$h[$level]++; // count number of headlines for each level
+			
+			if($nh||$st) {
+				for($i=1;$i<=$level;$i++) {
+					if($h[$i]) {
+						if($dot) {$numbering.=".";}
+						$numbering.=$h[$i];
+						$dot=1;					
+					}
+				}
 			}
+
+			
+			$canonized_headline=preg_replace("/<.*?>/","",$headline); // strip out HTML
+			$tocline=$canonized_headline;
+			$canonized_headline=str_replace('"',"",$canonized_headline);
+			$canonized_headline=str_replace(" ","_",trim($canonized_headline));			
+			$refer[$c]=$canonized_headline;
+			$refers[$canonized_headline]++;  // count how many in assoc. array so we can track dupes in anchors
+			$refcount[$c]=$refers[$canonized_headline];
+			if($nh||$st) {
+				$tocline=$numbering ." ". $tocline;
+				if($nh) {
+					$headline=$numbering . " " . $headline; // the two are different if the line contains a link
+				}				
+			}
+			$anchor=$canonized_headline;
+			if($refcount[$c]>1) {$anchor.="_".$refcount[$c];}
+			if($st) {
+				$toc.=$sk->tocLine($anchor,$tocline,$toclevel);
+			}
+			if($es && !isset($wpPreview)) {
+				$head[$c].=$sk->editSectionLink($c+1);
+			}
+			$head[$c].="<H".$level.$matches[2][$c]
+			 ."<a name=\"".$anchor."\">"
+			 .$headline
+			 ."</a>"
+			 ."</H".$level.">";
+			$numbering="";
+			$c++;
+			$dot=0;
+		}		
+
+		if($st) {
+			$toclines=$c;
+			$toc.=$sk->tocUnindent($toclevel);
+			$toc=$sk->tocTable($toc);
 		}
-        return $t . $text;
+
+		// split up and insert constructed headlines
+		
+		$blocks=preg_split("/<H[1-6].*?>.*?<\/H[1-6]>/i",$text);
+		$i=0;
+
+
+		foreach($blocks as $block) {
+			if($es && !isset($wpPreview) && $c>0 && $i==0) {
+				$full.=$sk->editSectionLink(0);				
+			}
+			$full.=$block;
+			if($st && $toclines>3 && !$i) {
+				$full="<a name=\"top\"></a>".$full.$toc;
+			}
+
+			$full.=$head[$i];
+			$i++;
+		}
+		return $full;
 	}
 
 	/* private */ function magicISBN( $text )
@@ -1237,7 +1347,7 @@ class OutputPage {
 				$text .= "ISBN $blank$x";
             } else {
 				$text .= "<a href=\"" . wfLocalUrlE( $wgLang->specialPage(
-				  "Booksources"), "isbn={$num}" ) . "\">ISBN $isbn</a>";
+				  "Booksources"), "isbn={$num}" ) . "\" CLASS=\"internal\">ISBN $isbn</a>";
 				$text .= $x;
 			}
 		}
@@ -1251,9 +1361,9 @@ class OutputPage {
 
 	/* private */ function headElement()
 	{
-		global $wgDocType, $wgUser, $wgLanguageCode, $wgOutputEncoding;
+		global $wgDocType, $wgDTD, $wgUser, $wgLanguageCode, $wgOutputEncoding;
 
-		$ret = "<!DOCTYPE HTML PUBLIC \"$wgDocType\">\n";
+		$ret = "<!DOCTYPE HTML PUBLIC \"$wgDocType\"\n        \"$wgDTD\">\n";
 
 		if ( "" == $this->mHTMLtitle ) {
 			$this->mHTMLtitle = $this->mPagetitle;

@@ -44,6 +44,9 @@ print IW <<arrgghsomanyofthem
 	"sep11"		=> "http://sep11.wikipedia.org/wiki/\$1",
 	"simple"=> "http://simple.wikipedia.com/wiki.cgi?\$1",
 	"wiktionary"	=> "http://wiktionary.wikipedia.org/wiki/\$1",
+	"PageHistory" => "http://www.wikipedia.org/w/wiki.phtml?title=\$1&action=history",
+	"UserContributions" => "http://www.wikipedia.org/w/wiki.phtml?title=Special:Contributions&target=\$1",
+	"BackLinks" => "http://www.wikipedia.org/w/wiki.phtml?title=Special:Whatlinkshere&target=\$1",
 
 	# ISO 639 2-letter language codes
 	"aa"    => "http://aa.wikipedia.com/wiki.cgi?\$1",

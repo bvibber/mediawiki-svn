@@ -132,12 +132,6 @@ CREATE TABLE oldimage (
   oi_timestamp char(14) binary NOT NULL default ''
 ) TYPE=MyISAM PACK_KEYS=1;
 
-DROP TABLE IF EXISTS random;
-CREATE TABLE random (
-  ra_current tinyint(1) unsigned not null default 0,
-  ra_title varchar(255) binary not null default ''
-) TYPE=MyISAM PACK_KEYS=1;
-
 DROP TABLE IF EXISTS recentchanges;
 CREATE TABLE recentchanges (
   rc_timestamp varchar(14) binary NOT NULL default '',
@@ -165,12 +159,12 @@ CREATE TABLE watchlist (
 
 DROP TABLE IF EXISTS math;
 CREATE TABLE math (
-    math_inputhash varchar(16) NOT NULL,
-    math_outputhash varchar(16) NOT NULL,
-    math_html_conservativeness tinyint(1) NOT NULL,
-    math_html text,
-    math_mathml text,
-    UNIQUE KEY math_inputhash (math_inputhash)
+  math_inputhash varchar(16) NOT NULL,
+  math_outputhash varchar(16) NOT NULL,
+  math_html_conservativeness tinyint(1) NOT NULL,
+  math_html text,
+  math_mathml text,
+  UNIQUE KEY math_inputhash (math_inputhash)
 ) TYPE=MyISAM;
 
 -- Table searchindex must be MyISAM for fulltext support

@@ -7,7 +7,7 @@ class Article {
 	/* private */ var $mUser, $mTimestamp, $mUserText;
 	/* private */ var $mCounter, $mComment, $mCountAdjustment;
 	/* private */ var $mMinorEdit, $mRedirectedFrom;
-	/* private */ var $mTouched;
+	/* private */ var $mTouched, $mFileCache;
 
 	function Article() { $this->clear(); }
 
@@ -16,7 +16,7 @@ class Article {
 		$this->mContentLoaded = false;
 		$this->mUser = $this->mCounter = -1; # Not loaded
 		$this->mRedirectedFrom = $this->mUserText =
-		$this->mTimestamp = $this->mComment = "";
+		$this->mTimestamp = $this->mComment = $this->mFileCache = "";
 		$this->mCountAdjustment = 0;
 		$this->mTouched = "19700101000000";
 	}
@@ -50,7 +50,7 @@ class Article {
 
 	function getContent( $noredir = false )
 	{
-		global $action,$wgTitle; # From query string
+		global $action,$section,$count,$wgTitle; # From query string
 		wfProfileIn( "Article::getContent" );
 
 		if ( 0 == $this->getID() ) {
@@ -75,7 +75,20 @@ class Article {
 				) 
 				{
 				return $this->mContent . "\n" .wfMsg("anontalkpagetext"); }
-			else {
+			else {				
+				if($action=="edit") {
+					if($section!="") {
+
+						$secs=preg_split("/(^=+.*?=+)/m",
+						 $this->mContent, -1,
+						 PREG_SPLIT_DELIM_CAPTURE);
+						if($section==0) {
+							return trim($secs[0]);
+						} else {
+							return trim($secs[$section*2-1] . $secs[$section*2]);
+						}
+					}
+				}
 				return $this->mContent;
 			}
 		}
@@ -289,6 +302,7 @@ class Article {
 			$wgOut->setSubtitle( $s );
 		}
 		$wgOut->checkLastModified( $this->mTouched );
+		$this->tryFileCache();
 		$wgLinkCache->preFill( $wgTitle );
 		$wgOut->addWikiText( $text );
 
@@ -366,9 +380,11 @@ class Article {
 		global $wgOut, $wgUser, $wgTitle;
 		global $wpTextbox1, $wpSummary, $wpWatchthis;
 		global $wpSave, $wpPreview;
-		global $wpMinoredit, $wpEdittime, $wpTextbox2;
-		global $oldid, $redirect;
+		global $wpMinoredit, $wpEdittime, $wpTextbox2, $wpSection;
+		global $oldid, $redirect, $section;
 		global $wgLang;
+
+		if(isset($wpSection)) { $section=$wpSection; }
 
 		$sk = $wgUser->getSkin();
 		$isConflict = false;
@@ -423,7 +439,7 @@ class Article {
 			}
 			if ( ! $isConflict ) {
 				# All's well: update the article here
-				$this->updateArticle( $wpTextbox1, $wpSummary, $wpMinoredit, $wpWatchthis );
+				$this->updateArticle( $wpTextbox1, $wpSummary, $wpMinoredit, $wpWatchthis, $wpSection );
 				return;
 			}
 		}
@@ -432,7 +448,7 @@ class Article {
 
 		if ( "initial" == $formtype ) {
 			$wpEdittime = $this->getTimestamp();
-			$wpTextbox1 = $this->getContent();
+			$wpTextbox1 = $this->getContent(true);
 			$wpSummary = "";
 		}
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
@@ -445,11 +461,13 @@ class Article {
 			$wgOut->addHTML( wfMsg( "explainconflict" ) );
 
 			$wpTextbox2 = $wpTextbox1;
-			$wpTextbox1 = $this->getContent();
+			$wpTextbox1 = $this->getContent(true);
 			$wpEdittime = $this->getTimestamp();
 		} else {
 			$s = str_replace( "$1", $wgTitle->getPrefixedText(),
 			  wfMsg( "editing" ) );
+
+			if($section!="") { $s.=wfMsg("sectionedit");}
 			$wgOut->setPageTitle( $s );
 			if ( $oldid ) {
 				$this->setOldSubtitle();
@@ -535,9 +553,10 @@ class Article {
 				$wgOut->addHTML($previewhead);
 				$wgOut->addWikiText( $this->preSaveTransform( $previewtext ) ."\n\n");
 			}
+			$wgOut->addHTML( "<br clear=\"all\" />\n" );
 		}
 		$wgOut->addHTML( "
-<form id=\"editform\" method=\"post\" action=\"$action\"
+<form id=\"editform\" name=\"editform\" method=\"post\" action=\"$action\"
 enctype=\"application/x-www-form-urlencoded\">
 <textarea tabindex=1 name=\"wpTextbox1\" rows={$rows}
 cols={$cols}{$ew} wrap=\"virtual\">" .
@@ -551,6 +570,7 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 <input tabindex=6 type=submit value=\"{$prev}\" name=\"wpPreview\">
 <em>{$cancel}</em> | <em>{$edithelp}</em>
 <br><br>{$copywarn}
+<input type=hidden value=\"{$section}\" name=\"wpSection\">
 <input type=hidden value=\"{$wpEdittime}\" name=\"wpEdittime\">\n" );
 
 		if ( $isConflict ) {
@@ -590,6 +610,8 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 
 		$now = wfTimestampNow();
 		$won = wfInvertTimestamp( $now );
+		wfSeedRandom();
+		$rand = mt_rand() / mt_getrandmax();
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
 		  "cur_restrictions,cur_user_text,cur_is_redirect," .
@@ -598,7 +620,7 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 		  wfStrencode( $summary ) . "', '" .
 		  $wgUser->getID() . "', '{$now}', " .
 		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
-		  wfStrencode( $wgUser->getName() ) . "', $redir, 1, RAND(), '{$now}', '{$won}')";
+		  wfStrencode( $wgUser->getName() ) . "', $redir, 1, $rand, '{$now}', '{$won}')";
 		$res = wfQuery( $sql, $fname );
 
 		$newid = wfInsertId();
@@ -624,12 +646,21 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 		$this->showArticle( $text, wfMsg( "newarticle" ) );
 	}
 
-	function updateArticle( $text, $summary, $minor, $watchthis )
+	function updateArticle( $text, $summary, $minor, $watchthis, $section )
 	{
 		global $wgOut, $wgUser, $wgTitle, $wgLinkCache;
 		global $wgDBtransactions;
 		$fname = "Article::updateArticle";
 
+		// insert updated section into old text if we have only edited part 
+		// of the article
+		if ($section != "") {
+			$oldtext=$this->getContent();
+			$secs=preg_split("/(^=+.*?=+)/m",$oldtext,-1,PREG_SPLIT_DELIM_CAPTURE);
+			$secs[$section*2]=$text."\n\n"; // replace with edited
+			if($section) { $secs[$section*2-1]=""; } // erase old headline
+			$text=join("",$secs);		
+		}
 		if ( $this->mMinorEdit ) { $me1 = 1; } else { $me1 = 0; }
 		if ( $minor ) { $me2 = 1; } else { $me2 = 0; }		
 		if ( preg_match( "/^(#redirect[^\\n]+)/i", $text, $m ) ) {
@@ -720,10 +751,18 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 
 	function showArticle( $text, $subtitle )
 	{
-		global $wgOut, $wgTitle, $wgUser, $wgLinkCache;
+		global $wgOut, $wgTitle, $wgUser, $wgLinkCache, $wgUseBetterLinksUpdate;
 
 		$wgLinkCache = new LinkCache();
-		$wgOut->addWikiText( $text ); # Just to update links
+
+		# Get old version of link table to allow incremental link updates
+		if ( $wgUseBetterLinksUpdate ) {
+			$wgLinkCache->preFill( $wgTitle );
+			$wgLinkCache->clear();
+		}
+
+		# Now update the link cache by parsing the text
+		$wgOut->addWikiText( $text );
 
 		$this->editUpdates( $text );
 		if( preg_match( "/^#redirect/i", $text ) )
@@ -1001,15 +1040,72 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 				$wgOut->fatalError( wfMsg( "cannotdelete" ) );
 				return;
 			}
-			$sub = str_replace( "$1", $image, wfMsg( "deletesub" ) );
+			$sub = str_replace( "$1", $image, wfMsg( "deletesub" ) );			
 		} else {
+
 			if ( ( "" == trim( $wgTitle->getText() ) )
 			  or ( $wgTitle->getArticleId() == 0 ) ) {
 				$wgOut->fatalError( wfMsg( "cannotdelete" ) );
 				return;
 			}
 			$sub = str_replace( "$1", $wgTitle->getPrefixedText(),
-			  wfMsg( "deletesub" ) );
+			  wfMsg( "deletesub" ) );			
+
+			# determine whether this page has earlier revisions
+			# and insert a warning if it does
+			# we select the text because it might be useful below
+			$sql="SELECT old_text FROM old WHERE old_namespace=0 and old_title='" . wfStrencode($wgTitle->getPrefixedDBkey())."' ORDER BY inverse_timestamp LIMIT 1";
+			$res=wfQuery($sql,$fname);
+			if( ($old=wfFetchObject($res)) && !$wpConfirm ) {
+				$skin=$wgUser->getSkin();
+				$wgOut->addHTML("<B>".wfMsg("historywarning"));
+				$wgOut->addHTML( $skin->historyLink() ."</B><P>");
+			}
+
+			$sql="SELECT cur_text FROM cur WHERE cur_namespace=0 and cur_title='" . wfStrencode($wgTitle->getPrefixedDBkey())."'";
+			$res=wfQuery($sql,$fname);
+			if( ($s=wfFetchObject($res))) {
+
+				# if this is a mini-text, we can paste part of it into the deletion reason
+
+				#if this is empty, an earlier revision may contain "useful" text
+				if($s->cur_text!="") {
+					$text=$s->cur_text;
+				} else {
+					if($old) {
+						$text=$old->old_text;
+						$blanked=1;
+					}
+					
+				}
+				
+				$length=strlen($text);				
+				
+				# this should not happen, since it is not possible to store an empty, new
+				# page. Let's insert a standard text in case it does, though
+				if($length==0 && !$wpReason) { $wpReason=wfmsg("exblank");}
+				
+				
+				if($length < 500 && !$wpReason) {
+										
+					# comment field=255, let's grep the first 150 to have some user
+					# space left
+					$text=substr($text,0,150);
+					# let's strip out newlines and HTML tags
+					$text=preg_replace("/\"/","'",$text);
+					$text=preg_replace("/\</","&lt;",$text);
+					$text=preg_replace("/\>/","&gt;",$text);
+					$text=preg_replace("/[\n\r]/","",$text);
+					if(!$blanked) {
+						$wpReason=wfMsg("excontent"). " '".$text;
+					} else {
+						$wpReason=wfMsg("exbeforeblank") . " '".$text;
+					}
+					if($length>150) { $wpReason .= "..."; } # we've only pasted part of the text
+					$wpReason.="'"; 
+				}
+			}
+
 		}
 
 		# Likewise, deleting old images doesn't require confirmation
@@ -1041,7 +1137,7 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 <form id=\"deleteconfirm\" method=\"post\" action=\"{$formaction}\">
 <table border=0><tr><td align=right>
 {$delcom}:</td><td align=left>
-<input type=text size=20 name=\"wpReason\" value=\"{$wpReason}\">
+<input type=text size=60 name=\"wpReason\" value=\"{$wpReason}\">
 </td></tr><tr><td>&nbsp;</td></tr>
 <tr><td align=right>
 <input type=checkbox name=\"wpConfirm\" value='1'>
@@ -1266,19 +1362,19 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 
 	function rollback()
 	{
-		global $wgUser, $wgTitle, $wgLang, $wgOut;
+		global $wgUser, $wgTitle, $wgLang, $wgOut, $from;
 
 		if ( ! $wgUser->isSysop() ) {
 			$wgOut->sysopRequired();
 			return;
 		}
-		
+
 		# Replace all this user's current edits with the next one down
 		$tt = wfStrencode( $wgTitle->getDBKey() );
 		$n = $wgTitle->getNamespace();
 		
 		# Get the last editor
-		$sql = "SELECT cur_id,cur_user,cur_user_text FROM cur WHERE cur_title='{$tt}' AND cur_namespace={$n}";
+		$sql = "SELECT cur_id,cur_user,cur_user_text,cur_comment FROM cur WHERE cur_title='{$tt}' AND cur_namespace={$n}";
 		$res = wfQuery( $sql );
 		if( ($x = wfNumRows( $res )) != 1 ) {
 			# Something wrong
@@ -1290,6 +1386,21 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 		$uid = $s->cur_user;
 		$pid = $s->cur_id;
 		
+		$from = str_replace( '_', ' ', wfCleanQueryVar( $from ) );
+		if( $from != $s->cur_user_text ) {
+			$wgOut->setPageTitle(wfmsg("rollbackfailed"));
+			$wgOut->addWikiText( wfMsg( "alreadyrolled",
+				htmlspecialchars( $wgTitle->getPrefixedText()),
+				htmlspecialchars( $from ),
+				htmlspecialchars( $s->cur_user_text ) ) );
+			if($s->cur_comment != "") {
+				$wgOut->addHTML(
+					wfMsg("editcomment",
+					htmlspecialchars( $s->cur_comment ) ) );
+				}
+			return;
+		}
+		
 		# Get the last edit not by this guy
 		$sql = "SELECT old_text,old_user,old_user_text
 		FROM old USE INDEX (name_title_timestamp)
@@ -1299,6 +1410,7 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 		$res = wfQuery( $sql );
 		if( wfNumRows( $res ) != 1 ) {
 			# Something wrong
+			$wgOut->setPageTitle(wfMsg("rollbackfailed"));
 			$wgOut->addHTML( wfMsg( "cantrollback" ) );
 			return;
 		}
@@ -1426,7 +1538,8 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 		if(isset($wgLocaltimezone)) {
 			$oldtz = getenv("TZ"); putenv("TZ=$wgLocaltimezone");
 		}
-		$d = $wgLang->timeanddate( wfTimestampNow(), false ) .
+		/* Note: this is an ugly timezone hack for the European wikis */
+		$d = $wgLang->timeanddate( date( "YmdHis" ), false ) .
 		  " (" . date( "T" ) . ")";
 		if(isset($wgLocaltimezone)) putenv("TZ=$oldtz");
 
@@ -1473,6 +1586,134 @@ name=\"wpSummary\" maxlength=200 size=60><br>
 
 		return $text;
 	}
+
+
+	/* Caching functions */
+	
+    function tryFileCache() {
+		if($this->isFileCacheable()) {
+			if($this->isFileCacheGood()) {
+                wfDebug( " tryFileCache() - about to load\n" );
+				$this->loadFromFileCache();
+				exit;
+			} else {
+	            wfDebug( " tryFileCache() - starting buffer\n" );			
+		        ob_start( array(&$this, 'saveToFileCache' ) );
+			}
+		} else {
+			wfDebug( " tryFileCache() - not cacheable\n" );
+		}
+	}
+
+	function isFileCacheable() {
+		global $wgUser, $wgTitle, $wgUseFileCache, $wgShowIPinHeader;
+		global $action, $oldid, $diff, $redirect, $printable;
+		return $wgUseFileCache
+			and (!$wgShowIPinHeader)
+			and ($wgUser->getId() == 0)
+			and (!$wgUser->getNewtalk())
+			and ($wgTitle->getNamespace != Namespace::getSpecial())
+			and ($action == "view")
+			and (!isset($oldid))
+			and (!isset($diff))
+			and (!isset($redirect))
+			and (!isset($printable))
+			and (!$this->mRedirectedFrom);
+			
+	}
+	
+	function fileCacheName() {
+		global $wgTitle, $wgFileCacheDirectory, $wgLang;
+		if( !$this->mFileCache ) {
+			$hash = md5( $key = $wgTitle->getDbkey() );
+			if( $wgTitle->getNamespace() )
+				$key = $wgLang->getNsText( $wgTitle->getNamespace() ) . ":" . $key;
+			$key = str_replace( ".", "%2E", urlencode( $key ) );
+			$hash1 = substr( $hash, 0, 1 );
+			$hash2 = substr( $hash, 0, 2 );
+			$this->mFileCache = "{$wgFileCacheDirectory}/{$hash1}/{$hash2}/{$key}.html";
+			wfDebug( " fileCacheName() - {$this->mFileCache}\n" );
+		}
+		return $this->mFileCache;
+	}
+
+	function isFileCacheGood() {
+		global $wgUser, $wgCacheEpoch;
+		if(!file_exists( $fn = $this->fileCacheName() ) ) return false;
+		$cachetime = wfUnix2Timestamp( filemtime( $fn ) );
+		$good = ( $this->mTouched <= $cachetime ) &&
+			($wgCacheEpoch <= $cachetime );
+        wfDebug(" isFileCacheGood() - cachetime $cachetime, touched {$this->mTouched} epoch {$wgCacheEpoch}, good $good\n");
+		return $good;
+	}
+
+	function loadFromFileCache() {
+		global $wgUseGzip, $wgOut;
+		wfDebug(" loadFromFileCache()\n");
+		$filename=$this->fileCacheName();
+		$filenamegz = "{$filename}.gz";
+		if( $wgUseGzip
+			&& wfClientAcceptsGzip()
+			&& file_exists( $filenamegz)
+			&& ( filemtime( $filenamegz ) >= filemtime( $filename ) ) ) {
+			wfDebug("  sending gzip\n");
+			header( "Content-Encoding: gzip" );
+			header( "Vary: Accept-Encoding" );
+			$filename = $filenamegz;
+		}
+		$wgOut->sendCacheControl();
+		readfile( $filename );
+	}
+	
+	function saveToFileCache( $text ) {
+		global $wgUseGzip, $wgCompressByDefault;
+		
+        wfDebug(" saveToFileCache()\n");
+		$filename=$this->fileCacheName();
+                $mydir2=substr($filename,0,strrpos($filename,"/")); # subdirectory level 2
+		$mydir1=substr($mydir2,0,strrpos($mydir2,"/")); # subdirectory level 1
+		if(!file_exists($mydir1)) { mkdir($mydir1,0777); } # create if necessary
+		if(!file_exists($mydir2)) { mkdir($mydir2,0777); }			
+		$f = fopen( $filename, "w" );
+		if($f) {
+			$now = wfTimestampNow();
+			fwrite( $f, str_replace( "</html>",
+				"<!-- Cached $now -->\n</html>",
+				$text ) );
+			fclose( $f );
+			if( $wgUseGzip and $wgCompressByDefault ) {
+				$start = microtime();
+				wfDebug("  saving gzip\n");
+				$gzout = gzencode( str_replace( "</html>",
+						"<!-- Cached/compressed $now -->\n</html>",
+						$text ) );
+				if( $gzout === false ) {
+					wfDebug("  failed to gzip compress, sending plaintext\n");
+					return $text;
+				}
+				if( $f = fopen( "{$filename}.gz", "w" ) ) {
+					fwrite( $f, $gzout );
+					fclose( $f );
+					$end = microtime();
+					
+					list($usec1, $sec1) = explode(" ",$start);
+					list($usec2, $sec2) = explode(" ",$end);
+					$interval = ((float)$usec2 + (float)$sec2) -
+								((float)$usec1 + (float)$sec1);
+					wfDebug("  saved gzip in $interval\n");
+				} else {
+					wfDebug("  failed to write gzip, still sending\n" );
+				}
+				if(wfClientAcceptsGzip()) {
+					header( "Content-Encoding: gzip" );
+					header( "Vary: Accept-Encoding" );
+					return $gzout;
+				}
+			}
+		}
+		return $text;
+	}
+
 }
 
 ?>

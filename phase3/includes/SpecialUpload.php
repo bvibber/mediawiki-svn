@@ -7,7 +7,8 @@ function wfSpecialUpload()
 	$fields = array( "wpUploadFile", "wpUploadDescription" );
 	wfCleanFormFields( $fields );
 
-	if ( 0 == $wgUser->getID() ) {
+	if ( ( 0 == $wgUser->getID() )
+		or $wgUser->isBlocked() ) {
 		$wgOut->errorpage( "uploadnologin", "uploadnologintext" );
 		return;
 	}
@@ -114,7 +115,7 @@ function saveUploadedFile()
 	$wgSavedFile = "{$dest}/{$wpUploadSaveName}";
 
 	if ( is_file( $wgSavedFile ) ) {
-		$wgUploadOldVersion = date( "YmdHis" ) . "!{$wpUploadSaveName}";
+		$wgUploadOldVersion = gmdate( "YmdHis" ) . "!{$wpUploadSaveName}";
 
 		if ( ! rename( $wgSavedFile, "${archive}/{$wgUploadOldVersion}" ) ) { 
 			$wgOut->fileRenameError( $wgSavedFile,

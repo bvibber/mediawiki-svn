@@ -15,8 +15,6 @@
 
 $IP = "/usr/local/apache/htdocs/wiki";
 
-# This workaround is for the maintenance scripts:
-#
 if ( ! isset( $DP ) ) { $DP = $IP; }
 include_once( "$DP/DefaultSettings.php" );
 
@@ -31,10 +29,11 @@ $wgEmergencyContact = "wikiadmin@myhost.com";
 
 # MySQL settings
 #
-$wgDBserver         = "127.0.0.1";
+$wgDBserver         = "localhost";
+$wgDBuser           = "wikiuser";
 $wgDBname           = "wikidb";
 $wgDBpassword       = "userpass";
-#wgDBsqlpassword	= "sqlpass";
+$wgDBsqlpassword	= "sqlpass";
 $wgDBminWordLen		= 3;	 # Match this to your MySQL fulltext
 $wgDBtransactions   = false; # Set to true if using InnoDB tables
 
@@ -44,10 +43,22 @@ $wgDBtransactions   = false; # Set to true if using InnoDB tables
 # Turn this on to get HTML debug comments
 # $wgDebugComments	= true;
 
+# If you want a non-English wiki, add a line like this
+# $wgLanguageCode = "de";
+
 $wgUseTeX			= false;
+$wgUseDynamicDates	= true;
+
 $wgLocalInterwiki   = "w";
 
 $wgInputEncoding	= "ISO-8859-1";
 $wgOutputEncoding	= "ISO-8859-1";
+
+# Extremely high-traffic wikis may want to disable
+# some database-intensive features here:
+#
+# $wgDisableTextSearch = true;
+# $wgDisableCounters = true;
+# $wgMiserMode		= true;
 
 ?>

@@ -1,4 +1,5 @@
 <?
+include_once( "LinksUpdate.php" );
 
 function wfSpecialMovepage()
 {
@@ -117,7 +118,7 @@ class MovePageForm {
 		$this->oldid = $this->ot->getArticleID();
 		$this->newid = $this->nt->getArticleID();
 
-		if ( strlen( trim( $this->ndt ) ) < 2 ) {
+		if ( strlen( trim( $this->ndt ) ) < 1 ) {
 			$this->showForm( wfMsg( "articleexists" ) );
 			return;
 		}
@@ -335,13 +336,13 @@ class MovePageForm {
 		$fname = "MovePageForm::moveToNewTitle";
 		$mt = wfMsg( "movedto" );
 
+		$now = wfTimestampNow();
+		$won = wfInvertTimestamp( $now );
 		$sql = "UPDATE cur SET cur_touched='{$now}'," .
 		  "cur_namespace={$this->nns},cur_title='{$this->ndt}' " .
 		  "WHERE cur_id={$this->oldid}";
 		wfQuery( $sql, $fname );
 
-		$now = wfTimestampNow();
-		$won = wfInvertTimestamp( $now );
 		$common = "{$this->ons},'{$this->odt}'," .
 		  "'{$mt} \\\"{$this->nft}\\\"','" .
 		  $wgUser->getID() . "','" . wfStrencode( $wgUser->getName() ) .
@@ -380,18 +381,8 @@ class MovePageForm {
 
 		# Non-existent target may have had broken links to it; these must
 		# now be removed and made into good links.
-
-		$sql = "SELECT bl_from FROM brokenlinks WHERE bl_to='{$this->nft}'";
-		$res = wfQuery( $sql, $fname );
-
-		while ( $rec = wfFetchObject( $res ) ) {
-			$lid = $rec->bl_from;
-			$lt = wfStrencode( Article::nameOf( $lid ) );
-			$sql = "INSERT INTO links (l_from,l_to) VALUES ('{$lt}',$this->oldid)";
-			wfQuery( $sql, $fname );
-		}
-		$sql = "DELETE FROM brokenlinks WHERE bl_to='{$this->nft}'";
-		wfQuery( $sql, $fname );
+		$update = new LinksUpdate( $this->oldid, $this->nft );
+		$update->fixBrokenLinks();
 
 		$sql = "UPDATE imagelinks SET il_from='{$this->nft}' WHERE il_from='{$this->oft}'";
 		wfQuery( $sql, $fname );

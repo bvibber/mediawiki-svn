@@ -1,21 +1,22 @@
 <?
 
-function wfSpecialContributions()
+function wfSpecialContributions( $par = "" )
 {
-	global $wgUser, $wgOut, $wgLang, $target, $offset, $limit, $hideminor;
+	global $wgUser, $wgOut, $wgLang, $target, $hideminor;
 	$fname = "wfSpecialContributions";
 	$sysop = $wgUser->isSysop();
+
+	if( $par )
+		$target = $par;
+	else
+		$target = wfCleanQueryVar( $target );
 
 	if ( "" == $target ) {
 		$wgOut->errorpage( "notargettitle", "notargettext" );
 		return;
 	}
-	$offset = (int)$offset;
-	$limit = (int)$limit;
-	if( $offset < 0 ) { $offset = 0; }
-	if( $limit < 1 ) { $limit = 50; }
+	list( $limit, $offset ) = wfCheckLimits( 50, "" );
 
-	$target = wfCleanQueryVar( $target );
 	$nt = Title::newFromURL( $target );
 	$nt->setNamespace( Namespace::getUser() );
 
@@ -44,8 +45,6 @@ function wfSpecialContributions()
 	  $wgLang->specialpage( "Contributions" ), "target=" . wfUrlEncode( $target ) );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 	
-	# Sorting slowness on cur and especially old
-	# forces us to check RC table first
 	if ( 0 == $id ) {
 		$sql = "SELECT cur_namespace,cur_title,cur_timestamp,cur_comment FROM cur " .
 		  "WHERE cur_user_text='" . wfStrencode( $nt->getText() ) . "' {$cmq} " .
@@ -69,7 +68,7 @@ function wfSpecialContributions()
 	$nOld = wfNumRows( $res2 );
 
 
-	if ( 0 == $nCur && 0 == $nOld && 0 == $rcrows ) {
+	if ( 0 == $nCur && 0 == $nOld ) {
 		$wgOut->addHTML( "\n<p>" . wfMsg( "nocontribs" ) . "</p>\n" );
 		return;
 	}
@@ -110,14 +109,14 @@ function wfSpecialContributions()
 
 function ucListEdit( $sk, $ns, $t, $ts, $topmark, $comment )
 {
-	global $wgLang, $wgOut, $wgUser;
+	global $wgLang, $wgOut, $wgUser, $target;
 	$page = Title::makeName( $ns, $t );
 	$link = $sk->makeKnownLink( $page, "" );
 	$topmarktext = $topmark ? wfMsg ( "uctop" ) : "";
 	$sysop = $wgUser->isSysop();
 	if($sysop && $topmark ) {
 		$topmarktext .= " [". $sk->makeKnownLink( $page,
-		  wfMsg( "rollbacklink" ), "action=rollback" ) ."]";
+		  wfMsg( "rollbacklink" ), "action=rollback&from=" . urlencode( $target ) ) ."]";
 	}
 	if($comment) {
 	

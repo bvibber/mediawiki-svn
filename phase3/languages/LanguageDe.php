@@ -54,48 +54,142 @@
 );
 
 /* private */ $wgLanguageNamesDe = array(
+  "aa" => "Afar",
+  "ab" => "Abkhazian",
 	"af" => "Afrikaans",
+  "am" => "Amharic",
 	"ar" => "&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1617;&#1577; (Araby)",
+  "az" => "Azerbaijani",
+  "ba" => "Bashkir",
+  "be" => "&#1041;&#1077;&#1083;&#1072;&#1088;&#1091;&#1089;&#1082;&#1080;",
+  "bh" => "Bihara",
+  "bi" => "Bislama",
+  "bn" => "Bengali",
+  "bo" => "Tibetan",
+  "br" => "Brezhoneg",
+  "bs" => "Bosnian",
 	"ca" => "Català",
+  "ch" => "Chamoru",
+  "co" => "Corsican",
 	"cs" => "&#268;esky",
 	"cy" => "Cymraeg",
 	"da" => "Dansk",
 	"dk" => "Dansk",
+  "dz" => "Bhutani",
 	"el" => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; (Ellinika)",
 	"en" => "English",
-	"simple" => "Einfaches Englisch",
 	"eo" => "Esperanto",
 	"es" => "Español",
-	"et" => "Esti",
+	"et" => "Eesti",
 	"eu" => "Euskara",
+  "fa" => "&#8238;&#1601;&#1585;&#1587;&#1609;&#8236; (Farsi)",
 	"fi" => "Suomi",
+  "fj" => "Fijian",
+  "fo" => "Faeroese",
 	"fr" => "Français",
 	"fy" => "Frysk",
 	"ga" => "Gaeilge",
+  "gl" => "Galician",
+  "gn" => "Guarani",
+  "gu" => "&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752; (Gujarati)",
+  "ha" => "Hausa",
 	"he" => "&#1506;&#1489;&#1512;&#1497;&#1514; (Ivrit)",
+  "hi" => "&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)",
 	"hr" => "Hrvatski",
 	"hu" => "Magyar",
+  "hy" => "Armenian",
 	"ia" => "Interlingua",
 	"id" => "Indonesia",
+  "ik" => "Inupiak",
 	"is" => "Íslenska",
 	"it" => "Italiano",
+  "iu" => "Inuktitut",
 	"ja" => "&#26085;&#26412;&#35486; (Nihongo)",
+  "jv" => "Javanese",
+  "ka" => "&#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4312; (Kartuli)",
+  "kk" => "Kazakh",
+  "kl" => "Greenlandic",
+  "km" => "Cambodian",
+  "kn" => "Kannada",
 	"ko" => "&#54620;&#44397;&#50612; (Hangul)",
+  "ks" => "Kashmiri",
+  "kw" => "Kernewek",
+  "ky" => "Kirghiz",
 	"la" => "Latina",
+  "ln" => "Lingala",
+  "lo" => "Laotian",
 	"lt" => "Lietuvi&#371;",
+  "lv" => "Latvian",
+  "mg" => "Malagasy",
+  "mi" => "Maori",
+  "mk" => "Macedonian",
+  "ml" => "Malayalam",
+  "mn" => "Mongolian",
+  "mo" => "Moldavian",
+  "mr" => "Marathi",
+  "ms" => "Bahasa Melayu",
+  "my" => "Burmese",
+  "na" => "Nauru",
+  "ne" => "&#2344;&#2375;&#2346;&#2366;&#2354;&#2368; (Nepali)",
 	"nl" => "Nederlands",
 	"no" => "Norsk",
+  "oc" => "Occitan",
+  "om" => "Oromo",
+  "or" => "Oriya",
+  "pa" => "Punjabi",
 	"pl" => "Polski",
+  "ps" => "Pashto",
 	"pt" => "Português",
+  "qu" => "Quechua",
+  "rm" => "Rhaeto-Romance",
+  "rn" => "Kirundi",
 	"ro" => "Român&#259;",
 	"ru" => "&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081; (Russkij)",
+  "rw" => "Kinyarwanda",
+  "sa" => "&#2360;&#2306;&#2360;&#2381;&#2325;&#2371;&#2340; (Samskrta)",
+  "sd" => "Sindhi",
+  "sg" => "Sangro",
 	"sh" => "Serbocroatisch",
+  "si" => "Sinhalese",
+	"simple" => "Einfaches Englisch",
+  "sk" => "Slovak",
 	"sl" => "Slovensko",
+  "sm" => "Samoan",
+  "sn" => "Shona",
+  "so" => "Soomaali",
+  "sq" => "Shqiptare",
+  "sr" => "Srpski",
+  "ss" => "Siswati",
+  "st" => "Sesotho",
+  "su" => "Sudanese",
 	"sv" => "Svenska",
 	"sw" => "Kiswahili",
+  "ta" => "Tamil",
+  "te" => "Telugu",
+  "tg" => "Tajik",
+  "th" => "Thai",
+  "ti" => "Tigrinya",
+  "tk" => "Turkmen",
+  "tl" => "Tagalog",
+  "tn" => "Setswana",
+  "to" => "Tonga",
 	"tr" => "Türkçe",
-	"uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072; (Ukrayins`ka)",
-	"zh" => "&#20013;&#25991; (Zhongwen)",
+  "ts" => "Tsonga",
+  "tt" => "Tatar",
+  "tw" => "Twi",
+  "ug" => "Uighur",
+ 	"uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072; (Ukrayins`ka)",
+  "ur" => "Urdu",
+  "uz" => "Uzbek",
+  "vi" => "Vietnamese",
+  "vo" => "Volap&#252;k",
+  "wo" => "Wolof",
+  "xh" => "isiXhosa",
+  "yi" => "Yiddish",
+  "yo" => "Yoruba",
+  "za" => "Zhuang",
+ 	"zh" => "&#20013;&#25991; (Zhongwen)",
+  "zu" => "Zulu"
 );
 
 /* private */ $wgBookstoreListDe = array(
@@ -122,31 +216,32 @@
 );
 
 /* private */ $wgValidSpecialPagesDe = array(
-	"Userlogin"		=> "",
+	"Userlogin"	=> "",
 	"Userlogout"	=> "",
 	"Preferences"	=> "Meine Benutzereinstellungen",
-	"Watchlist"		=> "Meine Beobachtungsliste",
-	"Recentchanges" => "Zeige Letzte Änderungen",
-	"Upload"		=> "Dateien hochladen",
-	"Imagelist"		=> "Zeige hochgeladene Dateien",
-	"Listusers"		=> "Zeige registrierte Benutzer",
-	"Statistics"	=> "Zeige Seitenstatistik",
+	"Watchlist"	=> "Meine Beobachtungsliste",
+	"Recentchanges" => "Letzte Änderungen",
+	"Upload"	=> "Dateien hochladen",
+	"Imagelist"	=> "Hochgeladene Dateien",
+	"Listusers"	=> "Registrierte Benutzer",
+	"Statistics"	=> "Seitenstatistik",
 	"Randompage"	=> "Zufälliger Artikel",
 
-	"Lonelypages"	=> "Zeige verwaiste Artikel",
-	"Unusedimages"	=> "Zeige verwaiste Dateien",
-	"Popularpages"	=> "Zeige beliebte Artikel",
-	"Wantedpages"	=> "Zeige gewünschte Artikel",
-	"Shortpages"	=> "Zeige kurze Artikel",
-	"Longpages"		=> "Zeige lange Artikel",
-	"Newpages"		=> "Zeige neue Artikel",
-	"Allpages"		=> "Zeige alle Artikel (alphabetisch)",
+	"Lonelypages"	=> "Verwaiste Artikel",
+	"Unusedimages"	=> "Verwaiste Dateien",
+	"Popularpages"	=> "Beliebte Artikel",
+	"Wantedpages"	=> "Gewünschte Artikel",
+	"Shortpages"	=> "Kurze Artikel",
+	"Longpages"	=> "Lange Artikel",
+	"Newpages"	=> "Neue Artikel",
+  "Ancientpages"  => "Älteste Artikel",
+	"Allpages"	=> "Alle Artikel (alphabetisch)",
 
-	"Ipblocklist"	=> "Zeige blockierte IP-Addressen",
-	"Maintenance" => "Wartungsseite",
+	"Ipblocklist"	=> "Blockierte IP-Addressen",
+	"Maintenance"	=> "Wartungsseite",
 	"Specialpages"  => "",
 	"Contributions" => "",
-	"Movepage"		=> "",
+	"Movepage"	=> "",
 	"Emailuser"	=> "",
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => "",
@@ -156,12 +251,12 @@
 /* private */ $wgSysopSpecialPagesDe = array(
 	"Blockip"		=> "Blockiere eine IP-Addresse",
 	"Asksql"		=> "Datenbank-Abfrage",
-	"Undelete"              => "Gelöschte Seiten anzeigen und wiederherstellen"
+	"Undelete"              => "Gelöschte Seiten wiederherstellen"
 );
 
 /* private */ $wgDeveloperSpecialPagesDe = array(
-	"Lockdb"		=> "Datenbank auf 'nur lesen' stellen",
-	"Unlockdb"		=> "Datenbank Schreibzugriff wieder herstellen",
+	"Lockdb"		=> "Datenbank sperren",
+	"Unlockdb"		=> "Datenbank freigeben",
 	"Debug"			=> "Zeige debugging information"
 );
 
@@ -171,11 +266,13 @@
 #
 "linktrail"		=> "/^([ä|ö|ü|ß|a-z]+)(.*)\$/sD",
 "mainpage"		=> "Hauptseite",
+"mainpagetext"          => "Die Wiki Software wurde erfolgreich installiert.",
 "about"			=> "Über",
 "aboutwikipedia" => "Über Wikipedia",
 "aboutpage"		=> "Wikipedia:Über_Wikipedia",
 "help"			=> "Hilfe",
 "helppage"		=> "Wikipedia:Hilfe",
+"wikititlesuffix"       => "Wikipedia",
 "bugreports"	=> "Fehlerliste",
 "bugreportspage" => "Wikipedia:Beobachtete_Fehler",
 "faq"			=> "FAQ",
@@ -229,6 +326,8 @@
 "sitetitle"		=> "Wikipedia",
 "sitesubtitle"	=> "Die freie Enzyklopädie",
 "retrievedfrom" => "Von \"$1\"",
+"newmessages" => "Sie haben $1.",
+"newmessageslink" => "neue Nachrichten",
 
 # Main script and global functions
 #
@@ -239,18 +338,23 @@
 
 # General errors
 #
+"error" => "Fehler",
 "databaseerror" => "Fehler in der Datenbank",
 "dberrortext"	=> "Es gab einen Syntaxfehler in der Datenbankabfrage.
 Das könnte eine illegale Suchanfrage sein (siehe $5),
-oder ein Softwarefehler.
-Die letzte Datenbankabfrage lautete:
+oder ein Softwarefehler. Die letzte Datenbankabfrage lautete:
 <blockquote><tt>$1</tt></blockquote>
 aus der Funktion \"<tt>$2</tt>\".
 MySQL meldete den Fehler \"<tt>$3: $4</tt>\".",
+"dberrortextcl" => "Es gab einen Syntaxfehler in der Datenbankabfrage. 
+Die letzte Datenbankabfrage lautete: \"$1\" aus der Funktion \"<tt>$2</tt>\". 
+MySQL meldete den Fehler: \"<tt>$3: $4</tt>\".\n",
 "noconnect"		=> "Konnte keine Verbindung zur Datenbank auf $1 herstellen",
 "nodb"			=> "Konnte Datenbank $1 nicht auswählen",
 "readonly"		=> "Datenbank ist geperrt",
-"readonlytext"	=> "Die Datenbank der Wikipedia ist vorrübergehend gesperrt, z.B. für Wartungsarbeiten. Bitte versuchen Sie es später noch einmal\n",
+"enterlockreason" => "Bitte geben Sie einen Grund ein, warum die Datenbank
+gesperrt werden soll und eine Abschätzung über die Dauer der Sperrung",
+"readonlytext"	=> "Die Datenbank der Wikipedia ist vorübergehend gesperrt, z.B. für Wartungsarbeiten. Bitte versuchen Sie es später noch einmal.\n",
 "missingarticle" => "Der Text für den Artikel \"$1\" wurde nicht in der Datenbank gefunden. Das ist wahrscheinlich ein Fehler in der Software. Bitte melden Sie dies einem Administrator, und geben sie den Artikelnamen an.",
 "internalerror" => "Interner Fehler",
 "filecopyerror" => "Konnte Datei \"$1\" nicht nach \"$2\" kopieren.",
@@ -263,7 +367,8 @@ MySQL meldete den Fehler \"<tt>$3: $4</tt>\".",
 "cannotdelete"	=> "Kann spezifizierte Seite oder Artikel nicht löschen. (Wurde möglicherweise schon von jemand anderem gelöscht.)",
 "badtitle"		=> "Ungültiger Titel",
 "badtitletext"	=> "Der Titel der angeforderten Seite war ungültig, leer, oder ein ungültiger Sprachlink von einer anderen Wikipedia.",
-"perfdisabled" => "Diese Funktion wurde wegen Überlastung des Servers vorrübergehend deaktiviert. Versuchen Sie es bitte zwischen 02:00 und 14:00 UTC noch einmal<br>(Aktuelle Serverzeit : ".date("H:i:s")." UTC).",
+"perfdisabled" => "Diese Funktion wurde wegen Überlastung des Servers vorübergehend deaktiviert. Versuchen Sie es bitte zwischen 02:00 und 14:00 UTC noch einmal<br>(Aktuelle Serverzeit : ".date("H:i:s")." UTC).",
+"perfdisabledsub" => "Hier ist eine gespeicherte Kopie von $1:",
 
 
 # Login and logout pages
@@ -292,6 +397,7 @@ Ihre E-Mail-Addresse brauchen Sie nicht anzugeben, aber falls Sie Ihr Passwort v
 "userlogin"		=> "Anmelden",
 "logout"		=> "Abmelden",
 "userlogout"	=> "Abmelden",
+"notloggedin" => "Nicht angemeldet",
 "createaccount"	=> "Neues Benutzerkonto anlegen",
 "badretype"		=> "Die beiden Passwörter stimmen nicht überein.",
 "userexists"	=> "Dieser Benutzername ist schon vergeben. Bitte wählen Sie einen anderen.",
@@ -313,7 +419,7 @@ Das Passwort für Benutzer \"$2\" lautet nun \"$3\".
 Sie sollten sich jetzt anmelden und Ihr Passwort ändern.",
 "noemail"		=> "Benutzer \"$1\" hat keine E-Mail-Addresse angegeben.",
 "passwordsent"	=> "Ein neues Passwort wurde an die E-Mail-Addresse von Benutzer \"$1\" gesendet.
-Bitte melden Si sich an, sobald Sie es erhalten.",
+Bitte melden Sie sich an, sobald Sie es erhalten.",
 
 # Edit pages
 #
@@ -328,7 +434,7 @@ Bitte melden Si sich an, sobald Sie es erhalten.",
 Als Grund wurde angegeben:<br>$2<p>Bitte kontaktieren Sie den Administrator, um über die Blockierung zu sprechen.",
 "newarticle"	=> "(Neu)",
 "newarticletext" => "Hier den Text des neuen Artikels eintragen.\nBitte nur in ganzen Sätzen schreiben und keine urheberrechtsgeschützten Texte anderer kopieren.",
-"anontalkpagetext" => "---- ''Dies ist Die Diskussions-Seite eines nicht angemeldeten Benutzers. Wir müssen hier die numerische [[IP-Adresse]] zur Identifizierung verwenden. Eine solche Adresse kann nacheinander von mehreren Benutzer verwendet werden. Wenn Sie ein anonymer Benutzer sind und denken, dass irrelevante Kommentare an Sie gerichtet wurden, [[Spezial:Userlogin|melden Sie sich bitte an]], um zukünftige Verwirrung zu vermeiden. ''",
+"anontalkpagetext" => "---- ''Dies ist die Diskussions-Seite eines nicht angemeldeten Benutzers. Wir müssen hier die numerische [[IP-Adresse]] zur Identifizierung verwenden. Eine solche Adresse kann nacheinander von mehreren Benutzern verwendet werden. Wenn Sie ein anonymer Benutzer sind und denken, dass irrelevante Kommentare an Sie gerichtet wurden, [[Spezial:Userlogin|melden Sie sich bitte an]], um zukünftige Verwirrung zu vermeiden. ''",
 "noarticletext" => "(Dieser Artikel enthält momentan keinen Text)",
 "updated"		=> "(Geändert)",
 "note"			=> "<strong>Hinweis:</strong> ",
@@ -348,8 +454,17 @@ Wenn Sie speichern, werden alle neueren Versionen überschrieben.</strong>\n",
 "yourdiff"		=> "Unterschiede",
 "copyrightwarning" => "
 <b>Bitte <font size='+1'>kopieren Sie keine Webseiten</font>, die nicht Ihre eigenen sind, benutzen Sie <fonz size='+1'>keine urheberrechtlich geschützten Werke</font> ohne Erlaubnis des Copyright-Inhabers!</b>
-<p>Sie geben uns hiermit ihre Zusage, daß Sie den Text <strong>selbst verfasst</strong> haben, daß der Text Allgemeingut (<strong>public domain</strong>) ist, oder daß de <strong>Copyright-Inhaber</strong> seine <strong>Zustimmung</strong> gegeben hat. Falls dieser Text bereits woanders veröffentlicht wurde, weisen Sie bitte auf der 'Diskussion:'-Seite darauf hin.
+<p>Sie geben uns hiermit ihre Zusage, dass Sie den Text <strong>selbst verfasst</strong> haben, dass der Text Allgemeingut (<strong>public domain</strong>) ist, oder dass der <strong>Copyright-Inhaber</strong> seine <strong>Zustimmung</strong> gegeben hat. Falls dieser Text bereits woanders veröffentlicht wurde, weisen Sie bitte auf der 'Diskussion:'-Seite darauf hin.
 <p><i>Bitte beachten Sie, dass alle Beiträge zur Wikipedia automatisch unter der \"GNU Freie Dokumentationslizenz\" stehen. Falls Sie nicht möchten, dass Ihre Arbeit hier von anderen verändert und verbreitet wird, dann drücken Sie nicht auf \"Speichern\".</i>",
+"longpagewarning" => "WARNUNG: Diese Seite ist $1KB groß; einige Browser könnten Probleme haben, Seiten zu editieren, die größer als 32KB sind.
+Überlegen Sie bitte, ob eine Aufteilung der Seite in kleinere Abschnitte möglich ist.",
+"readonlywarning" => "WARNUNG: Die Datenbank wurde während dem Ändern der
+Seite für Wartungsarbeiten gesperrt, so dass Sie die Seite im Moment nicht
+speichern können. Sichern Sie sich den Text und versuchen Sie die Änderungen
+später einzuspielen.",
+"protectedpagewarning" => "WARNUNG: Diese Seite wurde gesperrt, so dass nur
+Benutzer mit Sysop-Rechten editieren können. Beachten Sie bitte die 
+<a href='/wiki/Wikipedia:Geschützte Seiten'>Regeln für geschützte Seiten</a>.",
 
 # History pages
 #
@@ -392,15 +507,17 @@ Möglicherweise haben Sie auch die Anfrage falsch formuliert, z.B.
 Bitte versuchen Sie eine anders formulierte Anfrage.",
 "matchtotals"	=> "Die Anfrage \"$1\" stimmt mit $2 Artikelüberschriften
 und dem Text von $3 Artikeln überein.",
-"nogomatch" => "Es existiert kein Artikel mit diesem Namen. Bitte versuchen Sie die Volltextsuche. ",
+"nogomatch" => "Es existiert kein Artikel mit diesem Namen. Bitte versuchen
+Sie die Volltextsuche oder legen Sie den Artikel <a href=\"$1\">neu</a> an. ",
 "titlematches"	=> "Übereinstimmungen mit Überschriften",
 "notitlematches" => "Keine Übereinstimmungen",
 "textmatches"	=> "Übereinstimmungen mit Texten",
 "notextmatches"	=> "Keine Übereinstimmungen",
-"prevn"			=> "letzte $1",
+"prevn"			=> "vorherige $1",
 "nextn"			=> "nächste $1",
 "viewprevnext"	=> "Zeige ($1) ($2) ($3).",
 "showingresults" => "Hier sind <b>$1</b> Ergebnisse, beginnend mit #<b>$2</b>.",
+"showingresultsnum" => "Hier sind <b>$3</b> Ergebnisse, beginnend mit #<b>$2</b>.",
 "nonefound"		=> "<strong>Hinweis</strong>:
 Erfolglose Suchanfragen werden häufig verursacht durch den Versuch, nach 'gewöhnlichen' Worten zu suchen; diese sind nicht indiziert.",
 "powersearch" => "Suche",
@@ -448,7 +565,10 @@ Ihre interne ID-Nummer ist $2.",
 "timezonetext"	=> "Geben Sie die Anzahl der Stunden ein, die zwischen Ihrer Zeitzone und UTC liegen.",
 "localtime"	=> "Ortszeit",
 "timezoneoffset" => "Unterschied",
+"servertime" => "Aktuelle Zeit auf dem Server",
+"guesstimezone" => "Einfügen aus dem Browser",
 "emailflag"		=> "Keine E-Mail von anderen Benutzern erhalten",
+"defaultns"		=> "In diesen Namensräumen soll standardmäßig gesucht werden:",
 
 # Recent changes
 #
@@ -458,7 +578,7 @@ Ihre interne ID-Nummer ist $2.",
 Diese Seite wird beim Laden automatisch aktualisiert. Angezeigt werden Seiten, die zuletzt bearbeitet wurden, sowie die Zeit und der Name des Autors.<br>
 Falls Sie neu bei Wikipedia sind, lesen Sie bitte die [[Wikipedia:Willkommen|Willkommensseite der Wikipedia]] und [[Wikipedia:Erste Schritte|Erste Schritte]].<br>
 Wenn Sie möchten, dass Wikipedia zu einem Erfolg wird, dann fügen Sie bitte keine Texte hinzu, die dem [[Wikipedia:Urheberrechte beachten|Urheberrecht]] anderer unterliegen. Dies könnte dem Projekt sonst schweren Schaden zufügen.
-Beachten Sie auch die letzten Änderungen auf [[m:Special:Recentchanges|Metawikipedia]]",
+Beachten Sie auch die letzten Änderungen auf [[m:Special:Recentchanges|Metawikipedia]].",
 "rcloaderr"		=> "Lade Letzte Änderungen",
 "rcnote"		=> "Hier sind die letzten <b>$1</b> Änderungen der letzten <b>$2</b> Tage. (<b>N</b> - Neuer Artikel; <b>M</b> - kleine Änderung)",
 "rcnotefrom"	=> "Dies sind die Änderungen seit <b>$2</b> (bis zu <b>$1</b> gezeigt).",
@@ -525,7 +645,10 @@ Alle Zeiten sind UTC.
 "badfiletype"	=> "\".$1\" ist kein empfohlenes Dateiformat.",
 "largefile"		=> "Bitte keine Bilder über 100 KByte hochladen.",
 "successfulupload" => "Erfolgreich hochgeladen",
-"fileuploaded"	=> "Die Datei \"$1\" wurde erfolgreich hochgeladen.",
+"fileuploaded"	=> "Die Datei \"$1\" wurde erfolgreich hochgeladen. Bitte 
+verwenden Sie diesen ($2) Link zur Beschreibungsseite und füllen Sie die 
+Informationen über die Datei aus, insbesondere seine Herkunft, von wem und wann es 
+gemacht wurde und besondere Angaben zum Copyright, falls notwendig.",
 "uploadwarning" => "Warnung",
 "savefile"		=> "Datei speichern",
 "uploadedimage" => "\"$1\" hochgeladen",
@@ -582,7 +705,7 @@ Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
 "selflinks"		=> "Seiten, die auf sich selbst verweisen",
 "selflinkstext"		=> "Die folgenden Artikel verweisen auf sich selbst, was sie nicht sollten.",
 "mispeelings"           => "Seiten mit falsch geschriebenen Worten",
-"mispeelingstext"       => "Die folgenden Seiten enthalten falsch geschriebene Worte, wie sie auf $1 definiert sind. In Klammern angegebene Worte geben die korrekte Schreibweise wieder.",
+"mispeelingstext"       => "Die folgenden Seiten enthalten falsch geschriebene Worte, wie sie auf $1 definiert sind. In Klammern angegebene Worte geben die korrekte Schreibweise wieder.<p><strong>Zitate, Buchtitel u.ä. bitte im Originalzustand belassen, also ggf. in alter Rechtschreibung und mit Rechtschreibfehlern!</strong>",
 "mispeelingspage"       => "Liste von Tippfehlern",
 "missinglanguagelinks"  => "Fehlende Sprachverweise",
 "missinglanguagelinksbutton"    => "Zeige fehlende Sprachverweise nach",
@@ -612,10 +735,12 @@ Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
 "rclsub"		=> "(auf Artikel von \"$1\")",
 "debug"			=> "Debug",
 "newpages"		=> "Neue Artikel",
+"ancientpages" => "Älteste Artikel",
 "movethispage"	=> "Artikel verschieben",
 "unusedimagestext" => "<p>Bitte beachten Sie, dass andere Wikipedias, die noch die alte Software verwenden, möglicherweise einige dieser Bilder benutzen.",
 "booksources"	=> "Buchhandlungen",
 "booksourcetext" => "Dies ist eine Liste mit Links zu Internetseiten, die neue und gebrauchte Bücher verkaufen. Dort kann es auch weitere Informationen über die Bücher geben, die Sie interessieren. Wikipedia ist mit keinem dieser Anbieter geschäftlich verbunden.",
+"alphaindexline" => "$1 bis $2",
 
 # Email this user
 #
@@ -658,8 +783,13 @@ sein, um Ihre Beobachtungsliste zu bearbeiten.",
 #
 "deletepage"	=> "Seite löschen",
 "confirm"		=> "Bestätigen",
+"excontent" => "Alter Inhalt:",
+"exbeforeblank" => "Inhalt for dem leeren der Seite:",
+"exblank" => "Seite war leer",
 "confirmdelete" => "Löschung bestätigen",
 "deletesub"		=> "(Lösche \"$1\")",
+"historywarning" => "WARNUNG: Die Seite die Sie zu löscheni gedenken hat
+eine Versionsgeschichte:",
 "confirmdeletetext" => "Sie sind dabei, einen Artikel oder ein Bild und alle älteren Versionen permanent aus der Datenbank zu löschen.
 Bitte bestätigen Sie Ihre Absicht, dies zu tun, dass Sie sich der Konsequenzen bewusst sind, und dass Sie in Übereinstimmung mit [[Wikipedia:Leitlinien|den Wikipedia Leitlinien]] handeln.",
 "confirmcheck"	=> "Ja, ich möchte den Löschvorgang fortsetzen.",
@@ -675,11 +805,25 @@ Im $2 finden Sie eine Liste der letzten Löschungen.",
 "deletionlog"	=> "Lösch-Logbuch",
 "reverted"		=> "Auf eine alte Version zurückgesetzt",
 "deletecomment"	=> "Grund der Löschung",
-"imagereverted" => "Auf eine alte version zurückgesetzt.",
+"imagereverted" => "Auf eine alte Version zurückgesetzt.",
+"rollback" => "Zurücknahme der Aenderungen",
+"rollbacklink" => "Rollback",
+"rollbackfailed" => "Zurücknahme gescheitert",
+"cantrollback" => "Die Änderung kann nicht zurückgenommen werden; der
+letzte Autor ist der einzige.",
+"alreadyrolled" => "Die Zurücknahme des Artikels [[$1]] von [[Benutzer:$2|$2]] 
+([[Benutzer Diskussion:$2|Diskussion]]) ist nicht möglich, da eine andere
+Änderung oder Rücknahme erfolgt ist.
+
+Die letzte Änderung ist von [[Benutzer:$3|$3]] 
+([[Benutzer Diskussion:$3|Diskussion]])",
+#   only shown if there is an edit comment
+"editcomment" => "Der Änderungskommentar war: \"<i>$1</i>\".",
+"revertpage" => "Wiederhergestellt zur letzten Änderung von $1",
 
 # Undelete
 "undelete" => "Gelöschte Seite wiederherstellen",
-"undeletepage" => "Gelöschte Seiten anzeigen und wiederherstellen",
+"undeletepage" => "Gelöschte Seiten wiederherstellen",
 "undeletepagetext" => "Die folgenden Seiten wurden gelöscht, sind aber immer noch
 gespeichert und können wiederhergestellt werden.",
 "undeletearticle" => "Gelöschten Artikel wiederherstellen",
@@ -757,9 +901,10 @@ Bitte tragen Sie den Grund für die Blockade ein.",
 # SQL query
 #
 "asksql"		=> "SQL-Abfrage",
-"asksqltext"	=> "Benutzen Sie das Formular für eine direkte Datenbank-Abfrage.
-Benutze einzelne Hochkommata ('so'), um Text zu begrenzen.
-Bitte diese Funktion vorsichtig benutzen!",
+"asksqltext"	=> "Benutzen Sie das Formular für eine direkte
+Datenbank-Abfrage. Benutze einzelne Hochkommata ('so'), um Text zu begrenzen.
+Bitte diese Funktion vorsichtig benutzen! Das abschließende ';' wird
+automatisch ergänzt.",
 "sqlquery"		=> "Abfrage eingeben",
 "querybtn"		=> "Abfrage starten",
 "selectonly"	=> "Andere Abfragen als \"SELECT\" können nur von Entwicklern benutzt werden.",
@@ -776,12 +921,18 @@ Bitte diese Funktion vorsichtig benutzen!",
 
 In diesen Fällen müssen Sie die Seite, falls gewünscht, von Hand verschieben.",
 "movearticle"	=> "Artikel verschieben",
+"movenologin"   => "Sie sind nicht angemeldet",
+"movenologintext" => "Sie müssen ein registrierter Benutzer und 
+<a href=\"" . wfLocalUrl( "Special:Userlogin" ) . "\">angemeldet</a> sein,
+um eine Seite zu verschieben.",
 "newtitle"		=> "Zu neuem Titel",
 "movepagebtn"	=> "Artikel verschieben",
 "pagemovedsub"	=> "Verschiebung erfolgreich",
-"pagemovedtext" => "Artikel \"$1\" wurde nach \"$2\" verschoben.",
+"pagemovedtext" => "Artikel \"[[$1]]\" wurde nach \"[[$2]]\" verschoben.",
 "articleexists" => "Unter diesem Namen existiert bereits ein Artikel.
 Bitte wählen Sie einen anderen Namen.",
+"talkexists"    => "Die Seite selbst wurde erfolgreich verschoben, aber die
+Diskussions-Seite nicht, da schon eine mit dem neuen Titel existiert. Bitte gleichen Sie die Inhalte von Hand ab.",
 "movedto"		=> "verschoben nach",
 "movetalk"		=> "Die \"Diskussions\"-Seite mitverschieben, wenn möglich.",
 "talkpagemoved" => "Die \"Diskussions\"-Seite wurde ebenfalls verschoben.",

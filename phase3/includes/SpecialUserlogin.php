@@ -31,7 +31,9 @@ function wfSpecialUserlogin()
 	}
 	$wpName = trim( $wpName );
 	if ( ( "" == $wpName ) ||
-	  preg_match( "/^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$/", $wpName ) ) {
+	  preg_match( "/^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$/", $wpName ) ||
+	  (strpos( $wpName, "/" ) !== false) ) 
+{
 		mainLoginForm( wfMsg( "noname" ) );
 		return;
 	}
@@ -75,17 +77,22 @@ function wfSpecialUserlogin()
 	}
 	$u->setId( $id );
 	$u->loadFromDatabase();
-	$ep = User::encryptPassword( $wpPassword );
+	$ep = $u->encryptPassword( $wpPassword );
 	if ( 0 != strcmp( $ep, $u->getPassword() ) ) {
 		if ( 0 != strcmp( $ep, $u->getNewpassword() ) ) {
 			mainLoginForm( wfMsg( "wrongpassword" ) );
 			return;
 		}
 	}
+
 	# We've verified now, update the real record
 	#
-	if ( 1 == $wpRemember ) { $r = 1; }
-	else { $r = 0; }
+	if ( 1 == $wpRemember ) {
+		$r = 1;
+		$u->setCookiePassword( $wpPassword );
+	} else {
+		$r = 0;
+	}
 	$u->setOption( "rememberpassword", $r );
 
 	$wgUser = $u;
@@ -118,6 +125,7 @@ function wfSpecialUserlogin()
 	}
 	$np = User::randomPassword();
 	$u->setNewpassword( $np );
+
 	setcookie( "wcUserPassword", "", time() - 3600 );
 	$u->saveSettings();
 
@@ -191,7 +199,8 @@ function wfSpecialUserlogin()
 	if ( "" == $err ) {
 		$wgOut->addHTML( "<h2>$li:</h2>\n" );
 	} else {
-		$wgOut->addHTML( "<h2>$le:</h2>\n<font size='+1' color='red'>$err</font>\n" );
+		$wgOut->addHTML( "<h2>$le:</h2>\n<font size='+1' 
+color='red'>$err</font>\n" );
 	}
 	if ( 1 == $wgUser->getOption( "rememberpassword" ) ) {
 		$checked = " checked";
@@ -224,7 +233,8 @@ function wfSpecialUserlogin()
 <tr><td colspan=3>&nbsp;</td></tr><tr>
 <td align=right>$ypa:</td>
 <td align=left>
-<input tabindex=4 type=password name=\"wpRetype\" value=\"{$wpRetype}\" size=20>
+<input tabindex=4 type=password name=\"wpRetype\" value=\"{$wpRetype}\" 
+size=20>
 </td><td>$nuo</td></tr>
 <tr>
 <td align=right>$ye:</td>

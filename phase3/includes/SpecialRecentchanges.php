@@ -1,11 +1,19 @@
 <?
 
-function wfSpecialRecentchanges()
+function wfSpecialRecentchanges( $par )
 {
 	global $wgUser, $wgOut, $wgLang, $wgTitle;
-	global $days, $limit, $hideminor, $from, $hidebots; # From query string
+	global $days, $hideminor, $from, $hidebots; # From query string
 	$fname = "wfSpecialRecentchanges";
 
+	if( $par ) {
+		$bits = preg_split( '/\s*,\s*/', trim( $par ) );
+		if( in_array( "hidebots", $bits ) ) $hidebots = 1;
+		if( in_array( "bots", $bits ) ) $hidebots = 0;
+		if( in_array( "hideminor", $bits ) ) $hideminor = 1;
+		if( in_array( "minor", $bits ) ) $hideminor = 0;
+	}
+	
 	$sql = "SELECT MAX(rc_timestamp) AS lastmod FROM recentchanges";
 	$res = wfQuery( $sql, $fname );
 	$s = wfFetchObject( $res );
@@ -23,11 +31,10 @@ function wfSpecialRecentchanges()
 		$days = $wgUser->getOption( "rcdays" );
 		if ( ! $days ) { $days = 3; }
 	}
-	if ( ! $limit ) {
-		$limit = $wgUser->getOption( "rclimit" );
-		if ( ! $limit ) { $limit = 100; }
-	}
-	$cutoff = date( "YmdHis", time() - ( $days * 86400 ) );
+	$days = (int)$days;
+	list( $limit, $offset ) = wfCheckLimits( 100, "rclimit" );
+	$now = wfTimestampNow();
+	$cutoff = wfUnix2Timestamp( time() - ( $days * 86400 ) );
 	if(preg_match('/^[0-9]{14}$/', $from) and $from > $cutoff) {
 		$cutoff = $from;
 	} else {
@@ -65,21 +72,18 @@ function wfSpecialRecentchanges()
 	$res = wfQuery( $sql2, $fname );
 
 	if(isset($from)) {
-		$note = str_replace( "$1", $limit, wfMsg( "rcnotefrom" ) );
-		$note = str_replace( "$2", $wgLang->timeanddate( $from, true ), $note );
+		$note = wfMsg( "rcnotefrom", $limit,
+			$wgLang->timeanddate( $from, true ) );
 	} else {
-		$note = str_replace( "$1", $limit, wfMsg( "rcnote" ) );
-		$note = str_replace( "$2", $days, $note );
+		$note = wfMsg( "rcnote", $limit, $days );
 	}
 	$wgOut->addHTML( "\n<hr>\n{$note}\n<br>" );
 
 	$note = rcDayLimitLinks( $days, $limit );
 
-	$now = date( "YmdHis" );
-	$note .= "<br>\n" . str_replace( "$1",
+	$note .= "<br>\n" . wfMsg( "rclistfrom",
 	  $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
-	  $wgLang->timeanddate( $now, true ), "from=$now" ),
-	  wfMsg( "rclistfrom" ) );
+	  $wgLang->timeanddate( $now, true ), "from=$now" ) );
 
 	$wgOut->addHTML( "{$note}\n" );
 
@@ -150,9 +154,7 @@ function rcDayLimitLinks( $days, $limit, $page="Recentchanges", $more="", $doall
 	  rcDaysLink( $limit, 14, $page, $more  ) . " | " .
 	  rcDaysLink( $limit, 30, $page, $more  ) .
 	  ( $doall ? ( " | " . rcDaysLink( $limit, 0, $page, $more ) ) : "" );
-	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
-	$note = str_replace( "$2", $dl, $note );
-	$note = str_replace( "$3", $mlink, $note );
+	$note = wfMsg( "rclinks", $cl, $dl, $mlink );
 	return $note;
 }
 
@@ -164,8 +166,7 @@ function rcLimitLinks( $page="Recentchanges", $more="", $doall = false )
 	  rcCountLink( 250, 0, $page, $more  ) . " | " .
 	  rcCountLink( 500, 0, $page, $more  ) .
 	  ( $doall ? ( " | " . rcCountLink( 0, $days, $page, $more ) ) : "" );
-	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
-	$note = str_replace( "$3", $mlink, $note );
+	$note = wfMsg( "rclinks", $cl, "", $mlink );
 	return $note;
 }
 

@@ -62,24 +62,8 @@ class Skin {
 	}
 
 	function getHeadScripts() {
-		$r = "
-<SCRIPT TYPE=\"text/javascript\">
-function toggleVisibility( _levelId, _otherId, _linkId) {
-	var thisLevel = document.getElementById( _levelId );
-	var otherLevel = document.getElementById( _otherId );
-	var linkLevel = document.getElementById( _linkId );
-	if ( thisLevel.style.display == 'none' ) {
-		thisLevel.style.display = 'block';
-		otherLevel.style.display = 'none';
-		linkLevel.style.display = 'inline';
-	} else {
-		thisLevel.style.display = 'none';
-		otherLevel.style.display = 'inline';
-		linkLevel.style.display = 'none';
-		}
-	}
-</SCRIPT>
-		" ;
+		global $wgStyleSheetPath;
+		$r = "<script type=\"text/javascript\" src=\"{$wgStyleSheetPath}/wikibits.js\"></script>\n";
 		return $r;
 	}
 
@@ -407,29 +391,32 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 
 	function nameAndLogin()
 	{
-		global $wgUser, $wgTitle, $wgLang;
+		global $wgUser, $wgTitle, $wgLang, $wgShowIPinHeader;
 
 		$li = $wgLang->specialPage( "Userlogin" );
 		$lo = $wgLang->specialPage( "Userlogout" );
 
 		$s = "";
 		if ( 0 == $wgUser->getID() ) {
-			$n = getenv( "REMOTE_ADDR" );
+			if( $wgShowIPinHeader ) {
+				$n = getenv( "REMOTE_ADDR" );
+
+  				$tl = $this->makeKnownLink( $wgLang->getNsText(
+				  Namespace::getTalk( Namespace::getUser() ) ) . ":{$n}",
+				  $wgLang->getNsText( Namespace::getTalk( 0 ) ) );
+			  
+				$s .= $n .  " (".$tl.")";
+			} else {
+				$s .= wfMsg("notloggedin");
+			}
+			
 			$rt = $wgTitle->getPrefixedURL();
 			if ( 0 == strcasecmp( urlencode( $lo ), $rt ) ) {
 				$q = "";
 			} else { $q = "returnto={$rt}"; }
-
-			  
-  			$tl = $this->makeKnownLink( $wgLang->getNsText(
-			  Namespace::getTalk( Namespace::getUser() ) ) . ":{$n}",
-			  $wgLang->getNsText( Namespace::getTalk( 0 ) ) );
-			  
-			$s .= $n .  " (".$tl.")" . "\n<br>" . $this->makeKnownLink( $li,
-			  wfMsg( "login" ), $q );
-			  
-			$tl = " ({$tl})"; 
 			
+			$s .= "\n<br>" . $this->makeKnownLink( $li,
+			  wfMsg( "login" ), $q );
 		} else {
 			$n = $wgUser->getName();
 			$rt = $wgTitle->getPrefixedURL();
@@ -454,13 +441,13 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 	function searchForm()
 	{
 		global $search;
-		$s = "<form id=\"search\" class=\"inline\" method=\"get\" action=\""
+
+		$s = "<form name='search' class='inline' method=get action=\""
 		  . wfLocalUrl( "" ) . "\">"
 		  . "<input type=text name=\"search\" size=19 value=\""
 		  . htmlspecialchars(substr($search,0,256)) . "\">\n"
-		  . "<input type=submit value=\"" . wfMsg( "search" )
-		  . "\">&nbsp;<input type=submit name=\"go\" value=\""
-		  . wfMsg ("go") . "\"></form>";		  
+		  . "<input type=submit name=\"go\" value=\"" . wfMsg ("go") . "\">&nbsp;"
+		  . "<input type=submit value=\"" . wfMsg ("search") . "\"></form>";
 
 		return $s;
 	}
@@ -527,17 +514,20 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 	function pageStats()
 	{
 		global $wgOut, $wgLang, $wgArticle;
-		global $oldid, $diff;
+		global $oldid, $diff, $wgDisableCounters;
 
 		if ( ! $wgOut->isArticle() ) { return ""; }
 		if ( isset( $oldid ) || isset( $diff ) ) { return ""; }
 		if ( 0 == $wgArticle->getID() ) { return ""; }
 
-		$count = $wgArticle->getCount();
-		$s = str_replace( "$1", $count, wfMsg( "viewcount" ) );
-
+		if ( $wgDisableCounters ) {
+			$s = "";
+		} else {
+			$count = $wgArticle->getCount();
+			$s = str_replace( "$1", $count, wfMsg( "viewcount" ) );
+		}
 		$s .= $this->lastModified();
-		$s .= " ".wfMsg( "gnunote" ) ;
+		$s .= " " . wfMsg( "gnunote" );
 		return "<span id='pagestats'>{$s}</span>";
 	}
 
@@ -948,8 +938,8 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 	function dateLink()
 	{
 		global $wgLinkCache;
-		$t1 = Title::newFromText( date( "F j" ) );
-		$t2 = Title::newFromText( date( "Y" ) );
+		$t1 = Title::newFromText( gmdate( "F j" ) );
+		$t2 = Title::newFromText( gmdate( "Y" ) );
 
 		$wgLinkCache->suspend();
 		$id = $t1->getArticleID();
@@ -1204,7 +1194,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 
 		if ( "" == $alt ) { $alt = $name; }
 		$u = wfEscapeHTML( $url );
-		$s = "<a href=\"{$u}\" class='media' title=\"{$alt}\">{$alt}</a>";
+		$s = "<a href=\"{$u}\" class='internal' title=\"{$alt}\">{$alt}</a>";
 		return $s;
 	}
 
@@ -1664,6 +1654,61 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		}
 		$s .= "</li>\n";
 		return $s;
+	}
+
+	function tocIndent($level) {
+
+		while($level-->0) $rv.="<div style=\"margin-left:2em;\">\n";
+		return $rv;
+
+	}
+
+	function tocUnindent($level) {
+		while($level-->0) $rv.="</div>\n";
+		return $rv;
+	}
+
+	// parameter level defines if we are on an indentation level
+	function tocLine($anchor,$tocline,$level) {
+		
+		if($level) { 
+		
+			return "<A CLASS=\"internal\" HREF=\"#".$anchor."\">".$tocline."</A><BR>\n";
+		} else { 
+
+			return "<div style=\"margin-bottom:0px;\">\n".
+			"<A CLASS=\"internal\" HREF=\"#".$anchor."\">".$tocline."</A><BR>\n".
+			"</div>\n";
+		}
+
+	}
+
+	function tocTable($toc) {
+
+/* does not auto-expand, use table for now
+	return "
+	<div><div style=\"border-width:1px;background-color:#f3f3ff;border-color:#8888aa;border-style:solid;padding:1em;padding-bottom:1em;\">
+	<b>".wfMsg("toc")."</b><P>
+	$toc</div></div>";
+*/
+	return
+	"<table border=\"0\" bgcolor=\"#8888aa\" cellpadding=\"0\" cellspacing=\"1\"><tr><td>\n" .
+	"<table border=\"0\" bgcolor=\"#f3f3ff\" CELLPADDING=5><tr><td>\n".
+	"<b>".wfMsg("toc")."</b>" .
+	" <script type='text/javascript'>showTocToggle(\"" . wfMsg("showtoc") . "\",\"" . wfMsg("hidetoc") . "\")</script>" .
+	"</td></tr><tr id='tocinside'><td>\n".
+	$toc."</td></tr></table></td></tr></table><P>\n";
+	}
+
+	function editSectionLink($section) {
+
+		global $wgTitle,$wgUser,$oldid;
+		if($wgTitle->isProtected() && !$wgUser->isSysop()) return "";
+		if($oldid) return "";
+		$editurl="&section={$section}";		
+		$url=$this->makeKnownLink($wgTitle->getPrefixedText(),wfMsg("editsection"),"action=edit".$editurl);
+		return "<div style=\"float:right;margin-left:5px;\"><small>[".$url."]</small></div>";
+
 	}
 }
 

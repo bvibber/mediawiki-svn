@@ -14,14 +14,20 @@ class SearchEngine {
 	{
 		# We display the query, so let's strip it for safety
 		#
+		global $wgDBmysql4;
 		$lc = SearchEngine::legalSearchChars() . "()";
+		if( $wgDBmysql4 ) $lc .= "\"~<>*+-";
 		$this->mUsertext = trim( preg_replace( "/[^{$lc}]/", " ", $text ) );
 		$this->mSearchterms = array();
 	}
 
 	function queryNamespaces()
 	{
-		return "cur_namespace IN (" . implode( ",", $this->namespacesToSearch ) . ")";
+		$namespaces = implode( ",", $this->namespacesToSearch );
+		if ($namespaces == "") {
+			$namespaces = "0";
+		}
+		return "AND cur_namespace IN (" . $namespaces . ")";
 		#return "1";
 	}
 
@@ -31,6 +37,25 @@ class SearchEngine {
 		return "AND cur_is_redirect=0 ";
 	}
 
+
+
+	/* private */ function initNamespaceCheckbox( $i )
+	{
+		global $wgUser, $wgNamespacesToBeSearchedDefault;
+		
+
+		if ($wgUser->getRights()) {
+			// User is logged in so we retrieve his default namespaces
+			return $wgUser->getOption( "searchNs".$i );
+		}
+		else {	
+			// User is not logged in so we give him the global default namespaces
+			return $wgNamespacesToBeSearchedDefault[ $i ];
+		}
+	}
+
+
+
 	function powersearch()
 	{
 		global $wgUser, $wgOut, $wgLang, $wgTitle;
@@ -39,18 +64,25 @@ class SearchEngine {
 		$search			= $_REQUEST['search'];
 		$searchx		= $_REQUEST['searchx'];
 		$listredirs		= $_REQUEST['redirs'];
-		$nscb[0]		= $_REQUEST['ns0'];
-		$nscb[1]		= $_REQUEST['ns1'];
-		$nscb[2]		= $_REQUEST['ns2'];
-		$nscb[3]		= $_REQUEST['ns3'];
-		$nscb[4]		= $_REQUEST['ns4'];
-		$nscb[5]		= $_REQUEST['ns5'];
-		$nscb[6]		= $_REQUEST['ns6'];
-		$nscb[7]		= $_REQUEST['ns7'];
+
 
 		if ( ! isset ( $searchx ) ) {	/* First time here */
-			$nscb[0] = $listredirs = 1;	/* All others should be unset */
+			$listredirs = 1;
+			for ($i = 0; ($i <= 7); $i++)
+			{
+				$nscb[$i] = $this->initNamespaceCheckbox($i);
+			}
+		} else {
+			$nscb[0]		= $_REQUEST['ns0'];
+			$nscb[1]		= $_REQUEST['ns1'];
+			$nscb[2]		= $_REQUEST['ns2'];
+			$nscb[3]		= $_REQUEST['ns3'];
+			$nscb[4]		= $_REQUEST['ns4'];
+			$nscb[5]		= $_REQUEST['ns5'];
+			$nscb[6]		= $_REQUEST['ns6'];
+			$nscb[7]		= $_REQUEST['ns7'];
 		}
+
 		$this->checkboxes["searchx"] = 1;
 		$ret = wfMsg("powersearchtext");
 
@@ -112,23 +144,19 @@ class SearchEngine {
 		global $wgUser, $wgTitle, $wgOut, $wgLang, $wgDisableTextSearch;
 		$fname = "SearchEngine::showResults";
 
-		$offset		= $_REQUEST['offset'];
-		$limit		= $_REQUEST['limit'];
 		$search		= $_REQUEST['search'];
 
 		$powersearch = $this->powersearch(); /* Need side-effects here? */
 
 		$wgOut->setPageTitle( wfMsg( "searchresults" ) );
-		$q = str_replace( "$1", $this->mUsertext,
-		  wfMsg( "searchquery" ) );
+		$q = wfMsg( "searchquery", htmlspecialchars( $this->mUsertext ) );
 		$wgOut->setSubtitle( $q );
 		$wgOut->setArticleFlag( false );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 
 		$sk = $wgUser->getSkin();
-		$text = str_replace( "$1", $sk->makeKnownLink(
-		  wfMsg( "searchhelppage" ), wfMsg( "searchingwikipedia" ) ),
-		  wfMsg( "searchresulttext" ) );
+		$text = wfMsg( "searchresulttext", $sk->makeKnownLink(
+		  wfMsg( "searchhelppage" ), wfMsg( "searchingwikipedia" ) ) );
 		$wgOut->addHTML( $text );
 
 		$this->parseQuery();
@@ -137,11 +165,7 @@ class SearchEngine {
 			  "<p>" . wfMsg( "badquerytext" ) );
 			return;
 		}
-		if ( ! isset( $limit ) ) {
-			$limit = $wgUser->getOption( "searchlimit" );
-			if ( ! $limit ) { $limit = 20; }
-		}
-		if ( ! $offset ) { $offset = 0; }
+		list( $limit, $offset ) = wfCheckLimits( 20, "searchlimit" );
 
 		$searchnamespaces = $this->queryNamespaces();
 		$redircond = $this->searchRedirects();
@@ -149,9 +173,10 @@ class SearchEngine {
 		$sql = "SELECT cur_id,cur_namespace,cur_title," .
 		  "cur_text FROM cur,searchindex " .
 		  "WHERE cur_id=si_page AND {$this->mTitlecond} " .
-		  "AND {$searchnamespaces} {$redircond}" .
+		  "{$searchnamespaces} {$redircond}" .
 		  "LIMIT {$offset}, {$limit}";
 		$res1 = wfQuery( $sql, $fname );
+		$num = wfNumRows($res1);
 
 		if ( $wgDisableTextSearch ) {
 			$res2 = 0;
@@ -159,12 +184,17 @@ class SearchEngine {
 			$sql = "SELECT cur_id,cur_namespace,cur_title," .
 			  "cur_text FROM cur,searchindex " .
 			  "WHERE cur_id=si_page AND {$this->mTextcond} " .
-			  "AND {$searchnamespaces} {$redircond} " .
+			  "{$searchnamespaces} {$redircond} " .
 			  "LIMIT {$offset}, {$limit}";
 			$res2 = wfQuery( $sql, $fname );
+			$num = $num + wfNumRows($res2);
 		}
 
-		$top = wfShowingResults( $offset, $limit );
+                if ( $num == $limit ) {
+		  $top = wfShowingResults( $offset, $limit);
+		} else {
+		  $top = wfShowingResultsNum( $offset, $limit, $num );
+		}
 		$wgOut->addHTML( "<p>{$top}\n" );
 
 		# For powersearch
@@ -231,7 +261,12 @@ class SearchEngine {
 
 	function parseQuery()
 	{
-		global $wgDBminWordLen, $wgLang;
+		global $wgDBminWordLen, $wgLang, $wgDBmysql4;
+
+		if( $wgDBmysql4 ) {
+			# Use cleaner boolean search if available
+			return $this->parseQuery4();
+		}
 
 		$lc = SearchEngine::legalSearchChars() . "()";
 		$q = preg_replace( "/([()])/", " \\1 ", $this->mUsertext );
@@ -259,14 +294,27 @@ class SearchEngine {
 		}
 		if ( 0 == count( $this->mSearchterms ) ) { return; }
 
-		# To disable boolean:
-		# $cond = "MATCH (##field##) AGAINST('" . wfStrencode( $q ) . "')";
-
 		$this->mTitlecond = "(" . str_replace( "##field##",
 		  "si_title", $cond ) . " )";
 
 		$this->mTextcond = "(" . str_replace( "##field##",
 		  "si_text", $cond ) . " AND (cur_is_redirect=0) )";
+	}
+	
+	function parseQuery4()
+	{
+		# FIXME: not ready yet! Do not use.
+		
+		global $wgLang;
+		$lc = SearchEngine::legalSearchChars();
+		#$q = preg_replace( "/([+-]?)([$lc]+)/e",
+		#	"\"$1\" . \$wgLang->stripForSearch(\"$2\")",
+		#	$this->mUsertext );
+		
+		$q = $this->mUsertext;
+		$qq = wfStrencode( $q );
+		$this->mTitlecond = " MATCH(si_title) AGAINST('$qq' IN BOOLEAN MODE)";
+		$this->mTextcond = " (MATCH(si_text) AGAINST('$qq' IN BOOLEAN MODE) AND cur_is_redirect=0)";
 	}
 
 	function showHit( $row )
@@ -350,10 +398,18 @@ class SearchEngine {
 			$wgArticle->view();
 			return;
 		}
-		
+
 		# Now try capitalized string
 		#
 		$wgTitle=Title::newFromText( ucwords( strtolower( $search ) ) );
+		if ( 0 != $wgArticle->getID() ) {
+			$wgArticle->view();
+			return;
+		}
+
+		# Now try all upper case
+		#
+		$wgTitle = Title::newFromText( strtoupper( $search ) );
 		if ( 0 != $wgArticle->getID() ) {
 			$wgArticle->view();
 			return;
@@ -363,7 +419,7 @@ class SearchEngine {
 		#
 		$this->parseQuery();										
 		$sql = "SELECT cur_id,cur_title,cur_namespace,si_page FROM cur,searchindex " .
-		  "WHERE cur_id=si_page AND {$this->mTitlecond} LIMIT 1";
+		  "WHERE cur_id=si_page AND {$this->mTitlecond} ORDER BY cur_namespace LIMIT 1";
 
 		if ( "" != $this->mTitlecond ) {
 			$res = wfQuery( $sql, $fname );
@@ -376,7 +432,9 @@ class SearchEngine {
 			$wgArticle->view();
 			return;
 		}
-		$wgOut->addHTML( wfMsg("nogomatch") . "\n<p>" );
+		$wgOut->addHTML( wfMsg("nogomatch", 
+		  htmlspecialchars( wfLocalUrl( ucfirst($this->mUsertext), "action=edit") ) )
+		  . "\n<p>" );
 		$this->showResults();
 	}
 }

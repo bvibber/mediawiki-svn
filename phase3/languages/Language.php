@@ -24,7 +24,9 @@
 	"cols" => 80, "rows" => 25, "searchlimit" => 20,
 	"contextlines" => 5, "contextchars" => 50,
 	"skin" => 0, "math" => 1, "rcdays" => 7, "rclimit" => 50,
-	"highlightbroken" => 1, "stubthreshold" => 0
+	"highlightbroken" => 1, "stubthreshold" => 0,
+	"previewontop" => 1, "editsection"=>1, "showtoc"=>1,
+	"date" => 0
 );
 
 /* private */ $wgQuickbarSettingsEn = array(
@@ -43,6 +45,13 @@
 	"Recommended for modern browsers"
 );
 
+/* private */ $wgDateFormatsEn = array(
+	"No preference",
+	"January 15, 2001",
+	"15 January 2001",
+	"2001 January 15"
+);
+
 /* private */ $wgUserTogglesEn = array(
 	"hover"		=> "Show hoverbox over wiki links",
 	"underline" => "Underline links",
@@ -52,12 +61,15 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"hideminor" => "Hide minor edits in recent changes",
 	"usenewrc" => "Enhanced recent changes (not for all browsers)",
 	"numberheadings" => "Auto-number headings",
+	"editsection"=>"Show links for editing individual sections",
+	"showtoc"=>"Show table of contents for articles with more than 3 headings",
 	"rememberpassword" => "Remember password across sessions",
 	"editwidth" => "Edit box has full width",
 	"editondblclick" => "Edit pages on double click (JavaScript)",
 	"watchdefault" => "Watch new and modified articles",
 	"minordefault" => "Mark all edits minor by default",
-	"previewontop" => "Show preview before edit box and not after it"
+	"previewontop" => "Show preview before edit box and not after it",
+	"nocache" => "Disable page caching"
 );
 
 /* private */ $wgBookstoreListEn = array(
@@ -206,6 +218,8 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"yo"	=> "Yoruba",
 	"za"	=> "Zhuang",
 	"zh" => "&#20013;&#25991; (Zhongwen)",
+	"zh-cn" => "&#20013;&#25991;(&#31616;&#20307;) (Simplified Chinese)",
+	"zh-tw" => "&#20013;&#25991;(&#32321;&#20307;) (Traditional Chinese)",
 	"zu"	=> "Zulu"
 );
 
@@ -248,6 +262,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"Shortpages"	=> "Short articles",
 	"Longpages"		=> "Long articles",
 	"Newpages"		=> "Newly created articles",
+	"Ancientpages"	=> "Oldest articles",
 	"Intl"		=> "Interlanguage links",
 	"Allpages"		=> "All pages by title",
 
@@ -280,6 +295,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 #
 "linktrail"		=> "/^([a-z]+)(.*)\$/sD",
 "mainpage"		=> "Main Page",
+"mainpagetext"	=> "Wiki software successfully installed.",
 "about"			=> "About",
 "aboutwikipedia" => "About Wikipedia",
 "aboutpage"		=> "Wikipedia:About",
@@ -309,7 +325,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 "help"			=> "Help",
 "search"		=> "Search",
 "go"		=> "Go",
-"history"		=> "Older versions",
+"history"		=> "Page history",
 "printableversion" => "Printable version",
 "editthispage"	=> "Edit this page",
 "deletethispage" => "Delete this page",
@@ -325,7 +341,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 "viewtalkpage" => "View discussion",
 "otherlanguages" => "Other languages",
 "redirectedfrom" => "(Redirected from $1)",
-"lastmodified"	=> "It was last modified $1.",
+"lastmodified"	=> "This page was last modified $1.",
 "viewcount"		=> "This page has been accessed $1 times.",
 "gnunote" => "All text is available under the terms of the <a class=internal href='/wiki/GNU_FDL'>GNU Free Documentation License</a>.",
 "printsubtitle" => "(From http://www.wikipedia.org)",
@@ -347,6 +363,8 @@ See $1.",
 "retrievedfrom" => "Retrieved from \"$1\"",
 "newmessages" => "You have $1.",
 "newmessageslink" => "new messages",
+"editsection"=>"edit",
+"toc" => "Table of contents",
 
 # Main script and global functions
 #
@@ -368,6 +386,11 @@ The last attempted database query was:
 <blockquote><tt>$1</tt></blockquote>
 from within function \"<tt>$2</tt>\".
 MySQL returned error \"<tt>$3: $4</tt>\".",
+"dberrortextcl" => "A database query syntax error has occurred.
+The last attempted database query was:
+\"$1\"
+from within function \"$2\".
+MySQL returned error \"$3: $4\".\n",
 "noconnect"		=> "Could not connect to DB on $1",
 "nodb"			=> "Could not select database $1",
 "readonly"		=> "Database locked",
@@ -400,8 +423,8 @@ Please report this to an administrator, making note of the URL.",
 an incorrectly linked inter-language or inter-wiki title.",
 "perfdisabled" => "Sorry! This feature has been temporarily disabled
 because it slows the database down to the point that no one can use
-the wiki. Which is bad. It will be rewritten for efficiency in the near
-future (possibly by you! we're open source after all)",
+the wiki.",
+"perfdisabledsub" => "Here's a saved copy from $1:",
 
 # Login and logout pages
 #
@@ -431,9 +454,10 @@ that it be to the address you give.<br>\n",
 "userlogin"		=> "Log in",
 "logout"		=> "Log out",
 "userlogout"	=> "Log out",
+"notloggedin"	=> "Not logged in",
 "createaccount"	=> "Create new account",
 "badretype"		=> "The passwords you entered do not match.",
-"userexists"	=> "The user name you entered is already in use. Please choosea different name.",
+"userexists"	=> "The user name you entered is already in use. Please choose a different name.",
 "youremail"		=> "Your e-mail*",
 "yournick"		=> "Your nickname (for signatures)",
 "emailforlost"	=> "* Entering an email address is optional.  But it enables people to
@@ -484,6 +508,7 @@ If you are here by mistake, just click your browser's '''back''' button.",
 "previewconflict" => "This preview reflects the text in the upper
 text editing area as it will appear if you choose to save.",
 "editing"		=> "Editing $1",
+"sectionedit"	=> " (section)",
 "editconflict"	=> "Edit conflict: $1",
 "explainconflict" => "Someone else has changed this page since you
 started editing it.
@@ -513,7 +538,7 @@ Please consider breaking the page into smaller sections.",
 so you will not be able to save your edits right now. You may wish to cut-n-paste
 the text into a text file and save it for later.",
 "protectedpagewarning" => "WARNING:  This page has been locked so that only
-users with sysop priveledges can edit it. Be sure you are following the
+users with sysop privileges can edit it. Be sure you are following the
 <a href='/wiki/Wikipedia:Protected_page_guidelines'>protected page
 guidelines</a>.",
 
@@ -566,6 +591,7 @@ and the text of $3 articles.",
 "nextn"			=> "next $1",
 "viewprevnext"	=> "View ($1) ($2) ($3).",
 "showingresults" => "Showing below <b>$1</b> results starting with #<b>$2</b>.",
+"showingresultsnum" => "Showing below <b>$3</b> results starting with #<b>$2</b>.",
 "nonefound"		=> "<strong>Note</strong>: unsuccessful searches are
 often caused by searching for common words like \"have\" and \"from\",
 which are not indexed, or by specifying more than one search term (only pages
@@ -591,6 +617,7 @@ Your internal ID number is $2.",
 "changepassword" => "Change password",
 "skin"			=> "Skin",
 "math"			=> "Rendering math",
+"dateformat"	=> "Date format",
 "math_failure"		=> "Failed to parse",
 "math_unknown_error"	=> "unknown error",
 "math_unknown_function"	=> "unknown function ",
@@ -613,9 +640,12 @@ Your internal ID number is $2.",
 "savedprefs"	=> "Your preferences have been saved.",
 "timezonetext"	=> "Enter number of hours your local time differs
 from server time (UTC).",
-"localtime"	=> "Local time",
+"localtime"	=> "Local time display",
 "timezoneoffset" => "Offset",
+"servertime"	=> "Server time is now",
+"guesstimezone" => "Fill in from browser",
 "emailflag"		=> "Disable e-mail from other users",
+"defaultns"		=> "Search in these namespaces by default:",
 
 # Recent changes
 #
@@ -638,8 +668,10 @@ See also the [http://meta.wikipedia.org/wiki/Special:Recentchanges recent meta d
 "rcnotefrom"	=> "Below are the changes since <b>$2</b> (up to <b>$1</b> shown).",
 "rclistfrom"	=> "Show new changes starting from $1",
 # "rclinks"		=> "Show last $1 changes in last $2 hours / last $3 days",
-"rclinks"		=> "Show last $1 changes in last $2 days.",
+# "rclinks"		=> "Show last $1 changes in last $2 days.",
+"rclinks"		=> "Show last $1 changes in last $2 days; $3 minor edits",
 "rchide"		=> "in $4 form; $1 minor edits; $2 secondary namespaces; $3 multiple edits.",
+"rcliu"			=> "; $1 edits from logged in users",
 "diff"			=> "diff",
 "hist"			=> "hist",
 "hide"			=> "hide",
@@ -806,6 +838,7 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "rclsub"		=> "(to pages linked from \"$1\")",
 "debug"			=> "Debug",
 "newpages"		=> "New pages",
+"ancientpages"		=> "Oldest articles",
 "intl"		=> "Interlanguage links",
 "movethispage"	=> "Move this page",
 "unusedimagestext" => "<p>Please note that other web sites
@@ -874,8 +907,12 @@ make it easier to pick out.</p>
 #
 "deletepage"	=> "Delete page",
 "confirm"		=> "Confirm",
+"excontent" => "content was:",
+"exbeforeblank" => "content before blanking was:",
+"exblank" => "page was empty",
 "confirmdelete" => "Confirm delete",
 "deletesub"		=> "(Deleting \"$1\")",
+"historywarning" => "Warning: The page you are about to delete has a history: ",
 "confirmdeletetext" => "You are about to permanently delete a page
 or image along with all of its history from the database.
 Please confirm that you intend to do this, that you understand the
@@ -898,7 +935,14 @@ All times shown are server time (UTC).
 "imagereverted" => "Revert to earlier version was successful.",
 "rollback"		=> "Roll back edits",
 "rollbacklink"	=> "rollback",
-"cantrollback"	=> "Can't revert edit; last contributor is only author of this article.",
+"rollbackfailed" => "Rollback failed",
+"cantrollback"	=> "Cannot revert edit; last contributor is only author of this article.",
+"alreadyrolled"	=> "Cannot rollback last edit of [[$1]]
+by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled back the article already. 
+
+Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]). ",
+#   only shown if there is an edit comment
+"editcomment" => "The edit comment was: \"<i>$1</i>\".", 
 "revertpage"	=> "Reverted to last edit by $1",
 
 # Undelete
@@ -999,6 +1043,7 @@ Wikipedia database.
 Use single quotes ('like this') to delimit string literals.
 This can often add considerable load to the server, so please use
 this function sparingly.",
+"sqlislogged"	=> "Please note that all queries are logged.",
 "sqlquery"		=> "Enter query",
 "querybtn"		=> "Submit query",
 "selectonly"	=> "Queries other than \"SELECT\" are restricted to
@@ -1103,6 +1148,11 @@ class Language {
 		global $wgMathNamesEn;
 		return $wgMathNamesEn;
 	}
+	
+	function getDateFormats() {
+		global $wgDateFormatsEn;
+		return $wgDateFormatsEn;
+	}
 
 	function getUserToggles() {
 		global $wgUserTogglesEn;
@@ -1127,12 +1177,18 @@ class Language {
 		global $wgMonthNamesEn;
 		return $wgMonthNamesEn[$key-1];
 	}
-
+	
 	/* by default we just return base form */
 	function getMonthNameGen( $key )
 	{
 		global $wgMonthNamesEn;
 		return $wgMonthNamesEn[$key-1];
+	}
+	
+	function getMonthRegex()
+	{
+		global $wgMonthNamesEn;
+		return implode( "|", $wgMonthNamesEn );
 	}
 
 	function getMonthAbbreviation( $key )
@@ -1166,18 +1222,35 @@ class Language {
  
 	function date( $ts, $adj = false )
 	{
-		global $wgAmericanDates;
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
+		global $wgAmericanDates, $wgUser, $wgUseDynamicDates;
 
-		if( $wgAmericanDates ) {
+		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
+		
+		if ( $wgUseDynamicDates ) {
+			$datePreference = $wgUser->getOption( 'date' );		
+			if ( $datePreference == 0 ) {
+				$datePreference = $wgAmericanDates ? 1 : 2;
+			}
+		} else {
+			$datePreference = $wgAmericanDates ? 1 : 2;
+		}
+		
+		if ( $datePreference == 1 ) {
+			# MDY
 			$d = $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
 			  " " . (0 + substr( $ts, 6, 2 )) . ", " .
 			  substr( $ts, 0, 4 );
-		} else {
+		} else if ( $datePreference == 2 ) {
+			#DMY
 			$d = (0 + substr( $ts, 6, 2 )) . " " .
 			  $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) . " " .
 			  substr( $ts, 0, 4 );
+		} else {
+			#YMD
+			$d = substr( $ts, 0, 4 ) . " " . $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
+				" " . (0 + substr( $ts, 6, 2 ));
 		}
+
 		return $d;
 	}
 
@@ -1191,7 +1264,7 @@ class Language {
 
 	function timeanddate( $ts, $adj = false )
 	{
-		return $this->time( $ts, $adj ) . " " . $this->date( $ts, $adj );
+		return $this->time( $ts, $adj ) . ", " . $this->date( $ts, $adj );
 	}
 
 	function rfc1123( $ts )
@@ -1300,9 +1373,82 @@ class Language {
 		}
 	}
 
+	function replaceDates( $text )
+	{
+		global $wgUser, $wgInputEncoding, $wgUseDynamicDates;
+		
+		# Feature can be disabled
+		if ( !$wgUseDynamicDates ) {
+			return;
+		}
+
+		# Setup
+		
+		$datePreference = $wgUser->getOption( 'date' );
+
+		static $monthNames = "", $rxDM, $rxMD, $rxY, $rxDMY, $rxYMD, $rxMDY, $rxYMD;
+		if ( $monthNames == "" ) {
+			$monthNames = $this->getMonthRegex();
+			
+			# Attempt at UTF-8 support, untested at the moment
+			if ( $wgInputEncoding == 'UTF-8' ) {
+				$regexTrail = '(?![a-z])/iu';
+			} else {
+				$regexTrail = '(?![a-z])/i';
+			}
+
+			# Partial regular expressions
+			$prxDM = '\[\[(\d{1,2})[ _](' . $monthNames . ')]]';
+			$prxMD = '\[\[(' . $monthNames . ')[ _](\d{1,2})]]';
+			$prxY = '\[\[(\d{1,4}([ _]BC|))]]';
+			
+			# Real regular expressions
+			$rxDMY = "/{$prxDM} *,? *{$prxY}{$regexTrail}";	
+			$rxYDM = "/{$prxY} *,? *{$prxDM}{$regexTrail}";
+			$rxMDY = "/{$prxMD} *,? *{$prxY}{$regexTrail}";
+			$rxYMD = "/{$prxY} *,? *{$prxMD}{$regexTrail}";
+			$rxDM = "/{$prxDM}{$regexTrail}";
+			$rxMD = "/{$prxMD}{$regexTrail}";
+			$rxY = "/{$prxY}{$regexTrail}";
+		}
+		
+		# Do replacements
+		# TODO: month capitalisation?
+		if ( $datePreference == 0 ) { 
+			# no preference
+			$text = preg_replace( $rxDMY, '[[$2 $1|$1 $2]] [[$3]]', $text);
+			$text = preg_replace( $rxYDM, '[[$1]] [[$4 $3]]', $text);
+			$text = preg_replace( $rxMDY, '[[$1 $2]], [[$3]]', $text);
+			$text = preg_replace( $rxYMD, '[[$1]] [[$3 $4]]', $text);
+			$text = preg_replace ( $rxDM, '[[$2 $1|$1 $2]]', $text);
+		} else if ( $datePreference == 1 ) {
+			# MDY preferred
+			$text = preg_replace( $rxDMY, '[[$2 $1]], [[$3]]', $text);
+			$text = preg_replace( $rxYDM, '[[$4 $3]], [[$1]]', $text);
+			$text = preg_replace( $rxMDY, '[[$1 $2]], [[$3]]', $text);
+			$text = preg_replace( $rxYMD, '[[$3 $4]], [[$1]]', $text);
+			$text = preg_replace ( $rxDM, '[[$2 $1]]', $text);
+		} else if ( $datePreference == 2 ) {
+			# DMY preferred
+			$text = preg_replace( $rxDMY, '[[$2 $1|$1 $2]] [[$3]]', $text);
+			$text = preg_replace( $rxYDM, '[[$4 $3|$3 $4]] [[$1]]', $text);
+			$text = preg_replace( $rxMDY, '[[$1 $2|$2 $1]] [[$3]]', $text);
+			$text = preg_replace( $rxYMD, '[[$3 $4|$4 $3]] [[$1]]', $text);
+			$text = preg_replace ( $rxDM, '[[$2 $1|$1 $2]]', $text);
+			$text = preg_replace ( $rxMD, '[[$1 $2|$2 $1]]', $text);
+		} else if ( $datePreference == 3 ) {
+			# YMD preferred
+			$text = preg_replace( $rxDMY, '[[$3]] [[$2 $1]]', $text);
+			$text = preg_replace( $rxYDM, '[[$1]] [[$4 $3]]', $text);
+			$text = preg_replace( $rxMDY, '[[$3]] [[$1 $2]]', $text);
+			$text = preg_replace( $rxYMD, '[[$1]] [[$3 $4]]', $text);
+			$text = preg_replace ( $rxDM, '[[$2 $1]]', $text);
+		}
+		return $text;
+	}
 }
 
 global $IP;
-@include_once( "$IP/Language" . ucfirst( $wgLanguageCode ) . ".php" );
+@include_once( "{$IP}/Language" . ucfirst( $wgLanguageCode ) . ".php" );
 
 ?>

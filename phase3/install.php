@@ -1,5 +1,12 @@
 <?
 
+if (!extension_loaded('mysql')) {
+    if (!dl('mysql.so')) {
+        print "Could not load MySQL driver! Please compile ".
+              "php --with-mysql or install the mysql.so module.\n";
+	exit;
+    }
+}
 # Install software and create new empty database.
 #
 
@@ -20,7 +27,18 @@ if ( $wgUseTeX && ( ! is_executable( "./math/texvc" ) ) ) {
 	  "running \"make\" in the math directory.\n";
 	exit();
 }
+if ( is_file( "{$IP}/Version.php" ) ) {
+	print "There appears to be an installation of the software\n" .
+	  "already present on \"{$IP}\". You may want to run the update\n" .
+	  "script instead. If you continue with this installation script,\n" .
+	  "that software and all of its data will be overwritten.\n" .
+	  "Are you sure you want to do this? (yes/no) ";
 
+	$response = readconsole();
+	if ( ! ( "Y" == $response{0} || "y" == $response{0} ) ) { exit(); }
+}
+
+$wgCommandLineMode = true;
 umask( 000 );
 set_time_limit( 0 );
 
@@ -36,21 +54,13 @@ foreach ( $dirs as $d ) { makedirectory( $d ); }
 print "Copying files...\n";
 
 copyfile( ".", "LocalSettings.php", $IP );
+copyfile( ".", "Version.php", $IP );
 copyfile( ".", "wiki.phtml", $IP );
 copyfile( ".", "redirect.phtml", $IP );
 copyfile( ".", "texvc.phtml", $IP );
 
-$handle = opendir( "./includes" );
-while ( false !== ( $f = readdir( $handle ) ) ) {
-	if ( "." == $f{0} ) continue;
-	copyfile( "./includes", $f, $IP );
-}
-
-$handle = opendir( "./stylesheets" );
-while ( false !== ( $f = readdir( $handle ) ) ) {
-	if ( "." == $f{0} ) continue;
-	copyfile( "./stylesheets", $f, $wgStyleSheetDirectory );
-}
+copydirectory( "./includes", $IP );
+copydirectory( "./stylesheets", $wgStyleSheetDirectory );
 
 copyfile( "./images", "wiki.png", $wgUploadDirectory );
 copyfile( "./languages", "Language.php", $IP );
@@ -72,6 +82,8 @@ if ( $wgUseTeX ) {
 	copyfile( "./math", "texvc_test", "{$IP}/math", 0775 );
 	copyfile( "./math", "texvc_tex", "{$IP}/math", 0775 );
 }
+
+copyfile( ".", "Version.php", $IP );
 
 #
 # Make and initialize database
@@ -122,14 +134,14 @@ exit();
 # Functions used above:
 #
 function makedirectory( $d ) {
-	global $installOwner, $installGroup;
+	global $wgInstallOwner, $wgInstallGroup;
 
 	if ( is_dir( $d ) ) {
 		print "Directory \"{$d}\" exists.\n";
 	} else {
 		if ( mkdir( $d, 0777 ) ) {
-			if ( isset( $installOwner ) ) { chown( $d, $installOwner ); }
-			if ( isset( $installGroup ) ) { chgrp( $d, $installGroup ); }
+			if ( isset( $wgInstallOwner ) ) { chown( $d, $wgInstallOwner ); }
+			if ( isset( $wgInstallGroup ) ) { chgrp( $d, $wgInstallGroup ); }
 			print "Directory \"{$d}\" created.\n";
 		} else {
 			print "Could not create directory \"{$d}\".\n";
@@ -138,13 +150,13 @@ function makedirectory( $d ) {
 	}
 }
 
-function copyfile( $sdir, $name, $ddir, $perms = 0644 ) {
-	global $installOwner, $installGroup;
+function copyfile( $sdir, $name, $ddir, $perms = 0664 ) {
+	global $wgInstallOwner, $wgInstallGroup;
 
 	$d = "{$ddir}/{$name}";
 	if ( copy( "{$sdir}/{$name}", $d ) ) {
-		if ( isset( $installOwner ) ) { chown( $d, $installOwner ); }
-		if ( isset( $installGroup ) ) { chgrp( $d, $installGroup ); }
+		if ( isset( $wgInstallOwner ) ) { chown( $d, $wgInstallOwner ); }
+		if ( isset( $wgInstallGroup ) ) { chgrp( $d, $wgInstallGroup ); }
 		chmod( $d, $perms );
 		# print "Copied \"{$name}\" to \"{$ddir}\".\n";
 	} else {
@@ -153,9 +165,18 @@ function copyfile( $sdir, $name, $ddir, $perms = 0644 ) {
 	}
 }
 
+function copydirectory( $source, $dest ) {
+	$handle = opendir( $source );
+	while ( false !== ( $f = readdir( $handle ) ) ) {
+		if ( "." == $f{0} ) continue;
+		if ( "CVS" == $f ) continue;
+		copyfile( $source, $f, $dest );
+	}
+}
+
 function readconsole() {
 	$fp = fopen( "php://stdin", "r" );
-	$resp = trim( fgets( $fp ) );
+	$resp = trim( fgets( $fp, 1024 ) );
 	fclose( $fp );
 	return $resp;
 }
@@ -232,11 +253,21 @@ function populatedata() {
 	$sql = "DELETE FROM user";
 	wfQuery( $sql, $fname );
 
-	$sql = "INSERT INTO user (user_name, user_password, user_rights)" .
-	  "VALUES ('WikiSysop','" . User::encryptPassword( $wgDBadminpassword ) .
-	  "','sysop'),('WikiDeveloper','" . User::encryptPassword(
-	  $wgDBadminpassword ) . "','sysop,developer')";
-	wfQuery( $sql, $fname );
+	$u = User::newFromName( "WikiSysop" );
+	if ( 0 == $u->idForName() ) {
+		$u->addToDatabase();
+		$u->setPassword( $wgDBadminpassword );
+		$u->addRight( "sysop" );
+		$u->saveSettings();
+	}
+	$u = User::newFromName( "WikiDeveloper" );
+	if ( 0 == $u->idForName() ) {
+		$u->addToDatabase();
+		$u->setPassword( $wgDBadminpassword );
+		$u->addRight( "sysop" );
+		$u->addRight( "developer" );
+		$u->saveSettings();
+	}
 	
 	$wns = Namespace::getWikipedia();
 	$ulp = addslashes( wfMsg( "uploadlogpage" ) );
@@ -253,6 +284,11 @@ function populatedata() {
 	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 	  "cur_restrictions) VALUES ({$wns},'{$dlp}','" .
 	  wfStrencode( wfMsg( "dellogpagetext" ) ) . "','sysop')";
+	wfQuery( $sql );
+
+	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text) " .
+	  "VALUES (0,'" . wfStrencode( wfMsg( "mainpage" ) ) . "','" .
+	  wfStrencode( wfMsg( "mainpagetext" ) ) . "')";
 	wfQuery( $sql );
 }
 

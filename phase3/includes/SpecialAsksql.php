@@ -22,9 +22,13 @@ class SqlQueryForm {
 	{
 		global $wgOut, $wgUser, $wgLang;
 		global $wpSqlQuery;
+		global $wgLogQueries;
 
 		$wgOut->setPagetitle( wfMsg( "asksql" ) );
-		$wgOut->addWikiText( wfMsg( "asksqltext" ) );
+		$note = wfMsg( "asksqltext" );
+		if($wgLogQueries)
+			$note .= " " . wfMsg( "sqlislogged" );
+		$wgOut->addWikiText( $note );
 
 		if ( "" != $err ) {
 			$wgOut->addHTML( "<p><font color='red' size='+1'>" . htmlspecialchars($err) . "</font>\n" );
@@ -54,7 +58,7 @@ class SqlQueryForm {
 
 	function doSubmit()
 	{
-		global $wgOut, $wgUser, $wgServer, $wgScript, $wgArticlePath;
+		global $wgOut, $wgUser, $wgServer, $wgScript, $wgArticlePath, $wgLang;
 		global $wpSqlQuery;
 		global $wgDBsqluser, $wgDBsqlpassword;
 
@@ -67,7 +71,9 @@ class SqlQueryForm {
 		if ( ! $wgUser->isDeveloper() ) {
 			$connection = wfGetDB( $wgDBsqluser, $wgDBsqlpassword );
 		}
+		$this->logQuery( $wpSqlQuery );
 		$res = wfQuery( $wpSqlQuery, "SpecialAsksql::doSubmit" );
+		$this->logFinishedQuery();
 
 		$n = 0;
 		@$n = wfNumFields( $res );
@@ -91,9 +97,13 @@ class SqlQueryForm {
 				$r .= "<tr>";
 				foreach ( $k as $x ) {
 					$o = $y->$x ;
-					if ( $x == "cur_title" or $x == "old_title" ) {
-						$o = str_replace ( "$1" , rawurlencode( $o ) , $wgArticlePath ) ;
-						$o = "<a href=\"{$o}\" class='internal'>" .
+					if ( $x == "cur_title" or $x == "old_title" or $x == "rc_title") {
+						$namespace = 0;
+						if( $x == "cur_title" ) $namespace = $y->cur_namespace;
+						if( $x == "old_title" ) $namespace = $y->old_namespace;
+						if( $x == "rc_title" ) $namespace = $y->rc_namespace;
+						if( $namespace ) $o = $wgLang->getNsText( $namespace ) . ":" . $o;
+						$o = "<a href=\"" . wfLocalUrlE($o) . "\" class='internal'>" .
 						  htmlspecialchars( $y->$x ) . "</a>" ;
 						} else {
 						$o = htmlspecialchars( $o );
@@ -106,6 +116,31 @@ class SqlQueryForm {
 		}
 		$this->showForm( wfMsg( "querysuccessful" ) );
 		$wgOut->addHTML( "<hr>{$r}\n" );
+	}
+
+	function logQuery( $q ) {
+		global $wgSqlLogFile, $wgLogQueries, $wgUser;
+		if(!$wgLogQueries) return;
+		
+		$f = fopen( $wgSqlLogFile, "a" );
+		fputs( $f, "\n\n" . wfTimestampNow() .
+			" query by " . $wgUser->getName() .
+			":\n$q\n" );
+		fclose( $f );
+		$this->starttime = microtime();
+	}
+	
+	function logFinishedQuery() {
+		global $wgSqlLogFile, $wgLogQueries;
+		if(!$wgLogQueries) return;
+		
+		list($sec, $usec) = explode( " ", microtime() );
+		list($sec1, $usec1) = explode( " ", $this->starttime );
+		$interval = ($sec + $usec) - ($sec1 + $usec1);
+		
+		$f = fopen( $wgSqlLogFile, "a" );
+		fputs( $f, "finished at " . wfTimestampNow() . "; took $interval secs\n" );
+		fclose( $f );
 	}
 
 }

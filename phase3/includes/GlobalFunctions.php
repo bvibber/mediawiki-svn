@@ -32,7 +32,8 @@ function wfSeedRandom()
 	global $wgRandomSeeded;
 
 	if ( ! $wgRandomSeeded ) {
-		mt_srand( (double)microtime() * 1000000 );
+		$seed = hexdec(substr(md5(microtime()),-8)) & 0x7fffffff;
+		mt_srand( $seed );
 		$wgRandomSeeded = true;
 	}
 }
@@ -46,14 +47,14 @@ function wfLocalUrl( $a, $q = "" )
 
 	if ( "" == $a ) {
 		if( "" == $q ) {
-			$a = $wgServer . $wgScript;
+			$a = $wgScript;
 		} else {
-			$a = "{$wgServer}{$wgScript}?{$q}";
+			$a = "{$wgScript}?{$q}";
 		}	
 	} else if ( "" == $q ) {
 		$a = str_replace( "$1", $a, $wgArticlePath );
 	} else {
-		$a = "{$wgServer}{$wgScript}?title={$a}&{$q}";	
+		$a = "{$wgScript}?title={$a}&{$q}";	
 	}
 	return $a;
 }
@@ -61,6 +62,15 @@ function wfLocalUrl( $a, $q = "" )
 function wfLocalUrlE( $a, $q = "" )
 {
 	return wfEscapeHTML( wfLocalUrl( $a, $q ) );
+}
+
+function wfFullUrl( $a, $q = "" ) {
+	global $wgServer;
+	return $wgServer . wfLocalUrl( $a, $q );
+}
+
+function wfFullUrlE( $a, $q = "" ) {
+	return wfEscapeHTML( wfFullUrl( $a, $q ) );
 }
 
 function wfImageUrl( $img )
@@ -175,7 +185,8 @@ function wfMsg( $key )
 	}
 
 	if ( "" == $ret ) {
-		user_error( "Couldn't find text for message \"{$key}\"." );
+		# Let's at least _try_ to be graceful about this.
+		return "&lt;$key&gt;";
 	}
 	return $ret;
 }
@@ -244,6 +255,7 @@ function wfSpecialPage()
 {
 	global $wgUser, $wgOut, $wgTitle, $wgLang;
 
+	/* FIXME: this list probably shouldn't be language-specific, per se */
 	$validSP = $wgLang->getValidSpecialPages();
 	$sysopSP = $wgLang->getSysopSpecialPages();
 	$devSP = $wgLang->getDeveloperSpecialPages();
@@ -251,16 +263,21 @@ function wfSpecialPage()
 	$wgOut->setArticleFlag( false );
 	$wgOut->setRobotpolicy( "noindex,follow" );
 
-	$t = $wgTitle->getDBkey();
+	$par = NULL;
+	list($t, $par) = split( "/", $wgTitle->getDBkey(), 2 );
+	
 	if ( array_key_exists( $t, $validSP ) ||
 	  ( $wgUser->isSysop() && array_key_exists( $t, $sysopSP ) ) ||
 	  ( $wgUser->isDeveloper() && array_key_exists( $t, $devSP ) ) ) {
+	  	if($par !== NULL)
+			$wgTitle = Title::makeTitle( Namespace::getSpecial(), $t );
+
 		$wgOut->setPageTitle( wfMsg( strtolower( $wgTitle->getText() ) ) );
 
 		$inc = "Special" . $t . ".php";
 		include_once( $inc );
 		$call = "wfSpecial" . $t;
-		$call();
+		$call( $par );
 	} else if ( array_key_exists( $t, $sysopSP ) ) {
 		$wgOut->sysopRequired();
 	} else if ( array_key_exists( $t, $devSP ) ) {
@@ -376,7 +393,7 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 	if ( 0 == wfNumRows( $res ) ) {
 		$sql = "INSERT INTO image (img_name,img_size,img_timestamp," .
 		  "img_description,img_user,img_user_text) VALUES ('" .
-		  wfStrencode( $name ) . "',{$size},'" . date( "YmdHis" ) . "','" .
+		  wfStrencode( $name ) . "',{$size},'" . wfTimestampNow() . "','" .
 		  wfStrencode( $desc ) . "', '" . $wgUser->getID() .
 		  "', '" . wfStrencode( $wgUser->getName() ) . "')";
 		wfQuery( $sql, $fname );
@@ -422,7 +439,7 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 		wfQuery( $sql, $fname );
 
 		$sql = "UPDATE image SET img_size={$size}," .
-		  "img_timestamp='" . date( "YmdHis" ) . "',img_user='" .
+		  "img_timestamp='" . wfTimestampNow() . "',img_user='" .
 		  $wgUser->getID() . "',img_user_text='" .
 		  wfStrencode( $wgUser->getName() ) . "', img_description='" .
 		  wfStrencode( $desc ) . "' WHERE img_name='" .
@@ -445,6 +462,14 @@ function wfShowingResults( $offset, $limit )
 {
 	$top = str_replace( "$1", $limit, wfMsg( "showingresults" ) );
 	$top = str_replace( "$2", $offset+1, $top );
+	return $top;
+}
+
+function wfShowingResultsNum( $offset, $limit, $num )
+{
+	$top = str_replace( "$1", $limit, wfMsg( "showingresultsnum" ) );
+	$top = str_replace( "$2", $offset+1, $top );
+	$top = str_replace( "$3", $num, $top );
 	return $top;
 }
 
@@ -489,6 +514,42 @@ function wfNumLink( $offset, $limit, $link, $query = "" )
 
 	$s = "<a href=\"" . wfLocalUrlE( $link, $q ) . "\">{$limit}</a>";
 	return $s;
+}
+
+function wfClientAcceptsGzip() {
+	global $wgUseGzip;
+	if( $wgUseGzip ) {
+		# FIXME: we may want to blacklist some broken browsers
+		if( preg_match(
+			'/\bgzip(?:;(q)=([0-9]+(?:\.[0-9]+)))?\b/',
+			$_SERVER["HTTP_ACCEPT_ENCODING"],
+			$m ) ) {
+			if( ( $m[1] == "q" ) && ( $m[2] == 0 ) ) return false;
+			wfDebug( " accepts gzip\n" );
+			return true;
+		}
+	}
+	return false;
+}
+
+# Yay, more global functions!
+function wfCheckLimits( $deflimit = 50, $optionname = "rclimit" ) {
+	global $wgUser;
+	
+	$limit = (int)$_REQUEST['limit'];
+	if( $limit < 0 ) $limit = 0;
+	if( ( $limit == 0 ) && ( $optionname != "" ) ) {
+		$limit = (int)$wgUser->getOption( $optionname );
+	}
+	if( $limit <= 0 ) $limit = $deflimit;
+	if( $limit > 5000 ) $limit = 5000; # We have *some* limits...
+	
+	$offset = (int)$_REQUEST['offset'];
+	$offset = (int)$offset;
+	if( $offset < 0 ) $offset = 0;
+	if( $offset > 65000 ) $offset = 65000; # do we need a max? what?
+	
+	return array( $limit, $offset );
 }
 
 ?>
