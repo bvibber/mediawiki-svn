@@ -4,7 +4,7 @@
 class Article {
 	/* private */ var $mContent, $mContentLoaded;
 	/* private */ var $mUser, $mTimestamp, $mUserText;
-	/* private */ var $mCounter, $mComment;
+	/* private */ var $mCounter, $mComment, $mCountAdjustment;
 	/* private */ var $mMinorEdit, $mRedirectedFrom;
 
 	function Article() { $this->clear(); }
@@ -15,6 +15,7 @@ class Article {
 		$this->mUser = $this->mCounter = -1; # Not loaded
 		$this->mRedirectedFrom = $this->mUserText =
 		$this->mTimestamp = $this->mComment = "";
+		$this->mCountAdjustment = 0;
 	}
 
 	/* static */ function newFromID( $newid )
@@ -127,6 +128,19 @@ class Article {
 			$this->mCounter = wfGetSQL( "cur", "cur_counter", "cur_id={$id}" );
 		}
 		return $this->mCounter;
+	}
+
+	# Would the given text make this article a "good" article (i.e.,
+	# suitable for including in the article count)?
+	#
+	function isCountable( $text )
+	{
+		global $wgTitle;
+
+		if ( 0 != $wgTitle->getNamespace() ) { return 0; }
+		if ( preg_match( "/^#redirect/i", $text ) ) { return 0; }
+		if ( false === strstr( $text, "," ) ) { return 0; }
+		return 1;
 	}
 
 	/* private */ function loadLastEdit()
@@ -247,7 +261,7 @@ class Article {
 		global $wgOut, $wgUser, $wgTitle;
 		global $wgServer, $wgScript;
 		global $wpTextbox1, $wpSummary, $wpSave, $wpPreview;
-		global $wpMinoredit, $wpEdittime, $wpTextbox2;
+		global $wpMinoredit, $wpEdittime, $wpTextbox2, $wpCountable;
 		global $oldid, $redirect;
 
 		$isConflict = false;
@@ -258,6 +272,7 @@ class Article {
 			}
 			$aid = $wgTitle->getArticleID();
 			if ( 0 == $aid ) { # New aritlce
+				$this->mCountAdjustment = $this->isCountable( $wpTextbox1 );
 				$this->insertNewArticle( $wpTextbox1, $wpSummary, $wpMinoredit );
 				return;
 			}
@@ -269,6 +284,8 @@ class Article {
 				$isConflict = true;
 			} else {
 				# All's well: save the article here
+				$this->mCountAdjustment = $this->isCountable( $wpTextbox1 ) -
+				  $wpCountable;
 				$this->updateArticle( $wpTextbox1, $wpSummary, $wpMinoredit );
 				return;
 			}
@@ -276,6 +293,7 @@ class Article {
 		if ( "initial" == $formtype ) {
 			$wpEdittime = $this->getTimestamp();
 			$wpTextbox1 = $this->getContent();
+			$wpCountable = $this->isCountable( $wpTextbox1 );
 			$wpSummary = "";
 		}
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
@@ -324,7 +342,8 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 <input tabindex=3 type=checkbox value=1 name='wpMinoredit'>$minor<br>
 <input tabindex=4 type=submit value='$save' name='wpSave'>
 <input tabindex=5 type=submit value='$prev' name='wpPreview'>
-<input type=hidden value='$wpEdittime' name='wpEdittime'>\n" );
+<input type=hidden value='$wpEdittime' name='wpEdittime'>
+<input type=hidden value='$wpCountable' name='wpCountable'>\n" );
 
 		if ( $isConflict ) {
 			$wgOut->addHTML( "<h2>" . wfMsg( "yourdiff" ) . "</h2>\n" );
@@ -429,7 +448,7 @@ $wpTextbox2
 		$wgOut->addWikiText( $text ); # Just to update links
 
 		$this->editUpdates( $this->getID(), $wgTitle->getPrefixedDBkey(),
-		  $text );
+		  $text, $this->mCountAdjustment );
 		$wgOut->redirect( $wgTitle->getFullURL() );
 	}
 
@@ -744,14 +763,13 @@ $wpTextbox2
 
 	# Do standard deferred updates after page edit
 	#
-	/* private */ function editUpdates( $id, $title, $text )
+	/* private */ function editUpdates( $id, $title, $text, $adj )
 	{
 		global $wgDeferredUpdateList;
-
 		if ( 0 != $id ) {
 			$u = new LinksUpdate( $id, $title );
 			array_push( $wgDeferredUpdateList, $u );
-			$u = new SiteStatsUpdate( 0, 1, 0 );
+			$u = new SiteStatsUpdate( 0, 1, $adj );
 			array_push( $wgDeferredUpdateList, $u );
 			$u = new SearchUpdate( $id, $title, $text );
 			array_push( $wgDeferredUpdateList, $u );

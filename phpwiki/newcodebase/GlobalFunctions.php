@@ -171,6 +171,7 @@ function wfNumberOfArticles()
 	$sql = "SELECT ss_total_views, ss_total_edits, ss_good_articles " .
 	  "FROM site_stats WHERE ss_row_id=1";
 	$res = wfQuery( $sql, "wfLoadSiteStats" );
+
 	if ( 0 == wfNumRows( $res ) ) { return; }
 	else {
 		$s = wfFetchObject( $res );
