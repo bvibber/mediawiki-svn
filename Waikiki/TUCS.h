@@ -70,7 +70,7 @@ class TUCS // Type of UniCodeString
     virtual void implode ( const TUCS &seq , const VTUCS &x ) ;
     virtual TUCS substr ( uint from , uint len ) ;
     virtual TUCS substr ( uint from ) ;
-    virtual void trim () ;
+    virtual void trim ( uint additional = 0 ) ;
     virtual void fromURL () ;
     virtual void toupper () ;
     virtual uint pop_back () ;

@@ -37,19 +37,21 @@ class TDatabase
     public :
     // Dummy methods
     virtual bool init ( string s1 ) ;
+    virtual void storeArticle ( TArticle &art , bool makeOldVersion = true ) ;
     virtual void getArticle ( TTitle t , TArticle &art , bool wasRedirected = false ) ;
     virtual void getRandomArticle ( TArticle &art ) ;
     virtual bool doesArticleExist ( TTitle &t ) ;
     virtual void findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) ;
     virtual void query ( TUCS s ) ;
-
+    
     // Useful methods
-    void mysql2sqlite ( string fn_in , string fn_out ) ;
+    virtual void mysql2sqlite ( string fn_in , string fn_out ) ;
     
     static TDatabase *current ;
     
     protected :
-    void filterBackslashes ( TUCS &s ) ;
+    virtual void addKeyValue ( TUCS &s1 , TUCS &s2 , TUCS t1 , TUCS t2 ) ;
+    virtual void filterBackslashes ( TUCS &s ) ;
     } ;
     
 class TDatabaseFile : public TDatabase
@@ -66,6 +68,7 @@ class TDatabaseSqlite : public TDatabase
     {
     public :
     virtual bool init ( string s1 ) ;
+    virtual void storeArticle ( TArticle &art , bool makeOldVersion = true ) ;
     virtual void getArticle ( TTitle t , TArticle &art , bool wasRedirected = false ) ;
     virtual void getRandomArticle ( TArticle &art ) ;
     virtual bool doesArticleExist ( TTitle &t ) ;

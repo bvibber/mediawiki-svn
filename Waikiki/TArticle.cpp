@@ -11,6 +11,7 @@ TArticle::TArticle ()
     {
     title = new TTitle () ;
     allowRedirect = true ;
+    id = 0 ;
     }
 
 TArticle::~TArticle ()

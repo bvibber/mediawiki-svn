@@ -62,9 +62,18 @@ TUCS TSkin::getEditHTML ()
     if ( action == "EDIT" ) source = article->getSource () ;
     else
         {
-        source = LANG->getData ( "_WPTEXTBOX1" ) ;
+        source = LANG->getData ( "_wpTextbox1" ) ;
         source.fromURL() ;
-        source.trim() ;
+        source.trim('\n') ;
+        }
+        
+    if ( LANG->getData ( "_wpSave" ) != "" )
+        {
+        // Here we should check for edit conflicts...
+        article->setSource ( source ) ;
+        DB->storeArticle ( *article ) ;
+        LANG->setData ( "ACTION" , "VIEW" ) ;
+        return getArticleHTML () ;
         }
     
     if ( LANG->getData ( "_wpPreview" ) != "" )

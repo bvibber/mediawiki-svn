@@ -10,6 +10,25 @@ void TDatabase::getRandomArticle ( TArticle &art ) {}
 bool TDatabase::doesArticleExist ( TTitle &t ) { return false ; }
 void TDatabase::query ( TUCS s ) {}
 void TDatabase::findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) { }
+void TDatabase::storeArticle ( TArticle &art , bool makeOldVersion ) { }
+
+void TDatabase::addKeyValue ( TUCS &s1 , TUCS &s2 , TUCS t1 , TUCS t2 )
+    {
+    if ( s1 != "" )
+        {
+        s1 += "," ;
+        s2 += "," ;
+        }
+    t1.replace ( "'" , "''" ) ; // For sqlite
+    t2.replace ( "'" , "''" ) ; // For sqlite
+//    s1 += "'" + t1 + "'" ;
+    s1 += t1 ;
+    
+    uint a ;
+    for ( a = 0 ; a < t2.length() && t2.isDigit(t2[a]) ; a++ ) ;
+    if ( t2 == "NULL" || a == t2.length() ) s2 += t2 ;
+    else s2 += "'" + t2 + "'" ;
+    }
 
 void TDatabase::filterBackslashes ( TUCS &s )
     {
@@ -262,8 +281,6 @@ bool TDatabaseSqlite::init ( string s1 )
 
 void TDatabaseSqlite::getArticle ( TTitle t , TArticle &art , bool wasRedirected )
     {
-    results.clean() ;
-    
     string sql ;
     sql = "SELECT * FROM cur WHERE cur_namespace=" ;
     sql += TUCS::fromint ( t.getNamespaceID() ) . getstring() ;
@@ -291,14 +308,13 @@ void TDatabaseSqlite::getArticle ( TTitle t , TArticle &art , bool wasRedirected
           return getArticle ( TTitle ( s ) , art , true ) ;
           }
        art.setSource ( s ) ;
+       art.id = atoi ( results[0][results["cur_id"]].c_str() ) ;
        }
     art.setTitle ( t ) ;
     }
 
 void TDatabaseSqlite::getRandomArticle ( TArticle &art )
     {
-    results.clean() ;
-    
     string sql ;
     sql = "SELECT * FROM cur WHERE cur_namespace=0 AND cur_is_redirect=0 ORDER BY random() LIMIT 1" ;
     
@@ -363,7 +379,46 @@ void TDatabaseSqlite::query ( TUCS s )
     st = this ;
     results.clean() ;
     db = sqlite_open ( filename.c_str() , 0 , NULL ) ;
-    sqlite_exec ( db , s.getstring().c_str() , callback , 0 , 0 ) ;
+    int error = sqlite_exec ( db , s.getstring().c_str() , callback , 0 , 0 ) ;
+    if ( SQLITE_OK != error )
+        {
+        cout << "SQLITE error " << error << "! Query was :<br>" << endl ;
+        cout << s.getstring() << endl ;
+        exit ( 0 ) ;
+        }
     sqlite_close ( db ) ;    
     }
     
+void TDatabaseSqlite::storeArticle ( TArticle &art , bool makeOldVersion )
+    {
+    TTitle tt = art.getTitle() ;
+    TUCS sql , s1 , s2 ;
+    TUCS source = art.getSource() ;
+    source.replace ( "\\" , "\\\\" ) ;
+    source.replace ( "\n" , "\\n" ) ;
+//    addKeyValue ( s1 , s2 , "cur_text" , source ) ;
+    addKeyValue ( s1 , s2 , "cur_title" , tt.getDBkey() ) ;
+    addKeyValue ( s1 , s2 , "cur_namespace" , TUCS::fromint ( art.id ) ) ;
+    addKeyValue ( s1 , s2 , "cur_timestamp" , "11111111111111" ) ;
+    addKeyValue ( s1 , s2 , "cur_random" , "0.123" ) ;
+    if ( doesArticleExist ( tt ) )
+        {
+        if ( makeOldVersion )
+           {
+           }
+        sql = "DELETE FROM cur WHERE cur_title='" ;
+        sql += tt.getDBkey() ;
+        sql += "' AND cur_namespace=" ;
+        sql += TUCS::fromint ( tt.getNamespaceID() ) ;
+        query ( sql ) ;
+        cout << sql.getstring() << "<br>\n" << endl ;
+        addKeyValue ( s1 , s2 , "cur_id" , TUCS::fromint ( art.id ) ) ;
+        }
+    else
+        {
+        addKeyValue ( s1 , s2 , "cur_id" , "NULL" ) ;
+        }
+    sql = "INSERT INTO cur (" + s1 + ") VALUES (" + s2 + ")" ;
+//    cout << sql.getstring() << endl ;
+    query ( sql ) ;
+    }

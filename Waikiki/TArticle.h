@@ -23,6 +23,8 @@ class TArticle
     TUCS redirectedFrom ;
     bool allowRedirect ;
     
+    uint id ;
+    
     private :
     TTitle *title ;
     TUCS source ;

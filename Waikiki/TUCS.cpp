@@ -153,14 +153,14 @@ uint *TUCS::c_str()
     return (uint*) &(*this)[0] ;
     }
     
-#define ISBLANK(_c) (_c==32||_c==9)
+#define ISBLANK(_c,_d) (_c==32||_c==9||_c==_d)
     
-void TUCS::trim ()
+void TUCS::trim ( uint additional )
     {
     if ( empty() ) return ;
     int a , b ;
-    for ( a = 0 ; a < length() && ISBLANK((*this)[a]) ; a++ ) ;
-    for ( b = length() - 1 ; b >= a && ISBLANK((*this)[b]) ; b-- ) ;
+    for ( a = 0 ; a < length() && ISBLANK(v[a],additional) ; a++ ) ;
+    for ( b = length() - 1 ; b >= a && ISBLANK(v[b],additional) ; b-- ) ;
     (*this) = substr ( a , b - a + 1 ) ;
     }
 
@@ -239,7 +239,7 @@ uint TUCS::replace ( TUCS out , TUCS in , int count )
     while ( a < length() && count != 0 )
         {
         modify ( a , out.length() , in ) ;
-        a = find ( out , a+1 ) ;
+        a = find ( out , a+in.length() ) ;
         count-- ;
         r++ ;
         }
