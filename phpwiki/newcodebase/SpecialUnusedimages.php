@@ -27,10 +27,11 @@ function wfSpecialUnusedimages()
 	  $wgLang->specialPage( "Unusedimages" ) );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
+	$ins = $wgLang->getNsText ( 6 ) ;
 	$s = "<ol start=" . ( $offset + 1 ) . ">";
 	while ( $obj = wfFetchObject( $res ) ) {
 		$name = $obj->img_name;
-		$dlink = $sk->makeKnownLink( "Image:{$name}", wfMsg( "imgdesc" ) );
+		$dlink = $sk->makeKnownLink( "{$ins}:{$name}", wfMsg( "imgdesc" ) );
 		$ilink = "<a href=\"" . wfImageUrl( $name ) . "\">{$name}</a>";
 
 		$d = $wgLang->timeanddate( $obj->img_timestamp, true );
