@@ -230,7 +230,6 @@ void *thread_main(void *data)
       }
       break;
     }
-    
     sscanf(cmdline, "%30s", cmd);
     // word segmentation
     if(strcmp(cmd, "SEG")==0) {
@@ -243,10 +242,15 @@ void *thread_main(void *data)
       if(len > confInputLimit) {
 	if(optWarning) {
 	  fprintf(stderr, "%d: ** Client data is too large.\n", tid);
-	  // should handle this more gracefully...
+          //eat the rest of the request
+          while(len>0) {
+            if(!fgets(cmdline, sizeof(cmdline), sockin))
+              break;
+            len-=strlen(cmdline);
+          }
 	  sprintf(cmdline, "ERROR\r\n");
-	  fputs(cmdline, sockout);	  
-	  break;
+	  fputs(cmdline, sockout);
+          continue;
 	}
       }
       if(!optSilent) {
@@ -265,9 +269,14 @@ void *thread_main(void *data)
 	if(optWarning) {
 	  fprintf(stderr, "%d: ** Client data is too large.\n", tid);
 	  // should handle this more gracefully...
+          while(len>0) {
+            if(!fgets(cmdline, sizeof(cmdline), sockin))
+              break;
+            len-=strlen(cmdline);
+          }
 	  sprintf(cmdline, "ERROR\r\n");
 	  fputs(cmdline, sockout);	  
-	  break;
+          continue;
 	}
       }
       if(!optSilent) {
