@@ -106,6 +106,7 @@ function editUserSettings () {
 		unset ( $ButtonSave ) ;
 		global $QuickBar , $NewTopics , $UnderlineLinks , $AutoTalk , $ShowHover , $ROWS , $COLS , $doSkin ;
 		global $OLDPASSWORD , $NEWPASSWORD , $RETYPEPASSWORD , $EMAIL , $RESULTSPERPAGE , $doJustify , $ChangesLayout ;
+		global $SHOWSTRUCTURE ;
 		if ( $RESULTSPERPAGE < 2 ) $RESULTSPERPAGE = 20 ;
 		$user->options["quickBar"] = $QuickBar ;
 		$user->options["markupNewTopics"] = $NewTopics ;
@@ -117,6 +118,7 @@ function editUserSettings () {
 		$user->options["justify"] = $doJustify ;
 		$user->options["resultsPerPage"] = $RESULTSPERPAGE ;
 		$user->options["skin"] = $doSkin ;
+		$user->options["showStructure"] = $SHOWSTRUCTURE ;
 		$user->options["changesLayout"] = $ChangesLayout ;
 		$user->email = $EMAIL ;
 
@@ -212,6 +214,19 @@ function editUserSettings () {
 	$ret .= "<input type=radio value=table ".$cl["table"]." name=ChangesLayout>As a table<br>\n" ;
 	$ret .= "</td></tr>" ;
 
+	# Show subpage structure in QuickBar
+	$shs[$user->options["showStructure"]] = "checked" ;
+	$ret .= "<tr><td valign=top nowrap><b>Show subpage structure :</b><br>\n" ;
+	$ret .= "<input type=radio value=yes ".$shs["yes"]." name=SHOWSTRUCTURE>Yes<br>\n" ;
+	$ret .= "<input type=radio value=no ".$shs["no"]." name=SHOWSTRUCTURE>No (Standard)<br>\n" ;
+
+	# UNUSED
+#	$cl[$user->options["changesLayout"]] = "checked" ;
+#	$ret .= "</td><td valign=top nowrap><b>New Topics :</b><br>\n" ;
+#	$ret .= "<input type=radio value=classic ".$cl["classic"]." name=ChangesLayout>Classic (Standard)<br>\n" ;
+#	$ret .= "<input type=radio value=table ".$cl["table"]." name=ChangesLayout>As a table<br>\n" ;
+	$ret .= "</td></tr>" ;
+
 	$ret .= "<tr><td><center><input type=submit value=Save name=ButtonSave></center></td>" ;
 	$ret .= "<td><center><input type=reset value=Reset name=ButtonReset></center></td></tr>" ;
 
@@ -293,7 +308,10 @@ function AllPages () {
 	mysql_select_db ( "wikipedia" , $connection ) ;
 	$sql = "SELECT cur_title FROM cur ORDER BY cur_title" ;
 	$result = mysql_query ( $sql , $connection ) ;
-	while ( $s = mysql_fetch_object ( $result ) ) $ret .= "[[$s->cur_title]]<br>\n";
+	$ret .= "<nowiki>" ;
+	while ( $s = mysql_fetch_object ( $result ) )
+		$ret .= "<a  href=\"$THESCRIPT?title=$s->cur_title\">".$vpage->getNiceTitle($s->cur_title)."</a><br>" ;
+	$ret .= "</nowiki>" ;
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
 	return $ret ;
@@ -434,24 +452,16 @@ function randompage () {
 		$randval-- ;
 		}
 	$thelink = $s->cur_title ;
-	$ret = "<h2>Loading random page [[$thelink|".$vpage->getNiceTitle($thelink)."]]...</h2>" ;
-	$ret .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$THESCRIPT?title=$thelink\">" ;
+	$nt = $vpage->getNiceTitle($thelink) ;
+	if ( count ( explode ( ":" , $thelink ) ) == 1 ) $thelink = ":".$thelink ;
+	$ret = "<h2>Loading random page [[$thelink|".$nt."]]...</h2>" ;
+	$ret .= "<nowiki><META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$THESCRIPT?title=$thelink\"></nowiki>" ;
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
 
 	return $ret ;
 	}
 
-# Convert MySQL timestame to date
-function tsc ( $t ) {
-	$year = substr ( $t , 0 , 4 ) ;
-	$month = substr ( $t , 4 , 2 ) ;
-	$day = substr ( $t , 6 , 2 ) ;
-	$hour = substr ( $t , 8 , 2 ) ;
-	$min = substr ( $t , 10 , 2 ) ;
-	$sec = substr ( $t , 12 , 2 ) ;
-	return mktime ( $hour , $min , $sec , $month , $day , $year ) ;
-	}
 
 function recentchanges () {
 	global $THESCRIPT ;
@@ -508,6 +518,7 @@ function newpages () {
 	$vpage->makeSecureTitle() ;
 	if ( !isset ( $maxcnt ) ) $maxcnt = 100 ;
 	if ( !isset ( $daysAgo ) ) $daysAgo = 3 ;
+	$names = array () ;
 
 	$ret = "<nowiki>" ;
 	$ret .= "These are the last <b>$maxcnt</b> new pages on Wikipedia in the last <b>$daysAgo</b> days.<br>\n" ;
