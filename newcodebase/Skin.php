@@ -29,12 +29,18 @@ class Skin {
 		return $wgValidSkinNames;
 	}
 
+	function getStylesheet()
+	{
+		return "wikistandard.css";
+	}
+
 	function initPage()
 	{
 		global $wgOut, $wgStyleSheetPath;
 
-		$wgOut->addLink( "stylesheet", "",
-		  "$wgStyleSheetPath/wikistandard.css" );
+		if ( $wgOut->isPrintable() ) { $ss = "wikiprintable.css"; }
+		else { $ss = $this->getStylesheet(); }
+		$wgOut->addLink( "stylesheet", "", "$wgStyleSheetPath/{$ss}" );
 	}
 
 	function getUserStyles()
@@ -96,13 +102,26 @@ class Skin {
 		return $wgLogo;
 	}
 
-	# This will be called immediately after the <body> tag.
+	# This will be called immediately after the <body> tag.  Split into
+	# two functions to make it easier to subclass.
 	#
 	function beforeContent()
 	{
-		global $wgUser, $wgOut, $wgTitle;
+		global $wgUser, $wgOut;
 
-		$mp = wfMsg( "mainpage" );
+		if ( $wgOut->isPrintable() ) {
+			$sub = wfMsg( "printsubtitle" );
+			$s = "<h1 class=\"pagetitle\">" . $wgOut->getPageTitle() . "</h1>";
+			$s .= "<p class=\"subtitle\"><strong>{$sub}</strong>\n";
+			$s .= "<div class=\"bodytext\">";
+			return $s;
+		}
+		return $this->doBeforeContent();
+	}
+
+	function doBeforeContent()
+	{
+		global $wgUser, $wgOut, $wgTitle;
 
 		$s = "<table width=\"100%\" class=\"topbar\" "
 		  . "cellspacing=0><tr><td valign=top height=1>";
@@ -112,6 +131,7 @@ class Skin {
 		$s .= $this->nameAndLogin();
 		$s .= "\n<br>" . $this->searchForm();
 
+		$mp = wfMsg( "mainpage" );
 		$s .= "</td>\n<td rowspan=2 width=1><a href=\"" . wfLocalLink( $mp )
 		  . "\"><img border=0 src=\"" . $this->getLogo() . "\" alt=\""
 		  . "[$mp]\"></a></td></tr>\n";
@@ -144,6 +164,17 @@ class Skin {
 	{
 		global $wgUser, $wgOut;
 
+		if ( $wgOut->isPrintable() ) {
+			$s = "</div>\n";
+			return $s;
+		}
+		return $this->doAfterContent();
+	}
+
+	function doAfterContent()
+	{
+		global $wgUser, $wgOut;
+
 		$s = "</div></td>";
 		$q = $wgUser->getOption( "quickbar" );
 		if ( $wgOut->isQuickbarSupressed() ) { $q = 0; }
@@ -158,7 +189,6 @@ class Skin {
 
 		$s .= "\n" . $this->pageStats();
 		$s .= "\n" . $this->searchForm();
-
 		return $s;
 	}
 
@@ -176,13 +206,13 @@ class Skin {
 		}
 		if ( $wgOut->isArticle() ) {
 			$s .= "<p class=\"subtitle\">"
-			  . $this->makeLink( $wgTitle->getPrefixedText(),
+			  . $this->makeKnownLink( $wgTitle->getPrefixedText(),
 			  WfMsg( "printableversion" ), "action=print" )
-			  . " | " . $this->makeLink( "Special:Whatlinkshere",
+			  . " | " . $this->makeKnownLink( "Special:Whatlinkshere",
 			  wfMsg( "whatlinkshere" ), "target=" . $wgTitle->getPrefixedURL() );
 
 			if ( $oldid ) {
-				$s .= " | " . $this->makeLink( $wgTitle->getPrefixedText(),
+				$s .= " | " . $this->makeKnownLink( $wgTitle->getPrefixedText(),
 				  wfMsg( "currentrev" ) );
 			}
 			$s .= $this->otherLanguages();
@@ -201,17 +231,17 @@ class Skin {
 				$q = "";
 			} else { $q = "returnto={$rt}"; }
 
-			$s .= $n . "\n<br>" . $this->makeLink( "Special:Userlogin",
+			$s .= $n . "\n<br>" . $this->makeKnownLink( "Special:Userlogin",
 			  wfMsg( "login" ), $q );
 		} else {
 			$n = $wgUser->getName();
 			$rt = $wgTitle->getPrefixedURL();
-			$s .= $this->makeLink( "User:$n", $n ) . "<br>" .
-			  $this->makeLink( "Special:Userlogout",
+			$s .= $this->makeKnownLink( "User:$n", $n ) . "<br>" .
+			  $this->makeKnownLink( "Special:Userlogout",
 			  wfMsg( "logout" ), "returnto={$rt}" ) . " | " .
 			  $this->specialLink( "preferences" );
 		}
-		$s .= " | " . $this->makeLink( "Wikipedia:Help", wfMsg( "help" ) ); 
+		$s .= " | " . $this->makeKnownLink( "Wikipedia:Help", wfMsg( "help" ) ); 
 
 		return $s;
 	}
@@ -303,7 +333,7 @@ class Skin {
 	function mainPageLink()
 	{
 		$mp = wfMsg( "mainpage" );
-		$s = $this->makeLink( $mp, $mp );
+		$s = $this->makeKnownLink( $mp, $mp );
 		return $s;
 	}
 
@@ -319,7 +349,7 @@ class Skin {
 			$oid = "";
 			if ( $oldid ) { $oid = "&oldid={$oldid}"; }
 			if ( $redirect ) { $red = "&redirect={$redirect}"; }
-			$s = $this->makeLink( $n, $t, "action=edit{$oid}{$red}" );
+			$s = $this->makeKnownLink( $n, $t, "action=edit{$oid}{$red}" );
 		} else {
 			$s = "Protected page";
 		}
@@ -330,7 +360,7 @@ class Skin {
 	{
 		global $wgTitle;
 
-		$s = $this->makeLink( $wgTitle->getPrefixedText(),
+		$s = $this->makeKnownLink( $wgTitle->getPrefixedText(),
 		  wfMsg( "history" ), "action=history" );
 		return $s;
 	}
@@ -342,7 +372,7 @@ class Skin {
 		if ( ! $wgOut->isArticle() ) {
 			$s = "(Special page)";
 		} else {
-			$s = $this->makeLink( "Special:Recentchangeslinked",
+			$s = $this->makeKnownLink( "Special:Recentchangeslinked",
 			  wfMsg( "recentchangeslinked" ), "target=" . $wgTitle->getPrefixedURL() );
 		}
 		return $s;
@@ -376,7 +406,7 @@ class Skin {
 
 	function bugReportsLink()
 	{
-		$s = $this->makeLink( "Wikipedia:Bug_reports", "Bug reports" );
+		$s = $this->makeKnownLink( "Wikipedia:Bug_reports", "Bug reports" );
 		return $s;
 	}
 
@@ -393,7 +423,7 @@ class Skin {
 		if ( 0 == $id ) {
 			$s = $this->makeBrokenLink( $t1->getText() );
 		} else {
-			$s = $this->makeLink( $t1->getText() );
+			$s = $this->makeKnownLink( $t1->getText() );
 		}
 		$s .= ", ";
 
@@ -404,7 +434,7 @@ class Skin {
 		if ( 0 == $id ) {
 			$s .= $this->makeBrokenLink( $t2->getText() );
 		} else {
-			$s .= $this->makeLink( $t2->getText() );
+			$s .= $this->makeKnownLink( $t2->getText() );
 		}
 		return $s;
 	}
@@ -432,7 +462,7 @@ class Skin {
 		else { $link = "$n:$pn"; }
 
 		$wgLinkCache->suspend();
-		$s = $this->makeInternalLink( $link, $text );
+		$s = $this->makeLink( $link, $text );
 		$wgLinkCache->resume();
 
 		return $s;
@@ -449,23 +479,31 @@ class Skin {
 	# Note: This function MUST call getArticleID() on the link,
 	# otherwise the cache won't get updated properly.  See LINKCACHE.DOC.
 	#
-	function makeInternalLink( $title, $text= "", $query = "", $trail = "" )
+	function makeLink( $title, $text= "", $query = "", $trail = "" )
 	{
+		global $wgOut, $wgUser;
+
+		if ( $wgOut->isPrintable() ) {
+			return $this->makePrintableLink( $title, $text, $query, $trail );
+		}
 		$nt = Title::newFromText( $title );
 		if ( -1 == $nt->getNamespace() ) {
-			return $this->makeLink( $title, $text, $query, $trail );
+			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
 		if ( 0 == $nt->getArticleID() ) {
 			return $this->makeBrokenLink( $title, $text ) . $trail;
 		} else {
-			return $this->makeLink( $title, $text, $query, $trail );
+			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
 	}
 
-	function makeLink( $title, $text = "", $query = "", $trail = "" )
+	function makeKnownLink( $title, $text = "", $query = "", $trail = "" )
 	{
-		global $wgServer, $wgScript, $wgArticlePath, $wgTitle;
+		global $wgOut, $wgServer, $wgScript, $wgArticlePath, $wgTitle;
 
+		if ( $wgOut->isPrintable() ) {
+			return $this->makePrintableLink( $title, $text, $query, $trail );
+		}
 		$nt = Title::newFromText( $title );
 		$link = $nt->getPrefixedURL();
 
@@ -490,8 +528,11 @@ class Skin {
 
 	function makeBrokenLink( $title, $text = "" )
 	{
-		global $wgUser;
+		global $wgOut, $wgUser;
 
+		if ( $wgOut->isPrintable() ) {
+			return $this->makePrintableLink( $title, $text, $query, $trail );
+		}
 		$nt = Title::newFromText( $title );
 		$link = $nt->getEditURL();
 
@@ -506,9 +547,34 @@ class Skin {
 		return $s;
 	}
 
+	function makePrintableLink( $title, $text = "", $query = "", $trail = "" )
+	{
+		global $wgOut, $wgUser;
+
+		if ( "" == $text ) {
+			$nt = Title::newFromText( $title );
+			$text = $nt->getPrefixedText();
+		}
+		if ( 1 == $wgUser->getOption( "underline" ) ) { $tag = "u"; }
+		else { $tag = "i"; }
+
+		$inside = "";
+		if ( "" != $trail ) {
+			if ( preg_match( "/^([a-z]+)(.*)$$/sD", $trail, $m ) ) {
+				$inside = $m[1];
+				$trail = $m[2];
+			}
+		}
+		$r = "<{$tag} class=\"link\">$text$inside</{$tag}>$trail";
+		return $r;
+	}
+
 	function makeImageLink( $url, $alt = "" )
 	{
+		global $wgOut;
+
 		if ( "" == $alt ) { $alt = "[Image]"; }
+		if ( $wgOut->isPrintable() ) { return $alt; }
 		$s = "<img src=\"$url\" alt=\"$alt\">";
 		return $s;
 	}
@@ -517,7 +583,7 @@ class Skin {
 	{
 		$key = strtolower( $name );
 		$pn = ucfirst( $key);
-		return $this->makeLink( "Special:$pn", wfMsg( $key ) );
+		return $this->makeKnownLink( "Special:$pn", wfMsg( $key ) );
 	}
 
 	# Called by history lists and recent changes
@@ -561,10 +627,10 @@ class Skin {
 		if ( $oid ) { $q = "oldid={$oid}"; }
 		else { $q = ""; }
 		$artname = Title::makeName( $ns, $ttl );
-		$link = $this->makeLink( $artname, $dt, $q );
+		$link = $this->makeKnownLink( $artname, $dt, $q );
 
 		if ( 0 == $u ) { $ul = $ut; }
-		else { $ul = $this->makeInternalLink( "User:{$ut}", $ut ); }
+		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }
 
 		$cur = wfMsg( "cur" );
 		$next = wfMsg( "next" );
@@ -572,11 +638,11 @@ class Skin {
 
 		$s = "<li>";
 		if ( $oid ) {
-			$curlink = $this->makeLink( $artname, $cur,
+			$curlink = $this->makeKnownLink( $artname, $cur,
 			  "diff=0&oldid={$oid}" );
 
 			if ( $this->nextid ) {
-				$nextlink = $this->makeLink( $artname, $next,
+				$nextlink = $this->makeKnownLink( $artname, $next,
 				  "diff={$this->nextid}&oldid={$oid}" );
 			} else {
 				$nextlink = $next;
@@ -610,12 +676,12 @@ class Skin {
 		}
 		$h = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
 		$t = Title::makeName( $ns, $ttl );
-		$clink = $this->makeLink( $t, "" );
-		$hlink = $this->makeLink( $t, wfMsg( "hist" ), "action=history" );
-		$dlink = $this->makeLink( $t, wfMsg( "diff" ), "diff=0&oldid=0" );
+		$clink = $this->makeKnownLink( $t, "" );
+		$hlink = $this->makeKnownLink( $t, wfMsg( "hist" ), "action=history" );
+		$dlink = $this->makeKnownLink( $t, wfMsg( "diff" ), "diff=0&oldid=0" );
 
 		if ( 0 == $u ) { $ul = $ut; }
-		else { $ul = $this->makeInternalLink( "User:{$ut}", $ut ); }
+		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }
 		$cr = wfMsg( "currentrev" );
 
 		$s .= "<li> ({$dlink}) ({$hlink}) . .";

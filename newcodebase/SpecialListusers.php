@@ -22,7 +22,7 @@ function wfSpecialListusers()
 		$n = $s->user_name;
 		$r = $s->user_rights;
 
-		$l = $sk->makeInternalLink( "User:{$n}", $n );
+		$l = $sk->makeLink( "User:{$n}", $n );
 
 		if ( "" != $r ) { $l .= " ({$r})"; }
 		$l .= "<br>\n";

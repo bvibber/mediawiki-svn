@@ -18,7 +18,7 @@ class OutputPage {
 		$this->mLastSection = 
 		$this->mSubtitle = $this->mDebugtext = $this->mRobotpolicy = "";
 		$this->mIsarticle = $this->mPrintable = true;
-		$this->mSupressQuickbar = $this->mDTopen = false;
+		$this->mSupressQuickbar = $this->mDTopen = $this->mPrintable = false;
 		$this->mLanguageLinks = array();
 	}
 
@@ -322,15 +322,14 @@ class OutputPage {
 				} else {
 					$l = $wgLang->getLanguageName( $pre );
 					if ( "" == $l ) {
-						$s .= $sk->makeInternalLink( $link, $text,
-						  "", $trail );
+						$s .= $sk->makeLink( $link, $text, "", $trail );
 					} else {
 						array_push( $this->mLanguageLinks, "$pre:$suf" );
 						$s .= $trail;
 					}
 				}
 			} else {
-				$s .= $sk->makeInternalLink( $link, $text, "", $trail );
+				$s .= $sk->makeLink( $link, $text, "", $trail );
 			}
 		}
 		return $s;
