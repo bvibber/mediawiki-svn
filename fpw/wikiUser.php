@@ -15,6 +15,7 @@ class WikiUser {
         else if ( $this->options["skin"] == "None" ) $this->skinBlank () ;
         else if ( $this->options["skin"] == "Star Trek" ) $this->skinStarTrek () ;
         else if ( $this->options["skin"] == "Nostalgy" ) $this->skinNostalgy () ;
+        else if ( $this->options["skin"] == "Cologne Blue" ) $this->skinCologneBlue () ;
         }
 
     # This sets the options for the standard skin
@@ -28,6 +29,21 @@ class WikiUser {
         $this->options["forceLinks"] = "" ;
         $this->options["leftImage"] = "" ;
         $this->options["borderColor"] = "black" ;
+        $this->options["tabLine0"] = " bgcolor=\"#BBBBBB\" " ;
+        $this->options["tabLine1"] = "" ;
+        $this->options["tabLine2"] = " bgcolor=\"#FFFFCC\"" ;
+        }
+
+    # This sets the options for the Cologne Blue skin
+    function skinCologneBlue () {
+        $this->options["background"] = "#FFFFFF" ;
+        $this->options["text"] = "" ;
+        $this->options["forceQuickBar"] = "" ;
+        $this->options["quickBarBackground"] = " bgcolor=blue" ;
+        $this->options["textTableBackground"] = "" ;
+        $this->options["forceLinks"] = "" ;
+        $this->options["leftImage"] = "" ;
+        $this->options["borderColor"] = "white" ;
         $this->options["tabLine0"] = " bgcolor=\"#BBBBBB\" " ;
         $this->options["tabLine1"] = "" ;
         $this->options["tabLine2"] = " bgcolor=\"#FFFFCC\"" ;
@@ -74,7 +90,7 @@ class WikiUser {
         $ret .= "body { ";
         $textcolor = $this->options[text];
         $bgcolor = $this->options[background];
-	if ( $this->options["skin"] == "Nostalgy" ) $namespaceBackground = "" ;
+	if ( $this->options["skin"] == "Nostalgy" OR $this->options[skin] == "Cologne Blue" ) $namespaceBackground = "" ;
         if ( $namespaceBackground != "" ) $bgcolor = $namespaceBackground ;
         if ( $textcolor == "" )
             $textcolor = "black"; # For un-coloring links. Should be "inherit" but Netscape 4.x messes it up
@@ -86,18 +102,24 @@ class WikiUser {
             $ret .= "background: $bgcolor; ";
         $ret .= "}\n";
         
-        $ret .= ".bodytext { " . (($this->options[justify] == "yes") ? "text-align: justify; " : "") . "}\n";
+        $ret .= ".bodytext { " . 
+		(($this->options[justify] == "yes") ? "text-align: justify; " : "") . 
+		(($this->options[skin] == "Cologne Blue") ? "font-family:verdana,times; font-size:130%; " : "") . 
+		"}\n";
         $ret .= "a { text-decoration: " . (($this->options[underlineLinks] == "no") ? "none" : "underline") . "; }\n";
         
         $qbside = ( $this->options["quickBar"] == "left" ) ? "right" : "left";
+	if ( $this->options[skin] == "Cologne Blue" ) $qbside = "nope" ; # nope is a dummy, will be ignored
         $ret .= "a.interwiki, a.external { color: #3333BB; text-decoration: none; }\n" .
             "a.red { color: red; text-decoration: none; }\n" .
             "a.green { color: blue; text-decoration: none; }\n" .
+	    "a.syslink { color:white; text-decoration:none; }\n" .
+	    "a.CBlink { color:#0000AA; text-decoration:none; font-weight:bold; }\n" .
             ".topbar { border-bottom-width: 2; border-bottom-style: ridge; }\n" .
             ".middle { background:white }\n" .
             ".quickbar { background:$bgcolor; border-$qbside-width: 2; border-$qbside-style: ridge; }\n" .
             ".footer { border-top-color: black; border-top-width: 2; border-top-style: groove; }\n";
-        
+
         if ( $action == "print" ) {
             $ret .= "a { color: inherit; text-decoration: none; font-style: italic; }\n ";
             $ret .= "a.newlink { color: inherit; font-style: inherit; }\n.newlinkedge { display: none; }\n";

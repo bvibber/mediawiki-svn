@@ -1,7 +1,6 @@
 <?
 function editUserSettings () {
-	global $ButtonSave ;
-	global $vpage , $user ;
+	global $ButtonSave , $vpage , $user ;
 	global $wikiUserSettings , $wikiUserSettingsError , $wikiUserSettingsSaved ;
 	$vpage->title = $wikiUserSettings ;
 	if ( !$user->isLoggedIn ) return $wikiUserSettingsError ;
@@ -59,7 +58,7 @@ function editUserSettings () {
 	global $wikiShowHoverBox , $wikiUnderlineLinks , $wikiNewTopicsRed , $wikiJustifyParagraphs , $wikiShowRecentChangesTable ;
 	global $wikiDoNumberHeadings , $wikiViewWithFrames , $wikiTurnedOn , $wikiTurnedOff ;
 	global $wikiTextboxDimensions , $wikiCols , $wikiRows , $wikiYourEmail , $wikiResultsPerPage , $wikiTimeDiff , $wikiSave , $wikiReset ;
-	global $wikiEncodingNames, $wikiOutputEncoding , $wikiHideMinorEdits ;
+	global $wikiEncodingNames, $wikiOutputEncoding , $wikiHideMinorEdits , $wikiCologneBlue ;
 
 	$ret .= str_replace ( "$1" , $user->name , $wikiLoggedInAs ) ;
 	$ret .= str_replace ( "$1" , $user->id , $wikiID_Help)."\n" ;
@@ -86,6 +85,7 @@ function editUserSettings () {
 	$ret .= "<input type=radio value=None ".$sk["None"]." name=doSkin>$wikiSettingsNone ($wikiSettingsStandard)<br>\n" ;
 	$ret .= "<input type=radio value=\"Star Trek\" ".$sk["Star Trek"]." name=doSkin>$wikiStarTrek<br>\n" ;
 	$ret .= "<input type=radio value=\"Nostalgy\" ".$sk["Nostalgy"]." name=doSkin>$wikiNostalgy<br>\n" ;
+	$ret .= "<input type=radio value=\"Cologne Blue\" ".$sk["Cologne Blue"]." name=doSkin>$wikiCologneBlue<br>\n" ;
 
 #----------------------------------------------
 	$ret .= "</td><td valign=top nowrap>" ;
