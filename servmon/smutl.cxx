@@ -43,12 +43,12 @@ wf2time_t(str wf)
 	/* 0123 45 67 89 01 23 */
 	/* yyyy mm dd hh mm ss */
 	try {
-		t.tm_sec = lexical_cast<int>(wf.substr(12, 14));
-		t.tm_min = lexical_cast<int>(wf.substr(10, 12));
-		t.tm_hour = lexical_cast<int>(wf.substr(8, 10));
-		t.tm_mday = lexical_cast<int>(wf.substr(6, 8));
-		t.tm_mon = lexical_cast<int>(wf.substr(4, 6));
-		t.tm_year = lexical_cast<int>(wf.substr(0, 4));
+		t.tm_sec = lexical_cast<int>(wf.substr(12, 2));
+		t.tm_min = lexical_cast<int>(wf.substr(10, 2));
+		t.tm_hour = lexical_cast<int>(wf.substr(8, 2));
+		t.tm_mday = lexical_cast<int>(wf.substr(6, 2));
+		t.tm_mon = lexical_cast<int>(wf.substr(4, 2));
+		t.tm_year = lexical_cast<int>(wf.substr(0, 4)) - 1900;
 	} catch (bad_lexical_cast&) {
 		return 0;
 	}
