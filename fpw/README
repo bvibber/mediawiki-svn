@@ -1,8 +1,9 @@
 1. Introduction
-2. Installation
-3. Updating
+2. First-time installation
+3. Updating to a newer version
 4. Mailing list
-5. License
+5. Hacking hints
+6. License
 
 
 1. Introduction
@@ -33,8 +34,8 @@ Among the software's features are:
          * list of contributions per user
          
 
-2. Installation
-===============
+2. First-time installation
+==========================
 
 You need apache, php and mysql. Make sure that those three work well
 together before you continue to install the wikipedia script.
@@ -115,11 +116,12 @@ database dump
      http://wikipedia.sourceforge.net/fpw/newiki.sql.gz
 
 Please do not use this database on a site visible to the public, to avoid
-confusion.
+confusion. This database uses an outdated table format; see Updating
+below about how to change it to the currently used format.
 
 
-3. Updating
-===========
+3. Updating to a newer version
+==============================
 
 When updating to a new version of the PHP script, you may want to hold
 on to your previous version of wikiLocalSettings.php.
@@ -137,11 +139,40 @@ mailing list. See
 
       http://www.nupedia.com/mailman/listinfo/wikitech-l
 
-for information about how to sign up and for the mailing list
+for information on how to sign up and where to find the mailing list
 archives.
 
 
-5. License
+5. Hacking hints
+================
+
+A general description of the structure and operation of the code would
+be very desirable, but doesn't exist yet. So you have to read the
+source. The file wiki.phtml is the entry point which is called by the
+web server.
+
+When debugging php code, the user_error() function is very useful for
+examining variable values.
+
+To review what changes have been checked into the cvs repository in the
+last 2 days, issue the command
+  $ cvs log -d ">-2days" | more
+from the source directory.
+
+If you want to check in your own changes to the code, you need an
+account on sourceforge.net and permission from Magnus Manske.
+Before checking in your own changes, you should do
+  $ cvs -z3 update
+in order to bring your version of the code up to the current state and
+resolve possible conflicts resulting from other people editing the
+same files you have been working on. Then do
+  $ cvs -z3 diff | more
+in order to review your changes one last time and catch typos. Then
+check in with
+  $ cvs -z3 commit
+
+
+6. License
 ==========
 
 All files in this directory belong to the Wikipedia PHP script.
