@@ -36,12 +36,11 @@
 	"ca" => "Catalanisch", "zh" => "Chinesisch", "dk" => "Dänisch",
 	"nl" => "Holländisch", "de" => "Deutsch", "eo" => "Esperanto",
 	"fr" => "Französisch", "he" => "Hebräisch", "hu" => "Ungarisch",
-	"ia" => "Interlingua", "it" => "Italienisch", "ja" => "Japanisch",
-	"la" => "Latein", "no" => "Norwegisch",
+	"it" => "Italienisch", "ja" => "Japanisch", "no" => "Norwegisch",
 	"pl" => "Polnisch", "pt" => "Portugiesisch", "ru" => "Russisch",
-	"sh" => "Serbocroatisch", "sl" => "Slovenisch",
+	"sh" => "Serbocroatisch", "si" => "Slovenisch",
 	"simple" => "Einfaches Englisch", "es" => "Spanisch",
-	"sv" => "Schwedisch", "en" => "Englisch"
+	"sv" => "Schwedisch", "en" => "Englisch", "ia" => "Interlingua"
 );
 
 /* private */ $wgWeekdayNamesDe = array(
@@ -64,7 +63,7 @@
 	"Userlogin"		=> "",
 	"Userlogout"	=> "",
 	"Preferences"	=> "Meine Benutzereinstellungen",
-	"Watchlist"		=> "Meine Watchlist",
+	"Watchlist"		=> "Meine Beobachtungsliste",
 	"Recentchanges" => "Zeige Letzte Änderungen",
 	"Upload"		=> "Dateien hochladen",
 	"Imagelist"		=> "Zeige hochgeladene Dateien",
@@ -88,7 +87,7 @@
 	"Emailuser"	=> "",
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => "",
-	"Booksources"	=> "External book sources"
+	"Booksources"	=> "Externe Buchhandlungen"
 );
 
 /* private */ $wgSysopSpecialPagesDe = array(
@@ -127,7 +126,7 @@
 "qbmyoptions"	=> "Einstellungen",
 "mypage"		=> "Meine Seite",
 "mytalk"		=> "Meine Diskussion",
-"currentevents" => "Aktuelles",
+"currentevents" => "Chronik",
 "errorpagetitle" => "Fehler",
 "returnto"		=> "Zurück zu $1.",
 "fromwikipedia"	=> "Von Wikipedia, der freien Enzyklopädie",
@@ -142,9 +141,9 @@
 "unprotectthispage" => "Schutz aufheben",
 "talkpage"		=> "Diskussion",
 "subjectpage"	=> "Artikel",
-"otherlanguages" => "Andere Sprachen",
+"otherlanguages" => "Diesen Artikel auf",
 "redirectedfrom" => "(Weitergeleitet von $1)",
-"lastmodified"	=> "Diese Seite wurde zuletzt geändert am $1.",
+"lastmodified"	=> "Diese Seite wurde zuletzt geändert um $1.",
 "viewcount"		=> "Diese Seite wurde bisher $1 mal abgerufen.",
 "printsubtitle" => "(Von http://de.wikipedia.com)",
 "protectedpage" => "Geschützte Seite",
@@ -195,7 +194,7 @@ MySQL meldete den Fehler \"<tt>$3: $4</tt>\".",
 #
 "logouttitle"	=> "Benutzer-Abmeldung",
 "logouttext"	=> "Sie sind nun abgemeldet.
-Sie können Wikipedia jetzt anonym weiterbenutzen, oder sich under dem selben oder einem anderen Benutzernamen wieder anmelden.\n",
+Sie können Wikipedia jetzt anonym weiterbenutzen, oder sich unter dem selben oder einem anderen Benutzernamen wieder anmelden.\n",
 
 "welcomecreation" => "<h2>Willkommen, $1!</h2><p>Ihr Benutzerkonto wurde eingerichtet.
 Vergessen Sie nicht, Ihre Wikipedia-Einstellungen anzupassen.",
@@ -220,9 +219,9 @@ Ihre e-main-Addresse brauchen Sie nicht anzugeben, aber falls Sie Ihr Passwort v
 "createaccount"	=> "Neues Benutzerkonto anlegen",
 "badretype"		=> "Die beiden Passwörter stimmen nicht überein.",
 "userexists"	=> "Dieser Benutzername ist schon vergeben. Bitte wählen Sie einen anderen.",
-"youremail"		=> "Ihre e-mail",
+"youremail"		=> "Ihre E-Mail",
 "yournick"		=> "Ihr \"Spitzname\" (zum \"Unterschreiben\")",
-"emailforlost"	=> "Falls Sie Ihr Passwort vergessen, kann Ihnen ein neues an Ihre e-mail-Addresse gesendet werden.",
+"emailforlost"	=> "Falls Sie Ihr Passwort vergessen, kann Ihnen ein neues an Ihre E-Mail-Addresse gesendet werden.",
 "loginerror"	=> "Fehler bei der Anmeldung",
 "noname"		=> "Sie müssen einen Benutzernamen angeben.",
 "loginsuccesstitle" => "Anmeldung erfolgreich",
@@ -236,13 +235,13 @@ Ihre e-main-Addresse brauchen Sie nicht anzugeben, aber falls Sie Ihr Passwort v
 hat um ein neues Passwort für die Anmeldung bei Wikipedia gebeten.
 Das Passwort für Benutzer \"$2\" lautet nun \"$3\".
 Sie sollten sich jetzt anmelden und Ihr Passwort ändern.",
-"noemail"		=> "Benutzer \"$1\" hat keine e-mail-Addresse angegeben.",
-"passwordsent"	=> "Ein neues Passwort wurde an die e-mail-Addresse von Benutzer \"$1\" gesendet.
+"noemail"		=> "Benutzer \"$1\" hat keine E-Mail-Addresse angegeben.",
+"passwordsent"	=> "Ein neues Passwort wurde an die E-Mail-Addresse von Benutzer \"$1\" gesendet.
 Bitte melden Si sich an, sobald Sie es erhalten.",
 
 # Edit pages
 #
-"summary"		=> "Zusammanfassung",
+"summary"		=> "Zusammenfassung",
 "minoredit"		=> "Nur Kleinigkeiten wurden verändert.",
 "savearticle"	=> "Artikel speichern",
 "preview"		=> "Vorschau",
@@ -269,9 +268,9 @@ Bitte fügen Sie Ihre Änderungen in das obere Textfeld ein.
 "editingold"	=> "<strong>ACHTUNG: Sie bearbeiten eine alte Version dieses Artikels.
 Wenn Sie speichern, weden alle neueren Versionen überschrieben.</strong>\n",
 "yourdiff"		=> "Unterschiede",
-"copyrightwarning" => "Bitte beachten Sie, dass alle Beiträge zur Wikipedia unter der \"GNU Freie Dokumentationslizenz\" stehen. Falls Sie nicht möchten, dass Ihre Arbeit hier von anderen verändert und verbreitet wird, dann drücken Sie nicht auf \"Speichern\". Ausserdem erklären Sie damit, dass Sie den Text selbst verfasst haben oder ihn aus einer Quelle des öffentlichen Besitzes (\"Public Domain\") kopiert haben.
-<strong>Keine urheberrechtlich geschützten Werke dürfen ohne Zustimmung des Autors verwendet werden!</strong>",
-
+"copyrightwarning" => "
+<i><strong>BITTE BENUTZEN SIE KEINE URHEBERRECHTLICH GESCHÜTZTEN WERKE OHNE ERLAUBNIS DES AUTORS!</strong> Sie geben hiermit Ihre Zusage, dass Sie diesen Text selbst verfasst haben, oder dass der Text Copyright-freies Allgemeingut (\"Public domain\") ist.<br>
+Bitte beachten Sie, dass alle Beiträge zur Wikipedia automatisch unter der \"GNU Freie Dokumentationslizenz\" stehen. Falls Sie nicht möchten, dass Ihre Arbeit hier von anderen verändert und verbreitet wird, dann drücken Sie nicht auf \"Speichern\".</i>",
 
 # History pages
 #
@@ -353,7 +352,7 @@ sein, um Ihre Einstellungen zu ändern.",
 "timezonetext"	=> "Geben Sie die Anzahl der Stunden ein, die zwischen Ihrer Zeitzone und U.S.-Westküstenzeit liegen. Für Deutschland \"9\" eintragen.",
 "localtime"	=> "Ortszeit",
 "timezoneoffset" => "Unterschied",
-"emailflag"		=> "Keine E-mail von anderen Benutzern erhalten",
+"emailflag"		=> "Keine E-Mail von anderen Benutzern erhalten",
 
 # Recent changes
 #
@@ -491,34 +490,34 @@ Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
 "mailnologin"	=> "Sie sind nicht angemeldet.",
 "mailnologintext" => "Sie müssen <a href=\"" .
   wfLocalUrl( "Spezial:Userlogin" ) . "\">angemeldet sein</a>
-und eine gültige E-mail-Addresse haben, um anderen Benutzern E-mail zu schicken.",
-"emailuser"		=> "E-mail an diesen Benutzer",
-"emailpage"		=> "E-mail an Benutzer",
-"emailpagetext"	=> "Wenn dieser Benutzer eine gültige E-mail-Addresse angegeben hat, können Sie ihm mit dem untenstehenden Formular eine E-mail senden. Als Absender wird die E-Mail-Addresse aus Ihren Einstellungen eingetragen, damit der Benutzer Ihnen antworten kann.",
-"noemailtitle"	=> "Keine E-mail-Addresse",
+und eine gültige E-Mail-Addresse haben, um anderen Benutzern E-Mail zu schicken.",
+"emailuser"		=> "E-Mail an diesen Benutzer",
+"emailpage"		=> "E-Mail an Benutzer",
+"emailpagetext"	=> "Wenn dieser Benutzer eine gültige E-Mail-Addresse angegeben hat, können Sie ihm mit dem untenstehenden Formular eine E-Mail senden. Als Absender wird die E-Mail-Addresse aus Ihren Einstellungen eingetragen, damit der Benutzer Ihnen antworten kann.",
+"noemailtitle"	=> "Keine E-Mail-Addresse",
 "noemailtext"	=> "Dieser Benutzer hat keine gültige E-Mail-Addresse angegeben, oder möchte keine E-Mail von anderen Benutzern empfangen.",
 "emailfrom"		=> "Von",
 "emailto"		=> "An",
 "emailsubject"	=> "Betreff",
 "emailmessage"	=> "Nachricht",
 "emailsend"		=> "Senden",
-"emailsent"		=> "E-mail verschickt",
+"emailsent"		=> "E-Mail verschickt",
 "emailsenttext" => "Ihre E-Mail wurde verschickt.",
 
 
-# Watchlist
+# Beobachtungsliste
 #
-"watchlist"		=> "Watchlist",
+"watchlist"		=> "Beobachtungsliste",
 "watchlistsub"	=> "(für Benutzer \"$1\")",
-"nowatchlist"	=> "Sie haben keine Einträge auf Ihrer Watchlist.",
+"nowatchlist"	=> "Sie haben keine Einträge auf Ihrer Beobachtungsliste.",
 "watchnologin"	=> "Sie sind nicht angemeldet",
 "watchnologintext"	=> "Sie müssen <a href=\"" .
   wfLocalUrl( "Spezial:Userlogin" ) . "\">angemeldet</a>
-sein, um Ihre Watchlist zu bearbeiten.",
-"addedwatch"	=> "Zur Watchlist hinzugefügt",
-"addedwatchtext" => "Der Artikel \"$1\" wurde zu Ihrer Watchlist hinzugefügt.",
-"removedwatch"	=> "Von der Watchlist entfernt",
-"removedwatchtext" => "Der Artikel \"$1\" wurde von Ihrer Watchlist entfernt.",
+sein, um Ihre Beobachtungsliste zu bearbeiten.",
+"addedwatch"	=> "Zur Beobachtungsliste hinzugefügt",
+"addedwatchtext" => "Der Artikel \"$1\" wurde zu Ihrer Beobachtungsliste hinzugefügt.",
+"removedwatch"	=> "Von der Beobachtungsliste entfernt",
+"removedwatchtext" => "Der Artikel \"$1\" wurde von Ihrer Beobachtungsliste entfernt.",
 "watchthispage"	=> "Seite beobachten",
 "unwatchthispage" => "Nicht mehr beobachten",
 "notanarticle"	=> "Kein Artikel",
@@ -627,7 +626,7 @@ Bitte diese Funktion vorsichtig benutzen!",
 "pagemovedtext" => "Artikel \"$1\" wurde nach \"$2\" verschoben.",
 "articleexists" => "Unter diesem Namen existiert bereits ein Artikel.
 Bitte wählen Sie einen anderen Namen.",
-"movedto"		=> " verschoben nach",
+"movedto"		=> "verschoben nach",
 "movetalk"		=> "Die \"Diskussions\"-Seite mitverschieben, wenn möglich.",
 "talkpagemoved" => "Die \"Diskussions\"-Seite wurde ebenfalls verschoben.",
 "talkpagenotmoved" => "Die \"Diskussions\"-Seite wurde <strong>nicht</strong> verschoben.",
