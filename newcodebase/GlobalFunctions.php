@@ -126,6 +126,22 @@ function wfCleanFormFields( $fields )
 	}
 }
 
+function wfMungeQuotes( $in )
+{
+	$out = str_replace( "%", "%25", $in );
+	$out = str_replace( "'", "%27", $out );
+	$out = str_replace( "\"", "%22", $out );
+	return $out;
+}
+
+function wfDemungeQuotes( $in )
+{
+	$out = str_replace( "%22", "\"", $in );
+	$out = str_replace( "%27", "'", $out );
+	$out = str_replace( "%25", "%", $out );
+	return $out;
+}
+
 function wfCleanQueryVar( $var )
 {
 	if ( get_magic_quotes_gpc() ) {
@@ -252,7 +268,7 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 	$fname = "wfRecordUpload";
 
 	$sql = "SELECT img_name,img_size,img_timestamp,img_description,img_user," .
-	  "img_user_text FROM image WHERE img_name='{$name}'";
+	  "img_user_text FROM image WHERE img_name='" . wfStrencode( $name ) . "'";
 	$res = wfQuery( $sql, $fname );
 
 	if ( 0 == wfNumRows( $res ) ) {

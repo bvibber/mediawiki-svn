@@ -12,13 +12,9 @@ function wfSpecialBlockip()
 	wfCleanFormFields( $fields );
 	$ipb = new IPBlockForm();
 
-	if ( "success" == $action ) {
-		$ipb->showSuccess();
-	} else if ( "submit" == $action ) {
-		$ipb->doSubmit();
-	} else {
-		$ipb->showForm( "" );
-	}
+	if ( "success" == $action ) { $ipb->showSuccess(); }
+	else if ( "submit" == $action ) { $ipb->doSubmit(); }
+	else { $ipb->showForm( "" ); }
 }
 
 class IPBlockForm {
@@ -47,14 +43,14 @@ class IPBlockForm {
 <table border=0><tr>
 <td align='right'>{$ipa}:</td>
 <td align='left'>
-<input tabindex=1 type=text size=20 name='wpBlockAddress' value='{$wpBlockAddress}'>
+<input tabindex=1 type=text size=20 name='wpBlockAddress' value=\"{$wpBlockAddress}\">
 </td></tr><tr>
 <td align='right'>{$reason}:</td>
 <td align='left'>
-<input tabindex=2 type=text size=40 name='wpBlockReason' value='{$wpBlockReason}'>
+<input tabindex=2 type=text size=40 name='wpBlockReason' value=\"{$wpBlockReason}\">
 </td></tr><tr>
 <td>&nbsp;</td><td align='left'>
-<input tabindex=3 type=submit name='wpBlock' value='{$ipbs}'>
+<input tabindex=3 type=submit name='wpBlock' value=\"{$ipbs}\">
 </td></tr></table>
 </form>\n" );
 

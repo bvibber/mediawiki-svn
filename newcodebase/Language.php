@@ -466,7 +466,6 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "protectpage"	=> "Protect page",
 "recentchangeslinked" => "Watch links",
 "rclsub"		=> "(to pages linked from \"$1\")",
-"asksql"		=> "SQL query",
 "debug"			=> "Debug",
 "newpages"		=> "New pages",
 "movethispage"	=> "Move this page",
@@ -574,6 +573,20 @@ Please confirm that this is what you intend to do.",
 "lockdbsuccesstext" => "The Wikipedia database has been locked.
 <br>Remember to remove the lock after your maintenance is complete.",
 "unlockdbsuccesstext" => "The Wikipedia database has been unlocked.",
+
+# SQL query
+#
+"asksql"		=> "SQL query",
+"asksqltext"	=> "Use the form below to make a direct query of the
+Wikipedia database.
+Use single quotes ('like this') to delimit string literals.
+This can often add considerable load to the server, so please use
+this function sparingly.",
+"sqlquery"		=> "Enter query",
+"querybtn"		=> "Submit query",
+"selectonly"	=> "Queries other than \"SELECT\" are restricted to
+Wikipedia developers.",
+"querysuccessful" => "Query successful",
 
 );
 
