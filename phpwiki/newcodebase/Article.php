@@ -366,7 +366,7 @@ class Article {
 		$isConflict = false;
 		$wpTextbox1 = rtrim ( $wpTextbox1 ) ; # To avoid text getting longer on each preview
 
-		if(!$wgTitle->getArticleID) { # new article
+		if(!$wgTitle->getArticleID()) { # new article
 
 			$wgOut->addWikiText(wfmsg("newarticletext"));
 
