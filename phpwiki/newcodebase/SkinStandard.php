@@ -9,7 +9,7 @@ class SkinStandard extends Skin {
 
 		$s = parent::getHeadScripts();
 		if ( 3 == $this->qbSetting() ) { # Floating left
-			$s = "<script language='javascript' type='text/javascript' " .
+			$s .= "<script language='javascript' type='text/javascript' " .
 			  "src='{$wgStyleSheetPath}/sticky.js'></script>\n";
 		}
 		return $s;
