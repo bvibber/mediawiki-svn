@@ -197,9 +197,14 @@ class Skin {
 			$s = "\n</div>\n";
 
 			$u = $wgServer . $HTTP_SERVER_VARS['REQUEST_URI'];
+			$u = preg_replace( "/[?&]printable=yes/", "", $u );
 			$rf = str_replace( "$1", $u, wfMsg( "retrievedfrom" ) );
 
-			$s .= "<p><em>{$rf}</em>\n";
+			if ( $wgOut->isArticle() ) {
+				$lm = "<br>" . $this->lastModified();
+			} else { $lm = ""; }
+
+			$s .= "<p><em>{$rf}{$lm}</em>\n";
 			return $s;
 		}
 		return $this->doAfterContent();
@@ -380,10 +385,18 @@ class Skin {
 		$count = $wgArticle->getCount();
 		$s = str_replace( "$1", $count, wfMsg( "viewcount" ) );
 
+		$s .= $this->lastModified();
+		return "<span id='pagestats'>{$s}</span>";
+	}
+
+	function lastModified()
+	{
+		global $wgLang, $wgArticle;
+
 		$d = $wgLang->timeanddate( $wgArticle->getTimestamp() ) .
 		  " (" . date( "T" ) . ")";
-		$s .= " " . str_replace( "$1", $d, wfMsg( "lastmodified" ) );
-		return "<span id='pagestats'>{$s}</span>";
+		$s = " " . str_replace( "$1", $d, wfMsg( "lastmodified" ) );
+		return $s;
 	}
 
 	function logoText( $align = "" )

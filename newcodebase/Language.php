@@ -153,7 +153,7 @@ See $1.",
 "ok"			=> "OK",
 "sitetitle"		=> "Wikipedia",
 "sitesubtitle"	=> "The Free Encyclopedia",
-"retrievedfrom" => "(Retrieved from \"$1\")",
+"retrievedfrom" => "Retrieved from \"$1\"",
 
 # Main script and global functions
 #
