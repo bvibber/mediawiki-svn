@@ -138,8 +138,8 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			$a += array ("ondblclick" => $s);
 
 		}
-		if($action=="edit" && !$wgTitle->getArticleId()) { # new article
-			$a += array("onLoad"=>"document.editform.wpTextbox1.select()");	
+		if($action=="edit") { # set focus in edit box
+			$a += array("onLoad"=>"document.editform.wpTextbox1.focus()");	
 		}
 		return $a;
 	}

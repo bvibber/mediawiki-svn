@@ -461,9 +461,9 @@ The reason given is this:<br>''$2''<p>You may contact $1 or one of the other
 "newarticle"	=> "(New)",
 "newarticletext" =>
 "You've followed a link to a page that doesn't exist yet.
-To create a page delete this message and start typing
-
-If you are here by mistake click your browser's 'back' button.",
+To create the page, start typing in the box below 
+(see the [[Wikipedia:Help|help page]] for more info).
+If you are here by mistake, just click your browser's '''back''' button.",
 "anontalkpagetext" => "---- ''This is the discussion page for an anonymous user who has not created an account yet or who does not use it. We therefore have to use the numerical [[IP address]] to identify him/her. Such an IP address can be shared by several users. If you are an anonymous user and feel that irrelevant comments have been directed at you, please [[Special:Userlogin|create an account or log in]] to avoid future confusion with other anonymous users.'' ",
 "noarticletext" => "(There is currently no text in this page)",
 "updated"		=> "(Updated)",
@@ -808,7 +808,7 @@ to send e-mail to other users.",
 "emailuser"		=> "E-mail this user",
 "emailpage"		=> "E-mail user",
 "emailpagetext"	=> "If this user has entered a valid e-mail address in
-is user preferences, the form below will send a single message.
+his or her user preferences, the form below will send a single message.
 The e-mail address you entered in your user preferences will appear
 as the \"From\" address of the mail, so the recipient will be able
 to reply.",

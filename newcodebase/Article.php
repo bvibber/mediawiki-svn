@@ -55,7 +55,7 @@ class Article {
 			if ( "edit" == $action ) {
 			
 				global $wgTitle;
-				return wfMsg( "newarticletext" );
+				return ""; # was "newarticletext", now moved above the box)
 				
 				
 			}
@@ -366,6 +366,12 @@ class Article {
 		$isConflict = false;
 		$wpTextbox1 = rtrim ( $wpTextbox1 ) ; # To avoid text getting longer on each preview
 
+		if(!$wgTitle->getArticleID) { # new article
+
+			$wgOut->addWikiText(wfmsg("newarticletext"));
+
+		}
+
 		# Attempt submission here.  This will check for edit conflicts,
 		# and redundantly check for locked database, blocked IPs, etc.
 		# that edit() already checked just in case someone tries to sneak
@@ -381,7 +387,7 @@ class Article {
 				return;
 			}
 			# If article is new, insert it.
-
+			
 			$aid = $wgTitle->getArticleID();			
 			if ( 0 == $aid ) {
 				# we need to strip Windoze linebreaks because some browsers 
