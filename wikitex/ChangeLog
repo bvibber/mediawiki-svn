@@ -1,3 +1,33 @@
+2004-10-04  Peter Danenberg  <pcdanenb@localhost.localdomain>
+
+	* manifest.ms: updated
+
+	* readme.ms: installation process for svg and batik
+
+	* wikitex.php: added 'batik' and 'svg' elements; fixed
+	invalid constructor in objRend which gave syntax errors
+	in PHP4.
+
+	* wikitex.sh: added 'batik' and 'svg' elements; changed
+	error template to wikitex.error.inc.tex; and: transitioned
+	to png from gif.
+
+	* wikitex.svg.inc.svg: added
+
+	* wikitex.batik.inc.svg: added
+
+	* wikitex.inc.sh: inc.sh reintroduced; batik path in-
+	erted; as well as indications for an Apache bandaid
+	should defective paths prevail.
+
+2004-10-03  Peter Danenberg  <danenberg at mitdasein dot com>
+
+	* wikitex.php: added support for SVG; deciding currently
+	on the Batikian solution (xml.apache.org/batik) since,
+	while slow, it is very complete.  For oeconomy's sake,
+	may switch later to ImageMagick's more limited, but faster,
+	SVG subset.
+
 2004-09-07  Peter Danenberg  <danenberg at mitdasein dot com>
 
 	* wikitex.inc.php: transferred parms from LocalSettings.php

@@ -46,7 +46,7 @@ class objRend
   // PHP4 constructor
   function objRend($arr)
   {
-    return __contruct($arr);
+    $this->__construct($arr);
   }
 
   // parses strings of the form x=y y="z" z="a b c" [...], and returns an accordant array[x]=y, etc.
@@ -173,15 +173,16 @@ class objRend
       // derive the outfile hash
       $strHash = md5($strTex);
 
-      // TODO: graceless exception on inaccessibility
+      // FIXME: graceless exception on inaccessibility
       if($obj = fopen($strDir . $strHash, 'w')) {
 	fwrite($obj, $strTex);
 	fclose($obj);
       }
 
+      //            passthru(sprintf($strBash, $strHash, $arr['class'], $strURI));
       // collect an array of parameters from the shell in the form: x=y
       $arrBash = array_merge($arrBash, $this->arrParse(shell_exec(escapeshellcmd(sprintf($strBash, $strHash, $arr['class'], $strURI)))));
-			
+
       // choose tag based on return value from bash; i.e. whether an error was detected,
       // or default tag, if no particular present
       $strTag = (empty($arrTag[$arrBash['class']]) ? $arrTag['rend'] : $arrTag[$arrBash['class']]);
@@ -193,6 +194,12 @@ class objRend
 
       return $strTag;
     }
+}
+
+function strBatik($str)
+{
+  global $obj;
+  return $obj->strRend($str, array('class' => 'batik'));
 }
 
 function strChem($str)
@@ -241,6 +248,12 @@ function strMusic($str)
 {
   global $obj;
   return $obj->strRend($str, array('class' => 'music'));
+}
+
+function strSVG($str)
+{
+  global $obj;
+  return $obj->strRend($str, array('class' => 'svg'));
 }
 
 function strTeng($str)

@@ -16,11 +16,14 @@
 # a render strategy.
 #
 
+# source inc for defective Apache paths
+. "`dirname $0`/wikitex.inc.sh"
+
 N_ARG=3
 E_ALL=1
 E_NONE=0
 S_ERR='error'
-S_EXT='gif'
+S_EXT='png'
 S_MID='midi'
 S_TMP='/tmp'
 S_T_CLA='class='
@@ -41,7 +44,7 @@ fi
 
 S_REL=$3
 cd "`dirname $0`$S_TMP"
-strInc="../wikitex_rend.%s.inc.tex"
+strInc="../wikitex.%s.inc.tex"
 
 nCleanUp() {
     find . -type f -name "$1*" ! -regex ".*\(\.$S_EXT\|\.$S_MID\)" -exec rm {} \; # preliminary files
@@ -50,9 +53,11 @@ nCleanUp() {
 nLatex() {
     if [[ ! -s "$1.$S_EXT" ]]; then
 	case "$2" in
-	    'music' ) { lilypond "$1" && psselect 1 "$1".ps "$1"_1.ps && mv "$1"_1.ps "$1".ps && mogrify -trim "$1".ps && convert -transparent "#ffffff" "$1".ps "$1.$S_EXT"; } &> /dev/null;;
-	    'go' ) { sgf2tex "$1" -break 0 && tex "$1" && dvi2bitmap --output-type=gif --magnification=2 --scale=6 --font-mode=nechi --resolution=360 -h 360 -w 360 --process=blur,crop,transparent --output="$1".gif "$1".dvi; } &> /dev/null;;
-	    * )	{ latex "$1" --interaction=batchmode && dvi2bitmap --output-type="$S_EXT" --magnification=2 --scale=6 --font-mode=nechi --resolution=360 --process=blur,crop,transparent --output="$1.$S_EXT" "$1".dvi; } &> /dev/null;;
+	    'music' ) { lilypond "$1" && psselect 1 "$1".ps "$1"_1.ps && mv "$1"_1.ps "$1".ps && /usr/bin/mogrify -trim "$1".ps && /usr/bin/convert -transparent "#ffffff" "$1".ps "$1.$S_EXT"; } &> /dev/null;;
+	    'go' ) { sgf2tex "$1" -break 0 && tex "$1" && dvi2bitmap --magnification=2 --scale=6 --font-mode=nechi --resolution=360 -h 360 -w 360 --process=blur,crop,transparent --output="$1"."$S_EXT" "$1".dvi; } &> /dev/null;;
+	    'batik' ) { java -jar "$D_BATIK"batik-rasterizer.jar "$1" && mogrify -trim "$1".png; } &> /dev/null  ;;
+	    'svg' ) { convert "$1" "$1.$S_EXT" && mogrify -trim "$1.$S_EXT"; } &> /dev/null ;;
+	    * )	{ latex "$1" --interaction=batchmode && dvi2bitmap --magnification=2 --scale=6 --font-mode=nechi --resolution=360 --process=blur,crop,transparent --output="$1.$S_EXT" "$1".dvi; } &> /dev/null;;
 	esac;
     fi
 

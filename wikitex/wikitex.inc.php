@@ -26,7 +26,8 @@ $strRendPath = "$IP/extensions/wikitex";
 
 // Set class names; which may be customized based on local language, fashion
 // or whim.  Henry V was a maker of these when he was courting Gallrix Kate.
-$arrRend = array ('chem'	=> 'strChem',
+$arrRend = array ('batik'	=> 'strBatik',
+		  'chem'	=> 'strChem',
 		  'chess'	=> 'strChess',
 		  'feyn'	=> 'strFeyn',
 		  'go'		=> 'strGo',
@@ -34,6 +35,7 @@ $arrRend = array ('chem'	=> 'strChem',
 		  'ling'	=> 'strLing',
 		  'math'	=> 'strMath',
 		  'music'	=> 'strMusic',
+		  'svg'		=> 'strSVG',
 		  'teng'	=> 'strTeng',
 		  'tipa'	=> 'strTipa',
 		  'xym'		=> 'strXym');
