@@ -96,35 +96,36 @@
   $process_time = sprintf("%0.3f sec", $b_sec - $a_sec + $b_dec - $a_dec);
 
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+  <HEAD>
+    <TITLE>WikiHiero</TITLE>
+    <META http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <META name="Author" content="Guillaume Blanchard">
+    <META name="Copyright" content="&copy; 2004 Guillaume Blanchard, Under free GNU Public Licence">
+    <LINK rel="shortcut icon" href="/favicon.ico">
+    <SCRIPT type="text/javascript">
 
-<script language="Javascript">
+      function LangLink(l)
+      {
+        document.wh_form.lang.value = l
+        document.wh_form.submit()
+      }
 
-  function LangLink(l)
-  {
-    document.wh_form.lang.value = l
-    document.wh_form.submit()
-  }
+      function DisableScale(l)
+      {
+        document.wh_form.scale.disabled = l
+      }
 
-  function DisableScale(l)
-  {
-    document.wh_form.scale.disabled = l
-  }
+    </SCRIPT>
+  </HEAD>
+  <BODY style="background: #DDDDDD">
 
-</script>
-
-<html lang=<?php echo $lang; ?>>
-  <head>
-    <title>WikiHiero</title>
-    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-    <link rel="shortcut icon" href="/favicon.ico">
-  </head>
-  <body bgcolor="#DDDDDD">
-
-    <table border="0">
-    <tr valign="top"><td>
+    <TABLE border="0">
+    <TR valign="top"><TD>
     
-      <big><?php echo "WikiHiero v".WH_VER_MAJ.".".WH_VER_MED.".".WH_VER_MIN; ?></big><br>
-      <small>[<?php 
+      <BIG><?php echo "WikiHiero v".WH_VER_MAJ.".".WH_VER_MED.".".WH_VER_MIN; ?></BIG><BR>
+      <SMALL>[<?php 
 
         reset($wh_language['Lang']);
         while($l = current($wh_language['Lang']))
@@ -137,8 +138,8 @@
           if($l = current($wh_language['Lang']))
             echo " | ";
         }
-      ?>]</small>
-      <br><br>
+      ?>]</SMALL>
+      <BR><BR>
 
       <form name="wh_form" action="index.php?lang=<?php echo $lang; ?>" method="post">
         <textarea name="text" cols="60" rows="10" title="<?php echo WH_Text("Text"); ?>"><?php echo $text; ?></textarea>
@@ -207,7 +208,7 @@
     <br>
     <b>Images</b><br>
     <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-style:solid; border-width:1px; padding:1em; border-color:gray; background:#ffffff;">
-    <tr valign="center"><td>
+    <tr valign="middle"><td>
     
     <?php echo $html; ?>
     
@@ -217,7 +218,7 @@
     <br>
     <b>Source</b><br>
     <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-style:solid; border-width:1px; padding:1em; border-color:gray; background:#ffffff;">
-    <tr valign="center"><td>
+    <tr valign="middle"><td>
 
     <pre><?php echo htmlentities($html); ?></pre>
 
