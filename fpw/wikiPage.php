@@ -1104,6 +1104,7 @@ class WikiPage extends WikiTitle {
     # This generates the header with title, user name and functions, wikipedia logo, search box etc.
     function getHeader () {
 	$this->loadSkin () ;
+	$this->styleSheet () ;
 	return $this->skin->getHeader ( $this ) ;
         }
 
@@ -1229,6 +1230,11 @@ class WikiPage extends WikiTitle {
         return $ret ;
         }
 
+	function styleSheet () {
+		$this->loadSkin () ;
+		return $this->skin->getStylesheet ( $this ) ;		
+		}
+
 	function loadSkin () {
 		global $user ;
 		if ( $this->skinLoaded ) return ;
@@ -1236,11 +1242,6 @@ class WikiPage extends WikiTitle {
 		$s = "skin".str_replace ( " " , "" , $user->options[skin] ) ;
 		if ( $s == "skin" OR $s == "skinNone" ) $s = "skinStandard" ;
 		$this->skin = new $s ;
-
-/*		if ( $user->options[skin] == "Cologne Blue" ) $this->skin = new skinCologneBlue ;
-		else if ( $user->options[skin] == "Nostalgy" ) $this->skin = new skinNostalgy ;
-		else if ( $user->options[skin] == "Star Trek" ) $this->skin = new skinStarTrek ;
-		else $this->skin = new skinStandard ;*/
 
 		$this->skinLoaded = true ;
 		}

@@ -6,10 +6,19 @@
 
 class skinClass {
 
-	function getHeader ( $page ) {
+	function getHeader ( &$page ) {
 		}
 
-	function getFooter ( $page ) {
+	function getQuickBar ( &$page ) {
+		}
+
+	function getMiddle ( &$page , $text) {
+		}
+
+	function getFooter ( &$page ) {
+		}
+
+	function getStylesheet ( &$page ) {
 		}
 
 	}

@@ -245,6 +245,49 @@ class skinStandard extends skinClass {
 		return $ret ;
 		}
 
+	function getStylesheet ( &$page ) {
+		global $stylesheet , $user , $namespaceBackground ;
+		$skin = $user->options[skin] ;
+		$ret = "<style type=\"text/css\"><!--\n";
+		$ret .= "body { ";
+		$textcolor = $user->options[text];
+		$bgcolor = $user->options[background];
+		if ( $namespaceBackground != "" ) $bgcolor = $namespaceBackground ;
+		if ( $textcolor == "" ) $textcolor = "black"; # For un-coloring links. Should be "inherit" but Netscape 4.x messes it up
+		else $ret .= "color: $textcolor; ";
+		if ( $bgcolor == "" ) $bgcolor = "white";
+		else $ret .= "background: $bgcolor; ";
+		$ret .= "}\n";
+
+		$ret .= "a { text-decoration: " . (($user->options[underlineLinks] == "no") ? "none" : "underline") . "; }\n";
+
+		$qbside = ( $user->options["quickBar"] == "left" ) ? "right" : "left";
+
+		$ret .= "a.interwiki, a.external { color: #3333BB; text-decoration: none; }\n" .
+		    "a.red { color: red; text-decoration: none; }\n" .
+		    "a.green { color: blue; text-decoration: none; }\n" .
+		    "a.syslink { color:white; text-decoration:none; }\n" .
+		    "a.CBlink { color:#4B6587; text-decoration:none; font-size:11pt; }\n" . # Was:#0000AA
+		    ".topbar { border-bottom-width: 2; border-bottom-style: ridge; }\n" .
+		    ".middle { background:white }\n" .
+		    ".quickbar { background:$bgcolor; border-$qbside-width: 2; border-$qbside-style: ridge; }\n" .
+		    ".footer { border-top-color: black; border-top-width: 2; border-top-style: groove; }\n";
+
+		if ( $action == "print" ) {
+		    $ret .= "a { color: inherit; text-decoration: none; font-style: italic; }\n ";
+		    $ret .= "a.newlink { color: inherit; font-style: inherit; }\n.newlinkedge { display: none; }\n";
+		} elseif ( $user->options[markupNewTopics] == "red") {
+		    $ret .= "a.newlink { color: red; }\n.newlinkedge { display: none; }\n";
+		} elseif ( $user->options[markupNewTopics] == "inverse") {
+		    $ret .= "a.newlink { color: white; background: blue; }\n.newlinkedge { display: inline; }\n";
+		} else {
+		    $ret .= "a.newlink { color: $textcolor; text-decoration: none; }\n.newlinkedge { display: inline; }\n";
+		    }
+		$ret .= "//--></style>";
+
+		$stylesheet = $ret ;
+		}
+
 	}
 
 ?>

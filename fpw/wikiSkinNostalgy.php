@@ -14,23 +14,17 @@ class skinNostalgy extends skinStandard {
 	        global $wikiCharset , $wikiEncodingCharsets , $wikiEncodingNames , $wikiLogoFile ;
 	        global $framed,  $search , $THESCRIPT;
 
-
-		$t = $page->getNiceTitle ( $page->title ) ;
-		if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirstIntl ( $t ) ;
-
-		$ret = "<h1>$t<a href=\"".wikiLink("")."\"><img border=0 valign=top align=right src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a></h1>\n" ;
-
 		$mix = array () ;
 
-/*		if ( $action == "" ) {
+		if ( $action == "" ) {
 			$ret .= "<br>\n<br>\n<a href=\"".wikiLink("special:whatlinkshere&amp;target=$page->url")."\">$wikiWhatLinksHere</a>" ;
 		} else {
-		    $ret .= "<font size=\"+3\"><b><u>" ;
+		    $ret .= "<p><font size=\"+3\"><b>" ;
 		    if ( $page->secureTitle == $wikiMainPage and $action == "view" ) $ret .= $wikiMainPageTitle.$page->thisVersion ;
 		    else $ret .= $page->getNiceTitle($t).$page->thisVersion ;
-	#           if ( $page->secureTitle == "Main_Page" and $action == "view" ) $ret .= "<font color=blue>$wikiMainPageTitle</font>$page->thisVersion" ;
-	#           else $ret .= "<a href=\"".wikiLink("&amp;search=$page->title")."\">".$page->getNiceTitle($t)."</a>$page->thisVersion" ;
-		    $ret .= "</u></b></font>" ;
+		    $ret .= "<a href=\"".wikiLink("")."\"><img border=0 valign=top align=right src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a>\n" ;
+		    $ret .= "</b></font></p>" ;
+
 		    $subText = array () ;
 		    if ( $action == "view" and !$page->isSpecialPage ) $ret .=  "<br>$wikiArticleSubtitle\n" ;
 		    if ( $user->isLoggedIn && ! $page->isSpecialPage ) {
@@ -53,12 +47,11 @@ class skinNostalgy extends skinStandard {
 			$subText = implode ( ", " , $subText ) ;
 			$ret .= "<br>".str_replace ( "$1" , $subText , $wikiOtherLanguagesText ) ;
 			}
+		    $ret .= " | " ;
 		    }
-*/
 
-		$u = str_replace ( "<br>" , "" , $user->getLink() ) ;
+		$u = str_replace ( "<p>" , "" , $user->getLink() ) ;
 		array_push ( $mix , $u ) ;
-		
 
 		if ( $user->isLoggedIn ) array_push ( $mix , "<a href=\"".wikiLink("special:userLogout")."\">$wikiLogOut</a> | <a href=\"".wikiLink("special:editUserSettings")."\">$wikiPreferences</a>" ) ;
 		else array_push ( $mix , "<a href=\"".wikiLink("special:userLogin")."\">$wikiLogIn</a>" ) ;
@@ -81,7 +74,7 @@ class skinNostalgy extends skinStandard {
 
 
 		$ret .= implode ( " | " , $mix ) ;
-		$ret .= " | ".$page->getLinkBar()."<hr>\n" ;
+		$ret .= "<br>\n".$page->getLinkBar()."<hr>\n" ;
 
 		return $ret ;
 		}

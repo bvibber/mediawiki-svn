@@ -1,6 +1,8 @@
 <?
 # THIS IS THE MAIN FILE OF THE PHP WIKIPEDIA SCRIPT
 
+$styleSheet = "" ;
+
 # Includes the necessary parts
 include_once ( "./wikiSettings.php" ) ;
 include_once ( "./basicFunctions.php" ) ;
@@ -143,7 +145,7 @@ function getmicrotime(){
 
 
 	#if ( $user->options["underlineLinks"] == "no" ) $bodyOptions .= " link=blue vlink=blue alink=blue " ;
-	$styleSheet = $user->styleSheet ( $action ) ;
+#	$styleSheet = $user->styleSheet ( $action ) ;
 	# Netscape 4 doesn't do well with the stylesheet text/background color
 	if ( $user->options[text] != "" ) $bodyOptions .= " textcolor=\"" . $user->options[text] . "\"";
 	if ( $user->options[background] != "" ) $bodyOptions .= " bgcolor=\"" . $user->options[background] . "\"";
