@@ -1,5 +1,5 @@
 <?php
-/* $Id$
+/* $Id$ */
 require_once('commandLine.inc');
 define("ITERATIONS", 100);
 
