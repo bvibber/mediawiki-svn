@@ -106,6 +106,7 @@ $wikiHistory = "History" ;
 $wikiRandomPage = "Random Page" ;
 $wikiSpecialPages = "Special Pages" ;
 $wikiEditHelp = "<i>Editing Help</i>" ;
+$wikiEditHelpLink = "wikipedia:How_does_one_edit_a_page" ;
 $wikiStatistics = "Statistics" ;
 $wikiNewPages = "New pages" ;
 $wikiOrphans = "Orphans" ;
