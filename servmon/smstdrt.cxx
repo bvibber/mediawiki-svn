@@ -29,16 +29,26 @@ struct cmd_exit : handler<tt> {
 };
 
 struct cfg_eblpass : handler<tt> {
+	std::string p1;
 	bool execute(comdat<tt> const& cd) {
-		std::string p1, p2;
-		p1 = cd.getpass("% Enter new password: ");
-		p2 = cd.getpass("% Confirm new password: ");
-		if (p1 != p2) {
-			cd.error("Not confirmed.");
-			return true;
-		}
-		instance<smcfg::cfg>()->storestr("/core/enable_password", p1);
+		cd.term.echo(false);
+		cd.wrt("Enter new password: ");
+		cd.term.readline(boost::bind(&cfg_eblpass::gotp1, this, _1, _2));
 		return true;
+	}
+	void gotp1(tt& trm, std::string const& pass) {
+		p1 = pass;
+		trm.wrt("Confirm new password: ");
+		trm.readline(boost::bind(&cfg_eblpass::gotp2, this, _1, _2));
+		return;
+	}
+	void gotp2(tt& trm, std::string const& p2) {
+		trm.echo(true);
+		if (p1 != p2) {
+			trm.error("Not confirmed.");
+			return;
+		}
+		SMI(smcfg::cfg)->storestr("/core/enable_password", p1);
 	}
 };
 
