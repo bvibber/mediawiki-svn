@@ -9,12 +9,6 @@
 	"Standard", "StarTrek", "Nostalgia", "CologneBlue"
 );
 
-/* private */ $wgNamespaceBackgrounds = array(
-	"Talk" => "#eeffff", "User_talk" => "#eeffff",
-	"Wikipedia_talk" => "#eeffff", "User" => "#ffeeee",
-	"Wikipedia" => "#eeffee", "Special" => "#eeeeee"
-);
-
 class Skin {
 
 	/* private */ var $lastdate, $lastline;
@@ -91,10 +85,8 @@ class Skin {
 	{
 		global $wgUser, $wgTitle, $wgNamespaceBackgrounds;
 
-		$ns = Namespace::getName( $wgTitle->getNamespace() );
-
-		if ( "" != $ns && array_key_exists( $ns, $wgNamespaceBackgrounds ) ) {
-			$a = array( "bgcolor" => $wgNamespaceBackgrounds[$ns] );
+		if ( 0 != $wgTitle->getNamespace() ) {
+			$a = array( "bgcolor" => "#DDEEFF" );
 		}
 		else $a = array( "bgcolor" => "#FFFFFF" );
 

@@ -11,6 +11,8 @@ session_register( "wsUserPassword" );
 
 include_once( "Setup.php" );
 
+OutputPage::setEncodings();
+
 # Query string fields
 #
 global $action, $title, $search, $target, $printable;
