@@ -13,6 +13,18 @@
 #include <string.h>
 #include <stdio.h>
 
+int debug_indent = 0;
+/* - use this only if you need debug info
+void freeNode (Node node)
+{
+    debugpt3 ("freeNode (%u, %u)\n", node, node->type);
+    free (node);
+    debugpt_end;
+}
+/*/
+#define freeNode free
+/**/
+
 Node newNode (NodeType newType)
 {
     Node result = (Node) malloc (sizeof (struct NodeStruct));
@@ -108,6 +120,8 @@ void freeRecursively (Node node)
 {
     Node next, child = node->firstChild;
 
+    debugpt2 ("freeRecursively (%u)\n", node);
+
     while (child)
     {
         next = child->nextSibling;
@@ -115,7 +129,9 @@ void freeRecursively (Node node)
         child = next;
     }
 
-    free (node);
+    freeNode (node);
+
+    debugpt_end;
 }
 
 void freeRecursivelyWithSiblings (Node node)
@@ -299,7 +315,7 @@ Node processPreBlock (Node block)
                 examine->nextSibling = tmpnode;
             }
             /* Newlines nodes don't have children, no need for freeRecursively */
-            free (newlinesnode);
+            freeNode (newlinesnode);
         }
         examine = examine->nextSibling;
     }
@@ -332,7 +348,7 @@ Node processTableCellContents (Node node)
     if (node->type == Paragraph && !node->nextSibling)
     {
         ret = node->firstChild;
-        free (node);
+        freeNode (node);
         return ret;
     }
     return node;
@@ -416,7 +432,7 @@ Node processNestedItalics (Node node)
                     examine = examine->nextSibling;
                     /* Free the now-obsolete Italics node */
                     /* We have attached its children elsewhere, so don't use freeRecursively */
-                    free (childSibling);
+                    freeNode (childSibling);
                 }
                 /* Any node that is not an Italics node needs to become attached to one.
                  * (In the above example, this is only Y.) */
@@ -454,7 +470,7 @@ Node makeTextBlock (Node a, Node b)
     {
         nodeAddChild (a, b->firstChild);
         /* We have attached b's children elsewhere, so don't use freeRecursively */
-        free (b);
+        freeNode (b);
         return a;
     }
     else if (a->type == TextBlock)
@@ -475,7 +491,7 @@ Node convertAttributesToText (Node node)
     if (node->type != AttributeGroup) return 0;
 
     /* We've stored the first child in examine, so we can already free the parent */
-    free (node);
+    freeNode (node);
 
     while (examine) /* should be an Attribute node */
     {
@@ -520,7 +536,7 @@ Node convertAttributesToText (Node node)
         }
         prevExamine = examine;
         examine = examine->nextSibling;
-        free (prevExamine);
+        freeNode (prevExamine);
     }
 
     return ret;
@@ -535,15 +551,27 @@ Node convertAttributeDataToText (AttributeData data)
 Node convertPipeSeriesToText (Node node)
 {
     Node result = 0;
-    Node nextNode;
+    Node nextNode, child;
+
+    debugpt ("convertPipeSeriesToText()\n");
 
     while (node)
     {
-        result = makeTextBlock2 (result, newNodeS (TextToken, "|"), node->firstChild);
         nextNode = node->nextSibling;
-        freeRecursively (node);
+        child = node->firstChild;
+
+        /* Performance optimisation: Instead of freeing 'node' and creating a new
+         * TextToken node, we'll reuse this one! */
+        node->type = TextToken;
+        node->data.str = "|";
+        node->nextSibling = 0;
+        node->firstChild = 0;
+
+        result = makeTextBlock2 (result, node, child);
         node = nextNode;
     }
+
+    debugpt_end;
 
     return result;
 }

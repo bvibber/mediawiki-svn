@@ -102,13 +102,13 @@ int encodeTableRowInfo (char* input, int initleng)
 
     /* For the table-related tokens, we need to remember enough information so that we can
      * reliably turn things back into text. */
-"{|"" "*    { BEGIN(attributes); debuglex ("TABLEBEGIN "); yylval.num = yyleng-2; return TABLEBEGIN; }
-"||"" "*    { yylval.num = 2*(yyleng-2);   BEGIN(attributes); debuglex2 ("TABLECELL(%u) ", yylval.num); return TABLECELL;  }
-^"|"" "*    { yylval.num = 2*(yyleng-1)+1; BEGIN(attributes); debuglex2 ("TABLECELL(%u) ", yylval.num); return TABLECELL;  }
-"!!"" "*    { BEGIN(attributes); debuglex ("TABLEHEAD ");    yylval.num = 2*(yyleng-2); return TABLEHEAD;  }
-^"!"" "*    { BEGIN(attributes); debuglex ("TABLEHEAD ");    yylval.num = 2*(yyleng-1)+1; return TABLEHEAD;  }
+"{|"" "*    { BEGIN(attributes); debuglex ("TABLEBEGIN ");   yylval.num = yyleng-2;       return TABLEBEGIN;    }
+"||"" "*    { BEGIN(attributes); debuglex ("TABLECELL ");    yylval.num = 2*(yyleng-2);   return TABLECELL;     }
+^"|"" "*    { BEGIN(attributes); debuglex ("TABLECELL ");    yylval.num = 2*(yyleng-1)+1; return TABLECELL;     }
+"!!"" "*    { BEGIN(attributes); debuglex ("TABLEHEAD ");    yylval.num = 2*(yyleng-2);   return TABLEHEAD;     }
+^"!"" "*    { BEGIN(attributes); debuglex ("TABLEHEAD ");    yylval.num = 2*(yyleng-1)+1; return TABLEHEAD;     }
+"|+"" "*    { BEGIN(attributes); debuglex ("TABLECAPTION "); yylval.num = yyleng-2;       return TABLECAPTION;  }
 "|""-"+" "* { BEGIN(attributes); debuglex ("TABLEROW ");     yylval.num = encodeTableRowInfo (yytext, yyleng); return TABLEROW; }
-"|+"" "*    { BEGIN(attributes); debuglex ("TABLECAPTION "); yylval.num = yyleng-2; return TABLECAPTION; }
 "|}"        { BEGIN(cannotbelistorheadingorpre); debuglex ("TABLEEND "); return TABLEEND; }
 
 <attributes>[-a-zA-Z:_]+" "* {
