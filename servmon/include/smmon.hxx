@@ -42,6 +42,7 @@ public:
 			, state(state_unknown)
 			, nups(0)
 			, ndowns(0)
+			, flapstate(0)
 			{}
 		virtual std::string type(void) const = 0;
 		void check(void);
@@ -49,13 +50,22 @@ public:
 		virtual std::string fmt4irc(void) const = 0;
 		virtual ~server() {}
 		std::string name;
-		enum state_t { state_up, state_down, state_fast_flap, state_unknown };
+		enum state_t {
+			state_up,        /* server is completely up                        */
+			state_down,      /* server is completely down                      */
+			state_fast_flap, /* server is partially down                       */
+			state_slow_flap, /* server exceeded state transition flap interval */
+			state_unknown    /* server state is not checked yet or we don't
+					    know how to check it                           */
+		};
 		state_t state;
 		int nups, ndowns;
 		bool is(state_t s) const;
+		int flapstate;
 		void markup(void);
 		void markdown(void);
 		static std::string statestring(state_t s);
+		std::set<std::time_t> flaps;
 	};
 	typedef b::shared_ptr<server> serverp;
 	struct squidserver : public server {

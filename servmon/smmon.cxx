@@ -229,9 +229,39 @@ void cfg::server::check(void)
 		   so leave it as unknown. */
 		newstate = state_unknown;
 	}
+
+	/*
+	 * ignore any transition from unknown. these are normally
+	 * uninteresting.
+	 */
 	if (newstate != oldstate && oldstate != state_unknown) {
-		/* don't log a transition from unknown -> anything */
-		SMI(cfg)->state_transition(name, oldstate, newstate);
+		/*
+		 * remove any outdated flaps from the list, and insert
+		 * a new one.
+		 *
+		 * this gives us the number of flaps over the last 5 minutes.
+		 */
+		std::time_t now = std::time(0), last = now - (60 * 5);
+		
+		FE_TC_AS(std::set<std::time_t>, flaps, i) {
+			if (*i < last)
+				flaps.erase(i);
+			else break;
+		}
+		flaps.insert(std::time(0));
+		int nflaps = flaps.size();
+		
+		if (nflaps > 2) {
+			/* flapping */
+			if (!flapstate)
+				SMI(cfg)->state_transition(name, oldstate, state_slow_flap);
+			newstate = state_slow_flap;
+			flapstate = 1;
+		} else {
+			/* only 1 change in last 5 mins, not flapping */
+			SMI(cfg)->state_transition(name, oldstate, newstate);
+			flapstate = 0;
+		}
 	}
 	state = newstate;
 }
@@ -346,15 +376,17 @@ cfg::server::statestring(state_t s)
 {
 	switch (s) {
 	case state_up:
-		return "UP"; break;
+		return "UP";
 	case state_down:
-		return "DOWN"; break;
+		return "DOWN";
 	case state_fast_flap:
-		return "FAST-FLAP"; break;
+		return "FAST-FLAP";
+	case state_slow_flap:
+		return "FLAP";
 	case state_unknown:
-		return "UNKNOWN"; break;
+		return "UNKNOWN";
 	default:
-		return "<unknown state>"; break;
+		return "<unknown state>";
 	}
 }
 
