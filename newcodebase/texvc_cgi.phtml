@@ -1,20 +1,29 @@
 <?
 include ('Setup.php');
-header( "Content-type: text/html; charset={$wgInputEncoding}" );
+header( "Content-type: text/xml; charset={$wgInputEncoding}" );
+print "<";
+print "?xml version=\"1.0\" encoding=\"utf-8\"?";
+print ">";
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN\ "http://www.w3.org/TR/REC-html40/strict.dtd">
-<html><head><title>texvc</title></head><body>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>texvc</title></head><body>
 <?
-print "<form method=post action=\"{$wgServer}{$wgScriptPath}/texvc_cgi.phtml\">"
+print "<form method=\"post\" action=\"{$wgServer}{$wgScriptPath}/texvc_cgi.phtml\">"
 ?>
-<textarea name='math' rows=10 cols=80>
-<?
+<textarea name='math' rows='10' cols='80'><?
     global $math;
     $math = preg_replace ("/\\\\\\\\/", '\\', $math);
     print $math;
-?>
-</textarea><br><input type=submit value="Preview" name="preview"></form>
+?></textarea><br /><input type="submit" value="Preview" name="preview" /></form>
 <?
+function xlinkToMathImage ( $tex, $outputhash )
+{
+    global $wgMathPath;
+    return "<img src=\"".$wgMathPath."/".$outputhash.".png\" alt=\"".wfEscapeHTML($tex)."\" />";
+}
+
 function texvc_cgi_renderMath( $tex )
 {
     global $wgMathDirectory, $wgTmpDirectory, $wgInputEncoding;
@@ -29,7 +38,7 @@ function texvc_cgi_renderMath( $tex )
 
     $md5 = md5($tex);
     $md5_sql = mysql_escape_string(pack("H32", $md5));
-    $sql = "SELECT math_outputhash,math_html FROM math WHERE math_inputhash = '".$md5_sql."	'";
+    $sql = "SELECT math_outputhash,math_html_conservativeness,math_html,math_mathml FROM math WHERE math_inputhash = '".$md5_sql."'";
 
     $res = wfQuery( $sql, $fname );
     if ( wfNumRows( $res ) == 0 )
@@ -41,9 +50,48 @@ function texvc_cgi_renderMath( $tex )
 	if (strlen($contents) == 0)
 	    return "<h3>".$mf." (".$munk."): ".wfEscapeHTML($tex)."</h3>";
 	$retval = substr ($contents, 0, 1);
-	if ($retval != "+" && $retval != "C")
-	{
-	    if ($retval == "L")
+
+	if (($retval == "C") || ($retval == "M") || ($retval == "L")) {
+	    if ($retval == "C")
+		$conservativeness = 2;
+	    else if ($retval == "M")
+		$conservativeness = 1;
+	    else
+		$conservativeness = 0;
+	    $outdata = substr ($contents, 33);
+
+	    $i = strpos($outdata, "\000");
+
+	    $outhtml = substr($outdata, 0, $i);
+	    $mathml = substr($outdata, $i+1);
+
+	    $sql_html = "'".mysql_escape_string($outhtml)."'";
+	    $sql_mathml = "'".mysql_escape_string($mathml)."'";
+	} else if (($retval == "c") || ($retval == "m") || ($retval == "l"))  {
+	    $outhtml = substr ($contents, 33);
+	    if ($retval == "c")
+		$conservativeness = 2;
+	    else if ($retval == "m")
+		$conservativeness = 1;
+	    else
+		$conservativeness = 0;
+	    $sql_html = "'".mysql_escape_string($outhtml)."'";
+	    $mathml = '';
+	    $sql_mathml = 'NULL';
+	} else if ($retval == "X") {
+	    $outhtml = '';
+	    $mathml = substr ($contents, 33);
+	    $sql_html = 'NULL';
+	    $sql_mathml = "'".mysql_escape_string($mathml)."'";
+	    $conservativeness = 0;
+	} else if ($retval == "+") {
+	    $outhtml = '';
+	    $mathml = '';
+	    $sql_html = 'NULL';
+	    $sql_mathml = 'NULL';
+	    $conservativeness = 0;
+	} else {
+	    if ($retval == "E")
 		$errmsg = wfMsg( "math_lexing_error" );
 	    else if ($retval == "S")
 		$errmsg = wfMsg( "math_syntax_error" );
@@ -59,33 +107,34 @@ function texvc_cgi_renderMath( $tex )
 	    return "<h3>".$mf." (".$munk."): ".wfEscapeHTML($tex)."</h3>";
 
 	$outmd5_sql = mysql_escape_string(pack("H32", $outmd5));
-	$outhtml = substr ($contents, 33);
-	$conservative = ($retval != "+");
 
-	if ($retval == "+")
-	    $sql = "INSERT INTO math VALUES ('".$md5_sql."', '".$outmd5_sql."', 0, '". wfStrencode($outhtml) . "')";
-	else
-	    $sql = "INSERT INTO math VALUES ('".$md5_sql."', '".$outmd5_sql."', 1, '". wfStrencode($outhtml) . "')";
+	$sql = "INSERT INTO math VALUES ('".$md5_sql."', '".$outmd5_sql."', ".$conservativeness.", ".$sql_html.", ".$sql_mathml.")";
 
 	$res = wfQuery( $sql, $fname );
-	# we don't really care if it fails
+// we don't really care if it fails
     } else {
 	$rpage = wfFetchObject ( $res );
 	$outmd5 = unpack ("H32md5", $rpage->math_outputhash);
 	$outmd5 = $outmd5 ['md5'];
 	$outhtml = $rpage->math_html;
-	$conservative = ($rpage->math_conservative == 1);
+	$conservativeness = $rpage->math_html_conservativeness;
+	$mathml = $rpage->math_mathml;
     }
-    $image = "<h3>Image</h3>" . linkToMathImage ( $tex, $outmd5 );
-
+    if ($mathml == '')
+	$mathml = "<h3>Failed to generate MathML</h3>";
+    else
+	$mathml = "<h3>MathML</h3><math xmlns=\"http://www.w3.org/1998/Math/MathML\">$mathml</math>";
+    $image = "<h3>Image</h3>" . xlinkToMathImage ( $tex, $outmd5 );
     $cmd = "./math/texvc_tex ".escapeshellarg($tex)." ".escapeshellarg($wgInputEncoding);
     $outtex = `$cmd`;
 
     if ( $outhtml == '' )
-        $outhtml = "<h3>Failed to output HTML</h3>";
+        $outhtml = "<h3>Failed to generate HTML</h3>";
     else
-	if ( $conservative )
+	if ( $conservativeness == 2)
 	    $outhtml = "<h3>HTML (conservative)</h3>" . $outhtml;
+	else if ( $conservativeness == 1)
+	    $outhtml = "<h3>HTML (moderate)</h3>" . $outhtml;
 	else
 	    $outhtml = "<h3>HTML (liberal)</h3>" . $outhtml;
 
@@ -94,7 +143,7 @@ function texvc_cgi_renderMath( $tex )
     else
 	$outtex = "<h3>TeX</h3>" . wfEscapeHTML($outtex);
 
-    return $outtex . $outhtml . $image;
+    return $outtex . $outhtml . $mathml . $image;
 }
 
 global $math;

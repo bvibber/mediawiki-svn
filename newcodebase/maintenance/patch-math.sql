@@ -4,9 +4,10 @@
 
 DROP TABLE IF EXISTS math;
 CREATE TABLE math (
-    math_inputhash char(16) NOT NULL,
-    math_outputhash char(16) NOT NULL,
-    math_conservative BOOL NOT NULL,
-    math_html text NOT NULL,
+    math_inputhash varchar(16) NOT NULL,
+    math_outputhash varchar(16) NOT NULL,
+    math_html_conservativeness tinyint(1) NOT NULL,
+    math_html text,
+    math_mathml text,
     UNIQUE KEY math_inputhash (math_inputhash)
 );

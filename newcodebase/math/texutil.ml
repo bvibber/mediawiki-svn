@@ -1,138 +1,32 @@
 open Parser
 open Render_info
 open Tex
-
-let mapjoin f l = (List.fold_left (fun a b -> a ^ (f b)) "" l)
-let mapjoine e f = function
-    [] -> ""
-  | h::t -> (List.fold_left (fun a b -> a ^ e ^ (f b)) (f h) t)
+open Util
 
 let tex_part = function
     HTMLABLE (_,t,_) -> t
+  | HTMLABLEM (_,t,_) -> t
   | HTMLABLEC (_,t,_) -> t
+  | MHTMLABLEC (_,t,_,_,_) -> t
   | HTMLABLE_BIG (t,_) -> t
   | TEX_ONLY t -> t
-let rec print = function
-    TEX_FQ (a,b,c) -> (print a) ^ "_{" ^ (print  b) ^ "}^{" ^ (print  c) ^ "}"
-  | TEX_DQ (a,b) -> (print a) ^ "_{" ^ (print  b) ^ "}"
-  | TEX_UQ (a,b) -> (print a) ^ "^{" ^ (print  b) ^ "}" 
+let rec render_tex = function
+    TEX_FQ (a,b,c) -> (render_tex a) ^ "_{" ^ (render_tex  b) ^ "}^{" ^ (render_tex  c) ^ "}"
+  | TEX_DQ (a,b) -> (render_tex a) ^ "_{" ^ (render_tex  b) ^ "}"
+  | TEX_UQ (a,b) -> (render_tex a) ^ "^{" ^ (render_tex  b) ^ "}" 
   | TEX_LITERAL s -> tex_part s
-  | TEX_FUN1 (f,a) -> "{" ^ f ^ " " ^ (print a) ^ "}"
-  | TEX_FUN1hl (f,_,a) -> "{" ^ f ^ " " ^ (print a) ^ "}"
-  | TEX_FUN1hf (f,_,a) -> "{" ^ f ^ " " ^ (print a) ^ "}"
-  | TEX_DECLh (f,_,a) -> "{" ^ f ^ "{" ^ (mapjoin print a) ^ "}}"
-  | TEX_FUN2 (f,a,b) -> "{" ^ f ^ " " ^ (print a) ^ (print b) ^ "}"
-  | TEX_FUN2h (f,_,a,b) -> "{" ^ f ^ " " ^ (print a) ^ (print b) ^ "}"
-  | TEX_FUN2sq (f,a,b) -> "{" ^ f ^ "[ " ^ (print a) ^ "]" ^ (print b) ^ "}"
-  | TEX_CURLY (tl) -> "{" ^ (mapjoin print tl) ^ "}"
-  | TEX_INFIX (s,ll,rl) -> "{" ^ (mapjoin print ll) ^ " " ^ s ^ "" ^ (mapjoin print rl) ^ "}"
-  | TEX_INFIXh (s,_,ll,rl) -> "{" ^ (mapjoin print ll) ^ " " ^ s ^ "" ^ (mapjoin print rl) ^ "}"
+  | TEX_FUN1 (f,a) -> "{" ^ f ^ " " ^ (render_tex a) ^ "}"
+  | TEX_FUN1hl (f,_,a) -> "{" ^ f ^ " " ^ (render_tex a) ^ "}"
+  | TEX_FUN1hf (f,_,a) -> "{" ^ f ^ " " ^ (render_tex a) ^ "}"
+  | TEX_DECLh (f,_,a) -> "{" ^ f ^ "{" ^ (mapjoin render_tex a) ^ "}}"
+  | TEX_FUN2 (f,a,b) -> "{" ^ f ^ " " ^ (render_tex a) ^ (render_tex b) ^ "}"
+  | TEX_FUN2h (f,_,a,b) -> "{" ^ f ^ " " ^ (render_tex a) ^ (render_tex b) ^ "}"
+  | TEX_FUN2sq (f,a,b) -> "{" ^ f ^ "[ " ^ (render_tex a) ^ "]" ^ (render_tex b) ^ "}"
+  | TEX_CURLY (tl) -> "{" ^ (mapjoin render_tex tl) ^ "}"
+  | TEX_INFIX (s,ll,rl) -> "{" ^ (mapjoin render_tex ll) ^ " " ^ s ^ "" ^ (mapjoin render_tex rl) ^ "}"
+  | TEX_INFIXh (s,_,ll,rl) -> "{" ^ (mapjoin render_tex ll) ^ " " ^ s ^ "" ^ (mapjoin render_tex rl) ^ "}"
   | TEX_BOX (bt,s) -> "{"^bt^"{" ^ s ^ "}}"
-  | TEX_MATRIX (t,rows) -> "{\\begin{"^t^"}"^(mapjoine "\\\\" (mapjoine "&" (mapjoin print)) rows)^"\\end{"^t^"}}"
-
-(* HTML Rendering Engine *)
-
-exception Too_difficult_for_html
-type context = CTX_NORMAL | CTX_IT | CTX_RM 
-
-let html_conservative = ref true
-
-let new_ctx = function
-    FONTFORCE_IT -> CTX_IT
-  | FONTFORCE_RM -> CTX_RM
-let font_render lit = function
-    (_,     FONT_UFH) -> lit
-  | (_,     FONT_UF)  -> lit
-  | (CTX_IT,FONT_RTI) -> raise Too_difficult_for_html
-  | (_,     FONT_RTI) -> lit
-  | (CTX_IT,FONT_RM)  -> "<i>"^lit^"</i>"
-  | (_,     FONT_RM)  -> lit
-  | (CTX_RM,FONT_IT)  -> lit
-  | (_,     FONT_IT)  -> "<i>"^lit^"</i>"
-
-let rec html_render_flat ctx = function
-    TEX_LITERAL (HTMLABLE (ft,_,sh))::r -> (html_conservative := false; (font_render sh (ctx,ft))^html_render_flat ctx r)
-  | TEX_LITERAL (HTMLABLEC(ft,_,sh))::r -> (font_render sh (ctx,ft))^html_render_flat ctx r
-  | TEX_LITERAL (HTMLABLE_BIG (_,sh))::r -> (html_conservative := false; sh^html_render_flat ctx r)
-  | TEX_FUN1hl (_,(f1,f2),a)::r -> f1^(html_render_flat ctx [a])^f2^html_render_flat ctx r
-  | TEX_FUN1hf (_,ff,a)::r -> (html_render_flat (new_ctx ff) [a])^html_render_flat ctx r
-  | TEX_DECLh (_,ff,a)::r -> (html_render_flat (new_ctx ff) a)^html_render_flat ctx r
-  | TEX_CURLY ls::r -> html_render_flat ctx (ls @ r)
-  | TEX_DQ (a,b)::r  -> (html_conservative := false;
-			 let bs = html_render_flat ctx [b] in match html_render_size ctx a with
-		         true, s -> raise Too_difficult_for_html
-		       | false, s -> s^"<sub>"^bs^"</sub>")^html_render_flat ctx r
-  | TEX_UQ (a,b)::r  -> (html_conservative := false;
-		         let bs = html_render_flat ctx [b] in match html_render_size ctx a with
-		         true, s ->  raise Too_difficult_for_html
-		       | false, s -> s^"<sup>"^bs^"</sup>")^html_render_flat ctx r
-  | TEX_FQ (a,b,c)::r -> (html_conservative := false;
-			 (let bs = html_render_flat ctx [b] in let cs = html_render_flat ctx [c] in
-		          match html_render_size ctx a with
-		          true, s -> raise Too_difficult_for_html
-		        | false, s -> s^"<sub>"^bs^"</sub><sup>"^cs^"</sup>")^html_render_flat ctx r)
-  | TEX_BOX (_,s)::r -> s^html_render_flat ctx r
-  | TEX_LITERAL (TEX_ONLY _)::_ -> raise Too_difficult_for_html
-  | TEX_FUN1 _::_ -> raise Too_difficult_for_html
-  | TEX_FUN2  _::_ -> raise Too_difficult_for_html
-  | TEX_FUN2h  _::_ -> raise Too_difficult_for_html
-  | TEX_FUN2sq  _::_ -> raise Too_difficult_for_html
-  | TEX_INFIX _::_ -> raise Too_difficult_for_html
-  | TEX_INFIXh _::_ -> raise Too_difficult_for_html
-  | TEX_MATRIX _::_ -> raise Too_difficult_for_html
-  | [] -> ""
-and html_render_size ctx = function
-    TEX_LITERAL (HTMLABLE_BIG (_,sh)) -> true,sh
-  | x -> false,html_render_flat ctx [x]
-
-let rec html_render_deep ctx = function
-    TEX_LITERAL (HTMLABLE (ft,_,sh))::r -> (html_conservative := false; ("",(font_render sh (ctx,ft)),"")::html_render_deep ctx r)
-  | TEX_LITERAL (HTMLABLEC(ft,_,sh))::r -> ("",(font_render sh (ctx,ft)),"")::html_render_deep ctx r
-  | TEX_LITERAL (HTMLABLE_BIG (_,sh))::r -> (html_conservative := false; ("",sh,"")::html_render_deep ctx r)
-  | TEX_FUN2h (_,f,a,b)::r -> (html_conservative := false; (f a b)::html_render_deep ctx r)
-  | TEX_INFIXh (_,f,a,b)::r -> (html_conservative := false; (f a b)::html_render_deep ctx r)
-  | TEX_CURLY ls::r -> html_render_deep ctx (ls @ r)
-  | TEX_DQ (a,b)::r  -> (let bs = html_render_flat ctx [b] in match html_render_size ctx a with
-		         true, s ->  "","<font size=+2>"^s^"</font>",bs
-		       | false, s -> "",(s^"<sub>"^bs^"</sub>"),"")::html_render_deep ctx r
-  | TEX_UQ (a,b)::r  -> (let bs = html_render_flat ctx [b] in match html_render_size ctx a with
-		         true, s ->  bs,"<font size=+2>"^s^"</font>",""
-		       | false, s -> "",(s^"<sup>"^bs^"</sup>"),"")::html_render_deep ctx r
-  | TEX_FQ (a,b,c)::r -> (html_conservative := false;
-			 (let bs = html_render_flat ctx [b] in let cs = html_render_flat ctx [c] in
-		          match html_render_size ctx a with
-		          true, s ->  (cs,"<font size=+2>"^s^"</font>",bs)
-		        | false, s -> ("",(s^"<sub>"^bs^"</sub><sup>"^cs^"</sup>"),""))::html_render_deep ctx r)
-  | TEX_FUN1hl (_,(f1,f2),a)::r -> ("",f1,"")::(html_render_deep ctx [a]) @ ("",f2,"")::html_render_deep ctx r
-  | TEX_FUN1hf (_,ff,a)::r -> (html_render_deep (new_ctx ff) [a]) @ html_render_deep ctx r
-  | TEX_DECLh  (_,ff,a)::r -> (html_render_deep (new_ctx ff) a) @ html_render_deep ctx r
-  | TEX_BOX (_,s)::r -> ("",s,"")::html_render_deep ctx r
-  | TEX_LITERAL (TEX_ONLY _)::_ -> raise Too_difficult_for_html
-  | TEX_FUN1 _::_ -> raise Too_difficult_for_html
-  | TEX_FUN2 _::_ -> raise Too_difficult_for_html
-  | TEX_FUN2sq  _::_ -> raise Too_difficult_for_html
-  | TEX_INFIX _::_ -> raise Too_difficult_for_html
-  | TEX_MATRIX _::_ -> raise Too_difficult_for_html
-  | [] -> []
-
-let rec html_render_table = function
-    sf,u,d,("",a,"")::("",b,"")::r -> html_render_table (sf,u,d,(("",a^b,"")::r))
-  | sf,u,d,(("",a,"") as c)::r     -> html_render_table (c::sf,u,d,r)
-  | sf,u,d,((_,a,"") as c)::r      -> html_render_table (c::sf,true,d,r)
-  | sf,u,d,(("",a,_) as c)::r      -> html_render_table (c::sf,u,true,r)
-  | sf,u,d,((_,a,_) as c)::r       -> html_render_table (c::sf,true,true,r)
-  | sf,false,false,[]              -> mapjoin (function (u,m,d) -> m) (List.rev sf)
-  | sf,true,false,[]               -> let ustr,mstr = List.fold_left (fun (us,ms) (u,m,d) -> (us^"<td>"^u,ms^"<td>"^u))
-					("","") (List.rev sf) in
-					"<table><tr align=center valign=bottom>" ^ ustr ^ "</tr><tr align=center>" ^ mstr ^ "</tr></table>"
-  | sf,false,true,[]               -> let mstr,dstr = List.fold_left (fun (ms,ds) (u,m,d) -> (ms^"<td>"^m,ds^"<td>"^d))
-					("","") (List.rev sf) in
-					"<table><tr align=center>" ^ mstr ^ "</tr><tr align=center valign=top>" ^ dstr ^ "</tr></table>"
-  | sf,true,true,[]               -> let ustr,mstr,dstr = List.fold_left (fun (us,ms,ds) (u,m,d) ->
-					(us^"<td>"^u,ms^"<td>"^m,ds^"<td>"^d)) ("","","") (List.rev sf) in
-					"<table><tr align=center valign=bottom>" ^ ustr ^ "</tr><tr align=center>" ^ mstr ^ "</tr><tr align=center valign=top>" ^ dstr ^ "</tr></table>"
-
-let html_render tree = html_render_table ([],false,false,html_render_deep CTX_NORMAL tree)
+  | TEX_MATRIX (t,rows) -> "{\\begin{"^t^"}"^(mapjoine "\\\\" (mapjoine "&" (mapjoin render_tex)) rows)^"\\end{"^t^"}}"
 
 (* Dynamic loading*)
 type encoding_t = LATIN1 | LATIN2 | UTF8
@@ -222,12 +116,12 @@ let find = function
     | "\\aleph"            -> LITERAL (HTMLABLE  (FONT_UF,  "\\aleph ", "&alefsym;"))
     | "\\alef"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\aleph ", "&alefsym;"))
     | "\\alefsym"          -> LITERAL (HTMLABLE  (FONT_UF,  "\\aleph ", "&alefsym;"))
-    | "\\larr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\leftarrow ", "&larr;"))
-    | "\\leftarrow"        -> LITERAL (HTMLABLE  (FONT_UF,  "\\leftarrow ", "&larr;"))
-    | "\\rarr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\rightarrow ", "&rarr;"))
-    | "\\to"               -> LITERAL (HTMLABLE  (FONT_UF,  "\\to ", "&rarr;"))
-    | "\\gets"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\gets ", "&larr;"))
-    | "\\rightarrow"       -> LITERAL (HTMLABLE  (FONT_UF,  "\\rightarrow ", "&rarr;"))
+    | "\\larr"             -> LITERAL (HTMLABLEM (FONT_UF,  "\\leftarrow ", "&larr;"))
+    | "\\leftarrow"        -> LITERAL (HTMLABLEM (FONT_UF,  "\\leftarrow ", "&larr;"))
+    | "\\rarr"             -> LITERAL (HTMLABLEM (FONT_UF,  "\\rightarrow ", "&rarr;"))
+    | "\\to"               -> LITERAL (HTMLABLEM (FONT_UF,  "\\to ", "&rarr;"))
+    | "\\gets"             -> LITERAL (HTMLABLEM (FONT_UF,  "\\gets ", "&larr;"))
+    | "\\rightarrow"       -> LITERAL (HTMLABLEM (FONT_UF,  "\\rightarrow ", "&rarr;"))
     | "\\longleftarrow"    -> LITERAL (HTMLABLE  (FONT_UF,  "\\longleftarrow ", "&larr;"))
     | "\\longrightarrow"   -> LITERAL (HTMLABLE  (FONT_UF,  "\\longrightarrow ", "&rarr;"))
     | "\\Larr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\Leftarrow ", "&lArr;"))
@@ -235,18 +129,18 @@ let find = function
     | "\\Leftarrow"        -> LITERAL (HTMLABLE  (FONT_UF,  "\\Leftarrow ", "&lArr;"))
     | "\\Rarr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\Rightarrow ", "&rArr;"))
     | "\\rArr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\Rightarrow ", "&rArr;"))
-    | "\\Rightarrow"       -> LITERAL (HTMLABLE  (FONT_UF,  "\\Rightarrow ", "&rArr;"))
+    | "\\Rightarrow"       -> LITERAL (HTMLABLEM (FONT_UF,  "\\Rightarrow ", "&rArr;"))
     | "\\mapsto"           -> LITERAL (HTMLABLE  (FONT_UF,  "\\mapsto ", "&rarr;"))
     | "\\longmapsto"       -> LITERAL (HTMLABLE  (FONT_UF,  "\\longmapsto ", "&rarr;"))
     | "\\Longleftarrow"    -> LITERAL (HTMLABLE  (FONT_UF,  "\\Longleftarrow ", "&lArr;"))
     | "\\Longrightarrow"   -> LITERAL (HTMLABLE  (FONT_UF,  "\\Longrightarrow ", "&rArr;"))
-    | "\\uarr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\uparrow ", "&uarr;"))
-    | "\\uparrow"          -> LITERAL (HTMLABLE  (FONT_UF,  "\\uparrow ", "&uarr;"))
+    | "\\uarr"             -> LITERAL (HTMLABLEM (FONT_UF,  "\\uparrow ", "&uarr;"))
+    | "\\uparrow"          -> LITERAL (HTMLABLEM (FONT_UF,  "\\uparrow ", "&uarr;"))
     | "\\uArr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\Uparrow ", "&uArr;"))
     | "\\Uarr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\Uparrow ", "&uArr;"))
     | "\\Uparrow"          -> LITERAL (HTMLABLE  (FONT_UF,  "\\Uparrow ", "&uArr;"))
-    | "\\darr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\downarrow ", "&darr;"))
-    | "\\downarrow"        -> LITERAL (HTMLABLE  (FONT_UF,  "\\downarrow ", "&darr;"))
+    | "\\darr"             -> LITERAL (HTMLABLEM (FONT_UF,  "\\downarrow ", "&darr;"))
+    | "\\downarrow"        -> LITERAL (HTMLABLEM (FONT_UF,  "\\downarrow ", "&darr;"))
     | "\\dArr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\Downarrow ", "&dArr;"))
     | "\\Darr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\Downarrow ", "&dArr;"))
     | "\\Downarrow"        -> LITERAL (HTMLABLE  (FONT_UF,  "\\Downarrow ", "&dArr;"))
@@ -341,12 +235,12 @@ let find = function
     | "\\bullet"           -> LITERAL (HTMLABLE (FONT_UFH, "\\bullet ", "&bull;"))
     | "\\bull"             -> LITERAL (HTMLABLE (FONT_UFH, "\\bullet ", "&bull;"))
     | "\\angle"            -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UF, "\\angle ", "&ang;")))
-    | "\\dagger"           -> LITERAL (HTMLABLE (FONT_UFH, "\\dagger ", "&dagger;"))
-    | "\\ddagger"          -> LITERAL (HTMLABLE (FONT_UFH, "\\ddagger ", "&Dagger;"))
-    | "\\Dagger"           -> LITERAL (HTMLABLE (FONT_UFH, "\\ddagger ", "&Dagger;"))
+    | "\\dagger"           -> LITERAL (HTMLABLEM(FONT_UFH, "\\dagger ", "&dagger;"))
+    | "\\ddagger"          -> LITERAL (HTMLABLEM(FONT_UFH, "\\ddagger ", "&Dagger;"))
+    | "\\Dagger"           -> LITERAL (HTMLABLEM(FONT_UFH, "\\ddagger ", "&Dagger;"))
     | "\\colon"            -> LITERAL (HTMLABLEC(FONT_UFH, "\\colon ", ":"))
-    | "\\Vert"             -> LITERAL (HTMLABLE (FONT_UFH, "\\Vert ", "||"))
-    | "\\vert"             -> LITERAL (HTMLABLE (FONT_UFH, "\\vert ", "|"))
+    | "\\Vert"             -> LITERAL (HTMLABLEM(FONT_UFH, "\\Vert ", "||"))
+    | "\\vert"             -> LITERAL (HTMLABLEM(FONT_UFH, "\\vert ", "|"))
     | "\\wp"               -> LITERAL (HTMLABLE (FONT_UF,  "\\wp ", "&weierp;"))
     | "\\weierp"           -> LITERAL (HTMLABLE (FONT_UF,  "\\wp ", "&weierp;"))
     | "\\wedge"            -> LITERAL (HTMLABLE (FONT_UF,  "\\wedge ", "&and;"))
@@ -370,42 +264,42 @@ let find = function
     | "\\rceil"            -> LITERAL (HTMLABLE (FONT_UF,  "\\rceil ", "&rceil;"))
     | "\\lbrace"           -> LITERAL (HTMLABLEC(FONT_UFH, "\\lbrace ", "{"))
     | "\\rbrace"           -> LITERAL (HTMLABLEC(FONT_UFH, "\\rbrace ", "}"))
-    | "\\infty"            -> LITERAL (HTMLABLE (FONT_UF,  "\\infty ", "&infin;"))
-    | "\\infin"            -> LITERAL (HTMLABLE (FONT_UF,  "\\infty ", "&infin;"))
+    | "\\infty"            -> LITERAL (HTMLABLEM(FONT_UF,  "\\infty ", "&infin;"))
+    | "\\infin"            -> LITERAL (HTMLABLEM(FONT_UF,  "\\infty ", "&infin;"))
     | "\\isin"             -> LITERAL (HTMLABLE (FONT_UF,  "\\in ", "&isin;"))
     | "\\in"               -> LITERAL (HTMLABLE (FONT_UF,  "\\in ", "&isin;"))
     | "\\ni"               -> LITERAL (HTMLABLE (FONT_UF,  "\\ni ", "&ni;"))
     | "\\notin"            -> LITERAL (HTMLABLE (FONT_UF,  "\\notin ", "&notin;"))
     | "\\smallsetminus"    -> (tex_use_ams (); LITERAL (TEX_ONLY "\\smallsetminus "))
-    | "\\And"              -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UFH, "\\And ", "&nbsp;&amp;&nbsp;")))
+    | "\\And"              -> (tex_use_ams (); LITERAL (HTMLABLEM(FONT_UFH, "\\And ", "&nbsp;&amp;&nbsp;")))
     | "\\forall"           -> LITERAL (HTMLABLE (FONT_UFH, "\\forall ", "&forall;"))
     | "\\exists"           -> LITERAL (HTMLABLE (FONT_UFH, "\\exists ", "&exist;"))
     | "\\exist"            -> LITERAL (HTMLABLE (FONT_UFH, "\\exists ", "&exist;"))
-    | "\\equiv"            -> LITERAL (HTMLABLE (FONT_UFH, "\\equiv ", "&equiv;"))
-    | "\\ne"               -> LITERAL (HTMLABLE (FONT_UFH, "\\neq ", "&ne;"))
-    | "\\neq"              -> LITERAL (HTMLABLE (FONT_UFH, "\\neq ", "&ne;"))
+    | "\\equiv"            -> LITERAL (HTMLABLEM(FONT_UFH, "\\equiv ", "&equiv;"))
+    | "\\ne"               -> LITERAL (HTMLABLEM(FONT_UFH, "\\neq ", "&ne;"))
+    | "\\neq"              -> LITERAL (HTMLABLEM(FONT_UFH, "\\neq ", "&ne;"))
     | "\\Re"               -> LITERAL (HTMLABLE (FONT_UF,  "\\Re ", "&real;"))
     | "\\real"             -> LITERAL (HTMLABLE (FONT_UF,  "\\Re ", "&real;"))
     | "\\Im"               -> LITERAL (HTMLABLE (FONT_UF,  "\\Im ", "&image;"))
     | "\\image"            -> LITERAL (HTMLABLE (FONT_UF,  "\\Im ", "&image;"))
     | "\\prime"            -> LITERAL (HTMLABLE (FONT_UFH,"\\prime ", "&prime;"))
-    | "\\backslash"        -> LITERAL (HTMLABLE (FONT_UFH,"\\backslash ", "\\"))
-    | "\\setminus"         -> LITERAL (HTMLABLE (FONT_UFH,"\\setminus ", "\\"))
-    | "\\times"            -> LITERAL (HTMLABLE (FONT_UFH,"\\times ", "&times;"))
-    | "\\pm"               -> LITERAL (HTMLABLE (FONT_UFH,"\\pm ", "&plusmn;"))
-    | "\\plusmn"           -> LITERAL (HTMLABLE (FONT_UFH,"\\pm ", "&plusmn;"))
+    | "\\backslash"        -> LITERAL (HTMLABLEM(FONT_UFH,"\\backslash ", "\\"))
+    | "\\setminus"         -> LITERAL (HTMLABLEM(FONT_UFH,"\\setminus ", "\\"))
+    | "\\times"            -> LITERAL (HTMLABLEM(FONT_UFH,"\\times ", "&times;"))
+    | "\\pm"               -> LITERAL (HTMLABLEM(FONT_UFH,"\\pm ", "&plusmn;"))
+    | "\\plusmn"           -> LITERAL (HTMLABLEM(FONT_UFH,"\\pm ", "&plusmn;"))
     | "\\cdot"             -> LITERAL (HTMLABLE (FONT_UFH,"\\cdot ", "&sdot;"))
     | "\\cdots"            -> LITERAL (HTMLABLE (FONT_UFH,"\\cdots ", "&sdot;&sdot;&sdot;"))
     | "\\sdot"             -> LITERAL (HTMLABLE (FONT_UFH,"\\cdot ", "&sdot;"))
     | "\\oplus"            -> LITERAL (HTMLABLE (FONT_UF, "\\oplus ", "&oplus;"))
     | "\\otimes"           -> LITERAL (HTMLABLE (FONT_UF, "\\otimes ", "&otimes;"))
-    | "\\cap"              -> LITERAL (HTMLABLE (FONT_UF, "\\cap ", "&cap;"))
+    | "\\cap"              -> LITERAL (HTMLABLEM(FONT_UF, "\\cap ", "&cap;"))
     | "\\cup"              -> LITERAL (HTMLABLE (FONT_UF, "\\cup ", "&cup;"))
     | "\\empty"            -> LITERAL (HTMLABLE (FONT_UF, "\\emptyset ", "&empty;"))
     | "\\emptyset"         -> LITERAL (HTMLABLE (FONT_UF, "\\emptyset ", "&empty;"))
     | "\\O"                -> LITERAL (HTMLABLE (FONT_UF, "\\emptyset ", "&empty;"))
-    | "\\S"                -> LITERAL (HTMLABLE (FONT_UFH,"\\S ", "&sect;"))
-    | "\\sect"             -> LITERAL (HTMLABLE (FONT_UFH,"\\S ", "&sect;"))
+    | "\\S"                -> LITERAL (HTMLABLEM(FONT_UFH,"\\S ", "&sect;"))
+    | "\\sect"             -> LITERAL (HTMLABLEM(FONT_UFH,"\\S ", "&sect;"))
     | "\\nabla"            -> LITERAL (HTMLABLE (FONT_UF, "\\nabla ", "&nabla;"))
     | "\\geq"              -> LITERAL (HTMLABLE (FONT_UFH,"\\geq ", "&ge;"))
     | "\\ge"               -> LITERAL (HTMLABLE (FONT_UFH,"\\geq ", "&ge;"))
@@ -413,14 +307,14 @@ let find = function
     | "\\le"               -> LITERAL (HTMLABLE (FONT_UFH,"\\leq ", "&le;"))
     | "\\cong"             -> LITERAL (HTMLABLE (FONT_UF, "\\cong ", "&cong;"))
     | "\\ang"              -> LITERAL (HTMLABLE (FONT_UF, "\\angle ", "&ang;"))
-    | "\\part"             -> LITERAL (HTMLABLE (FONT_UF, "\\partial ", "&part;"))
-    | "\\partial"          -> LITERAL (HTMLABLE (FONT_UF, "\\partial ", "&part;"))
-    | "\\ldots"            -> LITERAL (HTMLABLE (FONT_UFH,"\\ldots ", "..."))
-    | "\\dots"             -> LITERAL (HTMLABLE (FONT_UFH,"\\dots ", "..."))
+    | "\\part"             -> LITERAL (HTMLABLEM(FONT_UF, "\\partial ", "&part;"))
+    | "\\partial"          -> LITERAL (HTMLABLEM(FONT_UF, "\\partial ", "&part;"))
+    | "\\ldots"            -> LITERAL (HTMLABLEM(FONT_UFH,"\\ldots ", "..."))
+    | "\\dots"             -> LITERAL (HTMLABLEM(FONT_UFH,"\\dots ", "..."))
     | "\\quad" 		   -> LITERAL (HTMLABLE (FONT_UF, "\\quad ","&nbsp;&nbsp;"))
     | "\\qquad"		   -> LITERAL (HTMLABLE (FONT_UF, "\\qquad ","&nbsp;&nbsp;&nbsp;&nbsp;"))
-    | "\\mid"              -> LITERAL (HTMLABLE (FONT_UFH,"\\mid ", "|"))
-    | "\\neg"              -> LITERAL (HTMLABLE (FONT_UFH,"\\neg ", "&not;"))
+    | "\\mid"              -> LITERAL (HTMLABLEM(FONT_UFH,"\\mid ", " | "))
+    | "\\neg"              -> LITERAL (HTMLABLEM(FONT_UFH,"\\neg ", "&not;"))
     | "\\langle"           -> LITERAL (HTMLABLE (FONT_UFH,"\\langle ","&lang;"))
     | "\\rangle"           -> LITERAL (HTMLABLE (FONT_UFH,"\\rangle ","&rang;"))
     | "\\lang"             -> LITERAL (HTMLABLE (FONT_UFH,"\\langle ","&lang;"))
@@ -513,8 +407,8 @@ let find = function
     | "\\choose"           -> FUN_INFIX "\\choose "
     | "\\atop"             -> FUN_INFIX "\\atop "
     | "\\binom"            -> FUN_AR2 "\\binom "
-    | "\\frac"             -> FUN_AR2h ("\\frac ", fun num den -> html_render [num], "<hr style=\"{background: black}\">", html_render [den])
-    | "\\over"             -> FUN_INFIXh ("\\over ", fun num den -> html_render num, "<hr style=\"{background: black}\">", html_render den)
+    | "\\frac"             -> FUN_AR2h ("\\frac ", fun num den -> Html.html_render [num], "<hr style=\"{background: black}\">", Html.html_render [den])
+    | "\\over"             -> FUN_INFIXh ("\\over ", fun num den -> Html.html_render num, "<hr style=\"{background: black}\">", Html.html_render den)
 (* ? *)
     | "\\sqrt"             -> FUN_AR1 "\\sqrt "
     | "\\pmod"             -> FUN_AR1hl ("\\pmod ", ("(mod ", ")"))
