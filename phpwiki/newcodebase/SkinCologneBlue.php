@@ -67,7 +67,7 @@ class SkinCologneBlue extends Skin {
 		$s .= $this->makeKnownLink( wfMsg( "mainpage" ), wfMsg( "mainpage" ) )
 		  . " | " . $this->makeKnownLink( wfMsg( "aboutpage" ),
 		  wfMsg( "aboutwikipedia" ) ) . " | " .
-		  $this->searchForm();
+		  $this->searchForm( wfMsg( "qbfind" ) );
 		$s .= "\n<br>" . $this->pageStats();
 
 		$s .= "</td>";
@@ -185,10 +185,12 @@ class SkinCologneBlue extends Skin {
 		return $s;
 	}
 
-	function searchForm()
+	function searchForm( $label = "" )
 	{
-		$s = "<form method=get action=\"" . wfLocalUrlE( "" ) . "\">"
-		  . "<input type=text name=\"search\" size=10 value=\"\">"
+		$s = "<form method=get action=\"" . wfLocalUrlE( "" ) . "\">";
+		if ( "" != $label ) { $s .= "{$label}: "; }
+
+		$s .= "<input type=text name=\"search\" size=10 value=\"\">"
 		  . "<input type=submit value=\"" . wfMsg( "ok" ) . "\"></form>";
 
 		return $s;
