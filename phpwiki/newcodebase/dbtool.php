@@ -25,7 +25,9 @@ $wgOldImageDir	= "/rfs/backups/lee/wikiimages";
 # Maintenance tasks.
 #
 
-rebuildLinkTables();
+# rebuildLinkTables();
+
+rebuildIndText();
 
 print "Done.\n";
 exit();
@@ -470,6 +472,42 @@ function rebuildLinkTables()
 	mysql_free_result( $res );
 }
 
+# This is a handy function to modify for doing any big transform
+# on every page.
+#
+
+function rebuildIndText()
+{
+	$count = 0;
+	print "Rebuilding fulltext index fields.\n";
+
+	$conn = getNewDB();
+	$sql = "LOCK TABLES cur WRITE";
+	$res = dbQuery( $sql, $conn );
+	if ( ! $res ) $res = dbErr( $sql );
+
+	$sql = "SELECT cur_id,cur_title,cur_text FROM cur";
+	$res = dbQuery( $sql, $conn );
+	if ( ! $res ) $res = dbErr( $sql );
+
+	$sql = "";
+	while ( $row = mysql_fetch_object( $res ) ) {
+		$u = new SearchUpdate( $row->cur_id, $row->cur_title,
+		  $row->cur_text );
+		$u->doUpdate();
+
+		if ( ( ++$count % 1000 ) == 0 ) {
+			print "$count records processed.\n";
+		}
+	}
+	print "$count records processed.\n";
+	mysql_free_result( $res );
+
+	$conn = getNewDB();
+	$sql = "UNLOCK TABLES";
+	$res = dbQuery( $sql, $conn );
+	if ( ! $res ) $res = dbErr( $sql );
+}
 # Utility functions for the above.
 #
 

@@ -777,6 +777,7 @@ class Skin {
 	function imageHistoryLine( $iscur, $ts, $img, $u, $ut, $size, $c )
 	{
 		global $wgUser, $wgLang, $wgTitle;
+		global $wgServer, $wgScript;
 
 		$dt = $wgLang->timeanddate( $ts );
 		$del = wfMsg( "deleteimg" );
@@ -786,8 +787,8 @@ class Skin {
 			$url = wfImageUrl( $img );
 			$rlink = $cur;
 			if ( $wgUser->isSysop() ) {
-				$dlink = $this->makeKnownLink( $wgTitle->getPrefixedText(),
-				  $del, "action=delete" );
+				$dlink = "<a href=\"$wgServer$wgScript?image=" .
+				  $wgTitle->getURL() . "&amp;action=delete\">{$del}</a>";
 			} else {
 				$dlink = $cur;
 			}

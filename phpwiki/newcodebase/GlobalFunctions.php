@@ -120,6 +120,32 @@ function wfMsg( $key )
 	return $ret;
 }
 
+function wfCleanFormFields( $fields )
+{
+	global $HTTP_POST_VARS;
+
+	if ( ! get_magic_quotes_gpc() ) {
+		return;
+	}
+	foreach ( $fields as $fname ) {
+		if ( isset( $HTTP_POST_VARS[$fname] ) ) {
+			$HTTP_POST_VARS[$fname] = stripslashes(
+			  $HTTP_POST_VARS[$fname] );
+		}
+		global ${$fname};
+		if ( isset( ${$fname} ) ) {
+			${$fname} = stripslashes( ${$fname} );
+		}
+	}
+}
+
+function wfCleanQueryVar( $var )
+{
+	if ( get_magic_quotes_gpc() ) {
+		return stripslashes( $var );
+	} else { return $var; }
+}
+
 function wfStripTextFields()
 {
 	global $wgFormTextFields, $HTTP_POST_VARS;
@@ -163,7 +189,7 @@ function wfSearch( $s )
 {
 	global $search;
 
-	$se = new SearchEngine( $search );
+	$se = new SearchEngine( wfCleanQueryVar( $search ) );
 	$se->showResults();
 }
 

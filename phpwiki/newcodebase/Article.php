@@ -436,7 +436,8 @@ $wpTextbox2
 			$this->imageHistory();
 			$this->imageLinks();
 		}
-		$this->editUpdates( $this->getID(), $wgTitle->getPrefixedDBkey() );
+		$this->editUpdates( $this->getID(), $wgTitle->getPrefixedDBkey(),
+		  $text );
 	}
 
 	function imageHistory()
@@ -750,7 +751,7 @@ $wpTextbox2
 
 	# Do standard deferred updates after page edit
 	#
-	/* private */ function editUpdates( $id, $title )
+	/* private */ function editUpdates( $id, $title, $text )
 	{
 		global $wgDeferredUpdateList;
 
@@ -758,6 +759,8 @@ $wpTextbox2
 			$u = new LinksUpdate( $id, $title );
 			array_push( $wgDeferredUpdateList, $u );
 			$u = new SiteStatsUpdate( 0, 1, 0 );
+			array_push( $wgDeferredUpdateList, $u );
+			$u = new SearchUpdate( $id, $title, $text );
 			array_push( $wgDeferredUpdateList, $u );
 		}
 	}

@@ -59,7 +59,7 @@ function processUpload()
 			  wfMsg( "badfilename" ) );
 			return uploadWarning( $warn );
 		}
-		$extensions = array( "png", "jpg", "jpeg", "gif" ); 
+		$extensions = array( "png", "jpg", "jpeg" ); 
 		if ( ( ! $wpIgnoreWarning ) &&
 		  ( ! in_array( strtolower( $ext ), $extensions ) ) ) {
 			$warn = str_replace( "$1", $ext, wfMsg( "badfiletype" ) );

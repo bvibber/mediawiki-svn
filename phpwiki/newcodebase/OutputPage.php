@@ -5,7 +5,7 @@ class OutputPage {
 	var $mHeaders, $mCookies, $mMetatags, $mKeywords;
 	var $mLinktags, $mPagetitle, $mBodytext, $mDebugtext;
 	var $mHTMLtitle, $mRobotpolicy, $mIsarticle, $mPrintable;
-	var $mSubtitle;
+	var $mSubtitle, $mRedirect;
 
 	var $mDTopen, $mLastSection; # Used for processing DL, PRE
 	var $mLanguageLinks, $mSupressQuickbar;
@@ -15,7 +15,7 @@ class OutputPage {
 		$this->mHeaders = $this->mCookies = $this->mMetatags =
 		$this->mKeywords = $this->mLinktags = array();
 		$this->mHTMLtitle = $this->mPagetitle = $this->mBodytext =
-		$this->mLastSection = 
+		$this->mLastSection = $this->mRedirect = 
 		$this->mSubtitle = $this->mDebugtext = $this->mRobotpolicy = "";
 		$this->mIsarticle = $this->mPrintable = true;
 		$this->mSupressQuickbar = $this->mDTopen = $this->mPrintable = false;
@@ -24,6 +24,7 @@ class OutputPage {
 
 	function addHeader( $name, $val ) { array_push( $this->mHeaders, "$name: $val" ) ; }
 	function addCookie( $name, $val ) { array_push( $this->mCookies, array( $name, $val ) ); }
+	function redirect( $url ) { $this->mRedirect = $url; }
 
 	# To add an http-equiv meta tag, precede the name with "http:"
 	function addMeta( $name, $val ) { array_push( $this->mMetatags, array( $name, $val ) ); }
@@ -87,6 +88,10 @@ class OutputPage {
 		global $wgUser, $wgDebugComments, $wgCookieExpiration;
 		$sk = $wgUser->getSkin();
 
+		if ( "" != $this->mRedirect ) {
+			header( "Location: {$this->mRedirect}" );
+			exit;
+		}
 		# TODO: Internationalization
 		$this->addHeader( "Content-type",
 		  "text/html; charset=iso-8859-1" );

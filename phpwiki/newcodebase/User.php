@@ -259,6 +259,8 @@ class User {
 	function isSysop()
 	{
 		$this->loadFromDatabase();
+		if ( 0 == $this->mId ) { return false; }
+
 		return in_array( "sysop", $this->mRights );
 	}
 
