@@ -67,6 +67,7 @@ $wikiOK = "OK" ;
 $wikiFindMore = "Find more";
 $wikiWikipediaHome = "Main Page" ;
 $wikiAboutWikipedia = "About Wikipedia" ;
+$wikiAutoWikify = "Auto-wikification (handle with care!)" ;
 $wikiTopics = "Topics" ;
 $wikiWikipediaFAQ = "wikipedia:FAQ" ;
 $wikiVoteForPage = "Vote for this page" ;
