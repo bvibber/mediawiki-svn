@@ -2,108 +2,14 @@ The GIS extension is based on the experience learned from WikiProject
 Geographical coordinates. The extensions can be enabled individually, but
 the concept is certainly more powerful when they are all enabled. 
 
-The extensions consist of:
-
-------------------------------------------------------------------------------
-A. The geo tag extension
-
-The <geo> tag allows entry of geographical coordinates something in style
-with RFC1876. For example:
-
-   <geo>48 46 36 N 121 48 51 W</geo>.
-
-It is designed to be flexible, and easy to use.
-
-Variations of the above allows specification with decimals in various forms, 
-allowing less or more precision. Additional meta-data can also be specified
-as attributes for the location, like this:
-
-       <geo>48 46 36 N 121 48 51 W type:mountain region:US scale:100000</geo>
-
-In the rendered article, the tag will be replaced with 
-48*46'36''N 121*48'51''W, which is also a Wikilink to a page of map
-resources for that point.
-
-The main geo tag advantages are:
-
-1. Consistent markup for coordinates.
-2. Consistent rendering of coordinates.
-3. Wikipedia articles with coordinates will get a 'geo.position' meta tag, 
-   making it compatible with Internet geographic resources, such as 
-   geourl.org.
-4. Serves as an enabler for the two other extensions.
-
-------------------------------------------------------------------------------
-B. The map sources extension
-
-The map sources extension is the target of the <geo> tag wikilink, and
-provides a page of available Internet map resources, in a manner much like
-the ISBN resource page. The extension provides functionality to 'preload' 
-external URLs with coordinates, so that most maps are essentially one click 
-away.
-
-There are currently 30 different built in replacement strings, supporting 
-various form of specification of scaling and coordinates, such as UTM, 
-OSGB36 and CH1903.
-
-There exists specialized versions of the map sources page for various 
-regions (like US and GB). For the global version, there are at present
-preloaded pointers to around 20 different map engines.
-
-In addition to the maps, there is a pointer to GeoURL.org, which lists
-nearby resources on the Internet.
-
-There is also a direct link for the open source NASA World Wind software,
-allowing a new, interactive way of experiencing for aerial imagery and
-topological data. World Wind has a plug-in layer for Wikipedia articles
-that are tagged with a geographic coordinate.
-
-Assuming the enabling of extension C, there is also a pointer to neighbor-
-hood articles in Wikipedia, listing the articles with Wikilinks, and their
-distance and direction from the present point.
-
-------------------------------------------------------------------------------
-C. The geo database extension
-
-The geo database keeps track of all articles in Wikipedia with geographic
-coordinates, and provides the data source for the neighborhood information,
-as well as the data source for other external mechanisms taking advantage
-of the Wikipedia geographical information, such as the NASA World Wind
-Wikipedia overlay.
-
-Additionally, the geo database will provide data for the future Wikimap,
-so that the maps produced by Wikimaps will contain all the relevant 
-information from Wikipedia as clickable points. For this, geo attributes
-are crucial: Airports really should appear as airports on the map, 
-mountains as mountains, and cities as cities, with the right magnitude.
-
-------------------------------------------------------------------------------
-For further information, see also 
+For more information, please see:
+http://meta.wikimedia.org/wiki/Gis
 http://en.wikipedia.org/wiki/Wikipedia:WikiProject_Geographical_coordinates
 
-------------------------------------------------------------------------------
-Status
-
-Currently extensions A and B are quite well developed, and have been tested
-for a time on an external server. Additionally, a few thousand articles in 
-the en: Wikipedia are marked with geographic coordinates using an interim 
-solution with templates, as a proof-of-concept.  They will be converted to
-the geo tag if this extension gets enabled for the English Wikipedia. That
-will also solve the current problem with coordinates as arguments for 
-infobox templates. Collection of data points have been done with an interim,
-external solution based on some Perl scripts.
-
-Extension C has also been implemented, but I would want to discuss a few 
-issues of performance and security before committing the code. More about
-this later.
-
 Magnus Manske has been extremely helpful in the work on integration with 
-Wikimaps, and that work will continue.
-
-------------------------------------------------------------------------------
-Finally, I would like to give a big thank you to all participants in 
-WikiProject Geographical coordinates who have helped immensely with 
-suggestions practical work.
+Wikimaps, and that work will continue. I would also like to give a big thank
+you to all participants in WikiProject Geographical coordinates who have
+helped immensely with suggestions practical work.
 
 Egil Kvaleberg
 en:User:Egil

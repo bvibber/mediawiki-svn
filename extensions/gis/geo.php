@@ -64,11 +64,13 @@ function parse_geo ( $text ) {
 	$wgOut->addMeta( "geo.position", $geo->latdeg.";".$geo->londeg );
 
 	# FIXME: obtain title
-	if (($title = $wgOut->getPageTitle())) {
-		$title = str_replace($title,'_',' ');
+	if ($this->title == "") {
+		global $wgTitle;
+		$this->title = $wgTitle->getDBkey();
 	}
-	if ($title) {
-		$wgOut->addMeta( "geo.placename", $title );
+	$this->title = str_replace($this->title,'_',' ');
+	if ($this->title != "" && $this->title != " ") {
+		$wgOut->addMeta( "geo.placename", $this->title );
 	}
 	$attr = $geo->get_attr();
 	if (($r = $attr['region'])) {
@@ -79,7 +81,7 @@ function parse_geo ( $text ) {
 	if ( isset ( $wgMapsourcesURL ) ) {
 		return '<a href="'
 			. $wgMapsourcesURL . "?geo=" . urlencode($text)
-			. '&title="' . $title
+			. '&title="' . $this->title
 			. '">'
 			. $geo->get_markup()
 			. '</a>';
@@ -93,132 +95,144 @@ function parse_geo ( $text ) {
  *   Parse geo parameters
  */
 class geo_param {
-	var $pieces;
-	var $n_params;
-	var $error;
-
 	var $latdeg;
 	var $londeg;
-	var $latmin;
-	var $lonmin;
-	var $latsec;
-	var $lonsec;
 
-	var $latNS;
-	var $lonEW;
+	var $latdeg_min;
+	var $londeg_min;
+	var $latdeg_max;
+	var $londeg_max;
+
+	var $pieces;
+	var $error;
+	var $coor;
+	var $title;
 
 	/**
-	 *   Constructor
+	 *   Constructor:
+	 *   Read coordinates, and if there is a range, read the range
 	 */
-	function geo_param( $param ) {
+	function geo_param( $param )
+	{
 		$this->pieces = explode(" ", str_replace( '_', ' ', $param ));
+		$this->get_coor( );
 
+		$this->latdeg_min = $this->latdeg_max = $this->latdeg;
+		$this->londeg_min = $this->londeg_max = $this->londeg;
+		if ($this->pieces[0] == "to") {
+			array_shift($this->pieces);
+			# FIXME: Shows only 2nd part
+			$this->get_coor();
+			$this->latdeg_max = $this->latdeg;
+			$this->londeg_max = $this->londeg;
+			$this->latdeg = ($this->latdeg_max+$this->latdeg_min) / 2;
+			$this->londeg = ($this->londeg_max+$this->londeg_min) / 2;
+		}
+	}
+
+	/**
+	 *   Local:
+	 *   Get a set of coordinates from parameters
+	 */
+	function get_coor( ) {
 		if ($this->is_coor($this->pieces[1],$this->pieces[3])) {
-			$this->latdeg = $this->pieces[0];
-			$this->latNS  = $this->pieces[1];
-			$this->londeg = $this->pieces[2];
-			$this->lonEW  = $this->pieces[3];
-			$this->n_params = 4;
+			$this->coor = array(
+				$this->latdeg = array_shift($this->pieces),
+				$latNS        = array_shift($this->pieces),
+				$this->londeg = array_shift($this->pieces),
+				$lonEW        = array_shift($this->pieces));
+			$latmin = $lonmin = $latsec = $lonsec = 0;
 		} elseif ($this->is_coor($this->pieces[2],$this->pieces[5])) {
-			$this->latdeg = $this->pieces[0];
-			$this->latmin = $this->pieces[1];
-			$this->latNS  = $this->pieces[2];
-			$this->londeg = $this->pieces[3];
-			$this->lonmin = $this->pieces[4];
-			$this->lonEW  = $this->pieces[5];
-			$this->n_params = 6;
-
+			$this->coor = array(
+				$this->latdeg = array_shift($this->pieces),
+				$latmin       = array_shift($this->pieces),
+				$latNS        = array_shift($this->pieces),
+				$this->londeg = array_shift($this->pieces),
+				$lonmin       = array_shift($this->pieces),
+				$lonEW        = array_shift($this->pieces));
+			$latsec = $lonsec = 0;
 		} elseif ($this->is_coor($this->pieces[3],$this->pieces[7])) {
-			$this->latdeg = $this->pieces[0];
-			$this->latmin = $this->pieces[1];
-			$this->latsec = $this->pieces[2];
-			$this->latNS  = $this->pieces[3];
-			$this->londeg = $this->pieces[4];
-			$this->lonmin = $this->pieces[5];
-			$this->lonsec = $this->pieces[6];
-			$this->lonEW  = $this->pieces[7];
-			$this->n_params = 8;
+			$this->coor = array(
+				$this->latdeg = array_shift($this->pieces),
+				$latmin       = array_shift($this->pieces),
+				$latsec       = array_shift($this->pieces),
+				$latNS        = array_shift($this->pieces),
+				$this->londeg = array_shift($this->pieces),
+				$lonmin       = array_shift($this->pieces),
+				$lonsec       = array_shift($this->pieces),
+				$lonEW        = array_shift($this->pieces));
 		} else {
-			# BUG: support decimal, signed lat, lon
-			$this->error = "Unrecognized";
+			# support decimal, signed lat, lon
+			$this->error = "Unrecognized format";
 		}
 
-		if ($this->latdeg > 90 or $this->latdeg < -90
+		if ($this->latdeg >  90 or $this->latdeg <  -90
 		 or $this->londeg > 180 or $this->londeg < -180
-		 or $this->latmin > 60 or $this->latmin < 0
-		 or $this->lonmin > 60 or $this->lonmin < 0
-		 or $this->latsec > 60 or $this->latsecsec < 0
-		 or $this->lonsec > 60 or $this->lonsecsec < 0) {
+		 or $latmin       >  60 or $latmin       <    0
+		 or $lonmin       >  60 or $lonmin       <    0
+		 or $latsec       >  60 or $latsec       <    0
+		 or $lonsec       >  60 or $lonsec       <    0) {
 			$this->error = "Out of range";
 		}
 
-		if ($this->latNS == "S") {
+		if ($latNS == "S") {
 			$this->latdeg = -$this->latdeg;
 		}
-		if ($this->lonEW == "W") {
+		if ($lonEW == "W") {
 			$this->londeg = -$this->londeg;
 		}
 
-		if ($this->latmin == "") {
-			# Minus not stated, must be decimal degree
-			$this->latmin = 60.0 * $this->frac($this->latdeg);
-			$this->lonmin = 60.0 * $this->frac($this->londeg);
+		# Make decimal degree, if not already
+		$latmin += $latsec/60.0;
+		$lonmin += $lonsec/60.0;
+		if ($this->latdeg < 0) {
+			$this->latdeg -= $latmin/60.0;
 		} else {
-			# Minus stated, make decimal degree
-			# BUG: This may fail
-			if ($this->latNS == "S") {
-				$this->latdeg -= $this->latmin/60.0
-					    + $this->lonsec/3600.0;
-			} else {
-				$this->latdeg += $this->latmin/60.0
-					    + $this->latsec/3600.0;
-			}
-			# BUG: This may fail
-			if ($this->lonEW == "W") {
-				$this->londeg -= $this->lonmin/60.0
-					    + $this->lonsec/3600.0;
-			} else {
-				$this->londeg += $this->lonmin/60.0
-					    + $this->lonsec/3600.0;
-			}
+			$this->latdeg += $latmin/60.0;
 		}
-
-		if ($this->latsec == "") {
-			# Seconds not stated, must be decimal minutes
-			$this->latsec = 60.0 * ($this->latmin - intval($this->latmin));
-			$this->lonsec = 60.0 * ($this->lonmin - intval($this->lonmin));
+		if ($this->londeg < 0) {
+			$this->londeg -= $lonmin/60.0;
 		} else {
-			# Seconds stated, make decimal minutes
-			$this->latmin += $this->latsec/60.0;
-			$this->lonmin += $this->lonsec/60.0;
+			$this->londeg += $lonmin/60.0;
 		}
+	}
 
-		/* make sure N/S E/W still is correct */
-		if ( $this->latdeg > 0) $this->latNS = "N";
-		elseif ( $this->latdeg < 0) $this->latNS = "S";
-		if ( $this->londeg > 0) $this->lonEW = "E";
-		elseif ( $this->londeg < 0) $this->lonEW = "W";
-
-		#
+	/**
+	 *   Given decimal degrees, convert to 
+	 *   minutes, seconds and direction
+	 */
+	function make_minsec( $deg ) 
+	{
+		if ( $deg >= 0) {
+			$NS = "N";
+			$EW = "E";
+		} else {
+			$NS = "S";
+			$EW = "W";
+		}
 		# Round to a suitable number of digits
 		# FIXME: should reflect precision
-		#
-		$this->latdeg = round( $this->latdeg, 6);
-		$this->londeg = round( $this->londeg, 6);
-		$this->latmin = round( $this->latmin, 4);
-		$this->lonmin = round( $this->lonmin, 4);
-		$this->latsec = round( $this->latsec, 2);
-		$this->lonsec = round( $this->lonsec, 2);
+		$deg = round($deg, 6);
+		$min = 60.0 * (abs($deg) - intval(abs($deg))); 
+		$min = round($min, 4);
+		$sec = 60.0 * ($min - intval($min));
+		$sec = round($sec, 2);
 
+		return array(
+			'deg'   => $deg,
+			'min'   => $min,
+			'sec'   => $sec,
+			'NS'    => $NS,
+			'EW'    => $EW);
 	}
 
 	/**
 	 *  Get the additional attributes in an associative array
 	 */
-	function get_attr() {
+	function get_attr()
+	{
 		$a = array();
-		$n = $this->n_params;
-		while (($s = $this->pieces[$n++ ]) != "") {  # BUG:
+		while (($s = array_shift($this->pieces))) {
 			if (($i = strpos($s,":")) >= 1) {
 				$attr = substr($s,0,$i);
 				$val = substr($s,$i+1);
@@ -273,29 +287,32 @@ class geo_param {
 	 */
 	function get_markup() 
 	{
-		if ($this->n_params == 4) {
-			return $this->pieces[0].'&deg;&nbsp;'.
-			       $this->pieces[1].' '.
-			       $this->pieces[2].'&deg;&nbsp;'.
-			       $this->pieces[3];
+		$n = count($this->coor);
 
-		} elseif ($this->n_params == 6) {
-			return $this->pieces[0].'&deg;'.
-			       $this->pieces[1].'&prime;&nbsp;'.
-			       $this->pieces[2].' '.
-			       $this->pieces[3].'&deg;'.
-			       $this->pieces[4].'&prime;&nbsp;'.
-			       $this->pieces[5];
+		# FIXME: how to show a range...
+		if ($n == 4) {
+			return $this->coor[0].'&deg;&nbsp;'.
+			       $this->coor[1].' '.
+			       $this->coor[2].'&deg;&nbsp;'.
+			       $this->coor[3];
 
-		} elseif ($this->n_params == 8) {
-			return $this->pieces[0].'&deg;'.
-			       $this->pieces[1].'&prime;'.
-			       $this->pieces[2].'&Prime;&nbsp;'.
-			       $this->pieces[3].' '.
-			       $this->pieces[4].'&deg;'.
-			       $this->pieces[5].'&prime;'.
-			       $this->pieces[6].'&Prime;&nbsp;'.
-			       $this->pieces[7];
+		} elseif ($n == 6) {
+			return $this->coor[0].'&deg;'.
+			       $this->coor[1].'&prime;&nbsp;'.
+			       $this->coor[2].' '.
+			       $this->coor[3].'&deg;'.
+			       $this->coor[4].'&prime;&nbsp;'.
+			       $this->coor[5];
+
+		} elseif ($n == 8) {
+			return $this->coor[0].'&deg;'.
+			       $this->coor[1].'&prime;'.
+			       $this->coor[2].'&Prime;&nbsp;'.
+			       $this->coor[3].' '.
+			       $this->coor[4].'&deg;'.
+			       $this->coor[5].'&prime;'.
+			       $this->coor[6].'&Prime;&nbsp;'.
+			       $this->coor[7];
 		} else {
 			return $this->get_error();
 		}

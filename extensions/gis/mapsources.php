@@ -44,12 +44,12 @@ class map_sources {
 	var $p;
 	var $mapsources;
 
-	function map_sources( $coor ) {
-		$this->p = new geo_param( $coor );
+	function map_sources( $coor, $title ) {
+		$this->p = new geo_param( $coor, $title );
+		$this->p->title = $title;
 
 		$this->mapsources = "Map sources";
 		# FIXME: translate via wfMsg( "mapsources" )
-
 	}
 
 	function show() {
@@ -175,14 +175,20 @@ class map_sources {
 		else                                $mmscale =     5000;
 
 		/*
+		 *  Make minutes and seconds, and round
+		 */
+		$lat = $this->p->make_minsec($this->p->latdeg);
+		$lon = $this->p->make_minsec($this->p->londeg);
+
+		/*
 		 *  Hack for negative, small degrees
 		 */
-		$latdegint = intval($this->p->latdeg);
-		$londegint = intval($this->p->londeg);
-		if ($this->p->latNS == "S" and $latdegint == 0) {
+		$latdegint = intval($lat['deg']);
+		$londegint = intval($lon['deg']);
+		if ($this->p->latdeg < 0 and $latdegint == 0) {
 			$latdegint = "-0";
 		}
-		if ($this->p->lonEW == "W" and $londegint == 0) {
+		if ($this->p->londeg < 0 and $londegint == 0) {
 			$londegint = "-0";
 		}
 
@@ -224,23 +230,23 @@ class map_sources {
 		/*
 		 * Replace in page
 		 */
-		$out = str_replace( "{latdegdec}",       $this->p->latdeg,
-		       str_replace( "{londegdec}",       $this->p->londeg,
-		       str_replace( "{londegneg}",       -$this->p->londeg,
+		$out = str_replace( "{latdegdec}",       $lat['deg'],
+		       str_replace( "{londegdec}",       $lon['deg'],
+		       str_replace( "{londegneg}",       -$lon['deg'],
 		       str_replace( "{latdegint}",       $latdegint,
 		       str_replace( "{londegint}",       $londegint,
-		       str_replace( "{latdegabs}",       abs(intval($this->p->latdeg)),
-		       str_replace( "{londegabs}",       abs(intval($this->p->londeg)),
-		       str_replace( "{latmindec}",       $this->p->latmin,
-		       str_replace( "{lonmindec}",       $this->p->lonmin,
-		       str_replace( "{latminint}",       intval($this->p->latmin),
-		       str_replace( "{lonminint}",       intval($this->p->lonmin),
-		       str_replace( "{latsecdec}",       $this->p->latsec,
-		       str_replace( "{lonsecdec}",       $this->p->lonsec,
-		       str_replace( "{latsecint}",       intval($this->p->latsec),
-		       str_replace( "{lonsecint}",       intval($this->p->lonsec),
-		       str_replace( "{latNS}",           $this->p->latNS,
-		       str_replace( "{lonEW}",           $this->p->lonEW,
+		       str_replace( "{latdegabs}",       abs(intval($lat['deg'])),
+		       str_replace( "{londegabs}",       abs(intval($lon['deg'])),
+		       str_replace( "{latmindec}",       $lat['min'],
+		       str_replace( "{lonmindec}",       $lon['min'],
+		       str_replace( "{latminint}",       intval($lat['min']),
+		       str_replace( "{lonminint}",       intval($lon['min']),
+		       str_replace( "{latsecdec}",       $lat['sec'],
+		       str_replace( "{lonsecdec}",       $lon['sec'],
+		       str_replace( "{latsecint}",       intval($lat['sec']),
+		       str_replace( "{lonsecint}",       intval($lon['sec']),
+		       str_replace( "{latNS}",           $lat['NS'],
+		       str_replace( "{lonEW}",           $lon['EW'],
 		       str_replace( "{utmzone}",         $utm->Zone,
 		       str_replace( "{utmnorthing}",     round($utm->Northing),
 		       str_replace( "{utmeasting}",      round($utm->Easting),
