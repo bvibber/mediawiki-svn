@@ -83,7 +83,8 @@ function wfSpecialRecentchanges( $par ) {
 	$hidem .= ( $hidepatrolled )? ' AND rc_patrolled=0' : '';
 
 	$urlparams = array( 'hideminor' => $hideminor,  'hideliu'       => $hideliu,
-	                    'hidebots'  => $hidebots,   'hidepatrolled' => $hidepatrolled);
+	                    'hidebots'  => $hidebots,   'hidepatrolled' => $hidepatrolled,
+	                    'limit'     => $limit );
 	$hideparams = wfArrayToCGI( $urlparams );
 
 	$minorLink = $sk->makeKnownLink( $wgContLang->specialPage( 'Recentchanges' ),
@@ -130,12 +131,29 @@ function wfSpecialRecentchanges( $par ) {
 			htmlspecialchars( wfMsg( 'recentchangestext' ) ),
 			$wgTitle->getFullUrl() );
 		$feed->outHeader();
+		
+		# Merge adjacent edits by one user
+		$sorted = array();
+		$n = 0;
 		foreach( $rows as $obj ) {
+			if( $n > 0 &&
+				$obj->rc_namespace >= 0 &&
+			    $obj->rc_cur_id == $sorted[$n-1]->rc_cur_id &&
+			    $obj->rc_user_text == $sorted[$n-1]->rc_user_text ) {
+				$sorted[$n-1]->rc_last_oldid = $obj->rc_last_oldid;
+			} else {
+				$sorted[$n] = $obj;
+				$n++;
+			}
+			$first = false;
+		}
+		
+		foreach( $sorted as $obj ) {
 			$title = Title::makeTitle( $obj->rc_namespace, $obj->rc_title );
 			$talkpage = $title->getTalkPage();
 			$item = new FeedItem(
 				$title->getPrefixedText(),
-				htmlspecialchars( $obj->rc_comment ),
+				rcFormatDiff( $obj ),
 				$title->getFullURL(),
 				$obj->rc_timestamp,
 				$obj->rc_user_text,
@@ -224,6 +242,47 @@ function rcLimitLinks( $page='Recentchanges', $more='', $doall = false ) {
 	  ( $doall ? ( ' | ' . rcCountLink( 0, $days, $page, $more ) ) : '' );
 	$note = wfMsg( 'rclinks', $cl, '', $mlink );
 	return $note;
+}
+
+function rcFormatDiff( $row ) {
+	require_once( 'DifferenceEngine.php' );
+	$comment = "<p>" . htmlspecialchars( $row->rc_comment ) . "</p>\n";
+	
+	if( $row->rc_namespace >= 0 ) {
+		global $wgContLang;
+		
+		#$diff =& new DifferenceEngine( $row->rc_this_oldid, $row->rc_last_oldid, $row->rc_id );
+		#$diff->showDiffPage();
+		
+		$dbr =& wfGetDB( DB_SLAVE );
+		if( $row->rc_this_oldid ) {
+			$newrow = $dbr->selectRow( 'old',
+				array( 'old_flags', 'old_text' ),
+				array( 'old_id' => $row->rc_this_oldid ) );
+			$newtext = Article::getRevisionText( $newrow );
+		} else {
+			$newrow = $dbr->selectRow( 'cur',
+				array( 'cur_text' ),
+				array( 'cur_id' => $row->rc_cur_id ) );
+			$newtext = $newrow->cur_text;
+		}
+		if( $row->rc_last_oldid ) {
+			$oldrow = $dbr->selectRow( 'old',
+				array( 'old_flags', 'old_text' ),
+				array( 'old_id' => $row->rc_last_oldid ) );
+			$oldtext = Article::getRevisionText( $oldrow );
+			$diffText = DifferenceEngine::getDiff( $oldtext, $newtext,
+			  wfMsg( 'revisionasof', $wgContLang->timeanddate( $row->rc_timestamp ) ),
+			  wfMsg( 'currentrev' ) );
+		} else {
+			$diffText = '<p><b>' . wfMsg( 'newpage' ) . '</b></p>' . 
+				'<div>' . nl2br( htmlspecialchars( $newtext ) ) . '</div>';
+		}
+		
+		return $comment . $diffText;
+	}
+	
+	return $comment;	
 }
 
 ?>

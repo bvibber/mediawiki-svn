@@ -500,18 +500,13 @@ class SkinPHPTal extends Skin {
 						'text' => wfMsg('move'),
 						'href' => $this->makeSpecialUrl('Movepage', 'target='. urlencode( $this->thispage ))
 					);
-					} else {
-						$content_actions['move'] = array('class' => 'inactive',
-						'text' => wfMsg('move'),
-						'href' => false);
-
 					}
 				}
 			} else {
 				//article doesn't exist or is deleted
 				if($wgUser->isSysop()){
 					if( $n = $wgTitle->isDeleted() ) {
-						$content_actions['delete'] = array(
+						$content_actions['undelete'] = array(
 							'class' => false,
 							'text' => wfMsg( "undelete_short", $n ),
 							'href' => $this->makeSpecialUrl('Undelete/'.$this->thispage)
@@ -559,11 +554,13 @@ class SkinPHPTal extends Skin {
 		global $wgNavigationLinks;
 		$result = array();
 		foreach ( $wgNavigationLinks as $link ) {
-			$result[] = array(
-				'text' => wfMsg( $link['text'] ),
-				'href' => $this->makeInternalOrExternalUrl( wfMsgForContent( $link['href'] ) ),
-				'id' => 'n-'.$link['text']
-			);
+			if (wfMsg( $link['text'] ) != '-') {
+			    $result[] = array(
+								  'text' => wfMsg( $link['text'] ),
+								  'href' => $this->makeInternalOrExternalUrl( wfMsgForContent( $link['href'] ) ),
+								  'id' => 'n-'.$link['text']
+								  );
+			}
 		}
 		return $result;
 	}
@@ -584,7 +581,7 @@ class SkinPHPTal extends Skin {
 		$nav_urls['randompage'] = array('href' => $this->makeSpecialUrl('Randompage'));
 		$nav_urls['recentchanges'] = array('href' => $this->makeSpecialUrl('Recentchanges'));
 		$nav_urls['currentevents'] = (wfMsg('currentevents') != '-') ? array('href' => $this->makeI18nUrl('currentevents')) : false;
-		$nav_urls['portal'] = (wfMsg('portal') != '-') ? array('href' => $this->makeI18nUrl('portal-url')) : false;
+		$nav_urls['portal'] =  (wfMsg('portal') != '-') ? array('href' => $this->makeI18nUrl('portal-url')) : false;
 		$nav_urls['bugreports'] = array('href' => $this->makeI18nUrl('bugreportspage'));
 		// $nav_urls['sitesupport'] = array('href' => $this->makeI18nUrl('sitesupportpage'));
 		$nav_urls['sitesupport'] = array('href' => $wgSiteSupportPage);

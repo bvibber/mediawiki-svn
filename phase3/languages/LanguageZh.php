@@ -1,7 +1,8 @@
 <?php
 require_once( "LanguageZh_cn.php");
 require_once( "LanguageZh_tw.php");
-
+require_once( "LanguageZh_sg.php");
+require_once( "LanguageZh_hk.php");
 /* caching the conversion tables */
 $zh2TW = $wgMemc->get($key1 = "$wgDBname:zhConvert:tw");
 $zh2CN = $wgMemc->get($key2 = "$wgDBname:zhConvert:cn");
@@ -103,6 +104,16 @@ class LanguageZh extends LanguageZh_cn {
 
 	function getVariants() {
 		return array("zh-cn", "zh-tw", "zh-sg", "zh-hk");
+	}
+
+	function getVariantFallback($v) {
+		switch ($v) {
+		case 'zh-cn': return 'zh-sg'; break;
+		case 'zh-sg': return 'zh-cn'; break;
+		case 'zh-tw': return 'zh-hk'; break;
+		case 'zh-hk': return 'zh-tw'; break;
+		}
+		return false;
 	}
 }
 ?>

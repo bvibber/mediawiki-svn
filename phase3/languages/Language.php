@@ -222,16 +222,6 @@ $wgLanguageNamesEn =& $wgLanguageNames;
 # hyphen (-). If you need more characters, you may be able to change
 # the regex in MagicWord::initRegex
 
-# NOTE: To turn off "Current Events" in the sidebar,
-# set "currentevents" => ""
-
-# NOTE: To turn off "Disclaimers" in the title links,
-# set "disclaimers" => ""
-
-# NOTE: To turn off "Community portal" in the title links,
-# set "portal" => ""
-
-
 # required for copyrightwarning
 global $wgRightsText;
 
@@ -304,6 +294,10 @@ global $wgRightsText;
 'mainpagetext'	=> 'Wiki software successfully installed.',
 "mainpagedocfooter" => "Please see [http://meta.wikipedia.org/wiki/MediaWiki_i18n documentation on customizing the interface]
 and the [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide User's Guide] for usage and configuration help.",
+
+# NOTE: To turn off "Community portal" in the title links,
+# set "portal" => "-"
+
 'portal'		=> 'Community portal',
 'portal-url'		=> '{{ns:4}}:Community Portal',
 'about'			=> 'About',
@@ -335,10 +329,18 @@ and the [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide User's Guide] f
 'mytalk'		=> 'My talk',
 'anontalk'		=> 'Talk for this IP',
 'navigation' => 'Navigation',
+
+# NOTE: To turn off "Current Events" in the sidebar,
+# set "currentevents" => "-"
+				       
 'currentevents' => 'Current events',
 'currentevents-url' => 'Current events',
+
+# NOTE: To turn off "Disclaimers" in the title links,
+# set "disclaimers" => "-"
+
 'disclaimers' => 'Disclaimers',
-"disclaimerpage"		=> "{{ns:4}}:General_disclaimer",
+"disclaimerpage" => "{{ns:4}}:General_disclaimer",
 "errorpagetitle" => "Error",
 "returnto"		=> "Return to $1.",
 "tagline"      	=> "From {{SITENAME}}",
@@ -646,6 +648,7 @@ You will have to merge your changes into the existing text.
 press \"Save page\".\n<p>",
 'yourtext'		=> 'Your text',
 'storedversion' => 'Stored version',
+'nonunicodebrowser' => "<strong>WARNING: Your browser is not unicode compliant, please change it before editing an article.</strong>",
 'editingold'	=> "<strong>WARNING: You are editing an out-of-date
 revision of this page.
 If you save it, any changes made since this revision will be lost.</strong>\n",
@@ -2059,6 +2062,7 @@ class Language {
 
 
 		$plang = $this->getPreferredVariant();
+		$fallback = $this->getVariantFallback($plang);
 
 		$tarray = explode("-{", $text);
 		$tfirst = array_shift($tarray);
@@ -2073,20 +2077,29 @@ class Language {
 				$text .= $choice{0};
 			}
 			else {
+				$choice1=false;
+				$choice2=false;
 				foreach($choice as $c) {
 					$v = explode(":", $c);
 					if(!array_key_exists(1, $v)) {
 						//syntax error in the markup, give up
-						$text .= $marked{0};
 						break;			
 					}
 					$code = trim($v{0});
 					$content = trim($v{1});
 					if($code == $plang) {
-						$text .= $content;
+						$choice1 = $content;
 						break;
 					}
+					if($code == $fallback)
+						$choice2 = $content;
 				}
+				if ( $choice1 )
+					$text .= $choice1;
+				elseif ( $choice2 )
+					$text .= $choice2;
+				else
+					$text .= $marked{0};
 			}
 			if(array_key_exists(1, $marked))
 				$text .= $this->autoConvert($marked{1});
@@ -2109,7 +2122,15 @@ class Language {
 		return array($lang);
 	}
 	
-	
+	# in case some variant is not defined in the markup, we need
+	# to have some fallback. for example, in zh, normally people
+	# will define zh-cn and zh-tw, but less so for zh-sg or zh-hk.
+	# when zh-sg is preferred but not defined, we will pick zh-cn
+	# in this case. right now this is only used by zh.
+	function getVariantFallback($v) {
+		return false;
+	}
+
 	function getPreferredVariant() {
 		global $wgUser;
 		
