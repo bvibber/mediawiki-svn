@@ -588,7 +588,7 @@ L'heure indiquée est celle du serveur (UTC).
 "filename"  => "Nom",
 "filedesc"  => "Description",
 "affirmation" => "Je déclare que le détenteur du copyright de ce fichier accepte de le diffuser selon les termes de la $1.",
-"copyrightpage" => "Wikipédia:Copyrights",
+"copyrightpage" => "Wikipédia:Copyright",
 "copyrightpagename" => "licence Wikipédia",
 "uploadedfiles" => "Fichiers copiés",
 "noaffirmation" => "Vous devez confirmer que la copie de ce fichier ne viole aucun copyright.",
