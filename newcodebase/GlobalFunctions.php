@@ -102,7 +102,7 @@ function wfMsg( $key )
 	$ret = $wgLang->getMessage( $key );
 
 	if ( "" == $ret ) {
-		die( "FATAL: Couldn't find text for message \"{$key}\".");
+		user_error( "Couldn't find text for message \"{$key}\"." );
 	}
 	return $ret;
 }
