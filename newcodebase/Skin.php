@@ -146,9 +146,10 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 
 	function getExternalLinkAttributes( $link, $text )
 	{
-		global $wgUser, $wgOut;
+		global $wgUser, $wgOut, $wgLang;
 
 		$link = urldecode( $link );
+		$link = $wgLang->checkTitleEncoding( $link );
 		$link = str_replace( "_", " ", $link );
 		$link = wfEscapeHTML( $link );
 
