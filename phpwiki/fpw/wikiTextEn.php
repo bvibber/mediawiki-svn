@@ -45,10 +45,10 @@ $wikiAllowedNamespaces = array ( $wikiWikipedia , $wikiTalk , $wikiUser , "" , "
 $wikiSkins = array ( "Normal" => "" , "Star Trek" => "Star Trek" , "Nostalgia" => "Nostalgy" , "Cologne Blue" => "Cologne Blue" ) ;
 $wikiMySettings = "My settings" ;
 $wikiMyself = "My page" ;
-$wikiShortPages = "Short Pages";
-$wikiLongPages = "Long Pages" ;
-$wikiUserList = "User List" ;
-$wikiEditingHistory = "Editing History" ;
+$wikiShortPages = "Short pages";
+$wikiLongPages = "Long pages" ;
+$wikiUserList = "User list" ;
+$wikiEditingHistory = "Editing history" ;
 $wikiAddToWatchlist = "Add to Watchlist" ;
 $wikiEditPage = "Edit Page" ;
 $wikiHome = "Home" ;

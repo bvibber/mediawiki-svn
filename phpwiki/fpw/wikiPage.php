@@ -979,7 +979,7 @@ class WikiPage extends WikiTitle {
 	# This generated the special "Cologne Blue" header
 	function getCologneBlueHeader () {
 		global $wikiHome , $wikiAbout , $wikiFAQ , $wikiSpecialPages , $wikiLogIn , $wikiLogOut , $wikiHeaderSubtitle , $wikiWikipediaFAQ ;
-		global $wikiLogoFile , $user , $wikiHelp , $wikiWikipediaHelp ;
+		global $wikiLogoFile , $user , $wikiHelp , $wikiWikipediaHelp , $wikiWikipedia ;
 		$bgc1 = "#7089AA" ;
 		$fonts = "face=verdena,times color=white" ;
 		$ret .= "<table width='100%' border=0 cellspacing=0 cellpadding=1>\n" ;
@@ -990,7 +990,7 @@ class WikiPage extends WikiTitle {
 
 		# Row 1
 		$ret .= "<td bgcolor=$bgc1 valign=bottom>\n" ;
-		$ret .= "<font size='+4' $fonts><a class=syslink href=\"".WikiLink("")."\">WIKIPEDIA</a></font></td>\n" ;
+		$ret .= "<font size='+4' $fonts><a class=syslink href=\"".WikiLink("")."\">".strtoupperIntl($wikiWikipedia)."</a></font></td>\n" ;
 		$ret .= "<td bgcolor=$bgc1 align=right valign=bottom>\n" ;
 		$ret .= "<font $fonts>" ;
 		$ret .= "<a class=syslink href='".WikiLink("")."'>" . strtoupperIntl ( $wikiHome ) . "</a> | " ;
