@@ -19,6 +19,7 @@ void TDatabase::filterBackslashes ( TUCS &s )
     s.replace ( "\\'" , "'" ) ;
     s.replace ( x , '"' ) ;
     s.replace ( "\\r" , "" ) ;
+    s.replace ( "\\m" , "" ) ;
     s.replace ( "\\\\" , "\\" ) ;
     }
 
