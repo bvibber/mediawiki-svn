@@ -1294,18 +1294,12 @@ class WikiPage extends WikiTitle {
         if ( $result != "" and $s->old_old_version != 0 ) {
             $s = mysql_fetch_object ( $result ) ;
             mysql_free_result ( $result ) ;
-            $a1 = explode ( "\n" , $this->contents ) ;
-            $a2 = explode ( "\n" , $s->old_text ) ;
-            $nl = array () ;
-            $dl = array () ;
-            foreach ( $a1 as $x ) if ( !in_array ( $x , $a2 ) ) array_push ( $nl , htmlspecialchars ( $x ) ) ;
-            foreach ( $a2 as $x ) if ( !in_array ( $x , $a1 ) ) array_push ( $dl , htmlspecialchars ( $x ) ) ;
-            # Output
-            $ret .= $wikiDiffLegend ;
-            $ret .= "<table width=\"100%\" border=1$bc cellspacing=0 cellpadding=2>\n" ;
-            foreach ( $nl as $x ) $ret .= "<tr><td bgcolor=\"#CFFFCF\"><font$fc>$x</font></td></tr>\n" ;
-            foreach ( $dl as $x ) $ret .= "<tr><td bgcolor=\"#FFFFAF\"><font$fc>$x</font></td></tr>\n" ;
-            $ret .= "</table>\n" ;
+            $old_lines = explode ( "\n" , htmlspecialchars( $s->old_text ) ) ;
+            $new_lines = explode ( "\n" , htmlspecialchars( $this->contents ) ) ;
+            include_once( "./difflib.php" );
+            $diffs = new Diff($old_lines, $new_lines);
+            $formatter = new TableDiffFormatter();
+            $ret .= $formatter->format($diffs);
         } else if ( isset ( $oldID ) and $s->old_old_version == 0 ) $ret .= $wikiDiffFirstVersion ;
         else if ( !isset ( $oldID ) ) $ret .= $wikiDiffImpossible ;
         
