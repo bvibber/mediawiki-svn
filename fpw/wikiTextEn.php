@@ -479,6 +479,7 @@ $wikiBlockIP = "Block this IP" ;
 $wikiNostalgy = "Nostalgia" ;
 $wikiCologneBlue = "Cologne Blue" ;
 $wikiUndiff = "undiff" ;
+$wikiReadOnlyText = "Sorry, this is a read-only copy of wikipedia. You can, of course, edit this article at <a href=\"http://www.wikipedia.com/wiki/$1&action=edit\">wikipedia.com</a>!" ;
 
 # Vote
 $wikiVoteReason = "Reason to vote : " ;

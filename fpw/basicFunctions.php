@@ -206,7 +206,8 @@ function edit ( $title ) {
 	global $user , $CommentBox , $vpage , $EditTime , $wikiDescribePage , $wikiUser , $namespaceBackground , $wikiNamespaceBackground ;
 	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend , $wikiEditHelp , $wikiEditHelpLink , $wikiRecodeInput ;
 	global $wikiSummary , $wikiMinorEdit , $wikiCopyrightNotice , $wikiSave , $wikiPreview , $wikiDontSaveChanges , $wikiGetDate ;
-	global $wikiBeginDiff, $wikiEndDiff , $WikifyButton , $wikiAutoWikify ;
+	global $wikiBeginDiff, $wikiEndDiff , $WikifyButton , $wikiAutoWikify , $wikiReadOnly , $wikiReadOnlyText ;
+	if ( $wikiReadOnly ) return str_replace ( "$1" , $title , $wikiReadOnlyText ) ;
 	$npage = new WikiPage ;
 	$npage->title = $title ;
 	$npage->makeAll () ;

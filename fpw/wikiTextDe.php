@@ -462,6 +462,8 @@ $wikiValidate = "Den HTML-Code dieser Seite überprüfen" ;
 $wikiBlockIP = "Diese IP-Adresse blockieren" ;
 $wikiNostalgy = "Nostalgie" ;
 $wikiCologneBlue = "Cologne Blue" ;
+$wikiUndiff = "Unterschiede ausblenden" ;
+$wikiReadOnlyText = "Diese Kopie von Wikipedia ist nur zum Lesen gedacht. Selbstverständlich können Sie diesen Artikel in der <a href=\"http://de.wikipedia.com/wiki/$1&action=edit\">deutschen Wikipedia</a> bearbeiten!" ;
 
 # Vote
 $wikiVoteReason = "Grund für diese Stimme : " ;
