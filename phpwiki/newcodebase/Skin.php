@@ -444,10 +444,9 @@ class Skin {
 		$s .= $this->mainPageLink()
 		  . $sep . $this->specialLink( "recentchanges" )
 		  . $sep . $this->specialLink( "randompage" ) 
-		  . $sep . $this->specialLink( "watchlist" )
-		  . $sep . $this->makeKnownLink( wfMsg( "currentevents" ), "" )
-		  # . $sep . $this->dateLink()
-		  . "\n<hr>";
+		  . $sep . $this->specialLink( "watchlist" ) ;
+                if ( wfMsg ( "currentevents" ) != "-" ) $s .= $sep . $this->makeKnownLink( wfMsg( "currentevents" ), "" ) ;
+                $s .= "\n<hr>";
 
 		if ( $wgOut->isArticle() ) {
 			$s .= "<strong>" . $this->editThisPage() . "</strong>";
