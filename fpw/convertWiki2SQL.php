@@ -275,7 +275,7 @@ function getHistory ( $title , $st) {
 	$keptlist = explode ( $FS1 , implode ( "\n" , $fc ) ) ;
 	array_shift ( $keptlist ) ;
 
-	$lastoldid = "0"; $sql = "";
+	$lastoldid = "0"; $sql = array () ;
 	
 	foreach ( $keptlist as $rev ) {
 		$section = splitHash ( $FS2 , $rev ) ;
@@ -284,9 +284,9 @@ function getHistory ( $title , $st) {
 		$user = makeSafe ( $section["username"] ? $section["username"] : $section["host"] ) ;
 		
 		if ( $text["text"] && $text["minor"] != "" && ( $section["ts"]*1 > 0 ) ) {
-			$sql .= "INSERT INTO old (old_title,old_text,old_comment,old_user,old_user_text,old_old_version,old_timestamp,old_minor_edit) "
+			array_push ( $sql , "INSERT INTO old (old_title,old_text,old_comment,old_user,old_user_text,old_old_version,old_timestamp,old_minor_edit) "
 			. "VALUES (\"$st\",\"" . makeSafe($text["text"]) . "\",\"" . makeSafe($text["summary"]) . "\","
-			. "0,\"$user\",$lastoldid,FROM_UNIXTIME(" . $section["ts"] . ")," . $text["minor"] . ");\n";
+			. "0,\"$user\",$lastoldid,FROM_UNIXTIME(" . $section["ts"] . ")," . $text["minor"] . ")" ) ;
 			
 			$lastoldid = "LAST_INSERT_ID()" ;
 		} else {
@@ -318,17 +318,18 @@ function storeInDB ( $title , $text ) {
 	if ( count ( $talk ) == 2 and $talk[1] == $wikiTalk ) $st = $wikiTalk.":".$talk[0] ;
 	if ( count ( $talk ) == 2 and $talk[1] == strtolower($wikiTalk) ) return ;
 
-	$lastoldid = "0"; $sql = "" ;
+	$lastoldid = "0"; $sql = array () ;
 if ( ! $noHistory ) { # for testing { ****
 	$sql = getHistory ( $title , $st ) ;
-	if ($sql) $lastoldid = "LAST_INSERT_ID()" ;
+	if ( ! $sql ) $sql = array () ;
+	if (count($sql)) $lastoldid = "LAST_INSERT_ID()" ;
 	
 	# Insert untouched version as the last in the history chain
 	$user = makeSafe ( $text["username"] ? $text["username"] : $text["host"] ) ;
 	if ( $text["text"] && $text["minor"] != "" && ( $text["ts"]*1 > 0 ) ) {
-		$sql .= "INSERT INTO old (old_title,old_text,old_comment,old_user,old_user_text,old_old_version,old_timestamp,old_minor_edit) "
+		array_push ( $sql , "INSERT INTO old (old_title,old_text,old_comment,old_user,old_user_text,old_old_version,old_timestamp,old_minor_edit) "
 		. "VALUES (\"$st\",\"" . makeSafe($text["text"]) . "\",\"" . makeSafe($text["summary"]) . "\","
-		. "0,\"$user\",$lastoldid,FROM_UNIXTIME(" . $text["ts"] . ")," . $text["minor"] . ");\n";
+		. "0,\"$user\",$lastoldid,FROM_UNIXTIME(" . $text["ts"] . ")," . $text["minor"] . ")" );
 		$lastoldid = "LAST_INSERT_ID()" ;
 	} else {
 		echo " (skipping last old revision - $text[ts] $text[minor] $text[text])";
@@ -336,24 +337,25 @@ if ( ! $noHistory ) { # for testing { ****
 } # for testing **** }
 
 	if ( $historyOnly ) {
-		if ( $sql ) {
-			$sql1 = "SELECT cur_old_version FROM cur WHERE cur_title=\"$st\"" ;
-			$result = mysql_query ( $sql1 , $connection ) ;
-			echo mysql_error () ;
-			if ( $s = mysql_fetch_object ( $result ) ) {
-				$oid = $s->cur_old_version ;
-				mysql_free_result ( $result ) ;
-			} else $oid = 0 ;
-			
-			if ( $oid )
-				$sql .= "UPDATE old SET old_old_version=LAST_INSERT_ID(),old_timestamp=old_timestamp WHERE old_old_version=0 AND old_title=\"$st\";\n" ;
-			else
-				$sql .= "UPDATE cur SET cur_old_version=LAST_INSERT_ID(),cur_timestamp=cur_timestamp WHERE cur_title=\"$st\";\n" ;
+		$sqlx = "SELECT cur_old_version FROM cur WHERE cur_title=\"$st\"" ;
+		$result = mysql_query ( $sqlx , $connection ) ;
+		echo mysql_error () ;
+		if ( $s = mysql_fetch_object ( $result ) ) {
+			$oid = $s->cur_old_version ;
+			mysql_free_result ( $result ) ;
+		} else $oid = 0 ;
+		
+		if ( $oid )
+			array_push ( $sql , "UPDATE old SET old_old_version=LAST_INSERT_ID(),old_timestamp=old_timestamp WHERE old_old_version=0 AND old_title=\"$st\"" ) ;
+		else
+			array_push ( $sql , "UPDATE cur SET cur_old_version=LAST_INSERT_ID(),cur_timestamp=cur_timestamp WHERE cur_title=\"$st\"" ) ;
 
-			#mysql_query ( $sql , $connection ) ;
-			#echo mysql_error ();
+		foreach ( $sql as $line ) {
+			mysql_query ( $line , $connection ) ;
+			echo mysql_error ();
 			}
 	} else {
+	$sql = implode ( ";\n" , $sql ) ;
 	$sql .= "INSERT INTO cur (cur_title,cur_ind_title,cur_text,cur_comment,cur_user,cur_user_text,cur_old_version,cur_minor_edit) VALUES ";
 	$sql .= "(\"$st\",\"$st\",\"$thetext\",";
 	$sql .= "\"$wikiAutomatedConversion\",0,\"$wikiConversionScript\",$lastoldid,1);\n" ;
@@ -363,9 +365,8 @@ if ( ! $noHistory ) { # for testing { ****
 	foreach ( $ull as $l ) {
 		$sql .= "INSERT INTO unlinked (unlinked_from,unlinked_to) VALUES (\"$st\",\"$l\");\n";
 		}
-	}
-	
 	fwrite ( $of , $sql ) ;
+	}
 	}
 
 function getTopics ( $dir ) {
@@ -445,7 +446,6 @@ function getAllTopics () {
 		fwrite ( $of , "DELETE FROM cur WHERE cur_title NOT LIKE \"%:%\";\n" ) ;
 		fwrite ( $of , "DELETE FROM cur WHERE cur_title LIKE \"$wikiTalk:%\";\n" ) ;
 	} else {
-		$of = fopen ( "./wikihistory.sql" , "w" ) ;
 		# We need a live database to check against to import the histories
 		//establish user connection
 		$connection = mysql_pconnect($wikiThisDBserver , $wikiThisDBuser , $wikiThisDBpassword )
@@ -463,7 +463,7 @@ function getAllTopics () {
 		$l = $nl ;
 		dir2DB ( $letter ) ;
 	} while ( $letter != "other" ) ;
-	fclose ( $of ) ;
+	if (isset ( $of )) fclose ( $of ) ;
 
 	print "FINISHED!\n" ;
 ?>
