@@ -7,6 +7,16 @@ TDatabase* TDatabase::current = NULL ;
 bool TDatabase::init ( string s1 ) { return false ; } ;
 void TDatabase::getArticle ( TTitle t , TArticle &art ) { } ;
 
+void TDatabase::filterBackslashes ( TUCS &s )
+    {
+    TUCS x = "\\ " ;
+    x[1] = DOUBLE_QUOTE ;
+    s.replace ( "\\n" , "\n" ) ;
+    s.replace ( "\\'" , "'" ) ;
+    s.replace ( x , '"' ) ;
+    s.replace ( "\\r" , "" ) ;
+    }
+
 void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     {
     long l ;
@@ -276,7 +286,9 @@ void TDatabaseSqlite::getArticle ( TTitle t , TArticle &art )
     if ( results.content.size() == 1 )
        {
 //       cout << results[0][results["cur_text"]] << endl ;
-       art.setSource ( TUCS(results["cur_text"]) ) ;
+       TUCS s = results[0][results["cur_text"]] ;
+       filterBackslashes ( s ) ;
+       art.setSource ( s ) ;
        }
     art.setTitle ( t ) ;
     }

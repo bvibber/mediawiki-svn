@@ -43,6 +43,9 @@ class TDatabase
     void mysql2sqlite ( string fn_in , string fn_out ) ;
     
     static TDatabase *current ;
+    
+    protected :
+    void filterBackslashes ( TUCS &s ) ;
     } ;
     
 class TDatabaseFile : public TDatabase

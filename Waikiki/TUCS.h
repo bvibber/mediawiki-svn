@@ -20,6 +20,7 @@ zero element at the end.
 using namespace std;
 
 #define SINGLE_QUOTE 39
+#define DOUBLE_QUOTE 34
 
 struct ltstr
 {

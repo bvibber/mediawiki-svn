@@ -157,7 +157,7 @@ int main(int argc, char *argv[])
     TWikiInterface w ;
     LANG->loadPHP ( "Language.php" ) ;
     w.run ( argc , argv ) ;
-    system("PAUSE");	
+//    system("PAUSE");	
 
 
     // Convert a MySQL dump imto a sqlite file
