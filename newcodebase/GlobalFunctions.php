@@ -40,7 +40,7 @@ function wfLocalUrl( $a, $q = "" )
 	global $wgServer, $wgScript, $wgArticlePath;
 
 	$a = str_replace( " ", "_", $a );
-	$a = wfUrlencode( $a );
+	#$a = wfUrlencode( $a ); # This stuff is _already_ URL-encoded.
 
 	if ( "" == $a ) {
 		$a = "{$wgServer}{$wgScript}?{$q}";	
