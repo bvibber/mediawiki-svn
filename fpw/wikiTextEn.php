@@ -232,6 +232,7 @@ $wikiOutputEncoding = "Output encoding : ";
 $wikiSearchTitle = "Search" ;
 $wikiSearchedVoid = "As you were searching for the void, you just found it." ;
 $wikiNoSearchResult = "Sorry, we were unable to find an article matching the query \"$1\" in the title or body." ;
+$wikiSearchHelp = "Please see [[wikipedia:Searching|help about searching]]." ;
 $wikiFoundHeading = "Wikipedia articles" ;
 $wikiFoundText = "The query ''$2'' resulted in $1 articles. For each article, you can see its first paragraph and the next paragraph that contains one of the search words in the query." ;
 # keywords used for boolean search operators
@@ -363,7 +364,7 @@ $wikiProtectNow = "Page '$1' is now protected as $2." ;
 $wikiProtectText = "<font size=\"+2\">You can now edit the protection for '$target'</font><br><i>For example, use \"is_sysop\" to prevent anyone but sysops from editing that page. Separate several allowances by \",\"</i>" ;
 $wikiProtectCurrent = "Current protection : " ;
 $wikiContribTitle = "Contributions of $1" ;
-$wikiContribText = "<h1>$1's contributions :</h1>\n(With the exception of ''talk'' and ''log'' pages)" ;
+$wikiContribText = "<h1>$1's contributions :</h1>\n(With the exception of minor edits and changes to ''talk'' and ''log'' pages)" ;
 $wikiContribDenied = "State a user name!" ;
 $wikiLinkhereTitle = "Pages that link to $1" ;
 $wikiLinkhereBacklink = "These articles are linked back from [[$1]]:" ;

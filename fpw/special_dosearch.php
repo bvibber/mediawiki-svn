@@ -253,7 +253,7 @@ function searchLineDisplay ( $v , $words) {
 function doSearch () {
     global $THESCRIPT ;
     global $vpage , $search , $startat , $user , $wikiRecodeInput ;
-    global $wikiSearchTitle , $wikiSearchedVoid , $wikiNoSearchResult ;
+    global $wikiSearchTitle , $wikiSearchedVoid , $wikiNoSearchResult , $wikiSearchHelp ;
     global $wikiSearchError ;
     global $allSearch ;         # contains total size of the search result
     global $titleSearch ;       # contains size of result of query on titles
@@ -265,7 +265,7 @@ function doSearch () {
     $s = "" ;
 
     if ( $search == "" )
-        $s = $wikiSearchedVoid ;
+        $s = $wikiSearchedVoid . "\n\n" . $wikiSearchHelp ;
     else {
         $search = $wikiRecodeInput ( $search ) ;
         if ( !isset ( $startat ) ) $startat = 1 ;
@@ -274,8 +274,10 @@ function doSearch () {
         
         $parsedCond = srchStrParse ( 0 ) ;     # translate search to semi-SQL
         
-        if ( preg_match ( "/\[!!/", $parsedCond ) )
+        if ( preg_match ( "/\[!!/", $parsedCond ) ) {
             $s = "<H3> $wikiSearchError </H3> \n " . $parsedCond ;
+	    $s .= "\n\n" . $wikiSearchHelp ;
+	  }
         else {
             preg_match_all ( "/\"(\w+)\"/", $parsedCond, $matches ) ;
             $words = $matches[1] ;          # determine the search words (positive & negative)
@@ -319,6 +321,7 @@ function doSearch () {
             
                 global $wikiUnsuccessfulSearch , $wikiUnsuccessfulSearches ;
                 $s = "<h2>".str_replace("$1",$search,$wikiNoSearchResult)."</h2>" ;
+		$s = $s . "\n" . $wikiSearchHelp ;
                 # Appending log page "wikpedia:Unsuccessful searches"
                 $now = date ( "Y-m" , time() ) ;
                 $logText = "*[[$search]]\n" ;
