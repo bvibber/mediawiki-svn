@@ -287,9 +287,8 @@ function wfSpecialMispeelings ()
         foreach ( $a AS $x ) {
                 if ( $cnt < $offset+$limit && $x != "" ) {
                         $y = $x ;
-			$x = explode ( " " , $x ) ;
-			$x = array_shift ( $x ) ;
-                        $sql = "SELECT DISTINCT cur_title FROM cur WHERE cur_namespace=0 AND cur_is_redirect=0 AND (MATCH(cur_ind_text) AGAINST ('" . wfStrencode( $wgLang->stripForSearch( $x ) ) . "'))" ;
+                        $x = preg_replace( '/^(\S+).*$/', '$1', $x );
+			$sql = "SELECT DISTINCT cur_title FROM cur WHERE cur_namespace=0 AND cur_is_redirect=0 AND (MATCH(cur_ind_text) AGAINST ('" . wfStrencode( $wgLang->stripForSearch( $x ) ) . "'))" ;
                         $res = wfQuery( $sql, $fname );
                         while ( $obj = wfFetchObject ( $res ) ) {
                                 if ( $cnt >= $offset AND $cnt < $offset+$limit ) {
