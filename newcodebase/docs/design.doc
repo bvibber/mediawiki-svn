@@ -97,7 +97,7 @@ Naming/coding conventions:
     a new local variable rather than complaining.
 
   - Globals are particularly evil in PHP; it sets a lot of them
-    automaticall from cookies, query strings, and such, leading to
+    automatically from cookies, query strings, and such, leading to
     namespace conflicts; when a variable name is used in a function,
     it is silently declared as a new local masking the global, so
     you'll get weird error because you forgot the global declaration;
@@ -105,12 +105,12 @@ Naming/coding conventions:
     globals for them, etc.  Evil, evil.
 
     I think I've managed to pare down the number of globals we use
-    to a scant dozen or so, and I've prefixed them all with "wg"
+    to a scant few dozen or so, and I've prefixed them all with "wg"
     so you can spot errors better (odds are, if you see a "wg"
     variable being used in a function that doesn't declare it global,
     that's probably an error).
 
     Other conventions: Top-level functions are wfFuncname(), names
     if session variables are wsName, cookies wcName, and form field
-    values wpName (for "POST").
+    values wpName ("p" for "POST").
 

@@ -17,7 +17,11 @@ incomprehensible code of the existing PHP stuff.
 In its present state, it is minimally functional, and will do
 only the basic Wiki view pages and edit pages, and user logins.
 It has hooks for future internationalization, but no other
-languages are currently ported.
+languages are currently ported.  The existing code had dozens
+of little bits of English text still hardcoded, and kept text
+to be intenationalized in globals.  I've taken care of both of
+those problems, and the new code should be fully localizable
+by changing just the one class.
 
 You'll need to convert the database before you run it as well.
 There's a running installation on piclab.com/newwiki, and I can
