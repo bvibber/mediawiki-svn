@@ -88,6 +88,7 @@ class OutputPage {
 	function output()
 	{
 		global $wgUser, $wgLang, $wgDebugComments, $wgCookieExpiration;
+		global $wgInputEncoding, $wgOutputEncoding;
 		$sk = $wgUser->getSkin();
 
 		if ( "" != $this->mRedirect ) {
@@ -96,7 +97,7 @@ class OutputPage {
 		}
 		# TODO: Internationalization
 		$this->addHeader( "Content-type",
-		  "text/html; charset=iso-8859-1" );
+		  "text/html; charset={$wgOutputEncoding}" );
 
 		$foundexp = false;
 		foreach( $this->mHeaders as $t ) {
@@ -118,26 +119,39 @@ class OutputPage {
 			setcookie( $name, $val, $exp, "/" );
 		}
 		$sk->initPage();
-		print $this->headElement();
+		$this->out( $this->headElement() );
 
-		print "\n<body";
+		$this->out( "\n<body" );
 		$ops = $sk->getBodyOptions();
 		foreach ( $ops as $name => $val ) {
-			print " $name='$val'";
+			$this->out( " $name='$val'" );
 		}
-		print ">\n";
+		$this->out( ">\n" );
 		if ( $wgDebugComments ) {
-			print "<!-- Wiki debugging output:\n" .
-			  $this->mDebugtext . "-->\n";
+			$this->out( "<!-- Wiki debugging output:\n" .
+			  $this->mDebugtext . "-->\n" );
 		}
-		print $sk->beforeContent();
-		print $this->mBodytext;
-		print $sk->afterContent();
+		$this->out( $sk->beforeContent() );
+		$this->out( $this->mBodytext );
+		$this->out( $sk->afterContent() );
 
-		print $this->reportTime();
+		$this->out( $this->reportTime() );
 
-		print "\n</body></html>";
+		$this->out( "\n</body></html>" );
 		flush();
+	}
+
+	function out( $ins )
+	{
+		global $wgInputEncoding, $wgOutputEncoding;
+
+		if ( 0 == strcmp( $wgInputEncoding, $wgOutputEncoding ) ) {
+			$outs = $ins;
+		} else {
+			$outs = iconv( $wgInputEncoding, $wgOutputEncoding, $ins );
+			if ( false === $outs ) { $outs = $ins; }
+		}
+		print $outs;
 	}
 
 	function reportTime()

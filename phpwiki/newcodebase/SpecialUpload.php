@@ -202,7 +202,7 @@ function mainUploadForm( $msg )
 
 	$fn = wfMsg( "filename" );
 	$fd = wfMsg( "filedesc" );
-	$ulb = wfMsg( "upload" );
+	$ulb = wfMsg( "uploadbtn" );
 
 	$clink = $sk->makeKnownLink( wfMsg( "copyrightpage" ),
 	  wfMsg( "copyrightpagename" ) );

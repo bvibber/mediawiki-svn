@@ -3,11 +3,12 @@
 # To customize your installation, edit "WikiLocalSettings.php".
 
 $wgServer           = "http://" . getenv( "SERVER_NAME" );
-$wgDirectory	    = "/wiki";
-$wgStyleSheetPath   = "$wgServer/style";
-$wgScript           = "$wgDirectory/wiki.phtml";
-$wgArticlePath      = "$wgServer$wgScript?title=$1";
-$wgUploadPath       = "$wgServer/upload";
+$wgScriptPath	    = "/wiki";
+$wgScript           = "{$wgScriptPath}/wiki.phtml";
+$wgStyleSheetPath   = "{$wgServer}/style";
+$wgArticlePath      = "{$wgServer}{$wgScript}?title=$1";
+$wgUploadPath       = "{$wgServer}/upload";
+$wgLogo				= "{$wgUploadPath}/wiki.png";
 $wgUploadDirectory	= "/var/www/html/upload";
 
 # MySQL settings
@@ -15,7 +16,7 @@ $wgUploadDirectory	= "/var/www/html/upload";
 $wgDBserver         = "127.0.0.1";
 $wgDBname           = "wikidb";
 $wgDBuser           = "wikiuser";
-$wgDBpassword       = "xxx";
+$wgDBpassword       = "userpwd";
 $wgDBconnection     = "";
 
 $wgReadOnly = false;
@@ -23,6 +24,9 @@ $wgDebugComments = false;
 $wgCachePages = false;
 
 $wgLanguageCode     = "en";
+$wgInputEncoding	= "ISO-8851-1";
+$wgOutputEncoding	= "ISO-8851-1";
+
 $wgDocType          = "-//W3C//DTD HTML 4.01 Transitional//EN";
 $wgCookieExpiration = 2592000;
 
