@@ -228,12 +228,12 @@ void WIKI2XML::parse_line ( string &l )
 	    for ( a = 0 ; a < l.length() && l[a] == '=' && l[l.length()-a-1] == '=' ; a++ ) ;
 	    string h = "h0" ;
 	    if ( a >= l.length() ) h = "" ; // No heading
-	    else if ( l[a] != ' ' ) h = "" ;
-	    else if ( l[l.length()-a-1] != ' ' ) h = "" ;
+//	    else if ( l[a] != ' ' ) h = "" ;
+//	    else if ( l[l.length()-a-1] != ' ' ) h = "" ;
 	    else if ( a < 1 || a > 9 ) h = "" ;
 	    if ( h != "" )
 	    	{
-	    	l = l.substr ( a+1 , l.length() - (a+1) * 2 ) ;
+	    	l = l.substr ( a , l.length() - a*2 ) ;
     	    h[1] += a ;
     	    l = xml_embed ( l , h ) ;
     	    }    
