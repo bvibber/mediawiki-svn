@@ -13,6 +13,7 @@ $wikiLanguage = "eo" ;	# For Content-Language header, LANG= param, etc.
 # For case conversion:
 include_once ( "utf8Case.php" ) ;
 
+
 # Misc stuff
 $wikiMainPage = "Ĉefpaĝo" ; # This is actual the title of the article in the database
 $wikiErrorPageTitle = "Fuŝ'! Problemo okazis!" ;
@@ -43,8 +44,18 @@ $wikiPrintLinksMarkup = "i" ; # will be used as <$wikiPrintLinksMarkup> and </$w
 #$wikiAllowedNamespaces = array ( "wikipedia" , "talk" , "user" , "" , "wikipedia talk" , "user talk" ) ;
 $wikiTalk = "priparolu" ;
 $wikiUser = "uzanto" ;
+$wikiWikipedia = "vikipedio" ;
 $wikiNamespaceTalk = "Priparolu $1n" ;
 $wikiAllowedNamespaces = array ( "vikipedio" , $wikiTalk , $wikiUser , "" , "priparolu vikipedion" , "priparolu uzanton" ) ;
+
+$wikiNamespaceBackground[$wikiTalk] = "#eeFFFF" ;
+$wikiNamespaceBackground[strtr(" ", "_", str_replace("$1", $wikiUser, $wikiNamespaceTalk))] = $wikiNamespaceBackground[$wikiTalk] ;
+$wikiNamespaceBackground[strtr(" ", "_", str_replace("$1", $wikiUser, $wikiNamespaceTalk))] = $wikiNamespaceBackground[$wikiTalk] ;
+$wikiNamespaceBackground[$wikiWikipedia] = "#eeFFee" ;
+$wikiNamespaceBackground[$wikiUser] = "#FFeeee" ;
+$wikiNamespaceBackground["log"] = "#FFFFcc" ;
+$wikiNamespaceBackground["special"] = "#eeeeee" ;
+
 
 # Editing
 $wikiEditTitle = "Redaktante $1" ;
@@ -212,6 +223,7 @@ $wikiSearchedVoid = "Ĉar vi serĉis nenion, vi ĵus trovis tion." ;
 $wikiNoSearchResult = "Bedaŭrinde, ni ne povis trovi artikolon, kiu enhavas \"$1\" en titolo aŭ enhavo.</h2>" ;
 $wikiUnsuccessfulSearch = "Malsukcesa serĉo de $1" ;
 $wikiUnsuccessfulSearches = "vikipedio:Malsukcesaj serĉoj ($1)" ; # $1 becomes "YEAR-MONTH"
+$wikiSearchHelp = "Bonvolu legi la [[vikipedio:Kiel serĉi|helppaĝon pri serĉado]]." ;
 $wikiFoundHeading = "Artikoloj ĉe Vikipedio" ;
 $wikiFoundText = "Trovis $1ope ''$2''. Po ĉiu artikolo, montriĝas la unua paragrafo, kaj la plej frua paragrafo enhavanta ''$2''." ;
 $wikiUserlistTitle = "Listo de Uzantoj" ;
@@ -252,7 +264,7 @@ $wikiStatSysops = "$1 el ili estas sistemestroj." ;
 $wikiUploadTitle = "Alŝutejo" ;
 $wikiUploadDenied = "Vi estas nek editoro nek sistemestro. Revenu al la <a href=\"$THESCRIPT?action=upload\">Alŝutejo</a>" ;
 $wikiUploadDeleted = "Dosiero <b>$1</b> forigita!" ;
-$wikiUploadDelMsg1 = "*Je $now, [[$wikiUser:$1|$1]] forigis dosieron '''$2'''\n" ;
+$wikiUploadDelMsg1 = "*Je $3, [[$wikiUser:$1|$1]] forigis dosieron '''$2'''\n" ;
 $wikiUploadDelMsg2 = "Forigi dosieron $1" ;
 $wikiUploadAffirm = "<nowiki>Vi devas aserti, ke la dosiero ne malsekvas kopirajtleĝon. Revenu al la <a href=\"$THESCRIPT?title=special:upload\">Alŝutejo</a></nowiki>" ;
 $wikiUploadFull = "Bedaŭrinde, nia disko preskaŭ plenas. Ni ne povas lasi vin alŝuti dosierojn nuntempe." ;
