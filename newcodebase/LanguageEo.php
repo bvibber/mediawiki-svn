@@ -740,7 +740,7 @@ Kelkaj funkcioj povas streĉi la datumbazon, do bonvolu ne reŝuti post ĉiu rip
 "popularpages"	=> "Plej vizitataj paĝoj",
 "nviews"		=> "$1-foje",
 "wantedpages"	=> "Dezirataj paĝoj",
-"nlinks"		=> " ligiloj",
+"nlinks"		=> "$1 ligiloj",
 "allpages"		=> "Ĉiuj paĝoj",
 "randompage"	=> "Hazarda paĝo",
 "shortpages"	=> "Paĝetoj",
