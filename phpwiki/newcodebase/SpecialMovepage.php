@@ -126,6 +126,18 @@ class MovePageForm {
 		$sql = "INSERT INTO links (l_from,l_to) VALUES ('{$oft}',{$oldid})";
 		wfQuery( $sql, $fname );
 
+		$sql = "SELECT bl_from FROM brokenlinks WHERE bl_to='{$nft}'";
+		$res = wfQuery( $sql, $fname );
+
+		while ( $rec = wfFetchObject( $res ) ) {
+			$lid = $rec->bl_from;
+			$lt = wfStrencode( Article::nameOf( $lid ) );
+			$sql = "INSERT INTO links (l_from,l_to) VALUES ('{$lt}',$oldid)";
+			wfQuery( $sql, $fname );
+		}
+		$sql = "DELETE FROM brokenlinks WHERE bl_to='{$nft}'";
+		wfQuery( $sql, $fname );
+
 		$sql = "UPDATE imagelinks SET il_from='{$nft}' WHERE il_from='{$oft}'";
 		wfQuery( $sql, $fname );
 

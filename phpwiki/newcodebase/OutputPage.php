@@ -76,7 +76,7 @@ class OutputPage {
 		}
 		$text = $this->doWikiPass2( $stripped, $linestart );
 		for ( $i = 1; $i <= $nwsecs; ++$i ) {
-			$text = preg_replace( "/{$unique}/", $nwlist[$i],
+			$text = preg_replace( "/{$unique}/", wfEscapeHTML( $nwlist[$i] ),
 			  $text, 1 );
 		}
 		$this->addHTML( $text );
