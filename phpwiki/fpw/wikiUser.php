@@ -76,8 +76,8 @@ class WikiUser {
             "a.red { color: red; text-decoration: none; }\n" .
             "a.green { color: blue; text-decoration: none; }\n" .
             ".topbar { border-bottom-width: 2; border-bottom-style: ridge; }\n" .
-            ".middle { }\n" .
-            ".quickbar { border-$qbside-width: 2; border-$qbside-style: ridge; }\n" .
+            ".middle { background:white }\n" .
+            ".quickbar { background:$bgcolor; border-$qbside-width: 2; border-$qbside-style: ridge; }\n" .
             ".footer { border-top-color: black; border-top-width: 2; border-top-style: groove; }\n";
         
         if ( $action == "print" ) {
