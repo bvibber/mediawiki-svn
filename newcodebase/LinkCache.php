@@ -78,10 +78,6 @@ class LinkCache {
 		  "{$ns} AND cur_title='{$t}')";
 		$res = wfQuery( $sql, $conn );
 
-		if ( false === $res ) {
-			$wgOut->databaseError( "LinkCache::addLink" );
-			return 0;
-		}
 		if ( 0 == mysql_num_rows( $res ) ) {
 			$id = 0;
 		} else {
