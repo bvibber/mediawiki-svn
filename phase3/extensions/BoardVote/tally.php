@@ -1,12 +1,8 @@
 <?php
 
-$sep = "
-
-
-";
-
+$end = "-----END PGP MESSAGE-----";
 $contents = file_get_contents( $argv[1] );
-$entries = explode( $sep, $contents );
+$entries = explode( $end, $contents );
 
 $ctally = array();
 $vtally = array();
@@ -14,12 +10,12 @@ $infile = tempnam( "/tmp", "gpg" );
 $outfile = tempnam( "/tmp", "gpg" );
 
 foreach ( $entries as $entry ) {
-	$entry = trim( $entry );
+	$entry = trim( $entry.$end );
 	
-	if ( $entry == "" ) {
+	if ( $entry == $end ) {
 		continue;
 	}
-
+#	print "{{{$entry}}}\n\n";
 	$file = fopen( $infile, "w" );
 	fwrite( $file, trim( $entry ) . "\n" );
 	fclose( $file );
