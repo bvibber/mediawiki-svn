@@ -1060,6 +1060,7 @@ class LanguageJa extends LanguageUtf8 {
 		return $wgUserTogglesJa;
 	}
 
+/*
 	function getLanguageName( $code ) {
 		global $wgLanguageNamesJa;
 		if ( ! array_key_exists( $code, $wgLanguageNamesJa ) ) {
@@ -1067,6 +1068,7 @@ class LanguageJa extends LanguageUtf8 {
 		}
 		return $wgLanguageNamesJa[$code];
 	}
+*/
 
 	function getMonthName( $key )
 	{
