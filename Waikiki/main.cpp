@@ -16,20 +16,20 @@ class TWikiInterface
 
 TWikiInterface::TWikiInterface ()
     {
-    TLanguage::current = new TLanguage ( "EN" ) ;
-    TUser::current = new TUser ;
-    TOutput::current = new TOutput ;
+    LANG = new TLanguage ( "EN" ) ;
+    USER = new TUser ;
+    OUTPUT = new TOutput ;
     DB = new TDatabase ;
     sp = new TSpecialPages ;
     }
     
 TWikiInterface::~TWikiInterface ()
     {
-    delete TUser::current ;
-    delete TOutput::current ;
-    delete TLanguage::current ;
+    delete USER ;
+    delete OUTPUT ;
     delete DB ;
     delete sp ;
+    delete LANG ;
     }
     
 void TWikiInterface::load_ini ( VTUCS &v )
@@ -51,12 +51,12 @@ void TWikiInterface::run (int argc, char *argv[])
         {
         char *cl ;
         cl = getenv ( "CONTENT_LENGTH" ) ;
-        if ( cl ) // POST
+/*        if ( cl ) // POST
            {
            TUCS x = cl ;
            x.explode ( "&" , params ) ;           
            }
-        else
+        else*/
            {
            char *qs = getenv ( "QUERY_STRING" ) ;
            if ( qs )
@@ -87,6 +87,9 @@ void TWikiInterface::run (int argc, char *argv[])
     
     TUCS s ;
     TUCS action = "view" ;
+    
+    // Default settings
+    LANG->setData ( "skinpath" , "wiki" ) ;
 
     // Parsing command line parameters
     for ( a = 0 ; a < params.size() ; a++ )
@@ -170,11 +173,15 @@ void TWikiInterface::run (int argc, char *argv[])
            {
            USER->setSkin ( s ) ;
            }
-/*        else
+        else if ( !key.empty() )
            {
-           cout << "Illegal command line parameter :" << endl ;
-           cout << key.getstring() << "=" << s.getstring() << endl ;
-           }*/
+           LANG->setData ( key , s ) ;
+           }
+        else
+           {
+//           cout << "Illegal command line parameter :" << endl ;
+//           cout << key.getstring() << "=" << s.getstring() << endl ;
+           }
         }
 
     TTitle ft ( forcetitle , FROM_TEXT ) ;
@@ -227,6 +234,7 @@ void TWikiInterface::run (int argc, char *argv[])
         {
         cout << OUTPUT->getPage().getstring() ;
         }
+        
     }
 
 void TWikiInterface::go ( TUCS s , TArticle &art )

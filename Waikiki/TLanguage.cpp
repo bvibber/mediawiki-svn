@@ -46,7 +46,6 @@ void TLanguage::loadPHP ( string file )
         }
     
 //    ofstream out ( "lang.txt" , ios::out ) ;
-    translations.clear() ;
     for ( b = 0 ; b < varr.size() ; b++ )
         {
         VTUCS w ;
@@ -126,12 +125,38 @@ TLanguage::TLanguage ( string l )
     {
     }
     
+uint TLanguage::getGroup ( TUCS s )
+    {
+    uint i ;
+    for ( i = 0 ; i < tg.size() && tg[i].name != s ; i++ ) ;
+    if ( i == tg.size() )
+        {
+        tg.push_back ( TLangGroup() ) ;
+        tg[i].name = s ;
+        }
+    return i ;
+    }
+    
 TUCS TLanguage::getTranslation ( char *t )
     {
     return getTranslation ( TUCS ( t ) ) ;
 //    cout << t << " : " << translations[t].getstring() << endl ;
 //    return translations[t] ;
     }
+
+void TLanguage::setData ( TUCS s , TUCS t )
+    {
+    s.toupper() ;
+    uint i = getGroup ( "internal" ) ;
+    tg[i].setTrans ( s , t ) ;
+    }
+    
+TUCS TLanguage::getData ( TUCS t )
+    {
+    t.toupper() ;
+    uint i = getGroup ( "internal" ) ;
+    return tg[i].getTrans ( t ) ;
+    }    
     
 TUCS TLanguage::getTranslation ( TUCS t )
     {
@@ -139,11 +164,9 @@ TUCS TLanguage::getTranslation ( TUCS t )
     VTUCS x ;
     t.explode ( ":" , x ) ;
     if ( x.size() == 1 ) x.insert ( x.begin() , TUCS("") ) ;
-    for ( i = 0 ; i < tg.size() && tg[i].name != x[0] ; i++ )
+    for ( i = 0 ; i < tg.size() && tg[i].name != x[0] ; i++ ) ;
     if ( i == tg.size() ) return "" ;
-//    cout << x[1].getstring() << " = " << tg[i].getTrans ( x[1] ).getstring() << endl ;
     return tg[i].getTrans ( x[1] ) ;
-//    return getTranslation ( (char*) t.getstring().c_str() ) ;
     }
 
 TUCS TLanguage::getUCfirst ( TUCS t )
@@ -179,30 +202,21 @@ TUCS TLanguage::getLanguageName ( TUCS s )
     {
     s = "LanguageNames:" + getLCfirst ( s )  ;
     return getTranslation ( s ) ;
-    /*
-    int i = getLanguageNumber ( s ) ;
-    if ( i == -1 ) return "" ;
-    return other_languages[i].lang_name ;
-    */
     }
 
-//*********************************
-
-TOtherLanguages::TOtherLanguages ( TUCS a , TUCS b , TUCS c )
-    {
-    if ( b.empty() ) b = a ;
-    if ( c.empty() ) c = "http://" + a + ".wikipedia.org" ;
-    lang_id = a ;
-    lang_name = b ;
-    lang_url = c ;
-    }
-    
 //************************************
 
 void TLangGroup::setTrans ( TUCS k , TUCS v )
     {
-    key.push_back ( k ) ;
-    value.push_back ( v ) ;
+    uint a ;
+    for ( a = 0 ; a < key.size() && k != key[a] ; a++ ) ;
+    if ( a == key.size() )
+        {
+        key.push_back ( k ) ;
+        value.push_back ( v ) ;
+        }
+    else value[a] = v ;
+
 //    trans[(char*)k.getstring().c_str()] = v ;
     }
     

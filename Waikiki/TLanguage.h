@@ -5,13 +5,6 @@
 
 using namespace std ;
 
-class TOtherLanguages
-    {
-    public :
-    TOtherLanguages ( TUCS a = "" , TUCS b = "" , TUCS c = "" ) ;
-    TUCS lang_name , lang_id , lang_url ;
-    } ;
-    
 class TLangGroup
     {
     public :
@@ -30,23 +23,24 @@ class TLanguage
     TLanguage ( string l = "" ) ;
     static TLanguage *current ;
     
-    void loadPHP ( string file ) ;
-    void fromPHP ( TUCS &s , TUCS y ) ;
+    virtual void loadPHP ( string file ) ;
+    virtual void fromPHP ( TUCS &s , TUCS y ) ;
     
-    TUCS getTranslation ( char *t ) ;
-    TUCS getTranslation ( TUCS t ) ;
+    virtual TUCS getTranslation ( char *t ) ;
+    virtual TUCS getTranslation ( TUCS t ) ;
     
-    bool isLanguageNamespace ( TUCS s ) ;
-    TUCS getLanguageName ( TUCS s ) ;
+    virtual bool isLanguageNamespace ( TUCS s ) ;
+    virtual TUCS getLanguageName ( TUCS s ) ;
     
-    TUCS getUCfirst ( TUCS t ) ;
-    TUCS getLCfirst ( TUCS t ) ;
+    virtual TUCS getUCfirst ( TUCS t ) ;
+    virtual TUCS getLCfirst ( TUCS t ) ;
+    
+    virtual void setData ( TUCS s , TUCS t ) ;
+    virtual TUCS getData ( TUCS t ) ;
     
     private :
+    virtual uint getGroup ( TUCS s ) ;
     vector <TLangGroup> tg ;
-    
-    MTUCS translations ;
-    vector <TOtherLanguages> other_languages ;
     } ;
 
 #endif

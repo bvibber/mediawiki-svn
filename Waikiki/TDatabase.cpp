@@ -37,7 +37,8 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     
     string create_indices ;
     
-    //
+    time_t start = time ( NULL ) ;
+    
     bool creating = false ;
     for ( a = 0 ; !in.eof() ; a++ )
         {
@@ -78,7 +79,6 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
               cur += table_name.getstring() ;
               cur += "(" + keys[b].getstring() + ");" ;
               create_indices += cur ;
-//              cout << cur << endl ;
               }
            
            creating = false ;
@@ -121,8 +121,8 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
            }
         else if ( *x == 'I' ) // INSERT INTO blah blah
            {
-           sqlite_exec ( db , "COMMIT;" , 0 , 0 , 0 ) ;
-           sqlite_exec ( db , "BEGIN;" , 0 , 0 , 0 ) ;
+//           sqlite_exec ( db , "COMMIT;" , 0 , 0 , 0 ) ;
+//           sqlite_exec ( db , "BEGIN;" , 0 , 0 , 0 ) ;
            uint l , b ;
            uint idx = 0 ;
            for ( b = 0 ; x[b] != '(' ; b++ ) ;
@@ -169,13 +169,14 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
               }
            }
         }
-    
-//    delete t ;
+        
+    cout << time(NULL)-start << "seconds for conversion" << endl ;
     cout << "Creating indices..." << endl ;
     sqlite_exec ( db , create_indices.c_str() , 0 , 0 , 0 ) ;
     sqlite_exec ( db , "COMMIT;" , 0 , 0 , 0 ) ;
     sqlite_close ( db ) ;
-//    system("PAUSE");	
+    cout << time(NULL)-start << "seconds total" << endl ;
+    system("pause");
     }
 
 

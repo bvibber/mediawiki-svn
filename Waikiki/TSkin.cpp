@@ -9,7 +9,7 @@ TSkin::TSkin ()
 
 void TSkin::doHeaderStuff ()
     {
-    OUTPUT->addHeaderLink ( "stylesheet" , "wiki/wikistandard.css" ) ;
+    OUTPUT->addHeaderLink ( "stylesheet" , LANG->getData("stylepath") + "/wikistandard.css" ) ;
     
     OUTPUT->addHeader ( 
 "    
@@ -108,7 +108,7 @@ TUCS TSkin::getSideBar()
     {
     TUCS r ;
     r += "<div id='quickbar'>\n" ;
-    r += getImageLink ( TTitle ( "Main Page" ) , "wiki/wiki.png" ) ;
+    r += getImageLink ( TTitle ( "Main Page" ) , LANG->getData("stylepath") + "/wiki.png" ) ;
     r += "<hr class='sep'>\n" ;
     r += getInternalLink ( TTitle ( LNG("mainpage") ) ) ;
     r += "<br>\n" + getSpecialLink ( "recentchanges" ) ;
