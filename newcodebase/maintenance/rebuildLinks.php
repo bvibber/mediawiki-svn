@@ -5,15 +5,17 @@
 
 include_once( "Setup.php" );
 include_once( "./rebuildLinks.inc" );
+include_once( "./rebuildRecentChanges.inc" );
 $wgTitle = Title::newFromText( "Rebuild links script" );
 set_time_limit(0);
 
-$wgDBname			= "yaw";
 $wgDBuser			= "wikiadmin";
-$wgDBpassword		= "oberon";
+$wgDBpassword		= $wgDBadminpassword;
 
 rebuildLinkTablesPass1();
 rebuildLinkTablesPass2();
+
+rebuildRecentChangesTable();
 
 print "Done.\n";
 exit();
