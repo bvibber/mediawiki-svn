@@ -92,7 +92,7 @@
 	"om"    => "http://om.wikipedia.com/wiki.cgi?$1",
 	"or"    => "http://or.wikipedia.com/wiki.cgi?$1",
 	"pa"    => "http://pa.wikipedia.com/wiki.cgi?$1",
-	"pl"	=> "http://pl.wikipedia.com/wiki.cgi?$1",
+	"pl"	=> "http://pl.wikipedia.org/wiki/",
 	"ps"    => "http://ps.wikipedia.com/wiki.cgi?$1",
 	"pt"	=> "http://pt.wikipedia.com/wiki.cgi?$1",
 	"qu"    => "http://qu.wikipedia.com/wiki.cgi?$1",
@@ -231,7 +231,8 @@ class Title {
 		global $wgDBminWordLen, $wgLang;
 
 		$lc = SearchEngine::legalSearchChars() . "&#;";
-		$t = preg_replace( "/[^{$lc}]+/", " ", $title );
+		$t = $wgLang->stripForSearch( $title );
+		$t = preg_replace( "/[^{$lc}]+/", " ", $t );
 		$t = strtolower( $t );
 
 		# Handle 's, s'

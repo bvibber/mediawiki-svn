@@ -1,4 +1,5 @@
 <?
+include("utf8Case.php");
 
 # See language.doc
 
@@ -1132,11 +1133,21 @@ class LanguageEo extends Language {
 	function ucfirst( $string ) {
 		# For most languages, this is a wrapper for ucfirst()
 		# But that doesn't work right in a UTF-8 locale
-		include("utf8Case.php");
+		global $wikiUpperChars, $wikiLowerChars;
         return preg_replace (
         	"/^([\\x00-\\x7f]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
         	"strtr ( \"\$1\" , \$wikiUpperChars )",
         	$string );
+	}
+	
+	function stripForSearch( $string ) {
+		# MySQL fulltext index doesn't grok utf-8, so we
+		# need to fold cases and convert to hex
+		global $wikiLowerChars;
+		return preg_replace(
+		  "/([\\xc0-\\xff][\\x80-\\xbf]*)/e",
+		  "'U8' . bin2hex( strtr( \"\$1\", \$wikiLowerChars ) )",
+		  $string );
 	}
 
     function checkTitleEncoding( $s ) {

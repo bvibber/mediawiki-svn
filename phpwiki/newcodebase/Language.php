@@ -1180,6 +1180,13 @@ class Language {
 		global $wgOutputEncoding;
 		return $wgOutputEncoding;
 	}
+	
+	function stripForSearch( $in ) {
+		# Some languages have special punctuation to strip out
+		# or characters which need to be converted for MySQL's
+		# indexing to grok it correctly. Make such changes here.
+		return $in;
+	}
 
 }
 

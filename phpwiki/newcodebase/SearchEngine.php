@@ -249,7 +249,7 @@ class SearchEngine {
 
 	function parseQuery()
 	{
-		global $wgDBminWordLen;
+		global $wgDBminWordLen, $wgLang;
 
 		$lc = SearchEngine::legalSearchChars() . "()";
 		$q = preg_replace( "/([()])/", " \\1 ", $this->mUsertext );
@@ -258,6 +258,7 @@ class SearchEngine {
 
 		$last = $cond = "";
 		foreach ( $w as $word ) {
+			$word = $wgLang->stripForSearch( $word );
 			if ( "and" == $word || "or" == $word || "not" == $word
 			  || "(" == $word || ")" == $word ) {
 				$cond .= " " . strtoupper( $word );

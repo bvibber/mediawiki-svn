@@ -19,11 +19,14 @@ class SearchUpdate {
 
 	function doUpdate()
 	{
-		global $wgDBminWordLen;
+		global $wgDBminWordLen, $wgLang;
 		$lc = SearchEngine::legalSearchChars() . "&#;";
+		
+		# Language-specific strip/conversion
+		$text = $wgLang->stripForSearch( $this->mText );
 
 		$text = preg_replace( "/<\\/?\\s*[A-Za-z][A-Za-z0-9]*\\s*([^>]*?)>/",
-		  " ", strtolower( " " . $this->mText . " " ) ); # Strip HTML markup
+		  " ", strtolower( " " . $text /*$this->mText*/ . " " ) ); # Strip HTML markup
 		$text = preg_replace( "/(^|\\n)\\s*==\\s+([^\\n]+)\\s+==\\s/sD",
 		  "\\2 \\2 \\2 ", $text ); # Emphasize headings
 

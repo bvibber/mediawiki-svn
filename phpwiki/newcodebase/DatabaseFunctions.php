@@ -102,6 +102,7 @@ function wfStrencode( $s )
 	return $s;
 }
 
+# This function is unused and deprecated
 function wfStripForSearch( $in )
 {
 	$out = preg_replace( "/[^A-Za-z0-9_\\xA0-\\xFF]+/", "", $in );
