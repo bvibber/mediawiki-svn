@@ -549,4 +549,58 @@ function wfSpecialValidate( $page = '' ) {
 	$wgOut->addHTML( $html );
 }
 
+
+
+# Formerly on Article.
+# If to be used, needs to be set up as an action hook.
+
+	/**
+	 * Validate article
+	 * @todo document this function a bit more
+	 */
+	function validate () {
+		global $wgOut, $wgUseValidation;
+		if( $wgUseValidation ) {
+			require_once ( 'SpecialValidate.php' ) ;
+			$wgOut->setPagetitle( wfMsg( 'validate' ) . ': ' . $this->mTitle->getPrefixedText() );
+			$wgOut->setRobotpolicy( 'noindex,follow' );
+			if( $this->mTitle->getNamespace() != 0 ) {
+				$wgOut->addHTML( wfMsg( 'val_validate_article_namespace_only' ) );
+				return;
+			}
+			$v = new Validation;
+			$v->validate_form( $this->mTitle->getDBkey() );
+		} else {
+			$wgOut->errorpage( 'nosuchaction', 'nosuchactiontext' );
+		}
+	}
+
+# Used to be in SkinTemplate::buildContentActionUrls()
+# If to be used, needs to set up with some kind of tab hook
+
+	function xxxthisisbroken() {
+			# Show validate tab
+			if ( $wgUseValidation && $wgTitle->getArticleId() && $wgTitle->getNamespace() == 0 ) {
+				global $wgArticle ;
+				$article_time = "&timestamp=" . $wgArticle->mTimestamp ;
+				$content_actions['validate'] = array(
+					'class' => ($action == 'validate') ? 'selected' : false ,
+					'text' => wfMsg('val_tab'),
+					'href' => $wgTitle->getLocalUrl( 'action=validate'.$article_time)
+				);
+			}
+	}
+
+# Used to be in SpecialContributions
+function contribsBit() {
+	# Validations
+	global $wgUseValidation;
+	if( $wgUseValidation ) {
+		require_once( 'SpecialValidate.php' );
+		$val = new Validation ;
+		$val = $val->countUserValidations ( $id ) ;
+		$wgOut->addHTML( wfMsg ( 'val_user_validations', $val ) );
+	}
+}
+
 ?>
