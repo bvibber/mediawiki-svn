@@ -164,6 +164,8 @@ struct tmcmds : public smutl::singleton<tmcmds<tt> > {
 		cfgrt.install("enable password", cfg_eblpass(), "Change enable password");
 		cfgrt.install("function irc", chg_parser(ircrt, "%s(conf-irc)# "), 
 				"Configure Internet Relay Chat connections");
+		cfgrt.install("user %s password", cfg_userpass(), "Create a new account");
+		cfgrt.install("no user %s", cfg_no_user(), "Remove a user account");
 		ircrt.install("exit", chg_parser(cfgrt, "%s(conf)# "),
 				"Exit IRC configuration mode");
 		ircrt.install("server %s primary-nickname %s", cfg_irc_servnick(),

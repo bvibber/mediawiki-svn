@@ -65,6 +65,36 @@ struct chg_parser : handler<tt> {
 	std::string prm;
 };
 
+struct cfg_userpass : handler<tt> {
+	std::string usr;
+	bool execute(comdat<tt> const& cd) {
+		if (smauth::usr_exists(cd.p(0))) {
+			cd.error("User already exists.");
+			return true;
+		}
+		usr = cd.p(0);
+		cd.term.echo(false);
+		cd.term.wrt("Enter password: ");
+		cd.term.readline(boost::bind(&cfg_userpass::gotpass, this, _1, _2));
+		return true;
+	}
+	void gotpass(tt& trm, std::string const& pass) {
+		trm.echo(true);
+		smauth::add_usr(usr, pass);
+	}
+};
+
+struct cfg_no_user : handler<tt> {
+	bool execute(comdat<tt> const& cd) {
+		if (!smauth::usr_exists(cd.p(0))) {
+			cd.error("No such user.");
+			return true;
+		}
+		smauth::del_usr(cd.p(0));
+		return true;
+	}
+};
+
 struct cfg_irc_servnick : handler<tt> {
 	bool execute(comdat<tt> const& cd) {
 		smirc::cfg.newserv_or_chgnick(cd.p(0), cd.p(1));
