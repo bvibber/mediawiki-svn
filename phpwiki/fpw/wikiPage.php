@@ -1029,6 +1029,7 @@ class WikiPage extends WikiTitle {
         global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages , $action ;
         global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
         global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
+	global $wikiBugReports , $wikiBugReportsLink ;
         $editOldVersion = "" ;
         if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
         $column = "" ;
@@ -1064,6 +1065,7 @@ class WikiPage extends WikiTitle {
         if ( $user->isLoggedIn ) {
             $column .= "<br>\n<a href=\"".wikiLink("special:WatchList")."\">$wikiMyWatchlist</a>" ;
             }
+	$column .= "<br>\n<a href=\"".wikiLink($wikiBugReportsLink)."\">$wikiBugReports</a>" ;
         $a = $this->getOtherNamespaces () ;
         if ( count ( $a ) > 0 ) $column .= "<hr>".implode ( "<br>\n" , $a ) ;
 
