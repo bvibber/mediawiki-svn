@@ -36,7 +36,7 @@ function watch ( $t , $m ) {
 
 function WatchList () {
     global $THESCRIPT ;
-    global $vpage , $user , $wikiWatchlistTitle , $wikiWatchlistExistText , $wikiWatchlistNotExistText;
+    global $vpage , $user , $wikiWatchlistTitle , $wikiWatchlistExistText , $wikiWatchlistNotExistText, $wikiTalk ;
 
     $vpage->special ( $wikiWatchlistTitle ) ;
     $ret = "$wikiWatchlistExistText\n\n" ;
@@ -55,11 +55,15 @@ function WatchList () {
     $arr = array () ;
     $any = false ;
     $notexist = "" ;
+    $talk = ucfirstIntl ( $wikiTalk ) ;
     foreach ( $k as $x ) {
         if ( $x != "" ) {
+            #$sql = "SELECT cur_timestamp, cur_title, cur_comment, cur_user, cur_user_text, cur_minor_edit
+            #        FROM cur
+            #        WHERE cur_title=\"$x\" OR cur_title LIKE \"%:$x\"" ;
             $sql = "SELECT cur_timestamp, cur_title, cur_comment, cur_user, cur_user_text, cur_minor_edit
                     FROM cur
-                    WHERE cur_title=\"$x\" OR cur_title LIKE \"%:$x\"" ;
+                    WHERE cur_title=\"$x\" OR cur_title = \"$talk:$x\"" ; # Temporary ugly partial hack until this function is rewritten to use the db more efficiently
             $result = mysql_query ( $sql , $connection ) ;
             $s = mysql_fetch_object ( $result ) ;
             if ( $s )
