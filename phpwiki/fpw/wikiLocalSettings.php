@@ -19,7 +19,7 @@ $useCachedPages = false; # Disable page cache
 #$wikiCurrentServer = "http://127.0.0.1";
 
 # Location of the main wiki.phtml script on that server:
-#$THESCRIPT = "/";
+$THESCRIPT = "/cvs/phpwiki/fpw/wiki.phtml";
 
 # How to access an article on your site. Change this if you use
 # apache's rewrite module to produce nicer URLs on your site (as is

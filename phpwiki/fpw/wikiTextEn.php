@@ -16,7 +16,7 @@ $wikiLowerChars = "abcdefghijklmnopqrstuvwxyzàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþ";
 $wikiMainPage = "Main Page" ; # This is actual the title of the article in the database
 $wikiErrorPageTitle = "Yikes! An error!" ;
 $wikiErrorMessage = "<h2>$1!</h2>Return to the [[:Main Page|Main Page]]!" ;
-$wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","longpages","listusers","watchlist","special_pages","editusersettings","deletepage","movepage","protectpage","contributions","whatlinkshere","recentchangeslinked","sqldump","vote","edituser");
+$wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","longpages","listusers","watchlist","special_pages","editusersettings","deletepage","movepage","protectpage","contributions","whatlinkshere","recentchangeslinked","sqldump","vote","edituser","maintenance");
 
 $wikiRecentChangesText = "Track the most recent changes to Wikipedia on this page. [[wikipedia:Welcome, newcomers|Welcome, newcomers]]! Please have a look at these pages: [[wikipedia:FAQ|Wikipedia FAQ]], [[wikipedia:Policies and guidelines|Wikipedia policy]] (especially [[wikipedia:Naming conventions|naming conventions]], [[wikipedia:Neutral point of view|neutral point of view]]), and [[wikipedia:Most common Wikipedia faux pas|most common Wikipedia faux pas]].<br>If you want to see the Wikipedia succeed, it's very important that you don't add material restricted by others' [[wikipedia:Copyrights|copyrights]]. The legal liability could really hurt the project, so please don't do it.<br>See also the [http://meta.wikipedia.com/wiki.phtml?title=special:RecentChanges recent meta discussion]." ;
 $wikiMetaDescription = "$1... Read more here at wikipedia, the free encyclopedia!" ;
@@ -342,6 +342,7 @@ $wikiUploadText .= "<li>A message will tell you when the file has successfully u
 $wikiUploadText .= "<li>You can upload as many files you like. Please don't try to crash our server, ha ha.</li>\n";
 $wikiUploadText .= "<li>All uploads and deletions are logged in the <a href=\"$THESCRIPT?title=Log:Uploads\">uploads log</a>.</li>\n";
 $wikiUploadText .= "</ul>\n";
+$wikiUploadShowFiles = "<br><center><a href=\"$1\">Click here to display all previously uploaded files</a></center><br>" ;
 $wikiUploadAffirmText = "I hereby affirm that this file is not copyrighted, or that the copyright holder agrees to license it under the terms of the <a href=\"http://www.wikipedia.com/wiki/Wikipedia:Copyrights\">Wikipedia copyright</a>." ;
 $wikiUploadButton = "Upload" ;
 $wikiUploadPrev = "Previously-uploaded files:" ;
@@ -412,6 +413,7 @@ $wikiReadOnlyText = "Sorry, this is a read-only copy of wikipedia. You can, of c
 $wikiEditUserRights = "Edit user rights" ;
 $wikiPermissionDenied = "Permission denied!" ;
 $wikiEditUserTitle = "Edit user settings" ;
+$wikiSkinClassic = "Classic" ;
 
 # Vote
 $wikiVoteReason = "Reason to vote : " ;
@@ -433,6 +435,20 @@ Reason for my vote : <input type=text value=\"\" name=CommentBox size=35><br>
 <input type=submit value=\"Vote\" name=doVote>
 " ;
 $wikiVoteExplanation = "Votes are recorded on the following pages:";
+
+# Maintenance
+$wikiMaintenance = "Maintenance Page" ;
+$wikiNone = "none" ;
+$wikiMaintenenceDenied = "Sorry, you have to be sysop to use the maintenance page. This is mainly due to the experimental nature of these functions, and the high system load." ;
+$wikiMaintenanceText = "
+<h2>Choose your poison :</h2>
+* <a href='$1doubleredirects'>Find articles that REDIRECT to a REDIRECT</a>
+* <a href='$1selflinks'>Find articles that link to themselves</a>
+* <a href='$1talklinks'>Find articles that contain a link to their <i>talk</i> page</a>
+* <a href='$1fileusage'>Uploaded files and where they are used</a> (experimental)
+<h2>Your last query was : $2</h2>
+$3
+" ;
 
 # Talk pages array
 $wikiArticle = "Article" ;
