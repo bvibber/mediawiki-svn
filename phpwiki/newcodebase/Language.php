@@ -754,7 +754,7 @@ consequences, and that you are doing this in accordance with
 "confirmcheck"	=> "Yes, I really want to delete this.",
 "actioncomplete" => "Action complete",
 "deletedtext"	=> "\"$1\" has been deleted.
-See $2 for a record or recent deletions.",
+See $2 for a record of recent deletions.",
 "deletedarticle" => "deleted \"$1\"",
 "dellogpage"	=> "Deletion_log",
 "dellogpagetext" => "Below is a list of the most recent deletions.
