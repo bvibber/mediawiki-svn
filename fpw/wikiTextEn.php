@@ -106,6 +106,8 @@ $wikiCounter = "This page has been accessed $1 times." ;
 $wikiBlockIPTitle = "Block an IP (sysops only)" ;
 $wikiBlockIPText = "IP $1 was blocked by $2" ;
 $wikiIPblocked = "<font color=red size='+1'>Your IP has been blocked! Your edits will not be saved. Please contact a sysop to have the block removed, or try again later.</font>" ;
+$wikiBugReports = "Bug reports" ;
+$wikiBugReportsLink = "wikipedia:Bug Reports" ;
 
 # Interwiki links
 $wikiInterwiki = array ( "w"=>"http://www.wikipedia.com/wiki/$1" , "m"=>"http://meta.wikipedia.com/wiki.phtml?title=$1" ) ;
