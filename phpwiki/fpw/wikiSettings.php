@@ -20,6 +20,9 @@ $wikiThisDBpassword = "" ;
 # Cache system enabled by default
 $useCachedPages = true ;
 
+# Use English by default
+$wikiLanguage = "en";
+
 # Now, load local site-specific settings
 include_once ( "wikiLocalSettings.php" ) ;
 
@@ -33,7 +36,6 @@ if ( ! isset ( $wikiEncodingNames ) ) $wikiEncodingNames = array($wikiCharset); 
 # This has to be done after the local settings have been read in,
 # since variables such as $THESCRIPT are being used.
 include_once ( "wikiTextEn.php" ) ;
-if ( ! $wikiLanguage ) $wikiLanguage = "en" ;
 if ( $wikiLanguage != "en" ) {
 	include_once ( "wikiText" . ucfirst ( $wikiLanguage ) . ".php" ) ;
 }
