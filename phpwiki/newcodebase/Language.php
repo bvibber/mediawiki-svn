@@ -697,7 +697,10 @@ and have a valid e-mail address to send e-mail to other users.",
 "emailuser"		=> "E-mail this user",
 "emailpage"		=> "E-mail user",
 "emailpagetext"	=> "If this user has entered a valid e-mail address in
-is user preferences, the form below will send a single message.",
+is user preferences, the form below will send a single message.
+The e-mail address you entered in your user preferences will appear
+as the \"From\" address of the mail, so the recipient will be able
+to reply.",
 "noemailtitle"	=> "No e-mail address",
 "noemailtext"	=> "This user has not specified a valid e-mail address
 in his user preferences.",
