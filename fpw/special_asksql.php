@@ -6,9 +6,7 @@ function askSQL () {
 	if ( isset ( $Save ) ) {
 		$ret .= "$question<br>" ;
 		unset ( $Save ) ;
-		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$question = str_replace ( "\\\"" , "\"" , $question ) ;
 		$result = mysql_query ( $question , $connection ) ;
 		$n = mysql_num_fields ( $result ) ;

@@ -1,9 +1,7 @@
 <?
 function randompage () {
 	global $THESCRIPT , $headerScript , $vpage ;
-	global $wikiSQLServer ;
 	$connection=getDBconnection() ;
-	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT COUNT(*) AS number FROM cur" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;

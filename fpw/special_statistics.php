@@ -1,11 +1,10 @@
 <?
 function statistics () {
-	global $THESCRIPT , $wikiSQLServer , $wikiStatisticsTitle , $wikiStatTotalPages ;
+	global $THESCRIPT , $wikiStatisticsTitle , $wikiStatTotalPages ;
 	global $wikiStatTalkPages , $wikiStatCommaPages , $wikiStatWikipediaNoTalk , $wikiStatSubNoTalk ,
 		$wikiStatNoTalk , $wikiStatArticles , $wikiStatJunk , $wikiStatOld , $wikiStatUsers , $wikiStatSysops ,
 		$wikiTalk ;
 	$connection=getDBconnection() ;
-	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$ret = "" ;
 	$ret .= "<h2>$wikiStatisticsTitle</h2><ul>" ;
 

@@ -46,9 +46,8 @@ class WikiPage extends WikiTitle {
             }
 
         # No special page, loading article form the database
-        global $wikiSQLServer , $useCachedPages ;
+        global $useCachedPages ;
         $connection = getDBconnection () ;
-        mysql_select_db ( $wikiSQLServer , $connection ) ;
         $thisVersion = "" ;
         $this->params = array () ;
         global $oldID , $version , $wikiOldVersion , $wikiDescribePage , $wikiRedirectFrom ;
@@ -128,9 +127,7 @@ class WikiPage extends WikiTitle {
         $t .= $this->mainTitle ;
         $mother = $t ;
         $t .= "/" ;
-        global $wikiSQLServer ;
         $connection = getDBconnection () ;
-        mysql_select_db ( $wikiSQLServer , $connection ) ;
         $sql = "SELECT cur_title FROM cur WHERE cur_title LIKE \"$t%\"" ;
         $result = mysql_query ( $sql , $connection ) ;
         $u = new WikiTitle ;
@@ -153,9 +150,8 @@ class WikiPage extends WikiTitle {
         $n = explode ( ":" , $this->title ) ;
         if ( count ( $n ) == 1 ) $n = $n[0] ;
         else $n = $n[1] ;
-        global $wikiSQLServer , $wikiTalk , $wikiUser , $wikiNamespaceTalk ;
+        global $wikiTalk , $wikiUser , $wikiNamespaceTalk ;
         $connection = getDBconnection () ;
-        mysql_select_db ( $wikiSQLServer , $connection ) ;
         $sql = "SELECT cur_title FROM cur WHERE cur_title LIKE \"%:$n\"" ;
         $result = mysql_query ( $sql , $connection ) ;
         $u = new WikiTitle ;
@@ -201,9 +197,7 @@ class WikiPage extends WikiTitle {
         global $useCachedPages ;
         $this->makeSecureTitle () ;
         if ( $this->doesTopicExist() ) return ;
-        global $wikiSQLServer ;
         $connection = getDBconnection () ;
-        mysql_select_db ( $wikiSQLServer , $connection ) ;
         $sql = "INSERT INTO cur (cur_title, cur_ind_title) VALUES (\"$this->secureTitle\", REPLACE(\"$this->secureTitle\",'_',' '))" ;
         mysql_query ( $sql , $connection ) ;
         if ( $useCachedPages ) { # Flushing cache for all pages that linked to the empty topic
@@ -219,9 +213,7 @@ class WikiPage extends WikiTitle {
         $id = getMySQL ( "cur" , "cur_id" , "cur_title=\"$this->secureTitle\"" ) ;
         $oid = getMySQL ( "cur" , "cur_old_version" , "cur_id=$id" ) ;
 
-        global $wikiSQLServer ;
         $connection = getDBconnection () ;
-        mysql_select_db ( $wikiSQLServer , $connection ) ;
         $sql = "SELECT * FROM cur WHERE cur_id=$id" ;
         $result = mysql_query ( $sql , $connection ) ;
         $s = mysql_fetch_object ( $result ) ;
@@ -255,9 +247,7 @@ class WikiPage extends WikiTitle {
 
         if ( $useCachedPages ) $addCache = "cur_cache=\"\"," ;
 
-        global $wikiSQLServer ;
         $connection = getDBconnection () ;
-        mysql_select_db ( $wikiSQLServer , $connection ) ;
         $text = str_replace ( "\"" , "\\\"" , $text ) ;
 #       $comment = str_replace ( "\"" , "\\\"" , $comment ) ;
         $userName = str_replace ( "\"" , "\\\"" , $userName ) ;
@@ -401,9 +391,7 @@ class WikiPage extends WikiTitle {
         $var=$wikiDate[strtolower(date("l"))]; $s = str_replace ( "{{CURRENTDAYNAME}}" , $var , $s ) ;
         $var=date("Y"); $s = str_replace ( "{{CURRENTYEAR}}" , $var , $s ) ;
         if ( strstr ( $s , "{{NUMBEROFARTICLES}}" ) ) { # This should count only "real" articles!
-            global $wikiSQLServer ;
             $connection=getDBconnection() ;
-            mysql_select_db ( $wikiSQLServer , $connection ) ;
             $sql="SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%:%\" AND cur_title NOT LIKE \"%ikipedia%\" AND cur_text LIKE \"%,%\"";
             $result = mysql_query ( $sql , $connection ) ;
             $var = mysql_fetch_object ( $result ) ;
@@ -415,9 +403,7 @@ class WikiPage extends WikiTitle {
 /*
         # Category functionality deactivated
         if ( strstr ( $s , "{{THISCATEGORY}}" ) ) {
-            global $wikiSQLServer ;
             $connection=getDBconnection() ;
-            mysql_select_db ( $wikiSQLServer , $connection ) ;
 
             $comp = $this->getNiceTitle() ;
             $comp = "%\nCATEGORY $comp\n%" ;
@@ -1165,7 +1151,6 @@ class WikiPage extends WikiTitle {
 
         $this->cache = str_replace ( "\"" , "\\\"" , $middle ) ;
         $connection = getDBconnection () ;
-        mysql_select_db ( $wikiSQLServer , $connection ) ;
         $sql = "UPDATE cur SET cur_cache=\"$this->cache\", cur_timestamp=cur_timestamp WHERE cur_title=\"$this->secureTitle\"" ;
         mysql_query ( $sql , $connection ) ;
         $sql = "UPDATE cur SET cur_text=\"\", cur_timestamp=cur_timestamp WHERE cur_title=\"Log:RecentChanges\"" ;
@@ -1199,9 +1184,7 @@ class WikiPage extends WikiTitle {
         global $oldID , $version , $user ;
         global $wikiBeginDiff , $wikiEndDiff , $wikiDiffLegend , $wikiDiffFirstVersion , $wikiDiffImpossible ;
         $ret = "<nowiki><font color=red><b>$wikiBeginDiff</b></font><br>\n\n" ;
-        global $wikiSQLServer ;
         $connection = getDBconnection () ;
-        mysql_select_db ( $wikiSQLServer , $connection ) ;
 
         if ( isset ( $oldID ) ) { # Diff between old versions
             $sql = "SELECT old_old_version FROM old WHERE old_id=$oldID" ;

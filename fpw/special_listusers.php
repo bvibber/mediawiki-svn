@@ -8,9 +8,7 @@ function listUsers () {
 	$vpage->special ( $wikiUserlistTitle ) ;
 	$vpage->namespace = "" ;
 	$ret = "$wikiUserlistText\n\n" ;
-	global $wikiSQLServer ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT * from user" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) {

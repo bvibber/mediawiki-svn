@@ -1,9 +1,8 @@
 <?
 function popularpages () {
-	global $wikiSQLServer , $vpage ;
+	global $vpage ;
 	$a = array () ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT cur_title,cur_counter FROM cur GROUP BY cur_title ORDER BY cur_counter DESC LIMIT 100" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) )

@@ -6,9 +6,7 @@ function AllPages () {
 	$vpage->special ( $wikiAllPagesTitle ) ;
 	$vpage->namespace = "" ;
 	$ret = $wikiAllPagesText ;
-	global $wikiSQLServer ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT cur_title FROM cur ORDER BY cur_title" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$ret .= "<nowiki>" ;

@@ -45,9 +45,7 @@ function WatchList () {
 	arsort ( $n ) ;
 	$k = array_keys ( $n ) ;
 
-	global $wikiSQLServer ;
 	$connection=getDBconnection() ;
-	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$arr = array () ;
 	$any = false ;
 	foreach ( $k as $x ) {

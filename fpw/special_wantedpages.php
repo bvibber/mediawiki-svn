@@ -12,9 +12,7 @@ function refreshWantedPages () {
 #	$ret .= "<nowiki><a href=\"".wikiLink("special:WantedPages?showNumberPages=$nsnp")."\">";
 #	$ret .= str_replace("$1",$showNumberPages,$wikiWantedToggleNumbers)."</a></nowiki><br>\n" ;
 
-	global $wikiSQLServer ;
 	$connection = getDBconnection () ;
-	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "SELECT cur_title,cur_linked_links,cur_unlinked_links FROM cur" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) {
