@@ -2,7 +2,7 @@
 # The wikiPage class is used for both database management and rendering (display) of articles
 # It inherits some functions and variables from the wikiTitle class
 
-include_once ( "wikiSkins.php" ) ;
+#include_once ( "wikiSkins.php" ) ;
 
 
 class WikiPage extends WikiTitle {
