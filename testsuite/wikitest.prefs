@@ -11,11 +11,10 @@
         <map />
         <node name="wikitest">
           <map>
-            <entry key="articlepath" value="http://www.wikipedia.org/wiki" />
             <entry key="mainpage" value="Main Page" />
-            <entry key="script" value="/w/wiki.phtml" />
-            <entry key="server" value="http://www.wikipedia.org" />
-            <entry key="uploadpath" value="http://www.wikipedia.org/upload/" />
+            <entry key="script" value="/newwiki/wiki.phtml" />
+            <entry key="server" value="http://www.piclab.com" />
+            <entry key="uploadpath" value="http://images.piclab.com/upload/" />
           </map>
         </node>
       </node>
