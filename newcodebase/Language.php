@@ -517,8 +517,7 @@ to set user preferences.",
 "recentchangescount" => "Number of titles in recent changes",
 "savedprefs"	=> "Your preferences have been saved.",
 "timezonetext"	=> "Enter number of hours your local time differs
-from server (U.S. Pacific) time.
-For example, for U.S. East coast, enter \"3\".",
+from server time (UTC).",
 "localtime"	=> "Local time",
 "timezoneoffset" => "Offset",
 "emailflag"		=> "Disable e-mail from other users",
@@ -594,7 +593,7 @@ you may be blocked from uploading if you abuse the system.",
 "uploadlog"		=> "upload log",
 "uploadlogpage" => "Upload_log",
 "uploadlogpagetext" => "Below is a list of the most recent file uploads.
-All times shown are server (U.S. Pacific) time.
+All times shown are server time (UTC).
 <ul>
 </ul>
 ",
@@ -765,7 +764,7 @@ See $2 for a record of recent deletions.",
 "deletedarticle" => "deleted \"$1\"",
 "dellogpage"	=> "Deletion_log",
 "dellogpagetext" => "Below is a list of the most recent deletions.
-All times shown are server (U.S. Pacific) time.
+All times shown are server time (UTC).
 <ul>
 </ul>
 ",
