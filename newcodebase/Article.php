@@ -17,8 +17,9 @@ class Article {
 
 	function getContent()
 	{
-		if ( 0 == $this->getID() ) { return "(Non-existent article.)\n"; }
-		else {
+		if ( 0 == $this->getID() ) {
+			return wfMsg( "newarticletext" );
+		} else {
 			$this->loadContent();
 			return $this->mContent;
 		}
@@ -72,13 +73,17 @@ class Article {
 
 	function view()
 	{
-		global $wgOut, $wgUser;
+		global $wgOut;
+		$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 
-		$n = $this->mTitle->getPrefixedText();
-		$wgOut->setPageTitle( $n );
-		$wgOut->addWikiText( $this->getContent() );
-
+		$this->showArticle();
 		$this->viewUpdates();
+	}
+
+	/* private */ function showArticle()
+	{
+		global $wgOut;
+		$wgOut->addWikiText( $this->getContent() );
 	}
 
 	function edit()
@@ -92,7 +97,7 @@ class Article {
 			return;
 		}
 		if ( isset( $wpSave ) ) {
-			$this->editSave();
+			$this->editForm( "save" );
 		} else if ( isset( $wpPreview ) ) {
 			$this->editForm( "preview" );
 		} else { # First time through
@@ -107,15 +112,49 @@ class Article {
 		global $wpTextbox1, $wpSummary, $wpSave, $wpPreview;
 		global $wpMinoredit, $wpEdittime, $wpTextbox2;
 
-		$wgOut->setPageTitle( "Editing " . $wgTitle->getPrefixedText() );
-		$wgOut->setRobotpolicy( "noindex,nofollow" );
-		$wgOut->setArticleFlag( false );
+		if ( "save" == $formtype ) {
+			if ( $wgUser->isBlocked() ) {
+				$this->blockedIPpage();
+				return;
+			}
+			$aid = $wgTitle->getArticleID();
+			if ( 0 == $aid ) { # New aritlce
+				$conn = wfGetDB();
+				$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
+				  "cur_comment,cur_user,cur_timestamp) VALUES ('" .
+				  $wgTitle->getNamespace() . "', '" .
+				  $wgTitle->getDBKey() . "', '" .
+				  wfStrencode( $wpTextbox1 ) . "', '" .
+				  wfStrencode( $wpSummary ) . "', '" . $wgUser->getID() .
+				  "', '" . date( "YmdHis" ) . "')";
 
+				wfDebug( "Art: 2: $sql\n" );
+				$res = mysql_query( $sql, $conn );
+				$this->editUpdates();
+
+				$wgOut->setPageTitle( wfMsg( "newarticle" ) . ": " .
+				  $wgTitle->getPrefixedText() );
+				$wgOut->addWikiText( $wpTextbox1 );
+				return;
+			}
+			# Check for edit conflict
+			#
+
+			# All's well: save the article here
+			#
+			$conn = wfGetDB();
+			$sql = "";
+			$this->editUpdates();
+		}
 		if ( "initial" == $formtype ) {
 			$wpEdittime = time( "YmdHis" );
 			$wpTextbox1 = $this->getContent();
 			$wpSummary = "*";
 		}
+		$wgOut->setPageTitle( "Editing " . $wgTitle->getPrefixedText() );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
+		$wgOut->setArticleFlag( false );
+
 		$rows = $wgUser->getOption( "rows" );
 		$cols = $wgUser->getOption( "cols" );
 		$action = "$wgServer$wgScript?title=" .
@@ -144,15 +183,6 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		}
 	}
 
-	function editSave()
-	{
-		$this->editUpdates();
-	}
-
-	function editPreview()
-	{
-	}
-
 	function viewprintable()
 	{
 		global $wgOut, $wgUser;
@@ -170,10 +200,6 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 	}
 
 	function history()
-	{
-	}
-
-	function edit_conflict()
 	{
 	}
 
@@ -200,6 +226,22 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		$u = new SiteStatsUpdate( 0, 1, 0 );
 		array_push( $wgDeferredUpdateList, $u );
+	}
+
+	function blockedIPpage()
+	{
+		global $wgOut, $wgUser;
+
+		$wgOut->setPageTitle( wfMsg( "blockedtitle" ) );
+		$id = $wgUser->blockedBy();
+		$reason = $wgUser->blockedFor();
+
+		$name = User::whoIs( $id );
+		$link = "[[User:$name|$name]]";
+
+		$text = str_replace( "$1", $link, wfMsg( "blockedtext" ) );
+		$text = str_replace( "$2", $reason, $text );
+		$wgOut->addWikiText( $text );
 	}
 }
 

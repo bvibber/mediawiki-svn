@@ -27,12 +27,13 @@ $wgTotalViews = -1;
 $wgTotalEdits = -1;
 
 include_once( "./DatabaseFunctions.php" );
+include_once( "./UpdateClasses.php" );
 
 function wfLocalLink( $a )
 {
 	global $wgArticlePath;
 
-	$a = str_replace( " ", "+", $a );
+	$a = str_replace( " ", "_", $a );
 	$a = str_replace( "$1", $a, $wgArticlePath );
 	return $a;
 }

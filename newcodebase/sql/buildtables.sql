@@ -94,3 +94,11 @@ CREATE TABLE site_stats (
   UNIQUE KEY ss_row_id (ss_row_id)
 ) TYPE=MyISAM;
 
+CREATE TABLE ipblocks (
+  ipb_address varchar(40) binary default '',
+  ipb_user mediumint(8) unsigned default '0',
+  ipb_reason mediumtext,
+  INDEX ipb_address (ipb_address),
+  INDEX ipb_user (ipb_user)
+) TYPE=MyISAM;
+

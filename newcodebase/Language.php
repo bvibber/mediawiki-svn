@@ -117,6 +117,12 @@ Please log in again after you receive it.",
 "savearticle"	=> "Save article",
 "preview"		=> "Preview",
 "showpreview"	=> "Show preview",
+"blockedtitle"	=> "User is blocked",
+"blockedtext"	=> "Your user name or IP addressed has been blocked by $1.
+The reason given is this:<br>$2<p>You may contact that administrator to
+discuss the block.",
+"newarticle"	=> "New article",
+"newarticletext" => "Describe the new page here.",
 
 # Preferences page
 #
