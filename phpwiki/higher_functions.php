@@ -393,4 +393,16 @@ function pageIndex () {
 	$search = "" ;
 	return doSearch () ;
 	}
+
+function special_pages () {
+	global $xtitle ;
+	$xtitle = "Special pages" ;
+	$ret = getStandardHeader () ;
+	$ret .= "This is a list of wikipedia pages with special functions.\n<ul>\n" ;
+	$ret .= "<li><a href=\"$PHPSELF?action=statistics\">Up-to-the-minute statistics</a></li>\n" ;
+	$ret .= "<li><a href=\"$PHPSELF?action=view&title=Random_Page\">A random page</a></li>\n" ;
+	$ret .= "<li><a href=\"$PHPSELF?action=view&title=Page_Index\">The index of all pages</a></li>\n" ;
+#	$ret .= "<li><a href=\"$PHPSELF?action=\"></a></li>\n" ;
+	return $ret."</ul>".getStandardFooter();
+	}
 ?>
