@@ -1,5 +1,7 @@
 <?
 
+include_once( "utf8Case.php" );
+
 # The names of the namespaces can be set here, but the numbers
 # are magical, so don't change or move them!  The Namespace class
 # encapsulates some of the magic-ness.
@@ -29,7 +31,7 @@
 	"quickbar" => 1, "underline" => 1, "hover" => 1,
 	"cols" => 80, "rows" => 25, "searchlimit" => 20,
 	"contextlines" => 5, "contextchars" => 50,
-	"skin" => 0, "rcdays" => 3, "rclimit" => 50,
+	"skin" => 0, "rcdays" => 14, "rclimit" => 50,
 	"highlightbroken" => 1, "stubthreshold" => 0
 );
 
@@ -1103,15 +1105,25 @@ class LanguageKo extends Language {
 	# Inherit default iconv()
 	
 	function ucfirst( $string ) {
-        #return ucfirst( $string );
 		# For most languages, this is a wrapper for ucfirst()
 		# But that doesn't work right in a UTF-8 locale
-		include("utf8Case.php");
-        return preg_replace (
-        	"/^([\\x00-\\x7f]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
-        	"strtr ( \"\$1\" , \$wikiUpperChars )",
-        	$string );
+		global $wikiUpperChars;
+		return preg_replace (
+			"/^([\\x00-\\x7f]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
+			"strtr ( \"\$1\" , \$wikiUpperChars )",
+			$string );
 	}
+
+	function stripForSearch( $string ) {
+		# MySQL fulltext index doesn't grok utf-8, so we
+		# need to fold cases and convert to hex
+		global $wikiLowerChars;
+		return preg_replace(
+		  "/([\\xc0-\\xff][\\x80-\\xbf]*)/e",
+		  "'U8' . bin2hex( strtr( \"\$1\", \$wikiLowerChars ) )",
+		  $string );
+	}
+
 	
 	# Inherit default checkTitleEncoding()
 
