@@ -30,7 +30,7 @@
 
   //========================================================================
   // D E F I N E S
-  define("WH_TABLE_S",      "<table border=\"0\" height=\"100%\" cellspacing=\"0\" cellpadding=\"0\">");
+  define("WH_TABLE_S",      "<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">");
   define("WH_TABLE_E",      "</table>");
   define("WH_TD_S",         "<td align=\"center\" valign=\"middle\">");
   define("WH_TD_E",         "</td>");
