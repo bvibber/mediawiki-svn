@@ -21,6 +21,8 @@ template<class T>
 T* singleton<T>::mT = 0;
 
 std::string car(std::string&);
+std::string lower(std::string s);
+
 std::vector<std::string> snarf(str);
 std::time_t wf2time_t(str wf);
 } // namespace smutl

@@ -1,7 +1,7 @@
 #! /bin/sh
 # $Header$
 
-idents=`ident -q \`find . -name \*.\[ch\]xx\`|grep \\\$Header$foo\"",; done)`
+idents=`ident -q \`find . -name \*.\[ch\]xx\`|grep \\\$Head|(while read foo; do echo "	\"$foo\"",; done)`
 
 cat <<_EOF_
 /* this file in generated automatically.  do not edit it. */

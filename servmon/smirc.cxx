@@ -45,6 +45,7 @@ namespace smirc {
 			std::string precar, word;
 			handler_node_t *here = &cmds_root;
 			int herelen = 0;
+			ln = remove_modifiers(ln);
 			for (;;) {
 				precar = ln;
 				word = smutl::car(ln);
@@ -100,7 +101,7 @@ namespace smirc {
 		void setdata(str) {}
 		void echo(bool) {}
 
-		void wrt(u_char c) {
+		void wrt(u_char c, bool force) {
 			/*
 			 * hm... this doesn't make much sense in a line-oriented,
 			 * non-interactive environment.  maybe we should queue up
@@ -110,11 +111,13 @@ namespace smirc {
 			 */
 			client.command_reply(std::string(1, c));
 		}
-		void wrt(str msg) {
+		void wrt(str msg, bool force = false) {
+			if (!force && !includematch(msg))
+				return;
 			client.command_reply(msg);
 		}
-		void wrtln(str msg) {
-			wrt(msg);
+		void wrtln(str msg, bool force = false) {
+			wrt(msg, force);
 		}
 		void readline(readline_cb_t) {
 			throw smtrm::non_interactive_terminal();

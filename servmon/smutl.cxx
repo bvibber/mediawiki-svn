@@ -20,6 +20,12 @@ car(std::string& s)
 	return t;
 }
 
+std::string
+lower(std::string s) {
+	std::transform(s.begin(), s.end(), s.begin(), std::ptr_fun<int, int>(std::tolower));
+	return s;
+}
+
 std::vector<std::string>
 snarf(str cmd)
 {

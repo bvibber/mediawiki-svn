@@ -15,6 +15,8 @@
 #include <set>
 #include <list>
 #include <cerrno>
+#include <cctype>
+#include <algorithm>
 using std::for_each;
 
 #include <boost/bind.hpp>
@@ -27,6 +29,9 @@ using std::for_each;
 #include <boost/thread.hpp>
 #include <boost/thread/mutex.hpp>
 #include <boost/any.hpp>
+#include <boost/regex.hpp>
+using boost::regex;
+using boost::regex_search;
 using boost::lexical_cast;
 using boost::bad_lexical_cast;
 using boost::format;
