@@ -1171,21 +1171,49 @@ class Language {
 		# it with one to detect and convert another legacy encoding.
 		return $s;
 	}
-
-	function getAltEncoding() {
-		# Some languages may have an alternate char encoding option
-		# (Esperanto X-coding, Japanese furigana conversion, etc)
-		# If 'altencoding' is checked in user prefs, this is used
-		# instead of the default $wgOutputEncoding set in LocalSettings.php
-		global $wgOutputEncoding;
-		return $wgOutputEncoding;
-	}
 	
 	function stripForSearch( $in ) {
 		# Some languages have special punctuation to strip out
 		# or characters which need to be converted for MySQL's
 		# indexing to grok it correctly. Make such changes here.
 		return $in;
+	}
+
+
+	function setAltEncoding() {
+		# Some languages may have an alternate char encoding option
+		# (Esperanto X-coding, Japanese furigana conversion, etc)
+		# If 'altencoding' is checked in user prefs, this gives a
+		# chance to swap out the default encoding settings.
+		#global $wgInputEncoding, $wgOutputEncoding, $wgEditEncoding;
+	}
+
+	function recodeForEdit( $s ) {
+		# For some languages we'll want to explicitly specify
+		# which characters make it into the edit box raw
+		# or are converted in some way or another.
+		# Note that if wgOutputEncoding is different from
+		# wgInputEncoding, this text will be further converted
+		# to wgOutputEncoding.
+		global $wgInputEncoding, $wgEditEncoding;
+		if( $wgEditEncoding == "" or
+			$wgEditEncoding == $wgInputEncoding )
+			return $s;
+		else
+			return $this->iconv( $wgInputEncoding, $wgEditEncoding, $s );
+	}
+
+	function recodeInput( $s ) {
+		# Take the previous into account.
+		global $wgInputEncoding, $wgOutputEncoding, $wgEditEncoding;
+		if($wgEditEncoding != "")
+			$enc = $wgEditEncoding;
+		else
+			$enc = $wgOutputEncoding;
+		if( $enc == $wgInputEncoding )
+			return $s;
+		else
+			return $this->iconv( $enc, $wgInputEncoding, $s );
 	}
 
 }

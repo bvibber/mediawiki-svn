@@ -1,5 +1,8 @@
 <?
 include("utf8Case.php");
+$wgInputEncoding	= "utf-8";
+$wgOutputEncoding	= "utf-8";
+$wgEditEncoding		= "x";
 
 # See language.doc
 
@@ -516,7 +519,7 @@ kaj $3 artikolojn laŭ enhavo.",
 "prevn"			=> "$1 antaŭajn",
 "nextn"			=> "$1 sekvajn",
 "viewprevnext"	=> "Montru ($1) ($2) ($3).",
-"showingresults" => "Montras <b>$1</b> trovitajn ekde la <b></b>-a.",
+"showingresults" => "Montras <b>$1</b> trovitajn ekde la <b>$2</b>-a.",
 "nonefound"		=> "<strong>Noto</strong>: malsukcesaj serĉoj ofte
 okazas ĉar oni serĉas tro da ofte uzataj vortoj, kiujn ne enhavas la indekso,
 aŭ ĉar oni petas tro da serĉvortoj (nur paĝoj kiuj enhavas ĉiun serĉvorton
@@ -968,7 +971,13 @@ Bonvolu elekti alian nomon.",
 
 class LanguageEo extends Language {
 
-    function getNamespaces() {
+	function getDefaultUserOptions () {
+		$opt = Language::getDefaultUserOptions();
+		$opt["altencoding"] = 0;
+		return $opt;
+	}
+
+	function getNamespaces() {
 		global $wgNamespaceNamesEo;
 		return $wgNamespaceNamesEo;
 	}
@@ -1094,7 +1103,7 @@ class LanguageEo extends Language {
 		# For most languages, this is a wrapper for iconv
 		# Por multaj lingvoj, ĉi tiu nur voku la sisteman funkcion iconv()
 		# Ni ankaŭ konvertu X-sistemajn surogotajn
-		if( $in == "X" ) {
+		if( strcasecmp( $in, "x" ) == 0 and strcasecmp( $out, "utf-8" ) == 0) {
 			$xu = array (
 				"xx" => "x" , "xX" => "x" ,
 				"Xx" => "X" , "XX" => "XX" ,
@@ -1112,7 +1121,7 @@ class LanguageEo extends Language {
 				"ux" => "\xc5\xad" , "uX" => "\xc5\xad"
 				) ;
 			return preg_replace ( "/([cghjsux]x)(?=(?:xx)*[^x\$])/ei" , "\$xu[\"\$1\"]" , $string ) ;
-		} else if( $out == "X" ) {
+		} else if( strcasecmp( $in, "UTF-8" ) == 0 and strcasecmp( $out, "x" ) == 0 ) {
 			# FIXME: For output
 			$ux = array (
 				#"x" => "xx" , "X" => "Xx" ,
@@ -1123,7 +1132,10 @@ class LanguageEo extends Language {
 				"\xc5\x9c" => "Sx" , "\xc5\x9d" => "sx" ,
 				"\xc5\xac" => "Ux" , "\xc5\xad" => "ux"
 			) ;
-			# Double Xs only if they follow cxapelutaj literoj or other Xs. It's not canon, but it's a lot prettier
+			# Double Xs only if they follow cxapelutaj literoj or other Xs.
+			# It's not canon, but it's a lot prettier
+			$string = preg_replace( '/([cghjsux]|\xc4[\x88\x89\x9c\x9d\xa4\xa5\xb4\xb5]'.
+				'|\xc5[\x9c\x9d\xac\xad])(?=x)/i', '$1x', $string );
 			return strtr ( $string , $ux ) ;
 			#return $textregs[1] . preg_replace ( "/((?:^|[^cghjsux])x)x(?!x)/i" , "\$1" , $text ) ;
 		}
@@ -1150,31 +1162,33 @@ class LanguageEo extends Language {
 		  $string );
 	}
 
-    function checkTitleEncoding( $s ) {
-        global $wgInputEncoding;
-        
-        # Check for X-system backwards-compatibility URLs
+	function checkTitleEncoding( $s ) {
+		global $wgInputEncoding;
+		
+        	# Check for X-system backwards-compatibility URLs
 		$ishigh = preg_match( '/[\x80-\xff]/', $s);
 		$isutf = preg_match( '/^([\x00-\x7f]|[\xc0-\xdf][\x80-\xbf]|' .
-                '[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xf7][\x80-\xbf]{3})+$/', $s );
-        
-        if($ishigh and !$isutf) {
-        	# Assume Latin1
-        	$s = utf8_encode( $s );
-        } else {
-        	if( preg_match( '/(\xc4[\x88\x89\x9c\x9d\xa4\xa5\xb4\xb5]'.
-        		'|\xc5[\x9c\x9d\xac\xad])/', $s ) )
-        		return $s;
-        }
-        
-        if( preg_match( '/[cghjsu]x/i', $s ) )
-        	return $this->iconv( "X", "UTF-8", $s );
-        
-        return $s;
+			'[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xf7][\x80-\xbf]{3})+$/', $s );
+		
+		if($ishigh and !$isutf) {
+			# Assume Latin1
+			$s = utf8_encode( $s );
+		} else {
+			if( preg_match( '/(\xc4[\x88\x89\x9c\x9d\xa4\xa5\xb4\xb5]'.
+				'|\xc5[\x9c\x9d\xac\xad])/', $s ) )
+			return $s;
+		}
+
+		if( preg_match( '/[cghjsu]x/i', $s ) )
+			return $this->iconv( "x", "utf-8", $s );
+		return $s;
 	}
 
-	function getAltEncoding() {
-		return "X";
+	function setAltEncoding() {
+		global $wgEditEncoding, $wgInputEncoding, $wgOutputEncoding;
+		$wgInputEncoding = "utf-8";
+		$wgOutputEncoding = "x";
+		$wgEditEncoding = "";
 	}
 
 }

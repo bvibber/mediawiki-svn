@@ -146,7 +146,7 @@ function wfMsg( $key )
 function wfCleanFormFields( $fields )
 {
 	global $HTTP_POST_VARS;
-	global $wgInputEncoding, $wgOutputEncoding, $wgLang;
+	global $wgInputEncoding, $wgOutputEncoding, $wgEditEncoding, $wgLang;
 
 	if ( get_magic_quotes_gpc() ) {
 		foreach ( $fields as $fname ) {
@@ -160,7 +160,9 @@ function wfCleanFormFields( $fields )
 			}
 		}
 	}
-	if ( $wgInputEncoding != $wgOutputEncoding ) {
+	$enc = $wgOutputEncoding;
+	if( $wgEditEncoding != "") $enc = $wgEditEncoding;
+	if ( $enc != $wgInputEncoding ) {
 		foreach ( $fields as $fname ) {
 			if ( isset( $HTTP_POST_VARS[$fname] ) ) {
 				$HTTP_POST_VARS[$fname] = $wgLang->iconv(
@@ -170,7 +172,7 @@ function wfCleanFormFields( $fields )
 			global ${$fname};
 			if ( isset( ${$fname} ) ) {
 				${$fname} = $wgLang->iconv(
-				  $wgOutputEncoding, $wgInputEncoding, ${$fname} );
+				  $enc, $wgInputEncoding, ${$fname} );
 			}
 		}
 	}
@@ -194,9 +196,11 @@ function wfDemungeQuotes( $in )
 
 function wfCleanQueryVar( $var )
 {
+	global $wgLang;
 	if ( get_magic_quotes_gpc() ) {
-		return stripslashes( $var );
-	} else { return $var; }
+		$var = stripslashes( $var );
+	}
+	return $wgLang->recodeInput( $var );
 }
 
 function wfSpecialPage()
@@ -231,9 +235,7 @@ function wfSpecialPage()
 
 function wfSearch( $s )
 {
-	global $search;
-
-	$se = new SearchEngine( wfCleanQueryVar( $search ) );
+	$se = new SearchEngine( wfCleanQueryVar( $s ) );
 	$se->showResults();
 }
 
