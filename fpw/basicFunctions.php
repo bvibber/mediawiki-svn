@@ -115,7 +115,7 @@ function edit ( $title ) {
 #	$headerScript = "<script> <!-- function setfocus() { document.f.EditBox.focus(); } --> </script>" ;
 #	$bodyOptions = " onLoad=setfocus()" ;
 
-	$ret .= "<form method=POST action=\"".wikiLink($npage->secureTitle)."\" name=f\" enctype=\"application/x-www-form-urlencoded\">" ;
+	$ret .= "<form method=POST action=\"".wikiLink($npage->url)."\" name=f\" enctype=\"application/x-www-form-urlencoded\">" ;
 	$ret .= "<textarea tabindex=1 name=EditBox rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>".$text."</textarea><br>\n" ;
 	$ret .= "$wikiSummary<input tabindex=2 type=text value=\"$CommentBox\" name=CommentBox size=50 maxlength=200> \n" ;
 	if ( $user->isLoggedIn == "yes" ) 
@@ -129,7 +129,7 @@ function edit ( $title ) {
 	$ret .= "<input tabindex=5 type=submit value=$wikiPreview name=PreviewButton>\n" ;
 	$ret .= "<input type=hidden value=\"$EditTime\" name=EditTime>\n" ;
 	$ret .= "<input type=hidden value=yes name=FromEditForm>\n" ;
-	$ret .= " <a href=\"".wikiLink($vpage->secureTitle)."\">$wikiDontSaveChanges</a></form>" ; 
+	$ret .= " <a href=\"".wikiLink($vpage->url)."\">$wikiDontSaveChanges</a></form>" ; 
 	if ( $editConflict ) {
 		$ret .= "<br><hr><br><b>This is the text you submitted :</b><br>\n" ;
 		$ret .= "<textarea name=NotIMPORTANT rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>$oldSubmittedText</textarea><br>\n" ;
@@ -144,8 +144,7 @@ function doEdit ( $title ) {
 	$wasSaved = false ;
 	$vpage = new WikiPage ;
 	$vpage->isSpecialPage = true ;
-	$vpage->title = $title ;
-	$vpage->makeSecureTitle () ;
+	$vpage->SetTitle ( $title ) ;
 	$action = "" ;
 	$ret = $vpage->getHeader() ;
 	$action = "edit" ;

@@ -50,8 +50,7 @@ class WikiPage extends WikiTitle {
 			$sql = "SELECT * FROM old WHERE old_id=$oldID" ;
 			$result = mysql_query ( $sql , $connection ) ;
 			if ( $s = mysql_fetch_object ( $result ) ) {
-				$this->title=$s->old_title ;
-				$this->makeSecureTitle () ;
+				$this->SetTitle ( $s->old_title ) ;
 				$this->contents = $s->old_text ;
 				$this->thisVersion = str_replace ( "$1" , $version , $wikiOldVersion ) ;
 				$this->thisVersion = str_replace ( "$2" , $this->secureTitle , $this->thisVersion ) ;
@@ -62,8 +61,7 @@ class WikiPage extends WikiTitle {
 			$sql = "SELECT * FROM cur WHERE cur_title=\"".$this->secureTitle."\"" ;
 			$result = mysql_query ( $sql , $connection ) ;
 			if ( $s = mysql_fetch_object ( $result ) ) {
-				$this->title=$s->cur_title ;
-				$this->makeSecureTitle () ;
+				$this->SetTitle ( $s->cur_title ) ;
 				$this->contents = $s->cur_text ;
 				$this->knownLinkedLinks = explode ( "\n" , $s->cur_linked_links ) ;
 				$this->knownUnlinkedLinks = explode ( "\n" , $s->cur_unlinked_links ) ;
@@ -82,7 +80,7 @@ class WikiPage extends WikiTitle {
 			}
 
 		if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" ) { # #REDIRECT
-			$this->backLink = str_replace ( "$1" , $this->secureTitle , $wikiRedirectFrom ) ;
+			$this->backLink = str_replace ( "$1" , $this->url , $wikiRedirectFrom ) ;
 			$this->backLink = str_replace ( "$2" , $this->getNiceTitle() , $this->backLink ) ;
 			$z = $this->contents ;
 			$z = substr ( $z , 10 ) ;
@@ -171,7 +169,7 @@ class WikiPage extends WikiTitle {
 			#if ( $dummy->doesTopicExist ( $connection ) ) $style = "color:green;text-decoration:none" ;
 			#else $style = "color:red;text-decoration:none" ;
 			$style = $dummy->doesTopicExist ( $connection ) ? "green" : "red";
-			array_push ( $a , "<a class=\"$style\" href=\"".wikiLink($dummy->secureTitle)."\">$n2</a>" ) ;
+			array_push ( $a , "<a class=\"$style\" href=\"".wikiLink($dummy->url)."\">$n2</a>" ) ;
 			}
 
 		while ( $s = mysql_fetch_object ( $result ) ) {
@@ -851,7 +849,7 @@ class WikiPage extends WikiTitle {
 		if ( $this->isSpecialPage ) {
 			$ret .= "<font size=\"+3\">".$t."</font>" ;
 			if ( $action == "" ) {
-				$ret .= "<br>\n<br>\n<a href=\"".wikiLink("special:whatlinkshere&target=$this->secureTitle")."\">$wikiWhatLinksHere</a>" ;
+				$ret .= "<br>\n<br>\n<a href=\"".wikiLink("special:whatlinkshere&target=$this->url")."\">$wikiWhatLinksHere</a>" ;
 				$ret .= " | <a href=\"".wikiLink("wikipedia:How does one edit a page")."\">$wikiEditHelp</a>" ;
 				}
 		} else {
@@ -865,11 +863,11 @@ class WikiPage extends WikiTitle {
 			if ( $action == "view" and !$this->isSpecialPage ) $ret .=  "<br>$wikiArticleSubtitle\n" ;
 			if ( $user->isLoggedIn ) {
 				if ( $user->doWatch($this->title) )
-					array_push($subText,"<a href=\"".wikiLink("$this->secureTitle&action=watch&mode=no")."\">$wikiNoWatch</a>");
-				else array_push($subText,"<a href=\"".wikiLink("$this->secureTitle&action=watch&mode=yes")."\">$wikiWatch</a>") ;
+					array_push($subText,"<a href=\"".wikiLink("$this->url&action=watch&mode=no")."\">$wikiNoWatch</a>");
+				else array_push($subText,"<a href=\"".wikiLink("$this->url&action=watch&mode=yes")."\">$wikiWatch</a>") ;
 				}
-			if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"".wikiLink("$this->secureTitle&action=print")."\">$wikiPrintable</a>" ) ;
-			if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"".wikiLink("special:whatlinkshere&target=$this->secureTitle")."\">$wikiWhatLinksHere</a>" ) ;
+			if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"".wikiLink("$this->url&action=print")."\">$wikiPrintable</a>" ) ;
+			if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"".wikiLink("special:whatlinkshere&target=$this->url")."\">$wikiWhatLinksHere</a>" ) ;
 			if ( $this->backLink != "" ) array_push ( $subText , $this->backLink ) ;
 			if ( $this->namespace == "user" and $this->subpageTitle == "" )
 				array_push ( $subText , "<a href=\"".wikiLink("special:contributions&theuser=$this->mainTitle")."\">This user's contributions</a>");
@@ -952,7 +950,7 @@ class WikiPage extends WikiTitle {
 			$t = new wikiTitle ;
 			foreach ( $cat as $x ) {
 				$t->setTitle ( $x ) ;
-				$column .= "<a href=\"".wikiLink($t->secureTitle")."\">".$this->getNiceTitle($x)."</a><br>\n" ;
+				$column .= "<a href=\"".wikiLink($t->url")."\">".$this->getNiceTitle($x)."</a><br>\n" ;
 				}
 			}
 */
@@ -1016,7 +1014,7 @@ class WikiPage extends WikiTitle {
 			$lc .= ":".substr ( $this->timestamp , 10 , 2 ) ;
 			$ret .= "<br>\n" ;
 			$ret .= str_replace ( "$1" , $lc , $wikiLastChange ) ;
-			$ret .= " <a href=\"".wikiLink("$this->secureTitle&diff=yes")."\">(diff)</a> " ;
+			$ret .= " <a href=\"".wikiLink("$this->url&diff=yes")."\">(diff)</a> " ;
 			}
 
 /*
@@ -1028,7 +1026,7 @@ class WikiPage extends WikiTitle {
 			$m = "" ;
 			foreach ( $cat as $x ) {
 				$t->setTitle ( $x ) ;
-				$ret .= "$m<a href=\"".wikiLink($t->secureTitle)."\">".$this->getNiceTitle($x)."</a>" ;
+				$ret .= "$m<a href=\"".wikiLink($t->url)."\">".$this->getNiceTitle($x)."</a>" ;
 				if ( $m == "" ) $m = " | " ;
 				}
 			}
@@ -1052,7 +1050,7 @@ class WikiPage extends WikiTitle {
 		$middle = $this->getMiddle($middle) ;
 		if ( $doPrint ) {
 			$header = "<h1>".$this->getNiceTitle($pageTitle)."</h1>\n" ;
-			$link = str_replace ( "$1" , $this->secureTitle , $wikiArticleSource ) ;
+			$link = str_replace ( "$1" , $this->url , $wikiArticleSource ) ;
 			$footer = "<hr>This article is from <b>Wikipedia</b> (<a href=\"$wikiCurrentServer\">$wikiCurrentServer</a>), " ;
 			$footer .= "the free online encyclopedia. You can find this article at <a href=\"$link\">$link</a>" ;
 			$ret = $header.$middle ;
