@@ -17,7 +17,7 @@
 );
 
 /* private */ $wgQuickbarSettingsPl = array(
-	"Brak", "Sta³y, z lewej", "Sta³y, z prawej", "Unosz±cy siê, z lewej"
+	"Brak", "StaÅ‚y, z lewej", "StaÅ‚y, z prawej", "UnoszÄ…cy siÄ™, z lewej"
 );
 
 /* private */ $wgSkinNamesPl = array(
@@ -26,71 +26,71 @@
 
 /* private */ $wgUserTogglesPl = array(
 	"hover"		=> "Pokazuj okienko podpowiedzi ponad linkami",
-	"underline" => "Podkre¶lenie linków",
-	"highlightbroken" => "Pod¶wietl linki pustych stron",
-	"justify"	=> "Wyrównuj tekst artyku³u w kolumnie",
+	"underline" => "PodkreÅ›lenie linkÃ³w",
+	"highlightbroken" => "PodÅ›wietl linki pustych stron",
+	"justify"	=> "WyrÃ³wnuj tekst artykuÅ‚u w kolumnie",
 	"hideminor" => "Ukryj drobne zmiany w \"Ostatnich zmianach\"",
-	"numberheadings" => "Automatyczna numeracja nag³ówków",
-	"rememberpassword" => "Pamiêtaj has³o miêdzy sesjami"
+	"numberheadings" => "Automatyczna numeracja nagÅ‚Ã³wkÃ³w",
+	"rememberpassword" => "PamiÄ™taj hasÅ‚o miÄ™dzy sesjami"
 );
 
 /* private */ $wgLanguageNamesPl = array(
 	"ab"	=> "Abchazka",
 	"aa"	=> "Afar",
 	"af"	=> "afrikaans",
-	"sq"	=> "albañska",
+	"sq"	=> "albaÅ„ska",
 	"am"	=> "amharska",
 	"ar"	=> "arabska",
-	"hy"	=> "armeñska",
+	"hy"	=> "armeÅ„ska",
 	"as"	=> "Assamese",
 	"ay"	=> "Aymara",
-	"az"	=> "azerbejd¿añska",
+	"az"	=> "azerbejdÅ¼aÅ„ska",
 	"ba"	=> "baszkirska",
 	"eu"	=> "baskijska",
-	"be"	=> "bia³oruska",
+	"be"	=> "biaÅ‚oruska",
 	"bn"	=> "bengalska",
 	"dz"	=> "Dzongkha",
 	"bh"	=> "Bihara",
 	"bi"	=> "Bislama",
-	"my"	=> "birmañska",
-	"km"	=> "kambod¿añska",
-	"ca"	=> "kataloñska",
-	"zh"	=> "chiñska",
+	"my"	=> "birmaÅ„ska",
+	"km"	=> "kambodÅ¼aÅ„ska",
+	"ca"	=> "kataloÅ„ska",
+	"zh"	=> "chiÅ„ska",
 	"co"	=> "Corsican",
 	"hr"	=> "chorwacka",
 	"cs"	=> "czeska",
-	"da"	=> "duñska", # Note two different subdomains. 
-	"dk"	=> "duñska", # 'da' is correct for the language.
+	"da"	=> "duÅ„ska", # Note two different subdomains. 
+	"dk"	=> "duÅ„ska", # 'da' is correct for the language.
 	"nl"	=> "niderlandzka",
 	"en"	=> "angielska",
 	"w"	=> "angielska", # Should this be in list this?
 	"simple" => "uproszczona angielska",
 	"eo"	=> "esperanto",
-	"et"	=> "estoñska",
+	"et"	=> "estoÅ„ska",
 	"fo"	=> "Faeroese",
 	"fj"	=> "Fijian",
-	"fi"	=> "fiñska",
+	"fi"	=> "fiÅ„ska",
 	"fr"	=> "francuska",
 	"fy"	=> "fryzyjska",
 	"gl"	=> "galicyjska",
-	"ka"	=> "gruziñska",
+	"ka"	=> "gruziÅ„ska",
 	"de"	=> "niemiecka",
 	"el"	=> "grecka",
 	"kl"	=> "grenlandzka",
 	"gn"	=> "Guarani",
-	"gu"	=> "gud¿arati",
+	"gu"	=> "gudÅ¼arati",
 	"ha"	=> "hausa",
 	"he"	=> "hebrajska",
 	"hi"	=> "hindi",
-	"hu"	=> "wêgierska",
+	"hu"	=> "wÄ™gierska",
 	"is"	=> "islandzka",
 	"id"	=> "indonezyjska",
 	"ia"	=> "interlingua",
 	"iu"	=> "Inuktitut",
 	"ik"	=> "Inupiak",
 	"ga"	=> "irlandzka",
-	"it"	=> "w³oska",
-	"ja"	=> "japoñska",
+	"it"	=> "wÅ‚oska",
+	"ja"	=> "japoÅ„ska",
 	"jv"	=> "jawajska",
 	"kn"	=> "kannada",
 	"ks"	=> "kaszmirska",
@@ -98,19 +98,19 @@
 	"rw"	=> "Kinyarwanda",
 	"ky"	=> "kirgizka",
 	"rn"	=> "Kirundi",
-	"ko"	=> "koreañska",
-	"lo"	=> "laotañska",
-	"la"	=> "w ³acinie",
-	"lv"	=> "³otewska",
+	"ko"	=> "koreaÅ„ska",
+	"lo"	=> "laotaÅ„ska",
+	"la"	=> "w Å‚acinie",
+	"lv"	=> "Å‚otewska",
 	"ln"	=> "lingala",
 	"lt"	=> "litewska",
-	"mk"	=> "macedoñska",
+	"mk"	=> "macedoÅ„ska",
 	"mg"	=> "malagaska",
 	"ms"	=> "malajska",
 	"ml"	=> "malajalam",
 	"mi"	=> "maoryjska",
 	"mr"	=> "marathi",
-	"mo"	=> "mo³dawska",
+	"mo"	=> "moÅ‚dawska",
 	"mn"	=> "mongolska",
 	"na"	=> "Nauru",
 	"ne"	=> "nepalska",
@@ -122,12 +122,12 @@
 	"fa"	=> "perska",
 	"pl"	=> "polska",
 	"pt"	=> "portugalska",
-	"pa"	=> "pend¿abska",
+	"pa"	=> "pendÅ¼abska",
 	"qu"	=> "keczua",
-	"rm"	=> "retoromañska",
-	"ro"	=> "rumuñska",
+	"rm"	=> "retoromaÅ„ska",
+	"ro"	=> "rumuÅ„ska",
 	"ru"	=> "rosyjska",
-	"sm"	=> "samoañska",
+	"sm"	=> "samoaÅ„ska",
 	"sg"	=> "Sangro",
 	"sa"	=> "w sanskrycie",
 	"sr"	=> "serbska",
@@ -138,28 +138,28 @@
 	"sd"	=> "sindhi",
 	"si"	=> "Sinhalese",
 	"ss"	=> "Siswati",
-	"sk"	=> "s³owacka",
-	"sl"	=> "s³oweñska",
+	"sk"	=> "sÅ‚owacka",
+	"sl"	=> "sÅ‚oweÅ„ska",
 	"so"	=> "w somali",
-	"es"	=> "hiszpañska",
+	"es"	=> "hiszpaÅ„ska",
 	"su"	=> "Sudanese",
 	"sw"	=> "suahili",
 	"sv"	=> "szwedzka",
 	"tl"	=> "tagalog",
-	"tg"	=> "tad¿ycka",
+	"tg"	=> "tadÅ¼ycka",
 	"ta"	=> "tamilska",
 	"tt"	=> "tatarska",
 	"te"	=> "telugu",
 	"th"	=> "tajska",
-	"bo"	=> "tybetañska",
+	"bo"	=> "tybetaÅ„ska",
 	"ti"	=> "Tigrinya",
 	"to"	=> "Tonga",
 	"ts"	=> "Tsonga",
 	"tr"	=> "turecka",
-	"tk"	=> "turkmeñska",
+	"tk"	=> "turkmeÅ„ska",
 	"tw"	=> "Twi",
 	"ug"	=> "ujgurska",
-	"uk"	=> "ukraiñska",
+	"uk"	=> "ukraiÅ„ska",
 	"ur"	=> "w urdu",
 	"uz"	=> "uzbecka",
 	"vi"	=> "wietnamska",
@@ -174,19 +174,19 @@
 );
 
 /* private */ $wgWeekdayNamesPl = array(
-	"Niedziela", "Poniedzia³ek", "Wtorek", "¦roda", "Czwartek",
-	"Pi±tek", "Sobota"
+	"Niedziela", "PoniedziaÅ‚ek", "Wtorek", "Åšroda", "Czwartek",
+	"PiÄ…tek", "Sobota"
 );
 
 /* private */ $wgMonthNamesPl = array(
-	"Styczeñ", "Luty", "Marzec", "Kwiecieñ", "Maj", "Czerwiec",
-	"Lipiec", "Sierpieñ", "Wrzesieñ", "Pa¼dziernik", "Listopad",
-	"Grudzieñ"
+	"StyczeÅ„", "Luty", "Marzec", "KwiecieÅ„", "Maj", "Czerwiec",
+	"Lipiec", "SierpieÅ„", "WrzesieÅ„", "PaÅºdziernik", "Listopad",
+	"GrudzieÅ„"
 );
 
 /* private */ $wgMonthAbbreviationsPl = array(
 	"sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie",
-	"wrz", "pa¼", "lis", "gru"
+	"wrz", "paÅº", "lis", "gru"
 );
 
 # All special pages have to be listed here: a description of ""
@@ -199,18 +199,18 @@
 	"Preferences"	=> "Zmiana moich preferencji",
 	"Watchlist"		=> "Obserwowane",
 	"Recentchanges" => "Ostatnio zmienione",
-	"Upload"		=> "Przesy³anie plików",
-	"Imagelist"		=> "Lista obrazków i multimediów",
-	"Listusers"		=> "Zarejestrowani u¿ytkownicy",
+	"Upload"		=> "PrzesyÅ‚anie plikÃ³w",
+	"Imagelist"		=> "Lista obrazkÃ³w i multimediÃ³w",
+	"Listusers"		=> "Zarejestrowani uÅ¼ytkownicy",
 	"Statistics"	=> "Statystyka",
 	"Randompage"	=> "Losowa strona",
 
-	"Lonelypages"	=> "Porzucone artyku³y",
+	"Lonelypages"	=> "Porzucone artykuÅ‚y",
 	"Unusedimages"	=> "Porzucone obrazki",
 	"Popularpages"	=> "Najpopularniejsze",
 	"Wantedpages"	=> "Najbardziej potrzebne",
-	"Shortpages"	=> "Najkrótsze",
-	"Longpages"		=> "Najd³u¿sze",
+	"Shortpages"	=> "NajkrÃ³tsze",
+	"Longpages"		=> "NajdÅ‚uÅ¼sze",
 	"Newpages"		=> "Nowoutworzone",
 	"Allpages"		=> "Wszystkie",
 
@@ -221,7 +221,7 @@
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => "",
 	"Movepage"		=> "",
-	"Booksources"	=> "¬ród³a ksi±¿kowe"
+	"Booksources"	=> "Å¹rÃ³dÅ‚a ksiÄ…Å¼kowe"
 );
 
 /* private */ $wgSysopSpecialPagesPl = array(
@@ -239,64 +239,64 @@
 
 # Bits of text used by many pages:
 #
-"mainpage"		=> "Strona g³ówna",
+"mainpage"		=> "Strona gÅ‚Ã³wna",
 "about"			=> "O",
 "aboutwikipedia" => "O Wikipedii",
 "aboutpage"		=> "Wikipedia:O_Wikipedii",
 "help"			=> "Pomoc",
 "helppage"		=> "Wikipedia:Pomoc",
 "wikititlesuffix" => "Wikipedia",
-"bugreports"	=> "Raport o b³êdach",
+"bugreports"	=> "Raport o bÅ‚Ä™dach",
 "bugreportspage" => "Wikipedia:Bug_reports",
 "faq"			=> "FAQ",
 "faqpage"		=> "Wikipedia:FAQ",
 "edithelp"		=> "Pomoc w edycji",
-"edithelppage"	=> "Wikipedia:Jak_edytowaæ_stronê",
+"edithelppage"	=> "Wikipedia:Jak_edytowaÄ‡_stronÄ™",
 "cancel"		=> "Anuluj",
-"qbfind"		=> "Znajd¼",
-"qbbrowse"		=> "Przegl±danie",
+"qbfind"		=> "ZnajdÅº",
+"qbbrowse"		=> "PrzeglÄ…danie",
 "qbedit"		=> "Edycja",
 "qbpageoptions" => "Opcje strony",
 "qbpageinfo"	=> "O stronie",
 "qbmyoptions"	=> "Moje opcje",
 "mypage"		=> "Moja strona",
 "mytalk"		=> "Moja dyskusja",
-"currentevents" => "Bie¿±ce wydarzenia",
-"errorpagetitle" => "B³±d",
-"returnto"		=> "Wróæ do $1.",
+"currentevents" => "BieÅ¼Ä…ce wydarzenia",
+"errorpagetitle" => "BÅ‚Ä…d",
+"returnto"		=> "WrÃ³Ä‡ do $1.",
 "fromwikipedia"	=> "Z Wikipedii, wolnej encyklopedii.",
-"whatlinkshere"	=> "Strony, które odwo³uj± siê do tej",
+"whatlinkshere"	=> "Strony, ktÃ³re odwoÅ‚ujÄ… siÄ™ do tej",
 "help"			=> "Pomoc",
 "search"		=> "Szukaj",
 "history"		=> "Historia strony",
 "printableversion" => "Wersja do druku",
 "editthispage"	=> "Edytuj",
-"deletethispage" => "Usuñ t± stronê",
-"protectthispage" => "Zabezpiecz t± stronê",
-"unprotectthispage" => "Odbezpiecz t± stronê",
+"deletethispage" => "UsuÅ„ tÄ… stronÄ™",
+"protectthispage" => "Zabezpiecz tÄ… stronÄ™",
+"unprotectthispage" => "Odbezpiecz tÄ… stronÄ™",
 "talkpage"		=> "Dyskusja",
 "subjectpage"	=> "Strona dyskutowana",
 "otherlanguages" => "Wersja",
 "redirectedfrom" => "(Przekierowano z $1)",
 "lastmodified"	=> "Ostatnio zmodyfikowana o $1.",
-"viewcount"		=> "T± stronê obejrzano $1 razy.",
+"viewcount"		=> "TÄ… stronÄ™ obejrzano $1 razy.",
 "printsubtitle" => "(z http://pl.wikipedia.org)",
 "protectedpage" => "Strona zabezpieczona",
 "administrators" => "Wikipedia:Administratorzy",
-"sysoptitle"	=> "Wymagane prawa dostêpu administratora",
-"sysoptext"		=> "Ta operacja mo¿e byæ wykonana tylko przez
-u¿ytkowania o statusie \"administrator\".
+"sysoptitle"	=> "Wymagane prawa dostÄ™pu administratora",
+"sysoptext"		=> "Ta operacja moÅ¼e byÄ‡ wykonana tylko przez
+uÅ¼ytkowania o statusie \"administrator\".
 Zobacz $1.",
-"developertitle" => "Wymagane prawa dostêpu Programisty",
-"developertext"	=> "Ta operacja mo¿e byæ wykonana tylko przez
-u¿ytkownika o prawach \"Programisty\".
+"developertitle" => "Wymagane prawa dostÄ™pu Programisty",
+"developertext"	=> "Ta operacja moÅ¼e byÄ‡ wykonana tylko przez
+uÅ¼ytkownika o prawach \"Programisty\".
 Zobacz $1.",
-"nbytes"		=> "$1 bajtów",
+"nbytes"		=> "$1 bajtÃ³w",
 "go"			=> "Go",
 "ok"			=> "OK",
 "sitetitle"		=> "Wikipedia",
 "sitesubtitle"	=> "Wolna Encyklopedia",
-"retrievedfrom" => "¬ród³o: \"$1\"",
+"retrievedfrom" => "Å¹rÃ³dÅ‚o: \"$1\"",
 
 # Main script and global functions
 #
@@ -309,134 +309,134 @@ specjalnej strony.",
 
 # General errors
 #
-"error"			=> "B³±d",
-"databaseerror" => "B³±d bazy danych",
-"dberrortext"	=> "Wyst±pi³ b³±d sk³adni w zapytaniu do bazy danych.
-Mog³o to byæ spowodowane przez z³e sformu³owanie zapytania (zobacz $1)
-albo przez b³±d w oprogramowaniu.
+"error"			=> "BÅ‚Ä…d",
+"databaseerror" => "BÅ‚Ä…d bazy danych",
+"dberrortext"	=> "WystÄ…piÅ‚ bÅ‚Ä…d skÅ‚adni w zapytaniu do bazy danych.
+MogÅ‚o to byÄ‡ spowodowane przez zÅ‚e sformuÅ‚owanie zapytania (zobacz $1)
+albo przez bÅ‚Ä…d w oprogramowaniu.
 Ostatnie, nieudane zapytanie to:
 <blockquote><tt>$1</tt></blockquote>
-wys³ane przez funkcjê \"<tt>$2</tt>\".
-MySQL zg³osi³ b³±d \"<tt>$3: $4</tt>\".",
-"noconnect"		=> "Poprzez $1 nie mo¿na po³±czyc siê z systemem zarz±dzaj±cym baz± danych",
-"nodb"			=> "Nie mo¿na odnale¼æ bazy danych $1",
+wysÅ‚ane przez funkcjÄ™ \"<tt>$2</tt>\".
+MySQL zgÅ‚osiÅ‚ bÅ‚Ä…d \"<tt>$3: $4</tt>\".",
+"noconnect"		=> "Poprzez $1 nie moÅ¼na poÅ‚Ä…czyc siÄ™ z systemem zarzÄ…dzajÄ…cym bazÄ… danych",
+"nodb"			=> "Nie moÅ¼na odnaleÅºÄ‡ bazy danych $1",
 "readonly"		=> "Baza danych jest zablokowana",
-"enterlockreason" => "Podaj powód zablokowania bazy oraz szacunkowy czas
+"enterlockreason" => "Podaj powÃ³d zablokowania bazy oraz szacunkowy czas
 jej odblokowania",
 "readonlytext"	=> "Baza danych Wikipedii jest w tej chwili zablokowana
-- nie mo¿na wprowadzaæ nowych artyku³ów ani modyfikowaæ istniej±cych. Powodem
-s± prawdopodobnie czynno¶ci administracyjne. Po ich zakoñczeniu przywrócona
-zostanie pe³na funkcjonalno¶æ bazy.
-Administrator, który zablokowa³ bazê, poda³ nastêpuj±ce wyja¶nienie:
+- nie moÅ¼na wprowadzaÄ‡ nowych artykuÅ‚Ã³w ani modyfikowaÄ‡ istniejÄ…cych. Powodem
+sÄ… prawdopodobnie czynnoÅ›ci administracyjne. Po ich zakoÅ„czeniu przywrÃ³cona
+zostanie peÅ‚na funkcjonalnoÅ›Ä‡ bazy.
+Administrator, ktÃ³ry zablokowaÅ‚ bazÄ™, podaÅ‚ nastÄ™pujÄ…ce wyjaÅ›nienie:
 <p>$1",
-"missingarticle" => "System bazy danych nie odnalaz³ tekstu strony,
-która powinna siê znajdowaæ w bazie, tzn. strony \"$1\".
-Nie jest to b³±d bazy danych, ale najprawdopodobniej b³±d w oprogramowaniu.
-Zg³o¶, proszê, ten fakt administratorowi podaj±c tak¿e, o który URL chodzi.",
-"internalerror" => "B³±d wewnêtrzny",
-"filecopyerror" => "Nie mo¿na skopiowac pliku \"$1\" do \"$2\".",
-"filerenameerror" => "Nie mo¿na zmieniæ nazwy pliku \"$1\" na \"$2\".",
-"filedeleteerror" => "Nie mo¿na skasowaæ pliku \"$1\".",
-"filenotfound"	=> "Nie mo¿na znale¼æ pliku \"$1\".",
-"unexpected"	=> "Niespodziewana warto¶æ: \"$1\"=\"$2\".",
-"formerror"		=> "B³±d: nie mo¿na wys³aæ formularza",	
-"badarticleerror" => "Dla tej strony ta operacja nie mo¿e byæ wykonana.",
-"cannotdelete"	=> "Nie mo¿na skasowaæ podanej strony lub obrazka.",
+"missingarticle" => "System bazy danych nie odnalazÅ‚ tekstu strony,
+ktÃ³ra powinna siÄ™ znajdowaÄ‡ w bazie, tzn. strony \"$1\".
+Nie jest to bÅ‚Ä…d bazy danych, ale najprawdopodobniej bÅ‚Ä…d w oprogramowaniu.
+ZgÅ‚oÅ›, proszÄ™, ten fakt administratorowi podajÄ…c takÅ¼e, o ktÃ³ry URL chodzi.",
+"internalerror" => "BÅ‚Ä…d wewnÄ™trzny",
+"filecopyerror" => "Nie moÅ¼na skopiowac pliku \"$1\" do \"$2\".",
+"filerenameerror" => "Nie moÅ¼na zmieniÄ‡ nazwy pliku \"$1\" na \"$2\".",
+"filedeleteerror" => "Nie moÅ¼na skasowaÄ‡ pliku \"$1\".",
+"filenotfound"	=> "Nie moÅ¼na znaleÅºÄ‡ pliku \"$1\".",
+"unexpected"	=> "Niespodziewana wartoÅ›Ä‡: \"$1\"=\"$2\".",
+"formerror"		=> "BÅ‚Ä…d: nie moÅ¼na wysÅ‚aÄ‡ formularza",	
+"badarticleerror" => "Dla tej strony ta operacja nie moÅ¼e byÄ‡ wykonana.",
+"cannotdelete"	=> "Nie moÅ¼na skasowaÄ‡ podanej strony lub obrazka.",
 
 # Login and logout pages
 #
-"logouttitle"	=> "Wylogowanie u¿ytkownika",
-"logouttext"	=> "Wylogowano Ciê.
-Mo¿esz kontynuowaæ pracê z Wikipedi± jako niezarejestrowany u¿ytkownik
-albo zalogowaæ siê ponownie jako ten sam lub inny u¿ytkownik.\n",
+"logouttitle"	=> "Wylogowanie uÅ¼ytkownika",
+"logouttext"	=> "Wylogowano CiÄ™.
+MoÅ¼esz kontynuowaÄ‡ pracÄ™ z WikipediÄ… jako niezarejestrowany uÅ¼ytkownik
+albo zalogowaÄ‡ siÄ™ ponownie jako ten sam lub inny uÅ¼ytkownik.\n",
 
-"welcomecreation" => "<h2>Witaj, $1!</h2><p>W³a¶nie utworzyli¶my dla Ciebie konto.
-Nie zapomnij dostosowaæ <i>preferencji</i>.",
+"welcomecreation" => "<h2>Witaj, $1!</h2><p>WÅ‚aÅ›nie utworzyliÅ›my dla Ciebie konto.
+Nie zapomnij dostosowaÄ‡ <i>preferencji</i>.",
 
 "loginpagetitle" => "User login",
-"yourname"		=> "Twój login",
-"yourpassword"	=> "Twoje has³o",
-"yourpasswordagain" => "Powtórz has³o",
-"newusersonly"	=> " (tylko nowi u¿ytkownicy)",
-"remembermypassword" => "Pamiêtaj moje has³o miêdzy sesjami.",
-"loginproblem"	=> "<b>S± problemy z Twoim logowaniem.</b><br>Spróbuj ponownie!",
-"alreadyloggedin" => "<font color=red><b>$1, jeste¶ ju¿ zalogowany!</b></font><br>\n",
+"yourname"		=> "TwÃ³j login",
+"yourpassword"	=> "Twoje hasÅ‚o",
+"yourpasswordagain" => "PowtÃ³rz hasÅ‚o",
+"newusersonly"	=> " (tylko nowi uÅ¼ytkownicy)",
+"remembermypassword" => "PamiÄ™taj moje hasÅ‚o miÄ™dzy sesjami.",
+"loginproblem"	=> "<b>SÄ… problemy z Twoim logowaniem.</b><br>SprÃ³buj ponownie!",
+"alreadyloggedin" => "<font color=red><b>$1, jesteÅ› juÅ¼ zalogowany!</b></font><br>\n",
 
-"areyounew"		=> "Je¶li jeste¶ po raz pierwszy na Wikipedii i chcesz mieæ
-w³asne konto u¿ytkownika, wprowad¼ swój pseudonim (login), a nastêpnie wpisz
-dwukrotnie wybrane has³o. Podanie adresu e-mailowego jest opcjonalne - je¶li
-zapomnisz has³a mo¿esz poprosiæ o przes³anie go na ów adres.<br>\n",
+"areyounew"		=> "JeÅ›li jesteÅ› po raz pierwszy na Wikipedii i chcesz mieÄ‡
+wÅ‚asne konto uÅ¼ytkownika, wprowadÅº swÃ³j pseudonim (login), a nastÄ™pnie wpisz
+dwukrotnie wybrane hasÅ‚o. Podanie adresu e-mailowego jest opcjonalne - jeÅ›li
+zapomnisz hasÅ‚a moÅ¼esz poprosiÄ‡ o przesÅ‚anie go na Ã³w adres.<br>\n",
 
 "login"			=> "Zaloguj mnie",
 "userlogin"		=> "Logowanie",
 "logout"		=> "Wyloguj mnie",
 "userlogout"	=> "Wylogowanie",
-"createaccount"	=> "Za³ó¿ nowe konto",
-"badretype"		=> "Wprowadzone has³a ró¿ni± siê miêdzy soba.",
-"userexists"	=> "Wybrana przez Ciebie nazwa u¿ytkownika jest ju¿ zajêta. Wybierz, proszê, inn±.",
-"youremail"		=> "Twój e-mail",
-"yournick"		=> "Twój podpis",
-"emailforlost"	=> "Je¶li zapomnisz has³a, mo¿esz poprosiæ o przes³anie nowego na adres podany w Twoich preferencjach.",
-"loginerror"	=> "B³±d logowania",
-"noname"		=> "To nie jest poprawna nazwa u¿ytkownika.",
+"createaccount"	=> "ZaÅ‚Ã³Å¼ nowe konto",
+"badretype"		=> "Wprowadzone hasÅ‚a rÃ³Å¼niÄ… siÄ™ miÄ™dzy soba.",
+"userexists"	=> "Wybrana przez Ciebie nazwa uÅ¼ytkownika jest juÅ¼ zajÄ™ta. Wybierz, proszÄ™, innÄ….",
+"youremail"		=> "TwÃ³j e-mail",
+"yournick"		=> "TwÃ³j podpis",
+"emailforlost"	=> "JeÅ›li zapomnisz hasÅ‚a, moÅ¼esz poprosiÄ‡ o przesÅ‚anie nowego na adres podany w Twoich preferencjach.",
+"loginerror"	=> "BÅ‚Ä…d logowania",
+"noname"		=> "To nie jest poprawna nazwa uÅ¼ytkownika.",
 "loginsuccesstitle" => "Udane logowanie",
-"loginsuccess"	=> "Zalogowano Ciê do Wikipedia jako \"$1\".",
-"nosuchuser"	=> "Nie ma u¿ytkowniku nazywaj±cego siê \"$1\".
-Sprawd¼ pisowniê lub u¿yj poni¿szego formularza by utworzyæ nowe konto.",
-"wrongpassword"	=> "Podane przez Ciebie has³o jest nieprawid³owe. Spróbuj jeszcze raz.",
-"mailmypassword" => "Wy¶lij mi nowe has³o",
-"passwordremindertitle" => "Wikipedia przypomina o ha¶le",
-"passwordremindertext" => "Kto¶ (prawdopodobnie Ty, spod adresu $1)
-poprosi³ od nas o wys³anie nowego has³a dostêpu do Wikipedii.
-Aktualne has³o dla u¿ytkownika \"$2\" to \"$3\". 
-Najlepiej bêdzie jak zalogujesz siê teraz i od razu zmienisz has³o.",
-"noemail"		=> "W bazie nie ma adresu e-mailowego dla u¿ytkownika \"$1\".",
-"passwordsent"	=> "Nowe has³o zosta³o wys³ane na adres e-mailowy u¿ytkownika \"$1\"
-Po otrzymaniu go zaloguj siê ponownie.",
+"loginsuccess"	=> "Zalogowano CiÄ™ do Wikipedia jako \"$1\".",
+"nosuchuser"	=> "Nie ma uÅ¼ytkowniku nazywajÄ…cego siÄ™ \"$1\".
+SprawdÅº pisowniÄ™ lub uÅ¼yj poniÅ¼szego formularza by utworzyÄ‡ nowe konto.",
+"wrongpassword"	=> "Podane przez Ciebie hasÅ‚o jest nieprawidÅ‚owe. SprÃ³buj jeszcze raz.",
+"mailmypassword" => "WyÅ›lij mi nowe hasÅ‚o",
+"passwordremindertitle" => "Wikipedia przypomina o haÅ›le",
+"passwordremindertext" => "KtoÅ› (prawdopodobnie Ty, spod adresu $1)
+poprosiÅ‚ od nas o wysÅ‚anie nowego hasÅ‚a dostÄ™pu do Wikipedii.
+Aktualne hasÅ‚o dla uÅ¼ytkownika \"$2\" to \"$3\". 
+Najlepiej bÄ™dzie jak zalogujesz siÄ™ teraz i od razu zmienisz hasÅ‚o.",
+"noemail"		=> "W bazie nie ma adresu e-mailowego dla uÅ¼ytkownika \"$1\".",
+"passwordsent"	=> "Nowe hasÅ‚o zostaÅ‚o wysÅ‚ane na adres e-mailowy uÅ¼ytkownika \"$1\"
+Po otrzymaniu go zaloguj siÄ™ ponownie.",
 
 # Edit pages
 #
 "summary"		=> "Opis zmian",
 "minoredit"		=> "To jest drobna zmiana.",
 "savearticle"	=> "Zapisz",
-"preview"		=> "Podgl±d",
-"showpreview"	=> "Podgl±d",
-"blockedtitle"	=> "U¿ytkownik jest zablokowany",
-"blockedtext"	=> "Twoje konto lub adres IP zosta³y zablokowane przez $1.
-Podany powód to:<br>$2<p>Mo¿esz siê skontaktowaæ z administratorem by
-wyja¶niæ sprawê zablokowania.",
+"preview"		=> "PodglÄ…d",
+"showpreview"	=> "PodglÄ…d",
+"blockedtitle"	=> "UÅ¼ytkownik jest zablokowany",
+"blockedtext"	=> "Twoje konto lub adres IP zostaÅ‚y zablokowane przez $1.
+Podany powÃ³d to:<br>$2<p>MoÅ¼esz siÄ™ skontaktowaÄ‡ z administratorem by
+wyjaÅ›niÄ‡ sprawÄ™ zablokowania.",
 "newarticle"	=> "(Nowy)",
-"newarticletext" => "Tutaj wpisz tekst artyku³u.",
+"newarticletext" => "Tutaj wpisz tekst artykuÅ‚u.",
 "noarticletext" => "(Ta strona obecnie nie zawiera tekstu)",
 "updated"		=> "(Zmodyfikowano)",
 "note"			=> "<strong>Uwaga:</strong> ",
-"previewnote"	=> "To jest tylko podgl±d - artyku³ nie zosta³ jeszcze zapisany!",
-"previewconflict" => "Wersja podgl±dana odnosi siê do tekstu
-z górnego pola edycji. Tak bêdzie wygl±daæ strona je¶li zdecydujesz siê j± zapisaæ.",
+"previewnote"	=> "To jest tylko podglÄ…d - artykuÅ‚ nie zostaÅ‚ jeszcze zapisany!",
+"previewconflict" => "Wersja podglÄ…dana odnosi siÄ™ do tekstu
+z gÃ³rnego pola edycji. Tak bÄ™dzie wyglÄ…daÄ‡ strona jeÅ›li zdecydujesz siÄ™ jÄ… zapisaÄ‡.",
 "editing"		=> "Edytujesz \"$1\"",
 "editconflict"	=> "Konflikt edycji: $1",
-"explainconflict" => "Kto¶ zd±¿y³ wprowadziæ swoj± wersjê artyku³u
+"explainconflict" => "KtoÅ› zdÄ…Å¼yÅ‚ wprowadziÄ‡ swojÄ… wersjÄ™ artykuÅ‚u
 w trakcie Twojej edycji.
-Górne pole edycji zawiera tekst strony aktualnie zapisany w bazie danych.
-Twoje zmiany znajduj± siê w dolnym polu edycji.
-By wprowadziæ swoje zmiany musisz zmodyfikowaæ tekst z górnego pola.
-<b>Tylko</b> tekst z górnego pola bêdzie zapisany w bazie gdy wci¶niesz
+GÃ³rne pole edycji zawiera tekst strony aktualnie zapisany w bazie danych.
+Twoje zmiany znajdujÄ… siÄ™ w dolnym polu edycji.
+By wprowadziÄ‡ swoje zmiany musisz zmodyfikowaÄ‡ tekst z gÃ³rnego pola.
+<b>Tylko</b> tekst z gÃ³rnego pola bÄ™dzie zapisany w bazie gdy wciÅ›niesz
 \"Zapisz\".\n<p>",
-"yourtext"		=> "Twój tekst",
+"yourtext"		=> "TwÃ³j tekst",
 "storedversion" => "Zapisana wersja",
-"editingold"	=> "<strong>OSTRZE¯ENIE: Edytujesz inn± ni¿ bie¿±ca wersjê tej strony.
-Je¶li zapiszesz j± wszystkie pó¼niejsze wersje zostan± skasowne.</strong>\n",
-"yourdiff"		=> "Ró¿nice",
-"copyrightwarning" => "Proszê pamiêtaæ o tym, ¿e przyjmuje siê,
-i¿ wszelki wk³ad do Wikipedii jest
-udostêpniany na zasadach GNU Free Documentation License (szczegó³y w $1).
-Je¶li nie chcesz, ¿eby
-Twoje dzie³o by³o bezlito¶nie edytowane i rozpowszechniane bez ograniczeñ,
+"editingold"	=> "<strong>OSTRZEÅ»ENIE: Edytujesz innÄ… niÅ¼ bieÅ¼Ä…ca wersjÄ™ tej strony.
+JeÅ›li zapiszesz jÄ… wszystkie pÃ³Åºniejsze wersje zostanÄ… skasowne.</strong>\n",
+"yourdiff"		=> "RÃ³Å¼nice",
+"copyrightwarning" => "ProszÄ™ pamiÄ™taÄ‡ o tym, Å¼e przyjmuje siÄ™,
+iÅ¼ wszelki wkÅ‚ad do Wikipedii jest
+udostÄ™pniany na zasadach GNU Free Documentation License (szczegÃ³Å‚y w $1).
+JeÅ›li nie chcesz, Å¼eby
+Twoje dzieÅ‚o byÅ‚o bezlitoÅ›nie edytowane i rozpowszechniane bez ograniczeÅ„,
 nie umieszczaj go w Wikipedii.<br>
-Niniejszym jednocze¶nie o¶wiadczasz, ¿e wk³ad jest Twoim
-dzie³em lub pochodzi z materia³ów dostêpnych na zasadach public domain albo
+Niniejszym jednoczeÅ›nie oÅ›wiadczasz, Å¼e wkÅ‚ad jest Twoim
+dzieÅ‚em lub pochodzi z materiaÅ‚Ã³w dostÄ™pnych na zasadach public domain albo
 licencji GNU Free Documentation License lub kompatybilnej.
-<strong>PROSZÊ NIE U¯YWAÆ BEZ POZWOLENIA MATERIA£ÓW OBJÊTYCH PRAWEM
+<strong>PROSZÄ˜ NIE UÅ»YWAÄ† BEZ POZWOLENIA MATERIAÅÃ“W OBJÄ˜TYCH PRAWEM
 AUTORSKIM!<strong>",
 
 
@@ -444,455 +444,455 @@ AUTORSKIM!<strong>",
 #
 "revhistory"	=> "Historia modyfikacji",
 "nohistory"		=> "Ta strona nie ma swojej historii edycji.",
-"revnotfound"	=> "Wersja nie zosta³a odnaleziona",
-"revnotfoundtext" => "Ta (starsza) wersja strony nie mo¿e zostaæ odnaleziona.
-Sprawd¼ proszê URL u¿yty przez Ciebie by uzyskaæ dostêp do tej strony.\n",
+"revnotfound"	=> "Wersja nie zostaÅ‚a odnaleziona",
+"revnotfoundtext" => "Ta (starsza) wersja strony nie moÅ¼e zostaÄ‡ odnaleziona.
+SprawdÅº proszÄ™ URL uÅ¼yty przez Ciebie by uzyskaÄ‡ dostÄ™p do tej strony.\n",
 "loadhist"		=> "Pobieranie historii tej strony",
 "currentrev"	=> "Aktualna wersja",
 "revisionasof"	=> "Wersja z dnia $1",
-"cur"			=> "bie¿",
-"next"			=> "nastêpna",
+"cur"			=> "bieÅ¼",
+"next"			=> "nastÄ™pna",
 "last"			=> "poprz",
-"orig"			=> "orygina³",
-"histlegend"	=> "Legenda: (bie¿) = ró¿nice z wersj± bie¿±c±,
-(poprz) = ró¿nice z wersj± poprzedzaj±c±, M = drobne zmiany",
+"orig"			=> "oryginaÅ‚",
+"histlegend"	=> "Legenda: (bieÅ¼) = rÃ³Å¼nice z wersjÄ… bieÅ¼Ä…cÄ…,
+(poprz) = rÃ³Å¼nice z wersjÄ… poprzedzajÄ…cÄ…, M = drobne zmiany",
 
 # Diffs
 #
-"difference"	=> "(Ró¿nice miêdzy wersjami)",
-"loadingrev"	=> "pobieranie wersji w celu porównania",
+"difference"	=> "(RÃ³Å¼nice miÄ™dzy wersjami)",
+"loadingrev"	=> "pobieranie wersji w celu porÃ³wnania",
 "lineno"		=> "Linia $1:",
-"editcurrent"	=> "Edytuj bie¿±c± wersjê tej strony",
+"editcurrent"	=> "Edytuj bieÅ¼Ä…cÄ… wersjÄ™ tej strony",
 
 # Search results
 #
 "searchresults" => "Wyniki wyszukiwania",
 "searchhelppage" => "Wikipedia:Searching",
 "searchingwikipedia" => "Przeszukiwanie Wikipedii",
-"searchresulttext" => "Aby dowiedzieæ siê wiêcej o przeszukiwaniu Wikipedii, zobacz $1.",
+"searchresulttext" => "Aby dowiedzieÄ‡ siÄ™ wiÄ™cej o przeszukiwaniu Wikipedii, zobacz $1.",
 "searchquery"	=> "Dla zapytania \"$1\"",
-"badquery"		=> "¬le sformu³owane zapytanie",
-"badquerytext"	=> "Nie mo¿na zrealizowaæ Twojego zapytania.
-Prawdopodobna przyczyna to obecno¶æ s³owa krótszego ni¿ trzyliterowe.
-Inn± przyczyn± mog³a byæ pomy³ka w szukanym wyra¿eniu,
+"badquery"		=> "Å¹le sformuÅ‚owane zapytanie",
+"badquerytext"	=> "Nie moÅ¼na zrealizowaÄ‡ Twojego zapytania.
+Prawdopodobna przyczyna to obecnoÅ›Ä‡ sÅ‚owa krÃ³tszego niÅ¼ trzyliterowe.
+InnÄ… przyczynÄ… mogÅ‚a byÄ‡ pomyÅ‚ka w szukanym wyraÅ¼eniu,
 np. \"Jan Jan Kochanowski\".
-Spróbuj, proszê, innego zapytania.",
-"matchtotals"	=> "Zapytanie \"$1\", liczba znalezionych tytu³ów: $2,
-liczba znalezionych artyku³ów: $3.",
-"titlematches"	=> "Znaleziono w tytu³ach:",
-"notitlematches" => "Nie znaleziono w tytu³ach",
-"textmatches"	=> "Znaleziono w artyku³ach:",
-"notextmatches"	=> "Nie znaleziono w artyku³ach",
+SprÃ³buj, proszÄ™, innego zapytania.",
+"matchtotals"	=> "Zapytanie \"$1\", liczba znalezionych tytuÅ‚Ã³w: $2,
+liczba znalezionych artykuÅ‚Ã³w: $3.",
+"titlematches"	=> "Znaleziono w tytuÅ‚ach:",
+"notitlematches" => "Nie znaleziono w tytuÅ‚ach",
+"textmatches"	=> "Znaleziono w artykuÅ‚ach:",
+"notextmatches"	=> "Nie znaleziono w artykuÅ‚ach",
 "prevn"			=> "poprzednie $1",
-"nextn"			=> "nastêpne $1",
+"nextn"			=> "nastÄ™pne $1",
 "viewprevnext"	=> "Zobacz ($1) ($2) ($3).",
-"showingresults" => "Oto lista <b>$1</b> pozycji, poczynaj±c od numeru <b>$2</b>.",
-"nonefound"		=> "<strong>Uwaga</strong>: brak rezultatów wyszukiwania
-spowodowany jest bardzo czêsto szukaniem najpopularniejszych s³ów, takich jak
-\"jest\" czy \"nie\", które nie s± indeksowane, albo z powodu podania w
-zapytaniu wiêcej ni¿ jednego s³owa (na li¶cie odnalezionych stron znajd± siê
-tylko te, które zawieraj± wszystkie podane s³owa).",
+"showingresults" => "Oto lista <b>$1</b> pozycji, poczynajÄ…c od numeru <b>$2</b>.",
+"nonefound"		=> "<strong>Uwaga</strong>: brak rezultatÃ³w wyszukiwania
+spowodowany jest bardzo czÄ™sto szukaniem najpopularniejszych sÅ‚Ã³w, takich jak
+\"jest\" czy \"nie\", ktÃ³re nie sÄ… indeksowane, albo z powodu podania w
+zapytaniu wiÄ™cej niÅ¼ jednego sÅ‚owa (na liÅ›cie odnalezionych stron znajdÄ… siÄ™
+tylko te, ktÃ³re zawierajÄ… wszystkie podane sÅ‚owa).",
 
 # Preferences page
 #
 "preferences"	=> "Preferencje",
 "prefsnologin" => "Brak logowania",
   //en wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
-"prefsnologintext"	=> "Musisz siê <a href=\"" .
-  wfLocalUrl( "Specjalna:Userlogin" ) . "\">zalogowaæ</a>
-przez zmian± swoich preferencji.",
+"prefsnologintext"	=> "Musisz siÄ™ <a href=\"" .
+  wfLocalUrl( "Specjalna:Userlogin" ) . "\">zalogowaÄ‡</a>
+przez zmianÄ… swoich preferencji.",
 "prefsreset"	=> "Preferences have been reset from storage.",
-"qbsettings"	=> "Pasek szybkiego dostêpu", 
-"changepassword" => "Zmiana has³a",
-"skin"			=> "Skórka",
+"qbsettings"	=> "Pasek szybkiego dostÄ™pu", 
+"changepassword" => "Zmiana hasÅ‚a",
+"skin"			=> "SkÃ³rka",
 "saveprefs"		=> "Zapisz preferencje",
-"resetprefs"	=> "Preferencje domy¶lne",
-"oldpassword"	=> "Stare has³o",
-"newpassword"	=> "Nowe has³o",
-"retypenew"		=> "Powtórz nowe has³o",
+"resetprefs"	=> "Preferencje domyÅ›lne",
+"oldpassword"	=> "Stare hasÅ‚o",
+"newpassword"	=> "Nowe hasÅ‚o",
+"retypenew"		=> "PowtÃ³rz nowe hasÅ‚o",
 "textboxsize"	=> "Wymiary pola edycji",
 "rows"			=> "Wiersze",
 "columns"		=> "Kolumny",
 "searchresultshead" => "Ustawienia wyszukiwarki",
-"resultsperpage" => "Liczba wyników na stronie",
-"contextlines"	=> "Pierwsze wiersze artyku³u",
+"resultsperpage" => "Liczba wynikÃ³w na stronie",
+"contextlines"	=> "Pierwsze wiersze artykuÅ‚u",
 "contextchars"	=> "Litery kontekstu w linijce",
-"recentchangescount" => "Liczba pozycji na li¶cie ostatnich zmian",
-"savedprefs"	=> "Twoje preferencje zosta³y zapisane.",
-"timezonetext"	=> "Podaj liczbê godzin ró¿nicy miêdzy Twoim czasem
+"recentchangescount" => "Liczba pozycji na liÅ›cie ostatnich zmian",
+"savedprefs"	=> "Twoje preferencje zostaÅ‚y zapisane.",
+"timezonetext"	=> "Podaj liczbÄ™ godzin rÃ³Å¼nicy miÄ™dzy Twoim czasem
 a czasem serwera (UTC). Np. dla Polski jest to liczba \"9\".",
-"localtime"	=> "Twój czas",
-"timezoneoffset" => "Ró¿nica",
-"emailflag"		=> "Nie chcê otrzymywaæ e-maili od innych u¿ytkowników",
+"localtime"	=> "TwÃ³j czas",
+"timezoneoffset" => "RÃ³Å¼nica",
+"emailflag"		=> "Nie chcÄ™ otrzymywaÄ‡ e-maili od innych uÅ¼ytkownikÃ³w",
 
 # Recent changes
 #
 "recentchanges" => "Ostatnie zmiany",
-"recentchangestext" => "Na tej stronie odnajdziesz historiê ostatnich zmian na Wikipedii.
+"recentchangestext" => "Na tej stronie odnajdziesz historiÄ™ ostatnich zmian na Wikipedii.
 
-[[Wikipedia:Welcome,_newcomers|Witaj]]! Je¶li jeste¶ tu po raz pierwszy,
-zapoznaj siê, proszê, z tymi stronami: [[wikipedia:FAQ|Wikipedia FAQ]],
+[[Wikipedia:Welcome,_newcomers|Witaj]]! JeÅ›li jesteÅ› tu po raz pierwszy,
+zapoznaj siÄ™, proszÄ™, z tymi stronami: [[wikipedia:FAQ|Wikipedia FAQ]],
 [[Wikipedia:Policies and guidelines|polityka Wikipedii]]
-(a zw³aszcza [[wikipedia:Naming conventions|konwencje nazywania stron]],
+(a zwÅ‚aszcza [[wikipedia:Naming conventions|konwencje nazywania stron]],
 [[wikipedia:Neutral point of view|neutralny punkt widzenia]])
-oraz [[wikipedia:Most common Wikipedia faux pas|najczêstsze nieporozumienia]].
+oraz [[wikipedia:Most common Wikipedia faux pas|najczÄ™stsze nieporozumienia]].
 
-Je¶li chcesz przyczyniæ siê do sukcesu Wikipedii, nie dodawaj materia³ów
-zastrze¿onych prawami autorskimi. Konsekwencje prawne z³amania tej zasady
-mog³yby Wikipedii bardzo zaszkodziæ.
-Zobacz tak¿e [http://meta.wikipedia.com/wiki.phtml?title=Specjalna:RecentChanges ostatnie metadyskusje (po angielsku)].",
-"rcloaderr"		=> "£adujê ostatnie zmiany",
-"rcnote"		=> "To ostatnie <strong>$1</strong> zmian dokonanych na Wikipedii w ci±gu ostatnich <strong>$2</strong> dni.",
+JeÅ›li chcesz przyczyniÄ‡ siÄ™ do sukcesu Wikipedii, nie dodawaj materiaÅ‚Ã³w
+zastrzeÅ¼onych prawami autorskimi. Konsekwencje prawne zÅ‚amania tej zasady
+mogÅ‚yby Wikipedii bardzo zaszkodziÄ‡.
+Zobacz takÅ¼e [http://meta.wikipedia.com/wiki.phtml?title=Specjalna:RecentChanges ostatnie metadyskusje (po angielsku)].",
+"rcloaderr"		=> "ÅadujÄ™ ostatnie zmiany",
+"rcnote"		=> "To ostatnie <strong>$1</strong> zmian dokonanych na Wikipedii w ciÄ…gu ostatnich <strong>$2</strong> dni.",
 # "rclinks"		=> "Show last $1 changes in last $2 hours / last $3 days",
-"rclinks"		=> "Wy¶wietl ostatnie $1 zmian w ci±gu ostatnich $2 dni.",
+"rclinks"		=> "WyÅ›wietl ostatnie $1 zmian w ciÄ…gu ostatnich $2 dni.",
 "rchide"		=> "in $4 form; $1 drobne zmiany; $2 inne przestrzenie nazw; $3 wielokrotna edycja.",
-"diff"			=> "ró¿nice",
+"diff"			=> "rÃ³Å¼nice",
 "hist"			=> "historia",
 "hide"			=> "schowaj",
-"show"			=> "poka¿",
+"show"			=> "pokaÅ¼",
 "tableform"		=> "tabelka",
 "listform"		=> "lista",
 "nchanges"		=> "$1 zmian",
 
 # Upload
 #
-"upload"		=> "Prze¶lij",
-"uploadbtn"		=> "Prze¶lij plik",
-"uploadlink"	=> "Prze¶lij zdjêcia",
-"reupload"		=> "Prze¶lij ponownie",
-"reuploaddesc"	=> "Wróæ do formularza wysy³ki.",
+"upload"		=> "PrzeÅ›lij",
+"uploadbtn"		=> "PrzeÅ›lij plik",
+"uploadlink"	=> "PrzeÅ›lij zdjÄ™cia",
+"reupload"		=> "PrzeÅ›lij ponownie",
+"reuploaddesc"	=> "WrÃ³Ä‡ do formularza wysyÅ‚ki.",
 "uploadnologin" => "Brak logowania",
-"uploadnologintext"	=> "Musisz siê <a href=\"" .
-  wfLocalUrl( "Specjalna:Userlogin" ) . "\">zalogowaæ</a>
-przed przes³aniem pików.",
-"uploadfile"	=> "Prze¶lij plik",
-"uploaderror"	=> "B³±d przesy³ki",
-"uploadtext"	=> "<strong>STOP!</strong> Zanim prze¶lesz plik,
+"uploadnologintext"	=> "Musisz siÄ™ <a href=\"" .
+  wfLocalUrl( "Specjalna:Userlogin" ) . "\">zalogowaÄ‡</a>
+przed przesÅ‚aniem pikÃ³w.",
+"uploadfile"	=> "PrzeÅ›lij plik",
+"uploaderror"	=> "BÅ‚Ä…d przesyÅ‚ki",
+"uploadtext"	=> "<strong>STOP!</strong> Zanim przeÅ›lesz plik,
 przeczytaj <a href=\"" . wfLocalUrlE( "Wikipedia:Image_use_policy" ) .
-"\">zasady u¿ycia obrazków</a> i upewnij siê przesy³aj±c pozostaniesz z
+"\">zasady uÅ¼ycia obrazkÃ³w</a> i upewnij siÄ™ przesyÅ‚ajÄ…c pozostaniesz z
 nimi w zgodzie.
-<p>Je¶li chcesz przejrzeæ lub przeszukaæ dotychczas przes³ane pliki,
-przejd¼ do <a href=\"" . wfLocalUrlE( "Specjalna:Imagelist" ) .
-"\">listy przes³anych plików</a>.
-Przesy³ki i skasowania s± rejestrowane w <a href=\"" .
+<p>JeÅ›li chcesz przejrzeÄ‡ lub przeszukaÄ‡ dotychczas przesÅ‚ane pliki,
+przejdÅº do <a href=\"" . wfLocalUrlE( "Specjalna:Imagelist" ) .
+"\">listy przesÅ‚anych plikÃ³w</a>.
+PrzesyÅ‚ki i skasowania sÄ… rejestrowane w <a href=\"" .
 wfLocalUrlE( "Wikipedia:Upload_log" ) . "\">rejestrze</a>.
-<p>By przes³aæ nowy plik maj±cy zilustrowaæ Twój artyku³ skorzystaj
-z poni¿szego formularza.
-W przypadku wiêkszo¶ci przegl±darek zobaczysz przycisk <i>Browse...</i>
-albo <i>Przegl±daj...</i>, który umo¿liwi Ci otworzenie standardowego
+<p>By przesÅ‚aÄ‡ nowy plik majÄ…cy zilustrowaÄ‡ TwÃ³j artykuÅ‚ skorzystaj
+z poniÅ¼szego formularza.
+W przypadku wiÄ™kszoÅ›ci przeglÄ…darek zobaczysz przycisk <i>Browse...</i>
+albo <i>PrzeglÄ…daj...</i>, ktÃ³ry umoÅ¼liwi Ci otworzenie standardowego
 okienka wyboru pliku. Wybranie pliku spowoduje umieszczenie jego nazwy
 w polu tekstowym obok przycisku.
-Musisz tak¿e zaznaczaj±c odpowiednie pole, potwierdziæ, ¿e przesy³aj±c
+Musisz takÅ¼e zaznaczajÄ…c odpowiednie pole, potwierdziÄ‡, Å¼e przesyÅ‚ajÄ…c
 plik nie naruszasz niczyich praw autorskich.
-Przesy³ka rozpocznie siê po naci¶niêciu <i>Prze¶lij plik</i>.
-Mo¿e zaj±æ kilka chwil, zw³aszcza je¶li masz wolne po³±czenie z internetem.
-<p>Preferowane formaty to JPEG dla zdjêæ fotograficznych, PNG dla rysunków
-i obrazków o charakterze ikon oraz OGG dla d¼wiêków.
-Aby unikn±æ nieporozumieñ nadawaj plikom nazwy zwi±zane z zawarto¶ci±.
-Aby umie¶ciæ obrazek w artykule, u¿yj linku w postaci
+PrzesyÅ‚ka rozpocznie siÄ™ po naciÅ›niÄ™ciu <i>PrzeÅ›lij plik</i>.
+MoÅ¼e zajÄ…Ä‡ kilka chwil, zwÅ‚aszcza jeÅ›li masz wolne poÅ‚Ä…czenie z internetem.
+<p>Preferowane formaty to JPEG dla zdjÄ™Ä‡ fotograficznych, PNG dla rysunkÃ³w
+i obrazkÃ³w o charakterze ikon oraz OGG dla dÅºwiÄ™kÃ³w.
+Aby uniknÄ…Ä‡ nieporozumieÅ„ nadawaj plikom nazwy zwiÄ…zane z zawartoÅ›ciÄ….
+Aby umieÅ›ciÄ‡ obrazek w artykule, uÅ¼yj linku w postaci
 <b>[[image:obrazek.jpg]]</b> lub <b>[[image:obrazek.png|alt text]]</b>
-Dla plików d¼wiêkowych link bêdzie mia³ postaæ <b>[[media:file.ogg]]</b>.
-<p>Pamiêtaj, proszê, ¿e tak jak w przypadku zwyk³ych stron Wikipedii,
-inni u¿ytkownicy mog± edytowaæ lub kasowaæ przes³ane przez Ciebie pliki,
-je¶li stwierdz±, ¿e to bêdzie lepiej s³u¿yæ ca³emu projektowi.
-Twoje prawo do przesy³ania mo¿e zostaæ Ci odebrane je¶li nadu¿yjesz systemu.",
-"uploadlog"		=> "rejestr przesy³ek",
+Dla plikÃ³w dÅºwiÄ™kowych link bÄ™dzie miaÅ‚ postaÄ‡ <b>[[media:file.ogg]]</b>.
+<p>PamiÄ™taj, proszÄ™, Å¼e tak jak w przypadku zwykÅ‚ych stron Wikipedii,
+inni uÅ¼ytkownicy mogÄ… edytowaÄ‡ lub kasowaÄ‡ przesÅ‚ane przez Ciebie pliki,
+jeÅ›li stwierdzÄ…, Å¼e to bÄ™dzie lepiej sÅ‚uÅ¼yÄ‡ caÅ‚emu projektowi.
+Twoje prawo do przesyÅ‚ania moÅ¼e zostaÄ‡ Ci odebrane jeÅ›li naduÅ¼yjesz systemu.",
+"uploadlog"		=> "rejestr przesyÅ‚ek",
 "uploadlogpage" => "Upload_log",
-"uploadlogpagetext" => "Oto lista ostatnio przes³anych plików.
-Wszystkie czasy odnosz± siê do strefy czasowej w serwera (UTC).
+"uploadlogpagetext" => "Oto lista ostatnio przesÅ‚anych plikÃ³w.
+Wszystkie czasy odnoszÄ… siÄ™ do strefy czasowej w serwera (UTC).
 <ul>
 </ul>
 ",
 "filename"		=> "Plik",
 "filedesc"		=> "Opis",
-"affirmation"	=> "Potwierdzam, ¿e w³a¶ciciel praw autorskich do tego pliku
-zgadza siê udzieliæ licencji zgodnie z $1.",
+"affirmation"	=> "Potwierdzam, Å¼e wÅ‚aÅ›ciciel praw autorskich do tego pliku
+zgadza siÄ™ udzieliÄ‡ licencji zgodnie z $1.",
 "copyrightpage" => "Wikipedia:Prawa_autorskie",
 "copyrightpagename" => "Wikipedia copyright",
-"uploadedfiles"	=> "Przes³ane pliki",
-"noaffirmation" => "Musisz potwierdziæ, ¿e Twoja przesy³ka nie narusza ¿adnych
+"uploadedfiles"	=> "PrzesÅ‚ane pliki",
+"noaffirmation" => "Musisz potwierdziÄ‡, Å¼e Twoja przesyÅ‚ka nie narusza Å¼adnych
 praw autorskich.",
-"ignorewarning"	=> "Zignoruj ostrze¿enie i prze¶lij plik.",
-"minlength"		=> "Nazwa obrazku musi mieæ co najmniej trzy litery.",
-"badfilename"	=> "Nazwê obrazku zmieniona na \"$1\".",
+"ignorewarning"	=> "Zignoruj ostrzeÅ¼enie i przeÅ›lij plik.",
+"minlength"		=> "Nazwa obrazku musi mieÄ‡ co najmniej trzy litery.",
+"badfilename"	=> "NazwÄ™ obrazku zmieniona na \"$1\".",
 "badfiletype"	=> "\".$1\" nie jest zalecanym formatem pliku.",
-"largefile"		=> "Zalecane jest aby rozmiar pliku z obrazkiem nie by³ wiêkszy ni¿ 100 kilobajtów.",
-"successfulupload" => "Wysy³ka powiod³a siê",
-"fileuploaded"	=> "Plik \"$1\" zosta³ pomy¶lnie przes³any.
-Przejd¼, proszê, do: ($2) - strony opisu pliku i podaj dotycz±ce go informacje
-takie jak: pochodzenie pliku, kiedy i przez kogo zosta³ utworzony
-i cokolwiek co wiesz o pliku, a wydaje Ci siê wa¿ne.",
-"uploadwarning" => "Ostrze¿enie o przesy³ce",
+"largefile"		=> "Zalecane jest aby rozmiar pliku z obrazkiem nie byÅ‚ wiÄ™kszy niÅ¼ 100 kilobajtÃ³w.",
+"successfulupload" => "WysyÅ‚ka powiodÅ‚a siÄ™",
+"fileuploaded"	=> "Plik \"$1\" zostaÅ‚ pomyÅ›lnie przesÅ‚any.
+PrzejdÅº, proszÄ™, do: ($2) - strony opisu pliku i podaj dotyczÄ…ce go informacje
+takie jak: pochodzenie pliku, kiedy i przez kogo zostaÅ‚ utworzony
+i cokolwiek co wiesz o pliku, a wydaje Ci siÄ™ waÅ¼ne.",
+"uploadwarning" => "OstrzeÅ¼enie o przesyÅ‚ce",
 "savefile"		=> "Zapisz plik",
-"uploadedimage" => "przes³ano \"$1\"",
+"uploadedimage" => "przesÅ‚ano \"$1\"",
 
 # Image list
 #
-"imagelist"		=> "Lista plików",
-"imagelisttext"	=> "To jest lista $1 plików posortowanych $2.",
-"getimagelist"	=> "pobieranie listy plików",
-"ilshowmatch"	=> "Poka¿ wszystkie pliki o takiej samej nazwie",
+"imagelist"		=> "Lista plikÃ³w",
+"imagelisttext"	=> "To jest lista $1 plikÃ³w posortowanych $2.",
+"getimagelist"	=> "pobieranie listy plikÃ³w",
+"ilshowmatch"	=> "PokaÅ¼ wszystkie pliki o takiej samej nazwie",
 "ilsubmit"		=> "Szukaj",
-"showlast"		=> "Poka¿ ostatnie $1 plików posortowane $2.",
+"showlast"		=> "PokaÅ¼ ostatnie $1 plikÃ³w posortowane $2.",
 "all"			=> "wszystkie",
-"byname"		=> "wed³ug nazwy",
-"bydate"		=> "wed³ug daty",
-"bysize"		=> "wed³ug rozmiaru",
-"imgdelete"		=> "usuñ",
+"byname"		=> "wedÅ‚ug nazwy",
+"bydate"		=> "wedÅ‚ug daty",
+"bysize"		=> "wedÅ‚ug rozmiaru",
+"imgdelete"		=> "usuÅ„",
 "imgdesc"		=> "opisz",
-"imglegend"		=> "Legenda: (opisz) = poka¿/edytuj opis pliku.",
+"imglegend"		=> "Legenda: (opisz) = pokaÅ¼/edytuj opis pliku.",
 "imghistory"	=> "Historia pliku",
-"revertimg"		=> "przywróæ",
-"deleteimg"		=> "usuñ",
-"imghistlegend" => "Legenda: (cur) = to jest obecny plik, (usuñ) = usuñ
-t± starsz± wersjê, (przywróc) = przywróæ t± starsz± wersjê.
-<br><i>Kliknij na datê aby zobaczyæ jakie pliki przes³ano tego dnia</i>.",
+"revertimg"		=> "przywrÃ³Ä‡",
+"deleteimg"		=> "usuÅ„",
+"imghistlegend" => "Legenda: (cur) = to jest obecny plik, (usuÅ„) = usuÅ„
+tÄ… starszÄ… wersjÄ™, (przywrÃ³c) = przywrÃ³Ä‡ tÄ… starszÄ… wersjÄ™.
+<br><i>Kliknij na datÄ™ aby zobaczyÄ‡ jakie pliki przesÅ‚ano tego dnia</i>.",
 "imagelinks"	=> "Linki do pliku",
-"linkstoimage"	=> "Oto strony odwo³uj±ce siê do tego pliku:",
-"nolinkstoimage" => "¯adna strona nie odwo³uje siê do tego pliku.",
+"linkstoimage"	=> "Oto strony odwoÅ‚ujÄ…ce siÄ™ do tego pliku:",
+"nolinkstoimage" => "Å»adna strona nie odwoÅ‚uje siÄ™ do tego pliku.",
 
 # Statistics
 #
 "statistics"	=> "Statystyka",
-"sitestats"		=> "Statystyka artyku³ów",
-"userstats"		=> "Statystyka u¿ytkowników",
+"sitestats"		=> "Statystyka artykuÅ‚Ã³w",
+"userstats"		=> "Statystyka uÅ¼ytkownikÃ³w",
 "sitestatstext" => "W bazie danych jest w sumie <b>$1</b> stron.
-Ta liczba uwzglêdnia strony <i>Dyskusji</i>, strony na temat samej Wikipedii,
-strony typu <i>stub</i> (prowizoryczne), strony przekierowuj±ce, oraz inne, które trudno
-uznaæ za artyku³y. Wy³±czaj±c powy¿sze, jest prawdopodobnie <b>$2</b> stron, które mo¿na uznaæ
-za artyku³y.<p>
-By³o w sumie <b>$3</b> odwiedzin oraz <b>$4</b> edycji od kiedy dokonano
-upgrade'u oprogramowania (1 styczeñ 2004 ;-).
-Daje to ¶rednio <b>$5</b> edycji na jedn± stronê i <b>$6</b> odwiedzin na jedn± edycjê.",
-"userstatstext" => "Jest <b>$1</b> zarejestrowanych u¿ytkowników.
-Spo¶ród nich <b>$2</b> ma status administratora (zobacz $3).",
+Ta liczba uwzglÄ™dnia strony <i>Dyskusji</i>, strony na temat samej Wikipedii,
+strony typu <i>stub</i> (prowizoryczne), strony przekierowujÄ…ce, oraz inne, ktÃ³re trudno
+uznaÄ‡ za artykuÅ‚y. WyÅ‚Ä…czajÄ…c powyÅ¼sze, jest prawdopodobnie <b>$2</b> stron, ktÃ³re moÅ¼na uznaÄ‡
+za artykuÅ‚y.<p>
+ByÅ‚o w sumie <b>$3</b> odwiedzin oraz <b>$4</b> edycji od kiedy dokonano
+upgrade'u oprogramowania (1 styczeÅ„ 2004 ;-).
+Daje to Å›rednio <b>$5</b> edycji na jednÄ… stronÄ™ i <b>$6</b> odwiedzin na jednÄ… edycjÄ™.",
+"userstatstext" => "Jest <b>$1</b> zarejestrowanych uÅ¼ytkownikÃ³w.
+SpoÅ›rÃ³d nich <b>$2</b> ma status administratora (zobacz $3).",
 
 # Miscellaneous special pages
 #
 "orphans"		=> "Porzucone strone",
 "lonelypages"	=> "Porzucone strony",
-"unusedimages"	=> "Nie u¿ywane pliki",
+"unusedimages"	=> "Nie uÅ¼ywane pliki",
 "popularpages"	=> "Najpopularniejsze strony",
 "nviews"		=> "$1 odwiedzin",
 "wantedpages"	=> "Najpotrzebniejsze strony",
-"nlinks"		=> "$1 linków",
+"nlinks"		=> "$1 linkÃ³w",
 "allpages"		=> "Wszystkie strony",
-"randompage"	=> "Losuj stronê",
-"shortpages"	=> "Najkrótsze strony",
-"longpages"		=> "Najd³u¿sze strony",
-"listusers"		=> "Lista u¿ytkowników",
+"randompage"	=> "Losuj stronÄ™",
+"shortpages"	=> "NajkrÃ³tsze strony",
+"longpages"		=> "NajdÅ‚uÅ¼sze strony",
+"listusers"		=> "Lista uÅ¼ytkownikÃ³w",
 "specialpages"	=> "Strony specjalne",
 "spheading"		=> "Strony specjalne",
-"sysopspheading" => "Strony specjalne tylko dla u¿ytkowników z prawami Administratora",
-"developerspheading" => "Strony specjalne tylko dla u¿ytkowników z prawami Programisty",
-"protectpage"	=> "Zabezpiecz stronê",
+"sysopspheading" => "Strony specjalne tylko dla uÅ¼ytkownikÃ³w z prawami Administratora",
+"developerspheading" => "Strony specjalne tylko dla uÅ¼ytkownikÃ³w z prawami Programisty",
+"protectpage"	=> "Zabezpiecz stronÄ™",
 "recentchangeslinked" => "Dolinkowane",
 "rclsub"		=> "(dla stron dolinkowanych do \"$1\")",
 "debug"			=> "Odpluskwianie",
 "newpages"		=> "Nowe strony",
-"movethispage"	=> "Przenie¶ stronê",
-"unusedimagestext" => "<p>Pamiêtaj, proszê, ¿e inne witryny,
-np. Wikipedie w innych jêzykach, mog± odwo³ywaæ siê do tych plików
-u¿ywaj±c bezpo¶rednio URL. Dlatego te¿ niektóre z plików mog± siê znajdowaæ
-na tej li¶cie mimo, ¿e ¿adna strona tej Wikipedii nie odwo³uje siê do nich.",
-"booksources"	=> "¬ród³a ksi±¿kowe",
-"booksourcetext" => "Oto lista linków do innych witryn,
-które po¶rednicz± w sprzeda¿y nowych i u¿ywanych ksi±¿ek i mog± podaæ
-informacje o ksi±¿kach, których szukasz.
-Wikipedia nie jest stowarzyszona z ¿adnym ze sprzedawców,
-a ta lista nie powinna byæ interpretowana jako ¶wiadectwo udzia³u w zyskach.",
+"movethispage"	=> "PrzenieÅ› stronÄ™",
+"unusedimagestext" => "<p>PamiÄ™taj, proszÄ™, Å¼e inne witryny,
+np. Wikipedie w innych jÄ™zykach, mogÄ… odwoÅ‚ywaÄ‡ siÄ™ do tych plikÃ³w
+uÅ¼ywajÄ…c bezpoÅ›rednio URL. Dlatego teÅ¼ niektÃ³re z plikÃ³w mogÄ… siÄ™ znajdowaÄ‡
+na tej liÅ›cie mimo, Å¼e Å¼adna strona tej Wikipedii nie odwoÅ‚uje siÄ™ do nich.",
+"booksources"	=> "Å¹rÃ³dÅ‚a ksiÄ…Å¼kowe",
+"booksourcetext" => "Oto lista linkÃ³w do innych witryn,
+ktÃ³re poÅ›redniczÄ… w sprzedaÅ¼y nowych i uÅ¼ywanych ksiÄ…Å¼ek i mogÄ… podaÄ‡
+informacje o ksiÄ…Å¼kach, ktÃ³rych szukasz.
+Wikipedia nie jest stowarzyszona z Å¼adnym ze sprzedawcÃ³w,
+a ta lista nie powinna byÄ‡ interpretowana jako Å›wiadectwo udziaÅ‚u w zyskach.",
 
 # Email this user
 #
 "mailnologin"	=> "Brak adresu",
-"mailnologintext" => "Musisz siê <a href=\"" .
-  wfLocalUrl( "Specjalna:Userlogin" ) . "\">zalogowaæ</a>
-i mieæ wpisany aktualny adres e-mailowy w swoich <a href=\"" .
+"mailnologintext" => "Musisz siÄ™ <a href=\"" .
+  wfLocalUrl( "Specjalna:Userlogin" ) . "\">zalogowaÄ‡</a>
+i mieÄ‡ wpisany aktualny adres e-mailowy w swoich <a href=\"" .
   wfLocalUrl( "Specjalna:Preferencje" ) . "\">preferencjach</a>,
-aby móc wys³aæ e-mail do innych u¿ytkowaników.",
-"emailuser"		=> "Wy¶lij e-mail do tego u¿ytkownika",
-"emailpage"		=> "Wys³ij E-mail do u¿ytkownika",
-"emailpagetext"	=> "Je¶li ten u¿ytkownik wpisa³ poprawny adres e-mailowy
-w swoich preferencjach, to poni¿szy formularz umo¿liwi Ci wys³anie jednej wiadomo¶ci.
-Adres e-mailowy, który zosta³ przez Ciebie wprowadzony w Twoich preferencjach
-pojawi siê w polu \"Od\"; dziêki temu odbiorca bêdzie móg³ Ci odpowiedzieæ.",
+aby mÃ³c wysÅ‚aÄ‡ e-mail do innych uÅ¼ytkowanikÃ³w.",
+"emailuser"		=> "WyÅ›lij e-mail do tego uÅ¼ytkownika",
+"emailpage"		=> "WysÅ‚ij E-mail do uÅ¼ytkownika",
+"emailpagetext"	=> "JeÅ›li ten uÅ¼ytkownik wpisaÅ‚ poprawny adres e-mailowy
+w swoich preferencjach, to poniÅ¼szy formularz umoÅ¼liwi Ci wysÅ‚anie jednej wiadomoÅ›ci.
+Adres e-mailowy, ktÃ³ry zostaÅ‚ przez Ciebie wprowadzony w Twoich preferencjach
+pojawi siÄ™ w polu \"Od\"; dziÄ™ki temu odbiorca bÄ™dzie mÃ³gÅ‚ Ci odpowiedzieÄ‡.",
 "noemailtitle"	=> "Brak adresu e-mailowego",
-"noemailtext"	=> "Ten u¿ytkownik nie poda³ poprawnego adresu e-mailowego,
-albo zadecydowa³, ¿e nie chce otrzymywaæ e-maili od innych u¿ytkowników.",
+"noemailtext"	=> "Ten uÅ¼ytkownik nie podaÅ‚ poprawnego adresu e-mailowego,
+albo zadecydowaÅ‚, Å¼e nie chce otrzymywaÄ‡ e-maili od innych uÅ¼ytkownikÃ³w.",
 "emailfrom"		=> "Od",
 "emailto"		=> "Do",
 "emailsubject"	=> "Temat",
-"emailmessage"	=> "Wiadomo¶æ",
-"emailsend"		=> "Wy¶lij",
-"emailsent"		=> "Wiadomo¶æ zosta³a wsy³ana",
-"emailsenttext" => "Twoja wiadomo¶æ zosta³a wys³ana.",
+"emailmessage"	=> "WiadomoÅ›Ä‡",
+"emailsend"		=> "WyÅ›lij",
+"emailsent"		=> "WiadomoÅ›Ä‡ zostaÅ‚a wsyÅ‚ana",
+"emailsenttext" => "Twoja wiadomoÅ›Ä‡ zostaÅ‚a wysÅ‚ana.",
 
 # Watchlist
 #
 "watchlist"		=> "Obserwowane",
-"watchlistsub"	=> "(dla u¿ytkownika \"$1\")",
-"nowatchlist"	=> "Nie ma ¿adnych pozycji na li¶cie obserwowanych przez Ciebie stron.",
+"watchlistsub"	=> "(dla uÅ¼ytkownika \"$1\")",
+"nowatchlist"	=> "Nie ma Å¼adnych pozycji na liÅ›cie obserwowanych przez Ciebie stron.",
 "watchnologin"	=> "Brak logowania",
-"watchnologintext"	=> "Musisz siê <a href=\"" .
-  wfLocalUrl( "Specjalna:Userlogin" ) . "\">zalogowaæ</a>
-przed modyfikacj± listy obserwowanych artyku³ów.",
+"watchnologintext"	=> "Musisz siÄ™ <a href=\"" .
+  wfLocalUrl( "Specjalna:Userlogin" ) . "\">zalogowaÄ‡</a>
+przed modyfikacjÄ… listy obserwowanych artykuÅ‚Ã³w.",
 "addedwatch"	=> "Dodana do listy obserwowanych",
-"addedwatchtext" => "Strona \"$1\" zosta³a dodana do Twojej <a href=\"" .
+"addedwatchtext" => "Strona \"$1\" zostaÅ‚a dodana do Twojej <a href=\"" .
   wfLocalUrl( "Specjalna:Watchlist" ) . "\">listy obserwowanych</a>.
-Na tej li¶cie znajd± siê przysz³e zmiany tej strony i stowarzyszonej z ni± strony Dyskusji,
-a nazwa samej strony zostanie <b>wyt³uszczona</b> na <a href=\"" .
-  wfLocalUrl( "Specjalna:Recentchanges" ) . "\">li¶cie ostatnich zmian</a> aby
-³atwiej by³o Ci fakt zmiany zauwa¿yæ.</p>
+Na tej liÅ›cie znajdÄ… siÄ™ przyszÅ‚e zmiany tej strony i stowarzyszonej z niÄ… strony Dyskusji,
+a nazwa samej strony zostanie <b>wytÅ‚uszczona</b> na <a href=\"" .
+  wfLocalUrl( "Specjalna:Recentchanges" ) . "\">liÅ›cie ostatnich zmian</a> aby
+Å‚atwiej byÅ‚o Ci fakt zmiany zauwaÅ¼yÄ‡.</p>
 
-<p>Je¶li chcesz usun±æ stronê ze swojej listy obserwowanych, kliknij na
-\"Przestañ obserwowaæ\".",
-"removedwatch"	=> "Usuniêto z listy obserwowanych",
-"removedwatchtext" => "Strona \"$1\" zosta³a usuniêta z Twojej listy obserwowanych.",
+<p>JeÅ›li chcesz usunÄ…Ä‡ stronÄ™ ze swojej listy obserwowanych, kliknij na
+\"PrzestaÅ„ obserwowaÄ‡\".",
+"removedwatch"	=> "UsuniÄ™to z listy obserwowanych",
+"removedwatchtext" => "Strona \"$1\" zostaÅ‚a usuniÄ™ta z Twojej listy obserwowanych.",
 "watchthispage"	=> "Obserwuj",
-"unwatchthispage" => "Przestañ obserwowaæ",
-"notanarticle"	=> "To nie artyku³",
+"unwatchthispage" => "PrzestaÅ„ obserwowaÄ‡",
+"notanarticle"	=> "To nie artykuÅ‚",
 
 # Delete/protect/revert
 #
-"deletepage"	=> "Usuñ stronê",
-"confirm"		=> "Potwierd¼",
-"confirmdelete" => "Potwierd¼ usuniêcie",
+"deletepage"	=> "UsuÅ„ stronÄ™",
+"confirm"		=> "PotwierdÅº",
+"confirmdelete" => "PotwierdÅº usuniÄ™cie",
 "deletesub"		=> "(Usuwanie \"$1\")",
-"confirmdeletetext" => "Zamierzasz trwale usun±æ stronê
-lub plik z bazy danych razem z dotycz±c± ich histori±.
-Potwierd¼, proszê, swoje zamiary, tzn., ¿e rozumiesz konsekwencje,
-i ¿e robisz to w zgodzie z
+"confirmdeletetext" => "Zamierzasz trwale usunÄ…Ä‡ stronÄ™
+lub plik z bazy danych razem z dotyczÄ…cÄ… ich historiÄ….
+PotwierdÅº, proszÄ™, swoje zamiary, tzn., Å¼e rozumiesz konsekwencje,
+i Å¼e robisz to w zgodzie z
 [[Wikipedia:Policy]].",
-"confirmcheck"	=> "Tak, naprawdê chcê usun±æ.",
+"confirmcheck"	=> "Tak, naprawdÄ™ chcÄ™ usunÄ…Ä‡.",
 "actioncomplete" => "Operacja wykonana",
-"deletedtext"	=> "Usuniêto \"$1\".
-Rejestr ostatnio dokonaych kasowañ mo¿esz obejrzeæ tutaj: $2.",
-"deletedarticle" => "Usuniêto \"$1\"",
+"deletedtext"	=> "UsuniÄ™to \"$1\".
+Rejestr ostatnio dokonaych kasowaÅ„ moÅ¼esz obejrzeÄ‡ tutaj: $2.",
+"deletedarticle" => "UsuniÄ™to \"$1\"",
 "dellogpage"	=> "Deletion_log",
-"dellogpagetext" => "To jest lista ostatnio wykonanych kasowañ.
-Podane czasy odnosz± siê do strefy czasowej serwera (UTC).
+"dellogpagetext" => "To jest lista ostatnio wykonanych kasowaÅ„.
+Podane czasy odnoszÄ… siÄ™ do strefy czasowej serwera (UTC).
 <ul>
 </ul>
 ",
-"deletionlog"	=> "rejestr usuniêæ",
-"reverted"		=> "Przywrócono starsz± wersjê",
-"deletecomment"	=> "Powód usuniêcia",
-"imagereverted" => "Przywrócenie wcze¶niejszej wersji powiod³o siê.",
+"deletionlog"	=> "rejestr usuniÄ™Ä‡",
+"reverted"		=> "PrzywrÃ³cono starszÄ… wersjÄ™",
+"deletecomment"	=> "PowÃ³d usuniÄ™cia",
+"imagereverted" => "PrzywrÃ³cenie wczeÅ›niejszej wersji powiodÅ‚o siÄ™.",
 
 # Contributions
 #
-"contributions"	=> "Wk³ad u¿ytkownika",
+"contributions"	=> "WkÅ‚ad uÅ¼ytkownika",
 "contribsub"	=> "Dla $1",
-"nocontribs"	=> "Brak zmian odpowiadaj±cych tym kryteriom.",
+"nocontribs"	=> "Brak zmian odpowiadajÄ…cych tym kryteriom.",
 "ucnote"		=> "Oto lista ostatnich <b>$1</b> zmian dokonanych przez
-u¿ytkownika w ci±gu ostatnich <b>$2</b> dni.",
+uÅ¼ytkownika w ciÄ…gu ostatnich <b>$2</b> dni.",
 "uclinks"		=> "Zobacz ostatnie $1 zmian; zobacz ostatnie $2 dni.",
 
 # What links here
 #
-"whatlinkshere"	=> "Linkuj±ce",
+"whatlinkshere"	=> "LinkujÄ…ce",
 "notargettitle" => "Wskazywana strona nie istnieje",
-"notargettext"	=> "Nie podano strony albo u¿ytkownika, dla których
-ta operacja ma byæ wykonana.",
-"linklistsub"	=> "(Lista linków)",
-"linkshere"		=> "Do tej strony odwo³uj± siê nastêpuj±ce strony:",
-"nolinkshere"	=> "Do tej strony nie odwo³uje siê do ¿adna inna.",
-"isredirect"	=> "strona przekierowuj±ca",
+"notargettext"	=> "Nie podano strony albo uÅ¼ytkownika, dla ktÃ³rych
+ta operacja ma byÄ‡ wykonana.",
+"linklistsub"	=> "(Lista linkÃ³w)",
+"linkshere"		=> "Do tej strony odwoÅ‚ujÄ… siÄ™ nastÄ™pujÄ…ce strony:",
+"nolinkshere"	=> "Do tej strony nie odwoÅ‚uje siÄ™ do Å¼adna inna.",
+"isredirect"	=> "strona przekierowujÄ…ca",
 
 # Block/unblock IP
 #
 "blockip"		=> "Zablokuj adres IP",
-"blockiptext"	=> "U¿yj poni¿szego formularza aby zablokowaæ prawo
-zapisu spod okre¶lonego adresu IP.
-To mo¿na zrobiæ jedynie by zapobiec wandalizmowi i powinno byæ
+"blockiptext"	=> "UÅ¼yj poniÅ¼szego formularza aby zablokowaÄ‡ prawo
+zapisu spod okreÅ›lonego adresu IP.
+To moÅ¼na zrobiÄ‡ jedynie by zapobiec wandalizmowi i powinno byÄ‡
 zgodne z [[Wikipedia:Policy|Wikipedia policy]].
-Podaj powód (np. umieszczaj±c nazwy stron, na których dopuszczono
-siê wandalizmu).",
+Podaj powÃ³d (np. umieszczajÄ…c nazwy stron, na ktÃ³rych dopuszczono
+siÄ™ wandalizmu).",
 "ipaddress"		=> "Adres IP",
-"ipbreason"		=> "Powód",
+"ipbreason"		=> "PowÃ³d",
 "ipbsubmit"		=> "Zablokuj ten adres",
-"badipaddress"	=> "Adres IP jest ¼le utworzony.",
-"noblockreason" => "Musisz podaæ powód blokady.",
-"blockipsuccesssub" => "Zablokowanie powiod³o siê",
-"blockipsuccesstext" => "Adres IP \"$1\" zosta³ zablokowany.
-<br>Przejd¼ do [[Specjalna:Ipblocklist|Listy zablokowanych adresów]] by przejrzeæ blokady.",
+"badipaddress"	=> "Adres IP jest Åºle utworzony.",
+"noblockreason" => "Musisz podaÄ‡ powÃ³d blokady.",
+"blockipsuccesssub" => "Zablokowanie powiodÅ‚o siÄ™",
+"blockipsuccesstext" => "Adres IP \"$1\" zostaÅ‚ zablokowany.
+<br>PrzejdÅº do [[Specjalna:Ipblocklist|Listy zablokowanych adresÃ³w]] by przejrzeÄ‡ blokady.",
 "unblockip"		=> "Odblokuj adres IP",
-"unblockiptext"	=> "U¿yj poni¿szego formularza by przywróciæ prawa zapisu
+"unblockiptext"	=> "UÅ¼yj poniÅ¼szego formularza by przywrÃ³ciÄ‡ prawa zapisu
 dla poprzednio zablokowanego adresu IP.",
 "ipusubmit"		=> "Odblokuj ten adress",
-"ipusuccess"	=> "Adress IP \"$1\" zosta³ odblokowany",
-"ipblocklist"	=> "Lista zablokowanych adresów IP",
-"blocklistline"	=> "$1, $2 zablokowa³ $3",
+"ipusuccess"	=> "Adress IP \"$1\" zostaÅ‚ odblokowany",
+"ipblocklist"	=> "Lista zablokowanych adresÃ³w IP",
+"blocklistline"	=> "$1, $2 zablokowaÅ‚ $3",
 "blocklink"		=> "zablokuj",
 "unblocklink"	=> "odblokuj",
-"contribslink"	=> "wk³ad",
+"contribslink"	=> "wkÅ‚ad",
 
 # Developer tools
 #
-"lockdb"		=> "Zablokuj bazê danych",
-"unlockdb"		=> "Odblokuj bazê danych",
-"lockdbtext"	=> "Zablokowanie bazy danych uniemo¿liwi wszystkim u¿ytkownikom
-edycjê stron, zmianê preferencji, edycjê list obserwowanych artyku³ów oraz inne
-rzeczy wymagaj±ce dostêpu do bazy danych.
-Potwierd¼, proszê, ¿e to jest zgodne z Twoimi zamiarami, i ¿e odblokujesz
-bazê danych gdy tylko zakoñczysz zadania administracyjne.",
-"unlockdbtext"	=> "Odblokowanie bazy danych umo¿liwi wszystkim u¿ytkownikom
-edycjê stron, zmianê preferencji, edycjê list
-obserwowanych artyku³ów oraz inne rzeczy zwi±zane ze zmianami w bazie danych.
-Potwierd¼, proszê, ¿e to jest zgodne z Twoimi zamiarami.",
-"lockconfirm"	=> "Tak, naprawdê chcê zablokowaæ bazê danych.",
-"unlockconfirm"	=> "Tak, naprawdê chcê odblokowac bazê danych.",
-"lockbtn"		=> "Zablokuj bazê danych",
-"unlockbtn"		=> "Odblokuj bazê danych",
-"locknoconfirm" => "Nie zaznaczy³e¶ pola potwierdzenia.",
-"lockdbsuccesssub" => "Baza danych zosta³a pomy¶lnie zablokowana",
-"unlockdbsuccesssub" => "Blokada bazy danych usuniêta",
-"lockdbsuccesstext" => "Baza danych Wikipedii zosta³a zablokowana.
-<br>Pamiêtaj usun±æ blokadê po zakoñczeniu spraw administracyjnych.",
-"unlockdbsuccesstext" => "Baza danych Wikipedii zosta³a odblokowana.",
+"lockdb"		=> "Zablokuj bazÄ™ danych",
+"unlockdb"		=> "Odblokuj bazÄ™ danych",
+"lockdbtext"	=> "Zablokowanie bazy danych uniemoÅ¼liwi wszystkim uÅ¼ytkownikom
+edycjÄ™ stron, zmianÄ™ preferencji, edycjÄ™ list obserwowanych artykuÅ‚Ã³w oraz inne
+rzeczy wymagajÄ…ce dostÄ™pu do bazy danych.
+PotwierdÅº, proszÄ™, Å¼e to jest zgodne z Twoimi zamiarami, i Å¼e odblokujesz
+bazÄ™ danych gdy tylko zakoÅ„czysz zadania administracyjne.",
+"unlockdbtext"	=> "Odblokowanie bazy danych umoÅ¼liwi wszystkim uÅ¼ytkownikom
+edycjÄ™ stron, zmianÄ™ preferencji, edycjÄ™ list
+obserwowanych artykuÅ‚Ã³w oraz inne rzeczy zwiÄ…zane ze zmianami w bazie danych.
+PotwierdÅº, proszÄ™, Å¼e to jest zgodne z Twoimi zamiarami.",
+"lockconfirm"	=> "Tak, naprawdÄ™ chcÄ™ zablokowaÄ‡ bazÄ™ danych.",
+"unlockconfirm"	=> "Tak, naprawdÄ™ chcÄ™ odblokowac bazÄ™ danych.",
+"lockbtn"		=> "Zablokuj bazÄ™ danych",
+"unlockbtn"		=> "Odblokuj bazÄ™ danych",
+"locknoconfirm" => "Nie zaznaczyÅ‚eÅ› pola potwierdzenia.",
+"lockdbsuccesssub" => "Baza danych zostaÅ‚a pomyÅ›lnie zablokowana",
+"unlockdbsuccesssub" => "Blokada bazy danych usuniÄ™ta",
+"lockdbsuccesstext" => "Baza danych Wikipedii zostaÅ‚a zablokowana.
+<br>PamiÄ™taj usunÄ…Ä‡ blokadÄ™ po zakoÅ„czeniu spraw administracyjnych.",
+"unlockdbsuccesstext" => "Baza danych Wikipedii zostaÅ‚a odblokowana.",
 
 # SQL query
 #
 "asksql"		=> "Zapytanie w SQL-u",
-"asksqltext"	=> "U¿yj poni¿szego formularza by wys³aæ bezpo¶rednie zapytanie
+"asksqltext"	=> "UÅ¼yj poniÅ¼szego formularza by wysÅ‚aÄ‡ bezpoÅ›rednie zapytanie
 do bazy danych Wikipedii.
-Do ograniczania litera³ów ³añcuchowych u¿ywaj pojedynczych cudzys³owó ('tak jak tu').
-Twoje zapytanie mo¿e powa¿nie obci±¿yæ serwer, wiêc u¿ywaj tej mo¿liwo¶ci
-z rozwag±.",
+Do ograniczania literaÅ‚Ã³w Å‚aÅ„cuchowych uÅ¼ywaj pojedynczych cudzysÅ‚owÃ³ ('tak jak tu').
+Twoje zapytanie moÅ¼e powaÅ¼nie obciÄ…Å¼yÄ‡ serwer, wiÄ™c uÅ¼ywaj tej moÅ¼liwoÅ›ci
+z rozwagÄ….",
 "sqlquery"		=> "Podaj zapytanie",
-"querybtn"		=> "Wy¶lij zapytanie",
-"selectonly"	=> "Zapytania inne ni¿ \"SELECT\" s± zastrze¿one tylko dla
-u¿ytkowników o statusie Programisty.",
-"querysuccessful" => "Zapytanie zakoñczone sukcesem",
+"querybtn"		=> "WyÅ›lij zapytanie",
+"selectonly"	=> "Zapytania inne niÅ¼ \"SELECT\" sÄ… zastrzeÅ¼one tylko dla
+uÅ¼ytkownikÃ³w o statusie Programisty.",
+"querysuccessful" => "Zapytanie zakoÅ„czone sukcesem",
 
 # Move page
 #
-"movepage"		=> "Przenie¶ stronê",
-"movepagetext"	=> "Za pomoc± poni¿szego formularza zmienisz nazwê strony,
-przenosz±c jednocze¶nie jej historê.
-Pod starym tytu³em zostanie umieszczona strona przekierowuj±ca.
-Linki do starego tytu³u pozostan± niezmienione, a strona dyskusji,
-je¶li istnieje, nie zostanie przeniesiona.<br>
+"movepage"		=> "PrzenieÅ› stronÄ™",
+"movepagetext"	=> "Za pomocÄ… poniÅ¼szego formularza zmienisz nazwÄ™ strony,
+przenoszÄ…c jednoczeÅ›nie jej historÄ™.
+Pod starym tytuÅ‚em zostanie umieszczona strona przekierowujÄ…ca.
+Linki do starego tytuÅ‚u pozostanÄ… niezmienione, a strona dyskusji,
+jeÅ›li istnieje, nie zostanie przeniesiona.<br>
 <b>UWAGA!</b>
-Mo¿e to byæ drastyczna lub nieprzewidywalna zmiana w przypadku popularnych stron;
-upewnij siê co do konsekwencji tej operacji zanim siê na ni± zdecydujesz.",
-"movearticle"	=> "Przenie¶ stronê",
+MoÅ¼e to byÄ‡ drastyczna lub nieprzewidywalna zmiana w przypadku popularnych stron;
+upewnij siÄ™ co do konsekwencji tej operacji zanim siÄ™ na niÄ… zdecydujesz.",
+"movearticle"	=> "PrzenieÅ› stronÄ™",
 "movenologin"	=> "Brak logowania",
   //en wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
-"movenologintext" => "Musisz byæ zarejestrowanym i <a href=\"" .
+"movenologintext" => "Musisz byÄ‡ zarejestrowanym i <a href=\"" .
   wfLocalUrl( "Specjalna:Userlogin" ) . "\">zalogowanym</a>
-u¿ytkownikiem aby móc przenie¶æ stronê.",
-"newtitle"		=> "Nowy tytu³",
-"movepagebtn"	=> "Przenie¶ stronê",
-"pagemovedsub"	=> "Przeniesienie powiod³o siê",
-"pagemovedtext" => "Strona \"[[$1]]\" zosta³a przeniesiona do \"[[$2]]\".",
-"articleexists" => "Strona o podanej nazwie ju¿ istnieje albo
+uÅ¼ytkownikiem aby mÃ³c przenieÅ›Ä‡ stronÄ™.",
+"newtitle"		=> "Nowy tytuÅ‚",
+"movepagebtn"	=> "PrzenieÅ› stronÄ™",
+"pagemovedsub"	=> "Przeniesienie powiodÅ‚o siÄ™",
+"pagemovedtext" => "Strona \"[[$1]]\" zostaÅ‚a przeniesiona do \"[[$2]]\".",
+"articleexists" => "Strona o podanej nazwie juÅ¼ istnieje albo
 wybrana przez Ciebie nazwa nie jest poprawna.
-Wybierz, proszê, now± nazwê.",
+Wybierz, proszÄ™, nowÄ… nazwÄ™.",
 "movedto"		=> "przeniesiono do",
-"movetalk"		=> "Przenie¶ tak¿e stronê <i>Dyskusji</i>, je¶li to mo¿liwe.",
-"talkpagemoved" => "Odpowiednia strona z <i>Dyskusj±</i> tak¿e zosta³a przeniesiona.",
-"talkpagenotmoved" => "Odpowiednia strona z <i>Dyskusj±</i> <strong>nie</strong> zosta³a przeniesiona.",
+"movetalk"		=> "PrzenieÅ› takÅ¼e stronÄ™ <i>Dyskusji</i>, jeÅ›li to moÅ¼liwe.",
+"talkpagemoved" => "Odpowiednia strona z <i>DyskusjÄ…</i> takÅ¼e zostaÅ‚a przeniesiona.",
+"talkpagenotmoved" => "Odpowiednia strona z <i>DyskusjÄ…</i> <strong>nie</strong> zostaÅ‚a przeniesiona.",
 
 );
 
