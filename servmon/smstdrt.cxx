@@ -20,9 +20,16 @@ HDL(cmd_enable) {
 	void vfypass(tt& trm, std::string const& pass) {
 		trm.echo(true);
 		if (smauth::authebl(pass))
-			trm.chgrt(&SMI(tmcmds)->eblrt, "%s# ");
+			trm.setlevel(16);
 		else
 			trm.error("Authentication failure.");
+	}
+};
+
+HDL(cmd_disable) {
+	EX1(cd) {
+		cd.term.setlevel(3);
+		return true;
 	}
 };
 
@@ -51,7 +58,7 @@ HDL(cmd_login) {
 			trm.wrtln("% [E] Username or password incorrect.");
 			return;
 		} else {
-			trm.chgrt(&SMI(tmcmds)->stdrt, "%s$ ");
+			trm.setlevel(3);
 		}
 	}
 };
@@ -396,7 +403,7 @@ HDL(cmd_monit_showintervals) {
 HDL(cfg_qb_rule) {
 	EX1(cd) {
 		cd.setdata(cd.p(0));
-		cd.chgrt(&SMI(tmcmds)->qbrrt, "%s(conf-qb-rule)# ");
+		cd.chgrt(&SMI(tmcmds)->qbrrt, "%s[%d](conf-qb-rule)#");
 		if (!SMI(smqb::cfg)->rule_exists(cd.p(0))) {
 			SMI(smqb::cfg)->create_rule(cd.p(0));
 			cd.inform("Creating new rule.");

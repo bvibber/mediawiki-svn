@@ -18,7 +18,7 @@ namespace smirc {
 
 		irctrmsrv(ircclnt& client_)
 			: client(client_)
-			, cmds_root(SMI(smtrm::tmcmds<irctrmsrv>)->basrt)
+			, cmds_root(SMI(smtrm::tmcmds<irctrmsrv>)->stdrt)
 			, cd(*this)
 			{
 			}
@@ -42,7 +42,7 @@ namespace smirc {
 				word = smutl::car(ln);
 				if (!word.size()) break;
 				if (word == "?") {
-					matches = here->find_matches("", wild);
+					matches = here->find_matches(2, "", wild);
 					for (std::vector<handler_node_t *>::iterator it = matches.begin(),
 						     end = matches.end(); it != end; ++it) {
 						wrtln(b::str(format("  %s %s") %
@@ -51,7 +51,7 @@ namespace smirc {
 					}
 					return;
 				}
-				matches = here->find_matches(word, wild);
+				matches = here->find_matches(2, word, wild);
 
 				if (matches.size() > 1) {
 					wrtln(b::io::str(b::format("%% Ambiguous command: %s\037%s\037%s")
@@ -106,6 +106,12 @@ namespace smirc {
 		}
 		void readline(boost::function<void(irctrmsrv&, std::string const&)>) {
 			throw smtrm::non_interactive_terminal();
+		}
+		int getlevel(void) const {
+			return 2;
+		}
+		void setlevel(int) {
+			/* no-op */
 		}
 	};
 	
