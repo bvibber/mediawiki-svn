@@ -103,7 +103,7 @@ class WikiPage extends WikiTitle {
 
         if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" ) { # #REDIRECT
         $z = wikiLink ( $this->getNiceTitle() ) ;
-        $z = "<a href=\"$z&action=edit\">".$this->getNiceTitle()."</a>" ;
+        $z = "<a href=\"$z&amp;action=edit\">".$this->getNiceTitle()."</a>" ;
         $this->backLink = str_replace ( "$1" , $z , $wikiRedirectFrom ) ;
             $z = $this->contents ;
             $z = substr ( $z , 10 ) ;
@@ -379,7 +379,7 @@ class WikiPage extends WikiTitle {
                 } else {
                     $unlinkedLinks[$link]++ ;
                     if ( $user->options["showHover"] == "yes" ) $hover = "title=\"Edit '" . htmlspecialchars ( $link ) . "'\"" ;
-                    $ulink = wikiLink( nurlencode ( $link ) . "&action=edit" ) ;
+                    $ulink = wikiLink( nurlencode ( $link ) . "&amp;action=edit" ) ;
                     if ( substr_count ( $text , " " ) > 0 ) {
                         $s .= "<span class=\"newlinkedge\">[</span>";
                         $bracket = "]";
@@ -651,7 +651,9 @@ class WikiPage extends WikiTitle {
             "cite", "code", "em", "s", "strike", "strong", "tt", "var", "div", "center", "blockquote", "ol",
             "ul", "dl", "table", "caption", "pre" , "ruby", "rt" , "rb" , "rp" ); # Tags which must be closed
         $htmlsingle = array( "br", "p", "hr", "li", "dt", "dd" ); # Tags which don't need to be closed
-	$htmlnest = array ( "table" , "tr" , "td" , "th" ) ; # Tags which can be nested, currently this is a little fuzzy
+
+	# Tags which can be nested, currently this is a little fuzzy
+	$htmlnest = array ( "table" , "tr" , "td" , "th" , "div" , "blockquote" , "ol" , "ul" , "dl" , "font" , "big" , "small" , "sub" , "sup" ) ;
 	$tabletags = array ( "td" , "th" , "tr" ) ; # Tags never allowed outside of a <table>
 
 	$htmlsingle = array_merge ( $tabletags , $htmlsingle ) ;
@@ -680,60 +682,61 @@ class WikiPage extends WikiTitle {
     # Yeah, it seems kinda ugly.
     $bits = explode ( "<" , $s ) ;
     $s = array_shift ( $bits ) ;
-    $tagcount = array() ; $tablecount = array();
+    $tagstack = array() ; $tablestack = array () ;
     foreach ( $bits as $x ) {
         preg_match ( "/^(\/?)(\w+)([^>]*)(\/{0,1}>)([^<]*)$/", $x, $regs );
         list ( $qbar , $slash , $t , $params , $brace , $rest ) = $regs;
+	$badtag = 0 ;
         #echo "($slash|$t|$params|$brace|$rest)";
         if ( in_array ( $t = strtolower ( $t ) , $htmlelements ) ) {
-            if ( $tagcount["table"] < 1 && in_array ( $t , $tabletags ) ) {
-                $s .= "&lt;" . str_replace ( ">" , "&gt;" , $x ) ;
-                continue;
+		# Check our stack
+		if ( $slash ) {
+			# Closing a tag...
+			if ( ! in_array ( $t , $htmlsingle ) && ($ot = array_pop ( $tagstack ) ) != $t ) {
+				array_push ( $tagstack , $ot ) ;
+				$badtag = 1 ;
+			} else {
+				if ( $t == "table" ) {
+					$tagstack = array_pop ( $tablestack ) ;
+					}
+				$newparams = "" ;
+			}
+		} else {
+			# Keep track for later
+			if ( in_array ( $t , $tabletags ) && ! in_array ( "table" , $tagstack ) ) {
+				$badtag = 1;
+			} elseif ( in_array ( $t , $tagstack ) && ! in_array ( $t , $htmlnest ) ) {
+				$badtag = 1 ;
+			} elseif ( ! in_array ( $t , $htmlsingle ) ) {
+				if ( $t == "table" ) {
+					array_push ( $tablestack , $tagstack ) ;
+					$tagstack = array () ;
+					}
+				array_push ( $tagstack , $t ) ;
+				}
+				# Strip non-approved attributes from the tag
+				$newparams = preg_replace (
+	                		"/(\w+)(\s*=\s*([\w,.\/:&%#@-]+|\"[^\"]*\"))?/e" ,
+			                "(in_array(strtolower(\"\$1\"),\$htmlattrs)?(\"\$1\".(\"\$3\"?\"=\$3\":'')):'')" ,
+			                $params) ;
+			}
+	    
+		if ( ! $badtag ) {
+			$rest = str_replace ( ">" , "&gt;" , $rest ) ;
+			#echo "($slash)($t)($params)->($newparams)($brace)($rest)";
+			$s .= "<$slash$t$newparams$brace$rest";
+			continue;
+			}
 		}
-                
-            # Don't allow more closing tags than opening tags; normalize tables
-            if ( $slash ) {
-	    	#echo "(/$t=".$tagcount[$t].")";
-                if ( $tagcount[$t] < 1 ) {
-	            $s .= "&lt;" . str_replace ( ">" , "&gt;" , $x ) ;
-		    continue;
-		    }
-                --$tagcount[$t];
-                if($t == "table")
-                    foreach ( $tabletags as $tt )
-                        $tagcount[$tt] = array_pop ( $tablecount[$tt] ) ;
-            } else {
-                if ( in_array ( $t , $htmlsingle ) )
-                    $tagcount[$t] = 1;  # Single tags can't be nested... right?
-                else
-                    ++$tagcount[$t];
-                if($t == "table")
-                    foreach ( $tabletags as $tt ) {
-                        if ( ! isset ( $tablecount[$tt] ) ) $tablecount[$tt] = array () ;
-                        array_push ( $tablecount[$tt] , $tagcount[$tt] ) ;
-                        }
-                }
-
-            # Strip non-approved attributes from the tag
-            $newparams = preg_replace (
-                "/(\w+)(\s*=\s*([\w,.\/:&%#@-]+|\"[^\"]*\"))?/e" ,
-                "(in_array(strtolower(\"\$1\"),\$htmlattrs)?(\"\$1\".(\"\$3\"?\"=\$3\":'')):'')" ,
-                $params) ;
-
-            $rest = str_replace ( ">" , "&gt;" , $rest ) ;
-            #echo "($slash)($t)($params)->($newparams)($brace)($rest)";
-            $s .= "<$slash$t$newparams$brace$rest";
-            continue;
-            }
-        $x = str_replace ( ">" , "&gt;" , $x ) ;
-        $s .= "&lt;$x" ;
+	$s .= "&lt;" . str_replace ( ">" , "&gt;" , $x ) ;
         }
-    
-    foreach ( $htmlpairs as $t ) # Need to use specified order, as some tags must be inside of others
-        for ( $i = $tagcount[$t] ; $i > 0; --$i )
-            $s .= "</$t>";
-    
-    return $s;
+
+	# Close off any remaining tags
+	while ( $t = array_pop ( $tagstack ) ) {
+		$s .= "</$t>\n";
+		if ( $t == "table" )
+			$tagstack = array_pop ( $tablestack ) ;
+		}    return $s;
 
 /*
         $htmlpairs = array( "b", "i", "u", "font", "big", "small", "sub", "sup", "h1", "h2", "h3", "h4", "h5", "h6",
@@ -943,7 +946,7 @@ class WikiPage extends WikiTitle {
         global $wikiMainPage ;
         global $user , $oldID , $version ;
         $editOldVersion = "" ;
-        if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
+        if ( $oldID != "" ) $editOldVersion="&amp;oldID=$oldID&amp;version=$version" ;
         $ret = "<a href=\"".wikiLink($wikiMainPage)."\">$wikiMainPage</a>" ;
 
         $spl = $this->getSubpageList () ;
@@ -958,9 +961,9 @@ class WikiPage extends WikiTitle {
         global $wikiRecentChanges , $wikiRecentChangesLink , $wikiEditThisPage , $wikiHistory , $wikiRandomPage , $wikiSpecialPages ;
         global $wikiSpecialPagesLink ;
         $ret .= " | <a href=\"".wikiLink("special:$wikiRecentChangesLink")."\">$wikiRecentChanges</a>" ;
-        if ( $this->canEdit() ) $ret .= " | <a href=\"".wikiLink(urldecode($this->url)."$editOldVersion&action=edit")."\">$wikiEditThisPage</a>" ;
+        if ( $this->canEdit() ) $ret .= " | <a href=\"".wikiLink(urldecode($this->url)."$editOldVersion&amp;action=edit")."\">$wikiEditThisPage</a>" ;
         else if ( !$this->isSpecialPage ) $ret .= " | Protected page" ;
-        if ( !$this->isSpecialPage ) $ret .= " | <a href=\"".wikiLink(urldecode($this->url)."&action=history")."\">$wikiHistory</a>\n" ;
+        if ( !$this->isSpecialPage ) $ret .= " | <a href=\"".wikiLink(urldecode($this->url)."&amp;action=history")."\">$wikiHistory</a>\n" ;
         $ret .= " | <a href=\"".wikiLink("special:RandomPage")."\">$wikiRandomPage</a>" ;
         $ret .= " | <a href=\"".wikiLink("special:$wikiSpecialPagesLink")."\">$wikiSpecialPages</a>" ;
         return $ret ;
@@ -989,26 +992,26 @@ class WikiPage extends WikiTitle {
         	if ( $this->isSpecialPage && $action == "" ) $ret .= "<font size=\"+3\">".$t."</font>" ;
 	}
 	if ( $action == "" ) {
-       	        $ret .= "<br>\n<br>\n<a href=\"".wikiLink("special:whatlinkshere&target=$this->url")."\">$wikiWhatLinksHere</a>" ;
+       	        $ret .= "<br>\n<br>\n<a href=\"".wikiLink("special:whatlinkshere&amp;target=$this->url")."\">$wikiWhatLinksHere</a>" ;
         } else {
             $ret .= "<font size=\"+3\"><b><u>" ;
             if ( $this->secureTitle == $wikiMainPage and $action == "view" ) $ret .= $wikiMainPageTitle.$this->thisVersion ;
             else $ret .= $this->getNiceTitle($t).$this->thisVersion ;
 #           if ( $this->secureTitle == "Main_Page" and $action == "view" ) $ret .= "<font color=blue>$wikiMainPageTitle</font>$this->thisVersion" ;
-#           else $ret .= "<a href=\"".wikiLink("&search=$this->title")."\">".$this->getNiceTitle($t)."</a>$this->thisVersion" ;
+#           else $ret .= "<a href=\"".wikiLink("&amp;search=$this->title")."\">".$this->getNiceTitle($t)."</a>$this->thisVersion" ;
             $ret .= "</u></b></font>" ;
             $subText = array () ;
             if ( $action == "view" and !$this->isSpecialPage ) $ret .=  "<br>$wikiArticleSubtitle\n" ;
             if ( $user->isLoggedIn ) {
                 if ( $user->doWatch($this->title) )
-                    array_push($subText,"<a href=\"".wikiLink("$this->url&action=watch&mode=no")."\">$wikiNoWatch</a>");
-                else array_push($subText,"<a href=\"".wikiLink("$this->url&action=watch&mode=yes")."\">$wikiWatch</a>") ;
+                    array_push($subText,"<a href=\"".wikiLink("$this->url&amp;action=watch&amp;mode=no")."\">$wikiNoWatch</a>");
+                else array_push($subText,"<a href=\"".wikiLink("$this->url&amp;action=watch&amp;mode=yes")."\">$wikiWatch</a>") ;
                 }
-            if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"".wikiLink("$this->url&action=print")."\">$wikiPrintable</a>" ) ;
-            if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"".wikiLink("special:whatlinkshere&target=$this->url")."\">$wikiWhatLinksHere</a>" ) ;
+            if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"".wikiLink("$this->url&amp;action=print")."\">$wikiPrintable</a>" ) ;
+            if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"".wikiLink("special:whatlinkshere&amp;target=$this->url")."\">$wikiWhatLinksHere</a>" ) ;
             if ( $this->backLink != "" ) array_push ( $subText , $this->backLink ) ;
             if ( $this->namespace == "user" and $this->subpageTitle == "" )
-                array_push ( $subText , "<a href=\"".wikiLink("special:contributions&theuser=$this->mainTitle")."\">This user's contributions</a>");
+                array_push ( $subText , "<a href=\"".wikiLink("special:contributions&amp;theuser=$this->mainTitle")."\">This user's contributions</a>");
             $ret .= "<br>".implode ( " | " , $subText ) ;
             if ( count ( $this->otherLanguages ) > 0 ) {
                 global $wikiOtherLanguagesText ;
@@ -1034,7 +1037,7 @@ class WikiPage extends WikiTitle {
             #$u = $THESCRIPT . "?" . getenv("QUERY_STRING");
 	    $u = getenv ( "REQUEST_URI" ) ;
             $u = preg_replace("/[\?\&]encoding=[0-9]+/", "", $u);
-            $u .= ((!strchr($u, "?") && strstr($THESCRIPT,$u)) ? "?" : "&");
+            $u .= ((!strchr($u, "?") && strstr($THESCRIPT,$u)) ? "?" : "&amp;");
             foreach ( $wikiEncodingNames as $i => $enc ) {
                 if($i > 0) $ret .= " | ";
                 if($i == $user->options["encoding"]) $ret .= "<b>";
@@ -1062,27 +1065,27 @@ class WikiPage extends WikiTitle {
         global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink ;
 
         $editOldVersion = "" ;
-        if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
+        if ( $oldID != "" ) $editOldVersion="&amp;oldID=$oldID&amp;version=$version" ;
         $column = "" ;
         $column .= "<a href=\"".wikiLink("")."\">$wikiMainPage</a>\n" ;
         $column .= "<br><a href=\"".wikiLink("special:$wikiRecentChangesLink")."\">$wikiRecentChanges</a>\n" ;
         if ( !$this->isSpecialPage )
-            $column .= "<br><a href=\"".wikiLink("special:$wikiRecentLinkedLink&target=".urldecode($this->url))."\">$wikiRecentLinked</a>\n" ;
+            $column .= "<br><a href=\"".wikiLink("special:$wikiRecentLinkedLink&amp;target=".$this->url)."\">$wikiRecentLinked</a>\n" ;
         if ( $this->canEdit() )
-            $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."$editOldVersion&action=edit")."\">$wikiEditThisPage</a>\n" ;
+            $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."$editOldVersion&amp;action=edit")."\">$wikiEditThisPage</a>\n" ;
         else if ( !$this->isSpecialPage ) $column .= "<br>Protected page\n" ;
 
         $temp = $this->isSpecialPage ;
         if ( $action == "" ) $this->isSpecialPage = false ;
-        if ( $this->canDelete() ) $column .= "<br><a href=\"".wikiLink("special:deletepage&target=".urldecode($this->url))."\">$wikiDeleteThisPage</a>\n" ;
+        if ( $this->canDelete() ) $column .= "<br><a href=\"".wikiLink("special:deletepage&amp;target=".$this->url)."\">$wikiDeleteThisPage</a>\n" ;
         $this->isSpecialPage = $temp ;
 
-        if ( $this->canProtect() ) $column .= "<br><a href=\"".wikiLink("special:protectpage&target=".urldecode($this->url))."\">Protect this page</a>\n" ;
+        if ( $this->canProtect() ) $column .= "<br><a href=\"".wikiLink("special:protectpage&amp;target=".$this->url)."\">Protect this page</a>\n" ;
 # To be implemented later
-#       if ( $this->canAdvance() ) $column .= "<br><a href=\"".wikiLink("special:Advance&topic=$this->safeTitle")."\">Advance</a>\n" ;
+#       if ( $this->canAdvance() ) $column .= "<br><a href=\"".wikiLink("special:Advance&amp;topic=$this->safeTitle")."\">Advance</a>\n" ;
 
         if ( in_array ( "is_sysop" , $user->rights ) ) $column .= "<br><a href=\"".wikiLink("special:AskSQL")."\">$wikiAskSQL</a>\n" ;
-        if ( !$this->isSpecialPage ) $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."&action=history")."\">$wikiHistory</a>\n" ;
+        if ( !$this->isSpecialPage ) $column .= "<br><a href=\"".wikiLink($this->url."&amp;action=history")."\">$wikiHistory</a>\n" ;
         $column .= "<br><a href=\"".wikiLink("special:Upload")."\">$wikiUpload</a>\n" ;
         $column .= "<hr>" ;
         $column .= "<a href=\"".wikiLink("special:Statistics")."\">$wikiStatistics</a>" ;
@@ -1177,7 +1180,7 @@ class WikiPage extends WikiTitle {
             $lc .= ":".substr ( $this->timestamp , 10 , 2 ) ;
             $ret .= "<br>\n" ;
             $ret .= str_replace ( "$1" , $lc , $wikiLastChange ) ;
-            $ret .= " <a href=\"".wikiLink("$this->url&diff=yes")."\">$wikiDiff</a> " ;
+            $ret .= " <a href=\"".wikiLink("$this->url&amp;diff=yes")."\">$wikiDiff</a> " ;
             }
 
 /*
