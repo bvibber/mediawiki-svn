@@ -34,6 +34,8 @@ int main(int argc, char **argv)
     DBC *dbcp;
     DBT key, data;
     char *dbfile = DBFILE;
+    char *prefix = NULL;
+    size_t prefixlen = 0;
     int ret;
     item *it;
     time_t oldest = 0;
@@ -41,13 +43,17 @@ int main(int argc, char **argv)
     int c;
 
     now = time(NULL);
-    while ((c = getopt(argc, argv, "f:ho:")) != -1) {
+    while ((c = getopt(argc, argv, "f:ho:p:")) != -1) {
 	switch (c) {
 	case 'f':
 	    dbfile = optarg;
 	    break;
 	case 'o':
 	    oldest = now - (86400 * atoi(optarg));
+	    break;
+	case 'p':
+	    prefix = optarg;
+	    prefixlen = strlen(prefix);
 	    break;
 	default:
 	    usage();
@@ -75,6 +81,10 @@ int main(int argc, char **argv)
 
     while ((ret = dbcp->c_get(dbcp, &key, &data, DB_NEXT)) == 0) {
 	it = data.data;
+	if (prefix
+	    && (key.size < prefixlen
+		|| strncmp(prefix, key.data, prefixlen)))
+	    continue;
 	if ((it->exptime && it->exptime <= now) || it->time < oldest)
 	    printf("delete %.*s\n",
 		   (int) key.size, (char *) key.data, it->exptime);
@@ -89,6 +99,7 @@ int main(int argc, char **argv)
 void usage()
 {
     printf("-f file	database file\n");
+    printf("-p prefix	key prefix\n");
     printf
 	("-o days     remove items older than specified (default: no limit)\n");
 
