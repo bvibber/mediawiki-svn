@@ -80,10 +80,11 @@ class neighbors {
 		$all_pos = array(); /* temporary store reqd due to sort */
 
 		while (($x = $g->fetch_position())) {
-			$id = $x->gis_id;
+			$id = $x->gis_page;
 			$lat = ($x->gis_latitude_min+$x->gis_latitude_max)/2;
 			$lon = ($x->gis_longitude_min+$x->gis_longitude_max)/2;
 			$gc = new greatcircle($lat,$lon, $lat0, $lon0);
+			# FIXME: multiple geos in same page are overwritten
 			$all[$id] = $gc->distance;
 			$all_pos[$id] = array(
 				 'lat' => $lat,
@@ -116,7 +117,7 @@ class neighbors {
 	
 	function show_location( $id, $d, $pos )
 	{
-		$id = $pos->gis_id;
+		$id = $pos->gis_page;
 
 		$out = "'''[[".$pos['name']."]]''' ";
 

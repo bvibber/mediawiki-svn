@@ -87,7 +87,7 @@ class maparea {
 		     . "\r\n";
 
 		while (($x = $g->fetch_position())) {
-			$id = $x->gis_id;
+			$id = $x->gis_page;
 			$lat = ($x->gis_latitude_min+$x->gis_latitude_max)/2;
 			$lon = ($x->gis_longitude_min+$x->gis_longitude_max)/2;
 			$type = $x->gis_type;

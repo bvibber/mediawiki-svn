@@ -8,26 +8,7 @@
 include( "extensions/gis/database.php" );
 
  *
- *  The database also needs to be updated, and the following table added:
- *
-
-CREATE TABLE wikipedia_gis (
-	gis_id int(8) unsigned NOT NULL,
-	gis_latitude_min real NOT NULL,
-	gis_latitude_max real NOT NULL,
-	gis_longitude_min real NOT NULL,
-	gis_longitude_max real NOT NULL,
-	gis_globe char(12) binary,
-	gis_type char(12) binary,
-	gis_type_arg char(12) binary,
-
-	KEY gis_id (gis_id),
-	INDEX gis_latitude_min (gis_latitude_min),
-	INDEX gis_latitude_max (gis_latitude_max),
-	INDEX gis_longitude_min (gis_longitude_min),
-	INDEX gis_longitude_max (gis_longitude_max)
-);
-
+ *  The database also needs the table given in "gisdb.sql" to be added.
  *
  *  ----------------------------------------------------------------------
  *
@@ -127,7 +108,7 @@ class gis_database {
 	{
 		$fname = 'gis_database::delete_positions';
 
-		$this->db->delete( 'gis', array( 'gis_id' => $id ), $fname);
+		$this->db->delete( 'gis', array( 'gis_page' => $id ), $fname);
 	}
 
 	/**
@@ -140,11 +121,11 @@ class gis_database {
 
 		if ($id == 0) return; # should not happen...
 
-		if ($globe == "") $globe = NULL;
+		if (!$globe) $globe = "";
 
 		$this->db->insert( 'gis',
 			       array(
-					'gis_id'    => $id,
+					'gis_page'          => $id,
 					'gis_latitude_min'  => $latmin,
 					'gis_longitude_min' => $lonmin,
 					'gis_latitude_max'  => $latmax,
@@ -184,14 +165,20 @@ class gis_database {
 	 */
 	 function select_area( $latmin, $lonmin, $latmax, $lonmax, $globe, $type )
 	 {
-		$condition = "gis_latitude_max >= " . $latmin .
-			" AND gis_latitude_min <= " . $latmax .
-			" AND gis_longitude_max >= " . $lonmin .
-			" AND gis_longitude_min <= " . $lonmax;
-		if ($globe and $globe != "") {
-			$condition .= " AND gis_globe = '" . $globe . "'";
-		} else {
-			$condition .= " AND gis_globe IS NULL";
+		if (!$globe) $globe = "";
+		$condition = "gis_globe = '" . $globe . "'";
+
+		if ($latmin > -90) {
+			$condition .= " AND gis_latitude_max >= " . $latmin;
+		}
+		if ($latmax < 90) {
+			$condition .= " AND gis_latitude_min <= " . $latmax;
+		}
+		if ($lonmin > -180) {
+			$condition .= " AND gis_longitude_max >= " . $lonmin;
+		}
+		if ($lonmax < 180) {
+			$condition .= " AND gis_longitude_min <= " . $lonmax;
 		}
 		if ($type) {
 			$condition .= " AND gis_type = '" . $type . "'";
@@ -209,7 +196,7 @@ class gis_database {
 
 		$this->result = $this->db->select( 'gis',
 			      array(
-				'gis_id',
+				'gis_page',
 				'gis_latitude_min',
 				'gis_latitude_max',
 				'gis_longitude_min',
