@@ -84,6 +84,8 @@ public:
 	ircclntp conn();
 
 private:
+	friend class ircclnt;
+	
 	bool cip, connected;
 	void chk(void);
 	ircclntp connection;

@@ -160,6 +160,7 @@ ircclnt::rdline(strr l) {
 	} catch (smnet::sckterr& e) {
 		std::string err = "IRC read error: ";
 		SMI(smlog::log)->logmsg(0, err + e.what());
+		throw;
 	}
 	return false;
 }
@@ -262,7 +263,12 @@ ircclnt::data_cb(int what)
 {
 	if (what == smnet::smpx::srd) {
 		std::string line;
-		if (!rdline(line)) return;
+		try {
+			if (!rdline(line)) return;
+		} catch (std::exception&) {
+			SMI(cfg)->connected = SMI(cfg)->cip = false;
+			delete this; /* hmm... */
+		}
 		/* "empty" lines are caused by \r\n.  we could handle this
 		   further down by treating \r\n properly, but some servers
 		   (batamut) are broken and will only send \n in some circumstances.
