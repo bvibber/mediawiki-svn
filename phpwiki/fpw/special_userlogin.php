@@ -26,10 +26,10 @@ function userLogin () {
 		if ( $nu->isLoggedIn ) {
 			$user = new WikiUser ;
 			$user = $nu ;
-			setcookie ( "WikiUserID" , $user->id , $expiration ) ;
-			setcookie ( "WikiLoggedIn" , "yes" , $expiration ) ;
+			setcookie ( "WikiUserID" , $user->id , $expiration , "/" ) ;
+			setcookie ( "WikiLoggedIn" , "yes" , $expiration , "/" ) ;
 			$WikiLoggedIn = "yes" ;
-			if ( $user->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $user->password , $expiration ) ;
+			if ( $user->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $user->password , $expiration , "/" ) ;
 			$user->options["rememberPassword"] = $REMEMBERPASSWORD ;
 			$user->saveSettings() ;
 			loadSkin () ;
@@ -40,9 +40,9 @@ function userLogin () {
 			$user = $nu ;
 			global $wikiWelcomeCreation ;
 			$s = str_replace ( "$1" , $user->name , $wikiWelcomeCreation ) ;
-			setcookie ( "WikiLoggedIn" , "yes" , $expiration ) ;
-			setcookie ( "WikiUserID" , $user->id , $expiration ) ;
-			if ( $user->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $user->password , $expiration ) ;
+			setcookie ( "WikiLoggedIn" , "yes" , $expiration , "/" ) ;
+			setcookie ( "WikiUserID" , $user->id , $expiration , "/" ) ;
+			if ( $user->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $user->password , $expiration , "/" ) ;
 			$user->options["rememberPassword"] = $REMEMBERPASSWORD ;
 			# FIXME: user_email always comes up null in the database. Don't know why.
 			if ( isset ( $EMAILADDR ) ) $user->email = $EMAILADDR ;
