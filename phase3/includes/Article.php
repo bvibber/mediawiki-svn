@@ -1910,7 +1910,7 @@ class Article {
 		global $wgUser;
 		$fname = 'Article::quickEdit';
 
-		wfDebugDieBacktrace( "$fname called." );
+		#wfDebugDieBacktrace( "$fname called." );
 
 		wfProfileIn( $fname );
 
@@ -1919,7 +1919,34 @@ class Article {
 		$dbkey = $this->mTitle->getDBkey();
 		$encDbKey = $dbw->strencode( $dbkey );
 		$timestamp = wfTimestampNow();
+		# insert new text
+		$dbw->insertArray( 'text', array(
+				'old_text' => $text,
+				'old_flags' => "" ), $fname );
+		$text_id = $dbw->insertID();
 
+		# update page
+		$dbw->updateArray( 'page', array(
+			'page_is_new' => 0,
+			'page_touched' => $timestamp,
+			'page_is_redirect' => $this->isRedirect( $text ) ? 1 : 0,
+			'page_latest' => $text_id ),
+			array( 'page_namespace' => $ns, 'page_title' => $dbkey ), $fname );
+		# Retrieve page ID
+		$page_id = $dbw->selectField( 'page', 'page_id', array( 'page_namespace' => $ns, 'page_title' => $dbkey ), $fname );
+
+		# update revision
+		$dbw->insertArray( 'revision', array(
+			'rev_id' => $text_id,
+			'rev_page' => $page_id,
+			'rev_comment' => $comment,
+			'rev_user' => $wgUser->getID(),
+			'rev_user_text' => $wgUser->getName(),
+			'rev_timestamp' => $timestamp,
+			'inverse_timestamp' => wfInvertTimestamp( $timestamp ),
+			'rev_minor_edit' => intval($minor) ),
+			$fname );
+/*
 		# Save to history
 		$dbw->insertSelect( 'old', 'cur',
 			array(
@@ -1965,6 +1992,7 @@ class Article {
 			$fields['cur_random'] = $rand = wfRandom();
 			$dbw->insertArray( 'cur', $fields, $fname );
 		}
+*/
 		wfProfileOut( $fname );
 	}
 
