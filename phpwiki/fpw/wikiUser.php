@@ -49,6 +49,48 @@ class WikiUser {
 		$this->options["tabLine1"] = "" ;
 		$this->options["tabLine2"] = " bgcolor=\"#333333\"" ;
 		}
+	
+	# Creates a style sheet for the page from the skin & link style options
+	function styleSheet( $action = "view" ) {
+		$ret = "<style type=\"text/css\"><!--\n";
+		$ret .= "body { ";
+		$textcolor = $this->options[text];
+		$bgcolor = $this->options[background];
+		if ( $textcolor == "" )
+			$textcolor = "black"; # For un-coloring links. Should be "inherit" but Netscape 4.x messes it up
+		else
+			$ret .= "color: $textcolor; ";
+		if ( $bgcolor == "" )
+			$bgcolor = "white";
+		else
+			$ret .= "background: $bgcolor; ";
+		$ret .= "}\n";
+		
+		$ret .= "p.bodytext { " . (($this->options[justify] == "yes") ? "text-align: justify; " : "") . "}\n";
+		$ret .= "a { text-decoration: " . (($this->options[underlineLinks] == "no") ? "none" : "underline") . "; }\n";
+		
+		$qbside = ( $this->options["quickBar"] == "left" ) ? "right" : "left";
+		$ret .= "a.interwiki, a.external { color: #3333BB; text-decoration: none; }\n" .
+			"a.red { color: red; text-decoration: none; }\n" .
+			"a.green { color: green; text-decoration: none; }\n" .
+			".topbar { border-bottom-width: 2; border-bottom-style: ridge; }\n" .
+			".middle { }\n" .
+			".quickbar { border-$qbside-width: 2; border-$qbside-style: ridge; }\n" .
+			".footer { border-top-color: black; border-top-width: 2; border-top-style: groove; }\n";
+		
+		if ( $action == "print" ) {
+			$ret .= "a { color: inherit; text-decoration: none; font-style: italic; }\n ";
+			$ret .= "a.newlink { color: inherit; font-style: inherit; }\n.newlinkedge { display: none; }\n";
+		} elseif ( $this->options[markupNewTopics] == "red") {
+			$ret .= "a.newlink { color: red; }\n.newlinkedge { display: none; }\n";
+		} elseif ( $this->options[markupNewTopics] == "inverse") {
+			$ret .= "a.newlink { color: white; background: blue; }\n.newlinkedge { display: inline; }\n";
+		} else {
+			$ret .= "a.newlink { color: $textcolor; text-decoration: none; }\n.newlinkedge { display: inline; }\n";
+			}
+		$ret .= "//--></style>";
+		return $ret;
+		}
 
 #### Management functions
 
