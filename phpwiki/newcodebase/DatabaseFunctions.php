@@ -27,14 +27,14 @@ function wfQuery( $sql, $conn, $fname = "" )
 	$ret = mysql_query( $sql, $conn );
 
 	if ( "" != $fname ) {
-		wfDebug( "{$fname}:SQL: {$sql}\n" );
+		wfDebug( "{$fname}:SQL: {$sql}\n", true );
 
 		if ( false === $ret ) {
 			$wgOut->databaseError( $fname );
 			exit;
 		}
 	} else {
-		wfDebug( "SQL: {$sql}\n" );
+		wfDebug( "SQL: {$sql}\n", true );
 	}
 	return $ret;
 }

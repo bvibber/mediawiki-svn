@@ -285,7 +285,7 @@ To include the image in an article, use a link in the form
 "uploadlog"		=> "upload log",
 "uploadlogtext" => "Uploads and deletions are logged on the $1",
 "filename"		=> "Filename",
-"filedesc"		=> "Description",
+"filedesc"		=> "Summary",
 "affirmation"	=> "I affirm that the copyright holder of this file
 agrees to license it under the terms of the $1.",
 "copyrightpage" => "Wikipedia:Copyrights",
@@ -318,6 +318,8 @@ any copyrights.",
 "imgdesc"		=> "desc",
 "imglegend"		=> "Legend: (del) = delete image, (desc) = show/edit image description.",
 "imghistory"	=> "Image history",
+"revertimg"		=> "rev",
+"imghistlegend" => "Legend: (rev) = revert to earlier image.",
 
 # Statistics
 #
@@ -409,6 +411,10 @@ the Wikipedia database.",
 # Block IP
 #
 "blockip"		=> "Block IP",
+
+# Debug page
+#
+"debug"			=> "Debug",
 
 );
 

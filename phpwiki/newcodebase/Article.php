@@ -381,29 +381,30 @@ $wpTextbox2
 
 		$text = $this->preSaveTransform( $text );
 
-		$conn = wfGetDB();
-		$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
-		  "old_comment,old_user,old_user_text,old_timestamp," .
-		  "old_minor_edit) VALUES (" .
-		  $wgTitle->getNamespace() . ", '" .
-		  $wgTitle->getDBkey() . "', '" .
-		  wfStrencode( $this->getContent() ) . "', '" .
-		  wfStrencode( $this->getComment() ) . "', " .
-		  $this->getUser() . ", '" .
-		  wfStrencode( $this->getUserText() ) . "', '" .
-		  $this->getTimestamp() . "', " . $me1 . ")";
-		$res = wfQuery( $sql, $conn, $fname );
+		if ( 0 != strcmp( $text, $this->getContent() ) ) {
+			$conn = wfGetDB();
+			$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
+			  "old_comment,old_user,old_user_text,old_timestamp," .
+			  "old_minor_edit) VALUES (" .
+			  $wgTitle->getNamespace() . ", '" .
+			  $wgTitle->getDBkey() . "', '" .
+			  wfStrencode( $this->getContent() ) . "', '" .
+			  wfStrencode( $this->getComment() ) . "', " .
+			  $this->getUser() . ", '" .
+			  wfStrencode( $this->getUserText() ) . "', '" .
+			  $this->getTimestamp() . "', " . $me1 . ")";
+			$res = wfQuery( $sql, $conn, $fname );
 
-		$conn = wfGetDB();
-		$sql = "UPDATE cur SET cur_text='" .  wfStrencode( $text ) .
-		  "',cur_comment='" .  wfStrencode( $summary ) .
-		  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
-		  ",cur_timestamp='" . date( "YmdHis" ) .
-		  "',cur_user_text='" . wfStrencode( $wgUser->getName() ) .
-		  "',cur_is_redirect={$redir} " .
-		  "WHERE cur_id=" . $this->getID();
-		$res = wfQuery( $sql, $conn, $fname );
-
+			$conn = wfGetDB();
+			$sql = "UPDATE cur SET cur_text='" .  wfStrencode( $text ) .
+			  "',cur_comment='" .  wfStrencode( $summary ) .
+			  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
+			  ",cur_timestamp='" . date( "YmdHis" ) .
+			  "',cur_user_text='" . wfStrencode( $wgUser->getName() ) .
+			  "',cur_is_redirect={$redir} " .
+			  "WHERE cur_id=" . $this->getID();
+			$res = wfQuery( $sql, $conn, $fname );
+		}
 		$this->showArticle( $text, wfMsg( "updated" ) );
 	}
 
@@ -428,41 +429,35 @@ $wpTextbox2
 	function imageHistory()
 	{
 		global $wgUser, $wgOut, $wgLang, $wgTitle;
-
-		$wgOut->addHTML( "\n<h2>" . wfMsg( "imghistory" ) . "</h2>\n" );
-		$wgOut->addHTML( "<p>(TODO: Image history)\n" );
-
-		$wgOut->setPageTitle( $wgTitle->getPRefixedText() );
-		$wgOut->setSubtitle( wfMsg( "revhistory" ) );
-		$wgOut->setArticleFlag( false );
+		$fname = "Article::imageHistory";
 
 		$conn = wfGetDB();
-		$sql = "SELECT old_id,old_namespace,old_title,old_user," .
-		  "old_comment,old_user_text,old_timestamp,old_minor_edit FROM old " .
-		  "WHERE old_namespace=" . $wgTitle->getNamespace() . " AND " .
-		  "old_title='" . wfStrencode( $wgTitle->getDBkey() ) . "' " .
-		  "ORDER BY old_timestamp DESC";
-		$res = wfQuery( $sql, $conn, "Article::history" );
+		$sql = "SELECT img_size,img_description,img_user," .
+		  "img_user_text,img_timestamp FROM image WHERE " .
+		  "img_name='" . wfStrencode( $wgTitle->getDBkey() ) . "'";
+		$res = wfQuery( $sql, $conn, $fname );
 
-		$revs = mysql_num_rows( $res );
 		$sk = $wgUser->getSkin();
-		$s = $sk->beginHistoryList();		
+		$s = $sk->beginImageHistoryList();		
 
-		$s .= $sk->historyLine( $this->getTimestamp(), $this->getUser(),
-		  $this->getUserText(), $wgTitle->getNamespace(),
-		  $wgTitle->getText(), 0, $this->getComment(),
-		  ( $this->getMinorEdit() > 0 ) );
+		$line = mysql_fetch_object( $res );
+		$s .= $sk->imageHistoryLine( $line->img_timestamp,
+		  wfImageUrl( $wgTitle->getText() ),  $line->img_user,
+		  $line->img_user_text, $line->img_size, $line->img_description );
 
-		while ( $revs ) {
-			$line = mysql_fetch_object( $res );
+		$conn = wfGetDB();
+		$sql = "SELECT oi_size,oi_description,oi_user," .
+		  "oi_user_text,oi_timestamp,oi_archive_name FROM oldimage WHERE " .
+		  "oi_name='" . wfStrencode( $wgTitle->getDBkey() ) . "' " .
+		  "ORDER BY oi_timestamp DESC";
+		$res = wfQuery( $sql, $conn, $fname );
 
-			$s .= $sk->historyLine( $line->old_timestamp, $line->old_user,
-			  $line->old_user_text, $line->old_namespace,
-			  $line->old_title, $line->old_id,
-			  $line->old_comment, ( $line->old_minor_edit > 0 ) );
-			--$revs;
+		while ( $line = mysql_fetch_object( $res ) ) {
+			$s .= $sk->imageHistoryLine( $line->oi_timestamp,
+			  wfImageArchiveUrl( $line->oi_archive_name ), $line->oi_user,
+			  $line->oi_user_text, $line->oi_size, $line->oi_description );
 		}
-		$s .= $sk->endHistoryList();
+		$s .= $sk->endImageHistoryList();
 		$wgOut->addHTML( $s );
 	}
 

@@ -617,6 +617,21 @@ class Skin {
 		return $s;
 	}
 
+	function makeImageLink( $name, $url, $alt = "" )
+	{
+		global $wgOut, $wgServer, $wgScript, $wgArticlePath, $wgTitle;
+
+		$nt = Title::newFromText( "Image:{$name}" );
+		$link = $nt->getPrefixedURL();
+
+		if ( "" == $alt ) { $alt = $name; }
+
+		$u = str_replace( "$1", $link, $wgArticlePath );
+		$s = "<a href=\"{$u}\" class=\"image\" title=\"{$alt}\">" .
+		  "<img border=0 src=\"{$url}\" alt=\"{$alt}\"></a>";
+		return $s;
+	}
+
 	function specialLink( $name )
 	{
 		$key = strtolower( $name );
@@ -640,6 +655,13 @@ class Skin {
 		return $s;
 	}
 
+	function beginImageHistoryList()
+	{
+		$s = "\n<h2>" . wfMsg( "imghistory" ) . "</h2>\n" .
+		  "<p>" . wfMsg( "imghistlegend" ) . "\n<ul>";
+		return $s;
+	}
+
 	function endRecentChangesList()
 	{
 		$s = "</ul>\n";
@@ -652,6 +674,12 @@ class Skin {
 
 		$s = preg_replace( "/!OLDID![0-9]+!/", $last, $this->lastline );
 		$s .= "</ul>\n";
+		return $s;
+	}
+
+	function endImageHistoryList()
+	{
+		$s = "</ul>\n";
 		return $s;
 	}
 
@@ -670,10 +698,7 @@ class Skin {
 		} else {
 			$ret = "";
 		}
-		$m = $wgLang->getMonthAbbreviation( substr( $ts, 4, 2 ) );
-		$d = 0 + substr( $ts, 6, 2 );
-		$h = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
-		$dt = "{$m} {$d} {$h}";
+		$dt = $wgLang->timeanddate( $ts );
 
 		if ( $oid ) { $q = "oldid={$oid}"; }
 		else { $q = ""; }
@@ -694,9 +719,7 @@ class Skin {
 		if ( $isminor ) { $s .= " <strong>M</strong>"; }
 		$s .= " {$link} . . {$ul}";
 
-		if ( "" != $c && "*" != $c ) {
-			$s .= " <em>({$c})</em>";
-		}
+		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
 		$s .= "</li>\n";
 
 		$this->lastline = $s;
@@ -714,7 +737,7 @@ class Skin {
 			$s .= "<h4>{$d}</h4>\n<ul>";
 			$this->lastdate = $d;
 		}
-		$h = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
+		$h = $wgLang->time( $ts );
 		$t = Title::makeName( $ns, $ttl );
 		$clink = $this->makeKnownLink( $t, "" );
 		$hlink = $this->makeKnownLink( $t, wfMsg( "hist" ), "action=history" );
@@ -730,6 +753,26 @@ class Skin {
 		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
 		$s .= "</li>\n";
 
+		return $s;
+	}
+
+	function imageHistoryLine( $ts, $url, $u, $ut, $size, $c )
+	{
+		global $wgLang;
+
+		$rev = wfMsg( "revertimg" );
+		$dt = $wgLang->timeanddate( $ts );
+
+		$rlink = $rev;	# TODO: Implement revert
+
+		if ( 0 == $u ) { $ul = $ut; }
+		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }
+
+		$s = "<li> ({$rlink}) <a href=\"{$url}\">{$dt}</a> . . {$ut}" .
+		  " ({$size} bytes)";
+
+		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
+		$s .= "</li>\n";
 		return $s;
 	}
 }

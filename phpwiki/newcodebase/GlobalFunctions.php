@@ -79,6 +79,15 @@ function wfImageUrl( $img )
 	return $url;
 }
 
+function wfImageArchiveUrl( $name )
+{
+	global $wgServer, $wgUploadPath;
+
+	$url = "{$wgServer}{$wgUploadPath}/archive/" . $name{15} . "/" .
+	  substr( $name, 15, 2 ) . "/{$name}";
+	return $url;
+}
+
 function wfUrlencode ( $s )
 {
 	$ulink = urlencode( $s );
@@ -87,11 +96,13 @@ function wfUrlencode ( $s )
 	return $ulink;
 }
 
-function wfDebug( $text )
+function wfDebug( $text, $logonly = false )
 {
 	global $wgOut, $wgDebugLogFile;
-	$wgOut->debug( $text );
 
+	if ( ! $logonly ) {
+		$wgOut->debug( $text );
+	}
 	if ( "" != $wgDebugLogFile ) {
 		error_log( $text, 3, $wgDebugLogFile );
 	}
