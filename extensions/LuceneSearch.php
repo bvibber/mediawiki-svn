@@ -25,6 +25,7 @@ else
 define('LS_PER_PAGE', 10);
 
 function wfLuceneSearch() {
+
 global $IP;
 require_once("$IP/includes/SpecialPage.php");
 
@@ -60,7 +61,11 @@ class LuceneSearch extends SpecialPage
 		if (count($this->namespaces) == 0)
 			$this->namespaces = array(0);
 
-		$q = $wgRequest->getText('search');
+		$bits = split("/", $wgRequest->getVal("title"), 2);
+		if(!empty($bits[1]))
+			$q = $bits[1];
+		else
+			$q = $wgRequest->getText('search');
 
 		if ($wgRequest->getText('gen') == 'titlematch') {
 			$limit = $wgRequest->getInt("limit");
@@ -366,7 +371,9 @@ class LuceneSearch extends SpecialPage
 	}
 
 	function showShortDialog($term) {
-		$action = "$wgScript?title=Special:Search";
+		global $wgScript;
+
+		$action = "$wgScript";
                 $searchButton = '<input type="submit" name="searchx" value="' .
                   htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
                 $searchField = "<div><input type='text' id='lsearchbox' onkeyup=\"resultType()\" "
@@ -380,7 +387,7 @@ class LuceneSearch extends SpecialPage
 		$ret = $searchField /*. $searchButton*/;
                 return 
 		  "<form id=\"search\" method=\"get\" "
-                  . "action=\"$action\">\n<div>{$ret}</div>\n</form>\n";
+                  . "action=\"$action\"><input type='hidden' name='title' value='Special:Search'>\n<div>{$ret}</div>\n</form>\n";
 	}
 
 	function showFullDialog($term) {
