@@ -322,10 +322,12 @@ class OAIRepo {
 		if( !isset( $this->_request[$var] ) ) {
 			return null;
 		}
-		if( preg_match( '/^([a-z_]+):(\d+):(\d{14})$/', $this->_request[$var], $matches ) ) {
+		if( preg_match( '/^([a-z_]+):(\d+)(?:|:(\d{14}))$/', $this->_request[$var], $matches ) ) {
 			$token['metadataPrefix'] = $matches[1];
 			$token['resume']         = IntVal( $matches[2] );
-			$token['until']          = wfTimestamp( TS_MW, $matches[3] );
+			$token['until']          = isset( $matches[3] )
+			                             ? wfTimestamp( TS_MW, $matches[3] )
+			                             : null;
 			$formats = $this->metadataFormats();
 			if( isset( $formats[$token['metadataPrefix']] ) ) {
 				return $token;
@@ -360,8 +362,6 @@ class OAIRepo {
 		}
 		
 		# Fetch one extra row to check if we need a resumptionToken
-		# If no until limit is set, this will get the current time.
-		$limit = wfTimestamp( TS_MW, $until );
 		$resultSet = $this->fetchRows( $from, $until, $this->chunkSize() + 1, $resume );
 		$count = min( $resultSet->numRows(), $this->chunkSize() );
 		if( $count ) {
@@ -378,7 +378,11 @@ class OAIRepo {
 				$this->_lastSequence = $row->up_sequence;
 			}
 			if( $row = $resultSet->fetchObject() ) {
-				$token = "$metadataPrefix:$row->up_sequence:$limit";
+				$limit = wfTimestamp( TS_MW, $until );
+				if( $until )
+					$token = "$metadataPrefix:$row->up_sequence:$limit";
+				else
+					$token = "$metadataPrefix:$row->up_sequence";
 				echo oaiTag( 'resumptionToken', array(), $token ) . "\n";
 			}
 			echo "</$verb>\n";
