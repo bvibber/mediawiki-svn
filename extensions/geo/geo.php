@@ -647,6 +647,7 @@ class geo
 		{
 		$matches = $this->my_matches ( $params->styles , $params ) ;
 		$ret = array () ;
+		$ret['stroke-linejoin'] = "round" ;
 		foreach ( $matches AS $m )
 			{
 			$a = $params->styles[$m] ;
