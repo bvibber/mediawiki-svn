@@ -901,6 +901,7 @@ See [[Wikipedia:Deletion_log]] for a record of recent deletions and restorations
 # Contributions
 #
 "contributions"	=> "User contributions",
+"mycontris" => "My contributions",
 "contribsub"	=> "For $1",
 "nocontribs"	=> "No changes were found matching these criteria.",
 "ucnote"		=> "Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",

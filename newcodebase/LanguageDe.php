@@ -690,6 +690,7 @@ dieses Artikels erscheinen.",
 # Contributions
 #
 "contributions"	=> "Benutzerbeiträge",
+"mycontris" => "Meine Beiträge",
 "contribsub"	=> "Für $1",
 "nocontribs"	=> "Es wurden keine Änderungen für diese Kriterien gefunden.",
 "ucnote"		=> "Dies sind die letzten <b>$1</b> Beiträge des Benutzers in den letzten <b>$2</b> Tagen.",

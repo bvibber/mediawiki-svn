@@ -572,7 +572,13 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		$s .= $this->mainPageLink()
 		  . $sep . $this->specialLink( "recentchanges" )
 		  . $sep . $this->specialLink( "randompage" );
-		if ($wgUser->getID()) $s.= $sep . $this->specialLink( "watchlist" ) ; // only show watchlist link if logged in
+		if ($wgUser->getID()) { 
+		$s.= $sep . $this->specialLink( "watchlist" ) ; 
+		$s .= $sep .$this->makeKnownLink( $wgLang->specialPage( "Contributions" ),
+		  wfMsg( "mycontris" ), "target=" . wfUrlencode($wgUser->getName() ) );		
+		
+		}
+		// only show watchlist link if logged in
                 if ( wfMsg ( "currentevents" ) != "-" ) $s .= $sep . $this->makeKnownLink( wfMsg( "currentevents" ), "" ) ;
                 $s .= "\n<hr>";
 		$articleExists = $wgTitle->getArticleId();
