@@ -49,7 +49,7 @@ $wikiCopyrightNotice = "Please notice that all contributions to Wikipedia are co
 $wikiSave = "Save" ;
 $wikiPreview = "Preview" ;
 $wikiReset = "Reset" ;
-$wikiDontSaveChanges = "<i>Return without saving changes</i>" ;
+$wikiDontSaveChanges = "<i>Cancel</i>" ;
 $wikiDescribePage = "Describe the new page here." ;
 
 # wikiUser
@@ -71,7 +71,7 @@ $wikiUpload = "Upload files" ;
 $wikiHistory = "History" ;
 $wikiRandomPage = "Random Page" ;
 $wikiSpecialPages = "Special Pages" ;
-$wikiEditHelp = "You can get help <a href=\"$THESCRIPT?title=wikipedia:How+does+one+edit+a+page\">here</a>." ;
+$wikiEditHelp = "<i>Editing Help</i>" ;
 $wikiStatistics = "Statistics" ;
 $wikiNewPages = "New pages" ;
 $wikiOrphans = "Orphans" ;
