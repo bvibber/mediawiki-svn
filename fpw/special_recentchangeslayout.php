@@ -1,6 +1,6 @@
 <?
 
-function recentChangesLayout ( &$arr ) {
+function recentChangesLayout ( &$arr , $embolden = false) {
     if ( count ( $arr ) == 0 ) return "" ;
     global $THESCRIPT , $user , $wikiDiff , $wikiGetDate , $wikiUser , $wikiChanges, $wikiChange, $wikiRCLegend, $wikiEditTypes ;
     $lastDay = "" ;
@@ -9,6 +9,13 @@ function recentChangesLayout ( &$arr ) {
 
     if ( in_array ( "is_sysop" , $user->rights ) ) $isSysop = true ;
     else $isSysop = false ;
+    
+    # Bold watchlist entries?
+    if ( $embolden ) {
+	$a = getMySQL ( "user" , "user_watch" , "user_id=$user->id" ) ;
+	$watchlist = explode ( "\n" , $a ) ;
+    } else
+    	$watchlist = array () ;
 
     $xyz = new WikiTitle ;
     $ret = str_replace ( "$1" , $wikiEditTypes["1"] , str_replace ( "$2" , $wikiEditTypes["2"] ,  $wikiRCLegend ) ) ;
@@ -19,6 +26,15 @@ function recentChangesLayout ( &$arr ) {
     foreach ( $arr as $s ) {
         $nt = $xyz->getNiceTitle ( $s->cur_title ) ;
         $url = nurlencode ( $s->cur_title ) ;
+
+	if ( $embolden and (in_array ( $nt , $watchlist ) or
+	    in_array ( preg_replace ( "/^[^:]*:?([^:]+)\$/" , "\$1" , $nt ) , $watchlist ) ) ) {
+	    $b = "<b>";
+	    $unb = "</b>";
+	} else {
+	    $b = $unb = "" ;
+	}
+
         # Adjusting date for user's timezone. Inline timestampAddHour to avoid
         # calling date() and tsc() repeatedly. 
         $adjusted_time_sc = tsc ( $s->cur_timestamp ) + 3600 * $user->options["hourDiff"];
@@ -49,22 +65,22 @@ function recentChangesLayout ( &$arr ) {
         if ( $s->cur_minor_edit == 1 ) $comment = "<font size=-1><i>$comment</i></font>" ;
         $minor = $wikiEditTypes[$s->cur_minor_edit] ;
 
-        if ( $user->options["changesLayout"] == "table" ) $t = "<tr><td$color valign=top width=0%>" ;
-        else $t = "<li>" ;
+        if ( $user->options["changesLayout"] == "table" ) $t = "<tr><td$color valign=top width=0%>$b" ;
+        else $t = "<li>$b" ;
 
         if ( $s->version == "current" ) $t .= "<a href=\"".wikiLink("$url&diff=yes")."\">$wikiDiff</a>&nbsp;" ;
         else if ( $s->version != "" ) $t .= "<a href=\"".wikiLink("$url&oldID=".$s->old_id."&version=".$s->version."&diff=yes")."\">$wikiDiff</a>&nbsp;";
         else $t .= "<a href=\"".wikiLink("$url&diff=yes")."\">$wikiDiff</a>" ;
 
-        if ( $user->options["changesLayout"] == "table" ) $t .= "</td><td$color valign=top>" ;
+        if ( $user->options["changesLayout"] == "table" ) $t .= "$unb</td><td$color valign=top>$b" ;
         else $t .= " " ;
 
-        if ( $s->version == "current" ) $t .= "<a href=\"".wikiLink("$url")."\">$nt</a></td>" ;
-        else if ( $s->version != "" ) $t .= "<a href=\"".wikiLink("$url&oldID=".$s->old_id."&version=".$s->version)."\">$nt (".$s->version.")</a></td>" ;
-        else $t .= "<a href=\"".wikiLink("$url")."\">$nt</a></td>" ;
+        if ( $s->version == "current" ) $t .= "<a href=\"".wikiLink("$url")."\">$nt</a>$unb</td>" ;
+        else if ( $s->version != "" ) $t .= "<a href=\"".wikiLink("$url&oldID=".$s->old_id."&version=".$s->version)."\">$nt (".$s->version.")</a>$unb</td>" ;
+        else $t .= "<a href=\"".wikiLink("$url")."\">$nt</a>$unb</td>" ;
 
-        if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top width=0% nowrap>$time</td>" ;
-        else $t = str_replace ( "</td>" , "; " , $t ) . " $time" ;
+        if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top width=0% nowrap>$b$time$unb</td>" ;
+        else $t = str_replace ( "$unb</td>" , "; " , $t ) . " $time" ;
 
         $noc = $s->changes ;
         $changes = ( $noc > 1 ) ? $wikiChanges : $wikiChange;
@@ -74,9 +90,9 @@ function recentChangesLayout ( &$arr ) {
           $noc = "";
         
         if ( $user->options["changesLayout"] == "table" ) {
-          $t .= "<td$color valign=top width=0% nowrap>$noc</td>" ;
-          $t .= "<td$color valign=top nowrap>$u</td>" ;
-          $t .= "<td$color valign=top>$minor</td>" ;
+          $t .= "<td$color valign=top width=0% nowrap>$b$noc$unb</td>" ;
+          $t .= "<td$color valign=top nowrap>$b$u$unb</td>" ;
+          $t .= "<td$color valign=top>$b$minor$unb</td>" ;
           $t .= "<td$color >$comment</td>" ;
           $t .= "</tr>\n" ;
         }
@@ -84,7 +100,7 @@ function recentChangesLayout ( &$arr ) {
           if ( $noc != "" ) $t .= " ($noc)" ;
           $t .= " . . . " ;
           $t .= $u ;
-          $t .= " $minor" ;
+          $t .= " $minor$unb" ;
           if ( $o_comment != "" ) $t .= " <b>[$comment]</b>" ;
           $t .= "</li>\n" ;
         }

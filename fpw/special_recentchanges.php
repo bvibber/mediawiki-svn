@@ -154,8 +154,8 @@ function recentchanges () {
       $arr = array_merge ($arr, $arr1);
       
     }
-
-    $ret .= recentChangesLayout($arr) ;
+    
+    $ret .= recentChangesLayout($arr, $user->isLoggedIn ) ;
     
     return $ret ;
    }
