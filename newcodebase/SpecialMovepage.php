@@ -34,7 +34,6 @@ class MovePageForm {
 		global $wpNewTitle, $wpOldTitle, $wpMovetalk, $target;
 
 		$wgOut->setPagetitle( wfMsg( "movepage" ) );
-		$wgOut->addWikiText( wfMsg( "movepagetext" ) );
 
 		if ( ! $wpOldTitle ) {
 			$target = wfCleanQueryVar( $target );
@@ -46,6 +45,10 @@ class MovePageForm {
 		}
 		$ot = Title::newFromURL( $wpOldTitle );
 		$ott = $ot->getPrefixedText();
+
+		$wgOut->addWikiText( wfMsg( "movepagetext" ) );
+		if ( ! Namespace::isTalk( $ot->getNamespace() ) )
+			$wgOut->addWikiText( "\n\n" . wfMsg( "movepagetalktext" ) );
 
 		$ma = wfMsg( "movearticle" );
 		$newt = wfMsg( "newtitle" );
@@ -160,12 +163,12 @@ class MovePageForm {
 
 			if ( 0 != $this->oldid ) {
 				if ( 0 != $this->newid ) {
-					if ( ! $this->isValidTarget() ) {
-						$this->showForm( wfMsg( "articleexists" ) );
-						return;
+					if ( $this->isValidTarget() ) {
+						$this->moveOverExistingRedirect();
+						$this->talkmoved = 1;
+					} else {
+						$this->talkmoved = 'invalid';
 					}
-					$this->moveOverExistingRedirect();
-					$this->talkmoved = 1;
 				} else {
 					$this->moveToNewTitle();
 					$this->talkmoved = 1;
@@ -196,8 +199,13 @@ class MovePageForm {
 
 		if ( 1 == $talkmoved ) {
 			$wgOut->addHTML( "\n<p>" . wfMsg( "talkpagemoved" ) );
+		} elseif( 'invalid' == $talkmoved ) {
+			$wgOut->addHTML( "\n<p><strong>" . wfMsg( "talkexists" ) . "</strong>" );
 		} else {
-			$wgOut->addHTML( "\n<p>" . wfMsg( "talkpagenotmoved" ) );
+			$ot = Title::newFromURL( $oldtitle );
+			if ( ! Namespace::isTalk( $ot->getNamespace() ) ) {
+				$wgOut->addHTML( "\n<p>" . wfMsg( "talkpagenotmoved" ) );
+			}
 		}
 	}
 

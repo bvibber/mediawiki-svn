@@ -945,12 +945,27 @@ Wikipedia developers.",
 "movepagetext"	=> "Using the form below will rename a page, moving all
 of its history to the new name.
 The old title will become a redirect page to the new title.
-Links to the old page title will not be changed, and the talk
-page, if any, will not be moved.
+Links to the old page title will not be changed; be sure to
+[[Special:Maintenance|check]] for double or broken redirects.
+You are responsible for making sure that links continue to
+point where they are supposed to go.
+
+Note that the page will '''not''' be moved if there is already
+a page at the new title, unless it is empty or a redirect and has no
+past edit history. This means that you can rename a page back to where
+it was just renamed from if you make a mistake, and you cannot overwrite
+an existing page.
+
 <b>WARNING!</b>
 This can be a drastic and unexpected change for a popular page;
 please be sure you understand the consequences of this before
 proceeding.",
+"movepagetalktext" => "The associated talk page, if any, will be automatically moved along with it '''unless:'''
+*You are moving the page across namespaces,
+*A non-empty talk page already exists under the new name, or
+*You uncheck the box below.
+
+In those cases, you will have to move or merge the page manually if desired.",
 "movearticle"	=> "Move page",
 "movenologin"	=> "Not logged in",
 "movenologintext" => "You must be a registered user and <a href=\"" .
@@ -963,6 +978,9 @@ to move a page.",
 "articleexists" => "A page of that name already exists, or the
 name you have chosen is not valid.
 Please choose another name.",
+"talkexists"	=> "The page itself was moved successfully, but the
+talk page could not be moved because one already exists at the new
+title. Please merge them manually.",
 "movedto"		=> "moved to",
 "movetalk"		=> "Move \"talk\" page as well, if applicable.",
 "talkpagemoved" => "The corresponding talk page was also moved.",
