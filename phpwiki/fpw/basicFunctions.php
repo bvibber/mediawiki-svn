@@ -339,10 +339,10 @@ function view ( $title ) {
 	else 
 	    $vpage->load ( $title, true) ;
 	if ( $vpage->namespace ) $namespaceBackground = $wikiNamespaceBackground[strtolower($vpage->namespace)] ;
-	if ( $vpage->contents == $wikiDescribePage ) {
+/*	if ( $vpage->contents == $wikiDescribePage ) {
 		$action = "edit" ;
 		return doEdit ( $vpage->title ) ;
-		}
+		}*/
 	return $vpage->renderPage () ;
 	}
 
