@@ -92,6 +92,7 @@ class IPUnblockForm {
 		$wgOut->addHTML( "<ul>" );
 		$sk = $wgUser->getSkin();
 		while ( $row = wfFetchObject( $res ) ) {
+			$addr = $row->ipb_address;
 			$name = User::whoIs( $row->ipb_by );
 			$ulink = $sk->makeKnownLink( "User:{$name}", $name );
 			$d = $wgLang->timeanddate( $row->ipb_timestamp );
@@ -101,9 +102,13 @@ class IPUnblockForm {
 			$line = str_replace( "$3", $row->ipb_address, $line );
 
 			$wgOut->addHTML( "<li>{$line}" );
+			$clink = "<a href=\"" . wfLocalUrlE( "Special:Contributions",
+			  "target={$addr}" ) . "\">" . wfMsg( "contribslink" ) . "</a>";
+			$wgOut->addHTML( " ({$clink})" );
+
 			if ( $wgUser->isSysop() ) {
 				$ublink = "<a href=\"" . wfLocalUrlE( "Special:Ipblocklist",
-				  "action=unblock&ip=" . $row->ipb_address ) . "\">" .
+				  "action=unblock&ip={$addr}" ) . "\">" .
 				  wfMsg( "unblocklink" ) . "</a>";
 				$wgOut->addHTML( " ({$ublink})" );
 			}
