@@ -257,9 +257,11 @@ public:
 		wrt(s); wrt("\r\n");
 	}
 	void wrt(u_char c) {
+		if (destroyme) return;
 		intf->wrt(&c, 1);
 	}
 	void wrt(std::string const& s) {
+		if (destroyme) return;
 		intf->wrt(s);
 	}
 	void chgrt(handler_node<trmsrv>* newrt, std::string const& prompt) {
