@@ -24,7 +24,7 @@ include_once( "utf8Case.php" );
 	"quickbar" => 1, "underline" => 1, "hover" => 1,
 	"cols" => 80, "rows" => 25, "searchlimit" => 20,
 	"contextlines" => 5, "contextchars" => 50,
-	"skin" => 0, "math" => 1, "rcdays" => 3, "rclimit" => 50,
+	"skin" => 0, "rcdays" => 3, "rclimit" => 50,
 	"highlightbroken" => 1, "stubthreshold" => 0
 );
 
@@ -62,155 +62,156 @@ include_once( "utf8Case.php" );
 );
 
 /* private */ $wgLanguageNamesZh = array(
-	"aa"    => "阿法尔语", /* Afar */
-	"ab"    => "阿布哈西亚语", /* Abkhazian */
-	"af"	=> "南非荷兰语", /* Afrikaans */
-	"am"	=> "阿姆哈拉语",/* Amharic */
-	"ar"    => "阿拉伯语(&#8238;&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;&#8236;)", /* (Araby) */
-	"as"	=> "阿萨姆语", /* Assamese */
-	"ay"	=> "艾马拉语", /* Aymara */
-	"az"	=> "阿塞拜疆语", /* Azerbaijani */
-	"ba"	=> "巴什基尔语", /* Bashkir */
-	"be"    => "白俄罗斯语(&#1041;&#1077;&#1083;&#1072;&#1088;&#1091;&#1089;&#1082;&#1080;)",
-	"bh"	=> "比哈尔语 ", /* Bihara */
-	"bi"	=> "比斯拉马语", /* Bislama */
-	"bn"	=> "孟加拉语", /* Bengali */
-	"bo"	=> "藏语", /* Tibetan */
-	"br"    => "布列塔尼語(Brezhoneg)",
-	"ca"    => "加泰罗尼亚语(Catal&#224;)",
-	"ch"    => "查莫罗语", /* Chamoru */
-	"co"	=> "科西嘉语", /* Corsican */
-	"cs"    => "捷克语(&#268;esk&#225;)",
-	"cy"    => "威尔士语(Cymraeg)",
-	"da"    => "丹麦语(Dansk)", # Note two different subdomains. /* Dansk */
-	"dk"    => "丹麦语(Dansk)", # 'da' is correct for the language. /* Dansk */
-	"de"    => "德语(Deutsch)",
-	"dz"	=> "不丹语", /* Bhutani */
-	"el"    => "希腊语(&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940;)",
-                /* (Ellenika) */
-	"en"	=> "英语(English)",
-	"eo"	=> "世界语(Esperanto)",/* Esperanto */
-	"es"    => "西班牙语(Espa&#241;ol)",
-	"et"    => "爱沙尼亚语(Eesti)",
-	"eu"    => "巴斯克語(Euskara)",
-	"fa"    => "法尔西语(&#8238;&#1601;&#1585;&#1587;&#1609;&#8236;)",
-                /* (Farsi) ？波斯语 */
-	"fi"    => "芬兰语(Suomi)",
-	"fj"	=> "斐济语", /* Fijian */
-	"fo"	=> "法罗语", /* Faeroese */
-	"fr"    => "法语(Fran&#231;ais)",
-	"fy"    => "弗里斯兰语(Frysk)",
-	"ga"    => "爱尔兰语(Gaelige)",
-	"gl"	=> "加利西亚语", /* Galician */
-	"gn"	=> "瓜拉尼语", /* Guarani */
-	"gu"    => "古吉拉特语(&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752;)", 
-	        /* (Gujarati) */
-	"ha"	=> "豪萨语", /* Hausa */
-	"he"    => "希伯来语(&#1506;&#1489;&#1512;&#1497;&#1514;)",
-	        /* (Ivrit) */
-	"hi"    => "印地语(&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;)",
-                /* (Hindi) */
-	"hr"    => "克罗地亚语(Hrvatski)",
-	"hu"    => "马札尔语(Magyar)",
-	"hy"	=> "亚美尼亚语", /* Armenian */
-	"ia"	=> "拉丁国际语(Interlingua)",
-	"id"	=> "印度尼西亚语(Indonesia)",
+	"aa"    => "Afar", /* 阿法尔语 */
+	"ab"    => "Abkhazian", /* 阿布哈西亚语 */
+	"af"	=> "Afrikaans", /* 南非荷兰语 */
+	"am"	=> "Amharic",/* 阿姆哈拉语 */
+	"ar"    => "&#8238;&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;&#8236;(Araby)", /* 阿拉伯语 */
+	"as"	=> "Assamese", /* 阿萨姆语 */
+	"ay"	=> "Aymara", /* 艾马拉语 */
+	"az"	=> "Azerbaijani", /* 阿塞拜疆语 */
+	"ba"	=> "Bashkir", /* 巴什基尔语 */
+	"be"    => "(&#1041;&#1077;&#1083;&#1072;&#1088;&#1091;&#1089;&#1082;&#1080;)", /* 白俄罗斯语 */
+	"bh"	=> "Bihara", /* 比哈尔语 */
+	"bi"	=> "Bislama", /* 比斯拉马语 */
+	"bn"	=> "Bengali", /* 孟加拉语 */
+	"bo"	=> "Tibetan", /* 藏语 */
+	"br"    => "Brezhoneg", /* 布列塔尼語 */
+	"ca"    => "Catal&#224;", /* 加泰罗尼亚语 */
+	"ch"    => "Chamoru", /* 查莫罗语 */
+	"co"	=> "Corsican", /* 科西嘉语 */
+	"cs"    => "&#268;esk&#225;", /* 捷克语 */
+	"cy"    => "Cymraeg", /* 威尔士语 */
+	"da"    => "Dansk", # Note two different subdomains. /* 丹麦语 */
+	"dk"    => "Dansk", # 'da' is correct for the language. /* 丹麦语 */
+	"de"    => "Deutsch", /* 德语 */
+	"dz"	=> "Bhutani", /* 不丹语 */
+	"el"    => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940;(Ellenika)",
+                /* 希腊语 */
+	"en"	=> "English", /* 英语 */
+	"eo"	=> "Esperanto",/* 世界语 */
+	"es"    => "Espa&#241;ol", /* 西班牙语 */
+	"et"    => "Eesti", /* 爱沙尼亚语 */
+	"eu"    => "Euskara", /* 巴斯克語 */
+	"fa"    => "&#8238;&#1601;&#1585;&#1587;&#1609;&#8236;(Farsi)",
+                /* 法尔西语 波斯语 */
+	"fi"    => "Suomi", /* 芬兰语 */
+	"fj"	=> "Fijian", /* 斐济语 */
+	"fo"	=> "Faeroese", /* 法罗语 */
+	"fr"    => "Fran&#231;ais", /* 法语 */
+	"fy"    => "Frysk", /* 弗里斯兰语 */
+	"ga"    => "Gaelige", /* 爱尔兰语 */
+	"gl"	=> "Galician", /* 加利西亚语 */
+	"gn"	=> "Guarani", /* 瓜拉尼语 */
+	"gu"    => "&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752;(Gujarati)", 
+	        /* 古吉拉特语 */
+	"ha"	=> "Hausa", /* 豪萨语 */
+	"he"    => "&#1506;&#1489;&#1512;&#1497;&#1514;(Ivrit)",
+	        /* 希伯来语 */
+	"hi"    => "&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;(Hindi)",
+                /* 印地语 */
+	"hr"    => "Hrvatski", /* 克罗地亚语 */
+	"hu"    => "Magyar", /* 马札尔语 */
+	"hy"	=> "Armenian", /* 亚美尼亚语 */
+	"ia"	=> "Interlingua", /* 拉丁国际语 */
+	"id"	=> "Indonesia", /* 印度尼西亚语 */
 	"ik"	=> "Inupiak", /* Inupiak */
-	"is"    => "冰岛语(&#205;slenska)",
-	"it"    => "意大利语(Italiano)",
+	"is"    => "&#205;slenska", /* 冰岛语 */
+	"it"    => "Italiano", /* 意大利语 */
 	"iu"	=> "Inuktitut",
-	"ja"    => "日本语", /* &#26085;&#26412;&#35486;(Nihongo) */
-	"jv"	=> "爪哇语", /* Javanese */
-	"ka"    => "格鲁吉亚语(&#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4312;)", 
-                /* (Kartuli) */
-	"kk"	=> "哈萨克语", /* Kazakh */
-	"kl"	=> "格陵兰语", /* Greenlandic */
-	"km"	=> "柬埔寨语", /* Cambodian */
-	"kn"	=> "卡纳达语", /* Kannada */
-	"ko"    => "韩国语(&#54620;&#44397;&#50612;)",
-	        /* (Hangukeo) */
-	"ks"	=> "克什米尔语", /* Kashmiri */
-	"kw"    => "康沃尔语(Kernewek)",
-	"ky"	=> "吉尔吉斯语(？柯尔克孜语)", /* Kirghiz */
-	"la"    => "拉丁语(Latina)",
-	"ln"	=> "林加拉语", /* Lingala */
-	"lo"	=> "老挝语", /* Laotian */
-	"lt"    => "立陶宛语(Lietuvi&#371;)",
-	"lv"	=> "拉脱维亚语", /* Latvian */
-	"mg"    => "马尔加什语", /* Malagasy */
-	"mi"	=> "毛利人", /* Maori */
-	"mk"	=> "马其顿语", /* Macedonian */
-	"ml"	=> "马拉雅拉姆语", /* Malayalam ？德拉维语*/
-	"mn"	=> "蒙古语", /* Mongolian */
-	"mo"	=> "摩尔多瓦语", /* Moldavian */
-	"mr"	=> "马拉地语", /* Marathi */
-	"ms"    => "马来语(Bahasa Melayu)",
-	"my"	=> "缅甸语", /* Burmese */
-	"na"	=> "瑙鲁语", /* Nauru */
-	"ne"    => "尼泊尔语(&#2344;&#2375;&#2346;&#2366;&#2354;&#2368;)",
-                /* (Nepali) */
-	"nl"    => "荷兰语(Nederlands)",
-	"no"    => "挪威语(Norsk)",
-	"oc"	=> "奥克语", /* Occitan */
-	"om"	=> "奥罗莫语", /* Oromo */
-	"or"	=> "奥里亚语", /* Oriya */
-	"pa"	=> "旁遮普语", /* Punjabi */
-	"pl"    => "波兰语(Polski)",
-	"ps"	=> "普什图语", /* Pashto */
-	"pt"    => "葡萄牙语(Portugu&#234;s)",
-	"qu"	=> "盖丘亚语", /* Quechua */
+	"ja"    => "&#26085;&#26412;&#35486;(Nihongo)", /* 日本语 */
+	"jv"	=> "Javanese", /* 爪哇语 */
+	"ka"    => "&#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4312;(Kartuli)", 
+                /* 格鲁吉亚语 */
+	"kk"	=> "Kazakh", /* 哈萨克语 */
+	"kl"	=> "Greenlandic", /* 格陵兰语 */
+	"km"	=> "Cambodian", /* 柬埔寨语 */
+	"kn"	=> "Kannada", /* 卡纳达语 */
+	"ko"    => "&#54620;&#44397;&#50612;(Hangukeo)",
+	        /* 韩国语 */
+	"ks"	=> "Kashmiri", /* 克什米尔语 */
+	"kw"    => "Kernewek", /* 康沃尔语 */
+	"ky"	=> "Kirghiz", /* 吉尔吉斯语 (柯尔克孜语)*/
+	"la"    => "Latina", /* 拉丁语 */
+	"ln"	=> "Lingala", /* 林加拉语 */
+	"lo"	=> "Laotian", /* 老挝语 */
+	"lt"    => "Lietuvi&#371;", /* 立陶宛语 */
+
+	"lv"	=> "Latvian", /* 拉脱维亚语 */
+	"mg"    => "Malagasy", /* 马尔加什语 */
+	"mi"	=> "Maori", /* 毛利人 */
+	"mk"	=> "Macedonian", /* 马其顿语 */
+	"ml"	=> "Malayalam", /* 马拉雅拉姆语 ？德拉维语*/
+	"mn"	=> "Mongolian", /* 蒙古语 */
+	"mo"	=> "Moldavian", /* 摩尔多瓦语 */
+	"mr"	=> "Marathi", /* 马拉地语 */
+	"ms"    => "Bahasa Melayu", /* 马来语 */
+	"my"	=> "Burmese", /* 缅甸语 */
+	"na"	=> "Nauru", /* 瑙鲁语 */
+	"ne"    => "&#2344;&#2375;&#2346;&#2366;&#2354;&#2368;(Nepali)",
+                /* 尼泊尔语 */
+	"nl"    => "Nederlands", /* 荷兰语 */
+	"no"    => "Norsk", /* 挪威语 */
+	"oc"	=> "Occitan", /* 奥克语 */
+	"om"	=> "Oromo", /* 奥罗莫语 */
+	"or"	=> "Oriya", /* 奥里亚语 */
+	"pa"	=> "Punjabi", /* 旁遮普语 */
+	"pl"    => "Polski", /* 波兰语 */
+	"ps"	=> "Pashto", /* 普什图语 */
+	"pt"    => "Portugu&#234;s", /* 葡萄牙语 */
+	"qu"	=> "Quechua", /* 盖丘亚语 */
 	"rm"	=> "Rhaeto-Romance", /* Rhaeto-Romance */
-	"rn"	=> "基隆迪语", /* Kirundi */
-	"ro"    => "罗马尼亚语(Rom&#226;n&#259;)",
-	"ru"    => "俄语(&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;)",
-                /*  (Russkij) */
-	"rw"	=> "Kinyarwanda(Kinyarwanda)",
-	"sa"    => "梵语(&#2360;&#2306;&#2360;&#2381;&#2325;&#2371;&#2340;)",
-                /* (Samskrta) */
-	"sd"	=> "信德语", /* Sindhi */
-	"sg"	=> "桑戈语", /* Sangro */
-	"sh"	=> "塞尔维亚-克罗地亚语", /* Serbocroatian */
-	"si"	=> "僧伽罗语", /* Sinhalese */
-	"simple"=> "简单英语(Simple English)",
-	"sk"	=> "斯洛伐克语", /* Slovak */
-	"sl"	=> "斯洛文尼亚语(Slovensko)",
-	"sm"	=> "萨摩亚语", /* Samoan */
-	"sn"	=> "绍纳语", /* Shona */
-	"so"    => "索马里语(Soomaali)",
-	"sq"    => "阿尔巴尼亚(Shqiptare)",
-	"sr"    => "塞尔维亚语(Srpski)",
-	"ss"	=> "西斯瓦提语", /* Siswati */
-	"st"	=> "塞索托语", /* Sesotho */
-	"su"	=> "苏丹语", /* Sudanese */
-	"sv"    => "瑞典语(Svenska)",
-	"sw"    => "斯瓦希里语(Kiswahili)",
-	"ta"	=> "泰米尔语", /* Tamil */
-	"te"	=> "泰卢固语", /* Telugu */
-	"tg"	=> "塔吉克语", /* Tajik */
-	"th"	=> "泰国语", /* Thai */
-	"ti"	=> "提格里尼亚语", /* Tigrinya */
-	"tk"	=> "土库曼语", /* Turkmen */
-	"tl"	=> "塔加路语", /* Tagalog */
-	"tn"	=> "茨瓦纳语", /* Setswana */
-	"to"	=> "汤加语", /* Tonga */
-	"tr"    => "土耳其语(T&#252;rk&#231;e)",
-	"ts"	=> "通加语", /* Tsonga ？聪加语*/
-	"tt"	=> "鞑靼语", /* Tatar */
-	"tw"	=> "特威语", /* Twi ？契维、特维*/
-	"ug"	=> "维吾尔语", /* Uighur */
-	"uk"    => "乌克兰语(&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;)", 
-	        /*  (Ukrayins`ka) */
-	"ur"	=> "乌尔都语", /* Urdu */
-	"uz"	=> "乌兹别克语", /* Uzbek */
-	"vi"	=> "越南语", /* Vietnamese */
-	"vo"    => "沃拉卜克语(Volap&#252;k)", /* ？佛拉普克语 */
-	"wo"	=> "沃洛夫语", /* Wolof */
-	"xh"    => "科萨语", /* isiXhosa */
-	"yi"	=> "意第绪语", /* Yiddish */
-	"yo"	=> "约鲁巴语", /* Yoruba */
-	"za"	=> "壮语", /* Zhuang ？ */
-	"zh"    => "中文", /* Zhongwen */
-	"zu"	=> "祖鲁语" /* Zulu */
+	"rn"	=> "Kirundi", /* 基隆迪语 */
+	"ro"    => "Rom&#226;n&#259;", /* 罗马尼亚语 */
+	"ru"    => "&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;(Russkij)",
+                /*  俄语 */
+	"rw"	=> "Kinyarwanda",
+	"sa"    => "&#2360;&#2306;&#2360;&#2381;&#2325;&#2371;&#2340;(Samskrta)",
+                /* 梵语 */
+	"sd"	=> "Sindhi", /* 信德语 */
+	"sg"	=> "Sangro", /* 桑戈语 */
+	"sh"	=> "Serbocroatian", /* 塞尔维亚-克罗地亚语 */
+	"si"	=> "Sinhalese", /* 僧伽罗语 */
+	"simple"=> "Simple English", /* 简单英语 */
+	"sk"	=> "Slovak", /* 斯洛伐克语 */
+	"sl"	=> "Slovensko", /* 斯洛文尼亚语 */
+	"sm"	=> "Samoan", /* 萨摩亚语 */
+	"sn"	=> "Shona", /* 绍纳语 */
+	"so"    => "Soomaali", /* 索马里语 */
+	"sq"    => "Shqiptare", /* 阿尔巴尼亚 */
+	"sr"    => "Srpski", /* 塞尔维亚语 */
+	"ss"	=> "Siswati", /* 西斯瓦提语 */
+	"st"	=> "Sesotho", /* 塞索托语 */
+	"su"	=> "Sudanese", /* 苏丹语 */
+	"sv"    => "Svenska", /* 瑞典语 */
+	"sw"    => "Kiswahili", /* 斯瓦希里语 */
+	"ta"	=> "Tamil", /* 泰米尔语 */
+	"te"	=> "Telugu", /* 泰卢固语 */
+	"tg"	=> "Tajik", /* 塔吉克语 */
+	"th"	=> "Thai", /* 泰国语 */
+	"ti"	=> "Tigrinya", /* 提格里尼亚语 */
+	"tk"	=> "Turkmen", /* 土库曼语 */
+	"tl"	=> "Tagalog", /* 塔加路语 */
+	"tn"	=> "Setswana", /* 茨瓦纳语 */
+	"to"	=> "Tonga", /* 汤加语 */
+	"tr"    => "T&#252;rk&#231;e", /* 土耳其语 */
+	"ts"	=> "Tsonga", /* 通加语 ？聪加语*/
+	"tt"	=> "Tatar", /* 鞑靼语 */
+	"tw"	=> "Twi", /* 特威语 ？契维、特维*/
+	"ug"	=> "Uighur", /* 维吾尔语 */
+	"uk"    => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;(Ukrayins`ka)", 
+	        /*  乌克兰语 */
+	"ur"	=> "Urdu", /* 乌尔都语 */
+	"uz"	=> "Uzbek", /* 乌兹别克语 */
+	"vi"	=> "Vietnamese", /* 越南语 */
+	"vo"    => "Volap&#252;k", /* 沃拉卜克语？佛拉普克语 */
+	"wo"	=> "Wolof", /* 沃洛夫语 */
+	"xh"    => "isiXhosa", /* 科萨语 */
+	"yi"	=> "Yiddish", /* 意第绪语 */
+	"yo"	=> "Yoruba", /* 约鲁巴语 */
+	"za"	=> "Zhuang", /* 壮语 ？ */
+	"zh"    => "中文(Zhongwen)", /* Zhongwen */
+	"zu"	=> "Zulu" /* 祖鲁语 */
 );
 
 /* private */ $wgWeekdayNamesZh = array(
@@ -322,7 +323,7 @@ include_once( "utf8Case.php" );
 "talkpage"	=> "对话页", /* Talk page */
 "subjectpage"	=> "主题页", /* Subject page */
 "otherlanguages" => "其它语言", /* Other languages */
-"redirectedfrom" => "（重定向自 $1 ）", /* (Redirected from $1) */
+"redirectedfrom" => "（重新定向自 $1 ）", /* (Redirected from $1) */
 "lastmodified"	=> "最后更改于 $1。", /* The page was last modified $1. */
 "viewcount"	=> "页面已被浏览 $1 次", /* This page has been accessed $1 times. */
 "printsubtitle" => "（自 http://zh.wikipedia.org ）", /* (From http://www.wikipedia.org) */
@@ -727,18 +728,18 @@ articles.<p>There have been a total of <b>$3</b> page views, and <b>$4</b> page 
 
 # Maintenance Page
 #
-"maintenance"		=> "Maintenance page",
-"maintnancepagetext"	=> "This page includes several handy tools for everyday maintenance. Some of these functions tend to stress the database, so please do not hit reload after every item you fixed ;-)",
-"maintenancebacklink"	=> "Back to Maintenance Page",
-"disambiguations"	=> "Disambiguation pages",
+"maintenance"		=> "维护页",
+"maintnancepagetext"	=> "这页面提供了几个帮助Wikipedia日常维护的工具。但其中几个会对我们的数据库造成压力，所以请您不要在每修理好几个项目后就按重新载入 ;-)",
+"maintenancebacklink"	=> "回去维护页",
+"disambiguations"	=> "消含糊页",
 "disambiguationspage"	=> "Wikipedia:Links_to_disambiguating_pages",
-"disambiguationstext"	=> "The following articles link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br>A page is treated as dismbiguation if it is linked from $1.<br>Links from other namespaces are <i>not</i> listed here.",
-"doubleredirects"	=> "Double Redirects",
-"doubleredirectstext"	=> "<b>Attention:</b> This list may contain false positives. That usually means there is additional text with links below the first #REDIRECT.<br>\nEach row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" taget article, which the first redirect should point to.",
-"brokenredirects"	=> "Broken Redirects",
-"brokenredirectstext"	=> "The following redirects link to a non-existing article.",
-"selflinks"		=> "Pages with Self Links",
-"selflinkstext"		=> "The following pages contain a link to themselves, which they should not.",
+"disambiguationstext"	=> "以下的条目都有到消含糊页的链接，但它们应该是链到适当的题目。<br>一个页面会被视为消含糊页如果它是链自$1.<br>由其它他名字空间来的链接<i>不会</i>在这儿被列出来。",
+"doubleredirects"	=> "雙重重定向",
+"doubleredirectstext"	=> "<b>请注意：</b>这列表可能包括不正确的反应。这通常表示在那页面第一个#REDIRECT之下还有文字。<br>\n每一行都包含到第一跟第二个重定向页的链接，以及第二个重定向页的第一行文字，通常显示的都会是\“真正\” 的目标页面，也就是第一个重定向页应该指向的条目。",
+"brokenredirects"	=> "损坏的重定向页",
+"brokenredirectstext"	=> "以下的重定向页指向的是不存在的条目。",
+"selflinks"		=> "有自我链接的页面",
+"selflinkstext"		=> "以下的页面都错误地包含了连到自己的链接。",
 "mispeelings"           => "Pages with misspellings",
 "mispeelingstext"               => "The following pages contain a common misspelling, which are listed on $1. The correct spelling might be given (like this).",
 "mispeelingspage"       => "List of common misspellings",
