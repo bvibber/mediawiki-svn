@@ -1104,11 +1104,19 @@ class Skin {
 			}
 		} else {
 			$url = wfEscapeHTML( wfImageArchiveUrl( $img ) );
-			$rlink = $this->makeKnownLink( $wgTitle->getPrefixedText(),
-			  wfMsg( "revertimg" ), "action=revert&oldimage=" .
-			  urlencode( $img ) );
-			$dlink = $this->makeKnownLink( $wgTitle->getPrefixedText(),
-			  $del, "action=delete&oldimage=" . urlencode( $img ) );
+			if( $wgUser->getID() != 0 ) {
+				$rlink = $this->makeKnownLink( $wgTitle->getPrefixedText(),
+				  wfMsg( "revertimg" ), "action=revert&oldimage=" .
+				  urlencode( $img ) );
+				$dlink = $this->makeKnownLink( $wgTitle->getPrefixedText(),
+				  $del, "action=delete&oldimage=" . urlencode( $img ) );
+			} else {
+				# Having live active links for non-logged in users
+				# means that bots and spiders crawling our site can
+				# inadvertently change content. Baaaad idea.
+				$rlink = wfMsg( "revertimg" );
+				$dlink = $del;
+			}
 		}
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $this->makeLink( $wgLang->getNsText(
