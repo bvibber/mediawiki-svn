@@ -11,8 +11,6 @@ $action = $_GET['action'] ;
 $title = $_GET['title'] ;
 
 $redirect = getGet ( "redirect" ) ;
-#$redirect = $_GET['redirect'] ;
-#if ( $redirect != "" ) $redirect = " -redirect={$redirect}" ;
 
 if ( $action == "" ) $action = "view" ;
 if ( $title == "" ) $title = "B" ;
@@ -23,7 +21,6 @@ $param = '-sqlite="test.sqlite" -title="' . $title . '"' . $redirect ;
 
 
 $exe = "{$prg} {$param}" ;
-#print $exe ;
 chdir ( $wd ) ;
 print system ( $exe ) ;
 
