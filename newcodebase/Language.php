@@ -79,7 +79,6 @@
 	"dk"	=> "Danish", # 'da' is correct for the language.
 	"nl"	=> "Dutch",
 	"en"	=> "English",
-	"w"	=> "English", # Should this be in list this?
 	"simple" => "Simple English",
 	"eo"	=> "Esperanto",
 	"et"	=> "Estonian",
@@ -563,7 +562,7 @@ and [[wikipedia:Most common Wikipedia faux pas|most common Wikipedia faux pas]].
 If you want to see Wikipedia succeed, it's very important that you don't add
 material restricted by others' [[wikipedia:Copyrights|copyrights]].
 The legal liability could really hurt the project, so please don't do it.
-See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges recent meta discussion].",
+See also the [http://meta.wikipedia.org/wiki/Special:Recentchanges recent meta discussion].",
 "rcloaderr"		=> "Loading recent changes",
 "rcnote"		=> "Below are the last <strong>$1</strong> changes in last <strong>$2</strong> days.",
 # "rclinks"		=> "Show last $1 changes in last $2 hours / last $3 days",

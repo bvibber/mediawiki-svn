@@ -576,7 +576,7 @@ Wikipedia
 som andre har ophavsret til. De retslige konsekvenser kan blive meget 
 kostbare og besværlige
 for projektet, så lad venligst være med det.
-Se også [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges 
+Se også [http://meta.wikipedia.org/wiki/Special:Recentchanges 
 recent meta discussion] (på engelsk).",
 "rcloaderr"		=> "Læser seneste redigerede sider",
 "rcnote"		=> "Nedenfor er de seneste <strong>$1</strong> ændringer i de 

@@ -511,7 +511,7 @@ et [[Wikipedia:Les Faux-Pas Les Plus Courants|Les faux-pas les plus courants]].
 
 Si vous voulez que Wikipédia connaisse le succès, n'y ajoutez pas de matériaux protégés par des [[wikipedia:Copyright|copyrights]].
 La responsabilité juridique pourrait compromettre le projet, alors s'il vous plaît ne le faites pas.
-Voyez aussi [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges les dernières discussions sur le site meta-wiki].",
+Voyez aussi [http://meta.wikipedia.org/wiki/Special:Recentchanges les dernières discussions sur le site meta-wiki].",
 "rcloaderr"  => "Chargement des dernières modifications",
 "rcnote"  => "Voici les <strong>$1</strong> dernières modifications effectuées au cours des <strong>$2</strong> derniers jours.",
 # "rclinks"  => "Afficher les $1 dernières modifications effectuées au cours des $2 dernières heures / $3 derniers jours",
