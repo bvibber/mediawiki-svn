@@ -288,9 +288,10 @@ class Article {
 		}
 
 		if ( !isset( $oldid ) ) {
-			$this->checkTouched();
-			$wgOut->checkLastModified( $this->mTouched );
-			$this->tryFileCache();
+			if( $this->checkTouched() ) {
+				$wgOut->checkLastModified( $this->mTouched );
+				$this->tryFileCache();
+			}
 		}
 
 		$text = $this->getContent(); # May change wgTitle!
