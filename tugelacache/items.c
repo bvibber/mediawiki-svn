@@ -60,6 +60,7 @@ item *item_alloc(char *key, int flags, time_t exptime, int nbytes)
     strcpy(ITEM_key(it), key);
     it->exptime = exptime;
     it->flags = flags;
+    it->time = time(0);
     return it;
 }
 

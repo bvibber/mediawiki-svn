@@ -592,6 +592,7 @@ void process_command(conn * c, char *command)
 
 	sprintf(temp, "%u", value);
 	res = strlen(temp);
+	it->time=time(0);
 	if (res + 2 > it->nbytes) {
 	    newit =
 		item_alloc(ITEM_key(it), it->flags, it->exptime, res + 2);
