@@ -673,8 +673,6 @@ class Parser
 		}
 		$text = $this->doAllQuotes( $text );
 		$text = $this->replaceInternalLinks ( $text );
-		# Another call to replace links and images inside captions of images
-		$text = $this->replaceInternalLinks ( $text );
 		$text = $this->replaceExternalLinks( $text );
 		$text = $this->doMagicLinks( $text );
 		$text = $this->doTableStuff( $text );
@@ -985,13 +983,11 @@ class Parser
 			# replacing any non-bracketed links
 			$trail = $this->replaceFreeExternalLinks( $trail );
 
-			$la = $sk->getExternalLinkAttributes( $url, $text );
-
 			# Use the encoded URL
 			# This means that users can paste URLs directly into the text
 			# Funny characters like &ouml; aren't valid in URLs anyway
 			# This was changed in August 2004
-			$s .= "<a href=\"{$url}\"{$la}>{$text}</a>{$dtrail}{$paren}{$trail}";
+			$s .= $sk->makeExternalLink( $url, $text, false ) . $dtrail. $paren . $trail;
 		}
 
 		wfProfileOut( $fname );
@@ -1082,19 +1078,23 @@ class Parser
 
 		$redirect = MagicWord::get ( MAG_REDIRECT ) ;
 
+		#split the entire text string on occurences of [[
 		$a = explode( '[[', ' ' . $s );
+		#get the first element (all text up to first [[), and remove the space we added
 		$s = array_shift( $a );
 		$s = substr( $s, 1 );
 
 		# Match a link having the form [[namespace:link|alternate]]trail
 		static $e1 = FALSE;
 		if ( !$e1 ) { $e1 = "/^([{$tc}]+)(?:\\|([^]]+))?]](.*)\$/sD"; }
+		# Match cases where there is no "]]", which might still be images
+		static $e1_img = FALSE;
+		if ( !$e1_img ) { $e1_img = "/^([{$tc}]+)\\|(.*)\$/sD"; }
 		# Match the end of a line for a word that's not followed by whitespace,
 		# e.g. in the case of 'The Arab al[[Razi]]', 'al' will be matched
 		static $e2 = '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD';
 
 		$useLinkPrefixExtension = $wgContLang->linkPrefixExtension();
-		# Special and Media are pseudo-namespaces; no pages actually exist in them
 
 		$nottalk = !Namespace::isTalk( $this->mTitle->getNamespace() );
 
@@ -1111,8 +1111,9 @@ class Parser
 
 		wfProfileOut( $fname.'-setup' );
 
-		# start procedeeding each line
-		foreach ( $a as $line ) {
+		# Loop for each link
+		for ($k = 0; isset( $a[$k] ); $k++) {
+			$line = $a[$k];
 			wfProfileIn( $fname.'-prefixhandling' );
 			if ( $useLinkPrefixExtension ) {
 				if ( preg_match( $e2, $s, $m ) ) {
@@ -1129,11 +1130,18 @@ class Parser
 			}
 			wfProfileOut( $fname.'-prefixhandling' );
 
+			$might_be_img = false;
+			
 			if ( preg_match( $e1, $line, $m ) ) { # page with normal text or alt
 				$text = $m[2];
 				# fix up urlencoded title texts
 				if(preg_match('/%/', $m[1] )) $m[1] = urldecode($m[1]);
 				$trail = $m[3];
+			} elseif( preg_match($e1_img, $line, $m) ) { # Invalid, but might be an image with a link in its caption
+				$might_be_img = true;
+				$text = $m[2];
+				if(preg_match('/%/', $m[1] )) $m[1] = urldecode($m[1]);
+				$trail = "";
 			} else { # Invalid form; output directly
 				$s .= $prefix . '[[' . $line ;
 				continue;
@@ -1156,17 +1164,75 @@ class Parser
 				$link = substr($link, 1);
 			}
 			
-			$wasblank = ( '' == $text );
-			if( $wasblank ) $text = $link;
-
 			$nt = Title::newFromText( $link );
 			if( !$nt ) {
 				$s .= $prefix . '[[' . $line;
 				continue;
 			}
-			
+
+			//check other language variants of the link
+			//if the article does not exist
+			global $wgContLang;
+			$variants = $wgContLang->getVariants();
+			if(sizeof($variants) > 1) {
+				$varnt = false; 
+				if($nt->getArticleID() == 0) {
+					foreach ( $variants as $v ) {
+						if($v == $wgContLang->getPreferredVariant())
+							continue;
+						$varlink = $wgContLang->autoConvert($link, $v);
+						$varnt = Title::newFromText($varlink);
+						if($varnt && $varnt->getArticleID()>0) {
+							break;
+						}
+					}
+				}
+				if($varnt && $varnt->getArticleID()>0) {
+					$nt = $varnt;
+					$link = $varlink;
+				}
+			}
+
 			$ns = $nt->getNamespace();
 			$iw = $nt->getInterWiki();
+			
+			if ($might_be_img) { # if this is actually an invalid link
+				if ($ns == NS_IMAGE && $noforce) { #but might be an image
+					$found = false;
+					while (isset ($a[$k+1]) ) {
+						#look at the next 'line' to see if we can close it there
+						$next_line =  array_shift(array_splice( $a, $k + 1, 1) );
+						if( preg_match("/^(.*?]].*?)]](.*)$/sD", $next_line, $m) ) {
+						# the first ]] closes the inner link, the second the image
+							$found = true;
+							$text .= '[[' . $m[1];
+							$trail = $m[2];
+							break;
+						} elseif( preg_match("/^.*?]].*$/sD", $next_line, $m) ) {
+							#if there's exactly one ]] that's fine, we'll keep looking
+							$text .= '[[' . $m[0];
+						} else {
+							#if $next_line is invalid too, we need look no further
+							$text .= '[[' . $next_line;
+							break;
+						}
+					}
+					if ( !$found ) {
+						# we couldn't find the end of this imageLink, so output it raw
+						$s .= $prefix . '[[' . $link . '|' . $text;
+						# note: no $trail, because without an end, there *is* no trail
+						continue;
+					}
+				} else { #it's not an image, so output it raw
+					$s .= $prefix . '[[' . $link . '|' . $text;
+					# note: no $trail, because without an end, there *is* no trail
+					continue;
+				}
+			}
+
+			$wasblank = ( '' == $text );
+			if( $wasblank ) $text = $link;
+
 			
 			# Link not escaped by : , create the various objects
 			if( $noforce ) {
@@ -1180,19 +1246,25 @@ class Parser
 				}
 				
 				if ( $ns == NS_IMAGE ) {
-					$s .= $prefix . $sk->makeImageLinkObj( $nt, $text ) . $trail;
+					# recursively parse links inside the image caption
+					# actually, this will parse them in any other parameters, too,
+					# but it might be hard to fix that, and it doesn't matter ATM
+					$text = $this->replaceExternalLinks($text);
+					$text = $this->replaceInternalLinks($text);
+					
+					# replace the image with a link-holder so that replaceExternalLinks() can't mess with it
+					$s .= $prefix . $this->insertStripItem( $sk->makeImageLinkObj( $nt, $text ), $this->mStripState ) . $trail;
 					$wgLinkCache->addImageLinkObj( $nt );
 					continue;
 				}
 				
 				if ( $ns == NS_CATEGORY ) {
 					$t = $nt->getText() ;
-					$nnt = Title::newFromText ( Namespace::getCanonicalName(NS_CATEGORY).':'.$t ) ;
 
 					$wgLinkCache->suspend(); # Don't save in links/brokenlinks
 					$pPLC=$sk->postParseLinkColour();
 					$sk->postParseLinkColour( false );
-					$t = $sk->makeLinkObj( $nnt, $t, '', '' , $prefix );
+					$t = $sk->makeLinkObj( $nt, $t, '', '' , $prefix );
 					$sk->postParseLinkColour( $pPLC );
 					$wgLinkCache->resume();
 
@@ -1219,6 +1291,7 @@ class Parser
 				continue;
 			}
 
+			# Special and Media are pseudo-namespaces; no pages actually exist in them
 			if( $ns == NS_MEDIA ) {
 				$s .= $prefix . $sk->makeMediaLinkObj( $nt, $text ) . $trail;
 				$wgLinkCache->addImageLinkObj( $nt );

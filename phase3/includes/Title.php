@@ -140,13 +140,6 @@ class Title {
 		
 		$t->mDbkeyform = str_replace( ' ', '_', $s );
 		if( $t->secureAndSplit() ) {
-			# check that length of title is < page_title size
-			$dbr =& wfGetDB( DB_SLAVE );
-			$maxSize = $dbr->textFieldSize( 'page', 'page_title' );
-			if ( $maxSize != -1 && strlen( $t->mDbkeyform ) > $maxSize ) {
-				return NULL;
-			}
-
 			return $t;
 		} else {
 			return NULL;
@@ -526,12 +519,15 @@ class Title {
 	 * @access public
 	 */
 	function getPrefixedText() {
+		global $wgContLang;
 		if ( empty( $this->mPrefixedText ) ) {
 			$s = $this->prefix( $this->mTextform );
 			$s = str_replace( '_', ' ', $s );
 			$this->mPrefixedText = $s;
 		}
-		return $this->mPrefixedText;
+		//convert to the desired language variant
+		$t = $wgContLang->convert($this->mPrefixedText);
+		return $t;
 	}
 	
 	/**
@@ -542,11 +538,14 @@ class Title {
 	 * @access public
 	 */
 	function getFullText() {
+		global $wgContLang;
 		$text = $this->getPrefixedText();
 		if( '' != $this->mFragment ) {
 			$text .= '#' . $this->mFragment;
 		}
-		return $text;
+		//convert to desired language variant
+		$t = $wgContLang->convert($text);
+		return $t;
 	}
 
 	/**
@@ -1082,6 +1081,12 @@ class Title {
 		       strpos( $r, '/../' ) !== false ) )
 		{
 			wfProfileOut( $fname );
+			return false;
+		}
+
+		# We shouldn't need to query the DB for the size.
+		#$maxSize = $dbr->textFieldSize( 'cur', 'cur_title' );
+		if ( strlen( $r ) > 255 ) {
 			return false;
 		}
 

@@ -117,20 +117,32 @@ class MessageCache
 	}
 
 	/**
-	 * Loads all cacheable messages from the database
+	 * Loads all or main part of cacheable messages from the database
 	 */
 	function loadFromDB() {
-			$fname = 'MessageCache::loadFromDB';
+		global $wgPartialMessageCache;
+		$fname = 'MessageCache::loadFromDB';
 		$dbr =& wfGetDB( DB_SLAVE );
+		$conditions = array( 'page_is_redirect' => 0, 
+					'page_namespace' => NS_MEDIAWIKI);
+		if ($wgPartialMessageCache) {
+			wfDebugDieBacktrace( "Confused about how this works." );
+			if (is_array($wgPartialMessageCache)) {
+				$conditions['page_title']=$wgPartialMessageCache;
+			} else {
+				require_once("MessageCacheHints.php");
+				$conditions['page_title']=MessageCacheHints::get();
+			}
+		}
 		$res = $dbr->select( array( 'page', 'text' ),
-			array( 'page_title', 'old_text' ),
+			array( 'page_title', 'old_text', 'old_flags' ),
 			'page_is_redirect=0 AND page_namespace = '.NS_MEDIAWIKI.' AND page_latest = old_id',
 			$fname
 		);
 
 		$this->mCache = array();
 		for ( $row = $dbr->fetchObject( $res ); $row; $row = $dbr->fetchObject( $res ) ) {
-			$this->mCache[$row->page_title] = $row->old_text;
+			$this->mCache[$row->page_title] = Article::getRevisionText( $row );
 		}
 
 		$dbr->freeResult( $res );
