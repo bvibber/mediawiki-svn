@@ -51,10 +51,25 @@ class Article {
 		global $action; # From query string
 
 		if ( 0 == $this->getID() ) {
+			global $wgTitle;
 			if ( "edit" == $action ) {
 				return wfMsg( "newarticletext" );
 			}
-			return wfMsg( "noarticletext" );
+			#return wfMsg( "noarticletext" );
+			$out = wfMsg( "noarticletext" );
+
+			# Grab some articles that link to us
+			$t = wfStrEncode( $wgTitle->getPrefixedDBkey() );
+			$sql = "SELECT cur_id,cur_namespace,cur_title FROM cur,brokenlinks" .
+				"WHERE bl_from=cur_id AND bl_to='{$t}' LIMIT 10";
+			$res = wfQuery( $sql, "Article::getContent" );
+			if( $res ) {
+				$out .= "Some related articles:\n"; # wfMsg( "related" );
+				while( $s = wfFetchObject( $res ) ) {
+					$out .= "* [[$s]]\n";
+				}
+			}
+			return $out;
 		} else {
 			$this->loadContent( $noredir );
 			return $this->mContent;
@@ -1092,67 +1107,12 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$sql = "DELETE FROM brokenlinks WHERE bl_from={$id}";
 			wfQuery( $sql, $fname );
 		}
-		$logpage = wfStrencode( wfMsg( "dellogpage" ) );
-		$sql = "SELECT cur_id,cur_text FROM cur WHERE cur_namespace=" .
-		  Namespace::getWikipedia() . " AND cur_title='" .
-		  "{$logpage}'";
-		$res = wfQuery( $sql, $fname );
-
-		if ( 0 == wfNumRows( $res ) ) {
-			# Error: need Article deletion log article
-			$text = wfMsg( "dellogpagetext" );
-			$id = 0;
-		} else {
-			$s = wfFetchObject( $res );
-			$text = $s->cur_text;
-			$id = $s->cur_id;
-		}
-
-		$uid = $wgUser->getID();
-		$ut = $wgUser->getName();
-		if ( 0 == $uid ) { $ul = $ut; }
-		else { $ul = "[[" . $wgLang->getNsText( Namespace::getUser() ) .
-		  ":{$ut}|{$ut}]]"; }
-
+		
+		$log = new LogPage( wfMsg( "dellogpage" ), wfMsg( "dellogpagetext" ) );
 		$art = $title->getPrefixedText();
-		$d = $wgLang->timeanddate( date( "YmdHis" ), false );
+		$wpReason = wfCleanQueryVar( $wpReason );
+		$log->addEntry( str_replace( "$1", $art, wfMsg( "deletedarticle" ) ), $wpReason );
 
-		preg_match( "/^(.*?)<ul>(.*)$/sD", $text, $m );	
-		$da = str_replace( "$1", $art, wfMsg( "deletedarticle" ) );
-
-		if ( "" == $wpReason ) {
-			$lcom = "{$da}";
-			$com = "";
-		} else {
-			$wpReason = wfCleanQueryVar( $wpReason );
-			$lcom = "{$da}: {$wpReason}";
-			$com = " <em>({$wpReason})</em>";
-		}
-		$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}{$com}</li>\n{$m[2]}";
-
-		$now = date( "YmdHis");
-		if($id == 0) {
-			$sql = "INSERT INTO cur (cur_timestamp,cur_user,cur_user_text,
-				cur_namespace,cur_title,cur_text,cur_comment) VALUES ('{$now}', {$uid}, '" .
-				wfStrencode( $ut ) . "', 4, '{$logpage}', '" .
- 				wfStrencode( trim( $text ) ) . "', '" .
-				wfStrencode( $lcom ) . "')";
-		} else {
-			$sql = "UPDATE cur SET cur_timestamp='" . $now .
-			  "', cur_user={$uid}, cur_user_text='" . wfStrencode( $ut ) .
-			  "', cur_text='" . wfStrencode( trim( $text ) ) . "', " .
-			  "cur_comment='" . wfStrencode( $lcom ) . "' " .
-			  "WHERE cur_id={$id}";
-		}
-		wfQuery( $sql, $fname );
-		
-		if($id == 0) $id = wfInsertId();
-		$sql = "INSERT INTO recentchanges (rc_timestamp,rc_cur_time,
-			rc_user,rc_user_text,rc_namespace,rc_title,rc_comment,
-			rc_cur_id) VALUES ('{$now}','{$now}',{$uid},'" . wfStrencode( $ut ) .
-			"',4,'{$logpage}','" . wfStrencode( $lcom ) . "',{$id})";
-        wfQuery( $sql, $fname );
-		
 		# Clear the cached article id so the interface doesn't act like we exist
 		$wgTitle->resetArticleID( 0 );
 		$wgTitle->mArticleID = 0;
