@@ -1,6 +1,6 @@
 <?
 class WikiTitle {
-	var $title , $secureTitle , $url , $isSpecialPage ;
+	var $title , $secureTitle , $url , $isSpecialPage , $thisVersion ;
 	var $namespace , $mainTitle , $subpageTitle , $hasNamespace ;
 
 	# Functions

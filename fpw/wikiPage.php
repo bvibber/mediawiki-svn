@@ -18,7 +18,8 @@ class WikiPage extends WikiTitle {
 			}
 		$connection = getDBconnection () ;
 		mysql_select_db ( "wikipedia" , $connection ) ;
-		global $oldID ;
+		$thisVersion = "" ;
+		global $oldID , $version ;
 		if ( isset ( $oldID ) ) {
 			$sql = "SELECT * FROM old WHERE old_id=$oldID" ;
 			$result = mysql_query ( $sql , $connection ) ;
@@ -26,6 +27,7 @@ class WikiPage extends WikiTitle {
 				$this->title=$s->old_title ;
 				$this->makeSecureTitle () ;
 				$this->contents = $s->old_text ;
+				$this->thisVersion = "<br><font size=-1>This is the old version #$version; see the <a href=\"$PHP_SELF?title=$this->secureTitle\">current version</a></font>" ;
 				}
 			else $this->contents = "Describe the new page here." ;
 		} else {
@@ -361,6 +363,7 @@ class WikiPage extends WikiTitle {
 
 		$ret .= " | <a href=\"$PHP_SELF?title=special:RecentChanges\">Recent Changes</a>" ;
 		if ( $this->canEdit() ) $ret .= " | <a href=\"$PHP_SELF?action=edit&title=$this->url\">Edit this page</a>" ;
+		if ( !$this->isSpecialPage ) $ret .= " | <a href=\"$PHP_SELF?action=history&title=$this->url\">History</a>\n" ;
 		$ret .= " | <a href=\"$PHP_SELF?title=special:RandomPage\">Random Page</a>" ;
 		$ret .= " | <a href=\"$PHP_SELF?title=special:Special_pages\">Special Pages</a>" ;
 		return $ret ;
@@ -379,7 +382,7 @@ class WikiPage extends WikiTitle {
 				$ret .= "You can get help <a href=\"$PHP_SELF?title=wikipedia:help/edit\">here</a>." ;
 			} else $ret .= "<font size=+3>".$t."</font>" ;
 		} else {
-			$ret .= "<a href=\"$PHP_SELF?search=$this->title\"><font size=+3>".$this->getNiceTitle($t)."</font></a>" ;
+			$ret .= "<font size=+3><a href=\"$PHP_SELF?search=$this->title\">".$this->getNiceTitle($t)."</a>$this->thisVersion</font>" ;
 			if ( $user->isLoggedIn ) {
 				if ( $user->doWatch($this->title) )
 					$ret.="<br><a href=\"$PHP_SELF?action=watch&title=$this->secureTitle&mode=no\">Stop watching this article for me</a>";
@@ -446,10 +449,54 @@ class WikiPage extends WikiTitle {
 		return $ret ; 
 		}
 	function renderPage () {
-		global $pageTitle ;
+		global $pageTitle , $diff ;
 		$pageTitle = $this->title ;
-		$middle = $this->getMiddle($this->parseContents($this->contents)) ;
+		if ( isset ( $diff ) ) $middle = $this->doDiff().$this->contents ;
+		else $middle = $this->contents ;
+		$middle = $this->getMiddle($this->parseContents($middle)) ;
 		return $this->getHeader().$middle.$this->getFooter() ;
+		}
+	function doDiff () {
+		global $oldID , $version ;
+		$ret = "<nowiki><font color=red><b>BEGIN DIFF</b></font><br>\n" ;
+		$connection = getDBconnection () ;
+		mysql_select_db ( "wikipedia" , $connection ) ;
+
+		if ( isset ( $oldID ) ) { # Diff between old versions
+			$sql = "SELECT old_old_version FROM old WHERE old_id=$oldID" ;
+			$result = mysql_query ( $sql , $connection ) ;
+			$s = mysql_fetch_object ( $result ) ;
+			$sql = "SELECT * FROM old WHERE old_id=$s->old_old_version" ;
+		} else { # Diff between old and new version
+			$sql = "SELECT cur_old_version FROM cur WHERE cur_title=\"$this->secureTitle\"" ;
+			$result = mysql_query ( $sql , $connection ) ;
+			$s = mysql_fetch_object ( $result ) ;
+			$s->old_old_version = 1234567 ; #Dummy
+			$sql = "SELECT * FROM old WHERE old_id=$s->cur_old_version" ;
+			}
+
+		$result = mysql_query ( $sql , $connection ) ;
+		if ( $result != "" and $s->old_old_version != 0 ) {
+			$s = mysql_fetch_object ( $result ) ;
+			mysql_free_result ( $result ) ;
+			$a1 = explode ( "\n" , $this->contents ) ;
+			$a2 = explode ( "\n" , $s->old_text ) ;
+			$nl = array () ;
+			$dl = array () ;
+			foreach ( $a1 as $x ) if ( !in_array ( $x , $a2 ) ) array_push ( $nl , $x ) ;
+			foreach ( $a2 as $x ) if ( !in_array ( $x , $a1 ) ) array_push ( $dl , $x ) ;
+			# Output
+			$ret .= "<font color=#0000FF>Blue text</font> was added or changed, <font color=red>red text</font> was changed or deleted." ;
+			$ret .= "<table width=100% border=1 bordercolor=white cellspacing=0 cellpadding=2>\n" ;
+			foreach ( $nl as $x ) $ret .= "<tr><td bgcolor=#0000FF><font color=white>$x</font></td></tr>\n" ;
+			foreach ( $dl as $x ) $ret .= "<tr><td bgcolor=#DD0000><font color=white>$x</font></td></tr>\n" ;
+			$ret .= "</table>\n" ;
+		} else if ( isset ( $oldID ) and $s->old_old_version == 0 ) $ret .= "This is the first version of this article. All text is new!<br>\n" ;
+		else $ret .= "No diff possible. Reason unknown. Blame the programmer! Tell him SQL said \"$sql\"<br>\n" ;
+		mysql_close ( $connection ) ;
+		
+		$ret .= "<font color=red><b>END DIFF</b></font><hr></nowiki>\n" ;
+		return $ret ;
 		}
 	}
 ?>
