@@ -156,8 +156,9 @@ class gis_database {
 	/**
 	 *  Select entities with a certain radius expressed in meters
 	 *  FIXME: Does not work properly around the poles...
+	 *  Also select by region and type if specified
 	 */
-	 function select_radius_m( $lat, $lon, $r )
+	 function select_radius_m( $lat, $lon, $r, $region, $type )
 	 {
 		$delta_lat = $r / (60 * 1852);
 		$c = cos($lat * (M_PI / 180));
@@ -172,18 +173,26 @@ class gis_database {
 		$lonmin = $lon - $delta_lon;
 		$lonmax = $lon + $delta_lon;
 		return $this->select_area( $latmin, $lonmin,
-					   $latmax, $lonmax );
+					   $latmax, $lonmax, $region, $type );
 	}
 
 	/**
 	 *  Select entities belonging to or overlapping an area
+	 *  Also select by region and type if specified
 	 */
-	 function select_area( $latmin, $lonmin, $latmax, $lonmax )
+	 function select_area( $latmin, $lonmin, $latmax, $lonmax, $region, $type )
 	 {
-	       $condition = 'gis_latitude_max >= ' . $latmin .
-			' AND gis_latitude_min <= ' . $latmax .
-			' AND gis_longitude_max >= ' . $lonmin .
-			' AND gis_longitude_min <= ' . $lonmax;
+		$condition = "gis_latitude_max >= " . $latmin .
+			" AND gis_latitude_min <= " . $latmax .
+			" AND gis_longitude_max >= " . $lonmin .
+			" AND gis_longitude_min <= " . $lonmax;
+
+		if ($region) {
+			$condition .= " AND gis_region = '" . $region . "'";
+		}
+		if ($type) {
+			$condition .= " AND gis_type = '" . $type . "'";
+		}
 
 		return $this->select_position( $condition );
 	}
@@ -202,8 +211,8 @@ class gis_database {
 				'gis_latitude_max',
 				'gis_longitude_min',
 				'gis_longitude_max',
-				'gis_type',
-				'gis_region' ),
+				'gis_region',
+				'gis_type' ),
 			      $condition,
 			      $fname );
 

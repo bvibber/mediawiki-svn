@@ -37,6 +37,7 @@ class neighbors {
 	var $p;
 	var $d;
 	var $title;
+	var $attr;
 
 	function neighbors( $coor, $dist, $title ) 
 	{
@@ -44,6 +45,7 @@ class neighbors {
 		$this->d = $dist;
 		if ($this->d <= 0) $this->d = 1000; /* default to 1000 km */
 		$this->title = $title;
+		$this->attr = $this->p->get_attr();
 	}
 
 	function show() 
@@ -72,7 +74,8 @@ class neighbors {
 		$lon0 = $this->p->londeg;
 
 		$g = new gis_database();
-		$g->select_radius_m( $lat0, $lon0, $this->d * 1000);
+		$g->select_radius_m( $lat0, $lon0, $this->d * 1000,
+				     $this->attr['region'], $this->attr['type'] );
 		$all = array();
 		$all_pos = array(); /* temporary store reqd due to sort */
 

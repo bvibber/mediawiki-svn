@@ -33,10 +33,12 @@ require_once( "database.php" );
  */
 class maparea {
 	var $p;
+	var $attr;
 
 	function maparea( $coor )
 	{
 		$this->p = new geo_param( $coor );
+		$this->attr = $this->p->get_attr();
 	}
 
 	function show() 
@@ -63,7 +65,8 @@ class maparea {
 	{
 		$g = new gis_database();
 		$g->select_area( $this->p->latdeg_min, $this->p->londeg_min,
-				 $this->p->latdeg_max, $this->p->londeg_max);
+				 $this->p->latdeg_max, $this->p->londeg_max,
+				 $this->attr['region'], $this->attr['type'] );
 
 		$out = ";type:abstract\r\n"
 		     . ";comment:"
