@@ -21,7 +21,7 @@ function wfSpecialUserlogin()
 
 /* private */ function addNewAccount()
 {
-	global $wgUser, $wpPassword, $wpRetype, $wpName, $wpRemember;
+	global $wgUser, $wgOut, $wpPassword, $wpRetype, $wpName, $wpRemember;
 	global $wpEmail, $wgDeferredUpdateList;
 
 	if ( 0 != strcmp( $wpPassword, $wpRetype ) ) {
@@ -30,6 +30,10 @@ function wfSpecialUserlogin()
 	}
 	if ( "" == $wpName ) {
 		mainLoginForm( wfMsg( "noname" ) );
+		return;
+	}
+	if ( wfReadOnly() ) {
+		$wgOut->readOnlyPage();
 		return;
 	}
 	$u = User::newFromName( $wpName );
@@ -194,30 +198,30 @@ function wfSpecialUserlogin()
 	$wpEmail = wfEscapeHTML( $wpEmail );
 
 	$wgOut->addHTML( "
-<form method=post action='$action'>
+<form method=post action=\"{$action}\">
 <table border=0><tr>
 <td align=right>$yn:</td>
 <td colspan=2 align=left>
-<input tabindex=1 type=text name='wpName' value='$name' size=20>
+<input tabindex=1 type=text name='wpName' value=\"{$name}\" size=20>
 </td></tr><tr>
 <td align=right>$yp:</td>
 <td align=left>
-<input tabindex=2 type=password name='wpPassword' value='$pwd' size=20>
+<input tabindex=2 type=password name='wpPassword' value=\"{$pwd}\" size=20>
 </td>
 <td align=left>
-<input tabindex=3 type=submit name='wpLoginattempt' value='$li'>
+<input tabindex=3 type=submit name='wpLoginattempt' value=\"{$li}\">
 </td></tr>
 <tr><td colspan=3>&nbsp;</td></tr><tr>
 <td align=right>$ypa:</td>
 <td align=left>
-<input tabindex=4 type=password name='wpRetype' value='$wpRetype' size=20>
+<input tabindex=4 type=password name='wpRetype' value=\"{$wpRetype}\" size=20>
 </td><td>$nuo</td></tr>
 <tr>
 <td align=right>$ye:</td>
 <td align=left>
-<input tabindex=5 type=text name='wpEmail' value='$wpEmail' size=20>
+<input tabindex=5 type=text name='wpEmail' value=\"{$wpEmail}\" size=20>
 </td><td align=left>
-<input tabindex=6 type=submit name='wpCreateaccount' value='$ca'>
+<input tabindex=6 type=submit name='wpCreateaccount' value=\"{$ca}\">
 </td></tr>
 <tr>
 <td colspan=3 align=left>
@@ -226,7 +230,7 @@ function wfSpecialUserlogin()
 <tr><td colspan=3>&nbsp;</td></tr><tr>
 <td colspan=3 align=left>
 <p>$efl<br>
-<input tabindex=8 type=submit name='wpMailmypassword' value='$mmp'>
+<input tabindex=8 type=submit name='wpMailmypassword' value=\"{$mmp}\">
 </td></tr></table>
 </form>\n" );
 }

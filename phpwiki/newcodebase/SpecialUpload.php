@@ -36,7 +36,7 @@ function processUpload()
 		$wpUploadSize = $HTTP_POST_FILES['wpUploadFile']['size'];
 	}
 	$prev = error_reporting( E_ALL & ~( E_NOTICE | E_WARNING ) );
-	$oname = $HTTP_POST_FILES['wpUploadFile']['name'];
+	$oname = wfCleanQueryVar( $HTTP_POST_FILES['wpUploadFile']['name'] );
 	error_reporting( $prev );
 
 	if ( "" != $oname ) {
@@ -163,18 +163,18 @@ function uploadWarning( $warning )
 <form method=post enctype='multipart/form-data' action='{$action}'>
 <input type=hidden name='wpUploadAffirm' value='1'>
 <input type=hidden name='wpIgnoreWarning' value='1'>
-<input type=hidden name='wpUploadDescription' value='$wpUploadDescription'>
-<input type=hidden name='wpUploadSaveName' value='$wpUploadSaveName'>
-<input type=hidden name='wpUploadTempName' value='$wpUploadTempName'>
-<input type=hidden name='wpUploadSize' value='$wpUploadSize'>
-<input type=hidden name='wpSavedFile' value='$wgSavedFile'>
-<input type=hidden name='wpUploadOldVersion' value='$wgUploadOldVersion'>
+<input type=hidden name='wpUploadDescription' value=\"$wpUploadDescription\">
+<input type=hidden name='wpUploadSaveName' value=\"$wpUploadSaveName\">
+<input type=hidden name='wpUploadTempName' value=\"$wpUploadTempName\">
+<input type=hidden name='wpUploadSize' value=\"$wpUploadSize\">
+<input type=hidden name='wpSavedFile' value=\"$wgSavedFile\">
+<input type=hidden name='wpUploadOldVersion' value=\"$wgUploadOldVersion\">
 <table border=0><tr>
 <tr><td align=right>
-<input tabindex=2 type=submit name='wpUpload' value='{$save}'>
+<input tabindex=2 type=submit name='wpUpload' value=\"{$save}\">
 </td><td align=left>{$iw}</td></tr>
 <tr><td align=right>
-<input tabindex=2 type=submit name='wpReUpload' value='{$reupload}'>
+<input tabindex=2 type=submit name='wpReUpload' value=\"{$reupload}\">
 </td><td align=left>{$reup}</td></tr></table></form>\n" );
 }
 
@@ -211,19 +211,19 @@ function mainUploadForm( $msg )
 
 	$action = wfLocalUrl( "Special:Upload" );
 	$wgOut->addHTML( "
-<form method=post enctype='multipart/form-data' action='{$action}'>
+<form method=post enctype='multipart/form-data' action=\"{$action}\">
 <table border=0><tr>
 <td align=right>{$fn}:</td><td align=left>
-<input tabindex=1 type='file' name='wpUploadFile' value='{$wpUploadFile}' size=40>
+<input tabindex=1 type='file' name='wpUploadFile' value=\"{$wpUploadFile}\" size=40>
 </td></tr><tr>
 <td align=right>{$fd}:</td><td align=left>
-<input tabindex=2 type=text name='wpUploadDescription' value='{$wpUploadDescription}' size=40>
+<input tabindex=2 type=text name='wpUploadDescription' value=\"{$wpUploadDescription}\" size=40>
 </td></tr><tr>
 <td align=right>
 <input tabindex=3 type=checkbox name='wpUploadAffirm' value='1'>
 </td><td align=left>{$ca}</td></tr>
 <tr><td>&nbsp;</td><td align=left>
-<input tabindex=5 type=submit name='wpUpload' value='{$ulb}'>
+<input tabindex=5 type=submit name='wpUpload' value=\"{$ulb}\">
 </td></tr></table></form>\n" );
 }
 
