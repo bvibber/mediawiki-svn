@@ -69,7 +69,6 @@ class WikiPage extends WikiTitle {
 		if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" ) { # #REDIRECT
 			$this->backLink = "(redirected from <a href=\"$THESCRIPT?action=edit&title=$this->secureTitle\">".$this->getNiceTitle()."</a>)" ;
 			$z = $this->contents ;
-#			$z = strstr ( $z , "[[" ) ;
 			$z = substr ( $z , 10 ) ;
 			$z = str_replace ( "[" , "" , $z ) ;
 			$z = str_replace ( "]" , "" , $z ) ;
@@ -217,8 +216,10 @@ class WikiPage extends WikiTitle {
 		$connection = getDBconnection () ;
 		foreach ( $a as $t ) {
 			$b = explode ( "]]" , $t , 2 ) ;
-			if ( count($b) < 2 ) $s .= "<font color=red><b>Incorrect link : [[$b[0]</b></font>" ;
-			else {
+			if ( count($b) < 2 ) { # No matching ]]
+#				$s .= "<font color=red><b>Incorrect link : [[$b[0]</b></font>" ; # Turn on for debugging
+				$s .= "[[".$b[0] ;
+			} else {
 				$c = explode ( "|" , $b[0] , 2 ) ;
 				$link = $c[0] ;
 
@@ -415,8 +416,8 @@ class WikiPage extends WikiTitle {
 		$s = $this->pingPongReplace ( "===" , "<h3>" , "</h3>" , $s ) ;
 		$s = $this->pingPongReplace ( "==" , "<h2>" , "</h2>" , $s ) ;
 
-		# Automatic links to subpages (e.g., /Talk -> [[/Talk]]
-		$s = ereg_replace ( "([\n ])/([a-zA-Z0-9]+)" , "\\1[[/\\2|/\\2]]" , $s ) ;
+		# Automatic links to subpages (e.g., /Talk -> [[/Talk]]   #DEACTIVATED
+#		$s = ereg_replace ( "([\n ])/([a-zA-Z0-9]+)" , "\\1[[/\\2|/\\2]]" , $s ) ;
 
 		# Parsing through the text line by line
 		# The main thing happening here is handling of lines starting with * # : etc.

@@ -118,7 +118,8 @@ function editUserSettings () {
 		$user->options["justify"] = $doJustify ;
 		$user->options["resultsPerPage"] = $RESULTSPERPAGE ;
 		$user->options["skin"] = $doSkin ;
-		$user->options["showStructure"] = $SHOWSTRUCTURE ;
+#		$user->options["showStructure"] = $SHOWSTRUCTURE ;
+		$user->options["showStructure"] = "no" ; #Subpages turned off
 		$user->options["changesLayout"] = $ChangesLayout ;
 		$user->email = $EMAIL ;
 
@@ -214,11 +215,11 @@ function editUserSettings () {
 	$ret .= "<input type=radio value=table ".$cl["table"]." name=ChangesLayout>As a table<br>\n" ;
 	$ret .= "</td></tr>" ;
 
-	# Show subpage structure in QuickBar
-	$shs[$user->options["showStructure"]] = "checked" ;
-	$ret .= "<tr><td valign=top nowrap><b>Show subpage structure :</b><br>\n" ;
-	$ret .= "<input type=radio value=yes ".$shs["yes"]." name=SHOWSTRUCTURE>Yes<br>\n" ;
-	$ret .= "<input type=radio value=no ".$shs["no"]." name=SHOWSTRUCTURE>No (Standard)<br>\n" ;
+	# Show parent page and subpage structure in QuickBar    TURNED OFF
+#	$shs[$user->options["showStructure"]] = "checked" ;
+#	$ret .= "<tr><td valign=top nowrap><b>Show subpage structure :</b><br>\n" ;
+#	$ret .= "<input type=radio value=yes ".$shs["yes"]." name=SHOWSTRUCTURE>Yes<br>\n" ;
+#	$ret .= "<input type=radio value=no ".$shs["no"]." name=SHOWSTRUCTURE>No (Standard)<br>\n" ;
 
 	# UNUSED
 #	$cl[$user->options["changesLayout"]] = "checked" ;
