@@ -85,8 +85,8 @@ function wfSpecialRecentchanges()
 		if ( ! ( $hideminor && $me ) ) {
 			$s .= $sk->recentChangesLine( $ts, $u, $ut, $ns, $ttl,
 			  $com, $me, $new );
+			--$limit;
 		}
-		--$limit;
 	}
 	$s .= $sk->endRecentChangesList();
 
