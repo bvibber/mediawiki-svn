@@ -1066,7 +1066,7 @@ class Skin {
 		if ( $isminor ) { $s .= " <strong>{$M}</strong>"; }
 		$s .= " {$link} . . {$ul}";
 
-		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
+		if ( "" != $c && "*" != $c ) { $s .= " <em>(" . wfEscapeHTML($c) . ")</em>"; }
 		$s .= "</li>\n";
 
 		$this->lastline = $s;
