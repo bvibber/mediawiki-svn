@@ -34,28 +34,15 @@ function wfSpecialRecentchanges()
 	while ( $line = mysql_fetch_object( $res ) ) {
 		$t = $line->cur_timestamp;
 		$d = $wgLang->dateFromTimestamp( $t );
-		$h = substr( $t, 8, 2 ) . ":" . substr( $t, 10, 2 );
-		$c = $line->cur_comment;
-
-		if ( 0 == $line->cur_user ) {
-			$u = $line->cur_user_text;
-		} else {
-			$u = $sk->makeInternalLink( "User:{$line->cur_user_text}",
-			  "{$line->cur_user_text}" );
-		}
-		$t = Title::makeName( $line->cur_namespace, $line->cur_title );
-		$tl = $sk->makeInternalLink( "$t", "", "oldid={$id}" );
 
 		if ( $d != $lastdate ) {
 			if ( "" != $lastdate ) { $s .= "</ul>\n"; }
 			$s .= "<h4>{$d}</h4>\n<ul>";
 			$lastdate = $d;
 		}
-		$s .= "<li>{$tl}; {$h} . . . {$u}";
-		if ( "" != $c && "*" != $c ) {
-			$s .= " <em>({$c})</em>";
-		}
-		$s .= "</li>\n";
+		$s .= $sk->historyLine( 0, $t, $line->cur_user,
+		  $line->cur_user_text, $line->cur_namespace, $line->cur_title,
+		  "", $line->cur_comment, ( $line->cur_minor_edit > 0 ) );
 	}
 	$s .= "</ul>\n";
 	$wgOut->addHTML( $s );
