@@ -14,7 +14,9 @@ using std::for_each;
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
 #include <boost/lexical_cast.hpp>
+#include <boost/format.hpp>
 using boost::lexical_cast;
+using boost::format;
 
 #include <sys/types.h>
 #include <sys/socket.h>

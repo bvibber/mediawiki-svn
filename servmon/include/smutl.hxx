@@ -18,10 +18,13 @@ private:
 template<class T>
 T* singleton<T>::mT;
 
+std::string car(std::string&);
+
 } // namespace smutl
 
 template<class T>
 T* instance(void) {
 	return T::instance();
 }
+
 #endif

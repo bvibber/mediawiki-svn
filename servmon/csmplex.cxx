@@ -1,6 +1,7 @@
 #include "smstdinc.hxx"
 #include "smcsmplex.hxx"
 #include "smnet.hxx"
+#include "smtrm.hxx"
 
 namespace csmplex {
 
@@ -10,29 +11,13 @@ public:
 	csmplexc(smnet::clnt<ntt> nt_)
 	: nt(nt_)
 	{}
+	virtual ~csmplexc(void) {}
  
 	void start(void) {
 		std::cerr << "accepting a client\n";
-		try {
-			nt.wrt("accepted a client\r\n");
-		} catch (smnet::sckterr& e) {
-			std::cerr << "write error: " << e.what() << '\n';
-		}
 		smnet::tnsrv<smnet::inet> tn(nt);
-		for (;;) {
-			std::string ln;
-			try {
-				ln = tn.rdln();
-			} catch (smnet::scktcls&) {
-				break;
-			} catch (smnet::tn2long&) {
-				break;
-			} catch (smnet::sckterr& e) {
-				std::cerr << "error! " << e.what() << "\n";
-				break;
-			}
-			std::cerr << "read: [" << ln << "]\n";
-		}
+		smtrm::trmsrv<smnet::tnsrv<smnet::inet> > trm(tn);
+		trm.run();
 		delete this;
 	}
  

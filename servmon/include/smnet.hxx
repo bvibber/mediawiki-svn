@@ -73,7 +73,7 @@ public:
 		return i;
 	}
 
-	void wrt(u_char const* d, std::size_t l) {
+	void wrt(u_char const* d, ssize_t l) {
 		if (write(s, d, l) < l) 
 			throw sckterr();
 	}
@@ -131,9 +131,9 @@ private:
 	}
 		
 protected:
+	int s;
 	sockaddr addr;
 	socklen_t len;
-	int s;
 	static std::map<int,int> refs;
 	static std::map<int, std::vector<u_char> > rdbufs;
 	smthr::mtx mrl;
@@ -256,7 +256,7 @@ public:
 };
 
 struct tn2long : public std::runtime_error {
-	tn2long(void) : std::runtime_error("received line too long\n") {}
+	tn2long(void) : std::runtime_error("received line too long") {}
 };
 
 template<class fmly>
@@ -264,6 +264,7 @@ class tnsrv {
 public:
 	tnsrv(clnt<fmly> c)
 	: sc(c)
+	, stt(nrml)
 	{
 		wewill.insert(tnsga);
 		wewill.insert(tnecho);
@@ -308,11 +309,9 @@ public:
 		static u_char a[] = {'\r', '\n'};
 		sc.wrt(a, sizeof a);
 	}
-	std::string rdln(int m = maxln) {
-		std::string lnbuf;
-		enum { nrml, iac, sb, sb_iac, nl, cr } stt = nrml;
+	u_char rd1(void) {
 		for (;;) {
-			u_char c = sc.rd1(), req, dowhat;
+			u_char c = sc.rd1();
 			switch (stt) {
 			case iac:
 				switch (c) {
@@ -329,12 +328,12 @@ public:
 					stt = sb;
 					break;
 				case iac:
-					lnbuf += req;
 					stt = nrml;
+					return iac;
 					break;
 				default:
 					// ???
-					std::cerr << "i don't understand option code " << int(req) << "\n";
+					std::cerr << "i don't understand option code " << int(c) << "\n";
 					stt = nrml;
 					break;
 				}
@@ -365,20 +364,32 @@ public:
 					break;
 				case '\n': case '\0':
 					break;
-				case '\r':
-					crnl();
-					return lnbuf;
 				default:
-					lnbuf += c;
-					sc.wrt(&c, 1);
-					if (lnbuf.size() > m)
-						throw tn2long();
-					break;
+					return c;
 				}
 				break;
 			}
 		}
+	}
+
+	std::string rdln(int m = maxln) {
+		std::string lnbuf;
+		for (;;) {
+			u_char c = rd1();
+			if (c == '\r') break;
+			lnbuf += c;
+			sc.wrt(&c, 1);
+			if (lnbuf.size() > m)
+				throw tn2long();
+		}
+		crnl();
 		return lnbuf;
+	}
+	void wrt(u_char const* d, std::size_t l) {
+		return sc.wrt(d, l);
+	}
+	void wrt(std::string const& s) {
+		return sc.wrt((u_char *) s.data(), s.size());
 	}
 
 	static const int
@@ -397,6 +408,7 @@ public:
 	static const int maxln = 4096;
 private:
 	clnt<fmly> sc;
+	enum { nrml, iac, sb, sb_iac, nl, cr } stt;
 };
 
 } // namespace smnet

@@ -4,8 +4,8 @@
 cc = '/opt/gcc-3.4/bin/gcc'
 cxx = '/opt/gcc-3.4/bin/g++'
 
-cflags = '-O2 -g'
-cppflags = '-Iinclude'
+cflags = '-O2 -g -W -Wall'
+cppflags = ''
 
 # Where things are installed to.
 prefix = '/opt/servmon'
@@ -18,7 +18,7 @@ bindir = prefix + '/bin'
 libdir = prefix + '/lib'
 incdir = prefix + '/include/temple'
 
-srcs = Split('servmon.cxx csmplex.cxx smthr.cxx smnet.cxx')
+srcs = Split('servmon.cxx csmplex.cxx smthr.cxx smnet.cxx smutl.cxx')
 env = Environment(CPPFLAGS = cppflags,
 		CCFLAGS = cflags,
 		CC = cc,
