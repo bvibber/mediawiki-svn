@@ -14,9 +14,8 @@ $DP = "../includes";
 include_once( "../LocalSettings.php" );
 include_once( "../AdminSettings.php" );
 
-$include_path = ini_get( "include_path" );
-if( strchr( $include_path, ";" ) ) $sep = ";"; else $sep = ":";
-ini_set( "include_path", $IP . $sep . ini_get( "include_path" ) );
+$sep = strchr( $include_path = ini_get( "include_path" ), ";" ) ? ";" : ":";
+ini_set( "include_path", "$IP$sep$include_path" );
 
 include_once( "Setup.php" );
 include_once( "./rebuildlinks.inc" );
