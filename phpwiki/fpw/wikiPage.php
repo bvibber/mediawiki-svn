@@ -129,7 +129,7 @@ class WikiPage extends WikiTitle {
             $link = str_replace ( "$1" , $link , $wikiRedirectFrom ) ;
             $this->backLink = $link ;
 	    $target = preg_replace ( '/^#redirect\s+\[\[\s*([^\]\n]+)\s*\]\].*$/i' , '$1' , $this->contents ) ;
-            $this->load ( trim($target) , false , $backLink ) ;
+            $this->load ( trim($target) , false ) ;
             }
 	    #echo "***canbecached = $this->canBeCached***"; FIXME
         }
@@ -279,7 +279,7 @@ class WikiPage extends WikiTitle {
             $linkTitle->title = $unlinked_link ;
             $linkTitle->makeSecureTitle () ;
             $secureLinkTitle = $linkTitle->secureTitle ;
-            if ( secureLinkTitle ) {
+            if ( $secureLinkTitle ) {
                 $sql = "INSERT INTO unlinked (unlinked_from, unlinked_to) VALUES ( \"$this->secureTitle\" , \"$secureLinkTitle\" ) ;" ;
                 $r = mysql_query ( $sql , $connection ) ;
             }

@@ -246,7 +246,7 @@ class skinStandard extends skinClass {
 		}
 
 	function getStylesheet ( &$page ) {
-		global $styleSheet , $user , $namespaceBackground ;
+		global $styleSheet , $user , $action , $namespaceBackground ;
 		$skin = $user->options['skin'] ;
 		$ret = "<style type=\"text/css\"><!--\n";
 		$ret .= "body { ";

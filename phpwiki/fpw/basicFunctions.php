@@ -77,7 +77,7 @@ function strtolowerIntl ( $str )
 function isBlockedIP ()
 {
 	global $wikiBlockedIPsLink ;
-	$ip = getenv ( REMOTE_ADDR ) ;
+	$ip = getenv ( 'REMOTE_ADDR' ) ;
 	$list = getMySQL ( "cur" , "cur_text" , "cur_title=\"$wikiBlockedIPsLink\"" ) ;
     if ( preg_match( "/^\*\s?$ip \(/", $list ) ) return true;
     else return false ;
