@@ -335,7 +335,7 @@ function doSearch () {
                 $allSearch = $titleSearch + $row->cnt ;
                 mysql_free_result ( $result ) ;
             	}
-	    if ( $allSearch == 0 ) { $fallbackSearch++ ; unset ( $allSearch ) ; }
+	    #if ( $allSearch == 0 ) { $fallbackSearch++ ; unset ( $allSearch ) ; }
 	    } while ( !isset ( $allSearch ) && ( $fallbackSearch < 2 ) ) ;
             
             # Now we proceed with presenting the found results
