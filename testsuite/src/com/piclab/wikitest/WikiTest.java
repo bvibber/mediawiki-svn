@@ -9,7 +9,7 @@ package com.piclab.wikitest;
 
 import com.meterware.httpunit.*;
 
-public class WikiTest {
+public class WikiTest implements Runnable {
 
 protected WikiSuite m_suite;
 protected long m_start, m_stop;

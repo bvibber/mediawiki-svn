@@ -21,6 +21,7 @@
             <entry key="articlepath" value="" />
             <entry key="uploadpath" value="http://images.piclab.com/" />
             <entry key="mainpage" value="Main Page" />
+            <entry key="sysoppass" value="sysoppass" />
           </map>
         </node>
       </node>

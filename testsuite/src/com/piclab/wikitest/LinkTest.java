@@ -15,11 +15,12 @@ public LinkTest( WikiSuite ws ) { super(ws); }
 public String testName() { return "Links"; }
 
 protected boolean runTest() throws Exception {
-	m_suite.clearCookies(); /* Make sure we aren't logged in */
+	WebResponse wr = m_suite.deletePage( "Talk:Poker" ); /* Will logout */
 
 	/* java.util.logging.Level l = WikiSuite.setLoggingLevel(
 	  java.util.logging.Level.ALL ); */
 
+	WikiSuite.fine( "Starting test \"" + testName() + "\"" );
 	if ( ! part1() ) { throw new WikiSuiteFailureException( "Part 1" ); }
 	if ( ! part2() ) { throw new WikiSuiteFailureException( "Part 2" ); }
 	if ( ! part3() ) { throw new WikiSuiteFailureException( "Part 3" ); }
@@ -54,22 +55,20 @@ private boolean part2() throws Exception {
 	 * _not_ have an upload link or user stat links on it because we
 	 * aren't logged in.
 	 */
-	boolean result = true;
-
 	WebResponse wr = m_suite.viewPage( "Poker" );
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Printable version" );
-	result = (l != null);
+	if ( l == null ) { return false; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Related changes" );
-	result = (l != null);
+	if ( l == null ) { return false; }
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Upload file" );
-	result = (l == null);
+	if ( l != null ) { return false; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "My watchlist" );
-	result = (l == null);
+	if ( l != null ) { return false; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "My contributions" );
-	result = (l == null);
+	if ( l != null ) { return false; }
 
-	return result;
+	return true;
 }
 
 private boolean part3() throws Exception {
@@ -79,8 +78,6 @@ private boolean part3() throws Exception {
 	 * then check for some standard links on the new talk page and
 	 * the resulting history page.
 	 */
-	boolean result = true;
-
 	WebResponse wr = m_suite.viewPage( "Poker" );
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Discuss this page" );
 	wr = l.click();
@@ -95,21 +92,19 @@ private boolean part3() throws Exception {
 	wr = l.click();
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Current revision" );
-	result = (l != null);
+	if ( l == null ) { return false; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "View discussion" );
-	result = (l != null);
+	if ( l == null ) { return false; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "View article" );
 	wr = l.click();
 
-	return result;
+	return true;
 }
 
 private boolean part4() throws Exception {
 	/*
 	 * Let's log in now and verify that things are changed.
 	 */
-	boolean result = true;
-
 	WebResponse wr = m_suite.viewPage( "Poker" );
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Log in" );
 	wr = l.click();
@@ -131,28 +126,26 @@ private boolean part4() throws Exception {
 	wr = l.click();
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "My watchlist" );
-	result = (l != null);
+	if ( l == null ) { return false; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "My contributions" );
-	result = (l != null);
+	if ( l == null ) { return false; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "new messages" );
-	result = (l == null);
+	if ( l != null ) { return false; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Upload file" );
 	wr = l.click();
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "list of uploaded images" );
-	result = (l != null);
+	if ( l == null ) { return false; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "upload log" );
-	result = (l != null);
+	if ( l == null ) { return false; }
 
-	return result;
+	return true;
 }
 
 private boolean part5() throws Exception {
 	/*
 	 * Verify that the user page and user talk page are OK.
 	 */
-    boolean result = true;
-
 	WebResponse wr = m_suite.viewPage( "" );
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Fred" );
 	wr = l.click();
@@ -191,9 +184,9 @@ private boolean part5() throws Exception {
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Main Page" );
 	wr = l.click();
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "new messages" );
-	result = (l == null);
+	if ( l != null ) { return false; }
 
-	return result;
+	return true;
 }
 
 public static void main( String[] params ) {

@@ -26,6 +26,7 @@ private static String ms_script;
 private static String ms_articlepath;
 private static String ms_uploadpath;
 private static String ms_mainpage;
+private static String ms_sysoppass;
 
 /* Primary conversation for test suite; individual
  * tests may also create their own if needed.
@@ -82,12 +83,23 @@ public WikiSuite() {
 	ms_articlepath = ms_uprefs.get( "articlepath", "" );
 	ms_uploadpath = ms_uprefs.get( "uploadpath", "http://localhost/upload/" );
 	ms_mainpage = ms_uprefs.get( "mainpage", "Main Page" );
+	ms_sysoppass = ms_uprefs.get( "sysoppass", "adminpass" );
 
 	m_conv = new WebConversation();
 }
 
 public void clearCookies() {
 	m_conv.clearContents();
+}
+
+public static String getSysopPass() {
+	return ms_sysoppass;
+}
+
+public WebResponse logout() {
+	WebResponse wr = viewPage( "Special:Userlogout" );
+	clearCookies();
+	return wr;
 }
 
 public WebResponse loginAs( String name, String password )
@@ -250,6 +262,67 @@ public WebResponse viewPage( String title ) {
 public WebResponse editPage( String title ) {
 	WebResponse wr = getResponse( editUrl( title ) );
 	showResponseTitle( wr );
+	return wr;
+}
+
+public WebResponse deletePage( String title )
+throws WikiSuiteFailureException {
+	WebResponse wr = null;
+
+	try {
+		wr = loginAs( "WikiSysop", getSysopPass() );
+	} catch ( WikiSuiteFailureException e ) {
+		error( "Could not log in as Sysop to delete \"" + title + "\"" );
+		return null;
+	}
+	StringBuffer url = new StringBuffer( 200 );
+	String t = titleToUrl( title );
+
+	url.append( ms_server ).append( ms_script ).append( "?title=" )
+	  .append( t ).append( "&action=delete" );
+	wr = getResponse( url.toString() );
+
+	String rt = null;
+	try {
+		rt = wr.getTitle();
+	} catch ( org.xml.sax.SAXException e ) {
+		error( "Could not parse response to delete request." );
+		wr = logout();
+		return null;
+	}
+
+	if ( rt.equals( "Internal error" ) ) {
+		wr = logout();
+		return null;
+		/* Can't delete because it doesn't exist: no problem */
+	}
+
+	WebForm delform = null;
+	try {
+		delform = getFormByName( wr, "deleteconfirm" );
+	} catch (org.xml.sax.SAXException e) {
+		error( "Error parsing delete form." );
+		throw new WikiSuiteFailureException( e.toString() );
+	}
+	WebRequest req = delform.getRequest( "wpConfirmB" );
+	req.setParameter( "wpReason", "Deletion for testing" );
+	req.setParameter( "wpConfirm", "1" );
+
+	WebResponse ret = null;
+	try {
+		ret = m_conv.getResponse( req );
+	} catch (org.xml.sax.SAXException e) {
+		fatal( "Error parsing received page from delete confirmation." );
+		throw new WikiSuiteFailureException( e.toString() );
+	} catch (java.net.MalformedURLException e) {
+		fatal( "Badly formed URL from delete confirmation." );
+		throw new WikiSuiteFailureException( e.toString() );
+	} catch (java.io.IOException e) {
+		fatal( "I/O Error receiving page from delete confirmation." );
+		throw new WikiSuiteFailureException( e.toString() );
+	}
+	wr = logout();
+	fine( "Deleted \"" + title + "\"" );
 	return wr;
 }
 
@@ -448,27 +521,49 @@ public void incrementFetchcount() {
  * database, then run the individual tests.
  */
 
+private static boolean f_skipload = false;
+private static boolean f_nobackground = false;
+
 public static void main( String[] params ) {
+	for ( int i = 0; i < params.length; ++i ) {
+		if ( "-s".equals( params[i].substring( 0, 2 ) ) ) {
+			f_skipload = true;
+		} else if ( "-v".equals( params[i].substring( 0, 2 ) ) ) {
+			setLoggingLevel( Level.ALL );
+		} else if ( "-n".equals( params[i].substring( 0, 2 ) ) ) {
+			f_nobackground = true;
+		} else if ( "-h".equals( params[i].substring( 0, 2 ) )
+				|| "-?".equals( params[i].substring( 0, 2 ) ) ) {
+			System.out.println( "Usage: java WikiSuite [-svn]\n" +
+			  "  -s : Skip initial load of database\n" +
+			  "  -v : Verbose logging\n" +
+			  "  -n : No background thread\n" );
+			return;
+		}
+	}
 	WikiSuite ws = new WikiSuite();
-	ws.initializeDatabase();
+	if ( ! f_skipload ) { ws.initializeDatabase(); }
 
 	info( "Started Wikipedia Test Suite" );
 	long start_time = System.currentTimeMillis();
-	ws.startBackgroundFetchThread();
+	if ( ! f_nobackground ) { ws.startBackgroundFetchThread(); }
 
 	/*
 	 * All the actual tests go here.
 	 */
-
 	(new LinkTest(ws)).run();
 	(new HTMLTest(ws)).run();
 	(new EditTest(ws)).run();
+	(new ParserTest(ws)).run();
+	(new SpecialTest(ws)).run();
+	(new UploadTest(ws)).run();
+	(new SearchTest(ws)).run();
+	/* (new MathTest(ws)).run(); */
 
 	/*
-	 * Tests are all done.  Clean up and report.
+	 * Tests are all done. Clean up and report.
 	 */
-
-	ws.stopBackgroundFetchThread();
+	if ( ! f_nobackground ) { ws.stopBackgroundFetchThread(); }
 	info( "Finished Wikipedia Test Suite" );
 
 	long elapsed_time = System.currentTimeMillis() - start_time;
@@ -483,6 +578,5 @@ public static void main( String[] params ) {
 	info( sb.toString() );
 	info( "Total background page fetches: " + ws.m_fetchcount );
 }
-
 
 }
