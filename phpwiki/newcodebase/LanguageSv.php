@@ -301,7 +301,7 @@ $wgValidSpecialPagesSv = array(
 "qbfind"                => "SnabbSök",
 "qbbrowse"              => "Genomsök",
 "qbedit"                => "Redigera",
-xs"qbpageoptions"       => "Sidinställningar",
+"qbpageoptions"       => "Sidinställningar",
 "qbpageinfo"            => "Sidinformation",
 "qbmyoptions"           => "Mina inställingar",
 "mypage"                => "Min sida",
@@ -595,7 +595,7 @@ Det är mycket viktigt att du inte lägger material på
 Wikipedia som andra äger upphovsrätten till. De rättsliga konsekvenserna kan bli 
 mycket kostbara och skadligt för projektet, så vänligen låt bli, om du är osäker.
 Se också [http://meta.wikipedia.org/wiki/Special:Recentchanges 
-recent meta discussion] (oftast på engelska).", /"
+recent meta discussion] (oftast på engelska).",
 "rcloaderr"             => "Läser senaste redigerade sidor",
 "rcnote"                => "Nedanför är de senaste <strong>$1</strong> ändringarna under de 
 sista <strong>$2</strong> dagarna.",
