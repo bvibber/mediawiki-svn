@@ -813,24 +813,7 @@ class LanguageDe extends Language {
 		return $wgWeekdayNamesDe[$key-1];
 	}
 
-	function userAdjust( $ts )
-	{
-		global $wgUser;
-
-		$diff = $wgUser->getOption( "timecorrection" );
-		if ( ! is_numeric( $diff ) ) {
-			# Use Central European Time by default
-			$diff = 1;
-			# note: change this to take DST into account
-		}
-		if ( 0 == $diff ) { return $ts; }
-
-		$t = mktime( ( (int)substr( $ts, 8, 2) ) + $diff,
-		  (int)substr( $ts, 10, 2 ), (int)substr( $ts, 12, 2 ),
-		  (int)substr( $ts, 4, 2 ), (int)substr( $ts, 6, 2 ),
-		  (int)substr( $ts, 0, 4 ) );
-		return date( "YmdHis", $t );
-	}
+	# Inherit userAdjust()
  
 	function date( $ts, $adj = false )
 	{
@@ -854,11 +837,6 @@ class LanguageDe extends Language {
 	function timeanddate( $ts, $adj = false )
 	{
 		return $this->time( $ts, $adj ) . ", " . $this->date( $ts, $adj );
-	}
-
-	function rfc1123( $ts )
-	{
-		return date( "D, d M Y H:i:s T", $ts );
 	}
 
 	function getValidSpecialPages()
@@ -888,7 +866,5 @@ class LanguageDe extends Language {
                 else return $m;
 	}
 }
-
-include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );
 
 ?>
