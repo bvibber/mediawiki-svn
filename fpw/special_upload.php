@@ -8,7 +8,7 @@ function upload () {
 	global $wikiUploadDeleted , $wikiUploadDelMsg1 , $wikiUploadDelMsg2 ;
 	global $wikiUploadAffirm , $wikiUploadFull , $wikiUploadRestrictions ;
 	global $wikiUploadSuccess , $wikiUploadSuccess1 , $wikiUploadSuccess2 ;
-	global $wikiUploadAffirmText , $wikiUploadButton , $wikiUser ;
+	global $wikiUploadAffirmText , $wikiUploadButton , $wikiUser , $wikiCurrentServer ;
 	$vpage->special ( $wikiUploadTitle ) ;
 	$isSysop = in_array ( "is_sysop" , $user->rights ) ;
 	$xtitle = $wikiUploadPage ;
@@ -51,7 +51,11 @@ function upload () {
 		$now = date ( "Y-m-d H:i:s" , time () ) ;
 		$userText = "[[$wikiUser:$user->name|$user->name]]" ;
 		if ( $user->name == "" ) $userText = $REMODE_ADDR ;
-		$logText = str_replace ( "$1" , $now , str_replace ( "$2" , $userText , str_replace ( "$3" , htmlspecialchars ( $Upload_name ) , $wikiUploadSuccess1 ) ) ) ;
+		$uploaddir = ereg_replace("[A-Za-z0-9_.]+$", "upload", $THESCRIPT);
+		$logText = str_replace ( "$1" , $now , str_replace ( "$2" , $userText ,
+			str_replace ( "$3" ,
+				"[$wikiCurrentServer$uploaddir/" . nurlencode($Upload_name) . " " . htmlspecialchars ( $Upload_name ) . "]",
+				$wikiUploadSuccess1 ) ) ) ;
 		makeLog ( "log:Uploads" , $logText , str_replace ( "$1" , $Upload_name , $wikiUploadSuccess2 ) ) ;
 
 		unset ( $Upload_name ) ;
