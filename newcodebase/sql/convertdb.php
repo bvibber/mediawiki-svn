@@ -3,6 +3,8 @@
 # database into the format for the "newwiki" software.
 # Intended to be run from the php command line.
 #
+include_once( "../Namespace.php" );
+
 $DBserver		= "127.0.0.1";
 $DBname			= "wikidb";
 $DBuser			= "wikiuser";
@@ -18,6 +20,7 @@ $outf = fopen( $outfilename, "w" )
   or die( "Can't open output file.\n" );
 
 set_time_limit(0);
+
 
 # USER
 #
@@ -38,6 +41,8 @@ while ( $row = mysql_fetch_object( $res ) ) {
 	} else {
 		fwrite( $outf, "," );
 	}
+	# Need to do some tweaking of options here
+	#
 	$ops = strencode(urldecode($row->user_options));
 	$name = strencode($row->user_name);
 	$rights = strencode($row->user_rights);
@@ -53,10 +58,9 @@ mysql_free_result( $res );
 fwrite( $outf, ";\n" );
 p_end();
 
-
 # CUR
 #
-/*
+
 print "Converting CUR table.\n";
 $sql = "SELECT * FROM cur";
 $res = mysql_query( $sql, $conn );
@@ -84,7 +88,7 @@ while ( $row = mysql_fetch_object( $res ) ) {
 		$ns = "";
 		$t = $row->cur_title;
 	}
-	$namespace = strencode( $ns );
+	$namespace = Namespace::getIndex( $ns );
 	$title = strencode( $t );
 	$text = strencode( $row->cur_text );
 	$com = strencode( $row->cur_comment );
@@ -93,7 +97,7 @@ while ( $row = mysql_fetch_object( $res ) ) {
 	$cp = strencode( $row->cur_params );
 	$cit = strencode( $row->cur_ind_title );
 
-	fwrite( $outf, "({$row->cur_id},'$namespace','$title','$text'," .
+	fwrite( $outf, "({$row->cur_id},$namespace,'$title','$text'," .
 	  "'$com',{$row->cur_user},'$cut',{$row->cur_old_version}," .
 	  "'{$row->cur_timestamp}',{$row->cur_minor_edit},'$cr','$cp'," .
 	  "{$row->cur_counter},'$cit')" );
@@ -102,7 +106,51 @@ while ( $row = mysql_fetch_object( $res ) ) {
 mysql_free_result( $res );
 fwrite( $outf, ";\n" );
 p_end();
-*/
+
+# OLD
+#
+
+print "Converting OLD table.\n";
+$sql = "SELECT * FROM old";
+$res = mysql_query( $sql, $conn );
+if ( ! $res ) die( "Can't open \"old\" table." );
+
+p_start();
+while ( $row = mysql_fetch_object( $res ) ) {
+
+	if ( 0 == ( $progressCount % 100 ) ) {
+		if ( 0 != $progressCount ) { fwrite( $outf, ";\n" ) ; }
+
+		fwrite( $outf, "INSERT INTO old (old_id,old_namespace," .
+		  "old_title,old_text,old_comment,old_user,old_user_text," .
+		  "old_old_version,old_timestamp,old_minor_edit) VALUES " );
+	} else {
+		fwrite( $outf, "," );
+	}
+	if ( preg_match( "/^([A-Za-z][A-Za-z0-9 _]*):(.*)$/",
+	  $row->old_title, $m ) ) {
+		$ns = $m[1];
+		$t = $m[2];
+	} else {
+		$ns = "";
+		$t = $row->old_title;
+	}
+	$namespace = Namespace::getIndex( $ns );
+	$title = strencode( $t );
+	$text = strencode( $row->old_text );
+	$com = strencode( $row->old_comment );
+	$cut = strencode( $row->old_user_text );
+
+	fwrite( $outf, "({$row->old_id},$namespace,'$title','$text'," .
+	  "'$com',{$row->old_user},'$cut',{$row->old_old_version}," .
+	  "'{$row->old_timestamp}',{$row->old_minor_edit} )" );
+	progress();
+}
+mysql_free_result( $res );
+fwrite( $outf, ";\n" );
+p_end();
+
+
 
 fclose( $outf );
 

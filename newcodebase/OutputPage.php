@@ -108,7 +108,7 @@ class OutputPage {
 
 		$this->mBodytext = "";
 		$this->addHTML( "<p>" . wfMsg( $msg ) . "\n" );
-		$this->addWikiText( "\n" .  wfMsg( "returntomain" ) . "\n" );
+		$this->returnToMain();
 	}
 
 	function databaseError( $op )
@@ -119,7 +119,21 @@ class OutputPage {
 		$this->setRobotpolicy( "noindex,nofollow" );
 
 		$this->mBodytext = str_replace( "$1", $op, wfMsg( "dberrortext" ) );
-		$this->addWikiText( "\n" .  wfMsg( "returntomain" ) . "\n" );
+		$this->returnToMain();
+	}
+
+	function returnToMain()
+	{
+		global $wgOut, $returnto;
+
+		if ( "" == $returnto ) {
+			$r = wfMsg( "returntomain" );
+		} else {
+			$r = str_replace( "$1", $returnto, wfMsg( "returnto" ) );
+			$wgOut->addMeta( "http:Refresh", "10;url=" .
+			  wfLocalLink( $returnto ) );
+		}
+		$wgOut->addWikiText( "\n<p>$r\n" );
 	}
 
 	# Well, OK, it's actually about 14 passes.  But since all the
@@ -307,14 +321,14 @@ class OutputPage {
 					$l = $wgLang->getLanguageName( $pre );
 					if ( "" == $l ) {
 						$s .= $sk->makeInternalLink( $link, $text,
-						  "", "", $trail );
+						  "", $trail );
 					} else {
 						array_push( $this->mLanguageLinks, "$pre:$suf" );
 						$s .= $trail;
 					}
 				}
 			} else {
-				$s .= $sk->makeInternalLink( $link, $text, "", "", $trail );
+				$s .= $sk->makeInternalLink( $link, $text, "", $trail );
 			}
 		}
 		return $s;
@@ -423,7 +437,7 @@ class OutputPage {
 
 				if ( ";" == substr( $pref, -1 ) ) {
 					$cpos = strpos( $t, ":" );
-					if ( ! false === $cpos ) {
+					if ( ! ( false === $cpos ) ) {
 						$term = substr( $t, 0, $cpos );
 						$text .= $term . "</dt><dd>";
 						$t = substr( $t, $cpos + 1 );
@@ -443,7 +457,7 @@ class OutputPage {
 
 					if ( ";" == $char ) {
 						$cpos = strpos( $t, ":" );
-						if ( ! false === $cpos ) {
+						if ( ! ( false === $cpos ) ) {
 							$term = substr( $t, 0, $cpos );
 							$text .= $term . "</dt><dd>";
 							$t = substr( $t, $cpos + 1 );

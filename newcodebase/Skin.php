@@ -48,7 +48,7 @@ class Skin {
 	{
 		global $wgTitle, $wgNamespaceBackgrounds;
 
-		$ns = $wgTitle->getNamespace();
+		$ns = Namespace::getName( $wgTitle->getNamespace() );
 
 		if ( "" != $ns && key_exists( $ns, $wgNamespaceBackgrounds ) ) {
 			return array( "bgcolor" => $wgNamespaceBackgrounds[$ns] );
@@ -376,34 +376,25 @@ class Skin {
 	{
 		global $wgTitle;
 
-		$ns = $wgTitle->getNamespace();
+		$tns = $wgTitle->getNamespace();
+		if ( -1 == $tns ) { return ""; }
+
 		$pn = $wgTitle->getText();
 		$tp = wfMsg( "talkpage" );
 		$sp = wfMsg( "subjectpage" );
 
-		if ( "" == $ns ) {
-			$link = "Talk:$pn";
-			$text = $tp;
-		} else if ( "Talk" == $ns ) {
-			$link = $pn;
+		if ( Namespace::isTalk( $tns ) ) {
+			$lns = Namespace::getSubject( $tns );
 			$text = $sp;
 		} else {
-			$tail = substr( $ns, -5 );
-			if ( "_talk" == $tail ) {
-				$n = substr( $ns, 0, strlen( $ns ) - 5 );
-				$link = "$n:$pn";
-				$text = $sp;
-			} else {
-				$link = "{$ns}_talk:$pn";
-				$text = $tp;
-			}
+			$lns = Namespace::getTalk( $tns );
+			$text = $tp;
 		}
-		$nt = Title::newFromText( $link );
-		if ( 0 == $nt->getArticleID() ) {
-			$s = $this->makeBrokenLink( $link, $text );
-		} else {
-			$s = $this->makeLink( $link, $text );
-		}
+		$n = Namespace::getName( $lns );
+		if ( "" == $n ) { $link = $pn; }
+		else { $link = "$n:$pn"; }
+
+		$s = $this->makeInternalLink( $link, $text );
 		return $s;
 	}
 
@@ -415,12 +406,11 @@ class Skin {
 		return $text;
 	}
 
-	function makeInternalLink( $title, $text= "", $action = "", $target = "",
-	  $trail = "" )
+	function makeInternalLink( $title, $text= "", $query = "", $trail = "" )
 	{
 		$nt = Title::newFromText( $title );
-		if ( "Special" == $nt->getNamespace() ) {
-			return $this->makeLink( $title, $text );
+		if ( -1 == $nt->getNamespace() ) {
+			return $this->makeLink( $title, $text, $query, $trail );
 		}
 		if ( 0 == $nt->getArticleID() ) {
 			return $this->makeBrokenLink( $title, $text ) . $trail;

@@ -65,26 +65,19 @@ class User {
 
 		$remaddr = getenv( "REMOTE_ADDR" );
 		$conn = wfGetDB();
-		$sql = "SELECT ipb_by,ipb_reason FROM ipblocks WHERE " .
-		  "ipb_address='$remaddr'";
+		if ( 0 == $this->mId ) {
+			$sql = "SELECT ipb_by,ipb_reason FROM ipblocks WHERE " .
+			  "ipb_address='$remaddr'";
+		} else {
+			$sql = "SELECT ipb_by,ipb_reason FROM ipblocks WHERE " .
+			  "(ipb_address='$remaddr' OR ipb_user={$this->mId})";
+		}
 		wfDebug( "User: 5: $sql\n" );
 
 		$res = mysql_query( $sql, $conn );
 		if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
-			if ( 0 == $this->mId ) {
-				$this->mBlockedby = 0;
-				return;
-			}
-			$conn = wfGetDB();
-			$sql = "SELECT ipb_by,ipb_reason FROM ipblocks WHERE " .
-			  "ipb_user={$this->mId}";
-			wfDebug( "User: 6: $sql\n" );
-
-			$res = mysql_query( $sql, $conn );
-			if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
-				$this->mBlockedby = 0;
-				return;
-			}
+			$this->mBlockedby = 0;
+			return;
 		}
 		$s = mysql_fetch_object( $res );
 		$this->mBlockedby = $s->ipb_by;

@@ -72,6 +72,10 @@ The operation being attempted was: $1.",
 "noconnect"		=> "Could not connect to DB on $1",
 "nodb"			=> "Could not select database $1",
 "updatingarticle" => "updating an article",
+"readonly"		=> "Database locked",
+"readonlytext"	=> "The Wikipedia database is currently locked to
+new entries, probably because of database maintenance.
+Please try again later.\n",
 
 # Login and logout pages
 #

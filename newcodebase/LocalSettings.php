@@ -26,13 +26,14 @@ $wgDBpassword       = "xxx";
 
 # Turn this on to get HTML debug comments
 #
-$wgDebugComments = true;
+$wgDebugComments	= true;
+$wgDebugLogFile		= "";
 
 # Which interwiki prefix represents _this_ wiki?  This
 # only needs to be set when installing the software on
 # on of the sites recognized as an interwiki.
 #
 $wgLocalInterwiki   = "w";
-#$wgLanguageCode		= "en";
+#$wgLanguageCode	= "en";
 
 ?>

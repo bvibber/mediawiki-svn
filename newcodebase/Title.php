@@ -34,15 +34,15 @@ class Title {
 	/* private */ var $mTextform, $mUrlform, $mDbkeyform;
 	/* private */ var $mNamespace, $mInterwiki;
 	/* private */ var $mArticleID, $mRestrictions, $mRestrictionsLoaded;
-	/* private */ var $mOtherNamespaces, $mNamespacesLoaded;
+	/* private */ var $mNamespacesLoaded;
 
 	/* private */ function Title()
 	{
-		$this->mInterwiki = $this->mNamespace =
-		$this->mUrlform = $this->mTextform = $this->mDbkeyform = "";
+		$this->mInterwiki = $this->mUrlform =
+		$this->mTextform = $this->mDbkeyform = "";
 		$this->mArticleID = -1;
+		$this->mNamespace = 0;
 		$this->mNamespacesLoaded = $this->mRestrictionsLoaded = false;
-		$this->mOtherNamespaces = array();
 		$this->mRestrictions = array();
 	}
 
@@ -118,7 +118,8 @@ class Title {
 		} else {
 			$p = $wgValidInterwikis[$this->mInterwiki];
 		}
-		if ( "" != $this->mNamespace ) { $n = $this->mNamespace . "%3a"; }
+		$n = Namespace::getName( $this->mNamespace );
+		if ( "" != $n ) { $n .= "$3a"; }
 		return str_replace( "$1", $n . $this->mUrlform, $p );
 	}
 
@@ -139,9 +140,7 @@ class Title {
 	{
 		global $wgUser;
 
-		if ( 0 == strcmp( "Special", $this->mNamespace ) ) {
-			return false;
-		}
+		if ( -1 == $this->mNamespace ) { return false; }
 		$ur = $wgUser->getRights();
 		foreach ( $this->getRestrictions() as $r ) {
 			if ( "" != $r && ( ! in_array( $r, $ur ) ) ) {
@@ -149,31 +148,6 @@ class Title {
 			}
 		}
 		return true;
-	}
-
-	function getOtherNamespaces()
-	{
-		if ( ! $this->mNamespacesLoaded ) {
-			$conn = wfGetDB();
-			$sql = "SELECT cur_namespace,cur_id FROM cur " .
-			  "WHERE cur_title='{$this->mDbkeyform}'";
-			wfDebug( "Title: 2: $sql\n" );
-
-			$res = mysql_query( $sql, $conn );
-			if ( ( false === $res ) || 0 == mysql_num_rows( $res ) ) {
-				return $this->mOtherNamespaces;
-			}
-
-			while ( $row = mysql_fetch_object( $res ) ) {
-				$ns = $row->cur_namespace;
-				if ( 0 != strcmp( $this->mNamespace, $ns ) ) {
-					array_push( $this->mOtherNamspaces, $ns );
-				}
-			}
-			$this->mNamespacesLoaded = true;
-			mysql_free_result( $res );
-		}
-		return $this->mOtherNamespaces;
 	}
 
 	function getRestrictions()
@@ -198,8 +172,8 @@ class Title {
 			$this->mArticleID = $wgArticleIDcache[$pt];
 		} else {
 			$conn = wfGetDB();
-			$sql = "SELECT cur_id FROM cur WHERE cur_namespace=" .
-			  "'{$this->mNamespace}' AND cur_title='{$this->mDbkeyform}'";
+			$sql = "SELECT cur_id FROM cur WHERE (cur_namespace=" .
+			  "{$this->mNamespace} AND cur_title='{$this->mDbkeyform}')";
 			# wfDebug( "Title: 1: $sql\n" );
 			$res = mysql_query( $sql, $conn );
 
@@ -221,8 +195,10 @@ class Title {
 		if ( "" != $this->mInterwiki ) {
 			$p = $this->mInterwiki . ":";
 		}
-		if ( "" != $this->mNamespace ) {
-				$p .= $this->mNamespace . ":";
+		if ( -1 == $this->mNamespace ) {
+			$p .= "Special:";
+		} else if ( 0 != $this->mNamespace ) {
+			$p .= Namespace::getName( $this->mNamespace ) . ":";
 		}
 		return $p . $name;
 	}
@@ -238,14 +214,15 @@ class Title {
 		global $wgLang, $wgValidInterwikis, $wgLocalInterwiki;
 
 		$validNamespaces = $wgLang->getNamespaces();
-		$this->mInterwiki = $this->mNamespace = "";
+		$this->mInterwiki = "";
+		$this->mNamespace = 0;
 
 		$done = false;
 		$t = trim( $this->mDbkeyform );
 		if ( ":" == $t{0} ) {
 			$r = substr( $t, 1 );
 		} else {
-			if ( preg_match( "/^([A-Za-z][A-Za-z0-9 _]*):(.*)$/", $t, $m ) ) {
+	 		if ( preg_match( "/^([A-Za-z][A-Za-z0-9 _]*):(.*)$/", $t, $m ) ) {
 				$p = strtolower( $m[1] );
 				if ( key_exists( $p, $wgValidInterwikis ) ) {
 					$t = $m[2];
@@ -262,7 +239,8 @@ class Title {
 					$p = ucfirst( $p );
 					if ( in_array( $p, $validNamespaces ) ) {
 						$t = $m[2];
-						$this->mNamespace = str_replace( " ", "_", $p );
+						$this->mNamespace = Namespace::getIndex(
+						  str_replace( " ", "_", $p ) );
 					}
 				}
 			}
@@ -273,7 +251,7 @@ class Title {
 		}
 		# We already know that some pages won't be in the database!
 		#
-		if ( "" != $this->mInterwiki || "Special" == $this->mNamespace ) {
+		if ( "" != $this->mInterwiki || -1 == $this->mNamespace ) {
 			$this->mArticleID = 0;
 		}
 		# Strip illegal characters. Note that since many troublesome
