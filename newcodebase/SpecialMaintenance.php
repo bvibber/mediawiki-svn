@@ -30,7 +30,7 @@ function wfSpecialMaintenance ()
 	$l = str_replace ( "<a " , "<FORM method=post " , $l ) ;
 	$l = explode ( ">" , $l ) ;
 	$l = $l[0] ;
-	$r .= $l."\n" ;
+	$r .= $l.">\n" ;
 	$r .= "<input type=submit name='submitmll' value='" ;
 	$r .= wfMsg("missinglanguagelinksbutton");
 	$r .= "'>\n" ;
