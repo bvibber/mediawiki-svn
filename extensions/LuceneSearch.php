@@ -106,17 +106,18 @@ class LuceneSearch extends SpecialPage
 		$prevnext = "<div style='text-align: center'>$prevnext</div>";
 		$top .= $prevnext;
 		foreach ($chunks[$whichchunk] as $result) {
-			$out .= $this->showHit($result, $contextWords);
+			$out .= $this->showHit($result[0], $result[1], $contextWords);
 		}
 		$out .= "</ol>";
 		$wgOut->addWikiText(wfMsg('searchresulttext'));
+		$wgOut->addHTML($this->showShortDialog($q));
 		$wgOut->addHTML("<hr/>" . $top . $out);
 		$wgOut->addHTML("<hr/>" . $prevnext);
-		$wgOut->addHTML($this->showFullDialog());
+		$wgOut->addHTML($this->showFullDialog($q));
 		$wgOut->setRobotpolicy('noindex,nofollow');
 	}
 
-        function showHit($t, $terms) {
+        function showHit($score, $t, $terms) {
                 $fname = 'LuceneSearch::showHit';
                 wfProfileIn( $fname );
                 global $wgUser, $wgContLang;
@@ -177,8 +178,10 @@ class LuceneSearch extends SpecialPage
                 wfProfileOut( "$fname-extract" );
                 wfProfileOut( $fname );
 		$date = $wgContLang->timeanddate($rev->getTimestamp());
+		$score = wfMsg("searchscore", $score);
                 return "<li style='padding-bottom: 1em'>{$link}{$extract}<br/>"
-			."<span style='color: green; font-size: small'>$size - $date</span></li>\n";
+			."<span style='color: green; font-size: small'>"
+			."$score; $size - $date</span></li>\n";
         }
 
 	/* Basic wikitext removal */
@@ -214,7 +217,7 @@ class LuceneSearch extends SpecialPage
 
 		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE) {
 			$result = chop($result);
-			list($namespace, $title) = split(" ", $result);
+			list($score, $namespace, $title) = split(" ", $result);
 			if (!in_array($namespace, $this->namespaces))
 				continue;
 			$fulltitle = Title::makeTitle($namespace, $title);
@@ -222,13 +225,24 @@ class LuceneSearch extends SpecialPage
 				wfDebug("broken link: $namespace $title");
 				continue;
 			}
-			$results[] = $fulltitle;
+			$results[] = array($score, $fulltitle);
 		}
 		socket_close($sock);
 		return array($numresults, $results);
 	}
 
-	function showFullDialog() {
+	function showShortDialog($term) {
+                $searchField = "<input type='text' name=\"search\" value=\"" .
+                        htmlspecialchars($term) ."\" width=\"80\" />\n";
+
+                $searchButton = '<input type="submit" name="searchx" value="' .
+                  htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
+		$ret = $searchField . $searchButton;
+                return "<form id=\"search\" method=\"get\" " .
+                  "action=\"$action\">\n<div style='text-align: center'>{$ret}</div>\n</form>\n";
+	}
+
+	function showFullDialog($term) {
 		global $wgContLang;
 		$namespaces = '';
 		foreach(SearchEngine::searchableNamespaces() as $ns => $name) {
@@ -266,6 +280,7 @@ SpecialPage::addPage( new LuceneSearch );
 $wgMessageCache->addMessage("searchnumber", "<strong>Results $1-$2 of $3</strong>");
 $wgMessageCache->addMessage("searchprev", "&lt;&lt; Prev");
 $wgMessageCache->addMessage("searchnext", "Next &gt;&gt;");
+$wgMessageCache->addMessage("searchscore", "Score: $1");
 $wgMessageCache->addMessage("lucenepowersearchtext", "
 Search in namespaces:\n
 $1\n
