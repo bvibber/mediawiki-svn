@@ -32,7 +32,7 @@
   // D E F I N E S
   define("WH_TABLE_S",      "<table border=\"0\" height=\"100%\" cellspacing=\"0\" cellpadding=\"0\">");
   define("WH_TABLE_E",      "</table>");
-  define("WH_TD_S",         "<td align=\"center\" valign=\"center\">");
+  define("WH_TD_S",         "<td align=\"center\" valign=\"middle\">");
   define("WH_TD_E",         "</td>");
 
   define("WH_MODE_DEFAULT", -1);    // use default mode
@@ -584,12 +584,12 @@
     {
       $code = $wh_phonemes[$glyph];
       if(array_key_exists($code, $wh_files))
-        return "<img style=\"margin:".WH_IMG_MARGIN."px;\" $option src=\"".htmlspecialchars(WH_IMG_DIR.WH_IMG_PRE."$code".".".WH_IMG_EXT)."\" title=\"".htmlspecialchars("$code [$glyph]")."\" />";
+        return "<img style=\"margin:".WH_IMG_MARGIN."px;\" $option src=\"".htmlspecialchars(WH_IMG_DIR.WH_IMG_PRE."$code".".".WH_IMG_EXT)."\" title=\"".htmlspecialchars("$code [$glyph]")."\" alt=\"".htmlspecialchars("$code [$glyph]")."\" />";
       else
         return "<font title=\"" . htmlspecialchars($code) . "\">" . htmlspecialchars($glyph) . "</font>";
     }
     else if(array_key_exists($glyph, $wh_files))
-      return "<img style=\"margin:".WH_IMG_MARGIN."px;\" $option src=\"".htmlspecialchars(WH_IMG_DIR.WH_IMG_PRE."$glyph".".".WH_IMG_EXT)."\" title=\"".htmlspecialchars($glyph)."\" />";
+      return "<img style=\"margin:".WH_IMG_MARGIN."px;\" $option src=\"".htmlspecialchars(WH_IMG_DIR.WH_IMG_PRE."$glyph".".".WH_IMG_EXT)."\" title=\"".htmlspecialchars($glyph)."\" alt=\"".htmlspecialchars($glyph)."\" />";
     else
       return htmlspecialchars($glyph);
   }
