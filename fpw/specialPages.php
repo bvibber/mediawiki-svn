@@ -297,11 +297,12 @@ function LonelyPages () {
 	$vpage->special ( "The Orphans" ) ;
 	$vpage->namespace = "" ;
 	$allPages = array () ;
-	$ret = "'''These articles exist, but no articles link to them!''' (the first 50)\n\n" ;
+	$ret = "'''These articles exist, but no articles link to them!''' (the first 50)<br>" ;
+	$ret .= "''Talk: pages, empty pages and #REDIRECTs are '''not''' listed here.''\n\n" ;
 
 	$connection = getDBconnection () ;
 	mysql_select_db ( "wikipedia" , $connection ) ;
-	$sql = "SELECT cur_title,cur_linked_links,cur_unlinked_links FROM cur" ;
+	$sql = "SELECT cur_title,cur_linked_links,cur_unlinked_links FROM cur WHERE cur_title NOT LIKE \"Talk:%\" AND cur_text NOT LIKE \"#redirect%\" AND cur_text != \"\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) {
 		$allPages[ucfirst($s->cur_title)] = $allPages[ucfirst($s->cur_title)] * 1 ;
@@ -915,7 +916,7 @@ function upload () {
 		unset ( $removeFile ) ;
 	} else if (isset($Upload_name) or isset($Upload)) {
 		if ( $no_copyright != "AFFIRMED" ) return "<nowiki>You need to affirm that the file is not violating copygights. Return to the <a href=\"$THESCRIPT?title=special:upload\">Upload page</a></nowiki>" ;
-		$Upload_name = ereg_replace(" ", "_", $Upload_name);
+#		$Upload_name = ereg_replace(" ", "_", $Upload_name);
 		$abc = split("\.", $Upload_name);
 
 		$num = exec ("df");
@@ -1073,6 +1074,19 @@ function special_pages () {
 	return $ret ;
 	}
 
+function pagesThatLinkHere ( $t , $connection ) {
+	$a = array () ;
+	$sql = "SELECT cur_title,cur_linked_links FROM cur WHERE cur_linked_links LIKE \"%$t%\"" ;
+	$result = mysql_query ( $sql , $connection ) ;
+	while ( $s = mysql_fetch_object ( $result ) ) {
+		$b = explode ( "\n" , $s->cur_linked_links ) ;
+		if ( in_array ( $t , $b ) )
+			array_push ( $a , $s ) ;
+		}
+	mysql_free_result ( $result ) ;
+	return $a ;
+	}
+
 function ShortPages () {
 	global $THESCRIPT ;
 	global $user , $vpage , $startat ;
@@ -1082,29 +1096,56 @@ function ShortPages () {
 	
 	$vpage->special ( "Short 'stub' articles" ) ;
 	$vpage->namespace = "" ;
-	$ret = "'''These are all the articles in the database, sorted by length!'''\n\n" ;
+	$ret = "'''These are all the articles in the database, sorted by length.'''<br>" ;
+	$ret .= "''#REDIRECT pages and pages within a namespace (like Talk:) are '''not''' listed here!''\n\n" ;
 	$connection = getDBconnection () ;
 	mysql_select_db ( "wikipedia" , $connection ) ;
-	$sql = "SELECT COUNT(*) AS number FROM cur" ;
+	$sql = "SELECT COUNT(*) AS number FROM cur WHERE cur_title NOT LIKE \"%:%\" AND cur_text NOT LIKE \"#redirect%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$total = $s->number ;
-	$sql = "SELECT * FROM cur ORDER BY LENGTH(cur_text)" ;
+	$sql = "SELECT cur_title,LENGTH(cur_text) AS len FROM cur WHERE cur_title NOT LIKE \"%:%\" AND cur_text NOT LIKE \"#redirect%\" ORDER BY LENGTH(cur_text)" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$cnt = 1 ;
 	$color1 = $user->options["tabLine1"] ;
 	$color2 = $user->options["tabLine2"] ;
 	$color = $color1 ;
 	$ret .= "<table width=100%>\n" ;
+	$ar = array () ;
 	while ( $s = mysql_fetch_object ( $result ) and $cnt < $startat+$perpage ) {
 		if ( $cnt >= $startat ) {
-			$ret .= "<tr><td$color align=right nowrap>$cnt</td>" ;
-			$ret .= "<td$color align=right nowrap>(".strlen($s->cur_text)." chars)</td>\n" ;
-			$ret .= "<td$color width=100% valign=top>[[$s->cur_title]]</td></tr>\n";
-			if ( $color == $color1 ) $color = $color2 ;
-			else $color = $color1 ;
+			$s->cnt = $cnt ;
+			array_push ( $ar , $s ) ;
 			}
 		$cnt++ ;
+		}
+	mysql_free_result ( $result ) ;
+
+
+	foreach ( $ar as $s ) {
+		$k = new wikiTitle ;
+		$k->setTitle ( $s->cur_title ) ;
+		$ret .= "<tr><td$color align=right valign=top nowrap>$s->cnt</td>" ;
+		$ret .= "<td$color align=right valign=top nowrap>($s->len chars)</td>\n" ;
+		$ret .= "<td$color nowrap valign=top>[[$s->cur_title|".$k->getNiceTitle()."]]</td>\n";
+		if ( in_array ( "is_sysop" , $user->rights ) )
+			$ret .= "<td$color valign=top nowrap><nowiki><a href=\"$THESCRIPT?title=special:deletepage&target=$s->cur_title\"><b>Delete this page!</b></a></nowiki></td>" ;
+		else $ret .= "<td$color width=100% nowrap>&nbsp;</td>" ;
+
+		$lf = "" ;
+		$lh = pagesThatLinkHere($s->cur_title,$connection);
+		if ( count ( $lh ) <= 5 and count ( $lh ) > 0 ) {
+			foreach ( $lh as $ll ) {
+				if ( $lf == "" ) $lf = " <font size=-1>(" ;
+				else $lf .= " - " ;
+				$lf .= "[[$ll->cur_title]]" ;
+				}
+			$lf .= ")</font>" ;
+			}
+		$ret .= "<td$color width=100% valign=top>".count($lh)." articles link here.$lf</td>\n";
+		$ret .= "</tr>" ;
+		if ( $color == $color1 ) $color = $color2 ;
+		else $color = $color1 ;
 		}
 	$ret .= "</table>\n" ;
 	
@@ -1114,7 +1155,6 @@ function ShortPages () {
 	$after = $startat + $perpage ; $fin = $after+$perpage - 1 ; if ( $fin > $total ) $fin = $total ;
 	if ( $after-1 < $total ) $ret .= "<a href=\"$THESCRIPT?title=special:ShortPages&startat=$after\">&gt;&gt;$after-$fin</a>" ;
 	$ret .= "</nowiki>" ;
-	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
 	return $ret ;
 	}
@@ -1171,7 +1211,7 @@ function deletepage () {
 	$ti = $vpage->secureTitle ;
 	$vpage->special ( "Deleting article '$target'" ) ;
 	$vpage->makeSecureTitle () ;
-	if ( !in_array ( "is_sysop" , $user->rights ) ) return "<h1>You are not allowed to delete this page!</h1>" ;
+	if ( !in_array ( "is_sysop" , $user->rights ) ) return "<font size=+3>You are not allowed to delete this page!</font>" ;
 	if ( $iamsure == "yes" ) {
 		$ret = "<h2>'$target' has been removed.</h2>" ;
 		$connection = getDBconnection () ;
@@ -1189,9 +1229,44 @@ function deletepage () {
 		removeFromLinkList ( "cur_linked_links" , $target ) ;
 		removeFromLinkList ( "cur_unlinked_links" , $target ) ;
 	} else {
-		$ret = "<h2>You are about to delete the article \"$target\" and its complete history!<br>\n" ;
+		$ret = "<font size=+2>You are about to delete the article \"$target\" and its complete history!<br>\n" ;
 		$ret .= "If you are absolutely sure you want to do this, " ;
-		$ret .= "<a href=\"$THESCRIPT?title=special:deletepage&target=$target&iamsure=yes\">click here</a>.</h2>" ;
+		$ret .= "<a href=\"$THESCRIPT?title=special:deletepage&target=$target&iamsure=yes\">click here</a>.</font>" ;
+		}
+	return "<nowiki>$ret</nowiki>" ;
+	}
+
+function protectpage () {
+	global $THESCRIPT , $target , $user , $protecting , $newrestrictions ;
+	global $vpage ;
+	$target = str_replace ( "\\\\" , "\\" , $target ) ;
+	$target = str_replace ( "\\\\" , "\\" , $target ) ;
+	$vpage = new WikiPage ;
+	$vpage->title = $title ;
+	$vpage->makeSecureTitle () ;
+	$ti = $vpage->secureTitle ;
+	$vpage->special ( "Protecting article '$target'" ) ;
+	$vpage->makeSecureTitle () ;
+	if ( !in_array ( "is_sysop" , $user->rights ) ) return "<font size=+3>You are not allowed to protect this page!</font>" ;
+	if ( $protecting == "yes" ) {
+		$r = explode ( "," , $newrestrictions ) ;
+		$nr = array () ;
+		foreach ( $r as $x )
+			if ( strtolower ( substr ( $x , 0 , 3 ) ) == "is_" )
+				array_push ( $nr , strtolower ( $x ) ) ;
+		$nr = implode ( "," , $nr ) ;
+		$t = getMySQL ( "cur" , "cur_timestamp" , "cur_title=\"$target\"" ) ;
+		setMySQL ( "cur" , "cur_restrictions" , $nr , "cur_title=\"$target\"" ) ;
+		$ret = "<font size=+2>Page '$target' is now protected as $nr.</font>" ;
+		setMySQL ( "cur" , "cur_timestamp" , $t , "cur_title=\"$target\"" ) ;
+	} else {
+		$p = getMySQL ( "cur" , "cur_restrictions" , "cur_title=\"$target\"" ) ;
+		$ret = "<font size=+2>You can now edit the protection for '$target'</font><br>" ;
+		$ret .= "<i>For example, use \"is_sysop\" to prevent anyone but sysops from editing that page. Separate several allowances by \",\"</i>" ;
+		$ret .= "<br><br><FORM action=\"$THESCRIPT?title=special:protectpage&target=$target&protecting=yes\" method=post>Current protection : \n" ;
+		$ret .= "<INPUT TABINDEX=1 TYPE=text NAME=newrestrictions VALUE=\"$p\" SIZE=30>\n" ;
+		$ret .= "<INPUT TABINDEX=2 TYPE=submit NAME=save VALUE=\"Save\">" ;
+		$ret .= "</FORM>\n" ;
 		}
 	return "<nowiki>$ret</nowiki>" ;
 	}
