@@ -9,6 +9,7 @@ include ( "./wikiUser.php" ) ;
 # Main program
 	global $action , $title , $pageTitle ;
 	global $user , $search , $expiration ;
+	global $THESCRIPT ;
 	$expiration = time()+315360000 ; # Cookies set will expire in ten years from now
 	$pageTitle = "" ;
 	$user = new WikiUser ;

@@ -76,6 +76,7 @@ function edit ( $title ) {
 	}
 
 function doEdit ( $title ) {
+	global $THESCRIPT ;
 	global $vpage , $action , $wasSaved ;
 	$wasSaved = false ;
 	$vpage = new WikiPage ;
@@ -114,6 +115,7 @@ function userLogout () {
 	}
 
 function userLogin () {
+	global $THESCRIPT ;
 	global $loginattempt , $user , $vpage , $WikiUserID , $expiration ;
 	$vpage->title = "User login" ;
 
@@ -179,6 +181,7 @@ function userLogin () {
 	}
 
 function editUserSettings () {
+	global $THESCRIPT ;
 	global $ButtonSave ;
 	global $vpage , $user ;
 	$vpage->title = "User Settings" ;
@@ -303,6 +306,7 @@ function editUserSettings () {
 	}
 
 function WantedPages () {
+	global $THESCRIPT ;
 	global $linkedLinks , $unlinkedLinks , $vpage ;
 	$vpage->special ( "The Most Wanted Topics" ) ;
 	$vpage->namespace = "" ;
@@ -335,6 +339,7 @@ function WantedPages () {
 	}
 
 function LonelyPages () {
+	global $THESCRIPT ;
 	global $linkedLinks , $unlinkedLinks , $vpage ;
 	$vpage->special ( "The Orphans" ) ;
 	$vpage->namespace = "" ;
@@ -372,6 +377,7 @@ function LonelyPages () {
 	}
 
 function AllPages () {
+	global $THESCRIPT ;
 	global $linkedLinks , $unlinkedLinks , $vpage ;
 	$vpage->special ( "All Pages Index" ) ;
 	$vpage->namespace = "" ;
@@ -402,6 +408,7 @@ function searchLineDisplay ( $v ) {
 	}
 
 function doSearch () {
+	global $THESCRIPT ;
 	global $vpage , $search , $startat , $user ;
 	$vpage = new WikiPage ;
 	$vpage->special ( "Search" ) ;
@@ -480,6 +487,7 @@ function doSearch () {
 	}
 
 function listUsers () {
+	global $THESCRIPT ;
 	global $user , $vpage , $startat ;
 	if ( !isset ( $startat ) ) $startat = 1 ;
 	$perpage = $user->options["resultsPerPage"] ;
@@ -527,6 +535,7 @@ function listUsers () {
 	}
 
 function randompage () {
+	global $THESCRIPT ;
 	global $vpage ;
 	$connection=getDBconnection() ;
 	mysql_select_db ( "wikipedia" , $connection ) ;
@@ -564,6 +573,7 @@ function tsc ( $t ) {
 	}
 
 function recentchanges () {
+	global $THESCRIPT ;
 	global $vpage , $maxcnt , $daysAgo ;
 	$vpage->special ( "Recent Changes" ) ;
 	$vpage->makeSecureTitle() ;
@@ -604,6 +614,7 @@ function recentchanges () {
 	}
 
 function recentChangesLayout ( &$arr ) {
+	global $THESCRIPT ;
 	global $user ;
 	$lastDay = "" ;
 	$color1 = $user->options["tabLine1"] ;
@@ -695,6 +706,7 @@ function modifyArray ( $a , $sep , $rem , $add = "" ) {
 	}
 
 function watch ( $t , $m ) {
+	global $THESCRIPT ;
 	global $user ;
 	if ( !$user->isLoggedIn ) return "NOT LOGGED IN!" ;
 
@@ -710,6 +722,7 @@ function watch ( $t , $m ) {
 	}
 
 function WatchList () {
+	global $THESCRIPT ;
 	global $vpage , $user ;
 	$vpage->special ( "My watchlist" ) ;
 	$ret = "'''Currently, you are watching the following articles :''' " ;
@@ -740,6 +753,7 @@ function WatchList () {
 	}
 
 function statistics () {
+	global $THESCRIPT ;
 	$connection=getDBconnection() ;
 	mysql_select_db ( "wikipedia" , $connection ) ;
 	$ret = "" ;
@@ -831,6 +845,7 @@ function statistics () {
 	}
 
 function upload () {
+	global $THESCRIPT ;
 	global $removeFile , $xtitle , $removeFile , $Upload , $Upload_name , $no_copyright ;
 	global $user , $vpage ;
 	$vpage->special ( "Upload Page" ) ;
@@ -942,6 +957,7 @@ function upload () {
 	}
 
 function doHistory ( $title ) {
+	global $THESCRIPT ;
 	global $vpage ;
 	$vpage = new WikiPage ;
 	$vpage->title = $title ;
@@ -994,6 +1010,7 @@ function doHistory ( $title ) {
 	}
 
 function special_pages () {
+	global $THESCRIPT ;
 	global $vpage , $user ;
 	$vpage->special ( "Special Pages" ) ;
 	$ret = "<b>This is a list of special pages.</b><br>" ;
@@ -1003,6 +1020,7 @@ function special_pages () {
 	}
 
 function ShortPages () {
+	global $THESCRIPT ;
 	global $user , $vpage , $startat ;
 	if ( !isset ( $startat ) ) $startat = 1 ;
 	$perpage = $user->options["resultsPerPage"] ;
@@ -1049,6 +1067,7 @@ function ShortPages () {
 
 # A little hack; disabled; to enable, allow function call in wikiPage->load()
 function askSQL () {
+	global $THESCRIPT ;
 	global $Save , $question ;
 	$ret = "" ;
 	if ( isset ( $Save ) ) {
