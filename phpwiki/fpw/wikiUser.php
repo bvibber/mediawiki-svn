@@ -100,11 +100,12 @@ class WikiUser {
             $bgcolor = "white";
         else
             $ret .= "background: $bgcolor; ";
+	if ( $this->options[skin] == "Cologne Blue" ) $ret .= "margin: 0; " ;
         $ret .= "}\n";
         
         $ret .= ".bodytext { " . 
 		(($this->options[justify] == "yes") ? "text-align: justify; " : "") . 
-		(($this->options[skin] == "Cologne Blue") ? "font-family:verdana,times; font-size:11pt; " : "") . 
+		(($this->options[skin] == "Cologne Blue") ? "font-family:verdana,serif; font-size:11pt; margin: 0 0.5em;" : "") . 
 		"}\n";
         $ret .= "a { text-decoration: " . (($this->options[underlineLinks] == "no") ? "none" : "underline") . "; }\n";
         
