@@ -387,7 +387,7 @@ $wikiUploadDenied = "You are neither an editor nor a sysop. Return to the <a hre
 $wikiUploadDeleted = "File <b>$1</b> deleted!" ;
 $wikiUploadDelMsg1 = "*On $3, [[user:$1|$1]] deleted file '''$2'''\n" ;
 $wikiUploadDelMsg2 = "Deletion of file $1" ;
-$wikiUploadAffirm = "<nowiki>You need to affirm that the file is not violating copygights. Return to the <a href=\"$THESCRIPT?title=special:upload\">Upload page</a></nowiki>" ;
+$wikiUploadAffirm = "<nowiki>You need to affirm that the file you are uploading does not violate copygights. Return to the <a href=\"$THESCRIPT?title=special:upload\">Upload page</a></nowiki>" ;
 $wikiUploadRestrictions = "<nowiki>You have to log in to upload a file!</nowiki>" ;
 $wikiUploadFull = "Sorry, we are almost out of disk space. We can't let you upload any files right now." ;
 $wikiUploadSuccess = "File <b>$1</b> was successfully uploaded!" ;
@@ -413,7 +413,7 @@ $wikiUploadText .= "<li>A message will tell you when the file has successfully u
 $wikiUploadText .= "<li>You can upload as many files you like. Please don't try to crash our server, ha ha.</li>\n";
 $wikiUploadText .= "<li>All uploads and deletions are logged in the <a href=\"$THESCRIPT?title=Log:Uploads\">uploads log</a>.</li>\n";
 $wikiUploadText .= "</ul>\n";
-$wikiUploadAffirmText = "I hereby affirm that this file is <b>not copyrighted</b>, or that I own the copyright for this file and place it under GFDL licence." ;
+$wikiUploadAffirmText = "I hereby affirm that this file is not copyrighted, or that the copyright holder agrees to license it under the terms of the <a href="http://www.wikipedia.com/wiki/Wikipedia:Copyrights">Wikipedia copyright</a>." ;
 $wikiUploadButton = "Upload" ;
 $wikiUploadPrev = "Previously-uploaded files:" ;
 $wikiUploadSize = "Size (byte)" ;
