@@ -1,5 +1,0 @@
-swig -php4 wikiparse.i  &&  \
-flex wikilex.l  &&  \
-bison --report=all -d wikiparse.y  &&  \
-gcc `php-config --includes` -shared -o php_wikiparse.so wikiparse.tab.c parsetree.c lex.yy.c wikiparse_wrap.c  &&  \
-gcc `php-config --includes` -o wiki wikiparse.tab.c parsetree.c lex.yy.c
