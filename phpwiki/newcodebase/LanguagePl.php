@@ -321,7 +321,7 @@ include_once("utf8Case.php");
 "otherlanguages" => "Wersja",
 "redirectedfrom" => "(Przekierowano z $1)",
 "lastmodified"	=> "ostatnio zmodyfikowano o $1;",
-"viewcount"		=> "Tą stronę obejrzano $1 razy;",
+"viewcount"		=> "Tę stronę obejrzano $1 razy;",
 "gnunote" => "udostępniana jest w oparciu o licencję <a class=internal href='/wiki/GNU_FDL'>GNU FDL</a>.",
 "printsubtitle" => "(z http://pl.wikipedia.org)",
 "protectedpage" => "Strona zabezpieczona",
@@ -480,7 +480,7 @@ Jeśli zapiszesz ją wszystkie późniejsze wersje zostaną skasowane.</strong><
 "copyrightwarning" => "Proszę pamiętać o tym, że przyjmuje się, iż wszelki
 wkład do Wikipedii jest udostępniany na zasadach <i>GNU Free Documentation License</i>
 (szczegóły w $1).  <br>Jeśli nie chcesz, żeby
-Twój tekst było bezlitośnie edytowany i rozpowszechniany bez ograniczeń,
+Twój tekst był bezlitośnie edytowany i rozpowszechniany bez ograniczeń,
 nie umieszczaj go w Wikipedii.
 Niniejszym jednocześnie oświadczasz, że ten tekst jest Twoim
 dziełem lub pochodzi z materiałów dostępnych na zasadach <i>public domain</i> albo
@@ -714,7 +714,7 @@ i cokolwiek co wiesz o pliku, a wydaje Ci się ważne.",
 "revertimg"		=> "przywróć",
 "deleteimg"		=> "usuń",
 "imghistlegend" => "Legenda: (bież) = to jest obecny plik, (usuń) = usuń
-tą starszą wersję, (przywróć) = przywróć tą starszą wersję.
+tę starszą wersję, (przywróć) = przywróć tę starszą wersję.
 <br><i>Kliknij na datę aby zobaczyć jakie pliki przesłano tego dnia</i>.",
 "imagelinks"	=> "Linki do pliku",
 "linkstoimage"	=> "Oto strony odwołujące się do tego pliku:",
@@ -763,9 +763,9 @@ przekierowywać.",
 "selflinks"		=> "Strony zawierające odwołania do siebie samych",
 "selflinkstext"		=> "Poniższe strony zawierają odnośniki do samych siebie
 (co nie powinno mieć miejsca).",
-"mispeelings"           => "Strony z błędami pisowani",
+"mispeelings"           => "Strony z błędami pisowni",
 "mispeelingstext"               => "Poniższe strony zawierają najczęstsze błędy
-pisowni (ich listę można znaleźć w $1). Poprawna pisowania może być podana obok w
+pisowni (ich listę można znaleźć w $1). Poprawna pisownia może być podana obok w
 nawiasach.", 
 "mispeelingspage"       => "Lista najczęstszych błędów pisowni",
 "missinglanguagelinks"  => "Brakujące odnośniki do innych wersji językowych",
