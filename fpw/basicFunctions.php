@@ -123,14 +123,16 @@ function edit ( $title ) {
 		$ret .= "<input tabindex=3 type=checkbox name=MinorEdit $checked value=1>$wikiMinorEdit &nbsp; " ;
 	else
 		$ret .= "<input type=hidden name=MinorEdit value=0>" ;
-	$ret .= "$wikiEditHelp<br>\n" ;
-	$ret .= "$wikiCopyrightNotice<br>\n" ;
+	$ret .= "<br>$wikiCopyrightNotice<br>\n" ;
 
 	$ret .= "<input tabindex=4 type=submit value=$wikiSave name=SaveButton> \n" ;
 	$ret .= "<input tabindex=5 type=submit value=$wikiPreview name=PreviewButton>\n" ;
 	$ret .= "<input type=hidden value=\"$EditTime\" name=EditTime>\n" ;
 	$ret .= "<input type=hidden value=yes name=FromEditForm>\n" ;
-	$ret .= " <a href=\"".wikiLink($vpage->url)."\">$wikiDontSaveChanges</a></form>" ; 
+	$ret .= " <a href=\"".wikiLink($vpage->url)."\">$wikiDontSaveChanges</a>\n" ; 
+       	$ret .= " | <a href=\"".wikiLink("wikipedia:How_does_one_edit_a_page")."\">$wikiEditHelp</a>\n" ;
+	$ret .= " </form>\n" ;
+
 	if ( $editConflict ) {
 		$ret .= "<br><hr><br><b>This is the text you submitted :</b><br>\n" ;
 		$ret .= "<textarea name=NotIMPORTANT rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>$oldSubmittedText</textarea><br>\n" ;

@@ -922,7 +922,7 @@ class WikiPage extends WikiTitle {
         global $wikiMainPageTitle , $wikiArticleSubtitle , $wikiPrintable , $wikiWatch , $wikiMainPage ;
         global $user , $action , $wikiNoWatch , $wikiLogIn , $wikiLogOut , $wikiSearch ;
         global $wikiHelp , $wikiHelpLink , $wikiPreferences , $wikiLanguageNames , $wikiWhatLinksHere ;
-        global $wikiCharset , $wikiEncodingCharsets , $wikiEncodingNames , $wikiLogoFile , $wikiEditHelp ;
+        global $wikiCharset , $wikiEncodingCharsets , $wikiEncodingNames , $wikiLogoFile ;
         global $framed,  $search ;
         
         if ( isset ( $framed ) and $framed != "top" ) return "" ;
@@ -936,7 +936,6 @@ class WikiPage extends WikiTitle {
             $ret .= "<font size=\"+3\">".$t."</font>" ;
             if ( $action == "" ) {
                 $ret .= "<br>\n<br>\n<a href=\"".wikiLink("special:whatlinkshere&target=$this->url")."\">$wikiWhatLinksHere</a>" ;
-                $ret .= " | <a href=\"".wikiLink("wikipedia:How does one edit a page")."\">$wikiEditHelp</a>" ;
                 }
         } else {
             $ret .= "<font size=\"+3\"><b><u>" ;
