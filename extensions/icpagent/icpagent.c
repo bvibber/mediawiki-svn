@@ -200,8 +200,13 @@ main(int ac, char **av)
     int remotemanage=0;
     int c;
     icp_opcode opcode=ICP_HIT;
-    int d;
-    int t=5;;
+    float t=5.0;
+    int t_int;
+    int frac;
+    int tenloop = 0;
+    int slow_c = 0;
+    float step = 0;
+    float stepsum = 0;
     struct rlimit rlim;
 
     while ((c = getopt(ac,av,"dmt:p:c")) != -1) {
@@ -220,7 +225,7 @@ main(int ac, char **av)
                 daemon(1,0);
                 break;
             case 't':
-                t=atoi(optarg);
+                t=atof(optarg);
                 break;
             default:
                 fprintf(stderr, "Usage: icpagent [-d] [-t delay time] [-p port] -m\n");
@@ -240,6 +245,11 @@ main(int ac, char **av)
 	printf("Unable to bind a socket");
 	exit(-1);
     }
+    t_int = (int)t;
+    frac = 10*(t - t_int + 0.0001);
+    if(frac > 0)
+        step = 10.0 / (float)frac;
+    // printf("frac: %d, step: %f\n",frac,step);
     for (;;) {
 	bzero(&them, sizeof(them));
 	rsize = sizeof(them);
@@ -268,8 +278,24 @@ main(int ac, char **av)
                 opcode=ICP_MISS;
 	    if (t<0) 
 		    queuereply(them,ICP_MISS, url, header.reqnum,0);
-	    else
-		    queuereply(them, opcode, url, header.reqnum, t);
-	}
+            else {
+                if(tenloop == (int)stepsum || (tenloop == 9 ) && slow_c < frac) {
+                    queuereply(them, opcode, url, header.reqnum, t_int+1);
+                    ++slow_c;
+                    stepsum += step;
+                } else {
+                    queuereply(them, opcode, url, header.reqnum, t_int);
+                }
+            }
+            
+            // printf("t %d, slow_c %d, ss %f\n",tenloop,slow_c,stepstack);
+            if(tenloop == 9) {
+                tenloop = 0;
+                slow_c = 0;
+                stepsum=0;
+            } else {
+                ++tenloop;
+            }
+        }
     }
 }
