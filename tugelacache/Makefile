@@ -16,8 +16,13 @@ DBINCPATH=/usr/local/include/${DBLIB}/
 
 LDFLAGS= -L/usr/local/lib/ -L${DBLIBPATH}
 CFLAGS = -O -pipe -I/usr/local/include -I${DBINCPATH} -DDBFILE=${DBFILE}
+
+all: tugela tugela-expire
+
 tugela: dbcached.o items.o assoc.o
 	cc -o tugela ${LDFLAGS} dbcached.o items.o assoc.o ${LIBS}
 
+tugela-expire: expire.c
+	cc -o tugela-expire ${LDFLAGS} ${LIBS} ${CFLAGS} expire.c
 clean:
-	rm -f -- *.o tugela *~ *.bak *core
+	rm -f -- *.o tugela tugela-expire *~ *.bak *core
