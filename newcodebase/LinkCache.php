@@ -75,8 +75,8 @@ class LinkCache {
 
 		$conn = wfGetDB();
 		$sql = "SELECT cur_id FROM cur WHERE (cur_namespace=" .
-		  "{$ns} AND cur_title='{$t}')";
-		$res = wfQuery( $sql, $conn );
+		  "{$ns} AND cur_title='" . wfStrencode( $t ) . "')";
+		$res = wfQuery( $sql, $conn, "LinkCache::addLink" );
 
 		if ( 0 == mysql_num_rows( $res ) ) {
 			$id = 0;
