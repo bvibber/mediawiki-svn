@@ -11,6 +11,7 @@ package com.piclab.wikitest;
 
 import com.meterware.httpunit.*;
 import java.util.regex.*;
+import java.io.*;
 import org.w3c.dom.*;
 
 public class HTMLTest extends WikiTest {
@@ -65,6 +66,30 @@ protected boolean runTest() throws Exception {
 private boolean part1() throws Exception {
 	boolean result = true;
 
+	WebResponse wr = m_suite.loginAs( "Fred", "Fred" );
+	Document doc = wr.getDOM();
+	result = matchesAll( wr.getText() );
+
+	wr = setPref( "wpOpnumberheadings", null );
+	wr = setPref( "wpOphighlightbroken", "1" );
+	WikiSuite.fine( "Standard settings" );
+
+	result = part1inner();
+
+	wr = setPref( "wpOpnumberheadings", "1" );
+	WikiSuite.fine( "Numbered headings" );
+
+	result = part1inner();
+
+	wr = setPref( "wpOphighlightbroken", "1" );
+	WikiSuite.fine( "Question-mark links" );
+
+	result = part1inner();
+	return result;
+}
+
+private boolean part1inner() throws Exception {
+	boolean result = true;
 	WebResponse wr = m_suite.viewPage( "" );
 	/*
 	 * Will throw exception if not parseable:
@@ -102,6 +127,9 @@ private boolean part2() throws Exception {
 	Document doc = wr.getDOM();
 	result = matchesAll( wr.getText() );
 
+	wr = setPref( "wpOpnumberheadings", null );
+	wr = setPref( "wpOphighlightbroken", "1" );
+
 	for (int q = 0; q < 4; ++q) {
 		wr = setPref( "wpQuickbar", String.valueOf( q ) );
 		doc = wr.getDOM();
@@ -110,8 +138,6 @@ private boolean part2() throws Exception {
 
 		for (int s = 0; s < 3; ++s) {
 			wr = setPref( "wpSkin", String.valueOf( s ) );
-			doc = wr.getDOM();
-			result = matchesAll( wr.getText() );
 			WikiSuite.fine( "Set skin to " + s );
 
 			double r = Math.random();
@@ -164,7 +190,9 @@ throws Exception {
     WebForm pform = WikiSuite.getFormByName( wr, "preferences" );
 	WebRequest req = pform.getRequest( "wpSaveprefs" );
 
-	req.setParameter( name, value );
+	if ( value == null) {	req.removeParameter( name ); }
+	else {					req.setParameter( name, value ); }
+
 	return m_suite.getResponse( req );
 }
 

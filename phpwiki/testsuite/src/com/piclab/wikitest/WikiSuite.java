@@ -261,11 +261,7 @@ throws WikiSuiteFailureException {
 	url.append( "texts/" ).append( t ).append( ".txt" );
 	String text = loadFile( url.toString() );
 
-	url.setLength( 0 );
-	url.append( ms_server ).append( ms_script ).append( "?title=" )
-	  .append( t ).append( "&action=edit" );
-
-	WebResponse wr = getResponse( url.toString() );
+	WebResponse wr = editPage( title );
 	WebForm editform = null;
 
 	try {
@@ -314,6 +310,16 @@ throws org.xml.sax.SAXException {
  * Some utility functions useful for testing and comparing things.
  */
 
+public static void saveText( String text, String filename ) {
+	try {
+		PrintWriter pw = new PrintWriter( new FileOutputStream( filename ) );
+		pw.write( text );
+		pw.close();
+	} catch( IOException e ) {
+		error( "Couldn't write to \"" + filename + "\"" );
+	}
+}
+
 public static String loadFile( String fname )
 {
 	FileInputStream fis = null;
@@ -361,8 +367,19 @@ public static String loadFile( String fname )
  */
 private void initializeDatabase() {
 
-	WebResponse wr = null;
+	WebResponse wr = viewPage( "" );
+	String text = null;
 
+	try {
+		text = wr.getText();
+		if ( text.indexOf( "no text in this page" ) < 0 ) {
+			error( "Target wiki is not empty." );
+			return;
+		}
+	} catch( IOException e ) {
+		error( "Can't access target wiki." );
+		return;
+	}
 	info( "Preloading database with test pages." );
 	for (int i = 0; i < preloadedPages.length; ++i) {
 		try {

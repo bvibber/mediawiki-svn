@@ -4,7 +4,8 @@ for the Wikipedia software.  It is all in Java, using
 jars in the jars directory need to be in your classpath
 for compiling and running (it may require others as
 well depending on your JVM, but if you're a Java coder
-you know about all that).
+you know about all that). Apache's "ant" tool is used
+for building.
 
 I'm personally using generic Sun JDK 1.4 for Linux.
 
