@@ -267,8 +267,9 @@ class Article {
 
 	function submit()
 	{
-		global $wpSave;
-		$wpSave = 1;
+		global $wpSave, $wpPreview;
+		if ( ! isset( $wpPreview ) ) { $wpSave = 1; }
+
 		$this->edit();
 	}
 
