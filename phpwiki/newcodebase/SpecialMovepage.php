@@ -103,7 +103,7 @@ class MovePageForm {
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
 		  "cur_restrictions,cur_ind_title,cur_user_text,cur_is_redirect," .
-		  "cur_is_new) VALUES ({$ons},'{$odt}','#REDIRECT [[{$ndt}]]\n','" .
+		  "cur_is_new) VALUES ({$ons},'{$odt}','#REDIRECT [[{$nns}:{$ndt}]]\n','" .
 		  "{$mt} \"{$ndt}\"','" .
 		  $wgUser->getID() . "','" . date( "YmdHis" ) . "',0,0,'','" .
 		  wfStrencode( $ot->getIndexTitle() ) . "','" .
