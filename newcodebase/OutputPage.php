@@ -148,7 +148,8 @@ class OutputPage {
 
 	function checkLastModified ( $timestamp )
 	{
-		global $wgLang;
+		global $wgLang, $wgCachePages;
+		if( !$wgCachePages ) return;
 		if( !preg_match( '/MSIE (5\.5|[6-9])/', $_SERVER["HTTP_USER_AGENT"] ) ) {
 			# Mozilla and IE 5.0 have probs with our caching
 			return;
