@@ -8,10 +8,9 @@ include_once( "./rebuildLinks.inc" );
 $wgTitle = Title::newFromText( "Rebuild links script" );
 set_time_limit(0);
 
-$wgDBname			= "wikidb";
+$wgDBname			= "yaw";
 $wgDBuser			= "wikiadmin";
-$wgDBpassword		= "adminpass";
-$wgUploadDirectory	= "/usr/local/apache/htdocs/upload";
+$wgDBpassword		= "oberon";
 
 rebuildLinkTablesPass1();
 rebuildLinkTablesPass2();
