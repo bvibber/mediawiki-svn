@@ -676,7 +676,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$this->showArticle( $text, wfMsg( "newarticle" ) );
 	}
 
-	function updateArticle( $text, $summary, $minor, $watchthis, $section )
+	function updateArticle( $text, $summary, $minor, $watchthis, $section = "")
 	{
 		global $wgOut, $wgUser, $wgTitle, $wgLinkCache;
 		global $wgDBtransactions;
