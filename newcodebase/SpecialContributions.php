@@ -18,7 +18,7 @@ function wfSpecialContributions()
 	$nt->setNamespace( Namespace::getUser() );
 
 	$sk = $wgUser->getSkin();
-	$id = User::idFromName( $nt->getDBkey() );
+	$id = User::idFromName( $nt->getText() );
 
 	if ( 0 == $id ) { $ul = $nt->getText(); }
 	else {

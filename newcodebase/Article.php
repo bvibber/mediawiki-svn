@@ -592,8 +592,7 @@ enctype='application/x-www-form-urlencoded'>
 		$wgLinkCache = new LinkCache();
 		$wgOut->addWikiText( $text ); # Just to update links
 
-		$this->editUpdates( $this->getID(), $wgTitle->getPrefixedDBkey(),
-		  $text, $this->mCountAdjustment );
+		$this->editUpdates( $text );
 		$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL(),
 		  "redirect=no" ) );
 	}
@@ -1111,12 +1110,16 @@ enctype='application/x-www-form-urlencoded'>
 
 	/* private */ function viewUpdates()
 	{
-		global $wgDeferredUpdateList;
+		global $wgDeferredUpdateList, $wgTitle;
 
 		if ( 0 != $this->getID() ) {
 			$u = new ViewCountUpdate( $this->getID() );
 			array_push( $wgDeferredUpdateList, $u );
 			$u = new SiteStatsUpdate( 1, 0, 0 );
+			array_push( $wgDeferredUpdateList, $u );
+
+			$u = new UserTalkUpdate( 0, $wgTitle->getNamespace(),
+			  $wgTitle->getDBkey() );
 			array_push( $wgDeferredUpdateList, $u );
 		}
 	}
@@ -1124,9 +1127,9 @@ enctype='application/x-www-form-urlencoded'>
 	# Do standard deferred updates after page edit.
 	# Every 1000th edit, prune the recent changes table.
 
-	/* private */ function editUpdates( $id, $title, $text, $adj )
+	/* private */ function editUpdates( $text )
 	{
-		global $wgDeferredUpdateList;
+		global $wgDeferredUpdateList, $wgTitle;
 
 		wfSeedRandom();
 		if ( 0 == mt_rand( 0, 999 ) ) {
@@ -1134,12 +1137,20 @@ enctype='application/x-www-form-urlencoded'>
 			$sql = "DELETE FROM recentchanges WHERE rc_timestamp < '{$cutoff}'";
 			wfQuery( $sql );
 		}
+		$id = $this->getID();
+		$title = $wgTitle->getPrefixedDBkey();
+		$adj = $this->mCountAdjustment;
+
 		if ( 0 != $id ) {
 			$u = new LinksUpdate( $id, $title );
 			array_push( $wgDeferredUpdateList, $u );
 			$u = new SiteStatsUpdate( 0, 1, $adj );
 			array_push( $wgDeferredUpdateList, $u );
 			$u = new SearchUpdate( $id, $title, $text );
+			array_push( $wgDeferredUpdateList, $u );
+
+			$u = new UserTalkUpdate( 1, $wgTitle->getNamespace(),
+			  $wgTitle->getDBkey() );
 			array_push( $wgDeferredUpdateList, $u );
 		}
 	}
