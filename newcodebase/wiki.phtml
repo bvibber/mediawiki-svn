@@ -3,6 +3,7 @@
 #
 $wgRequestTime = microtime();
 
+session_cache_limiter( "public" );
 session_start();
 session_register( "wsUserID" );
 session_register( "wsUserName" );
