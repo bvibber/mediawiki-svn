@@ -49,8 +49,8 @@ function doSearch () {
     global $THESCRIPT ;
     global $vpage , $search , $startat , $user , $wikiRecodeInput ;
     global $wikiSearchTitle , $wikiSearchedVoid , $wikiNoSearchResult ;
-    global $allSearch ;     # contains total size of the search result
-    global $titleSearch ;     # contains size of result of query on titles
+    global $allSearch ;         # contains total size of the search result
+    global $titleSearch ;       # contains size of result of query on titles
 
     $vpage = new WikiPage ;
     $vpage->special ( $wikiSearchTitle ) ;
@@ -121,28 +121,31 @@ function doSearch () {
             $s .= "$n</td></tr></table>\n" ;
 
             # We get the part of the result we are interested in.
-            # We don't bother about which queries we actually have
-            # to ask, but we let the LIMIT clause sort this out.
+            # We don't bother the database with a query unless
+            # we really have to.
 
             $offset1 = $startat - 1;
-            $sql1 = "SELECT cur_title, cur_text
-                    FROM cur
-                    WHERE MATCH (cur_ind_title) AGAINST (\"$search\")
-                      AND cur_title NOT LIKE \"%:%\"
-                    LIMIT $offset1, $perpage" ;
-
-            $result1 = mysql_query ( $sql1 , $connection );
+            $limit1 = min ( $titleSearch, $perpage );
+            if ( $limit1 > 0 ) {
+                $sql1 = "SELECT cur_title, cur_text
+                        FROM cur
+                        WHERE MATCH (cur_ind_title) AGAINST (\"$search\")
+                            AND cur_title NOT LIKE \"%:%\"
+                        LIMIT $offset1, $limit1" ;
+                $result1 = mysql_query ( $sql1 , $connection );
+            } else $result1 = "";
 
             $offset2 = max ( $startat - $titleSearch - 1, 0 );
-            $limit2 = max ( $perpage - max( $titleSearch - $startat, 1 ) , 0 ); 
-            $sql2 = "SELECT cur_title, cur_text
-                    FROM cur
-                    WHERE MATCH (cur_text) AGAINST (\"$search\") AND
-                      NOT MATCH (cur_ind_title) AGAINST (\"$search\")
-                      AND cur_title NOT LIKE \"%:%\"
-                    LIMIT $offset2, $limit2";
-                    
-            $result2 = mysql_query ( $sql2 , $connection );
+            $limit2 = max ( $perpage - max( $titleSearch - $startat + 1, 0 ) , 0 ); 
+            if ( $limit2 > 0 ) {
+                $sql2 = "SELECT cur_title, cur_text
+                        FROM cur
+                        WHERE MATCH (cur_text) AGAINST (\"$search\") AND
+                          NOT MATCH (cur_ind_title) AGAINST (\"$search\")
+                          AND cur_title NOT LIKE \"%:%\"
+                        LIMIT $offset2, $limit2";
+                $result2 = mysql_query ( $sql2 , $connection );
+            } else $result2 = "";
             
             # to save memory (cur_text can be really big) we do no collect
             # all results in an array, but process them one by one
@@ -153,43 +156,45 @@ function doSearch () {
             $realcnt = $startat;
             $words = allWords ( $search );                              # split string into separate words
             foreach ( array ($result1, $result2) as $result ) {
-                while ( $row = mysql_fetch_object ( $result ) ) {
-                    # add extra newlines for what we also consider as paragraph delimiters
-                    $ct = preg_replace ("/(\ --\ |<p[^>]*>|<tr[^>]*>|\n[\*#:\-])/iU", "\\1\r\n\r\n", $row->cur_text ) ;
-                    $ct = preg_split ( "/\r\\n\r\\n/", $ct ) ;    # We split everything in paragraphs
-                    $par = array_shift( $ct );
-                    if ( strlen ( $par ) > 500 ) {     # if the paragraph is too big we guess the sentences
-                        $par = preg_replace ( "/(\.|!|\?)(\s+[A-Z])/U", "\\1\r\n\r\n\\2", $par) ;
-                        $lines = preg_split ( "/\r\\n\r\\n/", $par ) ;
-                        $par = array_shift( $lines ) ;       # take first sentence
-                        $ct = array_merge ( $lines, $ct ) ;  # add other sentences back to $ct
-                    }
-                    $y = searchLineDisplay( $par, $words ) ;
-                    $foundpar = false;                    
-                    foreach ( $ct as $par ) {
-                        if ( strlen ( $par ) > 500 ) {  # if the paragraph is too big we again guess the sentences
+                if ( $result ) {                                        # don't bother about result we don't have
+                    while ( $row = mysql_fetch_object ( $result ) ) {
+                        # add extra newlines for what we also consider as paragraph delimiters
+                        $ct = preg_replace ("/(\ --\ |<p[^>]*>|<tr[^>]*>|\n[\*#:\-])/iU", "\\1\r\n\r\n", $row->cur_text ) ;
+                        $ct = preg_split ( "/\r\\n\r\\n/", $ct ) ;    # We split everything in paragraphs
+                        $par = array_shift( $ct );
+                        if ( strlen ( $par ) > 500 ) {     # if the paragraph is too big we guess the sentences
                             $par = preg_replace ( "/(\.|!|\?)(\s+[A-Z])/U", "\\1\r\n\r\n\\2", $par) ;
-                            $pars = preg_split ( "/\r\\n\r\\n/", $par ) ;
-                        } else
-                            $pars = array ( $par );
-                        foreach ( $pars as $p ) {
-                            foreach ( $words as $w ) {                      # mark words of $words in $par
-                                if ( stristr( $p, $w ) ) {
-                                    $y .= "...<br>..." . searchLineDisplay( "$p\n", $words ) ;
-                                    $foundpar = 1;
-                                    break 3;
+                            $lines = preg_split ( "/\r\\n\r\\n/", $par ) ;
+                            $par = array_shift( $lines ) ;       # take first sentence
+                            $ct = array_merge ( $lines, $ct ) ;  # add other sentences back to $ct
+                        }
+                        $y = searchLineDisplay( $par, $words ) ;
+                        $foundpar = false;                    
+                        foreach ( $ct as $par ) {
+                            if ( strlen ( $par ) > 500 ) {  # if the paragraph is too big we again guess the sentences
+                                $par = preg_replace ( "/(\.|!|\?)(\s+[A-Z])/U", "\\1\r\n\r\n\\2", $par) ;
+                                $pars = preg_split ( "/\r\\n\r\\n/", $par ) ;
+                            } else
+                                $pars = array ( $par );
+                            foreach ( $pars as $p ) {
+                                foreach ( $words as $w ) {                      # mark words of $words in $par
+                                    if ( stristr( $p, $w ) ) {
+                                        $y .= "...<br>..." . searchLineDisplay( "$p\n", $words ) ;
+                                        $foundpar = 1;
+                                        break 3;
+                                    }
                                 }
                             }
                         }
+                        for ( $z = $realcnt ; strlen ( $z ) < strlen ( $allSearch ) ; $z = "0$z" ) ;
+                        $ct = $vpage->getNiceTitle ( $row->cur_title ) ;
+                        $s .= "<tr><td valign=top width=20 align=right><b>$z</b></td><td><font face=\"Helvetica,Arial\">'''[[$ct]]'''</font><br>" ;
+                        $s .= $y ;
+                        $s .= "</td></tr>" ;
+                        $realcnt++ ;
                     }
-                    for ( $z = $realcnt ; strlen ( $z ) < strlen ( $allSearch ) ; $z = "0$z" ) ;
-                    $ct = $vpage->getNiceTitle ( $row->cur_title ) ;
-                    $s .= "<tr><td valign=top width=20 align=right><b>$z</b></td><td><font face=\"Helvetica,Arial\">'''[[$ct]]'''</font><br>" ;
-                    $s .= $y ;
-                    $s .= "</td></tr>" ;
-                    $realcnt++ ;
+                    mysql_free_result ( $result ) ;                
                 }
-                mysql_free_result ( $result ) ;                
             }
             $s .= "</table>" ;
             
