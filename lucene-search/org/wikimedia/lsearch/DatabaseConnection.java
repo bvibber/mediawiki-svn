@@ -63,6 +63,15 @@ public class DatabaseConnection {
 		if (config.getString("mwsearch.dburl") == null) {
 			throw(new SQLException("You must set mwsearch.dburl in the config file. Aborting..."));
 		}
+		String driverClass = config.getString("mwsearch.driver");
+		if (driverClass != null) {
+			try {
+				Class.forName(driverClass);
+			} catch(ClassNotFoundException e) {
+				System.out.println("Couldn't load jdbc driver " +
+						driverClass + ": " + e.toString());
+			}
+		}
 		String dburl = MessageFormat.format(config.getString("mwsearch.dburl"),
 				new Object[] { config.getString("mwsearch.database.host"), dbname });
 		Connection dbconn = DriverManager.getConnection(dburl,
