@@ -62,6 +62,7 @@ function statistics () {
 	$sql = "SELECT COUNT(*) as number FROM old" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
+	$oldPages = $s->number ;
 	$p = round ( $oldPages / $totalPages , 2 ) ;
 	$ret .= "<li>".str_replace ( "$1" , "$nf1$oldPages$nf2" , str_replace ( "$2" , $p , $wikiStatOld ) )."</li>" ;
 	mysql_free_result ( $result ) ;
