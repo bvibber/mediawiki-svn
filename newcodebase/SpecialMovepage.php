@@ -139,6 +139,9 @@ class MovePageForm {
 		} else { # Target didn't exist, do normal move.
 			$this->moveToNewTitle();
 		}
+
+		$this->updateWatchlists();
+
 		$u = new SearchUpdate( $this->oldid, $this->nt->getPrefixedDBkey() );
 		$u->doUpdate();
 		$u = new SearchUpdate( $this->newid, $this->ot->getPrefixedDBkey(), "" );
