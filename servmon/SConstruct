@@ -1,0 +1,28 @@
+# Set build options here.
+#
+# Compiler
+cc = '/opt/gcc-3.4/bin/gcc'
+cxx = '/opt/gcc-3.4/bin/g++'
+
+cflags = '-O2 -g'
+cppflags = '-Iinclude'
+
+# Where things are installed to.
+prefix = '/opt/servmon'
+
+# Don't change anything below here.
+####################################
+import os
+
+bindir = prefix + '/bin'
+libdir = prefix + '/lib'
+incdir = prefix + '/include/temple'
+
+srcs = Split('servmon.cxx csmplex.cxx smthr.cxx smnet.cxx')
+env = Environment(CPPFLAGS = cppflags,
+		CCFLAGS = cflags,
+		CC = cc,
+		CXX = cxx,
+		CPPPATH = 'include')
+env.Program ('servmon', srcs, LIBS = 'pthread')
+env.Alias('install', prefix)
