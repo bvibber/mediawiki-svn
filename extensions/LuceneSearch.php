@@ -11,6 +11,9 @@
 # - it's in the 'lucene-search' module in CVS.
 ##########
 
+$wgLuceneDisableSuggestions = false;
+$wgLuceneDisableTitleMatches = false;
+
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 require_once("SearchEngine.php");
 
@@ -50,7 +53,8 @@ class LuceneSearch extends SpecialPage
 		
 	function execute($par) {
 		global $wgRequest, $wgOut, $wgTitle, $wgContLang, $wgUser,
-			$wgLuceneCSSPath, $wgLSuseold, $wgOutputEncoding;
+			$wgLuceneCSSPath, $wgLSuseold, $wgOutputEncoding,
+			$wgLuceneDisableTitleMatches, $wgLuceneDisableSuggestions;
 
 		$this->setHeaders();
 
@@ -82,7 +86,8 @@ class LuceneSearch extends SpecialPage
 			wfAbruptExit();
 		}
 
-		$wgOut->addHTML($this->makeSuggestJS());
+		if (!$wgLuceneDisableSuggestions)
+			$wgOut->addHTML($this->makeSuggestJS());
 		$wgOut->addLink(array(
 			"rel" => "stylesheet",
 			"type" => "text/css",
@@ -94,7 +99,7 @@ class LuceneSearch extends SpecialPage
 		$wgOut->addWikiText(wfMsg('searchresulttext'));
 		$wgOut->addHTML($this->showShortDialog($q));
 
-		if ($q !== false && strlen($q) > 1) {
+		if ($q !== false && strlen($q) > 0) {
 			if (!($wgRequest->getText('fulltext'))) {
 				$t = SearchEngine::getNearMatch($q);
 				if(!is_null($t)) {
@@ -141,7 +146,7 @@ class LuceneSearch extends SpecialPage
 			$wgOut->addHTML("<div style='text-align: center'>".$o."</div>");
 
 			$nmtext = "";
-			if ($offset == 0) {
+			if ($offset == 0 && !$wgLuceneDisableTitleMatches) {
 				$titles = $this->doTitleMatches($q);
 				if (count($titles) > 0) {
 					$sk =& $wgUser->getSkin();
@@ -238,7 +243,7 @@ class LuceneSearch extends SpecialPage
 
 		$rev = $wgLSuseold ? new Article($t) : Revision::newFromTitle($t);
 		if ($rev === null)
-			return "<b>Broken link in search results: ".$t->getDBKey()."</b>";
+			return "<!--Broken link in search results: ".$t->getDBKey()."-->\n";
 		
 		$text = $wgLSuseold ? $rev->getContent(false) : $rev->getText();
                 $size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024), str_word_count($text));
@@ -310,11 +315,13 @@ class LuceneSearch extends SpecialPage
 		wfDebug("title prefix search: $query\n");
 		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
+		$query = iconv($wgOutputEncoding, "UTF-8", $query);
 		socket_write($sock, "TITLEPREFIX\n" . urlencode($query) . "\n");
 		$results = array();
 		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE
                        && count($results) <= $limit) {
 			$result = chop($result);
+			$result = iconv("UTF-8", $wgOutputEncoding, $result);
 			wfdebug("result: $result\n");
 			list($score, $namespace, $title) = split(" ", $result);
 			if (!in_array($namespace, $this->namespaces)) {
@@ -333,10 +340,12 @@ class LuceneSearch extends SpecialPage
 		global $wgLuceneHost, $wgLucenePort;
 		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
+		$query = iconv($wgOutputEncoding, "UTF-8", $query);
 		socket_write($sock, "TITLEMATCH\n" . urlencode($query) . "\n");
 		$results = array();
 		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE) {
 			$result = chop($result);
+			$result = iconv("UTF-8", $wgOutputEncoding, $result);
 			list($score, $namespace, $title) = split(" ", $result);
 			if (!in_array($namespace, $this->namespaces)) {
 				continue;
@@ -354,6 +363,7 @@ class LuceneSearch extends SpecialPage
 		global $wgLuceneHost, $wgLucenePort;
 		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
+		$query = iconv($wgOutputEncoding, "UTF-8", $query);
 		socket_write($sock, "SEARCH\n" . urlencode($query) . "\n");
 		$results = array();
 
@@ -372,6 +382,7 @@ class LuceneSearch extends SpecialPage
 		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE
 		       && count($results) <= $max) {
 			$result = chop($result);
+			$result = iconv("UTF-8", $wgOutputEncoding, $result);
 			list($score, $namespace, $title) = split(" ", $result);
 			wfdebug("result: $namespace $title\n");
 			if (!in_array($namespace, $this->namespaces)) {
@@ -506,7 +517,7 @@ function resultType()
     if (searchCache[searchStr.toLowerCase()])
       showResults(searchCache[searchStr.toLowerCase()])
     else
-      searchTimeout = setTimeout(getResults, 0);
+      searchTimeout = setTimeout(getResults, 500);
   }
   else
   {
