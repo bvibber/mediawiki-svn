@@ -50,7 +50,7 @@ class Skin {
 
 		$ns = Namespace::getName( $wgTitle->getNamespace() );
 
-		if ( "" != $ns && key_exists( $ns, $wgNamespaceBackgrounds ) ) {
+		if ( "" != $ns && array_key_exists( $ns, $wgNamespaceBackgrounds ) ) {
 			return array( "bgcolor" => $wgNamespaceBackgrounds[$ns] );
 		}
 		else return array( "bgcolor" => "#ffffff" );

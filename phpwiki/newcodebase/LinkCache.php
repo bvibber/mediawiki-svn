@@ -14,7 +14,7 @@ class LinkCache {
 
 	function getGoodLinkID( $title )
 	{
-		if ( key_exists( $title, $this->mGoodLinks ) ) {
+		if ( array_key_exists( $title, $this->mGoodLinks ) ) {
 			return $this->mGoodLinks[$title];
 		} else {
 			return 0;
