@@ -71,6 +71,7 @@ function isBlockedIP () {
 # Auto-wikification
 function wikify ( $s ) {
 	global $title , $vpage ;
+	$nt = $vpage->getNiceTitle ( $title ) ;
 
 	# Fixing <nowiki> and <pre> tags first
         $s = str_replace ( "<pre>" , "<pre><nowiki>" , $s ) ;
@@ -101,12 +102,20 @@ function wikify ( $s ) {
 	$s = eregi_replace ( "<i>" , "''" , $s ) ;
 	$s = eregi_replace ( "</i>" , "''" , $s ) ;
 
+	# Bold title (only if title appears in first line *and* if there's not already a bold tag in the first line)
+	$a = explode ( "\n" , $s , 2 ) ;
+	if ( stristr ( $a[0] , $nt ) and strstr ( $a[0] , "'''" ) === false ) {
+		$a[0] = eregi_replace ( $nt , "'''$nt'''" , $a[0] ) ;
+		$s = implode ( "\n" , $a ) ;
+		}
+
 	# Link magic
-	$talkPage = $vpage->getNiceTitle ( $title ) ;
+	$talkPage = $nt ;
 	if ( count ( explode ( ":" , $talkPage ) ) > 1 ) $talkPage = str_replace ( ":" , " Talk:" , $talkPage ) ;
 	else $talkPage = "Talk:$talkPage" ;
 
 	$a = explode ( "[[" , " $s" ) ;
+	$l = array () ;
 	$s = substr ( array_shift ( $a ) , 1 ) ;
 	foreach ( $a as $x ) {
 		$b = explode ( "]]" , $x , 2 ) ;
@@ -118,16 +127,19 @@ function wikify ( $s ) {
 			$c = explode ( "|" , $b[0] , 2 ) ;
 			if ( count ( $c ) == 1 ) {
 				if ( $c[0] == $title ) $s .= $c[0].$b[1] ; # Removing self-link
+				else if ( in_array ( ucfirst($c[0]) , $l ) ) $s .= $c[0].$b[1] ; # Removing double link
 				else if ( $vpage->getNiceTitle ( $c[0] ) == $talkPage ) # Remove own talk page
 					$s .= $b[1] ;
 				else $s .= "[[".$c[0]."]]".$b[1] ;
 			} else {
 				if ( ucfirst ( $c[0] ) == ucfirst ( substr ( $c[1] , 0 , strlen ( $c[0] ) ) ) ) # [[test|tests]] -> [[test]]s
 					$s .= "[[".substr ( $c[1] , 0 , strlen ( $c[0] ) )."]]".substr ( $c[1] , strlen ( $c[0] ) ).$b[1] ;
+				else if ( in_array ( ucfirst($c[0]) , $l ) ) $s .= $c[1].$b[1] ; # Removing double link
 				else if ( $vpage->getNiceTitle ( $c[0] ) == $talkPage ) # Remove own talk page
 					$s .= $b[1] ;
 				else $s .= "[[".$c[0]."|".$c[1]."]]".$b[1] ;
 				}
+			if ( !in_array ( ucfirst($c[0]) , $l ) ) array_push ( $l , ucfirst($c[0]) ) ;
 			}
 		}
 
