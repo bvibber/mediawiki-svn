@@ -5,7 +5,8 @@
 
 typedef enum NodeType {
     Article, Paragraph, Heading, TextBlock, TextToken, ExtensionToken,
-    Newlines, PreBlock, PreLine, Bold, Italics,
+    Newlines, PreBlock, PreLine, Bold, Italics, LinkEtc, LinkTarget,
+    LinkOption,
 
     /* After first parse */
     ListBlock, ListLine, ListBullet, ListNumbered,
@@ -42,6 +43,7 @@ Node newNodeS (NodeType newType, char* data);
 Node newNodeE (NodeType newType, ExtensionData data);
 
 Node nodeAddChild (Node node, Node child);
+#define nodeAddChild2(a,b,c) nodeAddChild (nodeAddChild (a, b), c)
 Node nodePrependChild (Node node, Node child);
 
 /* Parameter must be a ListBlock node. Returns a List node. */
@@ -64,9 +66,6 @@ Node makeTextBlock (Node a, Node b);
  * <italics>X<italics>Y</italics>Z</italics> into
  * <italics>X</italics>Y<italics>Z</italics>. Returns node. */
 Node processNestedItalics (Node node);
-
-DataType dataStr (char* arg);
-DataType dataNum (int arg);
 
 ExtensionData newExtensionData (char* name, char* text);
 

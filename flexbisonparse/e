@@ -1,1 +1,1 @@
-flex wikilex.l  &&  bison -d wikiparse.y  &&  gcc -o wiki wikiparse.tab.c parsetree.c lex.yy.c
+flex wikilex.l  &&  bison --report=all -d wikiparse.y  &&  gcc -o wiki wikiparse.tab.c parsetree.c lex.yy.c

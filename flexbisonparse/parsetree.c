@@ -87,9 +87,6 @@ ExtensionData newExtensionData (char *name, char *text)
     return ed;
 }
 
-DataType dataStr (char* arg) { DataType result; result.str = arg; return result; }
-DataType dataNum (int arg)   { DataType result; result.num = arg; return result; }
-
 void removeAndFreeFirstChild (Node node)
 {
     Node child = node->firstChild;
@@ -429,15 +426,19 @@ void outputNode (Node node)
 
     rname =
         node->type == TextBlock     ? 0 /* don't output tags for this, just the text */ :
-        node->type == Heading       ? 0 /* outputXML already does this one */ :
-        node->type == List          ? 0 /* outputXML already does this one */ :
-        node->type == Article       ? "article" :
-        node->type == Paragraph     ? "paragraph" :
-        node->type == PreBlock      ? "preblock" :
-        node->type == PreLine       ? "preline" :
-        node->type == ListItem      ? "listitem" :
-        node->type == Bold          ? "bold" :
-        node->type == Italics       ? "italics" :
+        node->type == Heading       ? 0 /* outputXML already does this one; it may have attributes */ :
+        node->type == List          ? 0 /* outputXML already does this one; it may have attributes */ :
+        node->type == LinkEtc       ? 0 /* outputXML already does this one; it may have attributes */ :
+
+        node->type == LinkTarget    ? "linktarget"  :
+        node->type == LinkOption    ? "linkoption"  :
+        node->type == Article       ? "article"     :
+        node->type == Paragraph     ? "paragraph"   :
+        node->type == PreBlock      ? "preblock"    :
+        node->type == PreLine       ? "preline"     :
+        node->type == ListItem      ? "listitem"    :
+        node->type == Bold          ? "bold"        :
+        node->type == Italics       ? "italics"     :
         /* Fallback value */
         (sprintf (defaultname, "type%dnode", node->type), defaultname);
 
@@ -478,11 +479,20 @@ void outputXML (Node node)
             break;
 
         case List:
-            printf ("<list%s>",
-                node->data.num == 1 ? " type='bullet'" :
-                node->data.num == 2 ? " type='numbered'" : "");
+            printf (node->data.num == 1 ? "<list type='bullet'>"   :
+                    node->data.num == 2 ? "<list type='numbered'>" :
+                                          "<list>");
             outputNode (node);
             printf ("</list>");
+            break;
+
+        case LinkEtc:
+            printf ("<link");
+            if (node->data.num & 1) printf (" emptypipeatend='yes'");
+            if (node->data.num & 2) printf (" forcedlink='yes'");
+            printf (">");
+            outputNode (node);
+            printf ("</link>");
             break;
 
         default:

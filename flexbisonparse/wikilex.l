@@ -10,7 +10,7 @@
 
 int yywrap(void) { return 1; }
 
-/* Change this line to "#define debuglex printf" to output the token stream */
+/* Change these lines to "#define debuglex[2] printf" to output the token stream */
 #define debuglex(x)
 #define debuglex2(x,y)
 
@@ -94,7 +94,6 @@ int yywrap(void) { return 1; }
                                     return HEADING;
                                 }
 <canbeheading>"="+" "*          {
-                                    yylval.num = strlen (yytext);
                                     yylval.num = 0;
                                     while (yytext [ yylval.num ] == '=')
                                         yylval.num++;
