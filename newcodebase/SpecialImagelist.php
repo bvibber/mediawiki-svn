@@ -98,7 +98,7 @@ function wfSpecialImagelist()
 		$l = "(" .
 		  $sk->makeKnownLink( "Image:{$name}", wfMsg( "imgdesc" ) ) .
 		  ") {$ilink} . . {$nb} . . {$ul} . . " .
-		  $wgLang->timeanddate( $s->img_timestamp );
+		  $wgLang->timeanddate( $s->img_timestamp, true );
 
 		if ( "" != $s->img_description ) {
 			$l .= " <em>({$s->img_description})</em>";

@@ -367,6 +367,11 @@ to set user preferences.",
 "contextchars"	=> "Characters of context per line",
 "recentchangescount" => "Number of titles in recent changes",
 "savedprefs"	=> "Your preferences have been saved.",
+"timezonetext"	=> "Enter number of hours your local time differs
+from server (U.S. Pacific) time.
+For example, for U.S. East coast, enter \"3\".",
+"localtime"	=> "Local time",
+"timezoneoffset" => "Offset",
 
 # Recent changes
 #
@@ -695,23 +700,42 @@ class Language {
 		return $wgWeekdayNamesEn[$key-1];
 	}
 
-	function date( $ts )
+	function userAdjust( $ts )
 	{
+		global $wgUser;
+
+		$diff = $wgUser->getOption( "timecorrection" );
+		if ( ! $diff ) { $diff = 0; }
+		if ( 0 == $diff ) { return $ts; }
+
+		$t = mktime( ( (int)substr( $ts, 8, 2) ) + $diff,
+		  (int)substr( $ts, 10, 2 ), (int)substr( $ts, 12, 2 ),
+		  (int)substr( $ts, 4, 2 ), (int)substr( $ts, 6, 2 ),
+		  (int)substr( $ts, 0, 4 ) );
+		return date( "YmdHis", $t );
+	}
+ 
+	function date( $ts, $adj = false )
+	{
+		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
+
 		$d = $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
 		  " " . (0 + substr( $ts, 6, 2 )) . ", " .
 		  substr( $ts, 0, 4 );
 		return $d;
 	}
 
-	function time( $ts )
+	function time( $ts, $adj = false )
 	{
+		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
+
 		$t = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
 		return $t;
 	}
 
-	function timeanddate( $ts )
+	function timeanddate( $ts, $adj = false )
 	{
-		return $this->time( $ts ) . " " . $this->date( $ts );
+		return $this->time( $ts, $adj ) . " " . $this->date( $ts, $adj );
 	}
 
 	function rfc1123( $ts )

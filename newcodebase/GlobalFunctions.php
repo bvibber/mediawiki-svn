@@ -328,7 +328,7 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 	if ( 0 == $uid ) { $ul = $ut; }
 	else { $ul = "[[User:{$ut}|{$ut}]]"; }
 
-	$d = $wgLang->timeanddate( date( "YmdHis" ) );
+	$d = $wgLang->timeanddate( date( "YmdHis" ), false );
 	if ( "" == $desc ) { $com = ""; }
 	else { $com = " <em>({$desc})</em>"; }
 

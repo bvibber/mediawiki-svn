@@ -393,8 +393,7 @@ class Skin {
 	{
 		global $wgLang, $wgArticle;
 
-		$d = $wgLang->timeanddate( $wgArticle->getTimestamp() ) .
-		  " (" . date( "T" ) . ")";
+		$d = $wgLang->timeanddate( $wgArticle->getTimestamp(), true );
 		$s = " " . str_replace( "$1", $d, wfMsg( "lastmodified" ) );
 		return $s;
 	}
@@ -937,7 +936,7 @@ class Skin {
 		} else {
 			$ret = "";
 		}
-		$dt = $wgLang->timeanddate( $ts );
+		$dt = $wgLang->timeanddate( $ts, true );
 
 		if ( $oid ) { $q = "oldid={$oid}"; }
 		else { $q = ""; }
@@ -976,7 +975,7 @@ class Skin {
 			$s .= "<h4>{$d}</h4>\n<ul>";
 			$this->lastdate = $d;
 		}
-		$h = $wgLang->time( $ts );
+		$h = $wgLang->time( $ts, true );
 		$t = Title::makeName( $ns, $ttl );
 		$clink = $this->makeKnownLink( $t, "" );
 		$nt = Title::newFromText( $t );
@@ -1018,7 +1017,7 @@ class Skin {
 	{
 		global $wgUser, $wgLang, $wgTitle;
 
-		$dt = $wgLang->timeanddate( $ts );
+		$dt = $wgLang->timeanddate( $ts, true );
 		$del = wfMsg( "deleteimg" );
 		$cur = wfMsg( "cur" );
 
