@@ -1,4 +1,4 @@
-/* $Header$ */
+/* @(#) $Header$ */
 #ifndef SM_SMIRC_HXX_INCLUDED_
 #define SM_SMIRC_HXX_INCLUDED_
 

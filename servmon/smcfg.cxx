@@ -1,3 +1,4 @@
+/* @(#) $Header$ */
 #include "smstdinc.hxx"
 #include "smcfg.hxx"
 

@@ -1,4 +1,4 @@
-/* $Header$ */
+/* @(#) $Header$ */
 #ifndef SM_SMTRM_HXX_INCLUDED_
 #define SM_SMTRM_HXX_INCLUDED_
 

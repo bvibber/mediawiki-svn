@@ -1,7 +1,9 @@
+/* @(#) $Header$ */
 #ifndef SM_SMUTL_HXX_INCLUDED_
 #define SM_SMUTL_HXX_INCLUDED_
 
-#include "smutl.hxx"
+typedef std::string const& str;
+typedef std::string& strr;
 
 namespace smutl {
 
@@ -19,7 +21,7 @@ template<class T>
 T* singleton<T>::mT = 0;
 
 std::string car(std::string&);
-
+std::vector<std::string> snarf(str);
 } // namespace smutl
 
 template<class T>
@@ -27,9 +29,6 @@ T* sminstance(void) {
 	return T::instance();
 }
 #define SMI(x) ::sminstance< x >()
-
-typedef std::string const& str;
-typedef std::string& strr;
 
 #define FE_TC_AS(T, c, i) for(T::iterator i = c.begin(), i ## _end = c.end(); i != i ## _end; ++i)
 

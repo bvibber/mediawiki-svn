@@ -1,3 +1,4 @@
+/* @(#) $Header$ */
 #include "smtmr.hxx"
 
 void smtmr::evthdlr::install(evtp e) {

@@ -1,3 +1,4 @@
+/* @(#) $Header$ */
 #ifndef SM_SMSTDINC_HXX_INCLUDED_
 #define SM_SMSTDINC_HXX_INCLUDED_
 

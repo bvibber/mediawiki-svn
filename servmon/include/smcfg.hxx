@@ -1,3 +1,4 @@
+/* @(#) $Header$ */
 #ifndef SM_CFG_HXX_INCLUDED_
 #define SM_CFG_HXX_INCLUDED_
 

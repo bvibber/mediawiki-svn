@@ -1,3 +1,4 @@
+/* @(#) $Header$ */
 #ifndef SM_SMMON_HXX_INCLUDED_
 #define SM_SMMON_HXX_INCLUDED_
 
@@ -36,12 +37,18 @@ public:
 	void create_server(str serv, str type, bool addconf = true);
 
 	struct server {
-		server(str name_) : name(name_) {}
+		server(str name_) : name(name_), state(state_unknown) {}
 		virtual std::string type(void) const = 0;
 		virtual void check(void) = 0;
 		virtual std::string fmt4irc(void) const = 0;
 		virtual ~server() {}
 		std::string name;
+		enum state_t { state_up, state_down, state_unknown };
+		state_t state;
+		bool is(state_t s) const;
+		void markup(void);
+		void markdown(void);
+		static std::string statestring(state_t s);
 	};
 	typedef b::shared_ptr<server> serverp;
 	struct squidserver : public server {
@@ -87,6 +94,9 @@ public:
 		b::try_mutex chk_m;
 		virtual ~checker() {}
 	};
+
+        void state_transition(str serv, server::state_t oldstate, server::state_t newstate);
+	
 private:
 	server* server_fortype(str type, str name);
 	std::map<std::string, serverp> serverlist;

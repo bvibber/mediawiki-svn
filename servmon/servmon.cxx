@@ -1,4 +1,4 @@
-/* $Header$ */
+/* @(#) $Header$ */
 #include "smstdinc.hxx"
 #include "smcsmplex.hxx"
 #include "smthr.hxx"

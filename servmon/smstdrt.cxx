@@ -1,4 +1,4 @@
-/* $Header$ */
+/* @(#) $Header$ */
 #define HDL(x) struct x : handler<tt>
 #define EX bool execute(comdat<tt> const& cd)
 

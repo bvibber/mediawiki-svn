@@ -1,3 +1,4 @@
+/* @(#) $Header$ */
 #include "smstdinc.hxx"
 #include "smutl.hxx"
 #include "smmon.hxx"
@@ -123,8 +124,14 @@ public:
 	resultset query(str query) {
 		if (!connected) connect();
 		int ret = mysql_real_query(&connection, query.c_str(), query.size());
-		if (ret) throw mysqlerr(mysql_error(&connection));
+		if (ret) {
+			connected = false;
+			std::string error = mysql_error(&connection);
+			mysql_close(&connection);
+			throw mysqlerr(error);
+		}
 		MYSQL_RES *res = mysql_store_result(&connection);
+		if (!res) return resultset();
 		MYSQL_ROW mr;
 		MYSQL_FIELD *fields = mysql_fetch_fields(res);
 		resultset resset;
@@ -222,7 +229,7 @@ cfg::checker::start(void)
 		chk1();
 
 		/* IRC report */
-		std::string rep;
+		std::string mysqlrep, squidrep;
 		b::try_mutex::scoped_lock m (chk_m);
 		std::map<std::string, serverp>& serverlist = SMI(cfg)->servers();
 
@@ -240,13 +247,13 @@ cfg::checker::start(void)
 			mastername = SMI(smcfg::cfg)->fetchstr("/monit/mysql/master");
 			std::map<std::string,std::string>::iterator it = mysqlreps.find(mastername);
 			if (it != mysqlreps.end()) {
-				rep += it->second;
+				mysqlrep += it->second;
 				mysqlreps.erase(it);
 			}
 		} catch (smcfg::nokey&) {}
 		for(std::map<std::string,std::string>::iterator it = mysqlreps.begin(),
 			    end = mysqlreps.end(); it != end; ++it) {
-			rep += it->second;
+			mysqlrep += it->second;
 		}
 	       
 		/* squids */
@@ -255,8 +262,8 @@ cfg::checker::start(void)
 			    it = serverlist.begin(), end = serverlist.end(); it != end; ++it) {
 			if (it->second->type() != "Squid") continue;
 			b::shared_ptr<squidserver> s = b::dynamic_pointer_cast<squidserver>(it->second);
-			rep += "\002" + it->first + "\002: ";
-			rep += s->fmt4irc() + " ";
+			squidrep += "\002" + it->first + "\002: ";
+			squidrep += s->fmt4irc() + " ";
 			squidreqs += s->rpsv;
 			squidhits += s->hpsv;
 		}
@@ -264,15 +271,63 @@ cfg::checker::start(void)
 		if (squidhits && squidreqs)
 			squidperc = (float(squidhits)/squidreqs)*100;
 		else squidperc = 0;
-		rep += b::io::str(b::format("\002total:\002 \00311%d\003/\00303%d\003/\0036%.02f%%\003") % squidreqs % squidhits % squidperc);
+		squidrep += b::io::str(b::format("\002total:\002 \00311%d\003/\00303%d\003/\0036%.02f%%\003") % squidreqs % squidhits % squidperc);
 
 		std::time_t now = std::time(0);
 		if ((now - ircinterval) > lastirc) {
-			SMI(smirc::cfg)->conn()->msg(3, rep);
+			SMI(smirc::cfg)->conn()->msg(3, "\002mysql\002: " + mysqlrep);
+			SMI(smirc::cfg)->conn()->msg(3, "\002squid\002: " + squidrep);
 			lastirc = now;
 		}
 		
 	}
+}
+
+bool
+cfg::server::is(cfg::server::state_t s) const
+{
+	return state == s;
+}
+
+void
+cfg::server::markup(void)
+{
+	if (state != state_unknown && state != state_up)
+		SMI(cfg)->state_transition(name, state_down, state_up);
+	state = state_up;
+}
+
+void
+cfg::server::markdown(void)
+{
+	if (state != state_unknown && state != state_down)
+		SMI(cfg)->state_transition(name, state_up, state_down);
+	state = state_down;
+}
+
+std::string
+cfg::server::statestring(state_t s)
+{
+	switch (s) {
+	case state_up:
+		return "UP"; break;
+	case state_down:
+		return "DOWN"; break;
+	case state_unknown:
+		return "UNKNOWN"; break;
+	default:
+		return "<unknown state>"; break;
+	}
+}
+
+void
+cfg::state_transition(str serv, cfg::server::state_t oldstate, cfg::server::state_t newstate)
+{
+	std::string oldstatename = server::statestring(oldstate),
+		newstatename = server::statestring(newstate);
+	std::string s = b::io::str(b::format("%% State transition for host \002%s\002: old state \002%s\002, new state \002%s\002")
+				   % serv % oldstatename % newstatename);
+	SMI(smirc::cfg)->conn()->msg(10, s);
 }
 
 void
@@ -283,8 +338,10 @@ cfg::squidserver::check(void) {
 		requests = b::any_cast<uint32_t>(c.getoid("1.3.6.1.4.1.3495.1.3.2.1.1"));
 		hits = b::any_cast<uint32_t>(c.getoid("1.3.6.1.4.1.3495.1.3.2.1.2"));
 	} catch (b::bad_any_cast&) {
+		markdown();
 		return;
 	}
+	markup();
 	rpsv = rps.val(requests);
 	hpsv = hps.val(hits);
 }
@@ -306,7 +363,11 @@ cfg::mysqlserver::getqueries(void)
 				queries = 0;
 			}
 		}
-	} catch (mysqlerr&) { queries = 0; }
+	} catch (mysqlerr&) {
+		markdown();
+		return 0;
+	}
+	markup();
 	return queries;
 }
 
@@ -325,6 +386,7 @@ cfg::mysqlserver::getnumprocesses(void)
 		res = client->query("SHOW PROCESSLIST");
 	} catch (mysqlerr& e) {
 		std::cerr << "mysql connection error: " << e.what() << "\n";
+		markdown();
 		return 0;
 	}
 	int numproc = 0;
@@ -332,6 +394,7 @@ cfg::mysqlserver::getnumprocesses(void)
 		if ((res[i]["User"] != "repl" && res[i]["User"] != "system user") && res[i]["Command"] != "Sleep")
 			numproc++;
 	}
+	markup();
 	return numproc;
 }
 			
@@ -374,8 +437,10 @@ cfg::mysqlserver::getmypos(void)
 		r = client->query("SELECT MAX(rc_timestamp) AS ts FROM enwiki.recentchanges");
 	} catch (mysqlerr& e) {
 		std::cerr << "mysql error: " << e.what() << "\n";
+		markdown();
 		return 0;
 	}
+	markup();
 	if (r.size() < 1) return 0;
 	return b::lexical_cast<uint64_t>(r[0]["ts"]);
 }
@@ -385,13 +450,15 @@ cfg::mysqlserver::getreplag(void)
 {
 	uint64_t masterpos = getmasterpos(), mypos = getmypos();
 	std::cerr << "master pos: " << masterpos << " mypos: " << mypos;
-	if (!masterpos || !mypos) return -1;
+	if (!masterpos || !mypos) return 0;
 	return masterpos - mypos;
 }
 	
 std::string
 cfg::mysqlserver::fmt4irc(void) const
 {
+        if (is(state_down))
+		return "\0034down\003";      
 	std::string rep = b::io::str(b::format("\00311%d\003/\00303%d\003") % procv % qpsv);
 	try {
 		if (SMI(smcfg::cfg)->fetchstr("/monit/mysql/master") != name) {
@@ -404,6 +471,8 @@ cfg::mysqlserver::fmt4irc(void) const
 std::string
 cfg::squidserver::fmt4irc(void) const
 {
+	if (is(state_down))
+		return "\0034down\003";
 	float perc;
 	if (rpsv && hpsv)
 		perc = (float(hpsv)/rpsv)*100;

@@ -1,3 +1,4 @@
+/* @(#) $Header$ */
 #ifndef SM_SMCSMPLEX_HXX_INCLUDED_
 #define SM_SMCSMPLEX_HXX_INCLUDED_
 
