@@ -41,6 +41,37 @@ uint *TParser::parse_internal_link ( uint *c , TUCS &s , TUCS &t )
     return d ;
     }
     
+bool TParser::parse_external_link ( TUCS &s )
+    {
+    uint a , b , c ;
+    for ( a = 0 ; a + 5 < s.length() ; a++ )
+        {
+        if ( s[a] == '[' )
+           {
+           if ( s[a+4] == ':' || s[a+5] == ':' )
+              {
+              c = 0 ;
+              for ( b = a ; b < s.length() && ( s[b] != ']' && s[a] != '\n' ) ; b++ )
+                 if ( s[b] == ' ' && c == 0 )
+                    c = b ;
+              if ( b < s.length() && s[b] == ']' )
+                 {
+                 TUCS text , link ;
+                 if ( c == 0 )
+                    {
+                    text = s.substr ( a+1 , b-a-1 ) ;
+                    c = b ;
+                    }
+                 else text = s.substr ( c+1 , b - c - 1 ) ;
+                 link = s.substr ( a+1 , c-a-1 ) ;
+                 link = "<a class=external href=\"" + link + "\">" + text + "</a>" ;
+                 s.modify ( a , b-a+1 , link ) ;
+                 }
+              }
+           }
+        }
+    }
+    
 bool TParser::parse_internal_link ( TUCS &s )
     {
     uint a , b , c ;
@@ -90,6 +121,7 @@ void TParser::parse_links ( TUCS &s )
         if ( !parse_internal_link ( v[a] ) ) s += "[[" ;
         s += v[a] ;
         }
+    parse_external_link ( s ) ;
     }
     
 // This will convert the ---- markup into <hr>
