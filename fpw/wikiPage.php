@@ -133,14 +133,16 @@ class WikiPage extends WikiTitle {
 			if ( count($b) < 2 ) $s .= "Illegal link : ?$b[0]?" ;
 			else {
 				$c = explode ( "|" , $b[0] , 2 ) ;
-				if ( count ( $c ) == 1 ) array_push ( $c , $c[0] ) ;
 				$link = $c[0] ;
-				$text = $c[1] ;
 
 				$topic = new WikiTitle ;
 				$topic->setTitle ( $link ) ;
 				$link = $this->getLinkTo ( $topic ) ;
 				$topic->setTitle ( $link ) ;
+
+				if ( count ( $c ) == 1 ) array_push ( $c , $topic->getNiceTitle($topic->secureTitle) ) ;
+				$text = $c[1] ;
+
 
 				if ( $topic->doesTopicExist() ) {
 					$linkedLinks[$topic->secureTitle]++ ;
@@ -206,7 +208,7 @@ class WikiPage extends WikiTitle {
 	function replaceVariables ( $s ) {
 		$var=date("m"); $s = str_replace ( "{{{CURRENTMONTH}}}" , $var , $s ) ;
 		$var=date("F"); $s = str_replace ( "{{{CURRENTMONTHNAME}}}" , $var , $s ) ;
-		$var=date("d"); $s = str_replace ( "{{{CURRENTDAY}}}" , $var , $s ) ;
+		$var=date("j"); $s = str_replace ( "{{{CURRENTDAY}}}" , $var , $s ) ;
 		$var=date("l"); $s = str_replace ( "{{{CURRENTDAYNAME}}}" , $var , $s ) ;
 		$var=date("Y"); $s = str_replace ( "{{{CURRENTYEAR}}}" , $var , $s ) ;
 		if ( strstr ( $s , "{{{NUMBEROFARTICLES}}}" ) ) {
@@ -250,7 +252,11 @@ class WikiPage extends WikiTitle {
 		foreach ( $a as $x ) {
 			$b = spliti ( "</nowiki>" , $x , 2 ) ;
 			$s .= $b[0] ;
-			if ( count ( $b ) == 2 ) $s .= $this->subParseContents ( $b[1] ) ;
+			if ( count ( $b ) == 2 ) {
+				$sub = $this->subParseContents ( $b[1] ) ;
+				$sub = substr ( strstr ( $sub , ">" ) , 1 ) ;
+				$s .= $sub ;
+				}
 			}
 		return $s ;
 		}
@@ -361,7 +367,7 @@ class WikiPage extends WikiTitle {
 		}
 	function getHeader () {
 		global $user , $action ;
-		$t = $this->title ;
+		$t = $this->getNiceTitle ( $this->title ) ;
 		if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirst ( $t ) ;
 		$ret = "<table ".$user->options["quickBarBackground"]." width=100% border=1 frame=below rules=none bordercolor=black cellspacing=0>\n<tr>" ;
 		if ( $user->options["leftImage"] != "" )
@@ -406,6 +412,8 @@ class WikiPage extends WikiTitle {
 		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:WantedPages\">Most wanted</a>" ;
 		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:AllPages\">All pages</a>" ;
 		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:RandomPage\">Random Page</a>" ;
+		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:ShortPages\">Stub articles</a>" ;
+		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:ListUsers\">List users</a>" ;
 		if ( $user->isLoggedIn ) {
 			$column .= "<br>\n<a href=\"$PHP_SELF?title=special:WatchList\">My watchlist</a>" ;
 			}

@@ -7,13 +7,19 @@ include ( "./wikiUser.php" ) ;
 
 # Main program
 	global $action , $title , $pageTitle ;
-	global $user , $search ;
+	global $user , $search , $expiration ;
+	$expiration = time()+315360000 ; # Cookies set will expire in ten years from now
 	$pageTitle = "" ;
 	$user = new WikiUser ;
 	$user->scanCookies () ;
 	if ( $action == "" ) $action = "view" ;
 	if ( $title == "" ) $title = "HomePage" ;
 	
+	$theTitle = new wikiTitle ;
+	$theTitle->title = urldecode ( $title ) ;
+	$theTitle->makeSecureTitle () ;
+	$title = $theTitle->secureTitle ;
+
 	$action = strtolower ( trim ( $action ) ) ;
 	$title = urldecode ( $title ) ;
 
