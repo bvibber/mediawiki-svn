@@ -1189,12 +1189,11 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$t = $wgTitle->getPrefixedURL();
 		$q = "action=delete";
 
+		$q .= "&title={$t}";
 		if ( $image ) {
 			$q .= "&image={$image}";
 		} else if ( $oldimage ) {
 			$q .= "&oldimage={$oldimage}";
-		} else {
-			$q .= "&title={$t}";
 		}
 		$formaction = wfEscapeHTML( wfLocalUrl( "", $q ) );
 		$confirm = wfMsg( "confirm" );

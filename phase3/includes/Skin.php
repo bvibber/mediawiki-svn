@@ -1723,7 +1723,7 @@ class Skin {
 			$url = wfImageUrl( $img );
 			$rlink = $cur;
 			if ( $wgUser->isSysop() ) {
-				$link = wfLocalUrlE( "", "image=" . $wgTitle->getURL() .
+				$link = wfLocalUrlE( $wgTitle->getPrefixedDBkey(), "image=" . $wgTitle->getURL() .
 				  "&action=delete" );
 				$style = $this->getInternalLinkAttributes( $link, $del );
 
