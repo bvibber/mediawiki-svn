@@ -75,6 +75,8 @@ function runit ( $title , $tx , $ty )
 	return $ret ;
 	}
 
+print "This function is obsolete!" ;
+/*
 $tx = $ty = "000000" ;
 if ( isset ( $_POST['tx'] ) ) $tx = $_POST['tx'] ;
 if ( isset ( $_POST['ty'] ) ) $ty = $_POST['ty'] ;
@@ -95,12 +97,6 @@ print "</body></html>" ;
 
 if ( count ( $ret ) > 0 )
 	print "<pre>" . implode ( "\n" , $ret ) . "</pre>" ;
-
-/*
-$title = "germany.bavaria" ;
-$ret = runit ( $title , "004500" , "-001200" ) ;
-print implode ( "\n" , $ret ) . "\n" ;
 */
-
 
 ?>

@@ -13,16 +13,15 @@ $p->settings ( "
 languages:de,en
 show:germany
 fit:germany
-draw:germany[state],germany.bavaria[city]
-draw:germany.sh.cities#kiel
+draw:germany[state],germany[city],germany[isle]
 style:germany[state],germany[isle]=fill:#CCCCCC; stroke:black; stroke-width:10
 style:germany.hamburg=fill:red
-label:germany.bavaria[city]=font-size:medium;fill-opacity:1.0;clickable:yes
+label:germany[city]=font-size:medium;fill-opacity:1.0;clickable:yes
 label:germany[state]=font-size:medium;fill-opacity:0.7
 " ) ;
 
 $svg = $p->getSVG () ;
-#print $svg ;
+print $svg ;
 exit ( 0 ) ; # just make SVG
 
 

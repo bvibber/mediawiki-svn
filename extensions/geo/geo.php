@@ -18,6 +18,7 @@ class geo_params
 	var $fits = array () ; # Which objects to fit into the viewport
 	var $object_tree = array () ; # The current object(s) being rendered
 	var $cache2 = array () ; # The article cache
+	var $later_objects = array () ; # Things that should be drawn at the end, like cities
 
 #	var $geo_cache = array () ; # The article cache
 	
@@ -83,6 +84,7 @@ class geo_params
 			$svg = $g->draw ( $this ) ;
 			}
 #		return "" ; # TESTING!
+		$svg .= $this->get_svg_objects () ;
 		$svg .= $this->get_svg_labels () ;
 
 		# Finalizing
@@ -185,6 +187,11 @@ class geo_params
 		{
 		$this->labels[] = $text_array ;
 		}
+		
+	function get_svg_objects ()
+		{
+		return implode ( "\n" , $this->later_objects ) ;
+		}
 
 	function get_svg_labels ()
 		{
@@ -236,7 +243,7 @@ class geo_params
 
 	# This function converts an ID like "germany.bavaria.cities#*" into the actual list of entries on the given page
 	# An ID "#*" will load every entry on that page
-	function expand_ids ( $ids , $me )
+	function expand_ids ( &$ids , $me )
 		{
 		$ret = array () ;
 		foreach ( $ids AS $id )
@@ -256,8 +263,8 @@ class geo_params
 				}
 			else $ret[] = $id ;
 			}
-		print implode ( ", " , $ret ) . "\n" ;
-		return $ret ;
+#		print implode ( ", " , $ret ) . "\n" ;
+		$ids = $ret ;
 		}
 
 	# This gets the text of an entry. An ID like "germany.bavaria.cities" will get the first entry,
@@ -545,7 +552,8 @@ class geo
 			$b = $b[0] ; # Only one point for cities...
 			if ( isset ( $this->data['magnitude'][0] ) ) $r = floor ( trim ( $this->data['magnitude'][0] ) ) * 100 ;
 			else $r = 300 ;
-			$ret .= "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"red\" style=\"fill-opacity:0.5\"/>\n" ;
+			$params->later_objects[] = "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"red\" style=\"fill-opacity:0.5\"/>\n" ;
+#			$ret .= "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"red\" style=\"fill-opacity:0.5\"/>\n" ;
 			$this->add_label ( $b[0] , $b[1] , $params ) ;
 			}
 		else if ( $match != "" )
