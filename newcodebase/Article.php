@@ -35,7 +35,7 @@ class Article {
 	{
 		$sql = "SELECT cur_namespace,cur_title FROM cur WHERE " .
 		  "cur_id={$id}";
-		$res = wfQuery( $sql, "Article::newFromID" );
+		$res = wfQuery( $sql, "Article::nameOf" );
 		if ( 0 == wfNumRows( $res ) ) { return NULL; }
 
 		$s = wfFetchObject( $res );
