@@ -897,7 +897,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 
 	function otherLanguages()
 	{
-		global $wgOut, $wgLang;
+		global $wgOut, $wgLang, $wgUseNewInterlanguage ;
 
 		$a = $wgOut->getLanguageLinks();
 		if ( 0 == count( $a ) ) {
