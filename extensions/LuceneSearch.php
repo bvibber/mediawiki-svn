@@ -90,7 +90,7 @@ class LuceneSearch extends SpecialPage
 		$wgOut->addWikiText(wfMsg('searchresulttext'));
 		$wgOut->addHTML($this->showShortDialog($q));
 
-		if ($q != null && strlen($q) > 1) {
+		if ($q !== false && strlen($q) > 1) {
 			if ($wgRequest->getText('go') === 'Go') {
 				$t = SearchEngine::getNearMatch($q);
 				if(!is_null($t)) {
@@ -341,7 +341,7 @@ class LuceneSearch extends SpecialPage
                 $searchField = "<div><input type='text' id='lsearchbox' onkeyup=\"resultType()\" "
 			. "style='margin-left: 25%; width: 50%' value=\""
                         . htmlspecialchars($term) ."\""
-			. " autocomplete=\"off\" />\n"
+			. " autocomplete=\"off\" name=\"search\" />\n"
 			. "<span id='loadStatus'></span>"
 			. $searchButton
 			. "<div id='results'></div></div>";
