@@ -659,11 +659,9 @@ class Skin {
 			if ( ! $first ) { $s .= " | "; }
 			$first = false;
 
-			preg_match( "/([a-z]+):([^\|]+)/", $l, $m );
-			$urltemp = Title::getInterwikiLink( $m[1] );
-			$link = $m[2];
-			$text = $wgLang->getLanguageName( $m[1] );
-			$url = str_replace( "$1", $link, $urltemp );
+			$nt = Title::newFromText( $l );
+			$url = $nt->getFullURL();
+			$text = $wgLang->getLanguageName( $nt->getInterwiki() );
 
 			if ( "" == $text ) { $text = $link; }
 			$style = $this->getExternalLinkAttributes( $link, $text );
