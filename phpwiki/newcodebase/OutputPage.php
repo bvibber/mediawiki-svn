@@ -693,7 +693,7 @@ class OutputPage {
 
 
 		$unique = "4jzAfzB8hNvf4sqyO9Edd8pSmk9rE2in0Tgw3";
-		$uc = "A-Za-z0-9_\\/~%\\-+&#?!=()@\\x80-\\xFF";
+		$uc = "A-Za-z0-9_\\/~%\\-+&*#?!=()@\\x80-\\xFF";
 		
 		# this is  the list of separators that should be ignored if they 
 		# are the last character of an URL but that should be included
@@ -701,7 +701,7 @@ class OutputPage {
 		# in this case, the last comma should not become part of the URL,
 		# but in "www.foo.com/123,2342,32.htm" it should.
 		$sep = ",;\.:";   
-		$fnc = "A-Za-z0-9_.,~%\\-+&;#?!=()@\\x80-\\xFF";
+		$fnc = "A-Za-z0-9_.,~%\\-+&;#*?!=()@\\x80-\\xFF";
 		$images = "gif|png|jpg|jpeg";
 
 		# PLEASE NOTE: The curly braces { } are not part of the regex,
