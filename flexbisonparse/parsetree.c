@@ -898,3 +898,4 @@ char* outputXML (Node node, int initialBufferSize)
     outputXMLHelper (node);
     return fb_get_buffer();
 }
+

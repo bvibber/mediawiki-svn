@@ -36,7 +36,7 @@ int i;
              textelement textelementnoboit textelementnobold textelementnoital textelementinlink
              textnoboit textnobold textnoital textinlink textorempty zeroormorenewlines
              zeroormorenewlinessave textintbl textelementintbl textintmpl textelementintmpl
-             template templatevar tablecaption
+             template templatevar tablecaption linktrail linktrailtext
              TEXT EXTENSION
 %type <ad>   ATTRIBUTE
 %type <num>  HEADING ENDHEADING EQUALS ATTRAPO ATTRQ
@@ -46,7 +46,7 @@ int i;
         NEWLINE PRELINE LISTBULLET LISTNUMBERED LISTIDENT HEADING ENDHEADING APO5 APO3 APO2 TABLEBEGIN
         TABLECELL TABLEHEAD TABLEROW TABLEEND TABLECAPTION ATTRIBUTE EQUALS ATTRAPO ATTRQ
         OPENPENTUPLECURLY CLOSEPENTUPLECURLY OPENTEMPLATEVAR CLOSETEMPLATEVAR OPENTEMPLATE
-        CLOSETEMPLATE
+        CLOSETEMPLATE LINKTRAIL
 
 %start article
 
@@ -136,21 +136,28 @@ listseries      :   /* empty */                 { debugf ("listseries#1 "); $$ =
                 |   listseries LISTNUMBERED     { debugf ("listseries#6 "); $$ = nodeAddChild ($1, newNode (ListNumbered)); }
                 |   listseries LISTIDENT     { debugf ("listseries#6 "); $$ = nodeAddChild ($1, newNode (ListIdent)); }
 
-linketc         :   OPENDBLSQBR textinlink CLOSEDBLSQBR
+/* THIS IS BROKEN BEYOND BELIEF! */
+linktrailtext   : linktrailtext LINKTRAIL { $$ = $1 ; }
+                | LINKTRAIL { }
+
+linktrail       : CLOSEDBLSQBR linktrailtext { $$ = $2 } /* Don't know how to handle the trail; ignored so far */
+                | CLOSEDBLSQBR {}
+
+linketc         :   OPENDBLSQBR textinlink linktrail
                         { debugf ("linketc#1 "); $$ = nodeAddChild (newNodeI (LinkEtc, 0), nodeAddChild (newNode (LinkTarget), $2)); }
-                |   OPENDBLSQBR textinlink PIPE CLOSEDBLSQBR
+                |   OPENDBLSQBR textinlink PIPE linktrail
                         { debugf ("linketc#2 "); $$ = nodeAddChild (newNodeI (LinkEtc, 1), nodeAddChild (newNode (LinkTarget), $2)); }
-                |   OPENDBLSQBR textinlink pipeseries CLOSEDBLSQBR
+                |   OPENDBLSQBR textinlink pipeseries linktrail
                         { debugf ("linketc#3 "); $$ = nodeAddChild2 (newNodeI (LinkEtc, 0), nodeAddChild (newNode (LinkTarget), $2), $3); }
-                |   OPENDBLSQBR textinlink pipeseries PIPE CLOSEDBLSQBR
+                |   OPENDBLSQBR textinlink pipeseries PIPE linktrail
                         { debugf ("linketc#4 "); $$ = nodeAddChild2 (newNodeI (LinkEtc, 1), nodeAddChild (newNode (LinkTarget), $2), $3); }
-                |   OPENLINK textinlink CLOSEDBLSQBR
+                |   OPENLINK textinlink linktrail
                         { debugf ("linketc#5 "); $$ = nodeAddChild (newNodeI (LinkEtc, 2), nodeAddChild (newNode (LinkTarget), $2)); }
-                |   OPENLINK textinlink PIPE CLOSEDBLSQBR
+                |   OPENLINK textinlink PIPE linktrail
                         { debugf ("linketc#6 "); $$ = nodeAddChild (newNodeI (LinkEtc, 3), nodeAddChild (newNode (LinkTarget), $2)); }
-                |   OPENLINK textinlink pipeseries CLOSEDBLSQBR
+                |   OPENLINK textinlink pipeseries linktrail
                         { debugf ("linketc#7 "); $$ = nodeAddChild2 (newNodeI (LinkEtc, 2), nodeAddChild (newNode (LinkTarget), $2), $3); }
-                |   OPENLINK textinlink pipeseries PIPE CLOSEDBLSQBR
+                |   OPENLINK textinlink pipeseries PIPE linktrail
                         { debugf ("linketc#8 "); $$ = nodeAddChild2 (newNodeI (LinkEtc, 3), nodeAddChild (newNode (LinkTarget), $2), $3); }
                     /* ... and now everything again with the CLOSEDBLSQBR missing,
                      * to take care of invalid mark-up. */
