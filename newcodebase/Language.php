@@ -114,6 +114,7 @@ Please report this to an administrator, making note of the URL.",
 "filedeleteerror" => "Could not delete file \"$1\".",
 "filenotfound"	=> "Could not find file \"$1\".",
 "unexpected"	=> "Unexpected value: \"$1\"=\"$2\".",
+"formerror"		=> "Error: could not submit form",	
 
 # Login and logout pages
 #
@@ -354,7 +355,7 @@ any copyrights.",
 "bysize"		=> "by size",
 "imgdelete"		=> "del",
 "imgdesc"		=> "desc",
-"imglegend"		=> "Legend: (del) = delete image, (desc) = show/edit image description.",
+"imglegend"		=> "Legend: (desc) = show/edit image description.",
 "imghistory"	=> "Image history",
 "revertimg"		=> "rev",
 "deleteimg"		=> "del",
@@ -465,7 +466,21 @@ consequences, and that you are doing this in accordance with
 
 # Block IP
 #
-"blockip"		=> "Block IP",
+"blockip"		=> "Block IP address",
+"blockiptext"	=> "Use the form below to block write access
+from a specific IP address.
+This should be done only only to prevent valndalism, and in
+accordance with [[Wikipedia:Policy|Wikipedia policy]].
+Fill in a specific reason below (for example, citing particular
+pages that were vandalized).",
+"ipaddress"		=> "IP Address",
+"ipbreason"		=> "Reason",
+"ipbsubmit"		=> "Block this address",
+"badipaddress"	=> "The IP address is badly formed.",
+"noblockreason" => "You must supply a reason for the block.",
+"blockipsuccesssub" => "Block succeeded",
+"blockipsuccesstext" => "The IP address \"$1\" has been blocked.",
+
 
 # Debug page
 #

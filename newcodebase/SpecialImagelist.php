@@ -81,7 +81,7 @@ function wfSpecialImagelist()
 		$ilink = "<a href=\"" . wfImageUrl( $name ) .
 		  "\">{$name}</a>";
 
-		$l = "(del) (" .
+		$l = "(" .
 		  $sk->makeKnownLink( "Image:{$name}", wfMsg( "imgdesc" ) ) .
 		  ") {$ilink} . . {$s->img_size} bytes . . {$ul} . . " .
 		  $wgLang->timeanddate( $s->img_timestamp );

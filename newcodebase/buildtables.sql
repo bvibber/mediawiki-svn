@@ -28,12 +28,13 @@ CREATE TABLE cur (
   cur_restrictions tinyblob,
   cur_counter bigint(20) unsigned default '0',
   cur_ind_title varchar(255) default NULL,
+  cur_ind_text mediumtext,
   cur_is_redirect tinyint(1) unsigned NOT NULL default '0',
   UNIQUE KEY cur_id (cur_id),
   INDEX cur_title (cur_title(30)),
   INDEX cur_timestamp (cur_timestamp),
   FULLTEXT INDEX cur_ind_title (cur_ind_title),
-  FULLTEXT INDEX cur_text (cur_text)
+  FULLTEXT INDEX cur_ind_text (cur_ind_text)
 ) TYPE=MyISAM PACK_KEYS=1;
 
 # Historical versions of articles

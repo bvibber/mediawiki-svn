@@ -103,10 +103,16 @@ class SearchEngine {
 		$wgOut->addHTML( "<p>{$sl}\n" );
 	}
 
+	function legalSearchChars()
+	{
+		$lc = "A-Za-z_'0-9\\x90-\\xFF\\-";
+		return $lc;
+	}
+
 	function parseQuery()
 	{
-		$q = preg_replace( "/[^-A-Za-z_0-9\\x90-\\xFF()]/", " ",
-		  $this->mUsertext );
+		$lc = SearchEngine::legalSearchChars() . "()";
+		$q = preg_replace( "/[^{$lc}]/", " ", $this->mUsertext );
 		$q = preg_replace( "/([()])/", " \\1 ", $q );
 		$q = preg_replace( "/\\s+/", " ", $q );
 		$w = explode( " ", strtolower( trim( $q ) ) );
@@ -119,7 +125,8 @@ class SearchEngine {
 				$last = "";
 			} else {
 				if ( "" != $last ) { $cond .= " and"; }
-				$cond .= " (match (##field##) against ('{$word}'))";
+				$cond .= " (match (##field##) against ('" .
+				  wfStrencode( $word ). "'))";
 				$last = $word;
 				array_push( $this->mSearchterms, $word );
 			}
@@ -127,7 +134,7 @@ class SearchEngine {
 		$this->mTitlecond = "(" . str_replace( "##field##",
 		  "cur_ind_title", $cond ) . " )";
 		$this->mTextcond = "(" . str_replace( "##field##",
-		  "cur_text", $cond ) . " )";
+		  "cur_ind_text", $cond ) . " )";
 	}
 
 	function showHit( $row )
@@ -152,13 +159,17 @@ class SearchEngine {
 			if ( strlen( $pre ) > 60 ) {
 				$pre = "..." . substr( $pre, -60 );
 			}
+			$pre = wfEscapeHTML( $pre );
+
 			if ( count( $m ) < 3 ) { $post = ""; }
 			else { $post = $m[3]; }
 			if ( strlen( $post ) > 60 ) {
 				$post = substr( $post, 0, 60 ) . "...";
 			}
-			$line = "{$pre}<font color='red'>{$m[2]}</font>{$post}";
-			$line = wfEscapeHTML( $line );
+			$post = wfEscapeHTML( $post );
+			$found = wfEscapeHTML( $m[2] );
+
+			$line = "{$pre}<font color='red'>{$found}</font>{$post}";
 			$wgOut->addHTML( "<br><small>{$lineno}: {$line}</small>\n" );
 		}
 		$wgOut->addHTML( "</li>\n" );
