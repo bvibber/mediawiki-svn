@@ -4,36 +4,33 @@
 
 include_once( "./DefaultSettings.php" );
 
-# URLs and directories for the wiki site
+# URLs for the wiki site
 #
-$wgServer           = "http://localhost";
-$wgScriptPath	    = "/wiki";
-$wgScript           = "{$wgScriptPath}/wiki.phtml";
-$wgRedirectScript	= "{$wgScriptPath}/redirect.phtml";
-$wgStyleSheetPath   = "{$wgServer}/style";
-$wgArticlePath      = "{$wgServer}{$wgScript}?title=$1";
-$wgUploadPath       = "{$wgServer}/upload";
-$wgLogo				= "{$wgUploadPath}/wiki.png";
-$wgUploadDirectory	= "/usr/local/apache/htdocs/upload";
+$wgServer           = "http://www.piclab.com";
+$wgStyleSheetPath   = "$wgServer/style";
+$wgScript           = "/newwiki/wiki.phtml";
+$wgRedirectScript	= "/newwiki/redirect.phtml";
+$wgArticlePath      = "$wgServer$wgScript?title=$1";
+$wgUploadPath       = "http://images.piclab.com";
+$wgUploadDirectory	= "/rfs/upload";
+$wgLogo				= "$wgUploadPath/wiki.png";
 
 # MySQL settings
 #
 $wgDBserver         = "127.0.0.1";
-$wgDBname           = "wikidb";
+$wgDBname           = "yaw";
 $wgDBuser           = "wikiuser";
-$wgDBpassword       = "userpwd";
-$wgDBminWordLen		= 4;
+$wgDBpassword       = "oberon";
+$wgDBminWordLen		= 3;
 
-# Creating the file below makes the DB read-only; do this
-# during database maintenance.
+# Turn this on during database maintenance
 #
-$wgReadOnlyFile		= "/usr/local/apache/htdocs/upload/readonly";
+# $wgReadOnly = true;
 
-# Turn this on to get debug comments.  Logfile should only
-# be used during testing, never in production.
+# Turn this on to get HTML debug comments
 #
 # $wgDebugComments	= true;
-# $wgDebugLogFile 	= "/usr/local/apache/htdocs/upload/logfile";
+$wgDebugLogFile 	= "/home/lee/src/phpwiki/newcodebase/logfile";
 
 # Which interwiki prefix represents _this_ wiki?  This
 # only needs to be set when installing the software on
@@ -41,7 +38,7 @@ $wgReadOnlyFile		= "/usr/local/apache/htdocs/upload/readonly";
 #
 $wgLocalInterwiki   = "w";
 
-# $wgInputEncoding	= "ISO-8859-1";
-# $wgOutputEncoding	= "ISO-8859-1";
+$wgInputEncoding	= "ISO-8859-1";
+$wgOutputEncoding	= "ISO-8859-1";
 
 ?>
