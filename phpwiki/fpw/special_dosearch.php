@@ -50,7 +50,7 @@ function srchStrParse ( $state ) {
                     $res = "" ;
                 } else {
                     $oldpos = $pos;
-                    while ( preg_match ( "/\w/", $search{$pos} ) ) $pos++ ;
+                    while ( preg_match ( "/[\\w\\x80-\\xff]/", $search{$pos} ) ) $pos++ ;
                     $word = substr ( $search, $oldpos, $pos - $oldpos );
                     if ( preg_match( "/^".$not."$/i", $word ) ) {
                         $pos = $oldpos;
@@ -148,7 +148,7 @@ function srchStrParse ( $state ) {
                     $res = " [-)] $res2" ;
                 } else {
                     $oldpos = $pos;
-                    while ( preg_match ( "/\w/", $search{$pos} ) ) $pos++ ;
+                    while ( preg_match ( "/[\\w\\x80-\\xff]/", $search{$pos} ) ) $pos++ ;
                     $word = substr ( $search, $oldpos, $pos - $oldpos );
                     if ( preg_match( "/^".$not."$/i", $word ) ) {
                         $res2 = srchStrParse ( 3 ) ;    # we presume the not is redundant
@@ -183,7 +183,7 @@ function srchStrParse ( $state ) {
                     $res = "";
                 } else {
                     $oldpos = $pos;
-                    while ( preg_match ( "/\w/", $search{$pos} ) ) $pos++ ;
+                    while ( preg_match ( "/[\\w\\x80-\\xff]/", $search{$pos} ) ) $pos++ ;
                     $word = substr ( $search, $oldpos, $pos - $oldpos );
                     if ( preg_match( "/^".$not."$/i", $word ) ) {
                         $pos = $oldpos ;
@@ -289,7 +289,7 @@ function doSearch () {
 	    $s .= "\n\n" . $wikiSearchHelp ;
 	  }
         else {
-            preg_match_all ( "/\"(\w+)\"/", $parsedCond, $matches ) ;
+            preg_match_all ( "/\"([\\w\\x80-\\xff]+)\"/", $parsedCond, $matches ) ;
             $words = $matches[1] ;          # determine the search words (positive & negative)
 
             $fallbackSearch = 0 ;
