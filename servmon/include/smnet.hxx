@@ -140,9 +140,7 @@ public:
 		}
 		int i = select(m, &rfds, &wfds, NULL, nextevt ? &tv : NULL);
 		if (i < 0) {
-			SMI(smlog::log)->logmsg(0, b::io::str(
-							b::format("select() error: %d/%s")
-							% errno % std::strerror(errno)));
+			SMI(smlog::log)->logmsg(0, SM$FAC_NET, SM$MSG_SLCTERR, std::strerror(errno));
 			return;
 		}
 		std::map<int,srec> cm = fds;

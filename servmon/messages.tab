@@ -7,17 +7,24 @@ ERROR BADNUM invalid number: %1%
 ERROR BATCHTERM cannot perform this operation on a non-interactive terminal
 ERROR NOCONF action not confirmed
 WARN UNKMOD unknown modifier %1% ignored
+ERROR LSTFAIL listen(2) failed: %s
+ERROR ACCFAIL accept(2) failed: %s
 FACILITY MONIT
 ERROR UNKSRV server %1% does not exist
 ERROR NOTYPE unknown server type %1%
 ERROR DUPSERV server %1% already exists
 ERROR NODISK disk %2% is not configured for server %1%
 INFORM NEWMASTER removing MySQL master status from %1%
+WARN MTXFAIL could not lock mutex for check running.  Consider increasing check interval
+INFORM TRANSIT state transition for host \002%1%\002: old state \002%2%\002, new state \002%3%\002
+WARN ALRMSET alarm condition \002set\002 for host \002%1%\002: %2% = %3%
+INFORM ALRMCLR alerm condition \002cleared\002 for host \002%1%\002: %2% = %3%
 FACILITY IRC
 INFORM NOCHAN no channels are currently configured
 INFORM NOSERV no servers are currently configured
 ERROR UNKSERV server %1% does not exist
 ERROR UNKCHAN channel %1% does not exist
+ERROR CONFAIL IRC connection failed: %1%
 FACILITY QBANE
 ERROR NORULE rule %1% does not exist
 INFORM NEWRULE creating new rule
@@ -32,3 +39,17 @@ ERROR USREXISTS user %1% already exists
 ERROR NOUSER user %1% does not exist
 FACILITY CONF
 ERROR WRTERR I/O error writing configuration: %1%
+WARN OPNFAIL cannot open configuration file %1%: %2%
+ERROR RDERR I/O error reading configuration: %1%
+WARN RMVFAIL removing old configuration failed: %1%
+ERROR MOVEFAIL error renaming configuration file: %1%
+FACILITY LOG
+INFORM NETMSG [%1%] %2%
+ERROR LSNFAILU Listen failed for UNIX log socket: %1%
+ERROR LSNFAILI Listen failed for IP log socket: %1%
+ERROR LACCFAIL Accept failed for log socket: %1%
+WARN MALFRM Malformed message from log socket
+INFORM DEBUG %1%
+FACILITY NET
+ERROR SLCTERR select(2) error: %1%
+ERROR READERR %1% read error: %2%

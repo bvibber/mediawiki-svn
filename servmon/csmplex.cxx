@@ -19,7 +19,7 @@ csmplexd::start(void)
 	try {
 		s->lsn();
 	} catch (smnet::sckterr& e) {
-		SMI(smlog::log)->logmsg(0, std::string("Listen failed: ") + e.what());
+		SMI(smlog::log)->logmsg(0, SM$FAC_TRM, SM$MSG_LSTFAIL, e.what());
 		return;
 	}
 
@@ -40,7 +40,7 @@ csmplexd::newc(smnet::scktp s_, int)
 		smtrm::trmsrv* trm (new smtrm::trmsrv (tns));
 		trm->start();
 	} catch (smnet::sckterr& e) {
-		SMI(smlog::log)->logmsg(0, std::string("Accept failed: ") + e.what());
+		SMI(smlog::log)->logmsg(0, SM$FAC_TRM, SM$MSG_ACCFAIL, e.what());
 		return;
 	}
 }

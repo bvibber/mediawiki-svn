@@ -5,6 +5,8 @@
 #include "smstdinc.hxx"
 #include "smutl.hxx"
 
+#include "msgtab.hxx"
+
 namespace smlog {
 
 enum dbg_t {
@@ -18,7 +20,7 @@ class log : public smutl::singleton<log> {
 public:
 	void initialise(void);
 	
-	void logmsg(int ircvl, str message);
+	void logmsg(int ircvl, int fac, int msg, sm$msgarg = sm$msgarg(), sm$msgarg = sm$msgarg(), sm$msgarg = sm$msgarg());
 	void debug(dbg_t func, str message);
 
 	bool debugset(dbg_t f);

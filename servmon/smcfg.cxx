@@ -90,8 +90,7 @@ cfg::cfg(void)
 try {
 	std::ifstream f(cfgfile.c_str());
 	if (!f) {
-		SMI(smlog::log)->logmsg(0, b::io::str(b::format("Warning: can't open config file %s: %s")
-						      % cfgfile % strerror(errno)));
+		SMI(smlog::log)->logmsg(0, SM$FAC_CONF, SM$MSG_OPNFAIL, cfgfile, std::strerror(errno));
 		return;
 	}
 	for (;;) {
@@ -126,11 +125,11 @@ try {
 		}
 		}
 	}
-} catch (shrtrd&) {
-	SMI(smlog::log)->logmsg(0, "Short read in configuration file");
+} catch (shrtrd& e) {
+	SMI(smlog::log)->logmsg(0, SM$FAC_CONF, SM$MSG_RDERR, e.what());
 	std::exit(1);
 } catch (mlfrmcfg& e) {
-	SMI(smlog::log)->logmsg(0, e.what());
+	SMI(smlog::log)->logmsg(0, SM$FAC_CONF, SM$MSG_RDERR, e.what());
 	std::exit(1);
 }
 
@@ -141,8 +140,7 @@ try {
 				S_IRUSR|S_IWUSR);
 	if (f < 0) {
 		if (startup)
-			SMI(smlog::log)->logmsg(0, b::io::str(b::format("Warning: could not write configuration file %s: %s")
-							      % cfgtemp % strerror(errno)));
+			SMI(smlog::log)->logmsg(0, SM$FAC_CONF, SM$MSG_OPNFAIL, cfgtemp, std::strerror(errno));
 		else
 			throw wrerr();
 		return;
@@ -183,18 +181,14 @@ try {
 
 	close(f);
 	if (std::remove(cfgfile.c_str()) < 0) {
-		SMI(smlog::log)->logmsg(0, b::io::str(
-						b::format("Warning: removing old configuration file: %s")
-						% strerror(errno)));
+		SMI(smlog::log)->logmsg(0, SM$FAC_CONF, SM$MSG_RMVFAIL, std::strerror(errno));
 	}
 	if (std::rename(cfgtemp.c_str(), cfgfile.c_str()) < 0) {
-		SMI(smlog::log)->logmsg(0, b::io::str(
-						b::format("Error renaming configuration file: %s")
-						% strerror(errno)));
+		SMI(smlog::log)->logmsg(0, SM$FAC_CONF, SM$MSG_MOVEFAIL, std::strerror(errno));
 		return;
 	}
-} catch (wrerr&) {
-	SMI(smlog::log)->logmsg(0, "Short write in configuration file");
+} catch (wrerr& e) {
+	SMI(smlog::log)->logmsg(0, SM$FAC_CONF, SM$MSG_WRTERR, e.what());
 	if (!startup)
 		throw;
 }

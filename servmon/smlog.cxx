@@ -5,6 +5,8 @@
 #include "smthr.hxx"
 #include "smtrm.hxx"
 
+#include "msgtab.hxx"
+
 namespace smlog {
 
 namespace {
@@ -19,7 +21,7 @@ namespace {
 			try {
 				s->lsn();
 			} catch (smnet::sckterr& e) {
-				SMI(log)->logmsg(0, std::string("Listen failed for UNIX log socket: ") + e.what());
+				SMI(log)->logmsg(0, SM$FAC_LOG, SM$MSG_LSNFAILU, e.what());
 				return;
 			}
 			boost::function<void(smnet::scktp, int)> f =
@@ -31,7 +33,7 @@ namespace {
 			try {
 				s->lsn();
 			} catch (smnet::sckterr& e) {
-				SMI(log)->logmsg(0, std::string("Listen failed for IP log socket: ") + e.what());
+				SMI(log)->logmsg(0, SM$FAC_LOG, SM$MSG_LSNFAILI, e.what());
 				return;
 			}
 			f = boost::bind(&loglsnd::newc, this, _1, _2);
@@ -46,7 +48,7 @@ namespace {
 					boost::bind(&loglsnd::cdata, this, _1, _2);
 				SMI(smnet::smpx)->add(f, static_pointer_cast<smnet::sckt>(c), smnet::smpx::srd);
 			} catch (smnet::sckterr& e) {
-				SMI(log)->logmsg(0, std::string("Accept failed for log socket: ") + e.what());
+				SMI(log)->logmsg(0, SM$FAC_LOG, SM$MSG_LACCFAIL, e.what());
 			}
 		}
 		
@@ -78,7 +80,7 @@ namespace {
 			
 			levs = smutl::car(msg);
 			if (levs.empty()) {
-				SMI(log)->logmsg(0, "Malformed log message from socket");
+				SMI(log)->logmsg(0, SM$FAC_LOG, SM$MSG_MALFRM);
 				goto errout;
 			}
 			
@@ -86,7 +88,7 @@ namespace {
 				msg.erase(msg.begin());
 			
 			if (msg.empty()) {
-				SMI(log)->logmsg(0, "Malformed log message from socket");
+				SMI(log)->logmsg(0, SM$FAC_LOG, SM$MSG_MALFRM);
 				goto errout;
 			}
 			
@@ -100,7 +102,8 @@ namespace {
 			if (lev < 0 || lev > 16)
 				goto errout;
 			
-			SMI(log)->logmsg(lev, msg);
+			SMI(log)->logmsg(lev, SM$FAC_LOG, SM$MSG_NETMSG,
+					 dynamic_pointer_cast<smnet::clnt>(s)->remote(), msg);
 		  errout:
 			data.erase(s);
 			SMI(smnet::smpx)->rm(s);
@@ -115,9 +118,10 @@ log::initialise(void)
 }
 	
 void
-log::logmsg(int irclvl, str message)
+log::logmsg(int irclvl, int fac, int msg, sm$msgarg a1, sm$msgarg a2, sm$msgarg a3)
 {
-	std::string fmt = b::io::str(b::format("%% %s: %s") % smutl::fmttime() % message);
+	std::string message = sm$getmsg(fac, msg, a1, a2, a3);
+	std::string fmt = b::io::str(b::format("<%s> %s") % smutl::fmttime() % message);
 	std::cout << fmt << '\n';
 	smtrm::terminal::broadcast(message);
 	
@@ -129,7 +133,7 @@ void
 log::debug(dbg_t func, str message)
 {
 	if (!debugset(func)) return;
-	logmsg(0, message);
+	logmsg(0, SM$FAC_LOG, SM$MSG_DEBUG, message);
 }
 	
 bool

@@ -166,8 +166,7 @@ ircclnt::rdline(strr l) {
 	} catch (smnet::wouldblock&) {
 		return false;
 	} catch (smnet::sckterr& e) {
-		std::string err = "IRC read error: ";
-		SMI(smlog::log)->logmsg(0, err + e.what());
+		SMI(smlog::log)->logmsg(0, SM$FAC_NET, SM$MSG_READERR, "IRC", e.what());
 		throw;
 	}
 	return false;
@@ -332,7 +331,7 @@ ircclnt::ircclnt(std::string const& serv, int port)
 	try {
 		if (sckt->connect()) { cip = false; connected(); }
 	} catch (smnet::sckterr& e) {
-		SMI(smlog::log)->logmsg(0, std::string("IRC connection failed: ") + e.what());
+		SMI(smlog::log)->logmsg(0, SM$FAC_IRC, SM$MSG_CONFAIL, e.what());
 		cip = false;
 		return;
 	}

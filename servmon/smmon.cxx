@@ -304,7 +304,7 @@ cfg::checker::chk1(void)
 			it->second->check();
 		}
 	} catch (b::lock_error&) {
-		SMI(smlog::log)->logmsg(0, "Warning: could not lock mutex for check running.  Consider increasing check interval.");
+		SMI(smlog::log)->logmsg(0, SM$FAC_MONIT, SM$MSG_MTXFAIL);
 		return;
 	}
 }
@@ -422,9 +422,7 @@ cfg::state_transition(str serv, cfg::server::state_t oldstate, cfg::server::stat
 {
 	std::string oldstatename = server::statestring(oldstate),
 		newstatename = server::statestring(newstate);
-	std::string s = b::io::str(b::format("State transition for host \002%s\002: old state \002%s\002, new state \002%s\002")
-				   % serv % oldstatename % newstatename);
-	SMI(smlog::log)->logmsg(10, s);
+	SMI(smlog::log)->logmsg(10, SM$FAC_MONIT, SM$MSG_TRANSIT, serv, oldstatename, newstatename);
 }
 
 void
