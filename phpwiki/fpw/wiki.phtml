@@ -48,7 +48,7 @@ function getmicrotime(){
 # Main program
 	global $action , $title , $pageTitle ;
 	global $user , $search , $expiration ;
-	global $THESCRIPT ;
+	global $THESCRIPT , $namespaceBackground , $wikiNamespaceBackground ;
 
 	global $metaDescription , $metaKeywords , $wikiCharset ; # For meta tags in the HTML code
 	$expiration = time()+31536000 ; # Cookies set will expire in one year from now
@@ -95,6 +95,8 @@ function getmicrotime(){
 
 	$action = strtolower ( trim ( $action ) ) ;
 	$title = urldecode ( $title ) ;
+
+	if ( strtolower ( substr ( $title , 0 , 8 ) ) == "special:" ) $namespaceBackground = $wikiNamespaceBackground["special"] ;
 
 	# Do what is asked
 	if ( isset ( $search ) ) {
