@@ -40,9 +40,22 @@ class geo_params
 						$b = explode ( ";" , str_replace ( "," , ";" , $a[0] ) ) ;
 						foreach ( $b AS $c )
 							{
-							if ( $key == "style" )
-								$this->styles[$c][] = $a[1] ;
-							else if ( $key == "label" )
+#							if ( $key == "style" )
+								{
+								$d = explode ( ";" , str_replace ( "," , ";" , $a[1] ) ) ;
+								foreach ( $d AS $e )
+									{
+									$e = explode ( ":" , $e ) ;
+									$va = trim ( strtolower ( $e[0] ) ) ;
+									if ( count ( $e ) < 2 ) $vb = "" ; #/*$this->styles*/$kv[$c][$e[0]] = "" ;
+									else $vb = trim ( strtolower ( $e[1] ) ) ;# /*$this->styles*/$kv[$c][$e[0]] = trim ( strtolower ( $e[1] ) ) ;
+									if ( $key == "style" ) $this->styles[$c][$va] = $vb ;
+									else $this->label_styles[$c][$va] = $vb ;
+#									print "{$va} : " .$vb. "\n" ;
+									}
+								}
+#								$this->styles[$c][] = $a[1] ;
+/*							else if ( $key == "label" )
 								{
 								$d = explode ( ";" , str_replace ( "," , ";" , $a[1] ) ) ;
 								foreach ( $d AS $e )
@@ -51,7 +64,7 @@ class geo_params
 									if ( count ( $e ) < 2 ) $this->label_styles[$c][$e[0]] = "" ;
 									else $this->label_styles[$c][$e[0]] = $e[1] ;
 									}
-								}
+								}*/
 							}
 						}
 					}
@@ -244,6 +257,7 @@ class geo_params
 			$s .= "' x='{$x}' y='{$y}'>{$text}</text>" ;
 			if ( isset ( $l['href'] ) )
 				{
+				print $l['href'] . "\n" ;
 				$href = $l['href'] ;
 				$s = "<a xlink:href={$href}>{$s}</a>" ;
 				}
@@ -569,7 +583,10 @@ class geo
 				if ( $k != "" ) $ret[strtolower($k)] = strtolower($v) ;
 				}
 			}
-		$ret = "style=\"" . implode ( "; " , $ret ) . "\"" ;
+		$s = "" ;
+		foreach ( $ret AS $k => $v )
+			$s .= "{$k}:{$v}; " ;
+		$ret = "style=\"{$s}\"" ;
 		return $ret ;
 #		$t = trim ( strtolower ( $this->get_current_type ( $params ) ) ) ;
 #		$s = $params->get_styles ( $this->id , $t ) ;
