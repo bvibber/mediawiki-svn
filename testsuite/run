@@ -1,5 +1,8 @@
 #!/bin/sh
 #
 
-java -classpath ./build:jars/httpunit.jar:jars/nekohtml.jar:jars/xercesImpl.jar:jars/xml-apis.jar com.piclab.wikitest.WikiSuite
+if [[ "$1" == "" ]]; then CLASS=WikiSuite; else CLASS=$1; fi
+echo Running $CLASS
+
+java -classpath ./build:jars/httpunit.jar:jars/nekohtml.jar:jars/xercesImpl.jar:jars/xml-apis.jar com.piclab.wikitest.$CLASS
 
