@@ -2,9 +2,40 @@
 
 function wfSpecialPopularpages()
 {
-	global $wgUser, $wgOut;
+	global $wgUser, $wgOut, $wgLang, $wgTitle;
+	global $limit, $offset; # From query string
+	$fname = "wfSpecialPopularpages";
 
-	$wgOut->addHTML( "<p>(TODO: Popular pages)" );
+	if ( ! $limit ) {
+		$limit = $wgUser->getOption( "searchlimit" );
+		if ( ! $limit ) { $limit = 20; }
+	}
+	if ( ! $offset ) { $offset = 0; }
+
+	$sql = "SELECT cur_title, cur_counter FROM cur " .
+	  "WHERE cur_namespace=0 AND cur_is_redirect=0 ORDER BY " .
+	  "cur_counter DESC LIMIT {$offset}, {$limit}";
+	$res = wfQuery( $sql, $fname );
+
+	$sk = $wgUser->getSkin();
+
+	$top = SearchEngine::showingResults( $offset, $limit );
+	$wgOut->addHTML( "<p>{$top}\n" );
+
+	$sl = SearchEngine::viewPrevNext( $offset, $limit,
+	  "title=Special%3APopularpages" );
+	$wgOut->addHTML( "<br>{$sl}\n" );
+
+	$s = "<ul>";
+	while ( $obj = wfFetchObject( $res ) ) {
+		$nv = str_replace( "$1", $obj->cur_counter, wfMsg( "nviews" ) );
+		$link = $sk->makeKnownLink( $obj->cur_title, "" );
+		$s .= "<li>{$link} ({$nv})</li>\n";
+	}
+	wfFreeResult( $res );
+	$s .= "</ul>";
+	$wgOut->addHTML( $s );
+	$wgOut->addHTML( "<p>{$sl}\n" );
 }
 
 ?>
