@@ -29,6 +29,8 @@ int yywrap(void) { return 1; }
 
 %%
 
+    /* We will use the same buffer every time to accumulate the contents of an
+     * extension token. newExtensionData() will copy the data to a new string */
     char extension_buf [ 65536 ];
     char * extension_buf_ptr;
     char * extension_name = 0;
@@ -36,19 +38,21 @@ int yywrap(void) { return 1; }
     Node node;
     int i;
 
+
 "<"[[:alnum:]]+">"              {
                                     extension_buf_ptr = extension_buf;
-                                    i = strlen (yytext) - 2;
-                                    extension_name = strncpy ((char*) malloc
-                                        (i * sizeof (char)), yytext + 1, i);
+                                    i = strlen (yytext)-1;
+                                    extension_name = (char*) malloc (i * sizeof (char));
+                                    memcpy (extension_name, yytext + 1, --i);
+                                    extension_name[i] = '\0';
                                     BEGIN (extension);
                                 }
 <extension>"</"[[:alnum:]]+">"  {
                                     i = strlen (extension_name);
                                     if (strncmp (extension_name, yytext+2, i))
                                     {
-                                        strcat (extension_buf, yytext);
-                                        extension_buf_ptr += strlen (yytext);
+                                        memcpy (extension_buf_ptr, yytext, yyleng);
+                                        extension_buf_ptr += yyleng;
                                     }
                                     else
                                     {
@@ -66,6 +70,7 @@ int yywrap(void) { return 1; }
                                     yylval.node = newNodeE (ExtensionToken,
                                         newExtensionData (extension_name, extension_buf));
                                     debuglex ("EXTENSION ");
+                                    BEGIN (INITIAL);
                                     return EXTENSION;
                                 }
 

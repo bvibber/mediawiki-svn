@@ -246,13 +246,31 @@ oneormorenewlinessave : NEWLINE                     { debugf ("oneormorenewlines
 
 int main() {
     int result;
-    printf ("Parsing...\n\n");
+    printf ("Parsing... ");
     result = yyparse();
     if (!result)
-    {
-        printf ("\n\nXML output:\n\n");
-        outputXML (articlenode);
-        printf ("\n\n");
-    }
+        printf ("\n\nXML output:\n\n%s\n\n", outputXML (articlenode));
     return result;
+}
+
+const char* wikiparse_do_parse (const char* input)
+{
+    int result, i;
+
+	/* yy_scan_string copies the string into an internal buffer. During lexing, this internal
+	 * buffer may be modified. We don't really need the string anymore, so we probably don't mind
+	 * if it's modified, so we might not need for it to be copied. There is yy_scan_buffer which
+	 * uses the string directly as a buffer, but for some bizarre reason it expects the buffer to
+	 * end with *two* NULs instead of just one. Thus yy_scan_string is the easiest way for now. */
+	yy_scan_string (input);
+
+    /* Start with an output buffer twice the size of the input, but at least 1 KB. This should
+     * normally be plenty. If it isn't, it will grow automatically. */
+    i = 2*strlen (input);
+    fb_set_buffer_size (i < 1024 ? 1024 : i);
+
+	result = yyparse();
+    if (!result)
+		return outputXML (articlenode);
+	return "<error />";
 }

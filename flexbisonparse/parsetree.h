@@ -77,4 +77,12 @@ Node processNestedItalics (Node node);
 
 ExtensionData newExtensionData (char* name, char* text);
 
-void outputXML (Node node);
+char* outputXML (Node node);
+
+/* To store the output, outputXML() will use a dynamically-growing buffer.
+ * Normally it will start at a size of 1 KB, but if your input is already,
+ * say, 1 MB big, you might want to call this before outputXML() to save a
+ * few buffer enlargements. ONLY call this function just before calling
+ * outputXML(). */
+void fb_set_buffer_size (int size);
+

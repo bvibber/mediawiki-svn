@@ -82,7 +82,7 @@ ExtensionData newExtensionData (char *name, char *text)
 {
     ExtensionData ed = (ExtensionData) malloc (sizeof (struct ExtensionDataStruct));
     ed->name = name;
-    ed->text = (char *) malloc (strlen (text) * sizeof (char));
+    ed->text = (char *) malloc ((strlen (text)+1) * sizeof (char));
     strcpy (ed->text, text);
     return ed;
 }
@@ -401,22 +401,91 @@ Node makeTextBlock (Node a, Node b)
         return nodeAddChild (nodeAddChild (newNode (TextBlock), a), b);
 }
 
-void printEscaped (char* s)
+char* fb_buffer;
+int   fb_buflen = 1024;    /* Start with 1 KB if user doesn't call fb_set_buffer_size() */
+int   fb_bufcontentlen;
+
+inline void fb_set_buffer_size (int size)
 {
+    fb_buflen = size;
+}
+
+void fb_write_to_buffer_len (const char* str, int len)
+{
+    char* newbuffer;
+
+    while (fb_buflen - fb_bufcontentlen < len + 1 /* for the NUL */)
+    {
+        /* enlarge buffer */
+        fb_buflen *= 2;
+        newbuffer = (char*) malloc (fb_buflen * sizeof (char));
+        /* we are not copying the trailing '\0' because we would be overwriting it anyway */
+        memcpy (newbuffer, fb_buffer, fb_bufcontentlen);
+        free (fb_buffer);
+        fb_buffer = newbuffer;
+    }
+    memcpy (fb_buffer + fb_bufcontentlen, str, len);
+    fb_bufcontentlen += len;
+    fb_buffer[fb_bufcontentlen] = '\0';
+}
+
+inline void fb_write_to_buffer (const char* str)
+{
+    fb_write_to_buffer_len (str, strlen (str));
+}
+
+void fb_write_to_buffer_escaped (char* s)
+{
+    char* curstart;
+    int curlen, curry;
+    char tmpstr[32];
+
+    curstart = s;
+    curlen = 0;
+    curry = 0;
+
     while (*s)
     {
         switch (*s)
         {
-            case '&': printf ("&amp;");  break;
-            case '<': printf ("&lt;");   break;
-            case '>': printf ("&gt;");   break;
-            case '"': printf ("&quot;"); break;
-            default: putchar (*s);
+#           define FB_WRITE_CURRY(x) \
+                if (curry) fb_write_to_buffer_len (curstart, curlen); \
+                fb_write_to_buffer (x); \
+                curry = 0; \
+                break;
+
+            case '&': FB_WRITE_CURRY ("&amp;");
+            case '<': FB_WRITE_CURRY ("&lt;");
+            case '>': FB_WRITE_CURRY ("&gt;");
+            case '"': FB_WRITE_CURRY ("&quot;");
+            default:
+                if (*s < ' ')
+                {
+                    sprintf (tmpstr, "&#%d;", *s);
+                    FB_WRITE_CURRY (tmpstr);
+                }
+                else
+                {
+                    if (!curry)
+                    {
+                        curry = 1;
+                        curstart = s;
+                        curlen = 1;
+                    }
+                    else curlen++;
+                }
+#           undef FB_WRITE_CURRY
         }
         s++;
     }
+    if (curry)
+        fb_write_to_buffer_len (curstart, curlen);
 }
 
+/* forward declaration required because of mutually recursive functions */
+void outputXMLHelper (Node node);
+
+/* This function is mutually recursive with outputXMLHelper() */
 void outputNode (Node node)
 {
     Node child;
@@ -443,60 +512,83 @@ void outputNode (Node node)
         (sprintf (defaultname, "type%dnode", node->type), defaultname);
 
     child = node->firstChild;
-    if (rname) printf ("<%s>", rname);
+    if (rname)
+    {
+        fb_write_to_buffer ("<");
+        fb_write_to_buffer (rname);
+        fb_write_to_buffer (">");
+    }
     while (child)
     {
-        outputXML (child);
+        outputXMLHelper (child);
         child = child->nextSibling;
     }
-    if (rname) printf ("</%s>", rname);
+    if (rname)
+    {
+        fb_write_to_buffer ("</");
+        fb_write_to_buffer (rname);
+        fb_write_to_buffer (">");
+    }
 }
 
-/* This function is recursive */
-void outputXML (Node node)
+/* This function is mutually recursive with outputNode() */
+void outputXMLHelper (Node node)
 {
     Node child;
     ExtensionData ed;
     int i;
+    char tmpstr[255];
 
     switch (node->type)
     {
         case Heading:
-            printf ("<heading level='%d'>", node->data.num);
+            sprintf (tmpstr, "<heading level='%d'>", node->data.num);
+            fb_write_to_buffer (tmpstr);
             outputNode (node); /* will not output the tag */
-            printf ("</heading>");
+            fb_write_to_buffer ("</heading>");
             break;
 
         case TextToken:
-            printEscaped (node->data.str);
+            fb_write_to_buffer_escaped (node->data.str);
             break;
 
         case ExtensionToken:
             ed = node->data.ext;
-            printf ("<extension name=\"%s\">", ed->name);
-            printEscaped (ed->text);
-            printf ("</extension>");
+            sprintf (tmpstr, "<extension name=\"%s\">", ed->name);
+            fb_write_to_buffer (tmpstr);
+            fb_write_to_buffer_escaped (ed->text);
+            fb_write_to_buffer ("</extension>");
             break;
 
         case List:
-            printf (node->data.num == 1 ? "<list type='bullet'>"   :
-                    node->data.num == 2 ? "<list type='numbered'>" :
-                                          "<list>");
+            fb_write_to_buffer (node->data.num == 1 ? "<list type='bullet'>"   :
+                                node->data.num == 2 ? "<list type='numbered'>" :
+                                                      "<list>");
             outputNode (node);
-            printf ("</list>");
+            fb_write_to_buffer ("</list>");
             break;
 
         case LinkEtc:
-            printf ("<link");
-            if (node->data.num & 1) printf (" emptypipeatend='yes'");
-            if (node->data.num & 2) printf (" forcedlink='yes'");
-            printf (">");
+            fb_write_to_buffer ("<link");
+            if (node->data.num & 1) fb_write_to_buffer (" emptypipeatend='yes'");
+            if (node->data.num & 2) fb_write_to_buffer (" forcedlink='yes'");
+            fb_write_to_buffer (">");
             outputNode (node);
-            printf ("</link>");
+            fb_write_to_buffer ("</link>");
             break;
 
         default:
             outputNode (node);
             break;
     }
+}
+
+char* outputXML (Node node)
+{
+    fb_buffer = (char*) malloc (fb_buflen * sizeof (char));
+    fb_buffer[0] = '\0';
+    fb_bufcontentlen = 0;
+
+    outputXMLHelper (node);
+    return fb_buffer;
 }
