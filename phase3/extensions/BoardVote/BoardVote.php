@@ -117,7 +117,7 @@ class BoardVotePage extends SpecialPage {
 		$sql = "UPDATE $log SET log_current=0 WHERE log_user_key='$encKey'";
 		$db->query( $sql, $fname );
 		# Add vote to log
-		$db->insertArray( $log, array(
+		$db->insert( $log, array(
 			"log_user" => $wgUser->getID(),
 			"log_user_text" => $wgUser->getName(),
 			"log_user_key" => $this->mUserKey,
