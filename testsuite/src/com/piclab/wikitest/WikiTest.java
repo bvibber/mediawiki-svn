@@ -101,9 +101,41 @@ public int fail( int code ) {
 
 public void clearCookies() { m_suite.getConv().clearContents(); }
 
+/*
+ * Encapsulate rules for converting a title to URL form; this
+ * should match the equivalent function in the Wiki code.
+ */
+
+public static String titleToUrl( String title ) {
+	StringBuffer sb = new StringBuffer( title.length() + 20 );
+
+	if ( "".equals( title ) ) {
+		title = WikiSuite.getMainPage();
+	}
+
+	for (int i=0; i<title.length(); ++i) {
+		char c = title.charAt(i);
+		if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+			sb.append(c);
+		} else if (c >= '0' && c <= '9') {
+			sb.append(c);
+		} else if (c == '.' || c == '-' || c == '*' || c == ':' || c == '/'
+		  || c == '(' || c == ')' || c == '_') {
+			sb.append(c);
+		} else if (c == ' ') {
+			sb.append('_');
+		} else {
+			sb.append('%');
+			String hex = "00" + Integer.toHexString((int)c);
+			sb.append(hex.substring(hex.length() - 2));
+		}
+	}
+	return sb.toString();
+}
+
 public static String viewUrl( String title, String query ) {
 	StringBuffer url = new StringBuffer(200);
-	String t = WikiSuite.titleToUrl( title );
+	String t = titleToUrl( title );
 
 	url.append( WikiSuite.getServer() )
 	  .append( WikiSuite.getScript() ).append( "?title=" ).append( t )
@@ -113,7 +145,7 @@ public static String viewUrl( String title, String query ) {
 
 public static String viewUrl( String title ) {
 	StringBuffer url = new StringBuffer(200);
-	String t = WikiSuite.titleToUrl( title );
+	String t = titleToUrl( title );
 	String ap = WikiSuite.getArticlePath();
 
 	int p = ap.indexOf( "$1" );
@@ -186,7 +218,7 @@ throws WikiSuiteFailureException {
 public WebResponse viewPage( String title, String query )
 throws WikiSuiteFailureException {
 	StringBuffer url = new StringBuffer( 200 );
-	String t = WikiSuite.titleToUrl( title );
+	String t = titleToUrl( title );
 
 	url.append( m_suite.getServer() )
 	  .append( m_suite.getScript() ).append( "?title=" )
@@ -195,6 +227,30 @@ throws WikiSuiteFailureException {
 	WebResponse wr = getResponse( url.toString() );
 	showResponseTitle( wr );
 	return wr;
+}
+
+public WebResponse searchFor( String target, String query )
+throws WikiSuiteFailureException {
+	StringBuffer url = new StringBuffer( 200 );
+	String t = null;
+	
+	try {
+		t = java.net.URLEncoder.encode( target, "UTF-8" );
+	} catch ( java.io.UnsupportedEncodingException e ) {
+		throw new WikiSuiteFailureException( e.toString() );
+	}
+	url.append( m_suite.getServer() )
+	  .append( m_suite.getScript() ).append( "?search=" )
+	  .append( t );
+	if ( ! "".equals( query ) ) {
+		url.append( "&" ).append( query );
+	}
+	return getResponse( url.toString() );
+}
+
+public WebResponse searchFor( String target )
+throws WikiSuiteFailureException {
+	return searchFor( target, null );
 }
 
 public WebResponse editPage( String title )
