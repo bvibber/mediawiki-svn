@@ -405,7 +405,8 @@ class WikiPage extends WikiTitle {
         # Note: this will break for "url" and [url url].
         $o_no_dot = "A-Za-z0-9_~/=?\:\%\+\&\#\-" ;
         $o = "\.$o_no_dot" ;
-        $s = eregi_replace ( "([^\"])http://([$o]+[$o_no_dot])([^$o_no_dot])" , "\\1<a href=\"http://\\2\" class=\"external\">http://\\2</a>\\3" , $s ) ;
+        $s = preg_replace ( "|([^\"])http://([$o]+[$o_no_dot])(?=[^$o_no_dot])|" , "\\1<a href=\"http://\\2\" class=\"external\">http://\\2</a>" , $s ) ;
+        #$s = eregi_replace ( "([^\"])http://([$o]+[$o_no_dot])([^$o_no_dot])" , "\\1<a href=\"http://\\2\" class=\"external\">http://\\2</a>\\3" , $s ) ;
                 
         return $s ;
         }
@@ -809,7 +810,7 @@ class WikiPage extends WikiTitle {
         if ( "*" == $char || "#" == $char ) { return "</li><li>"; }
         else if ( ":" == $char || ";" == $char ) {
             $close = "</dd>";
-            if ( $this->dtOpen ) { $close = "</dt>"; }
+            if ( $this->dtOpen ) { $close = "</dt>"; } 
             if ( ";" == $char ) {
                 $this->dtOpen = true;
                 return $close . "<dt>";
@@ -884,7 +885,7 @@ class WikiPage extends WikiTitle {
                         # PHP weirdness: need empty block here.
                     } else {
                         $term = substr( $t, 0, $cpos );
-                        $s .= $term . "</dt><dd>";
+                        $s .= $term . $this->nextItem(":");
                         $t = substr( $t, $cpos + 1 );
                     }
                 }
@@ -904,7 +905,7 @@ class WikiPage extends WikiTitle {
                         if ( false === $cpos ) {
                         } else {
                             $term = substr( $t, 0, $cpos );
-                            $s .= $term . "</dt><dd>";
+                            $s .= $term . $this->nextItem(":");
                             $t = substr( $t, $cpos + 1 );
                         }
                     }
