@@ -105,6 +105,7 @@ class OutputPage {
 		$this->setHTMLTitle( wfMsg( "errorpagetitle" ) );
 		$this->setPageTitle( wfMsg( $title ) );
 		$this->setRobotpolicy( "noindex,nofollow" );
+		$this->setArticleFlag( false );
 
 		$this->mBodytext = "";
 		$this->addHTML( "<p>" . wfMsg( $msg ) . "\n" );
@@ -113,10 +114,10 @@ class OutputPage {
 
 	function databaseError( $op )
 	{
-		$this->mDebugtext .= "MySQL: " . mysql_errno() . ": " .
-		  mysql_error() . "\n";
+		wfDebug( "MySQL: " . mysql_errno() . ": " . mysql_error() . "\n" );
 		$this->setPageTitle( wfMsg( "databaseerror" ) );
 		$this->setRobotpolicy( "noindex,nofollow" );
+		$this->setArticleFlag( false );
 
 		$this->mBodytext = str_replace( "$1", $op, wfMsg( "dberrortext" ) );
 		$this->returnToMain();
@@ -717,7 +718,7 @@ class OutputPage {
 		}
 		$p = $this->mRobotpolicy;
 		if ( "" == $p ) { $p = "index,follow"; }
-		$ret .= "<meta name=\"robots\" content=\"$p\">";
+		$ret .= "<meta name=\"robots\" content=\"$p\">\n";
 
 		if ( count( $this->keywords ) > 0 ) {
 			$ret .= "<meta name=\"keywords\" content=\"" .

@@ -4,8 +4,8 @@
 class Article {
 	/* private */ var $mTitle; # WikiTitle object
 	/* private */ var $mContent, $mContentLoaded;
-	/* private */ var $mUser, $mTimestamp, $mParams;
-	/* private */ var $mCounter, $mComment, $mOldversion;
+	/* private */ var $mUser, $mTimestamp;
+	/* private */ var $mCounter, $mComment, $mRevision;
 	/* private */ var $mMinorEdit;
 
 	function Article( $t )
@@ -14,7 +14,7 @@ class Article {
 		$this->mContentLoaded = false;
 		$this->mUser = $this->mCounter = -1; # Not loaded
 		$this->mTimestamp = $this->mComment = "";
-		$this->mOldversion = 0;
+		$this->mRevision = 0;
 	}
 
 	function getContent()
@@ -35,8 +35,8 @@ class Article {
 		if ( 0 == $id ) return;
 
 		$conn = wfGetDB();
-		$sql = "SELECT cur_text,cur_timestamp,cur_user,cur_counter, " .
-		  "cur_params FROM cur WHERE cur_id=$id";
+		$sql = "SELECT cur_text,cur_timestamp,cur_user,cur_counter " .
+		  "FROM cur WHERE cur_id=$id";
 		wfDebug( "Art: 1: $sql\n" );
 		$res = mysql_query( $sql, $conn );
 
@@ -47,7 +47,6 @@ class Article {
 			$this->mContent = $s->cur_text;
 			$this->mUser = $s->cur_user;
 			$this->mCounter = $s->cur_counter;
-			$this->mParams = $s->cur_params;
 			$this->mTimestamp = $s->cur_timestamp;
 		}
 		mysql_free_result( $res );
@@ -70,7 +69,7 @@ class Article {
 		if ( -1 != $this->mUser ) return;
 
 		$conn = wfGetDB();
-		$sql = "SELECT cur_user,cur_timestamp,cur_old_version," .
+		$sql = "SELECT cur_user,cur_timestamp,cur_revision," .
 		  "cur_comment,cur_minor_edit FROM cur WHERE " .
 		  "cur_id=" . $this->getID();
 		wfDebug( "Art: 3: $sql\n" );
@@ -81,7 +80,7 @@ class Article {
 			$this->mUser = $s->cur_user;
 			$this->mTimestamp = $s->cur_timestamp;
 			$this->mComment = $s->cur_comment;
-			$this->mOldversion = $s->cur_old_version;
+			$this->mRevision = $s->cur_revision;
 			$this->mMinorEdit = $s->cur_minor_edit;
 		}
 	}
@@ -241,12 +240,13 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		$conn = wfGetDB();
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
-		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit," .
-		  "cur_old_version,cur_counter) VALUES ('" .
-		  $this->mTitle->getNamespace() . "', '" .
+		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
+		  "cur_restrictions,cur_revision,cur_ind_title) VALUES (" .
+		  $this->mTitle->getNamespace() . ", '" .
 		  $this->mTitle->getDBKey() . "', '" .
 		  wfStrencode( $text ) . "', '" . wfStrencode( $summary ) . "', '" .
-		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', 0, 0, 0)";
+		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', 0, 0, '', 0, '" .
+		  $this->mTitle->getPrefixedText() . "')";
 
 		wfDebug( "Art: 2: $sql\n" );
 		$res = mysql_query( $sql, $conn );
@@ -268,13 +268,13 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		$this->loadLastEdit();
 		$conn = wfGetDB();
 		$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
-		  "old_comment,old_user,old_old_version,old_timestamp," .
-		  "old_minor_edit) VALUES ('" .
-		  $this->mTitle->getNamespace() . "', '" .
+		  "old_comment,old_user,old_revision,old_timestamp," .
+		  "old_minor_edit) VALUES (" .
+		  $this->mTitle->getNamespace() . ", '" .
 		  $this->mTitle->getDBKey() . "', '" .
 		  wfStrencode( $this->getContent() ) . "', '" .
 		  wfStrencode( $this->mComment ) . "', " .
-		  $this->mUser . ", " . $this->mOldversion . ", '" .
+		  $this->mUser . ", " . $this->mRevision . ", '" .
 		  $this->mTimestamp . "', " . $me1 . ")";
 
 		wfDebug( "Art: 4: $sql\n" );
@@ -283,9 +283,9 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 			$wgOut->databaseError( wfMsg( "updatingarticle" ) );
 			return;
 		}
-		$cond = "(old_namespace='" . $this->mTitle->getNamespace() .
-		  "' AND old_title='" . $this->mTitle->getDBKey() .
-		  "' AND old_old_version={$this->mOldversion})";
+		$cond = "(old_namespace=" . $this->mTitle->getNamespace() .
+		  " AND old_title='" . $this->mTitle->getDBKey() .
+		  "' AND old_revision={$this->mRevision})";
 		$newid = wfGetSQL( "old", "old_id", $cond );
 		if ( 0 == $newid ) {
 			$wgOut->databaseError( wfMsg( "updatingarticle" ) );
@@ -296,7 +296,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		  "',cur_comment='" .  wfStrencode( $summary ) .
 		  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
 		  ", cur_timestamp='" . date( "YmdHis" ) .
-		  "',cur_old_version=$newid " . 
+		  "',cur_revision=$newid " . 
 		  "WHERE cur_id=" . $this->getID();
 
 		wfDebug( "Art: 5: $sql\n" );
@@ -360,6 +360,8 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		$wgOut->setPageTitle( wfMsg( "blockedtitle" ) );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
+		$wgOut->setArticleFlag( false );
+
 		$id = $wgUser->blockedBy();
 		$reason = $wgUser->blockedFor();
 
@@ -378,6 +380,8 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		$wgOut->setPageTitle( wfMsg( "readonly" ) );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
+		$wgOut->setArticleFlag( false );
+
 		$wgOut->addWikiText( wfMsg( "readonlytext" ) );
 		$wgOut->returnToMain();
 	}

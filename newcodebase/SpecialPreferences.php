@@ -86,6 +86,7 @@ function wfSpecialPreferences()
 	global $wpRows, $wpCols, $wpSaveprefs, $wpReset;
 
 	$wgOut->setPageTitle( wfMsg( "preferences" ) );
+	$wgOut->setArticleFlag( false );
 
 	wfDebug( "Prefs: err=\"$err\"\n" );
 	if ( "" != $err ) {
