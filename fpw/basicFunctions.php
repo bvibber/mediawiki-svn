@@ -71,12 +71,13 @@ function isBlockedIP () {
 # Called when editing/saving a page
 function edit ( $title ) {
 	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit , $FromEditForm , $wikiIPblocked ;
-	global $user , $CommentBox , $vpage , $EditTime , $wikiDescribePage , $wikiUser ;
+	global $user , $CommentBox , $vpage , $EditTime , $wikiDescribePage , $wikiUser , $namespaceBackground , $wikiNamespaceBackground ;
 	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend , $wikiEditHelp , $wikiRecodeInput ;
 	global $wikiSummary , $wikiMinorEdit , $wikiCopyrightNotice , $wikiSave , $wikiPreview , $wikiDontSaveChanges ;
 	$npage = new WikiPage ;
 	$npage->title = $title ;
 	$npage->makeAll () ;
+	if ( $npage->namespace ) $namespaceBackground = $wikiNamespaceBackground[strtolower($npage->namespace)] ;
 	$ret = "" ;
 	if ( !$vpage->canEdit() ) return $wikiCannotEditPage ;
 	if ( $EditTime == "" ) $EditTime = date ( "YmdHis" ) ; # Stored for edit conflict detection
@@ -210,7 +211,7 @@ function doEdit ( $title ) {
 	}
 
 function view ( $title ) {
-	global $FromEditForm , $action ;
+	global $FromEditForm , $action , $namespaceBackground , $wikiNamespaceBackground ;
 	global $vpage , $wikiDescribePage ;
 	if ( $FromEditForm ) {
 		$s = doEdit ( $title ) ;
@@ -222,6 +223,7 @@ function view ( $title ) {
 		}
 	$vpage = new WikiPage ;
 	$vpage->load ( $title ) ;
+	if ( $vpage->namespace ) $namespaceBackground = $wikiNamespaceBackground[strtolower($vpage->namespace)] ;
 	if ( $vpage->contents == $wikiDescribePage ) {
 		$action = "edit" ;
 		return doEdit ( $title ) ;

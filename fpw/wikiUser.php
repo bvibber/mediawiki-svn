@@ -52,10 +52,12 @@ class WikiUser {
 	
 	# Creates a style sheet for the page from the skin & link style options
 	function styleSheet( $action = "view" ) {
+		global $namespaceBackground ;
 		$ret = "<style type=\"text/css\"><!--\n";
 		$ret .= "body { ";
 		$textcolor = $this->options[text];
 		$bgcolor = $this->options[background];
+		if ( $namespaceBackground != "" ) $bgcolor = $namespaceBackground ;
 		if ( $textcolor == "" )
 			$textcolor = "black"; # For un-coloring links. Should be "inherit" but Netscape 4.x messes it up
 		else
