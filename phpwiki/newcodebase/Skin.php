@@ -162,9 +162,11 @@ class Skin {
 		}
 		$s .= "<td class='top' align=left valign=top>";
 
-		$s .= $this->topLinks() ; # . "\n<br>";
-		$s .= $this->pageTitleLinks();
-
+		$s .= $this->topLinks() ;
+		$s .= "<p class='subtitle'>" . $this->pageTitleLinks();
+		if ( $wgOut->isArticle() ) {
+			$s .= "<br>" . $this->otherLanguages();
+		}
 		$s .= "</td>\n<td class='top' valign=top align=right width=200 nowrap>";
 		$s .= $this->nameAndLogin();
 		$s .= "\n<br>" . $this->searchForm() . "</td>";
@@ -233,22 +235,17 @@ class Skin {
 
 	function pageTitleLinks()
 	{
-		global $wgOut, $wgTitle, $oldid, $action;
+		global $wgOut, $wgTitle, $oldid, $action, $diff;
 
-		$s = "<p class='subtitle'>" . $this->printableLink();
+		$s = $this->printableLink();
 
 		if ( $wgOut->isArticle() ) {
-			if ( $oldid ) {
-				$s .= " | " . $this->makeKnownLink( $wgTitle->getPrefixedText(),
-				  wfMsg( "currentrev" ) );
-			}
 			if ( $wgTitle->getNamespace() == Namespace::getIndex( "Image" ) ) {
 				$name = $wgTitle->getDBkey();
 				$s .= " | <a href=\"" . wfImageUrl( $name ) . "\">{$name}</a>";
 			}
-			$s .= "<br>" . $this->otherLanguages();
 		}
-		if ( "history" == $action ) {
+		if ( "history" == $action || isset( $diff ) || isset( $oldid ) ) {
 			$s .= " | " . $this->makeKnownLink( $wgTitle->getPrefixedText(),
 			  wfMsg( "currentrev" ) );
 		}
