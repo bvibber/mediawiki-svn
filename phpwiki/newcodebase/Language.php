@@ -304,6 +304,7 @@
 "unprotectthispage" => "Unprotect this page",
 "talkpage"		=> "Discuss this page",
 "articlepage"	=> "View article",
+"subjectpage"	=> "View subject", # For compatibility
 "userpage" => "View user page",
 "wikipediapage" => "View meta page",
 "imagepage" => 	"View image page",
