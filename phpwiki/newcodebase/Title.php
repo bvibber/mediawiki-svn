@@ -140,7 +140,7 @@
 	"yi"    => "http://yi.wikipedia.com/wiki.cgi?$1",
 	"yo"    => "http://yo.wikipedia.com/wiki.cgi?$1",
 	"za"    => "http://za.wikipedia.com/wiki.cgi?$1",
-	"zh"	=> "http://zh.wikipedia.com/wiki.cgi?$1",
+	"zh"	=> "http://zh.wikipedia.org/wiki/$1",
 	"zu"    => "http://zu.wikipedia.com/wiki.cgi?$1"
 );
 
