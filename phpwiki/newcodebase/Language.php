@@ -535,8 +535,9 @@ material restricted by others' [[wikipedia:Copyrights|copyrights]].
 The legal liability could really hurt the project, so please don't do it.
 See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges recent meta discussion].",
 "rcloaderr"		=> "Loading recent changes",
-"rcnote"		=> "Below are the last $1 changes in last $2 days.",
-"rclinks"		=> "Show last $1 changes in last $2 hours / last $3 days",
+"rcnote"		=> "Below are the last <strong>$1</strong> changes in last <strong>$2</strong> days.",
+# "rclinks"		=> "Show last $1 changes in last $2 hours / last $3 days",
+"rclinks"		=> "Show last $1 changes in last $2 days.",
 "rchide"		=> "in $4 form; $1 minor edits; $2 secondary namespaces; $3 multiple edits.",
 "diff"			=> "diff",
 "hist"			=> "hist",
