@@ -50,7 +50,8 @@ include_once( "utf8Case.php" );
 	"numberheadings" => "标题自动编号",
 	"rememberpassword" => "下次登录时记住密码",
 	"editwidth" => "编辑栏最大宽度",
-	"editondblclick" => "双击编辑页面(JavaScript)"
+	"editondblclick" => "双击编辑页面(JavaScript)",
+        "watchdefault" => "Watch new and modified articles"
 );
 
 /* private */ $wgBookstoreListZh = array(
@@ -61,158 +62,157 @@ include_once( "utf8Case.php" );
 );
 
 /* private */ $wgLanguageNamesZh = array(
-	"aa"    => "Afar(阿法尔语)",
-	"ab"    => "Abkhazian(阿布哈西亚语)", /* Abkhazian */
-	"af"	=> "Afrikaans(南非荷兰语)", /* Afrikaans */
-	"am"	=> "Amharic(阿姆哈拉语)",/* Amharic */
-	"ar"    => "&#8238;&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;&#8236;(阿拉伯语)",
-	        /* &#8238;&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;&#8236; (Araby) */
-	"as"	=> "Assamese(阿萨姆语)", /* Assamese */
-	"ay"	=> "Aymara(艾马拉语)", /* Aymara */
-	"az"	=> "Azerbaijani(阿塞拜疆语)", /* Azerbaijani */
-	"ba"	=> "Bashkir(巴什基尔语)", /* Bashkir */
-	"be"    => "&#1041;&#1077;&#1083;&#1072;&#1088;&#1091;&#1089;&#1082;&#1080;(白俄罗斯语)",
-	        /* &#1041;&#1077;&#1083;&#1072;&#1088;&#1091;&#1089;&#1082;&#1080; */
-	"bh"	=> "Bihara(比哈尔语) ", /* Bihara */
-	"bi"	=> "Bislama(比斯拉马语)", /* Bislama */
-	"bn"	=> "Bengali(孟加拉语)", /* Bengali */
-	"bo"	=> "Tibetan(藏语)", /* Tibetan */
-	"br"    => "Brezhoneg(布列塔尼語)", /* Brezhoneg */
-	"ca"    => "Catal&#224;(加泰罗尼亚语)", /* Catal&#224; */
-	"ch"    => "Chamoru(查莫罗语)", /* Chamoru */
-	"co"	=> "Corsican(科西嘉语)", /* Corsican */
-	"cs"    => "&#268;esk&#225;(捷克语)", /* &#268;esk&#225; */
-	"cy"    => "Cymraeg(威尔士语)", /* Cymraeg */
-	"da"    => "Dansk(丹麦语)", # Note two different subdomains. /*  */
-	"dk"    => "Dansk", # 'da' is correct for the language. /*  */
-	"de"    => "Deutsch(德语)", /* Deutsch */
-	"dz"	=> "Bhutani(不丹语)", /* Bhutani */
-	"el"    => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940;(希腊语)",
-                /* &#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; (Ellenika) */
-	"en"	=> "English(英语)", /* English */
-	"eo"	=> "Esperanto(世界语)",/* Esperanto */
-	"es"    => "Espa&#241;ol(西班牙语)", /* Espa&#241;ol */
-	"et"    => "Eesti(爱沙尼亚语)", /* Eesti */
-	"eu"    => "Euskara(巴斯克語)", /* Euskara */
-	"fa"    => "&#8238;&#1601;&#1585;&#1587;&#1609;&#8236;(法尔西语)",
-                /* &#8238;&#1601;&#1585;&#1587;&#1609;&#8236; (Farsi) ？波斯语 */
-	"fi"    => "Suomi(芬兰语)", /* Suomi */
-	"fj"	=> "Fijian(斐济语)", /* Fijian */
-	"fo"	=> "Faeroese(法罗语)", /* Faeroese */
-	"fr"    => "Fran&#231;ais(法语)", /* Fran&#231;ais */
-	"fy"    => "Frysk(弗里斯兰语)", /* Frysk */
-	"ga"    => "Gaelige(爱尔兰语)", /* Gaelige */
-	"gl"	=> "Galician(加利西亚语)", /* Galician */
-	"gn"	=> "Guarani(瓜拉尼语)", /* Guarani */
-	"gu"    => "&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752;(古吉拉特语)", 
-	        /* &#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752; (Gujarati) */
-	"ha"	=> "Hausa(豪萨语)", /* Hausa */
-	"he"    => "&#1506;&#1489;&#1512;&#1497;&#1514;(希伯来语)",
-	        /* &#1506;&#1489;&#1512;&#1497;&#1514; (Ivrit) */
-	"hi"    => "&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (印地语)",
-                /* &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi) */
-	"hr"    => "Hrvatski(克罗地亚语)", /* Hrvatski */
-	"hu"    => "Magyar(马札尔语)", /* Magyar */
-	"hy"	=> "Armenian(亚美尼亚语)", /* Armenian */
-	"ia"	=> "Interlingua(拉丁国际语)", /* Interlingua */
-	"id"	=> "Indonesia(印度尼西亚语)", /* Indonesia */
+	"aa"    => "阿法尔语", /* Afar */
+	"ab"    => "阿布哈西亚语", /* Abkhazian */
+	"af"	=> "南非荷兰语", /* Afrikaans */
+	"am"	=> "阿姆哈拉语",/* Amharic */
+	"ar"    => "阿拉伯语(&#8238;&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;&#8236;)", /* (Araby) */
+	"as"	=> "阿萨姆语", /* Assamese */
+	"ay"	=> "艾马拉语", /* Aymara */
+	"az"	=> "阿塞拜疆语", /* Azerbaijani */
+	"ba"	=> "巴什基尔语", /* Bashkir */
+	"be"    => "白俄罗斯语(&#1041;&#1077;&#1083;&#1072;&#1088;&#1091;&#1089;&#1082;&#1080;)",
+	"bh"	=> "比哈尔语 ", /* Bihara */
+	"bi"	=> "比斯拉马语", /* Bislama */
+	"bn"	=> "孟加拉语", /* Bengali */
+	"bo"	=> "藏语", /* Tibetan */
+	"br"    => "布列塔尼語(Brezhoneg)",
+	"ca"    => "加泰罗尼亚语(Catal&#224;)",
+	"ch"    => "查莫罗语", /* Chamoru */
+	"co"	=> "科西嘉语", /* Corsican */
+	"cs"    => "捷克语(&#268;esk&#225;)",
+	"cy"    => "威尔士语(Cymraeg)",
+	"da"    => "丹麦语(Dansk)", # Note two different subdomains. /* Dansk */
+	"dk"    => "丹麦语(Dansk)", # 'da' is correct for the language. /* Dansk */
+	"de"    => "德语(Deutsch)",
+	"dz"	=> "不丹语", /* Bhutani */
+	"el"    => "希腊语(&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940;)",
+                /* (Ellenika) */
+	"en"	=> "英语(English)",
+	"eo"	=> "世界语(Esperanto)",/* Esperanto */
+	"es"    => "西班牙语(Espa&#241;ol)",
+	"et"    => "爱沙尼亚语(Eesti)",
+	"eu"    => "巴斯克語(Euskara)",
+	"fa"    => "法尔西语(&#8238;&#1601;&#1585;&#1587;&#1609;&#8236;)",
+                /* (Farsi) ？波斯语 */
+	"fi"    => "芬兰语(Suomi)",
+	"fj"	=> "斐济语", /* Fijian */
+	"fo"	=> "法罗语", /* Faeroese */
+	"fr"    => "法语(Fran&#231;ais)",
+	"fy"    => "弗里斯兰语(Frysk)",
+	"ga"    => "爱尔兰语(Gaelige)",
+	"gl"	=> "加利西亚语", /* Galician */
+	"gn"	=> "瓜拉尼语", /* Guarani */
+	"gu"    => "古吉拉特语(&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752;)", 
+	        /* (Gujarati) */
+	"ha"	=> "豪萨语", /* Hausa */
+	"he"    => "希伯来语(&#1506;&#1489;&#1512;&#1497;&#1514;)",
+	        /* (Ivrit) */
+	"hi"    => "印地语(&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;)",
+                /* (Hindi) */
+	"hr"    => "克罗地亚语(Hrvatski)",
+	"hu"    => "马札尔语(Magyar)",
+	"hy"	=> "亚美尼亚语", /* Armenian */
+	"ia"	=> "拉丁国际语(Interlingua)",
+	"id"	=> "印度尼西亚语(Indonesia)",
 	"ik"	=> "Inupiak", /* Inupiak */
-	"is"    => "&#205;slenska(冰岛语)", /* &#205;slenska */
-	"it"    => "Italiano(意大利语)", /* Italiano */
-	"iu"	=> "Inuktitut", /* Inuktitut */
-	"ja"    => "日本語（日本语）", /* &#26085;&#26412;&#35486;(Nihongo) */
-	"jv"	=> "Javanese(爪哇语)", /* Javanese */
-	"ka"    => "&#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4312;(格鲁吉亚语)", 
-                /* &#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4312; (Kartuli) */
-	"kk"	=> "Kazakh(哈萨克语)", /* Kazakh */
-	"kl"	=> "Greenlandic（格陵兰语）", /* Greenlandic */
-	"km"	=> "Cambodian(柬埔寨语)", /* Cambodian */
-	"kn"	=> "Kannada(卡纳达语)", /* Kannada */
-	"ko"    => "&#54620;&#44397;&#50612;(韩国语)",
-	        /* &#54620;&#44397;&#50612; (Hangukeo) */
-	"ks"	=> "Kashmiri(克什米尔语)", /* Kashmiri */
-	"kw"    => "Kernewek(康沃尔语)", /* Kernewek */
-	"ky"	=> "Kirghiz(吉尔吉斯语)", /* Kirghiz ？柯尔克孜语 */
-	"la"    => "Latina(拉丁语)", /* Latina */
-	"ln"	=> "Lingala(林加拉语)", /* Lingala */
-	"lo"	=> "Laotian(老挝语)", /* Laotian */
-	"lt"    => "Lietuvi&#371;(立陶宛语)", /* Lietuvi&#371; */
-	"lv"	=> "Latvian(拉脱维亚语)", /* Latvian */
-	"mg"    => "Malagasy(马尔加什语)", /* Malagasy */
-	"mi"	=> "Maori(毛利人)", /* Maori */
-	"mk"	=> "Macedonian(马其顿语)", /* Macedonian */
-	"ml"	=> "Malayalam(马拉雅拉姆语)", /* Malayalam ？德拉维语*/
-	"mn"	=> "Mongolian(蒙古语)", /* Mongolian */
-	"mo"	=> "Moldavian(摩尔多瓦语)", /* Moldavian */
-	"mr"	=> "Marathi(马拉地语)", /* Marathi */
-	"ms"    => "Bahasa Melayu(马来语)", /* Bahasa Melayu */
-	"my"	=> "Burmese(缅甸语)", /* Burmese */
-	"na"	=> "Nauru(瑙鲁语)", /* Nauru */
-	"ne"    => "&#2344;&#2375;&#2346;&#2366;&#2354;&#2368;(尼泊尔语)",
-                /* &#2344;&#2375;&#2346;&#2366;&#2354;&#2368; (Nepali) */
-	"nl"    => "Nederlands(荷兰语)", /*Nederlands  */
-	"no"    => "Norsk(挪威语)", /* Norsk */
-	"oc"	=> "Occitan(奥克语)", /* Occitan */
-	"om"	=> "Oromo(奥罗莫语)", /* Oromo */
-	"or"	=> "Oriya(奥里亚语)", /* Oriya */
-	"pa"	=> "Punjabi(旁遮普语)", /* Punjabi */
-	"pl"    => "Polski(波兰语)", /* Polski */
-	"ps"	=> "Pashto(普什图语)", /* Pashto */
-	"pt"    => "Portugu&#234;s(葡萄牙语)", /* Portugu&#234;s */
-	"qu"	=> "Quechua(盖丘亚语)", /* Quechua */
-	"rm"	=> "Rhaeto-Romance()", /* Rhaeto-Romance */
-	"rn"	=> "Kirundi(基隆迪语)", /* Kirundi */
-	"ro"    => "Rom&#226;n&#259;(罗马尼亚语)", /* Rom&#226;n&#259; */
-	"ru"    => "&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;(俄语)",
-                /* &#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081; (Russkij) */
-	"rw"	=> "Kinyarwanda()", /* Kinyarwanda */
-	"sa"    => "&#2360;&#2306;&#2360;&#2381;&#2325;&#2371;&#2340;(梵语)",
-                /* &#2360;&#2306;&#2360;&#2381;&#2325;&#2371;&#2340; (Samskrta) */
-	"sd"	=> "Sindhi(信德语)", /* Sindhi */
-	"sg"	=> "Sangro(桑戈语)", /* Sangro */
-	"sh"	=> "Serbocroatian(塞尔维亚-克罗地亚语)", /* Serbocroatian */
-	"si"	=> "Sinhalese(僧伽罗语)", /* Sinhalese */
-	"simple"=> "Simple English(简单英语)", /* Simple English */
-	"sk"	=> "Slovak(斯洛伐克语)", /* Slovak */
-	"sl"	=> "Slovensko(斯洛文尼亚语)", /* Slovensko */
-	"sm"	=> "Samoan(萨摩亚语)", /* Samoan */
-	"sn"	=> "Shona(绍纳语)", /* Shona */
-	"so"    => "Soomaali(索马里语)", /* Soomaali */
-	"sq"    => "Shqiptare(阿尔巴尼亚)", /* Shqiptare */
-	"sr"    => "Srpski(塞尔维亚语)", /* Srpski */
-	"ss"	=> "Siswati(西斯瓦提语)", /* Siswati */
-	"st"	=> "Sesotho(塞索托语)", /* Sesotho */
-	"su"	=> "Sudanese(苏丹语)", /* Sudanese */
-	"sv"    => "Svenska(瑞典语)", /* Svenska */
-	"sw"    => "Kiswahili(斯瓦希里语)", /* Kiswahili */
-	"ta"	=> "Tamil(泰米尔语)", /* Tamil */
-	"te"	=> "Telugu(泰卢固语)", /* Telugu */
-	"tg"	=> "Tajik(塔吉克语)", /* Tajik */
-	"th"	=> "Thai(泰国语)", /* Thai */
-	"ti"	=> "Tigrinya(提格里尼亚语)", /* Tigrinya */
-	"tk"	=> "Turkmen(土库曼语)", /* Turkmen */
-	"tl"	=> "Tagalog(塔加路语)", /* Tagalog */
-	"tn"	=> "Setswana(茨瓦纳语)", /* Setswana */
-	"to"	=> "Tonga(汤加语)", /* Tonga */
-	"tr"    => "T&#252;rk&#231;e(土耳其语)", /* T&#252;rk&#231;e */
-	"ts"	=> "Tsonga(通加语)", /* Tsonga ？聪加语*/
-	"tt"	=> "Tatar(鞑靼语)", /* Tatar */
-	"tw"	=> "Twi(特威语)", /* Twi ？契维、特维*/
-	"ug"	=> "Uighur(维吾尔语)", /* Uighur */
-	"uk"    => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;(乌克兰语)", 
-	        /* &#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072; (Ukrayins`ka) */
-	"ur"	=> "Urdu(乌尔都语)", /* Urdu */
-	"uz"	=> "Uzbek(乌兹别克语)", /* Uzbek */
-	"vi"	=> "Vietnamese(越南语)", /* Vietnamese */
-	"vo"    => "Volap&#252;k(沃拉卜克语)", /* Volap&#252;k ？佛拉普克语 */
-	"wo"	=> "Wolof(沃洛夫语)", /* Wolof */
-	"xh"    => "isiXhosa(科萨语)", /* isiXhosa */
-	"yi"	=> "Yiddish(意第绪语)", /* Yiddish */
-	"yo"	=> "Yoruba(约鲁巴语)", /* Yoruba */
-	"za"	=> "Zhuang(壮语)", /* Zhuang ？ */
+	"is"    => "冰岛语(&#205;slenska)",
+	"it"    => "意大利语(Italiano)",
+	"iu"	=> "Inuktitut",
+	"ja"    => "日本语", /* &#26085;&#26412;&#35486;(Nihongo) */
+	"jv"	=> "爪哇语", /* Javanese */
+	"ka"    => "格鲁吉亚语(&#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4312;)", 
+                /* (Kartuli) */
+	"kk"	=> "哈萨克语", /* Kazakh */
+	"kl"	=> "格陵兰语", /* Greenlandic */
+	"km"	=> "柬埔寨语", /* Cambodian */
+	"kn"	=> "卡纳达语", /* Kannada */
+	"ko"    => "韩国语(&#54620;&#44397;&#50612;)",
+	        /* (Hangukeo) */
+	"ks"	=> "克什米尔语", /* Kashmiri */
+	"kw"    => "康沃尔语(Kernewek)",
+	"ky"	=> "吉尔吉斯语(？柯尔克孜语)", /* Kirghiz */
+	"la"    => "拉丁语(Latina)",
+	"ln"	=> "林加拉语", /* Lingala */
+	"lo"	=> "老挝语", /* Laotian */
+	"lt"    => "立陶宛语(Lietuvi&#371;)",
+	"lv"	=> "拉脱维亚语", /* Latvian */
+	"mg"    => "马尔加什语", /* Malagasy */
+	"mi"	=> "毛利人", /* Maori */
+	"mk"	=> "马其顿语", /* Macedonian */
+	"ml"	=> "马拉雅拉姆语", /* Malayalam ？德拉维语*/
+	"mn"	=> "蒙古语", /* Mongolian */
+	"mo"	=> "摩尔多瓦语", /* Moldavian */
+	"mr"	=> "马拉地语", /* Marathi */
+	"ms"    => "马来语(Bahasa Melayu)",
+	"my"	=> "缅甸语", /* Burmese */
+	"na"	=> "瑙鲁语", /* Nauru */
+	"ne"    => "尼泊尔语(&#2344;&#2375;&#2346;&#2366;&#2354;&#2368;)",
+                /* (Nepali) */
+	"nl"    => "荷兰语(Nederlands)",
+	"no"    => "挪威语(Norsk)",
+	"oc"	=> "奥克语", /* Occitan */
+	"om"	=> "奥罗莫语", /* Oromo */
+	"or"	=> "奥里亚语", /* Oriya */
+	"pa"	=> "旁遮普语", /* Punjabi */
+	"pl"    => "波兰语(Polski)",
+	"ps"	=> "普什图语", /* Pashto */
+	"pt"    => "葡萄牙语(Portugu&#234;s)",
+	"qu"	=> "盖丘亚语", /* Quechua */
+	"rm"	=> "Rhaeto-Romance", /* Rhaeto-Romance */
+	"rn"	=> "基隆迪语", /* Kirundi */
+	"ro"    => "罗马尼亚语(Rom&#226;n&#259;)",
+	"ru"    => "俄语(&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;)",
+                /*  (Russkij) */
+	"rw"	=> "Kinyarwanda(Kinyarwanda)",
+	"sa"    => "梵语(&#2360;&#2306;&#2360;&#2381;&#2325;&#2371;&#2340;)",
+                /* (Samskrta) */
+	"sd"	=> "信德语", /* Sindhi */
+	"sg"	=> "桑戈语", /* Sangro */
+	"sh"	=> "塞尔维亚-克罗地亚语", /* Serbocroatian */
+	"si"	=> "僧伽罗语", /* Sinhalese */
+	"simple"=> "简单英语(Simple English)",
+	"sk"	=> "斯洛伐克语", /* Slovak */
+	"sl"	=> "斯洛文尼亚语(Slovensko)",
+	"sm"	=> "萨摩亚语", /* Samoan */
+	"sn"	=> "绍纳语", /* Shona */
+	"so"    => "索马里语(Soomaali)",
+	"sq"    => "阿尔巴尼亚(Shqiptare)",
+	"sr"    => "塞尔维亚语(Srpski)",
+	"ss"	=> "西斯瓦提语", /* Siswati */
+	"st"	=> "塞索托语", /* Sesotho */
+	"su"	=> "苏丹语", /* Sudanese */
+	"sv"    => "瑞典语(Svenska)",
+	"sw"    => "斯瓦希里语(Kiswahili)",
+	"ta"	=> "泰米尔语", /* Tamil */
+	"te"	=> "泰卢固语", /* Telugu */
+	"tg"	=> "塔吉克语", /* Tajik */
+	"th"	=> "泰国语", /* Thai */
+	"ti"	=> "提格里尼亚语", /* Tigrinya */
+	"tk"	=> "土库曼语", /* Turkmen */
+	"tl"	=> "塔加路语", /* Tagalog */
+	"tn"	=> "茨瓦纳语", /* Setswana */
+	"to"	=> "汤加语", /* Tonga */
+	"tr"    => "土耳其语(T&#252;rk&#231;e)",
+	"ts"	=> "通加语", /* Tsonga ？聪加语*/
+	"tt"	=> "鞑靼语", /* Tatar */
+	"tw"	=> "特威语", /* Twi ？契维、特维*/
+	"ug"	=> "维吾尔语", /* Uighur */
+	"uk"    => "乌克兰语(&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;)", 
+	        /*  (Ukrayins`ka) */
+	"ur"	=> "乌尔都语", /* Urdu */
+	"uz"	=> "乌兹别克语", /* Uzbek */
+	"vi"	=> "越南语", /* Vietnamese */
+	"vo"    => "沃拉卜克语(Volap&#252;k)", /* ？佛拉普克语 */
+	"wo"	=> "沃洛夫语", /* Wolof */
+	"xh"    => "科萨语", /* isiXhosa */
+	"yi"	=> "意第绪语", /* Yiddish */
+	"yo"	=> "约鲁巴语", /* Yoruba */
+	"za"	=> "壮语", /* Zhuang ？ */
 	"zh"    => "中文", /* Zhongwen */
-	"zu"	=> "Zulu(祖鲁语)" /* Zulu */
+	"zu"	=> "祖鲁语" /* Zulu */
 );
+
 /* private */ $wgWeekdayNamesZh = array(
 	"星期日", "星期一", "星期二", "星期三", "星期四",
 	"星期五", "星期六"
@@ -365,7 +365,8 @@ MySQL返回错误 \"<tt>$3: $4</tt>\".",
 "nodb"		=> "无法选择数据库 $1",
 "readonly"	=> "数据库禁止访问",
 "enterlockreason" => "请输入禁止访问原因, 包括估计重新开放的时间",
-"readonlytext"	=> "Wikipedia数据库目前禁止输入新内容及更改，这很可能是由于数据库正在维修，之后即可恢复。
+"readonlytext"	=> "Wikipedia数据库目前禁止输入新内容及更改，
+这很可能是由于数据库正在维修，之后即可恢复。
 管理员有如下解释:
 <p>$1",
 "missingarticle" => "数据库找不到文字\"$1\".
@@ -569,9 +570,17 @@ $2 List redirects &nbsp; Search for $3 $9",
 "recentchanges" => "最近更改", /* Recent changes */
 
 "recentchangestext" =>
-"本页用来察看 Wikipedia 最近的更改。请参看[[wikipedia:欢迎，新来者|欢迎，新来者]]、[[wikipedia:常见问题解答|常见问题解答]]、[[Wikipedia:守则与指导|参与者守则与指导]]（特别是[[Wikipedia:命名常规|命名常规]]、[[Wikipedia:中性的观点|中性的观点]]）和[[Wikipedia:最常见失礼行为|最常见失礼行为]]。
+"本页用来察看 Wikipedia 最近的更改。
+请参看[[wikipedia:欢迎，新来者|欢迎，新来者]]、
+[[wikipedia:常见问题解答|常见问题解答]]、
+[[Wikipedia:守则与指导|参与者守则与指导]]
+（特别是[[Wikipedia:命名常规|命名常规]]、[[Wikipedia:中性的观点|中性的观点]]）
+和[[Wikipedia:最常见失礼行为|最常见失礼行为]]。
 
-如果您希望 Wikipedia 成功，那么请您不要增加受其它[[wikipedia:版权信息|版权]]限制的材料，这一点将非常重要。相关的法律责任会伤害本项工程，所以请不要这样做。此外请参见[http://meta.wikipedia.org/wiki/Special:Recentchanges 最近的 meta 讨论]。
+如果您希望 Wikipedia 成功，那么请您不要增加受其它[[wikipedia:版权信息|版权]]
+限制的材料，这一点将非常重要。相关的法律责任会伤害本项工程，所以请不要这样做。
+此外请参见
+[http://meta.wikipedia.org/wiki/Special:Recentchanges 最近的 meta 讨论]。
 ",
 /*
 Track the most recent changes to Wikipedia on this page.
@@ -609,97 +618,87 @@ See also the [http://meta.wikipedia.org/wiki/Special:Recentchanges recent meta d
 # Upload
 #
 "upload"	=> "上载", /* Upload */
-"uploadbtn"	=> "Upload file",
-"uploadlink"	=> "Upload images",
-"reupload"	=> "Re-upload",
-"reuploaddesc"	=> "Return to the upload form.",
-"uploadnologin" => "Not logged in",
-"uploadnologintext"	=> "You must be <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
-to upload files.",
-"uploadfile"	=> "Upload file",
-"uploaderror"	=> "Upload error",
-"uploadtext"	=> "<strong>STOP!</strong> Before you upload here,
-make sure to read and follow Wikipedia's <a href=\"" .
-wfLocalUrlE( "Wikipedia:Image_use_policy" ) . "\">image use policy</a>.
-<p>To view or search previously uploaded images,
-go to the <a href=\"" . wfLocalUrlE( "Special:Imagelist" ) .
-"\">list of uploaded images</a>.
-Uploads and deletions are logged on the <a href=\"" .
-wfLocalUrlE( "Wikipedia:Upload_log" ) . "\">upload log</a>.
-<p>Use the form below to upload new image files for use in
-illustrating your articles.
-On most browsers, you will see a \"Browse...\" button, which will
-bring up your operating system's standard file open dialog.
-Choosing a file will fill the name of that file into the text
-field next to the button.
-You must also check the box affirming that you are not
-violating any copyrights by uploading the file.
-Press the \"Upload\" button to finish the upload.
-This may take some time if you have a slow internet connection.
-<p>The preferred formats are JPEG for photographic images, PNG
-for drawings and other iconic images, and OGG for sounds.
-Please name your files descriptively to avoid confusion.
-To include the image in an article, use a link in the form
-<b>[[image:file.jpg]]</b> or <b>[[image:file.png|alt text]]</b>
-or <b>[[media:file.ogg]]</b> for sounds.
-<p>Please note that as with Wikipedia pages, others may edit or
-delete your uploads if they think it serves the encyclopedia, and
-you may be blocked from uploading if you abuse the system.",
-"uploadlog"		=> "upload log",
-"uploadlogpage" => "Upload_log",
-"uploadlogpagetext" => "Below is a list of the most recent file uploads.
-All times shown are server time (UTC).
+"uploadbtn"	=> "上载文件",
+"uploadlink"	=> "上载图像",
+"reupload"	=> "重新上载",
+"reuploaddesc"	=> "返回上载表单。",
+"uploadnologin" => "未登录",
+"uploadnologintext"	=> "您必须先<a href=\"" .
+  wfLocalUrl( "Special:Userlogin" ) . "\">登录</a>
+才能上载文件。",
+"uploadfile"	=> "上载文件",
+"uploaderror"	=> "上载错误",
+"uploadtext"	=> "<strong>停止！</strong>在您上载之前，请先阅读并遵守Wikipedia<a href=\"" .
+wfLocalUrlE( "Wikipedia:Image_use_policy" ) . "\">图像使用守则</a>。
+<p>如果您要查看或搜索之前上载的图像，
+请到<a href=\"" . wfLocalUrlE( "Special:Imagelist" ) .
+"\">已上载图像列表</a>.
+所有上载与删除行为都被记录在<a href=\"" .
+wfLocalUrlE( "Wikipedia:上载纪录" ) . "\">上载纪录</a>内。
+<p>使用下面的表单来上载用在条目内新的图像文件。
+在绝大多数浏览器内，你会看到一个\"浏览...\"按钮，点击它后就会跳出一个打开文件对话框。
+选择一个文件后文件名将出现在按钮旁边的文字框中。
+您也必须点击旁边的复选框确认您所上载的文件并没有违反相关版权法律。
+点击\"上载\" 按钮完成上载程序。
+如果您使用的是较慢的网络连接的话那么这个上载过程会需要一些时间。
+<p>我们建议照相图片使用JPEG格式，绘图及其他图标图像使用PNG格式，音像则使用OGG格式。
+请使用具有描述性的语言来命名您的文件以避免混乱。
+要在文章中加入图像，使用以下形式的连接：
+<b>[[图像:file.jpg]]</b>或者<b>[[图像:file.png|解释文字]]</b>
+或<b>[[media:file.ogg]]</b>来连接音像文件。
+<p>请注意在Wikipedia页面中，其他人可能会为了百科全书的利益而编辑或删除您的上载文件，
+而如果您滥用上载系统，您则有可能被禁止使用上载功能。",
+"uploadlog"		=> "上载纪录",
+"uploadlogpage" => "上载纪录",
+"uploadlogpagetext" => "以下是最近上载的文件的一览表。
+所有显示的时间都是服务器时间（UTC）。
 <ul>
 </ul>
 ",
-"filename"	=> "Filename",
-"filedesc"	=> "Summary",
-"affirmation"	=> "I affirm that the copyright holder of this file
-agrees to license it under the terms of the $1.",
-"copyrightpage" => "Wikipedia:Copyrights",
-"copyrightpagename" => "Wikipedia copyright",
-"uploadedfiles"	=> "Uploaded files",
-"noaffirmation" => "You must affirm that your upload does not violate
-any copyrights.",
-"ignorewarning"	=> "Ignore warning and save file anyway.",
-"minlength"		=> "Image names must be at least three letters.",
-"badfilename"	=> "Image name has been changed to \"$1\".",
-"badfiletype"	=> "\".$1\" is not a recommended image file format.",
-"largefile"		=> "It is recommended that images not exceed 100k in size.",
-"successfulupload" => "Successful upload",
-"fileuploaded"	=> "File \"$1\" uploaded successfully.
-Please follow this link: ($2) to the description page and fill
-in information about the file, such as where it came from, when it was
-created and by whom, and anything else you may know about it.",
-"uploadwarning" => "Upload warning",
-"savefile"		=> "Save file",
-"uploadedimage" => "uploaded \"$1\"",
+"filename"	=> "文件名",
+"filedesc"	=> "简述",
+"affirmation"	=> "我保证本文件的版权持有人同意将其在$1条款下发布。",
+"copyrightpage" => "Wikipedia:版权信息",
+"copyrightpagename" => "Wikipedia版权",
+"uploadedfiles"	=> "已上载文件",
+"noaffirmation" => "您必须保证您所上载的文件没有违反任何版权法律。",
+"ignorewarning"	=> "忽略警告并保存文件。",
+"minlength"		=> "图像名字必须至少有三个字母。",
+"badfilename"	=> "图像名已被改为\"$1\".",
+"badfiletype"	=> "\".$1\"不是所推荐的图像文件格式。",
+"largefile"		=> "我们建议图像大小不超过100k。",
+"successfulupload" => "上载成功",
+"fileuploaded"	=> "文件\"$1\"上载成功。
+请根据连接($2)到图像描述页添加有关文件信息，例如它的来源，在何时由谁创造，
+以及其他任何您知道的关于改图像的信息。",
+"uploadwarning" => "上载警告",
+"savefile"		=> "保存文件",
+"uploadedimage" => "已上载\"$1\"",
 
 # Image list
 #
-"imagelist"		=> "Image list",
-"imagelisttext"	=> "Below is a list of $1 images sorted $2.",
-"getimagelist"	=> "fetching image list",
-"ilshowmatch"	=> "Show all images with names matching",
-"ilsubmit"		=> "Search",
-"showlast"		=> "Show last $1 images sorted $2.",
-"all"			=> "all",
-"byname"		=> "by name",
-"bydate"		=> "by date",
-"bysize"		=> "by size",
-"imgdelete"		=> "del",
-"imgdesc"		=> "desc",
-"imglegend"		=> "Legend: (desc) = show/edit image description.",
-"imghistory"	=> "Image history",
-"revertimg"		=> "rev",
-"deleteimg"		=> "del",
-"imghistlegend" => "Legend: (cur) = this is the current image, (del) = delete
-this old version, (rev) = revert to this old version.
-<br><i>Click on date to see image uploaded on that date</i>.",
-"imagelinks"	=> "Image links",
-"linkstoimage"	=> "The following pages link to this image:",
-"nolinkstoimage" => "There are no pages that link to this image.",
+"imagelist"		=> "图像列表",
+"imagelisttext"	=> "以下是$1幅图像。",
+"getimagelist"	=> "正在获取图像列表",
+"ilshowmatch"	=> "显示所有匹对的图像",
+"ilsubmit"		=> "搜索",
+"showlast"		=> "显示最后$1幅图像。",
+"all"			=> "全部",
+"byname"		=> "按名字",
+"bydate"		=> "按日期",
+"bysize"		=> "按大小",
+"imgdelete"		=> "删",
+"imgdesc"		=> "述",
+"imglegend"		=> "图标：(述) = 显示/编辑图像描述页。",
+"imghistory"	=> "图像历史",
+"revertimg"		=> "恢复rev",
+"deleteimg"		=> "删",
+"imghistlegend" => "Legend: (现) = 目前的图像，(删) = 删除旧版本，
+(恢复) = 恢复到旧版本。
+<br><i>点击日期查看当天上载的图像</i>.",
+"imagelinks"	=> "图像连接",
+"linkstoimage"	=> "以下页面连接到本图像：",
+"nolinkstoimage" => "没有页面连接到本图像.",
 
 # Statistics
 # 统计
@@ -709,14 +708,20 @@ this old version, (rev) = revert to this old version.
 "sitestats"		=> "站点统计", /* Site statistics */
 "userstats"		=> "用户统计", /* User statistics */
 
-"sitestatstext" => "数据库中共有 <b>$1</b> 页页面；其中包括对话页、关于 Wikipedia 的页面、最少量的\"stub\"页、重定向的页面，以及未达到条目质量的页面；除此之外还有 <b>$2</b> 页可能是合乎标准的条目。<p>从系统软件升级（ 2002 年 10 月 27 日）以来，全站点共有页面浏览 <b>$3</b> 次，页面编辑 <b>$4</b> 次，每页平均编辑 <b>$5</b> 次，各次编辑后页面的每个版本平均浏览 <b>$6</b> 次。",
+"sitestatstext" => "数据库中共有 <b>$1</b> 页页面；
+其中包括对话页、关于 Wikipedia 的页面、最少量的\"stub\"页、重定向的页面，
+以及未达到条目质量的页面；除此之外还有 <b>$2</b> 页可能是合乎标准的条目。
+<p>从系统软件升级（ 2002 年 10 月 27 日）以来，全站点共有页面浏览 <b>$3</b> 次，
+页面编辑 <b>$4</b> 次，每页平均编辑 <b>$5</b> 次，
+各次编辑后页面的每个版本平均浏览 <b>$6</b> 次。",
 /* There are <b>$1</b> total pages in the database.
 This includes \"talk\" pages, pages about Wikipedia, minimal \"stub\"
 pages, redirects, and others that probably don't qualify as articles.
 Excluding those, there are <b>$2</b> pages that are probably legitimate
 articles.<p>There have been a total of <b>$3</b> page views, and <b>$4</b> page edits since the software was upgraded (July 20, 2002). That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit. */
 
-"userstatstext" => "现有 <b>$1</b> 位注册用户，其中 <b>$2</b> 位是管理员（参见 $3 ）。",
+"userstatstext" => "现有 <b>$1</b> 位注册用户，
+其中 <b>$2</b> 位是管理员（参见 $3 ）。",
 /* There are <b>$1</b> registered users.<b>$2</b> of these are administrators (see $3). */
 
 
@@ -807,6 +812,7 @@ or has chosen not to receive e-mail from other users.",
 
 # Watchlist
 #
+
 "watchlist"	=> "监视列表", /* Watch list */
 "watchlistsub"	=> "(用户\"$1\")", /* (for user \"$1\") */
 "nowatchlist"	=> "You have no items on your watchlist.", /*  */
@@ -1084,7 +1090,7 @@ class LanguageZh extends LanguageUtf8 {
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
 
 		$d = substr( $ts, 0, 4 ) . "年" .
-		  $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) . " " .
+		  $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
 		  (0 + substr( $ts, 6, 2 )) . "日";
 		return $d;
 	}
@@ -1130,8 +1136,7 @@ class LanguageZh extends LanguageUtf8 {
 		if ( "" == $m ) { return $wgAllMessagesEn[$key]; }
 		else return $m;
 	}
-	
-	
+		
 	# inherit default iconv(), ucfirst(), checkTitleEncoding()
 
 	function stripForSearch( $string ) {
