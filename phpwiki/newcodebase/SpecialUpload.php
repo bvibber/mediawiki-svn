@@ -123,6 +123,7 @@ function saveUploadedFile()
 	if ( ! move_uploaded_file( $wpUploadTempName, $wgSavedFile ) ) {
 		$wgOut->fileCopyError( $wpUploadTempName, $wgSavedFile );
 	}
+	chmod( $wgSavedFile, 0644 );
 }
 
 function unsaveUploadedFile()
