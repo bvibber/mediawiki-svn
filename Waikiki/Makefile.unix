@@ -1,10 +1,17 @@
-# Assuming GCC and that sqlite is installed in an accessible place (eg /usr/local)
+# Assuming GCC and that sqlite is installed in an accessible place
+# (eg /usr/local)
+
+# Notes: to make a distributable binary for Mac OS X, you need to fix
+# the path name embedded into the binary to use a relative path:
+#
+# install_name_tool -change /usr/local/lib/libsqlite.0.dylib ./libsqlite.0.dylib waikiki
+#
+# This'll probably go into the build rules for the GUI front-end app.
 
 CPP  = g++
 CC   = gcc
-RES  = 
-OBJ  = main.o TUCS.o TParser.o TOutput.o TSkin.o TUser.o TTitle.o TArticle.o TLanguage.o TSkinBlank.o TDatabase.o TSpecialPages.o $(RES)
-LINKOBJ  = main.o TUCS.o TParser.o TOutput.o TSkin.o TUser.o TTitle.o TArticle.o TLanguage.o TSkinBlank.o TDatabase.o TSpecialPages.o $(RES)
+OBJ  = main.o TUCS.o TParser.o TOutput.o TSkin.o TUser.o TTitle.o TArticle.o TLanguage.o TSkinBlank.o TDatabase.o TSpecialPages.o LanguageEN.o
+LINKOBJ  = $(OBJ)
 LIBS =  -lsqlite
 INCS =  
 CXXINCS = 
@@ -21,7 +28,7 @@ clean: clean-custom
 	rm -f $(OBJ) $(BIN)
 
 $(BIN): $(LINKOBJ)
-	$(CPP) $(LINKOBJ) -o "waikiki" $(LIBS)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
 main.o: main.cpp
 	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
@@ -58,3 +65,7 @@ TDatabase.o: TDatabase.cpp
 
 TSpecialPages.o: TSpecialPages.cpp
 	$(CPP) -c TSpecialPages.cpp -o TSpecialPages.o $(CXXFLAGS)
+
+LanguageEN.o: LanguageEN.cpp
+	$(CPP) -c LanguageEN.cpp -o LanguageEN.o $(CXXFLAGS)
+
