@@ -1,4 +1,3 @@
-body { color: #000000; background: #FFFFFF; }
 .bodytext { }
 h1.pagetitle { padding-bottom: 0; margin-bottom: 0; }
 p.subtitle { padding-top: 0; margin-top: 0; }
@@ -8,9 +7,34 @@ a.red { color: red; text-decoration: none; }
 a.green { color: blue; text-decoration: none; }
 a.syslink { color:white; text-decoration:none; }
 a.CBlink { color:#0000AA; text-decoration:none; font-size:12pt; }
-.topbar { border-bottom-width: 2; border-bottom-style: ridge; }
-.middle { background:white }
-.quickbar { background:#FFFFFF; border-left-width: 2; border-left-style: ridge; }
-.footer { border-top-color: black; border-top-width: 2; border-top-style: groove; }
 a.newlink { color: #000000; text-decoration: none; }
 .newlinkedge { display: inline; }
+
+body {
+ color: #000000; background: #FFFFFF;
+ margin: 0px;
+ padding: 4px;
+}
+#topbar {
+ background: #DDDDDD;
+ margin-left: 156px; margin-right: 4px;
+ border: 1px solid #000000;
+ padding: 4px;
+}
+#quickbar {
+ background: #DDDDDD;
+ width: 140px;
+ border: 1px solid #000000;
+ padding: 4px;
+}
+#article {
+ background: #FFFFFF;
+ margin-left: 156px; margin-right: 4px;
+ padding: 4px;
+}
+#footer {
+ background: #DDDDDD;
+ margin-left: 156px; margin-right: 4px;
+ border: 1px solid #000000;
+ padding: 4px;
+}

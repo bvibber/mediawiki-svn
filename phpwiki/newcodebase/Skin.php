@@ -45,7 +45,7 @@ class Skin {
 
 	function getUserStyles()
 	{
-		global $wgUser, $wgStyleSheetPath;
+		global $wgUser, $wgOut, $wgStyleSheetPath;
 
 		$s = "<script language='javascript' type='text/javascript' " .
 		  "src='{$wgStyleSheetPath}/sticky.js'></script>\n";
@@ -61,6 +61,12 @@ class Skin {
 		}
 		$s .= "#quickbar { position: absolute; top: 4px; left: 4px; " .
 		  "visibility: visible; z-index: 99;}\n";
+
+		if ( $wgOut->isQuickbarSupressed() ) {
+			$s .= "#topbar { margin-left: 4px; margin-right: 4px; }\n" .
+			  "#article { margin-left: 4px; margin-right: 4px; }\n" .
+			  "#footer { margin-left: 4px; margin-right: 4px; }\n";
+		}
 		$s .= "//--></style>\n";
 		$s .= "<style type='text/css' media='screen'>\n" .
 		  "@import '{$wgStyleSheetPath}/quickbar.css';\n</style>\n";
