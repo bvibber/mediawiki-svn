@@ -64,7 +64,12 @@ function deletepage () {
         mysql_query ( $sql , $connection ) ;
         $sql = "DELETE FROM linked WHERE linked_to = \"$target\"" ;
         mysql_query ( $sql , $connection ) ;
-    
+        # and links from $target are removed
+        $sql = "DELETE FROM unlinked WHERE unlinked_from = \"$target\"" ;
+        mysql_query ( $sql , $connection ) ;
+        $sql = "DELETE FROM linked WHERE linked_from = \"$target\"" ;
+        mysql_query ( $sql , $connection ) ;
+
     } else {
         $ret = "<font size=\"+2\">".str_replace(array("$1","$2"),array($target,wikiLink("special:deletepage&target=$target")),$wikiDeleteAsk)."</font>" ;
         }
