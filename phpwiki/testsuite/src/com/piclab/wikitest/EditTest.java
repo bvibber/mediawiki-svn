@@ -15,11 +15,12 @@ public EditTest( WikiSuite ws ) { super(ws); }
 public String testName() { return "Editing"; }
 
 protected boolean runTest() throws Exception {
-	m_suite.clearCookies();
+	WebResponse wr = m_suite.deletePage( "Omaha" ); /* Will logout */
 
 	/* java.util.logging.Level l = WikiSuite.setLoggingLevel(
 	  java.util.logging.Level.ALL ); */
 
+	WikiSuite.fine( "Starting test \"" + testName() + "\"" );
 	if ( ! part1() ) { throw new WikiSuiteFailureException( "Part 1" ); }
 	if ( ! part2() ) { throw new WikiSuiteFailureException( "Part 2" ); }
 	if ( ! part3() ) { throw new WikiSuiteFailureException( "Part 3" ); }

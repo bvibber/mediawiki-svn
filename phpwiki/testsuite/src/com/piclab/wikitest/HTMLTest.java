@@ -55,6 +55,7 @@ protected boolean runTest() throws Exception {
 	/* java.util.logging.Level l = WikiSuite.setLoggingLevel(
 	  java.util.logging.Level.ALL ); */
 
+    WikiSuite.fine( "Starting test \"" + testName() + "\"" );
 	if ( ! part1() ) { throw new WikiSuiteFailureException( "Part 1" ); }
 	if ( ! part2() ) { throw new WikiSuiteFailureException( "Part 2" ); }
 

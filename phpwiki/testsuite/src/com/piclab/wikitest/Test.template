@@ -4,7 +4,6 @@
  */
 
 package com.piclab.wikitest;
-
 import com.meterware.httpunit.*;
 
 public class FooTest extends WikiTest {
@@ -15,22 +14,26 @@ public String testName() { return "Foo"; }
 
 protected boolean runTest() throws Exception {
 	m_suite.clearCookies();
+
+	/* java.util.logging.Level l = WikiSuite.setLoggingLevel(
+	  java.util.logging.Level.ALL ); */
+
+    WikiSuite.fine( "Starting test \"" + testName() + "\"" );
 	if ( ! part1() ) { throw new WikiSuiteFailureException( "Part 1" ); }
 	if ( ! part2() ) { throw new WikiSuiteFailureException( "Part 2" ); }
 
+	/* WikiSuite.setLoggingLevel( l ); */
 	return true;
 }
 
 private boolean part1() throws Exception {
-	boolean result = true;
 
-	return result;
+	return true;
 }
 
 private boolean part2() throws Exception {
-	boolean result = true;
 
-	return result;
+	return true;
 }
 
 public static void main( String[] params ) {
