@@ -5,6 +5,8 @@
 	# Special cases
 	"w"		=> "http://www.wikipedia.org/wiki/$1",
 	"m"		=> "http://meta.wikipedia.org/wiki/$1",
+	"meta"		=> "http://meta.wikipedia.org/wiki/$1",
+	"sep11"		=> "http://sep11.wikipedia.org/wiki/$1",
 	"simple"=> "http://simple.wikipedia.com/wiki.cgi?$1",
 
 	# ISO 639 2-letter language codes
@@ -41,7 +43,7 @@
 	"fi"    => "http://fi.wikipedia.com/wiki.cgi?$1",
 	"fj"    => "http://fj.wikipedia.com/wiki.cgi?$1",
 	"fo"    => "http://fo.wikipedia.com/wiki.cgi?$1",
-	"fr"	=> "http://fr.wikipedia.com/wiki.cgi?$1",
+	"fr"	=> "http://fr.wikipedia.org/wiki/$1",
 	"fy"    => "http://fy.wikipedia.com/wiki.cgi?$1",
 	"ga"    => "http://ga.wikipedia.com/wiki.cgi?$1",
 	"gl"    => "http://gl.wikipedia.com/wiki.cgi?$1",
