@@ -222,6 +222,7 @@ include_once( "utf8Case.php" );
 	"Allpages"		=> "タイトル別全ページ",
 
 	"Ipblocklist"	=> "ブロックされたIPアドレス",
+	"Maintenance" => "Maintenance page",
 	"Specialpages"  => "",
 	"Contributions" => "",
 	"Emailuser"		=> "",
@@ -233,7 +234,8 @@ include_once( "utf8Case.php" );
 
 /* private */ $wgSysopSpecialPagesJa = array(
 	"Blockip"		=> "IPアドレスをブロック",
-	"Asksql"		=> "データベースに問い合わせ"
+	"Asksql"		=> "データベースに問い合わせ",
+	"Undelete"		=> "View and restore deleted pages"
 );
 
 /* private */ $wgDeveloperSpecialPagesJa = array(
@@ -271,7 +273,7 @@ include_once( "utf8Case.php" );
 "currentevents" => "現在のイベント",
 "errorpagetitle" => "エラー",
 "returnto"		=> "$1 に戻る。",
-"fromwikipedia"	=> "出典：フリー百科事典『Wikipedia（ウィキピディア）』",
+"fromwikipedia"	=> "出典：フリー百科事典『Wikipedia（ウィキペディア）』",
 "whatlinkshere"	=> "ここにリンクしているページ",
 "help"			=> "ヘルプ",
 "search"		=> "検索",
@@ -426,11 +428,9 @@ revision of this page.
 If you save it, any changes made since this revision will be lost.</strong>\n",
 "yourdiff"		=> "Differences",
 "copyrightwarning" => "Wikipediaに投稿された文書は、すべて GNU Free Documentation License によって発行されたものとみなされますので、留意してください。
-(詳細は $1 を参照)。
-If you don't want your writing to be edited mercilessly and redistributed
-at will, then don't submit it here.<br>
-You are also promising us that you wrote this yourself, or copied it from a
-public domain or similar free resource.
+(詳細は $1 を参照, また、参考までに非公式日本語訳はhttp://www.opensource.jp/fdl/fdl.ja.html　を参照)。
+あなたの文章が他人によって自由に編集、配布されることを望まない場合は、投稿を控えて下さい。<br>
+また、あなたの投稿する文章はあなた自身によって書かれたものであるか、パブリック・ドメインかそれに類するフリー・リソースからのコピーであることを約束して下さい。
 <strong>著作権のある作品を許諾なしに投稿してはいけません！</strong>",
 
 
