@@ -104,6 +104,7 @@ if ( isset ( $search ) ) {
 	}
 	$out = view ( $title ) ;
 } else if ( $action == "edit" ) {
+	include_once ( "basic_edit.php" ) ;
 	$out = doEdit ( $title ) ;
 } else if ( $action == "print" ) {
 	$out = doPrint ( $title ) ;
