@@ -70,6 +70,9 @@ class Skin {
 		if ( 1 == $wgUser->getOption( "highlightbroken" ) ) {
 			$s .= "a.new { color: #880000; }\n";
 		}
+		if ( 1 == $wgUser->getOption( "justify" ) ) {
+			$s .= "#article { text-align: justify; }\n";
+		}
 		return $s;
 	}
 
@@ -222,12 +225,7 @@ class Skin {
 	{
 		global $wgOut, $wgTitle, $oldid, $action;
 
-		if ( "history" == $action ) { $q = "action=history&amp;"; }
-		else { $q = ""; }
-
-		$s = "<p class='subtitle'>"
-		  . $this->makeKnownLink( $wgTitle->getPrefixedText(),
-		  WfMsg( "printableversion" ), "{$q}printable=yes" );
+		$s = "<p class='subtitle'>" . $this->printableLink();
 
 		if ( $wgOut->isArticle() ) {
 			if ( $oldid ) {
@@ -238,12 +236,24 @@ class Skin {
 				$name = $wgTitle->getDBkey();
 				$s .= " | <a href=\"" . wfImageUrl( $name ) . "\">{$name}</a>";
 			}
-			$s .= $this->otherLanguages();
+			$s .= "<br>" . $this->otherLanguages();
 		}
 		if ( "history" == $action ) {
 			$s .= " | " . $this->makeKnownLink( $wgTitle->getPrefixedText(),
 			  wfMsg( "currentrev" ) );
 		}
+		return $s;
+	}
+
+	function printableLink()
+	{
+		global $wgOut, $wgTitle, $oldid, $action;
+
+		if ( "history" == $action ) { $q = "action=history&amp;"; }
+		else { $q = ""; }
+
+		$s = $this->makeKnownLink( $wgTitle->getPrefixedText(),
+		  WfMsg( "printableversion" ), "{$q}printable=yes" );
 		return $s;
 	}
 
@@ -342,7 +352,7 @@ class Skin {
 				  $sep . $this->moveThisPage();
 			}
 		}
-		$s .= $this->otherLanguages();
+		$s .= "<br>" . $this->otherLanguages();
 		return $s;
 	}
 
@@ -360,7 +370,7 @@ class Skin {
 
 		$d = $wgLang->timeanddate( $wgArticle->getTimestamp() );
 		$s .= " " . str_replace( "$1", $d, wfMsg( "lastmodified" ) );
-		return $s;
+		return "<span id='pagestats'>{$s}</span>";
 	}
 
 	function logoText()
@@ -375,7 +385,6 @@ class Skin {
 	{
 		global $wgOut, $wgTitle, $wgUser;
 
-		$mp = wfMsg( "mainpage" );
 		$s = "\n<div id='quickbar'>";
 		$s .= "\n" . $this->logoText() . "\n<hr>";
 
@@ -604,7 +613,7 @@ class Skin {
 		$a = $wgOut->getLanguageLinks();
 		if ( 0 == count( $a ) ) { return ""; }
 
-		$s = "<br>" . wfMsg( "otherlanguages" ) . ": ";
+		$s = wfMsg( "otherlanguages" ) . ": ";
 		$first = true;
 		foreach( $a as $l ) {
 			if ( ! $first ) { $s .= " | "; }
