@@ -16,6 +16,9 @@
 	7	=> "Imagen_Discusión"
 );
 
+/* Note that some default options can be customized -- see
+   '$wgDefaultUserOptionsEn' in Language.php */
+
 /* private */ $wgQuickbarSettingsEs = array(
 	"Ninguna", "Fija a la derecha", "Fija a la izquierda", "Flotante a la izquierda"
 );
@@ -27,13 +30,24 @@
 /* private */ $wgUserTogglesEs = array(
 	"hover"		=> "Mostrar hoverbox? sobre los enlaces wiki",
 	"underline" => "Subrayar enlaces",
-	"highlightbroken" => "Destacar enlaces a tópicos vacíos"
+	"highlightbroken" => "Destacar enlaces a tópicos vacíos",
 	"justify"	=> "Ajustar párrafos",
 	"hideminor" => "Esconder ediciones menores en cambios recientes",
 	"numberheadings" => "Auto-numerar encabezados",
 	"rememberpassword" => "Recordar la contraseña entre sesiones"
 );
 
+/* Please customize this with some Spanish-language bookshops
+   and/or reference sites that can look up by ISBN number */
+/* private */ $wgBookstoreListEs = array(
+	"AddALL" => "http://www.addall.com/New/Partner.cgi?query=$1&type=ISBN",
+	"PriceSCAN" => "http://www.pricescan.com/books/bookDetail.asp?isbn=$1",
+	"Barnes & Noble" => "http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$1",
+	"Amazon.com" => "http://www.amazon.com/exec/obidos/ISBN=$1"
+);
+
+/* Where known, these should be native names and spellings of
+   languages, so the speakers can recognize them. */
 /* private */ $wgLanguageNamesEs = array(
 	"ab"	=> "Abkhaziano",
 	"aa"	=> "Afar",
@@ -70,8 +84,8 @@
 	"fo"	=> "Faeroese",
 	"fj"	=> "Fijiés",
 	"fi"	=> "Finlandés",
-	"fr"	=> "Francés"
-	"fy"	=> "Frisio".
+	"fr"	=> "Francés",
+	"fy"	=> "Frisio",
 	"gl"	=> "Gallego",
 	"ka"	=> "Georgiano",
 	"de"	=> "Alemán",
@@ -198,7 +212,7 @@
 	"Userlogout"	=> "",
 	"Preferences"	=> "Seleccionar mis preferencias de usuario",
 	"Watchlist"		=> "Mi lista de seguimiento",
-	"Recentchanges" => "Páginas recientemente actualizadas
+	"Recentchanges" => "Páginas recientemente actualizadas",
 	"Upload"		=> "Suba una imagen",
 	"Imagelist"		=> "Lista de imágenes",
 	"Listusers"		=> "Usuarios registrados",
@@ -215,16 +229,20 @@
 	"Allpages"		=> "Todas las páginas (alfabético)",
 
 	"Ipblocklist"	=> "Direcciones IP bloqueadas",
-	"Specialpages"  => "Páginas especiales",
-	"Contributions" => "Contribuciones",
-	"Whatlinkshere" => "Qué enlaza aquí",
+    "Maintenance"   => "Maintenance page",
+	"Specialpages"  => "",
+	"Contributions" => "",
+    "Emailuser"     => "",
+	"Whatlinkshere" => "",
 	"Recentchangeslinked" => "",
-	"Movepage"		=> "Trasladar página"
+	"Movepage"		=> "",
+    "Booksources"   => "External book sources"
 );
 
 /* private */ $wgSysopSpecialPagesEs = array(
 	"Blockip"		=> "Bloquear una dirección IP",
-	"Asksql"		=> "Búsqueda en la base de datos"
+	"Asksql"		=> "Búsqueda en la base de datos",
+    "Undelete"      => "View and restore deleted pages"
 );
 
 /* private */ $wgDeveloperSpecialPagesEs = array(
@@ -237,6 +255,7 @@
 
 # Bits of text used by many pages:
 #
+"linktrail"     => "/^([a-záéíóúñ]+)(.*)\$/sD",
 "mainpage"		=> "Portada",
 "about"			=> "Acerca de",
 "aboutwikipedia" => "Acerca de Wikipedia",
@@ -258,6 +277,7 @@
 "qbpageinfo"	=> "Información de página",
 "qbmyoptions"	=> "Mis opciones",
 "mypage"		=> "Mi página",
+"mytalk"        => "Mi discusión",
 "currentevents" => "Actualidad",
 "errorpagetitle" => "Error",
 "returnto"		=> "Regresa a $1.",
@@ -487,6 +507,11 @@ y el texto de $3 artículos.",
 por búsquedas de palabras comunes como \"la\" o \"de\",
 que no están en el índice, o por especificar más de una palabra para buscar( sólo páginas
 que contienen todos los términos de una búsqueda aparecerán en el resultado).",
+"powersearch" => "Search",
+"powersearchtext" => "
+Search in namespaces :<br>
+$1<br>
+$2 List redirects &nbsp; Search for $3 $9",
 
 # Preferences page
 #
@@ -495,6 +520,8 @@ que contienen todos los términos de una búsqueda aparecerán en el resultado).",
 "prefsnologintext"	=> "Debes haber <a href=\"" .
   wfLocalUrl( "Especial:Inicio de sesión" ) . "\">iniciado sesión</a>
 para seleccionar preferencias de usuario.",
+"prefslogintext" => "You are logged in as \"$1\".
+Your internal ID number is $2.",
 "prefsreset"	=> "Las preferencias han sido repuestas desde almacenaje.",
 "qbsettings"	=> "Preferencias de \"Quickbar\"", 
 "changepassword" => "Cambia contraseña",
@@ -511,12 +538,14 @@ para seleccionar preferencias de usuario.",
 "resultsperpage" => "Resultados para mostrar por página",
 "contextlines"	=> "Líneas para mostrar por resultado",
 "contextchars"	=> "Caracteres de contexto por línea",
+"stubthreshold" => "Threshold for stub display",
 "recentchangescount" => "Número de títulos en cambios recientes",
 "savedprefs"	=> "Tus preferencias han sido grabadas.",
 "timezonetext"	=> "Entra el número de horas de diferencia entre tu hora local
 y la hora del servidor (UTC).",
 "localtime"	=> "Hora local",
 "timezoneoffset" => "Diferencia",
+"emailflag"     => "Disable e-mail from other users",
 
 # Recent changes
 #
@@ -541,6 +570,11 @@ La responsabilidad legal realmente podría dañar  el proyecto, así que por favor 
 "hist"			=> "historia",
 "hide"			=> "esconder",
 "show"			=> "mostrar",
+"tableform"     => "table",
+"listform"		=> "list",
+"nchanges"		=> "$1 changes",
+"minoreditletter" => "M",
+"newpageletter" => "N",
 
 # Upload
 #
@@ -652,6 +686,23 @@ y <b>$6</b> visitas por edición.",
 "userstatstext" => "Hay <b>$1</b> usuarios registrados.
 de los cuales <b>$2</b> son administradores (ver $3).",
 
+# Maintenance Page
+#
+"maintenance"		=> "Maintenance page",
+"maintnancepagetext"	=> "This page includes several handy tools for everyday maintenance. Some of these functions tend to stress the database, so please do not hit reload after every item you fixed ;-)",
+"maintenancebacklink"	=> "Back to Maintenance Page",
+"disambiguations"	=> "Disambiguation pages",
+"disambiguationspage"	=> "Wikipedia:Links_to_disambiguating_pages",
+"disambiguationstext"	=> "The following articles link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br>A page is treated as dismbiguation if it is linked from $1.<br>Links from other namespaces are <i>not</i> listed here.",
+"doubleredirects"	=> "Double Redirects",
+"doubleredirectstext"	=> "<b>Attention:</b> This list may contain false positives. That usually means there is additional text with links below the first #REDIRECT.<br>\nEach row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" taget article, which the first redirect should point to.",
+"selflinks"		=> "Pages with Self Links",
+"selflinkstext"		=> "The following pages contain a link to themselves, which they should not.",
+"missinglanguagelinks"  => "Missing Language Links",
+"missinglanguagelinksbutton"    => "Find missing language links for",
+"missinglanguagelinkstext"      => "These articles do <i>not</i> link to their counterpart in $1. Redirects and subpages are <i>not</i> shown.",
+
+
 # Miscellaneous special pages
 #
 "orphans"		=> "Páginas huérfanas",
@@ -680,6 +731,38 @@ de los cuales <b>$2</b> son administradores (ver $3).",
 tales como otras wikipededias internacionales pueden enlazar a una imagen
 con un URL directo, y de esa manera todavía estar listada aquí
 a pesar de estar en uso activo.",
+"booksources"   => "Book sources",
+"booksourcetext" => "Below is a list of links to other sites that
+sell new and used books, and may also have further information
+about books you are looking for.
+Wikipedia is not affiliated with any of these businesses, and
+this list should not be construed as an endorsement.",
+
+# Email this user
+#
+"mailnologin"	=> "No send address",
+"mailnologintext" => "You must be <a href=\"" .
+  wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
+and have a valid e-mail address in your <a href=\"" .
+  wfLocalUrl( "Special:Preferences" ) . "\">preferences</a>
+to send e-mail to other users.",
+"emailuser"		=> "E-mail this user",
+"emailpage"		=> "E-mail user",
+"emailpagetext"	=> "If this user has entered a valid e-mail address in
+is user preferences, the form below will send a single message.
+The e-mail address you entered in your user preferences will appear
+as the \"From\" address of the mail, so the recipient will be able
+to reply.",
+"noemailtitle"	=> "No e-mail address",
+"noemailtext"	=> "This user has not specified a valid e-mail address,
+or has chosen not to receive e-mail from other users.",
+"emailfrom"		=> "From",
+"emailto"		=> "To",
+"emailsubject"	=> "Subject",
+"emailmessage"	=> "Message",
+"emailsend"		=> "Send",
+"emailsent"		=> "E-mail sent",
+"emailsenttext" => "Your e-mail message has been sent.",
 
 # Watchlist
 #
@@ -695,8 +778,8 @@ para modificar tu lista de seguimiento.",
 "removedwatch"	=> "Removida de lista de seguimiento",
 "removedwatchtext" => "La página \"$1\" ha sido removida de  tu lista de seguimiento.",
 "watchthispage"	=> "Vigilar esta página",
-"unwatchthispage" => "dejar de vigilar,
-"notanarticle"	=> "No es un artículo,
+"unwatchthispage" => "dejar de vigilar",
+"notanarticle"	=> "No es un artículo",
 
 # Delete/protect/revert
 #
@@ -710,7 +793,7 @@ así como toda su historia, de la base de datos.
 Por favor, confirma que realmente quieres hacer eso, que entiendes las
 consecuencias, y que lo estas haciendo de acuerdo con [[Wikipedia:Politicas]].",
 "confirmcheck"	=> "Si, realmente quiero borrar esto.",
-"actioncomplete" => "Acción completa,
+"actioncomplete" => "Acción completa",
 "deletedtext"	=> "\"$1\" ha sido borrado.
 Ve $2 para un registro de los borrados más recientes.",
 "deletedarticle" => "borrado \"$1\"",
@@ -724,6 +807,21 @@ Todos los tiempos se muestran en hora del servidor (UTC).
 "reverted"		=> "Revertido a una revision anterior",
 "deletecomment"	=> "Razon para el borrado",
 "imagereverted" => "Revertido a una version anterior fue exitoso.",
+"undelete" => "Restore deleted page",
+"undeletepage" => "View and restore deleted pages",
+"undeletepagetext" => "The following pages have been deleted but are still in the archive and
+can be restored. The archive may be periodically cleaned out.",
+"undeletearticle" => "Restore deleted article",
+"undeleterevisions" => "$1 revisions archived",
+"undeletehistory" => "If you restore the page, all revisions will be restored to the history.
+If a new page with the same name has been created since the deletion, the restored
+revisions will appear in the prior history, and the current revision of the live page
+will not be automatically replaced.",
+"undeleterevision" => "Deleted revision as of $1",
+"undeletebtn" => "Restore!",
+"undeletedarticle" => "restored \"$1\"",
+"undeletedtext"   => "The article [[$1]] has been successfully restored.
+See [[Wikipedia:Deletion_log]] for a record of recent deletions and restorations.",
 
 # Contributions
 #
@@ -841,7 +939,14 @@ Por favor, elije otro nombre.",
 
 );
 
-class LanguageEs {
+class LanguageEs extends Language {
+
+	# Inherent default user options unless customization is desired
+
+    function getBookstoreList () {
+		global $wgBookstoreListEn ;
+		return $wgBookstoreListEn ;
+	}
 
 	function getNamespaces() {
 		global $wgNamespaceNamesEs;
@@ -857,13 +962,13 @@ class LanguageEs {
 		global $wgNamespaceNamesEs;
 
 		foreach ( $wgNamespaceNamesEs as $i => $n ) {
-			if ( 0 == strcmp( $n, $text ) ) { return $i; }
+			if ( 0 == strcasecmp( $n, $text ) ) { return $i; }
 		}
 		return false;
 	}
-	function specialPage( $name ) {
-		return $this->getNsText( Namespace::getSpecial() ) . ":" . $name;
-	}
+	#function specialPage( $name ) {
+	#	return $this->getNsText( Namespace::getSpecial() ) . ":" . $name;
+	#}
 
 	function getQuickbarSettings() {
 		global $wgQuickbarSettingsEs;
@@ -969,11 +1074,12 @@ class LanguageEs {
 
 	function getMessage( $key )
 	{
-		global $wgAllMessagesEs;
-		return $wgAllMessagesEs[$key];
+		global $wgAllMessagesEs, $wgAllMessagesEn;
+		$m = $wgAllMessagesEs[$key];
+
+		if ( "" == $m ) { return $wgAllMessagesEn[$key]; }
+		else return $m;
 	}
 }
-
-include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );
 
 ?>
