@@ -954,7 +954,7 @@ class WikiPage extends WikiTitle {
         global $user , $oldID , $version ;
         $editOldVersion = "" ;
         if ( $oldID != "" ) $editOldVersion="&amp;oldID=$oldID&amp;version=$version" ;
-        $ret = "<a href=\"".wikiLink($wikiMainPage)."\">$wikiMainPage</a>" ;
+        $ret = "<a href=\"".wikiLink(urlencode($wikiMainPage))."\">$wikiMainPage</a>" ;
 
         $spl = $this->getSubpageList () ;
         if ( count ( $spl ) > 0 and $this->subpageTitle != "" and $user->options["showStructure"] == "yes" ) {
@@ -968,9 +968,9 @@ class WikiPage extends WikiTitle {
         global $wikiRecentChanges , $wikiRecentChangesLink , $wikiEditThisPage , $wikiHistory , $wikiRandomPage , $wikiSpecialPages ;
         global $wikiSpecialPagesLink ;
         $ret .= " | <a href=\"".wikiLink("special:$wikiRecentChangesLink")."\">$wikiRecentChanges</a>" ;
-        if ( $this->canEdit() ) $ret .= " | <a href=\"".wikiLink(urldecode($this->url)."$editOldVersion&amp;action=edit")."\">$wikiEditThisPage</a>" ;
+        if ( $this->canEdit() ) $ret .= " | <a href=\"".wikiLink($this->url."$editOldVersion&amp;action=edit")."\">$wikiEditThisPage</a>" ;
         else if ( !$this->isSpecialPage ) $ret .= " | Protected page" ;
-        if ( !$this->isSpecialPage ) $ret .= " | <a href=\"".wikiLink(urldecode($this->url)."&amp;action=history")."\">$wikiHistory</a>\n" ;
+        if ( !$this->isSpecialPage ) $ret .= " | <a href=\"".wikiLink($this->url."&amp;action=history")."\">$wikiHistory</a>\n" ;
         $ret .= " | <a href=\"".wikiLink("special:RandomPage")."\">$wikiRandomPage</a>" ;
         $ret .= " | <a href=\"".wikiLink("special:$wikiSpecialPagesLink")."\">$wikiSpecialPages</a>" ;
         return $ret ;
@@ -1134,10 +1134,10 @@ class WikiPage extends WikiTitle {
 		$ret .= "</td></tr><tr><td $bg>" ;
 		$ret .= "<font color=#666666><b>$wikiPageOptions</b></font><br>\n" ;
 		if ( !$this->isSpecialPage ) {
-			$ret .= "<a class=CBlink href=\"".wikiLink($this->secureTitle."&action=edit")."\">$wikiEditPage</a><br>\n" ;
-			$ret .= "<a class=CBlink href=\"".wikiLink($this->secureTitle."&action=print")."\">$wikiPrintPage</a><br>\n" ;
-			$ret .= "<a class=CBlink href=\"".wikiLink($this->secureTitle."&action=watch&mode=yes")."\">!$wikiAddToWatchlist</a><br>\n" ;
-			$ret .= "<a class=CBlink href=\"".wikiLink($this->getTalkPage())."\">!" . ucfirstIntl ( $wikiTalk ) . "</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=edit")."\">$wikiEditPage</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=print")."\">$wikiPrintPage</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=watch&mode=yes")."\">!$wikiAddToWatchlist</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink(nurlencode($this->getTalkPage()))."\">!" . ucfirstIntl ( $wikiTalk ) . "</a><br>\n" ;
 			}
 
 		if ( !$this->isSpecialPage ) {
@@ -1146,7 +1146,7 @@ class WikiPage extends WikiTitle {
 			$ret .= "<font color=#666666><b>$wikiPageInfo</b></font><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink("special:WhatLinksHere&target=".$this->secureTitle)."\">$wikiWhatLinksHere</a><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink("special:RecentChangesLinked&target=".$this->secureTitle)."\">$wikiLinkedPages</a><br>\n" ;
-			$ret .= "<a class=CBlink href=\"".wikiLink($this->secureTitle."&action=history")."\">$wikiEditingHistory</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=history")."\">$wikiEditingHistory</a><br>\n" ;
 
 			$lc = $wikiGetDate ( tsc ( $this->timestamp ) ) ;
 			$lc .= ", ".substr ( $this->timestamp , 8 , 2 ) ;
@@ -1159,7 +1159,7 @@ class WikiPage extends WikiTitle {
 	        if ( $user->isLoggedIn ) {
 			$ret .= "</td></tr><tr><td $bg>" ;
 			$ret .= "<font color=#666666><b>My Options</b></font><br>\n" ;
-			$ret .= "<a class=CBlink href=\"".wikiLink("$wikiUser:$user->name")."\">$wikiMyself</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink(nurlencode("$wikiUser:$user->name"))."\">$wikiMyself</a><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink("special:watchlist")."\">$wikiMyWatchlist</a><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink("special:editUserSettings")."\">$wikiMySettings</a><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink("special:userLogout")."\">!$wikiLogOut</a><br>\n" ;
@@ -1186,7 +1186,7 @@ class WikiPage extends WikiTitle {
         if ( !$this->isSpecialPage )
             $column .= "<br><a href=\"".wikiLink("special:$wikiRecentLinkedLink&amp;target=".$this->url)."\">$wikiRecentLinked</a>\n" ;
         if ( $this->canEdit() )
-            $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."$editOldVersion&amp;action=edit")."\">$wikiEditThisPage</a>\n" ;
+            $column .= "<br><a href=\"".wikiLink($this->url."$editOldVersion&amp;action=edit")."\">$wikiEditThisPage</a>\n" ;
         else if ( !$this->isSpecialPage ) $column .= "<br>Protected page\n" ;
 
         $temp = $this->isSpecialPage ;
