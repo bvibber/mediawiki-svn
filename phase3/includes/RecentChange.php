@@ -109,10 +109,16 @@ class RecentChange
 			$now = $this->mAttribs['rc_timestamp'];
 			$curId = $this->mAttribs['rc_cur_id'];
 			
-			# Update rc_this_oldid for the entries which were current
-			$sql = "UPDATE recentchanges SET rc_this_oldid={$oldid} " .
-				"WHERE rc_namespace=$ns AND rc_title='$title' AND rc_timestamp='$lastTime'";
-			wfQuery( $sql, DB_WRITE, $fname );
+			# HACK HACK HACK on Jamesday's insistence
+			# http://bugzilla.wikipedia.org/show_bug.cgi?id=730
+			$age = time() - wfTimestamp2Unix( $lastTime );
+			$maxage = 7 * 24 * 3600; # our one week cutoff
+			if( $age < $maxage ) {
+				# Update rc_this_oldid for the entries which were current
+				$sql = "UPDATE recentchanges SET rc_this_oldid={$oldid} " .
+					"WHERE rc_namespace=$ns AND rc_title='$title' AND rc_timestamp='$lastTime'";
+				wfQuery( $sql, DB_WRITE, $fname );
+			}
 
 			# Update rc_cur_time
 			$sql = "UPDATE recentchanges SET rc_cur_time='{$now}' " .
