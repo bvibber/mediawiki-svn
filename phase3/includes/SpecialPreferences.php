@@ -172,10 +172,10 @@ function wfSpecialPreferences()
 	# Determine namespace checkboxes
 
 	$ns = $wgLang->getNamespaces();
-	array_shift( $ns ); /* Skip "Special" */
+	$lastns = max( array_keys( $ns ) );
 
 	$r1 = "";
-	for ( $i = 0; $i < count( $ns ); ++$i ) {
+	for ( $i = 0; $i <= $lastns; ++$i ) {
 		$checked = "";
 		if ( $nscb[$i] == 1 ) {
 			$checked = " checked";
