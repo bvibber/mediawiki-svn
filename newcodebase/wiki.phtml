@@ -16,7 +16,7 @@ OutputPage::setEncodings();
 # Query string fields
 #
 global $action, $title, $search, $target, $printable;
-global $returnto, $diff, $oldid;
+global $returnto, $diff, $oldid, $frame;
 
 $action = strtolower( trim( $action ) );
 if ( "" == $action ) { $action = "view"; }
@@ -27,7 +27,11 @@ if ( "" == $title ) {
 } else {
 	$wgTitle = Title::newFromURL( $title );
 }
-if ( -1 == $wgTitle->getNamespace() ) {
+
+if ( "top" == $frame || "side" == $frame ) {
+	$wgOut->frameOnly();
+	exit;
+} else if ( -1 == $wgTitle->getNamespace() ) {
 	wfSpecialPage();
 } else if ( "" != $search ) { wfSearch( $search ); }
 else {

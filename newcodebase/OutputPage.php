@@ -144,6 +144,42 @@ class OutputPage {
 		flush();
 	}
 
+	function frameOnly()
+	{
+		global $wgUser, $wgLang, $wgDebugComments, $wgCookieExpiration;
+		global $frame, $wgInputEncoding, $wgOutputEncoding;
+		$sk = $wgUser->getSkin();
+
+		$foundexp = false;
+		foreach( $this->mHeaders as $t ) {
+			header( $t );
+			if ( preg_match( "/^Expires:/", $t ) ) { $foundexp = true; }
+		}
+		if ( ! $foundexp ) {
+			header( "Expires: 0" );
+			header( "Cache-Control: no-cache" );
+			header( "Pragma: no-cache" );
+		}
+		$sk->initPage();
+		$this->out( $this->headElement() );
+
+		if ( $sk->useBodyTag() ) {
+			$this->out( "\n<body" );
+			$ops = $sk->getBodyOptions();
+			foreach ( $ops as $name => $val ) {
+				$this->out( " $name='$val'" );
+			}
+			$this->out( ">\n" );
+		}
+		$this->out( $sk->beforeContent() );
+		$this->out( $sk->transformContent( "" ) );
+		$this->out( $sk->afterContent() );
+
+		if ( $sk->useBodyTag() ) { $this->out( "\n</body>" ); }
+		$this->out( "\n</html>" );
+		flush();
+	}
+
 	function out( $ins )
 	{
 		global $wgInputEncoding, $wgOutputEncoding;
