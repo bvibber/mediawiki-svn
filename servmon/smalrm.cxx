@@ -32,12 +32,12 @@ mgr::get_thresh(str metric)
 			low = SMI(smcfg::cfg)->fetchint("/metrics/"+metric+"/low");
 		} catch (smcfg::nokey&) {
 			if (get_type(metric) == type_preferhigher) {
-				low = high * 0.75;
+				low = int(high * 0.75);
 			} else {
-				low = high / 0.75;
+				low = int(high / 0.75);
 			}
 		}
-		return make_pair(high, low == -1 ? low : high * 0.75);
+		return make_pair(high, low != -1 ? low : int(high * 0.75));
 	} catch (smcfg::nokey&) {
 		return make_pair(0, 0);
 	}

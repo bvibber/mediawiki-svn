@@ -101,7 +101,7 @@ namespace smirc {
 		void setdata(str) {}
 		void echo(bool) {}
 
-		void wrt(u_char c, bool force) {
+		void wrt(u_char c, bool) {
 			/*
 			 * hm... this doesn't make much sense in a line-oriented,
 			 * non-interactive environment.  maybe we should queue up

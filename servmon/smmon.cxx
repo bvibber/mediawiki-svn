@@ -148,7 +148,7 @@ public:
 		MYSQL_FIELD *fields = mysql_fetch_fields(res);
 		resultset resset;
 		int numrows = mysql_num_fields(res);
-		while (mr = mysql_fetch_row(res)) {
+		while ((mr = mysql_fetch_row(res)) != NULL) {
 			row r;
 			unsigned long *lengths = mysql_fetch_lengths(res);
 			for (int i = 0; i < numrows; ++i) {

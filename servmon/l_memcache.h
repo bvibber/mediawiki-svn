@@ -1,3 +1,4 @@
+/* @(#) $Header$ */
 /*
  * Copyright (c) 2004-2005 Sean Chittenden <sean@chittenden.org>
  *
@@ -475,9 +476,6 @@ void			 mc_free(struct memcache *mc);
  * makes. */
 void			 mc_get(struct memcache *mc, struct memcache_req *req);
 
-/* Generates a hash value from a given key */
-u_int32_t		 mc_hash_key(const char *key, const size_t len);
-
 /* Increments a given key */
 u_int32_t		 mc_incr(struct memcache *mc, const char *key, const size_t key_len, const u_int32_t val);
 
@@ -494,7 +492,7 @@ struct memcache	*mc_new(void);
 void			 mc_refresh(struct memcache *mc, struct memcache_req *req);
 
 /* Returns the release date for the library */
-const u_int32_t		 mc_reldate(void);
+u_int32_t		 mc_reldate(void);
 
 /* Replaces a given key to the cache */
 int			 mc_replace(struct memcache *mc,
@@ -556,19 +554,6 @@ int			 mc_server_activate(struct memcache *mc, struct memcache_server *ms);
  * but marks them as available. */
 int			 mc_server_activate_all(struct memcache *mc);
 
-/* Disconnects from a given server and marks it as down. */
-void			 mc_server_deactivate(struct memcache *mc, struct memcache_server *ms);
-
-/* Disconnects from a given server */
-void			 mc_server_disconnect(const struct memcache *mc, struct memcache_server *ms);
-
-/* Disconnects from all servers (leaves their active flag alone). */
-void			 mc_server_disconnect_all(const struct memcache *mc);
-
-/* When given a hash value, this function returns the appropriate
- * server to connect to in order to find the key. */
-struct memcache_server	*mc_server_find(struct memcache *mc, const u_int32_t hash);
-
 /* Adds a server to the list of available servers.  By default,
  * servers are assumed to be available.  Return codes:
  *
@@ -628,7 +613,7 @@ char			*mc_strndup(const char *str, const size_t len);
 void			 mc_timeout(struct memcache *mc, const int sec, const int usec);
 
 /* Returns a numeric version of the library */
-const u_int32_t		 mc_vernum(void);
+u_int32_t		 mc_vernum(void);
 
 /* Returns a string version of the library */
 const char		*mc_version(void);
@@ -698,13 +683,12 @@ int			 mcm_flush(const struct memcache_ctxt *ctxt, struct memcache *mc,
 int			 mcm_flush_all(const struct memcache_ctxt *ctxt, struct memcache *mc);
 void			 mcm_free(const struct memcache_ctxt *ctxt, struct memcache *mc);
 void			 mcm_get(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memcache_req *req);
-u_int32_t		 mcm_hash_key(const struct memcache_ctxt *ctxt, const char *key, const size_t len);
+u_int32_t		 mc_hash_key(const char *key, const size_t len);
 u_int32_t		 mcm_incr(const struct memcache_ctxt *ctxt, struct memcache *mc,
 				  const char *key, const size_t key_len, const u_int32_t val);
 struct memcache		*mcm_new(const struct memcache_ctxt *ctxt);
 void			 mcm_refresh(const struct memcache_ctxt *ctxt, struct memcache *mc,
 				     struct memcache_req *req);
-const u_int32_t		 mcm_reldate(const struct memcache_ctxt *ctxt);
 int			 mcm_replace(const struct memcache_ctxt *ctxt, struct memcache *mc,
 				     const char *key, const size_t key_len,
 				     const void *val, const size_t bytes,
@@ -715,16 +699,10 @@ struct memcache_res	*mcm_req_add_ref(const struct memcache_ctxt *ctxt, struct me
 					 const char *key, const size_t len);
 void			 mcm_req_free(const struct memcache_ctxt *ctxt, struct memcache_req *req);
 struct memcache_req	*mcm_req_new(const struct memcache_ctxt *ctxt);
-int			 mcm_res_attempted(const struct memcache_ctxt *ctxt, const struct memcache_res *res);
-int			 mcm_res_found(const struct memcache_ctxt *ctxt, const struct memcache_res *res);
 void			 mcm_res_free(const struct memcache_ctxt *ctxt, struct memcache_req *req,
 				      struct memcache_res *res);
-void			 mcm_res_free_on_delete(const struct memcache_ctxt *ctxt, struct memcache_res *res,
-						const int free_on_delete);
 int			 mcm_res_register_fetch_cb(struct memcache_ctxt *ctxt, struct memcache_req *req,
 						   struct memcache_res *res, mcResCallback callback, void *misc);
-int			 mcm_server_activate(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memcache_server *ms);
-int			 mcm_server_activate_all(const struct memcache_ctxt *ctxt, struct memcache *mc);
 int			 mcm_server_add(const struct memcache_ctxt *ctxt, struct memcache *mc,
 					const char *hostname, const char *port);
 int			 mcm_server_add2(const struct memcache_ctxt *ctxt, struct memcache *mc,
@@ -734,13 +712,11 @@ int			 mcm_server_add3(const struct memcache_ctxt *ctxt, struct memcache *mc,
 					 struct memcache_server *ms);
 int			 mcm_server_add4(const struct memcache_ctxt *ctxt, struct memcache *mc,
 					 const char *hostport);
-void			 mcm_server_deactivate(const struct memcache_ctxt *ctxt, struct memcache *mc,
+void			 mc_server_deactivate(struct memcache *mc,
 					       struct memcache_server *ms);
-void			 mcm_server_disconnect(const struct memcache_ctxt *ctxt, const struct memcache *mc,
-					       struct memcache_server *ms);
-void			 mcm_server_disconnect_all(const struct memcache_ctxt *ctxt, const struct memcache *mc);
-struct memcache_server	*mcm_server_find(const struct memcache_ctxt *ctxt,
-					 struct memcache *mc, const u_int32_t hash);
+void			 mcm_server_disconnect(struct memcache_server *ms);
+void			 mcm_server_disconnect_all(const struct memcache *mc);
+struct memcache_server	*mcm_server_find(struct memcache *mc, const u_int32_t hash);
 void			 mcm_server_free(const struct memcache_ctxt *ctxt, struct memcache_server *ms);
 struct memcache_server	*mcm_server_new(const struct memcache_ctxt *ctxt);
 void			 mcm_server_stats_free(const struct memcache_ctxt *ctxt, struct memcache_server_stats *s);
@@ -752,9 +728,8 @@ int			 mcm_set(const struct memcache_ctxt *ctxt, struct memcache *mc,
 struct memcache_server_stats	*mcm_stats(const struct memcache_ctxt *ctxt, struct memcache *mc);
 char			*mcm_strdup(const struct memcache_ctxt *ctxt, const char *str);
 char			*mcm_strndup(const struct memcache_ctxt *ctxt, const char *str, const size_t len);
-void			 mcm_timeout(const struct memcache_ctxt *ctxt, struct memcache *mc,
-				     const int sec, const int usec);
-const u_int32_t		 mcm_vernum(const struct memcache_ctxt *ctxt);
+void			 mcm_timeout(struct memcache *mc, const int sec, const int usec);
+u_int32_t		 mcm_vernum(const struct memcache_ctxt *ctxt);
 const char		*mcm_version(const struct memcache_ctxt *ctxt);
 /* END memory management API functions */
 
@@ -774,9 +749,6 @@ void mc_nodelay_enable(struct memcache *mc, const int enable);
 /* Enable/disable TCP_NODELAY for a given server */
 void mc_server_nodelay_enable(struct memcache_server *ms, const int enable);
 #endif
-
-/* Set the timeout on a per server basis */
-void mc_server_timeout(struct memcache_server *ms, const int sec, const int usec);
 
 /* Set the number of seconds you're willing to wait in total for a
  * response. ??? */

@@ -268,6 +268,12 @@ trmsrv::gd_cb(smnet::clntp, u_char c) {
 }
 
 void
+trmsrv::cls_cb(smnet::clntp, smnet::sckterr&)
+{
+	delete this;
+}
+
+void
 trmsrv::echo(bool doecho_)
 {
 	intf->echo(doecho = doecho_);
@@ -280,7 +286,7 @@ trmsrv::wrtln(str s, bool force)
 }
 
 void
-trmsrv::wrt(u_char c, bool force)
+trmsrv::wrt(u_char c, bool)
 {
 	intf->wrt(std::string(1, c));
 }

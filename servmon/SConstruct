@@ -36,4 +36,5 @@ env.Command('sminfo.cxx', 'sminfo.sh', '/bin/sh $SOURCE >$TARGET')
 
 env.Program ('servmon', srcs)
 env.Program ('smlogmsg', ['smlogmsg.c'], LIBS = [])
+env.Program ('systatd', ['systatd.c'], LIBS = [])
 env.Alias('install', prefix)

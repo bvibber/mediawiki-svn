@@ -120,6 +120,7 @@ public:
 	void stb_readline(void);
 	void start(void);
 	void gd_cb(smnet::clntp, u_char c);
+	void cls_cb(smnet::clntp, smnet::sckterr&);
 	void echo(bool doecho_);
 	void wrtln(std::string const& s = "", bool force = false);
 	void wrt(u_char c, bool = false);

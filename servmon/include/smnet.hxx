@@ -21,7 +21,7 @@ struct sckterr : public std::runtime_error {
 	sckterr(char const *s) : std::runtime_error(s), err(0) {}
 	int err;
 };
-struct scktcls : public std::exception {
+struct scktcls : public sckterr {
 	scktcls(void) {}
 };
 
@@ -188,7 +188,9 @@ public:
 	, stt(nrml)
 	, doecho(true)
 	, gd_cb(boost::function<void(clntp, u_char)>(
-				boost::bind(&tnsrv::nullcb, this, _1, _2)))
+			boost::bind(&tnsrv::nullcb, this, _1, _2)))
+	, err_cb(boost::function<void(clntp, sckterr&)>(
+			 boost::bind(&tnsrv::nullerrcb, this, _1, _2)))
 	{
 		wewill.insert(tnsga);
 		wewill.insert(tnecho);
@@ -213,13 +215,21 @@ public:
 	void cb(boost::function<void(clntp, u_char)> f) {
 		gd_cb = f;
 	}
-
+	void errcb(boost::function<void(clntp, sckterr&)> f) {
+		err_cb = f;
+	}
+	
 	void nullcb(clntp, u_char) {}
-
+	void nullerrcb(clntp, sckterr&) {}
+	
 	void data_cb(int fl) {
 		if (fl != smpx::srd) return;
 		std::vector<u_char> d(maxrd);
-		sc->rd(d, maxrd);
+		try {
+			sc->rd(d, maxrd);
+		} catch (sckterr& e) {
+			err_cb(sc, e);
+		}
 		for (std::vector<u_char>::iterator it = d.begin(), end = d.end(); it != end; ++it)
 		{
 			u_char c;
@@ -367,6 +377,7 @@ private:
        		gwill, gwont, gdo, gdont } stt;
 	bool doecho;
 	boost::function<void(clntp, u_char)> gd_cb;
+	boost::function<void(clntp, sckterr&)> err_cb;
 };
 typedef shared_ptr<tnsrv> tnsrvp;
 

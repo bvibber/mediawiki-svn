@@ -26,8 +26,8 @@
 
 static void print_mntents(FILE *where);
 
-int main(argc, argv)
-char **argv;
+int 
+main(void)
 {
 	int                sfd, cfd, one = 1;
 	socklen_t          clilen;

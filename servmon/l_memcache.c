@@ -67,7 +67,7 @@
 static void			 mcm_reset_buf(struct memcache_server *ms);
 static void			 mcm_server_block(struct memcache_server *ms, const int block);
 static int			 mcm_server_connect(struct memcache *mc, struct memcache_server *ms);
-static void			 mcm_server_init(const struct memcache_ctxt *ctxt, struct memcache_server *ms);
+static void			 mcm_server_init(struct memcache_server *ms);
 static int			 mcm_server_resolve(struct memcache_server *ms);
 
 
@@ -200,12 +200,6 @@ mc_get(struct memcache *mc, struct memcache_req *req) {
 
 
 u_int32_t
-mc_hash_key(const char *key, const size_t len) {
-  return mcm_hash_key(&mcGlobalCtxt, key, len);
-}
-
-
-u_int32_t
 mc_incr(struct memcache *mc, const char *key, const size_t key_len, const u_int32_t val) {
   return mcm_atomic_cmd(&mcGlobalCtxt, mc, str_incr_cmd, str_incr_len, key, key_len, val);
 }
@@ -223,7 +217,7 @@ mc_refresh(struct memcache *mc, struct memcache_req *req) {
 }
 
 
-const u_int32_t
+u_int32_t
 mc_reldate(void) {
   return MEMCACHE_RELDATE;
 }
@@ -264,46 +258,19 @@ mc_req_new(void) {
 
 int
 mc_res_attempted(const struct memcache_res *res) {
-  return mcm_res_attempted(&mcGlobalCtxt, res);
+	return res->_flags & MCM_RES_ATTEMPTED ? 1 : 0;
 }
-
-
-int
-mc_res_found(const struct memcache_res *res) {
-  return mcm_res_found(&mcGlobalCtxt, res);
-}
-
 
 void
 mc_res_free(struct memcache_req *req, struct memcache_res *res) {
   mcm_res_free(&mcGlobalCtxt, req, res);
 }
 
-
-void
-mc_res_free_on_delete(struct memcache_res *res, const int fod) {
-  mcm_res_free_on_delete(&mcGlobalCtxt, res, fod);
-}
-
-
 int
 mc_res_register_fetch_cb(struct memcache_req *req, struct memcache_res *res,
 			 mcResCallback cb, void *misc) {
   return mcm_res_register_fetch_cb(&mcGlobalCtxt, req, res, cb, misc);
 }
-
-
-int
-mc_server_activate(struct memcache *mc, struct memcache_server *ms) {
-  return mcm_server_activate(&mcGlobalCtxt, mc, ms);
-}
-
-
-int
-mc_server_activate_all(struct memcache *mc) {
-  return mcm_server_activate_all(&mcGlobalCtxt, mc);
-}
-
 
 int
 mc_server_add(struct memcache *mc, const char *hostname, const char *port) {
@@ -330,27 +297,9 @@ mc_server_add4(struct memcache *mc, const char *hostport) {
 }
 
 
-void
-mc_server_deactivate(struct memcache *mc, struct memcache_server *ms) {
-  mcm_server_deactivate(&mcGlobalCtxt, mc, ms);
-}
-
-
-void
-mc_server_disconnect(const struct memcache *mc, struct memcache_server *ms) {
-  mcm_server_disconnect(&mcGlobalCtxt, mc, ms);
-}
-
-
-void
-mc_server_disconnect_all(const struct memcache *mc) {
-  mcm_server_disconnect_all(&mcGlobalCtxt, mc);
-}
-
-
 struct memcache_server *
 mc_server_find(struct memcache *mc, const u_int32_t hash) {
-  return mcm_server_find(&mcGlobalCtxt, mc, hash);
+  return mcm_server_find(mc, hash);
 }
 
 
@@ -405,13 +354,7 @@ mc_strndup(const char *str, const size_t len) {
 }
 
 
-void
-mc_timeout(struct memcache *mc, const int sec, const int msec) {
-  mcm_timeout(&mcGlobalCtxt, mc, sec, msec);
-}
-
-
-const u_int32_t
+u_int32_t
 mc_vernum(void) {
   return MEMCACHE_VERNUM;
 }
@@ -441,11 +384,10 @@ void
 mcm_aget(const struct memcache_ctxt *ctxt, struct memcache *mc, const char *key, const size_t len, void **value, u_int32_t *value_len) {
   struct memcache_req *req;
   struct memcache_res *res;
-  void *ret;
 
   req = mcm_req_new(ctxt);
   res = mcm_req_add_ref(ctxt, req, key, len);
-  mcm_res_free_on_delete(ctxt, res, 0);
+  mc_res_free_on_delete(res, 0);
   mcm_get(ctxt, mc, req);
   *value = res->val;
   *value_len = res->bytes;
@@ -464,7 +406,7 @@ mcm_arefresh(const struct memcache_ctxt *ctxt, struct memcache *mc, const char *
 
   req = mcm_req_new(ctxt);
   res = mcm_req_add_ref(ctxt, req, key, len);
-  mcm_res_free_on_delete(ctxt, res, 0);
+  mc_res_free_on_delete(res, 0);
   mcm_refresh(ctxt, mc, req);
   ret = res->val;
   mcm_req_free(ctxt, req);
@@ -487,9 +429,9 @@ mcm_atomic_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc,
   if (mc->num_live_servers == 1)
     hash = 42;
   else
-    hash = mcm_hash_key(ctxt, key, key_len);
+    hash = mc_hash_key(key, key_len);
 
-  ms = mcm_server_find(ctxt, mc, hash);
+  ms = mcm_server_find(mc, hash);
   if (ms == NULL) {
     warnx("%s:%u\tUnable to find a valid server", __FILE__, __LINE__);
     return 0;
@@ -502,11 +444,11 @@ mcm_atomic_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc,
   cur = ms->buf;
   buf_left = ms->size;
 
-  av[0].iov_base = cmd;
+  av[0].iov_base = (void *)cmd;
   av[0].iov_len = cmd_len;
-  av[1].iov_base = key;
+  av[1].iov_base = (void *)key;
   av[1].iov_len = key_len;
-  av[2].iov_base = str_space;
+  av[2].iov_base = (void *)str_space;
   av[2].iov_len = str_space_len;
 
   /* Convert the value to a string */
@@ -516,12 +458,12 @@ mcm_atomic_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc,
 
   av[3].iov_base = cur;
   av[3].iov_len = i;
-  av[4].iov_base = str_endl;
+  av[4].iov_base = (void *)str_endl;
   av[4].iov_len = str_endl_len;
 
   if (writev(ms->fd, av, 5) < 0) {
     warn("%s:%u\twritev()", __FILE__, __LINE__);
-    mcm_server_deactivate(ctxt, mc, ms);
+    mc_server_deactivate(mc, ms);
     /* XXX Should we recursively attempt to try this query on the
      * remaining servers in the cluster if the writev() fails?
      * Eventually we'd fail once all servers were exhausted?  For now,
@@ -573,9 +515,9 @@ mcm_delete(const struct memcache_ctxt *ctxt, struct memcache *mc,
   if (mc->num_live_servers == 1)
     hash = 42;
   else
-    hash = mcm_hash_key(ctxt, key, key_len);
+    hash = mc_hash_key(key, key_len);
 
-  ms = mcm_server_find(ctxt, mc, hash);
+  ms = mcm_server_find(mc, hash);
   if (ms == NULL) {
     warnx("%s:%u\tUnable to find a valid server", __FILE__, __LINE__);
     return -1;
@@ -588,11 +530,11 @@ mcm_delete(const struct memcache_ctxt *ctxt, struct memcache *mc,
   cur = ms->buf;
   buf_left = ms->size;
 
-  dv[0].iov_base = str_delete_cmd;
+  dv[0].iov_base = (void *) str_delete_cmd;
   dv[0].iov_len = str_delete_len;
-  dv[1].iov_base = key;
+  dv[1].iov_base = (void *) key;
   dv[1].iov_len = key_len;
-  dv[2].iov_base = str_space;
+  dv[2].iov_base = (void *) str_space;
   dv[2].iov_len = str_space_len;
 
   /* Convert expiration time to a string */
@@ -602,12 +544,12 @@ mcm_delete(const struct memcache_ctxt *ctxt, struct memcache *mc,
 
   dv[3].iov_base = cur;		/* Note where our flags string is located */
   dv[3].iov_len = i;
-  dv[4].iov_base = str_endl;
+  dv[4].iov_base = (void *) str_endl;
   dv[4].iov_len = str_endl_len;
 
   if (writev(ms->fd, dv, 5) < 0) {
     warn("%s:%u\twritev()", __FILE__, __LINE__);
-    mcm_server_deactivate(ctxt, mc, ms);
+    mc_server_deactivate(mc, ms);
     /* XXX Should we recursively attempt to try this query on the
      * remaining servers in the cluster if the writev() fails?
      * Eventually we'd fail once all servers were exhausted?  For now,
@@ -646,7 +588,7 @@ mcm_fetch_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memc
    * trailing \r\n. */
   num_vec = 2 * req->num_keys + 1;
   rv = (struct iovec *)ctxt->mcMalloc(sizeof(struct iovec) * num_vec);
-  rv[0].iov_base = cmd;
+  rv[0].iov_base = (void *) cmd;
   rv[0].iov_len = cmd_len;
   for (i = 1, res = req->query.tqh_first; res != NULL; res = res->entries.tqe_next, i++) {
     /* If we have only one live server, don't waste CPU actually
@@ -654,13 +596,13 @@ mcm_fetch_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memc
     if (mc->num_live_servers == 1)
       res->hash = 42;
     else
-      res->hash = mcm_hash_key(ctxt, res->key, res->len);
+      res->hash = mc_hash_key(res->key, res->len);
 
-    rv[i].iov_base = res->key;
+    rv[i].iov_base = (void *) res->key;
     rv[i].iov_len = res->len;
 
     if (res->entries.tqe_next != NULL) {
-      rv[++i].iov_base = str_space;
+	    rv[++i].iov_base = (void *) str_space;
       rv[i].iov_len = 1;
     }
 
@@ -668,9 +610,9 @@ mcm_fetch_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memc
      * deleting any of these keys. */
     if ((res->_flags & (MCM_RES_FREE_ON_DELETE | MCM_RES_NO_FREE_ON_DELETE)) ==
 	(MCM_RES_FREE_ON_DELETE | MCM_RES_FREE_ON_DELETE))
-      mcm_res_free_on_delete(ctxt, res, (res->size > 0 ? 0 : 1));
+      mc_res_free_on_delete(res, (res->size > 0 ? 0 : 1));
   }
-  rv[i].iov_base = str_endl;
+  rv[i].iov_base = (void *) str_endl;
   rv[i].iov_len = str_endl_len;
 
   /* XXX Yuk.  Right now I'm grabbing the hash from the first key and
@@ -678,7 +620,7 @@ mcm_fetch_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memc
    * in the request could be stored on a different server.  memcache
    * servers need the ability to query other servers on the users
    * behalf, IMHO. */
-  ms = mcm_server_find(ctxt, mc, req->query.tqh_first->hash);
+  ms = mcm_server_find(mc, req->query.tqh_first->hash);
   if (ms == NULL) {
     warnx("%s:%u\tUnable to find a valid server", __FILE__, __LINE__);
     ctxt->mcFree(rv);
@@ -692,7 +634,7 @@ mcm_fetch_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memc
 
   if (writev(ms->fd, rv, num_vec) < 0) {
     warn("%s:%u\twritev()", __FILE__, __LINE__);
-    mcm_server_deactivate(ctxt, mc, ms);
+    mc_server_deactivate(mc, ms);
     /* XXX Should we recursively attempt to try this query on the
      * remaining servers in the cluster if the writev() fails?
      * Eventually we'd fail once all servers were exhausted?  For now,
@@ -737,7 +679,7 @@ mcm_flush(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memcache
 
   if (write(ms->fd, "flush_all\r\n", MCM_CSTRLEN("flush_all\r\n")) < 0) {
     warn("%s:%u\twrite()", __FILE__, __LINE__);
-    mcm_server_deactivate(ctxt, mc, ms);
+    mc_server_deactivate(mc, ms);
     return -2;
   }
 
@@ -835,12 +777,12 @@ mcm_get_line(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memca
       if (errno == EAGAIN || errno == EINTR)
 	goto try_read;
       warn("%s:%u\tread() failed.\n", __FILE__, __LINE__);
-      mcm_server_deactivate(ctxt, mc, ms);
+      mc_server_deactivate(mc, ms);
       return NULL; /* Should we try again depending on errno? */
     case 0:
       /* Seems like an error to me if the server closes its connection
        * here.  deactivate the server instead of just closing it. */
-      mcm_server_deactivate(ctxt, mc, ms);
+      mc_server_deactivate(mc, ms);
       warnx("%s:%u\tServer unexpectedly closed connection.\n", __FILE__, __LINE__);
       return NULL;
     default:
@@ -903,7 +845,7 @@ mcm_get_line(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memca
   if (cp == NULL) {
     /* We suck.  Return null. */
     warnx("%s:%u\tProtocol violation, no \n anywhere in server response.\n", __FILE__, __LINE__);
-    mcm_server_deactivate(ctxt, mc, ms);
+    mc_server_deactivate(mc, ms);
     return NULL;
   }
 
@@ -916,7 +858,7 @@ mcm_get_line(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memca
    * newline. */
   if (*(cp - 1) != '\r') {
     warnx("%s:%u\tProtocol violation, no \\r before the \\n", __FILE__, __LINE__);
-    mcm_server_deactivate(ctxt, mc, ms);
+    mc_server_deactivate(mc, ms);
     return NULL;
   }
 #endif
@@ -963,12 +905,12 @@ read_more:
     if (errno == EAGAIN || errno == EINTR)
       goto read_more;
     warn("%s:%u\tread() failed.\n", __FILE__, __LINE__);
-    mcm_server_deactivate(ctxt, mc, ms);
+    mc_server_deactivate(mc, ms);
     return; /* Should we try again depending on errno? */
   case 0:
     /* Seems like an error to me if the server closes its connection
      * here.  deactivate the server instead of just closing it. */
-    mcm_server_deactivate(ctxt, mc, ms);
+    mc_server_deactivate(mc, ms);
     warnx("%s:%u\tServer unexpectedly closed connection.\n", __FILE__, __LINE__);
     return;
   default:
@@ -1052,7 +994,7 @@ next_value:
       bytes = (size_t)strtol(cp, &end, 10);
       if (bytes == 0 && (errno == EINVAL || errno == ERANGE)) {
 	warn("%s:%u\tstrtol(): invalid bytes", __FILE__, __LINE__);
-	mcm_server_deactivate(ctxt, mc, ms);
+	mc_server_deactivate(mc, ms);
 	return;
       }
       res->bytes = bytes;
@@ -1064,7 +1006,7 @@ next_value:
 	cp += 2;
       } else {
 	warn("%s:%u\tprotocol error", __FILE__, __LINE__);
-	mcm_server_deactivate(ctxt, mc, ms);
+	mc_server_deactivate(mc, ms);
 	return;
       }
     } else if (memcmp(cp, "END\r\n", MCM_CSTRLEN("END\r\n")) == 0) {
@@ -1081,7 +1023,7 @@ next_value:
       res->val = ctxt->mcMallocAtomic(res->bytes);
       if (res->val == NULL) {
 	warn("%s:%u\t memory was not allocated for res->val.", __FILE__, __LINE__);
-	mcm_server_deactivate(ctxt, mc, ms);
+	mc_server_deactivate(mc, ms);
 	return;
       }
       res->size = res->bytes;
@@ -1101,7 +1043,7 @@ next_value:
       cp += 2;
     } else {
       warn("%s:%u\tprotocol error", __FILE__, __LINE__);
-      mcm_server_deactivate(ctxt, mc, ms);
+      mc_server_deactivate(mc, ms);
       return;
     }
 
@@ -1123,81 +1065,27 @@ next_value:
 
 
 u_int32_t
-mcm_hash_key(const struct memcache_ctxt *ctxt, const char *key, const size_t len) {
-#ifdef USE_CRC32_HASH
-  size_t i;
-  u_int32_t crc;
-
-  crc = ~0;
-
-  for (i = 0; i < len; i++)
-    crc = (crc >> 8) ^ crc32tab[(crc ^ (key[i])) & 0xff];
-
-  return((~crc >> 16) & 0x7fff);
-#else
-# ifdef USE_PERL_HASH
-  u_int32_t h, i;
-  char *p;
-
-  i = len;	/* Work back through the key length */
-  p = key;	/* Character pointer */
-  h = 0;	/* The hash value */
-
-  while (i--) {
-    h += *p++;
-    h += (h << 10);
-    h ^= (h >> 6);
-  }
-  h += (h << 3);
-  h ^= (h >> 11);
-  h += (h << 15);
-
-  return h;
-# else
-#  ifdef USE_ELF_HASH
-  u_int32_t g, h, i;
-  char *p;
-
-  i = len;	/* Work back through the key length */
-  p = key;	/* Character pointer */
-  h = 0;	/* The hash value */
-
-  while (i--) {
-    h = (h << 4) + *p++;
-    if (g = h & 0xF0000000)
-      h ^= g >> 24;
-    h &= ~g;
-  }
-
-  return h;
-#  else
-#   ifdef USE_PHP_HASH
-  unsigned char res[MD5_DIGEST_LENGTH];
-  u_int32_t i;
-  int j;
-  char result[33];
-  char php[9] = {};
-
-  /* calculate md5 hash of key */
-  MD5(key, len, res);
-
-  /* convert to ascii */
-  for (j = 0; j < MD5_DIGEST_LENGTH; ++j) {
-    sprintf(&(result[j*2]), "%x", (int)(res[j] & 0xF0));
-    sprintf(&(result[(j*2)+1]), "%x", (int)(res[j] & 0x0F));
-  }
-
-  /* take the first 8 bytes */
-  memcpy(php, result, 8);
-  sscanf(php, "%x", &i);
-  i &= 0x7FFFFFFF;
-  return i;
-#    else
-#      error "Please choose USE_CRC32_HASH, USE_ELF_HASH, or USE_PERL_HASH as a hashing scheme when compiling memcache"
-#    endif
-#  endif
-# endif
-#endif
+mc_hash_key(const char *key, const size_t len) {
+	unsigned char res[MD5_DIGEST_LENGTH];
+	u_int32_t i;
+	int j;
+	char result[33];
+	char php[9] = {};
+	
+	/* calculate md5 hash of key */
+	MD5(key, len, res);
+	
+	/* convert to ascii */
+	for (j = 0; j < MD5_DIGEST_LENGTH; ++j) {
+		sprintf(&(result[j*2]), "%x", (int)(res[j] & 0xF0));
+		sprintf(&(result[(j*2)+1]), "%x", (int)(res[j] & 0x0F));
+	}
+	
+	/* take the first 8 bytes */
+	memcpy(php, result, 8);
+	sscanf(php, "%x", &i);
+	i &= 0x7FFFFFFF;
+	return i;
 }
 
 
@@ -1231,13 +1119,6 @@ void
 mcm_refresh(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memcache_req *req) {
   mcm_fetch_cmd(ctxt, mc, req, str_refresh_cmd, str_refresh_len);
 }
-
-
-const u_int32_t
-mcm_reldate(const struct memcache_ctxt *ctxt) {
-  return MEMCACHE_RELDATE;
-}
-
 
 int
 mcm_replace(const struct memcache_ctxt *ctxt, struct memcache *mc,
@@ -1306,18 +1187,9 @@ mcm_req_new(const struct memcache_ctxt *ctxt) {
   return req;
 }
 
-
 int
-mcm_res_attempted(const struct memcache_ctxt *ctxt,
-		  const struct memcache_res *res) {
-  return res->_flags & MCM_RES_ATTEMPTED ? 1 : 0;
-}
-
-
-int
-mcm_res_found(const struct memcache_ctxt *ctxt,
-	      const struct memcache_res *res) {
-  return ((res->_flags & (MCM_RES_ATTEMPTED | MCM_RES_FOUND)) == (MCM_RES_ATTEMPTED | MCM_RES_FOUND) ? 1 : 0);
+mc_res_found(const struct memcache_res *res) {
+	return ((res->_flags & (MCM_RES_ATTEMPTED | MCM_RES_FOUND)) == (MCM_RES_ATTEMPTED | MCM_RES_FOUND) ? 1 : 0);
 }
 
 
@@ -1325,7 +1197,7 @@ void
 mcm_res_free(const struct memcache_ctxt *ctxt, struct memcache_req *req, struct memcache_res *res) {
   TAILQ_REMOVE(&req->query, res, entries);
   if ((res->_flags & MCM_RES_NEED_FREE_KEY) == MCM_RES_NEED_FREE_KEY)
-    ctxt->mcFree(res->key);
+	  ctxt->mcFree((void *)res->key);
 
   if (((res->_flags & (MCM_RES_FREE_ON_DELETE | MCM_RES_NO_FREE_ON_DELETE)) ==
        (MCM_RES_FREE_ON_DELETE | MCM_RES_NO_FREE_ON_DELETE)) ||
@@ -1339,14 +1211,14 @@ mcm_res_free(const struct memcache_ctxt *ctxt, struct memcache_req *req, struct 
 
 
 void
-mcm_res_free_on_delete(const struct memcache_ctxt *ctxt, struct memcache_res *res, const int fod) {
-  if (fod) {
-    res->_flags &= ~MCM_RES_NO_FREE_ON_DELETE;
-    res->_flags |= MCM_RES_FREE_ON_DELETE;
-  } else {
-    res->_flags &= ~MCM_RES_FREE_ON_DELETE;
-    res->_flags |= MCM_RES_NO_FREE_ON_DELETE;
-  }
+mc_res_free_on_delete(struct memcache_res *res, const int fod) {
+	if (fod) {
+		res->_flags &= ~MCM_RES_NO_FREE_ON_DELETE;
+		res->_flags |= MCM_RES_FREE_ON_DELETE;
+	} else {
+		res->_flags &= ~MCM_RES_FREE_ON_DELETE;
+		res->_flags |= MCM_RES_NO_FREE_ON_DELETE;
+	}
 }
 
 
@@ -1425,7 +1297,7 @@ mcm_reset_buf(struct memcache_server *ms) {
 
 
 int
-mcm_server_activate(const struct memcache_ctxt *ctxt, struct memcache *mc, struct memcache_server *ms) {
+mc_server_activate(struct memcache *mc, struct memcache_server *ms) {
   switch (ms->active) {
   case 'd':
     ms->active = 'u';
@@ -1449,11 +1321,11 @@ mcm_server_activate(const struct memcache_ctxt *ctxt, struct memcache *mc, struc
 
 
 int
-mcm_server_activate_all(const struct memcache_ctxt *ctxt, struct memcache *mc) {
+mc_server_activate_all(struct memcache *mc) {
   struct memcache_server *ms;
 
   for (ms = mc->server_list.tqh_first; ms != NULL; ms = ms->entries.tqe_next) {
-    mcm_server_activate(ctxt, mc, ms);
+    mc_server_activate(mc, ms);
   }
 
   return 0;
@@ -1707,13 +1579,13 @@ mcm_server_connect(struct memcache *mc, struct memcache_server *ms) {
   /* If none of the IP addresses for this hostname work, remove the
    * server from the live_server list (we assume they're live by
    * default) and return -1. */
-  mcm_server_deactivate(NULL, mc, ms);
+  mc_server_deactivate(mc, ms);
   return -1;
 }
 
 
 void
-mcm_server_deactivate(const struct memcache_ctxt *ctxt, struct memcache *mc,
+mc_server_deactivate(struct memcache *mc,
 		      struct memcache_server *ms) {
   u_int32_t i, found;
 
@@ -1754,26 +1626,26 @@ mcm_server_deactivate(const struct memcache_ctxt *ctxt, struct memcache *mc,
 
 
 void
-mcm_server_disconnect(const struct memcache_ctxt *ctxt, const struct memcache *mc, struct memcache_server *ms) {
+mcm_server_disconnect(struct memcache_server *ms) {
   if (ms->fd != -1) {
     if (close(ms->fd) != 0)
       warn("%s:%u\tclose()", __FILE__, __LINE__);
-    mcm_server_init(ctxt, ms);
+    mcm_server_init(ms);
   }
 }
 
 
 void
-mcm_server_disconnect_all(const struct memcache_ctxt *ctxt, const struct memcache *mc) {
+mcm_server_disconnect_all(const struct memcache *mc) {
   struct memcache_server *ms;
 
   for (ms = mc->server_list.tqh_first; ms != NULL; ms = ms->entries.tqe_next)
-    mcm_server_disconnect(ctxt, mc, ms);
+    mcm_server_disconnect(ms);
 }
 
 
 struct memcache_server *
-mcm_server_find(const struct memcache_ctxt *ctxt, struct memcache *mc, const u_int32_t hash) {
+mcm_server_find(struct memcache *mc, const u_int32_t hash) {
   if (mc->num_live_servers < 1)
     return NULL;
 
@@ -1807,7 +1679,7 @@ mcm_server_free(const struct memcache_ctxt *ctxt, struct memcache_server *ms) {
 
 
 static void
-mcm_server_init(const struct memcache_ctxt *ctxt, struct memcache_server *ms) {
+mcm_server_init(struct memcache_server *ms) {
   ms->active = 't';
   ms->fd = -1;
   ms->flags = -1;
@@ -1830,7 +1702,7 @@ mcm_server_new(const struct memcache_ctxt *ctxt) {
     }
 
     /* Set any default values */
-    mcm_server_init(ctxt, ms);
+    mcm_server_init(ms);
   }
 
   return ms;
@@ -1867,7 +1739,7 @@ mcm_server_stats(const struct memcache_ctxt *ctxt, struct memcache *mc, struct m
 
   if (write(ms->fd, "stats\r\n", MCM_CSTRLEN("stats\r\n")) < 0) {
     warn("%s:%u\twrite()", __FILE__, __LINE__);
-    mcm_server_deactivate(ctxt, mc, ms);
+    mc_server_deactivate(mc, ms);
     return NULL;
   }
 
@@ -2048,7 +1920,7 @@ mcm_server_stats(const struct memcache_ctxt *ctxt, struct memcache *mc, struct m
       if (cp == NULL || cp[1] != '\n') {
 	warnx("Protocol error: anticipated end of stats value: not at end of stats value");
 	mcm_server_stats_free(ctxt, s);
-	mcm_server_deactivate(ctxt, mc, ms);
+	mc_server_deactivate(mc, ms);
 	return NULL;
       }
     } else if (cur != NULL && memcmp(cur, "END", MCM_CSTRLEN("END")) == 0) {
@@ -2168,9 +2040,9 @@ mcm_storage_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc,
   if (mc->num_live_servers == 1)
     hash = 42;
   else
-    hash = mcm_hash_key(ctxt, key, key_len);
+    hash = mc_hash_key(key, key_len);
 
-  ms = mcm_server_find(ctxt, mc, hash);
+  ms = mcm_server_find(mc, hash);
   if (ms == NULL) {
     warnx("%s:%u\tUnable to find a valid server", __FILE__, __LINE__);
     return -1;
@@ -2186,11 +2058,11 @@ mcm_storage_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc,
   cur = ms->buf;
   buf_left = ms->size;
 
-  wv[0].iov_base = cmd;
+  wv[0].iov_base = (void *) cmd;
   wv[0].iov_len = cmd_len;
-  wv[1].iov_base = key;
+  wv[1].iov_base = (void *) key;
   wv[1].iov_len = key_len;
-  wv[2].iov_base = str_space;
+  wv[2].iov_base = (void *) str_space;
   wv[2].iov_len = str_space_len;
 
   /* Convert flags to a string */
@@ -2232,23 +2104,23 @@ mcm_storage_cmd(const struct memcache_ctxt *ctxt, struct memcache *mc,
 
   wv[7].iov_base = cur;	/* Note where our flags string is located */
   wv[7].iov_len = i;
-  wv[8].iov_base = str_endl;	/* Newline */
+  wv[8].iov_base = (void *) str_endl;	/* Newline */
   wv[8].iov_len = str_endl_len;
 
   cur = &cur[++i];	/* advance cursor past trailing '\0' */
   buf_left -= i;	/* Note our consumption of some buffer */
 
   /* Add the data */
-  wv[9].iov_base = val;
+  wv[9].iov_base = (void *) val;
   wv[9].iov_len = bytes;
 
   /* Add another carriage return */
-  wv[10].iov_base = str_endl;
+  wv[10].iov_base = (void *) str_endl;
   wv[10].iov_len = str_endl_len;
 
   if (writev(ms->fd, wv, 11) < 0) {
     warn("%s:%u\twritev()", __FILE__, __LINE__);
-    mcm_server_deactivate(ctxt, mc, ms);
+    mc_server_deactivate(mc, ms);
     /* XXX Should we recursively attempt to try this query on the
      * remaining servers in the cluster if the writev() fails?
      * Eventually we'd fail once all servers were exhausted?  For now,
@@ -2295,21 +2167,9 @@ mcm_strndup(const struct memcache_ctxt *ctxt, const char *str, const size_t len)
 
 
 void
-mcm_timeout(const struct memcache_ctxt *ctxt, struct memcache *mc, const int sec, const int msec) {
+mcm_timeout(struct memcache *mc, const int sec, const int msec) {
   mc->tv.tv_sec = sec;
   mc->tv.tv_usec = msec;
-}
-
-
-const u_int32_t
-mcm_vernum(const struct memcache_ctxt *ctxt) {
-  return MEMCACHE_VERNUM;
-}
-
-
-const char *
-mcm_version(const struct memcache_ctxt *ctxt) {
-  return MEMCACHE_VER;
 }
 
 
