@@ -28,25 +28,6 @@ function recodeCharsetLatin1 ( $text ) {
 	#$recodeCharset = recodeCharsetStub ;
 	$recodeCharset = recodeCharsetLatin1 ; # Future conversions should all go to UTF-8
 
-function firstIsLowercaseEn ( $text ) {
-    $first = ord(substr($text, 0, 1));
-    if ($first >= ord("a") && $first <= ord("z"))
-	return true;
-    else
-	return false;
-}
-function firstIsLowercasePl ( $text ) {
-    $first = ord(substr($text, 0, 1));
-    if ($first > 128) {
-	return in_array ($first, array (0xB1, 0xE6, 0xEA, 0xB3, 0xF1, 0xB6, 0xFE, 0xBF, 0xBC));
-    } else if ($first >= ord("a") && $first <= ord("z")) {
-	    return true;
-    } else {
-	    return false;    
-    }
-}
-$firstIsLowercase = firstIsLowercaseEn;
-
 ## Esperanto:
 if ( $wikiLanguage =="eo" ) {
 	$wikiTalk = "Priparolu" ;
@@ -88,7 +69,6 @@ function RecodeCharsetPl ( $text ) {
 	return strtr ( $text , $l2u8 ) ;
 	}
 	$recodeCharset = recodeCharsetPl ;
-	$firstIsLowercase = firstIsLowercasePl;
 }
 
 ## Spanish
@@ -390,7 +370,6 @@ if ( ! $noHistory ) { # for testing { ****
 	}
 
 function getTopics ( $dir ) {
-	global $firstIsLowercase;
 	$ret = array () ;
 	
 	$mydir = opendir($dir);
@@ -400,13 +379,11 @@ function getTopics ( $dir ) {
 				$a = getTopics ( "$dir/$entry" ) ;
 				foreach ( $a as $x ) array_push ( $ret , "$entry/$x" ) ;
 			} else {
-				if ( $firstIsLowercase ( $entry ) ) {
-				    print "Warning: File <b>\"$entry\"</b> starts with lower case letter, <b>ignored</b><br>\n" ;
-				} else if (substr ($entry, strlen ( $entry ) - 3, 3) == '.db') {
+				if (substr ($entry, strlen ( $entry ) - 3, 3) == '.db') {
 				    $x = substr ( $entry , 0 , strlen ( $entry ) - 3 ) ;
 				    array_push ( $ret , $x ) ;
 				} else {
-				    print "Warning: File <b>\"$entry\"</b> doesn't seem to contain an article, <b>ignored</b><br>\n" ;
+				    print "Warning: File <b>\"$entry\"</b> doesn't seem to contain an article<br>\n" ;
 				}
 			}
 		}
