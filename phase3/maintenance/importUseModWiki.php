@@ -13,6 +13,7 @@
 
 /* globals */
 $wgRootDirectory = "/Users/brion/src/wiki/convert/wiki-fy/lib-http/db/wiki";
+$wgRootDirectory = "/home/usemod/wiki-fy/lib-http/db/wiki";
 $wgFieldSeparator = "\xb3"; # Some wikis may use different char
 	$FS = $wgFieldSeparator ;
 	$FS1 = $FS."1" ;
@@ -211,6 +212,7 @@ function importPage( $title )
 	
 	# Current revision:
 	$text = wfStrencode( recodeText( $page->text ) );
+	$comment = wfStrencode( recodeText( $page->summary ) );
 	$minor = ($page->minor ? 1 : 0);
 	list( $userid, $username ) = checkUserCache( $page->username, $page->host );
 	$timestamp = wfUnix2Timestamp( $page->ts );
@@ -238,7 +240,7 @@ INSERT
 		$username = wfStrencode( recodeText( $username ) );
 		$timestamp = wfUnix2Timestamp( $rev->ts );
 		$inverse = wfInvertTimestamp( $timestamp );
-		$comment = wfStrencode( recodeText( $rev->text ) );
+		$comment = wfStrencode( recodeText( $rev->summary ) );
 		
 		if($any) $sql .= ",";
 		$sql .= "\n\t($namespace,'$newtitle','$text','$comment',$userid,'$username','$timestamp','$inverse',$minor)";
