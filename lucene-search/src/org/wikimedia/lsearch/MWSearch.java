@@ -116,7 +116,8 @@ public class MWSearch {
 		long now = System.currentTimeMillis();
 		long numArticles = 0;
 		
-		String query = "SELECT cur_namespace,cur_title,cur_text FROM cur";
+		String query = "SELECT old_namespace,old_title,old_text " +
+			"FROM page, text WHERE old_id=page_latest";
 		PreparedStatement pstmt;
 		try {
 			pstmt = dbconn.prepareStatement(query);
