@@ -126,8 +126,7 @@ populatedata(); # Needs internationalized messages
 print "Adding indexes...\n";
 dbsource( $rconn, "./maintenance/indexes.sql" );
 
-print "Done.\nBrowse \"{$wgServer}{$wgScript}\" to test,\n" .
-  "or \"run WikiSuite -b -o\" in test suite.\n";
+print "Done.\nBrowse \"{$wgServer}{$wgScript}\" to test.\n";
 exit();
 
 #
