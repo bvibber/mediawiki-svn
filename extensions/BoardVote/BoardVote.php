@@ -492,9 +492,17 @@ to date. $1 for the encrypted data.</p>",
 "boardvote_dumplink"      => "Click here",
 "boardvote_strike"        => "Strike",
 "boardvote_unstrike"      => "Unstrike",
-"boardvote_needadmin"     => "Only election administrators can perform this operation."
-
+"boardvote_needadmin"     => "Only election administrators can perform this operation.",
+"boardvote_sitenotice"    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:  Vote open until June 12",
 ));
+
+global $wgSiteNotice, $wgUser;
+
+$title = Title::makeTitle( NS_SPECIAL, "Boardvote/vote" );
+
+if ( $wgUser->getID() != 0 ) {
+	$wgSiteNotice = wfMsg( "boardvote_sitenotice" );
+}
 
 } # End of extension function
 
