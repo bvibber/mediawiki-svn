@@ -22,7 +22,8 @@
  "contextlines" => 5, "contextchars" => 50,
  "skin" => 0, "math" => 1, "rcdays" => 3, "rclimit" => 50,
  "highlightbroken" => 0, "stubthreshold" => 0,
- "previewontop" => 1, "editsection" => 0, "showtoc" => 0,
+ "previewontop" => 1, "editsection" => 0,
+ "editsectiononrightclick" => 0, "showtoc" => 0,
  "date" => 2
 );
 
@@ -31,7 +32,7 @@
 );
 
 /* private */ $wgSkinNamesNl = array(
- "Standaard", "Nostalgie", "Keuls blauw"
+ "Standaard", "Nostalgie", "Keuls blauw", "Paddington", "Montparnasse"
 );
 
 /* private */ $wgMathNamesNl = array(
@@ -50,11 +51,12 @@
  "hideminor" => "Kleine wijzigingen verbergen in recente wijzigingen",
  "usenewrc" => "Gebruik de uitgebreide Recente Wijzigingen-pagina (niet op alle browsers mogelijk)",
  "numberheadings" => "Koppen automatisch nummeren",
+"editondblclick" => "Dubbelklikken levert bewerkingspagina (vereist JavaScript)",
  "editsection" => "Maak het bewerken van deelpagina's mogelijk",
- "showtoc" => "Geef een inhoudsopgave van de pagina",
+ "editsectionondblclick" => "Edit deelpagina's met rechtermuisklik (vereist JavaScript)",
+ "showtoc" => "Geef een inhoudsopgave (van pagina's met minstens 3 tussenkoppen)",
  "rememberpassword" => "Wachtwoord onthouden",
  "editwidth" => "Bewerkingsveld over volle breedte",
- "editondblclick" => "Dubbelklikken levert bewerkingspagina (vereist JavaScript)",
  "watchdefault" => "Artikelen die u wijzigt automatisch volgen",
  "minordefault" => "Maak 'kleine' veranderingen mijn standaard",
  "previewontop" => "Toon controlepagina boven bewerkingsveld",
@@ -69,135 +71,167 @@
  "pl" => "Polski",
  "ja" => "&#26085;&#26412;&#35486;",
  "sv" => "Svenska",
- "da" => "Dansk",
- "es" => "Español",
  "eo" => "Esperanto",
+ "es" => "Español",
+ "da" => "Dansk",
+ "zh" => "&#20013;&#25991",
+ "ca" => "Català",
  "it" => "Italiano",
- "pt" => "Português",
- "fi" => "Suomen",
+ "fi" => "Suomi",
+ "ia" => "Interlingua",
  "fy" => "Frysk",
  "af" => "Afrikaans",
- "ab" => "Abchazisch",
+ "nds" => "Plattdüütsch",
  "aa" => "Afar",
- "am" => "Amhaars",
+ "ak" => "Akana",
+ "am" => "Amarinja",
+ "ab" => "Apsua byzwa",
  "ar" => "&#8238;&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;&#8236;",
- "hy" => "Armeens",
- "as" => "Assamitisch",
+ "as" => "Asami",
+ "av" => "Avara"
  "ay" => "Aymara",
- "az" => "Azerbaijani",
- "ba" => "Basjkir",
+ "az" => "Azerbacan",
+ "bm" => "Bambankan"
+ "ba" => "Baskort",
  "be" => "&#1041;&#1077;&#1083;&#1072;&#1088;&#1091;&#1089;&#1082;&#1080;",
- "bn" => "Bengali",
- "dz" => "Bhutani",
- "bh" => "Bihara",
- "my" => "Birmaans",
+ "bg" => "Bülgarski ezik",
+ "bn" => "Banla",
+ "bh" => "Bihari",
  "bi" => "Bislama",
+ "bo" => "Bod skad",
  "bs" => "Bosanski",
  "br" => "Brezhoneg",
  "km" => "Cambodjaans",
- "ca" => "Català",
  "cs" => "Cesky",
  "ch" => "Chamoru",
- "co" => "Corsicaans",
+ "co" => "Corsu",
+ "za" => "Cuengh",
  "cy" => "Cymraeg",
+ "dv" => "Dhivehi",
+ "nv" => "Diné bizaad",
+ "dz" => "Dzongkha",
  "et" => "Eesti",
  "el" => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940;",
  "eu" => "Euskara",
- "fo" => "Faeroers",
+ "ee" => "Eve",
+ "fo" => "Føroyskt",
  "fa" => "&#8238;&#1601;&#1585;&#1587;&#1609;&#8236;",
  "fj" => "Fiji",
- "ga" => "Gaelige",
+ "ff" => "Fulfulde",
+ "ga" => "Gaeilge",
+ "gv" => "Gaelg",
+ "gd" => "Gàidhlig",
  "gl" => "Galego",
  "kl" => "Groenlands",
  "gn" => "Guarani",
  "gu" => "&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752;",
  "ko" => "&#54620;&#44397;&#50612;",
  "ha" => "Hausa",
- "hr" => "Hrvatsky",
+ "hy" => "Hayeren",
+ "hz" => "otshiherero",
+ "hr" => "Hrvatski",
  "hi" => "&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;",
- "id" => "Bahasa Indonesia",
- "ia" => "Interlingua",
+ "id" => "bahasa Indonesia",
+ "ig" => "Igbo",
  "iu" => "Inuktitut",
- "ik" => "Inupiak",
+ "ik" => "Inupiaq",
+ "os" => "iron avzæg",
  "is" => "Íslenska",
  "he" => "&#1506;&#1489;&#1512;&#1497;&#1514;",
- "jv" => "Javaans",
- "kn" => "Kannada",
+ "jv" => "bahasa Jawa",
+ "kn" => "&#3221;&#3240;&#3277;&#3240;&#3233;",
+ "kr" => "Kanuri",
  "ka" => "&#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4312;",
- "ks" => "Kashmiri",
- "kk" => "Kazachstaans",
+ "ks" => "Kasmiri",
+ "kk" => "Kazak",
  "kw" => "Kernewek",
- "rw" => "Kinyarwanda",
  "ky" => "Kirghiz",
- "rn" => "Kirundi",
- "sw" => "Kiswahili",
- "lo" => "Laotiaans",
+ "ko" => "Kikongo",
+ "kv" => "Komi kyv",
+ "ku" => "Kurdy",
+ "lo" => "Pha xa lao",
  "la" => "Latina",
- "lv" => "Lets",
+ "lb" => "Lëtzebuergesch",
+ "lv" => "Latvie&scaron;u",
  "ln" => "Lingala",
  "lt" => "Lietuvi&#371;",
- "mk" => "Macedonisch",
+ 'lg" => "Luganda",
  "hu" => "Magyar",
+ "mk" => "Makedonski",
  "mg" => "Malagasy",
- "ms" => "Bahasa Melayu",
  "ml" => "Malayalam",
+ "ms" => "bahasa Malaysia",
+ "mt" => "il-Malti",
  "mi" => "Maori",
  "mr" => "Marathi",
- "mo" => "Moldavisch",
- "mn" => "Mongools",
+ "mo" => "Moldoveana",
+ "mn" => "Mongol",
+ "my" => "Myanmasa",
+ "nah" => "Nahuatl",
  "na" => "Nauru",
- "nds" => "Nedersassisch (Plattdüütsch)",
+ "nd" => "isiNdebele (noordelijk)",
+ "nr" => "isiNdebele (zuidelijk)",
+ "cr" => "Nehiyawa",
  "ne" => "&#2344;&#2375;&#2346;&#2366;&#2354;&#2368;",
+ "ng" => "oshiNdonga",
+ "ce" => "Nohcijn mott",
  "no" => "Norsk",
- "oc" => "Occitaans",
- "ug" => "Oeigoers",
- "uz" => "Oezbeeks",
- "or" => "Oriya",
+ "oc" => "Occitan",
+ "oj" => "Ojibwe",
+ "or" => "Oria",
  "om" => "Oromo",
+ "ug" => "Oyghurqe",
+ "uz" => "O'zbek",
+ "pi" => "Pali",
  "ps" => "Pashto",
+ "pt" => "Português",
  "pa" => "Punjabi",
  "qu" => "Quechua",
- "rm" => "Rheto-Romaans",
  "ro" => "Român&#259;",
+ "rm" => "Romontsch",
+ "rn" => "Kirundi",
  "ru" => "&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;",
- "sm" => "Samoaans",
- "sg" => "Sangro",
+ "rw" => "Kinyarwanda",
+ "sm" => "Samoaa",
+ "sg" => "Sango",
  "sa" => "&#2360;&#2306;&#2360;&#2381;&#2325;&#2371;&#2340;",
- "sq" => "Shqiptare",
- "sr" => "Srpski",
+ "sc" => "Sardu",
  "st" => "Sesotho",
- "tn" => "Setswana",
- "sn" => "Shona",
+ "sn" => "chiShona",
+ "sq" => "Shqip",
+ "si" => "Simhala",
  "sd" => "Sindhi",
- "si" => "Singalees",
  "ss" => "Siswati",
- "sl" => "Slovensko",
- "sk" => "Slovak",
- "su" => "Soedanees",
+ "sl" => "Slovenski",
+ "sk" => "Slovenský",
+ "su" => "bahasa Sunda",
  "so" => "Soomaali",
+ "sr" => "Srpski",
+ "sw" => "Kiswahili",
+ "ss" => "siSwati",
  "tl" => "Tagalog",
- "tg" => "Tajik",
- "ta" => "Tamil",
- "tt" => "Tataars",
- "te" => "Telugu",
+ "ta" => "&#2980;&#2990;&#3007;&#2996;&#3021;",
+ "tt" => "Tatar",
+ "te" => "&#3108;&#3142;&#3122;&#3137;&#3095;&#3137;",
  "th" => "Thai",
- "bo" => "Tibetaans",
  "ti" => "Tigrinya",
- "to" => "Tongaans",
- "ts" => "Tsonga",
+ "tg" => "Toçiki",
+ "to" => "Tonga",
+ "ny" => "Tshichewa",
+ "ts" => "Xitsonga",
+ "tn" => "Setswana",
  "tr" => "Türkçe",
  "tk" => "Turkmeens",
  "tw" => "Twi",
  "uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;",
  "ur" => "Urdu",
- "vi" => "Vietnamees",
+ "ve" => Tshivenda",
+ "vi" => "Tiêng Viêt Nam",
  "vo" => "Volapük",
  "wo" => "Wolof",
  "xh" => "isiXhosa",
- "yi" => "Yiddish",
- "yo" => "Yoruba",
- "za" => "Zhuang",
- "zh" => "&#20013;&#25991",
+ "yi" => "Yidi&scaron;",
+ "yo" => "Yorùbá",
  "zh-cn" => "&#20013;&#25991;(&#31616;&#20307;)",
  "zh-tw" => "&#20013;&#25991;(&#32321;&#20307;)",
  "zu" => "isiZulu",
@@ -217,7 +251,7 @@
 
 /* private */ $wgMonthAbbreviationsNl = array(
  "jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug",
- "sep", "oct", "nov", "dec"
+ "sep", "okt", "nov", "dec"
 );
 
 # All special pages have to be listed here: a description of ""
@@ -254,11 +288,12 @@
  "Whatlinkshere" => "",
  "Recentchangeslinked" => "",
  "Movepage"  => "",
- "Booksources" => "Boekhandels"
+ "Booksources" => "Boekhandels",
+ "Categories" => "Rubrieken"
 );
 
 /* private */ $wgSysopSpecialPagesNl = array(
- "Blockip"  => "Blokkeer een IP-adres",
+ "Blockip"  => "Blokkeer een IP-adres of gebruiker",
  "Asksql"  => "Raadpleeg de database",
  "Undelete" => "Verwijderde pagina's herstellen"
 );
@@ -273,6 +308,10 @@
 
 # Bits of text used by many pages:
 # Diverse stukjes tekst
+"categories" => "Rubrieken",
+"category" => "rubriek",
+"category_header" => "Artikelen in rubriek \"$1\"",
+"subcategories" => "Onderrubrieken",
 "linktrail" => "/^([äöüïëéèàa-z]+)(.*)\$/sD",
 "mainpage"  => "Hoofdpagina",
 "mainpagetext" => "Installatie van de Wiki software geslaagd.",
@@ -285,7 +324,7 @@
 "bugreports" => "Foutenrapportage",
 "bugreportspage" => "Wikipedia:Foutenrapportage",
 "faq"   => "FAQ",
-"faqpage"  => "Wikipedia:Veelgestelde vragen",
+"faqpage"  => "Wikipedia:Veel gestelde vragen",
 "edithelp"  => "Hulp bij bewerken",
 "edithelppage" => "Wikipedia:Instructies",
 "cancel"  => "Annuleren",
@@ -313,6 +352,7 @@
 "unprotectthispage" => "Beveiliging opheffen",
 "newpage" => "Nieuwe pagina",
 "talkpage"  => "Overlegpagina",
+"postcomment" => "Schrijf commentaar",
 "subjectpage" => "Artikel",
 "articlepage"   => "Artikel",
 "userpage" => "Gebruikerspagina",
@@ -321,8 +361,8 @@
 "viewtalkpage" => "Bekijk de overlegpagina",
 "otherlanguages" => "Andere talen",
 "redirectedfrom" => "(Doorverwezen vanaf $1)",
-"lastmodified" => "en is voor het laatst gewijzigd op $1.",
-"viewcount"  => "Deze pagina werd $1 maal bekeken ",
+"lastmodified" => "De laatste wijziging op deze pagina vond plaats op $1.",
+"viewcount"  => "Deze pagina werd $1 maal bekeken. ",
 "gnunote" => "Alle tekst op deze pagina valt onder de  <a class=internal href='/wiki/Gnu_Vrije_Documentatie_Licentie'>GNU FDL</a>.",
 "printsubtitle" => "(Uit http://nl.wikipedia.org)",
 "protectedpage" => "Beveiligde pagina",
@@ -337,12 +377,14 @@
 "sitetitle"  => "<span style=\"text-transform: none\">Wikipedia NL</span>", # Okay, HERE's an ugly hack. There should be a cleaner way to do this.
 "sitesubtitle" => "De vrije encyclopedie",
 "retrievedfrom" => "Afkomstig van Wikipedia NL, de Vrije Encyclopedie. \"$1\"",
-"newmessages" => "Er zijn $1.",
-"newmessageslink" => "nieuwe berichten voor u",
+"newmessages" => "U heeft $1.",
+"newmessageslink" => "een nieuw bericht",
 "editsection" => "bewerken",
 "toc" => "Inhoud",
 "showtoc" => "Tonen",
 "hidetoc" => "Niet tonen",
+"thisisdeleted" => "$1 bekijken of terugbrengen?",
+"restorelink" => "$1 verwijderde versies",
 
 # Main script and global functions
 # Algemene functies
@@ -368,6 +410,7 @@ Vanuit de functie \"$2\"
 MySQL gaf de volgende foutmelding: \"$3: $4\".\n",
 "noconnect"  => "Verbinden met de database op $1 was niet mogelijk",
 "nodb"   => "Selectie van database $1 niet mogelijk",
+"cachederror" => "Hieronder wordt een versie uit de cache getoond. Dit is mogelijk niet de meest recente versie.",
 "readonly"  => "Database geblokeerd",
 "enterlockreason" => "Geef een reden voor de blokkering en hoelang het waarschijnlijk gaat duren. De ingegeven reden zal aan de gebruikers getoond worden.",
 "readonlytext" => "De database van Wikipedia is momenteel gesloten voor nieuwe bewerkingen en wijzigingen, waarschijnlijk voor bestandsonderhoud.
@@ -408,12 +451,13 @@ U kan Wikipedia anoniem blijven gebruiken, of u opnieuw aanmelden onder dezelfde
 "areyounew"  => "Bent u nieuw op Wikipedia en wilt u een gebruikersprofiel aanmaken, voer dan een gebruikersnaam in en voer tweemaal hetzelfde wachtwoord in.
 Invoeren van uw e-mailadres is niet verplicht; het is handig als u uw wachtwoord bent vergeten; dat kan dan per e-mail worden opgestuurd.<br>\n",
 
-"login"   => "Inschrijven/Aanmelden",
-"userlogin"  => "Inschrijven/Aanmelden",
+"login"   => "Aanmelden & Inschrijven",
+"userlogin"  => "Aanmelden",
 "logout"  => "Afmelden",
 "userlogout" => "Afmelden",
 "notloggedin" => "Niet aangemeld",
-"createaccount" => "Nieuw gebruikersprofiel aanmaken.",
+"createaccount" => "Nieuw gebruikersprofiel aanmaken",
+"createaccountmail" => "per email",
 "badretype"  => "De ingevoerde wachtwoorden verschillen van elkaar.",
 "userexists" => "De gebruikersnaam die u heeft ingevoerd is al in gebruik. Gelieve een andere naam te kiezen.",
 "youremail"  => "Uw e-mailadres",
@@ -435,15 +479,24 @@ Gelieve na ontvangst opnieuw aan te melden.",
 # Edit pages
 # Pagina bewerken
 "summary"  => "Samenvatting",
+"subject" => "Onderwerp",
 "minoredit"  => "Dit is een kleine wijziging",
 "watchthis" => "Volg deze pagina",
 "savearticle" => "Pagina opslaan",
 "preview"  => "Nakijken",
 "showpreview" => "Toon bewerking ter controle",
 "blockedtitle" => "Gebruiker is geblokkeerd",
-"blockedtext" => "Uw gebruikersnaam of IP-adres is door $1 geblokkeerd. De opgegeven reden:<br>$2<p>. U kunt voor overleg contact opnemen met de [[Wikipedia:Systeembeheerders|systeembeheerders]].",
+"blockedtext" => "Uw gebruikersnaam of IP-adres is door $1 geblokkeerd. De opgegeven reden:<br>$2<p>. Elke computer die verbonden is met het internet krijgt een [[ip-adres]] toegewezen van zijn [[internetprovider]]. In veel gevallen krijgt een gebruiker regelmatig een ander ip-adres toegewezen. Het het door u gebruikte ip-adres is recent gebruikt door u of iemand anders voor bewerkingen die in overtreding zijn van de [[Wikipedia:Toch een paar regels|regels]] van Wikipedia.<p>U kunt voor overleg contact opnemen met de [[Wikipedia:Systeembeheerders|systeembeheerders]] via [http://nl.wikipedia.org/upload/f/f6/Wikinl_info.html#email wikinl-l-admin@wikipedia.org een formulier].",
+"whitelistedittitle" => "Aanmelden verplicht",
+"whitelistedittext" => "Om dit artikel te kunnen wijzigen, moet u [[Speciaal:Userlogin|ingelogd]] zijn.",
+"whitelistreadtitle" => "Aanmelden verplicht",
+"whitelistreadtext" => "Om dit artikel te kunnen lezen, moet u [[Speciaal:Userlogin|ingelogd]] zijn.",
+"whitelistacctitle" => "Creatie account niet toegestaan",
+"whitelistacctext" => "Nieuwe accounts kunnen slechts worden aangemaakt door bepaalde geregistreerde gebruikers",
+"accmailtitle" => "Wachtwoord verzonden.",
+"accmailtext" => "Het wachtwoord voor '$1' is verzonden naar $2.",
 "newarticle" => "(Nieuw)",
-"newarticletext" => "Er bestaat nog geen artikel over dit onderwerp.<br>Als u wilt, kunt u hieronder een nieuw artikel schrijven.<br>Was dit niet de bedoeling, gebruik dan de 'Terug' knop van uw browser.",
+"newarticletext" => "Er bestaat nog geen artikel over dit onderwerp.<br>Als u wilt, kunt u hieronder een nieuw artikel schrijven.<br>Was dit niet de bedoeling, gebruik dan de 'Terug' knop van uw browser.<p>WAARSCHUWING: Let er goed op dat uw tekst vrij van copyright is, bijvoorbeeld omdat u het zelf geschreven heeft. Neem geen teksten over uit boeken, tijdschriften of andere websites tenzij u zeker weet dat deze vrij van auteursrechten zijn.",
 "anontalkpagetext" => "<hr>Deze overlegpagina hoort bij een anonieme gebruiker die hetzij geen loginnaam heeft, hetzij deze niet gebruikt. We gebruiken daarom het IP-adres ter identificatie. Het kan echter zijn dat meerdere personen hetzelfde IP-adres gebruiken. Het kan daarom zijn dat u hier berichten ontvangt die niet voor u bedoeld zijn. Mocht u dat willen voorkomen, dan kunt u [[Speciaal:Userlogin|een gebruikersnaam aanvragen of u aanmelden]].",
 "noarticletext" => "(Deze pagina bevat momenteel geen tekst)",
 "updated"  => "(Bijgewerkt)",
@@ -451,7 +504,8 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "previewnote" => "Let op: dit is een controlepagina; uw tekst is nog niet opgeslagen!",
 "previewconflict" => "Deze versie toont hoe de tekst in het bovenste veld eruit gaat zien wanneer u zou opslaan.",
 "editing"  => "Bewerkingspagina: $1",
-"sectionedit" => "(deelpagina)",
+"sectionedit" => " (deelpagina)",
+"commentedit" => " (nieuwe opmerking)",
 "editconflict" => "Bewerkingsconflict: $1",
 "explainconflict" => "Iemand anders heeft deze pagina gewijzigd nadat u aan deze bewerking bent begonnen. Het bovenste tekstveld toont de huidige versie van de pagina. U zal uw eigen wijzigingen moeten integreren in die tekst. Alleen de tekst in het bovenste veld wordt bewaard wanneer u kiest voor \"Pagina opslaan\".\n<p>",
 "yourtext"  => "Uw tekst",
@@ -486,14 +540,14 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "editcurrent" => "De huidige versie van deze pagina bewerken",
 
 # Search results
-# Zoek resultaten
+# Zoekresultaten
 "searchresults" => "Zoekresultaten",
 "searchhelppage" => "Wikipedia:Zoeken",
 "searchingwikipedia" => "Zoeken op Wikipedia",
 "searchresulttext" => "Voor meer informatie over zoeken op Wikipedia: zie $1.",
 "searchquery" => "Voor zoekopdracht \"$1\"",
 "badquery"  => "Slecht geformuleerde zoekopdracht",
-"badquerytext" => "Uw zoekopdracht kon niet worden uitgevoerd. Dit komt wellicht doordat u heeft geprobeerd een woord van minder dan drie letters te zoeken; dat wordt door de software niet ondersteund. Het is ook mogelijk dat u de zoekterm verkeerd hebt ingetypt, zoals bij \"vissen en en schubben\".",
+"badquerytext" => "Uw zoekopdracht kon niet worden uitgevoerd. Dit kan komen doordat u geprobeerd hebt om een 'woord' van 1 letter te zoeken, of 1 van de <a HREF=\"http://nl.wikipedia.org/wiki/Wikipedia:Verboden_woorden\">Verboden woorden</a>.",
 "matchtotals" => "De zoekterm \"$1\" is gevonden in $2 paginatitels en in de tekst van $3 pagina's.",
 "nogomatch" => "Er bestaat geen pagina met deze titel, op zoek naar pagina's waarin de tekst voorkomt.",
 "titlematches" => "Overeenkomst met volgende titels",
@@ -505,13 +559,37 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "viewprevnext" => "($1) ($2) ($3) bekijken.",
 "showingresults" => "Hieronder <b>$1</b> resultaten vanaf nummer <b>$2</b>.",
 "showingresultsnum" => "Hieronder <b>$3</b> resultaten vanaf nummer <b>$2</b>.",
-"nonefound"  => "<strong>Merk op:</strong> wanneer een zoekopdracht mislukt komt dat vaak door gebruik van (in het Engels) veel voorkomende woorden zoals \"of\" en \"be\", die niet geïndexeerd zijn, of door verschillende zoektermen tegelijk op te geven (u krijgt dan alleen in pagina's waaarin alle opgegeven termen voorkomen).",
+"nonefound"  => "<strong>Merk op:</strong> wanneer een zoekopdracht mislukt komt dat vaak door gebruik van veel voorkomende woorden zoals \"de\" en \"het\", die niet geïndexeerd zijn, of door verschillende zoektermen tegelijk op te geven (u krijgt dan alleen in pagina's waaarin alle opgegeven termen voorkomen).
+
+Het kan natuurlijk dat er gewoon nog geen artikel aanwezig op Wikipedia NL over dit onderwerp. Mogelijk is het aanwezig in een andere taal. Zoek met de <a HREF=\"http://pliny.wikipedia.org/tools/wikisearch.php\">multi-wikipedia zoeker</a> in de andere Wikipedia's, of buiten Wikipedia in een <a href=\"http://encyclopedie.zoekhulp.nl/?refer=Wikipedia.nl\">andere encyclopedie</a>. Wanneer u gevonden heeft wat u zocht, kunt u wellicht daarover een artikel schrijven op Wikipedia NL, zodat de volgende die zoekt wat u zocht het wel kan vinden. 
+",
 "powersearch" => "Zoeken",
 "powersearchtext" => "   
  Zoek in naamruimten :<br>
 $1<br>
 $2 Toon redirects &nbsp; Zoek: $3 $9",   
-"searchdisabled" => "Om overbelasting van het systeem te voorkomen, is de zoekfunctie momenteel buiten gebruik gesteld.",
+"searchdisabled" => "Wegens een overbelasting van de server zijn sommige functies die het systeem extra belasten tijdelijk niet beschikbaar.
+ Hierdoor is in de interne zoekfunctie van Wikipedia (vermoedelijk) niet beschikbaar voor onbepaalde duur.<p>
+Via google kan u zoeken op Wikipedia. <br>
+<form method=\"get\" action=\"http://www.google.com/search\">
+<table bgcolor=\"#ffffff\" style=\"width: 752px; height: 76px;\"><tbody><tr><td>
+<a href=\"http://www.google.com/\">
+<img src=\"http://www.google.com/logos/Logo_40wht.gif\" border=\"0\" alt=\"Google\"></a>
+</td>
+<td>
+<input type=\"text\" name=\"q\" size=\"31\" maxlength=\"255\" value=\"\">
+<input type=\"submit\" name=\"btnG\" value=\"Met Google zoeken in Wikipedia\">
+<font size=\"-1\">
+<input type=\"hidden\" name=\"domains\" value=\"http://nl.wikipedia.org\"><br><input type=\"radio\" name=\"sitesearch\" value=\"\">Het volledige internet<input type=\"radio\" name=\"sitesearch\" value=\"http://nl.wikipedia.org\" checked=\"checked\">Wikipedia NL<br>
+</font>
+</td></tr></tbody></table>
+</form>
+<p> U zal niet alle artikels kunnen vinden maar het zal niet veel schelen. 
+Als u zoekt via google op Wikipedia zal u ook treffers vinden op Wikipedia die geen artikels zijn. 
+Wikipedia heeft bij de meeste artikels ook een \"overlegpagina\" en diverse soorten dienstpagina's. 
+Enkel de pagina's die geen prefix (zoals Wikipedia:, Gebruiker: of Overleg:) hebben zijn artikels.
+",
+"blanknamespace" => "(encyclopedie)",
 
 # Preferences page
 # Voorkeuren
@@ -519,7 +597,9 @@ $2 Toon redirects &nbsp; Zoek: $3 $9",
 "prefsnologin" => "Niet aangemeld",
 "prefsnologintext" => "U dient <a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">aangemeld</a> te zijn om voorkeuren te kunnen instellen.",
-"prefslogintext" => "U bent aangemeld als \"$1\". Uw interne identificatienummer is $2.",
+"prefslogintext" => "U bent aangemeld als \"$1\". Uw interne identificatienummer is $2.
+
+Een beschrijving van de verschillende opties staat op [[Wikipedia:Voorkeuren]].",
 "prefsreset" => "Standaardvoorkeuren hersteld.",
 "qbsettings" => "Menubalkinstellingen", 
 "changepassword" => "Wachtwoord wijzigen",
@@ -559,10 +639,9 @@ $2 Toon redirects &nbsp; Zoek: $3 $9",
 # Recente wijzigingen
 "changes" => "wijzigingen",
 "recentchanges" => "Recente wijzigingen",
-"recentchangestext" => "Deze pagina toont de meest recente wijzigingen aan Wikipedia NL
-Mocht u hier nieuw zijn, dan welkom bij Wikipedia! Bekijk AUB de volgende pagina's eens: [[Wikipedia:Veel gestelde vragen|Veel gestelde vragen]], [[Wikipedia:Instructies|Instructies]], [[Wikipedia:Objectiviteit|Objectiviteit]] en [[Wikipedia:Wat je niet moet doen|Wat je NIET moet doen]].
-Als u pagina's wilt verwijderen, ga naar [[Wikipedia:Te verwijderen pagina's|Te verwijderen pagina's]], als u iets wilt bediscussi&euml;ren, ga naar [[Wikipedia:Overleg gewenst|Overleg gewenst]]. Er is ook een email-lijst voor WikipediaNL: [http://www.wikipedia.org/mailman/listinfo/wikinl-l WikiNL-l].
-<br>Om Wikipedia te laten slagen is het erg belangrijk '''geen''' materiaal toe te voegen waarop iemand anders auteursrechten heeft, tenzij u daartoe toestemming heeft. De wettelijke gevolgen van inbreuk op de rechten van anderen zouden de hele onderneming zwaar kunnen schaden.",
+"recentchangestext" => "Deze pagina toont de laatste aanpassingen aan artikelen van Wikipedia NL. <br>
+Ben je hier nieuw? Lees dan ook [[Wikipedia:Welkom voor nieuwelingen|Welkom voor nieuwelingen]] -- Wil je een pagina verwijderd hebben? Ga dan naar [[Wikipedia:Te verwijderen pagina's|Te verwijderen pagina's]] -- Wil je iets met andere gebruikers overleggen? Ga naar [[Wikipedia:Overleg gewenst|Overleg gewenst]] of meld je aan voor de discussielijst [http://mail.wikipedia.org/mailman/listinfo/wikinl-l WikiNL-l] -- Zin in een gezellige babbel? Kom naar de [[Wikipedia:De kroeg|De kroeg]] of doe mee op ons nieuwe [http://chat.wikipedia.be Wiki-chatkanaal].<p>
+Om Wikipedia te laten slagen is het erg belangrijk geen materiaal toe te voegen waarop iemand anders auteursrechten heeft, tenzij je daartoe toestemming hebt. De wettelijke gevolgen van inbreuk op de rechten van anderen zouden de hele onderneming grote schade kunnen toebrengen.",
 "rcloaderr"  => "Meest recente wijzigingen laden",
 "rcnote"  => "Hieronder zijn de <strong>$1</strong> laatste wijzigingen gedaan in de laatste <strong>$2</strong> dagen.",
 "rcnotefrom"  => "Veranderingen sinds <b>$2</b> (met een maximum van <b>$1</b> veranderingen).",
@@ -627,6 +706,7 @@ Geef uw bestanden een duidelijk omschrijvende naam om verwarring te voorkomen. O
 "uploadwarning" => "Upload waarschuwing ",
 "savefile"  => "Bestand opslaan",
 "uploadedimage" => "heeft ge-upload: \"$1\"",
+"uploaddisabled" => "Uploads zijn op deze server niet mogelijk.",
 
 # Image list
 # Afbeeldingslijst
@@ -697,15 +777,16 @@ Er is in totaal $3 maal een pagina bekeken, en $4 maal een pagina bewerkt. Dat g
 "longpages"  => "Lange artikels",
 "listusers"  => "Lijst van gebruikers",
 "specialpages" => "Speciale pagina's",
-"spheading"  => "Speciale pagina's",
-"sysopspheading" => "Speciale pagina's voor systeembeheerders",
-"developerspheading" => "Speciale pagina's voor systeemontwikkelaars",
+"spheading"  => "",
+"sysopspheading" => "Alleen voor systeembeheerders",
+"developerspheading" => "Alleen voor systeemontwikkelaars",
 "protectpage" => "Beveilig pagina",
 "recentchangeslinked" => "Volg links",
 "rclsub"  => "(van pagina's waarnaar \"$1\" verwijst)",
 "debug"   => "Bugreparatie",
 "newpages"  => "Nieuwe artikels",
 "ancientpages" => "Oudste artikels",
+#"intl" => "Taallinks",  -  not active yet
 "movethispage" => "Verplaats deze pagina",
 "unusedimagestext" => "<p>Let op! Het zou kunnen dat er via een directe link verwezen wordt naar een afbeelding, bijvoorbeeld vanuit een anderstalige Wikipedia. Het is daarom mogelijk dat een afbeelding hier vermeld staat terwijl het wel degelijk gebruikt wordt.",
 "booksources" => "Boekhandels",
@@ -755,7 +836,21 @@ Ook zullen deze pagina's in het <b>vet</b> verschijnen in de <a href=\"" .
 "watchthispage" => "Volg deze pagina",
 "unwatchthispage" => "Niet meer volgen",
 "notanarticle" => "Is geen artikel",
-
+"watchnochange" => "Geen van de pagina's op uw volglijst is in deze periode gewijzigd",
+"watchdetails" => "Er staan $1 pagina's op uw volglijst (overlegpagina's niet meegeteld.
+In de aangegeven periode zijn $2 pagina's gewijzigd.
+$3. (<a href='$4'>Toon mijn volledige volglijst</a>.)",
+"watchmethod-recent" => "Bij de recent gewijzigde pagina's gezocht naar gevolgde pagina's",
+"watchmethod-list" => "Bij de gevolgde pagina's naar wijzigingen bekeken",
+"removechecked" => "Verwijderen",
+"watchlistcontains" => "U heeft $1 pagina's op uw volglijst",
+"watcheditlist" => "Hier is een lijst van alle pagina's op uw volglijst.
+Vink de vakjes aan voor de pagina's die u wilt verwijderen, en druk dan
+op 'Verwijderen' onderaan deze pagina.",
+"removingchecked" => "De aangegeven pagina's worden van uw volglijst verwijderd.",
+"couldntremove" => "Verwijdering van '$1' onmogelijk.",
+"iteminvalidname" => "Incorrecte naam '$1'",
+"wlnote" => "Getoond worden de laatste $1 wijzigingen in de laatste $2 uur.",
 
 # Delete/protect/revert
 # Verwijderen/beschermen/annuleren
@@ -820,25 +915,26 @@ Ook zullen deze pagina's in het <b>vet</b> verschijnen in de <a href=\"" .
 
 # Block/unblock IP
 #
-"blockip"  => "Blokkeer IP-adres",
-"blockiptext" => "Gebruik het onderstaande formulier om schrijftoegang van een bepaald IP-adres te verbieden. Dit mag enkel gedaan worden om vandalisme te voorkomen en moet in overeenstemming zijn met de [[Wikipedia:spelregels|spelregels]] van Wikipedia NL. Vul een specifieke reden in.",
-"ipaddress"  => "IP-adres",
+"blockip"  => "Gebruiker blokkeren",
+"blockiptext" => "Gebruik het onderstaande formulier om een bepaald IP-adres of een bepaalde gebruikersnaam de schrijftoegang te ontnemen. Gebruik deze optie spaarzaam! Het is bedoeld om vandalisme te voorkomen. Misbruik van deze mogelijkheid kan tot gevolg hebben dat uw systeembeheerderschap wordt weggenomen. Vul hieronder een specifieke reden in.",
+"ipaddress"  => "IP-adres of gebruikersnaam",
 "ipbreason"  => "Reden",
-"ipbsubmit"  => "Blokkeer dit IP-adres",
-"badipaddress" => "Het IP-adres heeft een ongeldige opmaak.",
-"noblockreason" => "U dient een reden op te geven voor het blokkeren van een IP-adres.",
+"ipbsubmit"  => "Blokkeer deze gebruiker",
+"badipaddress" => "Geen bestaande gebruikersnaam of geldig IP-adres",
+"noblockreason" => "U dient een reden op te geven voor het blokkeren van een gebruiker.",
 "blockipsuccesssub" => "Blokkering gelukt",
-"blockipsuccesstext" => "Het IP-adres \"$1\" is geblokkeerd.<br>
+"blockipsuccesstext" => "\"$1\" is geblokkeerd.<br>
 Zie de [[speciaal:Ipblocklist|Lijst van geblokkeerde IP-adressen]].",
-"unblockip"  => "De-blokkeer IP-adres",
-"unblockiptext" => "Gebruik het onderstaande formulier om terug schrijftoegang te geven aan een geblokkeerd IP-adres.",
-"ipusubmit"  => "De-blokkeer dit IP-adres.",
-"ipusuccess" => "Het IP-adres \"$1\" is gedeblokkeerd.",
-"ipblocklist" => "Lijst van geblokkeerde IP-adressen.",
-"blocklistline" => "Op $1 blokkeerde $2 het adres $3",
+"unblockip"  => "De-blokkeer gebruiker",
+"unblockiptext" => "Gebruik het onderstaande formulier om terug schrijftoegang te geven aan een geblokkeerde gebruiker of IP-adres.",
+"ipusubmit"  => "De-blokkeer deze gebruiker.",
+"ipusuccess" => "\"$1\" is gedeblokkeerd.",
+"ipblocklist" => "Lijst van geblokkeerde gebruikers en IP-adressen.",
+"blocklistline" => "Op $1 blokkeerde $2: $3",
 "blocklink"  => "blokkeer",
 "unblocklink" => "de-blokkeer",
 "contribslink" => "bijdragen",
+"autoblocker" => "U werd geblokkeerd omdat uw IP-adres overeenkomt met dat van \"$1\". Deze gebruiker werd geblokkeerd met als reden: \"$2\".",
 
 # Developer tools
 # Ontwikkelingsgereedsschap
@@ -1051,6 +1147,43 @@ class LanguageNl extends Language {
                 if ( "" == $m ) { return $wgAllMessagesEn[$key]; }
                 else return $m;
  }
+
+ function isRTL() { return false; }
+
+/* private */ $wgMagicWordsEn = array(
+#   ID                                 CASE  SYNONYMS
+    MAG_REDIRECT             => array( 0,    "#redirect"              ),
+    MAG_NOTOC                => array( 0,    "__NOTOC__"              ),
+    MAG_START                => array( 0,    "__START__"              ),
+    MAG_CURRENTMONTH         => array( 1,    "{{CURRENTMONTH}}"       ),
+    MAG_CURRENTMONTHNAME     => array( 1,    "{{CURRENTMONTHNAME}}"   ),
+    MAG_CURRENTDAY           => array( 1,    "{{CURRENTDAY}}"         ),   
+    MAG_CURRENTDAYNAME       => array( 1,    "{{CURRENTDAYNAME}}"     ),
+    MAG_CURRENTYEAR          => array( 1,    "{{CURRENTYEAR}}"        ),
+    MAG_CURRENTTIME          => array( 1,    "{{CURRENTTIME}}"        ),
+    MAG_NUMBEROFARTICLES     => array( 1,    "{{NUMBEROFARTICLES}}"   ),
+    MAG_CURRENTMONTHNAMEGEN  => array( 1,    "{{CURRENTMONTHNAMEGEN}}"),
+    MAG_MSG                  => array( 1,    "{{MSG:$1}}"             ),
+    MAG_SUBST                => array( 1,    "{{SUBST:$1}}"           ),
+    MAG_MSGNW                => array( 1,    "{{MSGNW:$1}}"           )
+);
+
+ function getMagicWords() 
+ {
+  global $wgMagicWordsNl;
+  return $wgMagicWordsNl;
+ }
+
+ # Fill a MagicWord object with data from here
+ function getMagic( &$mw )
+ {
+	$raw = $this->getMagicWords(); # don't worry, it's reference counted not deep copy
+	$rawEntry = $raw[$mw->mId];
+	$mw->mCaseSensitive = $rawEntry[0];
+	$mw->mSynonyms = array_slice( $rawEntry, 1 );
+ }
+
+ 
 
  # Inherit iconv(), ucfirst(), stripForSearch(), recodeForEdit(), recodeInput()
  # since they are same as English/Latin1
