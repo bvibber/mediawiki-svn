@@ -56,7 +56,7 @@ function wfSpecialImagelist()
 	  "{$cap}: <input type=text size=8 name='wpIlMatch' value=''> " .
 	  "<input type=submit name='wpIlSubmit' value='{$sub}'></form>" );
 
-	$nums = array( 50, 100, 250, 500, 1000, 2500, 5000 );
+	$nums = array( 50, 100, 250, 500 );
 	$here = $wgLang->specialPage( "Imagelist" );
 
 	$fill = "";

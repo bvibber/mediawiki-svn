@@ -55,12 +55,10 @@ function wfSpecialContributions()
 	$wgOut->addHTML( "<p>{$note}\n<br>" );
 
 	$cl = ucCountLink( 50, $days ) . " | " . ucCountLink( 100, $days ) . " | " .
-	  ucCountLink( 250, $days ) . " | " . ucCountLink( 500, $days ) . " | " .
-	  ucCountLink( 1000, $days ) . " | " . ucCountLink( 2500, $days ) . " | " .
-	  ucCountLink( 5000, $days );
+	  ucCountLink( 250, $days ) . " | " . ucCountLink( 500, $days );
 	$dl = ucDaysLink( $limit, 1 ) . " | " . ucDaysLink( $limit, 3 ) . " | " .
 	  ucDaysLink( $limit, 7 ) . " | " . ucDaysLink( $limit, 14 ) . " | " .
-	  ucDaysLink( $limit, 30 ) . " | " . ucDaysLink( $limit, 90 );
+	  ucDaysLink( $limit, 30 );
 	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
 	$note = str_replace( "$2", $dl, $note );
 	$wgOut->addHTML( "{$note}\n<p>" );

@@ -35,12 +35,10 @@ function wfSpecialRecentchanges()
 	$wgOut->addHTML( "\n<hr>\n{$note}\n<br>" );
 
 	$cl = rcCountLink( 50, $days ) . " | " . rcCountLink( 100, $days ) . " | " .
-	  rcCountLink( 250, $days ) . " | " . rcCountLink( 500, $days ) . " | " .
-	  rcCountLink( 1000, $days ) . " | " . rcCountLink( 2500, $days ) . " | " .
-	  rcCountLink( 5000, $days );
+	  rcCountLink( 250, $days ) . " | " . rcCountLink( 500, $days );
 	$dl = rcDaysLink( $limit, 1 ) . " | " . rcDaysLink( $limit, 3 ) . " | " .
 	  rcDaysLink( $limit, 7 ) . " | " . rcDaysLink( $limit, 14 ) . " | " .
-	  rcDaysLink( $limit, 30 ) . " | " . rcDaysLink( $limit, 90 );
+	  rcDaysLink( $limit, 30 );
 	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
 	$note = str_replace( "$2", $dl, $note );
 	$wgOut->addHTML( "{$note}\n" );
