@@ -763,7 +763,10 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$wgOut->setPagetitle( wfMsg( "removedwatch" ) );
 		$wgOut->setRobotpolicy( "noindex,follow" );
 
-		$text = str_replace( "$1", $wgTitle->getPrefixedText(),
+		$sk = $wgUser->getSkin() ;
+		$link = $sk->makeKnownLink ( $wgTitle->getPrefixedText() ) ;
+
+		$text = str_replace( "$1", $link ,
 		  wfMsg( "removedwatchtext" ) );
 		$wgOut->addHTML( $text );
 
