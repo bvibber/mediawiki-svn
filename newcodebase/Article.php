@@ -396,7 +396,7 @@ $wpTextbox2
 		  wfStrencode( $summary ) . "', '" .
 		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', " .
 		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
-		  wfStrencode( wfStripForSearch( $wgTitle->getPrefixedText() ) ) .
+		  wfStrencode( $wgTitle->getIndexTitle() ) .
 		  "', '" . wfStrencode( $wgUser->getName() ) . "', $redir)";
 		$res = wfQuery( $sql, "Article::insertNewArticle" );
 

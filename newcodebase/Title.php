@@ -94,6 +94,21 @@ class Title {
 	function getInterwiki() { return $this->mInterwiki; }
 	function getFragment() { return $this->mFragment; }
 
+	function getIndexTitle()
+	{
+		$lc = SearchEngine::legalSearchChars() . "&#;";
+		$t = preg_replace( "/[^{$lc}]+/", " ", $this->mTextform );
+		$t = preg_replace( "/\\b[{$lc}][{$lc}]\\b/", " ", $t );
+		$t = preg_replace( "/\\b[{$lc}]\\b/", " ", $t );
+		$t = preg_replace( "/\\s+/", " ", $t );
+
+		$t = strtolower( $t );
+		if ( Namespace::getIndex( "Image" ) == $this->mNamespace ) {
+			$t = preg_replace( "/ (png|gif|jpg|jpeg)$/", "", $t );
+		}
+		return trim( $t );
+	}
+
 	/* static */ function makeName( $ns, $title )
 	{
 		$n = Namespace::getName( $ns );
