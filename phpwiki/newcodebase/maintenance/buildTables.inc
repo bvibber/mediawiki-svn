@@ -19,7 +19,6 @@ function buildTables()
   user_newpassword tinyblob NOT NULL default '',
   user_email tinytext NOT NULL default '',
   user_options blob NOT NULL default '',
-  user_watch mediumblob NOT NULL default '',
   user_newtalk tinyint(1) unsigned NOT NULL default '1',
   UNIQUE KEY user_id (user_id)
 ) TYPE=MyISAM PACK_KEYS=1";
@@ -193,8 +192,9 @@ $sql = "DROP TABLE IF EXISTS watchlist";
 wfQuery( $sql );
 $sql = "CREATE TABLE watchlist (
   wl_user int(5) unsigned NOT NULL,
-  wl_page int(8) unsigned NOT NULL,
-  UNIQUE KEY (wl_user, wl_page)
+  wl_namespace tinyint(2) unsigned NOT NULL default '0',
+  wl_title varchar(255) binary NOT NULL default '',
+  UNIQUE KEY (wl_user, wl_namespace, wl_title)
 ) TYPE=MyISAM PACK_KEYS=1";
 wfQuery( $sql );
 

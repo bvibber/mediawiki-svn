@@ -727,7 +727,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$wgOut->readOnlyPage();
 			return;
 		}
-		$wgUser->addWatch( $wgTitle->getPrefixedDBkey() );
+		$wgUser->addWatch( $wgTitle );
 
 		$wgOut->setPagetitle( wfMsg( "addedwatch" ) );
 		$wgOut->setRobotpolicy( "noindex,follow" );
@@ -755,7 +755,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$wgOut->readOnlyPage();
 			return;
 		}
-		$wgUser->removeWatch( $wgTitle->getPrefixedDBkey() );
+		$wgUser->removeWatch( $wgTitle );
 
 		$wgOut->setPagetitle( wfMsg( "removedwatch" ) );
 		$wgOut->setRobotpolicy( "noindex,follow" );

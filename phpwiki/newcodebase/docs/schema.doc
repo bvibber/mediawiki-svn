@@ -10,17 +10,21 @@ user    (Wikipedia users)
   user_id
     integer, primary key, autoincrement
   user_name
+    Usernames must be unique, must not be in the form of
+    an IP address. _Shouldn't_ allow slashes or case
+    conflicts. Spaces are allowed, and are _not_ converted
+    to underscores like titles. (Conflicts?)
   user_rights
     Comma-separated list of textual flags.
   user_password
     Hash of current password.
   user_newpassword
-    Not presently used? (For mail-a-new-password feature?)
+    Generated for mail-a-new-password feature
   user_email
+    Note -- email should be restricted, not public info.
+    Same with passwords. ;)
   user_options
     Newline-separated list of name=value pairs.
-  user_watch
-    Newline-separated list of page titles on watchlist.
   user_newtalk
     Set to "1" when users's talk page is edited by someone
     else; reset to 0 when user reads it.  Used for the "*"
@@ -102,7 +106,7 @@ archive	(Temporary storage of deleted articles which may be restored.
 links   (Internal links to existing articles)
 
   l_from
-    ID of source article.
+    ID of source article. (currently title, may be changed)
   l_to
     ID of target article.
 
@@ -194,3 +198,17 @@ recentchanges
 
   (Will document further when working)
 
+
+watchlist
+
+  wl_user
+    Foreign key -> user_id
+  wl_namespace
+    Namespace -> cur_namespace
+    Note that these should only include even-numbered
+    namespaces for regular pages; associated talk pages
+    (odd numbered namespaces) are folded in.
+  wl_title
+    Page title -> cur_title
+    Note also that the linked page may not exist in page
+    or talk namespace, or at all.

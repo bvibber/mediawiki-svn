@@ -39,13 +39,12 @@ function wfSpecialWatchlist()
 		return;
 	}
 
-	$sql = "SELECT DISTINCT wl_page,talk.cur_id AS id,talk.cur_namespace AS namespace,talk.cur_title AS title,
-	  talk.cur_user AS user,talk.cur_comment AS comment,talk.cur_user_text AS user_text,
-	  talk.cur_timestamp AS timestamp,talk.cur_minor_edit AS minor_edit,talk.cur_is_new AS is_new
-	  FROM cur as page, cur as talk, watchlist
-	  WHERE wl_user={$uid} AND wl_page=page.cur_id AND page.cur_title=talk.cur_title
-	  AND talk.cur_namespace | 1=page.cur_namespace | 1
-	  ORDER BY talk.cur_timestamp DESC {$dolimit}";
+	$sql = "SELECT DISTINCT
+  cur_id,cur_namespace,cur_title,cur_comment,
+  cur_user,cur_user_text,cur_timestamp,cur_minor_edit,cur_is_new
+  FROM cur,watchlist
+  WHERE wl_user={$uid} AND wl_namespace=cur_namespace & (~1) AND wl_title=cur_title
+  ORDER BY cur_timestamp DESC {$dolimit}";
 	$res = wfQuery( $sql, $fname );
 	if ( wfNumRows( $res ) == 0 ) {
 		$wgOut->addHTML( wfMsg( "nowatchlist" ) );
@@ -62,15 +61,15 @@ function wfSpecialWatchlist()
 	$s = $sk->beginRecentChangesList();
 
 	while ( $obj = wfFetchObject( $res ) ) {
-		$ts = $obj->timestamp;
-		$u = $obj->user;
-		$ut = $obj->user_text;
-		$ns = $obj->namespace;
-		$ttl = $obj->title;
-		$com = $obj->comment;
-		$me = ( $obj->minor_edit > 0 );
-		$new = ( $obj->is_new  > 0 );
-		$watched = ($obj->id == $obj->wl_page);
+		$ts = $obj->cur_timestamp;
+		$u = $obj->cur_user;
+		$ut = $obj->cur_user_text;
+		$ns = $obj->cur_namespace;
+		$ttl = $obj->cur_title;
+		$com = $obj->cur_comment;
+		$me = ( $obj->cur_minor_edit > 0 );
+		$new = ( $obj->cur_is_new  > 0 );
+		$watched = true;
 
 		$s .= $sk->recentChangesLine( $ts, $u, $ut, $ns, $ttl, $com, $me, $new, $watched );
 	}

@@ -5,7 +5,7 @@ class User {
 	/* private */ var $mId, $mName, $mPassword, $mEmail, $mNewtalk;
 	/* private */ var $mRights, $mOptions;
 	/* private */ var $mDataLoaded, $mNewpassword;
-	/* private */ var $mSkin, $mWatchlist;
+	/* private */ var $mSkin;
 	/* private */ var $mBlockedby, $mBlockreason;
 
 	function User()
@@ -72,7 +72,6 @@ class User {
 			$this->mOptions[$oname] = $val;
 		}
 		unset( $this->mSkin );
-		unset( $this->mWatchlist );
 		$this->mDataLoaded = false;
 		$this->mBlockedby = -1; # Unset
 	}
@@ -314,30 +313,19 @@ class User {
 		return $this->mSkin;
 	}
 
-	/* private */ function loadWatchlist()
-	{
-		# This function is obsolete
-		if ( 0 == $this->mId ) {
-			$this->mWatchlist = array();
-			return;
-		}
-		if ( ! isset( $this->mWatchlist ) ) {
-			$a = wfGetSQL( "user", "user_watch", "user_id={$this->mId}" );
-			$this->mWatchlist = explode( "\n", $a );
-		}
-	}
-
 	function isWatched( $title )
 	{
-		#$this->loadWatchlist();
-		#return in_array( $title, $this->mWatchlist );
-		global $wgLinkCache;
-		$pid = $wgLinkCache->addLink( $title );
-		if( $this->mId > 0 and $pid > 0) {
-			$sql = "SELECT wl_page FROM watchlist WHERE wl_user={$this->mId} AND wl_page={$pid}";
+		# Note - $title should be a Title _object_
+		# Pages and their talk pages are considered equivalent for watching;
+		# remember that talk namespaces are numbered as page namespace+1.
+		if( $this->mId ) {
+			$sql = "SELECT COUNT(wl_user) AS count FROM watchlist
+			  WHERE wl_user={$this->mId} AND
+			  wl_namespace | 1 = " . ($title->getNamespace() | 1) . " AND
+			  wl_title='" . wfStrencode( $title->getDBkey() ) . "'";
 			$res = wfQuery( $sql );
 			$s = wfFetchObject( $res );
-			return ( $s->wl_page == $pid );
+			return ( $s->count > 0 );
 		} else {
 			return false;
 		}
@@ -345,34 +333,24 @@ class User {
 
 	function addWatch( $title )
 	{
-		#$this->loadWatchlist();
-		#array_push( $this->mWatchlist, $title );
-		global $wgLinkCache;
-		$pid = $wgLinkCache->addLink( $title );
-		if( $this->mId > 0 and $pid > 0) {
-			$sql = "INSERT INTO watchlist (wl_user, wl_page) VALUES ({$this->mId},{$pid})";
+		if( $this->mId ) {
+			$sql = "INSERT INTO watchlist (wl_user, wl_namespace,wl_title)
+			  VALUES ({$this->mId}," . (($title->getNamespace() | 1) - 1) .
+			  ",'" . wfStrencode( $title->getDBkey() ) . "')";
 			wfQuery( $sql );
 		}
 	}
 
 	function removeWatch( $title )
 	{
-		#$this->loadWatchlist();
-		#$r = array_search( $title, $this->mWatchlist );
-		#if ( false !== $r ) { unset( $this->mWatchlist[$r] ); }
-		global $wgLinkCache;
-		$pid = $wgLinkCache->addLink( $title );
-		if( $this->mId > 0 and $pid > 0 ) {
-			$sql = "DELETE FROM watchlist WHERE wl_user={$this->mId} AND wl_page={$pid}";
+		if( $this->mId ) {
+			$sql = "DELETE FROM watchlist WHERE wl_user={$this->mId} AND
+			  wl_namespace=" . (($title->getNamespace() | 1) - 1) .
+			  " AND wl_title='" . wfStrencode( $title->getDBkey() ) . "'";
 			wfQuery( $sql );
 		}
 	}
 
-	function getWatchlist()
-	{
-		$this->loadwatchlist();
-		return $this->mWatchlist;
-	}
 
 	/* private */ function encodeOptions()
 	{
@@ -441,14 +419,9 @@ class User {
 		  "', user_newtalk=" . ( $this->mNewtalk ? "1" : "0" ) .
 		  " WHERE user_id={$this->mId}";
 		wfQuery( $sql, "User::saveSettings" );
-
-		if ( isset( $this->mWatchlist ) ) {
-			wfSetSQL( "user", "user_watch", implode( "\n", $this->mWatchlist ),
-			  "user_id={$this->mId}" );
-		}
 	}
 
-    # Checks if a user with the given name exists
+	# Checks if a user with the given name exists
 	#
 	function idForName()
 	{
@@ -472,20 +445,15 @@ class User {
 	function addToDatabase()
 	{
 		$sql = "INSERT INTO user (user_name,user_password,user_newpassword," .
-		  "user_email, user_rights, user_options, user_watch, user_newtalk) " .
+		  "user_email, user_rights, user_options, user_newtalk) " .
 		  " VALUES ('" . wfStrencode( $this->mName ) . "', '" .
 		  wfStrencode( $this->mPassword ) . "', '" .
 		  wfStrencode( $this->mNewpassword ) . "', '" .
 		  wfStrencode( $this->mEmail ) . "', '" .
 		  wfStrencode( implode( ",", $this->mRights ) ) . "', '" .
-		  $this->encodeOptions() . "', '', 0 )";
+		  $this->encodeOptions() . "', 0 )";
 		wfQuery( $sql, "User::addToDatabase" );
 		$this->mId = $this->idForName();
-
-		if ( isset( $this->mWatchlist ) ) {
-			wfSetSQL( "user", "user_watch", implode( "\n", $this->mWatchlist ),
-			  "user_id={$this->mId}" );
-		}
 	}
 }
 ?>
