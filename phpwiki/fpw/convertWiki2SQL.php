@@ -170,7 +170,7 @@ function fixLinks ( $s ) {
 		}
 
 	# Automatic subpages, one last time...
-	$s = ereg_replace ( "([\n ])/([a-zA-Z0-9]+)" , "\\1[[/\\2|/\\2]]" , $s ) ;
+	$s = ereg_replace ( "([\n ])/([A-Z][a-zA-Z0-9]+)" , "\\1[[/\\2|/\\2]]" , $s ) ;
 
 	$s = " $s" ;
 	$a = explode ( "[[" , $s ) ;
