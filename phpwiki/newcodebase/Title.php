@@ -99,7 +99,7 @@
 	"rm"    => "http://rm.wikipedia.com/wiki.cgi?$1",
 	"rn"    => "http://rn.wikipedia.com/wiki.cgi?$1",
 	"ro"    => "http://ro.wikipedia.com/wiki.cgi?$1",
-	"ru"	=> "http://ru.wikipedia.com/wiki.cgi?$1",
+	"ru"	=> "http://ru.wikipedia.org/wiki/?$1",
 	"rw"    => "http://rw.wikipedia.com/wiki.cgi?$1",
 	"sa"    => "http://sa.wikipedia.com/wiki.cgi?$1",
 	"sd"    => "http://sd.wikipedia.com/wiki.cgi?$1",
