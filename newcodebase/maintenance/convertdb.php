@@ -314,6 +314,7 @@ function convertImageDirectories()
 		$hash = md5( $nname );
 		$dest = $wgUploadDirectory . "/" . $hash{0};
 		$wgImageDirectoryHash = $wgImageDirectory . "/" . $hash{0} . "/" . substr ( $hash , 0, 2);
+		$wgMetaImageDirectoryHash = $wgMetaImageDirectory . "/" . $hash{0} . "/" . substr( $hash, 0, 2);
 		if ( ! is_dir( $dest ) ) {
 			mkdir( $dest, 0777 ) or die( "Can't create \"{$dest}\".\n" );
 		}
@@ -329,6 +330,7 @@ function convertImageDirectories()
 		if ( copy( "{$wgImageDirectoryHash}/{$nname}", "{$dest}/{$nname}" )
 		  or copy( "{$wgImageDirectory}/{$oname}", "{$dest}/{$nname}" )
 		  or copy( "{$wgImageDirectory}/".strtolower($oname), "{$dest}/{$nname}" )
+          or copy( "{$wgMetaImageDirectoryHash}/{$oname}", "{$dest}/{$nname}" )
           or copy( "{$wgMetaImageDirectory}/{$oname}", "{$dest}/{$nname}" )
           or copy( "{$wgMetaImageDirectory}/".strtolower($oname), "{$dest}/{$nname}" ) ) {
 			++$count;
