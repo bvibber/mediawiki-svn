@@ -10,15 +10,18 @@ function wfGetDB()
 	global $wgDBname, $wgDBconnection;
 
 	$noconn = str_replace( "$1", $wgDBserver, wfMsg( "noconnect" ) );
-	$nodb = str_replace( "$1", $wgDBname, wfMsg( "nodb" ) .
-		"\n<p><b>" . htmlspecialchars(mysql_error()) .
-		"</b></p>\n\n<p>If this error persists after reloading and clearing your browser cache,
-		please notify the <a href=\"mailto:wikitech-l@nupedia.com\">Wikipedia developers</a>.</p>");
+	$nodb = str_replace( "$1", $wgDBname, wfMsg( "nodb" ) );
 
 	if ( ! $wgDBconnection ) {
 		$wgDBconnection = mysql_pconnect( $wgDBserver, $wgDBuser,
-		  $wgDBpassword ) or die( $noconn );
-		mysql_select_db( $wgDBname, $wgDBconnection ) or die( $nodb );
+		  $wgDBpassword ) or die( $noconn .
+		"\n<p><b>" . htmlspecialchars(mysql_error()) .
+		"</b></p>\n\n<p>If this error persists after reloading and clearing your browser cache,
+        please notify the <a href=\"mailto:wikitech-l@nupedia.com\">Wikipedia developers</a>.</p>" );
+		mysql_select_db( $wgDBname, $wgDBconnection ) or die( $nodb .
+		"\n<p><b>" . htmlspecialchars(mysql_error()) .
+		"</b></p>\n\n<p>If this error persists after reloading and clearing your browser cache,
+        please notify the <a href=\"mailto:wikitech-l@nupedia.com\">Wikipedia developers</a>.</p>" );
 	}
 	# mysql_ping( $wgDBconnection );
 	return $wgDBconnection;
