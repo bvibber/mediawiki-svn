@@ -45,6 +45,12 @@
 	"la" => "Latein", "et" => "Estnisch", "fy" => "Friesisch"
 );
 
+/* private */ $wgBookstoreListDe = array(
+	"AddALL" => "http://www.addall.com/New/Partner.cgi?query=$1&type=ISBN",
+	"PriceSCAN" => "http://www.pricescan.com/books/bookDetail.asp?isbn=$1",
+	"Amazon.de" => "http://www.amazon.de/exec/obidos/ISBN=$1"
+);
+
 /* private */ $wgWeekdayNamesDe = array(
 	"Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag",
 	"Freitag", "Samstag"
@@ -638,6 +644,11 @@ Bitte wählen Sie einen anderen Namen.",
 );
 
 class LanguageDe extends Language {
+
+	function getBookstoreList () {
+		global $wgBookstoreListDe ;
+		return $wgBookstoreListDe ;
+	}
 
 	function getNamespaces() {
 		global $wgNamespaceNamesDe;

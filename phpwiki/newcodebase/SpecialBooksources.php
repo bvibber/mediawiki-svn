@@ -33,26 +33,21 @@ class BookSourceList {
 		# a list of links directly to the book.
 
 		$s = "<ul>\n";
-		if ( ! $this->mIsbn ) {
-			$s .= "<li><a href=\"http://www.addall.com/\">" .
-			  "AddALL</a></li>\n";
-			$s .= "<li><a href=\"http://www.pricescan.com/\">" .
-			  "PriceSCAN</a></li>\n";
-			$s .= "<li><a href=\"http://www.barnesandnoble.com/\">" .
-			  "Barnes &amp; Noble</a></li>\n";
-			$s .= "<li><a href=\"http://www.amazon.com/\">" .
-			  "Amazon.com</a></li>\n";
-		} else {
-			$s .= "<li><a href=\"http://www.addall.com/New/Partner.cgi?" .
-			  "query={$this->mIsbn}&amp;type=ISBN\">AddALL</a></li>\n";
-			$s .= "<li><a href=\"http://www.pricescan.com/books/bookDetail" .
-			  ".asp?isbn={$this->mIsbn}\">PriceSCAN</a></li>\n";
-			$s .= "<li><a href=\"http://shop.barnesandnoble.com/bookSearch" .
-			  "/isbnInquiry.asp?isbn={$this->mIsbn}\">Barnes &amp; Noble" .
-			  "</a></li>\n";
-			$s .= "<li><a href=\"http://www.amazon.com/exec/obidos/ISBN=" .
-			  "{$this->mIsbn}\">Amazon.com</a></li>\n";
-		}
+		$bs = $wgLang->getBookstoreList() ;
+		$bsn = array_keys ( $bs ) ;
+		foreach ( $bsn as $name ) {
+			$adr = $bs[$name] ;
+			if ( ! $this->mIsbn ) {
+				$adr = explode ( ":" , $adr , 2 ) ;
+				$adr = explode ( "/" , $adr[1] ) ;
+				$a = "" ;
+				while ( $a == "" ) $a = array_shift ( $adr ) ;
+				$adr = "http://".$a ;
+			} else {
+				$adr = str_replace ( "$1" , $this->mIsbn , $adr ) ;
+			}
+			$s .= "<li><a href=\"{$adr}\">{$name}</a></li>\n" ;
+			}
 		$s .= "</ul>\n";
 
 		$wgOut->addHTML( $s );
