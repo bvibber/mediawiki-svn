@@ -33,7 +33,7 @@ class SiteStatsUpdate {
 
 		$conn = wfGetDB();
 		$sql = "UPDATE site_stats SET " . implode ( ",", $a ) .
-		  " WHERE row_id=1";
+		  " WHERE ss_row_id=1";
 		wfQuery( $sql, $conn, "SiteStatsUpdate::doUpdate" );
 	}
 }

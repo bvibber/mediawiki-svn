@@ -106,7 +106,7 @@ function wfSpecialPreferences()
 	$skins = $wgLang->getSkinNames();
 	$togs = $wgLang->getUserToggles();
 
-	$action = wfLocalLink( "Special:Preferences" );
+	$action = wfLocalUrl( "Special:Preferences" );
 	$qb = wfMsg( "qbsettings" );
 	$cp = wfMsg( "changepassword" );
 	$sk = wfMsg( "skin" );

@@ -429,7 +429,8 @@ $wpTextbox2
 	{
 		global $wgOut, $wgTitle;
 
-		$wgOut->addHTML( "\n<hr>(TODO: Image history)\n" );
+		$wgOut->addHTML( "\n<h2>" . wfMsg( "imghistory" ) . "</h2>\n" );
+		$wgOut->addHTML( "<p>(TODO: Image history)\n" );
 	}
 
 	function watch()

@@ -32,7 +32,11 @@ function processUpload()
 	if ( ! $wpUploadSize ) {
 		$wpUploadSize = $HTTP_POST_FILES['wpUploadFile']['size'];
 	}
-	if ( ! $wpUploadSaveName ) {
+	wfDebug( "Upl: wpUploadSaveName={$wpUploadSaveName}\n" );
+
+	if ( $wpUploadSaveName ) {
+		saveUploadedFile();
+	} else {
 		$oname = $HTTP_POST_FILES['wpUploadFile']['name'];
 		$basename = strrchr( $oname, "/" );
 		if ( false === $basename ) { $basename = $oname; }
@@ -53,7 +57,6 @@ function processUpload()
 		$wpUploadSaveName = $nt->getDBkey();
 
 		saveUploadedFile();
-
 		if ( ( ! $wpIgnoreWarning ) &&
 		  ( 0 != strcmp( ucfirst( $basename ), $wpUploadSaveName ) ) ) {
 			$warn = str_replace( "$1", $wpUploadSaveName,
@@ -95,14 +98,20 @@ function saveUploadedFile()
 	if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
 
 	$wgSavedFile = "{$dest}/{$wpUploadSaveName}";
+	wfDebug( "Upl: wgSavedFile={$wgSavedFile}\n" );
+
 	if ( is_file( $wgSavedFile ) ) {
 		if ( ! is_dir( "{$dest}/old" ) ) { mkdir( "{$dest}/old", 0777 ); }
 		$wgUploadOldVersion = date( "YmdHis" ) . "!{$wpUploadSaveName}";
 
-		rename( $wgSavedFile, "${dest}/old/{$wgUploadOldVersion}" );
+		if ( ! rename( $wgSavedFile, "${dest}/old/{$wgUploadOldVersion}" ) ) {
+			wfDebug( "Upl: rename failed.\n" );
+		}
 	} else {
 		$wgUploadOldVersion = "";
 	}
+	wfDebug( "Upl: wgUploadOldVersion={$wgUploadOldVersion}, temp={$wpUploadTempName}\n" );
+
 	move_uploaded_file( $wpUploadTempName, $wgSavedFile );
 	umask( $oldumask );
 }
@@ -163,7 +172,7 @@ function recordUpload()
 		$sql = "UPDATE image SET img_size={$wpUploadSize}," .
 		  "img_timestamp='" . date( "YmdHis" ) . "',img_user='" .
 		  $wgUser->getID() . "',img_user_text='" .
-		  wfStrencode( $wgUser->getName() ) . "', 'img_description='" .
+		  wfStrencode( $wgUser->getName() ) . "', img_description='" .
 		  wfStrencode( $wpUploadDescription ) . "' WHERE img_name='" .
 		  wfStrencode( $wpUploadSaveName ) . "'";
 		wfQuery( $sql, $conn, $fname );
@@ -187,7 +196,7 @@ function uploadWarning( $warning )
 	$reupload = wfMsg( "reupload" );
 	$iw = wfMsg( "ignorewarning" );
 	$reup = wfMsg( "reuploaddesc" );
-	$action = wfLocalLink( "Special:Upload" );
+	$action = wfLocalUrl( "Special:Upload" );
 
 	$wgOut->addHTML( "
 <form method=post enctype='multipart/form-data' action='{$action}'>
@@ -239,7 +248,7 @@ function mainUploadForm( $msg )
 	$ca = str_replace( "$1", $clink, wfMsg( "affirmation" ) );
 	$iw = wfMsg( "ignorewarning" );
 
-	$action = wfLocalLink( "Special:Upload" );
+	$action = wfLocalUrl( "Special:Upload" );
 	$wgOut->addHTML( "
 <form method=post enctype='multipart/form-data' action='{$action}'>
 <table border=0><tr>
