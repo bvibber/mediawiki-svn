@@ -11,7 +11,7 @@ body { margin: 0px; padding: 4px; }
  font-size: 10pt; color: black;
  padding: 0;
 }
-#article p, #article ul, #article ol, #article dl {
+#article p {
  padding-top: 0; padding-bottom: 0;
  margin-top: 1ex; margin-bottom: 0;
 }
