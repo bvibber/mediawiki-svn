@@ -1210,15 +1210,19 @@ enctype='application/x-www-form-urlencoded'>
 
 	/* private */ function pstPass2( $text )
 	{
-		global $wgUser, $wgLang, $wgTitle;
+		global $wgUser, $wgLang, $wgTitle, $wgLocaltimezone;
 
 		# Signatures
 		#
 		$n = $wgUser->getName();
 		$k = $wgUser->getOption( "nickname" );
 		if ( "" == $k ) { $k = $n; }
+		if(isset($wgLocaltimezone)) {
+			$oldtz = getenv("TZ"); putenv("TZ=$wgLocaltimezone");
+		}
 		$d = $wgLang->timeanddate( date( "YmdHis" ), false ) .
 		  " (" . date( "T" ) . ")";
+		if(isset($wgLocaltimezone)) putenv("TZ=$oldtz");
 
 		$text = preg_replace( "/~~~~/", "[[" . $wgLang->getNsText(
 		  Namespace::getUser() ) . ":$n|$k]] $d", $text );
