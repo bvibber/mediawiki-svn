@@ -1223,7 +1223,10 @@ class LanguageZh extends LanguageUtf8 {
 	function getMessage( $key )
 	{
 		global $wgAllMessagesZh;
-		return $wgAllMessagesZh[$key];
+		if($msg = $wgAllMessagesZh[$key])
+			return $msg;
+		else
+			return Language::getMessage( $key );
 	}
 
 	# inherit default iconv(), ucfirst(), checkTitleEncoding()
