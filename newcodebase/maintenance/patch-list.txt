@@ -1,0 +1,40 @@
+List of database patches and upgrades as the PediaWiki software evolves...
+
+* 2002-11-23: Search index format changed for UTF-8 wikis
+For wikis using the UTF-8 languages, the search index entries
+need to be rebuild to allow searching to work. (Other wikis
+that have been run through the old phase2->phase3 conversion
+script should also be reindexed to catch apostrophe misplacement.)
+
+Run rebuildIndex.php on your wiki.
+
+
+
+* 2002-11-27: Watchlist format changed
+Converts the user_watchlist entries out to a separate table which
+links user_id<->cur_id and can be more handily queried.
+
+Run upgradeWatchlist.php on your wiki.
+
+
+
+* 2002-12-14: Recentchanges table bot/hidden column
+Adds a column to indicate changes by registered bots (or perhaps
+later other admin actions) that should be hidden from the default
+Recentchanges list because people think they're tedious, but should
+still be available in article histories, contribs lists, and
+power-user RC lists.
+
+Run bot.sql against your database.
+
+
+
+* 2002-12-17: Watchlist format changed again
+Now using namespace, title instead of cur_id. This can track deleted/
+recreated pages better, makes it easier to handle talk pages (now with
+the auto-watch feature there's a lot more watching of talk pages!)
+and whatnot.
+
+Run patch-watchlist.sql against your database. If all is well, drop
+the oldwatchlist table which is no longer needed. (Note that this update
+also drops the vestigial user_watchlist column.)

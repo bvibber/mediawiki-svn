@@ -140,6 +140,10 @@ class MovePageForm {
 			$this->moveToNewTitle();
 		}
 
+		if( $this->ot->userIsWatching() ) {
+			$wgUser->addWatch( $this->nt );
+		}
+
 		# Move talk page if (1) the checkbox says to, (2) the source
 		# and target namespaces are identical, (3) the namespaces are not
 		# themselves talk namespaces, and of course (4) it exists.

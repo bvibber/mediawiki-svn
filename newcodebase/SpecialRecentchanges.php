@@ -48,7 +48,7 @@ function wfSpecialRecentchanges()
 	$uid = $wgUser->getID();
 	$sql2 = "SELECT rc_cur_id,rc_namespace,rc_title,rc_user,rc_new," .
 	  "rc_comment,rc_user_text,rc_timestamp,rc_minor,rc_bot" . ($uid ? ",wl_user" : "") . " FROM recentchanges " .
-	  ($uid ? "LEFT OUTER JOIN watchlist ON wl_user={$uid} AND wl_page=rc_cur_id " : "") .
+	  ($uid ? "LEFT OUTER JOIN watchlist ON wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace & 65534 " : "") .
 	  "WHERE rc_timestamp > '{$cutoff}' {$hidem} " .
 	  "ORDER BY rc_timestamp DESC LIMIT {$limit}";
 	$res = wfQuery( $sql2, $fname );
