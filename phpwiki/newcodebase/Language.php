@@ -308,6 +308,7 @@
 "redirectedfrom" => "(Redirected from $1)",
 "lastmodified"	=> "The page was last modified $1.",
 "viewcount"		=> "This page has been accessed $1 times.",
+"gnunote" => "This page is available under the <a class=internal href='/wiki/GNU_FDL'>GNU FDL</a>.",
 "printsubtitle" => "(From http://www.wikipedia.org)",
 "protectedpage" => "Protected page",
 "administrators" => "Wikipedia:Administrators",
