@@ -642,6 +642,7 @@ page, if any, will not be moved.",
 "pagemovedtext" => "Page \"$1\" moved to \"$2\".",
 "articleexists" => "An article of that name already exists.
 Please choose another name.",
+"movedto"		=> "moved to",
 
 );
 

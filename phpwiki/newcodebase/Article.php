@@ -849,6 +849,9 @@ enctype='application/x-www-form-urlencoded'>
 			$sql = "DELETE FROM links WHERE l_from='{$t}'";
 			wfQuery( $sql, $fname );
 
+			$sql = "DELETE FROM imagelinks WHERE il_from='{$t}'";
+			wfQuery( $sql, $fname );
+
 			$sql = "DELETE FROM brokenlinks WHERE bl_from={$id}";
 			wfQuery( $sql, $fname );
 		}
@@ -875,15 +878,21 @@ enctype='application/x-www-form-urlencoded'>
 
 		preg_match( "/^(.*?)<ul>(.*)$/sD", $text, $m );	
 		$da = str_replace( "$1", $art, wfMsg( "deletedarticle" ) );
-		if ( "" == $wpReason ) { $com = ""; }
-		else { $com = " <em>({$wpReason})</em>"; }
 
+		if ( "" == $wpReason ) {
+			$lcom = "{$da}";
+			$com = "";
+		} else {
+			$lcom = "{$da}: {$wpReason}";
+			$com = " <em>({$wpReason})</em>";
+		}
+	
 		$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}{$com}</li>\n{$m[2]}";
 
 		$sql = "UPDATE cur SET cur_timestamp='" . date( "YmdHis" ) .
 		  "', cur_user={$uid}, cur_user_text='" . wfStrencode( $ut ) .
 		  "', cur_text='" . wfStrencode( trim( $text ) ) . "', " .
-		  "cur_comment='" . wfStrencode( $wpReason ) . "' " .
+		  "cur_comment='" . wfStrencode( $lcom ) . "' " .
 		  "WHERE cur_id={$id}";
 		wfQuery( $sql, $fname );
 	}
