@@ -71,8 +71,10 @@ function getmicrotime(){
 		if ( $user->isLoggedIn ) {
 	 		$user->saveSettings () ;
 			$user->loadSettings () ;
+			$encodinghack = 0;
 		} else {
 			# Can't save setting for those who aren't logged in
+			$encodinghack = 1;
 		}
 	}
 	$charset = $wikiEncodingCharsets[$user->options["encoding"]];
@@ -92,6 +94,16 @@ function getmicrotime(){
 	$theTitle->title = urldecode ( $title ) ;
 	$theTitle->makeSecureTitle () ;
 	$title = $theTitle->secureTitle ;
+	
+	# Check for alternate encoding in the URL
+	if ( !$theTitle->doesTopicExist() && count ( $wikiEncodingCharsets ) > 1 ) {
+		$aTitle = new wikiTitle ;
+		$aTitle->setTitle ( $wikiRecodeInput ( $title ) ) ;
+		if ( $aTitle->doesTopicExist() ) {
+			$theTitle = $aTitle ;
+			$title = $theTitle->secureTitle ;
+		}
+	}
 
 	$action = strtolower ( trim ( $action ) ) ;
 	$title = urldecode ( $title ) ;
@@ -139,15 +151,19 @@ function getmicrotime(){
 	$head = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">
 <HTML><HEAD><TITLE>$pageTitle</TITLE>
 $metaCharset\n$metaDescription\n$metaKeywords\n$headerScript\n$styleSheet
-<link rel=\"shortcut icon\" href=\"/favicon.ico\" />
-</HEAD><BODY $bodyOptions>
-</BODY></HTML>" ;
+<link rel=\"shortcut icon\" href=\"/favicon.ico\">
+</HEAD><BODY $bodyOptions>\n" ;
+	$tail = "\n</BODY></HTML>";
 
 #	$mt = getmicrotime()-$mt ;	$out = "$mt<br>\n$out" ;
 
 	global $append , $framed ;
 	$out = $head.$out.$tail.$append ;
 	if ( isset ( $framed ) ) $out = str_replace ( "<a " , "<a target=_top " , $out ) ;
+	if ( $encodinghack )
+		$out = preg_replace ( "/(<a[^>]+href=\"|<form[^>]+action=\")(" . strtr ( $wikiCurrentServer , array( "/" => "\/" , "." => "\." ) ) . "[^\"]*)(?=\")/ie" ,
+			"\"\$1\" . (\$u = preg_replace(\"/[\\?\\&]encoding=[0-9]+/\", \"\", \"\$2\")) . ((!strchr(\$u, '?') && strstr(\$THESCRIPT,\$u)) ? '?' : '&') . \"encoding=\" . \$user->options[\"encoding\"]",
+			$out ) ;
 
 	print $wikiRecodeOutput ( $out ) ; # FINALLY!!!!
 ?>
