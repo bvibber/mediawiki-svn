@@ -3,7 +3,7 @@
 # The names of the namespaces can be set here, but the numbers
 # are magical, so don't change or move them!  The Namespace class
 # encapsulates some of the magic-ness.
-# Dutch file ? Nederlandstalige versie 2
+# Dutch file - Nederlandstalige versie 2.2.a
 /* private */ $wgNamespaceNamesNl = array(
 	-1	=> "Speciaal",
 	0	=> "",
@@ -54,23 +54,23 @@
 	"bi"	=> "Bislama",
 	"my"	=> "Birmaans",
 	"km"	=> "Cambodjaans",
-	"ca"	=> "CatalÃ ",
+	"ca"	=> "Català",
 	"zh"	=> "Hanyu",
 	"co"	=> "Corsicaans",
 	"hr"	=> "Kroatisch",
 	"cs"	=> "Tsjechisch",
 	"da"	=> "Dansk", # Note two different subdomains. 
-	"dk"	=> "Dansk", # 'da' is correct for the language.
+	"dk"	=> "Gebruik voor Deens de taalcode DA", # 'da' is correct for the language.
 	"nl"	=> "Nederlands",
 	"en"	=> "English",
-	"w"	=> "English", # Should this be in list this?
+	"w"	=> "Gebruik voor Engels de taalcode EN", # Should this be in list this?
 	"simple" => "Simplified English",
 	"eo"	=> "Esperanto",
 	"et"	=> "Eesti",
 	"fo"	=> "Faeroers",
 	"fj"	=> "Fijisch",
 	"fi"	=> "Suomi",
-	"fr"	=> "FranÃ§ais",
+	"fr"	=> "Français",
 	"fy"	=> "Frysk",
 	"gl"	=> "Galicisch",
 	"ka"	=> "Georgisch",
@@ -121,7 +121,7 @@
 	"ps"	=> "Pashtu",
 	"fa"	=> "Farsi",
 	"pl"	=> "Polska",
-	"pt"	=> "PortuguÃªs",
+	"pt"	=> "Português",
 	"pa"	=> "Punjabi",
 	"qu"	=> "Quechua",
 	"rm"	=> "Reto-Romaans",
@@ -159,7 +159,7 @@
 	"tk"	=> "Turkmeens",
 	"tw"	=> "Twi",
 	"ug"	=> "Oeigoers",
-	"uk"	=> "OekraÃ¯ens",
+	"uk"	=> "Oekraïens",
 	"ur"	=> "Urdu",
 	"uz"	=> "Oezbeeks",
 	"vi"	=> "Vietnamees",
@@ -240,7 +240,7 @@
 # Bits of text used by many pages:
 # Diverse stukjes tekst
 "mainpage"		=> "Hoofdpagina",
-"about"			=> "Over",
+"about"			=> "Info",
 "aboutwikipedia" => "Over Wikipedia",
 "aboutpage"		=> "Wikipedia:info",
 "help"			=> "Help",
@@ -248,7 +248,7 @@
 "wikititlesuffix" => "Wikipedia NL",
 "bugreports"	=> "Foutenrapportage",
 "bugreportspage" => "Wikipedia:Foutenrapportage",
-"faq"			=> "Veelgestelde vragen",
+"faq"			=> "FAQ",
 "faqpage"		=> "Wikipedia:Veelgestelde vragen",
 "edithelp"		=> "Hulp bij bewerken",
 "edithelppage"	=> "Wikipedia:Instructies",
@@ -288,11 +288,11 @@
 "developertitle" => "Toegang alleen voor systeemontwikkelaars",
 "developertext"	=> "De gevraagde handeling kan enkel uitgevoerd worden door systeemontwikkelaars. Zie $1.",
 "nbytes"		=> "$1 bytes",
-"go"			=> "Doen",
+"go"			=> "OK",
 "ok"			=> "OK",
 "sitetitle"		=> "Wikipedia NL",
 "sitesubtitle"	=> "De vrije encyclopedie",
-"retrievedfrom" => "Afkomstig van \"$1\"",
+"retrievedfrom" => "Afkomstig van Wikipedia NL, de Vrije Encyclopedie. \"$1\"",
 
 # Main script and global functions
 # Algemene functies
@@ -321,7 +321,7 @@ De verantwoordelijke systeembeheerder gaf hiervoor volgende reden op:
 <p>$1",
 "missingarticle" => "De database heeft een paginatekst (\"$1\") die het zou moeten vinden niet gevonden. Dit is geen fout in de database, maar waarschijnlijk in de software. Meld dit a.u.b. aan een beheerder, met vermelding van de URL.",
 "internalerror" => "Interne fout",
-"filecopyerror" => "Bestand \"$1\" naar \"$2\" kopiÃ«ren niet mogelijk.",
+"filecopyerror" => "Bestand \"$1\" naar \"$2\" kopiëren niet mogelijk.",
 "filerenameerror" => "Wijziging titel bestand \"$1\" in \"$2\" niet mogelijk.",
 "filedeleteerror" => "Kon bestand \"$1\" niet verwijderen.",
 "filenotfound"	=> "Kon bestand \"$1\" niet vinden.",
@@ -333,7 +333,7 @@ De verantwoordelijke systeembeheerder gaf hiervoor volgende reden op:
 # Login and logout pages
 # Aanmelden en afmelden
 "logouttitle"	=> "Afmelden gebruiker",
-"logouttext"	=> "U bent nu uitgelogd.
+"logouttext"	=> "U bent nu afgemeld.
 U kan Wikipedia anoniem blijven gebruiken, of u opnieuw aanmelden onder dezelfde of onder een andere naam.\n",
 
 "welcomecreation" => "<h2>Welkom, $1!</h2><p>Uw gebruikersprofiel is aangemaakt. U kan nu uw persoonlijke voorkeuren instellen.",
@@ -345,15 +345,15 @@ U kan Wikipedia anoniem blijven gebruiken, of u opnieuw aanmelden onder dezelfde
 "newusersonly"	=> " (alleen nieuwe gebruikers)",
 "remembermypassword" => "Mijn wachtwoord onthouden voor latere sessies.",
 "loginproblem"	=> "<b>Er is een probleem met het aanmelden.</b><br>Probeer het opnieuw a.u.b.",
-"alreadyloggedin" => "<font color=red><b>Gebruiker $1, u bent al ingelogd.</b></font><br>\n",
+"alreadyloggedin" => "<font color=red><b>Gebruiker $1, u bent al aangemeld.</b></font><br>\n",
 
 "areyounew"		=> "Bent u nieuw op Wikipedia en wilt u een gebruikersprofiel aanmaken, voer dan een gebruikersnaam in en voer tweemaal hetzelfde wachtwoord in.
-Invoeren van uw e-mailadres is niet verplicht; het is handig als u uw wachtwoord bent vergeten; dat kan dan per e-mail worden opgestuurd. Als u alleen maar even rond wilt kijken, kunt u inloggen als 'gast', wachtwoord 'gast'.<br>\n",
+Invoeren van uw e-mailadres is niet verplicht; het is handig als u uw wachtwoord bent vergeten; dat kan dan per e-mail worden opgestuurd.<br>\n",
 
 "login"			=> "Aanmelden",
-"userlogin"		=> "Aanmelding",
+"userlogin"		=> "Aanmelden",
 "logout"		=> "Afmelden",
-"userlogout"	=> "Afmelding",
+"userlogout"	=> "Afmelden",
 "createaccount"	=> "Nieuw gebruikersprofiel aanmaken.",
 "badretype"		=> "De ingevoerde wachtwoorden verschillen van elkaar.",
 "userexists"	=> "De gebruikersnaam die u heeft ingevoerd is al in gebruik. Gelieve een andere naam te kiezen.",
@@ -363,7 +363,7 @@ Invoeren van uw e-mailadres is niet verplicht; het is handig als u uw wachtwoord
 "loginerror"	=> "Inlogfout",
 "noname"		=> "U dient een gebruikersnaam op te geven.",
 "loginsuccesstitle" => "Aanmelden gelukt.",
-"loginsuccess"	=> "U bent nu ingelogd bij Wikipedia NL als \"$1\".",
+"loginsuccess"	=> "U bent nu aangemeld bij Wikipedia NL als \"$1\".",
 "nosuchuser"	=> "Er bestaat geen gebruiker met de naam \"$1\". Controleer uw spelling, of gebruik onderstaand formulier om een nieuw gebruikersprofiel aan te maken.",
 "wrongpassword"	=> "Het ingegeven wachtwoord is niet juist. Probeer het opnieuw.",
 "mailmypassword" => "Stuur mij een nieuw wachtwoord op",
@@ -439,15 +439,15 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "nextn"			=> "volgende $1",
 "viewprevnext"	=> "($1) ($2) ($3) bekijken.",
 "showingresults" => "Hieronder de resultaten <b>$1</b> beginnend met #<b>$2</b>.",
-"nonefound"		=> "<strong>Merk op:</strong> wanneer een zoekopdracht mislukt komt dat vaak door gebruik van (in het Engels) veel voorkomende woorden zoals \"of\" en \"be\", die niet geÃ¯ndexeerd zijn, of door verschillende zoektermen tegelijk op te geven (u krijgt dan alleen in pagina's waaarin alle opgegeven termen voorkomen).",
+"nonefound"		=> "<strong>Merk op:</strong> wanneer een zoekopdracht mislukt komt dat vaak door gebruik van (in het Engels) veel voorkomende woorden zoals \"of\" en \"be\", die niet geïndexeerd zijn, of door verschillende zoektermen tegelijk op te geven (u krijgt dan alleen in pagina's waaarin alle opgegeven termen voorkomen).",
 
 # Preferences page
 # Voorkeuren
 "preferences"	=> "Voorkeuren",
-"prefsnologin" => "Niet ingelogd",
-"prefsnologintext"	=> "U dient te zijn <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">ingelogd</a>
- om voorkeuren te kunnen instellen.",
+"prefsnologin" => "Niet aangemeld",
+"prefsnologintext"	=> "U dient <a href=\"" .
+  wfLocalUrl( "Special:Userlogin" ) . "\">aangemeld</a> 
+te zijn om voorkeuren te kunnen instellen.",
 "prefsreset"	=> "Standaardvoorkeuren hersteld.",
 "qbsettings"	=> "Menubalkinstellingen", 
 "changepassword" => "Wachtwoord wijzigen",
@@ -466,7 +466,7 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "contextchars"	=> "Aantal tekens van de context per regel",
 "recentchangescount" => "Aantal titels in lijst recente wijzigingen",
 "savedprefs"	=> "Uw voorkeuren zijn opgeslagen.",
-"timezonetext"	=> "De tijd van de server is UTC (Coordinated Universal Time) Geef aan hoeveel uur de plaatselijke tijd in uw woonplaats verschilt met die van de server. Voor o.a. BelgiÃ« en Nederland: +1 (+2 zomertijd); voor Suriname en voor de Nederlandse Antillen: -4; voor Zuid-Afrika: +2.",
+"timezonetext"	=> "De tijd van de server is UTC (Coordinated Universal Time) Geef aan hoeveel uur de plaatselijke tijd in uw woonplaats verschilt met die van de server. Voor o.a. België en Nederland: +1 (+2 zomertijd); voor Suriname en voor de Nederlandse Antillen: -4; voor Zuid-Afrika: +2.",
 "localtime"	=> "Plaatselijke tijd",
 "timezoneoffset" => "Tijdsverschil",
 "emailflag"		=> "E-mail ontvangen van andere gebruiken uitschakelen",
@@ -492,14 +492,14 @@ Om Wikipedia te laten slagen is het erg belangrijk geen materiaal toe te voegen 
 
 # Upload
 #
-"upload"		=> "upload",
+"upload"		=> "Upload",
 "uploadbtn"		=> "upload bestand",
 "uploadlink"	=> "upload afbeelding",
 "reupload"		=> "Opnieuw uploaden",
 "reuploaddesc"	=> "Terug naar het uploadformulier.",
-"uploadnologin" => "Niet ingelogd",
+"uploadnologin" => "Niet aangemeld",
 "uploadnologintext"	=> "U dient <a href=\"" .
-  wfLocalUrl( "Speciaal:Userlogin" ) . "\">ingelogd te zijn</a>
+  wfLocalUrl( "Speciaal:Userlogin" ) . "\">aangemeld te zijn</a>
 om bestanden te uploaden.",
 "uploadfile"	=> "upload bestand",
 "uploaderror"	=> "upload fout",
@@ -603,7 +603,7 @@ Er is in totaal $3 maal een pagina bekeken, en $4 maal een pagina bewerkt. Dat g
 # E-mail deze gebruiker
 "mailnologin"	=> "Geen e-mailadres gekend voor deze gebruiker",
 "mailnologintext" => "U dient <a href=\"" .
-  wfLocalUrl( "Speciaal:Userlogin" ) . "\">ingelogd te zijn </a>
+  wfLocalUrl( "Speciaal:Userlogin" ) . "\">aangemeld te zijn </a>
 en een geldig e-mailadres in uw <a href=\"" .
   wfLocalUrl( "Speciaal:Preferences" ) . "\">voorkeuren</a>
 to send e-mail to other users.",
@@ -625,9 +625,9 @@ to send e-mail to other users.",
 "watchlist"		=> "Volglijst",
 "watchlistsub"	=> "(van gebruiker \"$1\")",
 "nowatchlist"	=> "Er staat niets op uw volglijst.",
-"watchnologin"	=> "U bent niet ingelogd",
+"watchnologin"	=> "U bent niet aangemeld",
 "watchnologintext"	=> "Om uw volglijst te veranderen dient u eerst <a href=\"" .
-  wfLocalUrl( "Speciaal:Userlogin" ) . "\">ingelogd</a>
+  wfLocalUrl( "Speciaal:Userlogin" ) . "\">aangemeld</a>
 te zijn.",
 "addedwatch"	=> "Toegevoegd aan volglijst",
 "addedwatchtext" => "De pagina \"$1\" is aan uw <a href=\"" .
@@ -643,6 +643,7 @@ Ook zullen deze pagina's in het <b>vet</b> verschijnen in de <a href=\"" .
 "unwatchthispage" => "Niet meer volgen",
 "notanarticle"	=> "Is geen artikel",
 
+
 # Delete/protect/revert
 # Verwijderen/beschermen/annuleren
 "deletepage"	=> "Pagina verwijderen",
@@ -654,9 +655,9 @@ Ook zullen deze pagina's in het <b>vet</b> verschijnen in de <a href=\"" .
 "actioncomplete" => "Actie voltooid",
 "deletedtext"	=> "\"$1\" is verwijderd. Zie $2 voor een overzicht van recente verwijderingen.",
 "deletedarticle" => "\"$1\" is verwijderd",
-"dellogpage"	=> "Lijst_van_verwijderingen", # This one needs the underscores!
+"dellogpage"	=> "Logboek_verwijderde_pagina's", # This one needs the underscores!
 "dellogpagetext" => "Hieronder ziet u een lijst van de meest recentelijk verwijderde pagina's en afbeeldingen. Alle tijden zijn servertijd, UTC-0.",
-"deletionlog"	=> "Lijst van verwijderingen",
+"deletionlog"	=> "Logboek verwijderde pagina's",
 "reverted"		=> "Eerdere versie hersteld",
 "deletecomment"	=> "Reden voor verwijdering",
 "imagereverted" => "De omzetting naar de oudere versie is geslaagd.",
@@ -721,7 +722,7 @@ Vergeet niet de database opnieuw te de-blokkeren zodra u klaar bent met uw onder
 # SQL query
 # SQL raadplegen
 "asksql"		=> "SQL raadplegen",
-"asksqltext"	=> "Gebruik het onderstaande formulier om een direct verzoek naar de database van Wikipedia NL te zenden. Gebruik enkelvoudige aanhalingstekens ('zoals hier') voor letterlijke teksten. Een ingewikkelde aanvraag kan vaak de sever extra belasten. Gelieve deze mogelijkheid daarom spaarzaam te gebruiken.",
+"asksqltext"	=> "Gebruik het onderstaande formulier om een direct verzoek naar de database van Wikipedia NL te zenden. Gebruik enkelvoudige aanhalingstekens ('zoals hier') voor letterlijke teksten. Een ingewikkelde aanvraag kan vaak de sever extra belasten. Gelieve deze mogelijkheid daarom spaarzaam te gebruiken. Zie ook; [[Wikipedia:SQL opdrachten]].",
 "sqlquery"		=> "Voer opdracht in",
 "querybtn"		=> "Verstuur opdracht",
 "selectonly"	=> "Opdrachten anders dan \"SELECT\" zijn voorbehouden aan Wikipedia ontwikkelaars.",
@@ -732,9 +733,9 @@ Vergeet niet de database opnieuw te de-blokkeren zodra u klaar bent met uw onder
 "movepage"		=> "Verplaats pagina",
 "movepagetext"	=> "Doormiddels het onderstaande formulier kan u de titel van een pagina hernoemen. De voorgeschiedenis van de oude pagina zal deze van de nieuwe worden. De oude titel zal automatisch een doorverwijzing worden naar de nieuwe. Verwijzingen naar de oude pagina zullen niet aangepast worden en de overlegpagina, voor zover aanwezig, zal niet verplaatst worden.",
 "movearticle"	=> "Verplaats pagina",
-"movenologin"	=> "Niet ingelogd",
+"movenologin"	=> "Niet aangemeld",
 "movenologintext" => "U dient <a href=\"" .
-  wfLocalUrl( "Speciaal:Userlogin" ) . "\">ingelogd</a>
+  wfLocalUrl( "Speciaal:Userlogin" ) . "\">aangemeld</a>
 te zijn om een pagina te verplaatsen.",
 "newtitle"		=> "Naar de nieuwe titel",
 "movepagebtn"	=> "Verplaats pagina",
@@ -805,6 +806,7 @@ class LanguageNl extends Language {
 	function getMonthAbbreviation( $key )
 	{
 		global $wgMonthAbbreviationsNl;
+
 		return $wgMonthAbbreviationsNl[$key-1];
 	}
 
@@ -833,8 +835,8 @@ class LanguageNl extends Language {
 	{
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
 
-		$d = $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
-		  " " . (0 + substr( $ts, 6, 2 )) . ", " .
+		$d = (0 + substr( $ts, 6, 2 )) . " " .
+		  $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) . " " . 
 		  substr( $ts, 0, 4 );
 		return $d;
 	}
@@ -862,6 +864,7 @@ class LanguageNl extends Language {
 		global $wgValidSpecialPagesNl;
 		return $wgValidSpecialPagesNl;
 	}
+
 
 	function getSysopSpecialPages()
 	{
