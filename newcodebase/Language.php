@@ -36,7 +36,7 @@
 );
 
 /* private */ $wgMathNamesEn = array(
-	"Aways render PNG",
+	"Always render PNG",
 	"HTML if very simple or else PNG",
 	"HTML if possible or else PNG",
 	"Leave it as TeX (for text browsers)"
