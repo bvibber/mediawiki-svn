@@ -23,12 +23,12 @@ $wikiMetaDescription = "$1... Lesen Sie mehr hier auf Wikipedia, der freien Enzy
 # Used in header/footer
 $wikiWikipediaHelp = "wikipedia:Hilfe" ;
 $wikiMainPageTitle = "Wikipedia : Die freie Enzyklopädie" ; # This is the title that is displayed on the main page
-$wikiHeaderSubtitle = "Die freie Enzykolpädie" ;
+$wikiHeaderSubtitle = "Die freie Enzyklopädie" ;
 $wikiArticleSubtitle = "Von Wikipedia, der freien Enzyklopädie." ;
 $wikiPrintable = "Druckversion" ;
 $wikiWatch = "Diesen Artikel für mich beobachten." ;
 $wikiNoWatch = "Diesen Artikel nicht mehr für mich beobachten." ;
-$wikiTitleTag = "$1: Enzykolpädieartikel von Wikipedia" ;
+$wikiTitleTag = "$1: Enzyklopädieartikel von Wikipedia" ;
 $wikiLogIn = "Einloggen" ;
 $wikiLogOut = "Ausloggen" ;
 $wikiHelp = "Hilfe" ;
@@ -135,7 +135,7 @@ $wikiCounter = "Auf diese Seite wurde $1mal zugegriffen." ;
 $wikiBlockIPTitle = "IP-Adresse blockieren (nur für Systemadministratoren)" ;
 $wikiBlockIPText = "IP $1 wurde von $2 blockiert" ;
 $wikiIPblocked = "<font color=red size='+1'>Ihre IP-Adresse wurde blockiert! Ihre Änderungen werden nicht gespeichert werden. Bitte kontaktieren die einen Systemadministrator, um die Blockierung aufzuheben, oder versuchen Sie es später noch einmal.</font>" ;
-$wikiBugReports = "Beobachtere Fehler" ;
+$wikiBugReports = "Beobachtete Fehler" ;
 $wikiBugReportsLink = "wikipedia:Beobachtete Fehler" ;
 $wikiPrintFooter = "<hr>Dieser Artikel stammt von <b>Wikipedia</b> (<a href=\"$1\">$1</a>), der freien Online-Enzylopädie. Sie können diesen Artikel online finden unter <a href=\"$2\">$2</a>" ;
 
@@ -319,7 +319,7 @@ $wikiUploadText .= "&quot;Finden...&quot; Sie die Datei auf ihrer Festpolatte \n
 $wikiUploadText .= "in einem Dateidialog.</li>\n";
 $wikiUploadText .= "<li>Klicken Sie dann auf &quot;Öffnen.&quot;\n";
 $wikiUploadText .= "<li>Vergessen Sie nicht, das Copyright zu bestätigen!</li>\n";
-$wikiUploadText .= "<li>Klicken SIe dann aud &quot;Hochladen.&quot; Das kann eine Weile dauern.</li>\n";
+$wikiUploadText .= "<li>Klicken Sie dann auf &quot;Hochladen.&quot; Das kann eine Weile dauern.</li>\n";
 $wikiUploadText .= "<li>Das System wird das erfolgreiche Hochladen bestätigen.</li>\n";
 $wikiUploadText .= "<li>Sie können so viele Dateien hochladen wie Sie wollen.</li>\n";
 $wikiUploadText .= "<li>Jedes Hochladen und Löschen wird im <a href=\"$THESCRIPT?title=Log:Uploads\">Uploads-Log</a> vermerkt.</li>\n";
