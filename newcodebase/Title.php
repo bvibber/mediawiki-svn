@@ -28,7 +28,7 @@
 	"cs"    => "http://cs.wikipedia.com/wiki.cgi?$1",
 	"cy"    => "http://cy.wikipedia.com/wiki.cgi?$1",
 	"da"    => "http://da.wikipedia.com/wiki.cgi?$1",
-	"de"	=> "http://de.wikipedia.com/wiki.cgi?$1",
+	"de"	=> "http://de.wikipedia.org/wiki/$1",
 	"dk"	=> "http://dk.wikipedia.com/wiki.cgi?$1",
 	"dz"    => "http://dz.wikipedia.com/wiki.cgi?$1",
 	"el"    => "http://el.wikipedia.com/wiki.cgi?$1",
