@@ -18,7 +18,7 @@ class WikiPage extends WikiTitle {
 		$this->isSpecialPage = false ;
 		$this->revision = "current" ;
 		if ( $this->namespace == "special" ) { # Special page, calling appropriate function
-			$allowed = array("userlogin","userlogout","recentchanges","upload","statistics","lonelypages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","deletepage"); # List of allowed special pages
+			$allowed = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","deletepage"); # List of allowed special pages
 			if ( in_array ( "is_sysop" , $user->rights ) ) array_push ( $allowed , "asksql" ) ; # Another function just for sysops
 			$call = $this->mainTitle ;
 			if ( !in_array ( strtolower ( $call ) , $allowed ) ) {
@@ -27,7 +27,7 @@ class WikiPage extends WikiTitle {
 				return ;
 				}
 			$this->title = $call ;
-			include_once ( "specialPages.php") ;
+			include_once ( "./specialPages.php") ;
 			$this->contents = $call () ;
 			$this->isSpecialPage = true ;
 			return ; # contents of special page is returned here!!!
@@ -554,6 +554,7 @@ class WikiPage extends WikiTitle {
 		$column .= "<br><a href=\"$THESCRIPT?title=special:Upload\">Upload files</a>\n" ;
 		$column .= "<hr>" ;
 		$column .= "<a href=\"$THESCRIPT?title=special:Statistics\">Statistics</a>" ;
+		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:NewPages\">New pages</a>" ;
 		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:LonelyPages\">Orphans</a>" ;
 		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:WantedPages\">Most wanted</a>" ;
 		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:AllPages\">All pages</a>" ;

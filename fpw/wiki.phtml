@@ -5,7 +5,7 @@ $THESCRIPT = "wiki.phtml" ; # The name of the script. The $PHP_SELF variable doe
 
 # Includes the necessary parts
 #include_once ( "./specialPages.php" ) ;
-include_once ( "basicFunctions.php" ) ;
+include_once ( "./basicFunctions.php" ) ;
 include_once ( "./databaseFunctions.php" ) ;
 include_once ( "./wikiTitle.php" ) ;
 include_once ( "./wikiPage.php" ) ;
@@ -43,8 +43,10 @@ include_once ( "./wikiUser.php" ) ;
 		$out = watch ( $title , $mode ) ;
 	} else if ( $action == "view" ) $out = view ( $title ) ;
 	else if ( $action == "edit" ) $out = doEdit ( $title ) ;
-	else if ( $action == "history" ) $out = doHistory ( $title ) ;
-	else $out = error ( "No such action \"$action\"" ) ;
+	else if ( $action == "history" ) {
+		include_once ( "./specialPages.php" ) ;
+		$out = doHistory ( $title ) ;
+	} else $out = error ( "No such action \"$action\"" ) ;
 
 	# Cleaning up, setting <title>, etc.
 	global $bodyOptions , $headerScript ;
