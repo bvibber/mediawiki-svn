@@ -9,7 +9,6 @@
 # - watchlist
 # - recentChanges
 # - randomPage
-# - statistics
 # - allPages
 # - search
 # - specialPages (the list)
@@ -30,6 +29,7 @@ function userLogout () {
 
 function userLogin () {
 	global $THESCRIPT ;
+	global $WikiUserPassword , $WikiLoggedIn ;
 	global $loginattempt , $user , $vpage , $WikiUserID , $expiration ;
 	$vpage->title = "User login" ;
 
@@ -49,18 +49,29 @@ function userLogin () {
 			$user = $nu ;
 			setcookie ( "WikiUserID" , $user->id , $expiration ) ;
 			setcookie ( "WikiLoggedIn" , "yes" , $expiration ) ;
-			setcookie ( "WikiUserPassword" , $user->password , $expiration ) ;
+			if ( $user->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $user->password , $expiration ) ;
 			$user->options["rememberPassword"] = $REMEMBERPASSWORD ;
 			$user->saveSettings() ;
 		} else if ( $USERPASSWORD == $RETYPE and !($nu->doesUserExist()) ) {
+			$user = new wikiUser ;
 			$nu->addToDatabase () ;
 			$user = $nu ;
-			$s = "<h1>Welcome, $user->name!</h1><font color=red>Don't forget to personalize your wikipedia perferences!</font>" ;
+			$s = "<h1>Welcome, $user->name!</h1><font color=red>Don't forget to personalize your wikipedia preferences!</font>" ;
+			$s .= "<br>Your account has been created. Please press \"Log in\" once more to log in!" ;
 			setcookie ( "WikiLoggedIn" , "yes" , $expiration ) ;
 			setcookie ( "WikiUserID" , $user->id , $expiration ) ;
 			if ( $user->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $user->password , $expiration ) ;
 			$user->options["rememberPassword"] = $REMEMBERPASSWORD ;
 			$user->saveSettings() ;
+
+		if ( $user->options["rememberPassword"] == "on" ) $check = "checked" ;
+	  	$s .= "<FORM action=\"$THESCRIPT?title=special:userLogin\" method=post><font face=courier>\n" ;
+	  	$s .= "Your user name&nbsp; : <INPUT TABINDEX=1 TYPE=text NAME=USERNAME VALUE=\"$user->name\" SIZE=20><br>\n" ;
+	  	$s .= "Your password&nbsp;&nbsp; : <INPUT TABINDEX=2 TYPE=password NAME=USERPASSWORD VALUE=\"$user->password\" SIZE=20><br>\n" ;
+  		$s .= "<INPUT TABINDEX=4 TYPE=checkbox NAME=REMEMBERPASSWORD $check>Remember my password (as a cookie).<br>\n" ;
+	  	$s .= "<input TABINDEX=5 type=submit name=loginattempt value=\"Log in\">\n" ;
+  		$s .= "</font></FORM>\n" ;
+
 		} else {
 			$s .= "<h2>Problem with login</h2>" ;
 			$s .= "Try again!" ;
@@ -106,7 +117,7 @@ function editUserSettings () {
 		unset ( $ButtonSave ) ;
 		global $QuickBar , $NewTopics , $UnderlineLinks , $AutoTalk , $ShowHover , $ROWS , $COLS , $doSkin ;
 		global $OLDPASSWORD , $NEWPASSWORD , $RETYPEPASSWORD , $EMAIL , $RESULTSPERPAGE , $doJustify , $ChangesLayout ;
-		global $SHOWSTRUCTURE ;
+		global $SHOWSTRUCTURE , $HOURDIFF ;
 		if ( $RESULTSPERPAGE < 2 ) $RESULTSPERPAGE = 20 ;
 		$user->options["quickBar"] = $QuickBar ;
 		$user->options["markupNewTopics"] = $NewTopics ;
@@ -122,6 +133,7 @@ function editUserSettings () {
 		$user->options["showStructure"] = "no" ; #Subpages turned off
 		$user->options["changesLayout"] = $ChangesLayout ;
 		$user->email = $EMAIL ;
+		$user->options["hourDiff"] = $HOURDIFF ;
 
 		if ( $OLDPASSWORD == $user->password ) {
 			if ( $NEWPASSWORD == $RETYPEPASSWORD ) $user->password = $NEWPASSWORD ;
@@ -188,7 +200,7 @@ function editUserSettings () {
 	$ret .= "1024x 768 : <br>\n" ;
 	$ret .= "&nbsp;800x 600 : </font>\n" ;
 
-	$ret .= "</td><td valign=top nowrap><b>Your email adress :</b><br>" ;
+	$ret .= "</td><td valign=top nowrap><b>Your email address :</b><br>" ;
   	$ret .= "<font face=courier>Email : <INPUT TYPE=text NAME=EMAIL VALUE=\"".$user->email."\" SIZE=35></font>\n" ;
 
 	$ret .= "</td></tr><tr><td valign=top nowrap>" ;
@@ -214,6 +226,11 @@ function editUserSettings () {
 	$ret .= "<input type=radio value=classic ".$cl["classic"]." name=ChangesLayout>Classic (Standard)<br>\n" ;
 	$ret .= "<input type=radio value=table ".$cl["table"]." name=ChangesLayout>As a table<br>\n" ;
 	$ret .= "</td></tr>" ;
+
+	# hourDiff
+	$ret .= "<tr><td><b>Time difference :</b><br>\n" ;
+  	$ret .= "<font face=courier><INPUT TYPE=text NAME=HOURDIFF VALUE=\"".$user->options["hourDiff"]."\" SIZE=3> hours</font>\n" ;
+
 
 	# Show parent page and subpage structure in QuickBar    TURNED OFF
 #	$shs[$user->options["showStructure"]] = "checked" ;
@@ -474,7 +491,7 @@ function randompage () {
 
 
 function recentchanges () {
-	global $THESCRIPT ;
+	global $THESCRIPT , $user ;
 	global $vpage , $maxcnt , $daysAgo ;
 	$vpage->special ( "Recent Changes" ) ;
 	$vpage->makeSecureTitle() ;
@@ -503,6 +520,7 @@ function recentchanges () {
 	$arr = array () ;
 
 	$mindate = date ( "Ymd000000" , time () - $daysAgo*24*60*60 ) ;
+	$mindate = timestampAddHour ( $mindate , $user->options["hourDiff"] ) ;
 	$connection=getDBconnection() ;
 	mysql_select_db ( "wikipedia" , $connection ) ;
 	$sql = "SELECT cur_timestamp,cur_title,cur_comment,cur_user,cur_user_text,cur_minor_edit FROM cur WHERE cur_timestamp>$mindate ORDER BY cur_timestamp DESC LIMIT $maxcnt" ;
@@ -522,7 +540,7 @@ function newPages_timeSort ( $a , $b ) { # This belongs to newpages alone!
 	}
 
 function newpages () {
-	global $THESCRIPT ;
+	global $THESCRIPT , $user ;
 	global $vpage , $maxcnt , $daysAgo ;
 	$vpage->special ( "New pages" ) ;
 	$vpage->makeSecureTitle() ;
@@ -552,6 +570,7 @@ function newpages () {
 	$arr = array () ;
 
 	$mindate = date ( "Ymd000000" , time () - $daysAgo*24*60*60 ) ;
+	$mindate = timestampAddHour ( $mindate , $user->options["hourDiff"] ) ;
 	$connection=getDBconnection() ;
 	mysql_select_db ( "wikipedia" , $connection ) ;
 
@@ -588,12 +607,30 @@ function newpages () {
 	return $ret ;
 	}
 
+# Changes the date in recentChangesLayout() according to user setting; can be used similar elsewhere
+function timestampAddHour ( $x , $d ) {
+	$x = tsc ( $x ) ;
+	$x += $d * 3600 ;
+	$x = date ( "YmdHis" , $x ) ;
+	return $x ;
+	}
+
 function recentChangesLayout ( &$arr ) {
 	global $THESCRIPT ;
 	global $user ;
 	$lastDay = "" ;
 	$color1 = $user->options["tabLine1"] ;
 	$color2 = $user->options["tabLine2"] ;
+
+	# Correcting time difference
+	$arr2 = array () ;
+	foreach ( $arr as $y ) {
+		$y->cur_timestamp = timestampAddHour ( $y->cur_timestamp , $user->options["hourDiff"] ) ;
+		array_push ( $arr2 , $y ) ;
+		}
+	$arr = $arr2 ;
+	$arr2 = array () ;
+
 	$xyz = new WikiTitle ;
 	$editTypes = array ( "0"=>"" , "1"=>"<font color=cyan>M</font>" , "2"=>"<font color=green>N</font>" ) ;
 	$ret = " <b>Legend :</b> ".$editTypes["1"]."=Minor edit ; ".$editTypes["2"]."=New article." ;
@@ -618,6 +655,7 @@ function recentChangesLayout ( &$arr ) {
 			}
 		$comment = trim($s->cur_comment) ;
 		if ( $comment == "*" ) $comment = "" ;
+		$o_comment = $comment ;
 		if ( $s->cur_minor_edit == 1 ) $comment = "<font size=-1><i>$comment</i></font>" ;
 		$minor = $editTypes[$s->cur_minor_edit] ;
 
@@ -654,7 +692,7 @@ function recentChangesLayout ( &$arr ) {
 		if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top>$minor</td>" ;
 		else $t .= " $minor" ;
 		if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color >$comment</td>" ;
-		else if ( $comment != "" ) $t .= " <b>[$comment]</b>" ;
+		else if ( $o_comment != "" ) $t .= " <b>[$comment]</b>" ;
 		if ( $user->options["changesLayout"] == "table" ) $t .= "</tr>\n" ;
 		else $t .= "</li>\n" ;
 		$ret .= $t ;
@@ -746,11 +784,11 @@ function statistics () {
 	mysql_free_result ( $result ) ;
 
 	# /TALK
-	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title LIKE \"%/Talk\" OR cur_title LIKE \"talk:%\"" ;
+	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title LIKE \"%/Talk\" OR cur_title LIKE \"Talk:%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$talkPages = $s->number ;
-	$ret .= "<li>There are $nf1$talkPages$nf2 <b>/Talk</b> pages</li>" ;
+	$ret .= "<li>There are $nf1$talkPages$nf2 <b>Talk</b> pages</li>" ;
 	mysql_free_result ( $result ) ;
 
 	# , NOT /TALK
@@ -803,7 +841,7 @@ function statistics () {
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$numUser = $s->number ;
-	$ret .= "<li>There are currently $nf1$numUser$nf2 users signed up.</li>" ;
+	$ret .= "<li>There are currently $nf1$numUser$nf2 [[special:ListUsers|users]] signed up.</li>" ;
 	mysql_free_result ( $result ) ;
 	
 	# EDITORS AND SYSOPS

@@ -4,7 +4,7 @@
 $THESCRIPT = "wiki.phtml" ; # The name of the script. The $PHP_SELF variable doesn't work with Netscape
 
 # Includes the necessary parts
-#include_once ( "./specialPages.php" ) ;
+include_once ( "./wikiText.php" ) ;
 include_once ( "./basicFunctions.php" ) ;
 include_once ( "./databaseFunctions.php" ) ;
 include_once ( "./wikiTitle.php" ) ;
@@ -36,7 +36,7 @@ function fixTalk ( $title ) {
 
 	# Default settings
 	if ( $action == "" ) $action = "view" ;
-	if ( $title == "" ) $title = "Main Page" ;
+	if ( $title == "" ) $title = $wikiMainPage ;
 
 	$title = fixTalk ( $title ) ;
 	$theTitle = new wikiTitle ;
@@ -66,7 +66,10 @@ function fixTalk ( $title ) {
 
 	# Cleaning up, setting <title>, etc.
 	global $bodyOptions , $headerScript ;
-	$pageTitle = "Wikipedia : ".str_replace ( "_" , " " , $pageTitle ) ;
+	global $wikiEditTitle ;
+	if ( $action == edit ) $pageTitle = str_replace ( "$1" , $title , $wikiEditTitle ) ;
+	$pageTitle = str_replace ( "_" , " " , $pageTitle ) ;
+	$pageTitle = str_replace ( "$1" , $pageTitle , $wikiTitleTag ) ;
 	$bodyOptions .= $user->options["background"] ;
 	$bodyOptions .= $user->options["text"] ;
 	$head = "<HTML><HEAD><TITLE>$pageTitle</TITLE> $headerScript </HEAD><BODY $bodyOptions>\n" ;
