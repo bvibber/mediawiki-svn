@@ -1618,12 +1618,13 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		#
 		$tc = "[&;%\\-,.\\(\\)' _0-9A-Za-z\\/:\\x80-\\xff]";
 		$np = "[&;%\\-,.' _0-9A-Za-z\\/:\\x80-\\xff]"; # No parens
+		$namespacechar = '[ _0-9A-Za-z\x80-\xff]'; # Namespaces can use non-ascii!
 		$conpat = "/^({$np}+) \\(({$tc}+)\\)$/";
 
 		$p1 = "/\[\[({$np}+) \\(({$np}+)\\)\\|]]/";		# [[page (context)|]]
 		$p2 = "/\[\[\\|({$tc}+)]]/";					# [[|page]]
-		$p3 = "/\[\[([A-Za-z _]+):({$np}+)\\|]]/";		# [[namespace:page|]]
-		$p4 = "/\[\[([A-Aa-z _]+):({$np}+) \\(({$np}+)\\)\\|]]/";
+		$p3 = "/\[\[($namespacechar+):({$np}+)\\|]]/";		# [[namespace:page|]]
+		$p4 = "/\[\[($namespacechar+):({$np}+) \\(({$np}+)\\)\\|]]/";
 														# [[ns:page (cont)|]]
 		$context = "";
 		$t = $wgTitle->getText();
