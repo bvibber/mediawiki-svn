@@ -21,3 +21,22 @@ Use "buildtables.sql", "initializedb.sql", and
 Edit LocalSettings.php to reflect local installation paths
 and such.
 
+
+== Converting from old database format (May 2002) ==
+
+. Mark the old database read-only.
+. Dump the user, cur, and old tables using "dumpold".
+. Create a new empty database, load the dump into it.
+. Run "renametables.sql".
+. Run "buildtables.sql".
+. Edit "dbtool.php" to convert tables, and run it.
+. Run "buildindexes.sql".
+. Do a sanity check to make sure you can read the DB with
+  the new software.  Link-tracking features won't work.
+. Edit "dbtool.php" to rebuild link tables, run it.
+. Do another check of the link-checking.
+. Run "removetables.sql".
+
+New database is now live.
+
+
