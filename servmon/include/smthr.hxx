@@ -43,6 +43,7 @@ private:
 class thrbase {
 public:
 	thrbase();
+	virtual ~thrbase() {}
 	virtual void run(void);
 	virtual void start(void) = 0;
 };
