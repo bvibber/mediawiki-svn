@@ -319,7 +319,7 @@ $wikiDeleteDenied = "<font size=\"+3\">You are not allowed to delete this page!<
 $wikiDeleteSuccess = "'$1' has been removed." ;
 $wikiDeleteMsg1 = "*On $1, [[user:$2|$2]] permanently deleted page '''$3'''\n" ;
 $wikiDeleteMsg2 = "Permanent deletion of $1" ;
-$wikiDeleteAsk = "You are about to delete the article \"$1\" and its complete history!<br>\nIf you are absolutely sure you want to do this, <a href=\"$THESCRIPT?title=special:deletepage&target=$2&iamsure=yes\">click here</a>." ;
+$wikiDeleteAsk = "You are about to delete the article \"$1\" and its complete history!<br>\nIf you are absolutely sure you want to do this, <a href=\"$2&iamsure=yes\">click here</a>." ;
 $wikiProtectTitle = "Protecting article '$1'" ;
 $wikiProtectDenied = "<font size=\"+3\">You are not allowed to protect this page!</font>" ;
 $wikiProtectNow = "Page '$1' is now protected as $2." ;
