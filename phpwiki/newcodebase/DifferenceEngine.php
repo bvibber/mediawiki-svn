@@ -89,7 +89,7 @@ cellpadding=0 cellspacing='4px'><tr>
 			$s = wfFetchObject( $res );
 			$this->mNewtext = $s->old_text;
 
-			$t = $wgLang->timeanddate( $s->old_timestamp );
+			$t = $wgLang->timeanddate( $s->old_timestamp, true );
 			$this->mNewtitle = str_replace( "$1", "{$t}",
 			  wfMsg( "revisionasof" ) );
 		}
@@ -108,7 +108,7 @@ cellpadding=0 cellspacing='4px'><tr>
 		$s = wfFetchObject( $res );
 		$this->mOldtext = $s->old_text;
 
-		$t = $wgLang->timeanddate( $s->old_timestamp );
+		$t = $wgLang->timeanddate( $s->old_timestamp, true );
 		$this->mOldtitle = str_replace( "$1", "{$t}",
 		  wfMsg( "revisionasof" ) );
 

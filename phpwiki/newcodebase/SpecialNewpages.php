@@ -33,7 +33,7 @@ function wfSpecialNewpages()
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $sk->makeLink( "User:{$ut}", $ut ); }
 
-		$d = $wgLang->timeanddate( $obj->cur_timestamp );
+		$d = $wgLang->timeanddate( $obj->cur_timestamp, true );
 		$link = $sk->makeKnownLink( $obj->cur_title, "" );
 		$s .= "<li>{$d} {$link} . . {$ul}";
 

@@ -33,7 +33,7 @@ function wfSpecialPreferences()
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
 	global $wpSkin, $wpEmail, $wpNick, $wpSearch, $wpRecent;
 	global $wpSearchLines, $wpSearchChars;
-	global $wpRows, $wpCols, $HTTP_POST_VARS;
+	global $wpRows, $wpCols, $wpHourDiff, $HTTP_POST_VARS;
 
 	if ( "" != $wpNewpass ) {
 		if ( $wpNewpass != $wpRetype ) {
@@ -59,6 +59,7 @@ function wfSpecialPreferences()
 	$wgUser->setOption( "rclimit", $wpRecent );
 	$wgUser->setOption( "rows", $wpRows );
 	$wgUser->setOption( "cols", $wpCols );
+	$wgUser->setOption( "timecorrection", $wpHourDiff );
 
 	$togs = $wgLang->getUserToggles();
 	foreach ( $togs as $tname => $ttext ) {
@@ -80,7 +81,7 @@ function wfSpecialPreferences()
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
 	global $wpRows, $wpCols, $wpSkin, $wpEmail, $wpNick;
 	global $wpSearch, $wpRecent, $HTTP_POST_VARS;
-	global $wpSearchLines, $wpSearchChars;
+	global $wpHourDiff, $wpSearchLines, $wpSearchChars;
 
 	$wpOldpass = $wpNewpass = $wpRetype = "";
 	$wpEmail = $wgUser->getEmail();
@@ -90,6 +91,7 @@ function wfSpecialPreferences()
 	$wpSkin = $wgUser->getOption( "skin" );
 	$wpRows = $wgUser->getOption( "rows" );
 	$wpCols = $wgUser->getOption( "cols" );
+	$wpHourDiff = $wgUser->getOption( "timecorrection" );
 	$wpSearch = $wgUser->getOption( "searchlimit" );
 	$wpSearchLines = $wgUser->getOption( "contextlines" );
 	$wpSearchChars = $wgUser->getOption( "contextchars" );
@@ -106,7 +108,7 @@ function wfSpecialPreferences()
 	global $wgUser, $wgOut, $wgLang;
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
 	global $wpSkin, $wpEmail, $wpNick, $wpSearch, $wpRecent;
-	global $wpRows, $wpCols, $wpSaveprefs, $wpReset;
+	global $wpRows, $wpCols, $wpSaveprefs, $wpReset, $wpHourDiff;
 	global $wpSearchLines, $wpSearchChars;
 
 	$wgOut->setPageTitle( wfMsg( "preferences" ) );
@@ -138,6 +140,9 @@ function wfSpecialPreferences()
 	$tbs = wfMsg( "textboxsize" );
 	$tbr = wfMsg( "rows" );
 	$tbc = wfMsg( "columns" );
+	$ltz = wfMsg( "localtime" );
+	$tzt = wfMsg( "timezonetext" );
+	$tzo = wfMsg( "timezoneoffset" );
 	$yem = wfMsg( "youremail" );
 	$ynn = wfMsg( "yournick" );
 	$srh = wfMsg( "searchresultshead" );
@@ -197,8 +202,10 @@ value=\"$i\"$checked> {$skins[$i]}<br>\n" );
 	# Textbox rows, cols
 	#
 	$wgOut->addHTML( "<td valign=top nowrap><b>$tbs:</b><br>
-$tbr: <input type=text name=\"wpRows\" value=\"$wpRows\" size=6><br>
-$tbc: <input type=text name=\"wpCols\" value=\"$wpCols\" size=6>
+$tbr: <input type=text name=\"wpRows\" value=\"{$wpRows}\" size=6><br>
+$tbc: <input type=text name=\"wpCols\" value=\"{$wpCols}\" size=6><br><br>
+<b>$ltz</b><br>
+$tzo*: <input type=text name=\"wpHourDiff\" value=\"{$wpHourDiff}\" size=6>
 </td>" );
 
 	# Email, etc.
@@ -217,7 +224,7 @@ $scc: <input type=text name=\"wpSearchChars\" value=\"$wpSearchChars\" size=6></
 </tr><tr>
 <td align=center><input type=submit name=\"wpSaveprefs\" value=\"$svp\"></td>
 <td align=center><input type=submit name=\"wpReset\" value=\"$rsp\"></td>
-</tr></table></form>\n" );
+</tr></table>* {$tzt} </form>\n" );
 }
 
 ?>

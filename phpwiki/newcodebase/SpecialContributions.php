@@ -94,7 +94,7 @@ function wfSpecialContributions()
 		}
 		$page = Title::makeName( $ns, $t );
 		$link = $sk->makeKnownLink( $page, "" );
-		$d = $wgLang->timeanddate( $ts );
+		$d = $wgLang->timeanddate( $ts, true );
 
 		$wgOut->addHTML( "<li>{$d} {$link}</li>\n" );
 

@@ -880,7 +880,7 @@ enctype='application/x-www-form-urlencoded'>
 		else { $ul = "[[User:{$ut}|{$ut}]]"; }
 
 		$art = $title->getPrefixedText();
-		$d = $wgLang->timeanddate( date( "YmdHis" ) );
+		$d = $wgLang->timeanddate( date( "YmdHis" ), true );
 
 		preg_match( "/^(.*?)<ul>(.*)$/sD", $text, $m );	
 		$da = str_replace( "$1", $art, wfMsg( "deletedarticle" ) );
@@ -978,7 +978,7 @@ enctype='application/x-www-form-urlencoded'>
 	{
 		global $wgLang, $wgOut;
 
-		$td = $wgLang->timeanddate( $this->mTimestamp );
+		$td = $wgLang->timeanddate( $this->mTimestamp, true );
 		$r = str_replace( "$1", "{$td}", wfMsg( "revisionasof" ) );
 		$wgOut->setSubtitle( "({$r})" );
 	}
@@ -1032,7 +1032,8 @@ enctype='application/x-www-form-urlencoded'>
 		$n = $wgUser->getName();
 		$k = $wgUser->getOption( "nickname" );
 		if ( "" == $k ) { $k = $n; }
-		$d = $wgLang->timeanddate( date( "YmdHis" ) );
+		$d = $wgLang->timeanddate( date( "YmdHis" ), false ) .
+		  " (" . date( "T" ) . ")";
 
 		$text = preg_replace( "/~~~~/", "[[User:$n|$k]] $d", $text );
 		$text = preg_replace( "/~~~/", "[[User:$n|$k]]", $text );
