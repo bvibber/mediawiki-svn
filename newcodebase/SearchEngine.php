@@ -120,11 +120,11 @@ class SearchEngine {
 		foreach ( $w as $word ) {
 			if ( "and" == $word || "or" == $word || "not" == $word
 			  || "(" == $word || ")" == $word ) {
-				$cond .= " {$word}";
+				$cond .= " " . strtoupper( $word );
 				$last = "";
 			} else {
-				if ( "" != $last ) { $cond .= " and"; }
-				$cond .= " (match (##field##) against ('" .
+				if ( "" != $last ) { $cond .= " AND"; }
+				$cond .= " (MATCH (##field##) AGAINST ('" .
 				  wfStrencode( $word ). "'))";
 				$last = $word;
 				array_push( $this->mSearchterms, "\\b" . $word . "\\b" );
