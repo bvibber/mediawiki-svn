@@ -6,6 +6,7 @@ function wfSpecialWantedpages()
 	global $limit, $offset; # From query string
 	$fname = "wfSpecialWantedpages";
 
+	$wgOut->setRobotpolicy( "noindex,nofollow" );
 	if ( ! $limit ) {
 		$limit = $wgUser->getOption( "rclimit" );
 		if ( ! $limit ) { $limit = 50; }
@@ -26,11 +27,11 @@ function wfSpecialWantedpages()
 	  "title=Special%3AWantedpages" );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
-	$s = "<ul>";
+	$s = "<ol start=" . ( $offset + 1 ) . ">";
 	while ( $obj = wfFetchObject( $res ) ) {
 		$nt = Title::newFromDBkey( $obj->bl_to );
 
-		$plink = $sk->makeKnownLink( $nt->getPrefixedText(), "" );
+		$plink = $sk->makeBrokenLink( $nt->getPrefixedText(), "" );
 		$nl = str_replace( "$1", $obj->nlinks, wfMsg( "nlinks" ) );
 		$nlink = $sk->makeKnownLink( "Special:Whatlinkshere", $nl,
 		  "target=" . $nt->getPrefixedURL() );
@@ -38,7 +39,7 @@ function wfSpecialWantedpages()
 		$s .= "<li>{$plink} ({$nlink})</li>\n";
 	}
 	wfFreeResult( $res );
-	$s .= "</ul>";
+	$s .= "</ol>";
 	$wgOut->addHTML( $s );
 	$wgOut->addHTML( "<p>{$sl}\n" );
 }

@@ -69,6 +69,7 @@
 	"Randompage"	=> "Go to randomly-selected article",
 
 	"Lonelypages"	=> "List orphaned articles",
+	"Unusedimages"	=> "List orphaned images",
 	"Popularpages"	=> "List popular articles",
 	"Wantedpages"	=> "List most wanted articles",
 	"Shortpages"	=> "List short articles",
@@ -435,6 +436,7 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 #
 "orphans"		=> "Orphaned pages",
 "lonelypages"	=> "Orphaned pages",
+"unusedimages"	=> "Unused images",
 "popularpages"	=> "Popular pages",
 "nviews"		=> "$1 views",
 "wantedpages"	=> "Wanted pages",
@@ -454,6 +456,7 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "asksql"		=> "SQL query",
 "debug"			=> "Debug",
 "newpages"		=> "New pages",
+"movethispage"	=> "Move this page",
 
 # Watchlist
 #
@@ -472,7 +475,7 @@ to modify your watchlist.",
 "unwatchthispage" => "Stop watching",
 "notanarticle"	=> "Not an article",
 
-# Delete/protect page
+# Delete/protect/revert
 #
 "deletepage"	=> "Delete page",
 "confirm"		=> "Confirm",
@@ -488,6 +491,7 @@ consequences, and that you are doing this in accordance with
 "deletedtext"	=> "\"$1\" has been deleted.",
 "deletedarticle" => "deleted \"$1\"",
 "deletionlog"	=> "Article_deletion_log",
+"reverted"		=> "Reverted to earlier revision",
 
 # Contributions
 #

@@ -25,6 +25,7 @@ class SearchEngine {
 		  wfMsg( "searchquery" ) );
 		$wgOut->setSubtitle( $q );
 		$wgOut->setArticleFlag( false );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
 
 		$this->parseQuery();
 		if ( "" == $this->mTitlecond || "" == $this->mTextcond ) {

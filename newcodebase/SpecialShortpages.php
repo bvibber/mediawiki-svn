@@ -25,14 +25,14 @@ function wfSpecialShortpages()
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$sk = $wgUser->getSkin();
-	$s = "<ul>";
+	$s = "<ol start=" . ( $offset + 1 ) . ">";
 	while ( $obj = wfFetchObject( $res ) ) {
 		$nb = str_replace( "$1", $obj->len, wfMsg( "nbytes" ) );
 		$link = $sk->makeKnownLink( $obj->cur_title, "" );
 		$s .= "<li>{$link} ({$nb})</li>\n";
 	}
 	wfFreeResult( $res );
-	$s .= "</ul>";
+	$s .= "</ol>";
 	$wgOut->addHTML( $s );
 	$wgOut->addHTML( "<p>{$sl}\n" );
 }

@@ -9,6 +9,7 @@ function wfSpecialWatchlist()
 	$wgOut->setPagetitle( wfMsg( "watchlist" ) );
 	$sub = str_replace( "$1", $wgUser->getName(), wfMsg( "watchlistsub" ) );
 	$wgOut->setSubtitle( $sub );
+	$wgOut->setRobotpolicy( "index,follow" );
 
 	$wl = $wgUser->getWatchlist();
 	$nw = count( $wl );

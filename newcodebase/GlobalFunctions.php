@@ -133,6 +133,7 @@ function wfSpecialPage()
 	$sysopSP = $wgLang->getSysopSpecialPages();
 
 	$wgOut->setArticleFlag( false );
+	$wgOut->setRobotpolicy( "noindex,follow" );
 	$wgOut->setPageTitle( wfMsg( strtolower( $wgTitle->getText() ) ) );
 
 	$t = $wgTitle->getDBkey();

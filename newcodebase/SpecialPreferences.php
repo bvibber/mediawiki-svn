@@ -107,6 +107,7 @@ function wfSpecialPreferences()
 
 	$wgOut->setPageTitle( wfMsg( "preferences" ) );
 	$wgOut->setArticleFlag( false );
+	$wgOut->setRobotpolicy( "noindex,nofollow" );
 
 	if ( "" != $err ) {
 		$wgOut->addHTML( "<font size='+1' color='red'>$err</font>\n<p>" );

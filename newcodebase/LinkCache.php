@@ -44,9 +44,7 @@ class LinkCache {
 
 	function addImageLink( $title )
 	{
-		if ( $this->mActive ) {
-			$this->mImageLinks[$title] = 1;
-		}
+		if ( $this->mActive ) { $this->mImageLinks[$title] = 1; }
 	}
 
 	function clearBadLink( $title )

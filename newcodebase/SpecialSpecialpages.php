@@ -4,6 +4,8 @@ function wfSpecialSpecialpages()
 {
 	global $wgUser, $wgOut, $wgLang;
 
+	$wgOut->setRobotpolicy( "index,nofollow" );
+
 	$sk = $wgUser->getSkin();
 	$validSP = $wgLang->getValidSpecialPages();
 	$wgOut->addHTML( "<h2>" . wfMsg( "spheading" ) . "</h2>\n<ul>" );

@@ -26,7 +26,7 @@ function wfSpecialNewpages()
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$sk = $wgUser->getSkin();
-	$s = "<ul>";
+	$s = "<ol start=" . ( $offset + 1 ) . ">";
 	while ( $obj = wfFetchObject( $res ) ) {
 		$u = $obj->cur_user;
 		$ut = $obj->cur_user_text;
@@ -42,7 +42,7 @@ function wfSpecialNewpages()
 		$s .= "</li>\n";
 	}
 	wfFreeResult( $res );
-	$s .= "</ul>";
+	$s .= "</ol>";
 	$wgOut->addHTML( $s );
 	$wgOut->addHTML( "<p>{$sl}\n" );
 }

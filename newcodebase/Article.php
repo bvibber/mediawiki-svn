@@ -201,9 +201,11 @@ class Article {
 		# $wgOut->addHeader( "Expires", $wgLang->rfc1123( time() + 3600 ) );
 		# $wgOut->addHeader( "Cache-Control", "private" );
 
+		$wgOut->setArticleFlag( true );
+		$wgOut->setRobotpolicy( "index,follow" );
+
 		if ( isset( $diff ) ) {
 			$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
-			$wgOut->setArticleFlag( false );
 			$de = new DifferenceEngine( $oldid, $diff );
 			$de->showDiffPage();
 			return;
@@ -211,7 +213,10 @@ class Article {
 		$text = $this->getContent();
 		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 
-		if ( $oldid ) { $this->setOldSubtitle(); }
+		if ( $oldid ) {
+			$this->setOldSubtitle();
+			$wgOut->setRobotpolicy( "noindex,follow" );
+		}
 
 		if ( "" != $this->mRedirectedFrom ) {
 			$sk = $wgUser->getSkin();
@@ -530,6 +535,8 @@ $wpTextbox2
 		$wgUser->addWatch( $wgTitle->getPrefixedDBkey() );
 
 		$wgOut->setPagetitle( wfMsg( "addedwatch" ) );
+		$wgOut->setRobotpolicy( "noindex,follow" );
+
 		$text = str_replace( "$1", $wgTitle->getPrefixedText(),
 		  wfMsg( "addedwatchtext" ) );
 		$wgOut->addHTML( $text );
@@ -552,6 +559,8 @@ $wpTextbox2
 		$wgUser->removeWatch( $wgTitle->getPrefixedDBkey() );
 
 		$wgOut->setPagetitle( wfMsg( "removedwatch" ) );
+		$wgOut->setRobotpolicy( "noindex,follow" );
+
 		$text = str_replace( "$1", $wgTitle->getPrefixedText(),
 		  wfMsg( "removedwatchtext" ) );
 		$wgOut->addHTML( $text );
@@ -571,6 +580,7 @@ $wpTextbox2
 		$wgOut->setPageTitle( $wgTitle->getPRefixedText() );
 		$wgOut->setSubtitle( wfMsg( "revhistory" ) );
 		$wgOut->setArticleFlag( false );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
 
 		$sql = "SELECT old_id,old_namespace,old_title,old_user," .
 		  "old_comment,old_user_text,old_timestamp,old_minor_edit FROM old " .
@@ -663,6 +673,7 @@ $wpTextbox2
 			  wfMsg( "deletesub" ) );
 		}
 		$wgOut->setSubtitle( $sub );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
 		$wgOut->addWikiText( wfMsg( "confirmdeletetext" ) );
 
 		$t = $wgTitle->getPrefixedURL();
@@ -730,6 +741,8 @@ $wpTextbox2
 			$deleted = $wgTitle->getPrefixedText();
 		}
 		$wgOut->setPagetitle( wfMsg( "actioncomplete" ) );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
+
 		$text = str_replace( "$1" , $deleted, wfMsg( "deletedtext" ) );
 		$wgOut->addHTML( "<p>" . $text );
 		$wgOut->returnToMain( false );
@@ -855,6 +868,11 @@ $wpTextbox2
 			$wgOut->fileCopyError( "${archive}/{$oldimage}", $curfile );
 		}
 		wfRecordUpload( $name, $oldver, $size, "Reverted to earlier image" );
+
+		$wgOut->setPagetitle( wfMsg( "actioncomplete" ) );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
+		$wgOut->addHTML( wfMsg( "imagereverted" ) );
+		$wgOut->returnToMain( false );
 	}
 
 	# Do standard deferred updates after page view

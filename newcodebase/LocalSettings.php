@@ -18,9 +18,9 @@ $wgUploadDirectory	= "/var/www/html/upload";
 # MySQL settings
 #
 $wgDBserver         = "127.0.0.1";
-$wgDBname           = "newwiki";
-$wgDBuser           = "wikiuser";
-$wgDBpassword       = "userpwd";
+$wgDBname           = "yaw";
+$wgDBuser           = "wikiadmin";
+$wgDBpassword       = "oberon";
 
 # Turn this on during database maintenance
 #

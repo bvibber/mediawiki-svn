@@ -15,7 +15,7 @@ function wfSpecialAllpages()
 
 	$sl = SearchEngine::viewPrevNext( $offset, $limit,
 	  "title=Special%3AAllpages" );
-	$wgOut->addHTML( "<br>{$sl}\n<ul>" );
+	$wgOut->addHTML( "<br>{$sl}\n<ol start=" . ( $offset + 1 ) . ">" );
 
 	$sql = "SELECT cur_namespace,cur_title FROM cur ORDER BY " .
 	  "cur_namespace,cur_title LIMIT {$offset}, {$limit}";
@@ -28,7 +28,7 @@ function wfSpecialAllpages()
 		$wgOut->addHTML( "<li>{$l}</li>\n" );
 	}
 	wfFreeResult( $res );
-	$wgOut->addHTML( "</ul><p>{$sl}\n" );
+	$wgOut->addHTML( "</ol><p>{$sl}\n" );
 }
 
 ?>
