@@ -203,17 +203,15 @@ main(int ac, char **av)
     int c;
     icp_opcode opcode=ICP_HIT;
     float t=5.0;
-    int t_int;
-    int t_adjust;
-    int frac;
-    int tenloop = 0;
-    int slow_c = 0;
-    float step = 0;
-    float stepsum = 0;
+    int t_int, t_adjust, frac;
+    // only answer the nth query
+    int replynth = 1;
+    // the loop counter
+    int maincount = 0, step = 0, stepsum = 0;
     struct rlimit rlim;
 
     /* Work with command line options */
-    while ((c = getopt(ac,av,"dmt:p:cn:")) != -1) {
+    while ((c = getopt(ac,av,"dmr:t:p:cn:")) != -1) {
         switch (c) {
             case 'p':
                 /* Port to bind at */
@@ -236,12 +234,16 @@ main(int ac, char **av)
                 /* Predefined timeout value */
                 t=atof(optarg);
                 break;
+            case 'r':
+                /* only reply to every nth query, for high request rates */
+                replynth=atoi(optarg);
+                break;
             case 'n':
                 /* Predefined nice value */
                 nice=atoi(optarg);
                 break;
             default:
-                fprintf(stderr, "Usage: icpagent [-d] [-t delay time] [-p port] [-n nice] -m\n");
+                fprintf(stderr, "Usage: icpagent [-d] [-t delay time] [-p port] [-n nice] [-r reply to every rth query] -m\n");
                 exit(-1);
         }
     }
@@ -265,9 +267,9 @@ main(int ac, char **av)
 
     /* Static delays */
     t_int = (int)t;
-    frac = 10*(t - t_int + 0.0001);
+    frac = 100000*(t - t_int + 0.0000001);
     if(frac > 0)
-        step = 10.0 / (float)frac;
+        step = 100000.0 / (float)frac;
     // printf("frac: %d, step: %f\n",frac,step);
     for (;;) {
 	bzero(&them, sizeof(them));
@@ -302,23 +304,22 @@ main(int ac, char **av)
 	    if (t<0) 
 		    queuereply(them,ICP_MISS, url, header.reqnum,0);
             else {
-                if(tenloop == (int)stepsum || (tenloop == 9 ) && slow_c < frac) {
+                if(maincount == (int)stepsum || maincount == 999999 ) {
                     t_adjust = 1;
-                    ++slow_c;
                     stepsum += step;
                 } else {
                     t_adjust = 0;
                 }
-                queuereply(them, opcode, url, header.reqnum, t_int+t_adjust);
+
+                if(maincount % replynth == 0)
+                    queuereply(them, opcode, url, header.reqnum, t_int+t_adjust);
             }
             
-            // printf("t %d, slow_c %d, ss %f\n",tenloop,slow_c,stepstack);
-            if(tenloop == 9) {
-                tenloop = 0;
-                slow_c = 0;
+            if(maincount == 999999) {
+                maincount = 0;
                 stepsum=0;
             } else {
-                ++tenloop;
+                ++maincount;
             }
         }
     }
