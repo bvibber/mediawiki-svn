@@ -9,10 +9,12 @@ class TWikiInterface
     virtual void run (int argc, char *argv[]) ;
     
     private :
-    virtual void edit ( TUCS s , TArticle &art ) ;
+    void readPostParams () ;
+    virtual void edit ( TTitle s , TArticle &art ) ;
     virtual void go ( TUCS s , TArticle &art ) ;
     virtual void load_ini ( VTUCS &v ) ;
     TSpecialPages *sp ;
+    TUCS html ;
     } ;
 
 TWikiInterface::TWikiInterface ()
@@ -44,27 +46,54 @@ void TWikiInterface::load_ini ( VTUCS &v )
         }
     }
     
+void TWikiInterface::readPostParams ()
+    {
+    char *cl ;
+    cl = getenv ( "CONTENT_LENGTH" ) ;
+    int cli = cl ? atoi ( cl ) : 0 ;
+
+    if ( cli > 0 ) // POST
+       {
+       char *ip = new char[cli+5] ;
+       int tmp , i = 0;
+       while (i < cli) {
+             tmp = fgetc(stdin);
+             if (tmp==EOF) break;
+             ip[i++] = tmp;
+       }
+       ip[i] = '\0';
+
+       TUCS x = ip ;
+       delete ip ;
+       
+       VTUCS vv ;
+       x.explode ( "&" , vv ) ;
+       for ( uint b = 0 ; b < vv.size() ; b++ )
+          {
+          VTUCS zz ;
+          vv[b].explode ( "=" , zz ) ;
+          TUCS k2 = "_" + zz[0] , v2 ;
+          zz.erase ( zz.begin() ) ;
+          v2.implode ( "=" , zz ) ;
+          LANG->setData ( k2 , v2 ) ;
+//          cout << k2.getstring() << " = " << v2.getstring() << "<br>" << endl ;
+          }
+       }
+    }
+    
 void TWikiInterface::run (int argc, char *argv[])
     {
     int a ;
     VTUCS params ;
     if ( argc == 1 )
         {
-        char *cl ;
-        cl = getenv ( "CONTENT_LENGTH" ) ;
-/*        if ( cl ) // POST
+        readPostParams () ;
+
+        char *qs = getenv ( "QUERY_STRING" ) ;
+        if ( qs )
            {
-           TUCS x = cl ;
-           x.explode ( "&" , params ) ;           
-           }
-        else*/
-           {
-           char *qs = getenv ( "QUERY_STRING" ) ;
-           if ( qs )
-              {
-              TUCS x = qs ;
-              x.explode ( "&" , params ) ;
-              }
+           TUCS x = qs ;
+           x.explode ( "&" , params ) ;
            }
         }
     else
@@ -87,7 +116,7 @@ void TWikiInterface::run (int argc, char *argv[])
     TUCS forcetitle ;
     
     TUCS s ;
-    TUCS action = "view" ;
+    TUCS action = "VIEW" ;
     
     // Default settings
     LANG->setData ( "skinpath" , "wiki" ) ;
@@ -191,6 +220,8 @@ void TWikiInterface::run (int argc, char *argv[])
            }
         }
 
+    LANG->setData ( "ACTION" , action ) ;
+
     TTitle ft ( forcetitle , FROM_TEXT ) ;
 
     if ( action == "GO" )
@@ -203,8 +234,17 @@ void TWikiInterface::run (int argc, char *argv[])
         }
     else if ( loadFromFile )
         {
-        if ( action == "VIEW" ) DB->getArticle ( ft , art ) ;
-        else if ( action == "EDIT" ) edit ( ft , art ) ;
+        SKIN->setArticle ( &art ) ;
+        if ( action == "VIEW" )
+           {
+           DB->getArticle ( ft , art ) ;
+           html = SKIN->getArticleHTML() ;
+           }
+        else if ( action == "EDIT" || action == "SUBMIT" )
+           {
+           DB->getArticle ( ft , art ) ;
+           html = SKIN->getEditHTML() ;
+           }
         }
     else
         {
@@ -218,13 +258,12 @@ void TWikiInterface::run (int argc, char *argv[])
            }
         art.setSource ( t2 ) ;
         art.setTitle ( ft ) ;
+        SKIN->setArticle ( &art ) ;
+        html = SKIN->getArticleHTML() ;
         }
         
 
-    SKIN->setArticle ( &art ) ;
-    
     clock_t start = clock () ;
-    TUCS html = SKIN->getArticleHTML() ;
     html += "\n<!-- Rendering took " ;
     html += TUCS::fromint ( (clock()-start)*100/CLK_TCK ) ;
     html += " ms -->" ;
@@ -269,8 +308,10 @@ void TWikiInterface::go ( TUCS s , TArticle &art )
     art.setSource ( t ) ;
     }
     
-void TWikiInterface::edit ( TUCS s , TArticle &art )
+void TWikiInterface::edit ( TTitle s , TArticle &art )
     {
+    DB->getArticle ( s , art ) ;
+    html = SKIN->getArticleHTML() ;
     }
 
 

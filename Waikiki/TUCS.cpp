@@ -168,6 +168,10 @@ void TUCS::fromURL ()
     {
     if ( length() < 3 ) return ;
     uint *a ;
+    for ( a = c_str() ; *a ; a++ )
+        if ( *a == '+' )
+           *a = ' ' ;
+           
     for ( a = c_str() ; *(a+2) ; a++ )
         {
         if ( *a == '%' && isHex ( *(a+1) ) && isHex ( *(a+2) ) )
@@ -180,6 +184,7 @@ void TUCS::fromURL ()
            a = c_str() ;
            }
         }
+    replace ( "\r" , "" ) ;
     }
     
 uint TUCS::hex2dec ( uint c )

@@ -51,6 +51,100 @@ TUCS TSkin::getArticleHTML ()
     return r ;
     }
     
+TUCS TSkin::getEditHTML ()
+    {
+    if ( !article ) return "" ;
+    TUCS r ;
+    
+    TUCS action = LANG->getData ( "ACTION" ) ;
+    TUCS source , preview ;
+
+    if ( action == "EDIT" ) source = article->getSource () ;
+    else
+        {
+        source = LANG->getData ( "_WPTEXTBOX1" ) ;
+        source.fromURL() ;
+        source.trim() ;
+        }
+    
+    if ( LANG->getData ( "_wpPreview" ) != "" )
+        {
+        TUCS s = source ;
+        TParser p ;
+        preview = "<h2>" + LNG("preview") + "</h2>\n" ;
+        preview += "<br><center><strong><font color=red>" ;
+        preview += LNG("previewnote") + "</font></strong></center><br>" ;
+        preview += p.parse ( s ) ;
+        }
+        
+    TUCS title_text = LNG("editing") ;
+    title_text.replace ( "$1" , article->getTitle().getNiceTitle() ) ;
+    
+    // Title
+    r += "<div id='article'>\n" ;
+    r += "<H1 class='pagetitle'>" ;
+    r += title_text ;
+    r += "</H1>\n" ;
+    
+    // Edit box
+    r += "<form id=editform name=editform method=post action=\"" ;
+    r += "waikiki.exe?title=" + article->getTitle().getURL() + "&amp;" ;
+    r += "action=submit\" enctype=\"application/x-www-form-urlencoded\">\n" ;
+    r += "<TEXTAREA tabindex=2 name=wpTextbox1 rows=20 cols=65 " ;
+    r += "style=\"width:100%\" wrap=virtual>\n" ;
+    r += source ;
+    r += "\n</TEXTAREA>\n" ;
+
+    // The lower decks
+    r += "<br>" + LNG("summary") ;
+    r += "\n<input tabindex=3 type=text value=\"\" name=wpSummary maxlength=200 size=60><br>" ;
+    r += "\n<input tabindex=3 type=checkbox value=1 name=wpMinoredit>" ;
+    r += LNG("minoredit") ;
+    r += "\n<input tabindex=4 type=checkbox name=wpWatchthis>" ;
+    r += LNG("watchthis") + "<br>" ;
+    r += "\n<input tabindex=5 type=submit value=\"" + LNG("savearticle") + "\" name=wpSave>" ;
+    r += "\n<input tabindex=6 type=submit value=\"" + LNG("showpreview") + "\" name=wpPreview>" ;
+    r += "\n<em>" + getInternalLink ( article->getTitle() , LNG("cancel") ) + "</em> | " ;
+    r += "\n<em>" + getInternalLink ( TTitle(LNG("edithelppage")) , LNG("edithelp") ) + "</em>" ;
+    r += "<br><br>" ;
+    
+    TUCS copyrightwarning = LNG("copyrightwarning") ;
+    TUCS cp = getInternalLink ( TTitle(LNG("copyrightpage")) , LNG("copyrightpagename") ) ;
+    copyrightwarning.replace ( "$1" , cp ) ;
+    r += "\n" + copyrightwarning ;
+    r += "<input type=hidden value=\"\" name=wpSection>" ;
+    r += "<input type=hidden value=\"20030523212554\" name=wpEdittime>" ;
+
+    r += "</form>\n\n" ;
+
+    r += preview ;
+
+/*    
+    if ( article )
+        {
+        TParser p ;
+        r += "<H1 class='pagetitle'>" ;
+        r += article->getTitle().getNiceTitle() ;
+        r += "</H1>\n" ;
+        r += "<P class='subtitle'>" ;
+        if ( article->redirectedFrom.empty() ) r += LNG("fromwikipedia") ;
+        else
+           {
+           TUCS u = LNG ( "redirectedfrom" ) ;
+           TTitle t2 ( article->redirectedFrom ) ;
+           TUCS u2 = getInternalLink ( t2 , "" , "" , "redirect=no" ) ;
+           u.replace ( "$1" , u2 ) ;
+           r += u ;
+           }
+        r += "</P>\n" ;
+        TUCS s = article->getSource() ;
+        r += p.parse ( s ) ;
+        }
+        */
+    r += "</div>\n" ;
+    return r ;
+    }
+    
 TUCS TSkin::getTopBar()
     {
     TUCS ll ;

@@ -14,6 +14,7 @@ class TSkin
     TSkin () ;
     virtual void doHeaderStuff () ;
     virtual TUCS getArticleHTML () ;
+    virtual TUCS getEditHTML () ;
     virtual TUCS getTopBar() ;
     virtual TUCS getSideBar() ;
     virtual TUCS getImageLink ( TTitle t , TUCS url , TUCS alt = "" ) ;
