@@ -89,8 +89,7 @@ function convertUserTable()
 #
 function convertCurTable()
 {
-	$count = 0;
-    $countables = 0;
+	$count = $countables = 0;
 	print "Converting CUR table.\n";
 
 	$sql = "LOCK TABLES old_cur READ, cur WRITE, site_stats WRITE";
@@ -238,14 +237,16 @@ function convertImageDirectories()
 	$count = 0;
 
 	print "Moving image files.\n";
-	$dir = opendir( $wgImageDirectory );
+	$dir = opendir( $wgImageDirectory ) or die(
+	  "Couldn't open directory \"{$wgImageDirectory}\".\n" );
+
 	while ( false !== ( $oname = readdir( $dir ) ) ) {
 		if ( "." == $oname{0} ) continue;
 
 		$nt = Title::newFromText( $oname );
 		$nname = $nt->getDBkey();
 
-		$exts = array( "png", "gif", "jpg", "jpeg" );
+		$exts = array( "png", "gif", "jpg", "jpeg", "ogg" );
 		$ext = strrchr( $nname, "." );
 		if ( false === $ext ) { $ext = ""; }
 		else { $ext = strtolower( substr( $ext, 1 ) ); }
