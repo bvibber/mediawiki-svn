@@ -278,12 +278,14 @@ void out_string(conn * c, char *str)
 
 void complete_nread(conn * c)
 {
-    item *it = c->item;
+    item *it = c->item, *testit=NULL;
+    time_t now;
     int comm = c->item_comm;
     u_int32_t dbflags = 0;
     int ret;
 
     stats.set_cmds++;
+    now=time(0);
 
     while (1) {
 	if (strncmp(ITEM_data(it) + it->nbytes - 2, "\r\n", 2) != 0) {
@@ -291,22 +293,31 @@ void complete_nread(conn * c)
 	    break;
 	}
 
-	/* some day this will remove expired objects 
-	   old_it = assoc_find(ITEM_key(it));
-
-	   if (old_it && old_it->exptime && old_it->exptime < now) {
-
-	   }
-	 */
-
-	if (comm == NREAD_ADD)
-	    dbflags |= DB_NOOVERWRITE;
-	/* 
-	   if (comm==NREAD_REPLACE) {
-	   out_string(c, "NOT_STORED");
-	   break;
-	   }
-	 */
+	cleanup_dbt();
+	if (comm == NREAD_ADD || comm==NREAD_REPLACE) {
+	    dbkey.data=ITEM_key(it);
+	    dbkey.size=strlen(ITEM_key(it));
+	    dbkey.dlen=40;
+	    if ((ret = dbp->get(dbp,NULL,&dbkey,&dbdata,NULL)) == 0) {
+		/* old data exists */
+		testit=dbdata.data;
+		if (testit && testit->exptime && testit->exptime < now ) {
+			/* expired */
+			if (comm==NREAD_REPLACE) {
+				/* remove on replace, return */
+				dbp->del(dbp,NULL,&dbkey,0);
+				out_string(c,"NOT STORED");
+				break;
+			}
+		} else if (comm==NREAD_ADD){
+			/* don't overwrite not expired data */
+			dbflags |= DB_NOOVERWRITE;
+		}
+	    } else if (comm==NREAD_REPLACE) {
+		out_string(c,"NOT STORED");
+		break;
+	    }
+	}
 
 	cleanup_dbt();
 	dbkey.data = ITEM_key(it);
