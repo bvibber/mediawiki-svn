@@ -386,6 +386,7 @@ Möglicherweise haben Sie auch die Anfrage falsch formuliert, z.B.
 Bitte versuchen Sie eine anders formulierte Anfrage.",
 "matchtotals"	=> "Die Anfrage \"$1\" stimmt mit $2 Artikelüberschriften
 und dem Text von $3 Artikeln überein.",
+"nogomatch" => "Es existiert kein Artikel mit diesem Names. Bitte versuchen Sie die Volltextsuche. ",
 "titlematches"	=> "Übereinstimmungen mit Überschriften",
 "notitlematches" => "Keine Übereinstimmungen",
 "textmatches"	=> "Übereinstimmungen mit Texten",
@@ -459,6 +460,14 @@ Beachten Sie auch die letzten Änderungen auf [[m:Special:Recentchanges|Metawikip
 "rclinks"		=> "Zeige die letzten $1 Änderungen; zeige die letzten $2 Tage.",
 "diff"			=> "Unterschied",
 "hist"			=> "Versionen",
+"hide"			=> "Verbergen",
+"show"			=> "Anzeigen",
+"tableform"		=> "Tabelle",
+"listform"		=> "Liste",
+"nchanges"		=> "$1 Änderungen",
+"minoreditletter" => "M",
+"newpageletter" => "N",
+
 
 # Upload
 #
