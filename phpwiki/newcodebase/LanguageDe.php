@@ -1,5 +1,7 @@
 <?
 
+class LanguageDe extends Language {
+
 /* private */ $wgValidNamespacesDe = array(
 	"Special", "Diskussion", "Benutzer", "Benutzer_diskussion", 
 	"Wikipedia", "Wikipedia_diskussion"

@@ -248,6 +248,8 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		if ( $minor) { $me = 1; } else { $me = 0; }
 
+		# TODO: Backup to old table
+		#
 		$conn = wfGetDB();
 		$sql = "UPDATE cur SET cur_text='" .  wfStrencode( $text ) .
 		  "',cur_comment='" .  wfStrencode( $summary ) .
