@@ -446,20 +446,20 @@ class User {
 	function setCookies()
 	{
 		global $wsUserID, $wsUserName, $wsUserPassword;
-		global $wgCookieExpiration;
+		global $wgCookieExpiration, $wgCookiePath, $wgCookieDomain;
 		if ( 0 == $this->mId ) return;
 		$this->loadFromDatabase();
 		$exp = time() + $wgCookieExpiration;
 
 		$wsUserID = $this->mId;
-		setcookie( "wcUserID", $this->mId, $exp, "/" );
+		setcookie( "wcUserID", $this->mId, $exp, $wgCookiePath, $wgCookieDomain );
 
 		$wsUserName = $this->mName;
-		setcookie( "wcUserName", $this->mName, $exp, "/" );
+		setcookie( "wcUserName", $this->mName, $exp, $wgCookiePath, $wgCookieDomain );
 
 		$wsUserPassword = $this->mPassword;
 		if ( 1 == $this->getOption( "rememberpassword" ) ) {
-			setcookie( "wcUserPassword", $this->mCookiePassword, $exp, "/" );
+			setcookie( "wcUserPassword", $this->mCookiePassword, $exp, $wgCookiePath, $wgCookieDomain );
 		} else {
 			setcookie( "wcUserPassword", "", time() - 3600 );
 		}
@@ -467,13 +467,13 @@ class User {
 
 	function logout()
 	{
-		global $wsUserID;
+		global $wsUserID, $wgCookiePath, $wgCookieDomain;
 		$this->mId = 0;
 
 		$wsUserID = 0;
 
-		setcookie( "wcUserID", "", time() - 3600 );
-		setcookie( "wcUserPassword", "", time() - 3600 );
+		setcookie( "wcUserID", "", time() - 3600, $wgCookiePath, $wgCookieDomain );
+		setcookie( "wcUserPassword", "", time() - 3600, $wgCookiePath, $wgCookieDomain );
 	}
 
 	function saveSettings()

@@ -3,13 +3,6 @@
 #
 $wgRequestTime = microtime();
 
-session_cache_limiter( "private, must-revalidate" );
-session_start();
-session_register( "wsUserID" );
-session_register( "wsUserName" );
-session_register( "wsUserPassword" );
-session_register( "wsUploadFiles" );
-
 global $IP;
 include_once( "./LocalSettings.php" );
 include_once( "$IP/Setup.php" );

@@ -103,7 +103,8 @@ function wfSpecialUserlogin()
 /* private */ function mailPassword()
 {
 	global $wgUser, $wpName, $wgDeferredUpdateList, $wgOutputEncoding;
-
+	global $wgCookiePath, $wgCookieDomain;
+	
 	if ( "" == $wpName ) {
 		mainLoginForm( wfMsg( "noname" ) );
 		return;
@@ -126,7 +127,7 @@ function wfSpecialUserlogin()
 	$np = User::randomPassword();
 	$u->setNewpassword( $np );
 
-	setcookie( "wcUserPassword", "", time() - 3600 );
+	setcookie( "wcUserPassword", "", time() - 3600, $wgCookiePath, $wgCookieDomain );
 	$u->saveSettings();
 
 	$ip = getenv( "REMOTE_ADDR" );

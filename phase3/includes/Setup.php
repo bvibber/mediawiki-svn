@@ -45,6 +45,17 @@ if( ! class_exists( $wgLangClass ) ) {
 }
 $wgLang = new $wgLangClass();
 
+if( $wgSessionsInMemcached ) {
+	include_once( "$IP/MemcachedSessions.php" );
+}
+session_set_cookie_params( 3600, $wgCookiePath, $wgCookieDomain );
+session_cache_limiter( "private, must-revalidate" );
+session_start();
+session_register( "wsUserID" );
+session_register( "wsUserName" );
+session_register( "wsUserPassword" );
+session_register( "wsUploadFiles" );
+
 $wgUser = User::loadFromSession();
 $wgDeferredUpdateList = array();
 $wgLinkCache = new LinkCache();

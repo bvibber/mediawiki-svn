@@ -43,6 +43,7 @@ $wgDBmysql4			= false; # Set to true to use enhanced fulltext search
 $wgUseMemCached     = false;
 $wgMemCachedServers = array( "127.0.0.1:11000" );
 $wgMemCachedDebug   = false;
+$wgSessionsInMemcached = false;
 
 # Language settings
 #
@@ -93,6 +94,11 @@ $wgUseFileCache = false;
 $wgFileCacheDirectory = "{$wgUploadDirectory}/cache";
 
 $wgCookieExpiration = 2592000;
+
+# Set to set an explicit domain on the login cookies
+# eg, "justthis.domain.org" or ".any.subdomain.net"
+$wgCookieDomain = "";
+$wgCookiePath = "/";
 
 $wgAllowExternalImages = true;
 $wgMiserMode = false; # Disable database-intensive features
