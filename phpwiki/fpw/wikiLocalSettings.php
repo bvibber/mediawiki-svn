@@ -3,9 +3,9 @@
 # in wikiSettings.php; DO NOT makes changes there. The settings here
 # override the settings in that file.
 
-## Language to use. Default is "En" (English).
-# $wikiLanguage = "De"; # Deutsch (German)
-# $wikiLanguage = "Eo"; # Esperanto
+## Language to use. Default is "en" (English).
+# $wikiLanguage = "de"; # Deutsch (German)
+# $wikiLanguage = "eo"; # Esperanto
 
 $useCachedPages = false; # Disable page cache
 # $wikiReadOnly = true; # Don't allow page editing
