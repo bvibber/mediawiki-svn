@@ -340,8 +340,9 @@ Bitte fügen Sie Ihre Änderungen in das obere Textfeld ein.
 Wenn Sie speichern, werden alle neueren Versionen überschrieben.</strong>\n",
 "yourdiff"		=> "Unterschiede",
 "copyrightwarning" => "
-<i><strong>BITTE BENUTZEN SIE KEINE URHEBERRECHTLICH GESCHÜTZTEN WERKE OHNE ERLAUBNIS DES AUTORS!</strong> Sie geben hiermit Ihre Zusage, dass Sie diesen Text selbst verfasst haben, oder dass der Text Copyright-freies Allgemeingut (\"Public domain\") ist.<br>
-Bitte beachten Sie, dass alle Beiträge zur Wikipedia automatisch unter der \"GNU Freie Dokumentationslizenz\" stehen. Falls Sie nicht möchten, dass Ihre Arbeit hier von anderen verändert und verbreitet wird, dann drücken Sie nicht auf \"Speichern\".</i>",
+<strong>Bitte <font size='+1'>kopieren Sie keine Webseiten</font>, die nicht Ihre eigenen sind, benutzen Sie <fonz size='+1'>keine urheberrechtlich geschützten Werke</font> ohne Erlaubnis des Copyright-Inhabers!</strong>
+<p>Sie geben uns hiermit ihre Zusage, daß Sie den Text <strong>selbst verfasst</strong> haben, daß der Text Allgemeingut (<strong>public domain</strong>) ist, oder daß de <strong>Copyright-Inhaber</strong> seine <strong>Zustimmung</strong> gegeben hat. Falls dieser Text bereits woanders veröffentlicht wurde, weisen Sie bitte auf der 'Diskussion:'-Seite darauf hin.
+<p><i>Bitte beachten Sie, dass alle Beiträge zur Wikipedia automatisch unter der \"GNU Freie Dokumentationslizenz\" stehen. Falls Sie nicht möchten, dass Ihre Arbeit hier von anderen verändert und verbreitet wird, dann drücken Sie nicht auf \"Speichern\".</i>",
 
 # History pages
 #
@@ -377,8 +378,8 @@ M = Kleine Änderung",
 "searchquery"	=> "Für die Suchanfrage \"$1\"",
 "badquery"		=> "Falsche Suchanfrage",
 "badquerytext"	=> "Wir konnten Ihre Suchanfrage nicht verarbeiten.
-Vermutlich haben Sie versucht, ein Wort zu suchen, das kürzer als drei Buchstaben ist.
-Dies funtioniert im Moment noch nicht.
+Vermutlich haben Sie versucht, ein Wort zu suchen, das kürzer als zwei Buchstaben ist.
+Dies funktioniert im Moment noch nicht.
 Möglicherweise haben Sie auch die Anfrage falsch formuliert, z.B.
 \"Lohn und und Steuern\".
 Bitte versuchen Sie eine anders formulierte Anfrage.",
@@ -449,9 +450,11 @@ Ihre interne ID-Nummer ist $2.",
 Diese Seite wird beim Laden automatisch aktualisiert. Angezeigt werden Seiten, die zuletzt bearbeitet wurden, sowie die Zeit und der Name des Autors.<br>
 Falls Sie neu bei Wikipedia sind, lesen Sie bitte die [[Wikipedia:Willkommen|Willkommensseite der Wikipedia]] und [[Wikipedia:Erste Schritte|Erste Schritte]].<br>
 Wenn Sie möchten, dass Wikipedia zu einem Erfolg wird, dann fügen Sie bitte keine Texte hinzu, die dem [[Wikipedia:Urheberrechte beachten|Urheberrecht]] anderer unterliegen. Dies könnte dem Projekt sonst schweren Schaden zufügen.
-Beachten Sie auch die letzten Änderrungen auf [[m:Special:Recentchanges|Metawikipedia]]",
+Beachten Sie auch die letzten Änderungen auf [[m:Special:Recentchanges|Metawikipedia]]",
 "rcloaderr"		=> "Lade Letzte Änderungen",
 "rcnote"		=> "Hier sind die letzten <b>$1</b> Änderungen der letzten <b>$2</b> Tage. (<b>N</b> - Neuer Artikel; <b>M</b> - kleine Änderung)",
+"rcnotefrom"	=> "Dies sind die Änderungen seit <b>$2</b> (bis zu <b>$1</b> gezeigt).",
+"rclistfrom"	=> "Zeige neue Änderungen seit $1",
 "rclinks"		=> "Zeige die letzten $1 Änderungen; zeige die letzten $2 Tage.",
 "diff"			=> "Unterschied",
 "hist"			=> "Versionen",
@@ -543,7 +546,7 @@ diese alte Version, (Zurücksetzen) = verwende wieder diese alte Version.",
 "sitestatstext" => "Es gibt insgesamt <b>$1</b> Seiten in der Datenbank.
 Das schliesst \"Diskussion\"-Seiten, Seiten über Wikipedia, extrem kurze Artikel, Weiterleitungen und andere Seiten ein, die nicht als Artikel gelten können.
 Diese ausgenommen, gibt es <b>$2</b> Seiten, die als Artikel gelten können.<p>
-Es wurden insgesamt <b>$3</b> Seiten angesehen, und <b>$4</b> bearbeitet.
+Es wurden insgesamt <b>$3</b>&times; Seiten aufgerufen, und <b>$4</b>&times; Seiten bearbeitet.
 Daraus ergeben sich <b>$5</b> Bearbeitungen pro Seite, und <b>$6</b> Betrachtungen pro Bearbeitung.",
 "userstatstext" => "Es gibt <b>$1</b> registrierte Benutzer.
 Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
@@ -557,7 +560,7 @@ Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
 "disambiguationspage"	=> "Wikipedia:Begriffsklärung",
 "disambiguationstext"	=> "Die folgenden Artikel verweisen auf eine <i>Seite zur Begriffsklärung</i>. Sie sollten statt dessen auf die eigentlich gemeinte Seite verweisen.<br>Eine Seite wird als Begriffsklärungsseite behandelt, wenn $1 auf sie verweist.<br>Verweise aus Namensräumen werden hier <i>nicht</i> aufgelistet.",
 "doubleredirects"	=> "Doppelte Redirects",
-"doubleredirectstext"	=> "<b>Achtung:</b> Diese Liste kann \"falsche Positive\"enthalten. Das ist dann der Fall, wenn ein Redirect ausser dem Redirect-Verweis noch weiteren Text mit anderen Verweisen enthält. Letztere sollten dann entfernt werden.",
+"doubleredirectstext"	=> "<b>Achtung:</b> Diese Liste kann \"falsche Positive\" enthalten. Das ist dann der Fall, wenn ein Redirect außer dem Redirect-Verweis noch weiteren Text mit anderen Verweisen enthält. Letztere sollten dann entfernt werden.",
 "brokenredirects"	=> "Kaputte Redirects",
 "brokenredirectstext"	=> "Die folgenden Redirects leiten zu einem nicht existierenden Artikel weiter",
 "selflinks"		=> "Seiten, die auf sich selbst verweisen",
