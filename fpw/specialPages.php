@@ -303,14 +303,18 @@ function WantedPages () {
 					$v[$w] = true ;
 					}
 				}
+			unset ( $v ) ;
 			}
 		}
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
 
-
 	arsort ( $allPages ) ;
-	$allPages = array_slice ( $allPages , 0 , 200 ) ; # Reducing needed memory
+	$somePages = array_slice ( $allPages , 0 , 400 ) ; # Reducing needed memory
+	unset ( $allPages ) ;
+	$allPages = $somePages ;
+	unset ( $somePages ) ;
+
 	$ti = new wikiTitle ;
 	$k = array_keys ( $allPages ) ;
 
