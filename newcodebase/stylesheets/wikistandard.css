@@ -3,7 +3,7 @@ h1.pagetitle {
  padding-top: 0; margin-top: 0; padding-bottom: 0; margin-bottom: 0;
 }
 p.subtitle { padding-top: 0; margin-top: 0; }
-
+a.interwiki, a.external { color: #3366BB; }
 body { margin: 0px; padding: 4px; }
 a.printable { text-decoration: underline; }
 form.inline { display: inline; }
