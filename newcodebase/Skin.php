@@ -1378,10 +1378,10 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 
 		if ( !$e->islog ) {
 			$r .= " (".count($y)." " ;
-			$r .= $this->makeKnownLink( $e->secureName, wfMsg( "changes" ), "action=history" );
+			if ( $isnew ) $r .= wfMsg("changes");
+			else $r .= $this->makeKnownLink( $e->secureName , wfMsg("changes") , "diff=0&oldid=".$oldid ) ;
 			$r .= "; " ;
-			if ( $isnew ) $r .= wfMsg("diff");
-			else $r .= $this->makeKnownLink( $e->secureName , wfMsg("diff") , "diff=0&oldid=".$oldid ) ;
+			$r .= $this->makeKnownLink( $e->secureName, wfMsg( "history" ), "action=history" );
 			$r .= ")" ;
 			}
 
