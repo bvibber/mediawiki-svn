@@ -80,9 +80,10 @@ class LuceneSearch extends SpecialPage
 				wfAbruptExit();
 
 			$results = $this->doTitlePrefixSearch($q, $limit);
-			foreach ($results as $result) {
-				echo $result->getPrefixedText() . "\n";
-			}
+			if ($results && count($results) > 0)
+				foreach ($results as $result) {
+					echo $result->getPrefixedText() . "\n";
+				}
 			wfAbruptExit();
 		}
 
@@ -130,7 +131,22 @@ class LuceneSearch extends SpecialPage
 			$maxresults = $offset + $limit;
 			if ($maxresults < 10)
 				$maxresults = 10;
-			$r = $this->doLuceneSearch($q, $maxresults);
+			global $wgDisableTextSearch;
+			$searchfailed = $wgDisableTextSearch;
+			if (!$searchfailed)
+				$r = $this->doLuceneSearch($q, $maxresults);
+			if ($r === null)
+				$searchfailed = true;
+
+			if ($searchfailed) {
+				global $wgInputEncoding;
+				$wgOut->addHTML(wfMsg('searchdisabled'));
+				$wgOut->addHTML(wfMsg('googlesearch',
+					htmlspecialchars($term),
+					htmlspecialchars($wgInputEncoding)));
+				return;
+			}
+
 			$numresults = $r[0];
 			$results = $r[1];
 
@@ -314,9 +330,11 @@ class LuceneSearch extends SpecialPage
 		global $wgLuceneHost, $wgLucenePort;
 		wfDebug("title prefix search: $query\n");
 		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-		$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
+		@$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
+		if ($conn === FALSE)
+			return null;
 		$query = iconv($wgOutputEncoding, "UTF-8", $query);
-		socket_write($sock, "TITLEPREFIX\n" . urlencode($query) . "\n");
+		@socket_write($sock, "TITLEPREFIX\n" . urlencode($query) . "\n");
 		$results = array();
 		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE
                        && count($results) <= $limit) {
@@ -339,9 +357,9 @@ class LuceneSearch extends SpecialPage
 	function doTitleMatches($query) {
 		global $wgLuceneHost, $wgLucenePort;
 		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-		$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
+		$conn = @socket_connect($sock, $wgLuceneHost, $wgLucenePort);
 		$query = iconv($wgOutputEncoding, "UTF-8", $query);
-		socket_write($sock, "TITLEMATCH\n" . urlencode($query) . "\n");
+		@socket_write($sock, "TITLEMATCH\n" . urlencode($query) . "\n");
 		$results = array();
 		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE) {
 			$result = chop($result);
@@ -362,9 +380,12 @@ class LuceneSearch extends SpecialPage
 	function doLuceneSearch($query, $max) {
 		global $wgLuceneHost, $wgLucenePort;
 		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-		$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
+		@$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
+		if ($conn === FALSE)
+			return null;
 		$query = iconv($wgOutputEncoding, "UTF-8", $query);
-		socket_write($sock, "SEARCH\n" . urlencode($query) . "\n");
+		if (@socket_write($sock, "SEARCH\n" . urlencode($query) . "\n") === FALSE)
+			return null;
 		$results = array();
 
 		$numresults = @socket_read($sock, 1024, PHP_NORMAL_READ);
