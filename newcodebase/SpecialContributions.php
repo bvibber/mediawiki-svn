@@ -108,7 +108,7 @@ function ucCountLink( $lim, $d )
 	global $wgUser, $wgLang, $target;
 
 	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink( $wgLang->specialPage( ":Contributions" ),
+	$s = $sk->makeKnownLink( $wgLang->specialPage( "Contributions" ),
 	  "{$lim}", "target={$target}&days={$d}&limit={$lim}" );
 	return $s;
 }

@@ -463,7 +463,7 @@ class Skin {
 	function specialPagesList()
 	{
 		global $wgUser, $wgOut, $wgLang, $wgServer, $wgRedirectScript;
-		$a = array ();
+		$a = array();
 
 		$validSP = $wgLang->getValidSpecialPages();
 
