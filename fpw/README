@@ -75,7 +75,7 @@ $wikiStarTrekImage = "/startrek.png" ;
 You can look through wikiSettings.php for other variables to change.
 In particular, if you want to run a Wikipedia in a language different
 from English, you need add a line of the form
-$wikiLanguage = "De"; #for German
+$wikiLanguage = "de"; #for German
 
 If everything is ok, you can access the URL wiki.phtml in your web
 site's wiki directory and you should get the (still empty) main page.
