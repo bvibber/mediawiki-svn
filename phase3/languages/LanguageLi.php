@@ -1,4 +1,4 @@
-<?
+<?php
 
 # The names of the namespaces can be set here, but the numbers
 # are magical, so don't change or move them!  The Namespace class
@@ -15,8 +15,8 @@ $wgNamespaceNamesLi = array(
 	NS_TALK				=> 'Euverlik',
 	NS_USER				=> 'Gebroeker',
 	NS_USER_TALK		=> 'Euverlik_gebroeker',
-	NS_PROJECT			=> $wgMetaNamespace,
-	NS_PROJECT_TALK		=> 'Euverlik_Wikipedia',
+	NS_WIKIPEDIA		=> $wgMetaNamespace,
+	NS_WIKIPEDIA_TALK	=> 'Euverlik_Wikipedia',
 	NS_IMAGE			=> 'Afbeelding',
 	NS_IMAGE_TALK		=> 'Euverlik_afbeelding',
 	NS_MEDIAWIKI		=> 'MediaWiki',
@@ -75,7 +75,7 @@ $wgNamespaceNamesLi = array(
  "Watchlist"  => "Mien volgliest loate zeen",
  "Recentchanges" => "Recent biegewirkte pagina's loate zeen",
  "Upload"  => "Afbeeldingen uploade",
- "Imagelist"  => "Liest ge-uploade plètjes loate zeen",
+ "Imagelist"  => "Liest ge-uploade plÃ¨tjes loate zeen",
  "Listusers"  => "Geregistreerde gebroekers loate zeen",
  "Statistics" => "Statistieken tonen",
  "Randompage" => "Ga naar een willekeurig artikel",
@@ -107,7 +107,7 @@ $wgNamespaceNamesLi = array(
 );
 
 /* private */ $wgDeveloperSpecialPagesLi = array(
- "Lockdb"  => "Maak de database alleen-lèze",
+ "Lockdb"  => "Maak de database alleen-lÃ¨ze",
  "Unlockdb"  => "Maak de database euversjriefbaar",
 );
 
@@ -149,7 +149,7 @@ $wgNamespaceNamesLi = array(
 
 # Bits of text used by many pages:
 # Diverse stukjes tekst
-"linktrail" => "/^([àáèéìíòóùúâêîôûäöüïëça-z]+)(.*)$/sD",
+"linktrail" => "/^([Ã Ã¡Ã¨Ã©Ã¬Ã­Ã²Ã³Ã¹ÃºÃ¢ÃªÃ®Ã´Ã»Ã¤Ã¶Ã¼Ã¯Ã«Ã§a-z]+)(.*)$/sDu",
 "mainpage"  => "Hoofdpagina",
 "about"   => "Info",
 "aboutwikipedia" => "Euver Wikipedia",
@@ -237,7 +237,7 @@ De verantwoordelijke systeembeheerder gaf hiervoor volgende reden op:
 <p>$1",
 "missingarticle" => "De database heeft een paginatekst (\"$1\") die het zou moeten vinden neet gevonden. Dit is geen fout in de database, maar waarschijnlijk in de software. Meld dit a.u.b. aan een beheerder, met vermelding van de URL.",
 "internalerror" => "Interne fout",
-"filecopyerror" => "Bestand \"$1\" naar \"$2\" kopiëren neet mogelijk.",
+"filecopyerror" => "Bestand \"$1\" naar \"$2\" kopiÃ«ren neet mogelijk.",
 "filerenameerror" => "Wijziging titel bestand \"$1\" in \"$2\" neet mogelijk.",
 "filedeleteerror" => "Kos bestjand \"$1\" neet weghoale.",
 "filenotfound" => "Kos bestjand \"$1\" neet vinge.",
@@ -322,7 +322,7 @@ Gelieve na ontvangst opnieuw aan te melden.",
 # History pages
 # Geschiedenis pagina's
 "revhistory" => "Bewirkingsgeschiedenis",
-"nohistory"  => "Deze pagina hèt nog gein bewirkinge ondergaan.",
+"nohistory"  => "Deze pagina hÃ¨t nog gein bewirkinge ondergaan.",
 "revnotfound" => "Wieziging neet gevonge",
 "revnotfoundtext" => "De opgevroagde ouwe versie van deze pagina is onvindbaar. Controleer a.u.b. de URL die u gebruikte om naar deze pagina te gaan.\n",
 "loadhist"  => "Bezig met het laden van de paginageschiedenis",
@@ -359,7 +359,7 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "nextn"   => "volgende $1",
 "viewprevnext" => "($1) ($2) ($3) bekijken.",
 "showingresults" => "Hieronder de resultaten <b>$1</b> beginnend met #<b>$2</b>.",
-"nonefound"  => "<strong>Merk op:</strong> wanneer een zoekopdracht mislukt komt dat vaak door gebruik van (in het Engels) veel voorkomende woorden zoals \"of\" en \"be\", die neet geïndexeerd zijn, of door verschillende zoektermen tegelijk op te geven (u krijgt dan alleen in pagina's waaarin alle opgegeven termen voorkomen).",
+"nonefound"  => "<strong>Merk op:</strong> wanneer een zoekopdracht mislukt komt dat vaak door gebruik van (in het Engels) veel voorkomende woorden zoals \"of\" en \"be\", die neet geÃ¯ndexeerd zijn, of door verschillende zoektermen tegelijk op te geven (u krijgt dan alleen in pagina's waaarin alle opgegeven termen voorkomen).",
 "powersearch" => "Zoeken",
 "powersearchtext" => "   
  Zoek in naamruimten :<br>
@@ -392,7 +392,7 @@ $2 Toon redirects   Zoek: $3 $9",
 "stubthreshold" => "Grootte waaronder een pagina als 'stub' wordt aangegeven",
 "recentchangescount" => "Aantal titels in liest recente wijzigingen",
 "savedprefs" => "Uw voorkeuren zijn opgeslagen.",
-"timezonetext" => "De tied van de server is UTC (Coordinated Universal Time) Geef aan hoeveel uur de plaatselijke tied in uw woonplaats verschilt met die van de server. Voor o.a. België en Nederland: +1 (+2 zomertied); voor Suriname en voor de Nederlandse Antillen: -4; voor Zuid-Afrika: +2.",
+"timezonetext" => "De tied van de server is UTC (Coordinated Universal Time) Geef aan hoeveel uur de plaatselijke tied in uw woonplaats verschilt met die van de server. Voor o.a. BelgiÃ« en Nederland: +1 (+2 zomertied); voor Suriname en voor de Nederlandse Antillen: -4; voor Zuid-Afrika: +2.",
 "localtime" => "Plaatselijke tied",
 "timezoneoffset" => "tiedsverschil",
 "emailflag"  => "E-mail ontvangen van andere gebruiken uitschakelen",
@@ -402,7 +402,7 @@ $2 Toon redirects   Zoek: $3 $9",
 "recentchanges" => "Recente wijzigingen",
 "recentchangestext" => "Deze pagina toont de meest recente wijzigingen aan Wikipedia.
 Mocht u hier nieuw zijn, dan welkom bij Wikipedia! Bekijk AUB de volgende pagina's eens: [[Wikipedia:Veel gestelde vragen|Veel gestelde vragen]], [[Wikipedia:Instructies|Instructies]], [[Wikipedia:Objectiviteit|Objectiviteit]] en [[Wikipedia:Wat je neet moet doen|Wat je NIET moet doen]].
-Als u pagina's wilt verwijderen, ga naar [[Wikipedia:Te verwijderen pagina's|Te verwijderen pagina's]], als u iets wilt bediscussiëren, ga naar [[Wikipedia:euverlik gewenst|euverlik gewenst]]. Er is ook een email-liest voor WikipediaNL: [http://www.wikipedia.org/mailman/listinfo/wikinl-l WikiNL-l].
+Als u pagina's wilt verwijderen, ga naar [[Wikipedia:Te verwijderen pagina's|Te verwijderen pagina's]], als u iets wilt bediscussiÃ«ren, ga naar [[Wikipedia:euverlik gewenst|euverlik gewenst]]. Er is ook een email-liest voor WikipediaNL: [http://www.wikipedia.org/mailman/listinfo/wikinl-l WikiNL-l].
 <br>Om Wikipedia te laten slagen is het erg belangrijk '''geen''' materiaal toe te voegen waarop iemand anders auteursrechten heeft, tenzij u daartoe toestemming heeft. De wettelijke gevolgen van inbreuk op de rechten van anderen zouden de hele onderneming zwaar kunnen schaden.",
 "rcloaderr"  => "Meest recente wijzigingen laden",
 "rcnote"  => "Hieronder zijn de <strong>$1</strong> laatste wijzigingen gedaan in de laatste <strong>$2</strong> dagen.",
