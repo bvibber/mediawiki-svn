@@ -7,8 +7,8 @@ function wfSpecialShortpages()
 	$fname = "wfSpecialShortpages";
 
 	if ( ! $limit ) {
-		$limit = $wgUser->getOption( "searchlimit" );
-		if ( ! $limit ) { $limit = 20; }
+		$limit = $wgUser->getOption( "rclimit" );
+		if ( ! $limit ) { $limit = 50; }
 	}
 	if ( ! $offset ) { $offset = 0; }
 
@@ -17,8 +17,6 @@ function wfSpecialShortpages()
 	  "LENGTH(cur_text) LIMIT {$offset}, {$limit}";
 	$res = wfQuery( $sql, $fname );
 
-	$sk = $wgUser->getSkin();
-
 	$top = SearchEngine::showingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
@@ -26,6 +24,7 @@ function wfSpecialShortpages()
 	  "title=Special%3AShortpages" );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
+	$sk = $wgUser->getSkin();
 	$s = "<ul>";
 	while ( $obj = wfFetchObject( $res ) ) {
 		$nb = str_replace( "$1", $obj->len, wfMsg( "nbytes" ) );

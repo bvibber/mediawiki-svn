@@ -4,13 +4,22 @@ function wfSpecialListusers()
 {
 	global $wgUser, $wgOut;
 
-	set_time_limit( 120 ); # 2 minutes ought to be plenty
+	if ( ! $limit ) {
+		$limit = $wgUser->getOption( "rclimit" );
+		if ( ! $limit ) { $limit = 50; }
+	}
+	if ( ! $offset ) { $offset = 0; }
+
+	$top = SearchEngine::showingResults( $offset, $limit );
+	$wgOut->addHTML( "<p>{$top}\n" );
+
+	$sl = SearchEngine::viewPrevNext( $offset, $limit,
+	  "title=Special%3AListusers" );
+	$wgOut->addHTML( "<br>{$sl}\n<ul>" );
 
 	$sql = "SELECT user_name,user_rights FROM user ORDER BY " .
-	  "user_name";
+	  "user_name LIMIT {$offset}, {$limit}";
 	$res = wfQuery( $sql, "wfSpecialListusers" );
-
-	$wgOut->addHTML( wfMsg( "userlisttext" ) . "\n<p>" );
 
 	$sk = $wgUser->getSkin();
 	while ( $s = wfFetchObject( $res ) ) {
@@ -24,10 +33,10 @@ function wfSpecialListusers()
 			  "Wikipedia:Administrators", $r );
 			$l .= " ({$link})";
 		}
-		$l .= "<br>\n";
-		$wgOut->addHTML( $l );
+		$wgOut->addHTML( "<li>{$l}</li>\n" );
 	}
 	wfFreeResult( $res );
+	$wgOut->addHTML( "</ul><p>{$sl}\n" );
 }
 
 ?>

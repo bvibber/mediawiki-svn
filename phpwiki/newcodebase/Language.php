@@ -286,7 +286,7 @@ and the text of $3 articles.",
 "notextmatches"	=> "No article text matches",
 "prevn"			=> "previous $1",
 "nextn"			=> "next $1",
-"viewprevnext"	=> "View ($1) ($2).",
+"viewprevnext"	=> "View ($1) ($2) ($3).",
 "showingresults" => "Showing below <b>$1</b> results starting with #<b>$2</b>.",
 "nonefound"		=> "<strong>Note</strong>: unsuccessful searches are
 often caused by searching for common words like \"have\" and \"from\",
@@ -432,46 +432,28 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "userstatstext" => "There are <b>$1</b> registered users.
 <b>$2</b> of these are administrators (see $3).",
 
-
-# Orphans
+# Miscellaneous special pages
 #
 "orphans"		=> "Orphaned pages",
 "lonelypages"	=> "Orphaned pages",
-
-# Popular pages
-#
 "popularpages"	=> "Popular pages",
 "nviews"		=> "$1 views",
-
-# Wanted pages
-#
 "wantedpages"	=> "Wanted pages",
-
-# All pages
-#
+"nlinks"		=> "$1 links",
 "allpages"		=> "All pages",
-"allpagestext"	=> "Below is a list of every article currently in
-the Wikipedia database.",
-"getarticlelist" => "fetching article list",
-
-# Random page
-#
 "randompage"	=> "Random page",
-"findrandom"	=> "looking for random article",
-
-# Short pages
-#
 "shortpages"	=> "Short pages",
-
-# Long pages
-#
 "longpages"		=> "Long pages",
-
-# List users
-#
 "listusers"		=> "User list",
-"getuserlist"	=> "fetching user list",
-"userlisttext"	=> "Below is a list of all registered users.",
+"specialpages"	=> "Special pages",
+"spheading"		=> "Special pages",
+"sysopspheading" => "Special pages for sysop use",
+"movepage"		=> "Move page",
+"protectpage"	=> "Protect page",
+"recentchangeslinked" => "Watch links",
+"rclsub"		=> "(to pages linked from \"$1\")",
+"asksql"		=> "SQL query",
+"debug"			=> "Debug",
 
 # Watchlist
 #
@@ -490,12 +472,6 @@ to modify your watchlist.",
 "unwatchthispage" => "Stop watching",
 "notanarticle"	=> "Not an article",
 
-# Special pages
-#
-"specialpages"	=> "Special pages",
-"spheading"		=> "Special pages",
-"sysopspheading" => "Special pages for sysop use",
-
 # Delete page
 #
 "deletepage"	=> "Delete page",
@@ -512,14 +488,6 @@ consequences, and that you are doing this in accordance with
 "deletedtext"	=> "\"$1\" has been deleted.",
 "deletedarticle" => "deleted \"$1\"",
 "deletionlog"	=> "Article_deletion_log",
-
-# Move page
-#
-"movepage"		=> "Move page",
-
-# Protect page
-#
-"protectpage"	=> "Protect page",
 
 # Contributions
 #
@@ -538,15 +506,6 @@ to perform this function on.",
 "linklistsub"	=> "(List of links)",
 "linkshere"		=> "The following pages link to here:",
 "nolinkshere"	=> "No pages link to here.",
-
-# Recent changes linked
-#
-"recentchangeslinked" => "Watch links",
-"rclsub"		=> "(to pages linked from \"$1\")",
-
-# Asksql
-#
-"asksql"		=> "SQL query",
 
 # Block/unblock IP
 #
@@ -574,10 +533,6 @@ to a previously blocked IP address.",
 "blocklistline"	=> "$1, $2 blocked $3",
 "blocklink"		=> "block",
 "unblocklink"	=> "unblock",
-
-# Debug page
-#
-"debug"			=> "Debug",
 
 );
 

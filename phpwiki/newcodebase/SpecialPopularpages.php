@@ -7,8 +7,8 @@ function wfSpecialPopularpages()
 	$fname = "wfSpecialPopularpages";
 
 	if ( ! $limit ) {
-		$limit = $wgUser->getOption( "searchlimit" );
-		if ( ! $limit ) { $limit = 20; }
+		$limit = $wgUser->getOption( "rclimit" );
+		if ( ! $limit ) { $limit = 50; }
 	}
 	if ( ! $offset ) { $offset = 0; }
 
