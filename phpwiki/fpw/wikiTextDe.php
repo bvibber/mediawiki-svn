@@ -36,7 +36,7 @@ $wikiLogOut = "Ausloggen" ;
 $wikiHelp = "Hilfe" ;
 $wikiHelpLink = "wikipedia:Hilfe" ;
 $wikiPreferences = "Einstellungen" ;
-$wikiWhatLinksHere = "Seiten, die hierhin verweisen" ;
+$wikiWhatLinksHere = "Was linkt hierhin" ;
 $wikiPrintLinksMarkup = "i" ; # will be used as <$wikiPrintLinksMarkup> and </$wikiPrintLinksMarkup>
 #$wikiAllowedNamespaces = array ( "wikipedia" , "diskussion" , "benutzer" , "" , "wikipedia diskussion" , "benutzer diskussion" ) ;
 $wikiTalk = "diskussion" ;
@@ -52,8 +52,8 @@ $wikiShortPages = "Kurze Seiten" ;
 $wikiLongPages = "Lange Seiten" ;
 $wikiUserList = "Benutzerverzeichnis" ;
 $wikiEditingHistory = "Revisionsgeschichte" ;
-$wikiAddToWatchlist = "Zur Watchlist hinzufügen" ;
-$wikiEditPage = "Diese Seite bearbeiten" ;
+$wikiAddToWatchlist = "Beobachten" ;
+$wikiEditPage = "Jetzt bearbeiten" ;
 $wikiHome = "Hauptseite" ;
 $wikiAbout = "Über" ;
 $wikiFAQ = "FAQ" ;
@@ -72,7 +72,7 @@ $wikiAboutWikipedia = "Über Wikipedia" ;
 $wikiAutoWikify = "Auto-wikifikation (umsichtig benutzen!)" ;
 $wikiTopics = "Themen" ;
 $wikiWikipediaFAQ = "wikipedia:FAQ" ;
-$wikiVoteForPage = "Über diese Seite abstimmen" ;
+$wikiVoteForPage = "Abstimmen" ;
 
 # Editing
 $wikiEditingHelp = "Hilfe zum Bearbeiten" ;
@@ -415,65 +415,67 @@ $wikiUploadSize = "Size (byte)" ;
 $wikiFileRemoval = "File removal" ;
 $wikiUploadRemove = "Click here to remove $1." ;
 
+# ------------------------------------------------------- Alles ab hier ist übersetzt ! ------------------------------------
+
 # Misc
-$wikiHistoryTitle = "History of $1" ;
-$wikiHistoryHeader = "This is the history of <a href=\"$THESCRIPT?title=$1\">$2</a>" ;
-$wikiCurrentVersion = "current" ;
-$wikiSpecialTitle = "Special Pages" ;
-$wikiSpecialText = "<b>This is a list of special pages.</b> Some of them are only available if you are logged in. If you are logged in, you can have this list automatically displayed on the right or left of each page as a QuickBar.<br><br>" ;
-$wikiStubTitle = "Short 'stub' articles" ;
-$wikiLongPagesTitle = "The longest articles" ;
-$wikiStubText = "'''These are all the articles in the database, sorted by length, shortest first.'''<br>''#REDIRECT pages and pages within a namespace (like Talk:) are '''not''' listed here!''\n\n" ;
-$wikiLongPagesText = "'''These are all the articles in the database, sorted by length, longest first.'''<br>''#REDIRECT pages and pages within a namespace (like Talk:) are '''not''' listed here!''\n\n" ;
-$wikiStubChars = "$1 chars" ;
-$wikiAskSQL = "MySQL access" ;
-$wikiAskSQLtext = "This function is available for sysops only.<br>''Please, do not press return/enter, '''always''' click on the ask button!''" ;
-$wikiSQLSafetyMessage = "Sorry, unless you are a developer you can only run SELECT queries." ;
-$wikiStubDelete = "<b>Delete this page!</b>" ;
-$wikiStubLinkHere = "$1 articles link here." ;
-$wikiStubShowLinks = "Toggle \"show links\" option" ;
-$wikiShowLinks = "Show pages that link to \"$1\"" ;
-$wikiRecentChangesLinkedTitle = "Recent changes on pages linked from $1" ;
-$wikiDeleteTitle = "Deleting article '$1'" ;
-$wikiDeleteDenied = "<font size=\"+3\">You are not allowed to delete this page!</font>" ;
-$wikiDeleteSuccess = "'$1' has been removed." ;
-$wikiDeleteMsg1 = "*On $1, [[user:$2|$2]] permanently deleted page '''$3'''\n" ;
-$wikiDeleteMsg2 = "Permanent deletion of $1" ;
-$wikiDeleteAsk = "You are about to delete the article \"$1\" and its complete history!<br>\nIf you are absolutely sure you want to do this, <a href=\"$2&iamsure=yes\">click here</a>." ;
-$wikiProtectTitle = "Protecting article '$1'" ;
-$wikiProtectDenied = "<font size=\"+3\">You are not allowed to protect this page!</font>" ;
-$wikiProtectNow = "Page '$1' is now protected as $2." ;
-$wikiProtectText = "<font size=\"+2\">You can now edit the protection for '$target'</font><br><i>For example, use \"is_sysop\" to prevent anyone but sysops from editing that page. Separate several allowances by \",\"</i>" ;
-$wikiProtectCurrent = "Current protection : " ;
-$wikiContribTitle = "Contributions of $1" ;
-$wikiContribText = "<h1>$1's contributions :</h1>\n(With the exception of minor edits and changes to ''talk'' and ''log'' pages)" ;
-$wikiContribDenied = "State a user name!" ;
-$wikiLinkhereTitle = "Pages that link to $1" ;
-$wikiLinkhereBacklink = "These articles are linked back from [[$1]]:" ;
-$wikiLinkhereNoBacklink = "These articles are ''not'' linked back from [[$1]]:" ;
-$wikiBacklinkNolink = "There are no articles that link to [[$1]]!" ;
-$wikiBacklinkFollowing = "The following articles link to [[$1]]:" ;
-$wikiWantedTitle = "The Most Wanted Pages" ;
-$wikiWantedText = "'''These articles don't exist, but other articles link to them!''' (the top 50)<br>\n" ;
-$wikiWantedToggleNumbers = "Click here to toggle the display of page titles starting with numbers (currently $1)" ;
-$wikiWantedLine = "$1 is wanted by <b>$2</b> articles <nowiki>(see the <a href=\"$3\">pages that link to \"$4\"</a></nowiki>)" ;
-$wikiLastChange = "Last edited: $1" ;
-$wikiLastChangeCologne = "Page last modified: $1" ;
-$wikiShowLastChange = "Show last change" ;
-$wikiProtectThisPage = "Protect this page" ;
-$wikiPopularPages = "Most popular" ;
-$wikiPopularTitle = "Most Popular Pages" ;
-$wikiRefreshThisPage = "Refresh this page" ;
-$wikiResourcesWarning = "(Please, do this only when necessary, as this function uses a high amount of system resources)" ;
-$wikiNoRefresh = "(The page was last refreshed just $1 minutes ago; please wait another $2 minutes and try again.)" ;
-$wikiLastRefreshed = "Last refreshed $1" ;
-$wikiValidate = "Validate this page" ;
-$wikiBlockIP = "Block this IP" ;
-$wikiNostalgy = "Nostalgia" ;
+$wikiHistoryTitle = "Geschichte von $1" ;
+$wikiHistoryHeader = "Dies ist die Geschite der Änderungen von <a href=\"$THESCRIPT?title=$1\">$2</a>" ;
+$wikiCurrentVersion = "aktuell" ;
+$wikiSpecialTitle = "Spezielle Seiten" ;
+$wikiSpecialText = "<b>Dies ist eine Liste spezieller Seiten.</b> Einige von ihnen stehen nur eingeloggten Benutzern zur Verfügung. Wenn Sie eingeloggt sind, können Sie einen Teil dieser Liste stets als Seitenleiste eingeblendet lassen.<br><br>" ;
+$wikiStubTitle = "Kurze Srtikel" ;
+$wikiLongPagesTitle = "Die längsten Artikel" ;
+$wikiStubText = "'''Dies sind alle Artikel in der Datenbank, sortiert nach Länge, mit den kürzesten zuerst.'''<br>''Weitergeleitete (#REDIRECTed) Seiten und Seiten in Namensräumen (z.B. Diskussion:) werden hier '''nicht''' angezeigt!''\n\n" ;
+$wikiLongPagesText = "'''Dies sind alle Artikel in der Datenbank, sortiert nach Länge, mit den längsten zuerst.'''<br>''Weitergeleitete (#REDIRECTed) Seiten und Seiten in Namensräumen (z.B. Diskussion:) werden hier '''nicht''' angezeigt!''\n\n" ;
+$wikiStubChars = "$1 Zeichen" ;
+$wikiAskSQL = "MySQL-Zugang" ;
+$wikiAskSQLtext = "Diese Funktion ist nur für Systemadministratoren zugänglich.<br>''Bitte nicht Eingabe drücken, '''immer''' nur mit der Maus auf den Knopf klicken!''" ;
+$wikiSQLSafetyMessage = "Da Sie keinen Entwicklerstatus haben, können Sie nur SELECT-Kommandos ausführen." ;
+$wikiStubDelete = "<b>Diese Seite löschen!</b>" ;
+$wikiStubLinkHere = "$1 Artikel verweisen auf diesen." ;
+$wikiStubShowLinks = "Die \"Verweisanzeige\" umschalten" ;
+$wikiShowLinks = "Zeige Seiten, die nach \"$1\" verweisen" ;
+$wikiRecentChangesLinkedTitle = "Die letzten Änderungen auf Seiten, zu denen '$1' verweist" ;
+$wikiDeleteTitle = "Löschen des Artikels '$1'" ;
+$wikiDeleteDenied = "<font size=\"+3\">Sie sind nicht berechtigt, diese Seite zu löschen!</font>" ;
+$wikiDeleteSuccess = "'$1' wurde gelöscht." ;
+$wikiDeleteMsg1 = "*[[user:$2|$2]] hat die Seite '''$3''' permanent gelöscht ($1)\n" ;
+$wikiDeleteMsg2 = "Permanente Löschung von '$1'" ;
+$wikiDeleteAsk = "Sie sind dabei, den Artikel \"$1\" und seine komplette Geschichte zu löschen!<br>\nWenn Sie genau wissen, was Sie tun, klicken Sie bitte <a href=\"$2&iamsure=yes\">hier</a>." ;
+$wikiProtectTitle = "Schützen des Artikels '$1'" ;
+$wikiProtectDenied = "<font size=\"+3\">Sie sind nicht berechtigt, diese Seite zu schützen!</font>" ;
+$wikiProtectNow = "Die Seite '$1' ist nun geschützt ($2)." ;
+$wikiProtectText = "<font size=\"+2\">Sie können nun die Seite '$target' schützen</font><br><i>Zum Bleistift, \"is_sysop\" wird verhindern, dass jemand anderes als ein Systemadministrator diese Seite ändert. Mehrere Berechtigungen werden durch \",\" getrennt.</i>" ;
+$wikiProtectCurrent = "Gegenwärtiger Schutz : " ;
+$wikiContribTitle = "Beiträge von $1" ;
+$wikiContribText = "<h1>Beiträge von $1' :</h1>\n(Ausnahmen: Kleine Veränderungen sowie ''Disskussion'' und ''Log''-Seiten)" ;
+$wikiContribDenied = "Geben Sie einen Benutzernamen an!" ;
+$wikiLinkhereTitle = "Seiten, die nach '$1' verweisen" ;
+$wikiLinkhereBacklink = "[[$1]] verweist zurück auf diese Artikel:" ;
+$wikiLinkhereNoBacklink = "[[$1]] verweist ''nicht'' zurück auf diese Artikel:" ;
+$wikiBacklinkNolink = "Es gibt keine Artikel, die nach [[$1]] verweisen!" ;
+$wikiBacklinkFollowing = "Die folgenden Artikel verweisen auf [[$1]]:" ;
+$wikiWantedTitle = "Die am meisten gewünschten Seiten" ;
+$wikiWantedText = "'''Diese Artikel existieren noch nicht, aber andere Artikel verweisen auf sie!''' (die \"Top 50\")<br>\n" ;
+$wikiWantedToggleNumbers = "Hier klicken, um die Anzeige von Artikeln, die mit Ziffern beginnen, umzuschalten (momentan $1)" ;
+$wikiWantedLine = "<b>$2</b> Artikel verweisen auf $1 <nowiki>(<a href=\"$3\">diese Seiten verweisen auf \"$4\"</a></nowiki>)" ;
+$wikiLastChange = "Letzte Änderung: $1" ;
+$wikiLastChangeCologne = "Letzte Änderung dieser Seite: $1" ;
+$wikiShowLastChange = "Die letzten Änderungen" ;
+$wikiProtectThisPage = "Diese Seite schützen" ;
+$wikiPopularPages = "Populäre Seiten" ;
+$wikiPopularTitle = "Die populärsten Seiten" ;
+$wikiRefreshThisPage = "Seite neu laden" ;
+$wikiResourcesWarning = "(Bitte nur, wenn notwendig, da diese Funktion viel Rechenkapazität benötigt)" ;
+$wikiNoRefresh = "(Diese Seite wurde erst von $1 Minuten aufrefrischt; bitte warten sie noch $2 Minuten und versuchen Sie es dann erneut.)" ;
+$wikiLastRefreshed = "Zuletzt aufgefrischt: $1" ;
+$wikiValidate = "Den HTML-Code dieser Seite überprüfen" ;
+$wikiBlockIP = "Diese IP-Adresse blockieren" ;
+$wikiNostalgy = "Nostalgie" ;
 $wikiCologneBlue = "Cologne Blue" ;
 
 # Vote
-$wikiVoteReason = "Reason to vote : " ;
+$wikiVoteReason = "Grund für diese Stimme : " ;
 
 #---------------------------
 #Functions
@@ -483,14 +485,14 @@ function wikiGetDateDe ( $x ) { # Used in RecentChangesLayout in special_functio
     $monthName = $wikiDate [ strtolower ( date ( "F" , $x ) ) ];
     $dayNumber = date ( "j" , $x ) ;
     $year = date ( "Y" , $x ) ;
-    return "$dayName, $monthName $dayNumber, $year" ;
+    return "$dayName, $dayNumber. $monthName, $year" ;
     }
 function wikiGetBriefDateDe () { #Brief date for link in sidebar
     global $wikiDate ;
     $monthName = $wikiDate [ strtolower ( date ( "F" ) ) ];
     $dayNumber = date ( "j" ) ;
     $year = date ( "Y" ) ;
-    return "$monthName $dayNumber, $year" ;
+    return "$dayNumber. $monthName, $year" ;
     }
 $wikiGetDate = wikiGetDateDe;
 $wikiGetBriefDate = wikiGetBriefDateDe ;

@@ -2,15 +2,14 @@
 include_once ( "special_makelog.php" ) ;
 
 function deletepage () {
-    global $THESCRIPT , $target , $user , $iamsure ;
-    global $vpage , $wikiSQLServer ;
+    global $wikiDeleteTitle , $wikiDeleteDenied , $wikiDeleteSuccess , $wikiDeleteMsg1 , $wikiDeleteMsg2 , $wikiDeleteAsk ;
+    global $THESCRIPT , $target , $user , $iamsure , $vpage , $wikiSQLServer ;
     $target = stripslashes ( $target ) ;
     $vpage = new WikiPage ;
     $vpage->title = $title ;
     $vpage->makeSecureTitle () ;
     $ti = $vpage->secureTitle ;
 
-    global $wikiDeleteTitle , $wikiDeleteDenied , $wikiDeleteSuccess , $wikiDeleteMsg1 , $wikiDeleteMsg2 , $wikiDeleteAsk ;
     $vpage->special ( str_replace ( "$1" , $target , $wikiDeleteTitle ) ) ;
     $vpage->makeSecureTitle () ;
     if ( !in_array ( "is_sysop" , $user->rights ) ) return $wikiDeleteDenied ;
@@ -48,7 +47,9 @@ function deletepage () {
         mysql_query ( $sql , $connection ) ;
 
     } else {
-        $ret = "<font size=\"+2\">".str_replace(array("$1","$2"),array($target,wikiLink("special:deletepage&target=".urlencode($target).")),$wikiDeleteAsk)."</font>" ;
+        $ret = "<font size='+2'>" ;
+	$ret .= str_replace(array("$1","$2"),array($target,wikiLink("special:deletepage&target=".urlencode($target))),$wikiDeleteAsk) ;
+	$ret .= "</font>" ;
         }
     return "<nowiki>$ret</nowiki>" ;
     }
