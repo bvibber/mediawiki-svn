@@ -40,7 +40,8 @@
 	"editwidth" => "La fenetre d'édition est en pleine largeur",
 	"editondblclick" => "Double cliquer pour éditer une page (JavaScript)",
 	"watchdefault" => "Suivre les articles que je crée ou modifie",
-	"minordefault" => "Mes modifications sont mineures par défaut"
+	"minordefault" => "Mes modifications sont mineures par défaut",
+	"previewontop" => "Prevue se montre avant boite de redacter" # FIXME
 );
 
 /* Replace these with some French bookshops/lookup places */
@@ -318,6 +319,8 @@ Voir $1.",
 "sitetitle"  => "Wikipédia",
 "sitesubtitle" => "L'encyclopédie libre",
 "retrievedfrom" => "Récupérée de \"$1\"",
+"newmessages" => "Vous avez des $1.",
+"newmessageslink" => "nouveaux messages",
 
 # Main script and global functions
 #
@@ -427,6 +430,10 @@ La zone d'édition supérieure contient le texte tel qu'il est enregistré actuelle
 "editingold" => "<strong>Attention : Vous êtes en train de modifier une version obsolète de cette page. Si vous sauvegardez, toutes les modifications effectuées depuis cette version seront perdues.</strong>\n",
 "yourdiff"  => "Différences",
 "copyrightwarning" => "Toutes les contributions à Wikipédia sont considérées comme publiées sous les termes de la GNU Free Documentation License, une licence de documentation libre (Voir $1 pour plus de détails). Si vous ne désirez pas que vos écrits soient édités et distribués à volonté, ne les envoyez pas. De même, merci de ne contribuer qu'en apportant vos propres écrits ou des écrits issus d'une source libre de droits. <b>N'UTILISEZ PAS DE TRAVAUX SOUS COPYRIGHT SANS AUTORISATION EXPRESSE!</b>",
+"longpagewarning" => "AVERTISSEMENT : Ceci page a longeur de $1 ko;
+quelques navigateurs mal trait des pages approchant ou plus de 32 ko à
+redaction. Peut-etre serait-il mieux si vous separer la page en sections
+plus petites.",
 
 # History pages
 #
@@ -520,6 +527,7 @@ pour modifier vos préférences d'utilisateur.",
 
 # Recent changes
 #
+"changes" => "changes", # FIXME?
 "recentchanges" => "Modifications récentes",
 "recentchangestext" => "Suivez sur cette page les dernières modifications de Wikipédia.
 [[Wikipédia:Bienvenue|Bienvenue]] aux nouveaux participants!
@@ -795,6 +803,7 @@ See [[Wikipedia:Deletion_log]] for a record of recent deletions and restorations
 # Contributions
 #
 "contributions" => "Contributions",
+"mycontris" => "Mes contributions",
 "contribsub" => "Pour $1",
 "nocontribs" => "Aucune modification correspondant à ces critères n'a été trouvée.",
 "ucnote"  => "Voici les <b>$1</b> dernières modifications effectuées par cet utilisateur au cours des <b>$2</b> derniers jours.",
