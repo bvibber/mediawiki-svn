@@ -5,8 +5,8 @@
 }
 let space = [' ' '\t' '\n' '\r']
 let alpha = ['a'-'z' 'A'-'Z']
-let literal_it = ['a'-'z' 'A'-'Z']
-let literal_rm = ['0'-'9']
+let literal_id = ['a'-'z' 'A'-'Z']
+let literal_mn = ['0'-'9']
 let literal_uf_lt = [',' '(' ')' ':'  ';' '?' '.' '!' '\'']
 let literal_uf_op = ['+' '-' '*' '=' '/' '|']
 let boxchars  = ['0'-'9' 'a'-'z' 'A'-'Z' '+' '-' '*' ',' '=' '(' ')' ':' '/' ';' '?' '.' '!' ' ' '\128'-'\255']
@@ -41,10 +41,10 @@ rule token = parse
 				  let n = String.index str '{' + 1 in
 				  Texutil.tex_use_nonascii();
 				  BOX ("\\vbox", String.sub str n (String.length str - n - 1)) }
-  | literal_it			{ let str = Lexing.lexeme lexbuf in LITERAL (HTMLABLEC (FONT_IT, str,str)) }
-  | literal_rm			{ let str = Lexing.lexeme lexbuf in LITERAL (HTMLABLEC (FONT_RM, str,str)) }
+  | literal_id			{ let str = Lexing.lexeme lexbuf in LITERAL (MHTMLABLEC (FONT_IT, str,str,MI,str)) }
+  | literal_mn			{ let str = Lexing.lexeme lexbuf in LITERAL (MHTMLABLEC (FONT_RM, str,str,MN,str)) }
   | literal_uf_lt		{ let str = Lexing.lexeme lexbuf in LITERAL (HTMLABLEC (FONT_UFH, str,str)) }
-  | literal_uf_op		{ let str = Lexing.lexeme lexbuf in LITERAL (HTMLABLEC (FONT_UFH, str," "^str^" ")) }
+  | literal_uf_op		{ let str = Lexing.lexeme lexbuf in LITERAL (MHTMLABLEC (FONT_UFH, str," "^str^" ",MO,str)) }
   | "\\" alpha + 		{ Texutil.find (Lexing.lexeme lexbuf) }
   | "\\sqrt" space * "["	{ FUN_AR1opt "\\sqrt" }
   | "\\," 			{ LITERAL (HTMLABLE (FONT_UF, "\\,","&nbsp;")) }

@@ -8,10 +8,10 @@ let rec foo () =
 	let line = input_line stdin in
 	(try
 	    let tree = Parser.tex_expr lexer_token_safe (Lexing.from_string line) in
-    	    let out = Texutil.mapjoin Texutil.print tree in
-	    (try
-	    ignore(Texutil.html_render tree); print_string "$^\n";
-	    with _ -> print_string "$_\n";
+    	    let out = Util.mapjoin Texutil.render_tex tree in
+	    (match Html.render tree with
+		Some _ -> print_string "$^\n"
+	      | None -> print_string "$_\n";
 	    )
         with
 	    Texutil.Illegal_tex_function s -> print_string ("$T" ^ s ^ " " ^ line ^ "\n")

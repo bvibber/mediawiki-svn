@@ -1,3 +1,8 @@
+let mapjoin f l = (List.fold_left (fun a b -> a ^ (f b)) "" l)
+let mapjoine e f = function
+    [] -> ""
+  | h::t -> (List.fold_left (fun a b -> a ^ e ^ (f b)) (f h) t)
+
 exception FileAlreadyExists
 let open_out_unless_exists path =
     if Sys.file_exists path

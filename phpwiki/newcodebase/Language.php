@@ -39,7 +39,8 @@
 	"Always render PNG",
 	"HTML if very simple or else PNG",
 	"HTML if possible or else PNG",
-	"Leave it as TeX (for text browsers)"
+	"Leave it as TeX (for text browsers)",
+	"Recommended for modern browsers"
 );
 
 /* private */ $wgUserTogglesEn = array(
