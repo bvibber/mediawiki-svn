@@ -25,7 +25,7 @@ class WikiPage extends WikiTitle {
 		$connection = getDBconnection () ;
 		mysql_select_db ( "wikipedia" , $connection ) ;
 		$thisVersion = "" ;
-		global $oldID , $version ;
+		global $oldID , $version , $THESCRIPT ;
 		if ( isset ( $oldID ) ) {
 			$sql = "SELECT * FROM old WHERE old_id=$oldID" ;
 			$result = mysql_query ( $sql , $connection ) ;
@@ -86,6 +86,7 @@ class WikiPage extends WikiTitle {
 		return $a ;
 		}
 	function getOtherNamespaces () {
+		global $THESCRIPT ;
 		$a = array () ;
 		if ( $this->isSpecialPage ) return $a ;
 		$n = explode ( ":" , $this->title ) ;
@@ -162,6 +163,7 @@ class WikiPage extends WikiTitle {
 
 	# Output functions
 	function replaceInternalLinks ( $s ) {
+		global $THESCRIPT ;
 		global $user , $unlinkedLinks , $linkedLinks ;
 		$a = explode ( "[[" , " ".$s ) ;
 		$s = array_shift ( $a ) ;
@@ -393,6 +395,7 @@ class WikiPage extends WikiTitle {
 
 	# Header and footer section
 	function getLinkBar () {
+		global $THESCRIPT ;
 		global $user , $oldID , $version ;
 		$editOldVersion = "" ;
 		if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
@@ -414,6 +417,7 @@ class WikiPage extends WikiTitle {
 		return $ret ;
 		}
 	function getHeader () {
+		global $THESCRIPT ;
 		global $user , $action ;
 		$t = $this->getNiceTitle ( $this->title ) ;
 		if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirst ( $t ) ;
@@ -447,6 +451,7 @@ class WikiPage extends WikiTitle {
 		return $ret ; 
 		}
 	function getQuickBar () {
+		global $THESCRIPT ;
 		global $user , $oldID , $version ;
 		$editOldVersion = "" ;
 		if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
@@ -501,6 +506,7 @@ class WikiPage extends WikiTitle {
 		return $ret ; 
 		}
 	function getFooter () {
+		global $THESCRIPT ;
 		$ret = $this->getLinkBar() ;
 		global $HTTP_USER_AGENT ;
 		if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=above rules=none" ; 
