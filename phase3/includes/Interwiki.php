@@ -116,6 +116,7 @@
 	"sep11"		=> "http://sep11.wikipedia.org/wiki/$1",
 	"simple"=> "http://simple.wikipedia.org/wiki/$1",
 	"wiktionary"	=> "http://wiktionary.org/wiki/$1",
+	"WikiBooks" => "http://wikibooks.org/wiki/$1",
 	
 	# These may not be recommended, may change...
 	"PageHistory" => "http://www.wikipedia.org/w/wiki.phtml?title=$1&action=history",
