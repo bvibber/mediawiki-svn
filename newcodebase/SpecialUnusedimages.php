@@ -40,7 +40,7 @@ function wfSpecialUnusedimages()
 		$c = $obj->img_description;
 
 		if ( 0 == $u ) { $ul = $ut; }
-		else { $ul = $sk->makeLink( "User:{$ut}", $ut ); }
+		else { $ul = $sk->makeLink( $wgLang->getNsText(2).":{$ut}", $ut ); }
 
 		$s .= "<li>({$dlink}) {$ilink} . . {$d} . . {$ul}";
 
