@@ -51,6 +51,15 @@ class LuceneSearch extends SpecialPage
 		$link .= "&amp;offset=$offset&amp;limit=$limit";
 		return $link;
 	}
+	
+	function setHeaders() {
+		global $wgRequest;
+		if( $wgRequest->getVal( 'gen' ) == 'titlematch' ) {
+			# NOP; avoid initializing the message cache
+		} else {
+			return parent::getDescription();
+		}
+	}
 		
 	function execute($par) {
 		global $wgRequest, $wgOut, $wgTitle, $wgContLang, $wgUser,
@@ -59,6 +68,8 @@ class LuceneSearch extends SpecialPage
 			$wgUser;
 		global $wgGoToEdit;
 
+		$fname = 'LuceneSearch::execute';
+		wfProfileIn( $fname );
 		$this->setHeaders();
 
 		foreach(SearchEngine::searchableNamespaces() as $ns => $name)
@@ -82,19 +93,23 @@ class LuceneSearch extends SpecialPage
 			$q = $wgRequest->getText('search');
 
 		if ($wgRequest->getText('gen') == 'titlematch') {
+			$wgOut->disable();
 			$limit = $wgRequest->getInt("limit");
 			if ($limit < 1 || $limit > 50)
 				$limit = 20;
 			header("Content-Type: text/plain; charset=$wgInputEncoding");
-			if (strlen($q) < 1)
-				wfAbruptExit();
+			if (strlen($q) < 1) {
+				wfProfileOut( $fname );
+				return;
+			}
 
 			$results = $this->doTitlePrefixSearch($q, $limit);
 			if ($results && count($results) > 0)
 				foreach ($results as $result) {
-					echo $result->getPrefixedText() . "\n";
+					echo $result->getPrefixedUrl() . "\n";
 				}
-			wfAbruptExit();
+			wfProfileOut( $fname );
+			return;
 		}
 
 		if (!$wgLuceneDisableSuggestions)
@@ -255,6 +270,7 @@ class LuceneSearch extends SpecialPage
 			$wgOut->addHTML($this->showFullDialog($q));
 		}
 		$wgOut->setRobotpolicy('noindex,nofollow');
+		wfProfileOut( $fname );
 	}
 
         function showHit($score, $t, $terms) {
@@ -545,7 +561,7 @@ class LuceneSearch extends SpecialPage
 	}
 
 	function makeSuggestJS() {
-		global $wgScript;
+		global $wgScript, $wgArticlePath;
 		return <<<___EOF___
 <script type="text/javascript"><!--
 
@@ -589,8 +605,8 @@ function showResults(resultArr)
     for (var i=0; i < resultArr.length; i++)
     {
       var linkEl = document.createElement("a");
-      linkEl.href = "$wgScript?title=" + encodeURIComponent(resultArr[i].replace(/ /g, '_'));
-      var textEl = document.createTextNode(resultArr[i]);
+      linkEl.href = "$wgArticlePath".replace(/\\$1/, resultArr[i]);
+      var textEl = document.createTextNode(decodeURIComponent(resultArr[i]).replace(/_/g, ' '));
       linkEl.appendChild(textEl);
       resultsEl.appendChild(linkEl);
     }
