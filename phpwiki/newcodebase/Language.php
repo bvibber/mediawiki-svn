@@ -189,7 +189,7 @@ See $1.",
 recognized by the Wikipedia software",
 "nosuchspecialpage" => "No such special page",
 "nospecialpagetext" => "You have requested a special page that is not
-recognized by the Wikipedia software",
+recognized by the Wikipedia software.",
 
 # General errors
 #

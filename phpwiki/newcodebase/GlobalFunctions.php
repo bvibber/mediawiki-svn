@@ -171,12 +171,13 @@ function wfSpecialPage()
 
 	$wgOut->setArticleFlag( false );
 	$wgOut->setRobotpolicy( "noindex,follow" );
-	$wgOut->setPageTitle( wfMsg( strtolower( $wgTitle->getText() ) ) );
 
 	$t = $wgTitle->getDBkey();
 	if ( array_key_exists( $t, $validSP ) ||
 	  ( $wgUser->isSysop() && array_key_exists( $t, $sysopSP ) ) ||
 	  ( $wgUser->isDeveloper() && array_key_exists( $t, $devSP ) ) ) {
+		$wgOut->setPageTitle( wfMsg( strtolower( $wgTitle->getText() ) ) );
+
 		$inc = "Special" . $t . ".php";
 		include_once( $inc );
 		$call = "wfSpecial" . $t;
