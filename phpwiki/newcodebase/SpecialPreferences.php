@@ -31,7 +31,7 @@ function wfSpecialPreferences()
 {
 	global $wgUser, $wgLang, $wgDeferredUpdateList;
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
-	global $wpSkin, $wpEmail, $wpNick, $wpSearch, $wpRecent;
+	global $wpSkin, $wpEmail, $wpEmailFlag, $wpNick, $wpSearch, $wpRecent;
 	global $wpSearchLines, $wpSearchChars;
 	global $wpRows, $wpCols, $wpHourDiff, $HTTP_POST_VARS;
 
@@ -61,6 +61,9 @@ function wfSpecialPreferences()
 	$wgUser->setOption( "cols", $wpCols );
 	$wgUser->setOption( "timecorrection", $wpHourDiff );
 
+	if ( $wpEmailFlag ) { $wgUser->setOption( "disablemail", 1 ); }
+	else { $wgUser->setOption( "disablemail", 0 ); }
+
 	$togs = $wgLang->getUserToggles();
 	foreach ( $togs as $tname => $ttext ) {
 		if ( array_key_exists( "wpOp$tname", $HTTP_POST_VARS ) ) {
@@ -79,12 +82,14 @@ function wfSpecialPreferences()
 {
 	global $wgUser, $wgLang;
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
-	global $wpRows, $wpCols, $wpSkin, $wpEmail, $wpNick;
+	global $wpRows, $wpCols, $wpSkin, $wpEmail, $wpEmailFlag, $wpNick;
 	global $wpSearch, $wpRecent, $HTTP_POST_VARS;
 	global $wpHourDiff, $wpSearchLines, $wpSearchChars;
 
 	$wpOldpass = $wpNewpass = $wpRetype = "";
 	$wpEmail = $wgUser->getEmail();
+	if ( 1 == $wgUser->getOption( "disablemail" ) ) { $wpEmailFlag = 1; }
+	else { $wpEmailFlag = 0; }
 	$wpNick = $wgUser->getOption( "nickname" );
 
 	$wpQuickbar = $wgUser->getOption( "quickbar" );
@@ -107,7 +112,7 @@ function wfSpecialPreferences()
 {
 	global $wgUser, $wgOut, $wgLang;
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
-	global $wpSkin, $wpEmail, $wpNick, $wpSearch, $wpRecent;
+	global $wpSkin, $wpEmail, $wpEmailFlag, $wpNick, $wpSearch, $wpRecent;
 	global $wpRows, $wpCols, $wpSaveprefs, $wpReset, $wpHourDiff;
 	global $wpSearchLines, $wpSearchChars;
 
@@ -145,6 +150,7 @@ function wfSpecialPreferences()
 	$tzt = wfMsg( "timezonetext" );
 	$tzo = wfMsg( "timezoneoffset" );
 	$yem = wfMsg( "youremail" );
+	$emf = wfMsg( "emailflag" );
 	$ynn = wfMsg( "yournick" );
 	$srh = wfMsg( "searchresultshead" );
 	$rpp = wfMsg( "resultsperpage" );
@@ -213,10 +219,13 @@ $tzo*: <input type=text name=\"wpHourDiff\" value=\"{$wpHourDiff}\" size=6>
 	#
 	$wpEmail = wfEscapeHTML( $wpEmail );
 	$wpNick = wfEscapeHTML( $wpNick );
+	if ( $wpEmailFlag ) { $emfc = "checked"; }
+	else { $emfc = ""; }
 
 	$wgOut->addHTML( "<td valign=top nowrap>
-$yem: <input type=text name=\"wpEmail\" value=\"$wpEmail\" size=20><br>
-$ynn: <input type=text name=\"wpNick\" value=\"$wpNick\" size=12><br>
+$yem: <input type=text name=\"wpEmail\" value=\"{$wpEmail}\" size=20><br>
+<input type=checkbox $emfc value=\"1\" name=\"wpEmailFlag\"> $emf<br>
+$ynn: <input type=text name=\"wpNick\" value=\"{$wpNick}\" size=12><br>
 $rcc: <input type=text name=\"wpRecent\" value=\"$wpRecent\" size=6><br>
 <strong>{$srh}:</strong><br>
 $rpp: <input type=text name=\"wpSearch\" value=\"$wpSearch\" size=6><br>

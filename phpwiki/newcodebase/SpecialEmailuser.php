@@ -25,7 +25,8 @@ function wfSpecialEmailuser()
 	$nu->setID( $id );
 	$address = $nu->getEmail();
 
-	if ( false === strpos( $address, "@" ) ) {
+	if ( ( false === strpos( $address, "@" ) ) ||
+	  ( 1 == $nu->getOption( "disablemail" ) ) ) {
 		$wgOut->errorpage( "noemailtitle", "noemailtext" );
 		return;
 	}
