@@ -2,7 +2,7 @@
 
 function wfSpecialAllpages()
 {
-	global $wgUser, $wgOut;
+	global $wgUser, $wgOut, $limit, $offset;
 
 	if ( ! $limit ) {
 		$limit = $wgUser->getOption( "rclimit" );
