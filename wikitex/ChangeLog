@@ -5,7 +5,7 @@
 
 	* wikitex.inc.php: added designator for <schem>;
 	switched out PPCH for Xym; called the former
-	<ppch>, the latter <xym>.
+	<ppch>, the latter <chem>.
 
 	* wikitex.php (strSchem): added hook for
 	<schem> class
