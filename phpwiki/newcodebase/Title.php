@@ -213,12 +213,12 @@ class Title {
 	function getInterwiki() { return $this->mInterwiki; }
 	function getFragment() { return $this->mFragment; }
 
-	function getIndexTitle()
+	/* static */ function indexTitle( $ns, $title )
 	{
-		global $wgDBminWordLen;
+		global $wgDBminWordLen, $wgLang;
 
 		$lc = SearchEngine::legalSearchChars() . "&#;";
-		$t = preg_replace( "/[^{$lc}]+/", " ", $this->mTextform );
+		$t = preg_replace( "/[^{$lc}]+/", " ", $title );
 
 		if ( $wgDBminWordLen > 3 ) {
 			$t = preg_replace( "/\\b[{$lc}][{$lc}][{$lc}]\\b/", " ", $t );
@@ -230,12 +230,17 @@ class Title {
 			$t = preg_replace( "/\\b[{$lc}]\\b/", " ", $t );
 		}
 		$t = preg_replace( "/\\s+/", " ", $t );
-
 		$t = strtolower( $t );
-		if ( Namespace::getImage() == $this->mNamespace ) {
-			$t = preg_replace( "/ (png|gif|jpg|jpeg)$/", "", $t );
+
+		if ( $ns == Namespace::getImage() ) {
+			$t = preg_replace( "/ (png|gif|jpg|jpeg|ogg)$/", "", $t );
 		}
 		return trim( $t );
+	}
+
+	function getIndexTitle()
+	{
+		return Title::indexTitle( $this->mNamespace, $this->mTextform );
 	}
 
 	/* static */ function makeName( $ns, $title )
