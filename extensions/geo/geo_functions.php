@@ -9,8 +9,17 @@ function coordinate_take_apart ( $c )
 		$c = substr ( $c , 1 ) ;
 		}
 	else $mul = 1 ;
-	while ( strlen ( $c ) < 6 ) $c .= "0" ;
-	$c = array ( substr ( $c , 0 , 2 ) , substr ( $c , 2 , 2 ) , substr ( $c , 4 , 2 ) ) ;
+	$c = trim ( $c ) ;
+	
+	if ( strlen ( $c ) <= 6 )
+		{
+		while ( strlen ( $c ) < 6 ) $c .= "0" ;
+		$c = array ( substr ( $c , 0 , 2 ) , substr ( $c , 2 , 2 ) , substr ( $c , 4 , 2 ) ) ;
+		}
+	else
+		{
+		$c = array ( substr ( $c , 0 , 3 ) , substr ( $c , 3 , 2 ) , substr ( $c , 5 , 2 ) ) ;
+		}
 	$c[0] *= $mul ;
 	return $c ;
 	}

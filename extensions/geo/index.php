@@ -17,6 +17,13 @@ $p = new geo_params ;
 
 # Default parameters
 $params = "
+show:south_america
+draw:south_america
+style:south_america=fill:red
+" ;
+
+
+$params = "
 languages:de,en
 show:germany
 fit:germany
