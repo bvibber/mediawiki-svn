@@ -37,7 +37,6 @@ function whatLinksHere () {
 	$result = mysql_query ( $question , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	mysql_free_result ( $result ) ;
-	#mysql_close ( $connection ) ;
 
 	$out = explode ( "\n" , $s->cur_linked_links."\n".$s->cur_unlinked_links ) ;
 	$dlb = array () ;

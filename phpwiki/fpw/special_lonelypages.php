@@ -19,7 +19,6 @@ function LonelyPages () {
 		$u = explode ( "\n" , $s->cur_unlinked_links ) ; foreach ( $u as $x ) $allPages[ucfirst($x)] += 1 ;
 		}
 	if ( $result != false ) mysql_free_result ( $result ) ;
-	#mysql_close ( $connection ) ;
 
 	asort ( $allPages ) ;
 #	$allPages = array_slice ( $allPages , 0 , 50 ) ;

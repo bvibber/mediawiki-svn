@@ -19,7 +19,6 @@ function askSQL () {
 			array_push ( $a , $s ) ;
 			}
 		mysql_free_result ( $result ) ;
-		#mysql_close ( $connection ) ;
 
 		$ret .= "<table width=\"100%\" border=1 bordercolor=black cellspacing=0 cellpadding=2><tr>" ;
 		foreach ( $k as $x ) $ret .= "<th>$x</th>" ;

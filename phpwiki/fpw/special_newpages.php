@@ -71,7 +71,6 @@ function newpages () {
 			mysql_free_result ( $result ) ;
 			}
 		}
-	#mysql_close ( $connection ) ;
 	
 	uasort ( $arr , "newPages_timeSort" ) ;
 	while ( count ( $arr ) > $maxcnt ) array_pop ( $arr ) ;

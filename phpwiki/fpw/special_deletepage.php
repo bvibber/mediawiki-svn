@@ -27,7 +27,6 @@ function removeFromLinkList ( $item , $link ) {
 		$result = mysql_query ( $sql , $connection ) ;
 		}
 
-	#mysql_close ( $connection ) ;
 	}
 
 function deletepage () {
@@ -50,7 +49,6 @@ function deletepage () {
 		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "DELETE FROM cur WHERE cur_title=\"$target\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
-		#mysql_close ( $connection ) ;
 
 		# Appending log page "log:Page Deletions"
 		$now = date ( "Y-m-d H:i:s" , time () ) ;

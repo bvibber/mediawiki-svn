@@ -99,7 +99,6 @@ class WikiPage extends WikiTitle {
             $z = str_replace ( "]" , "" , $z ) ;
             $this->load ( trim($z) , false , $backLink ) ;
             }
-        #@mysql_close ( $connection ) ;
         }
 
     # This function - well, you know...
@@ -142,7 +141,6 @@ class WikiPage extends WikiTitle {
             array_push ( $a , $t ) ;
             }
         if ( $result != "" ) mysql_free_result ( $result ) ;
-        #mysql_close ( $connection ) ;
         if ( count ( $a ) > 0 ) array_unshift ( $a , "[[$mother]]" ) ;
         return $a ;
         }
@@ -195,7 +193,6 @@ class WikiPage extends WikiTitle {
                 array_push ( $a , "<a class=\"green\" href=\"".wikiLink("$t:$n")."\">$t</a>" ) ;
             }
         if ( $result != "" ) mysql_free_result ( $result ) ;
-        #mysql_close ( $connection ) ;
         return $a ;
         }
 
@@ -213,7 +210,6 @@ class WikiPage extends WikiTitle {
             $sql = "UPDATE cur SET cur_cache=\"\", cur_timestamp=cur_timestamp WHERE cur_linked_links LIKE \"%$this->secureTitle%\" OR cur_unlinked_links LIKE \"%$this->secureTitle%\"" ;
             mysql_query ( $sql , $connection ) ;
             }
-        #mysql_close ( $connection ) ;
         }
 
     # This function performs a backup from the "cur" to the "old" table, building a
@@ -270,7 +266,6 @@ class WikiPage extends WikiTitle {
         $sql .= "cur_user_text=\"$userName\",cur_minor_edit=\"$minorEdit\",";
         $sql .= "cur_linked_links=\"$ll\",cur_unlinked_links=\"$ull\",$addCache cur_params=\"$pa\"$addSQL WHERE $cond" ;
         $r = mysql_query ( $sql , $connection ) ;
-        #mysql_close ( $connection ) ;
         }
 
 #### Rendering functions
@@ -348,7 +343,6 @@ class WikiPage extends WikiTitle {
                 $s .= $b[1] ;
                 }
             }
-        #mysql_close ( $connection ) ;
         return $s ;
         }
 
@@ -415,7 +409,6 @@ class WikiPage extends WikiTitle {
             $var = mysql_fetch_object ( $result ) ;
             $var = number_format ( $var->number , 0 ) ;
             mysql_free_result ( $result ) ;
-            #mysql_close ( $connection ) ;
             $s = str_replace ( "{{NUMBEROFARTICLES}}" , $var , $s ) ;
             }
 
@@ -441,7 +434,6 @@ class WikiPage extends WikiTitle {
             else $var = "" ;
 
             mysql_free_result ( $result ) ;
-            #mysql_close ( $connection ) ;
             $s = str_replace ( "{{THISCATEGORY}}" , $var , $s ) ;
             }
 */
@@ -1175,7 +1167,6 @@ class WikiPage extends WikiTitle {
         mysql_query ( $sql , $connection ) ;
         $sql = "UPDATE cur SET cur_text=\"\", cur_timestamp=cur_timestamp WHERE cur_title=\"Log:RecentChanges\"" ;
         mysql_query ( $sql , $connection ) ;
-        #mysql_close ( $connection ) ;
 
                     
                     }
@@ -1246,7 +1237,6 @@ class WikiPage extends WikiTitle {
             $ret .= "</table>\n" ;
         } else if ( isset ( $oldID ) and $s->old_old_version == 0 ) $ret .= $wikiDiffFirstVersion ;
         else if ( !isset ( $oldID ) ) $ret .= $wikiDiffImpossible ;
-        #mysql_close ( $connection ) ;
         
         $ret .= "<font color=red><b>$wikiEndDiff</b></font><hr></nowiki>\n" ;
         return $ret ;
