@@ -433,8 +433,28 @@ $wgMessageCache->addMessages( array(
 "* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|List votes to date]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]",
-"boardvote_intro"         => "<p>Please check the boxes next to each candidate whom 
-you approve of.</p>",
+"boardvote_intro"         => "
+<p>Welcome to the first elections for the Wikimedia Board of Trustees. We are
+voting for two people to represent the community of users on the various
+Wikimedia projects: the <strong>Contributing Active User Representative</strong> and the
+<strong>Volunteer User Representative</strong>. They will help to determine the future direction
+that the Wikimedia projects will take, individually and as a group, and
+represent <em>your</em> interests and concerns to the Board of Trustees. They will
+decide on ways to generate income and the allocation of moneys raised.</p>
+
+<p>Please read the candidates' statements and responses to queries carefully
+before voting. Each of the candidates is a respected user, who has contributed
+considerable time and effort to making these projects a welcoming environment
+committed to the pursuit and free distribution of human knowledge.</p>
+
+<p>You may vote for as many candidates in each category as you want. The
+candidate with the most votes in each position will be declared the winner of that
+position. In the event of a tie, a run-off election will be held.</p>
+
+<p>For more information, see:</p>
+<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ\" class=\"external\">Election FAQ</a></li>
+<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates\" class=\"external\">Candidates</a></li></ul>
+",
 "boardvote_intro_change"  => "<p>You have voted before. However you may change 
 your vote using the form below. Please check the boxes next to each candidate whom 
 you approve of.</p>",
@@ -472,9 +492,17 @@ to date. $1 for the encrypted data.</p>",
 "boardvote_dumplink"      => "Click here",
 "boardvote_strike"        => "Strike",
 "boardvote_unstrike"      => "Unstrike",
-"boardvote_needadmin"     => "Only election administrators can perform this operation."
-
+"boardvote_needadmin"     => "Only election administrators can perform this operation.",
+"boardvote_sitenotice"    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:  Vote open until June 12",
 ));
+
+global $wgSiteNotice, $wgUser;
+
+$title = Title::makeTitle( NS_SPECIAL, "Boardvote/vote" );
+
+if ( $wgUser->getID() != 0 ) {
+	$wgSiteNotice = wfMsg( "boardvote_sitenotice" );
+}
 
 } # End of extension function
 
