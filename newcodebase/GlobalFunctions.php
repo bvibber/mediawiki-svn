@@ -51,9 +51,10 @@ function wfImageUrl( $img )
 
 	$nt = Title::newFromText( $img );
 	$name = $nt->getDBkey();
+	$hash = md5( $name );
 
-	$url = "{$wgUploadPath}/" . $name{0} . "/" .
-	  substr( $name, 0, 2 ) . "/{$name}";
+	$url = "{$wgUploadPath}/" . $hash{0} . "/" .
+	  substr( $hash, 0, 2 ) . "/{$name}";
 	return $url;
 }
 
@@ -61,8 +62,9 @@ function wfImageArchiveUrl( $name )
 {
 	global $wgUploadPath;
 
-	$url = "{$wgUploadPath}/archive/" . $name{15} . "/" .
-	  substr( $name, 15, 2 ) . "/{$name}";
+	$hash = md5( substr( $name, 15) );
+	$url = "{$wgUploadPath}/archive/" . $hash{0} . "/" .
+	  substr( $hash, 0, 2 ) . "/{$name}";
 	return $url;
 }
 
@@ -203,10 +205,11 @@ function wfImageDir( $fname )
 {
 	global $wgUploadDirectory;
 
+	$hash = md5( $fname );
 	$oldumask = umask(0);
-	$dest = $wgUploadDirectory . "/" . $fname{0};
+	$dest = $wgUploadDirectory . "/" . $hash{0};
 	if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
-	$dest .= "/" . substr( $fname, 0, 2 );
+	$dest .= "/" . substr( $hash, 0, 2 );
 	if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
 	
 	umask( $oldumask );
@@ -217,12 +220,13 @@ function wfImageArchiveDir( $fname )
 {
 	global $wgUploadDirectory;
 
+	$hash = md5( $fname );
 	$oldumask = umask(0);
 	$archive = "{$wgUploadDirectory}/archive";
 	if ( ! is_dir( $archive ) ) { mkdir( $archive, 0777 ); }
-	$archive .= "/" . $fname{0};
+	$archive .= "/" . $hash{0};
 	if ( ! is_dir( $archive ) ) { mkdir( $archive, 0777 ); }
-	$archive .= "/" . substr( $fname, 0, 2 );
+	$archive .= "/" . substr( $hash, 0, 2 );
 	if ( ! is_dir( $archive ) ) { mkdir( $archive, 0777 ); }
 
 	umask( $oldumask );

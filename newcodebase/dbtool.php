@@ -20,14 +20,14 @@ $wgOldImageDir	= "/rfs/backups/lee/wikiimages";
 # convertCurTable();
 # convertOldTable();
 
-# convertImageDirectories();
+convertImageDirectories();
 
 # Maintenance tasks.
 #
 
 # rebuildLinkTables();
 
-rebuildIndText();
+# rebuildIndText();
 
 print "Done.\n";
 exit();
@@ -36,7 +36,7 @@ exit();
 
 # Convert May 2002 version of database into new format.
 #
-function convertUserTable()
+function cconvertUserTable()
 {
 	$count = 0;
 	print "Converting USER table.\n";
@@ -276,12 +276,12 @@ function convertImageDirectories()
 	$count = 0;
 
 	print "Moving image files.\n";
-
+/*
 	$conn = getNewDB();
 	$sql = "SELECT DISTINCT il_to FROM imagelinks";
 	$res = dbQuery( $sql, $conn );
 	if ( ! $res ) $res = dbErr( $sql );
-/*
+
 	while ( $row = mysql_fetch_object( $res ) ) {
 		$oname = $row->il_to;
 
@@ -335,9 +335,10 @@ function convertImageDirectories()
 			continue;
 		}
 		$oldumask = umask(0);
-		$dest = $wgUploadDirectory . "/" . $nname{0};
+		$hash = md5( $nname );
+		$dest = $wgUploadDirectory . "/" . $hash{0};
 		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
-		$dest .= "/" . substr( $nname, 0, 2 );
+		$dest .= "/" . substr( $hash, 0, 2 );
 		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
 		umask( $oldumask );
 

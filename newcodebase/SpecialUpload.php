@@ -129,8 +129,9 @@ function unsaveUploadedFile()
 		return;
 	}
 	if ( "" != $wgUploadOldVersion ) {
-		$archive = "{$wgUploadDirectory}/archive/" . $wgUploadOldVersion{15} .
-	  	"/" . substr( $wgUploadOldVersion, 15, 2 );
+		$hash = md5( substr( $wgUploadOldVersion, 15 ) );
+		$archive = "{$wgUploadDirectory}/archive/" . $hash{0} .
+	  	"/" . substr( $hash, 0, 2 );
 
 		if ( ! rename( "{$archive}/{$wgUploadOldVersion}", $wgSavedFile ) ) {
 			$wgOut->fileRenameError( "{$archive}/{$wgUploadOldVersion}",
