@@ -43,7 +43,7 @@ function wt_img() {
 }
 
 function wt_anch() {
-    STR=$(printf '<a href=\"%s\">%s</a>' "${OUT}${HASH}" "${STR}")
+    STR=$(printf '<a href="%s">%s</a>' "${OUT}${HASH}" "${STR}")
 }
 
 function wt_dvipng() {

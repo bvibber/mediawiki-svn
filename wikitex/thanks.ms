@@ -1,6 +1,6 @@
 .DA
 .TL
-WikiTeX 1.0 THANKS
+WikiTeX 1.0.1 THANKS
 .AU
 Peter Danenberg <pcd at wikitex dot org>
 .PP
@@ -18,5 +18,6 @@ Alexander Schremmer	security	alexanderweb.de
 Massoud Ghyam-khah	support	usc.edu
 Hugo Looyestijn	testing	phys.uu.nl
 Michel Hardy-Vallee	testing	mcgill.ca
+Jonathan Pennington	testing	oregonstate.edu
 .TE
 .bp

@@ -1,7 +1,7 @@
 .RP
 .DA
 .TL
-WikiTeX 1.0 README
+WikiTeX 1.0.1 README
 .AU
 Peter Danenberg <pcd at wikitex dot org>
 .AB

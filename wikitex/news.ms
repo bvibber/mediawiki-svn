@@ -1,6 +1,6 @@
 .DA
 .TL
-WikiTeX 1.0 NEWS
+WikiTeX 1.0.1 NEWS
 .AU
 Peter Danenberg <pcd at wikitex dot org>
 .SH

@@ -1,3 +1,8 @@
+2005-02-28  Peter Danenberg  <pcd at wikitex dot org>
+
+	* wikitex.sh (wt_anch): fixed a catachrestical escape
+	which frustrated the source's display.
+
 2005-02-05  Peter Danenberg  <pcd at wikitex dot org>
 
 	* thanks.ms: added.
