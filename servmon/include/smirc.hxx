@@ -28,6 +28,8 @@ public:
 	void command_reply(str msg);
 	
 private:
+	friend class irctrmsrv;
+	
 	bool rdline(strr l);
 	void doregister(void);
 	void data_cb(int what);

@@ -65,7 +65,13 @@ wf2time_t(str wf)
 std::string
 fmtuptime(void)
 {
-	long uptime = std::time(0) - boottime;
+	return tdiff2(boottime);
+}
+	
+std::string
+tdiff2(std::time_t then, bool shrt)
+{
+	long uptime = std::time(0) - then;
 	int secs = 0, mins = 0, hours = 0, days = 0, weeks = 0;
 #define WEEK (60 * 60 * 24 * 7)
 #define DAY (60 * 60 * 24)
@@ -89,8 +95,17 @@ fmtuptime(void)
 		uptime -= MIN;
 	}
 	secs = uptime;
-	return b::io::str(format("%d weeks, %d days, %d hours, %d minutes, %d seconds")
-			  % weeks % days % hours % mins % secs);
+	if (!shrt)
+		return b::io::str(format("%d weeks, %d days, %d hours, %d minutes, %d seconds")
+				  % weeks % days % hours % mins % secs);
+	std::string s;
+	if (weeks) s += b::io::str(format("%dw") % weeks);
+	if (days)  s += b::io::str(format("%dd") % days);
+	if (hours) s += b::io::str(format("%dh") % hours);
+	if (mins)  s += b::io::str(format("%dm") % mins);
+	if (secs)  s += b::io::str(format("%ds") % secs);
+	if (s.empty()) s = "-";
+	return s;
 }
 
 std::string

@@ -32,6 +32,7 @@ std::time_t wf2time_t(str wf);
 
 std::string fmtuptime(void);
 std::string fmtboottime(void);
+std::string tdiff2(std::time_t, bool = false);
 } // namespace smutl
 
 template<class T>

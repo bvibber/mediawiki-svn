@@ -85,6 +85,8 @@ public:
 		wrt((u_char *) s.data(), s.size());
 	}
 
+	std::string remote(void) const;
+	
 	static const int maxrd = 4096;
 
 private:
@@ -371,6 +373,9 @@ public:
 		;
 	std::set<u_char> wewill, wecan, youshould, youshouldnt;
 	static const int maxln = 4096, maxrd = 4096;
+
+	std::string remote(void) const { return sc->remote(); }
+	
 private:
 	clntp sc;
 	enum { nrml, iac, sb, sb_iac, nl, cr,

@@ -35,17 +35,34 @@ public:
 	virtual int getlevel(void) const;
 	virtual void setlevel(int level);
 	virtual ~terminal(void);
-	virtual void setprmbase(str prmbase) = 0;
 
 	virtual void setinclude(str incl);
 	virtual void delinclude();
 	virtual bool includematch(str s) const;
 	virtual std::string remove_modifiers(str s);
+
+	virtual void setusername(str u);
+	virtual str getusername(void) const;
+	virtual void setmode(str m);
+	virtual str getmode(void) const;
+	virtual std::string fmtidle(void) const;
+	virtual std::time_t getlastactive(void) const;
+	virtual std::string remote(void) const = 0;
 	
-private:
+	int getid(void) const;
+
+	static std::map<int, terminal *> const& getterms(void);
+	
+protected:
 	std::map<std::string, std::string> m_data;
+	static std::map<int, terminal *> terms;
+	static int idseq;
+
+	std::time_t lastact;
 	int m_level;
+	std::string mode, username;
 	regex *incl_reg;
+	int id;
 };
 	
 struct non_interactive_terminal : std::runtime_error {
@@ -127,6 +144,8 @@ public:
 	void wrt(std::string const& s, bool force = false);
 	void chgrt(handler_node* newrt);
 	void readline(readline_cb_t cb);
+	std::string remote(void) const;
+	void setmode(str);
 	
 	bool prc_ign(char);
 	bool prc_nl(char);

@@ -6,13 +6,69 @@
 
 namespace smtrm {
 
+int terminal::idseq = 0;
+std::map<int, terminal *> terminal::terms;
+	
 terminal::terminal(void)
-: incl_reg(NULL)
+	: mode("exec")
+	, incl_reg(NULL)
+	, lastact(std::time(0))
+	, id(++idseq)
 {
+	terms[id] = this;
 }
 
 terminal::~terminal(void)
 {
+	terms.erase(id);
+}
+
+std::map<int, terminal *> const&
+terminal::getterms(void)
+{
+	return terms;
+}
+
+std::string
+terminal::fmtidle(void) const
+{
+	return smutl::tdiff2(lastact, true);
+}
+
+std::time_t
+terminal::getlastactive(void) const
+{
+	return lastact;
+}
+
+int
+terminal::getid(void) const
+{
+	return id;
+}
+	
+void
+terminal::setusername(str u)
+{
+	username = u;
+}
+
+str
+terminal::getusername(void) const
+{
+	return username;
+}
+
+void
+terminal::setmode(str m)
+{
+	mode = m;
+}
+
+str
+terminal::getmode(void) const
+{
+	return mode;
 }
 	
 bool
@@ -224,7 +280,7 @@ handler_node::_install(int level, str command, handler *h, str desc)
 trmsrv::trmsrv(smnet::tnsrvp sckt_)
 	: intf(sckt_)
 	, cmds_root(SMI(tmcmds)->stdrt)
-	, prmbase("%s [%d] exec>")
+	, prmbase("%s [%d] %s>")
 	, cd(*this)
 	, doecho(true)
 	, rlip(false)
@@ -332,6 +388,7 @@ trmsrv::prc_ign(char)
 bool
 trmsrv::prc_nl(char)
 {
+	lastact = std::time(0);
 	if (rlip) {
 		stb_nrml();
 		rlip = false;
@@ -523,16 +580,16 @@ void
 trmsrv::mkprm(void)
 {
 	try {
-		prm = boost::io::str(format(prmbase) % "servmon" % getlevel());
+		prm = boost::io::str(format(prmbase) % "servmon" % getlevel() % getmode());
 	} catch (std::exception&) {
 		prm = "[exception while creating prompt] servmon>";
 	}
 }
 	
 void
-trmsrv::setprmbase(str base)
+trmsrv::setmode(str mode)
 {
-	prmbase = base;
+	terminal::setmode(mode);
 	mkprm();
 }
 
@@ -542,4 +599,10 @@ trmsrv::is_interactive(void) const
 	return true;
 }
 
+std::string
+trmsrv::remote(void) const
+{
+	return intf->remote();
+}
+	
 } // namespace smtrm

@@ -106,6 +106,7 @@ HDL(cmd_login) {
 		if (!smauth::login_usr(trm.getdata("username"), pass)) {
 			trm.wrtln("% [E] Username or password incorrect.");
 		} else {
+			trm.setusername(trm.getdata("username"));
 			trm.setlevel(3);
 		}
 		trm.ersdata("username");
@@ -114,14 +115,10 @@ HDL(cmd_login) {
 
 HDL(cmd_exit) {
 	EX1(cd) {
-		/*
-		 * this will "succeed" even on non-interactive terminals like
-		 * IRC commands.  however, it won't actually exit on such
-		 * terminals.  the message in that case is confusing, and a
-		 * better method would be to mark terminals as non-interactive
-		 * and refuse the command.  not done yet pending untemplatification
-		 * of the terminal system.
-		 */
+		if (!cd.term.is_interactive()) {
+			cd.term.error("Cannot exit non-interactive terminals.");
+			return true;
+		}
 		cd.term.inform("Bye");
 		return false;
 	}
@@ -158,7 +155,7 @@ HDL(chg_parser) {
 	}
 	EX1(cd) {
 		cd.term.chgrt(&newp);
-		cd.term.setprmbase(prm);
+		cd.term.setmode(prm);
 		return true;
 	}
 	smtrm::handler_node& newp;
@@ -487,7 +484,7 @@ HDL(cfg_qb_rule) {
 	EX1(cd) {
 		cd.term.setdata("qb-rule", cd.p(0));
 		cd.term.chgrt(&SMI(smtrm::tmcmds)->qbrrt);
-		cd.term.setprmbase("%s [%d] conf-qb-rule>");
+		cd.term.setmode("conf-qb-rule");
 		if (!SMI(smqb::cfg)->rule_exists(cd.p(0))) {
 			SMI(smqb::cfg)->create_rule(cd.p(0));
 			cd.term.inform("Creating new rule.");
@@ -783,6 +780,26 @@ HDL(cmd_write_config) {
 	}
 };
 
+HDL(cmd_show_users) {
+	EX1(cd) {
+		std::map<int, smtrm::terminal*> const& terms =
+			smtrm::terminal::getterms();
+		cd.term.wrtln(b::io::str(b::format("%-10s %-16s %-12s %-5s %-10s %-20s")
+					% "Line" % "Username" % "Mode" % "Priv" % "Idle" % "Location"));
+		for(std::map<int, smtrm::terminal*>::const_iterator it = terms.begin(),
+			    end = terms.end(); it != end; ++it) {
+			cd.term.wrtln(b::io::str(b::format("%-10s %-16s %-12s %-5d %-10s %-20s")
+						% it->second->getid()
+						% it->second->getusername()
+						% it->second->getmode()
+						% it->second->getlevel()
+						% it->second->fmtidle()
+						% it->second->remote()));
+		}
+		return true;
+	}
+};
+
 smtrm::tmcmds::tmcmds(void)
 {
 	/* restricted non-logged commands */
@@ -806,12 +823,13 @@ smtrm::tmcmds::tmcmds(void)
 	stdrt.install(2, "show memcache server-list-command", cmd_mc_show_server_list_command(), "Show server list command");
 	stdrt.install(2, "show parser", "Show MediaWiki parser-related information");
 	stdrt.install(2, "show parser cache-statistics", cmd_mc_show_parser_cache(), "Show parser cache hit statistics");
+	stdrt.install(2, "show users", cmd_show_users(), "Display information about terminal lines");
 	stdrt.install(3, "show irc channels", cmd_irc_showchannels(), "Show configured channels");
 	stdrt.install(3, "enable", cmd_enable(), "Enter privileged mode");
 
 	/* 'enable' mode commands */
 	stdrt.install(16, "disable", cmd_disable(), "Return to non-privileged mode");
-	stdrt.install(16, "configure", chg_parser(cfgrt, "%s [%d] conf>"), "Configure servmon");
+	stdrt.install(16, "configure", chg_parser(cfgrt, "conf"), "Configure servmon");
 	stdrt.install(16, "copy", "Copy configuration file");
 	stdrt.install(16, "copy running-configuration", "Copy from current system configuration");
 	stdrt.install(16, "copy running-configuration startup-configuration", cmd_write_config(), "Copy to startup configuration");
@@ -829,22 +847,22 @@ smtrm::tmcmds::tmcmds(void)
 	stdrt.install(16, "no debug irc", cmd_no_debug_irc(), "Debug IRC connections");
 
 	/* 'configure' mode commands */
-	cfgrt.install(16, "exit", chg_parser(stdrt, "%s [%d] exec>"), "Exit configure mode");
+	cfgrt.install(16, "exit", chg_parser(stdrt, "exec"), "Exit configure mode");
 	cfgrt.install(16, "enable password", cfg_eblpass(), "Change enable password");
 	cfgrt.install(16, "function", "Configure a specific function");
-	cfgrt.install(16, "function irc", chg_parser(ircrt, "%s [%d] conf-irc>"), "Configure Internet Relay Chat connections");
-	cfgrt.install(16, "function monitor", chg_parser(monrt, "%s [%d] conf-monit>"), "Configure server monitoring");
-	cfgrt.install(16, "function memcache", chg_parser(memrt, "%s [%d] conf-memcache>"), "Configure memcached client");
+	cfgrt.install(16, "function irc", chg_parser(ircrt, "conf-irc"), "Configure Internet Relay Chat connections");
+	cfgrt.install(16, "function monitor", chg_parser(monrt, "conf-monit"), "Configure server monitoring");
+	cfgrt.install(16, "function memcache", chg_parser(memrt, "conf-memcache"), "Configure memcached client");
 	cfgrt.install(16, "user", "Define users");
 	cfgrt.install(16, "user %s", "Username");
 	cfgrt.install(16, "user %s password", cfg_userpass(), "Create a new account");
 	cfgrt.install(16, "no", "Negate a setting");
 	cfgrt.install(16, "no user", "Remove a user account");
 	cfgrt.install(16, "no user %s", cfg_no_user(), "User name");
-	cfgrt.install(16, "function querybane", chg_parser(qbrt, "%s [%d] conf-qb>"), "Configure QueryBane operation");
+	cfgrt.install(16, "function querybane", chg_parser(qbrt, "conf-qb"), "Configure QueryBane operation");
 
 	/* 'function irc' mode commands */
-	ircrt.install(16, "exit", chg_parser(cfgrt, "%s [%d] conf>"), "Exit IRC configuration mode");
+	ircrt.install(16, "exit", chg_parser(cfgrt, "conf"), "Exit IRC configuration mode");
 	ircrt.install(16, "server", "Configure IRC servers");
 	ircrt.install(16, "server %s primary-nickname %s", cfg_irc_servnick(), "Set primary nickname for IRC server");
 	ircrt.install(16, "server %s secondary-nickname %s", cfg_irc_servsecnick(),     "Set secondary nickname for IRC server");
@@ -882,7 +900,7 @@ smtrm::tmcmds::tmcmds(void)
 	monrt.install(16, "threshold mysql replication-lag %s", cfg_monit_alarm_mysql_replag(), "Maximum replication lag in seconds");
 	monrt.install(16, "threshold mysql running-threads", "Maximum number of running threads");
 	monrt.install(16, "threshold mysql running-threads %s", cfg_monit_alarm_mysql_threads(), "Maximum number of threads");
-	monrt.install(16, "exit", chg_parser(cfgrt, "%s [%d] conf>"), "Exit monitor configuration mode");
+	monrt.install(16, "exit", chg_parser(cfgrt, "conf"), "Exit monitor configuration mode");
 
 	/* 'function querybane' mode commands */
 	qbrt.install(16, "rule", "Define a new rule");
@@ -890,10 +908,10 @@ smtrm::tmcmds::tmcmds(void)
 	qbrt.install(16, "no", "Negate a setting");
 	qbrt.install(16, "no rule", "Delete a rule");
 	qbrt.install(16, "no rule %s", cfg_qb_norule(), "Rule name");
-	qbrt.install(16, "exit", chg_parser(cfgrt, "%s [%d] conf>"), "Exit querybane configuration mode");
+	qbrt.install(16, "exit", chg_parser(cfgrt, "conf"), "Exit querybane configuration mode");
 
 	/* querybane 'rule' mode commands */
-	qbrrt.install(16, "exit", chg_parser(qbrt, "%s [%d] conf-qb>"), "Exit rule configuration mode");
+	qbrrt.install(16, "exit", chg_parser(qbrt, "conf-qb"), "Exit rule configuration mode");
 	qbrrt.install(16, "description %S", cfg_qbr_description(), "Rule description");
 	qbrrt.install(16, "match-if", "Specify parameters to match this rule");
 	qbrrt.install(16, "match-if min-threads", "Match on miminum thread count");
@@ -915,5 +933,5 @@ smtrm::tmcmds::tmcmds(void)
 	/* 'function memcache' commands */
 	memrt.install(16, "server-list-command", "Set command used to obtain server list");
 	memrt.install(16, "server-list-command %S", cfg_mc_server_list_command(), "Command name");
-	memrt.install(16, "exit", chg_parser(cfgrt, "%s [%d] conf>"), "Exit memcache configuration mode");
+	memrt.install(16, "exit", chg_parser(cfgrt, "conf"), "Exit memcache configuration mode");
 };

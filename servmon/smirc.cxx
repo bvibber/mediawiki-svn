@@ -16,6 +16,10 @@ namespace smirc {
 		typedef smtrm::handler_node handler_node_t;
 		handler_node_t cmds_root;
 
+		std::string remote(void) const {
+			return "IRC:" + client.name;
+		}
+		
 		irctrmsrv(ircclnt& client_)
 			: client(client_)
 			, cd(*this)
@@ -37,6 +41,7 @@ namespace smirc {
 		
 		void parse(str line) {
 			std::string ln = line;
+			lastact = std::time(0);
 			if (!ln.size()) return;
 			cd.rst();
 			int wild;

@@ -86,6 +86,23 @@ bool clnt::connect(void) {
 	return (errno == EWOULDBLOCK) ? false : true;
 }
 
+std::string
+clnt::remote(void) const
+{
+	struct sockaddr_storage sa;
+	socklen_t namelen = sizeof(sa);
+	if (getpeername(s, (sockaddr *)&sa, &namelen) < 0) {
+		return std::strerror(errno);
+	}
+	if (type == internet) {
+		sockaddr_in *sin2 = (sockaddr_in *) &sin;
+		return std::string("INET:") + inet_ntoa(sin2->sin_addr);
+	} else {
+		sockaddr_un *sun = (sockaddr_un *) &sin;
+		return std::string("UNIX:") + sun->sun_path;
+	}
+}
+	
 shared_ptr<clnt>
 lsnr::wt_acc(void) {
 	sockaddr_storage caddr;
