@@ -169,27 +169,39 @@ class Skin {
 		$s = "";
 		$qb = $this->qbSetting();
 
+		if( $wgOut->isArticle() && $langlinks = $this->otherLanguages() ) {
+			$rows = 2;
+			$borderhack = "";
+		} else {
+			$rows = 1;
+			$langlinks = false;
+			$borderhack = "class='top'";
+		}
+
 		$s .= "\n<div id='content'>\n<div id='topbar'>" .
 		  "<table width='98%' border=0 cellspacing=0><tr>";
 
 		if ( 0 == $qb ) {
-			$s .= "<td class='top' align=left valign=top>" .
+			$s .= "<td class='top' align=left valign=top rowspan='{$rows}'>" .
 			  $this->logoText() . "</td>";
 		} else if ( 1 == $qb || 3 == $qb ) { # Left
-			$s .= $this->getQuickbarCompensator();
+			$s .= $this->getQuickbarCompensator( $rows );
 		}
-		$s .= "<td class='top' align=left valign=top>";
+		$s .= "<td {$borderhack} align=left valign=top>";
 
 		$s .= $this->topLinks() ;
 		$s .= "<p class='subtitle'>" . $this->pageTitleLinks();
-		if ( $wgOut->isArticle() ) { $s .= $this->otherLanguages(); }
 
-		$s .= "</td>\n<td class='top' valign=top align=right width=200 nowrap>";
+		$s .= "</td>\n<td {$borderhack} valign=top align=right width=200 nowrap>";
 		$s .= $this->nameAndLogin();
 		$s .= "\n<br>" . $this->searchForm() . "</td>";
 
+		if ( $langlinks ) {
+			$s .= "</tr>\n<tr><td class='top' colspan=\"2\">$langlinks;</td>";
+		}
+
 		if ( 2 == $qb ) { # Right
-			$s .= $this->getQuickbarCompensator();
+			$s .= $this->getQuickbarCompensator( $rows );
 		}
 		$s .= "</tr></table>\n</div>\n";
 		$s .= "\n<div id='article'>";
@@ -199,9 +211,9 @@ class Skin {
 		return $s;
 	}
 
-	function getQuickbarCompensator()
+	function getQuickbarCompensator( $rows = 1 )
 	{
-		return "<td width='152'>&nbsp;</td>";
+		return "<td width='152' rowspan='{$rows}'>&nbsp;</td>";
 	}
 
 	# This gets called immediately before the </body> tag.
@@ -406,7 +418,7 @@ class Skin {
 				$sep . $this->protectThisPage() .
 				$sep . $this->moveThisPage();
 			}
-			$s .= $this->otherLanguages();
+			$s .= "<br>\n" . $this->otherLanguages();
 		}
 		return $s;
 	}
@@ -726,7 +738,7 @@ class Skin {
 			$style = $this->getExternalLinkAttributes( $l, $text );
 			$s .= "<a href=\"{$url}\"{$style}>{$text}</a>";
 		}
-		return "\n<br>{$s}\n";
+		return $s;
 	}
 
 	function bugReportsLink()
