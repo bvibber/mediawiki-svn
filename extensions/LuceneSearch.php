@@ -140,6 +140,7 @@ class LuceneSearch extends SpecialPage
 
 		$text = $rev->getText();
                 $size = wfMsg('nbytes', strlen($text));
+		$text = $this->removeWiki($text);
 
                 $lines = explode("\n", $text);
 
@@ -179,6 +180,24 @@ class LuceneSearch extends SpecialPage
                 return "<li style='padding-bottom: 1em'>{$link}{$extract}<br/>"
 			."<span style='color: green; font-size: small'>$size - $date</span></li>\n";
         }
+
+	/* Basic wikitext removal */
+	function removeWiki($text) {
+		//$text = preg_replace("/'{2,5}/", "", $text);
+		$text = preg_replace("/\[[a-z]+:\/\/[^ ]+ ([^]]+)\]/", "\\2", $text);
+		//$text = preg_replace("/\[\[([^]|]+)\]\]/", "\\1", $text);
+		//$text = preg_replace("/\[\[([^]]+\|)?([^|]]+)\]\]/", "\\2", $text);
+		$text = preg_replace("/\\{\\|(.*?)\\|\\}/", "", $text);
+		$text = preg_replace("/\\[\\[[A-Za-z_-]+:([^|]+?)\\]\\]/", "", $text);
+		$text = preg_replace("/\\[\\[([^|]+?)\\]\\]/", "\\1", $text);
+		$text = preg_replace("/\\[\\[([^|]+\\|)(.*?)\\]\\]/", "\\2", $text);
+		$text = preg_replace("/<\/?[^>]+>/", "", $text);
+		$text = preg_replace("/'''''/", "", $text);
+		$text = preg_replace("/('''|<\/?[iIuUbB]>)/", "", $text);
+		$text = preg_replace("/''/", "", $text);
+
+		return $text;
+	}
 
 	function doLuceneSearch( $query ) {
 		global $wgLuceneHost, $wgLucenePort;
