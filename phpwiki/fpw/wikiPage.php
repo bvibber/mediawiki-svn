@@ -976,14 +976,13 @@ class WikiPage extends WikiTitle {
 
 	if ( $user->options["skin"] == "Nostalgy" ) {
         	$ret = "<a href=\"".wikiLink("")."\"><img border=0 align=right src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a>\n" ;
+        	if ( $this->isSpecialPage && $action == "" ) $ret .= "<font size=\"+3\">".$t."</font>" ;
 	} else {
 	        $ret = "<table ".$user->options["quickBarBackground"]. "width=\"100%\" class=\"topbar\" cellspacing=0>\n<tr>" ;
 	        if ( $user->options["leftImage"] != "" )
         	    $ret .= "<td width=\"1%\" rowspan=2 bgcolor=\"#000000\"><img src=\"".$user->options["leftImage"]."\"></td>" ;
 	        $ret .= "<td valign=top height=1>" ;
-        	if ( $this->isSpecialPage ) {
-	            $ret .= "<font size=\"+3\">".$t."</font>" ;
-		}
+        	if ( $this->isSpecialPage && $action == "" ) $ret .= "<font size=\"+3\">".$t."</font>" ;
 	}
 	if ( $action == "" ) {
        	        $ret .= "<br>\n<br>\n<a href=\"".wikiLink("special:whatlinkshere&target=$this->url")."\">$wikiWhatLinksHere</a>" ;
