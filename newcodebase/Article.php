@@ -284,6 +284,7 @@ class Article {
 			$s = str_replace( "$1", $redir, wfMsg( "redirectedfrom" ) );
 			$wgOut->setSubtitle( $s );
 		}
+		$wgOut->checkLastModified( $this->mTimestamp );
 		$wgLinkCache->preFill( $wgTitle );
 		$wgOut->addWikiText( $text );
 

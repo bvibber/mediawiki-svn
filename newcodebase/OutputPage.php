@@ -83,6 +83,7 @@ class OutputPage {
 	var $mLinktags, $mPagetitle, $mBodytext, $mDebugtext;
 	var $mHTMLtitle, $mRobotpolicy, $mIsarticle, $mPrintable;
 	var $mSubtitle, $mRedirect, $mAutonumber, $mHeadtext;
+	var $mLastModified;
 
 	var $mDTopen, $mLastSection; # Used for processing DL, PRE
 	var $mLanguageLinks, $mSupressQuickbar;
@@ -92,7 +93,7 @@ class OutputPage {
 		$this->mHeaders = $this->mCookies = $this->mMetatags =
 		$this->mKeywords = $this->mLinktags = array();
 		$this->mHTMLtitle = $this->mPagetitle = $this->mBodytext =
-		$this->mLastSection = $this->mRedirect = 
+		$this->mLastSection = $this->mRedirect = $this->mLastModified =
 		$this->mSubtitle = $this->mDebugtext = $this->mRobotpolicy = "";
 		$this->mIsarticle = $this->mPrintable = true;
 		$this->mSupressQuickbar = $this->mDTopen = $this->mPrintable = false;
@@ -108,6 +109,21 @@ class OutputPage {
 	function addMeta( $name, $val ) { array_push( $this->mMetatags, array( $name, $val ) ); }
 	function addKeyword( $text ) { array_push( $this->mKeywords, $text ); }
 	function addLink( $rel, $rev, $target ) { array_push( $this->mLinktags, array( $rel, $rev, $target ) ); }
+
+	function checkLastModified ( $timestamp )
+	{
+		global $wgLang;
+		$ismodsince = $_SERVER["HTTP_IF_MODIFIED_SINCE"];
+		$lastmod = $wgLang->rfc1123( wfTimestamp2Unix( $timestamp ) );
+		
+		if( $ismodsince == $lastmod ) {
+			# Make sure you're in a place you can leave when you call us!
+			header( "HTTP/1.0 304 Not Modified" );
+			exit;
+		} else {
+			$this->mLastModified = $lastmod;
+		}
+	}
 
 	function setRobotpolicy( $str ) { $this->mRobotpolicy = $str; }
 	function setHTMLtitle( $name ) { $this->mHTMLtitle = $name; }
@@ -222,10 +238,15 @@ class OutputPage {
 		$sk = $wgUser->getSkin();
 
 		wfProfileIn( "OutputPage::output-headers" );
-		header( "Expires: 0" );
-		header( "Cache-Control: no-cache" );
-		header( "Pragma: no-cache" );
-		header( "Last-modified: " . gmdate( "D, j M Y H:i:s" ) . " GMT" );
+		header( "Expires: Thu, 01 Dec 1994 16:00:00 GMT" ); # Cachers always validate the page!
+		if( $this->mLastModified != "" ) {
+			header( "Last-modified: {$this->mLastModified}" );
+			header( "Cache-Control: must-revalidate" );
+		} else {
+			header( "Cache-Control: no-cache" );
+			header( "Pragma: no-cache" );
+			header( "Last-modified: " . gmdate( "D, j M Y H:i:s" ) . " GMT" );
+		}
 
 		header( "Content-type: text/html; charset={$wgOutputEncoding}" );
 		header( "Content-language: {$wgLanguageCode}" );

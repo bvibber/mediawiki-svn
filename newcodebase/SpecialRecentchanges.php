@@ -6,6 +6,11 @@ function wfSpecialRecentchanges()
 	global $days, $limit, $hideminor, $from, $hidebots; # From query string
 	$fname = "wfSpecialRecentchanges";
 
+	$sql = "SELECT MAX(rc_timestamp) AS lastmod FROM recentchanges";
+	$res = wfQuery( $sql, $fname );
+	$s = wfFetchObject( $res );
+	$wgOut->checkLastModified( $s->lastmod );
+
 	$wgOut->addWikiText( wfMsg( "recentchangestext" ) );
 
 	if ( ! $days ) {

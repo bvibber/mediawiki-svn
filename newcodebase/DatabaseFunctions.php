@@ -101,21 +101,18 @@ function wfGetSQL( $table, $var, $cond )
 function wfStrencode( $s )
 {
 	return addslashes( $s );
-
-	$s = str_replace( "\\", "\\\\", $s );
-	$s = str_replace( "\r", "\\r", $s );
-	$s = str_replace( "\n", "\\n", $s );
-	$s = str_replace( "\"", "\\\"", $s );
-	$s = str_replace( "'", "\\'", $s );
-	$s = str_replace( "\0", "\\0", $s );
-	return $s;
 }
 
-# This function is unused and deprecated
-function wfStripForSearch( $in )
-{
-	$out = preg_replace( "/[^A-Za-z0-9_\\xA0-\\xFF]+/", "", $in );
-	return $out;
+# Ideally we'd be using actual time fields in the db
+function wfTimestamp2Unix( $ts ) {
+	return mktime( ( (int)substr( $ts, 8, 2) ),
+		  (int)substr( $ts, 10, 2 ), (int)substr( $ts, 12, 2 ),
+		  (int)substr( $ts, 4, 2 ), (int)substr( $ts, 6, 2 ),
+		  (int)substr( $ts, 0, 4 ) );
+}
+
+function wfUnix2Timestamp( $unixtime ) {
+	return date( "YmdHis", $timestamp );
 }
 
 ?>
