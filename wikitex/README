@@ -81,9 +81,10 @@
 
 
 Introduction . . . . . . . . . . . . . . . . . . . . . .   1
+Acquisition  . . . . . . . . . . . . . . . . . . . . . .   1
 Installation . . . . . . . . . . . . . . . . . . . . . .   1
-Expanding WikiTeX  . . . . . . . . . . . . . . . . . . .   2
-Copyright  . . . . . . . . . . . . . . . . . . . . . . .   3
+Expansion  . . . . . . . . . . . . . . . . . . . . . . .   2
+Copyright  . . . . . . . . . . . . . . . . . . . . . . .   4
 
 1.  Introduction
 
@@ -95,7 +96,20 @@ Copyright  . . . . . . . . . . . . . . . . . . . . . . .   3
      WikiTeX'   versio   maiora  will  reflect  MediaWiki's;
      minora, however, our proper mutations.
 
-2.  Installation
+2.  Acquisition
+
+          Unadorned WikiTeX is available via  anonymous  CVS
+     from SourceForge:
+
+     cvs -d:pserver:anonymous@cvs.sf.net:/cvsroot/wikipedia \
+     co wikitex
+
+     Alternatively,  WikiTeX comes prepackaged with the lat-
+     est MediaWiki; see:
+
+          http://wikisophia.org/wikitex
+
+3.  Installation
 
           In addition to sucessfully configuring  MediaWiki,
      installation  consists  of  these  threefold steps; and
@@ -104,20 +118,6 @@ Copyright  . . . . . . . . . . . . . . . . . . . . . . .   3
           1.   Render /extensions/wikitex/tmp  scribable  to
                the web server, but beware to disable script-
                ing.
-
-          2.   Verify that ImageMagick (imagemagick.org)  is
-               present,    and    acquire    Norman   Gray's
-               dvi2bitmap:
-
-          http://astro.gla.ac.uk/users/norman/star/dvi2bitmap
-
-               Run ./configure with the --enable-gif option.
-
-          3.   Install as many of the following LaTeX  pack-
-               ages  as  you  would  like to support, or add
-               your own (see Expanding WikiTeX):
-
-
 
 
 
@@ -136,6 +136,18 @@ Copyright  . . . . . . . . . . . . . . . . . . . . . . .   3
                              -2-
 
 
+          2.   Verify that ImageMagick (imagemagick.org)  is
+               present,    and    acquire    Norman   Gray's
+               dvi2bitmap:
+
+          http://astro.gla.ac.uk/users/norman/star/dvi2bitmap
+
+               Run ./configure with the --enable-gif option.
+
+          3.   Install as many of the following LaTeX  pack-
+               ages  as  you  would  like to support, or add
+               your own (see Expanding WikiTeX):
+
      Class    Package          Author              URL
      --------------------------------------------------------
      chem   PPCH-TeX     Hans Hagen           pragma-ade.com
@@ -152,7 +164,7 @@ Copyright  . . . . . . . . . . . . . . . . . . . . . . .   3
      xym    XyMTeX       Shinsaku Fujita      kit.ac.jp
 
 
-3.  Expanding WikiTeX
+4.  Expanding WikiTeX
 
           Adding novel packages to WikiTeX can  be  achieved
      in  several  discrete  steps; after you have downloaded
@@ -175,6 +187,21 @@ Copyright  . . . . . . . . . . . . . . . . . . . . . . .   3
 
                Consult wikitex.sh for examples.
 
+
+
+
+
+
+
+                      6 September 2004
+
+
+
+
+
+                             -3-
+
+
           3.   Lastly,  if  the package contains undesirable
                or insecure directives, add them to:
 
@@ -193,13 +220,52 @@ Copyright  . . . . . . . . . . . . . . . . . . . . . . .   3
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                       6 September 2004
 
 
 
 
 
-                             -3-
+                             -4-
 
 
 WikiTeX: expansible LaTeX module for MediaWiki
