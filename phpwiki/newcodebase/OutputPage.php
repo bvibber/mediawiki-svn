@@ -528,10 +528,10 @@ class OutputPage {
 		$this->setRobotpolicy( "noindex,nofollow" );
 		$this->setArticleFlag( false );
 
-		$msg = str_replace( "$1", wfLastDBquery(), wfMsg( "dberrortext" ) );
-		$msg = str_replace( "$2", $fname, $msg );
+		$msg = str_replace( "$1", htmlspecialchars( wfLastDBquery() ), wfMsg( "dberrortext" ) );
+		$msg = str_replace( "$2", htmlspecialchars( $fname ), $msg );
 		$msg = str_replace( "$3", wfLastErrno(), $msg );
-		$msg = str_replace( "$4", wfLastError(), $msg );
+		$msg = str_replace( "$4", htmlspecialchars( wfLastError() ), $msg );
 
 		$sk = $wgUser->getSkin();
 		$shlink = $sk->makeKnownLink( wfMsg( "searchhelppage" ),

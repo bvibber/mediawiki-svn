@@ -84,7 +84,7 @@ class SqlQueryForm {
 
 			$r = "<table border=1 bordercolor=black cellspacing=0 " .
 			  "cellpadding=2><tr>\n";
-			foreach ( $k as $x ) $r .= "<th>{$x}</th>";
+			foreach ( $k as $x ) $r .= "<th>" . htmlspecialchars( $x ) . "</th>";
 			$r .= "</tr>\n";
 
 			foreach ( $a as $y ) {
@@ -92,8 +92,11 @@ class SqlQueryForm {
 				foreach ( $k as $x ) {
 					$o = $y->$x ;
 					if ( $x == "cur_title" or $x == "old_title" ) {
-						$o = str_replace ( "$1" , $o , $wgArticlePath ) ;
-						$o = "<a href=\"{$o}\" class='internal'>{$y->$x}</a>" ;
+						$o = str_replace ( "$1" , rawurlencode( $o ) , $wgArticlePath ) ;
+						$o = "<a href=\"{$o}\" class='internal'>" .
+						  htmlspecialchars( $y->$x ) . "</a>" ;
+						} else {
+						$o = htmlspecialchars( $o );
 						}
 					$r .= "<td>" . $o . "</td>\n";
 				}
