@@ -1,4 +1,7 @@
 <?
+
+# quelques modifications / Utilisateur:MarcQuinton
+# - j'ai laissé en commentaire les strings originales, et placé ma signature (MQ)
 		
 # The names of the namespaces can be set here, but the numbers
 # are magical, so don't change or move them!  The Namespace class
@@ -34,7 +37,7 @@
 	"hideminor" => "Cacher les <i>Modifications récentes</i> mineures",
 	"numberheadings" => "Numérotation automatique des titres",
 	"rememberpassword" => "Se souvenir de mon mot de passe (cookie)",
-    "editwidth" => "Edit box has full width"
+    "editwidth" => "La fenetre d'édition est en pleine largeur"
 );
 
 /* Replace these with some French bookshops/lookup places */
@@ -226,20 +229,20 @@
 	"Allpages"  => "Toutes les pages",
 
 	"Ipblocklist" => "Adresses IP bloquées",
-	"Maintenance" => "Maintenance page",
-	"Specialpages"  => "",
-	"Contributions" => "",
-	"Emailuser"  => "",
-	"Whatlinkshere" => "",
-	"Recentchangeslinked" => "",
-	"Movepage"  => "",
+	"Maintenance" => "Page de Maintenance",
+	"Specialpages"  => "",	# "Pages Spéciales", # Cettes pages doient être vides
+	"Contributions" => "",	# "Contributions",   # car elles n'ont pas que l'interface
+	"Emailuser"  => "",		# "Email utilisateur", # diret.
+	"Whatlinkshere" => "",	#"Liens pointant ici",
+	"Recentchangeslinked" => "", #"Dernieres modifications",
+	"Movepage"  => "",		#"Page déplacée",
 	"Booksources" => "Librairies en ligne"
 );
 
 /* private */ $wgSysopSpecialPagesFr = array(
 	"Blockip"  => "Bloquer une adresse IP",
 	"Asksql"  => "Accès SQL",
-	"Undelete"      => "View and restore deleted pages"
+	"Undelete"      => "Voir et restaurer les pages effacées" // MQ "View and restore deleted pages"
 );
 
 /* private */ $wgDeveloperSpecialPagesFr = array(
@@ -635,6 +638,7 @@ cette ancienne version, (rétab) = rétablir cette ancienne version.
 Ce chiffre inclut les pages \"discussion\", les pages relatives à Wikipédia, les pages minimales (\"bouchons\"),  les pages de redirection, ainsi que d'autres pages qui ne peuvent sans doute pas être considérées comme des articles.
 Si l'on exclut ces pages, il reste <b>$2</b> pages qui sont probablement de véritables articles.<p>
 <b>$3</b> pages ont été consultées et <b>$4</b> pages modifiées
+
 depuis la mise à jour du logiciel (?? ???? 2002).
 Cela représente une moyenne de <b>$5</b> modifications par page et de <b>$6</b> consultations pour une modification.",
 "userstatstext" => "Il y a <b>$1</b> utilisateurs enregistrés.
@@ -643,19 +647,22 @@ Parmi ceux-ci, <b>$2</b> ont le statut d'administrateur (voir $3).",
 
 # Maintenance Page
 #
-"maintenance"		=> "Maintenance page",
-"maintnancepagetext"	=> "This page includes several handy tools for everyday maintenance. Some of these functions tend to stress the database, so please do not hit reload after every item you fixed ;-)",
-"maintenancebacklink"	=> "Back to Maintenance Page",
+"maintenance"		=> "Page de maintenance",
+"maintnancepagetext"	=> "Cette page inclue plusieurs utilitaires pour la maintenance quotidienne. Certain de ces outils ont tendance à charger la base de données; ne rechargez pas la page a chaque modification.",
+//MQ "This page includes several handy tools for everyday maintenance. Some of these functions tend to stress the database, so please do not hit reload after every item you fixed ;-)",
+"maintenancebacklink"	=> "Retour à la page de maintenance", // "Back to Maintenance Page",
 "disambiguations"	=> "Disambiguation pages",
 "disambiguationspage"	=> "Wikipedia:Links_to_disambiguating_pages",
 "disambiguationstext"	=> "The following articles link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br>A page is treated as dismbiguation if it is linked from $1.<br>Links from other namespaces are <i>not</i> listed here.",
-"doubleredirects"	=> "Double Redirects",
+"doubleredirects"	=> "Double redirection", // MQ
 "doubleredirectstext"	=> "<b>Attention:</b> This list may contain false positives. That usually means there is additional text with links below the first #REDIRECT.<br>\nEach row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" taget article, which the first redirect should point to.",
-"selflinks"		=> "Pages with Self Links",
-"selflinkstext"		=> "The following pages contain a link to themselves, which they should not.",
+"selflinks"		=> "Page avec un lien circulaire", // MQ "Pages with Self Links",
+"selflinkstext"		=> "Les pages suivantes contiennent un lien sur elles-memes, ce qui n'est pas permis.", 
+// MQ "The following pages contain a link to themselves, which they should not.",
 "missinglanguagelinks"  => "Missing Language Links",
-"missinglanguagelinksbutton"    => "Find missing language links for",
-"missinglanguagelinkstext"      => "These articles do <i>not</i> link to their counterpart in $1. Redirects and subpages are <i>not</i> shown.",
+"missinglanguagelinksbutton"    => "Je n'ai pas trouvé de lien/langage pour cette page", // MQ "Find missing language links for",
+"missinglanguagelinkstext"      => "Ces articles ne lient pas à leur 'contre-parties' in $1. Les redirections et les liens ne sont pas affichés.",
+// MQ "These articles do <i>not</i> link to their counterpart in $1. Redirects and subpages are <i>not</i> shown.",
 
 
 # Miscellaneous special pages
@@ -751,15 +758,16 @@ L'heure indiquée est celle du serveur (UTC).
 <ul>
 </ul>
 ",
-"deletionlog" => "deletion log",
+"deletionlog" => "trace des effacements", // MQ "deletion log",
 "reverted"  => "Rétablissement de la version précédente",
 "deletecomment" => "Motif de la suppression",
 "imagereverted" => "La version précédente a été rétablie.",
-"undelete" => "Restore deleted page",
-"undeletepage" => "View and restore deleted pages",
-"undeletepagetext" => "The following pages have been deleted but are still in the archive and
-can be restored. The archive may be periodically cleaned out.",
-"undeletearticle" => "Restore deleted article",
+"undelete" => "Restaurer la page effacée", // MQ "Restore deleted page",
+"undeletepage" => "Voir et restaurer la page effacée", // MQ "View and restore deleted pages",
+"undeletepagetext" => "Cette page viens d'etre effacée et mise dans la corbeille,  elle est toujours en base de donnée et peut etre restaurée.
+La corbeille peut etre effacée periodiquement.", // MQ
+"The following pages have been deleted but are still in the archive and can be restored. The archive may be periodically cleaned out.",
+"undeletearticle" => "Restaurer les articles effacés", // MQ "Restore deleted article",
 "undeleterevisions" => "$1 revisions archived",
 "undeletehistory" => "If you restore the page, all revisions will be restored to the history.
 If a new page with the same name has been created since the deletion, the restored
