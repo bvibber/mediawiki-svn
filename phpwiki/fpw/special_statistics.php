@@ -1,7 +1,9 @@
 <?
 function statistics () {
 	global $THESCRIPT , $wikiSQLServer , $wikiStatisticsTitle , $wikiStatTotalPages ;
-	global $wikiStatTalkPages , $wikiStatCommaPages , $wikiStatWikipediaNoTalk , $wikiStatSubNoTalk , $wikiStatNoTalk , $wikiStatArticles , $wikiStatJunk , $wikiStatOld , $wikiStatUsers , $wikiStatSysops ;
+	global $wikiStatTalkPages , $wikiStatCommaPages , $wikiStatWikipediaNoTalk , $wikiStatSubNoTalk ,
+		$wikiStatNoTalk , $wikiStatArticles , $wikiStatJunk , $wikiStatOld , $wikiStatUsers , $wikiStatSysops ,
+		$wikiTalk ;
 	$connection=getDBconnection() ;
 	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$ret = "" ;
@@ -9,6 +11,9 @@ function statistics () {
 
 	$nf1 = "<font color=red><b>" ;
 	$nf2 = "</b></font>" ;
+	
+	$Talk = ucfirst ( $wikiTalk ) ;
+	$talk = $wikiTalk ;
 
 	# TOTAL	
 	$sql = "SELECT COUNT(*) AS number FROM cur" ;
@@ -19,7 +24,7 @@ function statistics () {
 	mysql_free_result ( $result ) ;
 
 	# /TALK
-	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title LIKE \"%/Talk\" OR cur_title LIKE \"Talk:%\"" ;
+	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title LIKE \"%/$Talk\" OR cur_title LIKE \"$Talk:%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$talkPages = $s->number ;
@@ -27,7 +32,7 @@ function statistics () {
 	mysql_free_result ( $result ) ;
 
 	# , NOT /TALK
-	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/Talk\" AND cur_title NOT LIKE \"talk:%\" AND cur_text LIKE \"%,%\"" ;
+	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/$Talk\" AND cur_title NOT LIKE \"$talk:%\" AND cur_text LIKE \"%,%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$commaPages = $s->number ;
@@ -35,7 +40,7 @@ function statistics () {
 	mysql_free_result ( $result ) ;
 
 	# WIKIPEDIA NOT /TALK
-	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/Talk\" AND cur_title NOT LIKE \"talk:%\" AND cur_title LIKE \"%ikipedia%\"" ;
+	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/$Talk\" AND cur_title NOT LIKE \"$talk:%\" AND cur_title LIKE \"%ikipedia%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$wikiPages = $s->number ;
