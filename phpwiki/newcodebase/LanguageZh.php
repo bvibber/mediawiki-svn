@@ -1002,6 +1002,8 @@ class LanguageZh extends Language {
 		foreach ( $wgNamespaceNamesZh as $i => $n ) {
 			if ( 0 == strcasecmp( $n, $text ) ) { return $i; }
 		}
+		# Aliases
+        if ( 0 == strcasecmp( "Special", $text ) ) { return -1; }
 		return false;
 	}
 
