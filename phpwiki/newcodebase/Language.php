@@ -320,7 +320,7 @@ MySQL returned error \"<tt>$3: $4</tt>\".",
 "readonlytext"	=> "The Wikipedia database is currently locked to new
 entries and other modifications, probably for routine database maintenance.
 Please try again later.\n",
-"missingarticle" => "The database did not find the text of an article
+"missingarticle" => "The database did not find the text of a page
 that it should have found, named \"$1\".
 This is not a database error, but likely a bug in the software.
 Please report this to an administrator, making note of the URL.",
@@ -331,7 +331,7 @@ Please report this to an administrator, making note of the URL.",
 "filenotfound"	=> "Could not find file \"$1\".",
 "unexpected"	=> "Unexpected value: \"$1\"=\"$2\".",
 "formerror"		=> "Error: could not submit form",	
-"badarticleerror" => "This action cannot be performed on this article.",
+"badarticleerror" => "This action cannot be performed on this page.",
 
 # Login and logout pages
 #
@@ -389,7 +389,7 @@ Please log in again after you receive it.",
 #
 "summary"		=> "Summary",
 "minoredit"		=> "This is a minor edit.",
-"savearticle"	=> "Save article",
+"savearticle"	=> "Save page",
 "preview"		=> "Preview",
 "showpreview"	=> "Show preview",
 "blockedtitle"	=> "User is blocked",
@@ -397,8 +397,8 @@ Please log in again after you receive it.",
 The reason given is this:<br>$2<p>You may contact the administrator to
 discuss the block.",
 "newarticle"	=> "(New)",
-"newarticletext" => "Put your text for the new article here.",
-"noarticletext" => "(There is currently no text in this article)",
+"newarticletext" => "Put your text for the new page here.",
+"noarticletext" => "(There is currently no text in this page)",
 "updated"		=> "(Updated)",
 "note"			=> "<strong>Note:</strong> ",
 "previewnote"	=> "Remember that this is only a preview, and has not yet been saved!",
@@ -406,17 +406,17 @@ discuss the block.",
 text editing area as it will appear if you choose to save.",
 "editing"		=> "Editing $1",
 "editconflict"	=> "Edit conflict: $1",
-"explainconflict" => "Someone else has changed this article since you
+"explainconflict" => "Someone else has changed this page since you
 started editing it.
-The upper text area contains the article text as it currently exists.
+The upper text area contains the page text as it currently exists.
 Your changes are shown in the lower text area.
 You will have to merge your changes into the existing text.
 <b>Only</b> the text in the upper text area will be saved when you
-press \"Save\".\n<p>",
+press \"Save page\".\n<p>",
 "yourtext"		=> "Your text",
 "storedversion" => "Stored version",
 "editingold"	=> "<strong>WARNING: You are editing an out-of-date
-revision of this article.
+revision of this page.
 If you save it, any changes made since this revision will be lost.</strong>\n",
 "yourdiff"		=> "Differences",
 "copyrightwarning" => "Please note that all contributions to Wikipedia are
@@ -436,7 +436,7 @@ public domain or similar free resource.
 "revnotfound"	=> "Revision not found",
 "revnotfoundtext" => "The old revision of the page you asked for could not be found.
 Please check the URL you used to access this page.\n",
-"loadhist"		=> "Loading article history",
+"loadhist"		=> "Loading page history",
 "currentrev"	=> "Current revision",
 "revisionasof"	=> "Revision as of $1",
 "cur"			=> "cur",
@@ -571,7 +571,7 @@ Please name your files descriptively to avoid confusion.
 To include the image in an article, use a link in the form
 <b>[[image:file.jpg]]</b> or <b>[[image:file.png|alt text]]</b>
 or <b>[[media:file.ogg]]</b> for sounds.
-<p>Please note that as with Wikipedia articles, others may edit or
+<p>Please note that as with Wikipedia pages, others may edit or
 delete your uploads if they think it serves the encyclopedia, and
 you may be blocked from uploading if you abuse the system.",
 "uploadlog"		=> "upload log",
@@ -625,8 +625,8 @@ created and by whom, and anything else you may know about it.",
 "imghistlegend" => "Legend: (cur) = this is the current image, (del) = delete
 this old version, (rev) = revert to this old version.",
 "imagelinks"	=> "Image links",
-"linkstoimage"	=> "The following articles link to this image:",
-"nolinkstoimage" => "There are no articles that link to this image.",
+"linkstoimage"	=> "The following pages link to this image:",
+"nolinkstoimage" => "There are no pages that link to this image.",
 
 # Statistics
 #
@@ -695,7 +695,7 @@ to modify your watchlist.",
 "confirm"		=> "Confirm",
 "confirmdelete" => "Confirm delete",
 "deletesub"		=> "(Deleting \"$1\")",
-"confirmdeletetext" => "You are about to permanently delete an article
+"confirmdeletetext" => "You are about to permanently delete a page
 or image along with all of its history from the database.
 Please confirm that you intend to do this, that you understand the
 consequences, and that you are doing this in accordance with
@@ -705,7 +705,7 @@ consequences, and that you are doing this in accordance with
 "deletedtext"	=> "\"$1\" has been deleted.
 See $2 for a record or recent deletions.",
 "deletedarticle" => "deleted \"$1\"",
-"dellogpage"	=> "Article_deletion_log",
+"dellogpage"	=> "Deletion_log",
 "dellogpagetext" => "Below is a list of the most recent deletions.
 All times shown are server (U.S. Pacific) time.
 <ul>
@@ -811,12 +811,13 @@ Links to the old page title will not be changed, and the talk
 page, if any, will not be moved.
 Please be sure you understand the consequences of this before
 proceeding.",
-"movearticle"	=> "Move article",
+"movearticle"	=> "Move page",
 "newtitle"		=> "To new title",
 "movepagebtn"	=> "Move page",
 "pagemovedsub"	=> "Move succeeded",
 "pagemovedtext" => "Page \"$1\" moved to \"$2\".",
-"articleexists" => "An article of that name already exists.
+"articleexists" => "A page of that name already exists, or the
+name you have chosen is not valid.
 Please choose another name.",
 "movedto"		=> "moved to",
 
