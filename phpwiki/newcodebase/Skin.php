@@ -162,9 +162,9 @@ class Skin {
 			if ( $wgOut->isArticle() ) {
 				$s .= "<p class=\"subtitle\">"
 				  . $this->makeLink( wfMsg( "mainpage" ),
-				  WfMsg( "printableversion" ), "print" )
+				  WfMsg( "printableversion" ), "action=print" )
 				  . " | " . $this->makeLink( "Special:Whatlinkshere",
-				  wfMsg( "whatlinkshere" ), "", $wgTitle->getPrefixedURL() );
+				  wfMsg( "whatlinkshere" ), "target=" . $wgTitle->getPrefixedURL() );
 
 				$s .= $this->otherLanguages();
 			}
@@ -174,15 +174,18 @@ class Skin {
 
 	function nameAndLogin()
 	{
-		global $wgUser;
+		global $wgUser, $wgTitle;
 
-		$n = $wgUser->getName();
 		if ( 0 == $wgUser->getID() ) {
-			$s .= $n . "\n<br>" . $this->specialLink( "userlogin" );
+			$n = getenv( "REMOTE_ADDR" );
+			$s .= $n . "\n<br>" . $this->makeLink( "Special:Userlogin",
+			  wfMsg( "login" ), "returnto=" . $wgTitle->getPrefixedURL() );
 		} else {
-			$s .= $this->makeLink( "User:$n", $n ) . "<br>"
-			  . $this->specialLink( "userlogout" ) . " | "
-			  . $this->specialLink( "preferences" );
+			$n = $wgUser->getName();
+			$s .= $this->makeLink( "User:$n", $n ) . "<br>" .
+			  $this->makeLink( "Special:Userlogout", wfMsg( "logout" ),
+			  "returnto=" . $wgTitle->getPrefixedURL() ) . " | " .
+			  $this->specialLink( "preferences" );
 		}
 		$s .= " | " . $this->makeLink( "Wikipedia:Help", wfMsg( "help" ) ); 
 
@@ -289,7 +292,7 @@ class Skin {
 			$s = "(Special page)";
 		} else if ( $wgTitle->userCanEdit() ) {
 			$s = $this->makeLink( $wgTitle->getPrefixedText(),
-			  wfMsg( "editthispage" ), "edit" );
+			  wfMsg( "editthispage" ), "action=edit" );
 		} else {
 			$s = "Protected page";
 		}
@@ -301,7 +304,7 @@ class Skin {
 		global $wgTitle;
 
 		$s = $this->makeLink( $wgTitle->getPrefixedText(),
-		  wfMsg( "history" ), "history" );
+		  wfMsg( "history" ), "action=history" );
 		return $s;
 	}
 
@@ -313,7 +316,7 @@ class Skin {
 			$s = "(Special page)";
 		} else {
 			$s = $this->makeLink( "Special:Recentchangeslinked",
-			  wfMsg( "recentchangeslinked" ), "", $wgTitle->getPrefixedURL() );
+			  wfMsg( "recentchangeslinked" ), "target=" . $wgTitle->getPrefixedURL() );
 		}
 		return $s;
 	}
@@ -412,39 +415,43 @@ class Skin {
 		return $text;
 	}
 
-	function makeInternalLink( $title, $text= "", $action = "", $target = "" )
+	function makeInternalLink( $title, $text= "", $action = "", $target = "",
+	  $trail = "" )
 	{
 		$nt = Title::newFromText( $title );
 		if ( "Special" == $nt->getNamespace() ) {
 			return $this->makeLink( $title, $text );
 		}
 		if ( 0 == $nt->getArticleID() ) {
-			return $this->makeBrokenLink( $title, $text );
+			return $this->makeBrokenLink( $title, $text ) . $trail;
 		} else {
-			return $this->makeLink( $title, $text, $action, $target );
+			return $this->makeLink( $title, $text, $query, $trail );
 		}
 	}
 
-	function makeLink( $title, $text = "", $action = "", $target = "" )
+	function makeLink( $title, $text = "", $query = "", $trail = "" )
 	{
 		global $wgServer, $wgScript, $wgArticlePath, $wgTitle;
 
 		$nt = Title::newFromText( $title );
 		$link = $nt->getPrefixedURL();
 
-		if ( "" == $action && "" == $target ) {
+		if ( "" == $query ) {
 			$u = str_replace( "$1", $link, $wgArticlePath );
-		} else if ( "" != $action ) {
-			$u = "$wgServer$wgScript?title=$link&action=$action";
-		} else if ( "" != $target ) {
-			$tt = Title::newFromURL( $target );
-			$t = $tt->getPrefixedURL();
-			$u = "$wgServer$wgScript?title=$link&target=$t";
+		} else {
+			$u = "$wgServer$wgScript?title=$link&$query";
 		}
 		if ( "" == $text ) { $text = $nt->getPrefixedText(); }
 		$style = $this->getInternalLinkAttributes( $link, $text );
 
-		$r = "<a href=\"$u\"$style>$text</a>";
+		$inside = "";
+		if ( "" != $trail ) {
+			if ( preg_match( "/^([a-z]+)(.*)$$/sD", $trail, $m ) ) {
+				$inside = $m[1];
+				$trail = $m[2];
+			}
+		}
+		$r = "<a href=\"$u\"$style>$text$inside</a>$trail";
 		return $r;
 	}
 

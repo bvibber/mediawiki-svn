@@ -42,6 +42,7 @@
 "mainpage"		=> "Main Page",
 "errorpagetitle" => "Erorr",
 "returntomain"	=> "Return to the [[Main Page]].",
+"returnto"		=> "Return to [[$1]].",
 "fromwikipedia"	=> "From Wikipedia, the free encyclopedia.",
 "whatlinkshere"	=> "Pages that link here",
 "help"			=> "Help",
@@ -64,8 +65,13 @@ recognized by the Wikipedia software",
 
 # Database errors
 #
+"databaseerror" => "Database error",
+"dberrortext"	=> "An unrecoverable database error has occurred.
+Please report this to an administrator.
+The operation being attempted was: $1.",
 "noconnect"		=> "Could not connect to DB on $1",
 "nodb"			=> "Could not select database $1",
+"updatingarticle" => "updating an article",
 
 # Login and logout pages
 #
@@ -78,9 +84,9 @@ again as the same or as a different user.\n",
 Don't forget to personalize your wikipedia preferences.",
 
 "loginpagetitle" => "User login",
-"yourname"		=> "Your user name&nbsp; : ",
-"yourpassword"	=> "Your password&nbsp;&nbsp; : ",
-"yourpasswordagain" => "Retype password : ",
+"yourname"		=> "Your user name",
+"yourpassword"	=> "Your password",
+"yourpasswordagain" => "Retype password",
 "newusersonly"	=> " (new users only)",
 "remembermypassword" => "Remember my password across sessions.",
 "loginproblem"	=> "<b>There has been a problem with your login.</b><br>Try again!",
@@ -98,8 +104,8 @@ that it be to the address you give.<br>\n",
 "createaccount"	=> "Create new account",
 "badretype"		=> "The passwords you entered do not match.",
 "userexists"	=> "The user name you entered is already in use. Please choosea different name.",
-"youremail"		=> "Your e-mail: ",
-"emailforlost"	=> "If you forget your password, you can have it mailed to this e-mail address.",
+"youremail"		=> "Your e-mail",
+"emailforlost"	=> "If you forget your password, you can have it mailed to your e-mail address.",
 
 "loginerror"	=> "Login error",
 "noname"		=> "You must specify a user name.",
@@ -134,9 +140,9 @@ Please log in again after you receive it.",
 "blockedtext"	=> "Your user name or IP address has been blocked by $1.
 The reason given is this:<br>$2<p>You may contact the administrator to
 discuss the block.",
-"newarticle"	=> "New article: $1",
+"newarticle"	=> "(New) $1",
 "newarticletext" => "Describe the new page here.",
-"updated"		=> "Updated: $1",
+"updated"		=> "(Updated) $1",
 "note"			=> "<strong>Note:</strong> ",
 "previewnote"	=> "Remember that this is only a preview, and has not yet been saved!",
 "previewconflict" => "This preview reflects the text in the upper

@@ -70,7 +70,7 @@ class User {
 		wfDebug( "User: 5: $sql\n" );
 
 		$res = mysql_query( $sql, $conn );
-		if ( ( ! $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
+		if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
 			if ( 0 == $this->mId ) {
 				$this->mBlockedby = 0;
 				return;
@@ -81,7 +81,7 @@ class User {
 			wfDebug( "User: 6: $sql\n" );
 
 			$res = mysql_query( $sql, $conn );
-			if ( ( ! $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
+			if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
 				$this->mBlockedby = 0;
 				return;
 			}
@@ -164,10 +164,10 @@ class User {
 		  "user_rights FROM user WHERE user_id=" . $this->mId;
 
 		wfDebug( "User: 1: $sql\n" );
-		$result = mysql_query( $sql, $conn );
+		$res = mysql_query( $sql, $conn );
 
-		if ( $result ) {
-			$s = mysql_fetch_object( $result );
+		if ( ! ( false === $res ) ) {
+			$s = mysql_fetch_object( $res );
 			$this->mName = $s->user_name;
 			$this->mEmail = $s->user_email;
 
@@ -175,7 +175,7 @@ class User {
 			$this->decodeOptions( $s->user_options );
 			$this->mRights = explode( ",", strtolower( $s->user_rights ) );
 		}
-		mysql_free_result( $result );
+		mysql_free_result( $res );
 		$this->mDataLoaded = true;
 	}
 
@@ -326,14 +326,14 @@ class User {
 		$exp = time() + $wgCookieExpiration;
 
 		$wsUserID = $this->mId;
-		setcookie( "wcUserID", $this->mId, $exp );
+		setcookie( "wcUserID", $this->mId, $exp, "/" );
 
 		$wsUserName = $this->mName;
-		setcookie( "wcUserName", $this->mName, $exp );
+		setcookie( "wcUserName", $this->mName, $exp, "/" );
 
 		$wsUserPassword = $this->mPassword;
 		if ( 1 == $this->getOption( "rememberPassword" ) ) {
-			setcookie( "wcUserPassword", $this->mPassword, $exp );
+			setcookie( "wcUserPassword", $this->mPassword, $exp, "/" );
 		} else {
 			setcookie( "wcUserPassword", "", time() - 3600 );
 		}
@@ -364,7 +364,7 @@ class User {
 		wfDebug( "User: 2: $sql\n" );
 
 		$conn = wfGetDB();
-		$result = mysql_query( $sql, $conn );
+		$res = mysql_query( $sql, $conn );
 
 		if ( isset( $this->mWatchlist ) ) {
 			wfSetSQL( "user", "user_watch", implode( "\n", $this->mWatchlist ),
@@ -385,14 +385,14 @@ class User {
 		  wfStrencode( $s ) . "'";
 
 		wfDebug( "User: 3: $sql\n" );
-		$result = mysql_query( $sql , $conn );
-		if ( "" == $result ) return 0;
+		$res = mysql_query( $sql , $conn );
+		if ( false === $res ) return 0;
 
-		$s = mysql_fetch_object( $result );
+		$s = mysql_fetch_object( $res );
 		if ( "" == $s ) return 0;
 
 		$gotid = $s->user_id;
-		mysql_free_result( $result );
+		mysql_free_result( $res );
 		return $gotid;
 	}
 
@@ -408,7 +408,7 @@ class User {
 		  $this->encodeOptions() . "', '' )";
 
 		wfDebug( "User: 4: $sql\n" );
-		$result = mysql_query( $sql, $conn );
+		$res = mysql_query( $sql, $conn );
 		$this->mId = $this->idForName();
 
 		if ( isset( $this->mWatchlist ) ) {

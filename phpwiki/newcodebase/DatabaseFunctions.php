@@ -19,7 +19,7 @@ function wfSetSQL( $table, $var, $value, $cond )
 {
 	$conn = wfGetDB();
 	$sql = "UPDATE $table SET $var = '" .
-	  wfStrencode( $value ) . "' WHERE $cond";
+	  wfStrencode( $value ) . "' WHERE ($cond)";
 
 	wfDebug( "DB: 1: $sql\n" );
 	$result = mysql_query( $sql, $conn );
@@ -28,12 +28,12 @@ function wfSetSQL( $table, $var, $value, $cond )
 function wfGetSQL( $table, $var, $cond )
 {
 	$conn = wfGetDB();
-	$sql = "SELECT $var FROM $table WHERE $cond";
+	$sql = "SELECT $var FROM $table WHERE ($cond)";
 
 	wfDebug( "DB: 2: $sql\n" );
 	$result = mysql_query( $sql, $conn );
 	$ret = "";
-	if ( "" != $result ) {
+	if ( ! ( false === $result ) ) {
 		if ( $s = mysql_fetch_object( $result ) ) {
 			$ret = $s->$var;
 		}

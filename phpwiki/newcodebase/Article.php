@@ -5,14 +5,16 @@ class Article {
 	/* private */ var $mTitle; # WikiTitle object
 	/* private */ var $mContent, $mContentLoaded;
 	/* private */ var $mUser, $mTimestamp, $mParams;
-	/* private */ var $mCounter;
+	/* private */ var $mCounter, $mComment, $mOldversion;
+	/* private */ var $mMinorEdit;
 
 	function Article( $t )
 	{
 		$this->mTitle = $t;
 		$this->mContentLoaded = false;
 		$this->mUser = $this->mCounter = -1; # Not loaded
-		$this->mTimestamp = "";
+		$this->mTimestamp = $this->mComment = "";
+		$this->mOldversion = 0;
 	}
 
 	function getContent()
@@ -36,19 +38,19 @@ class Article {
 		$sql = "SELECT cur_text,cur_timestamp,cur_user,cur_counter, " .
 		  "cur_params FROM cur WHERE cur_id=$id";
 		wfDebug( "Art: 1: $sql\n" );
-		$result = mysql_query( $sql, $conn );
+		$res = mysql_query( $sql, $conn );
 
-		if ( ! $result || 0 == mysql_num_rows( $result ) ) {
+		if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
 			$this->mContent = "Fatal database error.\n";
 		} else {
-			$s = mysql_fetch_object( $result );
+			$s = mysql_fetch_object( $res );
 			$this->mContent = $s->cur_text;
 			$this->mUser = $s->cur_user;
 			$this->mCounter = $s->cur_counter;
 			$this->mParams = $s->cur_params;
 			$this->mTimestamp = $s->cur_timestamp;
 		}
-		mysql_free_result( $result );
+		mysql_free_result( $res );
 		$this->mContentLoaded = true;
 	}
 
@@ -68,15 +70,19 @@ class Article {
 		if ( -1 != $this->mUser ) return;
 
 		$conn = wfGetDB();
-		$sql = "SELECT cur_user,cur_timestamp FROM cur WHERE " .
+		$sql = "SELECT cur_user,cur_timestamp,cur_old_version," .
+		  "cur_comment,cur_minor_edit FROM cur WHERE " .
 		  "cur_id=" . $this->getID();
 		wfDebug( "Art: 3: $sql\n" );
 
 		$res = mysql_query( $sql, $conn );
-		if ( "" != $res ) {
+		if ( ! ( false === $res ) ) {
 			$s = mysql_fetch_object( $res );
 			$this->mUser = $s->cur_user;
-			$this->mTimestamp = $s->mTimestamp;
+			$this->mTimestamp = $s->cur_timestamp;
+			$this->mComment = $s->cur_comment;
+			$this->mOldversion = $s->cur_old_version;
+			$this->mMinorEdit = $s->cur_minor_edit;
 		}
 	}
 
@@ -227,10 +233,12 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		$conn = wfGetDB();
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
-		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit) VALUES ('" .
-		  $wgTitle->getNamespace() . "', '" . $wgTitle->getDBKey() . "', '" .
+		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit," .
+		  "cur_old_version,cur_counter) VALUES ('" .
+		  $this->mTitle->getNamespace() . "', '" .
+		  $this->mTitle->getDBKey() . "', '" .
 		  wfStrencode( $text ) . "', '" . wfStrencode( $summary ) . "', '" .
-		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', 0)";
+		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', 0, 0, 0)";
 
 		wfDebug( "Art: 2: $sql\n" );
 		$res = mysql_query( $sql, $conn );
@@ -246,18 +254,44 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 	{
 		global $wgOut, $wgUser, $wgTitle;
 
-		if ( $minor) { $me = 1; } else { $me = 0; }
+		if ( $this->mMinorEdit ) { $me1 = 1; } else { $me1 = 0; }
+		if ( $minor ) { $me2 = 1; } else { $me2 = 0; }
 
-		# TODO: Backup to old table
-		#
+		$this->loadLastEdit();
+		$conn = wfGetDB();
+		$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
+		  "old_comment,old_user,old_old_version,old_timestamp," .
+		  "old_minor_edit) VALUES ('" .
+		  $this->mTitle->getNamespace() . "', '" .
+		  $this->mTitle->getDBKey() . "', '" .
+		  wfStrencode( $this->getContent() ) . "', '" .
+		  wfStrencode( $this->mComment ) . "', " .
+		  $this->mUser . ", " . $this->mOldversion . ", '" .
+		  $this->mTimestamp . "', " . $me1 . ")";
+
+		wfDebug( "Art: 4: $sql\n" );
+		$res = mysql_query( $sql, $conn );
+		if ( false === $res ) {
+			$wgOut->databaseError( wfMsg( "updatingarticle" ) );
+			return;
+		}
+		$cond = "(old_namespace='" . $this->mTitle->getNamespace() .
+		  "' AND old_title='" . $this->mTitle->getDBKey() .
+		  "' AND old_old_version={$this->mOldversion})";
+		$newid = wfGetSQL( "old", "old_id", $cond );
+		if ( 0 == $newid ) {
+			$wgOut->databaseError( wfMsg( "updatingarticle" ) );
+			return;
+		}
 		$conn = wfGetDB();
 		$sql = "UPDATE cur SET cur_text='" .  wfStrencode( $text ) .
 		  "',cur_comment='" .  wfStrencode( $summary ) .
-		  "',cur_minor_edit=$me, cur_user=" . $wgUser->getID() .
-		  ", cur_timestamp='" . date( "YmdHis" ) . "' " .
+		  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
+		  ", cur_timestamp='" . date( "YmdHis" ) .
+		  "',cur_old_version=$newid " . 
 		  "WHERE cur_id=" . $this->getID();
 
-		wfDebug( "Art: 4: $sql\n" );
+		wfDebug( "Art: 5: $sql\n" );
 		$res = mysql_query( $sql, $conn );
 		$this->editUpdates();
 

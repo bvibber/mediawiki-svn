@@ -45,6 +45,7 @@ CREATE TABLE linked (
 
 CREATE TABLE old (
   old_id mediumint(8) unsigned NOT NULL auto_increment,
+  old_namespace varchar(20) binary NOT NULL default '',
   old_title varchar(255) binary NOT NULL default '',
   old_text mediumtext,
   old_comment tinyblob,

@@ -16,7 +16,7 @@ $wgSysopSpecialPages = array( "Asksql", "Blockip" );
 #
 $wgFormTextFields = array(
 	# Login form
-	"wpName1", "wpPassword1", "wpName2", "wpPassword2",
+	"wpName", "wpPassword", "wpName", "wpPassword",
 	"wpRetype", "wpEmail",
 	# Edit form
 	"wpTextbox1", "wpSummary", "wpTextbox2"
@@ -126,7 +126,7 @@ function wfNumberOfArticles()
 	wfDebug( "Glob: 1: $sql\n" );
 
 	$res = mysql_query( $sql, $conn );
-	if ( ! $res || 0 == mysql_num_rows( $res) ) { return; }
+	if ( ( false === $res ) || ( 0 == mysql_num_rows( $res) ) ) { return; }
 	else {
 		$s = mysql_fetch_object( $res );
 		$wgTotalViews = $s->ss_total_views;

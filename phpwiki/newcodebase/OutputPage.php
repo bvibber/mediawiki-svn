@@ -72,7 +72,7 @@ class OutputPage {
 		}
 		$exp = time() + $wgCookieExpiration;
 		foreach( $this->mCookies as $name => $val ) {
-			setcookie( $name, $val, $exp );
+			setcookie( $name, $val, $exp, "/" );
 		}
 		$sk->initPage();
 		print $this->headElement();
@@ -104,9 +104,21 @@ class OutputPage {
 		  $wgTitle->getText() . "\n";
 		$this->setHTMLTitle( wfMsg( "errorpagetitle" ) );
 		$this->setPageTitle( wfMsg( $title ) );
+		$this->setRobotpolicy( "noindex,nofollow" );
 
 		$this->mBodytext = "";
 		$this->addHTML( "<p>" . wfMsg( $msg ) . "\n" );
+		$this->addWikiText( "\n" .  wfMsg( "returntomain" ) . "\n" );
+	}
+
+	function databaseError( $op )
+	{
+		$this->mDebugtext .= "MySQL: " . mysql_errno() . ": " .
+		  mysql_error() . "\n";
+		$this->setPageTitle( wfMsg( "databaseerror" ) );
+		$this->setRobotpolicy( "noindex,nofollow" );
+
+		$this->mBodytext = str_replace( "$1", $op, wfMsg( "dberrortext" ) );
 		$this->addWikiText( "\n" .  wfMsg( "returntomain" ) . "\n" );
 	}
 
@@ -290,18 +302,20 @@ class OutputPage {
 				if ( "image" == $pre ) {
 					$s .= $sk->makeImageLink( "$wgServer$wgUploadPath/"	.
 					  $suf, $text );
+					$s .= $trail;
 				} else {
 					$l = $wgLang->getLanguageName( $pre );
 					if ( "" == $l ) {
-						$s .= $sk->makeInternalLink( $link, $text );
+						$s .= $sk->makeInternalLink( $link, $text,
+						  "", "", $trail );
 					} else {
 						array_push( $this->mLanguageLinks, "$pre:$suf" );
+						$s .= $trail;
 					}
 				}
 			} else {
-				$s .= $sk->makeInternalLink( $link, $text );
+				$s .= $sk->makeInternalLink( $link, $text, "", "", $trail );
 			}
-			$s .= $trail;
 		}
 		return $s;
 	}
@@ -409,9 +423,7 @@ class OutputPage {
 
 				if ( ";" == substr( $pref, -1 ) ) {
 					$cpos = strpos( $t, ":" );
-					if ( false === $cpos ) {
-						# PHP weirdness: need empty block here.
-					} else {
+					if ( ! false === $cpos ) {
 						$term = substr( $t, 0, $cpos );
 						$text .= $term . "</dt><dd>";
 						$t = substr( $t, $cpos + 1 );
@@ -431,8 +443,7 @@ class OutputPage {
 
 					if ( ";" == $char ) {
 						$cpos = strpos( $t, ":" );
-						if ( false === $cpos ) {
-						} else {
+						if ( ! false === $cpos ) {
 							$term = substr( $t, 0, $cpos );
 							$text .= $term . "</dt><dd>";
 							$t = substr( $t, $cpos + 1 );
@@ -682,7 +693,7 @@ class OutputPage {
 		}
 		$ret .= "<html><head><title>{$this->mHTMLtitle}</title>\n";
 		foreach ( $this->mMetatags as $tag ) {
-			if ( 0 == stricmp( "http:", substr( $tag[0], 0, 5 ) ) ) {
+			if ( 0 == strcasecmp( "http:", substr( $tag[0], 0, 5 ) ) ) {
 				$a = "http-equiv";
 				$tag[0] = substr( $tag[0], 5 );
 			} else {
