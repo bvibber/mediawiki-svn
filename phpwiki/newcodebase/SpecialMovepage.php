@@ -258,6 +258,21 @@ class MovePageForm {
 		  "old_namespace={$this->nns},old_title='{$this->ndt}' WHERE " .
 		  "old_namespace={$this->ons} AND old_title='{$this->odt}'";
 		wfQuery( $sql, $fname );
+		
+		$sql = "UPDATE recentchanges SET ".
+			"rc_namespace={$this->nns}, rc_title='{$this->ndt}' WHERE ".
+			"rc_cur_id={$this->oldid}";
+        wfQuery( $sql, $fname );
+
+        $now = date( "YmdHis" );
+		$sql = "INSERT INTO recentchanges (rc_namespace,rc_title,
+			rc_comment,rc_user,rc_user_text,rc_timestamp,
+			rc_cur_time,rc_cur_id,rc_new)
+			VALUES ({$this->ons},'{$this->odt}'," .
+		  "'{$mt} \\\"{$this->nft}\\\"','" .
+		  $wgUser->getID() . "','" . wfStrencode( $wgUser->getName() ) .
+          "','{$now}','{$now}',{$this->newid},1)";
+        wfQuery( $sql, $fname );
 
 		# The only link from here should be the old redirect
 
@@ -302,14 +317,17 @@ class MovePageForm {
 		  "' WHERE cur_id={$this->oldid}";
 		wfQuery( $sql, $fname );
 
-		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
-		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
-		  "cur_restrictions,cur_ind_title,cur_user_text,cur_is_redirect," .
-		  "cur_is_new) VALUES ({$this->ons},'{$this->odt}'," .
-		  "'#REDIRECT [[{$this->nft}]]\n','{$mt} \\\"{$this->nft}\\\"','" .
-		  $wgUser->getID() . "','" . date( "YmdHis" ) . "',0,0,'','" .
-		  wfStrencode( $this->ot->getIndexTitle() ) . "','" .
-		  wfStrencode( $wgUser->getName() ) . "',1,1)";
+		$now = date( "YmdHis" );
+		$common = "{$this->ons},'{$this->odt}'," .
+		  "'{$mt} \\\"{$this->nft}\\\"','" .
+		  $wgUser->getID() . "','" . wfStrencode( $wgUser->getName() ) .
+          "','{$now}'";
+		$sql = "INSERT INTO cur (cur_namespace,cur_title," .
+		  "cur_comment,cur_user,cur_user_text,cur_timestamp," .
+		  "cur_text,cur_ind_title,cur_is_redirect,cur_is_new) " .
+		  "VALUES ({$common},'#REDIRECT [[{$this->nft}]]\n','" .
+		  wfStrencode( $this->ot->getIndexTitle() ) .
+		  "',1,1)";
 		wfQuery( $sql, $fname );
 		$this->newid = wfInsertId();
 
@@ -317,6 +335,17 @@ class MovePageForm {
 		  "old_namespace={$this->nns},old_title='{$this->ndt}' WHERE " .
 		  "old_namespace={$this->ons} AND old_title='{$this->odt}'";
 		wfQuery( $sql, $fname );
+
+        $sql = "UPDATE recentchanges SET ".
+			"rc_namespace={$this->nns}, rc_title='{$this->ndt}' WHERE ".
+			"rc_namespace={$this->ons} AND rc_title='{$this->odt}'";
+        wfQuery( $sql, $fname );
+
+		$sql = "INSERT INTO recentchanges (rc_namespace,rc_title,
+			rc_comment,rc_user,rc_user_text,rc_timestamp,
+			rc_cur_time,rc_cur_id,rc_new)
+			VALUES ({$common},'{$now}',{$this->newid},1)";
+        wfQuery( $sql, $fname );
 
 		$sql = "UPDATE links SET l_from='{$this->nft}' WHERE l_from='{$this->oft}'";
 		wfQuery( $sql, $fname );
