@@ -56,6 +56,7 @@ class LuceneSearch extends SpecialPage
 			$wgLuceneCSSPath, $wgLSuseold, $wgOutputEncoding,
 			$wgLuceneDisableTitleMatches, $wgLuceneDisableSuggestions,
 			$wgUser;
+		global $wgGoToEdit;
 
 		$this->setHeaders();
 
@@ -131,7 +132,7 @@ class LuceneSearch extends SpecialPage
 				}
 				# FIXME: HTML in wiki message
 				$wgOut->addHTML('<p>' . wfMsg('nogomatch', $editurl, 
-					htmlspecialchars($term)) . "</p>\n");
+					htmlspecialchars($q)) . "</p>\n");
 			}
 			$limit = $wgRequest->getInt('limit');
 			$offset = $wgRequest->getInt('offset');
@@ -150,7 +151,7 @@ class LuceneSearch extends SpecialPage
 				global $wgInputEncoding;
 				$wgOut->addHTML(wfMsg('searchdisabled'));
 				$wgOut->addHTML(wfMsg('googlesearch',
-					htmlspecialchars($term),
+					htmlspecialchars($q),
 					htmlspecialchars($wgInputEncoding)));
 				return;
 			}
