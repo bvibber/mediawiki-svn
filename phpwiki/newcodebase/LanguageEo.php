@@ -32,17 +32,26 @@ $wgEditEncoding		= "x";
 	"Norma", "Nostalgio", "Kolonja Bluo"
 );
 
+/* private */ $wgMathNamesEo = array(
+	"Ĉiam krei PNG-bildon",
+	"HTMLigu se simple, aŭ PNG",
+	"HTMLigu se eble, aŭ PNG",
+	"Lasu TeX-fonton (por tekstfoliumiloj)"
+);
+
 /* private */ $wgUserTogglesEo = array(
 	"hover"		=> "Montru helpilon super viki-ligiloj",
 	"underline" => "Substreku ligilojn",
 	"highlightbroken" => "Ruĝigu ligilojn al neekzistantaj paĝoj",
 	"justify"	=> "Alkadrigu liniojn",
 	"hideminor" => "Kaŝu malgrandajn redaktetojn ĉe <i>Lastaj ŝanĝoj</i>",
+	"usenewrc"  => "Novstila Lastaj Ŝanĝoj (bezonas JavaSkripton)",
 	"numberheadings" => "Aŭtomate numeru sekciojn",
 	"rememberpassword" => "Memoru mian pasvorton",
 	"editwidth" => "Redaktilo estu plenlarĝa",
 	"editondblclick" => "Redaktu per duobla alklako (JavaScript)",
 	"watchdefault" => "Priatentu paĝojn de vi redaktintajn",
+	"minordefault" => "Marku ĉiujn redaktojn malgrandaj",
 	"altencoding" => "Montru supersignojn X-sisteme"
 );
 
@@ -240,7 +249,6 @@ $wgEditEncoding		= "x";
 	"Allpages"		=> "Ĉiu paĝo laŭ titolo",
 
 	"Ipblocklist"	=> "Forbaritaj IP-adresoj",
-
     "Maintenance" => "Ripariloj kaj zorgiloj", # angle "Maintenance page"
 	"Specialpages"  => "",
 	"Contributions" => "",
@@ -299,18 +307,26 @@ $wgEditEncoding		= "x";
 "whatlinkshere"	=> "Paĝoj kiuj ligas ĉi tien",
 "help"			=> "Helpo",
 "search"		=> "Serĉu",
+"go"			=> "Ek",
 "history"		=> "Malnovaj versioj",
 "printableversion" => "Presebla versio", 
 "editthispage"	=> "Redaktu la paĝon",
 "deletethispage" => "Forigu la paĝon",
 "protectthispage" => "Protektu la paĝon", #FIXME: Ĉu 'gardu' / "protekti" bonas /Bertilo
 "unprotectthispage" => "Malprotektu la paĝon", #FIXME: ĉu 'malgardu', 'ne plu', ktp? / "(mal)gardi" ne estas bona /Bertilo
+"newpage"		=> "Nova paĝo",
 "talkpage"		=> "Diskutu la paĝon",
 "subjectpage"	=> "Vidu la artikolon", #FIXME: ?
+"articlepage"	=> "Vidu la artikolon",
+"userpage"		=> "Vidu personan paĝon",
+"wikipediapage"	=> "Vidu meta-paĝon",
+"imagepage"		=> "Vidu dosieropaĝon",
+"viewtalkpage"	=> "Vidu diskutopaĝon",
 "otherlanguages" => "Aliaj lingvoj",
 "redirectedfrom" => "(Alidirektita el $1)",
-"lastmodified"	=> "La paĝo estis laste redaktita je $1.",
-"viewcount"		=> "La paĝo estas montrita $1-foje.",
+"lastmodified"	=> "Laste redaktita je $1.",
+"viewcount"		=> "Montrita $1-foje.",
+"gnunote"		=> "La enhavo de Vikipedio disponeblas laŭ permesilo <a class='internal' href='/wiki/GFDL'>GNU Free Documentation License</a>.",
 "printsubtitle" => "(El http://eo.wikipedia.org)",
 "protectedpage" => "Protektita paĝo", #FIXME: ĉu "gardita" ktp?
 "administrators" => "Vikipedio:Administrantoj", # FIXME?
@@ -512,6 +528,7 @@ esprimon".
 ". Bonvolu reserĉi per alia mendo.",
 "matchtotals"	=> "La serĉmendo \"$1\" liveris $2 artikolojn laŭ titolo
 kaj $3 artikolojn laŭ enhavo.",
+"nogomatch"	=> "Neniu paĝo havas precize la titolon; provas tekstoserĉon... ",
 "titlematches"	=> "Trovitaj laŭ titolo",
 "notitlematches" => "Neniu trovita laŭ titolo",
 "textmatches"	=> "Trovitaj laŭ enhavo",
@@ -544,6 +561,12 @@ Via interna identeconumero estas $2.",
 "qbsettings"	=> "Preferoj pri ilaro", 
 "changepassword" => "Ŝanĝu pasvorton",
 "skin"			=> "Aspekto",
+"math"			=> "Tradukas matematikaĵon",
+"math_failure"	=> "Malsukcesis analizi formulon",
+"math_unknown_error"	=> "Nekonata eraro",
+"math_unknown_function"	=> "Nekonata funkcio",
+"math_lexing_error"	=> "Leksika analizo malsukcesis",
+"math_syntax_error" => "Eraro de sintakso",
 "saveprefs"		=> "Konservu preferojn",
 "resetprefs"	=> "Restarigi antaŭajn preferojn",
 "oldpassword"	=> "Malnova pasvorto",
@@ -569,6 +592,7 @@ Ekzemple, por la Centra Eŭropa Horzono, indiku \"1\" vintre aŭ \"2\" dum somer
 
 # Recent changes
 #
+"changes"	=> "ŝanĝoj", # RIPARUMIN n?
 "recentchanges" => "Lastaj ŝanĝoj",
 "recentchangestext" => "Sekvu la plej lastajn ŝanĝojn al la Vikipedio per ĉi tiu paĝo.
 [[vikipedio:Bonvenon al la Vikipedio|Bonvenon al la Vikipedio]]!
@@ -840,6 +864,10 @@ Vidu la paĝon $2 por registro de lastatempaj forigoj.",
 "reverted"		=> "Restarigis antaŭan version",
 "deletecomment"	=> "Kialo por forigo",
 "imagereverted" => "Restarigo de antaŭa versio sukcesis.",
+"rollback"	=> "Restarigu antaŭan redakton",
+"rollbacklink" => "restarigu antaŭan",
+"cantrollback" => "Neeblas restarigu antaŭan redakton; la redaktinto lasta estas la sola de la paĝo.",
+"revertpage"	=> "Restarigis lastan redakton de $1",
 
 # Undelete
 "undelete" => "Restarigu forigitan paĝon",
@@ -1031,6 +1059,11 @@ class LanguageEo extends Language {
 	function getSkinNames() {
 		global $wgSkinNamesEo;
 		return $wgSkinNamesEo;
+	}
+
+	function getMathNames() {
+		global $wgMathNamesEo;
+		return $wgMathNamesEo;
 	}
 
 	function getUserToggles() {
