@@ -154,7 +154,9 @@ function doSearch () {
             $words = allWords ( $search );                              # split string into separate words
             foreach ( array ($result1, $result2) as $result ) {
                 while ( $row = mysql_fetch_object ( $result ) ) {
-                    $ct = preg_split ( "/\r\\n\r\\n|\ --\ |<p[^>]*>/iU", $row->cur_text ) ;    # We split everything in paragraphs
+                    # add extra newlines for what we also consider as paragraph delimiters
+                    $ct = preg_replace ("/(\ --\ |<p[^>]*>|<tr[^>]*>|\n[\*#:\-])/iU", "\\1\r\n\r\n", $row->cur_text ) ;
+                    $ct = preg_split ( "/\r\\n\r\\n/", $ct ) ;    # We split everything in paragraphs
                     $par = array_shift( $ct );
                     if ( strlen ( $par ) > 500 ) {     # if the paragraph is too big we guess the sentences
                         $par = preg_replace ( "/(\.|!|\?)(\s+[A-Z])/U", "\\1\r\n\r\n\\2", $par) ;
