@@ -70,7 +70,7 @@ class SqlQueryForm {
 		$res = wfQuery( $wpSqlQuery, "SpecialAsksql::doSubmit" );
 
 		$n = 0;
-		$n = wfNumFields( $res );
+		$n = wfNumRows( $res );
 		if ( $n ) {
 			$k = array();
 			for ( $x = 0; $x < $n; ++$x ) {
