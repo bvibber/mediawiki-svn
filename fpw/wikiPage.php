@@ -716,7 +716,7 @@ class WikiPage extends WikiTitle {
 		#$s = ereg_replace ( "&amp;([a-zA-Z0-9#]+);" , "&\\1;" , $s ) ; # That's a long story... FIXME: What is this for? It mostly seems to make it very hard to write the code for an entity instead of the entity itself.
 
 		# Now some repalcements wiki->HTML
-		$s = ereg_replace ( "-----*" , "<hr>" , $s ) ;
+		$s = ereg_replace ( "(^|\n)-----*" , "\\1<hr>" , $s ) ;
 		$s = str_replace ( "<HR>" , "<hr>" , $s ) ;
 		$s = $this->replaceVariables ( $s ) ;
 		$s = $this->pingPongReplace ( "'''''" , "<i><b>" , "</b></i>" , $s ) ;
