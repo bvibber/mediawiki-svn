@@ -265,6 +265,13 @@ class Article {
 		}
 	}
 
+	function submit()
+	{
+		global $wpSave;
+		$wpSave = 1;
+		$this->edit();
+	}
+
 	function editForm( $formtype )
 	{
 		global $wgOut, $wgUser, $wgTitle;
@@ -331,7 +338,7 @@ class Article {
 		$rows = $wgUser->getOption( "rows" );
 		$cols = $wgUser->getOption( "cols" );
 		$action = "$wgServer$wgScript?title=" .
-		  $wgTitle->getPrefixedURL() . "&amp;action=edit";
+		  $wgTitle->getPrefixedURL() . "&amp;action=submit";
 		if ( "no" == $redirect ) { $action .= "&amp;redirect=no"; }
 
 		$summary = wfMsg( "summary" );
@@ -344,17 +351,17 @@ class Article {
 		$wpSummary = wfEscapeHTML( $wpSummary );
 
 		$wgOut->addHTML( "
-<form method=post action='$action'
+<form method=post action=\"$action\"
 enctype='application/x-www-form-urlencoded'>
-<textarea tabindex=1 name='wpTextbox1' rows=$rows cols=$cols wrap=virtual>
-$wpTextbox1
+<textarea tabindex=1 name='wpTextbox1' rows={$rows} cols={$cols} wrap=virtual>
+{$wpTextbox1}
 </textarea><br>
-$summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlength=200>
-<input tabindex=3 type=checkbox value=1 name='wpMinoredit'>$minor<br>
-<input tabindex=4 type=submit value='$save' name='wpSave'>
-<input tabindex=5 type=submit value='$prev' name='wpPreview'>
-<input type=hidden value='$wpEdittime' name='wpEdittime'>
-<input type=hidden value='$wpCountable' name='wpCountable'>\n" );
+{$summary}: <input tabindex=2 type=text value=\"{$wpSummary}\" name='wpSummary' maxlength=200>
+<input tabindex=3 type=checkbox value=1 name='wpMinoredit'>{$minor}<br>
+<input tabindex=4 type=submit value=\"{$save}\" name='wpSave'>
+<input tabindex=5 type=submit value=\"{$prev}\" name='wpPreview'>
+<input type=hidden value=\"{$wpEdittime}\" name='wpEdittime'>
+<input type=hidden value=\"{$wpCountable}\" name='wpCountable'>\n" );
 
 		if ( $isConflict ) {
 			$wgOut->addHTML( "<h2>" . wfMsg( "yourdiff" ) . "</h2>\n" );
@@ -362,8 +369,8 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 			  wfMsg( "yourtext" ), wfMsg( "storedversion" ) );
 
 			$wgOut->addHTML( "<h2>" . wfMsg( "yourtext" ) . "</h2>
-<textarea tabindex=6 name='wpTextbox2' rows=$rows cols=$cols wrap=virtual>
-$wpTextbox2
+<textarea tabindex=6 name='wpTextbox2' rows={$rows} cols={$cols} wrap=virtual>
+{$wpTextbox2}
 </textarea>" );
 		}
 		$wgOut->addHTML( "</form>\n" );

@@ -73,5 +73,5 @@ p.subtitle { padding-top: 0; margin-top: 0; }
 
 a { color: #223366; }
 a.external { color: #336644; }
-
+a.printable { text-decoration: underline; }
 

@@ -63,9 +63,11 @@ class Skin {
 
 		$s = "";
 		if ( 1 == $wgUser->getOption( "underline" ) ) {
-			$s .= "a { text-decoration: underline; }\n";
+			$s .= "a.new, a.internal, a.external { " .
+			  "text-decoration: underline; }\n";
 		} else {
-			$s .= "a { text-decoration: none; }\n";
+			$s .= "a.new, a.internal, a.external { " .
+			  "text-decoration: none; }\n";
 		}
 		if ( 1 == $wgUser->getOption( "highlightbroken" ) ) {
 			$s .= "a.new { color: #880000; }\n";
@@ -89,12 +91,14 @@ class Skin {
 
 	function getExternalLinkAttributes( $link, $text )
 	{
-		global $wgUser;
+		global $wgUser, $wgOut;
 
 		$link = urldecode( $link );
 		$link = str_replace( "_", " ", $link );
 
-		$r = " class='external'";
+		if ( $wgOut->isPrintable() ) { $r = " class='printable'"; }
+		else { $r = " class='external'"; }
+
 		if ( 1 == $wgUser->getOption( "hover" ) ) {
 			$r .= " title='{$link}'";
 		}
@@ -103,12 +107,13 @@ class Skin {
 
 	function getInternalLinkAttributes( $link, $text, $broken = false )
 	{
-		global $wgUser;
+		global $wgUser, $wgOut;
 
 		$link = urldecode( $link );
 		$link = str_replace( "_", " ", $link );
 
-		if ( $broken ) { $r = " class='new'"; }
+		if ( $wgOut->isPrintable() ) { $r = " class='printable'"; }
+		else if ( $broken ) { $r = " class='new'"; }
 		else { $r = " class='internal'"; }
 
 		if ( 1 == $wgUser->getOption( "hover" ) ) {
@@ -792,34 +797,13 @@ class Skin {
 		if ( "" == $text ) { $text = $nt->getPrefixedText(); }
 		$style = $this->getInternalLinkAttributes( $link, $text, true );
 
-		if ( 1 == $wgUser->getOption( "highlightbroken" ) ) {
+		if ( $wgOut->isPrintable() ||
+		  ( 1 == $wgUser->getOption( "highlightbroken" ) ) ) {
 			$s = "<a href=\"$link\"$style>$text</a>";
 		} else {
 			$s = "$text<a href=\"$link\"$style>?</a>";
 		}
 		return $s;
-	}
-
-	function makePrintableLink( $title, $text = "", $query = "", $trail = "" )
-	{
-		global $wgOut, $wgUser;
-
-		if ( "" == $text ) {
-			$nt = Title::newFromText( $title );
-			$text = $nt->getPrefixedText();
-		}
-		if ( 1 == $wgUser->getOption( "underline" ) ) { $tag = "u"; }
-		else { $tag = "i"; }
-
-		$inside = "";
-		if ( "" != $trail ) {
-			if ( preg_match( "/^([a-z]+)(.*)$$/sD", $trail, $m ) ) {
-				$inside = $m[1];
-				$trail = $m[2];
-			}
-		}
-		$r = "<{$tag} class=\"link\">$text$inside</{$tag}>$trail";
-		return $r;
 	}
 
 	function fnamePart( $url )

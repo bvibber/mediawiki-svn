@@ -5,6 +5,7 @@ h1.pagetitle {
 p.subtitle { padding-top: 0; margin-top: 0; }
 
 body { margin: 0px; padding: 4px; }
+a.printable { text-decoration: underline; }
 #specialform { display: inline; }
 #content { position: absolute; top: 0;  margin: 0; padding: 0; }
 #topbar { padding: 4px; }
