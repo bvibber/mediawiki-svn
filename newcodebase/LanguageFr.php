@@ -2,7 +2,7 @@
 
 # quelques modifications / Utilisateur:MarcQuinton
 # - j'ai laissé en commentaire les strings originales, et placé ma signature (MQ)
-		
+
 # The names of the namespaces can be set here, but the numbers
 # are magical, so don't change or move them!  The Namespace class
 # encapsulates some of the magic-ness.
@@ -70,7 +70,7 @@
 	"co" => "Corse",
 	"cs" => "&#268;esky (Tchèque)",
 	"cy" => "Cymraeg",
-	"da" => "Dansk", # Note two different subdomains. 
+	"da" => "Dansk", # Note two different subdomains.
 	"dk" => "Dansk", # 'da' is correct for the language.
 	"de" => "Deutsch",
 	"dz" => "Bhoutani",
@@ -349,7 +349,7 @@ Veuillez rapporter cette erreur à un administrateur, en lui indiquant l'adresse 
 "filedeleteerror" => "Impossible de supprimer \"$1\".",
 "filenotfound" => "Fichier \"$1\" introuvable.",
 "unexpected" => "Valeur inattendue : \"$1\"=\"$2\".",
-"formerror"  => "Erreur: Impossible de soumettre le formulaire", 
+"formerror"  => "Erreur: Impossible de soumettre le formulaire",
 "badarticleerror" => "Cette action ne peut pas être effectuée sur cette page.",
 "cannotdelete" => "Impossible de supprimer la page ou l'image indiquée.",
 
@@ -494,7 +494,7 @@ $2 List redirects &nbsp; Search for $3 $9",
 		wfLocalUrl( "Special:Userlogin" ) . "\">connecté</a>
 pour modifier vos préférences d'utilisateur.",
 "prefsreset" => "Les préférences ont été rétablies à partir de la version enregistrée.",
-"qbsettings" => "Personnalisation de la barre outils", 
+"qbsettings" => "Personnalisation de la barre outils",
 "changepassword" => "Modification du mot de passe",
 "skin"   => "Apparence",
 "saveprefs"  => "Enregistrer les préférences",
@@ -658,15 +658,15 @@ Parmi ceux-ci, <b>$2</b> ont le statut d'administrateur (voir $3).",
 "maintnancepagetext"	=> "Cette page inclut plusieurs utilitaires pour la maintenance quotidienne. Certain de ces outils ont tendance à charger la base de données; ne rechargez pas la page a chaque modification.",
 //MQ "This page includes several handy tools for everyday maintenance. Some of these functions tend to stress the database, so please do not hit reload after every item you fixed ;-)",
 "maintenancebacklink"	=> "Retour à la page de maintenance", // "Back to Maintenance Page",
-"disambiguations"	=> "Disambiguation pages",
-"disambiguationspage"	=> "Wikipédia:Links_to_disambiguating_pages",
-"disambiguationstext"	=> "The following articles link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br>A page is treated as dismbiguation if it is linked from $1.<br>Links from other namespaces are <i>not</i> listed here.",
+"disambiguations"	=> "Pages d'homonymie", // Disambiguation pages",
+"disambiguationspage"	=> "Wikipédia:Liens_aux_pages_d'homonymie", // "Wikipédia:Links_to_disambiguating_pages",
+"disambiguationstext"	=> "Les articles suivants sont liés vers une <i>page d'homonymie</i>. Or, il devraient etre liés vers le sujet.<br>Une page est considerée comme page d'homonymie si elle est liée a partir de $1.<br>Les liens a partir de <i>namespace</i> ne sont pas considérés.", // "The following articles link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br>A page is treated as dismbiguation if it is linked from $1.<br>Links from other namespaces are <i>not</i> listed here.",
 "doubleredirects"	=> "Double redirection", // MQ
-"doubleredirectstext"	=> "<b>Attention:</b> This list may contain false positives. That usually means there is additional text with links below the first #REDIRECT.<br>\nEach row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" taget article, which the first redirect should point to.",
+"doubleredirectstext"	=> "<b>Attention:</b> cette liste peut contenir des faux positives. Dans ce cas, c'est probablement la page du premier #REDIRECT qui a du texte en plus.<br>Chaque rangée contient des liens a la 1ere et 2e page de redirection, ainsi que la première ligne de cette derniere, qui donne normalement la \"vraie\" destination. Le premier #REDIRECT devrait lier vers cetter destination.", //"<b>Attention:</b> This list may contain false positives. That usually means there is additional text with links below the first #REDIRECT.<br>\nEach row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" taget article, which the first redirect should point to.",
 "selflinks"		=> "Page avec un lien circulaire", // MQ "Pages with Self Links",
-"selflinkstext"		=> "Les pages suivantes contiennent un lien sur elles-memes, ce qui n'est pas permis.", 
+"selflinkstext"		=> "Les pages suivantes contiennent un lien sur elles-memes, ce qui n'est pas permis.",
 // MQ "The following pages contain a link to themselves, which they should not.",
-"missinglanguagelinks"  => "Missing Language Links",
+"missinglanguagelinks"  => "Liens interlangues manquants", //"Missing Language Links",
 "missinglanguagelinksbutton"    => "Je n'ai pas trouvé de lien/langage pour cette page", // MQ "Find missing language links for",
 "missinglanguagelinkstext"      => "Ces articles ne lient pas à leur 'contre-parties' in $1. Les redirections et les liens ne sont pas affichés.",
 // MQ "These articles do <i>not</i> link to their counterpart in $1. Redirects and subpages are <i>not</i> shown.",
@@ -969,7 +969,7 @@ class LanguageFr extends Language {
 	}
 
 	# Inherit userAdjust()
-	
+
 	function date( $ts, $adj = false )
 	{
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); }

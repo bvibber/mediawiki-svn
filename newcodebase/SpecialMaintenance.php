@@ -94,13 +94,13 @@ function wfSpecialDisambiguations()
 	}
 	if ( ! $offset ) { $offset = 0; }
 
-	$dp = wfMsg("disambiguationspage");
+	$dp = wfStrencode( wfMsg("disambiguationspage") );
 
 	$sql = "SELECT la.l_from,la.l_to,"
 		. " lb.l_from AS source,lb.l_to AS dest,"
 		. " c.cur_id, c.cur_title AS dt"
 		. " FROM links AS la, links AS lb, cur AS c, cur AS d"
-		. " WHERE la.l_from=\"{$dp}\""
+		. " WHERE la.l_from='{$dp}'"
 		. " AND la.l_to=lb.l_to"
 		. " AND la.l_from<>lb.l_from"
 		. " AND c.cur_id=lb.l_to"
