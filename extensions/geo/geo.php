@@ -9,14 +9,90 @@ class geo_params
 	var $max_x = -1000000 ;
 	var $min_y = 1000000 ;
 	var $max_y = -1000000 ;
-	var $labels = array () ;
+	var $labels = array () ; # The text labels
 	var $languages = array ( "en" ) ; # Default language
-	var $style_fill = array () ;
-	var $style_border = array () ;
-	var $style_label = array () ;
-
-	var $geo_cache = array () ;
+	var $styles = array ( "default" => "fill:#EEEEEE;" ) ; # All the styles
+	var $starters = array () ; # The objects to start drawing with
+	var $fits = array () ; # Which objects to fit into the viewport
+	var $object_tree = array () ; # The current object(s) being rendered
+	var $geo_cache = array () ; # The article cache
 	
+	function settings ( $sets )
+		{
+		$sets = explode ( "\n" , strtolower ( $sets ) ) ;
+		foreach ( $sets AS $s )
+			{
+			$s = explode ( ":" , $s , 2 ) ;
+			if ( count ( $s ) == 2 ) # key = value
+				{
+				$key = trim ( $s[0] ) ;
+				$value = trim ( $s[1] ) ;
+				if ( $key == "languages" )
+					{
+					$this->languages = explode ( ";" , str_replace ( "," , ";" , $value ) ) ; # "," and ";" are valid separators
+					}
+				else if ( $key == "style" )
+					{
+					$a = explode ( "=" , $value , 2 ) ;
+					if ( count ( $a ) == 2 )
+						{
+						$b = explode ( ";" , str_replace ( "," , ";" , $a[0] ) ) ;
+						foreach ( $b AS $c )
+							{
+							if ( isset ( $this->styles[$c] ) )
+								$this->styles[$c] .= ";" . $a[1] ;
+							else
+								$this->styles[$c] = $a[1] ;
+							}
+						}
+					}
+				else if ( $key == "show" )
+					{
+					$a = explode ( ";" , str_replace ( "," , ";" , $value ) ) ;
+					$this->starters = array_merge ( $this->starters , $a ) ;
+					}
+				else if ( $key == "fit" )
+					{
+					$a = explode ( ";" , str_replace ( "," , ";" , $value ) ) ;
+					$this->fits = array_merge ( $this->fits , $a ) ;
+					}
+				}
+			}
+			
+		# Cleanup
+		foreach ( $this->starters AS $k => $v ) $this->starters[$k] = trim ( $v ) ;
+		foreach ( $this->fits AS $k => $v ) $this->fits[$k] = trim ( $v ) ;
+		}
+
+	# The actual SVG collecting and "rendering"
+	function getSVG ()
+		{
+		foreach ( $this->starters AS $s )
+			{
+			$g = new geo ;
+			$g->set_from_id ( $s , $this ) ;
+			$svg = $g->draw ( $this ) ;
+			}
+#		return "" ; # TESTING!
+		$svg .= $this->get_svg_labels () ;
+
+		# Finalizing
+		$viewBox = $this->get_view_box () ;
+		$svg = 
+		'<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+		<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/SVG/DTD/svg10.dtd">
+		<svg viewBox="' . $viewBox .
+		'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+			<g id="mainlayer">
+		'
+			. $svg .
+			'</g>
+		</svg>
+		' ;
+
+		return $svg ;
+		}
+
 	# This can read the data directly as an article from the database
 	function read_from_article ( $id )
 		{
@@ -57,13 +133,36 @@ class geo_params
 		return $contents ;
 		}
 
+	function match_object_style ( $object , $type )
+		{
+		$ret = array () ;
+		if ( isset ( $this->styles["[{$type}]"] ) )
+			$ret[] = $this->styles["[{$type}]"] ;
+		if ( isset ( $this->styles["{$object}[{$type}]"] ) )
+			$ret[] = $this->styles["{$object}[{$type}]"] ;
+		return implode ( "; " , $ret ) ;
+		}
+		
 	function get_styles ( $id , $type )
 		{
-		if ( isset ( $this->style_fill[$id] ) ) $fill = $this->style_fill[$id] ;
-		else $fill = "fill:#CCCCCC" ;
-		if ( isset ( $this->style_border[$id] ) ) $border = $this->style_border[$id] ;
-		else $border = "stroke:black; stroke-width:10" ;
-		return $fill . "; " . $border ;
+		# Universal constants; rivers are blue!
+		if ( $type == "river" )
+			return "fill:none; stroke:blue; stroke-width:2" ;
+
+		if ( isset ( $this->styles[$id] ) )
+			return $this->styles[$id] ;
+		
+		$ret = $this->styles["default"] ; # Default, if not overwritten by anything more specific
+		foreach ( $this->object_tree AS $object )
+			{
+			$o = explode ( ";" , $object ) ;
+			$s = $this->match_object_style ( $o[0] , $o[1] ) ;
+			if ( $s != "" ) $ret .= "; " . $s ;
+			$s = $this->match_object_style ( $o[0] , $type ) ;
+			if ( $s != "" ) $ret .= "; " . $s ;
+			}
+
+		return $ret ;
 		}
 
 	function data_to_real ( &$x , &$y )
@@ -282,8 +381,7 @@ class geo
 	function get_current_style ( &$params )
 		{
 		$t = trim ( strtolower ( $this->get_current_type ( $params ) ) ) ;
-		if ( $t == "river" ) $s = "fill:none; stroke:blue; stroke-width:2" ;
-		else $s = $params->get_styles ( $this->id , $t ) ;
+		$s = $params->get_styles ( $this->id , $t ) ;
 		return "style=\"{$s}\"" ;
 		}
 	
@@ -359,6 +457,7 @@ class geo
 	
 	function draw ( &$params )
 		{
+		array_push ( $params->object_tree , $this->id.";" /*. $this->get_current_type ( $params )*/ ) ; # This needs tweaking
 		$ret = "" ;
 		$this->xsum = $this->ysum = $this->count = 0 ;
 		$match = $this->get_specs ( "region" , array ( "political" ) ) ;
@@ -374,6 +473,7 @@ class geo
 			$y = $this->ysum / $this->count ;
 			$this->add_label ( $x , $y , $params ) ;
 			}
+		array_pop ( $params->object_tree ) ;
 		return $ret ;
 		}
 	}
