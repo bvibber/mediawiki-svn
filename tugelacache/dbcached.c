@@ -315,12 +315,13 @@ void complete_nread(conn * c)
 	dbdata.size = ITEM_ntotal(it);
 	if ((ret = dbp->put(dbp, NULL, &dbkey, &dbdata, dbflags)) == 0) {
 	    /* some future code? */
+	    out_string(c, "STORED");
+	     
 	} else {
 	    out_string(c, "NOT STORED");
 	}
 	free(c->item);
 	c->item = 0;
-	out_string(c, "STORED");
 	return;
     }
 
