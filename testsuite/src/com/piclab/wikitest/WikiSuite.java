@@ -62,7 +62,10 @@ static String preloadedPages[] = { "Agriculture", "Anthropology",
 	"Public_affairs", "Recreation", "Religion", "Sculpture",
 	"Sociology", "Sport", "Statistics", "Technology", "Theater",
 	"Tourism", "Transport", "Visual_arts_and_design",
-	"World_Series_of_Poker" };
+	"World_Series_of_Poker",
+	
+	"Bracketvars", "Quotes", "Headings", "Blocklevels",
+	"ExternalLinks", "InternalLinks", "Magics" };
 
 /* Suite constructor: load the prefs to determine which
  * wiki to test.
@@ -216,6 +219,16 @@ public static Level setLoggingLevel( Level newl ) {
 	ms_logger.getHandlers()[0].setLevel( newl );
 	ms_logger.setLevel( newl );
 	return oldl;
+}
+
+public static String threeDecimals( double val ) {
+	String result = "ERROR";
+	java.text.DecimalFormat df =
+	  (java.text.DecimalFormat)(java.text.NumberFormat.getInstance());
+
+	df.applyPattern( "#######0.000" );
+	result = df.format( val );
+	return result;
 }
 
 /*
@@ -448,15 +461,17 @@ private void initializeDatabase() {
 	WebResponse wr = viewPage( "" );
 	String text = null;
 
-	try {
-		text = wr.getText();
-		if ( text.indexOf( "no text in this page" ) < 0 ) {
-			error( "Target wiki is not empty." );
+	if ( ! f_overwrite ) {
+		try {
+			text = wr.getText();
+			if ( text.indexOf( "no text in this page" ) < 0 ) {
+				error( "Target wiki is not empty." );
+				return;
+			}
+		} catch( IOException e ) {
+			error( "Can't access target wiki." );
 			return;
 		}
-	} catch( IOException e ) {
-		error( "Can't access target wiki." );
-		return;
 	}
 	info( "Preloading database with test pages." );
 	for (int i = 0; i < preloadedPages.length; ++i) {
@@ -498,27 +513,35 @@ private void initializeDatabase() {
  * going on.
  */
 
-private boolean m_stillrunning = false;
 private WikiFetchThread m_wft;
-private int m_fetchcount = 0;
 
 private void startBackgroundFetchThread() {
-	m_stillrunning = true;
-	m_wft = new WikiFetchThread( this );
+	info( "Starting background page fetching thread." );
+	m_wft = new WikiFetchThread();
 	m_wft.start();
 }
 
-private synchronized void stopBackgroundFetchThread() {
-	m_stillrunning = false;
-	m_wft.waitfor();
-}
+private void stopBackgroundFetchThread() {
+	synchronized (m_wft) {
+		m_wft.requestStop();
+		try {
+			m_wft.wait();
+		} catch ( InterruptedException e ) {
+			error( "Problem stopping background fetch thread." );
+			return;
+		}
+	}
+	info( "Stopped background page fetching thread." );
 
-public boolean stillRunning() {
-	return m_stillrunning;
-}
+	int fetches = m_wft.getFetches();
+	double time = (double)(m_wft.getTime()) / 1000.0;
+	double avtime = time / (double)fetches;
 
-public void incrementFetchcount() {
-	++m_fetchcount;
+	StringBuffer sb = new StringBuffer(100);
+	sb.append( "Fetched " ).append( fetches ).append( " pages in " )
+	  .append( threeDecimals( time ) ).append( " sec (" )
+	  .append( threeDecimals( avtime ) ).append( " sec per fetch)." );
+	info( sb.toString() );
 }
 
 /*
@@ -528,21 +551,25 @@ public void incrementFetchcount() {
 
 private static boolean f_skipload = false;
 private static boolean f_nobackground = false;
+private static boolean f_overwrite = false;
 
 public static void main( String[] params ) {
 	for ( int i = 0; i < params.length; ++i ) {
-		if ( "-s".equals( params[i].substring( 0, 2 ) ) ) {
+		if ( "-p".equals( params[i].substring( 0, 2 ) ) ) {
 			f_skipload = true;
 		} else if ( "-v".equals( params[i].substring( 0, 2 ) ) ) {
 			setLoggingLevel( Level.ALL );
-		} else if ( "-n".equals( params[i].substring( 0, 2 ) ) ) {
+		} else if ( "-b".equals( params[i].substring( 0, 2 ) ) ) {
 			f_nobackground = true;
+		} else if ( "-o".equals( params[i].substring( 0, 2 ) ) ) {
+			f_overwrite = true;
 		} else if ( "-h".equals( params[i].substring( 0, 2 ) )
 				|| "-?".equals( params[i].substring( 0, 2 ) ) ) {
-			System.out.println( "Usage: java WikiSuite [-svn]\n" +
-			  "  -s : Skip initial load of database\n" +
+			System.out.println( "Usage: java WikiSuite [-povb]\n" +
+			  "  -p : Skip preload of database\n" +
+			  "  -o : Overwrite database\n" +
 			  "  -v : Verbose logging\n" +
-			  "  -n : No background thread\n" );
+			  "  -b : No background thread\n" );
 			return;
 		}
 	}
@@ -579,9 +606,9 @@ public static void main( String[] params ) {
 
 	StringBuffer sb = new StringBuffer(100);
 	sb.append( "Total elapsed time: " ).append( t_hr ).append( " hr, " )
-	  .append( t_min ).append( " min, " ).append( t_sec ).append( " sec." );
+	  .append( t_min ).append( " min, " )
+	  .append( threeDecimals( t_sec ) ).append( " sec." );
 	info( sb.toString() );
-	info( "Total background page fetches: " + ws.m_fetchcount );
 }
 
 }

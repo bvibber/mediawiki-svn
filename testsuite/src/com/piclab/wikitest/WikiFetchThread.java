@@ -5,30 +5,35 @@
  */
 
 package com.piclab.wikitest;
-
 import com.meterware.httpunit.*;
 
 public class WikiFetchThread extends Thread {
 
-private WikiSuite m_suite;
 private WebConversation m_conv;
+private int m_totalfetches;
+private long m_totaltime;
 private volatile boolean m_running;
 
-public WikiFetchThread(WikiSuite s) {
-	m_suite = s;
+
+public WikiFetchThread() {
 	m_conv = new WebConversation();
+	m_totalfetches = 0;
+	m_totaltime = 0;
 }
+
+public int getFetches() { return m_totalfetches; }
+public long getTime() { return m_totaltime; }
+public void requestStop() { m_running = false; }
+
 
 public void run() {
 	int index = 0;
-
-	WikiSuite.info( "Started background page-fetch thread." );
-	m_running = true;
-
 	String url;
 	double r;
+	long start, end;
 
-	while ( m_suite.stillRunning() ) {
+	m_running = true;
+	while ( m_running ) {
 		r = Math.random();
 		if ( r < 0.1 ) {
 			url = WikiSuite.viewUrl( "" ); /* Main page */
@@ -38,29 +43,26 @@ public void run() {
 			if ( ++index >= WikiSuite.preloadedPages.length ) { index = 0; }
 			url = WikiSuite.editUrl( WikiSuite.preloadedPages[index] );
 		}
+
+		start = System.currentTimeMillis();
 		try {
 			WebResponse wr = m_conv.getResponse( url );
 		} catch (Exception e) {
 			WikiSuite.warning( "Error (" + e + ") fetching \"" + url + "\"" );
 		}
-		WikiSuite.fine( "Fetched \"" + url + "\"" );
-		m_suite.incrementFetchcount();
+		end = System.currentTimeMillis();
+
+		WikiSuite.finer( "Fetched \"" + url + "\"" );
+		++m_totalfetches;
+		m_totaltime += ( end - start );
 	}
-	m_running = false;
-
-	WikiSuite.info( "Terminated background page-fetch thread." );
-}
-
-
-/*
- * After suite sets stillRunning() to false, this thread will
- * eventually quit, but we have suite call this function to wait
- * for it so that we don't get fetches after the final report.
- */
-
-public void waitfor() {
-	do {
-	} while (m_running);
+	/*
+	 * The main suite tells us to stop, but we wait until the
+	 * current fetch is done. So we have the suite wait for us
+	 * to actually stop before continuing with its final report,
+	 * and we wake it up here.
+	 */
+	synchronized (this) { notify(); }
 }
 
 }
