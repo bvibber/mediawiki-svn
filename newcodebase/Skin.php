@@ -32,12 +32,12 @@ class Skin {
 		global $wgUser;
 
 		$s = "<style type=\"text/css\"><!--\n";
-		if ( 1 == $wgUser->getOption( "underlineLinks" ) ) {
+		if ( 1 == $wgUser->getOption( "underline" ) ) {
 			$s .= "a { text-decoration: underline; }\n";
 		} else {
 			$s .= "a { text-decoration: none; }\n";
 		}
-		if ( 1 == $wgUser->getOption( "markupNewTopics" ) ) {
+		if ( 1 == $wgUser->getOption( "highlightbroken" ) ) {
 			$s .= "a.new { color: white; background: blue; }\n";
 		}
 		$s .= "//--></style>\n";
@@ -61,7 +61,7 @@ class Skin {
 		global $wgUser;
 
 		$r = " class=\"external\"";
-		if ( 1 == $wgUser->getOption( "showHover" ) ) {
+		if ( 1 == $wgUser->getOption( "hover" ) ) {
 			$r .= " title=\"$link\"";
 		}
 		return $r;
@@ -74,7 +74,7 @@ class Skin {
 		if ( $broken ) { $r = " class=\"new\""; }
 		else { $r = " class=\"internal\""; }
 
-		if ( 1 == $wgUser->getOption( "showHover" ) ) {
+		if ( 1 == $wgUser->getOption( "hover" ) ) {
 			$r .= " title=\"$link\"";
 		}
 		return $r;
@@ -112,7 +112,7 @@ class Skin {
 		$s .= "<table width=\"100%\" class=\"middle\" cellpadding=2 "
 		  . "cellspacing=0><tr>";
 
-		$q = $wgUser->getOption( "quickBar" );
+		$q = $wgUser->getOption( "quickbar" );
 
 		if ( 1 == $q ) { # "Left"
 			$s .= "<td class=\"quickbar\" width=110 valign=top nowrap>";
@@ -134,7 +134,7 @@ class Skin {
 		global $wgUser;
 
 		$s = "</div></td>";
-		$q = $wgUser->getOption( "quickBar" );
+		$q = $wgUser->getOption( "quickbar" );
 
 		if ( "" != $q && 0 != $q && 1 != $q ) {
 			$s .= "<td class=\"quickbar\" width=110 valign=top nowrap>";
@@ -406,6 +406,9 @@ class Skin {
 		return $text;
 	}
 
+	# Note: This function MUST call getArticleID() on the link,
+	# otherwise the cache won't get updated properly.
+	#
 	function makeInternalLink( $title, $text= "", $query = "", $trail = "" )
 	{
 		$nt = Title::newFromText( $title );
@@ -455,7 +458,7 @@ class Skin {
 		if ( "" == $text ) { $text = $nt->getPrefixedText(); }
 		$style = $this->getInternalLinkAttributes( $link, $text, true );
 
-		if ( 1 == $wgUser->getOption( "markupNewTopics" ) ) {
+		if ( 1 == $wgUser->getOption( "highlightbroken" ) ) {
 			$s = "<a href=\"$link\"$style>$text</a>";
 		} else {
 			$s = "$text<a href=\"$link\"$style>?</a>";

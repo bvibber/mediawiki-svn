@@ -2,13 +2,9 @@
 # See user.doc
 
 /* private */ $wgDefaultOptions = array(
-	"quickBar" => 2, "markupNewTopics" => 0,
-	"underlineLinks" => 1, "showHover" => 1,
-	"cols" => 60, "rows" => 20, "changesLayout" => 0,
-	"hideMinor" => 0, "justify" => 0, "encoding" => 0,
-	"resultsPerPage" => 20, "skin" => 0, "hourDiff" => 0,
-	"numberHeadings" => 0, "viewFrames" => 0,
-	"viewRecentChanges" => 50, "rememberPassword" => 0
+	"quickbar" => 2, "underline" => 1, "hover" => 1,
+	"cols" => 60, "rows" => 20, "searchlimit" => 20,
+	"skin" => 0, "rcdays" => 3, "rclimit" => 50
 );
 
 class User {
@@ -302,9 +298,7 @@ class User {
 	{
 		$a = explode( "\n", $str );
 		foreach ( $a as $s ) {
-			if ( preg_match( "/^(.[^=]*)=?$/", $s, $m ) ) {
-				$this->mOptions[$m[1]] = 0;
-			} else if ( preg_match( "/^(.[^=]*)=(.+)$/", $s, $m ) ) {
+			if ( preg_match( "/^(.[^=]*)=(.*)$/", $s, $m ) ) {
 				$this->mOptions[$m[1]] = $m[2];
 			}
 		}
@@ -325,7 +319,7 @@ class User {
 		setcookie( "wcUserName", $this->mName, $exp, "/" );
 
 		$wsUserPassword = $this->mPassword;
-		if ( 1 == $this->getOption( "rememberPassword" ) ) {
+		if ( 1 == $this->getOption( "rememberpassword" ) ) {
 			setcookie( "wcUserPassword", $this->mPassword, $exp, "/" );
 		} else {
 			setcookie( "wcUserPassword", "", time() - 3600 );

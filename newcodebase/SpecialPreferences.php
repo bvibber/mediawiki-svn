@@ -38,10 +38,10 @@ function wfSpecialPreferences()
 		$wgUser->setPassword( $wgNewpass );
 	}
 	$wgUser->setEmail( $wpEmail );
-	$wgUser->setOption( "quickBar", $wpQuickbar );
+	$wgUser->setOption( "quickbar", $wpQuickbar );
 	$wgUser->setOption( "skin", $wpSkin );
-	$wgUser->setOption( "resultsPerPage", $wpSearch );
-	$wgUser->setOption( "viewRecentChanges", $wpRecent );
+	$wgUser->setOption( "searchlimit", $wpSearch );
+	$wgUser->setOption( "rclimit", $wpRecent );
 	$wgUser->setOption( "rows", $wpRows );
 	$wgUser->setOption( "cols", $wpCols );
 
@@ -65,12 +65,12 @@ function wfSpecialPreferences()
 	$wpOldpass = $wpNewpass = $wpRetype = "";
 	$wpEmail = $wgUser->getEmail();
 
-	$wpQuickbar = $wgUser->getOption( "quickBar" );
+	$wpQuickbar = $wgUser->getOption( "quickbar" );
 	$wpSkin = $wgUser->getOption( "skin" );
 	$wpRows = $wgUser->getOption( "rows" );
 	$wpCols = $wgUser->getOption( "cols" );
-	$wpSearch = $wgUser->getOption( "resultsPerPage" );
-	$wpRecent = $wgUser->getOption( "viewRencentChanges" );
+	$wpSearch = $wgUser->getOption( "searchlimit" );
+	$wpRecent = $wgUser->getOption( "rclimit" );
 
 	$togs = $wgLang->getUserToggles();
 	foreach ( $togs as $tname => $ttext ) {
