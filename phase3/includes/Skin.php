@@ -538,6 +538,7 @@ class Skin {
 				$s.= ' | <strong>'. wfMsg( 'newmessages', $tl ) . '</strong>';
 				# Disable squid cache
 				$wgOut->setSquidMaxage(0);
+                                $wgOut->enableClientCache(false);
 			}
 		}
 		
