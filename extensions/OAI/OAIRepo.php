@@ -221,6 +221,12 @@ class OAIRepo {
 	
 	
 	function respond() {
+		global $wgUseLatin1;
+		if( $wgUseLatin1 ) {
+			# OAI requires UTF-8 output
+			ob_start( create_function( '$s', 'return utf8_encode($s);' ) );
+		}
+		
 		header( 'Content-type: text/xml' );
 		echo '<' . '?xml version="1.0" encoding="UTF-8" ?' . ">\n";
 		echo oaiTag( 'OAI-PMH', array(
