@@ -6,7 +6,6 @@
 $wgExtensionFunctions[] = "wfBoardvoteSetup";
 
 # This extension act as a special page
-require_once( 'includes/SpecialPage.php' );
 
 # Default settings
 if ( !isset( $wgBoardVoteDB ) ) $wgBoardVoteDB = "boardvote";
@@ -19,8 +18,8 @@ if ( !isset( $wgGPGPubKey ) ) $wgGPGPubKey = "C:\\Program Files\\gpg\\pub.txt";
 
 function wfBoardvoteSetup()
 {
+require_once( 'SpecialPage.php' );
 # Look out, freaky indenting
-# The class definition is inside the function because it has to be performed after SpecialPage is defined
 
 class BoardVotePage extends SpecialPage {
 	var $mPosted, $mContributing, $mVolunteer, $mDBname, $mUserDays, $mUserEdits;
