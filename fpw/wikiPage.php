@@ -430,7 +430,7 @@ class WikiPage extends WikiTitle {
     # This function replaces the newly introduced wiki variables with their values (for display only!)
     function replaceVariables ( $s ) {
         global $wikiDate ;
-        $countvars = substr_count ( "{{" , $s ) ;
+        $countvars = substr_count ( $s , "{{" ) ;
 	if ( $countvars == 0 ) return $s ;
         $var=date("m"); $s = str_replace ( "{{CURRENTMONTH}}" , $var , $s ) ;
         $var=$wikiDate[strtolower(date("F"))]; $s = str_replace ( "{{CURRENTMONTHNAME}}" , $var , $s ) ;
@@ -447,24 +447,15 @@ class WikiPage extends WikiTitle {
             $s = str_replace ( "{{NUMBEROFARTICLES}}" , $var , $s ) ;
             }
 
-        if ( $countvars != substr_count ( "{{" , $s ) )
+        if ( $countvars != substr_count ( $s , "{{" ) )
             $this->canBeCached = false ;
 
         return $s ;
         }
 
-    # This function ensures all occurrences of $f are replaced with $r within $s
-    function replaceAll ( $f , $r , &$s ) {
-        $t = "" ;
-        while ( $s != $t ) {
-            $t = $s ;
-            $s = str_replace ( $f , $r , $s ) ;
-            }
-        return $s ;
-        }
-
     # This function is called to replace wiki-style tags with HTML, e.g., the first occurrence of ''' with <b>, the second with </b>
     function pingPongReplace ( $f , $r1 , $r2 , $s , $startAtLine = false ) {
+	if ( substr_count ( $s , $f ) == 0 ) return $s ;
         $ret = "" ;
         $lines = explode ( "\n" , $s ) ;
         foreach ( $lines as $s ) {
@@ -490,30 +481,6 @@ class WikiPage extends WikiTitle {
     function scanForParams ( $s ) {
         $this->params = array () ;
         return ;
-/*
-        # Category functionality deactivated
-        $this->params = array ( "" ) ;
-        $a = explode ( "{{" , $s ) ;
-        array_shift ( $a ) ;
-        foreach ( $a as $x ) {
-            $b = explode ( "}}" , $x , 2 ) ;
-            if ( count ( $b ) > 1 ) {
-                $before = $b[0] ;
-                $after = $b[1] ;
-                $c = explode ( " " , $before , 2 ) ;
-                if ( count ( $c ) > 1 )  {
-                    $decl = strtolower ( trim ( $c[0] ) ) ;
-                    $vars = trim ( $c[1] ) ;
-                    $vars = str_replace ( "\"" , "" , $vars ) ;
-                    $vars = str_replace ( "\n" , "" , $vars ) ;
-                    $vars = explode ( "," , $vars ) ;
-                    foreach ( $vars as $y ) array_push ( $this->params , "$decl ".trim($y) ) ;
-                    }
-                }
-            }
-        if ( count ( $this->params ) > 1 ) array_push ( $this->params , "" ) ;
-        else $this->params = array () ;
-*/
         }
 
     # This function organizes the <nowiki> parts and calls subPageContents() for the wiki parts
@@ -526,33 +493,35 @@ class WikiPage extends WikiTitle {
 
         # Parsing <pre> here
         $a = spliti ( "<pre>" , $s ) ;
-        $s = array_shift ( $a ) ;
-        foreach ( $a as $x ) {
-            $b = spliti ( "</pre>" , $x , 2 ) ;
-            if ( count ( $b ) == 1 ) $s .= "&lt;pre&gt;$x" ;
-            else {
-                #$x = htmlspecialchars ( $b[0] ) ;
-        $x = str_replace ( array ( "<" , ">" ) , array ( "&lt;" , "&gt;" ) , $b[0] ) ;
-                $s .= "<pre>$x</pre>$b[1]" ;
-                }
-            }
-        $s = str_replace ( "<pre>" , "<pre><nowiki>" , $s ) ;
-        $s = str_replace ( "</pre>" , "</nowiki></pre>" , $s ) ;
+	if ( count ( $a ) > 1 ) { # Speedup
+	        $s = array_shift ( $a ) ;
+	        foreach ( $a as $x ) {
+	            $b = spliti ( "</pre>" , $x , 2 ) ;
+	            if ( count ( $b ) == 1 ) $s .= "&lt;pre&gt;$x" ;
+			else {
+			$x = str_replace ( array ( "<" , ">" ) , array ( "&lt;" , "&gt;" ) , $b[0] ) ;
+			$s .= "<pre>$x</pre>$b[1]" ;
+	                }
+	            }
+        	$s = str_replace ( "<pre>" , "<pre><nowiki>" , $s ) ;
+	        $s = str_replace ( "</pre>" , "</nowiki></pre>" , $s ) ;
+		}
 
+	# Parsing <nowiki> here
         $a = spliti ( "<nowiki>" , $s ) ;
-
-        # $d needs to contain a unique string - this can be altered at will, as long it stays unique!
-        $d = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv" ; #$d = "~~~~~~~~~~~~~~" ;
-
         $b = array () ;
-        $s = array_shift ( $a ) ;
-        foreach ( $a as $x ) {
-            $c = spliti ( "</nowiki>" , $x , 2 ) ;
-            if ( count ( $c ) == 2 ) {
-                array_push ( $b , $c[0] ) ;
-                $s .= $d.$c[1] ;
-            } else $s .= "<nowiki>".$x ;
-            }
+	if ( count ( $a ) > 1 ) { # Speedup
+	        # $d needs to contain a unique string - this can be altered at will, as long it stays unique!
+	        $d = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv" ;
+	        $s = array_shift ( $a ) ;
+	        foreach ( $a as $x ) {
+	            $c = spliti ( "</nowiki>" , $x , 2 ) ;
+	            if ( count ( $c ) == 2 ) {
+	                array_push ( $b , $c[0] ) ;
+	                $s .= $d.$c[1] ;
+	            } else $s .= "<nowiki>".$x ;
+	            }
+		}
 
         # If called from setEntry(), only parse internal links and return dummy entry
         if ( $savingMode ) {
@@ -586,12 +555,14 @@ class WikiPage extends WikiTitle {
             }
 
         # replacing $d with the actual nowiki contents
-        $a = spliti ( $d , $s ) ;
-        $s = array_shift ( $a ) ;
-        foreach ( $a as $x ) {
-            $nw = array_shift ( $b ) ;
-            $s .= $nw . $x ;
-            }
+	if ( count ( $b ) > 0 ) {
+	        $a = spliti ( $d , $s ) ;
+        	$s = array_shift ( $a ) ;
+	        foreach ( $a as $x ) {
+        	    $nw = array_shift ( $b ) ;
+	            $s .= $nw . $x ;
+        	    }
+		}
 
         return $s ;
         }
@@ -690,31 +661,9 @@ class WikiPage extends WikiTitle {
 		$s .= "</$t>\n";
 		if ( $t == "table" )
 			$tagstack = array_pop ( $tablestack ) ;
-		}    return $s;
+		}
 
-/*
-        $htmlpairs = array( "b", "i", "u", "font", "big", "small", "sub", "sup", "h1", "h2", "h3", "h4", "h5", "h6",
-            "cite", "code", "em", "s", "strike", "strong", "tt", "var", "div", "center", "blockquote", "ol",
-            "ul", "dl", "table", "caption", "pre" );
-        $htmlsingle = array( "br", "p", "hr", "li", "dt", "dd" , "td" , "th" , "tr" ) ;
-        $htmlpairs = array_merge ( $htmlsingle , $htmlpairs );
-
-        # Unique placeholders for < and > so we don't interfere with &lt; and &gt;
-        $lt = "t4hqKoeC0p2Os4nfUa"; $gt = "v06TEbpdpceupNHi13";
-
-        # Mark allowed tags
-        foreach ($htmlpairs as $x) {
-            $s = preg_replace("/<$x(\s[^<>]+?)?>(.*?)<\/$x>/is", "$lt$x$1$gt$2$lt/$x$gt", $s);
-            }
-        foreach ($htmlsingle as $x) {
-            $s = preg_replace("/<$x(\s[^<>]+?)?>/i", "$lt$x$1$gt", $s);
-            }
-
-        # Kill any other tags, and convert good ones back to correct form
-        $s = str_replace(array("<", ">"), array("&lt;", "&gt;"), $s);
-        $s = str_replace(array("$lt", "$gt"), array("<", ">"), $s);
-        return $s ;
-*/
+	return $s;
         }
 
     # This function will auto-number headings
@@ -753,6 +702,7 @@ class WikiPage extends WikiTitle {
 
     function ISBN ( $s ) {
         $a = split ( "ISBN " , " $s" ) ;
+	if ( count ( $a ) < 2 ) return $s ;
         $s = substr ( array_shift ( $a ) , 1 ) ;
         $valid = "0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ" ;
         foreach ( $a as $x ) {
