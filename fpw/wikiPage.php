@@ -1110,7 +1110,7 @@ class WikiPage extends WikiTitle {
         	global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL , $wikiUser ;
 	        global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
         	global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate , $wikiGetDate , $wikiDiff ;
-		global $wikiMyself , $wikiLogOut , $wikiMySettings , $wikiShortPages , $wikiLongPages , $wikiUserList , $wikiEditingHistory , $wikiTopics ;
+		global $wikiMyOptions, $wikiMyself , $wikiLogOut , $wikiMySettings , $wikiShortPages , $wikiLongPages , $wikiUserList , $wikiEditingHistory , $wikiTopics ;
 		global $wikiAddToWatchlist , $wikiEditPage , $wikiPrintable , $wikiTalk , $wikiEdit , $wikiPageOptions , $wikiBrowse , $wikiFind , $wikiOK;
 		global $wikiEditingHelp , $wikiWikipediaEditingHelp , $wikiShowLastChange , $wikiProtectThisPage , $wikiMainPage ;
 
@@ -1181,14 +1181,14 @@ class WikiPage extends WikiTitle {
 			$lc .= ", ".substr ( $this->timestamp , 8 , 2 ) ;
 			$lc .= ":".substr ( $this->timestamp , 10 , 2 ) ;
 			$lc = substr ( strstr ( $lc , ", " ) , 2 ) ;
-			$ret .= str_replace ( '$1' , ":<br>\n<font size=-2>$lc</font>", $wikiLastChange ) . "<br>\n" ;
-			$ret .= "$wikiRequests : $this->counter" ;
+			$ret .= str_replace ( '$1' , $lc , $wikiLastChange ) . "<br>\n" ;
+			$ret .= str_replace( '$1' , $this->counter , $wikiRequests ) ;
 			}
 
 		# My options
 	        if ( $user->isLoggedIn ) {
 			$ret .= "</td></tr><tr><td $bg>" ;
-			$ret .= "<font color=#666666><b>My Options</b></font><br>\n" ;
+			$ret .= "<font color=#666666><b>$wikiMyOptions</b></font><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink(nurlencode("$wikiUser:$user->name"))."\">$wikiMyself</a><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink("special:watchlist")."\">$wikiMyWatchlist</a><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink("special:editUserSettings")."\">$wikiMySettings</a><br>\n" ;
