@@ -434,8 +434,7 @@ function listUsers () {
 	}
 
 function randompage () {
-	global $THESCRIPT ;
-	global $vpage ;
+	global $THESCRIPT , $headerScript , $vpage ;
 	$connection=getDBconnection() ;
 	mysql_select_db ( "wikipedia" , $connection ) ;
 	$sql = "SELECT COUNT(*) AS number FROM cur" ;
@@ -455,7 +454,7 @@ function randompage () {
 	$nt = $vpage->getNiceTitle($thelink) ;
 	if ( count ( explode ( ":" , $thelink ) ) == 1 ) $thelink = ":".$thelink ;
 	$ret = "<h2>Loading random page [[$thelink|".$nt."]]...</h2>" ;
-	$ret .= "<nowiki><META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$THESCRIPT?title=$thelink\"></nowiki>" ;
+	$headerScript .= "<nowiki><META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$THESCRIPT?title=$thelink\"></nowiki>" ;
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
 

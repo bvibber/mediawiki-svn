@@ -88,7 +88,7 @@ function edit ( $title ) {
 	}
 
 function doEdit ( $title ) {
-	global $THESCRIPT ;
+	global $THESCRIPT , $headerScript ;
 	global $vpage , $action , $wasSaved ;
 	$wasSaved = false ;
 	$vpage = new WikiPage ;
@@ -101,8 +101,11 @@ function doEdit ( $title ) {
 
 	$theMiddle = edit ( $title ) ;
 	if ( $wasSaved ) {
-		$theMiddle = "<h1>Your page [[$title]] was successfully saved!</h1>" ;
-		$theMiddle .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$THESCRIPT?title=$vpage->secureTitle\">";
+		$ti = new wikiTitle ;
+		$ti->setTitle ( $title ) ;
+		$theMiddle = "<h1>Your page <a href=\"$THESCRIPT?title=$ti->secureTitle\">$title</a> was successfully saved!</h1>" ;
+		$theMiddle .= "(If this page doesn't forward automatically, you have a really lame browser...)" ;
+		$headerScript .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$THESCRIPT?title=$vpage->secureTitle\">";
 		}
 	$ret .= $vpage->getMiddle ( $theMiddle ) ;
 
@@ -117,5 +120,12 @@ function view ( $title ) {
 	$vpage = new WikiPage ;
 	$vpage->load ( $title ) ;
 	return $vpage->renderPage () ;
+	}
+
+function doPrint ( $title ) {
+	global $vpage ;
+	$vpage = new WikiPage ;
+	$vpage->load ( $title ) ;
+	return $vpage->renderPage ( true ) ;
 	}
 ?>
