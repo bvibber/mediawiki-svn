@@ -65,7 +65,7 @@ $wikiBrowse = "Browse" ;
 $wikiFind = "Find" ;
 $wikiOK = "OK" ;
 $wikiFindMore = "Find more";
-$wikiWikipediaHome = "Wikipedia Home" ;
+$wikiWikipediaHome = "Main Page" ;
 $wikiAboutWikipedia = "About Wikipedia" ;
 $wikiTopics = "Topics" ;
 $wikiWikipediaFAQ = "wikipedia:FAQ" ;
@@ -438,7 +438,7 @@ $wikiWantedText = "'''These articles don't exist, but other articles link to the
 $wikiWantedToggleNumbers = "Click here to toggle the display of page titles starting with numbers (currently $1)" ;
 $wikiWantedLine = "$1 is wanted by <b>$2</b> articles <nowiki>(see the <a href=\"$3\">pages that link to \"$4\"</a></nowiki>)" ;
 $wikiLastChange = "Last edited: $1" ;
-$wikiLastChangeCologne = "Last edited:<br>\n<font size=-2>&nbsp;&nbsp;$1</font>" ;
+$wikiLastChangeCologne = "Page last modified: $1" ;
 $wikiShowLastChange = "Show last change" ;
 $wikiProtectThisPage = "Protect this page" ;
 $wikiPopularPages = "Most popular" ;

@@ -1156,7 +1156,7 @@ class WikiPage extends WikiTitle {
 		$ret .= "</td></tr><tr><td><p class=menu>\n" ;
 		$ret .= "<span class=menuhead>$wikiEdit</span><br>\n" ;
 		if ( !$this->isSpecialPage ) {
-			if ( $this->canEdit() ) $ret .= "<a class=menulink href=\"".wikiLink($this->url."&action=edit")."\">$wikiEditPage</a><br>\n" ;
+			if ( $this->canEdit() ) $ret .= "<a class=menulink href=\"".wikiLink($this->url."&action=edit")."\"><font size='+1'>$wikiEditPage</font></a><br>\n" ;
 			if ( $this->canDelete() ) $ret .= "<a class=menulink href=\"".wikiLink("special:deletepage&target=".$this->url)."\">$wikiDeleteThisPage</a><br>\n" ;
 			if ( $this->canProtect() ) $ret .= "<a class=menulink href=\"".wikiLink("special:protectpage&target=".$this->url)."\">$wikiProtectThisPage</a><br>\n" ;
 			if ( $user->isLoggedIn ) $ret .= "<a class=menulink href=\"".wikiLink("special:vote&target=".$this->url)."\">$wikiVoteForPage</a><br>\n" ;
@@ -1192,14 +1192,6 @@ class WikiPage extends WikiTitle {
 			$ret .= "<a class=menulink href=\"".wikiLink("special:RecentChangesLinked&target=".$this->secureTitle)."\">$wikiLinkedPages</a><br>\n" ;
 			$ret .= "<a class=menulink href=\"".wikiLink($this->url."&action=history")."\">$wikiEditingHistory</a><br>\n" ;
 			$ret .= "<a class=menulink href=\"".wikiLink($this->url."&diff=yes")."\">$wikiShowLastChange</a></p>\n" ;
-
-/*			$lc = $wikiGetDate ( tsc ( $this->timestamp ) ) ;
-			$lc .= ", ".substr ( $this->timestamp , 8 , 2 ) ;
-			$lc .= ":".substr ( $this->timestamp , 10 , 2 ) ;
-			$lc = substr ( strstr ( $lc , ", " ) , 2 ) ;
-			$ret .= str_replace ( '$1' , $lc , $wikiLastChangeCologne ) ;
-			$ret .= str_replace( '$1' , $this->counter , $wikiRequests ) ;
-			$ret .= "</p>" ;*/
 			}
 
 		# My options
@@ -1293,7 +1285,8 @@ class WikiPage extends WikiTitle {
     function getMiddle ( $ret ) {
         global $user , $action ;
 	if ( $user->options[skin] == "Cologne Blue" AND $action != "print" ) {
-		$ret = "<font size='8' color=#666666>".$this->getNiceTitle($this->title)."</font><br>\n".$ret ;
+#		$ret = "<font size='8' color=#666666>".$this->getNiceTitle($this->title)."</font><br>\n".$ret ;
+		$ret = "<h1>".$this->getNiceTitle($this->title)."</h1>\n".$ret ;
 		}
 	$ret = "\n<div class=\"bodytext\">$ret</div>" ;
         if ( $action == "print" ) return $ret ;
@@ -1328,8 +1321,10 @@ class WikiPage extends WikiTitle {
                 else if ( $framed == "main" ) $ret = $ret ;
                 else $ret = "" ;
             } else {
-                if ( $qb == "left" ) $ret = $table.$column.$ret."</tr></table>" ;
-                else if ( $qb == "right" ) $ret = $table.$ret.$column."</tr></table>" ;
+		$tableend = "</table>" ;
+		if ( $user->options[skin] == "Cologne Blue" AND $action != "print" ) $tableend = "" ;
+                if ( $qb == "left" ) $ret = $table.$column.$ret."</tr>$tableend" ;
+                else if ( $qb == "right" ) $ret = $table.$ret.$column."</tr>$tableend" ;
                 }
             }
         $action = $oaction ;
@@ -1378,24 +1373,49 @@ class WikiPage extends WikiTitle {
             }
 */
 
-	if ( $user->options[skin] == "Cologne Blue" ) $ret = "<center>\n" ;
 
-        $ret .= "<FORM method=get action=\"$THESCRIPT\">" ;
 
 	global $wikiFindMore , $wikiOK , $wikiWikipediaHome , $wikiAboutWikipedia ;
-	if ( $user->options[skin] == "Cologne Blue" ) $ret .= "<font color=#666666>$wikiFindMore : </font>" ;
-	$ret .= "<INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\">" ;
-
-	if ( $user->options[skin] == "Cologne Blue" ) $ret .= "<INPUT TYPE=submit value=\"$wikiOK\">" ;
-	else $ret .= "<INPUT TYPE=submit value=\"$wikiSearch\">" ;
+	global $wikiGetDate , $wikiLastChangeCologne , $wikiRequests , $wikiRedirectFrom ;
 
 	if ( $user->options[skin] == "Cologne Blue" ) {
+		$ret = "<tr><td colspan=1></td><td>\n" ;
+        	$ret .= "<FORM class=footnote method=get action=\"$THESCRIPT\">" ;
+		$ret .= "$wikiFindMore : " ;
+		$ret .= "<INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\">" ;
+		$ret .= "<INPUT TYPE=submit value=\"$wikiOK\">" ;
 		$ret .= " &nbsp; <a class=CBlink href=\"".wikiLink("")."\">$wikiWikipediaHome</a> | <a class=CBlink href=\"".wikiLink("wikipedia")."\">$wikiAboutWikipedia</a>" ;
-	} else $ret .= " &nbsp; &nbsp; <a href=\"http://validator.w3.org/check/referer\" target=blank>$wikiValidate</a>" ;
+	        $ret .= "</FORM>" ;
 
-        $ret .= "</FORM>" ;
+	        $adjusted_time_sc = tsc ( $this->timestamp ) + 3600 * $user->options["hourDiff"];
+	        $day = date ( "l, F d, Y" , $adjusted_time_sc);
+	        $time = date ( "H:i" , $adjusted_time_sc ) ;
+		$lc = "$day, $time" ;
 
-	if ( $user->options[skin] == "Cologne Blue" ) $ret .= "</center>\n" ;
+# Old time generator
+/*		$tts = tsc ( $this->timestamp ) + 3600 * $user->options["hourDiff"] ;
+		$lc = $wikiGetDate ( tsc ( $tts ) ) ;
+		$lc .= ", ".substr ( $tts , 8 , 2 ) ;
+		$lc .= ":".substr ( $tts , 10 , 2 ) ;
+		$lc = substr ( strstr ( $lc , ", " ) , 2 ) ;*/
+
+		$ret .= "<span class=footnote>".str_replace ( '$1' , $lc , $wikiLastChangeCologne ) ;
+		$ret .= "; ".str_replace ( '$1' , $this->counter , $wikiRequests ) ;
+
+		# User contributions
+		if ( $this->namespace == "user" ) $ret .= "; <a href=\"".wikiLink("special:contributions&amp;theuser=$this->mainTitle")."\">This user's contributions</a>" ;
+
+		# Redirect from...
+		if ( $this->backLink != "" ) $ret .= "; $wikiRederectFrom $this->backLink" ;
+
+		$ret .= "</span></td></tr></table>\n" ;
+	} else {
+	        $ret .= "<FORM method=get action=\"$THESCRIPT\">" ;
+		$ret .= "<INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\">" ;
+		$ret .= "<INPUT TYPE=submit value=\"$wikiSearch\">" ;
+		$ret .= " &nbsp; &nbsp; <a href=\"http://validator.w3.org/check/referer\" target=blank>$wikiValidate</a>" ;
+	        $ret .= "</FORM>" ;
+		}
 
         return $ret ;
         }
