@@ -3,9 +3,16 @@
 #
 $wgRequestTime = microtime();
 
-global $IP;
+unset( $IP );
+ini_set( "allow_url_fopen", 0 ); # For security...
 include_once( "./LocalSettings.php" );
-include_once( "$IP/Setup.php" );
+
+$include_path = ini_get( "include_path" );
+# Windows requires ';' as separator, ':' for Unix
+if( strchr( $include_path, ";" ) ) $sep = ";"; else $sep = ":";
+ini_set( "include_path", $IP . $sep . ini_get( "include_path" ) );
+
+include_once( "Setup.php" );
 
 wfProfileIn( "main-misc-setup" );
 OutputPage::setEncodings(); # Not really used yet

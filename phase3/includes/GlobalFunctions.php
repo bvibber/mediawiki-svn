@@ -5,10 +5,9 @@ $wgNumberOfArticles = -1; # Unset
 $wgTotalViews = -1;
 $wgTotalEdits = -1;
 
-global $IP;
-include_once( "$IP/DatabaseFunctions.php" );
-include_once( "$IP/UpdateClasses.php" );
-include_once( "$IP/LogPage.php" );
+include_once( "DatabaseFunctions.php" );
+include_once( "UpdateClasses.php" );
+include_once( "LogPage.php" );
 
 # PHP 4.1+ has array_key_exists, PHP 4.0.6 has key_exists instead, and earlier
 # versions of PHP have neither. So we roll our own. Note that this

@@ -1,7 +1,6 @@
 <?
 # See title.doc
-global $IP;
-include_once( "$IP/Interwiki.php" );
+include_once( "Interwiki.php" );
 
 class Title {
 	/* private */ var $mTextform, $mUrlform, $mDbkeyform;

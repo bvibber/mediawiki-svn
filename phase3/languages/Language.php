@@ -1533,7 +1533,6 @@ class Language {
 	function isRTL() { return false; }
 }
 
-global $IP;
-@include_once( "{$IP}/Language" . ucfirst( $wgLanguageCode ) . ".php" );
+@include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );
 
 ?>
