@@ -1,7 +1,7 @@
 [[de:Astronomie]][[eo:Astronomio kaj Astrofiziko]][[fr:Astronomie]][[nl:Astronomie en Astrofysica]][[pl:Astronomia]][[pt:Astronomia e Astrofísica]]
 '''Astronomy''', which etymologically means ''laws of the [[star|stars]]'', is the science whose subject is the observation and explanation of events outside the earth. '''Astrophysics'''
 was born as the application of physics to the phenomena observed
-by astronomy, this was only possible once it was understood that the elements that made up the &quot;celestial objects&quot; were the same that made up the [[Earth]], and that the same [[laws of physics]] applied. Nearly all astronomers now have a strong background in physics, and the results of observations are always put in an astrophysical context, so the distinction between astronomy and astrophysics almost doesn't exist anymore.
+by astronomy, this was only possible once it was understood that the elements that made up the "celestial objects" were the same that made up the [[Earth]], and that the same [[laws of physics]] applied. Nearly all astronomers now have a strong background in physics, and the results of observations are always put in an astrophysical context, so the distinction between astronomy and astrophysics almost doesn't exist anymore.
 
 In the early part of its history, astronomy involved only the
 observation and predictions of the motions of the objects in the sky that could be seen with the naked eye. 
@@ -15,7 +15,7 @@ found much later to be far away objects, and with the advent of
 spectroscopy it was proved that they were similar to our own sun,
 but with a range of temperatures, masses and sizes. The existence
 of our Galaxy, the Milky Way, as a separate group of stars was only proven in the 20th century, along with the existence of
-&quot;external&quot; galaxies, and soon after, the expansion of the universe seen in the recession of most galaxies from us.
+"external" galaxies, and soon after, the expansion of the universe seen in the recession of most galaxies from us.
 Cosmology, a discipline that has a large intersection with
 astronomy, made huge advances during the 20th century, 
 with the model of the hot [[big bang]] heavily supported by the
@@ -24,10 +24,7 @@ evidence provided by astronomy and physics, such as the [[cosmic microwave backg
 
 For a more detailed history of astronomy, see the [[history of astronomy]].
 
-
-
-
-'''Division by way of obtaining information'''
+== Division by way of obtaining information ==
 
 Given its huge scope, astronomy is divided into different branches.
 The divisions are not unique, however, and the intersections, as
@@ -47,12 +44,12 @@ the [[electromagnetic spectrum]] observed:
 Optical and radio astronomy can be done using ground-based observatories, because the [[atmosphere]] is transparent at those wavelengths. Infrared light is heavily absorbed by
 [[water vapor]], so infrared observatories have to be located in high, dry places or in space.
 
-The [[atmosphere]] is opaque at the wavelengths used by [[X-ray astronomy]], [[gamma-ray astronomy]], [[UV astronomy]] and, except for a few wavelength &quot;windows&quot;, [[Far infrared astronomy]] , and so observations
+The [[atmosphere]] is opaque at the wavelengths used by [[X-ray astronomy]], [[gamma-ray astronomy]], [[UV astronomy]] and, except for a few wavelength "windows", [[Far infrared astronomy]] , and so observations
 can be carried out only from balloons or [[space observatory|space observatories]].
 
 All the previous disciplines are based on the detection of [[photon|photons]], but we also receive information from outside the earth carried by [[cosmic rays]], [[neutrino|neutrinos]], and, in the near future, [[gravitational wave|gravitational waves]] (see [[LIGO]] and [[LISA]]).
 
-'''Division by subject'''
+== Division by subject ==
 
 Astronomers study many objects including [[planet|planets]], [[star|stars]], [[nova|novae]], [[star cluster|star clusters]], [[galaxy|galaxies]], [[nebula|nebulae]], etc. but not every astronomer observes every kind of object.  A different division can be made using the regions of space and problems addressed; among them
 
@@ -83,16 +80,16 @@ an active role.
 If your favorite area of research is not mentioned, feel free to
 add it.
 
-'''Organizations'''
+== Organizations ==
 
-[[International Astronomical Union]]&lt;br /&gt;
-[[American Astronomical Society]]&lt;br /&gt;
-[[National Optical Astronomy Observatories]]&lt;br /&gt;
-[[European Southern Observatory]]&lt;br /&gt;
-[http://www.rasc.ca Royal Astronomical Society of Canada]&lt;br/&gt;
-[http://www.ras.org.uk Royal Astronomical Society (UK)]
-----
-'''Amateur astronomy.'''
+*[[International Astronomical Union]]
+*[[American Astronomical Society]]
+*[[National Optical Astronomy Observatories]]
+*[[European Southern Observatory]]
+*[http://www.rasc.ca Royal Astronomical Society of Canada]
+*[http://www.ras.org.uk Royal Astronomical Society (UK)]
+
+== Amateur astronomy ==
 
 Amateur astronomy is one of the oldest and most popular of hobbies. From the occasional stargazer to the most hardened deep sky object hunter, thousands of amateurs are involved in this branch of astronomy. Some topics in amateur astronomy include:
 *[[Amateur astronomy]]
@@ -105,10 +102,10 @@ Amateur astronomy is one of the oldest and most popular of hobbies. From the occ
 
 ----
 
-''See also [[Astronomer|Astronomers and Astrophysicists]], [[Amateur Astronomy]], [[History of astronomy]].''
+See also [[Astronomer|Astronomers and Astrophysicists]], [[Amateur Astronomy]], [[History of astronomy]].
 
-'''Basic Concepts''' 
-&lt;br&gt;(wikipedia is not a dictionary. Do not add a new page unless the subject deserves one)
+== Basic Concepts ==
+
 *[[astronomical distances]]
 *[[celestial sphere]]
 *[[right ascension]]
@@ -145,9 +142,8 @@ See also:
 * [[Timeline of telescopes, observatories, and observing technology]]
 * [[Timeline of artificial satellites and space probes]]
 
-
-What are our priorities for writing in this area?  To help develop a list of the most basic topics in Astronomy and Astrophysics, please see [[Astronomy and Astrophysics basic topics]].
 ----
+
 External links:
 * [http://www.ency-astro.com/ Encyclopedia of Astronomy and Astrophysics] 
 * [http://xxx.lanl.gov Los Alamos Astrophysics e-Print Database]

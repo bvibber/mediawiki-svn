@@ -2,8 +2,8 @@
 ----
 We can treat ''Communication'' like a language and a subject unto itself, or as the name of a field of study.
 
-&quot;Communication&quot; implies two different, and sometimes conflicting, things.
-On one hand, it means to have a thoughtful exchange of views with a small number of people, perhaps just one.  But it can also mean to disseminate broadly a simple message, without deep thought or appeals for feedback.  The Latin root is &quot;communicare&quot; and means &quot;to make common.&quot; 
+"Communication" implies two different, and sometimes conflicting, things.
+On one hand, it means to have a thoughtful exchange of views with a small number of people, perhaps just one.  But it can also mean to disseminate broadly a simple message, without deep thought or appeals for feedback.  The Latin root is ''communicare'' and means "to make common". 
 
 ''Communication'' as a field of study is relatively new.  Arguably, it encompasses [[journalism]], [[public relations]], [[media studies]] (which might include the study of [[television]], [[radio]], and [[film]]), and [[rhetoric]], among other fields.
 
@@ -34,9 +34,4 @@ In [[virtual management]] an important issue is [[computer mediated communicatio
 === The Study of Communication ===
 *historical sketch
 *important people, theories
------
-&lt;b&gt;What are our priorities for writing in this area?  To help develop a list of the most basic topics in Communication, please see [[Communication basic topics]].&lt;/b&gt; 
-
-
-
 

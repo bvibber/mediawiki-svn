@@ -1,7 +1,7 @@
 [[eo:Geografio]][[nl:Geografie]]
-'''Geography''' is the study of the surface of the [[Earth]]. The word derives from the [[Greek language|Greek]] words &quot;h&amp;ecirc; g&amp;ecirc;&quot; (&quot;the Earth&quot;) and &quot;graphein&quot; (&quot;to write&quot;).
+'''Geography''' is the study of the surface of the [[Earth]]. The word derives from the [[Greek language|Greek]] words ''h&ecirc;g&ecirc;'' ("the Earth") and ''graphein'' ("to write").
 
-Geography is much more than [[Cartography]], the study of maps.  It not only investigates what is where on the Earth, but also why it's there not somewhere else, sometimes referred to as &quot;location in space&quot;.  It studies this whether the cause is natural or human. It also studies the consequences of those differences.  
+Geography is much more than [[Cartography]], the study of maps.  It not only investigates what is where on the Earth, but also why it's there not somewhere else, sometimes referred to as "location in space".  It studies this whether the cause is natural or human. It also studies the consequences of those differences.  
 
 '''Methods'''
 
@@ -42,8 +42,4 @@ By the [[18th century]], geography had become recognized as a discrete disciplin
 '''Regional Science'''
 
 In the [[1950s]] the [[regional science]] movement arose, led by [[Walter Isard]] to provide a more quantitative and analytical base to geographical questions, in contrast to the more qualitative tendencies of traditional geography programs.  Regional Science comprises the body of knowledge in which the spatial dimension plays a fundamental role, such as [[regional economics]], [[resource management]], [[location theory]], [[urban planning|urban]] and [[regional planning]], [[transportation]] and [[communication]], [[human geography]], [[population distribution]] and environmental quality.
-
-
-----
-What are our priorities for writing in this area?  To help develop a list of the most basic topics in Geography, please see [[Geography basic topics]].
 

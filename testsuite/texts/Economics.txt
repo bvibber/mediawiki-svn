@@ -31,21 +31,22 @@ In priniciple, economics can be applied to any type of economic organization. Ho
 === Branches of economics and related subjects ===
 Economics may be broken down as follows:
 
-:''[[Microeconomics]]''&lt;br&gt;
+:''[[Microeconomics]]''
+
 :[[General equilibrium]] -- [[Industrial organization]] -- [[Financial economics]] -- [[Public finance]] -- [[International trade]] -- [[Labor market|Labor economics]] -- [[Development economics]] -- [[Environmental economics]] -- [[Evolutionary economics]] -- [[Public choice theory]] -- [[Economic geography]] -- [[Network effect]] -- [[Transport economics]]
 
-:''[[Macroeconomics]]''&lt;br&gt;
+:''[[Macroeconomics]]''
 :[[Stabilisation policy]] -- [[Economic growth]] -- [[Purchasing power parity]]
 
-:''Methodology''&lt;br&gt;
+:''Methodology''
 :[[Econometrics]] -- [[Game Theory]] -- [[Mathematical economics]]
 
 Related fields and topics:
 
-:''Related fields''&lt;br&gt;
+:''Related fields''
 :[[History of Economic Thought|History of economic thought]] -- [[Political economy]] -- [[Political science]] -- [[Accounting]] -- [[Finance and investment]] -- [[Operations research]]
 
-:''Selected topics''&lt;br&gt;
+:''Selected topics''
 :[[Economists]] -- [[Nobel Prize in Economics]] -- [[Communism]] -- [[Capitalism]] -- [[Market economy]] -- [[Informal economy]] -- [[Natural capitalism]] -- [[Stock exchange]]
 
 === Economics and political economy ===

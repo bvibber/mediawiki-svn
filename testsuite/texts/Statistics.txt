@@ -1,5 +1,5 @@
 [[nl:Statistiek]][[pl:Statystyka]]
-&quot;There are lies, damn lies, and then there are Statistics.&quot; - Mark Twain
+:"There are lies, damn lies, and then there are Statistics." - Mark Twain
 
 '''Statistics''' is the science of 
 #[[Planning Research|planning observations]], 
@@ -14,6 +14,3 @@
 
 '''See also:'''
 * [[Extreme value theory]] -- [[Data mining]] 
-----
-What are our priorities for writing in this area?  To help develop a list of the most basic topics in Statistics, please see [[Statistics basic topics]].
-

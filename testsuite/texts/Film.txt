@@ -1,9 +1,8 @@
 [[de:Film]][[eo:Kino]][[fr:Cinéma]][[nl:Film]][[pl:Film]]
-Initially, '''moving pictures''' meant only the movement that is perceived when a string of celluloid-recorded images are projected at a rate of 16 frames per second or more (see [[persistence of vision]]). Today, '''motion pictures''' (or &quot;'''movies'''&quot;) are an art form, as well as one of the most popular forms of entertainment.  
+Initially, '''moving pictures''' meant only the movement that is perceived when a string of celluloid-recorded images are projected at a rate of 16 frames per second or more (see [[persistence of vision]]). Today, '''motion pictures''' (or '''movies''') are an art form, as well as one of the most popular forms of entertainment.  
 
 === History of Cinema ===
 
-''topics to be covered''
 * [[Eadweard Muybridge]]
 * [[William Friese-Greene]] 
 * [[Augustin Le Prince|Louis Aimé Augustin Le Prince]]
@@ -39,6 +38,3 @@ Film people:
 :[[Screenwriter]]
 :[[Movie studio]]
  
-----
-What are our priorities for writing in this area?  To help develop a list of the most basic topics in Film, please see [[Movies basic topics]].
-

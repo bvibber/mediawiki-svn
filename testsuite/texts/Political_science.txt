@@ -1,4 +1,4 @@
-&lt;b&gt;Political science&lt;/b&gt; is the formal academic study of [[politics]].  It involves the study of structure and process in [[government]] - or any equivalent system that assures safety, fairness, and closure across a broad range of risks and access to a broad range of commons for its human charges.  Accordingly, political scientists often study trade unions, corporations, churches or other forms of [[collective intelligence]] that are not &quot;political&quot; in the sense of influencing law or executive decisions - but have structure and process approaching that of government in complexity and interconnection.
+'''Political science''' is the formal academic study of [[politics]].  It involves the study of structure and process in [[government]] - or any equivalent system that assures safety, fairness, and closure across a broad range of risks and access to a broad range of commons for its human charges.  Accordingly, political scientists often study trade unions, corporations, churches or other forms of [[collective intelligence]] that are not "political" in the sense of influencing law or executive decisions - but have structure and process approaching that of government in complexity and interconnection.
 
 Political scientists also study the allocation and transfer of power in decision making.  Because of the complex interaction of often conflicting interests, political science is often an applied instance of [[game theory]].
 
@@ -95,7 +95,4 @@ While historians look backward, seeking to explain the past, political scientist
 ** [[Techno-oligarchy]]
 ** [[collective intelligence]]
 ** [[anti-globalization movement]]
-
-----
-What are our priorities for writing in this area?  To help develop a list of the most basic topics in political science, please see [[political science basic topics]].
 

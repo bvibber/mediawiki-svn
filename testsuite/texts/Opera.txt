@@ -1,4 +1,4 @@
-'''Opera''' (or '''Melodramma''') is an [[art]] form that consists of a stage performance of a [[drama]] (whose text is called the &quot;[[libretto]]&quot;).
+'''Opera''' (or '''Melodramma''') is an [[art]] form that consists of a stage performance of a [[drama]] (whose text is called the "[[libretto]]").
 
 The drama is presented utilizing [[scenery]], [[costume]]s, [[acting]].  Much of the [[dialogue]] is presented through [[singing]]:  [[Recitative]] is singing in much the form of speaking, [[aria]] is an extended solo passage. Arioso is a smaller, more limited in subject matter aria. 
 
@@ -9,7 +9,7 @@ Opera draws from many other art forms. Its backbone is certainly [[music]], it i
 ----
 
 ==== History ====
-Opera began in [[Italy]] in the [[Renaissance]], as an attempt to revive Classical Greek drama. Opera means simply &quot;work&quot; in [[Italian]]. The first opera was written around [[1597]] in Northern Italy, sources differ on the exact date and place.
+Opera began in [[Italy]] in the [[Renaissance]], as an attempt to revive Classical Greek drama. Opera means simply "work" in [[Italian]]. The first opera was written around [[1597]] in Northern Italy, sources differ on the exact date and place.
 
 For centuries, Italian opera was the standard form, and many operas written by English- or German-speaking composers, [[Wolfgang Amadeus Mozart|Mozart]], for example, are in [[Italian]]. A separate French tradition, sung in [[French]], was founded by [[Jean-Baptiste Lully]], and well into the middle of the nineteenth century, operas performed in [[France]] were usually written or translated into French. [[Spain]] produced its own distinctive form: [[zarzuela]].
 
@@ -37,9 +37,7 @@ See [[List of famous operas]]
 *[[Sydney Opera House]]
 
 ----
-See also [[operetta]], [[musical]], [[singspiel]],[[zarzuela]]
-----
-:''What are our priorities for writing in this area? To help develop a list of the most basic topics about opera, please see [[opera basic topics]].''
+See also [[operetta]], [[musical]], [[singspiel]], [[zarzuela]].
 ----
 
 ''Opera'' is also the name of a popular alternative [[web browser]]; see '''[[Opera browser]]'''

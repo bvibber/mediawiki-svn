@@ -6,41 +6,41 @@ Physics is closely related to the other [[Natural Sciences|natural sciences]], p
 Below is an overview of the major subfields and concepts in physics, followed by a brief outline of the history of physics and its subfields.
 
 :'''Central Theories'''
-:[[Classical Mechanics|Classical mechanics]]&amp;nbsp;-- [[Thermodynamics]]&amp;nbsp;-- [[Statistical Mechanics|Statistical mechanics]]&amp;nbsp;--  [[Electromagnetism]]&amp;nbsp;-- [[Special relativity]]&amp;nbsp;-- [[General relativity]]&amp;nbsp;-- [[Quantum mechanics]]&amp;nbsp;-- [[Quantum field theory]] -- [[Standard Model]]
+:[[Classical Mechanics|Classical mechanics]]&nbsp;-- [[Thermodynamics]]&nbsp;-- [[Statistical Mechanics|Statistical mechanics]]&nbsp;--  [[Electromagnetism]]&nbsp;-- [[Special relativity]]&nbsp;-- [[General relativity]]&nbsp;-- [[Quantum mechanics]]&nbsp;-- [[Quantum field theory]] -- [[Standard Model]]
 
 :'''Proposed Theories'''
-:[[Theory of everything]]&amp;nbsp;-- [[Grand unification theory|Grand unified theory]]&amp;nbsp;-- [[M-theory]] -- [[emergent complexity]] -- [[Interpretation of quantum mechanics]]
+:[[Theory of everything]]&nbsp;-- [[Grand unification theory|Grand unified theory]]&nbsp;-- [[M-theory]] -- [[emergent complexity]] -- [[Interpretation of quantum mechanics]]
 
 :'''Concepts'''
-:[[Matter]]&amp;nbsp;-- [[Antimatter]] -- [[Particle|Elementary particle]] -- [[Boson]] -- [[Fermion]]
+:[[Matter]]&nbsp;-- [[Antimatter]] -- [[Particle|Elementary particle]] -- [[Boson]] -- [[Fermion]]
 
-:[[Symmetry]] -- [[Conservation law]] -- [[Mass]]&amp;nbsp;-- [[Energy]]&amp;nbsp;--[[Momentum]]&amp;nbsp;-- [[Angular momentum]]&amp;nbsp;-- [[Spin (physics)|Spin]]
+:[[Symmetry]] -- [[Conservation law]] -- [[Mass]]&nbsp;-- [[Energy]]&nbsp;--[[Momentum]]&nbsp;-- [[Angular momentum]]&nbsp;-- [[Spin (physics)|Spin]]
 
-:[[Time]]&amp;nbsp;-- [[Space]] -- [[Dimension]] -- [[Spacetime]] -- [[Length]]&amp;nbsp;-- [[Velocity]]&amp;nbsp;-- [[Force]]&amp;nbsp;-- [[Torque]]
+:[[Time]]&nbsp;-- [[Space]] -- [[Dimension]] -- [[Spacetime]] -- [[Length]]&nbsp;-- [[Velocity]]&nbsp;-- [[Force]]&nbsp;-- [[Torque]]
 
-:[[Wave]]&amp;nbsp;-- [[Wavefunction]] -- [[Quantum entanglement]] -- [[Harmonic oscillator]]&amp;nbsp;-- [[Magnetism]]&amp;nbsp;-- [[Electricity]]&amp;nbsp;-- [[Electromagnetic radiation]]&amp;nbsp;-- [[Temperature]]&amp;nbsp;-- [[Entropy]] -- [[Physical information]]
+:[[Wave]]&nbsp;-- [[Wavefunction]] -- [[Quantum entanglement]] -- [[Harmonic oscillator]]&nbsp;-- [[Magnetism]]&nbsp;-- [[Electricity]]&nbsp;-- [[Electromagnetic radiation]]&nbsp;-- [[Temperature]]&nbsp;-- [[Entropy]] -- [[Physical information]]
 
 :'''[[fundamental force|Fundamental Forces]]'''
-:[[Gravity|Gravitational]]&amp;nbsp;-- [[Electromagnetism|Electromagnetic]]&amp;nbsp;-- [[Weak interaction|Weak]]&amp;nbsp;-- [[Strong interaction|Strong]]
+:[[Gravity|Gravitational]]&nbsp;-- [[Electromagnetism|Electromagnetic]]&nbsp;-- [[Weak interaction|Weak]]&nbsp;-- [[Strong interaction|Strong]]
 
 :'''[[Particle physics|Particles]]'''
-:[[Atom]]&amp;nbsp;-- [[Proton]]&amp;nbsp;-- [[Neutron]]&amp;nbsp;-- [[Electron]]&amp;nbsp;-- [[Quark]]&amp;nbsp;-- [[Photon]]&amp;nbsp;-- [[Gluon]]&amp;nbsp;-- [[W boson]]&amp;nbsp;-- [[Z boson]]&amp;nbsp;-- [[Graviton]]&amp;nbsp;-- [[Neutrino]]&amp;nbsp;-- [[Particle radiation]]
+:[[Atom]]&nbsp;-- [[Proton]]&nbsp;-- [[Neutron]]&nbsp;-- [[Electron]]&nbsp;-- [[Quark]]&nbsp;-- [[Photon]]&nbsp;-- [[Gluon]]&nbsp;-- [[W boson]]&nbsp;-- [[Z boson]]&nbsp;-- [[Graviton]]&nbsp;-- [[Neutrino]]&nbsp;-- [[Particle radiation]]
 
 
 :'''Subfields of Physics'''
-:[[Astrophysics]]&amp;nbsp;-- [[Atomic, Molecular, and Optical physics]]&amp;nbsp;--  [[Computational physics]]&amp;nbsp;-- [[Condensed matter physics]]&amp;nbsp;-- [[Cryogenics]]&amp;nbsp;-- [[Fluid dynamics]]&amp;nbsp;-- [[Polymer physics]]&amp;nbsp;-- [[Optics]]&amp;nbsp;-- [[Materials physics]]&amp;nbsp;-- [[Nuclear physics]]&amp;nbsp;-- [[Plasma physics]]&amp;nbsp;-- [[Particle physics]] (or High Energy Physics) -- [[Solid state physics]]
+:[[Astrophysics]]&nbsp;-- [[Atomic, Molecular, and Optical physics]]&nbsp;--  [[Computational physics]]&nbsp;-- [[Condensed matter physics]]&nbsp;-- [[Cryogenics]]&nbsp;-- [[Fluid dynamics]]&nbsp;-- [[Polymer physics]]&nbsp;-- [[Optics]]&nbsp;-- [[Materials physics]]&nbsp;-- [[Nuclear physics]]&nbsp;-- [[Plasma physics]]&nbsp;-- [[Particle physics]] (or High Energy Physics) -- [[Solid state physics]]
 
 :'''Methods'''
-:[[Scientific method]]&amp;nbsp;-- [[Physical quantity]]&amp;nbsp;-- [[Measurement]]&amp;nbsp;-- [[Measuring instruments]]&amp;nbsp;-- [[Dimensional analysis]]&amp;nbsp;-- [[Probability and Statistics]]
+:[[Scientific method]]&nbsp;-- [[Physical quantity]]&nbsp;-- [[Measurement]]&nbsp;-- [[Measuring instruments]]&nbsp;-- [[Dimensional analysis]]&nbsp;-- [[Probability and Statistics]]
 
 :'''Tables'''
-:[[Physical constants]]&amp;nbsp;-- [[SI base unit|SI base units]]&amp;nbsp;-- [[SI derived unit|SI derived units]]&amp;nbsp;-- [[SI prefix|SI prefixes]]&amp;nbsp;-- [[Conversion of units|Unit conversions]]
+:[[Physical constants]]&nbsp;-- [[SI base unit|SI base units]]&nbsp;-- [[SI derived unit|SI derived units]]&nbsp;-- [[SI prefix|SI prefixes]]&nbsp;-- [[Conversion of units|Unit conversions]]
 
 :'''History'''
-:[[History of Physics]]&amp;nbsp;-- [[Famous Physicists]]&amp;nbsp;-- [[Nobel Prize in physics]]
+:[[History of Physics]]&nbsp;-- [[Famous Physicists]]&nbsp;-- [[Nobel Prize in physics]]
 
 :'''Related Fields'''
-:[[Mathematical physics]]&amp;nbsp;-- [[Astronomy and Astrophysics]]&amp;nbsp;-- [[Materials science]]&amp;nbsp;-- [[Electronics]]&amp;nbsp;-- [[Engineering]]
+:[[Mathematical physics]]&nbsp;-- [[Astronomy and Astrophysics]]&nbsp;-- [[Materials science]]&nbsp;-- [[Electronics]]&nbsp;-- [[Engineering]]
 
 
 (''To help develop a list of the most basic topics in Physics, please see [[Physics basic topics]].'')
@@ -77,7 +77,7 @@ Quantum field theory provided the framework for modern [[particle physics]], whi
 
 ''A more detailed history of physics article is in development at [[History of Physics]].''
 
-&lt;hr&gt;
+----
 
 '''Suggested Reading:'''
 * [[Richard Feynman|Feynman]], ''The Character of Physical Law'', MIT Press, 1965

@@ -115,7 +115,6 @@ Modern major fields of technology.
 *** [[Eductor-jet pump]]
 *** [[Tuyau]]
 
-
 * [[Nanotechnology]]
 * [[nuclear reactor|Nuclear reactor]]
 
@@ -173,6 +172,3 @@ Modern major fields of technology.
 * [[Emergent Philosophies]]
 * [[Transhumanism]]
 * [[Posthumanism]]
-----
-What are our priorities for writing in this area?  To help develop a list of the most basic topics in technology, please see [[Technology basic topics]].
-

@@ -39,7 +39,7 @@ This following list of subfields and topics reflects one organizational view of 
 :[[Mechanics]] -- [[Numerical analysis]] -- [[Optimization (mathematics)|Optimization]] -- [[Probability and statistics]] 
 
 :'''Famous Theorems and Conjectures'''
-:[[Fermats Last Theorem|Fermat's last theorem]] -- [[Riemann hypothesis]] -- [[Continuum hypothesis]] -- [[Complexity classes P and NP|P=NP]] -- [[Goldbachs conjecture|Goldbach's conjecture]] -- [[Twin Prime Conjecture]] -- [[Goedel's incompleteness theorem|G&amp;ouml;del's incompleteness theorems]] -- [[Poincare conjecture|Poincar&amp;eacute; conjecture]] -- [[Cantor's diagonal argument]] -- [[Pythagorean Theorem|Pythagorean theorem]] -- [[Central limit theorem]] -- [[Fundamental Theorem of Calculus|Fundamental theorem of calculus]] -- [[Fundamental Theorem of Algebra|Fundamental theorem of algebra]] -- [[Four color theorem]] -- [[Zorns lemma|Zorn's lemma]] -- [[The most remarkable formula in the world|&quot;The most remarkable formula in the world&quot;]]
+:[[Fermats Last Theorem|Fermat's last theorem]] -- [[Riemann hypothesis]] -- [[Continuum hypothesis]] -- [[Complexity classes P and NP|P=NP]] -- [[Goldbachs conjecture|Goldbach's conjecture]] -- [[Twin Prime Conjecture]] -- [[Goedel's incompleteness theorem|G&ouml;del's incompleteness theorems]] -- [[Poincare conjecture|Poincar&eacute; conjecture]] -- [[Cantor's diagonal argument]] -- [[Pythagorean Theorem|Pythagorean theorem]] -- [[Central limit theorem]] -- [[Fundamental Theorem of Calculus|Fundamental theorem of calculus]] -- [[Fundamental Theorem of Algebra|Fundamental theorem of algebra]] -- [[Four color theorem]] -- [[Zorns lemma|Zorn's lemma]] -- [[The most remarkable formula in the world|"The most remarkable formula in the world"]]
 
 :'''Foundations and Methods'''
 :[[Philosophy of mathematics]] -- [[Mathematical intuitionism]] -- [[Mathematical constructivism]] -- [[Foundations of mathematics]] -- [[Set theory]] -- [[Symbolic logic]] -- [[Model theory]] -- [[Category theory]] -- [[Theorem-proving]]
@@ -47,8 +47,6 @@ This following list of subfields and topics reflects one organizational view of 
 :'''History and the World of Mathematicians'''
 
 :[[History of mathematics]] -- [[Timeline of mathematics]] -- [[Mathematician|Mathematicians]] -- [[Fields Medal|Fields medal]] -- [[Millennium Prize Problems|Millennium Prize Problems (Clay Math Prize)]] -- [[International Mathematical Union]] -- [[Mathematics Competitions|Mathematics competitions]]
-
-What are our priorities for writing in this area?  To help develop a list of the most basic topics in Mathematics, please see [[Mathematics basic topics]].
 
 ----
 '''Further Reading:'''

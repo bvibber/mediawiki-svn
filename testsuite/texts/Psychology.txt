@@ -3,15 +3,13 @@
 
 Psychologists work in co-operation (and sometimes in competition) with psychiatrists (who are medical doctors who specialise in mental health issues), social workers (most of whom are qualified in various forms of psychological intervention), psychiatric nurses and 'lay' counsellors. Services similar to those provided by psychologists are also often provided by traditional healers and religious counsellors.
 
-The root of the word psychology (psyche) means &quot;soul&quot; in Greek, and psychology was sometimes considered a study of the soul (in a religious sense of this term), though its emergence as a medical discipline can be seen in [[Thomas Willis]]'s reference to psychology (the &quot;Doctrine of the Soul&quot;) in terms of brain function, as part of his 1672 anatomical treatise &quot;De Anima Brutorum&quot; (&quot;Two Discourses on the Souls of Brutes&quot;). 
+The root of the word psychology (psyche) means "soul" in Greek, and psychology was sometimes considered a study of the soul (in a religious sense of this term), though its emergence as a medical discipline can be seen in [[Thomas Willis]]'s reference to psychology (the "Doctrine of the Soul") in terms of brain function, as part of his 1672 anatomical treatise "De Anima Brutorum" ("Two Discourses on the Souls of Brutes"). 
 
 [[Experimental psychology]], as introduced by [[Wilhelm Wundt]] in 1879 at Leipzig University in Germany, eliminated religious implications from psychology entirely.  Today, experimental psychology focuses on observable behavior and the evidence it gives about mental processes.  It therefore has little specific to say about such notions as an immaterial, immortal soul.  Modern psychology is often called the scientific study of behavior, though (as in [[cognitive psychology]]) its purported object is often not behavior but various [[mental event]]s. There are also now many psychological approaches that attempt to take spiritual and religious issues seriously.
 
 Until about the beginning of the twentieth century, psychology was regarded as a branch of philosophy.  With the work of Wundt and of his contemporary experimental psychologist [[William James]] (who, himself, questioned the veracity of materialistic psychology in his later work), the field of psychology was slowly but steadily established as a science independent of philosophy.  Of course, like all sciences which have broken off from philosophy, purely philosophical questions about the mind are still studied by philosophers; the name of the philosophical subdiscipline which studies those questions is ''[[philosophy of mind]].''  Few universities, journals, or researchers today treat psychology as a branch of philosophy, but there is much disagreement as to whether it should be considered an experimental science. Some academic psychologists are still of the opinion that psychological understanding can only progress through rigorously controlled laboratory experiments, but most now accept that less carefully controlled quantitative methods (such as survey research) as well as qualitative research or equally valuable.
 
 Both psychology and its sister [[psychiatry]] (whose practitioners are medical doctors with a specialty in psychiatry) are criticized by a vocal and well-credentialed (if small) minority in medical and academic circles. These critics call them [[pseudo-science]]s, arguing that their theories, diagnoses and treatments don't hold up under the rigor of the scientific method and that they are not reproducable; others question the appropriateness of applying the scientific method to the study of the human mind and human behavior.  A related view is promulgated by some philosophers under the label [[eliminative materialism]].  These challenges to the discipline are, in large part, legitimate and needed, especially when one considers the discipline's growing influence in Western culture and how easy it can be to construct psychological models that are entirely untestable (e.g., Freud's model of the psyche).  These concerns seek not to subvert psychology but to strengthen it by the same rigorous inquiry present in other sciences.
-
-
 
 Topics in Psychology
 * [[research methods]]
@@ -142,7 +140,4 @@ External links:
 
 * [http://www.apa.org/monitor/dec99/toc.html A Century of Psychology (APA)]
 * [http://www.psipesquisa.com.br PsiPesquisa Search Engime in Portuguese]
-
-
-What are our priorities for writing in this area?  To help develop a list of the most basic topics in Psychology, please see [[Psychology basic topics]].
 

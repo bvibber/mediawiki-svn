@@ -7,25 +7,25 @@ There are several distinct legal traditions; these differ less in the substantiv
 
 The several different levels of [[government]] each produce their own laws (though the extent to which law is centralized varies); thus at any one place there can be laws in force established at the local, regional, state, national or international levels.
 
-&lt;b&gt;Legal systems&lt;/b&gt;
+== Legal systems ==
 
 [[Common law]] -- [[civil law]] -- [[Roman law]] -- [[international law]] -- [[European community law]] -- [[socialist law]] -- [[Canon law]]
 
-&lt;b&gt;Legal subject areas&lt;/b&gt;
+== Legal subject areas ==
 
 [[Constitutional law]] -- [[Criminal law]] -- [[Civil law]] -- [[Administrative law]] -- [[Evidence|Law of Evidence]] _ [[Procedural law]] -- [[Private law]] -- [[Family law]] -- [[Labor law]] -- [[Corporations law]] -- [[Property law]] -- [[Human rights law]] -- [[Intellectual Property law]] -- [[Environmental law]] -- [[Land use]] -- [[consuetudinary law]]
 
-&lt;b&gt;Law of particular countries&lt;/b&gt;
+== Law of particular countries ==
 
 *[[United Kingdom]]: [[British Nationality Law]], [[Judicial Committee of the Privy Council]], [[House of Lords]], [[Human Rights Act 1998]]
 *[[United States]]: [[US Constitutional Law]], [[United States Constitution]],  [[False Claims Law]], [[Controlled Substances Act]], [[Digital Millennium Copyright Act]], [[Sonny Bono Copyright Term Extension Act]]
 *[[Australia]]: [[Australian Constitutional History]]
 
-&lt;b&gt;Subjects Auxillary to Law&lt;/b&gt;
+== Subjects Auxillary to Law ==
 
 [[Jurisprudence]] -- [[Practice of law]] -- [[philosophy of law]] -- [[comparative law]] -- [[legal history]] -- [[law and literature]] -- [[dispute resolution]] (aka, [[alternative dispute resolution]])
 
-&lt;b&gt;Other&lt;/b&gt;
+== Other ==
 (To be arranged into the above categories)
 
 * [[abandonment]] 
@@ -169,12 +169,9 @@ Legal books:
 * [[Black's Law Dictionary]]
 * [[Halsbury's Statutes]]
 
-----
-''see also [[Crime]]''
+See also [[Crime]].
 *[http://www.HavenWorks.com/law Law &amp; Legal News &amp; Reference:] http://www.HavenWorks.com/law
 ----
 
 Not quite law: [[Law of nature]] -- [[Murphy's law]] -- [[Finagle's law]] -- [[Hanlon's Razor]] -- [[Sturgeon's law]] -- [[Parkinson's law]] -- [[Occam's razor]]
-----
-What are our priorities for writing in this area?  To help develop a list of the most basic topics in Law, please see [[Law basic topics]].
 
