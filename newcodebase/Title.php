@@ -116,7 +116,7 @@
 	"ss"    => "http://ss.wikipedia.com/wiki.cgi?$1",
 	"st"    => "http://st.wikipedia.com/wiki.cgi?$1",
 	"su"    => "http://su.wikipedia.com/wiki.cgi?$1",
-	"sv"	=> "http://sv.wikipedia.com/wiki.cgi?$1",
+	"sv"	=> "http://sv.wikipedia.org/wiki/$1",
 	"sw"    => "http://sw.wikipedia.com/wiki.cgi?$1",
 	"ta"    => "http://ta.wikipedia.com/wiki.cgi?$1",
 	"te"    => "http://te.wikipedia.com/wiki.cgi?$1",
