@@ -8,9 +8,9 @@ $wgTitle = Title::newFromText( "Database creation script" );
 include_once( "./buildTables.inc" );
 set_time_limit(0);
 
-$wgDBname			= "wikidb";
-$wgDBuser			= "wikiadmin";
-$wgDBpassword		= "adminpass";
+#$wgDBname			= "wikidb";
+#$wgDBuser			= "wikiadmin";
+#$wgDBpassword		= "adminpass";
 
 buildTables();
 initializeTables();
