@@ -24,10 +24,13 @@ CREATE TABLE cur (
   cur_unlinked_links mediumtext,
   cur_counter bigint(20) unsigned default '0',
   cur_cache mediumtext,
+  cur_ind_title varchar(255) default NULL,
   UNIQUE KEY cur_title (cur_title),
   UNIQUE KEY cur_id (cur_id),
-  KEY timeind (cur_timestamp)
-) TYPE=ISAM PACK_KEYS=1;
+  KEY timeind (cur_timestamp),
+  FULLTEXT KEY cur_ind_title (cur_ind_title),
+  FULLTEXT KEY cur_text (cur_text)
+) TYPE=MyISAM PACK_KEYS=1;
 
 #
 # Table structure for table 'old'
@@ -46,7 +49,7 @@ CREATE TABLE old (
   UNIQUE KEY old_id (old_id),
   KEY timeind (old_timestamp),
   KEY old_title (old_title)
-) TYPE=ISAM PACK_KEYS=1;
+) TYPE=MyISAM PACK_KEYS=1;
 
 #
 # Table structure for table 'user'
@@ -61,5 +64,5 @@ CREATE TABLE user (
   user_options mediumtext,
   user_watch mediumtext,
   UNIQUE KEY user_id (user_id)
-) TYPE=ISAM PACK_KEYS=1;
+) TYPE=MyISAM PACK_KEYS=1;
 
