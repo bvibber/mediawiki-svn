@@ -268,6 +268,8 @@ class OutputPage {
 
 	function databaseError( $fname )
 	{
+		global $wgUser;
+
 		$this->setPageTitle( wfMsg( "databaseerror" ) );
 		$this->setRobotpolicy( "noindex,nofollow" );
 		$this->setArticleFlag( false );
@@ -277,9 +279,14 @@ class OutputPage {
 		$msg = str_replace( "$3", wfLastErrno(), $msg );
 		$msg = str_replace( "$4", wfLastError(), $msg );
 
+		$sk = $wgUser->getSkin();
+		$shlink = $sk->makeKnownLink( wfMsg( "searchhelppage" ),
+		  wfMsg( "searchingwikipedia" ) );
+		$msg = str_replace( "$5", $shlink, $msg );
+
 		$this->mBodytext = $msg;
 		$this->output();
-		exit;
+		exit();
 	}
 
 	function readOnlyPage()
