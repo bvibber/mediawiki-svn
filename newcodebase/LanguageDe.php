@@ -732,6 +732,12 @@ Bitte diese Funktion vorsichtig benutzen!",
 #
 "movepage"		=> "Artikel verschieben",
 "movepagetext"	=> "Mit diesem Formular können Sie einen Artikel umbenennen, mitsamt allen Versionen. Der alte Titel wird zum neuen weiterleiten. Verweise auf den alten Titel werden nicht geändert, und die Diskussionsseite wird auch nicht mitverschoben.",
+"movepagetalktext" => "Die dazugehörige Diskussionsseite wird, sofern vorhanden, mitverschoben, '''es sei denn:'''
+*Sie verschieben die Seite in einen anderen Namensraum, oder
+*Es existiert bereits eine Diskussionsseite mit diesem Namen, oder
+*Sie wählen die untenstehende Option ab
+
+In diesen Fällen müssen Sie die Seite, falls gewünscht, von Hand verschieben.",
 "movearticle"	=> "Artikel verschieben",
 "newtitle"		=> "Zu neuem Titel",
 "movepagebtn"	=> "Artikel verschieben",
