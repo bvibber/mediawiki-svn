@@ -67,7 +67,7 @@ function wfImageUrl( $img )
 
 	$url = "{$wgUploadPath}/" . $hash{0} . "/" .
 	  substr( $hash, 0, 2 ) . "/{$name}";
-	return $url;
+	return wfUrlencode( $url );
 }
 
 function wfImageArchiveUrl( $name )
