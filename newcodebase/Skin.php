@@ -197,7 +197,7 @@ class Skin {
 		$s .= "\n<br>" . $this->searchForm() . "</td>";
 
 		if ( $langlinks ) {
-			$s .= "</tr>\n<tr><td class='top' colspan=\"2\">$langlinks;</td>";
+			$s .= "</tr>\n<tr><td class='top' colspan=\"2\">$langlinks</td>";
 		}
 
 		if ( 2 == $qb ) { # Right
