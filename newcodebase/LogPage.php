@@ -3,6 +3,7 @@
 
 class LogPage {
 	/* private */ var $mTitle, $mContent, $mContentLoaded, $mId, $mComment;
+	var $mUpdateRecentChanges ;
 
 	function LogPage( $title, $defaulttext = "<ul>\n</ul>"  )
 	{
@@ -10,6 +11,7 @@ class LogPage {
 		# and log pages always go in Wikipedia namespace
 		$this->mTitle = $title;
 		$this->mId = 0;
+		$this->$mUpdateRecentChanges = true ;
 		$this->mContentLoaded = false;
 		$this->getContent( $defaulttext );
 	}
@@ -64,12 +66,14 @@ class LogPage {
 		}
 		
 		# And update recentchanges
-		$sql = "INSERT INTO recentchanges (rc_timestamp,rc_cur_time,
-                rc_user,rc_user_text,rc_namespace,rc_title,rc_comment,
-                rc_cur_id) VALUES ('{$now}','{$now}',{$uid},'{$ut}',4,'" .
+		if ( $mUpdateRecentChanges ) {
+			$sql = "INSERT INTO recentchanges (rc_timestamp,rc_cur_time,
+        	        rc_user,rc_user_text,rc_namespace,rc_title,rc_comment,
+                	rc_cur_id) VALUES ('{$now}','{$now}',{$uid},'{$ut}',4,'" .
 				wfStrencode( $this->mTitle ) . "','" .
 				wfStrencode( $this->mComment ) . "',{$this->mId})";
-        wfQuery( $sql, $fname );
+		        wfQuery( $sql, $fname );
+			}
 		return true;
 	}
 

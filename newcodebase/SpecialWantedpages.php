@@ -13,6 +13,7 @@ function wfSpecialWantedpages()
 	$mw = $vsp["Wantedpages"] ;
 	$mw = str_replace ( " " , "_" , $mw ) ; # DBKEY
 	$log = new LogPage ( $mw ) ;
+	$log->mUpdateRecentChanges = false ;
 
 	$wgOut->setRobotpolicy( "noindex,nofollow" );
 	global $wgMiserMode;
