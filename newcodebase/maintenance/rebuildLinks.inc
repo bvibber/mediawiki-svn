@@ -68,6 +68,7 @@ function rebuildLinkTablesPass1()
 
 function rebuildLinkTablesPass2()
 {
+	global $wgLang;
 	$count = 0;
 	print "Rebuilding link tables (pass 2).\n";
 
@@ -84,23 +85,28 @@ function rebuildLinkTablesPass2()
 	$sql = "DELETE FROM links";
 	wfQuery( $sql );
 
+	$ins = $wgLang->getNsText( Namespace::getImage() );
 	$sql = "SELECT rl_f_title,rl_to FROM rebuildlinks " .
-	  "WHERE rl_to LIKE 'Image:%'";
+	  "WHERE rl_to LIKE '$ins:%'";
 	$res = wfQuery( $sql );
 
 	$sql = "INSERT INTO imagelinks (il_from,il_to) VALUES ";
+	$sqlX = "";
 	$first = true;
 	while ( $row = wfFetchObject( $res ) ) {
 		$iname = addslashes( substr( $row->rl_to, 6 ) );
 		$pname = addslashes( $row->rl_f_title );
 
-		if ( ! $first ) { $sql .= ","; }
+		if ( ! $first ) { $sqlX .= ","; }
 		$first = false;
 
-		$sql .= "('{$pname}','{$iname}')";
+		$sqlX .= "('{$pname}','{$iname}')";
 	}
-	wfFreeResult( $res );
-	wfQuery( $sql );
+	if ($sqlX != "") {
+	  $sql .= $sqlX;
+	  wfFreeResult( $res );
+	  wfQuery( $sql );
+	}
 
 	$sql = "SELECT DISTINCT rl_to FROM rebuildlinks " .
 	  "ORDER BY rl_to";
@@ -109,7 +115,7 @@ function rebuildLinkTablesPass2()
 	$total = wfNumRows( $res );
 
 	while ( $row = wfFetchObject( $res ) ) {
-		if ( 0 == strncmp( "Image:", $row->rl_to, 6 ) ) { continue; }
+		if ( 0 == strncmp( "$ins:", $row->rl_to, 6 ) ) { continue; }
 
 		$nt = Title::newFromDBkey( $row->rl_to );
 		$id = $nt->getArticleID();

@@ -7,13 +7,14 @@
 include_once( "Setup.php" );
 $wgTitle = Title::newFromText( "Conversion script" );
 include_once( "./rebuildLinks.inc" );
-include_once( "./rebuildRecentChanges.inc" );
+include_once( "./rebuildRecentchanges.inc" );
 include_once( "./buildTables.inc" );
 set_time_limit(0);
 
 $wgDBuser			= "wikiadmin";
 $wgDBpassword		= $wgDBadminpassword;
 # $wgImageDirectory	= "/usr/local/apache/htdocs/wikiimages";
+$wgImageDirectory	= "/usr/local/apache/htdocs/upload";
 
 renameOldTables();
 buildTables();
@@ -28,6 +29,13 @@ buildIndexes();
 
 rebuildLinkTablesPass1();
 rebuildLinkTablesPass2();
+
+# This is kinda ugly, could be done cleaner
+convertImageDirectories();
+#rebuildLinkTablesPass1();
+#rebuildLinkTablesPass2();
+#
+
 removeOldTables();
 
 refillRandom();
@@ -189,7 +197,10 @@ function convertOldTable()
 		$nt = Title::newFromDBkey( $row->old_title );
 		$title = addslashes( $nt->getDBkey() );
 		$ns = $nt->getNamespace();
-		$text = addslashes( convertMediaLinks( $row->old_text ) );
+		#$text = addslashes( convertMediaLinks( $row->old_text ) );
+		# DO NOT convert media links on old versions!!!!!
+		# Old table should always be left intact
+		$text = addslashes($row->old_text);
 
 		$com = addslashes( $row->old_comment );
 		$cut = addslashes( $row->old_user_text );
@@ -222,7 +233,7 @@ function convertOldTable()
 	$newres = wfQuery( $sql );
 }
 
-function convertImageDirectories()
+function convertImageDirectoriesX()
 {
 	global $wgImageDirectory, $wgUploadDirectory;
 	$count = 0;
@@ -277,6 +288,64 @@ function convertImageDirectories()
 	print "{$count} images moved.\n";
 }
 
+function convertImageDirectories()
+{
+	global $wgImageDirectory, $wgUploadDirectory;
+	$count = 0;
+
+
+	$sql = "SELECT DISTINCT il_to FROM imagelinks";
+	$result = wfQuery ( $sql ) ;
+
+   while ( $row = mysql_fetch_object ( $result ) ) {
+   	$oname = $row->il_to ;
+   	$nname = ucfirst ( $oname ) ;
+	
+        $exts = array( "png", "gif", "jpg", "jpeg", "ogg" );
+		$ext = strrchr( $nname, "." );
+		if ( false === $ext ) { $ext = ""; }
+		else { $ext = strtolower( substr( $ext, 1 ) ); }
+		if ( ! in_array( $ext, $exts ) ) {
+			print "Skipping \"{$oname}\"\n";
+			continue;
+		}
+		$oldumask = umask(0);
+		$hash = md5( $nname );
+		$dest = $wgUploadDirectory . "/" . $hash{0};
+		$wgImageDirectoryHash = $wgImageDirectory . "/" . $hash{0} . "/" . substr ( $hash , 0, 2);
+		if ( ! is_dir( $dest ) ) {
+			mkdir( $dest, 0777 ) or die( "Can't create \"{$dest}\".\n" );
+		}
+		$dest .= "/" . substr( $hash, 0, 2 );
+		if ( ! is_dir( $dest ) ) {
+			mkdir( $dest, 0777 ) or die( "Can't create \"{$dest}\".\n" );
+		}
+		umask( $oldumask );
+
+		#echo "Would be copying {$wgImageDirectoryHash}/{$oname} to {$dest}/{$nname}\n";
+		#continue;
+		
+		if ( copy( "{$wgImageDirectoryHash}/{$nname}", "{$dest}/{$nname}" )
+		  or copy( "{$wgImageDirectory}/{$oname}", "{$dest}/{$nname}" )
+		  or copy( "{$wgImageDirectory}/".strtolower($oname), "{$dest}/{$nname}" ) ) {
+			++$count;
+
+			$sql = "DELETE FROM image WHERE img_name='" .
+			  addslashes( $nname ) . "'";
+			$res = wfQuery( $sql );
+
+			$sql = "INSERT INTO image (img_name,img_timestamp,img_user," .
+			  "img_user_text,img_size,img_description) VALUES ('" .
+			  addslashes( $nname ) . "','" .
+			  date( "YmdHis" ) . "',0,'(Automated conversion)','" .
+			  filesize( "{$dest}/{$nname}" ) . "','')";
+			$res = wfQuery( $sql );
+		} else {
+            echo( "Couldn't copy \"{$oname}\" to \"{$nname}\"\n" );
+        }
+	}
+}
+
 # Utility functions for the above.
 #
 function convertMediaLinks( $text )
@@ -284,22 +353,24 @@ function convertMediaLinks( $text )
 	global $wgLang;
 	$ins = $wgLang->getNsText( Namespace::getImage() );
 
+	$q = $text;
 	$text = preg_replace(
-	  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/upload\/" .
+	  "/(^|[^[])http:\/\/(www.|)wikipedia.(?:com|org)\/upload\/(?:[0-9a-f]\/[0-9a-f][0-9a-f]\/|)" .
 	  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
 	  "\\1[[{$ins}:\\3.\\4]]", $text );
 	$text = preg_replace(
-	  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/images\/uploads\/" .
+	  "/(^|[^[])http:\/\/(www.|)wikipedia.(?:com|org)\/images\/uploads\/" .
 	  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
 	  "\\1[[{$ins}:\\3.\\4]]", $text );
 
 	$text = preg_replace(
-	  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/upload\/" .
+	  "/(^|[^[])http:\/\/(www.|)wikipedia.(?:com|org)\/upload\/(?:[0-9a-f]\/[0-9a-f][0-9a-f]\/|)" .
 	  "([a-zA-Z0-9_:.~\%\-]+)/", "\\1[[media:\\3]]", $text );
 	$text = preg_replace(
-	  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/images\/uploads\/" .
+	  "/(^|[^[])http:\/\/(www.|)wikipedia.(?:com|org)\/images\/uploads\/" .
 	  "([a-zA-Z0-9_:.~\%\-]+)/", "\\1[[media:\\3]]", $text );
 
+	if ($q != $text) echo "BOOF!"; else echo ".";
 	return $text;
 }
 
@@ -420,6 +491,7 @@ function indexTitle( $in )
 
 function indexText( $text, $ititle )
 {
+	global $wgLang;
 	$lc = SearchEngine::legalSearchChars() . "&#;";
 
 	$text = preg_replace( "/<\\/?\\s*[A-Za-z][A-Za-z0-9]*\\s*([^>]*?)>/",
@@ -439,7 +511,8 @@ function indexText( $text, $ititle )
 	$text = preg_replace( $p2, "\\1 \\3 ", $text );
 
 	# Internal image links
-	$pat2 = "/\\[\\[image:([{$uc}]+)\\.(gif|png|jpg|jpeg)([^{$uc}])/i";
+	$ins = $wgLang->getNsText( Namespace::getImage() );
+	$pat2 = "/\\[\\[$ins:([{$uc}]+)\\.(gif|png|jpg|jpeg)([^{$uc}])/i";
 	$text = preg_replace( $pat2, " \\1 \\3", $text );
 
 	$text = preg_replace( "/([^{$lc}])([{$lc}]+)]]([a-z]+)/",
