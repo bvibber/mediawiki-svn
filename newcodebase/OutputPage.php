@@ -351,8 +351,6 @@ class OutputPage {
 				$s .= "[[" . $line;
 				continue;
 			}
-			if ( "" == $text ) { $text = $link; }
-
 			if ( preg_match( "/^([A-Za-z]+):(.*)$$/", $link,  $m ) ) {
 				$pre = strtolower( $m[1] );
 				$suf = $m[2];
@@ -361,8 +359,9 @@ class OutputPage {
 					$name = $nt->getDBkey();
 
 					$wgLinkCache->addImageLink( $name );
-					$img = $sk->makeImage( wfImageUrl( $name ), $text );
-					$s .= $sk->makeLink( "Image:{$name}", $img, "", $trail );
+
+					$s .= $sk->makeImageLink( $name, wfImageUrl( $name ), $text );
+					$s .= $trail;
 				} else {
 					$l = $wgLang->getLanguageName( $pre );
 					if ( "" == $l ) {
