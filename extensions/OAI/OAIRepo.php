@@ -31,6 +31,12 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die();
 }
 
+/**
+ * To limit access to specific user-agents
+ */
+global $oaiAgentRegex;
+$oaiAgentRegex = false;
+
 $wgExtensionFunctions[] = 'oaiSetupRepo';
 
 function oaiSetupRepo() {
@@ -219,6 +225,16 @@ class OAIRepo {
 	
 	
 	function respond() {
+		global $oaiAgentRegex;
+		if( $oaiAgentRegex ) {
+			if( !isset( $_SERVER['HTTP_USER_AGENT'] )
+			    || !preg_match( $oaiAgentRegex, $_SERVER['HTTP_USER_AGENT'] ) ) {
+			    	header( 'HTTP/1.x 403 Unauthorized' );
+			    	echo "<p>Sorry, this resource is presently restricted-access.</p>";
+			    	return;
+			}
+		}
+		
 		global $wgUseLatin1;
 		if( $wgUseLatin1 ) {
 			# OAI requires UTF-8 output

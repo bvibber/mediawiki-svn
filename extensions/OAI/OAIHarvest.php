@@ -41,11 +41,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 require_once( 'OAIRepo.php' );
 
 global $oaiSourceRepository;
+global $oaiAgentExtra;
 
 /**
  * Set to the repository URL,
  */
 $oaiSourceRepository = null;
+$oaiUserAgent = 'MediaWiki/OAI 0.1';
 
 class OAIError {
 	function OAIError( $message ) {
@@ -206,7 +208,12 @@ class OAIHarvester {
 	}
 	
 	function userAgent() {
-		return 'MediaWiki OAI Harvester 0.1 (http://www.mediawiki.org/)';
+		global $oaiAgentExtra;
+		$agent = 'MediaWiki OAI Harvester 0.1 (http://www.mediawiki.org/)';
+		if( $oaiAgentExtra ) {
+			$agent .= ' ' . $oaiAgentExtra;
+		}
+		return $agent;
 	}
 	
 	
