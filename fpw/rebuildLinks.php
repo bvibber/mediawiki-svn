@@ -42,7 +42,7 @@
         $thisPage = new wikiPage ;
 
 	echo "Retrieving article list...\n";
-        $sql1 = "SELECT cur_title FROM cur LIMIT $offset, $size ;" ;
+        $sql1 = "SELECT cur_title FROM cur WHERE cur_text NOT LIKE \"#REDIRECT%\" LIMIT $offset, $size ;" ;
         $result = mysql_query ( $sql1 , $connection ) ;
 	echo "Rebuilding links: \n";
 	$i = 0 ;
