@@ -237,6 +237,16 @@ word fewer than four letters long, which is not yet supported.
 It could also be that you have mistyped the expression, for
 example \"fish and and scales\".
 Please try another query.",
+"matchtotals"	=> "The query \"$1\" matched $2 article titles
+and the text of $3 articles.",
+"titlematches"	=> "Article title matches",
+"notitlematches" => "No article title matches",
+"textmatches"	=> "Article text matches",
+"notextmatches"	=> "No article text matches",
+"searchprev"	=> "previous $1",
+"searchnext"	=> "next $1",
+"searchlinks"	=> "View ($1) ($2) search results.",
+"showingmatches" => "Showing below <b>$1</b> matches starting with #<b>$2</b>.",
 
 # Preferences page
 #

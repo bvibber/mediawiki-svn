@@ -715,7 +715,7 @@ $wpTextbox2
 			$p = preg_split( "/<\\s*nowiki\\s*>/i", $text, 2 );
 			$s .= $this->pstPass2( $p[0] );
 
-			if ( "" == $p[1] ) { $text = ""; }
+			if ( ( count( $p ) < 2 ) || ( "" == $p[1] ) ) { $text = ""; }
 			else {
 				$q = preg_split( "/<\\/\\s*nowiki\\s*>/i", $p[1], 2 );
 				$s .= "<nowiki>{$q[0]}</nowiki>";
