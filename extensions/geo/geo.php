@@ -1,39 +1,8 @@
 <?
 require_once ( "geo_functions.php" ) ;
 
-$geo_cache = array () ; # Evil global variable - beware!
-
-function geo_get_raw_text ( $id )
-	{
-	global $geo_cache ;
-	
-	if ( isset ( $geo_cache[$id] ) ) # Try the cache first...
-		return $geo_cache[$id] ;
-
-	$t = Title::newFromText ( "Geo:" . $id ) ;
-	$a = new Article ( $t ) ;
-	$contents = $a->getContent ( true ) ;
-
-/*
-	# Get the page contents. This is stupidly done through reading the URL right now
-	# It *should* be done by querying the DB through the Article class, of course
-	$filename = "http://127.0.0.1/phase3/index.php?title=Geo:{$id}&action=raw" ;
-	$handle = fopen($filename, "r");
-	$contents = '';
-	while (!feof($handle))
-		$contents .= fread($handle, 8192);
-	fclose($handle);
-*/
-
-	# Return text
-	$geo_cache[$id] = $contents ; # Cache the result
-	return $contents ;
-	}
-
-
-
-
 # geo paramater class
+# this class is used for parameter storage, data access and caching, etc.
 class geo_params
 	{
 	var $min_x = 1000000 ;
@@ -45,6 +14,48 @@ class geo_params
 	var $style_fill = array () ;
 	var $style_border = array () ;
 	var $style_label = array () ;
+
+	var $geo_cache = array () ;
+	
+	# This can read the data directly as an article from the database
+	function read_from_article ( $id )
+		{
+		$t = Title::newFromText ( "Geo:" . $id ) ;
+		$a = new Article ( $t ) ;
+		return $a->getContent ( true ) ;
+		}
+	
+	# This can read the data from a mediawiki installation via URL
+	# *Much* slower than the function above
+	function read_from_url ( $id )
+		{
+		$indedx = "http://127.0.0.1/phase3/index.php" ;
+		$filename = "{$index}?title=Geo:{$id}&action=raw" ;
+		$handle = fopen($filename, "r");
+		$contents = '';
+		while (!feof($handle))
+			$contents .= fread($handle, 8192);
+		fclose($handle);
+		return $contents ;
+		}
+	
+	# This reads the data and manages the cache
+	function get_raw_text ( $id )
+		{
+		global $geo_cache ;
+		
+		if ( isset ( $geo_cache[$id] ) ) # Try the cache first...
+			return $geo_cache[$id] ;
+	
+		if ( MEDIAWIKI )
+			$contents = $this->read_from_article ( $id ) ;
+		else
+			$contents = $this->read_from_url ( $id ) ;
+	
+		# Return text
+		$geo_cache[$id] = $contents ; # Cache the result
+		return $contents ;
+		}
 
 	function get_styles ( $id , $type )
 		{
@@ -132,7 +143,7 @@ class geo
 	var $data = array () ;
 	var $xsum , $ysum , $count ;
 
-	function geo_get_text ( $id )
+	function geo_get_text ( $id , &$params )
 		{
 		$id = trim ( strtolower ( $id ) ) ;
 		
@@ -144,7 +155,7 @@ class geo
 			}
 		else $subid = "" ;
 		
-		$ret = "\n" . geo_get_raw_text ( $id ) ;
+		$ret = "\n" . $params->get_raw_text ( $id ) ;
 		$ret = explode ( "\n==" , $ret ) ;
 		
 		if ( $subid == "" ) return $ret[0] ; # Default
@@ -161,10 +172,10 @@ class geo
 		return "" ; # Query not found
 		}
 
-	function set_from_id ( $id )
+	function set_from_id ( $id , &$params )
 		{
 		$this->id = $id ;
-		$t = explode ( "\n;" , "\n".$this->geo_get_text ( $id ) ) ;
+		$t = explode ( "\n;" , "\n".$this->geo_get_text ( $id , $params ) ) ;
 		$this->data = array () ;
 		foreach ( $t AS $x )
 			{
@@ -273,7 +284,7 @@ class geo
 				{
 				$v = $this->fullid ( $v ) ;
 				$ng = new geo ;
-				$ng->set_from_id ( $v ) ;
+				$ng->set_from_id ( $v , $params ) ;
 				$ret .= $ng->draw ( $params ) ;
 				}
 			}
@@ -285,7 +296,7 @@ class geo
 				{
 				$v = $this->fullid ( $v ) ;
 				$ng = new geo ;
-				$ng->set_from_id ( $v ) ;
+				$ng->set_from_id ( $v , $params ) ;
 				$b = $ng->get_data ( $params ) ;
 				$this->add_reordered_data ( $data , $b ) ;
 				}

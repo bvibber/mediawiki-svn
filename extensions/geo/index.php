@@ -8,12 +8,12 @@ require_once( "{$wikibasedir}/LocalSettings.php" );
 require_once( "{$wikibasedir}/includes/Setup.php" );
 require_once( "geo.php");
 
-$g = new geo ;
-$g->set_from_id ( "germany" ) ;
-
 $p = new geo_params ;
 $p->languages = array ( "de" , "en" ) ; # Fallback to "en" if there's no "de"
 $p->style_fill = array ( "germany.hamburg" => "fill:red" ) ;
+
+$g = new geo ;
+$g->set_from_id ( "germany" , $p ) ;
 
 $svg = $g->draw ( $p ) ;
 $svg .= $p->get_svg_labels () ;
