@@ -506,6 +506,8 @@ containing all of the search terms will appear in the result).",
 "prefsnologintext"	=> "You must be <a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
 to set user preferences.",
+"prefslogintext" => "You are logged in as \"$1\".
+Your internal ID number is $2.",
 "prefsreset"	=> "Preferences have been reset from storage.",
 "qbsettings"	=> "Quickbar settings", 
 "changepassword" => "Change password",
