@@ -34,7 +34,7 @@ class Article {
 
 	/* static */ function nameOf( $id )
 	{
-		$sql = "SELECT cur_namespace,cur_title FROM cur WHERE " .
+		$sql = "SELECT HIGH_PRIORITY cur_namespace,cur_title FROM cur WHERE " .
 		  "cur_id={$id}";
 		$res = wfQuery( $sql, "Article::nameOf" );
 		if ( 0 == wfNumRows( $res ) ) { return NULL; }
@@ -82,7 +82,8 @@ class Article {
 			$id = $this->getID();
 			if ( 0 == $id ) return;
 
-			$sql = "SELECT cur_text,cur_timestamp,cur_user,cur_counter " .
+			$sql = "SELECT HIGH_PRIORITY " .
+			  "cur_text,cur_timestamp,cur_user,cur_counter,cur_restrictions " .
 			  "FROM cur WHERE cur_id={$id}";
 			$res = wfQuery( $sql, $fname );
 			if ( 0 == wfNumRows( $res ) ) { return; }
@@ -113,7 +114,7 @@ class Article {
 					}
 					$rid = $rt->getArticleID();
 					if ( 0 != $rid ) {
-						$sql = "SELECT cur_text,cur_timestamp,cur_user," .
+						$sql = "SELECT HIGH_PRIORITY cur_text,cur_timestamp,cur_user," .
 						  "cur_counter FROM cur WHERE cur_id={$rid}";
 						$res = wfQuery( $sql, $fname );
 
@@ -129,6 +130,8 @@ class Article {
 			$this->mUser = $s->cur_user;
 			$this->mCounter = $s->cur_counter;
 			$this->mTimestamp = $s->cur_timestamp;
+			$wgTitle->mRestrictions = explode( ",", trim( $s->cur_restrictions ) );
+			$wgTitle->mRestrictionsLoaded = true;
 			wfFreeResult( $res );
 		} else { # oldid set, retrieve historical version
 			$sql = "SELECT old_text,old_timestamp,old_user FROM old " .
