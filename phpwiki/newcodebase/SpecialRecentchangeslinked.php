@@ -1,4 +1,5 @@
 <?
+include_once( "SpecialRecentchanges.php" );
 
 function wfSpecialRecentchangeslinked()
 {
@@ -54,19 +55,8 @@ function wfSpecialRecentchangeslinked()
 	$note = str_replace( "$2", $days, $note );
 	$wgOut->addHTML( "<hr>\n{$note}\n<br>" );
 
-	$tu = $nt->getPrefixedURL();
-	$cl = lcCountLink( 50, $days, $tu ) . " | " .
-	  lcCountLink( 100, $days, $tu ) . " | " .
-	  lcCountLink( 250, $days, $tu ) . " | " .
-	  lcCountLink( 500, $days, $tu );
-	$dl = lcDaysLink( $limit, 1, $tu ) . " | " .
-	  lcDaysLink( $limit, 3, $tu ) . " | " .
-	  lcDaysLink( $limit, 7, $tu ) . " | " .
-	  lcDaysLink( $limit, 14, $tu ) . " | " .
-	  lcDaysLink( $limit, 30, $tu );
-	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
-	$note = str_replace( "$2", $dl, $note );
-	$note = str_replace( "$3", $mlink, $note );
+	$tu = "target=" . $nt->getPrefixedURL();
+	$note = rcLimitlinks( $days, $limit, "Recentchangeslinked", $tu );
 	$wgOut->addHTML( "{$note}\n" );
 
 	$s = $sk->beginRecentChangesList();

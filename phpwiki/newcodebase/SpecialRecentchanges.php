@@ -53,15 +53,7 @@ function wfSpecialRecentchanges()
 	}
 	$wgOut->addHTML( "\n<hr>\n{$note}\n<br>" );
 
-	$cl = rcCountLink( 50, $days ) . " | " . rcCountLink( 100, $days ) . " | " .
-	  rcCountLink( 250, $days ) . " | " . rcCountLink( 500, $days );
-	$dl = rcDaysLink( $limit, 1 ) . " | " . rcDaysLink( $limit, 3 ) . " | " .
-	  rcDaysLink( $limit, 7 ) . " | " . rcDaysLink( $limit, 14 ) . " | " .
-	  rcDaysLink( $limit, 30 );
-	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
-	$note = str_replace( "$2", $dl, $note );
-
-	$note = str_replace( "$3", $mlink, $note);
+	$note = rcLimitLinks( $days, $limit );
 
 	$now = date( "YmdHis" );
 	$note .= "<br>\n" . str_replace( "$1",
@@ -101,22 +93,40 @@ function wfSpecialRecentchanges()
 	$wgOut->addHTML( $s );
 }
 
-function rcCountLink( $lim, $d )
+function rcCountLink( $lim, $d, $page="Recentchanges", $more="" )
 {
 	global $wgUser, $wgLang;
 	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
-	  "{$lim}", "days={$d}&limit={$lim}" );
+	$s = $sk->makeKnownLink( $wgLang->specialPage( $page ),
+	  "{$lim}", "{$more}days={$d}&limit={$lim}" );
 	return $s;
 }
 
-function rcDaysLink( $lim, $d )
+function rcDaysLink( $lim, $d, $page="Recentchanges", $more="" )
 {
 	global $wgUser, $wgLang;
 	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
-	  "{$d}", "days={$d}&limit={$lim}" );
+	$s = $sk->makeKnownLink( $wgLang->specialPage( $page ),
+	  "{$d}", "{$more}days={$d}&limit={$lim}" );
 	return $s;
+}
+
+function rcLimitLinks( $days, $limit, $page="Recentchanges", $more="" )
+{
+	if ($more != "") $more .= "&";
+	$cl = rcCountLink( 50, $days, $page, $more ) . " | " .
+	  rcCountLink( 100, $days, $page, $more  ) . " | " .
+	  rcCountLink( 250, $days, $page, $more  ) . " | " .
+	  rcCountLink( 500, $days, $page, $more  );
+	$dl = rcDaysLink( $limit, 1, $page, $more  ) . " | " .
+	  rcDaysLink( $limit, 3, $page, $more  ) . " | " .
+	  rcDaysLink( $limit, 7, $page, $more  ) . " | " .
+	  rcDaysLink( $limit, 14, $page, $more  ) . " | " .
+	  rcDaysLink( $limit, 30, $page, $more  );
+	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
+	$note = str_replace( "$2", $dl, $note );
+	$note = str_replace( "$3", $mlink, $note );
+	return $note;
 }
 
 ?>

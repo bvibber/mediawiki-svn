@@ -1,4 +1,5 @@
 <?
+include_once( "SpecialRecentchanges.php" );
 
 function wfSpecialWatchlist()
 {
@@ -27,6 +28,12 @@ function wfSpecialWatchlist()
 	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_user,cur_comment," .
 	  "cur_user_text,cur_timestamp,cur_minor_edit,cur_is_new FROM cur WHERE " .
 	  "cur_timestamp > '{$cutoff}' AND (";
+
+	$note = str_replace( "$1", $limit, wfMsg( "rcnote" ) );
+	$note = str_replace( "$2", $days, $note );
+	$wgOut->addHTML( "\n<hr>\n{$note}\n<br>" );
+	$note = rcLimitlinks( $days, $limit, "Watchlist" );
+	$wgOut->addHTML( "{$note}\n" );
 
 	$first = true;
 	foreach ( $wl as $title ) {
