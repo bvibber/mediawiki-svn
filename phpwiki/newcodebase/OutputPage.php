@@ -158,7 +158,7 @@ class OutputPage {
 
 		$this->mBodytext = "";
 		$this->addHTML( "<p>" . wfMsg( $msg ) . "\n" );
-		$this->returnToMain();
+		$this->returnToMain( false );
 		exit;
 	}
 
@@ -234,7 +234,7 @@ class OutputPage {
 		$this->fatalError( $msg );
 	}
 
-	function returnToMain()
+	function returnToMain( $auto = true )
 	{
 		global $wgUser, $wgOut, $returnto;
 
@@ -245,8 +245,10 @@ class OutputPage {
 		$link = $sk->makeKnownLink( $returnto, "" );
 
 		$r = str_replace( "$1", $link, wfMsg( "returnto" ) );
-		$wgOut->addMeta( "http:Refresh", "10;url=" .
-		  wfLocalUrl( $returnto ) );
+		if ( $auto ) {
+			$wgOut->addMeta( "http:Refresh", "10;url=" .
+			  wfLocalUrl( $returnto ) );
+		}
 		$wgOut->addHTML( "\n<p>$r\n" );
 	}
 

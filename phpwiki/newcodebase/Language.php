@@ -52,6 +52,44 @@
 	"Sep", "Oct", "Nov", "Dec"
 );
 
+# All special pages have to be listed here: a description of ""
+# will make them not show up on the "SpecialPages" page, which
+# is the right thing for many of them.
+#
+/* private */ $wgValidSpecialPagesEn = array(
+	"Userlogin"		=> "",
+	"Userlogout"	=> "",
+	"Preferences"	=> "",
+	"Newpages"		=> "",
+	"Recentchanges" => "List recently updated pages",
+	"Upload"		=> "Upload image files",
+	"Imagelist"		=> "List uploaded images",
+	"Listusers"		=> "List registered users",
+	"Statistics"	=> "Show site statistics",
+	"Randompage"	=> "Go to randomly-selected article",
+
+	"Lonelypages"	=> "List orphaned articles",
+	"Popularpages"	=> "List popular articles",
+	"Wantedpages"	=> "List most wanted articles",
+	"Shortpages"	=> "List short articles",
+	"Longpages"		=> "List long articles",
+
+	"Ipblocklist"	=> "List blocked IP addresses",
+	"Watchlist"		=> "Show my watchlist",
+	"Specialpages"  => "",
+	"Contributions" => "",
+	"Whatlinkshere" => "",
+	"Recentchangeslinked" => ""
+);
+
+/* private */ $wgSysopSpecialPagesEn = array(
+	"Allpages"		=> "Show list of all pages",
+	"Movepage"		=> "Rename a page and its links",
+	"Asksql"		=> "Query the database",
+	"Protectpage"	=> "Protect a page from user edits",
+	"Blockip"		=> "Block an IP address"
+);
+
 /* private */ $wgAllMessagesEn = array(
 
 # Bits of text used by many pages:
@@ -66,6 +104,7 @@
 "history"		=> "History",
 "printableversion" => "Printable version",
 "editthispage"	=> "Edit this page",
+"deletethispage" => "Delete this page",
 "talkpage"		=> "Talk page",
 "subjectpage"	=> "Subject page",
 "otherlanguages" => "Other languages",
@@ -415,6 +454,8 @@ the Wikipedia database.",
 # Special pages
 #
 "specialpages"	=> "Special pages",
+"spheading"		=> "Special pages",
+"sysopspheading" => "Special pages for sysop use",
 
 # Delete page
 #
@@ -572,6 +613,18 @@ class Language {
 	function timeanddate( $ts )
 	{
 		return $this->time( $ts ) . " " . $this->date( $ts );
+	}
+
+	function getValidSpecialPages()
+	{
+		global $wgValidSpecialPagesEn;
+		return $wgValidSpecialPagesEn;
+	}
+
+	function getSysopSpecialPages()
+	{
+		global $wgSysopSpecialPagesEn;
+		return $wgSysopSpecialPagesEn;
 	}
 
 	function getMessage( $key )

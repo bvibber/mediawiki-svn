@@ -1,16 +1,6 @@
 <?
 # Global functions used everywhere
 
-$wgValidSpecialPages = array( "Userlogin", "Userlogout", "Newpages",
-	"Recentchanges", "Upload", "Statistics", "Lonelypages",
-	"Popularpages", "Wantedpages", "Allpages", "Randompage",
-	"Shortpages", "Longpages", "Listusers", "Watchlist",
-	"Specialpages", "Preferences", "Deletepage", "Movepage",
-	"Protectpage", "Contributions", "Whatlinkshere", "Imagelist",
-	"Recentchangeslinked", "Sqldump", "Vote", "Debug", "Ipblocklist" );
-
-$wgSysopSpecialPages = array( "Asksql", "Blockip" );
-
 $wgNumberOfArticles = -1; # Unset
 $wgTotalViews = -1;
 $wgTotalEdits = -1;
@@ -135,20 +125,22 @@ function wfCleanQueryVar( $var )
 
 function wfSpecialPage()
 {
-	global $wgUser, $wgOut, $wgTitle;
-	global $wgValidSpecialPages, $wgSysopSpecialPages;
+	global $wgUser, $wgOut, $wgTitle, $wgLang;
+
+	$validSP = $wgLang->getValidSpecialPages();
+	$sysopSP = $wgLang->getSysopSpecialPages();
 
 	$wgOut->setArticleFlag( false );
 	$wgOut->setPageTitle( wfMsg( strtolower( $wgTitle->getText() ) ) );
 
 	$t = $wgTitle->getDBkey();
-	if ( in_array( $t, $wgValidSpecialPages ) ||
-	  ( $wgUser->isSysop() && in_array( $t, $wgSysopSpecialPages ) ) ) {
+	if ( array_key_exists( $t, $validSP ) ||
+	  ( $wgUser->isSysop() && array_key_exists( $t, $sysopSP ) ) ) {
 		$inc = "Special" . $t . ".php";
 		include_once( $inc );
 		$call = "wfSpecial" . $t;
 		$call();
-	} else if ( in_array( $t, $wgSysopSpecialPages ) ) {
+	} else if ( array_key_exists( $t, $sysopSP ) ) {
 		$wgOut->sysopRequired();
 	} else {
 		$wgOut->errorpage( "nosuchspecialpage", "nospecialpagetext" );

@@ -576,7 +576,7 @@ $wpTextbox2
 <input type=submit name='wpConfirmB' value='{$confirm}'>
 </td></tr></table></form>\n" );
 
-		$wgOut->returnToMain();
+		$wgOut->returnToMain( false );
 	}
 
 	function doDelete()
@@ -625,7 +625,7 @@ $wpTextbox2
 		$wgOut->setPagetitle( wfMsg( "actioncomplete" ) );
 		$text = str_replace( "$1" , $deleted, wfMsg( "deletedtext" ) );
 		$wgOut->addHTML( "<p>" . $text );
-		$wgOut->returnToMain();
+		$wgOut->returnToMain( false );
 	}
 
 	function doDeleteOldImage( $oldimage )
@@ -646,6 +646,7 @@ $wpTextbox2
 		$fname = "Article::doDeleteArticle";
 		$ns = $title->getNamespace();
 		$t = wfStrencode( $title->getDBkey() );
+		$id = $title->getArticleID();
 
 		$sql = "DELETE FROM cur WHERE cur_namespace={$ns} AND " .
 		  "cur_title='{$t}'";
@@ -655,6 +656,13 @@ $wpTextbox2
 		  "old_title='{$t}'";
 		wfQuery( $sql, $fname );
 
+		if ( 0 != $id ) {
+			$sql = "DELETE FROM links WHERE l_to={$id}";
+			wfQuery( $sql, $fname );
+
+			$sql = "DELETE FROM brokenlinks WHERE bl_from={$id}";
+			wfQuery( $sql, $fname );
+		}
 		$sql = "SELECT cur_id,cur_text FROM cur WHERE cur_namespace=" .
 		  Namespace::getIndex( "Wikipedia" ) . " AND cur_title='" .
 		  "Article_deletion_log'";
@@ -667,8 +675,9 @@ $wpTextbox2
 		$text = $s->cur_text;
 		$id = $s->cur_id;
 
+		$uid = $wgUser->getID();
 		$ut = $wgUser->getName();
-		if ( 0 == $wgUser->getID() ) { $ul = $ut; }
+		if ( 0 == $uid ) { $ul = $ut; }
 		else { $ul = "[[User:{$ut}|{$ut}]]"; }
 
 		$art = $title->getPrefixedText();
@@ -680,6 +689,7 @@ $wpTextbox2
 		$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}</li>\n{$m[2]}";
 
 		$sql = "UPDATE cur SET cur_timestamp='" . date( "YmdHis" ) .
+		  "', cur_user={$uid}, cur_user_text='" .wfStrencode( $ut ) .
 		  "', cur_text='" . wfStrencode( trim( $text ) ) . "' " .
 		  "WHERE cur_id={$id}";
 		wfQuery( $sql, $fname );
@@ -774,7 +784,7 @@ $wpTextbox2
 		$text = str_replace( "$1", $link, wfMsg( "blockedtext" ) );
 		$text = str_replace( "$2", $reason, $text );
 		$wgOut->addWikiText( $text );
-		$wgOut->returnToMain();
+		$wgOut->returnToMain( false );
 	}
 
 	function readOnlyPage()
