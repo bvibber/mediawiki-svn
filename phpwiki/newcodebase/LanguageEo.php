@@ -9,14 +9,16 @@
 /* private */ $wgNamespaceNamesEo = array(
 	-1	=> "Speciala", # FIXME Is it safe to change this?
 	0	=> "",
-	1	=> "Priparolu", # au diskutu?
+	1	=> "Diskuto", # au diskutu?
 	2	=> "Vikipediisto",
-	3	=> "Priparolu_vikipediiston",
+	3	=> "Vikipediista_diskuto",
 	4	=> "Vikipedio",
-	5	=> "Priparolu_vikipedion",
-	6	=> "Bildo", #FIXME: Check the magic for Image: and Media:
-	7	=> "Priparolu_bildon"
+	5	=> "Vikipedia_diskuto",
+	6	=> "Dosiero", #FIXME: Check the magic for Image: and Media:
+	7	=> "Dosiera_diskuto"
 );
+
+# Heredu apriorajn preferojn: wgDefaultUserOptionsEn
 
 /* private */ $wgQuickbarSettingsEo = array(
 	"Nenia", "Fiksiĝas maldesktre", "Fiksiĝas dekstre", "Ŝvebas maldekstre"
@@ -38,6 +40,10 @@
 	"editondblclick" => "Redaktu per duobla alklako (JavaScript)"
 );
 
+# Se eble, trovu Esperantajn libroservoj traserĉeblaj laŭ ISBN
+# $wgBookstoreListEo = ..
+
+# Tie, kie eble, uzu la memnomo de la lingvo
 # El listo de Landoj kaj Lingvoj ce http://www.bertilow.com/lanlin/isoling.php
 /* private */ $wgLanguageNamesEo = array(
 	"ab"	=> "Abĥaza",
@@ -201,43 +207,46 @@
 # will make them not show up on the "Special Pages" page, which
 # is the right thing for some of them (such as the "targeted" ones).
 #
-# Question: the page names are unchangeable, right?
+# *Ne ŝanĝu* la nomojn en la maldekstra kolumno, ili estas internaj
+# nomoj de programfunkcioj. La dekstra kolumno enhavas kelkajn
+# malplenaĵojn; ili restu tiel, por ke tiuj funkcioj ne listiĝu
+# en la listo da specialaj paĝoj.
 /* private */ $wgValidSpecialPagesEo = array(
 	"Userlogin"		=> "",
 	"Userlogout"	=> "",
 	"Preferences"	=> "Ŝanĝu miajn preferojn",
-	"Watchlist"		=> "Montru mian atentaron",
-	"Recentchanges" => "Nombrigu lastajn ŝanĝojn al paĝoj",
-	"Upload"		=> "Alŝutu bildojn kaj sondosierojn",
-	"Imagelist"		=> "Nombrigu alŝutitajn bildojn",
-	"Listusers"		=> "Nombrigu enskribitajn uzulojn",
-	"Statistics"	=> "Montru statistikon pri la retejo",
-	"Randompage"	=> "Iru al hazarda paĝo",
+	"Watchlist"		=> "Mian atentaron", # Listo de paĝoj, kiujn la uzulo elektis por atenti
+	"Recentchanges" => "Lastaj ŝanĝoj al paĝoj",
+	"Upload"		=> "Alŝutu bildojn kaj dosierojn",
+	"Imagelist"		=> "Alŝutitaj dosieroj",
+	"Listusers"		=> "Enskribitaj uzuloj",
+	"Statistics"	=> "Statistiko pri la paĝaro",
+	"Randompage"	=> "Hazarda paĝo",
 
-	"Lonelypages"	=> "Nombrigu paĝojn orfanajn",
-	"Unusedimages"	=> "Nombrigu bildojn orfanajn",
-	"Popularpages"	=> "Nombrigu plej vizitatajn paĝojn",
-	"Wantedpages"	=> "Nombrigu plej alligitajn paĝojn",
-	"Shortpages"	=> "Nombrigu mallongajn artikolojn",
-	"Longpages"		=> "Nombrigu longegajn artikolojn",
-	"Newpages"		=> "Nombrigu novkreitajn artikolojn",
-	"Allpages"		=> "Nombrigu ĉiun paĝon laŭ titolo",
+	"Lonelypages"	=> "Paĝoj orfaj",
+	"Unusedimages"	=> "Bildoj orfaj",
+	"Popularpages"	=> "Plej vizitataj paĝoj",
+	"Wantedpages"	=> "Plej alligitaj paĝoj",
+	"Shortpages"	=> "Mallongaj artikoloj",
+	"Longpages"		=> "Longegaj artikoloj",
+	"Newpages"		=> "Novkreitaj artikoloj",
+	"Allpages"		=> "Ĉiu paĝo laŭ titolo",
 
-	"Ipblocklist"	=> "Nombrigu forbaritajn IP-adresojn",
+	"Ipblocklist"	=> "Forbaritaj IP-adresoj",
+    "Maintenance" => "Ripariloj kaj zorgiloj", # angle "Maintenance page"
 	"Specialpages"  => "",
 	"Contributions" => "",
     "Emailuser"     => "",
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => "",
 	"Movepage"		=> "",
-	"Booksources"	=> "Alligi libroservojn"
+	"Booksources"	=> "Eksteraj libroservoj"
 );
 
-# FIXME
 /* private */ $wgSysopSpecialPagesEo = array(
 	"Blockip"		=> "Forbaru fiIP-adreson",
-	"Movepage"		=> "",
-	"Asksql"		=> "Informmendu je la datumbazo"
+	"Asksql"		=> "Informmendu je la datumbazo",
+	"Undelete"		=> "Restarigu forigitan paĝon"
 );
 
 # FIXME
@@ -251,6 +260,8 @@
 
 # Teksteroj uzataj far diversaj paĝoj:
 #
+# Tiuj literoj, kiuj aperu kiel parto de la ligilo en formo "[[lingvo]]jn" ktp:
+"linktrail"     => "/^([a-z]+)(.*)\$/sD",
 "mainpage"		=> "Ĉefpaĝo",
 "about"			=> "Enkonduko",
 "aboutwikipedia" => "Pri Vikipedio", #FIXME
@@ -272,11 +283,12 @@
 "qbpageinfo"	=> "Paĝinform", #FIXME
 "qbmyoptions"	=> "Personaĵoj", #FIXME
 "mypage"		=> "Mia paĝo", #FIXME
+"mytalk"        => "Mia diskuto",
 "currentevents" => "Aktualaĵoj", #FIXME - Novaĵoj? Aktualaj novaĵoj? Aktualaj eventoj?
 "errorpagetitle" => "Eraro", #FIXME - Arero? ;)
 "returnto"		=> "Revenu al $1.",
-"fromwikipedia"	=> "El Vikipedio, la libera encicklopedio.", # FIXME: ĉu W-a ĉu V-o?
-"whatlinkshere"	=> "Pagoj ligante ĉi tien", #FIXME: ĉu ligantaj?
+"fromwikipedia"	=> "El Vikipedio, la libera enciklopedio.",
+"whatlinkshere"	=> "Ligantoj ĉi tien", #FIXME: ĉu ligantaj?
 "help"			=> "Helpo",
 "search"		=> "Serĉu",
 "history"		=> "Historio", #FIXME
@@ -294,18 +306,18 @@
 "printsubtitle" => "(El http://eo.wikipedia.org)",
 "protectedpage" => "Protektita paĝo", #FIXME: ĉu "gardita" ktp?
 "administrators" => "Vikipedio:Sistemestroj", # FIXME?
-"sysoptitle"	=> "Fidindula konto nepras",
+"sysoptitle"	=> "Sistemestro konto nepras",
 "sysoptext"		=> "La ago kiun vi petis fari estas
-farebla nur de uzuloj agnoskitaj kiel \"fidinduloj\".
+farebla nur de uzuloj agnoskitaj kiel \"sistemestroj\".
 Bonvolu legi $1.", #FIXME
 "developertitle" => "Sistemestra konto nepras",
 "developertext"	=> "La ago kiun vi petis fari estas
-farebla nur de uzuloj \"sistemestroj\" por eviti neintencitan difektiĝon al la datumaro.
-Bonvolu legi $1.", #FIXME: I'm calling "sysops" "fidinduloj" kaj "developers" "sistemestroj"
+farebla nur de programistoj de la projekto por eviti neintencitan difektiĝon al la datumaro.
+Bonvolu legi $1.",
 "nbytes"		=> "$1 bitokoj",
 "go"			=> "Ek!", #FIXME
 "ok"			=> "Ek", #FIXME
-"sitetitle"		=> "Wikipedia",
+"sitetitle"		=> "Vikipedio", # Wikipedia
 "sitesubtitle"	=> "Vikipedio: La Libera Enciklopedio",
 "retrievedfrom" => "Citita el \"$1\"", #FIXME: Aperas post presita paĝo
 
@@ -320,7 +332,8 @@ ne agnoskas la programaro de Vikipedio",
 
 # General errors
 #
-"databaseerror" => "Datumara fuŝo",
+"error"         => "Fuŝo",
+"databaseerror" => "Datumbaza fuŝo",
 "dberrortext"	=> "Sintaksfuŝo okazis en informpeto kontraŭ la datumaro.
 Eble kaŭzis tion malpermesita serĉomendo (vidu je $5),
 aŭ eble tio indikas cimon ĉe la programaro.
@@ -331,9 +344,13 @@ MySQL redonis eraron  \"<tt>$3: $4</tt>\".",
 "noconnect"		=> "Neeblis konekti al la datumbazo je $1",
 "nodb"			=> "Neeblis elekti datumaron $1",
 "readonly"		=> "Datumaro ŝlosita, nurlega",
+"enterlockreason" => "Bonvolu klarigi, kial oni ŝlosas la datumaron, kaj
+estimata tempo de malŝlosado.",
 "readonlytext"	=> "La datumaro de Vikipedio estas nun ŝlosita kontraŭ
 novajn aldonajn kaj aliaj ŝanĝoj, probable pro laŭkutima flegado je la datumaro.
-Bonvolu reprovu post iom da tempo.\n",
+Bonvolu reprovu post iom da tempo.
+La ŝlosinto lasis la jenan mesaĝon:
+<p>$1\n",
 "missingarticle" => "La datumbazo ne trovis la tekson de
 artikolo, kiun ĝi devus trovi, nomita \"$1\".
 Ĉi tio ne estas eraro de la datumbazo, sed probable cimo en la programo.
@@ -346,6 +363,10 @@ Bonvolu raporti ĉi tion al iu sistemestro, kaj rimarkigi la URL.",
 "unexpected"	=> "Neatendita valuto: \"$1\"=\"$2\".",
 "formerror"		=> "Fuŝo: neeblis liveri formulon",	
 "badarticleerror" => "Tiu ago ne povas apliki je tiu artikolo.",
+"cannotdelete"  => "Neeblis forigi la elektitan paĝon aŭ dosieron.",
+"badtitle"		=> "Nevalida titolo",
+"badtitletext"	=> "La petita paĝtitolo estis nevalida, malplena, aŭ
+malĝuste ligita interlingva aŭ intervikia titolo.",
 
 # Login and logout pages
 #
@@ -358,12 +379,12 @@ kiel la sama aŭ iu alia uzulo.\n", #FIXME
 <font color=\"red\">Ne forgesu proprigi viajn Vikipedio-preferojn!</font>",
 
 "loginpagetitle" => "Salutu / enskribu", #FIXME
-"yourname"		=> "Via uzulnomo", #FIXME ĉu kaŝnomo ĉu uzantonomo ĉu kontonomo ktp?
+"yourname"		=> "Via kontonomo", #FIXME ĉu kaŝnomo ĉu uzantonomo ĉu kontonomo ktp?
 "yourpassword"	=> "Via pasvorto",
 "yourpasswordagain" => "Retajpu pasvorton",
 "newusersonly"	=> " (nur novaj uzuloj)",
 "remembermypassword" => "Rememoru mian pasvorton de seanco al seanco.",
-"loginproblem"	=> "<b>Okazis problemon pri via salutado.</b><br>Bonvolu reprovu!",
+"loginproblem"	=> "<b>Okazis problemon pri via salutado.</b><br>Bonvolu reprovi!",
 "alreadyloggedin" => "<font color=\"red\"><b>Uzulo $1, via estas jam salutinta!</b></font><br>\n",
 
 "areyounew"		=> "Se vi estas nove ĉe vikipedio kaj volas akiri uzulokonton,
@@ -382,7 +403,7 @@ sendu al vi novan pasvorton se vi perdas la nunan.<br>\n",
 "yournick"		=> "Via ĉjonomo (por subskriboj)", #FIXME - ĉu kaŝnomo, plumnomo, ktp?
 "emailforlost"	=> "Se vi forgesos vian pasvorton, vi povas peti ke novan estu retpoŝtita al via adreso.",
 "loginerror"	=> "Salutada fuŝo", #FIXME
-"noname"		=> "Vi nepre indiku uzulonomo.", # FIXME ĉu kontonomo?
+"noname"		=> "Vi nepre indiku kontonomo.",
 "loginsuccesstitle" => "Salutado sukcesis",
 "loginsuccess"	=> "Vi nun estas salutinta en la Vikipedion kiel uzulo \"$1\".",
 "nosuchuser"	=> "Neniu uzulo nomiĝas \"$1\".
@@ -491,6 +512,11 @@ kaj $3 artikolojn laŭ enhavo.",
 kaŭzas pro serĉi tro oftajn vortojn, kiujn ne enhavas la indekso,
 aŭ pro peti tro da serĉvortojn (nur paĝoj kiuj enhavas ĉiun serĉvorto
 montriĝos en la rezulto).",
+"powersearch" => "Serĉu",
+"powersearchtext" => "
+Serĉu en sekcioj: :<br>
+$1<br>
+$2 Kun alidirektiloj &nbsp; Serĉu $3 $9",
 
 # Preferences page
 #
@@ -542,21 +568,32 @@ aferojn limigitaj laŭ la [[kopirajto]] de aliuloj.
 La leĝa respondeco vere povus malhelpegi la projekton,
 do bonvolu ne fari tion.
 
-Ankaŭ vidu la [http://meta.wikipedia.com/wiki.phtml?title=special:RecentChanges lastatempan pri-vikipedian diskuton]
-(angle)",
+Ankaŭ vidu la [http://meta.wikipedia.org/wiki/Special:Recentchanges lastatempan pri-vikipedian diskuton]
+(plurlingve)",
 "rcloaderr"		=> "Ŝarĝas lastajn ŝanĝojn",
 "rcnote"		=> "Jen la plej lastaj <b>$1</b> ŝanĝoj dum la lastaj <b>$2</b> tagoj.",
 "rclinks"		=> "Montru $1 lastajn ŝanĝojn; montru la ŝanĝojn dum la $2 lastajn tagojn.",
 "diff"			=> "malsamoj",
 "hist"			=> "historio",
+"hide"			=> "kaŝu",
+"show"			=> "montru",
+"tableform"		=> "tabelo",
+"listform"		=> "listo",
+"nchanges"		=> "$1 ŝanĝoj",
+"minoreditletter" => "M",
+"newpageletter" => "N",
 
 # Upload
 #
 "upload"		=> "Alŝutu",
 "uploadbtn"		=> "Alŝutu dosieron",
-"uploadlink"		=> "Alŝutu bildon", # Eh?
+"uploadlink"	=> "Alŝutu dosieron", # Ĉu neuzata?
 "reupload"		=> "Realŝutu",
 "reuploaddesc"	=> "Revenu al la alŝuta formulo.",
+"uploadnologin" => "Ne salutinta",
+"uploadnologintext"	=> "Vi nepre havu konton kaj <a href=\"" .
+  wfLocalUrl( "Speciala:Userlogin" ) . "\">salutu</a>
+por alŝuti dosierojn.",
 "uploadfile"	=> "Alŝutu dosieron",
 "uploaderror"	=> "Fuŝo okazis dum alŝuto",
 "uploadtext"	=> "Por okulumi aŭ serĉi jam alŝutitajn dosierojn,
@@ -657,6 +694,30 @@ Tio estas meznombre unu paĝo po <b>$5</b> okulumoj, kaj po <b>$6</b> redaktoj."
 "userstatstext" => "Enskribis <b>$1</b> uzuloj. El tiuj, <b>$2</b> estas kunestroj
 (vidu $3).",
 
+# Maintenance Page
+#
+"maintenance"		=> "Ripariloj kaj zorgiloj",
+"maintnancepagetext"	=> "Jen diversaj iloj por riparado kaj ĝenerala zorgado de la datumaro.
+Kelkaj funkcioj povas stresi la datumbazon, do bonvolu ne reŝuti post ĉiu riparita ero!",
+"maintenancebacklink"	=> "Revenu al la ilaro",
+"disambiguations"	=> "Misligitaj apartigiloj",
+"disambiguationspage"	=> "Vikipedio:Apartigiloj",
+"disambiguationstext"	=> "La jenaj paĝoj alligas <i>paĝon apartigilon</i>. Ili devus anstataŭe alligi la ĝustan subjekton.<br>Oni konsideras tiujn paĝojn, kiujn alligas $1 apartigiloj.<br>Ligado el ne-artikolaj sekcioj <i>ne</i> listiĝas ĉi tie.",
+"doubleredirects"	=> "Duoblaj alidirektoj",
+"doubleredirectstext"	=> "<b>Atentu:</b> Eblas, ke la jena listo enhavus falsaj pozitivoj. Ĝenerale, tiu signifas, ke estas plua teksto kun ligiloj post la #REDIERCT.<br>
+Ĉiu linio montras ligilojn je la unua kaj dua alidirektiloj, plus la unua linio de la teksto de la dua alidirektilo, kiu ĝenerale montras la \"veran\" celartikolon, kiun devus celi la unua alidirektilo.",
+"brokenredirects"	=> "Rompitaj alidirektoj",
+"brokenredirectstext"	=> "La jenaj alidirektiloj alligas artikolojn, kiuj ne ekzistas.",
+"selflinks"		=> "Paĝoj memligantaj",
+"selflinkstext"		=> "La jenaj paĝoj enhavas ligon al si mem, kiu estas neutila.",
+"mispeelings"           => "Paĝoj kun misliterumoj",
+"mispeelingstext"               => "La jenaj paĝoj enhavas unu el la oftaj misliterumadoj listitaj en $1. La ĝusta literumado montriĝos (ĉi tiel).",
+"mispeelingspage"       => "Listo de oftaj misliterumadoj",
+"missinglanguagelinks"  => "Mankantaj interlingvaj ligiloj",
+"missinglanguagelinksbutton"    => "Montru manktantajn interlingvajn ligilojn por",
+"missinglanguagelinkstext"      => "La jenaj artikoloj <i>ne</i> alligas sian ekvivalenton en la lingvo $1. Alidirektiloj kaj subpaĝoj <i>ne</i> montriĝas.",
+
+
 # Miscellaneous special pages
 #
 "orphans"		=> "Orfoj",
@@ -724,12 +785,16 @@ aŭ elektis ne ricevi retpoŝton de aliaj vikipediistoj.",
 "nowatchlist"	=> "Vi ne jam elektis priatenti iujn ajn paĝojn.",
 "watchnologin"	=> "Ne salutinta",
 "watchnologintext"	=> "Nepras <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">saluti</a>
+  wfLocalUrl( "Speciala:Userlogin" ) . "\">saluti</a>
 por umi vian atentaron.",
 "addedwatch"	=> "Aldonis al atentaro",
-"addedwatchtext" => "La paĝo \"$1\" estas aldonita al via atentaro.
-Estontaj ŝanĝoj al tiu paĝo aperos en <b>dika tipo</b> en la listo de Lastaj Ŝanĝoj,
-kaj estos kalkulita en la listo de via Atentaro.",
+"addedwatchtext" => "La paĝo \"$1\" estas aldonita al via <a href=\"" .
+  wfLocalUrl( "Speciala:Watchlist" ) . "\">atentaro</a>.
+Estontaj ŝanĝoj al tiu paĝo aperos en <b>dika tipo</b> en la <a href=\"" .
+  wfLocalUrl( "Speciala:Recentchanges" ) . "\">listo de Lastaj Ŝanĝoj</a>,
+kaj estos kalkulita en la listo de via Atentaro.
+
+<p>Se vi poste volos eksigi la paĝon el via atentaro, alklaku \"Malatentu paĝon\" en la ilobreto.",
 "removedwatch"	=> "Eltiris el atentaro",
 "removedwatchtext" => "La paĝo \"$1\" estas tirita el via atentaro.",
 "watchthispage"	=> "Priatentu paĝon",
@@ -762,6 +827,22 @@ Vidu je $2 por rekordo de lastatempaj forigoj.",
 "deletecomment"	=> "Kialo por forigo",
 "imagereverted" => "Restarigo de antaŭa versio sukcesis.",
 
+# Undelete
+"undelete" => "Restarigu forigitan paĝon",
+"undeletepage" => "Montru kaj restarigu forigitajn paĝojn",
+"undeletepagetext" => "La jenaj paĝoj estas forigitaj, sed ankoraŭ restas arkivitaj,
+kaj oni povas restarigi ilin. La arkivo povas esti malplenigita periode.",
+"undeletearticle" => "Restarigu forigitan artikolon",
+"undeleterevisions" => "$1 revizioj arkivitaj",
+"undeletehistory" => "Se vi restarigos la paĝon, ĉiuj revizioj estos restarigitaj
+en la historio. Se nova paĝo kun la sama nomo estas kreita de la forigo, la restarigitaj
+revizioj aperos antaŭe en la historio, kaj la aktuala versio ne estos anstataŭigita.",
+"undeleterevision" => "Forigita revizio de $1", # ($1 estas tempo)
+"undeletebtn" => "Restarigu!",
+"undeletedarticle" => "restarigis \"$1\"",
+"undeletedtext"   => "La artikolo [[$1]] estas sukcese restarigita.
+Vidu je [[Vikipedio:Loglibro de forigoj]] por rekordo de lastatempaj forigoj kaj restarigoj.",
+
 # Contributions
 #
 "contributions"	=> "Kontribuoj de Vikipediisto",
@@ -772,9 +853,9 @@ Vidu je $2 por rekordo de lastatempaj forigoj.",
 
 # What links here
 #
-"whatlinkshere"	=> "Kio ligas ĉi tien",
+"whatlinkshere"	=> "Ligantoj ĉi tien",
 "notargettitle" => "Sen celpaĝo",
-"notargettext"	=> "Vi ne precizigis, kiun paĝon priumi.",
+"notargettext"	=> "Vi ne precizigis, kiun paĝon aŭ uzulon priumi.",
 "linklistsub"	=> "(Listo de ligoj)",
 "linkshere"		=> "La jenaj paĝoj ligas ĉi tien:",
 "nolinkshere"	=> "Neniu paĝo ligas ĉi tien.",
@@ -812,25 +893,25 @@ forbarita IP-adreso la povon enskribi en la vikio.",
 #
 "lockdb"		=> "Ŝlosi datumaron",
 "unlockdb"		=> "Malŝlosi datumaron",
-"lockdbtext"	=> "Locking the database will suspend the ability of all
-users to edit pages, change their preferences, edit their watchlists, and
-other things requiring changes in the database.
-Please confirm that this is what you intend to do, and that you will
-unlock the database when your maintenance is done.",
-"unlockdbtext"	=> "Unlocking the database will restore the ability of all
-users to edit pages, change their preferences, edit their watchlists, and
-other things requiring changes in the database.
-Please confirm that this is what you intend to do.",
-"lockconfirm"	=> "Yes, I really want to lock the database.",
-"unlockconfirm"	=> "Yes, I really want to unlock the database.",
-"lockbtn"		=> "Lock database",
-"unlockbtn"		=> "Unlock database",
-"locknoconfirm" => "You did not check the confirmation box.",
-"lockdbsuccesssub" => "Database lock succeeded",
-"unlockdbsuccesssub" => "Database lock removed",
-"lockdbsuccesstext" => "The Wikipedia database has been locked.
-<br>Remember to remove the lock after your maintenance is complete.",
-"unlockdbsuccesstext" => "The Wikipedia database has been unlocked.",
+"lockdbtext"	=> "Se vi ŝlosos la datumaron, tio neebligos al ĉiuj uzuloj
+redakti paĝojn, ŝanĝi preferojn, priumi atentarojn, kaj diversaj aliaj
+aferoj, por kiuj nepras ŝanĝi al la datumaro.
+Bonvolu certigu, ke vi efektive intencas tion fari, kaj ke vi ja malŝlosos
+la datumaron post ol vi finos vian riparadon.",
+"unlockdbtext"	=> "Se malŝlosos la datumaron, tio reebligos al ĉiuj uzuloj
+redakti paĝojn, ŝanĝi preferojn, priumi la atentaron, kaj aliaj aferoj,
+por kiuj nepras ŝanĝi al la datumaro.
+Bonvolu certigu, ke vi efektive intencas tion fari.",
+"lockconfirm"	=> "Jes, mi vere volas ŝlosi la datumaron.",
+"unlockconfirm"	=> "Jes, mi vere volas malŝlosi la datumaron.",
+"lockbtn"		=> "Ŝlosi datumaron",
+"unlockbtn"		=> "Malŝlosi datumaron",
+"locknoconfirm" => "Vi ne konfirmis.",
+"lockdbsuccesssub" => "Datumaro ŝlosita",
+"unlockdbsuccesssub" => "Datumaro malŝlosita",
+"lockdbsuccesstext" => "La datumaro de Vikipedio estas ŝlosita.
+<br>Ne forgesu malŝlosi ĝin post ol vi finos la riparadon.",
+"unlockdbsuccesstext" => "La datumaro de Vikipedio estas malŝlosita.",
 
 # SQL query
 #
@@ -858,7 +939,7 @@ ol vi antaŭeniru.",
 "movearticle"	=> "Movu paĝon",
 "movenologin"	=> "Ne salutinta",
 "movenologintext" => "Vi nepre estu registrita uzulo kaj <a href=\"" .
-  wfLocalUrl( "Special:Userlogin" ) . "\">salutu</a>
+  wfLocalUrl( "Speciala:Userlogin" ) . "\">salutu</a>
 por rajti movi paĝojn.",
 "newtitle"		=> "Al nova titolo",
 "movepagebtn"	=> "Movu paĝon",
@@ -870,7 +951,7 @@ Bonvolu elekti alian nomon.",
 "movedto"		=> "movis al",
 "movetalk"		=> "Movu ankaŭ la \"diskuto\"-paĝon, se tia ekzistas.",
 "talkpagemoved" => "La diskuto-paĝo estas ankaŭ movita.",
-"talkpagenotmoved" => "La diskuto-paĝo <strong>ne</strong> estas movita.",
+"talkpagenotmoved" => "La diskuto-paĝo <strong>ne</strong> estas movita."
 
 );
 
@@ -893,6 +974,8 @@ class LanguageEo extends Language {
 		foreach ( $wgNamespaceNamesEo as $i => $n ) {
 			if ( 0 == strcasecmp( $n, $text ) ) { return $i; }
 		}
+		if( 0 == strcasecmp( "Special", $text ) ) return -1;
+		if( 0 == strcasecmp( "Wikipedia", $text ) ) return 4;
 		return false;
 	}
 
@@ -941,21 +1024,9 @@ class LanguageEo extends Language {
 		return $wgWeekdayNamesEo[$key-1];
 	}
 
-	function userAdjust( $ts )
-	{
-		global $wgUser;
-
-		$diff = $wgUser->getOption( "timecorrection" );
-		if ( ! $diff ) { $diff = 0; }
-		if ( 0 == $diff ) { return $ts; }
-
-		$t = mktime( ( (int)substr( $ts, 8, 2) ) + $diff,
-		  (int)substr( $ts, 10, 2 ), (int)substr( $ts, 12, 2 ),
-		  (int)substr( $ts, 4, 2 ), (int)substr( $ts, 6, 2 ),
-		  (int)substr( $ts, 0, 4 ) );
-		return date( "YmdHis", $t );
-	}
+	# Heredu userAdjust()
  
+	# La dato- kaj tempo-funkciojn oni povas precizigi laŭ lingvo
 	function date( $ts, $adj = false )
 	{
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
@@ -980,10 +1051,7 @@ class LanguageEo extends Language {
 		return $this->time( $ts, $adj ) . ", " . $this->date( $ts, $adj );
 	}
 
-	function rfc1123( $ts )
-	{
-		return date( "D, d M Y H:i:s T", $ts );
-	}
+	# Heredu rfs1123()
 
 	function getValidSpecialPages()
 	{
@@ -1014,6 +1082,8 @@ class LanguageEo extends Language {
 
     function iconv( $in, $out, $string ) {
 		# For most languages, this is a wrapper for iconv
+		# Por multaj lingvoj, ĉi tiu nur voku la sisteman funkcion iconv()
+		# Ni ankaŭ konvertu X-sistemajn surogotajn
 		if( $in == "X" ) {
 		    $xu = array (
 				"xx" => "x" , "xX" => "x" ,
