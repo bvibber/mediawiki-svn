@@ -9,6 +9,7 @@ include_once( "./DefaultSettings.php" );
 $wgServer           = "http://www.piclab.com";
 $wgScriptPath	    = "/wiki";
 $wgScript           = "{$wgScriptPath}/wiki.phtml";
+$wgRedirectScript	= "{$wgScriptPath}/redirect.phtml";
 $wgStyleSheetPath   = "{$wgServer}/style";
 $wgArticlePath      = "{$wgServer}{$wgScript}?title=$1";
 $wgUploadPath       = "{$wgServer}/upload";

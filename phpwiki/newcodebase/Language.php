@@ -86,8 +86,7 @@
 
 /* private */ $wgSysopSpecialPagesEn = array(
 	"Blockip"		=> "Block an IP address",
-	"Protectpage"	=> "Protect a page from user edits",
-	"Movepage"		=> "Rename a page and its links",
+	"Movepage"		=> "",
 	"Asksql"		=> "Query the database"
 );
 
@@ -122,6 +121,7 @@
 performed by users with \"sysop\" status.
 See $1.",
 "nbytes"		=> "$1 bytes",
+"go"			=> "Go",
 
 # Main script and global functions
 #
