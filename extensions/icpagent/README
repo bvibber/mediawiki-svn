@@ -4,6 +4,7 @@ at high loads and might be remotely turned
 on or off.
 
 Options:
+-d      - daemonize
 -m      - enable remote management
 -p #    - port number to listen at
 -t #    - static delay time in milliseconds, defaults to 5.0
