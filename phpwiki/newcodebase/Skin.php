@@ -165,9 +165,8 @@ class Skin {
 
 		$s .= $this->topLinks() ;
 		$s .= "<p class='subtitle'>" . $this->pageTitleLinks();
-		if ( $wgOut->isArticle() ) {
-			$s .= "<br>" . $this->otherLanguages();
-		}
+		if ( $wgOut->isArticle() ) { $s .= $this->otherLanguages(); }
+
 		$s .= "</td>\n<td class='top' valign=top align=right width=200 nowrap>";
 		$s .= $this->nameAndLogin();
 		$s .= "\n<br>" . $this->searchForm() . "</td>";
@@ -222,8 +221,9 @@ class Skin {
 		$s .= "<td class='bottom' align=left valign=top>";
 
 		$s .= $this->bottomLinks();
-		$s .= "\n<br>" . $this->pageStats();
-		$s .= "\n<br>" . $this->searchForm();
+		$s .= "\n<br>" . $this->mainPageLink()
+		  . " | " . $this->specialLink( "recentchanges" )
+		  . " | " . $this->searchForm();
 
 		$s .= "</td>";
 		if ( 2 == $qb ) { # Right
@@ -313,7 +313,8 @@ class Skin {
 
 	function searchForm()
 	{
-		$s = "<form method=get action=\"" . wfLocalUrl( "" ) . "\">"
+		$s .= "<form class='inline' method=get action=\""
+		  . wfLocalUrl( "" ) . "\">"
 		  . "<input type=text name=\"search\" size=16 value=\"\">\n"
 		  . "<input type=submit value=\"" . wfMsg( "search" )
 		  . "\"></form>";
@@ -340,26 +341,30 @@ class Skin {
 
 	function bottomLinks()
 	{ 
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgTitle;
 		$sep = " |\n";
 
-		$s = $this->mainPageLink() . $sep
-		  . $this->specialLink( "recentchanges" );
-
+		$s = "";
 		if ( $wgOut->isArticle() ) {
-			$s .=  $sep . $this->editThisPage()
-			  . $sep . $this->historyLink();
-		}
-		if ( $wgOut->isArticle() ) {
-			$s .= $sep . $this->talkLink();
-
-			if ( $wgUser->isSysop() ) {
-				$s .= $sep . $this->deleteThisPage() .
-				  $sep . $this->protectThisPage() .
-				  $sep . $this->moveThisPage();
+			$s .= "<strong>" . $this->editThisPage() . "</strong>";
+			if ( 0 != $wgUser->getID() ) {
+				$s .= $sep . $this->watchThisPage();
 			}
+			$s .= $sep . $this->talkLink()
+			  . $sep . $this->historyLink()
+			  . $sep . $this->whatLinksHere()
+			  . $sep . $this->watchPageLinksLink();
+
+			if ( Namespace::getIndex( "User" ) == $wgTitle->getNamespace() ) {
+				$s .= $sep . $this->userContribsLink();
+			}
+			if ( $wgUser->isSysop() ) {
+				$s .= "\n<br>" . $this->deleteThisPage() .
+				$sep . $this->protectThisPage() .
+				$sep . $this->moveThisPage();
+			}
+			$s .= $this->otherLanguages();
 		}
-		$s .= "<br>" . $this->otherLanguages();
 		return $s;
 	}
 
@@ -468,7 +473,7 @@ class Skin {
 		$go = wfMsg( "go" );
 		$sp = wfMsg( "specialpages" );
 
-		$s = "<form method=get id='specialform' " .
+		$s = "<form method=get class='inline' " .
 		  "action=\"{$wgServer}{$wgRedirectScript}\">\n";
 		$s .= "<select name='wpDropdown'>\n";
 		$s .= "<option value=\"Special:Specialpages\">{$sp}</option>\n";
@@ -640,7 +645,7 @@ class Skin {
 			$style = $this->getExternalLinkAttributes( $link, $text );
 			$s .= "<a href=\"$url\"$style>$text</a>";
 		}
-		return $s . "\n";
+		return "\n<br>{$s}\n";
 	}
 
 	function bugReportsLink()
