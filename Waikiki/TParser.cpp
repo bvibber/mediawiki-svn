@@ -8,6 +8,12 @@ void TParser::parse_heading ( TUCS &s )
     for ( a = 0 ; a < s.length() && s[a] == '=' && s[s.length()-a-1] == '=' ; a++ ) ;
     s = s.substr ( a , s.length() - a*2 ) ;
     s.trim() ;
+    if ( USER->wantsTOC() )
+        {
+        if ( first_header == 0 ) first_header = cur_line + 1 ;
+        toc.push_back ( TUCS::fromint ( a ) + s ) ;
+        s = "<a name='#" + s + "'>" + s + "</a>" ;
+        }
     TUCS t = "H" + TUCS::fromint ( a ) ;
     s = "<" + t + ">" + s + "</" + t + ">" ;
     }
@@ -337,6 +343,52 @@ void TParser::recall_nowiki ( TUCS &s )
         s += v1[a] ;
         }
     }
+    
+void TParser::insertTOC ( VTUCS &vs )
+    {
+    if ( toc.size() < 3 ) return ;
+    if ( !USER->wantsTOC() ) return ;
+    uint a , b , cnt[10] ;
+    TUCS thetoc ;
+    for ( a = 0 ; a < 10 ; a++ ) cnt[a] = 0 ;
+    uint level , lastlevel = 1 ;
+    FOREACH ( toc , a )
+        {
+        TUCS s = toc[a] , out ;
+        level = s[0] - '1' ;
+        s = s.substr ( 1 ) ;
+        cnt[level]++ ;
+        for ( b = 1 ; b < level ; b++ )
+           if ( cnt[b] == 0 ) cnt[b] = 1 ;
+        for ( b = level + 1 ; b < 10 ; b++ ) cnt[b] = 0 ;
+        for ( b = 1 ; b <= level ; b++ )
+           {
+           if ( !out.empty() ) out += "." ;
+           out += TUCS::fromint ( cnt[b] ) ;
+           }
+        out += " " + s ;
+        s.replace ( " " , "_" ) ;
+        s.replace ( "'" , "\\'" ) ;
+        out = "<a class='internal' href='#" + s + "'>" + out + "</a><br>" ;
+        out = "<div style='margin-bottom:0px;'>" + out + "</div>\n" ;
+        while ( lastlevel > level ) { out = "</div>" + out ; lastlevel-- ; }
+        while ( lastlevel < level ) { out = "<div style='margin-left:2em;'>" + out ; lastlevel++ ; }
+        thetoc += out ;
+        }
+    level = 1 ;
+    while ( lastlevel > level ) { thetoc += "</div>" ; lastlevel-- ; }
+    
+    thetoc = "<table border=0 id=toc><tr><td align=center>
+              <b>Table of contents</b>
+              <script type='text/javascript'>showTocToggle('show','hide')</script>
+              </td></tr>
+              <tr id=tocinside><td align=left>" +
+             thetoc +
+             "</td></tr></table>" ;
+
+    
+    vs.insert ( vs.begin() + first_header - 1 , thetoc ) ;
+    }
 
 TUCS TParser::parse ( TUCS &source )
     {
@@ -345,11 +397,13 @@ TUCS TParser::parse ( TUCS &source )
     int a ;
     
     OUTPUT->languageLinks.clear() ;
+    toc.clear() ;
     bullets = "" ;
     hasVariables = false ;
     lastWasPre = false ;
     lastWasBlank = false ;
     external_link_counter = 1 ;
+    first_header = 0 ;
 
     store_nowiki ( source ) ;
     if ( source.replace ( "__NOTOC__" , "" ) > 0 ) notoc = true ;
@@ -357,8 +411,10 @@ TUCS TParser::parse ( TUCS &source )
     remove_evil_HTML ( source ) ;
     replace_variables ( source ) ;
     source.explode ( "\n" , vs ) ;
-    FOREACH ( vs , a )
-        parse_line ( vs[a] ) ;
+    
+    FOREACH ( vs , cur_line )
+        parse_line ( vs[cur_line] ) ;
+    insertTOC ( vs ) ;
         
     FOREACH ( vs , a )
         {

@@ -24,6 +24,8 @@ class TUser
     virtual bool canProtectArticle ( TArticle *art = NULL ) ;
     virtual TUCS getURLname () ;
 
+    virtual bool wantsTOC () ;
+
     virtual TUCS getUserPageLink ( TUCS sep = "" ) ;
     virtual TUCS getUserTalkPageLink ( TUCS sep = "" ) ;
     virtual TUCS getLogLink ( TUCS sep = "" ) ;

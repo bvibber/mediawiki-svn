@@ -102,4 +102,8 @@ TUCS TUser::getPreferencesLink ( TUCS sep )
     return "PREFS" + sep ;
     }
     
-
+bool TUser::wantsTOC ()
+    {
+    return true ; // DUMMY
+    }
+    

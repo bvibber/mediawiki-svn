@@ -12,6 +12,7 @@ class TParser
     virtual TUCS parse ( TUCS &source ) ;
     
     private :
+    virtual void insertTOC ( VTUCS &vs ) ;
     virtual void parse_heading ( TUCS &s ) ;
 //    virtual uint *parse_internal_link ( uint *c , TUCS &s , TUCS &t ) ;
     virtual bool parse_internal_link ( TUCS &s ) ;
@@ -34,6 +35,8 @@ class TParser
     bool notoc , hasVariables ;
     bool lastWasPre , lastWasBlank ;
     int external_link_counter ;
+    VTUCS toc ;
+    uint cur_line , first_header ;
     } ;
 
 #endif
