@@ -110,6 +110,7 @@
 "faqpage"		=> "Wikipedia:FAQ",
 "edithelp"		=> "Editing help",
 "edithelppage"	=> "Wikipedia:How_does_one_edit_a_page",
+"cancel"		=> "Cancel",
 "qbfind"		=> "Find",
 "qbbrowse"		=> "Browse",
 "qbedit"		=> "Edit",
@@ -278,6 +279,15 @@ press \"Save\".\n<p>",
 revision of this article.
 If you save it, any changes made since this revision will be lost.</strong>\n",
 "yourdiff"		=> "Differences",
+"copyrightwarning" => "Please note that all contributions to Wikipedia are
+considered to be released under the GNU Free Documentation License
+(see $1 for details).
+If you don't want your writing to be edited mercilessly and redistributed
+at will, then don't submit it here.<br>
+You are also promising us that you wrote this yourself, or copied it from a
+public domain or similar free resource.
+<strong>DO NOT SUBMIT COPYRIGHTED WORK WITHOUT PERMISSION!</strong>",
+
 
 # History pages
 #
