@@ -47,6 +47,7 @@
 	"usenewrc" => "Erweiterte letzte Änderungen (nicht für alle Browser geeignet)",
 	"numberheadings" => "Überschriften automatisch numerieren",
   "editsection" => "Links zum Editieren einzelner Absätze anzeigen",
+  "editsectiononrightclick"=>"Abschnitte mit rechtem Mausklick bearbeiten (JavaScript)",
   "showtoc" => "Anzeigen eines Inhaltsverzeichnisses bei Artikeln mit mehr
   als 3 Überschriften",
 	"rememberpassword" => "Passwort merken",
