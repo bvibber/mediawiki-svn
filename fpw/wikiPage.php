@@ -717,8 +717,8 @@ class WikiPage extends WikiTitle {
 				}
 				# Strip non-approved attributes from the tag
 				$newparams = preg_replace (
-	                		"/(\w+)(\s*=\s*([\w,.\/:&%#@+-]+|\"[^\"]*\"))?/e" ,
-			                "(in_array(strtolower(\"\$1\"),\$htmlattrs)?(\"\$1\".(\"\$3\"?\"=\$3\":'')):'')" ,
+	                		"/(\\w+)(\\s*=\\s*([^\\s\">]+|\"[^\">]*\"))?/e" ,
+			                "(in_array(strtolower(\"\$1\"),\$htmlattrs)?(\"\$1\".((\"x\$3\" != \"x\")?\"=\$3\":'')):'')" ,
 			                $params) ;
 			}
 	    
