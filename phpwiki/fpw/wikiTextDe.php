@@ -470,7 +470,7 @@ $wikiVoteReason = "Grund für diese Stimme : " ;
 $wikiVoteBecause = ", denn : <i>$1</i>" ;
 $wikiVoteMessage = "Stimme von $1 für $2" ;
 $wikiVoteWarn = "<font size=+2>Sie haben nicht gesagt, wofür Sie stimmen möchten! <a href=\"$1\">Nochmal versuchen</a>.</font>" ;
-$wikiVotes = array ( "deletion"=>"Stimmen für 'Löschen'" , "rewrite"=>"Stimmen für 'Neu Schreiben'" , "wikify"=>"Stimmen für 'wikifizieren'" , "NPOV"=>"Stimmen für 'NPOV'" , "aotd"=>"Stimmen für 'Artikel des Tages'" ) ;
+$wikiVotes = array ( "delete"=>"Stimmen für 'Löschen'" , "rewrite"=>"Stimmen für 'Neu Schreiben'" , "wikify"=>"Stimmen für 'wikifizieren'" , "NPOV"=>"Stimmen für 'NPOV'" , "aotd"=>"Stimmen für 'Artikel des Tages'" ) ;
 $wikiVoteAdded = "<font size=+2>$1 wurde zu <a href=\"$2\">$3</a> hinzugefügt!</font>" ;
 $wikiVoteError = "<font size=+2>Hier ist was richtig schiefgelaufen!</font>" ;
 $wikiVoteChoices = "
@@ -479,7 +479,7 @@ $wikiVoteChoices = "
 <input type=radio value=NPOV name=voted>NPOV<br>
 <input type=radio value=wikify name=voted>wikifizieren<br>
 <input type=radio value=aotd name=voted>Artikel des Tages<br><br>
-Grund für diese Stimme : <input type=text value=\"\" name=CommentBox size=20> <input type=submit value=\"Vote\" name=doVote>
+Grund für diese Stimme : <input type=text value=\"\" name=CommentBox size=35> <input type=submit value=\"Vote\" name=doVote>
 " ;
 
 

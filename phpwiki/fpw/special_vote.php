@@ -33,7 +33,7 @@ function vote ()
 {
 	global $vpage , $target , $doVote , $voted ;
 	global $wikiVoteReason , $wikiVoteWarn , $wikiVotes , $wikiVoteAdded , $wikiVoteError , $wikiVoteChoices ;
-    global $wikiVoteHeadingPre, $wikiVoteHeadingPost;
+    global $wikiVoteHeadingPre, $wikiVoteHeadingPost, $wikiVoteExplanation;
 
 	if ( isset ( $doVote ) ) {
 		if ( $voted == "" ) {
@@ -47,10 +47,16 @@ function vote ()
 			} else $ret = $wikiVoteError ;
 		}
 	} else {
-		$ret = "<font size='+2'>" . $wikiVoteHeadingPre . "\"" . $vpage->getNiceTitle(urldecode($target)) . "\"" . $wikiVoteHeadingPost . "<br><br>\n";
+		$ret = "<font size='+2'>" . $wikiVoteHeadingPre . "\"" . $vpage->getNiceTitle(urldecode($target)) . "\"" . $wikiVoteHeadingPost . "<br>\n";
 		$ret .= "<form method=post>\n" ;
 		$ret .= $wikiVoteChoices ;
-		$ret .= "</form>\n</font>\n" ;
+		$ret .= "</form>\n</font>\n<p><p>" ;
+		$ret .= $wikiVoteExplanation ;
+		$ret .= "\n<ul>\n" ;
+		foreach ($wikiVotes as $page_title) {
+			$ret .= "<li><a href=\"" . wikiLink("wikipedia:".$page_title) . "\">wikipedia:$page_title</a>\n";
+		}
+		$ret .="</ul>\n";
 	}
 	return $ret ;
 }
