@@ -198,6 +198,9 @@ class Article {
 		global $wgUser, $wgOut, $wgTitle, $wgLang;
 		global $oldid, $diff;
 
+		$wgOut->addHeader( "Expires", $wgLang->rfc1123( time() + 3600 ) );
+		$wgOut->addHeader( "Cache-Control", "public" );
+
 		if ( isset( $diff ) ) {
 			$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 			$wgOut->setArticleFlag( false );
@@ -207,6 +210,7 @@ class Article {
 		}
 		$text = $this->getContent();
 		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
+
 		if ( $oldid ) { $this->setOldSubtitle(); }
 
 		if ( "" != $this->mRedirectedFrom ) {

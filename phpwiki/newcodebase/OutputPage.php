@@ -87,7 +87,7 @@ class OutputPage {
 	#
 	function output()
 	{
-		global $wgUser, $wgDebugComments, $wgCookieExpiration;
+		global $wgUser, $wgLang, $wgDebugComments, $wgCookieExpiration;
 		$sk = $wgUser->getSkin();
 
 		if ( "" != $this->mRedirect ) {
@@ -98,8 +98,20 @@ class OutputPage {
 		$this->addHeader( "Content-type",
 		  "text/html; charset=iso-8859-1" );
 
+		$foundexp = false;
 		foreach( $this->mHeaders as $t ) {
 			header( $t );
+			if ( preg_match( "/^Expires:/", $t ) ) { $foundexp = true; }
+		}
+		if ( ! $foundexp ) {
+			if ( $this->mIsarticle ) {
+				header( "Expires: " . $wgLang->rfc1123( time() + 3600 ) );
+				header( "Cache-Control: public" );
+			} else {
+				header( "Expires: 0" );
+				header( "Cache-Control: no-cache" );
+				header( "Pragma: no-cache" );
+			}
 		}
 		$exp = time() + $wgCookieExpiration;
 		foreach( $this->mCookies as $name => $val ) {

@@ -628,6 +628,11 @@ class Language {
 		return $this->time( $ts ) . " " . $this->date( $ts );
 	}
 
+	function rfc1123( $ts )
+	{
+		return date( "D, d M Y H:i:s T", $ts );
+	}
+
 	function getValidSpecialPages()
 	{
 		global $wgValidSpecialPagesEn;
