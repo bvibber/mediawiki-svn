@@ -541,7 +541,7 @@ void process_command(conn * c, char *command)
 	(strncmp(command, "decr ", 5) == 0)) {
 	char temp[32];
 	unsigned int value;
-	item *it;
+	item *it, *newit = NULL, *putit = NULL;
 	unsigned int delta;
 	char key[251];
 	int res, ret;
@@ -585,14 +585,25 @@ void process_command(conn * c, char *command)
 
 	sprintf(temp, "%u", value);
 	res = strlen(temp);
-	memcpy(ITEM_data(it), temp, res);
-	memset(ITEM_data(it) + res, ' ', it->nbytes - res - 2);
+	if (res + 2 > it->nbytes) {
+	    newit =
+		item_alloc(ITEM_key(it), it->flags, it->exptime, res + 2);
+	    memcpy(ITEM_data(newit), temp, res);
+	    memcpy(ITEM_data(newit) + res, "\r\n", 2);
+	    putit = newit;
+	} else {
+	    memcpy(ITEM_data(it), temp, res);
+	    memset(ITEM_data(it) + res, ' ', it->nbytes - res - 2);
+	    putit = it;
+	}
 	cleanup_dbt();
 	dbkey.data = key;
 	dbkey.size = strlen(key);
-	dbdata.data = it;
-	dbdata.size = ITEM_ntotal(it);
+	dbdata.data = putit;
+	dbdata.size = ITEM_ntotal(putit);
 	dbp->put(dbp, NULL, &dbkey, &dbdata, NULL);
+	if (newit)
+	    free(newit);
 	out_string(c, temp);
 	return;
     }
