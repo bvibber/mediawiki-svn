@@ -10,10 +10,13 @@ user    (Wikipedia users)
   user_id
     integer, primary key, autoincrement
   user_name
-  user_password
-  user_email
   user_rights
     Comma-separated list of textual flags.
+  user_password
+    Hash of current password.
+  user_newpassword
+    Not presently used? (For mail-a-new-password feature?)
+  user_email
   user_options
     Newline-separated list of name=value pairs.
   user_watch
@@ -49,6 +52,15 @@ cur     (Wikipedia "current" articles)
     Number of times this page has been viewed.
   cur_ind_title
     Text version of title for fulltext searches.
+  cur_ind_text
+    Plaintext version of text for fulltext searches.
+  cur_is_redirect
+    1 indicates the article is a redirect.
+  cur_minor_edit
+    1 indicates this was a minor edit.
+  cur_is_new
+    1 indicates this is the first revision of a new entry.
+
 
 
 old     (Historical versions articles. Most fields
@@ -63,22 +75,66 @@ old     (Historical versions articles. Most fields
   old_user_text
   old_timestamp
   old_minor_edit
+  old_flags
+    This last is currently unused.
 
 
 links   (Internal links to existing articles)
 
-  linked_to
+  l_from
+    ID of source article.
+  l_to
     ID of target article.
-  linked_from
-    Title of source article.
 
 
-unlinked (Internal links to non-existent articles)
+brokenlinks (Internal links to non-existent articles)
 
-  unlinked_from
-    Title of target link.
-  unlinked_to
+  bl_from
     ID of source link.
+  bl_to
+    Title of target link.
+
+imagelinks (Internal links to images via [[Image:filename]] syntax)
+
+  il_from
+    Title of target article.
+  il_to
+    Filename of target image.
+
+
+image (Uploaded images and other files)
+
+  img_name
+    Filename.
+  img_size
+    File size in bytes.
+  img_description
+    Description field given during upload.
+  img_user
+    User ID who uploaded the file.
+  img_user_text
+    User name who uploaded the file.
+  img_timestamp
+    Timestamp when upload took place.
+
+
+oldimage (Old versions of images stored for potential revert)
+
+  oi_name
+    Original filename.
+  oi_archive_name
+    Filename of stored old revision; timestamp and
+    exclaimation point prepended to oi_name
+  oi_size
+    File size in bytes.
+  oi_description
+    Description field given during upload.
+  oi_user
+    User ID who uploaded the file.
+  oi_user_text
+    User name who uploaded the file.
+  oi_timestamp
+    Timestamp when upload took place.
 
 
 ipblocks (IP addresses and users blocked from editing)
@@ -92,6 +148,14 @@ ipblocks (IP addresses and users blocked from editing)
   ipb_reason
     Text comment made by blocker.
 
+
+random (Random page queue)
+
+  ra_current
+    1 = hasn't come up on a random page view yet.
+    >1 = has been viewed, will be ignored for a few
+  ra_title
+    Title of an article.
 
 site_stats (Site-wide statistics)
 
