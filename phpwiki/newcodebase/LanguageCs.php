@@ -12,8 +12,8 @@
 	1	=> "Diskuse", # neb diskutuj?
 	2	=> "Wikipediista",
 	3	=> "Wikipediista_diskuse",
-	4	=> "Wikipedia",
-	5	=> "Wikipedia_diskuse",
+	4	=> "Wikipedie",
+	5	=> "Wikipedie_diskuse",
 	6	=> "Soubor", #FIXME: Check the magic for Image: and Media:
 	7	=> "Soubor_diskuse"
 );
@@ -286,7 +286,7 @@
 "currentevents" => "Aktuality", #FIXME - Novinky? Aktuální novinky? Aktuální události?
 "errorpagetitle" => "Chyba", #FIXME - Arero? ;)
 "returnto"		=> "Vrať se na $1.",
-"fromwikipedia"	=> "Z Wikipedie, otevřené encyklopedio.",
+"fromwikipedia"	=> "Z Wikipedie, otevřené encyklopedie.",
 "whatlinkshere"	=> "Sem odkazy", #FIXME: cu ligantaj?
 "help"			=> "Nápověda",
 "search"		=> "Hledej",
