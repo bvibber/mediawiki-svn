@@ -39,7 +39,8 @@
 	"rememberpassword" => "Se souvenir de mon mot de passe (cookie)",
 	"editwidth" => "La fenetre d'édition est en pleine largeur",
 	"editondblclick" => "Double cliquer pour éditer une page (JavaScript)",
-	"watchdefault" => "Watch new and modified articles"
+	"watchdefault" => "Suivre les articles que je crée ou modifie",
+	"minordefault" => "Mark all edits minor by default"
 );
 
 /* Replace these with some French bookshops/lookup places */
@@ -763,6 +764,12 @@ L'heure indiquée est celle du serveur (UTC).
 "reverted"  => "Rétablissement de la version précédente",
 "deletecomment" => "Motif de la suppression",
 "imagereverted" => "La version précédente a été rétablie.",
+"rollback"		=> "Roll back edits",
+"rollbacklink"	=> "rollback",
+"cantrollback"	=> "Can't revert edit; last contributor is only author of this article.",
+"revertpage"	=> "restitution de la dernière modification de $1",
+
+# Undelete
 "undelete" => "Restaurer la page effacée", // MQ "Restore deleted page",
 "undeletepage" => "Voir et restaurer la page effacée", // MQ "View and restore deleted pages",
 "undeletepagetext" => "Cette page viens d'etre effacée et mise dans la corbeille,  elle est toujours en base de donnée et peut etre restaurée.
