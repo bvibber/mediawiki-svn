@@ -136,10 +136,10 @@ class Title {
 		$s = str_replace( " ", "_", $s );
 		$s = urlencode ( $s ) ;
 		# Cleaning up URL to make it look nice -- is this safe?
-		# $s = preg_replace( "/%3[Aa]/", ":", $s );
-		# $s = preg_replace( "/%2[Ff]/", "/", $s );
-		# $s = str_replace( "%28", "(", $s );
-		# $s = str_replace( "%29", ")", $s );
+		$s = preg_replace( "/%3[Aa]/", ":", $s );
+		$s = preg_replace( "/%2[Ff]/", "/", $s );
+		$s = str_replace( "%28", "(", $s );
+		$s = str_replace( "%29", ")", $s );
 		return $s;
 	}
 
@@ -273,8 +273,14 @@ class Title {
 		$this->mInterwiki = $this->mFragment = "";
 		$this->mNamespace = 0;
 
+		$t = preg_replace( "/[\\s_]+/", "_", $this->mDbkeyform );
+		if ( "_" == $t{0} ) { $t = substr( $t, 1 ); }
+		$l = strlen( $t );
+		if ( $l && ( "_" == $t{$l-1} ) ) { $t = substr( $t, 0, $l-1 ); }
+		if ( "" == $t ) { $t = "_"; }
+
+		$this->mDbkeyform = $t;
 		$done = false;
-		$t = trim( $this->mDbkeyform );
 		if ( ":" == $t{0} ) {
 			$r = substr( $t, 1 );
 		} else {
