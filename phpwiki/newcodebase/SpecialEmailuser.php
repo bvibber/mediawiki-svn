@@ -75,7 +75,7 @@ class EmailUserForm {
 			$wgOut->addHTML( "<p><font color='red' size='+1'>{$err}</font>\n" );
 		}
 		$wgOut->addHTML( "<p>
-<form method=post action=\"{$action}\">
+<form name='emailuser' method=post action=\"{$action}\">
 <table border=0><tr>
 <td align=right>{$emf}:</td>
 <td align=left><strong>{$sender}</strong></td>

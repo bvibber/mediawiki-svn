@@ -171,7 +171,8 @@ function uploadWarning( $warning )
 	  "action=submit" );
 
 	$wgOut->addHTML( "
-<form method=post enctype='multipart/form-data' action=\"{$action}\">
+<form name='uploadwarning' method=post enctype='multipart/form-data'
+action=\"{$action}\">
 <input type=hidden name='wpUploadAffirm' value='1'>
 <input type=hidden name='wpIgnoreWarning' value='1'>
 <input type=hidden name='wpUploadDescription' value=\"{$wpUploadDescription}\">
@@ -217,7 +218,8 @@ function mainUploadForm( $msg )
 
 	$action = wfLocalUrl( $wgLang->specialPage( "Upload" ) );
 	$wgOut->addHTML( "
-<form method=post enctype='multipart/form-data' action=\"{$action}\">
+<form name='upload' method=post enctype='multipart/form-data'
+action=\"{$action}\">
 <table border=0><tr>
 <td align=right>{$fn}:</td><td align=left>
 <input tabindex=1 type='file' name='wpUploadFile' value=\"{$wpUploadFile}\" size=40>

@@ -35,7 +35,7 @@ class DBUnlockForm {
 		  "action=submit" );
 
 		$wgOut->addHTML( "<p>
-<form method=post action=\"{$action}\">
+<form name='unlockdb' method=post action=\"{$action}\">
 <table border=0><tr>
 <td align='right'>
 <input type=checkbox name='wpLockConfirm'>

@@ -39,7 +39,7 @@ class IPBlockForm {
 			$wgOut->addHTML( "<p><font color='red' size='+1'>{$err}</font>\n" );
 		}
 		$wgOut->addHTML( "<p>
-<form method=post action=\"{$action}\">
+<form name='blockip' method=post action=\"{$action}\">
 <table border=0><tr>
 <td align='right'>{$ipa}:</td>
 <td align='left'>
