@@ -630,18 +630,17 @@ void process_command(conn * c, char *command)
 	    } else {
 		it = 0;
 	    }
-	    /*
-	       if (settings.oldest_live && it && 
-	       it->time <= settings.oldest_live) {
-	       dbp->del(dbp,NULL,&dbkey,0);
-	       it = 0;
-	       }
-	       if (it && it->exptime && it->exptime < now) {
-	       printf("deleting expires\n");
-	       dbp->del(dbp,NULL,&dbkey,0);
-	       it = 0;
-	       }
-	     */
+	    if (settings.oldest_live && it &&
+		it->time <= settings.oldest_live) {
+		dbp->del(dbp, NULL, &dbkey, 0);
+		free(it);
+		it = 0;
+	    }
+	    if (it && it->exptime && it->exptime < now) {
+		dbp->del(dbp, NULL, &dbkey, 0);
+		free(it);
+		it = 0;
+	    }
 	    if (it) {
 		stats.get_hits++;
 		it->refcount++;
@@ -700,6 +699,12 @@ void process_command(conn * c, char *command)
 
     if (strcmp(command, "version") == 0) {
 	out_string(c, "VERSION " VERSION);
+	return;
+    }
+
+    if (strcmp(command, "sync") == 0) {
+	dbp->sync(dbp, 0);
+	out_string(c, "OK");
 	return;
     }
 
