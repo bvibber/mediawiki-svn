@@ -1166,7 +1166,7 @@ class WikiPage extends WikiTitle {
 
 		# Page Info
 		if ( !$this->isSpecialPage ) {
-			global $wikiPageInfo , $wikiWhatLinksHere , $wikiLinkedPages , $wikiEditingHistory , $wikiLastChange , $wikiShowDiff , $wikiRequests ;
+			global $wikiPageInfo , $wikiWhatLinksHere , $wikiLinkedPages , $wikiEditingHistory , $wikiLastChangeCologne , $wikiShowDiff , $wikiRequests ;
 			$ret .= "</td></tr><tr><td $bg>" ;
 			$ret .= "<font color=#666666><b>$wikiPageInfo</b></font><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink("special:WhatLinksHere&target=".$this->secureTitle)."\">$wikiWhatLinksHere</a><br>\n" ;
@@ -1178,7 +1178,7 @@ class WikiPage extends WikiTitle {
 			$lc .= ", ".substr ( $this->timestamp , 8 , 2 ) ;
 			$lc .= ":".substr ( $this->timestamp , 10 , 2 ) ;
 			$lc = substr ( strstr ( $lc , ", " ) , 2 ) ;
-			$ret .= str_replace ( '$1' , $lc , $wikiLastChange ) . "<br>\n" ;
+			$ret .= str_replace ( '$1' , $lc , $wikiLastChangeCologne ) . "<br>\n" ;
 			$ret .= str_replace( '$1' , $this->counter , $wikiRequests ) ;
 			}
 
