@@ -29,15 +29,16 @@ include_once( "Version.php" );
 include_once( "{$IP}/Setup.php" );
 $wgTitle = Title::newFromText( "Update script" );
 
+$wgAlterSpecs = array();
 do_revision_updates();
 alter_ipblocks();
 
 #
 # Run ALTER TABLE queries.
 #
-#if ( count( $wgAlterSpecs ) ) {
 	$rconn = mysql_connect( $wgDBserver, $wgDBadminuser, $wgDBadminpassword );
 	mysql_select_db( $wgDBname );
+
 	print "\n";
 	foreach ( $wgAlterSpecs as $table => $specs ) {
 		$sql = "ALTER TABLE $table $specs";
@@ -52,7 +53,6 @@ alter_ipblocks();
 	do_index_update();
 
 	mysql_close( $rconn );
-#}
 
 #
 # Copy files into installation directories
