@@ -28,8 +28,7 @@ class SkinCologneBlue extends Skin {
 
 		$s .= "</td><td class='top' align=right valign=bottom width='100%'>";
 		$s .= $this->sysLinks();
-		$s .= "</td></tr>" ;
-		$s .= "<tr bgcolor=white><td>" ;
+		$s .= "</td></tr><tr><td>";
 
 		$s .= "<font size='-1'><span id='sitesub'>";
 		$s .= wfMsg( "sitesubtitle" ) . "</span></font>";
@@ -64,12 +63,12 @@ class SkinCologneBlue extends Skin {
 		}
 		$s .= "<td class='bottom' align=center valign=top>";
 
-		$s .= $this->makeKnownLink( wfMsg( "mainpage" ), wfMsg( "mainpage" ) )
-		  . " | " . $this->makeKnownLink( wfMsg( "aboutpage" ),
+		$s .= $this->bottomLinks();
+		$s .= "\n<br>" . $this->makeKnownLink( wfMsg( "mainpage" ),
+		  wfMsg( "mainpage" ) ) . " | " . $this->makeKnownLink( wfMsg( "aboutpage" ),
 		  wfMsg( "aboutwikipedia" ) ) . " | " .
 		  $this->searchForm( wfMsg( "qbfind" ) );
 
-		$s .= "\n<br>" . $this->bottomLinks();
 		$s .= "\n<br>" . $this->pageStats();
 
 		$s .= "</td>";
