@@ -69,7 +69,7 @@ class Skin {
 
 	function getUserStyles()
 	{
-		$s = "<style type='text/css' media='screen'><!--\n";
+		$s = "<style type='text/css'><!--\n";
 		$s .= $this->doGetUserStyles();
 		$s .= "//--></style>\n";
 		return $s;
@@ -81,15 +81,14 @@ class Skin {
 
 		$s = "";
 		if ( 1 == $wgUser->getOption( "underline" ) ) {
-			$s .= "a.stub, a.new, a.internal, a.external { " .
-			  "text-decoration: underline; }\n";
+			# Don't override browser settings
 		} else {
+			# Force no underline
 			$s .= "a.stub, a.new, a.internal, a.external { " .
 			  "text-decoration: none; }\n";
 		}
 		if ( 1 == $wgUser->getOption( "highlightbroken" ) ) {
-			$s .= "a.new { color: #CC2200; }\n" .
-			  "#quickbar a.new { color: CC2200; }\n";
+			$s .= "a.new, #quickbar a.new { color: #CC2200; }\n";
 		}
 		if ( 1 == $wgUser->getOption( "justify" ) ) {
 			$s .= "#article { text-align: justify; }\n";
@@ -102,7 +101,7 @@ class Skin {
 		global $wgUser, $wgTitle, $wgNamespaceBackgrounds, $wgOut, $oldid, $redirect, $diff,$action;
 
 		if ( 0 != $wgTitle->getNamespace() ) {
-			$a = array( "bgcolor" => "#FFFFDD" );
+			$a = array( "bgcolor" => "#ffffec" );
 		}
 		else $a = array( "bgcolor" => "#FFFFFF" );
 		if($wgOut->isArticle() && $wgUser->getOption("editondblclick")
@@ -123,7 +122,12 @@ class Skin {
 
 		}
 		if($action=="edit") { # set focus in edit box
-			$a += array("onLoad"=>"document.editform.wpTextbox1.focus()");	
+			$foc = "document.editform.wpTextbox1.focus()";
+			if($a['onload']) {
+				$a['onload'] .= ";$foc";
+			} else {
+				$a['onload'] = $foc;
+			}
 		}
 		return $a;
 	}
@@ -188,7 +192,7 @@ class Skin {
 
 	function doBeforeContent()
 	{
-		global $wgUser, $wgOut, $wgTitle;
+		global $wgUser, $wgOut, $wgTitle, $wgLang;
 		wfProfileIn( "Skin::doBeforeContent" );
 
 		$s = "";
@@ -206,18 +210,24 @@ class Skin {
 		$s .= "\n<div id='content'>\n<div id='topbar'>" .
 		  "<table width='98%' border=0 cellspacing=0><tr>";
 
-		if ( 0 == $qb ) {
+		$shove = ($qb != 0);
+		$left = ($qb == 1 || $qb == 3);
+		if($wgLang->isRTL()) $left = !$left;
+		
+		if ( !$shove ) {
 			$s .= "<td class='top' align=left valign=top rowspan='{$rows}'>" .
 			  $this->logoText() . "</td>";
-		} else if ( 1 == $qb || 3 == $qb ) { # Left
+		} elseif( $left ) {
 			$s .= $this->getQuickbarCompensator( $rows );
 		}
-		$s .= "<td {$borderhack} align=left valign=top>";
+		$l = $wgLang->isRTL() ? "right" : "left";
+		$s .= "<td {$borderhack} align='$l' valign='top'>";
 
 		$s .= $this->topLinks() ;
 		$s .= "<p class='subtitle'>" . $this->pageTitleLinks();
 
-		$s .= "</td>\n<td {$borderhack} valign=top align=right nowrap>";
+		$r = $wgLang->isRTL() ? "left" : "right";
+		$s .= "</td>\n<td {$borderhack} valign='top' align='$r' nowrap>";
 		$s .= $this->nameAndLogin();
 		$s .= "\n<br>" . $this->searchForm() . "</td>";
 
@@ -225,14 +235,15 @@ class Skin {
 			$s .= "</tr>\n<tr><td class='top' colspan=\"2\">$langlinks</td>";
 		}
 
-		if ( 2 == $qb ) { # Right
+		if ( $shove && !$left ) { # Right
 			$s .= $this->getQuickbarCompensator( $rows );
 		}
 		$s .= "</tr></table>\n</div>\n";
 		$s .= "\n<div id='article'>";
 
 		$s .= $this->pageTitle();
-		$s .= $this->pageSubtitle() . "\n<p>";
+		$s .= $this->pageSubtitle() ;
+		$s .= "\n<p>";
 		wfProfileOut();
 		return $s;
 	}
@@ -267,7 +278,7 @@ class Skin {
 
 	function doAfterContent()
 	{
-		global $wgUser, $wgOut;
+		global $wgUser, $wgOut, $wgLang;
 		wfProfileIn( "Skin::doAfterContent" );
 
 		$s = "\n</div><br clear=all>\n";
@@ -276,10 +287,15 @@ class Skin {
 		$s .= "<table width='98%' border=0 cellspacing=0><tr>";
 
 		$qb = $this->qbSetting();
-		if ( 1 == $qb || 3 == $qb ) { # Left
+		$shove = ($qb != 0);
+		$left = ($qb == 1 || $qb == 3);
+		if($wgLang->isRTL()) $left = !$left;
+
+		if ( $shove && $left ) { # Left
 			$s .= $this->getQuickbarCompensator();
 		}
-		$s .= "<td class='bottom' align=left valign=top>";
+		$l = $wgLang->isRTL() ? "right" : "left";
+		$s .= "<td class='bottom' align='$l' valign='top'>";
 
 		$s .= $this->bottomLinks();
 		$s .= "\n<br>" . $this->mainPageLink()
@@ -289,7 +305,7 @@ class Skin {
 		  . "<br>" . $this->pageStats();
 
 		$s .= "</td>";
-		if ( 2 == $qb ) { # Right
+		if ( $shove && !$left ) { # Right
 			$s .= $this->getQuickbarCompensator();
 		}
 		$s .= "</tr></table>\n</div>\n</div>\n";
@@ -348,9 +364,10 @@ class Skin {
 
 	function pageTitle()
 	{
-		global $wgOut, $wgTitle;
+		global $wgOut, $wgTitle, $wgUser;
 
 		$s = "<h1 class='pagetitle'>" . $wgOut->getPageTitle() . "</h1>";
+		if($wgUser->getOption("editsectiononrightclick") && $wgTitle->userCanEdit()) { $s=$this->editSectionScript(0,$s);}
 		return $s;
 	}
 
@@ -464,7 +481,8 @@ class Skin {
 			$s .=  $sep . $this->editThisPage()
 			  . $sep . $this->historyLink();
 		}
-		$s .= $sep . $this->specialPagesList();
+		# Many people don't like this dropdown box
+		#$s .= $sep . $this->specialPagesList();
 
 		return $s;
 	}
@@ -556,9 +574,10 @@ class Skin {
 		global $wgOut, $wgTitle, $wgUser, $action, $wgLang;
 		global $wpPreview;
 		wfProfileIn( "Skin::quickBar" );
+		$tns=$wgTitle->getNamespace();
 
 		$s = "\n<div id='quickbar'>";
-		$s .= "\n" . $this->logoText() . "\n<hr>";
+		$s .= "\n" . $this->logoText() . "\n<hr class='sep'>";
 
 		$sep = "\n<br>";
 		$s .= $this->mainPageLink()
@@ -572,16 +591,14 @@ class Skin {
 		}
 		// only show watchlist link if logged in
                 if ( wfMsg ( "currentevents" ) != "-" ) $s .= $sep . $this->makeKnownLink( wfMsg( "currentevents" ), "" ) ;
-                $s .= "\n<hr>";
+                $s .= "\n<br><hr class='sep'>";
 		$articleExists = $wgTitle->getArticleId();
 		if ( $wgOut->isArticle() || $action =="edit" || $action =="history" || $wpPreview) {
 						
 			if($wgOut->isArticle()) {
 				$s .= "<strong>" . $this->editThisPage() . "</strong>";
 			} else { # backlink to the article in edit or history mode
-
 				if($articleExists){ # no backlink if no article
-					$tns=$wgTitle->getNamespace();		
 					switch($tns) {
 						case 0:
 						$text = wfMsg("articlepage");
@@ -624,6 +641,11 @@ class Skin {
 			
 			}
 			
+
+			if( $tns%2 && $action!="edit" && !$wpPreview) {
+				$s.="<br>".$this->makeKnownLink($wgTitle->getPrefixedText(),wfMsg("postcomment"),"action=edit&section=new");
+			}
+
 			/*
 			watching could cause problems in edit mode:
 			if user edits article, then loads "watch this article" in background and then saves
@@ -664,7 +686,7 @@ class Skin {
 					}
 				}
 			}
-			$s .= "\n<hr>";
+			$s .= "\n<br><hr class='sep'>";
 		} 
 		
 		if ( 0 != $wgUser->getID() ) {
@@ -673,7 +695,7 @@ class Skin {
 		$s .= $this->specialLink( "specialpages" )
 		  . $sep . $this->bugReportsLink();
 
-		$s .= "\n</div>\n";
+		$s .= "\n<br></div>\n";
 		wfProfileOut();
 		return $s;
 	}
@@ -913,6 +935,7 @@ class Skin {
 			}
 
 		$first = true;
+		if($wgLang->isRTL()) $s .= "<span dir='LTR'>";
 		foreach( $a as $l ) {
 			if ( ! $first ) { $s .= " | "; }
 			$first = false;
@@ -925,6 +948,7 @@ class Skin {
 			$style = $this->getExternalLinkAttributes( $l, $text );
 			$s .= "<a href=\"{$url}\"{$style}>{$text}</a>";
 		}
+		if($wgLang->isRTL()) $s .= "</span>";
 		return $s;
 	}
 
@@ -1684,28 +1708,29 @@ class Skin {
 	}
 
 	function tocTable($toc) {
-
-/* does not auto-expand, use table for now
-	return "
-	<div><div style=\"border-width:1px;background-color:#f3f3ff;border-color:#8888aa;border-style:solid;padding:1em;padding-bottom:1em;\">
-	<b>".wfMsg("toc")."</b><P>
-	$toc</div></div>";
-*/
+	// note to CSS fanatics: putting this in a div does not works -- div won't auto-expand
 	return
-	"<table border=\"0\" bgcolor=\"#8888aa\" cellpadding=\"0\" cellspacing=\"1\"><tr><td>\n" .
-	"<table border=\"0\" bgcolor=\"#f3f3ff\" CELLPADDING=5><tr><td>\n".
+	"<p><table border=\"0\" id=\"toc\"><tr><td align=\"center\">\n".
 	"<b>".wfMsg("toc")."</b>" .
 	" <script type='text/javascript'>showTocToggle(\"" . wfMsg("showtoc") . "\",\"" . wfMsg("hidetoc") . "\")</script>" .
-	"</td></tr><tr id='tocinside'><td>\n".
-	$toc."</td></tr></table></td></tr></table><P>\n";
+	"</td></tr><tr id='tocinside'><td align=\"left\">\n".
+	$toc."</td></tr></table><P>\n";
+	}
+
+	# These two do not check for permissions: check $wgTitle->userCanEdit before calling them
+	function editSectionScript($section,$head) {
+
+		global $wgTitle,$wgUser,$oldid;
+		if($oldid) return $head;
+		$url = wfLocalUrlE($wgTitle->getPrefixedText(),"action=edit&section=$section");
+		return "<span onContextMenu='document.location=\"".$url."\";return false;'>{$head}</span>";
 	}
 
 	function editSectionLink($section) {
 
 		global $wgTitle,$wgUser,$oldid;
-		if($wgTitle->isProtected() && !$wgUser->isSysop()) return "";
 		if($oldid) return "";
-		$editurl="&section={$section}";		
+		$editurl="&section={$section}";
 		$url=$this->makeKnownLink($wgTitle->getPrefixedText(),wfMsg("editsection"),"action=edit".$editurl);
 		return "<div style=\"float:right;margin-left:5px;\"><small>[".$url."]</small></div>";
 
