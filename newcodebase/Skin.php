@@ -259,7 +259,7 @@ class Skin {
 	{
 		global $wgOut, $wgTitle, $oldid, $action;
 
-		if ( "history" == $action ) { $q = "action=history&amp;"; }
+		if ( "history" == $action ) { $q = "action=history&"; }
 		else { $q = ""; }
 
 		$s = $this->makeKnownLink( $wgTitle->getPrefixedText(),
@@ -501,9 +501,9 @@ class Skin {
 			$t = wfMsg( "editthispage" );
 			$oid = $red = "";
 
-			if ( $redirect ) { $red = "&amp;redirect={$redirect}"; }
+			if ( $redirect ) { $red = "&redirect={$redirect}"; }
 			if ( $oldid && ! isset( $diff ) ) {
-				$oid = "&amp;oldid={$oldid}";
+				$oid = "&oldid={$oldid}";
 			}
 			$s = $this->makeKnownLink( $n, $t, "action=edit{$oid}{$red}" );
 		} else {
@@ -906,7 +906,7 @@ class Skin {
 
 		if ( $oid && $this->lastline ) {
 			$ret = preg_replace( "/!OLDID!([0-9]+)!/", $this->makeKnownLink(
-			  $artname, $last, "diff=\\1&amp;oldid={$oid}" ), $this->lastline );
+			  $artname, $last, "diff=\\1&oldid={$oid}" ), $this->lastline );
 		} else {
 			$ret = "";
 		}
@@ -922,7 +922,7 @@ class Skin {
 		$s = "<li>";
 		if ( $oid ) {
 			$curlink = $this->makeKnownLink( $artname, $cur,
-			  "diff=0&amp;oldid={$oid}" );
+			  "diff=0&oldid={$oid}" );
 		} else {
 			$curlink = $cur;
 		}
@@ -961,7 +961,7 @@ class Skin {
 		}
 		$hlink = $this->makeKnownLink( $t, wfMsg( "hist" ), "action=history" );
 		if ( $isnew ) { $dlink = wfMsg( "diff" ); }
-		else { $dlink = $this->makeKnownLink( $t, wfMsg( "diff" ), "diff=0&amp;oldid=0" ); }
+		else { $dlink = $this->makeKnownLink( $t, wfMsg( "diff" ), "diff=0&oldid=0" ); }
 
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }
@@ -1004,10 +1004,10 @@ class Skin {
 		} else {
 			$url = wfImageArchiveUrl( $img );
 			$rlink = $this->makeKnownLink( $wgTitle->getPrefixedText(),
-			  wfMsg( "revertimg" ), "action=revert&amp;oldimage=" .
+			  wfMsg( "revertimg" ), "action=revert&oldimage=" .
 			  urlencode( $img ) );
 			$dlink = $this->makeKnownLink( $wgTitle->getPrefixedText(),
-			  $del, "action=delete&amp;oldimage=" . urlencode( $img ) );
+			  $del, "action=delete&oldimage=" . urlencode( $img ) );
 		}
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }

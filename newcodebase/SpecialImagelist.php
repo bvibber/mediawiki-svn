@@ -65,7 +65,7 @@ function wfSpecialImagelist()
 		$first = false;
 
 		$fill .= $sk->makeKnownLink( $here, "{$num}",
-		  "sort=bysize&amp;limit={$num}" );
+		  "sort=bysize&limit={$num}" );
 	}
 	$text = str_replace( "$1", $fill, wfMsg( "showlast" ) );
 	$text = str_replace( "$2", $bysize, $text );
