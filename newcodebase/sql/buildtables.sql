@@ -37,7 +37,7 @@ CREATE TABLE linked (
   linked_from varchar(255) binary NOT NULL default '',
   KEY linked_to (linked_to),
   KEY linked_from (linked_from)
-) TYPE=MyISAM;
+) TYPE=MyISAM PACK_KEYS=1;
 
 #
 # Table structure for table 'old'
@@ -68,7 +68,7 @@ CREATE TABLE unlinked (
   unlinked_to varchar(255) binary NOT NULL default '',
   KEY unlinked_from (unlinked_from),
   KEY unlinked_to (unlinked_to)
-) TYPE=MyISAM;
+) TYPE=MyISAM PACK_KEYS=1;
 
 #
 # Table structure for table 'user'
@@ -102,5 +102,5 @@ CREATE TABLE ipblocks (
   ipb_reason mediumtext default '',
   INDEX ipb_address (ipb_address),
   INDEX ipb_user (ipb_user)
-) TYPE=MyISAM;
+) TYPE=MyISAM PACK_KEYS=1;
 
