@@ -1478,13 +1478,15 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 	/* private */ function viewUpdates()
 	{
 		global $wgDeferredUpdateList, $wgTitle;
-
+		
 		if ( 0 != $this->getID() ) {
-			$u = new ViewCountUpdate( $this->getID() );
-			array_push( $wgDeferredUpdateList, $u );
-			$u = new SiteStatsUpdate( 1, 0, 0 );
-			array_push( $wgDeferredUpdateList, $u );
-
+			global $wgDisableCounters;
+			if( !$wgDisableCounters ) {
+				$u = new ViewCountUpdate( $this->getID() );
+				array_push( $wgDeferredUpdateList, $u );
+				$u = new SiteStatsUpdate( 1, 0, 0 );
+				array_push( $wgDeferredUpdateList, $u );
+			}
 			$u = new UserTalkUpdate( 0, $wgTitle->getNamespace(),
 			  $wgTitle->getDBkey() );
 			array_push( $wgDeferredUpdateList, $u );
