@@ -844,13 +844,13 @@ define('NBSP', "\xA0");         // iso-8859-x non-breaking space.
 class _HWLDF_WordAccumulator {
     function _HWLDF_WordAccumulator () {
         $this->_lines = array();
-        $this->_line = false;
-        $this->_group = false;
+        $this->_line = '';
+        $this->_group = '';
         $this->_tag = '';
     }
 
     function _flushGroup ($new_tag) {
-        if ($this->_group !== false) {
+        if ($this->_group !== '') {
 	  if ($this->_tag == 'mark') 
             $this->_line .= "<font color=\"red\">$this->_group</font>";
 	  else
