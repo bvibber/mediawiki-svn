@@ -38,7 +38,6 @@ bool usr_exists(std::string const& usr)
 
 void add_usr(std::string const& usr, std::string const& pass)
 {
-	std::cerr << "add_usr: usr=["<<usr<<"]\n";
 	if (!usr_exists(usr))
 		SMI(smcfg::cfg)->addlist("/core/users", usr);
 	SMI(smcfg::cfg)->storestr(b::str(format("/core/users/%s/password") % usr), pass);

@@ -528,7 +528,6 @@ HDL(cfg_mc_show_parser_cache) {
 			invalids = SMI(smmc::mc)->get(dbname + ":stats:pcache_miss_invalid");
 			expireds = SMI(smmc::mc)->get(dbname + ":stats:pcache_miss_expired");
 			absents = SMI(smmc::mc)->get(dbname + ":stats:pcache_miss_absent");
-			std::cerr << "hits: ["<<hits<<"] invalid: ["<<invalids<<"] expired: ["<<expireds<<"] absent: ["<<absents<<"]\n";
 			hits = b::lexical_cast<int>(hitss);
 			invalid = b::lexical_cast<int>(invalids);
 			expired = b::lexical_cast<int>(expireds);

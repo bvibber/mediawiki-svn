@@ -5,6 +5,7 @@
 #include "smstdinc.hxx"
 #include "smthr.hxx"
 #include "smtmr.hxx"
+#include "smlog.hxx"
 
 #undef unix
 #undef bsd
@@ -102,7 +103,6 @@ private:
 		if (!rdbuf.empty()) return 0;
 		rdbuf.resize(maxrd);
 		int i = read(s, &rdbuf[0], maxrd);
-		std::cerr << "_need_data: read " << i << " bytes\n";
 		if (i == 0) throw scktcls();
 		else if (i < 0) {
 			if (errno == EAGAIN || errno == EWOULDBLOCK)
@@ -295,7 +295,9 @@ public:
 		}
 		int i = select(m, &rfds, &wfds, NULL, nextevt ? &tv : NULL);
 		if (i < 0) {
-			std::cerr << "select error: " << std::strerror(errno);
+			SMI(smlog::log)->logmsg(0, b::io::str(
+							b::format("select() error: %d/%s")
+							% errno % std::strerror(errno)));
 			return;
 		}
 		std::map<int,srec> cm = fds;
@@ -444,7 +446,6 @@ public:
 				return true;
 			default:	
 				// ???
-				std::cerr << "i don't understand option code " << int(c) << "\n";
 				stt = nrml;
 				stt = nrml; 
 				break;

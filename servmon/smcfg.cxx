@@ -1,6 +1,7 @@
 /* @(#) $Header$ */
 #include "smstdinc.hxx"
 #include "smcfg.hxx"
+#include "smlog.hxx"
 
 namespace smcfg {
 
@@ -29,23 +30,19 @@ struct mlfrmcfg : std::runtime_error {
 };
 
 void wrtchar(int f, char c) {
-	std::cerr << "writing a char: "<<int(c)<<"\n";
 	flthr(write(f, &c, 1), shrtwr);
 }
 
 void wrtint(int f, uint32_t i) {
-	std::cerr << "writing a int: "<<i<<"\n";
 	flthr(write(f, (char *)&i, sizeof i), shrtwr);
 }
 
 void wrtstr(int f, str s) {
 	wrtint(f, s.size());
-	std::cerr<<"writing a str: ["<<s<<"]\n";
 	flthr(write(f, s.data(), s.size()), shrtwr);
 }
 
 void wrtbool(int f, bool b) {
-	std::cerr<<"writing a bool: "<<b<<"\n";
 	uint32_t i = b;
 	flthr(write(f, (char *)&i, sizeof i), shrtwr);
 }
@@ -89,11 +86,10 @@ cfg::cfg(void)
 try {
 	std::ifstream f(cfgfile.c_str());
 	if (!f) {
-		std::cerr << "warning: can't open config file " <<
-			cfgfile << ": " << std::strerror(errno) << "\n";
+		SMI(smlog::log)->logmsg(0, b::io::str(b::format("Warning: can't open config file %s: %s")
+						      % cfgfile % strerror(errno)));
 		return;
 	}
-	std::cerr << "reading cfg\n";
 	for (;;) {
 		char type;
 		try {
@@ -102,31 +98,24 @@ try {
 			return;
 		}
 		std::string key = rdstr(f);
-		std::cerr << "key: "<<key<<"\n";
 		
 		switch (type) {
 		case tystr: {
-			std::cerr << "str\n";
 			strvals[key] = rdstr(f);
 			break;
 		}
 		case tyint: {
-			std::cerr << "int\n";
 			intvals[key] = rdint(f);
 			break;
 		}
 		case tybool: {
-			std::cerr << "bool\n";
 			boolvals[key] = rdbool(f);
 			break;
 		}
 		case tylist: {
-			std::cerr << "list\n";
 			uint32_t len = rdint(f);
-			std::cerr << "with "<<len<<"elements\n";
 			while (len--) {
 				std::string e = rdstr(f);
-				std::cerr << "\telement: "<<e<<"\n";
 				listvals[key].insert(e);
 			}
 			break;
@@ -134,28 +123,26 @@ try {
 		}
 	}
 } catch (shrtrd&) {
-	std::cerr << "short read in config file\n";
+	SMI(smlog::log)->logmsg(0, "Short read in configuration file");
 	std::exit(1);
 } catch (mlfrmcfg& e) {
-	std::cerr << e.what() << '\n';
+	SMI(smlog::log)->logmsg(0, e.what());
 	std::exit(1);
 }
 
 void 
 cfg::wrcfg(void)
 try {
-	std::cerr << "writing cfg\n";
 	int f = open(cfgtemp.c_str(), O_CREAT|O_NOFOLLOW|O_TRUNC|O_WRONLY,
 				S_IRUSR|S_IWUSR);
 	if (f < 0) {
-		std::cerr << "warning: could not write config file: " <<
-			std::strerror(errno) << "\n";
+		SMI(smlog::log)->logmsg(0, b::io::str(b::format("Warning: could not write configuration file %s: %s")
+						   % cfgtemp % strerror(errno)));
 		return;
 	}
 	for(std::map<std::string,std::string>::const_iterator it = strvals.begin(),
 			end = strvals.end(); it != end; ++it)
 	{
-		std::cerr << "str: ["<<it->first<<"]=["<<it->second<<"]\n";
 		wrtchar(f, tystr);
 		wrtstr(f, it->first);
 		wrtstr(f, it->second);
@@ -163,7 +150,6 @@ try {
 	for(std::map<std::string,int>::const_iterator it = intvals.begin(),
 			end = intvals.end(); it != end; ++it)
 	{
-		std::cerr << "int: ["<<it->first<<"]=["<<it->second<<"]\n";
 		wrtchar(f, tyint);
 		wrtstr(f, it->first);
 		wrtint(f, it->second);
@@ -171,7 +157,6 @@ try {
 	for(std::map<std::string,bool>::const_iterator it = boolvals.begin(),
 			end = boolvals.end(); it != end; ++it)
 	{
-		std::cerr << "bool: ["<<it->first<<"]=["<<it->second<<"]\n";
 		wrtchar(f, tybool);
 		wrtstr(f, it->first);
 		wrtbool(f, it->second);
@@ -179,47 +164,46 @@ try {
 	for (std::map<std::string, std::set<std::string> >::const_iterator it = listvals.begin(),
 			end = listvals.end(); it != end; ++it)
 	{
-		std::cerr << "list: ["<<it->first<<"]\n";
 		wrtchar(f, tylist);
 		wrtstr(f, it->first);
 		wrtint(f, it->second.size());
 		for (std::set<std::string>::const_iterator jt = it->second.begin(),
 				jend = it->second.end(); jt != jend; ++jt)
 		{
-			std::cerr << "list item: ["<<*jt<<"]\n";
 			wrtstr(f, *jt);
 		}
 	}
 
 	close(f);
 	if (std::remove(cfgfile.c_str()) < 0) {
-		std::cerr << "unlinking cfg: " << std::strerror(errno) << "\n";
+		SMI(smlog::log)->logmsg(0, b::io::str(
+						b::format("Warning: removing old configuration file: %s")
+						% strerror(errno)));
 	}
 	if (std::rename(cfgtemp.c_str(), cfgfile.c_str()) < 0) {
-		std::cerr << "renaming cfg: " << std::strerror(errno) << "\n";
+		SMI(smlog::log)->logmsg(0, b::io::str(
+						b::format("Error renaming configuration file: %s")
+						% strerror(errno)));
 		return;
 	}
 } catch (shrtwr&) {
-	std::cerr << "short write in configuration file\n";
+	SMI(smlog::log)->logmsg(0, "Short write in configuration file");
 }
 
 
 void cfg::storestr(std::string const& key, std::string const& value)
 {
 	strvals[key] = value;
-	std::cerr << "storestr: ["<<key<<"]=["<<value<<"]\n";
 	wrcfg();
 }
 void cfg::storeint(std::string const& key, int value)
 {
 	intvals[key] = value;
-	std::cerr << "storeint: ["<<key<<"]=["<<value<<"]\n";
 	wrcfg();
 }
 void cfg::storebool(std::string const& key, bool value)
 {
 	boolvals[key] = value;
-	std::cerr << "storebool: ["<<key<<"]=["<<value<<"]\n";
 	wrcfg();
 }
 

@@ -48,7 +48,6 @@ mc::get(str key)
 		throw nokey();
 	char const *s = static_cast<char const *>(p);
 	std::string r (s, s + len);
-	std::cerr << "mc::get: r=["<<r<<"]\n";
 	std::free(p);
 	return r;
 }

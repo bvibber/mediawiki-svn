@@ -312,7 +312,6 @@ public:
 	}
 
 	virtual ~trmsrv(void) {
-		std::cerr << "trmsrv dtor\n";
 	}
 	void stb_nrml(void) {
 		for (int i = 0; i < 32; ++i)
@@ -356,7 +355,6 @@ public:
 		stb_nrml();
 	}
 	void gd_cb(smnet::inetclntp, u_char c) {
-		std::cerr << "read data: [" << c << "]\n";
 		if (!binds[c](c))
 			disconnect();
 		if (destroyme) delete this;
@@ -389,7 +387,6 @@ public:
 		return true;
 	}
 	bool prc_nl(char) {
-		std::cerr << "read: [" << ln << "]\n";
 		if (rlip) {
 			stb_nrml();
 			rlip = false;
@@ -481,7 +478,6 @@ public:
 		int wild;
 		for (;;) {
 			word = smutl::car(l2);
-			std::cerr<<"in loop: word now ["<<word<<"]\n";
 			/* if we're at the last word, and they want matches for a partial
 			   command, break now */
 			matches = here->find_matches(word, wild);
@@ -502,10 +498,8 @@ public:
 			word = "";
 			here = matches[0];
 		}
-		std::cerr << "word: ["<<word<<"] showall: "<<showall<<"\n";
 		for (typename std::vector<handler_node_t *>::iterator it = matches.begin(),
 			 end = matches.end(); it != end; ++it) {
-			std::cerr << "name: ["<<(**it).name<<"]\n";
 			if (showall || (**it).name.substr(0,word.size())==word)
 				wrtln(b::str(format("  %s %s") % 
 					     boost::io::group(std::left, std::setw(20), (**it).name)

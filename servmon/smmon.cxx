@@ -6,6 +6,7 @@
 #include "smcfg.hxx"
 #include "smirc.hxx"
 #include "smalrm.hxx"
+#include "smlog.hxx"
 
 /* this should be in smstdinc, but i'd rather not pollute the entire
    namespace with C crud */
@@ -69,10 +70,18 @@ public:
 				res = *vars->val.integer;
 			}
 		} else {
-			if (status == STAT_SUCCESS)
-				std::cerr << snmp_errstring(response->errstat);
-			else
-				snmp_sess_perror("snmpget", ss);
+			if (status == STAT_SUCCESS) {
+				std::string error = "SNMP error for host " + hostport + ": ";
+				error += snmp_errstring(response->errstat);
+				SMI(smlog::log)->logmsg(0, error);
+			} else {
+				std::string error = "SNMP error for host " + hostport + ": ";
+				char           *err;
+				snmp_error(ss, NULL, NULL, &err);
+				error += err;
+				SNMP_FREE(err);
+				SMI(smlog::log)->logmsg(0, error);
+			}
 		}
 		snmp_free_pdu(response);
 		snmp_close(ss);
@@ -208,7 +217,7 @@ cfg::checker::chk1(void)
 			it->second->check();
 		}
 	} catch (b::lock_error&) {
-		std::cerr << "warning: could not lock mutex for check\n";
+		SMI(smlog::log)->logmsg(0, "Warning: could not lock mutex for check running.  Consider increasing check interval.");
 		return;
 	}
 }
@@ -328,7 +337,7 @@ cfg::state_transition(str serv, cfg::server::state_t oldstate, cfg::server::stat
 		newstatename = server::statestring(newstate);
 	std::string s = b::io::str(b::format("%% State transition for host \002%s\002: old state \002%s\002, new state \002%s\002")
 				   % serv % oldstatename % newstatename);
-	SMI(smirc::cfg)->conn()->msg(10, s);
+	SMI(smlog::log)->logmsg(10, s);
 }
 
 void
@@ -355,7 +364,7 @@ cfg::mysqlserver::getqueries(void)
 	try {
 		mysqlclient::resultset res = client->query("SHOW STATUS LIKE 'QUESTIONS'");
 		if (res.size() < 1) {
-			std::cerr << "oh no, didn't get a result\n";
+			SMI(smlog::log)->debug(smlog::mysql_monitoring, "Did not get a result for SHOW STATUS command on " + name);
 			queries = 0;
 		} else {
 			try {
@@ -386,7 +395,7 @@ cfg::mysqlserver::getnumprocesses(void)
 	try {
 		res = client->query("SHOW PROCESSLIST");
 	} catch (mysqlerr& e) {
-		std::cerr << "mysql connection error: " << e.what() << "\n";
+		SMI(smlog::log)->debug(smlog::mysql_monitoring, "MySQL connection error for " + name + ": " + e.what());
 		markdown();
 		return 0;
 	}
@@ -424,7 +433,7 @@ cfg::mysqlserver::getmasterpos(void)
 	try {
 		r = client->query("SELECT MAX(rc_timestamp) AS ts FROM enwiki.recentchanges");
 	} catch (mysqlerr& e) {
-		std::cerr << "mysql error: " << e.what() << "\n";
+		SMI(smlog::log)->debug(smlog::mysql_monitoring, "MySQL query failed for replication lag on " + name + ": " + e.what());
 		return 0;
 	}
 	if (r.size() < 1) return 0;
@@ -439,7 +448,7 @@ cfg::mysqlserver::getmypos(void)
 	try {
 		r = client->query("SELECT MAX(rc_timestamp) AS ts FROM enwiki.recentchanges");
 	} catch (mysqlerr& e) {
-		std::cerr << "mysql error: " << e.what() << "\n";
+		SMI(smlog::log)->debug(smlog::mysql_monitoring, "MySQL query failed for replication lag on " + name + ": " + e.what());
 		markdown();
 		return 0;
 	}
@@ -452,7 +461,9 @@ std::time_t
 cfg::mysqlserver::getreplag(void)
 {
 	std::time_t masterpos = getmasterpos(), mypos = getmypos();
-	std::cerr << "master pos: " << masterpos << " mypos: " << mypos;
+	SMI(smlog::log)->debug(smlog::mysql_monitoring,
+			       b::io::str(b::format("MySQL replication lag for %s: masterpos=%d mypos=%d")
+					  % name % masterpos % mypos));
 	if (!masterpos || !mypos) return 0;
 	return masterpos - mypos;
 }

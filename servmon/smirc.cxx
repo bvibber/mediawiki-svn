@@ -5,6 +5,7 @@
 #include "smcfg.hxx"
 #include "smnet.hxx"
 #include "smtrm.hxx"
+#include "smlog.hxx"
 
 namespace smirc {
 
@@ -111,7 +112,6 @@ namespace smirc {
 void
 ircclnt::nick(str pnick_)
 {
-	std::cerr << "nick: ["<<pnick_<<"]\n";
 	pnick = pnick_;
 }
 
@@ -128,17 +128,16 @@ ircclnt::rdline(strr l) {
 	try {
 		for (;;) {
 			c = sckt->rd1();
-			std::cerr << "read byte: ["<<c<<"]\n";
 			if (c != '\r' && c != '\n') linebuf += c;
 			else { l = linebuf; linebuf = ""; return true; }
 		}
 	} catch (smnet::wouldblock&) {
 		return false;
 	} catch (smnet::sckterr& e) {
-		std::cerr << "read error: " << e.what();
+		std::string err = "IRC read error: ";
+		SMI(smlog::log)->logmsg(0, err + e.what());
 	}
 	return false;
-	std::cerr << "\n";
 }
 
 void
@@ -150,7 +149,6 @@ ircclnt::connected()
 void
 ircclnt::doregister()
 {
-	std::cout << "registering...\n";
 	sckt->wrt("USER servmon servmon servmon :servmon\r\n");
 	sckt->wrt(b::io::str(b::format("NICK %s\r\n") % pnick));
 }
@@ -192,9 +190,7 @@ ircclnt::cb_privmsg(cbdata& cd)
 	if (cd.args.size() < 2) return;
 	std::string target = cd.args[0];
 	std::string text = cd.args[1];
-	std::cerr << "privmsg to ["<<target<<"] text=["<<text<<"]\n";
 	std::string firstword = smutl::car(text);
-	std::cerr << "firstword: ["<<firstword<<"] mynick: ["<<mynick<<"]\n";
 	replyto = target;
 	if (firstword != mynick && firstword != "servmon")
 		return;
@@ -255,7 +251,7 @@ ircclnt::data_cb(int what)
 void
 ircclnt::parseline(std::string line)
 {
-	std::cerr << "parse line: [" << line << "]\n";
+	SMI(smlog::log)->debug(smlog::irc, "Parse line: [" + line + "]");
 	/* an IRC message has three basic parts: prefix, command and arguments.
 	   the first argument for numerics is the target (i.e. us). */
 	cbdata cbd;
@@ -290,7 +286,7 @@ ircclnt::ircclnt(std::string const& serv, int port)
 	cbs["PING"] = b::bind(&ircclnt::cb_ping, this, _1);
 	cbs["PRIVMSG"] = b::bind(&ircclnt::cb_privmsg, this, _1);
 	pnick = SMI(smcfg::cfg)->fetchstr("/irc/server/"+serv+"/nickname");
-	std::cerr << "ircclnt: connecting to "<<serv<<":"<<port<<"...\n";
+	SMI(smlog::log)->debug(smlog::irc, "ircclnt: connecting to " + serv);
 	sckt = smnet::inetclntp(new smnet::inetclnt);
 	sckt->svc(lexical_cast<std::string>(port));
 	sckt->endpt(serv);
@@ -321,7 +317,9 @@ cfg::initialise(void)
 void
 cfg::chk(void)
 {
-	std::cerr << "checking irc status. cip="<<cip<<" connected="<<connected<<"\n";
+	SMI(smlog::log)->debug(smlog::irc,
+			       b::io::str(b::format("Check IRC status: cip=%d connected=%d")
+					  % cip % connected));
 	if (cip or connected) return; cip = true;
 
 	if (next_server()) {
@@ -333,7 +331,6 @@ cfg::chk(void)
 bool
 cfg::next_server(void)
 {
-	std::cerr << "next_server empty="<<servers.empty()<<"\n";
 	if (servers.empty()) get_servers();
 	if (servers.empty()) return false;
 	return true;
@@ -343,24 +340,19 @@ void
 cfg::get_servers(void)
 {
 	try {
-		std::cerr << "get_servers; servers:\n";
 		servers = SMI(smcfg::cfg)->fetchlist("/irc/servers");
 		srv_iter = servers.begin();
-		for_each(servers.begin(), servers.end(), std::cerr << bl::_1 << "\n");
-		std::cerr << "okay\n";
 	} catch (smcfg::nokey&) {}
 }
 
 void
 cfg::connect(void)
 {
-	std::cerr << "connect\n";
 	if (srv_iter == servers.end()) return;
-	std::cerr << "got some servers\n";
 	try {
 		connection = ircclntp(new ircclnt(*srv_iter, getkeyint(*srv_iter, "port")));
 		connected = true;
-	} catch (smcfg::nokey&) { std::cerr << "exception\n"; }
+	} catch (smcfg::nokey&) {}
 	return;
 }
 
