@@ -47,10 +47,7 @@ class Skin {
 		$wgOut->addLink( "stylesheet", "", "{$wgStyleSheetPath}/{$ss}" );
 	}
 
-	function getHeadScripts()
-	{
-		return "";
-	}
+	function getHeadScripts() { return ""; }
 
 	function getUserStyles()
 	{
@@ -81,7 +78,7 @@ class Skin {
 		global $wgUser, $wgTitle, $wgNamespaceBackgrounds;
 
 		if ( 0 != $wgTitle->getNamespace() ) {
-			$a = array( "bgcolor" => "#DDEEFF" );
+			$a = array( "bgcolor" => "#FFEECC" );
 		}
 		else $a = array( "bgcolor" => "#FFFFFF" );
 		return $a;
@@ -299,7 +296,7 @@ class Skin {
 	{
 		global $wgServer, $wgScript;
 
-		$s = "<form method=get action=\"$wgServer$wgScript\">"
+		$s = "<form method=get action=\"{$wgServer}{$wgScript}\">"
 		  . "<input type=text name=\"search\" size=16 value=\"\">\n"
 		  . "<input type=submit value=\"" . wfMsg( "search" )
 		  . "\"></form>";
