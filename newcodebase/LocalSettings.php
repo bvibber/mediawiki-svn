@@ -6,23 +6,22 @@ include_once( "./DefaultSettings.php" );
 
 # URLs for the wiki site
 #
-$wgServer           = "http://chesoo.fokus.gmd.de/cvswp";
-$wgStyleSheetPath   = "$wgServer/stylesheets";
+$wgServer           = "http://www.myhost.com";
+$wgStyleSheetPath   = "$wgServer/style";
 $wgScript           = "/wiki.phtml";
 $wgRedirectScript	= "/redirect.phtml";
 $wgArticlePath      = "$wgServer$wgScript?title=$1";
-$wgUploadPath       = "$wgServer/images";
-$wgUploadDirectory	= "/var/www/htdocs/cvswp/images";
+$wgUploadPath       = "http://www.myhost.com/upload";
+$wgUploadDirectory	= "/usr/local/apache/htdocs/upload";
 $wgLogo				= "$wgUploadPath/wiki.png";
-$wgLanguageCode = "en";
 
 # MySQL settings
 #
-$wgDBserver         = "localhost";
+$wgDBserver         = "127.0.0.1";
 $wgDBname           = "wikidb";
-$wgDBuser           = "nobody";
-$wgDBpassword       = "suppball";
-$wgDBadminpassword  = "suppball";
+$wgDBuser           = "wikiuser";
+$wgDBpassword       = "userpass";
+$wgDBadminpassword  = "adminpass";
 $wgDBminWordLen		= 3;
 
 # Turn this on during database maintenance
@@ -32,7 +31,7 @@ $wgDBminWordLen		= 3;
 # Turn this on to get HTML debug comments
 #
 # $wgDebugComments	= true;
-# $wgDebugLogFile 	= "/usr/local/apache/htdocs/upload/logfile";
+$wgDebugLogFile 	= "/usr/local/apache/htdocs/upload/logfile";
 
 # Which interwiki prefix represents _this_ wiki?  This
 # only needs to be set when installing the software on
