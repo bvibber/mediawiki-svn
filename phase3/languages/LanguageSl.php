@@ -6,6 +6,7 @@
 #         1.00.10 XJamRastafire 2003-11-03 |NOT COMPLETE
 # ______________________________________________________
 #         1.00.20 XJamRastafire 2003-11-05 |    COMPLETE
+#         1.00.30 romanm        2003-11-07 |    minor changes
 #
 #
 
@@ -197,20 +198,14 @@ include_once( "LanguageUtf8.php" );
 "redirectedfrom"        => "(Preusmerjeno iz $1)",
 "lastmodified"	        => "Zadnja sprememba $1.",
 "viewcount"		=> "To stran so pogledali $1 krat.",
-"gnunote" => "Vso besedilo je na razpolago pod pogoji <a class=internal
-
-href='/wiki/GNU_FDL'>GNU licence proste dokumentacije</a>.",
+"gnunote" => "Vse besedilo je na razpolago pod pogoji <a class=internal href='/wiki/GNU_FDL'>GNU licence proste dokumentacije</a>.",
 "printsubtitle"         => "(Iz http://sl.wikipedia.org)",
 "protectedpage"         => "Zaščitena stran",
 "administrators"        => "Wikipedija:Administratorji",
 "sysoptitle"	        => "Zahtevan dostop sistemskega operaterja",
-"sysoptext"		=> "To dejanje, ki ste ga zahtevali, lahko izvedejo le uporabniki s
-
-\"sysop\" statusom. Glej še $1.",
+"sysoptext"		=> "To dejanje, ki ste ga zahtevali, lahko izvedejo le uporabniki s statusom \"sysop\". Glej še $1.",
 "developertitle" => "Zahtevan dostop razvijalca",
-"developertext"	=> "To dejanje, ki ste ga zahtevali, lahko izvedejo le uporabniki z
-
-\"razvijalec\" statusom. Glej še $1.",
+"developertext"	=> "To dejanje, ki ste ga zahtevali, lahko izvedejo le uporabniki s statusom \"razvijalec\". Glej še $1.",
 "nbytes"		=> "$1 bitov",
 "go"			=> "Pojdi",
 "ok"			=> "V redu",
@@ -249,18 +244,10 @@ MySQL je vrnil napako \"<tt>$3: $4</tt>\".",
 "nodb"			=> "ne morem izbrati podatkovne baze $1",
 "readonly"		=> "Podatkovna baza je zaklenjena",
 "enterlockreason" => "Vnesi razlog za zastoj, skupaj z oceno, kdaj bo zastoj odpravljen",
-"readonlytext"	=> "Podatkovna baza Wikipedije je trenutno zaklenjena za nove vnose in
-
-nove spremembe, verjetno zaradi njenega tekočega vzdrževanja. Kmalu po tem bo spet v
-
-običajnem stanju.
+"readonlytext"	=> "Podatkovna baza Wikipedije je trenutno zaklenjena za nove vnose in nove spremembe, verjetno zaradi njenega tekočega vzdrževanja. Kmalu po tem bo spet v običajnem stanju.
 Administrator, ki jo je zaklenil je ponudil naslednjo razlago:
 <p>$1",
-"missingarticle" => "Podatkovna baza ni našla besedila strani \"$1\", ki bi ga morala. To ni napaka
-
-podatkovne baze, ampak najverjetneje hrošč v programju. Prosim sporočite to administratorju in
-
-navedite zapisek URL-ja.",
+"missingarticle" => "Podatkovna baza ni našla besedila strani \"$1\", ki bi ga morala. To ni napaka podatkovne baze, ampak najverjetneje hrošč v programju. Prosim sporočite to administratorju in navedite zapisek URL-ja.",
 "internalerror"         => "Notranja napaka",
 "filecopyerror"         => "Ne morem prepisati datoteke \"$1\" v \"$2\".",
 "filerenameerror"       => "Ne morem preimenovati datoteke \"$1\" v \"$2\".",
@@ -269,26 +256,18 @@ navedite zapisek URL-ja.",
 "unexpected"	        => "Nepričakovana vrednost: \"$1\"=\"$2\".",
 "formerror"		=> "Napaka: ne morem predložiti oblike",
 "badarticleerror"       => "Tega dejanja ne morem izvesti na tej strani.",
-"cannotdelete"	        => "Ne morem zbrisati navedene strani ali slike. (Lahko da jo je zbrisal
-
-že nekdo drug.)",
+"cannotdelete"	        => "Ne morem zbrisati navedene strani ali slike. (Lahko da jo je zbrisal že nekdo drug.)",
 "badtitle"		=> "Slab naslov",
-"badtitletext"	        => "Naveden naslov strani je neveljaven, prazen ali nepravilno povezan
-
-naslov med drugimi jeziki ali med drugimi wikijevimi projekti.",
+"badtitletext"	        => "Naveden naslov strani je neveljaven, prazen ali nepravilno povezan naslov med drugimi jeziki ali med drugimi wikijevimi projekti.",
 "perfdisabled"          => "To je posneta kopija $1:",
 
 # Login and logout pages
 #
 "logouttitle"	        => "Izpis uporabnika",
 "logouttext"	        => "Sedaj niste vpisani.
-Lahko nadaljujete z uporabo Wikipedije nepodpisani, ali pa se lahko ponovno vpišete kot isti ali
+Lahko nadaljujete z uporabo Wikipedije nepodpisani, ali pa se lahko ponovno vpišete kot isti ali drug uporabnik.\n",
 
-drug uporabnik.\n",
-
-"welcomecreation"       => "<h2>Pozdravljeni, $1!</h2><p>Ustvarili smo vaš račun. Ne pozabite
-
-si ponastaviti vaših nastavitev Wikipedije.",
+"welcomecreation"       => "<h2>Pozdravljeni, $1!</h2><p>Ustvarili smo vaš račun. Ne pozabite si ponastaviti vaših nastavitev Wikipedije.",
 
 "loginpagetitle"        => "Vpis uporabnika",
 "yourname"		=> "Vaše uporabniško ime",
@@ -299,12 +278,8 @@ si ponastaviti vaših nastavitev Wikipedije.",
 "loginproblem"	        => "<b>Nastala je tažava z vašim vpisom.</b><br>Poskusite znova!",
 "alreadyloggedin"       => "<font color=red><b>Uporabnik $1, ste že vpisani!</b></font><br>\n",
 
-"areyounew"		=> "Če ste novi v Wikipediji in bi radi dobili uporabniški račun,
-
-vnesite uporabniško ime, vpišite in ponovno vpišite geslo.
-Vaša elektronska pošta je po izbiri; če boste izgubili geslo, ga lahko ponovno zahtevati na
-
-naslovu, ki ga boste podali.<br>\n",
+"areyounew"		=> "Če ste novi v Wikipediji in bi radi dobili uporabniški račun, vnesite uporabniško ime, vpišite in ponovno vpišite geslo.
+Vaša elektronska pošta je po izbiri; če boste izgubili geslo, ga lahko ponovno zahtevate na naslovu, ki ga boste podali.<br>\n",
 
 "login"			=> "Vpis",
 "userlogin"		=> "Vpis",
@@ -312,21 +287,15 @@ naslovu, ki ga boste podali.<br>\n",
 "userlogout"	        => "Izpis",
 "createaccount"	        => "Izdelajte nov račun",
 "badretype"		=> "Gesli, ki ste ju vnesli, se ne ujemata.",
-"userexists"	        => "Uporabniško ime, ki ste ga vnesli, je že v uporabi. Prosimo izberite
-
-drugačno ime.",
+"userexists"	        => "Uporabniško ime, ki ste ga vnesli, je že v uporabi. Prosimo izberite drugačno ime.",
 "youremail"		=> "Vaša elektronska pošta",
 "yournick"		=> "Vaš vzdevek (za podpise)",
-"emailforlost"	        => "Če ste pozabili geslo, imate lahko novo, poslano na naslov vaše
-
-elektronske pošte.",
+"emailforlost"	        => "Če ste pozabili geslo, imate lahko novo, poslano na naslov vaše elektronske pošte.",
 "loginerror"	        => "Napaka vpisa",
 "noname"		=> "Niste navedli veljavnega uporabniškega imena.",
 "loginsuccesstitle"     => "Vpis uspešen",
 "loginsuccess"	        => "Sedaj ste vpisani v Wikipediji kot \"$1\".",
-"nosuchuser"	        => "Uporabnik z imenom \"$1\" ne obstaja. Preverite vaše črkovanje, ali
-
-uporabite spodnji obrazec za izdelavo novega uporabniškega računa.",
+"nosuchuser"	        => "Uporabnik z imenom \"$1\" ne obstaja. Preverite vaše črkovanje, ali uporabite spodnji obrazec za izdelavo novega uporabniškega računa.",
 "wrongpassword"	        => "Geslo, ki ste ga vnesli je nepravilno. Prosimo poskusite znova.",
 "mailmypassword"        => "Pošljite mi novo geslo",
 "passwordremindertitle" => "Opomnik gesla iz Wikipedije",
@@ -335,10 +304,7 @@ je zahteval, da vam pošljemo novo vpisno geslo Wikipedije.
 Geslo uporabnika \"$2\" je sedaj \"$3\".
 Sedaj se lahko vpišete in spremenite vaše geslo.",
 "noemail"		=> "Elektronska pošta za uporabnika \"$1\" ni zapisana.",
-"passwordsent"	        => "Novo geslo smo poslali na naslov elektronske pošte, vpisano za
-
-\"$1\".
-Prosimo vpišite se ponovno, ko ga boste prejeli.",
+"passwordsent"	        => "Novo geslo smo poslali na naslov elektronske pošte, vpisano za \"$1\". Prosimo vpišite se ponovno, ko ga boste prejeli.",
 
 # Edit pages
 #
@@ -358,62 +324,32 @@ Vzrok za to je naslednji:<br>''$2''<p>Lahko pokličete $1 ali katerega drugega
 Za izdelavo strani, začnite vnašati besedilo v spodnjo škatlo
 (poglejte [[Wikipedija:Pomoč|stran o pomoči]] za več sporočil).
 Če ste tukaj po pomoti, samo kliknite gumb za '''nazaj''' vašega brskljalnika.",
-"anontalkpagetext"      => "---- ''To je pogovorna stran za nepodpisanega uporabnika, ki še ni
-
-ustvaril računa ali, ki ga ne uporablja. Zaradi tega moramo uporabiti števčen [[IP address]] za
-
-njegovo/njeno ugotavljanje istovetnosti. Takšen IP naslov si lahko deli več uporabnikov. Če ste
-
-nepodpisan uporabnik in če menite, da so nepomembne pripombe namenjene vam, prosimo
-
-[[Special:Userlogin|ustvarite račun ali pa se vpišite]], da preprečite naslednje zmede z drugimi
-
-nepodpisanimi uporabniki.'' ",
+"anontalkpagetext"      => "---- ''To je pogovorna stran za nepodpisanega uporabnika, ki še ni ustvaril računa ali, ki ga ne uporablja. Zaradi tega moramo uporabiti števčen [[IP address]] za njegovo/njeno ugotavljanje istovetnosti. Takšen IP naslov si lahko deli več uporabnikov. Če ste nepodpisan uporabnik in če menite, da so nepomembne pripombe namenjene vam, prosimo [[Special:Userlogin|ustvarite račun ali pa se vpišite]], da preprečite naslednje zmede z drugimi nepodpisanimi uporabniki.'' ",
 "noarticletext" => "(Trenutno ni besedila na tej strani)",
 "updated"		=> "(Posodobljeno)",
 "note"			=> "<strong>Opomba:</strong> ",
 "previewnote"	        => "Zapomnite si, da je to le predpregled in stran še ni bila shranjena!",
-"previewconflict"       => "Ta predpregled kaže besedilo v zgornjem predelu urejevanja besedila
-
-kakor se bo pojavilo, če se ga odločite shraniti.",
+"previewconflict"       => "Ta predpregled kaže besedilo v zgornjem predelu urejevanja besedila kakor se bo pojavilo, če se ga odločite shraniti.",
 "editing"		=> "Urejevanje $1",
 "editconflict"	        => "Navzkrižje urejevanja: $1",
 "explainconflict"       => "Nekdo je spremenil to stran od takrat, ko ste jo vi začeli urejevati.
 Zgodnji predel besedila vsebuje besedilo strani, ki trenutno obstaja.
 Vaše spremembe so prikazane v spodnjem predelu besedila.
 Morali boste spojiti vaše spremembe v obstoječe besedilo.
-<b>Samo</b> besedilo z zgornjem predelu besedila bo shranjeno, ko boste pritisnili \"Shrani
-
-stran\".\n<p>",
+<b>Samo</b> besedilo z zgornjem predelu besedila bo shranjeno, ko boste pritisnili \"Shrani stran\".\n<p>",
 "yourtext"		=> "Vaše besedilo",
 "storedversion"         => "Shranjena inačica",
 "editingold"	        => "<strong>OPOZORILO: Urejujete zastarelo inačico te strani.
 Če jo boste shranili, bodo vse spremembe, narejene od tedaj, izgubljene.</strong>\n",
 "yourdiff"		=> "Razlike",
-"copyrightwarning"      => "Prosimo upoštevajte, da se vsi doprinosi k Wikipediji smatrajo kot
-
-objave pod GNU licenco proste dokumentacije (glej $1 za podrobnosti).
-Če ne želite, da se vaša pisanja neusmiljeno urejujejo ali ponovno razdeljujejo prostovoljno, potem
-
-jih ne predlagajte tukaj.<br>
-Poleg tega nam obljubjate, da ste to napisali samo ali pa prepisali iz javno dostopnega ali
-
-podobnega prostega vira.
-<strong>NE PREDLAGAJTE AVTORSKO ZAŠČITENEGA DELA BREZ
-
-DOVOLJENJA!</strong>",
-"longpagewarning" => "OPOZORILO: Ta stran je dolga $1 kilobitov; nekateri brskljalniki s težavo
-
-urejujejo strani, ki so daljše kot 32 kB. Prosimo, da upoštevate delitev strani na manjše dele.",
+"copyrightwarning"      => "Prosimo upoštevajte, da se vsi doprinosi k Wikipediji smatrajo kot objave pod GNU licenco proste dokumentacije (glej $1 za podrobnosti).
+Če ne želite, da se vaša pisanja neusmiljeno urejujejo ali ponovno razdeljujejo prostovoljno, potem jih ne predlagajte tukaj.<br>
+Poleg tega nam obljubljate, da ste to napisali samo ali pa prepisali iz javno dostopnega ali podobnega prostega vira.
+<strong>NE PREDLAGAJTE AVTORSKO ZAŠČITENEGA DELA BREZ DOVOLJENJA!</strong>",
+"longpagewarning" => "OPOZORILO: Ta stran je dolga $1 kilobitov; nekateri brskalniki s težavo urejujejo strani, ki so daljše kot 32 kB. Prosimo, da upoštevate delitev strani na manjše dele.",
 "readonlywarning" => "OPOZORILO: Baza je trenutno zaprta zaradi vzdrževanja
-in trenutno ne morete shranjevati sprememb. Skopirajte besedilo v urejevalnik in ga posnemite
-
-kasneje.",
-"protectedpagewarning" => "OPOZORILO: Ta stran je zaključena in jo lahko spreminjajo samo
-
-uporabniki, ki imajo vzdrževalne pravice. Prosimo poglejte <a
-
-href='/wiki/Wikipedija:Smernice_zaščitenih_strani'>smernice zaščitenih strani</a>.",
+in trenutno ne morete shranjevati sprememb. Skopirajte besedilo v urejevalnik in ga posnemite kasneje.",
+"protectedpagewarning" => "OPOZORILO: Ta stran je zaključena in jo lahko spreminjajo samo uporabniki, ki imajo vzdrževalne pravice. Prosimo poglejte <a href='/wiki/Wikipedija:Smernice_zaščitenih_strani'>smernice zaščitenih strani</a>.",
 
 # History pages
 #
@@ -466,17 +402,13 @@ celotnega besedila. ",
 "showingresults"        => "Spodaj prikažem <b>$1</b> izidov, začenši z #<b>$2</b>.",
 "nonefound"		=> "<strong>Opomba</strong>: neuspešna iskanja velikokrat
 
-povzročijo iskanja vsakdanjih besed kot sta \"imeti\" in \"iz\", katera niso vnešena v seznam, ali
-
-navajanja več iskalnih izrazov (v izidu se bodo pojavile samo strani, ki vsebujejo iskalne izraze).",
+povzročijo iskanja vsakdanjih besed kot sta \"imeti\" in \"iz\", katera niso vnešena v seznam, ali navajanja več iskalnih izrazov (v izidu se bodo pojavile samo strani, ki vsebujejo iskalne izraze).",
 "powersearch"           => "Iskanje",
 "powersearchtext" => "
 Iskanje v imenskem prostoru :<br>
 $1<br>
 $2 Seznam se preusmerja   Iskanje za $3 $9",
-"searchdisabled" => "<p>Oprostite! Iskanje po celotni bazi je zaradi hitrejšega delovanja
-
-Wikipedije trenutno onomogočena. Lahko pa se poslužite z Googlovim iskalnikom.</p>
+"searchdisabled" => "<p>Oprostite! Iskanje po celotni bazi je zaradi hitrejšega delovanja Wikipedije trenutno onomogočena. Lahko pa se poslužite z Googlovim iskalnikom.</p>
 
 <!-- SiteSearch Google -->
 <FORM method=GET action=\"http://www.google.com/intl/sl/search\">
@@ -492,9 +424,7 @@ border=\"0\" ALT=\"Google\"></A>
 <INPUT TYPE=text name=q size=31 maxlength=255 value=\"\">
 <INPUT type=submit name=btnG VALUE=\"Iskanje z Googlom\">
 <font size=-1>
-<input type=hidden name=domains value=\"{$wgServer}\"><br><input type=radio
-
-name=sitesearch value=\"\"> WWW <input type=radio name=sitesearch value=\"{$wgServer}\"
+<input type=hidden name=domains value=\"{$wgServer}\"><br><input type=radio name=sitesearch value=\"\"> WWW <input type=radio name=sitesearch value=\"{$wgServer}\"
 
 checked> {$wgServer} <br>
 </font>
@@ -675,8 +605,8 @@ izdelana in kdo jo je izdelal ali karkoli bi še vedeli o njej.",
 zadnjo inačico, (vrn) = vrni sliko na to zadnjo inačico.
 <br><i>Klikni na datum, da vidiš katera slika je bila tedaj naložena</i>.",
 "imagelinks"	=> "Povezave slike",
-"linkstoimage"	=> "Naslendje strani so vezane s to sliko:",
-"nolinkstoimage" => "Nobena stran ni vezane s to sliko.",
+"linkstoimage"	=> "Naslednje strani so vezane s to sliko:",
+"nolinkstoimage" => "Nobena stran ni vezana s to sliko.",
 
 # Statistics
 #
@@ -684,10 +614,8 @@ zadnjo inačico, (vrn) = vrni sliko na to zadnjo inačico.
 "sitestats"		=> "Statistika sedeža Wikipedije",
 "userstats"		=> "Statistika uporabnika",
 "sitestatstext" => "V podatkovni bazi je skupno <b>$1</b> strani.
-Vključujejo tudi \"pogovorne\" strani, strani o Wikipediji, najmanjše \"šrbinske\" strani,
-
-preusmeritve in še druge, ki niso članki.
-Če izključime te zadnje obstaja <b>$2</b> strani; ki so po vsej
+Vključujejo tudi \"pogovorne\" strani, strani o Wikipediji, najmanjše \"škrbinske\" strani, preusmeritve in še druge, ki niso članki.
+Če izključimo te zadnje, obstaja <b>$2</b> strani; ki so po vsej
 verjetnosti pravi članki.<p>
 Do sedaj je bilo <b>$3</b> pregledov strani in <b>$4</b> urejanj strani od
 nadgraditve programske opreme (20. julij 2002).
@@ -699,41 +627,25 @@ Od tega jih je <b>$2</b> administratorjev (glej $3).",
 # Vzdrževalna stran
 #
 "maintenance"		=> "Vzdrževalna stran",
-"maintnancepagetext"	=> "Ta stran vsebuje več pripravnih pripomočkov za vsakdanje
-
-vzdrževanje. Nekatere teh funkcij obremenjujejo podatkovno bazo, zato prosim ne poženite
+"maintnancepagetext"	=> "Ta stran vsebuje več pripravnih pripomočkov za vsakdanje vzdrževanje. Nekatere teh funkcij obremenjujejo podatkovno bazo, zato prosim ne poženite
 
 novega nalaganja pri vsakem popravljanju ;-)",
 "maintenancebacklink"	=> "Nazaj na vzdrževalno stran",
 "disambiguations"	=> "Razjasnjevalne strani",
 "disambiguationspage"	=> "Wikipedija:Povezave_na_razjasnjevalne_strani",
-"disambiguationstext"	=> "Naslednji članki so povezani na <i>razjasnjevalno stran</i>.
-
-Morajo biti povezani na pripadajočo vsebino.<br>Stran je razjansjevalna, če je povezana iz
-
-$1.<br>Povezave iz drugih imenskih področij tukaj <i>niso</i> prikazane.",
+"disambiguationstext"	=> "Naslednji članki so povezani na <i>razjasnjevalno stran</i>. Morajo biti povezani na pripadajočo vsebino.<br>Stran je razjasnjevalna, če je povezana iz $1.<br>Povezave iz drugih imenskih področij tukaj <i>niso</i> prikazane.",
 "doubleredirects"	=> "Dvojne preusmeritve",
-"doubleredirectstext"	=> "<b>Pozor:</b> ta seznam lahko vsebuje nepravilne člene. To ponavadi
-
-pomeni, da obstaja dodatno besedilo s povezavami pod prvim ukazom #REDIRECT.<br>\nVsaka
-
-vrsta vsebuje povezave k prvi in drugi preusmeritvi, kot tudi prvo vrstico drugega preusmerjenega
-
-besedila, kar ponavadi da \"resnični\" ciljni članek, na katerega mora kazati prva preusmeritev.",
+"doubleredirectstext"	=> "<b>Pozor:</b> ta seznam lahko vsebuje nepravilne člene. To ponavadi pomeni, da obstaja dodatno besedilo s povezavami pod prvim ukazom #REDIRECT.<br>\nVsaka vrsta vsebuje povezave k prvi in drugi preusmeritvi, kot tudi prvo vrstico drugega preusmerjenega besedila, kar ponavadi da \"resnični\" ciljni članek, na katerega mora kazati prva preusmeritev.",
 "brokenredirects"	=> "Polomljene preusmeritve",
 "brokenredirectstext"	=> "Naslednje preusmeritve kažejo na neobstoječe članke.",
 "selflinks"		=> "strani z lastnimi povezavami",
 "selflinkstext"		=> "Naslednje strani vsebujejo povezave nase, kar ne bi smele.",
 "mispeelings"           => "Strani z napačnimi črkovanji",
-"mispeelingstext"       => "Naslednje strani vsebujejo običajna napačna črkovanja, ki so prikazana
-
-na $1. Pravilno črkovanje bo mogoče zgledalo (kot).",
+"mispeelingstext"       => "Naslednje strani vsebujejo običajna napačna črkovanja, ki so prikazana na $1. Pravilno črkovanje bo mogoče zgledalo (kot).",
 "mispeelingspage"       => "Seznam običajni napačnih črkovanja",
 "missinglanguagelinks"  => "Manjkajoče jezikovne povezave",
 "missinglanguagelinksbutton"    => "Najti manjkajoče jezikovne povezave za",
-"missinglanguagelinkstext"      => "Ti članki <i>niso</i> povezani z njihovimi nasprotnimi članki v
-
-$1. Preusmeritve in podstrani <i>niso</i> prikazane.",
+"missinglanguagelinkstext"      => "Ti članki <i>niso</i> povezani z njihovimi nasprotnimi članki v $1. Preusmeritve in podstrani <i>niso</i> prikazane.",
 
 
 # Miscellaneous special pages
@@ -760,15 +672,9 @@ $1. Preusmeritve in podstrani <i>niso</i> prikazane.",
 "debug"		=> "Razhroščuj",
 "newpages"	=> "Nove strani",
 "movethispage"	=> "Premakni to stran",
-"unusedimagestext" => "<p>Prosimo upoštevajte, da so lahko druge spletne strani, kot so
-
-mednardone Wikipedije povezane s sliko z neposrednim URL-jem in so tukaj navedene, navkljub
-
-aktivni uporabi.",
+"unusedimagestext" => "<p>Prosimo upoštevajte, da so lahko druge spletne strani, kot so mednarodne Wikipedije povezane s sliko z neposrednim URL-jem in so tukaj navedene, navkljub aktivni uporabi.",
 "booksources"	=> "Knjižni viri",
-"booksourcetext" => "Spodaj je seznam k drugim stranem, ki prodajajo nove ali rabljene knjige in
-
-kjer so lahko dodatne informacije o knjigah, ki jih iščete.
+"booksourcetext" => "Spodaj je seznam k drugim stranem, ki prodajajo nove ali rabljene knjige in kjer so lahko dodatne informacije o knjigah, ki jih iščete.
 Wikipedija ne služi z nobenim od teh poslov in ta spisek ni pokazatelj njihovih uspehov.",
 
 # Email this user
@@ -787,9 +693,7 @@ nastavitvah, bo spodnji vprašalnik poslal sporočilo.
 Naslov e-pošte, ki ste jo vnesli v vaših uporabniških nastavitvah, bo v
  \"From\" naslovu pošte in bo lahko prejemnik odgovoril nanjo.",
 "noemailtitle"	=> "Ni naslova e-pošte",
-"noemailtext"	=> "Ta uporabnik ni navedel veljavnega naslova e-pošte, ali pa se je odločil,
-
-da ne bo prejemal pošte drugih.",
+"noemailtext"	=> "Ta uporabnik ni navedel veljavnega naslova e-pošte, ali pa se je odločil, da ne bo prejemal pošte drugih.",
 "emailfrom"	=> "Od",
 "emailto"	=> "Za",
 "emailsubject"	=> "Tema",
@@ -810,16 +714,10 @@ za spremembo seznama nadzorov.",
 "addedwatch"	=> "Dodano k seznamu nadzorov",
 "addedwatchtext" => "Stran \"$1\" je dodana na vaš <a href=\"" .
   wfLocalUrl( "Special:Watchlist" ) . "\">seznam nadzorov</a>.
-Morebitne spremembe te strani in njena pripadajoča pogovorna stran bosta navedeni tam in stran
+Morebitne spremembe te strani in njena pripadajoča pogovorna stran bosta navedeni tam in stran bo prikazana <b>krepko</b> v <a href=\"" .
+  wfLocalUrl( "Special:Recentchanges" ) . "\">seznamu trenutnih sprememb</a>, da jo boste tudi lažje izbrali.</p>
 
-bo prikazana <b>krepko</b> v <a href=\"" .
-  wfLocalUrl( "Special:Recentchanges" ) . "\">seznamu trenutnih sprememb</a>, da jo boste tudi
-
-lažje izbrali.</p>
-
-<p>Če želite kasneje odstraniti stran iz seznama nadzorov, pritisnite \"Prekini nadzor\" v stranski
-
-vrstici.",
+<p>Če želite kasneje odstraniti stran iz seznama nadzorov, pritisnite \"Prekini nadzor\" v stranski vrstici.",
 "removedwatch"	=> "Odstranjena iz seznama nadzorov",
 "removedwatchtext" => "Stran \"$1\" je odstranjena iz vašega seznama nadzorov.",
 "watchthispage"	=> "Nadzoruj to stran",
@@ -836,12 +734,8 @@ vrstici.",
 "confirmdelete" => "Potrdi brisanje",
 "deletesub"	=> "(Brišem \"$1\")",
 "historywarning" => "OPOZORILO: stran, ki jo želite brisati ima zgodovino: ",
-"confirmdeletetext" => "Za stalno boste zbrisali stran ali sliko skupaj z zgodovino iz podatkovne
-
-baze.
-Prosimo potrdite vaš namen, da razumete posledice in da to počnete v
-
-skladu[[Wikipedija:Pravila]].",
+"confirmdeletetext" => "Za stalno boste zbrisali stran ali sliko skupaj z zgodovino iz podatkovne baze.
+Prosimo potrdite vaš namen, da razumete posledice in da to počnete v skladu s [[Wikipedija:Pravila|pravili]].",
 "confirmcheck"	 => "Da, resnično želim to zbrisati.",
 "actioncomplete" => "Poseg zaključen",
 "deletedtext"	 => "\"$1\" je zbrisana.
@@ -873,15 +767,11 @@ Zadnja sprememba od uporabnika [[Uporabnik:$3|$3]] ([[Pogovor z uporabnikom:$3|P
 # Undelete
 "undelete" => "Obnovi zbrisano stran",
 "undeletepage" => "Poglej in obnovi zbrisane strani",
-"undeletepagetext" => "Naslednje strani so bile zbrisane, vendar so še vedno v arhivu in jih lahko
-
-obnovite. Arhiv se mora občasno počistiti.",
+"undeletepagetext" => "Naslednje strani so bile zbrisane, vendar so še vedno v arhivu in jih lahko obnovite. Arhiv se mora občasno počistiti.",
 "undeletearticle" => "Obnovi zbrisan članek",
 "undeleterevisions" => "$1 različic arhiviranih",
 "undeletehistory" => "Če obnovite stran, se bodo obnovile vse različice v zgodovini.
-Če je kdo od brisanja naredil novo stran z istim imenom, se bodo obnovljene različice pojavile
-
-vprejšnji zgodovini in trenutna različica žive strani se ne bo samodejno zamenjala.",
+Če je kdo od brisanja naredil novo stran z istim imenom, se bodo obnovljene različice pojavile v prejšnji zgodovini in trenutna različica žive strani se ne bo samodejno zamenjala.",
 "undeleterevision" => "Zbrisana različica od $1",
 "undeletebtn" => "Obnovi!",
 "undeletedarticle" => "obnovljen \"$1\"",
@@ -894,9 +784,7 @@ Glej [[Wikipedija:Dnevnik_brisanja]] za zabeležbe nedavnih brisanj in obnovitev
 "mycontris"     => "Moji prispevki",
 "contribsub"	=> "Za $1",
 "nocontribs"	=> "Ne najdem nobene spremembe, ki ustreza tem sodilom.",
-"ucnote"	=> "Spodaj je zadnjih <b>$1</b> sprememb tega uporabnika v zadnjih <b>$2</b>
-
-dnevih.",
+"ucnote"	=> "Spodaj je zadnjih <b>$1</b> sprememb tega uporabnika v zadnjih <b>$2</b> dnevih.",
 "uclinks"	=> "Poglej zadnjih $1 sprememb; poglej zadnje $2 dni.",
 "uctop"		=> " (vrh)" ,
 
@@ -913,11 +801,8 @@ dnevih.",
 # Block/unblock IP
 #
 "blockip"	=> "Prekini IP naslov",
-"blockiptext"	=> "Uporabi spodnjo obliko za prekinitev dostopa zapisa iz določenega IP
-
-naslova.
-To naredimo samo zaradi zaščite pred nepotrebnim uničevanjem in v skladu z
-
+"blockiptext"	=> "Uporabi spodnjo obliko za prekinitev dostopa zapisa iz določenega IP naslova.
+To naredimo samo zaradi zaščite pred nepotrebnim uničevanjem in v skladu s
 [[Wikipedija:Pravila|pravili Wikipedije]].
 Vnesi razloge spodaj (na primer z navedbo določenih strani, ki so jih po nepotrebnem uničili).",
 "ipaddress"	=> "IP naslov",
@@ -929,9 +814,7 @@ Vnesi razloge spodaj (na primer z navedbo določenih strani, ki so jih po nepotr
 "blockipsuccesstext" => "IP naslov \"$1\" je prekinjen.
 <br>Glej [[Posebno:Ipseznamprekinitev|seznam prekinitev IP]] za pregled prekinitev.",
 "unblockip"	=> "Poveži IP naslov",
-"unblockiptext"	=> "Uporabi spodnjo obliko za obnovitev dostopa zapisa prejšnjega
-
-prekinjenega IP naslova.",
+"unblockiptext"	=> "Uporabi spodnjo obliko za obnovitev dostopa zapisa prejšnjega prekinjenega IP naslova.",
 "ipusubmit"	=> "Poveži ta naslov",
 "ipusuccess"	=> "IP naslov \"$1\" je povezan",
 "ipblocklist"	=> "Seznam prekinjenih IP naslovov",
@@ -946,19 +829,9 @@ prekinjenega IP naslova.",
 #
 "lockdb"	=> "Zakleni podatkovno bazo",
 "unlockdb"	=> "Odkleni podatkovno bazo",
-"lockdbtext"	=> "Zaklenitev podatkovne baze bo odložila možnost urejevanja vsem
-
-uporabnikom, spremembe njihovih nastavitev, urejevanja njihovih seznamov nadzorov in drugih
-
-stvari, ki zahtevajo spremembe v podatkovni bazi.
-Prosimo potrdite vaš resnični namen in da boste odklenili podatkovno bazo, ko boste zaključili z
-
-vzdrževanjem podatkovne baze.",
-"unlockdbtext"	=> "Odklenitev podatkovne baze bo obnovila zmožnost urejevanja vsem
-
-uporabnikom, spremembe njihovih nastavitev, urejevanja njihovih seznamov nadzorov in drugih
-
-stvari, ki zahtevajo spremembe v podatkovni bazi.
+"lockdbtext"	=> "Zaklenitev podatkovne baze bo odložila možnost urejevanja vsem uporabnikom, spremembe njihovih nastavitev, urejevanja njihovih seznamov nadzorov in drugih stvari, ki zahtevajo spremembe v podatkovni bazi.
+Prosimo potrdite vaš resnični namen in da boste odklenili podatkovno bazo, ko boste zaključili z vzdrževanjem podatkovne baze.",
+"unlockdbtext"	=> "Odklenitev podatkovne baze bo obnovila zmožnost urejevanja vsem uporabnikom, spremembe njihovih nastavitev, urejevanja njihovih seznamov nadzorov in drugih stvari, ki zahtevajo spremembe v podatkovni bazi.
 Prosimo potrdite vaš resnični namen.",
 "lockconfirm"	=> "Da, resnično želim zakleniti podatkovno bazo.",
 "unlockconfirm"	=> "Da, resnično želim odkleniti podatkovno bazo.",
@@ -974,9 +847,7 @@ Prosimo potrdite vaš resnični namen.",
 # SQL query
 #
 "asksql"	=> "SQL vprašanje",
-"asksqltext"	=> "Uporabi spodnjo obliko za neposedno vprašanje podatkovni bazi
-
-Wikipedije.
+"asksqltext"	=> "Uporabi spodnjo obliko za neposedno vprašanje podatkovni bazi Wikipedije.
 Uporabite enojne narekovaje ('tako') za razmejitev črkovnih nizov.
 To precej obremeni strežnik zato, prosimo, previdno uporabljajte to funkcijo.",
 "sqlquery"	=> "Vnesite vprašanje",
@@ -987,20 +858,12 @@ To precej obremeni strežnik zato, prosimo, previdno uporabljajte to funkcijo.",
 # Move page
 #
 "movepage"	=> "Prestavi stran",
-"movepagetext"	=> "Uporaba spodnje oblike bo preimenovala stran, prestavila vso njeno
-
-zgodovino na novo ime.
+"movepagetext"	=> "Uporaba spodnje oblike bo preimenovala stran, prestavila vso njeno zgodovino na novo ime.
 Stara stran bo preusmeritvena stran na nov naslov.
-Povezave na stari naslov strani se ne bodo spremenile; zagotovo
-
-[[Posebno:Vzdrževanje|preverite]] dvojne ali pretrgane preusmeritve.
+Povezave na stari naslov strani se ne bodo spremenile; zagotovo [[Posebno:Vzdrževanje|preverite]] dvojne ali pretrgane preusmeritve.
 Odgovorni ste, da povezave še naprej kažejo na pravilna mesta.
 
-Upoštevajte, da stran '''ne''' bo prestavljena, če stran z istim imenom že obstaja, razen če je
-
-prazna ali preusmeritvena in je brez zgodovine urejevanj. To pomeni, da lahko preimenujete stran
-
-nazaj na prejšnjo, če ste se zmotili in ne morete prepisati obstoječe strani.
+Upoštevajte, da stran '''ne''' bo prestavljena, če stran z istim imenom že obstaja, razen če je prazna ali preusmeritvena in je brez zgodovine urejevanj. To pomeni, da lahko preimenujete stran nazaj na prejšnjo, če ste se zmotili in ne morete prepisati obstoječe strani.
 
 <b>OPOZORILO!</b>
 To je lahko velika in nepričakovana sprememba za priljubljeno stran;
@@ -1021,9 +884,7 @@ V teh primerih boste morali prestaviti ali povezati stran ročno, če to želite
 "pagemovedtext" => "Stran \"[[$1]]\" prestavljena na \"[[$2]]\".",
 "articleexists" => "Stran s tem imenom že obstaja ali pa izbrano ime ni pravilno.
 Prosimo izberite drugo ime.",
-"talkexists"	=> "Stran sama je prestavljena uspešno, pogovorna stran pa ne, ker že
-
-obstaja na novem naslovu. Prosimo povežite ju ročno.",
+"talkexists"	=> "Stran sama je prestavljena uspešno, pogovorna stran pa ne, ker že obstaja na novem naslovu. Prosimo povežite ju ročno.",
 "movedto"	=> "prestavljeno na",
 "movetalk"	=> "Prestavite tudi \"pogovorno\" stran, če je mogoče.",
 "talkpagemoved" => "Pripadajoča pogovorna stran je tudi prestavljena.",
@@ -1137,7 +998,7 @@ class LanguageSl extends LanguageUtf8 {
  }
 
  function fallback8bitEncoding() {
-		return "windows-1251";
+		return "iso-8859-2";
  }
 }
 
