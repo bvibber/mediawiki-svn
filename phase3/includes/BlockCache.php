@@ -5,7 +5,7 @@
 
 class BlockCache
 {
-	var $mData = false, $mMemcKey;
+	var $mData = false, $mMemcKey, $mIP6 = array();
 
 	function BlockCache( $deferLoad = false, $dbName = '' )
 	{
@@ -50,6 +50,11 @@ class BlockCache
 
 	function insert( &$block )
 	{
+		$rx6 = '[0-9a-fA-F]+:[0-9a-fA-F:*]+';
+		if ( preg_match( "/^$rx6$/", $block->mAddress) ) {
+			$this->mIP6[] = $block->mAddress;
+			return;
+		}
 		if ( $block->mUser == 0 ) {
 			$nb = $block->getNetworkBits();
 			$ipint = $block->getIntegerAddr();
@@ -68,11 +73,22 @@ class BlockCache
 		$this->load();
 		$ipint = ip2long( $ip );
 		$blocked = false;
+		$rx6 = '[0-9a-fA-F]+:[0-9a-fA-F:]+';
 
-		foreach ( $this->mData as $networkBits => $blockInts ) {
-			if ( array_key_exists( $ipint >> ( 32 - $networkBits ), $blockInts ) ) {
-				$blocked = true;
-				break;
+		if ( preg_match( "/^$rx6$/", $ip ) ) {
+			foreach ( $this->mIP6 as $host ) {
+				if ( fnmatch( $host, $ip ) ) {
+					$block = new Block();
+					$block->load($host);
+					return $block;
+				}
+			}
+		} else {
+			foreach ( $this->mData as $networkBits => $blockInts ) {
+				if ( array_key_exists( $ipint >> ( 32 - $networkBits ), $blockInts ) ) {
+					$blocked = true;
+					break;
+				}
 			}
 		}
 		if ( $blocked ) {

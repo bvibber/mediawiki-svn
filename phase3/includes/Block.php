@@ -115,6 +115,9 @@ class Block
 
 	function initialiseRange()
 	{
+		$rx6 = '[0-9a-fA-F]+:[0-9a-fA-F:*]+';
+		$is6 = !!preg_match( "/^$rx6$/", $this->mAddress );
+		if ( $is6 ) return;
 		if ( $this->mUser == 0 ) {
 			$rangeParts = explode( '/', $this->mAddress );
 			if ( count( $rangeParts ) == 2 ) {

@@ -94,9 +94,12 @@ class IPBlockForm {
 		$userId = 0;
 		$this->BlockAddress = trim( $this->BlockAddress );
 		$rxIP = '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}';
+		$rxIP6 = '[0-9a-fA-F]+:[0-9a-fA-F:*]+'; # yes, it allows invalid IPs, but they aren't valid
+							# usernames anyway.
 
 		# Check for invalid specifications
-		if ( ! preg_match( "/^$rxIP$/", $this->BlockAddress ) ) {
+		$isv6 = preg_match( "/^$rxIP6/", $this->BlockAddress );
+		if ( !$isv6 && ! preg_match( "/^$rxIP$/", $this->BlockAddress ) ) {
 		  	if ( preg_match( "/^($rxIP)\\/(\\d{1,2})$/", $this->BlockAddress, $matches ) ) {
 				if ( $wgSysopRangeBans ) {
 					if ( $matches[2] > 31 || $matches[2] < 16 ) {
