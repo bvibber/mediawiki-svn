@@ -113,7 +113,7 @@ print IW <<arrgghsomanyofthem
 	"mg"    => "http://mg.wikipedia.com/wiki.cgi?\$1",
 	"mi"    => "http://mi.wikipedia.com/wiki.cgi?\$1",
 	"mk"    => "http://mk.wikipedia.com/wiki.cgi?\$1",
-	"ml"    => "http://ml.wikipedia.com/wiki.cgi?\$1",
+	"ml"    => "http://ml.wikipedia.org/wiki/\$1",
 	"mn"    => "http://mn.wikipedia.com/wiki.cgi?\$1",
 	"mo"    => "http://mo.wikipedia.com/wiki.cgi?\$1",
 	"mr"    => "http://mr.wikipedia.com/wiki.cgi?\$1",
