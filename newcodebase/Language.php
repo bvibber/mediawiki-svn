@@ -162,6 +162,11 @@ You will have to merge your changes into the existing text.
 press \"Save\".\n<p>",
 "yourtext"		=> "Your text",
 
+# History pages
+#
+"historyof"		=> "History of $1",
+"nohistory"		=> "There is no edit history for this page.",
+
 # Preferences page
 #
 "preferences"	=> "Preferences",

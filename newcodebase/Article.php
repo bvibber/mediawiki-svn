@@ -321,8 +321,65 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 	{
 	}
 
+	# This shares a lot of code with Recent Changes
+	#
 	function history()
 	{
+        global $wgUser, $wgOut, $wgLang, $wgTitle;
+
+		$t = str_replace( "$1", $wgTitle->getPRefixedText(),
+		  wfMsg( "historyof" ) );
+		$wgOut->setPageTitle( $t );
+		$wgOut->setArticleFlag( false );
+
+		$conn = wfGetDB();
+		$sql = "SELECT old_id,old_namespace,old_title,old_user," .
+		  "old_comment,old_user_text,old_timestamp,old_minor_edit FROM old " .
+		  "WHERE old_namespace=" . $wgTitle->getNamespace() . " AND " .
+		  "old_title='" . $wgTitle->getDBkey() . "' " .
+		  "ORDER BY old_timestamp DESC";
+		wfDebug( "SC: 1: $sql\n" );
+
+		$res = mysql_query( $sql, $conn );
+		if ( ! $res ) {
+			$wgOut->databaseError( wfMsg( "rcloaderr" ) );
+			return;
+		}
+		$revs = mysql_num_rows( $res );
+		if ( 0 == $revs ) {
+			$wgOut->addHTML( wfMsg( "nohistory" ) );
+			return;
+		}
+		$s = "";
+		$lastdate = "";
+		while ( $line = mysql_fetch_object( $res ) ) {
+			$id = $line->old_id;
+			$t = $line->old_timestamp;
+			$d = $wgLang->dateFromTimestamp( $t );
+			$h = substr( $t, 8, 2 ) . ":" . substr( $t, 10, 2 );
+			$c = $line->old_comment;
+
+			if ( 0 == $line->old_user ) {
+				$u = $line->old_user_text;
+			} else {
+				$u = "[[User:{$line->old_user_text}|{$line->old_user_text}]]";
+			}
+			$nt = Title::newFromDBkey( $line->old_title );
+			$nt->setNamespace( $line->cur_namespace );
+			$t = $nt->getPrefixedText();
+
+			if ( $d != $lastdate ) {
+				$s .= "'''{$d}'''\n";
+				$lastdate = $d;
+			}
+			$s .= "* ({$revs}) [[{$t}]]; {$h} . . . {$u}";
+			if ( "" != $c && "*" != $c ) {
+				$s .= "''' ({$c})'''";
+			}
+			$s .= "\n";
+			--$revs;
+		}
+		$wgOut->addWikiText( $s );
 	}
 
 	# Do standard deferred updates after page view
