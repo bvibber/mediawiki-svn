@@ -1,5 +1,13 @@
 <?
 
+if( !function_exists( "version_compare" ) ) {
+	# version_compare was introduced in 4.1.0
+	die( "Your PHP version is much too old! 4.3.2 or higher is recommended. ABORTING.\n" );
+}
+if( version_compare( phpversion(), "4.3.2" ) < 0 ) {
+	echo "WARNING: PHP 4.3.2 or higher is recommended. Older versions may work but are not actively supported.\n\n";
+}
+
 if (!extension_loaded('mysql')) {
     if (!dl('mysql.so')) {
         print "Could not load MySQL driver! Please compile ".
@@ -194,7 +202,7 @@ function dbsource( $conn, $fname ) {
 	$done = false;
 
 	while ( ! feof( $fp ) ) {
-		$line = trim( fgets( $fp ) );
+		$line = trim( fgets( $fp, 1024 ) );
 		$sl = strlen( $line ) - 1;
 
 		if ( $sl < 0 ) { continue; }

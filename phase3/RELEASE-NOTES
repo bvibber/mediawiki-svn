@@ -1,6 +1,6 @@
 = MediaWiki release notes =
 
-Stable branch snapshot, release 2003-11-12. This is the version of MediaWiki
+Stable branch snapshot, release 2003-11-16. This is the version of MediaWiki
 that we're running on Wikipedia as of this date.
 
 == Overview of changes from mediawiki-20031107 release: ==
@@ -15,6 +15,9 @@ that we're running on Wikipedia as of this date.
 * Detect invalid titles in Special:Allpages
 * Q-encode headers on outgoing inter-user e-mail
 * Updates to some translations.
+* Added table of contents border/bg to Cologne Blue, Nostalgia skins
+* install.php, update.php print warning on old PHP versions,
+  added compatibility functions that might or might not help
 
 == Overview of changes from mediawiki-20030829 release: ==
 
