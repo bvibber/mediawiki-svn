@@ -135,6 +135,7 @@ class OutputPage {
 	function addWikiText( $text, $linestart = true )
 	{
 		global $wgUseTeX;
+		wfProfileIn( "OutputPage::addWikiText" );
 		$unique  = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv4";
 		$unique2 = "4LIQ9nXtiYFPCSfitVwDw7EYwQlL4GeeQ7qSO";
 		$unique3 = "fPaA8gDfdLBqzj68Yjg9Hil3qEF8JGO0uszIp";
@@ -205,6 +206,7 @@ class OutputPage {
 			$text = preg_replace( "/{$unique}/", str_replace( '$', '\$', $nwlist[$i] ), $text, 1 );
 		}
 		$this->addHTML( $text );
+		wfProfileOut();
 	}
 
 	# Finally, all the text has been munged and accumulated into
@@ -214,6 +216,7 @@ class OutputPage {
 	{
 		global $wgUser, $wgLang, $wgDebugComments, $wgCookieExpiration;
 		global $wgInputEncoding, $wgOutputEncoding, $wgLanguageCode;
+		wfProfileIn( "OutputPage::output" );
 		$sk = $wgUser->getSkin();
 
 		header( "Expires: 0" );
@@ -226,6 +229,7 @@ class OutputPage {
 		
 		if ( "" != $this->mRedirect ) {
 			header( "Location: {$this->mRedirect}" );
+			wfProfileOut();
 			return;
 		}
 
@@ -250,6 +254,7 @@ class OutputPage {
 		$this->out( $this->mBodytext );
 		$this->out( $sk->afterContent() );
 
+		wfProfileOut(); # A hack - we can't report after here
 		$this->out( $this->reportTime() );
 
 		$this->out( "\n</body></html>" );
@@ -259,7 +264,6 @@ class OutputPage {
 	function out( $ins )
 	{
 		global $wgInputEncoding, $wgOutputEncoding, $wgLang;
-
 		if ( 0 == strcmp( $wgInputEncoding, $wgOutputEncoding ) ) {
 			$outs = $ins;
 		} else {
@@ -315,6 +319,7 @@ class OutputPage {
 	function reportTime()
 	{
 		global $wgRequestTime, $wgDebugLogFile, $HTTP_SERVER_VARS;
+		global $wgProfiling, $wgProfileStack;
 
 		list( $usec, $sec ) = explode( " ", microtime() );
 		$now = (float)$sec + (float)$usec;
@@ -324,6 +329,28 @@ class OutputPage {
 		$elapsed = $now - $start;
 
 		if ( "" != $wgDebugLogFile ) {
+			$prof = "";
+			if( $wgProfiling and count( $wgProfileStack ) ) {
+				$lasttime = $start;
+				foreach( $wgProfileStack as $ile ) {
+					# "foo::bar 99 0.12345 1 0.23456 2"
+					if( preg_match( '/^(\S+)\s+([0-9]+)\s+([0-9\.]+)\s+([0-9\.]+)\s+([0-9\.]+)\s+([0-9\.]+)/', $ile, $m ) ) {
+						$thisstart = (float)$m[3] + (float)$m[4] - $start;
+						$thisend = (float)$m[5] + (float)$m[6] - $start;
+						$thiselapsed = $thisend - $thisstart;
+						$thispercent = $thiselapsed / $elapsed * 100.0;
+						
+						$prof .= sprintf( "\tat %04.3f in %04.3f (%2.1f%%) - %s %s\n",
+							$thisstart, $thiselapsed, $thispercent,
+							str_repeat( "*", $m[2] ), $m[1] );
+						$lasttime = $thistime;
+						#$prof .= "\t(^ $ile)\n";
+					} else {
+						$prof .= "\t?broken? $ile\n";
+					}
+				}
+			}
+		
 			if( $forward = $HTTP_SERVER_VARS['HTTP_X_FORWARDED_FOR'] )
 				$forward = " forwarded for $forward";
 			if( $client = $HTTP_SERVER_VARS['HTTP_CLIENT_IP'] )
@@ -335,7 +362,7 @@ class OutputPage {
 			$log = sprintf( "%s\t%04.3f\t%s\n",
 			  date( "YmdHis" ), $elapsed,
 			  urldecode( $HTTP_SERVER_VARS['REQUEST_URI'] . $forward ) );
-			error_log( $log, 3, $wgDebugLogFile );
+			error_log( $log . $prof, 3, $wgDebugLogFile );
 		}
 		$com = sprintf( "<!-- Time since request: %01.2f secs. -->",
 		  $elapsed );
@@ -503,6 +530,7 @@ class OutputPage {
 	function doWikiPass2( $text, $linestart )
 	{
 		global $wgUser;
+		wfProfileIn( "OutputPage::doWikiPass2" );
 
 		$text = $this->removeHTMLtags( $text );
 		$text = $this->replaceVariables( $text );
@@ -524,6 +552,7 @@ class OutputPage {
 		$sk = $wgUser->getSkin();
 		$text = $sk->transformContent( $text );
 
+		wfProfileOut();
 		return $text;
 	}
 
@@ -550,12 +579,14 @@ class OutputPage {
 
 	/* private */ function replaceExternalLinks( $text )
 	{
+		wfProfileIn( "OutputPage::replaceExternalLinks" );
 		$text = $this->subReplaceExternalLinks( $text, "http", true );
 		$text = $this->subReplaceExternalLinks( $text, "https", true );
 		$text = $this->subReplaceExternalLinks( $text, "ftp", false );
 		$text = $this->subReplaceExternalLinks( $text, "gopher", false );
 		$text = $this->subReplaceExternalLinks( $text, "news", false );
 		$text = $this->subReplaceExternalLinks( $text, "mailto", false );
+		wfProfileOut();
 		return $text;
 	}
 
@@ -630,6 +661,7 @@ class OutputPage {
 	{
 		global $wgTitle, $wgUser, $wgLang;
 		global $wgLinkCache, $wgInterwikiMagic;
+		wfProfileIn( "OutputPage::replaceInternalLinks" );
 
 		$tc = Title::legalChars() . "#";
 		$sk = $wgUser->getSkin();
@@ -695,6 +727,7 @@ class OutputPage {
 				$s .= $sk->makeLink( $link, $text, "", $trail );
 			}
 		}
+		wfProfileOut();
 		return $s;
 	}
 
@@ -777,6 +810,7 @@ class OutputPage {
 
 	/* private */ function doBlockLevels( $text, $linestart )
 	{
+		wfProfileIn( "OutputPage::doBlockLevels" );
 		# Parsing through the text line by line.  The main thing
 		# happening here is handling of block-level elements p, pre,
 		# and making lists from lines starting with * # : etc.
@@ -875,12 +909,14 @@ class OutputPage {
 			}
 			$this->mLastSection = "";
 		}
+		wfProfileOut();
 		return $text;
 	}
 
 	/* private */ function replaceVariables( $text )
 	{
 		global $wgLang;
+		wfProfileIn( "OutputPage:replaceVariables" );
 
 		$v = date( "m" );
 		$text = str_replace( "{{CURRENTMONTH}}", $v, $text );
@@ -893,17 +929,19 @@ class OutputPage {
 		$v = date( "Y" );
 		$text = str_replace( "{{CURRENTYEAR}}", $v, $text );
 		$v = $wgLang->time( date( "YmdHis" ), false );
-        $text = str_replace( "{{CURRENTTIME}}", $v, $text );
+		$text = str_replace( "{{CURRENTTIME}}", $v, $text );
 
 		if ( false !== strstr( $text, "{{NUMBEROFARTICLES}}" ) ) {
 			$v = wfNumberOfArticles();
 			$text = str_replace( "{{NUMBEROFARTICLES}}", $v, $text );
 		}
+		wfProfileOut();
 		return $text;
 	}
 
 	/* private */ function removeHTMLtags( $text )
 	{
+		wfProfileIn( "OutputPage::removeHTMLtags" );
 		$htmlpairs = array( # Tags that must be closed
 			"b", "i", "u", "font", "big", "small", "sub", "sup", "h1",
 			"h2", "h3", "h4", "h5", "h6", "cite", "code", "em", "s",
@@ -911,7 +949,7 @@ class OutputPage {
 			"blockquote", "ol", "ul", "dl", "table", "caption", "pre",
 			"ruby", "rt" , "rb" , "rp"
 		);
-        $htmlsingle = array(
+		$htmlsingle = array(
 			"br", "p", "hr", "li", "dt", "dd"
 		);
 		$htmlnest = array( # Tags that can be nested--??
@@ -925,7 +963,7 @@ class OutputPage {
 		$htmlsingle = array_merge( $tabletags, $htmlsingle );
 		$htmlelements = array_merge( $htmlsingle, $htmlpairs );
 
-        $htmlattrs = array( # Allowed attributes--no scripting, etc.
+		$htmlattrs = array( # Allowed attributes--no scripting, etc.
 			"title", "align", "lang", "dir", "width", "height",
 			"bgcolor", "clear", /* BR */ "noshade", /* HR */
 			"cite", /* BLOCKQUOTE, Q */ "size", "face", "color",
@@ -995,12 +1033,13 @@ class OutputPage {
 				}
 			}
 			$text .= "&lt;" . str_replace( ">", "&gt;", $x);
-        }
+		}
 		# Close off any remaining tags
 		while ( $t = array_pop( $tagstack ) ) {
 			$text .= "</$t>\n";
 			if ( $t == "table" ) { $tagstack = array_pop( $tablestack ); }
 		}
+		wfProfileOut();
 		return $text;
 	}
 

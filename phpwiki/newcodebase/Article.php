@@ -233,6 +233,7 @@ class Article {
 	{
 		global $wgUser, $wgOut, $wgTitle, $wgLang;
 		global $oldid, $diff; # From query
+		wfProfileIn( "Article::view" );
 
 		$wgOut->setArticleFlag( true );
 		$wgOut->setRobotpolicy( "index,follow" );
@@ -244,6 +245,7 @@ class Article {
 			$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 			$de = new DifferenceEngine( $oldid, $diff );
 			$de->showDiffPage();
+			wfProfileOut();
 			return;
 		}
 		$text = $this->getContent(); # May change wgTitle!
@@ -275,6 +277,7 @@ class Article {
 			$this->imageLinks();
 		}
 		$this->viewUpdates();
+		wfProfileOut();
 	}
 
 	# This is the function that gets called for "action=edit".
@@ -341,7 +344,7 @@ class Article {
 
 		$sk = $wgUser->getSkin();
 		$isConflict = false;
-		$wpTextbox1 = trim ( $wpTextbox1 ) ; # To avoid text getting longer on each preview
+		$wpTextbox1 = rtrim ( $wpTextbox1 ) ; # To avoid text getting longer on each preview
 
 		# Attempt submission here.  This will check for edit conflicts,
 		# and redundantly check for locked database, blocked IPs, etc.
@@ -362,7 +365,7 @@ class Article {
 			$aid = $wgTitle->getArticleID();
 			if ( 0 == $aid ) {
 				if ( ( "" == $wpTextbox1 ) ||
-				  ( wfMsg( "newarticletext" ) == trim( $wpTextbox1 ) ) ) {
+				  ( wfMsg( "newarticletext" ) == rtrim( $wpTextbox1 ) ) ) {
 					$wgOut->redirect(  wfLocalUrl(
 					  $wgTitle->getPrefixedURL() ) );
 					return;
@@ -1301,7 +1304,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 				$text = $q[1];
 			}
 		}
-		return trim( $s );
+		return rtrim( $s );
 	}
 
 	/* private */ function pstPass2( $text )

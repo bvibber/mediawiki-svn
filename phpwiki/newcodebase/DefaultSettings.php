@@ -41,5 +41,6 @@ $wgCookieExpiration = 2592000;
 $wgAllowExternalImages = true;
 $wgMiserMode = false; # Disable database-intensive features
 $wgUseTeX = true;
+$wgProfiling = false; # Enable for more detailed by-function times in debug log
 
 ?>

@@ -11,6 +11,7 @@ session_register( "wsUserPassword" );
 
 include_once( "Setup.php" );
 
+wfProfileIn( "main-misc-setup" );
 OutputPage::setEncodings(); # Not really used yet
 
 # Query string fields
@@ -33,6 +34,7 @@ if ( "" == $title && "delete" != $action ) {
 		exit;
 	}
 }
+wfProfileOut();
 if ( -1 == $wgTitle->getNamespace() ) {
 	wfSpecialPage();
 } else if ( "" != $search ) {

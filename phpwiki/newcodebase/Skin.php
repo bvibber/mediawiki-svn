@@ -61,7 +61,7 @@ class Skin {
 
 	function getHeadScripts() {
 		$r = "
-<SCRIPT>
+<SCRIPT TYPE=\"text/javascript\">
 function toggleVisibility( _levelId, _otherId, _linkId) {
 	var thisLevel = document.getElementById( _levelId );
 	var otherLevel = document.getElementById( _otherId );
@@ -196,6 +196,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 	function doBeforeContent()
 	{
 		global $wgUser, $wgOut, $wgTitle;
+		wfProfileIn( "Skin::doBeforeContent" );
 
 		$s = "";
 		$qb = $this->qbSetting();
@@ -239,6 +240,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 
 		$s .= $this->pageTitle();
 		$s .= $this->pageSubtitle() . "\n<p>";
+		wfProfileOut();
 		return $s;
 	}
 
@@ -273,6 +275,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 	function doAfterContent()
 	{
 		global $wgUser, $wgOut;
+		wfProfileIn( "Skin::doAfterContent" );
 
 		$s = "\n</div><br clear=all>\n";
 
@@ -299,6 +302,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		$s .= "</tr></table>\n</div>\n</div>\n";
 
 		if ( 0 != $qb ) { $s .= $this->quickBar(); }
+		wfProfileOut();
 		return $s;
 	}
 
@@ -494,6 +498,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 	function quickBar()
 	{
 		global $wgOut, $wgTitle, $wgUser, $action, $wgLang;
+		wfProfileIn( "Skin::quickBar" );
 
 		$s = "\n<div id='quickbar'>";
 		$s .= "\n" . $this->logoText() . "\n<hr>";
@@ -596,6 +601,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		  . $sep . $this->bugReportsLink();
 
 		$s .= "\n</div>\n";
+		wfProfileOut();
 		return $s;
 	}
 
