@@ -29,11 +29,18 @@ $wgTotalEdits = -1;
 include_once( "DatabaseFunctions.php" );
 include_once( "UpdateClasses.php" );
 
-# PHP 4.06 workaround
+# PHP 4.1+ has array_key_exists, PHP 4.0.6 has key_exists instead, and earlier
+# versions of PHP have neither. So we roll our own. Note that this
+# function will return false even for keys that exist but whose associated 
+# value is NULL.
 #
-if ( phpversion() < "4.1" ) {
+if ( phpversion() == "4.0.6" ) {
 	function array_key_exists( $k, $a ) {
 		return key_exists( $k, $a );
+	}
+} else if (phpversion() < "4.1") {
+	function array_key_exists( $k, $a ) {
+		return isset($a[$k]);
 	}
 }
 
