@@ -35,7 +35,7 @@
 	"highlightbroken" => "Verweise auf leere Themen hervorheben",
 	"justify"	=> "Text als Blocksatz",
 	"hideminor" => "Keine kleinen Änderungen in Letzte Änderungen anzeigen",
-	"usenewrc" => "Enhanced recent changes (not for all browsers)",
+	"usenewrc" => "Erweiterte letzte Änderungen (nicht für alle Browser geeignet)",
 	"numberheadings" => "Überschriften automatisch numerieren",
 	"rememberpassword" => "Passwort merken",
 	"editwidth" => "Text-Eingabefeld mit voller Breite",
