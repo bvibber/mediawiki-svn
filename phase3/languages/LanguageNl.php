@@ -88,10 +88,10 @@
  "ab" => "Apsua byzwa",
  "ar" => "&#8238;&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;&#8236;",
  "as" => "Asami",
- "av" => "Avara"
+ "av" => "Avara",
  "ay" => "Aymara",
  "az" => "Azerbacan",
- "bm" => "Bambankan"
+ "bm" => "Bambankan",
  "ba" => "Baskort",
  "be" => "&#1041;&#1077;&#1083;&#1072;&#1088;&#1091;&#1089;&#1082;&#1080;",
  "bg" => "Bülgarski ezik",
@@ -155,7 +155,7 @@
  "lv" => "Latvie&scaron;u",
  "ln" => "Lingala",
  "lt" => "Lietuvi&#371;",
- 'lg" => "Luganda",
+ "lg" => "Luganda",
  "hu" => "Magyar",
  "mk" => "Makedonski",
  "mg" => "Malagasy",
@@ -225,7 +225,7 @@
  "tw" => "Twi",
  "uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;",
  "ur" => "Urdu",
- "ve" => Tshivenda",
+ "ve" => "Tshivenda",
  "vi" => "Tiêng Viêt Nam",
  "vo" => "Volapük",
  "wo" => "Wolof",
@@ -1149,41 +1149,6 @@ class LanguageNl extends Language {
  }
 
  function isRTL() { return false; }
-
-/* private */ $wgMagicWordsEn = array(
-#   ID                                 CASE  SYNONYMS
-    MAG_REDIRECT             => array( 0,    "#redirect"              ),
-    MAG_NOTOC                => array( 0,    "__NOTOC__"              ),
-    MAG_START                => array( 0,    "__START__"              ),
-    MAG_CURRENTMONTH         => array( 1,    "{{CURRENTMONTH}}"       ),
-    MAG_CURRENTMONTHNAME     => array( 1,    "{{CURRENTMONTHNAME}}"   ),
-    MAG_CURRENTDAY           => array( 1,    "{{CURRENTDAY}}"         ),   
-    MAG_CURRENTDAYNAME       => array( 1,    "{{CURRENTDAYNAME}}"     ),
-    MAG_CURRENTYEAR          => array( 1,    "{{CURRENTYEAR}}"        ),
-    MAG_CURRENTTIME          => array( 1,    "{{CURRENTTIME}}"        ),
-    MAG_NUMBEROFARTICLES     => array( 1,    "{{NUMBEROFARTICLES}}"   ),
-    MAG_CURRENTMONTHNAMEGEN  => array( 1,    "{{CURRENTMONTHNAMEGEN}}"),
-    MAG_MSG                  => array( 1,    "{{MSG:$1}}"             ),
-    MAG_SUBST                => array( 1,    "{{SUBST:$1}}"           ),
-    MAG_MSGNW                => array( 1,    "{{MSGNW:$1}}"           )
-);
-
- function getMagicWords() 
- {
-  global $wgMagicWordsNl;
-  return $wgMagicWordsNl;
- }
-
- # Fill a MagicWord object with data from here
- function getMagic( &$mw )
- {
-	$raw = $this->getMagicWords(); # don't worry, it's reference counted not deep copy
-	$rawEntry = $raw[$mw->mId];
-	$mw->mCaseSensitive = $rawEntry[0];
-	$mw->mSynonyms = array_slice( $rawEntry, 1 );
- }
-
- 
 
  # Inherit iconv(), ucfirst(), stripForSearch(), recodeForEdit(), recodeInput()
  # since they are same as English/Latin1
