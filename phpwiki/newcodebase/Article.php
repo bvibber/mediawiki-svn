@@ -695,8 +695,9 @@ $wpTextbox2
 		$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}</li>\n{$m[2]}";
 
 		$conn = wfGetDB();
-		$sql = "UPDATE cur SET cur_text='" .
-		  wfStrencode( trim( $text ) ) . "' WHERE cur_id={$id}";
+		$sql = "UPDATE cur SET cur_timestamp='" . date( "YmdHis" ) .
+		  "', cur_text='" . wfStrencode( trim( $text ) ) . "' " .
+		  "WHERE cur_id={$id}";
 		wfQuery( $sql, $conn, $fname );
 	}
 

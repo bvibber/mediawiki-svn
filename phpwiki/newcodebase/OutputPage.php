@@ -62,8 +62,7 @@ class OutputPage {
 		while ( "" != $text ) {
 			$p = preg_split( "/<\\s*nowiki\\s*>/i", $text, 2 );
 			$stripped .= $p[0];
-
-			if ( count( $p ) < 2 ||  "" == $p[1] ) { $text = ""; }
+			if ( ( count( $p ) < 2 ) || ( "" == $p[1] ) ) { $text = ""; }
 			else {
 				$q = preg_split( "/<\\/\\s*nowiki\\s*>/i", $p[1], 2 );
 				++$nwsecs;
@@ -74,7 +73,7 @@ class OutputPage {
 		}
 		$text = $this->doWikiPass2( $stripped, $linestart );
 		for ( $i = 1; $i <= $nwsecs; ++$i ) {
-			$text = preg_replace( "/{$unique}/", $nwsecs[1],
+			$text = preg_replace( "/{$unique}/", $nwlist[$i],
 			  $text, 1 );
 		}
 		$this->addHTML( $text );
