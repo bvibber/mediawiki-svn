@@ -21,7 +21,7 @@ OverrideOutput=0
 OverrideOutputName=Waikiki.exe
 HostApplication=
 Folders=
-CommandLine=-sourcefile="orig.wiki" -destfile="test.html" -title="Wikipedia:How to edit a page"
+CommandLine=-sqlite="test.sqlite" -destfile="test.html" -title="A"
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0

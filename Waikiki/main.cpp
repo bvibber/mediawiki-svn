@@ -155,13 +155,14 @@ void TWikiInterface::run (int argc, char *argv[])
 int main(int argc, char *argv[])
 {
     TWikiInterface w ;
-/*    LANG->loadPHP ( "Language.php" ) ;
+    LANG->loadPHP ( "Language.php" ) ;
     w.run ( argc , argv ) ;
     system("PAUSE");	
-*/
+
 
     // Convert a MySQL dump imto a sqlite file
-    DB->mysql2sqlite ( ".\\20030906_cur_table.sql" , ".\\test.sqlite" ) ;
+//    DB->mysql2sqlite ( ".\\brief_cur_table.sql" , ".\\test.sqlite" ) ;
+//    DB->mysql2sqlite ( ".\\20030906_cur_table.sql" , ".\\test.sqlite" ) ;
 
     return 0;
 }

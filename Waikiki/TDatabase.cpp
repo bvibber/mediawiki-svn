@@ -43,10 +43,10 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     TUCS unique = " " ;
     unique[0] = 1 ;
     
-    VTUCS index ;
+    VTUCS index , keys ;
     TUCS table_name ;
     vector <string> values ;
-    uint a ;
+    uint a , b ;
     bool creating = false ;
     for ( a = 0 ; a < vc.size() ; a++ )
         {
@@ -72,15 +72,34 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
            cur += ");" ;
            sqlite_exec ( db , "DROP TABLE cur;" , 0 , 0 , 0 ) ;
            sqlite_exec ( db , cur.c_str() , 0 , 0 , 0 ) ;
+           cout << cur << endl ;
            cur = "" ;
+           
+           for ( b = 0 ; b < keys.size() ; b++ )
+              {
+              cur = "CREATE INDEX k_" + keys[b].getstring() + " ON " ;
+              cur += table_name.getstring() ;
+              cur += "(" + keys[b].getstring() + ");" ;
+              sqlite_exec ( db , cur.c_str() , 0 , 0 , 0 ) ;
+//              cout << cur << endl ;
+              }
+           
            creating = false ;
            }
         else if ( creating )
            {
-           TUCS s ( x ) ; s.trim() ;
+           TUCS s ( x ) ;
+           s.trim() ;
            TUCS q = " " + s.getstring() + " " ;
            if ( q.find ( " KEY " ) < q.length() )
               {
+              if ( s.substr ( 0 , 3 ) == "KEY" )
+                 {
+                 VTUCS w ;
+                 s.explode ( " " , w ) ;
+                 s = w[1] ;
+                 keys.push_back ( s ) ;
+                 }
               }
            else
               {
@@ -248,15 +267,16 @@ void TDatabaseSqlite::getArticle ( TTitle t , TArticle &art )
     cout << t.getNiceTitle().getstring() << endl ;
 
     string sql ;
-    sql = "SELECT * FROM cur WHERE cur_title ='" + t.getDBkey().getstring() + "' LIMIT 1" ;
+    sql = "SELECT * FROM cur WHERE cur_namespace=0 AND cur_title ='" + t.getDBkey().getstring() + "' LIMIT 1" ;
     cout << sql << endl ;
     sqlite_exec ( db , sql.c_str() , callback , 0 , 0 ) ;
-    cout << results.content.size() << endl ;
     sqlite_close ( db ) ;
+    
     
     if ( results.content.size() == 1 )
        {
-       art.setSource ( results["cur_text"] ) ;
+//       cout << results[0][results["cur_text"]] << endl ;
+       art.setSource ( TUCS(results["cur_text"]) ) ;
        }
     art.setTitle ( t ) ;
     }
