@@ -7,6 +7,7 @@ class TWikiInterface
     TWikiInterface () ;
     ~TWikiInterface () ;
     void run (int argc, char *argv[]) ;
+    void go ( TUCS s , TArticle &art ) ;
     } ;
 
 TWikiInterface::TWikiInterface ()
@@ -34,6 +35,7 @@ void TWikiInterface::run (int argc, char *argv[])
     TUCS forcetitle ;
     
     TUCS s ;
+    TUCS action = "view" ;
 
     // Parsing command line parameters
     int a ;
@@ -64,6 +66,11 @@ void TWikiInterface::run (int argc, char *argv[])
               v.pop_back () ;
               forcetitle.implode ( "." , v ) ;
               }
+           }
+        else if ( key == "-ACTION" )
+           {
+           action = s ;
+           action.toupper() ;
            }
         else if ( key == "-MYSQL2SQLITE" )
            {
@@ -109,9 +116,12 @@ void TWikiInterface::run (int argc, char *argv[])
            }
         }
 
-    if ( loadFromFile )
+    if ( action == "GO" )
         {
-//        cout << "!" << forcetitle.getstring() << endl ;
+        go ( forcetitle , art ) ;
+        }
+    else if ( loadFromFile ) // View
+        {
         DB->getArticle ( TTitle ( forcetitle, FROM_TEXT ) , art ) ;
         }
     else
@@ -129,13 +139,6 @@ void TWikiInterface::run (int argc, char *argv[])
         }
         
 
-//    int c1 = clock () ;
-
-
-//    for ( a = 0 ; a < 10 ; a++ )
-        {
-//        TOutput::current = new TOutput ;
-
     SKIN->setArticle ( &art ) ;
     
     TUCS html = SKIN->getArticleHTML() ;
@@ -146,11 +149,6 @@ void TWikiInterface::run (int argc, char *argv[])
     OUTPUT->addHTML ( html ) ;
     OUTPUT->addHTML ( SKIN->getSideBar() ) ;
     OUTPUT->addHTML ( "</div>\n" ) ;
-        }
-
-//    c1 = clock() - c1 ;
-//    cout << c1 << endl ;
-//    system("PAUSE");	
 
     // Writing    
     if ( destfile != "" )
@@ -162,6 +160,26 @@ void TWikiInterface::run (int argc, char *argv[])
         {
         cout << OUTPUT->getPage().getstring() ;
         }
+    }
+
+void TWikiInterface::go ( TUCS s , TArticle &art )
+    {
+    art.setTitle ( TTitle ( "Searching..." ) ) ;
+    
+    VTUCS bytitle , bytext ;
+    DB->findArticles ( s , bytitle , bytext ) ;
+    
+    uint a ;
+    for ( a = 0 ; a < bytitle.size() ; a++ )
+        {
+        TTitle t ( bytitle[a] ) ;
+        bytitle[a] = SKIN->getInternalLink ( t ) ;
+        }
+    
+    TUCS t ;
+    t.implode ( "<br>\n" , bytitle ) ;
+    
+    art.setSource ( t ) ;
     }
 
 

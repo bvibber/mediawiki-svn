@@ -7,6 +7,9 @@ TDatabase* TDatabase::current = NULL ;
 bool TDatabase::init ( string s1 ) { return false ; } ;
 void TDatabase::getArticle ( TTitle t , TArticle &art , bool wasRedirected ) { } ;
 bool TDatabase::doesArticleExist ( TTitle &t ) { return false ; }
+void TDatabase::query ( TUCS s ) {}
+
+void TDatabase::findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) { } ;
 
 void TDatabase::filterBackslashes ( TUCS &s )
     {
@@ -16,6 +19,7 @@ void TDatabase::filterBackslashes ( TUCS &s )
     s.replace ( "\\'" , "'" ) ;
     s.replace ( x , '"' ) ;
     s.replace ( "\\r" , "" ) ;
+    s.replace ( "\\\\" , "\\" ) ;
     }
 
 void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
@@ -271,9 +275,7 @@ bool TDatabaseSqlite::init ( string s1 )
 
 void TDatabaseSqlite::getArticle ( TTitle t , TArticle &art , bool wasRedirected )
     {
-    st = this ;
     results.clean() ;
-    db = sqlite_open ( filename.c_str() , 0 , NULL ) ;
     
     string sql ;
     sql = "SELECT * FROM cur WHERE cur_namespace=" ;
@@ -281,9 +283,8 @@ void TDatabaseSqlite::getArticle ( TTitle t , TArticle &art , bool wasRedirected
     sql += " AND cur_title ='" ;
     sql += t.getDBkey().getstring() ;
     sql += "' LIMIT 1" ;
-    sqlite_exec ( db , sql.c_str() , callback , 0 , 0 ) ;
-    sqlite_close ( db ) ;
     
+    query ( sql ) ;
     
     if ( results.content.size() == 1 )
        {
@@ -316,11 +317,48 @@ bool TDatabaseSqlite::doesArticleExist ( TTitle &t )
     sql += t.getDBkey().getstring() ;
     sql += "' LIMIT 1" ;
 
-    results.clean() ;
-    db = sqlite_open ( filename.c_str() , 0 , NULL ) ;
-    sqlite_exec ( db , sql.c_str() , callback , 0 , 0 ) ;
-    sqlite_close ( db ) ;
+    query ( sql ) ;
+
     if ( results.content.size() == 1 ) return true ;
     return false ;
+    }
+    
+void TDatabaseSqlite::findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext )
+    {
+    TUCS sql , t ;
+    VTUCS v1 , v2 ;
+    uint a ;
+    sql = "SELECT cur_namespace,cur_title FROM cur WHERE " ;
+    
+    s.explode ( " " , v1 ) ;
+    for ( a = 0 ; a < v1.size() ; a++ )
+        {
+        v1[a].trim() ;
+        if ( !v1[a].empty() ) v2.push_back ( "cur_title LIKE \"%" + v1[a] + "%\"" ) ;
+        }
+    t.implode ( " OR " , v2 ) ;
+    sql += t ;
+
+    query ( sql ) ;    
+
+    for ( a = 0 ; a < results.content.size() ; a++ )
+        {
+        t = "NamespaceNames:" ;
+        t += results[a][results["cur_namespace"]] ;
+        t = LNG(t);
+        if ( !t.empty() ) t += ":" ;
+        t += results[a][results["cur_title"]] ;
+        bytitle.push_back ( t ) ;
+        }
+        
+    }
+    
+void TDatabaseSqlite::query ( TUCS s )
+    {
+    st = this ;
+    results.clean() ;
+    db = sqlite_open ( filename.c_str() , 0 , NULL ) ;
+    sqlite_exec ( db , s.getstring().c_str() , callback , 0 , 0 ) ;
+    sqlite_close ( db ) ;    
     }
     

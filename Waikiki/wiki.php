@@ -15,9 +15,22 @@ $redirect = getGet ( "redirect" ) ;
 if ( $action == "" ) $action = "view" ;
 if ( $title == "" ) $title = "B" ;
 
+if ( $_GET['go'] == "Go" ) $action="go" ;
+#if ( isset ( $_GET['search'] ) ) $action="search" ;
+
 $wd = "C:\\Programme\\Dev-Cpp\\Mine\\Waikiki" ;
 $prg = "waikiki.exe" ;
-$param = '-sqlite="test.sqlite" -title="' . $title . '"' . $redirect ;
+$db = '-sqlite="test.sqlite"' ;
+
+if ( $action == "view" )
+	{
+	$param = $db . ' -title="' . $title . '"' . $redirect ;
+   }
+else if ( $action == "go" || $action == "search" )
+	{
+   $title = $_GET['search'] ;
+	$param = $db . ' -action=' . $action . ' -title="' . $title ;
+   }
 
 
 $exe = "{$prg} {$param}" ;

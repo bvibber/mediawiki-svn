@@ -39,6 +39,8 @@ class TDatabase
     virtual bool init ( string s1 ) ;
     virtual void getArticle ( TTitle t , TArticle &art , bool wasRedirected = false ) ;
     virtual bool doesArticleExist ( TTitle &t ) ;
+    virtual void findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) ;
+    virtual void query ( TUCS s ) ;
 
     // Useful methods
     void mysql2sqlite ( string fn_in , string fn_out ) ;
@@ -65,6 +67,8 @@ class TDatabaseSqlite : public TDatabase
     virtual bool init ( string s1 ) ;
     virtual void getArticle ( TTitle t , TArticle &art , bool wasRedirected = false ) ;
     virtual bool doesArticleExist ( TTitle &t ) ;
+    virtual void findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) ;
+    virtual void query ( TUCS s ) ;
 
     TSQLresult results ;
     

@@ -83,7 +83,7 @@ TUCS TSkin::getTopBar()
     r += getHelpLink ( "<br>\n" ) ;
     
     // Search box
-    r += "<form name=\"search\" class=\"inline\" method=\"get\" action=\"/w/wiki.phtml\">" ;
+    r += "<form name=\"search\" class=\"inline\" method=\"get\" action=\"./wiki.php\">" ;
     r += "<input type=\"text\" name=\"search\" size=\"19\" value=\"\">" ;
     r += "<input type=\"submit\" name=\"go\" value=\"Go\"> " ;
     r += "<input type=\"submit\" value=\"Search\"></form>" ;
