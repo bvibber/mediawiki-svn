@@ -978,14 +978,19 @@ class WikiPage extends WikiTitle {
 
 	# This generated the special "Cologne Blue" header
 	function getCologneBlueHeader () {
-		global $wikiHome , $wikiAbout , $wikiFAQ , $wikiSpecialPages , $wikiLogIn , $wikiLogOut , $wikiHeaderSubtitle , $wikiWikipediaFAQ , $user , $wikiHelp , $wikiWikipediaHelp ;
+		global $wikiHome , $wikiAbout , $wikiFAQ , $wikiSpecialPages , $wikiLogIn , $wikiLogOut , $wikiHeaderSubtitle , $wikiWikipediaFAQ ;
+		global $wikiLogoFile , $user , $wikiHelp , $wikiWikipediaHelp ;
 		$bgc1 = "#7089AA" ;
 		$fonts = "face=verdena,times color=white" ;
 		$ret .= "<table width='100%' border=0 cellspacing=0 cellpadding=1>\n" ;
 
+		# Logo
+		$ret .= "<tr>\n" ;
+#		$ret .= "<td width=1 rowspan=2 valign=top><img src='$wikiLogoFile' height=55></td>\n" ; # Tried to add the logo; looks crappy IMHO
+
 		# Row 1
-		$ret .= "<tr>\n<td bgcolor=$bgc1 valign=bottom>\n" ;
-		$ret .= "<font size='+4' $fonts>WIKIPEDIA</font></td>\n" ;
+		$ret .= "<td bgcolor=$bgc1 valign=bottom>\n" ;
+		$ret .= "<font size='+4' $fonts><a class=syslink href=\"".WikiLink("")."\">WIKIPEDIA</a></font></td>\n" ;
 		$ret .= "<td bgcolor=$bgc1 align=right valign=bottom>\n" ;
 		$ret .= "<font $fonts>" ;
 		$ret .= "<a class=syslink href='".WikiLink("")."'>" . strtoupperIntl ( $wikiHome ) . "</a> | " ;
@@ -1000,7 +1005,11 @@ class WikiPage extends WikiTitle {
 		$ret .= "</font></td></tr>\n" ;
 
 		#Row 2
-		$ret .= "<tr><td colspan=2 bgcolor=white><font size=+1 color=black $fonts>" . strtoupperIntl ( $wikiHeaderSubtitle ) . "</font><br><br></td></tr>\n" ;
+		$ret .= "<tr><td colspan=2 bgcolor=white>" ;
+		$ret .= "<a class=syslink href=\"".WikiLink("wikipedia")."\">" ;
+		$ret .= "<font size=+1 color=black $fonts>" ;
+		$ret .= strtoupperIntl ( $wikiHeaderSubtitle ) ;
+		$ret .= "</font></a><br><br></td></tr>\n" ;
 
 		return $ret ;
 		}
@@ -1102,8 +1111,8 @@ class WikiPage extends WikiTitle {
 	        global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
         	global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate , $wikiGetDate , $wikiDiff ;
 		global $wikiMyself , $wikiLogOut , $wikiMySettings , $wikiShortPages , $wikiLongPages , $wikiUserList , $wikiEditingHistory , $wikiTopics ;
-		global $wikiAddToWatchlist , $wikiEditPage , $wikiPrintPage , $wikiTalk , $wikiEdit , $wikiPageOptions , $wikiBrowse , $wikiFind , $wikiOK;
-		global $wikiEditingHelp , $wikiWikipediaEditingHelp , $wikiShowLastChange ;
+		global $wikiAddToWatchlist , $wikiEditPage , $wikiPrintable , $wikiTalk , $wikiEdit , $wikiPageOptions , $wikiBrowse , $wikiFind , $wikiOK;
+		global $wikiEditingHelp , $wikiWikipediaEditingHelp , $wikiShowLastChange , $wikiProtectThisPage , $wikiMainPage ;
 
 		$fonts = "face=verdana,arial" ;
 		$bg = "bgcolor=#EEF1F5 nowrap" ;
@@ -1115,7 +1124,7 @@ class WikiPage extends WikiTitle {
 		$ret .= "<font $fonts>\n<table border=0 cellspacing=3 cellpadding=2 width='100%'><tr><td $bg>" ;
 
 		$ret .= "<font color=#666666><b>$wikiBrowse</b></font><br>\n" ;
-		$ret .= "<a class=CBlink href=\"".wikiLink("")."\">$wikiHome</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("")."\">$wikiMainPage</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:RecentChanges")."\">$wikiRecentChanges</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:NewPages")."\">$wikiNewPages</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:PopularPages")."\">$wikiPopularPages</a><br>\n" ;
@@ -1133,20 +1142,18 @@ class WikiPage extends WikiTitle {
 		$ret .= "</td></tr><tr><td $bg>" ;
 		$ret .= "<font color=#666666><b>$wikiEdit</b></font><br>\n" ;
 		if ( !$this->isSpecialPage ) {
-			$ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=edit")."\">$wikiEditPage</a><br>\n" ;
-			if ( in_array ( "is_sysop" , $user->rights ) ) { # Sysop functions
-				$ret .= "<a class=CBlink href=\"".wikiLink("special:deletepage&target=".$this->url)."\">$wikiDeleteThisPage</a><br>\n" ;
-				$ret .= "<a class=CBlink href=\"".wikiLink("special:protectpage&target=".$this->url)."\">$wikiProtectThisPage</a><br>\n" ;
-				}
+			if ( $this->canEdit() ) $ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=edit")."\">$wikiEditPage</a><br>\n" ;
+			if ( $this->canDelete() ) $ret .= "<a class=CBlink href=\"".wikiLink("special:deletepage&target=".$this->url)."\">$wikiDeleteThisPage</a><br>\n" ;
+			if ( $this->canProtect() ) $ret .= "<a class=CBlink href=\"".wikiLink("special:protectpage&target=".$this->url)."\">$wikiProtectThisPage</a><br>\n" ;
 			}
-#		$ret .= "<a class=CBlink href=\"".wikiLink($wikiWikipediaEditingHelp)."\">$wikiEditingHelp</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink($wikiWikipediaEditingHelp)."\">$wikiEditingHelp</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:Upload")."\">$wikiUpload</a><br>\n" ;
 
 		# Page options
-		$ret .= "</td></tr><tr><td $bg>" ;
-		$ret .= "<font color=#666666><b>$wikiPageOptions</b></font><br>\n" ;
 		if ( !$this->isSpecialPage ) {
-			$ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=print")."\">$wikiPrintPage</a><br>\n" ;
+			$ret .= "</td></tr><tr><td $bg>" ;
+			$ret .= "<font color=#666666><b>$wikiPageOptions</b></font><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=print")."\">$wikiPrintable</a><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=watch&mode=yes")."\">$wikiAddToWatchlist</a><br>\n" ;
 
 			$n = $this->namespace ;
@@ -1200,7 +1207,7 @@ class WikiPage extends WikiTitle {
         global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages , $action ;
         global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
         global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
-        global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate ;
+        global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate , $wikiProtectThisPage ;
 
 	if ( $user->options[skin] == "Cologne Blue" ) return $this->getCologneBlueQuickBar () ;
 
@@ -1220,7 +1227,7 @@ class WikiPage extends WikiTitle {
         if ( $this->canDelete() ) $column .= "<br><a href=\"".wikiLink("special:deletepage&amp;target=".$this->url)."\">$wikiDeleteThisPage</a>\n" ;
         $this->isSpecialPage = $temp ;
 
-        if ( $this->canProtect() ) $column .= "<br><a href=\"".wikiLink("special:protectpage&amp;target=".$this->url)."\">Protect this page</a>\n" ;
+        if ( $this->canProtect() ) $column .= "<br><a href=\"".wikiLink("special:protectpage&amp;target=".$this->url)."\">$wikiProtectThisPage</a>\n" ;
 # To be implemented later
 #       if ( $this->canAdvance() ) $column .= "<br><a href=\"".wikiLink("special:Advance&amp;topic=$this->safeTitle")."\">Advance</a>\n" ;
 
@@ -1275,9 +1282,12 @@ class WikiPage extends WikiTitle {
         if ( $action == "edit" ) $action = "" ;
         if ( $user->options["quickBar"] == "right" or $user->options["quickBar"] == "left" or $user->options["forceQuickBar"] != "" ) {
             $column = $this->getQuickBar();
+
+/*
             $spl = $this->getSubpageList () ;
             if ( !$this->isSpecialPage and $user->options["showStructure"]=="yes" and count ( $spl ) > 0 )
                 $column .= "<font size=-1>".$this->parseContents ( "<hr>".implode ( "<br>\n" , $spl ) )."</font>" ;
+*/
 
 	    $cw = 110 ;
 	    if ( $user->options[skin] == "Cologne Blue" ) $cw = 130 ;
@@ -1286,7 +1296,12 @@ class WikiPage extends WikiTitle {
 
             $table = "<table width=\"100%\" class=\"middle\" cellpadding=2 cellspacing=0><tr>" ;
             $qb = $user->options["quickBar"] ;
-            if ( $user->options["forceQuickBar"] != "" ) $qb = $user->options["forceQuickBar"] ;
+            if ( $user->options["forceQuickBar"] != "" ) {
+		if ( $user->options["forceQuickBar"] == "anywhere" ) {
+			if ( $qb != "left" ) $qb = "right" ; # Forcing right quickbar if unspecified
+			}
+		else $qb = $user->options["forceQuickBar"] ;
+		}
 
             global $framed ;
             if ( isset ( $framed ) ) {
