@@ -149,7 +149,11 @@ class Parser
 		$this->mOutputType = OT_HTML;
 
 		$stripState = NULL;
-		$text = $this->strip( $text, $this->mStripState );
+		global $fnord; $fnord = 1;
+		//$text = $this->strip( $text, $this->mStripState );
+		// VOODOO MAGIC FIX! Sometimes the above segfaults in PHP5.
+		$x =& $this->mStripState;
+		$text = $this->strip( $text, $x );
 		$text = $this->internalParse( $text, $linestart );
 		$text = $this->unstrip( $text, $this->mStripState );
 		# Clean up special characters, only run once, next-to-last before doBlockLevels

@@ -124,11 +124,11 @@ class ImagePage extends Article {
 		$wgOut->addHTML( '<h2>' . wfMsg( 'imagelinks' ) . "</h2>\n" );
 
 		$dbr =& wfGetDB( DB_SLAVE );
-		$cur = $dbr->tableName( 'cur' );
+		$page = $dbr->tableName( 'page' );
 		$imagelinks = $dbr->tableName( 'imagelinks' );
 		
-		$sql = "SELECT cur_namespace,cur_title FROM $imagelinks,$cur WHERE il_to=" .
-		  $dbr->addQuotes( $this->mTitle->getDBkey() ) . " AND il_from=cur_id";
+		$sql = "SELECT page_namespace,page_title FROM $imagelinks,$page WHERE il_to=" .
+		  $dbr->addQuotes( $this->mTitle->getDBkey() ) . " AND il_from=page_id";
 		$res = $dbr->query( $sql, DB_SLAVE, "Article::imageLinks" );
 
 		if ( 0 == $dbr->numRows( $res ) ) {
@@ -139,7 +139,7 @@ class ImagePage extends Article {
 
 		$sk = $wgUser->getSkin();
 		while ( $s = $dbr->fetchObject( $res ) ) {
-			$name = Title::MakeTitle( $s->cur_namespace, $s->cur_title );
+			$name = Title::MakeTitle( $s->page_namespace, $s->page_title );
 			$link = $sk->makeKnownLinkObj( $name, "" );
 			$wgOut->addHTML( "<li>{$link}</li>\n" );
 		}

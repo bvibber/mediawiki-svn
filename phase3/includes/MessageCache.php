@@ -227,11 +227,14 @@ class MessageCache
 			# If it wasn't in the cache, load each message from the DB individually
 			if ( !$message ) {
 				$dbr =& wfGetDB( DB_SLAVE );
-				$result = $dbr->getArray( 'cur', array('cur_text'),
-				  array( 'cur_namespace' => NS_MEDIAWIKI, 'cur_title' => $title ),
+				$result = $dbr->getArray( array( 'page', 'text' ),
+				  array( 'old_flags', 'old_text' ),
+				  'page_namespace=' . NS_MEDIAWIKI .
+				  ' AND page_title=' . $dbr->addQuotes( $title ) .
+				  ' AND page_latest=old_id',
 				  'MessageCache::get' );
 				if ( $result ) {
-					$message = $result->cur_text;
+					$message = Article::getRevisionText( $result );
 				}
 			}
 		}

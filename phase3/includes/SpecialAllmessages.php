@@ -111,11 +111,12 @@ function makeHTMLText( $messages ) {
 		NS_MEDIAWIKI => array(),
 		NS_MEDIAWIKI_TALK => array()
 	);
-	$sql = "SELECT cur_namespace,cur_title FROM cur WHERE cur_namespace IN (" . NS_MEDIAWIKI . ", " . NS_MEDIAWIKI_TALK . ")";
 	$dbr =& wfGetDB( DB_SLAVE );
+	$page = $dbr->tableName( 'page' );
+	$sql = "SELECT page_namespace,page_title FROM $page WHERE page_namespace IN (" . NS_MEDIAWIKI . ", " . NS_MEDIAWIKI_TALK . ")";
 	$res = $dbr->query( $sql );
 	while( $s = $dbr->fetchObject( $res ) ) {
-		$pageExists[$s->cur_namespace][$s->cur_title] = true;
+		$pageExists[$s->page_namespace][$s->page_title] = true;
 	}
 	$dbr->freeResult( $res );
 	wfProfileOut( "$fname-check" );

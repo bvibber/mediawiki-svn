@@ -445,17 +445,17 @@ class EditPage {
 		}
 		# Prepare a list of templates used by this page
 		$db =& wfGetDB( DB_SLAVE );
-		$cur = $db->tableName( 'cur' );
+		$page = $db->tableName( 'page' );
 		$links = $db->tableName( 'links' );
 		$id = $this->mTitle->getArticleID();
-		$sql = "SELECT cur_namespace,cur_title,cur_id ".
-			"FROM $cur,$links WHERE l_to=cur_id AND l_from={$id} and cur_namespace=".NS_TEMPLATE;
+		$sql = "SELECT page_namespace,page_title,page_id ".
+			"FROM $page,$links WHERE l_to=page_id AND l_from={$id} and page_namespace=".NS_TEMPLATE;
 		$res = $db->query( $sql, "EditPage::editform" );
 
 		if ( $db->numRows( $res ) ) {
 			$templates = '<br />'. wfMsg( 'templatesused' ) . '<ul>';
 			while ( $row = $db->fetchObject( $res ) ) {
-				if ( $titleObj = Title::makeTitle( $row->cur_namespace, $row->cur_title ) ) {
+				if ( $titleObj = Title::makeTitle( $row->page_namespace, $row->page_title ) ) {
 					$templates .= '<li>' . $sk->makeLinkObj( $titleObj ) . '</li>';
 				}
 			}
@@ -463,14 +463,15 @@ class EditPage {
 		} else {	
 			$templates = '';
 		}
-		$wgOut->addHTML( "
+		$wgOut->addHTML( <<<END
 {$toolbar}
-<form id=\"editform\" name=\"editform\" method=\"post\" action=\"$action\"
-enctype=\"application/x-www-form-urlencoded\">
+<form id="editform" name="editform" method="post" action="$action"
+enctype="application/x-www-form-urlencoded">
 {$commentsubject}
-<textarea tabindex='1' accesskey=\",\" name=\"wpTextbox1\" rows='{$rows}'
-cols='{$cols}'{$ew}>" .
-htmlspecialchars( $wgContLang->recodeForEdit( $this->textbox1 ) ) .
+<textarea tabindex='1' accesskey="," name="wpTextbox1" rows='{$rows}'
+cols='{$cols}'{$ew}>
+END
+. htmlspecialchars( $wgContLang->recodeForEdit( $this->textbox1 ) ) .
 "
 </textarea>
 <br />{$editsummary}

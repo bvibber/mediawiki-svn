@@ -832,7 +832,7 @@ class OutputPage {
 		if ( !empty( $wgLinkHolders['namespaces'] ) ) {
 			wfProfileIn( $fname.'-check' );
 			$dbr =& wfGetDB( DB_SLAVE );
-			$cur = $dbr->tableName( 'cur' );
+			$page = $dbr->tableName( 'page' );
 			$sk = $wgUser->getSkin();
 			$threshold = $wgUser->getOption('stubthreshold');
 			
@@ -861,14 +861,15 @@ class OutputPage {
 					# Not in the link cache, add it to the query
 					if ( !isset( $current ) ) {
 						$current = $val;
-						$query =  "SELECT cur_id, cur_namespace, cur_title";
+						$query =  "SELECT page_id, page_namespace, page_title";
 						if ( $threshold > 0 ) {
+							wfDebugDieBacktrace( 'Need to fix stub threshold' );
 							$query .= ", LENGTH(cur_text) AS cur_len, cur_is_redirect";
 						} 
-						$query .= " FROM $cur WHERE (cur_namespace=$val AND cur_title IN(";
+						$query .= " FROM $page WHERE (page_namespace=$val AND page_title IN(";
 					} elseif ( $current != $val ) {
 						$current = $val;
-						$query .= ")) OR (cur_namespace=$val AND cur_title IN(";
+						$query .= ")) OR (page_namespace=$val AND page_title IN(";
 					} else {
 						$query .= ', ';
 					}
@@ -889,9 +890,9 @@ class OutputPage {
 				# 1 = known
 				# 2 = stub
 				while ( $s = $dbr->fetchObject($res) ) {
-					$title = Title::makeTitle( $s->cur_namespace, $s->cur_title );
+					$title = Title::makeTitle( $s->page_namespace, $s->page_title );
 					$pdbk = $title->getPrefixedDBkey();
-					$wgLinkCache->addGoodLink( $s->cur_id, $pdbk );
+					$wgLinkCache->addGoodLink( $s->page_id, $pdbk );
 					
 					if ( $threshold >  0 ) {
 						$size = $s->cur_len;
