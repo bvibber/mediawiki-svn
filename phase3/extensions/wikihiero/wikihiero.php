@@ -56,7 +56,7 @@
   define("WH_VER_MED",       2);
   define("WH_VER_MIN",       9);
 
-  define("WH_IMG_DIR",       "/upload/wh_img/"); //"extensions/wikihiero/img/");
+  define("WH_IMG_DIR",       "$wgScriptPath/extensions/wikihiero/img/" ); // "/upload/wh_img/"); //"extensions/wikihiero/img/");
   define("WH_IMG_PRE",       "hiero_");
   define("WH_IMG_EXT",       "png");
 
@@ -536,7 +536,7 @@
     "-"       => " ",
     ":"       => "-",
     "*"       => "-",
-    "!"       => "<br>",
+    "!"       => "<br />",
     "."       => "",
     "="       => "",
     "("       => "",
@@ -584,14 +584,14 @@
     {
       $code = $wh_phonemes[$glyph];
       if(array_key_exists($code, $wh_files))
-        return "<img style=\"margin:".WH_IMG_MARGIN."px;\" $option src=\"".WH_IMG_DIR.WH_IMG_PRE."$code".".".WH_IMG_EXT."\" title=\"$code [$glyph]\">";
+        return "<img style=\"margin:".WH_IMG_MARGIN."px;\" $option src=\"".htmlspecialchars(WH_IMG_DIR.WH_IMG_PRE."$code".".".WH_IMG_EXT)."\" title=\"".htmlspecialchars("$code [$glyph]")."\" />";
       else
-        return "<font title=\"$code\">$glyph</font>";
+        return "<font title=\"" . htmlspecialchars($code) . "\">" . htmlspecialchars($glyph) . "</font>";
     }
     else if(array_key_exists($glyph, $wh_files))
-      return "<img style=\"margin:".WH_IMG_MARGIN."px;\" $option src=\"".WH_IMG_DIR.WH_IMG_PRE."$glyph".".".WH_IMG_EXT."\" title=\"$glyph\">";
+      return "<img style=\"margin:".WH_IMG_MARGIN."px;\" $option src=\"".htmlspecialchars(WH_IMG_DIR.WH_IMG_PRE."$glyph".".".WH_IMG_EXT)."\" title=\"".htmlspecialchars($glyph)."\" />";
     else
-      return $glyph;
+      return htmlspecialchars($glyph);
   }
 
   //------------------------------------------------------------------------
@@ -818,7 +818,7 @@
       {
         echo "$item | ";
       }
-      echo "<br>\n";
+      echo "<br />\n";
     }
 */
     //------------------------------------------------------------------------
@@ -916,7 +916,7 @@
           foreach($code as $t)
           {
             if($t == ":")
-              $temp .= "<br>";
+              $temp .= "<br />";
             else if($t == "*")
               $temp .= " ";
             else
@@ -957,7 +957,7 @@
   {
     $html = "";
     $html .= "<b>WikiHiero v".WH_VER_MAJ.".".WH_VER_MED.".".WH_VER_MIN."</b>\n";
-		$html .= "by Guillaume Blanchard (Aoineko) under GPL (2004).<br>\n";
+		$html .= "by Guillaume Blanchard (Aoineko) under GPL (2004).<br />\n";
 		$html .= "Hieroglyph credit: S. Rosmorduc, G. Watson, J. Hirst (under GFDL).\n";
     return $html;
   }
