@@ -199,7 +199,8 @@ include_once( "utf8Case.php" );
 # All special pages have to be listed here: a description of ""
 # will make them not show up on the "Special Pages" page, which
 # is the right thing for some of them (such as the "targeted" ones).
-#
+
+ 
 /* private */ $wgValidSpecialPagesJa = array(
 	"Userlogin"		=> "",
 	"Userlogout"	=> "",
@@ -235,7 +236,7 @@ include_once( "utf8Case.php" );
 /* private */ $wgSysopSpecialPagesJa = array(
 	"Blockip"		=> "IPアドレスをブロック",
 	"Asksql"		=> "データベースに問い合わせ",
-	"Undelete"		=> "View and restore deleted pages"
+	"Undelete"		=> "消去されたページを閲覧し、復帰させる"
 );
 
 /* private */ $wgDeveloperSpecialPagesJa = array(
@@ -255,7 +256,7 @@ include_once( "utf8Case.php" );
 "help"			=> "ヘルプ",
 "helppage"		=> "Wikipedia:Help",
 "wikititlesuffix" => "Wikipedia",
-"bugreports"	=> "バグ報告",
+"bugreports"	=> "バグの報告",
 "bugreportspage" => "Wikipedia:Bug_reports",
 "faq"			=> "FAQ",
 "faqpage"		=> "Wikipedia:FAQ",
@@ -325,31 +326,40 @@ MySQL returned error \"<tt>$3: $4</tt>\".",
 "noconnect"		=> "$1 のデータベースに接続できません。",
 "nodb"			=> "$1 のデータベースを選択できません。",
 "readonly"		=> "データベースはロックされています",
-"enterlockreason" => "Enter a reason for the lock, including an estimate
-of when the lock will be released",
-"readonlytext"	=> "The Wikipedia database is currently locked to new
+"enterlockreason" => "ロックする理由を入力して下さい。ロックが解除されるのがいつになるかの見積もりについても述べて下さい。",
+"readonlytext"	=> "ウィキペディアデータベースは現在、新しい記事の追加や修正を受け付けない「ロック」状態になっています。これはおそらくは定期的なメンテナンスのためで、メンテナンス終了後は正常な状態に復帰します。
+データベースをロックした管理者は次のような説明をしています：
+<p>$1
+<p>The Wikipedia database is currently locked to new
 entries and other modifications, probably for routine database maintenance,
 after which it will be back to normal.
 The administrator who locked it offered this explanation:
 <p>$1",
-"missingarticle" => "The database did not find the text of a page
+"missingarticle" => "データベースは、\"$1\"というタイトルのページの、存在するはずの文章を見つけることができませんでした。
+これはデータベースのエラーではなく、ソフトウェアのバグだろうと思われます。
+URLと共に管理者に報告して下さるようにお願いします。
+The database did not find the text of a page
 that it should have found, named \"$1\".
 This is not a database error, but likely a bug in the software.
 Please report this to an administrator, making note of the URL.",
-"internalerror" => "Internal error",
-"filecopyerror" => "Could not copy file \"$1\" to \"$2\".",
-"filerenameerror" => "Could not rename file \"$1\" to \"$2\".",
-"filedeleteerror" => "Could not delete file \"$1\".",
-"filenotfound"	=> "Could not find file \"$1\".",
-"unexpected"	=> "Unexpected value: \"$1\"=\"$2\".",
-"formerror"		=> "Error: could not submit form",	
-"badarticleerror" => "This action cannot be performed on this page.",
-"cannotdelete"	=> "Could not delete the page or image specified.",
+"internalerror" => "内部処理エラー Internal error",
+"filecopyerror" => "ファイルを\"$1\"から\"$2\"へコピーできませんでした。Could not copy file \"$1\" to \"$2\".",
+"filerenameerror" => "ファイル名を\"$1\"から\"$2\"へ変更できませんでした。Could not rename file \"$1\" to \"$2\".",
+"filedeleteerror" => "ファイル\"$1\"を削除できませんでした。Could not delete file \"$1\".",
+"filenotfound"	=> "ファイルを\"$1\"は見つかりませんでした。Could not find file \"$1\".",
+"unexpected"	=> "エラー：\"$1\" と \"$2\" が同じです。Unexpected value: \"$1\"=\"$2\".",
+"formerror"		=> "エラー：フォームが提出できませんでした。 Error: could not submit form",	
+"badarticleerror" => "この動作はこのページではとることができません。 This action cannot be performed on this page.",
+"cannotdelete"	=> "指定されたページ、またはイメージを削除できませんでした。 Could not delete the page or image specified.",
 
 # Login and logout pages
 #
 "logouttitle"	=> "ユーザ ログアウト",
-"logouttext"	=> "You are now logged out.
+"logouttext"	=> "
+ログアウトしました。
+ウィキペディアを匿名で使い続うことができます。
+あるいはログインして元の、あるいは別のユーザーとして使うこともできます。
+<P>You are now logged out.
 You can continue to use Wikipedia anonymously, or you can log in
 again as the same or as a different user.\n",
 
@@ -410,25 +420,38 @@ Wikipediaの個人オプションを修正することをお忘れなく。",
 "updated"		=> "(更新)",
 "note"			=> "<strong>Note:</strong> ",
 "previewnote"	=> "これはプレビューです。まだ保存されていません！",
-"previewconflict" => "This preview reflects the text in the upper
+"previewconflict" => "このプレビューは、上の文章編集エリアの文章を保存した場合に
+どう見えるようになるかを示すものです。
+<p>This preview reflects the text in the upper
 text editing area as it will appear if you choose to save.",
 "editing"		=> "Editing $1",
 "editconflict"	=> "Edit conflict: $1",
-"explainconflict" => "Someone else has changed this page since you
+"explainconflict" => "あなたがこのページを編集し始めてから誰か他の人が
+このページを変更してしまいました。
+上の文章エリアは現在の最新の状態を反映しています。
+あなたの加える変更の内容は下の文章エリアに示されています。
+変更内容を、上の文章エリアの内容に組み込んで下さい。
+<b>上の文章エリアの内容だけ<b>が、\"Save page\"をクリックした時に
+保存されることになります。\n<p>",
+
+Someone else has changed this page since you
 started editing it.
 The upper text area contains the page text as it currently exists.
 Your changes are shown in the lower text area.
 You will have to merge your changes into the existing text.
 <b>Only</b> the text in the upper text area will be saved when you
 press \"Save page\".\n<p>",
-"yourtext"		=> "Your text",
-"storedversion" => "Stored version",
-"editingold"	=> "<strong>WARNING: You are editing an out-of-date
+"yourtext"		=> "あなたの文章",
+"storedversion" => "保存されたバージョン",
+"editingold"	=> "<strong>警告：あなたはこのページの古いバージョンを
+編集しています。もしもこの文章を保存すると、このバージョン以降に追加された
+全ての変更が無効になってしまいます。</strong>
+<p><strong>WARNING: You are editing an out-of-date
 revision of this page.
 If you save it, any changes made since this revision will be lost.</strong>\n",
-"yourdiff"		=> "Differences",
+"yourdiff"		=> "違い",
 "copyrightwarning" => "Wikipediaに投稿された文書は、すべて GNU Free Documentation License によって発行されたものとみなされますので、留意してください。
-(詳細は $1 を参照, また、参考までに非公式日本語訳はhttp://www.opensource.jp/fdl/fdl.ja.html　を参照)。
+<p>(詳細は $1 を参照, また、参考までに非公式日本語訳はhttp://www.opensource.jp/fdl/fdl.ja.html　を参照)。
 あなたの文章が他人によって自由に編集、配布されることを望まない場合は、投稿を控えて下さい。<br>
 また、あなたの投稿する文章はあなた自身によって書かれたものであるか、パブリック・ドメインかそれに類するフリー・リソースからのコピーであることを約束して下さい。
 <strong>著作権のある作品を許諾なしに投稿してはいけません！</strong>",
@@ -437,19 +460,22 @@ If you save it, any changes made since this revision will be lost.</strong>\n",
 # History pages
 #
 "revhistory"	=> "改訂履歴",
-"nohistory"		=> "There is no edit history for this page.",
-"revnotfound"	=> "Revision not found",
-"revnotfoundtext" => "The old revision of the page you asked for could not be found.
+"nohistory"		=> "このページには改訂履歴がありません。  There is no edit history for this page.",
+"revnotfound"	=> "リクエストされたバージョンが見つかりません Revision not found",
+"revnotfoundtext" => "リクエストされたこのページの旧バージョンは見つかりませんでした。
+URLをもう一度確認して、このページにアクセスしてみて下さい。
+
+The old revision of the page you asked for could not be found.
 Please check the URL you used to access this page.\n",
 "loadhist"		=> "Loading page history",
-"currentrev"	=> "Current revision",
-"revisionasof"	=> "Revision as of $1",
-"cur"			=> "cur",
-"next"			=> "next",
-"last"			=> "last",
-"orig"			=> "orig",
-"histlegend"	=> "Legend: (cur) = difference with current version,
-(last) = difference with preceding version, M = minor edit",
+"currentrev"	=> "現在のバージョン Current revision",
+"revisionasof"	=> "$1の時点でのバージョン Revision as of $1",
+"cur"			=> "現行版 cur",
+"next"			=> "直後版 next",
+"last"			=> "直前版 last",
+"orig"			=> "オリジナル版 orig",
+"histlegend"	=> "凡例: (cur) = 現行版との違い,
+(last) = 直前のバージョンとの違い, M = 細部の変更 minor edit",
 
 # Diffs
 #
