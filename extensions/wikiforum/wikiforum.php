@@ -26,16 +26,18 @@
  */
 if(defined('MEDIAWIKI')) 
 {
-   $wgExtraNamespaces[NS_THREAD] = "Thread";
+   $wgExtraNamespaces[NS_THREAD]   = "Thread";
+   $wgExtraNamespaces[NS_THREAD+1] = "Thread_talk";
 
    $wgExtensionFunctions[] = "wfForum";
    $wgExtensionFunctions[] = "wfNewthread";
 
-   define('FORUM_VERSION',      "1.0.1.0");
+   define('FORUM_VERSION',      "1.0.2.0");
    define('FORUM_MAX_THREAD',   50); // total number of last thread displayed on the forum page
    define('FORUM_INCLUDED_NUM', 10); // number of thread directly included into the forum page
    define('FORUM_SUM_LENGHT',   32); // maximum length of "last comment" field
    define('FORUM_CSS',          "$IP/extensions/wikiforum.css" ); // forum styles
+
 
    /**
     * New thread class
@@ -76,9 +78,15 @@ if(defined('MEDIAWIKI'))
       {
 		   global $wgOut, $wgRequest, $wgParser, $wgUser;
       
-         $title = Title::makeTitle( NS_THREAD, ucfirst($wgRequest->getVal('threadTitle')) );
+         $tt = trim($wgRequest->getVal('threadTitle'));
+         $title = Title::makeTitleSafe( NS_THREAD, ucfirst($tt) );
 
-         if($title->getArticleID() == 0) // article don't exist
+         if(!$tt or !$title) // invalid title
+         {
+            $wgOut->addHTML("<div id=\"threadexist\">".wfMsg('ThreadInvalid')."</div>\n<br />\n");
+            $this->showForm();
+         }
+         else if($title->getArticleID() == 0) // article don't exist
          {
             $article = new Article( $title );
             $article->insertNewArticle($wgRequest->getVal('threadDescription'), wfMsg('ThreadNew'), false, false);
@@ -200,6 +208,9 @@ if(defined('MEDIAWIKI'))
             $t .= $tab[$cnt]->title;
 
             $title = Title::newFromText( $t );
+            if(!$title)
+               die("invlide title \"$t\"");
+
 
             if($cnt < $summary)
             {
@@ -320,10 +331,11 @@ if(defined('MEDIAWIKI'))
 
       global $wgMessageCache;
       SpecialPage::addPage( new SpecialNewthread );
-      $wgMessageCache->addMessage( "ThreadNew",    "New thread" );
-      $wgMessageCache->addMessage( "ThreadTitle",  "Thread title" );
-      $wgMessageCache->addMessage( "ThreadOpen",   "Open thread" );
-      $wgMessageCache->addMessage( "ThreadExist",  "This thread already exist, please chose an other name!" );
+      $wgMessageCache->addMessage( "ThreadNew",     "New thread" );
+      $wgMessageCache->addMessage( "ThreadTitle",   "Thread title" );
+      $wgMessageCache->addMessage( "ThreadOpen",    "Open thread" );
+      $wgMessageCache->addMessage( "ThreadExist",   "This thread already exist, please chose an other name!" );
+      $wgMessageCache->addMessage( "ThreadInvalid", "This thread title is invalid, please chose an other name!" );
 
    }
 
