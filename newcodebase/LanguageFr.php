@@ -505,8 +505,7 @@ pour modifier vos préférences d'utilisateur.",
 "stubthreshold" => "Threshold for stub display",
 "recentchangescount" => "Nombre de titres dans les modifications récentes",
 "savedprefs" => "Les préférences ont été sauvegardées.",
-"timezonetext" => "Entrez le nombre d'heures de décalage par rapport à l'heure du serveur (UTC). Si vous le
-lassez blanc, l'heure de l'Europe se presente.",
+"timezonetext" => "Si vous ne préciser pas de décalage horaire, c'est l'heure de l'Europe de l'ouest qui sera utilisée.",
 "localtime" => "Heure locale",
 "timezoneoffset" => "Décalage horaire",
 
@@ -647,7 +646,7 @@ Parmi ceux-ci, <b>$2</b> ont le statut d'administrateur (voir $3).",
 # Maintenance Page
 #
 "maintenance"		=> "Page de maintenance",
-"maintnancepagetext"	=> "Cette page inclue plusieurs utilitaires pour la maintenance quotidienne. Certain de ces outils ont tendance à charger la base de données; ne rechargez pas la page a chaque modification.",
+"maintnancepagetext"	=> "Cette page inclut plusieurs utilitaires pour la maintenance quotidienne. Certain de ces outils ont tendance à charger la base de données; ne rechargez pas la page a chaque modification.",
 //MQ "This page includes several handy tools for everyday maintenance. Some of these functions tend to stress the database, so please do not hit reload after every item you fixed ;-)",
 "maintenancebacklink"	=> "Retour à la page de maintenance", // "Back to Maintenance Page",
 "disambiguations"	=> "Disambiguation pages",
