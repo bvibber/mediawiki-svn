@@ -544,8 +544,8 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		  wfStrencode( $wgUser->getName() ) . "','" .
 		  wfStrencode( $summary ) . "',0,0)";
 		wfQuery( $sql, $fname );
-		if ($watchthis ) { 
-			$this->watch(); 
+		if ($watchthis) { 		
+			if(!$wgTitle->userIsWatching()) $this->watch(); 
 		} else {
 			if ( $wgTitle->userIsWatching() ) {
 				$this->unwatch();
@@ -618,8 +618,8 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			wfQuery( $sql, $fname );
 		}
 		
-		if ($watchthis ) { 
-			$this->watch();
+		if ($watchthis) { 
+			if (!$wgTitle->userIsWatching()) $this->watch();			
 		} else {
 			if ( $wgTitle->userIsWatching() ) {
 				$this->unwatch();
