@@ -31,25 +31,29 @@ static item *heads[LARGEST_ID];
 static item *tails[LARGEST_ID];
 unsigned int sizes[LARGEST_ID];
 
-void item_init(void) {
+void item_init(void)
+{
     int i;
-    for(i=0; i<LARGEST_ID; i++) {
-        heads[i]=0;
-        tails[i]=0;
-        sizes[i]=0;
+    for (i = 0; i < LARGEST_ID; i++) {
+	heads[i] = 0;
+	tails[i] = 0;
+	sizes[i] = 0;
     }
 }
 
 
-item *item_alloc(char *key, int flags, time_t exptime, int nbytes) {
+item *item_alloc(char *key, int flags, time_t exptime, int nbytes)
+{
     int ntotal, len;
-    item *it=NULL;
+    item *it = NULL;
     unsigned int id;
 
-    len = strlen(key) + 1; if(len % 4) len += 4 - (len % 4);
+    len = strlen(key) + 1;
+    if (len % 4)
+	len += 4 - (len % 4);
     ntotal = sizeof(item) + len + nbytes;
-    
-    it = realloc(it,ntotal);
+
+    it = realloc(it, ntotal);
     it->refcount = 0;
     it->it_flags = 0;
     it->nkey = len;
@@ -60,59 +64,68 @@ item *item_alloc(char *key, int flags, time_t exptime, int nbytes) {
     return it;
 }
 
-void item_free(item *it) {
+void item_free(item * it)
+{
     unsigned int ntotal = ITEM_ntotal(it);
     assert((it->it_flags & ITEM_LINKED) == 0);
-    assert(it->refcount == 0);    
+    assert(it->refcount == 0);
 
     /* so slab size changer can tell later if item is already free or not */
     it->it_flags |= ITEM_SLABBED;
 }
 
-void item_unlink(item *it) {
-		free(it);
+void item_unlink(item * it)
+{
+    free(it);
 }
 
-void item_remove(item *it) {
-		free(it);
+void item_remove(item * it)
+{
+    free(it);
 }
 
-void item_update(item *it) {
+void item_update(item * it)
+{
     it->time = time(0);
 }
 
-int item_replace(item *it, item *new_it) {
+int item_replace(item * it, item * new_it)
+{
 }
 
-char *item_cachedump(unsigned int slabs_clsid, unsigned int limit, unsigned int *bytes) {
-    
-    int memlimit = 2*1024*1024;
+char *item_cachedump(unsigned int slabs_clsid, unsigned int limit,
+		     unsigned int *bytes)
+{
+
+    int memlimit = 2 * 1024 * 1024;
     char *buffer;
     int bufcurr;
-    item *it=NULL;
+    item *it = NULL;
     int len;
     int shown = 0;
     char temp[256];
-    
+
 
     buffer = malloc(memlimit);
-    if (buffer == 0) return 0;
+    if (buffer == 0)
+	return 0;
     bufcurr = 0;
-    strcpy(buffer+bufcurr, "END\r\n");
-    bufcurr+=5;
-    
+    strcpy(buffer + bufcurr, "END\r\n");
+    bufcurr += 5;
+
     *bytes = bufcurr;
     return buffer;
 }
 
-void item_stats(char *buffer, int buflen) {
+void item_stats(char *buffer, int buflen)
+{
     int i;
     char *bufcurr = buffer;
     time_t now = time(0);
 
     if (buflen < 4096) {
-        strcpy(buffer, "SERVER_ERROR out of memory");
-        return;
+	strcpy(buffer, "SERVER_ERROR out of memory");
+	return;
     }
 
     strcpy(bufcurr, "END");

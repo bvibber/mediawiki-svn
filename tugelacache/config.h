@@ -11,7 +11,7 @@
 #define HAVE_LIBEVENT 1
 
 /* do we have malloc.h? */
-#define HAVE_MALLOC_H 
+#define HAVE_MALLOC_H
 
 /* Define to 1 if you have the <memory.h> header file. */
 #define HAVE_MEMORY_H 1
