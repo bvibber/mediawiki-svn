@@ -73,14 +73,17 @@ function edit () {
 	$head .= "<form action=\"$PHP_SELF?title=$title&action=edited\" method=post>\n";
 
 	if ( $content == "" ) $content = "Describe the new page here.\n" ;
-
 	$content =  "<textarea name=newtext rows=20 cols=65 STYLE=\"width:100%\" wrap=virtual>$content</textarea><br>\n" ;
-
 	$content .= "Summary:<INPUT TYPE=text NAME=comment VALUE=\"$comment\" SIZE=60 MAXLENGTH=200><br>\n" ;
-	$content .= "<INPUT TYPE=checkbox NAME=\"minor_edit\" VALUE=\"on\">This change is a minor edit.<br>\n" ;
-	$content .= "<input type=submit name=save value=\"Save changes\">\n" ;
-	$content .= "<input type=submit name=preview value=\"Preview changes\">\n" ;
 
+	$content .= "<INPUT TYPE=checkbox NAME=\"minor_edit\" VALUE=\"on\">This change is a minor edit. \n" ;
+	$content .= "<input type=submit name=save value=\"Save changes\">\n" ;
+
+	$u = getCurrentUserName() ;
+	if ( substr_count ( $u , "." ) != 3 ) $u = "<a href=\"$PHP_SELF?action=view&title=user:".getSecureTitle($u)."\">$u</a>" ;
+	$content .= " Your user name is $u. " ;
+
+	$content .= "<input type=submit name=preview value=\"Preview changes\">\n" ;
 	$content .= "</form>\n" ;
 
 	if ( $action=="preview" ) {

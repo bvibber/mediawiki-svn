@@ -394,14 +394,91 @@ function pageIndex () {
 	return doSearch () ;
 	}
 
+function listLinks ( $s ) {
+	global $title , $allTopics , $allTopicsKeys ;
+	$ns = getNamespace ( $title ) ;
+	$rn = stripNamespace ( $title ) ;
+	$rna = explode ( "/" , $rn."/" ) ;
+	$rn = $rna[0] ;
+	if ( $ns != "" ) $ns .= ":" ;
+	$tag1 = "[[" ;
+	$tag2 = "]]" ;
+	$e1 = explode ( $tag1 , $s ) ;
+	foreach ( $e1 as $x ) {
+		$e2 = explode ( $tag2 , $x , 2 ) ;
+		if ( count ( $e2 ) == 2 ) {
+			$y = $e2[0] ;
+			$ya = explode ( "|" , $y."|" ) ;
+			$y = $ya[0] ;
+			if ( substr($y,0,1) == "/" ) $y = $rn.$y ;
+			if ( getnamespace ( $y ) == "" ) $y = $ns.$y ;
+			$y = getSecureTitle ( $y ) ;
+#			if ( !in_array ( $y , $allTopicsKeys ) ) {
+#				$allTopics[$y] = 0 ;
+#				array_push ( $allTopicsKeys , $y ) ;
+#				}
+			$allTopics[$y]++ ;
+			}
+		}
+	}
+
+function demanded_topics () {
+	global $title , $xtitle ;
+	global $allLinkedTopics , $allUnlinkedTopics , $allTopics, $allTopicsKeys  ;
+	$title = "" ;
+	$xtitle = "Demanded topics" ;
+	$ret = getStandardHeader () ;
+	$allUnlinkedTopics = array () ;
+	$allLinkedTopics = array () ;
+	$allTopics = array () ;
+	$allTopicsKeys = array () ;
+
+
+	$connection=getDBconnection() ;
+	mysql_select_db ( "nikipedia" , $connection ) ;
+	$sql = "SELECT cur_title FROM cur" ;
+	$result = mysql_query ( $sql , $connection ) ;
+	while ( $s = mysql_fetch_object ( $result ) )
+		array_push ( $allTopics , $s->cur_title ) ;
+	mysql_free_result ( $result ) ;
+	mysql_close ( $connection ) ;
+
+	foreach ( $allTopics as $x ) {
+		$title=$x ;
+		listLinks ( acquireTopic ( $title ) ) ;
+		}
+
+	foreach ( $allTopics as $y ) {
+		$x = key($allTopics) ;
+		if ( !doesTopicExist($x) )
+			$allUnlinkedTopics[$x]  = $y ;
+		next($allTopics);
+		}
+
+	arsort ( $allUnlinkedTopics ) ;
+	foreach ( $allUnlinkedTopics as $y ) {
+		$x = key($allUnlinkedTopics) ;
+		$x = ucfirst ( getNiceTitle ( $x ) ) ;
+		if ( $x != "" ) $ret .= "$x:$y<br>\n" ;
+		next($allUnlinkedTopics);
+		}
+
+	$title = "" ;
+	return $ret.getStandardFooter () ;
+	}
+
 function special_pages () {
-	global $xtitle ;
+	global $xtitle , $title ;
+	$title = "" ;
 	$xtitle = "Special pages" ;
 	$ret = getStandardHeader () ;
 	$ret .= "This is a list of wikipedia pages with special functions.\n<ul>\n" ;
 	$ret .= "<li><a href=\"$PHPSELF?action=statistics\">Up-to-the-minute statistics</a></li>\n" ;
 	$ret .= "<li><a href=\"$PHPSELF?action=view&title=Random_Page\">A random page</a></li>\n" ;
 	$ret .= "<li><a href=\"$PHPSELF?action=view&title=Page_Index\">The index of all pages</a></li>\n" ;
+	$ret .= "<li><a href=\"$PHPSELF?action=upload\">Upload files</a></li>\n" ;
+	$ret .= "<li><a href=\"$PHPSELF?action=view&title=recentchanges\">Recent changes</a></li>\n" ;
+	$ret .= "<li><a href=\"$PHPSELF?action=demanded_topics\">Demanded topics</a></li>\n" ;
 #	$ret .= "<li><a href=\"$PHPSELF?action=\"></a></li>\n" ;
 	return $ret."</ul>".getStandardFooter();
 	}

@@ -66,6 +66,7 @@ require ( "./upload_functions.php" ) ;    # Upload page
 	if ( $ltitle == "recentchanges" ) $ret = showRecentChanges() ;
 	else if ( $dosearch == 1 ) $ret = doSearch () ;
 	else if ( $action == "special_pages" ) $ret = special_pages () ;
+	else if ( $action == "demanded_topics" ) $ret = demanded_topics () ;
 	else if ( $action == "statistics" ) $ret = statistics() ;
 	else if ( $action == "restrictions" ) $ret = restrictions() ;
 	else if ( $action == "edituserrights" ) $ret = editUserRights() ;

@@ -11,7 +11,7 @@ function getHeaderFooterParts () {
 	$ret = "" ;
 	
 	$special = false ;
-	if ( $title == "recentchanges" ) $special = true ;
+	if ( $title == "recentchanges" or $action == "special_pages" or $action == "demanded_topics" ) $special = true ;
 	if ( $action == "revisions" or $action == "statistics" or $action == "restrictions" ) $special = true ;
 	if ( $action == "prefs" or $action == "upload" or $action == "edituserrights" or $dosearch == 1 ) $special = true ;
 
@@ -52,7 +52,7 @@ function getStandardHeader () {
 	if ( $title == "recentchanges" ) $special = true ;
 	if ( $action == "revisions" or $action == "statistics" or $action == "restrictions" ) $special = true ;
 	if ( $action == "prefs" or $action == "upload" or $action == "edituserrights" or $dosearch == 1 ) $special = true ;
-	if ( $action == "special_pages" ) $special = true ;
+	if ( $action == "special_pages" or $action == "demanded_topics" ) $special = true ;
 
 	$secureTitle = getSecureTitle ( $title ) ;
 	$hversion = "" ;
@@ -76,6 +76,7 @@ function getStandardHeader () {
 		else if ( $action == "revisions" ) $thebody = "History of $ntitle" ;
 		else if ( $action == "upload" ) $thebody = "Upload page" ;
 		else if ( $action == "special_pages" ) $thebody = "Special pages" ;
+		else if ( $action == "demanded_topics" ) $thebody = "Demanded topics" ;
 		else if ( $dosearch == 1 ) $thebody = $asearch ;
 		else if ( $action == "statistics" ) $thebody = "Statistics (".date("l, F d, Y H:i:s").", PST)" ;
 		else if ( $action == "edituserrights" ) $thebody = "Edit user access rights here" ;

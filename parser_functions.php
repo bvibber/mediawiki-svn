@@ -91,8 +91,9 @@ function parseContent ( $s ) {
 			$st = strtolower ( getSecureTitle ( $linkto ) ) ;
 			if ( $st == "random_page" or $st == "page_index" ) $exists = true ;
 			else $exists = doesTopicExist($linkto) ;
-			if ( $exists ) $middle="<a href=\"$PHP_SELF?title=$linkto&action=view\">$middle</a>" ;
-			else {
+			if ( $exists ) {
+				$middle="<a href=\"$PHP_SELF?title=$linkto&action=view\">$middle</a>" ;
+			} else {
 				if ( strstr($middle," ") ) $middle="[$middle]" ;
 				$middle="$middle<a href=\"$PHP_SELF?title=$linkto&action=edit\">?</a>" ;
 				}
