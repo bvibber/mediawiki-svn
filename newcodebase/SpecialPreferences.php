@@ -127,7 +127,7 @@ function wfSpecialPreferences()
 	$uid = $wgUser->getID();
 
 	$wgOut->addHTML( "<p>" . str_replace( array("$1","$2"), array($uname,$uid),
-		wfMsg( "prefslogintext" ) );
+		wfMsg( "prefslogintext" ) ) . "\n" );
 
 	$qbs = $wgLang->getQuickbarSettings();
 	$skins = $wgLang->getSkinNames();
