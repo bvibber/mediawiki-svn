@@ -1,4 +1,17 @@
-2004-10-04  Peter Danenberg  <pcdanenb@localhost.localdomain>
+2005-01-25  Peter Danenberg  <danenberg at mitdasein dot com>
+
+	* wikitex.php (WikiTeX): \write, \let, \csname, \read,
+	and \open added to the blacklist; thanks to Johannes
+	Berg for the heads up.
+
+	* wikitex.sh (strInc): removed some lingering hard paths;
+	added support for dvipng; removed dvi2bitmap.
+
+	* wikitex.inc.php (WikiTeX): 'math' class changed to 'ams'
+	so as to avoid conflict with texvc; i.e. no chance of a
+	de-coupling of texvc and MediaWiki anytime soon.
+
+2004-10-04  Peter Danenberg  <pcdanenb at mitdasein dot com>
 
 	* manifest.ms: updated
 
