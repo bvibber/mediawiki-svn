@@ -40,7 +40,7 @@ $wikiUser = "user" ;
 $wikiNamespaceTalk = "$1 Talk" ;
 $wikiWikipedia = "wikipedia" ;
 $wikiAllowedNamespaces = array ( $wikiWikipedia , $wikiTalk , $wikiUser , "" , "wikipedia $wikiTalk" , "$wikiUser $wikiTalk" ) ;
-$wikiSkins = array ( "Normal" => "" , "Star Trek" => "Star Trek" , "Nostalgia" => "Nostalgy" ) ;
+$wikiSkins = array ( "Normal" => "" , "Star Trek" => "Star Trek" , "Nostalgia" => "Nostalgy" , "Cologne Blue" => "Cologne Blue" ) ;
 
 # Editing
 $wikiEditTitle = "Editing $1" ;
@@ -388,6 +388,7 @@ $wikiLastRefreshed = "Last refreshed $1" ;
 $wikiValidate = "Validate this page" ;
 $wikiBlockIP = "Block this IP" ;
 $wikiNostalgy = "Nostalgia" ;
+$wikiCologneBlue = "Cologne Blue" ;
 
 #---------------------------
 #Functions

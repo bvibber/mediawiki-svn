@@ -970,6 +970,31 @@ class WikiPage extends WikiTitle {
         return $ret ;
         }
 
+	# This generated the special "Cologne Blue" header
+	function getCologneBlueHeader () {
+		$bgc1 = "#6666FF" ;
+		$bgc2 = "#0000FF" ;
+		$fonts = "face=verdena,times color=white" ;
+		$ret .= "<table width='100%' border=0 cellspacing=0 cellpadding=1>\n" ;
+
+		# Row 1
+		$ret .= "<tr>\n<td bgcolor=$bgc1 valign=bottom>\n" ;
+		$ret .= "<font size='+4' $fonts>WIKIPEDIA</font></td>\n" ;
+		$ret .= "<td bgcolor=$bgc1 align=right valign=bottom>\n" ;
+		$ret .= "<font $fonts>" ;
+		$ret .= "<a class=syslink href='".WikiLink("")."'>HOME</a> | " ;
+		$ret .= "<a class=syslink href='".WikiLink("wikipedia")."'>ABOUT</a> | " ;
+		$ret .= "<a class=syslink href='".WikiLink("wikipedia:FAQ")."'>FAQ</a> | " ;
+		$ret .= "<a class=syslink href='".WikiLink("special:Special_pages")."'>SPECIAL PAGES</a> | " ;
+		$ret .= "<a class=syslink href='".WikiLink("")."'>LOG IN</a> " ;
+		$ret .= "</font></td></tr>\n" ;
+
+		#Row 2
+		$ret .= "<tr><td colspan=2 bgcolor=white><font color=black $fonts>The free encyclopedia</font></td></tr>\n" ;
+
+		return $ret ;
+		}
+
     # This generates the header with title, user name and functions, wikipedia logo, search box etc.
     function getHeader () {
         global $wikiMainPageTitle , $wikiArticleSubtitle , $wikiPrintable , $wikiWatch , $wikiMainPage ;
@@ -977,6 +1002,9 @@ class WikiPage extends WikiTitle {
         global $wikiHelp , $wikiHelpLink , $wikiPreferences , $wikiLanguageNames , $wikiWhatLinksHere ;
         global $wikiCharset , $wikiEncodingCharsets , $wikiEncodingNames , $wikiLogoFile ;
         global $framed,  $search ;
+
+	# Cologne Blue skin has a very special header
+	if ( $user->options[skin] == "Cologne Blue" ) return $this->getCologneBlueHeader () ;
         
         if ( isset ( $framed ) and $framed != "top" ) return "" ;
         $t = $this->getNiceTitle ( $this->title ) ;
@@ -1058,12 +1086,54 @@ class WikiPage extends WikiTitle {
         return $ret ;
         }
 
+	function getCologneBlueQuickBar () { # Generates the special "Cologne Blue" QUickBar
+	        global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages , $action ;
+        	global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
+	        global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
+        	global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate ;
+
+		$fonts = "face=verdana,arial" ;
+		$bg = "bgcolor=#ddddFF nowrap" ;
+		$ret = "<font $fonts>\n<table border=0 cellspacing=3 cellpadding=2 width='100%'><tr><td $bg>" ;
+
+#		$ret .= "<a class=CBlink href=\"".wikiLink("__")."\">__</a><br>\n" ;
+
+		$ret .= "<font color=#666666><b>Browse</b></font><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("")."\">Topics</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:RecentChanges")."\">$wikiRecentChanges</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:NewPages")."\">$wikiNewPages</a><br>\n" ;
+
+		$ret .= "</td></tr><tr><td $bg>" ;
+		$ret .= "<font color=#666666><b>Page Options</b></font><br>\n" ;
+		if ( !$this->isSpecialPage ) {
+			$ret .= "<a class=CBlink href=\"".wikiLink($this->secureTitle."&action=edit")."\">Edit Page</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink($this->secureTitle."&action=print")."\">Print Page</a><br>\n" ;
+			}
+
+		$ret .= "</td></tr><tr><td $bg>" ;
+		$ret .= "<font color=#666666><b>Page Info</b></font><br>\n" ;
+
+	        if ( $user->isLoggedIn ) {
+			$ret .= "</td></tr><tr><td $bg>" ;
+			$ret .= "<font color=#666666><b>My Options</b></font><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink("")."\">Myself (not working)</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink("special:watchlist")."\">$wikiMyWatchlist</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink("special:editUserSettings")."\">My Settings</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink("special:userLogout")."\">Log out</a><br>\n" ;
+			}
+
+		$ret .= "</td></tr></table></font>" ;
+		return $ret ;
+		}
+
     # This generates the QuickBar (also used by the list of special pages function)
     function getQuickBar () {
         global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages , $action ;
         global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
         global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
         global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate ;
+
+	if ( $user->options[skin] == "Cologne Blue" ) return $this->getCologneBlueQuickBar () ;
 
         $editOldVersion = "" ;
         if ( $oldID != "" ) $editOldVersion="&amp;oldID=$oldID&amp;version=$version" ;
@@ -1127,6 +1197,9 @@ class WikiPage extends WikiTitle {
     # Some special pages have their own rendering function
     function getMiddle ( $ret ) {
         global $user , $action ;
+	if ( $user->options[skin] == "Cologne Blue" ) {
+		$ret = "<font size=+4 color=#666666>".$this->getNiceTitle($this->title)."</font><br>\n".$ret ;
+		}
 	$ret = "\n<div class=\"bodytext\">$ret</div>" ;
         if ( $action == "print" ) return $ret ;
         $oaction = $action ;
