@@ -17,7 +17,7 @@
 
 class Skin {
 
-	/* private */ var $lastdate;
+	/* private */ var $lastdate, $nextid;
 
 	function getSkinNames() { return $wgValidSkinNames; }
 
@@ -512,49 +512,77 @@ class Skin {
 	# Called by history lists and recent changes
 	#
 
+	function beginRecentChangesList()
+	{
+		$this->lastdate = "";
+		return "";
+	}
+
 	function beginHistoryList()
 	{
-		global $wgUser;
-
 		$this->lastdate = "";
-		if ( 1 == $wgUser->getOption( "rcformat" ) ) {
-			$s = "<ul>";
-		} else {
-			$s = "";
-		}
+		$this->nextid = 0;
+		$s = "\n<p>" . wfMsg( "histlegend" ) . "\n<ul>";
+		return $s;
+	}
+
+	function endRecentChangesList()
+	{
+		$s = "</ul>\n";
 		return $s;
 	}
 
 	function endHistoryList()
 	{
-		global $wgUser;
-
-		if ( 1 == $wgUser->getOption( "rcformat" ) ) {
-			$s = "</ul>\n";
-		} else {
-			$s = "</ul>\n";
-		}
+		$s = "</ul>\n";
 		return $s;
 	}
 
-	function historyLine( $ts, $u, $ut, $ns, $ttl, $q, $c, $isminor )
+	function historyLine( $ts, $u, $ut, $ns, $ttl, $oid, $c, $isminor )
 	{
-		global $wgUser;
+		global $wgLang;
 
-		if ( 1 == $wgUser->getOption( "rcformat" ) ) {
-			return $this->historyLine1( $ts, $u, $ut, $ns, $ttl, $q, $c, $isminor );
+		$m = $wgLang->getMonthAbbreviation( substr( $ts, 4, 2 ) );
+		$d = 0 + substr( $ts, 6, 2 );
+		$h = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
+		$dt = "{$m} {$d} {$h}";
+
+		if ( $oid ) { $q = "oldid={$oid}"; }
+		else { $q = ""; }
+		$artname = Title::makeName( $ns, $ttl );
+		$link = $this->makeLink( $artname, $dt, $q );
+
+		if ( 0 == $u ) { $ul = $ut; }
+		else { $ul = $this->makeInternalLink( "User:{$ut}", $ut ); }
+
+		$cur = wfMsg( "cur" );
+		$next = wfMsg( "next" );
+		$cr = wfMsg( "currentrev" );
+
+		if ( $oid ) {
+			$curlink = $this->makeLink( $artname, $cur,
+			  "diff=0&oldid={$oid}" );
+
+			if ( $this->nextid ) {
+				$nextlink = $this->makeLink( $artname, $next,
+				  "diff={$this->nextid}&oldid={$oid}" );
+			} else {
+				$nextlink = $next;
+			}
+			$this->nextid = $oid;
+
+			$s = "<li>({$curlink}) ({$nextlink}) {$link} . . . {$ul}";
 		} else {
-			return $this->historyLine2( $ts, $u, $ut, $ns, $ttl, $q, $c, $isminor );
+			$s = "<li>({$cr}) {$link} . . . {$ul}";
 		}
-	}
-
-	function historyLine1( $ts, $u, $ut, $ns, $ttl, $q, $c, $isminor )
-	{
-		$s = "<li>{$ts} {$ttl} {$ut} ({$c})</li>\n";
+		if ( "" != $c && "*" != $c ) {
+			$s .= " <em>({$c})</em>";
+		}
+		$s .= "</li>\n";
 		return $s;
 	}
 
-	function historyLine2( $ts, $u, $ut, $ns, $ttl, $q, $c, $isminor )
+	function recentChangesLine( $ts, $u, $ut, $ns, $ttl, $c, $isminor )
 	{
 		global $wgTitle, $wgLang;
 
@@ -566,7 +594,7 @@ class Skin {
 			$this->lastdate = $d;
 		}
 		$h = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
-		$t = $this->makeLink( Title::makeName( $ns, $ttl ), "", $q );
+		$t = $this->makeLink( Title::makeName( $ns, $ttl ), "" );
 
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $this->makeInternalLink( "User:{$ut}", $ut ); }
@@ -575,7 +603,6 @@ class Skin {
 		if ( 0 == $rev ) { $s .= "<li>"; }
 		else { $s .= "<li>({$rev}) "; }
 		$s .= "{$t}; {$h}";
-		if ( 0 != $rev && "" == $q ) { $s .= " ({$cr})"; } # Is current
 		$s .= " . . . {$ul}";
 		if ( $isminor ) { $s .= " </strong>M</strong>"; }
 		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }

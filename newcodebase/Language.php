@@ -23,7 +23,7 @@
 	"rememberpassword" => "Remember password across sessions"
 );
 
-/* private */ $wgLanguageNamesEn= array(
+/* private */ $wgLanguageNamesEn = array(
 	"w" => "English", "af" => "Afrikaans", "ar" => "Arabic",
 	"ca" => "Catalan", "zh" => "Chinese", "dk" => "Danish",
 	"nl" => "Dutch", "de" => "German", "eo" => "Esperanto",
@@ -33,6 +33,22 @@
 	"sh" => "Serbocroatian", "si" => "Slovene",
 	"simple" => "Simple English", "es" => "Spanish",
 	"sv" => "Swedish", "en" => "English"
+);
+
+/* private */ $wgWeekdayNamesEn = array(
+	"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+	"Friday", "Saturday", "Sunday"
+);
+
+/* private */ $wgMonthNamesEn = array(
+	"January", "February", "March", "April", "May", "June",
+	"July", "August", "September", "October", "November",
+	"December"
+);
+
+/* private */ $wgMonthAbbreviationsEn = array(
+	"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
+	"Sep", "Oct", "Nov", "Dec"
 );
 
 /* private */ $wgAllMessagesEn = array(
@@ -175,6 +191,10 @@ not be found.
 Please check the URL you used to access this page.\n",
 "loadhist"		=> "Loading article history",
 "currentrev"	=> "Current revision",
+"cur"			=> "cur",
+"next"			=> "next",
+"histlegend"	=> "(cur) = difference with current version,
+(next) = difference with next version, M = minor edit",
 
 # Preferences page
 #
@@ -343,12 +363,20 @@ class Language {
 
 	function getMonthName( $key )
 	{
-		return ucfirst( $key );
+		global $wgMonthNamesEn;
+		return $wgMonthNamesEn[$key-1];
+	}
+
+	function getMonthAbbreviation( $key )
+	{
+		global $wgMonthAbbreviationsEn;
+		return $wgMonthAbbreviationsEn[$key-1];
 	}
 
 	function getWeekdayName( $key )
 	{
-		return ucfirst( $key );
+		global $wgWeekdayNamesEn;
+		return $wgWeekdayNamesEn[$key-1];
 	}
 
 	function dateFromTimestamp( $ts )

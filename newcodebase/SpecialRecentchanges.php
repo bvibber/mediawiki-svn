@@ -45,13 +45,13 @@ function wfSpecialRecentchanges()
 	$wgOut->addHTML( "{$note}\n" );
 
 	$sk = $wgUser->getSkin();
-	$s = $sk->beginHistoryList();
+	$s = $sk->beginRecentChangesList();
 	while ( $line = mysql_fetch_object( $res ) ) {
-		$s .= $sk->historyLine( $line->cur_timestamp, $line->cur_user,
+		$s .= $sk->recentChangesLine( $line->cur_timestamp, $line->cur_user,
 		  $line->cur_user_text, $line->cur_namespace, $line->cur_title,
-		  "", $line->cur_comment, ( $line->cur_minor_edit > 0 ) );
+		  $line->cur_comment, ( $line->cur_minor_edit > 0 ) );
 	}
-	$s .= $sk->endHistoryList();
+	$s .= $sk->endRecentChangesList();
 	$wgOut->addHTML( $s );
 }
 

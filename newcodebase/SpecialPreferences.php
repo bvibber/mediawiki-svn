@@ -138,6 +138,10 @@ value=\"$i\"$checked> {$qbs[$i]}<br>\n" );
 
 	# Fields for changing password
 	#
+	$wpOldpass = wfEscapeHTML( $wpOldpass );
+	$wpNewpass = wfEscapeHTML( $wpNewpass );
+	$wpRetype = wfEscapeHTML( $wpRetype );
+
 	$wgOut->addHTML( "</td><td vaign=top nowrap><b>$cp:</b><br>
 $opw: <input type=password name=\"wpOldpass\" value=\"$wpOldpass\" size=20><br>
 $npw: <input type=password name=\"wpNewpass\" value=\"$wpNewpass\" size=20><br>
@@ -177,6 +181,9 @@ $tbc: <input type=text name=\"wpCols\" value=\"$wpCols\" size=6>
 
 	# Email, etc.
 	#
+	$wpEmail = wfEscapeHTML( $wpEmail );
+	$wpNick = wfEscapeHTML( $wpNick );
+
 	$wgOut->addHTML( "<td valign=top nowrap>
 $yem: <input type=text name=\"wpEmail\" value=\"$wpEmail\" size=20><br>
 $ynn: <input type=text name=\"wpNick\" value=\"$wpNick\" size=12><br>
