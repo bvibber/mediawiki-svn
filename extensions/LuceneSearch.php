@@ -95,7 +95,7 @@ class LuceneSearch extends SpecialPage
 		$wgOut->addHTML($this->showShortDialog($q));
 
 		if ($q !== false && strlen($q) > 1) {
-			if ($wgRequest->getText('go') === 'Go') {
+			if (!($wgRequest->getText('fulltext'))) {
 				$t = SearchEngine::getNearMatch($q);
 				if(!is_null($t)) {
 					$wgOut->redirect($t->getFullURL());
@@ -374,7 +374,7 @@ class LuceneSearch extends SpecialPage
 		global $wgScript;
 
 		$action = "$wgScript";
-                $searchButton = '<input type="submit" name="searchx" value="' .
+                $searchButton = '<input type="submit" name="fulltext" value="' .
                   htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
                 $searchField = "<div><input type='text' id='lsearchbox' onkeyup=\"resultType()\" "
 			. "style='margin-left: 25%; width: 50%; ' value=\""
@@ -408,7 +408,7 @@ class LuceneSearch extends SpecialPage
                 $searchField = "<input type='text' name=\"search\" value=\"" .
                         htmlspecialchars($term) ."\" width=\"80\" />\n";
 
-                $searchButton = '<input type="submit" name="searchx" value="' .
+                $searchButton = '<input type="submit" name="fulltext" value="' .
                   htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
 
                 $ret = wfMsg('lucenepowersearchtext',
