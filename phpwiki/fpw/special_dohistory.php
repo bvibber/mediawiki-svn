@@ -2,7 +2,7 @@
 include_once ( "special_recentchangeslayout.php" ) ;
 
 function doHistory ( $title ) {
-    global $THESCRIPT , $vpage , $wikiHistoryTitle , $wikiCurrentVersion , $wikiHistoryHeader , $wikiBlockIP ;
+    global $THESCRIPT , $vpage , $wikiHistoryTitle , $wikiCurrentVersion , $wikiHistoryHeader , $wikiBlockIP , $wikiWatch , $wikiNoWatch , $user;
     $vpage = new WikiPage ;
     $vpage->SetTitle ( $title ) ;
     $ti = $vpage->secureTitle ;
@@ -42,9 +42,13 @@ function doHistory ( $title ) {
       $version++;
     }
 
-
-    $t = recentChangesLayout ( $a ) ;
-    $t = "<b>".str_replace(array("$1","$2"),array($url,$title),$wikiHistoryHeader)."</b>".$t ;
+    $t = "<b>".str_replace(array("$1","$2"),array($url,$title),$wikiHistoryHeader)."</b>" ;
+    if ( $user->isLoggedIn ) {
+    	if ( $user->doWatch($title) )
+	    $t .= " (<a href=\"".wikiLink("$url&amp;action=watch&amp;mode=no")."\">$wikiNoWatch</a>)" ;
+	else $t .= " (<a href=\"".wikiLink("$url&amp;action=watch&amp;mode=yes")."\">$wikiWatch</a>)" ;
+	}
+    $t .= "<br>\n".recentChangesLayout ( $a ) ;
 
     $ret = $vpage->getHeader() ;
     $ret .= $vpage->getMiddle($t) ;
