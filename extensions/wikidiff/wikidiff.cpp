@@ -329,5 +329,5 @@ const char *wikidiff_do_diff(const char *text1, const char *text2, int num_lines
 	line_explode(text2, lines2);
 	print_diff(lines1, lines2, num_lines_context, ret);
 	
-	return ret.c_str();
+	return strdup( ret.c_str() );
 }
