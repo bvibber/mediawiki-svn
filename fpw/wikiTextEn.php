@@ -308,6 +308,8 @@ $wikiLongPagesTitle = "The longest articles" ;
 $wikiStubText = "'''These are all the articles in the database, sorted by length, shortest first.'''<br>''#REDIRECT pages and pages within a namespace (like Talk:) are '''not''' listed here!''\n\n" ;
 $wikiLongPagesText = "'''These are all the articles in the database, sorted by length, longest first.'''<br>''#REDIRECT pages and pages within a namespace (like Talk:) are '''not''' listed here!''\n\n" ;
 $wikiStubChars = "$1 chars" ;
+$wikiAskSQL = "MySQL access" ;
+$wikiAskSQLtext = "This function is available for sysops only.<br>''Please, do not press return/enter, '''always''' click on the ask button!''" ;
 $wikiStubDelete = "<b>Delete this page!</b>" ;
 $wikiStubLinkHere = "$1 articles link here." ;
 $wikiStubShowLinks = "<nowiki><a href=\"$THESCRIPT?title=special:ShortPages&showLinksThere=$1\">Toggle \"show links\" option</a><br></nowiki>\n" ;

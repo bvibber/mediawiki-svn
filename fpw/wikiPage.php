@@ -936,7 +936,7 @@ class WikiPage extends WikiTitle {
     # This generates the QuickBar (also used by the list of special pages function)
     function getQuickBar () {
         global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages;
-        global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist ;
+        global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
         global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
         $editOldVersion = "" ;
         if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
@@ -950,6 +950,7 @@ class WikiPage extends WikiTitle {
 # To be implemented later
 #       if ( $this->canAdvance() ) $column .= "<br><a href=\"".wikiLink("special:Advance&topic=$this->safeTitle")."\">Advance</a>\n" ;
 
+	if ( in_array ( "is_sysop" , $user->rights ) ) $column .= "<br><a href=\"".wikiLink(urldecode("special:AskSQL"))."\">$wikiAskSQL</a>\n" ;
         if ( !$this->isSpecialPage ) $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."&action=history")."\">$wikiHistory</a>\n" ;
         $column .= "<br><a href=\"".wikiLink("special:Upload")."\">$wikiUpload</a>\n" ;
         $column .= "<hr>" ;

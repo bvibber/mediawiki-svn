@@ -1,8 +1,7 @@
 <?
 # A little hack for direct MySQL access; for sysops only!
 function askSQL () {
-	global $THESCRIPT ;
-	global $Save , $question ;
+	global $THESCRIPT , $wikiAskSQLtext , $Save , $question ;
 	$ret = "" ;
 	if ( isset ( $Save ) ) {
 		$ret .= "$question<br>" ;
@@ -31,9 +30,9 @@ function askSQL () {
 			}
 		$ret .= "</tr></table>" ;
 		}
-	$form = "" ;
+	$form = $wikiAskSQLtext ;
 	$form .= "<FORM method=POST>" ;
-	$form .= "<input type=text value=\"$question\" name=question size=150> \n" ;
+	$form .= "<input type=text value=\"$question\" name=question size=110> \n" ;
 	$form .= "<input type=submit value=Ask name=Save> \n" ;
 	$form .= "</FORM>" ;
 	return $form.$ret ;
