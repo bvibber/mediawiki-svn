@@ -329,7 +329,7 @@ class OutputPage {
 			}
 			if ( "" == $text ) { $text = $link; }
 
-			if ( preg_match( "/^([a-z]+):(.*)$$/", $link,  $m ) ) {
+			if ( preg_match( "/^([A-Za-z]+):(.*)$$/", $link,  $m ) ) {
 				$pre = strtolower( $m[1] );
 				$suf = $m[2];
 				if ( "image" == $pre ) {

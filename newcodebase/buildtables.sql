@@ -108,3 +108,14 @@ CREATE TABLE image (
   UNIQUE KEY img_name (img_name(8))
 ) TYPE=MyISAM PACK_KEYS=1;
 
+CREATE TABLE oldimage (
+  oi_name varchar(40) binary NOT NULL,
+  oi_archive_name varchar(50) binary NOT NULL,
+  oi_size int(8) unsigned default 0,
+  oi_description tinyblob,
+  oi_user int(5) unsigned default '0',
+  oi_user_text varchar(40) binary NOT NULL,
+  oi_timestamp char(14) binary NOT NULL default '',
+  INDEX oi_name (oi_name(8))
+) TYPE=MyISAM PACK_KEYS=1;
+

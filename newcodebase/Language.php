@@ -2,7 +2,8 @@
 
 /* private */ $wgValidNamespacesEn = array(
 	"Special", "Talk", "User", "User_talk", 
-	"Wikipedia", "Wikipedia_talk"
+	"Wikipedia", "Wikipedia_talk", "Image",
+	"Image_talk"
 );
 
 /* private */ $wgQuickbarSettingsEn = array(
