@@ -21,7 +21,7 @@
 	"cols" => 80, "rows" => 25, "searchlimit" => 20,
 	"contextlines" => 5, "contextchars" => 50,
 	"skin" => 0, "rcdays" => 3, "rclimit" => 50,
-	"highlightbroken" => 1
+	"highlightbroken" => 1, "stubthreshold" => 0
 );
 
 /* private */ $wgQuickbarSettingsDa = array(
@@ -33,14 +33,14 @@
 );
 
 /* private */ $wgUserTogglesDa = array(
-
 	"hover"		=> "Vis svævende tekst over wiki links",
 	"underline" => "Understreg links",
 	"highlightbroken" => "Fremhæv links til tomme sider",
 	"justify"	=> "Justér paragraffer",
 	"hideminor" => "Gem små redigeringer i sidste ændringer",
 	"numberheadings" => "Automatisk nummerering af overskrifter",
-	"rememberpassword" => "Husk password til næste besøg"
+	"rememberpassword" => "Husk password til næste besøg",
+	"editwidth" => "Redigeringsboksen har fuld bredde"
 );
 
 /* private */ $wgBookstoreListDa = array(
@@ -50,142 +50,150 @@
 	"Amazon.com" => "http://www.amazon.com/exec/obidos/ISBN=$1"
 );
 
+/* Note: native names of languages are preferred where known to maximize
+   ease of navigation -- people should be able to recognize their own
+   languages! */
 /* private */ $wgLanguageNamesDa = array(
-	"ab"	=> "Abkhazian",
-	"aa"	=> "Afar",
+    "aa"    => "Afar",
+    "ab"    => "Abkhazian",
 	"af"	=> "Afrikaans",
-	"sq"	=> "Albansk",
 	"am"	=> "Amharisk",
-	"ar"	=> "Arabisk",
-	"hy"	=> "Armensk",
+	"ar" => "&#8238;&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;&#8236; (Araby)",
 	"as"	=> "Assamesisk",
 	"ay"	=> "Aymará",
 	"az"	=> "Aserbajdsjansk",
 	"ba"	=> "Bajkirsk",
-	"eu"	=> "Baskisk",
-	"be"	=> "Hviderussisk",
-	"bn"	=> "Bengalsk",
-	"dz"	=> "Bhutansk",
+	"be" => "&#1041;&#1077;&#1083;&#1072;&#1088;&#1091;&#1089;&#1082;&#1080;",
 	"bh"	=> "Bihara",
 	"bi"	=> "Bislama",
-	"my"	=> "Burmesisk",
-	"km"	=> "Cambodjansk",
-	"ca"	=> "Catalansk",
-	"zh"	=> "Kinesisk",
+	"bn"	=> "Bengalsk",
+	"bo"	=> "Tibetansk",
+	"br" => "Brezhoneg",
+	"ca" => "Catal&#224;",
+	"ch" => "Chamoru",
 	"co"	=> "Korsikansk",
-	"hr"	=> "Kroatisk",
-	"cs"	=> "Tjekkisk",
-	"da"	=> "Dansk", # Note two different subdomains.
-	"dk"	=> "Dansk", # 'da' is correct for the language.
-	"nl"	=> "Hollandsk",
-	"en"	=> "Engelsk",
-	"w"	=> "Engelsk", # Should this be in list this?
-	"simple" => "Simpelt Engelsk",
-	"eo"	=> "Esperanto",
-	"et"	=> "Estisk",
-	"fo"	=> "Færøsk",
+	"cs" => "&#268;esk&#225;",
+	"cy" => "Cymraeg",
+	"da" => "Dansk", # Note two different subdomains. 
+    "dk" => "Dansk", # 'da' is correct for the language.
+	"de" => "Deutsch",
+	"dz"	=> "Bhutansk",
+	"el" => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; (Ellenika)",
+	"en" => "English",
+	"eo" => "Esperanto",
+	"es" => "Espa&#241;ol",
+	"et" => "Eesti",
+	"eu" => "Euskara",
+	"fa" => "&#8238;&#1601;&#1585;&#1587;&#1609;&#8236;(Farsi)",
+	"fi" => "Suomi",
 	"fj"	=> "Fijian",
-	"fi"	=> "Finsk",
-	"fr"	=> "Fransk",
+	"fo"	=> "Færøsk",
+	"fr" => "Fran&#231;ais",
 	"fy"	=> "Frisisk",
-	"gl"	=> "Galicisk",
-	"ka"	=> "Georgisk",
-	"de"	=> "Tysk",
-	"el"	=> "Græsk",
-	"kl"	=> "Grønlandsk",
-	"gn"	=> "Guarani",
-	"gu"	=> "Gujarati",
-	"ha"	=> "Hausa",
-	"he"	=> "Hebraisk",
-	"hi"	=> "Hindi",
-	"hu"	=> "Ungarsk",
-	"is"	=> "Islandsk",
-	"id"	=> "Indonesisk",
-	"ia"	=> "Interlingua",
-	"iu"	=> "Inuktitut",
-	"ik"	=> "Inupiaq",
 	"ga"	=> "Irsk",
-	"it"	=> "Italiensk",
-	"ja"	=> "Japansk",
+	"gl"	=> "Galicisk",
+	"gn"	=> "Guarani",
+	"gu" => "&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752; (Gujarati)",
+	"ha"	=> "Hausa",
+	"he" => "&#1506;&#1489;&#1512;&#1497;&#1514; (Ivrit)",
+	"hi" => "&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)",
+	"hr" => "Hrvatski",
+	"hu" => "Magyar",
+	"hy"	=> "Armensk",
+	"ia" => "Interlingua",
+	"id" => "Indonesia",
+	"ik"	=> "Inupiaq",
+	"is" => "&#205;slenska",
+	"it" => "Italiano",
+	"iu"	=> "Inuktitut",
+	"ja" => "&#26085;&#26412;&#35486; (Nihongo)",
 	"jv"	=> "Javanesisk",
-	"kn"	=> "Kannaresisk",
-	"ks"	=> "Kashmiri",
+	"ka" => "&#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4312; (Kartuli)",
 	"kk"	=> "Kasakhisk",
-	"rw"	=> "Kinyarwanda",
-	"ky"	=> "Kirgisisk",
-	"rn"	=> "Rundi",
+	"kl"	=> "Grønlandsk",
+	"km"	=> "Cambodjansk",
+	"kn"	=> "Kannaresisk",
 	"ko"	=> "Koreansk",
-	"lo"	=> "Laotisk",
-	"la"	=> "Latinsk",
-	"lv"	=> "Lettisk",
+	"ko" => "&#54620;&#44397;&#50612; (Hangukeo)",
+	"ks"	=> "Kashmiri",
+	"kw" => "Kernewek",
+	"ky"	=> "Kirgisisk",
+	"la" => "Latina",
 	"ln"	=> "Lingala",
-	"lt"	=> "Litauisk",
-	"mk"	=> "Makedonisk",
-	"mg"	=> "Madagassisk",
-	"ms"	=> "Malajisk",
-	"ml"	=> "Maltesisk",
+	"lo"	=> "Laotisk",
+	"lt" => "Lietuvi&#371;",
+	"lv"	=> "Lettisk",
+	"mg" => "Malagasy",
 	"mi"	=> "Maori",
-	"mr"	=> "Marathi",
-	"mo"	=> "Moldovisk",
+	"mk"	=> "Makedonisk",
+	"ml"	=> "Maltesisk",
 	"mn"	=> "Mongolsk",
+	"mo"	=> "Moldovisk",
+	"mr"	=> "Marathi",
+	"ms"	=> "Malajisk",
+	"ms" => "Bahasa Melayu",
+	"my"	=> "Burmesisk",
 	"na"	=> "Nauru",
-	"ne"	=> "Nepalesisk",
-	"no"	=> "Norsk",
+	"ne" => "&#2344;&#2375;&#2346;&#2366;&#2354;&#2368; (Nepali)",
+	"nl" => "Nederlands",
+	"no" => "Norsk",
 	"oc"	=> "Occitansk",
-	"or"	=> "Orija",
 	"om"	=> "Oromo",
-	"ps"	=> "Pashto",
-	"fa"	=> "Persisk",
-	"pl"	=> "Polsk",
-	"pt"	=> "Portugisisk",
+	"or"	=> "Orija",
 	"pa"	=> "Panjabi",
+	"pl" => "Polski",
+	"ps"	=> "Pashto",
+	"pt" => "Portugu&#234;s",
 	"qu"	=> "Kechua",
 	"rm"	=> "Rhætoromansk",
-	"ro"	=> "Rumænsk",
-	"ru"	=> "Russisk",
-	"sm"	=> "Samoansk",
-	"sg"	=> "Sango",
-	"sa"	=> "Sanskrit",
-	"sr"	=> "Serbisk",
-	"sh"	=> "Kroatisk",
-	"st"	=> "Sotho",
-	"tn"	=> "Tswana",
-	"sn"	=> "Shona",
+	"rn"	=> "Rundi",
+	"ro" => "Rom&#226;n&#259;",
+	"ru" => "&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081; (Russkij)",
+	"rw"	=> "Kinyarwanda",
+	"sa" => "&#2360;&#2306;&#2360;&#2381;&#2325;&#2371;&#2340; (Samskrta)",
 	"sd"	=> "Sindhi",
+	"sg"	=> "Sango",
+	"sh"	=> "Kroatisk",
 	"si"	=> "Singalesisk",
-	"ss"	=> "Swati",
+	"simple" => "Simple English",
 	"sk"	=> "Slovakisk",
-	"sl"	=> "Slovensk",
+	"sl"	=> "Slovensko",
+	"sm"	=> "Samoansk",
+	"sn"	=> "Shona",
 	"so"	=> "Somalisk",
-	"es"	=> "Spansk",
+	"so" => "Soomaali",
+	"sq" => "Shqiptare",
+	"sr" => "Srpski",
+	"ss"	=> "Swati",
+	"st"	=> "Sotho",
 	"su"	=> "Sudanesisk",
-	"sw"	=> "Swahili",
-	"sv"	=> "Svensk",
-	"tl"	=> "Tagalog",
-	"tg"	=> "Tajik",
+	"sv" => "Svenska",
+	"sw" => "Kiswahili",
 	"ta"	=> "Tamilsk",
-	"tt"	=> "Tatarisk",
 	"te"	=> "Telugu",
+	"tg"	=> "Tajik",
 	"th"	=> "Thai",
-	"bo"	=> "Tibetansk",
 	"ti"	=> "Tigrinja",
-	"to"	=> "Tonga",
-	"ts"	=> "Tsonga",
-	"tr"	=> "Tyrkisk",
 	"tk"	=> "Turkmensk",
+	"tl"	=> "Tagalog",
+	"tn"	=> "Tswana",
+	"to"	=> "Tonga",
+	"tr" => "T&#252;rk&#231;e",
+	"ts"	=> "Tsonga",
+	"tt"	=> "Tatarisk",
 	"tw"	=> "Twi",
 	"ug"	=> "Uigurisk",
-	"uk"	=> "Ukrainsk",
+	"uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072; (Ukrayins`ka)",
 	"ur"	=> "Urdu",
 	"uz"	=> "Uzbekisk",
 	"vi"	=> "Vietnamesisk",
-	"vo"	=> "Volapyk",
-	"cy"	=> "Wallisisk",
+	"vo" => "Volap&#252;k",
 	"wo"	=> "Wolof",
-	"xh"	=> "Xhosa",
+	"xh" => "isiXhosa",
 	"yi"	=> "Jiddisch",
 	"yo"	=> "Yoruba",
 	"za"	=> "Zhuang",
+	"zh" => "&#20013;&#25991; (Zhongwen)",
 	"zu"	=> "Zulu"
 );
 
@@ -214,7 +222,7 @@
 	"Userlogout"	=> "",
 	"Preferences"	=> "Mine brugerindstillinger",
 	"Watchlist"		=> "Min overvågningsliste",
-	"Recentchanges" => "Seneste redigeringer",
+	"Recentchanges" => "Seneste ændringer",
 	"Upload"		=> "Upload filer",
 	"Imagelist"		=> "Billedliste",
 	"Listusers"		=> "Registrerede brugere",
@@ -231,6 +239,7 @@
 	"Allpages"		=> "Alle sider efter titel",
 
 	"Ipblocklist"	=> "Blokerede IP adresser",
+	"Maintenance" => "Vedligeholdelsesside",
 	"Specialpages"  => "",
 	"Contributions" => "",
 	"Emailuser"		=> "",
@@ -242,7 +251,8 @@
 
 /* private */ $wgSysopSpecialPagesDa = array(
 	"Blockip"		=> "Bloker en IP adresse",
-	"Asksql"		=> "Lav en query i databasen"
+	"Asksql"		=> "Lav en query i databasen",
+	"Undelete"		=> "Se og gendan slettede sider"
 );
 
 /* private */ $wgDeveloperSpecialPagesDa = array(
@@ -368,8 +378,7 @@ Du kan fortsætte med at bruge Wikipedia anonymt, eller du kan logge på
 igen som den samme eller en anden bruger.\n",
 
 "welcomecreation" => "<h2>Velkommen, $1!</h2><p>Din konto er blevet 
-oprettet.
-Glem ikke at personliggøre dine Wikipedia indstillinger.",
+oprettet. Glem ikke at personliggøre dine Wikipedia indstillinger.",
 
 "loginpagetitle" => "Bruger log på",
 "yourname"		=> "Dit brugernavn",
@@ -426,8 +435,7 @@ Du bør logge på og ændre dit password straks efter du har modtaget det.",
 "showpreview"	=> "Forhåndsvisning",
 "blockedtitle"	=> "Brugeren er blokeret",
 "blockedtext"	=> "Dit brugernavn eller din IP adresse er blevet blokeret af 
-$1.
-Begrundelsen der er blevet givet er denne:<br>$2<p>Du kan kontakte 
+$1. Begrundelsen der er blevet givet er denne:<br>$2<p>Du kan kontakte 
 administratoren for at diskutere blokeringen.",
 "newarticle"	=> "(Ny)",
 "newarticletext" => "Skriv din tekst til den nye side her.",
@@ -521,6 +529,12 @@ nummer <b>$2</b>.",
 forårsaget af at man søger efter almindelige ord som \"har\" og \"fra\",
 som ikke er indekseret, eller ved at specificere mere end et søgeord (kun 
 sider der indeholder alle søgeordene vil blive fundet).",
+"powersearch" => "Søg",
+"powersearchtext" => "
+Søg i navnerum :<br>
+$1<br>
+$2 List redirects &nbsp; Søg efter $3 $9",
+
 
 # Preferences page
 #
@@ -529,10 +543,12 @@ sider der indeholder alle søgeordene vil blive fundet).",
 "prefsnologintext"	=> "Du skal være <a href=\"" .
   wfLocalUrl( "Speciel:Userlogin" ) . "\">logget på</a>
 for at ændre bruger indstillinger.",
+"prefslogintext" => "Du logget på som \"$1\".
+Dit interne ID nummer er $2.",
 "prefsreset"	=> "Indstillingerne er blevet gendannet fra lageret.",
 "qbsettings"	=> "Indstillinger for hurtigmenu",
 "changepassword" => "Skift password",
-"skin"			=> "Skind",
+"skin"			=> "Udseende",
 "saveprefs"		=> "Gem indstillinger",
 "resetprefs"	=> "Gendan indstillinger",
 "oldpassword"	=> "Gammelt password",
@@ -545,7 +561,8 @@ for at ændre bruger indstillinger.",
 "resultsperpage" => "Resultater pr. side",
 "contextlines"	=> "Linier pr. resultat",
 "contextchars"	=> "Karakterer pr. linie i resultatet",
-"recentchangescount" => "Antallet af titler på \"seneste redigeringer\" 
+"stubthreshold" => "Grænse for visning af stubs",
+"recentchangescount" => "Antallet af titler på \"seneste ændringer\" 
 siden",
 "savedprefs"	=> "Dine indstillinger er blevet gemt.",
 "timezonetext"	=> "Indtast antal timer din lokale tid er forskellig
@@ -557,27 +574,25 @@ Der bliver automatisk tilpasset til dansk tid, ellers skulle man for eksempel fo
 
 # Recent changes
 #
-"recentchanges" => "Seneste redigeringer",
+"recentchanges" => "Seneste ændringer",
 "recentchangestext" => "Se de seneste redigerede sider i Wikipedia på denne 
 side.
 
 [[Wikipedia:Velkommen nybegynder|Velkommen nybegynder]]!
 Kig venligst på disse sider: [[wikipedia:OSS|Wikipedia Ofte Stillede 
-Spørgsmål]],
-[[Wikipedia:Politik|Wikipedia politik]]
+Spørgsmål]], [[Wikipedia:Politik|Wikipedia politik]]
 (specielt [[wikipedia:Navngivning|navngivning]],
 [[wikipedia:Skriv Wikipedia fra et neutralt synspunkt|skriv Wikipedia fra et 
-neutralt synspunkt]]),
+neutralt synspunkt]],
 og [[wikipedia:Mest almindelige begynderfejl på Wikipedia|mest almindelige 
-begynderfejl på Wikipedia]].
+begynderfejl på Wikipedia]]).
 
 Det er meget vigtigt for Wikipedias success, at du ikke lægger materiale på 
-Wikipedia
-som andre har ophavsret til. De retslige konsekvenser kan blive meget 
-kostbare og besværlige
+Wikipedia som andre har ophavsret til. De retslige konsekvenser kan blive 
+meget kostbare og besværlige
 for projektet, så lad venligst være med det.
 Se også [http://meta.wikipedia.org/wiki/Special:Recentchanges 
-recent meta discussion] (på engelsk).",
+recent meta discussion] (mest på engelsk).",
 "rcloaderr"		=> "Læser seneste redigerede sider",
 "rcnote"		=> "Nedenfor er de seneste <strong>$1</strong> ændringer i de 
 sidste <strong>$2</strong> dage.",
@@ -592,6 +607,8 @@ en redigering.",
 "tableform"		=> "tabel",
 "listform"		=> "liste",
 "nchanges"		=> "$1 ændringer",
+"minoreditletter" => "M",
+"newpageletter" => "N",
 
 # Upload
 #
@@ -711,6 +728,38 @@ og <b>$6</b> visninger per redigering.",
 "userstatstext" => "Der er  <b>$1</b> registrerede brugere.
 <b>$2</b> af disse er administratorer (se $3).",
 
+# Maintenance Page
+#
+"maintenance"		=> "Vedligeholdelsesside",
+"maintnancepagetext"	=> "På denne side er der forskellige smarte 
+værktøjer til at vedligeholde Wikipedia. Nogle af disse funktioner er ret 
+
+hårde for databasen (de tager lang tid), så lad være med at refreshe siden 
+hver gang du har rettet en enkelt ting ;-)",
+"maintenancebacklink"	=> "Tilbage til vedligeholdelsessiden",
+"disambiguations"	=> "Sider med tvetydige titler",
+"disambiguationspage"	=> "Wikipedia:Links_til_sider_med_tvetydige_titler",
+"disambiguationstext"	=> "De følgende artikler linker til 
+<i>sider med tvetydige titler</i>. De skulle linke til en ikke-tvetydig 
+titel i stedet for.<br>En side bliver behandlet som tvetydig hvis den er
+linket fra $1.<br>Links fra andre navnerum er <i>ikke</i> listet her.",
+"doubleredirects"	=> "Dobbelte redirigeringer",
+"doubleredirectstext"	=> "<b>Bemærk:</b> Denne liste kan indeholde forkerte 
+resultater. Det er som regel fordi siden indeholder ekstra tekst under den
+første #REDIRECT.<br>\nHver linie indeholder links til den første og den 
+anden redirigering, og den første linie fra den anden redirigeringstekst, 
+det giver som regel den \"rigtige\" mål artikel, som den første redirigering 
+skulle have peget på.",
+"selflinks"		=> "Sider der linker til sig selv",
+"selflinkstext"		=> "De følgende sider indeholder links til sig selv, 
+men det burde de ikke.",
+"missinglanguagelinks"  => "Manglende sprog links",
+"missinglanguagelinksbutton"    => "Find manglende sprog links for",
+"missinglanguagelinkstext"      => "Disse artikler har <i>ikke</i> noget 
+link til den samme artikel i $1. Redirigeringer og underartikler er 
+<i>ikke</i> vist.",
+
+
 # Miscellaneous special pages
 #
 "orphans"		=> "Forældreløse sider",
@@ -721,7 +770,7 @@ og <b>$6</b> visninger per redigering.",
 "wantedpages"	=> "Ønskede sider",
 "nlinks"		=> "$1 links",
 "allpages"		=> "Alle sider",
-"randompage"	=> "Tilfældige sider",
+"randompage"	=> "Tilfældig artikel",
 "shortpages"	=> "Korte sider",
 "longpages"		=> "Lange sider",
 "listusers"		=> "Bruger liste",
@@ -785,8 +834,7 @@ for at kunne ændre din overvågningsliste.",
 "addedwatchtext" => "Siden \"$1\" er blevet tilføjet til din <a href=\"" .
   wfLocalUrl( "Speciel:Watchlist" ) . "\">overvågningsliste</a>.
 Fremtidige ændringer til denne side og den tilhørende diskussion side vil 
-blive listet her,
-og siden vil fremstå <b>fremhævet</b> i <a href=\"" .
+blive listet her, og siden vil fremstå <b>fremhævet</b> i <a href=\"" .
   wfLocalUrl( "Speciel:Recentchanges" ) . "\">listen med de seneste 
 ændringer</a> for at gøre det lettere at finde den.</p>
 
@@ -795,7 +843,7 @@ og siden vil fremstå <b>fremhævet</b> i <a href=\"" .
 "removedwatch"	=> "Fjernet fra overvågningsliste",
 "removedwatchtext" => "Siden \"$1\" er blevet fjernet fra din 
 overvågningsliste.",
-"watchthispage"	=> "Overvåg denne side",
+"watchthispage"	=> "Overvåg side",
 "unwatchthispage" => "Fjern overvågning",
 "notanarticle"	=> "Ikke en artikel",
 
@@ -826,6 +874,23 @@ Alle tider er server (UTC) tider.
 "deletecomment"	=> "Begrundelse for sletning",
 "imagereverted" => "Gendannelse af en tidligere version gennemført med 
 success.",
+"undelete" => "Gendan en slettet side",
+"undeletepage" => "Se og gendan slettede sider",
+"undeletepagetext" => "De følgende sider er slettede, men de findes 
+stadig i arkivet og kan gendannes. Arkivet blivet periodevis slettet.",
+"undeletearticle" => "Gendan slettet artikel",
+"undeleterevisions" => "$1 revisioner arkiveret",
+"undeletehistory" => "Hvis du gendanner siden, vil alle de historiske 
+revisioner også blive gendannet. Hvis en ny side med det samme navn 
+er oprettet siden den blev slettet, så vil de gendannede revisioner 
+dukke op i den tidligere historie, og den nyeste revision vil forblive 
+på siden.",
+"undeleterevision" => "Slettet version fra $1",
+"undeletebtn" => "Gendan!",
+"undeletedarticle" => "gendannet \"$1\"",
+"undeletedtext"   => "Artiklen [[$1]] er blevet gendannet med success.
+Se [[Wikipedia:Sletningslog]] for en fortegnelse over nylige 
+sletninger og gendannelser.",
 
 # Contributions
 #
@@ -906,8 +971,7 @@ Bekræft venligst at du har til hensigt at gøre dette.",
 #
 "asksql"		=> "SQL forespørgsel",
 "asksqltext"	=> "Brug formularen herunder til at lave direkte forespørgsler 
-i
-Wikipedia databasen.
+i Wikipedia databasen.
 Brug enkelte anførselstegn ('sådan her') for at adskille strenge.
 Dette kan ofte belaste serveren kraftigt, så brug venligst denne funktion
 med omtanke.",
@@ -996,6 +1060,11 @@ class LanguageDa extends Language {
 	function getUserToggles() {
 		global $wgUserTogglesDa;
 		return $wgUserTogglesDa;
+	}
+
+	function getLanguageNames() {
+		global $wgLanguageNamesDa;
+		return $wgLanguageNamesDa;
 	}
 
 	function getLanguageName( $code ) {
