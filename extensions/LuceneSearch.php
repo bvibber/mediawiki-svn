@@ -54,7 +54,8 @@ class LuceneSearch extends SpecialPage
 	function execute($par) {
 		global $wgRequest, $wgOut, $wgTitle, $wgContLang, $wgUser,
 			$wgLuceneCSSPath, $wgLSuseold, $wgOutputEncoding,
-			$wgLuceneDisableTitleMatches, $wgLuceneDisableSuggestions;
+			$wgLuceneDisableTitleMatches, $wgLuceneDisableSuggestions,
+			$wgUser;
 
 		$this->setHeaders();
 
@@ -62,8 +63,15 @@ class LuceneSearch extends SpecialPage
 			if ($wgRequest->getCheck("ns" . $ns))
 				$this->namespaces[] = $ns;
 
-		if (count($this->namespaces) == 0)
-			$this->namespaces = array(0);
+		if (count($this->namespaces) == 0) {
+			foreach(SearchEngine::searchableNamespaces() as $ns => $name) {
+				if($wgUser->getOption('searchNs' . $ns)) {
+					$this->namespaces[] = $ns;
+				}
+			}
+			if (count($this->namespaces) == 0)
+				$this->namespaces = array(0);
+		}
 
 		$bits = split("/", $wgRequest->getVal("title"), 2);
 		if(!empty($bits[1]))
@@ -334,6 +342,7 @@ class LuceneSearch extends SpecialPage
 		if ($conn === FALSE)
 			return null;
 		$query = iconv($wgOutputEncoding, "UTF-8", $query);
+		@socket_write($sock, $wgDBname . "\n");
 		@socket_write($sock, "TITLEPREFIX\n" . urlencode($query) . "\n");
 		$results = array();
 		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE
@@ -359,6 +368,7 @@ class LuceneSearch extends SpecialPage
 		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		$conn = @socket_connect($sock, $wgLuceneHost, $wgLucenePort);
 		$query = iconv($wgOutputEncoding, "UTF-8", $query);
+		@@socket_write($sock, $wgDBname . "\n");
 		@socket_write($sock, "TITLEMATCH\n" . urlencode($query) . "\n");
 		$results = array();
 		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE) {
@@ -378,13 +388,14 @@ class LuceneSearch extends SpecialPage
 	}
 
 	function doLuceneSearch($query, $max) {
-		global $wgLuceneHost, $wgLucenePort;
+		global $wgLuceneHost, $wgLucenePort, $wgDBname;
 		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		@$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
 		if ($conn === FALSE)
 			return null;
 		$query = iconv($wgOutputEncoding, "UTF-8", $query);
-		if (@socket_write($sock, "SEARCH\n" . urlencode($query) . "\n") === FALSE)
+		if (@socket_write($sock, $wgDBname . "\n") === FALSE ||
+                    @socket_write($sock, "SEARCH\n" . urlencode($query) . "\n") === FALSE)
 			return null;
 		$results = array();
 
