@@ -341,8 +341,8 @@ class Skin {
 
 			if ( $wgUser->isSysop() ) {
 				$s .= $sep . $this->deleteThisPage() .
-				  $sep . $this->protectThisPage() .
-				  $sep . $this->moveThisPage();
+				  $sep . $this->protectThisPage();
+				  # $sep . $this->moveThisPage();
 			}
 		}
 		$s .= $this->otherLanguages();
@@ -398,8 +398,8 @@ class Skin {
 			}
 			if ( $wgUser->isSysop() ) {
 				$s .= $sep . $this->deleteThisPage() .
-				$sep . $this->protectThisPage() .
-				$sep . $this->moveThisPage();
+				$sep . $this->protectThisPage();
+				# $sep . $this->moveThisPage();
 			}
 			$s .= $sep . $this->talkLink()
 			  . $sep . $this->historyLink()
