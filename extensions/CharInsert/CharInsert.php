@@ -77,9 +77,9 @@ function charInsertChar( $start, $end = '', $title = null ) {
 	$estart = htmlspecialchars( charInsertJsString( $start ) );
 	$eend   = htmlspecialchars( charInsertJsString( $end   ) );
 	if( $eend == '' ) {
-		$inline = $start;
+		$inline = charInsertDisplay( $start );
 	} else {
-		$inline = $start . $end;
+		$inline = charInsertDisplay( $start . $end );
 	}
 	if( $title ) {
 		$extra = ' title="' . htmlspecialchars( $title ) . '"';
@@ -100,6 +100,12 @@ function charInsertJsString( $text ) {
 			"\r"   => "\\n",
 			"\n"   => "\\n",
 		) );
+}
+
+function charInsertDisplay( $text ) {
+	static $invisibles = array(     '&nbsp;',     '&#160;' );
+	static $visibles   = array( '&amp;nbsp;', '&amp;#160;' );
+	return str_replace( $invisibles, $visibles, $text );
 }
 
 ?>
