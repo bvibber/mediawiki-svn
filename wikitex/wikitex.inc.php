@@ -32,17 +32,19 @@ $arrRend = array ('batik'	=> 'strBatik',
 		  'feyn'	=> 'strFeyn',
 		  'go'		=> 'strGo',
 		  'greek'	=> 'strGreek',
+		  'graph'	=> 'strGraph',
 		  'ling'	=> 'strLing',
 		  'amsmath'	=> 'strMath',
 		  'music'	=> 'strMusic',
+		  'plot'	=> 'strPlot',
 		  'svg'		=> 'strSVG',
 		  'teng'	=> 'strTeng',
 		  'tipa'	=> 'strTipa',
 		  'xym'		=> 'strXym');
 
 // liberal Latin in errorous dicta
-$arrErr['rend']		= 'WikiTeX: directive non gratum.';
-$arrErr['class']	= 'WikiTeX: unknown scheme ``%s\'\'.';
+$arrErr['rend']	= 'directive non gratum.';
+$arrErr['bash'] = '<span class="errwikitex">WikiTeX: wikitex.sh is not executable.</span>';
 
 // the stem of errorous givings-out
 $strErr	= "$strRendPath/wikitex.error.inc.tex";

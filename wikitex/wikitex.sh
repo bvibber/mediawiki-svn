@@ -1,5 +1,4 @@
-#!/bin/bash
-# 
+#!/usr/bin/env bash
 # WikiTeX: expansible LaTeX module for MediaWiki
 # Copyright (C) 2004  Peter Danenberg
 # 
@@ -11,80 +10,96 @@
 # 
 # wikitex.sh: shell interface to wikitex.php
 # Usage: FILE MODULE OUTPATH
-#
-# FILE corresponds an md5 of the given contents; and MODULE,
-# a render strategy.
-#
+ARGS=3
+E_ARGS=2
+E_FAIL=1
+E_SUC=0
+HASH="${1}"
+MOD="${2}"
+OUT="${3}"
+EXT='.png'
+CHE='.cache'
+MID='.midi'
+ERR='<span class="errwikitex">WikiTeX: %s</span>\n';
 
-# source inc for defective Apache paths
-. "`dirname $0`/wikitex.inc.sh"
+function wt_error() {
+    printf "${ERR}" "${1}"
+    exit "${2}"
+}
 
-N_ARG=3
-E_ALL=1
-E_NONE=0
-S_ERR='error'
-S_EXT='png'
-S_MID='midi'
-S_TMP='/tmp'
-S_T_CLA='class='
-S_T_FIL='src='
-S_T_MID='midi='
-S_CLA='rend'			# default class
-S_AUX=''			# module specific parameters
-S_REL=''			# outpath
+(( ${#} >= ${ARGS} )) || wt_error 'Usage: wikitex.sh HASH MODULE OUTPATH' $E_ARGS
 
-# Error customization.
-E_RENDER='WikiTeX: no output.'
-E_MOD='WikiTeX: unknown module.'
+# $PWD is initially the wiki-base; will break if existeth space in path.
+cd "$(dirname ${0})/tmp"
 
-if (( $# < $N_ARG )); then
-    echo "Usage: `basename $0` FILE MODULE OUTPATH"
-    exit $E_ALL
+# Check cache.
+[ -r "${HASH}${CHE}" ] && { cat "${HASH}${CHE}"; exit $E_SUC; }
+
+# Requirement: scribe tmp, read hash.
+[ -w '.' ] || wt_error "I can't scribe <code>${PWD}</code>, baby." $E_FAIL
+[ -r "${HASH}" ] || wt_error "Can't hash, baby." $E_FAIL
+
+function wt_img() {
+    STR="$STR"$(printf "<img src=\"%s\" alt=\"${MOD}\" />" "${1}")
+}
+
+function wt_anch() {
+    STR=$(printf '<a href=\"%s\">%s</a>' "${OUT}${HASH}" "${STR}")
+}
+
+function wt_dvipng() {
+    dvipng -gamma 1.5 -T tight "${HASH}" &> /dev/null || wt_error 'dvipng reported a failure.' $E_FAIL
+}    
+
+# Catch-all renderer
+function wt_generic() {
+    latex "${HASH}" --interaction=batchmode &> /dev/null || wt_error 'LaTeX reported a failure.' $E_FAIL
+    wt_dvipng
+    for i in ${HASH}*${EXT}; do wt_img "${OUT}${i}"; done
+    wt_anch
+}
+
+function error() {
+    STR=$(printf "${ERR}" "$(<"${HASH}")");
+}
+
+function music() {
+    lilypond --no-pdf --no-ps --png "${HASH}" &> /dev/null || wt_error 'lilypond reported a failure.' $E_FAIL
+    for i in ${HASH}*${EXT}; do mogrify -trim $i; wt_img "${OUT}${i}"; done
+    wt_anch
+    STR="$STR"$(printf '<a href="%s">[listen]</a>' "${OUT}${HASH}${MID}")
+}
+
+function go() {
+    sgf2tex -twoColumn "${HASH}" &> /dev/null || wt_error 'sgf2tex reported a failure.'
+    tex "${HASH}" &> /dev/null || wt_error 'TeX reported a failure.'
+    wt_dvipng
+    for i in ${HASH}*${EXT}; do mogrify -crop +0-24! "${i}"; mogrify -trim "${i}"; wt_img "${OUT}${i}"; done
+    wt_anch
+}
+
+function plot() {
+    gnuplot "${HASH}" > "${HASH}${EXT}" || wt_error 'gnuplot reported a failure.'
+    wt_img "${OUT}${HASH}${EXT}"
+    wt_anch
+}
+
+function graph() {
+    dot -Tpng "${HASH}" > "${HASH}${EXT}"
+    wt_img "${OUT}${HASH}${EXT}"
+    wt_anch
+}
+
+# Check for module-specific functions; otherwise resort to generic.
+if [[ $(type -t "${MOD}") == 'function' ]]; then
+    "${MOD}" "${HASH}" "${OUT}"
+else
+    wt_generic "${HASH}" "${OUT}"
 fi
 
-S_REL=$3
-cd "`dirname $0`$S_TMP"
-strInc="../wikitex.%s.inc.tex"
+# Clean up, but not on wt_error; and allow the examination of logs.
+find . -name "${HASH}*" ! -name "${HASH}" ! -name "${HASH}*${EXT}" ! -name "${HASH}${MID}" ! -name "${HASH}${CHE}" -exec rm {} \;
 
-nCleanUp() {
-    find . -type f -name "$1*" ! -regex ".*\(\.$S_EXT\|\.$S_MID\)" -exec rm {} \; # preliminary files
-}
-
-nLatex() {
-    if [[ ! -s "$1.$S_EXT" ]]; then
-	case "$2" in
-	    'music' ) { lilypond --no-pdf --no-ps --png "$1" && for i in "$1"*1.png; do mogrify -trim -transparent white $i; mv $i ${i/-page*\./.}; done; } &> /dev/null;;
-	    'go' ) { sgf2tex "$1" -break 0 && tex "$1" && dvipng -T tight -bg Transparent -o "$1.$S_EXT" -p =1 "$1".dvi; } &> /dev/null;;
-	    'batik' ) { java -jar "$D_BATIK"batik-rasterizer.jar "$1" && mogrify -trim "$1.$S_EXT"; } &> /dev/null  ;;
-	    'svg' ) { convert "$1" "$1.$S_EXT" && mogrify -trim "$1.$S_EXT"; } &> /dev/null ;;
-	    * )	{ latex "$1" --interaction=batchmode && dvipng -T tight -bg Transparent -o "$1.$S_EXT" -p =1 "$1".dvi; } &> /dev/null;;
-	esac;
-    fi
-
-    if [[ $? > 0 ]]; then nErr "$E_RENDER" "$1"; fi
-
-    case "$2" in
-	'music' ) S_CLA="music"; S_AUX="$S_T_MID$S_REL$1.$S_MID";;
-    esac;
-
-    nCleanUp "$1"
-    echo "$S_T_FIL$S_REL$1.$S_EXT $S_T_CLA$S_CLA $S_AUX"
-    exit
-}
-
-# Usage: ERROR_MESSAGE CLEANUP_HASH
-nErr() {
-    local strErr=$(< ${strInc/'\%s'/"$S_ERR"})
-    strErr=${strErr/'\%value\%'/"$1"}
-    local strFile=`echo "$strErr" | openssl md5`
-    
-    echo "$strErr" >"$strFile"
-    nCleanUp "$2"
-
-    { latex "$strFile" --interaction=batchmode && "$D_DVI"dvi2bitmap --output-type="$S_EXT" --magnification=2 --scale=6 --font-mode=nechi --resolution=360 --process=blur,crop,transparent --output="$strFile.$S_EXT" "$strFile".dvi; } &> /dev/null
-    nCleanUp "$strFile"
-    echo "$S_T_FIL$S_REL$strFile.$S_EXT $S_T_CLA$S_CLA"
-    exit
-}
-
-nLatex "$1" "$2"
+# Cache
+echo "${STR}" > "${HASH}${CHE}"
+echo "${STR}"

@@ -1,0 +1,2 @@
+set terminal png;
+%value%

@@ -1,3 +1,15 @@
+2005-01-29  Peter Danenberg  <danenberg at mitdasein dot com>
+
+	* wikitex.sh: added support for gnuplot and graphviz;
+	<plot> and <graph> respectively.  Added link to source
+	from each image.
+
+2005-01-28  Peter Danenberg  <danenberg at mitdasein dot com>
+
+	* wikitex.sh: Utterly refactored; new features: modular
+	handlers; multi-page output; plain-text, detailed errors;
+	file-based output cache.
+
 2005-01-25  Peter Danenberg  <danenberg at mitdasein dot com>
 
 	* wikitex.php (WikiTeX): \write, \let, \csname, \read,

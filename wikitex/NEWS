@@ -12,6 +12,22 @@
       Peter Danenberg <danenberg at mitdasein dot com>
 
 
+Sat Jan 29 00:34:09 PST 2005  Peter Danenberg
+
+          Changes almost too numerous to enumerate; but some
+     of the more exciting:
+
+     ·    Gnuplot and Graphviz: <plot> and <graph>,  respec‐
+          tively
+
+     ·    Multi‐page output for music, go and chess
+
+     ·    More detailed, helpful error messages
+
+          The  installation process, to boot, is less error‐
+     prone; and no Python: but the bash interface  has  been
+     refactored.
+
 Tue Jan 25 11:23:48 PST 2005  Peter Danenberg
 
           This  candidate  both maintains by tightening down
@@ -43,6 +59,17 @@ Sun Oct  3 17:38:03 PDT 2004  Peter Danenberg
      mere  oeconomy  that  ever  importuned  us to return to
      ImageMagick’s SVG subset.
 
+
+
+                       29 January 2005
+
+
+
+
+
+                             ‐2‐
+
+
 Mon Sep  6 03:20:26 PDT 2004  Peter Danenberg
 
           With the introduction of XML‐like  tags,  we  have
@@ -59,17 +86,6 @@ Sun May 30 00:00:00 PDT 2004  Peter Danenberg
           We’re   refactoring  WikiTeX from the ground up to
      implement tags of the form:
 
-
-
-                       25 January 2005
-
-
-
-
-
-                             ‐2‐
-
-
           <class [parm: value]>content</class>
 
      and likely of an  external  parser;  where  a  lex/yacc
@@ -79,10 +95,10 @@ Sun May 30 00:00:00 PDT 2004  Peter Danenberg
      top‐down recursive descent.)
 
           If  WikiTeX’  sum scope, on the other hand, resem‐
-     bles  a  glue‐script with regular‐expression grinding,1
-     we might  not need  to  look  past  Perl; PHP,  in  any
-     case,  just passes as lexer/parser: but we’d like some‐
-     thing more robust and, above all, to separate  applica‐
+     bles a glue‐script with  regular‐expression  grinding,*
+     we  might  not  need  to  look  past  Perl; PHP, in any
+     case, just passes as lexer/parser: but we’d like  some‐
+     thing  more robust and, above all, to separate applica‐
      tion from interface.
 
 
@@ -105,29 +121,13 @@ Sun May 30 00:00:00 PDT 2004  Peter Danenberg
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ───────────
-  1 Raymond,  Eric  Steven.   The Art of Unix Pro‐
+  * Raymond,  Eric  Steven.   The Art of Unix Pro‐
 gramming (faqs.org/docs/artu).
 
 
 
-                       25 January 2005
+                       29 January 2005
 
 
 
@@ -193,6 +193,6 @@ sion.
 
 
 
-                       25 January 2005
+                       29 January 2005
 
 

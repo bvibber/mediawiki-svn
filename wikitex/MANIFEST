@@ -36,10 +36,12 @@
      wikitex.error.inc.tex   Generic error
      wikitex.feyn.inc.tex    Feynman diagrams
      wikitex.go.inc.sgf      Go, sgf2tex
+     wikitex.graph.inc.dot   Graphviz
      wikitex.greek.inc.tex   Ibycus
      wikitex.ling.inc.tex    AVM, Parsetree
      wikitex.math.inc.tex    AMS-LaTeX
      wikitex.music.inc.tex   Lilypond
+     wikitex.plot.inc.p      Gnuplot
      wikitex.svg.inc.svg     SVG
      wikitex.teng.inc.tex    Tengwar
      wikitex.tipa.inc.tex    TIPA
@@ -59,9 +61,7 @@
 
 
 
-
-
-                       25 January 2005
+                       29 January 2005
 
 
 
@@ -127,6 +127,6 @@ sion.
 
 
 
-                       25 January 2005
+                       29 January 2005
 
 

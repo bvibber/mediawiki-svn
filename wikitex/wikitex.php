@@ -16,7 +16,7 @@ with $wgParser
 */
 
 include 'wikitex.inc.php';
-settype($obj,	'object');
+settype($objRend, 'object');
 
 // register WikiTeX with parser
 $wgExtensionFunctions[] = 'voidRegister';
@@ -24,8 +24,8 @@ $wgExtensionFunctions[] = 'voidRegister';
 // perform registration
 function voidRegister()
 {
-  global $arrRend, $obj;
-  $obj = new objRend($arrRend);
+  global $arrRend, $objRend;
+  $objRend = new objRend($arrRend);
 }
 
 class objRend
@@ -75,14 +75,13 @@ class objRend
       settype($arrBlack,	'array');
 
       // generic security basis for all classes
-      $arrBlack['rend']	= array('\catcode', '\include', '\includeonly', '\input',
-				'\newcommand', '\newenvironment', '\newtheorem', '\newfont',
-				'\renewcommand', '\renewenvironment', '\typein', '\typeout', '\write',
-				'\let', '\csname', '\read', '\open');
+      $arrBlack['rend']	= array('\catcode', '\include', '\includeonly', '\input', '\newcommand', '\newenvironment', '\newtheorem', '\newfont', '\renewcommand', '\renewenvironment', '\typein', '\typeout', '\write', '\let', '\csname', '\read', '\open');
 
       // specific security recommendations
-      $arrBlack['music']	= array('#');
+      $arrBlack['music'] = array('#');
     
+      $arrBlack['plot'] = array('cd', 'call', 'exit', 'load', 'pause', 'print', 'pwd', 'quit', 'replot', 'reread', 'reset', 'save', 'shell', 'system', 'test', 'update', '!', 'data-file', 'loadpath', 'fontpath', 'historysize', 'mouse', 'x11_mouse', 'output', 'terminal', 'file', '"', '\'');
+
       // merge arrays, if specific present
       if (!empty($arr[$strClass])) {
 	$arrBlack['rend'] = array_merge($arrBlack[$strClass], $arrBlack['rend']);
@@ -91,7 +90,7 @@ class objRend
       foreach($arrBlack['rend'] as $strBlack) {
 	if (stristr($str, $strBlack) !== false) {
 	  $strClass = 'error';
-	  $strFile = file_get_contents($strErr);
+	  $strFile = '%value%';
 	  return $arrErr['rend'];
 	}
       }
@@ -139,8 +138,6 @@ class objRend
       $strDir	= "$strRendPath/tmp/";
       $strURI	= "$wgScriptPath/extensions/wikitex/tmp/";
       $strBash	= "$strRendPath/wikitex.sh %s %s %s";	// usage: wikitex FILE MODULE OUTPATH
-      $arrTag['rend']	= '<img src="%src%" alt="%alt%" title="%alt%" />';
-      $arrTag['music']	= '<a href="%midi%"><img src="%src%" alt="%alt%" title="%alt%" style="border: none" /></a>';
       $strRend	= '%%%s%%';
 
       // check class template against glob: "wikitex.<class>.inc*"
@@ -157,10 +154,6 @@ class objRend
 			
       // post-processing: black-list control, actualizing the file template
       $arr['value'] = $this->strPost($strTex, $arr['class'], $str);
-
-      // simulate an 'alt' parm for use in images; alt data consists of the verbatim
-      // text.
-      $arrBash['alt'] = htmlspecialchars($strTex, ENT_QUOTES);
 
       // check for defaults defined in wikitex.inc.php, and realize them
       if (!empty($arrDef[$arr['class']])) {
@@ -180,99 +173,103 @@ class objRend
 	fclose($obj);
       }
 
-      //            passthru(sprintf($strBash, $strHash, $arr['class'], $strURI));
-      // collect an array of parameters from the shell in the form: x=y
-      $arrBash = array_merge($arrBash, $this->arrParse(shell_exec(escapeshellcmd(sprintf($strBash, $strHash, $arr['class'], $strURI)))));
-
-      // choose tag based on return value from bash; i.e. whether an error was detected,
-      // or default tag, if no particular present
-      $strTag = (empty($arrTag[$arrBash['class']]) ? $arrTag['rend'] : $arrTag[$arrBash['class']]);
-
-      // gestalt the out-tag
-      foreach($arrBash as $strKey => $strVal) {
-	$strTag = strtr($strTag, array(sprintf($strRend, $strKey) => $strVal));
+      // If the script is unavailable, roll our own error.
+      if (!is_executable(substr($strBash, 0, strpos($strBash, ' ')))) {
+	return $arrErr['bash'];
+      } else {
+	return shell_exec(sprintf($strBash, $strHash, $arr['class'], $strURI));
       }
-
-      return $strTag;
     }
 }
 
 function strBatik($str)
 {
-  global $obj;
-  return $obj->strRend($str, array('class' => 'batik'));
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'batik'));
 }
 
 function strChem($str)
 {
-  global $obj;
-  return $obj->strRend($str, array('class' => 'chem'));
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'chem'));
 }
 
 function strChess($str)
 {
-  global $obj;
-  return $obj->strRend($str, array('class' => 'chess'));
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'chess'));
 }
 
 function strFeyn($str)
 {
-  global $obj;
-  return $obj->strRend($str, array('class' => 'feyn'));
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'feyn'));
 }
 
 function strGo($str)
 {
-  global $obj;
-  return $obj->strRend($str, array('class' => 'go'));
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'go'));
+}
+
+function strGraph($str)
+{
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'graph'));
 }
 
 function strGreek($str)
 {
-  global $obj;
-  return $obj->strRend($str, array('class' => 'greek'));
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'greek'));
 }
 
 function strLing($str)
 {
-  global $obj;
-  return $obj->strRend($str, array('class' => 'ling'));
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'ling'));
 }
 
 function strMath($str)
 {
-  global $obj;
-  return $obj->strRend($str, array('class' => 'math'));
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'math'));
 }
 
 function strMusic($str)
 {
-  global $obj;
-  return $obj->strRend($str, array('class' => 'music'));
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'music'));
+}
+
+function strPlot($str)
+{
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'plot'));
 }
 
 function strSVG($str)
 {
-  global $obj;
-  return $obj->strRend($str, array('class' => 'svg'));
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'svg'));
 }
 
 function strTeng($str)
 {
-  global $obj;
-  return $obj->strRend($str, array('class' => 'teng'));
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'teng'));
 }
 
 function strTipa($str)
 {
-  global $obj;
-  return $obj->strRend($str, array('class' => 'tipa'));
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'tipa'));
 }
 
 function strXym($str)
 {
-  global $obj;
-  return $obj->strRend($str, array('class' => 'xym'));
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'xym'));
 }
 
 ?>
