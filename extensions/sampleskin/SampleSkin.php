@@ -1,12 +1,12 @@
 <?php
 # 
-# Sample file "How to implement an own skin"
+# Sample file -- "How to implement a custom skin"
 # Read this file and make the needed changes to your environment to set
 # up a new skin.
 #
 # This sample sets up a skin based on PHPTal templates.
 #
-# The sample projects consists of these files:
+# The sample projects consist of these files:
 #
 # * extensions/sampleskin/SampleSkin.php
 #   This file. You have to activate it by adding
@@ -28,7 +28,7 @@ require_once('Skin.php');
 require_once('SkinPHPTal.php');
 
 # Tell MediaWiki to initialize this extension after initializing all the defaults
-# The string you append to the wgExtensionFunctions array should be the name of
+# The string you append to the $wgExtensionFunctions array should be the name of
 # the function used to initialize the extension. 
 # Choose a name that is unique.
 $wgSkinExtensionFunctions[] = 'wfSampleSkinExtension';
@@ -36,7 +36,7 @@ $wgSkinExtensionFunctions[] = 'wfSampleSkinExtension';
 function wfSampleSkinExtension() {
 	# Add the name to the list of valid skin names.
 	# This list is used to display the select box in the users preferences.
-        global $wgValidSkinNames;
+	global $wgValidSkinNames;
 	$wgValidSkinNames['sampleskin'] = 'SampleSkin';
 }
 
@@ -58,7 +58,7 @@ class SkinSampleSkin extends SkinPHPTal {
 		# This points to the PHPTal template file. Copy this file
 		# to the templates directory. The file name must end in .pt, 
 		# but the template variable must not. So this is the setting
-		# for xhtml_sampleskin.pt
+		# for xhtml_sampleskin.pt:
 		# 
 		$this->template = 'xhtml_sampleskin';
 	}
