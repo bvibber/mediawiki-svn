@@ -720,6 +720,12 @@ function oaiUpdateDelete( $article, $user, $reason ) {
 	return true;
 }
 
+function oaiUpdateMove( $from, $to, $user, $fromid, $toid ) {
+	oaiUpdatePage( $fromid, 'modify' );
+	oaiUpdatePage( $toid, 'modify' );
+	return true;
+}
+
 	/* Set up the repository entry point */
 	SpecialPage::addPage( new OAIRepository );
 	global $wgMessageCache;
@@ -733,6 +739,7 @@ function oaiUpdateDelete( $article, $user, $reason ) {
 	$wgHooks['ArticleSaveComplete'  ][] = 'oaiUpdateSave';
 	$wgHooks['ArticleDelete'        ][] = 'oaiUpdateDeleteSetup';
 	$wgHooks['ArticleDeleteComplete'][] = 'oaiUpdateDelete';
+	$wgHooks['TitleMoveComplete'    ][] = 'oaiUpdateMove';
 }
 
 ?>
