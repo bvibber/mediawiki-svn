@@ -130,14 +130,15 @@ function rebuildLinkTablesPass2()
 		$pname = addslashes( $row->rl_f_title );
 
 		if ( ! $first ) 
-		       $sql .= ",";
+			$sql .= ",";
 		else
-		$first = false;
+			$first = false;
 
 		$sql .= "('{$pname}','{$iname}')";
 	}
-	  wfFreeResult( $res );
-	  wfQuery( $sql );
+	wfFreeResult( $res );
+	if( !$first )
+		wfQuery( $sql );
 	
 
 	$sql = "SELECT DISTINCT rl_to FROM rebuildlinks ORDER BY rl_to";
