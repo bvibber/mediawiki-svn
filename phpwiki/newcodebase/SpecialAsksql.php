@@ -61,7 +61,7 @@ class SqlQueryForm {
 		# Use a limit, folks!
 		$wpSqlQuery = trim( $wpSqlQuery );
 		if( preg_match( "/^SELECT/i", $wpSqlQuery )
-			and !preg_mtch( "/LIMIT/i", $wpSqlQuery ) )
+			and !preg_match( "/LIMIT/i", $wpSqlQuery ) ) {
 			$wpSqlQuery .= " LIMIT 99";
 		}
 		if ( ! $wgUser->isDeveloper() ) {
