@@ -1052,8 +1052,10 @@ class Skin {
 			$dlink = $this->makeKnownLink( $t, wfMsg( "diff" ),
 			  "diff=0&oldid=0" );
 		}
-		if ( 0 == $u ) { $ul = $ut; }
-		else { $ul = $this->makeLink( $wgLang->getNsText(
+		if ( 0 == $u ) {
+        	$ul = $this->makeKnownLink( $wgLang->specialPage( "Contributions" ),
+			$ut, "target=" . $ut );
+		} else { $ul = $this->makeLink( $wgLang->getNsText(
 		  Namespace::getUser() ) . ":{$ut}", $ut ); }
 		$cr = wfMsg( "currentrev" );
 
