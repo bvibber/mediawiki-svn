@@ -15,14 +15,14 @@ require_once( "geo.php");
 $p = new geo_params ;
 
 
-# Default parameters
+# Default parameters (for command line testing only)
 $params = "
 show:south_america
-draw:south_america
-style:south_america=fill:red
+draw:south_america,brazil
+style:south_america,brazil=fill:brown
 " ;
 
-
+/*
 $params = "
 languages:de,en
 show:germany
@@ -33,7 +33,7 @@ style:germany.hamburg=fill:red
 label:germany[city]=font-size:medium;fill-opacity:1.0;clickable:yes
 label:germany[state]=font-size:medium;fill-opacity:0.7
 " ;
-
+*/
 
 #$params = "" ;
 if ( isset ( $_GET['params'] ) )

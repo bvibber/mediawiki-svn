@@ -5,10 +5,12 @@ require_once ( "geo_functions.php" ) ;
 # this class is used for parameter storage, data access and caching, etc.
 class geo_params
 	{
+	# The min/max values for the viewbox
 	var $min_x = 1000000 ;
 	var $max_x = -1000000 ;
 	var $min_y = 1000000 ;
 	var $max_y = -1000000 ;
+	
 	var $draw = array () ; # What to draw
 	var $labels = array () ; # The text labels
 	var $languages = array ( "en" ) ; # Default language
@@ -21,8 +23,8 @@ class geo_params
 	var $later_objects = array () ; # Things that should be drawn at the end, like cities
 	var $article_prefix = "" ; # The prefix for article titles, if any
 
-#	var $geo_cache = array () ; # The article cache
-	
+	# This function enters the settings that have been passed from the
+	# geomap extension into the variables above
 	function settings ( $sets )
 		{
 		$sets = explode ( "\n" , strtolower ( $sets ) ) ;
@@ -62,7 +64,7 @@ class geo_params
 					$a = explode ( ";" , str_replace ( "," , ";" , $value ) ) ;
 					$this->starters = array_merge ( $this->starters , $a ) ;
 					}
-				else if ( $key == "fit" )
+				else if ( $key == "fit" ) # Not implemented yet
 					{
 					$a = explode ( ";" , str_replace ( "," , ";" , $value ) ) ;
 					$this->fits = array_merge ( $this->fits , $a ) ;
@@ -84,7 +86,6 @@ class geo_params
 			$g->set_from_id ( $s , $this ) ;
 			$svg = $g->draw ( $this ) ;
 			}
-#		return "" ; # TESTING!
 		$svg .= $this->get_svg_objects () ;
 		$svg .= $this->get_svg_labels () ;
 
@@ -105,6 +106,9 @@ class geo_params
 		return $svg ;
 		}
 
+	# One can set a previx for all article names,, e.g., a "Geo:" namespace
+	# This function turns the object id into the actual article name
+	# NOT USED ON WIKIMAPS
 	function get_article_name ( $id )
 		{
 		return $this->article_prefix . $id ;
@@ -135,19 +139,20 @@ class geo_params
 	# This reads the data and manages the cache
 	function get_raw_text ( $id )
 		{
-#		if ( isset ( $this->geo_cache[$id] ) ) # Try the cache first...
-#			return $this->geo_cache[$id] ;
-	
 		if ( MEDIAWIKI ) # Direct connection to mediawiki database via Article/Title class
 			$contents = $this->read_from_article ( $id ) ;
 		else # Over-the-net connection via URL "&action=raw", much slower
 			$contents = $this->read_from_url ( $id ) ;
+			
+		# Remove wiki links
+		$contents = str_replace ( "[[" , "" , str_replace ( "]]" , "" , $contents ) ) ;
 	
 		# Return text
-#		$this->geo_cache[$id] = $contents ; # Cache the result
 		return $contents ;
 		}
 
+/*
+	# Obsolete
 	function match_object_style ( $object , $type )
 		{
 		$ret = array () ;
@@ -155,7 +160,12 @@ class geo_params
 			$ret = $this->styles["{$object}[{$type}]"] ;
 		return implode ( "; " , $ret ) ;
 		}
-		
+*/
+
+	# This function converts the (-)(H)HHMMSS format into the 
+	# actual screen coordinates. It also keeps track of the
+	# bounding rectangle for viewbox.
+	# This invokes functions from geo_functions.php
 	function data_to_real ( &$x , &$y )
 		{
 		$x = coordinate_to_number ( coordinate_take_apart ( $x ) ) ;
@@ -164,13 +174,15 @@ class geo_params
 		$z = $x ; $x = $y ; $y = $z ; # Switching y/x to x/y
 		$y = 90 * 3600 - $y ; # displaying from north to south
 
-		# Recording min and max
+		# Recording min and max for viewbox
 		$this->min_x = min ( $this->min_x , $x ) ;
 		$this->min_y = min ( $this->min_y , $y ) ;
 		$this->max_x = max ( $this->max_x , $x ) ;
 		$this->max_y = max ( $this->max_y , $y ) ;
 		}
 
+	# This function generates the "viewbox" attribute for the svg
+	# from the min/max values recorded in data_to_real
 	function get_view_box ()
 		{
 		$min_x = $this->min_x ;
@@ -189,16 +201,22 @@ class geo_params
 		return "{$min_x} {$min_y} {$max_x} {$max_y}" ;
 		}
 
+	# Adds an array with text and attributes to the text list
+	# They will be parsed and rendered in get_svg_labels at the end
 	function add_label ( $text_array )
 		{
 		$this->labels[] = $text_array ;
 		}
-		
+	
+	# This function generates text from the "later objects" list
+	# which conteins things to always draw on top, like cities
 	function get_svg_objects ()
 		{
 		return implode ( "\n" , $this->later_objects ) ;
 		}
 
+	# This function parses the text objects stored by add_label
+	# and generates actual <text> svg. It also makes them clickable if needed
 	function get_svg_labels ()
 		{
 		$ret = "" ;
@@ -299,8 +317,6 @@ class geo_params
 		$ret = "\n" . $this->get_raw_text ( $id ) ;
 		$ret = explode ( "\n==" , $ret ) ;
 		
-#		if ( $subid == "" ) return $ret[0] ; # Default
-		
 		$this->cache2["{$id}#"] = array_shift ( $ret ) ;
 		foreach ( $ret AS $s )
 			{
@@ -308,54 +324,33 @@ class geo_params
 			$heading = array_shift ( $s ) ;
 			$heading = strtolower ( trim ( str_replace ( "=" , "" , $heading ) ) ) ;
 			$this->cache2["{$id}#{$heading}"] = array_shift ( $s ) ;
-#			if ( $heading == $subid ) return array_shift ( $s ) ;
 			}
 
 		if ( isset ( $this->cache2["{$id}#{$subid}"] ) )
 			return $this->cache2["{$id}#{$subid}"] ;
-	#	print "Not found : {$id}#{$subid}\n" ;
 		return "" ; # Query not found
 		}
 
 	}
 
+
+
 # "geo" class
+# This class stores and renderes a single object, and eventually generates
+# new "sub-objects" of the same class 
 class geo
 	{
-	var $id ;
-	var $data = array () ;
-	var $xsum , $ysum , $count ;
+	var $id ; # The name of the game
+	var $data = array () ; # The data of the object; key => value is generated from ";key:value" lines
+	var $xsum , $ysum , $count ; # To calculate the middle of the object (for label placement)
 
+	# Get the text of the object
 	function geo_get_text ( $id , &$params )
 		{
 		return $params->geo_get_text ( $id ) ;
-/*		$id = trim ( strtolower ( $id ) ) ;
-		
-		$parts = explode ( "#" , $id ) ;
-		if ( count ( $parts ) == 2 )
-			{
-			$id = array_shift ( $parts ) ;
-			$subid = array_shift ( $parts ) ;
-			}
-		else $subid = "" ;
-		
-		$ret = "\n" . $params->get_raw_text ( $id ) ;
-		$ret = explode ( "\n==" , $ret ) ;
-		
-		if ( $subid == "" ) return $ret[0] ; # Default
-		
-		array_shift ( $ret ) ;
-		foreach ( $ret AS $s )
-			{
-			$s = explode ( "\n" , $s , 2 ) ;
-			$heading = array_shift ( $s ) ;
-			$heading = strtolower ( trim ( str_replace ( "=" , "" , $heading ) ) ) ;
-			if ( $heading == $subid ) return array_shift ( $s ) ;
-			}
-	#	print "Not found : {$id}#{$subid}\n" ;
-		return "" ; # Query not found
-*/		}
+		}
 
+	# Parse the data from geo_get_text
 	function set_from_id ( $id , &$params )
 		{
 		$this->id = $id ;
@@ -373,6 +368,7 @@ class geo
 			}
 		}
 
+	# This function turns a "numbers row" of point data into an array
 	function scan_raw_data ( &$data , &$ret , &$params )
 		{
 		$data = explode ( " " , $data ) ;
@@ -389,6 +385,7 @@ class geo
 			}
 		}
 
+	# This function parses the ";data:......" item
 	function get_data ( &$params )
 		{
 		$ret = array () ;
@@ -420,6 +417,9 @@ class geo
 		return $ret ;
 		}
 
+	# This function appends two poly-lines, which exist as arrays of points.
+	# If the end point of the first poly-line is closer to the end point than to the
+	# start point of the second line, the second line is reversed (reordered)
 	function add_reordered_data ( &$original , &$toadd )
 		{
 		if ( count ( $toadd ) == 0 ) return ; # Nothing to add
@@ -445,6 +445,8 @@ class geo
 		$original = array_merge ( $original , $toadd ) ;
 		}
 
+	# Returns stuff for "x[y]", if it exists; otherwise, returns "x"
+	# For any modes from y
 	function get_specs ( $base , $modes )
 		{
 		foreach ( $modes AS $x )
@@ -457,6 +459,7 @@ class geo
 		return "" ;
 		}
 		
+	# Shortcut for calling the above function for the type
 	function get_current_type ( &$params ) # params may override native type
 		{
 		$t = $this->get_specs ( "type" , array ( "political" ) ) ;
@@ -464,6 +467,7 @@ class geo
 		return $t ;
 		}
 
+	# Turn "#section" into "this#section"
 	function fullid ( $id )
 		{
 		$id = trim ( strtolower ( $id ) ) ;
@@ -472,6 +476,7 @@ class geo
 		return $id ;
 		}
 
+	# This function generates SVG from the ";region:....." command
 	function draw_line ( $line , &$params )
 		{
 		$ret = "" ;
@@ -524,6 +529,7 @@ class geo
 		return $ret ;
 		}
 
+	# Adds an object label at the (guessed) center
 	function add_label ( $x , $y , &$params )
 		{
 		if ( !$this->label_this ( $params ) ) return ;
@@ -545,6 +551,7 @@ class geo
 		$params->add_label ( $a ) ;
 		}
 	
+	# The "main" drawing routine
 	function draw ( &$params )
 		{
 		array_push ( $params->object_tree , $this->id ) ;
@@ -578,6 +585,7 @@ class geo
 		return $ret ;
 		}
 
+	# Determines if this object should actually be drawn
 	function draw_this ( &$params )
 		{
 		$a = $this->my_matches ( $params->draw , $params ) ;
@@ -585,6 +593,7 @@ class geo
 		return false ;
 		}
 
+	# Determines if this object should get a label
 	function label_this ( &$params )
 		{
 		$a = $this->my_matches ( $params->label_styles , $params ) ;
@@ -592,6 +601,7 @@ class geo
 		return false ;
 		}
 
+	# Sub-search function for my_matches
 	function is_in_list ( $key , &$params )
 		{
 		$a = explode ( "[" , $key , 2 ) ;
@@ -603,6 +613,7 @@ class geo
 		return false ;
 		}
 
+	# Gets the matching style/label settings for this object
 	function my_matches ( &$haystack , &$params )
 		{
 		$ret = array () ;
@@ -614,6 +625,7 @@ class geo
 		return $ret ;
 		}
 
+	# Gets the label style for this object
 	function get_label_style ( &$params )
 		{
 		$matches = $this->my_matches ( $params->label_styles , $params ) ;
@@ -630,6 +642,7 @@ class geo
 		return $ret ;
 		}
 
+	# Gets the style for this object
 	function get_current_style ( &$params )
 		{
 		$matches = $this->my_matches ( $params->styles , $params ) ;
