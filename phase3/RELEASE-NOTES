@@ -3,6 +3,27 @@
 Security reminder: MediaWiki does not require PHP's register_globals
 setting since version 1.2.0. If you have it on, turn it *off* if you can.
 
+
+== Version 1.3.6, 2004-10-?? ==
+
+Changes from 1.3.5:
+* (bug 296) Variables in user interface messages are no longer substituted
+  at install time, so changes to the site name etc should be easier to make
+* (bug 149) Special:Recentchanges "changes from" link preserves limit
+* (bug 433) tooltip for "Undelete" tab now labeled correctly
+* Fixed potential HTML/JavaScript injection attack in the UnicodeConverter
+  extension. (This extension is not enabled by default.)
+* Fixed potential HTML/JavaScript injection attack via raw page views to
+  a maliciously crafted wiki page.
+
+
+== Version 1.3.5, 2004-09-30 ==
+
+Changes from 1.3.4:
+* Clean up input validation in 'raw' page output mode which was a potential
+  cross-site scripting opportunity.
+
+
 == Version 1.3.4, 2004-09-28 ==
 
 ************************** SECURITY NOTE! ******************************
@@ -42,6 +63,7 @@ Changes from 1.3.3:
 * Fixed line spacing on printed table of contents
 * Allow links to pages with names of the form [[RFC 1234]]
 * Fixed broken edit links being shown for sections from included templates
+* Verify that uploaded image files are of the claimed type.
 
 
 == Version 1.3.3, 2004-09-09 ==
