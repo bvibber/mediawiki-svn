@@ -23,10 +23,10 @@ class skinClass {
 
 	}
 
-include_once ( "wikiSkinStandard.php" ) ;
-include_once ( "wikiSkinStarTrek.php" ) ;
-include_once ( "wikiSkinNostalgy.php" ) ;
-include_once ( "wikiSkinCologneBlue.php" ) ;
+#include_once ( "wikiSkinStandard.php" ) ;
+#include_once ( "wikiSkinStarTrek.php" ) ;
+#include_once ( "wikiSkinNostalgy.php" ) ;
+#include_once ( "wikiSkinCologneBlue.php" ) ;
 
 
 
