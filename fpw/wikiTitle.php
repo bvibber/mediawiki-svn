@@ -141,6 +141,16 @@ class WikiTitle {
 		if ( $target->subpageTitle != "" ) $ret .= "/".$target->subpageTitle ;
 		return $ret ;
 		}
+	
+	# Returns the appropriate Talk: namespace equivalent for this page
+	function getTalkPage ( ) {
+		global $wikiTalk , $wikiNamespaceTalk ;
+		if ( $this->namespace == "" )
+			$space = $wikiTalk ;
+		else
+			$space = str_replace ( '$1' , $this->namespace , $wikiNamespaceTalk ) ;
+		return $space . ':' . $this->mainTitle ;
+		}
 
 	# These are pretty straight-forward
 	function makeAll () { $this->makeSecureTitle(); } #$this->makeURL(); }
@@ -177,6 +187,7 @@ class WikiTitle {
 		if ( $this->mainTitle == "" ) return false ;
 		if ( substr_count ( $this->title , "/" ) > 1 ) return false ;
 		if ( substr_count ( $this->title , ":" ) > 1 ) return false ;
+		if ( preg_match ( "/[^-,.()' _0-9A-Za-z\\/:\\x80-\\xff]/" , $this->title  ) ) return false ;
 		return true ;
 		}
 	}
