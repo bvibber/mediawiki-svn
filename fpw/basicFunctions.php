@@ -1,23 +1,29 @@
 <?
-# Output error message. Rarely used.
-function error ( $error ) {
+/* Output error message. Rarely used.
+ */
+function error ( $error )
+{
 	global $wikiErrorPageTitle , $wikiErrorMessage ;
 	$page = new WikiPage ;
 	$page->special ( $wikiErrorPageTitle ) ;
 	$page->contents = str_replace ( "$1" , "$error" , $wikiErrorMessage ) ;
 	return $page->renderPage () ;
-	}
+}
 
-# Make a nice URL
-function nurlencode ( $s ) {
+/* Protect slashes and colons in URLs
+ */
+function nurlencode ( $s )
+{
 	$ulink = urlencode ( $s ) ;
 	$ulink = str_replace ( "%3A" , ":" , $ulink ) ;
 	$ulink = str_replace ( "%2F" , "/" , $ulink ) ;
 	return $ulink ;
-	}
+}
 
-# Convert MySQL timestame to date
-function tsc ( $t ) {
+/* Convert MySQL timestame to date
+ */
+function tsc ( $t )
+{
 	$year = substr ( $t , 0 , 4 ) ;
 	$month = substr ( $t , 4 , 2 ) ;
 	$day = substr ( $t , 6 , 2 ) ;
@@ -25,72 +31,84 @@ function tsc ( $t ) {
 	$min = substr ( $t , 10 , 2 ) ;
 	$sec = substr ( $t , 12 , 2 ) ;
 	return mktime ( $hour , $min , $sec , $month , $day , $year ) ;
-	}
+}
 
-# We unfortunately can't trust the locale functions for now, so we'll roll our own
-function ucfirstIntl ( $str ) {
+/* We unfortunately can't trust the locale functions for now,
+ * so we'll roll our own
+ */
+function ucfirstIntl ( $str )
+{
 	global $wikiUpperChars , $wikiLowerChars ;
 	
 	if ( $str == "" ) return $str ;
 	
 	if ( is_array ( $wikiUpperChars ) ) {
-		# Multi-byte charsets or multi-character letters to be capitalised (eg Dutch ij->IJ)
+		# Multi-byte charsets or multi-character letters to be capitalised
+        # (eg Dutch ij->IJ)
 		# FIXME: For now, assuming UTF-8
 		return preg_replace ( "/^([\\x00-\\x7f]|[\\xc0-\\xff][\\x80-\\xbf]*)/e", "strtr ( \"\$1\" , \$wikiUpperChars )" , $str ) ;
 	}
-	
 	# Simple single-byte charsets
 	return strtr ( substr ( $str , 0 , 1 ) , $wikiLowerChars , $wikiUpperChars ) . substr ( $str , 1 );
-	}
+}
 
-
-function strtoupperIntl ( $str ) {
+function strtoupperIntl ( $str )
+{
 	global $wikiUpperChars , $wikiLowerChars ;
 	
-	if ( is_array ( $wikiUpperChars ) )
+	if ( is_array ( $wikiUpperChars ) ) {
 		return strtr ( $str, $wikiUpperChars ) ;
-	return strtr ( $str , $wikiLowerChars , $wikiUpperChars );
+    } else {
+		return strtr ( $str , $wikiLowerChars , $wikiUpperChars );
 	}
+}
 
-function strtolowerIntl ( $str ) {
+function strtolowerIntl ( $str )
+{
 	global $wikiUpperChars , $wikiLowerChars ;
 	
-	if ( is_array ( $wikiUpperChars ) )
+	if ( is_array ( $wikiLowerChars ) ) {
 		return strtr ( $str, $wikiLowerChars ) ;
-	return strtr ( $str , $wikiUpperChars , $wikiLowerChars );
+    } else {
+		return strtr ( $str , $wikiUpperChars , $wikiLowerChars );
 	}
+}
 
-function isBlockedIP () {
+function isBlockedIP ()
+{
 	global $wikiBlockedIPsLink ;
 	$ip = getenv ( REMOTE_ADDR ) ;
 	$list = getMySQL ( "cur" , "cur_text" , "cur_title=\"$wikiBlockedIPsLink\"" ) ;
-	$list = explode ( "*$ip (" , $list ) ; # The most memory-wasting substring search ever!
-	if ( count ( $list ) > 1 ) return true ;
-	return false ;
-	}
+    if ( preg_match( "/^\*\s?$ip \(/", $list ) ) return true;
+    else return false ;
+}
 
-# Auto-wikification
-function wikify ( $s ) {
+/* Auto-wikification
+ */
+function wikify ( $s )
+{
 	global $title , $vpage ;
 	$nt = $vpage->getNiceTitle ( $title ) ;
 
 	# Fixing <nowiki> and <pre> tags first
-        $s = str_replace ( "<pre>" , "<pre><nowiki>" , $s ) ;
-        $s = str_replace ( "</pre>" , "</nowiki></pre>" , $s ) ;
-        $a = spliti ( "<nowiki>" , $s ) ;
-        # $nowikikey needs to contain a unique string - this can be altered at will, as long it stays unique!
-        $nowikikey = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv" ;
-        $nowikistorage = array () ;
-        $s = array_shift ( $a ) ;
-        foreach ( $a as $x ) {
-            $c = spliti ( "</nowiki>" , $x , 2 ) ;
-            if ( count ( $c ) == 2 ) {
-                array_push ( $nowikistorage , $c[0] ) ;
-                $s .= $nowikikey.$c[1] ;
-            } else $s .= "<nowiki>".$x ;
-            }
+	$s = str_replace ( "<pre>" , "<pre><nowiki>" , $s ) ;
+	$s = str_replace ( "</pre>" , "</nowiki></pre>" , $s ) ;
+	$a = spliti ( "<nowiki>" , $s ) ;
 
-
+	# $nowikikey needs to contain a unique string--
+	# this can be altered at will, as long it stays unique!
+	$nowikikey = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv" ;
+	$nowikistorage = array () ;
+	$s = array_shift ( $a ) ;
+	foreach ( $a as $x ) {
+	$c = spliti ( "</nowiki>" , $x , 2 ) ;
+		if ( count ( $c ) == 2 ) {
+			array_push ( $nowikistorage , $c[0] ) ;
+			$s .= $nowikikey.$c[1] ;
+		} else {
+			$s .= "<nowiki>".$x ;
+		}
+	}
 	# Replace HTML tags with wiki tags
 	$s = eregi_replace ( "<h2>" , "== " , $s ) ;
 	$s = eregi_replace ( "</h2>" , " ==" , $s ) ;
@@ -103,12 +121,13 @@ function wikify ( $s ) {
 	$s = eregi_replace ( "<i>" , "''" , $s ) ;
 	$s = eregi_replace ( "</i>" , "''" , $s ) ;
 
-	# Bold title (only if title appears in first line *and* if there's not already a bold tag in the first line)
+	# Bold title (only if title appears in first line *and* if there's
+	# not already a bold tag in the first line)
 	$a = explode ( "\n" , $s , 2 ) ;
 	if ( stristr ( $a[0] , $nt ) and strstr ( $a[0] , "'''" ) === false ) {
 		$a[0] = eregi_replace ( $nt , "'''$nt'''" , $a[0] ) ;
 		$s = implode ( "\n" , $a ) ;
-		}
+	}
 
 	# Link magic
 	global $wikiTalk ;
@@ -129,57 +148,55 @@ function wikify ( $s ) {
 			$c = explode ( "|" , $b[0] , 2 ) ;
 			if ( count ( $c ) == 1 ) {
 				if ( $c[0] == $title ) $s .= $c[0].$b[1] ; # Removing self-link
-				else if ( in_array ( ucfirst($c[0]) , $l ) ) $s .= $c[0].$b[1] ; # Removing double link
+				else if ( in_array ( ucfirst($c[0]) , $l ) ) $s .= $c[0].$b[1] ; # Removing duplicate link
 				else if ( $vpage->getNiceTitle ( $c[0] ) == $talkPage ) # Remove own talk page
 					$s .= $b[1] ;
 				else $s .= "[[".$c[0]."]]".$b[1] ;
 			} else {
 				if ( ucfirst ( $c[0] ) == ucfirst ( substr ( $c[1] , 0 , strlen ( $c[0] ) ) ) ) # [[test|tests]] -> [[test]]s
 					$s .= "[[".substr ( $c[1] , 0 , strlen ( $c[0] ) )."]]".substr ( $c[1] , strlen ( $c[0] ) ).$b[1] ;
-				else if ( in_array ( ucfirst($c[0]) , $l ) ) $s .= $c[1].$b[1] ; # Removing double link
+				else if ( in_array ( ucfirst($c[0]) , $l ) ) $s .= $c[1].$b[1] ; # Removing duplicate link
 				else if ( $vpage->getNiceTitle ( $c[0] ) == $talkPage ) # Remove own talk page
 					$s .= $b[1] ;
 				else $s .= "[[".$c[0]."|".$c[1]."]]".$b[1] ;
-				}
-			if ( !in_array ( ucfirst($c[0]) , $l ) ) array_push ( $l , ucfirst($c[0]) ) ;
 			}
+			if ( !in_array ( ucfirst($c[0]) , $l ) ) array_push ( $l , ucfirst($c[0]) ) ;
 		}
-
-
-        # replacing $nowikikey with the actual nowiki contents
-        $a = spliti ( $nowikikey , $s ) ;
-        $s = array_shift ( $a ) ;
-        foreach ( $a as $x ) {
-            $nw = array_shift ( $nowikistorage ) ;
-            $s .= "<nowiki>$nw</nowiki>$x" ;
-            }
-        $s = str_replace ( "<pre><nowiki>" , "<pre>" , $s ) ;
-        $s = str_replace ( "</nowiki></pre>" , "</pre>" , $s ) ;
+	}
+	# Replacing $nowikikey with the actual nowiki contents
+	$a = spliti ( $nowikikey , $s ) ;
+	$s = array_shift ( $a ) ;
+	foreach ( $a as $x ) {
+		$nw = array_shift ( $nowikistorage ) ;
+		$s .= "<nowiki>$nw</nowiki>$x" ;
+	}
+	$s = str_replace ( "<pre><nowiki>" , "<pre>" , $s ) ;
+	$s = str_replace ( "</nowiki></pre>" , "</pre>" , $s ) ;
 	
 	return $s ;
-	}
+}
 
-# Signature gets its own function
-function signature ( $s ) {
+/* The 3-tilde and 4-tilde signature feature gets its own function
+ */
+function signature ( $s )
+{
 	global $user , $wikiGetDate , $wikiUser ;
 
 	# Fixing <nowiki> and <pre> tags first
-        $s = str_replace ( "<pre>" , "<pre><nowiki>" , $s ) ;
-        $s = str_replace ( "</pre>" , "</nowiki></pre>" , $s ) ;
-        $a = spliti ( "<nowiki>" , $s ) ;
-        # $nowikikey needs to contain a unique string - this can be altered at will, as long it stays unique!
-        $nowikikey = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv" ;
-        $nowikistorage = array () ;
-        $s = array_shift ( $a ) ;
-        foreach ( $a as $x ) {
-            $c = spliti ( "</nowiki>" , $x , 2 ) ;
-            if ( count ( $c ) == 2 ) {
-                array_push ( $nowikistorage , $c[0] ) ;
-                $s .= $nowikikey.$c[1] ;
-            } else $s .= "<nowiki>".$x ;
-            }
-
-	
+	$s = str_replace ( "<pre>" , "<pre><nowiki>" , $s ) ;
+	$s = str_replace ( "</pre>" , "</nowiki></pre>" , $s ) ;
+	$a = spliti ( "<nowiki>" , $s ) ;
+	# $nowikikey needs to contain a unique string - this can be altered at will, as long it stays unique!
+	$nowikikey = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv" ;
+	$nowikistorage = array () ;
+	$s = array_shift ( $a ) ;
+	foreach ( $a as $x ) {
+		$c = spliti ( "</nowiki>" , $x , 2 ) ;
+		if ( count ( $c ) == 2 ) {
+			array_push ( $nowikistorage , $c[0] ) ;
+			$s .= $nowikikey.$c[1] ;
+		} else $s .= "<nowiki>".$x ;
+	}
 	if ( $user->isLoggedIn ) $replText = "[[$wikiUser:$user->name|$user->name]]" ;
 	else $replText = $user->getLink() ;
 	$dt = $wikiGetDate ( time() ) ;
@@ -187,26 +204,28 @@ function signature ( $s ) {
 	$s = str_replace ( "~~~~" , "$replText, $dt" , $s ) ;
 	$s = str_replace ( "~~~" , $replText , $s ) ;
 
-
-        # replacing $nowikikey with the actual nowiki contents
-        $a = spliti ( $nowikikey , $s ) ;
-        $s = array_shift ( $a ) ;
-        foreach ( $a as $x ) {
-            $nw = array_shift ( $nowikistorage ) ;
-            $s .= "<nowiki>$nw</nowiki>$x" ;
-            }
-        $s = str_replace ( "<pre><nowiki>" , "<pre>" , $s ) ;
-        $s = str_replace ( "</nowiki></pre>" , "</pre>" , $s ) ;
-	return $s ;
+	# Replacing $nowikikey with the actual nowiki contents
+	$a = spliti ( $nowikikey , $s ) ;
+	$s = array_shift ( $a ) ;
+	foreach ( $a as $x ) {
+		$nw = array_shift ( $nowikistorage ) ;
+		$s .= "<nowiki>$nw</nowiki>$x" ;
 	}
+	$s = str_replace ( "<pre><nowiki>" , "<pre>" , $s ) ;
+	$s = str_replace ( "</nowiki></pre>" , "</pre>" , $s ) ;
+	return $s ;
+}
 
-# Called when editing/saving a page
-function edit ( $title ) {
+/* Called when editing/saving a page
+ */
+function edit ( $title )
+{
 	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit , $FromEditForm , $wikiIPblocked ;
 	global $user , $CommentBox , $vpage , $EditTime , $wikiDescribePage , $wikiUser , $namespaceBackground , $wikiNamespaceBackground ;
 	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend , $wikiEditHelp , $wikiEditHelpLink , $wikiRecodeInput ;
 	global $wikiSummary , $wikiMinorEdit , $wikiCopyrightNotice , $wikiSave , $wikiPreview , $wikiDontSaveChanges , $wikiGetDate ;
 	global $wikiBeginDiff, $wikiEndDiff , $WikifyButton , $wikiAutoWikify , $wikiReadOnly , $wikiReadOnlyText ;
+
 	if ( $wikiReadOnly ) return str_replace ( "$1" , $title , $wikiReadOnlyText ) ;
 	$npage = new WikiPage ;
 	$npage->title = $title ;
@@ -217,9 +236,9 @@ function edit ( $title ) {
 	if ( $EditTime == "" ) $EditTime = date ( "YmdHis" ) ; # Stored for edit conflict detection
 	$editConflict = false ;
 
-	if ( isset($FromEditForm) and !isset($SaveButton) and !isset($PreviewButton) and !isset($WikifyButton) ) $SaveButton = "yes" ;
+	if ( isset($FromEditForm) && !isset($SaveButton) && !isset($PreviewButton) && !isset($WikifyButton) ) $SaveButton = "yes" ;
 
-	# Landuage recoding
+	# Language recoding
 	$EditBox = $wikiRecodeInput ( $EditBox ) ;
 	$CommentBox = $wikiRecodeInput ( $CommentBox ) ;
 
@@ -240,8 +259,8 @@ function edit ( $title ) {
 				#$text = str_replace ( "&" , "&amp;" , $text ) ;
 
 				$editConflict = true ;
-				}
 			}
+		}
 		if ( $doSave ) { # Actually saving the article!
 			$text = $EditBox ;
 			$text = stripslashes ( $text ) ;
@@ -263,7 +282,7 @@ function edit ( $title ) {
 			global $wasSaved ;
 			$wasSaved = true ;
 			return "" ;
-			}
+		}
 	} else if ( $WikifyButton ) { # Automatic wikification
 		$WikifyButton = "" ;
 		$text = $EditBox ;
@@ -282,9 +301,7 @@ function edit ( $title ) {
 		$text = $npage->contents ;
 	} else { # The initial edit request for a new page
 		$text = $wikiDescribePage ;
-		}
-
-	#$text = htmlspecialchars ( $text ) ;
+	}
 
 	if ( $MinorEdit ) $checked = "checked" ;
 	else $checked = "" ;
@@ -294,9 +311,9 @@ function edit ( $title ) {
 
 	# Just trying to set the initial keyboard focus to the edit window; doesn't work, though...
 	global $bodyOptions , $headerScript ;
-#JAVASCRIPT DEACTIVATED
-#	$headerScript = "<script> <!-- function setfocus() { document.f.EditBox.focus(); } --> </script>" ;
-#	$bodyOptions = " onLoad=setfocus()" ;
+	# JAVASCRIPT DEACTIVATED
+	# $headerScript = "<script> <!-- function setfocus() { document.f.EditBox.focus(); } --> </script>" ;
+	# $bodyOptions = " onLoad=setfocus()" ;
 
 	$ret .= "<form method=POST action=\"".wikiLink($npage->url)."\" enctype=\"application/x-www-form-urlencoded\">" ;
 	$ret .= "<textarea tabindex=1 name=EditBox rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>".htmlspecialchars ( $text )."</textarea><br>\n" ;
@@ -329,16 +346,16 @@ function edit ( $title ) {
 		$ret .= "<font color=red><b>$wikiEndDiff</b></font><hr></nowiki>\n" ;
 		$ret .= "<br><b>This is the text you submitted :</b><br>\n" ;
 		$ret .= "<textarea name=NotIMPORTANT rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>" . htmlspecialchars ( $oldSubmittedText ) . "</textarea><br>\n" ;
-	      }
-
-	$ret .= " </form>\n" ;
-
-	return $ret.$append ;
 	}
+	$ret .= " </form>\n" ;
+	return $ret.$append ;
+}
 
-function doEdit ( $title ) {
+function doEdit ( $title )
+{
 	global $headerScript ;
 	global $vpage , $action , $wasSaved ;
+
 	$wasSaved = false ;
 	$vpage = new WikiPage ;
 	$vpage->isSpecialPage = true ;
@@ -352,16 +369,17 @@ function doEdit ( $title ) {
 		return "" ;
 #		$action = "view" ;
 #		return view ( $title ) ;
-		}
+	}
 	$ret .= $vpage->getMiddle ( $theMiddle ) ;
 
 	$action = "" ;
 	$ret .= $vpage->getFooter() ;
 	$action = "edit" ;
 	return $ret ;
-	}
+}
 
-function view ( $title ) {
+function view ( $title )
+{
 	global $FromEditForm , $action , $namespaceBackground , $wikiNamespaceBackground ;
 	global $redirect ;
 	global $vpage , $wikiDescribePage ;
@@ -371,7 +389,7 @@ function view ( $title ) {
 		$action = "edit" ;
 		if ( $s != "" ) return $s ;
 		$action = "view" ;
-		}
+	}
 	$vpage = new WikiPage ;
 	if ( $redirect == "no" )
 	    # Don't follow redirects if global $redirect is "no":
@@ -379,17 +397,61 @@ function view ( $title ) {
 	else 
 	    $vpage->load ( $title, true) ;
 	if ( $vpage->namespace ) $namespaceBackground = $wikiNamespaceBackground[strtolower($vpage->namespace)] ;
-/*	if ( $vpage->contents == $wikiDescribePage ) {
+/*
+	if ( $vpage->contents == $wikiDescribePage ) {
 		$action = "edit" ;
 		return doEdit ( $vpage->title ) ;
-		}*/
-	return $vpage->renderPage () ;
 	}
+*/
+	return $vpage->renderPage () ;
+}
 
-function doPrint ( $title ) {
+function doPrint ( $title )
+{
 	global $vpage ;
+
 	$vpage = new WikiPage ;
 	$vpage->load ( $title ) ;
 	return $vpage->renderPage ( true ) ;
+}
+
+# Checking for talk subpage
+function fixTalk ( $title )
+{
+	global $wikiTalk ;
+
+	$sp = explode ( "/" , $title ) ;
+	$ns = explode ( ":" , $title ) ;
+	$lsp = array_pop ( $sp ) ;
+	if ( strtolowerIntl ( $lsp ) == $wikiTalk and count ( $sp ) > 0 ) {
+		if ( count ( $ns ) == 1 or strtolowerIntl ( $ns[0] ) == $wikiTalk )
+			$title = "$wikiTalk:".implode ( "/" , $sp ) ;
 	}
+	return $title ;
+}
+
+# EXPERIMENTAL!
+function framepage ()
+{
+	global $title ;
+
+	$p = "wiki.phtml?" ;
+	$v = get_defined_vars() ;
+	$vk = array_keys ( $v ) ;
+	foreach ( $vk as $x ) {
+		$p .= "&$x=".$v[$x] ;
+	}
+	$ret = "" ;
+	$ret .= "<html><head></head><body><FRAMESET rows=\"150,*\"><FRAME src=\"$p&framed=top\">" ;
+	$ret .= "<FRAMESET cols=\"*,140\"><FRAME src=\"$p&framed=main\"><FRAME src=\"$p&framed=bar\">" ;
+	$ret .= "</FRAMESET></FRAMESET></body></html>" ;
+
+	return $ret ;
+}
+
+function getmicrotime(){
+	list($usec, $sec) = explode(" ",microtime());
+	return ((float)$usec + (float)$sec);
+}
+
 ?>
