@@ -9,7 +9,7 @@ cat <<_EOF_
 #define SM_SMINFO_CXX_
 static char const *sm\$compile_user = "`whoami`";
 static char const *sm\$compile_host = "`hostname`";
-static char const *sm\$compile_time = "`date +"%b-%m-%Y %H:%M:%S"`";
+static char const *sm\$compile_time = "`date +"%d-%b-%Y %H:%M:%S"`";
 static char const *sm\$compile_os = "`uname`";
 static char const *sm\$compile_release = "`uname -r`";
 static char const *sm\$compile_arch = "`uname -m`";

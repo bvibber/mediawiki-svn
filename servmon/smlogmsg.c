@@ -108,7 +108,7 @@ sock_unix(const char *sockname)
 {
 struct	sockaddr_un 	sa;
 	int		s;
-	socklen_t	len;
+	socklen_t	len = sizeof(sa);
 
 	bzero(&sa, sizeof(sa));
 	sa.sun_family = AF_UNIX;

@@ -605,21 +605,25 @@ trmsrv::remote(void) const
 void
 trmsrv::do_broadcast(str message)
 {
-	f_bol();
-	f_ceol();
-	wrtln("% " + smutl::fmttime() + ": " + message);
-	wrt(prm + ln);
+	try {
+		f_bol();
+		f_ceol();
+		wrtln("% " + smutl::fmttime() + ": " + message);
+		wrt(prm + ln);
+	} catch (smnet::sckterr&) {
+		delete this;
+	}
 }
 
 void
 trmsrv::f_bol(void)
 {
-	wrt("\x18[0G");
+	wrt("\x1B[0G");
 }
 
 void
 trmsrv::f_ceol(void)
 {
-	wrt("\x18[K");
+	wrt("\x1B[K");
 }
 } // namespace smtrm

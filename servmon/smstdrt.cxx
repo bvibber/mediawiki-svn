@@ -22,8 +22,10 @@ HDL(cmd_show_version) {
 	EX1(cd) {
 		cd.term.wrtln(b::io::str(format("servmon version %s, compiled %s by %s::%s")
 					 % SM_VERSION % sm$compile_time % sm$compile_host % sm$compile_user));
-		if (cd.term.prefer_short_output())
+		if (cd.term.prefer_short_output()) {
+			cd.term.wrtln("Uptime " + smutl::fmtuptime(true) + ", startup at " + smutl::fmtboottime() + ".");
 			return true;
+		}
 
 		cd.term.wrtln();
 #if SM_RELTYPE == SM_RELCVS

@@ -95,10 +95,10 @@ clnt::remote(void) const
 		return std::strerror(errno);
 	}
 	if (type == internet) {
-		sockaddr_in *sin2 = (sockaddr_in *) &sin;
+		sockaddr_in *sin2 = (sockaddr_in *) &sa;
 		return std::string("INET:") + inet_ntoa(sin2->sin_addr);
 	} else {
-		sockaddr_un *sun = (sockaddr_un *) &sin;
+		sockaddr_un *sun = (sockaddr_un *) &sa;
 		return std::string("UNIX:") + sun->sun_path;
 	}
 }

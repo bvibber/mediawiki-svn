@@ -63,9 +63,9 @@ wf2time_t(str wf)
 }
 
 std::string
-fmtuptime(void)
+fmtuptime(bool shrt)
 {
-	return tdiff2(boottime);
+	return tdiff2(boottime, shrt);
 }
 	
 std::string
