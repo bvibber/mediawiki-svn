@@ -42,7 +42,7 @@ function newpages () {
 	$arr = array () ;
 
 	$mindate = date ( "Ymd000000" , time () - $daysAgo*24*60*60 ) ;
-	$mindate = timestampAddHour ( $mindate , $user->options["hourDiff"] ) ;
+
 	$connection=getDBconnection() ;
 
 	# Looking at the "cur" table
