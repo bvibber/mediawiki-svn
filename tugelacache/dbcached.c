@@ -1404,12 +1404,30 @@ int main(int argc, char **argv)
     }
     dbp->set_cachesize(dbp, 0, settings.maxbytes, 0);
 
+#if DB_VERSION_MAJOR < 4
+    if ((ret = dbp->open(dbp,
+                         dbfile, NULL, DB_BTREE, DB_CREATE,
+                         0664)) != 0) {
+        dbp->err(dbp, ret, "%s", dbfile);
+        exit(1);
+    }
+#else
+#if DB_VERSION_MINOR > 0
     if ((ret = dbp->open(dbp,
 			 NULL, dbfile, NULL, DB_BTREE, DB_CREATE,
 			 0664)) != 0) {
 	dbp->err(dbp, ret, "%s", dbfile);
 	exit(1);
     }
+#else
+    if ((ret = dbp->open(dbp,
+                         dbfile, NULL, DB_BTREE, DB_CREATE,
+                         0664)) != 0) {
+        dbp->err(dbp, ret, "%s", dbfile);
+        exit(1);
+    }
+#endif
+#endif
 
     atexit(syncdb);
 
