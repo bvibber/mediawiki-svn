@@ -1046,7 +1046,7 @@ enctype='application/x-www-form-urlencoded'>
 		  ":{$ut}|{$ut}]]"; }
 
 		$art = $title->getPrefixedText();
-		$d = $wgLang->timeanddate( date( "YmdHis" ), true );
+		$d = $wgLang->timeanddate( date( "YmdHis" ), false );
 
 		preg_match( "/^(.*?)<ul>(.*)$/sD", $text, $m );	
 		$da = str_replace( "$1", $art, wfMsg( "deletedarticle" ) );
