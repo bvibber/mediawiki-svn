@@ -11,8 +11,8 @@
 int yywrap(void) { return 1; }
 
 /* Change this line to "#define debuglex printf" to output the token stream */
-#define debuglex printf
-#define debuglex2 printf
+#define debuglex(x)
+#define debuglex2(x,y)
 
 %}
 

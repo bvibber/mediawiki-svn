@@ -5,7 +5,8 @@
 #include "parsetree.h"
 int yyerror() { printf ("Syntax error.\n"); }
 
-void debugf (char* s) { printf (s); }
+/* Change this line to "#define debugf printf" to output each reduction */
+#define debugf(x)
 
 Node articlenode;
 %}
@@ -19,7 +20,7 @@ Node articlenode;
              preblock preline bulletlistline numberlistline listseries text listblock
              zeroormorenewlinessave oneormorenewlinessave bulletlistblock numberlistblock
              textelement textelementnoboit textelementnobold textelementnoital italicsorbold
-             textnoboit textnobold textnoital boldnoitalics italicsnobold 
+             textnoboit textnobold textnoital boldnoitalics italicsnobold
              TEXT EXTENSION PRELINE
 %type <num>  HEADING ENDHEADING
 
