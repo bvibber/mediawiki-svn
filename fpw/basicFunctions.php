@@ -89,8 +89,8 @@ function edit ( $title ) {
 	$EditBox = $wikiRecodeInput ( $EditBox ) ;
 	$CommentBox = $wikiRecodeInput ( $CommentBox ) ;
 
-	if ( isset ( $SaveButton ) ) { # The edit is finished, someone pressed the "Save" button
-		unset ( $SaveButton ) ;
+	if ( $SaveButton ) { # The edit is finished, someone pressed the "Save" button
+		$SaveButton = "" ;
 		$doSave = true ;
 		if ( $vpage->doesTopicExist() ) {
 			$lastTime = getMySQL ( "cur" , "cur_timestamp" , "cur_title=\"$vpage->secureTitle\"" ) ;
@@ -138,8 +138,8 @@ function edit ( $title ) {
 			$wasSaved = true ;
 			return "" ;
 			}
-	} else if ( isset ( $PreviewButton ) ) { # Generating a preview to append to the page
-		unset ( $PreviewButton ) ;
+	} else if ( $PreviewButton ) { # Generating a preview to append to the page
+		$PreviewButton = "" ;
 		$text = $EditBox ;
 		$text = str_replace ( "\\'" , "'" , $text ) ;
 		$text = str_replace ( "\\\"" , "\"" , $text ) ;
@@ -223,7 +223,6 @@ function view ( $title ) {
 	if ( $FromEditForm ) {
 		$s = doEdit ( $title ) ;
 		$FromEditForm = "" ;
-		unset ( $FromEditForm ) ;
 		$action = "edit" ;
 		if ( $s != "" ) return $s ;
 		$action = "view" ;
@@ -233,7 +232,7 @@ function view ( $title ) {
 	if ( $vpage->namespace ) $namespaceBackground = $wikiNamespaceBackground[strtolower($vpage->namespace)] ;
 	if ( $vpage->contents == $wikiDescribePage ) {
 		$action = "edit" ;
-		return doEdit ( $title ) ;
+		return doEdit ( $vpage->title ) ;
 		}
 	return $vpage->renderPage () ;
 	}
