@@ -35,15 +35,23 @@ int main(int argc, char **argv)
     DBT key, data;
     char *dbfile = DBFILE;
     char *prefix = NULL;
+    char buf[300];
     size_t prefixlen = 0;
     int ret;
+    int port = 0;
+    struct in_addr addr;
+    struct sockaddr_in sin;
     item *it;
     time_t oldest = 0;
     time_t now;
     int c;
+    int len;
+    int s;
+    int verbose = 0;
 
     now = time(NULL);
-    while ((c = getopt(argc, argv, "f:ho:p:")) != -1) {
+    inet_aton("127.0.0.1", &addr);
+    while ((c = getopt(argc, argv, "vf:o:P:H:p:")) != -1) {
 	switch (c) {
 	case 'f':
 	    dbfile = optarg;
@@ -54,6 +62,19 @@ int main(int argc, char **argv)
 	case 'p':
 	    prefix = optarg;
 	    prefixlen = strlen(prefix);
+	    break;
+	case 'P':
+	    port = atoi(optarg);
+	    break;
+	case 'H':
+	    bzero(&addr, sizeof(addr));
+	    if (!inet_aton(optarg, &addr)) {
+		fprintf(stderr, "Illegal address: %s\n", optarg);
+		return 1;
+	    }
+	    break;
+	case 'v':
+	    verbose = 1;
 	    break;
 	default:
 	    usage();
@@ -73,6 +94,21 @@ int main(int argc, char **argv)
 	exit(1);
     }
 
+    if (port != 0) {
+	s = socket(PF_INET, SOCK_STREAM, 0);
+	bzero(&sin, sizeof(sin));
+	sin.sin_family = AF_INET;
+	sin.sin_port = htons(port);
+	sin.sin_addr = addr;
+	if (connect(s, (struct sockaddr *) &sin, sizeof(sin)) < 0) {
+	    printf("could not connect\r\n");
+	    exit(1);
+	}
+    } else {
+	s = 1;			/* standard output */
+    }
+
+
     memset(&key, 0, sizeof(key));
     memset(&data, 0, sizeof(data));
     data.flags = DB_DBT_PARTIAL;
@@ -85,20 +121,32 @@ int main(int argc, char **argv)
 	    && (key.size < prefixlen
 		|| strncmp(prefix, key.data, prefixlen)))
 	    continue;
-	if ((it->exptime && it->exptime <= now) || it->time < oldest)
-	    printf("delete %.*s\n",
-		   (int) key.size, (char *) key.data, it->exptime);
+	if ((it->exptime && it->exptime <= now) || it->time < oldest) {
+	    len = snprintf(&buf, sizeof(buf), "delete %.*s\r\n",
+			   (int) key.size, (char *) key.data);
+	    if (port && verbose)
+		printf("%.*s : ", (int) key.size,
+		       (char *) key.data);
+	    write(s, buf, len);
+	    if (port) {
+		len = read(s, &buf, 128);
+		if (verbose)
+		    printf("%.*s", len, buf);
+	    }
+	}
     }
     if (ret != DB_NOTFOUND) {
 	dbp->err(dbp, ret, "DBcursor->get");
 	exit(1);
     }
-    printf("quit\n");
     exit(0);
 }
 
 void usage()
 {
+    printf("-P port	0 (default) means print to stdout\n");
+    printf("-H ip	host ip of cache daemon\n");
+    printf("-v		verbose session information\n");
     printf("-f file	database file\n");
     printf("-p prefix	key prefix\n");
     printf
