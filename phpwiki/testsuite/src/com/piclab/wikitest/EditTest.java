@@ -50,8 +50,8 @@ private int part1() throws Exception {
 
 	wr = m_suite.viewPage( "Special:Recentchanges" );
 	text = wr.getText();
-	if ( text.indexOf( "Physics" ) < 0 ) { return 103; }
-	if ( text.indexOf( "Mathematics" ) < 0 ) { return 104; }
+	if ( text.indexOf( "Talk:Physics" ) < 0 ) { return 103; }
+	if ( text.indexOf( "User:Fred" ) < 0 ) { return 104; }
 	if ( text.indexOf( "Wikitest addition" ) < 0 ) { return 105; }
 
 	wr = m_suite.viewPage( "Talk:Physics" );

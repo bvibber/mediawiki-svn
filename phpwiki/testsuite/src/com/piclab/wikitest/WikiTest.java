@@ -6,7 +6,6 @@
  */
 
 package com.piclab.wikitest;
-
 import com.meterware.httpunit.*;
 
 public class WikiTest {
@@ -63,12 +62,7 @@ private void run() {
 		  "\" failed to initialize with code " + result );
 		return;
 	}
-	WikiSuite.fine( "Started test \"" + testName() + "\"" );
-
-	StringBuffer sb = new StringBuffer(100);
-	java.text.DecimalFormat df =
-	  (java.text.DecimalFormat)(java.text.NumberFormat.getInstance());
-
+	WikiSuite.info( "Started test \"" + testName() + "\"" );
 	m_start = System.currentTimeMillis();
 
 	try {
@@ -79,22 +73,14 @@ private void run() {
 		result = 2;
 	}
 	m_stop = System.currentTimeMillis();
+	double time = (double)(m_stop - m_start) / 1000.0;
 
-	try {
-		df.applyPattern( "#######0.000" );
+	StringBuffer sb = new StringBuffer(100);
+	sb.append( "Test \"" ).append( testName() ).append( "\" " )
+	  .append( (result==0) ? "Succeeded" : "Failed   " ).append( "   (" )
+	  .append( WikiSuite.threeDecimals( time ) ).append( " secs)" );
+	WikiSuite.info( sb.toString() );
 
-		sb.append( "Test \"" ).append( testName() )
-		  .append( "\"                  " );
-		sb.setLength( 20 );
-		sb.append( (result==0) ? "Succeeded" : "Failed   " ).append( "   (" )
-		  .append( df.format( (double)(m_stop - m_start) / 1000.0 ) )
-		  .append( " secs)" );
-
-		WikiSuite.info( sb.toString() );
-	} catch (Exception e) {
-		WikiSuite.error( "Exception (" + e + ") running test \"" +
-		  testName() + "\"" );
-	}
 	if ( m_verboseflag ) {
 		WikiSuite.setLoggingLevel( ll );
 	}

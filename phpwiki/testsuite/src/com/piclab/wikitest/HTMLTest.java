@@ -22,6 +22,7 @@ public class HTMLTest extends WikiTest {
 
 private String[] m_goodpats = {
 	"\\A\\s*<!doctype html", "<meta\\s+[^>]*name\\s*=\\s*.robots",
+	"<head[^>]*>.*<title[^>]*>.*</title>.*</head>\\s*<body",
 	"<link\\s+[^>]*rel\\s*=\\s*.stylesheet", "<h1\\s+[^>]*class\\s*=.pagetitle",
 	"<form\\s+[^>]*name\\s*=\\s*.search", 
 	"<div\\s+[^>]*id\\s*=.content.*<div\\s+[^>]*id\\s*=.article",
@@ -29,10 +30,11 @@ private String[] m_goodpats = {
 private Pattern[] m_cgoodpats;
 
 private String[] m_badpats = {
-	"<[^>]*onclick\\s*=",
+	"<[^>]*onclick\\s*=", "<applet", "<object", "<body.*<script.*</body"
 };
 private Pattern[] m_cbadpats;
 
+/* TODO: figure out some way to check for unbalanced <ul>, etc. */
 
 public String testName() { return "HTML"; }
 
