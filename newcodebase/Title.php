@@ -166,8 +166,7 @@ class Title {
 		global $wgServer, $wgScript;
 
 		if ( "" != $this->mInterwiki ) { return ""; }
-		$s = "$wgServer$wgScript?title=" .
-		  $this->getPrefixedURL() . "&amp;action=edit";
+		$s = wfLocalUrl( $this->getPrefixedURL(), "action=edit" );
 
 		return $s;
 	}

@@ -40,7 +40,7 @@ function wfLocalUrl( $a, $q = "" )
 	global $wgServer, $wgScript, $wgArticlePath;
 
 	$a = str_replace( " ", "_", $a );
-	$a = urlencode( $a );
+	$a = wfUrlencode( $a );
 
 	if ( "" == $a ) {
 		$a = "{$wgServer}{$wgScript}?{$q}";	
@@ -83,8 +83,8 @@ function wfImageArchiveUrl( $name )
 function wfUrlencode ( $s )
 {
 	$ulink = urlencode( $s );
-	$ulink = str_replace( "%3A", ":", $ulink );
-	$ulink = str_replace( "%2F", "/", $ulink );
+	$ulink = preg_replace( "/%3[Aa]/", ":", $ulink );
+	$ulink = preg_replace( "/%2[Ff]/", "/", $ulink );
 	return $ulink;
 }
 
