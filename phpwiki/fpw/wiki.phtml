@@ -1,14 +1,6 @@
 <?
 # THIS IS THE MAIN FILE OF THE PHP WIKIPEDIA SCRIPT
 
-#$nclose = 0;
-#function mysql_closeX ($connection) {
-#	global $nclose;
-#	$nclose++;
-#	echo "(($nclose mysql_close($connection)))";
-#	mysql_close($connection);
-#}
-
 # Includes the necessary parts
 include_once ( "./wikiSettings.php" ) ;
 include_once ( "./basicFunctions.php" ) ;
@@ -19,12 +11,13 @@ include_once ( "./wikiUser.php" ) ;
 
 # Checking for talk subpage
 function fixTalk ( $title ) {
+	global $wikiTalk ;
 	$sp = explode ( "/" , $title ) ;
 	$ns = explode ( ":" , $title ) ;
 	$lsp = array_pop ( $sp ) ;
-	if ( strtolower ( $lsp ) == "talk" and count ( $sp ) > 0 ) {
-		if ( count ( $ns ) == 1 or strtolower ( $ns[0] ) == "talk" )
-			$title = "talk:".implode ( "/" , $sp ) ;
+	if ( strtolower ( $lsp ) == $wikiTalk and count ( $sp ) > 0 ) {
+		if ( count ( $ns ) == 1 or strtolower ( $ns[0] ) == $wikiTalk )
+			$title = "$wikiTalk:".implode ( "/" , $sp ) ;
 		}
 	return $title ;
 	}
@@ -60,6 +53,10 @@ function getmicrotime(){
 	global $metaDescription , $metaKeywords , $wikiCharset ; # For meta tags in the HTML code
 	$expiration = time()+31536000 ; # Cookies set will expire in one year from now
 	$pageTitle = "" ;
+	
+	# Set locale, needed for correct string functions in various non-English wikis
+	if ( $wikiLocale != "" )
+		setlocale ( LC_ALL , $wikiLocale ) ;
 
 #	$mt = getmicrotime() ;
 
@@ -83,6 +80,8 @@ function getmicrotime(){
 		$charset = $wikiCharset;
 	if ( $charset != "")
 		header("Content-type: text/html; charset=$charset");
+	if ( $wikiLanguage != "")
+		header ( "Content-Language: $wikiLanguage" ) ;
 
 	# Default settings
 	if ( $action == "" ) $action = "view" ;
@@ -135,12 +134,12 @@ function getmicrotime(){
 	if ( $metaKeywords != "" ) $metaKeywords = "<META name=\"keywords\" content=\"$metaKeywords\">" ;
 	if ( $charset != "") $metaCharset = "<META HTTP-EQUIV=\"Content-type\" content=\"text/html; charset=$charset\">" ;
 
-	$head = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">\n" ;
-	$head .= "<HTML><HEAD><TITLE>$pageTitle</TITLE>\n" ;
-	$head .= "$metaCharset\n" ;
-	$head .= "$metaDescription\n$metaKeywords\n$headerScript\n$styleSheet\n" ;
-	$head .= "</HEAD><BODY $bodyOptions>\n" ;
-	$tail = "</BODY></HTML>" ;
+	$head = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">
+<HTML><HEAD><TITLE>$pageTitle</TITLE>
+$metaCharset\n$metaDescription\n$metaKeywords\n$headerScript\n$styleSheet
+<link rel=\"shortcut icon\" href=\"/favicon.ico\" />
+</HEAD><BODY $bodyOptions>
+</BODY></HTML>" ;
 
 #	$mt = getmicrotime()-$mt ;	$out = "$mt<br>\n$out" ;
 
