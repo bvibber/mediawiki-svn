@@ -56,7 +56,7 @@ function upload () {
 		$uploaddir = ereg_replace("[A-Za-z0-9_.]+$", "upload", $THESCRIPT);
 		$logText = str_replace ( array ( '$1' , '$2' , '$3' , '$4' ) ,
 				array ( $now , $userText ,
-				"[$wikiCurrentServer$uploaddir/" . nurlencode($Upload_name) . " " . htmlspecialchars ( $Upload_name ) . "]",
+				"[$wikiCurrentServer$uploaddir/" . rawurlencode($Upload_name) . " " . htmlspecialchars ( $Upload_name ) . "]",
 				(("x$CommentBox" != "x")?" <b><nowiki>[" . htmlspecialchars ( $CommentBox ) . "]</nowiki></b>" :"") ) ,
 				$wikiUploadSuccess1 ) ;
 		makeLog ( "log:Uploads" , $logText , str_replace ( "$1" , $Upload_name , $wikiUploadSuccess2 ) . (("x$CommentBox" != "x")?" - $CommentBox":"") ) ;
