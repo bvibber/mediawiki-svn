@@ -5,7 +5,7 @@
 int delay()
 {
     /* Always serve at idle cpu */
-    if (check_idle() < 99)
+    if (check_idle() > 5 )
 	return (0);
 
     /* 10.0 load is too high */
