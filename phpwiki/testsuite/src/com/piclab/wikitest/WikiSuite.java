@@ -99,36 +99,6 @@ public static String getMainPage() { return ms_mainpage; }
 public static String getSysopPass() { return ms_sysoppass; }
 
 /*
- * Encapsulate rules for converting a title to URL form; this
- * should match the equivalent function in the Wiki code.
- */
-
-public static String titleToUrl( String title ) {
-	StringBuffer sb = new StringBuffer( title.length() + 20 );
-
-	if ( "".equals( title ) ) { title = ms_mainpage; }
-
-	for (int i=0; i<title.length(); ++i) {
-		char c = title.charAt(i);
-		if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
-			sb.append(c);
-		} else if (c >= '0' && c <= '9') {
-			sb.append(c);
-		} else if (c == '.' || c == '-' || c == '*' || c == ':' || c == '/'
-		  || c == '(' || c == ')' || c == '_') {
-			sb.append(c);
-		} else if (c == ' ') {
-			sb.append('_');
-		} else {
-			sb.append('%');
-			String hex = "00" + Integer.toHexString((int)c);
-			sb.append(hex.substring(hex.length() - 2));
-		}
-	}
-	return sb.toString();
-}
-
-/*
  * Logging/reporting routines:
  */
 
@@ -240,30 +210,41 @@ public static String loadText( String fname )
 }
 
 /*
- * Start a background thread which does regular fetches of
- * the preloaded page list while all the other tests are
- * going on.
+ * Start background threads that run while all the other
+ * tests are going on.
  */
 
 private WikiFetchThread m_wft;
+private WikiSearchThread m_wst;
 
-private void startBackgroundFetchThread() {
-	info( "Starting background page fetching thread." );
+private void startBackgroundThreads() {
+	info( "Starting background threads." );
+
 	m_wft = new WikiFetchThread();
 	m_wft.start();
+
+	m_wst = new WikiSearchThread();
+	m_wst.start();
 }
 
-private void stopBackgroundFetchThread() {
+private void stopBackgroundThreads() {
 	synchronized (m_wft) {
 		m_wft.requestStop();
 		try {
-			m_wft.wait();
+			m_wft.wait( 30000 );
 		} catch ( InterruptedException e ) {
 			error( "Problem stopping background fetch thread." );
-			return;
 		}
 	}
-	info( "Stopped background page fetching thread." );
+	synchronized (m_wst) {
+		m_wst.requestStop();
+		try {
+			m_wst.wait( 30000 );
+		} catch ( InterruptedException e ) {
+			error( "Problem stopping background search thread." );
+		}
+	}
+	info( "Stopped background threads." );
 
 	int fetches = m_wft.getFetches();
 	double time = (double)(m_wft.getTime()) / 1000.0;
@@ -273,6 +254,16 @@ private void stopBackgroundFetchThread() {
 	sb.append( "Fetched " ).append( fetches ).append( " pages in " )
 	  .append( threeDecimals( time ) ).append( " sec (" )
 	  .append( threeDecimals( avtime ) ).append( " sec per fetch)." );
+	info( sb.toString() );
+
+	int searches = m_wst.getSearches();
+	time = (double)(m_wst.getTime()) / 1000.0;
+	avtime = time / (double)fetches;
+
+	sb.setLength(0);
+	sb.append( "Performed " ).append( searches ).append( " searches in " )
+	  .append( threeDecimals( time ) ).append( " sec (" )
+	  .append( threeDecimals( avtime ) ).append( " sec per search)." );
 	info( sb.toString() );
 }
 
@@ -312,7 +303,7 @@ public static void main( String[] params ) {
 
 	info( "Started Wikipedia Test Suite" );
 	long start_time = System.currentTimeMillis();
-	if ( ! f_nobackground ) { ws.startBackgroundFetchThread(); }
+	if ( ! f_nobackground ) { ws.startBackgroundThreads(); }
 
 	/*
 	 * All the actual tests go here.
@@ -329,7 +320,7 @@ public static void main( String[] params ) {
 	/*
 	 * Tests are all done. Clean up and report.
 	 */
-	if ( ! f_nobackground ) { ws.stopBackgroundFetchThread(); }
+	if ( ! f_nobackground ) { ws.stopBackgroundThreads(); }
 	info( "Finished Wikipedia Test Suite" );
 
 	long elapsed_time = System.currentTimeMillis() - start_time;

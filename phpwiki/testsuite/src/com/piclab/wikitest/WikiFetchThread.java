@@ -1,7 +1,7 @@
 
 /*
- * WikiFetchThread is the background thread that fetches
- * pages from the preload list until the wuite is done.
+ * WikiFetchThread is a background thread that fetches
+ * pages from the preload list until the suite is done.
  */
 
 package com.piclab.wikitest;

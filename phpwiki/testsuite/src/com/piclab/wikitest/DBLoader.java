@@ -15,7 +15,7 @@ public class DBLoader extends WikiTest {
 private WebResponse loadPageFromFile( String title )
 throws WikiSuiteFailureException {
 	StringBuffer url = new StringBuffer(200);
-	String t = WikiSuite.titleToUrl( title );
+	String t = WikiTest.titleToUrl( title );
 
 	url.append( "texts/" ).append( t ).append( ".txt" );
 	String text = WikiSuite.loadText( url.toString() );

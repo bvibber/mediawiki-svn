@@ -20,3 +20,5 @@ Wiki internal links test:
 
 (10) [[Game]]s
 
+Need to add some more tests of interwiki links here...
+
