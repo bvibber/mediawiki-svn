@@ -18,17 +18,11 @@ function wfSpecialRecentchanges()
 	}
 	$cutoff = date( "YmdHis", time() - ( $days * 86400 ) );
 
-	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_user,cur_is_new," .
-	  "cur_comment,cur_user_text,cur_timestamp,cur_minor_edit FROM cur " .
-	  "WHERE cur_timestamp > '{$cutoff}' " .
-	  "ORDER BY cur_timestamp DESC LIMIT {$limit}";
+	$sql = "SELECT rc_cur_id,rc_namespace,rc_title,rc_user,rc_new," .
+	  "rc_comment,rc_user_text,rc_timestamp,rc_minor FROM recentchanges " .
+	  "WHERE rc_timestamp > '{$cutoff}' " .
+	  "ORDER BY rc_timestamp DESC LIMIT {$limit}";
 	$res = wfQuery( $sql, $fname );
-
-	$sql = "SELECT old_id,old_namespace,old_title,old_user," .
-	  "old_comment,old_user_text,old_timestamp,old_minor_edit FROM old " .
-	  "WHERE old_timestamp > '{$cutoff}' " .
-	  "ORDER BY old_timestamp DESC LIMIT {$limit}";
-	$res2 = wfQuery( $sql, $fname );
 
 	$note = str_replace( "$1", $limit, wfMsg( "rcnote" ) );
 	$note = str_replace( "$2", $days, $note );
@@ -59,40 +53,22 @@ function wfSpecialRecentchanges()
 
 	$count1 = wfNumRows( $res );
 	$obj1 = wfFetchObject( $res );
-	$count2 = wfNumRows( $res2 );
-	$obj2 = wfFetchObject( $res2 );
 
 	$s = $sk->beginRecentChangesList();
 	while ( $limit ) {
-		if ( ( 0 == $count1 ) && ( 0 == $count2 ) ) { break; }
+		if ( ( 0 == $count1 ) ) { break; }
 
-		if ( ( 0 == $count2 ) ||
-		  ( ( 0 != $count1 ) && 
-		  ( $obj1->cur_timestamp >= $obj2->old_timestamp ) ) ) {
-			$ts = $obj1->cur_timestamp;
-			$u = $obj1->cur_user;
-			$ut = $obj1->cur_user_text;
-			$ns = $obj1->cur_namespace;
-			$ttl = $obj1->cur_title;
-			$com = $obj1->cur_comment;
-			$me = ( $obj1->cur_minor_edit > 0 );
-			$new = ( $obj1->cur_is_new > 0 );
+			$ts = $obj1->rc_timestamp;
+			$u = $obj1->rc_user;
+			$ut = $obj1->rc_user_text;
+			$ns = $obj1->rc_namespace;
+			$ttl = $obj1->rc_title;
+			$com = $obj1->rc_comment;
+			$me = ( $obj1->rc_minor > 0 );
+			$new = ( $obj1->rc_new > 0 );
 
 			$obj1 = wfFetchObject( $res );
 			--$count1;
-		} else {
-			$ts = $obj2->old_timestamp;
-			$u = $obj2->old_user;
-			$ut = $obj2->old_user_text;
-			$ns = $obj2->old_namespace;
-			$ttl = $obj2->old_title;
-			$com = $obj2->old_comment;
-			$me = ( $obj2->old_minor_edit > 0 );
-			$new = 0;
-
-			$obj2 = wfFetchObject( $res2 );
-			--$count2;
-		}
 		if ( ! ( $hideminor && $me ) ) {
 			$s .= $sk->recentChangesLine( $ts, $u, $ut, $ns, $ttl,
 			  $com, $me, $new );
@@ -101,7 +77,6 @@ function wfSpecialRecentchanges()
 	}
 	$s .= $sk->endRecentChangesList();
 
-	wfFreeResult( $res2 );
 	wfFreeResult( $res );
 	$wgOut->addHTML( $s );
 }
