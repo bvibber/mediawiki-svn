@@ -1004,8 +1004,9 @@ class WikiPage extends WikiTitle {
         if(count($wikiEncodingNames) > 1) { # Shortcut for switching character encodings
             global $THESCRIPT;
             $u = $THESCRIPT . "?" . getenv("QUERY_STRING");
+	    $u = getenv ( "REQUEST_URI" ) ;
             $u = preg_replace("/[\?\&]encoding=[0-9]+/", "", $u);
-            $u .= (strchr($u, "?") ? "&" : "?");
+            $u .= ((!strchr($u, "?") && strstr($THESCRIPT,$u)) ? "?" : "&");
             foreach ( $wikiEncodingNames as $i => $enc ) {
                 if($i > 0) $ret .= " | ";
                 if($i == $user->options["encoding"]) $ret .= "<b>";
