@@ -16,10 +16,9 @@ class LinksUpdate {
 		global $wgLinkCache;
 		$fname = "LinksUpdate::doUpdate";
 
-		$conn = wfGetDB();
 		$sql = "DELETE FROM links WHERE l_from='" .
 		  wfStrencode( $this->mTitle ) . "'";
-		wfQuery( $sql, $conn, $fname );
+		wfQuery( $sql, $fname );
 
 		$a = $wgLinkCache->getGoodLinks();
 		$sql = "";
@@ -34,13 +33,11 @@ class LinksUpdate {
 			}
 		}
 		if ( "" != $sql ) {
-			$conn = wfGetDB();
-			$res2 = wfQuery( $sql, $conn, $fname );
+			$res2 = wfQuery( $sql, $fname );
 		}
 
-		$conn = wfGetDB();
 		$sql = "DELETE FROM brokenlinks WHERE bl_from={$this->mId}";
-		wfQuery( $sql, $conn, $fname );
+		wfQuery( $sql, $fname );
 
 		$a = $wgLinkCache->getBadLinks();
 		$sql = "";
@@ -55,14 +52,12 @@ class LinksUpdate {
 			}
 		}
 		if ( "" != $sql ) {
-			$conn = wfGetDB();
-			$res2 = wfQuery( $sql, $conn, $fname );
+			$res2 = wfQuery( $sql, $fname );
 		}
 
-		$conn = wfGetDB();
 		$sql = "DELETE FROM imagelinks WHERE il_from='" .
 		  wfStrencode( $this->mTitle ) . "'";
-		wfQuery( $sql, $conn, $fname );
+		wfQuery( $sql, $fname );
 
 		$a = $wgLinkCache->getImageLinks();
 		$sql = "";
@@ -78,8 +73,7 @@ class LinksUpdate {
 			}
 		}
 		if ( "" != $sql ) {
-			$conn = wfGetDB();
-			$res2 = wfQuery( $sql, $conn, $fname );
+			$res2 = wfQuery( $sql, $fname );
 		}
 	}
 }

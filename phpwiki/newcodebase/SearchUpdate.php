@@ -56,10 +56,9 @@ class SearchUpdate {
 		}
 		$text = implode( " ", array_keys( $this->mTextWords ) );
 
-		$conn = wfGetDB();
 		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp,cur_ind_text='" .
 		  wfStrencode( $text ) . "' WHERE cur_id={$this->mId}";
-		wfQuery( $sql, $conn, "SearchUpdate::doUpdate" );
+		wfQuery( $sql, "SearchUpdate::doUpdate" );
 	}
 }
 

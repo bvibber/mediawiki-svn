@@ -73,17 +73,16 @@ class LinkCache {
 		$ns = $nt->getNamespace();
 		$t = $nt->getDBkey();
 
-		$conn = wfGetDB();
 		$sql = "SELECT cur_id FROM cur WHERE (cur_namespace=" .
 		  "{$ns} AND cur_title='" . wfStrencode( $t ) . "')";
-		$res = wfQuery( $sql, $conn, "LinkCache::addLink" );
+		$res = wfQuery( $sql, "LinkCache::addLink" );
 
-		if ( 0 == mysql_num_rows( $res ) ) {
+		if ( 0 == wfNumRows( $res ) ) {
 			$id = 0;
 		} else {
-			$s = mysql_fetch_object( $res );
+			$s = wfFetchObject( $res );
 			$id = $s->cur_id;
-			mysql_free_result( $res );
+			wfFreeResult( $res );
 		}
 		if ( 0 == $id ) { $this->addBadLink( $title ); }
 		else { $this->addGoodLink( $id, $title ); }

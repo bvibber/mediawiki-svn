@@ -19,11 +19,12 @@ function wfGetDB()
 	return $wgDBconnection;
 }
 
-function wfQuery( $sql, $conn, $fname = "" )
+function wfQuery( $sql, $fname = "" )
 {
 	global $wgLastDatabaseQuery, $wgOut;
 	$wgLastDatabaseQuery = $sql;
 
+	$conn = wfGetDB();
 	$ret = mysql_query( $sql, $conn );
 
 	if ( "" != $fname ) {
@@ -39,6 +40,14 @@ function wfQuery( $sql, $conn, $fname = "" )
 	return $ret;
 }
 
+function wfFreeResult( $res ) { mysql_free_result( $res ); }
+function wfFetchObject( $res ) { return mysql_fetch_object( $res ); }
+function wfNumRows( $res ) { return mysql_num_rows( $res ); }
+function wfInsertId() { return mysql_insert_id( wfGetDB() ); }
+function wfDataSeek( $res, $row ) { return mysql_data_seek( $res, $row ); }
+function wfLastErrno() { return mysql_errno(); }
+function wfLastError() { return mysql_error(); }
+
 function wfLastDBquery()
 {
 	global $wgLastDatabaseQuery;
@@ -47,18 +56,15 @@ function wfLastDBquery()
 
 function wfSetSQL( $table, $var, $value, $cond )
 {
-	$conn = wfGetDB();
 	$sql = "UPDATE $table SET $var = '" .
 	  wfStrencode( $value ) . "' WHERE ($cond)";
-	wfQuery( $sql, $conn, "wfSetSQL" );
+	wfQuery( $sql, "wfSetSQL" );
 }
 
 function wfGetSQL( $table, $var, $cond )
 {
-	$conn = wfGetDB();
 	$sql = "SELECT $var FROM $table WHERE ($cond)";
-
-	$result = wfQuery( $sql, $conn, "wfGetSQL" );
+	$result = wfQuery( $sql, "wfGetSQL" );
 
 	$ret = "";
 	if ( mysql_num_rows( $result ) > 0 ) {

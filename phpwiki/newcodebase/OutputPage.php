@@ -181,8 +181,8 @@ class OutputPage {
 
 		$msg = str_replace( "$1", wfLastDBquery(), wfMsg( "dberrortext" ) );
 		$msg = str_replace( "$2", $fname, $msg );
-		$msg = str_replace( "$3", mysql_errno(), $msg );
-		$msg = str_replace( "$4", mysql_error(), $msg );
+		$msg = str_replace( "$3", wfLastErrno(), $msg );
+		$msg = str_replace( "$4", wfLastError(), $msg );
 
 		$this->mBodytext = $msg;
 		$this->output();

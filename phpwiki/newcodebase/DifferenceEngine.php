@@ -68,32 +68,30 @@ cellpadding=0 cellspacing='4px'><tr>
 		global $wgTitle, $wgOut, $wgLang;
 		$fname = "DifferenceEngine::loadText";
 
-		$conn = wfGetDB();
 		if ( 0 == $this->mNewid || 0 == $this->mOldid ) {
 			$this->mNewtitle = wfMsg( "currentrev" );
 			$id = $wgTitle->getArticleID();
 
 			$sql = "SELECT cur_text FROM cur WHERE cur_id={$id}";
-			$res = wfQuery( $sql, $conn, $fname );
-			if ( 0 == mysql_num_rows( $res ) ) { return false; }
+			$res = wfQuery( $sql, $fname );
+			if ( 0 == wfNumRows( $res ) ) { return false; }
 
-			$s = mysql_fetch_object( $res );
+			$s = wfFetchObject( $res );
 			$this->mNewtext = $s->cur_text;
 		} else {
 			$sql = "SELECT old_timestamp,old_text FROM old WHERE " .
 			  "old_id={$this->mNewid}";
 
-			$res = wfQuery( $sql, $conn, $fname );
-			if ( 0 == mysql_num_rows( $res ) ) { return false; }
+			$res = wfQuery( $sql, $fname );
+			if ( 0 == wfNumRows( $res ) ) { return false; }
 
-			$s = mysql_fetch_object( $res );
+			$s = wfFetchObject( $res );
 			$this->mNewtext = $s->old_text;
 
 			$t = $wgLang->timeanddate( $s->old_timestamp );
 			$this->mNewtitle = str_replace( "$1", "{$t}",
 			  wfMsg( "revisionasof" ) );
 		}
-		$conn = wfGetDB();
 		if ( 0 == $this->mOldid ) {
 			$sql = "SELECT old_timestamp,old_text FROM old WHERE (" .
 			  "old_namespace=" . $wgTitle->getNamespace() . " AND " .
@@ -103,10 +101,10 @@ cellpadding=0 cellspacing='4px'><tr>
 			$sql = "SELECT old_timestamp,old_text FROM old WHERE " .
 			  "old_id={$this->mOldid}";
 		}
-		$res = wfQuery( $sql, $conn, $fname );
-		if ( 0 == mysql_num_rows( $res ) ) { return false; }
+		$res = wfQuery( $sql, $fname );
+		if ( 0 == wfNumRows( $res ) ) { return false; }
 
-		$s = mysql_fetch_object( $res );
+		$s = wfFetchObject( $res );
 		$this->mOldtext = $s->old_text;
 
 		$t = $wgLang->timeanddate( $s->old_timestamp );

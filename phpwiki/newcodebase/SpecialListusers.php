@@ -6,15 +6,14 @@ function wfSpecialListusers()
 
 	set_time_limit( 120 ); # 2 minutes ought to be plenty
 
-	$conn = wfGetDB();
 	$sql = "SELECT user_name,user_rights FROM user ORDER BY " .
 	  "user_name";
-	$res = wfQuery( $sql, $conn, "wfSpecialListusers" );
+	$res = wfQuery( $sql, "wfSpecialListusers" );
 
 	$wgOut->addHTML( wfMsg( "userlisttext" ) . "\n<p>" );
 
 	$sk = $wgUser->getSkin();
-	while ( $s = mysql_fetch_object( $res ) ) {
+	while ( $s = wfFetchObject( $res ) ) {
 		$n = $s->user_name;
 		$r = $s->user_rights;
 
@@ -28,7 +27,7 @@ function wfSpecialListusers()
 		$l .= "<br>\n";
 		$wgOut->addHTML( $l );
 	}
-	mysql_free_result( $res );
+	wfFreeResult( $res );
 }
 
 ?>
