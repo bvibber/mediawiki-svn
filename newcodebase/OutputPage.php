@@ -94,6 +94,8 @@ class OutputPage {
 		header( "Expires: 0" );
 		header( "Cache-Control: no-cache" );
 		header( "Pragma: no-cache" );
+		header( "Last-modified: " . gmdate( "D, j M Y H:i:s" ) . " GMT" );
+
 		header( "Content-type: text/html; charset={$wgOutputEncoding}" );
 		header( "Content-language: {$wgLanguageCode}" );
 		
