@@ -14,12 +14,35 @@ wikitex.inc.php: initialization of wikitex.php
 
 */
 
+// an abstract method of declaration; too much C.  Rebukes indeed the "loose"
+// virtues of PHP.
 settype($arrErr,	'array');
 settype($strErr,	'string');
+settype($arrRend,	'array');
+settype($strRendPath,	'string');
 
+// base dir
+$strRendPath = "$IP/extensions/wikitex";
+
+// Set class names; which may be customized based on local language, fashion
+// or whim.  Henry V was a maker of these when he was courting Gallrix Kate.
+$arrRend = array ('chem'	=> 'strChem',
+		  'chess'	=> 'strChess',
+		  'feyn'	=> 'strFeyn',
+		  'go'		=> 'strGo',
+		  'greek'	=> 'strGreek',
+		  'ling'	=> 'strLing',
+		  'math'	=> 'strMath',
+		  'music'	=> 'strMusic',
+		  'teng'	=> 'strTeng',
+		  'tipa'	=> 'strTipa',
+		  'xym'		=> 'strXym');
+
+// liberal Latin in errorous dicta
 $arrErr['rend']		= 'WikiTeX: directive non gratum.';
 $arrErr['class']	= 'WikiTeX: unknown scheme ``%s\'\'.';
 
+// the stem of errorous givings-out
 $strErr	= "$strRendPath/wikitex.error.inc.tex";
 	
 ?>

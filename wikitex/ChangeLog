@@ -1,3 +1,9 @@
+2004-09-07  Peter Danenberg  <danenberg at mitdasein dot com>
+
+	* wikitex.inc.php: transferred parms from LocalSettings.php
+	hither; so as to produce a clean installation interface
+	(merely the addition of line for the stand-alone distributees).
+
 2004-09-06  Peter Danenberg  <danenberg at mitdasein dot com>
 
 	* README: clarified acquisition
