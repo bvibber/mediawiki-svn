@@ -49,8 +49,8 @@
           wikitex.inc.sh              Bash header
           wikitex.php                 Lexer
           wikitex_rend.inc.php        Parser header
-          wikitex.sh                  Bash interface
           wikitex_rend.php            Parser, Wiki interface
+          wikitex.sh                  Bash interface
  
  
  
