@@ -149,7 +149,7 @@ function recentchanges () {
           $row1->changes = 1;
           $index = array_push ( $arr, $row1 );
         }  
-        if ( array_key_exists( $row2->cur_title, $titleIndex ) ) {
+        if ( isset ( $row2->cur_title[$titleIndex] ) ) {
           $arr[ $titleIndex[ $row2->cur_title ] ]->changes += $row2->changes;
         } else {
           $titleIndex[$row2->cur_title] = $index;
