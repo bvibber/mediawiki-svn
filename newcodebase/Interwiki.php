@@ -104,8 +104,8 @@
 	"E\xc4\x89eI" =>	"http://www.ikso.net/cgi-bin/wiki.pl?$1",
 	"UnuMondo"	=>	"http://unumondo.com/cgi-bin/wiki.pl?$1", # X-sensitive!
 	"JEFO"	=>	"http://esperanto.jeunes.free.fr/vikio/index.php?$1",
-	"PMEG"	=>	"http://www.bertilow.com/pmeg/gramatiko/$1.php",
-		# ekz [[PMEG:kunligaj vortetoj/au]], [[PMEG:fundamenta gramatiko]]
+	"PMEG"	=>	"http://www.bertilow.com/pmeg/$1.php",
+		# ekz [[PMEG:gramatiko/kunligaj vortetoj/au]]
 
 	# Wikipedia-specific stuff:
 	# Special cases
