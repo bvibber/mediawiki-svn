@@ -17,14 +17,20 @@ public:
 	std::string const& fetchstr(std::string const& key);
 	int fetchint(std::string const& key);
 	bool fetchbool(std::string const& key);
+	std::set<std::string> const& fetchlist(std::string const& key);
+	bool listhas(std::string const& list, std::string const& value);
+
 	void storestr(std::string const& key, std::string const& value);
 	void storeint(std::string const& key, int value);
 	void storebool(std::string const& key, bool value);
+	void addlist(std::string const& list, std::string const& value);
+	void dellist(std::string const& list, std::string const& value);
 
 private:
 	std::map<std::string, std::string> strvals;
 	std::map<std::string, int> intvals;
 	std::map<std::string, bool> boolvals;
+	std::map<std::string, std::set<std::string> > listvals;
 
 	void wrcfg(void);
 };

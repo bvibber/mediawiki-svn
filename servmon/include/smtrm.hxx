@@ -3,6 +3,7 @@
 
 #include "smstdinc.hxx"
 #include "smcfg.hxx"
+#include "smirc.hxx"
 
 namespace smtrm {
 
@@ -67,6 +68,7 @@ private:
 template<class tt>
 class handler {
 public:
+	virtual ~handler() {}
 	virtual bool execute (comdat<tt> const&) = 0;
 };
 
@@ -148,14 +150,24 @@ struct tmcmds : public smutl::singleton<tmcmds<tt> > {
 		stdrt.install("exit", cmd_exit(), "End session");
 		eblrt = stdrt;
 		stdrt.install("enable", cmd_enable(), "Enter privileged mode");
-		eblrt.install("disable", ebl_disable(), "Return to non-privileged mode");
-		eblrt.install("configure", ebl_config(), "Configure servmon");
-		cfgrt.install("exit", cfg_exit(), "Exit configure mode");
+		eblrt.install("disable", chg_parser(stdrt, "%s> "), 
+				"Return to non-privileged mode");
+		eblrt.install("configure", chg_parser(cfgrt, "%s(conf)# "), "Configure servmon");
+		cfgrt.install("exit", chg_parser(eblrt, "%s# "), "Exit configure mode");
 		cfgrt.install("enable password", cfg_eblpass(), "Change enable password");
+		cfgrt.install("function irc", chg_parser(ircrt, "%s(conf-irc)# "), 
+				"Configure Internet Relay Chat connections");
+		ircrt.install("exit", chg_parser(cfgrt, "%s(conf)# "),
+				"Exit IRC configuration mode");
+		ircrt.install("server %s primary-nickname %s", cfg_irc_servnick(),
+				"Set primary nickname for IRC server");
+		ircrt.install("server %s secondary-nickname %s", cfg_irc_servsecnick(),
+				"Set secondary nickname for IRC server");
 	}
 	handler_node<tt> stdrt;
 	handler_node<tt> eblrt;
 	handler_node<tt> cfgrt;
+	handler_node<tt> ircrt;
 };
 
 template<class intft>

@@ -22,31 +22,10 @@ struct cmd_enable : handler<tt> {
 	}
 };
 
-struct ebl_config : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
-		cd.chgrt(&instance<tmcmds>()->cfgrt, "%s(conf)# ");
-		return true;
-	}
-};
-
 struct cmd_exit : handler<tt> {
 	bool execute(comdat<tt> const& cd) {
 		cd.inform("Bye");
 		return false;
-	}
-};
-
-struct ebl_disable : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
-		cd.chgrt(&instance<tmcmds>()->stdrt, "%s> ");
-		return true;
-	}
-};
-
-struct cfg_exit : handler<tt> {
-	bool execute(comdat<tt> const& cd) {
-		cd.chgrt(&instance<tmcmds>()->eblrt, "%s# ");
-		return true;
 	}
 };
 
@@ -63,3 +42,35 @@ struct cfg_eblpass : handler<tt> {
 		return true;
 	}
 };
+
+struct chg_parser : handler<tt> {
+	chg_parser(handler_node<tt>& newp_, std::string const& prm_)
+	: newp(newp_)
+	, prm(prm_)
+	{}
+	bool execute(comdat<tt> const& cd) {
+		cd.chgrt(&newp, prm);
+		return true;
+	}
+	handler_node<tt>& newp;
+	std::string prm;
+};
+
+struct cfg_irc_servnick : handler<tt> {
+	bool execute(comdat<tt> const& cd) {
+		smirc::cfg.newserv_or_chgnick(cd.p(0), cd.p(1));
+		return true;
+	}
+};
+
+struct cfg_irc_servsecnick : handler<tt> {
+	bool execute(comdat<tt> const& cd) {
+		if (!smirc::cfg.server_exists(cd.p(0))) {
+			cd.error("No such server.");
+			return true;
+		}
+		smirc::cfg.server_set_secnick(cd.p(0), cd.p(1));
+		return true;
+	}
+};
+
