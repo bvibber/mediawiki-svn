@@ -36,7 +36,7 @@ include ( "./wikiUser.php" ) ;
 	else $out = error ( "No such action \"$action\"" ) ;
 
 	global $bodyOptions , $headerScript ;
-	$pageTitle = "Wikipedia : ".$pageTitle ;
+	$pageTitle = "Wikipedia : ".str_replace ( "_" , " " , $pageTitle ) ;
 	$bodyOptions .= $user->options["background"] ;
 	$bodyOptions .= $user->options["text"] ;
 	$head = "<HTML><HEAD><TITLE>$pageTitle</TITLE> $headerScript </HEAD><BODY $bodyOptions>\n" ;

@@ -237,7 +237,7 @@ class WikiPage extends WikiTitle {
 			}
 
 		$o = "A-Za-z0-9/\.:?&=_~%-@^" ;
-		$s = eregi_replace ( "([^~])http://([$o]+)([^$o])" , "\\1<a href=\"http://\\2\">http://\\2</a>\\3" , $s ) ;
+		$s = eregi_replace ( "([^~\"])http://([$o]+)([^$o])" , "\\1<a href=\"http://\\2\">[http://\\2]</a>\\3" , $s ) ;
 		$s = str_replace ( "~http://" , "http://" , $s ) ;
 
 		return $s ;
