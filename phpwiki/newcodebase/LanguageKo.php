@@ -8,12 +8,12 @@
 	-1	=> "Special",
 	0	=> "",
 	1	=> "토론",
-	2	=> "User",
-	3	=> "User_talk",
-	4	=> "Wikipedia",
-	5	=> "Wikipedia_talk",
-	6	=> "Image",
-	7	=> "Image_talk"
+	2	=> "사용자",
+	3	=> "사용자토론",
+	4	=> "위키백과",
+	5	=> "위키백과토론",
+	6	=> "그림",
+	7	=> "그림토론"
 );
 
 /* private */ $wgDefaultUserOptionsKo = array(
@@ -40,7 +40,7 @@
 	"hideminor" => "Hide minor edits in recent changes",
 	"numberheadings" => "Auto-number headings",
 	"rememberpassword" => "Remember password across sessions",
-	"editwidth" => "Edit box has full width"
+	"editwidth" => "편집창너비 최대"
 );
 
 /* private */ $wgBookstoreListKo = array(
@@ -50,6 +50,9 @@
 	"Amazon.com" => "http://www.amazon.com/exec/obidos/ISBN=$1"
 );
 
+/* These should preferably be the native names of the languages; the
+   point is for people who speak them to be able to navigate to them
+   from any language section of the Wikipedia. */
 /* private */ $wgLanguageNamesKo = array(
     "af" => "Afrikaans",
 	"ar" => "&#8238;&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;&#8236; (Araby)",
@@ -83,7 +86,7 @@
 	"it" => "Italiano",
 	"ja" => "&#26085;&#26412;&#35486; (Nihongo)",
 	"ka" => "&#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4312; (Kartuli)",
-	"ko" => "&#54620;&#44397;&#50612; (Hangul)",
+	"ko" => "한국어",
 	"kw" => "Kernewek",
 	"la" => "Latina",
 	"lt" => "Lietuvi&#371;",
@@ -111,47 +114,48 @@
 
 
 /* private */ $wgWeekdayNamesKo = array(
-	"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
-	"Friday", "Saturday"
+	"일요일", "월요일", "화요일", "수요일", "목요일",
+	"금요일", "토요일"
 );
 
 /* private */ $wgMonthNamesKo = array(
-	"January", "February", "March", "April", "May", "June",
-	"July", "August", "September", "October", "November",
-	"December"
+	"1월", "2월", "3월", "4월", "5월", "6월",
+	"7월", "8월", "9월", "10월", "11월",
+	"12월"
 );
 
 /* private */ $wgMonthAbbreviationsKo = array(
-	"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
-	"Sep", "Oct", "Nov", "Dec"
+	"1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월",
+	 "9월", "10월", "11월",	"12월"
 );
 
 # All special pages have to be listed here: a description of ""
 # will make them not show up on the "Special Pages" page, which
 # is the right thing for some of them (such as the "targeted" ones).
 #
+# article 문서 user 사용자
 /* private */ $wgValidSpecialPagesKo = array(
 	"Userlogin"		=> "",
 	"Userlogout"	=> "",
-	"Preferences"	=> "Set my user preferences",
+	"Preferences"	=> "사용자 설정",
 	"Watchlist"		=> "눈여겨보는항목",
 	"Recentchanges" => "최근 바뀐 항목",
-	"Upload"		=> "Upload image files",
-	"Imagelist"		=> "Image list",
-	"Listusers"		=> "Registered users",
-	"Statistics"	=> "Site statistics",
+	"Upload"		=> "그림화일 올리기",
+	"Imagelist"		=> "그림목록",
+	"Listusers"		=> "등록된 사용자",
+	"Statistics"	=> "누리터 통계",
 	"Randompage"	=> "아무거나",
 
-	"Lonelypages"	=> "Orphaned articles",
-	"Unusedimages"	=> "Orphaned images",
-	"Popularpages"	=> "Popular articles",
+	"Lonelypages"	=> "외톨이 문서",
+	"Unusedimages"	=> "외톨이 그림",
+	"Popularpages"	=> "인기있는 문서",
 	"Wantedpages"	=> "Most wanted articles",
-	"Shortpages"	=> "Short articles",
-	"Longpages"		=> "Long articles",
-	"Newpages"		=> "Newly created articles",
-	"Allpages"		=> "All pages by title",
+	"Shortpages"	=> "짧은 문서",
+	"Longpages"		=> "긴 문서",
+	"Newpages"		=> "새 문서",
+	"Allpages"		=> "모든 항목 가나다순",
 
-	"Ipblocklist"	=> "Blocked IP addresses",
+	"Ipblocklist"	=> "막아놓은 IP",
 	"Maintenance" => "Maintenance page",
 	"Specialpages"  => "",
 	"Contributions" => "",
@@ -159,13 +163,13 @@
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => "",
 	"Movepage"		=> "",
-	"Booksources"	=> "External book sources"
+	"Booksources"	=> "외부 서적 External book sources"
 );
 
 /* private */ $wgSysopSpecialPagesKo = array(
-	"Blockip"		=> "Block an IP address",
+	"Blockip"		=> "IP 막기",
 	"Asksql"		=> "Query the database",
-	"Undelete"		=> "View and restore deleted pages"
+	"Undelete"		=> "지운 문서 살리기"
 );
 
 /* private */ $wgDeveloperSpecialPagesKo = array(
@@ -180,45 +184,45 @@
 #
 "mainpage"		=> "대문",
 "about"			=> "About",
-"aboutwikipedia" => "About Wikipedia",
+"aboutwikipedia" => "위키백과란",
 "aboutpage"		=> "Wikipedia:About",
-"help"			=> "Help",
-"helppage"		=> "Wikipedia:Help",
-"wikititlesuffix" => "Wikipedia",
+"help"			=> "도움말",
+"helppage"		=> "위키백과:도움말",
+"wikititlesuffix" => "위키백과",
 "bugreports"	=> "Bug reports",
 "bugreportspage" => "Wikipedia:Bug_reports",
-"faq"			=> "FAQ",
-"faqpage"		=> "Wikipedia:FAQ",
-"edithelp"		=> "Editing help",
-"edithelppage"	=> "Wikipedia:How_does_one_edit_a_page",
-"cancel"		=> "Cancel",
-"qbfind"		=> "Find",
+"faq"			=> "잦은질문",
+"faqpage"		=> "위키백과:잦은질문",
+"edithelp"		=> "편집 도움말",
+"edithelppage"	=> "위키백과:문서_편집_방법",
+"cancel"		=> "취소",
+"qbfind"		=> "찾기",
 "qbbrowse"		=> "Browse",
-"qbedit"		=> "Edit",
+"qbedit"		=> "편집",
 "qbpageoptions" => "Page options",
-"qbpageinfo"	=> "Page info",
-"qbmyoptions"	=> "My options",
-"mypage"		=> "My page",
-"mytalk"		=> "My talk",
+"qbpageinfo"	=> "문서 정보",
+"qbmyoptions"	=> "내 옵션",
+"mypage"		=> "내 문서",
+"mytalk"		=> "내 토론",
 "currentevents" => "Current events",
-"errorpagetitle" => "Error",
-"returnto"		=> "Return to $1.",
-"fromwikipedia"	=> "From Wikipedia, the free encyclopedia.",
-"whatlinkshere"	=> "Pages that link here",
-"help"			=> "Help",
-"search"		=> "Search",
+"errorpagetitle" => "오류",
+"returnto"		=> "$1로 돌아가기.",
+"fromwikipedia"	=> "위키백과, 우리 모두의 백과사전.",
+"whatlinkshere"	=> "여기에 걸린 문서",
+"help"			=> "도움말",
+"search"		=> "찾기",
 "history"		=> "문서역사",
-"printableversion" => "Printable version",
-"editthispage"	=> "Edit this page",
-"deletethispage" => "Delete this page",
-"protectthispage" => "Protect this page",
-"unprotectthispage" => "Unprotect this page",
+"printableversion" => "인쇄용",
+"editthispage"	=> "문서 고치기",
+"deletethispage" => "문서 지우기",
+"protectthispage" => "문서 보호",
+"unprotectthispage" => "문서 보호 해제",
 "talkpage"		=> "토론",
-"subjectpage"	=> "Subject page",
-"otherlanguages" => "Other languages",
-"redirectedfrom" => "(Redirected from $1)",
-"lastmodified"	=> "The page was last modified $1.",
-"viewcount"		=> "This page has been accessed $1 times.",
+"subjectpage"	=> "본 문서",
+"otherlanguages" => "다른 언어",
+"redirectedfrom" => "($1에서 넘어옴.)",
+"lastmodified"	=> "이 문서는 최근 $1 에 편집되었습니다.",
+"viewcount"		=> "이 문서는 $1 번 접근되었습니다.",
 "printsubtitle" => "(From http://www.wikipedia.org)",
 "protectedpage" => "Protected page",
 "administrators" => "Wikipedia:Administrators",
