@@ -17,6 +17,8 @@
 
 class Skin {
 
+	/* private */ var $lastdate;
+
 	function getSkinNames() { return $wgValidSkinNames; }
 
 	function initPage()
@@ -152,7 +154,7 @@ class Skin {
 
 	function pageTitle()
 	{
-		global $wgOut, $wgTitle;
+		global $wgOut, $wgTitle, $oldid;
 
 		$s = "<h1 class=\"pagetitle\">" . $wgOut->getPageTitle() . "</h1>";
 		$sub = $wgOut->getSubtitle();
@@ -164,11 +166,15 @@ class Skin {
 		}
 		if ( $wgOut->isArticle() ) {
 			$s .= "<p class=\"subtitle\">"
-			  . $this->makeLink( wfMsg( "mainpage" ),
+			  . $this->makeLink( $wgTitle->getPrefixedText(),
 			  WfMsg( "printableversion" ), "action=print" )
 			  . " | " . $this->makeLink( "Special:Whatlinkshere",
 			  wfMsg( "whatlinkshere" ), "target=" . $wgTitle->getPrefixedURL() );
 
+			if ( $oldid ) {
+				$s .= " | " . $this->makeLink( $wgTitle->getPrefixedText(),
+				  wfMsg( "currentrev" ) );
+			}
 			$s .= $this->otherLanguages();
 		}
 		return $s;
@@ -505,25 +511,75 @@ class Skin {
 
 	# Called by history lists and recent changes
 	#
-	function historyLine( $rev, $ts, $u, $ut, $ns, $ttl, $q, $c, $isminor )
+
+	function beginHistoryList()
 	{
-		global $wgTitle;
+		global $wgUser;
 
+		$this->lastdate = "";
+		if ( 1 == $wgUser->getOption( "rcformat" ) ) {
+			$s = "<ul>";
+		} else {
+			$s = "";
+		}
+		return $s;
+	}
+
+	function endHistoryList()
+	{
+		global $wgUser;
+
+		if ( 1 == $wgUser->getOption( "rcformat" ) ) {
+			$s = "</ul>\n";
+		} else {
+			$s = "</ul>\n";
+		}
+		return $s;
+	}
+
+	function historyLine( $ts, $u, $ut, $ns, $ttl, $q, $c, $isminor )
+	{
+		global $wgUser;
+
+		if ( 1 == $wgUser->getOption( "rcformat" ) ) {
+			return $this->historyLine1( $ts, $u, $ut, $ns, $ttl, $q, $c, $isminor );
+		} else {
+			return $this->historyLine2( $ts, $u, $ut, $ns, $ttl, $q, $c, $isminor );
+		}
+	}
+
+	function historyLine1( $ts, $u, $ut, $ns, $ttl, $q, $c, $isminor )
+	{
+		$s = "<li>{$ts} {$ttl} {$ut} ({$c})</li>\n";
+		return $s;
+	}
+
+	function historyLine2( $ts, $u, $ut, $ns, $ttl, $q, $c, $isminor )
+	{
+		global $wgTitle, $wgLang;
+
+		$d = $wgLang->dateFromTimestamp( $ts );
+		$s = "";
+		if ( $d != $this->lastdate ) {
+			if ( "" != $this->lastdate ) { $s .= "</ul>\n"; }
+			$s .= "<h4>{$d}</h4>\n<ul>";
+			$this->lastdate = $d;
+		}
 		$h = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
-        $t = $this->makeLink( Title::makeName( $ns, $ttl ), "", $q );
+		$t = $this->makeLink( Title::makeName( $ns, $ttl ), "", $q );
 
-        if ( 0 == $u ) { $ul = $ut; }
-        else { $ul = $this->makeInternalLink( "User:{$ut}", $ut ); }
-        $cr = wfMsg( "currentrev" );
+		if ( 0 == $u ) { $ul = $ut; }
+		else { $ul = $this->makeInternalLink( "User:{$ut}", $ut ); }
+		$cr = wfMsg( "currentrev" );
 
-		if ( 0 == $rev ) { $s = "<li>"; }
-		else { $s = "<li>({$rev}) "; }
-        $s .= "{$t}; {$h}";
+		if ( 0 == $rev ) { $s .= "<li>"; }
+		else { $s .= "<li>({$rev}) "; }
+		$s .= "{$t}; {$h}";
 		if ( 0 != $rev && "" == $q ) { $s .= " ({$cr})"; } # Is current
 		$s .= " . . . {$ul}";
 		if ( $isminor ) { $s .= " </strong>M</strong>"; }
-        if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
-        $s .= "</li>\n";
+		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
+		$s .= "</li>\n";
 
 		return $s;
 	}

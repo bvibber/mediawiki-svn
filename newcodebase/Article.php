@@ -171,7 +171,7 @@ class Article {
 		if ( "" != $this->mRedirectedFrom ) {
 			$sk = $wgUser->getSkin();
 			$redir = $sk->makeLink( $this->mRedirectedFrom, "",
-			  "redirect=no&action=edit" );
+			  "redirect=no" );
 			$s = str_replace( "$1", $redir, wfMsg( "redirectedfrom" ) );
 			$wgOut->setSubtitle( $s );
 		}
@@ -433,33 +433,23 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		}
 		$revs = mysql_num_rows( $res );
 		$sk = $wgUser->getSkin();
+		$s = $sk->beginHistoryList();		
 
-		$t = $this->getTimestamp();
-		$lastdate = $wgLang->dateFromTimestamp( $t );
-		$s = "<h4>{$lastdate}</h4>\n<ul>";
-
-		$s .= $sk->historyLine( $revs + 1, $t, $this->getUser(),
-		  $this->getUserText(), $wgTitle->getNamespace,
+		$s .= $sk->historyLine( $this->getTimestamp(), $this->getUser(),
+		  $this->getUserText(), $wgTitle->getNamespace(),
 		  $wgTitle->getText(), "", $this->getComment(),
 		  ( $this->getMinorEdit() > 0 ) );
 
 		while ( $revs ) {
 			$line = mysql_fetch_object( $res );
 
-			$t = $line->old_timestamp;
-			$d = $wgLang->dateFromTimestamp( $t );
-			if ( $d != $lastdate ) {
-				$s .= "</ul>\n<h4>{$d}</h4>\n<ul>";
-				$lastdate = $d;
-			}
-			$s .= $sk->historyLine( $revs, $t, $line->old_user,
+			$s .= $sk->historyLine( $line->old_timestamp, $line->old_user,
 			  $line->old_user_text, $line->old_namespace,
 			  $line->old_title, "oldid={$line->old_id}",
 			  $line->old_comment, ( $line->old_minor_edit > 0 ) );
-
 			--$revs;
 		}
-		$s .= "</ul>\n";
+		$s .= $sk->endHistoryList();
 		$wgOut->addHTML( $s );
 	}
 

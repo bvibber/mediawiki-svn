@@ -426,9 +426,11 @@ class OutputPage {
 				$cpl = $this->getCommon( $pref, $lastPref );
 
 				while ( $cpl < $opl ) {
-					$text .= $this->closeList( substr( $lastPref,
-					  ($opl - 1), 1 ) );
+					$text .= $this->closeList( $lastPref{$opl-1} );
 					--$opl;
+				}
+				if ( $npl <= $cpl && $cpl > 0 ) {
+					$text .= $this->nextItem( $pref{$cpl-1} );
 				}
 				while ( $npl > $cpl ) {
 					$char = substr( $pref, $cpl, 1 );
