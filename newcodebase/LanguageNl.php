@@ -321,10 +321,10 @@ De verantwoordelijke systeembeheerder gaf hiervoor volgende reden op:
 <p>$1",
 "missingarticle" => "De database heeft een paginatekst (\"$1\") die het zou moeten vinden niet gevonden. Dit is geen fout in de database, maar waarschijnlijk in de software. Meld dit a.u.b. aan een beheerder, met vermelding van de URL.",
 "internalerror" => "Interne fout",
-"filecopyerror" => "Bestand \"$1\" naar \"$2\" kopiëren niet mogelijk.".",
-"filerenameerror" => "Wijziging titel bestand \"$1\" in \"$2\" niet mogelijk.".",
-"filedeleteerror" => "Kon bestand \"$1\" niet verwijderen.".",
-"filenotfound"	=> "Kon bestand \"$1\" niet vinden.".",
+"filecopyerror" => "Bestand \"$1\" naar \"$2\" kopiëren niet mogelijk.",
+"filerenameerror" => "Wijziging titel bestand \"$1\" in \"$2\" niet mogelijk.",
+"filedeleteerror" => "Kon bestand \"$1\" niet verwijderen.",
+"filenotfound"	=> "Kon bestand \"$1\" niet vinden.",
 "unexpected"	=> "Onverwachte waarde: \"$1\"=\"$2\".",
 "formerror"		=> "Fout: kon formulier niet verzenden",	
 "badarticleerror" => "Deze handeling kan op deze pagina niet worden uitgevoerd.",
@@ -510,7 +510,7 @@ wfLocalUrlE( "Wikipedia:Beleid_voor_gebruik_van_afbeeldingen" ) . "\">afbeelding
 "\">lijst van ge-up-loade bestanden</a>.
 Uploads en verwijderingen worden bijgehouden in het <a href=\"" .
 wfLocalUrlE( "Wikipedia:Up-load_logboek" ) . "\">up-load logboek</a>.
-<p>Gebruik het onderstaande formulier om bestanden zoals afbeeldingen en geluidsbestanden die relevant zijn voor uw artikel te u-loaden. Bij de meeste browers zoals 'Internet Explorer' en 'Mozilla' zult u een \"Bladeren...\" of \"Browse.."\ knop zien die een standaard dialoogscherm van uw bestuuringssysteem oproept. Kiest u een bestand, dan zal het ingevuld worden in het veld naast de \"Bladeren...\" knop. U dient ook het vakje aan te vinken waarmee u bevestigt dat er geen schending van auteursrechten plaatsvindt door het gebruik van dat bestand. Vul het veld "Omschrijving" in. Druk op de \"Upload\" knop om het up-loaden te voltooien. Dit kan even duren als u een langzame internetverbinding gebruikt.
+<p>Gebruik het onderstaande formulier om bestanden zoals afbeeldingen en geluidsbestanden die relevant zijn voor uw artikel te u-loaden. Bij de meeste browers zoals 'Internet Explorer' en 'Mozilla' zult u een \"Bladeren...\" of \"Browse..\" knop zien die een standaard dialoogscherm van uw bestuuringssysteem oproept. Kiest u een bestand, dan zal het ingevuld worden in het veld naast de \"Bladeren...\" knop. U dient ook het vakje aan te vinken waarmee u bevestigt dat er geen schending van auteursrechten plaatsvindt door het gebruik van dat bestand. Vul het veld \"Omschrijving\" in. Druk op de \"Upload\" knop om het up-loaden te voltooien. Dit kan even duren als u een langzame internetverbinding gebruikt.
 <p>Gebruik bij voorkeur JPEG voor foto's, PNG voor tekeningen en dergelijke en OGG voor geluid. 
 Geef uw bestanden een duidelijk omschrijvende naam om verwarring te voorkomen. Om het bestand in een pagina te laten verschijnen, kunt u het volgende doen;  <b>[[afbeelding:uw_foto.jpg]]</b> of <b>[[afbeelding:uw_logo.png|alt text]]</b>  of <b>[[media:uw_geluid.ogg]]</b> voor audio.
 <p>Vergeet niet dat net als met andere pagina's op Wikipedia anderen de ge-uploade bestanden kunnen verwijderen indien men denkt dat dat in het voordeel van het project is. Bij misbruik van dit systeem kan u de toegang tot Wikipedia NL ontzegd worden.",
