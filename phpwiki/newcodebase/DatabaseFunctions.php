@@ -11,17 +11,22 @@ function wfGetDB()
 
 	$noconn = str_replace( "$1", $wgDBserver, wfMsg( "noconnect" ) );
 	$nodb = str_replace( "$1", $wgDBname, wfMsg( "nodb" ) );
+	$helpme = "\n<p>If this error persists after reloading and clearing your browser cache,
+        please notify the <a href=\"mailto:wikitech-l@nupedia.com\">Wikipedia developers</a>.</p>";
 
 	if ( ! $wgDBconnection ) {
 		$wgDBconnection = mysql_pconnect( $wgDBserver, $wgDBuser,
 		  $wgDBpassword ) or die( $noconn .
-		"\n<p><b>" . htmlspecialchars(mysql_error()) .
-		"</b></p>\n\n<p>If this error persists after reloading and clearing your browser cache,
-        please notify the <a href=\"mailto:wikitech-l@nupedia.com\">Wikipedia developers</a>.</p>" );
-		mysql_select_db( $wgDBname, $wgDBconnection ) or die( $nodb .
-		"\n<p><b>" . htmlspecialchars(mysql_error()) .
-		"</b></p>\n\n<p>If this error persists after reloading and clearing your browser cache,
-        please notify the <a href=\"mailto:wikitech-l@nupedia.com\">Wikipedia developers</a>.</p>" );
+		"\n<p><b>" . htmlspecialchars(mysql_error()) . "</b></p>\n" . $helpme );
+		if( !mysql_select_db( $wgDBname, $wgDBconnection ) ) {
+			wfDebug( "Persistent connection is broken?\n", true );
+			
+			$wgDBconnection = mysql_connect( $wgDBserver, $wgDBuser,
+			  $wgDBpassword ) or die( $noconn .
+	          "\n<p><b>" . htmlspecialchars(mysql_error()) . "</b> (tried non-p connect)</p>\n" . $helpme );
+			mysql_select_db( $wgDBname, $wgDBconnection ) or die( $nodb .
+			  "\n<p><b>" . htmlspecialchars(mysql_error()) . "</b> (tried non-p connect)</p>\n" . $helpme );
+        }
 	}
 	# mysql_ping( $wgDBconnection );
 	return $wgDBconnection;
