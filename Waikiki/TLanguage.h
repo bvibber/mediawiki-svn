@@ -42,11 +42,12 @@ class TLanguage
     
     virtual void dumpCfile () ;
     
+    string lid ;
+
     private :
     virtual void initEN () ;
     virtual uint getGroup ( TUCS s ) ;
     vector <TLangGroup> tg ;
-    string lid ;
     } ;
 
 #endif

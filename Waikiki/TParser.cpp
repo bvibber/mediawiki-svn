@@ -108,25 +108,33 @@ bool TParser::parse_internal_link ( TUCS &s )
     if ( c > b ) text += s.substr ( b , c - b ) ;
 
     TTitle t ( link ) ;
-    if ( LANG->isLanguageNamespace ( t.getNamespace() ) )
+    if ( LANG->isLanguageNamespace ( t.getNamespace() ) ) // Interlanguage link
         {
         text = LANG->getLanguageName ( t.getNamespace() ) ;
-//        TUCS x = SKIN->getInternalLink ( t , text , "external" ) ;
         TUCS x = "<a class=external href=\"http://" + t.getNamespace() ;
         x += ".wikipedia.org/wiki/" ;
         x += t.getJustTitle() + "\">" + text + "</a>" ;
         OUTPUT->languageLinks.push_back ( x ) ;
         s = s.substr ( c ) ;
         }
-    else if ( t.getNamespaceID() == 6 )
+    else if ( t.getNamespaceID() == 6 ) // Image link
         {
-        unsigned char md5_sig[MD5_SIZE] ;
-        char *xx , *md5_c = (char*) t.getJustTitle().getstring().c_str() ;
-        for ( xx = md5_c ; *xx ; xx++ )
-           if ( *xx >= 'A' && *xx <= 'Z' ) *xx = *xx - 'A' + 'a' ;
-        md5_buffer(md5_c, strlen(md5_c), md5_sig);
-        text = (char*) md5_sig ;
-        s = SKIN->getArticleLink ( t , text ) + s.substr ( c ) ;
+        MD5 md ;
+        TUCS tt = t.getJustTitle() ;
+        md.update ( (unsigned char*) tt.getstring().c_str() , tt.length() ) ;
+        md.finalize() ;
+        string hex = md.hex_digest() ;
+
+        TUCS x = "<img border=0 src=\"http://" + LANG->lid ;
+        x += ".wikipedia.org/upload/" ;
+        x += hex[0] ;
+        x += "/" ;
+        x += hex[0] ;
+        x += hex[1] ;
+        x += "/" + tt ;
+        x += "\" alt=\"" + text + "\">" ;
+        
+        s = SKIN->getArticleLink ( t , x ) + s.substr ( c ) ;
         }
     else s = SKIN->getArticleLink ( t , text ) + s.substr ( c ) ;
     

@@ -1,7 +1,7 @@
 [Project]
 FileName=Waikiki.dev
 Name=Projekt1
-UnitCount=27
+UnitCount=26
 Type=1
 Ver=1
 ObjFiles=
@@ -285,18 +285,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit25]
-FileName=md5.c
-CompileCpp=1
-Folder=Third party
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit26]
-FileName=md5.h
+FileName=md5.cpp
 CompileCpp=1
 Folder=Third party
 Compile=1
@@ -307,6 +297,16 @@ BuildCmd=
 
 [Unit27]
 FileName=md5_loc.h
+CompileCpp=1
+Folder=Third party
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit25]
+FileName=md5.h
 CompileCpp=1
 Folder=Third party
 Compile=1

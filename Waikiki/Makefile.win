@@ -64,5 +64,5 @@ TSpecialPages.o: TSpecialPages.cpp
 LanguageEN.o: LanguageEN.cpp
 	$(CPP) -c LanguageEN.cpp -o LanguageEN.o $(CXXFLAGS)
 
-md5.o: md5.c
-	$(CPP) -c md5.c -o md5.o $(CXXFLAGS)
+md5.o: md5.cpp
+	$(CPP) -c md5.cpp -o md5.o $(CXXFLAGS)
