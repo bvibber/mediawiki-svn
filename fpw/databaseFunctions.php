@@ -1,7 +1,7 @@
 <?
 function getDBconnection () {
-	$server="mysql" ;
-	$user="wikipedia" ;
+	$server="127.0.0.1" ;
+	$user="root" ;
 	$passwd="" ;
 	$connection=mysql_connect ( $server , $user , $passwd ) ;
 	return $connection ;

@@ -184,7 +184,7 @@ class WikiPage extends WikiTitle {
 		$cond = "cur_title=\"$this->secureTitle\"" ;
 
 		global $linkedLinks , $unlinkedLinks ;
-		$this->parseContents ( $text ) ;
+		$this->parseContents ( $text , true ) ; # Calling with savingMode flag set, so only internal Links are parsed
 		$ll = implode ( "\n" , array_keys ( $linkedLinks ) ) ;
 		$ull = implode ( "\n" , array_keys ( $unlinkedLinks ) ) ;
 
@@ -336,7 +336,7 @@ class WikiPage extends WikiTitle {
 		}
 
 	# This function organizes the <nowiki> parts and calls subPageContents() for the wiki parts
-	function parseContents ( $s ) {
+	function parseContents ( $s , $savingMode = false ) {
 		global $linkedLinks , $unlinkedLinks ;
 		$linkedLinks = array () ;
 		$unlinkedLinks = array () ;
@@ -355,7 +355,11 @@ class WikiPage extends WikiTitle {
 				$s .= $d.$c[1] ;
 			} else $s .= "&lt;nowiki&gt;".$x ;
 			}
-		$s = $this->subParseContents ( $s ) ;
+
+		# If called from setEntry(), only parse internal links and return dummy entry
+		if ( $savingMode ) return $this->replaceInternalLinks ( $s ) ;
+
+		$s = $this->subParseContents ( $s , $savingMode ) ;
 
 		# replacing $d with the actual nowiki contents
 		$a = spliti ( $d , $s ) ;
@@ -510,7 +514,7 @@ class WikiPage extends WikiTitle {
 		$ret = "<table ".$user->options["quickBarBackground"]." width=100% $border bordercolor=black cellspacing=0>\n<tr>" ;
 		if ( $user->options["leftImage"] != "" )
 			$ret .= "<td width=1% rowspan=2 bgcolor=#000000><img src=\"".$user->options["leftImage"]."\"></td>" ;
-		$ret .= "<td valign=top height=1>" ;
+		$ret .= "<td valign=top height=1 width=100%>" ;
 		if ( $this->isSpecialPage ) {
 			if ( $action == "edit" ) {
 				$ret .= "<font size=+3>Editing ".$t."</font><br>Your changes will not be committed until you hit the <b>Save</b> button.<br>" ;
@@ -578,10 +582,11 @@ class WikiPage extends WikiTitle {
 		if ( $user->options["quickBar"] == "right" or $user->options["quickBar"] == "left" or $user->options["forceQuickBar"] != "" ) {
 			$column = $this->getQuickBar();
 			$spl = $this->getSubpageList () ;
-			if ( count ( $spl ) > 0 ) $column .= "<font size=-1>".$this->parseContents ( "<hr>".implode ( "<br>\n" , $spl ) )."</font>" ;
+			if ( !$this->isSpecialPage and $user->options["showStructure"]=="yes" and count ( $spl ) > 0 )
+				$column .= "<font size=-1>".$this->parseContents ( "<hr>".implode ( "<br>\n" , $spl ) )."</font>" ;
 
 			$column = "<td ".$user->options["quickBarBackground"]." width=120 valign=top nowrap>".$column."</td>" ;
-			$ret = "<td valign=top>".$ret."</td>" ;
+			$ret = "<td valign=top width=100%>".$ret."</td>" ;
 			global $HTTP_USER_AGENT ;
 			if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=void rules=cols" ;
 			else $border = "border=0" ;

@@ -89,6 +89,7 @@ class WikiUser {
 		if ( $this->options["justify"] == "" ) $this->options["justify"] = "no" ;
 		if ( $this->options["resultsPerPage"] == "" ) $this->options["resultsPerPage"] = "20" ;
 		if ( $this->options["skin"] == "" ) $this->options["skin"] = "None" ;
+		if ( $this->options["showStructure"] == "" ) $this->options["showStructure"] = "no" ;
 		}
 
 	# Loads the user settings from the database

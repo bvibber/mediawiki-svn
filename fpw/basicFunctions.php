@@ -7,6 +7,17 @@ function error ( $error ) {
 	return $page->renderPage () ;
 	}
 
+# Convert MySQL timestame to date
+function tsc ( $t ) {
+	$year = substr ( $t , 0 , 4 ) ;
+	$month = substr ( $t , 4 , 2 ) ;
+	$day = substr ( $t , 6 , 2 ) ;
+	$hour = substr ( $t , 8 , 2 ) ;
+	$min = substr ( $t , 10 , 2 ) ;
+	$sec = substr ( $t , 12 , 2 ) ;
+	return mktime ( $hour , $min , $sec , $month , $day , $year ) ;
+	}
+
 # Called when editing/saving a page
 function edit ( $title ) {
 	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit ;
@@ -89,8 +100,10 @@ function doEdit ( $title ) {
 	$action = "edit" ;
 
 	$theMiddle = edit ( $title ) ;
-	if ( $wasSaved )
-		$theMiddle = "<h1>Your page was successfully saved!</h1><META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$THESCRIPT?title=$vpage->secureTitle\">" ;
+	if ( $wasSaved ) {
+		$theMiddle = "<h1>Your page [[$title]] was successfully saved!</h1>" ;
+		$theMiddle .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$THESCRIPT?title=$vpage->secureTitle\">";
+		}
 	$ret .= $vpage->getMiddle ( $theMiddle ) ;
 
 	$action = "" ;

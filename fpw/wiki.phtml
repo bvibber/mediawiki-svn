@@ -36,6 +36,7 @@ include_once ( "./wikiUser.php" ) ;
 
 	# Do what is asked
 	if ( isset ( $search ) ) {
+		include_once ( "./specialPages.php" ) ;
 		$out = doSearch () ;
 		unset ( $search ) ;
 	} else  if ( $action == "watch" ) {
