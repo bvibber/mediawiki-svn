@@ -203,16 +203,33 @@ void TParser::parse_single_quotes ( TUCS &s , uint p , TUCS tag )
 // This parses a line of the source
 void TParser::parse_line ( TUCS &s )
     {
-    s.trim() ;
-    if ( s.empty() )
+    TUCS isblank = s ;
+    isblank.trim() ;
+    if ( isblank.empty() )
         {
+        s.clear() ;
         if ( bullets != "" ) parse_bullets ( s ) ;
+        if ( s.empty() && !lastWasBlank && !lastWasPre )
+           {
+           s = "<p>\n" ;
+           lastWasBlank = true ;
+           }
         return ;
         }
+    lastWasBlank = false ;
     
     if ( s[0] == '=' ) parse_heading ( s ) ;
     if ( s.substr ( 0 , 4 ) == "----" ) parse_hr ( s ) ;
-    if ( s[0] == ' ' ) s = "<pre>" + s.substr ( 1 ) + "</pre>" ;
+    if ( s[0] == ' ' )
+        {
+        if ( !lastWasPre ) s = "<pre>" + s.substr ( 1 ) ;
+        lastWasPre = true ;
+        }
+    else if ( lastWasPre )
+        {
+        s = "</pre>\n" + s ;
+        lastWasPre = false ;
+        }
     
     if ( s[0] == '*' || s[0] == '#' || s[0] == ':' ) parse_bullets ( s ) ;
     else if ( bullets != "" )
@@ -278,6 +295,9 @@ TUCS TParser::parse ( TUCS &source )
     
     OUTPUT->languageLinks.clear() ;
     bullets = "" ;
+    hasVariables = false ;
+    lastWasPre = false ;
+    lastWasBlank = false ;
 
     store_nowiki ( source ) ;
     if ( source.replace ( "__NOTOC__" , "" ) > 0 ) notoc = true ;
@@ -286,8 +306,29 @@ TUCS TParser::parse ( TUCS &source )
     source.explode ( "\n" , vs ) ;
     FOREACH ( vs , a )
         parse_line ( vs[a] ) ;
-
+        
+    FOREACH ( vs , a )
+        {
+        if ( vs[a] == "" )
+           {
+           vs.erase ( vs.begin()+a ) ;
+           a-- ;
+           }
+        }
+        
     r.implode ( "\n" , vs ) ;
+
+    if ( lastWasPre )
+        {
+        r += "</pre>" ;
+        lastWasPre = false ;
+        }
+    if ( bullets != "" )
+        {
+        TUCS s ;
+        parse_bullets ( s ) ;
+        r += s ;
+        }
 
     recall_nowiki ( r ) ;
     

@@ -6,10 +6,11 @@ class TWikiInterface
     public :
     TWikiInterface () ;
     ~TWikiInterface () ;
-    void run (int argc, char *argv[]) ;
-    void go ( TUCS s , TArticle &art ) ;
+    virtual void run (int argc, char *argv[]) ;
+    virtual void go ( TUCS s , TArticle &art ) ;
     
     private :
+    virtual void load_ini ( VTUCS &v ) ;
     TSpecialPages *sp ;
     } ;
 
@@ -31,8 +32,53 @@ TWikiInterface::~TWikiInterface ()
     delete sp ;
     }
     
+void TWikiInterface::load_ini ( VTUCS &v )
+    {
+    ifstream in ( "waikiki.ini" , ios::in ) ;
+    while ( in.good() )
+        {
+        string s ;
+        getline ( in , s ) ;
+        v.insert ( v.begin() , TUCS ( s ) ) ;
+        }
+    }
+    
 void TWikiInterface::run (int argc, char *argv[])
     {
+    int a ;
+    VTUCS params ;
+    if ( argc == 1 )
+        {
+        char *cl ;
+        cl = getenv ( "CONTENT_LENGTH" ) ;
+        if ( cl ) // POST
+           {
+           TUCS x = cl ;
+           x.explode ( "&" , params ) ;           
+           }
+        else
+           {
+           char *qs = getenv ( "QUERY_STRING" ) ;
+           if ( qs )
+              {
+              TUCS x = qs ;
+              x.explode ( "&" , params ) ;
+              }
+           }
+        }
+    else
+        {
+        for ( a = 1 ; a < argc ; a++ ) params.push_back ( argv[a] ) ;
+        }
+        
+    if ( params.size() == 0 )
+        {
+        cout << "No parameters. Goodbye." << endl ;
+        return ;
+        }
+    
+    load_ini ( params ) ;
+    
     TArticle art ;
     
     bool loadFromFile = false ;
@@ -43,10 +89,9 @@ void TWikiInterface::run (int argc, char *argv[])
     TUCS action = "view" ;
 
     // Parsing command line parameters
-    int a ;
-    for ( a = 1 ; a < argc ; a++ )
+    for ( a = 0 ; a < params.size() ; a++ )
         {
-        s = argv[a] ;
+        s = params[a] ;
         VTUCS v ;
         s.explode ( "=" , v ) ;
         TUCS key = v[0] ;
@@ -54,7 +99,8 @@ void TWikiInterface::run (int argc, char *argv[])
         s.implode ( "=" , v ) ;
         s.trim() ;
         key.toupper () ;
-        if ( key == "-SOURCEFILE" )
+        key.replace ( "-" , "" ) ;
+        if ( key == "SOURCEFILE" )
            {
            sourcefile = s.getstring() ;
            loadFromFile = true ;
@@ -72,12 +118,21 @@ void TWikiInterface::run (int argc, char *argv[])
               forcetitle.implode ( "." , v ) ;
               }
            }
-        else if ( key == "-ACTION" )
+        else if ( key == "SEARCH" )
+           {
+           forcetitle = s ;
+           forcetitle.fromURL () ;
+           }
+        else if ( key == "GO" && s != "" )
+           {
+           action = "GO" ;
+           }
+        else if ( key == "ACTION" )
            {
            action = s ;
            action.toupper() ;
            }
-        else if ( key == "-MYSQL2SQLITE" )
+        else if ( key == "MYSQL2SQLITE" )
            {
            VTUCS v ;
            s.explode ( "." , v ) ;
@@ -89,12 +144,12 @@ void TWikiInterface::run (int argc, char *argv[])
            exit ( 0 ) ;
 //           DB->mysql2sqlite ( ".\\brief_cur_table.sql" , ".\\test.sqlite" ) ;
            }
-        else if ( key == "-REDIRECT" )
+        else if ( key == "REDIRECT" )
            {
            s.toupper() ;
            if ( s == "NO" ) art.allowRedirect = false ;
            }
-        else if ( key == "-SQLITE" )
+        else if ( key == "SQLITE" )
            {
            sourcefile = s.getstring() ;
            loadFromFile = true ;
@@ -102,23 +157,24 @@ void TWikiInterface::run (int argc, char *argv[])
            DB = new TDatabaseSqlite () ;
            DB->init ( sourcefile ) ;
            }
-        else if ( key == "-TITLE" )
+        else if ( key == "TITLE" )
            {
            forcetitle = s ;
+           forcetitle.fromURL () ;
            }
-        else if ( key == "-DESTFILE" )
+        else if ( key == "DESTFILE" )
            {
            destfile = s.getstring() ;
            }
-        else if ( key == "-SKIN" )
+        else if ( key == "SKIN" )
            {
            USER->setSkin ( s ) ;
            }
-        else
+/*        else
            {
            cout << "Illegal command line parameter :" << endl ;
            cout << key.getstring() << "=" << s.getstring() << endl ;
-           }
+           }*/
         }
 
     TTitle ft ( forcetitle , FROM_TEXT ) ;
@@ -203,6 +259,7 @@ void TWikiInterface::go ( TUCS s , TArticle &art )
 
 int main(int argc, char *argv[])
 {
+    cout << "Content-type: text/html\n\n" ;
     TWikiInterface w ;
     LANG->loadPHP ( "Language.php" ) ;
     w.run ( argc , argv ) ;

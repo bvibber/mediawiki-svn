@@ -28,7 +28,7 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     string cur ;
     sqlite *db = sqlite_open ( fn_out.c_str() , 0 , NULL ) ;
     sqlite_exec ( db , "BEGIN;" , 0 , 0 , 0 ) ;
-    ifstream in ( fn_in.c_str() , ios::in ) ;
+    ifstream in ( fn_in.c_str() , ios::in | ios::binary ) ;
     
     VTUCS index , keys ;
     TUCS table_name ;

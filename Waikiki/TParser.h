@@ -29,7 +29,8 @@ class TParser
     TUCS bullets ;
     TUCS nowikistring ;
     VTUCS nowikiitems ;
-    bool notoc ;
+    bool notoc , hasVariables ;
+    bool lastWasPre , lastWasBlank ;
     } ;
 
 #endif

@@ -83,7 +83,7 @@ TUCS TSkin::getTopBar()
     r += getHelpLink ( "<br>\n" ) ;
     
     // Search box
-    r += "<form name=\"search\" class=\"inline\" method=\"get\" action=\"./wiki.php\">" ;
+    r += "<form name=\"search\" class=\"inline\" method=\"get\" action=\"./waikiki.exe\">" ;
     r += "<input type=\"text\" name=\"search\" size=\"19\" value=\"\">" ;
     r += "<input type=\"submit\" name=\"go\" value=\"Go\"> " ;
     r += "<input type=\"submit\" value=\"Search\"></form>" ;
@@ -212,11 +212,11 @@ TUCS TSkin::getInternalLink ( TTitle t , TUCS text , TUCS cl , TUCS params )
     r = t.getURL() ;
     if ( params != "" )
         {
-        r = "./wiki.php?title=" + r + "&" + params ;
+        r = "./waikiki.exe?title=" + r + "&" + params ;
         }
     else
         {
-        r = "./wiki.php?title=" + r ;
+        r = "./waikiki.exe?title=" + r ;
         }
     r = "<a class=" + cl + " href=\"" + r + "\">" + text + "</a>" ;
     return r ;

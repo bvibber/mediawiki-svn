@@ -28,7 +28,7 @@ uint & TUCS::operator [] ( uint x )
     if ( x < length() ) return v[x] ;
     cerr << "Attempt to access a character at " << x ;
     cerr << ", which is beneath the current string length (" << length() << ")" << endl ;
-    system("PAUSE");	
+//    system("PAUSE");	
     exit ( 0 ) ;
     }
     
@@ -163,6 +163,31 @@ void TUCS::trim ()
     for ( b = length() - 1 ; b >= a && ISBLANK((*this)[b]) ; b-- ) ;
     (*this) = substr ( a , b - a + 1 ) ;
     }
+
+void TUCS::fromURL ()
+    {
+    if ( length() < 3 ) return ;
+    uint *a ;
+    for ( a = c_str() ; *(a+2) ; a++ )
+        {
+        if ( *a == '%' && isHex ( *(a+1) ) && isHex ( *(a+2) ) )
+           {
+           uint q1 = hex2dec ( *(a+1) ) ;
+           uint q2 = hex2dec ( *(a+2) ) ;
+           uint b = a - c_str() ;
+           *a = q1 * 16 + q2 ;
+           modify ( b+1 , 2 , "" ) ;
+           a = c_str() ;
+           }
+        }
+    }
+    
+uint TUCS::hex2dec ( uint c )
+    {
+    if ( c >= '0' && c <= '9' ) return c - '0' ;
+    if ( c >= 'A' && c <= 'F' ) return c - 'A' + 10 ;
+    if ( c >= 'a' && c <= 'f' ) return c - 'a' + 10 ;
+    }
     
 TUCS TUCS::fromint ( int i )
     {
@@ -175,6 +200,20 @@ bool TUCS::isChar ( uint c )
     {
     if ( c >= 'a' && c <= 'z' ) return true ;
     if ( c >= 'A' && c <= 'Z' ) return true ;
+    return false ;
+    }
+
+bool TUCS::isDigit ( uint c )
+    {
+    if ( c >= '0' && c <= '9' ) return true ;
+    return false ;
+    }
+
+bool TUCS::isHex ( uint c )
+    {
+    if ( c >= '0' && c <= '9' ) return true ;
+    if ( c >= 'A' && c <= 'F' ) return true ;
+    if ( c >= 'a' && c <= 'f' ) return true ;
     return false ;
     }
 
@@ -243,7 +282,7 @@ uint TUCS::getuint ( uint x )
     cerr << "Attempt to access a character at " << x ;
     cerr << ", which is beneath the current string length (" ;
     cerr << length() << ")" << endl ;
-    system("PAUSE");	
+//    system("PAUSE");	
     exit ( 0 ) ;
     }
 

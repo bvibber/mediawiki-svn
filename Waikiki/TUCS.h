@@ -71,6 +71,7 @@ class TUCS // Type of UniCodeString
     virtual TUCS substr ( uint from , uint len ) ;
     virtual TUCS substr ( uint from ) ;
     virtual void trim () ;
+    virtual void fromURL () ;
     virtual void toupper () ;
     virtual uint pop_back () ;
     
@@ -80,9 +81,13 @@ class TUCS // Type of UniCodeString
     virtual uint *c_str () ;
     virtual bool empty () ;
     static bool isChar ( uint c ) ;
+    static bool isDigit ( uint c ) ;
+    static bool isHex ( uint c ) ;
+    
     
     // No-no
     private :
+    virtual uint hex2dec ( uint c ) ;
     virtual void adduint ( uint i ) ;
     virtual void addtucs ( const TUCS &x ) ;
     virtual uint getuint ( uint x ) ;
