@@ -1,4 +1,17 @@
 <?
+function pagesThatLinkHere ( $t , $connection ) {
+	$a = array () ;
+	$sql = "SELECT cur_title,cur_linked_links FROM cur WHERE cur_linked_links LIKE \"%$t%\"" ;
+	$result = mysql_query ( $sql , $connection ) ;
+	while ( $s = mysql_fetch_object ( $result ) ) {
+		$b = explode ( "\n" , $s->cur_linked_links ) ;
+		if ( in_array ( $t , $b ) )
+			array_push ( $a , $s ) ;
+		}
+	mysql_free_result ( $result ) ;
+	return $a ;
+	}
+
 function ShortPages () {
 	global $THESCRIPT , $wikiSQLServer , $user , $vpage , $startat , $wikiStubTitle , $wikiStubText , $showLinksThere , $wikiStubShowLinks ;
 	if ( !isset ( $startat ) ) $startat = 1 ;

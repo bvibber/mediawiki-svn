@@ -1,4 +1,6 @@
 <?
+include_once ( "special_makelog.php" ) ;
+
 function upload () {
 	global $THESCRIPT ;
 	global $removeFile , $xtitle , $removeFile , $Upload , $Upload_name , $no_copyright ;
