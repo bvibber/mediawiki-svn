@@ -88,6 +88,13 @@ class Title {
 	function setNamespace( $n ) { $this->mNamespace = $n; }
 	function getInterwiki() { return $this->mInterwiki; }
 
+	/* static */ function makeName( $ns, $title )
+	{
+		$n = Namespace::getName( $ns );
+		if ( "" == $n ) { return $title; }
+		else { return "{$n}:{$title}"; }
+	}
+
 	function getPrefixedDBkey()
 	{
 		$s = $this->prefix( $this->mDbkeyform );
@@ -171,12 +178,13 @@ class Title {
 		return $this->mArticleID;
 	}
 
-	function resetArticleID()
+	function resetArticleID( $newid )
 	{
 		global $wgLinkCache;
 		$wgLinkCache->clearBadLink( $this->getPrefixedDBkey() );
 
-		$this->mArticleID = -1;
+		if ( 0 == $newid ) { $this->mArticleID = -1; }
+		else { $this->mArticleID = $newid; }
 		$this->mRestrictionsLoaded = false;
 		$this->mRestrictions = array();
 	}

@@ -269,8 +269,8 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		wfDebug( "Art: 2: $sql\n" );
 		$res = mysql_query( $sql, $conn );
-		$wgTitle->resetArticleID();
-		$newid = $this->getID();
+		$newid = mysql_insert_id( $conn );
+		$wgTitle->resetArticleID( $newid );
 
 		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 		$wgOut->setSubtitle( wfMsg( "newarticle" ) );
@@ -342,7 +342,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 	{
 	}
 
-	# This shares a lot of code with Recent Changes
+	# This shares a lot of issues (and code) with Recent Changes
 	#
 	function history()
 	{
@@ -362,7 +362,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		$res = mysql_query( $sql, $conn );
 		if ( ! $res ) {
-			$wgOut->databaseError( wfMsg( "rcloaderr" ) );
+			$wgOut->databaseError( wfMsg( "loadhist" ) );
 			return;
 		}
 		$revs = mysql_num_rows( $res );
@@ -386,9 +386,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 				$u = $sk->makeInternalLink( "User:{$line->old_user_text}",
 				  "{$line->old_user_text}" );
 			}
-			$nt = Title::newFromDBkey( $line->old_title );
-			$nt->setNamespace( $line->cur_namespace );
-			$t = $nt->getPrefixedText();
+			$t = Title::makeName( $line->old_namespace, $line->old_title );
 			$tl = $sk->makeInternalLink( "$t", "", "oldid={$id}" );
 
 			if ( $d != $lastdate ) {

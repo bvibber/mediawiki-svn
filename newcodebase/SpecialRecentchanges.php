@@ -2,7 +2,7 @@
 
 function wfSpecialRecentchanges()
 {
-	global $wgUser, $wgOut, $wgLang;
+	global $wgUser, $wgOut, $wgLang, $wgTitle;
 	global $days, $limit; # From query string
 
 	$wgOut->addWikiText( wfMsg( "recentchangestext" ) );
@@ -15,12 +15,12 @@ function wfSpecialRecentchanges()
 		$limit = $wgUser->getOption( "rclimit" );
 		if ( ! $limit ) { $limit = 100; }
 	}
-	$cutoff = time() - ( $days * 86400 );
+	$cutoff = date( "YmdHis", time() - ( $days * 86400 ) );
 
 	$conn = wfGetDB();
 	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_user," .
 	  "cur_comment,cur_user_text,cur_timestamp,cur_minor_edit FROM cur " .
-	  "WHERE (UNIX_TIMESTAMP(cur_timestamp) > {$cutoff}) " .
+	  "WHERE cur_timestamp > '{$cutoff}' " .
 	  "ORDER BY cur_timestamp DESC LIMIT {$limit}";
 	wfDebug( "SC: 1: $sql\n" );
 
@@ -29,8 +29,8 @@ function wfSpecialRecentchanges()
 		$wgOut->databaseError( wfMsg( "rcloaderr" ) );
 		return;
 	}
-	$s = "";
-	$lastdate = "";
+	$sk = $wgUser->getSkin();
+	$s = $lastdate = "";
 	while ( $line = mysql_fetch_object( $res ) ) {
 		$t = $line->cur_timestamp;
 		$d = $wgLang->dateFromTimestamp( $t );
@@ -40,23 +40,25 @@ function wfSpecialRecentchanges()
 		if ( 0 == $line->cur_user ) {
 			$u = $line->cur_user_text;
 		} else {
-			$u = "[[User:{$line->cur_user_text}|{$line->cur_user_text}]]";
+			$u = $sk->makeInternalLink( "User:{$line->cur_user_text}",
+			  "{$line->cur_user_text}" );
 		}
-		$nt = Title::newFromDBkey( $line->cur_title );
-		$nt->setNamespace( $line->cur_namespace );
-		$t = $nt->getPrefixedText();
+		$t = Title::makeName( $line->cur_namespace, $line->cur_title );
+		$tl = $sk->makeInternalLink( "$t", "", "oldid={$id}" );
 
 		if ( $d != $lastdate ) {
-			$s .= "'''{$d}'''\n";
+			if ( "" != $lastdate ) { $s .= "</ul>\n"; }
+			$s .= "<h4>{$d}</h4>\n<ul>";
 			$lastdate = $d;
 		}
-		$s .= "* [[{$t}]]; {$h} . . . {$u}";
+		$s .= "<li>{$tl}; {$h} . . . {$u}";
 		if ( "" != $c && "*" != $c ) {
-			$s .= "''' ({$c})'''";
+			$s .= " <em>({$c})</em>";
 		}
-		$s .= "\n";
+		$s .= "</li>\n";
 	}
-	$wgOut->addWikiText( $s );
+	$s .= "</ul>\n";
+	$wgOut->addHTML( $s );
 }
 
 ?>

@@ -170,6 +170,7 @@ press \"Save\".\n<p>",
 "revnotfoundtext" => "The old revision of the page you asked for could
 not be found.
 Please check the URL you used to access this page.\n",
+"loadhist"		=> "Loading article history",
 
 # Preferences page
 #
@@ -209,7 +210,6 @@ and [[wikipedia:Most common Wikipedia faux pas|most common Wikipedia faux pas]].
 If you want to see Wikipedia succeed, it's very important that you don't add
 material restricted by others' [[wikipedia:Copyrights|copyrights]].
 The legal liability could really hurt the project, so please don't do it.
-
 See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges recent meta discussion].",
 "rcloaderr"		=> "Loading recent changes",
 
