@@ -21,7 +21,7 @@ OverrideOutput=0
 OverrideOutputName=Waikiki.exe
 HostApplication=
 Folders=
-CommandLine=-destfile="test.html" -sqlite="test.sqlite" -title="A"
+CommandLine=-mysql2sqlite="20030906_cur_table.sql"
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0

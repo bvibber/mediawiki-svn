@@ -24,7 +24,7 @@ void TDatabase::filterBackslashes ( TUCS &s )
 
 void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     {
-    long l ;
+/*    long l ;
     ifstream in ( fn_in.c_str() , ios::in | ios::binary ) ;
     in.seekg (0, ios::end);
     l = in.tellg();
@@ -33,11 +33,6 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     in.read ( t , l ) ;
     in.close () ;
     t[l] = 0 ;
-    
-    string cur ;
-    sqlite *db = sqlite_open ( fn_out.c_str() , 0 , NULL ) ;
-    sqlite_exec ( db , "BEGIN;" , 0 , 0 , 0 ) ;
-    
     
     vector <char*> vc ;
     char *c ;
@@ -50,10 +45,17 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
            vc.push_back ( c+1 ) ;
            }
         }
-    
+*/
+
+    string cur ;
+    sqlite *db = sqlite_open ( fn_out.c_str() , 0 , NULL ) ;
+    sqlite_exec ( db , "BEGIN;" , 0 , 0 , 0 ) ;
+
+    //
+    ifstream in ( fn_in.c_str() , ios::in ) ;
     
     // All lines now indexed in vc
-    cout << vc.size() << " lines\n" ;
+//    cout << vc.size() << " lines\n" ;
     
     TUCS unique = " " ;
     unique[0] = 1 ;
@@ -62,11 +64,23 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
     TUCS table_name ;
     vector <string> values ;
     uint a , b ;
+    
+    string create_indices ;
+    
+    //
     bool creating = false ;
-    for ( a = 0 ; a < vc.size() ; a++ )
+//    for ( a = 0 ; a < vc.size() ; a++ )
+    for ( a = 0 ; !in.eof() ; a++ )
         {
-        cout << a << endl ;
-        char *x = vc[a] ;
+        cout << a << " : " << creating << endl ;
+//        char *x = vc[a] ;
+
+        string vc ;
+        getline ( in , vc ) ;
+        if ( vc == "" ) continue ;
+        char *x = (char*) vc.c_str() ;
+
+
         if ( *x == '-' && *(x+1) == '-' ) continue ;
         else if ( *x == '/' && *(x+1) == '*' ) continue ;
         else if ( *x == 'C' )
@@ -95,7 +109,8 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
               cur = "CREATE INDEX k_" + keys[b].getstring() + " ON " ;
               cur += table_name.getstring() ;
               cur += "(" + keys[b].getstring() + ");" ;
-              sqlite_exec ( db , cur.c_str() , 0 , 0 , 0 ) ;
+              create_indices += cur ;
+//              sqlite_exec ( db , cur.c_str() , 0 , 0 , 0 ) ;
 //              cout << cur << endl ;
               }
            
@@ -186,7 +201,9 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
            }
         }
     
-    delete t ;
+//    delete t ;
+
+    sqlite_exec ( db , create_indices.c_str() , 0 , 0 , 0 ) ;
     sqlite_exec ( db , "COMMIT;" , 0 , 0 , 0 ) ;
     sqlite_close ( db ) ;
 //    system("PAUSE");	
