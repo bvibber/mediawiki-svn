@@ -692,10 +692,12 @@ in active use.",
 
 # Email this user
 #
-"mailnologin"	=> "Not logged in",
+"mailnologin"	=> "No send address",
 "mailnologintext" => "You must be <a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
-and have a valid e-mail address to send e-mail to other users.",
+and have a valid e-mail address in your <a href=\"" .
+  wfLocalUrl( "Special:Preferences" ) . "\">preferences</a>
+to send e-mail to other users.",
 "emailuser"		=> "E-mail this user",
 "emailpage"		=> "E-mail user",
 "emailpagetext"	=> "If this user has entered a valid e-mail address in

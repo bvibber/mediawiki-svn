@@ -7,19 +7,19 @@
 include_once( "Setup.php" );
 $wgTitle = Title::newFromText( "Conversion script" );
 include_once( "./rebuildLinks.inc" );
+include_once( "./rebuildRecentChanges.inc" );
 include_once( "./buildTables.inc" );
 set_time_limit(0);
 
-$wgDBname			= "wikidb";
 $wgDBuser			= "wikiadmin";
-$wgDBpassword		= "adminpass";
-$wgImageDirectory	= "/usr/local/apache/htdocs/wikiimages";
+$wgDBpassword		= $wgDBadminpassword;
+# $wgImageDirectory	= "/usr/local/apache/htdocs/wikiimages";
 
 renameOldTables();
 buildTables();
 initializeTables();
 
-convertImageDirectories();
+# convertImageDirectories();
 convertUserTable();
 convertOldTable();
 convertCurTable();
@@ -29,6 +29,9 @@ buildIndexes();
 rebuildLinkTablesPass1();
 rebuildLinkTablesPass2();
 removeOldTables();
+
+refillRandom();
+rebuildRecentChangesTable();
 
 print "Done.\n";
 exit();
@@ -278,14 +281,17 @@ function convertImageDirectories()
 #
 function convertMediaLinks( $text )
 {
+	global $wgLang;
+	$ins = $wgLang->getNsText( Namespace::getImage() );
+
 	$text = preg_replace(
 	  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/upload\/" .
 	  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
-	  "\\1[[image:\\3.\\4]]", $text );
+	  "\\1[[{$ins}:\\3.\\4]]", $text );
 	$text = preg_replace(
 	  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/images\/uploads\/" .
 	  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
-	  "\\1[[image:\\3.\\4]]", $text );
+	  "\\1[[{$ins}:\\3.\\4]]", $text );
 
 	$text = preg_replace(
 	  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/upload\/" .
@@ -458,6 +464,20 @@ function indexText( $text, $ititle )
 	return $text;
 }
 
+function refillRandom()
+{
+	$sql = "INSERT INTO random(ra_current,ra_title) SELECT 0,cur_title " .
+	  "FROM cur WHERE cur_namespace=0 AND cur_is_redirect=0 " .
+	  "ORDER BY RAND() LIMIT 1000";
+	wfQuery( $sql, $fname );
+
+	$sql = "UPDATE random SET ra_current=(ra_current+1)";
+	wfQuery( $sql, $fname );
+
+	$sql = "DELETE FROM random WHERE ra_current>1";
+	wfQuery( $sql, $fname );
+}
+
 function renameOldTables()
 {
 	$sql = "ALTER TABLE user RENAME TO old_user";
@@ -468,7 +488,7 @@ function renameOldTables()
 	wfQuery( $sql );
 	$sql = "DROP TABLE IF EXISTS linked";
 	wfQuery( $sql );
-	#sql = "DROP TABLE IF EXISTS unlinked";
+	$sql = "DROP TABLE IF EXISTS unlinked";
 	wfQuery( $sql );
 }
 

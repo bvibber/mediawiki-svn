@@ -2,19 +2,6 @@
 
 # Rebuild recent changes table.
 
-include_once( "Setup.php" );
-$wgTitle = Title::newFromText( "Rebuild recent changes script" );
-set_time_limit(0);
-
-$wgDBname			= "yaw";
-$wgDBuser			= "wikiadmin";
-$wgDBpassword		= "oberon";
-
-rebuildRecentChangesTable();
-
-print "Done.\n";
-exit();
-
 function rebuildRecentChangesTable()
 {
 	$sql = "DROP TABLE IF EXISTS recentchanges";
