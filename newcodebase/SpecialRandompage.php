@@ -16,6 +16,7 @@ function wfSpecialRandompage()
 	$newid = $s->cur_id;
 	wfFreeResult( $res );
 
+	$wgOut->reportTime(); # for logfile
 	$t = Article::nameOf( $newid );
 	$wgOut->redirect( wfLocalUrl( $t ) );
 }
