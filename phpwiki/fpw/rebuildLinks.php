@@ -28,6 +28,8 @@
 
     if ( !isset ( $offset ) ) $offset = 0;
     if ( !isset ( $all ) ) {
+    	echo "Rebuilding all links (batch mode)...\n";
+	set_time_limit ( 0 ) ;
         $sql = "SELECT COUNT(*) AS allPages FROM cur " ;
         $result = mysql_query ( $sql , $connection ) ;
         $row = mysql_fetch_object ( $result ) ;
