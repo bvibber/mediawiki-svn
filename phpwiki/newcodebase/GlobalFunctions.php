@@ -157,10 +157,17 @@ function wfReadOnly()
 	return is_file( $wgReadOnlyFile );
 }
 
+$wgReplacementKeys = array( "$1", "$2", "$3", "$4", "$5", "$6", "$7", "$8", "$9" );
 function wfMsg( $key )
 {
-	global $wgLang;
+	global $wgLang, $wgReplacementKeys;
 	$ret = $wgLang->getMessage( $key );
+	
+	if( func_num_args() > 1 ) {
+		$reps = func_get_args();
+		array_shift( $reps );
+		$ret = str_replace( $wgReplacementKeys, $reps, $ret );
+	}
 
 	if ( "" == $ret ) {
 		user_error( "Couldn't find text for message \"{$key}\"." );

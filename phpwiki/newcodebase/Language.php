@@ -802,6 +802,7 @@ sell new and used books, and may also have further information
 about books you are looking for.
 Wikipedia is not affiliated with any of these businesses, and
 this list should not be construed as an endorsement.",
+"alphaindexline" => "$1 to $2",
 
 # Email this user
 #
