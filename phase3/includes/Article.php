@@ -344,7 +344,7 @@ class Article {
 			if( isset( $wpSave ) or isset( $wpPreview ) ) {
 				$this->editForm( "preview" );
 			} else {
-				$wgOut->readOnlyPage();
+				$wgOut->readOnlyPage( $this->getContent() );
 			}
 			return;
 		}
