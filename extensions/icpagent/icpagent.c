@@ -202,6 +202,7 @@ main(int ac, char **av)
     icp_opcode opcode=ICP_HIT;
     float t=5.0;
     int t_int;
+    int t_adjust;
     int frac;
     int tenloop = 0;
     int slow_c = 0;
@@ -280,12 +281,17 @@ main(int ac, char **av)
 		    queuereply(them,ICP_MISS, url, header.reqnum,0);
             else {
                 if(tenloop == (int)stepsum || (tenloop == 9 ) && slow_c < frac) {
-                    queuereply(them, opcode, url, header.reqnum, t_int+1);
+                    t_adjust = 1;
                     ++slow_c;
                     stepsum += step;
                 } else {
-                    queuereply(them, opcode, url, header.reqnum, t_int);
+                    t_adjust = 0;
                 }
+                if(tenloop % 2 == 0)
+                    ++t_adjust;
+                else
+                    --t_adjust;
+                queuereply(them, opcode, url, header.reqnum, t_int + t_adjust);
             }
             
             // printf("t %d, slow_c %d, ss %f\n",tenloop,slow_c,stepstack);
