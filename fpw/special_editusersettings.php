@@ -10,7 +10,7 @@ function editUserSettings () {
 		unset ( $ButtonSave ) ;
 		global $QuickBar , $NewTopics , $UnderlineLinks , $ShowHover , $ROWS , $COLS , $doSkin , $VIEWRC ;
 		global $OLDPASSWORD , $NEWPASSWORD , $RETYPEPASSWORD , $EMAIL , $RESULTSPERPAGE , $doJustify , $ChangesLayout ;
-		global $SHOWSTRUCTURE , $HOURDIFF , $NumberHeadings , $ViewFrames , $encoding , $HideMinor ;
+		global $SHOWSTRUCTURE , $HOURDIFF , $NumberHeadings , $ViewFrames , $encoding , $HideMinor , $AutoWikify ;
 		if ( $RESULTSPERPAGE < 2 ) $RESULTSPERPAGE = 20 ;
 
 		# Checkbox fixing
@@ -36,6 +36,7 @@ function editUserSettings () {
 		$user->options["numberHeadings"] = $NumberHeadings ;
 		$user->options["changesLayout"] = $ChangesLayout ;
 		$user->options["hideMinor"] = $HideMinor ;
+		$user->options["autowikify"] = $AutoWikify ;
 		$user->email = $EMAIL ;
 		$user->options["hourDiff"] = $HOURDIFF ;
 		$user->options["encoding"] = $encoding ;
@@ -58,7 +59,7 @@ function editUserSettings () {
 	global $wikiShowHoverBox , $wikiUnderlineLinks , $wikiNewTopicsRed , $wikiJustifyParagraphs , $wikiShowRecentChangesTable ;
 	global $wikiDoNumberHeadings , $wikiViewWithFrames , $wikiTurnedOn , $wikiTurnedOff ;
 	global $wikiTextboxDimensions , $wikiCols , $wikiRows , $wikiYourEmail , $wikiResultsPerPage , $wikiTimeDiff , $wikiSave , $wikiReset ;
-	global $wikiEncodingNames, $wikiOutputEncoding , $wikiHideMinorEdits , $wikiCologneBlue ;
+	global $wikiEncodingNames, $wikiOutputEncoding , $wikiHideMinorEdits , $wikiCologneBlue , $wikiAutoWikify ;
 
 	$ret .= str_replace ( "$1" , $user->name , $wikiLoggedInAs ) ;
 	$ret .= str_replace ( "$1" , $user->id , $wikiID_Help)."\n" ;
@@ -125,10 +126,10 @@ function editUserSettings () {
 	$ret .= "<input type=checkbox value=yes name=NumberHeadings ".$nh["yes"].">" ;
 	$ret .= "$wikiDoNumberHeadings ($wikiSettingsStandard:$wikiTurnedOff)<br>\n" ;
 
-	# View frames
-	$vf[$user->options["viewFrames"]] = "checked" ;
-	$ret .= "<input type=checkbox value=yes name=ViewFrames ".$vf["yes"].">" ;
-	$ret .= "$wikiViewWithFrames ($wikiSettingsStandard:$wikiTurnedOff)<br>\n" ;
+	# Auto wikification
+	$aw[$user->options["autowikify"]] = "checked" ;
+	$ret .= "<input type=checkbox value=yes name=AutoWikify ".$aw["yes"].">" ;
+	$ret .= "$wikiAutoWikify ($wikiSettingsStandard:$wikiTurnedOff)<br>\n" ;
 
 	$ret .= "</td></tr>" ;
 #----------------------------------------------
