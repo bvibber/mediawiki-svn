@@ -68,13 +68,20 @@ class WikiTitle {
 		if ( $s != "" ) $s .= ":" ;
 		$s .= ucfirst ( trim ( $this->mainTitle ) ) ;
 		if ( trim ( $this->subpageTitle ) != "" ) $s .= "/".trim($this->subpageTitle) ;
-		$s = str_replace ( "\\\"" , "" , $s ) ;
-		$s = str_replace ( "\"" , "" , $s ) ;
+		
+		# Unescape apostrophes (does this always work?)
 		$s = str_replace ( "\\'" , "'" , $s ) ;
 
+		# Strip forbidden characters
+		$s = str_replace ( "\\\"" , "" , $s ) ;
+		#$s = str_replace ( "\"" , "" , $s ) ;
+		# All non-alpha ASCII chars: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~\127
+		# FIXME: Decide exactly which ones to forbid.
+		$s = preg_replace ( "/[\"\#\$\%\&\\<>\[\]\{\|\}\127]/", "", $s);
+		
 		# Make it compatible with old wiki
 		$s = str_replace ( " " , "_" , $s ) ;
-
+		
 		# If you use $this->secureTitle in a URL, Satan will eat your soul with a blunt spoon.
 		# I'm not kidding. Use $this->url instead or nurlencode() it if you're writing out a URL!
 		# secureTitle ONLY belongs in SQL queries and comparisons therewith.
