@@ -65,7 +65,8 @@ class SearchEngine {
                 $r2 = "<input type=checkbox value=1 name='wgLR'{$v}>\n" ;
 
                 # Search field
-                $r3 = "<input type=text name=search value='{$search}' width=80>\n" ;
+                $r3 = "<input type=text name=search value=\"" .
+			htmlspecialchars( $search ) ."\" width=80>\n" ;
 
                 # The search button
                 $r9 = "<input type=submit name='wpSearch' value='".wfMsg("powersearch")."'>\n" ;
