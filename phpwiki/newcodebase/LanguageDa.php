@@ -35,12 +35,20 @@
 	"Standard", "Nostalgi", "Cologne Blå"
 );
 
+/* private */ $wgMathNamesDa = array(
+	"Vis altid som PNG",
+	"HTML vis meget simpel ellers PNG",
+	"HTML vis muligt ellers PNG",
+	"Lad være som TeX (for tekst browsere)"
+);
+
 /* private */ $wgUserTogglesDa = array(
 	"hover"		=> "Vis svævende tekst over wiki links",
 	"underline" => "Understreg links",
 	"highlightbroken" => "Røde links til tomme sider",
 	"justify"	=> "Justér paragraffer",
 	"hideminor" => "Gem små redigeringer i sidste ændringer",
+	"usenewrc" => "Udvidet seneste ændringer (ikke for alle browsere)",
 	"numberheadings" => "Automatisk nummerering af overskrifter",
 	"rememberpassword" => "Husk password til næste besøg",
 	"editwidth" => "Redigeringsboksen har fuld bredde",
@@ -120,7 +128,6 @@
 	"kl"	=> "Grønlandsk",
 	"km"	=> "Cambodjansk",
 	"kn"	=> "Kannaresisk",
-	"ko"	=> "Koreansk",
 	"ko" => "&#54620;&#44397;&#50612; (Hangukeo)",
 	"ks"	=> "Kashmiri",
 	"kw" => "Kernewek",
@@ -137,7 +144,6 @@
 	"mn"	=> "Mongolsk",
 	"mo"	=> "Moldovisk",
 	"mr"	=> "Marathi",
-	"ms"	=> "Malajisk",
 	"ms" => "Bahasa Melayu",
 	"my"	=> "Burmesisk",
 	"na"	=> "Nauru",
@@ -167,7 +173,6 @@
 	"sl"	=> "Slovensko",
 	"sm"	=> "Samoansk",
 	"sn"	=> "Shona",
-	"so"	=> "Somalisk",
 	"so" => "Soomaali",
 	"sq" => "Shqiptare",
 	"sr" => "Srpski",
@@ -225,14 +230,14 @@
 # is the right thing for some of them (such as the "targeted" ones).
 #
 /* private */ $wgValidSpecialPagesDa = array(
-	"Userlogin"		=> "",
+	"Userlogin"	=> "",
 	"Userlogout"	=> "",
 	"Preferences"	=> "Mine brugerindstillinger",
-	"Watchlist"		=> "Min overvågningsliste",
+	"Watchlist"	=> "Min overvågningsliste",
 	"Recentchanges" => "Seneste ændringer",
-	"Upload"		=> "Upload filer",
-	"Imagelist"		=> "Billedliste",
-	"Listusers"		=> "Registrerede brugere",
+	"Upload"	=> "Upload filer",
+	"Imagelist"	=> "Billedliste",
+	"Listusers"	=> "Registrerede brugere",
 	"Statistics"	=> "Statistik om siden",
 	"Randompage"	=> "Tilfældig artikel",
 
@@ -241,18 +246,18 @@
 	"Popularpages"	=> "Populære artikler",
 	"Wantedpages"	=> "Mest ønskede artikler",
 	"Shortpages"	=> "Korte artikler",
-	"Longpages"		=> "Lange artikler",
-	"Newpages"		=> "De nyeste artikler",
-	"Allpages"		=> "Alle sider efter titel",
+	"Longpages"	=> "Lange artikler",
+	"Newpages"	=> "De nyeste artikler",
+	"Allpages"	=> "Alle sider efter titel",
 
 	"Ipblocklist"	=> "Blokerede IP adresser",
-	"Maintenance" => "Vedligeholdelsesside",
+	"Maintenance"	=> "Vedligeholdelsesside",
 	"Specialpages"  => "",
 	"Contributions" => "",
-	"Emailuser"		=> "",
+	"Emailuser"	=> "",
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => "",
-	"Movepage"		=> "",
+	"Movepage"	=> "",
 	"Booksources"	=> "Eksterne bog kilder"
 );
 
@@ -302,34 +307,35 @@
 "whatlinkshere"	=> "Sider med et link hertil",
 "help"			=> "Hjælp",
 "search"		=> "Søg",
+"go"		=> "Udfør",
 "history"		=> "Historie",
 "printableversion" => "Printervenlig version",
 "editthispage"	=> "Rediger side",
 "deletethispage" => "Slet side",
 "protectthispage" => "Beskyt side",
 "unprotectthispage" => "Fjern beskyttelse af side",
+"newpage" => "Ny side",
 "talkpage"		=> "Diskussionssiden",
 "articlepage"	=> "Se artikelen",
 "subjectpage"	=> "Se emnesiden",
 "userpage" => "Se brugersiden",
 "wikipediapage" => "Se metasiden",
 "imagepage" => 	"Se billedsiden",
+"viewtalkpage" => "Se diskussion",
 "otherlanguages" => "Andre sprog",
 "redirectedfrom" => "(Omdirigeret fra $1)",
-"lastmodified"	=> "Denne side blev sidst ændret $1.",
-"viewcount"		=> "Denne side er blevet set $1 gange.",
+"lastmodified"	=> "Denne side blev sidst ændret $1,",
+"viewcount"		=> "og er blevet vist ialt $1 gange.",
 "gnunote" => "Denne side er udgivet under <a class=internal href='/wiki/GNU_FDL'>GNU FDL</a>.",
 "printsubtitle" => "(Fra http://da.wikipedia.org)",
 "protectedpage" => "Beskyttet side",
 "administrators" => "Wikipedia:Administratorer",
 "sysoptitle"	=> "Sysop adgang påkrævet",
 "sysoptext"		=> "Den funktion du har bedt om kan kun
-udføres af brugere med \"sysop\" status.
-Se $1.",
+udføres af brugere med \"sysop\" status. Se $1.",
 "developertitle" => "Developer adgang påkrævet",
 "developertext"	=> "Den funktion du har bedt om kan kun
-udføres af brugere med \"developer\" status.
-Se $1.",
+udføres af brugere med \"developer\" status. Se $1.",
 "nbytes"		=> "$1 bytes",
 "go"			=> "Udfør",
 "ok"			=> "OK",
@@ -385,6 +391,9 @@ specificeret.",
 "badtitle"		=> "Forkert titel",
 "badtitletext"	=> "Den ønskede sides titel var ulovlig, tom eller siden
 er forkert linket fra en Wikipedia på et andet sprog.",
+"perfdisabled" => "Desværre! Denne funktion er midlertidigt afbrudt i 
+de spidsbelastede timer, så siden ikke går helt ned; kom tilbage 
+mellem 02:00 og 14:00 UTC og prøv igen.",
 
 # Login and logout pages
 #
@@ -428,7 +437,7 @@ til din e-mail adresse.",
 "loginsuccesstitle" => "Logget på med success",
 "loginsuccess"	=> "Du er nu logget på Wikipedia som \"$1\".",
 "nosuchuser"	=> "Der er ingen bruger med navnet \"$1\".
-Check stavemåden igen, eller brug formen herunder til at lave en ny bruger 
+Tjek stavemåden igen, eller brug formen herunder til at lave en ny bruger 
 konto.",
 "wrongpassword"	=> "Det password du indtastede var forkert. Prøv igen.",
 "mailmypassword" => "Send mig et nyt password med e-mail",
@@ -446,6 +455,7 @@ Du bør logge på og ændre dit password straks efter du har modtaget det.",
 #
 "summary"		=> "Beskrivelse",
 "minoredit"		=> "Dette er en mindre ændring.",
+"watchthis"		=> "Overvåg denne artikel",
 "savearticle"	=> "Gem side",
 "preview"		=> "Forhåndsvisning",
 "showpreview"	=> "Forhåndsvisning",
@@ -454,7 +464,10 @@ Du bør logge på og ændre dit password straks efter du har modtaget det.",
 $1. Begrundelsen der er blevet givet er denne:<br>$2<p>Du kan kontakte 
 administratoren for at diskutere blokeringen.",
 "newarticle"	=> "(Ny)",
-"newarticletext" => "Skriv din tekst til den nye side her.",
+"newarticletext" => "Der er på nuværende tidspunkt ingen tekst på denne 
+side.<br>
+Du kan slette denne tekst og begynde en artikel.<br>
+Hvis det ikke var din mening så tryk på 'Tilbage' eller 'Back' knappen.",
 "noarticletext" => "(Der er på nuværende tidspunkt ingen tekst på denne 
 side)",
 "updated"		=> "(Opdateret)",
@@ -497,7 +510,7 @@ DERES TILLADELSE!</strong>",
 "nohistory"		=> "Der er ingen versionshistorie for denne side.",
 "revnotfound"	=> "Versionen er ikke fundet",
 "revnotfoundtext" => "Den gamle version af den side du spurgte efter kan 
-ikke findes. Check den URL du brugte til at få adgang til denne side.\n",
+ikke findes. Tjek den URL du brugte til at få adgang til denne side.\n",
 "loadhist"		=> "Læser sidens historie",
 "currentrev"	=> "Nuværende version",
 "revisionasof"	=> "Versionen fra $1",
@@ -512,7 +525,7 @@ version, (forrige) = forskel til den forrige version, M = mindre ændring",
 #
 "difference"	=> "(Forskelle mellem versioner)",
 "loadingrev"	=> "læser version til at se forskelle",
-"lineno"		=> "Linie $1:",
+"lineno"		=> "Linje $1:",
 "editcurrent"	=> "Rediger den nuværende version af denne side",
 
 # Search results
@@ -532,6 +545,8 @@ eksempel \"fisk og og skaldyr\".
 Prøv en anden forespørgsel.",
 "matchtotals"	=> "Forespørgslen \"$1\" matchede $2 artikel titler
 og teksten i $3 artikler.",
+"nogomatch" => "Ingen sider med præcis denne titel eksisterer, prøver 
+fuldtekstsøgning istedet for. ",
 "titlematches"	=> "Artikel titler der matchede forespørgslen",
 "notitlematches" => "Ingen artikel titler matchede forespørgslen",
 "textmatches"	=> "Artikel tekster der matchede forespørgslen",
@@ -565,6 +580,12 @@ Dit interne ID nummer er $2.",
 "qbsettings"	=> "Indstillinger for hurtigmenu",
 "changepassword" => "Skift password",
 "skin"			=> "Udseende",
+"math"			=> "Vise matematik",
+"math_failure"		=> "Fejl i matematikken",
+"math_unknown_error"	=> "ukendt fejl",
+"math_unknown_function"	=> "ukendt funktion ",
+"math_lexing_error"	=> "lexer fejl",
+"math_syntax_error"	=> "syntax fejl",
 "saveprefs"		=> "Gem indstillinger",
 "resetprefs"	=> "Gendan indstillinger",
 "oldpassword"	=> "Gammelt password",
@@ -575,8 +596,8 @@ Dit interne ID nummer er $2.",
 "columns"		=> "Kolonner",
 "searchresultshead" => "Søge resultat indstillinger",
 "resultsperpage" => "Resultater pr. side",
-"contextlines"	=> "Linier pr. resultat",
-"contextchars"	=> "Karakterer pr. linie i resultatet",
+"contextlines"	=> "Linjer pr. resultat",
+"contextchars"	=> "Karakterer pr. linje i resultatet",
 "stubthreshold" => "Grænse for visning af stubs",
 "recentchangescount" => "Antallet af titler på \"seneste ændringer\" 
 siden",
@@ -591,13 +612,13 @@ Der bliver automatisk tilpasset til dansk tid, ellers skulle man for eksempel fo
 # Recent changes
 #
 "recentchanges" => "Seneste ændringer",
-"recentchangestext" => "Se de seneste redigerede sider i Wikipedia på denne 
+"recentchangestext" => "Se de senest ændrede sider i Wikipedia på denne 
 side.
 
 [[Wikipedia:Velkommen nybegynder|Velkommen nybegynder]]!
 Kig venligst på disse sider: [[Wikipedia:Hjælp|Hjælp]], 
 [[Wikipedia:OSS|Ofte Stillede Spørgsmål]] og 
-[[Wikipedia:Mest almindelige begynderfejl på Wikipedia|mest almindelige begynderfejl på Wikipedia]]).
+[[Wikipedia:Mest almindelige begynderfejl på Wikipedia|mest almindelige begynderfejl på Wikipedia]].
 
 Det er meget vigtigt for Wikipedias success, at du ikke lægger materiale på 
 Wikipedia som andre har ophavsret til. De retslige konsekvenser kan blive 
@@ -620,15 +641,14 @@ Se også seneste ændringer for andre sprog:
 [http://pt.wikipedia.com/wiki.cgi?RecentChanges pt], 
 [http://ru.wikipedia.org/wiki/Special:Recentchanges ru] og 
 [http://sv.wikipedia.org/wiki/Special:Recentchanges sv].",
-"rcloaderr"		=> "Læser seneste redigerede sider",
+"rcloaderr"		=> "Læser seneste ændrede sider",
 "rcnote"		=> "Nedenfor er de seneste <strong>$1</strong> ændringer i de 
 sidste <strong>$2</strong> dage.",
 "rcnotefrom"	=> "Nedenfor er ændringerne fra <b>$2</b> indtil <b>$1</b> vist.",
 "rclistfrom"	=> "Vis nye ændringer startende fra $1",
 # "rclinks"		=> "Vis seneste $1 ændringer i de sidste $2 timer / sidste $3 dage",
 "rclinks"		=> "Vis seneste $1 ændringer i de sidste $2 dage.",
-"rchide"		=> "i $4 form; $1 mindre ændringer; $2 andre navnerum; $3 mere end 
-en redigering.",
+"rchide"		=> "i $4 form; $1 mindre ændringer; $2 andre navnerum; $3 mere end en redigering.",
 "diff"			=> "forskel",
 "hist"			=> "historie",
 "hide"			=> "gem",
@@ -669,7 +689,7 @@ bringe dig til operativsystemets standard fil åben dialog.
 Når du vælger en fil vil navnet på filen dukke op i tekst feltet
 ved siden af knappen.
 Du skal også verificerer at du ikke er ved at bryde nogens ophavsret.
-Det gør du ved at sætte et mærke check boksen.
+Det gør du ved at sætte et mærke i check boksen.
 Tryk på \"Upload\" knappen for at afslutte din upload.
 Dette kan godt tage lidt tid hvis du har en langsom internet forbindelse.
 <p>De foretrukne formater er JPEG til fotografiske billeder, PNG
@@ -745,7 +765,7 @@ og af hvem, og andre ting du ved om filen.",
 "userstats"		=> "Bruger statistik",
 "sitestatstext" => "Der er ialt <b>$1</b> sider i databasen.
 Dette inkluderer \"diskussion\" sider, sider om Wikipedia, minimale \"stub\"
-sider, redirect sider, og andre der sikkert ikke kan kvalificeres som 
+sider, omdirigeringssider, og andre der sikkert ikke kan kvalificeres som 
 artikler.
 Hvis man ekskludere disse, så er der <b>$2</b> sider som sandsynligvis er 
 rigtige artikler.<p>
@@ -773,8 +793,8 @@ linket fra $1.<br>Links fra andre navnerum er <i>ikke</i> listet her.",
 "doubleredirects"	=> "Dobbelte omdirigeringer",
 "doubleredirectstext"	=> "<b>Bemærk:</b> Denne liste kan indeholde forkerte 
 resultater. Det er som regel fordi siden indeholder ekstra tekst under den
-første #REDIRECT.<br>\nHver linie indeholder links til den første og den 
-anden omdirigering, og den første linie fra den anden omdirigeringstekst, 
+første #REDIRECT.<br>\nHver linje indeholder links til den første og den 
+anden omdirigering, og den første linje fra den anden omdirigeringstekst, 
 det giver som regel den \"rigtige\" mål artikel, som den første omdirigering 
 skulle have peget på.",
 "brokenredirects"	=> "Dårlige omdirigeringer",
@@ -910,7 +930,6 @@ Alle tider er server (UTC) tider.
 "imagereverted" => "Gendannelse af en tidligere version gennemført med 
 success.",
 "rollback"		=> "Fjern redigeringer",
-
 "rollbacklink"	=> "fjern redigering",
 "cantrollback"	=> "Kan ikke fjerne redigering; den sidste bruger er den eneste forfatter.",
 "revertpage"	=> "Fjernet den seneste redigering lavet af $1",
@@ -939,9 +958,9 @@ sletninger og gendannelser.",
 "contributions"	=> "Bruger bidrag",
 "contribsub"	=> "For $1",
 "nocontribs"	=> "Ingen ændringer er fundet som matcher disse kriterier.",
-"ucnote"		=> "Herunder er denne brugers sidste <b>$1</b> ændringer i de 
+"ucnote"	=> "Herunder er denne brugers sidste <b>$1</b> ændringer i de 
 sidste <b>$2</b> dage.",
-"uclinks"		=> "Vis de sidste $1 ændringer; vis de sidste $2 dage.",
+"uclinks"	=> "Vis de sidste $1 ændringer; vis de sidste $2 dage.",
 "uctop"		=> " (top)" ,
 
 # What links here
@@ -951,7 +970,7 @@ sidste <b>$2</b> dage.",
 "notargettext"	=> "Du har ikke specificeret en mål side eller bruger
 at udføre denne funktion på.",
 "linklistsub"	=> "(Liste af links)",
-"linkshere"		=> "De følgende sider linker hertil:",
+"linkshere"	=> "De følgende sider linker hertil:",
 "nolinkshere"	=> "Ingen sider linker hertil.",
 "isredirect"	=> "omdirigeringsside",
 
@@ -1031,7 +1050,7 @@ Wikipedia udviklere.",
 side, flyttet hele sidens historie til det nye navn.
 Den gamle titel vil blive en omdirigeringsside til den nye titel.
 Links til den gamle titel vil ikke blive ændret. Sørg for at 
-[[Speciel:Maintenance|checke]] for dobbelte eller dårlige omdirigeringer. 
+[[Speciel:Maintenance|tjekke]] for dobbelte eller dårlige omdirigeringer. 
 Du er ansvarlig for, at alle links stadig peger på der hvor det er 
 meningen de skal pege.
 
@@ -1046,7 +1065,7 @@ vær sikker på at du forstår konsekvenserne af dette før du
 fortsætter.",
 "movepagetalktext" => "Den tilhørende diskussionsside, hvis der er en, 
 vil automatisk blive flyttet med siden '''medmindre:'''
-*Du flyttet siden til et andet navnerum,
+*Du flytter siden til et andet navnerum,
 *En ikke-tom diskussionsside allerede eksisterer under det nye navn, eller
 *Du fjerner markeringen i boksen nedenunder.
 
@@ -1075,20 +1094,20 @@ med den nye titel. Du er nødt til at flette dem sammen manuelt.",
 
 class LanguageDa extends Language {
 
-	function getNamespaces() {
-		global $wgNamespaceNamesDa;
-		return $wgNamespaceNamesDa;
-	}
+	function getDefaultUserOptions () {
+		global $wgDefaultUserOptionsDa ;
+		return $wgDefaultUserOptionsDa ;
+		}
 
 	function getBookstoreList () {
 		global $wgBookstoreListDa ;
 		return $wgBookstoreListDa ;
 	}
 
-	function getDefaultUserOptions () {
-		global $wgDefaultUserOptionsDa ;
-		return $wgDefaultUserOptionsDa ;
-		}
+	function getNamespaces() {
+		global $wgNamespaceNamesDa;
+		return $wgNamespaceNamesDa;
+	}
 
 	function getNsText( $index ) {
 		global $wgNamespaceNamesDa;
@@ -1116,6 +1135,11 @@ class LanguageDa extends Language {
 	function getSkinNames() {
 		global $wgSkinNamesDa;
 		return $wgSkinNamesDa;
+	}
+
+	function getMathNames() {
+		global $wgMathNamesDa;
+		return $wgMathNamesDa;
 	}
 
 	function getUserToggles() {
