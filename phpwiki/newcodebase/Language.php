@@ -630,7 +630,8 @@ created and by whom, and anything else you may know about it.",
 "revertimg"		=> "rev",
 "deleteimg"		=> "del",
 "imghistlegend" => "Legend: (cur) = this is the current image, (del) = delete
-this old version, (rev) = revert to this old version.",
+this old version, (rev) = revert to this old version.
+<br><i>Click on date to see image uploaded on that date</i>.",
 "imagelinks"	=> "Image links",
 "linkstoimage"	=> "The following pages link to this image:",
 "nolinkstoimage" => "There are no pages that link to this image.",
