@@ -410,7 +410,10 @@ class Skin {
 		global $wgOut,$wgTitle,$wgNamespacesWithSubpages;
 
 		$sub = $wgOut->getSubtitle();
-		if ( "" == $sub ) { $sub = wfMsg( "fromwikipedia" ); }
+		if ( "" == $sub ) {
+			global $wgExtraSubtitle;
+			$sub = wfMsg( "fromwikipedia" ) . $wgExtraSubtitle;
+		}
 		if($wgOut->isArticle() && $wgNamespacesWithSubpages[$wgTitle->getNamespace()]) {
 			$ptext=$wgTitle->getPrefixedText();			
 			if(preg_match("/\//",$ptext)) {				
@@ -729,7 +732,13 @@ class Skin {
 		}
 		$s .= $this->specialLink( "specialpages" )
 		  . $sep . $this->bugReportsLink();
-
+		
+		global $wgSiteSupportPage;
+		if( $wgSiteSupportPage ) {
+			$s .= "\n<br><a href=\"" . htmlspecialchars( $wgSiteSupportPage ) .
+			  "\">" . wfMsg( "sitesupport" ) . "</a>";
+		}
+		
 		$s .= "\n<br></div>\n";
 		wfProfileOut();
 		return $s;

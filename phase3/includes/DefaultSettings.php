@@ -53,6 +53,9 @@ $wgLocalInterwiki   = "w";
 $wgShowIPinHeader	= true; # For non-logged in users
 $wgUseDynamicDates	= false; # Allows the user to pick their preferred date format
 
+$wgExtraSubtitle	= "";
+$wgSiteSupportPage	= "";
+
 # Miscellaneous configuration settings
 #
 $wgReadOnlyFile		= "{$wgUploadDirectory}/lock_yBgMBwiR";
