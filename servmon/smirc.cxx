@@ -9,22 +9,26 @@
 
 namespace smirc {
 
-	struct irctrmsrv {
+	struct irctrmsrv : public smtrm::terminal {
 		ircclnt& client;
 
-		smtrm::comdat<irctrmsrv> cd;
-		typedef smtrm::handler_node<irctrmsrv> handler_node_t;
+		smtrm::comdat cd;
+		typedef smtrm::handler_node handler_node_t;
 		handler_node_t cmds_root;
 
 		irctrmsrv(ircclnt& client_)
 			: client(client_)
-			, cmds_root(SMI(smtrm::tmcmds<irctrmsrv>)->stdrt)
+			, cmds_root(SMI(smtrm::tmcmds)->stdrt)
 			, cd(*this)
 			{
 			}
 
-		void chgrt(smtrm::handler_node<irctrmsrv>* newrt, std::string const& prompt) {
+		void chgrt(smtrm::handler_node* newrt) {
 			cmds_root = *newrt;
+		}
+
+		bool is_interactive(void) const {
+			return false;
 		}
 		
 		void parse(str line) {
@@ -85,32 +89,39 @@ namespace smirc {
 		}
 		
 		/* parser bookkeeping */
-		str getdata(void) { static std::string nulldata = ""; return nulldata; }
+		str getdata(void) {
+			static std::string nulldata = "";
+			return nulldata;
+		}
 		void setdata(str) {}
 		void echo(bool) {}
 
-		void wrt(str msg) const {
+		void wrt(u_char c) {
+			/*
+			 * hm... this doesn't make much sense in a line-oriented,
+			 * non-interactive environment.  maybe we should queue up
+			 * chars and send them either at the end of the request,
+			 * or before the next line output.  however, no-one actually
+			 * uses this yet, so this'll do for now.
+			 */
+			client.command_reply(std::string(1, c));
+		}
+		void wrt(str msg) {
 			client.command_reply(msg);
 		}
-		void wrtln(str msg) const {
+		void wrtln(str msg) {
 			wrt(msg);
 		}
-		void warn(str msg) const {
-			wrt("% [W] " + msg);
-		}
-		void inform(str msg) const {
-			wrt("% [I] " + msg);
-		}
-		void error(str msg) const {
-			wrt("% [E] " + msg);
-		}
-		void readline(boost::function<void(irctrmsrv&, std::string const&)>) {
+		void readline(readline_cb_t) {
 			throw smtrm::non_interactive_terminal();
 		}
 		int getlevel(void) const {
 			return 2;
 		}
 		void setlevel(int) {
+			/* no-op */
+		}
+		void setprmbase(str) {
 			/* no-op */
 		}
 	};

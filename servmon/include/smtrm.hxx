@@ -14,17 +14,59 @@
 
 namespace smtrm {
 
-template<class tt>
+class handler_node;
+	
+/* base terminal type */
+class terminal {
+public:
+	typedef boost::function<void(terminal&, str)> readline_cb_t;
+
+	virtual bool is_interactive(void) const = 0;
+	virtual void echo(bool) = 0;
+	virtual void wrtln(str = "") = 0;
+	virtual void wrt(u_char) = 0;
+	virtual void wrt(str) = 0;
+	virtual void chgrt(handler_node* newrt) = 0;
+	virtual void readline(readline_cb_t) = 0;
+	virtual void error(str msg) {
+		wrtln("%% [E] " + msg);
+	}
+	virtual void warn(str msg) {
+		wrtln("%% [W] " + msg);
+	}
+	virtual void inform(str msg) {
+		wrtln("%% [I] " + msg);
+	}
+
+	virtual str getdata(void) const {
+		return m_data;
+	}
+	virtual void setdata(str d) {
+		m_data = d;
+	}
+	virtual int getlevel(void) const {
+		return m_level;
+	}
+	virtual void setlevel(int level) {
+		m_level = level;
+	}
+	virtual ~terminal(void) {
+	}
+	virtual void setprmbase(str prmbase) = 0;
+private:
+	std::string m_data;
+	int m_level;
+};
+	
 class handler_node;
 
 struct non_interactive_terminal : std::runtime_error {
 	non_interactive_terminal() : std::runtime_error("terminal does not support interaction") {}
 };
 	
-template<class tt>
 class comdat {
 public:
-	comdat(tt& term_)
+	comdat(terminal& term_)
 	: term(term_)
 	{}
  
@@ -53,23 +95,8 @@ public:
 	void wrt (std::string const & msg) const {
 		term.wrt(msg);
 	}
-	void chgrt (handler_node<tt>* newrt, std::string const& prm) const {
-		term.chgrt(newrt, prm);
-	}
-	std::string read_string (std::string const& prompt) const {
-		term.wrt(prompt);
-		std::string s;
-		term.read_echo(s);
-		return s;
-	}
-	std::string getpass (std::string const& prompt) const
-	{
-		term.wrt(prompt);
-		term.echo(false);
-		std::string s;// = term.read(); /* XXX is this used anywhere? */
-		term.echo(true);
-		wrtln();
-		return s;
+	void chgrt (handler_node* newrt) const {
+		term.chgrt(newrt);
 	}
 	void rst(void) {
 		ps.resize(0);
@@ -80,34 +107,30 @@ public:
 	str getdata(void) const {
 		return term.getdata();
 	}
-	tt& term; //XXX
+	terminal& term; //XXX
 private:
 	std::vector<std::string> ps;
 };
 
-template<class tt>
 class handler {
 public:
 	virtual ~handler() {}
-	virtual bool execute (comdat<tt> const&) = 0;
+	virtual bool execute (comdat const&) = 0;
 };
 
-template<class tt>
 struct handler_node {
 	handler_node()
 	: terminal(NULL)
 	, level(0)
 	{}
 
-	typedef handler<tt> handler_t;
-
 	std::map<std::string, handler_node> childs;
-	handler_t *terminal;
+	handler *terminal;
 	std::string help;
 	std::string name; /* this shouldn't really be here.. */
 	int level;
 	
-	bool 	add_child(int level, std::string cmd, handler_t *h, std::string const & desc) {
+	bool 	add_child(int level, std::string cmd, handler *h, std::string const & desc) {
 		if (cmd.empty()) {
 			terminal = h;
 			help = desc;
@@ -124,13 +147,13 @@ struct handler_node {
 	find_matches(int level, std::string const& word, int& waswild) {
 		std::vector<handler_node *> result;
 		waswild = 0;
-		for (typename std::map<std::string, handler_node>::iterator it = childs.begin(),
+		for (std::map<std::string, handler_node>::iterator it = childs.begin(),
 			end = childs.end(); it != end; ++it) {
 			if (it->first.substr(0, word.size()) == word) {
 				if (it->second.level > level)
 					continue;
 				
-				// if its an exact match, just return it
+				/* if its an exact match, just return it */
 				if (it->first == word) {
 					result.erase(result.begin(), result.end());
 					result.push_back(&it->second);
@@ -140,7 +163,7 @@ struct handler_node {
 			}
 		}
 		if (result.empty()) {
-			typename std::map<std::string, handler_node>::iterator it;
+			std::map<std::string, handler_node>::iterator it;
 			
 			if ((it = childs.find("%s")) != childs.end() && it->second.level <= level) {
 				waswild = 1;
@@ -167,14 +190,12 @@ struct handler_node {
 	bool install (int level, std::string const &command, std::string const & desc) {
 		return add_child(level, command, NULL, desc); 
 	}
-	bool _install (int level, std::string const &command, handler_t *h, std::string const &desc) {
+	bool _install (int level, std::string const &command, handler *h, std::string const &desc) {
 		return add_child(level, command, h, desc); 
 	}
 };
 
-
-template<class tt>
-struct tmcmds : public smutl::singleton<tmcmds<tt> > {
+struct tmcmds : public smutl::singleton<tmcmds> {
 #include "../smstdrt.cxx"
 	tmcmds() {
 /* restricted non-logged commands */
@@ -218,7 +239,7 @@ stdrt.install(16, "no debug mysql monitoring", cmd_no_debug_mysql_monitoring(), 
 stdrt.install(16, "no debug irc", cmd_no_debug_irc(), "Debug IRC connections");
 
 /* 'configure' mode commands */
-cfgrt.install(16, "exit", cmd_enable(), "Exit configure mode");
+cfgrt.install(16, "exit", chg_parser(stdrt, "%s[%d]>"), "Exit configure mode");
 cfgrt.install(16, "enable password", cfg_eblpass(), "Change enable password");
 cfgrt.install(16, "function", "Configure a specific function");
 cfgrt.install(16, "function irc", chg_parser(ircrt, "%s[%d](conf-irc)#"), "Configure Internet Relay Chat connections");
@@ -233,7 +254,7 @@ cfgrt.install(16, "no user %s", cfg_no_user(), "User name");
 cfgrt.install(16, "function querybane", chg_parser(qbrt, "%s[%d](conf-qb)#"), "Configure QueryBane operation");
 
 /* 'function irc' mode commands */
-ircrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)#"), "Exit IRC configuration mode");
+ircrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)>"), "Exit IRC configuration mode");
 ircrt.install(16, "server", "Configure IRC servers");
 ircrt.install(16, "server %s primary-nickname %s", cfg_irc_servnick(), "Set primary nickname for IRC server");
 ircrt.install(16, "server %s secondary-nickname %s", cfg_irc_servsecnick(),	"Set secondary nickname for IRC server");
@@ -268,7 +289,7 @@ monrt.install(16, "threshold mysql replication-lag", "Maximum replication lag fr
 monrt.install(16, "threshold mysql replication-lag %s", cfg_monit_alarm_mysql_replag(), "Maximum replication lag in seconds");
 monrt.install(16, "threshold mysql running-threads", "Maximum number of running threads");
 monrt.install(16, "threshold mysql running-threads %s", cfg_monit_alarm_mysql_threads(), "Maximum number of threads");
-monrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)#"), "Exit monitor configuration mode");
+monrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)>"), "Exit monitor configuration mode");
 
 /* 'function querybane' mode commands */
 qbrt.install(16, "rule", "Define a new rule");
@@ -276,10 +297,10 @@ qbrt.install(16, "rule %s", cfg_qb_rule(), "Rule name");
 qbrt.install(16, "no", "Negate a setting");
 qbrt.install(16, "no rule", "Delete a rule");
 qbrt.install(16, "no rule %s", cfg_qb_norule(), "Rule name");
-qbrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)#"), "Exit querybane configuration mode");
+qbrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)>"), "Exit querybane configuration mode");
 
 /* querybane 'rule' mode commands */
-qbrrt.install(16, "exit", chg_parser(qbrt, "%s[%d](conf-qb)#"), "Exit rule configuration mode");
+qbrrt.install(16, "exit", chg_parser(qbrt, "%s[%d](conf-qb)>"), "Exit rule configuration mode");
 qbrrt.install(16, "description %S", cfg_qbr_description(), "Rule description");
 qbrrt.install(16, "match-if", "Specify parameters to match this rule");
 qbrrt.install(16, "match-if min-threads", "Match on miminum thread count");
@@ -301,32 +322,30 @@ qbrrt.install(16, "enable", cfg_qbr_enable(), "Enable rule");
 /* 'function memcache' commands */
 memrt.install(16, "server-list-command", "Set command used to obtain server list");
 memrt.install(16, "server-list-command %S", cfg_mc_server_list_command(), "Command name");
-memrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)#"), "Exit memcache configuration mode");
+memrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)>"), "Exit memcache configuration mode");
 
 	}
-	handler_node<tt> stdrt;
-	handler_node<tt> cfgrt;
-	handler_node<tt> ircrt;
-	handler_node<tt> monrt;
-	handler_node<tt> memrt;
-	handler_node<tt> qbrt, qbrrt;
+	handler_node stdrt;
+	handler_node cfgrt;
+	handler_node ircrt;
+	handler_node monrt;
+	handler_node memrt;
+	handler_node qbrt, qbrrt;
 };
 
 template<class intft>
-class trmsrv : noncopyable {
+class trmsrv : noncopyable, public terminal {
 public:
-	typedef boost::function<void(trmsrv&, std::string const&)> rl_cb_t;
-
 	trmsrv(intft sckt_)
 	: intf(sckt_)
-	, cmds_root(SMI(tmcmds<trmsrv>)->stdrt)
+	, cmds_root(SMI(tmcmds)->stdrt)
 	, prmbase("%s [%d]>")
 	, cd(*this)
 	, doecho(true)
 	, rlip(false)
 	, destroyme(false)
-	, level(2)
 	{
+		setlevel(2);
 		mkprm();
 		stb_nrml();
 	}
@@ -354,7 +373,7 @@ public:
 		init();
 		intf->cb(boost::bind(&trmsrv::gd_cb, this, _1, _2));
 		stb_nrml();
-		level = 2;
+		setlevel(2);
 		wrt(prm);
 	}
 	void gd_cb(smnet::inetclntp, u_char c) {
@@ -377,11 +396,11 @@ public:
 		if (destroyme) return;
 		intf->wrt(s);
 	}
-	void chgrt(handler_node<trmsrv>* newrt, std::string const& prompt) {
+	void chgrt(handler_node* newrt) {
 		cmds_root = *newrt;
 		mkprm();
 	}
-	void readline(rl_cb_t cb) {
+	void readline(readline_cb_t cb) {
 		rl_cb = cb;
 		rlip = true;
 		stb_readline();
@@ -406,15 +425,15 @@ public:
 		}
 		int wild;
 		bool b = true;
-		std::vector<handler_node_t *> matches;
+		std::vector<handler_node *> matches;
 		std::string precar, word;
-		handler_node_t *here = &cmds_root;
+		handler_node *here = &cmds_root;
 		int herelen = prm.size();
 		for (;;) {
 			precar = ln;
 			word = smutl::car(ln);
 			if (!word.size()) break;
-			matches = here->find_matches(level, word, wild);
+			matches = here->find_matches(getlevel(), word, wild);
 			
 			if (matches.size() > 1) {
 				wrtln();
@@ -475,15 +494,15 @@ public:
 		if (doecho) wrtln("?");
 		std::string l2 = ln;
 		bool showall = l2.empty() || (!l2.empty() && l2[l2.size()-1]==' ');
-		std::vector<handler_node_t *> matches;
+		std::vector<handler_node *> matches;
 		std::string word;
-		handler_node_t *here = &cmds_root;
+		handler_node *here = &cmds_root;
 		int wild;
 		for (;;) {
 			word = smutl::car(l2);
 			/* if we're at the last word, and they want matches for a partial
 			   command, break now */
-			matches = here->find_matches(level, word, wild);
+			matches = here->find_matches(getlevel(), word, wild);
 			
 			if (!showall && l2.empty()) break;
 			//matches = here->find_matches(word, wild);
@@ -501,7 +520,7 @@ public:
 			word = "";
 			here = matches[0];
 		}
-		for (typename std::vector<handler_node_t *>::iterator it = matches.begin(),
+		for (std::vector<handler_node *>::iterator it = matches.begin(),
 			 end = matches.end(); it != end; ++it) {
 			if (showall || (**it).name.substr(0,word.size())==word)
 				wrtln(b::str(format("  %s %s") % 
@@ -540,47 +559,38 @@ public:
 	void disconnect(void) {
 		destroyme = true;
 	}
-	void warn (std::string const & msg) {
-		wrtln(b::str(format("%% [W] %s") % msg));
-	}
-	void inform (std::string const & msg) {
-		wrtln(b::str(format("%% [I] %s") % msg)); 
-	}
-	void error (std::string const & msg) {
-		wrtln(b::str(format("%% [E] %s") % msg));
-	}
-	void setdata(str data_) {
-		data = data_;
-	}
-	str getdata(void) {
-		return data;
-	}
-	void setlevel(int level_) {
-		level = level_;
+
+	void setlevel(int level) {
+		terminal::setlevel(level);
 		mkprm();
 	}
-	int getlevel(void) const {
-		return level;
-	}
 	void mkprm(void) {
-		prm = boost::io::str(format(prmbase) % "servmon" % level);
+		try {
+			prm = boost::io::str(format(prmbase) % "servmon" % getlevel());
+		} catch (std::exception&) {
+			prm = "[exception while creating prompt] servmon>";
+		}
+	}
+	void setprmbase(str base) {
+		prmbase = base;
+		mkprm();
+	}
+	bool is_interactive(void) const {
+		return true;
 	}
 private:
 	intft intf;
 	std::map<u_char, boost::function<bool (char)> > binds;
 	std::string usrnam;
 	// bookkeeping for parser
-	rl_cb_t rl_cb;
+	readline_cb_t rl_cb;
 	std::string ln;
-	typedef handler_node<trmsrv> handler_node_t;
-	handler_node_t cmds_root;
+	handler_node cmds_root;
 	std::string prm, prmbase;
-	comdat<trmsrv> cd;
+	comdat cd;
 	bool doecho;
 	bool rlip;
 	bool destroyme;
-	std::string data;
-	int level;
 };
 typedef trmsrv<smnet::inettnsrvp> inettrmsrv;
 typedef shared_ptr<inettrmsrv> inettrmsrvp;

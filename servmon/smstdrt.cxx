@@ -1,7 +1,7 @@
 /* @(#) $Header$ */
-#define HDL(x) struct x : handler<tt>
-#define EX0 bool execute(comdat<tt> const&)
-#define EX1(a) bool execute(comdat<tt> const& a)
+#define HDL(x) struct x : handler
+#define EX0 bool execute(comdat const&)
+#define EX1(a) bool execute(comdat const& a)
 
 HDL(cmd_show_version) {
 	EX1(cd) {
@@ -17,7 +17,7 @@ HDL(cmd_enable) {
 		cd.term.readline(boost::bind(&cmd_enable::vfypass, this, _1, _2));
 		return true;
 	}
-	void vfypass(tt& trm, std::string const& pass) {
+	void vfypass(terminal& trm, std::string const& pass) {
 		trm.echo(true);
 		if (smauth::authebl(pass))
 			trm.setlevel(16);
@@ -46,12 +46,12 @@ HDL(cmd_login) {
 		}
 		return true;
 	}
-	void vfyusername(tt& trm, std::string const& user) {
+	void vfyusername(terminal& trm, std::string const& user) {
 		trm.echo(false);
 		trm.wrt("Type password: ");
 		trm.readline(boost::bind(&cmd_login::vfypassword, this, _1, /* ick */ username = user, _2));
 	}
-	void vfypassword(tt& trm, std::string user, std::string const& pass) {
+	void vfypassword(terminal& trm, std::string user, std::string const& pass) {
 		trm.echo(true);
 		trm.wrtln("");
 		if (!smauth::login_usr(user, pass)) {
@@ -86,13 +86,13 @@ HDL(cfg_eblpass) {
 		cd.term.readline(boost::bind(&cfg_eblpass::gotp1, this, _1, _2));
 		return true;
 	}
-	void gotp1(tt& trm, std::string const& pass) {
+	void gotp1(terminal& trm, std::string const& pass) {
 		p1 = pass;
 		trm.wrt("Confirm new password: ");
 		trm.readline(boost::bind(&cfg_eblpass::gotp2, this, _1, _2));
 		return;
 	}
-	void gotp2(tt& trm, std::string const& p2) {
+	void gotp2(terminal& trm, std::string const& p2) {
 		trm.echo(true);
 		if (p1 != p2) {
 			trm.error("Not confirmed.");
@@ -103,16 +103,17 @@ HDL(cfg_eblpass) {
 };
 
 HDL(chg_parser) {
-	chg_parser(handler_node<tt>& newp_, std::string const& prm_)
+	chg_parser(handler_node& newp_, str prm_)
 		: newp(newp_)
 		, prm(prm_)
 	{
 	}
 	EX1(cd) {
-		cd.chgrt(&newp, prm);
+		cd.chgrt(&newp);
+		cd.term.setprmbase(prm);
 		return true;
 	}
-	handler_node<tt>& newp;
+	handler_node& newp;
 	std::string prm;
 };
 
@@ -129,7 +130,7 @@ HDL(cfg_userpass) {
 		cd.term.readline(boost::bind(&cfg_userpass::gotpass, this, _1, _2));
 		return true;
 	}
-	void gotpass(tt& trm, std::string const& pass) {
+	void gotpass(terminal& trm, std::string const& pass) {
 		trm.echo(true);
 		smauth::add_usr(usr, pass);
 	}
@@ -222,7 +223,7 @@ HDL(cmd_irc_showserver) {
 			try {
 				std::set<std::string> servers = SMI(smcfg::cfg)->fetchlist("/irc/servers");
 				FE_TC_AS(std::set<std::string>, servers, i) {
-					comdat<tt> cd2(cd);
+					comdat cd2(cd);
 					cd2.add_p(*i);
 					execute(cd2);
 				}
@@ -403,7 +404,8 @@ HDL(cmd_monit_showintervals) {
 HDL(cfg_qb_rule) {
 	EX1(cd) {
 		cd.setdata(cd.p(0));
-		cd.chgrt(&SMI(tmcmds)->qbrrt, "%s[%d](conf-qb-rule)#");
+		cd.chgrt(&SMI(tmcmds)->qbrrt);
+		cd.term.setprmbase("%s[%d](conf-qb-rule)>");
 		if (!SMI(smqb::cfg)->rule_exists(cd.p(0))) {
 			SMI(smqb::cfg)->create_rule(cd.p(0));
 			cd.inform("Creating new rule.");
