@@ -12,8 +12,8 @@
 	3	=> "Wikipedysta_dyskusja",
 	4	=> "Wikipedia",
 	5	=> "Wikipedia_dyskusja",
-	6	=> "Plik",
-	7	=> "Plik_dyskusja"
+	6	=> "Grafika",
+	7	=> "Grafika_dyskusja"
 );
 
 /* private */ $wgQuickbarSettingsPl = array(
@@ -292,7 +292,7 @@ Zobacz $1.",
 użytkownika o prawach \"Programisty\".
 Zobacz $1.",
 "nbytes"		=> "$1 bajtów",
-"go"			=> "Go",
+"go"			=> "OK",
 "ok"			=> "OK",
 "sitetitle"		=> "Wikipedia",
 "sitesubtitle"	=> "Wolna Encyklopedia",
@@ -501,6 +501,8 @@ tylko te, które zawierają wszystkie podane słowa).",
 "prefsnologintext"	=> "Musisz się <a href=\"" .
   wfLocalUrl( "Specjalna:Userlogin" ) . "\">zalogować</a>
 przez zmianą swoich preferencji.",
+"prefslogintext" => "Zalogowano Cię jako \"$1\".
+Twój numer identyfikacyjny to $2.",
 "prefsreset"	=> "Preferences have been reset from storage.",
 "qbsettings"	=> "Pasek szybkiego dostępu", 
 "changepassword" => "Zmiana hasła",
