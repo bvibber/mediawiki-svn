@@ -6,6 +6,7 @@
  * existence of a file, etc.
  */
 
+
 class MogileFS {
 	var $socket;
 	var $error;
@@ -16,9 +17,19 @@ class MogileFS {
 	 * TODO
 	 */
 	function MogileFS( $domain,
-			   $hosts = array( array( 'host'=>'localhost', 'port'=>'6001' ) ),
+			   $hosts = null,
 			   $root = '' )
 	{
+		global $wgMogileTrackers;
+
+		if ($hosts == null) {
+			if ($wgMogileTrackers!=null) {
+				$hosts=$wgMogileTrackers;
+			} else {
+				die("wgMogileTrackers empty, please define hosts");
+			}
+		}
+
 		$this->domain = $domain;
 		$this->hosts  = $hosts;
 		$this->root   = $root;
@@ -35,7 +46,7 @@ class MogileFS {
 	 * TODO
 	 */
 	function NewMogileFS( $domain,
-			      $hosts = array( array( 'host'=>'localhost', 'port'=>'6001' ) ),
+			      $hosts = null,
 			      $root = '' )
 	{
 		$mfs = new MogileFS( $domain, $hosts, $root );
@@ -49,7 +60,10 @@ class MogileFS {
 	function connect()
 	{
 		foreach ( $this->hosts as $host ) {
-			$this->socket = fsockopen( $host['host'], $host['port'] );
+			list($ip,$port)=split(':',$host,2);
+			if ($port==null)
+				$port=7001;
+			$this->socket = fsockopen( $ip, $port );
 			if ( $this->socket ) {
 				break;
 			}
@@ -71,13 +85,13 @@ class MogileFS {
 		fwrite( $this->socket, $cmd . "\n" );
 
 		$line = fgets( $this->socket );
-
+		#print $line;
 		$words = explode( ' ', $line );
 		if ( $words[0] == 'OK' ) {
 			parse_str( trim( $words[1] ), $result );
 		} else {
 			$result = false;
-			$this->error = $words;
+			$this->error = join(" ",$words);
 		}
 
 		return $result;
@@ -122,6 +136,8 @@ class MogileFS {
 	function getFileData( $key )
 	{
 		$paths = $this->getPaths( $key );
+		if ($paths == false)
+			return false;
 		foreach ( $paths as $path ) {
 			$fh = fopen( $path, 'r' );
 			$contents = '';
@@ -145,6 +161,8 @@ class MogileFS {
 	function getFileDataAndSend( $key )
 	{
 		$paths = $this->getPaths( $key );
+		if (!$paths) 
+			return false;
 		foreach ( $paths as $path ) {
 			$fh = fopen( $path, 'r' );
 
@@ -173,38 +191,39 @@ class MogileFS {
 			$port = $matches[2];
 			$path = $matches[3];
 
-			$fout = 
-		$fout = fopen( $res['path'], 'w' );
-		$fin = fopen( $filename, 'r' );
+			// $fout = fopen( $res['path'], 'w' );
+			$fin = fopen( $filename, 'r' );
+			$ch = curl_init();
+			curl_setopt($ch,CURLOPT_PUT,1);
+			curl_setopt($ch,CURLOPT_URL, $res['path']);
+			curl_setopt($ch,CURLOPT_VERBOSE, 0);
+			curl_setopt($ch,CURLOPT_INFILE, $fin);
+			curl_setopt($ch,CURLOPT_INFILESIZE, filesize($filename));
+			curl_setopt($ch,CURLOPT_TIMEOUT, 4);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			if(!curl_exec($ch)) {
+				$this->error=curl_error($ch);
+				curl_close($ch);
+				return false;
+			}
+			curl_close($ch);
 
-		if ( ! $fout || ! $fin ) {
-			return false;
+			$res = $this->doRequest( "CREATE_CLOSE domain={$this->domain}&key={$key}&class={$class}&devid={$res['devid']}&fid={$res['fid']}&path={$res['path']}" );
+			return true;
 		}
-
-		while ( !feof( $fin ) ) {
-			fwrite( $fout, fread( $fin, filesize( $filename ) ) );
-		}
-		fclose( $fout );
-		fclose( $fin );
-
-		$res = $this->doRequest( "CREATE_CLOSE domain={$this->domain}&key={$key}&class={$class}&devid={$res['devid']}&fid={$res['fid']}&path={$res['path']}" );
-
-		return true;
 	}
-
-
-		
-
-
 }
 
 ####
 ####
-####         T E S T 
+#### Testing rules
 ####
 ####
-$mfs = MogileFS::NewMogileFS( 'en' );
-$mfs->getFileDataAndSend( '100x100_frankfurt.jpg' );
-$mfs->saveFile( 'jeluf', 'thumbnail', '/tmp/jeluf' );
+if( !defined( 'MEDIAWIKI' ) ) {
+	$wgMogileTrackers=array('10.0.0.1:7001','10.0.0.2:7003');
+	$mfs = MogileFS::NewMogileFS('test');
+	$mfs->saveFile('testkey','normal','testfile');
+	$mfs->getFileDataAndSend( 'testkey' );
+}
 
 ?>
