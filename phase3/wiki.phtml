@@ -43,20 +43,19 @@ if ( "" == $title && "delete" != $action ) {
 	}
 }
 wfProfileOut();
-if ( -1 == $wgTitle->getNamespace() ) {
+
+if ( Namespace::getSpecial() == $wgTitle->getNamespace() ) {
 	wfSpecialPage();
-} else if ( "" != $search ) {
+} else if ( !empty( $search ) ) {
 	if($go) {
-	
-		wfGo ($search);
-	
+		wfGo( $search );
 	} else {
-	
 		wfSearch( $search );
-		
 	}
-		
 } else {
+	if ( Namespace::getMedia() == $wgTitle->getNamespace() ) {
+		$wgTitle = Title::makeTitle( Namespace::getImage(), $wgTitle->getDBkey() );
+	}
 	$wgArticle = new Article();
 
 	if ( "view" == $action ) { $wgArticle->view(); }
