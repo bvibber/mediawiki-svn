@@ -329,7 +329,7 @@ class Skin {
 
 	function searchForm()
 	{
-		$s .= "<form class='inline' method=get action=\""
+		$s = "<form class='inline' method=get action=\""
 		  . wfLocalUrl( "" ) . "\">"
 		  . "<input type=text name=\"search\" size=16 value=\"\">\n"
 		  . "<input type=submit value=\"" . wfMsg( "search" )
@@ -681,8 +681,8 @@ class Skin {
 			$url = $nt->getFullURL();
 			$text = $wgLang->getLanguageName( $nt->getInterwiki() );
 
-			if ( "" == $text ) { $text = $link; }
-			$style = $this->getExternalLinkAttributes( $link, $text );
+			if ( "" == $text ) { $text = $l; }
+			$style = $this->getExternalLinkAttributes( $l, $text );
 			$s .= "<a href=\"{$url}\"{$style}>{$text}</a>";
 		}
 		return "\n<br>{$s}\n";
