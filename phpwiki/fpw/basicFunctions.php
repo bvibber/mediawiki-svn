@@ -116,7 +116,11 @@ function edit ( $title ) {
 	$ret .= "<form method=POST action=\"".wikiLink($npage->secureTitle)."\" name=f\" enctype=\"application/x-www-form-urlencoded\">" ;
 	$ret .= "<textarea tabindex=1 name=EditBox rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>".$text."</textarea><br>\n" ;
 	$ret .= "$wikiSummary<input tabindex=2 type=text value=\"$CommentBox\" name=CommentBox size=50 maxlength=200> \n" ;
-	$ret .= "<input tabindex=3 type=checkbox name=MinorEdit $checked value=1>$wikiMinorEdit &nbsp; $wikiEditHelp<br>\n" ;
+	if ( $user->isLoggedIn == "yes" ) 
+		$ret .= "<input tabindex=3 type=checkbox name=MinorEdit $checked value=1>$wikiMinorEdit &nbsp; " ;
+	else
+		$ret .= "<input type=hidden name=MinorEdit value=1>" ;
+	$ret .= "$wikiEditHelp<br>\n" ;
 	$ret .= "$wikiCopyrightNotice<br>\n" ;
 
 	$ret .= "<input tabindex=4 type=submit value=$wikiSave name=SaveButton> \n" ;

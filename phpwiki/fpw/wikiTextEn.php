@@ -1,4 +1,9 @@
 <?
+# ATTENTION:
+# To fit your local settings, PLEASE edit wikiText.php ONLY!
+# Change settings here ONLY if they're to become global in all wikipedias!
+
+
 # This contains the strings for international/specialized wikis
 #---------------------------------------------------------------
 
