@@ -251,7 +251,9 @@ class OutputPage {
 			  $this->mDebugtext . "-->\n" );
 		}
 		$this->out( $sk->beforeContent() );
+		wfProfileIn( "OutputPage:output-bodytext" );
 		$this->out( $this->mBodytext );
+		wfProfileOut();
 		$this->out( $sk->afterContent() );
 
 		wfProfileOut(); # A hack - we can't report after here
