@@ -60,7 +60,7 @@ class MessageCache
 			if ( !$this->mCache ) {
 				$this->lock();
 				# Other threads don't need to load the messages if another thread is doing it.
-				if ( $this->mMemc->set( $this->mMemcKey, "loading", MSG_LOAD_TIMEOUT ) ) {
+				if ( $this->mMemc->add( $this->mMemcKey, "loading", MSG_LOAD_TIMEOUT ) ) {
 					wfProfileIn( "$fname-load" );
 					$this->loadFromDB();
 					wfProfileOut( "$fname-load" );
