@@ -2,6 +2,9 @@
 -- on old installations when adding TeX support (2002-12-26)
 -- Or, TeX can be disabled via $wgUseTeX=false in LocalSettings.php
 
+-- Note: math table has changed, and this script needs to be run again
+-- to create it. (2003-02-02)
+
 DROP TABLE IF EXISTS math;
 CREATE TABLE math (
     math_inputhash varchar(16) NOT NULL,
