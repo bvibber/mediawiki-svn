@@ -20,7 +20,7 @@ class WikiPage extends WikiTitle {
 		$this->isSpecialPage = false ;
 		$this->revision = "current" ;
 		if ( $this->namespace == "special" ) { # Special page, calling appropriate function
-			$allowed = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","deletepage","protectpage"); # List of allowed special pages
+			$allowed = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","deletepage","protectpage","contributions"); # List of allowed special pages
 			if ( in_array ( "is_sysop" , $user->rights ) ) array_push ( $allowed , "asksql" ) ; # Another function just for sysops
 			$call = $this->mainTitle ;
 			if ( !in_array ( strtolower ( $call ) , $allowed ) ) {
@@ -262,7 +262,7 @@ class WikiPage extends WikiTitle {
 				if ( $iwl != "" ) { # Interwiki Link
 					$tt = ucfirst ( str_replace ( " " , "_" , $topic->mainTitle ) ) ;
 					$iwl = str_replace ( "$1" , $tt , $iwl ) ;
-					$text = $topic->getNiceTitle ( $topic->mainTitle ) ;
+					if ( $c[0] == $c[1] ) $text = $topic->getNiceTitle ( $topic->mainTitle ) ;
 					$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
 					$s .= "<a $linkStyle href=\"$iwl\">$text</a>" ;
 				} else if ( $doesItExist ) {
@@ -493,10 +493,11 @@ class WikiPage extends WikiTitle {
 			$num = str_replace ( " " , "" , $num ) ;
 			if ( $num == "" ) {
 				$s .= "ISBN $blank$x" ;
-			} else {
-				$s .= "<a href=\"http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$num\">ISBN $isbn</a> " ;
-				$s .= "(<a href=\"http://www.amazon.com/exec/obidos/ISBN=$num\">Amazon</a>, " ;
-				$s .= "<a href=\"http://www.pricescan.com/books/bookDetail.asp?isbn=$num\">Pricescan</a>)" ;
+			} else { # Removed BarnesAndNoble and Amazon, left link to PriceScan
+				$s .= "<a href=\"http://www.pricescan.com/books/bookDetail.asp?isbn=$num\">ISBN $isbn</a> " ;
+#				$s .= "<a href=\"http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$num\">ISBN $isbn</a> " ;
+#				$s .= "(<a href=\"http://www.amazon.com/exec/obidos/ISBN=$num\">Amazon</a>, " ;
+#				$s .= "<a href=\"http://www.pricescan.com/books/bookDetail.asp?isbn=$num\">Pricescan</a>)" ;
 				$s .= $x ;
 				}
 			}
@@ -673,6 +674,8 @@ class WikiPage extends WikiTitle {
 				}
 			if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"$THESCRIPT?action=print&title=$this->secureTitle\">$wikiPrintable</a>" ) ;
 			if ( $this->backLink != "" ) array_push ( $subText , $this->backLink ) ;
+			if ( $this->namespace == "user" and $this->subpageTitle == "" )
+				array_push ( $subText , "<a href=\"$THESCRIPT?title=special:contributions&theuser=$this->mainTitle\">This user's contributions</a>" ) ;
 			$ret .= "<br>".implode ( " | " , $subText ) ;
 			}
 		$ret .= "</td>\n<td valign=top width=200 rowspan=2 nowrap>".$user->getLink()."<br>" ;
