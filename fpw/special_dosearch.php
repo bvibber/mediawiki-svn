@@ -1,4 +1,6 @@
 <?
+include_once ( "special_makelog.php" ) ;
+
 function searchLineDisplay ( $v ) {
 	global $search ;
 	$v = trim(str_replace("\n","",$v)) ;
