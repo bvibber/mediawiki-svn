@@ -176,7 +176,7 @@
 "qbmyoptions"	=> "Einstellungen",
 "mypage"		=> "Meine Seite",
 "mytalk"		=> "Meine Diskussion",
-"currentevents" => "Chronik",
+"currentevents" => "-",
 "errorpagetitle" => "Fehler",
 "returnto"		=> "Zurück zu $1.",
 "fromwikipedia"	=> "Von Wikipedia, der freien Enzyklopädie",
