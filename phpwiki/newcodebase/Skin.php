@@ -618,8 +618,12 @@ class Skin {
 	{
 		global $wgTitle, $wgLang;
 
-		$s = $this->makeKnownLink( $wgLang->specialPage( "Movepage" ),
-		  wfMsg( "movethispage" ), "target=" . $wgTitle->getPrefixedURL() );
+		if ( $wgTitle->userCanEdit() ) {
+			$s = $this->makeKnownLink( $wgLang->specialPage( "Movepage" ),
+			  wfMsg( "movethispage" ), "target=" . $wgTitle->getPrefixedURL() );
+		} else {
+			$s = wfMsg( "protectedpage" );
+		}
 		return $s;
 	}
 
