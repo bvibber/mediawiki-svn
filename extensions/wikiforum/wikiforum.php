@@ -239,7 +239,8 @@ class Forum {
 		wfDebug("FORUM - START GENERATE\n");
 		$dbr =& wfGetDB( DB_SLAVE );
 		$cur = $dbr->tableName( 'cur' );
-
+		
+		// FIXME : does not work with 1.5
 		$sql = "SELECT cur_title, cur_comment, cur_user_text, cur_timestamp, cur_counter FROM $cur".
 		       " WHERE cur_namespace = $ns".
 		       " AND cur_is_redirect = 0".
