@@ -87,10 +87,15 @@ function wfEmergencyAbort( $msg = "" ) {
 
 function wfQuery( $sql, $fname = "" )
 {
-	global $wgLastDatabaseQuery, $wgOut;
+	global $wgLastDatabaseQuery, $wgOut, $wgDebugDumpSql;
 	wfProfileIn( "wfQuery(\"" .
 		strtr( substr($sql, 0, 80 ), "\t\n\r", "   " ) . "...\")" );
 	$wgLastDatabaseQuery = $sql;
+
+	if( $wgDebugDumpSql ) {
+		$sqlx = substr(strtr($sql,"\t\n","  "),0,72);
+		wfDebug( "SQL: $sqlx\n" );
+	}
 
 	$conn = wfGetDB();
 	$ret = mysql_query( $sql, $conn );

@@ -117,10 +117,15 @@ class LinksUpdate {
 		
 		# Do the insertion
 		$sql = "";
+		$image = Namespace::getImage();
 		if ( 0 != count ( $add ) ) {
 			$sql = "INSERT INTO imagelinks (il_from,il_to) VALUES ";
 			$first = true;
 			foreach( $add as $iname => $val ) {
+				# FIXME: Change all this to avoid unnecessary duplication
+				$nt = Title::makeTitle( $image, $iname );
+				$nt->invalidateCache();
+
 				$iname = wfStrencode( $iname );
 				if ( ! $first ) { $sql .= ","; }
 				$first = false;

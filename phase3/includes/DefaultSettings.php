@@ -58,6 +58,7 @@ $wgUseDynamicDates	= false; # Allows the user to pick their preferred date forma
 $wgReadOnlyFile		= "{$wgUploadDirectory}/lock_yBgMBwiR";
 $wgDebugLogFile     = "{$wgUploadDirectory}/log_dlJbnMZb";
 $wgDebugComments	= false;
+$wgDebugDumpSql		= false;
 $wgReadOnly			= false;
 $wgSqlLogFile		= "{$wgUploadDirectory}/sqllog_mFhyRe6";
 $wgLogQueries		= false;

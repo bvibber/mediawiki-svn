@@ -335,6 +335,14 @@ class Title {
 		$this->mRestrictionsLoaded = false;
 		$this->mRestrictions = array();
 	}
+	
+	function invalidateCache() {
+		$now = wfTimestampNow();
+		$ns = $this->getNamespace();
+		$ti = wfStrencode( $this->getDBkey() );
+		$sql = "UPDATE cur SET cur_touched='$now' WHERE cur_namespace=$ns AND cur_title='$ti'";
+		return wfQuery( $sql, "Title::invalidateCache" );
+	}
 
 	/* private */ function prefix( $name )
 	{
