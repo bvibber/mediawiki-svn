@@ -17,7 +17,14 @@ function deletepage () {
     if ( $iamsure == "yes" ) {
         $ret = "<h2>".str_replace("$1",$target,$wikiDeleteSuccess)."</h2>" ;
         $connection = getDBconnection () ;
-        $sql = "DELETE FROM cur WHERE cur_title=\"$target\"" ;
+        
+	# Move from cur to old for potential recovery later
+	$deadpage = new WikiPage ;
+	$deadpage->setTitle ( $target ) ;
+	$deadpage->backup () ;
+	
+	# Okay, now go for it
+	$sql = "DELETE FROM cur WHERE cur_title=\"$target\"" ;
         $result = mysql_query ( $sql , $connection ) ;
 
         # Appending log page "log:Page Deletions"

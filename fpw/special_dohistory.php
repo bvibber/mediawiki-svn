@@ -15,7 +15,7 @@ function doHistory ( $title ) {
     
     # first we get the current record
     $sql1 = "SELECT cur_timestamp, cur_title, cur_comment, cur_user,
-                     cur_user_text, cur_minor_edit
+                     cur_user_text, cur_minor_edit, cur_old_version
              FROM cur
              WHERE cur_title=\"$ti\"" ;
     $result = mysql_query ( $sql1 , $connection ) ;
@@ -25,7 +25,7 @@ function doHistory ( $title ) {
     
     # then we get the old records
     $sql2 = "SELECT old_timestamp AS cur_timestamp, old_title AS cur_title, old_comment AS cur_comment,
-                    old_user AS cur_user, old_user_text AS cur_user_text, old_minor_edit AS cur_minor_edit,
+                    old_user AS cur_user, old_user_text AS cur_user_text, old_minor_edit AS cur_minor_edit, old_old_version AS cur_old_version ,
                     old_id
              FROM old
              WHERE old_title=\"$ti\"
@@ -35,12 +35,16 @@ function doHistory ( $title ) {
     mysql_free_result ( $result ) ;
 
     # now we number the versions
-    $version = 0;
-    foreach ( array_keys ( $a ) as $i ) {
-      if ( $version > 0 ) $a[$i]->version = $version;
-      if ( $a[$i]->cur_used == 0 ) $a[$i]->appendix = " (<a href=\"".wikiLink("special:blockIP&target=".$a[$i]->cur_user_text)."\">$wikiBlockIP</a>)" ; # This will show for sysops only!
+    $version = 0; $b = array () ;
+    while ( $i = array_shift ( $a ) ) {
+      if ( $version > 0 ) $i->version = $version;
+      if ( $i->cur_user == 0 ) $i->appendix = " (<a href=\"".wikiLink("special:blockIP&target=".urlencode($i->cur_user_text))."\">$wikiBlockIP</a>)" ; # This will show for sysops only!
+      array_push ( $b , $i ) ;
+      if ( $i->cur_old_version == 0 ) break ;
       $version++;
     }
+    
+    # 
 
     $t = "<b>".str_replace(array("$1","$2"),array($url,$title),$wikiHistoryHeader)."</b>" ;
     if ( $user->isLoggedIn ) {
@@ -48,7 +52,7 @@ function doHistory ( $title ) {
 	    $t .= " (<a href=\"".wikiLink("$url&amp;action=watch&amp;mode=no")."\">$wikiNoWatch</a>)" ;
 	else $t .= " (<a href=\"".wikiLink("$url&amp;action=watch&amp;mode=yes")."\">$wikiWatch</a>)" ;
 	}
-    $t .= "<br>\n".recentChangesLayout ( $a ) ;
+    $t .= "<br>\n".recentChangesLayout ( $b ) ;
 
     $ret = $vpage->getHeader() ;
     $ret .= $vpage->getMiddle($t) ;
