@@ -71,7 +71,7 @@ class Skin {
 			$s .= "a { text-decoration: none; }\n";
 		}
 		if ( 1 == $wgUser->getOption( "highlightbroken" ) ) {
-			$s .= "a.new { color: white; background: blue; }\n";
+			$s .= "a.new { color: #880000; }\n";
 		}
 		return $s;
 	}
@@ -147,8 +147,8 @@ class Skin {
 		$qb = $this->qbSetting();
 		if ( 0 != $qb ) { $s .= $this->quickBar(); }
 
-		$s .= "\n<div id='topbar'><p><table width='98%' border=0 " .
-		  "cellspacing=0><tr>";
+		$s .= "\n<div id='content'>\n<div id='topbar'>" .
+		  "<table width='98%' border=0 cellspacing=0><tr>";
 
 		if ( 0 == $qb ) {
 			$s .= "<td class='top' align=left valign=top>" .
@@ -158,7 +158,7 @@ class Skin {
 		}
 		$s .= "<td class='top' align=left valign=top>";
 
-		$s .= $this->topLinks() . "\n<br>";
+		$s .= $this->topLinks() ;#. "\n<br>";
 		$s .= $this->pageTitleLinks();
 
 		$s .= "</td>\n<td class='top' valign=top align=right width=200 nowrap>";
@@ -212,7 +212,7 @@ class Skin {
 		if ( 2 == $qb ) { # Right
 			$s .= "<td width='152'>&nbsp;</td>";
 		}
-		$s .= "</tr></table>\n</div>\n";
+		$s .= "</tr></table>\n</div>\n</div>\n";
 
 		return $s;
 	}
@@ -315,8 +315,7 @@ class Skin {
 			$s .=  $sep . $this->editThisPage()
 			  . $sep . $this->historyLink();
 		}
-		$s .= $sep . $this->specialLink( "randompage" )
-		  . $sep . $this->specialLink( "specialpages" );
+		$s .= $sep . $this->specialPagesList();
 
 		return $s;
 	}
@@ -411,6 +410,43 @@ class Skin {
 		  . $sep . $this->specialLink( "specialpages" );
 
 		$s .= "\n</div>\n";
+		return $s;
+	}
+
+	function specialPagesList()
+	{
+		global $wgUser, $wgOut, $wgLang, $wgServer, $wgRedirectScript;
+		$a = array ();
+
+		$validSP = $wgLang->getValidSpecialPages();
+
+		foreach ( $validSP as $name => $desc ) {
+			if ( "" == $desc ) { continue; }
+			$a[$name] = $desc;
+		}
+		if ( $wgUser->isSysop() )
+		{ 
+			$sysopSP = $wgLang->getSysopSpecialPages();
+
+			foreach ( $sysopSP as $name => $desc ) {
+				if ( "" == $desc ) { continue; }
+				$a[$name] = $desc ;
+			}
+		}
+		$go = wfMsg( "go" );
+		$sp = wfMsg( "specialpages" );
+
+		$s = "<form method=get id='specialform' " .
+		  "action='{$wgServer}{$wgRedirectScript}'>\n";
+		$s .= "<select name='wpDropdown'>\n";
+		$s .= "<option value='Special%3ASpecialpages'>{$sp}</option>\n";
+
+		foreach ( $a as $name => $desc ) {
+			$s .= "<option value='Special%3A{$name}'>{$desc}</option>\n";
+		}
+		$s .= "</select>\n";
+		$s .= "<input type=submit value='{$go}' name=redirect>\n";
+		$s .= "</form>\n";
 		return $s;
 	}
 
