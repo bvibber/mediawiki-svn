@@ -93,6 +93,7 @@ int main(int argc, char **argv)
 	dbp->err(dbp, ret, "DBcursor->get");
 	exit(1);
     }
+    printf("quit\n");
     exit(0);
 }
 
