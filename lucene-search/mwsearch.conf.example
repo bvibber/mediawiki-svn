@@ -1,8 +1,0 @@
-# This should be a user which is able to connect to the database
-# and read the wiki tables.
-mwsearch.username=searchuser
-mwsearch.password=whatever
-
-# A directory to put the search index in.  It will be created if
-# it doesn't already exist.
-mwsearch.indexpath=./mwindex
