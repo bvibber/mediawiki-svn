@@ -14,10 +14,10 @@ function wfSpecialRandompage()
 
 	$s = wfFetchObject( $res );
 	$newid = $s->cur_id;
+	wfFreeResult( $res );
 
-	$wgArticle = Article::newFromID( $newid );
-	$wgOut->setArticleFlag( true );
-	$wgArticle->view();
+	$t = Article::nameOf( $newid );
+	$wgOut->redirect( wfLocalUrl( $t ) );
 }
 
 ?>

@@ -178,7 +178,6 @@ function wfNumberOfArticles()
 		$wgTotalViews = $s->ss_total_views;
 		$wgTotalEdits = $s->ss_total_Edits;
 		$wgNumberOfArticles = $s->ss_good_articles;
-		wfFreeResult( $res );
 	}
 }
 

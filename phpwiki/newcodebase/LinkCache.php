@@ -82,7 +82,6 @@ class LinkCache {
 		} else {
 			$s = wfFetchObject( $res );
 			$id = $s->cur_id;
-			wfFreeResult( $res );
 		}
 		if ( 0 == $id ) { $this->addBadLink( $title ); }
 		else { $this->addGoodLink( $id, $title ); }
