@@ -649,12 +649,13 @@ class WikiPage extends WikiTitle {
         # Only allow known tags
         $htmlpairs = array( "b", "i", "u", "font", "big", "small", "sub", "sup", "h1", "h2", "h3", "h4", "h5", "h6",
             "cite", "code", "em", "s", "strike", "strong", "tt", "var", "div", "center", "blockquote", "ol",
-            "ul", "dl", "table", "caption", "pre" );
-        $htmlsingle = array( "br", "p", "hr", "li", "dt", "dd" );
-    $tabletags = array ( "td" , "th" , "tr" ) ;
+            "ul", "dl", "table", "caption", "pre" , "ruby", "rt" , "rb" , "rp" ); # Tags which must be closed
+        $htmlsingle = array( "br", "p", "hr", "li", "dt", "dd" ); # Tags which don't need to be closed
+	$htmlnest = array ( "table" , "tr" , "td" , "th" ) ; # Tags which can be nested, currently this is a little fuzzy
+	$tabletags = array ( "td" , "th" , "tr" ) ; # Tags never allowed outside of a <table>
 
-    $htmlsingle = array_merge ( $tabletags , $htmlsingle ) ;
-        $htmlpairs = array_merge ( $htmlsingle , $htmlpairs );
+	$htmlsingle = array_merge ( $tabletags , $htmlsingle ) ;
+        $htmlelements = array_merge ( $htmlsingle , $htmlpairs );
 
         # Allowed attributes -- we don't want scripting, etc
         $htmlattrs = array(
@@ -684,14 +685,19 @@ class WikiPage extends WikiTitle {
         preg_match ( "/^(\/?)(\w+)([^>]*)(\/{0,1}>)([^<]*)$/", $x, $regs );
         list ( $qbar , $slash , $t , $params , $brace , $rest ) = $regs;
         #echo "($slash|$t|$params|$brace|$rest)";
-        if ( in_array ( $t = strtolower ( $t ) , $htmlpairs ) ) {
-            if ( $tagcount["table"] < 1 && in_array ( $t , $tabletags ) )
-                break;
+        if ( in_array ( $t = strtolower ( $t ) , $htmlelements ) ) {
+            if ( $tagcount["table"] < 1 && in_array ( $t , $tabletags ) ) {
+                $s .= "&lt;" . str_replace ( ">" , "&gt;" , $x ) ;
+                continue;
+		}
                 
             # Don't allow more closing tags than opening tags; normalize tables
             if ( $slash ) {
-                if ( $tagcount[$t] < 1 )
-                    continue;
+	    	#echo "(/$t=".$tagcount[$t].")";
+                if ( $tagcount[$t] < 1 ) {
+	            $s .= "&lt;" . str_replace ( ">" , "&gt;" , $x ) ;
+		    continue;
+		    }
                 --$tagcount[$t];
                 if($t == "table")
                     foreach ( $tabletags as $tt )
@@ -847,8 +853,6 @@ class WikiPage extends WikiTitle {
 
         # Parsing through the text line by line
         # The main thing happening here is handling of lines starting with * # : etc.
-        $justify = " class=\"bodytext\"" ; # Justification is handled in the style sheet
-        #if ( $user->options["justify"] == "yes" ) $justify = " align=justify" ;
         $a = explode ( "\n" , $s ) ;
         $s = "<p$justify>" ;
         $obegin = "" ;
@@ -857,7 +861,7 @@ class WikiPage extends WikiTitle {
             $post = "" ;
             $ppre = "" ;
             $ppost = "" ;
-            if ( trim ( $t ) == "" ) $post .= "</p><p$justify>" ;
+            if ( trim ( $t ) == "" ) $post .= "</p><p>" ;
 
             if ( substr($t,0,1) == " " ) { $ppre = "<pre>\n " ; $ppost = "</pre>".$ppost ; $t = substr ( $t , 1 ) ; }
             if ( substr($t,0,1) == "*" ) { $ppre .= "<li>" ; $ppost .= "</li>" ; }
@@ -913,9 +917,9 @@ class WikiPage extends WikiTitle {
         $s = str_replace ( "</dl>\n<dl>" , "" , $s ) ;
 
         # Removing artefact empty paragraphs like <p></p>
-        $this->replaceAll ( "<p$justify>\n</p>" , "<p$justify></p>" , $s ) ;
-        $this->replaceAll ( "<p$justify></p>" , "" , $s ) ;
-        $this->replaceAll ( "</p><p$justify>" , "<p$justify>" , $s ) ;
+        $this->replaceAll ( "<p>\n</p>" , "<p></p>" , $s ) ;
+        $this->replaceAll ( "<p></p>" , "" , $s ) ;
+        $this->replaceAll ( "</p><p>" , "<p>" , $s ) ;
 
         # Stuff for the skins
         if ( $user->options["textTableBackground"] != "" ) {
@@ -1118,6 +1122,7 @@ class WikiPage extends WikiTitle {
     # Some special pages have their own rendering function
     function getMiddle ( $ret ) {
         global $user , $action ;
+	$ret = "\n<div class=\"bodytext\">$ret</div>" ;
         if ( $action == "print" ) return $ret ;
         $oaction = $action ;
         if ( $action == "edit" ) $action = "" ;
@@ -1128,7 +1133,7 @@ class WikiPage extends WikiTitle {
                 $column .= "<font size=-1>".$this->parseContents ( "<hr>".implode ( "<br>\n" , $spl ) )."</font>" ;
 
             $column = "<td class=\"quickbar\" ".$user->options["quickBarBackground"]." width=110 valign=top nowrap>".$column."</td>" ;
-            $ret = "<td valign=top>".$ret."</td>" ;
+            $ret = "<td valign=top>\n".$ret."\n</td>" ;
 
             $table = "<table width=\"100%\" class=\"middle\" cellpadding=2 cellspacing=0><tr>" ;
             $qb = $user->options["quickBar"] ;

@@ -86,7 +86,7 @@ class WikiUser {
             $ret .= "background: $bgcolor; ";
         $ret .= "}\n";
         
-        $ret .= "p.bodytext { " . (($this->options[justify] == "yes") ? "text-align: justify; " : "") . "}\n";
+        $ret .= ".bodytext { " . (($this->options[justify] == "yes") ? "text-align: justify; " : "") . "}\n";
         $ret .= "a { text-decoration: " . (($this->options[underlineLinks] == "no") ? "none" : "underline") . "; }\n";
         
         $qbside = ( $this->options["quickBar"] == "left" ) ? "right" : "left";
