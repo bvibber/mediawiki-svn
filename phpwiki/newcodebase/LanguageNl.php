@@ -53,14 +53,6 @@
  "minordefault" => "Maak 'kleine' veranderingen mijn standaard"
 );
 
-/* private */ $wgBookstoreListNl = array(
-	"AddALL" => "http://www.addall.com/New/Partner.cgi?query=$1&type=ISBN",
-	"PriceSCAN" => "http://www.pricescan.com/books/bookDetail.asp?isbn=$1",
-	"Barnes & Noble" => "http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$1",
-	"Amazon.com" => "http://www.amazon.com/exec/obidos/ISBN=$1"
-);
-
-
 /* private */ $wgLanguageNamesNl = array(
  "nl" => "Nederlands",
  "en" => "English",
@@ -314,8 +306,8 @@
 "viewtalkpage" => "Bekijk de overlegpagina",
 "otherlanguages" => "Andere talen",
 "redirectedfrom" => "(Doorverwezen vanaf $1)",
-"lastmodified" => "Het werd voor het laatst gewijzigd op $1.",
-"viewcount"  => "Deze pagina werd $1 maal bekeken.",
+"lastmodified" => "en is voor het laatst gewijzigd op $1.",
+"viewcount"  => "Deze pagina werd $1 maal bekeken ",
 "gnunote" => "Alle tekst op deze pagina valt onder de  <a class=internal href='/wiki/Gnu_Vrije_Documentatie_Licentie'>GNU FDL</a>.",
 "printsubtitle" => "(Uit http://nl.wikipedia.org)",
 "protectedpage" => "Beveiligde pagina",
@@ -330,6 +322,8 @@
 "sitetitle"  => "<span style=\"text-transform: none\">Wikipedia NL</span>", # Okay, HERE's an ugly hack. There should be a cleaner way to do this.
 "sitesubtitle" => "De vrije encyclopedie",
 "retrievedfrom" => "Afkomstig van Wikipedia NL, de Vrije Encyclopedie. \"$1\"",
+"newmessages" => "Er zijn ",
+"newmessageslink" => "nieuwe berichten voor u".
 
 # Main script and global functions
 # Algemene functies
@@ -424,7 +418,8 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "blockedtitle" => "Gebruiker is geblokkeerd",
 "blockedtext" => "Uw gebruikersnaam of IP-adres is door $1 geblokkeerd. De opgegeven reden:<br>$2<p>. U kunt voor overleg contact opnemen met de [[Wikipedia:Systeembeheerders|systeembeheerders]].",
 "newarticle" => "(Nieuw)",
-"newarticletext" => "Verwijder dit en beschrijf hier de nieuwe pagina.",
+"newarticletext" => " Er bestaat nog geen artikel over dit onderwerp.<br>Als u wilt, kunt u een artikel beginnen door deze tekst te verwijderen en te vervangen door de nieuwe tekst van het artikel.<br>Was dit niet de bedoeling, gebruik dan de 'Terug' knop van uw browser."
+"anontalkpagetext" => "Deze overlegpagina hoort bij een anonieme gebruiker die hetzij geen loginnaam heeft, hetzij deze niet gebruikt. We gebruiken daarom het IP-adres ter identificatie. Het kan echter zijn dat meerdere personen hetzelfde IP-adres gebruiken. Het kan daarom zijn dat u hier berichten ontvangt die niet voor u bedoeld zijn. Mocht u dat willen voorkomen, dan kunt u [[Speciaal:Userlogin|een gebruikersnaam aanvragen of u aanmelden]].
 "noarticletext" => "(Deze pagina bevat momenteel geen tekst)",
 "updated"  => "(Bijgewerkt)",
 "note"   => "<strong>Opmerking:</strong> ",
@@ -438,7 +433,7 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "editingold" => "<strong>WAARSCHUWING: U bent bezig een oude versie van deze pagina te bewerken. Wanneer u uw bewerking opslaat, gaan alle wijzigingen die na deze versie gedaan zijn verloren.\n.</strong>\n",
 "yourdiff"  => "Wijzigingen",
 "copyrightwarning" => "Opgelet: Alle bijdragen aan Wikipedia worden geacht te zijn vrijgegeven onder de GNU Free Documentation License. Als u niet wil dat uw tekst door anderen naar believen bewerkt en verspreid kan worden, kies dan niet voor 'Pagina Opslaan'.<br> Hierbij belooft u ons tevens dat u deze tekst zelf hebt geschreven, of overgenomen uit een vrije, openbare bron.<br> <strong>GEBRUIK GEEN MATERIAAL DAT BESCHERMD WORDT DOOR AUTEURSRECHT, TENZIJ JE DAARTOE TOESTEMMING HEBT!</strong>",
-
+"longpagewarning" => "Waarschuwing! Deze pagina is $1 kilobyte lang. Pagina's langer dan 32 kb zorgen voor problemen op sommige browsers. Het is daarom waarschijnlijk een goed idee deze pagina in meerdere pagina's te splitsen.",
 
 # History pages
 # Geschiedenis pagina's
@@ -480,7 +475,7 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "prevn"   => "vorige $1",
 "nextn"   => "volgende $1",
 "viewprevnext" => "($1) ($2) ($3) bekijken.",
-"showingresults" => "Hieronder de <b>$1</b> resultaten vanaf nummer <b>$2</b>.",
+"showingresults" => "Hieronder de <b>$1</b> resultaten vanaf nummer <b>$2</b>."
 "nonefound"  => "<strong>Merk op:</strong> wanneer een zoekopdracht mislukt komt dat vaak door gebruik van (in het Engels) veel voorkomende woorden zoals \"of\" en \"be\", die niet geïndexeerd zijn, of door verschillende zoektermen tegelijk op te geven (u krijgt dan alleen in pagina's waaarin alle opgegeven termen voorkomen).",
 "powersearch" => "Zoeken",
 "powersearchtext" => "   
@@ -860,8 +855,8 @@ class LanguageNl extends Language {
   }
 
  function getBookstoreList () {
-  global $wgBookstoreListNl ;
-  return $wgBookstoreListNl ;
+  global $wgBookstoreListEn ; # No locals defined... yet
+  return $wgBookstoreListEn ;
  }
 
  function getNamespaces() {
