@@ -11,6 +11,10 @@ function wfSpecialUpload()
 		$wgOut->errorpage( "uploadnologin", "uploadnologintext" );
 		return;
 	}
+	if ( wfReadOnly() ) {
+		$wgOut->readOnlyPage();
+		return;
+	}
 	if ( isset( $wpReUpload) ) {
 		unsaveUploadedFile();
 		mainUploadForm( "" );
