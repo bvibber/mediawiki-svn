@@ -81,3 +81,11 @@
 # ALTER TABLE linked ADD INDEX (linked_to)
 # ALTER TABLE unlinked ADD INDEX (unlinked_from),
 # ALTER TABLE unlinked ADD INDEX (unlinked_to)
+
+# ----- new instructions per 2002 February 24 ----
+
+# The cur_linked_links and cur_unlinked_links are now officially
+# dropped
+
+# ALTER TABLE cur DROP COLUMN cur_linked_links ;
+# ALTER TABLE cur DROP COLUMN cur_unlinked_links ;

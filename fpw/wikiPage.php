@@ -67,13 +67,25 @@ class WikiPage extends WikiTitle {
                 }
             else $this->contents = $wikiDescribePage ;
         } else { # The current article version
-            $sql = "SELECT * FROM cur WHERE cur_title=\"".$this->secureTitle."\"" ;
+            $sql = "SELECT cur_title, cur_text, cur_timestamp, cur_cache, cur_params, cur_counter
+                    FROM cur
+                    WHERE cur_title=\"".$this->secureTitle."\"" ;
             $result = mysql_query ( $sql , $connection ) ;
             if ( $s = mysql_fetch_object ( $result ) ) {
                 $this->SetTitle ( $s->cur_title ) ;
                 $this->contents = $s->cur_text ;
-                $this->knownLinkedLinks = explode ( "\n" , $s->cur_linked_links ) ;
-                $this->knownUnlinkedLinks = explode ( "\n" , $s->cur_unlinked_links ) ;
+                $this->knownLinkedLinks = array () ;
+                $sql_l = "SELECT DISTINCT linked_to FROM linked WHERE linked_from = \"$s->cur_title\" " ;
+                $result_l = mysql_query ( $sql_l , $connection ) ;
+                while ( $s_l = mysql_fetch_object ( $result_l ) )
+                    array_push ( $this->knownLinkedLinks, $s_l->linked_to ) ;
+                mysql_free_result ( $result_l ) ;
+                $this->knownUnlinkedLinks = array () ;
+                $sql_u = "SELECT DISTINCT unlinked_to FROM unlinked WHERE unlinked_from = \"$s->cur_title\" " ;
+                $result_u = mysql_query ( $sql_u , $connection ) ;
+                while ( $s_u = mysql_fetch_object ( $result_u ) )
+                    array_push ( $this->knownUnlinkedLinks, $s_u->unlinked_to ) ;
+                mysql_free_result ( $result_u ) ;
                 $this->timestamp = $s->cur_timestamp ;
                 if ( $useCachedPages ) $this->cache = $s->cur_cache ;
                 if ( $s->cur_params != "" ) $this->params = explode ( "\n" , $s->cur_params ) ;
@@ -214,8 +226,13 @@ class WikiPage extends WikiTitle {
         mysql_query ( $sql , $connection ) ;
         # Flushing cache for all pages that linked to the empty topic
         if ( $useCachedPages ) {
-            $sql = "UPDATE cur SET cur_cache=\"\", cur_timestamp=cur_timestamp WHERE cur_linked_links LIKE \"%$this->secureTitle%\" OR cur_unlinked_links LIKE \"%$this->secureTitle%\"" ;
-            mysql_query ( $sql , $connection ) ;
+            $sql1 = "SELECT DISTINCT linked_from FROM linked WHERE linked_to = \"$this->secureTitle\" " ;
+            $result1 = mysql_query ( $sql , $connection ) ;
+            while ( $s1 = mysql_fetch_object ( $result1 ) ) {
+                $sql2 = "UPDATE cur SET cur_cache=\"\", cur_timestamp=cur_timestamp WHERE cur_title = \"%$s1->linked_from\" " ;
+                mysql_query ( $sql2 , $connection ) ;
+            }
+            mysql_free_result ( $result1 );
         }
     }
 
@@ -257,7 +274,6 @@ class WikiPage extends WikiTitle {
         $connection = getDBconnection () ;        
         
         $this->parseContents ( $text , true ) ; # Calling with savingMode flag set, so only internal Links are parsed
-        $ll = implode ( "\n" , array_keys ( $linkedLinks ) ) ;
 
         # store linked links in linked table
         $sql = "DELETE FROM linked WHERE linked_from = \"$this->secureTitle\" ;" ;
@@ -272,8 +288,6 @@ class WikiPage extends WikiTitle {
                 $r = mysql_query ( $sql , $connection ) ;
             }
         }
-
-        $ull = implode ( "\n" , array_keys ( $unlinkedLinks ) ) ;
 
         # store unlinked links in unlinked table
         $sql = "DELETE FROM unlinked WHERE unlinked_from = \"$this->secureTitle\" ;" ;
@@ -299,7 +313,7 @@ class WikiPage extends WikiTitle {
         $comment = htmlspecialchars ( $comment ) ;
         $sql = "UPDATE cur SET cur_text=\"$text\",cur_comment=\"$comment\",cur_user=\"$userID\"," ;
         $sql .= "cur_user_text=\"$userName\",cur_minor_edit=\"$minorEdit\",";
-        $sql .= "cur_linked_links=\"$ll\",cur_unlinked_links=\"$ull\",$addCache cur_params=\"$pa\"$addSQL WHERE $cond" ;
+        $sql .= "$addCache cur_params=\"$pa\"$addSQL WHERE $cond" ;
         $r = mysql_query ( $sql , $connection ) ;
         }
 
