@@ -78,6 +78,8 @@ function wfImageUrl( $img )
 	global $wgUploadPath;
 
 	$nt = Title::newFromText( $img );
+	if( !$nt ) return "";
+
 	$name = $nt->getDBkey();
 	$hash = md5( $name );
 
