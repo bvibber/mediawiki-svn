@@ -3,7 +3,7 @@
 #---------------------------------------------------------------
 
 # Essential stuff, so the script knows where it is, whar database to use, etc.
-$wikiCurrentServer = "http://wikipedia.com" ;
+$wikiCurrentServer = "http://127.0.0.1" ;
 $wikiSQLServer = "wikipedia" ; # The name of the database, actually...
 $wikiArticleSource = "$wikiCurrentServer/wiki/$1" ;
 $wikiLogoFile = "/fpw/wiki.png" ;
@@ -357,7 +357,9 @@ function wikiRecodeInput($text) {
 }
 
 function wikiLink ( $a ) {
+	global $wikiArticleSource ;
 	$a = str_replace ( " " , "+" , $a ) ;
-	return "http://127.0.0.1/wiki/$a" ;
+	$a = str_replace ( "$1" , $a , $wikiArticleSource ) ;
+	return $a ;
 	}
 ?>

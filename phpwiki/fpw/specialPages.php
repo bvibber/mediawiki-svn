@@ -423,7 +423,8 @@ function doSearch () {
 
 		# New search algorithm
 		$totalcnt = 0 ;
-		$s2 = ereg_replace ( "[^A-Za-z0-9 ]" , "" , $search ) ;
+		$s2 = str_replace ( "_" , " " , $search ) ;
+		$s2 = ereg_replace ( "[^A-Za-z0-9 ]" , "" , $s2 ) ;
 		$s2 = str_replace ( "  " , " " , $s2 ) ;
 		$s2 = explode ( " " , $s2 ) ;
 

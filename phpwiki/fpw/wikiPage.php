@@ -244,8 +244,9 @@ class WikiPage extends WikiTitle {
 		$connection = getDBconnection () ;
 		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$text = str_replace ( "\"" , "\\\"" , $text ) ;
-		$comment = str_replace ( "\"" , "\\\"" , $comment ) ;
+#		$comment = str_replace ( "\"" , "\\\"" , $comment ) ;
 		$userName = str_replace ( "\"" , "\\\"" , $userName ) ;
+		$comment = htmlentities ( $comment ) ;
 		$sql = "UPDATE cur SET cur_text=\"$text\",cur_comment=\"$comment\",cur_user=\"$userID\"," ;
 		$sql .= "cur_user_text=\"$userName\",cur_minor_edit=\"$minorEdit\",";
 		$sql .= "cur_linked_links=\"$ll\",cur_unlinked_links=\"$ull\",cur_params=\"$pa\" WHERE $cond" ;
@@ -339,7 +340,7 @@ class WikiPage extends WikiTitle {
 
 	# This function replaces wiki-style image links with the HTML code to display them
 	function parseImages ( $s ) {
-		$s = ereg_replace ( "([^[])http://([a-zA-Z0-9_/:.\-]*)\.(png|jpg|jpeg|tif|tiff|gif)" , "\\1<img src=\"http://\\2.\\3\">" , $s ) ;
+		$s = ereg_replace ( "([^[])http://([a-zA-Z0-9_/:.\-\%]*)\.(png|jpg|jpeg|tif|tiff|gif)" , "\\1<img src=\"http://\\2.\\3\">" , $s ) ;
 		return $s ;
 		}
 
@@ -373,8 +374,9 @@ class WikiPage extends WikiTitle {
 				}
 			}
 
-		$o = "A-Za-z0-9_~./=?\-" ;
-		$s = eregi_replace ( "([^~\"])http://([$o]+)([^$o])" , "\\1<a href=\"http://\\2\" $linkStyle>".$image."http://\\2</a>\\3" , $s ) ;
+		$o_no_dot = "A-Za-z0-9_~/=?\:\%\+\&\#\-" ;
+		$o = "\.$o_no_dot" ;
+		$s = eregi_replace ( "([^~\"])http://([$o]+[$o_no_dot])([^$o_no_dot])" , "\\1<a href=\"http://\\2\" $linkStyle>".$image."http://\\2</a>\\3" , $s ) ;
 		$s = str_replace ( "~http://" , "http://" , $s ) ;
 
 		return $s ;
