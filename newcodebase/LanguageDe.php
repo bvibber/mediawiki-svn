@@ -198,6 +198,7 @@
 "wikipediapage" => "Wikipedia-Text",
 "userpage" => "Benutzerseite",
 "imagepage" => "Bildseite",
+"viewtalkpage" => "Diskussion",
 "otherlanguages" => "Andere Sprachen",
 "redirectedfrom" => "(Weitergeleitet von $1)",
 "lastmodified"	=> "Diese Seite wurde zuletzt geändert um $1.",
