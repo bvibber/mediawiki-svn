@@ -134,6 +134,8 @@ performed by users with \"developer\" status.
 See $1.",
 "nbytes"		=> "$1 bytes",
 "go"			=> "Go",
+"sitetitle"		=> "Wikipedia",
+"sitesubtitle"	=> "The Free Encyclopedia",
 
 # Main script and global functions
 #

@@ -1,67 +1,46 @@
-h1.pagetitle { padding-bottom: 0; margin-bottom: 0; }
-p.subtitle { padding-top: 0; margin-top: 0; }
-.header { background-color: #7089AA; }
-.footnote { font-size: 8pt; color: #666666; }
-p.topmenu { margin-bottom: 4px; text-transform: uppercase;
- color: #FFFFFF; font-family: Verdana, sans-serif; font-size: 8pt;
+#sitetitle {
+ font-family: Times, serif; color: white;
+ font-weight: bold; font-size: 32pt;
+ padding-bottom: 0;
 }
-a.topmenu { color: #FFFFFF; text-decoration: none; font-size: 10pt; }
-.tagline { color: #000000; text-transform: uppercase;
- font-family: Verdana, sans-serif; font-size: 11px;
+td.top {
+ background-color: #6688AA;
+ margin-bottom: 4px; text-transform: uppercase;
+ color: white; font-family: Verdana, Arial, sans-serif; font-size: 8pt;
 }
-p, form, dl { font-family: Verdana, sans-serif; font-size: 10pt; }
-h1 { font-family: Arial, Helvetica, sans-serif;
- color: #858585; font-size: 18pt; font-weight: bold;
+td.top a {
+ font-family: Verdana, Arial, sans-serif;
+ color: white; text-decoration: none; font-size: 10pt;
 }
-span.spacer { font-family: sans-serif; font-size: 20px; }
-input { font-family: Verdana, sans-serif; font-size: 8pt; }
-p.menu { font-family: Verdana, sans-serif;
- font-size: 8pt; line-height: 13pt;
+#sitesub {
+ font-family: Verdana, Arial, sans-serif;
+ font-size: 8pt; font-weight: bold; color: white;
+ padding-top: 0;
 }
-span.menuhead { font-family: Verdana, sans-serif;
- font-size: 8pt; font-weight: bold; color: #999999;
-}
-a.menulink { font-weight: bold;
+#quickbar a {
+ font-family: Verdana, Arial, sans-serif;
+ font-size: 8pt; font-weight: bold;
  text-decoration: none; color: #446688;
 }
-a:hover { text-decoration: underline; }
-.bodytext { font-family: Verdana, sans-serif;
- font-size: 10pt; text-align: justify; margin: 0 1em;
+h1 { font-family: Arial, Helvetica, sans-serif;
+ color: #888888; font-family: Verdana, Arial, sans-serif;
+ font-size: 18pt; font-weight: bold;
 }
-a, a.external { color: #446688 }
-a.external { text-decoration: none; }
-a.interwiki { color: #3333BB; text-decoration: none; }
-a { text-decoration: none; }
-a.interwiki, a.external { color: #3333BB; text-decoration: none; }
-a.red { color: red; text-decoration: none; }
-a.syslink { color:white; text-decoration:none; }
-a.CBlink { color:#0000AA; text-decoration:none; font-size:12pt; }
-a.newlink { color: black; text-decoration: none; }
-.newlinkedge { display: inline; }
+h1.pagetitle { padding-bottom: 0; margin-bottom: 0; }
+p.subtitle { padding-top: 0; margin-top: 0; }
 
-body {
- margin: 0px;
- padding: 4px;
-}
-#topbar {
- background: #DDDDDD;
- margin-left: 156px; margin-right: 4px;
- border: 1px solid #000000;
- padding: 4px;
-}
-#quickbar {
- background: #DDDDDD;
- width: 140px;
- border: 1px solid #000000;
- padding: 4px;
-}
+a { color: #223366; }
+a.external { color: #336644; }
+
+body { margin: 0px; padding: 4px; }
+#specialform { display: inline; }
+#content { position: absolute; top: 0; margin: 0; padding: 0; }
+#topbar { padding: 4px; }
+#quickbar { width: 120px; top: 14ex; padding: 4px; visibility: visible; z-index: 99; }
 #article {
- margin-left: 156px; margin-right: 4px;
+ font-family: Verdana, Arial, sans-serif;
+ font-size: 10pt; color: black;
  padding: 4px;
 }
-#footer {
- background: #DDDDDD;
- margin-left: 156px; margin-right: 4px;
- border: 1px solid #000000;
- padding: 4px;
-}
+#footer { padding: 4px; }
+
