@@ -2,65 +2,86 @@
 
 // This script fills the tables 'linked' and 'unlinked' with recalculated
 // values from the article text in the 'cur' table. Since this operation
-// takes quite some time, so I have cut the work in smaller pieces so you don't get
+// takes quite some time, it divides the the work in smaller batches so you don't get
 // a http server time-out.
 
-// The size of each chunk is determined by $size, and you can
-// adapt it to your situation. After every chunk a link is presented that you can
+// The size of each batch is determined by $size, and you can
+// adapt it to your situation. After every batch a link is presented that you can
 // click to process the next $size records of table cur. In the URL you can see how
-// far you already are. Note that there is no stopping condition built in, so you have
-// to check yourself if all records have been processed by looking if $offset is larger
-// than the number of records in the table cur.
-
-// Also note that there is key defined for
-// the tables 'linked' and 'link' (because MySQL doesn't allow it for such large columns) so
-// if you process accidentally the same chunk from table cur twice, you will end up
-// with duplicates in your tables. This should be avoided because it might lead to
-// incorrect behavior of the system in the future.
+// far you already are. If all records are processed the script will not present a linke
+// and say "Ready!!"
 
     include_once ( "./wikiSettings.php" ) ;
     include_once ( "./basicFunctions.php" ) ;
     include_once ( "./databaseFunctions.php" ) ;
     include_once ( "./wikiTitle.php" ) ;
+    include_once ( "./wikiPage.php" ) ;
 
-    $size = 100;
-    if ( !isset ( $offset ) ) $offset = 0;
-    
+    $size = 1000;
+
     //establish user connection
     $connection = mysql_pconnect($wikiThisDBserver , $wikiThisDBuser , $wikiThisDBpassword )
         or die("Could not get connection to database server.") ;
     //open up database
     mysql_select_db ($wikiSQLServer , $connection)
         or die("Could not select database: $wikiSQLServer");
-  
-    #$sql = "select cur_title, cur_linked_links, cur_unlinked_links from cur limit $offset, $size ;" ;
-    $sql = "select cur_title, cur_text from cur limit $offset, $size ;" ;
-    $result = mysql_query ( $sql , $connection ) ;
-   
-    $linkTitle = new wikiTitle ;    # needed for creating secure titles
 
-    while ( $row = mysql_fetch_object ( $result ) ) {
-    	# Grab all links from the page
-	$links = array();
-	preg_replace( '/\[\[([^\|\]]+)(\||\]\])/e' , "\$links[ucfirst(\"\$1\")]++" , $row->cur_text ) ;
-    
-        foreach ( $links as $link => $throwaway ) {
-            $linkTitle->title = $link ;
-            $linkTitle->makeSecureTitle () ;
-            $secLinkTitle = $linkTitle->secureTitle ;
-            if ($secLinkTitle) { # links that don't have a corresponding secure name are not stored
-	    	if($linkTitle->doesTopicExist()) $un = "" ; else $un = "un" ;
-		$secLinkTitle = strtr ( $secLinkTitle , array ( "\\" => "\\\\" , "\"" => "\\\"" ) ) ;
-                $sql1 = "INSERT INTO ${un}linked ( ${un}linked_from, ${un}linked_to ) VALUES ( \"$row->cur_title\", \"$secLinkTitle\" ) " ;
-                mysql_query ( $sql1 , $connection ) ;
-		#echo "$sql1\n";
-            }
-        }
+    if ( !isset ( $offset ) ) $offset = 0;
+    if ( !isset ( $all ) ) {
+        $sql = "SELECT COUNT(*) AS allPages FROM cur " ;
+        $result = mysql_query ( $sql , $connection ) ;
+        $row = mysql_fetch_object ( $result ) ;
+        $all = $row->allPages;
     }
 
-    mysql_close ( $connection ) ;
+    if ( $offset <= $all ) {
 
-    $next = $offset + $size ;
-    echo "<html><a href=updLinks.php?offset=$next>Click here for next batch </a></html>" ;
+        $thisPage = new wikiPage ;
+
+        $sql1 = "SELECT cur_title FROM cur LIMIT $offset, $size ;" ;
+        $result = mysql_query ( $sql1 , $connection ) ;
+        while ( $row = mysql_fetch_object ( $result ) ) {
+            $thisPage->load ( $row->cur_title );
+            
+            $linkedLinks = array () ;
+            $unlinkedLinks = array () ;
+            
+            $thisPage->parseContents ( $thisPage->contents , true ) ; # Calling with savingMode flag set, so only internal Links are parsed
+    
+            # store linked links in linked table
+            $sql = "DELETE FROM linked WHERE linked_from = \"$thisPage->secureTitle\" ;" ;
+            $r = mysql_query ( $sql , $connection ) ;
+            $linkTitle = new wikiTitle ;
+            foreach ( array_keys ( $linkedLinks ) as $linked_link ) { 
+                $linkTitle->title = $linked_link ;
+                $linkTitle->makeSecureTitle () ;
+                $secureLinkTitle = $linkTitle->secureTitle ;
+                if ( $secureLinkTitle ) {
+                    $sql = "INSERT INTO linked (linked_from, linked_to) VALUES ( \"$thisPage->secureTitle\" , \"$secureLinkTitle\" ) ;" ;
+                    $r = mysql_query ( $sql , $connection ) ;
+                }
+            }
+    
+            # store unlinked links in unlinked table
+            $sql = "DELETE FROM unlinked WHERE unlinked_from = \"$thisPage->secureTitle\" ;" ;
+            $r = mysql_query ( $sql , $connection ) ;
+            $linkTitle = new wikiTitle ;        
+            foreach ( array_keys ( $unlinkedLinks ) as $unlinked_link ) {
+                $linkTitle->title = $unlinked_link ;
+                $linkTitle->makeSecureTitle () ;
+                $secureLinkTitle = $linkTitle->secureTitle ;
+                if ( secureLinkTitle ) {
+                    $sql = "INSERT INTO unlinked (unlinked_from, unlinked_to) VALUES ( \"$thisPage->secureTitle\" , \"$secureLinkTitle\" ) ;" ;
+                    $r = mysql_query ( $sql , $connection ) ;
+                }
+            }
+        }
+    
+        mysql_close ( $connection ) ;
+    
+        $next = $offset + $size ;
+        echo "<html><UL><LI>Number of processed records: $next <LI> Total number of records: $all <LI> <a href=rebuildLinks.php?offset=$next&all=$all>Click here to process the next $size records. </a></UL></html>" ;
+    } else
+        echo "<html><h2>Ready!!</h2></html>" ;
     
 ?>
