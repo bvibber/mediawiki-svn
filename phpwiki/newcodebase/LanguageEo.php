@@ -425,7 +425,8 @@ Bonvolu saluti denove post vi ricevos ĝin.",
 # Edit pages
 #
 "summary"		=> "Resumo",
-"minoredit"		=> "Ĉi tiu ŝanĝo estas redakteto.",
+"minoredit"		=> "Ĉi tiu ŝanĝo estas redakteto",
+"watchthis"		=> "Priatentu la paĝon",
 "savearticle"	=> "Konservu ŝanĝojn",
 "preview"		=> "Antaŭrigardu",
 "showpreview"	=> "Montru antaŭrigardon", #FIXME eh?
@@ -545,6 +546,7 @@ Via interna identonombro estas $2.",
 "resultsperpage" => "Montru trovitojn po",
 "contextlines"	=> "Montru liniojn el paĝoj po",
 "contextchars"	=> "Montru literojn el linioj ĝis po",
+"stubthreshold" => "Indiku paĝojn malpli grandajn ol",
 "recentchangescount" => "Montru kiom da titoloj en Lastaj Ŝanĝoj",
 "savedprefs"	=> "Viaj preferoj estas registritaj.",
 "timezonetext"	=> "Indiku, per kiom da horoj via
