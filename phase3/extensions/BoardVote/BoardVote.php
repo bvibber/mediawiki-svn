@@ -2,6 +2,9 @@
 
 # Wikimedia Foundation Board of Trustees Election
 
+# Not a valid entry point, skip unless MEDIAWIKI is defined
+if (defined('MEDIAWIKI')) {
+
 # Register extension
 $wgExtensionFunctions[] = "wfBoardvoteSetup";
 
@@ -18,8 +21,9 @@ if ( !isset( $wgGPGPubKey ) ) $wgGPGPubKey = "C:\\Program Files\\gpg\\pub.txt";
 
 function wfBoardvoteSetup()
 {
-require_once( 'SpecialPage.php' );
 # Look out, freaky indenting
+global $IP;
+require_once( "$IP/includes/SpecialPage.php" );
 
 class BoardVotePage extends SpecialPage {
 	var $mPosted, $mContributing, $mVolunteer, $mDBname, $mUserDays, $mUserEdits;
@@ -524,5 +528,6 @@ if ( $wgUser->getID() != 0 ) {
 */
 
 } # End of extension function
+} # End of invocation guard
 
 ?>
