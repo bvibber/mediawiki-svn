@@ -25,7 +25,8 @@
  */
 
 /** */
-$optionsWithArgs = array('regex');
+$options = array( 'quick', 'color' );
+$optionsWithArgs = array( 'regex' );
 
 require_once( 'commandLine.inc' );
 require_once( 'languages/LanguageUtf8.php' );
@@ -52,33 +53,31 @@ class ParserTest {
 	 */
 	function ParserTest() {
 		global $options;
+		
+		# Only colorize output if stdout is a terminal.
 		$this->lightcolor = false;
-		if( isset( $_SERVER['argv'] ) && in_array( '--color', $_SERVER['argv'] ) ) {
-			$this->color = true;
-		} elseif( isset( $_SERVER['argv'] ) && in_array( '--color=yes', $_SERVER['argv'] ) ) {
-			$this->color = true;
-		} elseif( isset( $_SERVER['argv'] ) && in_array( '--color=light', $_SERVER['argv'] ) ) {
-			$this->color = true;
-			$this->lightcolor = true;
-		} elseif( isset( $_SERVER['argv'] ) && in_array( '--color=no', $_SERVER['argv'] ) ) {
-			$this->color = false;
-		} elseif( wfIsWindows() ) {
-			$this->color = false;
-		} else {
-			# Only colorize output if stdout is a terminal.
-			$this->color = posix_isatty(1);
+		$this->color = !wfIsWindows() && posix_isatty(1);
+		
+		if( isset( $options['color'] ) ) {
+			switch( $options['color'] ) {
+			case 'no':
+				$this->color = false;
+				break;
+			case 'light':
+				$this->lightcolor = true;
+				# Fall through
+			case 'yes':
+			default:
+				$this->color = true;
+				break;
+			}
 		}
 		
-		if( isset( $_SERVER['argv'] ) && in_array( '--quick', $_SERVER['argv'] ) ) {
-			$this->showDiffs = false;
-		} else {
-			$this->showDiffs = true;
-		}
+		$this->showDiffs = !isset( $options['quick'] );
 
 		if (isset($options['regex'])) {
 			$this->regex = $options['regex'];
-		}
-		else {
+		} else {
 			# Matches anything
 			$this->regex = '';
 		}
@@ -240,20 +239,14 @@ class ParserTest {
 			$output =& $parser->parse( $input, $title, $options );
 			$out = $output->getText();
 
-			$op = new OutputPage();
-			$op->replaceLinkHolders($out);
-
 			if (preg_match('/\\bill\\b/i', $opts)) {
-				$out .= implode( ' ', $output->getLanguageLinks() );
+				$out = $this->tidy( implode( ' ', $output->getLanguageLinks() ) );
 			}	
-			if (preg_match('/\\bcat\\b/i', $opts)) {
-				$out .= implode( ' ', $output->getCategoryLinks() );
+			else if (preg_match('/\\bcat\\b/i', $opts)) {
+				$out = $this->tidy ( implode( ' ', $output->getCategoryLinks() ) );
 			}
 
-			if ($GLOBALS['wgUseTidy']) {
-				$out = Parser::tidy($out);
-				$result = Parser::tidy($result);
-			}
+			$result = $this->tidy($result);
 		}
 		
 		$this->teardownGlobals();
@@ -293,6 +286,7 @@ class ParserTest {
 			'wgLoadBalancer' => LoadBalancer::newFromParams( $GLOBALS['wgDBservers'] ),
 			'wgLang' => new LanguageUtf8(),
 			'wgNamespacesWithSubpages' => array( 0 => preg_match('/\\bsubpage\\b/i', $opts)),
+			'wgMaxTocLevel' => 999,
 			);
 		$this->savedGlobals = array();
 		foreach( $settings as $var => $val ) {
@@ -378,7 +372,11 @@ class ParserTest {
 				       'iw_local'  => 1 ),
 				array( 'iw_prefix' => 'fr',
 				       'iw_url'    => 'http://fr.wikipedia.org/wiki/$1',
-				       'iw_local'  => 1 ) ) );
+				       'iw_local'  => 1 ),
+				array( 'iw_prefix' => 'ru',
+				       'iw_url'    => 'http://ru.wikipedia.org/wiki/$1',
+				       'iw_local'  => 1 ),
+				) );
 
 
 			$setupDB = true;
@@ -445,7 +443,7 @@ class ParserTest {
 		$outfile = "$prefix-actual";
 		$this->dumpToFile( $output, $outfile );
 		
-		$diff = `diff -u $infile $outfile`;
+		$diff = `diff -au $infile $outfile`;
 		unlink( $infile );
 		unlink( $outfile );
 		
@@ -510,9 +508,9 @@ class ParserTest {
 
 	/**
 	 * Insert a temporary test article
-	 * @param $name string the title, including any prefix
-	 * @param $text string the article text
-	 * @param $line int the input line number, for reporting errors
+	 * @param string $name the title, including any prefix
+	 * @param string $text the article text
+	 * @param int $line the input line number, for reporting errors
 	 * @static
 	 * @access private
 	 */
@@ -532,9 +530,29 @@ class ParserTest {
 		$art->insertNewArticle($text, '', false, false );
 		$this->teardownGlobals();
 	}
+
+	/*
+	 * Run the "tidy" command on text if the $wgUseTidy
+	 * global is true
+	 *
+	 * @param string $text the text to tidy
+	 * @return string
+	 * @static
+	 * @access private
+	 */
+	function tidy( $text ) {
+		global $wgUseTidy;
+		if ($wgUseTidy) {
+			$text = Parser::tidy($text);
+		}
+		return $text;
+	}
 }
 
-$wgTitle = Title::newFromText( 'Parser test script' );
+# There is a convention that the parser should never
+# refer to $wgTitle directly, but instead use the title
+# passed to it.
+$wgTitle = Title::newFromText( 'Parser test script do not use' );
 $tester =& new ParserTest();
 
 # Note: the command line setup changes the current working directory

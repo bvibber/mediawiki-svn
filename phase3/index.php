@@ -62,16 +62,9 @@ if ( !is_null( $wgTitle ) && !$wgTitle->userCanRead() ) {
 wfProfileIn( "main-action" );
 $search = $wgRequest->getText( 'search' );
 if( !is_null( $search ) && $search !== '' ) {
-	require_once( 'includes/SearchEngine.php' );
+	require_once( 'includes/SpecialSearch.php' );
 	$wgTitle = Title::makeTitle( NS_SPECIAL, "Search" );
-	$searchEngine = new SearchEngine( $search );
-	if( $wgRequest->getVal( 'fulltext' ) ||
-		!is_null( $wgRequest->getVal( 'offset' ) ) ||
-		!is_null ($wgRequest->getVal( 'searchx' ) ) ) {
-		$searchEngine->showResults();
-	} else {
-		$searchEngine->goResult();
-	}
+	wfSpecialSearch();
 } else if( !$wgTitle or $wgTitle->getDBkey() == "" ) {
 	$wgTitle = Title::newFromText( wfMsgForContent( "badtitle" ) );
 	$wgOut->errorpage( "badtitle", "badtitletext" );
@@ -153,10 +146,10 @@ if( !is_null( $search ) && $search !== '' ) {
 				wfCreativeCommonsRdf( $wgArticle );
 			}
 			break;
-  	        case "credits":
-	                require_once( "includes/Credits.php" );
+		case "credits":
+			require_once( "includes/Credits.php" );
 			showCreditsPage( $wgArticle );
-	                break;
+			break;
 		case "edit":
 		case "submit":
 			if( !$wgCommandLineMode && !$wgRequest->checkSessionCookie() ) {

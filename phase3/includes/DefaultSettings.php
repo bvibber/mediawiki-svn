@@ -119,6 +119,30 @@ $wgTmpDirectory     = "{$wgUploadDirectory}/tmp";
 $wgUploadBaseUrl    = "";
 /**#@-*/
 
+# If you operate multiple wikis, you can define a shared upload
+# path here. Uploads to this wiki will NOT be put there - they
+# will be put into $wgUploadDirectory.
+#
+# If $wgUseSharedUploads is set, the wiki will look in the
+# shared repository if no file of the given name is found in
+# the local repository (for [[Image:..]], [[Media:..]] links).
+# Thumbnails will also be looked for and generated in this
+# directory.
+#
+$wgUseSharedUploads = false;
+# Leave this blank if it is the same server. NO FINAL SLASH -
+# it is concatenated with $wgSharedUploadPath.
+# Example: "http://commons.wikimedia.org"
+$wgSharedUploadBaseUrl = "";
+# Path on the web server where shared uploads can be found
+$wgSharedUploadPath = "/shared/images";
+# Path on the file system where shared uploads can be found
+$wgSharedUploadDirectory = "/var/www/wiki3/images";
+# Set this to false especially if you have a set of files that need to be
+# accessible by all wikis, and you do not want to use the hash (path/a/aa/)
+# directory layout.
+$wgHashedSharedUploadDirectory = true;
+
 
 # Email settings
 #
@@ -313,6 +337,13 @@ $wgTranslateNumerals = true; # For Hindi and Arabic use local numerals instead
 $wgUseDatabaseMessages = true;
 $wgMsgCacheExpiry	= 86400;
 $wgPartialMessageCache = false;
+
+# Whether to enable language variant conversion. Currently only zh 
+# supports this function, to convert between Traditional and Simplified
+# Chinese. This flag is meant to isolate the (untested) conversion 
+# code, so that if it breaks, only zh will be affected
+$wgDisableLangConversion = true;
+
 # Miscellaneous configuration settings
 #
 
@@ -490,7 +521,6 @@ $wgDebugSquid = false; # Lots of debugging output from SquidUpdate.php
 
 $wgDisableCounters = false;
 $wgDisableTextSearch = false;
-$wgDisableFuzzySearch = false;
 $wgDisableSearchUpdate = false; # If you've disabled search semi-permanently, this also disables updates to the table. If you ever re-enable, be sure to rebuild the search table.
 $wgDisableUploads = true; # Uploads have to be specially set up to be secure
 $wgRemoteUploads = false; # Set to true to enable the upload _link_ while local uploads are disabled. Assumes that the special page link will be bounced to another server where uploads do work.
@@ -761,7 +791,20 @@ $wgNavigationLinks = array (
 $wgCategoryMagicGallery = true;
 
 # Browser Blacklist for unicode non compliant browsers
-$wgBrowserBlackList = array();
+# Contains a list of regexps : "/regexp/"  matching problematic browsers
+$wgBrowserBlackList = array(
+	"/Mozilla\/4\.78 \[en\] \(X11; U; Linux/"
+	// FIXME: Add some accurate, true things here
+	);
+
+# Fake out the timezone that the server thinks it's in. This will be used
+# for date display and not for what's stored in the DB.
+# Leave to null to retain your server's OS-based timezone value
+# This is the same as the timezone
+# $wgLocaltimezone = 'GMT';
+# $wgLocaltimezone = 'PST8PDT';
+# $wgLocaltimezone = 'Europe/Sweden';
+# $wgLocaltimezone = 'CET';
 
 } else {
 	die();

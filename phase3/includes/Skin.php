@@ -99,12 +99,10 @@ class Skin {
 	var $rc_cache ; # Cache for Enhanced Recent Changes
 	var $rcCacheIndex ; # Recent Changes Cache Counter for visibility toggle
 	var $rcMoveIndex;
-	var $postParseLinkColour = true;
+	var $postParseLinkColour = false;
 	/**#@-*/
 
 	function Skin() {
-		global $wgUseOldExistenceCheck;
-		$postParseLinkColour = !$wgUseOldExistenceCheck;
 		$this->linktrail = wfMsg('linktrail');
 	}
 
@@ -299,11 +297,11 @@ class Skin {
 		  (!$wgTitle->isProtected() || $wgUser->isSysop()) ) {
 			$t = wfMsg( 'editthispage' );
 			$oid = $red = '';
-			if ( !empty($redirect) ) {
+			if ( !empty($redirect) && $redirect == 'no' ) {
 				$red = "&redirect={$redirect}";
 			}
 			if ( !empty($oldid) && ! isset( $diff ) ) {
-				$oid = "&oldid={$oldid}";
+				$oid = "&oldid=" . IntVal( $oldid );
 			}
 			$s = $wgTitle->getFullURL( "action=edit{$oid}{$red}" );
 			$s = 'document.location = "' .$s .'";';
@@ -586,6 +584,7 @@ class Skin {
 				$s.= ' | <strong>'. wfMsg( 'newmessages', $tl ) . '</strong>';
 				# disable caching
 				$wgOut->setSquidMaxage(0);
+				$wgOut->enableClientCache(false);
 			}
 		}
 
@@ -635,7 +634,7 @@ class Skin {
 		global $wgOut, $wgTitle, $wgUser;
 
 		$s = '<h1 class="pagetitle">' . htmlspecialchars( $wgOut->getPageTitle() ) . '</h1>';
-		if($wgUser->getOption( 'editsectiononrightclick' ) && $wgTitle->userCanEdit()) { $s=$this->editSectionScript(0,$s);}
+		if($wgUser->getOption( 'editsectiononrightclick' ) && $wgTitle->userCanEdit()) { $s=$this->editSectionScript($wgTitle, 0,$s);}
 		return $s;
 	}
 
@@ -1640,7 +1639,6 @@ class Skin {
 
 	function makeImage( $url, $alt = '' ) {
 		global $wgOut;
-
 		if ( '' == $alt ) {
 			$alt = $this->fnamePart( $url );
 		}
@@ -1661,102 +1659,98 @@ class Skin {
 		$align = '';
 		$prefix = $postfix = '';
 
-		if ( $wgUseImageResize ) {
-			# Check if the alt text is of the form "options|alt text"
-			# Options are:
-			#  * thumbnail       	make a thumbnail with enlarge-icon and caption, alignment depends on lang
-			#  * left		no resizing, just left align. label is used for alt= only
-			#  * right		same, but right aligned
-			#  * none		same, but not aligned
-			#  * ___px		scale to ___ pixels width, no aligning. e.g. use in taxobox
-			#  * center		center the image
-			#  * framed		Keep original image size, no magnify-button.
+		# Check if the alt text is of the form "options|alt text"
+		# Options are:
+		#  * thumbnail       	make a thumbnail with enlarge-icon and caption, alignment depends on lang
+		#  * left		no resizing, just left align. label is used for alt= only
+		#  * right		same, but right aligned
+		#  * none		same, but not aligned
+		#  * ___px		scale to ___ pixels width, no aligning. e.g. use in taxobox
+		#  * center		center the image
+		#  * framed		Keep original image size, no magnify-button.
 
-			$part = explode( '|', $alt);
+		$part = explode( '|', $alt);
 
-			$mwThumb  =& MagicWord::get( MAG_IMG_THUMBNAIL );
-			$mwLeft   =& MagicWord::get( MAG_IMG_LEFT );
-			$mwRight  =& MagicWord::get( MAG_IMG_RIGHT );
-			$mwNone   =& MagicWord::get( MAG_IMG_NONE );
-			$mwWidth  =& MagicWord::get( MAG_IMG_WIDTH );
-			$mwCenter =& MagicWord::get( MAG_IMG_CENTER );
-			$mwFramed =& MagicWord::get( MAG_IMG_FRAMED );
-			$alt = $part[count($part)-1];
+		$mwThumb  =& MagicWord::get( MAG_IMG_THUMBNAIL );
+		$mwLeft   =& MagicWord::get( MAG_IMG_LEFT );
+		$mwRight  =& MagicWord::get( MAG_IMG_RIGHT );
+		$mwNone   =& MagicWord::get( MAG_IMG_NONE );
+		$mwWidth  =& MagicWord::get( MAG_IMG_WIDTH );
+		$mwCenter =& MagicWord::get( MAG_IMG_CENTER );
+		$mwFramed =& MagicWord::get( MAG_IMG_FRAMED );
+		$alt = $part[count($part)-1];
 
-			$height = $framed = $thumb = false;
-			$manual_thumb = "" ;
+		$height = $framed = $thumb = false;
+		$manual_thumb = "" ;
 
-			foreach( $part as $key => $val ) {
-				$val_parts = explode ( "=" , $val , 2 ) ;
-				$left_part = array_shift ( $val_parts ) ;
-				if ( ! is_null( $mwThumb->matchVariableStartToEnd($val) ) ) {
-					$thumb=true;
-				} elseif ( count ( $val_parts ) == 1 && ! is_null( $mwThumb->matchVariableStartToEnd($left_part) ) ) {
-					# use manually specified thumbnail
-					$thumb=true;
-					$manual_thumb = array_shift ( $val_parts ) ;
-				} elseif ( ! is_null( $mwRight->matchVariableStartToEnd($val) ) ) {
-					# remember to set an alignment, don't render immediately
-					$align = 'right';
-				} elseif ( ! is_null( $mwLeft->matchVariableStartToEnd($val) ) ) {
-					# remember to set an alignment, don't render immediately
-					$align = 'left';
-				} elseif ( ! is_null( $mwCenter->matchVariableStartToEnd($val) ) ) {
-					# remember to set an alignment, don't render immediately
-					$align = 'center';
-				} elseif ( ! is_null( $mwNone->matchVariableStartToEnd($val) ) ) {
-					# remember to set an alignment, don't render immediately
-					$align = 'none';
-				} elseif ( ! is_null( $match = $mwWidth->matchVariableStartToEnd($val) ) ) {
-					# $match is the image width in pixels
-					if ( preg_match( '/^([0-9]*)x([0-9]*)$/', $match, $m ) ) {
-						$width = intval( $m[1] );
-						$height = intval( $m[2] );
-					} else {
-						$width = intval($match);
-					}
-				} elseif ( ! is_null( $mwFramed->matchVariableStartToEnd($val) ) ) {
-					$framed=true;
+		foreach( $part as $key => $val ) {
+			$val_parts = explode ( "=" , $val , 2 ) ;
+			$left_part = array_shift ( $val_parts ) ;
+			if ( $wgUseImageResize && ! is_null( $mwThumb->matchVariableStartToEnd($val) ) ) {
+				$thumb=true;
+			} elseif ( $wgUseImageResize && count ( $val_parts ) == 1 && ! is_null( $mwThumb->matchVariableStartToEnd($left_part) ) ) {
+				# use manually specified thumbnail
+				$thumb=true;
+				$manual_thumb = array_shift ( $val_parts ) ;
+			} elseif ( ! is_null( $mwRight->matchVariableStartToEnd($val) ) ) {
+				# remember to set an alignment, don't render immediately
+				$align = 'right';
+			} elseif ( ! is_null( $mwLeft->matchVariableStartToEnd($val) ) ) {
+				# remember to set an alignment, don't render immediately
+				$align = 'left';
+			} elseif ( ! is_null( $mwCenter->matchVariableStartToEnd($val) ) ) {
+				# remember to set an alignment, don't render immediately
+				$align = 'center';
+			} elseif ( ! is_null( $mwNone->matchVariableStartToEnd($val) ) ) {
+				# remember to set an alignment, don't render immediately
+				$align = 'none';
+			} elseif ( $wgUseImageResize && ! is_null( $match = $mwWidth->matchVariableStartToEnd($val) ) ) {
+				# $match is the image width in pixels
+				if ( preg_match( '/^([0-9]*)x([0-9]*)$/', $match, $m ) ) {
+					$width = intval( $m[1] );
+					$height = intval( $m[2] );
+				} else {
+					$width = intval($match);
 				}
+			} elseif ( ! is_null( $mwFramed->matchVariableStartToEnd($val) ) ) {
+				$framed=true;
 			}
-			if ( 'center' == $align )
-			{
-				$prefix  = '<span style="text-align: center">';
-				$postfix = '</span>';
-				$align   = 'none';
+		}
+		if ( 'center' == $align )
+		{
+			$prefix  = '<div class="center">';
+			$postfix = '</div>';
+			$align   = 'none';
+		}
+
+		if ( $thumb || $framed ) {
+
+			# Create a thumbnail. Alignment depends on language
+			# writing direction, # right aligned for left-to-right-
+			# languages ("Western languages"), left-aligned
+			# for right-to-left-languages ("Semitic languages")
+			#
+			# If  thumbnail width has not been provided, it is set
+			# here to 180 pixels
+			if ( $align == '' ) {
+				$align = $wgContLang->isRTL() ? 'left' : 'right';
 			}
-
-			if ( $thumb || $framed ) {
-
-				# Create a thumbnail. Alignment depends on language
-				# writing direction, # right aligned for left-to-right-
-				# languages ("Western languages"), left-aligned
-				# for right-to-left-languages ("Semitic languages")
-				#
-				# If  thumbnail width has not been provided, it is set
-				# here to 180 pixels
-				if ( $align == '' ) {
-					$align = $wgContLang->isRTL() ? 'left' : 'right';
-				}
-				if ( ! isset($width) ) {
-					$width = 180;
-				}
-				return $prefix.$this->makeThumbLinkObj( $img, $alt, $align, $width, $height, $framed, $manual_thumb ).$postfix;
-
-			} elseif ( isset($width) ) {
-
-				# Create a resized image, without the additional thumbnail
-				# features
-
-				if (    ( ! $height === false )
-				     && ( $img->getHeight() * $width / $img->getWidth() > $height ) ) {
-				     	print "height=$height<br>\nimg->getHeight() = ".$img->getHeight()."<br>\n";
-				     	print 'rescaling by factor '. $height / $img->getHeight() . "<br>\n";
-					$width = $img->getWidth() * $height / $img->getHeight();
-				}
-				if ( '' == $manual_thumb ) $url = $img->createThumb( $width );
+			if ( ! isset($width) ) {
+				$width = 180;
 			}
-		} # endif $wgUseImageResize
+			return $prefix.$this->makeThumbLinkObj( $img, $alt, $align, $width, $height, $framed, $manual_thumb ).$postfix;
+
+		} elseif ( isset($width) ) {
+
+			# Create a resized image, without the additional thumbnail
+			# features
+
+			if (    ( ! $height === false )
+			     && ( $img->getHeight() * $width / $img->getWidth() > $height ) ) {
+				$width = $img->getWidth() * $height / $img->getHeight();
+			}
+			if ( '' == $manual_thumb ) $url = $img->createThumb( $width );
+		}
 
 		if ( empty( $alt ) ) {
 			$alt = preg_replace( '/\.(.+?)^/', '', $img->getName() );
@@ -1766,13 +1760,14 @@ class Skin {
 		$alt = str_replace( array('<', '>', '"'), array('&lt;', '&gt;', '&quot;'), $alt );
 
 		$u = $nt->escapeLocalURL();
+		$uf = $nt->escapeFullURL();		
 		if ( $url == '' )
 		{
 			$s = wfMsg( 'missingimage', $img->getName() );
 			$s .= "<br>{$alt}<br>{$url}<br>\n";
 		} else {
 			$s = '<a href="'.$u.'" class="image" title="'.$alt.'">' .
-				 '<img src="'.$url.'" alt="'.$alt.'" /></a>';
+				 '<img src="'.$url.'" alt="'.$alt.'" longdesc="'.$uf.'" /></a>';
 		}
 		if ( '' != $align ) {
 			$s = "<div class=\"float{$align}\"><span>{$s}</span></div>";
@@ -1843,6 +1838,7 @@ class Skin {
 		}
 
 		$u = $img->getEscapeLocalURL();
+		$uf = $img->getEscapeFullURL();
 
 		$more = htmlspecialchars( wfMsg( 'thumbnail-more' ) );
 		$magnifyalign = $wgContLang->isRTL() ? 'left' : 'right';
@@ -1855,7 +1851,8 @@ class Skin {
 		} else {
 			$s .= '<a href="'.$u.'" class="internal" title="'.$alt.'">'.
 				'<img src="'.$thumbUrl.'" alt="'.$alt.'" ' .
-				'width="'.$boxwidth.'" height="'.$boxheight.'" /></a>';
+				'width="'.$boxwidth.'" height="'.$boxheight.'" ' .
+				'longdesc="'.$uf.'" /></a>';
 			if ( $framed ) {
 				$zoomicon="";
 			} else {
@@ -1870,24 +1867,24 @@ class Skin {
 	}
 
 	function makeMediaLink( $name, $url, $alt = '' ) {
-		$nt = Title::makeTitleSafe( Namespace::getMedia(), $name );
+		$nt = Title::makeTitleSafe( NS_IMAGE, $name );
 		return $this->makeMediaLinkObj( $nt, $alt );
 	}
 
-	function makeMediaLinkObj( $nt, $alt = '' ) {
+	function makeMediaLinkObj( $nt, $alt = '' ) {		
 		if ( ! isset( $nt ) )
 		{
 			### HOTFIX. Instead of breaking, return empty string.
 			$s = $alt;
 		} else {
-			$name = $nt->getDBKey();
-			$url = Image::wfImageUrl( $name );
+			$name = $nt->getDBKey();	
+			$img   = Image::newFromTitle( $nt );
+			$url = $img->getURL();
 			if ( empty( $alt ) ) {
 				$alt = preg_replace( '/\.(.+?)^/', '', $name );
 			}
-
 			$u = htmlspecialchars( $url );
-			$s = "<a href=\"{$u}\" class='internal' title=\"{$alt}\">{$alt}</a>";
+			$s = "<a href=\"{$u}\" class='internal' title=\"{$alt}\">{$alt}</a>";			
 		}
 		return $s;
 	}
@@ -2552,7 +2549,7 @@ class Skin {
 		$hideline = ' <script type="text/javascript">showTocToggle("' . addslashes( wfMsg('showtoc') ) . '","' . addslashes( wfMsg('hidetoc') ) . '")</script>';
 		return
 		'<table border="0" id="toc"><tr id="toctitle"><td align="center">'."\n".
-		'<b>'.wfMsg('toc').'</b>' .
+		'<b>'.wfMsgForContent('toc').'</b>' .
 		$hideline .
 		'</td></tr><tr id="tocinside"><td>'."\n".
 		$toc."</td></tr></table>\n";
@@ -2568,18 +2565,18 @@ class Skin {
 		return '<span oncontextmenu=\'document.location="'.$url.'";return false;\'>'.$head.'</span>';
 	}
 
-	function editSectionScript( $section, $head ) {
-		global $wgTitle, $wgRequest;
+	function editSectionScript( $nt, $section, $head ) {
+		global $wgRequest;
 		if( $wgRequest->getInt( 'oldid' ) && ( $wgRequest->getVal( 'diff' ) != '0' ) ) {
 			return $head;
 		}
-		$url = $wgTitle->escapeLocalURL( 'action=edit&section='.$section );
+		$url = $nt->escapeLocalURL( 'action=edit&section='.$section );
 		return '<span oncontextmenu=\'document.location="'.$url.'";return false;\'>'.$head.'</span>';
 	}
 
 	function editSectionLinkForOther( $title, $section ) {
 		global $wgRequest;
-		global $wgUser, $wgContLang;
+		global $wgContLang;
 
 		$title = Title::newFromText($title);
 		$editurl = '&section='.$section;
@@ -2596,9 +2593,9 @@ class Skin {
 
 	}
 
-	function editSectionLink( $section ) {
+	function editSectionLink( $nt, $section ) {
 		global $wgRequest;
-		global $wgTitle, $wgUser, $wgContLang;
+		global $wgContLang;
 
 		if( $wgRequest->getInt( 'oldid' ) && ( $wgRequest->getVal( 'diff' ) != '0' ) ) {
 			# Section edit links would be out of sync on an old page.
@@ -2608,7 +2605,7 @@ class Skin {
 		}
 
 		$editurl = '&section='.$section;
-		$url = $this->makeKnownLink($wgTitle->getPrefixedText(),wfMsg('editsection'),'action=edit'.$editurl);
+		$url = $this->makeKnownLink($nt->getPrefixedText(),wfMsg('editsection'),'action=edit'.$editurl);
 
 		if( $wgContLang->isRTL() ) {
 			$farside = 'left';

@@ -74,7 +74,7 @@ class MessageCache
 				wfDebug( "MessageCache::load(): loading all messages\n" );
 				$this->lock();
 				# Other threads don't need to load the messages if another thread is doing it.
-				$success = $this->mMemc->set( $this->mMemcKey, "loading", MSG_LOAD_TIMEOUT );
+				$success = $this->mMemc->add( $this->mMemcKey, "loading", MSG_LOAD_TIMEOUT );
 				if ( $success ) {
 					wfProfileIn( $fname.'-load' );
 					$this->loadFromDB();
@@ -206,8 +206,9 @@ class MessageCache
 	}
 
 	function get( $key, $useDB, $forcontent=true ) {
+		global $wgContLanguageCode;
 		if($forcontent) {
-			global $wgContLang, $wgContLanguageCode;
+			global $wgContLang;
 			$lang = $wgContLang;
 			$langcode = $wgContLanguageCode;
 		}
@@ -223,8 +224,9 @@ class MessageCache
 
 		$message = false;
 		if ( !$this->mDisable && $useDB ) {
-			$title = $lang->ucfirst( $key )."/$langcode";
-
+			$title = $lang->ucfirst( $key );
+			if($langcode!=$wgContLanguageCode)
+				$title.="/$langcode";
 
 			# Try the cache
 			if ( $this->mUseCache && $this->mCache && array_key_exists( $title, $this->mCache ) ) {

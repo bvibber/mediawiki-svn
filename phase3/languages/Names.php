@@ -5,7 +5,8 @@
 	'af' => 'Afrikaans',	# Afrikaans
 	'ak' => 'Akana',		# Akan
 	'an' => 'Aragon&eacute;s',      # Aragonese
-	'als' => 'Els&auml;ssisch',	# Alsatian
+	'ang' => 'Anglo Saxon',	# Old English
+	'als' => 'Alemannisch',	# Alemannic
 	'am' => '&#4768;&#4635;&#4653;&#4763;',	# Amharic
 	'ar' => '&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;',	# Arabic
 	'arc' => '&#1813;&#1829;&#1810;&#1834;&#1848;&#1821;&#1819;',	# Aramaic
@@ -59,6 +60,7 @@
 	'gd' => 'G&agrave;idhlig',	# Scots Gaelic
 	'gl' => 'Galego',		# Gallegan
 	'gn' => 'Ava&ntilde;e\'&#7869;',	# Guarani
+	'got' => '&#x10332;&#x1033F;&#x10344;&#x10339;&#x10343;&#x1033A;', # Gothic
 	'gu' => '&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752;',	# Gujarati
 	'gv' => 'Gaelg',		# Manx
 	'ha' => '&#1607;&#1614;&#1608;&#1615;&#1587;&#1614;',	# Hausa
@@ -201,9 +203,9 @@
 	'zh' => '&#20013;&#25991;',	# (Zh&#333;ng Wén) - Chinese
 	'zh-cfr' => '&#38313;&#21335;&#35486;', # Min-nan alias (site is at minnan)
 	'zh-cn' => '&#20013;&#25991;(&#31616;&#20307;)',	# Simplified
-	'zh-tw' => '&#20013;&#25991;(&#32321;&#20307;)',	# Traditional
+	'zh-tw' => '&#20013;&#25991;(&#32321;&#39636;)',	# Traditional
 	'zh-sg' => '&#20013;&#25991;(&#31616;&#20307;)', # Simplified (Singapore)
-	'zh-hk' => '&#20013;&#25991;(&#32321;&#20307;)',	# Traditional (Hong Kong)
+	'zh-hk' => '&#20013;&#25991;(&#32321;&#39636;)',	# Traditional (Hong Kong)
 	'zu' => 'isiZulu',		# Zulu
 );
 ?>

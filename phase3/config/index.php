@@ -397,6 +397,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			$ok = false;
 			switch( $err ) {
 			case 1045:
+			case 2000:
 				if( $conf->Root ) {
 					$errs["RootPW"] = "Check password";
 				} else {
@@ -481,36 +482,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			print "<pre>\n";
 			chdir( ".." );
 			flush();
-
-
-			# Add missing tables
-			foreach ( $wgNewTables as $tableRecord ) {
-				add_table( $tableRecord[0], $tableRecord[1] );
-				flush();
-			}
-
-			# Add missing fields
-			foreach ( $wgNewFields as $fieldRecord ) {
-				add_table( $fieldRecord[0], $fieldRecord[1], $fieldRecord[2] );
-				flush();
-			}
-
-			# Do schema updates which require special handling
-			do_interwiki_update(); flush();
-			do_index_update(); flush();
-			do_linkscc_1_3_update(); flush();
-			convertLinks(); flush();
-			do_image_name_unique_update(); flush();
-
-			if ( isTemplateInitialised() ) {
-				print "Template namespace already initialised\n";
-			} else {
-				moveCustomMessages( 1 ); flush();
-				moveCustomMessages( 2 ); flush();
-				moveCustomMessages( 3 ); flush();
-			}
-
-			initialiseMessages(); flush();
+			do_all_updates();
 			chdir( "config" );
 
 			print "</pre>\n";
@@ -650,7 +622,7 @@ if( count( $errs ) ) {
 		<?php
 			$list = getLanguageList();
 			foreach( $list as $code => $name ) {
-				$sel = ($code == $conf->LanguageCode) ? "selected" : "";
+				$sel = ($code == $conf->LanguageCode) ? 'selected="selected"' : '';
 				echo "\t\t<option value=\"$code\" $sel>$name</option>\n";
 			}
 		?>
@@ -691,7 +663,7 @@ if( count( $errs ) ) {
 		</ul>
 	</dd>
 	<dt>
-		MediaWiki can include a basic license notice, icon, and machine-reable
+		MediaWiki can include a basic license notice, icon, and machine-readable
 		copyright metadata if your wiki's content is to be licensed under
 		the GNU FDL or a Creative Commons license. If you're not sure, leave
 		it at "none".

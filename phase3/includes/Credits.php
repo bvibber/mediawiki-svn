@@ -171,7 +171,7 @@ function creditLink($user_name, $link_text = '') {
     global $wgUser, $wgContLang;
     $skin = $wgUser->getSkin();
     return $skin->makeLink($wgContLang->getNsText(NS_USER) . ':' . $user_name,
-			   (empty($link_text)) ? $user_name : $link_text);
+			   htmlspecialchars( (empty($link_text)) ? $user_name : $link_text ));
 }
 
 /**

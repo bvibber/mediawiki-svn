@@ -770,7 +770,7 @@ class Title {
 		if( Namespace::getUser() == $this->mNamespace
 			and preg_match("/\\.(css|js)$/", $this->mTextform )
 			and !$wgUser->isSysop()
-			and !preg_match('/^'.preg_quote($wgUser->getName(), '/').'/', $this->mTextform) )
+			and !preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->mTextform) )
 		{ return false; }
 		$ur = $wgUser->getRights();
 		foreach ( $this->getRestrictions() as $r ) {
@@ -837,7 +837,7 @@ class Title {
 	 */
 	function userCanEditCssJsSubpage() {
 		global $wgUser;
-		return ( $wgUser->isSysop() or preg_match('/^'.preg_quote($wgUser->getName()).'/', $this->mTextform) );
+		return ( $wgUser->isSysop() or preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->mTextform) );
 	}
 
 	/**
@@ -979,7 +979,7 @@ class Title {
 		if ( $imgpre === false ) {
 			$imgpre = ':' . $wgContLang->getNsText( Namespace::getImage() ) . ':';
 			# % is needed as well
-			$rxTc = '/[^' . Title::legalChars() . ']/';
+			$rxTc = '/[^' . Title::legalChars() . ']|%[0-9A-Fa-f]{2}/';
 		}
 
 		$this->mInterwiki = $this->mFragment = '';
@@ -1436,7 +1436,7 @@ class Title {
 		$now = $dbw->timestamp();
 		$won = wfInvertTimestamp( wfTimestamp(TS_MW,$now) );
 		wfSeedRandom();
-		$rand = number_format( mt_rand() / mt_getrandmax(), 12, '.', '' );
+		$rand = wfRandom();
 
 		# Rename cur entry
 		$dbw->updateArray( 'page',

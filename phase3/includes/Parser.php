@@ -20,6 +20,8 @@
 define( 'MAX_INCLUDE_REPEAT', 100 );
 define( 'MAX_INCLUDE_SIZE', 1000000 ); // 1 Million
 
+define( 'RLH_FOR_UPDATE', 1 );
+
 # Allowed values for $mOutputType
 define( 'OT_HTML', 1 );
 define( 'OT_WIKI', 2 );
@@ -38,7 +40,7 @@ define( 'UNIQ_PREFIX', 'NaodW29');
 define( 'URL_PROTOCOLS', 'http|https|ftp|irc|gopher|news|mailto' );
 define( 'HTTP_PROTOCOLS', 'http|https' );
 # Everything except bracket, space, or control characters
-define( 'EXT_LINK_URL_CLASS', '[^]<>\\x00-\\x20\\x7F]' );
+define( 'EXT_LINK_URL_CLASS', '[^]<>"\\x00-\\x20\\x7F]' );
 # Including space
 define( 'EXT_LINK_TEXT_CLASS', '[^\]\\x00-\\x1F\\x7F]' );
 define( 'EXT_IMAGE_FNAME_CLASS', '[A-Za-z0-9_.,~%\\-+&;#*?!=()@\\x80-\\xFF]' );
@@ -189,9 +191,15 @@ class Parser
 		# only once and last
 		$text = $this->doBlockLevels( $text, $linestart );
 
+		$this->replaceLinkHolders( $text );
 		$text = $wgContLang->convert($text);
 
 		$text = $this->unstripNoWiki( $text, $this->mStripState );
+		global $wgUseTidy;
+		if ($wgUseTidy) {
+			$text = Parser::tidy($text);
+		}
+
 		$this->mOutput->setText( $text );
 		wfProfileOut( $fname );
 		return $this->mOutput;
@@ -373,7 +381,7 @@ class Parser
 	}
 
 	/**
-	 * restores pre, math, and heiro removed by strip()
+	 * restores pre, math, and hiero removed by strip()
 	 *
 	 * always call unstripNoWiki() after this one
 	 * @access private
@@ -659,7 +667,7 @@ class Parser
 	 * @access private
 	 */
 	function internalParse( $text, $linestart, $args = array(), $isMain=true ) {
-        global $wgContLang;
+		global $wgContLang;
 
 		$fname = 'Parser::internalParse';
 		wfProfileIn( $fname );
@@ -675,8 +683,8 @@ class Parser
 			$text = $wgDateFormatter->reformat( $this->mOptions->getDateFormat(), $text );
 		}
 		$text = $this->doAllQuotes( $text );
+		$text = $this->replaceExternalLinks( $text );		
 		$text = $this->replaceInternalLinks ( $text );
-		$text = $this->replaceExternalLinks( $text );
 		$text = $this->doMagicLinks( $text );
 		$text = $this->doTableStuff( $text );
 		$text = $this->formatHeadings( $text, $isMain );
@@ -942,6 +950,14 @@ class Parser
 			$text = $bits[$i++];
 			$trail = $bits[$i++];
 
+			# The characters '<' and '>' (which were escaped by
+			# removeHTMLtags()) should not be included in
+			# URLs, per RFC 2396.
+			if (preg_match('/&(lt|gt);/', $url, $m2, PREG_OFFSET_CAPTURE)) {
+				$text = substr($url, $m2[0][1]) . ' ' . $text;
+				$url = substr($url, 0, $m2[0][1]);
+			}
+
 			# If the link text is an image URL, replace it with an <img> tag
 			# This happened by accident in the original parser, but some people used it extensively
 			$img = $this->maybeMakeImageLink( $text );
@@ -1017,6 +1033,14 @@ class Parser
 				$url = $protocol . $m[1];
 				$trail = $m[2];
 
+				# The characters '<' and '>' (which were escaped by
+				# removeHTMLtags()) should not be included in
+				# URLs, per RFC 2396.
+				if (preg_match('/&(lt|gt);/', $url, $m2, PREG_OFFSET_CAPTURE)) {
+					$trail = substr($url, $m2[0][1]) . $trail;
+					$url = substr($url, 0, $m2[0][1]);
+				}
+
 				# Move trailing punctuation to $trail
 				$sep = ',;\.:!?';
 				# If there is no left bracket, then consider right brackets fair game too
@@ -1030,7 +1054,9 @@ class Parser
 					$url = substr( $url, 0, -$numSepChars );
 				}
 
-				# Replace &amp; from obsolete syntax with &
+				# Replace &amp; from obsolete syntax with &.
+				# All HTML entities will be escaped by makeExternalLink()
+				# or maybeMakeImageLink()
 				$url = str_replace( '&amp;', '&', $url );
 
 				# Is this an external image?
@@ -1071,17 +1097,22 @@ class Parser
 
 	function replaceInternalLinks( $s ) {
 		global $wgLang, $wgContLang, $wgLinkCache;
+		global $wgDisableLangConversion;
 		static $fname = 'Parser::replaceInternalLinks' ;
 		# use a counter to prevent too much unknown links from
 		# being checked for different language variants.
-		static $convertCount;
 		wfProfileIn( $fname );
 
 		wfProfileIn( $fname.'-setup' );
 		static $tc = FALSE;
 		# the % is needed to support urlencoded titles as well
 		if ( !$tc ) { $tc = Title::legalChars() . '#%'; }
+		
 		$sk =& $this->mOptions->getSkin();
+		global $wgUseOldExistenceCheck;
+		# "Post-parse link colour check" works only on wiki text since it's now
+		# in Parser. Enable it, then disable it when we're done.
+		$saveParseColour = $sk->postParseLinkColour( !$wgUseOldExistenceCheck );
 
 		$redirect = MagicWord::get ( MAG_REDIRECT ) ;
 
@@ -1118,6 +1149,7 @@ class Parser
 
 		wfProfileOut( $fname.'-setup' );
 
+		$checkVariantLink = sizeof($wgContLang->getVariants())>1;
 		# Loop for each link
 		for ($k = 0; isset( $a[$k] ); $k++) {
 			$line = $a[$k];
@@ -1171,35 +1203,17 @@ class Parser
 				$link = substr($link, 1);
 			}
 			
-			$nt = Title::newFromText( $link );
+			$nt = Title::newFromText( $this->unstripNoWiki($link, $this->mStripState) );
 			if( !$nt ) {
 				$s .= $prefix . '[[' . $line;
 				continue;
 			}
 
-			//check other language variants of the link
-			//if the article does not exist
-			global $wgContLang;
-			$variants = $wgContLang->getVariants();
-
-			if(sizeof($variants) > 1 && $convertCount < 200) {
-				$varnt = false; 
-				if($nt->getArticleID() == 0) {
-					foreach ( $variants as $v ) {
-						if($v == $wgContLang->getPreferredVariant())
-							continue;
-						$convertCount ++;
-						$varlink = $wgContLang->autoConvert($link, $v);
-						$varnt = Title::newFromText($varlink);
-						if($varnt && $varnt->getArticleID()>0) {
-							break;
-						}
-					}
-				}
-				if($varnt && $varnt->getArticleID()>0) {
-					$nt = $varnt;
-					$link = $varlink;
-				}
+			#check other language variants of the link
+			#if the article does not exist
+			if( $nt->getArticleID() == 0
+				&& $checkVariantLink ) {
+				$wgContLang->findVariantLink($link, $nt);
 			}
 
 			$ns = $nt->getNamespace();
@@ -1295,10 +1309,8 @@ class Parser
 				}
 			}
 
-            $text = $wgContLang->convert($text);			
-
 			if( ( $nt->getPrefixedText() === $this->mTitle->getPrefixedText() ) &&
-			    ( strpos( $link, '#' ) === FALSE ) ) {
+			    ( $nt->getFragment() === '' ) ) {
 				# Self-links are handled specially; generally de-link and change to bold.
 				$s .= $prefix . $sk->makeSelfLinkObj( $nt, $text, '', $trail );
 				continue;
@@ -1315,14 +1327,15 @@ class Parser
 			}
 			$s .= $sk->makeLinkObj( $nt, $text, '', $trail, $prefix );
 		}
+		$sk->postParseLinkColour( $saveParseColour );
 		wfProfileOut( $fname );
 		return $s;
 	}
 
 	/**
 	 * Handle link to subpage if necessary
-	 * @param $target string the source of the link
-	 * @param &$text the link text, modified as necessary
+	 * @param string $target the source of the link
+	 * @param string &$text the link text, modified as necessary
 	 * @return string the full name of the link
 	 * @access private
 	 */
@@ -1606,9 +1619,9 @@ class Parser
 	/**
 	 * Split up a string on ':', ignoring any occurences inside
 	 * <a>..</a> or <span>...</span>
-	 * @param $str string the string to split
-	 * @param &$before string set to everything before the ':'
-	 * @param &$after string set to everything after the ':'
+	 * @param string $str the string to split
+	 * @param string &$before set to everything before the ':'
+	 * @param string &$after set to everything after the ':'
 	 * return string the position of the ':', or false if none found
 	 */
 	function findColonNoLinks($str, &$before, &$after) {
@@ -2447,7 +2460,7 @@ class Parser
 				if( $istemplate )
 					$head[$headlineCount] .= $sk->editSectionLinkForOther($templatetitle, $templatesection);
 				else
-					$head[$headlineCount] .= $sk->editSectionLink($sectionCount+1);
+					$head[$headlineCount] .= $sk->editSectionLink($this->mTitle, $sectionCount+1);
 			}
 
 			# Add the edit section span
@@ -2455,7 +2468,7 @@ class Parser
 				if( $istemplate )
 					$headline = $sk->editSectionScriptForOther($templatetitle, $templatesection, $headline);
 				else
-					$headline = $sk->editSectionScript($sectionCount+1,$headline);
+					$headline = $sk->editSectionScript($this->title, $sectionCount+1,$headline);
 			}
 
 			# give headline the correct <h#> tag
@@ -2825,6 +2838,160 @@ class Parser
 		$this->mTagHooks[$tag] = $callback;
 		return $oldVal;
 	}
+
+	/**
+	 * Replace <!--LINK--> link placeholders with actual links, in the buffer
+	 * Placeholders created in Skin::makeLinkObj()
+	 * Returns an array of links found, indexed by PDBK:
+	 *  0 - broken
+	 *  1 - normal link
+	 *  2 - stub
+	 * $options is a bit field, RLH_FOR_UPDATE to select for update
+	 */
+	function replaceLinkHolders( &$text, $options = 0 ) {
+		global $wgUser, $wgLinkCache, $wgUseOldExistenceCheck, $wgLinkHolders;
+		
+		if ( $wgUseOldExistenceCheck ) {
+			return array();
+		}
+
+		$fname = 'Parser::replaceLinkHolders';
+		wfProfileIn( $fname );
+
+		$pdbks = array();
+		$colours = array();
+		
+		#if ( !empty( $tmpLinks[0] ) ) { #TODO
+		if ( !empty( $wgLinkHolders['namespaces'] ) ) {
+			wfProfileIn( $fname.'-check' );
+			$dbr =& wfGetDB( DB_SLAVE );
+			$page = $dbr->tableName( 'page' );
+			$sk = $wgUser->getSkin();
+			$threshold = $wgUser->getOption('stubthreshold');
+			
+			# Sort by namespace
+			asort( $wgLinkHolders['namespaces'] );
+	
+			# Generate query
+			$query = false;
+			foreach ( $wgLinkHolders['namespaces'] as $key => $val ) {
+				# Make title object
+				$title = $wgLinkHolders['titles'][$key];
+
+				# Skip invalid entries.
+				# Result will be ugly, but prevents crash.
+				if ( is_null( $title ) ) {
+					continue;
+				}
+				$pdbk = $pdbks[$key] = $title->getPrefixedDBkey();
+
+				# Check if it's in the link cache already
+				if ( $wgLinkCache->getGoodLinkID( $pdbk ) ) {
+					$colours[$pdbk] = 1;
+				} elseif ( $wgLinkCache->isBadLink( $pdbk ) ) {
+					$colours[$pdbk] = 0;
+				} else {
+					# Not in the link cache, add it to the query
+					if ( !isset( $current ) ) {
+						$current = $val;
+						$tables = $pageTable;
+						$join = '';
+						$query =  "SELECT page_id, page_namespace, page_title";
+						if ( $threshold > 0 ) {
+							$query .= ', LENGTH(old_text) AS page_len, page_is_redirect';
+							$tables .= ", $textTable";
+							$join = 'page.page_latest=text.old_id AND';
+						}
+						$query .= " FROM $tables WHERE $join (page_namespace=$val AND page_title IN(";
+					} elseif ( $current != $val ) {
+						$current = $val;
+						$query .= ")) OR (page_namespace=$val AND page_title IN(";
+					} else {
+						$query .= ', ';
+					}
+				
+					$query .= $dbr->addQuotes( $wgLinkHolders['dbkeys'][$key] );
+				}
+			}
+			if ( $query ) {
+				$query .= '))';
+				if ( $options & RLH_FOR_UPDATE ) {
+					$query .= ' FOR UPDATE';
+				}
+			
+				$res = $dbr->query( $query, $fname );
+				
+				# Fetch data and form into an associative array
+				# non-existent = broken
+				# 1 = known
+				# 2 = stub
+				while ( $s = $dbr->fetchObject($res) ) {
+					$title = Title::makeTitle( $s->page_namespace, $s->page_title );
+					$pdbk = $title->getPrefixedDBkey();
+					$wgLinkCache->addGoodLink( $s->page_id, $pdbk );
+					
+					if ( $threshold >  0 ) {
+						$size = $s->page_len;
+						if ( $s->page_is_redirect || $s->page_namespace != 0 || $length < $threshold ) {
+							$colours[$pdbk] = 1;
+						} else {
+							$colours[$pdbk] = 2;
+						}
+					} else {
+						$colours[$pdbk] = 1;
+					}
+				}
+			}
+			wfProfileOut( $fname.'-check' );
+			
+			# Construct search and replace arrays
+			wfProfileIn( $fname.'-construct' );
+			global $outputReplace;
+			$outputReplace = array();
+			foreach ( $wgLinkHolders['namespaces'] as $key => $ns ) {
+				$pdbk = $pdbks[$key];
+				$searchkey = '<!--LINK '.$key.'-->';
+				$title = $wgLinkHolders['titles'][$key];
+				if ( empty( $colours[$pdbk] ) ) {
+					$wgLinkCache->addBadLink( $pdbk );
+					$colours[$pdbk] = 0;
+					$outputReplace[$searchkey] = $sk->makeBrokenLinkObj( $title,
+									$wgLinkHolders['texts'][$key],
+									$wgLinkHolders['queries'][$key] );
+				} elseif ( $colours[$pdbk] == 1 ) {
+					$outputReplace[$searchkey] = $sk->makeKnownLinkObj( $title,
+									$wgLinkHolders['texts'][$key],
+									$wgLinkHolders['queries'][$key] );
+				} elseif ( $colours[$pdbk] == 2 ) {
+					$outputReplace[$searchkey] = $sk->makeStubLinkObj( $title,
+									$wgLinkHolders['texts'][$key],
+									$wgLinkHolders['queries'][$key] );
+				}
+			}
+			wfProfileOut( $fname.'-construct' );
+
+			# Do the thing
+			wfProfileIn( $fname.'-replace' );
+			
+			$text = preg_replace_callback(
+				'/(<!--LINK .*?-->)/',
+				"outputReplaceMatches",
+				$text);
+			wfProfileOut( $fname.'-replace' );
+
+			wfProfileIn( $fname.'-interwiki' );
+			global $wgInterwikiLinkHolders;
+			$outputReplace = $wgInterwikiLinkHolders;
+			$text = preg_replace_callback(
+				'/<!--IWLINK (.*?)-->/',
+				"outputReplaceMatches",
+				$text);
+			wfProfileOut( $fname.'-interwiki' );
+		}
+
+		wfProfileOut( $fname );
+		return $colours;
+	}
 }
 
 /**
@@ -2944,6 +3111,16 @@ class ParserOptions
 
 
 }
+
+/**
+ * Callback function used by Parser::replaceLinkHolders()
+ * to substitute link placeholders.
+ */
+function &outputReplaceMatches($matches) {
+	global $outputReplace;
+	return $outputReplace[$matches[1]];
+}
+
 
 # Regex callbacks, used in Parser::replaceVariables
 function wfBraceSubstitution( $matches ) {

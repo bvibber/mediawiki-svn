@@ -8,7 +8,7 @@ $zh2TW = $wgMemc->get($key1 = "$wgDBname:zhConvert:tw");
 $zh2CN = $wgMemc->get($key2 = "$wgDBname:zhConvert:cn");
 $zh2SG = $wgMemc->get($key3 = "$wgDBname:zhConvert:sg");
 $zh2HK = $wgMemc->get($key4 = "$wgDBname:zhConvert:hk");
-if(empty($zhSimp2Trad) || empty($zhTrad2Simp)) {
+if(empty($zh2TW) || empty($zh2CN) || empty($zh2SG) || empty($zh2HK)) {
 	require_once("includes/ZhConversion.php");
 	$wgMemc->set($key1, $zh2TW);
 	$wgMemc->set($key2, $zh2CN);
@@ -100,6 +100,18 @@ class LanguageZh extends LanguageZh_cn {
 		}
 		wfProfileOut( $fname );
 		return $t;
+	}
+
+	# only convert titles having more than one character
+	function convertTitle($text) {
+		$len=0;
+		if( function_exists( 'mb_strlen' ) )
+			$len = mb_strlen($text);
+		else
+			$len = strlen($text)/3;
+		if($len>1)
+			return $this->autoConvert( $text);
+		return $text;
 	}
 
 	function getVariants() {

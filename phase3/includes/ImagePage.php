@@ -76,9 +76,12 @@ class ImagePage extends Article {
 				}
 				$s = "<div class=\"fullImageLink\">" . $anchoropen .
 				     "<img border=\"0\" src=\"{$url}\" width=\"{$width}\" height=\"{$height}\" alt=\"" .
-				     $wgRequest->getVal( 'image' )."\" />" . $anchorclose . "</div>";
+				     htmlspecialchars( $wgRequest->getVal( 'image' ) )."\" />" . $anchorclose . "</div>";
 			} else {
 				$s = "<div class=\"fullMedia\">".$sk->makeMediaLink($this->img->getName(),"")."</div>";
+			}
+			if($this->img->fromSharedDirectory) {
+				$s.="<div class=\"sharedUploadNotice\">".wfMsg("sharedupload")."</div>";
 			}
 			$wgOut->addHTML( $s );
 		}
@@ -310,11 +313,15 @@ class ImagePage extends Article {
 		global $wgUseSquid, $wgInternalServer, $wgDeferredUpdateList;
 
 		$oldimage = $wgRequest->getText( 'oldimage' );
-		
 		if ( strlen( $oldimage ) < 16 ) {
-			$wgOut->unexpectedValueError( 'oldimage', $oldimage );
+			$wgOut->unexpectedValueError( 'oldimage', htmlspecialchars($oldimage) );
 			return;
 		}
+		if ( strstr( $oldimage, "/" ) || strstr( $oldimage, "\\" ) ) {
+			$wgOut->unexpectedValueError( 'oldimage', htmlspecialchars($oldimage) );
+			return;
+		}
+
 		if ( wfReadOnly() ) {
 			$wgOut->readOnlyPage();
 			return;
@@ -330,7 +337,7 @@ class ImagePage extends Article {
 		$curfile = "{$dest}/{$name}";
 
 		if ( ! is_file( $curfile ) ) {
-			$wgOut->fileNotFoundError( $curfile );
+			$wgOut->fileNotFoundError( htmlspecialchars( $curfile ) );
 			return;
 		}
 		$oldver = wfTimestampNow() . "!{$name}";

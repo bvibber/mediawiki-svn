@@ -939,7 +939,7 @@ agrees to license it under the terms of the $1.",
 'emptyfile'		=> 'The file you uploaded seems to be empty. This might be due to a typo in the file name. Please check whether you really want to upload this file.',
 'fileexists'		=> 'A file with this name exists already, please check $1 if you are not sure if you want to change it.',
 'successfulupload' => 'Successful upload',
-'fileuploaded'	=> "File uploaded successfully.
+'fileuploaded'	=> "File $1 uploaded successfully.
 Please follow this link: $2 to the description page and fill
 in information about the file, such as where it came from, when it was
 created and by whom, and anything else you may know about it. If this is an image, you can insert it like this: <tt><nowiki>[[Image:$1|thumb|Description]]</nowiki></tt>",
@@ -974,6 +974,7 @@ this old version, (rev) = revert to this old version.
 'imagelinks'	=> 'Image links',
 'linkstoimage'	=> 'The following pages link to this image:',
 'nolinkstoimage' => 'There are no pages that link to this image.',
+'sharedupload' => 'This file is a shared upload and may be used by other projects.',
 
 # Statistics
 #
@@ -2050,10 +2051,15 @@ class Language {
 	# syntax of the markup:
 	# -{code1:text1;code2:text2;...}-  or
 	# -{text}- in which case no conversion should take place for text
-	function convert( $text ) {
-
+	function convert( $text , $isTitle=false) {
+		global $wgDisableLangConversion;
+		if($wgDisableLangConversion)
+			return $text; 
 		if(sizeof($this->getVariants())<2) 
 			return $text;
+		
+		if($isTitle)
+			return $this->convertTitle($text);
 
 		// no conversion if redirecting
 		if(substr($text,0,9) == "#REDIRECT") {
@@ -2114,7 +2120,13 @@ class Language {
 	function autoConvert($text, $toVariant=false) {
 		return $text;
 	}
-	
+
+	/* hook for converting the title, which may needs special treatment
+	*/
+	function convertTitle($text) {
+		return $text;
+	}
+
 	# returns a list of language variants for conversion.
 	# right now mainly used in the Chinese conversion
 	function getVariants() {
@@ -2149,6 +2161,37 @@ class Language {
 		$lang = strtolower(substr(get_class($this), 8));
 		return $lang;
 	}
+
+	/* if a language supports multiple variants, it is
+		possible that non-existing link in one variant
+		actually exists in another variant. this function 
+		tries to find it.
+
+	*/
+	function findVariantLink(&$link, &$nt) {
+		static $count=0; //used to limit this operation
+		global $wgDisableLangConversion, $wgContLang;
+		if($wgDisableLangConversion)
+			return;
+		$variants = $wgContLang->getVariants();
+		if(sizeof($variants) > 1 && $count++<200) {
+			if($nt->getArticleID() == 0) {
+				foreach ( $variants as $v ) {
+					if($v == $wgContLang->getPreferredVariant())
+						continue;
+					$varlink = $wgContLang->autoConvert($link, $v);
+					$varnt = Title::newFromText($varlink);
+					if($varnt && $varnt->getArticleID()>0) {
+						$nt = $varnt;
+						$link = $varlink;
+						break;
+					}
+				}
+			}
+		}
+	}
+
+
 }
 
 # This should fail gracefully if there's not a localization available

@@ -747,7 +747,7 @@ class Article {
 		$now = wfTimestampNow();
 		$won = wfInvertTimestamp( $now );
 		wfSeedRandom();
-		$rand = number_format( mt_rand() / mt_getrandmax(), 12, '.', '' );
+		$rand = wfRandom();
 		$isminor = ( $isminor && $wgUser->getID() ) ? 1 : 0;
 		
 		$mungedText = $text;
@@ -1727,7 +1727,7 @@ class Article {
 		$newcomment = wfMsg( 'revertpage', $s->old_user_text, $from );
 		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
-		$wgOut->addHTML( '<h2>' . $newcomment . "</h2>\n<hr />\n" );
+		$wgOut->addHTML( '<h2>' . htmlspecialchars( $newcomment ) . "</h2>\n<hr />\n" );
 		$this->updateArticle( Article::getRevisionText( $s ), $newcomment, 1, $this->mTitle->userIsWatching(), $bot );
 		Article::onArticleEdit( $this->mTitle );
 		$wgOut->returnToMain( false );
@@ -1960,7 +1960,7 @@ class Article {
 			$fields['cur_is_new'] = 1;
 			$fields['cur_namespace'] = $ns;
 			$fields['cur_title'] = $dbkey;
-			$fields['cur_random'] = $rand = number_format( mt_rand() / mt_getrandmax(), 12, '.', '' );
+			$fields['cur_random'] = $rand = wfRandom();
 			$dbw->insertArray( 'cur', $fields, $fname );
 		}
 		wfProfileOut( $fname );
