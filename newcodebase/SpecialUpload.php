@@ -175,12 +175,12 @@ function uploadWarning( $warning )
 action=\"{$action}\">
 <input type=hidden name='wpUploadAffirm' value='1'>
 <input type=hidden name='wpIgnoreWarning' value='1'>
-<input type=hidden name='wpUploadDescription' value=\"{$wpUploadDescription}\">
-<input type=hidden name='wpUploadSaveName' value=\"{$wpUploadSaveName}\">
-<input type=hidden name='wpUploadTempName' value=\"{$wpUploadTempName}\">
-<input type=hidden name='wpUploadSize' value=\"{$wpUploadSize}\">
-<input type=hidden name='wpSavedFile' value=\"{$wgSavedFile}\">
-<input type=hidden name='wpUploadOldVersion' value=\"{$wgUploadOldVersion}\">
+<input type=hidden name='wpUploadDescription' value=\"" . htmlspecialchars( $wpUploadDescription ) . "\">
+<input type=hidden name='wpUploadSaveName' value=\"" . htmlspecialchars( $wpUploadSaveName ) . "\">
+<input type=hidden name='wpUploadTempName' value=\"" . htmlspecialchars( $wpUploadTempName ) . "\">
+<input type=hidden name='wpUploadSize' value=\"" . htmlspecialchars( $wpUploadSize ) . "\">
+<input type=hidden name='wpSavedFile' value=\"" . htmlspecialchars( $wgSavedFile ) . "\">
+<input type=hidden name='wpUploadOldVersion' value=\"" . htmlspecialchars( $wgUploadOldVersion) . "\">
 <table border=0><tr>
 <tr><td align=right>
 <input tabindex=2 type=submit name='wpUpload' value=\"{$save}\">
@@ -222,10 +222,10 @@ function mainUploadForm( $msg )
 action=\"{$action}\">
 <table border=0><tr>
 <td align=right>{$fn}:</td><td align=left>
-<input tabindex=1 type='file' name='wpUploadFile' value=\"{$wpUploadFile}\" size=40>
+<input tabindex=1 type='file' name='wpUploadFile' value=\"" . htmlspecialchars( $wpUploadFile ) . "\" size=40>
 </td></tr><tr>
 <td align=right>{$fd}:</td><td align=left>
-<input tabindex=2 type=text name='wpUploadDescription' value=\"{$wpUploadDescription}\" size=40>
+<input tabindex=2 type=text name='wpUploadDescription' value=\"" . htmlspecialchars( $wpUploadDescription ) . "\" size=40>
 </td></tr><tr>
 <td align=right>
 <input tabindex=3 type=checkbox name='wpUploadAffirm' value='1'>
