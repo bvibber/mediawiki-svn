@@ -1,7 +1,6 @@
 #ifndef CONVERT_H
 #define CONVERT_H
 
-unsigned char *doConvert(int tid, 
-			 const unsigned char *input, int len,
-			 const unsigned char *tolang);
+unsigned char *doConvert(const unsigned char *input, int len,
+			 const Tnode *dict);
 #endif

@@ -4,14 +4,14 @@
 #include "segment.h"
 
 /* a very simple max matching segmentor */
-unsigned char *doSegment(int tid, const unsigned char *input, int len) {
+unsigned char *doSegment(const unsigned char *input, int len) {
   int ii, ri, rlen, c;
   unsigned char *r;
   rlen = len*2;
   r = (unsigned char*)malloc(sizeof(unsigned char) * rlen);
   if(!r) {
     if(optWarning)
-      fprintf(stderr, "%d: doSegment() out of memory.\n", tid);
+      fprintf(stderr, "doSegment() out of memory.\n");
     return NULL;
   }
 
@@ -28,7 +28,7 @@ unsigned char *doSegment(int tid, const unsigned char *input, int len) {
       r = (unsigned char*)realloc(r, sizeof(unsigned char) * rlen);
       if(!r) {
 	if(optWarning)
-	  fprintf(stderr, "%d: doSegment() out of memory.\n", tid);
+	  fprintf(stderr, "doSegment() out of memory.\n");
 	return NULL;
       }
     }

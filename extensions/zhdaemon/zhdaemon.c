@@ -5,10 +5,11 @@
 #include "convert.h"
 #include "zhdaemon.h"
 
-void *thread_main(void *clientSocket);
+/* list of connections implemented as array */
+connection *clist;
+int usedc, freec;
 
-/* the dictionaries. not all of them will be loaded, depending on the
-   service that we are going to provide
+/* the dictionaries.
 */
 Tnode *dictSeg=NULL; //for word segmentation
 Tnode *dictToCN=NULL; //conversion to zh-cn
@@ -33,6 +34,7 @@ void processArg(int argc, char *argv[]) {
 int confServerPort;
 char *confDictSeg, *confDictToCN, *confDictToTW, *confDictToHK, *confDictToSG;
 int confInputLimit;
+int confMaxConnections;
 
 void loadConf(char *conffile) {
   cfg_opt_t opts[] =
@@ -44,6 +46,7 @@ void loadConf(char *conffile) {
       CFG_STR("dictToSG", "/usr/local/share/zhdaemons/tosg.dict", CFGF_NONE),
       CFG_INT("serverPort", 2004, CFGF_NONE),
       CFG_INT("inputLimit", 1048576, CFGF_NONE),
+      CFG_INT("maxConnections", FD_SETSIZE, CFGF_NONE),
       CFG_END()
     };
   cfg_t *cfg;
@@ -54,6 +57,11 @@ void loadConf(char *conffile) {
   }
   confServerPort = cfg_getint(cfg, "serverPort");
   confInputLimit = cfg_getint(cfg, "inputLimit");
+  confMaxConnections = cfg_getint(cfg, "maxConnections");
+  if(confMaxConnections > FD_SETSIZE) {
+    confMaxConnections = FD_SETSIZE;
+    fprintf(stderr, "Warning: maxConnection too large; resetting to %d\n", FD_SETSIZE);
+  }
   confDictSeg = cfg_getstr(cfg, "dictSeg");
   confDictToCN = cfg_getstr(cfg, "dictToCN");
   confDictToTW = cfg_getstr(cfg, "dictToTW");
@@ -63,28 +71,16 @@ void loadConf(char *conffile) {
   printf("\nConfiguration:\n");
   printf("serverPort = %d\n", confServerPort);
   printf("inputLimit = %d\n", confInputLimit);
+  printf("maxConnections = %d\n", confMaxConnections);
   printf("dictSeg = %s\n", confDictSeg);
   printf("dictToCN = %s\n", confDictToCN);
   printf("dictToTW = %s\n", confDictToTW);
   printf("dictToHK = %s\n", confDictToHK);
   printf("dictToSG = %s\n\n", confDictToSG);
-
-  
 }
 
-void *thread_main(void *data);
-
-int main(int argc, char *argv[])
-{
-  int serverSocket;
-  struct sockaddr_in serverAddress;
-  int status;
-
-
-  processArg(argc, argv);
-  loadConf(optConfFile);
-
-  /* load dictionaries */
+/* load all dictionaries */
+void loadDict() {
   printf("Loading segmentation dictionary from %s...\n",
 	 confDictSeg); fflush(0);
   dictSeg = loadSegmentationDictionary(confDictSeg);
@@ -125,12 +121,371 @@ int main(int argc, char *argv[])
   }
   printf("\n\n");
 
+}
+
+void setnonblocking(int sock) {
+  int opts;
+  
+  opts = fcntl(sock,F_GETFL);
+  if (opts < 0) {
+    fprintf(stderr, "fcntl failed GETFL.\n");
+    exit(-1);
+  }
+  opts = (opts | O_NONBLOCK);
+  if (fcntl(sock,F_SETFL,opts) < 0) {
+    fprintf(stderr, "fcntl failed SETFL.\n");
+    exit(-1);
+  }
+}
+
+/* reset a connection struct */
+void initConnection(connection *c, int fd) {
+  c->clientSocket = fd;
+  c->state = ZHSTATE_READCMD;
+  c->nextstate = -1;
+  if(c->input) {
+    free(c->input);
+    c->input = NULL;
+  }
+  if(c->output) {
+    free(c->output);
+    c->output = NULL;
+  }
+  c->ipos = c->opos = c->cpos = c->isize = c->osize = 0;
+}
+
+void newconnection(int serverSocket) {
+  int clientSocket;
+  int n;
+  clientSocket = accept(serverSocket, NULL, NULL);
+  if(clientSocket < 0) {
+    fprintf(stderr, "accept() failed.\n");
+    return;
+  }
+  setnonblocking(clientSocket);
+
+  if(freec==-1) { // no more connection slot left
+    char c[100];
+    sprintf(c, "ERROR %d\r\n", ZHERR_S_BUSY);
+    write(clientSocket, c, strlen(c));
+    close(clientSocket);
+    return;
+  }
+
+  /* remove from freec and add to usedc */
+  n = freec;
+  freec = clist[freec].next;
+  clist[n].next = usedc;
+  usedc = n;
+
+  initConnection(clist+n, clientSocket);
+  printf("New connection %d\n", clientSocket);
+  return;
+}
+
+/* determine if we should close the connection */
+int shouldclose(int s) {
+  if(s<0) {
+    if(errno == EINTR || errno == EAGAIN || errno==EWOULDBLOCK)
+      return 0;
+    fprintf(stderr, "read error: %s\n", strerror(errno));
+    return 1;
+  }
+  if(s==0) {
+    printf("client closing connection.\n" );
+    return 1;
+  }
+  return 0;
+}
+
+void uppercase(char *s, int len) {
+  int i;
+  for(i=0;i<len && s[i];i++) {
+    if(s[i]>='a' && s[i]<='z')
+      s[i] -= 'a'-'A';
+  }
+}
+
+void formerror(connection *c, int code) {
+  printf("returning error %d\n", code);
+  sprintf(c->cmdline, "ERROR %d\r\n", code);
+  c->csize = strlen(c->cmdline);
+  c->cpos = 0;
+  c->state = ZHSTATE_WRITEERROR;
+}
+
+
+void processcmd(connection *c) {
+  char cmd[512], arg[512];
+  int size;
+  uppercase(c->cmdline, strlen(c->cmdline));
+  printf("Got cmdline=%s!\n", c->cmdline);
+  c->nextstate = -1;
+  if(sscanf(c->cmdline, "%s", cmd)!=1) {
+    formerror(c, ZHERR_C_CMD);
+    return;
+  }
+  if(strcmp(cmd, "SEG")==0) {
+    if(sscanf(c->cmdline, "%s %d", cmd, &size)!=2) {
+      formerror(c, ZHERR_C_INPUTSIZE);
+      c->nextstate = ZHSTATE_CLOSING;
+      return;
+    }
+  }
+  else if(strcmp(cmd, "CONV") == 0) {
+    if(sscanf(c->cmdline, "%s %s %d", cmd, arg, &size) !=3) {
+      formerror(c, ZHERR_C_CMD);
+      c->nextstate = ZHSTATE_CLOSING;
+      return;
+    }
+    if(strcmp(arg, "ZH-CN")!=0 &&
+       strcmp(arg, "ZH-TW")!=0 &&
+       strcmp(arg, "ZH-HK")!=0 &&
+       strcmp(arg, "ZH-SG")!=0) {
+      formerror(c, ZHERR_C_LANGCODE);
+      c->nextstate = ZHSTATE_CLOSING;
+      return;
+    }
+  }
+  else {
+    formerror(c, ZHERR_C_CMD);
+    c->nextstate = ZHSTATE_CLOSING;
+    return;
+  }
+  
+  if(size > confInputLimit) {
+    formerror(c, ZHERR_C_INPUTSIZE);
+    c->nextstate = ZHSTATE_EATDATA;
+    return;
+  }
+  c->isize = size;
+  c->ipos = 0;
+  c->input = (unsigned char *)malloc(sizeof(unsigned char) * size);
+  if(!c->input) {
+    formerror(c, ZHERR_S_MEM);
+    c->nextstate = ZHSTATE_EATDATA;
+    return;
+  }
+  printf("get request: %sparsed data size %d\n", c->cmdline, size);
+  c->state = ZHSTATE_READDATA;
+  return;
+}
+
+void processdata(connection *c) {
+  char cmd[512], arg[512];
+  char *result;
+  Tnode *dict;
+
+  sscanf(c->cmdline, "%s", cmd);
+  if(strcmp(cmd, "SEG")==0) {
+    result = doSegment(c->input, c->isize);
+  }
+  else if(strcmp(cmd, "CONV") == 0) {
+    sscanf(c->cmdline, "%s %s", cmd, arg);
+    if(strcmp(arg, "ZH-CN") == 0)
+      dict = dictToCN;
+    else if(strcmp(arg, "ZH-TW") == 0)
+      dict = dictToTW;
+    else if(strcmp(arg, "ZH-HK") == 0)
+      dict = dictToHK;
+    else if(strcmp(arg, "ZH-SG") == 0)
+      dict = dictToSG;
+    else {
+      fprintf(stderr, "Fatal: unknown language code %s shouldn't appear here...\n", arg);
+      exit(-1);
+    }
+    result = doConvert(c->input, c->isize, dict);
+  }
+  else {
+    fprintf(stderr, "Fatal: unknown command %s shouldn't appear here...\n", cmd);
+    exit(-1);
+  }
+  if(!result) {
+    formerror(c, ZHERR_S_WORK);
+    return;
+  }
+
+  c->output = result;
+  c->osize = strlen(result);
+  sprintf(c->cmdline, "OK %d\r\n", c->osize);
+  c->csize = strlen(c->cmdline);
+  c->cpos = 0;
+  c->state = ZHSTATE_WRITECMD;
+}
+
+void closeconnection(connection *c) {
+  close(c->clientSocket);
+  initConnection(c, 0);
+}
+
+size_t readlinefd(char *ptr, size_t len, int fd) {
+  size_t n, r;
+  char c;
+  
+  for(n=0;n < len-1; n++) {
+    r = read(fd, &c, 1);
+    if(r==0) {// eof
+      ptr[n]='\0';
+      break;
+    }
+    else if(r<0) {
+      if(errno == EINTR || errno == EAGAIN || errno == EWOULDBLOCK)
+	break;
+      else
+	return -1;//error
+    }
+    ptr[n] = c;
+    if(c == '\n') {
+      n++;
+      ptr[n]='\0';
+      break;
+    }
+  }
+  return n;
+}
+
+void connectionRead(connection *c) {
+  int s;
+  char buf[1024];
+  switch(c->state) {
+  case ZHSTATE_READCMD:
+    s = readlinefd(c->cmdline+c->cpos, sizeof(c->cmdline)-c->cpos, c->clientSocket);
+    if(shouldclose(s))
+      closeconnection(c);
+    else {
+      c->cpos+=s;
+      if(c->cmdline[c->cpos-1]=='\n')
+	processcmd(c); // perform memory allocation, etc
+    }
+    break;
+  case ZHSTATE_READDATA:
+    printf("Reading data...\n");
+    s = read(c->clientSocket, c->input+c->ipos, c->isize - c->ipos);
+    printf("Status = %d\n", s);
+    if(shouldclose(s))
+      closeconnection(c);
+    else if(s>0) {
+      c->ipos+=s;
+      if(c->ipos == c->isize) // got all data
+	processdata(c); // perform conversion, etc. also update state
+    }
+    break;
+  case ZHSTATE_EATDATA:
+    while(1) {
+      s = read(c->clientSocket, buf, sizeof(buf));
+      if(shouldclose(s)) 
+	closeconnection(c);
+      else if(s>0){
+	c->ipos += s;
+	if(c->ipos == c->isize) {
+	  c->state = ZHSTATE_READCMD;
+	  break;
+	}
+      }
+      else
+	break;
+    }
+    break;
+  }
+}
+
+void connectionWrite(connection *c) {
+  int s;
+  switch (c->state) {
+  case ZHSTATE_WRITEERROR:
+    printf("WRITEERROR\n");
+    s = write(c->clientSocket, c->cmdline + c->cpos, c->csize - c->cpos);
+    if(shouldclose(s))
+      closeconnection(c);
+    else if(s>0) {
+      c->cpos += s;
+      if(c->cpos == c->csize) {
+	c->state = c->nextstate;
+	c->nextstate = -1;
+	if(c->state == ZHSTATE_CLOSING) {
+	  closeconnection(c);
+	  break;
+	}
+	else if(c->state == -1) {
+	  c->state=ZHSTATE_READCMD;
+	}
+	initConnection(c, c->clientSocket);
+      }
+    }
+    break;
+  case ZHSTATE_WRITECMD:
+    printf("WRITECMD %s, csize=%d, cpos=%d\n", c->cmdline, c->csize, c->cpos);
+    s = write(c->clientSocket, c->cmdline + c->cpos, c->csize - c->cpos);
+    if(shouldclose(s))
+      closeconnection(c);
+    else if(s>0) {
+      c->cpos += s;
+      if(c->cpos == c->csize)
+	c->state=ZHSTATE_WRITEDATA;
+    }
+    break;
+  case ZHSTATE_WRITEDATA:
+    printf("WRITEDATA\n");
+    s = write(c->clientSocket, c->output + c->opos, c->osize - c->opos);
+    if(shouldclose(s))
+      closeconnection(c);
+    else if(s>0) {
+      c->opos += s;
+      if(c->opos == c->osize) {
+	c->state=ZHSTATE_READCMD;
+	initConnection(c, c->clientSocket);
+      }
+    }
+    break;
+  }
+}
+
+int main(int argc, char *argv[])
+{
+  int serverSocket;
+  struct sockaddr_in serverAddress;
+  int status;
+  int count=0;
+  int reuseport=1;
+  int highfd;
+  int i, nactive;
+  
+  fd_set readset, writeset;
+
+  processArg(argc, argv);
+  loadConf(optConfFile);
+
+  loadDict();
+
+  clist = (connection*)malloc(sizeof(connection) * confMaxConnections);
+  if(!clist) {
+    fprintf(stderr, "Out of memory allocating clist\n");
+    exit(-1);
+  }
+
+  usedc = -1;
+  freec = 0;
+  for(i=0;i<confMaxConnections;i++) {
+    initConnection(clist+i, 0);
+    if(i==confMaxConnections-1)
+      clist[i].next = -1;
+    else
+      clist[i].next = i+1;
+  }
+    
+
   /* open server socket */  
   serverSocket = socket(PF_INET,SOCK_STREAM,0);
   if (serverSocket <= 0) {
     fprintf(stderr, "server: Failed creating socket.\n");
     exit(-1);
   }
+
+  /* avoid "port in use"... */
+  setsockopt(serverSocket, SOL_SOCKET, SO_REUSEADDR, &reuseport,
+	     sizeof(reuseport));
+
+  setnonblocking(serverSocket);
 
   serverAddress.sin_family=AF_INET;
   serverAddress.sin_addr.s_addr = INADDR_ANY;
@@ -144,192 +499,74 @@ int main(int argc, char *argv[])
     fprintf(stderr, "error: bind() failed.\n");
     exit(-1);
   }
-  
-  while (1) {
-    int clientSocket, addrlen;
-    int terr;
-    struct sockaddr_in clientAddress;
-    pthread_t *tid ;
-    printf("Listening...\n");fflush(0);
-    listen(serverSocket,1024);
-    addrlen = sizeof(clientAddress);
-    
-    clientSocket = accept(serverSocket,
-			  (struct sockaddr*) &clientAddress,
-			  (socklen_t *) &addrlen);
 
-    threadData *td = (threadData*)malloc(sizeof(threadData));
-    td->clientSocket = clientSocket;
-    td->clientAddress = clientAddress;
+  if(listen(serverSocket, confMaxConnections) == -1) {
+    fprintf(stderr, "error: listen() failed.\n");
+    exit(-1);
+  }
 
-    tid = (pthread_t *)malloc(sizeof(pthread_t));
-    terr = pthread_create(tid, NULL, thread_main, td);
+
+  while(1) {
+    /* reset fdsets */
+    FD_ZERO(&readset);
+    FD_ZERO(&writeset);
+
+    /* listening socket */
+    FD_SET(serverSocket, &readset);
+
+    highfd = serverSocket;
+
+    /* move closed clients to freec */
+    for(i=usedc; i!=-1 && clist[i].clientSocket == 0;) {
+      int next = clist[i].next;
+      clist[i].next = freec;
+      freec = i;
+      i = usedc = next;
+    }
+    for(i=usedc;i!=-1;i=clist[i].next) {
+      int next = clist[i].next;
+      if(next!=-1) {
+	if(clist[next].clientSocket == 0) {
+	  clist[i].next = clist[next].next;
+	  clist[next].next = freec;
+	  freec = next;
+	}
+      }
+    }
+
+    for(i=usedc;i!=-1;i=clist[i].next) {
+      FD_SET(clist[i].clientSocket, &readset);
+      if(clist[i].state == ZHSTATE_WRITEERROR ||
+	 clist[i].state == ZHSTATE_WRITECMD ||
+	 clist[i].state == ZHSTATE_WRITEDATA)
+	FD_SET(clist[i].clientSocket, &writeset);
+      if(clist[i].clientSocket > highfd)
+	highfd = clist[i].clientSocket;
+    }
+
+    nactive = select(highfd+1, &readset, &writeset, NULL, NULL);
     
-    if(terr) {
-      fprintf(stderr, "Thread creation failed.\n");
+    if(nactive <= 0) {
+      fprintf(stderr, "select() failed!\n");
+      exit(-1);
+    }
+
+    for(i=usedc;i!=-1;i=clist[i].next) {
+      if( FD_ISSET(clist[i].clientSocket, &readset)) {
+	printf("%d read\n", i);
+	connectionRead(clist+i);
+      }
+      if( FD_ISSET(clist[i].clientSocket, &writeset)) {
+	printf("%d write\n", i);
+	connectionWrite(clist+i);
+      }
+      fflush(0);
+    }
+
+    if(FD_ISSET(serverSocket, &readset)) {
+      newconnection(serverSocket);
+      printf("------------------------------- accepting client %d\n", count++);
     }
   }
-  // should never get here...
   return 1;
 }
-
-
-void *thread_main(void *data)
-{
-  threadData *td = (threadData*)data;
-  int tid;
-  unsigned char *buf, cmdline[512];
-  unsigned char cmd[32], param[32];
-  int i, len;
-  FILE *sockin=NULL, *sockout=NULL;
-  tid = (int)pthread_self();
-
-
-  if (td->clientSocket <= 0) {
-    if(optWarning) {
-      fprintf(stderr,
-	      "%d: ** accept() failed: ", tid );
-      fprintf(stderr, "%s\n", strerror(td->clientSocket));
-    }
-    free(data);
-    pthread_exit(NULL);
-  }
-
-  if(!optSilent) {
-    printf("%d: connected with %s.\n",
-	   tid,inet_ntoa(td->clientAddress.sin_addr));
-  }
-
-  sockin = fdopen(td->clientSocket, "r");
-  if(sockin==NULL) {
-    if(optWarning)
-      fprintf(stderr, "%d: fdopen() for read failed.\n", tid);
-    free(data);
-    pthread_exit(NULL);
-  }
-  sockout = fdopen(td->clientSocket, "w");
-  if(sockout==NULL) {
-    if(optWarning)
-      fprintf(stderr, "%d: fdopen() for write failed.\n", tid);
-    fclose(sockin);
-    free(data);
-    pthread_exit(NULL);
-  }
-  
-  
-  while(1) {
-    if(!fgets(cmdline, sizeof(cmdline), sockin)) {
-      if(feof(sockin)) {
-	if(!optSilent)
-	  printf("%d: client closes connection.\n", tid);
-      }
-      else {
-	if(optWarning) {
-	  fprintf(stderr, "%d: read error.\n", tid);
-	}
-      }
-      break;
-    }
-    sscanf(cmdline, "%30s", cmd);
-    // word segmentation
-    if(strcmp(cmd, "SEG")==0) {
-      if(sscanf(cmdline, "%30s %d", cmd, &len)!=2) {
-	if(optWarning) {
-	  fprintf(stderr, "%d: ** Error in SEG command: %s\n", tid, cmdline);
-	}
-	continue;
-      }
-      if(len > confInputLimit) {
-	if(optWarning) {
-	  fprintf(stderr, "%d: ** Client data is too large.\n", tid);
-          //eat the rest of the request
-          while(len>0) {
-            if(!fgets(cmdline, sizeof(cmdline), sockin))
-              break;
-            len-=strlen(cmdline);
-          }
-	  sprintf(cmdline, "ERROR\r\n");
-	  fputs(cmdline, sockout);
-          continue;
-	}
-      }
-      if(!optSilent) {
-	printf("%d: %s %d\n", tid, cmd, len);
-      }
-    }
-    // variant conversion
-    else if(strcmp(cmd, "CONV")==0) {
-      if(sscanf(cmdline, "%30s %30s %d", cmd, param, &len)!=3) {
-	if(optWarning) {
-	  fprintf(stderr, "%d: ** Error in CONV command: %s\n", tid, cmdline);
-	}
-	continue;
-      }
-      if(len > confInputLimit) {
-	if(optWarning) {
-	  fprintf(stderr, "%d: ** Client data is too large.\n", tid);
-	  // should handle this more gracefully...
-          while(len>0) {
-            if(!fgets(cmdline, sizeof(cmdline), sockin))
-              break;
-            len-=strlen(cmdline);
-          }
-	  sprintf(cmdline, "ERROR\r\n");
-	  fputs(cmdline, sockout);	  
-          continue;
-	}
-      }
-      if(!optSilent) {
-	printf("%d: %s %s %d\n", tid, cmd, param, len);
-      }
-    }
-    else {
-      if(optWarning) {
-	fprintf(stderr, "%d: ** Unknown command: %s\n", tid, cmdline);
-      }
-      continue;
-    }
-
-    buf = (unsigned char*)malloc(len*sizeof(unsigned char));
-    if(!buf) {
-      if(optWarning) {
-	fprintf(stderr, "%d: ** Out of memory allocating input buffer.\n", tid);
-      }
-      break;
-    }
-    
-    i = fread(buf, sizeof(unsigned char), len, sockin);
-
-    if(i>=0) {
-      unsigned char *result=NULL;
-      if(strcmp(cmd, "SEG")==0) {
-	result = doSegment(tid, buf, i);
-      }
-      else if(strcmp(cmd, "CONV")==0) {
-	result = doConvert(tid, buf, i, param);
-      }
-      if(!result) {
-	sprintf(cmdline, "ERROR\r\n");
-	fputs(cmdline, sockout);
-      }
-      else {
-	sprintf(cmdline, "OK %d\r\n", strlen(result));
-	fputs(cmdline, sockout);
-	fprintf(sockout, "%s", result);
-	fflush(sockout);
-	free(result);
-      }
-    }
-    free(buf);
-  }
-  if(!optSilent)
-    printf("%d: Closing down.\n", tid);
-  if(sockin)
-    fclose(sockin);
-  if(sockout)
-    fclose(sockout);
-  close(td->clientSocket);
-  free(td);
-  pthread_exit(NULL);
-}
-

@@ -49,4 +49,4 @@ Here is the current protocol: to do word segmentation, client should
 send "SEG <length>\n" followed by data; to do conversion, client
 should send "CONV <variant code> <length>\n" followed by data. On
 success, the server responds with "OK <length>\n" followed by data, or
-"ERROR\n" if something goes wrong. 
+"ERROR <code>\n" if something goes wrong. 

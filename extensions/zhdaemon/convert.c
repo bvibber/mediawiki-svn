@@ -3,24 +3,14 @@
 #include "zhdaemon.h"
 #include "convert.h"
 
-unsigned char *doConvert(int tid, 
-			 const unsigned char *input, int len,
-			 const unsigned char *tolang) {
-  Tnode *dict;
+unsigned char *doConvert(const unsigned char *input, int len,
+			 const Tnode *dict) {
   int ii, ri, rlen, c, m;
   unsigned char *r;
 
-  if(strcmp(tolang, "CN") == 0) 
-    dict = dictToCN;
-  else if(strcmp(tolang, "TW") == 0)
-    dict = dictToTW;
-  else if(strcmp(tolang, "HK") == 0)
-    dict = dictToHK;
-  else if(strcmp(tolang, "SG") == 0)
-    dict = dictToSG;
-  else {
+  if(!dict) {
     if(optWarning)
-      fprintf(stderr, "Unknown Chinese variant requested.\n");
+      fprintf(stderr, "doConvert() called with NULL dictionary.\n");
     return NULL;
   }
 
@@ -28,7 +18,7 @@ unsigned char *doConvert(int tid,
   r = (unsigned char*)malloc(sizeof(unsigned char) * rlen);
   if(!r) {
     if(optWarning)
-      fprintf(stderr, "%d: doSegment() out of memory.\n", tid);
+      fprintf(stderr, "doConvert() out of memory.\n");
     return NULL;
   }
 
@@ -44,7 +34,7 @@ unsigned char *doConvert(int tid,
       r = (unsigned char*)realloc(r, sizeof(unsigned char) * rlen);
       if(!r) {
 	if(optWarning)
-	  fprintf(stderr, "%d: doConvert() out of memory.\n", tid);
+	  fprintf(stderr, "doConvert() out of memory.\n");
 	return NULL;
       }
     }
