@@ -134,10 +134,7 @@ class SearchEngine {
 		  SearchEngine::numLink( $offset, 50, $link, $query ) . " | " .
 		  SearchEngine::numLink( $offset, 100, $link, $query ) . " | " .
 		  SearchEngine::numLink( $offset, 250, $link, $query ) . " | " .
-		  SearchEngine::numLink( $offset, 500, $link, $query ) . " | " .
-		  SearchEngine::numLink( $offset, 1000, $link, $query ) . " | " .
-		  SearchEngine::numLink( $offset, 2500, $link, $query ) . " | " .
-		  SearchEngine::numLink( $offset, 5000, $link, $query );
+		  SearchEngine::numLink( $offset, 500, $link, $query );
 
 		$sl = str_replace( "$1", $plink, wfMsg( "viewprevnext" ) );
 		$sl = str_replace( "$2", $nlink, $sl );

@@ -41,16 +41,12 @@ function wfSpecialRecentchangeslinked()
 	$cl = lcCountLink( 50, $days, $tu ) . " | " .
 	  lcCountLink( 100, $days, $tu ) . " | " .
 	  lcCountLink( 250, $days, $tu ) . " | " .
-	  lcCountLink( 500, $days, $tu ) . " | " .
-	  lcCountLink( 1000, $days, $tu ) . " | " .
-	  lcCountLink( 2500, $days, $tu ) . " | " .
-	  lcCountLink( 5000, $days, $tu );
+	  lcCountLink( 500, $days, $tu );
 	$dl = lcDaysLink( $limit, 1, $tu ) . " | " .
 	  lcDaysLink( $limit, 3, $tu ) . " | " .
 	  lcDaysLink( $limit, 7, $tu ) . " | " .
 	  lcDaysLink( $limit, 14, $tu ) . " | " .
-	  lcDaysLink( $limit, 30, $tu ) . " | " .
-	  lcDaysLink( $limit, 90, $tu );
+	  lcDaysLink( $limit, 30, $tu );
 	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
 	$note = str_replace( "$2", $dl, $note );
 	$wgOut->addHTML( "{$note}\n" );
