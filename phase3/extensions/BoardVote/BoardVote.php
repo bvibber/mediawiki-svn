@@ -6,7 +6,7 @@
 $wgExtensionFunctions[] = "wfBoardvoteSetup";
 
 # This extension act as a special page
-require_once( 'includes/SpecialPage.php' );
+require_once( '../../includes/SpecialPage.php' );
 
 # Default settings
 if ( !isset( $wgBoardVoteDB ) ) $wgBoardVoteDB = "boardvote";

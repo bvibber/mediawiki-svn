@@ -1,5 +1,9 @@
 <?php
 
+if( php_sapi_name() != 'cli' ) {
+	die("");
+}
+
 $end = "-----END PGP MESSAGE-----";
 $contents = file_get_contents( $argv[1] );
 $entries = explode( $end, $contents );
