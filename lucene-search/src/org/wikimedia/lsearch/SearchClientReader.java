@@ -33,7 +33,6 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
@@ -43,7 +42,6 @@ import org.apache.lucene.search.Hits;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.Searcher;
-import org.apache.lucene.search.TermQuery;
 
 /**
  * @author Kate Turner
@@ -71,7 +69,7 @@ public class SearchClientReader extends Thread {
 
 	public static void init() {
 		try {
-			analyzer = new StandardAnalyzer();
+			analyzer = new EnglishAnalyzer();
 			parser = new QueryParser("contents", analyzer);
 			reader = IndexReader.open(MWDaemon.indexPath);
 			searcher = new IndexSearcher(reader);

@@ -35,7 +35,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexWriter;
@@ -50,6 +49,10 @@ public class MWSearch {
 		,DOING_INCREMENT 	= 2
 		;
 	static int what = -1;
+	static final int
+		 MW_NEW = 1
+		,MW_OLD = 2;
+	static int mw_version = MW_NEW;
 	static String configfile = "./mwsearch.conf";
 	static String dburl;
 	private static Connection dbconn;
@@ -72,6 +75,17 @@ public class MWSearch {
 				configfile = args[++i];
 			else if (args[i].equals("-latin1"))
 				latin1 = true;
+			else if (args[i].equals("-mwversion")) {
+				String vers = args[++i];
+				if (vers.equals("old"))
+					mw_version = MW_OLD;
+				else if (vers.equals("new"))
+					mw_version = MW_NEW;
+				else {
+					System.err.println("Unknown MediaWiki version " + vers);
+					return;
+				}
+			}
 			++i;
 		}
 		dburl = args[i];
@@ -110,7 +124,7 @@ public class MWSearch {
 		IndexWriter writer;
 		try {
 			writer= new IndexWriter(p.getProperty("mwsearch.indexpath"), 
-					new StandardAnalyzer(), true);
+					new EnglishAnalyzer(), true);
 		} catch (IOException e4) {
 			System.out.println("Error: could not open index path: " + e4.getMessage());
 			return;
@@ -120,11 +134,27 @@ public class MWSearch {
 		long now = System.currentTimeMillis();
 		long numArticles = 0;
 		
-		String query = "SELECT page_namespace,page_title,old_text " +
+		String query;
+		
+		if (mw_version == MW_NEW)
+			query = "SELECT page_namespace,page_title,old_text " +
 			"FROM page, text WHERE old_id=page_latest AND page_is_redirect=0";
+		else
+			query = "SELECT cur_namespace,cur_title,cur_text " +
+			"FROM cur WHERE cur_is_redirect=0";
+		
 		PreparedStatement pstmt;
 		try {
-			pstmt = dbconn.prepareStatement(query);
+			// Without this, Lucene takes so long to optimise the index that
+			// MySQL will time out the connection.
+			pstmt = dbconn.prepareStatement("set net_read_timeout=2000");
+			pstmt.executeUpdate();
+			pstmt = dbconn.prepareStatement("set net_write_timeout=2000");
+			pstmt.executeUpdate();
+			
+			pstmt = dbconn.prepareStatement(query, ResultSet.TYPE_FORWARD_ONLY,
+					ResultSet.CONCUR_READ_ONLY);
+			pstmt.setFetchSize(Integer.MIN_VALUE);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				String namespace = rs.getString(1);
@@ -135,10 +165,6 @@ public class MWSearch {
 						title = new String(title.getBytes("ISO-8859-1"), "UTF-8");
 						content = new String(content.getBytes("ISO-8859-1"), "UTF-8");
 					} catch (UnsupportedEncodingException e) {}
-				}
-				if (title.equals("Post-it")) {
-					System.out.println("namespace="+namespace+" title="+title+
-							"content=["+content+"]");
 				}
 				Document d = new Document();
 				d.add(Field.Text("namespace", namespace));
