@@ -393,6 +393,23 @@ class WikiPage extends WikiTitle {
         }
 
     # This function replaces wiki-style external links (both with and without []) with HTML links
+    function replaceExternalLinks ( $s ) {
+        # first the external links of the form [url text]:
+        $s = $this->subReplaceExternalLinks ( $s , "http:" , true ) ;
+        $s = $this->subReplaceExternalLinks ( $s , "ftp:" , false ) ;
+        $s = $this->subReplaceExternalLinks ( $s , "gopher:" , false ) ;
+        $s = $this->subReplaceExternalLinks ( $s , "news:" , false ) ;
+        $s = $this->subReplaceExternalLinks ( $s , "mailto:" , false ) ;
+
+        # now for naked external urls. 
+        # Note: this will break for "url" and [url url].
+        $o_no_dot = "A-Za-z0-9_~/=?\:\%\+\&\#\-" ;
+        $o = "\.$o_no_dot" ;
+        $s = eregi_replace ( "([^\"])http://([$o]+[$o_no_dot])([^$o_no_dot])" , "\\1<a href=\"http://\\2\" class=\"external\">http://\\2</a>\\3" , $s ) ;
+                
+        return $s ;
+        }
+
     function subReplaceExternalLinks ( $s , $what , $autonumber ) {
 	if ( substr_count ( $s , "[$what" ) == 0 ) return $s ; # Speedup
         global $user ;
@@ -400,8 +417,6 @@ class WikiPage extends WikiTitle {
         $a = explode ( "[$what" , " ".$s ) ;
         $s = array_shift ( $a ) ;
         $s = substr ( $s , 1 ) ;
-        $image = "" ; # with an <img tag, this will be displayed before external links
-        #$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
         $linkStyle = "class=\"external\"";
         foreach ( $a as $t ) {
             $b = spliti ( "]" , $t , 2 ) ;
@@ -419,29 +434,15 @@ class WikiPage extends WikiTitle {
                         $text = "[$text]" ;
                     }
                 if ( substr_count ( $b[1] , "<hr>" ) > 0 ) $cnt = 1 ;
-                $link = "~$what".$link ;
+                $link = "$what".$link ;
                 if ( $user->options["showHover"] == "yes" ) $hover = "title=\"$link\"" ;
-                $theLink = "<a href=\"$link\" $linkStyle $hover>$image$text</a>" ;
+                $theLink = "<a href=\"$link\" $linkStyle $hover>$text</a>" ;
                 $s .= $theLink.$b[1] ;
                 }
             }
 
-        $o_no_dot = "A-Za-z0-9_~/=?\:\%\+\&\#\-" ;
-        $o = "\.$o_no_dot" ;
-        $s = eregi_replace ( "([^~\"])http://([$o]+[$o_no_dot])([^$o_no_dot])" , "\\1<a href=\"http://\\2\" $linkStyle>".$image."http://\\2</a>\\3" , $s ) ;
-        $s = str_replace ( "~$what" , "$what" , $s ) ;
-
         return $s ;
         }
-
-	function replaceExternalLinks ( $s ) {
-		$s = $this->subReplaceExternalLinks ( $s , "http:" , true ) ;
-		$s = $this->subReplaceExternalLinks ( $s , "ftp:" , false ) ;
-		$s = $this->subReplaceExternalLinks ( $s , "gopher:" , false ) ;
-		$s = $this->subReplaceExternalLinks ( $s , "news:" , false ) ;
-		$s = $this->subReplaceExternalLinks ( $s , "mailto:" , false ) ;
-		return $s ;
-		}
 
     # This function replaces the newly introduced wiki variables with their values (for display only!)
     function replaceVariables ( $s ) {
