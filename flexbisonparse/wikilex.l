@@ -98,7 +98,7 @@ int yywrap(void) { return 1; }
                                     yylval.num = 0;
                                     while (yytext [ yylval.num ] == '=')
                                         yylval.num++;
-                                    debuglex ("ENDHEADING(%d) ", yylval.num);
+                                    debuglex2 ("ENDHEADING(%d) ", yylval.num);
                                     return ENDHEADING;
                                 }
 
