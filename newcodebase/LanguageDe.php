@@ -97,6 +97,7 @@
 	"Allpages"		=> "Zeige alle Artikel (alphabetisch)",
 
 	"Ipblocklist"	=> "Zeige blockierte IP-Addressen",
+	"Maintenance" => "Wartungsseite",
 	"Specialpages"  => "",
 	"Contributions" => "",
 	"Movepage"		=> "",
@@ -474,6 +475,20 @@ Es wurden insgesamt <b>$3</b> Seiten angesehen, und <b>$4</b> bearbeitet.
 Daraus ergeben sich <b>$5</b> Bearbeitungen pro Seite, und <b>$6</b> Betrachtungen pro Bearbeitung.",
 "userstatstext" => "Es gibt <b>$1</b> registrierte Benutzer.
 Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
+
+# Maintenance Page
+#
+"maintenance"		=> "Wartungsseite",
+"maintnancepagetext"	=> "This page includes several handy tools for everyday maintenance. Some of these functions tend to stress the database, so please do not hit reload after every item you fixed ;-)",
+"maintenancebacklink"	=> "Zurüch zur Wartungsseite",
+"disambiguations"	=> "Begriffsklärungsseiten",
+"disambiguationspage"	=> "Wikipedia:Begriffsklärung",
+"disambiguationstext"	=> "The following articles link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br>A page is treated as dismbiguation if it is linked from $1.<br>Redirects are <i>not</i> listed here.",
+"doubleredirects"	=> "Doppelte Redirects",
+"doubleredirectstext"	=> "<b>Attention:</b> This list may contain false positives. That usually means there is additional text with links below the first #REDIRECT.<br>\nEach row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" taget article, which the first redirect should point to.",
+"selflinks"		=> "Seiten, die auf sich selbst verweisen",
+"selflinkstext"		=> "The following pages contain a link to themselves, which they should not.",
+
 
 # Miscellaneous special pages
 #

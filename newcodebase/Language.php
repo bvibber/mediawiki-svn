@@ -231,6 +231,7 @@
 	"Allpages"		=> "All pages by title",
 
 	"Ipblocklist"	=> "Blocked IP addresses",
+	"Maintenance" => "Maintenance page",
 	"Specialpages"  => "",
 	"Contributions" => "",
 	"Emailuser"		=> "",
@@ -679,6 +680,19 @@ since the software was upgraded (July 20, 2002).
 That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "userstatstext" => "There are <b>$1</b> registered users.
 <b>$2</b> of these are administrators (see $3).",
+
+# Maintenance Page
+#
+"maintenance"		=> "Maintenance page",
+"maintnancepagetext"	=> "This page includes several handy tools for everyday maintenance. Some of these functions tend to stress the database, so please do not hit reload after every item you fixed ;-)",
+"maintenancebacklink"	=> "Back to Maintenance Page",
+"disambiguations"	=> "Disambiguation pages",
+"disambiguationspage"	=> "Wikipedia:Links_to_disambiguating_pages",
+"disambiguationstext"	=> "The following articles link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br>A page is treated as dismbiguation if it is linked from $1.<br>Redirects are <i>not</i> listed here.",
+"doubleredirects"	=> "Double Redirects",
+"doubleredirectstext"	=> "<b>Attention:</b> This list may contain false positives. That usually means there is additional text with links below the first #REDIRECT.<br>\nEach row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" taget article, which the first redirect should point to.",
+"selflinks"		=> "Pages with Self Links",
+"selflinkstext"		=> "The following pages contain a link to themselves, which they should not.",
 
 # Miscellaneous special pages
 #
