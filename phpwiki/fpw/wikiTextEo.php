@@ -63,6 +63,7 @@ $wikiCannotEditPage = "<h3>Vi ne rajtas redakti ĉi tiun paĝon!</h3>" ;
 $wikiEditConflictMessage = "<h1>Redakta konflikto!</h1>\n<b>Iu ŝanĝis la paĝon post kiam vi ekskribis. La supra tekstujo havas la konservitan tekston. Nur la teksto en la supra tekstujo estos konservita.</b><br>\nRulumu malsupren por vidi vian tekston redaktitan kaj la malsamojn inter la du versioj.<br>\n" ;
 $wikiPreviewAppend = "<hr>\n<h2>Antaŭrigardo :</h2>\n$1<hr><h3>Memoru, ĉi tiu estas nur la antaŭrigardo kaj ne jam konservita!</h3>" ;
 $wikiSummary = "Resumo:" ;
+$wikiDescription = "Priskribo:" ;
 $wikiMinorEdit = "Ĉi tiu ŝanĝo estas redakteto." ;
 $wikiCopyrightNotice = "Bonvolu noti, ke ĉiun kontribuaĵon al la Vikipedio estu konsiderata eldonita laŭ la
 <a href=\"$THESCRIPT?title=GFDL\">GNU Free Documentation License</a>.
@@ -276,7 +277,7 @@ $wikiUploadDelMsg2 = "Forigi dosieron $1" ;
 $wikiUploadAffirm = "<nowiki>Vi devas aserti, ke la dosiero ne malsekvas kopirajtleĝon. Revenu al la <a href=\"$THESCRIPT?title=special:upload\">Alŝutejo</a></nowiki>" ;
 $wikiUploadFull = "Bedaŭrinde, nia disko preskaŭ plenas. Ni ne povas lasi vin alŝuti dosierojn nuntempe." ;
 $wikiUploadSuccess = "Dosiero <b>$1</b> estas sukcese alŝutita!" ;
-$wikiUploadSuccess1 = "*Je $1, $2 alŝutis dosieron '''$3'''\n" ;
+$wikiUploadSuccess1 = "*Je $1, $2 alŝutis dosieron '''$3'''$4\n" ;
 $wikiUploadSuccess2 = "Alŝuto de dosiero $1" ;
 #$wikiUploadText = "<h2>Instrukcio:</h2>\n" ;
 $wikiUploadText = "<ul><li><strong>Uzu ĉi tiun formulon por alŝuti diversajn dosierojn</strong></li>

@@ -8,7 +8,7 @@ function upload () {
 	global $wikiUploadDeleted , $wikiUploadDelMsg1 , $wikiUploadDelMsg2 ;
 	global $wikiUploadAffirm , $wikiUploadFull , $wikiUploadRestrictions ;
 	global $wikiUploadSuccess , $wikiUploadSuccess1 , $wikiUploadSuccess2 ;
-	global $wikiUploadAffirmText , $wikiUploadButton , $wikiUser , $wikiCurrentServer ;
+	global $wikiUploadAffirmText , $wikiUploadButton , $wikiUser , $wikiCurrentServer , $wikiDescription , $wikiRecodeInput , $CommentBox ;
 	$vpage->special ( $wikiUploadTitle ) ;
 	$isSysop = in_array ( "is_sysop" , $user->rights ) ;
 	$xtitle = $wikiUploadPage ;
@@ -52,12 +52,14 @@ function upload () {
 		$now = date ( "Y-m-d H:i:s" , time () ) ;
 		$userText = "[[$wikiUser:$user->name|$user->name]]" ;
 		if ( $user->name == "" ) $userText = $REMODE_ADDR ;
+		$CommentBox = $wikiRecodeInput ( str_replace ( array ( "\\'", "\\\"", "\\\\" ) , array ( "'" , "\"", "\\" ) , $CommentBox ) );
 		$uploaddir = ereg_replace("[A-Za-z0-9_.]+$", "upload", $THESCRIPT);
-		$logText = str_replace ( "$1" , $now , str_replace ( "$2" , $userText ,
-			str_replace ( "$3" ,
+		$logText = str_replace ( array ( '$1' , '$2' , '$3' , '$4' ) ,
+				array ( $now , $userText ,
 				"[$wikiCurrentServer$uploaddir/" . nurlencode($Upload_name) . " " . htmlspecialchars ( $Upload_name ) . "]",
-				$wikiUploadSuccess1 ) ) ) ;
-		makeLog ( "log:Uploads" , $logText , str_replace ( "$1" , $Upload_name , $wikiUploadSuccess2 ) ) ;
+				(("x$CommentBox" != "x")?" <b><nowiki>[" . htmlspecialchars ( $CommentBox ) . "]</nowiki></b>" :"") ) ,
+				$wikiUploadSuccess1 ) ;
+		makeLog ( "log:Uploads" , $logText , str_replace ( "$1" , $Upload_name , $wikiUploadSuccess2 ) . (("x$CommentBox" != "x")?" - $CommentBox":"") ) ;
 
 		unset ( $Upload_name ) ;
 	}
@@ -69,6 +71,7 @@ function upload () {
 	$ret .= " <input name=Upload type=\"file\"><br>\n";
 	$ret .= " <input type=hidden name=update value=1>\n";
 	$ret .= " <input type=hidden name=step value=$step>\n";
+	$ret .= "$wikiDescription <input type=\"text\" value=\"\" name=\"CommentBox\" size=\"50\" maxlength=\"200\"><br>\n" ;
 	$ret .= "<INPUT TYPE=checkbox NAME=\"no_copyright\" VALUE=\"AFFIRMED\">$wikiUploadAffirmText<br>\n" ;
 	$ret .= " <input type=submit name=Upload value=$wikiUploadButton>\n";
 	$ret .= "</form>\n";
