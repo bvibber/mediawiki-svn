@@ -5,7 +5,7 @@ class OutputPage {
 	var $mHeaders, $mCookies, $mMetatags, $mKeywords;
 	var $mLinktags, $mPagetitle, $mBodytext, $mDebugtext;
 	var $mHTMLtitle, $mRobotpolicy, $mIsarticle, $mPrintable;
-	var $mSubtitle, $mRedirect;
+	var $mSubtitle, $mRedirect, $mAutonumber;
 
 	var $mDTopen, $mLastSection; # Used for processing DL, PRE
 	var $mLanguageLinks, $mSupressQuickbar;
@@ -20,6 +20,7 @@ class OutputPage {
 		$this->mIsarticle = $this->mPrintable = true;
 		$this->mSupressQuickbar = $this->mDTopen = $this->mPrintable = false;
 		$this->mLanguageLinks = array();
+		$this->mAutonumber = 0;
 	}
 
 	function addHeader( $name, $val ) { array_push( $this->mHeaders, "$name: $val" ) ; }
@@ -264,7 +265,6 @@ class OutputPage {
 		$text = $this->doHeadings( $text );
 		$text = $this->doBlockLevels( $text, $linestart );
 
-		$text = $this->parseImages( $text );
 		$text = $this->replaceExternalLinks( $text );
 		$text = $this->replaceInternalLinks ( $text );
 
@@ -310,21 +310,18 @@ class OutputPage {
 	{
 		for ( $i = 6; $i >= 2; --$i ) {
 			$h = substr( "======", 0, $i );
-			$text = preg_replace( "/(^|\\n)\\s*{$h}\\s+([^\\n]+)\\s+{$h}/sD",
-			  "\\1<h{$i}>\\2</h{$i}>", $text );
+			$text = preg_replace( "/(^|\\n)\\s*{$h}\\s+([^\\n]+)\\s+{$h}\\s/sD",
+			  "\\1<h{$i}>\\2</h{$i}>\n", $text );
 		}
 		return $text;
 	}
 
-	/* private */ function parseImages( $text )
+	function fnamePart( $url )
 	{
-		global $wgUser;
-		$sk = $wgUser->getSkin();
-
-		$text = preg_replace(
-		  "/(^|[^[])http:\\/\\/([a-zA-Z0-9_\\/:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
-		  "\\1" . $sk->makeImage( "http://\\2.\\3", "[Image]" ), $text );
-		return $text;
+		$basename = strrchr( $url, "/" );
+		if ( false === $basename ) { $basename = $url; }
+		else ( $basename = substr( $basename, 1 ) );
+		return $basename;
 	}
 
 	# Note: we have to do external links before the internal ones,
@@ -334,6 +331,7 @@ class OutputPage {
 	/* private */ function replaceExternalLinks( $text )
 	{
 		$text = $this->subReplaceExternalLinks( $text, "http", true );
+		$text = $this->subReplaceExternalLinks( $text, "https", true );
 		$text = $this->subReplaceExternalLinks( $text, "ftp", false );
 		$text = $this->subReplaceExternalLinks( $text, "gopher", false );
 		$text = $this->subReplaceExternalLinks( $text, "news", false );
@@ -345,12 +343,22 @@ class OutputPage {
 	{
 		global $wgUser;
 
-		$sk = $wgUser->getSkin();
+		$unique = "4jzAfzB8hNvf4sqyO9Edd8pSmk9rE2in0Tgw3";
 		$uc = "A-Za-z0-9_\\/:.,~%\\-+&;#?!=()@\\xA0-\\xFF";
+		$images = "gif|png|jpg|jpeg";
 
-		$s = preg_replace( "/(^|[^[{$uc}])({$protocol}:[{$uc}]+)/",
-		  "\\1<a href=\"\\2\"" . $sk->getExternalLinkAttributes( "\\2",
-		  "\\2" ) . ">" . wfEscapeHTML( "\\2" ) . "</a>", $s );
+		$e1 = "/(^|[^\\[])({$protocol}:)([{$uc}]+)\\." .
+		  "((?i){$images})([^{$uc}]|$)/";
+		$e2 = "/(^|[^\\[])({$protocol}:)([{$uc}]+)([^{$uc}]|$)/";
+		$sk = $wgUser->getSkin();
+
+		$s = preg_replace( $e1, "\\1" . $sk->makeImage( "{$unique}:\\3" .
+		  ".\\4", $this->fnamePart( "\\3.\\4" ) ) . "\\5", $s );
+		$s = preg_replace( $e2, "\\1" . "<a href=\"{$unique}:\\3\"" .
+		  $sk->getExternalLinkAttributes( "{$unique}:\\3", wfEscapeHTML(
+		  "{$unique}:\\3" ) ) . ">" . wfEscapeHTML( "{$unique}:\\3" ) .
+		  "</a>\\4", $s );
+		$s = str_replace( $unique, $protocol, $s );
 
 		$a = explode( "[{$protocol}:", " " . $s );
 		$s = array_shift( $a );
@@ -358,13 +366,12 @@ class OutputPage {
 
 		$e1 = "/^([{$uc}]+)](.*)\$/sD";
 		$e2 = "/^([{$uc}]+)\\s+([^\\]]+)](.*)\$/sD";
-		$auto = 0;
 
 		foreach ( $a as $line ) {
 			if ( preg_match( $e1, $line, $m ) ) {
 				$link = "{$protocol}:{$m[1]}";
 				$trail = $m[2];
-				if ( $autonumber ) { $text = "[" . ++$auto . "]"; }
+				if ( $autonumber ) { $text = "[" . ++$this->mAutonumber . "]"; }
 				else { $text = wfEscapeHTML( $link ); }
 			} else if ( preg_match( $e2, $line, $m ) ) {
 				$link = "{$protocol}:{$m[1]}";
