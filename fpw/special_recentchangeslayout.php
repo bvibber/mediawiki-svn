@@ -25,6 +25,9 @@ function recentChangesLayout ( &$arr ) {
 
 	global $wikiRCLegend ;
 
+	if ( in_array ( "is_sysop" , $user->rights ) ) $isSysop = true ;
+	else $isSysop = false ;
+
 	$xyz = new WikiTitle ;
 	$editTypes = array ( "0"=>"" , "1"=>"<font color=cyan>M</font>" , "2"=>"<font color=green>N</font>" ) ;
 	$ret = str_replace ( "$1" , $editTypes["1"] , str_replace ( "$2" , $editTypes["2"] ,  $wikiRCLegend ) ) ;
@@ -47,8 +50,11 @@ function recentChangesLayout ( &$arr ) {
 		if ( $s->cur_user != 0 ) {
 			$xyz->SetTitle ( $u ) ;
 			$u = "<a href=\"".wikiLink("user:$xyz->url")."\">$u</a>" ;
+		} elseif ( !$isSysop ) {
+			$u = explode ( "." , $u ) ;
+			$u = $u[0].".".$u[1].".".$u[2].".xxx" ;
+#			$u = "<font color=red>$u</font>" ; # IPs in red, deactivated
 			}
-#		else $u = "<font color=red>$u</font>" ; # IPs in red, deactivated
 		$comment = trim($s->cur_comment) ;
 		if ( $comment == "*" ) $comment = "" ;
 		$o_comment = $comment ;
