@@ -14,7 +14,7 @@ $wikiCharset = "iso-8859-1" ;
 $wikiMainPage = "Main Page" ; # This is actual the title of the article in the database
 $wikiErrorPageTitle = "Yikes! An error!" ;
 $wikiErrorMessage = "<h2>$1!</h2>Return to the [[:Main Page|Main Page]]!" ;
-$wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","deletepage","protectpage","contributions","whatlinkshere");
+$wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","longpages","listusers","watchlist","special_pages","editusersettings","deletepage","protectpage","contributions","whatlinkshere");
 $wikiRecentChangesText = "Track the most recent changes to Wikipedia on this page. [[Welcome, newcomers]]! Please have a look at these pages: [[Wikipedia FAQ]], [[Wikipedia policy]] (especially [[naming conventions]] and [[neutral point of view]]), and [[most common Wikipedia faux pas]].<br>If you want to see the Wikipedia succeed, it's very important that you don't add material restricted by others' [[copyright]]s. The legal liability could really hurt the project, so please don't do it.<br>See also the [http://meta.wikipedia.com/wiki.phtml?title=special:RecentChanges recent meta discussion]" ;
 $wikiMetaDescription = "$1... Read more here at wikipedia, the free encyclopedia!" ;
 
@@ -78,6 +78,7 @@ $wikiOrphans = "Orphans" ;
 $wikiMostWanted = "Most wanted" ;
 $wikiAllPages = "All pages" ;
 $wikiStubs = "Stub articles" ;
+$wikiLongPages = "Long articles" ;
 $wikiListUsers = "List users" ;
 $wikiMyWatchlist = "My watchlist" ;
 $wikiBeginDiff = "BEGIN DIFF" ;
@@ -303,7 +304,9 @@ $wikiCurrentVersion = "current" ;
 $wikiSpecialTitle = "Special Pages" ;
 $wikiSpecialText = "<b>This is a list of special pages.</b> Some of them are only available if you are logged in. If you are logged in, you can have this list automatically displayed on the right or left of each page as a QuickBar.<br><br>" ;
 $wikiStubTitle = "Short 'stub' articles" ;
-$wikiStubText = "'''These are all the articles in the database, sorted by length.'''<br>''#REDIRECT pages and pages within a namespace (like Talk:) are '''not''' listed here!''\n\n" ;
+$wikiLongPagesTitle = "The longest articles" ;
+$wikiStubText = "'''These are all the articles in the database, sorted by length, shortest first.'''<br>''#REDIRECT pages and pages within a namespace (like Talk:) are '''not''' listed here!''\n\n" ;
+$wikiLongPagesText = "'''These are all the articles in the database, sorted by length, longest first.'''<br>''#REDIRECT pages and pages within a namespace (like Talk:) are '''not''' listed here!''\n\n" ;
 $wikiStubChars = "$1 chars" ;
 $wikiStubDelete = "<b>Delete this page!</b>" ;
 $wikiStubLinkHere = "$1 articles link here." ;
