@@ -562,6 +562,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 	function quickBar()
 	{
 		global $wgOut, $wgTitle, $wgUser, $action, $wgLang;
+		global $wpPreview;
 		wfProfileIn( "Skin::quickBar" );
 
 		$s = "\n<div id='quickbar'>";
@@ -575,7 +576,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
                 if ( wfMsg ( "currentevents" ) != "-" ) $s .= $sep . $this->makeKnownLink( wfMsg( "currentevents" ), "" ) ;
                 $s .= "\n<hr>";
 		$articleExists = $wgTitle->getArticleId();
-		if ( $wgOut->isArticle() || $action =="edit" || $action =="history") {
+		if ( $wgOut->isArticle() || $action =="edit" || $action =="history" || $wpPreview) {
 						
 			if($wgOut->isArticle()) {
 				$s .= "<strong>" . $this->editThisPage() . "</strong>";
