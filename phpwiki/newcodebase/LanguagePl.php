@@ -217,6 +217,12 @@ include_once("utf8Case.php");
 	"grudzień"
 );
 
+/* private */ $wgMonthNamesGenPl = array(
+	"stycznia", "lutego", "marca", "kwietna", "maja", "czerwca",
+	"lipca", "sierpnia", "wrzeĹnia", "paĹşdziernika", "listopada",
+	"grudnia"
+);
+
 /* private */ $wgMonthAbbreviationsPl = array(
 	"sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie",
 	"wrz", "paź", "lis", "gru"
@@ -1110,6 +1116,12 @@ class LanguagePl extends LanguageUtf8 {
 		return $wgMonthNamesPl[$key-1];
 	}
 
+	function getMonthNameGen( $key )
+	{
+		global $wgMonthNamesGenPl;
+		return $wgMonthNamesGenPl[$key-1];
+	}
+
 	function getMonthAbbreviation( $key )
 	{
 		global $wgMonthAbbreviationsPl;
@@ -1136,7 +1148,7 @@ class LanguagePl extends LanguageUtf8 {
 		  (int)substr( $ts, 0, 4 ) );
 		return date( "YmdHis", $t );
 	}
- 
+
 	function date( $ts, $adj = false )
 	{
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); }

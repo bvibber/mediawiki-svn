@@ -1017,6 +1017,8 @@ class OutputPage {
 		$text = str_replace( "{{CURRENTMONTH}}", $v, $text );
 		$v = $wgLang->getMonthName( date( "n" ) );
 		$text = str_replace( "{{CURRENTMONTHNAME}}", $v, $text );
+		$v = $wgLang->getMonthNameGen( date( "n" ) );
+		$text = str_replace( "{{CURRENTMONTHNAMEGEN}}", $v, $text );
 		$v = date( "j" );
 		$text = str_replace( "{{CURRENTDAY}}", $v, $text );
 		$v = $wgLang->getWeekdayName( date( "w" )+1 );
