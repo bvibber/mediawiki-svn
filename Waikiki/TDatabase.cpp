@@ -122,6 +122,7 @@ void TDatabase::mysql2sqlite ( string fn_in , string fn_out )
               s.trim () ;
               VTUCS x ;
               s.replace ( "binary" , "" ) ;
+              s.replace ( " NOT NULL" , "" ) ;
               s.replace ( "unsigned" , "" ) ;
               s.replace ( " integer" , " int" ) ;
               s.replace ( " int" , " integer" ) ;
@@ -396,11 +397,9 @@ void TDatabaseSqlite::storeArticle ( TArticle &art , bool makeOldVersion )
     TUCS source = art.getSource() ;
     source.replace ( "\\" , "\\\\" ) ;
     source.replace ( "\n" , "\\n" ) ;
-//    addKeyValue ( s1 , s2 , "cur_text" , source ) ;
+    addKeyValue ( s1 , s2 , "cur_text" , source ) ;
     addKeyValue ( s1 , s2 , "cur_title" , tt.getDBkey() ) ;
     addKeyValue ( s1 , s2 , "cur_namespace" , TUCS::fromint ( art.id ) ) ;
-    addKeyValue ( s1 , s2 , "cur_timestamp" , "11111111111111" ) ;
-    addKeyValue ( s1 , s2 , "cur_random" , "0.123" ) ;
     if ( doesArticleExist ( tt ) )
         {
         if ( makeOldVersion )
@@ -411,7 +410,7 @@ void TDatabaseSqlite::storeArticle ( TArticle &art , bool makeOldVersion )
         sql += "' AND cur_namespace=" ;
         sql += TUCS::fromint ( tt.getNamespaceID() ) ;
         query ( sql ) ;
-        cout << sql.getstring() << "<br>\n" << endl ;
+//        cout << sql.getstring() << "<br>\n" << endl ;
         addKeyValue ( s1 , s2 , "cur_id" , TUCS::fromint ( art.id ) ) ;
         }
     else
