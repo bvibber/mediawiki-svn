@@ -1,5 +1,11 @@
 <?
+# GLOBALS!!!
+# Set these to the appropriate values
+$wd = "C:\\Programme\\Dev-Cpp\\Mine\\Waikiki" ; # Path of waikiki.exe
 
+
+
+# Some parameter-parsing function
 function getGet ( $p )
 	{
    $x = $_GET[$p] ;
@@ -7,6 +13,9 @@ function getGet ( $p )
    return $x ;
    }
 
+# Now the real fun starts
+$prg = "waikiki.exe" ;
+$db = '-sqlite="test.sqlite"' ;
 $action = $_GET['action'] ;
 $title = $_GET['title'] ;
 
@@ -18,9 +27,6 @@ if ( $title == "" ) $title = "B" ;
 if ( $_GET['go'] == "Go" ) $action="go" ;
 #if ( isset ( $_GET['search'] ) ) $action="search" ;
 
-$wd = "C:\\Programme\\Dev-Cpp\\Mine\\Waikiki" ;
-$prg = "waikiki.exe" ;
-$db = '-sqlite="test.sqlite"' ;
 
 if ( $action == "view" )
 	{
