@@ -12,7 +12,7 @@ function wfGetDB()
 	$noconn = str_replace( "$1", $wgDBserver, wfMsg( "noconnect" ) );
 	$nodb = str_replace( "$1", $wgDBname, wfMsg( "nodb" ) );
 	$helpme = "\n<p>If this error persists after reloading and clearing your browser cache,
-        please notify the <a href=\"mailto:wikitech-l@nupedia.com\">Wikipedia developers</a>.</p>";
+        please notify the <a href=\"mailto:wikidown@bomis.com\">Wikipedia developers</a>.</p>";
 
 	if ( ! $wgDBconnection ) {
 		$wgDBconnection = mysql_pconnect( $wgDBserver, $wgDBuser,
