@@ -21,7 +21,7 @@ function rebuildLinkTablesPass1()
   INDEX rl_to (rl_to) ) TYPE=MyISAM";
 	wfQuery( $sql );
 
-	$sql = "LOCK TABLES cur READ, rebuildlinks WRITE";
+	$sql = "LOCK TABLES cur READ, interwiki READ, user_newtalk READ, rebuildlinks WRITE";
 	wfQuery( $sql );
 
 	$sql = "DELETE FROM rebuildlinks";
@@ -48,10 +48,12 @@ function rebuildLinkTablesPass1()
 			$sql = "INSERT INTO rebuildlinks (rl_f_id,rl_f_title,rl_to) VALUES ";
 			for ( $i = 0; $i < $numlinks; ++$i ) {
 				$nt = Title::newFromText( $m[1][$i] );
-				$dest = addslashes( $nt->getPrefixedDBkey() );
-
-				if ( 0 != $i ) { $sql .= ","; }
-				$sql .= "({$id},'{$title}','{$dest}')";
+				if( $nt ) {
+					$dest = addslashes( $nt->getPrefixedDBkey() );
+	
+					if ( 0 != $i ) { $sql .= ","; }
+					$sql .= "({$id},'{$title}','{$dest}')";
+				}
 			}
 			wfQuery( $sql );
 		}
@@ -72,7 +74,7 @@ function rebuildLinkTablesPass2()
 	$count = 0;
 	print "Rebuilding link tables (pass 2).\n";
 
-	$sql = "LOCK TABLES cur READ, rebuildlinks READ, " .
+	$sql = "LOCK TABLES cur READ, rebuildlinks READ, interwiki READ, user_newtalk READ," .
 	  "links WRITE, brokenlinks WRITE, imagelinks WRITE";
 	wfQuery( $sql );
 
