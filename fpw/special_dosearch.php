@@ -321,6 +321,7 @@ function doSearch () {
                           AND cur_title NOT LIKE \"%:%\"";
                     
                 $result = mysql_query ( $sql1 , $connection ) ;
+		if ( $result == 0 ) return htmlspecialchars ( mysql_error () ) ;
                 $row = mysql_fetch_object ( $result );
                 $titleSearch = $row->cnt ;
                 mysql_free_result ( $result ) ;
@@ -331,6 +332,7 @@ function doSearch () {
                           AND cur_title NOT LIKE \"%:%\"";
     
                 $result = mysql_query ( $sql2 , $connection ) ;
+		if ( $result == 0 ) return htmlspecialchars ( mysql_error () ) ;
                 $row = mysql_fetch_object ( $result );
                 $allSearch = $titleSearch + $row->cnt ;
                 mysql_free_result ( $result ) ;
@@ -377,6 +379,7 @@ function doSearch () {
                               AND cur_title NOT LIKE \"%:%\"
                             LIMIT $offset1, $limit1" ;
                     $result1 = mysql_query ( $sql1 , $connection );
+		    if ( $result1 == 0 ) return htmlspecialchars ( mysql_error () ) ;
                 } else $result1 = "";
     
                 $offset2 = max ( $startat - $titleSearch - 1, 0 );
@@ -389,6 +392,7 @@ function doSearch () {
                               AND cur_title NOT LIKE \"%:%\"
                             LIMIT $offset2, $limit2";
                     $result2 = mysql_query ( $sql2 , $connection );
+		    if ( $result2 == 0 ) return htmlspecialchars ( mysql_error () ) ;
                 } else $result2 = "";
                 
                 # to save memory (cur_text can be really big) we do no collect
