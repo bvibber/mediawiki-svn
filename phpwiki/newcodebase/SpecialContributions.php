@@ -120,7 +120,7 @@ function ucListEdit( $sk, $ns, $t, $ts, $topmark, $comment )
 	}
 	if($comment) {
 	
-		$comment="<I>(".$comment.")</I> ";
+		$comment="<I>(". htmlspecialchars( $comment ) .")</I> ";
 	
 	}
 	$d = $wgLang->timeanddate( $ts, true );
