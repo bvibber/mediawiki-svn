@@ -47,10 +47,8 @@ function wfSpecialRecentchanges()
 
 	$count1 = wfNumRows( $res );
 	$obj1 = wfFetchObject( $res );
-	--$count1;
 	$count2 = wfNumRows( $res2 );
 	$obj2 = wfFetchObject( $res2 );
-	--$count2;
 
 	$sk = $wgUser->getSkin();
 	$s = $sk->beginRecentChangesList();

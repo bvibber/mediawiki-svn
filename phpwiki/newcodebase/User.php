@@ -37,6 +37,21 @@ class User {
 		return wfGetSQL( "user", "user_name", "user_id=$id" );
 	}
 
+	/* static */ function idFromName( $name )
+	{
+		$nt = Title::newFromText( $name );
+
+		$sql = "SELECT user_id FROM user WHERE user_name='" .
+		  wfStrencode( $nt->getDBkey() ) . "'";
+		$res = wfQuery( $sql, "User::idFromName" );
+
+		if ( 0 == wfNumRows( $res ) ) { return 0; }
+		else {
+			$s = wfFetchObject( $res );
+			return $s->cur_id;
+		}
+	}
+
 	/* static */ function randomPassword()
 	{
 		$pwchars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz";

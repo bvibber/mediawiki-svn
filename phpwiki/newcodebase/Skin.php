@@ -385,11 +385,16 @@ class Skin {
 		  . $sep . $this->dateLink() . "\n<hr>";
 
 		if ( $wgOut->isArticle() ) {
-		  $s .= $this->editThisPage()
-		  . $sep . $this->talkLink()
-		  . $sep . $this->historyLink()
-		  . $sep . $this->whatLinksHere()
-		  . $sep . $this->watchPageLinksLink() . "\n<hr>";
+			$s .= $this->editThisPage()
+			  . $sep . $this->talkLink()
+			  . $sep . $this->historyLink()
+			  . $sep . $this->whatLinksHere()
+			  . $sep . $this->watchPageLinksLink();
+
+			if ( Namespace::getIndex( "User" ) == $wgTitle->getNamespace() ) {
+				$s .= $sep . $this->userContribsLink();
+			}
+			$s .= "\n<hr>";
 		}
 		$s .= $this->specialLink( "upload" )
 		  . $sep . $this->specialLink( "imagelist" )
@@ -453,6 +458,15 @@ class Skin {
 
 		$s = $this->makeKnownLink( "Special:Whatlinkshere",
 		  wfMsg( "whatlinkshere" ), "target=" . $wgTitle->getPrefixedURL() );
+		return $s;
+	}
+
+	function userContribsLink()
+	{
+		global $wgTitle;
+
+		$s = $this->makeKnownLink( "Special:Contributions",
+		  wfMsg( "contributions" ), "target=" . $wgTitle->getURL() );
 		return $s;
 	}
 
@@ -843,7 +857,7 @@ class Skin {
 				$dlink = "<a href=\"$wgServer$wgScript?image=" .
 				  $wgTitle->getURL() . "&amp;action=delete\">{$del}</a>";
 			} else {
-				$dlink = $cur;
+				$dlink = $del;
 			}
 		} else {
 			$url = wfImageArchiveUrl( $img );

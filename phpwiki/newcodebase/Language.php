@@ -58,8 +58,7 @@
 #
 "mainpage"		=> "Main Page",
 "errorpagetitle" => "Erorr",
-"returntomain"	=> "Return to the [[Main Page]].",
-"returnto"		=> "Return to [[$1]].",
+"returnto"		=> "Return to $1.",
 "fromwikipedia"	=> "From Wikipedia, the free encyclopedia.",
 "whatlinkshere"	=> "Pages that link here",
 "help"			=> "Help",
@@ -442,7 +441,11 @@ consequences, and that you are doing this in accordance with
 
 # Contributions
 #
-"contributions"	=> "Contributions",
+"contributions"	=> "User contributions",
+"contribsub"	=> "For $1",
+"nocontribs"	=> "No changes were found matching these criteria.",
+"ucnote"		=> "Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
+"uclinks"		=> "View the last $1 changes; view the last $2 days.",
 
 # What links here
 #
