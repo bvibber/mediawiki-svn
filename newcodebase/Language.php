@@ -36,7 +36,10 @@
 );
 
 /* private */ $wgMathNamesEn = array(
-	"Aways render PNG", "Try HTML first, fallback to PNG if too complex", "Leave it as TeX (for text browsers)"
+	"Aways render PNG",
+	"HTML if very simple or else PNG",
+	"HTML if possible or else PNG",
+	"Leave it as TeX (for text browsers)"
 );
 
 /* private */ $wgUserTogglesEn = array(
