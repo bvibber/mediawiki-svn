@@ -416,14 +416,6 @@ class OutputPage {
 		return $text;
 	}
 
-	function fnamePart( $url )
-	{
-		$basename = strrchr( $url, "/" );
-		if ( false === $basename ) { $basename = $url; }
-		else ( $basename = substr( $basename, 1 ) );
-		return $basename;
-	}
-
 	# Note: we have to do external links before the internal ones,
 	# and otherwise take great care in the order of things here, so
 	# that we don't end up interpreting some URLs twice.
@@ -445,15 +437,18 @@ class OutputPage {
 
 		$unique = "4jzAfzB8hNvf4sqyO9Edd8pSmk9rE2in0Tgw3";
 		$uc = "A-Za-z0-9_\\/:.,~%\\-+&;#?!=()@\\xA0-\\xFF";
+		$fnc = "A-Za-z0-9_.,~%\\-+&;#?!=()@\\xA0-\\xFF";
 		$images = "gif|png|jpg|jpeg";
 
-		$e1 = "/(^|[^\\[])({$protocol}:)([{$uc}]+)\\." .
+		$e1 = "/(^|[^\\[])({$protocol}:)([{$uc}]+)\\/([{$fnc}]+)\\." .
 		  "((?i){$images})([^{$uc}]|$)/";
 		$e2 = "/(^|[^\\[])({$protocol}:)([{$uc}]+)([^{$uc}]|$)/";
 		$sk = $wgUser->getSkin();
 
-		$s = preg_replace( $e1, "\\1" . $sk->makeImage( "{$unique}:\\3" .
-		  ".\\4", $this->fnamePart( "\\3.\\4" ) ) . "\\5", $s );
+		if ( $autonumber ) { # Use img tags only for HTTP urls
+			$s = preg_replace( $e1, "\\1" . $sk->makeImage( "{$unique}:\\3" .
+			  ".\\5", "\\4.\\5" ) . "\\6", $s );
+		}
 		$s = preg_replace( $e2, "\\1" . "<a href=\"{$unique}:\\3\"" .
 		  $sk->getExternalLinkAttributes( "{$unique}:\\3", wfEscapeHTML(
 		  "{$unique}:\\3" ) ) . ">" . wfEscapeHTML( "{$unique}:\\3" ) .
