@@ -115,8 +115,26 @@ class OutputPage {
 		print $sk->beforeContent();
 		print $this->mBodytext;
 		print $sk->afterContent();
+
+		print $this->reportTime();
+
 		print "</body></html>";
 		flush();
+	}
+
+	function reportTime()
+	{
+		global $wgRequestTime;
+
+		list( $usec, $sec ) = explode( " ", microtime() );
+		$now = (float)$sec + (float)$usec;
+
+		list( $usec, $sec ) = explode( " ", $wgRequestTime );
+		$start = (float)$sec + (float)$usec;
+
+		$com = sprintf( "<!-- Time since request: %01.2f secs. -->",
+		  $now - $start );
+		return $com;
 	}
 
 	# Note: these arguments are keys into wfMsg(), not text!
