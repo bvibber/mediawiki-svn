@@ -6,6 +6,7 @@
 #include <sys/socket.h>
 #include "queue.h"
 #include <sys/time.h>
+#include <sys/resource.h>
 #include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -220,6 +221,8 @@ main(int ac, char **av)
         }
     }
     TAILQ_INIT(&head);
+
+    setpriority(PRIO_PROCESS,getpid(),20);
 
     s = socket(PF_INET, SOCK_DGRAM, 0);
     bzero(&me, sizeof(me));
