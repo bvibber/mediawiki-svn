@@ -595,8 +595,9 @@ comment         :   BEGINCOMMENT text ENDCOMMENT
 
 %%
 
-/* programs */
-
+/* main() -- this is called whenever you invoke the parser from the command line. You probably
+ * do that only to test it, which is why we are outputting some extra information. It reads
+ * standard input and writes to standard output. */
 int main() {
     int result;
     printf ("Parsing... ");
@@ -607,6 +608,8 @@ int main() {
     return result;
 }
 
+/* wikiparse_do_parse() -- this is the function that is actually called by PHP. It uses an
+ * input string, and returns an output string. No stdin/stdout. */
 const char* wikiparse_do_parse (const char* input)
 {
     int result, i;
