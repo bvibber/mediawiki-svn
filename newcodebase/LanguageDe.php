@@ -198,6 +198,7 @@
 "redirectedfrom" => "(Weitergeleitet von $1)",
 "lastmodified"	=> "Diese Seite wurde zuletzt geändert um $1.",
 "viewcount"		=> "Diese Seite wurde bisher $1 mal abgerufen.",
+"gnunote" => "Diese Seite ist unter der <a class=internal href='/wiki/GNU_FDL'>GNU FDL</a> verfügbar.",
 "printsubtitle" => "(Von http://de.wikipedia.com)",
 "protectedpage" => "Geschützte Seite",
 "administrators" => "Wikipedia:Administratoren",

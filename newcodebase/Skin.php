@@ -424,6 +424,7 @@ class Skin {
 		$s = str_replace( "$1", $count, wfMsg( "viewcount" ) );
 
 		$s .= $this->lastModified();
+		$s .= " ".wfMsg( "gnunote" ) ;
 		return "<span id='pagestats'>{$s}</span>";
 	}
 
