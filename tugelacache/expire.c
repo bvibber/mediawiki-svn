@@ -36,22 +36,25 @@ int main(int argc, char **argv)
     char *dbfile = DBFILE;
     int ret;
     item *it;
+    time_t oldest = 0;
     time_t now;
     int c;
 
-    while ((c = getopt(argc, argv, "f:h")) != -1) {
+    now = time(NULL);
+    while ((c = getopt(argc, argv, "f:ho:")) != -1) {
 	switch (c) {
 	case 'f':
 	    dbfile = optarg;
 	    break;
-	case 'h':
-	    usage();
+	case 'o':
+	    oldest = now - (86400 * atoi(optarg));
+	    break;
 	default:
 	    usage();
+	    exit(1);
 	}
     }
 
-    now = time(NULL);
     db_create(&dbp, NULL, 0);
     if ((ret = dbp->open(dbp, NULL, dbfile, NULL,
 			 DB_BTREE, DB_RDONLY, 0644)) != 0) {
@@ -72,7 +75,7 @@ int main(int argc, char **argv)
 
     while ((ret = dbcp->c_get(dbcp, &key, &data, DB_NEXT)) == 0) {
 	it = data.data;
-	if (it->exptime && it->exptime <= now)
+	if ((it->exptime && it->exptime <= now) || it->time < oldest)
 	    printf("delete %.*s\n",
 		   (int) key.size, (char *) key.data, it->exptime);
     }
@@ -80,10 +83,13 @@ int main(int argc, char **argv)
 	dbp->err(dbp, ret, "DBcursor->get");
 	exit(1);
     }
-
+    exit(0);
 }
 
 void usage()
 {
-    printf("-f	database file\n");
+    printf("-f file	database file\n");
+    printf
+	("-o days     remove items older than specified (default: no limit)\n");
+
 }
