@@ -3,7 +3,7 @@
 function wfSpecialRecentchanges()
 {
 	global $wgUser, $wgOut, $wgLang, $wgTitle;
-	global $days, $limit, $hideminor, $from; # From query string
+	global $days, $limit, $hideminor, $from, $hidebots; # From query string
 	$fname = "wfSpecialRecentchanges";
 
 	$wgOut->addWikiText( wfMsg( "recentchangestext" ) );
@@ -37,10 +37,17 @@ function wfSpecialRecentchanges()
 		$mlink = $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
 	  	  WfMsg( "hide" ), "days={$days}&limit={$limit}&hideminor=1" );
 	}
+	
+	if ( !isset( $hidebots ) ) {
+		$hidebots = 1;
+	}
+	if( $hidebots ) {
+		$hidem .= " AND rc_bot=0";
+	}
 
 	$uid = $wgUser->getID();
 	$sql2 = "SELECT rc_cur_id,rc_namespace,rc_title,rc_user,rc_new," .
-	  "rc_comment,rc_user_text,rc_timestamp,rc_minor" . ($uid ? ",wl_user" : "") . " FROM recentchanges " .
+	  "rc_comment,rc_user_text,rc_timestamp,rc_minor,rc_bot" . ($uid ? ",wl_user" : "") . " FROM recentchanges " .
 	  ($uid ? "LEFT OUTER JOIN watchlist ON wl_user={$uid} AND wl_page=rc_cur_id " : "") .
 	  "WHERE rc_timestamp > '{$cutoff}' {$hidem} " .
 	  "ORDER BY rc_timestamp DESC LIMIT {$limit}";

@@ -181,6 +181,7 @@ function buildTables()
   rc_title varchar(255) binary NOT NULL default '',
   rc_comment varchar(255) binary NOT NULL default '',
   rc_minor tinyint(3) unsigned NOT NULL default '0',
+  rc_bot tinyint(3) unsigned NOT NULL default '0',
   rc_new tinyint(3) unsigned NOT NULL default '0',
   rc_cur_id int(10) unsigned NOT NULL default '0',
   rc_this_oldid int(10) unsigned NOT NULL default '0',

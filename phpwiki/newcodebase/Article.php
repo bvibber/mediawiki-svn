@@ -548,11 +548,12 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 
 		$sql = "INSERT INTO recentchanges (rc_timestamp,rc_cur_time," .
 		  "rc_namespace,rc_title,rc_new,rc_minor,rc_cur_id,rc_user," .
-		  "rc_user_text,rc_comment,rc_this_oldid,rc_last_oldid) VALUES (" .
+		  "rc_user_text,rc_comment,rc_this_oldid,rc_last_oldid,rc_bot) VALUES (" .
 		  "'{$now}','{$now}',{$ns},'" . wfStrencode( $ttl ) . "',1," .
 		  ( $isminor ? 1 : 0 ) . ",{$newid}," . $wgUser->getID() . ",'" .
 		  wfStrencode( $wgUser->getName() ) . "','" .
-		  wfStrencode( $summary ) . "',0,0)";
+		  wfStrencode( $summary ) . "',0,0," .
+		  ( $wgUser->isBot() ? 1 : 0 ) . ")";
 		wfQuery( $sql, $fname );
 		if ($watchthis) { 		
 			if(!$wgTitle->userIsWatching()) $this->watch(); 
@@ -612,10 +613,11 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			wfQuery( $sql, $fname );
 
 			$sql = "INSERT INTO recentchanges (rc_timestamp,rc_cur_time," .
-			  "rc_namespace,rc_title,rc_new,rc_minor,rc_cur_id,rc_user," .
+			  "rc_namespace,rc_title,rc_new,rc_minor,rc_bot,rc_cur_id,rc_user," .
 			  "rc_user_text,rc_comment,rc_this_oldid,rc_last_oldid) VALUES (" .
 			  "'{$now}','{$now}'," . $wgTitle->getNamespace() . ",'" .
 			  wfStrencode( $wgTitle->getDBkey() ) . "',0,{$me2}," .
+			  ( $wgUser->isBot() ? 1 : 0 ) . "," .
 			  $this->getID() . "," . $wgUser->getID() . ",'" .
 			  wfStrencode( $wgUser->getName() ) . "','" .
 			  wfStrencode( $summary ) . "',0,{$oldid})";
