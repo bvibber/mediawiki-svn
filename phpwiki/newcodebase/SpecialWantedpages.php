@@ -23,7 +23,8 @@ function wfSpecialWantedpages()
 	$top = SearchEngine::showingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit, "Special:Wantedpages" );
+	$sl = SearchEngine::viewPrevNext( $offset, $limit,
+	  $wgLang->specialpage( "Wantedpages" ) );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$s = "<ol start=" . ( $offset + 1 ) . ">";
@@ -32,8 +33,8 @@ function wfSpecialWantedpages()
 
 		$plink = $sk->makeBrokenLink( $nt->getPrefixedText(), "" );
 		$nl = str_replace( "$1", $obj->nlinks, wfMsg( "nlinks" ) );
-		$nlink = $sk->makeKnownLink( "Special:Whatlinkshere", $nl,
-		  "target=" . $nt->getPrefixedURL() );
+		$nlink = $sk->makeKnownLink( $wgLang->specialPage(
+		  "Whatlinkshere" ), $nl, "target=" . $nt->getPrefixedURL() );
 
 		$s .= "<li>{$plink} ({$nlink})</li>\n";
 	}

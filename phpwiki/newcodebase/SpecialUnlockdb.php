@@ -19,7 +19,7 @@ class DBUnlockForm {
 
 	function showForm( $err )
 	{
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 		global $wpLockConfirm;
 
 		$wgOut->setPagetitle( wfMsg( "unlockdb" ) );
@@ -31,7 +31,8 @@ class DBUnlockForm {
 		}
 		$lc = wfMsg( "unlockconfirm" );
 		$lb = wfMsg( "unlockbtn" );
-		$action = wfLocalUrlE( "Special:Unlockdb", "action=submit" );
+		$action = wfLocalUrlE( $wgLang->specialPage( "Unlockdb" ),
+		  "action=submit" );
 
 		$wgOut->addHTML( "<p>
 <form method=post action=\"{$action}\">
@@ -50,7 +51,7 @@ class DBUnlockForm {
 
 	function doSubmit()
 	{
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 		global $wpLockConfirm, $wgReadOnlyFile;
 
 		if ( ! $wpLockConfirm ) {
@@ -61,7 +62,8 @@ class DBUnlockForm {
 			$wgOut->fileDeleteError( $wgReadOnlyFile );
 			return;
 		}
-		$success = wfLocalUrl( "Special:Unlockdb", "action=success" );
+		$success = wfLocalUrl( $wgLang->specialPage( "Unlockdb" ),
+		  "action=success" );
 		$wgOut->redirect( $success );
 	}
 

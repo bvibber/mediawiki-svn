@@ -247,7 +247,7 @@ class Skin {
 		$s = $this->printableLink();
 
 		if ( $wgOut->isArticle() ) {
-			if ( $wgTitle->getNamespace() == Namespace::getImageIndex() ) {
+			if ( $wgTitle->getNamespace() == Namespace::getImage() ) {
 				$name = $wgTitle->getDBkey();
 				$link = wfEscapeHTML( wfImageUrl( $name ) );
 				$style = $this->getInternalLinkAttributes( $link, $name );
@@ -293,25 +293,28 @@ class Skin {
 
 	function nameAndLogin()
 	{
-		global $wgUser, $wgTitle;
+		global $wgUser, $wgTitle, $wgLang;
+
+		$li = $wgLang->specialPage( "Userlogin" );
+		$lo = $wgLang->specialPage( "Userlogout" );
 
 		$s = "";
 		if ( 0 == $wgUser->getID() ) {
 			$n = getenv( "REMOTE_ADDR" );
 			$rt = $wgTitle->getPrefixedURL();
-			if ( 0 == strcasecmp( urlencode("Special:Userlogout"), $rt ) ) {
+			if ( 0 == strcasecmp( urlencode( $lo ), $rt ) ) {
 				$q = "";
 			} else { $q = "returnto={$rt}"; }
 
-			$s .= $n . "\n<br>" . $this->makeKnownLink( "Special:Userlogin",
+			$s .= $n . "\n<br>" . $this->makeKnownLink( $li,
 			  wfMsg( "login" ), $q );
 		} else {
 			$n = $wgUser->getName();
 			$rt = $wgTitle->getPrefixedURL();
-			$s .= $this->makeKnownLink( Namespace::getUserName() . ":{$n}",
-			  $n ) . "<br>" .
-			  $this->makeKnownLink( "Special:Userlogout",
-			  wfMsg( "logout" ), "returnto={$rt}" ) . " | " .
+			$s .= $this->makeKnownLink( $wgUser->getNsText(
+			  Namespace::getUser() ) . ":{$n}", $n ) . "<br>" .
+			  $this->makeKnownLink( $lo, wfMsg( "logout" ),
+			  "returnto={$rt}" ) . " | " .
 			  $this->specialLink( "preferences" );
 		}
 		$s .= " | " . $this->makeKnownLink( wfMsg( "helppage" ),
@@ -364,7 +367,7 @@ class Skin {
 			  . $sep . $this->whatLinksHere()
 			  . $sep . $this->watchPageLinksLink();
 
-			if ( Namespace::getUserIndex() == $wgTitle->getNamespace() ) {
+			if ( Namespace::getUser() == $wgTitle->getNamespace() ) {
 				$s .= $sep . $this->userContribsLink();
 			}
 			if ( $wgUser->isSysop() ) {
@@ -444,7 +447,7 @@ class Skin {
 			  . $sep . $this->whatLinksHere()
 			  . $sep . $this->watchPageLinksLink();
 
-			if ( Namespace::getUserIndex() == $wgTitle->getNamespace() ) {
+			if ( Namespace::getUser() == $wgTitle->getNamespace() ) {
 				$s .= $sep . $this->userContribsLink();
 			}
 			$s .= "\n<hr>";
@@ -488,14 +491,16 @@ class Skin {
 		}
 		$go = wfMsg( "go" );
 		$sp = wfMsg( "specialpages" );
+		$spp = $wgLang->specialPage( "Specialpages" );
 
 		$s = "<form method=get class='inline' " .
 		  "action=\"{$wgServer}{$wgRedirectScript}\">\n";
 		$s .= "<select name='wpDropdown'>\n";
-		$s .= "<option value=\"Special:Specialpages\">{$sp}</option>\n";
+		$s .= "<option value=\"{$spp}\">{$sp}</option>\n";
 
 		foreach ( $a as $name => $desc ) {
-			$s .= "<option value=\"Special:{$name}\">{$desc}</option>\n";
+			$p = $wgLang->specialPage( $name );
+			$s .= "<option value=\"{$p}\">{$desc}</option>\n";
 		}
 		$s .= "</select>\n";
 		$s .= "<input type=submit value=\"{$go}\" name=redirect>\n";
@@ -591,9 +596,9 @@ class Skin {
 
 	function moveThisPage()
 	{
-		global $wgTitle;
+		global $wgTitle, $wgLang;
 
-		$s = $this->makeKnownLink( "Special:Movepage",
+		$s = $this->makeKnownLink( $wgLang->specialPage( "Movepage" ),
 		  wfMsg( "movethispage" ), "target=" . $wgTitle->getPrefixedURL() );
 		return $s;
 	}
@@ -609,31 +614,32 @@ class Skin {
 
 	function whatLinksHere()
 	{
-		global $wgTitle;
+		global $wgTitle, $wgLang;
 
-		$s = $this->makeKnownLink( "Special:Whatlinkshere",
+		$s = $this->makeKnownLink( $wgLang->specialPage( "Whatlinkshere" ),
 		  wfMsg( "whatlinkshere" ), "target=" . $wgTitle->getPrefixedURL() );
 		return $s;
 	}
 
 	function userContribsLink()
 	{
-		global $wgTitle;
+		global $wgTitle, $wgLang;
 
-		$s = $this->makeKnownLink( "Special:Contributions",
+		$s = $this->makeKnownLink( $wgLang->specialPage( "Contributions" ),
 		  wfMsg( "contributions" ), "target=" . $wgTitle->getURL() );
 		return $s;
 	}
 
 	function watchPageLinksLink()
 	{
-		global $wgOut, $wgTitle;
+		global $wgOut, $wgTitle, $wgLang;
 
 		if ( ! $wgOut->isArticle() ) {
-			$s = "(Special page)";
+			$s = "(" . wfMsg( "notanarticle" ) . ")";
 		} else {
-			$s = $this->makeKnownLink( "Special:Recentchangeslinked",
-			  wfMsg( "recentchangeslinked" ), "target=" . $wgTitle->getPrefixedURL() );
+			$s = $this->makeKnownLink( $wgLang->specialPage(
+			  "Recentchangeslinked" ), wfMsg( "recentchangeslinked" ),
+			  "target=" . $wgTitle->getPrefixedURL() );
 		}
 		return $s;
 	}
@@ -702,7 +708,7 @@ class Skin {
 
 	function talkLink()
 	{
-		global $wgTitle, $wgLinkCache;
+		global $wgLang, $wgTitle, $wgLinkCache;
 
 		$tns = $wgTitle->getNamespace();
 		if ( -1 == $tns ) { return ""; }
@@ -718,9 +724,9 @@ class Skin {
 			$lns = Namespace::getTalk( $tns );
 			$text = $tp;
 		}
-		$n = Namespace::getName( $lns );
+		$n = $wgLang->getNsText( $lns );
 		if ( "" == $n ) { $link = $pn; }
-		else { $link = "$n:$pn"; }
+		else { $link = "{$n}:{$pn}"; }
 
 		$wgLinkCache->suspend();
 		$s = $this->makeLink( $link, $text );
@@ -764,7 +770,7 @@ class Skin {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
 		if ( ( -1 == $nt->getNamespace() ) ||
-          ( Namespace::getImageIndex() == $nt->getNamespace() ) ) {
+          ( Namespace::getImage() == $nt->getNamespace() ) ) {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
 		if ( 0 == $nt->getArticleID() ) {
@@ -853,9 +859,10 @@ class Skin {
 
 	function makeImageLink( $name, $url, $alt = "" )
 	{
-		global $wgOut, $wgTitle;
+		global $wgOut, $wgTitle, $wgLang;
 
-		$nt = Title::newFromText( Namespace::getImageName() . ":{$name}" );
+		$nt = Title::newFromText( $wgLang->getNsText(
+		  Namespace::getImage() ) . ":{$name}" );
 		$link = $nt->getPrefixedURL();
 		if ( "" == $alt ) { $alt = $name; }
 
@@ -877,9 +884,12 @@ class Skin {
 
 	function specialLink( $name, $key = "" )
 	{
+		global $wgLang;
+
 		if ( "" == $key ) { $key = strtolower( $name ); }
 		$pn = ucfirst( $name );
-		return $this->makeKnownLink( "Special:$pn", wfMsg( $key ) );
+		return $this->makeKnownLink( $wgLang->specialPage( $pn ),
+		  wfMsg( $key ) );
 	}
 
 	# Called by history lists and recent changes
@@ -948,8 +958,8 @@ class Skin {
 		$link = $this->makeKnownLink( $artname, $dt, $q );
 
 		if ( 0 == $u ) { $ul = $ut; }
-		else { $ul = $this->makeLink( Namespace::getUserName() . ":{$ut}",
-		  $ut ); }
+		else { $ul = $this->makeLink( $wgLang->getNsText(
+		  Namespace::getUser() ) . ":{$ut}", $ut ); }
 
 		$s = "<li>";
 		if ( $oid ) {
@@ -999,8 +1009,8 @@ class Skin {
 			  "diff=0&oldid=0" );
 		}
 		if ( 0 == $u ) { $ul = $ut; }
-		else { $ul = $this->makeLink( Namespace::getUserName() . ":{$ut}",
-		  $ut ); }
+		else { $ul = $this->makeLink( $wgLang->getNsText(
+		  Namespace::getUser() ) . ":{$ut}", $ut ); }
 		$cr = wfMsg( "currentrev" );
 
 		$s .= "<li> ({$dlink}) ({$hlink}) . .";
@@ -1009,8 +1019,8 @@ class Skin {
 		$s .= " {$clink}; {$h} . . {$ul}";
 
 		if ( ( 0 == $u ) && $wgUser->isSysop() ) {
-			$blink = $this->makeKnownLink( "Special:Blockip",
-			  wfMsg( "blocklink" ), "ip={$ut}" );
+			$blink = $this->makeKnownLink( $wgLang->specialPage(
+			  "Blockip" ), wfMsg( "blocklink" ), "ip={$ut}" );
 			$s .= " ({$blink})";
 		}
 
@@ -1049,8 +1059,8 @@ class Skin {
 			  $del, "action=delete&oldimage=" . urlencode( $img ) );
 		}
 		if ( 0 == $u ) { $ul = $ut; }
-		else { $ul = $this->makeLink( Namespace::getUserName() . ":{$ut}",
-		  $ut ); }
+		else { $ul = $this->makeLink( $wgLang->getNsText(
+		  Namespace::getUser() ) . ":{$ut}", $ut ); }
 
 		$nb = str_replace( "$1", $size, wfMsg( "nbytes" ) );
 		$style = $this->getInternalLinkAttributes( $url, $dt );

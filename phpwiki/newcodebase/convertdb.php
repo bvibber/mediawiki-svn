@@ -160,7 +160,7 @@ function convertCurTable()
 	  "ss_total_edits,ss_good_articles) VALUES (1,0,0,{$countables})";
 	wfQuery( $sql );
 
-	$wns = Namespace::getWikipediaIndex();
+	$wns = Namespace::getWikipedia();
 	$ulp = wfMsg( "uploadlogpage" );
 	$dlp = wfMsg( "dellogpage" );
 

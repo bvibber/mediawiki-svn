@@ -95,19 +95,19 @@ function wfSpecialRecentchanges()
 
 function rcCountLink( $lim, $d )
 {
-	global $wgUser;
+	global $wgUser, $wgLang;
 	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink( "Special:Recentchanges", "{$lim}",
-	  "days={$d}&limit={$lim}" );
+	$s = $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
+	  "{$lim}", "days={$d}&limit={$lim}" );
 	return $s;
 }
 
 function rcDaysLink( $lim, $d )
 {
-	global $wgUser;
+	global $wgUser, $wgLang;
 	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink( "Special:Recentchanges", "{$d}",
-	  "days={$d}&limit={$lim}" );
+	$s = $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
+	  "{$d}", "days={$d}&limit={$lim}" );
 	return $s;
 }
 

@@ -149,7 +149,7 @@ function wfSpecialUserlogin()
 
 /* private */ function mainLoginForm( $err )
 {
-	global $wgUser, $wgOut, $returnto;
+	global $wgUser, $wgOut, $wgLang, $returnto;
 	global $wpName, $wpPassword, $wpRetype, $wpRemember;
 	global $wpEmail, $HTTP_COOKIE_VARS;
 
@@ -192,7 +192,7 @@ function wfSpecialUserlogin()
 	}
 	$q = "action=submit";
 	if ( "" != $returnto ) { $q .= "&returnto={$returnto}"; }
-	$action = wfLocalUrlE( "Special:Userlogin", $q );
+	$action = wfLocalUrlE( $wgLang->specialPage( "Userlogin" ), $q );
 
 	$wpName = wfEscapeHTML( $wpName );
 	$wpPassword = wfEscapeHTML( $wpPassword );

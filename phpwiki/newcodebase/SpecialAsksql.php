@@ -20,7 +20,7 @@ class SqlQueryForm {
 
 	function showForm( $err )
 	{
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 		global $wpSqlQuery;
 
 		$wgOut->setPagetitle( wfMsg( "asksql" ) );
@@ -32,7 +32,8 @@ class SqlQueryForm {
 		if ( ! $wpSqlQuery ) { $wpSqlQuery = "SELECT ... FROM ... WHERE ..."; }
 		$q = wfMsg( "sqlquery" );
 		$qb = wfMsg( "querybtn" );
-		$action = wfLocalUrlE( "Special:Asksql", "action=submit" );
+		$action = wfLocalUrlE( $wgLang->specialPage( "Asksql" ),
+		  "action=submit" );
 
 		$wgOut->addHTML( "<p>
 <form method=post action=\"{$action}\">

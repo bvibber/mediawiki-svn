@@ -28,7 +28,7 @@ class IPUnblockForm {
 
 	function showForm( $err )
 	{
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 		global $ip, $wpUnblockAddress;
 
 		$wgOut->setPagetitle( wfMsg( "unblockip" ) );
@@ -37,7 +37,8 @@ class IPUnblockForm {
 		if ( ! $wpUnblockAddress ) { $wpUnblockAddress = $ip; }
 		$ipa = wfMsg( "ipaddress" );
 		$ipus = wfMsg( "ipusubmit" );
-		$action = wfLocalUrlE( "Special:Ipblocklist", "action=submit" );
+		$action = wfLocalUrlE( $wgLang->specialPage( "Ipblocklist" ),
+		  "action=submit" );
 
 		if ( "" != $err ) {
 			$wgOut->setSubtitle( wfMsg( "formerror" ) );
@@ -59,7 +60,7 @@ class IPUnblockForm {
 
 	function doSubmit()
 	{
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 		global $ip, $wpUnblockAddress;
 		$fname = "IPUnblockForm::doSubmit";
 
@@ -71,7 +72,7 @@ class IPUnblockForm {
 		$sql = "DELETE FROM ipblocks WHERE ipb_address='{$wpUnblockAddress}'";
 		wfQuery( $sql, $fname );
 
-		$success = wfLocalUrl( "Special:Ipblocklist",
+		$success = wfLocalUrl( $wgLang->specialPage( "Ipblocklist" ),
 		  "action=success&ip={$wpUnblockAddress}" );
 		$wgOut->redirect( $success );
 	}
@@ -102,13 +103,14 @@ class IPUnblockForm {
 			$line = str_replace( "$3", $row->ipb_address, $line );
 
 			$wgOut->addHTML( "<li>{$line}" );
-			$clink = "<a href=\"" . wfLocalUrlE( "Special:Contributions",
-			  "target={$addr}" ) . "\">" . wfMsg( "contribslink" ) . "</a>";
+			$clink = "<a href=\"" . wfLocalUrlE( $wgLang->specialPage(
+			  "Contributions" ), "target={$addr}" ) . "\">" .
+			  wfMsg( "contribslink" ) . "</a>";
 			$wgOut->addHTML( " ({$clink})" );
 
 			if ( $wgUser->isSysop() ) {
-				$ublink = "<a href=\"" . wfLocalUrlE( "Special:Ipblocklist",
-				  "action=unblock&ip={$addr}" ) . "\">" .
+				$ublink = "<a href=\"" . wfLocalUrlE( $wgLang->specialPage(
+				  "Ipblocklist" ), "action=unblock&ip={$addr}" ) . "\">" .
 				  wfMsg( "unblocklink" ) . "</a>";
 				$wgOut->addHTML( " ({$ublink})" );
 			}

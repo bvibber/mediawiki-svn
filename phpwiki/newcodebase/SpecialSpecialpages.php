@@ -12,7 +12,7 @@ function wfSpecialSpecialpages()
 
 	foreach ( $validSP as $name => $desc ) {
 		if ( "" == $desc ) { continue; }
-		$link = $sk->makeKnownLink( "Special:{$name}", $desc );
+		$link = $sk->makeKnownLink( $wgLang->specialPage( $name ), $desc );
 		$wgOut->addHTML( "<li>{$link}</li>\n" );
 	}
 	$wgOut->addHTML( "</ul>\n" );
@@ -23,7 +23,7 @@ function wfSpecialSpecialpages()
 
 		foreach ( $sysopSP as $name => $desc ) {
 			if ( "" == $desc ) { continue; }
-			$link = $sk->makeKnownLink( "Special:{$name}", $desc );
+			$link = $sk->makeKnownLink( $wgLang->specialPage( $name ), $desc );
 			$wgOut->addHTML( "<li>{$link}</li>\n" );
 		}
 		$wgOut->addHTML( "</ul>\n" );
@@ -36,7 +36,7 @@ function wfSpecialSpecialpages()
 
 		foreach ( $devSP as $name => $desc ) {
 			if ( "" == $desc ) { continue; }
-			$link = $sk->makeKnownLink( "Special:{$name}", $desc );
+			$link = $sk->makeKnownLink( $wgLang->specialPage( $name ), $desc );
 			$wgOut->addHTML( "<li>{$link}</li>\n" );
 		}
 		$wgOut->addHTML( "</ul>\n" );

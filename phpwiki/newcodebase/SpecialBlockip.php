@@ -21,7 +21,7 @@ class IPBlockForm {
 
 	function showForm( $err )
 	{
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 		global $ip, $wpBlockAddress, $wpBlockReason;
 
 		$wgOut->setPagetitle( wfMsg( "blockip" ) );
@@ -31,7 +31,8 @@ class IPBlockForm {
 		$ipa = wfMsg( "ipaddress" );
 		$reason = wfMsg( "ipbreason" );
 		$ipbs = wfMsg( "ipbsubmit" );
-		$action = wfLocalUrlE( "Special:Blockip", "action=submit" );
+		$action = wfLocalUrlE( $wgLang->specialPage( "Blockip" ),
+		  "action=submit" );
 
 		if ( "" != $err ) {
 			$wgOut->setSubtitle( wfMsg( "formerror" ) );
@@ -57,7 +58,7 @@ class IPBlockForm {
 
 	function doSubmit()
 	{
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 		global $ip, $wpBlockAddress, $wpBlockReason;
 		$fname = "IPBlockForm::doSubmit";
 
@@ -76,7 +77,7 @@ class IPBlockForm {
 		  date( "YmdHis" ) . "')";
 		wfQuery( $sql, $fname );
 
-		$success = wfLocalUrl( "Special:Blockip",
+		$success = wfLocalUrl( $wgLang->specialPage( "Blockip" ),
 		  "action=success&ip={$wpBlockAddress}" );
 		$wgOut->redirect( $success );
 	}

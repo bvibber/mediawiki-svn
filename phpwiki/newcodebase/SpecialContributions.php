@@ -15,7 +15,7 @@ function wfSpecialContributions()
 
 	$target = wfCleanQueryVar( $target );
 	$nt = Title::newFromURL( $target );
-	$nt->setNamespace( Namespace::getUserIndex() );
+	$nt->setNamespace( Namespace::getUser() );
 
 	$sk = $wgUser->getSkin();
 	$id = User::idFromName( $nt->getDBkey() );
@@ -105,21 +105,21 @@ function wfSpecialContributions()
 
 function ucCountLink( $lim, $d )
 {
-	global $wgUser, $target;
+	global $wgUser, $wgLang, $target;
 
 	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink( "Special:Contributions", "{$lim}",
-	  "target={$target}&days={$d}&limit={$lim}" );
+	$s = $sk->makeKnownLink( $wgLang->specialPage( ":Contributions" ),
+	  "{$lim}", "target={$target}&days={$d}&limit={$lim}" );
 	return $s;
 }
 
 function ucDaysLink( $lim, $d )
 {
-	global $wgUser, $target;
+	global $wgUser, $wgLang, $target;
 
 	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink( "Special:Contributions", "{$d}",
-	  "target={$target}&days={$d}&limit={$lim}" );
+	$s = $sk->makeKnownLink( $wgLang->specialPage( "Contributions" ),
+	  "{$d}", "target={$target}&days={$d}&limit={$lim}" );
 	return $s;
 }
 ?>

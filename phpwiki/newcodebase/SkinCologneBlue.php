@@ -113,7 +113,7 @@ class SkinCologneBlue extends Skin {
 
 	function quickBar()
 	{
-		global $wgOut, $wgTitle, $wgUser;
+		global $wgOut, $wgTitle, $wgUser, $wgLang;
 
 		$s = "\n<div id='quickbar'>";
 
@@ -160,7 +160,7 @@ class SkinCologneBlue extends Skin {
 			  . $sep . $this->whatLinksHere()
 			  . $sep . $this->watchPageLinksLink();
 
-			if ( Namespace::getUserIndex() == $wgTitle->getNamespace() ) {
+			if ( Namespace::getUser() == $wgTitle->getNamespace() ) {
 				$s .= $sep . $this->userContribsLink();
 			}
 			$s .= $sep;
@@ -168,8 +168,8 @@ class SkinCologneBlue extends Skin {
 		$s .= $this->menuHead( "qbmyoptions" );
 		if ( 0 != $wgUser->getID() ) {
 			$name = $wgUser->getName();
-			$s .= $this->makeKnownLink( Namespace::getUserName() . ":{$name}",
-			  wfMsg( "mypage" ) )
+			$s .= $this->makeKnownLink( $wgLang->getNsText(
+			  Namespace::getUser() ) . ":{$name}", wfMsg( "mypage" ) )
 			  . $sep . $this->specialLink( "watchlist" )
 		  	  . $sep . $this->specialLink( "preferences" )
 		  	  . $sep . $this->specialLink( "userlogout" );

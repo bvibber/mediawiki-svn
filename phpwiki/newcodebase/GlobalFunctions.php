@@ -313,7 +313,7 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 	}
 	$logpage = wfStrencode( wfMsg( "uploadlogpage" ) );
 	$sql = "SELECT cur_id,cur_text FROM cur WHERE cur_namespace=" .
-	  Namespace::getWikipediaIndex() . " AND cur_title='{$logpage}'";
+	  Namespace::getWikipedia() . " AND cur_title='{$logpage}'";
 	$res = wfQuery( $sql, $fname );
 
 	if ( 0 == wfNumRows( $res ) ) {
@@ -326,7 +326,8 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 	$uid = $wgUser->getID();
 	$ut = $wgUser->getName();
 	if ( 0 == $uid ) { $ul = $ut; }
-	else { $ul = "[[" . Namespace::getUserName() . ":{$ut}|{$ut}]]"; }
+	else { $ul = "[[" . $wgLang->getNsText( Namespace::getUser() ) .
+	  ":{$ut}|{$ut}]]"; }
 
 	$d = $wgLang->timeanddate( date( "YmdHis" ), false );
 	$ua = str_replace( "$1", $name, wfMsg( "uploadedimage" ) );
@@ -340,8 +341,9 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 	}
 
 	preg_match( "/^(.*?)<ul>(.*)$/sD", $text, $m );	
-	$da = str_replace( "$1", "[[:" . Namespace::getImageName() .
-	  ":{$name}|{$name}]]", wfMsg( "uploadedimage" ) );
+	$da = str_replace( "$1", "[[:" . $wgLang->getNsText(
+	  Namespace::getImage() ) . ":{$name}|{$name}]]",
+	  wfMsg( "uploadedimage" ) );
 
 	$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}{$com}</li>\n{$m[2]}";
 

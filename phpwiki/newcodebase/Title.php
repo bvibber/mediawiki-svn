@@ -113,7 +113,7 @@ class Title {
 		$t = preg_replace( "/\\s+/", " ", $t );
 
 		$t = strtolower( $t );
-		if ( Namespace::getImageIndex() == $this->mNamespace ) {
+		if ( Namespace::getImage() == $this->mNamespace ) {
 			$t = preg_replace( "/ (png|gif|jpg|jpeg)$/", "", $t );
 		}
 		return trim( $t );
@@ -121,7 +121,9 @@ class Title {
 
 	/* static */ function makeName( $ns, $title )
 	{
-		$n = Namespace::getName( $ns );
+		global $wgLang;
+
+		$n = $wgLang->getNsText( $ns );
 		if ( "" == $n ) { return $title; }
 		else { return "{$n}:{$title}"; }
 	}
@@ -155,14 +157,14 @@ class Title {
 
 	function getFullURL()
 	{
-		global $wgArticlePath, $wgValidInterwikis;
+		global $wgLang, $wgArticlePath, $wgValidInterwikis;
 
 		if ( "" == $this->mInterwiki ) {
 			$p = $wgArticlePath;
 		} else {
 			$p = $wgValidInterwikis[$this->mInterwiki];
 		}
-		$n = Namespace::getName( $this->mNamespace );
+		$n = $wgLang->getNsText( $this->mNamespace );
 		if ( "" != $n ) { $n .= ":"; }
 		$u = str_replace( "$1", $n . $this->mUrlform, $p );
 		if ( "" != $this->mFragment ) {
@@ -193,7 +195,7 @@ class Title {
 
 	function isLog()
 	{
-		if ( $this->mNamespace != Namespace::getWikipediaIndex() ) {
+		if ( $this->mNamespace != Namespace::getWikipedia() ) {
 			return false;
 		}
 		if ( ( 0 == strcmp( wfMsg( "uploadlogpage" ), $this->mDbkeyform ) ) ||
@@ -266,14 +268,14 @@ class Title {
 
 	/* private */ function prefix( $name )
 	{
+		global $wgLang;
+
 		$p = "";
 		if ( "" != $this->mInterwiki ) {
 			$p = $this->mInterwiki . ":";
 		}
-		if ( -1 == $this->mNamespace ) {
-			$p .= "Special:";
-		} else if ( 0 != $this->mNamespace ) {
-			$p .= Namespace::getName( $this->mNamespace ) . ":";
+		if ( 0 != $this->mNamespace ) {
+			$p .= $wgLang->getNsText( $this->mNamespace ) . ":";
 		}
 		return $p . $name;
 	}
@@ -291,6 +293,8 @@ class Title {
 		global $wgLang, $wgValidInterwikis, $wgLocalInterwiki;
 
 		$validNamespaces = $wgLang->getNamespaces();
+		unset( $validNamespaces[0] );
+
 		$this->mInterwiki = $this->mFragment = "";
 		$this->mNamespace = 0;
 
@@ -303,7 +307,7 @@ class Title {
 		$this->mDbkeyform = $t;
 		$done = false;
 
-		$imgpre = ":" . Namespace::getImageName() . ":";
+		$imgpre = ":" . $wgLang->getNsText( Namespace::getImage() ) . ":";
 		if ( 0 == strncasecmp( $imgpre, $t, strlen( $imgpre ) ) ) {
 			$t = substr( $t, 1 );
 		}
@@ -327,7 +331,7 @@ class Title {
 					$p = ucfirst( $p );
 					if ( in_array( $p, $validNamespaces ) ) {
 						$t = $m[2];
-						$this->mNamespace = Namespace::getIndex(
+						$this->mNamespace = $wgLang->getNsIndex(
 						  str_replace( " ", "_", $p ) );
 					}
 				}
