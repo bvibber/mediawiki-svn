@@ -1666,6 +1666,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		global $action, $oldid, $diff, $redirect, $printable;
 		return $wgUseFileCache
 			and (!$wgShowIPinHeader)
+			and ($this->getID() != 0)
 			and ($wgUser->getId() == 0)
 			and (!$wgUser->getNewtalk())
 			and ($wgTitle->getNamespace != Namespace::getSpecial())
