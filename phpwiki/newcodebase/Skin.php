@@ -373,10 +373,13 @@ class Skin {
 		return "<span id='pagestats'>{$s}</span>";
 	}
 
-	function logoText()
+	function logoText( $align = "" )
 	{
+		if ( "" != $align ) { $a = " align='{$align}'"; }
+		else { $a = ""; }
+
 		$mp = wfMsg( "mainpage" );
-		$s = "<a href='" . wfLocalUrl( $mp ) . "'><img border=0 src='" .
+		$s = "<a href='" . wfLocalUrl( $mp ) . "'><img{$a} border=0 src='" .
 		  $this->getLogo() . "' alt='" . "[$mp]'></a>";
 		return $s;
 	}
