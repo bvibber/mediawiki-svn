@@ -92,7 +92,7 @@
 
 /* private */ $wgDeveloperSpecialPagesEn = array(
 	"Lockdb"		=> "Make database read-only",
-	"Unlockdb"		=> "Restore database read access",
+	"Unlockdb"		=> "Restore database write access",
 	"Debug"			=> "Show debugging information"
 );
 
