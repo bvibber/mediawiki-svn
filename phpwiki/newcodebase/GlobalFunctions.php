@@ -235,7 +235,7 @@ function wfImageArchiveDir( $fname )
 
 function wfRecordUpload( $name, $oldver, $size, $desc )
 {
-	global $wgUser;
+	global $wgUser, $wgLang, $wgTitle, $wgOut;
 	$fname = "wfRecordUpload";
 
 	$sql = "SELECT img_name,img_size,img_timestamp,img_description,img_user," .
@@ -270,6 +270,35 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 		  wfStrencode( $name ) . "'";
 		wfQuery( $sql, $fname );
 	}
+	$logpage = wfStrencode( wfMsg( "uploadlogpage" ) );
+	$sql = "SELECT cur_id,cur_text FROM cur WHERE cur_namespace=" .
+	  Namespace::getIndex( "Wikipedia" ) . " AND cur_title='{$logpage}'";
+	$res = wfQuery( $sql, $fname );
+
+	if ( 0 == wfNumRows( $res ) ) {
+		# TODO: Error: need Upload log article
+	}
+	$s = wfFetchObject( $res );
+	$text = $s->cur_text;
+	$id = $s->cur_id;
+
+	$uid = $wgUser->getID();
+	$ut = $wgUser->getName();
+	if ( 0 == $uid ) { $ul = $ut; }
+	else { $ul = "[[User:{$ut}|{$ut}]]"; }
+
+	$d = $wgLang->timeanddate( date( "YmdHis" ) );
+
+	preg_match( "/^(.*?)<ul>(.*)$/sD", $text, $m );	
+	$da = str_replace( "$1", $name, wfMsg( "uploadedimage" ) );
+
+	$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}</li>\n{$m[2]}";
+
+	$sql = "UPDATE cur SET cur_timestamp='" . date( "YmdHis" ) .
+	  "', cur_user={$uid}, cur_user_text='" .wfStrencode( $ut ) .
+	  "', cur_text='" . wfStrencode( trim( $text ) ) . "' " .
+	  "WHERE cur_id={$id}";
+	wfQuery( $sql, $fname );
 }
 
 ?>

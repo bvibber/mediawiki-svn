@@ -41,7 +41,6 @@ a.newlink { color: black; text-decoration: none; }
 .newlinkedge { display: inline; }
 
 body {
- color: #000000; background: #FFFFFF;
  margin: 0px;
  padding: 4px;
 }
@@ -58,7 +57,6 @@ body {
  padding: 4px;
 }
 #article {
- background: #FFFFFF;
  margin-left: 156px; margin-right: 4px;
  padding: 4px;
 }

@@ -516,6 +516,46 @@ $wpTextbox2
 
 	function watch()
 	{
+		global $wgUser, $wgTitle, $wgOut, $wgLang;
+		global $wgDeferredUpdateList;
+
+		if ( 0 == $wgUser->getID() ) {
+			$wgOut->errorpage( "watchnologin", "watchnologintext" );
+			return;
+		}
+		$wgUser->addWatch( $wgTitle->getPrefixedDBkey() );
+
+		$wgOut->setPagetitle( wfMsg( "addedwatch" ) );
+		$text = str_replace( "$1", $wgTitle->getPrefixedText(),
+		  wfMsg( "addedwatchtext" ) );
+		$wgOut->addHTML( $text );
+
+		$up = new UserUpdate();
+		array_push( $wgDeferredUpdateList, $up );
+
+		$wgOut->returnToMain( false );
+	}
+
+	function unwatch()
+	{
+		global $wgUser, $wgTitle, $wgOut, $wgLang;
+		global $wgDeferredUpdateList;
+
+		if ( 0 == $wgUser->getID() ) {
+			$wgOut->errorpage( "watchnologin", "watchnologintext" );
+			return;
+		}
+		$wgUser->removeWatch( $wgTitle->getPrefixedDBkey() );
+
+		$wgOut->setPagetitle( wfMsg( "removedwatch" ) );
+		$text = str_replace( "$1", $wgTitle->getPrefixedText(),
+		  wfMsg( "removedwatchtext" ) );
+		$wgOut->addHTML( $text );
+
+		$up = new UserUpdate();
+		array_push( $wgDeferredUpdateList, $up );
+
+		$wgOut->returnToMain( false );
 	}
 
 	# This shares a lot of issues (and code) with Recent Changes
@@ -686,9 +726,10 @@ $wpTextbox2
 			$sql = "DELETE FROM brokenlinks WHERE bl_from={$id}";
 			wfQuery( $sql, $fname );
 		}
+		$logpage = wfStrencode( wfMsg( "deletionlog" ) );
 		$sql = "SELECT cur_id,cur_text FROM cur WHERE cur_namespace=" .
 		  Namespace::getIndex( "Wikipedia" ) . " AND cur_title='" .
-		  "Article_deletion_log'";
+		  "{$logpage}'";
 		$res = wfQuery( $sql, $fname );
 
 		if ( 0 == wfNumRows( $res ) ) {

@@ -313,17 +313,20 @@ class User {
 	function addWatch( $title )
 	{
 		$this->loadWatchlist();
-		$t = Title::newFromURL( $title );
-
-		array_push( $this->mWatchlist, $t->getPrefixedURL() );
+		array_push( $this->mWatchlist, $title );
 	}
 
 	function removeWatch( $title )
 	{
 		$this->loadWatchlist();
-		if ( in_array( $title, $this->mWatchlist ) ) {
-			unset( $this->mWatchlist[$title] );
-		}
+		$r = array_search( $title, $this->mWatchlist );
+		if ( false !== $r ) { unset( $this->mWatchlist[$r] ); }
+	}
+
+	function getWatchlist()
+	{
+		$this->loadwatchlist();
+		return $this->mWatchlist;
 	}
 
 	/* private */ function encodeOptions()
