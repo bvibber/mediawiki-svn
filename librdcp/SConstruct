@@ -1,0 +1,31 @@
+# @(#) $Header$ 
+
+import os
+
+config = dict()
+execfile('buildconfig', config)
+
+cc = ARGUMENTS.get('cc', config['cc'])
+
+cflags = ARGUMENTS.get('cflags', config['cflags'])
+cppflags = ARGUMENTS.get('cppflags', config['cppflags'])
+ldflags = ARGUMENTS.get('ldflags', config['ldflags'])
+
+prefix = ARGUMENTS.get('prefix', config['prefix'])
+
+libpath = ARGUMENTS.get('libpath', config['libpath'])
+cpppath = ARGUMENTS.get('cpppath', config['cpppath'])
+
+srcs = ['rdcp.c']
+		
+conflags = []
+env = Environment(CPPFLAGS = cppflags,
+		CCFLAGS = cflags,
+		LDFLAGS = ldflags,
+		CC = cc,
+		CPPPATH = cpppath + ['.'],
+		LIBPATH = libpath,
+		LIBS = [],
+		ENV = os.environ)
+env.Library ('rdcp', srcs)
+env.Alias('install', prefix)
