@@ -722,6 +722,20 @@ class Skin {
 
 		$nt = Title::newFromText( $title );
 
+		if ( $nt->isExternal() ) {
+			$u = $nt->getFullURL();
+			if ( "" == $text ) { $text = $nt->getPrefixedText(); }
+			$style = $this->getExternalLinkAttributes( $link, $text );
+
+			$inside = "";
+			if ( "" != $trail ) {
+				if ( preg_match( "/^([a-z]+)(.*)$$/sD", $trail, $m ) ) {
+					$inside = $m[1];
+					$trail = $m[2];
+				}
+			}
+			return "<a href=\"$u\"$style>$text$inside</a>$trail";
+		}
 		if ( 0 == $nt->getNamespace() && "" == $nt->getText() ) {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
