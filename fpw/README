@@ -1,0 +1,128 @@
+1. Introduction
+2. Installation
+3. Updating
+4. Mailing list
+5. License
+
+
+1. Introduction
+===============
+
+This is the PHP script which runs Wikipedia, the free collaborative
+encyclopedia at 
+
+           http://www.wikipedia.com
+
+Among the software's features are:
+
+  * Users can edit all articles on the web site running the script.
+  * Articles are stored in a mysql database.
+  * Articles can belong to different namespaces, thus allowing to
+    distinguish between encyclopedia articles proper and technical,
+    user and discussion articles surrounding the project.
+  * Full text search on all articles.
+  * Allows to upload images and other files.
+  * Allows the users to keep a "watchlist" of articles whose changes
+    they want to track.
+  * Provides various statistics and lists:
+         * number of accesses of a given article
+         * most popular topics that are referred to but don't have articles yet
+         * list of previously edited articles
+         * list of articles that link to a given article
+         * list of articles ("orphans") that no other article links to
+         * list of logged in users
+
+
+2. Installation
+===============
+
+You need apache, php and mysql. Make sure that those three work well
+together before you continue to install the wikipedia script.
+
+Create a directory in your apache htdocs directory to hold the
+Wikipedia php scripts. In the sequel, we will use the directory
+"wiki". Copy all *.php and *.phtml files there.
+
+Create a mysql user and password and a database you want to use for
+Wikipedia articles. Then run mysql as that user, and source the file
+wikipedia.sql in order to create the tables needed.
+
+Move the images wiki.png and startrek.png somewhere on your web server.
+
+You then need to edit the file wikiLocalSettings.php. Add lines like
+this:
+
+$wikiThisDBserver = "127.0.0.1";  # the address of the computer running mysqld
+$wikiSQLServer = "wikidb";        # the mysql database used for Wikipedia
+$wikiThisDBuser = "wikiuser";     # the mysql user
+$wikiThisDBpassword = "xxx";      # mysql password
+
+# Preferred URL of the web server running Wikipedia
+$wikiCurrentServer = "http://wikipedia.mydomain.org";
+
+# How to access an article on your site. Change this if you use
+# apache's rewrite module to produce nicer URLs on your site (as is
+# done on wikipedia.com)
+$wikiArticleSource = "$wikiCurrentServer/wiki/wiki.phtml?title=$1";    
+
+# The URS's on your server for the two image files 
+$wikiLogoFile = "/wiki.png" ;
+$wikiStarTrekImage = "/startrek.png" ;
+
+You can look through wikiSettings.php for other variables to change.
+
+If everything is ok, you can access the URL wiki.phtml in your web
+site's wiki directory and you should get the (still empty) main page.
+
+If you want to test the performance of the code, you can install a
+realistically sized (23 MB) but outdated database from the mysql
+database dump
+
+     http://wikipedia.sourceforge.net/fpw/newiki.sql.gz
+
+Please do not use this database on a site visible to the public, to avoid
+confusion.
+
+
+3. Updating
+===========
+
+When updating to a new version of the PHP script, you may want to hold
+on to your previous version of wikiLocalSettings.php.
+
+If the new version needs any change in the database schema, the mysql
+script updSchema.sql can be used. Before sourcing that file, uncomment
+those lines that need to be updated for your database.
+
+
+4. Mailing list
+===============
+
+The further development of the software is discussed on the wikitech-l
+mailing list. See 
+
+      http://ross.bomis.com/mailman/listinfo/wikitech-l
+
+for information about how to sign up and for the mailing list
+archives.
+
+
+5. License
+==========
+
+All files in this directory belong to the Wikipedia PHP script.
+Copyright (C) 2001-2002 by Magnus Manske and others.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program in the file COPYING; if not, write to the Free
+Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
