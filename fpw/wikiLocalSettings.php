@@ -4,7 +4,7 @@
 # override the settings in that file.
 
 ## Language to use. Default is "en" (English).
-#$wikiLanguage = "de"; # Deutsch (German)
+# $wikiLanguage = "de"; # Deutsch (German)
 # $wikiLanguage = "eo"; # Esperanto
 
 $useCachedPages = false; # Disable page cache
