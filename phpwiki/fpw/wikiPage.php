@@ -195,6 +195,8 @@ class WikiPage extends WikiTitle {
 		$connection = getDBconnection () ;
 		mysql_select_db ( "wikipedia" , $connection ) ;
 		$text = str_replace ( "\"" , "\\\"" , $text ) ;
+		$comment = str_replace ( "\"" , "\\\"" , $comment ) ;
+		$userName = str_replace ( "\"" , "\\\"" , $userName ) ;
 		$sql = "UPDATE cur SET cur_text=\"$text\",cur_comment=\"$comment\",cur_user=\"$userID\"," ;
 		$sql .= "cur_user_text=\"$userName\",cur_minor_edit=\"$minorEdit\",";
 		$sql .= "cur_linked_links=\"$ll\",cur_unlinked_links=\"$ull\" WHERE $cond" ;
@@ -414,7 +416,7 @@ class WikiPage extends WikiTitle {
 		$s = $this->pingPongReplace ( "==" , "<h2>" , "</h2>" , $s ) ;
 
 		# Automatic links to subpages (e.g., /Talk -> [[/Talk]]
-		$s = ereg_replace ( "([\n| ])/([a-zA-Z0-9]+)" , "\\1[[/\\2|/\\2]]" , $s ) ;
+		$s = ereg_replace ( "([\n ])/([a-zA-Z0-9]+)" , "\\1[[/\\2|/\\2]]" , $s ) ;
 
 		# Parsing through the text line by line
 		# The main thing happening here is handling of lines starting with * # : etc.
@@ -507,10 +509,11 @@ class WikiPage extends WikiTitle {
 		$ret = "<a href=\"$THESCRIPT\">Main Page</a>" ;
 
 		$spl = $this->getSubpageList () ;
-		if ( count ( $spl ) > 0 and $this->subpageTitle != "" ) {
+		if ( count ( $spl ) > 0 and $this->subpageTitle != "" and $user->options["showStructure"] == "yes" ) {
 			$zz = trim ( $this->parseContents ( $spl[0] ) ) ;
 			$zz = strstr ( $zz , "<a"  ) ;
 			$zz = str_replace ( "</p>" , "" , $zz ) ;
+			$zz = $this->getNiceTitle ( $zz ) ;
 			$ret .= " | ".$zz ;
 			}
 
@@ -541,7 +544,10 @@ class WikiPage extends WikiTitle {
 				$ret .= "You can get help <a href=\"$THESCRIPT?title=wikipedia:help/edit\">here</a>." ;
 			} else $ret .= "<font size=+3>".$t."</font>" ;
 		} else {
-			$ret .= "<font size=+3><a href=\"$THESCRIPT?search=$this->title\">".$this->getNiceTitle($t)."</a>$this->thisVersion</font>" ;
+			$ret .= "<font size=+3>" ;
+			if ( $this->secureTitle == "Main_Page" and $action == "view" ) $ret .= "Wikipedia : The free encyclopedia" ;
+			else $ret .= "<a href=\"$THESCRIPT?search=$this->title\">".$this->getNiceTitle($t)."</a>$this->thisVersion" ;
+			$ret .= "</font>" ;
 			$subText = array () ;
 			if ( $user->isLoggedIn ) {
 				if ( $user->doWatch($this->title) )
@@ -597,7 +603,7 @@ class WikiPage extends WikiTitle {
 		return $column."</nowiki>" ;
 		}
 
-	# This calls the parser and eventually adds the QuickBar. Used fro display of normal article pages
+	# This calls the parser and eventually adds the QuickBar. Used for display of normal article pages
 	# Some special pages have their own rendering function
 	function getMiddle ( $ret ) {
 		global $user , $action ;
