@@ -762,10 +762,18 @@ class OutputPage {
 				continue;
 			}
 			if(substr($m[1],0,1)=="/") { # subpage
-				$noslash=substr($m[1],1);
+				if(substr($m[1],-1,1)=="/") {                 # / at end means we don't want the slash to be shown
+					$m[1]=substr($m[1],1,strlen($m[1])-2); 
+					$noslash=$m[1];
+					
+				} else {
+					$noslash=substr($m[1],1);
+				}
 				if($wgNamespacesWithSubpages[$wgTitle->getNamespace()]) { # subpages allowed here
-					$link = $wgTitle->getPrefixedText(). "/" . trim($noslash);					
-					if(!$text) { $text= $m[1]; } # this might be changed for ugliness reasons
+					$link = $wgTitle->getPrefixedText(). "/" . trim($noslash);
+					if(!$text) { 						
+						$text= $m[1]; 
+					} # this might be changed for ugliness reasons
 				} else {
 					$link = $noslash; # no subpage allowed, use standard link
 				}

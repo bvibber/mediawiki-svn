@@ -34,15 +34,28 @@ class UserTalkUpdate {
 		} else {
 			# Not ours.  If writing, mark it as modified.
 
-			if ( 1 == $this->mAction ) {				
-				$id = User::idFromName( $this->mTitle );
-				if ( 0 != $id ) {
-				$sql = "INSERT INTO user_newtalk (user_id) values ({$id})";
-				} else {
-				$sql = "INSERT INTO user_newtalk (user_id,user_ip) values (0,\"{$this->mTitle}\")";
+			if ( 1 == $this->mAction ) {
+				$user = new User();				
+				$user->setID(User::idFromName($this->mTitle));
+				#$user->loadFromDatabase;
+				#global $wgDebugLogFile;
+				#error_log("ID:".$this->mTitle."\n",3,$wgDebugLogFile);				
+				if ($id=$user->getID()) {									
+					$sql = "INSERT INTO user_newtalk (user_id) values ({$id})";
+					
+				} else { #anon
+					
+					if(preg_match("/^\d{1,3}\.\d{1,3}.\d{1,3}\.\d{1,3}$/",$this->mTitle)) { #real anon (user:xxx.xxx.xxx.xxx)
+					
+						$sql = "INSERT INTO user_newtalk (user_id,user_ip) values (0,\"{$this->mTitle}\")";		
+						
+					}					
+				
 				}
 				
-				wfQuery( $sql, $fname );
+				if($sql && !$user->getNewtalk()) { # only insert if real user and it's not already there
+					wfQuery( $sql, $fname );
+				}
 			}
 		}
 		
