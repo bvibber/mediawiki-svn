@@ -49,15 +49,18 @@ class Article {
 	function getContent( $noredir = false )
 	{
 		global $action; # From query string
+		wfProfileIn( "Article::getContent" );
 
 		if ( 0 == $this->getID() ) {
 			global $wgTitle;
 			if ( "edit" == $action ) {
 				return wfMsg( "newarticletext" );
 			}
+			wfProfileOut();
 			return wfMsg( "noarticletext" );
 		} else {
 			$this->loadContent( $noredir );
+			wfProfileOut();
 			return $this->mContent;
 		}
 	}
