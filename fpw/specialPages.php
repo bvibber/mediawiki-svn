@@ -351,7 +351,7 @@ function WantedPages () {
 		$p = new wikiPage ;
 		$p->setTitle ( $pn ) ;
 		$p->ensureExistence () ;
-		$p->setEntry ( $o , "Refresh" , 0 , "System" , 1 ) ;
+		$p->setEntry ( $o , "Refresh" , 0 , "System" , 1 , ",cur_timestamp=cur_timestamp" ) ; # Storing, don't show on RC
 	} else {
 		$ret .= getMySQL ( "cur" , "cur_text" , "cur_title=\"$pn\"" ) ;
 		}
@@ -1546,7 +1546,7 @@ function popularpages () {
 	$ret .= "<table>\n" ;
 	foreach ( $a as $x ) {
 		$ret .= "<tr>\n" ;
-		$ret .= "<td align=right nowrap>$x->cur_counter</td>\n" ;
+		$ret .= "<td align=right nowrap>".number_format($x->cur_counter,0)."</td>\n" ;
 		$ret .= "<td>[[".$vpage->getNiceTitle($x->cur_title)."]]</td>\n" ;
 		$ret .= "</tr>\n" ;
 		}
