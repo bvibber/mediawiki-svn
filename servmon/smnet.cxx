@@ -10,7 +10,6 @@ sckt::sckt(int type)
 	this->type = type;
 	if ((s = socket(ftype, SOCK_STREAM, 0)) < 0)
 		throw sckterr();
-	std::cerr << "new default socket " << s << "\n";
 	if (type == internet) {
 		struct sockaddr_in *sa = (sockaddr_in *)&sin;
 		memset(sa, 0, sizeof *sa);
@@ -29,7 +28,6 @@ sckt::sckt(int type)
 
 sckt::sckt(int type_, int s_, sockaddr const *sin_, socklen_t len)
 {
-	std::cerr << "new socket from child " << s_ << "\n";
 	std::memcpy(&sin, sin_, len);
 	type = type_;
 	s = s_;
@@ -37,7 +35,6 @@ sckt::sckt(int type_, int s_, sockaddr const *sin_, socklen_t len)
 }
 	
 sckt::~sckt(void) {
-	std::cerr << "deleting socket " << s << "\n";
 	close(s);
 }
 
