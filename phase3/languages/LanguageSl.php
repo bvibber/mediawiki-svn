@@ -412,7 +412,7 @@ border=\"0\" ALT=\"Google\"></A>
 <INPUT TYPE=hidden name=hl value=sl>
 <INPUT TYPE=hidden name=ie value=UTF-8>
 <INPUT TYPE=hidden name=oe value=UTF-8>
-<INPUT TYPE=text name=q size=31 maxlength=255 value=\"\">
+<INPUT TYPE=text name=q size=31 maxlength=255 value=\"$1\">
 <INPUT type=submit name=btnG VALUE=\"Iskanje z Googlom\">
 <font size=-1>
 <input type=hidden name=domains value=\"{$wgServer}\"><br><input type=radio name=sitesearch value=\"\"> WWW <input type=radio name=sitesearch value=\"{$wgServer}\" checked> {$wgServer} <br>
