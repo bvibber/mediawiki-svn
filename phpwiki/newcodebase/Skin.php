@@ -458,7 +458,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		  . "<input type=text name=\"search\" size=19 value=\""
 		  . htmlspecialchars(substr($search,0,256)) . "\">\n"
 		  . "<input type=submit value=\"" . wfMsg( "search" )
-		  . "\">&nbsp;<input type=submit name=\"go\"value=\"" . wfMsg ("go") . "\"></form>";		  
+		  . "\">&nbsp;<input type=submit name=\"go\" value=\"" . wfMsg ("go") . "\"></form>";		  
 
 		return $s;
 	}
