@@ -19,7 +19,7 @@
 	"contextlines" => 5, "contextchars" => 50,
 	"skin" => 0, "math" => 1, "rcdays" => 3, "rclimit" => 50,
 	"highlightbroken" => 1, "stubthreshold" => 0,
-        "editsection" => 0, "showtoc" => 0, "date" => 0
+        "editsection" => 1, "showtoc" => 1, "date" => 0
 );
 
 /* private */ $wgQuickbarSettingsDe = array(
