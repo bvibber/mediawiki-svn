@@ -101,9 +101,9 @@ class SearchEngine {
 	{
 		$q = preg_replace( "/[^-A-Za-z_0-9\\x90-\\xFF()]/", " ",
 		  $this->mUsertext );
-		$q = preg_replace( "/([()])/", "\\1 ", $q );
+		$q = preg_replace( "/([()])/", " \\1 ", $q );
 		$q = preg_replace( "/\\s+/", " ", $q );
-		$w = explode( " ", strtolower( $q ) );
+		$w = explode( " ", strtolower( trim( $q ) ) );
 
 		$last = $cond = "";
 		foreach ( $w as $word ) {
