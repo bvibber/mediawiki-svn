@@ -244,6 +244,7 @@ $wikiStatNoTalk = "Estas do proksimume $1 artikoloj, inkluzive de subpaĝoj (kro
 $wikiStatArticles = "Aŭ, estas proksimume $1 artikoloj, ignorante ĉiun subpaĝon!" ;
 $wikiStatJunk = "Finfine, estas proksimume $1 forĵetindaj paĝoj :-(" ;
 $wikiStatOld = "Kaj, estas $1 malnovaj versioj de paĝoj en la datumaro, do meznombre $2 malnovaj paĝoj po unu aktiva paĝo." ;
+$wikiUserStatistics = "Statistiko pri Uzantoj" ;
 $wikiStatUsers = "Nun estas $1 [[special:ListUsers|uzantoj]] subskribintaj." ;
 $wikiStatSysops = "$1 el ili estas sistemestroj." ;
 

@@ -277,6 +277,7 @@ $wikiStatNoTalk = "That means there are about $1 articles, including subpages (e
 $wikiStatArticles = "Or, there are about $1 articles, not counting any subpages!" ;
 $wikiStatJunk = "Finally, there are about $1 junk pages :-(" ;
 $wikiStatOld = "And, there are $1 old page versions in the database, giving an average of $2 old pages on every active page." ;
+$wikiUserStatistics = "User statistics" ;
 $wikiStatUsers = "There are currently $1 [[special:ListUsers|users]] signed up." ;
 $wikiStatSysops = "$1 of them have sysop status." ;
 
