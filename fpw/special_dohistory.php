@@ -2,7 +2,7 @@
 include_once ( "special_recentchangeslayout.php" ) ;
 
 function doHistory ( $title ) {
-    global $THESCRIPT , $vpage , $wikiHistoryTitle , $wikiCurrentVersion , $wikiHistoryHeader ;
+    global $THESCRIPT , $vpage , $wikiHistoryTitle , $wikiCurrentVersion , $wikiHistoryHeader , $wikiBlockIP ;
     $vpage = new WikiPage ;
     $vpage->SetTitle ( $title ) ;
     $ti = $vpage->secureTitle ;
@@ -38,6 +38,7 @@ function doHistory ( $title ) {
     $version = 0;
     foreach ( array_keys ( $a ) as $i ) {
       if ( $version > 0 ) $a[$i]->version = $version;
+      if ( $a[$i]->cur_used == 0 ) $a[$i]->appendix = " (<a href=\"".wikiLink("special:blockIP&target=".$a[$i]->cur_user_text)."\">$wikiBlockIP</a>)" ; # This will show for sysops only!
       $version++;
     }
 

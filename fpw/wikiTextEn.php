@@ -367,6 +367,7 @@ $wikiResourcesWarning = "(Please, do this only when necessary, as this function 
 $wikiNoRefresh = "(The page was last refreshed just $1 minutes ago; please wait another $2 minutes and try again.)" ;
 $wikiLastRefreshed = "Last refreshed $1" ;
 $wikiValidate = "Validate this page" ;
+$wikiBlockIP = "Block this IP" ;
 
 #---------------------------
 #Functions
