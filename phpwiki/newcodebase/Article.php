@@ -240,7 +240,8 @@ class Article {
 			return;
 		}
 		$text = $this->getContent(); # May change wgTitle!
-		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
+		$wgOut->setPageTitle( $wgTitle->getPrefixedText() .
+		  " - " . wfMsg( "wikititlesuffix" ) );
 
 		# We're looking at an old revision
 

@@ -243,6 +243,7 @@
 "aboutpage"		=> "Wikipedia:About",
 "help"			=> "Help",
 "helppage"		=> "Wikipedia:Help",
+"wikititlesuffix" => "Wikipedia",
 "bugreports"	=> "Bug reports",
 "bugreportspage" => "Wikipedia:Bug_reports",
 "faq"			=> "FAQ",
