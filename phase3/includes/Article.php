@@ -942,25 +942,31 @@ class Article {
 	}
 
 	/**
-	 *
+	 * Fetch and uncompress the text for a given revision.
+	 * Can ask by rev_id number or timestamp (set $field)
 	 */
-	function fetchRevisionText( $condition = array() ) {
+	function fetchRevisionText( $revId = null, $field = 'rev_id' ) {
 		$fname = 'Article::fetchRevisionText';
 		$dbw =& wfGetDB( DB_MASTER );
-		$ns = $this->mTitle->getNamespace();
-		$title = $this->mTitle->getDBkey();
-		
-		if( is_null( $condition ) ) {
+		if( $revId ) {
+			$rev = $dbw->addQuotes( $revId );
+		} else {
+			$rev = 'page_latest';
 		}
-		$revisionId = $dbw->selectField(
-			'revision',
-			'rev_id',
-			array( 'rev_page' => $this->mTitle->getArticleId() ) + $condition,
+		$result = $dbw->query(
+			sprintf( "SELECT old_text, old_flags
+				FROM %s,%s,%s
+				WHERE old_id=rev_id AND rev_page=page_id AND page_id=%d
+				AND %s=%s",
+				$dbw->tableName( 'page' ),
+				$dbw->tableName( 'revision' ),
+				$dbw->tableName( 'text' ),
+				IntVal( $this->mTitle->getArticleId() ),
+				$field,
+				$rev ),
 			$fname );
-		$obj = $dbw->getArray( 'text',
-			array( 'old_text', 'old_flags' ),
-			array( 'old_id' => $revisionId ),
-			$fname );
+		$obj = $dbw->fetchObject( $result );
+		$dbw->freeResult( $result );
 		$oldtext = Article::getRevisionText( $obj );
 		return $oldtext;
 	}
@@ -970,7 +976,7 @@ class Article {
 		if( is_null( $edittime ) ) {
 			$oldtext = $this->fetchRevisionText();
 		} else {
-			$oldtext = $this->fetchRevision( array( 'rev_timestamp' => $edittime ) );
+			$oldtext = $this->fetchRevisionText( $edittime, 'rev_timestamp' );
 		}
 		if ($section != '') {
 			if($section=='new') {

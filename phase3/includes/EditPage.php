@@ -617,21 +617,12 @@ END
 	 * @todo document
 	 */
 	function mergeChangesInto( &$text ){
-		$fname = 'EditPage::mergeChangesInto';
-		$oldDate = $this->edittime;
-		$dbw =& wfGetDB( DB_MASTER );
-		$obj = $dbw->getArray( 'cur', array( 'cur_text' ), array( 'cur_id' => $this->mTitle->getArticleID() ), 
-			$fname, 'FOR UPDATE' );
-
-		$yourtext = $obj->cur_text;
-		$ns = $this->mTitle->getNamespace();
-		$title = $this->mTitle->getDBkey();
-		$obj = $dbw->getArray( 'old', 
-			array( 'old_text','old_flags'), 
-			array( 'old_namespace' => $ns, 'old_title' => $title, 
-				'old_timestamp' => $dbw->timestamp($oldDate)),
-			$fname );
-		$oldText = Article::getRevisionText( $obj );
+		$yourtext = $this->mArticle->fetchRevisionText();
+		
+		$db =& wfGetDB( DB_SLAVE );
+		$oldText = $this->mArticle->fetchRevisionText(
+			$db->timestamp( $this->edittime ),
+			'rev_timestamp' );
 		
 		if(wfMerge($oldText, $text, $yourtext, $result)){
 			$text = $result;
