@@ -1120,7 +1120,7 @@ class WikiPage extends WikiTitle {
         	global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate , $wikiGetDate , $wikiDiff ;
 		global $wikiMyOptions, $wikiMyself , $wikiLogOut , $wikiMySettings , $wikiShortPages , $wikiLongPages , $wikiUserList , $wikiEditingHistory , $wikiTopics ;
 		global $wikiAddToWatchlist , $wikiEditPage , $wikiPrintable , $wikiTalk , $wikiEdit , $wikiPageOptions , $wikiBrowse , $wikiFind , $wikiOK;
-		global $wikiEditingHelp , $wikiWikipediaEditingHelp , $wikiShowLastChange , $wikiProtectThisPage , $wikiMainPage , $THESCRIPT;
+		global $wikiEditingHelp , $wikiWikipediaEditingHelp , $wikiShowLastChange , $wikiProtectThisPage , $wikiMainPage , $THESCRIPT , $wikiVoteForPage ;
 
 		$fonts = "face=verdana,arial" ;
 		$bg = "bgcolor=#EEF1F5 nowrap" ;
@@ -1153,6 +1153,7 @@ class WikiPage extends WikiTitle {
 			if ( $this->canEdit() ) $ret .= "<a class=CBlink href=\"".wikiLink($this->url."&action=edit")."\">$wikiEditPage</a><br>\n" ;
 			if ( $this->canDelete() ) $ret .= "<a class=CBlink href=\"".wikiLink("special:deletepage&target=".$this->url)."\">$wikiDeleteThisPage</a><br>\n" ;
 			if ( $this->canProtect() ) $ret .= "<a class=CBlink href=\"".wikiLink("special:protectpage&target=".$this->url)."\">$wikiProtectThisPage</a><br>\n" ;
+			if ( $user->isLoggedIn ) $ret .= "<a class=CBlink href=\"".wikiLink("special:vote&target=".$this->url)."\">$wikiVoteForPage</a><br>\n" ;
 			}
 		$ret .= "<a class=CBlink href=\"".wikiLink($wikiWikipediaEditingHelp)."\">$wikiEditingHelp</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:Upload")."\">$wikiUpload</a><br>\n" ;
