@@ -54,7 +54,7 @@
 	"cs" => "&#268;esky (Tchèque)",
 	"cy" => "Cymraeg",
 	"da" => "Dansk", # Note two different subdomains. 
-    "dk" => "Dansk", # 'da' is correct for the language.
+	"dk" => "Dansk", # 'da' is correct for the language.
 	"de" => "Deutsch",
 	"dz" => "Bhoutani",
 	"el" => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; (Ellenika)",
@@ -240,7 +240,7 @@
 
 # Bits of text used by many pages:
 #
-"mainpage"  => "Sommaire",
+"mainpage"  => "Accueil",
 "about"   => "À propos",
 "aboutwikipedia" => "À propos de Wikipedia",
 "aboutpage"  => "Wikipedia:À_propos",
@@ -368,7 +368,7 @@ N'oubliez pas de personnaliser votre Wikipédia en consultant la page Préférences
 "loginsuccesstitle" => "Identification réussie.",
 "loginsuccess" => "Vous êtes actuellement connecté(e) sur Wikipédia en tant que \"$1\".",
 "prefslogintext" => "Je suis connecté(e) en tant que $1 avec le numéro d'utilisateur $2.",
-"nosuchuser" => "L'utilisateur \"$1\ n'existe pas.
+"nosuchuser" => "L'utilisateur \"$1\" n'existe pas.
 Vérifiez que vous avez bien orthographié le nom, ou utilisez le formulaire ci-dessous pour créer un nouveau compte utilisateur.",
 "wrongpassword" => "Le mot de passe est incorrect. Essayez à nouveau.",
 "mailmypassword" => "Envoyez-moi un nouveau mot de passe",
@@ -452,12 +452,17 @@ d'article et au texte de $3 articles.",
 "textmatches" => "Correspondances dans les textes",
 "notextmatches" => "Aucun texte d'article ne contient le(s) mot(s) demandé(s)",
 "prevn"   => "$1 précédents",
-"nextn"   => "$1suivants",
+"nextn"   => "$1 suivants",
 "viewprevnext" => "Voir ($1) ($2) ($3).",
 "showingresults" => "Affichage de <b>$1</b> résultats à partir du #<b>$2</b>.",
 "nonefound"  => "<strong>Note</strong>: l'absence de résultat est souvent due à l'emploi de termes de recherche trop courants, comme \"a\" ou \"de\",
 qui ne sont pas indexés, ou à l'emploi de plusieurs termes de recherche (seules les pages
 contenant tous les termes apparaissent dans les résultats).",
+"powersearch" => "Search",
+"powersearchtext" => "
+Search in namespaces :<br>
+$1<br>
+$2 List redirects &nbsp; Search for $3 $9",
 
 
 # Preferences page
@@ -469,7 +474,7 @@ contenant tous les termes apparaissent dans les résultats).",
 pour modifier vos préférences d'utilisateur.",
 "prefsreset" => "Les préférences ont été rétablies à partir de la version enregistrée.",
 "qbsettings" => "Personnalisation de la barre outils", 
-"changepassword" => "Modification du mot de passe:",
+"changepassword" => "Modification du mot de passe",
 "skin"   => "Apparence",
 "saveprefs"  => "Enregistrer les préférences",
 "resetprefs" => "Rétablir les préférences",
@@ -483,10 +488,11 @@ pour modifier vos préférences d'utilisateur.",
 "resultsperpage" => "Nombre de réponses sur chaque page",
 "contextlines" => "Nombre de lignes pour chaque réponse",
 "contextchars" => "Nombre de caractères du contexte sur chaque ligne",
+"stubthreshold" => "Threshold for stub display",
 "recentchangescount" => "Nombre de titres dans les modifications récentes",
 "savedprefs" => "Les préférences ont été sauvegardées.",
-"timezonetext" => "Entrez le nombre d'heures de décalage par rapport à l'heure du serveur (U.S. Pacific time).
-Par exemple, pour la France, entrez \"9\".",
+"timezonetext" => "Entrez le nombre d'heures de décalage par rapport à l'heure du serveur (UTC). Si vous le
+lassez blanc, l'heure de l'Europe se presente.",
 "localtime" => "Heure locale",
 "timezoneoffset" => "Décalage horaire",
 
@@ -518,6 +524,8 @@ Voyez aussi [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges le
 "tableform"  => "table",
 "listform"  => "liste",
 "nchanges"  => "$1 modification(s)",
+"minoreditletter" => "M",
+"newpageletter" => "N",
 
 # Upload
 #
@@ -534,8 +542,8 @@ pour copier des fichiers sur le serveur.",
 "uploadfile" => "Copier un fichier",
 "uploaderror" => "Erreur",
 "uploadtext" => "<strong>STOP!</strong> Avant de copier votre fichier sur le serveur,
-prenez connaissance de la <a href=\"" .
-wfLocalUrlE( "Wikipedia:règles d'utilisation des images" ) . "\">politique d'utilisation des images</a> de Wikipédia et assurez-vous que vous la respectez.
+prenez connaissance des <a href=\"" .
+wfLocalUrlE( "Wikipedia:règles d'utilisation des images" ) . "\">règles d'utilisation des images</a> de Wikipédia et assurez-vous que vous les respectez.
 <p>Pour voir les images déjà placées sur le serveur ou faire une recherche parmi celles-ci,
 allez à la <a href=\"" . wfLocalUrlE( "Special:Imagelist" ) .
 "\">liste des images</a>.
@@ -557,15 +565,15 @@ ou <b>[[media:nom_du_fichier.ogg]]</b> pour les sons.
 "uploadlog"  => "log d'upload",
 "uploadlogpage" => "Log_d'upload",
 "uploadlogpagetext" => "Voici la liste des derniers fichiers copiés sur le serveur.
-L'heure indiquée est celle du serveur (U.S. Pacific time).
+L'heure indiquée est celle du serveur (UTC).
 <ul>
 </ul>
 ",
 "filename"  => "Nom",
 "filedesc"  => "Description",
-"affirmation" => "Je déclare que le détenteur du copyright de ce fichier accepte de le diffuser selon les termes de la licence $1.",
+"affirmation" => "Je déclare que le détenteur du copyright de ce fichier accepte de le diffuser selon les termes de la $1.",
 "copyrightpage" => "Wikipedia:Copyrights",
-"copyrightpagename" => "license Wikipédia",
+"copyrightpagename" => "licence Wikipédia",
 "uploadedfiles" => "Fichiers copiés",
 "noaffirmation" => "Vous devez confirmer que la copie de ce fichier ne viole aucun copyright.",
 "ignorewarning" => "Ignorer l'avertissement et copier le fichier quand même.",
@@ -629,7 +637,7 @@ Parmi ceux-ci, <b>$2</b> ont le statut d'administrateur (voir $3).",
 "popularpages" => "Pages les plus consultées",
 "nviews"  => "$1 consultations",
 "wantedpages" => "Pages les plus demandées",
-"nlinks"  => "$1 links",
+"nlinks"  => "$1 références",
 "allpages"  => "Toutes les pages",
 "randompage" => "Une page au hasard",
 "shortpages" => "Articles courts",
@@ -721,7 +729,7 @@ L'heure indiquée est celle du serveur (UTC).
 
 # Contributions
 #
-"contributions" => "Contributions des utilisateurs",
+"contributions" => "Contributions",
 "contribsub" => "Pour $1",
 "nocontribs" => "Aucune modification correspondant à ces critères n'a été trouvée.",
 "ucnote"  => "Voici les <b>$1</b> dernières modifications effectuées par cet utilisateur au cours des <b>$2</b> derniers jours.",
@@ -739,6 +747,7 @@ L'heure indiquée est celle du serveur (UTC).
 
 # Block/unblock IP
 #
+
 "blockip"  => "Bloquer une adresse IP",
 "blockiptext" => "Utilisez le formulaire ci-dessous pour bloquer l'accès en écriture à partir d'une adresse IP donnée.
 Une telle mesure ne doit être prise que pour empêcher le vandalisme et en accord avec [[Wikipedia:Recommandations Et Règles à  Suivre|recommandations et règles à suivre]].
@@ -762,6 +771,7 @@ Donnez ci-dessous une raison précise (par exemple en indiquant les pages qui ont
 "unblocklink" => "débloquer",
 "contribslink" => "contribs",
 
+
 # Developer tools
 #
 "lockdb"  => "Verrouiller la base",
@@ -772,6 +782,7 @@ Veuillez confirmer que c'est bien là ce que vous voulez faire et que vous débloq
 Veuillez confirmer que c'est bien là ce que vous voulez faire.",
 "lockconfirm" => "Oui, je confirme que je souhaite verrouiller la base de données.",
 "unlockconfirm" => "Oui, je confirme que je souhaite déverrouiller la base de données.",
+
 "lockbtn"  => "Verrouiller la base",
 "unlockbtn"  => "Déverrouiller la base",
 "locknoconfirm" => "Vous n'avez pas coché la case de confirmation.",
