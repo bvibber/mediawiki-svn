@@ -33,10 +33,12 @@
 );
 
 /* private */ $wgMathNamesNl = array(
-           "Altijd PNG weergeven",
+           "Altijd als PNG weergeven",
            "HTML voor eenvoudige formules, anders PNG",
            "HTML indien mogelijk, anders PNG",
-           "Laat de TeX broncode staan (voor tekstbrowsers)"   );
+           "Laat de TeX broncode staan (voor tekstbrowsers)",
+           "Aanbevolen methode voor recente browsers"
+);
 
 /* private */ $wgUserTogglesNl = array(
  "hover"  => "Wikilinks in zwevend tekstvak tonen",
@@ -50,7 +52,8 @@
  "editwidth" => "Bewerkingsveld over volle breedte",
  "editondblclick" => "Dubbelklikken levert bewerkingspagina (vereist JavaScript)",
  "watchdefault" => "Artikelen die u wijzigt automatisch volgen",
- "minordefault" => "Maak 'kleine' veranderingen mijn standaard"
+ "minordefault" => "Maak 'kleine' veranderingen mijn standaard",
+ "previewontop" => "Toon controlepagina boven bewerkingsveld"
 );
 
 /* private */ $wgLanguageNamesNl = array(
@@ -82,6 +85,7 @@
  "bh" => "Bihari",
  "my" => "Birmaans",
  "bi" => "Bislama",
+ "bs" => "Bosnisch"
  "km" => "Cambodjaans",
  "ca" => "Català",
  "cs" => "Cesky",
@@ -418,8 +422,8 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "blockedtitle" => "Gebruiker is geblokkeerd",
 "blockedtext" => "Uw gebruikersnaam of IP-adres is door $1 geblokkeerd. De opgegeven reden:<br>$2<p>. U kunt voor overleg contact opnemen met de [[Wikipedia:Systeembeheerders|systeembeheerders]].",
 "newarticle" => "(Nieuw)",
-"newarticletext" => "Er bestaat nog geen artikel over dit onderwerp.<br>Als u wilt, kunt u een artikel beginnen door deze tekst te verwijderen en te vervangen door de nieuwe tekst van het artikel.<br>Was dit niet de bedoeling, gebruik dan de 'Terug' knop van uw browser.",
-"anontalkpagetext" => "Deze overlegpagina hoort bij een anonieme gebruiker die hetzij geen loginnaam heeft, hetzij deze niet gebruikt. We gebruiken daarom het IP-adres ter identificatie. Het kan echter zijn dat meerdere personen hetzelfde IP-adres gebruiken. Het kan daarom zijn dat u hier berichten ontvangt die niet voor u bedoeld zijn. Mocht u dat willen voorkomen, dan kunt u [[Speciaal:Userlogin|een gebruikersnaam aanvragen of u aanmelden]].",
+"newarticletext" => "Er bestaat nog geen artikel over dit onderwerp.<br>Als u wilt, kunt u hieronder een nieuw artikel schrijven.<br>Was dit niet de bedoeling, gebruik dan de 'Terug' knop van uw browser.",
+"anontalkpagetext" => "<hr>Deze overlegpagina hoort bij een anonieme gebruiker die hetzij geen loginnaam heeft, hetzij deze niet gebruikt. We gebruiken daarom het IP-adres ter identificatie. Het kan echter zijn dat meerdere personen hetzelfde IP-adres gebruiken. Het kan daarom zijn dat u hier berichten ontvangt die niet voor u bedoeld zijn. Mocht u dat willen voorkomen, dan kunt u [[Speciaal:Userlogin|een gebruikersnaam aanvragen of u aanmelden]].",
 "noarticletext" => "(Deze pagina bevat momenteel geen tekst)",
 "updated"  => "(Bijgewerkt)",
 "note"   => "<strong>Opmerking:</strong> ",
@@ -672,8 +676,9 @@ Er is in totaal $3 maal een pagina bekeken, en $4 maal een pagina bewerkt. Dat g
 "newpages"  => "Nieuwe pagina's",
 "movethispage" => "Verplaats deze pagina",
 "unusedimagestext" => "<p>Let op! Het zou kunnen dat er via een directe link verwezen wordt naar een afbeelding, bijvoorbeeld vanuit een anderstalige Wikipedia. Het is daarom mogelijk dat een afbeelding hier vermeld staat terwijl het wel degelijk gebruikt wordt.",
-"booksources" => "Boekhandels",
+"bookources" => "Boekhandels",
 "booksourcetext" => "Hieronder is een lijst van externe websites die boeken verkopen en ook verdere informatie hierover kunnen verstekken. Via een ISBN-nummer in een artikel kan u via deze pagina een werk opzoeken. <p>Deze dienst is enkel ter uwer informatie. Wikipedia NL heeft <u>geen enkele</u> relatie met deze websites.",
+"alphaindexline" => "$1 tot $2",
 
 # Email this user
 # E-mail deze gebruiker
@@ -757,6 +762,7 @@ Ook zullen deze pagina's in het <b>vet</b> verschijnen in de <a href=\"" .
 # Contributions
 # Bijdragen
 "contributions" => "Bijdragen per gebruiker",
+"mycontris" => "Mijn bijdragen",
 "contribsub" => "Voor $1",
 "nocontribs" => "Geen wijzigingen gevonden die aan de gestelde criteria voldoen.",
 "ucnote"  => "Hieronder ziet u de laatste <b>$1</b> wijzigingen van deze gebruiker in de laatste <b>$2</b> dagen.",
@@ -765,7 +771,7 @@ Ook zullen deze pagina's in het <b>vet</b> verschijnen in de <a href=\"" .
 
 # What links here
 # Wat linkt hier
-"whatlinkshere" => "Links naar deze pagina",
+"whatlinkshere" => "Referenties",
 "notargettitle" => "Geen doelpagina",
 "notargettext" => "U hebt niet gezegd voor welke pagina u deze functie wilt bekijken.",
 "linklistsub" => "(lijst van verwijzingen)",
@@ -914,6 +920,14 @@ class LanguageNl extends Language {
  }
 
  function getMonthName( $key )
+ {
+  global $wgMonthNamesNl;
+  return $wgMonthNamesNl[$key-1];
+ }
+
+ /* by default we just return base form; this should be ok for Nl */
+
+ function getMonthNameGen( $key )
  {
   global $wgMonthNamesNl;
   return $wgMonthNamesNl[$key-1];
