@@ -54,6 +54,9 @@ function sqldump () {
 		$structure .= ") TYPE=MyISAM ;\n\n" ;
 		}
 
+	# Removing all tables except cur
+	$tables = array ( "cur" ) ;
+
 	# Writing contents
 	$file = fopen ( $target , "wb" ) ;
 	fwrite ( $file , $structure."\n\n".$out ) ;
@@ -82,7 +85,7 @@ function sqldump () {
 	@chmod ( "$target.gz" , 0777 ) ;
 	@unlink ( "$target.gz" ) ;
 	system ( "gzip $target" ) ;
-	$target .= ".gz" ;
+	$target = "$target.gz" ;
 
 	$body = "A database dump of the tables <i>" ;
 	$body .= implode ( ", " , $tables ) ;
