@@ -308,33 +308,31 @@ function editUserSettings () {
 function WantedPages () {
 	global $THESCRIPT ;
 	global $linkedLinks , $unlinkedLinks , $vpage ;
-	$vpage->special ( "The Most Wanted Topics" ) ;
+	$vpage->special ( "The Most Wanted Pages" ) ;
 	$vpage->namespace = "" ;
 	$allPages = array () ;
-	$linkedLinks = array () ;
-	$unlinkedLinks = array () ;
-	$ret = "'''These articles don't exist, but other articles link to them!'''\n\n" ;
+	$ret = "'''These articles don't exist, but other articles link to them!''' (the top 50)\n\n" ;
 
 	$connection = getDBconnection () ;
 	mysql_select_db ( "wikipedia" , $connection ) ;
-	$sql = "SELECT cur_title FROM cur" ;
+	$sql = "SELECT cur_title,cur_linked_links,cur_unlinked_links FROM cur" ;
 	$result = mysql_query ( $sql , $connection ) ;
-	while ( $s = mysql_fetch_object ( $result ) ) array_push ( $allPages , $s->cur_title ) ;
+	while ( $s = mysql_fetch_object ( $result ) ) {
+		$allPages[$s->cur_title] = -999999999999 ; # Effectively removing existing topics from list
+		$u = explode ( "\n" , $s->cur_linked_links ) ; foreach ( $u as $x ) $allPages[$x] += 1 ;
+		$u = explode ( "\n" , $s->cur_unlinked_links ) ; foreach ( $u as $x ) $allPages[$x] += 1 ;
+		}
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
 
-	foreach ( $allPages as $x ) {
-		$p = new WikiPage ;
-		$p->load ( $x ) ;
-		$p->replaceInternalLinks ( $p->contents ) ;
+
+	arsort ( $allPages ) ;
+	array_shift ( $allPages ) ; # Removing blank "link"
+	$k = array_keys ( $allPages ) ;
+	for ( $a = 0 ; $a < 50 ; $a++ ) {
+		$x = $k[$a] ;
+		$ret .= "[[$x|".$vpage->getNiceTitle($x)."]] is wanted by ".$allPages[$x]." articles.<br>\n" ;
 		}
-
-	arsort ( $unlinkedLinks ) ;
-	while ( count ( $unlinkedLinks ) > 20 ) array_pop ( $unlinkedLinks ) ;
-	$a = array_keys ( $unlinkedLinks ) ;
-	foreach ( $a as $x )
-		$ret .= "[[$x]] (linked from $unlinkedLinks[$x] other topics)<br>\n" ;
-
 	return $ret ;
 	}
 
@@ -344,35 +342,30 @@ function LonelyPages () {
 	$vpage->special ( "The Orphans" ) ;
 	$vpage->namespace = "" ;
 	$allPages = array () ;
-	$linkedLinks = array () ;
-	$unlinkedLinks = array () ;
 	$ret = "'''These articles exist, but no articles link to them!'''\n\n" ;
 
 	$connection = getDBconnection () ;
 	mysql_select_db ( "wikipedia" , $connection ) ;
-	$sql = "SELECT cur_title FROM cur" ;
+	$sql = "SELECT cur_title,cur_linked_links,cur_unlinked_links FROM cur" ;
 	$result = mysql_query ( $sql , $connection ) ;
-	while ( $s = mysql_fetch_object ( $result ) ) array_push ( $allPages , $s->cur_title ) ;
+	while ( $s = mysql_fetch_object ( $result ) ) {
+		$allPages[$s->cur_title] = $allPages[$s->cur_title] * 1 ;
+		$u = explode ( "\n" , $s->cur_linked_links ) ; foreach ( $u as $x ) $allPages[$x] += 1 ;
+		$u = explode ( "\n" , $s->cur_unlinked_links ) ; foreach ( $u as $x ) $allPages[$x] += 1 ;
+		}
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
-
-	$r = array () ;
-	foreach ( $allPages as $x ) {
-		$p = new WikiPage ;
-		$p->load ( $x ) ;
-		$r["$p->secureTitle"] = 0 ;
-		$p->replaceInternalLinks ( $p->contents ) ;
-		}
-
-	$a = array_keys ( $linkedLinks ) ;
-	foreach ( $a as $x ) $r[$x]++ ;
-
-	$a = array_keys ( $r ) ;
-	foreach ( $a as $x ) {
-		if ( $r[$x] == 0 )
-			$ret .= "[[$x]]<br>\n" ;
-		}
 	
+	$orphans = array () ;
+	$v = array_keys ( $allPages ) ;
+	foreach ( $v as $x ) {
+		if ( $allPages[$x] == 0 )
+			array_push ( $orphans , $x ) ;
+		}
+
+	asort ( $orphans ) ;
+	foreach ( $orphans as $x )
+		$ret .= "[[$x|".$vpage->getNiceTitle($x)."]]<br>\n" ;
 	return $ret ;
 	}
 
@@ -487,6 +480,28 @@ function doSearch () {
 	}
 
 function listUsers () {
+	global $user , $vpage , $startat ;
+	if ( !isset ( $startat ) ) $startat = 1 ;
+	$perpage = $user->options["resultsPerPage"] ;
+	if ( $perpage == 0 ) $perpage = 20 ;
+
+	$vpage->special ( "User List" ) ;
+	$vpage->namespace = "" ;
+	$ret = "'''These are all wikipedia users (that have an account)!'''\n\n" ;
+	$connection = getDBconnection () ;
+	mysql_select_db ( "wikipedia" , $connection ) ;
+	$sql = "SELECT * from user" ;
+	$result = mysql_query ( $sql , $connection ) ;
+	while ( $s = mysql_fetch_object ( $result ) ) {
+		$ret .= "#[[user:$s->user_name|$s->user_name]]" ;
+		if ( in_array ( "is_sysop" , $user->rights ) ) $ret .= " ($s->user_rights)" ;
+		$ret .= "\n" ;
+		}
+	
+
+	return $ret ;
+
+#------------------------------------------------
 	global $THESCRIPT ;
 	global $user , $vpage , $startat ;
 	if ( !isset ( $startat ) ) $startat = 1 ;
@@ -1065,15 +1080,74 @@ function ShortPages () {
 	return $ret ;
 	}
 
+function removeFromLinkList ( $item , $link ) {
+	$connection = getDBconnection () ;
+	mysql_select_db ( "wikipedia" , $connection ) ;
+	$sql = "SELECT cur_id FROM cur WHERE $item LIKE \"%$link%\"" ;
+	$result = mysql_query ( $sql , $connection ) ;
+	$ids = array () ;
+	while ( $s = mysql_fetch_object ( $result ) ) array_push ( $ids , $s->cur_id ) ;
+	mysql_free_result ( $result ) ;
+
+	foreach ( $ids as $x ) {
+		$sql = "SELECT cur_timestamp,$item FROM cur WHERE cur_id=$x" ;
+		$result = mysql_query ( $sql , $connection ) ;
+		$s = mysql_fetch_object ( $result )  ;
+		mysql_free_result ( $result ) ;
+		$y = explode ( "\n" , $s->$item ) ;
+		$z = array () ;
+		foreach ( $y as $u ) {
+			if ( $u != $link )
+				array_push ( $z , $u ) ;
+			}
+		$y = implode ( "\n" , $z ) ;
+		$sql = "UPDATE cur SET cur_timestamp=\"$s->cur_timestamp\",$item=\"$y\" WHERE cur_id=$x" ;
+		$result = mysql_query ( $sql , $connection ) ;
+		}
+
+	mysql_close ( $connection ) ;	
+	}
+
+function deletepage () {
+	global $THESCRIPT , $target , $user , $iamsure ;
+	global $vpage ;
+	$target = str_replace ( "\\\\" , "\\" , $target ) ;
+	$target = str_replace ( "\\\\" , "\\" , $target ) ;
+	$vpage = new WikiPage ;
+	$vpage->title = $title ;
+	$vpage->makeSecureTitle () ;
+	$ti = $vpage->secureTitle ;
+	$vpage->special ( "Deleting article '$target'" ) ;
+	$vpage->makeSecureTitle () ;
+	if ( !in_array ( "is_sysop" , $user->rights ) ) return "<h1>You are not allowed to delete this page!</h1>" ;
+	if ( $iamsure == "yes" ) {
+		$connection = getDBconnection () ;
+		mysql_select_db ( "wikipedia" , $connection ) ;
+		$sql = "DELETE FROM cur WHERE cur_title=\"$target\"" ;
+		$result = mysql_query ( $sql , $connection ) ;
+		mysql_close ( $connection ) ;
+		removeFromLinkList ( "cur_linked_links" , $target ) ;
+		removeFromLinkList ( "cur_unlinked_links" , $target ) ;
+		$ret = "<h2>'$target' has been removed.</h2>" ;
+	} else {
+		$ret = "<h2>You are about to delete the article \"$target\" and its complete history!<br>\n" ;
+		$ret .= "If you are absolutely sure you want to do this, " ;
+		$ret .= "<a href=\"$THESCRIPT?title=special:deletepage&target=$target&iamsure=yes\">click here</a>.</h2>" ;
+		}
+	return "<nowiki>$ret</nowiki>" ;
+	}
+
 # A little hack; disabled; to enable, allow function call in wikiPage->load()
 function askSQL () {
 	global $THESCRIPT ;
 	global $Save , $question ;
 	$ret = "" ;
 	if ( isset ( $Save ) ) {
+		$ret .= "$question<br>" ;
 		unset ( $Save ) ;
 		$connection = getDBconnection () ;
 		mysql_select_db ( "wikipedia" , $connection ) ;
+		$question = str_replace ( "\\\"" , "\"" , $question ) ;
 		$result = mysql_query ( $question , $connection ) ;
 		$n = mysql_num_fields ( $result ) ;
 		$k = array () ;
