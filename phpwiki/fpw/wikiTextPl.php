@@ -324,7 +324,7 @@ $wikiDeleteAsk = "Zamierzasz usunąć artykuł \"$1\" i jego całą historię!<b
 $wikiProtectTitle = "Ochrona artykułu '$1'" ;
 $wikiProtectDenied = "<font size=\"+3\">Nie masz uprawnień do ustawienia ochrony tej strony!</font>" ;
 $wikiProtectNow = "Strona '$1' jest teraz chroniona jako $2." ;
-$wikiProtectText = "<font size=\"+2\">Możesz teraz edytować ochronę dla '$target'</font><br><i>Na przykład użyj \"is_sysop\" żeby zabronić wszystkim poza adminami edycji tej strony. Oddzielaj pozwolenia przecinkami.</i>" ;
+$wikiProtectText = "<font size=\"+2\">Możesz teraz edytować ochronę dla '$1'</font><br><i>Na przykład użyj \"is_sysop\" żeby zabronić wszystkim poza adminami edycji tej strony. Oddzielaj pozwolenia przecinkami.</i>" ;
 $wikiProtectCurrent = "Aktualna ochrona : " ;
 $wikiContribTitle = "Kontrybucje użytkownika $1" ;
 $wikiContribText = "<h1>Kontrybucje użytkownika $1 :</h1>\n(Z wyjątkiem drobnych zmian i zmian do stron dyskusyjnych i logów)" ;

@@ -21,28 +21,16 @@ $minSrchSize = 4;   # this is smallest word size that is indexed by the MySQL fu
 $wikiDBconnection = "";  # global variable to hold the current DB
 			 # connection; should be empty initially.
 
-# Namespace backgrounds
-$wikiNamespaceBackground = array () ;
-$wikiNamespaceBackground[$wikiTalk] = "#eeFFFF" ;
-$wikiNamespaceBackground["user_talk"] = $wikiNamespaceBackground[$wikiTalk] ;
-$wikiNamespaceBackground["wikipedia_talk"] = $wikiNamespaceBackground[$wikiTalk] ;
-$wikiNamespaceBackground[$wikiUser] = "#FFeeee" ;
-$wikiNamespaceBackground[$wikiWikipedia] = "#eeFFee" ;
-$wikiNamespaceBackground["log"] = "#FFFFcc" ;
-$wikiNamespaceBackground["special"] = "#eeeeee" ;
- 
 # Cache system enabled by default
 $useCachedPages = true ;
 
 # Use English by default
 $wikiLanguage = "en";
 
+$wikiLocale = "";
+
 # Now, load local site-specific settings
 include_once ( "wikiLocalSettings.php" ) ;
-
-# Initialize list of available character encodings to the default if none was set up.
-if ( ! isset ( $wikiEncodingCharsets ) ) $wikiEncodingCharsets = array($wikiCharset);
-if ( ! isset ( $wikiEncodingNames ) ) $wikiEncodingNames = array($wikiCharset); # Localised names
 
 #
 # This file loads up the default English message strings
@@ -53,6 +41,22 @@ include_once ( "wikiTextEn.php" ) ;
 if ( $wikiLanguage != "en" ) {
     include_once ( "wikiText" . ucfirst ( $wikiLanguage ) . ".php" ) ;
 }
+
+# Initialize list of available character encodings to the default if none was set up.
+if ( ! isset ( $wikiEncodingCharsets ) ) $wikiEncodingCharsets = array($wikiCharset);
+if ( ! isset ( $wikiEncodingNames ) ) $wikiEncodingNames = array($wikiCharset); # Localised names
+
+# Namespace backgrounds
+if (! isset ($wikiNamespaceBackground)) {
+   $wikiNamespaceBackground = array () ;
+   $wikiNamespaceBackground[$wikiTalk] = "#eeFFFF" ;
+   $wikiNamespaceBackground["user_talk"] = $wikiNamespaceBackground[$wikiTalk] ;
+   $wikiNamespaceBackground["wikipedia_talk"] = $wikiNamespaceBackground[$wikiTalk] ;
+   $wikiNamespaceBackground[$wikiUser] = "#FFeeee" ;
+   $wikiNamespaceBackground[$wikiWikipedia] = "#eeFFee" ;
+   $wikiNamespaceBackground["log"] = "#FFFFcc" ;
+   $wikiNamespaceBackground["special"] = "#eeeeee" ;
+} 
 
 # Functions
 

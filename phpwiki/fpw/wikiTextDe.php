@@ -249,7 +249,7 @@ $wikiMoveForm = "
 <h2>Sie sind dabei, '$1' und alle Revisionen zu einem neuen Titel zu verschieben.</h2>\n
 <FORM method=post>\n
 Neuer Titel : <INPUT type=text value='$2' name=newname size=40 maxlength=250><br><br>\n
-<INPUT type=checkbox$checked name=doredirect>Eine Weiterleitung von '$1' zum neuen Titel generieren<br><br>\n
+<INPUT type=checkbox$3 name=doredirect>Eine Weiterleitung von '$1' zum neuen Titel generieren<br><br>\n
 <INPUT type=submit name=doit value='Verschieben'>\n
 </FORM>\n" ;
 
@@ -434,7 +434,7 @@ $wikiDeleteAsk = "Sie sind dabei, den Artikel \"$1\" und alle seine Revisionen z
 $wikiProtectTitle = "Schützen des Artikels '$1'" ;
 $wikiProtectDenied = "<font size=\"+3\">Sie sind nicht berechtigt, diese Seite zu schützen!</font>" ;
 $wikiProtectNow = "Die Seite '$1' ist nun geschützt ($2)." ;
-$wikiProtectText = "<font size=\"+2\">Sie können nun die Seite '$target' schützen</font><br><i>Zum Bleistift, \"is_sysop\" wird verhindern, dass jemand anderes als ein Systemadministrator diese Seite ändert. Mehrere Berechtigungen werden durch \",\" getrennt.</i>" ;
+$wikiProtectText = "<font size=\"+2\">Sie können nun die Seite '$1' schützen</font><br><i>Zum Bleistift, \"is_sysop\" wird verhindern, dass jemand anderes als ein Systemadministrator diese Seite ändert. Mehrere Berechtigungen werden durch \",\" getrennt.</i>" ;
 $wikiProtectCurrent = "Gegenwärtiger Schutz : " ;
 $wikiContribTitle = "Beiträge von $1" ;
 $wikiContribText = "<h1>Beiträge von $1' :</h1>\n(Ausnahmen: Kleine Veränderungen sowie ''Disskussion'' und ''Log''-Seiten)" ;
@@ -502,8 +502,8 @@ function wikiGetBriefDateDe () { #Brief date for link in sidebar
     $year = date ( "Y" ) ;
     return "$dayNumber. $monthName, $year" ;
     }
-$wikiGetDate = wikiGetDateDe;
-$wikiGetBriefDate = wikiGetBriefDateDe ;
+$wikiGetDate = 'wikiGetDateDe';
+$wikiGetBriefDate = 'wikiGetBriefDateDe' ;
 
 # In theory, this could be expanded to allow general conversion of the
 # character encoding used in the database to another encoding optionally
@@ -524,6 +524,6 @@ function wikiRecodeInputDe($text) {
   return $text;
 }
 
-$wikiRecodeOutput = wikiRecodeOutputDe;
-$wikiRecodeInput = wikiRecodeInputDe;
+$wikiRecodeOutput = 'wikiRecodeOutputDe';
+$wikiRecodeInput = 'wikiRecodeInputDe';
 ?>

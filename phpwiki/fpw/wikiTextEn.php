@@ -258,7 +258,7 @@ $wikiMoveForm = "
 <h2>You are about to move '$1' and its history to a new title.</h2>\n
 <FORM method=post>\n
 New name : <INPUT type=text value='$2' name=newname size=40 maxlength=250><br><br>\n
-<INPUT type=checkbox$checked name=doredirect>Create a #REDIRECT from '$1' to the new title<br><br>\n
+<INPUT type=checkbox$3 name=doredirect>Create a #REDIRECT from '$1' to the new title<br><br>\n
 <INPUT type=submit name=doit value='Move'>\n
 </FORM>\n" ;
 
@@ -394,7 +394,7 @@ $wikiUploadSuccess = "File <b>$1</b> was successfully uploaded!" ;
 $wikiUploadSuccess1 = "*On $1, $2 uploaded file '''$3'''$4\n" ;
 $wikiUploadSuccess2 = "Upload of file $1" ;
 #$wikiUploadText = "<h2>Instructions:</h2><ul>\n" ;
-$wikiUploadText .= "<li><strong>Use this form to upload various files</strong></li>\n";
+$wikiUploadText = "<li><strong>Use this form to upload various files</strong></li>\n";
 $wikiUploadText .= "<li>To replace a previously-uploaded file (e.g., a\n";
 $wikiUploadText .= "new version of the article), simply re-upload the\n";
 $wikiUploadText .= "same file. But first look below and make sure you\n";
@@ -448,7 +448,7 @@ $wikiDeleteAsk = "You are about to delete the article \"$1\" and its complete hi
 $wikiProtectTitle = "Protecting article '$1'" ;
 $wikiProtectDenied = "<font size=\"+3\">You are not allowed to protect this page!</font>" ;
 $wikiProtectNow = "Page '$1' is now protected as $2." ;
-$wikiProtectText = "<font size=\"+2\">You can now edit the protection for '$target'</font><br><i>For example, use \"is_sysop\" to prevent anyone but sysops from editing that page. Separate several allowances by \",\"</i>" ;
+$wikiProtectText = "<font size=\"+2\">You can now edit the protection for '$1'</font><br><i>For example, use \"is_sysop\" to prevent anyone but sysops from editing that page. Separate several allowances by \",\"</i>" ;
 $wikiProtectCurrent = "Current protection : " ;
 $wikiContribTitle = "Contributions of $1" ;
 $wikiContribText = "<h1>$1's contributions :</h1>\n(With the exception of minor edits and changes to ''talk'' and ''log'' pages)" ;
@@ -524,8 +524,8 @@ function wikiGetBriefDateEn () { #Brief date for link in sidebar
     $year = date ( "Y" ) ;
     return "$monthName $dayNumber, $year" ;
     }
-$wikiGetDate = wikiGetDateEn;
-$wikiGetBriefDate = wikiGetBriefDateEn ;
+$wikiGetDate = 'wikiGetDateEn';
+$wikiGetBriefDate = 'wikiGetBriefDateEn' ;
 
 # In theory, this could be expanded to allow general conversion of the
 # character encoding used in the database to another encoding optionally
@@ -546,6 +546,6 @@ function wikiRecodeInputEn($text) {
   return $text;
 }
 
-$wikiRecodeOutput = wikiRecodeOutputEn;
-$wikiRecodeInput = wikiRecodeInputEn;
+$wikiRecodeOutput = 'wikiRecodeOutputEn';
+$wikiRecodeInput = 'wikiRecodeInputEn';
 ?>
