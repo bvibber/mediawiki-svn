@@ -200,22 +200,23 @@ class WikiPage extends WikiTitle {
         $connection = getDBconnection () ;
         $sql = "INSERT INTO cur (cur_title, cur_ind_title)
                 VALUES (\"$this->secureTitle\", REPLACE(\"$this->secureTitle\",'_',' '))" ;
-        mysql_query ( $sql , $connection ) ;
+        if ( mysql_query ( $sql , $connection ) == 0 ) echo mysql_error () ;
         # since the page now exists we move all links in the table unlinked to the table linked
         $sql = "INSERT INTO linked ( linked_from, linked_to )
                 SELECT unlinked_from, unlinked_to
                 FROM unlinked
                 WHERE unlinked_to = \"$this->secureTitle\"" ;
-        mysql_query ( $sql , $connection ) ;
+        if ( mysql_query ( $sql , $connection ) == 0 ) echo mysql_error () ;
         $sql = "DELETE FROM unlinked WHERE unlinked_to = \"$this->secureTitle\"" ;
-        mysql_query ( $sql , $connection ) ;
+        if ( mysql_query ( $sql , $connection ) == 0 ) echo mysql_error () ;
         # Flushing cache for all pages that linked to the empty topic
         if ( $useCachedPages ) {
             $sql1 = "SELECT DISTINCT linked_from FROM linked WHERE linked_to = \"$this->secureTitle\" " ;
-            $result1 = mysql_query ( $sql , $connection ) ;
+            $result1 = mysql_query ( $sql1 , $connection ) ;
+	    if ( $result1 == 0 ) echo mysql_error () ;
             while ( $s1 = mysql_fetch_object ( $result1 ) ) {
-                $sql2 = "UPDATE cur SET cur_cache=\"\", cur_timestamp=cur_timestamp WHERE cur_title = \"%$s1->linked_from\" " ;
-                mysql_query ( $sql2 , $connection ) ;
+                $sql2 = "UPDATE cur SET cur_cache=\"\", cur_timestamp=cur_timestamp WHERE cur_title = \"$s1->linked_from\" " ;
+                if ( mysql_query ( $sql2 , $connection )  == 0 ) echo mysql_error () ;
             }
             mysql_free_result ( $result1 );
         }
