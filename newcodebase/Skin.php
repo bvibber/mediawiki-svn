@@ -42,6 +42,7 @@ class Skin {
 	{
 		global $wgOut, $wgStyleSheetPath;
 
+		$wgOut->addLink( "shortcut icon", "", "/favicon.ico" );
 		if ( $wgOut->isPrintable() ) { $ss = "wikiprintable.css"; }
 		else { $ss = $this->getStylesheet(); }
 		$wgOut->addLink( "stylesheet", "", "{$wgStyleSheetPath}/{$ss}" );

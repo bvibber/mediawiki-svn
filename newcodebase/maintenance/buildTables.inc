@@ -230,8 +230,9 @@ function initializeTables()
 	  "VALUES (0,'{$mp}','Put main page text here.')";
 	wfQuery( $sql );
 
-	$sql = "INSERT INTO random SELECT cur_title FROM cur WHERE " .
-	  "cur_namespace=0 AND cur_is_redirect=0 ORDER BY RAND() LIMIT 1000";
+	$sql = "INSERT INTO random(ra_current,ra_title) SELECT 1, cur_title " .
+	  "FROM cur WHERE cur_namespace=0 AND cur_is_redirect=0 " .
+	  "ORDER BY RAND() LIMIT 1000";
 	wfQuery( $sql );
 }
 
