@@ -7,8 +7,8 @@ function recentchanges () {
     global $wikiRecentChangesLastDays , $wikiRecentChangesSince , $wikiViewLastDays , $wikiViewMaxNum , $wikiListOnlyNewChanges ;
     $vpage->special ( $wikiRecentChangesTitle ) ;
     $vpage->makeSecureTitle() ;
-    if ( !isset ( $maxcnt ) ) $maxcnt = 50 ;
-    if ( !isset ( $daysAgo ) ) $daysAgo = 3 ;
+    if ( !isset ( $maxcnt ) ) $maxcnt = $user->options["viewRecentChanges"] ;
+    if ( !isset ( $daysAgo ) ) $daysAgo = 14 ;
     
     $from2 = substr ( $from , 0 , 4 ) . "-" . substr ( $from , 4 , 2 ) . "-" . substr ( $from , 6 , 2 ) ;
     $from2 .= " " . substr ( $from , 8 , 2 ) . ":" . substr ( $from , 10 , 2 ) . ":" . substr ( $from , 12 , 2 ) ;
@@ -34,11 +34,11 @@ function recentchanges () {
     $n = explode ( "$1" , $wikiViewLastDays ) ;
     $ret .= $n[0] ;
     $ret .= "<a href=\"".wikiLink("special:RecentChanges&maxcnt=$maxcnt&daysAgo=1")."\">1 </a> | " ;
-    $ret .= "<a href=\"".wikiLink("special:RecentChanges&maxcnt=$maxcnt&daysAgo=2")."\">2 </a> | " ;
     $ret .= "<a href=\"".wikiLink("special:RecentChanges&maxcnt=$maxcnt&daysAgo=3")."\">3 </a> | " ;
-    $ret .= "<a href=\"".wikiLink("special:RecentChanges&maxcnt=$maxcnt&daysAgo=5")."\">5 </a> | " ;
     $ret .= "<a href=\"".wikiLink("special:RecentChanges&maxcnt=$maxcnt&daysAgo=7")."\">7 </a> | " ;
-    $ret .= "<a href=\"".wikiLink("special:RecentChanges&maxcnt=$maxcnt&daysAgo=14")."\">14 </a> ".$n[1]."; \n" ;
+    $ret .= "<a href=\"".wikiLink("special:RecentChanges&maxcnt=$maxcnt&daysAgo=14")."\">14 </a> | " ;
+    $ret .= "<a href=\"".wikiLink("special:RecentChanges&maxcnt=$maxcnt&daysAgo=30")."\">30 </a> | " ;
+    $ret .= "<a href=\"".wikiLink("special:RecentChanges&maxcnt=$maxcnt&daysAgo=90")."\">90 </a> ".$n[1]."; \n" ;
 
     $now = date ( "YmdHis" , time() ) ;
     $ret .= "<a href=\"".wikiLink("special:RecentChanges&from=$now")."\">$wikiListOnlyNewChanges</a>" ;
