@@ -45,7 +45,7 @@ $wikiSkins = array ( "Normal" => "" , "Star Trek" => "Star Trek" , "Nostalgia" =
 # Editing
 $wikiEditTitle = "Editing $1" ;
 $wikiCannotEditPage = "<h3>You cannot edit this page!</h3>" ;
-$wikiEditConflictMessage = "<h1>Edit conflict!</h1>\n<b>Someone saved this page after you started editing. The top textbox contains the saved text. Only the text in the top textbox will be saved.</b><br>\nScroll down to see your edited text.<br>\n" ;
+$wikiEditConflictMessage = "<h1>Edit conflict!</h1>\n<b>Someone saved this page after you started editing. The top textbox contains the saved text. Only the text in the top textbox will be saved.</b><br>\nScroll down to see your edited text and the differences between the two versions.<br>\n" ;
 $wikiPreviewAppend = "<hr>\n<h2>Preview :</h2>\n$1<hr><h3>Remember, this is only a preview and not yet saved!</h3>" ;
 $wikiSummary = "Summary:" ;
 $wikiMinorEdit = "This is a minor edit." ;
