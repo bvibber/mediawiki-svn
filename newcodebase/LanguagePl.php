@@ -47,7 +47,7 @@ include_once("utf8Case.php");
 /* private */ $wgUserTogglesPl = array(
 	"hover"		=> "Pokazuj okienko podpowiedzi ponad linkami",
 	"underline" => "Podkreślenie linków",
-	"highlightbroken" => "Podświetl linki pustych stron",
+	"highlightbroken" => "<a href=\"\" class=\"new\">Podświetl</a> linki pustych stron (alternatywa: znak zapytania<a href=\"\" class=\"internal\">?</a>).",
 	"justify"	=> "Wyrównuj tekst artykułu w kolumnie",
 	"hideminor" => "Ukryj drobne zmiany w \"Ostatnich zmianach\"",
 	"usenewrc" => "Konsolidacja ostatnich zmian (JavaScript)",
@@ -56,7 +56,8 @@ include_once("utf8Case.php");
 	"editwidth" => "Obszar edycji o pełnej szerokości",
 	"editondblclick" => "Podwójne kliknięcie rozpoczyna edycję (JavaScript)",
 	"watchdefault" => "Obserwuj nowe i zmodyfikowane artykuły",
-	"minordefault" => "Wszystkie zmiany zaznaczaj domyślnie jako drobne"
+	"minordefault" => "Wszystkie zmiany zaznaczaj domyślnie jako drobne",
+	"previewontop" => "Pokazuj podgląd przed oknem edycji"
 );
 
 /* private */ $wgBookstoreListPl = array(
@@ -924,6 +925,7 @@ skasowanych i odtworzonych stron.",
 # Contributions
 #
 "contributions"	=> "Wkład użytkownika",
+"mycontris"     => "Moje edycje",
 "contribsub"	=> "Dla $1",
 "nocontribs"	=> "Brak zmian odpowiadających tym kryteriom.",
 "ucnote"		=> "Oto lista ostatnich <b>$1</b> zmian dokonanych przez
