@@ -911,29 +911,14 @@ class Skin {
 
 	function otherLanguages()
 	{
-		global $wgOut, $wgLang, $wgTitle , $wgUseNewInterlanguage ;
+		global $wgOut, $wgLang, $wgTitle;
 
 		$a = $wgOut->getLanguageLinks();
 		if ( 0 == count( $a ) ) {
-			if ( !$wgUseNewInterlanguage ) return "";
-			$ns = $wgLang->getNsIndex ( $wgTitle->getNamespace () ) ;
-			if ( $ns != 0 AND $ns != 1 ) return "" ;
-		 	$pn = "Intl" ;
-			$x = "mode=addlink&xt=".$wgTitle->getDBkey() ;
-			return $this->makeKnownLink( $wgLang->specialPage( $pn ),
-				  wfMsg( "intl" ) , $x );
-			}
+			return "";
+		}
 
-		if ( !$wgUseNewInterlanguage ) {
-			$s = wfMsg( "otherlanguages" ) . ": ";
-		} else {
-			global $wgLanguageCode ;
-			$x = "mode=zoom&xt=".$wgTitle->getDBkey() ;
-			$x .= "&xl=".$wgLanguageCode ;
-			$s =  $this->makeKnownLink( $wgLang->specialPage( "Intl" ),
-				  wfMsg( "otherlanguages" ) , $x ) . ": " ;
-			}
-
+		$s = wfMsg( "otherlanguages" ) . ": ";
 		$first = true;
 		if($wgLang->isRTL()) $s .= "<span dir='LTR'>";
 		foreach( $a as $l ) {

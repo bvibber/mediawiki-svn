@@ -242,7 +242,6 @@
 	"Shortpages"	=> "Artículos cortos",
 	"Longpages"		=> "Artículos largos",
 	"Newpages"		=> "Artículos nuevos",
-	"Intl"		=> "Enlaces Interlenguaje",
 	"Allpages"		=> "Todas las páginas (alfabético)",
 
 	"Ipblocklist"	=> "Direcciones IP bloqueadas",
@@ -787,7 +786,6 @@ de los cuales <b>$2</b> son administradores (ver $3).",
 "rclsub"		=> "(a páginas enlazadas desde \"$1\")",
 "debug"			=> "Debug",
 "newpages"		=> "Páginas nuevas",
-"intl"                  => "Enlaces interlenguaje",
 "movethispage"	=> "Trasladar esta página",
 "unusedimagestext" => "<p>Por favor note que otros sitios web
 tales como otras wikipedias pueden enlazar a una imagen

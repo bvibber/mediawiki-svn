@@ -244,7 +244,6 @@
  "Longpages"  => "Lange artikels",
  "Newpages"  => "Nieuwe artikels",
  "Ancientpages" => "Oudste artikels",
- "Intl" => "Taallinks",
  "Allpages"  => "Alle paginatitels",
 
  "Ipblocklist" => "Geblokkeerde IP-adressen",
@@ -707,7 +706,6 @@ Er is in totaal $3 maal een pagina bekeken, en $4 maal een pagina bewerkt. Dat g
 "debug"   => "Bugreparatie",
 "newpages"  => "Nieuwe artikels",
 "ancientpages" => "Oudste artikels",
-"intl" => "Taallinks",
 "movethispage" => "Verplaats deze pagina",
 "unusedimagestext" => "<p>Let op! Het zou kunnen dat er via een directe link verwezen wordt naar een afbeelding, bijvoorbeeld vanuit een anderstalige Wikipedia. Het is daarom mogelijk dat een afbeelding hier vermeld staat terwijl het wel degelijk gebruikt wordt.",
 "booksources" => "Boekhandels",

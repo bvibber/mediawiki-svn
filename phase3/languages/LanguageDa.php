@@ -255,7 +255,6 @@
 	"Longpages"	=> "Lange artikler",
 	"Newpages"	=> "Nyeste artikler",
 	"Ancientpages"	=> "Ældste artikler",
-	"Intl"		=> "Sproglinks",
 	"Allpages"	=> "Alle sider efter titel",
 
 	"Ipblocklist"	=> "Blokerede IP adresser",
@@ -863,7 +862,6 @@ link til den samme artikel i $1. Omdirigeringer og underartikler er
 "debug"			=> "Debug",
 "newpages"		=> "Nye artikler",
 "ancientpages"		=> "Ældste artikler",
-"intl"		=> "Sproglinks",
 "movethispage"	=> "Flyt side",
 "unusedimagestext" => "<p>Læg mærke til at andre web sider
 såsom de andre internationale Wikipediaer måske linker til et billede med

@@ -25,7 +25,6 @@ $wgEmergencyContact = "wikiadmin@" . getenv( "SERVER_NAME" );
 #
 $wgDBserver         = "localhost";
 $wgDBname           = "wikidb";
-$wgDBintlname       = "intl";
 $wgDBconnection     = "";
 $wgDBuser           = "wikiuser";
 $wgDBpassword       = "userpass";
@@ -39,7 +38,6 @@ $wgDBmysql4			= false; # Set to true to use enhanced fulltext search
 #
 $wgLanguageCode     = "en";
 $wgInterwikiMagic	= true; # Treat language links as magic connectors, not inline links
-$wgUseNewInterlanguage = false;
 $wgInputEncoding	= "ISO-8859-1";
 $wgOutputEncoding	= "ISO-8859-1";
 $wgEditEncoding		= "";

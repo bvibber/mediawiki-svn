@@ -201,30 +201,10 @@ class OutputPage {
 	function isPrintable() { return $this->mPrintable; }
 
 	function getLanguageLinks() {
-		global $wgUseNewInterlanguage, $wgTitle, $wgLanguageCode;
-		global $wgDBconnection, $wgDBname, $wgDBintlname;
-
-		if ( ! $wgUseNewInterlanguage )
-			return $this->mLanguageLinks; 
-		
-		mysql_select_db( $wgDBintlname, $wgDBconnection ) or die(
-			  htmlspecialchars(mysql_error()) );
-
-		$list = array();
-		$sql = "SELECT * FROM ilinks WHERE lang_from=\"" .
-		  "{$wgLanguageCode}\" AND title_from=\"" . $wgTitle->getDBkey() . "\"";
-		$res = mysql_query( $sql, $wgDBconnection );
-
-		while ( $q = mysql_fetch_object ( $res ) ) {
-			$list[] = $q->lang_to . ":" . $q->title_to;
-		}
-		mysql_free_result( $res );
-		mysql_select_db( $wgDBname, $wgDBconnection ) or die(
-		  htmlspecialchars(mysql_error()) );
-
-		return $list;
+		global $wgTitle, $wgLanguageCode;
+		global $wgDBconnection, $wgDBname;
+		return $this->mLanguageLinks;
 	}
-
 	function supressQuickbar() { $this->mSupressQuickbar = true; }
 	function isQuickbarSupressed() { return $this->mSupressQuickbar; }
 
@@ -1298,7 +1278,7 @@ class OutputPage {
 		}
 		# if the string __NOTOC__ (not case-sensitive) occurs in the HTML, do not 
 		# add TOC
-		if($st && preg_match("/__NOTOC__/i",$text)) { 
+		if(preg_match("/__NOTOC__/i",$text)) { 
 			$text=preg_replace("/__NOTOC__/i","",$text);
 			$st=0; 
 		}

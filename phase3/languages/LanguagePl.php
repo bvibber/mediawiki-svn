@@ -259,7 +259,6 @@ include_once("{$IP}/Utf8Case.php");
         "Longpages"     => "Najdłuższe",
         "Newpages"      => "Nowoutworzone",
 		"Ancientpages" => "Najstarsze",
-        "Intl"          => "Linki międzywikipediowe",
         "Allpages"      => "Wszystkie",
 
         "Ipblocklist"   => "Zablokowane adresy IP",
@@ -845,7 +844,6 @@ odpowiednika w tym języku. Na tej liście <i>pominięto</i> podstrony oraz prze
 "debug" => "Odpluskwianie",
 "newpages" => "Nowe strony",
 "ancientpages" => "Najstarsze strony",
-"intl" => "Linki międzywikipediowe",
 "movethispage" => "Przenieś",
 "unusedimagestext" => "<p>Pamiętaj, proszę, że inne witryny,
 np. Wikipedie w innych językach, mogą odwoływać się do tych plików

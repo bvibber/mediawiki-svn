@@ -110,7 +110,6 @@ include_once("Utf8Case.php");
 	"Longpages"		=> "Hosszú szócikkek",
 	"Newpages"		=> "Újonnan készült szócikkek",
 	"Ancientpages"	=> "Ősi szócikkek",
-	"Intl"		=> "Nyelvek közötti linkek",
 	"Allpages"		=> "Az összes lap cím szerint",
 
 	"Ipblocklist"	=> "Blokkolt IP címek",
@@ -707,7 +706,6 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "debug"			=> "Debug",
 "newpages"		=> "Új lapok",
 "ancientpages"		=> "Ősi szócikkek",
-"intl"		=> "Nyelvek közötti linkek",
 "movethispage"	=> "Mozgasd ezt a lapot",
 "unusedimagestext" => "<p>Vedd figyelembe azt hogy más
 lapok - mint például a nemzetközi Wikipédiák - közvetlenül

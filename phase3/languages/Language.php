@@ -264,7 +264,6 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"Longpages"		=> "Long articles",
 	"Newpages"		=> "Newly created articles",
 	"Ancientpages"	=> "Oldest articles",
-	"Intl"		=> "Interlanguage links",
 	"Allpages"		=> "All pages by title",
 
 	"Ipblocklist"	=> "Blocked IP addresses",
@@ -847,7 +846,6 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "debug"			=> "Debug",
 "newpages"		=> "New pages",
 "ancientpages"		=> "Oldest articles",
-"intl"		=> "Interlanguage links",
 "movethispage"	=> "Move this page",
 "unusedimagestext" => "<p>Please note that other web sites
 such as the international Wikipedias may link to an image with
