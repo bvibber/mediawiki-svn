@@ -525,6 +525,10 @@ class Skin {
 			return $this->makePrintableLink( $title, $text, $query, $trail );
 		}
 		$nt = Title::newFromText( $title );
+
+		if ( 0 == $nt->getNamespace() && "" == $nt->getText() ) {
+			return $this->makeKnownLink( $title, $text, $query, $trail );
+		}
 		if ( -1 == $nt->getNamespace() ) {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
@@ -545,7 +549,10 @@ class Skin {
 		$nt = Title::newFromText( $title );
 		$link = $nt->getPrefixedURL();
 
-		if ( "" == $query ) {
+		if ( "" == $link ) {
+			$u = "";
+			if ( "" == $text ) { $text = $nt->getFragment(); }
+		} else if ( "" == $query ) {
 			$u = str_replace( "$1", $link, $wgArticlePath );
 		} else {
 			$u = "$wgServer$wgScript?title=$link&amp;$query";

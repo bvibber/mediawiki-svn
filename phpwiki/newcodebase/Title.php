@@ -74,7 +74,7 @@ class Title {
 
 	function legalChars()
 	{
-		return "-,.()' &;!?_0-9A-Za-z\\/:\\x90-\\xff";
+		return "-,.()' &;!?_0-9A-Za-z\\/:\\xA0-\\xFF";
 	}
 
 	function getInterwikiLink( $key )
