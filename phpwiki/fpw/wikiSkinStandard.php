@@ -96,7 +96,7 @@ class skinStandard extends skinClass {
 		global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
 		global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
 		global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate , $wikiProtectThisPage ;
-		global $wikiVoteForPage , $wikiMoveThisPage;
+		global $wikiVoteForPage , $wikiMoveThisPage , $THESCRIPT ;
 
 		$editOldVersion = "" ;
 		if ( $oldID != "" ) $editOldVersion="&amp;oldID=$oldID&amp;version=$version" ;
@@ -106,7 +106,7 @@ class skinStandard extends skinClass {
 		if ( !$page->isSpecialPage )
 		    $column .= "<br><a href=\"".wikiLink("special:$wikiRecentLinkedLink&amp;target=".$page->url)."\">$wikiRecentLinked</a>\n" ;
 		if ( $page->canEdit() )
-		    $column .= "<br><a href=\"".wikiLink($page->url."$editOldVersion&amp;action=edit")."\">$wikiEditThisPage</a>\n" ;
+		    $column .= "<br><a href=\"$THESCRIPT?title=$page->url$editOldVersion&amp;action=edit\">$wikiEditThisPage</a>\n" ;
 		else if ( !$page->isSpecialPage ) $column .= "<br>Protected page\n" ;
 
 		$temp = $page->isSpecialPage ;
@@ -121,7 +121,7 @@ class skinStandard extends skinClass {
 		if ( $user->isLoggedIn ) $column .= "<br><a href=\"".wikiLink("special:vote&target=".$page->url)."\">$wikiVoteForPage</a>\n" ;
 
 		if ( in_array ( "is_sysop" , $user->rights ) ) $column .= "<br><a href=\"".wikiLink("special:AskSQL")."\">$wikiAskSQL</a>\n" ;
-		if ( !$page->isSpecialPage ) $column .= "<br><a href=\"".wikiLink($page->url."&amp;action=history")."\">$wikiHistory</a>\n" ;
+		if ( !$page->isSpecialPage ) $column .= "<br><a href=\"$THESCRIPT?title=$page->url&amp;action=history\">$wikiHistory</a>\n" ;
 		$column .= "<br><a href=\"".wikiLink("special:Upload")."\">$wikiUpload</a>\n" ;
 		$column .= "<hr>" ;
 		$column .= "<a href=\"".wikiLink("special:Statistics")."\">$wikiStatistics</a>" ;
@@ -220,7 +220,7 @@ class skinStandard extends skinClass {
 		    $lc .= ":".substr ( $page->timestamp , 10 , 2 ) ;
 		    $ret .= "<br>\n" ;
 		    $ret .= str_replace ( "$1" , $lc , $wikiLastChange ) ;
-		    $ret .= " <a href=\"".wikiLink("$page->url&amp;diff=yes")."\">$wikiDiff</a> " ;
+		    $ret .= " <a href=\"$THESCRIPT?title=$page->url&amp;diff=yes\">$wikiDiff</a> " ;
 		    }
 
 	/*      # Category functionality deactivated

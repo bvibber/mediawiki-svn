@@ -99,10 +99,12 @@ class skinCologneBlue extends skinClass {
 
 
 		# Page edit
+		$editOldVersion = "" ;
+		if ( $oldID != "" ) $editOldVersion="&amp;oldID=$oldID&amp;version=$version" ;
 		$ret .= "</td></tr><tr><td><p class=menu>\n" ;
 		$ret .= "<span class=menuhead>$wikiEdit</span><br>\n" ;
 		if ( !$page->isSpecialPage ) {
-			if ( $page->canEdit() ) $ret .= "<a class=menulink href=\"".wikiLink($page->url."&action=edit")."\"><font size='2'>$wikiEditPage</font></a><br>\n" ;
+			if ( $page->canEdit() ) $ret .= "<a class=menulink href=\"$THESCRIPT?title=$page->url&action=edit$editOldVersion\"><font size='2'>$wikiEditPage</font></a><br>\n" ;
 			if ( $page->canDelete() ) $ret .= "<a class=menulink href=\"".wikiLink("special:deletepage&target=".$page->url)."\">$wikiDeleteThisPage</a><br>\n" ;
 			if ( $page->canDelete() ) $ret .= "<a class=menulink href=\"".wikiLink("special:movepage&target=".$page->url)."\">$wikiMoveThisPage</a><br>\n" ;
 			if ( $page->canProtect() ) $ret .= "<a class=menulink href=\"".wikiLink("special:protectpage&target=".$page->url)."\">$wikiProtectThisPage</a><br>\n" ;
@@ -137,8 +139,8 @@ class skinCologneBlue extends skinClass {
 			$ret .= "<span class=menuhead>$wikiPageInfo</span><br>\n" ;
 			# User contributions
 			if ( $page->namespace == "user" ) $ret .= "<a class=menulink href=\"".wikiLink("special:contributions&amp;theuser=$page->mainTitle")."\">This user's edits</a><br>\n" ;
-			$ret .= "<a class=menulink href=\"".wikiLink($page->url."&action=history")."\">$wikiEditingHistory</a><br>\n" ;
-			$ret .= "<a class=menulink href=\"".wikiLink($page->url."&diff=yes")."\">$wikiShowLastChange</a><br>\n" ;
+			$ret .= "<a class=menulink href=\"$THESCRIPT?title=$page->url&action=history\">$wikiEditingHistory</a><br>\n" ;
+			$ret .= "<a class=menulink href=\"$THESCRIPT?title=$page->url&diff=yes\">$wikiShowLastChange</a><br>\n" ;
 			$ret .= "<a class=menulink href=\"".wikiLink("special:WhatLinksHere&target=".$page->secureTitle)."\">$wikiWhatLinksHere</a><br>\n" ;
 			$ret .= "<a class=menulink href=\"".wikiLink("special:RecentChangesLinked&target=".$page->secureTitle)."\">$wikiLinkedPages</a><br>\n" ;
 			$ret .= "<span class=menutext>" . str_replace ( '$1' , $page->counter , $wikiRequests ) . "</span>";
