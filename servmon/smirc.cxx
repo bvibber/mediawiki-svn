@@ -40,6 +40,16 @@ namespace smirc {
 				precar = ln;
 				word = smutl::car(ln);
 				if (!word.size()) break;
+				if (word == "?") {
+					matches = here->find_matches("", wild);
+					for (std::vector<handler_node_t *>::iterator it = matches.begin(),
+						     end = matches.end(); it != end; ++it) {
+						wrtln(b::str(format("  %s %s") %
+							     boost::io::group(std::left, std::setw(20), (**it).name)
+							     % (**it).help));
+					}
+					return;
+				}
 				matches = here->find_matches(word, wild);
 
 				if (matches.size() > 1) {

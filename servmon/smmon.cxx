@@ -5,6 +5,7 @@
 #include "smtmr.hxx"
 #include "smcfg.hxx"
 #include "smirc.hxx"
+#include "smalrm.hxx"
 
 /* this should be in smstdinc, but i'd rather not pollute the entire
    namespace with C crud */
@@ -271,7 +272,7 @@ cfg::checker::start(void)
 		if (squidhits && squidreqs)
 			squidperc = (float(squidhits)/squidreqs)*100;
 		else squidperc = 0;
-		squidrep += b::io::str(b::format("\002total:\002 \00311%d\003/\00303%d\003/\0036%.02f%%\003") % squidreqs % squidhits % squidperc);
+		squidrep += b::io::str(b::format("\002total:\002 \00311\002\002%d\003/\00303\002\002%d\003/\0036\002\002%.02f%%\003") % squidreqs % squidhits % squidperc);
 
 		std::time_t now = std::time(0);
 		if ((now - ircinterval) > lastirc) {
@@ -405,6 +406,8 @@ cfg::mysqlserver::check(void)
 	qpsv = qps.val(queries);
 	procv = getnumprocesses();
 	replag = getreplag();
+	SMI(smalrm::mgr)->value(name, "running threads", procv);
+	SMI(smalrm::mgr)->value(name, "replication lag", replag);
 }
 
 uint64_t
@@ -459,10 +462,10 @@ cfg::mysqlserver::fmt4irc(void) const
 {
         if (is(state_down))
 		return "\0034down\003";      
-	std::string rep = b::io::str(b::format("\00311%d\003/\00303%d\003") % procv % qpsv);
+	std::string rep = b::io::str(b::format("\00311\002\002%d\003/\00303\002\002%d\003") % procv % qpsv);
 	try {
 		if (SMI(smcfg::cfg)->fetchstr("/monit/mysql/master") != name) {
-			rep += b::io::str(b::format("/\00306%d\003") % replag);
+			rep += b::io::str(b::format("/\00306\002\002%d\003") % replag);
 		}
 	} catch (smcfg::nokey&) {}
 	return rep;
@@ -477,7 +480,7 @@ cfg::squidserver::fmt4irc(void) const
 	if (rpsv && hpsv)
 		perc = (float(hpsv)/rpsv)*100;
 	else perc = 0;
-	std::string rep = b::io::str(b::format("\00311%d\003/\00303%d\003/\0036%.02f%%\003") % rpsv % hpsv % perc);
+	std::string rep = b::io::str(b::format("\00311\002\002%d\003/\00303\002\002%d\003/\0036\002\002%.02f%%\003") % rpsv % hpsv % perc);
 	return rep;
 }
 

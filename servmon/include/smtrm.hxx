@@ -10,6 +10,7 @@
 #include "smmon.hxx"
 #include "smqb.hxx"
 #include "smmc.hxx"
+#include "smalrm.hxx"
 
 namespace smtrm {
 
@@ -209,6 +210,12 @@ cfgrt.install("user %s password", cfg_userpass(), "Create a new account");
 cfgrt.install("no", "Negate a setting");
 cfgrt.install("no user", "Remove a user account");
 cfgrt.install("no user %s", cfg_no_user(), "User name");
+cfgrt.install("threshold", "Set alarm thresholds");
+cfgrt.install("threshold mysql", "MySQL-related alarm thresholds");
+cfgrt.install("threshold mysql replication-lag", "Maximum replication lag from master");
+cfgrt.install("threshold mysql replication-lag %s", cfg_monit_alarm_mysql_replag(), "Maximum replication lag in seconds");
+cfgrt.install("threshold mysql running-threads", "Maximum number of running threads");
+cfgrt.install("threshold mysql running-threads %s", cfg_monit_alarm_mysql_threads(), "Maximum number of threads");
 cfgrt.install("function querybane", chg_parser(qbrt, "%s(conf-qb)# "), "Configure QueryBane operation");
 
 /* 'function irc' mode commands */

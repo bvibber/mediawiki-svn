@@ -558,3 +558,31 @@ HDL(cfg_mc_show_parser_cache) {
 		return true;
 	}
 };
+
+HDL(cfg_monit_alarm_mysql_replag) {
+	EX {
+		int v;
+		try {
+			v = b::lexical_cast<int>(cd.p(0));
+		} catch (b::bad_lexical_cast&) {
+			cd.error("Invalid number.");
+			return true;
+		}
+		SMI(smalrm::mgr)->set_thresh("replication lag", v);
+		return true;
+	}
+};
+
+HDL(cfg_monit_alarm_mysql_threads) {
+	EX {
+		int v;
+		try {
+			v = b::lexical_cast<int>(cd.p(0));
+		} catch (b::bad_lexical_cast&) {
+			cd.error("Invalid number.");
+			return true;
+		}
+		SMI(smalrm::mgr)->set_thresh("running threads", v);
+		return true;
+	}
+};
