@@ -3,6 +3,7 @@
 
 #include "smstdinc.hxx"
 #include "smutl.hxx"
+#include "smthr.hxx"
 
 namespace smmon {
 
@@ -15,18 +16,31 @@ struct noserv : public std::runtime_error {
 	
 class cfg : public smutl::singleton<cfg> {
 public:
+	void initialise(void);
+	void chk(void);
+	
 	bool knowntype(str type);
 	bool server_exists(str serv);
 	void create_server(str serv, str type);
 
 	struct server {
+		server(str name_) : name(name_) {}
 		virtual std::string type() const = 0;
+		virtual void check() = 0;
+
+		virtual ~server() {}
+		std::string name;
 	};
 	typedef b::shared_ptr<server> serverp;
 	struct squidserver : public server {
+		squidserver(str name) : server(name) {}
 		std::string type() const { return "Squid"; }
+		void check();
 	};
 	std::map<std::string, serverp> const& servers() const {
+		return serverlist;
+	}
+	std::map<std::string, serverp>& servers() {
 		return serverlist;
 	}
 	serverp const serv(str name) const {
@@ -34,9 +48,14 @@ public:
 		if (it == serverlist.end()) throw noserv();
 		return it->second;
 	}
-	
+	struct checker : smthr::thrbase {
+		void start();
+		void chk1();
+		b::try_mutex chk_m;
+		virtual ~checker() {}
+	};
 private:
-	server* server_fortype(str type);
+	server* server_fortype(str type, str name);
 	std::map<std::string, serverp> serverlist;
 };
 	

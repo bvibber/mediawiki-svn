@@ -21,6 +21,9 @@ using std::for_each;
 #include <boost/utility.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/lambda/lambda.hpp>
+#include <boost/thread.hpp>
+#include <boost/thread/mutex.hpp>
+#include <boost/any.hpp>
 using boost::lexical_cast;
 using boost::format;
 using boost::noncopyable;

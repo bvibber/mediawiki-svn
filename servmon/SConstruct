@@ -22,6 +22,7 @@ env = Environment(CPPFLAGS = cppflags + ' -DPFX="\\"' + prefix + '\\""',
 		CC = cc,
 		CXX = cxx,
 		CPPPATH = 'include')
-env.Program ('servmon', srcs, LIBS = 'pthread')
-env.Program ('initconf', ['initconf.cxx', 'smcfg.cxx', 'smauth.cxx'], LIBS = 'pthread')
+
+env.Program ('servmon', srcs, LIBS = ['pthread', 'boost_thread', 'netsnmp', 'ssl'])
+env.Program ('initconf', ['initconf.cxx', 'smcfg.cxx', 'smauth.cxx'], LIBS = ['pthread', 'boost_thread'])
 env.Alias('install', prefix)
