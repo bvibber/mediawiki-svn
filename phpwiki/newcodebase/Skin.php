@@ -692,7 +692,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 	{
 		global $wgUser, $wgOut, $wgTitle, $diff;
 
-		if ( $wgOut->isArticle() && ( ! $diff ) && $wgUser->isSysop() ) {
+		if ( $wgTitle->getArticleId() && ( ! $diff ) && $wgUser->isSysop() ) {
 			$n = $wgTitle->getPrefixedText();
 			$t = wfMsg( "deletethispage" );
 
@@ -707,7 +707,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 	{
 		global $wgUser, $wgOut, $wgTitle, $diff;
 
-		if ( $wgOut->isArticle() && ( ! $diff ) && $wgUser->isSysop() ) {
+		if ( $wgTitle->getArticleId() && ( ! $diff ) && $wgUser->isSysop() ) {
 			$n = $wgTitle->getPrefixedText();
 
 			if ( $wgTitle->isProtected() ) {
