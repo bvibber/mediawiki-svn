@@ -905,6 +905,8 @@ class LanguageFr extends Language {
 		foreach ( $wgNamespaceNamesFr as $i => $n ) {
 		 if ( 0 == strcasecmp( $n, $text ) ) { return $i; }
 		}
+		if( 0 == strcasecmp( "Wikipedia", $text ) ) return 4;
+		if( 0 == strcasecmp( "Discussion_Wikipedia", $text ) ) return 5;
 		return false;
 	}
 

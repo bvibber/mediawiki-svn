@@ -459,14 +459,18 @@ class Title {
 					}
 				}
 				if ( ! $done ) {
-					foreach ( $validNamespaces as $ns ) {
-						if ( 0 == strcasecmp( $p, $ns ) ) {
-							$t = $m[2];
-							$this->mNamespace = $wgLang->getNsIndex(
-							  str_replace( " ", "_", $p ) );
-							break;
-						}
+					if ( $ns = $wgLang->getNsIndex( str_replace( " ", "_", $p ))) {
+						$t = $m[2];
+						$this->mNamespace = $ns;
 					}
+				#	foreach ( $validNamespaces as $ns ) {
+				#		if ( 0 == strcasecmp( $p, $ns ) ) {
+				#			$t = $m[2];
+				#			$this->mNamespace = $wgLang->getNsIndex(
+				#			  str_replace( " ", "_", $p ) );
+				#			break;
+				#		}
+				#	}
 				}
 			}
 			$r = $t;
