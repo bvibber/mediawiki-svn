@@ -36,6 +36,7 @@
 	"editondblclick" => "Edit pages on double click (JavaScript)"
 );
 
+
 /* private */ $wgLanguageNamesJa = array(
 	"ab"	=> "アブハズ語",
 	"aa"	=> "Afar",
@@ -100,7 +101,7 @@
 	"rw"	=> "ルワンダ語",
 	"ky"	=> "キルギス語",
 	"rn"	=> "Kirundi",
-	"ko"	=> "朝鮮語",
+	"ko"	=> "韓国語",
 	"lo"	=> "ラオス語",
 	"la"	=> "ラテン語",
 	"lv"	=> "ラトビア語",
@@ -126,7 +127,7 @@
 	"pt"	=> "ポルトガル語",
 	"pa"	=> "パンジャブ語",
 	"qu"	=> "Quechua",
-	"rm"	=> "Rhaeto-Romance",
+	"rm"	=> "レートローマン語",
 	"ro"	=> "ルーマニア語",
 	"ru"	=> "ロシア語",
 	"sm"	=> "サモア語",
@@ -158,7 +159,7 @@
 	"to"	=> "トンガ語",
 	"ts"	=> "Tsonga",
 	"tr"	=> "トルコ語",
-	"tk"	=> "ツルクメニスタン語",
+	"tk"	=> "トゥルクメニスタン語",
 	"tw"	=> "Twi",
 	"ug"	=> "Uighur",
 	"uk"	=> "ウクライナ語",
@@ -199,9 +200,9 @@
 	"Userlogin"		=> "",
 	"Userlogout"	=> "",
 	"Preferences"	=> "Set my user preferences",
-	"Watchlist"		=> "My watchlist",
-	"Recentchanges" => "Recently updated pages",
-	"Upload"		=> "Upload image files",
+	"Watchlist"		=> "ウォッチリスト",
+	"Recentchanges" => "最近更新したページ",
+	"Upload"		=> "画像をアップロードする",
 	"Imagelist"		=> "Image list",
 	"Listusers"		=> "Registered users",
 	"Statistics"	=> "Site statistics",
@@ -241,11 +242,11 @@
 
 # Bits of text used by many pages:
 #
-"mainpage"		=> "Main Page",
+"mainpage"		=> "メインページ",
 "about"			=> "About",
-"aboutwikipedia" => "About Wikipedia",
+"aboutwikipedia" => "Wikipediaについて",
 "aboutpage"		=> "Wikipedia:About",
-"help"			=> "Help",
+"help"			=> "ヘルプ",
 "helppage"		=> "Wikipedia:Help",
 "wikititlesuffix" => "Wikipedia",
 "bugreports"	=> "Bug reports",
@@ -960,21 +961,8 @@ class LanguageJa extends Language {
 		return $wgWeekdayNamesJa[$key-1];
 	}
 
-	function userAdjust( $ts )
-	{
-		global $wgUser;
-
-		$diff = $wgUser->getOption( "timecorrection" );
-		if ( ! $diff ) { $diff = 0; }
-		if ( 0 == $diff ) { return $ts; }
-
-		$t = mktime( ( (int)substr( $ts, 8, 2) ) + $diff,
-		  (int)substr( $ts, 10, 2 ), (int)substr( $ts, 12, 2 ),
-		  (int)substr( $ts, 4, 2 ), (int)substr( $ts, 6, 2 ),
-		  (int)substr( $ts, 0, 4 ) );
-		return date( "YmdHis", $t );
-	}
- 
+	# Inherit default userAdjust()
+	 
 	function date( $ts, $adj = false )
 	{
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
@@ -998,10 +986,7 @@ class LanguageJa extends Language {
 		return $this->time( $ts, $adj ) . " " . $this->date( $ts, $adj );
 	}
 
-	function rfc1123( $ts )
-	{
-		return date( "D, d M Y H:i:s T", $ts );
-	}
+	# Inherit default rfc1123()
 
 	function getValidSpecialPages()
 	{
