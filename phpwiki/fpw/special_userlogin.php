@@ -33,7 +33,7 @@ function userLogin () {
 			$user->saveSettings() ;
 		} else if ( $USERPASSWORD == $RETYPE and !($nu->doesUserExist()) ) {
 			$user = new wikiUser ;
-			$nu->name = ucfirst ( $nu->name ) ;
+			$nu->name = ucfirstIntl ( $nu->name ) ;
 			$nu->addToDatabase () ;
 			$user = $nu ;
 			global $wikiWelcomeCreation ;

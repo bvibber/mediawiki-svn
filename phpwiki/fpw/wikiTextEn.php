@@ -9,6 +9,8 @@
 
 # Basic character set and locale settings
 $wikiCharset = "iso-8859-1" ;
+$wikiUpperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİŞ";
+$wikiLowerChars = "abcdefghijklmnopqrstuvwxyzàáâãäåæçèéêëìíîïğñòóôõöøùúûüúş";
 
 # Misc stuff
 $wikiMainPage = "Main Page" ; # This is actual the title of the article in the database
@@ -331,7 +333,8 @@ $wikiAskSQL = "MySQL access" ;
 $wikiAskSQLtext = "This function is available for sysops only.<br>''Please, do not press return/enter, '''always''' click on the ask button!''" ;
 $wikiStubDelete = "<b>Delete this page!</b>" ;
 $wikiStubLinkHere = "$1 articles link here." ;
-$wikiStubShowLinks = "<nowiki><a href=\"$THESCRIPT?title=special:ShortPages&showLinksThere=$1\">Toggle \"show links\" option</a><br></nowiki>\n" ;
+$wikiStubShowLinks = "Toggle \"show links\" option" ;
+$wikiShowLinks = "Show pages that link to $1" ;
 $wikiDeleteTitle = "Deleting article '$1'" ;
 $wikiDeleteDenied = "<font size=\"+3\">You are not allowed to delete this page!</font>" ;
 $wikiDeleteSuccess = "'$1' has been removed." ;
@@ -360,6 +363,7 @@ $wikiRefreshThisPage = "Refresh this page" ;
 $wikiResourcesWarning = "(Please, do this only when necessary, as this function uses a high amount of system resources)" ;
 $wikiNoRefresh = "(The page was last refreshed just $1 minutes ago; please wait another $2 minutes and try again.)" ;
 $wikiLastRefreshed = "Last refreshed $1" ;
+$wikiValidate = "Validate this page" ;
 
 #---------------------------
 #Functions

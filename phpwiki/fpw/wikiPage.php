@@ -122,7 +122,7 @@ class WikiPage extends WikiTitle {
     # Not in use since we don't have subpages anymore
     function getSubpageList () {
         $a = array () ;
-        $t = ucfirst ( $this->namespace ) ;
+        $t = ucfirstIntl ( $this->namespace ) ;
         if ( $t != "" ) $t .= ":" ;
         $t .= $this->mainTitle ;
         $mother = $t ;
@@ -164,13 +164,13 @@ class WikiPage extends WikiTitle {
             }
 
         if ( stristr ( $this->namespace , $wikiTalk ) == false ) {
-            #$n2 = ucfirst ( $this->namespace ) ;
+            #$n2 = ucfirstIntl ( $this->namespace ) ;
             #if ( $n2 != "" ) $n2 .= " " ;
-            #$n2 .= ucfirst ( $wikiTalk ) ;
+            #$n2 .= ucfirstIntl ( $wikiTalk ) ;
             if ( $this->namespace != "" )
-                $n2 = str_replace ( "$1" , ucfirst ( $this->namespace ) , $wikiNamespaceTalk ) ;
+                $n2 = str_replace ( "$1" , ucfirstIntl ( $this->namespace ) , $wikiNamespaceTalk ) ;
             else
-                $n2 = ucfirst ( $wikiTalk ) ;
+                $n2 = ucfirstIntl ( $wikiTalk ) ;
             $dummy = new wikiTitle ;
             $dummy->setTitle ( $n2.":$n" ) ;
             #if ( $dummy->doesTopicExist ( $connection ) ) $style = "color:green;text-decoration:none" ;
@@ -293,7 +293,7 @@ class WikiPage extends WikiTitle {
         $text = str_replace ( "\"" , "\\\"" , $text ) ;
 #       $comment = str_replace ( "\"" , "\\\"" , $comment ) ;
         $userName = str_replace ( "\"" , "\\\"" , $userName ) ;
-        $comment = htmlentities ( $comment ) ;
+        $comment = htmlspecialchars ( $comment ) ;
         $sql = "UPDATE cur SET cur_text=\"$text\",cur_comment=\"$comment\",cur_user=\"$userID\"," ;
         $sql .= "cur_user_text=\"$userName\",cur_minor_edit=\"$minorEdit\",";
         $sql .= "cur_linked_links=\"$ll\",cur_unlinked_links=\"$ull\",$addCache cur_params=\"$pa\"$addSQL WHERE $cond" ;
@@ -343,13 +343,13 @@ class WikiPage extends WikiTitle {
                     if ( strtolower ( $ii ) == strtolower ( $topic->namespace ) )
                         $iwl = $wikiInterwiki[$ii] ;
                 if ( $iwl != "" ) { # Interwiki Link
-                    $tt = ucfirst ( str_replace ( " " , "_" , $topic->mainTitle ) ) ;
+                    $tt = ucfirstIntl ( str_replace ( " " , "_" , $topic->mainTitle ) ) ;
                     $iwl = str_replace ( "$1" , $tt , $iwl ) ;
                     if ( $c[0] == $c[1] ) $text = $topic->getNiceTitle ( $topic->mainTitle ) ;
                     $linkStyle = "class=\"interwiki\"";
                     $s .= "<a $linkStyle href=\"$iwl\">$text</a>" ;
                 } else if ( in_array ( strtolower ( $topic->namespace ) , array_keys ( $wikiOtherLanguages ) ) ) {
-                    $tt = ucfirst ( str_replace ( " " , "_" , $topic->mainTitle ) ) ;
+                    $tt = ucfirstIntl ( str_replace ( " " , "_" , $topic->mainTitle ) ) ;
                     $iwl = str_replace ( "$1" , $tt , $wikiOtherLanguages[strtolower($topic->namespace)] ) ;
                     if ( $c[0] == $c[1] ) $text = $topic->getNiceTitle ( $topic->mainTitle ) ;
                     $this->otherLanguages[$topic->namespace] = $iwl ;
@@ -562,8 +562,8 @@ class WikiPage extends WikiTitle {
             $b = spliti ( "</pre>" , $x , 2 ) ;
             if ( count ( $b ) == 1 ) $s .= "&lt;pre&gt;$x" ;
             else {
-                #$x = htmlentities ( $b[0] ) ;
-        $x = str_replace ( array ( "<" , ">" ) , array ( "&lt;" , "&gt;" ) , $b[0] ) ;
+                #$x = htmlspecialchars ( $b[0] ) ;
+		$x = str_replace ( array ( "<" , ">" ) , array ( "&lt;" , "&gt;" ) , $b[0] ) ;
                 $s .= "<pre>$x</pre>$b[1]" ;
                 }
             }
@@ -955,7 +955,7 @@ class WikiPage extends WikiTitle {
         
         if ( isset ( $framed ) and $framed != "top" ) return "" ;
         $t = $this->getNiceTitle ( $this->title ) ;
-        if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirst ( $t ) ;
+        if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirstIntl ( $t ) ;
         $ret = "<table ".$user->options["quickBarBackground"]. "width=\"100%\" class=\"topbar\" cellspacing=0>\n<tr>" ;
         if ( $user->options["leftImage"] != "" )
             $ret .= "<td width=\"1%\" rowspan=2 bgcolor=\"#000000\"><img src=\"".$user->options["leftImage"]."\"></td>" ;
@@ -1116,7 +1116,7 @@ class WikiPage extends WikiTitle {
     # This generates the footer with link bar, search box, etc.
     function getFooter () {
         global $wikiSearch , $wikiCategories , $wikiOtherNamespaces , $wikiCounter , $wikiLastChange , $wikiDiff;
-        global $wikiGetDate , $framed, $search ;
+        global $wikiGetDate , $framed, $search , $wikiValidate ;
         
         if ( isset ( $framed ) ) return "" ;
         $ret = $this->getLinkBar() ;
@@ -1156,7 +1156,7 @@ class WikiPage extends WikiTitle {
 */
 
         $ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiSearch\">" ;
-        $ret .= " &nbsp; &nbsp; <a href=\"http://validator.w3.org/check/referer\" target=blank>Validate this page</a>" ;
+        $ret .= " &nbsp; &nbsp; <a href=\"http://validator.w3.org/check/referer\" target=blank>$wikiValidate</a>" ;
         $ret .= "</FORM>" ;
 
         return $ret ;
@@ -1177,16 +1177,16 @@ class WikiPage extends WikiTitle {
                 $middle = $this->cache ;
                 #$middle = "<p>(cached)</p>" . $this->cache ; #FIXME
 
-        # Need to check for other-language links, which do not appear in the link arrays
-        $this->otherLanguages = array () ;
-        global $wikiOtherLanguages ;
-        preg_replace ( "/\[\[([a-z]{2})\:\s*([^\]]+)\s*\]\]/ie" ,
-            "( ( ( \$langurl = \$wikiOtherLanguages[\$lang = strtolower ( \"\$1\" )] ) != '' )
-            ? ( \$this->otherLanguages[\$lang] = str_replace ( '\\$1' ,
-                ucfirst ( str_replace ( array ( '+' , '%25' ) , array ( '_' , '%' ) , nurlencode ( \"\$2\" ) ) ) ,
-                \$langurl ) )
-            : '' )" ,
-            $this->contents ) ;
+		# Need to check for other-language links, which do not appear in the link arrays
+		$this->otherLanguages = array () ;
+		global $wikiOtherLanguages ;
+		preg_replace ( "/\[\[([a-z]{2})\:\s*([^\]]+)\s*\]\]/ie" ,
+			"( ( ( \$langurl = \$wikiOtherLanguages[\$lang = strtolower ( \"\$1\" )] ) != '' )
+			? ( \$this->otherLanguages[\$lang] = str_replace ( '\\$1' ,
+				ucfirstIntl ( str_replace ( array ( '+' , '%25' ) , array ( '_' , '%' ) , nurlencode ( \"\$2\" ) ) ) ,
+				\$langurl ) )
+			: '' )" ,
+			$this->contents ) ;
             } else {
                 $middle = $this->parseContents($middle) ;
                 if ( $this->canBeCached ) { # Generating cache
@@ -1255,8 +1255,8 @@ class WikiPage extends WikiTitle {
             $a2 = explode ( "\n" , $s->old_text ) ;
             $nl = array () ;
             $dl = array () ;
-            foreach ( $a1 as $x ) if ( !in_array ( $x , $a2 ) ) array_push ( $nl , htmlentities ( $x ) ) ;
-            foreach ( $a2 as $x ) if ( !in_array ( $x , $a1 ) ) array_push ( $dl , htmlentities ( $x ) ) ;
+            foreach ( $a1 as $x ) if ( !in_array ( $x , $a2 ) ) array_push ( $nl , htmlspecialchars ( $x ) ) ;
+            foreach ( $a2 as $x ) if ( !in_array ( $x , $a1 ) ) array_push ( $dl , htmlspecialchars ( $x ) ) ;
             # Output
             $ret .= $wikiDiffLegend ;
             $ret .= "<table width=\"100%\" border=1$bc cellspacing=0 cellpadding=2>\n" ;

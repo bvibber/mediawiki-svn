@@ -27,6 +27,40 @@ function tsc ( $t ) {
 	return mktime ( $hour , $min , $sec , $month , $day , $year ) ;
 	}
 
+# We unfortunately can't trust the locale functions for now, so we'll roll our own
+function ucfirstIntl ( $str ) {
+	global $wikiUpperChars , $wikiLowerChars ;
+	
+	if ( $str == "" ) return $str ;
+	
+	if ( is_array ( $wikiUpperChars ) ) {
+		# Multi-byte charsets or multi-character letters to be capitalised (eg Dutch ij->IJ)
+		# FIXME: For now, assuming UTF-8
+		return preg_replace ( "/^([\\x00-\\x7f]|[\\xc0-\\xff][\\x80-\\xbf]*)/e", "strtr ( \"\$1\" , \$wikiUpperChars )" , $str ) ;
+	}
+	
+	# Simple single-byte charsets
+	return strtr ( substr ( $str , 0 , 1 ) , $wikiLowerChars , $wikiUpperChars ) . substr ( $str , 1 );
+	}
+
+
+function strtoupperIntl ( $str ) {
+	global $wikiUpperChars , $wikiLowerChars ;
+	
+	if ( is_array ( $wikiUpperChars ) )
+		return strtr ( $str, $wikiUpperChars ) ;
+	return strtr ( $str , $wikiLowerChars , $wikiUpperChars );
+	}
+
+function strtolowerIntl ( $str ) {
+	global $wikiUpperChars , $wikiLowerChars ;
+	
+	if ( is_array ( $wikiUpperChars ) )
+		return strtr ( $str, $wikiLowerChars ) ;
+	return strtr ( $str , $wikiUpperChars , $wikiLowerChars );
+	}
+
+
 # Called when editing/saving a page
 function edit ( $title ) {
 	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit , $FromEditForm ;
