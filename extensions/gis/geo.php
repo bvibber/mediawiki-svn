@@ -143,7 +143,16 @@ class geo_param {
 	 *  Get a set of coordinates from parameters
 	 */
 	function get_coor( ) {
-		if ($this->is_coor($this->pieces[1],$this->pieces[3])) {
+		if ($i = strpos($this->pieces[0],';')) {
+			/* two values seperated by a semicolon */
+			$this->coor = array(
+				$this->latdeg = substr($this->pieces[0],0,$i),
+				$this->londeg = substr($this->pieces[0],$i+1));
+			array_shift($this->pieces);
+			$latNS = 'N';
+			$lonEW = 'E';
+			$latmin = $lonmin = $latsec = $lonsec = 0;
+		} elseif ($this->is_coor($this->pieces[1],$this->pieces[3])) {
 			$this->coor = array(
 				$this->latdeg = array_shift($this->pieces),
 				$latNS        = array_shift($this->pieces),
@@ -328,6 +337,10 @@ class geo_param {
 			     . " to "
 			     . $this->make_position( $this->latdeg_max,
 						     $this->londeg_max );
+		} elseif ($n == 2) {
+			return $this->coor[0].';'.
+			       $this->coor[1];
+
 		} elseif ($n == 4) {
 			return $this->coor[0].'&deg;&nbsp;'.
 			       $this->coor[1].' '.
