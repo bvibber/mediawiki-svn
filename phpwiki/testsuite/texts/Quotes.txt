@@ -27,3 +27,14 @@ Wikipedia quoting tests:
 
 (13) normal '''''bold's italic'' bold's''' normal
 
+(14) normal ''italics''' normal
+
+(15) normal ''''bold''' normal
+
+(16) normal ''italic'' normal ''italic'' normal
+
+(17) normal ''italic'' normal '''bold''' normal
+
+(18) normal '''bold''' normal '''bold''' normal
+
+(19) normal '''bold''' normal ''italic'' normal
