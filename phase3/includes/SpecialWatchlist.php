@@ -84,13 +84,18 @@ function wfSpecialWatchlist()
 		$cutoff = false;
 		$npages = wfMsg( "all" );
 	} else {
+		
 	        $docutoff = "AND cur_timestamp > '" .
 		  ( $cutoff = wfUnix2Timestamp( time() - intval( $days * 86400 ) ) )
 		  . "'";
+		# Removed because the count was slower than the query it was trying to avoid
+		/*
 	        $sql = "SELECT COUNT(*) AS n FROM cur WHERE cur_timestamp>'$cutoff'";
 		$res = wfQuery( $sql, DB_READ );
 		$s = wfFetchObject( $res );
-		$npages = $s->n;
+		$npages = $s->n;*/
+		$npages = wfMsg( "all" );
+		$cutoff = false;
 		
 	}
 	
