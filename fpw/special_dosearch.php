@@ -5,17 +5,17 @@ include_once ( "special_makelog.php" ) ;
 # the MATCH operator in MySQL also does.
 
 function allWords ( $str ) {
-  $sp = preg_split ( "/\b\s*\b/", $str );
-  $res = array ();
-  foreach ( $sp as $s ) {   # filter empty strings out
-    if ( $s ) array_push( $res , $s );
-  }
-  return $res;
+  $sp = preg_match_all ( "/\w+/", $str, $matches );
+  return $matches[0] ;
 }
 
 function searchLineDisplay ( $v , $words) {
     $v = trim(str_replace("\n","",$v)) ;
     $v = str_replace ( "'''" , "" , $v ) ;
+    $v = preg_replace ( "/<\/?table[^>]*>/iU" , "" , $v ) ; # kill table HTML to prevent lay-out upsets
+    $v = preg_replace ( "/<\/?tr[^>]*>/iU" , " | " , $v ) ; # kill table HTML to prevent lay-out upsets
+    $v = preg_replace ( "/<\/?td[^>]*>/iU" , " | " , $v ) ; # kill table HTML to prevent lay-out upsets
+    $v = preg_replace ( "/<\/?br[^>]*>/iU" , " " , $v ) ; # kill <br>
     $v = eregi_replace ( "</?b>" , "" , $v ) ;
     $v = str_replace ( "''" , "" , $v ) ;
     $v = eregi_replace ( "</?i>" , "" , $v ) ;
@@ -147,14 +147,22 @@ function doSearch () {
             $words = allWords ( $search );                              # split string into separate words
             foreach ( array ($result1, $result2) as $result ) {
                 while ( $row = mysql_fetch_object ( $result ) ) {
-                    $ct = preg_split ( "/\\n|<br>|<BR>|\ --\ /", $row->cur_text ) ;    # We split everything in paragraphs
-                    $y = searchLineDisplay( array_shift( $ct ), $words ) ;
+                    $ct = preg_split ( "/\r\\n\r\\n|\ --\ |<p[^>]*>/iU", $row->cur_text ) ;    # We split everything in paragraphs
+                    $par = array_shift( $ct );
+                    if ( strlen ( $par ) > 500 ) {     # if the paragraph is too big we guess the sentences
+                        $par = preg_replace ( "/(\.|!|\?)(\s+[A-Z])/U", "\\1\r\n\r\n\\2", $par) ;
+                        $lines = preg_split ( "/\r\\n\r\\n/", $par ) ;
+                        $par = array_shift( $lines ) ;       # take first sentence
+                        $ct = array_merge ( $lines, $ct ) ;  # add other sentences back to $ct
+                    }
+                    $y = searchLineDisplay( $par, $words ) ;
                     $foundpar = false;                    
                     foreach ( $ct as $par ) {
-                        if ( strlen ( $par ) > 500 )      # if the paragraph is too big we cut it up in sentences
-                          $pars = preg_split ( "/\.\s+\b/", $par );
-                        else
-                          $pars = array ( $par );
+                        if ( strlen ( $par ) > 500 ) {  # if the paragraph is too big we again guess the sentences
+                            $par = preg_replace ( "/(\.|!|\?)(\s+[A-Z])/U", "\\1\r\n\r\n\\2", $par) ;
+                            $pars = preg_split ( "/\r\\n\r\\n/", $par ) ;
+                        } else
+                            $pars = array ( $par );
                         foreach ( $pars as $p ) {
                             foreach ( $words as $w ) {                      # mark words of $words in $par
                                 if ( stristr( $p, $w ) ) {
