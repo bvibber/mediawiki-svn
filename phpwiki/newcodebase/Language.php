@@ -576,6 +576,8 @@ See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges r
 "tableform"		=> "table",
 "listform"		=> "list",
 "nchanges"		=> "$1 changes",
+"minoreditletter" => "M",
+"newpageletter" => "N",
 
 # Upload
 #

@@ -1063,7 +1063,8 @@ class Skin {
 		}
 		$s .= "({$curlink}) (!OLDID!{$oid}!) . .";
 
-		if ( $isminor ) { $s .= " <strong>M</strong>"; }
+		$M = wfMsg( "minoreditletter" );
+		if ( $isminor ) { $s .= " <strong>{$M}</strong>"; }
 		$s .= " {$link} . . {$ul}";
 
 		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
@@ -1109,8 +1110,10 @@ class Skin {
 		$cr = wfMsg( "currentrev" );
 
 		$s .= "<li> ({$dlink}) ({$hlink}) . .";
-		if ( $isminor ) { $s .= " <strong>M</strong>"; }
-		if ( $isnew ) { $s .= "<strong>N</strong>"; }
+		$M = wfMsg( "minoreditletter" );
+		$N = wfMsg( "newpageletter" );
+		if ( $isminor ) { $s .= " <strong>{$M}</strong>"; }
+		if ( $isnew ) { $s .= "<strong>{$N}</strong>"; }
 		$s .= " {$clink}; {$h} . . {$ul}";
 
 		if ( ( 0 == $u ) && $wgUser->isSysop() ) {
