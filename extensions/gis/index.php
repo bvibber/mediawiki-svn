@@ -7,7 +7,7 @@
  *  extension (geo.php). It can be useful in its own right also, but
  *  class geo_param from geo.php needs to be avalibale
  *
- *  To install, remember to tune the settings in "mapsourcesettings.php".
+ *  To install, remember to tune the settings in "gissettings.php".
  *
  *  When installing geo.php, remember to set the $wgMapsourcesURL
  *  appropriately in LocalSettings.php
@@ -31,7 +31,7 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-include_once ( "settings.php" ) ;
+include_once ( "gissettings.php" ) ;
 
 if ( isset ( $wikibasedir ) )
 	{
