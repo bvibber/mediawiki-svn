@@ -6,7 +6,7 @@
 # Language class has internationalized names
 #
 /* private */ $wgValidSkinNames = array(
-	"Standard", "StarTrek", "Nostalgia", "CologneBlue"
+	"Standard", "Nostalgia", "CologneBlue"
 );
 
 class Skin {
@@ -28,27 +28,43 @@ class Skin {
 		return "wikistandard.css";
 	}
 
+	function qbSetting()
+	{
+		global $wgOut, $wgUser;
+
+		if ( $wgOut->isQuickbarSupressed() ) { return 0; }
+		$q = $wgUser->getOption( "quickbar" );
+		if ( "" == $q ) { $q = 0; }
+		return $q;
+	}
+
 	function initPage()
 	{
 		global $wgOut, $wgStyleSheetPath;
 
 		if ( $wgOut->isPrintable() ) { $ss = "wikiprintable.css"; }
 		else { $ss = $this->getStylesheet(); }
-		$wgOut->addLink( "stylesheet", "", "$wgStyleSheetPath/{$ss}" );
+		$wgOut->addLink( "stylesheet", "", "{$wgStyleSheetPath}/{$ss}" );
+	}
+
+	function getHeadScripts()
+	{
+		return "";
 	}
 
 	function getUserStyles()
 	{
-		global $wgUser, $wgOut, $wgStyleSheetPath;
+		$s = "<style type='text/css' media='screen'><!--\n";
+		$s .= $this->doGetUserStyles();
+		$s .= "//--></style>\n";
+		return $s;
+	}
 
-		$qb = $wgUser->getOption( "quickbar" );
-		if ( "" == $qb ) { $qb = 0; }
+	function doGetUserStyles()
+	{
+		global $wgUser;
 
-		if ( $qb < 3 ) {
-			$s = "<script language='javascript' type='text/javascript' " .
-			  "src='{$wgStyleSheetPath}/sticky.js'></script>\n";
-		}
-		$s .= "<style type='text/css' media='screen'><!--\n";
+		$s = "";
 		if ( 1 == $wgUser->getOption( "underline" ) ) {
 			$s .= "a { text-decoration: underline; }\n";
 		} else {
@@ -56,27 +72,6 @@ class Skin {
 		}
 		if ( 1 == $wgUser->getOption( "highlightbroken" ) ) {
 			$s .= "a.new { color: white; background: blue; }\n";
-		}
-		if ( 2 == $qb || 4 == $qb ) {
-			$s .= "#quickbar { position: absolute; top: 4px; right: 4px; " .
-			  "visibility: visible; z-index: 99;}\n";
-		} else {
-			$s .= "#quickbar { position: absolute; top: 4px; left: 4px; " .
-			  "visibility: visible; z-index: 99;}\n";
-		}
-		if ( ( 0 == $qb ) || $wgOut->isQuickbarSupressed() ) {
-			$s .= "#topbar { margin-left: 4px; margin-right: 4px; }\n" .
-			  "#article { margin-left: 4px; margin-right: 4px; }\n" .
-			  "#footer { margin-left: 4px; margin-right: 4px; }\n";
-		} else if ( 2 == $qb || 4 == $qb ) {
-			$s .= "#topbar { margin-left: 4px; margin-right: 156px; }\n" .
-			  "#article { margin-left: 4px; margin-right: 156px; }\n" .
-			  "#footer { margin-left: 4px; margin-right: 156px; }\n";
-		}
-		$s .= "//--></style>\n";
-		if ( $qb < 3 ) {
-			$s .= "<style type='text/css' media='screen'>\n" .
-			  "@import '{$wgStyleSheetPath}/quickbar.css';\n</style>\n";
 		}
 		return $s;
 	}
@@ -89,13 +84,6 @@ class Skin {
 			$a = array( "bgcolor" => "#DDEEFF" );
 		}
 		else $a = array( "bgcolor" => "#FFFFFF" );
-
-		$qb = $wgUser->getOption( "quickbar" );
-		if ( "" == $qb ) { $qb = 0; }
-
-		if ( $qb < 3 ) {
-			$a["onload"] = "setup(\"quickbar\")";
-		}
 		return $a;
 	}
 
@@ -106,9 +94,9 @@ class Skin {
 		$link = urldecode( $link );
 		$link = str_replace( "_", " ", $link );
 
-		$r = " class=\"external\"";
+		$r = " class='external'";
 		if ( 1 == $wgUser->getOption( "hover" ) ) {
-			$r .= " title=\"$link\"";
+			$r .= " title='{$link}'";
 		}
 		return $r;
 	}
@@ -120,11 +108,11 @@ class Skin {
 		$link = urldecode( $link );
 		$link = str_replace( "_", " ", $link );
 
-		if ( $broken ) { $r = " class=\"new\""; }
-		else { $r = " class=\"internal\""; }
+		if ( $broken ) { $r = " class='new'"; }
+		else { $r = " class='internal'"; }
 
 		if ( 1 == $wgUser->getOption( "hover" ) ) {
-			$r .= " title=\"$link\"";
+			$r .= " title='{$link}'";
 		}
 		return $r;
 	}
@@ -155,14 +143,10 @@ class Skin {
 	{
 		global $wgUser, $wgOut, $wgTitle;
 
-		$s = "\n<div id='contentbox'>\n";
-		$s .= "<div id='topbar'><table border=0><tr>" .
+		$s = "\n<div id='topbar'><table border=0><tr>" .
 		  "<td valign=top align=left>";
 
-		$qb = $wgUser->getOption( "quickbar" );
-		if ( "" == $qb ) { $qb = 0; }
-
-		if ( 0 == $qb ) {
+		if ( 0 == $this->qbSetting() ) {
 			$s .= $this->logoText() .
 			  "</td><td align=left valign=top>";
 		}
@@ -206,14 +190,9 @@ class Skin {
 
 		$s .= "\n<br>" . $this->pageStats();
 		$s .= "\n<br>" . $this->searchForm();
-		$s .= "\n</div>\n</div>\n";
+		$s .= "\n</div>\n";
 
-		$qb = $wgUser->getOption( "quickbar" );
-		if ( "" == $qb ) { $qb = 0; }
-
-		if ( ( ! $wgOut->isQuickbarSupressed() ) && ( 0 != $qb ) ) {
-			$s .= $this->quickBar();
-		}
+		if ( 0 != $this->qbSetting() ) { $s .= $this->quickBar(); }
 		return $s;
 	}
 
@@ -766,10 +745,10 @@ class Skin {
 		return $s;
 	}
 
-	function specialLink( $name )
+	function specialLink( $name, $key = "" )
 	{
-		$key = strtolower( $name );
-		$pn = ucfirst( $key);
+		if ( "" == $key ) { $key = strtolower( $name ); }
+		$pn = ucfirst( $name );
 		return $this->makeKnownLink( "Special:$pn", wfMsg( $key ) );
 	}
 
@@ -937,7 +916,6 @@ class Skin {
 }
 
 include_once( "SkinStandard.php" );
-include_once( "SkinStarTrek.php" );
 include_once( "SkinNostalgia.php" );
 include_once( "SkinCologneBlue.php" );
 

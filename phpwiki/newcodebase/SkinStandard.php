@@ -2,7 +2,63 @@
 # See skin.doc
 
 class SkinStandard extends Skin {
-	# Just inherit everything
+
+	function getHeadScripts()
+	{
+		global $wgStyleSheetPath;
+
+		$s = parent::getHeadScripts();
+		if ( 3 == $this->qbSetting() ) { # Floating left
+			$s = "<script language='javascript' type='text/javascript' " .
+			  "src='{$wgStyleSheetPath}/sticky.js'></script>\n";
+		}
+		return $s;
+	}
+
+	function getUserStyles()
+	{
+		global $wgStyleSheetPath;
+
+		$s = parent::getUserStyles();
+		if ( 3 == $this->qbSetting() ) { # Floating left
+			$s .= "<style type='text/css' media='screen'>\n" .
+			  "@import '{$wgStyleSheetPath}/quickbar.css';\n</style>\n";
+		}
+		return $s;
+	}
+
+	function doGetUserStyles()
+	{
+		global $wgUser, $wgOut, $wgStyleSheetPath;
+
+		$s = parent::doGetUserStyles();
+		$qb = $this->qbSetting();
+
+		if ( 2 == $qb ) { # Right
+			$s .= "#quickbar { position: absolute; top: 4px; right: 4px; " .
+			  "border-left: 2px solid #000000; }\n" .
+			  "#topbar { margin-left: 4px; margin-right: 152px; }\n" .
+			  "#article { margin-left: 4px; margin-right: 152px; }\n" .
+			  "#footer { margin-left: 4px; margin-right: 152px; }\n";
+		} else {
+			$s .= "#quickbar { position: absolute; top: 4px; left: 4px; " .
+			  "border-right: 2px solid #000000; }\n" .
+			  "#topbar { margin-left: 152px; margin-right: 4px; }\n" .
+			  "#article { margin-left: 152px; margin-right: 4px; }\n" .
+			  "#footer { margin-left: 152px; margin-right: 4px; }\n";
+		}
+		return $s;
+	}
+
+	function getBodyOptions()
+	{
+		$a = parent::getBodyOptions();
+
+		if ( 3 == $this->qbSetting() ) { # Floating left
+			$a["onload"] = "setup(\"quickbar\")";
+		}
+		return $a;
+	}
 }
 
 ?>

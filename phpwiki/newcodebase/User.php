@@ -278,6 +278,14 @@ class User {
 		return in_array( "sysop", $this->mRights );
 	}
 
+	function isDeveloper()
+	{
+		$this->loadFromDatabase();
+		if ( 0 == $this->mId ) { return false; }
+
+		return in_array( "developer", $this->mRights );
+	}
+		
 	function &getSkin()
 	{
 		if ( ! isset( $this->mSkin ) ) {
