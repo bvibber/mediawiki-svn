@@ -46,6 +46,11 @@ class ImagePage extends Article {
 				$s = "<div class=\"fullMedia\">".$sk->makeMediaLink($this->img->getName(),"")."</div>";
 			}
 			$wgOut->addHTML( $s );
+			if($this->img->fromSharedDirectory) {
+				$wgOut->addWikiText("<div class=\"sharedUploadNotice\">".wfMsg("sharedupload")."</div>");
+			}
+			
+			
 		}
 	}
 	
@@ -273,9 +278,11 @@ class ImagePage extends Article {
 
 		$oldimage = $wgRequest->getText( 'oldimage' );
 		if ( strlen( $oldimage ) < 16 ) {
+
 			$wgOut->unexpectedValueError( 'oldimage', htmlspecialchars($oldimage) );
 			return;
 		}
+
 		if ( strstr( $oldimage, "/" ) || strstr( $oldimage, "\\" ) ) {
 			$wgOut->unexpectedValueError( 'oldimage', htmlspecialchars($oldimage) );
 			return;
