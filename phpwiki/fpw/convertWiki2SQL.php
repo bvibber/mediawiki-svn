@@ -13,9 +13,32 @@ include ( "./wikiUser.php" ) ;
 ## Default/English:
 $wikiTalk = "Talk";
 $fieldSeparator = "³" ;
+function recodeCharsetStub ( $text ) {
+	# Some languages may change the internal coding used in the database
+	return $text;
+	}
+	$recodeCharset = recodeCharsetStub ;
 
 ## Esperanto:
 #$wikiTalk = "Priparolu" ;
+#function recodeCharsetEo ( $text ) {
+#	  $x = array(
+#	  	"Cx", "cx",  "CX", "cX",
+#		"Gx", "gx",  "GX", "gX",
+#		"Hx", "hx",  "HX", "hX",
+#		"Jx", "jx",  "JX", "jX",
+#		"Sx", "sx",  "SX", "sX",
+#		"Ux", "ux",  "UX", "uX");
+#	  $u = array(
+#		"\xc4\x88", "\xc4\x89",  "\xc4\x88", "\xc4\x89",
+#		"\xc4\x9c", "\xc4\x9d",  "\xc4\x9c", "\xc4\x9d",
+#		"\xc4\xa4", "\xc4\xa5",  "\xc4\xa4", "\xc4\xa5",
+#		"\xc4\xb4", "\xc4\xb5",  "\xc4\xb4", "\xc4\xb5",
+#		"\xc5\x9c", "\xc5\x9d",  "\xc5\x9c", "\xc5\x9d",
+#		"\xc5\xac", "\xc5\xad",  "\xc5\xac", "\xc5\xad");
+#	return str_replace ( $x , $u , $text ) ;
+#	}
+#	$recodeCharset = recodeCharsetEo ;
 
 ## French
 #$wikiTalk = "Discuter" ;
@@ -32,6 +55,7 @@ $fieldSeparator = "³" ;
 #$rootDir = "/home/manske/wiki/lib-http/db/wiki/page/" ;
 $rootDir = "/stuff/wiki/lib-http/db/wiki/page/" ;
 #$rootDir = "/tmp/home/wiki-pl/wiki/db/page/" ;
+#$rootDir = "/tmp/home/wiki-eo/lib-http/db/wiki/page/" ;
 
 function scanText2 ( $fn ) {
 	global $fieldSeparator ;
@@ -165,7 +189,7 @@ function convertText ( $s ) {
 	}
 
 function storeInDB ( $title , $text ) {
-	global $of , $npage , $ll , $ull , $wikiTalk ;
+	global $of , $npage , $ll , $ull , $wikiTalk , $recodeCharset ;
 	$ll = array () ;
 	$ull = array () ;
 	$title = str_replace ( "\\'" , "'" , $title ) ;
@@ -185,8 +209,8 @@ function storeInDB ( $title , $text ) {
 	if ( count ( $talk ) == 2 and $talk[1] == strtolower($wikiTalk) ) return ;
 
 	$sql = "INSERT INTO cur (cur_title,cur_ind_title,cur_text,cur_comment,cur_user,cur_user_text,cur_old_version,cur_minor_edit,cur_linked_links,cur_unlinked_links) VALUES ";
-	$sql .= "(\"$st\",\"$st\",\"$text\",";
-	$sql .= "\"Automated conversion\",0,\"conversion script\",0,1,\"$ll1\",\"$ull1\");\n" ;
+	$sql .= "(\"" . $recodeCharset ( $st ) . "\",\"" . $recodeCharset ( $st ) . "\",\"" . $recodeCharset ( $text ) . "\",";
+	$sql .= "\"Automated conversion\",0,\"conversion script\",0,1,\"" . $recodeCharset ( $ll1 ) . "\",\"" . $recodeCharset ( $ull1 ) . "\");\n" ;
 	fwrite ( $of , $sql ) ;
 	}
 
