@@ -536,7 +536,6 @@ class Database {
 		} else {
 			$sql = "SELECT $vars $from $useIndex $tailOpts";
 		}
-		print "<pre><b>$fname</b>\n$sql</pre>";
 		return $this->query( $sql, $fname );
 	}
 	

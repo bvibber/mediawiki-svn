@@ -513,26 +513,26 @@ class Article {
 	 * @private
 	 */
 	function loadLastEdit() {
-		$this->loadContent();
-		return;
-		/*global $wgOut;
-		wfDebugDieBacktrace( "Shouldn't the content do this?" );
+		## $this->loadContent();
+		## return;
+		global $wgOut;
+		## wfDebugDieBacktrace( "Shouldn't the content do this?" );
 		if ( -1 != $this->mUser ) return;
 
 		$fname = 'Article::loadLastEdit';
 
 		$dbr =& $this->getDB();
-		$s = $dbr->getArray( 'cur',
-		  array( 'cur_user','cur_user_text','cur_timestamp', 'cur_comment','cur_minor_edit' ),
-		  array( 'cur_id' => $this->getID() ), $fname, $this->getSelectOptions() );
+		$s = $dbr->getArray( array( 'revision', 'page') ,
+		  array( 'rev_user','rev_user_text','rev_timestamp', 'rev_comment','rev_minor_edit' ),
+		  array( 'page_id' => $this->getID(), 'page_latest=rev_id' ), $fname, $this->getSelectOptions() );
 
 		if ( $s !== false ) {
-			$this->mUser = $s->cur_user;
-			$this->mUserText = $s->cur_user_text;
-			$this->mTimestamp = wfTimestamp(TS_MW,$s->cur_timestamp);
-			$this->mComment = $s->cur_comment;
-			$this->mMinorEdit = $s->cur_minor_edit;
-		}*/
+			$this->mUser = $s->rev_user;
+			$this->mUserText = $s->rev_user_text;
+			$this->mTimestamp = wfTimestamp(TS_MW,$s->rev_timestamp);
+			$this->mComment = $s->rev_comment;
+			$this->mMinorEdit = $s->rev_minor_edit;
+		}
 	}
 
 	function getTimestamp() {
