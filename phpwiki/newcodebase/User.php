@@ -16,6 +16,7 @@ class User {
 	/* private */ var $mRights, $mOptions;
 	/* private */ var $mDataLoaded;
 	/* private */ var $mSkin, $mWatchlist;
+	/* private */ var $mBlockedby, $mBlockreason;
 
 	function User()
 	{
@@ -35,6 +36,11 @@ class User {
 		return $u;
 	}
 
+	/* static */ function whoIs( $id )
+	{
+		return wfGetSQL( "user", "user_name", "user_id=$id" );
+	}
+
 	function loadDefaults()
 	{
 		global $wgDefaultOptions;
@@ -51,6 +57,53 @@ class User {
 		unset( $this->mSkin );
 		unset( $this->mWatchlist );
 		$this->mDataLoaded = false;
+		$this->mBlockedby = -1; # Unset
+	}
+
+	/* private */ function getBlockedStatus()
+	{
+		if ( -1 != $this->mBlockedby ) { return ; }
+
+		$remaddr = getenv( "REMOTE_ADDR" );
+		$conn = wfGetDB();
+		$sql = "SELECT ipb_by,ipb_reason FROM ipblocks WHERE " .
+		  "ipb_address='$remaddr'";
+		wfDebug( "User: 5: $sql\n" );
+
+		$res = mysql_query( $sql, $conn );
+		if ( ! $res ) {
+			if ( 0 == $this->mId ) {
+				$this->mBlockedby = 0;
+				return;
+			}
+			$sql = "SELECT ipb_by,ipb_reason FROM ipblocks WHERE " .
+			  "ipb_user={$this->mId}";
+			wfDebug( "User: 6: $sql\n" );
+			if ( ! $res ) {
+				$this->mBlockedby = 0;
+				return;
+			}
+		}
+		$s = mysql_fetch_object( $res );
+		$this->mBlockedby = $s->ipb_by;
+		$this->mBlockreason = $s->ipb_reason;
+	}
+
+	function isBlocked()
+	{
+		$this->getBlockedStatus();
+		if ( 0 == $this->mBlockedby ) { return false; }
+		return true;
+	}
+
+	function blockedBy() {
+		$this->getBlockedStatus();
+		return $this->mBlockedby;
+	}
+
+	function blockedFor() {
+		$this->getBlockedStatus();
+		return $this->mBlockreason;
 	}
 
 	function loadFromSession()
