@@ -12,7 +12,7 @@ function addVote ( $log , $article )
 	$newEntry = true ;
 	$t = "* [[$article]]" ;
 	$u = "** [[user:$user->name|$user->name]] ".$wikiGetBriefDate() ;
-	if ( $CommentBox != "" ) $u .= str_replace ( "$1" , $CommentBox , $wikiVoteBecause ) ;
+	if ( $CommentBox != "" ) $u .= str_replace ( "$1" , $CommentBox , htmlspecialchars ( stripslashes ( $wikiVoteBecause ) ) ) ;
 	$v = explode ( "\n" , $s ) ;
 	$s = array () ;
 	foreach ( $v as $x ) {
