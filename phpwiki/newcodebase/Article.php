@@ -300,6 +300,7 @@ class Article {
 			$wgOut->readOnlyPage();
 			return;
 		}
+		if ( $_SERVER['REQUEST_METHOD'] != "POST" ) unset( $wpSave );
 		if ( isset( $wpSave ) ) {
 			$this->editForm( "save" );
 		} else if ( isset( $wpPreview ) ) {
