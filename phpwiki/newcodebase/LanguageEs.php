@@ -797,7 +797,7 @@ consecuencias, y que lo estas haciendo de acuerdo con [[Wikipedia:Politicas]].",
 "deletedtext"	=> "\"$1\" ha sido borrado.
 Ve $2 para un registro de los borrados más recientes.",
 "deletedarticle" => "borrado \"$1\"",
-"dellogpage"	=> "Registro de borrados",
+"dellogpage"	=> "Registro_de_borrados",
 "dellogpagetext" => "Abajo hay una lista de los borrados más recientes.
 Todos los tiempos se muestran en hora del servidor (UTC).
 <ul>
