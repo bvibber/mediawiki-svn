@@ -106,6 +106,8 @@ function edit ( $title ) {
 	if ( $MinorEdit ) $checked = "checked" ;
 	else $checked = "" ;
 	if ( $CommentBox == "" ) $CommentBox = "*" ;
+	$CommentBox = str_replace ( array ( "\\'", "\\\"" ) , array ( "'" , "\"" ) , $CommentBox );
+	$CommentBox = htmlspecialchars ( $CommentBox );
 
 	# Just trying to set the initial keyboard focus to the edit window; doesn't work, though...
 	global $bodyOptions , $headerScript ;
