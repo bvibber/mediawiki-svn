@@ -531,9 +531,11 @@ The legal liability could really hurt the project, so please don't do it.
 See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges recent meta discussion].",
 "rcloaderr"		=> "Loading recent changes",
 "rcnote"		=> "Below are the last <b>$1</b> changes in the last <b>$2</b> days.",
-"rclinks"		=> "View the last $1 changes; view the last $2 days.",
+"rclinks"		=> "View the last $1 changes; view the last $2 days; $3 minor edits.",
 "diff"			=> "diff",
 "hist"			=> "hist",
+"hide"			=> "hide",
+"show"			=> "show",
 
 # Upload
 #

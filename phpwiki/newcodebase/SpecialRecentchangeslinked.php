@@ -3,10 +3,11 @@
 function wfSpecialRecentchangeslinked()
 {
 	global $wgUser, $wgOut, $wgLang, $wgTitle;
-	global $days, $limit, $target; # From query string
+	global $days, $limit, $target, $hideminor; # From query string
 	$fname = "wfSpecialRecentchangeslinked";
 
 	$wgOut->setPagetitle( wfMsg( "recentchanges" ) );
+	$sk = $wgUser->getSkin();
 
 	if ( "" == $target ) {
 		$wgOut->errorpage( "notargettitle", "notargettext" );
@@ -26,11 +27,28 @@ function wfSpecialRecentchangeslinked()
 	}
 	$cutoff = date( "YmdHis", time() - ( $days * 86400 ) );
 
+	if ( ! isset( $hideminor ) ) {
+		$hideminor = $wgUser->getOption( "hideminor" );
+	}
+	if ( $hideminor ) {
+		$mlink = $sk->makeKnownLink( $wgLang->specialPage( "Recentchangeslinked" ),
+	  	  WfMsg( "show" ), "target=" . wfEscapeHTML( $nt->getPrefixedURL() ) .
+		  "&days={$days}&limit={$limit}&hideminor=0" );
+	} else {
+		$mlink = $sk->makeKnownLink( $wgLang->specialPage( "Recentchangeslinked" ),
+	  	  WfMsg( "hide" ), "target=" . wfEscapeHTML( $nt->getPrefixedURL() ) .
+		  "&days={$days}&limit={$limit}&hideminor=1" );
+	}
+	if ( $hideminor ) {
+		$cmq = "AND cur_minor_edit=0";
+	} else { $cmq = ""; }
+
 	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_user,cur_comment," .
 	  "cur_user_text,cur_timestamp,cur_minor_edit,cur_is_new FROM links, cur " .
-	  "WHERE cur_timestamp > '{$cutoff}' AND l_to=cur_id AND l_from='" .
+	  "WHERE cur_timestamp > '{$cutoff}' {$cmq} AND l_to=cur_id AND l_from='" .
       wfStrencode( $nt->getPrefixedDBkey() ) . "' GROUP BY cur_id " .
 	  "ORDER BY cur_timestamp DESC LIMIT {$limit}";
+wfDebug( "1: $sql\n" );
 	$res = wfQuery( $sql, $fname );
 
 	$note = str_replace( "$1", $limit, wfMsg( "rcnote" ) );
@@ -49,9 +67,9 @@ function wfSpecialRecentchangeslinked()
 	  lcDaysLink( $limit, 30, $tu );
 	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
 	$note = str_replace( "$2", $dl, $note );
+	$note = str_replace( "$3", $mlink, $note );
 	$wgOut->addHTML( "{$note}\n" );
 
-	$sk = $wgUser->getSkin();
 	$s = $sk->beginRecentChangesList();
 	$count = wfNumRows( $res );
 
