@@ -67,7 +67,7 @@ define( 'EXT_IMAGE_REGEX',
  *   performs brace substitution on MediaWiki messages
  *
  * Globals used:
- *    objects:   $wgLang, $wgDateFormatter, $wgLinkCache, $wgCurParser
+ *    objects:   $wgLang, $wgDateFormatter, $wgLinkCache
  *
  * NOT $wgArticle, $wgUser or $wgTitle. Keep them away!
  *
@@ -1743,19 +1743,16 @@ class Parser
 		# This function is called recursively. To keep track of arguments we need a stack:
 		array_push( $this->mArgStack, $args );
 
-		# PHP global rebinding syntax is a bit weird, need to use the GLOBALS array
-		$GLOBALS['wgCurParser'] =& $this;
-
 		# Variable substitution
-		$text = preg_replace_callback( "/{{([$titleChars]*?)}}/", 'wfVariableSubstitution', $text );
+		$text = preg_replace_callback( "/{{([$titleChars]*?)}}/", array( &$this, 'variableSubstitution' ), $text );
 		
 		if ( $this->mOutputType == OT_HTML || $this->mOutputType == OT_WIKI ) {
 			# Argument substitution
-			$text = preg_replace_callback( "/{{{([$titleChars]*?)}}}/", 'wfArgSubstitution', $text );
+			$text = preg_replace_callback( "/{{{([$titleChars]*?)}}}/", array( &$this, 'argSubstitution' ), $text );
 		}
 		# Template substitution
 		$regex = '/(\\n|{)?{{(['.$titleChars.']*)(\\|.*?|)}}/s';
-		$text = preg_replace_callback( $regex, 'wfBraceSubstitution', $text );
+		$text = preg_replace_callback( $regex, array( &$this, 'braceSubstitution' ), $text );
 
 		array_pop( $this->mArgStack );
 
@@ -2706,14 +2703,6 @@ class Parser
 			"\r\n" => "\n",
 			);
 		$text = str_replace(array_keys($pairs), array_values($pairs), $text);
-		// now with regexes
-		/*
-		$pairs = array(
-			"/<br.+(clear|break)=[\"']?(all|both)[\"']?\\/?>/i" => '<br style="clear:both;"/>',
-			"/<br *?>/i" => "<br />",
-		);
-		$text = preg_replace(array_keys($pairs), array_values($pairs), $text);
-		*/
 		$text = $this->strip( $text, $stripState, false );
 		$text = $this->pstPass2( $text, $user );
 		$text = $this->unstrip( $text, $stripState );
@@ -2726,7 +2715,7 @@ class Parser
 	 * @access private
 	 */
 	function pstPass2( $text, &$user ) {
-		global $wgLang, $wgContLang, $wgLocaltimezone, $wgCurParser;
+		global $wgLang, $wgContLang, $wgLocaltimezone;
 
 		# Variable replacement
 		# Because mOutputType is OT_WIKI, this will only process {{subst:xxx}} type tags
@@ -2894,13 +2883,14 @@ class Parser
 					# Not in the link cache, add it to the query
 					if ( !isset( $current ) ) {
 						$current = $val;
-						$tables = $pageTable;
+						$tables = $page;
 						$join = '';
 						$query =  "SELECT page_id, page_namespace, page_title";
 						if ( $threshold > 0 ) {
+							$textTable = $dbr->tableName( 'text' );
 							$query .= ', LENGTH(old_text) AS page_len, page_is_redirect';
 							$tables .= ", $textTable";
-							$join = 'page.page_latest=text.old_id AND';
+							$join = 'page_latest=old_id AND';
 						}
 						$query .= " FROM $tables WHERE $join (page_namespace=$val AND page_title IN(";
 					} elseif ( $current != $val ) {
@@ -3121,22 +3111,6 @@ function &outputReplaceMatches($matches) {
 	return $outputReplace[$matches[1]];
 }
 
-
-# Regex callbacks, used in Parser::replaceVariables
-function wfBraceSubstitution( $matches ) {
-	global $wgCurParser;
-	return $wgCurParser->braceSubstitution( $matches );
-}
-
-function wfArgSubstitution( $matches ) {
-	global $wgCurParser;
-	return $wgCurParser->argSubstitution( $matches );
-}
-
-function wfVariableSubstitution( $matches ) {
-	global $wgCurParser;
-	return $wgCurParser->variableSubstitution( $matches );
-}
 
 /**
  * Return the total number of articles
