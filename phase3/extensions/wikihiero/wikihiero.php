@@ -808,7 +808,7 @@
       }
     }
 
-    $html .= WH_TABLE_S."<tr>\n";
+    $contentHtml = $tableHtml = $tableContentHtml = '';
 /*
     // DEBUG: See the block split table
     foreach($block as $code)
@@ -830,30 +830,30 @@
       {
         if($code[0] == "!") // end of line 
         {
-          $html .= "</tr>".WH_TABLE_E.WH_TABLE_S."<tr>\n";
+          $tableHtml = "</tr>".WH_TABLE_E.WH_TABLE_S."<tr>\n";
           if($line)
-            $html .= "<hr>\n";
+            $contentHtml .= "<hr>\n";
         }
 
         else if(strchr($code[0], '<')) // start cartouche
         {
-          $html .= WH_TD_S.WH_RenderGlyph($code[0], "height=100%").WH_TD_E;
+          $contentHtml .= WH_TD_S.WH_RenderGlyph($code[0], "height=100%").WH_TD_E;
           $is_cartouche = true;
-          $html .= "<td>".WH_TABLE_S."<tr><td height=\"".WH_CARTOUCHE_WIDTH."px\" bgcolor=\"black\"></td></tr><tr><td>".WH_TABLE_S."<tr>";
+          $contentHtml .= "<td>".WH_TABLE_S."<tr><td height=\"".WH_CARTOUCHE_WIDTH."px\" bgcolor=\"black\"></td></tr><tr><td>".WH_TABLE_S."<tr>";
         }
 
         else if(strchr($code[0], '>')) // end cartouche
         {
-          $html .= "</tr>".WH_TABLE_E."</td></tr><tr><td height=\"".WH_CARTOUCHE_WIDTH."px\" bgcolor=\"black\"></td></tr>".WH_TABLE_E."</td>";
+          $contentHtml .= "</tr>".WH_TABLE_E."</td></tr><tr><td height=\"".WH_CARTOUCHE_WIDTH."px\" bgcolor=\"black\"></td></tr>".WH_TABLE_E."</td>";
           $is_cartouche = false;
-          $html .= WH_TD_S.WH_RenderGlyph($code[0], "height=100%").WH_TD_E;
+          $contentHtml .= WH_TD_S.WH_RenderGlyph($code[0], "height=100%").WH_TD_E;
         }
 
         else if($code[0] != "") // assum is glyph or '..' or '.'
         {
           $option = "height=\"".WH_Resize($code[0], $is_cartouche)."px\"";
           
-          $html .= WH_TD_S.WH_RenderGlyph($code[0], $option).WH_TD_E;
+          $contentHtml .= WH_TD_S.WH_RenderGlyph($code[0], $option).WH_TD_E;
         }
       }
       // block contain more than 1 glyph
@@ -873,7 +873,7 @@
         {
           $option = "height=\"".WH_Resize($temp, $is_cartouche)."px\"";
 
-          $html .= WH_TD_S.WH_RenderGlyph($temp, $option).WH_TD_E;
+          $contentHtml .= WH_TD_S.WH_RenderGlyph($temp, $option).WH_TD_E;
         }
         // block must be manualy compute 
         else
@@ -926,13 +926,18 @@
               $temp .= WH_RenderGlyph($t, $option);
             }
           }
-          $html .= WH_TD_S.$temp.WH_TD_E;
+          $contentHtml .= WH_TD_S.$temp.WH_TD_E;
         }
-        $html .= "\n";
+        $contentHtml .= "\n";
+      }
+      if(strlen($contentHtml) > 0) {
+          $tableContentHtml .= $tableHtml.$contentHtml;
+          $contentHtml = '';
       }
     }
-
-    $html .= "</tr>".WH_TABLE_E;
+    if(strlen($tableContentHtml) > 0) {
+        $html .= WH_TABLE_S."<tr>\n".$tableContentHtml."</tr>".WH_TABLE_E;
+    }
 
     return $html;        
   }
