@@ -4,7 +4,7 @@
 /* private */ $wgValidInterwikis = array(
 	# Special cases
 	"w"		=> "http://www.wikipedia.org/wiki/$1",
-	"m"		=> "http://meta.wikipedia.com/wiki.phtml?title=$1",
+	"m"		=> "http://meta.wikipedia.org/wiki/$1",
 	"simple"=> "http://simple.wikipedia.com/wiki.cgi?$1",
 
 	# ISO 639 2-letter language codes
