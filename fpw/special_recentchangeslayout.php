@@ -9,7 +9,7 @@ function timestampAddHour ( $x , $d ) {
 
 function recentChangesLayout ( &$arr ) {
     if ( count ( $arr ) == 0 ) return "" ;
-    global $THESCRIPT , $user , $wikiDiff , $wikiGetDate , $wikiUser ;
+    global $THESCRIPT , $user , $wikiDiff , $wikiGetDate , $wikiUser , $wikiChanges, $wikiChange;
     $lastDay = "" ;
     $color1 = $user->options["tabLine1"] ;
     $color2 = $user->options["tabLine2"] ;
@@ -81,7 +81,7 @@ function recentChangesLayout ( &$arr ) {
         else $t = str_replace ( "</td>" , "; " , $t ) . " $time" ;
 
         $noc = $s->changes ;
-        $changes = ( $noc > 1 ) ? "changes" : "change";
+        $changes = ( $noc > 1 ) ? $wikiChanges : $wikiChange;
         if ( $noc > 0 )
           $noc = "$noc <a href=\"".wikiLink("$url&action=history")."\">$changes</a>" ;
         else
