@@ -724,7 +724,14 @@ or has chosen not to receive e-mail from other users.",
   wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
 to modify your watchlist.",
 "addedwatch"	=> "Added to watchlist",
-"addedwatchtext" => "The page \"$1\" has been added to your watchlist.",
+"addedwatchtext" => "The page \"$1\" has been added to your <a href=\"" .
+  wfLocalUrl( "Special:Watchlist" ) . "\">watchlist</a>.
+Future changes to this page and its associated Talk page will be listed there,
+and the page will appear <b>bolded</b> in the <a href=\"" .
+  wfLocalUrl( "Special:Recentchanges" ) . "\">list of recent changes</a> to
+make it easier to pick out.</p>
+
+<p>If you want to remove the page from your watchlist later, click \"Stop watching\" in the sidebar.",
 "removedwatch"	=> "Removed from watchlist",
 "removedwatchtext" => "The page \"$1\" has been removed from your watchlist.",
 "watchthispage"	=> "Watch this page",
