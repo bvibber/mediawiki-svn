@@ -21,19 +21,25 @@ class Article {
 	{
 		global $wgOut, $wgTitle, $wgArticle;
 		$a = new Article();
+		$n = Article::nameOf( $newid );
 
-		$sql = "SELECT cur_namespace,cur_title FROM cur WHERE " .
-		  "cur_id={$newid}";
-		$res = wfQuery( $sql, "Article::newFromID" );
-		if ( 0 == wfNumRows( $res ) ) { return NULL; }
-
-		$s = wfFetchObject( $res );
-		$wgTitle = Title::newFromDBkey( Title::makeName( $s->cur_namespace,
-		  $s->cur_title ) );
+		$wgTitle = Title::newFromDBkey( $n );
 		$wgTitle->resetArticleID( $newid );
 		wfFreeResult( $res );
 
 		return $a;
+	}
+
+	/* static */ function nameOf( $id )
+	{
+		$sql = "SELECT cur_namespace,cur_title FROM cur WHERE " .
+		  "cur_id={$id}";
+		$res = wfQuery( $sql, "Article::newFromID" );
+		if ( 0 == wfNumRows( $res ) ) { return NULL; }
+
+		$s = wfFetchObject( $res );
+		$n = Title::makeName( $s->cur_namespace, $s->cur_title );
+		return $n;
 	}
 
 	function getContent()

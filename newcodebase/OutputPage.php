@@ -150,7 +150,7 @@ class OutputPage {
 		global $wgTitle;
 
 		$this->mDebugtext .= "Original title: " .
-		  $wgTitle->getText() . "\n";
+		  $wgTitle->getPrefixedText() . "\n";
 		$this->setHTMLTitle( wfMsg( "errorpagetitle" ) );
 		$this->setPageTitle( wfMsg( $title ) );
 		$this->setRobotpolicy( "noindex,nofollow" );
