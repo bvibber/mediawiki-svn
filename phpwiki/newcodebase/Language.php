@@ -441,6 +441,7 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 # Popular pages
 #
 "popularpages"	=> "Popular pages",
+"nviews"		=> "$1 views",
 
 # Wanted pages
 #
