@@ -35,14 +35,14 @@
 /* private */ $wgUserTogglesDa = array(
 	"hover"		=> "Vis svævende tekst over wiki links",
 	"underline" => "Understreg links",
-	"highlightbroken" => "Fremhæv links til tomme sider",
+	"highlightbroken" => "Røde links til tomme sider",
 	"justify"	=> "Justér paragraffer",
 	"hideminor" => "Gem små redigeringer i sidste ændringer",
 	"numberheadings" => "Automatisk nummerering af overskrifter",
 	"rememberpassword" => "Husk password til næste besøg",
 	"editwidth" => "Redigeringsboksen har fuld bredde",
-	"editondblclick" => "Edit pages on double click (JavaScript)",
-	"watchdefault" => "Watch new and modified articles"
+	"editondblclick" => "Rediger sider med dobbeltklik (JavaScript)",
+	"watchdefault" => "Overvåg nye og ændrede artikler"
 );
 
 /* private */ $wgBookstoreListDa = array(
@@ -274,8 +274,8 @@
 "help"			=> "Hjælp",
 "helppage"		=> "Wikipedia:Hjælp",
 "wikititlesuffix" => "Wikipedia",
-"bugreports"	=> "Fejl rapporter",
-"bugreportspage" => "Wikipedia:Fejl_rapporter",
+"bugreports"	=> "Fejlrapporter",
+"bugreportspage" => "Wikipedia:Fejlrapporter",
 "faq"			=> "OSS",
 "faqpage"		=> "Wikipedia:OSS",
 "edithelp"		=> "Hjælp til redigering",
@@ -289,7 +289,7 @@
 "qbmyoptions"	=> "Mine indstillinger",
 "mypage"		=> "Min side",
 "mytalk"		=> "Min diskussion",
-"currentevents" => "Aktuelle begivenheder",
+"currentevents" => "-",
 "errorpagetitle" => "Fejl",
 "returnto"		=> "Tilbage til $1.",
 "fromwikipedia"	=> "Fra Wikipedia, den frie encyklopædi.",
@@ -360,6 +360,7 @@ Den administrator der skrivebeskyttede den har denne forklaring:
 som den skulle have fundet, med navnet \"$1\".
 Dette er ikke en database fejl, men sandsynligvis en fejl i softwaren.
 Send venligst en rapport om dette til en administrator, hvor du også nævner 
+
 URL'en.",
 "internalerror" => "Intern fejl",
 "filecopyerror" => "Kunne ikke kopiere filen \"$1\" til \"$2\".",
@@ -389,6 +390,7 @@ oprettet. Glem ikke at personliggøre dine Wikipedia indstillinger.",
 "newusersonly"	=> " (kun nye brugere)",
 "remembermypassword" => "Husk mit password til næste gang.",
 "loginproblem"	=> "<b>Der har været et problem med at logge dig 
+
 på.</b><br>Prøv igen!",
 "alreadyloggedin" => "<font color=red><b>Bruger $1, du er allerede logget 
 på!</b></font><br>\n",
@@ -581,8 +583,9 @@ Der bliver automatisk tilpasset til dansk tid, ellers skulle man for eksempel fo
 side.
 
 [[Wikipedia:Velkommen nybegynder|Velkommen nybegynder]]!
-Kig venligst på disse sider: [[wikipedia:OSS|Wikipedia Ofte Stillede 
-Spørgsmål]], [[Wikipedia:Politik|Wikipedia politik]]
+Kig venligst på disse sider: [[wikipedia:OSS|Ofte Stillede 
+Spørgsmål]], [[Wikipedia:Politik|politik]]
+
 (specielt [[wikipedia:Navngivning|navngivning]],
 [[wikipedia:Skriv Wikipedia fra et neutralt synspunkt|skriv Wikipedia fra et 
 neutralt synspunkt]],
@@ -638,6 +641,7 @@ wfLocalUrlE( "Wikipedia:Upload_log" ) . "\">upload log</a>.
 som illustration i dine artikler.
 På de fleste browsere vil du se en \"Browse...\" knap eller en 
 \"Gennemse...\" knap, som vil
+
 bringe dig til operativsystemets standard fil åben dialog.
 Når du vælger en fil vil navnet på filen dukke op i tekst feltet
 ved siden af knappen.
@@ -745,12 +749,12 @@ hver gang du har rettet en enkelt ting ;-)",
 <i>sider med tvetydige titler</i>. De skulle linke til en ikke-tvetydig 
 titel i stedet for.<br>En side bliver behandlet som tvetydig hvis den er
 linket fra $1.<br>Links fra andre navnerum er <i>ikke</i> listet her.",
-"doubleredirects"	=> "Dobbelte redirigeringer",
+"doubleredirects"	=> "Dobbelte omdirigeringer",
 "doubleredirectstext"	=> "<b>Bemærk:</b> Denne liste kan indeholde forkerte 
 resultater. Det er som regel fordi siden indeholder ekstra tekst under den
 første #REDIRECT.<br>\nHver linie indeholder links til den første og den 
-anden redirigering, og den første linie fra den anden redirigeringstekst, 
-det giver som regel den \"rigtige\" mål artikel, som den første redirigering 
+anden omdirigering, og den første linie fra den anden omdirigeringstekst, 
+det giver som regel den \"rigtige\" mål artikel, som den første omdirigering 
 skulle have peget på.",
 "selflinks"		=> "Sider der linker til sig selv",
 "selflinkstext"		=> "De følgende sider indeholder links til sig selv, 
@@ -758,7 +762,7 @@ men det burde de ikke.",
 "missinglanguagelinks"  => "Manglende sprog links",
 "missinglanguagelinksbutton"    => "Find manglende sprog links for",
 "missinglanguagelinkstext"      => "Disse artikler har <i>ikke</i> noget 
-link til den samme artikel i $1. Redirigeringer og underartikler er 
+link til den samme artikel i $1. Omdirigeringer og underartikler er 
 <i>ikke</i> vist.",
 
 
@@ -980,6 +984,7 @@ med omtanke.",
 "sqlquery"		=> "Indtast forespørgsel",
 "querybtn"		=> "Afsend forespørgsel",
 "selectonly"	=> "Forespørgsler andre end \"SELECT\" er forbeholdt
+
 Wikipedia udviklere.",
 "querysuccessful" => "Forespørgsel gennemført med success",
 
