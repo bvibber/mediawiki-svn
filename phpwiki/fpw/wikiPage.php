@@ -934,7 +934,7 @@ class WikiPage extends WikiTitle {
 
 	# This generates the QuickBar (also used by the list of special pages function)
 	function getQuickBar () {
-		global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages ;
+		global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages;
 		global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist ;
 		global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
 		$editOldVersion = "" ;
@@ -960,6 +960,7 @@ class WikiPage extends WikiTitle {
 		$column .= "<br>\n<a href=\"".wikiLink("special:AllPages")."\">$wikiAllPages</a>" ;
 		$column .= "<br>\n<a href=\"".wikiLink("special:RandomPage")."\">$wikiRandomPage</a>" ;
 		$column .= "<br>\n<a href=\"".wikiLink("special:ShortPages")."\">$wikiStubs</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:LongPages")."\">$wikiLongPages</a>" ;
 		$column .= "<br>\n<a href=\"".wikiLink("special:ListUsers")."\">$wikiListUsers</a>" ;
 		if ( $user->isLoggedIn ) {
 			$column .= "<br>\n<a href=\"".wikiLink("special:WatchList")."\">$wikiMyWatchlist</a>" ;
