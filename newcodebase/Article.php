@@ -28,27 +28,49 @@ class Article {
 
 	function loadContent()
 	{
+		global $wgOut, $oldid;
 		if ( $this->mContentLoaded ) return;
 
-		$id = $this->getID();
-		if ( 0 == $id ) return;
+		if ( ! $oldid ) {
+			$id = $this->getID();
+			if ( 0 == $id ) return;
 
-		$conn = wfGetDB();
-		$sql = "SELECT cur_text,cur_timestamp,cur_user,cur_counter " .
-		  "FROM cur WHERE cur_id=$id";
-		wfDebug( "Art: 1: $sql\n" );
-		$res = mysql_query( $sql, $conn );
+			$conn = wfGetDB();
+			$sql = "SELECT cur_text,cur_timestamp,cur_user,cur_counter " .
+			  "FROM cur WHERE cur_id=$id";
+			wfDebug( "Art: 1: $sql\n" );
+			$res = mysql_query( $sql, $conn );
 
-		if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
-			$this->mContent = "Fatal database error.\n";
+			if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
+				$this->mContent = "Fatal database error.\n";
+				return;
+			} else {
+				$s = mysql_fetch_object( $res );
+				$this->mContent = $s->cur_text;
+				$this->mUser = $s->cur_user;
+				$this->mCounter = $s->cur_counter;
+				$this->mTimestamp = $s->cur_timestamp;
+				mysql_free_result( $res );
+			}
 		} else {
-			$s = mysql_fetch_object( $res );
-			$this->mContent = $s->cur_text;
-			$this->mUser = $s->cur_user;
-			$this->mCounter = $s->cur_counter;
-			$this->mTimestamp = $s->cur_timestamp;
+			$conn = wfGetDB();
+			$sql = "SELECT old_text,old_timestamp,old_user FROM old " .
+			  "WHERE old_id={$oldid}";
+			wfDebug( "Art: 8: $sql\n" );
+			$res = mysql_query( $sql, $conn );
+
+			if ( ( ! $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
+				$wgOut->errorpage( "revnotfound", "revnotfoundtext" );
+				return;
+			} else {
+				$s = mysql_fetch_object( $res );
+				$this->mContent = $s->old_text;
+				$this->mUser = $s->old_user;
+				$this->mCounter = 0;
+				$this->mTimestamp = $s->old_timestamp;
+				mysql_free_result( $res );
+			}
 		}
-		mysql_free_result( $res );
 		$this->mContentLoaded = true;
 	}
 
@@ -100,30 +122,10 @@ class Article {
 		global $wgOut, $wgTitle, $wgLang;
 		global $oldid;
 
-		if ( $oldid ) {
-			$conn = wfGetDB();
-			$sql = "SELECT old_text,old_timestamp FROM old " .
-			  "WHERE old_id={$oldid}";
-			wfDebug( "Art: 7: $sql\n" );
-
-			$res = mysql_query( $sql, $conn );
-			if ( ( ! $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
-				$wgOut->errorpage( "revnotfound", "revnotfoundtext" );
-				return;
-			} else {
-				$row = mysql_fetch_object( $res );
-				$t = $row->old_timestamp;
-				$d = $wgLang->dateFromTimestamp( $t );
-				$h = substr( $t, 8, 2 ) . ":" . substr( $t, 10, 2 );
-
-				$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
-				$wgOut->setSubtitle( "(Revision as of {$h}, {$d})" );
-				$wgOut->addWikiText( $row->old_text );
-				return;
-			}
-		}
 		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
-		$wgOut->addWikiText( $this->getContent() );
+		$text = $this->getContent();
+		if ( $oldid ) { $this->setOldSUbtitle(); }
+		$wgOut->addWikiText( $text );
 		$this->viewUpdates();
 	}
 
@@ -160,6 +162,7 @@ class Article {
 		global $wgServer, $wgScript;
 		global $wpTextbox1, $wpSummary, $wpSave, $wpPreview;
 		global $wpMinoredit, $wpEdittime, $wpTextbox2;
+		global $oldid;
 
 		$isConflict = false;
 		if ( "save" == $formtype ) {
@@ -172,7 +175,7 @@ class Article {
 				$this->insertNewArticle( $wpTextbox1, $wpSummary );
 				return;
 			}
-			# Check for edit conflict
+			# Check for edit conflict. TODO: check oldid here
 			#
 			if ( $this->getUser() != $wgUser->getID() &&
 			  $this->mTimestamp > $wpEdittime ) {
@@ -204,6 +207,10 @@ class Article {
 			$s = str_replace( "$1", $wgTitle->getPrefixedText(),
 			  wfMsg( "editing" ) );
 			$wgOut->setPageTitle( $s );
+			if ( $oldid ) {
+				$this->setOldSubtitle();
+				$wgOut->addHTML( wfMsg( "editingold" ) );
+			}
 		}
 		$rows = $wgUser->getOption( "rows" );
 		$cols = $wgUser->getOption( "cols" );
@@ -432,6 +439,16 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		$u = new LinksUpdate( $id, $title );
 		array_push( $wgDeferredUpdateList, $u );
+	}
+
+	/* private */ function setOldSubtitle()
+	{
+		global $wgLang, $wgOut;
+
+		$d = $wgLang->dateFromTimestamp( $this->mTimestamp );
+		$h = substr( $this->mTimestamp, 8, 2 ) . ":" .
+		  substr( $this->mTimestamp, 10, 2 ) ;
+		$wgOut->setSubtitle( "(Revision as of {$h}, {$d})" );
 	}
 
 	function blockedIPpage()

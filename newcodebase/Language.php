@@ -161,6 +161,9 @@ You will have to merge your changes into the existing text.
 <b>Only</b> the text in the upper text area will be saved when you
 press \"Save\".\n<p>",
 "yourtext"		=> "Your text",
+"editingold"	=> "<strong>WARNING: You are editing an out-of-date
+revision of this article.
+If you save it, any changes made since this revision will be lost.</strong>\n",
 
 # History pages
 #
