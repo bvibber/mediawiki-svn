@@ -1651,7 +1651,7 @@ class Skin {
 	function makeImageLinkObj( $nt, $alt = '' ) {
 		global $wgContLang, $wgUseImageResize;
 		$img   = Image::newFromTitle( $nt );
-		$url   = $img->getURL();
+		$url   = $img->getViewURL();
 
 		$align = '';
 		$prefix = $postfix = '';
@@ -1782,7 +1782,7 @@ class Skin {
 	function makeThumbLinkObj( $img, $label = '', $align = 'right', $boxwidth = 180, $boxheight=false, $framed=false , $manual_thumb = "" ) {
 		global $wgStylePath, $wgContLang;
 		# $image = Title::makeTitleSafe( NS_IMAGE, $name );
-		$url  = $img->getURL();
+		$url  = $img->getViewURL();
 
 		#$label = htmlspecialchars( $label );
 		$alt = preg_replace( '/<[^>]*>/', '', $label);
@@ -1826,7 +1826,7 @@ class Skin {
 		{
 			$manual_title = Title::makeTitleSafe( NS_IMAGE, $manual_thumb ); #new Title ( $manual_thumb ) ;
 			$manual_img = Image::newFromTitle( $manual_title );
-			$thumbUrl = $manual_img->getURL();
+			$thumbUrl = $manual_img->getViewURL();
 			if ( $manual_img->exists() )
 			{
 				$width  = $manual_img->getWidth();
