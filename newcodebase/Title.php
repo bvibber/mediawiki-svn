@@ -34,7 +34,7 @@
 	"el"    => "http://el.wikipedia.com/wiki.cgi?$1",
 	"en"	=> "http://www.wikipedia.org/wiki/$1",    # May in future be renamed to en.wikipedia.org; should work as alternate
 	"eo"	=> "http://eo.wikipedia.com/wiki/$1",
-	"es"	=> "http://es.wikipedia.com/wiki.cgi?$1",
+	"es"	=> "http://es.wikipedia.org/wiki/$1",
 	"et"    => "http://et.wikipedia.com/wiki.cgi?$1",
 	"eu"    => "http://eu.wikipedia.com/wiki.cgi?$1",
 	"fa"    => "http://fa.wikipedia.com/wiki.cgi?$1",
