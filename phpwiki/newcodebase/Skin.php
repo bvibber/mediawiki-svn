@@ -47,9 +47,13 @@ class Skin {
 	{
 		global $wgUser, $wgOut, $wgStyleSheetPath;
 
-		$s = "<script language='javascript' type='text/javascript' " .
-		  "src='{$wgStyleSheetPath}/sticky.js'></script>\n";
+		$qb = $wgUser->getOption( "quickbar" );
+		if ( "" == $qb ) { $qb = 0; }
 
+		if ( $qb < 3 ) {
+			$s = "<script language='javascript' type='text/javascript' " .
+			  "src='{$wgStyleSheetPath}/sticky.js'></script>\n";
+		}
 		$s .= "<style type='text/css' media='screen'><!--\n";
 		if ( 1 == $wgUser->getOption( "underline" ) ) {
 			$s .= "a { text-decoration: underline; }\n";
@@ -59,32 +63,47 @@ class Skin {
 		if ( 1 == $wgUser->getOption( "highlightbroken" ) ) {
 			$s .= "a.new { color: white; background: blue; }\n";
 		}
-		$s .= "#quickbar { position: absolute; top: 4px; left: 4px; " .
-		  "visibility: visible; z-index: 99;}\n";
-
-		if ( $wgOut->isQuickbarSupressed() ) {
+		if ( 2 == $qb || 4 == $qb ) {
+			$s .= "#quickbar { position: absolute; top: 4px; right: 4px; " .
+			  "visibility: visible; z-index: 99;}\n";
+		} else {
+			$s .= "#quickbar { position: absolute; top: 4px; left: 4px; " .
+			  "visibility: visible; z-index: 99;}\n";
+		}
+		if ( ( 0 == $qb ) || $wgOut->isQuickbarSupressed() ) {
 			$s .= "#topbar { margin-left: 4px; margin-right: 4px; }\n" .
 			  "#article { margin-left: 4px; margin-right: 4px; }\n" .
 			  "#footer { margin-left: 4px; margin-right: 4px; }\n";
+		} else if ( 2 == $qb || 4 == $qb ) {
+			$s .= "#topbar { margin-left: 4px; margin-right: 156px; }\n" .
+			  "#article { margin-left: 4px; margin-right: 156px; }\n" .
+			  "#footer { margin-left: 4px; margin-right: 156px; }\n";
 		}
 		$s .= "//--></style>\n";
-		$s .= "<style type='text/css' media='screen'>\n" .
-		  "@import '{$wgStyleSheetPath}/quickbar.css';\n</style>\n";
+		if ( $qb < 3 ) {
+			$s .= "<style type='text/css' media='screen'>\n" .
+			  "@import '{$wgStyleSheetPath}/quickbar.css';\n</style>\n";
+		}
 		return $s;
 	}
 
 	function getBodyOptions()
 	{
-		global $wgTitle, $wgNamespaceBackgrounds;
+		global $wgUser, $wgTitle, $wgNamespaceBackgrounds;
 
 		$ns = Namespace::getName( $wgTitle->getNamespace() );
 
 		if ( "" != $ns && array_key_exists( $ns, $wgNamespaceBackgrounds ) ) {
 			$a = array( "bgcolor" => $wgNamespaceBackgrounds[$ns] );
 		}
-		else $a = array( "bgcolor" => "#ffffff" );
+		else $a = array( "bgcolor" => "#FFFFFF" );
 
-		$a["onload"] = "setup(\"quickbar\")";
+		$qb = $wgUser->getOption( "quickbar" );
+		if ( "" == $qb ) { $qb = 0; }
+
+		if ( $qb < 3 ) {
+			$a["onload"] = "setup(\"quickbar\")";
+		}
 		return $a;
 	}
 
@@ -148,6 +167,13 @@ class Skin {
 		$s .= "<div id='topbar'><table border=0><tr>" .
 		  "<td valign=top align=left>";
 
+		$qb = $wgUser->getOption( "quickbar" );
+		if ( "" == $qb ) { $qb = 0; }
+
+		if ( 0 == $qb ) {
+			$s .= $this->logoText() .
+			  "</td><td align=left valign=top>";
+		}
 		$s .= $this->topLinks() . "\n<br>";
 		$s .= $this->pageTitleLinks();
 
@@ -190,7 +216,10 @@ class Skin {
 		$s .= "\n<br>" . $this->searchForm();
 		$s .= "\n</div>\n</div>\n";
 
-		if ( ! $wgOut->isQuickbarSupressed() ) {
+		$qb = $wgUser->getOption( "quickbar" );
+		if ( "" == $qb ) { $qb = 0; }
+
+		if ( ( ! $wgOut->isQuickbarSupressed() ) && ( 0 != $qb ) ) {
 			$s .= $this->quickBar();
 		}
 		return $s;
@@ -333,6 +362,13 @@ class Skin {
 		return $s;
 	}
 
+	function logoText()
+	{
+		$mp = wfMsg( "mainpage" );
+		$s = "<a href='" . wfLocalUrl( $mp ) . "'><img border=0 src='" .
+		  $this->getLogo() . "' alt='" . "[$mp]'></a>";
+		return $s;
+	}
 
 	function quickBar()
 	{
@@ -340,8 +376,7 @@ class Skin {
 
 		$mp = wfMsg( "mainpage" );
 		$s = "\n<div id='quickbar'>";
-		$s .= "\n<a href='" . wfLocalUrl( $mp ) . "'><img border=0 src='" .
-		  $this->getLogo() . "' alt='" . "[$mp]'></a>\n<hr>";
+		$s .= "\n" . $this->logoText() . "\n<hr>";
 
 		$sep = "\n<br>";
 		$s .= $this->mainPageLink()

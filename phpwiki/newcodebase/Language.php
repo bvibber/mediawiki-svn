@@ -7,7 +7,7 @@
 );
 
 /* private */ $wgQuickbarSettingsEn = array(
-	"None", "Left", "Right"
+	"None", "Floating left", "Floating right", "Fixed left", "Fixed right"
 );
 
 /* private */ $wgSkinNamesEn = array(
