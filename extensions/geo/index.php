@@ -22,7 +22,7 @@ label:germany[state]=font-size:medium;fill-opacity:0.7
 " ) ;
 
 $svg = $p->getSVG () ;
-print $svg ;
+#print $svg ;
 exit ( 0 ) ; # just make SVG
 
 
@@ -34,6 +34,7 @@ $output_filename = "/srv/www/htdocs/test.png" ;
 # Storing in temp file
 $tmpfname = tempnam ( "" , "TR2" ) . ".svg" ;
 $outfname = tempnam ( "" , "TR2" ) . ".png" ;
+#$outfname = $output_filename ;
 $handle = fopen($tmpfname, "w");
 fwrite($handle, $svg);
 fclose($handle);
@@ -47,7 +48,7 @@ unlink($tmpfname);
 
 print "<html><head></head><body>" ;
 print $cmd . " : " . $out ;
-#print "<img src=\"/test.png\"/>" ;
-print "</body></html>" ;
+print "<img src=\"/{$outfname}\"/>" ;
+print "</body></html>\n" ;
 
 ?>

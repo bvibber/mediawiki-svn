@@ -17,7 +17,9 @@ class geo_params
 	var $starters = array () ; # The objects to start drawing with
 	var $fits = array () ; # Which objects to fit into the viewport
 	var $object_tree = array () ; # The current object(s) being rendered
-	var $geo_cache = array () ; # The article cache
+	var $cache2 = array () ; # The article cache
+
+#	var $geo_cache = array () ; # The article cache
 	
 	function settings ( $sets )
 		{
@@ -125,10 +127,8 @@ class geo_params
 	# This reads the data and manages the cache
 	function get_raw_text ( $id )
 		{
-		global $geo_cache ;
-		
-		if ( isset ( $geo_cache[$id] ) ) # Try the cache first...
-			return $geo_cache[$id] ;
+#		if ( isset ( $this->geo_cache[$id] ) ) # Try the cache first...
+#			return $this->geo_cache[$id] ;
 	
 		if ( MEDIAWIKI ) # Direct connection to mediawiki database via Article/Title class
 			$contents = $this->read_from_article ( $id ) ;
@@ -136,7 +136,7 @@ class geo_params
 			$contents = $this->read_from_url ( $id ) ;
 	
 		# Return text
-		$geo_cache[$id] = $contents ; # Cache the result
+#		$this->geo_cache[$id] = $contents ; # Cache the result
 		return $contents ;
 		}
 
@@ -233,6 +233,77 @@ class geo_params
 			}
 		return $ret ;
 		}
+
+	# This function converts an ID like "germany.bavaria.cities#*" into the actual list of entries on the given page
+	# An ID "#*" will load every entry on that page
+	function expand_ids ( $ids , $me )
+		{
+		$ret = array () ;
+		foreach ( $ids AS $id )
+			{
+			$id = trim ( $id ) ;
+			if ( substr ( $id , -2 ) == "#*" )
+				{
+				$this->geo_get_text ( substr ( $id , 0 , - 2 ) ) ; # Force page into cache
+				$match = substr ( $id , 0 , - 1 ) ;
+				if ( $match == "#" ) $match = $me . $match ; # the "#*" case
+				foreach ( array_keys ( $this->cache2 ) AS $x )
+					{
+					if ( substr ( $x , 0 , strlen ( $match ) ) == $match # Same beginning
+							AND $x != $match AND $x != $me ) # Don't want recursive inclusion of head element ;-)
+						$ret[] = $x ;
+					}
+				}
+			else $ret[] = $id ;
+			}
+		print implode ( ", " , $ret ) . "\n" ;
+		return $ret ;
+		}
+
+	# This gets the text of an entry. An ID like "germany.bavaria.cities" will get the first entry,
+	# while "germany.bavaria.cities#munich" will get only the munich data.
+	# The function caches all entries of a page, and acts as a key generator for expand_ids
+	function geo_get_text ( $id )
+		{
+		$id = trim ( strtolower ( $id ) ) ;
+		
+		$parts = explode ( "#" , $id ) ;
+		if ( count ( $parts ) == 2 )
+			{
+			$id = array_shift ( $parts ) ;
+			$subid = array_shift ( $parts ) ;
+			}
+		else $subid = "" ;
+
+		# Is this already in the parts cache?
+		if ( isset ( $this->cache2["{$id}#{$subid}"] ) )
+			return $this->cache2["{$id}#{$subid}"] ;
+
+		# We have this already loaded, nothing to see here...
+		if ( isset ( $this->cache2["{$id}#"] ) )
+			return "" ;
+		
+		$ret = "\n" . $this->get_raw_text ( $id ) ;
+		$ret = explode ( "\n==" , $ret ) ;
+		
+#		if ( $subid == "" ) return $ret[0] ; # Default
+		
+		$this->cache2["{$id}#"] = array_shift ( $ret ) ;
+		foreach ( $ret AS $s )
+			{
+			$s = explode ( "\n" , $s , 2 ) ;
+			$heading = array_shift ( $s ) ;
+			$heading = strtolower ( trim ( str_replace ( "=" , "" , $heading ) ) ) ;
+			$this->cache2["{$id}#{$heading}"] = array_shift ( $s ) ;
+#			if ( $heading == $subid ) return array_shift ( $s ) ;
+			}
+
+		if ( isset ( $this->cache2["{$id}#{$subid}"] ) )
+			return $this->cache2["{$id}#{$subid}"] ;
+	#	print "Not found : {$id}#{$subid}\n" ;
+		return "" ; # Query not found
+		}
+
 	}
 
 # "geo" class
@@ -244,7 +315,8 @@ class geo
 
 	function geo_get_text ( $id , &$params )
 		{
-		$id = trim ( strtolower ( $id ) ) ;
+		return $params->geo_get_text ( $id ) ;
+/*		$id = trim ( strtolower ( $id ) ) ;
 		
 		$parts = explode ( "#" , $id ) ;
 		if ( count ( $parts ) == 2 )
@@ -269,7 +341,7 @@ class geo
 			}
 	#	print "Not found : {$id}#{$subid}\n" ;
 		return "" ; # Query not found
-		}
+*/		}
 
 	function set_from_id ( $id , &$params )
 		{
@@ -320,6 +392,7 @@ class geo
 				$data = trim ( substr ( $data , 9 ) ) ;
 				$data = trim ( substr ( $data , 1 , strlen ( $data ) - 2 ) ) ;
 				$data = explode ( "," , $data ) ;
+				$params->expand_ids ( $data , $this->id ) ;
 				foreach ( $data AS $v )
 					{
 					$v = $this->fullid ( $v ) ;
@@ -396,6 +469,7 @@ class geo
 		if ( $command == "addregs" || $command == "include" )
 			{
 			$values = explode ( "," , $values ) ;
+			$params->expand_ids ( $values , $this->id ) ;
 			foreach ( $values AS $v )
 				{
 				$v = $this->fullid ( $v ) ;
@@ -409,6 +483,7 @@ class geo
 			if ( !$this->draw_this ( $params ) ) return $ret ;
 			$data = array () ;
 			$values = explode ( "," , $values ) ;
+			$params->expand_ids ( $values , $this->id ) ;
 			foreach ( $values AS $v )
 				{
 				$v = $this->fullid ( $v ) ;
@@ -473,8 +548,7 @@ class geo
 			$ret .= "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"red\" style=\"fill-opacity:0.5\"/>\n" ;
 			$this->add_label ( $b[0] , $b[1] , $params ) ;
 			}
-		
-		if ( $match != "" )
+		else if ( $match != "" )
 			{
 			$a = $this->data[$match] ;
 			foreach ( $a AS $line )
