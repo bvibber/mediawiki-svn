@@ -6,6 +6,9 @@
 # like $wgScriptPath, you must also localize everything that
 # depends on it.
 
+$wgSitename         = "Wikipedia";
+$wgMetaNamespace    = FALSE; # will be same as you set $wgSitename
+
 $wgServer           = "http://" . getenv( "SERVER_NAME" );
 $wgScriptPath	    = "/wiki";
 $wgScript           = "{$wgScriptPath}/wiki.phtml";
