@@ -43,7 +43,7 @@ function statistics () {
 	mysql_free_result ( $result ) ;
 
 	# WIKIPEDIA NOT /TALK
-	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/$Talk\" AND cur_title NOT LIKE \"$talk:%\" AND cur_title LIKE \"%ikipedia%\"" ;
+	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/$Talk\" AND cur_title NOT LIKE \"$talk:%\" AND cur_title LIKE \"%ikipedi%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$wikiPages = $s->number ;
