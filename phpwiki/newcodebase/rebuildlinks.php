@@ -6,14 +6,18 @@
 # a database dump, renamed "old_*".
 
 include_once( "Setup.php" );
+$wgTitle = Title::newFromText( "Rebuild links script" );
 set_time_limit(0);
 
 $wgDBname			= "wikidb";
 $wgDBuser			= "wikiadmin";
-$wgDBpassword		= "adminpass";
+$wgDBpassword		= "admin7399";
 $wgUploadDirectory	= "/usr/local/apache/htdocs/upload";
+$wgDebugLogFile 	= "logfile";
 
-rebuildLinkTables();
+apc_reset_cache();
+# rebuildLinkTablesPass1();
+rebuildLinkTablesPass2();
 
 print "Done.\n";
 exit();
@@ -25,15 +29,63 @@ exit();
 # probably should be done periodically (you should lock
 # the wiki while it is running as well).
 #
-function rebuildLinkTables()
+function rebuildLinkTablesPass1()
 {
-	global $wgLinkCache;
 	$count = 0;
+	print "Rebuilding link tables (pass 1).\n";
 
-	print "Rebuilding link tables.\n";
+	$sql = "LOCK TABLES cur READ, rebuildlinks WRITE";
+	wfQuery( $sql );
 
-	$sql = "LOCK TABLES cur READ, links WRITE, " .
-	  "brokenlinks WRITE, imagelinks WRITE";
+	$sql = "DELETE FROM rebuildlinks";
+	wfQuery( $sql );
+
+	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_text FROM cur";
+	$res = wfQuery( $sql );
+	$total = wfNumRows( $res );
+
+	$tc = Title::legalChars();
+	while ( $row = wfFetchObject( $res ) ) {
+		$id = $row->cur_id;
+		$ns = Namespace::getName( $row->cur_namespace );
+		if ( "" == $ns ) {
+			$title = addslashes( $row->cur_title );
+		} else {
+			$title = addslashes( "$ns:{$row->cur_title}" );
+		}
+		$text = $row->cur_text;
+		$numlinks = preg_match_all( "/\\[\\[([{$tc}]+)(]|\\|)/", $text,
+		  $m, PREG_PATTERN_ORDER );
+
+		if ( 0 != $numlinks ) {
+			$sql = "INSERT INTO rebuildlinks (rl_f_id,rl_f_title,rl_to) VALUES ";
+			for ( $i = 0; $i < $numlinks; ++$i ) {
+				$nt = Title::newFromText( $m[1][$i] );
+				$dest = $nt->getPrefixedDBkey();
+
+				if ( 0 != $i ) { $sql .= ","; }
+				$sql .= "({$id},'{$title}','{$dest}')";
+			}
+			wfQuery( $sql );
+		}
+		if ( ( ++$count % 1000 ) == 0 ) {
+			print "$count of $total articles scanned.\n";
+		}
+	}
+	print "$count articles scanned.\n";
+	mysql_free_result( $res );
+
+	$sql = "UNLOCK TABLES";
+	wfQuery( $sql );
+}
+
+function rebuildLinkTablesPass2()
+{
+	$count = 0;
+	print "Rebuilding link tables (pass 2).\n";
+
+	$sql = "LOCK TABLES cur READ, rebuildlinks READ, " .
+	  "links WRITE, brokenlinks WRITE, imagelinks WRITE";
 	wfQuery( $sql );
 
 	$sql = "DELETE FROM links";
@@ -42,146 +94,76 @@ function rebuildLinkTables()
 	$sql = "DELETE FROM brokenlinks";
 	wfQuery( $sql );
 
-	$sql = "DELETE FROM imagelinks";
+	$sql = "DELETE FROM links";
 	wfQuery( $sql );
 
-	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_text FROM cur";
+	$sql = "SELECT rl_f_title,rl_to FROM rebuildlinks " .
+	  "WHERE rl_to LIKE 'Image:%'";
 	$res = wfQuery( $sql );
 
-	while ( $row = mysql_fetch_object( $res ) ) {
-		$id = $row->cur_id;
-		$ns = Namespace::getName( $row->cur_namespace );
-		if ( "" == $ns ) {
-			$title = $row->cur_title;
-		} else {
-			$title = "$ns:{$row->cur_title}";
-		}
-		$text = $row->cur_text;
+	$sql = "INSERT INTO imagelinks (il_from,il_to) VALUES ";
+	$first = true;
+	while ( $row = wfFetchObject( $res ) ) {
+		$iname = addslashes( substr( $row->rl_to, 6 ) );
+		$pname = addslashes( $row->rl_f_title );
 
-		$wgLinkCache = new LinkCache();
-		getInternalLinks( $title, $text );
+		if ( ! $first ) { $sql .= ","; }
+		$first = false;
 
-		$sql = "";
-		$a = $wgLinkCache->getImageLinks();
-		if ( 0 != count ( $a ) ) {
-			$sql = "INSERT INTO imagelinks (il_from,il_to) VALUES ";
-			$first = true;
-			foreach( $a as $iname => $val ) {
-				if ( ! $first ) { $sql .= ","; }
-				$first = false;
+		$sql .= "('{$pname}','{$iname}')";
+	}
+	wfFreeResult( $res );
+	wfQuery( $sql );
 
-				$sql .= "('" . wfStrencode( $title ) . "','" .
-				  wfStrencode( $iname ) . "')";
-			}
-		}
-		if ( "" != $sql ) { wfQuery( $sql ); }
+	$sql = "SELECT DISTINCT rl_to FROM rebuildlinks " .
+	  "ORDER BY rl_to";
+	$res = wfQuery( $sql );
+	$count = 0;
+	$total = wfNumRows( $res );
 
-		$sql = "";
-		$a = $wgLinkCache->getGoodLinks();
-		if ( 0 != count( $a ) ) {
-			$sql = "INSERT INTO links (l_from,l_to) VALUES ";
-			$first = true;
-			foreach( $a as $lt => $lid ) {
-				if ( ! $first ) { $sql .= ","; }
-				$first = false;
+	while ( $row = wfFetchObject( $res ) ) {
+		if ( 0 == strncmp( "Image:", $row->rl_to, 6 ) ) { continue; }
 
-				$sql .= "('" . wfStrencode( $title ) . "',$lid)";
-			}
-		}
-		if ( "" != $sql ) { wfQuery( $sql ); }
+		$nt = Title::newFromDBkey( $row->rl_to );
+		$id = $nt->getArticleID();
+		$to = addslashes( $row->rl_to );
 
-		$sql = "";
-		$a = $wgLinkCache->getBadLinks();
-		if ( 0 != count ( $a ) ) {
+		if ( 0 == $id ) {
+			$sql = "SELECT rl_f_id FROM rebuildlinks WHERE rl_to='{$to}'";
+			$res2 = wfQuery( $sql );
+
 			$sql = "INSERT INTO brokenlinks (bl_from,bl_to) VALUES ";
 			$first = true;
-			foreach( $a as $blt ) {
+			while ( $row2 = wfFetchObject( $res2 ) ) {
+				$from = $row2->rl_f_id;
 				if ( ! $first ) { $sql .= ","; }
 				$first = false;
-
-				$sql .= "($id,'" . wfStrencode( $blt ) . "')";
+				$sql .= "({$from},'{$to}')";
 			}
-		}
-		if ( "" != $sql ) { wfQuery( $sql ); }
+			wfFreeResult( $res2 );
+			if ( ! $first ) { wfQuery( $sql ); }
+		} else {
+			$sql = "SELECT rl_f_title FROM rebuildlinks WHERE rl_to='{$to}'";
+			$res2 = wfQuery( $sql );
 
+			$sql = "INSERT INTO links (l_from,l_to) VALUES ";
+			$first = true;
+			while ( $row2 = wfFetchObject( $res2 ) ) {
+				$from = addslashes( $row2->rl_f_title );
+				if ( ! $first ) { $sql .= ","; }
+				$first = false;
+				$sql .= "('{$from}',{$id})";
+			}
+			wfFreeResult( $res2 );
+			if ( ! $first ) { wfQuery( $sql ); }
+		}
 		if ( ( ++$count % 1000 ) == 0 ) {
-			print "$count articles processed.\n";
+			print "$count of $total titles processed.\n";
 		}
 	}
-	print "$count articles processed.\n";
-	mysql_free_result( $res );
+	wfFreeResult( $res );
 
 	$sql = "UNLOCK TABLES";
 	wfQuery( $sql );
 }
-
-function getInternalLinks ( $title, $text )
-{
-	global $wgLinkCache, $wgLang;
-
-	$text = preg_replace( "/<\\s*nowiki\\s*>.*<\\/\\s*nowiki\\s*>/i",
-	  "", $text );
-
-	$a = explode( "[[", " " . $text );
-	$s = array_shift( $a );
-	$s = substr( $s, 1 );
-
-	$tc = Title::legalChars();
-	foreach ( $a as $line ) {
-		$e1 = "/^([{$tc}]+)\\|([^]]+)]]/sD";
-		$e2 = "/^([{$tc}]+)]]/sD";
-
-		if ( preg_match( $e1, $line, $m )
-		  || preg_match( $e2, $line, $m ) ) {
-			$link = $m[1];
-		} else {
-			continue;
-		}
-		if ( preg_match( "/^([a-z]+):(.*)$$/", $link,  $m ) ) {
-			$pre = strtolower( $m[1] );
-			$suf = $m[2];
-			if ( "image" == $pre || "media" == $pre ) {
-				$nt = Title::newFromText( $suf );
-				$t = $nt->getDBkey();
-				$wgLinkCache->addImageLink( $t );
-				continue;
-			} else {
-				$l = $wgLang->getLanguageName( $pre );
-				if ( "" != $l ) {
-					continue; # Language link
-				}
-			}
-		}
-		$nt = Title::newFromText( $link );
-		$ft = $nt->getPrefixedDBkey();
-		$id = getArticleID( $nt->getNamespace(), $nt->getDBkey(), $ft );
-
-		if ( 0 == $id ) { $wgLinkCache->addBadLink( $ft ); }
-		else { $wgLinkCache->addGoodLink( $id, $ft ); }
-	}
-}
-
-# To rebuild link tables faster, we want to cache article ID
-# lookups across all pages, not just per-page as in live code.
-#
-
-function getArticleID( $namespace, $title, $fulltitle )
-{
-	global $wgFullCache;
-
-	if ( ! array_key_exists( $fulltitle, $wgFullCache ) ) {
-		$sql = "SELECT cur_id FROM cur WHERE (cur_namespace=" .
-		  "{$namespace} AND cur_title='" . wfStrencode( $title ) . "')";
-		$res = wfQuery( $sql );
-
-		if ( 0 == wfNumRows( $res ) ) { $id = 0; }
-		else {
-			$s = wfFetchObject( $res );
-			$id = $s->cur_id;
-		}
-		$wgFullCache[$fulltitle] = $id;
-	}
-	return $wgFullCache[$fulltitle];
-}
-
 ?>

@@ -1,5 +1,0 @@
-ALTER TABLE user RENAME TO old_user;
-ALTER TABLE cur RENAME TO old_cur;
-ALTER TABLE old RENAME TO old_old;
-DROP TABLE IF EXISTS linked;
-DROP TABLE IF EXISTS unlinked;
