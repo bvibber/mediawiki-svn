@@ -40,7 +40,7 @@ function wfSpecialRecentchanges()
 
 	$sql = "SELECT rc_cur_id,rc_namespace,rc_title,rc_user,rc_new," .
 	  "rc_comment,rc_user_text,rc_timestamp,rc_minor FROM recentchanges " .
-	  "WHERE rc_timestamp > '{$cutoff}' {$hidem}" .
+	  "WHERE rc_timestamp > '{$cutoff}' {$hidem} " .
 	  "ORDER BY rc_timestamp DESC LIMIT {$limit}";
 	$res = wfQuery( $sql, $fname );
 
