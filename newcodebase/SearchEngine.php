@@ -7,7 +7,10 @@ class SearchEngine {
 
 	function SearchEngine( $text )
 	{
-		$this->mUsertext = $text;
+		# We display the query, so let's strip it for safety
+		#
+		$lc = SearchEngine::legalSearchChars() . "()";
+		$this->mUsertext = preg_replace( "/[^{$lc}]/", " ", $text );
 		$this->mSearchterms = array();
 	}
 
@@ -111,8 +114,7 @@ class SearchEngine {
 	function parseQuery()
 	{
 		$lc = SearchEngine::legalSearchChars() . "()";
-		$q = preg_replace( "/[^{$lc}]/", " ", $this->mUsertext );
-		$q = preg_replace( "/([()])/", " \\1 ", $q );
+		$q = preg_replace( "/([()])/", " \\1 ", $this->mUsertext );
 		$q = preg_replace( "/\\s+/", " ", $q );
 		$w = explode( " ", strtolower( trim( $q ) ) );
 

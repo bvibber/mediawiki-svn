@@ -287,9 +287,10 @@ and the text of $3 articles.",
 "searchnext"	=> "next $1",
 "searchlinks"	=> "View ($1) ($2) search results.",
 "showingmatches" => "Showing below <b>$1</b> matches starting with #<b>$2</b>.",
-"nonefound"		=> "<strong>Note</strong>: an unsuccessful search may be
-caused by searching for common words like \"have\" and \"from\", which are
-not indexed.",
+"nonefound"		=> "<strong>Note</strong>: unsuccessful searches are
+often caused by searching for common words like \"have\" and \"from\",
+which are not indexed, or by specifying more than one search term (only pages
+containing all of the search terms will appear in the result).",
 
 # Preferences page
 #
