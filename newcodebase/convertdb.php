@@ -10,8 +10,10 @@ set_time_limit(0);
 
 $wgDBname			= "wikidb";
 $wgDBuser			= "wikiadmin";
-$wgDBpassword		= "adminpass";
+$wgDBpassword		= "admin7399";
 $wgImageDirectory	= "/usr/local/apache/htdocs/wikiimages";
+
+renameOldTables();
 
 convertUserTable();
 convertOldTable();
@@ -79,6 +81,7 @@ function convertUserTable()
 function convertCurTable()
 {
 	$count = 0;
+    $countables = 0;
 	print "Converting CUR table.\n";
 
 	$sql = "LOCK TABLES old_cur READ, cur WRITE";
@@ -134,12 +137,20 @@ function convertCurTable()
 		if ( ( ++$count % 1000 ) == 0 ) {
 			print "$count article records processed.\n";
 		}
+		if ( 0 != $ns ) { continue; }
+		if ( 0 != $redir ) { continue; }
+		if ( false === strstr( $text, "," ) ) { continue; }
+		++$countables;
 	}
 	print "$count article records processed.\n";
 	mysql_free_result( $oldres );
 
 	$sql = "UNLOCK TABLES";
 	$newres = wfQuery( $sql );
+
+	$sql = "UPDATE site_stats SET ss_good_articles={$countables} " .
+	  "WHERE ss_row_id=1";
+	wfQuery( $sql );
 }
 
 # Convert May 2002 version of database into new format.
@@ -432,6 +443,20 @@ function indexText( $text, $ititle )
 	}
 	$text = preg_replace( "/\\s+/", " ", $text );
 	return $text;
+}
+
+function renameOldTables()
+{
+	$sql = "ALTER TABLE user RENAME TO old_user";
+	wfQuery( $sql );
+	$sql = "ALTER TABLE cur RENAME TO old_cur";
+	wfQuery( $sql );
+	$sql = "ALTER TABLE old RENAME TO old_old";
+	wfQuery( $sql );
+	$sql = "DROP TABLE IF EXISTS linked";
+	wfQuery( $sql );
+	#sql = "DROP TABLE IF EXISTS unlinked";
+	wfQuery( $sql );
 }
 
 ?>
