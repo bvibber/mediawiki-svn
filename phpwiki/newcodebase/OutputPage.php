@@ -440,7 +440,7 @@ class OutputPage {
 
 	/* private */ function subReplaceExternalLinks( $s, $protocol, $autonumber )
 	{
-		global $wgUser;
+		global $wgUser, $printable;
 
 		$unique = "4jzAfzB8hNvf4sqyO9Edd8pSmk9rE2in0Tgw3";
 		$uc = "A-Za-z0-9_\\/:.,~%\\-+&;#?!=()@\\x80-\\xFF";
@@ -483,8 +483,10 @@ class OutputPage {
 				$s .= "[{$protocol}:" . $line;
 				continue;
 			}
+			if ( $printable == "yes") $paren = " (<i>" . htmlspecialchars ( $link ) . "</i>)";
+			else $paren = "";
 			$la = $sk->getExternalLinkAttributes( $link, $text );
-			$s .= "<a href='{$link}'{$la}>{$text}</a>{$trail}";
+			$s .= "<a href='{$link}'{$la}>{$text}</a>{$paren}{$trail}";
 
 		}
 		return $s;
