@@ -42,8 +42,16 @@ class geo_params
 							{
 							if ( $key == "style" )
 								$this->styles[$c][] = $a[1] ;
-							else if ( $key == "style" )
-								$this->label_styles[$c][] = $a[1] ;
+							else if ( $key == "label" )
+								{
+								$d = explode ( ";" , str_replace ( "," , ";" , $a[1] ) ) ;
+								foreach ( $d AS $e )
+									{
+									$e = explode ( ":" , $e ) ;
+									if ( count ( $e ) < 2 ) $this->label_styles[$c][$e[0]] = "" ;
+									else $this->label_styles[$c][$e[0]] = $e[1] ;
+									}
+								}
 							}
 						}
 					}
@@ -212,14 +220,20 @@ class geo_params
 			$x = $l['x'] ;
 			$y = $l['y'] ;
 			$s = "<text style='" ;
-			$fs = $l['font-size'] ;
-			if ( $fs == "medium" ) $fs = $medium_font_size ;
-			if ( $fs == "" ) $fs = $medium_font_size * 8 / 10 ;
 			
-			$p = array() ;
+			$p = array() ; # Default styles
 			$p["text-anchor"] = "middle" ;
 			$p["fill-opacity"] = "0.7" ;
-			$p["font-size"] = "{$fs}pt" ;
+			$p["font-size"] = "medium" ;
+
+			if ( isset ( $l['style'] ) )
+				{
+				foreach ( $l['style'] AS $k => $v ) # Chosen style overrides default style
+					$p[$k] = $v ;
+				}
+
+			if ( $p['font-size'] == "medium" ) $p['font-size'] = $medium_font_size . "pt" ;
+			
 			foreach ( $p AS $pk => $pv )
 				$s .= "{$pk}: {$pv}; " ;
 			
@@ -413,6 +427,7 @@ class geo
 			}
 		else if ( $command == "polygon" || $command == "polyline" )
 			{
+			if ( !$this->draw_this ( $params ) ) return $ret ;
 			$data = array () ;
 			$values = explode ( "," , $values ) ;
 			foreach ( $values AS $v )
@@ -444,6 +459,7 @@ class geo
 
 	function add_label ( $x , $y , &$params )
 		{
+		if ( !$this->label_this ( $params ) ) return ;
 		$text = $this->get_specs ( "name" , $params->languages ) ;
 		if ( $text == "" ) return "" ; # No label found
 		$text = utf8_decode ( $this->data[$text][0] ) ;
@@ -452,17 +468,19 @@ class geo
 		$y = floor ( $y ) ;
 		
 		$a = array ( "text" => $text , "x" => $x , "y" => $y , "font-size" => "medium" ) ;
+		$a['style'] = $this->get_label_style ( &$params ) ;
+#		print implode ( "," , $a['style'] ) . "\n" ;
 		$params->add_label ( $a ) ;
 		}
 	
 	function draw ( &$params )
 		{
-		array_push ( $params->object_tree , $this->id.";" /*. $this->get_current_type ( $params )*/ ) ; # This needs tweaking
+		array_push ( $params->object_tree , $this->id ) ;
 		$ret = "" ;
 		$this->xsum = $this->ysum = $this->count = 0 ;
 		$match = $this->get_specs ( "region" , array ( "political" ) ) ;
 		
-		if ( $this->get_current_type ( $params ) == "city" )
+		if ( $this->draw_this ( $params ) AND $this->get_current_type ( $params ) == "city" )
 			{
 			$b = $this->get_data ( $params ) ;
 			$b = $b[0] ; # Only one point for cities...
@@ -484,6 +502,58 @@ class geo
 			$this->add_label ( $x , $y , $params ) ;
 			}
 		array_pop ( $params->object_tree ) ;
+		return $ret ;
+		}
+
+	function draw_this ( &$params )
+		{
+		return true ;
+		}
+
+	function label_this ( &$params )
+		{
+		$a = $this->my_matches ( $params->label_styles , $params ) ;
+		if ( count ( $a ) > 0 ) return true ;
+		return false ;
+		}
+
+	function is_in_list ( $key , &$params )
+		{
+		$a = explode ( "[" , $key , 2 ) ;
+		if ( count ( $a ) < 2 ) return false ;
+		$sobj = trim ( array_shift ( $a ) ) ;
+		$stype = trim ( str_replace ( "]" , "" , array_shift ( $a ) ) ) ;
+		$type = $this->get_current_type ( $params ) ;
+#		print "I am a {$type} within " . implode ( "," , $params->object_tree ) . " and compared to a {$stype} of {$sobj}\n" ;
+		if ( in_array ( $sobj , $params->object_tree ) AND $stype == $type ) return true ;
+		return false ;
+		}
+
+	function get_label_style ( &$params )
+		{
+		$matches = $this->my_matches ( $params->label_styles , $params ) ;
+		$ret = array () ;
+		foreach ( $matches AS $m )
+			{
+			$a = $params->label_styles[$m] ;
+			foreach ( $a AS $k => $v )
+				{
+				$k = trim ( $k ) ;
+				if ( $k != "" ) $ret[$k] = $v ;
+				}
+			}
+		return $ret ;
+		}
+
+	function my_matches ( &$haystack , &$params )
+		{
+		$ret = array () ;
+		foreach ( $haystack AS $k => $v )
+			{
+			if ( $k == $this->id OR $this->is_in_list ( $k , $params ) )
+				$ret[] = $k ;
+			}
+#		print implode ( "," , $ret ) . "\n" ;
 		return $ret ;
 		}
 	}
