@@ -322,7 +322,7 @@
 "sitetitle"  => "<span style=\"text-transform: none\">Wikipedia NL</span>", # Okay, HERE's an ugly hack. There should be a cleaner way to do this.
 "sitesubtitle" => "De vrije encyclopedie",
 "retrievedfrom" => "Afkomstig van Wikipedia NL, de Vrije Encyclopedie. \"$1\"",
-"newmessages" => "Er zijn ",
+"newmessages" => "Er zijn $1.",
 "newmessageslink" => "nieuwe berichten voor u",
 
 # Main script and global functions
