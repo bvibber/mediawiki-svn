@@ -58,7 +58,6 @@ function getStandardHeader () {
 	if ( $action == "view_old_article" or $action == "view_old_source" ) $hversion = " (Older version #$whichOldVersion)" ;
 
 	$userName = getCurrentUserText () ;
-
 	$hpre = "<table width=\"100%\"><tr><td valign=top><font size=\"+3\">" ;
 	$hpost  = "</font></td><td align=right nowrap><font color=red>User : $userName</font><br>";
 	$hpost .= "</td><td rowspan=3 width=1><a href=\"$PHP_SELF/call\"><img border=0 src=\"wiki.jpg\"></a></td></tr>";
