@@ -1165,8 +1165,8 @@ class LanguageEo extends Language {
 		# But that doesn't work right in a UTF-8 locale
 		global $wikiUpperChars, $wikiLowerChars;
         return preg_replace (
-        	"/^([\x00-\x7f]|[\xc0-\xff][\x80-\xbf]*)/e",
-        	"strtr ( \"\\" , \$wikiUpperChars )",
+        	'/^([\x00-\x7f]|[\xc0-\xff][\x80-\xbf]*)/e',
+        	'strtr ( "$1" , $wikiUpperChars )',
         	$string );
 	}
 	
