@@ -37,8 +37,8 @@ function recentChangesLayout ( &$arr ) {
             $xyz->SetTitle ( $u ) ;
             $u = "<a href=\"".wikiLink("$wikiUser:$xyz->url")."\">$u</a>" ;
         } elseif ( !$isSysop ) {
-            $u = explode ( "." , $u ) ;
-            $u = $u[0].".".$u[1].".".$u[2].".xxx" ;
+	    if ( preg_match ( '/^(\d{0,3}\.\d{0,3}\.\d{0,3}\.)(\d{0,3})$/' , $u , $regs ) )
+	    	$u = $regs[1]."xxx" ;
 #           $u = "<font color=red>$u</font>" ; # IPs in red, deactivated
         } else {
 		$u .= $s->appendix ;
