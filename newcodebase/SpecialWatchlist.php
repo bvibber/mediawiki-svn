@@ -39,11 +39,18 @@ function wfSpecialWatchlist()
 		return;
 	}
 
+#	$sql = "SELECT DISTINCT
+#  cur_id,cur_namespace,cur_title,cur_comment,
+#  cur_user,cur_user_text,cur_timestamp,cur_minor_edit,cur_is_new
+#  FROM cur,watchlist
+#  WHERE wl_user={$uid} AND wl_namespace=cur_namespace & (~1) AND wl_title=cur_title
+#  ORDER BY cur_timestamp DESC {$dolimit}";
 	$sql = "SELECT DISTINCT
   cur_id,cur_namespace,cur_title,cur_comment,
   cur_user,cur_user_text,cur_timestamp,cur_minor_edit,cur_is_new
   FROM cur,watchlist
-  WHERE wl_user={$uid} AND wl_namespace=cur_namespace & (~1) AND wl_title=cur_title
+  WHERE wl_user={$uid} AND wl_title=cur_title
+        AND (cur_namespace=wl_namespace OR cur_namespace=wl_namespace+1)
   ORDER BY cur_timestamp DESC {$dolimit}";
 	$res = wfQuery( $sql, $fname );
 	if ( wfNumRows( $res ) == 0 ) {
