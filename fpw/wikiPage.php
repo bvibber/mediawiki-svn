@@ -26,6 +26,7 @@ class WikiPage extends WikiTitle {
     # This loads an article from the database, or calls a special function instead (all pages with "special:" namespace)
     function load ( $t , $doRedirect = true ) {
         global $action , $user , $wikiNoSuchSpecialPage , $wikiAllowedSpecialPages , $diff ;
+	global $wikiErrorPageTitle , $wikiErrorMessage ;
 	if ( $diff == "yes" ) $doRedirect = false ;
         if ( $doRedirect ) $this->backLink = "" ;
         $updateCounter = "" ;
@@ -62,13 +63,12 @@ class WikiPage extends WikiTitle {
         $thisVersion = "" ;
         $this->params = array () ;
         global $oldID , $version , $wikiOldVersion , $wikiDescribePage , $wikiRedirectFrom ;
-    	global $wikiErrorPageTitle , $wikiErrorMessage ;
         if ( isset ( $oldID ) ) { # an old article version
             $sql = "SELECT * FROM old WHERE old_id=$oldID" ;
             $result = mysql_query ( $sql , $connection ) ;
 	    if ( ! $result ) {
-	    	$this->canBeCached = false ;
-		$this->SetTitle ( $wikiErrorTitle ) ;
+	    	# Fatal database error!
+	    	$this->special ( $wikiErrorPageTitle ) ;
 		$this->contents = str_replace ( "$1" , htmlspecialchars ( mysql_error() ) , $wikiErrorMessage ) ;
 	    	return ;
 		}
@@ -87,8 +87,8 @@ class WikiPage extends WikiTitle {
                     WHERE cur_title=\"".$this->secureTitle."\"" ;
             $result = mysql_query ( $sql , $connection ) ;
 	    if ( ! $result ) {
-	    	$this->canBeCached = false ;
-		$this->SetTitle ( $wikiErrorTitle ) ;
+	    	# Fatal database error!
+	    	$this->special ( $wikiErrorPageTitle ) ;
 		$this->contents = str_replace ( "$1" , htmlspecialchars ( mysql_error() ) , $wikiErrorMessage ) ;
 	    	return ;
 		}
@@ -136,6 +136,7 @@ class WikiPage extends WikiTitle {
     function special ( $t ) {
         $this->title = $t ;
         $this->isSpecialPage = true ;
+	$this->canBeCached = false ;
         }
 
 /*
