@@ -906,7 +906,7 @@ to perform this function on.",
 "blockip"		=> "Block IP address",
 "blockiptext"	=> "Use the form below to block write access
 from a specific IP address.
-This should be done only only to prevent valndalism, and in
+This should be done only only to prevent vandalism, and in
 accordance with [[Wikipedia:Policy|Wikipedia policy]].
 Fill in a specific reason below (for example, citing particular
 pages that were vandalized).",
