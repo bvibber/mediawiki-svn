@@ -39,7 +39,9 @@
  "justify" => "Paragrafen uitvullen",
  "hideminor" => "Kleine wijzigingen verbergen in recente wijzigingen",
  "numberheadings" => "Koppen automatisch nummeren",
- "rememberpassword" => "Wachtwoord onthouden"
+ "rememberpassword" => "Wachtwoord onthouden",
+	"editwidth" => "Edit box has full width",
+    "editondblclick" => "Edit pages on double click (JavaScript)"
 );
 
 /* private */ $wgLanguageNamesNl = array(
