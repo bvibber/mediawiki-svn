@@ -21,6 +21,7 @@ $wikiRecentChangesText = "Track the most recent changes to Wikipedia on this pag
 $wikiMetaDescription = "$1... Read more here at wikipedia, the free encyclopedia!" ;
 
 # Used in header/footer
+$wikiWikipediaHelp = "wikipedia:Help" ;
 $wikiMainPageTitle = "Wikipedia : The free encyclopedia" ; # This is the title that is displayed on the main page
 $wikiHeaderSubtitle = "The free encyclopedia" ;
 $wikiArticleSubtitle = "From Wikipedia, the free encyclopedia." ;
@@ -42,7 +43,7 @@ $wikiNamespaceTalk = "$1 Talk" ;
 $wikiWikipedia = "wikipedia" ;
 $wikiAllowedNamespaces = array ( $wikiWikipedia , $wikiTalk , $wikiUser , "" , "wikipedia $wikiTalk" , "$wikiUser $wikiTalk" ) ;
 $wikiSkins = array ( "Normal" => "" , "Star Trek" => "Star Trek" , "Nostalgia" => "Nostalgy" , "Cologne Blue" => "Cologne Blue" ) ;
-$wikiMySettings = "My Settings" ;
+$wikiMySettings = "My settings" ;
 $wikiMyself = "Myself" ;
 $wikiShortPages = "Short Pages";
 $wikiLongPages = "Long Pages" ;
@@ -70,6 +71,8 @@ $wikiTopics = "Topics" ;
 $wikiWikipediaFAQ = "wikipedia:FAQ" ;
 
 # Editing
+$wikiEditingHelp = "Editing help" ;
+$wikiWikipediaEditingHelp = "wikipedia:How does one edit a page" ;
 $wikiEditTitle = "Editing $1" ;
 $wikiCannotEditPage = "<h3>You cannot edit this page!</h3>" ;
 $wikiEditConflictMessage = "<h1>Edit conflict!</h1>\n<b>Someone saved this page after you started editing. The top textbox contains the saved text. Only the text in the top textbox will be saved.</b><br>\nScroll down to see your edited text and the differences between the two versions.<br>\n" ;
@@ -408,6 +411,7 @@ $wikiWantedText = "'''These articles don't exist, but other articles link to the
 $wikiWantedToggleNumbers = "Click here to toggle the display of page titles starting with numbers (currently $1)" ;
 $wikiWantedLine = "$1 is wanted by <b>$2</b> articles <nowiki>(see the <a href=\"$3\">pages that link to \"$4\"</a></nowiki>)" ;
 $wikiLastChange = "Last edited $1" ;
+$wikiShowLastChange = "Show last change" ;
 $wikiPopularPages = "Most popular" ;
 $wikiPopularTitle = "Most Popular Pages" ;
 $wikiRefreshThisPage = "Refresh this page" ;
