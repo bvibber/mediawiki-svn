@@ -54,7 +54,7 @@
         "rememberpassword" => "Kom ihåg lösenord till nästa besök",
         "editwidth"        => "Redigeringsboxen har full bredd",
         "editondblclick"   => "Redigera sidor med dubbelklick (JavaScript)",
-        "watchdefault"     => "&OUML;vervaka nya och ändrade artiklar",
+        "watchdefault"     => "Övervaka nya och ändrade artiklar",
         "minordefault"     => "Markera som standard alla ändringer som mindre"
 );
 
@@ -273,7 +273,7 @@ $wgValidSpecialPagesSv = array(
 
 /* private */ $wgDeveloperSpecialPagesSv = array(
         "Lockdb"        => "Skrivskydda databasen",
-        "Unlockdb"      => "&ARING;terställ skrivning till databasen",
+        "Unlockdb"      => "Återställ skrivning till databasen",
         "Debug"         => "Debuginformation"
 );
 
@@ -483,7 +483,7 @@ Du lovar oss också att du skrev texten själv, eller kopierade från en
 public domain eller liknande fri resurs.
 
 <strong>
-LÄGG ALDRIG UT MATERIAL HÄR SOM SKYDDAS AV UPPHOVSRÄTTSLAGEN UTAN F&OUML;RFATTARENS TILL&ARING;TELSE!
+LÄGG ALDRIG UT MATERIAL HÄR SOM SKYDDAS AV UPPHOVSRÄTTSLAGEN UTAN FÖRFATTARENS TILLÅTELSE!
 </strong>", //'"
 
 
@@ -556,7 +556,7 @@ Ditt IP-nummer är $2.",
 "changepassword"        => "Byt lösenord",
 "skin"                  => "Utseende",
 "saveprefs"             => "Spara inställningar",
-"resetprefs"            => "&ARING;terställ inställningar",
+"resetprefs"            => "Återställ inställningar",
 "oldpassword"           => "Gammalt lösenord",
 "newpassword"           => "Nytt lösenord",
 "retypenew"             => "Skriv om nytt lösenord",
@@ -640,7 +640,7 @@ wfLocalUrlE( "Wikipedia:Upload_log" ) . "\">uppladdnings logg</a>.
 <p>Använd formuläret nedan för att ladda upp nya filer, som 
 du kan illustrera dina artiklar med.
 På de flesta webbläsare kommer du att se en \"Browse...\" knapp eller en 
-\"&OUML;ppna...\" knapp, som startar ditt operativsystems dialogruta för att öppna filer. När du valt en fil kommer namnet på den filen att visas i textfältet brevid knappen. Du måste även kryssa för rutan, för att du inte gör något som strider mot upphovsrätten av filen som laddas upp.
+\"Öppna...\" knapp, som startar ditt operativsystems dialogruta för att öppna filer. När du valt en fil kommer namnet på den filen att visas i textfältet brevid knappen. Du måste även kryssa för rutan, för att du inte gör något som strider mot upphovsrätten av filen som laddas upp.
 Tryck på \"Upload\" knappen för att ladda upp filen.
 Detta kan dröja ett tag om du har en långsam internetförbindelse.
 <p>Formaten på filerna ska helst vara JPEG för bilder, PNG för ritningar 
@@ -747,7 +747,7 @@ till deras i $1. Redirects och undersidor visas <i>inte</i>.",
 "unusedimages"          => "Oanvända bilder",
 "popularpages"          => "Populära sidor",
 "nviews"                => "$1 visningar",
-"wantedpages"           => "&OUML;nskelista",
+"wantedpages"           => "Önskelista",
 "nlinks"                => "$1 länkar",
 "allpages"              => "Alla sidor",
 "randompage"            => "Slumpartikel",
@@ -819,7 +819,7 @@ och sidan kommer att markeras med <b>fet stil</b> i <a href=\"" .
 \"Ta bort övervakning\" ute i sidan.",
 "removedwatch"          => "Borttagen från övervakningslista",
 "removedwatchtext"      => "Sidan \"$1\" har blivit borttagen från din övervakningslista",
-"watchthispage"         => "&OUML;vervaka sida",
+"watchthispage"         => "Övervaka sida",
 "unwatchthispage"       => "Stoppa övervakning",
 "notanarticle"          => "Inte en artikel",
 
@@ -846,23 +846,23 @@ De tidsangivelser som anges följer serverns klocka (UTC).
 </ul>
 ",
 "deletionlog"           => "borttagningslogg",
-"reverted"              => "&ARING;tergått till yngre version",
+"reverted"              => "Återgått till yngre version",
 "deletecomment"         => "Anledningen till borttagning",
-"imagereverted"         => "&ARING;terställandet av nyare artikelversion lyckades",
+"imagereverted"         => "Återställandet av nyare artikelversion lyckades",
 
 // Undelete
 //
-"undelete"              => "&ARING;terställ borttagna sidor",
+"undelete"              => "Återställ borttagna sidor",
 "undeletepage"          => "Visa och återställ borttagna sidor",
 "undeletepagetext"      => "Följande sidor har blivit borttagna, men är fortfarande i arkivet och kan användas vid återställning.
 Arkivet kan ibland rensas på gamla versioner.",
-"undeletearticle"       => "&ARING;terställ borttagen artikel",
+"undeletearticle"       => "Återställ borttagen artikel",
 "undeleterevisions"     => "$1 versioner arkiverade",
 "undeletehistory"       => "Om du återställer sidan kommer allt tidigare versioner att sparas i versionshanteraren.
 Om en ny sida med samma namn har blivit skapad sedan borttagningen så kommer den återställda versionen att
 hamna i den äldre versionshanteraren och den senaste versionen av sidan kommer inte blir automatiskt ersatt.",
 "undeleterevision"      => "Tog bort version $1",
-"undeletebtn"           => "&ARING;terställd!",
+"undeletebtn"           => "Återställd!",
 "undeletedarticle"      => "återställd \"$1\"",
 "undeletedtext"         => "Artikeln [[$1]] har blivit återställd
 Se [[Wikipedia:Borttagningslogg]] för en lista över nyligen gjorda borttagningar och återställningar",
