@@ -7,9 +7,9 @@
  
  
  
-                          MANIFEST
+                      WikiTeX MANIFEST
  
-      Peter Danenberg <danenberg at mitdasein dot com>
+         Peter Danenberg <danenberg@mitdasein.com>
  
  
 1.  Distribution
@@ -116,14 +116,14 @@
  
  
  
- 
- 
- 
- 
- 
- 
- 
- 
+-----------
+WikiTeX: expansible LaTeX module for MediaWiki
+Copyright (C) 2004  Peter Danenberg
+  WikiTeX   is   free  software;  you  can  redis-
+tribute it and/or modify it under the terms of the
+GNU   General   Public License as published by the
+Free Software Foundation; either version 2 of  the
+License, or (at your option) any later version.
  
  
  
