@@ -97,6 +97,7 @@ class SkinCologneBlue extends Skin {
 	}
 	function sysLinks()
 	{
+		global $wgUser;
 		$s = "" .
 		  $this->makeKnownLink( wfMsg( "mainpage" ), wfMsg( "mainpage" ) )
 		  . " | " .
@@ -107,7 +108,7 @@ class SkinCologneBlue extends Skin {
 		  $this->makeKnownLink( wfMsg( "faqpage" ), wfMsg("faq") )
 		  . " | " .
 		  $this->specialLink( "specialpages" ) . " | " .
-		  $this->specialLink( "userlogout" );
+		  $this->specialLink( $wgUser->getID() ? "userlogout" : "userlogin" ) ;
 		return $s;
 	}
 
