@@ -297,7 +297,7 @@ $wgEditEncoding		= "x";
 "returnto"		=> "Revenu al $1.",
 "fromwikipedia"	=> "El Vikipedio, la libera enciklopedio.",
 "whatlinkshere"	=> "Paĝoj kiuj ligas ĉi tien",
-"help"			=> "Helpu",
+"help"			=> "Helpo",
 "search"		=> "Serĉu",
 "history"		=> "Malnovaj versioj",
 "printableversion" => "Presebla versio", 
@@ -325,7 +325,7 @@ Vidu $1.",
 "go"			=> "Ek!", #FIXME
 "ok"			=> "O kej!", #FIXME
 "sitetitle"		=> "Vikipedio", # Wikipedia
-"sitesubtitle"	=> "Vikipedio: La Libera Enciklopedio",
+"sitesubtitle"	=> "La Libera Enciklopedio",
 "retrievedfrom" => "Citita el \"$1\"", #FIXME: Aperas post presita paĝo
 
 # Main script and global functions
@@ -994,6 +994,7 @@ class LanguageEo extends Language {
 	function getDefaultUserOptions () {
 		$opt = Language::getDefaultUserOptions();
 		$opt["altencoding"] = 0;
+		$opt["skin"] = 2;
 		return $opt;
 	}
 
