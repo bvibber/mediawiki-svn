@@ -13,7 +13,7 @@ include_once("LanguageUtf8.php");
 /* private */ $wgNamespaceNamesSq = array(
 	-1	=> "Speciale",
 	0	=> "",
-	1	=> "Diskuto",
+	1	=> "Diskutim",
 	2	=> "Përdoruesi",
 	3	=> "Përdoruesi_diskutim",
 	4	=> $wgMetaNamespace,
@@ -92,8 +92,8 @@ include_once("LanguageUtf8.php");
 	"Userlogin"		=> "",
 	"Userlogout"	=> "",
 	"Preferences"	=> "Vendos preferencat e mia",
-	"Watchlist"		=> "Lista mbikqyrëse e ime",
-	"Recentchanges" => "Ndryshimet e fundit te faqeve",
+	"Watchlist"		=> "Lista mbikqyrëse",
+	"Recentchanges" => "Ndryshimet e fundit",
 	"Upload"		=> "Jep figura",
 	"Imagelist"		=> "Lista e figurave",
 	"Listusers"		=> "Përdorues të rregjistruar",
@@ -110,7 +110,7 @@ include_once("LanguageUtf8.php");
 	"Ancientpages"	=> "Artikuj më të vjetër",
 	"Allpages"		=> "Të gjitha faqet sipas emrave",
 
-	"Ipblocklist"	=> "Përdoruesit dhe IP-të e bllokuar",
+	"Ipblocklist"	=> "Përdoruesit dhe IP-të e bllokuara",
 	"Maintenance" => "Faqe mirëmbajtëse",
 	"Specialpages"  => "",
 	"Contributions" => "",
@@ -130,7 +130,7 @@ include_once("LanguageUtf8.php");
 /* private */ $wgDeveloperSpecialPagesSq = array(
 	"Lockdb"		=> "Bëje rregjistrin vetëm për tu lexuar",
 	"Unlockdb"		=> "Lejo mundësinë e shrimit në rregjistër",
-	"Debug"			=> "Nxir yçklat"
+	"Debug"			=> "Raporto yçkla"
 );
 
 /* private */ $wgAllMessagesSq = array(
@@ -139,7 +139,7 @@ include_once("LanguageUtf8.php");
 #
 "linktrail"		=> "/^([a-z]+)(.*)\$/sD",
 "mainpage"		=> "Faqja Kryesore",
-"mainpagetext"	=> "Uiki software u instalua me sukses.",
+"mainpagetext"	=> "Wiki software u instalua me sukses.",
 "about"			=> "Rreth",
 "aboutwikipedia" => "Rreth $wgSitename",
 "aboutpage"		=> "$wgMetaNamespace:Rreth",
@@ -147,12 +147,12 @@ include_once("LanguageUtf8.php");
 "helppage"		=> "$wgMetaNamespace:Ndihmë",
 "wikititlesuffix" => "$wgSitename",
 "bugreports"	=> "Raporto yçkla",
-"bugreportspage" => "$wgMetaNamespace:Raporte_yçklash",
+"bugreportspage" => "$wgMetaNamespace:Raporto_yçkla",
 "faq"			=> "Pyetje e Përgjigje",
 "faqpage"		=> "$wgMetaNamespace:Pyetje_e_Përgjigje",
 "edithelp"		=> "Ndhimë për redaktim",
 "edithelppage"	=> "$wgMetaNamespace:Si_redaktohet_një_faqe",
-"cancel"		=> "Harro",
+"cancel"		=> "Harroje",
 "qbfind"		=> "Kërko",
 "qbbrowse"		=> "Shfleto",
 "qbedit"		=> "Redakto",
@@ -160,37 +160,37 @@ include_once("LanguageUtf8.php");
 "qbpageinfo"	=> "Informacion mbi faqen",
 "qbmyoptions"	=> "Opsionet e mia",
 "mypage"		=> "Faqja ime",
-"mytalk"		=> "iskutimet e mia",
+"mytalk"		=> "Diskutimet e mia",
 "currentevents" => "Evenimente të kohës",
 "errorpagetitle" => "Gabim",
 "returnto"		=> "Kthehu tek $1.",
-"fromwikipedia"	=> "Nga $wgSitename, enciklopedia e lirë.", # FIXME
-"whatlinkshere"	=> "Faqe që lidhen këtu",
+"fromwikipedia"	=> "Nga $wgSitename, Enciklopedia e Lirë.", # FIXME
+"whatlinkshere"	=> "Lidhjet këtu ",
 "help"			=> "Ndihmë",
 "search"		=> "Kërko",
 "go"		=> "Shko",
 "history"		=> "Histori e faqes",
 "printableversion" => "Version i shtypshëm",
-"editthispage"	=> "Redakto këtë faqe",
-"deletethispage" => "Grise këtë faqe",
-"protectthispage" => "Bëje faqen të paredaktueshme",
-"unprotectthispage" => "Bëje faqen të redaktueshme",
+"editthispage"	=> "Redakto faqen",
+"deletethispage" => "Grise faqen",
+"protectthispage" => "Mbroje faqen",
+"unprotectthispage" => "Liroje faqen",
 "newpage" => "Faqe e re",
-"talkpage"		=> "Diskuto këtë faqe",
-"postcomment"   => "Bëj një koment",
+"talkpage"		=> "Diskutim mbi faqen",
+"postcomment"   => "Bëj koment",
 "articlepage"	=> "Shiko artikullin",
 "subjectpage"	=> "Shiko subjektin", # For compatibility
-"userpage" => "Shiko faqen e përdoruesit",
+"userpage" => "Shiko faqen",
 "wikipediapage" => "Shiko faqen meta",
 "imagepage" => 	"Shiko faqen e figurës",
 "viewtalkpage" => "Shiko diskutimin",
 "otherlanguages" => "Gjuhë të tjera",
 "redirectedfrom" => "(Ridrejtuar nga $1)",
-"lastmodified"	=> "Kjo faqe ëshë ndryshuar për herë te fundit më $1.",
+"lastmodified"	=> "Kjo faqe është ndryshuar për herë te fundit më $1.",
 "viewcount"		=> "Kjo faqe është parë $1 herë.",
 "gnunote" => "I gjithë teksti është publikuar sipas kushteve të <a class=internal href='/wiki/GNU_FDL'>GNU Free Documentation License</a>.",
 "printsubtitle" => "(Nga http://sq.wikipedia.org)",
-"protectedpage" => "Faqe e paredaktueshme",
+"protectedpage" => "Faqe e mbrojtur",
 "administrators" => "$wgMetaNamespace:Administruesit",
 "sysoptitle"	=> "Nevojitet titulli sysop",
 "sysoptext"		=> "Veprimi që kerkove mund të bëhet vetëm nga një përdorues me titullin \"sysop\". Shiko $1.",
@@ -198,9 +198,9 @@ include_once("LanguageUtf8.php");
 "developertext"	=> "Veprimi që kërkove mund bëhet vetëm nga një përdorues me titullin \"zhvillues\". Shiko $1.",
 "nbytes"		=> "$1 bytes",
 "go"			=> "Shko",
-"ok"			=> "Dakort",
+"ok"			=> "Shko",
 "sitetitle"		=> $wgSitename,
-"sitesubtitle"	=> "Enciklopedia e lirë",
+"sitesubtitle"	=> "Enciklopedia e Lirë",
 "retrievedfrom" => "Marrë nga \"$1\"",
 "newmessages" => "Ti ke $1.",
 "newmessageslink" => "mesazhe të reja",
@@ -213,12 +213,12 @@ include_once("LanguageUtf8.php");
 
 # Main script and global functions
 #
-"nosuchaction"	=> "Nuk existon ky veprim",
+"nosuchaction"	=> "Nuk ekziston ky veprim",
 "nosuchactiontext" => "Veprimi i caktuar nga URL nuk
-njihet nga uiki software",
-"nosuchspecialpage" => "Nuk existon kjo faqe",
+njihet nga wiki software",
+"nosuchspecialpage" => "Nuk ekziston kjo faqe",
 "nospecialpagetext" => "Ti ke kërkuar një faqe speciale që nuk
-njihet nga uiki software.",
+njihet nga wiki software.",
 
 # General errors
 #
@@ -236,7 +236,7 @@ Pyetja e fundit qe ti i bëre rregjistrit ishte:
 \"$1\"
 nga funksioni \"$2\".
 MySQL kthehu gabimin \"$3: $4\".\n",
-"noconnect"		=> "Të kërkojmë falje! Difekt teknik, rifillojmë së shpejti.",
+"noconnect"		=> "Të kërkoj falje! Difekt teknik, rifillojmë së shpejti.",
 "nodb"			=> "Nuk mund të zgjidhte rregjistrin $1",
 "cachederror"	=> "Kjo është një kopje e faqes së kërkuar dhe mund të jetë e vjetër.",
 "readonly"		=> "Rregjistri i bllokuar",
@@ -250,11 +250,11 @@ Administruesi i cili e bllokoi dha këtë arsye:
 "missingarticle" => "Rregjistri nuk e gjeti tekstin e faqes
 që duhet të kishte gjetur, të quajtur \"$1\".
 
-<p>This is usually caused by following an outdated diff or history link to a
-page that has been deleted.
+<p>Kjo ndodh zakonisht kur ndjek një ndryshe ose histori lidhje tek një
+faqe që është grisur.
 
-<p>If this is not the case, you may have found a bug in the software.
-Please report this to an administrator, making note of the URL.",
+<p>Në qoftë se ky nuk është rasti, atëherë ti mund të kesh gjetur një yçkël në softuerin.
+Tregoja këtë përmbledhje një administruesi, duke shënuar edhe URL-in.",
 "internalerror" => "Gabim i brëndshëm",
 "filecopyerror" => "Nuk mundi të kopjojë skedarin \"$1\" tek \"$2\".",
 "filerenameerror" => "Nuk mundi të ndërrojë emrin e skedarit \"$1\" në \"$2\".",
@@ -266,19 +266,19 @@ Please report this to an administrator, making note of the URL.",
 "cannotdelete"	=> "Nuk mundi të grisi këtë faqe ose figurë të dhënë. (Ka mundësi të jetë grisur nga dikush tjeter.)",
 "badtitle"		=> "Titull i keq",
 "badtitletext"	=> "Titulli i faqes që kërkove nuk është ishte saktë, ishte bosh, ose
-ishte një lidhje gabim me një uiki titull internacional.",
-"perfdisabled" => "Të kërkojmë falje! Ky veprim është bllokuar perkohësisht
+ishte një lidhje gabim me një titull wiki internacional.",
+"perfdisabled" => "Të kërkoj falje! Ky veprim është bllokuar përkohsisht
 sepse e ngadalëson rregjistrin aq shumë sa nuk e përdor dot njeri tjetër.",
 "perfdisabledsub" => "Kjo është nje kopje e ruajtur nga $1:",
 
 # Login and logout pages
 #
 "logouttitle"	=> "Përdoruesi doli",
-"logouttext"	=> "Tani di ke dalë jashtë.
+"logouttext"	=> "Tani ti ke dalë jashtë.
 Mund të vazhdosh të përdorësh $wgSitename anonimisht, ose mund të hysh brënda
-përsëri me emrin që kishe ose me nje emër tjetër.\n",
+përsëri me emrin që kishe ose me një emër tjetër.\n",
 
-"welcomecreation" => "<h2>Welcome, $1!</h2><p>Llogaria jote ështe hapur.
+"welcomecreation" => "<h2>Mirë se erdhe, $1!</h2><p>Llogaria jote ështe hapur.
 Mos harro të vendosësh preferencat e tua të uikipedias.",
 
 "loginpagetitle" => "Hyrje përdoruesi",
@@ -306,7 +306,7 @@ ta dergojme tek adresa që na dhe.<br>\n",
 "youremail"		=> "Adresa e email-it*",
 "yournick"		=> "Nofka jote (për firmosje)",
 "emailforlost"	=> "* Futja e email-it nuk është e detyrueshme. Por lejon përdorues të tjerë
-të të kontaktojnë nëpërmjet faqes pa u treguar adresen, gjithashtu kjo adrese
+të të kontaktojnë nëpërmjet faqes pa u treguar adresën, gjithashtu kjo adresë
 është e dobishme n.q.s. harron fjalëkalimin",
 "loginerror"	=> "Gabim hyrje",
 "noname"		=> "Nuk ke dhënë një emër të saktë.",
@@ -331,7 +331,7 @@ Hyni përsëri mbasi ta kesh marrë.",
 "subject"		=> "Subjekt/Titull",
 "minoredit"		=> "Ky është një redaktim i vogël",
 "watchthis"		=> "Mbikqyr këtë faqe",
-"savearticle"	=> "Rregjistro ndryshimin",
+"savearticle"	=> "Kryej ndryshimin",
 "preview"		=> "Parashiko",
 "showpreview"	=> "Trego parashikimin",
 "blockedtitle"	=> "Përdoruesi është bllokuar",
@@ -339,15 +339,15 @@ Hyni përsëri mbasi ta kesh marrë.",
 Arsyeja e dhënë është kjo:<br>''$2''<p>Mund të kontaktosh $1 ose një nga
 [[$wgMetaNamespace:Administrators|administruesit]] e tjerë për të diskutuar bllokimin.
 
-Vë re, nuk mund të përdorësh \"dërgoji email këtij përdoruesi\" n.q.s. nuk ke një adresë të saktë 
-të rregjistruar në [[Special:Preferences|preferencat e përdoruesit]].
+Vë re, nuk mund të përdorësh \"dërgoji email këtij përdoruesi\" n.q.s. nuk ke një adresë të saktë
+të rregjistruar në [[Speciale:Preferencat|preferencat e përdoruesit]].
 
 Adresa e IP-së që ke është $3. Na e jep këtë adresë në çdo ankesë.
 
 ==Shënim për përdoruesit e AOL-it==
 Për shkak të vandalizmeve të një përdoruesit të AOL-it, Uikipedia shpesh bllokon AOL ndërmjetse. Për fat të keq, një ndërmjetse shërbyese mund
 
-të jetë duke u përdorur nga një numër i madh njerëzish, prandaj shpesh disa përdorues të pafajshëm të AOL-its bllokohen. Të kërkojmë ndjesë për 
+të jetë duke u përdorur nga një numër i madh njerëzish, prandaj shpesh disa përdorues të pafajshëm të AOL-its bllokohen. Të kërkoj ndjesë për
 
 çdo problem që ka ndodhur.
 
@@ -355,28 +355,28 @@ Në qoftë se kjo të ndodh ty, të lutem njoftoni një administrues duke përdo
 ",
 "newarticle"	=> "(I Ri)",
 "newarticletext" =>
-"Ke ndjekur një lidhje tek një faqe që nuk existon akoma.
-Për të krijuar këtë faqe, fillo të shtypësh në kutinë poshtë
+"Ke ndjekur një lidhje tek një faqe që nuk ekziston akoma.
+Për ta krijuar këtë faqe, fillo të shtypësh në kutinë poshtë
 (shiko [[$wgMetaNamespace:Ndihmë|faqen ndihmuese]] për më shumë informacion).
-Në qoftë se je këtu gabimisht, thjesht shtyp butonin '''mbrapsh''' të shfletuesit tuaj.",
+Në qoftë se je këtu gabimisht, thjesht shtyp butonin '''Back''' të shfletuesit tuaj.",
 "anontalkpagetext" => "---- ''Kjo është një faqe diskutimi për një përdorues anonim i cili nuk ka hapur akoma një llogari ose nuk e përdor atë. Prandaj,
 
-neve na duhet të përdorim numrin e adresës [[IP adresë|IP]] për ta identifikuar. Kjo adresë mund të përdoret nga disa njerëz. Në qoftë se ti je 
+neve na duhet të përdorim numrin e adresës [[IP adresë|IP]] për ta identifikuar. Kjo adresë mund të përdoret nga disa njerëz. Në qoftë se ti je
 
-një përdorues anonim dhe mendon se komente kot janë drejtuar ndaj teje, Të lutem [[Speciale:Hyrje|krijo një llogari ose hyni brënda]] për të mos 
+një përdorues anonim dhe mendon se komente kot janë drejtuar ndaj teje, të lutem [[Speciale:Hyrje|krijo një llogari ose hyni brënda]] për të mos
 
 u ngatarruar me përdorues të tjerë anonim.'' ",
-"noarticletext" => "(Aktualisht, nuk ka tekst në këtë faqe)",
+"noarticletext" => "(Tani për tani, nuk ka tekst në këtë faqe)",
 "updated"		=> "(E ndryshuar)",
 "note"			=> "<strong>Shënim:</strong> ",
-"previewnote"	=> "Kini kujdes se kjo është vetëm një parashikim, nuk është ruajtur akoma!",
+"previewnote"	=> "Kini kujdes se ky është vetëm një parashikim, nuk është ruajtur akoma!",
 "previewconflict" => "Ky parashikim reflekton tekstin sipër
 kutisë së redaktimit siç do të duket kur ta ruani.",
 "editing"		=> "Duke redaktuar $1",
 "sectionedit"	=> " (seksion)",
 "commentedit"	=> " (koment)",
 "editconflict"	=> "Konflikt redaktimi: $1",
-"explainconflict" => "Dikush tjetër ka ndryshuar këtë faqe kur ti po e 
+"explainconflict" => "Dikush tjetër ka ndryshuar këtë faqe kur ti po e
 redaktoje.
 Kutija e redaktimit mësipër tregon tekstin e faqes siç ekziston tani.
 Nryshimet e tua janë treguar poshtë kutisë së redaktimit.
@@ -396,7 +396,7 @@ Në qoftë se nuk dëshiron që kontributet e tua të redaktohen pa mëshirë dh
 kudo, atëherë mos i jep këtu.<br>
 Gjithashtu, ti po na premton që i ke shkruajtur vetë këto, ose i ke kopjuar nga një
 vënd public (public domain) ose diçka e ngjashme e lirë.
-<strong>MOS JEPNI PUNE QE ESHTE NEN COPYRIGHT PA PASUR LEJE!</strong>",
+<strong>MOS JEPNI PUNIME QE JANE NEN COPYRIGHT PA PASUR LEJE!</strong>",
 "longpagewarning" => "KUJDES: Kjo faqe është $1 kilobytes e gjatë; disa
 shfletues mund të kenë probleme për të redaktuar faqe që afrohen ose janë akoma më shumë se 32kb.
 Konsidero ta ndash faqen në disa seksione më të vogla.",
@@ -404,8 +404,8 @@ Konsidero ta ndash faqen në disa seksione më të vogla.",
 kështuqë nuk do kesh mundësi të ruash redaktimet e tua tani. Mund të kopjosh dhe ruash tekstin
 në një skedar për më vonë.",
 "protectedpagewarning" => "KUJDES:  Kjo faqe është bllokuar kështuqë vetëm përdorues me titullin
-sysop mund ta redaktojnë. Ndiq rregullat e dhëna tek 
-<a href='/wiki/$wgMetaNamespace:Rregulla_për_faqe_të_bllokuara'>faqet e bllokuara</a>.",
+sysop mund ta redaktojnë. Ndiq rregullat e dhëna tek
+<a href='/wiki/$wgMetaNamespace:Rregullat_për_faqe_të_bllokuara'>faqet e bllokuara</a>.",
 
 # History pages
 #
@@ -419,10 +419,10 @@ Të lutem kontrollo URL-in që përdore për të ardhur tek kjo faqe.\n",
 "revisionasof"	=> "Versioni i $1",
 "cur"			=> "tani",
 "next"			=> "mbas",
-"last"			=> "fundit",
+"last"			=> "fund",
 "orig"			=> "parë",
 "histlegend"	=> "Legjenda: (tani) = ndryshimet me versionin e tanishëm,
-(fundit) = ndryshime me versionin e parardhshëm, V = redaktim i vogël",
+(fund) = ndryshimet me versionin e parardhshëm, V = redaktim i vogël",
 
 # Diffs
 #
@@ -452,8 +452,8 @@ dhe teksti i $3 artikujve te pasardhshëm.",
 "notitlematches" => "Nuk ka asnjë titull faqeje që përputhet",
 "textmatches"	=> "Tekst faqesh që përputhet",
 "notextmatches"	=> "Nuk ka asnjë tekst faqeje që përputhet",
-"prevn"			=> "më përpara $1",
-"nextn"			=> "më pas $1",
+"prevn"			=> "$1 më para",
+"nextn"			=> "$1 më pas",
 "viewprevnext"	=> "Shiko ($1) ($2) ($3).",
 "showingresults" => "Duke treguar më poshtë <b>$1</b> rezultate dhe duke filluar me #<b>$2</b>.",
 "showingresultsnum" => "Duke treguar më poshtë <b>$3</b> rezultate dhe duke filluar me #<b>$2</b>.",
@@ -467,8 +467,8 @@ Kërko në hapësirën:<br>
 $1<br>
 $2 Lidhje ridrejtuese &nbsp; Kërko për $3 $9",
 "searchdisabled" => "<p>Kërkim me tekst të plotë është bllokuar tani për tani ngaqë
-shërbyesi është shumë i ngarkuar; shpresojmë ta nxjerrim prapë në gjëndje normale mbas disa mirëmbajtjeve.
-Deri atëherë, mund të përdorësh google për kërkime:</p>
+shërbyesi është shumë i ngarkuar; shpresojmë ta nxjerrim prapë në gjëndje normale mbas disa punimeve.
+Gjer atëherë, mund të përdorësh google për kërkime:</p>
 
 <!-- SiteSearch Google -->
 <FORM method=GET action=\"http://www.google.com/search\">
@@ -529,7 +529,7 @@ Shiko [[$wgMetaNamespace:Ndihmë për preferencat e përdoruesit]] për ndihmë 
 "contextchars"	=> "Sa gërma të tregohen për çdo rresht",
 "stubthreshold" => "Kufiri për tregimin e stub-eve",
 "recentchangescount" => "Numri i titujve në ndryshimet e fundit",
-"savedprefs"	=> "Preferencat e tua janë ruajtur.",
+"savedprefs"	=> "Preferencat e tuaja janë ruajtur.",
 "timezonetext"	=> "Fut numrin e orëve prej të cilave ndryshon ora lokale
 nga ajo e shërbyesit (UTC).",
 "localtime"	=> "Tregimi i orës lokale",
@@ -541,7 +541,7 @@ nga ajo e shërbyesit (UTC).",
 
 # Recent changes
 #
-"changes" => "changes",
+"changes" => "ndryshime",
 "recentchanges" => "Ndryshimet e fundit",
 # This is the default text, and can be overriden by editing [[$wgMetaNamespace::Recentchanges]]
 "recentchangestext" => "Ndiq ndryshimet e fundit të $wgSitename në këtë faqe.",
@@ -550,11 +550,11 @@ nga ajo e shërbyesit (UTC).",
 "rcnotefrom"	=> "Më poshtë janë ndryshimet e fundit nga <b>$2</b> (treguar deri në <b>$1</b>).",
 "rclistfrom"	=> "Trego ndryshimet e reja duke filluar nga $1",
 # "rclinks"		=> "Trego $1 ndryshimet e fundit gjatë $2 orëve të kaluara / $3 ditëve të kaluara",
-# "rclinks"		=> "Trego $1 ndryshimet gjatë $2 ditëve të fundit.",
-"rclinks"		=> "Trego $1 ndryshimet gjatë $2 ditëve; $3 redaktime të vogla",
+# "rclinks"		=> "Trego $1 ndryshime gjatë $2 ditëve të fundit.",
+"rclinks"		=> "Trego $1 ndryshime gjatë $2 ditëve; $3 redaktime të vogla",
 "rchide"		=> "në $4 formë; $1 redaktime të vogla; $2 hapësira të dyta; $3 redaktime të shumta.",
 "rcliu"			=> "; $1 redaktime nga përdorues të rregjistruar",
-"diff"			=> "ndryshe",
+"diff"			=> "ndrysh",
 "hist"			=> "histori",
 "hide"			=> "fshih",
 "show"			=> "trego",
@@ -579,14 +579,14 @@ për të dhënë skedarë.",
 "uploaderror"	=> "Gabim dhënie",
 "uploadtext"	=> "<strong>NDALO!</strong> Përpara se të japësh këtu,
 lexo dhe ndiq $wgSitename's <a href=\"" .
-wfLocalUrlE( "$wgMetaNamespace:Rregulla_përdorimi_figurash" ) . "\">Rregullat e përdorimit të figurave</a>.
+wfLocalUrlE( "$wgMetaNamespace:Rregullat_përdorim_figurash" ) . "\">Rregullat e përdorimit të figurave</a>.
 <p>Për të parë ose për të kërkuar figurat e dhëna më parë,
 shko tek <a href=\"" . wfLocalUrlE( "Speciale:Listafigurave" ) .
 "\">lista e figurave të dhëna</a>.
 Dhëniet dhe grisjet janë të rregjistruara në <a href=\"" .
 wfLocalUrlE( "$wgMetaNamespace:Jep_rregj" ) . "\">rregjistrin e dhënies</a>.
 <p>Përdorni formularin e më poshtëm për të dhënë skedarë të figurave të reja për tu përdorur
-në ilustrimet e artikujve.
+në illustrimet e artikujve.
 Për shumicën e shfletuesve, do të shihni një \"Browse...\" buton, i cili do të
 hapi dialogun standart të skedarëve të operating system që përdorni.
 Zgjedhja e një skedari do të mbushi emrin në rreshtin e tekstit, afer butonit.
@@ -597,9 +597,9 @@ Kjo mund të zgjasi për pak kohë n.q.s. keni lidhje të ngadaltë të internet
 për vizatime dhe ikona të tjera, dhe OGG për zë dhe muzikë.
 Të lutem fut një emër përshkrues për të mos patur konfuzion më vonë.
 Për të futur një figurë në një artikull, përdor lidhjen sipas formës
-<b>[[image:skedar.jpg]]</b> ose <b>[[image:skedar.png|tekst përshkrues]]</b>
+<b>[[figura:skedar.jpg]]</b> ose <b>[[figura:skedar.png|tekst përshkrues]]</b>
 ose <b>[[media:skedar.ogg]]</b> për zë.
-<p>Vini re se si me të gjitha faqet e tjera uiki, të tjerë mund të redaktojnë ose
+<p>Vini re se si me të gjitha faqet e tjera wiki, të tjerë mund të redaktojnë ose
 grisin dhëniet tuaja n.q.s. mendojnë se nuk janë enciklopedike, dhe
 ti mund të bllokohesh nga dhënja n.q.s. e abuzon sistemin.",
 "uploadlog"		=> "rregjistër dhënie",
@@ -613,7 +613,7 @@ Të gjitha orët janë me orën e shërbyesit (UTC).
 "filedesc"		=> "Përmbledhje",
 "affirmation"	=> "Unë konfirmoj që jam mbajtësi i copyright-it të këtij skedarit
 dhe jap leje të liçensohet nën rregullat e $1.",
-"copyrightpage" => "$wgMetaNamespace:Copyrighte",
+"copyrightpage" => "$wgMetaNamespace:Copyrights",
 "copyrightpagename" => "$wgSitename copyright",
 "uploadedfiles"	=> "Jep skedarë",
 "noaffirmation" => "Duhet të konfirmosh që dhënja e jote nuk thyen ndonjë copyright.",
@@ -625,11 +625,11 @@ dhe jap leje të liçensohet nën rregullat e $1.",
 "successfulupload" => "Dhënie e sukseshme",
 "fileuploaded"	=> "Skedari \"$1\" u mor me sukses.
 Te lutem ndiq këtë lidhje : ($2) për të shkuar tek faqja e përshkrimit dhe për të futur
-informacionin për skedarin, si p.sh. ku e gjete, kur u bë, kush e bëri, dhe çdo gjë
+informacion për skedarin, si p.sh. ku e gjete, kur u bë, kush e bëri, dhe çdo gjë
 tjetër që na duhet të dimë për të.",
 "uploadwarning" => "Kujdes dhënie",
 "savefile"		=> "Ruani skedarin",
-"uploadedimage" => "u mor \"$1\"",
+"uploadedimage" => "dha \"$1\"",
 "uploaddisabled" => "Ndjesë, dhëniet janë bllokuar në këtë shërbyes dhe nuk është gabimi yt.",
 
 # Image list
@@ -652,7 +652,7 @@ tjetër që na duhet të dimë për të.",
 "deleteimg"		=> "gris",
 "imghistlegend" => "Legjendë: (tani) = ky është skedari i tanishëm, (gris) = grise
 këtë version të vjetër, (ktheje) = ktheje në këtë version të vjetër.
-<br><i>Shtyp datën për të parë skedarët e dhënë në atë ditë</i>.",
+<br><i>Shtyp datën për të parë skedarin e dhënë në atë ditë</i>.",
 "imagelinks"	=> "Lidhje skedarësh",
 "linkstoimage"	=> "Këto faqe lidhen tek ky skedar:",
 "nolinkstoimage" => "Nuk ka asnjë faqe që të lidhet tek ky skedar.",
@@ -675,13 +675,13 @@ Kjo do të thotë se janë bërë <b>$5</b> redaktime për faqe afërsisht, dhe 
 # Maintenance Page
 #
 "maintenance"		=> "Faqja mirëmbajtëse",
-"maintnancepagetext"	=> "Kjo faqe ka disa vegla to dobishme për mirëmbajtjen e përditshme. Disa nga këto funksiones e përdorin shumë 
+"maintnancepagetext"	=> "Kjo faqe ka disa vegla to dobishme për mirëmbajtjen e përditshme. Disa nga këto funksiones e përdorin shumë
 
 rregjistrin, kështuqë mos e fresko faqen mbas çdo ndryshimi ;-)",
 "maintenancebacklink"	=> "Mbrapsh tek faqja mirëmbajtëse",
 "disambiguations"	=> "Faqe qartësuese",
 "disambiguationspage"	=> "$wgMetaNamespace:Lidhje_tek_faqe_qartësuese",
-"disambiguationstext"	=> "Artikujt që vijojnë lidhen tek një <i>faqe qartësuese</i>. Ato duhet të lidhen tek tema e përshtatshme 
+"disambiguationstext"	=> "Artikujt që vijojnë lidhen tek një <i>faqe qartësuese</i>. Ato duhet të lidhen tek tema e përshtatshme
 
 <br>Një faqe trajtohet si qartësuese lidhet nga $1.<br>Lidhje nga hapësira të tjera <i>nuk</i> jepen këtu.",
 "doubleredirects"	=> "Dopjo ridrejtime",
@@ -695,13 +695,13 @@ duke dhënë dhe  artikullin e \"vërtetë\", me të cilin ridrejtimi i parë du
 "selflinks"		=> "Faqe që lidhen tek vetëvetja",
 "selflinkstext"		=> "Faqet që vijojnë kanë një lidhje tek vetëvetja, gjë që s'duhet të ndodhi.",
 "mispeelings"           => "Faqe me gabime gramatikore",
-"mispeelingstext"               => "Faqet që vijojnë kanë një gabim shkrimi që ndodh shpesh, të cilat jepen në $1. Shkrimi i vërtetë mund të jetë 
+"mispeelingstext"               => "Faqet që vijojnë kanë një gabim shkrimi që ndodh shpesh, të cilat jepen në $1. Shkrimi i vërtetë mund të jetë
 
 dhënë (si kështu).",
 "mispeelingspage"       => "Lista e gabimeve më të shpeshta të shkrimit",
 "missinglanguagelinks"  => "Mungojnë gjuhë-lidhjet",
 "missinglanguagelinksbutton"    => "Gjej gjuhë-lidhjet që mungojnë për",
-"missinglanguagelinkstext"      => "Këto artikuj <i>nuk</i> lidhen tek faqja korresponduese në $1. Ridrejtime dhe nën-faqet <i>nuk</i> 
+"missinglanguagelinkstext"      => "Këto artikuj <i>nuk</i> lidhen tek faqja korresponduese në $1. Ridrejtime dhe nën-faqet <i>nuk</i>
 
 janë treguar.",
 
@@ -726,11 +726,11 @@ janë treguar.",
 "developerspheading" => "Vetëm për zhvilluesit",
 "protectpage"	=> "Mbro faqen",
 "recentchangeslinked" => "Ndryshime të përafërta",
-"rclsub"		=> "(tek faqet të lidhura nga \"$1\")",
-"debug"			=> "Nxir yçklat",
+"rclsub"		=> "(për faqet e lidhura nga \"$1\")",
+"debug"			=> "Raporto yçkla",
 "newpages"		=> "Artikuj të rinj",
 "ancientpages"		=> "Artikuj më të vjetër",
-"movethispage"	=> "Zhvendose këtë faqe",
+"movethispage"	=> "Zhvendos faqen",
 "unusedimagestext" => "<p>Të lutem, vë re se hapësira të tjera
 si p.sh ato të që kanë të bejnë me gjuhë të ndryshme mund të lidhin
 nje figurë me një URL në mënyrë direkte, kështuqë mund të keto figura mund të jepen
@@ -783,11 +783,11 @@ për të ndryshuar listën mbikqyrëse tënde.",
   wfLocalUrl( "Speciale:Mbikqyrëse" ) . "\">listës mbikqyrëse</a> tënde.
 Ndryshimet e ardhshme të kësaj faqeje and faqes së diskutimit të saj do të jepen më poshtë,
 dhe faqja do të duket e <b>trashë</b> në <a href=\"" .
-  wfLocalUrl( "Special:Ndryshime të fundit" ) . "\">listën e ndryshimeve të fundit</a> për ta
+  wfLocalUrl( "Speciale:Ndryshimet" ) . "\">listën e ndryshimeve të fundit</a> për ta
 bërë më të kollajshme për ta dalluar.</p>
 
 <p>N.q.s. do të heqësh një faqe nga lista mbikqyrëse më vonë, shtyp \"Mos e mbikqyr\" në tabelën anësore.",
-"removedwatch"	=> "Hequr nga lista mibkqyrëse",
+"removedwatch"	=> "U hoq nga lista mibkqyrëse",
 "removedwatchtext" => "Faqja \"$1\" është hequr nga lista mbikqyrëse e jote.",
 "watchthispage"	=> "Mbikqyr këtë faqe",
 "unwatchthispage" => "Mos e mbikqyr",
@@ -799,11 +799,11 @@ $3...
 <a href='$4'>trego dhe redakto tërë listën</a>.)",
 "watchmethod-recent" => "duke kontrolluar redaktimet e fundit për faqet nën mbikqyrje",
 "watchmethod-list" => "duke kontrolluar faqet nën mbikqyrje për ndryshime të fundit",
-"removechecked" => "Hiq artikujt e zgjedhur nga lista mbikqyrëse",
-"watchlistcontains" => "Lista e jote mbikqyrëse ka $1 faqe.",
+"removechecked" => "Hiq të zgjedhurat",
+"watchlistcontains" => "Lista mbikqyrëse e jote ka $1 faqe.",
 "watcheditlist" => "Këtu jepet një listë e alfabetizuar e faqeve
-nën mbikqyrje. Zgjidh kutinë e sejcilës faqe që dëshiron të heqësh nga lista e jote
-mbikqyrëse dhe shtyp butonin 'hiq të zgjedhurat' në fund të ekranit.",
+nën mbikqyrje. Zgjidh kutinë e sejcilës faqe që dëshiron të heqësh nga lista
+dhe shtyp butonin 'Hiq të zgjedhurat' në fund të ekranit.",
 "removingchecked" => "Duke hequr artikujt e zgjedhur nga lista mbikqyrëse...",
 "couldntremove" => "S'mundi të heq arikullin '$1'...",
 "iteminvalidname" => "Problem me artikullin '$1', titull jo i saktë...",
@@ -820,15 +820,15 @@ mbikqyrëse dhe shtyp butonin 'hiq të zgjedhurat' në fund të ekranit.",
 "confirmdelete" => "Konfirmo grisjen",
 "deletesub"		=> "(Duke grisur \"$1\")",
 "historywarning" => "Kujdes: Faqja që je bërë gati pët të grisur ka një histori: ",
-"confirmdeletetext" => "Je duke grisur përfundimisht një faqe
+"confirmdeletetext" => "Je duke grisur '''përfundimisht''' një faqe
 ose një skedar me tërë historinë e tij nga rregjistri.
 Të lutem konfirmo që ke ndër mënd ta bësh këtë gjë, që e kupton se cilat janë
-pasojat, dhe që po vepron ne përputhje me [[$wgMetaNamespace:Rregulla]].",
+pasojat, dhe që po vepron ne përputhje me [[$wgMetaNamespace:Rregullat]].",
 "confirmcheck"	=> "Po, dëshiroj me të vërtetë ta gris këtë.",
 "actioncomplete" => "Veprim i mbaruar",
 "deletedtext"	=> "\"$1\" është grisur nga rregjistri.
 Shiko $2 për një rekord të grisjeve të fundit.",
-"deletedarticle" => "u gris \"$1\"",
+"deletedarticle" => "grisi \"$1\"",
 "dellogpage"	=> "Gris_rregj",
 "dellogpagetext" => "Më poshtë është një listë e grisjeve më të fundit.
 Të gjitha kohët janë sipas orës së shërbyesit (UTC).
@@ -838,10 +838,10 @@ Të gjitha kohët janë sipas orës së shërbyesit (UTC).
 "deletionlog"	=> "grisje rekordesh",
 "reverted"		=> "Kthehu tek një version i vjetër",
 "deletecomment"	=> "Arsyeja për grisjen",
-"imagereverted" => "Kthehu tek një version i sukseshëm.",
+"imagereverted" => "Kthimi tek një version i sukseshëm.",
 "rollback"		=> "Rrotulloji mbrapsh redaktimet",
 "rollbacklink"	=> "rrotullo",
-"rollbackfailed" => "rrotullimi dështoi",
+"rollbackfailed" => "Rrotullimi dështoi",
 "cantrollback"	=> "Nuk mund të kthejë redaktimin; redaktori i fundit është i vetmi autor i këtij artikulli.",
 "alreadyrolled"	=> "Nuk mund të rrotullojë redaktimin e fundit e [[$1]]
 nga [[Përdoruesi:$2|$2]] ([[Përdoruesi diskutim:$2|Diskutim]]); dikush tjetër ka redaktuar ose rrotulluar këtë faqe.
@@ -881,7 +881,7 @@ Shiko [[$wgMetaNamespace:Gris_rregj]] për një listë të grisjeve dhe restauri
 
 # What links here
 #
-"whatlinkshere"	=> "Çfarë lidhet këtu",
+"whatlinkshere"	=> "Lidhjet këtu",
 "notargettitle" => "Asnjë artikull",
 "notargettext"	=> "Nuk ke dhënë asnjë artikull ose përdorues mbi të cilin
 të përdorim këtë funksion.",
@@ -895,7 +895,7 @@ të përdorim këtë funksion.",
 "blockip"		=> "Blloko përdoruesin",
 "blockiptext"	=> "Përdor formularin e mëposhtëm për të hequr lejen e shkrimit
 për një përdorues ose IP-ë specifike.
-Kjo duhet bërë vetëm në raste vandalizmi, dhe në përputhje me [[$wgMetaNamespace:Rregulla|$wgSitename regulla]].
+Kjo duhet bërë vetëm në raste vandalizmi, dhe në përputhje me [[$wgMetaNamespace:Rregullat|$wgSitename regullat]].
 Plotëso arsyen specifike më poshtë (p.sh., trego faqet specifike që u
 vandalizuan).",
 "ipaddress"		=> "IP Adresë/përdorues",
@@ -908,11 +908,11 @@ vandalizuan).",
 <br>Shiko [[Speciale:Ipbllokolistë|IP blloko listë]] për të parë bllokimet.",
 "unblockip"		=> "Ç'blloko përdoruesin",
 "unblockiptext"	=> "Përdor formularin e më poshtëm për t'i ridhënë leje shkrimi
-një IP ose përdoruesi të bllokuar.",
+një përdoruesi ose IP adreseje të bllokuar.",
 "ipusubmit"		=> "Ç'blloko këtë adresë",
 "ipusuccess"	=> "\"$1\" u ç'bllokua",
-"ipblocklist"	=> "Lista e IP adresave dhe e përdoruesve të bllokuar",
-"blocklistline"	=> "$1, $2 bllokojë $3",
+"ipblocklist"	=> "Lista e përdoruesve dhe e IP adresave të bllokuara",
+"blocklistline"	=> "$1, $2 bllokoi $3",
 "blocklink"		=> "blloko",
 "unblocklink"	=> "ç'blloko",
 "contribslink"	=> "kontribute",
@@ -972,13 +972,13 @@ i vjetër n.q.s. ke bërë një gabim, dhe s'mund të prisësh një faqe që ekz
 
 <b>KUJDES!</b>
 Ky mund të jetë një ndryshim i madh dhe gjëra të papritura mund të ndoshin për një faqe
-të shumë-frekuentuar; të lutemi, ki kujdes dhe mendohu mirë para se të përdorësh këtë funksion.",
-"movepagetalktext" => "Faqja a bashkangjitur e diskutimit,n.q.s. ekziston, do të zhvendoset automatikisht '''përveçse:''' kur
-*Po zhvendos një faqe midis hapësirave të ndryshme,
+të shumë-frekuentuar; të lutem, ki kujdes dhe mendohu mirë para se të përdorësh këtë funksion.",
+"movepagetalktext" => "Faqja a bashkangjitur e diskutimit, n.q.s. ekziston, do të zhvendoset automatikisht '''përveçse''' kur:
+*Zhvendos një faqe midis hapësirave të ndryshme,
 *Një faqe diskutimi jo-boshe ekziston nën titullin e ri, ose
 *Nuk zgjedh kutinë më poshtë.
 
-Në ato raste, duhet të zhvendosësh ose perpuqësh faqen vetë n.q.s. dëshiron.",
+Në ato raste, duhet ta zhvendosësh ose perpuqësh faqen vetë n.q.s. dëshiron.",
 "movearticle"	=> "Zhvendos faqen",
 "movenologin"	=> "Nuk ke hyrë brënda",
 "movenologintext" => "Duhet të kesh hapur një llogari dhe të kesh <a href=\"" .
@@ -1025,7 +1025,7 @@ class LanguageSq extends LanguageUtf8 {
 			if ( 0 == strcasecmp( $n, $text ) ) { return $i; }
 		}
 		# Compatbility with alt names:
-		if( 0 == strcasecmp( "Special", $text ) ) { return -1; }
+		if( 0 == strcasecmp( "Special", $text ) ) { return -1; } # So both Speciale: and Special: work
 		return false;
 	}
 
@@ -1093,7 +1093,7 @@ class LanguageSq extends LanguageUtf8 {
 	function time( $ts, $adj = false )
 	{
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-		
+
 		$t = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
 		return $t;
 	}
