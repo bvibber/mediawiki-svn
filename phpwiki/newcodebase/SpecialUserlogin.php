@@ -127,7 +127,9 @@ function wfSpecialUserlogin()
 	$m = str_replace( "$2", $u->getName(), $m );
 	$m = str_replace( "$3", $np, $m );
 
-	mail( $u->getEmail(), wfMsg( "passwordremindertitle" ), $m );
+	mail( $u->getEmail(), wfMsg( "passwordremindertitle" ), $m,
+	  "From: Wikipedia Mail <apache@www.wikipedia.com>\n" .
+	  "Reply-To: webmaster@www.wikipedia.com\n" );
 	$m = str_replace( "$1", $u->getName(), wfMsg( "passwordsent" ) );
 	mainLoginForm( $m );
 }
