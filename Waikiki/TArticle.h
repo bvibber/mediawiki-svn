@@ -13,7 +13,8 @@ class TArticle
     TArticle () ;
     virtual ~TArticle () ;
     
-    virtual void loadFromFile ( string filename ) ;
+    virtual TArticle operator = ( const TArticle &x ) ;
+    
     virtual void setTitle ( TTitle t ) ;
     virtual void setSource ( TUCS t ) ;
     virtual TUCS getSource () ;

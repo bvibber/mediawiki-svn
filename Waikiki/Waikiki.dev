@@ -1,7 +1,7 @@
 [Project]
 FileName=Waikiki.dev
 Name=Projekt1
-UnitCount=19
+UnitCount=21
 Type=1
 Ver=1
 ObjFiles=
@@ -227,6 +227,26 @@ BuildCmd=
 
 [Unit19]
 FileName=TSkinBlank.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit20]
+FileName=TDatabase.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit21]
+FileName=TDatabase.cpp
 CompileCpp=1
 Folder=
 Compile=1

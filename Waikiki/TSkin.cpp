@@ -1,5 +1,7 @@
 #include "TSkin.h"
 
+// This contains the methods of the default skin
+
 TSkin::TSkin ()
     {
     article = NULL ;
@@ -28,7 +30,9 @@ TUCS TSkin::getArticleHTML ()
     if ( article )
         {
         TParser p ;
-        r += "<H1 class='pagetitle'>" + article->getTitle().getNiceTitle() + "</H1>\n" ;
+        r += "<H1 class='pagetitle'>" ;
+        r += article->getTitle().getNiceTitle() ;
+        r += "</H1>\n" ;
         r += "<P class='subtitle'>" + LNG("fromwikipedia") + "</P>\n" ;
         TUCS s = article->getSource() ;
         r += p.parse ( s ) ;

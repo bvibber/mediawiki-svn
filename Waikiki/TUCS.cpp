@@ -8,6 +8,12 @@ TUCS TUCS::operator += ( const TUCS &x )
     addtucs ( x ) ;
     return *this ;
     }
+
+TUCS TUCS::operator += ( const char *x )
+    {
+    addtucs ( TUCS ( x ) ) ;
+    return *this ;
+    }
     
 TUCS TUCS::operator + ( const TUCS &x )
     {
@@ -56,7 +62,7 @@ TUCS::TUCS ( uint i )
     clear () ;
     adduint ( i ) ;
     }
-    
+
 // *****************************************************************************
 // THE PUBLIC METHODS
 
@@ -97,7 +103,7 @@ void TUCS::explode ( TUCS &seq , VTUCS &r )
         l = a+1 ;
         a = find ( seq , l ) ;
         }
-    if ( l != a-1 ) r.push_back ( substr ( l ) ) ;
+    if ( l != a-1 || a == length() ) r.push_back ( substr ( l ) ) ;
     }
 
 void TUCS::explode ( const char *seq , VTUCS &r )

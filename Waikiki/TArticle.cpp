@@ -1,5 +1,12 @@
 #include "TArticle.h"
 
+TArticle TArticle::operator = ( const TArticle &x )
+    {
+    source = x.source ;
+    *title = *x.title ;
+    return *this ;
+    }
+
 TArticle::TArticle ()
     {
     title = new TTitle () ;
@@ -8,19 +15,6 @@ TArticle::TArticle ()
 TArticle::~TArticle ()
     {
     delete title ;
-    }
-    
-void TArticle::loadFromFile ( string filename )
-    {
-    ifstream in ( filename.c_str() , ios::in ) ;
-    while ( !in.eof() )
-        {
-        char t[10000] ;
-        in.getline ( t , sizeof ( t ) ) ;
-        if ( !source.empty() ) source += '\n' ;
-        source += t ;
-        }
-    in.close() ;
     }
     
 void TArticle::setTitle ( TTitle t )

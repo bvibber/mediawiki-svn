@@ -13,6 +13,7 @@ class TTitle
     TUCS getNiceTitle () ;
     TUCS getURL () ;
     TUCS getNamespace () ;
+    TUCS getDBkey () ;
     
     private :
     virtual void initFromText ( TUCS s ) ;

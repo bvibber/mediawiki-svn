@@ -70,7 +70,6 @@ bool TParser::parse_internal_link ( TUCS &s )
     if ( LANG->isLanguageNamespace ( t.getNamespace() ) )
         {
         text = LANG->getLanguageName ( t.getNamespace() ) ;
-//        cout << "!" << text.getstring() << endl ;
         TUCS x = SKIN->getInternalLink ( t , text , "external" ) ;
         OUTPUT->languageLinks.push_back ( x ) ;
         s = s.substr ( c ) ;

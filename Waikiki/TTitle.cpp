@@ -39,7 +39,14 @@ TUCS TTitle::getURL ()
         if ( s[a] == ' ' ) s[a] = '_' ;
     return s ;
     }
-    
+
+TUCS TTitle::getDBkey ()
+    {
+    TUCS s = title ;
+    s.replace ( " " , "_" ) ;
+    return s ;
+    }
+        
 TUCS TTitle::getNamespace ()
     {
     return LANG->getUCfirst ( ns ) ;

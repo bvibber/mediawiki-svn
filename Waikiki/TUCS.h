@@ -45,6 +45,7 @@ class TUCS // Type of UniCodeString
     TUCS ( uint i ) ;
     
     // Operators
+    virtual TUCS operator += ( const char* x ) ;
     virtual TUCS operator += ( const TUCS &x ) ;
     virtual TUCS operator + ( const TUCS &x ) ;
     virtual uint & operator [] ( uint x ) ;
@@ -90,7 +91,7 @@ class TUCS // Type of UniCodeString
     } ;
 
 static bool operator != ( TUCS a , TUCS b ) { return ! ( a == b ) ; }
-static TUCS operator + ( const char *a , TUCS b ) { return TUCS ( a ) + b ; }
+static TUCS operator + ( const char *a , TUCS b ) { return TUCS ( (const char*) a ) + b ; }
 static bool operator == ( TUCS a , const char *b ) { TUCS c(b); return ( a == c ) ; }
 
 #endif
