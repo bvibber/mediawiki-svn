@@ -168,7 +168,7 @@ function edit ( $title ) {
 #	$headerScript = "<script> <!-- function setfocus() { document.f.EditBox.focus(); } --> </script>" ;
 #	$bodyOptions = " onLoad=setfocus()" ;
 
-	$ret .= "<form method=POST action=\"".wikiLink($npage->url)."\" name=f\" enctype=\"application/x-www-form-urlencoded\">" ;
+	$ret .= "<form method=POST action=\"".wikiLink($npage->url)."\" enctype=\"application/x-www-form-urlencoded\">" ;
 	$ret .= "<textarea tabindex=1 name=EditBox rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>".htmlspecialchars ( $text )."</textarea><br>\n" ;
 	$ret .= "$wikiSummary<input tabindex=2 type=text value=\"$CommentBox\" name=CommentBox size=50 maxlength=200> \n" ;
 	if ( $user->isLoggedIn == "yes" ) 
@@ -177,8 +177,8 @@ function edit ( $title ) {
 		$ret .= "<input type=hidden name=MinorEdit value=0>" ;
 	$ret .= "<br>$wikiCopyrightNotice<br>\n" ;
 
-	$ret .= "<input tabindex=4 type=submit value=$wikiSave name=SaveButton> \n" ;
-	$ret .= "<input tabindex=5 type=submit value=$wikiPreview name=PreviewButton>\n" ;
+	$ret .= "<input tabindex=4 type=submit value=\"$wikiSave\" name=SaveButton> \n" ;
+	$ret .= "<input tabindex=5 type=submit value=\"$wikiPreview\" name=PreviewButton>\n" ;
 	$ret .= "<input type=hidden value=\"$EditTime\" name=EditTime>\n" ;
 	$ret .= "<input type=hidden value=yes name=FromEditForm>\n" ;
 	$ret .= " <a href=\"".wikiLink($vpage->url)."\">$wikiDontSaveChanges</a>\n" ; 
