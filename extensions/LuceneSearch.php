@@ -17,6 +17,11 @@ require_once("SearchEngine.php");
 if (defined('MEDIAWIKI')) {
 $wgExtensionFunctions[] = "wfLuceneSearch";
 
+if (class_exists("Revision"))
+	$wgLSuseold = false;
+else
+	$wgLSuseold = true;
+
 define('LS_PER_PAGE', 10);
 
 function wfLuceneSearch() {
@@ -44,7 +49,7 @@ class LuceneSearch extends SpecialPage
 		
 	function execute($par) {
 		global $wgRequest, $wgOut, $wgTitle, $wgContLang, $wgUser,
-			$wgLuceneCSSPath;
+			$wgLuceneCSSPath, $wgLSuseold, $wgOutputEncoding;
 
 		$this->setHeaders();
 
@@ -61,19 +66,13 @@ class LuceneSearch extends SpecialPage
 			$limit = $wgRequest->getInt("limit");
 			if ($limit < 1 || $limit > 50)
 				$limit = 20;
-			header("Content-Type: text/plain; charset=UTF-8");
+			header("Content-Type: text/plain; charset=$wgOutputEncoding");
 			if (strlen($q) < 1)
 				wfAbruptExit();
 
-			$db =& wfGetDB(DB_SLAVE);
-			$page = $db->tableName('page');
-			$sql = "SELECT page_title FROM $page WHERE page_namespace=0 AND "
-				. "lower(page_title) LIKE lower('".wfStrEncode($q)."%') "
-				. "LIMIT $limit";
-			$res = $db->query($sql, 'LuceneSearch::execute');
-			while ($row = $db->fetchObject($res)) {
-				$t = Title::makeTitle(0, $row->page_title);
-				echo $t->getPrefixedDBKey() . "\n";
+			$results = $this->doTitlePrefixSearch($q, $limit);
+			foreach ($results as $result) {
+				echo $result->getPrefixedText() . "\n";
 			}
 			wfAbruptExit();
 		}
@@ -99,12 +98,15 @@ class LuceneSearch extends SpecialPage
 				}
 			}
 
-			$r = $this->doLuceneSearch($q);
-			$numresults = $r[0];
-			$results = $r[1];
-
 			$limit = $wgRequest->getInt('limit');
 			$offset = $wgRequest->getInt('offset');
+
+			$maxresults = $offset + $limit;
+			if ($maxresults < 10)
+				$maxresults = 10;
+			$r = $this->doLuceneSearch($q, $maxresults);
+			$numresults = $r[0];
+			$results = $r[1];
 
 			$wgOut->setSubtitle(wfMsg('searchquery', htmlspecialchars($q)));
 
@@ -194,7 +196,7 @@ class LuceneSearch extends SpecialPage
         function showHit($score, $t, $terms) {
                 $fname = 'LuceneSearch::showHit';
                 wfProfileIn($fname);
-                global $wgUser, $wgContLang;
+                global $wgUser, $wgContLang, $wgLSuseold;
 
                 if(is_null($t)) {
                         wfProfileOut($fname);
@@ -209,11 +211,12 @@ class LuceneSearch extends SpecialPage
 			$contextchars = 50;
 
                 $link = $sk->makeKnownLinkObj($t, '');
-		$rev = Revision::newFromTitle($t);
+
+		$rev = $wgLSuseold ? new Article($t) : Revision::newFromTitle($t);
 		if ($rev === null)
 			return "<b>Broken link in search results: ".$t->getDBKey()."</b>";
-
-		$text = $rev->getText();
+		
+		$text = $wgLSuseold ? $rev->getContent(false) : $rev->getText();
                 $size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024), str_word_count($text));
 		$text = $this->removeWiki($text);
 
@@ -243,7 +246,7 @@ class LuceneSearch extends SpecialPage
                         $found = $m[2];
 
                         $line = htmlspecialchars($pre . $found . $post);
-                        $pat2 = '/(' . $terms . ")/i";
+                        $pat2 = '/([^ ]*(' . $terms . ")[^ ]*)/i";
                         $line = preg_replace($pat2,
                           "<span class='searchmatch'>\\1</span>", $line);
 
@@ -278,6 +281,30 @@ class LuceneSearch extends SpecialPage
 		return $text;
 	}
 
+	function doTitlePrefixSearch($query, $limit) {
+		global $wgLuceneHost, $wgLucenePort;
+		wfDebug("title prefix search: $query\n");
+		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+		$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
+		socket_write($sock, "TITLEPREFIX\n" . urlencode($query) . "\n");
+		$results = array();
+		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE
+                       && count($results) <= $limit) {
+			$result = chop($result);
+			wfdebug("result: $result\n");
+			list($score, $namespace, $title) = split(" ", $result);
+			if (!in_array($namespace, $this->namespaces)) {
+				continue;
+			}
+			$fulltitle = Title::makeTitle($namespace, $title);
+			if ($fulltitle === null) {
+				continue;
+			}
+			$results[] = $fulltitle;
+		}
+		return $results;
+	}
+
 	function doTitleMatches($query) {
 		global $wgLuceneHost, $wgLucenePort;
 		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -299,7 +326,7 @@ class LuceneSearch extends SpecialPage
 		return $results;
 	}
 
-	function doLuceneSearch($query) {
+	function doLuceneSearch($query, $max) {
 		global $wgLuceneHost, $wgLucenePort;
 		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
@@ -318,7 +345,8 @@ class LuceneSearch extends SpecialPage
 			return array(-1, urldecode($suggestion));
 		}
 
-		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE) {
+		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE
+		       && count($results) <= $max) {
 			$result = chop($result);
 			list($score, $namespace, $title) = split(" ", $result);
 			wfdebug("result: $namespace $title\n");
@@ -338,10 +366,11 @@ class LuceneSearch extends SpecialPage
 	}
 
 	function showShortDialog($term) {
+		$action = "$wgScript?title=Special:Search";
                 $searchButton = '<input type="submit" name="searchx" value="' .
                   htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
                 $searchField = "<div><input type='text' id='lsearchbox' onkeyup=\"resultType()\" "
-			. "style='margin-left: 25%; width: 50%' value=\""
+			. "style='margin-left: 25%; width: 50%; ' value=\""
                         . htmlspecialchars($term) ."\""
 			. " autocomplete=\"off\" name=\"search\" />\n"
 			. "<span id='loadStatus'></span>"
@@ -451,7 +480,7 @@ function resultType()
     if (searchCache[searchStr.toLowerCase()])
       showResults(searchCache[searchStr.toLowerCase()])
     else
-      searchTimeout = setTimeout(getResults, 500);
+      searchTimeout = setTimeout(getResults, 0);
   }
   else
   {
