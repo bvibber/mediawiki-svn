@@ -472,7 +472,7 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "prevn"   => "vorige $1",
 "nextn"   => "volgende $1",
 "viewprevnext" => "($1) ($2) ($3) bekijken.",
-"showingresults" => "Hieronder de <b>$1</b> resultaten vanaf nummer <b>$2</b>."
+"showingresults" => "Hieronder de <b>$1</b> resultaten vanaf nummer <b>$2</b>.",
 "nonefound"  => "<strong>Merk op:</strong> wanneer een zoekopdracht mislukt komt dat vaak door gebruik van (in het Engels) veel voorkomende woorden zoals \"of\" en \"be\", die niet geïndexeerd zijn, of door verschillende zoektermen tegelijk op te geven (u krijgt dan alleen in pagina's waaarin alle opgegeven termen voorkomen).",
 "powersearch" => "Zoeken",
 "powersearchtext" => "   
