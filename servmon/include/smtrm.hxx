@@ -164,15 +164,20 @@ struct tmcmds : public smutl::singleton<tmcmds<tt> > {
 #include "../smstdrt.cxx"
 	tmcmds() {
 /* standard mode commands */
+stdrt.install("show", "Show operational information");
 stdrt.install("show version", cmd_show_version(), "Show software version");
 stdrt.install("exit", cmd_exit(), "End session");
+stdrt.install("show irc", "Show IRC-related information");
 stdrt.install("show irc server %s", cfg_irc_showserver(), "Describe a configured server");
 stdrt.install("show irc server", cfg_irc_showserver(), "Describe all configured servers");
 stdrt.install("show irc channels", cfg_irc_showchannels(), "Show configured channels");
+stdrt.install("show monitor", "Show monitoring information");
 stdrt.install("show monitor server", cfg_monit_showservers(), "Show monitored servers");
 stdrt.install("show monitor server %s", cfg_monit_showservers(), "Show information for a particular server");
 stdrt.install("show monitor intervals", cfg_monit_showintervals(), "Show monitoring intervals");
-stdrt.install("show querybane rule %s", cfg_qb_show_rule(), "Show QueryBane rule information");
+stdrt.install("show querybane", "Show QueryBane information");
+stdrt.install("show querybane rule", "Show a specific rule");
+stdrt.install("show querybane rule %s", cfg_qb_show_rule(), "Rule name");
 stdrt.install("show querybane rules", cfg_qb_show_rule(), "Show all QueryBane rules");
 eblrt = stdrt;
 stdrt.install("enable", cmd_enable(), "Enter privileged mode");
@@ -184,47 +189,72 @@ eblrt.install("configure", chg_parser(cfgrt, "%s(conf)# "), "Configure servmon")
 /* 'configure' mode commands */
 cfgrt.install("exit", chg_parser(eblrt, "%s# "), "Exit configure mode");
 cfgrt.install("enable password", cfg_eblpass(), "Change enable password");
+cfgrt.install("function", "Configure a specific function");
 cfgrt.install("function irc", chg_parser(ircrt, "%s(conf-irc)# "), "Configure Internet Relay Chat connections");
 cfgrt.install("function monitor", chg_parser(monrt, "%s(conf-monit)# "), "Configure server monitoring");
+cfgrt.install("user", "Define users");
+cfgrt.install("user %s", "Username");
 cfgrt.install("user %s password", cfg_userpass(), "Create a new account");
-cfgrt.install("no user %s", cfg_no_user(), "Remove a user account");
+cfgrt.install("no", "Negate a setting");
+cfgrt.install("no user", "Remove a user account");
+cfgrt.install("no user %s", cfg_no_user(), "User name");
 cfgrt.install("function querybane", chg_parser(qbrt, "%s(conf-qb)# "), "Configure QueryBane operation");
 
 /* 'function irc' mode commands */
 ircrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit IRC configuration mode");
+ircrt.install("server", "Configure IRC servers");
 ircrt.install("server %s primary-nickname %s", cfg_irc_servnick(), "Set primary nickname for IRC server");
 ircrt.install("server %s secondary-nickname %s", cfg_irc_servsecnick(),	"Set secondary nickname for IRC server");
+ircrt.install("no", "Negate a setting");
 ircrt.install("no server %s", cfg_irc_noserver(), "Remove a configured server");
-ircrt.install("show server %s", cfg_irc_showserver(), "Describe a configured server");
-ircrt.install("show server", cfg_irc_showserver(), "Describe all configured servers");
-ircrt.install("show channels", cfg_irc_showchannels(), "Show configured channels");
 ircrt.install("no server %s enable", cfg_irc_noenableserver(), "Disable a server");
 ircrt.install("server %s enable", cfg_irc_enableserver(), "Enable connection to a server");
+ircrt.install("channel", "Configure channels");
 ircrt.install("channel %s", cfg_irc_channel(), "Specify a channel to join");
 ircrt.install("no channel %s", cfg_irc_nochannel(), "Remove a channel");
 
 /* 'function monitor' mode commands */
-monrt.install("server %s type %s", cfg_monit_server_type(), "Monitor a server");
+monrt.install("server", "Configure servers to monitor");
+monrt.install("server %s", "Server name");
+monrt.install("server %s type", "Specify server type");
+monrt.install("server %s type %s", cfg_monit_server_type(), "Create new server");
 monrt.install("server %s mysql-master", cfg_monit_server_mysql_master(), "Set server as MySQL master");
+monrt.install("mysql", "Configure global MySQL parameters");
+monrt.install("mysql username", "MySQL username");
+monrt.install("mysql password", "MySQL password");
 monrt.install("mysql username %s", cfg_monit_mysql_username(), "Set MySQL username");
 monrt.install("mysql password %s", cfg_monit_mysql_password(), "Set MySQL password");
+monrt.install("monitor-interval", "Monitor interval in seconds");
 monrt.install("monitor-interval %s", cfg_monit_monitor_interval(), "Monitor interval in seconds");
+monrt.install("irc-status-interval", "IRC status interval in seconds");
 monrt.install("irc-status-interval %s", cfg_monit_ircinterval(), "IRC status interval in seconds");
 monrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit monitor configuration mode");
 
 /* 'function querybane' mode commands */
-qbrt.install("rule %s", cfg_qb_rule(), "Define a new rule");
+qbrt.install("rule", "Define a new rule");
+qbrt.install("rule %s", cfg_qb_rule(), "Rule name");
+qbrt.install("no", "Negate a setting");
+qbrt.install("no rule", "Delete a rule");
+qbrt.install("no rule %s", cfg_qb_norule(), "Rule name");
 qbrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit querybane configuration mode");
 
 /* querybane 'rule' mode commands */
 qbrrt.install("exit", chg_parser(qbrt, "%s(conf-qb)# "), "Exit rule configuration mode");
 qbrrt.install("description %S", cfg_qbr_description(), "Rule description");
+qbrrt.install("match-if", "Specify parameters to match this rule");
+qbrrt.install("match-if min-threads", "Match on miminum thread count");
 qbrrt.install("match-if min-threads %s", cfg_qbr_matchif_minthreads(), "Miminum thread count");
+qbrrt.install("match-if min-last-threads", "Match on minimum thread count previous check");
 qbrrt.install("match-if min-last-threads %s", cfg_qbr_matchif_minlastthreads(), "Minimum thread count previous check");
+qbrrt.install("match-if lowest-position", "Match on position");
 qbrrt.install("match-if lowest-position %s", cfg_qbr_matchif_lowestpos(), "Only match if Nth longest running thread");
+qbrrt.install("match-if user", "Match on username");
 qbrrt.install("match-if user %S", cfg_qbr_matchif_user(), "Match threads owned by user");
+qbrrt.install("match-if command", "Match command type");
 qbrrt.install("match-if command %s", cfg_qbr_matchif_command(), "Match command type");
+qbrrt.install("match-if min-run-time", "Match on minimum run time");
 qbrrt.install("match-if min-run-time %s", cfg_qbr_matchif_minruntime(), "Only match after specified run time (seconds)");
+qbrrt.install("match-if query-string", "Match on query string");
 qbrrt.install("match-if query-string %S", cfg_qbr_matchif_querystring(), "Match specified query text");
 qbrrt.install("enable", cfg_qbr_enable(), "Enable rule");
 	}
@@ -370,6 +400,7 @@ public:
 				goto end;
 			}
 			herelen += word.size() + 1;
+			here = matches[0];
 			
 			if (wild == 1)
 				cd.add_p(word);
@@ -377,7 +408,6 @@ public:
 				cd.add_p(precar);
 				break;
 			}
-			here = matches[0];
 		}
 			
 		if (!here->terminal) {
@@ -434,9 +464,11 @@ public:
 			if (word.empty()) break;
 			if (matches.size() > 1 && !word.empty()) {
 				wrtln("% [E] Ambiguous command.");
+				wrt(prm + ln);
 				return true;
 			} else if (matches.size() == 0) {
 				wrtln("% [E] Unknown command.");
+				wrt(prm + ln);
 				return true;
 			}
 			word = "";

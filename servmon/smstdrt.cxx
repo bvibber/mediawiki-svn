@@ -368,19 +368,19 @@ HDL(cfg_qb_show_rule) {
 			cd.wrtln("Rule " + i->name);
 			cd.wrtln("    Description: " + i->description);
 			if (i->enabled)
-				cd.wrtln("    Enabled:     Yes");
+				cd.wrtln("    Enabled    : Yes");
 			else
-				cd.wrtln("    Enabled:     No");
+				cd.wrtln("    Enabled    : No");
 			cd.wrtln("    Match conditions:");
-			cd.wrtln("      Minimum threads:      " + b::lexical_cast<std::string>(i->minthreads));
+			cd.wrtln("      Minimum threads     : " + b::lexical_cast<std::string>(i->minthreads));
 			cd.wrtln("      Minimum last threads: " + b::lexical_cast<std::string>(i->minlastthreads));
-			cd.wrtln("      Lowest position:      " + b::lexical_cast<std::string>(i->lowestpos));
-			cd.wrtln("      Minimum run time:     " + b::lexical_cast<std::string>(i->minruntime));
+			cd.wrtln("      Lowest position     : " + b::lexical_cast<std::string>(i->lowestpos));
+			cd.wrtln("      Minimum run time    : " + b::lexical_cast<std::string>(i->minruntime));
 			std::string userstr;
 			FE_TC_AS(std::set<std::string>, i->users, j) userstr += *j + " ";
-			cd.wrtln("      Users:                " + userstr);
-			cd.wrtln("      Command type:         " + i->cmdtype);
-			cd.wrtln("      Query:                " + i->query);
+			cd.wrtln("      Users               : " + userstr);
+			cd.wrtln("      Command type        : " + i->cmdtype);
+			cd.wrtln("      Query               : " + i->query);
 		}
 		return true;
 	}
