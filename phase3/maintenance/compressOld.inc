@@ -60,7 +60,6 @@ function compressWithConcat( $startId, $maxChunkSize, $maxChunkFactor, $factorTh
 	$pageRes = $dbw->select( 'page', 'page_id', false, $fname );
 
 	# For each of those, get a list of revisions which fit the criteria
-	$revs = array();
 	$conds = array();
 	if ( $beginDate ) {
 		$conds[] = "rev_timestamp>'" . $beginDate . "'";
@@ -77,6 +76,7 @@ function compressWithConcat( $startId, $maxChunkSize, $maxChunkFactor, $factorTh
 			array( 'rev_page' => $pageRow->page_id ) + $conds, 
 			$fname 
 		);
+		$revs = array();
 		while ( $revRow = $dbw->fetchObject( $revRes ) ) {
 			$revs[] = $revRow->rev_id;
 		}
