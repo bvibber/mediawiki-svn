@@ -50,8 +50,9 @@ function wfSpecialWatchlist()
 		$ttl = $obj->cur_title;
 		$com = $obj->cur_comment;
 		$me = ( $obj->cur_minor_edit > 0 );
+		$new = ( $obj->cur_is_new  > 0 );
 
-		$s .= $sk->recentChangesLine( $ts, $u, $ut, $ns, $ttl, $com, $me );
+		$s .= $sk->recentChangesLine( $ts, $u, $ut, $ns, $ttl, $com, $me, $new );
 	}
 	$s .= $sk->endRecentChangesList();
 
