@@ -231,7 +231,7 @@ class User {
 		$this->loadFromDatabase();
 		$this->mNewtalk = $val;
 	}
-
+	
 	function getPassword()
 	{
 		$this->loadFromDatabase();
