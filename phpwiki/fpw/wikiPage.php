@@ -558,7 +558,8 @@ class WikiPage extends WikiTitle {
             $b = spliti ( "</pre>" , $x , 2 ) ;
             if ( count ( $b ) == 1 ) $s .= "&lt;pre&gt;$x" ;
             else {
-                $x = htmlentities ( $b[0] ) ;
+                #$x = htmlentities ( $b[0] ) ;
+		$x = str_replace ( array ( "<" , ">" ) , array ( "&lt;" , "&gt;" ) , $b[0] ) ;
                 $s .= "<pre>$x</pre>$b[1]" ;
                 }
             }
@@ -626,15 +627,100 @@ class WikiPage extends WikiTitle {
     function removeHTMLtags ( $s ) {
         # Only allow known tags
         $htmlpairs = array( "b", "i", "u", "font", "big", "small", "sub", "sup", "h1", "h2", "h3", "h4", "h5", "h6",
-            "cite", "code", "em", "s", "strike", "strong", "tt", "var", "div", "center", "blockquote", "ol",
-            "ul", "dl", "table", "caption", "pre" );
-        $htmlsingle = array( "br", "p", "hr", "li", "dt", "dd", "tr", "td", "th" );
-        # Every single tag can also have a closing tag
-        $htmlpairs = array_merge($htmlpairs, $htmlsingle);
+            "cite", "code", "em", "s", "strike", "strong", "tt", "var", "div", "center", "blockquote", "q" , "ol",
+            "ul", "dl", "table", "caption", "pre" , "span" , "abbr" , "acronym" , "var");
+        $htmlsingle = array( "br", "p", "hr", "li", "dt", "dd" );
+	$tabletags = array ( "td" , "th" , "tr" , "tfoot" , "tbody" , "thead" , "colgroup" , "col" ) ;
 
-        # FIXME Allowed elements -- we don't want scripting, etc
-        #$htmlelements = array( "face", "color", "size", "border", "align", "valign", "alt" );
+	$htmlsingle = array_merge ( $tabletags , $htmlsingle ) ;
+        $htmlpairs = array_merge ( $htmlsingle , $htmlpairs );
 
+        # Allowed attributes -- we don't want scripting, etc
+        $htmlattrs = array(
+		# General
+		"title" , "align" , "lang" , "dir" , "width" , "height" , "bgcolor" ,
+		#br 
+		"clear" ,
+		# hr
+		"noshade" , 
+		# blockquote, q
+		"cite" ,
+		# font
+		"size" , "face" , "color" ,
+		# lists
+		"type" , "start" , "value", "compact" , # All deprecated, BTW
+		# tables
+		"summary" , "width" , "border" , "frame" , "rules" , "cellspacing" , "cellpadding" ,
+		"valign" , "char" , "charoff" , "colgroup" , "col" , "span" , "abbr" , "axis" , "headers" , "scope" , "rowspan" , "colspan" ,
+		# I don't *think* these are dangerous
+		"id", "class" , "name" , "style" );
+
+	# Yeah, it seems kinda ugly.
+	$bits = explode ( "<" , $s ) ;
+	$s = array_shift ( $bits ) ;
+	$tagcount = array() ; $tablecount = array();
+	foreach ( $bits as $x ) {
+		if ( $x != "" ) {
+			# Check for clean tags
+			foreach ( $htmlpairs as $t ) {
+				#echo "($t)";
+				if ( eregi ( "^(\/{0,1})$t\b([^>]*)(\/{0,1}>)(.*)$", $x, $regs ) ) {
+					list ( $qbar , $slash , $params , $brace , $rest ) = $regs;
+					
+					if ( $tagcount["table"] < 1 && in_array ( $t , $tabletags ) )
+						break;
+					
+					# Don't allow more closing tags than opening tags; normalize tables
+					if ( $slash ) {
+						if ( $tagcount[$t] < 1 )
+							break;
+						--$tagcount[$t];
+						if($t == "table")
+							foreach ( $tabletags as $tt )
+								$tagcount[$tt] = array_pop ( $tablecount[$tt] ) ;
+					} else {
+						if ( in_array ( $t , $htmlsingle ) )
+							$tagcount[$t] = 1;  # Single tags can't be nested... right?
+						else
+							++$tagcount[$t];
+						if($t == "table")
+							foreach ( $tabletags as $tt ) {
+								if ( ! isset ( $tablecount[$tt] ) ) $tablecount[$tt] = array () ;
+								array_push ( $tablecount[$tt] , $tagcount[$tt] ) ;
+								}
+						}
+
+					# Strip non-approved attributes from the tag
+					# Quotes can cause some confusion here, this part needs more work
+					$newparams = "";
+					foreach ( $htmlattrs as $at ) {
+						if ( eregi ( "\b$at\s*=\s*\"([^\"]*)\"" , $params , $regs ) ) {
+							$newparams .= " $at=\"" . $regs[1] . "\"";
+						} elseif ( eregi ( "\b$at\s*=\s*([^\s]+)" , $params , $regs ) ) {
+							$newparams .= " $at=\"" . $regs[1] . "\"";
+						} elseif ( eregi ( "\b$at\b" , $params ) ) {
+							$newparams .= " $at";
+							}
+						}
+					
+					$rest = str_replace ( ">" , "&gt;" , $rest ) ;
+					#echo "($slash)($t)($params)->($newparams)($brace)($rest)";
+					$s .= "<$slash$t$newparams$brace$rest";
+					continue 2;
+					}
+				}
+			}
+		$x = str_replace ( ">" , "&gt;" , $x ) ;
+		$s .= "&lt;$x" ;
+		}
+	
+	foreach ( $htmlpairs as $t ) # Need to use specified order, as some tags must be inside of others
+		for ( $i = $tagcount[$t] ; $i > 0; --$i )
+			$s .= "</$t>";
+	
+	return $s;
+
+/*
         # Unique placeholders for < and > so we don't interfere with &lt; and &gt;
         $lt = "t4hqKoeC0p2Os4nfUa"; $gt = "v06TEbpdpceupNHi13";
 
@@ -650,6 +736,7 @@ class WikiPage extends WikiTitle {
         $s = str_replace(array("<", ">"), array("&lt;", "&gt;"), $s);
         $s = str_replace(array("$lt", "$gt"), array("<", ">"), $s);
         return $s ;
+*/
         }
 
     # This function will auto-number headings
@@ -689,7 +776,7 @@ class WikiPage extends WikiTitle {
     function ISBN ( $s ) {
         $a = split ( "ISBN " , " $s" ) ;
         $s = substr ( array_shift ( $a ) , 1 ) ;
-        $valid = "0123456789-" ;
+        $valid = "0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ" ;
         foreach ( $a as $x ) {
             $isbn = "" ;
             $blank = "" ;
@@ -733,10 +820,10 @@ class WikiPage extends WikiTitle {
         $s = $this->pingPongReplace ( "'''" , "<b>" , "</b>" , $s ) ;
         $s = $this->pingPongReplace ( "''" , "<i>" , "</i>" , $s ) ;
 
-        $s = preg_replace ( "/(^|\\n)==== ([^\\n]*) ====\s*(\\r|$)/" , "\\1<h4>\\2</h4>\\3" , $s ) ;
-        $s = preg_replace ( "/(^|\\n)=== ([^\\n]*) ===\s*(\\r|$)/" , "\\1<h3>\\2</h3>\\3" , $s ) ;
-        $s = preg_replace ( "/(^|\\n)== ([^\\n]*) ==\s*(\\r|$)/" , "\\1<h2>\\2</h2>\\3" , $s ) ;
-        $s = preg_replace ( "/(^|\\n)= ([^\\n]*) =\s*(\\r|$)/" , "\\1<h1>\\2</h1>\\3" , $s ) ;
+        $s = preg_replace ( "/(^|>|\\n)==== ([^\\n]*) ====\s*(\\r|<|$)/" , "\\1<h4>\\2</h4>\\3" , $s ) ;
+        $s = preg_replace ( "/(^|>|\\n)=== ([^\\n]*) ===\s*(\\r|<|$)/" , "\\1<h3>\\2</h3>\\3" , $s ) ;
+        $s = preg_replace ( "/(^|>|\\n)== ([^\\n]*) ==\s*(\\r|<|$)/" , "\\1<h2>\\2</h2>\\3" , $s ) ;
+        $s = preg_replace ( "/(^|>|\\n)= ([^\\n]*) =\s*(\\r|<|$)/" , "\\1<h1>\\2</h1>\\3" , $s ) ;
 
         $s = ereg_replace ( "\n====*" , "<hr>" , $s ) ;
 
