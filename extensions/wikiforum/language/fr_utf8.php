@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /* Wikiforum.php -- a basic forum extension for Mediawiki
  * Copyright 2004-2005 Guillaume Blanchard <aoineko@free.fr>
  *
