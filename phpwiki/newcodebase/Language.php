@@ -247,6 +247,9 @@ and the text of $3 articles.",
 "searchnext"	=> "next $1",
 "searchlinks"	=> "View ($1) ($2) search results.",
 "showingmatches" => "Showing below <b>$1</b> matches starting with #<b>$2</b>.",
+"nonefound"		=> "<strong>Note</strong>: an unsuccessful search may be
+caused by searching for common words like \"have\" and \"from\" that are
+not indexed.",
 
 # Preferences page
 #

@@ -70,9 +70,11 @@ class SearchEngine {
 		$sl = str_replace( "$2", $nlink, $sl );
 		$wgOut->addHTML( "<br>{$sl}\n" );
 
+		$foundsome = false;
 		if ( 0 == mysql_num_rows( $res1 ) ) {
 			$wgOut->addHTML( "<h2>" . wfMsg( "notitlematches" ) . "</h2>\n" );
 		} else {
+			$foundsome = true;
 			$off = $offset + 1;
 			$wgOut->addHTML( "<h2>" . wfMsg( "titlematches" ) . "</h2>\n" .
 			  "<ol start='{$off}'>" );
@@ -85,6 +87,7 @@ class SearchEngine {
 		if ( 0 == mysql_num_rows( $res2 ) ) {
 			$wgOut->addHTML( "<h2>" . wfMsg( "notextmatches" ) . "</h2>\n" );
 		} else {
+			$foundsome = true;
 			$off = $offset + 1;
 			$wgOut->addHTML( "<h2>" . wfMsg( "textmatches" ) . "</h2>\n" .
 			  "<ol start='{$off}'>" );
@@ -93,6 +96,9 @@ class SearchEngine {
 			}
 			mysql_free_result( $res2 );
 			$wgOut->addHTML( "</ol>\n" );
+		}
+		if ( ! $foundsome ) {
+			$wgOut->addHTML( "<p>" . wfMsg( "nonefound" ) . "\n" );
 		}
 		$wgOut->addHTML( "<p>{$sl}\n" );
 	}
