@@ -89,13 +89,14 @@ function wfSpecialDisambiguations()
 	$sql = "SELECT la.l_from,la.l_to,"
 		. " lb.l_from AS source,lb.l_to AS dest,"
 		. " c.cur_id, c.cur_title AS dt"
-		. " FROM links AS la, links AS lb, cur AS c"
+		. " FROM links AS la, links AS lb, cur AS c, cur AS d"
 		. " WHERE la.l_from=\"{$dp}\""
 		. " AND la.l_to=lb.l_to"
 		. " AND la.l_from<>lb.l_from"
 		. " AND c.cur_id=lb.l_to"
 		. " AND c.cur_namespace=0"
-#		. " AND c.cur_title NOT LIKE \"%isambiguat%\""
+		. " AND d.cur_title=lb.l_from"
+		. " AND d.cur_namespace=0"
 		. " LIMIT {$offset}, {$limit}";
 
 	$res = wfQuery( $sql, $fname );
