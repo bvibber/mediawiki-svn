@@ -23,8 +23,7 @@ class SkinCologneBlue extends Skin {
 
 		$s .= "<td class='top' align=left valign=center nowrap>";
 		$s .= "<a href=\"" . wfLocalUrlE( wfMsg( "mainpage" ) ) . "\">";
-		$s .= "<font color=white size='+5'><span id='sitetitle'>" .
-		  wfMsg( "sitetitle" ) . "</span></font></a>";
+		$s .= "<span id='sitetitle'>" . wfMsg( "sitetitle" ) . "</span></a>";
 
 		$s .= "</td><td class='top' align=right valign=bottom width='100%'>";
 		$s .= $this->sysLinks();
