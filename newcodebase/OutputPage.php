@@ -91,6 +91,9 @@ class OutputPage {
 		global $wgInputEncoding, $wgOutputEncoding;
 		$sk = $wgUser->getSkin();
 
+		header( "Expires: 0" );
+		header( "Cache-Control: no-cache" );
+		header( "Pragma: no-cache" );
 		if ( "" != $this->mRedirect ) {
 			header( "Location: {$this->mRedirect}" );
 			return;
@@ -98,21 +101,6 @@ class OutputPage {
 		$this->addHeader( "Content-type",
 		  "text/html; charset={$wgOutputEncoding}" );
 
-		$foundexp = false;
-		foreach( $this->mHeaders as $t ) {
-			header( $t );
-			if ( preg_match( "/^Expires:/", $t ) ) { $foundexp = true; }
-		}
-		if ( ! $foundexp ) {
-			# if ( $this->mIsarticle ) {
-			#	header( "Expires: " . $wgLang->rfc1123( time() + 3600 ) );
-			#	header( "Cache-Control: public" );
-			# } else {
-				header( "Expires: 0" );
-				header( "Cache-Control: no-cache" );
-				header( "Pragma: no-cache" );
-			# }
-		}
 		$exp = time() + $wgCookieExpiration;
 		foreach( $this->mCookies as $name => $val ) {
 			setcookie( $name, $val, $exp, "/" );
