@@ -486,15 +486,17 @@ $wikiVoteReason = "Reason to vote : " ;
 $wikiVoteBecause = ", because : <i>$1</i>" ;
 $wikiVoteMessage = "Vote by $2 for $1" ;
 $wikiVoteWarn = "<font size=+2>You did not say what you want to vote for! <a href=\"$1\">Try again</a>.</font>" ;
-$wikiVotes = array ( "deletion"=>"Votes for deletion" , "rewrite"=>"Votes for rewrite" , "wikify"=>"Votes for wikification" , "NPOV"=>"Votes for NPOVing" , "aotd"=>"Votes for article-of-the-day" ) ;
+$wikiVotes = array ( "deletion"=>"Votes for deletion", "rewrite"=>"Votes for rewrite" , "wikify"=>"Votes for wikification" , "NPOV"=>"Votes for NPOVing" , "aotd"=>"Votes for article-of-the-day" ) ;
 $wikiVoteAdded = "<font size=+2>$1 has been added to <a href=\"$2\">$3</a>!</font>" ;
 $wikiVoteError = "<font size=+2>Something went really wrong here!</font>" ;
+$wikiVoteHeadingPre = "I want to vote for ";
+$wikiVoteHeadingPost = " to be";
 $wikiVoteChoices = "
-<input type=radio value=delete name=voted>deleted<br>
-<input type=radio value=rewrite name=voted>rewritten<br>
-<input type=radio value=NPOV name=voted>NPOVed<br>
-<input type=radio value=wikify name=voted>wikified<br>
-<input type=radio value=aotd name=voted>article-of-the-day<br><br>
+<input type=radio value=delete name=voted> deleted<br>
+<input type=radio value=rewrite name=voted> rewritten for clarity<br>
+<input type=radio value=NPOV name=voted> rewritten to remove bias<br>
+<input type=radio value=wikify name=voted> wikified<br>
+<input type=radio value=aotd name=voted> recommended as article of the day<br><br>
 Reason to vote : <input type=text value=\"\" name=CommentBox size=20> <input type=submit value=\"Vote\" name=doVote>
 " ;
 
