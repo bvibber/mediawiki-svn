@@ -1,7 +1,7 @@
 [[dk:Historie]][[de:Geschichte]][[eo:Historio]][[fr:Histoire]][[pl:Historia]][[pt:História]][[nl:Geschiedenis]]
-&lt;b&gt;History&lt;/b&gt; is often used as a generic term for information about the past, e.g., as in &quot;geologic history of the Earth&quot;.  When used as a field of study, history refers to &quot;human history&quot;, which is the recorded past of human societies.  
+'''History''' is often used as a generic term for information about the past, e.g., as in "geologic history of the Earth".  When used as a field of study, history refers to human history, which is the recorded past of human societies.  
 
-The term &quot;history&quot; comes from the Greek ''historia,'' &quot;an account of one's inquiries,&quot; and  shares that [[etymology]] with the English word '''story.'''  
+The term "history" comes from the Greek ''historia'', "an account of one's inquiries", and  shares that [[etymology]] with the English word "story".
 
 Historians use many types of sources, including written or printed records, interviews ([[oral history]]), and [[archaeology]].    Different approaches may be more common in some periods than others, and the study of history has its fads and fashions (see [[historiography]], the history of history).  The events that occurred prior to human records are known as [[prehistory]].
 
@@ -81,10 +81,7 @@ A typical acedemic classification:
 You may also want to see [[dubious historical resources]] and [[historical myths]] for a list of false beliefs and histories which were once or are now popular and widespread, but which are proven to be false or dubious.
 
 ----
-See also: [[Archaeology]], [[Historian]]
-
-----
-What are our priorities for writing in this area?  To help develop a list of the most basic topics in History, please see [[History basic topics]].
+See also [[Archaeology]], [[Historian]].
 
 A guideline for contributions to Wikipedia in the field of history can be found at [[Wikipedia History standards]].
 

@@ -7,7 +7,7 @@ Engineers borrow from [[physics]] and [[mathematics]] to find suitable solutions
 
 Engineers try to project how an artifact will perform to its specification.  They use, among other things: computer simulations, destructive tests and stress tests.  Testing ensures the artifact will act as predicted.
 
-It is a myth that ''engineer'' originated to describe those who built [[engine|engines]].  In fact, the word derives from the Latin, &quot;ingeniosus,&quot; the root of the modern English word 'ingenious'.  An engineer was thus a clever, practical, problem solver.  The term later evolved to include all fields where the skills of application of the [[scientific method]] are used. 
+It is a myth that ''engineer'' originated to describe those who built [[engine|engines]].  In fact, the word derives from the Latin ''ingeniosus'', the root of the modern English word "ingenious".  An engineer was thus a clever, practical, problem solver.  The term later evolved to include all fields where the skills of application of the [[scientific method]] are used. 
 
 The main difference between [[technology]] and [[science]] is that the former is well understood and yields practical results while the latter tries to explain new and unexplained phenomena.  Engineers work on technology while scientists work on science.
 
@@ -57,7 +57,4 @@ Some engineering related topics are:
 *[[Rheology]]
 *[[SI unit]]
 *[[Thermodynamics]]
-
-----
-&lt;b&gt;What are our priorities for writing in this area?  To help develop a list of the most basic topics in Engineering, please see [[Engineering basic topics]].&lt;/b&gt; 
 

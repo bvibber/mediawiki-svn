@@ -1,5 +1,5 @@
 [[eo:Historio de Scienco kaj Teknologio]]
-The '''history of science and technology''' (HST) is a field of [[history]] which examines how humanity's understanding of the natural world has changed over the millennia, and how this understanding has allowed us to generate technologies which have modified that world. Sayings such as, &quot;Water runs downhill&quot; are attempts to formulate rules that describe the workings of nature.
+The '''history of science and technology''' (HST) is a field of [[history]] which examines how humanity's understanding of the natural world has changed over the millennia, and how this understanding has allowed us to generate technologies which have modified that world. Sayings such as, "Water runs downhill" are attempts to formulate rules that describe the workings of nature.
 
 From the philosophers of ancient times to the 21st century, science and technology advanced in fits and starts, bringing an ever-more comprehensive view of the world. Discoveries such as those of [[natural selection]], the structure of [[gene]]s and [[DNA]], and within [[psychology]] have radically altered how we humans see ourselves, often  conflicting with [[religion|religious]] views.
 New technologies let us visit other planets, travel faster than sound, and kill each other with greater efficiency. 
@@ -7,7 +7,7 @@ New technologies let us visit other planets, travel faster than sound, and kill 
 HST aims to understand how [[science]] and [[technology]] progress and how we form theories by studying the lessons of the past, while also exploring the socio-political and cultural environment within which scientists and technologists work.
 
 ==== Challenge to orthodoxy ====
-A minor but persistent theme in the history of science and technology has been the poor reception often given to men who espouse ideas contrary to the prevailing orthodoxy. The story of [[Galileo]] is a case in point. Other natural philosophers and astronomers, especially in Italy, were loathe to &quot;check&quot; their theories by looking through the newly-invented telescope. Even in modern times, with the near-univeral acceptance of the [[scientific method]] and huge research budgets from government, academia and industry, unpopular or offensive ideas are often given short shrift. 
+A minor but persistent theme in the history of science and technology has been the poor reception often given to men who espouse ideas contrary to the prevailing orthodoxy. The story of [[Galileo]] is a case in point. Other natural philosophers and astronomers, especially in Italy, were loathe to "check" their theories by looking through the newly-invented telescope. Even in modern times, with the near-univeral acceptance of the [[scientific method]] and huge research budgets from government, academia and industry, unpopular or offensive ideas are often given short shrift. 
 
 There is controversy over what the lesson of the Galileo story is. While some see Galileo's saga as an example of the arrogance of authority, others argue that today's rejection of such ideas can not be directly compared with examples such as Galileo. Theories which do follow the the principles of science closely, as Galileo did, are generally accepted however surprising they may be, whereas ideas that make yet unproven and seemingly unjustified assumptions are termed pseudoscience. 
 
@@ -17,7 +17,6 @@ Be that as it may, after a lapse of time even the most unpopular idea can become
  
 
 ==== Major areas/Sub-fields ====
-
 
 === [[Science]] ===
 *Life Sciences
@@ -113,7 +112,4 @@ Be that as it may, after a lapse of time even the most unpopular idea can become
 
 ----
 As History of X articles are written, please add them above, redirecting away from broader article.
-
-----
-What are our priorities for writing in this area?  To help develop a list of the most basic topics in History of Science and Technology, please see [[History of Science and Technology basic topics]].
 

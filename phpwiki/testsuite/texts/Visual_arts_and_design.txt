@@ -1,4 +1,4 @@
-Traditional visual arts (commonly called &quot;fine arts&quot;):
+Traditional visual arts (commonly called "fine arts"):
 :[[Painting]]
 :[[Ceramics]]
 :[[Sculpture]]
@@ -55,6 +55,3 @@ Traditional visual arts (commonly called &quot;fine arts&quot;):
 New Materials
 :[[Plastics in art]]
 :[[Body fluids in art]]
------
-What are our priorities for writing in this area?  To help develop a list of the most basic topics in Visual Arts and Design, please see [[Visual Arts and Design basic topics]].
-

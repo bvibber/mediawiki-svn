@@ -5,13 +5,11 @@ Computer science is a relatively new field with roots in [[electrical engineerin
 
 See [[computer scientist]] for a list of famous computer scientists.
 
-
 Major subfields include
 
 * Mathematical foundations
 ** [[Discrete mathematics]]
 ** [[Symbolic logic]]
-
 
 * Theoretical computer science
 ** [[Algorithmic information theory]]
@@ -21,14 +19,12 @@ Major subfields include
 ** [[Theory of computation]] (or ''theoretical computer science'')
 ** [[Type theory]]
 
-
 * Algorithms
 ** [[Algorithm|Algorithms]]
 ** [[Compiler|Compilers]]
 ** [[Lexical Analysis]]
 ** [[microprogram|Microprogramming]]
 ** [[Operating system|Operating systems]]
-
 
 * Applied computer science 
 ** [[Artificial intelligence]]
@@ -43,7 +39,6 @@ Major subfields include
 ** [[Program specification]]
 ** [[Program verification]]
 ** [[Software engineering]]
-
 
 * Specific techniques
 ** [[Benchmark]]
@@ -65,7 +60,4 @@ Related articles:
 * [[IEEE John von Neumann Medal]]
 * [[Computer jargon]]
 * [[jargon file|Computer slang]]
-
-----
-&lt;b&gt;What are our priorities for writing in this area?  To help develop a list of the most basic topics in computer science, please see [[Computer science basic topics]].&lt;/b&gt;
 

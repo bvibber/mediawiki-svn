@@ -18,23 +18,24 @@ However, this five-kingdom system is now considered by many to be outdated, and 
 
 :[[Archaea]] -- [[Eubacteria]] -- [[Eukaryota]]
 
-The distinction between life and non-life is difficult, there is also a series of intracellular &quot;[[parasites]]&quot; that are progressively less alive in terms of being [[metabolism|metabolically]] active:
+The distinction between life and non-life is difficult, there is also a series of intracellular "[[parasites]]" that are progressively less alive in terms of being [[metabolism|metabolically]] active:
 
 :[[virus (biology)|viruses]] -- [[Viroid]]s -- [[Prion]]s
 
-'''Major Branches of Biology'''
+== Major Branches of Biology ==
+
 :[[Aerobiology]] -- [[Anatomy]] -- [[Anthropology]] -- [[Astrobiology]] -- [[Biochemistry]] -- [[Bionics]] -- [[Biogeography]] -- [[Biophysics]]-- [[Biotechnology]] -- [[Botany]] -- [[Cell biology]] -- [[Chorology]] -- [[Cladistics]] -- [[Cytology]] -- [[Developmental biology]] -- [[Ecology]] ([[Symbiology]], [[Autecology]])-- [[Ethology]] -- [[Evolution]] (Evolutionary biology) --[[Evo-devo]] (Evolution of Development)-- [[Genetics]] ([[Genomics]], [[Proteomics]]) -- [[Histology]] -- [[Immunology]] -- [[Infectious disease]] ([[Pathology]], [[Epidemiology]])-- [[Limnology]] -- [[Marine biology]] -- [[Microbiology]] ([[Bacteriology]]) -- [[Molecular Biology]] -- [[Mycology]] / [[Lichenology]] -- [[Neuroscience]] -- [[Oncology]] (the study of cancer) -- [[Ontogeny]] -- [[Paleontology]] ([[Palaeobotany]], [[Palaezoology]])-- [[Phycology]] (Algology) -- [[Phylogeny]] ([[Phylogenetics]], [[Phylogeography]]) -- [[Physiology]] -- [[Phytopathology]] -- [[Structural biology]] -- [[Taxonomy]] -- [[Toxicology]] (the study of poisons and [[pollution]]) -- [[Virology]] -- [[Zoology]]; related: [[medicine]]
 
-'''People and History''' 
-:[[List_of_biologists|Famous biologists]] -- [[History of biology]] -- [[Nobel_Prize/Physiology_or_medicine|Nobel prize in physiology or medicine]] -- [[Timeline of biology and organic chemistry]]
+== People and History ==
 
+:[[List_of_biologists|Famous biologists]] -- [[History of biology]] -- [[Nobel_Prize/Physiology_or_medicine|Nobel prize in physiology or medicine]] -- [[Timeline of biology and organic chemistry]]
 
 What are our priorities for writing in this area?  To help develop a list of the most basic topics in Biology, please see [[Biology basic topics]].
 
-----
-'''Resources:'''
+== Resources ==
+
 * David R. Maddison: ''The Tree of Life'', http://phylogeny.arizona.edu/. A multi-authored, distributed Internet project containing information about phylogeny and biodiversity.
-* Lynn Margulis: ''Five Kingdoms: An Illustrated Guide to the Phyla of Life on Earth, 3rd ed.'', W H Freeman &amp;amp; Co 1998. 
+* Lynn Margulis: ''Five Kingdoms: An Illustrated Guide to the Phyla of Life on Earth, 3rd ed.'', W H Freeman &amp; Co 1998. 
 * Neil Campbell: ''Biology: Concepts and Connections, 3rd ed.'', Benjamin/Cummings 2000. A college-level textbook.
 * John W. Kimball: ''Kimball's Biology Pages'', http://www.ultranet.com/~jkimball/BiologyPages/. A searchable online textbook.
 * Charles Darwin: ''The Origin of Species''

@@ -1,7 +1,7 @@
 [[de:Musik]][[eo:Muziko]][[fr:Musique]][[nl:Muziek]][[pl:Muzyka]][[pt:Música]]
 Broadly speaking, '''music''' is any artful or entertaining arrangement of [[sound|sounds]], deliberate or otherwise. The actual [[definition of music]] is hotly contested.
 
-We can define &quot;music&quot; more formally as a series of organized sounds and silences temporal in nature, which those who know it can reproduce.
+We can define "music" more formally as a series of organized sounds and silences temporal in nature, which those who know it can reproduce.
 
 All music also has some varying degree of [[rhythm]] and [[melody]]. [[Harmony]] is often added.
 The following are [[Music basic topics|music-related topics]]:
@@ -16,9 +16,4 @@ The following are [[Music basic topics|music-related topics]]:
 * [[Sound reproduction]]
 
 The academic study of music is called [[Musicology]].
-
-
-
-
-
 

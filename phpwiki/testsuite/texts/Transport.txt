@@ -1,6 +1,5 @@
 '''Transport''', or '''transportation''' (as it is called in the United States), is the movement of people and goods from one place to another. The term is derived from the [[Latin]] ''Trans'' meaning ''across'' and ''Portare'' meaning ''carrying'' . Motor Vehicles, Trains, Airplanes, and Ships are the most common modes of modern transport.  Transport and [[communication]] are both substitutes and complements, the growth in transport would be impossible without communication, and the increase of one generally leads to more of the other.
 
-
 * General
 ** [[Civil engineering]]
 ** [[Department of Transportation]]
@@ -158,9 +157,5 @@
 ** [[Teleportation]]
 ** [[Starship]]
 
-
 (STILL NEEDS MUCH WORK)
-
-----
-What are our priorities for writing in this area?  To help develop a list of the most basic topics in transport, please see [[transport basic topics]].
 
