@@ -733,16 +733,21 @@ enctype='application/x-www-form-urlencoded'>
 
 		$t = $wgTitle->getPrefixedURL();
 		$q = "action=delete";
-		if ( $image ) { $q .= "&image={$image}"; }
-		if ( $oldimage ) { $q .= "&oldimage={$oldimage}"; }
 
-		$action = wfEscapeHTML( wfLocalUrl( $t, $q ) );
+		if ( $image ) {
+			$q .= "&image={$image}";
+		} else if ( $oldimage ) {
+			$q .= "&oldimage={$oldimage}";
+		} else {
+			$q .= "&title={$t}";
+		}
+		$formaction = wfEscapeHTML( wfLocalUrl( "", $q ) );
 		$confirm = wfMsg( "confirm" );
 		$check = wfMsg( "confirmcheck" );
 		$delcom = wfMsg( "deletecomment" );
 
 		$wgOut->addHTML( "
-<form method=post action=\"{$action}\">
+<form method=post action=\"{$formaction}\">
 <table border=0><tr><td align=right>
 {$delcom}:</td><td align=left>
 <input type=text size=20 name='wpReason' value=\"{$wpReason}\">
@@ -764,10 +769,6 @@ enctype='application/x-www-form-urlencoded'>
 		$fname = "Article::doDelete";
 
 		if ( $image ) {
-			if ( "" == trim( $image ) ) {
-				$wgOut->fatalError( wfMsg( "cannotdelete" ) );
-				return;
-			}
 			$dest = wfImageDir( $image );
 			$archive = wfImageDir( $image );
 			if ( ! unlink( "{$dest}/{$image}" ) ) {
@@ -839,7 +840,7 @@ enctype='application/x-www-form-urlencoded'>
 		$t = wfStrencode( $title->getDBkey() );
 		$id = $title->getArticleID();
 
-		if ( 0 == $id || "" == $t ) {
+		if ( "" == $t ) {
 			$wgOut->fatalError( wfMsg( "cannotdelete" ) );
 			return;
 		}
