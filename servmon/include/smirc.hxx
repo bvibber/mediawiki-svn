@@ -8,11 +8,14 @@
 
 namespace smirc {
 
+struct irctrmsrv;
+	
 class ircclnt {
 public:
 	ircclnt(std::string const& serv, int port);
 	ircclnt();
-
+	~ircclnt();
+	
 	void nick(str pnick);
 	void nick(str pnick, str snick);
 
@@ -22,6 +25,8 @@ public:
 	void msg(int level, str message);
 	void msg(str channel, str message);
 
+	void command_reply(str msg);
+	
 private:
 	bool rdline(strr l);
 	void doregister(void);
@@ -35,14 +40,21 @@ private:
 		std::vector<std::string> args;
 	};
 	void cb_001(cbdata&);
+	void cb_ping(cbdata&);
+	void cb_privmsg(cbdata&);
 	typedef boost::function<void(cbdata&)> cbtype;
 
 	std::map<std::string, cbtype> cbs;
 	std::string name;
 	std::string linebuf;
+	std::string mynick;
+	std::string replyto;
 	bool cip;
 	smnet::inetclntp sckt;
 	std::string pnick, snick;
+
+	/* stuff for IRC command execution */
+	irctrmsrv *trmpimpl;
 };
 
 typedef b::shared_ptr<ircclnt> ircclntp;

@@ -1182,9 +1182,9 @@ mcm_hash_key(const struct memcache_ctxt *ctxt, const char *key, const size_t len
   MD5(key, len, res);
 
   /* convert to ascii */
-  for (j = 0; i < MD5_DIGEST_LENGTH; ++i) {
-    sprintf(&(result[i*2]), "%x", (int)(res[i] & 0xF0));
-    sprintf(&(result[(i*2)+1]), "%x", (int)(res[i] & 0x0F));
+  for (j = 0; j < MD5_DIGEST_LENGTH; ++j) {
+    sprintf(&(result[j*2]), "%x", (int)(res[j] & 0xF0));
+    sprintf(&(result[(j*2)+1]), "%x", (int)(res[j] & 0x0F));
   }
 
   /* take the first 8 bytes */

@@ -16,6 +16,10 @@ namespace smtrm {
 template<class tt>
 class handler_node;
 
+struct non_interactive_terminal : std::runtime_error {
+	non_interactive_terminal() : std::runtime_error("terminal does not support interaction") {}
+};
+	
 template<class tt>
 class comdat {
 public:
@@ -165,25 +169,26 @@ struct tmcmds : public smutl::singleton<tmcmds<tt> > {
 #include "../smstdrt.cxx"
 	tmcmds() {
 /* standard mode commands */
-stdrt.install("show", "Show operational information");
-stdrt.install("show version", cmd_show_version(), "Show software version");
+basrt.install("show", "Show operational information");
+basrt.install("show version", cmd_show_version(), "Show software version");
+basrt.install("show irc", "Show IRC-related information");
+basrt.install("show irc server %s", cfg_irc_showserver(), "Describe a configured server");
+basrt.install("show irc server", cfg_irc_showserver(), "Describe all configured servers");
+basrt.install("show irc channels", cfg_irc_showchannels(), "Show configured channels");
+basrt.install("show monitor", "Show monitoring information");
+basrt.install("show monitor server", cfg_monit_showservers(), "Show monitored servers");
+basrt.install("show monitor server %s", cfg_monit_showservers(), "Show information for a particular server");
+basrt.install("show monitor intervals", cfg_monit_showintervals(), "Show monitoring intervals");
+basrt.install("show querybane", "Show QueryBane information");
+basrt.install("show querybane rule", "Show a specific rule");
+basrt.install("show querybane rule %s", cfg_qb_show_rule(), "Rule name");
+basrt.install("show querybane rules", cfg_qb_show_rule(), "Show all QueryBane rules");
+basrt.install("show memcache", "Show memcache client information");
+basrt.install("show memcache server-list-command", cfg_mc_show_server_list_command(), "Show server list command");
+basrt.install("show parser", "Show MediaWiki parser-related information");
+basrt.install("show parser cache-statistics", cfg_mc_show_parser_cache(), "Show parser cache hit statistics");
+stdrt = basrt;
 stdrt.install("exit", cmd_exit(), "End session");
-stdrt.install("show irc", "Show IRC-related information");
-stdrt.install("show irc server %s", cfg_irc_showserver(), "Describe a configured server");
-stdrt.install("show irc server", cfg_irc_showserver(), "Describe all configured servers");
-stdrt.install("show irc channels", cfg_irc_showchannels(), "Show configured channels");
-stdrt.install("show monitor", "Show monitoring information");
-stdrt.install("show monitor server", cfg_monit_showservers(), "Show monitored servers");
-stdrt.install("show monitor server %s", cfg_monit_showservers(), "Show information for a particular server");
-stdrt.install("show monitor intervals", cfg_monit_showintervals(), "Show monitoring intervals");
-stdrt.install("show querybane", "Show QueryBane information");
-stdrt.install("show querybane rule", "Show a specific rule");
-stdrt.install("show querybane rule %s", cfg_qb_show_rule(), "Rule name");
-stdrt.install("show querybane rules", cfg_qb_show_rule(), "Show all QueryBane rules");
-stdrt.install("show memcache", "Show memcache client information");
-stdrt.install("show memcache server-list-command", cfg_mc_show_server_list_command(), "Show server list command");
-stdrt.install("show parser", "Show MediaWiki parser-related information");
-stdrt.install("show parser cache-statistics", cfg_mc_show_parser_cache(), "Show parser cache hit statistics");
 eblrt = stdrt;
 stdrt.install("enable", cmd_enable(), "Enter privileged mode");
 
@@ -272,6 +277,7 @@ memrt.install("server-list-command %S", cfg_mc_server_list_command(), "Command n
 memrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit memcache configuration mode");
 
 	}
+	handler_node<tt> basrt;
 	handler_node<tt> stdrt;
 	handler_node<tt> eblrt;
 	handler_node<tt> cfgrt;

@@ -20,6 +20,10 @@ struct scktcls : public std::exception {
 	scktcls(void) {}
 };
 
+struct wouldblock : public sckterr {
+	wouldblock() : sckterr("operation would block") {}
+};
+	
 class smpx;
 
 class bsd : noncopyable {
@@ -98,8 +102,14 @@ private:
 		if (!rdbuf.empty()) return 0;
 		rdbuf.resize(maxrd);
 		int i = read(s, &rdbuf[0], maxrd);
+		std::cerr << "_need_data: read " << i << " bytes\n";
 		if (i == 0) throw scktcls();
-		else if (i < 0) throw sckterr();
+		else if (i < 0) {
+			if (errno == EAGAIN || errno == EWOULDBLOCK)
+				throw wouldblock();
+			else
+				throw sckterr();
+		}
 		rdbuf.resize(i);
 		return i;
 	}

@@ -4,9 +4,99 @@
 #include "smutl.hxx"
 #include "smcfg.hxx"
 #include "smnet.hxx"
+#include "smtrm.hxx"
 
 namespace smirc {
 
+	struct irctrmsrv {
+		ircclnt& client;
+
+		smtrm::comdat<irctrmsrv> cd;
+		typedef smtrm::handler_node<irctrmsrv> handler_node_t;
+		handler_node_t cmds_root;
+
+		irctrmsrv(ircclnt& client_)
+			: client(client_)
+			, cmds_root(SMI(smtrm::tmcmds<irctrmsrv>)->basrt)
+			, cd(*this)
+			{
+			}
+
+		void chgrt(smtrm::handler_node<irctrmsrv>* newrt, std::string const& prompt) {
+			cmds_root = *newrt;
+		}
+		
+		void parse(str line) {
+			std::string ln = line;
+			if (!ln.size()) return;
+			int wild;
+			bool b = true;
+			std::vector<handler_node_t *> matches;
+			std::string precar, word;
+			handler_node_t *here = &cmds_root;
+			int herelen = 0;
+			for (;;) {
+				precar = ln;
+				word = smutl::car(ln);
+				if (!word.size()) break;
+				matches = here->find_matches(word, wild);
+
+				if (matches.size() > 1) {
+					wrtln(line);
+					wrtln(std::string(herelen, ' ') + '^');
+					wrtln("% [E] Ambiguous command.");
+					return;
+				} else if (matches.size() == 0) {
+					wrtln(line);
+					wrtln(std::string(herelen, ' ') + '^');
+					wrtln("% [E] Unknown command.");
+					return;
+				}
+				herelen += word.size() + 1;
+				here = matches[0];
+
+				if (wild == 1)
+					cd.add_p(word);
+				else if (wild == 2) {
+					cd.add_p(precar);
+					break;
+				}
+			}
+
+			if (!here->terminal) {
+				wrtln(line);
+				wrtln(std::string(herelen, ' ') + '^');
+				wrtln("% [E] Incomplete command.");
+				return;
+			}
+			b = matches[0]->terminal->execute(cd);
+		}
+		
+		/* parser bookkeeping */
+		str getdata(void) { static std::string nulldata = ""; return nulldata; }
+		void setdata(str) {}
+		void echo(bool) {}
+
+		void wrt(str msg) const {
+			client.command_reply(msg);
+		}
+		void wrtln(str msg) const {
+			wrt(msg);
+		}
+		void warn(str msg) const {
+			wrt("% [W] " + msg);
+		}
+		void inform(str msg) const {
+			wrt("% [I] " + msg);
+		}
+		void error(str msg) const {
+			wrt("% [E] " + msg);
+		}
+		void readline(boost::function<void(irctrmsrv&, std::string const&)>) {
+			throw smtrm::non_interactive_terminal();
+		}
+	};
+	
 void
 ircclnt::nick(str pnick_)
 {
@@ -25,9 +115,14 @@ bool
 ircclnt::rdline(strr l) {
 	char c;
 	try {
-		c = sckt->rd1();
-                if (c != '\r' && c != '\n') linebuf += c;
-		else { l = linebuf; linebuf = ""; return true; }
+		for (;;) {
+			c = sckt->rd1();
+			std::cerr << "read byte: ["<<c<<"]\n";
+			if (c != '\r' && c != '\n') linebuf += c;
+			else { l = linebuf; linebuf = ""; return true; }
+		}
+	} catch (smnet::wouldblock&) {
+		return false;
 	} catch (smnet::sckterr& e) {
 		std::cerr << "read error: " << e.what();
 	}
@@ -62,8 +157,10 @@ ircclnt::part(str channel)
 }
 
 void
-ircclnt::cb_001(cbdata&)
+ircclnt::cb_001(cbdata& cd)
 {
+	if (cd.args.size() < 1) return; /* XXX broken server .. error? */
+	mynick = cd.args[0];
 	try {
 		std::set<std::string> chans = SMI(smcfg::cfg)->fetchlist("/irc/channels");
 		FE_TC_AS(std::set<std::string>, chans, i)
@@ -72,6 +169,35 @@ ircclnt::cb_001(cbdata&)
 	}
 }
 
+void
+ircclnt::cb_ping(cbdata& cd)
+{
+	sckt->wrt("PONG :" + cd.args[0]);
+}
+
+void
+ircclnt::cb_privmsg(cbdata& cd)
+{
+	if (cd.args.size() < 2) return;
+	std::string target = cd.args[0];
+	std::string text = cd.args[1];
+	std::cerr << "privmsg to ["<<target<<"] text=["<<text<<"]\n";
+	std::string firstword = smutl::car(text);
+	std::cerr << "firstword: ["<<firstword<<"] mynick: ["<<mynick<<"]\n";
+	replyto = target;
+	if (firstword != mynick && firstword != "servmon")
+		return;
+	trmpimpl->parse(text);
+}
+
+void
+ircclnt::command_reply(str msg)
+{
+	if (!replyto.size()) return;
+	if (!sckt) return;
+	sckt->wrt("PRIVMSG " + replyto + " :" + msg + "\r\n");
+}
+	
 void
 ircclnt::msg(str channel, str message)
 {
@@ -146,9 +272,12 @@ ircclnt::parseline(std::string line)
 }
 
 ircclnt::ircclnt(std::string const& serv, int port)
+	: trmpimpl(new irctrmsrv(*this))
 {
 	name = serv;
 	cbs["001"] = b::bind(&ircclnt::cb_001, this, _1);
+	cbs["PING"] = b::bind(&ircclnt::cb_ping, this, _1);
+	cbs["PRIVMSG"] = b::bind(&ircclnt::cb_privmsg, this, _1);
 	pnick = SMI(smcfg::cfg)->fetchstr("/irc/server/"+serv+"/nickname");
 	std::cerr << "ircclnt: connecting to "<<serv<<":"<<port<<"...\n";
 	sckt = smnet::inetclntp(new smnet::inetclnt);
@@ -159,6 +288,11 @@ ircclnt::ircclnt(std::string const& serv, int port)
 	boost::function<void(smnet::inetclntp, int)> f =
 			boost::bind(&ircclnt::data_cb, this, _2);
 	SMI(smnet::smpx)->add(f, sckt, smnet::smpx::srd /*| smnet::smpx::swr*/);
+}
+
+ircclnt::~ircclnt()
+{
+	delete trmpimpl;
 }
 
 ircclnt::ircclnt(void)
