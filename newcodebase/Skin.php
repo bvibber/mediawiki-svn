@@ -228,7 +228,8 @@ class Skin {
 		$s .= $this->bottomLinks();
 		$s .= "\n<br>" . $this->mainPageLink()
 		  . " | " . $this->specialLink( "recentchanges" )
-		  . " | " . $this->searchForm();
+		  . " | " . $this->searchForm()
+		  . "<br>" . $this->pageStats();
 
 		$s .= "</td>";
 		if ( 2 == $qb ) { # Right
