@@ -18,7 +18,7 @@ class WikiUser {
 
 	# This sets the options for the standard skin
 	function skinBlank () {
-		$this->options["background"] = " BGCOLOR=#FFFFFF" ;
+		$this->options["background"] = " BGCOLOR=\"#FFFFFF\"" ;
 		$this->options["text"] = "" ;
 		$this->options["forceQuickBar"] = "" ;
 		$this->options["quickBarBackground"] = "" ;
@@ -26,24 +26,24 @@ class WikiUser {
 		$this->options["forceLinks"] = "" ;
 		$this->options["leftImage"] = "" ;
 		$this->options["borderColor"] = "black" ;
-		$this->options["tabLine0"] = " bgcolor=#BBBBBB " ;
+		$this->options["tabLine0"] = " bgcolor=\"#BBBBBB\" " ;
 		$this->options["tabLine1"] = "" ;
-		$this->options["tabLine2"] = " bgcolor=#FFFFCC" ;
+		$this->options["tabLine2"] = " bgcolor=\"#FFFFCC\"" ;
 		}
 
 	# This sets the options for the StarTrek skin
 	function skinStarTrek () {
-		$this->options["background"] = " BGCOLOR=#000000 " ;
-		$this->options["text"] = " TEXT=#00BB00 " ;
+		$this->options["background"] = " BGCOLOR=\"#000000\" " ;
+		$this->options["text"] = " TEXT=\"#00BB00\" " ;
 		$this->options["forceQuickBar"] = "left" ;
 		$this->options["quickBarBackground"] = " bgcolor=yellow " ;
-		$this->options["textTableBackground"] = " bgcolor=#444444" ;
+		$this->options["textTableBackground"] = " bgcolor=\"#444444\"" ;
 		$this->options["forceLinks"] = " style=\"color:#0000FF;text-decoration:none\" " ;
 		$this->options["leftImage"] = "startrek.png" ;
 		$this->options["borderColor"] = "yellow" ;
-		$this->options["tabLine0"] = " bgcolor=#550055 " ;
+		$this->options["tabLine0"] = " bgcolor=\"#550055\" " ;
 		$this->options["tabLine1"] = "" ;
-		$this->options["tabLine2"] = " bgcolor=#333333" ;
+		$this->options["tabLine2"] = " bgcolor=\"#333333\"" ;
 		}
 
 #### Management functions
@@ -90,7 +90,8 @@ class WikiUser {
 		if ( $this->options["resultsPerPage"] == "" ) $this->options["resultsPerPage"] = "20" ;
 		if ( $this->options["skin"] == "" ) $this->options["skin"] = "None" ;
 		if ( $this->options["hourDiff"] == "" ) $this->options["hourDiff"] = "0" ;
-		if ( $this->options["numberHeadings"] == "" ) $this->options["numberHeadings"] = "yes" ;
+		if ( $this->options["encoding"] == "") $this->options["encoding"] = 0;
+		if ( $this->options["numberHeadings"] == "" ) $this->options["numberHeadings"] = "no" ;
 		if ( $this->options["viewFrames"] == "" ) $this->options["viewFrames"] = "no" ;
 
 #		if ( $this->options["showStructure"] == "" ) # NO SUBPAGES ANYMORE

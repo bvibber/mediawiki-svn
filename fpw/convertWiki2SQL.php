@@ -2,6 +2,7 @@
 $THESCRIPT = "wiki.phtml" ;
 #include ( "./specialPages.php" ) ;
 include ( "./databaseFunctions.php" ) ;
+include ( "./basicFunctions.php" ) ;
 include ( "./wikiTitle.php" ) ;
 include ( "./wikiPage.php" ) ;
 include ( "./wikiUser.php" ) ;
@@ -84,6 +85,7 @@ function fixLinks ( $s ) {
 			$link = $c[0] ;
 			if ( substr ( $link , 0 , 1 ) == "/" ) { # Converting subpages
 				$u = explode ( "/" , $npage->title ) ;
+				if ( count ( $c ) == 1 ) array_push ( $c , substr ( $link , 1 ) ) ;
 				$link = $u[0].$link ;
 				}
 			if ( ucfirst ( str_replace ( "_" , " " , $link ) ) == $backLink ) $backLink = "" ; # No backlink necessary
@@ -150,14 +152,13 @@ function storeInDB ( $title , $text ) {
 	# Move talk pages to talk namespace
 	$talk = explode ( "/" , $st ) ;
 	if ( $talk[0] == "HomePage" ) { $talk[0] = "Main_Page" ; $st = $talk[0] ; }
-	if( count ( $talk ) == 2 and strtolower($talk[1]) == "talk" ) $st = "Talk:".$talk[0] ;
+	if ( count ( $talk ) == 2 and $talk[1] == "Talk" ) $st = "Talk:".$talk[0] ;
+	if ( count ( $talk ) == 2 and $talk[1] == "talk" ) return ;
 
 	$sql = "INSERT INTO cur (cur_title,cur_text,cur_comment,cur_user,cur_user_text,cur_old_version,cur_minor_edit,cur_linked_links,cur_unlinked_links) VALUES ";
 	$sql .= "(\"$st\",\"$text\",";
 	$sql .= "\"Automated conversion\",0,\"conversion script\",0,1,\"$ll1\",\"$ull1\");\n" ;
 	fwrite ( $of , $sql ) ;
-#	print " (".count($ll)."/".count($ull).")" ;
-#	if ( count ( $ull ) != 0 ) print "!!" ;
 	}
 
 function getTopics ( $dir ) {
@@ -185,10 +186,15 @@ function dir2DB ( $letter )  {
 	$a = getTopics ( "$rootDir/$letter" ) ;
 	print "Reading :\n" ;
 	foreach ( $a as $an ) {
-		print "$an" ;
-		$fn = getFileName ( $an ) ;
-		storeInDB ( $an , scantext2 ( $fn ) ) ;
-		print "\n" ;
+		$fl = substr ( $an , 0 , 1 ) ;
+		if ( $fl >= "a" and $fl <= "z" ) {
+			print "IGNORING LOWERCASE FIRST FILE : $an\n" ;
+		} else {
+			print "$an" ;
+			$fn = getFileName ( $an ) ;
+			storeInDB ( $an , scantext2 ( $fn ) ) ;
+			print "\n" ;
+			}
 		}
 	print "\n" ;
 	}
@@ -203,7 +209,8 @@ function getAllTopics () {
 # MAIN PROGRAM
 	global $rootDir ;
 #	$rootDir = "/home/groups/w/wi/wikipedia/htdocs/fpw/wiki-de/lib-http/db/wiki/page/" ;
-	$rootDir = "/home/manske/wiki/lib-http/db/wiki/page/" ;
+#	$rootDir = "/home/manske/wiki/lib-http/db/wiki/page/" ;
+	$rootDir = "/stuff/wiki/lib-http/db/wiki/page/" ;
 
 	global $ll , $ull , $allTopics ;
 	$ll = array () ;

@@ -37,7 +37,7 @@ class WikiTitle {
 		return false ;
 		}
 
-	# Can the current user protect this page? (NOT USED YET)
+	# Can the current user protect this page?
 	function canProtect () {
 		global $action , $user ;
 		global $oldID ; if ( isset ( $oldID ) ) return false ;
@@ -80,7 +80,7 @@ class WikiTitle {
 
 	# Converts the secure title to an even more secure one (URL-style)
 	function makeURL () {		
-		$this->url = nurlencode ( $this->secureTitle ) ;
+		$this->url = urlencode ( $this->secureTitle ) ; # Changed by Brion, from nurlencode
 		}
 
 	# Converts a secure title back to a nice-looking one
@@ -131,10 +131,11 @@ class WikiTitle {
 
 	# OUTDATED!!! BUT LEAVE IT!!
 	function getMainTitle () {
-		$r = $this->title ;
+		return $this->title ;
+#		$r = $this->title ;
 #		if ( strstr (  $r , ":" ) == false and $this->hasNamespace and $this->namespace != "" ) $r = $this->namespace.":$r" ;
 #		if ( $this->subpageTitle != "" ) $r .= "/".$this->subpageTitle ;
-		return $r ;
+#		return $r ;
 		}
 
 	# Checks the database if this topic already exists
