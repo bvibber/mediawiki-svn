@@ -773,15 +773,29 @@ class Skin {
 		if ( -1 == $tns ) { return ""; }
 
 		$pn = $wgTitle->getText();
-		$tp = wfMsg( "talkpage" );
-		$sp = wfMsg( "subjectpage" );
-
+		$tp = wfMsg( "talkpage" );		
 		if ( Namespace::isTalk( $tns ) ) {
 			$lns = Namespace::getSubject( $tns );
-			$text = $sp;
+			switch($tns) {
+				case 1:
+				$text = wfMsg("articlepage");
+				break;
+				case 3:
+				$text = wfMsg("userpage");
+				break;
+				case 5: 
+				$text = wfMsg("wikipediapage");
+				break;
+				case 7:
+				$text = wfMsg("imagepage");
+				break;
+				default:
+				$text= wfMsg("articlepage");
+			}
 		} else {
+			
 			$lns = Namespace::getTalk( $tns );
-			$text = $tp;
+			$text=$tp;			
 		}
 		$n = $wgLang->getNsText( $lns );
 		if ( "" == $n ) { $link = $pn; }
