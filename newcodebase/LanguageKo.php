@@ -7,13 +7,21 @@
 /* private */ $wgNamespaceNamesKo = array(
 	-1	=> "Special",
 	0	=> "",
-	1	=> "토론",
-	2	=> "사용자",
-	3	=> "사용자토론",
-	4	=> "위키백과",
-	5	=> "위키백과토론",
-	6	=> "그림",
-	7	=> "그림토론"
+	1	=> "Talk",
+	2	=> "User",
+	3	=> "User_talk",
+	4	=> "Wikipedia",
+	5	=> "Wikipedia_talk",
+	6	=> "Image",
+	7	=> "Image_talk"
+# Non-ASCII chars don't work yet in namespaces. This is a bug that will be fixed.
+#	1	=> "토론",
+#	2	=> "사용자",
+#	3	=> "사용자토론",
+#	4	=> "위키백과",
+#	5	=> "위키백과토론",
+#	6	=> "그림",
+#	7	=> "그림토론"
 );
 
 /* private */ $wgDefaultUserOptionsKo = array(
