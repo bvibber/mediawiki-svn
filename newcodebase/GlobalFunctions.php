@@ -301,6 +301,7 @@ function wfImageArchiveDir( $fname )
 
 function wfRecordUpload( $name, $oldver, $size, $desc )
 {
+	# *** TODO: Merge logpage code with deletion log and make a general function ***
 	global $wgUser, $wgLang, $wgTitle, $wgOut;
 	$fname = "wfRecordUpload";
 
@@ -321,16 +322,25 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 		  wfStrencode( $name ) . "'";
 		$res = wfQuery( $sql, $fname );
 		if ( 0 == wfNumRows( $res ) ) {
-			$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
-			  "cur_comment,cur_user,cur_user_text,cur_timestamp,cur_minor_edit," .
-			  "cur_counter,cur_restrictions,cur_ind_title,cur_is_redirect," .
-			  "cur_is_new) VALUES (" . Namespace::getImage() . ",'" .
-			  wfStrencode( $name ) . "','" . wfStrencode( $desc ) . "','" .
+			$now = date( "YmdHis" );
+            $common =
+			  Namespace::getImage() . ",'" .
+			  wfStrencode( $name ) . "','" .
 			  wfStrencode( $desc ) . "','" . $wgUser->getID() . "','" .
-			  wfStrencode( $wgUser->getName() ) . "','" . date( "YmdHis" ) .
-			  "',0,0,'','" . wfStrencode( Title::indexTitle( Namespace::getImage(), $name ) ) .
-			  "',0,0)";
+			  wfStrencode( $wgUser->getName() ) . "','" . $now .
+			  "',1";
+			$sql = "INSERT INTO cur (cur_namespace,cur_title," .
+			  "cur_comment,cur_user,cur_user_text,cur_timestamp,cur_is_new," .
+			  "cur_ind_title,cur_text) VALUES (" .
+			  $common .
+			  ",'" . wfStrencode( Title::indexTitle( Namespace::getImage(), $name ) ) .
+			  "','" . wfStrencode( $desc ) . "')";
 			wfQuery( $sql, $fname );
+			$id = wfInsertId() or 0; # We should throw an error instead
+			$sql = "INSERT INTO recentchanges (rc_namespace,rc_title,
+				rc_comment,rc_user,rc_user_text,rc_timestamp,rc_new,
+				rc_cur_id,rc_cur_time) VALUES ({$common},{$id},'{$now}')";
+            wfQuery( $sql, $fname );
 		}
 	} else {
 		$s = wfFetchObject( $res );
@@ -360,10 +370,13 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 
 	if ( 0 == wfNumRows( $res ) ) {
 		# TODO: Error: need Upload log article
+		$id = 0;
+		$text = wfMsg( "uploadlogpagetext" );
+	} else {
+		$s = wfFetchObject( $res );
+		$text = $s->cur_text;
+		$id = $s->cur_id;
 	}
-	$s = wfFetchObject( $res );
-	$text = $s->cur_text;
-	$id = $s->cur_id;
 
 	$uid = $wgUser->getID();
 	$ut = $wgUser->getName();
@@ -389,11 +402,26 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 
 	$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}{$com}</li>\n{$m[2]}";
 
-	$sql = "UPDATE cur SET cur_timestamp='" . date( "YmdHis" ) .
-	  "', cur_user={$uid}, cur_user_text='" .wfStrencode( $ut ) .
-	  "', cur_text='" . wfStrencode( trim( $text ) ) . "', " .
-	  "cur_comment='" . wfStrencode( $lcom ) . "' " .
-	  "WHERE cur_id={$id}";
+	if($id == 0) {
+		$sql = "INSERT INTO cur (cur_timestamp,cur_user,cur_user_text,
+			cur_namespace,cur_title,cur_text,cur_comment) VALUES ('{$now}', {$uid}, '" .
+			wfStrencode( $ut ) . "', 4, '{$logpage}', '" .
+			wfStrencode( trim( $text ) ) . "', '" .
+			wfStrencode( $lcom ) . "')";
+	} else {
+		$sql = "UPDATE cur SET cur_timestamp='" . date( "YmdHis" ) .
+		  "', cur_user={$uid}, cur_user_text='" .wfStrencode( $ut ) .
+		  "', cur_text='" . wfStrencode( trim( $text ) ) . "', " .
+		  "cur_comment='" . wfStrencode( $lcom ) . "' " .
+		  "WHERE cur_id={$id}";
+	}
+	wfQuery( $sql, $fname );
+	
+	if($id == 0) $id = wfInsertId();
+	$sql = "INSERT INTO recentchanges (rc_timestamp,rc_cur_time,
+		rc_user,rc_user_text,rc_namespace,rc_title,rc_comment,
+		rc_cur_id) VALUES ('{$now}','{$now}',{$uid},'" . wfStrencode( $ut ) .
+		"',4,'{$logpage}','" . wfStrencode( $lcom ) . "',{$id})";
 	wfQuery( $sql, $fname );
 }
 

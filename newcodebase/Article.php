@@ -996,6 +996,10 @@ enctype='application/x-www-form-urlencoded'>
 		$sql = "DELETE FROM old WHERE old_namespace={$ns} AND " .
 		  "old_title='{$t}'";
 		wfQuery( $sql, $fname );
+		
+		$sql = "DELETE FROM recentchanges WHERE rc_namespace={$ns} AND " .
+		  "rc_title='{$t}'";
+        wfQuery( $sql, $fname );
 
 		# Finally, clean up the link tables
 
@@ -1038,10 +1042,13 @@ enctype='application/x-www-form-urlencoded'>
 
 		if ( 0 == wfNumRows( $res ) ) {
 			# Error: need Article deletion log article
+			$text = wfMsg( "dellogpagetext" );
+			$id = 0;
+		} else {
+			$s = wfFetchObject( $res );
+			$text = $s->cur_text;
+			$id = $s->cur_id;
 		}
-		$s = wfFetchObject( $res );
-		$text = $s->cur_text;
-		$id = $s->cur_id;
 
 		$uid = $wgUser->getID();
 		$ut = $wgUser->getName();
@@ -1064,12 +1071,28 @@ enctype='application/x-www-form-urlencoded'>
 		}
 		$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}{$com}</li>\n{$m[2]}";
 
-		$sql = "UPDATE cur SET cur_timestamp='" . date( "YmdHis" ) .
-		  "', cur_user={$uid}, cur_user_text='" . wfStrencode( $ut ) .
-		  "', cur_text='" . wfStrencode( trim( $text ) ) . "', " .
-		  "cur_comment='" . wfStrencode( $lcom ) . "' " .
-		  "WHERE cur_id={$id}";
+		$now = date( "YmdHis");
+		if($id == 0) {
+			$sql = "INSERT INTO cur (cur_timestamp,cur_user,cur_user_text,
+				cur_namespace,cur_title,cur_text,cur_comment) VALUES ('{$now}', {$uid}, '" .
+				wfStrencode( $ut ) . "', 4, '{$logpage}', '" .
+ 				wfStrencode( trim( $text ) ) . "', '" .
+				wfStrencode( $lcom ) . "')";
+		} else {
+			$sql = "UPDATE cur SET cur_timestamp='" . $now .
+			  "', cur_user={$uid}, cur_user_text='" . wfStrencode( $ut ) .
+			  "', cur_text='" . wfStrencode( trim( $text ) ) . "', " .
+			  "cur_comment='" . wfStrencode( $lcom ) . "' " .
+			  "WHERE cur_id={$id}";
+		}
 		wfQuery( $sql, $fname );
+		
+		if($id == 0) $id = wfInsertId();
+		$sql = "INSERT INTO recentchanges (rc_timestamp,rc_cur_time,
+			rc_user,rc_user_text,rc_namespace,rc_title,rc_comment,
+			rc_cur_id) VALUES ('{$now}','{$now}',{$uid},'" . wfStrencode( $ut ) .
+			"',4,'{$logpage}','" . wfStrencode( $lcom ) . "',{$id})";
+        wfQuery( $sql, $fname );
 	}
 
 	function revert()
