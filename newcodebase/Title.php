@@ -66,7 +66,7 @@
 	"kl"    => "http://kl.wikipedia.com/wiki.cgi?$1",
 	"km"    => "http://km.wikipedia.com/wiki.cgi?$1",
 	"kn"    => "http://kn.wikipedia.com/wiki.cgi?$1",
-	"ko"    => "http://ko.wikipedia.com/wiki.cgi?$1",
+	"ko"    => "http://ko.wikipedia.org/wiki/$1",
 	"ks"    => "http://ks.wikipedia.com/wiki.cgi?$1",
 	"ku"    => "http://ku.wikipedia.com/wiki.cgi?$1",
 	"ky"    => "http://ky.wikipedia.com/wiki.cgi?$1",
