@@ -16,8 +16,15 @@ class DifferenceEngine {
 	{
 		global $wgUser, $wgTitle, $wgOut, $wgLang;
 
-		if ( ! $this->loadText() ) return;
+		$t = $wgTitle->getPrefixedText() . " (Diff: {$this->mOldid}, " .
+		  "{$this->mNewid})";
+		$mtext = str_replace( "$1", $t, wfMsg( "missingarticle" ) );
 
+		if ( ! $this->loadText() ) {
+			$wgOut->setPagetitle( "errorpagetitle" );
+			$wgOut->addHTML( $mtext );
+			return;
+		}
 		$wgOut->supressQuickbar();
 		$wgOut->setSubtitle( wfMsg( "difference" ) );
 
@@ -43,6 +50,7 @@ cellpadding=0 cellspacing='4px'><tr>
 	function loadText()
 	{
 		global $wgTitle, $wgOut, $wgLang;
+		$fname = "DifferenceEngine::loadText";
 
 		$conn = wfGetDB();
 		if ( 0 == $this->mNewid || 0 == $this->mOldid ) {
@@ -50,24 +58,19 @@ cellpadding=0 cellspacing='4px'><tr>
 			$id = $wgTitle->getArticleID();
 
 			$sql = "SELECT cur_text FROM cur WHERE cur_id={$id}";
-			wfDebug( "Diff:1: $sql\n" );
-			$res = mysql_query( $sql, $conn );
-			if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
-				$wgOut->databaseError( wfMsg( "loadingrev" ) );
-				return false;
-			}
+			$res = wfQuery( $sql, $conn, $fname );
+			if ( 0 == mysql_num_rows( $res ) ) { return false; }
+
 			$s = mysql_fetch_object( $res );
 			$this->mNewtext = explode( "\n", str_replace( "\r\n", "\n",
 			  htmlspecialchars( $s->cur_text ) ) );
 		} else {
 			$sql = "SELECT old_timestamp,old_text FROM old WHERE " .
 			  "old_id={$this->mNewid}";
-			wfDebug( "Diff:2: $sql\n" );
-			$res = mysql_query( $sql, $conn );
-			if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
-				$wgOut->databaseError( wfMsg( "loadingrev" ) );
-				return false;
-			}
+
+			$res = wfQuery( $sql, $conn, $fname );
+			if ( 0 == mysql_num_rows( $res ) ) { return false; }
+
 			$s = mysql_fetch_object( $res );
 			$this->mNewtext = explode( "\n", str_replace( "\r\n", "\n",
 			  htmlspecialchars( $s->old_text ) ) );
@@ -82,17 +85,13 @@ cellpadding=0 cellspacing='4px'><tr>
 			  "old_namespace=" . $wgTitle->getNamespace() . " AND " .
 			  "old_title='" . $wgTitle->getDBkey() . "') ORDER BY " .
 			  "old_timestamp DESC LIMIT 1";
-			wfDebug( "Diff:4: $sql\n" );
 		} else {
 			$sql = "SELECT old_timestamp,old_text FROM old WHERE " .
 			  "old_id={$this->mOldid}";
-			wfDebug( "Diff:3: $sql\n" );
 		}
-		$res = mysql_query( $sql, $conn );
-		if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
-			$wgOut->databaseError( wfMsg( "loadingrev" ) );
-			return false;
-		}
+		$res = wfQuery( $sql, $conn, $fname );
+		if ( 0 == mysql_num_rows( $res ) ) { return false; }
+
 		$s = mysql_fetch_object( $res );
 		$this->mOldtext = explode( "\n", str_replace( "\r\n", "\n",
 		  htmlspecialchars( $s->old_text ) ) );

@@ -89,14 +89,20 @@ recognized by the Wikipedia software",
 "databaseerror" => "Database error",
 "dberrortext"	=> "An unrecoverable database error has occurred.
 Please report this to an administrator.
-The operation being attempted was: $1.",
+The last attempted database query was:
+<blockquote>$1</blockquote>
+from within function \"$2\".
+MySQL returned error $3: \"$4\".",
 "noconnect"		=> "Could not connect to DB on $1",
 "nodb"			=> "Could not select database $1",
-"updatingarticle" => "updating an article",
 "readonly"		=> "Database locked",
 "readonlytext"	=> "The Wikipedia database is currently locked to
 new entries, probably because of database maintenance.
 Please try again later.\n",
+"missingarticle" => "The database did not find the text of an article
+that it should have found, named \"$1\".
+This is not a database error, but likely a bug in the software.
+Please report this to an administrator, making note of the URL.",
 
 # Login and logout pages
 #
@@ -297,7 +303,13 @@ any copyrights.",
 
 # Image list
 #
-"imagelist"	=> "Image list",
+"imagelist"		=> "Image list",
+"imagelisttext"	=> "Below is a list of all uploaded images.",
+"getimagelist"	=> "fetching image list",
+"sortby"		=> "Sort by:",
+"byname"		=> "Name",
+"bydate"		=> "Date",
+"bysize"		=> "Size",
 
 # Statistics
 #
@@ -459,10 +471,6 @@ class Language {
 	function getMessage( $key )
 	{
 		global $wgAllMessagesEn;
-
-		if ( "" == $wgAllMessagesEn[$key] ) {
-			wfDebug( "Couldn't find message \"$key\"\n" );
-		}
 		return $wgAllMessagesEn[$key];
 	}
 }

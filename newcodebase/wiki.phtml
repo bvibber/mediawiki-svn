@@ -17,10 +17,13 @@ wfStripTextFields(); # Clean up PHP mess
 
 $action = strtolower( trim( $action ) );
 if ( "" == $action ) { $action = "view"; }
-if ( "" == $title ) { $title = wfMsg( "mainpage" ); }
 if ( "yes" == $printable ) { $wgOut->setPrintable(); }
 
-$wgTitle = Title::newFromURL( $title );
+if ( "" == $title ) {
+	$wgTitle = Title::newFromText( wfMsg( "mainpage" ) );
+} else {
+	$wgTitle = Title::newFromURL( $title );
+}
 if ( -1 == $wgTitle->getNamespace() ) {
 	wfSpecialPage();
 } else if ( "" != $search ) { wfSearch( $search ); }

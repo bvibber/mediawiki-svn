@@ -81,10 +81,8 @@ class User {
 			$sql = "SELECT ipb_by,ipb_reason FROM ipblocks WHERE " .
 			  "(ipb_address='$remaddr' OR ipb_user={$this->mId})";
 		}
-		wfDebug( "User: 5: $sql\n" );
-
-		$res = mysql_query( $sql, $conn );
-		if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
+		$res = wfQuery( $sql, $conn, "User::getBlockedStatus" );
+		if ( 0 == mysql_num_rows( $res ) ) {
 			$this->mBlockedby = 0;
 			return;
 		}
@@ -165,11 +163,9 @@ class User {
 		$conn = wfGetDB();
 		$sql = "SELECT user_name,user_password,user_newpassword,user_email," .
 		  "user_options,user_rights FROM user WHERE user_id={$this->mId}";
+		$res = wfQuery( $sql, $conn, "User::loadFromDatabase" );
 
-		wfDebug( "User: 1: $sql\n" );
-		$res = mysql_query( $sql, $conn );
-
-		if ( $res && ( mysql_num_rows( $res ) > 0 ) ) {
+		if ( mysql_num_rows( $res ) > 0 ) {
 			$s = mysql_fetch_object( $res );
 			$this->mName = $s->user_name;
 			$this->mEmail = $s->user_email;
@@ -211,7 +207,6 @@ class User {
 	/* static */ function encryptPassword( $p )
 	{
 		$np = md5( $p );
-		wfDebug( "User: 9: {$p} = {$np}\n" );
 		return $np;
 	}
 
@@ -368,6 +363,7 @@ class User {
 	{
 		if ( 0 == $this->mId ) { return; }
 
+		$conn = wfGetDB();
 		$sql = "UPDATE user SET " .
 		  "user_name= '" . wfStrencode( $this->mName ) . "', " .
 		  "user_password= '" . wfStrencode( $this->mPassword ) . "', " .
@@ -376,10 +372,7 @@ class User {
 		  "user_options= '" . $this->encodeOptions() . "', " .
 		  "user_rights= '" . wfStrencode( implode( ",", $this->mRights ) ) .
 		  "' WHERE user_id={$this->mId}";
-		wfDebug( "User: 2: $sql\n" );
-
-		$conn = wfGetDB();
-		$res = mysql_query( $sql, $conn );
+		wfQuery( $sql, $conn, "User::saveSettings" );
 
 		if ( isset( $this->mWatchlist ) ) {
 			wfSetSQL( "user", "user_watch", implode( "\n", $this->mWatchlist ),
@@ -398,10 +391,8 @@ class User {
 		$conn = wfGetDB();
 		$sql = "SELECT user_id FROM user WHERE user_name='" .
 		  wfStrencode( $s ) . "'";
-
-		wfDebug( "User: 3: $sql\n" );
-		$res = mysql_query( $sql , $conn );
-		if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) return 0;
+		$res = wfQuery( $sql , $conn, "User::idForName" );
+		if ( 0 == mysql_num_rows( $res ) ) { return 0; }
 
 		$s = mysql_fetch_object( $res );
 		if ( "" == $s ) return 0;
@@ -422,9 +413,7 @@ class User {
 		  wfStrencode( $this->mEmail ) . "', '" .
 		  wfStrencode( implode( ",", $this->mRights ) ) . "', '" .
 		  $this->encodeOptions() . "', '' )";
-
-		wfDebug( "User: 4: $sql\n" );
-		$res = mysql_query( $sql, $conn );
+		wfQuery( $sql, $conn, "User::addToDatabase" );
 		$this->mId = $this->idForName();
 
 		if ( isset( $this->mWatchlist ) ) {

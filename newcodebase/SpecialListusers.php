@@ -4,17 +4,13 @@ function wfSpecialListusers()
 {
 	global $wgUser, $wgOut;
 
+	set_time_limit( 120 ); # 2 minutes ought to be plenty
+
 	$conn = wfGetDB();
 	$sql = "SELECT user_name,user_rights FROM user ORDER BY " .
 	  "user_name";
-	wfDebug( "Ulist: $sql\n" );
+	$res = wfQuery( $sql, $conn, "wfSpecialListusers" );
 
-	set_time_limit( 120 ); # 2 minutes ought to be plenty
-	$res = mysql_query( $sql, $conn );
-	if ( false === $res ) {
-		$wgOut->databaseError( wfMsg( "getuserlist" ) );
-		return;
-	}
 	$wgOut->addHTML( wfMsg( "userlisttext" ) . "\n<p>" );
 
 	$sk = $wgUser->getSkin();

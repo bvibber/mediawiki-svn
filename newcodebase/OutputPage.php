@@ -135,17 +135,23 @@ class OutputPage {
 		$this->mBodytext = "";
 		$this->addHTML( "<p>" . wfMsg( $msg ) . "\n" );
 		$this->returnToMain();
+		exit;
 	}
 
-	function databaseError( $op )
+	function databaseError( $fname )
 	{
-		wfDebug( "MySQL: " . mysql_errno() . ": " . mysql_error() . "\n" );
 		$this->setPageTitle( wfMsg( "databaseerror" ) );
 		$this->setRobotpolicy( "noindex,nofollow" );
 		$this->setArticleFlag( false );
 
-		$this->mBodytext = str_replace( "$1", $op, wfMsg( "dberrortext" ) );
-		$this->returnToMain();
+		$msg = str_replace( "$1", wfLastDBquery(), wfMsg( "dberrortext" ) );
+		$msg = str_replace( "$2", $fname, $msg );
+		$msg = str_replace( "$3", mysql_errno(), $msg );
+		$msg = str_replace( "$4", mysql_error(), $msg );
+
+		$this->mBodytext = msg;
+		$this->output();
+		exit;
 	}
 
 	function returnToMain()

@@ -116,14 +116,11 @@ function unsaveUploadedFile()
 	$wgSavedFile = $wpSavedFile;
 	$wgUploadOldVersion = $wpUploadOldVersion;
 
-	wfDebug( "Upl:unsave: $wgSavedFile\n" );
 	unlink( $wgSavedFile );
-
 	if ( "" != $wgUploadOldVersion ) {
 		$dest = $wgUploadDirectory . "/" . $wgUploadOldVersion{15} .
 	  	"/" . substr( $wgUploadOldVersion, 15, 2 );
 
-		wfDebug( "Upl:unsave: {$dest}/old/{$wgUploadOldVersion}\n" );
 		rename( "{$dest}/old/{$wgUploadOldVersion}", $wgSavedFile );
 	}
 }
@@ -133,25 +130,25 @@ function recordUpload()
 	global $wgUser, $wpUploadDescription;
 	global $wpUploadSaveName, $wpUploadTempName, $wpUploadSize;
 	global $wgSavedFile, $wgUploadOldVersion;
+	$fname = "recordUpload";
 
 	$conn = wfGetDB();
 	$sql = "SELECT img_name,img_size,img_timestamp,img_description,img_user," .
 	  "img_user_text FROM image WHERE img_name='{$wpUploadSaveName}'";
-	wfDebug( "Upl:1: $sql\n" );
-	$res = mysql_query( $sql, $conn );
+	$res = wfQuery( $sql, $conn, $fname );
 
-	if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
+	if ( 0 == mysql_num_rows( $res ) ) {
+		$conn = wfGetDB();
 		$sql = "INSERT INTO image (img_name,img_size,img_timestamp," .
 		  "img_description,img_user,img_user_text) VALUES (" .
 		  "'{$wpUploadSaveName}',{$wpUploadSize},'" . date( "YmdHis" ) . "','" .
 		  wfStrencode( $wpUploadDescription ) . "', '" . $wgUser->getID() .
 		  "', '" . wfStrencode( $wgUser->getName() ) . "')";
-
-		wfDebug( "Upl:2: $sql\n" );
-		$conn = wfGetDB();
-		$res = mysql_query( $sql, $conn );
+		wfQuery( $sql, $conn, $fname );
 	} else {
 		$s = mysql_fetch_object( $res );
+
+		$conn = wfGetDB();
 		$sql = "INSERT INTO oldimage (oi_name,oi_archive_name,oi_size," .
 		  "oi_timestamp,oi_description,oi_user,oi_user_text) VALUES ('" .
 		  wfStrencode( $s->img_name ) . "','" .
@@ -160,21 +157,16 @@ function recordUpload()
 		  wfStrencode( $s->img_description ) . "','" .
 		  wfStrencode( $s->img_user ) . "','" .
 		  wfStrencode( $s->img_user_text) . "')";
+		wfQuery( $sql, $conn, $fname );
 
-		wfDebug( "Upl:3: $sql\n" );
 		$conn = wfGetDB();
-		$res = mysql_query( $sql, $conn );
-
 		$sql = "UPDATE image SET img_size={$wpUploadSize}," .
 		  "img_timestamp='" . date( "YmdHis" ) . "',img_user='" .
 		  $wgUser->getID() . "',img_user_text='" .
 		  wfStrencode( $wgUser->getName() ) . "', 'img_description='" .
 		  wfStrencode( $wpUploadDescription ) . "' WHERE img_name='" .
 		  wfStrencode( $wpUploadSaveName ) . "'";
-
-		wfDebug( "Upl:4: $sql\n" );
-		$conn = wfGetDB();
-		$res = mysql_query( $sql, $conn );
+		wfQuery( $sql, $conn, $fname );
 	}
 }
 

@@ -4,6 +4,7 @@ function wfSpecialRecentchanges()
 {
 	global $wgUser, $wgOut, $wgLang, $wgTitle;
 	global $days, $limit; # From query string
+	$fname = "wfSpecialRecentchanges";
 
 	$wgOut->addWikiText( wfMsg( "recentchangestext" ) );
 
@@ -22,24 +23,14 @@ function wfSpecialRecentchanges()
 	  "cur_comment,cur_user_text,cur_timestamp,cur_minor_edit FROM cur " .
 	  "WHERE cur_timestamp > '{$cutoff}' " .
 	  "ORDER BY cur_timestamp DESC LIMIT {$limit}";
-	wfDebug( "SC: 1: $sql\n" );
+	$res = wfQuery( $sql, $conn, $fname );
 
-	$res = mysql_query( $sql, $conn );
-	if ( ! $res ) {
-		$wgOut->databaseError( wfMsg( "rcloaderr" ) );
-		return;
-	}
 	$sql = "SELECT old_id,old_namespace,old_title,old_user," .
 	  "old_comment,old_user_text,old_timestamp,old_minor_edit FROM old " .
 	  "WHERE old_timestamp > '{$cutoff}' " .
 	  "ORDER BY old_timestamp DESC LIMIT {$limit}";
-	wfDebug( "SC: 2: $sql\n" );
+	$res2 = wfQuery( $sql, $conn, $fname );
 
-	$res2 = mysql_query( $sql, $conn );
-	if ( ! $res ) {
-		$wgOut->databaseError( wfMsg( "rcloaderr" ) );
-		return;
-	}
 	$note = str_replace( "$1", $limit, wfMsg( "rcnote" ) );
 	$note = str_replace( "$2", $days, $note );
 	$wgOut->addHTML( "<hr>\n{$note}\n<br>" );
