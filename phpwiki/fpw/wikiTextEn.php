@@ -16,7 +16,7 @@ $wikiLowerChars = "abcdefghijklmnopqrstuvwxyzàáâãäåæçèéêëìíîïğñòóôõöøùúûüúş";
 $wikiMainPage = "Main Page" ; # This is actual the title of the article in the database
 $wikiErrorPageTitle = "Yikes! An error!" ;
 $wikiErrorMessage = "<h2>$1!</h2>Return to the [[:Main Page|Main Page]]!" ;
-$wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","longpages","listusers","watchlist","special_pages","editusersettings","deletepage","protectpage","contributions","whatlinkshere");
+$wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","longpages","listusers","watchlist","special_pages","editusersettings","deletepage","protectpage","contributions","whatlinkshere","recentchangeslinked");
 $wikiRecentChangesText = "Track the most recent changes to Wikipedia on this page. [[Welcome, newcomers]]! Please have a look at these pages: [[Wikipedia FAQ]], [[Wikipedia policy]] (especially [[naming conventions]] and [[neutral point of view]]), and [[most common Wikipedia faux pas]].<br>If you want to see the Wikipedia succeed, it's very important that you don't add material restricted by others' [[copyright]]s. The legal liability could really hurt the project, so please don't do it.<br>See also the [http://meta.wikipedia.com/wiki.phtml?title=special:RecentChanges recent meta discussion]" ;
 $wikiMetaDescription = "$1... Read more here at wikipedia, the free encyclopedia!" ;
 
@@ -76,6 +76,8 @@ $wikiOldVersion = "<br><font size=\"-1\">This is the old version #$1; see the <a
 $wikiRedirectFrom = "(redirected from $1)" ;
 $wikiRecentChanges = "Recent Changes" ;
 $wikiRecentChangesLink = "RecentChanges" ; # "special:" is added automatically
+$wikiRecentLinked = "Watch page links" ;
+$wikiRecentLinkedLink = "Recentchangeslinked" ;
 $wikiSpecialPagesLink = "Special_pages" ; # "special:" is added automatically
 $wikiEditThisPage = "Edit this page" ;
 $wikiDeleteThisPage = "Delete this page" ;
@@ -279,7 +281,8 @@ $wikiChanges = "changes" ;
 $wikiWatchYes = "\"$1\" was added to your [[special:WatchList|watch list]]." ;
 $wikiWatchNo = "\"$1\" was removed from your [[special:WatchList|watch list]]." ;
 $wikiWatchlistTitle = "Watch list" ;
-$wikiWatchlistText = "'''Currently, you are watching the following articles :''' " ;
+$wikiWatchlistExistText = "'''Currently, you are watching the following existing articles :'''" ;
+$wikiWatchlistNotExistText = "\n====\n'''Currently, you are watching the following non-existing articles :'''" ;
 
 # Statistics
 $wikiStatisticsTitle = "Article statistics" ;
@@ -352,6 +355,7 @@ $wikiStubDelete = "<b>Delete this page!</b>" ;
 $wikiStubLinkHere = "$1 articles link here." ;
 $wikiStubShowLinks = "Toggle \"show links\" option" ;
 $wikiShowLinks = "Show pages that link to $1" ;
+$wikiRecentChangesLinkedTitle = "Recent changes on pages linked from $1" ;
 $wikiDeleteTitle = "Deleting article '$1'" ;
 $wikiDeleteDenied = "<font size=\"+3\">You are not allowed to delete this page!</font>" ;
 $wikiDeleteSuccess = "'$1' has been removed." ;
