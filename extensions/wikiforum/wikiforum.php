@@ -27,7 +27,7 @@
 if(defined('MEDIAWIKI')) {
 // Defines and options
 define('FORUM_PATH',            'extensions/wikiforum/' ); // extention path 
-define('FORUM_VERSION',         '1.0.6.0');
+define('FORUM_VERSION',         '1.0.7.0');
 define('FORUM_MAX_THREAD',      50); // total number of last thread displayed on the forum page
 define('FORUM_INCLUDED_NUM',    20); // number of thread directly included into the forum page
 define('FORUM_SUM_LENGHT',      32); // maximum length of "last comment" field
@@ -205,6 +205,8 @@ class Forum {
 	function Generate() {
 		global $wgLang, $wgServer, $wgOut, $wgUserHtml, $wgRequest, $wgScriptPath;
 	
+		list( $limit, $offset ) = wfCheckLimits( $this->mMaxThread, 'wikiforumlimit');
+		
 		$fname = 'Forum::generate';
 
 		if(FORUM_ALLOW_NAMESPACE)
@@ -237,16 +239,13 @@ class Forum {
 		wfDebug("FORUM - START GENERATE\n");
 		$dbr =& wfGetDB( DB_SLAVE );
 		$cur = $dbr->tableName( 'cur' );
-		
-		// FIXME: use abstraction
+
 		$sql = "SELECT cur_title, cur_comment, cur_user_text, cur_timestamp, cur_counter FROM $cur".
 		       " WHERE cur_namespace = $ns".
 		       " AND cur_is_redirect = 0".
-		       ' ORDER BY cur_timestamp DESC'.
-		       ' LIMIT '.$this->mMaxThread.';';
-		$res = $dbr->query( $sql, $fname ) ;
+		       ' ORDER BY cur_timestamp DESC';
+		$res = $dbr->query( $sql . $dbr->limitResult( $limit,$offset ), $fname );
 		$num = $dbr->numRows( $res );
-
 		
 		// Generate forum's text
 		$text = '';
@@ -292,6 +291,7 @@ class Forum {
 		$wgOut->addWikiText( $text );
 		$text = '';
 
+		$wgOut->addHTML( wfViewPrevNext( $offset, $limit , "Special:Forum", '' ) );
 		if(FORUM_ALL_IN_TABLE) {
 			$t = WF_Msg('ThreadLastest');
 			$t = str_replace("$1", $num, $t);
@@ -497,6 +497,9 @@ class Forum {
 			$text .= "<div class=\"wf create_thread\" id=\"bottom\">[[Special:Newthread|".WF_Msg('ThreadCreate')."]]</div>";
 		}
 		wfDebug("FORUM - END GENERATE\n");
+
+		$wgOut->addHTML( wfViewPrevNext( $offset, $limit , "Special:Forum", '' ) );
+
 		$wgOut->addWikiText( $text );
 		//return $text;
 	}
@@ -513,6 +516,7 @@ $wgForum = new Forum();
 function wfForum() {
 	global $IP, $wgMessageCache, $wgAllMessagesEn, $wgNavigationLinks, $wgTitle;
 	require_once( $IP.'/includes/SpecialPage.php' );
+
 
 	class SpecialForum extends SpecialPage {
 		function SpecialForum() 
