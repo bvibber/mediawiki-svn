@@ -17,6 +17,15 @@ function syntErr ( $num, $arg ) {
 # T  ::= ( E ) T" | <not> T' T" | <word> T"
 # T' ::= <word> | ( E )
 # T" ::= '' | <and> T | T
+#
+# Errors:
+# 0 "SYNTAX ERROR: missing '$1'; inserted",
+# 1 "SYNTAX ERROR: unexpected '$1'; ignored",
+# 2 "SYNTAX ERROR: illegal symbol '$1'; ignored",
+# 3 "SYNTAX ERROR: the word '$1' is too short, the index requires at least $2 characters",
+# 4 "SYNTAX ERROR: missing search word; inserted" 
+
+#FIXME: Someone who understands this function, could you put in some comments? It would be very helpful.
 
 function srchStrParse ( $state ) {
     global $and, $or, $not ;   # boolean search operators
@@ -92,7 +101,7 @@ function srchStrParse ( $state ) {
                     $res = syntErr ( 1, ")" ) . " $res2" ;                 
                 } else {
                     $oldpos = $pos;
-                    while ( preg_match ( "/\w/", $search{$pos} ) ) $pos++ ;
+		    while ( preg_match ( "/[\\w\\x80-\\xff]/", $search{$pos} ) ) $pos++ ;
                     $word = substr ( $search, $oldpos, $pos - $oldpos );
                     if ( preg_match( "/^".$not."$/i", $word ) ) {
                         $res2 = srchStrParse ( 3 );
@@ -115,6 +124,7 @@ function srchStrParse ( $state ) {
                         $pos++;
                         $res2 = srchStrParse ( 2 ) ;    # presume the current symbol is redundant
                         $res = syntErr ( 2, $sym ) . " $res2" ;
+			echo "grrr"; #FIXME
                     }
                 }
             } else
@@ -282,10 +292,23 @@ function doSearch () {
             preg_match_all ( "/\"(\w+)\"/", $parsedCond, $matches ) ;
             $words = $matches[1] ;          # determine the search words (positive & negative)
 
-            # create SQL conditon for title search
-            $titleSQL = preg_replace ( "/\"(\w+)\"/", "MATCH (cur_ind_title) AGAINST (\"\\1\")", $parsedCond ) ;
-            # create SQL conditon for body
-            $bodySQL = preg_replace ( "/\"(\w+)\"/", "MATCH (cur_text) AGAINST (\"\\1\")", $parsedCond ) ;
+            $fallbackSearch = 0 ;
+	    do {
+	    if ( $fallbackSearch ) {
+	    	# Fallback if fulltext search is causing trouble
+		# create SQL conditon for title search
+        	$titleSQL = preg_replace ( "/\"([\\w\\x80-\\xff]+)\"/", "cur_ind_title LIKE \"%\\1%\"", $parsedCond ) ;
+	        # create SQL conditon for body
+        	$bodySQL = preg_replace ( "/\"([\\w\\x80-\\xff]+)\"/", "cur_text LIKE \"%\\1%\"", $parsedCond ) ;
+		#echo $titleSQL, $bodySQL;
+	    } else {
+	    	# We can't do a fulltext search on anything smaller than 4 chars unless we recompile MySQL.
+	        #$parsedCond2 = preg_replace ( "/([\\w\\x80-\\xff]{1,3})\"/" , "" , $parsedCond ) ;
+		# create SQL conditon for title search
+        	$titleSQL = preg_replace ( "/\"([\\w\\x80-\\xff]+)\"/", "MATCH (cur_ind_title) AGAINST (\"\\1\")", $parsedCond ) ;
+	        # create SQL conditon for body
+        	$bodySQL = preg_replace ( "/\"([\\w\\x80-\\xff]+)\"/", "MATCH (cur_text) AGAINST (\"\\1\")", $parsedCond ) ;
+	    }
             
             # first we establish the total size of the result
             # if it wasn't already established
@@ -311,7 +334,9 @@ function doSearch () {
                 $row = mysql_fetch_object ( $result );
                 $allSearch = $titleSearch + $row->cnt ;
                 mysql_free_result ( $result ) ;
-            }
+            	}
+	    if ( $allSearch == 0 ) { $fallbackSearch++ ; unset ( $allSearch ) ; }
+	    } while ( !isset ( $allSearch ) && ( $fallbackSearch < 2 ) ) ;
             
             # Now we proceed with presenting the found results
     
