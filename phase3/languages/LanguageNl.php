@@ -287,7 +287,7 @@
  "Whatlinkshere" => "",
  "Recentchangeslinked" => "",
  "Movepage"  => "",
- "Booksources" => "Boekhandels",
+ "Booksources" => "",
  "Categories" => "Rubrieken"
 );
 
