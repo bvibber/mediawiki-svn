@@ -2,13 +2,12 @@
 
 /*
 WikiTeX: expansible LaTeX module for MediaWiki
-Copyright (C) 2004  Peter Danenberg
+Copyright (C) 2004-5  Peter Danenberg
 
-     WikiTeX  is  free  software;  you  can  redistribute it
-and/or modify it under the terms of the GNU  General  Public
-License as published by the Free Software Foundation; either
-version 2 of the License, or (at your option) any later ver-
-sion.
+     WikiTeX is licensed under  the  Open  Software  License
+v. 2.1; to view a copy of this license, visit:
+
+     http://www.opensource.org/licenses/osl-2.1.php
 
 wikitex.php: main parser  functions, registration  interface
 with $wgParser
@@ -75,7 +74,7 @@ class objRend
       settype($arrBlack,	'array');
 
       // generic security basis for all classes
-      $arrBlack['rend']	= array('\catcode', '\include', '\includeonly', '\input', '\newcommand', '\newenvironment', '\newtheorem', '\newfont', '\renewcommand', '\renewenvironment', '\typein', '\typeout', '\write', '\let', '\csname', '\read', '\open');
+      $arrBlack['rend']	= array('\catcode', '\def', '\include', '\includeonly', '\input', '\newcommand', '\newenvironment', '\newtheorem', '\newfont', '\renewcommand', '\renewenvironment', '\typein', '\typeout', '\write', '\let', '\csname', '\read', '\open');
 
       // specific security recommendations
       $arrBlack['music'] = array('#');

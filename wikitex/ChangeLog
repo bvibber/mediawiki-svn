@@ -1,16 +1,22 @@
-2005-01-29  Peter Danenberg  <danenberg at mitdasein dot com>
+2005-02-05  Peter Danenberg  <pcd at wikitex dot org>
+
+	* thanks.ms: added.
+
+	* readme.ms: updated installation process.
+
+2005-01-29  Peter Danenberg  <pcd at wikitex dot org>
 
 	* wikitex.sh: added support for gnuplot and graphviz;
 	<plot> and <graph> respectively.  Added link to source
 	from each image.
 
-2005-01-28  Peter Danenberg  <danenberg at mitdasein dot com>
+2005-01-28  Peter Danenberg  <pcd at wikitex dot org>
 
 	* wikitex.sh: Utterly refactored; new features: modular
 	handlers; multi-page output; plain-text, detailed errors;
 	file-based output cache.
 
-2005-01-25  Peter Danenberg  <danenberg at mitdasein dot com>
+2005-01-25  Peter Danenberg  <pcd at wikitex dot org>
 
 	* wikitex.php (WikiTeX): \write, \let, \csname, \read,
 	and \open added to the blacklist; thanks to Johannes
@@ -45,7 +51,7 @@
 	erted; as well as indications for an Apache bandaid
 	should defective paths prevail.
 
-2004-10-03  Peter Danenberg  <danenberg at mitdasein dot com>
+2004-10-03  Peter Danenberg  <pcd at wikitex dot org>
 
 	* wikitex.php: added support for SVG; deciding currently
 	on the Batikian solution (xml.apache.org/batik) since,
@@ -53,13 +59,13 @@
 	may switch later to ImageMagick's more limited, but faster,
 	SVG subset.
 
-2004-09-07  Peter Danenberg  <danenberg at mitdasein dot com>
+2004-09-07  Peter Danenberg  <pcd at wikitex dot org>
 
 	* wikitex.inc.php: transferred parms from LocalSettings.php
 	hither; so as to produce a clean installation interface
 	(merely the addition of line for the stand-alone distributees).
 
-2004-09-06  Peter Danenberg  <danenberg at mitdasein dot com>
+2004-09-06  Peter Danenberg  <pcd at wikitex dot org>
 
 	* README: clarified acquisition
 
@@ -71,7 +77,7 @@
 
 	* wikitex.php: added new classes: go, xym, teng, and feyn.
 
-2004-09-05  Peter Danenberg  <danenberg at mitdasein dot com>
+2004-09-05  Peter Danenberg  <pcd at wikitex dot org>
 
 	* README: added; with entry on extending WikiTeX.
 

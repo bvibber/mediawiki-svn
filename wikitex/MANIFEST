@@ -7,18 +7,26 @@
 
 
 
-                 WikiTeX 1.4beta5 MANIFEST
+                    WikiTeX 1.0 MANIFEST
 
-      Peter Danenberg <danenberg at mitdasein dot com>
+          Peter Danenberg <pcd at wikitex dot org>
 
 
 1.  Documents
 
-     ChangeLog   Subdural mutations
-     COPYING     License
-     MANIFEST    Serial list
-     NEWS        Visible changes and todo's
-     README      Installation and expansion
+     ChangeLog        Subdural mutations
+     COPYING          License
+     copying.inc.ms   Include license
+     copying.ms       COPYING source
+     Makefile         Compile docs from source
+     MANIFEST         Serial list
+     manifest.ms      MANIFEST source
+     NEWS             Visible changes and todo's
+     news.ms          NEWS source
+     README           Installation and expansion
+     readme.ms        README source
+     THANKS           Benedictum
+     thanks.ms        THANKS source
 
 
 2.  Module
@@ -48,6 +56,20 @@
      wikitex.xym.inc.tex     XyMTeX
 
 
+
+
+
+
+
+                       6 February 2005
+
+
+
+
+
+                             -2-
+
+
 4.  Miscellenea
 
      xvfb   Xvfb script (Batik toolkit)
@@ -61,24 +83,66 @@
 
 
 
-                       29 January 2005
 
 
 
 
 
-                             -2-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                       6 February 2005
+
+
+
+
+
+                             -3-
 
 
 WikiTeX: expansible LaTeX module for MediaWiki
-Copyright (C) 2004  Peter Danenberg
+Copyright (C) 2004-5  Peter Danenberg
 
-     WikiTeX  is  free  software;  you  can  redistribute it
-and/or modify it under the terms of the GNU  General  Public
-License as published by the Free Software Foundation; either
-version 2 of the License, or (at your option) any later ver-
-sion.
+     WikiTeX  is  licensed  under  the Open Software License
+v. 2.1; to view a copy of this license, visit:
 
+     http://www.opensource.org/licenses/osl-2.1.php
 
 
 
@@ -127,6 +191,8 @@ sion.
 
 
 
-                       29 January 2005
+
+
+                       6 February 2005
 
 

@@ -7,9 +7,9 @@
 
 
 
-                  WikiTeX 1.4beta5 README
+                     WikiTeX 1.0 README
 
-      Peter Danenberg <danenberg at mitdasein dot com>
+          Peter Danenberg <pcd at wikitex dot org>
 
 
 
@@ -20,7 +20,7 @@
 
 
 
-2 February 2005
+6 February 2005
 
 
 
@@ -73,61 +73,61 @@
 
 
 
-                  WikiTeX 1.4beta5 README
+                     WikiTeX 1.0 README
 
-      Peter Danenberg <danenberg at mitdasein dot com>
+          Peter Danenberg <pcd at wikitex dot org>
 
                      Table of Contents
 
 
 1. Introduction  . . . . . . . . . . . . . . . . . . . .   1
 2. Acquisition . . . . . . . . . . . . . . . . . . . . .   1
-3. Installation  . . . . . . . . . . . . . . . . . . . .   1
-     3.1. Stand-alone distribution . . . . . . . . . . .   2
-     3.2. Pre-packaged distribution  . . . . . . . . . .   2
+     2.1 CVS . . . . . . . . . . . . . . . . . . . . . .   1
+     2.2 FTP . . . . . . . . . . . . . . . . . . . . . .   2
+     2.3 HTTP  . . . . . . . . . . . . . . . . . . . . .   2
+     2.4 Subversion  . . . . . . . . . . . . . . . . . .   2
+3. Installation  . . . . . . . . . . . . . . . . . . . .   2
+     3.1. Prerequisites  . . . . . . . . . . . . . . . .   2
+     3.2. Proceeding . . . . . . . . . . . . . . . . . .   2
      3.2.1. Java SVG (Batik) . . . . . . . . . . . . . .   3
-4. Expansion . . . . . . . . . . . . . . . . . . . . . .   3
-5. Copyright . . . . . . . . . . . . . . . . . . . . . .   4
+4. Hacking . . . . . . . . . . . . . . . . . . . . . . .   4
+     4.1. Getting Started  . . . . . . . . . . . . . . .   4
+     4.2. Extending WikiTeX  . . . . . . . . . . . . . .   4
+5. Help  . . . . . . . . . . . . . . . . . . . . . . . .   5
+6. Copyright . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
 
           WikiTeX extends MediaWiki by allowing  authors  to
      manipulate  graphical  objects  directly in their arti-
      cles; support so  far  includes:  math,  music,  chess,
-     chemistry,  go,  plots and relational diagrams.  To see
-     WikiTeX in action, please visit:
+     chemistry, go, plots and relational diagrams.  To learn
+     more about WikiTeX, please visit:
 
-          http://wikisophia.org
+          http://wikitex.org
+
+     or http://wikisophia.org to see it in action.
 
 2.  Acquisition
 
-          Unadorned WikiTeX is available via  anonymous  CVS
-     from SourceForge:
+     2.1.  CVS
+
+               WikiTeX can be CVS'ed from MediaWiki's facil-
+          ity at SourceForge:*
 
      cvs -d:pserver:anonymous@cvs.sf.net:/cvsroot/wikipedia \
      co wikitex
 
-     Alternatively, WikiTeX comes  prepackaged  with  Media-
-     Wiki; see:
-
-          http://wikitex.org
-
-3.  Installation
-
-          Depending  on  your distribution, installation may
-     consist of three or more steps; and assumes some famil-
-     iarity with Apache.
-
-          Each  method below presupposes a succesful instal-
-     lation of MediaWiki.
 
 
 
+-----------
+  * For  actual  development snapshots see Subver-
+sion below.
 
 
 
-
-                       2 February 2005
+                       6 February 2005
 
 
 
@@ -136,64 +136,64 @@
                              -2-
 
 
-     3.1.  Stand-alone distribution
+     2.2.  FTP
 
-               In addition to the steps  detailed  for  pre-
-          packaged distributions, perform these twain:
+               The latest stable releases can be  downloaded
+          from:
 
-          1.   Create   the  directory  /extensions/wikitex;
-               copy there the distribution files; create the
-               directory /extensions/wikitex/tmp.
+               ftp://wikitex.org
 
-          2.   Add  the following line to /LocalSettings.php
-               lastly before the terminal '?>':
+     2.3.  HTTP
+
+               The  latest releases can be browsed and down-
+          loaded from:
+
+               http://wikitex.org/wikitex
+
+     2.4.  Subversion
+
+               Use your Subversion client (http://subversion
+          .tigris.org)  to  get the latest development snap-
+          shot:
+
+          svn co http://svn.wikitex.org/wikitex/trunk wikitex
+
+          or visit http://svn.wikitex.org/wikitex to  browse
+          the codebase via web.
+
+3.  Installation
+
+     3.1.  Prerequisites
+
+               WikiTeX's   installation  requires  at  least
+          MediaWiki (wikipedia.sourceforge.net)  and  LaTeX,
+          which  comes  preinstalled in many Linux distribu-
+          tions.  Depending on which classes you'd  like  to
+          support,  additional packages may be required (see
+          below).
+
+               We'll eventually  call  for  ImageMagick  and
+          dvipng, whose former is also pretty standard fare.
+
+     3.2.  Process
+
+               Working from  MediaWiki's  base  installation
+          directory, perform the following:
+
+          1.   Create /extensions/wikitex and copy there the
+               distribution.
+
+          2.   Add the following line to  /LocalSettings.php
+               before the terminal '?>':
 
                include './extensions/wikitex/wikitex.php';
 
-               You  may  now  continue with normal installa-
-          tion.
-
-     3.2.  Pre-packaged distribution
-
-          1.   Render /extensions/wikitex/tmp  scribable  to
-               the web server, but beware to disable script-
-               ing.
-
-          2.   Verify that ImageMagick (imagemagick.org)  is
-               present,   and   acquire  Jan-Aoke  Larsson's
-               dvipng:
-
-          http://sourceforge.net/projects/dvipng/
-
-          3.   Install as many of the following packages  as
-               you  would  like  to support, or add your own
-               (see Expanding WikiTeX):
-
-     Class   Package         Author               URL
-     --------------------------------------------------------
-     batik SVG Java    Apache               apache.org
-     chem  PPCH-TeX    Hans Hagen           pragma-ade.com
-     chess LaTeX Chess Piet Tutelaers       tug.org
-     feyn  Feynman     Michael Levine       ctan.org
-     go    Go          Daniel Bump          stanford.edu
-     graph Graphviz    Emden Gansner        research.att.com
-     greek Ibycus      Pierre MacKay        tug.org
-     ling  AVM         Christopher Manning  stanford.edu
-           Parsetree   Eirik Hektoen        essex.ac.uk
-     math  AMS-LaTeX   Amer. Math. Soc.     ams.org
-     music Lilypond    Han-Wen Nienhuys     lilypond.org
-     plot  Gnuplot     Nikos Drakos         gnuplot.info
-     svg   SVG lite    ImageMagick          imagemagick.org
-     teng  Tengwar     Ivan Derzhanski      quettar.org
-     tipa  TIPA        Rei Fukui            ctan.org
-     xym   XyMTeX      Shinsaku Fujita      kit.ac.jp
+          3.   Render /extensions/wikitex/tmp  scribable  to
+               the   web   server,  but  beware  to  disable
 
 
 
-
-
-
-                       2 February 2005
+                       6 February 2005
 
 
 
@@ -202,7 +202,39 @@
                              -3-
 
 
-          4.   Lastly, ensure that your server's $PATH vari-
+               scripting.
+
+          4.   Verify that ImageMagick (imagemagick.org)  is
+               present,   and   acquire  Jan-Aoke  Larsson's
+               dvipng:
+
+                    http://sourceforge.net/projects/dvipng/
+
+          5.   Install  as many of the following packages as
+               you would like to support, or  add  your  own
+               (see Expanding WikiTeX):
+
+      Class    Package        Author              URL
+     --------------------------------------------------------
+     batik   SVG Java   Apache              apache.org
+     chem    PPCH-TeX   Hans Hagen          pragma-ade.com
+     chess   LaTeX ChessPiet Tutelaers      tug.org
+     feyn    Feynman    Michael Levine      ctan.org
+     go      Go         Daniel Bump         stanford.edu
+     graph   Graphviz   Emden Gansner       research.att.com
+     greek   Ibycus     Pierre MacKay       tug.org
+     ling    AVM        Christopher Manning stanford.edu
+             Parsetree  Eirik Hektoen       essex.ac.uk
+     amsmath AMS-LaTeX  Amer. Math. Soc.    ams.org
+     music   Lilypond   Han-Wen Nienhuys    lilypond.org
+     plot    Gnuplot    Nikos Drakos        gnuplot.info
+     svg     SVG lite   ImageMagick         imagemagick.org
+     teng    Tengwar    Ivan Derzhanski     quettar.org
+     tipa    TIPA       Rei Fukui           ctan.org
+     xym     XyMTeX     Shinsaku Fujita     kit.ac.jp
+
+
+          6.   Lastly, ensure that your server's $PATH vari-
                able includes /usr/bin and /usr/local/bin, or
                wherever your binaries are installed.
 
@@ -217,13 +249,24 @@
                     elsewhere than /usr/local/batik, config-
                     ure wikitex.inc.sh.
 
-               3.   If  you  have XWindows, the Xserver Vir-
-                    tual Frame Buffer  should  be  included;
-                    configure  Xvfb  to  start up at runtime
+               3.   If you have XWindows, the  Xserver  Vir-
+                    tual  Frame  Buffer  should be included;
+                    configure Xvfb to start  up  at  runtime
                     by:
 
                     a.   Copying the provided xvfb script to
                          /etc/init.d
+
+
+
+                       6 February 2005
+
+
+
+
+
+                             -4-
+
 
                     b.   Linking xvfb at the prompt:
 
@@ -235,97 +278,54 @@
                          DISPLAY=localhost:1.0
                          export DISPLAY
 
-     4.  Expanding WikiTeX
+4.  Hacking WikiTeX
+
+     4.1.  Getting Started
+
+               Join the WikiTeX-l mailing  list,  where  you
+          can communicate with other users and developers:
+
+               http://lists.wikitex.org/wikitex-l
+
+          and    familiarize    yourself   with   Subversion
+          (http://subversion.tigris.org), our  collaborative
+          development tool.
+
+     4.2.  Extending WikiTeX
 
                Adding  novel  packages  to  WikiTeX  can  be
           achieved in several discrete steps; after you have
           downloaded and installed the package:
 
-               1.   Devise a class name for the package, and
-                    add a template to /extensions/wikitex in
-                    this form:
+          1.   Devise  a class name for the package, and add
+               a template  to  /extensions/wikitex  in  this
+               form:
 
-                         wikitex.<classname>.inc.<ext>
+                    wikitex.<classname>.inc.<ext>
 
-                    The  template should expose said package
-                    to the renderer; see  the  current  tem-
-                    plates for examples.
+               The  template  should  expose said package to
+               the renderer; see the current  templates  for
+               examples.
 
-               2.   Unless  the  class requires non-standard
-                    processing  (confer  Lilypond's   midi),
-                    skip  to  step  three;  else,  add a new
-                    function in wikitex.sh under <class>.
+          2.   Unless  the  class requires non-standard pro-
+               cessing (confer  Lilypond's  midi),  skip  to
+               step three; else, add a new function in wiki-
+               tex.sh under <class>.
 
+               Consult wikitex.sh for examples.
 
+          3.   Lastly, if the package  contains  undesirable
+               or insecure directives, add them to:
 
+                    objRend::strPost()::arrBlack[<class>]
 
-                       2 February 2005
+               in wikitex.php; the which see for details.
 
 
 
 
 
-                             -4-
-
-
-                    Consult wikitex.sh for examples.
-
-               3.   Lastly, if the package contains undesir-
-                    able  or  insecure  directives, add them
-                    to:
-
-                         objRend::strPost()::arrBlack[<class>]
-
-                    in   wikitex.php;   the  which  see  for
-                    details.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                       2 February 2005
+                       6 February 2005
 
 
 
@@ -334,6 +334,79 @@
                              -5-
 
 
+5.  Getting Help
+
+          A great way to meet users  and  developers  is  by
+     joining   WikiTeX-l  (see  4.1  above);  alternatively,
+     visit:
+
+          http://archives.wikitex.org/wikitex-l
+
+     to browse the archives.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                       6 February 2005
+
+
+
+
+
+                             -6-
+
+
+WikiTeX: expansible LaTeX module for MediaWiki
+Copyright (C) 2004-5  Peter Danenberg
+
+     WikiTeX is licensed under  the  Open  Software  License
+v. 2.1; to view a copy of this license, visit:
+
+     http://www.opensource.org/licenses/osl-2.1.php
 
 
 
@@ -384,13 +457,6 @@
 
 
 
-
-
-
-
-
-
-
-                       2 February 2005
+                       6 February 2005
 
 
