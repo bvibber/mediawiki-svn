@@ -268,11 +268,17 @@ function wfNumberOfArticles()
 
 function wfEscapeHTML( $in )
 {
-	$in = str_replace( "&", "&amp;", $in );
-	$in = str_replace( "\"", "&quot;", $in );
-	$in = str_replace( ">", "&gt;", $in );
-	$in = str_replace( "<", "&lt;", $in );
-	return $in;
+	return str_replace(
+		array( "&", "\"", ">", "<" ),
+		array( "&amp;", "&quot;", "&gt;", "&lt;" ),
+		$in );
+}
+
+function wfEscapeHTMLTagsOnly( $in ) {
+	return str_replace(
+		array( "\"", ">", "<" ),
+		array( "&quot;", "&gt;", "&lt;" ),
+		$in );
 }
 
 function wfUnescapeHTML( $in )
