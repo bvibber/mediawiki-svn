@@ -7,6 +7,7 @@ include_once( "LanguageUtf8.php" );
 # encapsulates some of the magic-ness.
 
 /* private */ $wgNamespaceNamesKo = array(
+	-2	=> "Media",
 	-1	=> "특수기능",	# Special
 	0	=> "",
 	1	=> "토론",	# Talk

@@ -14,6 +14,7 @@ if($wgMetaNamespace === FALSE)
 	$wgMetaNamespace = str_replace( " ", "_", $wgSitename );
 
 /* private */ $wgNamespaceNamesRu = array(
+	-2	=> "Media",
 	-1	=> "Специальные",
 	0	=> "",
 	1	=> "Обсуждение",

@@ -5,6 +5,7 @@
 # encapsulates some of the magic-ness.
 
 /* private */ $wgNamespaceNamesNl = array(
+	-2	=> "Media",
  -1 => "Speciaal",
  0 => "",
  1 => "Overleg",

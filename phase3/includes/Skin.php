@@ -158,17 +158,42 @@ class Skin {
 		$link = str_replace( "_", " ", $link );
 		$link = wfEscapeHTML( $link );
 
-		if ( $wgOut->isPrintable() ) { $r = " class='printable'"; }
-                else if ( $broken == "stub" ) { $r = " class='stub'"; }
-		else if ( $broken == "yes" ) { $r = " class='new'"; }
-		else { $r = " class='internal'"; }
+		if ( $wgOut->isPrintable() ) { 
+			$r = " class='printable'"; 
+		} else if ( $broken == "stub" ) { 
+			$r = " class='stub'"; 
+		} else if ( $broken == "yes" ) { 
+			$r = " class='new'"; 
+		} else { 
+			$r = ""; 
+		}
 
 		if ( 1 == $wgUser->getOption( "hover" ) ) {
 			$r .= " title=\"{$link}\"";
 		}
 		return $r;
 	}
+	
+	function getInternalLinkAttributesObj( &$nt, $text, $broken = false )
+	{
+		global $wgUser, $wgOut;
 
+		if ( $wgOut->isPrintable() ) { 
+			$r = " class='printable'"; 
+		} else if ( $broken == "stub" ) { 
+			$r = " class='stub'"; 
+		} else if ( $broken == "yes" ) { 
+			$r = " class='new'"; 
+		} else { 
+			$r = ""; 
+		}
+
+		if ( 1 == $wgUser->getOption( "hover" ) ) {
+			$r .= ' title="' . $nt->getEscapedText() . '"';
+		}
+		return $r;
+	}		
+	
 	function getLogo()
 	{
 		global $wgLogo;
@@ -1037,15 +1062,28 @@ class Skin {
 	# Note: This function MUST call getArticleID() on the link,
 	# otherwise the cache won't get updated properly.  See LINKCACHE.DOC.
 	#
-	function makeLink( $title, $text= "", $query = "", $trail = "" )
+	function makeLink( $title, $text = "", $query = "", $trail = "" ) {
+		return $this->makeLinkObj( Title::newFromText( $title ), $text, $query, $trail );
+	}
+
+	function makeKnownLink( $title, $text = "", $query = "", $trail = "" ) {
+		return $this->makeKnownLinkObj( Title::newFromText( $title ), $text, $query, $trail );
+	}
+
+	function makeBrokenLink( $title, $text = "", $query = "", $trail = "" ) {
+		return $this->makeBrokenLinkObj( Title::newFromText( $title ), $text, $query, $trail );
+	}
+	
+	function makeStubLink( $title, $text = "", $query = "", $trail = "" ) {
+		return $this->makeStubLinkObj( Title::newFromText( $title ), $text, $query, $trail );
+	}
+
+	# Pass a title object, not a title string
+	function makeLinkObj( &$nt, $text= "", $query = "", $trail = "" )
 	{
 		global $wgOut, $wgUser;
-
-		$nt = Title::newFromText( $title );
-
-		if ( !$nt ) {
-			return "<!--a bad link-->{$text}{$inside}<!--/a-->{$trail}";
-		}
+		$fname = "Skin::makeLinkObj";
+		wfProfileIn( $fname );
 		if ( $nt->isExternal() ) {
 			$u = $nt->getFullURL();
 			if ( "" == $text ) { $text = $nt->getPrefixedText(); }
@@ -1058,48 +1096,53 @@ class Skin {
 					$trail = $m[2];
 				}
 			}
-			return "<a href=\"{$u}\"{$style}>{$text}{$inside}</a>{$trail}";
-		}
-		if ( 0 == $nt->getNamespace() && "" == $nt->getText() ) {
-			return $this->makeKnownLink( $title, $text, $query, $trail );
-		}
-		if ( ( -1 == $nt->getNamespace() ) ||
-          ( Namespace::getImage() == $nt->getNamespace() ) ) {
-			return $this->makeKnownLink( $title, $text, $query, $trail );
-		}
-                $aid = $nt->getArticleID() ;
-                if ( 0 == $aid ) {
-                        return $this->makeBrokenLink( $title, $text, $query, $trail );
-                } else {
-                        $threshold = $wgUser->getOption("stubthreshold") ;
-                        if ( $threshold > 0 ) {
-                                $res = wfQuery ( "SELECT length(cur_text) AS x, cur_namespace, cur_is_redirect FROM cur WHERE cur_id='{$aid}'" ) ;
+			$retVal = "<a href=\"{$u}\"{$style}>{$text}{$inside}</a>{$trail}";
+		} elseif ( 0 == $nt->getNamespace() && "" == $nt->getText() ) {
+			$retVal = $this->makeKnownLinkObj( $nt, $text, $query, $trail );
+		} elseif ( ( -1 == $nt->getNamespace() ) ||
+				( Namespace::getImage() == $nt->getNamespace() ) ) {
+			$retVal = $this->makeKnownLinkObj( $nt, $text, $query, $trail );
+		} else {
+			$aid = $nt->getArticleID() ;
+			if ( 0 == $aid ) {
+				$retVal = $this->makeBrokenLinkObj( $nt, $text, $query, $trail );
+			} else {
+				$threshold = $wgUser->getOption("stubthreshold") ;
+				if ( $threshold > 0 ) {
+					$res = wfQuery ( "SELECT length(cur_text) AS x, cur_namespace, cur_is_redirect FROM cur WHERE cur_id='{$aid}'" ) ;
 
-                                if ( wfNumRows( $res ) > 0 ) {
-                                        $s = wfFetchObject( $res );
-                                        $size = $s->x;
-                                        if ( $s->cur_is_redirect OR $s->cur_namespace != 0 )
-                                                $size = $threshold*2 ; # Really big
-                                        wfFreeResult( $res );
-                                } else $size = $threshold*2 ; # Really big
-                        } else $size = 1 ;
+					if ( wfNumRows( $res ) > 0 ) {
+						$s = wfFetchObject( $res );
+						$size = $s->x;
+						if ( $s->cur_is_redirect OR $s->cur_namespace != 0 ) {
+							$size = $threshold*2 ; # Really big
+						}
+						wfFreeResult( $res );
+					} else {
+						$size = $threshold*2 ; # Really big
+					}
+				} else {
+					$size = 1 ;
+				}	
+				if ( $size < $threshold ) {
+					$retVal = $this->makeStubLinkObj( $nt, $text, $query, $trail );
+				} else {
+					$retVal = $this->makeKnownLinkObj( $nt, $text, $query, $trail );
+				}
+			}
+		}
+		wfProfileOut( $fname );
+		return $retVal;
+	}
 
-                        if ( $size < $threshold )
-                                return $this->makeStubLink( $title, $text, $query, $trail );
-                        return $this->makeKnownLink( $title, $text, $query, $trail );
-                }
-        }
-
-	function makeKnownLink( $title, $text = "", $query = "", $trail = "" )
+	# Pass a title object, not a title string
+	function makeKnownLinkObj( &$nt, $text = "", $query = "", $trail = "" )
 	{
 		global $wgOut, $wgTitle;
 
-		$nt = Title::newFromText( $title );
-		
-		if(!$nt) {
-			return "<!--a bad link-->{$text}{$inside}<!--/a-->{$trail}";
-		}
-		
+		$fname = "Skin::makeKnownLinkObj";
+		wfProfileIn( $fname );
+
 		$link = $nt->getPrefixedURL();
 
 		if ( "" == $link ) {
@@ -1112,7 +1155,7 @@ class Skin {
 			$u .= "#" . wfEscapeHTML( $nt->getFragment() );
 		}
 		if ( "" == $text ) { $text = $nt->getPrefixedText(); }
-		$style = $this->getInternalLinkAttributes( $link, $text );
+		$style = $this->getInternalLinkAttributesObj( $nt, $text );
 
 		$inside = "";
 		if ( "" != $trail ) {
@@ -1122,17 +1165,18 @@ class Skin {
 			}
 		}
 		$r = "<a href=\"{$u}\"{$style}>{$text}{$inside}</a>{$trail}";
+		wfProfileOut( $fname );
 		return $r;
 	}
-
-	function makeBrokenLink( $title, $text = "", $query = "", $trail = "" )
+	
+	# Pass a title object, not a title string
+	function makeBrokenLinkObj( &$nt, $text = "", $query = "", $trail = "" )
 	{
 		global $wgOut, $wgUser;
+		
+		$fname = "Skin::makeBrokenLinkObj";
+		wfProfileIn( $fname );
 
-		$nt = Title::newFromText( $title );
-		if(!$nt) {
-			return "<!--a bad edit link-->{$text}{$inside}<!--/a-->{$trail}";
-		}
 		$link = $nt->getPrefixedURL();
 
 		if ( "" == $query ) { $q = "action=edit"; }
@@ -1140,7 +1184,7 @@ class Skin {
 		$u = wfLocalUrlE( $link, $q );
 
 		if ( "" == $text ) { $text = $nt->getPrefixedText(); }
-		$style = $this->getInternalLinkAttributes( $link, $text, "yes" );
+		$style = $this->getInternalLinkAttributesObj( $nt, $text, "yes" );
 
 		$inside = "";
 		if ( "" != $trail ) {
@@ -1155,39 +1199,38 @@ class Skin {
 		} else {
 			$s = "{$text}{$inside}<a href=\"{$u}\"{$style}>?</a>{$trail}";
 		}
+
+		wfProfileOut( $fname );
 		return $s;
 	}
+	
+	# Pass a title object, not a title string
+	function makeStubLinkObj( &$nt, $text = "", $query = "", $trail = "" )
+	{
+		global $wgOut, $wgUser;
 
-        function makeStubLink( $title, $text = "", $query = "", $trail = "" )
-        {
-                global $wgOut, $wgUser;
+		$link = $nt->getPrefixedURL();
 
-                $nt = Title::newFromText( $title );
-		if(!$nt) {
-			return "<!--a bad stub link-->{$text}{$inside}<!--/a-->{$trail}";
+		$u = wfLocalUrlE( $link, $query );
+
+		if ( "" == $text ) { $text = $nt->getPrefixedText(); }
+		$style = $this->getInternalLinkAttributesObj( $nt, $text, "stub" );
+
+		$inside = "";
+		if ( "" != $trail ) {
+			if ( preg_match( wfMsg("linktrail"), $trail, $m ) ) {
+				$inside = $m[1];
+				$trail = $m[2];
+			}
 		}
-                $link = $nt->getPrefixedURL();
-
-                $u = wfLocalUrlE( $link, $query );
-
-                if ( "" == $text ) { $text = $nt->getPrefixedText(); }
-                $style = $this->getInternalLinkAttributes( $link, $text, "stub" );
-
-                $inside = "";
-                if ( "" != $trail ) {
-                        if ( preg_match( wfMsg("linktrail"), $trail, $m ) ) {
-                                $inside = $m[1];
-                                $trail = $m[2];
-                        }
-                }
-                if ( $wgOut->isPrintable() ||
-                  ( 1 == $wgUser->getOption( "highlightbroken" ) ) ) {
-                        $s = "<a href=\"{$u}\"{$style}>{$text}{$inside}</a>{$trail}";
-                } else {
-                        $s = "{$text}{$inside}<a href=\"{$u}\"{$style}>!</a>{$trail}";
-                }
-                return $s;
-        }
+		if ( $wgOut->isPrintable() ||
+				( 1 == $wgUser->getOption( "highlightbroken" ) ) ) {
+			$s = "<a href=\"{$u}\"{$style}>{$text}{$inside}</a>{$trail}";
+		} else {
+			$s = "{$text}{$inside}<a href=\"{$u}\"{$style}>!</a>{$trail}";
+		}
+		return $s;
+	}
 
 	function fnamePart( $url )
 	{
@@ -1205,28 +1248,42 @@ class Skin {
 		$s = "<img src=\"{$url}\" alt=\"{$alt}\">";
 		return $s;
 	}
+	
+	function makeImageLink( $name, $url, $alt = "" ) {
+		$nt = Title::makeTitle( Namespace::getImage(), $name );
+		return $this->makeImageLinkObj( $nt, $alt );
+	}
 
-	function makeImageLink( $name, $url, $alt = "" )
-	{
-		global $wgOut, $wgTitle, $wgLang;
-
-		$nt = Title::newFromText( $wgLang->getNsText(
-		  Namespace::getImage() ) . ":{$name}" );
+	function makeImageLinkObj( $nt, $alt = "" ) {
 		$link = $nt->getPrefixedURL();
-		if ( "" == $alt ) { $alt = $name; }
+		$name = $nt->getDBKey();
+		$url = wfImageUrl( $name );
+		if ( empty( $alt ) ) {
+			$alt = preg_replace( '/\.(.+?)^/', '', $name );
+		}
+		$alt = htmlspecialchars( $alt );
 
 		$u = wfLocalUrlE( $link );
 		$s = "<a href=\"{$u}\" class='image' title=\"{$alt}\">" .
-		  "<img border=0 src=\"{$url}\" alt=\"{$alt}\"></a>";
+		  "<img border=\"0\" src=\"{$url}\" alt=\"{$alt}\"></a>";
 		return $s;
 	}
 
-	function makeMediaLink( $name, $url, $alt = "" )
-	{
-		global $wgOut, $wgTitle;
+	function makeMediaLink( $name, $url, $alt = "" ) {
+		$nt = Title::makeTitle( Namespace::getMedia(), $name );
+		return $this->makeMediaLinkObj( $nt, $alt );
+	}
 
-		if ( "" == $alt ) { $alt = $name; }
-		$u = wfEscapeHTML( $url );
+	function makeMediaLinkObj( $nt, $alt = "" )
+	{
+		$name = $nt->getDBKey();
+		$url = wfImageUrl( $name );
+		if ( empty( $alt ) ) {
+			$alt = preg_replace( '/\.(.+?)^/', '', $name );
+		}
+		$alt = htmlspecialchars( $alt );
+
+		$u = htmlspecialchars( $url );
 		$s = "<a href=\"{$u}\" class='internal' title=\"{$alt}\">{$alt}</a>";
 		return $s;
 	}

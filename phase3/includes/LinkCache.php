@@ -56,6 +56,11 @@ class LinkCache {
 		if ( $this->mActive ) { $this->mImageLinks[$title] = 1; }
 	}
 
+	function addImageLinkObj( $nt )
+	{
+		if ( $this->mActive ) { $this->mImageLinks[$nt->getDBkey()] = 1; }
+	}
+
 	function clearBadLink( $title )
 	{
 		$index = array_search( $title, $this->mBadLinks );
@@ -72,17 +77,23 @@ class LinkCache {
 
 	function addLink( $title )
 	{
+		$nt = Title::newFromDBkey( $title );
+		if( $nt ) {
+			return $this->addLinkObj( $nt );
+		} else {
+			return 0;
+		}
+	}
+	
+	function addLinkObj( &$nt )
+	{
+		$title = $nt->getPrefixedDBkey();
 		if ( $this->isBadLink( $title ) ) { return 0; }
 		$id = $this->getGoodLinkID( $title );
 		if ( 0 != $id ) { return $id; }
 
 		wfProfileIn( "LinkCache::addLink-checkdatabase" );
 
-		$nt = Title::newFromDBkey( $title );
-		if(!$nt) {
-			wfProfileOut();
-			return 0;
-		}
 		$ns = $nt->getNamespace();
 		$t = $nt->getDBkey();
 

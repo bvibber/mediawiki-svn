@@ -7,6 +7,7 @@
 # encapsulates some of the magic-ness.
 #
 /* private */ $wgNamespaceNamesCs = array(
+	-2	=> "Media",
 	-1	=> "Speciální", # FIXME Is it safe to change this?
 	0	=> "",
 	1	=> "Diskuse", # neb diskutuj?

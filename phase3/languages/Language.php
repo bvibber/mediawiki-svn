@@ -12,6 +12,7 @@ if($wgMetaNamespace === FALSE)
 	$wgMetaNamespace = str_replace( " ", "_", $wgSitename );
 
 /* private */ $wgNamespaceNamesEn = array(
+	-2	=> "Media",
 	-1	=> "Special",
 	0	=> "",
 	1	=> "Talk",

@@ -11,6 +11,7 @@ include_once("LanguageUtf8.php");
 #
 
 /* private */ $wgNamespaceNamesSq = array(
+	-2	=> "Media",
 	-1	=> "Speciale",
 	0	=> "",
 	1	=> "Diskutim",

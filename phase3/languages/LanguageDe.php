@@ -2,6 +2,7 @@
 # See Language.php for notes.
 
 /* private */ $wgNamespaceNamesDe = array(
+	-2	=> "Media",
 	-1	=> "Spezial",
 	0	=> "",
 	1	=> "Diskussion",

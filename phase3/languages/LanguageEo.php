@@ -11,6 +11,7 @@ $wgEditEncoding		= "x";
 # encapsulates some of the magic-ness.
 #
 /* private */ $wgNamespaceNamesEo = array(
+	-2	=> "Media",
 	-1	=> "Speciala",
 	0	=> "",
 	1	=> "Diskuto",

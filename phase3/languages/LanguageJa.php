@@ -10,6 +10,7 @@ include_once( "LanguageUtf8.php" );
 # 隠匿します。
 #
 /* private */ $wgNamespaceNamesJa = array(
+	-2	=> "Media",
 	-1	=> "特別" /* "Special" */, 
 	0	=> "",
 	1	=> "ノート" /* "Talk" */,

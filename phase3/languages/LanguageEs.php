@@ -4,6 +4,7 @@
 # are magical, so don't change or move them!  The Namespace class
 # encapsulates some of the magic-ness.
 #
+	-2	=> "Media",
 /* private */ $wgNamespaceNamesEs = array(
 	-1	=> "Especial",
 	0	=> "",

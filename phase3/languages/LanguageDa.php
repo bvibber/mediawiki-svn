@@ -8,6 +8,7 @@
 # encapsulates some of the magic-ness.
 #
 /* private */ $wgNamespaceNamesDa = array(
+	-2	=> "Media",
 	-1	=> "Speciel",
 	0	=> "",
 	1	=> "Diskussion",

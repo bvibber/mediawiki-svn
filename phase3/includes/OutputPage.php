@@ -763,6 +763,11 @@ class OutputPage {
 		$s = substr( $s, 1 );
 
 		$e1 = "/^([{$tc}]+)(?:\\|([^]]+))?]](.*)\$/sD";
+
+		# Special and Media are pseudo-namespaces; no pages actually exist in them
+		$image = Namespace::getImage();
+		$special = Namespace::getSpecial();
+		$media = Namespace::getMedia();
 		wfProfileOut();
 
 		wfProfileIn( "$fname-loop" );
@@ -770,75 +775,70 @@ class OutputPage {
 			if ( preg_match( $e1, $line, $m ) ) { # page with normal text or alt
 				$text = $m[2];
 				$trail = $m[3];				
-			}
-			
-			else { # Invalid form; output directly
+			} else { # Invalid form; output directly
 				$s .= "[[" . $line ;
 				continue;
 			}
-			if(substr($m[1],0,1)=="/") { # subpage
+			
+			/* Valid link forms:
+			Foobar -- normal
+			:Foobar -- override special treatment of prefix (images, language links)
+			/Foobar -- convert to CurrentPage/Foobar
+			/Foobar/ -- convert to CurrentPage/Foobar, strip the initial / from text
+			*/
+			$c = substr($m[1],0,1);
+			$noforce = ($c != ":");
+			if( $c == "/" ) { # subpage
 				if(substr($m[1],-1,1)=="/") {                 # / at end means we don't want the slash to be shown
 					$m[1]=substr($m[1],1,strlen($m[1])-2); 
 					$noslash=$m[1];
-					
 				} else {
 					$noslash=substr($m[1],1);
 				}
 				if($wgNamespacesWithSubpages[$wgTitle->getNamespace()]) { # subpages allowed here
 					$link = $wgTitle->getPrefixedText(). "/" . trim($noslash);
-					if(!$text) { 						
+					if(!$text) {
 						$text= $m[1]; 
 					} # this might be changed for ugliness reasons
 				} else {
 					$link = $noslash; # no subpage allowed, use standard link
 				}
-			} else { # no subpage
-				$link = $m[1]; 
-			}
-
-			if ( strpos( $link, ":" ) !== false
-			  && preg_match( "/^((?:i|x|[a-z]{2,3})(?:-[a-z0-9]+)?|[A-Za-z\\x80-\\xff]+):(.*)\$/", $link,  $m ) ) {
-				$pre = strtolower( $m[1] );
-				$suf = trim($m[2]);
-				if( empty( $suf ) ) {
-					$s .= $trail;
-				} else if ( $wgLang->getNsIndex( $pre ) ==
-				  Namespace::getImage() ) {
-					$nt = Title::newFromText( $suf );
-					$name = $nt->getDBkey();
-					if ( "" == $text ) { $text = $nt->GetText(); }
-
-					$wgLinkCache->addImageLink( $name );
-					$s .= $sk->makeImageLink( $name,
-					  wfImageUrl( $name ), $text );
-					$s .= $trail;
-				} else if ( "media" == $pre ) {
-					$nt = Title::newFromText( $suf );
-					$name = $nt->getDBkey();
-					if ( "" == $text ) { $text = $nt->GetText(); }
-
-					$wgLinkCache->addImageLink( $name );
-					$s .= $sk->makeMediaLink( $name,
-					  wfImageUrl( $name ), $text );
-					$s .= $trail;
-				} else {
-					$l = $wgLang->getLanguageName( $pre );
-					if ( "" == $l or !$wgInterwikiMagic or
-					  Namespace::isTalk( $wgTitle->getNamespace() ) ) {
-						if ( "" == $text ) { $text = $link; }
-						$s .= $sk->makeLink( $link, $text, "", $trail );
-					} else if ( $pre != $wgLanguageCode ) {
-						array_push( $this->mLanguageLinks, "$pre:$suf" );
-						$s .= $trail;
-					}
-				}
-#			} else if ( 0 == strcmp( "##", substr( $link, 0, 2 ) ) ) {
-#				$link = substr( $link, 2 );
-#				$s .= "<a name=\"{$link}\">{$text}</a>{$trail}";
+			} elseif( $noforce ) { # no subpage
+				$link = $m[1];
 			} else {
-				if ( "" == $text ) { $text = $link; }
-				$s .= $sk->makeLink( $link, $text, "", $trail );
+				$link = substr( $m[1], 1 );
 			}
+			if( empty( $text ) )
+				$text = $link;
+
+			$nt = Title::newFromText( $link );
+			if( !$nt ) {
+				$s .= "[[" . $line;
+				continue;
+			}
+			$ns = $nt->getNamespace();
+			$iw = $nt->getInterWiki();
+			if( $noforce ) {
+				if( $iw && $wgInterwikiMagic && $wgLang->getLanguageName( $iw ) ) {
+					array_push( $this->mLanguageLinks, $nt->getPrefixedText() );
+					$s .= $trail;
+					continue;
+				}
+				if( $ns == $image ) {
+					$s .= $sk->makeImageLinkObj( $nt, $text ) . $trail;
+					$wgLinkCache->addImageLinkObj( $nt );
+					continue;
+				}
+			}
+			if( $ns == $media ) {
+				$s .= $sk->makeMediaLinkObj( $nt, $text ) . $trail;
+				$wgLinkCache->addImageLinkObj( $nt );
+				continue;
+			} elseif( $ns == $special ) {
+				$s .= $sk->makeKnownLinkObj( $nt, $text, "", $trail );
+				continue;
+			}
+			$s .= $sk->makeLinkObj( $nt, $text, "", $trail );
 		}
 		wfProfileOut();
 		wfProfileOut();

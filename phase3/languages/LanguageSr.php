@@ -10,6 +10,7 @@ include( "LanguageUtf8.php" );
 # encapsulates some of the magic-ness.
 #
 /* private */ $wgNamespaceNamesSr = array(
+	-2	=> "Media",
  -1 => "Посебно",
  0 => "",
  1 => "Разговор",

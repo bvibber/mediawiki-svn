@@ -7,7 +7,8 @@ class Title {
 	/* private */ var $mTextform, $mUrlform, $mDbkeyform;
 	/* private */ var $mNamespace, $mInterwiki, $mFragment;
 	/* private */ var $mArticleID, $mRestrictions, $mRestrictionsLoaded;
-
+	/* private */ var $mPrefixedText;
+	
 	/* private */ function Title()
 	{
 		$this->mInterwiki = $this->mUrlform =
@@ -16,6 +17,7 @@ class Title {
 		$this->mNamespace = 0;
 		$this->mRestrictionsLoaded = false;
 		$this->mRestrictions = array();
+		$this->mPrefixedText = false;
 	}
 
 	# Static factory methods
@@ -77,6 +79,17 @@ class Title {
 		}
 	}
 
+	function nameOf( $id ) {
+		$sql = "SELECT cur_namespace,cur_title FROM cur WHERE " .
+		  "cur_id={$id}";
+		$res = wfQuery( $sql, "Article::nameOf" );
+		if ( 0 == wfNumRows( $res ) ) { return NULL; }
+		
+		$s = wfFetchObject( $res );
+		$n = Title::makeName( $s->cur_namespace, $s->cur_title );
+		return $n;
+	}
+	
 	function legalChars()
 	{
 		global $wgInputEncoding;
@@ -174,9 +187,12 @@ class Title {
 
 	function getPrefixedText()
 	{
-		$s = $this->prefix( $this->mTextform );
-		$s = str_replace( "_", " ", $s );
-		return $s;
+		if( empty( $this->mPrefixedText ) ) {
+			$s = $this->prefix( $this->mTextform );
+			$s = str_replace( "_", " ", $s );
+			$this->mPrefixedText = $s;
+		}
+		return $this->mPrefixedText;
 	}
 
 	function getPrefixedURL()
@@ -195,7 +211,7 @@ class Title {
 
 	function getFullURL()
 	{
-		global $wgLang, $wgArticlePath, $wgValidInterwikis;
+		global $wgLang, $wgArticlePath;
 
 		if ( "" == $this->mInterwiki ) {
 			$p = $wgArticlePath;
@@ -221,6 +237,12 @@ class Title {
 		return $s;
 	}
 
+	# For the title field in <a> tags
+	function getEscapedText()
+	{
+		return wfEscapeHTML( $this->getPrefixedText() );
+	}
+	
 	function isExternal() { return ( "" != $this->mInterwiki ); }
 
 	function isProtected()
@@ -299,8 +321,7 @@ class Title {
 		global $wgLinkCache;
 
 		if ( -1 != $this->mArticleID ) { return $this->mArticleID; }
-		$this->mArticleID = $wgLinkCache->addLink(
-		  $this->getPrefixedDBkey() );
+		$this->mArticleID = $wgLinkCache->addLinkObj( $this );
 		return $this->mArticleID;
 	}
 
@@ -333,40 +354,50 @@ class Title {
     # and uses undersocres, but not otherwise munged.  This function
     # removes illegal characters, splits off the winterwiki and
     # namespace prefixes, sets the other forms, and canonicalizes
-    # everything.  This one function is really at the core of
-	# Wiki--don't mess with it unless you're really sure you know
-	# what you're doing.
+    # everything.
 	#
 	/* private */ function secureAndSplit()
 	{
 		global $wgLang, $wgLocalInterwiki;
- 		wfProfileIn( "Title::secureAndSplit" );
+		$fname = "Title::secureAndSplit";
+ 		wfProfileIn( $fname );
 		
-		$validNamespaces = $wgLang->getNamespaces();
-		unset( $validNamespaces[0] );
+		static $imgpre = false;
+		static $rxTc = false;
+
+		# Initialisation
+		if ( $imgpre === false ) {
+			$imgpre = ":" . $wgLang->getNsText( Namespace::getImage() ) . ":";
+			$rxTc = "/[^" . Title::legalChars() . "]/";
+		}
+
 
 		$this->mInterwiki = $this->mFragment = "";
 		$this->mNamespace = 0;
 
 		$t = preg_replace( "/[\\s_]+/", "_", $this->mDbkeyform );
-		if ( "_" == $t{0} ) { $t = substr( $t, 1 ); }
+		if ( "_" == $t{0} ) { 
+			$t = substr( $t, 1 ); 
+		}
 		$l = strlen( $t );
-		if ( $l && ( "_" == $t{$l-1} ) ) { $t = substr( $t, 0, $l-1 ); }
+		if ( $l && ( "_" == $t{$l-1} ) ) { 
+			$t = substr( $t, 0, $l-1 ); 
+		}
 		if ( "" == $t ) {
+			wfProfileOut( $fname );
 			return false;
 		}
 
 		$this->mDbkeyform = $t;
 		$done = false;
 
-		$imgpre = ":" . $wgLang->getNsText( Namespace::getImage() ) . ":";
 		if ( 0 == strncasecmp( $imgpre, $t, strlen( $imgpre ) ) ) {
 			$t = substr( $t, 1 );
 		}
 		if ( ":" == $t{0} ) {
 			$r = substr( $t, 1 );
 		} else {
-	 		if ( preg_match( "/^((?:i|x|[a-z]{2,3})(?:-[a-z0-9]+)?|[A-Za-z0-9_\\x80-\\xff]+):(.*)$/", $t, $m ) ) {
+	 		if ( preg_match( "/^((?:i|x|[a-z]{2,3})(?:-[a-z0-9]+)?|[A-Za-z0-9_\\x80-\\xff]+):_*(.*)$/", $t, $m ) ) {
 				#$p = strtolower( $m[1] );
 				$p = $m[1];
 				if ( $ns = $wgLang->getNsIndex( strtolower( $p ) )) {
@@ -376,14 +407,11 @@ class Title {
 					$t = $m[2];
 					$this->mInterwiki = $p;
 
-					if ( preg_match( "/^([A-Za-z0-9_\\x80-\\xff]+):(.*)$/",
-					  $t, $m ) ) {
-						$p = strtolower( $m[1] );
-					} else {
+					if ( !preg_match( "/^([A-Za-z0-9_\\x80-\\xff]+):(.*)$/", $t, $m ) ) {
+						$done = true;
+					} elseif($this->mInterwiki != $wgLocalInterwiki) {
 						$done = true;
 					}
-					if($this->mInterwiki != $wgLocalInterwiki)
-						$done = true;
 				}
 			}
 			$r = $t;
@@ -403,15 +431,14 @@ class Title {
 		}
 		# Strip illegal characters.
 		#
-		$tc = Title::legalChars();
-		$t = preg_replace( "/[^{$tc}]/", "", $r );
+		$t = preg_replace( $rxTc, "", $r );
 
 		if( $this->mInterwiki == "") $t = $wgLang->ucfirst( $t );
 		$this->mDbkeyform = $t;
 		$this->mUrlform = wfUrlencode( $t );
 		$this->mTextform = str_replace( "_", " ", $t );
 		
-		wfProfileOut();
+		wfProfileOut( $fname );
 		return true;
 	}
 }

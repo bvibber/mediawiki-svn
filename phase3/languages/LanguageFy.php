@@ -14,6 +14,7 @@ if($wgMetaNamespace === FALSE)
 	$wgMetaNamespace = str_replace( " ", "_", $wgSitename );
 
 /* private */ $wgNamespaceNamesFy = array(
+	-2	=> "Media",
 	-1	=> "Wiki",
 	0	=> "",
 	1	=> "Oerlis",
@@ -30,7 +31,7 @@ if($wgMetaNamespace === FALSE)
 );
 
 /* private */ $wgSkinNamesFy = array(
-	"Standert", "Nostalgy", "Keuls blau", "Paddington", "Montparnasse"
+	"Standert", "Nostalgy", "Keuls blau" # , "Paddington", "Montparnasse"
 );
 
 /* private */ $wgMathNamesFy = array(
