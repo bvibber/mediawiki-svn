@@ -112,7 +112,8 @@ class MovePageForm {
 		$newid = wfInsertId();
 
 		$sql = "UPDATE old SET old_timestamp=old_timestamp," .
-		  "old_namespace={$nns},old_title='{$ndt}' WHERE old_title='{$odt}'";
+		  "old_namespace={$nns},old_title='{$ndt}' WHERE " .
+		  "old_namespace={$ons} AND old_title='{$odt}'";
 		wfQuery( $sql, $fname );
 
 		$sql = "UPDATE links SET l_from='{$nft}' WHERE l_from='{$oft}'";

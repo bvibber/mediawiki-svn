@@ -84,6 +84,11 @@ class Article {
 				if ( preg_match( "/\\[\\[([^\\]\\|]+)[\\]\\|]/",
 				  $s->cur_text, $m ) ) {
 					$rt = Title::newFromText( $m[1] );
+					if ( $rt->getNamespace() == Namespace::getSpecial() ) {
+						$wgOut->redirect( wfLocalUrl(
+						  $rt->getPrefixedURL() ) );
+						return;
+					}
 					$rid = $rt->getArticleID();
 					if ( 0 != $rid ) {
 						$sql = "SELECT cur_text,cur_timestamp,cur_user," .

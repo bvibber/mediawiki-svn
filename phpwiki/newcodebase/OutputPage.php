@@ -94,12 +94,12 @@ class OutputPage {
 		header( "Expires: 0" );
 		header( "Cache-Control: no-cache" );
 		header( "Pragma: no-cache" );
+		header( "Content-type: text/html; charset={$wgOutputEncoding}" );
+
 		if ( "" != $this->mRedirect ) {
 			header( "Location: {$this->mRedirect}" );
 			return;
 		}
-		$this->addHeader( "Content-type",
-		  "text/html; charset={$wgOutputEncoding}" );
 
 		$exp = time() + $wgCookieExpiration;
 		foreach( $this->mCookies as $name => $val ) {
