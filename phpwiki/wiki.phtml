@@ -1,0 +1,98 @@
+<?
+function getNiceTitle ( $s ) {
+	$s=str_replace("_"," ",$s);
+	return $s ;
+	}
+
+function stripNamespace ( $s ) {
+	$dbpos = strpos ( " ".$s , ':' ) ;
+	if ( $dbpos == true ) $s = substr ( $s , $dbpos ) ;
+	return $s ;
+	}
+
+function getNamespace ( $s ) {
+	$dbpos = strpos ( " ".$s , ':' ) ;
+	$ret = "" ;
+	if ( $dbpos == true ) $ret = substr ( $s , 0 , $dbpos-1 ) ;
+	return $ret ;
+	}
+
+function getSecureTitle ( $s ) {
+	$s = trim ( $s ) ;
+	$s=str_replace(" ","_",$s);
+	$s=str_replace ( "\\'" , "'" , $s ) ;
+	$s=ucfirst($s);
+	$dbpos = strpos ( " ".$s , ':' ) ;
+	if ( $dbpos == true ) $s = substr ($s,0,$dbpos-1).":".ucfirst(substr($s,$dbpos)) ;
+	return $s ;
+	}
+
+
+require ( "./essential_functions.php" ) ; # Database password!
+require ( "./user_functions.php" ) ;      # User management
+require ( "./database_functions.php" ) ;  # Article database access
+require ( "./parser_functions.php" ) ;    # The parser
+require ( "./rights_functions.php" ) ;    # User rights management
+require ( "./output_functions.php" ) ;    # Headers, footers
+require ( "./basic_functions.php" ) ;     # View, edit
+require ( "./higher_functions.php" ) ;    # History, statistics etc.
+require ( "./upload_functions.php" ) ;    # Upload page
+
+#############################
+# MAIN PROGRAM
+#############################
+	global $title , $action , $doSearch , $xtitle ;
+
+	if ( $title == "" ) $title="HomePage" ;
+	if ( $action == "" ) $action = "view" ;
+
+	$ltitle = strtolower ( $title ) ;
+	$stitle = strtolower ( getSecureTitle ( $title ) ) ;
+	if ( $stitle == "recent_changes" ) $ltitle = "recentchanges" ;
+	if ( $stitle == "page_index" ) $action = "pageindex" ;
+	if ( $stitle == "random_page" ) $action = "random" ;
+
+	$action = strtolower ( $action ) ;
+	if ( $action == "edited" && $preview ) $action="preview" ;
+	unset ( $preview ) ;
+	if ( $action == "view_old_article" and $oid == "current" ) $action = "view" ;
+	if ( $action == "view_old_source" and $oid == "current" ) $action = "edit" ;
+
+	if ( $dosearch == 1 ) $action = "search" ;
+
+	$xtitle = "Wikipedia page" ;
+	if ( $title != "" ) $xtitle = getNiceTitle ( $title ) ;
+
+	if ( $ltitle == "recentchanges" ) $ret = showRecentChanges() ;
+	else if ( $dosearch == 1 ) $ret = doSearch () ;
+	else if ( $action == "statistics" ) $ret = statistics() ;
+	else if ( $action == "restrictions" ) $ret = restrictions() ;
+	else if ( $action == "edituserrights" ) $ret = editUserRights() ;
+	else if ( $action == "upload" ) $ret = doUpload() ;
+	else if ( $action == "pageindex" ) $ret = pageIndex() ;
+	else if ( $action == "random" ) $ret = randomPage() ;
+	else if ( $action == "prefs" ) $ret = prefs() ;
+	else if ( $action == "login" ) $ret = login() ;
+	else if ( $action == "loginattempt" ) $ret = loginattempt() ;
+	else if ( $action == "logout" ) $ret = logout() ;
+	else if ( $action == "view" ) $ret = view() ;
+	else if ( $action == "edit" ) $ret = edit() ;
+	else if ( $action == "preview" ) $ret = edit() ;
+	else if ( $action == "edited" ) $ret = edited() ;
+	else if ( $action == "revisions" ) $ret = revisions() ;
+	else if ( $action == "view_old_article" ) $ret = view_old_article( "parsed" ) ;
+	else if ( $action == "view_old_source" ) $ret = view_old_article( "source" ) ;
+	else { # No valid action!
+		$ret = "<font size=\"+4\">ILLEGAL COMMAND!</font><br>\n" ;
+		$ret .= "Return to the <a href=\"$PHP_SELF?no\">Main Page</a>" ;
+		}
+
+	# Actual page output
+	print "<html>\n<head>\n<title>Wikipedia : $xtitle</title>\n</head>\n<body>" ;
+	print $ret ;
+	print "</body>\n</html>" ;
+	unset ( $oid ) ;
+	unset ( $doSearch ) ;
+	unset ( $editusername ) ;
+	unset ( $countDays ) ;
+?>
