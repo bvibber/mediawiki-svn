@@ -37,9 +37,6 @@ class UserTalkUpdate {
 			if ( 1 == $this->mAction ) {
 				$user = new User();				
 				$user->setID(User::idFromName($this->mTitle));
-				#$user->loadFromDatabase;
-				#global $wgDebugLogFile;
-				#error_log("ID:".$this->mTitle."\n",3,$wgDebugLogFile);				
 				if ($id=$user->getID()) {									
 					$sql = "INSERT INTO user_newtalk (user_id) values ({$id})";
 					
