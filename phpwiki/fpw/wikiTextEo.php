@@ -19,8 +19,8 @@ $wikiErrorPageTitle = "Fuŝ'! Problemo okazis!" ;
 $wikiErrorMessage = "<h2>$1!</h2>Revenu al la [[:Main Page|Ĉefpaĝo]]!" ;
 #$wikiAllowedSpecialPages = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","popularpages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","deletepage","protectpage","contributions","whatlinkshere");
 $wikiRecentChangesText = "Sekvu la plej lastaj ŝanĝoj al Vikipedio per ĉi tiu paĝo. [[Bonvenon, novuloj]]!
-Bonvolu legi ĉi tiuj paĝojn: [[wikipedia:Oftaj demandoj|Oftaj demandoj]], [[wikipedia:Konsiletoj|Konsiletoj]] (aparte [[wikipedia:Nomoj de titoloj|Nomoj de titoloj]]
-kaj [[wikipedia:Neŭtrala vidpunkto|Neŭtrala vidpunkto]]), kaj [[wikipedia:Oftaj eraroj|Oftaj eraroj ĉe Vikipedio]].<br>
+Bonvolu legi ĉi tiuj paĝojn: [[vikipedio:Oftaj demandoj|Oftaj demandoj]], [[vikipedio:Konsiletoj|Konsiletoj]] (aparte [[vikipedio:Nomoj de titoloj|Nomoj de titoloj]]
+kaj [[vikipedio:Neŭtrala vidpunkto|Neŭtrala vidpunkto]]), kaj [[vikipedio:Oftaj eraroj|Oftaj eraroj ĉe Vikipedio]].<br>
 Se vi volas, ke la Vikipedio sukcesu, tre gravas ke vi ne aldonu aferojn limigitaj laŭ la [[kopirajto]] de aliuloj.
 La leĝa respondeco vere povus malhelpegi la projekton, do bonvolu ne fari tion.<br>
 Ankaŭ vidu la [http://meta.wikipedia.com/wiki.phtml?title=special:RecentChanges lastatempan pri-vikipedian diskuton] (angle)" ;
@@ -44,7 +44,7 @@ $wikiPrintLinksMarkup = "i" ; # will be used as <$wikiPrintLinksMarkup> and </$w
 $wikiTalk = "priparolu" ;
 $wikiUser = "uzanto" ;
 $wikiNamespaceTalk = "Priparolu $1n" ;
-$wikiAllowedNamespaces = array ( "wikipedia" , $wikiTalk , $wikiUser , "" , "priparolu wikipedian" , "priparolu uzanton" ) ;
+$wikiAllowedNamespaces = array ( "vikipedio" , $wikiTalk , $wikiUser , "" , "priparolu vikipedion" , "priparolu uzanton" ) ;
 
 # Editing
 $wikiEditTitle = "Redaktante $1" ;
@@ -173,7 +173,7 @@ $wikiUserSettingsError = "Vi ne estas salutinta! Bonvolu [[special:userLogin|sal
 $wikiUserSettingsNewPasswordError = "<h1><font color=red>La novaj pasvortoj ne egalas. PASVORTO RESTAS NEŜANĜITA!</font></h1>\n" ;
 $wikiUserSettingsSaved = "<font color=red size=+1>Viaj preferoj estas konservitaj!</font>" ;
 $wikiLoggedInAs = "<b>Vi salutis kiel [[$wikiUser:$1|$1]]. ";
-$wikiID_Help = "Via interna identigilo estas $1.</b> Vi povas trovi helpon [[wikipedia:Helpo/Preferoj|ĉi tie]]." ;
+$wikiID_Help = "Via interna identigilo estas $1.</b> Vi povas trovi helpon [[vikipedio:Helpo/Preferoj|ĉi tie]]." ;
 $wikiQuickBarSettings = "Preferoj pri ilobreto :" ;
 $wikiSettingsStandard = "norma" ;
 $wikiSettingsNone = "Neniu" ;
@@ -211,7 +211,7 @@ $wikiSearchTitle = "Serĉu" ;
 $wikiSearchedVoid = "Ĉar vi serĉis nenion, vi ĵus trovis tion." ;
 $wikiNoSearchResult = "Bedaŭrinde, ni ne povis trovi artikolon, kiu enhavas \"$1\" en titolo aŭ enhavo.</h2>" ;
 $wikiUnsuccessfulSearch = "Malsukcesa serĉo de $1" ;
-$wikiUnsuccessfulSearches = "wikipedia:Malsukcesaj serĉoj ($1)" ; # $1 becomes "YEAR-MONTH"
+$wikiUnsuccessfulSearches = "vikipedio:Malsukcesaj serĉoj ($1)" ; # $1 becomes "YEAR-MONTH"
 $wikiFoundHeading = "Artikoloj ĉe Vikipedio" ;
 $wikiFoundText = "Trovis $1ope ''$2''. Po ĉiu artikolo, montriĝas la unua paragrafo, kaj la plej frua paragrafo enhavanta ''$2''." ;
 $wikiUserlistTitle = "Listo de Uzantoj" ;
@@ -238,7 +238,7 @@ $wikiStatisticsTitle = "Statistiko pri Artikoloj" ;
 $wikiStatTotalPages = "Estas $1 paĝoj en la datumaro." ;
 $wikiStatTalkPages = "Estas $1 '''Priparolu''' paĝoj." ;
 $wikiStatCommaPages = "Estas $1 paĝoj kun komo kiuj ''ne'' estas '''Priparolu''' paĝoj." ;
-$wikiStatWikipediaNoTalk = "Estas $1 kiu enhavas \"ikipedia\" en la titolo kaj ''ne'' estas '''Priparolu''' paĝoj." ;
+$wikiStatWikipediaNoTalk = "Estas $1 kiu enhavas \"ikipedi\" en la titolo kaj ''ne'' estas '''Priparolu''' paĝoj." ;
 $wikiStatSubNoTalk = "Estas $1 subpaĝoj kiuj ''ne'' estas '''Priparolu''' paĝoj." ;
 $wikiStatNoTalk = "Estas do proksimume $1 artikoloj, inkluzive de subpaĝoj (krom '''Priparolu''')." ;
 $wikiStatArticles = "Aŭ, estas proksimume $1 artikoloj, ignorante ĉiun subpaĝon!" ;
