@@ -280,6 +280,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 #
 "linktrail"		=> "/^([a-z]+)(.*)\$/sD",
 "mainpage"		=> "Main Page",
+"mainpagetext"	=> "Wiki software successfully installed.",
 "about"			=> "About",
 "aboutwikipedia" => "About Wikipedia",
 "aboutpage"		=> "Wikipedia:About",
@@ -309,7 +310,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 "help"			=> "Help",
 "search"		=> "Search",
 "go"		=> "Go",
-"history"		=> "Older versions",
+"history"		=> "Page history",
 "printableversion" => "Printable version",
 "editthispage"	=> "Edit this page",
 "deletethispage" => "Delete this page",
@@ -368,6 +369,11 @@ The last attempted database query was:
 <blockquote><tt>$1</tt></blockquote>
 from within function \"<tt>$2</tt>\".
 MySQL returned error \"<tt>$3: $4</tt>\".",
+"dberrortextcl" => "A database query syntax error has occurred.
+The last attempted database query was:
+\"$1\"
+from within function \"$2\".
+MySQL returned error \"$3: $4\".\n",
 "noconnect"		=> "Could not connect to DB on $1",
 "nodb"			=> "Could not select database $1",
 "readonly"		=> "Database locked",
@@ -513,7 +519,7 @@ Please consider breaking the page into smaller sections.",
 so you will not be able to save your edits right now. You may wish to cut-n-paste
 the text into a text file and save it for later.",
 "protectedpagewarning" => "WARNING:  This page has been locked so that only
-users with sysop priveledges can edit it. Be sure you are following the
+users with sysop priviledges can edit it. Be sure you are following the
 <a href='/wiki/Wikipedia:Protected_page_guidelines'>protected page
 guidelines</a>.",
 
