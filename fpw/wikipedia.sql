@@ -24,9 +24,8 @@ CREATE TABLE cur (
   cur_unlinked_links mediumtext,
   cur_counter bigint(20) unsigned default '0',
   cur_cache mediumtext,
-  UNIQUE KEY cur_id (cur_id),
   UNIQUE KEY cur_title (cur_title),
-  KEY cur_id_2 (cur_id),
+  UNIQUE KEY cur_id (cur_id),
   KEY timeind (cur_timestamp)
 ) TYPE=ISAM PACK_KEYS=1;
 
@@ -36,7 +35,7 @@ CREATE TABLE cur (
 
 CREATE TABLE old (
   old_id mediumint(8) unsigned NOT NULL auto_increment,
-  old_title varchar(255) binary default NULL,
+  old_title varchar(255) binary NOT NULL default '',
   old_text mediumtext,
   old_comment tinyblob,
   old_user mediumint(8) unsigned default '0',
@@ -44,10 +43,9 @@ CREATE TABLE old (
   old_old_version mediumint(8) unsigned default '0',
   old_timestamp timestamp(14) NOT NULL,
   old_minor_edit tinyint(1) default '0',
-  PRIMARY KEY  (old_id),
   UNIQUE KEY old_id (old_id),
-  KEY old_id_2 (old_id),
-  KEY timeind (old_timestamp)
+  KEY timeind (old_timestamp),
+  KEY old_title (old_title)
 ) TYPE=ISAM PACK_KEYS=1;
 
 #
@@ -62,8 +60,6 @@ CREATE TABLE user (
   user_email tinytext,
   user_options mediumtext,
   user_watch mediumtext,
-  PRIMARY KEY  (user_id),
-  UNIQUE KEY user_id (user_id),
-  KEY user_id_2 (user_id)
+  UNIQUE KEY user_id (user_id)
 ) TYPE=ISAM PACK_KEYS=1;
 
