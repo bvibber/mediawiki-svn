@@ -759,12 +759,12 @@ class WikiPage extends WikiTitle {
 				}
 
 			$nbegin = "" ;
-			while ( $t != "" and substr($obegin,0,1)==substr($t,0,1) ) {
+			while ( $t != "" and $obegin != "" and substr($obegin,0,1)==substr($t,0,1) ) {
 				$nbegin .= substr($obegin,0,1) ;
 				$t = substr ( $t , 1 ) ;
 				$obegin = substr ( $obegin , 1 ) ;
 				}
-
+			
 			$obegin = str_replace ( "*" , "</ul>" , $obegin ) ;
 			$obegin = str_replace ( "#" , "</ol>" , $obegin ) ;
 			$obegin = str_replace ( ":" , "</DL>" , $obegin ) ;
