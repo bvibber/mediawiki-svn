@@ -357,6 +357,7 @@ class OutputPage {
 				if ( "image" == $pre ) {
 					$nt = Title::newFromText( $suf );
 					$name = $nt->getDBkey();
+					if ( "" == $text ) { $text = $nt->GetText(); }
 
 					$wgLinkCache->addImageLink( $name );
 					$s .= $sk->makeImageLink( $name,
@@ -365,6 +366,7 @@ class OutputPage {
 				} else {
 					$l = $wgLang->getLanguageName( $pre );
 					if ( "" == $l ) {
+						if ( "" == $text ) { $text = $link; }
 						$s .= $sk->makeLink( $link, $text, "", $trail );
 					} else {
 						array_push( $this->mLanguageLinks, "$pre:$suf" );
@@ -375,6 +377,7 @@ class OutputPage {
 				$link = substr( $link, 2 );
 				$s .= "<a name=\"{$link}\">{$text}</a>{$trail}";
 			} else {
+				if ( "" == $text ) { $text = $link; }
 				$s .= $sk->makeLink( $link, $text, "", $trail );
 			}
 		}

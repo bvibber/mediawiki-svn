@@ -133,7 +133,11 @@ class Title {
 		}
 		$n = Namespace::getName( $this->mNamespace );
 		if ( "" != $n ) { $n .= "$3a"; }
-		return str_replace( "$1", $n . $this->mUrlform, $p );
+		$u = str_replace( "$1", $n . $this->mUrlform, $p );
+		if ( "" != $this->mFragment ) {
+			$u .= "#" . $this->mFragment;
+		}
+		return $u;
 	}
 
 	function getEditURL()

@@ -169,7 +169,8 @@ Please log in again after you receive it.",
 The reason given is this:<br>$2<p>You may contact the administrator to
 discuss the block.",
 "newarticle"	=> "(New)",
-"newarticletext" => "Describe the new page here.",
+"newarticletext" => "Put your text for the new article here.",
+"noarticletext" => "(There is currently no text in this article)",
 "updated"		=> "(Updated)",
 "note"			=> "<strong>Note:</strong> ",
 "previewnote"	=> "Remember that this is only a preview, and has not yet been saved!",
@@ -319,7 +320,11 @@ any copyrights.",
 "imglegend"		=> "Legend: (del) = delete image, (desc) = show/edit image description.",
 "imghistory"	=> "Image history",
 "revertimg"		=> "rev",
+"deleteimg"		=> "del",
 "imghistlegend" => "Legend: (rev) = revert to earlier image.",
+"imagelinks"	=> "Image links",
+"linkstoimage"	=> "The following articles link to this image:",
+"nolinkstoimage" => "There are no articles that link to this image.",
 
 # Statistics
 #

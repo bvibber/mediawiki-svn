@@ -60,19 +60,21 @@ class LinksUpdate {
 		}
 
 		$conn = wfGetDB();
-		$sql = "DELETE FROM imagelinks WHERE il_from={$this->mId}";
+		$sql = "DELETE FROM imagelinks WHERE il_from='" .
+		  wfStrencode( $this->mTitle ) . "'";
 		wfQuery( $sql, $conn, $fname );
 
 		$a = $wgLinkCache->getImageLinks();
 		$sql = "";
 		if ( 0 != count ( $a ) ) {
-			$sql = "INSERT INTO imagelinks (il_from,il_to) VALUES ";
+			$sql = "INSERT INTO imagelinks (il_from,il_to) VALUES ('";
 			$first = true;
 			foreach( $a as $iname => $val ) {
 				if ( ! $first ) { $sql .= ","; }
 				$first = false;
 
-				$sql .= "($this->mId,'" . wfStrencode( $iname ) . "')";
+				$sql .= wfStrencode( $this->mTitle ) . "','" .
+				  wfStrencode( $iname ) . "')";
 			}
 		}
 		if ( "" != $sql ) {
