@@ -1,6 +1,29 @@
-form#newthread	{}
+/*
+ * Create a new thread page
+ */
 
-div#threadcreate 
+form.wf.new_thread	{}
+
+form.wf.new_thread textarea
+{
+	margin:0.5em 0 0.5em 0;
+}
+
+div.wf.title_error { color:red; }
+
+
+
+/*
+ * Forum's page
+ */
+
+div.wf.forum_header
+{
+	background-color:#f9f9f9;
+	margin:0 0 1em 0;
+}
+
+div.wf.create_thread
 {
 	border-style:solid;
 	border-color:#aaaaaa;
@@ -12,53 +35,53 @@ div#threadcreate
 	text-align:center;
 }
 
-div#threadexist { color:red; }
+// set this property to 'none' to remove top "create new thread" message
+// div.wf.create_thread#top { display:none; }
 
-table#threadtable
+// set this property to 'none' to remove bottom "create create new thread" message
+// div.wf.create_thread#bottom { display:none; }
+
+table.wf.thread_table
 {
 	border-style:solid;
 	border-color:#aaaaaa;
 	border-width:1px;
+	margin:0 0 1em 0;
 }
 
-tr.threadrow {}
-tr.threadrow#threadrowodd  { background:#F8F8F8; }
-tr.threadrow#threadrowpeer { background:#FFFFFF; }
-tr.threadrow#threadincodd  { background:#F0F0F0; }
-tr.threadrow#threadincpeer { background:#F0F0F0; }
+tr.wf.thread_row {}
 
-tr.threadrow#threadincodd  td
-{
-	border-style:solid;
-	border-color:#aaaaaa;
-	border-width:1px 0 0 0;
-}
-tr.threadrow#threadincpeer td
-{
-	border-style:solid;
-	border-color:#aaaaaa;
-	border-width:1px 0 0 0;
-}
-tr.threadrow#contentincodd  td 
-{
-	background:#FFFFFF;
-	padding:1em;
-	//display:none;
-}
-tr.threadrow#contentincpeer td 
-{
-	background:#FFFFFF;
-	padding:1em;
-	//display:none;
-}
-tr.threadrow#threadtablehead
+th.wf.thread_row#threadtablehead
 {
 	background:#F0F0F0;
 	font-weight:bold;
 	padding:0.5em;
 }
 
-div#threadcontent
+tr.wf.thread_row.thread_list.odd  { background:#F8F8F8; }
+tr.wf.thread_row.thread_list.peer { background:#FFFFFF; }
+tr.wf.thread_row.thread_inc.odd   { background:#F0F0F0; }
+tr.wf.thread_row.thread_inc.peer  { background:#F0F0F0; }
+
+tr.wf.thread_row.thread_inc td
+{
+	border-style:solid;
+	border-color:#aaaaaa;
+	border-width:1px 0 0 0;
+}
+tr.wf.thread_row.thread_inc.odd td  {}
+tr.wf.thread_row.thread_inc.peer td {}
+
+tr.wf.thread_row.thread_body td
+{
+	background:#FFFFFF;
+	padding:1em;
+	display:none;
+}
+tr.wf.thread_row.thread_body.odd td  {}
+tr.wf.thread_row.thread_body.peer td {}
+
+div.wf.threadcontent
 {
 	border-style:solid;
 	border-color:#aaaaaa;
@@ -69,9 +92,14 @@ div#threadcontent
 	clear:both;
 }
 
-div#threadedit
+div.wf.threadedit
 {
 	margin-left:0.5em;
 	margin-bottom:0.5em;
 	float:right;
+}
+
+img.wf.thread_toggle
+{
+   cursor:pointer;
 }

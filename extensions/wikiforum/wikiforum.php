@@ -26,22 +26,27 @@
  */
 if(defined('MEDIAWIKI')) 
 {
+	// Defines and options
+	define('FORUM_PATH',            "extensions/wikiforum/" ); // extention path 
+	define('FORUM_VERSION',         "1.0.5.0");
+	define('FORUM_MAX_THREAD',      50);     // total number of last thread displayed on the forum page
+	define('FORUM_INCLUDED_NUM',    20);     // number of thread directly included into the forum page
+	define('FORUM_SUM_LENGHT',      32);     // maximum length of "last comment" field
+	define('FORUM_CSS',             "$wgScriptPath/".FORUM_PATH."wikiforum.css" ); // forum styles
+	define('FORUM_JS',              "$wgScriptPath/".FORUM_PATH."wikiforum.js" ); // forum styles
+	define('FORUM_ALL_IN_TABLE',    true );  // add included thread into the table (in a full width cell)
+	define('FORUM_INC_ADD_SUM',     false ); // add link to the included thread into the summaries table
+	define('FORUM_INC_TABLE',       false ); // create a table to put a link to the included thread
+	define('FORUM_USE_JS',          true ); // use JS to toggle visibility of included thread
+	define('FORUM_NAVIGATION_LINK', true );  // add a link to the forum into navigation box
+	define('FORUM_ALLOW_NAMESPACE', true );  // allow to add namespace value into the url (ie "ns=1" for talk page).
+	define('FORUM_INCLUDE_HEADER',  true );  // if true, the content of [MediaWiki:Forum]'s page is add at the top of the forum
+
+	// Extension start function
 	$wgExtensionFunctions[] = "wfForum";
-	$wgExtensionFunctions[] = "wfNewthread";
 
-	define('FORUM_PATH',         "extensions/wikiforum/" ); // extention path 
-	define('FORUM_VERSION',      "1.0.4.0");
-	define('FORUM_MAX_THREAD',   50);     // total number of last thread displayed on the forum page
-	define('FORUM_INCLUDED_NUM', 20);     // number of thread directly included into the forum page
-	define('FORUM_SUM_LENGHT',   32);     // maximum length of "last comment" field
-	define('FORUM_CSS',          "$wgScriptPath/".FORUM_PATH."wikiforum.css" ); // forum styles
-	define('FORUM_JS',           "$wgScriptPath/".FORUM_PATH."wikiforum.js" ); // forum styles
-	define('FORUM_ALL_IN_TABLE', true );  // add included thread into the table (in a full width cell)
-	define('FORUM_INC_ADD_SUM',  false ); // add link to the included thread into the summaries table
-	define('FORUM_INC_TABLE',    true );  // create a table to put a link to the included thread
-	define('FORUM_USE_JS',       false );  // use JS to toggle visibility of included thread
-
-	require("language/default.php");
+	// Multi-language management
+	require("language/default.php");	// require the default language file
 	
 	$lang = "language/".$wgLanguageCode;
 	if($wgUseLatin1)
@@ -49,8 +54,7 @@ if(defined('MEDIAWIKI'))
 	else
 		$lang .= "_utf8";
 	$lang .= ".php";
-
-	include($lang);
+	include($lang); // include the local language file (if any)
 
 	/**
 	 * Get language text value
@@ -101,12 +105,12 @@ if(defined('MEDIAWIKI'))
 			$titleObj = Title::makeTitle( NS_SPECIAL, "Newthread" );
 			$action = $titleObj->escapeLocalURL( "action=submit" );
 			
-			$title = $wgRequest->getVal('threadTitle');
-			$desc  = $wgRequest->getVal('threadDescription');
+			$title = $wgRequest->getVal('threadTitle', "");
+			$desc  = $wgRequest->getVal('threadDescription', "");
 
 			$rows = $wgUser->getOption( "rows" );
 			$cols = $wgUser->getOption( "cols" );
-			$wgOut->addHTML("<form id='newthread' method='post' action='{$action}'>\n".
+			$wgOut->addHTML("<form class='wf new_thread' method='post' action='{$action}'>\n".
 			                WF_Msg('ThreadTitle').": <input type='text' size='40' name='threadTitle' value='$title'/><br />\n".
 			                "<textarea rows='$rows' cols='$cols' name='threadDescription'>$desc</textarea>\n".
 			                "<input type='submit' value='".WF_Msg('ThreadOpen')."'/>\n".
@@ -117,22 +121,22 @@ if(defined('MEDIAWIKI'))
 		{
 			global $wgOut, $wgRequest, $wgParser, $wgUser, $wgContLang;
 		
-			$tt = $wgContLang->ucfirst(trim($wgRequest->getVal('threadTitle')));
+			$tt = $wgContLang->ucfirst(trim($wgRequest->getVal('threadTitle', "")));
 			$title = Title::makeTitleSafe( NS_THREAD, $tt );
 
 			if(!$tt or !$title) // invalid title
 			{
-				$wgOut->addHTML("<div id=\"threadexist\">".WF_Msg('ThreadInvalid')."</div>\n<br />\n");
+				$wgOut->addHTML("<div class=\"wf title_error\">".WF_Msg('ThreadInvalid')."</div>\n<br />\n");
 				$this->showForm();
 			}
 			else if($title->getArticleID() == 0) // article don't exist
 			{
 				$article = new Article( $title );
-				$article->insertNewArticle($wgRequest->getVal('threadDescription'), WF_Msg('ThreadNew'), false, false);
+				$article->insertNewArticle($wgRequest->getVal('threadDescription', ""), WF_Msg('ThreadNew'), false, false);
 			}
 			else // thread already exist
 			{
-				$wgOut->addHTML("<div id=\"threadexist\">".WF_Msg('ThreadExist')."</div>\n<br />\n");
+				$wgOut->addHTML("<div class=\"wf title_error\">".WF_Msg('ThreadExist')."</div>\n<br />\n");
 				$this->showForm();
 			}
 		}
@@ -189,9 +193,14 @@ if(defined('MEDIAWIKI'))
 
 		function Generate()
 		{
-			global $wgLang, $wgServer, $wgOut, $wgUserHtml;
+			global $wgLang, $wgServer, $wgOut, $wgUserHtml, $wgRequest, $wgScriptPath;
 		
 			$fname = 'Forum::generate';
+
+			if(FORUM_ALLOW_NAMESPACE)
+				$ns = $wgRequest->getInt('ns', NS_THREAD);
+			else
+				$ns = NS_THREAD;
 
 			$wgOut->setPagetitle('Forum');
 			$wgOut->addLink(array(
@@ -202,16 +211,16 @@ if(defined('MEDIAWIKI'))
 			));
 			if(FORUM_USE_JS)
 			{
-				$wgOut->addHTML("<script language=\"JavaScript\">\n".
-									 "function toggleElement(id, type)\n".
-									 "{\n".
-									 "   var elem = document.getElementById(id);\n".
-									 "   if(elem.style.display == 'none')\n".
-									 "      elem.style.display = type;\n".
-									 "   else\n".
-									 "      elem.style.display = 'none';\n".
-									 "}\n".
-									 "</script>\n");
+				$wgOut->addHTML("<script type=\"text/javascript\" language=\"JavaScript\">\n".
+				                "function toggleElement(id, type)\n".
+				                "{\n".
+				                "   var elem = document.getElementById(id);\n".
+				                "   if(elem.style.display == type)\n".
+				                "      elem.style.display = 'none';\n".
+				                "   else\n".
+				                "      elem.style.display = type;\n".
+				                "}\n".
+				                "</script>\n");
 			}
 			$wgOut->addHTML("<!-- This page was generated by WikiForum v".FORUM_VERSION." -->\n");
 			
@@ -220,7 +229,7 @@ if(defined('MEDIAWIKI'))
 			$dbr =& wfGetDB( DB_SLAVE );
 			$cur = $dbr->tableName( 'cur' );
 			$sql = "SELECT cur_title, cur_comment, cur_user_text, cur_timestamp, cur_counter FROM $cur".
-			       " WHERE cur_namespace = ".NS_THREAD.
+			       " WHERE cur_namespace = $ns".
 			       " AND cur_is_redirect = 0".
 			       " ORDER BY cur_timestamp DESC".
 			       " LIMIT $this->mMaxThread;";
@@ -231,9 +240,19 @@ if(defined('MEDIAWIKI'))
 			// Generate forum's text
 			$text = "";
 			$text .= "__NOEDITSECTION____NOTOC__\n";
-			$text .= "<div id=\"threadcreate\">[[Special:Newthread|".WF_Msg('ThreadCreate')."]]</div>\n\n";
+			
+			if(FORUM_INCLUDE_HEADER)
+			{
+				$title = Title::makeTitleSafe( NS_MEDIAWIKI, "Forum" );
+				if($title->getArticleID() != 0) // article exist
+					$text .= "<div class=\"wf forum_header\">{{".$wgLang->getNsText(NS_MEDIAWIKI).":Forum}}</div>\n";
+			}
+				
+			// Link to create a thread only if current namespace is NS_THREAD
+			if($ns == NS_THREAD)
+				$text .= "<div class=\"wf create_thread\" id=\"top\">[[Special:Newthread|".WF_Msg('ThreadCreate')."]]</div>\n\n";
 
-			$text .= "> [{{SERVER}}{{localurl:Special:Allpages|from=&namespace=".NS_THREAD."}} ".WF_Msg('ThreadAll')."]\n\n";
+			$text .= "> [{{SERVER}}{{localurl:Special:Allpages|from=&namespace=$ns}} ".WF_Msg('ThreadAll')."]\n\n";
 			
 			$tab = array();
 			$cnt = 0;
@@ -246,8 +265,8 @@ if(defined('MEDIAWIKI'))
 				$tab[$num-$cnt]->user  = $x['cur_user_text'];
 				$tab[$num-$cnt]->timestamp = $x['cur_timestamp'];
 				$tab[$num-$cnt]->count  = $x['cur_counter'];
-				if(strlen($tab[$num-$cnt]->comment) > $this->mSumLength)
-					$tab[$num-$cnt]->comment = substr($tab[$num-$cnt]->comment, 0, $this->mSumLength) . "  .";
+				if($this->mSumLength && (strlen($tab[$num-$cnt]->comment) > $this->mSumLength))
+					$tab[$num-$cnt]->comment = substr($tab[$num-$cnt]->comment, 0, $this->mSumLength) . "...";
 			}
 			$dbr->freeResult( $res );
 
@@ -264,19 +283,20 @@ if(defined('MEDIAWIKI'))
 			{
 				$t = WF_Msg('ThreadLastest');
 				$t = str_replace("$1", $num, $t);
-				$text .= "<h1>$t</h1>\n";
-				$text .= "<table id=\"threadtable\" border=\"0\" cellspacing=\"0\" cellpadding=\"2px\" width=\"100%\">\n";
-				$text .= "<tr class=\"threadrow\" id=\"threadtablehead\">\n";
-				$text .= "<td>".WF_Msg('ThreadName')."</td>\n";
-				$text .= "<td>".WF_Msg('ThreadView')."</td>\n";
-				$text .= "<td>".WF_Msg('ThreadUser')."</td>\n";
-				$text .= "<td>".WF_Msg('ThreadComment')."</td>\n";
-				$text .= "<td>".WF_Msg('ThreadTime')."</td>\n";
-				$text .= "</tr>\n";
+				$wgOut->addHTML( "<h1>$t</h1>\n".
+				                "<table class=\"wf thread_table\" cellspacing=\"0\" cellpadding=\"2px\" width=\"100%\">\n".
+				                "<th class=\"wf thread_row\" id=\"threadtablehead\">\n".
+				                "<td> </td>\n".
+				                "<td>".WF_Msg('ThreadName')."</td>\n".
+				                "<td>".WF_Msg('ThreadView')."</td>\n".
+				                "<td>".WF_Msg('ThreadUser')."</td>\n".
+				                "<td>".WF_Msg('ThreadComment')."</td>\n".
+				                "<td>".WF_Msg('ThreadTime')."</td>\n".
+				                "</th>\n" );
 
 				for( $cnt=0; $cnt<$num; $cnt++ )
 				{
-					$t = $wgLang->getNsText( NS_THREAD );
+					$t = $wgLang->getNsText( $ns );
 					if ( $t != '' ) 
 						$t .= ':' ;
 					$t .= $tab[$cnt]->title;
@@ -286,9 +306,90 @@ if(defined('MEDIAWIKI'))
 					if($cnt < $summary)
 					{
 						if($cnt & 1)
-							$text .= "<tr class=\"threadrow\" id=\"threadrowodd\">\n";
+							$wgOut->addHTML( "<tr class=\"wf thread_row thread_list odd\">\n" );
 						else
-							$text .= "<tr class=\"threadrow\" id=\"threadrowpeer\">\n";
+							$wgOut->addHTML( "<tr class=\"wf thread_row thread_list peer\">\n" );
+			
+						$wgOut->addHTML(     "<td> </td><td>" );
+						$wgOut->addWikiText( "[[$t|". $title->getText() ."]]", false );
+						$wgOut->addHTML(     "</td>\n".
+						                     "<td>". $tab[$cnt]->count."</td>\n".
+						                     "<td>" );
+						$wgOut->addWikiText( "[[". $wgLang->getNsText( NS_USER ) .":". $tab[$cnt]->user ."|" .$tab[$cnt]->user. "]]", false );
+						$wgOut->addHTML(     "</td>\n".
+						                     "<td>". htmlspecialchars($tab[$cnt]->comment) . "</td>\n".
+						                     "<td>". $wgLang->timeanddate($tab[$cnt]->timestamp) ."</td>\n".
+						                     "</tr>\n" );
+					}
+					else
+					{
+						if($cnt & 1)
+							$wgOut->addHTML( "<tr class=\"wf thread_row thread_inc odd\">\n" );
+						else
+							$wgOut->addHTML( "<tr class=\"wf thread_row thread_inc peer\">\n" );
+
+						$wgOut->addHTML(     "<td>" );
+						if(FORUM_USE_JS)
+						{
+							$wgOut->addHTML(  "<img src=\"$wgScriptPath/skins/common/images/magnify-clip.png\" class=\"wf thread_toggle\" onclick=\"toggleElement('thread_body_$cnt', 'table-cell')\" alt=\"show/hide\" title=\"show/hide\" />\n" );
+						}
+						$wgOut->addHTML(     "</td>".
+						                     "<td>" );
+						$wgOut->addWikiText( "[[$t|". $title->getText() ."]]", false );
+						$wgOut->addHTML(     "</td>\n".
+						                     "<td>". $tab[$cnt]->count."</td>\n".
+						                     "<td>" );
+						$wgOut->addWikiText( "[[". $wgLang->getNsText( NS_USER ) .":". $tab[$cnt]->user ."|" .$tab[$cnt]->user. "]]", false );
+						$wgOut->addHTML(     "</td>\n".
+						                     "<td>". htmlspecialchars($tab[$cnt]->comment) . "</td>\n".
+						                     "<td>". $wgLang->timeanddate($tab[$cnt]->timestamp) ."</td>\n".
+						                     "</tr>\n" );
+						
+						if($cnt & 1)
+							$wgOut->addHTML(  "<tr class=\"wf thread_row thread_body odd\">\n" );
+						else
+							$wgOut->addHTML(  "<tr class=\"wf thread_row thread_body peer\">\n" );
+
+						$wgOut->addHTML(     "<td colspan=\"6\" id=\"thread_body_$cnt\">\n" );
+						$wgOut->addWikiText( "<div class=\"wf threadedit\" style=\"float:right;\">".
+						                     "[[$wgServer" . $title->getEditUrl() ." ".WF_Msg('ThreadEdit')."]]".
+						                     "</div>\n".
+						                     "__NOEDITSECTION____NOTOC__\n".
+						                     "{{{$t}}}\n", false );
+						$wgOut->addHTML(     "</td>\n".
+						                     "</tr>\n" );
+					}
+				}
+				
+				$wgOut->addHTML( "</table>\n\n\n" );
+/*
+				$t = WF_Msg('ThreadLastest');
+				$t = str_replace("$1", $num, $t);
+				$text .= "<h1>$t</h1>\n";
+				$text .= "<table class=\"wf thread_table\" cellspacing=\"0\" cellpadding=\"2px\" width=\"100%\">\n";
+				$text .= "<tr class=\"wf thread_row\" id=\"threadtablehead\">\n";
+				$text .= "<td>".WF_Msg('ThreadName')."</td>\n";
+				$text .= "<td>".WF_Msg('ThreadView')."</td>\n";
+				$text .= "<td>".WF_Msg('ThreadUser')."</td>\n";
+				$text .= "<td>".WF_Msg('ThreadComment')."</td>\n";
+				$text .= "<td>".WF_Msg('ThreadTime')."</td>\n";
+				$text .= "</tr>\n";
+
+				for( $cnt=0; $cnt<$num; $cnt++ )
+				{
+					$t = $wgLang->getNsText( $ns );
+					if ( $t != '' ) 
+						$t .= ':' ;
+					$t .= $tab[$cnt]->title;
+
+					$title = Title::newFromText( $t );
+
+					if($cnt < $summary)
+					{
+						if($cnt & 1)
+							$text .= "<tr class=\"wf thread_row odd\" id=\"thread_list\">\n";
+						else
+							$text .= "<tr class=\"wf thread_row peer\" id=\"thread_list\">\n";
 			
 						$text .= "<td>[[$t|". $title->getText() ."]]</td>".
 						         "<td>". $tab[$cnt]->count."</td>".
@@ -301,13 +402,15 @@ if(defined('MEDIAWIKI'))
 					else
 					{
 						if($cnt & 1)
-							$text .= "<tr class=\"threadrow\" id=\"threadincodd\">\n";
+							$text .= "<tr class=\"wf thread_row odd\" id=\"thread_inc\">\n";
 						else
-							$text .= "<tr class=\"threadrow\" id=\"threadincpeer\">\n";
+							$text .= "<tr class=\"wf thread_row peer\" id=\"thread_inc\">\n";
 			
 						$text .= "<td>[[$t|". $title->getText() ."]]";
 						if(FORUM_USE_JS)
-							$text .= "<a href=\"\" onclick=\"toggleElement('thread_body_$cnt', 'table-row')\" >view</a></td>";
+                  {
+                     $text .= "<a onclick=\"toggleElement('thread_body_$cnt', 'table-row')\" >view</a>";
+                  }
 						$text .= "</td>";
 						
 						$text .= "<td>". $tab[$cnt]->count."</td>".
@@ -318,13 +421,14 @@ if(defined('MEDIAWIKI'))
 						$text .= "</tr>\n";
 						
 						if($cnt & 1)
-							$text .= "<tr class=\"threadrow\" id=\"contentincodd, thread_body_$cnt\">\n";
+							$text .= "<tr class=\"wf thread_row thread_body odd\">\n";
 						else
-							$text .= "<tr class=\"threadrow\" id=\"contentincpeer, thread_body_$cnt\">\n";
+							$text .= "<tr class=\"wf thread_row thread_body peer\">\n";
 			
-						$text .= "<td colspan=\"5\"\>n";
+						$text .= "<td colspan=\"5\"\ id=\"thread_body_$cnt\">\n";
 						$text .= "<div id=\"threadedit\" style=\"float:right;\">[[$wgServer" . $title->getEditUrl() ." ".WF_Msg('ThreadEdit')."]]</div>\n";
-						$text .= "{{{$t}}}\n";
+						$text .= "__NOEDITSECTION____NOTOC__\n";
+						$text .= "{{$t}}\n";
 						$text .= "</td>\n";
 					
 						$text .= "</tr>\n";
@@ -332,6 +436,9 @@ if(defined('MEDIAWIKI'))
 				}
 				
 				$text .= "</table>\n\n\n";
+            $wgOut->addHTML( $text );
+            $text = "";
+*/
 			}
 			else
 			{
@@ -346,13 +453,13 @@ if(defined('MEDIAWIKI'))
 					$t = WF_Msg('ThreadLastest');
 					$t = str_replace("$1", $max, $t);
 					$text .= "<h1>$t</h1>\n";
-					$text .= "{| id=\"threadtable\" border=\"0\" cellspacing=\"0\" cellpadding=\"2px\" width=\"100%\"\n";
-					$text .= "|- class=\"threadrow\" id=\"threadtablehead\"\n";
+					$text .= "{| class=\"wf thread_table\" border=\"0\" cellspacing=\"0\" cellpadding=\"2px\" width=\"100%\"\n";
+					$text .= "|- class=\"wf thread_row\" id=\"threadtablehead\"\n";
 					$text .= "! ".WF_Msg('ThreadName')." !! ".WF_Msg('ThreadView')." !! ".WF_Msg('ThreadUser')." !! ".WF_Msg('ThreadComment')." !! ".WF_Msg('ThreadTime')."\n";
 
 					for( $cnt=0; $cnt<$max; $cnt++ )
 					{
-						$t = $wgLang->getNsText( NS_THREAD );
+						$t = $wgLang->getNsText( $ns );
 						if ( $t != '' ) 
 							$t .= ':' ;
 						$t .= $tab[$cnt]->title;
@@ -362,9 +469,9 @@ if(defined('MEDIAWIKI'))
 						if($cnt < $summary)
 						{
 							if($cnt & 1)
-								$text .= "|- class=\"threadrow\" id=\"threadrowodd\"\n";
+								$text .= "|- class=\"wf thread_row\" id=\"thread_rowodd\"\n";
 							else
-								$text .= "|- class=\"threadrow\" id=\"threadrowpeer\"\n";
+								$text .= "|- class=\"wf thread_row\" id=\"thread_rowpeer\"\n";
 				
 							$text .= "| [[$t|". $title->getText() ."]] ".
 							         "|| ". $tab[$cnt]->count." ".
@@ -375,9 +482,9 @@ if(defined('MEDIAWIKI'))
 						else
 						{
 							if($cnt & 1)
-								$text .= "|- class=\"threadrow\" id=\"threadincodd\"\n";
+								$text .= "|- class=\"wf thread_row\" id=\"threadincodd\"\n";
 							else
-								$text .= "|- class=\"threadrow\" id=\"threadincpeer\"\n";
+								$text .= "|- class=\"wf thread_row\" id=\"threadincpeer\"\n";
 				
 							$text .= "| [[#".$title->getText()."|".$title->getText()."]] ".
 							         "|| ". $tab[$cnt]->count." ".
@@ -398,13 +505,13 @@ if(defined('MEDIAWIKI'))
 						$t = WF_Msg('ThreadIncluded');
 						$t = str_replace("$1", $this->mMaxFullText, $t);
 						$text .= "<h1>$t</h1>\n";
-						$text .= "{| id=\"threadtable\" border=\"0\" cellspacing=\"0\" cellpadding=\"2px\" width=\"100%\"\n";
-						$text .= "|- class=\"threadrow\" id=\"threadtablehead\"\n";
+						$text .= "{| class=\"wf thread_table\" border=\"0\" cellspacing=\"0\" cellpadding=\"2px\" width=\"100%\"\n";
+						$text .= "|- class=\"wf thread_row\" id=\"threadtablehead\"\n";
 						$text .= "! ".WF_Msg('ThreadName')." !! ".WF_Msg('ThreadView')." !! ".WF_Msg('ThreadUser')." !! ".WF_Msg('ThreadComment')." !! ".WF_Msg('ThreadTime')."\n";
 
 						for( $cnt=$summary; $cnt<$num; $cnt++ )
 						{
-							$t = $wgLang->getNsText( NS_THREAD );
+							$t = $wgLang->getNsText( $ns );
 							if ( $t != '' ) 
 								$t .= ':' ;
 							$t .= $tab[$cnt]->title;
@@ -412,9 +519,9 @@ if(defined('MEDIAWIKI'))
 							$title = Title::newFromText( $t );
 
 							if($cnt & 1)
-								$text .= "|- class=\"threadrow\" id=\"threadincodd\"\n";
+								$text .= "|- class=\"wf thread_row\" id=\"threadincodd\"\n";
 							else
-								$text .= "|- class=\"threadrow\" id=\"threadincpeer\"\n";
+								$text .= "|- class=\"wf thread_row\" id=\"threadincpeer\"\n";
 			
 							$text .= "| [[#".$title->getText()."|".$title->getText()."]] ".
 							         "|| ". $tab[$cnt]->count." ".
@@ -428,15 +535,15 @@ if(defined('MEDIAWIKI'))
 
 					for( $cnt=$summary; $cnt<$num; $cnt++ )
 					{
-						$t = $wgLang->getNsText( NS_THREAD );
+						$t = $wgLang->getNsText( $ns );
 						if ( $t != '' ) 
 							$t .= ':' ;
 						$t .= $tab[$cnt]->title;
 
 						$title = Title::newFromText( $t );
 
-						$text .= "<div id=\"threadcontent\">\n";
-						$text .= "<div id=\"threadedit\" style=\"float:right;\">[[$wgServer" . $title->getEditUrl() ." ".WF_Msg('ThreadEdit')."]]</div>\n";
+						$text .= "<div class=\"wf threadcontent\">\n";
+						$text .= "<div class=\"wf threadedit\" style=\"float:right;\">[[$wgServer" . $title->getEditUrl() ." ".WF_Msg('ThreadEdit')."]]</div>\n";
 						$text .= "==".$title->getText()."==\n";
 						$text .= "{{{$t}}}\n";
 						$text .= "</div>\n";
@@ -444,7 +551,9 @@ if(defined('MEDIAWIKI'))
 				}
 			}
 
-			$text .= "<div id=\"threadcreate\">[[Special:Newthread|".WF_Msg('ThreadCreate')."]]</div>";
+			// Link to create a thread only if current namespace is NS_THREAD
+			if($ns == NS_THREAD)
+				$text .= "<div class=\"wf create_thread\" id=\"bottom\">[[Special:Newthread|".WF_Msg('ThreadCreate')."]]</div>";
 			
 			wfDebug("FORUM - END GENERATE\n");
 
@@ -463,7 +572,7 @@ if(defined('MEDIAWIKI'))
 	 */
 	function wfForum() 
 	{
-		global $IP;
+		global $IP, $wgMessageCache, $wgAllMessagesEn, $wgNavigationLinks, $wgTitle;
 		require_once( "$IP/includes/SpecialPage.php" );
 
 		class SpecialForum extends SpecialPage
@@ -482,21 +591,7 @@ if(defined('MEDIAWIKI'))
 			}
 		}
 
-		global $wgMessageCache;
 		SpecialPage::addPage( new SpecialForum );
-	}
-
-	
-	/**
-	 * New thread special page
-	 *
-	 * @package MediaWiki
-	 * @subpackage Extensions
-	 */
-	function wfNewthread() 
-	{
-		global $IP;
-		require_once( "$IP/includes/SpecialPage.php" );
 
 		class SpecialNewthread extends SpecialPage
 		{
@@ -518,9 +613,17 @@ if(defined('MEDIAWIKI'))
 			}
 		}
 
-		global $wgMessageCache;
 		SpecialPage::addPage( new SpecialNewthread );
+
+		if(FORUM_NAVIGATION_LINK)
+		{
+			$title = Title::makeTitle( NS_SPECIAL, "Forum" );
+			$wgAllMessagesEn['nav-forum'] = "Forum";
+			$wgAllMessagesEn['nav-forum-ulr'] = $title->getFullURL();
+			$wgNavigationLinks[] = array( 'text' => "nav-forum", 'href' => "nav-forum-ulr" );
+		}
 	}
+
 
 } // end if(defined('MEDIAWIKI'))
 
