@@ -426,6 +426,7 @@ consequences, and that you are doing this in accordance with
 "confirmcheck"	=> "Yes, I really want to delete this.",
 "actioncomplete" => "Action complete",
 "deletedtext"	=> "\"$1\" has been deleted.",
+"deletedarticle" => "deleted \"$1\"",
 
 # Move page
 #
