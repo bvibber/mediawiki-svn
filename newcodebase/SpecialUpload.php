@@ -34,10 +34,8 @@ function processUpload()
 	}
 	wfDebug( "Upl: wpUploadSaveName={$wpUploadSaveName}\n" );
 
-	if ( $wpUploadSaveName ) {
-		saveUploadedFile();
-	} else {
-		$oname = $HTTP_POST_FILES['wpUploadFile']['name'];
+	$oname = $HTTP_POST_FILES['wpUploadFile']['name'];
+	if ( "" != $oname ) {
 		$basename = strrchr( $oname, "/" );
 		if ( false === $basename ) { $basename = $oname; }
 		else ( $basename = substr( $basename, 1 ) );
