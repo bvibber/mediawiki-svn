@@ -10,6 +10,12 @@ function sns()
 function wfSpecialMaintenance ()
 	{
 	global $wgUser, $wgOut, $wgLang, $wgTitle, $subfunction, $wgLanguageCode, $submitmll;
+	global $wgMiserMode;
+	if ( $wgMiserMode ) {
+		$wgOut->addWikiText( wfMsg( "perfdisabled" ) );
+		return;
+	}
+
 	if ( $subfunction == "disambiguations" ) return wfSpecialDisambiguations() ;
 	if ( $subfunction == "doubleredirects" ) return wfSpecialDoubleRedirects() ;
 	if ( $subfunction == "brokenredirects" ) return wfSpecialBrokenRedirects() ;

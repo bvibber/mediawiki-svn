@@ -7,6 +7,12 @@ function wfSpecialWantedpages()
 	$fname = "wfSpecialWantedpages";
 
 	$wgOut->setRobotpolicy( "noindex,nofollow" );
+	global $wgMiserMode;
+	if ( $wgMiserMode ) {
+		$wgOut->addWikiText( wfMsg( "perfdisabled" ) );
+		return;
+	}
+
 	if ( ! $limit ) {
 		$limit = $wgUser->getOption( "rclimit" );
 		if ( ! $limit ) { $limit = 50; }

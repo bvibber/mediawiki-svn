@@ -33,5 +33,6 @@ $wgDocType          = "-//W3C//DTD HTML 4.01 Transitional//EN";
 $wgCookieExpiration = 2592000;
 
 $wgAllowExternalImages = true;
+$wgMiserMode = false; # Disable database-intensive features
 
 ?>

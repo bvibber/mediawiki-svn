@@ -373,6 +373,9 @@ Please report this to an administrator, making note of the URL.",
 "badtitle"		=> "Bad title",
 "badtitletext"	=> "The requested page title was invalid, empty, or
 an incorrectly linked inter-language or inter-wiki title.",
+"perfdisabled" => "Sorry! This feature has been temporarily disabled during peak
+access hours for performance reasons; come back between 02:00 and 14:00 UTC
+and try again.",
 
 # Login and logout pages
 #
