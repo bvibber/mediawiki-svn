@@ -248,6 +248,29 @@ HDL(cfg_monit_showservers) {
 			    = servers.begin(), end = servers.end(); i != end; ++i) {
 			cd.wrtln(i->first + ":");
 			cd.wrtln("  Type:  " + i->second->type());
+			if (i->second->type() == "Squid") {
+				shared_ptr<smmon::cfg::squidserver> p =
+					b::dynamic_pointer_cast<smmon::cfg::squidserver>(i->second);
+				cd.wrtln(b::io::str(b::format("  Requests/sec:    %d") % p->rpsv));
+				cd.wrtln(b::io::str(b::format("  Hits/sec:        %d") % p->hpsv));
+				float perc = 0;
+				if (p->rpsv && p->hpsv)
+					perc = (float(p->hpsv)/p->rpsv)*100;
+				cd.wrtln(b::io::str(b::format("  Cache hit ratio: %02.2f%%") % perc));
+			} else if (i->second->type() == "MySQL") {
+				shared_ptr<smmon::cfg::mysqlserver> p =
+					b::dynamic_pointer_cast<smmon::cfg::mysqlserver>(i->second);
+				std::string mastername;
+				try {
+					mastername = SMI(smcfg::cfg)->fetchstr("/monit/mysql/master");
+				} catch (smcfg::nokey&) {}
+				if (mastername == p->name)
+					cd.wrtln("  *** Server is MySQL master ***");
+				cd.wrtln(b::io::str(b::format(        "  Queries/sec:     %d") % p->qpsv));
+				cd.wrtln(b::io::str(b::format(        "  Threads:         %d") % p->procv));
+				if (p->name != mastername)
+					cd.wrtln(b::io::str(b::format("  Replication lag: %d") % p->replag));
+			}
 		}
 		return true;
 	}
