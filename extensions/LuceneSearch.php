@@ -163,15 +163,17 @@ class LuceneSearch extends SpecialPage
 				$first = max($whichchunk - 11, 0);
 				$last = min($numchunks, $whichchunk + 11);
 				//$wgOut->addWikiText("whichchunk=$whichchunk numchunks=$numchunks first=$first last=$last num=".count($chunks)." limit=$limit offset=$offset results=".count($results)."\n\n");
-				for($i = $first; $i < $last; $i++) {
-					if ($i === $whichchunk)
-						$prevnext .= "<strong>".($i+1)."</strong> ";
-					else
-						$prevnext .= "<a href=\"".
-							$this->makelink($q, $limit*$i, 
-							$limit)."\">".($i+1)."</a> ";
+				if ($last - $first > 1) {
+					for($i = $first; $i < $last; $i++) {
+						if ($i === $whichchunk)
+							$prevnext .= "<strong>".($i+1)."</strong> ";
+						else
+							$prevnext .= "<a href=\"".
+								$this->makelink($q, $limit*$i, 
+								$limit)."\">".($i+1)."</a> ";
+					}
 				}
-				if ($whichchuck < $numchunks)
+				if ($whichchuck < $last-1)
 					$prevnext .= "<a href=\"".
 						$this->makelink($q, $offset + $limit, $limit)."\">".
 						wfMsg("searchnext")."</a> ";
