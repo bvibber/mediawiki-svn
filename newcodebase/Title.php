@@ -445,13 +445,13 @@ class Title {
 		if ( ":" == $t{0} ) {
 			$r = substr( $t, 1 );
 		} else {
-	 		if ( preg_match( "/^([A-Za-z][A-Za-z0-9_]*):(.*)$/", $t, $m ) ) {
+	 		if ( preg_match( "/^([A-Za-z0-9_\\x80-\\xff]+):(.*)$/", $t, $m ) ) {
 				$p = strtolower( $m[1] );
 				if ( array_key_exists( $p, $wgValidInterwikis ) ) {
 					$t = $m[2];
 					$this->mInterwiki = $p;
 
-					if ( preg_match( "/^([A-Za-z][A-Za-z0-9 _]*):(.*)$/",
+					if ( preg_match( "/^([A-Za-z0-9_\\x80-\\xff]+):(.*)$/",
 					  $t, $m ) ) {
 						$p = strtolower( $m[1] );
 					} else {
