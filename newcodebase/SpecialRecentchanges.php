@@ -49,6 +49,7 @@ function wfSpecialRecentchanges()
 	$obj2 = wfFetchObject( $res2 );
 
 	$sk = $wgUser->getSkin();
+	$hideminor = $wgUser->getOption( "hideminor" );
 	$s = $sk->beginRecentChangesList();
 
 	while ( $limit ) {
@@ -81,7 +82,10 @@ function wfSpecialRecentchanges()
 			$obj2 = wfFetchObject( $res2 );
 			--$count2;
 		}
-		$s .= $sk->recentChangesLine( $ts, $u, $ut, $ns, $ttl, $com, $me, $new );
+		if ( ! ( $hideminor && $me ) ) {
+			$s .= $sk->recentChangesLine( $ts, $u, $ut, $ns, $ttl,
+			  $com, $me, $new );
+		}
 		--$limit;
 	}
 	$s .= $sk->endRecentChangesList();
