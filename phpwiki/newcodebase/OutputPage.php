@@ -15,9 +15,10 @@ class OutputPage {
 		$this->mHeaders = $this->mCookies = $this->mMetatags =
 		$this->mKeywords = $this->mLinktags = array();
 		$this->mHTMLtitle = $this->mPagetitle = $this->mBodytext =
+		$this->mLastSection = 
 		$this->mSubtitle = $this->mDebugtext = $this->mRobotpolicy = "";
 		$this->mIsarticle = $this->mPrintable = true;
-		$this->mSupressQuickbar = false;
+		$this->mSupressQuickbar = $this->mDTopen = false;
 		$this->mLanguageLinks = array();
 	}
 
@@ -48,22 +49,35 @@ class OutputPage {
 	function debug( $text ) { $this->mDebugtext .= $text; }
 
 	# First pass--just handle <nowiki> sections, pass the rest off
-	# to addWikiPass2() which does all the real work.
+	# to doWikiPass2() which does all the real work.
 	#
+
 	function addWikiText( $text, $linestart = true )
 	{
+		$unique = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv4";
+		$nwlist = array();
+		$nwsecs = 0;
+		$stripped = "";
+
 		while ( "" != $text ) {
 			$p = preg_split( "/<\\s*nowiki\\s*>/i", $text, 2 );
-			$this->addWikiPass2( $p[0], $linestart );
+			$stripped .= $p[0];
 
 			if ( "" == $p[1] ) { $text = ""; }
 			else {
 				$q = preg_split( "/<\\/\\s*nowiki\\s*>/i", $p[1], 2 );
-				$this->addHTML( $q[0] );
+				++$nwsecs;
+				$nwlist[$nwsecs] = $q[0];
+				$stripped .= $unique;
 				$text = $q[1];
-				$linestart = false;
 			}
 		}
+		$text = $this->doWikiPass2( $stripped, $linestart );
+		for ( $i = 1; $i <= $nwsecs; ++$i ) {
+			$text = preg_replace( "/{$unique}/", $nwsecs[1],
+			  $text, 1 );
+		}
+		$this->addHTML( $text );
 	}
 
 	# Finally, all the text has been munged and accumulated into
@@ -152,7 +166,7 @@ class OutputPage {
 	# hard lifting is done inside PHP's regex code, it probably
 	# wouldn't speed things up much to add a real parser.
 	#
-	function addWikiPass2( $text, $linestart )
+	function doWikiPass2( $text, $linestart )
 	{
 		global $wgUser;
 
@@ -177,7 +191,7 @@ class OutputPage {
 		$sk = $wgUser->getSkin();
 		$text = $sk->transformContent( $text );
 
-		$this->addHTML( $text );
+		return $text;
 	}
 
 	# TODO: The algorithm here is from Usemod, but it can generate

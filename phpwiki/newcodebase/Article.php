@@ -325,7 +325,6 @@ $wpTextbox2
 	/* private */ function insertNewArticle( $text, $summary, $isminor )
 	{
 		global $wgOut, $wgUser, $wgTitle, $wgLinkCache;
-
 		$ns = $wgTitle->getNamespace();
 		$ttl = $wgTitle->getDBkey();
 		$text = $this->preSaveTransform( $text );
@@ -548,7 +547,7 @@ $wpTextbox2
 			if ( "" == $p[1] ) { $text = ""; }
 			else {
 				$q = preg_split( "/<\\/\\s*nowiki\\s*>/i", $p[1], 2 );
-				$s .= $q[0];
+				$s .= "<nowiki>{$q[0]}</nowiki>";
 				$text = $q[1];
 			}
 		}
