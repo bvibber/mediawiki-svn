@@ -55,6 +55,8 @@ function wfQuery( $sql, $fname = "" )
 function wfFreeResult( $res ) { mysql_free_result( $res ); }
 function wfFetchObject( $res ) { return mysql_fetch_object( $res ); }
 function wfNumRows( $res ) { return mysql_num_rows( $res ); }
+function wfNumFields( $res ) { return mysql_num_fields( $res ); }
+function wfFieldName( $res, $n ) { return mysql_field_name( $res, $n ); }
 function wfInsertId() { return mysql_insert_id( wfGetDB() ); }
 function wfDataSeek( $res, $row ) { return mysql_data_seek( $res, $row ); }
 function wfLastErrno() { return mysql_errno(); }

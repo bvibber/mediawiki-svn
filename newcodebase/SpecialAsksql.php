@@ -65,17 +65,17 @@ class SqlQueryForm {
 		$res = wfQuery( $wpSqlQuery, "SpecialAsksql::doSubmit" );
 
 		$n = 0;
-		$n = mysql_num_fields( $res );
+		$n = wfNumFields( $res );
 		if ( $n ) {
 			$k = array();
 			for ( $x = 0; $x < $n; ++$x ) {
-				array_push( $k, mysql_field_name( $res, $x ) );
+				array_push( $k, wfFieldName( $res, $x ) );
 			}
 			$a = array();
-			while ( $s = mysql_fetch_object( $res ) ) {
+			while ( $s = wfFetchObject( $res ) ) {
 				array_push( $a, $s );
 			}
-			mysql_free_result( $res );
+			wfFreeResult( $res );
 
 			$r = "<table border=1 bordercolor=black cellspacing=0 " .
 			  "cellpadding=2><tr>\n";
