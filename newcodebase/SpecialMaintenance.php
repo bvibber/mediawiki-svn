@@ -1,11 +1,19 @@
 <?
 
+function sns()
+	{
+	global $wgLang ;
+	$ns = $wgLang->getNamespaces() ;
+	return $ns[-1] ;
+	}
+
 function wfSpecialMaintenance ()
 	{
 	global $wgUser, $wgOut, $wgLang, $wgTitle, $subfunction, $wgLanguageCode, $submitmll;
 	if ( $subfunction == "disambiguations" ) return wfSpecialDisambiguations() ;
 	if ( $subfunction == "doubleredirects" ) return wfSpecialDoubleRedirects() ;
 	if ( $subfunction == "selflinks" ) return wfSpecialSelfLinks() ;
+	if ( $subfunction == "missinglanguagelinks" ) return wfSpecialMissingLanguageLinks() ;
 	if ( isset ( $submitmll ) ) return wfSpecialMissingLanguageLinks() ;
 
 	$sk = $wgUser->getSkin();
@@ -43,9 +51,8 @@ function wfSpecialMaintenance ()
 function getMPL ( $x )
 	{
 	global $wgUser , $wgLang;
-	$ns = $wgLang->getNamespaces() ;
 	$sk = $wgUser->getSkin() ;
-	return $sk->makeKnownLink($ns[-1].":Maintenance",wfMsg($x),"subfunction={$x}") ;
+	return $sk->makeKnownLink(sns().":Maintenance",wfMsg($x),"subfunction={$x}") ;
 	}
 
 function getMaintenancePageBacklink()
@@ -102,7 +109,7 @@ function wfSpecialDisambiguations()
 	$wgOut->addHTML( "<p>{$top}\n" );
 
 	$sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
-	$sl = str_replace ( "REPLACETHIS" , "Special:Maintenance&subfunction=disambiguations" , $sl ) ;
+	$sl = str_replace ( "REPLACETHIS" , sns().":Maintenance&subfunction=disambiguations" , $sl ) ;
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$s = "<ol start=" . ( $offset + 1 ) . ">";
@@ -139,7 +146,7 @@ function wfSpecialDoubleRedirects()
 	$wgOut->addHTML( "<p>{$top}\n" );
 
 	$sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
-	$sl = str_replace ( "REPLACETHIS" , "Special:Maintenance&subfunction=doubleredirects" , $sl ) ;
+	$sl = str_replace ( "REPLACETHIS" , sns().":Maintenance&subfunction=doubleredirects" , $sl ) ;
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$sk = $wgUser->getSkin();
@@ -179,7 +186,7 @@ function wfSpecialSelfLinks()
 	$wgOut->addHTML( "<p>{$top}\n" );
 
 	$sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
-	$sl = str_replace ( "REPLACETHIS" , "Special:Maintenance&subfunction=selflinks" , $sl ) ;
+	$sl = str_replace ( "REPLACETHIS" , sns().":Maintenance&subfunction=selflinks" , $sl ) ;
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$sk = $wgUser->getSkin();
@@ -220,7 +227,7 @@ function wfSpecialMissingLanguageLinks()
 	$wgOut->addHTML( "<p>{$top}\n" );
 
 	$sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
-	$sl = str_replace ( "REPLACETHIS" , "Special:Maintenance&subfunction=missinglanguagelinks&thelang={$thelang}" , $sl ) ;
+	$sl = str_replace ( "REPLACETHIS" , sns().":Maintenance&subfunction=missinglanguagelinks&thelang={$thelang}" , $sl ) ;
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$sk = $wgUser->getSkin();
