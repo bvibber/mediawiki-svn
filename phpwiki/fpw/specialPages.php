@@ -690,13 +690,11 @@ function recentchanges () {
 		$result = mysql_query ( $sql , $connection ) ;
 		if ( $result != "" ) {
 			$t = mysql_fetch_object ( $result ) ;
-#			print "?$t->cnt? " ;
 			if ( $t != "" ) $i = $t->cnt + $addoriginal ;
 			mysql_free_result ( $result ) ;
 			}
 		if ( $i < 2 ) $i = "" ;
 		$s->changes = $i ;
-#		print "!!$s->cur_title, $i!<br>\n" ;
 		if ( $s->cur_minor_edit != 1 OR $i > 1 OR $minoredits == "" ) {
 			if ( $minoredits != "" ) $s->cur_minor_edit = 0 ;
 			array_push ( $d , $s ) ;
@@ -1102,14 +1100,14 @@ function upload () {
 
 		copy ( $Upload , "./upload/$Upload_name" ) ;
 		chmod ( "./upload/$Upload_name" , 0777 ) ;
-		$message = str_replace ( "$1" , htmlspecialchars ( $Upload_name ), $wikiUploadSuccess ) ;
+		$message = str_replace ( "$1" , $Upload_name , htmlspecialchars ( $wikiUploadSuccess ) ) ;
 
 		# Appending log page "log:Uploads"
 		global $REMODE_ADDR ;
 		$now = date ( "Y-m-d H:i:s" , time () ) ;
 		$userText = "[[user:$user->name|$user->name]]" ;
 		if ( $user->name == "" ) $userText = $REMODE_ADDR ;
-		$logText = str_replace ( "$1" , $now , str_replace ( "$2" , $userText , str_replace ( "$3" , htmlspecialchars ( $Upload_name ) , $wikiUploadSuccess1 ) ) ) ;
+		$logText = str_replace ( "$1" , $now , str_replace ( "$2" , $userText , str_replace ( "$3" , $Upload_name , $wikiUploadSuccess1 ) ) ) ;
 		makeLog ( "log:Uploads" , $logText , str_replace ( "$1" , $Upload_name , $wikiUploadSuccess2 ) ) ;
 
 		unset ( $Upload_name ) ;
@@ -1126,7 +1124,7 @@ function upload () {
 	$ret .= " <input type=submit name=Upload value=$wikiUploadButton>\n";
 	$ret .= "</form>\n";
 
-	global $wikiUploadPrev , $wikiUploadSize , $wikiFileRemoval , $wikiUploadRemove, $THESCRIPT ;
+	global $wikiUploadPrev , $wikiUploadSize , $wikiFileRemoval , $wikiUploadRemove ;
 
 	if (is_dir("upload")) {
 		$mydir = dir("upload");
@@ -1135,7 +1133,6 @@ function upload () {
 				$file = "yes";
 			}
 		$mydir->close();
-		$uploaddir = ereg_replace("/[A-Za-z0-9_.]+$", "/upload", $THESCRIPT);
 
 		if ($file == "yes") {
 			$ret .= "<h2>$wikiUploadPrev</h2>";
@@ -1149,7 +1146,7 @@ function upload () {
 			while ($entry = readdir($mydir)) {
 				if ($entry != '.' && $entry != '..') {
 					$ret .= "<tr><td align=center>" ;
-					$ret .= "<a href=\"$uploaddir/".rawurlencode($entry)."\">".htmlspecialchars($entry)."</a></td>";
+					$ret .= "<a href=\"upload/".rawurlencode($entry)."\">".htmlspecialchars($entry)."</a></td>";
 					$ret .= "<td align=center>".filesize("upload/$entry")." bytes</td>";
 					if ( $isSysop )  {
 						$ret .= "<td align=center><a href=\"".wikiLink("special:upload&removeFile=".urlencode($entry))."\">" ;
