@@ -13,6 +13,7 @@ function recentChangesLayout ( &$arr , $embolden = false) {
     # Bold watchlist entries?
     if ( $embolden ) {
 	$a = getMySQL ( "user" , "user_watch" , "user_id=$user->id" ) ;
+	$a = str_replace ( "_" , " " , $a ) ;
 	$watchlist = explode ( "\n" , $a ) ;
     } else
     	$watchlist = array () ;
