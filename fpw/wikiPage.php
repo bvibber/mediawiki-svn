@@ -602,12 +602,31 @@ class WikiPage extends WikiTitle {
 
 	# This function removes "forbidden" HTML tags
 	function removeHTMLtags ( $s ) {
-		$forbidden = array ( "a" , "script" , "title" , "html" , "body" , "header" ) ;
-		$o = "[^>]*" ;
-		foreach ( $forbidden as $x ) {
-			$s = eregi_replace ( "<$x($o)>" , "&lt;$x\\1&gt;" , $s ) ;
-			$s = eregi_replace ( "</$x($o)>" , "&lt;/$x\\1&gt;" , $s ) ;
+		# Only allow known tags
+		$htmlpairs = array( "b", "i", "u", "font", "big", "small", "sub", "sup", "h1", "h2", "h3", "h4", "h5", "h6",
+			"cite", "code", "em", "s", "strike", "strong", "tt", "var", "div", "center", "blockquote", "ol",
+			"ul", "dl", "table", "caption", "pre" );
+		$htmlsingle = array( "br", "p", "hr", "li", "dt", "dd", "tr", "td", "th" );
+		# Every single tag can also have a closing tag
+		$htmlpairs = array_merge($htmlpairs, $htmlsingle);
+		
+		# FIXME Allowed elements -- we don't want scripting, etc
+		#$htmlelements = array( "face", "color", "size", "border", "align", "valign", "alt" );
+		
+		# Unique placeholders for < and > so we don't interfere with &lt; and &gt;
+		$lt = "t4hqKoeC0p2Os4nfUa"; $gt = "v06TEbpdpceupNHi13";
+		
+		# Mark allowed tags
+		foreach ($htmlpairs as $x) {
+			$s = preg_replace("/<$x(\s[^<>]+?)?>(.*?)<\/$x>/is", "$lt$x$1$gt$2$lt/$x$gt", $s);
 			}
+		foreach ($htmlsingle as $x) {
+			$s = preg_replace("/<$x(\s[^<>]+?)?>/i", "$lt$x$1$gt", $s);
+			}
+		
+		# Kill any other tags, and convert good ones back to correct form
+		$s = str_replace(array("<", ">"), array("&lt;", "&gt;"), $s);
+		$s = str_replace(array("$lt", "$gt"), array("<", ">"), $s);
 		return $s ;
 		}
 
@@ -681,7 +700,7 @@ class WikiPage extends WikiTitle {
 # Removed automatic links for CamelCase; wasn't working, anyway...
 #		$s = ereg_replace ( "([\.|\n| )([a-z0-9]*[A-Z0-9]+[A-Za-z0-9]*)( |\n|\.)" , "\\1[[\\2]]\\3" , $s ) ;
 		$s = $this->removeHTMLtags ( $s ) ; # Removing "forbidden" HTML tags
-		$s = ereg_replace ( "&amp;([a-zA-Z0-9#]+);" , "&\\1;" , $s ) ; # That's a long story...
+		#$s = ereg_replace ( "&amp;([a-zA-Z0-9#]+);" , "&\\1;" , $s ) ; # That's a long story... FIXME: What is this for? It mostly seems to make it very hard to write the code for an entity instead of the entity itself.
 
 		# Now some repalcements wiki->HTML
 		$s = ereg_replace ( "-----*" , "<hr>" , $s ) ;
