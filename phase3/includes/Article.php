@@ -889,7 +889,7 @@ class Article {
 		global $wgOut, $wgUser, $wgLinkCache;
 		global $wgDBtransactions, $wgMwRedir;
 		global $wgUseSquid, $wgInternalServer;
-		global $wgIsPg;
+		global $wgIsPg, $wgUseHashTable;
 		$fname = 'Article::updateArticle';
 
 		if ( $this->mMinorEdit ) { $me1 = 1; } else { $me1 = 0; }
@@ -961,6 +961,15 @@ class Article {
 			$res = wfQuery( $sql, DB_WRITE, $fname );
 
 			$oldid = $wgIsPg?$old_id:wfInsertId( $res );
+
+			# insert the hash for the old article
+			if ($wgUseHashTable) {
+				$sql = "INSERT INTO hashs (hs_nstitle, hs_timestamp, hs_old_id, hs_user_text, hs_hash) " .
+					"VALUES (md5(concat(".$this->mTitle->getNamespace().",'+','".wfStrencode( $this->mTitle->getDBkey() ).
+					"')),'".$this->getTimestamp()."',$oldid,'".wfStrencode( $this->getUserText() )."','".
+					md5( $oldtext ) . "')";
+				wfQuery( $sql, DB_WRITE, $fname );
+			}
 
 			$bot = (int)($wgUser->isBot() || $forceBot);
 			RecentChange::notifyEdit( $now, $this->mTitle, $me2, $wgUser, $summary,

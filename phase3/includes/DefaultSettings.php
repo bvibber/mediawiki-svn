@@ -496,5 +496,7 @@ $wgExtraNamespaces = NULL;
 # hack for 1.3a + Wikinews
 $wgDisableNewsURLs=false;
 
+# put md5 hashes in hashs table?
+$wgUseHashTable = false;
 }
 ?>
