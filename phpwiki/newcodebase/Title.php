@@ -59,7 +59,7 @@
 	"is"    => "http://is.wikipedia.com/wiki.cgi?$1",
 	"it"	=> "http://it.wikipedia.com/wiki.cgi?$1",
 	"iu"    => "http://iu.wikipedia.com/wiki.cgi?$1",
-	"ja"	=> "http://ja.wikipedia.com/wiki/$1",
+	"ja"	=> "http://ja.wikipedia.org/wiki/$1",
 	"jv"    => "http://jv.wikipedia.com/wiki.cgi?$1",
 	"ka"    => "http://ka.wikipedia.com/wiki.cgi?$1",
 	"kk"    => "http://kk.wikipedia.com/wiki.cgi?$1",
