@@ -26,7 +26,7 @@ function buildTables()
 	$sql ="CREATE TABLE user_newtalk (
   user_id int(5) NOT NULL default '0',
   user_ip varchar(40) NOT NULL default '',
-  PRIMARY KEY  (user_id),
+  KEY  (user_id),
   KEY user_ip (user_ip)
 ) TYPE=MyISAM";
 	wfQuery ($sql);
@@ -245,7 +245,7 @@ function buildIndexes()
 	wfQuery( $sql );
 
 	$sql = "ALTER TABLE old
-  ADD INDEX old_title (old_title(20)),
+  ADD INDEX (old_namespace,old_title(20)),
   ADD INDEX old_timestamp (old_timestamp),
   ADD INDEX old_user (old_user),
   ADD INDEX old_user_text (old_user_text(8))";
