@@ -178,7 +178,8 @@ class MovePageForm {
 			}
 		}
 		$success = wfLocalUrl( $wgLang->specialPage( "Movepage" ),
-		  "action=success&oldtitle={$this->ofx}&newtitle={$this->nfx}" .
+		  "action=success&oldtitle=" . wfUrlencode( $this->ofx ) .
+		  "&newtitle=" . wfUrlencode( $this->nfx ) .
 		  "&talkmoved={$this->talkmoved}" );
 
 		$wgOut->redirect( $success );
