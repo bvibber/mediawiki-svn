@@ -69,13 +69,13 @@ function processUpload()
 			  wfMsg( "badfilename" ) );
 			return uploadWarning( $warn );
 		}
-		$extensions = array( "png", "jpg", "jpeg" ); 
+		$extensions = array( "png", "jpg", "jpeg", "ogg" ); 
 		if ( ( ! $wpIgnoreWarning ) &&
 		  ( ! in_array( strtolower( $ext ), $extensions ) ) ) {
 			$warn = str_replace( "$1", $ext, wfMsg( "badfiletype" ) );
 			return uploadWarning( $warn );
 		}
-		if ( ( ! $wpIgnoreWarning ) && ( $wpUploadSize > 100000 ) ) {
+		if ( ( ! $wpIgnoreWarning ) && ( $wpUploadSize > 150000 ) ) {
 			return uploadWarning( WfMsg( "largefile" ) );
 		}
 	}
