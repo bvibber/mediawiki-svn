@@ -99,7 +99,7 @@ class SearchEngine {
 
 	function legalSearchChars()
 	{
-		$lc = "A-Za-z_'0-9\\x90-\\xFF\\-";
+		$lc = "A-Za-z_'0-9\\x80-\\xFF\\-";
 		return $lc;
 	}
 
