@@ -10,7 +10,7 @@ function WantedPages () {
     $ret = $wikiWantedText ;
 
     $connection = getDBconnection () ;
-    $sql = "SELECT unlinked_to, COUNT( unlinked_from ) AS ulf
+    $sql = "SELECT unlinked_to, COUNT( DISTINCT unlinked_from ) AS ulf
             FROM unlinked
             GROUP BY unlinked_to
             ORDER BY ulf DESC
