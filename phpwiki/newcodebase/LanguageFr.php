@@ -38,7 +38,8 @@
 	"numberheadings" => "Numérotation automatique des titres",
 	"rememberpassword" => "Se souvenir de mon mot de passe (cookie)",
 	"editwidth" => "La fenetre d'édition est en pleine largeur",
-	"editondblclick" => "Edit pages on double click (JavaScript)"
+	"editondblclick" => "Edit pages on double click (JavaScript)",
+	"watchdefault" => "Watch new and modified articles"
 );
 
 /* Replace these with some French bookshops/lookup places */

@@ -33,7 +33,8 @@
 	"numberheadings" => "Auto-number headings",
 	"rememberpassword" => "Remember password across sessions",
 	"editwidth" => "Edit box has full width",
-	"editondblclick" => "Edit pages on double click (JavaScript)"
+	"editondblclick" => "Edit pages on double click (JavaScript)",
+	"watchdefault" => "Watch new and modified articles"
 );
 
 /* Native/local names should be available where known for consistency

@@ -53,7 +53,8 @@
 	"numberheadings" => "머릿글 번호 매기기",
 	"rememberpassword" => "세션동안 암호 기억",
 	"editwidth" => "편집상자 너비 최대",
-	"editondblclick" => "Edit pages on double click (JavaScript)"
+	"editondblclick" => "Edit pages on double click (JavaScript)",
+	"watchdefault" => "Watch new and modified articles"
 );
 
 /* private */ $wgBookstoreListKo = array(

@@ -36,7 +36,8 @@
 	"numberheadings" => "Auto-numerar encabezados",
 	"rememberpassword" => "Recordar la contraseña entre sesiones",
 	"editwidth" => "La caja de edición tiene el ancho máximo",
-	"editondblclick" => "Edit pages on double click (JavaScript)"
+	"editondblclick" => "Edit pages on double click (JavaScript)",
+	"watchdefault" => "Watch new and modified articles"
 );
 
 /* Please customize this with some Spanish-language bookshops

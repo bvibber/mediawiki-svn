@@ -37,7 +37,8 @@
 	"numberheadings" => "Aŭtomate nombrigu sekciojn",
 	"rememberpassword" => "Rememoru mian pasvorton de seanco al seanco",
 	"editwidth" => "Redaktilo estu plenlarĝa",
-	"editondblclick" => "Redaktu per duobla alklako (JavaScript)"
+	"editondblclick" => "Redaktu per duobla alklako (JavaScript)",
+	"watchdefault" => "Watch new and modified articles"
 );
 
 # Se eble, trovu Esperantajn libroservoj traserĉeblaj laŭ ISBN

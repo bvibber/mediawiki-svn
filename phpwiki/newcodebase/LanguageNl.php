@@ -40,8 +40,9 @@
  "hideminor" => "Kleine wijzigingen verbergen in recente wijzigingen",
  "numberheadings" => "Koppen automatisch nummeren",
  "rememberpassword" => "Wachtwoord onthouden",
-	"editwidth" => "Edit box has full width",
-    "editondblclick" => "Edit pages on double click (JavaScript)"
+ "editwidth" => "Edit box has full width",
+ "editondblclick" => "Edit pages on double click (JavaScript)",
+ "watchdefault" => "Watch new and modified articles"
 );
 
 /* private */ $wgLanguageNamesNl = array(
