@@ -40,7 +40,7 @@
 	"editwidth" => "La fenetre d'édition est en pleine largeur",
 	"editondblclick" => "Double cliquer pour éditer une page (JavaScript)",
 	"watchdefault" => "Suivre les articles que je crée ou modifie",
-	"minordefault" => "Mark all edits minor by default"
+	"minordefault" => "Mes modifications sont mineures par défaut"
 );
 
 /* Replace these with some French bookshops/lookup places */
@@ -243,12 +243,12 @@
 /* private */ $wgSysopSpecialPagesFr = array(
 	"Blockip"  => "Bloquer une adresse IP",
 	"Asksql"  => "Accès SQL",
-	"Undelete"      => "Voir et restaurer les pages effacées" // MQ "View and restore deleted pages"
+	"Undelete"      => "Gérer les pages effacées" // MQ "View and restore deleted pages"
 );
 
 /* private */ $wgDeveloperSpecialPagesFr = array(
-	"Lockdb"  => "Bloquer les mises à jour de la base de données",
-	"Unlockdb"  => "Permettre les mises à jour de la base de données",
+	"Lockdb"  => "Bloquer la base de données",
+	"Unlockdb"  => "Débloquer la base de données",
 	"Debug"   => "Informations de débogage"
 );
 
@@ -294,6 +294,10 @@
 "unprotectthispage" => "Dé-protéger cette page",
 "talkpage"  => "Page de discussion",
 "subjectpage" => "Page sujet",
+"articlepage"	=> "Page article",
+"userpage" => "Page utilisateur",
+"wikipediapage" => "Page méta",
+"imagepage" => "Page image",
 "otherlanguages" => "Autres langues",
 "redirectedfrom" => "(Redirigé depuis $1)",
 "lastmodified" => "Dernière modification de cette page : $1.",
@@ -400,6 +404,7 @@ Veuillez vous identifier dès que vous l'aurez reçu.",
 #
 "summary"  => "Résumé",
 "minoredit"  => "Modification mineure.",
+"watchthis"		=> "Suivre cet article",
 "savearticle" => "Sauvegarder",
 "preview"  => "Prévisualiser",
 
@@ -764,9 +769,9 @@ L'heure indiquée est celle du serveur (UTC).
 "reverted"  => "Rétablissement de la version précédente",
 "deletecomment" => "Motif de la suppression",
 "imagereverted" => "La version précédente a été rétablie.",
-"rollback"		=> "Roll back edits",
-"rollbacklink"	=> "rollback",
-"cantrollback"	=> "Can't revert edit; last contributor is only author of this article.",
+"rollback"	=> "révoquer modifications",
+"rollbacklink"	=> "révoquer",
+"cantrollback"	=> "Impossible de révoquer: dernier auteur est le seul à avoir modifié cet article",
 "revertpage"	=> "restitution de la dernière modification de $1",
 
 # Undelete
