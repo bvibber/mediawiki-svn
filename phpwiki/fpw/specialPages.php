@@ -20,15 +20,16 @@ function edit ( $title ) {
 		$text = $EditBox ;
 		$text = str_replace ( "\\'" , "'" , $text ) ;
 		$text = str_replace ( "\\\"" , "\"" , $text ) ;
-		if ( $user->isLoggedIn )
-			$text = str_replace ( "~~~" , "[[user:$user->name|$user->name]]" , $text ) ;
+		if ( $user->isLoggedIn ) $text = str_replace ( "~~~" , "[[user:$user->name|$user->name]]" , $text ) ;
+		else $text = str_replace ( "~~~" , $user->getLink() , $text ) ;
 		$title = str_replace ( "\\'" , "'" , $title ) ;
 		$title = str_replace ( "\\\"" , "\"" , $title ) ;
 		$npage->title = $title ;
 		$npage->makeAll () ;
 		if ( $npage->doesTopicExist() ) $npage->backup() ;
 		else { $MinorEdit = 2 ; $npage->ensureExistence () ; }
-		$npage->setEntry ( $text , $CommentBox , $user->id , $user->name , $MinorEdit*1 ) ;
+		if ( !$user->isLoggedIn ) $npage->setEntry ( $text , $CommentBox , 0 , $user->getLink() , $MinorEdit*1 ) ;
+		else $npage->setEntry ( $text , $CommentBox , $user->id , $user->name , $MinorEdit*1 ) ;
 		global $wasSaved ;
 		$wasSaved = true ;
 		return "" ;
@@ -94,14 +95,14 @@ function view ( $title ) {
 function userLogout () {
 	global $user , $vpage ;
 	$vpage->title = "User logout" ;
-	setcookie ( "WikiLoggedIn" , "" ) ;
-	if ( $user->options["rememberPassword"] != "on" ) setcookie ( "WikiUserPassword" , "" ) ;
+	setcookie ( "WikiLoggedIn" , "" , time()-3600 ) ;
+	if ( $user->options["rememberPassword"] != "on" ) setcookie ( "WikiUserPassword" , "" , time()-3600 ) ;
 	$user->isLoggedIn = false ;
 	return "<h1>Goodbye, $user->name!</h1>" ;
 	}
 
 function userLogin () {
-	global $loginattempt , $user , $vpage , $WikiUserID ;
+	global $loginattempt , $user , $vpage , $WikiUserID , $expiration ;
 	$vpage->title = "User login" ;
 
 	if ( isset ( $loginattempt ) ) {
@@ -118,18 +119,18 @@ function userLogin () {
 		if ( $nu->isLoggedIn ) {
 			$user = new WikiUser ;
 			$user = $nu ;
-			setcookie ( "WikiUserID" , $user->id ) ;
-			setcookie ( "WikiLoggedIn" , "yes" ) ;
-			setcookie ( "WikiUserPassword" , $user->password ) ;
+			setcookie ( "WikiUserID" , $user->id , $expiration ) ;
+			setcookie ( "WikiLoggedIn" , "yes" , $expiration ) ;
+			setcookie ( "WikiUserPassword" , $user->password , $expiration ) ;
 			$user->options["rememberPassword"] = $REMEMBERPASSWORD ;
 			$user->saveSettings() ;
 		} else if ( $USERPASSWORD == $RETYPE and !($nu->doesUserExist()) ) {
 			$nu->addToDatabase () ;
 			$user = $nu ;
 			$s = "<h1>Welcome, $user->name!</h1><font color=red>Don't forget to personalize your wikipedia perferences!</font>" ;
-			setcookie ( "WikiLoggedIn" , "yes" ) ;
-			setcookie ( "WikiUserID" , $user->id ) ;
-			if ( $user->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $user->password ) ;
+			setcookie ( "WikiLoggedIn" , "yes" , $expiration ) ;
+			setcookie ( "WikiUserID" , $user->id , $expiration ) ;
+			if ( $user->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $user->password , $expiration ) ;
 			$user->options["rememberPassword"] = $REMEMBERPASSWORD ;
 			$user->saveSettings() ;
 		} else {
@@ -379,7 +380,7 @@ function searchLineDisplay ( $v ) {
 	$v = trim(str_replace("\n","",$v)) ;
 	$v = str_replace ( "'''" , "" , $v ) ;
 	$v = str_replace ( "''" , "" , $v ) ;
-	$v = ereg_replace ( "{{{.*}}}" , "?" , $v ) ;
+	$v = ereg_replace ( "\{\{\{.*\}\}\}" , "?" , $v ) ;
 	$v = trim ( $v ) ;
 	while ( substr($v,0,1) == ":" ) $v = substr($v,1) ;
 	while ( substr($v,0,1) == "*" ) $v = substr($v,1) ;
@@ -465,6 +466,53 @@ function doSearch () {
 
 	$vpage->contents = $s ;
 	return $vpage->renderPage () ;
+	}
+
+function listUsers () {
+	global $user , $vpage , $startat ;
+	if ( !isset ( $startat ) ) $startat = 1 ;
+	$perpage = $user->options["resultsPerPage"] ;
+	if ( $perpage == 0 ) $perpage = 20 ;
+	
+	$vpage->special ( "User List" ) ;
+	$vpage->namespace = "" ;
+	$ret = "'''These are all wikipedia users (that have an account)!'''\n\n" ;
+	$connection = getDBconnection () ;
+	mysql_select_db ( "wikipedia" , $connection ) ;
+	$sql = "SELECT COUNT(*) AS number FROM cur WHERE cur_title LIKE \"User:%\"" ;
+	$result = mysql_query ( $sql , $connection ) ;
+	$s = mysql_fetch_object ( $result ) ;
+	$total = $s->number ;
+	$sql = "SELECT * FROM cur WHERE cur_title LIKE \"User:%\" ORDER BY cur_title" ;
+	$result = mysql_query ( $sql , $connection ) ;
+	$cnt = 1 ;
+	$color1 = $user->options["tabLine1"] ;
+	$color2 = $user->options["tabLine2"] ;
+	$color = $color1 ;
+	$ret .= "<table width=100%>\n" ;
+	while ( $s = mysql_fetch_object ( $result ) and $cnt < $startat+$perpage ) {
+		if ( $cnt >= $startat ) {
+			$u = $s->cur_title ;
+			$u = substr ( strstr ( $u , ":" ) , 1 ) ;
+			$u = $vpage->getNiceTitle ( $u ) ;
+			$ret .= "<tr><td$color align=right nowrap>$cnt</td>" ;
+			$ret .= "<td$color width=100% valign=top>[[$s->cur_title|$u]]</td></tr>\n";
+			if ( $color == $color1 ) $color = $color2 ;
+			else $color = $color1 ;
+			}
+		$cnt++ ;
+		}
+	$ret .= "</table>\n" ;
+	
+	$ret .= "<nowiki>" ;
+	$before = $startat - $perpage ; $fin = $before + $perpage - 1 ;
+	if ( $startat > 1 ) $ret .= "<a href=\"$PHP_SELF?title=special:UserList&startat=$before\">$before-$fin&lt;&lt;</a> &nbsp;" ;
+	$after = $startat + $perpage ; $fin = $after+$perpage - 1 ; if ( $fin > $total ) $fin = $total ;
+	if ( $after-1 < $total ) $ret .= "<a href=\"$PHP_SELF?title=special:UserList&startat=$after\">&gt;&gt;$after-$fin</a>" ;
+	$ret .= "</nowiki>" ;
+	mysql_free_result ( $result ) ;
+	mysql_close ( $connection ) ;
+	return $ret ;
 	}
 
 function randompage () {
@@ -890,6 +938,51 @@ function special_pages () {
 	$ret = "<b>This is a list of special pages.</b><br>" ;
 	$ret .= "Some of them are only available if you are logged in. If you are logged in, you can have this list automatically displayed on the right or left of each page as a QuickBar.<br><br>" ;
 	$ret .= $vpage->getQuickBar () ;
+	return $ret ;
+	}
+
+function ShortPages () {
+	global $user , $vpage , $startat ;
+	if ( !isset ( $startat ) ) $startat = 1 ;
+	$perpage = $user->options["resultsPerPage"] ;
+	if ( $perpage == 0 ) $perpage = 20 ;
+	
+	$vpage->special ( "Short 'stub' articles" ) ;
+	$vpage->namespace = "" ;
+	$ret = "'''These are all the articles in the database, sorted by length!'''\n\n" ;
+	$connection = getDBconnection () ;
+	mysql_select_db ( "wikipedia" , $connection ) ;
+	$sql = "SELECT COUNT(*) AS number FROM cur" ;
+	$result = mysql_query ( $sql , $connection ) ;
+	$s = mysql_fetch_object ( $result ) ;
+	$total = $s->number ;
+	$sql = "SELECT * FROM cur ORDER BY LENGTH(cur_text)" ;
+	$result = mysql_query ( $sql , $connection ) ;
+	$cnt = 1 ;
+	$color1 = $user->options["tabLine1"] ;
+	$color2 = $user->options["tabLine2"] ;
+	$color = $color1 ;
+	$ret .= "<table width=100%>\n" ;
+	while ( $s = mysql_fetch_object ( $result ) and $cnt < $startat+$perpage ) {
+		if ( $cnt >= $startat ) {
+			$ret .= "<tr><td$color align=right nowrap>$cnt</td>" ;
+			$ret .= "<td$color align=right nowrap>(".strlen($s->cur_text)." chars)</td>\n" ;
+			$ret .= "<td$color width=100% valign=top>[[$s->cur_title]]</td></tr>\n";
+			if ( $color == $color1 ) $color = $color2 ;
+			else $color = $color1 ;
+			}
+		$cnt++ ;
+		}
+	$ret .= "</table>\n" ;
+	
+	$ret .= "<nowiki>" ;
+	$before = $startat - $perpage ; $fin = $before + $perpage - 1 ;
+	if ( $startat > 1 ) $ret .= "<a href=\"$PHP_SELF?title=special:ShortPages&startat=$before\">$before-$fin&lt;&lt;</a> &nbsp;" ;
+	$after = $startat + $perpage ; $fin = $after+$perpage - 1 ; if ( $fin > $total ) $fin = $total ;
+	if ( $after-1 < $total ) $ret .= "<a href=\"$PHP_SELF?title=special:ShortPages&startat=$after\">&gt;&gt;$after-$fin</a>" ;
+	$ret .= "</nowiki>" ;
+	mysql_free_result ( $result ) ;
+	mysql_close ( $connection ) ;
 	return $ret ;
 	}
 ?>

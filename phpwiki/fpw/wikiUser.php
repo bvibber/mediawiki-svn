@@ -88,6 +88,7 @@ class WikiUser {
 		$this->skin () ;
 		}
 	function saveSettings () {
+		global $expiration ;
 		if ( !$this->isLoggedIn ) return ;
 		$t = "" ;
 		$a = array_keys ( $this->options ) ;
@@ -100,15 +101,15 @@ class WikiUser {
 		setMySQL ( "user" , "user_options" , urlencode ( $t ) , "user_id=".$this->id ) ;
 		setMySQL ( "user" , "user_password" , $this->password , "user_id=".$this->id ) ;
 		setMySQL ( "user" , "user_email" , $this->email , "user_id=".$this->id ) ;
-		if ( $this->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $this->password ) ;
+		if ( $this->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $this->password , $expiration ) ;
 		}
 	function getLink () {
 		global $REMOTE_ADDR ;
 		if ( $this->isLoggedIn ) {
 			$s = new WikiPage ;
-			$s->setTitle ( "user:$this->name" ) ;
-			$s = $s->parseContents ( "[[$this->name]]" ) ;
-			$s = str_replace ( "<p>" , "" , $s ) ;
+#			$s->setTitle ( "user:$this->name" ) ;
+			$s = $s->parseContents ( "[[user:$this->name|$this->name]]" ) ;
+			$s = substr ( strstr ( $s , ">" ) , 1 ) ;
 			$s = str_replace ( "</p>" , "" , $s ) ;
 			return $s ;
 			}
