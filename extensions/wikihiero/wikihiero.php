@@ -30,7 +30,7 @@
 
   //========================================================================
   // D E F I N E S
-  define("WH_TABLE_S",      "<TABLE border='0' height='100%' cellspacing='0' cellpadding='0'>");
+  define("WH_TABLE_S",      "<TABLE border='0' cellspacing='0' cellpadding='0'>");
   define("WH_TABLE_E",      "</TABLE>");
   define("WH_TD_S",         "<TD align='center' valign='middle'>");
   define("WH_TD_E",         "</TD>");
@@ -54,9 +54,9 @@
 
   define("WH_VER_MAJ",       0);
   define("WH_VER_MED",       2);
-  define("WH_VER_MIN",       11);
+  define("WH_VER_MIN",       12);
 
-  define("WH_IMG_DIR",       "$wgScriptPath/extensions/wikihiero/img/" ); //"img/");
+  define("WH_IMG_DIR",       "img/"); //"$wgScriptPath/extensions/wikihiero/img/" ); //
   define("WH_IMG_PRE",       "hiero_");
   define("WH_IMG_EXT",       "png");
 
@@ -585,12 +585,8 @@
     global $wh_mode;
     global $wh_phonemes;
     global $wh_files;
-/*
-    if($glyph == "..")
-      return "&nbsp;&nbsp;";
-    else if($glyph == ".")
-      return "&nbsp;";
-*/
+    global $wh_scale;
+
     if($glyph == "..")
     {
       $width = WH_HEIGHT;
@@ -601,19 +597,31 @@
       $width = WH_HEIGHT/2;
       return "<TABLE width='{$width}px' border='0' cellspacing='0' cellpadding='0'><TR><TD>&nbsp;</TD></TR></TABLE>";
     }
+    else if($glyph == '<')
+    {
+      $height = intval(WH_HEIGHT * $wh_scale / 100);
+      $code = $wh_phonemes[$glyph];
+      return "<IMG src='".htmlspecialchars(WH_IMG_DIR.WH_IMG_PRE."{$code}.".WH_IMG_EXT)."' height='{$height}px' title='".htmlspecialchars($glyph)."' alt='".htmlspecialchars($glyph)."' />";
+    }
+    else if($glyph == '>')
+    {
+      $height = intval(WH_HEIGHT * $wh_scale / 100);
+      $code = $wh_phonemes[$glyph];
+      return "<IMG src='".htmlspecialchars(WH_IMG_DIR.WH_IMG_PRE."{$code}.".WH_IMG_EXT)."' height='{$height}px' title='".htmlspecialchars($glyph)."' alt='".htmlspecialchars($glyph)."' />";
+    }
 
     if(array_key_exists($glyph, $wh_phonemes))
     {
       $code = $wh_phonemes[$glyph];
       if(array_key_exists($code, $wh_files))
-        return "<IMG style='margin:".WH_IMG_MARGIN."px;' $option src='".WH_IMG_DIR.WH_IMG_PRE."$code".".".WH_IMG_EXT."' title='$code [$glyph]' alt='$glyph'>";
+        return "<IMG style='margin:".WH_IMG_MARGIN."px;' $option src='".htmlspecialchars(WH_IMG_DIR.WH_IMG_PRE."{$code}.".WH_IMG_EXT)."' title='".htmlspecialchars($code[$glyph])."' alt='".htmlspecialchars($glyph)."' />";
       else
-        return "<FONT title='$code'>$glyph</font>";
+        return "<FONT title='".htmlspecialchars($code)."'>".htmlspecialchars($glyph)."</FONT>";
     }
     else if(array_key_exists($glyph, $wh_files))
-      return "<IMG style='margin:".WH_IMG_MARGIN."px;' $option src='".WH_IMG_DIR.WH_IMG_PRE."$glyph".".".WH_IMG_EXT."' title='$glyph' alt='$glyph'>";
+      return "<IMG style='margin:".WH_IMG_MARGIN."px;' $option src='".htmlspecialchars(WH_IMG_DIR.WH_IMG_PRE."{$glyph}.".WH_IMG_EXT)."' title='".htmlspecialchars($glyph)."' alt='".htmlspecialchars($glyph)."' />";
     else
-      return $glyph;
+      return htmlspecialchars($glyph);
   }
 
   //------------------------------------------------------------------------
@@ -637,7 +645,7 @@
 
     $margin = 2 * WH_IMG_MARGIN;
     if($is_cartouche)
-      $margin += 2 * WH_CARTOUCHE_WIDTH;
+      $margin += 2 * intval(WH_CARTOUCHE_WIDTH * $wh_scale / 100);
 
     if(array_key_exists($glyph, $wh_files))
     {
@@ -830,8 +838,6 @@
       }
     }
 
-    $html .= WH_TABLE_S."<TR>\n";
-
     // DEBUG: See the block split table
     if(WH_DEBUG_MODE)
     {
@@ -842,9 +848,12 @@
         {
           echo "$item | ";
         }
-        echo "<BR>\n";
+        echo "<BR />\n";
       }
     }
+
+    $contentHtml = $tableHtml = $tableContentHtml = "";
+    //$html .= WH_TABLE_S."<TR>\n";
 
     //------------------------------------------------------------------------
     // Loop into all blocks
@@ -855,30 +864,30 @@
       {
         if($code[0] == "!") // end of line 
         {
-          $html .= "</TR>".WH_TABLE_E.WH_TABLE_S."<TR>\n";
+          $tableHtml = "</TR>".WH_TABLE_E.WH_TABLE_S."<TR>\n";
           if($line)
-            $html .= "<HR>\n";
+            $contentHtml .= "<HR>\n";
         }
 
         else if(strchr($code[0], '<')) // start cartouche
         {
-          $html .= WH_TD_S.WH_RenderGlyph($code[0], "height='100%'").WH_TD_E;
+          $contentHtml .= WH_TD_S.WH_RenderGlyph($code[0]).WH_TD_E;
           $is_cartouche = true;
-          $html .= "<TD>".WH_TABLE_S."<TR><TD height='".WH_CARTOUCHE_WIDTH."px' bgcolor='black'></TD></TR><TR><TD>".WH_TABLE_S."<TR>";
+          $contentHtml .= "<TD>".WH_TABLE_S."<TR><TD height='".intval(WH_CARTOUCHE_WIDTH * $wh_scale / 100)."px' bgcolor='black'></TD></TR><TR><TD>".WH_TABLE_S."<TR>";
         }
 
         else if(strchr($code[0], '>')) // end cartouche
         {
-          $html .= "</TR>".WH_TABLE_E."</TD></TR><TR><TD height='".WH_CARTOUCHE_WIDTH."px' bgcolor='black'></TD></TR>".WH_TABLE_E."</TD>";
+          $contentHtml .= "</TR>".WH_TABLE_E."</TD></TR><TR><TD height='".intval(WH_CARTOUCHE_WIDTH * $wh_scale / 100)."px' bgcolor='black'></TD></TR>".WH_TABLE_E."</TD>";
           $is_cartouche = false;
-          $html .= WH_TD_S.WH_RenderGlyph($code[0], "height='100%'").WH_TD_E;
+          $contentHtml .= WH_TD_S.WH_RenderGlyph($code[0]).WH_TD_E;
         }
 
         else if($code[0] != "") // assum is glyph or '..' or '.'
         {
           $option = "height='".WH_Resize($code[0], $is_cartouche)."px'";
           
-          $html .= WH_TD_S.WH_RenderGlyph($code[0], $option).WH_TD_E;
+          $contentHtml .= WH_TD_S.WH_RenderGlyph($code[0], $option).WH_TD_E;
         }
       }
       // block contain more than 1 glyph
@@ -898,7 +907,7 @@
         {
           $option = "height='".WH_Resize($temp, $is_cartouche)."px'";
 
-          $html .= WH_TD_S.WH_RenderGlyph($temp, $option).WH_TD_E;
+          $contentHtml .= WH_TD_S.WH_RenderGlyph($temp, $option).WH_TD_E;
         }
         // block must be manualy compute 
         else
@@ -941,7 +950,7 @@
           foreach($code as $t)
           {
             if($t == ":")
-              $temp .= "<BR>";
+              $temp .= "<BR />";
             else if($t == "*")
               $temp .= " ";
             else
@@ -951,13 +960,20 @@
               $temp .= WH_RenderGlyph($t, $option);
             }
           }
-          $html .= WH_TD_S.$temp.WH_TD_E;
+          $contentHtml .= WH_TD_S.$temp.WH_TD_E;
         }
-        $html .= "\n";
+        $contentHtml .= "\n";
+      }
+      if(strlen($contentHtml) > 0)
+      {
+          $tableContentHtml .= $tableHtml.$contentHtml;
+          $contentHtml = $tableHtml = "";
       }
     }
-
-    $html .= "</TR>".WH_TABLE_E;
+    if(strlen($tableContentHtml) > 0)
+    {
+        $html .= WH_TABLE_S."<tr>\n".$tableContentHtml."</tr>".WH_TABLE_E;
+    }
 
     return $html;        
   }
@@ -982,7 +998,7 @@
   {
     $html = "";
     $html .= "<B>WikiHiero v".WH_VER_MAJ.".".WH_VER_MED.".".WH_VER_MIN."</B>\n";
-		$html .= "by Guillaume Blanchard (Aoineko) under GPL (2004).<BR>\n";
+		$html .= "by Guillaume Blanchard (Aoineko) under GPL (2004).<BR />\n";
 		$html .= "Hieroglyph credit: S. Rosmorduc, G. Watson, J. Hirst (under GFDL).\n";
     return $html;
   }
