@@ -280,6 +280,7 @@ class Article {
 		global $wpMinoredit, $wpEdittime, $wpTextbox2, $wpCountable;
 		global $oldid, $redirect;
 
+		$sk = $wgUser->getSkin();
 		$isConflict = false;
 		if ( "save" == $formtype ) {
 			if ( $wgUser->isBlocked() ) {
@@ -347,6 +348,13 @@ class Article {
 		$save = wfMsg( "savearticle" );
 		$prev = wfMsg( "showpreview" );
 
+		$cancel = $sk->makeKnownLink( $wgTitle->getPrefixedURL(),
+		  wfMsg( "cancel" ) );
+		$edithelp = $sk->makeKnownLink( wfMsg( "edithelppage" ),
+		  wfMsg( "edithelp" ) );
+		$copywarn = str_replace( "$1", $sk->makeKnownLink(
+		  wfMsg( "copyrightpage" ) ), wfMsg( "copyrightwarning" ) );
+
 		$wpTextbox1 = wfEscapeHTML( $wpTextbox1 );
 		$wpTextbox2 = wfEscapeHTML( $wpTextbox2 );
 		$wpSummary = wfEscapeHTML( $wpSummary );
@@ -361,6 +369,8 @@ enctype='application/x-www-form-urlencoded'>
 <input tabindex=3 type=checkbox value=1 name='wpMinoredit'>{$minor}<br>
 <input tabindex=4 type=submit value=\"{$save}\" name='wpSave'>
 <input tabindex=5 type=submit value=\"{$prev}\" name='wpPreview'>
+<em>{$cancel}</em> | <em>{$edithelp}</em>
+<br><br>{$copywarn}
 <input type=hidden value=\"{$wpEdittime}\" name='wpEdittime'>
 <input type=hidden value=\"{$wpCountable}\" name='wpCountable'>\n" );
 
