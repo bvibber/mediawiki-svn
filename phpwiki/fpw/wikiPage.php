@@ -352,7 +352,7 @@ class WikiPage extends WikiTitle {
 
 	# This function replaces wiki-style image links with the HTML code to display them
 	function parseImages ( $s ) {
-		$s = ereg_replace ( "([^[])http://([a-zA-Z0-9_/:.\-\%]*)\.(png|jpg|jpeg|tif|tiff|gif)" , "\\1<img src=\"http://\\2.\\3\">" , $s ) ;
+		$s = ereg_replace ( "([^[])http://([a-zA-Z0-9_/:.\%\-]*)\.(png|jpg|jpeg|tif|tiff|gif)" , "\\1<img src=\"http://\\2.\\3\">" , $s ) ;
 		return $s ;
 		}
 
