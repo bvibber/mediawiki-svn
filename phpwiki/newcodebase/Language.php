@@ -259,6 +259,7 @@
 "qbpageinfo"	=> "Page info",
 "qbmyoptions"	=> "My options",
 "mypage"		=> "My page",
+"mytalk"		=> "My talk",
 "currentevents" => "Current events",
 "errorpagetitle" => "Error",
 "returnto"		=> "Return to $1.",

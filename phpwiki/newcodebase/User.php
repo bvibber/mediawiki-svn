@@ -9,7 +9,7 @@
 );
 
 class User {
-	/* private */ var $mId, $mName, $mPassword, $mEmail;
+	/* private */ var $mId, $mName, $mPassword, $mEmail, $mNewtalk;
 	/* private */ var $mRights, $mOptions;
 	/* private */ var $mDataLoaded, $mNewpassword;
 	/* private */ var $mSkin, $mWatchlist;
@@ -27,7 +27,7 @@ class User {
 		$u = new User();
 
 		# Clean up name according to title rules
-		#
+
 		$t = Title::newFromText( $name );
 		$u->setName( $t->getText() );
 		return $u;
@@ -41,15 +41,14 @@ class User {
 	/* static */ function idFromName( $name )
 	{
 		$nt = Title::newFromText( $name );
-
 		$sql = "SELECT user_id FROM user WHERE user_name='" .
-		  wfStrencode( $nt->getDBkey() ) . "'";
+		  wfStrencode( $nt->getText() ) . "'";
 		$res = wfQuery( $sql, "User::idFromName" );
 
 		if ( 0 == wfNumRows( $res ) ) { return 0; }
 		else {
 			$s = wfFetchObject( $res );
-			return $s->cur_id;
+			return $s->user_id;
 		}
 	}
 
@@ -70,7 +69,7 @@ class User {
 	{
 		global $wgDefaultOptions;
 
-		$this->mId = 0;
+		$this->mId = $this->mNewtalk = 0;
 		$this->mName = getenv( "REMOTE_ADDR" );
 		$this->mEmail = "";
 		$this->mPassword = $this->mNewpassword = "";
@@ -176,7 +175,8 @@ class User {
 
 		if ( 0 == $this->mId || $this->mDataLoaded ) { return; }
 		$sql = "SELECT user_name,user_password,user_newpassword,user_email," .
-		  "user_options,user_rights FROM user WHERE user_id={$this->mId}";
+		  "user_options,user_rights,user_newtalk FROM user WHERE user_id=" .
+		  "{$this->mId}";
 		$res = wfQuery( $sql, "User::loadFromDatabase" );
 
 		if ( wfNumRows( $res ) > 0 ) {
@@ -187,6 +187,7 @@ class User {
 			$this->mNewpassword = $s->user_newpassword;
 			$this->decodeOptions( $s->user_options );
 			$this->mRights = explode( ",", strtolower( $s->user_rights ) );
+			$this->mNewtalk = $s->user_newtalk;
 		}
 		wfFreeResult( $res );
 		$this->mDataLoaded = true;
@@ -204,6 +205,18 @@ class User {
 	{
 		$this->loadFromDatabase();
 		$this->mName = $str;
+	}
+
+	function getNewtalk()
+	{
+		$this->loadFromDatabase();
+		return ( 0 != $this->mNewtalk );
+	}
+
+	function setNewtalk( $val )
+	{
+		$this->loadFromDatabase();
+		$this->mNewtalk = $val;
 	}
 
 	function getPassword()
@@ -402,7 +415,8 @@ class User {
 		  "user_email= '" . wfStrencode( $this->mEmail ) . "', " .
 		  "user_options= '" . $this->encodeOptions() . "', " .
 		  "user_rights= '" . wfStrencode( implode( ",", $this->mRights ) ) .
-		  "' WHERE user_id={$this->mId}";
+		  "', user_newtalk=" . ( $this->mNewtalk ? "1" : "0" ) .
+		  " WHERE user_id={$this->mId}";
 		wfQuery( $sql, "User::saveSettings" );
 
 		if ( isset( $this->mWatchlist ) ) {
@@ -435,13 +449,13 @@ class User {
 	function addToDatabase()
 	{
 		$sql = "INSERT INTO user (user_name,user_password,user_newpassword," .
-		  "user_email, user_rights, user_options, user_watch) VALUES ('" .
-		  wfStrencode( $this->mName ) . "', '" .
+		  "user_email, user_rights, user_options, user_watch, user_newtalk) " .
+		  " VALUES ('" . wfStrencode( $this->mName ) . "', '" .
 		  wfStrencode( $this->mPassword ) . "', '" .
 		  wfStrencode( $this->mNewpassword ) . "', '" .
 		  wfStrencode( $this->mEmail ) . "', '" .
 		  wfStrencode( implode( ",", $this->mRights ) ) . "', '" .
-		  $this->encodeOptions() . "', '' )";
+		  $this->encodeOptions() . "', '', 0 )";
 		wfQuery( $sql, "User::addToDatabase" );
 		$this->mId = $this->idForName();
 

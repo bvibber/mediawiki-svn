@@ -173,8 +173,14 @@ class SkinCologneBlue extends Skin {
 		$s .= $this->menuHead( "qbmyoptions" );
 		if ( 0 != $wgUser->getID() ) {
 			$name = $wgUser->getName();
+			$tl = $this->makeKnownLink( $wgLang->getNsText(
+			  Namespace::getTalk( Namespace::getUser() ) ) . ":{$name}",
+			  wfMsg( "mytalk" ) );
+			if ( 0 != $wgUser->getNewtalk() ) { $tl .= " *"; }
+
 			$s .= $this->makeKnownLink( $wgLang->getNsText(
 			  Namespace::getUser() ) . ":{$name}", wfMsg( "mypage" ) )
+			  . $sep . $tl
 			  . $sep . $this->specialLink( "watchlist" )
 		  	  . $sep . $this->specialLink( "preferences" )
 		  	  . $sep . $this->specialLink( "userlogout" );

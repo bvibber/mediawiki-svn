@@ -6,21 +6,22 @@ include_once( "./DefaultSettings.php" );
 
 # URLs for the wiki site
 #
-$wgServer           = "http://www.piclab.com";
+$wgServer           = "http://www.myhost.com";
 $wgStyleSheetPath   = "$wgServer/style";
-$wgScript           = "/newwiki/wiki.phtml";
-$wgRedirectScript	= "/newwiki/redirect.phtml";
+$wgScript           = "/wiki.phtml";
+$wgRedirectScript	= "/redirect.phtml";
 $wgArticlePath      = "$wgServer$wgScript?title=$1";
-$wgUploadPath       = "http://images.piclab.com";
-$wgUploadDirectory	= "/rfs/upload";
+$wgUploadPath       = "http://www.myhost.com/upload";
+$wgUploadDirectory	= "/usr/local/apache/htdocs/upload";
 $wgLogo				= "$wgUploadPath/wiki.png";
 
 # MySQL settings
 #
 $wgDBserver         = "127.0.0.1";
-$wgDBname           = "yaw";
+$wgDBname           = "wikidb";
 $wgDBuser           = "wikiuser";
-$wgDBpassword       = "oberon";
+$wgDBpassword       = "userpass";
+$wgDBadminpassword  = "adminpass";
 $wgDBminWordLen		= 3;
 
 # Turn this on during database maintenance
@@ -30,7 +31,7 @@ $wgDBminWordLen		= 3;
 # Turn this on to get HTML debug comments
 #
 # $wgDebugComments	= true;
-$wgDebugLogFile 	= "/home/lee/src/phpwiki/newcodebase/logfile";
+$wgDebugLogFile 	= "/usr/local/apache/htdocs/upload/logfile";
 
 # Which interwiki prefix represents _this_ wiki?  This
 # only needs to be set when installing the software on

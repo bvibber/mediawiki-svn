@@ -315,8 +315,15 @@ class Skin {
 		} else {
 			$n = $wgUser->getName();
 			$rt = $wgTitle->getPrefixedURL();
+			$tl = $this->makeKnownLink( $wgLang->getNsText(
+			  Namespace::getTalk( Namespace::getUser() ) ) . ":{$n}",
+			  $wgLang->getNsText( Namespace::getTalk( 0 ) ) );
+
+			if ( 0 == $wgUser->getNewtalk() ) { $tl = " ({$tl})"; }
+			else { $tl = " (*{$tl})"; }
+
 			$s .= $this->makeKnownLink( $wgLang->getNsText(
-			  Namespace::getUser() ) . ":{$n}", $n ) . "<br>" .
+			  Namespace::getUser() ) . ":{$n}", $n ) . "{$tl}<br>" .
 			  $this->makeKnownLink( $lo, wfMsg( "logout" ),
 			  "returnto={$rt}" ) . " | " .
 			  $this->specialLink( "preferences" );

@@ -230,7 +230,6 @@ class Title {
 		if ( $ns == Namespace::getImage() ) {
 			$t = preg_replace( "/ (png|gif|jpg|jpeg|ogg)$/", "", $t );
 		}
-wfDebug("IT:{$t}\n");
 		return trim( $t );
 	}
 
