@@ -149,7 +149,6 @@ class Skin {
 
 		$s = "";
 		$qb = $this->qbSetting();
-		if ( 0 != $qb ) { $s .= $this->quickBar(); }
 
 		$s .= "\n<div id='content'>\n<div id='topbar'>" .
 		  "<table width='98%' border=0 cellspacing=0><tr>";
@@ -230,6 +229,7 @@ class Skin {
 		}
 		$s .= "</tr></table>\n</div>\n</div>\n";
 
+		if ( 0 != $qb ) { $s .= $this->quickBar(); }
 		return $s;
 	}
 

@@ -17,7 +17,6 @@ class SkinCologneBlue extends Skin {
 
 		$s = "";
 		$qb = $this->qbSetting();
-		if ( 0 != $qb ) { $s .= $this->quickBar(); }
 
 		$s .= "\n<div id='content'>\n<div id='topbar'>" .
 		  "<table width='98%' border=0 cellspacing=0 cellpadding=8><tr>";
@@ -77,6 +76,7 @@ class SkinCologneBlue extends Skin {
 		}
 		$s .= "</tr></table>\n</div>\n</div>\n";
 
+		if ( 0 != $qb ) { $s .= $this->quickBar(); }
 		return $s;
 	}
 	function doGetUserStyles()
