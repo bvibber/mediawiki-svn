@@ -714,8 +714,16 @@ enctype='application/x-www-form-urlencoded'>
 		}
 		$wgOut->setPagetitle( wfMsg( "confirmdelete" ) );
 		if ( $image ) {
+			if ( "" == trim( $image ) ) {
+				$wgOut->fatalError( wfMsg( "cannotdelete" ) );
+				return;
+			}
 			$sub = str_replace( "$1", $image, wfMsg( "deletesub" ) );
 		} else {
+			if ( "" == trim( $wgTitle->getText() ) ) {
+				$wgOut->fatalError( wfMsg( "cannotdelete" ) );
+				return;
+			}
 			$sub = str_replace( "$1", $wgTitle->getPrefixedText(),
 			  wfMsg( "deletesub" ) );
 		}
@@ -756,6 +764,10 @@ enctype='application/x-www-form-urlencoded'>
 		$fname = "Article::doDelete";
 
 		if ( $image ) {
+			if ( "" == trim( $image ) ) {
+				$wgOut->fatalError( wfMsg( "cannotdelete" ) );
+				return;
+			}
 			$dest = wfImageDir( $image );
 			$archive = wfImageDir( $image );
 			if ( ! unlink( "{$dest}/{$image}" ) ) {
@@ -827,6 +839,10 @@ enctype='application/x-www-form-urlencoded'>
 		$t = wfStrencode( $title->getDBkey() );
 		$id = $title->getArticleID();
 
+		if ( 0 == $id || "" == $t ) {
+			$wgOut->fatalError( wfMsg( "cannotdelete" ) );
+			return;
+		}
 		$sql = "DELETE FROM cur WHERE cur_namespace={$ns} AND " .
 		  "cur_title='{$t}'";
 		wfQuery( $sql, $fname );

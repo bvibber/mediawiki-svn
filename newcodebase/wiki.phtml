@@ -22,7 +22,7 @@ $action = strtolower( trim( $action ) );
 if ( "" == $action ) { $action = "view"; }
 if ( "yes" == $printable ) { $wgOut->setPrintable(); }
 
-if ( "" == $title ) {
+if ( "" == $title && "delete" != $action ) {
 	$wgTitle = Title::newFromText( wfMsg( "mainpage" ) );
 } else {
 	$wgTitle = Title::newFromURL( $title );
