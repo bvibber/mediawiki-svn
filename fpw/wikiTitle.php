@@ -19,28 +19,31 @@ class WikiTitle {
 		return true ;
 		}
 	function canDelete () {
-		global $action ;
+		global $action , $user ;
 		global $oldID ; if ( isset ( $oldID ) ) return false ;
 		if ( !$this->validateTitle() ) return false ;
 		if ( $this->isSpecialPage ) return false ;
 		if ( $this->namespace == "special" ) return false ;
-		return true ;
+		if ( in_array ( "is_sysop" , $user->rights ) ) return true ;
+		return false ;
 		}
 	function canProtect () {
-		global $action ;
+		global $action , $user ;
 		global $oldID ; if ( isset ( $oldID ) ) return false ;
 		if ( !$this->validateTitle() ) return false ;
 		if ( $this->isSpecialPage ) return false ;
 		if ( $this->namespace == "special" ) return false ;
-		return true ;
+		if ( in_array ( "is_sysop" , $user->rights ) ) return true ;
+		return false ;
 		}
 	function canAdvance () {
-		global $action ;
+		global $action , $user ;
 		global $oldID ; if ( isset ( $oldID ) ) return false ;
 		if ( !$this->validateTitle() ) return false ;
 		if ( $this->isSpecialPage ) return false ;
 		if ( $this->namespace == "special" ) return false ;
-		return true ;
+		if ( in_array ( "is_sysop" , $user->rights ) ) return true ;
+		return false ;
 		}
 
 	# Title functions

@@ -3,6 +3,7 @@ class WikiUser {
 	var $id , $name , $password , $retypePassword ;
 	var $isLoggedIn ;
 	var $options , $email ;
+	var $rights ;
 
 	function skin () {
 		if ( $this->options["skin"] == "" ) $this->skinBlank () ;
@@ -84,6 +85,8 @@ class WikiUser {
 			$b = explode ( "=" , $x ) ;
 			$this->options[$b[0]] = $b[1] ;
 			}
+		$t = getMySQL ( "user" , "user_rights" , "user_id=".$this->id ) ;
+		$this->rights = explode ( "," , strtolower ( $t ) ) ;
 		$this->password = getMySQL ( "user" , "user_password" , "user_id=".$this->id ) ;
 		$this->email = getMySQL ( "user" , "user_email" , "user_id=".$this->id ) ;
 		$this->skin () ;

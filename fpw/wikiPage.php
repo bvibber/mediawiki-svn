@@ -1,16 +1,20 @@
 <?
 class WikiPage extends WikiTitle {
 	var $contents ;
+	var $knownLinkedLinks , $knownUnlinkedLinks ;
 	
 	#Functions
 	function load ( $t , $doRedirect = true ) {
-		global $action ;
+		global $action , $user ;
+		$this->knownLinkedLinks = array () ;
+		$this->knownUnlinkedLinks = array () ;
 		$this->title = $t ;
 		$this->makeSecureTitle () ;
 		$this->isSpecialPage = false ;
 		$this->revision = "current" ;
 		if ( $this->namespace == "special" ) {
-			$allowed = array("userlogin","userlogout","recentchanges","upload","statistics","lonelypages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","asksql") ;
+			$allowed = array("userlogin","userlogout","recentchanges","upload","statistics","lonelypages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","deletepage");
+			if ( in_array ( "is_sysop" , $user->rights ) ) array_push ( $allowed , "asksql" ) ;
 			$call = $this->mainTitle ;
 			if ( !in_array ( strtolower ( $call ) , $allowed ) ) {
 				$this->isSpecialPage = true ;
@@ -43,6 +47,8 @@ class WikiPage extends WikiTitle {
 				$this->title=$s->cur_title ;
 				$this->makeSecureTitle () ;
 				$this->contents = $s->cur_text ;
+				$this->knownLinkedLinks = explode ( "\n" , $s->cur_linked_links ) ;
+				$this->knownUnlinkedLinks = explode ( "\n" , $s->cur_unlinked_links ) ;
 				}
 			else $this->contents = "Describe the new page here." ;
 			}
@@ -77,7 +83,7 @@ class WikiPage extends WikiTitle {
 		while ( $s = mysql_fetch_object ( $result ) ) {
 			$t = strstr ( $s->cur_title , "/" ) ;
 			$z = explode ( ":" , $t , 2 ) ;
-			$t = "[[$t]]" ;
+			$t = "[[$t|- ".$this->getNiceTitle(substr($z[count($z)-1],1))."]]" ;
 			array_push ( $a , $t ) ;
 			}
 		if ( $result != "" ) mysql_free_result ( $result ) ;
@@ -152,11 +158,18 @@ class WikiPage extends WikiTitle {
 		}
 	function setEntry ( $text , $comment , $userID , $userName , $minorEdit ) {
 		$cond = "cur_title=\"$this->secureTitle\"" ;
+
+		global $linkedLinks , $unlinkedLinks ;
+		$this->parseContents ( $text ) ;
+		$ll = implode ( "\n" , array_keys ( $linkedLinks ) ) ;
+		$ull = implode ( "\n" , array_keys ( $unlinkedLinks ) ) ;
+
 		$connection = getDBconnection () ;
 		mysql_select_db ( "wikipedia" , $connection ) ;
 		$text = str_replace ( "\"" , "\\\"" , $text ) ;
 		$sql = "UPDATE cur SET cur_text=\"$text\",cur_comment=\"$comment\",cur_user=\"$userID\"," ;
-		$sql .= "cur_user_text=\"$userName\",cur_minor_edit=\"$minorEdit\" WHERE $cond" ;
+		$sql .= "cur_user_text=\"$userName\",cur_minor_edit=\"$minorEdit\",";
+		$sql .= "cur_linked_links=\"$ll\",cur_unlinked_links=\"$ull\" WHERE $cond" ;
 		mysql_query ( $sql , $connection ) ;
 		mysql_close ( $connection ) ;		
 		}
@@ -165,6 +178,7 @@ class WikiPage extends WikiTitle {
 	function replaceInternalLinks ( $s ) {
 		global $THESCRIPT ;
 		global $user , $unlinkedLinks , $linkedLinks ;
+		if ( !isset ( $this->knownLinkedLinks ) ) $this->knownLinkedLinks = array () ;
 		$a = explode ( "[[" , " ".$s ) ;
 		$s = array_shift ( $a ) ;
 		$s = substr ( $s , 1 ) ;
@@ -184,7 +198,10 @@ class WikiPage extends WikiTitle {
 				if ( count ( $c ) == 1 ) array_push ( $c , $topic->getMainTitle() ) ;
 				$text = $c[1] ;
 
-				if ( $topic->doesTopicExist( $connection ) ) {
+				if ( in_array ( $topic->secureTitle , $this->knownLinkedLinks ) ) $doesItExist = true ;
+				else $doesItExist = $topic->doesTopicExist( $connection ) ;
+
+				if ( $doesItExist ) {
 					$linkedLinks[$topic->secureTitle]++ ;
 					if ( $user->options["showHover"] == "yes" ) $hover = "title=\"$link\"" ;
 					$s .= "<a href=\"$THESCRIPT?title=".urlencode($link)."\" $hover>$text</a>" ;
@@ -460,8 +477,7 @@ class WikiPage extends WikiTitle {
 		$column .= "<br><a href=\"$THESCRIPT?title=special:RecentChanges\">Recent Changes</a>\n" ;
 		if ( $this->canEdit() ) $column .= "<br><a href=\"$THESCRIPT?action=edit&title=$this->url$editOldVersion\">Edit this page</a>\n" ;
 
-# No user management due to request of Larry
-#		if ( $this->canDelete() ) $column .= "<br><a href=\"$THESCRIPT?action=deletepage&title=$this->url\">Delete this page</a>\n" ;
+		if ( $this->canDelete() ) $column .= "<br><a href=\"$THESCRIPT?title=special:deletepage&target=$this->url\">Delete this page</a>\n" ;
 #		if ( $this->canProtect() ) $column .= "<br><a href=\"$THESCRIPT?action=protectpage&title=$this->url\">Protect this page</a>\n" ;
 #		if ( $this->canAdvance() ) $column .= "<br><a href=\"$THESCRIPT?title=special:Advance&topic=$this->safeTitle\">Advance</a>\n" ;
 
@@ -546,9 +562,9 @@ class WikiPage extends WikiTitle {
 			}
 
 		$fc = $user->options["background"] ;
-		if ( $fc == "" ) $fc = "=white" ;
+		if ( $fc == "" ) $fc = "=black" ;
 		$fc = substr ( $fc , strpos("=",$fc)+1 ) ;
-		$bc = " bordercolor=".$fc ;
+		$bc = " bordercolor=white" ;
 		$fc = " color=".$fc ;
 		$result = mysql_query ( $sql , $connection ) ;
 		if ( $result != "" and $s->old_old_version != 0 ) {
@@ -561,10 +577,10 @@ class WikiPage extends WikiTitle {
 			foreach ( $a1 as $x ) if ( !in_array ( $x , $a2 ) ) array_push ( $nl , htmlentities ( $x ) ) ;
 			foreach ( $a2 as $x ) if ( !in_array ( $x , $a1 ) ) array_push ( $dl , htmlentities ( $x ) ) ;
 			# Output
-			$ret .= "<font color=#0000FF>Blue text</font> was added or changed, <font color=red>red text</font> was changed or deleted." ;
+			$ret .= "<font color=#2AAA2A>Green text</font> was added or changed, <font color=#AAAA00>yellow text</font> was changed or deleted." ;
 			$ret .= "<table width=100% border=1$bc cellspacing=0 cellpadding=2>\n" ;
-			foreach ( $nl as $x ) $ret .= "<tr><td bgcolor=#0000FF><font$fc>$x</font></td></tr>\n" ;
-			foreach ( $dl as $x ) $ret .= "<tr><td bgcolor=#DD0000><font$fc>$x</font></td></tr>\n" ;
+			foreach ( $nl as $x ) $ret .= "<tr><td bgcolor=#FFFFAF><font$fc>$x</font></td></tr>\n" ;
+			foreach ( $dl as $x ) $ret .= "<tr><td bgcolor=#CFFFCF><font$fc>$x</font></td></tr>\n" ;
 			$ret .= "</table>\n" ;
 		} else if ( isset ( $oldID ) and $s->old_old_version == 0 ) $ret .= "This is the first version of this article. All text is new!<br>\n" ;
 		else if ( !isset ( $oldID ) ) $ret .= "This is the first version of this article. All text is new!<br>\n" ;
