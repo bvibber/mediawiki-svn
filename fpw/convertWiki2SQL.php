@@ -23,7 +23,7 @@ function recodeCharsetStub ( $text ) {
 	}
 function recodeCharsetLatin1 ( $text ) {
 	# To convert ISO-8859-1 to UTF-8
-	return encode_utf8 ( $text ) ;
+	return utf8_encode ( $text ) ;
 	}
 	#$recodeCharset = recodeCharsetStub ;
 	$recodeCharset = recodeCharsetLatin1 ; # Future conversions should all go to UTF-8
