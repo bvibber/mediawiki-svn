@@ -393,7 +393,7 @@ Wenn Sie möchten, dass Wikipedia zu einem Erfolg wird, dann fügen Sie bitte kein
 "uploadnologin" => "Nicht angemeldet",
 "uploadnologintext"	=> "Sie müssen <a href=\"" .
   wfLocalUrl( "Spezial:Userlogin" ) . "\">angemeldet sein</a>
-um Dateinen hochladen zu können.",
+um Dateien hochladen zu können.",
 "uploadfile"	=> "Datei hochladen",
 "uploaderror"	=> "Fehler beim Hochladen",
 "uploadtext"	=> "
