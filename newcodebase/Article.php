@@ -568,6 +568,8 @@ $wpTextbox2
 	{
 		global $wgUser, $wgLang, $wgTitle;
 
+		# Signatures
+		#
 		$n = $wgUser->getName();
 		$k = $wgUser->getOption( "nickname" );
 		if ( "" == $k ) { $k = $n; }
@@ -576,6 +578,8 @@ $wpTextbox2
 		$text = preg_replace( "/~~~~/", "[[User:$n|$k]] $d", $text );
 		$text = preg_replace( "/~~~/", "[[User:$n|$k]]", $text );
 
+		# Context links: [[|name]] and [[name (context)|]]
+		#
 		$tc = "[&;%\\-,.\\(\\)' _0-9A-Za-z\\/:\\x80-\\xff]";
 		$np = "[&;%\\-,.' _0-9A-Za-z\\/:\\x80-\\xff]"; # No parens
 		$conpat = "/^({$np}+) \\(({$tc}+)\\)$/";
@@ -595,6 +599,13 @@ $wpTextbox2
 		} else {
 			$text = preg_replace( $p2, "[[\\1 ({$context})|\\1]]", $text );
 		}
+		# Replace local image links with new [[image:]] style
+		#
+		$text = preg_replace(
+		  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/[a-z]+\/" .
+		  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
+		  "\\1[[image:\\3.\\4]]", $text );
+
 		return $text;
 	}
 }
