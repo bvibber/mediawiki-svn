@@ -16,6 +16,8 @@
 	7 => "Discussion_Image"
 );
 
+/* Some default options can be changed - see Language.php */
+
 /* private */ $wgQuickbarSettingsFr = array(
 	"Aucune", "Gauche", "Droite", "Flottante à gauche"
 );
@@ -31,7 +33,16 @@
 	"justify" => "Paragraphes justifiés",
 	"hideminor" => "Cacher les <i>Modifications récentes</i> mineures",
 	"numberheadings" => "Numérotation automatique des titres",
-	"rememberpassword" => "Se souvenir de mon mot de passe (cookie)"
+	"rememberpassword" => "Se souvenir de mon mot de passe (cookie)",
+    "editwidth" => "Edit box has full width"
+);
+
+/* Replace these with some French bookshops/lookup places */
+/* private */ $wgBookstoreListEn = array(
+	"AddALL" => "http://www.addall.com/New/Partner.cgi?query=$1&type=ISBN",
+	"PriceSCAN" => "http://www.pricescan.com/books/bookDetail.asp?isbn=$1",
+	"Barnes & Noble" => "http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$1",
+	"Amazon.com" => "http://www.amazon.com/exec/obidos/ISBN=$1"
 );
 
 /* private */ $wgLanguageNamesFr = array(
@@ -94,7 +105,7 @@
 	"kl" => "Groenlandais",
 	"km" => "Cambodgien",
 	"kn" => "Kannada",
-	"ko" => "&#54620;&#44397;&#50612; (Hangul)",
+	"ko" => "&#54620;&#44397;&#50612; (Hangukeo)",
 	"ks" => "Kashmiri",
 	"ky" => "Kirghize",
 	"la" => "Latin",
@@ -191,7 +202,6 @@
 
 # All special pages have to be listed here: a description of ""
 # will make them not show up on the "Special Pages" page, which
-
 # is the right thing for some of them (such as the "targeted" ones).
 #
 /* private */ $wgValidSpecialPagesFr = array(
@@ -216,6 +226,7 @@
 	"Allpages"  => "Toutes les pages",
 
 	"Ipblocklist" => "Adresses IP bloquées",
+	"Maintenance" => "Maintenance page",
 	"Specialpages"  => "",
 	"Contributions" => "",
 	"Emailuser"  => "",
@@ -227,7 +238,8 @@
 
 /* private */ $wgSysopSpecialPagesFr = array(
 	"Blockip"  => "Bloquer une adresse IP",
-	"Asksql"  => "Accès SQL"
+	"Asksql"  => "Accès SQL",
+	"Undelete"      => "View and restore deleted pages"
 );
 
 /* private */ $wgDeveloperSpecialPagesFr = array(
@@ -240,20 +252,20 @@
 
 # Bits of text used by many pages:
 #
+"linktrail"     => "/^([a-zàâçéèêîôû]+)(.*)\$/sD",
 "mainpage"  => "Accueil",
 "about"   => "À propos",
 "aboutwikipedia" => "À propos de Wikipedia",
-"aboutpage"  => "Wikipedia:À_propos",
+"aboutpage"  => "Wikipédia:À_propos",
 "help"   => "Aide",
-"helppage"  => "Wikipedia:Aide",
+"helppage"  => "Wikipédia:Aide",
 "wikititlesuffix" => "Wikipedia",
 "bugreports" => "Rapport d'erreurs",
-"bugreportspage" => "Wikipedia:Rapport_d'erreurs",
+"bugreportspage" => "Wikipédia:Rapport_d'erreurs",
 "faq"   => "FAQ",
-"faqpage"  => "Wikipedia:FAQ",
+"faqpage"  => "Wikipédia:FAQ",
 "edithelp"  => "Aide",
-
-"edithelppage" => "Wikipedia:Comment_éditer_une_page",
+"edithelppage" => "Wikipédia:Comment_éditer_une_page",
 "cancel"  => "Annuler",
 "qbfind"  => "Rechercher",
 "qbbrowse"  => "Défiler",
@@ -503,15 +515,15 @@ lassez blanc, l'heure de l'Europe se presente.",
 "recentchanges" => "Modifications récentes",
 "recentchangestext" => "Suivez sur cette page les dernières modifications de Wikipédia.
 [[Wikipédia:Bienvenue|Bienvenue]] aux nouveaux participants!
-Jetez un coup d'?il sur ces pages: [[wikipedia:FAQ|Foire aux questions]],
-[[Wikipedia:Recommandations Et Règles à Suivre|Recommandations et règles à suivre]]
-(notamment [[Wikipedia:Règles De Nommage|Conventions de nommage]],
-[[Wikipedia:La Neutralité De Point De Vue|La neutralité de point de vue]]),
-et [[Wikipedia:Les Faux-Pas Les Plus Courants|Les faux-pas les plus courants]].
+Jetez un coup d'?il sur ces pages: [[wikipédia:FAQ|Foire aux questions]],
+[[Wikipédia:Recommandations Et Règles à Suivre|Recommandations et règles à suivre]]
+(notamment [[Wikipédia:Règles De Nommage|Conventions de nommage]],
+[[Wikipédia:La Neutralité De Point De Vue|La neutralité de point de vue]]),
+et [[Wikipédia:Les Faux-Pas Les Plus Courants|Les faux-pas les plus courants]].
 
-Si vous voulez que Wikipédia connaisse le succès, n'y ajoutez pas de matériaux protégés par des [[wikipedia:Copyright|copyrights]].
+Si vous voulez que Wikipédia connaisse le succès, n'y ajoutez pas de matériaux protégés par des [[wikipédia:Copyright|copyrights]].
 La responsabilité juridique pourrait compromettre le projet, alors s'il vous plaît ne le faites pas.
-Voyez aussi [http://meta.wikipedia.org/wiki/Special:Recentchanges les dernières discussions sur le site meta-wiki].",
+Voyez aussi [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges les dernières discussions sur le site meta-wiki].",
 "rcloaderr"  => "Chargement des dernières modifications",
 "rcnote"  => "Voici les <strong>$1</strong> dernières modifications effectuées au cours des <strong>$2</strong> derniers jours.",
 # "rclinks"  => "Afficher les $1 dernières modifications effectuées au cours des $2 dernières heures / $3 derniers jours",
@@ -543,12 +555,12 @@ pour copier des fichiers sur le serveur.",
 "uploaderror" => "Erreur",
 "uploadtext" => "<strong>STOP!</strong> Avant de copier votre fichier sur le serveur,
 prenez connaissance des <a href=\"" .
-wfLocalUrlE( "Wikipedia:règles d'utilisation des images" ) . "\">règles d'utilisation des images</a> de Wikipédia et assurez-vous que vous les respectez.
+wfLocalUrlE( "Wikipédia:règles d'utilisation des images" ) . "\">règles d'utilisation des images</a> de Wikipédia et assurez-vous que vous les respectez.
 <p>Pour voir les images déjà placées sur le serveur ou faire une recherche parmi celles-ci,
 allez à la <a href=\"" . wfLocalUrlE( "Special:Imagelist" ) .
 "\">liste des images</a>.
 Les uploads et les suppressions sont listés dans le <a href=\"" .
-wfLocalUrlE( "Wikipedia:Journal_des_uploads" ) . "\">journal des uploads</a>.
+wfLocalUrlE( "Wikipédia:Journal_des_uploads" ) . "\">journal des uploads</a>.
 <p>Utilisez le formulaire ci-dessous pour copier sur le serveur de nouvelles images destinées à illustrer vos articles.
 Sur la plupart des navigateurs, vous verrez un bouton \"Browse...\" qui ouvre la fenêtre de dialogue standard de votre système d'exploitation pour l'ouverture des fichiers.
 Sélectionnez un fichier, son nom apparaîtra dans le champ situé à côté du bouton.
@@ -572,7 +584,7 @@ L'heure indiquée est celle du serveur (UTC).
 "filename"  => "Nom",
 "filedesc"  => "Description",
 "affirmation" => "Je déclare que le détenteur du copyright de ce fichier accepte de le diffuser selon les termes de la $1.",
-"copyrightpage" => "Wikipedia:Copyrights",
+"copyrightpage" => "Wikipédia:Copyrights",
 "copyrightpagename" => "licence Wikipédia",
 "uploadedfiles" => "Fichiers copiés",
 "noaffirmation" => "Vous devez confirmer que la copie de ce fichier ne viole aucun copyright.",
@@ -627,6 +639,23 @@ depuis la mise à jour du logiciel (?? ???? 2002).
 Cela représente une moyenne de <b>$5</b> modifications par page et de <b>$6</b> consultations pour une modification.",
 "userstatstext" => "Il y a <b>$1</b> utilisateurs enregistrés.
 Parmi ceux-ci, <b>$2</b> ont le statut d'administrateur (voir $3).",
+
+
+# Maintenance Page
+#
+"maintenance"		=> "Maintenance page",
+"maintnancepagetext"	=> "This page includes several handy tools for everyday maintenance. Some of these functions tend to stress the database, so please do not hit reload after every item you fixed ;-)",
+"maintenancebacklink"	=> "Back to Maintenance Page",
+"disambiguations"	=> "Disambiguation pages",
+"disambiguationspage"	=> "Wikipedia:Links_to_disambiguating_pages",
+"disambiguationstext"	=> "The following articles link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br>A page is treated as dismbiguation if it is linked from $1.<br>Links from other namespaces are <i>not</i> listed here.",
+"doubleredirects"	=> "Double Redirects",
+"doubleredirectstext"	=> "<b>Attention:</b> This list may contain false positives. That usually means there is additional text with links below the first #REDIRECT.<br>\nEach row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" taget article, which the first redirect should point to.",
+"selflinks"		=> "Pages with Self Links",
+"selflinkstext"		=> "The following pages contain a link to themselves, which they should not.",
+"missinglanguagelinks"  => "Missing Language Links",
+"missinglanguagelinksbutton"    => "Find missing language links for",
+"missinglanguagelinkstext"      => "These articles do <i>not</i> link to their counterpart in $1. Redirects and subpages are <i>not</i> shown.",
 
 
 # Miscellaneous special pages
@@ -710,12 +739,12 @@ Les prochaines modifications de cette page et de la page discussion associée ser
 "deletesub"  => "(Suppression de \"$1\")",
 "confirmdeletetext" => "Vous êtes sur le point de supprimer définitivement de la base de données une page
 ou une image, ainsi que toutes ses versions antérieures.
-Veuillez confirmer que c'est bien là ce que vous voulez faire, que vous en comprenez les conséquences et que vous faites cela en accord avec les [[Wikipedia:Recommandations Et Règles à  Suivre|recommandations et règles à suivre]].",
+Veuillez confirmer que c'est bien là ce que vous voulez faire, que vous en comprenez les conséquences et que vous faites cela en accord avec les [[Wikipédia:Recommandations Et Règles à  Suivre|recommandations et règles à suivre]].",
 "confirmcheck" => "Oui, je confirme la suppression.",
 "actioncomplete" => "Suppression effectuée",
 "deletedtext" => "\"$1\" a été supprimé.
 Voir $2 pour une liste des suppressions récentes.",
-"deletedarticle" => "deleted \"$1\"",
+"deletedarticle" => "effacement de \"$1\"",
 "dellogpage" => "Deletion_log",
 "dellogpagetext" => "Voici la liste des suppressions récentes.
 L'heure indiquée est celle du serveur (UTC).
@@ -726,6 +755,21 @@ L'heure indiquée est celle du serveur (UTC).
 "reverted"  => "Rétablissement de la version précédente",
 "deletecomment" => "Motif de la suppression",
 "imagereverted" => "La version précédente a été rétablie.",
+"undelete" => "Restore deleted page",
+"undeletepage" => "View and restore deleted pages",
+"undeletepagetext" => "The following pages have been deleted but are still in the archive and
+can be restored. The archive may be periodically cleaned out.",
+"undeletearticle" => "Restore deleted article",
+"undeleterevisions" => "$1 revisions archived",
+"undeletehistory" => "If you restore the page, all revisions will be restored to the history.
+If a new page with the same name has been created since the deletion, the restored
+revisions will appear in the prior history, and the current revision of the live page
+will not be automatically replaced.",
+"undeleterevision" => "Deleted revision as of $1",
+"undeletebtn" => "Restore!",
+"undeletedarticle" => "restored \"$1\"",
+"undeletedtext"   => "The article [[$1]] has been successfully restored.
+See [[Wikipedia:Deletion_log]] for a record of recent deletions and restorations.",
 
 # Contributions
 #
@@ -750,7 +794,7 @@ L'heure indiquée est celle du serveur (UTC).
 
 "blockip"  => "Bloquer une adresse IP",
 "blockiptext" => "Utilisez le formulaire ci-dessous pour bloquer l'accès en écriture à partir d'une adresse IP donnée.
-Une telle mesure ne doit être prise que pour empêcher le vandalisme et en accord avec [[Wikipedia:Recommandations Et Règles à  Suivre|recommandations et règles à suivre]].
+Une telle mesure ne doit être prise que pour empêcher le vandalisme et en accord avec [[Wikipédia:Recommandations Et Règles à Suivre|recommandations et règles à suivre]].
 Donnez ci-dessous une raison précise (par exemple en indiquant les pages qui ont été vandalisées).",
 "ipaddress"  => "Adresse IP",
 "ipbreason"  => "Motif",
@@ -969,6 +1013,7 @@ class LanguageFr extends Language {
 
 		if ( "" == $m ) { return $wgAllMessagesEn[$key]; }
 		else return $m;
+
 	}
 }
 
