@@ -92,7 +92,7 @@ class WikiPage extends WikiTitle {
 			$z = str_replace ( "]" , "" , $z ) ;
 			$this->load ( trim($z) , false , $backLink ) ;
 			}
-		@mysql_close ( $connection ) ;
+		#@mysql_close ( $connection ) ;
 		}
 
 	# This function - well, you know...
@@ -135,7 +135,7 @@ class WikiPage extends WikiTitle {
 			array_push ( $a , $t ) ;
 			}
 		if ( $result != "" ) mysql_free_result ( $result ) ;
-		mysql_close ( $connection ) ;
+		#mysql_close ( $connection ) ;
 		if ( count ( $a ) > 0 ) array_unshift ( $a , "[[$mother]]" ) ;
 		return $a ;
 		}
@@ -182,7 +182,7 @@ class WikiPage extends WikiTitle {
 				array_push ( $a , "<a class=\"green\" href=\"".wikiLink("$t:$n")."\">$t</a>" ) ;
 			}
 		if ( $result != "" ) mysql_free_result ( $result ) ;
-		mysql_close ( $connection ) ;
+		#mysql_close ( $connection ) ;
 		return $a ;
 		}
 
@@ -195,7 +195,7 @@ class WikiPage extends WikiTitle {
 		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "INSERT INTO cur (cur_title) VALUES (\"$this->secureTitle\")" ;
 		$result = mysql_query ( $sql , $connection ) ;
-		mysql_close ( $connection ) ;		
+		#mysql_close ( $connection ) ;
 		}
 
 	# This function performs a backup from the "cur" to the "old" table, building a
@@ -249,7 +249,7 @@ class WikiPage extends WikiTitle {
 		$sql .= "cur_user_text=\"$userName\",cur_minor_edit=\"$minorEdit\",";
 		$sql .= "cur_linked_links=\"$ll\",cur_unlinked_links=\"$ull\",cur_params=\"$pa\"$addSQL WHERE $cond" ;
 		$r = mysql_query ( $sql , $connection ) ;
-		mysql_close ( $connection ) ;
+		#mysql_close ( $connection ) ;
 		}
 
 #### Rendering functions
@@ -343,7 +343,7 @@ class WikiPage extends WikiTitle {
 				$s .= $b[1] ;
 				}
 			}
-		mysql_close ( $connection ) ;
+		#mysql_close ( $connection ) ;
 		return $s ;
 		}
 
@@ -409,7 +409,7 @@ class WikiPage extends WikiTitle {
 			$var = mysql_fetch_object ( $result ) ;
 			$var = number_format ( $var->number , 0 ) ;
 			mysql_free_result ( $result ) ;
-			mysql_close ( $connection ) ;
+			#mysql_close ( $connection ) ;
 			$s = str_replace ( "{{NUMBEROFARTICLES}}" , $var , $s ) ;
 			}
 
@@ -435,7 +435,7 @@ class WikiPage extends WikiTitle {
 			else $var = "" ;
 
 			mysql_free_result ( $result ) ;
-			mysql_close ( $connection ) ;
+			#mysql_close ( $connection ) ;
 			$s = str_replace ( "{{THISCATEGORY}}" , $var , $s ) ;
 			}
 */
@@ -543,7 +543,7 @@ class WikiPage extends WikiTitle {
 		$a = spliti ( "<nowiki>" , $s ) ;
 
 		# $d needs to contain a unique string - this can be altered at will, as long it stays unique!
-		$d = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv" ; #$d = "µµ~~³²²³~~µ~µ²~µ~µ²~µµ~µ~µ~²µ²²µ~³µ³~³µ²~µ" ;
+		$d = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv" ; #$d = "~~~~~~~~~~~~~~" ;
 
 		$b = array () ;
 		$s = array_shift ( $a ) ;
@@ -606,13 +606,13 @@ class WikiPage extends WikiTitle {
 		$htmlsingle = array( "br", "p", "hr", "li", "dt", "dd", "tr", "td", "th" );
 		# Every single tag can also have a closing tag
 		$htmlpairs = array_merge($htmlpairs, $htmlsingle);
-		
+
 		# FIXME Allowed elements -- we don't want scripting, etc
 		#$htmlelements = array( "face", "color", "size", "border", "align", "valign", "alt" );
-		
+
 		# Unique placeholders for < and > so we don't interfere with &lt; and &gt;
 		$lt = "t4hqKoeC0p2Os4nfUa"; $gt = "v06TEbpdpceupNHi13";
-		
+
 		# Mark allowed tags
 		foreach ($htmlpairs as $x) {
 			$s = preg_replace("/<$x(\s[^<>]+?)?>(.*?)<\/$x>/is", "$lt$x$1$gt$2$lt/$x$gt", $s);
@@ -620,7 +620,7 @@ class WikiPage extends WikiTitle {
 		foreach ($htmlsingle as $x) {
 			$s = preg_replace("/<$x(\s[^<>]+?)?>/i", "$lt$x$1$gt", $s);
 			}
-		
+
 		# Kill any other tags, and convert good ones back to correct form
 		$s = str_replace(array("<", ">"), array("&lt;", "&gt;"), $s);
 		$s = str_replace(array("$lt", "$gt"), array("<", ">"), $s);
@@ -906,7 +906,7 @@ class WikiPage extends WikiTitle {
 		$ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
 		$ret .= "</td>\n<td rowspan=2 width=1><a href=\"".wikiLink("")."\"><img border=0 src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a></td></tr>\n" ;
 		$ret .= "<tr><td valign=bottom>".$this->getLinkBar()."</td></tr></table>" ;
-		return $ret ; 
+		return $ret ;
 		}
 
 	# This generates the QuickBar (also used by the list of special pages function)
@@ -991,7 +991,7 @@ class WikiPage extends WikiTitle {
 				}
 			}
 		$action = $oaction ;
-		return $ret ; 
+		return $ret ;
 		}
 
 	# This generates the footer with link bar, search box, etc.
@@ -1038,7 +1038,7 @@ class WikiPage extends WikiTitle {
 		$ret .= " &nbsp; &nbsp; <a href=\"http://validator.w3.org/check/referer\" target=blank>Validate this page</a>" ;
 		$ret .= "</FORM>" ;
 
-		return $ret ; 
+		return $ret ;
 		}
 
 	# This generates header, diff (if wanted), article body (with QuickBar), and footer
@@ -1112,7 +1112,7 @@ class WikiPage extends WikiTitle {
 			$ret .= "</table>\n" ;
 		} else if ( isset ( $oldID ) and $s->old_old_version == 0 ) $ret .= $wikiDiffFirstVersion ;
 		else if ( !isset ( $oldID ) ) $ret .= $wikiDiffImpossible ;
-		mysql_close ( $connection ) ;
+		#mysql_close ( $connection ) ;
 		
 		$ret .= "<font color=red><b>$wikiEndDiff</b></font><hr></nowiki>\n" ;
 		return $ret ;

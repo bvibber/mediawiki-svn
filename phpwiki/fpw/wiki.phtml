@@ -1,6 +1,14 @@
 <?
 # THIS IS THE MAIN FILE OF THE PHP WIKIPEDIA SCRIPT
 
+#$nclose = 0;
+#function mysql_closeX ($connection) {
+#	global $nclose;
+#	$nclose++;
+#	echo "(($nclose mysql_close($connection)))";
+#	mysql_close($connection);
+#}
+
 # Includes the necessary parts
 include_once ( "./wikiText.php" ) ;
 include_once ( "./basicFunctions.php" ) ;
@@ -39,10 +47,10 @@ function framepage () {
 	return $ret ;
 	}
 
-function getmicrotime(){ 
-    list($usec, $sec) = explode(" ",microtime()); 
-    return ((float)$usec + (float)$sec); 
-    } 
+function getmicrotime(){
+    list($usec, $sec) = explode(" ",microtime());
+    return ((float)$usec + (float)$sec);
+    }
 
 # Main program
 	global $action , $title , $pageTitle ;
@@ -72,7 +80,7 @@ function getmicrotime(){
 	}
 	$charset = $wikiEncodingCharsets[$user->options["encoding"]];
 	if ( $charset == "") # Fall back to the encoding used in the database
-		$charset = $wikiCharset; 
+		$charset = $wikiCharset;
 	if ( $charset != "")
 		header("Content-type: text/html; charset=$charset");
 
@@ -143,7 +151,7 @@ function getmicrotime(){
 		$bodyOptions .= " bgcolor=\"$bgcolor\"";
 	}
 	$styleSheet .= "}\n";
-	
+
 	$styleSheet .= "p.bodytext { " . (($user->options[justify] == yes) ? "text-align: justify; " : "") . "}\n";
 	$styleSheet .= "a { text-decoration: " . (($user->options[underlineLinks] == "no") ? "none" : "underline") . "; }\n";
 	$qbside = ( $user->options["quickBar"] == "left" ) ? "right" : "left";
@@ -164,7 +172,7 @@ function getmicrotime(){
 		$styleSheet .= ".newlinkedge { display: inline; }\n";
 	}
 	$styleSheet .= "//--></style>";
-	
+
 	$head = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">\n" ;
 	$head .= "<HTML><HEAD><TITLE>$pageTitle</TITLE>\n" ;
 	$head .= "$metaCharset\n" ;

@@ -313,7 +313,7 @@ function refreshWantedPages () {
 			}
 		}
 	mysql_free_result ( $result ) ;
-	mysql_close ( $connection ) ;
+	#mysql_close ( $connection ) ;
 
 	arsort ( $allPages ) ;
 	$somePages = array_slice ( $allPages , 0 , 400 ) ; # Reducing needed memory
@@ -384,7 +384,7 @@ function LonelyPages () {
 		$u = explode ( "\n" , $s->cur_unlinked_links ) ; foreach ( $u as $x ) $allPages[ucfirst($x)] += 1 ;
 		}
 	if ( $result != false ) mysql_free_result ( $result ) ;
-	mysql_close ( $connection ) ;
+	#mysql_close ( $connection ) ;
 
 	asort ( $allPages ) ;
 #	$allPages = array_slice ( $allPages , 0 , 50 ) ;
@@ -419,7 +419,7 @@ function AllPages () {
 		$ret .= "<a  href=\"".wikiLink("$s->cur_title")."\">".$vpage->getNiceTitle($s->cur_title)."</a><br>" ;
 	$ret .= "</nowiki>" ;
 	mysql_free_result ( $result ) ;
-	mysql_close ( $connection ) ;
+	#mysql_close ( $connection ) ;
 	return $ret ;
 	}
 
@@ -503,7 +503,7 @@ function doSearch () {
 			}
 
 
-		mysql_close ( $connection ) ;
+		#mysql_close ( $connection ) ;
 		}
 
 	if ( $s == "" and count ( $r ) == 0 ) {
@@ -611,7 +611,7 @@ function randompage () {
 	$ret = "<h2>--> [[$thelink|".$nt."]]...</h2>" ;
 	$headerScript .= "<nowiki><META HTTP-EQUIV=Refresh CONTENT=\"0; URL=".wikiLink($thelink)."\"></nowiki>" ;
 	mysql_free_result ( $result ) ;
-	mysql_close ( $connection ) ;
+	#mysql_close ( $connection ) ;
 
 	return $ret ;
 	}
@@ -703,7 +703,7 @@ function recentchanges () {
 	$arr = $d ;
 	$d = array () ;
 
-	mysql_close ( $connection ) ;
+	#mysql_close ( $connection ) ;
 	$ret .= recentChangesLayout($arr) ;
 	return $ret ;
 	}
@@ -778,7 +778,7 @@ function newpages () {
 			mysql_free_result ( $result ) ;
 			}
 		}
-	mysql_close ( $connection ) ;
+	#mysql_close ( $connection ) ;
 	
 	uasort ( $arr , "newPages_timeSort" ) ;
 	while ( count ( $arr ) > $maxcnt ) array_pop ( $arr ) ;
@@ -960,7 +960,7 @@ function WatchList () {
 			$any = true ;
 			}
 		}
-	mysql_close ( $connection ) ;
+	#mysql_close ( $connection ) ;
 	if ( $any ) $ret .= recentChangesLayout ( $arr ) ;
 
 	return $ret ;
@@ -1053,7 +1053,7 @@ function statistics () {
 	$ret .= "<li>".str_replace ( "$1" , "$nf1$numEditors$nf2" , $wikiStatSysops )."</li>" ;
 	mysql_free_result ( $result ) ;
 
-	mysql_close ( $connection ) ;
+	#mysql_close ( $connection ) ;
 	$ret .= "</ul>" ;
 	return $ret ;
 	}
@@ -1199,7 +1199,7 @@ function doHistory ( $title ) {
 		$o = $s->old_old_version ;
 		mysql_free_result ( $result ) ;
 		}
-	mysql_close ( $connection ) ;
+	#mysql_close ( $connection ) ;
 
 	$i = count ( $a ) ;
 	$k = array_keys ( $a ) ;
@@ -1313,7 +1313,7 @@ function ShortPages () {
 	$after = $startat + $perpage ; $fin = $after+$perpage - 1 ; if ( $fin > $total ) $fin = $total ;
 	if ( $after-1 < $total ) $ret .= "<a href=\"".wikiLink("special:ShortPages&startat=$after&showLinksThere=$showLinksThere")."\">&gt;&gt;$after-$fin</a>" ;
 	$ret .= "</nowiki>" ;
-	mysql_close ( $connection ) ;
+	#mysql_close ( $connection ) ;
 	return $ret ;
 	}
 
@@ -1343,7 +1343,7 @@ function removeFromLinkList ( $item , $link ) {
 		$result = mysql_query ( $sql , $connection ) ;
 		}
 
-	mysql_close ( $connection ) ;	
+	#mysql_close ( $connection ) ;
 	}
 
 function makeLog ( $logPage , $logText , $logMessage , $doAppend = true ) {
@@ -1379,7 +1379,7 @@ function deletepage () {
 		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "DELETE FROM cur WHERE cur_title=\"$target\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
-		mysql_close ( $connection ) ;
+		#mysql_close ( $connection ) ;
 
 		# Appending log page "log:Page Deletions"
 		$now = date ( "Y-m-d H:i:s" , time () ) ;
@@ -1460,7 +1460,7 @@ function contributions () {
 		if ( !in_array ( $s->cur_title , $ac ) )
 			array_push ( $ac , $s->cur_title ) ;
 	mysql_free_result ( $result ) ;
-	mysql_close ( $connection ) ;
+	#mysql_close ( $connection ) ;
 
 	if ( count ( $ac ) == 0 AND $theuser == ucfirst ( $theuser ) ) { # Rerun with lowercase name
 		$theuser = strtolower(substr($theuser,0,1)).substr($theuser,1) ;
@@ -1516,7 +1516,7 @@ function whatLinksHere () {
 	$result = mysql_query ( $question , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	mysql_free_result ( $result ) ;
-	mysql_close ( $connection ) ;
+	#mysql_close ( $connection ) ;
 
 	$out = explode ( "\n" , $s->cur_linked_links."\n".$s->cur_unlinked_links ) ;
 	$dlb = array () ;
@@ -1527,7 +1527,7 @@ function whatLinksHere () {
 		if ( in_array ( $x , $out ) ) array_push ( $dlb , $y ) ;
 		else array_push ( $dnlb , $y ) ;
 		}
-	
+
 	asort ( $dlb ) ;
 	$dlb = implode ( "]]\n*[[" , $dlb ) ;
 	if ( $dlb != "" ) $dlb = "<h3>".str_replace("$1",$niceTarget,$wikiLinkhereBacklink)."</h3>\n*[[$dlb]]\n" ;
@@ -1553,7 +1553,7 @@ function popularpages () {
 	while ( $s = mysql_fetch_object ( $result ) )
 		array_push ( $a , $s ) ;
 	if ( $result != false ) mysql_free_result ( $result ) ;
-	mysql_close ( $connection ) ;
+	#mysql_close ( $connection ) ;
 
 	$ret = "" ;
 	$ret .= "<table>\n" ;
@@ -1588,7 +1588,7 @@ function askSQL () {
 			array_push ( $a , $s ) ;
 			}
 		mysql_free_result ( $result ) ;
-		mysql_close ( $connection ) ;
+		#mysql_close ( $connection ) ;
 
 		$ret .= "<table width=\"100%\" border=1 bordercolor=black cellspacing=0 cellpadding=2><tr>" ;
 		foreach ( $k as $x ) $ret .= "<th>$x</th>" ;
