@@ -19,7 +19,7 @@ $useCachedPages = false; # Disable page cache
 #$wikiCurrentServer = "http://127.0.0.1";
 
 # Location of the main wiki.phtml script on that server:
-#$THESCRIPT = "/wiki.phtml";
+#$THESCRIPT = "/";
 
 # How to access an article on your site. Change this if you use
 # apache's rewrite module to produce nicer URLs on your site (as is
@@ -30,11 +30,11 @@ $useCachedPages = false; # Disable page cache
 
 # Namespace backgrounds
 #$wikiNamespaceBackground = array () ;
-#$wikiNamespaceBackground["talk"] = "#CCFFFF" ;
+#$wikiNamespaceBackground[$wikiTalk] = "#CCFFFF" ;
 #$wikiNamespaceBackground["user_talk"] = $wikiNamespaceBackground["talk"] ;
 #$wikiNamespaceBackground["wikipedia_talk"] = $wikiNamespaceBackground["talk"] ;
-#$wikiNamespaceBackground["user"] = "#CCFFFF" ;
-#$wikiNamespaceBackground["wikipedia"] = "#CCFFFF" ;
+#$wikiNamespaceBackground[$wikiUser] = "#CCFFFF" ;
+#$wikiNamespaceBackground[$wikiWikipedia] = "#CCFFFF" ;
 #$wikiNamespaceBackground["log"] = "#CCFFFF" ;
 #$wikiNamespaceBackground["special"] = "#CCFFFF" ;
 
