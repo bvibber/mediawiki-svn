@@ -106,6 +106,10 @@ class MovePageForm {
 
 		$this->ot = Title::newFromText( $wpOldTitle );
 		$this->nt = Title::newFromText( $wpNewTitle );
+		if( !$this->ot or !$this->nt ) {
+			$this->showForm( wfMsg( "badtitletext" ) );
+			return;
+		}
 		$this->ons = $this->ot->getNamespace();
 		$this->nns = $this->nt->getNamespace();
 		$this->odt = wfStrencode( $this->ot->getDBkey() );
