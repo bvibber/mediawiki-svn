@@ -5,23 +5,24 @@
 
 include_once ( "wikiSkinStandard.php" ) ;
 
-class skinNostalgy extends skinClass {
+class skinNostalgy extends skinStandard {
 
-	function getHeader ( $page ) {
+	function getHeader ( &$page ) {
 	        global $wikiMainPageTitle , $wikiArticleSubtitle , $wikiPrintable , $wikiWatch , $wikiMainPage ;
 	        global $user , $action , $wikiNoWatch , $wikiLogIn , $wikiLogOut , $wikiSearch ;
 	        global $wikiHelp , $wikiHelpLink , $wikiPreferences , $wikiLanguageNames , $wikiWhatLinksHere ;
 	        global $wikiCharset , $wikiEncodingCharsets , $wikiEncodingNames , $wikiLogoFile ;
 	        global $framed,  $search , $THESCRIPT;
 
-		if ( isset ( $framed ) and $framed != "top" ) return "" ;
+
 		$t = $page->getNiceTitle ( $page->title ) ;
 		if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirstIntl ( $t ) ;
 
-		$ret = "<a href=\"".wikiLink("")."\"><img border=0 align=right src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a>\n" ;
-		if ( $page->isSpecialPage && $action == "" ) $ret .= "<font size=\"+3\">".$t."</font>" ;
+		$ret = "<h1>$t<a href=\"".wikiLink("")."\"><img border=0 valign=top align=right src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a></h1>\n" ;
 
-		if ( $action == "" ) {
+		$mix = array () ;
+
+/*		if ( $action == "" ) {
 			$ret .= "<br>\n<br>\n<a href=\"".wikiLink("special:whatlinkshere&amp;target=$page->url")."\">$wikiWhatLinksHere</a>" ;
 		} else {
 		    $ret .= "<font size=\"+3\"><b><u>" ;
@@ -53,12 +54,16 @@ class skinNostalgy extends skinClass {
 			$ret .= "<br>".str_replace ( "$1" , $subText , $wikiOtherLanguagesText ) ;
 			}
 		    }
+*/
 
-		$ret .= " | <b>".$user->getLink()."</b> | " ;
+		$u = str_replace ( "<br>" , "" , $user->getLink() ) ;
+		array_push ( $mix , $u ) ;
+		
 
-		if ( $user->isLoggedIn ) $ret .= "<a href=\"".wikiLink("special:userLogout")."\">$wikiLogOut</a> | <a href=\"".wikiLink("special:editUserSettings")."\">$wikiPreferences</a>" ;
-		else $ret .= "<a href=\"".wikiLink("special:userLogin")."\">$wikiLogIn</a>" ;
-		$ret .= " | <a href=\"".wikiLink($wikiHelpLink)."\">$wikiHelp</a><br>\n" ;
+		if ( $user->isLoggedIn ) array_push ( $mix , "<a href=\"".wikiLink("special:userLogout")."\">$wikiLogOut</a> | <a href=\"".wikiLink("special:editUserSettings")."\">$wikiPreferences</a>" ) ;
+		else array_push ( $mix , "<a href=\"".wikiLink("special:userLogin")."\">$wikiLogIn</a>" ) ;
+		array_push ( $mix , "<a href=\"".wikiLink($wikiHelpLink)."\">$wikiHelp</a>" ) ;
+
 
 		# Text encoding
 		if(count($wikiEncodingNames) > 1) { # Shortcut for switching character encodings
@@ -74,19 +79,24 @@ class skinNostalgy extends skinClass {
 		    }
 		}
 
-		$ret .= $page->getLinkBar()."<hr>\n" ;
+
+		$ret .= implode ( " | " , $mix ) ;
+		$ret .= " | ".$page->getLinkBar()."<hr>\n" ;
 
 		return $ret ;
 		}
 
-	function getQuickBar ( $page ) {
+	function getQuickBar ( &$page ) {
+		return "" ;
 		}
 
-	function getMiddle ( $page ) {
+	function getMiddle ( &$page , $text ) {
+		return $text ;
 		}
 
-	function getFooter ( $page ) {
-		}
+/*
+	function getFooter ( &$page ) {
+		}*/
 
 	}
 ?>

@@ -5,7 +5,7 @@
 
 class skinStandard extends skinClass {
 
-	function getHeader ( $page ) {
+	function getHeader ( &$page ) {
 	        global $wikiMainPageTitle , $wikiArticleSubtitle , $wikiPrintable , $wikiWatch , $wikiMainPage ;
 	        global $user , $action , $wikiNoWatch , $wikiLogIn , $wikiLogOut , $wikiSearch ;
 	        global $wikiHelp , $wikiHelpLink , $wikiPreferences , $wikiLanguageNames , $wikiWhatLinksHere ;
@@ -91,11 +91,115 @@ class skinStandard extends skinClass {
 		return $ret ;
 		}
 
-	function getFooter ( $page ) {
+	function getQuickBar ( &$page ) {
+		global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages , $action ;
+		global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
+		global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
+		global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate , $wikiProtectThisPage ;
+		global $wikiVoteForPage , $wikiMoveThisPage;
+
+		$editOldVersion = "" ;
+		if ( $oldID != "" ) $editOldVersion="&amp;oldID=$oldID&amp;version=$version" ;
+		$column = "" ;
+		$column .= "<a href=\"".wikiLink("")."\">$wikiMainPage</a>\n" ;
+		$column .= "<br><a href=\"".wikiLink("special:$wikiRecentChangesLink")."\">$wikiRecentChanges</a>\n" ;
+		if ( !$page->isSpecialPage )
+		    $column .= "<br><a href=\"".wikiLink("special:$wikiRecentLinkedLink&amp;target=".$page->url)."\">$wikiRecentLinked</a>\n" ;
+		if ( $page->canEdit() )
+		    $column .= "<br><a href=\"".wikiLink($page->url."$editOldVersion&amp;action=edit")."\">$wikiEditThisPage</a>\n" ;
+		else if ( !$page->isSpecialPage ) $column .= "<br>Protected page\n" ;
+
+		$temp = $page->isSpecialPage ;
+		if ( $action == "" ) $page->isSpecialPage = false ;
+		if ( $page->canDelete() ) $column .= "<br><a href=\"".wikiLink("special:deletepage&amp;target=".$page->url)."\">$wikiDeleteThisPage</a>\n" ;
+		if ( $page->canDelete() ) $column .= "<br><a href=\"".wikiLink("special:movepage&amp;target=".$page->url)."\">$wikiMoveThisPage</a>\n" ;
+		$page->isSpecialPage = $temp ;
+
+		if ( $page->canProtect() ) $column .= "<br><a href=\"".wikiLink("special:protectpage&amp;target=".$page->url)."\">$wikiProtectThisPage</a>\n" ;
+	# To be implemented later
+	#       if ( $page->canAdvance() ) $column .= "<br><a href=\"".wikiLink("special:Advance&amp;topic=$page->safeTitle")."\">Advance</a>\n" ;
+		if ( $user->isLoggedIn ) $column .= "<br><a href=\"".wikiLink("special:vote&target=".$page->url)."\">$wikiVoteForPage</a>\n" ;
+
+		if ( in_array ( "is_sysop" , $user->rights ) ) $column .= "<br><a href=\"".wikiLink("special:AskSQL")."\">$wikiAskSQL</a>\n" ;
+		if ( !$page->isSpecialPage ) $column .= "<br><a href=\"".wikiLink($page->url."&amp;action=history")."\">$wikiHistory</a>\n" ;
+		$column .= "<br><a href=\"".wikiLink("special:Upload")."\">$wikiUpload</a>\n" ;
+		$column .= "<hr>" ;
+		$column .= "<a href=\"".wikiLink("special:Statistics")."\">$wikiStatistics</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:NewPages")."\">$wikiNewPages</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:LonelyPages")."\">$wikiOrphans</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:WantedPages")."\">$wikiMostWanted</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:PopularPages")."\">$wikiPopularPages</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:AllPages")."\">$wikiAllPages</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:RandomPage")."\">$wikiRandomPage</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:ShortPages")."\">$wikiStubs</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:LongPages")."\">$wikiLongPages</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:ListUsers")."\">$wikiListUsers</a>" ;
+		if ( $user->isLoggedIn ) {
+		    $column .= "<br>\n<a href=\"".wikiLink("special:WatchList")."\">$wikiMyWatchlist</a>" ;
+		    }
+		$column .= "<br>\n<a href=\"".wikiLink($wikiBugReportsLink)."\">$wikiBugReports</a>" ;
+		$column .= "<br>\n<a href=\"".$wikiGetBriefDate()."\">".$wikiGetBriefDate()."</a>" ;
+		$a = $page->getOtherNamespaces () ;
+		if ( count ( $a ) > 0 ) $column .= "<hr>".implode ( "<br>\n" , $a ) ;
+
+/*
+		# Category functionality deactivated
+		$cat = $page->getParam ( "CATEGORY" ) ;
+		if ( count ( $cat ) > 0 ) {
+		    $column .= "<hr>" ;
+		    $t = new wikiTitle ;
+		    foreach ( $cat as $x ) {
+			$t->setTitle ( $x ) ;
+			$column .= "<a href=\"".wikiLink($t->url")."\">".$page->getNiceTitle($x)."</a><br>\n" ;
+			}
+		    }
+*/
+
+		return $column ;
+		}
+
+	function getMiddle ( &$page , $text ) {
+		global $user , $action ;
+
+		$ret = "\n<div class=\"bodytext\">$text</div>" ;
+		if ( $action == "print" ) return $ret ;
+		$oaction = $action ;
+		if ( $action == "edit" ) $action = "" ;
+		if ( $user->options["quickBar"] == "right" or $user->options["quickBar"] == "left" or $user->options["forceQuickBar"] != "" ) {
+		    $column = $page->getQuickBar();
+		    $cw = 110 ;
+		    $column = "<td class=\"quickbar\" ".$user->options["quickBarBackground"]." width=$cw valign=top nowrap>".$column."</td>" ;
+		    $ret = "<td valign=top>\n".$ret."\n</td>" ;
+
+		    $table = "<table width=\"100%\" class=\"middle\" cellpadding=2 cellspacing=0><tr>" ;
+		    $qb = $user->options["quickBar"] ;
+		    if ( $user->options["forceQuickBar"] != "" ) {
+			if ( $user->options["forceQuickBar"] == "anywhere" ) {
+				if ( $qb != "left" ) $qb = "right" ; # Forcing right quickbar if unspecified
+				}
+			else $qb = $user->options["forceQuickBar"] ;
+			}
+
+		    global $framed ;
+		    if ( isset ( $framed ) ) {
+			if ( $framed == "bar" ) $ret = $column ;
+			else if ( $framed == "main" ) $ret = $ret ;
+			else $ret = "" ;
+		    } else {
+			$tableend = "</table>" ;
+			if ( $qb == "left" ) $ret = $table.$column.$ret."</tr>$tableend" ;
+			else if ( $qb == "right" ) $ret = $table.$ret.$column."</tr>$tableend" ;
+			}
+		    }
+		$action = $oaction ;
+		return $ret ;
+		}
+
+	function getFooter ( &$page ) {
 		global $wikiSearch , $wikiCategories , $wikiOtherNamespaces , $wikiCounter , $wikiLastChange , $wikiDiff;
 		global $wikiGetDate , $framed, $search , $wikiValidate , $user , $THESCRIPT ;
 		global $wikiFindMore , $wikiOK , $wikiWikipediaHome , $wikiAboutWikipedia ;
-		global $wikiGetDate , $wikiLastChangeCologne , $wikiRequests , $wikiRedirectFrom ;
+		global $wikiGetDate , $wikiRequests , $wikiRedirectFrom ;
 
 		if ( isset ( $framed ) ) return "" ;
 		$ret = $page->getLinkBar() ;
@@ -132,48 +236,11 @@ class skinStandard extends skinClass {
 			}
 		    }*/
 
-		if ( $user->options[skin] == "Cologne Blue" ) {
-			$ret = "<tr><td colspan=1></td><td>\n" ;
-			$ret .= "<FORM class=footnote method=get action=\"$THESCRIPT\">" ;
-			$ret .= "$wikiFindMore : " ;
-			$ret .= "<INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\">" ;
-			$ret .= "<INPUT TYPE=submit value=\"$wikiOK\">" ;
-			$ret .= " &nbsp; <a class=CBlink href=\"".wikiLink("")."\">$wikiWikipediaHome</a> | <a class=CBlink href=\"".wikiLink("wikipedia")."\">$wikiAboutWikipedia</a>" ;
-			$ret .= "</FORM>" ;
-
-			if ( !$page->isSpecialPage ) {
-
-			$adjusted_time_sc = tsc ( $page->timestamp ) + 3600 * $user->options["hourDiff"];
-			$day = date ( "l, F d, Y" , $adjusted_time_sc);
-			$time = date ( "H:i" , $adjusted_time_sc ) ;
-			$lc = "$day, $time" ;
-
-	# Old time generator
-	/*		$tts = tsc ( $page->timestamp ) + 3600 * $user->options["hourDiff"] ;
-			$lc = $wikiGetDate ( tsc ( $tts ) ) ;
-			$lc .= ", ".substr ( $tts , 8 , 2 ) ;
-			$lc .= ":".substr ( $tts , 10 , 2 ) ;
-			$lc = substr ( strstr ( $lc , ", " ) , 2 ) ;*/
-
-			$ret .= "<span class=footnote>".str_replace ( '$1' , $lc , $wikiLastChangeCologne ) ;
-			$ret .= " <a href=\"".wikiLink("$page->url&amp;diff=yes")."\">$wikiDiff</a> " ;
-			$ret .= "; ".str_replace ( '$1' , $page->counter , $wikiRequests ) ;
-
-			# User contributions
-			if ( $page->namespace == "user" ) $ret .= "; <a href=\"".wikiLink("special:contributions&amp;theuser=$page->mainTitle")."\">This user's contributions</a>" ;
-
-			# Redirect from...
-			if ( $page->backLink != "" ) $ret .= "; $wikiRederectFrom $page->backLink" ;
-			}
-
-			$ret .= "</span></td></tr></table>\n" ;
-		} else {
-			$ret .= "<FORM method=get action=\"$THESCRIPT\">" ;
-			$ret .= "<INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\">" ;
-			$ret .= "<INPUT TYPE=submit value=\"$wikiSearch\">" ;
-			$ret .= " &nbsp; &nbsp; <a href=\"http://validator.w3.org/check/referer\" target=blank>$wikiValidate</a>" ;
-			$ret .= "</FORM>" ;
-			}
+		$ret .= "<FORM method=get action=\"$THESCRIPT\">" ;
+		$ret .= "<INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\">" ;
+		$ret .= "<INPUT TYPE=submit value=\"$wikiSearch\">" ;
+		$ret .= " &nbsp; &nbsp; <a href=\"http://validator.w3.org/check/referer\" target=blank>$wikiValidate</a>" ;
+		$ret .= "</FORM>" ;
 
 		return $ret ;
 		}

@@ -5,13 +5,21 @@
 
 include_once ( "wikiSkinStandard.php" ) ;
 
-class skinStarTrek extends skinClass {
+class skinStarTrek extends skinStandard {
 
-	function getHeader ( $page ) {
+/*
+	function getHeader ( &$page ) {
 		}
 
-	function getFooter ( $page ) {
+	function getQuickBar ( &$page ) {
 		}
+
+	function getMiddle ( &$page , $text ) {
+		}
+
+	function getFooter ( &$page ) {
+		}
+*/
 
 	}
 

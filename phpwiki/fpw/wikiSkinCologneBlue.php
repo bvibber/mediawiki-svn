@@ -5,7 +5,7 @@
 
 class skinCologneBlue extends skinClass {
 
-	function getHeader ( $page ) {
+	function getHeader ( &$page ) {
 		global $wikiHome , $wikiAbout , $wikiFAQ , $wikiSpecialPages , $wikiLogIn , $wikiLogOut , $wikiHeaderSubtitle , $wikiWikipediaFAQ ;
 		global $wikiLogoFile , $user , $wikiHelp , $wikiWikipediaHelp , $wikiWikipedia ;
 #		$fonts = "face='verdana,sans-serif' color=white" ;
@@ -61,17 +61,136 @@ class skinCologneBlue extends skinClass {
 		return $ret ;
 		}
 
-	function getQuickBar ( $page ) {
-		return $page->getLinkBar () ;
+	function getQuickBar ( &$page ) {
+	        global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages , $action , $wikiHome ;
+        	global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL , $wikiUser ;
+	        global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
+        	global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate , $wikiGetDate , $wikiDiff ;
+		global $wikiMyOptions, $wikiMyself , $wikiLogOut , $wikiMySettings , $wikiShortPages , $wikiLongPages , $wikiUserList , $wikiEditingHistory , $wikiTopics ;
+		global $wikiAddToWatchlist , $wikiEditPage , $wikiPrintable , $wikiTalk , $wikiEdit , $wikiPageOptions , $wikiBrowse , $wikiFind , $wikiOK;
+		global $wikiEditingHelp , $wikiWikipediaEditingHelp , $wikiShowLastChange , $wikiProtectThisPage , $wikiMainPage , $THESCRIPT , $wikiVoteForPage ;
+		global $wikiMoveThisPage ;
+
+		$fonts = "face=verdana,arial" ;
+		$bg = "nowrap" ;
+		$ret = "" ;
+
+	        $ret .= "<FORM method=get action=\"$THESCRIPT\">" ;
+		$ret .= "&nbsp;<span class=menuhead>$wikiFind</span><br>\n" ;
+		$ret .= "&nbsp;<INPUT TYPE=text NAME=search SIZE=12 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiOK\"></FORM>" ;
+		$ret .= "<font $fonts>\n<table border=0 cellspacing=3 cellpadding=2 width='100%'><tr><td $bg>" ;
+
+		$ret .= "<p class=menu>\n" ;
+		$ret .= "<span class=menuhead>$wikiBrowse</span><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("")."\">$wikiMainPage</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:RecentChanges")."\">$wikiRecentChanges</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:NewPages")."\">$wikiNewPages</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:PopularPages")."\">$wikiPopularPages</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:WantedPages")."\">$wikiMostWanted</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:ShortPages")."\">$wikiShortPages</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:LongPages")."\">$wikiLongPages</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:LonelyPages")."\">$wikiOrphans</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:RandomPage")."\">$wikiRandomPage</a><br>\n" ;
+#		$ret .= "<a class=menulink href=\"".wikiLink("special:AllPages")."\">$wikiAllPages</a><br>\n" ; # Took out due to request
+		$ret .= "<a class=menulink href=\"".wikiLink("special:Statistics")."\">$wikiStatistics</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:ListUsers")."\">$wikiUserList</a>\n" ;
+		$ret .= "</p>" ;
+
+
+		# Page edit
+		$ret .= "</td></tr><tr><td><p class=menu>\n" ;
+		$ret .= "<span class=menuhead>$wikiEdit</span><br>\n" ;
+		if ( !$page->isSpecialPage ) {
+			if ( $page->canEdit() ) $ret .= "<a class=menulink href=\"".wikiLink($page->url."&action=edit")."\"><font size='2'>$wikiEditPage</font></a><br>\n" ;
+			if ( $page->canDelete() ) $ret .= "<a class=menulink href=\"".wikiLink("special:deletepage&target=".$page->url)."\">$wikiDeleteThisPage</a><br>\n" ;
+			if ( $page->canDelete() ) $ret .= "<a class=menulink href=\"".wikiLink("special:movepage&target=".$page->url)."\">$wikiMoveThisPage</a><br>\n" ;
+			if ( $page->canProtect() ) $ret .= "<a class=menulink href=\"".wikiLink("special:protectpage&target=".$page->url)."\">$wikiProtectThisPage</a><br>\n" ;
+			if ( $user->isLoggedIn ) $ret .= "<a class=menulink href=\"".wikiLink("special:vote&target=".$page->url)."\">$wikiVoteForPage</a><br>\n" ;
+			}
+		$ret .= "<a class=menulink href=\"".wikiLink($wikiWikipediaEditingHelp)."\">$wikiEditingHelp</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:Upload")."\">$wikiUpload</a></p>\n" ;
+
+		# Page options
+		if ( !$page->isSpecialPage ) {
+			$ret .= "</td></tr><tr><td><p class=menu>" ;
+			$ret .= "<span class=menuhead>$wikiPageOptions</span><br>\n" ;
+			$ret .= "<a class=menulink href=\"".wikiLink($page->url."&action=print")."\">$wikiPrintable</a><br>\n" ;
+			$ret .= "<a class=menulink href=\"".wikiLink($page->url."&action=watch&mode=yes")."\">$wikiAddToWatchlist</a><br>\n" ;
+
+			$n = $page->namespace ;
+			if ( stristr ( $n , "talk" ) == false ) {
+				$ret .= "<a class=menulink href=\"".wikiLink(nurlencode($page->getTalkPage()))."\">" . ucfirstIntl ( $wikiTalk ) . "</a>\n" ;
+			} else {
+				$nn = str_replace ( "Talk" , "" , $page->namespace ) ;
+				$nn = str_replace ( "_" , " " , $nn ) ;
+				$nn = trim ( str_replace ( "talk" , "" , $nn ) ) ;
+				$ret .= "<a class=menulink href=\"".wikiLink(nurlencode($nn.":".$page->mainTitle))."\">" . "Topic" . "</a>\n" ;
+				}
+			$ret .= "</p>\n" ;
+			}
+
+		# Page Info
+		if ( !$page->isSpecialPage ) {
+			global $wikiPageInfo , $wikiWhatLinksHere , $wikiLinkedPages , $wikiEditingHistory , $wikiLastChangeCologne , $wikiShowDiff , $wikiRequests ;
+			$ret .= "</td></tr><tr><td><p class=menu>" ;
+			$ret .= "<span class=menuhead>$wikiPageInfo</span><br>\n" ;
+			$ret .= "<a class=menulink href=\"".wikiLink("special:WhatLinksHere&target=".$page->secureTitle)."\">$wikiWhatLinksHere</a><br>\n" ;
+			$ret .= "<a class=menulink href=\"".wikiLink("special:RecentChangesLinked&target=".$page->secureTitle)."\">$wikiLinkedPages</a><br>\n" ;
+			$ret .= "<a class=menulink href=\"".wikiLink($page->url."&action=history")."\">$wikiEditingHistory</a><br>\n" ;
+			$ret .= "<a class=menulink href=\"".wikiLink($page->url."&diff=yes")."\">$wikiShowLastChange</a></p>\n" ;
+			}
+
+		# My options
+	        if ( $user->isLoggedIn ) {
+			$ret .= "</td></tr><tr><td><p class=menu>" ;
+			$ret .= "<span class=menuhead>$wikiMyOptions</span><br>\n" ;
+			$ret .= "<a class=menulink href=\"".wikiLink(nurlencode("$wikiUser:$user->name"))."\">$wikiMyself</a><br>\n" ;
+			$ret .= "<a class=menulink href=\"".wikiLink("special:watchlist")."\">$wikiMyWatchlist</a><br>\n" ;
+			$ret .= "<a class=menulink href=\"".wikiLink("special:editUserSettings")."\">$wikiMySettings</a><br>\n" ;
+			$ret .= "<a class=menulink href=\"".wikiLink("special:userLogout")."\">$wikiLogOut</a></p>\n" ;
+		} else {
+			$ret .= "</td></tr><tr><td><p class=menu>" ;
+			$ret .= "<a class=menulink href=\"".wikiLink("special:userLogin")."\">$wikiLogIn</a></p>\n" ;
+			}
+
+		$ret .= "</td></tr></table></font>" ;
+		return $ret ;
 		}
 
-	function getFooter ( $page ) {
+	function getMiddle ( &$page , $text ) {
+	        global $user , $action ;
+		if ( $action != "print" )
+			$ret = "<h1>".$page->getNiceTitle($page->title)."</h1>\n".$ret ;
+
+		$ret = "\n<div class=\"bodytext\">$text</div>" ;
+	        if ( $action == "print" ) return $ret ;
+        	$oaction = $action ;
+	        if ( $action == "edit" ) $action = "" ;
+
+	        $column = $this->getQuickBar ( $page ) ;
+
+		$cw = 130 ;
+	        $column = "<td class=\"quickbar\" ".$user->options["quickBarBackground"]." width=$cw valign=top nowrap>".$column."</td>" ;
+        	$ret = "<td valign=top>\n".$ret."\n</td>" ;
+
+	        $table = "<table width=\"100%\" class=\"middle\" cellpadding=2 cellspacing=0><tr>" ;
+        	$qb = $user->options["quickBar"] ;
+		if ( $qb != "left" ) $qb = "right" ;
+
+		$tableend = "</table>" ;
+		if ( $action != "print" ) $tableend = "" ;
+               	if ( $qb == "left" ) $ret = $table.$column.$ret."</tr>$tableend" ;
+                else if ( $qb == "right" ) $ret = $table.$ret.$column."</tr>$tableend" ;
+        	$action = $oaction ;
+	        return $ret ;
+		}
+
+	function getFooter ( &$page ) {
 		global $wikiSearch , $wikiCategories , $wikiOtherNamespaces , $wikiCounter , $wikiLastChange , $wikiDiff;
 		global $wikiGetDate , $framed, $search , $wikiValidate , $user , $THESCRIPT ;
 		global $wikiFindMore , $wikiOK , $wikiWikipediaHome , $wikiAboutWikipedia ;
 		global $wikiGetDate , $wikiLastChangeCologne , $wikiRequests , $wikiRedirectFrom ;
 
-		$ret = $this->getQuickBar ( $page ) ;
 		$ret = "<table width=\"100%\" $border class=\"footer\" cellspacing=0><tr><td>$ret</td></tr></table>" ;
 
 		# Page counter
