@@ -588,6 +588,7 @@ to a previously blocked IP address.",
 "blocklistline"	=> "$1, $2 blocked $3",
 "blocklink"		=> "block",
 "unblocklink"	=> "unblock",
+"contribslink"	=> "contribs",
 
 # Developer tools
 #
