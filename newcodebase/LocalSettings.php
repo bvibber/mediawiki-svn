@@ -22,6 +22,7 @@ $wgLogo				= "$wgUploadPath/wiki.png";
 #
 $wgDBserver         = "127.0.0.1";
 $wgDBname           = "wikidb";
+$wgDBintlname		= "intl";	
 $wgDBuser           = "wikiuser";
 $wgDBpassword       = "userpass";
 $wgDBadminpassword  = "adminpass"; # Only needed for admin works
@@ -45,7 +46,5 @@ $wgLocalInterwiki   = "w";
 
 $wgInputEncoding	= "ISO-8859-1";
 $wgOutputEncoding	= "ISO-8859-1";
-
-#$wgUseNewInterlanguage = true ;
 
 ?>

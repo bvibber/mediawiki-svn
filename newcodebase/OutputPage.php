@@ -176,26 +176,31 @@ class OutputPage {
 	function isArticle() { return $this->mIsarticle; }
 	function setPrintable() { $this->mPrintable = true; }
 	function isPrintable() { return $this->mPrintable; }
+
 	function getLanguageLinks() {
-		global $wgUseNewInterlanguage ;
-		if ( !$wgUseNewInterlanguage )
+		global $wgUseNewInterlanguage, $wgTitle, $wgLanguageCode;
+		global $wgDBconnection, $wgDBname, $wgDBintlname;
+
+		if ( ! $wgUseNewInterlanguage )
 			return $this->mLanguageLinks; 
-		global $wgDBconnection , $wgDBname , $wgTitle , $wgLanguageCode ;
 		
-		mysql_select_db ( "wiki-intl" , $wgDBconnection ) or die(
+		mysql_select_db( $wgDBintlname, $wgDBconnection ) or die(
 			  htmlspecialchars(mysql_error()) );
-		$list = array() ;
-		$sql = "SELECT * FROM ilinks WHERE
-			lang_from=\"{$wgLanguageCode}\" AND
-			title_from=\"".$wgTitle->getDBkey()."\"" ;
-		$res = mysql_query ( $sql , $wgDBconnection ) ;
-		while ( $q = mysql_fetch_object ( $res ) )
-			$list[] = $q->lang_to.":".$q->title_to ;
-		mysql_free_result ( $res ) ;
+
+		$list = array();
+		$sql = "SELECT * FROM ilinks WHERE lang_from=\"" .
+		  "{$wgLanguageCode}\" AND title_from=\"" . $wgTitle->getDBkey() . "\"";
+		$res = mysql_query( $sql, $wgDBconnection );
+
+		while ( $q = mysql_fetch_object ( $res ) ) {
+			$list[] = $q->lang_to . ":" . $q->title_to;
+		}
+		mysql_free_result( $res );
 		mysql_select_db( $wgDBname, $wgDBconnection ) or die(
 		  htmlspecialchars(mysql_error()) );
-		return $list ;
-		}
+
+		return $list;
+	}
 
 	function supressQuickbar() { $this->mSupressQuickbar = true; }
 	function isQuickbarSupressed() { return $this->mSupressQuickbar; }
