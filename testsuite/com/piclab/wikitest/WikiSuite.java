@@ -8,16 +8,38 @@
 package com.piclab.wikitest;
 import com.meterware.httpunit.*;
 import org.w3c.dom.*;
+import java.util.prefs.*;
 
 
 public class WikiSuite {
 
-private String m_server = "http://www.wikipedia.org";
-private String m_script = "/w/wiki.phtml";
-private String m_articlepath = "http://www.wikipedia.org/wiki";
-private String m_uploadpath = "http://www.wikipedia.org/upload/";
-private String m_mainpage = "Main Page";
+private static Preferences m_uprefs =
+  Preferences.userNodeForPackage( WikiSuite.class );
 
+private String m_server;
+private String m_script;
+private String m_articlepath;
+private String m_uploadpath;
+private String m_mainpage;
+
+public WikiSuite() {
+	try {
+		m_uprefs.importPreferences(new java.io.FileInputStream(
+		  "wikitest.prefs" ));
+	} catch (java.io.IOException e) {
+		/* File probably doesn't exist: no problem, use defaults */
+	} catch (InvalidPreferencesFormatException e) {
+		System.err.println( "Bad preferences file format: " + e );
+	}
+
+	m_server = m_uprefs.get( "server", "http://www.wikipedia.org" );
+	m_script = m_uprefs.get( "script", "/w/wiki.phtml" );
+	m_articlepath = m_uprefs.get( "articlepath",
+	  "http://www.wikipedia.org/wiki" );
+	m_uploadpath = m_uprefs.get( "uploadpath",
+	  "http://www.wikipedia.org/upload/" );
+	m_mainpage = m_uprefs.get( "mainpage", "Main Page" );
+}
 
 public String titleToUrl( String title ) {
 	StringBuffer sb = new StringBuffer( title.length() + 20 );
