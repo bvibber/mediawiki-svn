@@ -55,20 +55,6 @@ class SearchUpdate {
 		# Strip wiki '' and '''
 		$text = preg_replace( "/''[']*/", " ", $text );
 
-		# Strip short words
-		if ( $wgDBminWordLen > 3 ) {
-			$text = preg_replace( "/\\s[{$lc}][{$lc}][{$lc}]\\s/", " ", $text );
-			$text = preg_replace( "/\\s[{$lc}][{$lc}][{$lc}]\\s/", " ", $text );
-		}
-		if ( $wgDBminWordLen > 2 ) {
-			$text = preg_replace( "/\\s[{$lc}][{$lc}]\\s/", " ", $text );
-			$text = preg_replace( "/\\s[{$lc}][{$lc}]\\s/", " ", $text );
-		}
-		if ( $wgDBminWordLen > 1 ) {
-			$text = preg_replace( "/\\s[{$lc}]\\s/", " ", $text );
-			$text = preg_replace( "/\\s[{$lc}]\\s/", " ", $text );
-		}
-
 		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp,cur_ind_text='" .
 		  wfStrencode( $text ) . "' WHERE cur_id={$this->mId}";
 		wfQuery( $sql, "SearchUpdate::doUpdate" );

@@ -21,10 +21,11 @@ function wfSpecialMovepage()
 class MovePageForm {
 
 	var $ot, $nt;		# Old, new Title objects
-	var $ons, $nns;		# Old, new namespace
-	var $odt, $ndt;		# Old, new pagename (dbkey form)
-	var $oft, $nft;		# Old, new full page title
-	var $oldid, $newid;	# Old, new "cur_id" field (yes, both from "cur")
+	var $ons, $nns;		# Namespaces
+	var $odt, $ndt;		# Pagenames (dbkey form)
+	var $oft, $nft;		# Full page titles (DBkey form)
+	var $ofx, $nfx;		# Full page titles (Text form)
+	var $oldid, $newid;	# "cur_id" field (yes, both from "cur")
 	var $talkmoved = 0;
 	
 	function showForm( $err )
@@ -103,6 +104,8 @@ class MovePageForm {
 		$this->ndt = wfStrencode( $this->nt->getDBkey() );
 		$this->oft = wfStrencode( $this->ot->getPrefixedDBkey() );
 		$this->nft = wfStrencode( $this->nt->getPrefixedDBkey() );
+		$this->ofx = $this->ot->getPrefixedText();
+		$this->nfx = $this->nt->getPrefixedText();
 
 		$this->oldid = $this->ot->getArticleID();
 		$this->newid = $this->nt->getArticleID();
@@ -147,7 +150,7 @@ class MovePageForm {
 			$this->nt = Title::newFromText( Title::makeName(
 			  $this->nns, $wpNewTitle ) );
 
-			# odt, ndt remain the same
+			# odt, ndt, ofx, nfx remain the same
 
 			$this->oft = wfStrencode( $this->ot->getPrefixedDBkey() );
 			$this->nft = wfStrencode( $this->nt->getPrefixedDBkey() );
@@ -169,11 +172,8 @@ class MovePageForm {
 				}
 			}
 		}
-		$nu = urlencode( $wpNewTitle );
-		$ou = urlencode( $wpOldTitle );
-
 		$success = wfLocalUrl( $wgLang->specialPage( "Movepage" ),
-		  "action=success&oldtitle={$ou}&newtitle={$nu}" .
+		  "action=success&oldtitle={$this->ofx}&newtitle={$this->nfx}" .
 		  "&talkmoved={$this->talkmoved}" );
 
 		$wgOut->redirect( $success );
@@ -186,6 +186,10 @@ class MovePageForm {
 
 		$wgOut->setPagetitle( wfMsg( "movepage" ) );
 		$wgOut->setSubtitle( wfMsg( "pagemovedsub" ) );
+
+		$fields = array( "oldtitle", "newtitle" );
+		wfCleanFormFields( $fields );
+
 		$text = str_replace( "$1", $oldtitle, wfMsg( "pagemovedtext" ) );
 		$text = str_replace( "$2", $newtitle, $text );
 		$wgOut->addWikiText( $text );
