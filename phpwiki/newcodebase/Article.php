@@ -288,7 +288,13 @@ class Article {
 				return;
 			}
 			$aid = $wgTitle->getArticleID();
-			if ( 0 == $aid ) { # New aritlce
+			if ( 0 == $aid ) {
+				if ( ( "" == $wpTextbox1 ) ||
+				  ( wfMsg( "newarticletext" ) == trim( $wpTextbox1 ) ) ) {
+					$wgOut->redirect(  wfLocalUrl(
+					  $wgTitle->getPrefixedURL() ) );
+					return;
+				}
 				$this->mCountAdjustment = $this->isCountable( $wpTextbox1 );
 				$this->insertNewArticle( $wpTextbox1, $wpSummary, $wpMinoredit );
 				return;
