@@ -102,6 +102,7 @@ function wfSpecialContributions()
 			$ts = $obj1->cur_timestamp;
 
 			$obj1 = wfFetchObject( $res1 );
+			$topmark = wfMsg ( "uctop" ) ;
 			--$nCur;
 		} else {
 			$ns = $obj2->old_namespace;
@@ -109,13 +110,14 @@ function wfSpecialContributions()
 			$ts = $obj2->old_timestamp;
 
 			$obj2 = wfFetchObject( $res2 );
+			$topmark = "" ;
 			--$nOld;
 		}
 		$page = Title::makeName( $ns, $t );
 		$link = $sk->makeKnownLink( $page, "" );
 		$d = $wgLang->timeanddate( $ts, true );
 
-		$wgOut->addHTML( "<li>{$d} {$link}</li>\n" );
+		$wgOut->addHTML( "<li>{$d} {$link}{$topmark}</li>\n" );
 
 		--$limit;
 	}
