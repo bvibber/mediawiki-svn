@@ -86,6 +86,24 @@ class LinkCache {
 		else { $this->addGoodLink( $id, $title ); }
 		return $id;
 	}
+
+	function preFill( $fromtitle )
+	{
+		wfProfileIn( "LinkCache::preFill" );
+		# Note -- $fromtitle is a Title *object*
+		$dbkeyfrom = wfStrencode( $fromtitle->getPrefixedDBKey() );
+		$sql = "SELECT cur_id,cur_namespace,cur_title
+			FROM cur,links
+			WHERE cur_id=l_to AND l_from='{$dbkeyfrom}'";
+		$res = wfQuery( $sql, "LinkCache::preFill" );
+		while( $s = wfFetchObject( $res ) ) {
+			$this->addGoodLink( $s->cur_id,
+				Title::makeName( $s->cur_namespace, $s->cur_title )
+				);
+		}
+		wfProfileOut();
+	}
+
 }
 
 ?>

@@ -250,6 +250,7 @@ class Article {
 	{
 		global $wgUser, $wgOut, $wgTitle, $wgLang;
 		global $oldid, $diff; # From query
+		global $wgLinkCache;
 		wfProfileIn( "Article::view" );
 
 		$wgOut->setArticleFlag( true );
@@ -283,6 +284,7 @@ class Article {
 			$s = str_replace( "$1", $redir, wfMsg( "redirectedfrom" ) );
 			$wgOut->setSubtitle( $s );
 		}
+		$wgLinkCache->preFill( $wgTitle );
 		$wgOut->addWikiText( $text );
 
 		# If the article we've just shown is in the "Image" namespace,
@@ -540,14 +542,13 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$now = date( "YmdHis" );
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
-		  "cur_restrictions,cur_ind_title,cur_user_text,cur_is_redirect," .
+		  "cur_restrictions,cur_user_text,cur_is_redirect," .
 		  "cur_is_new) VALUES ({$ns},'" . wfStrencode( $ttl ) . "', '" .
 		  wfStrencode( $text ) . "', '" .
 		  wfStrencode( $summary ) . "', '" .
 		  $wgUser->getID() . "', '{$now}', " .
 		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
-		  wfStrencode( $wgTitle->getIndexTitle() ) .
-		  "', '" . wfStrencode( $wgUser->getName() ) . "', $redir, 1)";
+		  wfStrencode( $wgUser->getName() ) . "', $redir, 1)";
 		$res = wfQuery( $sql, $fname );
 
 		$newid = wfInsertId();
@@ -576,6 +577,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 	function updateArticle( $text, $summary, $minor, $watchthis )
 	{
 		global $wgOut, $wgUser, $wgTitle, $wgLinkCache;
+		global $wgDBtransactions;
 		$fname = "Article::updateArticle";
 
 		if ( $this->mMinorEdit ) { $me1 = 1; } else { $me1 = 0; }
@@ -609,6 +611,11 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$res = wfQuery( $sql, $fname );
 			$oldid = wfInsertID( $res );
 
+			if( $wgDBtransactions ) {
+				$sql = "BEGIN";
+				wfQuery( $sql );
+			}
+
 			$now = date( "YmdHis" );
 			$sql = "UPDATE cur SET cur_text='" . wfStrencode( $text ) .
 			  "',cur_comment='" .  wfStrencode( $summary ) .
@@ -639,6 +646,11 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$sql = "UPDATE recentchanges SET rc_cur_time='{$now}' " .
 			  "WHERE rc_cur_id=" . $this->getID();
 			wfQuery( $sql, $fname );
+			
+			if( $wgDBtransactions ) {
+				$sql = "COMMIT";
+				wfQuery( $sql );
+			}
 		}
 		
 		if ($watchthis) { 

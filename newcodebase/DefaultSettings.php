@@ -24,6 +24,7 @@ $wgDBpassword       = "userpwd";
 $wgDBconnection     = "";
 $wgDBsqluser		= "wikisql";
 $wgDBsqlpassword	= "sqlpass";
+$wgDBtransactions	= false; # Set to true if using InnoDB tables
 
 $wgReadOnlyFile		= "/usr/local/apache/htdocs/upload/dblockflag838942";
 $wgDebugComments	= false;

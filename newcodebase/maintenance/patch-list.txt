@@ -53,6 +53,17 @@ TeX support requires TeX, OCaml, and ImageMagick. If you don't want
 to use TeX support on your wiki, you can globally disable it by
 setting $wgUseTeX=false in LocalSettings.php.
 
+
+
+* 2003-01-25: searchindex table
+A new 'searchindex' table separates the fulltext index fields from
+'cur'. This enables use of InnoDB tables, which don't support fulltext
+search, for the main data, and will keep junk out of the backup dumps.
+
+Run patch-searchindex.sql on the database. If you wish to change table
+tables on the others, use 'alter table' manually. (See MySQL docs.)
+
+
 * 2003-01-24: Talk pages for anonymous users
 A new table user_newtalk contains a list of talk pages that were
 changed, both pages by anonymous and those by non-anonymous users.
