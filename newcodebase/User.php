@@ -44,6 +44,14 @@ class User {
 			return $s->user_id;
 		}
 	}
+	
+	# does the string match an anonymous user IP address?
+	/* static */ function isIP( $name ) {
+		return preg_match("/^\d{1,3}\.\d{1,3}.\d{1,3}\.\d{1,3}$/",$name);
+	
+	}
+	
+	
 
 	/* static */ function randomPassword()
 	{
