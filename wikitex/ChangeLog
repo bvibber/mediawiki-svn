@@ -1,0 +1,12 @@
+2004-09-06  Peter Danenberg  <danenberg at mitdasein dot com>
+
+	* wikitex.php: updated parse code to phase3 standards;
+	WikiTeX now parses like pseudo-XML: <math></math>,
+	<chem></chem>, etc.
+
+	* wikitex.php: added new classes: go, xym, teng, and feyn.
+
+2004-09-05  Peter Danenberg  <danenberg at mitdasein dot com>
+
+	* README: added; with entry on extending WikiTeX.
+
