@@ -265,12 +265,12 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 /* private */ $wgSysopSpecialPagesEn = array(
 	"Blockip"		=> "Block an IP address",
 	"Asksql"		=> "Query the database",
-	"Undelete"		=> "View and restore deleted pages"
+	"Undelete"		=> "Restore deleted pages"
 );
 
 /* private */ $wgDeveloperSpecialPagesEn = array(
 	"Lockdb"		=> "Make database read-only",
-	"Unlockdb"		=> "Restore database write access",
+	"Unlockdb"		=> "Restore DB write access",
 	"Debug"			=> "Debugging information"
 );
 
@@ -394,9 +394,10 @@ Please report this to an administrator, making note of the URL.",
 "badtitle"		=> "Bad title",
 "badtitletext"	=> "The requested page title was invalid, empty, or
 an incorrectly linked inter-language or inter-wiki title.",
-"perfdisabled" => "Sorry! This feature has been temporarily disabled during peak
-access hours for performance reasons; come back between 02:00 and 14:00 UTC
-and try again.",
+"perfdisabled" => "Sorry! This feature has been temporarily disabled
+because it slows the database down to the point that no one can use
+the wiki. Which is bad. It will be rewritten for efficiency in the near
+future (possibly by you! we're open source after all)",
 
 # Login and logout pages
 #
