@@ -146,6 +146,11 @@ class SearchEngine {
 		$t = Title::makeName( $row->cur_namespace, $row->cur_title );
 		$sk = $wgUser->getSkin();
 
+		$contextlines = $wgUser->getOption( "contextlines" );
+		if ( "" == $contextlines ) { $contextlines = 5; }
+		$contextchars = $wgUser->getOption( "contextchars" );
+		if ( "" == $contextchars ) { $contextchars = 50; }
+
 		$link = $sk->makeKnownLink( $t, "" );
 		$wgOut->addHTML( "<li>{$link}" );
 
@@ -154,19 +159,28 @@ class SearchEngine {
 		$lineno = 0;
 
 		foreach ( $lines as $line ) {
+			if ( 0 == $contextlines ) { break; }
+			--$contextlines;
 			++$lineno;
 			if ( ! preg_match( $pat1, $line, $m ) ) { continue; }
 
 			$pre = $m[1];
-			if ( strlen( $pre ) > 60 ) {
-				$pre = "..." . substr( $pre, -60 );
+			if ( 0 == $contextchars ) { $pre = "..."; }
+			else {
+				if ( strlen( $pre ) > $contextchars ) {
+					$pre = "..." . substr( $pre, -$contextchars );
+				}
 			}
 			$pre = wfEscapeHTML( $pre );
 
 			if ( count( $m ) < 3 ) { $post = ""; }
 			else { $post = $m[3]; }
-			if ( strlen( $post ) > 60 ) {
-				$post = substr( $post, 0, 60 ) . "...";
+
+			if ( 0 == $contextchars ) { $post = "..."; }
+			else {
+				if ( strlen( $post ) > $contextchars ) {
+					$post = substr( $post, 0, $contextchars ) . "...";
+				}
 			}
 			$post = wfEscapeHTML( $post );
 			$found = wfEscapeHTML( $m[2] );
