@@ -527,6 +527,7 @@ and [[wikipedia:Most common Wikipedia faux pas|most common Wikipedia faux pas]].
 If you want to see Wikipedia succeed, it's very important that you don't add
 material restricted by others' [[wikipedia:Copyrights|copyrights]].
 The legal liability could really hurt the project, so please don't do it.
+
 See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges recent meta discussion].",
 "rcloaderr"		=> "Loading recent changes",
 "rcnote"		=> "Below are the last <b>$1</b> changes in the last <b>$2</b> days.",
