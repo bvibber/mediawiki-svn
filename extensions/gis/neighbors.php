@@ -52,7 +52,7 @@ class neighbors {
 	{
 		global $wgOut, $wgUser, $wgContLang;
 
-		/* No reason for robots to follow map links */
+		/* No reason for robots to follow these links */
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
 		$wgOut->setPagetitle( "Neighbors" );
@@ -86,14 +86,19 @@ class neighbors {
 			$lon = ($x->gis_longitude_min+$x->gis_longitude_max)/2;
 			$gc = new greatcircle($lat,$lon, $lat0, $lon0);
 			# FIXME: multiple geos in same page are overwritten
-			$all[$id] = $gc->distance;
-			$all_pos[$id] = array(
-				 'lat' => $lat,
-				 'lon' => $lon,
-				 'name' => $g->get_title($id),
-				 'type' => $x->gis_type,
-				 'octant' => $gc->octant(),
-				 'heading' => $gc->heading);
+			if ($gc->distance > $this->d * 1000) {
+				# ignore those points that are within the
+				# bounding rectangle, but not within the radius
+			} else {
+				$all[$id] = $gc->distance;
+				$all_pos[$id] = array(
+					'lat' => $lat,
+					'lon' => $lon,
+					'name' => $g->get_title($id),
+					'type' => $x->gis_type,
+					'octant' => $gc->octant(),
+					'heading' => $gc->heading);
+			}
 		}
 
 		/* Sort by distance */
@@ -102,7 +107,7 @@ class neighbors {
 
 		/* Generate output */
 		$out .= "''List of ". count($all)
-		      . " locations within approx. ".$this->d." km of ";
+		      . " locations within ".$this->d." km of ";
 		if ($this->title != "") {
 			$out .= $this->title . ", ";
 		}
