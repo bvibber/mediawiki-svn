@@ -32,6 +32,7 @@ class SearchEngine {
                 $a = 0 ;
                 $na = array () ;
                 if ( !isset ( $wgNs ) ) $wgNs = array () ;
+				$this->add2links["wpSearch"] = 1;
                 if ( !isset ( $wpSearch ) )
                         {
                         $wgNs[0] = 1 ;
