@@ -1072,7 +1072,7 @@ class OutputPage {
 		);
 
 		# Remove HTML comments
-		$text = preg_replace( "/<!--.*-->/", "", $text );
+		$text = preg_replace( "/<!--.*-->/sU", "", $text );
 
 		$bits = explode( "<", $text );
 		$text = array_shift( $bits );
