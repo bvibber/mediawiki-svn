@@ -136,16 +136,6 @@ class OutputPage {
 			else print $s ;
 		}
 
-/*		} else if ( "top" == $viewFrames ) {
-			print $sk->beforeContent();
-		} else if ( "content" == $viewFrames ) {
-			print $this->mBodytext;
-		} else if ( "sidebar" == $viewFrames ) {
-			print "SIDEBAR" ;
-		} else if ( "bottom" == $viewFrames ) {
-			print $sk->bottomLinks () ;
-		}*/
-
 		print "</body></html>";
 		flush();
 	}
