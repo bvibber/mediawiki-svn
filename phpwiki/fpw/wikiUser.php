@@ -69,6 +69,7 @@ class WikiUser {
 		if ( $this->options["autoTalk"] == "" ) $this->options["autoTalk"] = "no" ;
 		if ( $this->options["cols"] == "" ) $this->options["cols"] = "60" ;
 		if ( $this->options["rows"] == "" ) $this->options["rows"] = "20" ;
+		if ( $this->options["changesLayout"] == "" ) $this->options["changesLayout"] = "classic" ;
 		if ( $this->options["justify"] == "" ) $this->options["justify"] = "no" ;
 		if ( $this->options["resultsPerPage"] == "" ) $this->options["resultsPerPage"] = "20" ;
 		if ( $this->options["skin"] == "" ) $this->options["skin"] = "None" ;
