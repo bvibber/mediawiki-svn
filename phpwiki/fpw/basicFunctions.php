@@ -73,7 +73,7 @@ function edit ( $title ) {
 	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit , $FromEditForm , $wikiIPblocked ;
 	global $user , $CommentBox , $vpage , $EditTime , $wikiDescribePage , $wikiUser , $namespaceBackground , $wikiNamespaceBackground ;
 	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend , $wikiEditHelp , $wikiRecodeInput ;
-	global $wikiSummary , $wikiMinorEdit , $wikiCopyrightNotice , $wikiSave , $wikiPreview , $wikiDontSaveChanges ;
+	global $wikiSummary , $wikiMinorEdit , $wikiCopyrightNotice , $wikiSave , $wikiPreview , $wikiDontSaveChanges , $wikiGetDate ;
 	$npage = new WikiPage ;
 	$npage->title = $title ;
 	$npage->makeAll () ;
@@ -113,8 +113,14 @@ function edit ( $title ) {
 			$text = $EditBox ;
 			$text = str_replace ( "\\'" , "'" , $text ) ;
 			$text = str_replace ( "\\\"" , "\"" , $text ) ;
-			if ( $user->isLoggedIn ) $text = str_replace ( "~~~" , "[[$wikiUser:$user->name|$user->name]]" , $text ) ;
-			else $text = str_replace ( "~~~" , $user->getLink() , $text ) ;
+
+			if ( $user->isLoggedIn ) $replText = "[[$wikiUser:$user->name|$user->name]]" ;
+			else $replText = $user->getLink() ;
+			$dt = $wikiGetDate ( time() ) ;
+
+			$text = str_replace ( "~~~~" , "$replText, $dt" , $text ) ;
+			$text = str_replace ( "~~~" , $replText , $text ) ;
+
 			$title = str_replace ( "\\'" , "'" , $title ) ;
 			$title = str_replace ( "\\\"" , "\"" , $title ) ;
 			$title = str_replace ( "\\\\" , "\\" , $title ) ;
