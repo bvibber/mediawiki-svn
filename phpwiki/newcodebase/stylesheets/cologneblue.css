@@ -24,10 +24,13 @@ p, pre, td, th, li, dd, dt { line-height: 12pt; }
  font-family: Times, serif;
  background-color: #6688AA; color: white;
  font-weight: normal; font-size: 32pt;
+ line-height: 32pt;
 }
 td.top {
  background-color: #6688AA; color: white;
- margin-bottom: 4px; text-transform: uppercase;
+ margin-top: 4px; margin-bottom: 4px;
+ padding-top: 0; padding-bottom: 0;
+ text-transform: uppercase;
  font-family: Verdana, Arial, sans-serif; font-size: 8pt;
 }
 td.top a {
