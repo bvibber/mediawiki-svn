@@ -84,7 +84,7 @@ $wikiPreviewAppend = "<hr>\n<h2>Voransicht :</h2>\n$1<hr><h3>Achtung: Dies ist n
 $wikiSummary = "Zusammenfassung:" ;
 $wikiDescription = "Beschreibung der Änderung:" ;
 $wikiMinorEdit = "Es wurden nur Kleinigkeiten verändert." ;
-$wikiCopyrightNotice = "Bitte beachte, dass alle Beiträge zur Wikipedia unter der "GNU Freie Dokumentationslizenz" stehen. Falls Du nicht willst, dass Dein Geschriebenes von anderen verändert und weiterverbreitet wird, dann solltest Du nicht auf "Speichern" drücken. Du gibst uns außerdem Deine Zusage, dass Du den Text selbst verfasst hast, oder es von einer Quelle kopiert hast, die sich in öffentlichem Besitz befindet (public domain). <b>BENUTZE KEINE URHEBERRECHTLICH GESCHÜTZTEN WERKE OHNE ERLAUBNIS DES AUTORS!</b>";
+$wikiCopyrightNotice = "Bitte beachte, dass alle Beiträge zur Wikipedia unter der \"GNU Freie Dokumentationslizenz\" stehen. Falls Du nicht willst, dass Dein Geschriebenes von anderen verändert und weiterverbreitet wird, dann solltest Du nicht auf \"Speichern\" drücken. Du gibst uns außerdem Deine Zusage, dass Du den Text selbst verfasst hast, oder es von einer Quelle kopiert hast, die sich in öffentlichem Besitz befindet (public domain). <b>BENUTZE KEINE URHEBERRECHTLICH GESCHÜTZTEN WERKE OHNE ERLAUBNIS DES AUTORS!</b>";
 $wikiSave = "Speichern" ;
 $wikiPreview = "Vorschau" ;
 $wikiReset = "Zurücksetzten" ;
@@ -477,7 +477,7 @@ $wikiVoteReason = "Reason to vote : " ;
 
 #---------------------------
 #Functions
-function wikiGetDateEn ( $x ) { # Used in RecentChangesLayout in special_functions.php
+function wikiGetDateDe ( $x ) { # Used in RecentChangesLayout in special_functions.php
     global $wikiDate ;
     $dayName = $wikiDate [ strtolower ( date ( "l" , $x ) ) ];
     $monthName = $wikiDate [ strtolower ( date ( "F" , $x ) ) ];
@@ -485,15 +485,15 @@ function wikiGetDateEn ( $x ) { # Used in RecentChangesLayout in special_functio
     $year = date ( "Y" , $x ) ;
     return "$dayName, $monthName $dayNumber, $year" ;
     }
-function wikiGetBriefDateEn () { #Brief date for link in sidebar
+function wikiGetBriefDateDe () { #Brief date for link in sidebar
     global $wikiDate ;
     $monthName = $wikiDate [ strtolower ( date ( "F" ) ) ];
     $dayNumber = date ( "j" ) ;
     $year = date ( "Y" ) ;
     return "$monthName $dayNumber, $year" ;
     }
-$wikiGetDate = wikiGetDateEn;
-$wikiGetBriefDate = wikiGetBriefDateEn ;
+$wikiGetDate = wikiGetDateDe;
+$wikiGetBriefDate = wikiGetBriefDateDe ;
 
 # In theory, this could be expanded to allow general conversion of the
 # character encoding used in the database to another encoding optionally
@@ -503,17 +503,17 @@ $wikiGetBriefDate = wikiGetBriefDateEn ;
 # $wikiEncodingCharsets = array("iso-8859-1");
 # $wikiEncodingNames = array("Latin-1"); # Localised names
 
-function wikiRecodeOutputEn($text) {
+function wikiRecodeOutputDe($text) {
   # Stub
   # global $user;  # $user->options["encoding"] is an index into the above arrays
   return $text;
 }
 
-function wikiRecodeInputEn($text) {
+function wikiRecodeInputDe($text) {
   # Stub
   return $text;
 }
 
-$wikiRecodeOutput = wikiRecodeOutputEn;
-$wikiRecodeInput = wikiRecodeInputEn;
+$wikiRecodeOutput = wikiRecodeOutputDe;
+$wikiRecodeInput = wikiRecodeInputDe;
 ?>
