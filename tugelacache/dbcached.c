@@ -54,10 +54,6 @@
 struct stats stats;
 struct settings settings;
 
-static item **todelete = 0;
-static int delcurr;
-static int deltotal;
-
 DB *dbp;
 DBT dbkey, dbdata;
 
@@ -286,8 +282,6 @@ void complete_nread(conn * c)
     int comm = c->item_comm;
     u_int32_t dbflags = 0;
     int ret;
-    item *old_it;
-    time_t now = time(0);
 
     stats.set_cmds++;
 
@@ -349,14 +343,14 @@ void process_stat(conn * c, char *command)
 
 	pos += sprintf(pos, "STAT pid %u\r\n", pid);
 	pos += sprintf(pos, "STAT uptime %lu\r\n", now - stats.started);
-	pos += sprintf(pos, "STAT time %u\r\n", now);
+	pos += sprintf(pos, "STAT time %u\r\n", (unsigned int)now);
 	pos += sprintf(pos, "STAT version " VERSION "\r\n");
 	pos +=
 	    sprintf(pos, "STAT rusage_user %u:%u\r\n",
-		    usage.ru_utime.tv_sec, usage.ru_utime.tv_usec);
+		    (unsigned int)usage.ru_utime.tv_sec, (unsigned int)usage.ru_utime.tv_usec);
 	pos +=
 	    sprintf(pos, "STAT rusage_system %u:%u\r\n",
-		    usage.ru_stime.tv_sec, usage.ru_stime.tv_usec);
+		    (unsigned int)usage.ru_stime.tv_sec, (unsigned int)usage.ru_stime.tv_usec);
 	pos += sprintf(pos, "STAT curr_items %u\r\n", stats.curr_items);
 	pos += sprintf(pos, "STAT total_items %u\r\n", stats.total_items);
 	pos += sprintf(pos, "STAT bytes %llu\r\n", stats.curr_bytes);
@@ -546,7 +540,6 @@ void process_command(conn * c, char *command)
 	char key[251];
 	int res, ret;
 	char *ptr;
-	time_t now = time(0);
 
 	res = sscanf(command, "%*s %250s %u\n", key, &delta);
 	if (res != 2 || strlen(key) == 0) {
@@ -601,7 +594,7 @@ void process_command(conn * c, char *command)
 	dbkey.size = strlen(key);
 	dbdata.data = putit;
 	dbdata.size = ITEM_ntotal(putit);
-	dbp->put(dbp, NULL, &dbkey, &dbdata, NULL);
+	dbp->put(dbp, NULL, &dbkey, &dbdata, 0);
 	if (newit)
 	    free(newit);
 	out_string(c, temp);
@@ -669,12 +662,11 @@ void process_command(conn * c, char *command)
 
     if (strncmp(command, "delete ", 7) == 0) {
 	char key[251];
-	item *it;
 	int res;
 	int ret;
 	time_t exptime = 0;
 
-	res = sscanf(command, "%*s %250s %d", key, &exptime);
+	res = sscanf(command, "%*s %250s %d", key, (int*)&exptime);
 	cleanup_dbt();
 	dbkey.data = key;
 	dbkey.size = strlen(key);
@@ -1485,5 +1477,5 @@ void cleanup_dbt()
 }
 
 void syncdb() {
-    dbp->sync(dbp,NULL);
+    dbp->sync(dbp, 0);
 }

@@ -154,11 +154,13 @@ void assoc_init(void)
 
 item *assoc_find(char *key)
 {
+	return 0;
 }
 
 /* Note: this isn't an assoc_update.  The key must not already exist to call this */
 int assoc_insert(char *key, item * it)
 {
+	return 0;
 }
 
 void assoc_delete(char *key)

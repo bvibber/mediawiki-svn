@@ -46,7 +46,6 @@ item *item_alloc(char *key, int flags, time_t exptime, int nbytes)
 {
     int ntotal, len;
     item *it = NULL;
-    unsigned int id;
 
     len = strlen(key) + 1;
     if (len % 4)
@@ -66,7 +65,6 @@ item *item_alloc(char *key, int flags, time_t exptime, int nbytes)
 
 void item_free(item * it)
 {
-    unsigned int ntotal = ITEM_ntotal(it);
     assert((it->it_flags & ITEM_LINKED) == 0);
     assert(it->refcount == 0);
 
@@ -91,6 +89,7 @@ void item_update(item * it)
 
 int item_replace(item * it, item * new_it)
 {
+	return 0;
 }
 
 char *item_cachedump(unsigned int slabs_clsid, unsigned int limit,
@@ -100,11 +99,6 @@ char *item_cachedump(unsigned int slabs_clsid, unsigned int limit,
     int memlimit = 2 * 1024 * 1024;
     char *buffer;
     int bufcurr;
-    item *it = NULL;
-    int len;
-    int shown = 0;
-    char temp[256];
-
 
     buffer = malloc(memlimit);
     if (buffer == 0)
@@ -119,9 +113,7 @@ char *item_cachedump(unsigned int slabs_clsid, unsigned int limit,
 
 void item_stats(char *buffer, int buflen)
 {
-    int i;
     char *bufcurr = buffer;
-    time_t now = time(0);
 
     if (buflen < 4096) {
 	strcpy(buffer, "SERVER_ERROR out of memory");
