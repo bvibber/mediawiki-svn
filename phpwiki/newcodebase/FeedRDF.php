@@ -29,10 +29,10 @@ AND LENGTH(cur_text) > 75
 ORDER BY cur_timestamp DESC LIMIT 10";
 } else {
 	# 10 most recently edit articles that aren't frickin tiny
-$sql = "SELECT cur_title FROM cur
-WHERE cur_namespace=0 AND cur_is_redirect=0
+$sql = "SELECT rc_title as cur_title FROM recentchanges,cur
+WHERE rc_cur_id=cur_id AND rc_namespace=0 AND rc_this_oldid=0 AND cur_is_redirect=0
 AND LENGTH(cur_text) > 150
-ORDER BY cur_timestamp DESC LIMIT 10";
+ORDER BY rc_timestamp DESC LIMIT 10";
 }
 $res = wfQuery( $sql );
 

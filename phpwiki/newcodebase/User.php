@@ -176,7 +176,7 @@ class User {
 		# check in separate table if there are changes to the talk page
 		$this->mNewtalk=0; # reset talk page status
 		if($this->mId) {		
-			$sql = "SELECT user_id FROM user_newtalk WHERE user_id={$this->mId}";									
+			$sql = "SELECT 1 FROM user_newtalk WHERE user_id={$this->mId}";									
 			$res = wfQuery ($sql,  "User::loadFromDatabase" );
 
 			if (wfNumRows($res)>0) {				
@@ -185,7 +185,7 @@ class User {
 			wfFreeResult( $res );
 		} else {
 			
-			$sql = "SELECT user_ip FROM user_newtalk WHERE user_ip='{$this->mName}'";			
+			$sql = "SELECT 1 FROM user_newtalk WHERE user_ip='{$this->mName}'";			
 			$res = wfQuery ($sql,  "User::loadFromDatabase" );
 			
 			if (wfNumRows($res)>0) {				
