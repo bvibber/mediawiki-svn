@@ -59,7 +59,7 @@ following SQL scripts from the maintenance subdirectory:
 
   archives/patch-ipblocks.sql
   archives/patch-interwiki.sql
-  archives/patch-newindexes.sql
+  archives/patch-indexes.sql
   interwiki.sql
 
 To copy in the Wikipedia language-prefix interwikis as well, add:
