@@ -108,7 +108,10 @@ CREATE TABLE ipblocks (
   ipb_user int(8) unsigned NOT NULL default '0',
   ipb_by int(8) unsigned NOT NULL default '0',
   ipb_reason tinyblob NOT NULL default '',
-  ipb_timestamp char(14) binary NOT NULL default ''
+  ipb_timestamp char(14) binary NOT NULL default '',
+  ipb_auto tinyint(1) NOT NULL default '0',
+  ipb_id int(8) NOT NULL auto_increment,
+  PRIMARY KEY (ipb_id)
 ) TYPE=MyISAM PACK_KEYS=1;
 
 DROP TABLE IF EXISTS image;
@@ -176,4 +179,11 @@ CREATE TABLE searchindex (
   si_text mediumtext NOT NULL default '',
   UNIQUE KEY (si_page)
 ) TYPE=MyISAM PACK_KEYS=1;
+
+CREATE TABLE interwiki (
+  iw_prefix char(32) NOT NULL,
+  iw_url char(127) NOT NULL,
+  iw_local BOOL NOT NULL,
+  UNIQUE KEY iw_prefix (iw_prefix)
+);
 
