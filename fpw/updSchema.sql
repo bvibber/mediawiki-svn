@@ -53,3 +53,23 @@
 # this replaces '_'with ' ' for better search results
 
 # UPDATE cur SET cur_ind_title = REPLACE ( cur_title, '_', ' ' );
+
+# ----- new instructions per 2002 February 19 ----
+
+# New tables that are going to be used by the MostWanted pages and others
+# there is a PHP script to bring these tables up-to-date: updLinks.php
+# Read this script for further instructions.
+
+# CREATE TABLE linked (
+#   linked_to varchar(255) binary NOT NULL default '',
+#   linked_from varchar(255) binary NOT NULL default '',
+#   KEY linked_from (linked_from),
+#   KEY linked_to (linked_to)
+# ) TYPE=MyISAM;
+
+# CREATE TABLE unlinked (
+#   unlinked_from varchar(255) binary NOT NULL default '',
+#   unlinked_to varchar(255) binary NOT NULL default '',
+#   KEY unlinked_from (unlinked_from),
+#   KEY unlinked_to (unlinked_to)
+# ) TYPE=MyISAM;
