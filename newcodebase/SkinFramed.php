@@ -6,14 +6,14 @@ class SkinFramed extends Skin {
 	function useBodyTag()
 	{
 		global $frame;
-		if ( isset ( $frame ) ) { return true; }
-		return false;
+		return ( "set" != $frame );
 	}
 
 	function qbSetting() { return 0; }
 	function beforeContent() { return ""; }
 	function afterContent() { return ""; }
 	function qbLogo() { return ""; }
+	function isFramed() { return true; }
 
 	function getBaseTag()
 	{
@@ -60,7 +60,7 @@ class SkinFramed extends Skin {
 		else { $qs = "?{$qs}&amp;frame="; }
 		$url = "{$wgServer}{$wgScript}{$qs}";
 
-		if ( ! isset ( $frame ) ) {
+		if ( "set" == $frame ) {
 			$s = "<frameset rows='152,*' border=0>\n" .
 			  "<frame marginwidth=0 marginheight=0 frameborder=1 " .
 			  "src=\"{$url}top\" noresize scrolling=no>\n" .
@@ -70,17 +70,15 @@ class SkinFramed extends Skin {
 			  "<frame marginwidth=0 marginheight=0 frameborder=1 " .
 			  "src=\"{$url}body\">\n" .
 			  "</frameset>\n</frameset>\n";
-		} else {
-			if ( "body" == $frame ) {
-				$s = $text;
-				# Bottom links?
-			} else if ( "top" == $frame ) {
-				$s = $this->getTopFrame();
-			} else if ( "side" == $frame ) {
-				$s = $this->quickBar();
-				# $s = spliti( "<hr>", $s, 2 );
-				# $s = $s[1] ;
-			}
+		} else if ( "top" == $frame ) {
+			$s = $this->getTopFrame();
+		} else if ( "side" == $frame ) {
+			$s = $this->quickBar();
+			# $s = spliti( "<hr>", $s, 2 );
+			# $s = $s[1] ;
+		} else if ( "body" == $frame ) {
+			$s = $text;
+			# Bottom links?
 		}
 		return $s;
 	}
