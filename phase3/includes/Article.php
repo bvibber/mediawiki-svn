@@ -2230,4 +2230,30 @@ class Article {
 	}
 }
 
+/**
+ * Check whether an article is a stub
+ *
+ * @public
+ * @param integer $articleID	ID of the article that is to be checked
+ */
+function wfArticleIsStub( $articleID ) {
+	global $wgUser;
+	$fname = 'wfArticleIsStub';
+
+	$threshold = $wgUser->getOption('stubthreshold') ;
+	if ( $threshold > 0 ) {
+		$dbr =& wfGetDB( DB_SLAVE );
+		$s = $dbr->selectRow( array('page', 'text'),
+			array( 'LENGTH(old_text) AS len', 'page_namespace', 'page_is_redirect' ),
+			array( 'page_id' => $articleID, "page.page_latest=text.old_id" ),
+			$fname ) ;
+		if ( $s == false OR $s->page_is_redirect OR $s->page_namespace != 0 ) {
+			return false;
+		}
+		$size = $s->len;
+		return ( $size < $threshold );
+	}
+	return false;
+}
+
 ?>

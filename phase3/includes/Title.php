@@ -150,7 +150,7 @@ class Title {
 	 * Create a new Title from an article ID
 	 * @todo This is inefficiently implemented, the page row is requested
 	 * but not used for anything else
-	 * @param int $id the cur_id corresponding to the Title to create
+	 * @param int $id the page_id corresponding to the Title to create
 	 * @return Title the new object, or NULL on an error
 	 * @access public
 	 */
@@ -1085,7 +1085,7 @@ class Title {
 		}
 
 		# We shouldn't need to query the DB for the size.
-		#$maxSize = $dbr->textFieldSize( 'cur', 'cur_title' );
+		#$maxSize = $dbr->textFieldSize( 'page', 'page_title' );
 		if ( strlen( $r ) > 255 ) {
 			return false;
 		}

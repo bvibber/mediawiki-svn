@@ -1382,24 +1382,7 @@ class Skin {
 				if ( 0 == $aid ) {
 					$retVal = $this->makeBrokenLinkObj( $nt, $text, $query, $trail, $prefix );
 				} else {
-					$threshold = $wgUser->getOption('stubthreshold') ;
-					if ( $threshold > 0 ) {
-						$dbr =& wfGetDB( DB_SLAVE );
-						$s = $dbr->selectRow( 'cur', array( 'LENGTH(cur_text) AS x', 'cur_namespace',
-							'cur_is_redirect' ), array( 'cur_id' => $aid ), $fname ) ;
-						if ( $s !== false ) {
-							$size = $s->x;
-							if ( $s->cur_is_redirect OR $s->cur_namespace != 0 ) {
-								$size = $threshold*2 ; # Really big
-							}
-							$dbr->freeResult( $res );
-						} else {
-							$size = $threshold*2 ; # Really big
-						}
-					} else {
-						$size = 1 ;
-					}
-					if ( $size < $threshold ) {
+					if ( wfArticleIsStub( $aid ) ) {
 						$retVal = $this->makeStubLinkObj( $nt, $text, $query, $trail, $prefix );
 					} else {
 						$retVal = $this->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix );

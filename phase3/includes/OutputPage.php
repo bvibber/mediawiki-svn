@@ -832,7 +832,8 @@ class OutputPage {
 		if ( !empty( $wgLinkHolders['namespaces'] ) ) {
 			wfProfileIn( $fname.'-check' );
 			$dbr =& wfGetDB( DB_SLAVE );
-			$page = $dbr->tableName( 'page' );
+			$pageTable = $dbr->tableName( 'page' );
+			$textTable = $dbr->tableName( 'text' );
 			$sk = $wgUser->getSkin();
 			$threshold = $wgUser->getOption('stubthreshold');
 			
@@ -861,12 +862,16 @@ class OutputPage {
 					# Not in the link cache, add it to the query
 					if ( !isset( $current ) ) {
 						$current = $val;
-						$query =  "SELECT page_id, page_namespace, page_title";
+						$tables = $pageTable;
+						$join = '';
+						$query =  'SELECT page_id, page_namespace, page_title';
 						if ( $threshold > 0 ) {
-							wfDebugDieBacktrace( 'Need to fix stub threshold' );
-							$query .= ", LENGTH(cur_text) AS cur_len, cur_is_redirect";
+							#wfDebugDieBacktrace( 'Need to fix stub threshold' );
+							$query .= ', LENGTH(old_text) AS page_len, page_is_redirect';
+							$tables .= ", $textTable";
+							$join = 'page.page_latest=text.old_id AND';
 						} 
-						$query .= " FROM $page WHERE (page_namespace=$val AND page_title IN(";
+						$query .= " FROM $tables WHERE $join (page_namespace=$val AND page_title IN(";
 					} elseif ( $current != $val ) {
 						$current = $val;
 						$query .= ")) OR (page_namespace=$val AND page_title IN(";
@@ -895,8 +900,7 @@ class OutputPage {
 					$wgLinkCache->addGoodLink( $s->page_id, $pdbk );
 					
 					if ( $threshold >  0 ) {
-						$size = $s->cur_len;
-						if ( $s->cur_is_redirect || $s->cur_namespace != 0 || $length < $threshold ) {
+						if ( $s->page_is_redirect || $s->page_namespace != 0 || $s->page_len < $threshold ) {
 							$colours[$pdbk] = 1;
 						} else {
 							$colours[$pdbk] = 2;
