@@ -88,8 +88,8 @@
 );
 
 /* private */ $wgBookstoreListDe = array(
-	"AddALL" => "http://www.addall.com/New/Partner.cgi?query=$1&type=ISBN",
-	"PriceSCAN" => "http://www.pricescan.com/books/bookDetail.asp?isbn=$1",
+	"Verzeichnis lieferbarer B&uuml;cher" => "http://www.buchhandel.de/sixcms/list.php?page=buchhandel_profisuche_frameset&suchfeld=isbn&suchwert=$1&x=0&y=0",
+	"abebooks.de" => "http://www.abebooks.de/servlet/BookSearchPL?ph=2&isbn=$1",
 	"Amazon.de" => "http://www.amazon.de/exec/obidos/ISBN=$1"
 );
 
