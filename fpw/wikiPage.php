@@ -128,7 +128,7 @@ class WikiPage extends WikiTitle {
             $link = "<a href=\"$link&amp;action=view&amp;redirect=no\">".$this->getNiceTitle()."</a>" ;
             $link = str_replace ( "$1" , $link , $wikiRedirectFrom ) ;
             $this->backLink = $link ;
-	    if ( preg_match ( '/^#redirect\s*\[\[\s*([^\]\n]+)\s*\]\].*$/i' , $this->contents , $regs ) ) {
+	    if ( preg_match ( '/^#redirect\s*\[\[\s*([^\]\n]+)\s*\]\]/i' , $this->contents , $regs ) ) {
 	    	$target = $regs[1] ;
             	$this->load ( trim($target) , false ) ;
 		}
