@@ -1519,23 +1519,25 @@ class Title {
 	 * @access public
 	 */
 	function isValidMoveTarget( $nt ) {
-		wfDebugDieBacktrace( "FIXME: This function needs to be fixed up." );
 		
 		$fname = 'Title::isValidMoveTarget';
 		$dbw =& wfGetDB( DB_MASTER );
 
 		# Is it a redirect?
 		$id  = $nt->getArticleID();
-		$obj = $dbw->getArray( 'page', array( 'page_is_redirect','cur_text' ), 
-			array( 'page_id' => $id ), $fname, 'FOR UPDATE' );
+		$obj = $dbw->getArray( array( 'page', 'text') ,
+			array( 'page_is_redirect','old_text' ), 
+			array( 'page_id' => $id, 'page_latest=old_id' ),
+			$fname, 'FOR UPDATE' );
 
-		if ( !$obj || 0 == $obj->cur_is_redirect ) { 
+
+		if ( !$obj || 0 == $obj->page_is_redirect ) { 
 			# Not a redirect
 			return false; 
 		}
 
 		# Does the redirect point to the source?
-		if ( preg_match( "/\\[\\[\\s*([^\\]\\|]*)]]/", $obj->cur_text, $m ) ) {
+		if ( preg_match( "/\\[\\[\\s*([^\\]\\|]*)]]/", $obj->old_text, $m ) ) {
 			$redirTitle = Title::newFromText( $m[1] );
 			if( !is_object( $redirTitle ) ||
 				$redirTitle->getPrefixedDBkey() != $this->getPrefixedDBkey() ) {
@@ -1544,12 +1546,14 @@ class Title {
 		}
 
 		# Does the article have a history?
-		$row = $dbw->getArray( 'old', array( 'old_id' ), 
-			array( 
-				'old_namespace' => $nt->getNamespace(),
-				'old_title' => $nt->getDBkey() 
+		$row = $dbw->getArray( array( 'page', 'revision'),
+			array( 'rev_id' ), 
+			array( 'page_namespace' => $nt->getNamespace(),
+				'page_title' => $nt->getDBkey(),
+				'page_id=rev_page AND page_latest != rev_id'
 			), $fname, 'FOR UPDATE' 
 		);
+		wfDebugDieBacktrace( "FIXME: This function needs to be fixed up." );
 
 		# Return true if there was no history
 		return $row === false;

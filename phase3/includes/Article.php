@@ -496,9 +496,9 @@ class Article {
 				}
 				$rid = $rt->getArticleID();
 				if ( 0 != $rid ) {
-					$redirRow = $dbr->selectRow( array( 'old', 'revision', 'page' ),
+					$redirRow = $dbr->selectRow( array( 'text', 'revision', 'page' ),
 						$this->getContentFields(),
-						"page_id='$rid' AND rev_page=page_id AND rev_id=page_lastest AND old_id=rev_id",
+						"page_id='$rid' AND rev_page=page_id AND rev_id=page_latest AND old_id=rev_id",
 						$fname, $this->getSelectOptions() );
 
 					if ( $redirRow !== false ) {
