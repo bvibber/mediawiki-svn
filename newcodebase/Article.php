@@ -4,14 +4,14 @@
 class Article {
 	/* private */ var $mTitle; # WikiTitle object
 	/* private */ var $mContent, $mContentLoaded;
-	/* private */ var $mTimestamp, $mParams;
+	/* private */ var $mUser, $mTimestamp, $mParams;
 	/* private */ var $mCounter;
 
 	function Article( $t )
 	{
 		$this->mTitle = $t;
 		$this->mContentLoaded = false;
-		$this->mCounter = -1; # Not loaded
+		$this->mUser = $this->mCounter = -1; # Not loaded
 		$this->mTimestamp = "";
 	}
 
@@ -33,16 +33,17 @@ class Article {
 		if ( 0 == $id ) return;
 
 		$conn = wfGetDB();
-		$sql = "SELECT cur_text, cur_timestamp, cur_counter, " .
+		$sql = "SELECT cur_text,cur_timestamp,cur_user,cur_counter, " .
 		  "cur_params FROM cur WHERE cur_id=$id";
 		wfDebug( "Art: 1: $sql\n" );
 		$result = mysql_query( $sql, $conn );
 
-		if ( ! $result ) {
+		if ( ! $result || 0 == mysql_num_rows( $result ) ) {
 			$this->mContent = "Fatal database error.\n";
 		} else {
 			$s = mysql_fetch_object( $result );
 			$this->mContent = $s->cur_text;
+			$this->mUser = $s->cur_user;
 			$this->mCounter = $s->cur_counter;
 			$this->mParams = $s->cur_params;
 			$this->mTimestamp = $s->cur_timestamp;
@@ -62,12 +63,32 @@ class Article {
 		return $this->mCounter;
 	}
 
+	/* private */ function loadLastEdit()
+	{
+		if ( -1 != $this->mUser ) return;
+
+		$conn = wfGetDB();
+		$sql = "SELECT cur_user,cur_timestamp FROM cur WHERE " .
+		  "cur_id=" . $this->getID();
+		wfDebug( "Art: 3: $sql\n" );
+
+		$res = mysql_query( $sql, $conn );
+		if ( "" != $res ) {
+			$s = mysql_fetch_object( $res );
+			$this->mUser = $s->cur_user;
+			$this->mTimestamp = $s->mTimestamp;
+		}
+	}
+
 	function getTimestamp()
 	{
-		if ( "" == $this->mTimestamp ) {
-			$id = $this->getID();
-			$this->mTimestamp = wfGetSQL( "cur", "cur_timestamp", "cur_id=$id" );
-		}
+		$this->loadLastEdit();
+		return $this->mTimestamp;
+	}
+
+	function getUser()
+	{
+		$this->loadLastEdit();
 		return $this->mTimestamp;
 	}
 
@@ -112,6 +133,7 @@ class Article {
 		global $wpTextbox1, $wpSummary, $wpSave, $wpPreview;
 		global $wpMinoredit, $wpEdittime, $wpTextbox2;
 
+		$isConflict = false;
 		if ( "save" == $formtype ) {
 			if ( $wgUser->isBlocked() ) {
 				$this->blockedIPpage();
@@ -119,42 +141,42 @@ class Article {
 			}
 			$aid = $wgTitle->getArticleID();
 			if ( 0 == $aid ) { # New aritlce
-				$conn = wfGetDB();
-				$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
-				  "cur_comment,cur_user,cur_timestamp) VALUES ('" .
-				  $wgTitle->getNamespace() . "', '" .
-				  $wgTitle->getDBKey() . "', '" .
-				  wfStrencode( $wpTextbox1 ) . "', '" .
-				  wfStrencode( $wpSummary ) . "', '" . $wgUser->getID() .
-				  "', '" . date( "YmdHis" ) . "')";
-
-				wfDebug( "Art: 2: $sql\n" );
-				$res = mysql_query( $sql, $conn );
-				$this->editUpdates();
-
-				$wgOut->setPageTitle( wfMsg( "newarticle" ) . ": " .
-				  $wgTitle->getPrefixedText() );
-				$wgOut->addWikiText( $wpTextbox1 );
+				$this->insertArticle( $wpTextbox1, $wpSummary );
 				return;
 			}
 			# Check for edit conflict
 			#
-
-			# All's well: save the article here
-			#
-			$conn = wfGetDB();
-			$sql = "";
-			$this->editUpdates();
+			if ( $this->getUser() != $wgUser->getID() &&
+			  $this->mTimestamp > $wpEdittime ) {
+				$isConflict = true;
+			} else {
+				# All's well: save the article here
+				$this->updateArticle( $wpTextbox1, $wpSummary, $wpMinoredit );
+				return;
+			}
 		}
 		if ( "initial" == $formtype ) {
-			$wpEdittime = time( "YmdHis" );
+			$wpEdittime = $this->getTimestamp();
 			$wpTextbox1 = $this->getContent();
 			$wpSummary = "*";
 		}
-		$wgOut->setPageTitle( "Editing " . $wgTitle->getPrefixedText() );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 		$wgOut->setArticleFlag( false );
 
+		if ( $isConflict ) {
+			$s = str_replace( "$1", $wgTitle->getPrefixedText(),
+			  wfMsg( "editconflict" ) );
+			$wgOut->setPageTitle( $s );
+			$wgOut->addHTML( wfMsg( "explainconflict" ) );
+
+			$wpTextbox2 = $wpTextbox1;
+			$wpTextbox1 = $this->getContent();
+			$wpEdittime = $this->getTimestamp();
+		} else {
+			$s = str_replace( "$1", $wgTitle->getPrefixedText(),
+			  wfMsg( "editing" ) );
+			$wgOut->setPageTitle( $s );
+		}
 		$rows = $wgUser->getOption( "rows" );
 		$cols = $wgUser->getOption( "cols" );
 		$action = "$wgServer$wgScript?title=" .
@@ -174,18 +196,78 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 <input tabindex=3 type=checkbox value=1 name='wpMinoredit'>$minor<br>
 <input tabindex=4 type=submit value='$save' name='wpSave'>
 <input tabindex=5 type=submit value='$prev' name='wpPreview'>
-<input type=hidden value='$wpEdittime' name='wpEdittime'>
-</form>\n" );
+<input type=hidden value='$wpEdittime' name='wpEdittime'>\n" );
+
+		if ( $isConflict ) {
+			$wgOut->AddHTML( "<h2>" . wfMsg( "yourtext" ) . "</h2>
+<textarea tabindex=6 name='wpTextbox2' rows=$rows cols=$cols style='width:100%' wrap=virtual>\n" );
+		}
+		$wgOut->addHTML( "</form>\n" );
 
 		if ( "preview" == $formtype ) {
 			$wgOut->addHTML( "<h2>" . wfMsg( "preview" ) . "</h2>\n" );
+			if ( $isConflict ) {
+				$wgOut->addHTML( "<h2>" . wfMsg( "previewconflict" ) .
+				  "</h2>\n" );
+			}
 			$wgOut->addWikiText( $wpTextbox1 );
+			$wgOut->addHTML( "<p><large>" . wfMsg( "note" ) .
+			  wfMsg( "previewnote" ) . "</large>\n" );
 		}
+	}
+
+	# Theoretically we could defer these whole insert and update
+	# functions for after display, but that's taking a big leap
+	# leap of faith, and I want to be able to report database
+	# errors at some point.
+	#
+	/* private */ function insertArticle( $text, $summary )
+	{
+		global $wgOut, $wgUser, $wgTitle;
+
+		$conn = wfGetDB();
+		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
+		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit) VALUES ('" .
+		  $wgTitle->getNamespace() . "', '" . $wgTitle->getDBKey() . "', '" .
+		  wfStrencode( $text ) . "', '" . wfStrencode( $summary ) . "', '" .
+		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', 0)";
+
+		wfDebug( "Art: 2: $sql\n" );
+		$res = mysql_query( $sql, $conn );
+		$this->editUpdates();
+
+		$s = str_replace( "$1", $wgTitle->getPrefixedText,
+		  wfMsg( "newarticle" ) );
+		$wgOut->setPageTitle( $s );
+		$wgOut->addWikiText( $text );
+	}
+
+	function updateArticle( $text, $summary, $minor )
+	{
+		global $wgOut, $wgUser, $wgTitle;
+
+		if ( $minor) { $me = 1; } else { $me = 0; }
+
+		$conn = wfGetDB();
+		$sql = "UPDATE cur SET cur_text='" .  wfStrencode( $text ) .
+		  "',cur_comment='" .  wfStrencode( $summary ) .
+		  "',cur_minor_edit=$me, cur_user=" . $wgUser->getID() .
+		  ", cur_timestamp='" . date( "YmdHis" ) . "' " .
+		  "WHERE cur_id=" . $this->getID();
+
+		wfDebug( "Art: 4: $sql\n" );
+		$res = mysql_query( $sql, $conn );
+		$this->editUpdates();
+
+		$s = str_replace( "$1", $wgTitle->getPrefixedText(),
+		  wfMsg( "updated" ) );
+		$wgOut->setPageTitle( $s );
+		$wgOut->addWikiText( $text );
 	}
 
 	function viewprintable()
 	{
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgTitle;
 
 		$n = $this->mTitle->getPrefixedText();
 		$wgOut->setPageTitle( $n );

@@ -126,7 +126,7 @@ function wfNumberOfArticles()
 	wfDebug( "Glob: 1: $sql\n" );
 
 	$res = mysql_query( $sql, $conn );
-	if ( ! $res ) { return; }
+	if ( ! $res || 0 == mysql_num_rows( $res) ) { return; }
 	else {
 		$s = mysql_fetch_object( $res );
 		$wgTotalViews = $s->ss_total_views;
