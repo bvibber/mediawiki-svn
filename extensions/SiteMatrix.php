@@ -46,7 +46,7 @@ class SiteMatrixPage extends SpecialPage
 			# Find suffix
 			foreach ( $sites as $site ) {
 				if ( preg_match( "/(.*)$site\$/", $db, $m ) ) {
-					$lang = $m[1];
+					$lang = str_replace( '_', '-', $m[1] );
 					if ( empty( $xLanglist[$lang] ) && $site == 'wiki' ) {
 						$specials[] = $lang;
 					} else {
