@@ -84,7 +84,7 @@ function rebuildLinkTablesPass2()
 	$sql = "DELETE FROM brokenlinks";
 	wfQuery( $sql );
 
-	$sql = "DELETE FROM links";
+	$sql = "DELETE FROM imagelinks";
 	wfQuery( $sql );
 
 	$ins = $wgLang->getNsText( Namespace::getImage() );
