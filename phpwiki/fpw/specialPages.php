@@ -834,6 +834,12 @@ function upload () {
 		if ( !$isSysop ) return "You are neither an editor nor a sysop. Return to the <a href=\"$THESCRIPT?action=upload\">Upload page</a>" ;
 		if (is_file("upload/$removeFile") ) unlink ("./upload/$removeFile");
 		$message = "File <b>$removeFile</b> deleted!" ;
+
+		# Appending log page "log:Uploads"
+		$now = date ( "Y-m-d H:i:s" , time () ) ;
+		$logText = "*On $now, [[user:$user->name|$user->name]] deleted file '''$removeFile'''\n" ;
+		makeLog ( "log:Uploads" , $logText , "Deletion of file $removeFile" ) ;
+
 		unset ( $removeFile ) ;
 	} else if (isset($Upload_name) or isset($Upload)) {
 		if ( $no_copyright != "AFFIRMED" ) return "<nowiki>You need to affirm that the file is not violating copygights. Return to the <a href=\"$THESCRIPT?title=special:upload\">Upload page</a></nowiki>" ;
@@ -852,6 +858,11 @@ function upload () {
 		copy ( $Upload , "./upload/$Upload_name" ) ;
 		system ("chmod 777 ./upload/$Upload_name");
 		$message = "File <b>$Upload_name</b> was successfully uploaded!" ;
+
+		# Appending log page "log:Uploads"
+		$now = date ( "Y-m-d H:i:s" , time () ) ;
+		$logText = "*On $now, [[user:$user->name|$user->name]] uploaded file '''$Upload_name'''\n" ;
+		makeLog ( "log:Uploads" , $logText , "Upload of file $UploadName" ) ;
 
 		unset ( $Upload_name ) ;
 	}
@@ -876,6 +887,7 @@ function upload () {
 	$ret .= "a big file and you have a slow Internet connection.</li>\n";
 	$ret .= "<li>A message will tell you when the file has successfully uploaded.</li>\n";
 	$ret .= "<li>You can upload as many files you like. Please don't try to crash our server, ha ha.</li>\n";
+	$ret .= "<li>All uploads and deletions are logged in the <a href=\"$THESCRIPT?title=Log:Uploads\">uploads log</a>.</li>\n";
 	$ret .= "</ul>\n";
 
 	$ret .= " <form enctype=\"multipart/form-data\" action=\"$THESCRIPT?title=special:upload\" method=post>\n";
@@ -1060,6 +1072,19 @@ function removeFromLinkList ( $item , $link ) {
 	mysql_close ( $connection ) ;	
 	}
 
+function makeLog ( $logPage , $logText , $logMessage , $doAppend = true ) {
+	global $user ;
+	$np = new wikiPage ;
+	$np->setTitle ( $logPage ) ;
+	$np->ensureExistence () ;
+	$log = getMySQL ( "cur" , "cur_text" , "cur_title=\"".$np->secureTitle."\"" ) ;
+	if ( $doAppend ) {
+		$log = $logText.$log ;
+	} else { # Not implemented
+		}
+	$np->setEntry ( $log , $logMessage , $user->id , $user->name , 1 ) ;
+	}
+
 function deletepage () {
 	global $THESCRIPT , $target , $user , $iamsure ;
 	global $vpage ;
@@ -1081,13 +1106,10 @@ function deletepage () {
 		mysql_close ( $connection ) ;
 
 		# Appending log page "log:Page Deletions"
-		$log = getMySQL ( "cur" , "cur_text" , "cur_title=\"Log:Page_Deletions\"" ) ;
 		$now = date ( "Y-m-d H:i:s" , time () ) ;
-		$log = "*On $now, [[user:$user->name|$user->name]] permanently deleted page \"$target\"\n$log" ;
-		$np = new wikiPage ;
-		$np->setTitle ( "log:Page Deletions" ) ;
-		$np->ensureExistence () ;
-		$np->setEntry ( $log , "Permanent deletion of \"$target\"" , $user->id , $user->name , 1 ) ;
+		$logTarget = $vpage->getNiceTitle ( $target ) ;
+		$logText = "*On $now, [[user:$user->name|$user->name]] permanently deleted page '''$logTarget'''\n" ;
+		makeLog ( "log:Page Deletions" , $logText , "Permanent deletion of $logTarget" ) ;
 
 		removeFromLinkList ( "cur_linked_links" , $target ) ;
 		removeFromLinkList ( "cur_unlinked_links" , $target ) ;
