@@ -12,6 +12,7 @@ function wfSpecialMaintenance ()
 	global $wgUser, $wgOut, $wgLang, $wgTitle, $subfunction, $wgLanguageCode, $submitmll;
 	if ( $subfunction == "disambiguations" ) return wfSpecialDisambiguations() ;
 	if ( $subfunction == "doubleredirects" ) return wfSpecialDoubleRedirects() ;
+	if ( $subfunction == "brokenredirects" ) return wfSpecialBrokenRedirects() ;
 	if ( $subfunction == "selflinks" ) return wfSpecialSelfLinks() ;
 	if ( $subfunction == "missinglanguagelinks" ) return wfSpecialMissingLanguageLinks() ;
 	if ( isset ( $submitmll ) ) return wfSpecialMissingLanguageLinks() ;
@@ -22,6 +23,7 @@ function wfSpecialMaintenance ()
 	$r .= "<UL>\n" ;
 	$r .= "<li>".getMPL("disambiguations")."</li>\n" ;
 	$r .= "<li>".getMPL("doubleredirects")."</li>\n" ;
+	$r .= "<li>".getMPL("brokenredirects")."</li>\n" ;
 	$r .= "<li>".getMPL("selflinks")."</li>\n" ;
 
 	$r .= "<li>";
@@ -160,6 +162,45 @@ function wfSpecialDoubleRedirects()
 		$l2 = $sk->makeKnownLink ( $obj->ti , "" , "redirect=no" ) ;
 		$l3 = $sk->makeBrokenLink ( $obj->l_from , "(".wfMsg("qbedit").")" , "redirect=no" ) ;
 		$s .= "<li>{$l1} {$l3} => {$l2} (\"{$n}\")</li>\n" ;
+	}
+	wfFreeResult( $res );
+	$s .= "</ol>";
+	$wgOut->addHTML( $s );
+	$wgOut->addHTML( "<p>{$sl}\n" );
+}
+
+function wfSpecialBrokenRedirects()
+{
+	global $wgUser, $wgOut, $wgLang, $wgTitle;
+	global $limit, $offset; # From query string
+	$fname = "wfSpecialBrokenRedirects";
+
+	if ( ! $limit ) {
+		$limit = $wgUser->getOption( "rclimit" );
+		if ( ! $limit ) { $limit = 50; }
+	}
+	if ( ! $offset ) { $offset = 0; }
+
+	$sql = "SELECT bl_to,cur_title FROM brokenlinks,cur WHERE cur_is_redirect=1 AND cur_namespace=0 AND bl_from=cur_id LIMIT {$offset}, {$limit}" ;
+
+	$res = wfQuery( $sql, $fname );
+
+	$top = getMaintenancePageBacklink();
+	$top .= "<p>".wfMsg("brokenredirectstext")."</p><br>\n";
+	$top .= SearchEngine::showingResults( $offset, $limit );
+	$wgOut->addHTML( "<p>{$top}\n" );
+
+	$sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
+	$sl = str_replace ( "REPLACETHIS" , sns().":Maintenance&subfunction=brokenredirects" , $sl ) ;
+	$wgOut->addHTML( "<br>{$sl}\n" );
+
+	$sk = $wgUser->getSkin();
+	$s = "<ol start=" . ( $offset + 1 ) . ">";
+	while ( $obj = wfFetchObject( $res ) ) {
+		$l1 = $sk->makeKnownLink ( $obj->cur_title , "" , "redirect=no" ) ;
+		$l2 = $sk->makeBrokenLink ( $obj->cur_title , "(".wfMsg("qbedit").")" , "redirect=no" ) ;
+		$l3 = $sk->makeBrokenLink ( $obj->bl_to , "" , "redirect=no" ) ;
+		$s .= "<li>{$l1} {$l2} => {$l3}</li>\n" ;
 	}
 	wfFreeResult( $res );
 	$s .= "</ol>";
