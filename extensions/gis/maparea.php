@@ -81,9 +81,11 @@ class maparea {
 			$lat = ($x->gis_latitude_min+$x->gis_latitude_max)/2;
 			$lon = ($x->gis_longitude_min+$x->gis_longitude_max)/2;
 			$type = $x->gis_type;
+			$name = $g->get_title($id);
 			if ($type == "") $type = "unknown";
-			$out .= "==[[" . $g->get_title($id) . "]]==\r\n"
+			$out .= "==[[" . $name . "]]==\r\n"
 			      . ";type:" . $type . "\r\n"
+			      . ";name:" . $name . "\r\n"
 			      . ";data:" . $this->map_pos($lat,$lon) . "\r\n"
 			      . "\r\n";
 		}

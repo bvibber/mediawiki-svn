@@ -31,10 +31,6 @@
 
 include_once ( "gissettings.php" ) ;
 
-# if ( isset ( $wikibasedir ) )
-#       {
-#       require_once( "{$wikibasedir}/extensions/gis/geo.php" );
-#       }
 require_once( 'transversemercator.php' );
 
 /**
@@ -59,10 +55,10 @@ class map_sources {
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
 		$wgOut->setPagetitle( $this->mapsources );
-		$this->showList();
+		$wgOut->addWikiText( $this->build_output() );
 	}
 	
-	function showList() {
+	function build_output() {
 		global $wgOut, $wgUser, $wgContLang;
 
 		if (($e = $this->p->get_error()) != "") {
@@ -70,7 +66,7 @@ class map_sources {
 			       "<p>" . htmlspecialchars( $e ) . "</p>");
 			$wgOut->output();
 			wfErrorExit();
-			return;
+			return "";
 		}
 
 		$attr = $this->p->get_attr();
@@ -219,17 +215,17 @@ class map_sources {
 			$wgOut->addHTML( 
 			       "<p>".
 			       htmlspecialchars( "Please add this page: ".
-						  $bstitle->getText() ));
+						  $bstitle->getText() )."</p>");
 			$wgOut->output();
 			wfErrorExit();
-			return;
+			return "";
 		}
 		$bstext = $bsarticle->getContent( false ); # allow redir
 
 		/*
 		 * Replace in page
 		 */
-		$out = str_replace( "{latdegdec}",       $lat['deg'],
+		return str_replace( "{latdegdec}",       $lat['deg'],
 		       str_replace( "{londegdec}",       $lon['deg'],
 		       str_replace( "{londegneg}",       -$lon['deg'],
 		       str_replace( "{latdegint}",       $latdegint,
@@ -265,7 +261,6 @@ class map_sources {
 		       str_replace( "{region}",          $attr['region'],
 		       str_replace( "{page}",            $attr['page'],
 		       $bstext )))))))))))))))))))))))))))))))))));
-		$wgOut->addWikiText( $out );
 	}
 }
 
