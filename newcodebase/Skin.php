@@ -827,12 +827,12 @@ class Skin {
                         if ( $threshold > 0 ) {
                                 $res = wfQuery ( "SELECT length(cur_text) AS x, cur_namespace, cur_is_redirect FROM cur WHERE cur_id='{$aid}'" ) ;
 
-                                if ( mysql_num_rows( $res ) > 0 ) {
-                                        $s = mysql_fetch_object( $res );
+                                if ( wfNumRows( $res ) > 0 ) {
+                                        $s = wfFetchObject( $res );
                                         $size = $s->x;
                                         if ( $s->cur_is_redirect OR $s->cur_namespace != 0 )
                                                 $size = $threshold*2 ; # Really big
-                                        mysql_free_result( $res );
+                                        wfFreeResult( $res );
                                 } else $size = $threshold*2 ; # Really big
                         } else $size = 1 ;
 
