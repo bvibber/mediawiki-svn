@@ -243,7 +243,7 @@ class Skin {
 				$q = "";
 			} else { $q = "returnto={$rt}"; }
 
-			$s .= $n . "\n<br>" . $this->makeKnownLink( "Special:Userlogin",
+			$s = $n . "\n<br>" . $this->makeKnownLink( "Special:Userlogin",
 			  wfMsg( "login" ), $q );
 		} else {
 			$n = $wgUser->getName();
@@ -262,7 +262,7 @@ class Skin {
 	{
 		global $wgServer, $wgScript;
 
-		$s .= "<form method=get action=\"$wgServer$wgScript\">"
+		$s = "<form method=get action=\"$wgServer$wgScript\">"
 		  . "<input type=text name=\"search\" size=16 value=\"\">\n"
 		  . "<input type=submit value=\"" . wfMsg( "search" )
 		  . "\"></form>";
@@ -275,7 +275,7 @@ class Skin {
 		global $wgOut;
 		$sep = " | ";
 
-		$s .= $this->mainPageLink() . $sep
+		$s = $this->mainPageLink() . $sep
 		  . $this->specialLink( "recentchanges" );
 		if ( $wgOut->isArticle() ) {
 			$s .=  $sep . $this->editThisPage()
@@ -364,6 +364,7 @@ class Skin {
 			$n = $wgTitle->getPrefixedText();
 			$t = wfMsg( "editthispage" );
 			$oid = "";
+			$red = "";
 			if ( $oldid ) { $oid = "&amp;oldid={$oldid}"; }
 			if ( $redirect ) { $red = "&amp;redirect={$redirect}"; }
 			$s = $this->makeKnownLink( $n, $t, "action=edit{$oid}{$red}" );

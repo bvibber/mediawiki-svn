@@ -528,7 +528,7 @@ class OutputPage {
 
 		$v = date( "m" );
 		$text = str_replace( "{{CURRENTMONTH}}", $v, $text );
-		$v = $wgLang->getMonthName( date( "F" ) );
+		$v = $wgLang->getMonthName( date( "n" ) );
 		$text = str_replace( "{{CURRENTMONTHNAME}}", $v, $text );
 		$v = date( "j" );
 		$text = str_replace( "{{CURRENTDAY}}", $v, $text );
@@ -742,7 +742,7 @@ class OutputPage {
 		if ( "" == $p ) { $p = "index,follow"; }
 		$ret .= "<meta name=\"robots\" content=\"$p\">\n";
 
-		if ( count( $this->keywords ) > 0 ) {
+		if ( count( $this->mKeywords ) > 0 ) {
 			$ret .= "<meta name=\"keywords\" content=\"" .
 			  implode( ",", $this->mKeywords ) . "\">\n";
 		}

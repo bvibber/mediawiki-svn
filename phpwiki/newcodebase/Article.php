@@ -250,7 +250,7 @@ class Article {
 			}
 			$aid = $wgTitle->getArticleID();
 			if ( 0 == $aid ) { # New aritlce
-				$this->insertNewArticle( $wpTextbox1, $wpSummary, $wpMinorEdit );
+				$this->insertNewArticle( $wpTextbox1, $wpSummary, $wpMinoredit );
 				return;
 			}
 			# Check for edit conflict. TODO: check oldid here?
