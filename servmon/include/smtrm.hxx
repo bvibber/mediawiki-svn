@@ -26,9 +26,7 @@ public:
 	virtual void wrt(str, bool = false) = 0;
 	virtual void chgrt(handler_node* newrt) = 0;
 	virtual void readline(readline_cb_t) = 0;
-	virtual void error(str msg);
-	virtual void warn(str msg);
-	virtual void inform(str msg);
+
 	virtual void message(int fac, int msg, sm$msgarg = sm$msgarg(), sm$msgarg = sm$msgarg(), sm$msgarg = sm$msgarg());
 	virtual str getdata(str v) const;
 	virtual void setdata(str v, str d);

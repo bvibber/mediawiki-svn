@@ -74,7 +74,7 @@ HDL(cmd_enable) {
 		if (smauth::authebl(pass))
 			trm.setlevel(16);
 		else
-			trm.error("Authentication failure.");
+			trm.message(SM$FAC_AUTH, SM$MSG_AUTHFAIL);
 	}
 };
 
@@ -88,7 +88,7 @@ HDL(cmd_disable) {
 HDL(cmd_login) {
 	EX1(cd) {
 		if (!cd.term.is_interactive()) {
-			cd.term.error("Cannot log in on a non-interactive terminal.");
+			cd.term.message(SM$FAC_TRM, SM$MSG_BATCHTERM);
 			return true;
 		}
                 cd.term.wrt("Type username: ");
@@ -118,10 +118,9 @@ HDL(cmd_login) {
 HDL(cmd_exit) {
 	EX1(cd) {
 		if (!cd.term.is_interactive()) {
-			cd.term.error("Cannot exit non-interactive terminals.");
+			cd.term.message(SM$FAC_TRM, SM$MSG_BATCHTERM);
 			return true;
 		}
-		cd.term.inform("Bye");
 		return false;
 	}
 };
@@ -141,7 +140,7 @@ HDL(cfg_eblpass) {
 	void gotp2(smtrm::terminal& trm, std::string const& p2) const {
 		trm.echo(true);
 		if (trm.getdata("pass") != p2) {
-			trm.error("Not confirmed.");
+			trm.message(SM$FAC_TRM, SM$MSG_NOCONF);
 		} else {
 			SMI(smcfg::cfg)->storestr("/core/enable_password", p2);
 		}
@@ -167,7 +166,7 @@ HDL(chg_parser) {
 HDL(cfg_userpass) {
 	EX1(cd) {
 		if (smauth::usr_exists(cd.p(0))) {
-			cd.term.error("User already exists.");
+			cd.term.message(SM$FAC_AUTH, SM$MSG_USREXISTS, cd.p(0));
 			return true;
 		}
 		cd.term.setdata("username", cd.p(0));
@@ -186,7 +185,7 @@ HDL(cfg_userpass) {
 HDL(cfg_no_user) {
 	EX1(cd) {
 		if (!smauth::usr_exists(cd.p(0))) {
-			cd.term.error("No such user.");
+			cd.term.message(SM$FAC_AUTH, SM$MSG_NOUSER, cd.p(0));
 			return true;
 		}
 		smauth::del_usr(cd.p(0));
@@ -204,7 +203,7 @@ HDL(cfg_irc_servnick) {
 HDL(cfg_irc_servsecnick) {
 	EX1(cd) {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
-			cd.term.error("No such server.");
+			cd.term.message(SM$FAC_IRC, SM$MSG_UNKSERV, cd.p(0));
 			return true;
 		}
 		SMI(smirc::cfg)->server_set_secnick(cd.p(0), cd.p(1));
@@ -222,7 +221,7 @@ HDL(cfg_irc_channel) {
 HDL(cfg_irc_nochannel) {
 	EX1(cd) {
 		if (!SMI(smirc::cfg)->nochannel(cd.p(0)))
-			cd.term.error("No such channel.");
+			cd.term.message(SM$FAC_IRC, SM$MSG_UNKCHAN, cd.p(0));
 		return true;
 	}
 };
@@ -232,7 +231,7 @@ HDL(cfg_irc_channel_level) {
 		try {
 			SMI(smirc::cfg)->channel_level(cd.p(0), b::lexical_cast<int>(cd.p(1)));
 		} catch (b::bad_lexical_cast&) {
-			cd.term.error("Invalid number.");
+			cd.term.message(SM$FAC_TRM, SM$MSG_BADNUM, cd.p(0));
 		}
 		return true;
 	}
@@ -241,7 +240,7 @@ HDL(cfg_irc_channel_level) {
 HDL(cfg_irc_noserver) {
 	EX1(cd) {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
-			cd.term.error("No such server.");
+			cd.term.message(SM$FAC_IRC, SM$MSG_UNKSERV, cd.p(0));
 			return true;
 		}
 		SMI(smirc::cfg)->remove_server(cd.p(0));
@@ -253,12 +252,11 @@ HDL(cmd_irc_showchannels) {
 	EX1(cd) {
 		try {
 			std::set<std::string> channels = SMI(smcfg::cfg)->fetchlist("/irc/channels");
-			cd.term.inform("Currently configured channels:");
 			FE_TC_AS(std::set<std::string>, channels, i) {
 				cd.term.wrtln("    " + *i);
 			}
 		} catch (smcfg::nokey&) {
-			cd.term.inform("No channels configured.");
+			cd.term.message(SM$FAC_IRC, SM$MSG_NOCHAN);
 		}
 		return true;
 	}
@@ -275,12 +273,12 @@ HDL(cmd_irc_showserver) {
 					execute(cd2);
 				}
 			} catch (smcfg::nokey&) {
-				cd.term.inform("No servers configured");
+				cd.term.message(SM$FAC_IRC, SM$MSG_NOSERV);
 			}
 			return true;
 		}
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
-			cd.term.error("No such server.");
+			cd.term.message(SM$FAC_IRC, SM$MSG_UNKSERV, cd.p(0));
 			return true;
 		}
 		std::string pnick, snick;
@@ -306,7 +304,7 @@ HDL(cmd_irc_showserver) {
 HDL(cfg_irc_enableserver) {
 	EX1(cd) {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
-			cd.term.error("No such server.");
+			cd.term.message(SM$FAC_IRC, SM$MSG_UNKSERV, cd.p(0));
 			return true;
 		}
 		SMI(smirc::cfg)->enable_server(cd.p(0), true);
@@ -317,7 +315,7 @@ HDL(cfg_irc_enableserver) {
 HDL(cfg_irc_noenableserver) {
 	EX1(cd) {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
-			cd.term.error("No such server.");
+			cd.term.message(SM$FAC_IRC, SM$MSG_UNKSERV, cd.p(0));
 			return true;
 		}
 		SMI(smirc::cfg)->enable_server(cd.p(0), false);
@@ -373,11 +371,11 @@ HDL(cmd_monit_showservers) {
 HDL(cfg_monit_server_type) {
 	EX1(cd) {
 		if (!SMI(smmon::cfg)->knowntype(cd.p(1))) {
-			cd.term.error(b::io::str(b::format("Unknown monitor type %s.") % cd.p(1)));
+			cd.term.message(SM$FAC_MONIT, SM$MSG_NOTYPE, cd.p(1));
 			return true;
 		}
 		if (SMI(smmon::cfg)->server_exists(cd.p(0))) {
-			cd.term.error("Server already exists.");
+			cd.term.message(SM$FAC_MONIT, SM$MSG_DUPSERV, cd.p(0));
 			return true;
 		}
 		SMI(smmon::cfg)->create_server(cd.p(0), cd.p(1));
@@ -393,7 +391,7 @@ HDL(cfg_monit_server_max_disk) {
 		try {
 			thresh = lexical_cast<int>(cd.p(2));
 		} catch (bad_lexical_cast&) {
-			cd.term.error("Bad number");
+			cd.term.message(SM$FAC_TRM, SM$MSG_BADNUM, cd.p(2));
 			return true;
 		}
 		SMI(smalrm::mgr)->set_thresh("disk free for "+cd.p(0)+":" + cd.p(1) + " (MB)", lexical_cast<int>(cd.p(2)),
@@ -405,7 +403,7 @@ HDL(cfg_monit_server_max_disk) {
 HDL(cfg_monit_server_max_disk_low) {
 	EX1(cd) {
 		if (!SMI(smcfg::cfg)->listhas("/monit/server/"+cd.p(0)+"/disks", cd.p(1))) {
-			cd.term.error("Disk " + cd.p(1) + " is not configured for " + cd.p(0) + ".");
+			cd.term.message(SM$FAC_MONIT, SM$MSG_NODISK, cd.p(0), cd.p(1));
 			return true;
 		}
 		
@@ -413,7 +411,7 @@ HDL(cfg_monit_server_max_disk_low) {
 			SMI(smalrm::mgr)->set_lowthresh("disk free for "+cd.p(0)+":"+cd.p(1)+" (MB)",
 							lexical_cast<int>(cd.p(2)));
 		} catch (bad_lexical_cast&) {
-			cd.term.error("Bad number");
+			cd.term.message(SM$FAC_TRM, SM$MSG_BADNUM, cd.p(0));
 		}
 		return true;
 	}
@@ -423,7 +421,7 @@ HDL(cfg_monit_server_mysql_master) {
 	EX1(cd) {
 		try {
 			std::string curmaster = SMI(smcfg::cfg)->fetchstr("/monit/mysql/master");
-			cd.term.inform("Removing MySQL master status from " + curmaster);
+			cd.term.message(SM$FAC_MONIT, SM$MSG_NEWMASTER, curmaster);
 		} catch (smcfg::nokey&) {}
 		SMI(smcfg::cfg)->storestr("/monit/mysql/master", cd.p(0));
 		return true;
@@ -449,7 +447,7 @@ HDL(cfg_monit_monitor_interval) {
 		try {
 			SMI(smcfg::cfg)->storeint("/monit/interval", b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
-			cd.term.error("Bad number.");
+			cd.term.message(SM$FAC_TRM, SM$MSG_BADNUM, cd.p(0));
 		}
 		return true;
 	}
@@ -460,7 +458,7 @@ HDL(cfg_monit_ircinterval) {
 		try {
 			SMI(smcfg::cfg)->storeint("/monit/ircinterval", b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
-			cd.term.error("Bad number.");
+			cd.term.message(SM$FAC_TRM, SM$MSG_BADNUM, cd.p(0));
 		}
 		return true;
 	}
@@ -469,14 +467,14 @@ HDL(cfg_monit_ircinterval) {
 HDL(cmd_monit_showintervals) {
 	EX1(cd) {
 		try {
-			cd.term.inform("Monitor interval         : " + b::lexical_cast<std::string>(SMI(smcfg::cfg)->fetchint("/monit/interval")));
+			cd.term.wrtln("Monitor interval         : " + b::lexical_cast<std::string>(SMI(smcfg::cfg)->fetchint("/monit/interval")));
 		} catch (smcfg::nokey&) {
-			cd.term.inform("Monitor interval         : <default>");
+			cd.term.wrtln("Monitor interval         : <default>");
 		}
 		try {
-			cd.term.inform("IRC notification interval: " + b::lexical_cast<std::string>(SMI(smcfg::cfg)->fetchint("/monit/ircinterval")));
+			cd.term.wrtln("IRC notification interval: " + b::lexical_cast<std::string>(SMI(smcfg::cfg)->fetchint("/monit/ircinterval")));
 		} catch (smcfg::nokey&) {
-			cd.term.inform("IRC notification interval: <default>");
+			cd.term.wrtln("IRC notification interval: <default>");
 		}
 		return true;
 	}
@@ -489,7 +487,7 @@ HDL(cfg_qb_rule) {
 		cd.term.setmode("conf-qb-rule");
 		if (!SMI(smqb::cfg)->rule_exists(cd.p(0))) {
 			SMI(smqb::cfg)->create_rule(cd.p(0));
-			cd.term.inform("Creating new rule.");
+			cd.term.message(SM$FAC_QBANE, SM$MSG_NEWRULE);
 		}
 		return true;
 	}
@@ -498,7 +496,7 @@ HDL(cfg_qb_rule) {
 HDL(cfg_qb_norule) {
 	EX1(cd) {
 		if (!SMI(smqb::cfg)->rule_exists(cd.p(0))) {
-			cd.term.error("No such rule.");
+			cd.term.message(SM$FAC_QBANE, SM$MSG_NORULE, cd.p(0));
 			return true;
 		}
 		SMI(smqb::cfg)->delete_rule(cd.p(0));
@@ -523,7 +521,7 @@ HDL(cmd_qb_show_rule) {
 			try {
 				rules.push_back(SMI(smqb::cfg)->getrule(cd.p(0)));
 			} catch (smqb::norule&) {
-				cd.term.error("No such rule.");
+				cd.term.message(SM$FAC_QBANE, SM$MSG_NORULE, cd.p(0));
 				return true;
 			}
 		}
@@ -554,7 +552,7 @@ HDL(cfg_qbr_matchif_minthreads) {
 		try {
 			SMI(smqb::cfg)->set_minthreads(cd.term.getdata("qb-rule"), b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
-			cd.term.error("Bad number.");
+			cd.term.message(SM$FAC_TRM, SM$MSG_BADNUM, cd.p(0));
 		}
 		return true;
 	}
@@ -565,7 +563,7 @@ HDL(cfg_qbr_matchif_minlastthreads) {
 		try {
 			SMI(smqb::cfg)->set_minlastthreads(cd.term.getdata("qb-rule"), b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
-			cd.term.error("Bad number.");
+			cd.term.message(SM$FAC_TRM, SM$MSG_BADNUM, cd.p(0));
 		}
 		return true;
 	}
@@ -576,7 +574,7 @@ HDL(cfg_qbr_matchif_lowestpos) {
 		try {
 			SMI(smqb::cfg)->set_lowestpos(cd.term.getdata("qb-rule"), b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
-			cd.term.error("Bad number.");
+			cd.term.message(SM$FAC_TRM, SM$MSG_BADNUM, cd.p(0));
 		}
 		return true;
 	}
@@ -587,7 +585,7 @@ HDL(cfg_qbr_matchif_minruntime) {
 		try {
 			SMI(smqb::cfg)->set_minruntime(cd.term.getdata("qb-rule"), b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
-			cd.term.error("Bad number.");
+			cd.term.message(SM$FAC_TRM, SM$MSG_BADNUM, cd.p(0));
 		}
 		return true;
 	}
@@ -641,7 +639,7 @@ HDL(cmd_mc_show_server_list_command) {
 		try {
 			cd.term.wrtln(SMI(smcfg::cfg)->fetchstr("/mc/servercmd"));
 		} catch (smcfg::nokey&) {
-			cd.term.inform("Server list command not configured");
+			cd.term.message(SM$FAC_MEMCACHE, SM$MSG_NOLISTCMD);
 		}
 		return true;
 	}
@@ -662,19 +660,15 @@ HDL(cmd_mc_show_parser_cache) {
 			expired = b::lexical_cast<int>(expireds);
 			absent = b::lexical_cast<int>(absents);
 		} catch (smmc::nokey& e) {
-			std::string s = "Key not found: ";
-			s += e.what();
-			cd.term.error(s);
+			cd.term.message(SM$FAC_MEMCACHE, SM$MSG_NOKEY, e.what());
 			return true;
 		} catch (b::bad_lexical_cast& e) {
-			std::string s = "Invalid number in cache data: ";
-			s += e.what();
-			cd.term.error(s);
+			cd.term.message(SM$FAC_MEMCACHE, SM$MSG_INVDATA);
 			return true;
 		}
 		total = hits + invalid + expired + absent;
 		if (!total) {
-			cd.term.inform("No data available.");
+			cd.term.message(SM$FAC_MEMCACHE, SM$MSG_NODATA);
 			return true;
 		}
 		cd.term.wrtln(b::io::str(b::format("Hits:    %-10d %6.2f%%") % b::io::group(std::fixed, hits)    % (hits/total*100)));
@@ -693,7 +687,7 @@ HDL(cfg_monit_alarm_mysql_replag) {
 		try {
 			v = b::lexical_cast<int>(cd.p(0));
 		} catch (b::bad_lexical_cast&) {
-			cd.term.error("Invalid number.");
+			cd.term.message(SM$FAC_TRM, SM$MSG_BADNUM, cd.p(0));
 			return true;
 		}
 		SMI(smalrm::mgr)->set_thresh("replication lag", v);
@@ -707,7 +701,7 @@ HDL(cfg_monit_alarm_mysql_threads) {
 		try {
 			v = b::lexical_cast<int>(cd.p(0));
 		} catch (b::bad_lexical_cast&) {
-			cd.term.error("Invalid number.");
+			cd.term.message(SM$FAC_TRM, SM$MSG_BADNUM, cd.p(0));
 			return true;
 		}
 		SMI(smalrm::mgr)->set_thresh("running threads", v);
@@ -776,7 +770,7 @@ HDL(cmd_write_config) {
 		try {
 			SMI(smcfg::cfg)->write();
 		} catch (smcfg::wrerr& e) {
-			cd.term.error(e.what());
+			cd.term.message(SM$FAC_CONF, SM$MSG_WRTERR, e.what());
 		}
 		return true;
 	}

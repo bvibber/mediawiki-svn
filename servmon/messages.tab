@@ -3,5 +3,32 @@ FACILITY TRM
 ERROR UNKCMD unknown command
 ERROR INCOMP incomplete command
 ERROR AMBIG ambigious command
+ERROR BADNUM invalid number: %1%
+ERROR BATCHTERM cannot perform this operation on a non-interactive terminal
+ERROR NOCONF action not confirmed
+WARN UNKMOD unknown modifier %1% ignored
 FACILITY MONIT
 ERROR UNKSRV server %1% does not exist
+ERROR NOTYPE unknown server type %1%
+ERROR DUPSERV server %1% already exists
+ERROR NODISK disk %2% is not configured for server %1%
+INFORM NEWMASTER removing MySQL master status from %1%
+FACILITY IRC
+INFORM NOCHAN no channels are currently configured
+INFORM NOSERV no servers are currently configured
+ERROR UNKSERV server %1% does not exist
+ERROR UNKCHAN channel %1% does not exist
+FACILITY QBANE
+ERROR NORULE rule %1% does not exist
+INFORM NEWRULE creating new rule
+FACILITY MEMCACHE
+INFORM NOLISTCMD server list command has not been configured
+ERROR NOKEY memcache key not found: %1%
+ERROR INVDATA invalid number in cache data
+INFORM NODATA no data is available
+FACILITY AUTH
+ERROR AUTHFAIL authentication failed
+ERROR USREXISTS user %1% already exists
+ERROR NOUSER user %1% does not exist
+FACILITY CONF
+ERROR WRTERR I/O error writing configuration: %1%

@@ -12,8 +12,8 @@ int terminal::idseq = 0;
 std::map<int, terminal *> terminal::terms;
 	
 terminal::terminal(void)
-	: mode("exec")
-	, lastact(std::time(0))
+	: lastact(std::time(0))
+	, mode("exec")
 	, incl_reg(NULL)
 	, id(++idseq)
 {
@@ -85,24 +85,6 @@ bool
 terminal::prefer_short_output(void) const
 {
 	return false;
-}
-
-void
-terminal::error(str msg)
-{
-	wrtln("% [E] " + msg);
-}
-
-void
-terminal::warn(str msg)
-{
-	wrtln("% [W] " + msg);
-}
-
-void
-terminal::inform(str msg)
-{
-	wrtln("% [I] " + msg);
 }
 
 void
@@ -188,7 +170,7 @@ terminal::remove_modifiers(str s)
 		setinclude(mod);
 	else {
 		wrtln("", true);
-		warn("Unknown modifier " + what + " ignored.");
+		message(SM$FAC_TRM, SM$MSG_UNKMOD, what);
 	}
 	return n;
 }
