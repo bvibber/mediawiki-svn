@@ -199,11 +199,13 @@ class SkinCologneBlue extends Skin {
 
 	function searchForm( $label = "" )
 	{
+		global $search;
 		$s = "<form method=get class='inline' action=\"" .
 		  wfLocalUrlE( "" ) . "\">";
 		if ( "" != $label ) { $s .= "{$label}: "; }
 
-		$s .= "<input type=text name=\"search\" size=10 value=\"\">"
+		$s .= "<input type=text name=\"search\" size=10 value=\""
+          . htmlspecialchars(substr($search,0,256)) . "\">"
 		  . "<input type=submit value=\"" . wfMsg( "ok" ) . "\"></form>";
 
 		return $s;
