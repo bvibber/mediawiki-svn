@@ -6,7 +6,7 @@ function upload () {
 	global $removeFile , $xtitle , $removeFile , $Upload , $Upload_name , $no_copyright ;
 	global $user , $vpage , $wikiUploadTitle , $wikiUploadText , $wikiUploadDenied ;
 	global $wikiUploadDeleted , $wikiUploadDelMsg1 , $wikiUploadDelMsg2 ;
-	global $wikiUploadAffirm , $wikiUploadFull ;
+	global $wikiUploadAffirm , $wikiUploadFull , $wikiUploadRestrictions ;
 	global $wikiUploadSuccess , $wikiUploadSuccess1 , $wikiUploadSuccess2 ;
 	global $wikiUploadAffirmText , $wikiUploadButton , $wikiUser ;
 	$vpage->special ( $wikiUploadTitle ) ;
@@ -29,6 +29,7 @@ function upload () {
 		unset ( $removeFile ) ;
 	} else if (isset($Upload_name) or isset($Upload)) {
 		if ( $no_copyright != "AFFIRMED" ) return $wikiUploadAffirm ;
+		if ( $user->id == 0 ) return $wikiUploadRestrictions ;
 #		$Upload_name = ereg_replace(" ", "_", $Upload_name);
 		$abc = split("\.", $Upload_name);
 
