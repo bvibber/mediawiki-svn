@@ -228,6 +228,7 @@ class User {
 	{
 		$this->loadFromDatabase();
 		$this->mPassword = User::encryptPassword( $str );
+		$this->mNewpassword = "";
 	}
 
 	function setNewpassword( $str )
