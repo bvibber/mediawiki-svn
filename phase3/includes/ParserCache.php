@@ -71,7 +71,7 @@ class ParserCache
 		global $wgDBname, $wgMemc;
 		$key = "$wgDBname:stats:$key";
 		if ( is_null( $wgMemc->incr( $key ) ) ) {
-			$wgMemc->set( $key, 1 );
+			$wgMemc->add( $key, 1 );
 		}
 	}
 }
