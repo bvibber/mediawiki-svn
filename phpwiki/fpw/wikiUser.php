@@ -114,7 +114,7 @@ class WikiUser {
             "a.red { color: red; text-decoration: none; }\n" .
             "a.green { color: blue; text-decoration: none; }\n" .
 	    "a.syslink { color:white; text-decoration:none; }\n" .
-	    "a.CBlink { color:#0000AA; text-decoration:none; font-size:12pt; }\n" .
+	    "a.CBlink { color:#0000AA; text-decoration:none; font-size:11pt; }\n" .
             ".topbar { border-bottom-width: 2; border-bottom-style: ridge; }\n" .
             ".middle { background:white }\n" .
             ".quickbar { background:$bgcolor; border-$qbside-width: 2; border-$qbside-style: ridge; }\n" .
