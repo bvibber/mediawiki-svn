@@ -18,11 +18,15 @@ ment tags of the form:
  
      <class [parm: value]>content</class>
  
-most likely of an external parser; a lex/yacc solution might
-be particularly attractive.
+and likely of an external parser; where a lex/yacc  solution
+might  be attractive.  (Finite state recognition is probably
+what we're looking  for,  however,  rather  than  look-ahead
+right-to-left parsing; i.e. top-down recursive descent.)
  
- 
- 
+     If  WikiTeX'  sum scope, on the other hand, resembles a
+glue-script with regular-expression grinding,1 we might  not
+need  to look past Perl; PHP's fitness as a lexer/parser, in
+any case, is highly questionable.
  
  
  
@@ -51,17 +55,79 @@ be particularly attractive.
  
  
 -----------
+  1 Raymond, Eric Steven.  The Art  of  Unix  Pro-
+gramming.
+http://www.faqs.org/docs/artu/ch14s04.html
+ 
+ 
+ 
+                         30 May 2004
+ 
+ 
+ 
+ 
+ 
+                             -2-
+ 
+ 
 WikiTeX: expansible LaTeX module for MediaWiki
 Copyright (C) 2004  Peter Danenberg
-  WikiTeX   is   free  software;  you  can  redis-
-tribute it and/or modify it under the terms of the
-GNU   General   Public License as published by the
-Free Software Foundation; either version 2 of  the
-License, or (at your option) any later version.
+ 
+     WikiTeX  is  free  software;  you  can  redistribute it
+and/or modify it under the terms of the GNU  General  Public
+License as published by the Free Software Foundation; either
+version 2 of the License, or (at your option) any later ver-
+sion.
  
  
  
-                         29 May 2004
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                         30 May 2004
  
  
 

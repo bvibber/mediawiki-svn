@@ -14,54 +14,54 @@
  
 1.  Distribution
  
-     CVS  Reserved for SF
+     CVS                          Reserved for SF
+     LICENSE                      GNU General Public License
+     MANIFEST                     Exegesis of contents
+     NEWS                         What's new?
  
-     LICENSE
-          GNU General Public License
- 
-     MANIFEST
-          Exegesis of contents
- 
-     NEWS What's new?
  
 2.  Pre-incorporation
  
-     valid-xhtml11
-          XHTML validator
+     valid-xhtml11                          XHTML validator
+     wikitex_doc.htm                        Documentation
+     wikitex.inc.htm                        HTML template
+     wikitex.inc.tex                        WikiTeX template
  
-     wikitex_doc.htm
-          Documentation
- 
-     wikitex.inc.htm
-          HTML template
- 
-     wikitex.inc.tex
-          WikiTeX template
  
 3.  Code
  
      3.1.  LaTeX Templates
  
-          wikitex_rend.chem.inc.tex
-               Chemistry
- 
-          wikitex_rend.chess.inc.tex
-               Chess
- 
-          wikitex_rend.error.inc.tex
-               Error
- 
-          wikitex_rend.greek.inc.tex
-               Greek
- 
-          wikitex_rend.ling.inc.tex
-               Linguistics
+          wikitex_rend.chem.inc.tex              Chemistry
+          wikitex_rend.chess.inc.tex             Chess
+          wikitex_rend.error.inc.tex             Error
+          wikitex_rend.greek.inc.tex             Greek
+          wikitex_rend.ling.inc.tex              Linguistics
+          wikitex_rend.math.inc.tex              Math
+          wikitex_rend.music.inc.tex             Lilypond
+          wikitex_rend.tipa.inc.tex              TIPA
  
  
+     3.2.  Lexer/Parser
+ 
+          wikitex_global.php          Global header
+          wikitex.inc.php             Lexer header
+          wikitex.inc.sh              Bash header
+          wikitex.php                 Lexer
+          wikitex_rend.inc.php        Parser header
+          wikitex.sh                  Bash interface
+          wikitex_rend.php            Parser, Wiki interface
  
  
  
-                         29 May 2004
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                         30 May 2004
  
  
  
@@ -70,64 +70,64 @@
                              -2-
  
  
-          wikitex_rend.math.inc.tex
-               Math
- 
-          wikitex_rend.music.inc.tex
-               Lilypond
- 
-          wikitex_rend.tipa.inc.tex
-               TIPA
- 
-     3.2.  Lexer/Parser
- 
-          wikitex_global.php
-               Global header
- 
-          wikitex.inc.php
-               Lexer header
- 
-          wikitex.inc.sh
-               Bash header
- 
-          wikitex.php
-               Lexer
- 
-          wikitex_rend.inc.php
-               Parser header
- 
-          wikitex.sh
-               Bash interface
- 
-          wikitex_rend.php
-               Parser, Wiki interface
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
------------
 WikiTeX: expansible LaTeX module for MediaWiki
 Copyright (C) 2004  Peter Danenberg
-  WikiTeX   is   free  software;  you  can  redis-
-tribute it and/or modify it under the terms of the
-GNU   General   Public License as published by the
-Free Software Foundation; either version 2 of  the
-License, or (at your option) any later version.
+ 
+     WikiTeX  is  free  software;  you  can  redistribute it
+and/or modify it under the terms of the GNU  General  Public
+License as published by the Free Software Foundation; either
+version 2 of the License, or (at your option) any later ver-
+sion.
  
  
  
-                         29 May 2004
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                         30 May 2004
  
  
 
