@@ -2,14 +2,13 @@
 
 function wfSpecialUpload()
 {
-	global $wpUpload, $wpReUpload, $deletefile;
-	global $wgSavedFile;
+	global $wpUpload, $wpReUpload;
 
 	if ( isset( $wpUpload ) ) {
 		processUpload();
 	} else {
 		if ( isset( $wpReUpload ) ) {
-			# TODO: consider removing the previous file here
+			unsaveUploadedFile();
 		}
 		mainUploadForm( "" );
 	}
@@ -21,7 +20,7 @@ function processUpload()
 	global $wpUploadDescription, $wpIgnoreWarning;
 	global $HTTP_POST_FILES, $wgUploadDirectory;
 	global $wpUploadSaveName, $wpUploadTempName, $wpUploadSize;
-	global $wgSavedFile;
+	global $wgSavedFile, $wgUploadOldVersion;
 
 	if ( 1 != $wpUploadAffirm ) {
 		mainUploadForm( WfMsg( "noaffirmation" ) );
@@ -52,23 +51,13 @@ function processUpload()
 		}
 		$nt = Title::newFromText( $basename );
 		$wpUploadSaveName = $nt->getDBkey();
-		if ( preg_match( "/^[a-z]/", $basename ) ) {
-			$wpUploadSaveName = strtolower( $wpUploadSaveName{0} ) .
-			  substr( $wpUploadSaveName, 1 );
-		}
-		$oldumask = umask(0);
-		$dest = $wgUploadDirectory . "/" . $wpUploadSaveName{0};
-		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
-		$dest .= "/" . substr( $wpUploadSaveName, 0, 2 );
-		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
-		umask( $oldumask );
 
-		$wgSavedFile = "{$dest}/{$wpUploadSaveName}";
-		move_uploaded_file( $wpUploadTempName, $wgSavedFile );
+		saveUploadedFile();
 
 		if ( ( ! $wpIgnoreWarning ) &&
-		  ( 0 != strcmp( $basename , $wpUploadSaveName ) ) ) {
-			$warn = str_replace( "$1", $wpUploadSaveName, wfMsg( "badfilename" ) );
+		  ( 0 != strcmp( ucfirst( $basename ), $wpUploadSaveName ) ) ) {
+			$warn = str_replace( "$1", $wpUploadSaveName,
+			  wfMsg( "badfilename" ) );
 			return uploadWarning( $warn );
 		}
 		$extensions = array( "png", "jpg", "jpeg", "gif" ); 
@@ -82,32 +71,111 @@ function processUpload()
 			return;
 		}
 	}
-	$conn = wfGetDB();
-	$sql = "SELECT img_name FROM images WHERE img_name={$wpUploadSaveName}";
-	wfDebug( "Upl: $sql\n" );
+	recordUpload();
 
+	$sk = $wgUser->getSkin();
+	$ilink = $sk->makeLink( "Image:{$wpUploadSaveName}", $wpUploadSaveName );
+
+	$wgOut->addHTML( "<h2>" . wfMsg( "successfulupload" ) . "</h2>\n" );
+	$text = str_replace( "$1", $ilink, wfMsg( "fileuploaded" ) );
+	$wgOut->addHTML( "<p>{$text}\n" );
+	$wgOut->returnToMain();
+}
+
+function saveUploadedFile()
+{
+	global $wpUploadSaveName, $wpUploadTempName;
+	global $wgSavedFile, $wgUploadOldVersion;
+	global $wgUploadDirectory;
+
+	$oldumask = umask(0);
+	$dest = $wgUploadDirectory . "/" . $wpUploadSaveName{0};
+	if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
+	$dest .= "/" . substr( $wpUploadSaveName, 0, 2 );
+	if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
+
+	$wgSavedFile = "{$dest}/{$wpUploadSaveName}";
+	if ( is_file( $wgSavedFile ) ) {
+		if ( ! is_dir( "{$dest}/old" ) ) { mkdir( "{$dest}/old", 0777 ); }
+		$wgUploadOldVersion = date( "YmdHis" ) . "!{$wpUploadSaveName}";
+
+		rename( $wgSavedFile, "${dest}/old/{$wgUploadOldVersion}" );
+	} else {
+		$wgUploadOldVersion = "";
+	}
+	move_uploaded_file( $wpUploadTempName, $wgSavedFile );
+	umask( $oldumask );
+}
+
+function unsaveUploadedFile()
+{
+	global $wgSavedFile, $wgUploadOldVersion;
+	global $wpSavedFile, $wpUploadOldVersion;
+	global $wgUploadDirectory;
+
+	$wgSavedFile = $wpSavedFile;
+	$wgUploadOldVersion = $wpUploadOldVersion;
+
+	wfDebug( "Upl:unsave: $wgSavedFile\n" );
+	unlink( $wgSavedFile );
+
+	if ( "" != $wgUploadOldVersion ) {
+		$dest = $wgUploadDirectory . "/" . $wgUploadOldVersion{15} .
+	  	"/" . substr( $wgUploadOldVersion, 15, 2 );
+
+		wfDebug( "Upl:unsave: {$dest}/old/{$wgUploadOldVersion}\n" );
+		rename( "{$dest}/old/{$wgUploadOldVersion}", $wgSavedFile );
+	}
+}
+
+function recordUpload()
+{
+	global $wgUser, $wpUploadDescription;
+	global $wpUploadSaveName, $wpUploadTempName, $wpUploadSize;
+	global $wgSavedFile, $wgUploadOldVersion;
+
+	$conn = wfGetDB();
+	$sql = "SELECT img_name,img_size,img_timestamp,img_description,img_user," .
+	  "img_user_text FROM image WHERE img_name='{$wpUploadSaveName}'";
+	wfDebug( "Upl:1: $sql\n" );
 	$res = mysql_query( $sql, $conn );
+
 	if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
-		$sql = "INSERT INTO images (img_name,img_size,img_timestamp," .
+		$sql = "INSERT INTO image (img_name,img_size,img_timestamp," .
 		  "img_description,img_user,img_user_text) VALUES (" .
 		  "'{$wpUploadSaveName}',{$wpUploadSize},'" . date( "YmdHis" ) . "','" .
 		  wfStrencode( $wpUploadDescription ) . "', '" . $wgUser->getID() .
 		  "', '" . wfStrencode( $wgUser->getName() ) . "')";
-	} else {
-		$sql = "UPDATE images SET img_size={$wpUploadSize}," .
-		  "img_timestamp=img_timestamp,img_user='" . $wgUser->getID() . "'," .
-		  "img_user_text='" . wfStrencode( $wgUser->getName() ) . "', '" .
-		  "img_description='{$wpUploadDescription}' " .
-		  "WHERE img_name='{$wpUploadSaveName}'";
-	}
-	$conn = wfGetDB();
-	wfDebug( "Upl: $sql\n" );
-	$res = mysql_query( $sql, $conn );
 
-	$wgOut->addHTML( "<h2>" . wfMsg( "successfulupload" ) . "</h2>\n" );
-	$text = str_replace( "$1", $wpUploadSaveName, wfMsg( "fileuploaded" ) );
-	$wgOut->addHTML( "<p>{$text}\n" );
-	$wgOut->returnToMain();
+		wfDebug( "Upl:2: $sql\n" );
+		$conn = wfGetDB();
+		$res = mysql_query( $sql, $conn );
+	} else {
+		$s = mysql_fetch_object( $res );
+		$sql = "INSERT INTO oldimage (oi_name,oi_archive_name,oi_size," .
+		  "oi_timestamp,oi_description,oi_user,oi_user_text) VALUES ('" .
+		  wfStrencode( $s->img_name ) . "','" .
+		  wfSTrencode( $wgUploadOldVersion ) .
+		  "',{$s->img_size},'{$s->img_timestamp}','" .
+		  wfStrencode( $s->img_description ) . "','" .
+		  wfStrencode( $s->img_user ) . "','" .
+		  wfStrencode( $s->img_user_text) . "')";
+
+		wfDebug( "Upl:3: $sql\n" );
+		$conn = wfGetDB();
+		$res = mysql_query( $sql, $conn );
+
+		$sql = "UPDATE image SET img_size={$wpUploadSize}," .
+		  "img_timestamp='" . date( "YmdHis" ) . "',img_user='" .
+		  $wgUser->getID() . "',img_user_text='" .
+		  wfStrencode( $wgUser->getName() ) . "', 'img_description='" .
+		  wfStrencode( $wpUploadDescription ) . "' WHERE img_name='" .
+		  wfStrencode( $wpUploadSaveName ) . "'";
+
+		wfDebug( "Upl:4: $sql\n" );
+		$conn = wfGetDB();
+		$res = mysql_query( $sql, $conn );
+	}
 }
 
 function uploadWarning( $warning )
@@ -116,6 +184,8 @@ function uploadWarning( $warning )
 	global $wpUpload, $wpReUpload, $wpUploadAffirm, $wpUploadFile;
 	global $wpUploadDescription, $wpIgnoreWarning;
 	global $wpUploadSaveName, $wpUploadTempName, $wpUploadSize;
+	global $wgSavedFile, $wgUploadOldVersion;
+	global $wpSavedFile, $wpUploadOldVersion;
 
 	$sub = wfMsg( "uploadwarning" );
 	$wgOut->addHTML( "<h2>{$sub}</h2>\n" );
@@ -135,6 +205,8 @@ function uploadWarning( $warning )
 <input type=hidden name='wpUploadSaveName' value='$wpUploadSaveName'>
 <input type=hidden name='wpUploadTempName' value='$wpUploadTempName'>
 <input type=hidden name='wpUploadSize' value='$wpUploadSize'>
+<input type=hidden name='wpSavedFile' value='$wgSavedFile'>
+<input type=hidden name='wpUploadOldVersion' value='$wgUploadOldVersion'>
 <table border=0><tr>
 <tr><td align=right>
 <input tabindex=2 type=submit name='wpUpload' value='{$save}'>

@@ -204,6 +204,11 @@ class Article {
 			$wgOut->setSubtitle( $s );
 		}
 		$wgOut->addWikiText( $text );
+		
+		$ins = Namespace::getIndex( "Image" );
+		if ( $ins == $wgTitle->getNamespace() ) {
+			$this->imageHistory();
+		}
 		$this->viewUpdates();
 	}
 
@@ -368,13 +373,7 @@ $wpTextbox2
 		$newid = mysql_insert_id( $conn );
 		$wgTitle->resetArticleID( $newid );
 
-		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
-		$wgOut->setSubtitle( wfMsg( "newarticle" ) );
-		$wgOut->setArticleFlag( true );
-
-		$wgLinkCache = new LinkCache();
-		$wgOut->addWikiText( $text );
-		$this->editUpdates( $newid, $wgTitle->getPrefixedDBkey() );
+		$this->showArticle( $text, wfMsg( "newarticle" ) );
 	}
 
 	function updateArticle( $text, $summary, $minor )
@@ -418,13 +417,32 @@ $wpTextbox2
 		wfDebug( "Art: 5: $sql\n" );
 		$res = mysql_query( $sql, $conn );
 
+		$this->showArticle( $text, wfMsg( "updated" ) );
+	}
+
+	function showArticle( $text, $subtitle )
+	{
+		global $wgOut, $wgTitle, $wgUser, $wgLinkCache;
+
 		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
-		$wgOut->setSubtitle( wfMsg( "updated" ) );
+		$wgOut->setSubtitle( $subtitle );
 		$wgOut->setArticleFlag( true );
 
 		$wgLinkCache = new LinkCache();
 		$wgOut->addWikiText( $text );
+
+		$ins = Namespace::getIndex( "Image" );
+		if ( $ins == $wgTitle->getNamespace() ) {
+			$this->imageHistory();
+		}
 		$this->editUpdates( $this->getID(), $wgTitle->getPrefixedDBkey() );
+	}
+
+	function imageHistory()
+	{
+		global $wgOut, $wgTitle;
+
+		$wgOut->addHTML( "\n<hr>(TODO: Image history)\n" );
 	}
 
 	function watch()

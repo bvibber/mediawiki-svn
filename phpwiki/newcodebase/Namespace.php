@@ -9,7 +9,8 @@
 #
 $wgNamespaceNamesEn = array(
 	0 => "", 1 => "Talk", 2 => "User", 3 => "User_talk",
-	4 => "Wikipedia", 5 => "Wikipedia_talk"
+	4 => "Wikipedia", 5 => "Wikipedia_talk", 6 => "Image",
+	7 => "Image_talk"
 );
 
 class Namespace {
