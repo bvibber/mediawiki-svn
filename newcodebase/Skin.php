@@ -934,7 +934,7 @@ class Skin {
 		return $ret;
 	}
 
-	function recentChangesLine( $ts, $u, $ut, $ns, $ttl, $c, $isminor )
+	function recentChangesLine( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew )
 	{
 		global $wgTitle, $wgLang, $wgUser;
 
@@ -956,7 +956,8 @@ class Skin {
 			}
 		}
 		$hlink = $this->makeKnownLink( $t, wfMsg( "hist" ), "action=history" );
-		$dlink = $this->makeKnownLink( $t, wfMsg( "diff" ), "diff=0&amp;oldid=0" );
+		if ( $isnew ) { $dlink = wfMsg( "diff" ); }
+		else { $dlink = $this->makeKnownLink( $t, wfMsg( "diff" ), "diff=0&amp;oldid=0" ); }
 
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }
@@ -964,6 +965,7 @@ class Skin {
 
 		$s .= "<li> ({$dlink}) ({$hlink}) . .";
 		if ( $isminor ) { $s .= " <strong>M</strong>"; }
+		if ( $isnew ) { $s .= "<strong>N</strong>"; }
 		$s .= " {$clink}; {$h} . . {$ul}";
 
 		if ( ( 0 == $u ) && $wgUser->isSysop() ) {

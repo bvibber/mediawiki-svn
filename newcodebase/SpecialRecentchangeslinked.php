@@ -27,7 +27,7 @@ function wfSpecialRecentchangeslinked()
 	$cutoff = date( "YmdHis", time() - ( $days * 86400 ) );
 
 	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_user,cur_comment," .
-	  "cur_user_text,cur_timestamp,cur_minor_edit FROM links, cur " .
+	  "cur_user_text,cur_timestamp,cur_minor_edit,cur_is_new FROM links, cur " .
 	  "WHERE cur_timestamp > '{$cutoff}' AND l_to=cur_id AND l_from='" .
       wfStrencode( $nt->getPrefixedDBkey() ) . "' GROUP BY cur_id " .
 	  "ORDER BY cur_timestamp DESC LIMIT {$limit}";
@@ -71,8 +71,9 @@ function wfSpecialRecentchangeslinked()
 		$ttl = $obj->cur_title;
 		$com = $obj->cur_comment;
 		$me = ( $obj->cur_minor_edit > 0 );
+		$new = ( $obj->cur_is_new > 0 );
 
-		$s .= $sk->recentChangesLine( $ts, $u, $ut, $ns, $ttl, $com, $me );
+		$s .= $sk->recentChangesLine( $ts, $u, $ut, $ns, $ttl, $com, $me, $new );
 		--$limit;
 	}
 	$s .= $sk->endRecentChangesList();
