@@ -58,7 +58,7 @@ function wfShowIndirectLinks( $level, $lid )
 	global $wgOut, $wgUser;
 	$fname = "wfShowIndirectLinks";
 
-	$sql = "SELECT l_from FROM links WHERE l_to={$lid}";
+	$sql = "SELECT DISTINCT l_from FROM links WHERE l_to={$lid}";
 	$res = wfQuery( $sql, $fname );
 
 	if ( 0 == wfNumRows( $res ) ) {

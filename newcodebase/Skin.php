@@ -70,7 +70,7 @@ class Skin {
 			  "text-decoration: none; }\n";
 		}
 		if ( 1 == $wgUser->getOption( "highlightbroken" ) ) {
-			$s .= "a.new { color: #CC2200; background-color: white; }\n";
+			$s .= "a.new { color: #CC2200; }\n";
 		}
 		if ( 1 == $wgUser->getOption( "justify" ) ) {
 			$s .= "#article { text-align: justify; }\n";
