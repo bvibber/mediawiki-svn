@@ -7,12 +7,13 @@ class WikiPage extends WikiTitle {
 	var $backLink ; # For redirects
 	var $knownLinkedLinks , $knownUnlinkedLinks ; # Used for faster display
 	var $otherLanguages ; # This article in other languages
+	var $params ; # For the params entry; updated on Save only
 	
 #### Database management functions
 
 	# This loads an article from the database, or calls a special function instead (all pages with "special:" namespace)
 	function load ( $t , $doRedirect = true ) {
-		global $action , $user , $wikiNoSuchSpecialPage ;
+		global $action , $user , $wikiNoSuchSpecialPage , $wikiAllowedSpecialPages ;
 		if ( $doRedirect ) $this->backLink = "" ;
 		$this->knownLinkedLinks = array () ;
 		$this->knownUnlinkedLinks = array () ;
@@ -21,7 +22,7 @@ class WikiPage extends WikiTitle {
 		$this->isSpecialPage = false ;
 		$this->revision = "current" ;
 		if ( $this->namespace == "special" ) { # Special page, calling appropriate function
-			$allowed = array("userlogin","userlogout","newpages","recentchanges","upload","statistics","lonelypages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","deletepage","protectpage","contributions"); # List of allowed special pages
+			$allowed = $wikiAllowedSpecialPages ; # List of allowed special pages
 			if ( in_array ( "is_sysop" , $user->rights ) ) array_push ( $allowed , "asksql" ) ; # Another function just for sysops
 			$call = $this->mainTitle ;
 			if ( !in_array ( strtolower ( $call ) , $allowed ) ) {
@@ -37,9 +38,11 @@ class WikiPage extends WikiTitle {
 			}
 
 		# No special page, loading article form the database
+		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$thisVersion = "" ;
+		$this->params = array () ;
 		global $oldID , $version , $THESCRIPT , $wikiOldVersion , $wikiDescribePage , $wikiRedirectFrom ;
 		if ( isset ( $oldID ) ) { # an old article version
 			$sql = "SELECT * FROM old WHERE old_id=$oldID" ;
@@ -62,6 +65,7 @@ class WikiPage extends WikiTitle {
 				$this->contents = $s->cur_text ;
 				$this->knownLinkedLinks = explode ( "\n" , $s->cur_linked_links ) ;
 				$this->knownUnlinkedLinks = explode ( "\n" , $s->cur_unlinked_links ) ;
+				if ( $s->cur_params != "" ) $this->params = explode ( "\n" , $s->cur_params ) ;
 				}
 			else $this->contents = $wikiDescribePage ;
 			}
@@ -88,7 +92,20 @@ class WikiPage extends WikiTitle {
 		$this->isSpecialPage = true ;
 		}
 
+	# Look for all matches in $this->params
+	function getParam ( $p ) {
+		$ret = array () ;
+		if ( !isset ( $this->params ) or count ( $this->params ) == 0 ) return $ret ;
+		$p = strtolower ( $p ) ;
+		foreach ( $this->params as $x ) {
+			$y = explode ( " " , $x , 2 ) ;
+			if ( count ( $y ) > 1 and strtolower ( trim ( $y[0] ) ) == $p ) array_push ( $ret , trim ( $y[1] ) ) ;
+			}
+		return $ret ;
+		}
+
 	# This lists all the subpages of a page (for the QuickBar)
+	# Not in use since we don't have subpages anymore
 	function getSubpageList () {
 		$a = array () ;
 		$t = ucfirst ( $this->namespace ) ;
@@ -96,8 +113,9 @@ class WikiPage extends WikiTitle {
 		$t .= $this->mainTitle ;
 		$mother = $t ;
 		$t .= "/" ;
+		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "SELECT cur_title FROM cur WHERE cur_title LIKE \"$t%\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		$u = new WikiTitle ;
@@ -122,8 +140,9 @@ class WikiPage extends WikiTitle {
 		$n = explode ( ":" , $this->title ) ;
 		if ( count ( $n ) == 1 ) $n = $n[0] ;
 		else $n = $n[1] ;
+		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "SELECT cur_title FROM cur WHERE cur_title LIKE \"%:$n\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		$u = new WikiTitle ;
@@ -160,8 +179,9 @@ class WikiPage extends WikiTitle {
 	function ensureExistence () {
 		$this->makeSecureTitle () ;
 		if ( $this->doesTopicExist() ) return ;
+		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "INSERT INTO cur (cur_title) VALUES (\"$this->secureTitle\")" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		mysql_close ( $connection ) ;		
@@ -174,8 +194,9 @@ class WikiPage extends WikiTitle {
 		$id = getMySQL ( "cur" , "cur_id" , "cur_title=\"$this->secureTitle\"" ) ;
 		$oid = getMySQL ( "cur" , "cur_old_version" , "cur_id=$id" ) ;
 
+		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "SELECT * FROM cur WHERE cur_id=$id" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		$s = mysql_fetch_object ( $result ) ;
@@ -206,17 +227,19 @@ class WikiPage extends WikiTitle {
 		$this->parseContents ( $text , true ) ; # Calling with savingMode flag set, so only internal Links are parsed
 		$ll = implode ( "\n" , array_keys ( $linkedLinks ) ) ;
 		$ull = implode ( "\n" , array_keys ( $unlinkedLinks ) ) ;
+		$pa = implode ( "\n" , $this->params ) ;
 
+		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$text = str_replace ( "\"" , "\\\"" , $text ) ;
 		$comment = str_replace ( "\"" , "\\\"" , $comment ) ;
 		$userName = str_replace ( "\"" , "\\\"" , $userName ) ;
 		$sql = "UPDATE cur SET cur_text=\"$text\",cur_comment=\"$comment\",cur_user=\"$userID\"," ;
 		$sql .= "cur_user_text=\"$userName\",cur_minor_edit=\"$minorEdit\",";
-		$sql .= "cur_linked_links=\"$ll\",cur_unlinked_links=\"$ull\" WHERE $cond" ;
-		mysql_query ( $sql , $connection ) ;
-		mysql_close ( $connection ) ;		
+		$sql .= "cur_linked_links=\"$ll\",cur_unlinked_links=\"$ull\",cur_params=\"$pa\" WHERE $cond" ;
+		$r = mysql_query ( $sql , $connection ) ;
+		mysql_close ( $connection ) ;
 		}
 
 #### Rendering functions
@@ -226,6 +249,7 @@ class WikiPage extends WikiTitle {
 		global $THESCRIPT , $wikiInterwiki , $action , $wikiOtherLanguages ;
 		global $user , $unlinkedLinks , $linkedLinks , $wikiPrintLinksMarkup ;
 		if ( !isset ( $this->knownLinkedLinks ) ) $this->knownLinkedLinks = array () ;
+		if ( !isset ( $this->knownUnlinkedLinks ) ) $this->knownUnlinkedLinks = array () ;
 		$abc = " abcdefghijklmnopqrstuvwxyz" ;
 		$a = explode ( "[[" , " ".$s ) ;
 		$s = array_shift ( $a ) ;
@@ -275,7 +299,8 @@ class WikiPage extends WikiTitle {
 				} else if ( $doesItExist ) {
 					$linkedLinks[$topic->secureTitle]++ ;
 					if ( $user->options["showHover"] == "yes" ) $hover = "title=\"$link\"" ;
-					$s .= "<a href=\"$THESCRIPT?title=".urlencode($link)."\" $hover>$text</a>" ;
+					$ulink = nurlencode ( $link ) ;
+					$s .= "<a href=\"$THESCRIPT?title=$ulink\" $hover>$text</a>" ;
 				} else {
 					$unlinkedLinks[$link]++ ;
 					$text2 = $text ;
@@ -286,11 +311,12 @@ class WikiPage extends WikiTitle {
 						else $text2 = "[$text2]" ;
 						}
 					if ( $user->options["underlineLinks"] == "no" ) { $text = $text2 ; $style = ";text-decoration:none" ; }
+					$ulink = nurlencode ( $link ) ;
 					if ( $user->options["markupNewTopics"] == "red" )
-						$s .= "<a style=\"color:red$style\" href=\"$THESCRIPT?action=edit&title=".urlencode($link)."\" $hover>$text</a>" ;
+						$s .= "<a style=\"color:red$style\" href=\"$THESCRIPT?action=edit&title=$ulink\" $hover>$text</a>" ;
 					else if ( $user->options["markupNewTopics"] == "inverse" )
-						$s .= "<a style=\"color:white;background:blue$style\" href=\"$THESCRIPT?action=edit&title=".urlencode($link)."\" $hover>$text</a>" ;
-					else $s .= "$text2<a href=\"$THESCRIPT?action=edit&title=".urlencode($link)."\" $hover>?</a>" ;
+						$s .= "<a style=\"color:white;background:blue$style\" href=\"$THESCRIPT?action=edit&title=$ulink\" $hover>$text</a>";
+					else $s .= "$text2<a href=\"$THESCRIPT?action=edit&title=$ulink\" $hover>?</a>" ;
 					}
 				$s .= $b[1] ;
 				}
@@ -345,25 +371,67 @@ class WikiPage extends WikiTitle {
 	# This function replaces the newly introduced wiki variables with their values (for display only!)
 	function replaceVariables ( $s ) {
 		global $wikiDate ;
-		$var=date("m"); $s = str_replace ( "{{{CURRENTMONTH}}}" , $var , $s ) ;
-		$var=$wikiDate[strtolower(date("F"))]; $s = str_replace ( "{{{CURRENTMONTHNAME}}}" , $var , $s ) ;
-		$var=date("j"); $s = str_replace ( "{{{CURRENTDAY}}}" , $var , $s ) ;
-		$var=$wikiDate[strtolower(date("l"))]; $s = str_replace ( "{{{CURRENTDAYNAME}}}" , $var , $s ) ;
-		$var=date("Y"); $s = str_replace ( "{{{CURRENTYEAR}}}" , $var , $s ) ;
-		if ( strstr ( $s , "{{{NUMBEROFARTICLES}}}" ) ) { # This should count only "real" articles!
+		$var=date("m"); $s = str_replace ( "{{CURRENTMONTH}}" , $var , $s ) ;
+		$var=$wikiDate[strtolower(date("F"))]; $s = str_replace ( "{{CURRENTMONTHNAME}}" , $var , $s ) ;
+		$var=date("j"); $s = str_replace ( "{{CURRENTDAY}}" , $var , $s ) ;
+		$var=$wikiDate[strtolower(date("l"))]; $s = str_replace ( "{{CURRENTDAYNAME}}" , $var , $s ) ;
+		$var=date("Y"); $s = str_replace ( "{{CURRENTYEAR}}" , $var , $s ) ;
+		if ( strstr ( $s , "{{NUMBEROFARTICLES}}" ) ) { # This should count only "real" articles!
+			global $wikiSQLServer ;
 			$connection=getDBconnection() ;
-			mysql_select_db ( "wikipedia" , $connection ) ;
+			mysql_select_db ( $wikiSQLServer , $connection ) ;
 			$sql="SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%:%\" AND cur_title NOT LIKE \"%ikipedia%\" AND cur_text LIKE \"%,%\"";
 			$result = mysql_query ( $sql , $connection ) ;
 			$var = mysql_fetch_object ( $result ) ;
 			$var = $var->number ;
 			mysql_free_result ( $result ) ;
-			$s = str_replace ( "{{{NUMBEROFARTICLES}}}" , $var , $s ) ;
+			mysql_close ( $connection ) ;
+			$s = str_replace ( "{{NUMBEROFARTICLES}}" , $var , $s ) ;
 			}
+
+/*
+		# Category functionality deactivated
+		if ( strstr ( $s , "{{THISCATEGORY}}" ) ) {
+			global $wikiSQLServer ;
+			$connection=getDBconnection() ;
+			mysql_select_db ( $wikiSQLServer , $connection ) ;
+
+			$comp = $this->getNiceTitle() ;
+			$comp = "%\nCATEGORY $comp\n%" ;
+			$sql = "SELECT cur_title FROM cur WHERE cur_params LIKE \"$comp\"" ;
+
+			global $wikiThisCategory ;
+			$result = mysql_query ( $sql , $connection ) ;
+			$var = array () ;
+			while ( $q = mysql_fetch_object ( $result ) ) array_push ( $var , $this->getNiceTitle ( $q->cur_title ) ) ;
+			if ( count ( $var ) > 0 ) {
+				$var = "[[".implode ( "]] -- [[" , $var )."]]\n" ;
+				$var = "<table bgcolor=#CCCCCC width=100%><th>$wikiThisCategory</th><tr><td>$var</td></tr></table>" ;
+				}
+			else $var = "" ;
+
+			mysql_free_result ( $result ) ;
+			mysql_close ( $connection ) ;
+			$s = str_replace ( "{{THISCATEGORY}}" , $var , $s ) ;
+			}
+*/
+
+/*
+		# Also deactivated
+		# Hide the rest...
+		$n = explode ( "{{" , $s ) ;
+		$s = array_shift ( $n ) ;
+		foreach ( $n as $x ) {
+			$m = explode ( "}}" , $x , 2 ) ;
+			if ( count ( $m ) == 1 ) $s .= "{{".$x ;
+			else $s .= $m[1] ;
+			}
+*/
+
 		return $s ;
 		}
 
-	# This function ensures all occurrences of $f are replaces with $r within $s
+	# This function ensures all occurrences of $f are replaced with $r within $s
 	function replaceAll ( $f , $r , &$s ) {
 		$t = "" ;
 		while ( $s != $t ) {
@@ -396,9 +464,39 @@ class WikiPage extends WikiTitle {
 		return $ret ;
 		}
 
+	# Called from parseContents before saving
+	function scanForParams ( $s ) {
+		$this->params = array () ;
+		return ;
+/*
+		# Category functionality deactivated
+		$this->params = array ( "" ) ;
+		$a = explode ( "{{" , $s ) ;
+		array_shift ( $a ) ;
+		foreach ( $a as $x ) {
+			$b = explode ( "}}" , $x , 2 ) ;
+			if ( count ( $b ) > 1 ) {
+				$before = $b[0] ;
+				$after = $b[1] ;
+				$c = explode ( " " , $before , 2 ) ;
+				if ( count ( $c ) > 1 )  {
+					$decl = strtolower ( trim ( $c[0] ) ) ;
+					$vars = trim ( $c[1] ) ;
+					$vars = str_replace ( "\"" , "" , $vars ) ;
+					$vars = str_replace ( "\n" , "" , $vars ) ;
+					$vars = explode ( "," , $vars ) ;
+					foreach ( $vars as $y ) array_push ( $this->params , "$decl ".trim($y) ) ;
+					}
+				}
+			}
+		if ( count ( $this->params ) > 1 ) array_push ( $this->params , "" ) ;
+		else $this->params = array () ;
+*/
+		}
+
 	# This function organizes the <nowiki> parts and calls subPageContents() for the wiki parts
 	function parseContents ( $s , $savingMode = false ) {
-		global $linkedLinks , $unlinkedLinks ;
+		global $linkedLinks , $unlinkedLinks , $framed ;
 		$linkedLinks = array () ;
 		$unlinkedLinks = array () ;
 		$this->otherLanguages = array () ;
@@ -434,9 +532,35 @@ class WikiPage extends WikiTitle {
 			}
 
 		# If called from setEntry(), only parse internal links and return dummy entry
-		if ( $savingMode ) return $this->replaceInternalLinks ( $s ) ;
+		if ( $savingMode ) {
+			$this->scanForParams ( $s ) ;
+			return $this->replaceInternalLinks ( $s ) ;
+			}
 
+		$k = explode ( "." , $s , 2 ) ;
+		$k = explode ( "\n" , $k[0] , 2 ) ;
 		$s = $this->subParseContents ( $s , $savingMode ) ;
+
+		# Meta tags
+		global $metaDescription , $metaKeywords , $wikiMetaDescription ;
+		if ( $metaDescription == "" and $metaKeywords == "" ) {
+			$k = str_replace ( "\"" , "" , $k[0] ) ;
+			$k = str_replace ( "[" , "" , $k ) ;
+			$k = str_replace ( "]" , "" , $k ) ;
+			$k = str_replace ( "'" , "" , $k ) ;
+			$k = ereg_replace ( "<[^>]*>" , "" , $k ) ;
+			$metaDescription = str_replace ( "$1" , $k , $wikiMetaDescription ) ;
+
+			$k = array () ;
+			array_push ( $k , "wikipedia" ) ;
+			array_push ( $k , $this->title ) ;
+			foreach ( $this->knownLinkedLinks as $x ) array_push ( $k , $x ) ;
+			foreach ( $this->knownUnlinkedLinks as $x ) array_push ( $k , $x ) ;
+			$k = implode ( "," , $k ) ;
+			$k = str_replace ( "\"" , "" , $k ) ;
+			$k = str_replace ( "_" , " " , $k ) ;
+			$metaKeywords = $k ;
+			}
 
 		# replacing $d with the actual nowiki contents
 		$a = spliti ( $d , $s ) ;
@@ -462,6 +586,7 @@ class WikiPage extends WikiTitle {
 
 	# This function will auto-number headings
 	function autoNumberHeadings ( $s ) {
+		if ( $this->isSpecialPage ) return $s ;
 		for ( $i ; $i < 9 and stristr ( $s , "<h$i>" ) == false ; $i++ ) ;
 		if ( $i == 10 ) return $s ;
 		$v = array ( 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
@@ -654,7 +779,8 @@ class WikiPage extends WikiTitle {
 	function getHeader () {
 		global $THESCRIPT , $wikiMainPageTitle , $wikiArticleSubtitle , $wikiPrintable , $wikiWatch ;
 		global $user , $action , $wikiEditHelp , $wikiNoWatch , $wikiLogIn , $wikiLogOut , $wikiSearch ;
-		global $wikiHelp , $wikiHelpLink , $wikiPreferences , $wikiLanguageNames ;
+		global $wikiHelp , $wikiHelpLink , $wikiPreferences , $wikiLanguageNames , $wikiWhatLinksHere ;
+		global $framed ; if ( isset ( $framed ) and $framed != "top" ) return "" ;
 		$t = $this->getNiceTitle ( $this->title ) ;
 		if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirst ( $t ) ;
 		global $HTTP_USER_AGENT ;
@@ -681,17 +807,19 @@ class WikiPage extends WikiTitle {
 				else array_push($subText,"<a href=\"$THESCRIPT?action=watch&title=$this->secureTitle&mode=yes\">$wikiWatch</a>") ;
 				}
 			if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"$THESCRIPT?action=print&title=$this->secureTitle\">$wikiPrintable</a>" ) ;
+			if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"$THESCRIPT?title=special:whatlinkshere&target=$this->secureTitle\">$wikiWhatLinksHere</a>" ) ;
 			if ( $this->backLink != "" ) array_push ( $subText , $this->backLink ) ;
 			if ( $this->namespace == "user" and $this->subpageTitle == "" )
 				array_push ( $subText , "<a href=\"$THESCRIPT?title=special:contributions&theuser=$this->mainTitle\">This user's contributions</a>" ) ;
 			$ret .= "<br>".implode ( " | " , $subText ) ;
 			if ( count ( $this->otherLanguages ) > 0 ) {
-				$ret .= "<br>This article is available in " ;
+				global $wikiOtherLanguagesText ;
 				$subText = array () ;
 				$olk = array_keys ( $this->otherLanguages ) ;
 				foreach ( $olk as $x )
 					array_push ( $subText , "<a href=\"".$this->otherLanguages[$x]."\">".$wikiLanguageNames[$x]."</a>" ) ;
-				$ret .= implode ( ", " , $subText ) ;
+				$subText = implode ( ", " , $subText ) ;
+				$ret .= "<br>".str_replace ( "$1" , $subText , $wikiOtherLanguagesText ) ;
 				}
 			}
 		$ret .= "</td>\n<td valign=top width=200 rowspan=2 nowrap>".$user->getLink()."<br>" ;
@@ -737,6 +865,20 @@ class WikiPage extends WikiTitle {
 			}
 		$a = $this->getOtherNamespaces () ;
 		if ( count ( $a ) > 0 ) $column .= "<hr>".implode ( "<br>\n" , $a ) ;
+
+/*
+		# Category functionality deactivated
+		$cat = $this->getParam ( "CATEGORY" ) ;
+		if ( count ( $cat ) > 0 ) {
+			$column .= "<hr>" ;
+			$t = new wikiTitle ;
+			foreach ( $cat as $x ) {
+				$t->setTitle ( $x ) ;
+				$column .= "<a href=\"$THESCRIPT?title=".$t->secureTitle."\">".$this->getNiceTitle($x)."</a><br>\n" ;
+				}
+			}
+*/
+
 		return $column."</nowiki>" ;
 		}
 
@@ -755,14 +897,24 @@ class WikiPage extends WikiTitle {
 
 			$column = "<td ".$user->options["quickBarBackground"]." width=110 valign=top nowrap>".$column."</td>" ;
 			$ret = "<td valign=top>".$ret."</td>" ;
+
 			global $HTTP_USER_AGENT ;
 			if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=void rules=cols" ;
 			else $border = "border=0" ;
+
 			$table = "<table width=100% $border bordercolor=black cellpadding=2 cellspacing=0><tr>" ;
 			$qb = $user->options["quickBar"] ;
 			if ( $user->options["forceQuickBar"] != "" ) $qb = $user->options["forceQuickBar"] ;
-			if ( $qb == "left" ) $ret = $table.$column.$ret."</tr></table>" ;
-			else if ( $qb == "right" ) $ret = $table.$ret.$column."</tr></table>" ;
+
+			global $framed ;
+			if ( isset ( $framed ) ) {
+				if ( $framed == "bar" ) $ret = $column ;
+				else if ( $framed == "main" ) $ret = $ret ;
+				else $ret = "" ;
+			} else {
+				if ( $qb == "left" ) $ret = $table.$column.$ret."</tr></table>" ;
+				else if ( $qb == "right" ) $ret = $table.$ret.$column."</tr></table>" ;
+				}
 			}
 		$action = $oaction ;
 		return $ret ; 
@@ -770,7 +922,8 @@ class WikiPage extends WikiTitle {
 
 	# This generates the footer with link bar, search box, etc.
 	function getFooter () {
-		global $THESCRIPT , $wikiSearch ;
+		global $THESCRIPT , $wikiSearch , $wikiCategories , $wikiOtherNamespaces ;
+		global $framed ; if ( isset ( $framed ) ) return "" ;
 		$ret = $this->getLinkBar() ;
 		global $HTTP_USER_AGENT ;
 		if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=above rules=none" ; 
@@ -778,7 +931,22 @@ class WikiPage extends WikiTitle {
 		$ret = "<table width=100% $border bordercolor=black cellspacing=0><tr><td>$ret</td></tr></table>" ;
 		if ( !$this->isSpecialPage ) $ret .= "<a href=\"$THESCRIPT?title=$this->secureTitle&diff=yes\">(diff)</a> " ;
 		$a = $this->getOtherNamespaces () ;
-		if ( count ( $a ) > 0 ) $ret .= "Other namespaces : ".implode ( " | " , $a ) ;
+		if ( count ( $a ) > 0 ) $ret .= $wikiOtherNamespaces.implode ( " | " , $a )." " ;
+
+/*
+		# Category functionality deactivated
+		$cat = $this->getParam ( "CATEGORY" ) ;
+		if ( count ( $cat ) > 0 ) {
+			$ret .= $wikiCategories ;
+			$t = new wikiTitle ;
+			$m = "" ;
+			foreach ( $cat as $x ) {
+				$t->setTitle ( $x ) ;
+				$ret .= "$m<a href=\"$THESCRIPT?title=".$t->secureTitle."\">".$this->getNiceTitle($x)."</a>" ;
+				if ( $m == "" ) $m = " | " ;
+				}
+			}
+*/
 		$ret .= "<FORM><INPUT TYPE=text NAME=search SIZE=16><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
 		return $ret ; 
 		}
@@ -812,8 +980,9 @@ class WikiPage extends WikiTitle {
 		global $oldID , $version , $user ;
 		global $wikiBeginDiff , $wikiEndDiff , $wikiDiffLegend , $wikiDiffFirstVersion , $wikiDiffImpossible ;
 		$ret = "<nowiki><font color=red><b>$wikiBeginDiff</b></font><br>\n\n" ;
+		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
-		mysql_select_db ( "wikipedia" , $connection ) ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
 
 		if ( isset ( $oldID ) ) { # Diff between old versions
 			$sql = "SELECT old_old_version FROM old WHERE old_id=$oldID" ;

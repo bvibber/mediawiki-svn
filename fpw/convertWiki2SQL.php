@@ -62,6 +62,16 @@ function fixLinks ( $s ) {
 	if ( count($talk)==2 and strtolower($talk[1])=="talk" ) $isTalkPage = true ;
 	else $isTalkPage = false ;
 
+	# Automatic backlink from a subpage to a "main" page
+	$backLink = "" ;
+	if ( $isTalkPage == false AND count ( $talk ) == 2 ) {
+		$backLink = ucfirst ( $talk[0] ) ;
+		$backLink = str_replace ( "_" , " " , $backLink ) ;
+		}
+
+	# Automatic subpages, one last time...
+	$s = ereg_replace ( "([\n ])/([a-zA-Z0-9]+)" , "\\1[[/\\2|/\\2]]" , $s ) ;
+
 	$s = " $s" ;
 	$a = explode ( "[[" , $s ) ;
 	$s = array_shift ( $a ) ;
@@ -76,6 +86,7 @@ function fixLinks ( $s ) {
 				$u = explode ( "/" , $npage->title ) ;
 				$link = $u[0].$link ;
 				}
+			if ( ucfirst ( str_replace ( "_" , " " , $link ) ) == $backLink ) $backLink = "" ; # No backlink necessary
 			$n = str_replace ( " " , "_" , $link ) ;
 			$n = ucfirst ( $n ) ;
 			$m = substr ( $n , 0 , 1 ) ;
@@ -85,6 +96,11 @@ function fixLinks ( $s ) {
 
 			# Re-linking /Talk pages to talk:
 			$talk = explode ( "/" , $link ) ;
+			if ( $talk[0] == "HomePage" ) {
+				$talk[0] = "Main_Page" ;
+				$link = $talk[0] ;
+				if ( count ( $talk ) == 2 ) $link .= "/".$talk[1] ;
+				}
 			if ( count ( $talk ) == 2 and strtolower($talk[1]) == "talk" ) $link = "talk:".$talk[0] ;
 			else if ( $isTalkPage ) {
 				if ( count ( $c ) == 1 ) array_push ( $c , $link ) ;
@@ -96,7 +112,8 @@ function fixLinks ( $s ) {
 			$s .= "]]".$b[1] ;
 			}
 		}
-	return substr ( $s , 1 ) ;
+	if ( $backLink != "" ) $backLink = "\n:''See also :'' [[$backLink]]" ;
+	return substr ( $s , 1 ).$backLink ;
 	}
 
 function convertText ( $s ) {
@@ -132,14 +149,15 @@ function storeInDB ( $title , $text ) {
 
 	# Move talk pages to talk namespace
 	$talk = explode ( "/" , $st ) ;
+	if ( $talk[0] == "HomePage" ) { $talk[0] = "Main_Page" ; $st = $talk[0] ; }
 	if( count ( $talk ) == 2 and strtolower($talk[1]) == "talk" ) $st = "Talk:".$talk[0] ;
 
 	$sql = "INSERT INTO cur (cur_title,cur_text,cur_comment,cur_user,cur_user_text,cur_old_version,cur_minor_edit,cur_linked_links,cur_unlinked_links) VALUES ";
 	$sql .= "(\"$st\",\"$text\",";
 	$sql .= "\"Automated conversion\",0,\"conversion script\",0,1,\"$ll1\",\"$ull1\");\n" ;
 	fwrite ( $of , $sql ) ;
-	print " (".count($ll)."/".count($ull).")" ;
-	if ( count ( $ull ) != 0 ) print "!!" ;
+#	print " (".count($ll)."/".count($ull).")" ;
+#	if ( count ( $ull ) != 0 ) print "!!" ;
 	}
 
 function getTopics ( $dir ) {
@@ -194,6 +212,8 @@ function getAllTopics () {
 
 	global $l , $of ;
 	$of = fopen ( "./newiki.sql" , "w" ) ;
+	fwrite ( $of , "DELETE FROM cur WHERE cur_title NOT LIKE \"%:%\";\n" ) ;
+	fwrite ( $of , "DELETE FROM cur WHERE cur_title LIKE \"Talk:%\";\n" ) ;
 	do {
 		if ( !isset ( $l ) ) $l = 65 ;
 		if ( $l == "other" ) $letter = "other" ;

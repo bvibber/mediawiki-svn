@@ -8,6 +8,14 @@ function error ( $error ) {
 	return $page->renderPage () ;
 	}
 
+# Make a nice URL
+function nurlencode ( $s ) {
+	$ulink = urlencode ( $s ) ;
+	$ulink = str_replace ( "%3A" , ":" , $ulink ) ;
+	$ulink = str_replace ( "%2F" , "/" , $ulink ) ;
+	return $ulink ;
+	}
+
 # Convert MySQL timestame to date
 function tsc ( $t ) {
 	$year = substr ( $t , 0 , 4 ) ;
@@ -17,38 +25,6 @@ function tsc ( $t ) {
 	$min = substr ( $t , 10 , 2 ) ;
 	$sec = substr ( $t , 12 , 2 ) ;
 	return mktime ( $hour , $min , $sec , $month , $day , $year ) ;
-	}
-
-# For edit()
-function fixFastSubpageLinksSub ( $text ) {
-	global $vpage ;
-	$a = explode ( "[[" , " $text" ) ;
-	$text = substr ( array_shift ( $a ) , 1 ) ;
-	foreach ( $a as $x ) {
-		$b = spliti ( "]]" , $x , 2 ) ;
-		if ( count ( $b ) == 1 ) $text .= "[[$x" ;
-		else {
-			$t = explode ( "|" , $b[0] ) ;
-			if ( substr ( $t[0] , 0 , 1 ) == "/" ) {
-				$rp = explode ( "/" , $vpage->secureTitle ) ;
-				$t[0] = $rp[0].$t[0] ;
-				}
-			$t = implode ( "|" , $t ) ;
-			$text .= "[[".$t."]]".$b[1] ;
-			}
-		}
-	return $text ;
-	}
-function fixFastSubpageLinks ( $text ) {
-	return $text ; # SUBPAGES TURNED OFF
-	$a = spliti ( "<nowiki>" , " $text" ) ;
-	$text = substr ( fixFastSubpageLinksSub ( array_shift ( $a ) ) , 1 ) ;
-	foreach ( $a as $x ) {
-		$b = spliti ( "</nowiki>" , $x , 2 ) ;
-		if ( count ( $b ) == 1 ) $text .= "<nowiki>$x" ;
-		else $text .= "<nowiki>".$b[0]."</nowiki>".fixFastSubpageLinksSub($b[1]) ;
-		}
-	return $text ;
 	}
 
 # Called when editing/saving a page
@@ -89,7 +65,6 @@ function edit ( $title ) {
 			$text = str_replace ( "\\'" , "'" , $text ) ;
 			$text = str_replace ( "\\\"" , "\"" , $text ) ;
 			$text = str_replace ( "&" , "&amp;" , $text ) ;
-			$text = fixFastSubpageLinks ( $text ) ;
 			if ( $user->isLoggedIn ) $text = str_replace ( "~~~" , "[[user:$user->name|$user->name]]" , $text ) ;
 			else $text = str_replace ( "~~~" , $user->getLink() , $text ) ;
 			$title = str_replace ( "\\'" , "'" , $title ) ;
@@ -112,7 +87,6 @@ function edit ( $title ) {
 		$text = str_replace ( "\\\"" , "\"" , $text ) ;
 		$text = str_replace ( "\\\\" , "\\" , $text ) ;
 		$text = str_replace ( "&" , "&amp;" , $text ) ;
-#		$text = fixFastSubpageLinks ( $text ) ; # DEACTIVATED
 		$append = str_replace ( "$1" , $npage->parseContents($text) , $wikiPreviewAppend ) ;
 	} else if ( $npage->doesTopicExist() ) { # The initial edit request for an existing page
 		$npage->load ( $npage->title ) ;
