@@ -5,7 +5,6 @@
 # all the includes work.
 
 include_once( "Setup.php" );
-$wgDebugLogFile = "logfile";
 set_time_limit(0);
 
 # Need to have separate connection to "old" database.

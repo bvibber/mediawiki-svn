@@ -88,6 +88,14 @@ function wfDebug( $text, $logonly = false )
 	}
 }
 
+function wfReadOnly()
+{
+	global $wgReadOnlyFile;
+
+	if ( "" == $wgReadOnlyFile ) { return false; }
+	return is_file( $wgReadOnlyFile );
+}
+
 function wfMsg( $key )
 {
 	global $wgLang;
@@ -131,6 +139,7 @@ function wfSpecialPage()
 
 	$validSP = $wgLang->getValidSpecialPages();
 	$sysopSP = $wgLang->getSysopSpecialPages();
+	$devSP = $wgLang->getDeveloperSpecialPages();
 
 	$wgOut->setArticleFlag( false );
 	$wgOut->setRobotpolicy( "noindex,follow" );
@@ -138,13 +147,16 @@ function wfSpecialPage()
 
 	$t = $wgTitle->getDBkey();
 	if ( array_key_exists( $t, $validSP ) ||
-	  ( $wgUser->isSysop() && array_key_exists( $t, $sysopSP ) ) ) {
+	  ( $wgUser->isSysop() && array_key_exists( $t, $sysopSP ) ) ||
+	  ( $wgUser->isDeveloper() && array_key_exists( $t, $devSP ) ) ) {
 		$inc = "Special" . $t . ".php";
 		include_once( $inc );
 		$call = "wfSpecial" . $t;
 		$call();
 	} else if ( array_key_exists( $t, $sysopSP ) ) {
 		$wgOut->sysopRequired();
+	} else if ( array_key_exists( $t, $devSP ) ) {
+		$wgOut->developerRequired();
 	} else {
 		$wgOut->errorpage( "nosuchspecialpage", "nospecialpagetext" );
 	}

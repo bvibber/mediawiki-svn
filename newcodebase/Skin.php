@@ -439,6 +439,15 @@ class Skin {
 				$a[$name] = $desc ;
 			}
 		}
+		if ( $wgUser->isDeveloper() )
+		{ 
+			$devSP = $wgLang->getDeveloperSpecialPages();
+
+			foreach ( $devSP as $name => $desc ) {
+				if ( "" == $desc ) { continue; }
+				$a[$name] = $desc ;
+			}
+		}
 		$go = wfMsg( "go" );
 		$sp = wfMsg( "specialpages" );
 

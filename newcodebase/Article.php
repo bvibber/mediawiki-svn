@@ -237,7 +237,7 @@ class Article {
 
 	function edit()
 	{
-		global $wgOut, $wgUser, $wgTitle, $wgReadOnly;
+		global $wgOut, $wgUser, $wgTitle;
 		global $wpTextbox1, $wpSummary, $wpSave, $wpPreview;
 		global $wpMinoredit, $wpEdittime, $wpTextbox2;
 
@@ -252,8 +252,8 @@ class Article {
 			$this->blockedIPpage();
 			return;
 		}
-		if ( $wgReadOnly ) {
-			$this->readOnlyPage();
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
 			return;
 		}
 		if ( isset( $wpSave ) ) {
@@ -532,6 +532,10 @@ $wpTextbox2
 			$wgOut->errorpage( "watchnologin", "watchnologintext" );
 			return;
 		}
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		}
 		$wgUser->addWatch( $wgTitle->getPrefixedDBkey() );
 
 		$wgOut->setPagetitle( wfMsg( "addedwatch" ) );
@@ -554,6 +558,10 @@ $wpTextbox2
 
 		if ( 0 == $wgUser->getID() ) {
 			$wgOut->errorpage( "watchnologin", "watchnologintext" );
+			return;
+		}
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
 			return;
 		}
 		$wgUser->removeWatch( $wgTitle->getPrefixedDBkey() );
@@ -619,6 +627,10 @@ $wpTextbox2
 			$wgOut->sysopRequired();
 			return;
 		}
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		}
 		$id = $wgTitle->getArticleID();
 		if ( 0 == $id ) {
 			$wgOut->fatalEror( wfMsg( "badarticleerror" ) );
@@ -637,6 +649,10 @@ $wpTextbox2
 
 		if ( ! $wgUser->isSysop() ) {
 			$wgOut->sysopRequired();
+			return;
+		}
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
 			return;
 		}
 		$id = $wgTitle->getArticleID();
@@ -659,6 +675,10 @@ $wpTextbox2
 
 		if ( ( ! $oldimage ) && ( ! $wgUser->isSysop() ) ) {
 			$wgOut->sysopRequired();
+			return;
+		}
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
 			return;
 		}
 		if ( $oldimage || 1 == $wpConfirm ) {
@@ -846,6 +866,10 @@ $wpTextbox2
 			$wgOut->unexpectedValueError( "oldimage", $oldimage );
 			return;
 		}
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		}
 		$name = substr( $oldimage, 15 );
 
 		$dest = wfImageDir( $name );
@@ -931,18 +955,6 @@ $wpTextbox2
 		$text = str_replace( "$2", $reason, $text );
 		$wgOut->addWikiText( $text );
 		$wgOut->returnToMain( false );
-	}
-
-	function readOnlyPage()
-	{
-		global $wgOut, $wgUser;
-
-		$wgOut->setPageTitle( wfMsg( "readonly" ) );
-		$wgOut->setRobotpolicy( "noindex,nofollow" );
-		$wgOut->setArticleFlag( false );
-
-		$wgOut->addWikiText( wfMsg( "readonlytext" ) );
-		$wgOut->returnToMain();
 	}
 
 	# This function is called right before saving the wikitext,

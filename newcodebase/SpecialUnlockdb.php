@@ -1,0 +1,82 @@
+<?
+
+function wfSpecialUnlockdb()
+{
+	global $wgUser, $wgOut, $action;
+
+	if ( ! $wgUser->isDeveloper() ) {
+		$wgOut->developerRequired();
+		return;
+	}
+	$f = new DBUnlockForm();
+
+	if ( "success" == $action ) { $f->showSuccess(); }
+	else if ( "submit" == $action ) { $f->doSubmit(); }
+	else { $f->showForm( "" ); }
+}
+
+class DBUnlockForm {
+
+	function showForm( $err )
+	{
+		global $wgOut, $wgUser, $wgServer, $wgScript;
+		global $wpLockConfirm;
+
+		$wgOut->setPagetitle( wfMsg( "unlockdb" ) );
+		$wgOut->addWikiText( wfMsg( "unlockdbtext" ) );
+
+		if ( "" != $err ) {
+			$wgOut->setSubtitle( wfMsg( "formerror" ) );
+			$wgOut->addHTML( "<p><font color='red' size='+1'>{$err}</font>\n" );
+		}
+		$lc = wfMsg( "unlockconfirm" );
+		$lb = wfMsg( "unlockbtn" );
+		$action = "$wgServer$wgScript?title=Special%3AUnlockdb&amp;" .
+		  "action=submit";
+
+		$wgOut->addHTML( "<p>
+<form method=post action='{$action}'>
+<table border=0><tr>
+<td align='right'>
+<input type=checkbox name='wpLockConfirm'>
+</td>
+<td align='left'>{$lc}<td>
+</tr><tr>
+<td>&nbsp;</td><td align='left'>
+<input type=submit name='wpLock' value='{$lb}'>
+</td></tr></table>
+</form>\n" );
+
+	}
+
+	function doSubmit()
+	{
+		global $wgOut, $wgUser, $wgServer, $wgScript;
+		global $wpLockConfirm, $wgReadOnlyFile;
+
+		if ( ! $wpLockConfirm ) {
+			$this->showForm( wfMsg( "locknoconfirm" ) );
+			return;
+		}
+		if ( ! unlink( $wgReadOnlyFile ) ) {
+			$wgOut->fileDeleteError( $wgReadOnlyFile );
+			return;
+		}
+		$success = "$wgServer$wgScript?title=Special%3AUnlockdb" .
+		  "&action=success";
+		$wgOut->redirect( $success );
+	}
+
+	function showSuccess()
+	{
+		global $wgOut, $wgUser, $wgServer, $wgScript;
+		global $ip;
+
+		$wgOut->setPagetitle( wfMsg( "unlockdb" ) );
+		$wgOut->setSubtitle( wfMsg( "unlockdbsuccesssub" ) );
+		$text = str_replace( "$1", $ip, wfMsg( "unlockdbsuccesstext" ) );
+		$wgOut->addWikiText( $text );
+	}
+}
+
+?>

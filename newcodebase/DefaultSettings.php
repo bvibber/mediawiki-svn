@@ -19,9 +19,9 @@ $wgDBuser           = "wikiuser";
 $wgDBpassword       = "userpwd";
 $wgDBconnection     = "";
 
-$wgReadOnly = false;
-$wgDebugComments = false;
-$wgCachePages = false;
+$wgReadOnlyFile		= "";
+$wgDebugComments	= false;
+$wgCachePages		= false;
 
 $wgLanguageCode     = "en";
 $wgInputEncoding	= "ISO-8851-1";
