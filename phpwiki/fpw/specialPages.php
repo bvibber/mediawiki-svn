@@ -1,23 +1,6 @@
 <?
-# This contains special functions that are not necessare for basic view/edit purposes
-# - userLogout
-# - userLogin
-# - editUserSettings
-# - WantedPages (the most wanted)
-# - shortPages (stub articles)
-# - lonelyPages (orphans)
-# - watchlist
-# - recentChanges
-# - randomPage
-# - allPages
-# - search
-# - specialPages (the list)
-# - history
-# - upload
-# - statistics
-# - delete (a page; for sysops only!)
-# - askSQL (for sysops only!)
-# and many others...
+# THIS FILE IS NOT USED ANYMORE AND, THUS, OBSOLETE
+# Below is a list of all files that used to make up this page
 
 include_once ( "special_wantedpages.php" ) ;
 include_once ( "special_lonelypages.php" ) ;

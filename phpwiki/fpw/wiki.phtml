@@ -99,12 +99,12 @@ function getmicrotime(){
 
 	# Do what is asked
 	if ( isset ( $search ) ) {
-		include_once ( "./specialPages.php" ) ;
+		include_once ( "./special_dosearch.php" ) ;
 		$out = doSearch () ;
 		unset ( $search ) ;
 	} else  if ( $action == "watch" ) {
 		global $mode ;
-		include_once ( "./specialPages.php" ) ;
+		include_once ( "./special_watchlist.php" ) ;
 		$out = watch ( $title , $mode ) ;
 	} else if ( $action == "view" ) {
 		global $FromEditForm ;
@@ -115,7 +115,7 @@ function getmicrotime(){
 	else if ( $action == "edit" ) $out = doEdit ( $title ) ;
 	else if ( $action == "print" ) $out = doPrint ( $title ) ;
 	else if ( $action == "history" ) {
-		include_once ( "./specialPages.php" ) ;
+		include_once ( "./special_dohistory.php" ) ;
 		$out = doHistory ( $title ) ;
 	} else $out = error ( "No such action \"$action\"" ) ;
 
