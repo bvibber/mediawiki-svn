@@ -45,9 +45,12 @@ class Skin {
 
 	function getUserStyles()
 	{
-		global $wgUser;
+		global $wgUser, $wgStyleSheetPath;
 
-		$s = "<style type=\"text/css\"><!--\n";
+		$s = "<script language='javascript' type='text/javascript' " .
+		  "src='{$wgStyleSheetPath}/sticky.js'></script>\n";
+
+		$s .= "<style type='text/css' media='screen'><!--\n";
 		if ( 1 == $wgUser->getOption( "underline" ) ) {
 			$s .= "a { text-decoration: underline; }\n";
 		} else {
@@ -56,7 +59,11 @@ class Skin {
 		if ( 1 == $wgUser->getOption( "highlightbroken" ) ) {
 			$s .= "a.new { color: white; background: blue; }\n";
 		}
+		$s .= "#quickbar { position: absolute; top: 4px; left: 4px; " .
+		  "visibility: visible; z-index: 99;}\n";
 		$s .= "//--></style>\n";
+		$s .= "<style type='text/css' media='screen'>\n" .
+		  "@import '{$wgStyleSheetPath}/quickbar.css';\n</style>\n";
 		return $s;
 	}
 
@@ -67,9 +74,12 @@ class Skin {
 		$ns = Namespace::getName( $wgTitle->getNamespace() );
 
 		if ( "" != $ns && array_key_exists( $ns, $wgNamespaceBackgrounds ) ) {
-			return array( "bgcolor" => $wgNamespaceBackgrounds[$ns] );
+			$a = array( "bgcolor" => $wgNamespaceBackgrounds[$ns] );
 		}
-		else return array( "bgcolor" => "#ffffff" );
+		else $a = array( "bgcolor" => "#ffffff" );
+
+		$a["onload"] = "setup(\"quickbar\")";
+		return $a;
 	}
 
 	function getExternalLinkAttributes( $link, $text )
@@ -118,7 +128,7 @@ class Skin {
 		if ( $wgOut->isPrintable() ) {
 			$s = "<h1 class=\"pagetitle\">" . $wgOut->getPageTitle() . "</h1>";
 			$s .= $this->pageSubtitle();
-			$s .= "<div class=\"bodytext\">";
+			$s .= "\n<div class=\"bodytext\">";
 			return $s;
 		}
 		return $this->doBeforeContent();
@@ -128,38 +138,23 @@ class Skin {
 	{
 		global $wgUser, $wgOut, $wgTitle;
 
-		$s = "<table width=\"100%\" class=\"topbar\" "
-		  . "cellspacing=0><tr><td valign=top height=1>";
-		$s .= $this->pageTitle();
+		$s = "\n<div id='contentbox'>\n";
+		$s .= "<div id='topbar'><table border=0><tr>" .
+		  "<td valign=top align=left>";
 
-		$s .= "</td>\n<td valign=top width=200 rowspan=2 nowrap>";
+		$s .= $this->topLinks() . "\n<br>";
+		$s .= $this->pageTitleLinks();
+
+		$s .= "</td>\n<td valign=top align=right width=200 nowrap>";
 		$s .= $this->nameAndLogin();
 		$s .= "\n<br>" . $this->searchForm();
 
-		$mp = wfMsg( "mainpage" );
-		$s .= "</td>\n<td rowspan=2 width=1><a href=\"" . wfLocalUrl( $mp )
-		  . "\"><img border=0 src=\"" . $this->getLogo() . "\" alt=\""
-		  . "[$mp]\"></a></td></tr>\n";
+		$s .= "</td></tr></table>\n</div>\n";
 
-		$s .= "<tr><td valign=bottom>" . $this->topLinks()
-		  . "</td></tr></table>\n";
+		$s .= "\n<div id='article'>";
 
-		$s .= "<table width=\"100%\" class=\"middle\" cellpadding=2 "
-		  . "cellspacing=0><tr>";
-
-		$q = $wgUser->getOption( "quickbar" );
-		if ( $wgOut->isQuickbarSupressed() ) { $q = 0; }
-
-		if ( 0 == $q || "" == $q ) { # "None"
-			$s .= "<td colspan=2 valign=top>\n";
-		} else if ( 1 == $q ) { # "Left"
-			$s .= "<td class=\"quickbar\" width=110 valign=top nowrap>";
-			$s .= $this->quickBar();
-			$s .= "</td><td valign=top>\n";
-		} else { # Right, default
-			$s .= "<td valign=top>\n";
-		}
-		$s .= "<div class=\"bodytext\">";
+		$s .= $this->pageTitle();
+		$s .= $this->pageSubtitle() . "\n<p>";
 		return $s;
 	}
 
@@ -170,7 +165,7 @@ class Skin {
 		global $wgUser, $wgOut;
 
 		if ( $wgOut->isPrintable() ) {
-			$s = "</div>\n";
+			$s = "\n</div>\n";
 			return $s;
 		}
 		return $this->doAfterContent();
@@ -178,37 +173,31 @@ class Skin {
 
 	function doAfterContent()
 	{
-		global $wgUser, $wgOut, $_SERVER;
+		global $wgUser, $wgOut;
 
-		$s = "</div></td>";
-		$q = $wgUser->getOption( "quickbar" );
-		if ( $wgOut->isQuickbarSupressed() ) { $q = 0; }
+		$s = "\n</div>\n";
 
-		if ( ( ! $wgOut->isQuickbarSupressed() ) &&
-		  "" != $q && 0 != $q && 1 != $q ) {
-			$s .= "<td class=\"quickbar\" width=110 valign=top nowrap>";
-			$s .= $this->quickBar() . "</td>";
+		$s .= "\n<div id='footer'>";
+		$s .= $this->bottomLinks();
+
+		$s .= "\n<br>" . $this->pageStats();
+		$s .= "\n<br>" . $this->searchForm();
+		$s .= "\n</div>\n</div>\n";
+
+		if ( ! $wgOut->isQuickbarSupressed() ) {
+			$s .= $this->quickBar();
 		}
-		$s .= "</tr></table>\n";
-		$s .= "<table width=\"100%\" class=\"footer\" cellspacing=0><tr><td>";
-		$s .= $this->bottomLinks() . "</td></tr></table>";
-
-		$s .= "\n" . $this->pageStats();
-		$s .= "\n" . $this->searchForm();
 		return $s;
 	}
 
-	function pageTitle()
+	function pageTitleLinks()
 	{
 		global $wgOut, $wgTitle, $oldid, $action;
-
-		$s = "<h1 class=\"pagetitle\">" . $wgOut->getPageTitle() . "</h1>";
-		$s .= $this->pageSubtitle();
 
 		if ( "history" == $action ) { $q = "action=history&amp;"; }
 		else { $q = ""; }
 
-		$s .= "<p class=\"subtitle\">"
+		$s = "<p class=\"subtitle\">"
 		  . $this->makeKnownLink( $wgTitle->getPrefixedText(),
 		  WfMsg( "printableversion" ), "{$q}printable=yes" );
 
@@ -227,6 +216,14 @@ class Skin {
 			$s .= " | " . $this->makeKnownLink( $wgTitle->getPrefixedText(),
 			  wfMsg( "currentrev" ) );
 		}
+		return $s;
+	}
+
+	function pageTitle()
+	{
+		global $wgOut, $wgTitle;
+
+		$s = "<h1 class=\"pagetitle\">" . $wgOut->getPageTitle() . "</h1>";
 		return $s;
 	}
 
@@ -282,7 +279,7 @@ class Skin {
 	function topLinks()
 	{
 		global $wgOut;
-		$sep = " | ";
+		$sep = " |\n";
 
 		$s = $this->mainPageLink() . $sep
 		  . $this->specialLink( "recentchanges" );
@@ -307,7 +304,7 @@ class Skin {
 		$s .= $this->topLinks();
 
 		if ( $wgOut->isArticle() ) {
-			$s .= " | " . $this->talkLink();
+			$s .= " |\n" . $this->talkLink();
 		}
 		$s .= $this->otherLanguages();
 		return $s;
@@ -330,12 +327,18 @@ class Skin {
 		return $s;
 	}
 
+
 	function quickBar()
 	{
 		global $wgOut, $wgTitle;
 
+		$mp = wfMsg( "mainpage" );
+		$s = "\n<div id='quickbar'>";
+		$s .= "\n<a href='" . wfLocalUrl( $mp ) . "'><img border=0 src='" .
+		  $this->getLogo() . "' alt='" . "[$mp]'></a>\n<hr>";
+
 		$sep = "\n<br>";
-		$s = $this->mainPageLink()
+		$s .= $this->mainPageLink()
 		  . $sep . $this->specialLink( "recentchanges" )
 		  . $sep . $this->specialLink( "randompage" ) 
 		  . $sep . $this->dateLink() . "\n<hr>";
@@ -361,6 +364,7 @@ class Skin {
 
 		$s .= $sep . $this->bugReportsLink();
 
+		$s .= "\n</div>\n";
 		return $s;
 	}
 
@@ -537,7 +541,8 @@ class Skin {
 		if ( 0 == $nt->getNamespace() && "" == $nt->getText() ) {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
-		if ( -1 == $nt->getNamespace() ) {
+		if ( ( -1 == $nt->getNamespace() ) ||
+          ( Namespace::getIndex( "Image" ) == $nt->getNamespace() ) ) {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
 		if ( 0 == $nt->getArticleID() ) {

@@ -624,6 +624,8 @@ $wpTextbox2
 
 	function doDeleteOldImage( $oldimage )
 	{
+		global $wgOut;
+
 		$name = substr( $oldimage, 15 );
 		$archive = wfImageArchiveDir( $name );
 		if ( ! unlink( "{$archive}/{$oldimage}" ) ) {

@@ -5,7 +5,7 @@ class OutputPage {
 	var $mHeaders, $mCookies, $mMetatags, $mKeywords;
 	var $mLinktags, $mPagetitle, $mBodytext, $mDebugtext;
 	var $mHTMLtitle, $mRobotpolicy, $mIsarticle, $mPrintable;
-	var $mSubtitle, $mRedirect, $mAutonumber;
+	var $mSubtitle, $mRedirect, $mAutonumber, $mHeadtext;
 
 	var $mDTopen, $mLastSection; # Used for processing DL, PRE
 	var $mLanguageLinks, $mSupressQuickbar;
@@ -48,6 +48,7 @@ class OutputPage {
 	function isQuickbarSupressed() { return $this->mSupressQuickbar; }
 
 	function addHTML( $text ) { $this->mBodytext .= $text; }
+	function addHeadtext( $text ) { $this->mHeadtext .= $text; }
 	function debug( $text ) { $this->mDebugtext .= $text; }
 
 	# First pass--just handle <nowiki> sections, pass the rest off
@@ -107,7 +108,7 @@ class OutputPage {
 		$sk->initPage();
 		print $this->headElement();
 
-		print "<body";
+		print "\n<body";
 		$ops = $sk->getBodyOptions();
 		foreach ( $ops as $name => $val ) {
 			print " $name='$val'";
@@ -123,7 +124,7 @@ class OutputPage {
 
 		print $this->reportTime();
 
-		print "</body></html>";
+		print "\n</body></html>";
 		flush();
 	}
 
@@ -691,9 +692,11 @@ class OutputPage {
 		$tagstack = array(); $tablestack = array();
 
 		foreach ( $bits as $x ) {
+			$prev = error_reporting( E_ALL & ~( E_NOTICE | E_WARNING ) );
 			preg_match( "/^(\\/?)(\\w+)([^>]*)(\\/{0,1}>)([^<]*)$/",
 			  $x, $regs );
 			list( $qbar, $slash, $t, $params, $brace, $rest ) = $regs;
+			error_reporting( $prev );
 
 			$badtag = 0 ;
 			if ( in_array( $t = strtolower( $t ), $htmlelements ) ) {
