@@ -19,7 +19,7 @@
 );
 
 /* private */ $wgQuickbarSettingsEo = array(
-	"Nenia", "Fiksiĝas maldesktre", "Fiksiĝas dekstre", "Sxvebas maldekstre"
+	"Nenia", "Fiksiĝas maldesktre", "Fiksiĝas dekstre", "Ŝvebas maldekstre"
 );
 
 /* private */ $wgSkinNamesEo = array(
@@ -225,7 +225,9 @@
 	"Specialpages"  => "",
 	"Contributions" => "",
 	"Whatlinkshere" => "",
-	"Recentchangeslinked" => ""
+	"Recentchangeslinked" => "",
+	"Movepage"		=> "",
+	"Booksources"	=> "Alligi libroservojn"
 );
 
 # FIXME
@@ -494,6 +496,8 @@ montriĝos en la rezulto).",
 "prefsnologintext"	=> "Vi nepre <a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">salutu</a>
 antaŭ ol eblas ŝanĝo viajn preferojn.",
+"prefslogintext" => "Vi estas salutinta kiel \"$1\".
+Via interna identonombro estas $2.",
 "prefsreset"	=> "Preferoj reprenita el la registro.", #FIXME: Hmm...
 "qbsettings"	=> "Preferoj pri ilobreto", 
 "changepassword" => "Ŝanĝu pasvorton",
@@ -510,13 +514,14 @@ antaŭ ol eblas ŝanĝo viajn preferojn.",
 "resultsperpage" => "Montru trovitojn po",
 "contextlines"	=> "Montru liniojn el paĝoj po",
 "contextchars"	=> "Montru literojn el linioj ĝis po",
-"recentchangescount" => "Number of titles in recent changes",
+"recentchangescount" => "Montru kiom da titoloj en Lastaj Ŝanĝoj",
 "savedprefs"	=> "Viaj preferoj estas registritaj.",
 "timezonetext"	=> "Indiku, per kiom da horoj via
-loka horzono malsamas je tiu de la servilo (UTC-8).
-Ekzemple, por la Centra Eŭropa Horzono, indiku \"9\".",
+loka horzono malsamas je tiu de la servilo (UTC).
+Ekzemple, por la Centra Eŭropa Horzono, indiku \"1\" vintre aŭ \"2\" dum somertempo.",
 "localtime"	=> "Loka horzono",
 "timezoneoffset" => "Malsamo", #FIXME (?)
+"emailflag"     => "Malakceptu retpoŝtojn el aliaj vikipediistoj",
 
 # Recent changes
 #
@@ -619,12 +624,12 @@ kiam kaj kiu kreis ĝin; kaj iu ajn, kiun vi scias pri ĝi.",
 "byname"		=> "nomo",
 "bydate"		=> "dato",
 "bysize"		=> "grando",
-"imgdelete"		=> "for",
+"imgdelete"		=> "forigu",
 "imgdesc"		=> "pri",
 "imglegend"		=> "(pri) = montru/redaktu priskribon de dosiero.",
 "imghistory"	=> "Historio de alŝutoj",
-"revertimg"		=> "rev",
-"deleteimg"		=> "del",
+"revertimg"		=> "res",
+"deleteimg"		=> "for",
 "imghistlegend" => "(nun) = ĉi tiu estas la nuna versio de la dosiero, (for) = forigu
 ĉi tiun malnovan version, (res) = restarigi ĉi tiun malnovan version.
 <br><i>Click on date to see image uploaded on that date</i>.",
@@ -676,6 +681,38 @@ Tio estas meznombre unu paĝo po <b>$5</b> okulumoj, kaj po <b>$6</b> redaktoj."
 "unusedimagestext" => "<p>Notu, ke aliaj TTT-ejoj, ekzemple
 la alilingvaj Vikipedioj, povas rekte ligi al dosier per URL.
 Tio ne estus enkalkutita en la jena listo.",
+"booksources"	=> "Libroservoj",
+"booksourcetext" => "Jen ligilaro al aliaj TTT-ejoj, kiuj vendas librojn,
+kaj/aŭ informumos pri la libro ligita.
+Vikipedio ne estas komerce ligita je tiuj vendejoj, kaj la listo ne estu
+komprenata kvazaŭ rekomendo aŭ reklamo.", 
+
+# Email this user
+#
+"mailnologin"	=> "Neniu alsendota adreso",
+"mailnologintext" => "Vi nepre estu <a href=\"" .
+  wfLocalUrl( "Speciala:Userlogin" ) . "\">salutinta</a>
+kaj havanta validan retpoŝtadreson en viaj <a href=\"" .
+  wfLocalUrl( "Speciala:Preferences" ) . "\">preferoj</a>
+por retpoŝti al aliaj Vikipediistoj.",
+"emailuser"		=> "Retpoŝtu la Vikipediiston",
+"emailpage"		=> "Retpoŝtu",
+"emailpagetext"	=> "Se la alsendota vikipediisto donis validan retpoŝtadreson
+en la preferoj, vi povas sendi unuopan mesaĝon per la jena formulo.
+La retpoŝtadreso de vi donita en la preferoj aperos kiel \"De\"-adreso
+de la poŝto, por ke la alsendinto povos respondi.",
+"noemailtitle"	=> "Neniu retpoŝtadreso",
+"noemailtext"	=> "Ĉi tiu vikipediistoj aŭ ne donis validan retpoŝtadreson
+aŭ elektis ne ricevi retpoŝton de aliaj vikipediistoj.",
+"emailfrom"		=> "De",
+"emailto"		=> "Al",
+"emailsubject"	=> "Subjekto",
+"emailmessage"	=> "Mesaĝo",
+"emailsend"		=> "Sendu",
+"emailsent"		=> "Retpoŝto sendita",
+"emailsenttext" => "Via retpoŝto estas sendita.",
+
+
 
 # Watchlist
 #
