@@ -75,13 +75,14 @@ function WantedPages () {
 	global $doRefresh , $wikiRefreshThisPage , $wikiResourcesWarning , $wikiNoRefresh ;
 	$pn = "Log:Most_Wanted" ;
 	$minRefreshPeriod = 5*60; # Refuse to update more often than every 5 minutes
+	$timeOffset = 10000000; # Drop our date back a few months to keep us out of RecentChanges
 	$ret = "<nowiki>" ;
 
 	$ret .= "<p align=center><font size='+1'><b><a href=\"" ;
 	$ret .= wikiLink ( "special:WantedPages&doRefresh=yes" ) ;
 	$ret .= "\">$wikiRefreshThisPage</a></b></font><br>$wikiResourcesWarning</p></nowiki>\n" ;
 	if ( $doRefresh == "yes" ) {
-		$timestamp = getMySQL ( "cur" , "UNIX_TIMESTAMP(cur_timestamp)" , "cur_title=\"$pn\"" ) ;
+		$timestamp = getMySQL ( "cur" , "UNIX_TIMESTAMP(cur_timestamp)" , "cur_title=\"$pn\"" ) + $timeOffset ;
 		if ( ( $lastrefreshed = time() - $timestamp ) < $minRefreshPeriod ) {
 			$ret .= "<p><i>" . str_replace ( array ( "$1", "$2" ) ,
 				array ( round ( $lastrefreshed / 60 ) , round ( ( $minRefreshPeriod - $lastrefreshed ) / 60 ) ),
@@ -92,9 +93,7 @@ function WantedPages () {
 			$p = new wikiPage ;
 			$p->setTitle ( $pn ) ;
 			$p->ensureExistence () ;
-			#$p->setEntry ( $o , "Refresh" , 0 , "System" , 1 , ",cur_timestamp=cur_timestamp" ) ; # Storing, don't show on RC
-			$p->setEntry ( $o , "Refresh" , 0 , "System" , 1 , "" ) ; # Storing, don't show on RC
-			$timestamp2 = getMySQL ( "cur" , "UNIX_TIMESTAMP(cur_timestamp)" , "cur_title=\"$pn\"" ) ;
+			$p->setEntry ( $o , "Refresh" , 0 , "System" , 1 , ",cur_timestamp=FROM_UNIXTIME(" . (time() - $timeOffset) . ")" ) ;
 			return $ret;
 			}
 		}
