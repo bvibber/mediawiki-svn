@@ -433,8 +433,8 @@ Please log in again after you receive it.",
 "showpreview"	=> "Show preview",
 "blockedtitle"	=> "User is blocked",
 "blockedtext"	=> "Your user name or IP address has been blocked by $1.
-The reason given is this:<br>$2<p>You may contact the administrator to
-discuss the block.",
+The reason given is this:<br>''$2''<p>You may contact $1 or one of the other
+[[Wikipedia:administrators|administrators]] to discuss the block.",
 "newarticle"	=> "(New)",
 "newarticletext" => "Put your text for the new page here.",
 "noarticletext" => "(There is currently no text in this page)",
@@ -864,7 +864,7 @@ See [[Wikipedia:Deletion_log]] for a record of recent deletions and restorations
 
 # What links here
 #
-"whatlinkshere"	=> "What links here",
+"whatlinkshere"	=> "What links here?",
 "notargettitle" => "No target",
 "notargettext"	=> "You have not specified a target page or user
 to perform this function on.",
