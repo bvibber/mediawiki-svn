@@ -28,7 +28,11 @@
 );
 
 /* private */ $wgSkinNamesDe = array(
-	"Standard", "Nostalgia", "Cologne Blue"
+	"Standard",
+	"Nostalgia",
+	"Cologne Blue",
+/*	"Paddington",
+	"Montparnasse" */
 );
 
 /* private */ $wgMathNamesDe = array(
@@ -49,8 +53,8 @@
   "usenewrc"                => "Erweiterte letzte Änderungen (nicht für alle Browser geeignet)",
   "numberheadings"          => "Überschriften automatisch numerieren",
   "editondblclick"          => "Seiten mit Doppelklick bearbeiten (JavaScript)",
-  "editsection"             => "Links zum Editieren einzelner Absätze anzeigen",
-  "editsectiononrightclick" => "Einzelne Absätze per Rechtsklick editieren (Javascript)",
+  "editsection"             => "Links zum Bearbeiten einzelner Absätze anzeigen",
+  "editsectiononrightclick" => "Einzelne Absätze per Rechtsklick bearbeiten (Javascript)",
   "showtoc"                 => "Anzeigen eines Inhaltsverzeichnisses bei Artikeln mit mehr als 3 Überschriften",
   "rememberpassword"        => "Dauerhaftes Einloggen",
   "editwidth"               => "Text-Eingabefeld mit voller Breite",
@@ -59,149 +63,6 @@
   "minordefault"            => "Alle Änderungen als geringfügig markieren",
   "previewontop"            => "Vorschau vor dem Editierfenster anzeigen",
   "nocache"                 => "Seitencache deaktivieren"
-);
-
-/* private */ $wgLanguageNamesDe = array(
-  "aa" => "Afar",
-  "ab" => "Abkhazian",
-  "af" => "Afrikaans",
-  "am" => "Amharic",
-  "ar" => "&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1617;&#1577; (Araby)",
-  "as" => "Assamese",
-  "ay" => "Aymara",
-  "az" => "Azerbaijani",
-  "ba" => "Bashkir",
-  "be" => "&#1041;&#1077;&#1083;&#1072;&#1088;&#1091;&#1089;&#1082;&#1080;",
-  "bh" => "Bihara",
-  "bi" => "Bislama",
-  "bn" => "Bengali",
-  "bo" => "Tibetan",
-  "br" => "Brezhoneg",
-  "bs" => "Bosnian",
-  "ca" => "Català",
-  "ch" => "Chamoru",
-  "co" => "Corsican",
-  "cs" => "&#268;esky",
-  "cy" => "Cymraeg",
-  "da" => "Dansk",
-  "dk" => "Dansk",
-  "dz" => "Bhutani",
-  "el" => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; (Ellinika)",
-  "en" => "English",
-  "eo" => "Esperanto",
-  "es" => "Español",
-  "et" => "Eesti",
-  "eu" => "Euskara",
-  "fa" => "&#8238;&#1601;&#1585;&#1587;&#1609;&#8236; (Farsi)",
-  "fi" => "Suomi",
-  "fj" => "Fijian",
-  "fo" => "Faeroese",
-  "fr" => "Français",
-  "fy" => "Frysk",
-  "ga" => "Gaeilge",
-  "gl" => "Galician",
-  "gn" => "Guarani",
-  "gu" => "&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752; (Gujarati)",
-  "ha" => "Hausa",
-  "he" => "&#1506;&#1489;&#1512;&#1497;&#1514; (Ivrit)",
-  "hi" => "&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)",
-  "hr" => "Hrvatski",
-  "hu" => "Magyar",
-  "hy" => "Armenian",
-  "ia" => "Interlingua",
-  "id" => "Indonesia",
-  "ik" => "Inupiak",
-  "is" => "Íslenska",
-  "it" => "Italiano",
-  "iu" => "Inuktitut",
-  "ja" => "&#26085;&#26412;&#35486; (Nihongo)",
-  "jv" => "Javanese",
-  "ka" => "&#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4312; (Kartuli)",
-  "kk" => "Kazakh",
-  "kl" => "Greenlandic",
-  "km" => "Cambodian",
-  "kn" => "Kannada",
-  "ko" => "&#54620;&#44397;&#50612; (Hangul)",
-  "ks" => "Kashmiri",
-  "kw" => "Kernewek",
-  "ky" => "Kirghiz",
-  "la" => "Latina",
-  "ln" => "Lingala",
-  "lo" => "Laotian",
-  "lt" => "Lietuvi&#371;",
-  "lv" => "Latvian",
-  "mg" => "Malagasy",
-  "mi" => "Maori",
-  "mk" => "Macedonian",
-  "ml" => "Malayalam",
-  "mn" => "Mongolian",
-  "mo" => "Moldavian",
-  "mr" => "Marathi",
-  "ms" => "Bahasa Melayu",
-  "my" => "Burmese",
-  "na" => "Nauru",
-  "ne" => "&#2344;&#2375;&#2346;&#2366;&#2354;&#2368; (Nepali)",
-  "nl" => "Nederlands",
-  "no" => "Norsk",
-  "oc" => "Occitan",
-  "om" => "Oromo",
-  "or" => "Oriya",
-  "pa" => "Punjabi",
-  "pl" => "Polski",
-  "ps" => "Pashto",
-  "pt" => "Português",
-  "qu" => "Quechua",
-  "rm" => "Rhaeto-Romance",
-  "rn" => "Kirundi",
-  "ro" => "Român&#259;",
-  "ru" => "&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081; (Russkij)",
-  "rw" => "Kinyarwanda",
-  "sa" => "&#2360;&#2306;&#2360;&#2381;&#2325;&#2371;&#2340; (Samskrta)",
-  "sd" => "Sindhi",
-  "sg" => "Sangro",
-  "sh" => "Serbocroatisch",
-  "si" => "Sinhalese",
-  "simple" => "Einfaches Englisch",
-  "sk" => "Slovak",
-  "sl" => "Slovensko",
-  "sm" => "Samoan",
-  "sn" => "Shona",
-  "so" => "Soomaali",
-  "sq" => "Shqiptare",
-  "sr" => "Srpski",
-  "ss" => "Siswati",
-  "st" => "Sesotho",
-  "su" => "Sundanese",
-  "sv" => "Svenska",
-  "sw" => "Kiswahili",
-  "ta" => "Tamil",
-  "te" => "Telugu",
-  "tg" => "Tajik",
-  "th" => "Thai",
-  "ti" => "Tigrinya",
-  "tk" => "Turkmen",
-  "tl" => "Tagalog",
-  "tn" => "Setswana",
-  "to" => "Tonga",
-  "tr" => "Türkçe",
-  "ts" => "Tsonga",
-  "tt" => "Tatar",
-  "tw" => "Twi",
-  "ug" => "Uighur",
-  "uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072; (Ukrayins`ka)",
-  "ur" => "Urdu",
-  "uz" => "Uzbek",
-  "vi" => "Vietnamese",
-  "vo" => "Volap&#252;k",
-  "wo" => "Wolof",
-  "xh" => "isiXhosa",
-  "yi" => "Yiddish",
-  "yo" => "Yoruba",
-  "za" => "Zhuang",
-  "zh" => "&#20013;&#25991; (Zhongwen)",
-  "zh-cn" => "&#20013;&#25991;(&#31616;&#20307;) (Simplified Chinese)",
-  "zh-tw" => "&#20013;&#25991;(&#32321;&#20307;) (Traditional Chinese)",
-  "zu" => "Zulu"
 );
 
 /* private */ $wgBookstoreListDe = array(
@@ -247,7 +108,7 @@
   "Longpages"           => "Lange Artikel",
   "Newpages"            => "Neue Artikel",
   "Ancientpages"        => "Älteste Artikel",
-#  "Intl"                => "Interlanguage Links",
+/*  "Intl"                => "Interlanguage Links", */
   "Allpages"            => "Alle Artikel (alphabetisch)",
 
   "Ipblocklist"         => "Blockierte IP-Adressen",
@@ -259,7 +120,8 @@
   "Whatlinkshere"       => "",
   "Recentchangeslinked" => "",
   "Booksources"         => "Externe Buchhandlungen",
-  "Categories"          => "Seiten Kategorien"
+/*  "Categories"          => "Seiten Kategorien", */
+/*  "Export"              => "" */
 );
 
 /* private */ $wgSysopSpecialPagesDe = array(
@@ -295,7 +157,7 @@
 "bugreportspage" => "Wikipedia:Beobachtete_Fehler",
 "faq"			=> "FAQ",
 "faqpage"		=> "Wikipedia:Häufig_gestellte_Fragen",
-"edithelp"		=> "Editierhilfe",
+"edithelp"		=> "Bearbeitungshilfe",
 "edithelppage"	=> "Wikipedia:Wie_man_eine_Seite_bearbeitet",
 "cancel"		=> "Abbruch",
 "qbfind"		=> "Finden",
@@ -347,12 +209,12 @@
 "retrievedfrom" => "Von \"$1\"",
 "newmessages" => "Sie haben $1.",
 "newmessageslink" => "neue Nachrichten",
-"editsection" => "Editieren",
+"editsection" => "bearbeiten",
 "toc" => "Inhaltsverzeichnis",
 "showtoc" => "Anzeigen",
 "hidetoc" => "Verbergen",
 "thisisdeleted" => "Ansehen oder wiederherstellen von $1?",
-"restorelink" => "$1 gelöschte Editiervorgänge",
+"restorelink" => "$1 gelöschte Bearbeitungsvorgänge",
 
 
 # Main script and global functions
@@ -378,7 +240,7 @@ MySQL meldete den Fehler: \"<tt>$3: $4</tt>\".\n",
 "noconnect"		=> "Konnte keine Verbindung zur Datenbank auf $1 herstellen",
 "nodb"			=> "Konnte Datenbank $1 nicht auswählen",
 "cachederror" => "Das folgende ist eine Kopie aus dem Cache und möglicherweise nicht aktuell.",
-"readonly"		=> "Datenbank ist geperrt",
+"readonly"		=> "Datenbank ist gesperrt",
 "enterlockreason" => "Bitte geben Sie einen Grund ein, warum die Datenbank
 gesperrt werden soll und eine Abschätzung über die Dauer der Sperrung",
 "readonlytext"	=> "Die Datenbank der Wikipedia ist vorübergehend gesperrt, z.B. für Wartungsarbeiten. Bitte versuchen Sie es später noch einmal.\n",
@@ -405,7 +267,7 @@ gesperrt werden soll und eine Abschätzung über die Dauer der Sperrung",
 Sie können Wikipedia jetzt anonym weiterbenutzen, oder sich unter dem selben oder einem anderen Benutzernamen wieder anmelden.\n",
 
 "welcomecreation" => "<h2>Willkommen, $1!</h2><p>Ihr Benutzerkonto wurde eingerichtet.
-Vergessen Sie nicht, Ihre Wikipedia-Einstellungen anzupassen.",
+Vergessen Sie nicht, Ihre Wikipedia-Einstellungen anzupassen. Schauen Sie doch auf unserer [[Wikipedia:Willkommen|Willkommensseite]] vorbei!",
 
 "loginpagetitle" => "Benutzer-Anmeldung",
 "yourname"		=> "Ihr Benutzername",
@@ -462,7 +324,7 @@ Bitte melden Sie sich an, sobald Sie es erhalten.",
 "blockedtitle"	=> "Benutzer ist blockiert",
 "blockedtext"	=> "Ihr Benutzername oder Ihre IP-Adresse wurde von $1 blockiert.
 Als Grund wurde angegeben:<br>$2<p>Bitte kontaktieren Sie den Administrator, um über die Blockierung zu sprechen.",
-"whitelistedittitle" => "Zum Editieren ist es erforderlich angemeldet zu sein",
+"whitelistedittitle" => "Zum Bearbeiten ist es erforderlich angemeldet zu sein",
 "whitelistedittext" => "Sie müssen sich [[Spezial:Userlogin|hier anmelden]] um Artikel bearbeiten zu können.",
 "whitelistreadtitle" => "Zum Lesen ist es erforderlich angemeldet zu sein",
 "whitelistreadtext" => "Sie müssen sich [[Spezial:Userlogin|hier anmelden]] um Artikel lesen zu können.",
@@ -497,14 +359,14 @@ Wenn Sie speichern, werden alle neueren Versionen überschrieben.</strong>\n",
 <b>Bitte <font size='+1'>kopieren Sie keine Webseiten</font>, die nicht Ihre eigenen sind, benutzen Sie <fonz size='+1'>keine urheberrechtlich geschützten Werke</font> ohne Erlaubnis des Copyright-Inhabers!</b>
 <p>Sie geben uns hiermit ihre Zusage, dass Sie den Text <strong>selbst verfasst</strong> haben, dass der Text Allgemeingut (<strong>public domain</strong>) ist, oder dass der <strong>Copyright-Inhaber</strong> seine <strong>Zustimmung</strong> gegeben hat. Falls dieser Text bereits woanders veröffentlicht wurde, weisen Sie bitte auf der 'Diskussion:'-Seite darauf hin.
 <p><i>Bitte beachten Sie, dass alle Beiträge zur Wikipedia automatisch unter der \"GNU Freie Dokumentationslizenz\" stehen. Falls Sie nicht möchten, dass Ihre Arbeit hier von anderen verändert und verbreitet wird, dann drücken Sie nicht auf \"Speichern\".</i>",
-"longpagewarning" => "WARNUNG: Diese Seite ist $1KB groß; einige Browser könnten Probleme haben, Seiten zu editieren, die größer als 32KB sind.
+"longpagewarning" => "WARNUNG: Diese Seite ist $1KB groß; einige Browser könnten Probleme haben, Seiten zu bearbeiten, die größer als 32KB sind.
 Überlegen Sie bitte, ob eine Aufteilung der Seite in kleinere Abschnitte möglich ist.",
 "readonlywarning" => "WARNUNG: Die Datenbank wurde während dem Ändern der
 Seite für Wartungsarbeiten gesperrt, so dass Sie die Seite im Moment nicht
 speichern können. Sichern Sie sich den Text und versuchen Sie die Änderungen
 später einzuspielen.",
-"protectedpagewarning" => "WARNUNG: Diese Seite wurde gesperrt, so dass nur
-Benutzer mit Sysop-Rechten editieren können. Beachten Sie bitte die 
+"protectedpagewarning" => "WARNUNG: Diese Seite wurde gesperrt, so dass sie nur
+Benutzer mit Sysop-Rechten bearbeitet werden kann. Beachten Sie bitte die 
 <a href='/wiki/Wikipedia:Geschützte Seiten'>Regeln für geschützte Seiten</a>.",
 
 # History pages
@@ -566,6 +428,28 @@ Erfolglose Suchanfragen werden häufig verursacht durch den Versuch, nach 'gewöhn
 Suche in Namensräumen :<br>
 $1<br>
 $2 Zeige auch REDIRECTs &nbsp; Suche nach $3 $9",
+"searchdisabled" => "<p>Entschuldigung! Die Volltextsuche wurde wegen Überlastung temporär deaktiviert. Derweil können Sie die folgende Google Suche verwenden, die allerdings nicht den aktuellen Stand wiederspiegelt.<p>
+
+<!-- SiteSearch Google -->
+<FORM method=GET action=\"http://www.google.com/search\">
+<TABLE bgcolor=\"#FFFFFF\"><tr><td>
+<A HREF=\"http://www.google.com/\">
+<IMG SRC=\"http://www.google.com/logos/Logo_40wht.gif\"
+border=\"0\" ALT=\"Google\"></A>
+</td>
+<td>
+<INPUT TYPE=text name=q size=31 maxlength=255 value=\"$1\">
+<INPUT type=submit name=btnG VALUE=\"Google Search\">
+<font size=-1>
+<input type=hidden name=domains value=\"{$wgServer}\"><br><input type=radio name
+=sitesearch value=\"\"> WWW <input type=radio name=sitesearch value=\"{$wgServer
+}\" checked> {$wgServer} <br>
+<input type='hidden' name='ie' value='$2'>
+<input type='hidden' name='oe' value='$2'>
+</font>
+</td></tr></TABLE>
+</FORM>
+<!-- SiteSearch Google -->",
 "blanknamespace" => "(Haupt-)",
 
 # Preferences page
@@ -675,6 +559,8 @@ Alle Zeiten sind UTC.
 "uploadlogtext" => "Hochgeladene und gelöschte Dateien werden im $1 verzeichnet.",
 "filename"		=> "Dateiname",
 "filedesc"		=> "Beschreibung",
+"filestatus" => "Copyright-Status",
+"filesource" => "Quelle",
 "affirmation"	=> "Hiermit bestätige ich, dass ich das Copyright dieser Datei habe, und diese hiermit unter $1 veröffentliche, bzw. dass die Datei 'Public Domain' ist.",
 "copyrightpage" => "Wikipedia:Copyright",
 "copyrightpagename" => "Wikipedia copyright",
@@ -828,8 +714,8 @@ am Ende des Artikels.",
 "notanarticle"	=> "Kein Artikel",
 "watchnochange" => "Keine Ihrer beobachteten Artikel wurde während des angezeigten Zeitraums bearbeitet.",
 "watchdetails" => "($1 Artikel werden beobachtet (ohne Diskussionsseiten);
-$2 Artikel insgesamt bearbeitet in eingestelltem Zeitraum;
-$3... <a href='$4'>zeige und editiere komplette Liste</a>.)",
+$2 Artikel im eingestellten Zeitraum bearbeitet;
+$3... <a href='$4'>komplette Liste zeigen und bearbeiten</a>.)",
 "watchmethod-recent" => "überprüfen der letzten Bearbeitungen für die Beobachtungsliste",
 "watchmethod-list" => "überprüfen der Beobachtungsliste nach letzten Bearbeitungen",
 "removechecked" => "Markierte Einträge löschen",
@@ -839,6 +725,9 @@ $3... <a href='$4'>zeige und editiere komplette Liste</a>.)",
 "couldntremove" => "Der Eintrag '$1' kann nicht gelöscht werden...",
 "iteminvalidname" => "Ploblem mit dem Eintrag '$1', ungültiger Name...",
 "wlnote" => "Es folgen die letzten $1 Änderungen der letzten <b>$2</b> Stunden.",
+"wlshowlast" => "Zeige die letzen ",
+"wlhours"    => " Stunden",
+"wldays"     => " Tage",
 
 # Delete/protect/revert
 #
@@ -1002,6 +891,9 @@ Diskussions-Seite nicht, da schon eine mit dem neuen Titel existiert. Bitte glei
 "talkpagemoved" => "Die \"Diskussions\"-Seite wurde ebenfalls verschoben.",
 "talkpagenotmoved" => "Die \"Diskussions\"-Seite wurde <strong>nicht</strong> verschoben.",
 
+"export"        => "Seiten exportieren",
+"exporttext"    => "Sie können den Text und die Bearbeitungshistorie einer bestimmten oder einer Auswahl von Seiten nach XML exportieren. Das Ergebnis kann in ein anderes Wiki mit WikiMedia Software eingespielt werden, bearbeitet oder archiviert werden.",
+"exportcuronly" => "Nur die aktuelle Version der Seite exportieren",
 );
 
 class LanguageDe extends Language {
@@ -1057,19 +949,6 @@ class LanguageDe extends Language {
 	function getUserToggles() {
 		global $wgUserTogglesDe;
 		return $wgUserTogglesDe;
-	}
-
-	function getLanguageNames() {
-		global $wgLanguageNamesDe;
-		return $wgLanguageNamesDe;
-	}
-
-	function getLanguageName( $code ) {
-		global $wgLanguageNamesDe;
-		if ( ! array_key_exists( $code, $wgLanguageNamesDe ) ) {
-			return "";
-		}
-		return $wgLanguageNamesDe[$code];
 	}
 
 	function getMonthName( $key )
