@@ -286,19 +286,24 @@ function populatedata() {
 	$sql = "DELETE FROM cur";
 	wfQuery( $sql, $fname );
 
+	$now = wfTimestampNow();
+	$won = wfInvertTimestamp( $now );
+	
 	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
-	  "cur_restrictions) VALUES ({$wns},'{$ulp}','" .
-	  wfStrencode( wfMsg( "uploadlogpagetext" ) ) . "','sysop')";
+	  "cur_restrictions,cur_timestamp,inverse_timestamp,cur_touched) VALUES ({$wns},'{$ulp}','" .
+	  wfStrencode( wfMsg( "uploadlogpagetext" ) ) . "','sysop','$now','$won','$now')";
 	wfQuery( $sql );
 
 	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
-	  "cur_restrictions) VALUES ({$wns},'{$dlp}','" .
-	  wfStrencode( wfMsg( "dellogpagetext" ) ) . "','sysop')";
+	  "cur_restrictions,cur_timestamp,inverse_timestamp,cur_touched) VALUES ({$wns},'{$dlp}','" .
+	  wfStrencode( wfMsg( "dellogpagetext" ) ) . "','sysop','$now','$won','$now')";
 	wfQuery( $sql );
 
-	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text) " .
-	  "VALUES (0,'" . wfStrencode( wfMsg( "mainpage" ) ) . "','" .
-	  wfStrencode( wfMsg( "mainpagetext" ) ) . "')";
+	$titleobj = Title::newFromText( wfMsg( "mainpage" ) );
+	$title = $titleobj->getDBkey();
+	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text,cur_timestamp,inverse_timestamp,cur_touched) " .
+	  "VALUES (0,'$title','" .
+	  wfStrencode( wfMsg( "mainpagetext" ) ) . "','$now','$won','$now')";
 	wfQuery( $sql );
 }
 
