@@ -379,9 +379,16 @@ function dir2DB ( $letter )  {
 
 function getAllTopics () {
 	global $allTopics , $rootDir , $wikiTalk;
+	global $recodeCharset ;
 	$allTopics = array () ;
-	for ( $c = 65 ; chr($c) <= "Z" ; $c++ ) $allTopics[chr($c)] = getTopics ( "$rootDir/".chr($c) ) ;
+	for ( $c = 65 ; chr($c) <= "Z" ; $c++ ) {
+		$allTopics[chr($c)] = getTopics ( "$rootDir/".chr($c) ) ;
+		for ( $i = 0; $i < count($allTopics[chr($c)]) ; $i++ )
+			$allTopics[chr($c)][$i] = $recodeCharset ( $allTopics[chr($c)][$i] ) ;
+		}
 	$allTopics["0"] = getTopics ( "$rootDir/other" ) ;
+	for ( $i = 0; $i < count($allTopics["0"]) ; $i++ )
+		$allTopics["0"][$i] = $recodeCharset ( $allTopics["0"][$i] ) ;
 	}
 
 # MAIN PROGRAM
