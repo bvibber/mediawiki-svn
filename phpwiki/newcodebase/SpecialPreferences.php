@@ -28,6 +28,7 @@ function wfSpecialPreferences()
 	global $wgUser, $wgLang, $wgDeferredUpdateList;
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
 	global $wpSkin, $wpEmail, $wpNick, $wpSearch, $wpRecent;
+	global $wpSearchLines, $wpSearchChars;
 	global $wpRows, $wpCols, $HTTP_POST_VARS;
 
 	if ( "" != $wpNewpass ) {
@@ -49,6 +50,8 @@ function wfSpecialPreferences()
 	$wgUser->setOption( "quickbar", $wpQuickbar );
 	$wgUser->setOption( "skin", $wpSkin );
 	$wgUser->setOption( "searchlimit", $wpSearch );
+	$wgUser->setOption( "contextlines", $wpSearchLines );
+	$wgUser->setOption( "contextchars", $wpSearchChars );
 	$wgUser->setOption( "rclimit", $wpRecent );
 	$wgUser->setOption( "rows", $wpRows );
 	$wgUser->setOption( "cols", $wpCols );
@@ -73,6 +76,7 @@ function wfSpecialPreferences()
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
 	global $wpRows, $wpCols, $wpSkin, $wpEmail, $wpNick;
 	global $wpSearch, $wpRecent, $HTTP_POST_VARS;
+	global $wpSearchLines, $wpSearchChars;
 
 	$wpOldpass = $wpNewpass = $wpRetype = "";
 	$wpEmail = $wgUser->getEmail();
@@ -83,6 +87,8 @@ function wfSpecialPreferences()
 	$wpRows = $wgUser->getOption( "rows" );
 	$wpCols = $wgUser->getOption( "cols" );
 	$wpSearch = $wgUser->getOption( "searchlimit" );
+	$wpSearchLines = $wgUser->getOption( "contextlines" );
+	$wpSearchChars = $wgUser->getOption( "contextchars" );
 	$wpRecent = $wgUser->getOption( "rclimit" );
 
 	$togs = $wgLang->getUserToggles();
@@ -97,6 +103,7 @@ function wfSpecialPreferences()
 	global $wpQuickbar, $wpOldpass, $wpNewpass, $wpRetype;
 	global $wpSkin, $wpEmail, $wpNick, $wpSearch, $wpRecent;
 	global $wpRows, $wpCols, $wpSaveprefs, $wpReset;
+	global $wpSearchLines, $wpSearchChars;
 
 	$wgOut->setPageTitle( wfMsg( "preferences" ) );
 	$wgOut->setArticleFlag( false );
@@ -128,7 +135,10 @@ function wfSpecialPreferences()
 	$tbc = wfMsg( "columns" );
 	$yem = wfMsg( "youremail" );
 	$ynn = wfMsg( "yournick" );
+	$srh = wfMsg( "searchresultshead" );
 	$rpp = wfMsg( "resultsperpage" );
+	$scl = wfMsg( "contextlines" );
+	$scc = wfMsg( "contextchars" );
 	$rcc = wfMsg( "recentchangescount" );
 
 	$wgOut->addHTML( "<form action=\"$action\" method=post>
@@ -194,8 +204,11 @@ $tbc: <input type=text name=\"wpCols\" value=\"$wpCols\" size=6>
 	$wgOut->addHTML( "<td valign=top nowrap>
 $yem: <input type=text name=\"wpEmail\" value=\"$wpEmail\" size=20><br>
 $ynn: <input type=text name=\"wpNick\" value=\"$wpNick\" size=12><br>
+$rcc: <input type=text name=\"wpRecent\" value=\"$wpRecent\" size=6><br>
+<strong>{$srh}:</strong><br>
 $rpp: <input type=text name=\"wpSearch\" value=\"$wpSearch\" size=6><br>
-$rcc: <input type=text name=\"wpRecent\" value=\"$wpRecent\" size=6></td>
+$scl: <input type=text name=\"wpSearchLines\" value=\"$wpSearchLines\" size=6><br>
+$scc: <input type=text name=\"wpSearchChars\" value=\"$wpSearchChars\" size=6></td>
 </tr><tr>
 <td align=center><input type=submit name=\"wpSaveprefs\" value=\"$svp\"></td>
 <td align=center><input type=submit name=\"wpReset\" value=\"$rsp\"></td>
