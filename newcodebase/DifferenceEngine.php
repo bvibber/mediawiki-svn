@@ -21,7 +21,7 @@ class DifferenceEngine {
 		$mtext = str_replace( "$1", $t, wfMsg( "missingarticle" ) );
 
 		if ( ! $this->loadText() ) {
-			$wgOut->setPagetitle( "errorpagetitle" );
+			$wgOut->setPagetitle( wfMsg( "errorpagetitle" ) );
 			$wgOut->addHTML( $mtext );
 			return;
 		}
