@@ -72,14 +72,17 @@ class MovePageForm {
 	{
 		global $wgOut, $wgUser, $wgServer, $wgScript;
 		global $wpNewTitle, $wpOldTitle, $target;
+		global $wgDeferredUpdateList;
 		$fname = "MovePageForm::doSubmit";
 
 		$ot = Title::newFromText( $wpOldTitle );
 		$nt = Title::newFromText( $wpNewTitle );
 		$nns = $nt->getNamespace();
 		$ndt = wfStrencode( $nt->getDBkey() );
+		$nft = wfStrencode( $nt->getPrefixedDBkey() );
 		$ons = $ot->getNamespace();
 		$odt = wfStrencode( $ot->getDBkey() );
+		$oft = wfStrencode( $ot->getPrefixedDBkey() );
 		$oldid = $ot->getArticleID();
 
 		if ( 0 != $nt->getArticleID() ) {
@@ -92,7 +95,8 @@ class MovePageForm {
 			return;
 		}
 		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp," .
-		  "cur_namespace={$nns},cur_title='{$ndt}' WHERE cur_id={$oldid}";
+		  "cur_namespace={$nns},cur_title='{$ndt}',cur_ind_title='" .
+		  wfStrencode( $nt->getIndexTitle() ) . "' WHERE cur_id={$oldid}";
 		wfQuery( $sql, $fname );
 
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
@@ -110,13 +114,16 @@ class MovePageForm {
 		  "old_namespace={$nns},old_title='{$ndt}' WHERE old_title='{$odt}'";
 		wfQuery( $sql, $fname );
 
-		$sql = "UPDATE links SET l_from='{$ndt}' WHERE l_from='{$odt}'";
+		$sql = "UPDATE links SET l_from='{$nft}' WHERE l_from='{$oft}'";
 		wfQuery( $sql, $fname );
 
 		$sql = "UPDATE links SET l_to={$newid} WHERE l_to={$oldid}";
 		wfQuery( $sql, $fname );
 
-		$sql = "UPDATE imagelinks SET il_from='{$ndt}' WHERE il_from='{$odt}'";
+		$sql = "INSERT INTO links (l_from,l_to) VALUES ('{$oft}',{$oldid})";
+		wfQuery( $sql, $fname );
+
+		$sql = "UPDATE imagelinks SET il_from='{$nft}' WHERE il_from='{$oft}'";
 		wfQuery( $sql, $fname );
 
 		$nu = urlencode( $wpNewTitle );

@@ -400,10 +400,13 @@ This may take some time if you have a slow internet connection.
 <p> The preferred formats are JPEG for photographic images and PNG
 for drawings and other iconic images.
 To include the image in an article, use a link in the form
-<b>[[image:file.jpg]]</b> or <b>[[image:file.png|alt text]]</b>.",
+<b>[[image:file.jpg]]</b> or <b>[[image:file.png|alt text]]</b>.
+<p>Please note that as with Wikipedia articles, others may edit or
+delete your uploads if they think it serves the encyclopedia, and
+you may be blocked from uploading if you abuse the system.",
 "uploadlog"		=> "upload log",
 "uploadlogpage" => "Upload_log",
-"uploadlogtext" => "Uploads and deletions are logged on the $1",
+"uploadlogtext" => "Uploads and deletions are logged on the $1.",
 "filename"		=> "Filename",
 "filedesc"		=> "Summary",
 "affirmation"	=> "I affirm that the copyright holder of this file
@@ -454,10 +457,10 @@ this old version, (rev) = revert to this old version.",
 "sitestats"		=> "Site statistics",
 "userstats"		=> "User statistics",
 "sitestatstext" => "There <b>$1</b> total pages in the database.
-This inlcludes \"talk\" pages, pages about Wikipedia, minimal \"stub\"
-pages, redirects, and others that probably don't qualify as articles.<br>
+This includes \"talk\" pages, pages about Wikipedia, minimal \"stub\"
+pages, redirects, and others that probably don't qualify as articles.
 Excluding those, there are <b>$2</b> pages that are probably legitimate
-articles.<br>
+articles.<p>
 There has been a total of <b>$3</b> page views, and <b>$4</b> page edits.
 That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "userstatstext" => "There are <b>$1</b> registered users.
