@@ -11,7 +11,13 @@ function wfSpecialRecentchanges()
 	$s = wfFetchObject( $res );
 	$wgOut->checkLastModified( $s->lastmod );
 
-	$wgOut->addWikiText( wfMsg( "recentchangestext" ) );
+	$rctext = wfMsg( "recentchangestext" );
+	$sql = "SELECT cur_text FROM cur WHERE cur_namespace=4 AND cur_title='Recentchanges'";
+	$res = wfQuery( $sql, $fname );
+	if( ( $s = wfFetchObject( $res ) ) and ( $s->cur_text != "" ) ) {
+		$rctext = $s->cur_text;
+	}
+	$wgOut->addWikiText( $rctext );
 
 	if ( ! $days ) {
 		$days = $wgUser->getOption( "rcdays" );
