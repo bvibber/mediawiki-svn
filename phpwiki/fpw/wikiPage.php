@@ -935,7 +935,7 @@ class WikiPage extends WikiTitle {
 
     # This generates the QuickBar (also used by the list of special pages function)
     function getQuickBar () {
-        global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages;
+        global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages , $action ;
         global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
         global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
         $editOldVersion = "" ;
@@ -945,12 +945,18 @@ class WikiPage extends WikiTitle {
         $column .= "<br><a href=\"".wikiLink("special:$wikiRecentChangesLink")."\">$wikiRecentChanges</a>\n" ;
         if ( $this->canEdit() ) $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."$editOldVersion&action=edit")."\">$wikiEditThisPage</a>\n" ;
         else if ( !$this->isSpecialPage ) $column .= "<br>Protected page\n" ;
+
+	$temp = $this->isSpecialPage ;
+	if ( $action == "" ) $this->isSpecialPage = false ;
         if ( $this->canDelete() ) $column .= "<br><a href=\"".wikiLink("special:deletepage&target=".urldecode($this->url))."\">$wikiDeleteThisPage</a>\n" ;
+	$this->isSpecialPage = $temp ;
+
+
         if ( $this->canProtect() ) $column .= "<br><a href=\"".wikiLink("special:protectpage&target=".urldecode($this->url))."\">Protect this page</a>\n" ;
 # To be implemented later
 #       if ( $this->canAdvance() ) $column .= "<br><a href=\"".wikiLink("special:Advance&topic=$this->safeTitle")."\">Advance</a>\n" ;
 
-	if ( in_array ( "is_sysop" , $user->rights ) ) $column .= "<br><a href=\"".wikiLink(urldecode("special:AskSQL"))."\">$wikiAskSQL</a>\n" ;
+	if ( in_array ( "is_sysop" , $user->rights ) ) $column .= "<br><a href=\"".wikiLink("special:AskSQL")."\">$wikiAskSQL</a>\n" ;
         if ( !$this->isSpecialPage ) $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."&action=history")."\">$wikiHistory</a>\n" ;
         $column .= "<br><a href=\"".wikiLink("special:Upload")."\">$wikiUpload</a>\n" ;
         $column .= "<hr>" ;
