@@ -260,7 +260,7 @@ void processcmd(connection *c) {
   }
   c->isize = size;
   c->ipos = 0;
-  c->input = (unsigned char *)malloc(sizeof(unsigned char) * size);
+  c->input = (unsigned char *)malloc(sizeof(unsigned char) * (size+1));
   if(!c->input) {
     formerror(c, ZHERR_S_MEM);
     c->nextstate = ZHSTATE_EATDATA;
@@ -362,12 +362,16 @@ void connectionRead(connection *c) {
     printf("Reading data...\n");
     s = read(c->clientSocket, c->input+c->ipos, c->isize - c->ipos);
     printf("Status = %d\n", s);
+
     if(shouldclose(s))
       closeconnection(c);
     else if(s>0) {
       c->ipos+=s;
-      if(c->ipos == c->isize) // got all data
+      if(c->ipos == c->isize) {// got all data
+        //terminate with \0
+        c->input[c->ipos]='\0';
 	processdata(c); // perform conversion, etc. also update state
+      }
     }
     break;
   case ZHSTATE_EATDATA:
@@ -504,7 +508,6 @@ int main(int argc, char *argv[])
     fprintf(stderr, "error: listen() failed.\n");
     exit(-1);
   }
-
 
   while(1) {
     /* reset fdsets */
