@@ -52,10 +52,10 @@ function wfSpecialImagelist()
 	$action = wfLocalUrlE( $wgLang->specialPage( "Imagelist" ),
 	  "sort=byname&limit={$limit}" );
 
-	$wgOut->addHTML( "<form name='imagesearch' method=post action=\"" .
+	$wgOut->addHTML( "<form id=\"imagesearch\" method=\"post\" action=\"" .
 	  "{$action}\">" .
-	  "{$cap}: <input type=text size=8 name='wpIlMatch' value=''> " .
-	  "<input type=submit name='wpIlSubmit' value='{$sub}'></form>" );
+	  "{$cap}: <input type=text size=8 name=\"wpIlMatch\" value=\"\"> " .
+	  "<input type=submit name=\"wpIlSubmit\" value=\"{$sub}\"></form>" );
 
 	$nums = array( 50, 100, 250, 500 );
 	$here = $wgLang->specialPage( "Imagelist" );

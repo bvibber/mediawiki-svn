@@ -39,18 +39,18 @@ class DBLockForm {
 		  "action=submit" );
 
 		$wgOut->addHTML( "<p>
-<form name='lockdb' method=post action=\"{$action}\">
+<form id=\"lockdb\" method=\"post\" action=\"{$action}\">
 {$elr}:
-<textarea name='wpLockReason' rows=10 cols=60 wrap=virtual>
+<textarea name=\"wpLockReason\" rows=10 cols=60 wrap=virtual>
 </textarea>
 <table border=0><tr>
-<td align='right'>
-<input type=checkbox name='wpLockConfirm'>
+<td align=right>
+<input type=checkbox name=\"wpLockConfirm\">
 </td>
-<td align='left'>{$lc}<td>
+<td align=left>{$lc}<td>
 </tr><tr>
-<td>&nbsp;</td><td align='left'>
-<input type=submit name='wpLock' value=\"{$lb}\">
+<td>&nbsp;</td><td align=left>
+<input type=submit name=\"wpLock\" value=\"{$lb}\">
 </td></tr></table>
 </form>\n" );
 

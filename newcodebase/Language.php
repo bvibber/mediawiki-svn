@@ -553,7 +553,7 @@ example \"fish and and scales\".
 Please try another query.",
 "matchtotals"	=> "The query \"$1\" matched $2 article titles
 and the text of $3 articles.",
-"nogomatch" => "No page with this exact title exists, trying full text search. ",
+"nogomatch" => "No page with this exact title exists, trying full text search.",
 "titlematches"	=> "Article title matches",
 "notitlematches" => "No article title matches",
 "textmatches"	=> "Article text matches",
@@ -571,7 +571,29 @@ containing all of the search terms will appear in the result).",
 Search in namespaces :<br>
 $1<br>
 $2 List redirects &nbsp; Search for $3 $9",
-
+"searchdisabled" => "<p>Wikipedia's internal search has been temporarily
+disabled due to recent server strain during peak hours
+(16:00-04:00 UTC / 8:00-16:00 PST weekdays).
+As a temporary measure, you can search Wikipedia via
+<a href=\"http://google.com/\">google</a>.
+Thanks for your patience.
+<!-- Search Google -->
+<form id=\"google\" method=\"get\" action=\"http://www.google.com/custom\">
+<table bgcolor=\"#FFFFFF\" cellspacing=0 border=0>
+<tr valign=top><td>
+<a href=\"http://www.google.com/search\">
+<img src=\"http://www.google.com/logos/Logo_40wht.gif\" border=0
+alt=\"Google\" align=\"middle\"></a>
+</td>
+<td>
+<input type=text name=\"q\" size=31 maxlength=255 value=\"$1\">
+<input type=submit name=\"sa\" value=\"Google Search\">
+<input type=hidden name=\"cof\" value=\"LW:135;L:http://www.wikipedia.org/upload/wiki.png;LH:133;AH:left;S:http://www.wikiped<font face=arial,sans-serif size=-1>
+<input type=hidden name=\"domains\" value=\"www.wikipedia.org\"><br>
+<input type=radio name=\"sitesearch\" value=\"\"> Search WWW
+<input type=radio name=\"sitesearch\" value=\"www.wikipedia.org\" checked> Search www.wikipedia.org </font><br>
+</td></tr></table></form>
+<!-- Search Google -->\n",
 
 # Preferences page
 #

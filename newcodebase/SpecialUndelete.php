@@ -68,11 +68,11 @@ function wfSpecialUndelete( )
 
 	$action = wfLocalUrlE( $wgLang->specialPage( "Undelete" ), "action=submit" );
 	$wgOut->addHTML("<p>
-<form name='undelete' method=post action=\"{$action}\">
-<input type=hidden name='target' value=\"{$target}\">
-<input type=submit name='restore' value=\"".wfMsg("undeletebtn")."\">
+<form id=\"undelete\" method=\"post\" action=\"{$action}\">
+<input type=hidden name=\"target\" value=\"{$target}\">
+<input type=submit name=\"restore\" value=\"".wfMsg("undeletebtn")."\">
 </form>");
-    
+
     $log = wfGetSQL("cur", "cur_text", "cur_namespace=4 AND cur_title=\"".wfMsg("dellogpage")."\"" );
     if(preg_match("/^(.*".
     	preg_quote( ($namespace ? ($wgLang->getNsText($namespace) . ":") : "")

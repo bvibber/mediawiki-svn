@@ -39,18 +39,18 @@ class IPBlockForm {
 			$wgOut->addHTML( "<p><font color='red' size='+1'>{$err}</font>\n" );
 		}
 		$wgOut->addHTML( "<p>
-<form name='blockip' method=post action=\"{$action}\">
+<form id=\"blockip\" method=\"post\" action=\"{$action}\">
 <table border=0><tr>
-<td align='right'>{$ipa}:</td>
-<td align='left'>
-<input tabindex=1 type=text size=20 name='wpBlockAddress' value=\"{$wpBlockAddress}\">
+<td align=\"right\">{$ipa}:</td>
+<td align=\"left\">
+<input tabindex=1 type=text size=20 name=\"wpBlockAddress\" value=\"{$wpBlockAddress}\">
 </td></tr><tr>
-<td align='right'>{$reason}:</td>
-<td align='left'>
-<input tabindex=2 type=text size=40 name='wpBlockReason' value=\"{$wpBlockReason}\">
+<td align=\"right\">{$reason}:</td>
+<td align=\"left\">
+<input tabindex=2 type=text size=40 name=\"wpBlockReason\" value=\"{$wpBlockReason}\">
 </td></tr><tr>
-<td>&nbsp;</td><td align='left'>
-<input tabindex=3 type=submit name='wpBlock' value=\"{$ipbs}\">
+<td>&nbsp;</td><td align=\"left\">
+<input tabindex=3 type=submit name=\"wpBlock\" value=\"{$ipbs}\">
 </td></tr></table>
 </form>\n" );
 

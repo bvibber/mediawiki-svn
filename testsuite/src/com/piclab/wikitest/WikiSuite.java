@@ -64,7 +64,7 @@ public static String preloadedPages[] = { "Agriculture", "Anthropology",
 	"World_Series_of_Poker",
 	
 	"Bracketvars", "Quotes", "Headings", "Blocklevels",
-	"ExternalLinks", "InternalLinks", "Magics" };
+	"ExternalLinks", "InternalLinks", "Magics", "Equations" };
 
 /* Suite constructor: load the prefs to determine which
  * wiki to test.
@@ -275,6 +275,7 @@ private void stopBackgroundThreads() {
 private static boolean f_skipload = false;
 private static boolean f_nobackground = false;
 private static boolean f_overwrite = false;
+private static boolean f_skipmath = false;
 
 public static void main( String[] params ) {
 	for ( int i = 0; i < params.length; ++i ) {
@@ -282,6 +283,8 @@ public static void main( String[] params ) {
 			f_skipload = true;
 		} else if ( "-v".equals( params[i].substring( 0, 2 ) ) ) {
 			setLoggingLevel( Level.ALL );
+		} else if ( "-m".equals( params[i].substring( 0, 2 ) ) ) {
+			f_skipmath = true;
 		} else if ( "-b".equals( params[i].substring( 0, 2 ) ) ) {
 			f_nobackground = true;
 		} else if ( "-o".equals( params[i].substring( 0, 2 ) ) ) {
@@ -290,6 +293,7 @@ public static void main( String[] params ) {
 				|| "-?".equals( params[i].substring( 0, 2 ) ) ) {
 			System.out.println( "Usage: java WikiSuite [-povb]\n" +
 			  "  -p : Skip preload of database\n" +
+			  "  -m : Skip math test\n" +
 			  "  -o : Overwrite database\n" +
 			  "  -v : Verbose logging\n" +
 			  "  -b : No background thread\n" );
@@ -315,7 +319,7 @@ public static void main( String[] params ) {
 	(new SpecialTest()).run(ws);
 	(new UploadTest()).run(ws);
 	(new SearchTest()).run(ws);
-	/* (new MathTest()).run(ws); */
+	if ( ! f_skipmath ) { (new MathTest()).run(ws); }
 
 	/*
 	 * Tests are all done. Clean up and report.

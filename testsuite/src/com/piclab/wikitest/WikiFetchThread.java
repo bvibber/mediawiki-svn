@@ -55,6 +55,12 @@ public void run() {
 		WikiSuite.finer( "Fetched \"" + url + "\"" );
 		++m_totalfetches;
 		m_totaltime += ( end - start );
+
+		try {
+			Thread.sleep( 1000 );
+		} catch( InterruptedException e ) {
+			break;
+		}
 	}
 	/*
 	 * The main suite tells us to stop, but we wait until the
