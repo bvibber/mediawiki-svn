@@ -154,33 +154,34 @@ class SearchEngine {
 		$wgOut->setArticleFlag( false );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 
-		$sk = $wgUser->getSkin();
-		$text = wfMsg( "searchresulttext", $sk->makeKnownLink(
-		  wfMsg( "searchhelppage" ), wfMsg( "searchingwikipedia" ) ) );
-		$wgOut->addHTML( $text );
-
-		$this->parseQuery();
-		if ( "" == $this->mTitlecond || "" == $this->mTextcond ) {
-			$wgOut->addHTML( "<h2>" . wfMsg( "badquery" ) . "</h2>\n" .
-			  "<p>" . wfMsg( "badquerytext" ) );
-			return;
-		}
-		list( $limit, $offset ) = wfCheckLimits( 20, "searchlimit" );
-
-		$searchnamespaces = $this->queryNamespaces();
-		$redircond = $this->searchRedirects();
-
-		$sql = "SELECT cur_id,cur_namespace,cur_title," .
-		  "cur_text FROM cur,searchindex " .
-		  "WHERE cur_id=si_page AND {$this->mTitlecond} " .
-		  "{$searchnamespaces} {$redircond}" .
-		  "LIMIT {$offset}, {$limit}";
-		$res1 = wfQuery( $sql, $fname );
-		$num = wfNumRows($res1);
-
 		if ( $wgDisableTextSearch ) {
-			$res2 = 0;
+			$wgOut->addHTML( str_replace( "$1",
+			  htmlspecialchars( $search ), wfMsg( "searchdisabled" ) ) );
 		} else {
+			$sk = $wgUser->getSkin();
+			$text = wfMsg( "searchresulttext", $sk->makeKnownLink(
+			  wfMsg( "searchhelppage" ), wfMsg( "searchingwikipedia" ) ) );
+			$wgOut->addHTML( $text );
+	
+			$this->parseQuery();
+			if ( "" == $this->mTitlecond || "" == $this->mTextcond ) {
+				$wgOut->addHTML( "<h2>" . wfMsg( "badquery" ) . "</h2>\n" .
+				  "<p>" . wfMsg( "badquerytext" ) );
+				return;
+			}
+			list( $limit, $offset ) = wfCheckLimits( 20, "searchlimit" );
+	
+			$searchnamespaces = $this->queryNamespaces();
+			$redircond = $this->searchRedirects();
+	
+			$sql = "SELECT cur_id,cur_namespace,cur_title," .
+			  "cur_text FROM cur,searchindex " .
+			  "WHERE cur_id=si_page AND {$this->mTitlecond} " .
+			  "{$searchnamespaces} {$redircond}" .
+			  "LIMIT {$offset}, {$limit}";
+			$res1 = wfQuery( $sql, $fname );
+			$num = wfNumRows($res1);
+	
 			$sql = "SELECT cur_id,cur_namespace,cur_title," .
 			  "cur_text FROM cur,searchindex " .
 			  "WHERE cur_id=si_page AND {$this->mTextcond} " .
@@ -188,49 +189,44 @@ class SearchEngine {
 			  "LIMIT {$offset}, {$limit}";
 			$res2 = wfQuery( $sql, $fname );
 			$num = $num + wfNumRows($res2);
-		}
 
-                if ( $num == $limit ) {
-		  $top = wfShowingResults( $offset, $limit);
-		} else {
-		  $top = wfShowingResultsNum( $offset, $limit, $num );
-		}
-		$wgOut->addHTML( "<p>{$top}\n" );
-
-		# For powersearch
-
-		$a2l = "" ;
-		$akk = array_keys( $this->addtoquery ) ;
-		foreach ( $akk AS $ak ) {
-			$a2l .= "&{$ak}={$this->addtoquery[$ak]}" ;
-		}
-
-		$sl = wfViewPrevNext( $offset, $limit, "",
-		  "search=" . wfUrlencode( $this->mUsertext ) . $a2l );
-		$wgOut->addHTML( "<br>{$sl}\n" );
-
-		$foundsome = false;
-
-		if ( 0 == wfNumRows( $res1 ) ) {
-			$wgOut->addHTML( "<h2>" . wfMsg( "notitlematches" ) .
-			  "</h2>\n" );
-		} else {
-			$foundsome = true;
-			$off = $offset + 1;
-			$wgOut->addHTML( "<h2>" . wfMsg( "titlematches" ) .
-			  "</h2>\n<ol start='{$off}'>" );
-
-			while ( $row = wfFetchObject( $res1 ) ) {
-				$this->showHit( $row );
+			if ( $num == $limit ) {
+			  $top = wfShowingResults( $offset, $limit);
+			} else {
+			  $top = wfShowingResultsNum( $offset, $limit, $num );
 			}
-			wfFreeResult( $res1 );
-			$wgOut->addHTML( "</ol>\n" );
-		}
+			$wgOut->addHTML( "<p>{$top}\n" );
+	
+			# For powersearch
+	
+			$a2l = "" ;
+			$akk = array_keys( $this->addtoquery ) ;
+			foreach ( $akk AS $ak ) {
+				$a2l .= "&{$ak}={$this->addtoquery[$ak]}" ;
+			}
+	
+			$sl = wfViewPrevNext( $offset, $limit, "",
+			  "search=" . wfUrlencode( $this->mUsertext ) . $a2l );
+			$wgOut->addHTML( "<br>{$sl}\n" );
+	
+			$foundsome = false;
+	
+			if ( 0 == wfNumRows( $res1 ) ) {
+				$wgOut->addHTML( "<h2>" . wfMsg( "notitlematches" ) .
+				  "</h2>\n" );
+			} else {
+				$foundsome = true;
+				$off = $offset + 1;
+				$wgOut->addHTML( "<h2>" . wfMsg( "titlematches" ) .
+				  "</h2>\n<ol start='{$off}'>" );
+	
+				while ( $row = wfFetchObject( $res1 ) ) {
+					$this->showHit( $row );
+				}
+				wfFreeResult( $res1 );
+				$wgOut->addHTML( "</ol>\n" );
+			}
 
-		if ( $wgDisableTextSearch ) {
-			$wgOut->addHTML( str_replace( "$1",
-			  htmlspecialchars( $search ), wfMsg( "searchdisabled" ) ) );
-		} else {
 			if ( 0 == wfNumRows( $res2 ) ) {
 				$wgOut->addHTML( "<h2>" . wfMsg( "notextmatches" ) .
 				  "</h2>\n" );
@@ -245,12 +241,12 @@ class SearchEngine {
 				wfFreeResult( $res2 );
 				$wgOut->addHTML( "</ol>\n" );
 			}
+			if ( ! $foundsome ) {
+				$wgOut->addHTML( "<p>" . wfMsg( "nonefound" ) . "\n" );
+			}
+			$wgOut->addHTML( "<p>{$sl}\n" );
+			$wgOut->addHTML( $powersearch );
 		}
-		if ( ! $foundsome ) {
-			$wgOut->addHTML( "<p>" . wfMsg( "nonefound" ) . "\n" );
-		}
-		$wgOut->addHTML( "<p>{$sl}\n" );
-		$wgOut->addHTML( $powersearch );
 	}
 
 	function legalSearchChars()
