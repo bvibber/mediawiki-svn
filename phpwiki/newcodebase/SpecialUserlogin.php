@@ -4,6 +4,10 @@ function wfSpecialUserlogin()
 {
 	global $wpCreateaccount, $wpLoginattempt, $wpMailmypassword;
 
+	$fields = array( "wpName", "wpPassword", "wpName",
+	  "wpPassword", "wpRetype", "wpEmail" );
+	wfCleanFormFields( $fields );
+
 	if ( isset( $wpCreateaccount ) ) {
 		addNewAccount();
 	} else if ( isset( $wpLoginattempt ) ) {

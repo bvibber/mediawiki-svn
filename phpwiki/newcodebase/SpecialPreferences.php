@@ -4,6 +4,10 @@ function wfSpecialPreferences()
 	global $wgUser, $wgOut;
 	global $wpSaveprefs, $wpReset;
 
+	$fields = array( "wpOldpass", "wpNewpass", "wpRetype",
+	  "wpEmail", "wpNick" );
+	wfCleanFormFields( $fields );
+
 	if ( 0 == $wgUser->getID() ) {
 		$wgOut->errorpage( "prefsnologin", "prefsnologintext" );
 		return;
@@ -52,7 +56,9 @@ function wfSpecialPreferences()
 	$togs = $wgLang->getUserToggles();
 	foreach ( $togs as $tname => $ttext ) {
 		if ( array_key_exists( "wpOp$tname", $HTTP_POST_VARS ) ) {
-			$wgUser->setOption( $tname, $HTTP_POST_VARS["wpOp$tname"] );
+			$wgUser->setOption( $tname, 1 );
+		} else {
+			$wgUser->setOption( $tname, 0 );
 		}
 	}
 	$wgUser->setCookies();

@@ -11,19 +11,6 @@ $wgValidSpecialPages = array( "Userlogin", "Userlogout", "Newpages",
 
 $wgSysopSpecialPages = array( "Asksql", "Blockip" );
 
-# All of the text fields from every form, put here so that
-# they can be slash-stripped.  Handy for debugging, too.
-#
-$wgFormTextFields = array(
-	# Login form
-	"wpName", "wpPassword", "wpName", "wpPassword",
-	"wpRetype", "wpEmail",
-	# Edit form
-	"wpTextbox1", "wpSummary", "wpTextbox2",
-	# Upload form
-	"wpUploadFile", "wpUploadDescription"
-);
-
 $wgNumberOfArticles = -1; # Unset
 $wgTotalViews = -1;
 $wgTotalEdits = -1;
@@ -144,25 +131,6 @@ function wfCleanQueryVar( $var )
 	if ( get_magic_quotes_gpc() ) {
 		return stripslashes( $var );
 	} else { return $var; }
-}
-
-function wfStripTextFields()
-{
-	global $wgFormTextFields, $HTTP_POST_VARS;
-
-	if ( ! get_magic_quotes_gpc() ) {
-		return;
-	}
-	foreach ( $wgFormTextFields as $fname ) {
-		if ( isset( $HTTP_POST_VARS[$fname] ) ) {
-			$HTTP_POST_VARS[$fname] = stripslashes(
-			  $HTTP_POST_VARS[$fname] );
-		}
-		global ${$fname};
-		if ( isset( ${$fname} ) ) {
-			${$fname} = stripslashes( $$fname );
-		}
-	}
 }
 
 function wfSpecialPage()

@@ -16,8 +16,6 @@ include_once( "Setup.php" );
 global $action, $title, $search, $target, $printable;
 global $target, $returnto;
 
-wfStripTextFields(); # Clean up PHP mess
-
 $action = strtolower( trim( $action ) );
 if ( "" == $action ) { $action = "view"; }
 if ( "yes" == $printable ) { $wgOut->setPrintable(); }
