@@ -19,12 +19,13 @@ function upload () {
 	if (isset($removeFile)) {
 		if ( !$isSysop ) return $wikiUploadDenied ;
 		if (is_file("./upload/$removeFile") ) unlink ("./upload/$removeFile");
-		$message = str_replace ( "$1" , $removeFile , $wikiUploadDeleted ) ;
+		$message = str_replace ( "$1" , $removeFile , htmlspecialchars ( $wikiUploadDeleted ) ) ;
 
 		# Appending log page "log:Uploads"
 		$now = date ( "Y-m-d H:i:s" , time () ) ;
-		$logText = str_replace ( "$1" , $user->name , str_replace ( "$2" , $removeFile , $wikiUploadDelMsg1 ) ) ;
-		makeLog ( "log:Uploads" , $logText , str_replace ( "$1" , $removeFile , $wikiUploadDelMsg2 ) ) ;
+		$logText = str_replace ( array ( "$1" , "$2", "$3" )  ,
+			array ( $user->name , htmlspecialchars ( $removeFile ) , $now ) , $wikiUploadDelMsg1 ) ;
+		makeLog ( "log:Uploads" , $logText , str_replace ( "$1" , htmlspecialchars ( $removeFile ) , $wikiUploadDelMsg2 ) ) ;
 
 		unset ( $removeFile ) ;
 	} else if (isset($Upload_name) or isset($Upload)) {
@@ -99,7 +100,7 @@ function upload () {
 					$ret .= "<td align=center>".filesize("upload/$entry")." bytes</td>";
 					if ( $isSysop )  {
 						$ret .= "<td align=center><a href=\"".wikiLink("special:upload&removeFile=".urlencode($entry))."\">" ;
-						$ret .= str_replace ( "$1" , $entry , $wikiUploadRemove ) ;
+						$ret .= str_replace ( "$1" , htmlspecialchars ( $entry ) , $wikiUploadRemove ) ;
 						$ret .= "</a></td>" ;
 						}
 					$ret .= "</tr>" ;
