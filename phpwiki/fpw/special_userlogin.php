@@ -27,6 +27,7 @@ function userLogin () {
 			$user = $nu ;
 			setcookie ( "WikiUserID" , $user->id , $expiration ) ;
 			setcookie ( "WikiLoggedIn" , "yes" , $expiration ) ;
+			$WikiLoggedIn = "yes" ;
 			if ( $user->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $user->password , $expiration ) ;
 			$user->options["rememberPassword"] = $REMEMBERPASSWORD ;
 			$user->saveSettings() ;
