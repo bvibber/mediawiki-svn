@@ -59,54 +59,50 @@ class SearchEngine {
 	function powersearch()
 	{
 		global $wgUser, $wgOut, $wgLang, $wgTitle;
-		$nscb = array();
 
 		$search			= $_REQUEST['search'];
 		$searchx		= $_REQUEST['searchx'];
 		$listredirs		= $_REQUEST['redirs'];
+		
+		$ret = wfMsg("powersearchtext"); # Text to be returned
+		$tempText = ""; # Temporary text, for substitution into $ret	
 
-
-		if ( ! isset ( $searchx ) ) {	/* First time here */
-			$listredirs = 1;
-			for ($i = 0; ($i <= 7); $i++)
-			{
-				$nscb[$i] = $this->initNamespaceCheckbox($i);
+		# Do namespace checkboxes
+		$namespaces = $wgLang->getNamespaces();
+		foreach ( $namespaces as $i => $namespace ) {
+			# Skip virtual namespaces
+			if ( $i < 0 ) {
+				continue;
 			}
-		} else {
-			$nscb[0]		= $_REQUEST['ns0'];
-			$nscb[1]		= $_REQUEST['ns1'];
-			$nscb[2]		= $_REQUEST['ns2'];
-			$nscb[3]		= $_REQUEST['ns3'];
-			$nscb[4]		= $_REQUEST['ns4'];
-			$nscb[5]		= $_REQUEST['ns5'];
-			$nscb[6]		= $_REQUEST['ns6'];
-			$nscb[7]		= $_REQUEST['ns7'];
-		}
 
-		$this->checkboxes["searchx"] = 1;
-		$ret = wfMsg("powersearchtext");
+			$formVar = "ns$i";
 
-		# Determine namespace checkboxes
+			# Initialise checkboxValues, either from defaults or from 
+			# a previous invocation
+			if ( !isset( $searchx ) ) {
+				$checkboxValue = $this->initNamespaceCheckbox( $i );
+			} else {
+				$checkboxValue = $_REQUEST[$formVar];
+			}
 
-		$ns = $wgLang->getNamespaces();
-		array_shift( $ns ); /* Skip "Special" */
-
-		$r1 = "";
-		for ( $i = 0; $i < count( $ns ); ++$i ) {
 			$checked = "";
-			if ( $nscb[$i] == 1 ) {
+			if ( $checkboxValue == 1 ) {
 				$checked = " checked";
 				$this->addtoquery["ns{$i}"] = 1;
 				array_push( $this->namespacesToSearch, $i );
 			}
-			$name = str_replace( "_", " ", $ns[$i] );
-			if ( "" == $name ) { $name = wfMsg( "blanknamespace" ); }
+			$name = str_replace( "_", " ", $namespaces[$i] );
+			if ( "" == $name ) { 
+				$name = wfMsg( "blanknamespace" ); 
+			}
 
-			if ( 0 != $i ) { $r1 .= " "; }
-			$r1 .= "<input type=checkbox value=\"1\" name=\"" .
+			if ( $tempText !== "" ) { 
+				$tempText .= " "; 
+			}
+			$tempText .= "<input type=checkbox value=\"1\" name=\"" .
 			  "ns{$i}\"{$checked}>{$name}\n";
 		}
-		$ret = str_replace ( "$1", $r1, $ret );
+		$ret = str_replace ( "$1", $tempText, $ret );
 
 		# List redirects checkbox
 
@@ -115,26 +111,28 @@ class SearchEngine {
 			$this->addtoquery["redirs"] = 1;
 			$checked = " checked";
 		}
-		$r2 = "<input type=checkbox value=1 name=\"redirs\"{$checked}>\n";
-		$ret = str_replace( "$2", $r2, $ret );
+		$tempText = "<input type=checkbox value=1 name=\"redirs\"{$checked}>\n";
+		$ret = str_replace( "$2", $tempText, $ret );
 
 		# Search field
 
-		$r3 = "<input type=text name=\"search\" value=\"" .
+		$tempText = "<input type=text name=\"search\" value=\"" .
 			htmlspecialchars( $search ) ."\" width=80>\n";
-        $ret = str_replace( "$3", $r3, $ret );
+        $ret = str_replace( "$3", $tempText, $ret );
 
 		# Searchx button
 
-		$r9 = "<input type=submit name=\"searchx\" value=\"" .
+		$tempText = "<input type=submit name=\"searchx\" value=\"" .
 		  wfMsg("powersearch") . "\">\n";
-		$ret = str_replace( "$9", $r9, $ret );
+		$ret = str_replace( "$9", $tempText, $ret );
 
 		$ret = "<br><br>\n<form id=\"powersearch\" method=\"get\" " .
 		  "action=\"" . wfLocalUrl( "" ) . "\">\n{$ret}\n</form>\n";
 
 		if ( isset ( $searchx ) ) {
-			if ( ! $listredirs ) { $this->doSearchRedirects = false; }
+			if ( ! $listredirs ) { 
+				$this->doSearchRedirects = false; 
+			}
 		}
 		return $ret;
 	}
