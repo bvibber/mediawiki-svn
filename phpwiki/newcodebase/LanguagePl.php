@@ -581,7 +581,7 @@ oraz [[Wikipedia:Najczęstsze nieporozumienia|najczęstsze nieporozumienia]].
 Jeśli chcesz przyczynić się do sukcesu Wikipedii, nie dodawaj materiałów
 zastrzeżonych prawami autorskimi. Konsekwencje prawne złamania tej zasady
 mogłyby Wikipedii bardzo zaszkodzić.
-Zobacz także [http://meta.wikipedia.org/wiki/Special:RecentChanges ostatnie metadyskusje].",
+Zobacz także [http://meta.wikipedia.org/wiki/Special:Recentchanges ostatnie metadyskusje].",
 "rcloaderr"		=> "Ładuję ostatnie zmiany",
 "rcnote"		=> "To ostatnie <strong>$1</strong> zmian dokonanych na Wikipedii w ciągu ostatnich <strong>$2</strong> dni.",
 "rcnotefrom"	=> "Poniżej pokazano zmiany dokonane po <b>$2</b> (nie więcej niż <b>$1</b> pozycji).",
