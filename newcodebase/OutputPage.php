@@ -149,8 +149,8 @@ class OutputPage {
 	function checkLastModified ( $timestamp )
 	{
 		global $wgLang;
-		if( strstr( $_SERVER["HTTP_USER_AGENT"], "Gecko" ) ) {
-			# Mozilla has probs with our caching
+		if( !preg_match( '/MSIE (5\.5|[6-9])/', $_SERVER["HTTP_USER_AGENT"] ) ) {
+			# Mozilla and IE 5.0 have probs with our caching
 			return;
 		}
 		$ismodsince = $_SERVER["HTTP_IF_MODIFIED_SINCE"];
