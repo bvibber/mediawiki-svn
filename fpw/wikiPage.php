@@ -392,7 +392,7 @@ class WikiPage extends WikiTitle {
                     $s .= "<span class=\"newlinkedge\">$bracket<a href=\"$ulink\" $hover>?</a></span>";
                 } else {
 		    # Invalid local link
-		    $s .= "[[".$b[0]."]]";
+		    $s .= "[[".$b[0]."]]".$b[1];
 		    continue ;
 		    }
 
