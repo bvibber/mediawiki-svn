@@ -3,15 +3,10 @@
 function wfSpecialUpload()
 {
 	global $wgUser, $wgOut, $wpUpload, $wpReUpload, $action;
-	global $wgDisableUploads;
-	
+
 	$fields = array( "wpUploadFile", "wpUploadDescription" );
 	wfCleanFormFields( $fields );
 
-    if ( $wgDisableUploads ) {
-    	$wgOut->addWikiText( wfMsg( "uploaddisabled" ) );
-    	return;
-    }
 	if ( ( 0 == $wgUser->getID() )
 		or $wgUser->isBlocked() ) {
 		$wgOut->errorpage( "uploadnologin", "uploadnologintext" );
@@ -84,12 +79,15 @@ function processUpload()
 		saveUploadedFile();
 		if ( ( ! $wpIgnoreWarning ) &&
 		  ( 0 != strcmp( ucfirst( $basename ), $wpUploadSaveName ) ) ) {
-			return uploadWarning( wfMsg( "badfilename", $wpUploadSaveName ) );
+			$warn = str_replace( "$1", $wpUploadSaveName,
+			  wfMsg( "badfilename" ) );
+			return uploadWarning( $warn );
 		}
 		$extensions = array( "png", "jpg", "jpeg", "ogg" ); 
 		if ( ( ! $wpIgnoreWarning ) &&
 		  ( ! in_array( strtolower( $ext ), $extensions ) ) ) {
-			return uploadWarning( wfMsg( "badfiletype", $ext ) );
+			$warn = str_replace( "$1", $ext, wfMsg( "badfiletype" ) );
+			return uploadWarning( $warn );
 		}
 		if ( ( ! $wpIgnoreWarning ) && ( $wpUploadSize > 150000 ) ) {
 			return uploadWarning( WfMsg( "largefile" ) );
@@ -108,7 +106,8 @@ function processUpload()
 	$dlink = $sk->makeKnownLink( $dname, $dname );
 
 	$wgOut->addHTML( "<h2>" . wfMsg( "successfulupload" ) . "</h2>\n" );
-	$text = wfMsg( "fileuploaded", $ilink, $dlink );
+	$text = str_replace( "$1", $ilink, wfMsg( "fileuploaded" ) );
+	$text = str_replace( "$2", $dlink, $text );
 	$wgOut->addHTML( "<p>{$text}\n" );
 	$wgOut->returnToMain( false );
 }
@@ -172,7 +171,6 @@ function uploadWarning( $warning )
 	global $wpUploadSaveName, $wpUploadTempName, $wpUploadSize;
 	global $wgSavedFile, $wgUploadOldVersion;
 	global $wpSessionKey, $wpUploadOldVersion, $wsUploadFiles;
-	global $wgUseCopyrightUpload , $wpUploadCopyStatus , $wpUploadSource ;
 
 	# wgSavedFile is stored in the session not the form, for security
 	$wpSessionKey = mt_rand( 0, 0x7fffffff );
@@ -189,21 +187,12 @@ function uploadWarning( $warning )
 	$action = wfLocalUrlE( $wgLang->specialPage( "Upload" ),
 	  "action=submit" );
 
-	if ( $wgUseCopyrightUpload )
-	{
-		$copyright =  "
-<input type=hidden name=\"wpUploadCopyStatus\" value=\"" . htmlspecialchars( $wpUploadCopyStatus ) . "\">
-<input type=hidden name=\"wpUploadSource\" value=\"" . htmlspecialchars( $wpUploadSource ) . "\">
-";
-	}
-
 	$wgOut->addHTML( "
 <form id=\"uploadwarning\" method=\"post\" enctype=\"multipart/form-data\"
 action=\"{$action}\">
 <input type=hidden name=\"wpUploadAffirm\" value=\"1\">
 <input type=hidden name=\"wpIgnoreWarning\" value=\"1\">
 <input type=hidden name=\"wpUploadDescription\" value=\"" . htmlspecialchars( $wpUploadDescription ) . "\">
-{$copyright}
 <input type=hidden name=\"wpUploadSaveName\" value=\"" . htmlspecialchars( $wpUploadSaveName ) . "\">
 <input type=hidden name=\"wpUploadTempName\" value=\"" . htmlspecialchars( $wpUploadTempName ) . "\">
 <input type=hidden name=\"wpUploadSize\" value=\"" . htmlspecialchars( $wpUploadSize ) . "\">
@@ -242,7 +231,7 @@ function mainUploadForm( $msg )
 
 	$clink = $sk->makeKnownLink( wfMsg( "copyrightpage" ),
 	  wfMsg( "copyrightpagename" ) );
-	$ca = wfMsg( "affirmation", $clink );
+	$ca = str_replace( "$1", $clink, wfMsg( "affirmation" ) );
 	$iw = wfMsg( "ignorewarning" );
 
 	$action = wfLocalUrl( $wgLang->specialPage( "Upload" ) );
