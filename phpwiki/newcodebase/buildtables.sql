@@ -105,7 +105,9 @@ CREATE TABLE image (
   img_user int(5) unsigned default '0',
   img_user_text varchar(40) binary NOT NULL,
   img_timestamp char(14) binary NOT NULL default '',
-  UNIQUE KEY img_name (img_name(8))
+  UNIQUE KEY img_name (img_name),
+  INDEX img_size (img_size),
+  INDEX img_timestamp (img_timestamp)
 ) TYPE=MyISAM PACK_KEYS=1;
 
 CREATE TABLE oldimage (

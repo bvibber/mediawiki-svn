@@ -1,4 +1,7 @@
 <?
+
+$wgLastDatabaseQuery = "";
+
 function wfGetDB()
 {
 	global $wgDBserver, $wgDBuser, $wgDBpassword;
@@ -16,25 +19,59 @@ function wfGetDB()
 	return $wgDBconnection;
 }
 
+function wfQuery( $sql, $conn, $fname = "" )
+{
+	global $wgLastDatabaseQuery, $wgOut;
+	$wgLastDatabaseQuery = $sql;
+
+	$ret = mysql_query( $sql, $conn );
+
+	if ( "" != $fname ) {
+		wfDebug( "{$fname}:SQL: {$sql}\n" );
+
+		if ( false === $ret ) {
+			$wgOut->databaseError( $fname );
+			exit;
+		}
+	} else {
+		wfDebug( "SQL: {$sql}\n" );
+	}
+	return $ret;
+}
+
+function wfLastDBquery()
+{
+	global $wgLastDatabaseQuery;
+	return $wgLastDatabaseQuery;
+}
+
 function wfSetSQL( $table, $var, $value, $cond )
 {
+	global $wgOut;
+
 	$conn = wfGetDB();
 	$sql = "UPDATE $table SET $var = '" .
 	  wfStrencode( $value ) . "' WHERE ($cond)";
 
-	wfDebug( "DB: 1: $sql\n" );
-	$result = mysql_query( $sql, $conn );
+	$result = wfQuery( $sql, $conn );
+
+	if ( false === $result ) {
+		$wgOut->databaseError( "wfSetSQL" );
+	}
 }
 
 function wfGetSQL( $table, $var, $cond )
 {
+	global $wgOut;
 	$conn = wfGetDB();
 	$sql = "SELECT $var FROM $table WHERE ($cond)";
 
-	wfDebug( "DB: 2: $sql\n" );
-	$result = mysql_query( $sql, $conn );
+	$result = wfQuery( $sql, $conn );
+	if ( false === $result ) {
+		$wgOut->databaseError( "wfGetSQL" );
+	}
 	$ret = "";
-	if ( $result && ( mysql_num_rows( $result ) > 0 ) ) {
+	if ( mysql_num_rows( $result ) > 0 ) {
 		if ( $s = mysql_fetch_object( $result ) ) {
 			$ret = $s->$var;
 		}

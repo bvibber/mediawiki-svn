@@ -19,16 +19,15 @@ class Article {
 
 	/* static */ function newFromID( $newid )
 	{
-		global $wgTitle, $wgArticle;
+		global $wgOut, $wgTitle, $wgArticle;
 		$a = new Article();
 
 		$conn = wfGetDB();
 		$sql = "SELECT cur_namespace,cur_title FROM cur WHERE " .
 		  "cur_id={$newid}";
-		$res = mysql_query( $sql, $conn );
-		if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
-			return;
-		}
+		$res = wfQuery( $sql, $conn, "Article::newFromID" );
+		if ( 0 == mysql_num_rows( $res ) ) { return NULL; }
+
 		$s = mysql_fetch_object( $res );
 		$wgTitle = Title::newFromDBkey( Title::makeName( $s->cur_namespace,
 		  $s->cur_title ) );
@@ -52,6 +51,12 @@ class Article {
 	{
 		global $wgOut, $wgTitle, $oldid, $redirect;
 		if ( $this->mContentLoaded ) return;
+		$fname = "Article::loadContent";
+
+		$t = $wgTitle->getPrefixedText();
+		if ( $oldid ) { $t .= ",oldid={$oldid}"; }
+		if ( $redirect ) { $t .= ",redirect={$redirect}"; }
+		$this->mContent = str_replace( "$1", $t, wfMsg( "missingarticle" ) );
 
 		if ( ! $oldid ) {
 			$id = $this->getID();
@@ -59,61 +64,49 @@ class Article {
 
 			$conn = wfGetDB();
 			$sql = "SELECT cur_text,cur_timestamp,cur_user,cur_counter " .
-			  "FROM cur WHERE cur_id=$id";
-			wfDebug( "Art: 1: $sql\n" );
-			$res = mysql_query( $sql, $conn );
+			  "FROM cur WHERE cur_id={$id}";
+			$res = wfQuery( $sql, $conn, $fname );
+			if ( 0 == mysql_num_rows( $res ) ) { return; }
 
-			if ( ( ! $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
-				$this->mContent = "Fatal database error.\n";
-				return;
-			} else {
-				$s = mysql_fetch_object( $res );
-				if ( ( "no" != $redirect ) &&
-				  ( preg_match( "/^#redirect/i", $s->cur_text ) ) ) {
-					if ( preg_match( "/\\[\\[([^\\]\\|]+)[\\]\\|]/",
-					  $s->cur_text, $m ) ) {
-						$rt = Title::newFromText( $m[1] );
-						$rid = $rt->getArticleID();
-						if ( 0 != $rid ) {
-							$conn = wfGetDB();
-							$sql = "SELECT cur_text,cur_timestamp,cur_user," .
-							  "cur_counter FROM cur WHERE cur_id=$rid";
-							wfDebug( "Art: 9: $sql\n" );
-							$res = mysql_query( $sql, $conn );
+			$s = mysql_fetch_object( $res );
+			if ( ( "no" != $redirect ) &&
+			  ( preg_match( "/^#redirect/i", $s->cur_text ) ) ) {
+				if ( preg_match( "/\\[\\[([^\\]\\|]+)[\\]\\|]/",
+				  $s->cur_text, $m ) ) {
+					$rt = Title::newFromText( $m[1] );
+					$rid = $rt->getArticleID();
+					if ( 0 != $rid ) {
+						$conn = wfGetDB();
+						$sql = "SELECT cur_text,cur_timestamp,cur_user," .
+						  "cur_counter FROM cur WHERE cur_id={$rid}";
+						$res = wfQuery( $sql, $conn, $fname );
 
-							if ( $res && ( 0 != mysql_num_rows( $res ) ) ) {
-								$this->mRedirectedFrom = $wgTitle->getPrefixedText();
-								$wgTitle = $rt;
-								$s = mysql_fetch_object( $res );
-							}
+						if ( 0 != mysql_num_rows( $res ) ) {
+							$this->mRedirectedFrom = $wgTitle->getPrefixedText();
+							$wgTitle = $rt;
+							$s = mysql_fetch_object( $res );
 						}
 					}
 				}
-				$this->mContent = $s->cur_text;
-				$this->mUser = $s->cur_user;
-				$this->mCounter = $s->cur_counter;
-				$this->mTimestamp = $s->cur_timestamp;
-				mysql_free_result( $res );
 			}
+			$this->mContent = $s->cur_text;
+			$this->mUser = $s->cur_user;
+			$this->mCounter = $s->cur_counter;
+			$this->mTimestamp = $s->cur_timestamp;
+			mysql_free_result( $res );
 		} else {
 			$conn = wfGetDB();
 			$sql = "SELECT old_text,old_timestamp,old_user FROM old " .
 			  "WHERE old_id={$oldid}";
-			wfDebug( "Art: 8: $sql\n" );
-			$res = mysql_query( $sql, $conn );
+			$res = wfQuery( $sql, $conn, $fname );
+			if ( 0 == mysql_num_rows( $res ) ) { return; }
 
-			if ( ( ! $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
-				$wgOut->errorpage( "revnotfound", "revnotfoundtext" );
-				return;
-			} else {
-				$s = mysql_fetch_object( $res );
-				$this->mContent = $s->old_text;
-				$this->mUser = $s->old_user;
-				$this->mCounter = 0;
-				$this->mTimestamp = $s->old_timestamp;
-				mysql_free_result( $res );
-			}
-			# Don't follow redirects on historical articles
+			$s = mysql_fetch_object( $res );
+			$this->mContent = $s->old_text;
+			$this->mUser = $s->old_user;
+			$this->mCounter = 0;
+			$this->mTimestamp = $s->old_timestamp;
+			mysql_free_result( $res );
 		}
 		$this->mContentLoaded = true;
 	}
@@ -124,23 +117,23 @@ class Article {
 	{
 		if ( -1 == $this->mCounter ) {
 			$id = $this->getID();
-			$this->mCounter = wfGetSQL( "cur", "cur_counter", "cur_id=$id" );
+			$this->mCounter = wfGetSQL( "cur", "cur_counter", "cur_id={$id}" );
 		}
 		return $this->mCounter;
 	}
 
 	/* private */ function loadLastEdit()
 	{
+		global $wgOut;
 		if ( -1 != $this->mUser ) return;
 
 		$conn = wfGetDB();
 		$sql = "SELECT cur_user,cur_user_text,cur_timestamp," .
 		  "cur_comment,cur_minor_edit FROM cur WHERE " .
 		  "cur_id=" . $this->getID();
-		wfDebug( "Art: 3: $sql\n" );
+		$res = wfQuery( $sql, $conn, "Article::loadLastEdit" );
 
-		$res = mysql_query( $sql, $conn );
-		if ( $res && ( mysql_num_rows( $res ) > 0 ) ) {
+		if ( mysql_num_rows( $res ) > 0 ) {
 			$s = mysql_fetch_object( $res );
 			$this->mUser = $s->cur_user;
 			$this->mUserText = $s->cur_user_text;
@@ -367,9 +360,8 @@ $wpTextbox2
 		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
 		  $wgTitle->getPrefixedText() . "', '" .
 		  wfStrencode( $wgUser->getName() ) . "', $redir)";
+		$res = wfQuery( $sql, $conn, "Article::insertNewArticle" );
 
-		wfDebug( "Art: 2: $sql\n" );
-		$res = mysql_query( $sql, $conn );
 		$newid = mysql_insert_id( $conn );
 		$wgTitle->resetArticleID( $newid );
 
@@ -379,6 +371,7 @@ $wpTextbox2
 	function updateArticle( $text, $summary, $minor )
 	{
 		global $wgOut, $wgUser, $wgTitle, $wgLinkCache;
+		$fname = "Article::updateArticle";
 
 		if ( $this->mMinorEdit ) { $me1 = 1; } else { $me1 = 0; }
 		if ( $minor ) { $me2 = 1; } else { $me2 = 0; }
@@ -387,6 +380,7 @@ $wpTextbox2
 		$this->loadLastEdit();
 
 		$text = $this->preSaveTransform( $text );
+
 		$conn = wfGetDB();
 		$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
 		  "old_comment,old_user,old_user_text,old_timestamp," .
@@ -398,13 +392,8 @@ $wpTextbox2
 		  $this->getUser() . ", '" .
 		  wfStrencode( $this->getUserText() ) . "', '" .
 		  $this->getTimestamp() . "', " . $me1 . ")";
+		$res = wfQuery( $sql, $conn, $fname );
 
-		wfDebug( "Art: 4: $sql\n" );
-		$res = mysql_query( $sql, $conn );
-		if ( false === $res ) {
-			$wgOut->databaseError( wfMsg( "updatingarticle" ) );
-			return;
-		}
 		$conn = wfGetDB();
 		$sql = "UPDATE cur SET cur_text='" .  wfStrencode( $text ) .
 		  "',cur_comment='" .  wfStrencode( $summary ) .
@@ -413,9 +402,7 @@ $wpTextbox2
 		  "',cur_user_text='" . wfStrencode( $wgUser->getName() ) .
 		  "',cur_is_redirect={$redir} " .
 		  "WHERE cur_id=" . $this->getID();
-
-		wfDebug( "Art: 5: $sql\n" );
-		$res = mysql_query( $sql, $conn );
+		$res = wfQuery( $sql, $conn, $fname );
 
 		$this->showArticle( $text, wfMsg( "updated" ) );
 	}
@@ -465,13 +452,8 @@ $wpTextbox2
 		  "WHERE old_namespace=" . $wgTitle->getNamespace() . " AND " .
 		  "old_title='" . $wgTitle->getDBkey() . "' " .
 		  "ORDER BY old_timestamp DESC";
-		wfDebug( "Art: 6: $sql\n" );
+		$res = wfQuery( $sql, $conn, "Article::history" );
 
-		$res = mysql_query( $sql, $conn );
-		if ( ! $res ) {
-			$wgOut->databaseError( wfMsg( "loadhist" ) );
-			return;
-		}
 		$revs = mysql_num_rows( $res );
 		$sk = $wgUser->getSkin();
 		$s = $sk->beginHistoryList();		
@@ -620,7 +602,11 @@ $wpTextbox2
 		# Replace local image links with new [[image:]] style
 		#
 		$text = preg_replace(
-		  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/[a-z]+\/" .
+		  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/upload\/" .
+		  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
+		  "\\1[[image:\\3.\\4]]", $text );
+		$text = preg_replace(
+		  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/images\/uploads\/" .
 		  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
 		  "\\1[[image:\\3.\\4]]", $text );
 

@@ -14,11 +14,11 @@ class LinksUpdate {
 	function doUpdate()
 	{
 		global $wgLinkCache;
+		$fname = "LinksUpdate::doUpdate";
 
 		$conn = wfGetDB();
 		$sql = "DELETE FROM links WHERE l_from='{$this->mTitle}'";
-		wfDebug( "LU:1: $sql\n" );
-		mysql_query( $sql, $conn );
+		wfQuery( $sql, $conn, $fname );
 
 		$a = $wgLinkCache->getGoodLinks();
 		$sql = "";
@@ -34,14 +34,12 @@ class LinksUpdate {
 		}
 		if ( "" != $sql ) {
 			$conn = wfGetDB();
-			wfDebug( "LU:2: $sql\n" );
-			$res2 = mysql_query( $sql, $conn );
+			$res2 = wfQuery( $sql, $conn, $fname );
 		}
 
 		$conn = wfGetDB();
 		$sql = "DELETE FROM brokenlinks WHERE bl_from={$this->mId}";
-		wfDebug( "LU:3: $sql\n" );
-		mysql_query( $sql, $conn );
+		wfQuery( $sql, $conn, $fname );
 
 		$a = $wgLinkCache->getBadLinks();
 		$sql = "";
@@ -57,14 +55,12 @@ class LinksUpdate {
 		}
 		if ( "" != $sql ) {
 			$conn = wfGetDB();
-			wfDebug( "LU:4: $sql\n" );
-			$res2 = mysql_query( $sql, $conn );
+			$res2 = wfQuery( $sql, $conn, $fname );
 		}
 
 		$conn = wfGetDB();
 		$sql = "DELETE FROM imagelinks WHERE il_from={$this->mId}";
-		wfDebug( "LU:5: $sql\n" );
-		mysql_query( $sql, $conn );
+		wfQuery( $sql, $conn, $fname );
 
 		$a = $wgLinkCache->getImageLinks();
 		$sql = "";
@@ -80,8 +76,7 @@ class LinksUpdate {
 		}
 		if ( "" != $sql ) {
 			$conn = wfGetDB();
-			wfDebug( "LU:6: $sql\n" );
-			$res2 = mysql_query( $sql, $conn );
+			$res2 = wfQuery( $sql, $conn, $fname );
 		}
 	}
 }

@@ -15,8 +15,7 @@ class ViewCountUpdate {
 		$conn = wfGetDB();
 		$sql = "UPDATE cur SET cur_counter=(1+cur_counter)," .
 		  "cur_timestamp=cur_timestamp WHERE cur_id={$this->mPageID}";
-		wfDebug( "VCU: $sql\n" );
-		$res = mysql_query( $sql, $conn );
+		$res = wfQuery( $sql, $conn, "ViewCountUpdate::doUpdate" );
 	}
 }
 

@@ -88,7 +88,12 @@ function wfDebug( $text )
 function wfMsg( $key )
 {
 	global $wgLang;
-	return $wgLang->getMessage( $key );
+	$ret = $wgLang->getMessage( $key );
+
+	if ( "" == $ret ) {
+		die( "FATAL: Couldn't find text for message \"{$key}\".");
+	}
+	return $ret;
 }
 
 function wfStripTextFields()
@@ -154,10 +159,8 @@ function wfNumberOfArticles()
 	$conn = wfGetDB();
 	$sql = "SELECT ss_total_views, ss_total_edits, ss_good_articles " .
 	  "FROM site_stats WHERE ss_row_id=1";
-	wfDebug( "Glob: 1: $sql\n" );
-
-	$res = mysql_query( $sql, $conn );
-	if ( ( false === $res ) || ( 0 == mysql_num_rows( $res) ) ) { return; }
+	$res = wfQuery( $sql, $conn, "wfLoadSiteStats" );
+	if ( 0 == mysql_num_rows( $res ) ) { return; }
 	else {
 		$s = mysql_fetch_object( $res );
 		$wgTotalViews = $s->ss_total_views;

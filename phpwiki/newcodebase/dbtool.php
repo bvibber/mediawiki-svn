@@ -12,12 +12,15 @@ set_time_limit(0);
 #
 $wgOldDBname	= "wikidb";
 $wgOldDBuser	= "wikiadmin";
+$wgOldImageDir	= "/rfs/backups/lee/wikiimages";
 
 # Convert old (May 2002) database format.
 #
 # convertUserTable();
 # convertCurTable();
 # convertOldTable();
+
+convertImageDirectories();
 
 # Maintenance tasks.
 #
@@ -263,13 +266,87 @@ function convertOldTable()
 	if ( ! $newres ) $newres = dbErr( $sql );
 }
 
-function convertImageLinks( $text )
+
+function convertImageDirectories()
 {
-	$text = preg_replace(
-	  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/[a-z]+\/([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
-	  "\\1[[image:\\3.\\4]]", $text );
-	return $text;
+	global $wgOldImageDir, $wgUploadDirectory;
+	$count = 0;
+
+	print "Moving image files.\n";
+
+	$conn = getNewDB();
+	$sql = "SELECT DISTINCT il_to FROM imagelinks";
+	$res = dbQuery( $sql, $conn );
+	if ( ! $res ) $res = dbErr( $sql );
+/*
+	while ( $row = mysql_fetch_object( $res ) ) {
+		$oname = $row->il_to;
+
+		$nt = Title::newFromText( $oname );
+		$nname = $nt->getDBkey();
+	
+		$oldumask = umask(0);
+		$dest = $wgUploadDirectory . "/" . $nname{0};
+		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
+		$dest .= "/" . substr( $nname, 0, 2 );
+		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
+		umask( $oldumask );
+
+		print "{$wgOldImageDir}/{$oname} => {$dest}/{$nname}\n";
+
+		if ( copy( "{$wgOldImageDir}/{$oname}", "{$dest}/{$nname}" ) ) {
+			++$count;
+
+			$conn = getNewDB();
+			$sql = "UPDATE imagelinks SET il_to='{$nname}' " .
+			  "WHERE il_to='{$oname}'";
+			$res2 = dbQuery( $sql, $conn );
+			if ( ! $res2 ) $res2 = dbErr( $sql );
+
+			$conn = getNewDB();
+			$sql = "INSERT INTO image (img_name,img_timestamp,img_user," .
+			  "img_user_text,img_size,img_description) VALUES ('{$nname}','" .
+			  date( "YmdHis" ) . "',0,'(Automated conversion)','" .
+			  filesize( "{$dest}/{$nname}" ) . "','')";
+			$res2 = dbQuery( $sql, $conn );
+			if ( ! $res2 ) $res2 = dbErr( $sql );
+		}
+	}
+	mysql_free_result( $res );
+	print "{$count} images moved.\n";
+*/
+	$count = 0;
+	$dir = opendir( $wgOldImageDir );
+	while ( false !== ( $oname = readdir( $dir ) ) ) {
+		if ( "." == $oname{0} ) continue;
+
+		$nt = Title::newFromText( $oname );
+		$nname = $nt->getDBkey();
+
+		$oldumask = umask(0);
+		$dest = $wgUploadDirectory . "/" . $nname{0};
+		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
+		$dest .= "/" . substr( $nname, 0, 2 );
+		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
+		umask( $oldumask );
+
+		print "{$wgOldImageDir}/{$oname} => {$dest}/{$nname}\n";
+
+		if ( copy( "{$wgOldImageDir}/{$oname}", "{$dest}/{$nname}" ) ) {
+			++$count;
+
+			$conn = getNewDB();
+			$sql = "INSERT INTO image (img_name,img_timestamp,img_user," .
+			  "img_user_text,img_size,img_description) VALUES ('{$nname}','" .
+			  date( "YmdHis" ) . "',0,'(Automated conversion)','" .
+			  filesize( "{$dest}/{$nname}" ) . "','')";
+			$res2 = dbQuery( $sql, $conn );
+			if ( ! $res2 ) $res2 = dbErr( $sql );
+		}
+	}
+	print "{$count} unlinked images moved.\n";
 }
+
 
 # Empty and rebuild the "links" and "brokenlinks" tables.
 # This can be done at any time for the new database, and
@@ -379,6 +456,31 @@ function rebuildLinkTables()
 
 # Utility functions for the above.
 #
+
+function convertImageLinks( $text )
+{
+	$re = "/(^|[^[])http:\/\/(www.|)wikipedia.com\/upload\/" .
+	  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/";
+
+	while ( preg_match( $re, $text, $m ) ) {
+		$nt = Title::newFromText( $m[3] . "." . $m[4] );
+		$nname = $nt->getDBkey();
+
+		print "{$m[3]}.{$m[4]} => {$nname}\n";
+		preg_replace( $re, "\\1[[image:{$nname}]]", $text, 1 );
+	}
+	$re = "/(^|[^[])http:\/\/(www.|)wikipedia.com\/images\/uploads\/" .
+	  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/";
+
+	while ( preg_match( $re, $text, $m ) ) {
+		$nt = Title::newFromText( $m[3] . "." . $m[4] );
+		$nname = $nt->getDBkey();
+
+		print "{$m[3]}.{$m[4]} => {$nname}\n";
+		preg_replace( $re, "\\1[[image:{$nname}]]", $text, 1 );
+	}
+	return $text;
+}
 
 function getOldDB()
 {
