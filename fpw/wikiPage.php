@@ -245,9 +245,8 @@ class WikiPage extends WikiTitle {
         $s = mysql_fetch_object ( $result ) ;
         mysql_free_result ( $result ) ;
 
-        $s->cur_text = str_replace ( "\"" , "\\\"" , $s->cur_text ) ;
         $sql = "INSERT INTO old (old_title,old_old_version,old_text,old_comment,old_user,old_user_text,old_timestamp,old_minor_edit)";
-        $sql .= " VALUES (\"$this->secureTitle\",\"$oid\",\"".$s->cur_text."\",\"".$s->cur_comment."\",\"$s->cur_user\",\"$s->cur_user_text\",$s->cur_timestamp,$s->cur_minor_edit)" ;
+        $sql .= " VALUES (\"$this->secureTitle\",\"$oid\",\"".addslashes ( $s->cur_text ) ."\",\"".addslashes ( $s->cur_comment ) ."\",\"$s->cur_user\",\"$s->cur_user_text\",$s->cur_timestamp,$s->cur_minor_edit)" ;
         mysql_query ( $sql , $connection ) ;
 
         $sql = "SELECT old_id FROM old WHERE old_old_version=\"$oid\" AND old_title=\"$this->secureTitle\"" ;
@@ -303,9 +302,12 @@ class WikiPage extends WikiTitle {
 
         if ( $useCachedPages ) $addCache = "cur_cache=\"\"," ;
 
-        $text = str_replace ( "\"" , "\\\"" , $text ) ;
+        #$text = str_replace ( "\"" , "\\\"" , $text ) ;
 #       $comment = str_replace ( "\"" , "\\\"" , $comment ) ;
-        $userName = str_replace ( "\"" , "\\\"" , $userName ) ;
+        #$userName = str_replace ( "\"" , "\\\"" , $userName ) ;
+	$text = addslashes ( $text ) ;
+	#$comment = addslashes ( $comment ) ;
+	$userName = addslashes ( $userName ) ;
         $comment = htmlspecialchars ( $comment ) ;
         $sql = "UPDATE cur SET cur_text=\"$text\",cur_comment=\"$comment\",cur_user=\"$userID\"," ;
         $sql .= "cur_user_text=\"$userName\",cur_minor_edit=\"$minorEdit\",";
