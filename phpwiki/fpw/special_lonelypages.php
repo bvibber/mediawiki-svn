@@ -11,7 +11,7 @@ function LonelyPages () {
 	global $wikiSQLServer ;
 	$connection = getDBconnection () ;
 	mysql_select_db ( $wikiSQLServer , $connection ) ;
-	$sql = "SELECT cur_title,cur_linked_links,cur_unlinked_links FROM cur WHERE cur_title NOT LIKE \"Talk:%\" AND cur_text NOT LIKE \"#redirect%\" AND cur_text != \"\"" ;
+	$sql = "SELECT cur_title,cur_linked_links,cur_unlinked_links FROM cur WHERE cur_title NOT LIKE \"User:%\" AND cur_title NOT LIKE \"%alk:%\" AND cur_text NOT LIKE \"#redirect%\" AND cur_text != \"\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) {
 		$allPages[ucfirst($s->cur_title)] = $allPages[ucfirst($s->cur_title)] * 1 ;
