@@ -864,7 +864,7 @@ class Skin {
 
 		$inside = "";
 		if ( "" != $trail ) {
-			if ( preg_match( "/^([a-z]+)(.*)\$/sD", $trail, $m ) ) {
+			if ( preg_match( wfMsg("linktrail"), $trail, $m ) ) {
 				$inside = $m[1];
 				$trail = $m[2];
 			}
@@ -889,7 +889,7 @@ class Skin {
 
 		$inside = "";
 		if ( "" != $trail ) {
-			if ( preg_match( "/^([a-z]+)(.*)\$/sD", $trail, $m ) ) {
+			if ( preg_match( wfMsg("linktrail"), $trail, $m ) ) {
 				$inside = $m[1];
 				$trail = $m[2];
 			}
@@ -917,7 +917,7 @@ class Skin {
 
                 $inside = "";
                 if ( "" != $trail ) {
-                        if ( preg_match( "/^([a-z]+)(.*)\$/sD", $trail, $m ) ) {
+                        if ( preg_match( wfMsg("linktrail"), $trail, $m ) ) {
                                 $inside = $m[1];
                                 $trail = $m[2];
                         }
