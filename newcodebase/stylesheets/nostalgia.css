@@ -1,8 +1,6 @@
 #article { }
 #specialform { display: inline; }
-#powersearch {
-  background: #DDEEFF; border-style: solid; border-width: 1; padding: 2;
-}
+#powersearch { background: #DDEEFF; border-style: solid; border-width: 1; padding: 2; }
 .bodytext { }
 a.interwiki, a.external { color: #3366BB; }
 a.printable { text-decoration: underline; }
