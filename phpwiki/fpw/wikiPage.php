@@ -50,7 +50,6 @@ class WikiPage extends WikiTitle {
             $this->title = $call ;
             $inc = "./special_".strtolower($call).".php" ;
             include_once ( $inc ) ;
-#           include_once ( "./specialPages.php") ;
             $this->contents = $call () ;
             $this->isSpecialPage = true ;
             $this->canBeCached = false ;
@@ -126,6 +125,8 @@ class WikiPage extends WikiTitle {
         $this->isSpecialPage = true ;
         }
 
+/*
+	# Currently not used, maybe later
     # Look for all matches in $this->params
     function getParam ( $p ) {
         $ret = array () ;
@@ -136,31 +137,6 @@ class WikiPage extends WikiTitle {
             if ( count ( $y ) > 1 and strtolower ( trim ( $y[0] ) ) == $p ) array_push ( $ret , trim ( $y[1] ) ) ;
             }
         return $ret ;
-        }
-
-/*
-    # This lists all the subpages of a page (for the QuickBar)
-    # Not in use since we don't have subpages anymore; should be removed
-    function getSubpageList () {
-        $a = array () ;
-        $t = ucfirstIntl ( $this->namespace ) ;
-        if ( $t != "" ) $t .= ":" ;
-        $t .= $this->mainTitle ;
-        $mother = $t ;
-        $t .= "/" ;
-        $connection = getDBconnection () ;
-        $sql = "SELECT cur_title FROM cur WHERE cur_title LIKE \"$t%\"" ;
-        $result = mysql_query ( $sql , $connection ) ;
-        $u = new WikiTitle ;
-        while ( $s = mysql_fetch_object ( $result ) ) {
-            $t = strstr ( $s->cur_title , "/" ) ;
-            $z = explode ( ":" , $t , 2 ) ;
-            $t = "[[$t|- ".$this->getNiceTitle(substr($z[count($z)-1],1))."]]" ;
-            array_push ( $a , $t ) ;
-            }
-        if ( $result != "" ) mysql_free_result ( $result ) ;
-        if ( count ( $a ) > 0 ) array_unshift ( $a , "[[$mother]]" ) ;
-        return $a ;
         }
 */
 
@@ -196,55 +172,6 @@ class WikiPage extends WikiTitle {
 
 	return $a ;
 	}
-
-/*
-	# THe following is outdated
-
-        $n = explode ( ":" , $this->title ) ;
-        if ( count ( $n ) == 1 ) $n = $n[0] ;
-        else $n = $n[1] ;
-        global $wikiTalk , $wikiUser , $wikiNamespaceTalk ;
-        $connection = getDBconnection () ;
-        $sql = "SELECT cur_title FROM cur WHERE cur_title LIKE \"%:$n\"" ;
-        $result = mysql_query ( $sql , $connection ) ;
-        $u = new WikiTitle ;
-        if ( $this->namespace != "" ) {
-            $dummy = new wikiTitle ;
-            $dummy->setTitle ( $n ) ;
-            if ( $dummy->doesTopicExist ( $connection ) )
-                #array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"".wikiLink($n)."\">:".$this->getNiceTitle($n)."</a>" ) ;
-                array_push ( $a , "<a class=\"green\" href=\"".wikiLink($n)."\">:".$this->getNiceTitle($n)."</a>" ) ;
-            }
-
-        if ( stristr ( $this->namespace , $wikiTalk ) == false ) {
-            #$n2 = ucfirstIntl ( $this->namespace ) ;
-            #if ( $n2 != "" ) $n2 .= " " ;
-            #$n2 .= ucfirstIntl ( $wikiTalk ) ;
-            if ( $this->namespace != "" )
-                $n2 = str_replace ( "$1" , ucfirstIntl ( $this->namespace ) , $wikiNamespaceTalk ) ;
-            else
-                $n2 = ucfirstIntl ( $wikiTalk ) ;
-            $dummy = new wikiTitle ;
-            $dummy->setTitle ( $n2.":$n" ) ;
-            #if ( $dummy->doesTopicExist ( $connection ) ) $style = "color:green;text-decoration:none" ;
-            #else $style = "color:red;text-decoration:none" ;
-            $style = $dummy->doesTopicExist ( $connection ) ? "green" : "red";
-            array_push ( $a , "<a class=\"$style\" href=\"".wikiLink($dummy->url)."\">$n2</a>" ) ;
-            }
-
-        while ( $s = mysql_fetch_object ( $result ) ) {
-            $t = explode ( ":" , $s->cur_title ) ;
-            $t = $u->getNiceTitle ( $t[0] ) ;
-            #if ( strtolower ( substr ( $t , -strlen($wikiTalk) ) ) != $wikiTalk and strtolower ( $t ) != $this->namespace )
-            # Assumes that $wikiTalk is a substring of $wikiNamespaceTalk
-            if ( !stristr ( $t, $wikiTalk ) and strtolower ( $t ) != $this->namespace )
-                #array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"".wikiLink("$t:$n")."\">$t</a>" ) ;
-                array_push ( $a , "<a class=\"green\" href=\"".wikiLink("$t:$n")."\">$t</a>" ) ;
-            }
-        if ( $result != "" ) mysql_free_result ( $result ) ;
-        return $a ;
-        }
-*/
 
     # This creates a new article if there is none with the same title yet
     function ensureExistence () {
@@ -451,6 +378,7 @@ class WikiPage extends WikiTitle {
 
     # This function replaces wiki-style external links (both with and without []) with HTML links
     function subReplaceExternalLinks ( $s , $what , $autonumber ) {
+	if ( substr_count ( $s , "[$what" ) == 0 ) return $s ; # Speedup
         global $user ;
         $cnt = 1 ;
         $a = explode ( "[$what" , " ".$s ) ;
@@ -503,6 +431,7 @@ class WikiPage extends WikiTitle {
     function replaceVariables ( $s ) {
         global $wikiDate ;
         $countvars = substr_count ( "{{" , $s ) ;
+	if ( $countvars == 0 ) return $s ;
         $var=date("m"); $s = str_replace ( "{{CURRENTMONTH}}" , $var , $s ) ;
         $var=$wikiDate[strtolower(date("F"))]; $s = str_replace ( "{{CURRENTMONTHNAME}}" , $var , $s ) ;
         $var=date("j"); $s = str_replace ( "{{CURRENTDAY}}" , $var , $s ) ;
@@ -517,42 +446,6 @@ class WikiPage extends WikiTitle {
             mysql_free_result ( $result ) ;
             $s = str_replace ( "{{NUMBEROFARTICLES}}" , $var , $s ) ;
             }
-
-/*
-        # Category functionality deactivated
-        if ( strstr ( $s , "{{THISCATEGORY}}" ) ) {
-            $connection=getDBconnection() ;
-
-            $comp = $this->getNiceTitle() ;
-            $comp = "%\nCATEGORY $comp\n%" ;
-            $sql = "SELECT cur_title FROM cur WHERE cur_params LIKE \"$comp\"" ;
-
-            global $wikiThisCategory ;
-            $result = mysql_query ( $sql , $connection ) ;
-            $var = array () ;
-            while ( $q = mysql_fetch_object ( $result ) ) array_push ( $var , $this->getNiceTitle ( $q->cur_title ) ) ;
-            if ( count ( $var ) > 0 ) {
-                $var = "[[".implode ( "]] -- [[" , $var )."]]\n" ;
-                $var = "<table bgcolor=\"#CCCCCC\" width=\"100%\"><th>$wikiThisCategory</th><tr><td>$var</td></tr></table>" ;
-                }
-            else $var = "" ;
-
-            mysql_free_result ( $result ) ;
-            $s = str_replace ( "{{THISCATEGORY}}" , $var , $s ) ;
-            }
-*/
-
-/*
-        # Also deactivated
-        # Hide the rest...
-        $n = explode ( "{{" , $s ) ;
-        $s = array_shift ( $n ) ;
-        foreach ( $n as $x ) {
-            $m = explode ( "}}" , $x , 2 ) ;
-            if ( count ( $m ) == 1 ) $s .= "{{".$x ;
-            else $s .= $m[1] ;
-            }
-*/
 
         if ( $countvars != substr_count ( "{{" , $s ) )
             $this->canBeCached = false ;
