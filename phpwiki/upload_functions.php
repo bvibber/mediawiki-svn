@@ -15,11 +15,14 @@ function doUpload () {
 	$xtitle = "File upload page";
 	$ret = getStandardHeader() ;
 
+	$message = "" ;
+
 	if (isset($removeFile)) {
 		if ( !$isSysop and !$isEditor ) return "You are neither an editor nor a sysop. Return to the <a href=\"$PHP_SELF?action=upload\">Upload page</a>" ;
-		if (is_file("upload/$removeFile") ) system ("rm -f upload/$removeFile");
+		if (is_file("upload/$removeFile") ) unlink ("./upload/$removeFile");
+		$message = "File <b>$removeFile</b> deleted!" ;
 		unset ( $removeFile ) ;
-	} else if (isset($Upload_name)) {
+	} else if (isset($Upload_name) or isset($Upload)) {
 		if ( $no_copyright != "AFFIRMED" ) return "You need to affirm that the file is not violating copygights. Return to the <a href=\"$PHP_SELF?action=upload\">Upload page</a>" ;
 		$Upload_name = ereg_replace(" ", "_", $Upload_name);
 		$abc = split("\.", $Upload_name);
@@ -33,24 +36,22 @@ function doUpload () {
 			return $ret ;
 			}
 
-		if (!is_dir("upload") ) {
-			system ("mkdir upload"); 
-			system ("chmod 777 upload");       
-			}
+		copy ( $Upload , "./upload/$Upload_name" ) ;
+		system ("chmod 777 ./upload/$Upload_name");       
+		$message = "File <b>$Upload_name</b> was successfully uploaded!" ;
 
-		system ("cp $Upload upload/$Upload_name");
-		system ("chmod 777 upload/$Upload_name");       
-
-		$ret .= "<script language=javascript>\n";
+/*		$ret .= "<script language=javascript>\n";
 		$ret .= "  function winclose(name){\n";
 		$ret .= "     str=\"Your file $Upload_name was successfully uploaded!\"\n";
 		$ret .= "     alert(str);\n";
 		$ret .= "  }\n";  
 		$ret .= "</script>\n";
-		$ret .= "<body bgcolor=white onload=\"winclose('$name')\">\n";
+		$ret .= "<body bgcolor=white onload=\"winclose('$name')\">\n";*/
 
 		unset ( $Upload_name ) ;
 	}
+
+	if ( $message != "" ) $ret .= "<font color=red>$message</font><br>\n" ;
 
 	$ret .= "<h2>Instructions:</h2><ul>\n";
 	$ret .= "<li><strong>Use this form to upload various files</strong></li>\n";

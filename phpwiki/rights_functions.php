@@ -4,13 +4,14 @@
 function canEditInNamespace ( $t ) {
 	$t = getSecureTitle ( $t ) ;
 	global $USERLOGGEDIN , $USERNAME ;
+	$namespace = strtolower ( getNamespace ( $t ) ) ;
+	if ( $namespace == "" or $namespace == "talk" or $namespace == "wiki" or $namespace == "user" ) return "" ;
+
 	if ( $USERLOGGEDIN != "YES" ) return "You are not logged in! You have to be logged in to edit file. <a href=\"$PHP_SELF?action=login\">Log in</a> or return to the <a href=\"$PHP_SELF?no\">HomePage</a>" ;
 	$ret = "" ;
 	$rights = ",".getUserSetting ( $USERNAME , "user_rights" )."," ;
 
-	$namespace = strtolower ( getNamespace ( $t ) ) ;
-	if ( $namespace == "" or $namespace == "talk" or $namespace == "wiki" or $namespace == "user" ) $ret = "" ;
-	else if ( doesNamespaceExist ( $namespace ) == false ) { # Trying to create a new namespace
+	if ( doesNamespaceExist ( $namespace ) == false ) { # Trying to create a new namespace
 		if ( !strstr ( $rights , ",is_sysop," ) )
 			$ret = "<h1>Access denied</h1>Namespace \"$namespace\" does not exist. Only sysops are authorized to create new namespaces." ;
 		}
