@@ -226,7 +226,8 @@ class WikiPage extends WikiTitle {
 		$oid = $s->old_id ;
 		setMySQL ( "cur" , "cur_old_version" , $oid , "cur_id=$id" ) ;
 
-		mysql_close ( $connection ) ;
+#		Deactivated on behalf of Brion Vibber
+#		mysql_close ( $connection ) ;
 		}
 
 	# This function stores the passed parameters into the database (the "cur" table)
@@ -808,9 +809,9 @@ class WikiPage extends WikiTitle {
 		global $wikiRecentChanges , $wikiRecentChangesLink , $wikiEditThisPage , $wikiHistory , $wikiRandomPage , $wikiSpecialPages ;
 		global $wikiSpecialPagesLink ;
 		$ret .= " | <a href=\"".wikiLink("special:$wikiRecentChangesLink")."\">$wikiRecentChanges</a>" ;
-		if ( $this->canEdit() ) $ret .= " | <a href=\"".wikiLink("$this->url$editOldVersion&action=edit")."\">$wikiEditThisPage</a>" ;
+		if ( $this->canEdit() ) $ret .= " | <a href=\"".wikiLink(urldecode($this->url)."$editOldVersion&action=edit")."\">$wikiEditThisPage</a>" ;
 		else if ( !$this->isSpecialPage ) $ret .= " | Protected page" ;
-		if ( !$this->isSpecialPage ) $ret .= " | <a href=\"".wikiLink("$this->url&action=history")."\">$wikiHistory</a>\n" ;
+		if ( !$this->isSpecialPage ) $ret .= " | <a href=\"".wikiLink(urldecode($this->url)."&action=history")."\">$wikiHistory</a>\n" ;
 		$ret .= " | <a href=\"".wikiLink("special:RandomPage")."\">$wikiRandomPage</a>" ;
 		$ret .= " | <a href=\"".wikiLink("special:$wikiSpecialPagesLink")."\">$wikiSpecialPages</a>" ;
 		return $ret ;
@@ -903,14 +904,14 @@ class WikiPage extends WikiTitle {
 		$column = "" ;
 		$column .= "<a href=\"".wikiLink("")."\">$wikiMainPage</a>\n" ;
 		$column .= "<br><a href=\"".wikiLink("special:$wikiRecentChangesLink")."\">$wikiRecentChanges</a>\n" ;
-		if ( $this->canEdit() ) $column .= "<br><a href=\"".wikiLink("$this->url$editOldVersion&action=edit")."\">$wikiEditThisPage</a>\n" ;
+		if ( $this->canEdit() ) $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."$editOldVersion&action=edit")."\">$wikiEditThisPage</a>\n" ;
 		else if ( !$this->isSpecialPage ) $column .= "<br>Protected page\n" ;
-		if ( $this->canDelete() ) $column .= "<br><a href=\"".wikiLink("special:deletepage&target=$this->url")."\">$wikiDeleteThisPage</a>\n" ;
-		if ( $this->canProtect() ) $column .= "<br><a href=\"".wikiLink("special:protectpage&target=$this->url")."\">Protect this page</a>\n" ;
+		if ( $this->canDelete() ) $column .= "<br><a href=\"".wikiLink("special:deletepage&target=".urldecode($this->url))."\">$wikiDeleteThisPage</a>\n" ;
+		if ( $this->canProtect() ) $column .= "<br><a href=\"".wikiLink("special:protectpage&target=".urldecode($this->url))."\">Protect this page</a>\n" ;
 # To be implemented later
 #		if ( $this->canAdvance() ) $column .= "<br><a href=\"".wikiLink("special:Advance&topic=$this->safeTitle")."\">Advance</a>\n" ;
 
-		if ( !$this->isSpecialPage ) $column .= "<br><a href=\"".wikiLink("$this->url&action=history")."\">$wikiHistory</a>\n" ;
+		if ( !$this->isSpecialPage ) $column .= "<br><a href=\"".wikiLink(urldecode($this->url)."&action=history")."\">$wikiHistory</a>\n" ;
 		$column .= "<br><a href=\"".wikiLink("special:Upload")."\">$wikiUpload</a>\n" ;
 		$column .= "<hr>" ;
 		$column .= "<a href=\"".wikiLink("special:Statistics")."\">$wikiStatistics</a>" ;
