@@ -6,23 +6,25 @@
 # a database dump, renamed "old_*".
 
 include_once( "Setup.php" );
+$wgTitle = Title::newFromText( "Conversion script" );
 include_once( "./rebuildlinksfunction.php" );
 set_time_limit(0);
 
 $wgDBname			= "wikidb";
 $wgDBuser			= "wikiadmin";
-$wgDBpassword		= "adminpasswd";
+$wgDBpassword		= "adminpass";
 $wgImageDirectory	= "/usr/local/apache/htdocs/wikiimages";
 
-renameOldTables();
-buildtables();
+# renameOldTables();
+# buildtables();
 
-convertUserTable();
-convertOldTable();
-convertCurTable();
 # convertImageDirectories();
+# convertUserTable();
+# convertOldTable();
+# convertCurTable();
 
-buildindexes();
+# buildindexes();
+
 rebuildLinkTablesPass1();
 rebuildLinkTablesPass2();
 removeOldTables();
@@ -49,6 +51,9 @@ function convertUserTable()
 
 	$sql = "";
 	while ( $row = mysql_fetch_object( $oldres ) ) {
+		$name = addslashes( fixUserName( $row->user_name ) );
+		if ( "" == $name ) continue; # Don't convert illegal names
+
 		if ( 0 == ( $count % 10 ) ) {
 			if ( 0 != $count ) { $newres = wfQuery( $sql ); }
 
@@ -59,13 +64,10 @@ function convertUserTable()
 			$sql .= ",";
 		}
 		$ops = addslashes( fixUserOptions( $row->user_options ) );
-		$name = addslashes( fixUserName( $row->user_name ) );
 		$rights = addslashes( fixUserRights( $row->user_rights ) );
 		$email = addslashes( $row->user_email );
 		$pwd = addslashes( md5( $row->user_password ) );
 		$watch = addslashes( $row->user_watch );
-
-		if ( "" == $name ) continue; # Don't convert illegal names
 
 		$sql .= "({$row->user_id},'{$name}','{$rights}','{$pwd}',''," .
 		  "'{$email}','{$ops}','{$watch}')";
@@ -91,7 +93,7 @@ function convertCurTable()
     $countables = 0;
 	print "Converting CUR table.\n";
 
-	$sql = "LOCK TABLES old_cur READ, cur WRITE";
+	$sql = "LOCK TABLES old_cur READ, cur WRITE, site_stats WRITE";
 	$newres = wfQuery( $sql );
 
 	$sql = "SELECT cur_id,cur_title,cur_text,cur_comment,cur_user," .
@@ -100,7 +102,10 @@ function convertCurTable()
 	$oldres = wfQuery( $sql );
 
 	$sql = "DELETE FROM cur";
-	$newres = wfQuery( $sql );
+	wfQuery( $sql );
+
+	$sql = "DELETE FROM site_stats";
+	wfQuery( $sql );
 
 	$sql = "";
 	while ( $row = mysql_fetch_object( $oldres ) ) {
@@ -113,7 +118,7 @@ function convertCurTable()
 		$itext = addslashes( indexText( $text, $ititle ) );
 
 		$com = addslashes( $row->cur_comment );
-		$cr = addslashes( $row->cur_restrictions );
+		$cr = addslashes( fixUserRights( $row->cur_restrictions ) );
 		$cut = addslashes( $row->cur_user_text );
 		if ( "" == $cut ) { $cut = "Unknown"; }
 
@@ -152,12 +157,25 @@ function convertCurTable()
 	print "$count article records processed.\n";
 	mysql_free_result( $oldres );
 
+	$sql = "INSERT INTO site_stats (ss_row_id,ss_total_views," .
+	  "ss_total_edits,ss_good_articles) VALUES (1,0,0,{$countables})";
+	wfQuery( $sql );
+
+	$wns = Namespace::getIndex( "Wikipedia" );
+	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
+	  "cur_restrictions) VALUES ({$wns},'Upload_log'," .
+	  "'Below is a list of the most recent file uploads:\\n<ul>\\n</ul>\\n'," .
+	  "'sysop')";
+	wfQuery( $sql );
+
+	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
+	  "cur_restrictions) VALUES ({$wns},'Article_deletion_log'," .
+	  "'Below is a list of the most recent deletions:\\n<ul>\\n</ul>\\n'," .
+	  "'sysop')";
+	wfQuery( $sql );
+
 	$sql = "UNLOCK TABLES";
 	$newres = wfQuery( $sql );
-
-	$sql = "UPDATE site_stats SET ss_good_articles={$countables} " .
-	  "WHERE ss_row_id=1";
-	wfQuery( $sql );
 }
 
 # Convert May 2002 version of database into new format.
@@ -238,12 +256,14 @@ function convertImageDirectories()
 		$oldumask = umask(0);
 		$hash = md5( $nname );
 		$dest = $wgUploadDirectory . "/" . $hash{0};
-		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
+		if ( ! is_dir( $dest ) ) {
+			mkdir( $dest, 0777 ) or die( "Can't create \"{$dest}\".\n" );
+		}
 		$dest .= "/" . substr( $hash, 0, 2 );
-		if ( ! is_dir( $dest ) ) { mkdir( $dest, 0777 ); }
+		if ( ! is_dir( $dest ) ) {
+			mkdir( $dest, 0777 ) or die( "Can't create \"{$dest}\".\n" );
+		}
 		umask( $oldumask );
-
-		print "{$wgImageDirectory}/{$oname} => {$dest}/{$nname}\n";
 
 		if ( copy( "{$wgImageDirectory}/{$oname}", "{$dest}/{$nname}" ) ) {
 			++$count;
@@ -258,6 +278,8 @@ function convertImageDirectories()
 			  date( "YmdHis" ) . "',0,'(Automated conversion)','" .
 			  filesize( "{$dest}/{$nname}" ) . "','')";
 			$res = wfQuery( $sql );
+		} else {
+			die( "Couldn't copy \"{$oname}\" to \"{$nname}\"\n" );
 		}
 	}
 	print "{$count} images moved.\n";
@@ -602,6 +624,7 @@ function buildtables()
   oi_timestamp char(14) binary NOT NULL default ''
 ) TYPE=MyISAM PACK_KEYS=1";
 	wfQuery( $sql );
+
 }
 
 function buildindexes()

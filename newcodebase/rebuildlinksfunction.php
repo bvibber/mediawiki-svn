@@ -5,6 +5,16 @@ function rebuildLinkTablesPass1()
 	$count = 0;
 	print "Rebuilding link tables (pass 1).\n";
 
+	$sql = "DROP TABLE IF EXISTS rebuildlinks";
+	wfQuery( $sql );
+
+	$sql = "CREATE TABLE rebuildlinks (
+  rl_f_id int(8) unsigned NOT NULL default 0,
+  rl_f_title varchar(255) binary NOT NULL default '',
+  rl_to varchar(255) binary NOT NULL default '',
+  INDEX rl_to (rl_to) ) TYPE=MyISAM";
+	wfQuery( $sql );
+
 	$sql = "LOCK TABLES cur READ, rebuildlinks WRITE";
 	wfQuery( $sql );
 
@@ -32,7 +42,7 @@ function rebuildLinkTablesPass1()
 			$sql = "INSERT INTO rebuildlinks (rl_f_id,rl_f_title,rl_to) VALUES ";
 			for ( $i = 0; $i < $numlinks; ++$i ) {
 				$nt = Title::newFromText( $m[1][$i] );
-				$dest = $nt->getPrefixedDBkey();
+				$dest = addslashes( $nt->getPrefixedDBkey() );
 
 				if ( 0 != $i ) { $sql .= ","; }
 				$sql .= "({$id},'{$title}','{$dest}')";
@@ -54,16 +64,6 @@ function rebuildLinkTablesPass2()
 {
 	$count = 0;
 	print "Rebuilding link tables (pass 2).\n";
-
-	$sql = "DROP TABLE IF EXISTS rebuildlinks";
-	wfQuery( $sql );
-
-	$sql = "CREATE TABLE rebuildlinks (
-  rl_f_id int(8) unsigned NOT NULL default 0,
-  rl_f_title varchar(255) binary NOT NULL default '',
-  rl_to varchar(255) binary NOT NULL default '',
-  INDEX rl_to (rl_to))";
-	wfQuery( $sql );
 
 	$sql = "LOCK TABLES cur READ, rebuildlinks READ, " .
 	  "links WRITE, brokenlinks WRITE, imagelinks WRITE";
@@ -145,6 +145,9 @@ function rebuildLinkTablesPass2()
 	wfFreeResult( $res );
 
 	$sql = "UNLOCK TABLES";
+	wfQuery( $sql );
+
+	$sql = "DROP TABLE rebuildlinks";
 	wfQuery( $sql );
 }
 ?>
