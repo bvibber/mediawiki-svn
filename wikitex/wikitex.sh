@@ -53,11 +53,11 @@ nCleanUp() {
 nLatex() {
     if [[ ! -s "$1.$S_EXT" ]]; then
 	case "$2" in
-	    'music' ) { lilypond "$1" && psselect 1 "$1".ps "$1"_1.ps && mv "$1"_1.ps "$1".ps && /usr/bin/mogrify -trim "$1".ps && /usr/bin/convert -transparent "#ffffff" "$1".ps "$1.$S_EXT"; } &> /dev/null;;
-	    'go' ) { sgf2tex "$1" -break 0 && tex "$1" && dvi2bitmap --magnification=2 --scale=6 --font-mode=nechi --resolution=360 -h 360 -w 360 --process=blur,crop,transparent --output="$1"."$S_EXT" "$1".dvi; } &> /dev/null;;
-	    'batik' ) { java -jar "$D_BATIK"batik-rasterizer.jar "$1" && mogrify -trim "$1".png; } &> /dev/null  ;;
+	    'music' ) { lilypond --no-pdf --no-ps --png "$1" && for i in "$1"*1.png; do mogrify -trim -transparent white $i; mv $i ${i/-page*\./.}; done; } &> /dev/null;;
+	    'go' ) { sgf2tex "$1" -break 0 && tex "$1" && dvipng -T tight -bg Transparent -o "$1.$S_EXT" -p =1 "$1".dvi; } &> /dev/null;;
+	    'batik' ) { java -jar "$D_BATIK"batik-rasterizer.jar "$1" && mogrify -trim "$1.$S_EXT"; } &> /dev/null  ;;
 	    'svg' ) { convert "$1" "$1.$S_EXT" && mogrify -trim "$1.$S_EXT"; } &> /dev/null ;;
-	    * )	{ latex "$1" --interaction=batchmode && dvi2bitmap --magnification=2 --scale=6 --font-mode=nechi --resolution=360 --process=blur,crop,transparent --output="$1.$S_EXT" "$1".dvi; } &> /dev/null;;
+	    * )	{ latex "$1" --interaction=batchmode && dvipng -T tight -bg Transparent -o "$1.$S_EXT" -p =1 "$1".dvi; } &> /dev/null;;
 	esac;
     fi
 

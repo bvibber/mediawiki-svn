@@ -77,7 +77,8 @@ class objRend
       // generic security basis for all classes
       $arrBlack['rend']	= array('\catcode', '\include', '\includeonly', '\input',
 				'\newcommand', '\newenvironment', '\newtheorem', '\newfont',
-				'\renewcommand', '\renewenvironment', '\typein', '\typeout', '\write');
+				'\renewcommand', '\renewenvironment', '\typein', '\typeout', '\write',
+				'\let', '\csname', '\read', '\open');
 
       // specific security recommendations
       $arrBlack['music']	= array('#');

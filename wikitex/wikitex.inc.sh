@@ -17,4 +17,4 @@ D_BATIK='/usr/local/batik/'	# batik-rasterizer
 
 # Expand the web server path to include binaries
 # (ideally done in the server start up script)
-# PATH=$PATH:/usr/local/bin
+PATH=$PATH:/usr/local/bin
