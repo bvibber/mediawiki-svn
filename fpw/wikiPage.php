@@ -978,7 +978,8 @@ class WikiPage extends WikiTitle {
 		global $wikiHome , $wikiAbout , $wikiFAQ , $wikiSpecialPages , $wikiLogIn , $wikiLogOut , $wikiHeaderSubtitle , $wikiWikipediaFAQ ;
 		global $wikiLogoFile , $user , $wikiHelp , $wikiWikipediaHelp , $wikiWikipedia ;
 		$bgc1 = "#7089AA" ;
-		$fonts = "face=verdena,times color=white" ;
+		#$fonts = "face=verdena,times color=white" ;
+		$fonts = "face=serif color=white" ;
 		$ret .= "<table width='100%' border=0 cellspacing=0 cellpadding=1>\n" ;
 
 		# Logo
@@ -986,7 +987,7 @@ class WikiPage extends WikiTitle {
 #		$ret .= "<td width=1 rowspan=2 valign=top><img src='$wikiLogoFile' height=55></td>\n" ; # Tried to add the logo; looks crappy IMHO
 
 		# Row 1
-		$ret .= "<td bgcolor=$bgc1 valign=bottom>\n" ;
+		$ret .= "<td bgcolor=$bgc1 valign=bottom>&nbsp;\n" ;
 		$ret .= "<font size='+4' $fonts><a class=syslink href=\"".WikiLink("")."\">".strtoupperIntl($wikiWikipedia)."</a></font></td>\n" ;
 		$ret .= "<td bgcolor=$bgc1 align=right valign=bottom>\n" ;
 		$ret .= "<font $fonts>" ;
@@ -999,14 +1000,25 @@ class WikiPage extends WikiTitle {
 			$ret .= "<a class=syslink href='".WikiLink("special:userLogout")."'>" . strtoupperIntl ( $wikiLogOut ) ."</a> " ;
 		else
 			$ret .= "<a class=syslink href='".WikiLink("special:userLogin")."'>" . strtoupperIntl ( $wikiLogIn ) ."</a> " ;
-		$ret .= "</font></td></tr>\n" ;
+		$ret .= "</font>&nbsp;</td></tr>\n" ;
 
 		#Row 2
-		$ret .= "<tr><td colspan=2 bgcolor=white>" ;
+		$ret .= "<tr><td bgcolor=white valign=top>&nbsp;" ;
 		$ret .= "<a class=syslink href=\"".WikiLink("wikipedia")."\">" ;
 		$ret .= "<font size=+1 color=black $fonts>" ;
 		$ret .= strtoupperIntl ( $wikiHeaderSubtitle ) ;
-		$ret .= "</font></a><br><br></td></tr>\n" ;
+		$ret .= "</font></a><br><br></td><td bgcolor=white align=right valign=top><small>" ;
+        	if ( count ( $this->otherLanguages ) > 0 ) {
+                	global $wikiOtherLanguagesText , $wikiLanguageNames ;
+	                $subText = array () ;
+	                $olk = array_keys ( $this->otherLanguages ) ;
+	                foreach ( $this->otherLanguages as $x => $url )
+	                    array_push ( $subText , "<a href=\"".$url."\">".$wikiLanguageNames[$x]."</a>" ) ;
+	                $subText = implode ( ", " , $subText ) ;
+	                $ret .= str_replace ( "$1" , $subText , $wikiOtherLanguagesText ) ;
+	                }
+
+		$ret .= "</small>&nbsp;</td></tr>\n" ;
 
 		return $ret ;
 		}
