@@ -92,7 +92,8 @@ class ImagePage extends Article {
 		$wgOut->addHTML( "<h2>" . wfMsg( "imagelinks" ) . "</h2>\n" );
 
 		$sql = "SELECT cur_namespace,cur_title FROM imagelinks,cur WHERE il_to='" .
-		  wfStrencode( $this->mTitle->getDBkey() ) . "' AND il_from=cur_id";
+		  wfStrencode( $this->mTitle->getDBkey() ) . "' AND il_from=cur_id"
+		  . " LIMIT 500"; # quickie emergency brake
 		$res = wfQuery( $sql, DB_READ, "Article::imageLinks" );
 
 		if ( 0 == wfNumRows( $res ) ) {
