@@ -1,11 +1,4 @@
 <?
-# Changes the date in recentChangesLayout() according to user setting; can be used similar elsewhere
-function timestampAddHour ( $x , $d ) {
-    $x = tsc ( $x ) ;
-    $x += $d * 3600 ;
-    $x = date ( "YmdHis" , $x ) ;
-    return $x ;
-    }
 
 function recentChangesLayout ( &$arr ) {
     if ( count ( $arr ) == 0 ) return "" ;
