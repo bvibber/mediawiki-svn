@@ -356,7 +356,7 @@ if ( ! $noHistory ) { # for testing { ****
 			}
 	} else {
 	$sql = implode ( ";\n" , $sql ) ;
-	$sql .= "INSERT INTO cur (cur_title,cur_ind_title,cur_text,cur_comment,cur_user,cur_user_text,cur_old_version,cur_minor_edit) VALUES ";
+	$sql .= ";\nINSERT INTO cur (cur_title,cur_ind_title,cur_text,cur_comment,cur_user,cur_user_text,cur_old_version,cur_minor_edit) VALUES ";
 	$sql .= "(\"$st\",\"$st\",\"$thetext\",";
 	$sql .= "\"$wikiAutomatedConversion\",0,\"$wikiConversionScript\",$lastoldid,1);\n" ;
 	foreach ( $ll as $l ) {
