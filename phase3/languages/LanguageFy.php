@@ -1,5 +1,3 @@
-
-
 <?
 
 # NOTE: To turn off "Current Events" in the sidebar,
@@ -10,6 +8,8 @@
 # encapsulates some of the magic-ness.
 #
 
+include_once( "LanguageUtf8.php" );
+
 if($wgMetaNamespace === FALSE)
 	$wgMetaNamespace = str_replace( " ", "_", $wgSitename );
 
@@ -17,26 +17,16 @@ if($wgMetaNamespace === FALSE)
 	-1	=> "Wiki",
 	0	=> "",
 	1	=> "Oerlis",
-	2	=> "Br鹝er",
-	3	=> "Br鹝er_oerlis",
+	2	=> "Br没ker",
+	3	=> "Br没ker_oerlis",
 	4	=> $wgMetaNamespace,
 	5	=> $wgMetaNamespace . "_oerlis",
 	6	=> "Ofbyld",
 	7	=> "Ofbyld_oerlis"
 );
 
-/* private */ $wgDefaultUserOptionsFy = array(
-	"quickbar" => 1, "underline" => 1, "hover" => 1,
-	"cols" => 80, "rows" => 25, "searchlimit" => 20,
-	"contextlines" => 5, "contextchars" => 50,
-	"skin" => 0, "math" => 1, "rcdays" => 7, "rclimit" => 50,
-	"highlightbroken" => 1, "stubthreshold" => 0,
-	"previewontop" => 1, "editsection"=>1,"editsectiononrightclick"=>0, "showtoc"=>1,
-	"date" => 0
-);
-
 /* private */ $wgQuickbarSettingsFy = array(
-	"Ut", "Lofts f阺t", "Rjochts f阺t", "Lofsts sweevjend"
+	"Ut", "Lofts f锚st", "Rjochts f锚st", "Lofsts sweevjend"
 );
 
 /* private */ $wgSkinNamesFy = array(
@@ -44,11 +34,11 @@ if($wgMetaNamespace === FALSE)
 );
 
 /* private */ $wgMathNamesFy = array(
-           "Altiten as PNG 鬴byldzje",
-           "HTML foar ienf鈒diche formules, oars PNG",
+           "Altiten as PNG 么fbyldzje",
+           "HTML foar ienf芒ldiche formules, oars PNG",
            "HTML as mooglik, oars PNG",
-           "Lit de TeX ferzje stean (foar tekstbl阣zjers)",
-           "Oanbefelle foar resinte bl阣zjers"
+           "Lit de TeX ferzje stean (foar tekstbl锚dzjers)",
+           "Oanbefelle foar resinte bl锚dzjers"
 );
 
 /* private */ $wgDateFormatsFy = array(
@@ -60,174 +50,26 @@ if($wgMetaNamespace === FALSE)
 
 /* private */ $wgUserTogglesFy = array(
 	"hover"		=> "Wiki-keppelings yn sweeffak sjen litte",
-	"underline"		=> "Keppelings 鹡derstreekje",
+	"underline"		=> "Keppelings 没nderstreekje",
 	"highlightbroken"	=> "Keppelings nei lege siden ta <a href=\"\" class=\"new\">read</a>
 					(oars mei in fraachteken<a href=\"\" class=\"internal\">?</a>).",
-	"justify"		=> "Paragrafen 鷗folje",
-	"hideminor"		=> "Tekstwizigings wei litte 鷗 'Koarts feroare'",
-	"usenewrc"		=> "Utwreide ferzje fan 'Koarts feroare' br鹝e (net mei alle bl阣zjers mooglik)",
-	"numberheadings"	=> "Koppen fansels n鹠erje",
-	"editondblclick"	=> "D鸼elklik jout bewurkingsside (freget JavaScript)",
+	"justify"		=> "Paragrafen 煤tfolje",
+	"hideminor"		=> "Tekstwizigings wei litte 煤t 'Koarts feroare'",
+	"usenewrc"		=> "Utwreide ferzje fan 'Koarts feroare' br没ke (net mei alle bl锚dzjers mooglik)",
+	"numberheadings"	=> "Koppen fansels n没merje",
+	"editondblclick"	=> "D没belklik jout bewurkingsside (freget JavaScript)",
 	"editsection"	=> "Jou [bewurk]-keppelings foar seksjebewurking",
 	"editsectiononrightclick" => "Rjochtsklik op sekjsetitels jout seksjebewurking (freget JavaScript)",
- 	"showtoc"		=> "Ynh鈒dsopjefte, foar siden mei mear as twa koppen",
+ 	"showtoc"		=> "Ynh芒ldsopjefte, foar siden mei mear as twa koppen",
 	"rememberpassword" => "Oare kear fansels oanmelde",
 	"editwidth"		=> "Bewurkingsfjild sa breed as de side",
 	"watchdefault"	=> "Sides dy't jo feroare hawwe folgje",
 	"minordefault"	=> "Feroarings yn it earst oanjaan as tekstwizigings.",
-	"previewontop"	=> "By it neisjen, bewurkingsfjild 鹡deroan sette",
-	"nocache"		=> "Gjin oerslag br鹝e"
+	"previewontop"	=> "By it neisjen, bewurkingsfjild 没nderoan sette",
+	"nocache"		=> "Gjin oerslag br没ke"
 );
 
 /* private */ $wgBookstoreListFy = array(
-);
-
-/* private */ $wgLanguageNamesFy = array(
-	"aa" => "Afar",
-	"ab" => "Abkhazian",
-	"af" => "Afrikaans",
-	"am" => "Amharic",
-	"ar" => "&#8238;&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;&#8236; (Araby)",
-	"as" => "Assamese",
-	"ay" => "Aymara",
-	"az" => "Azerbaijani",
-	"ba" => "Bashkir",
-	"be" => "&#1041;&#1077;&#1083;&#1072;&#1088;&#1091;&#1089;&#1082;&#1080;",
-	"bh" => "Bihara",
-	"bi" => "Bislama",
-	"bn" => "Bengali",
-	"bo" => "Tibetan",
-	"br" => "Brezhoneg",
-	"bs" => "Bosnian",
-	"ca" => "Catal&agrave;",
-	"ch" => "Chamoru",
-	"co" => "Corsican",
-	"cs" => "&#268;esk&#225;",
-	"cy" => "Cymraeg",
-	"da" => "Dansk", # Note two different subdomains.
-	"dk" => "Dansk", # 'da' is correct for the language.
-	"de" => "Deutsch",
-	"dz" => "Bhutani",
-	"el" => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; (Ellenika)",
-	"en" => "English",
-	"eo" => "Esperanto",
-	"es" => "Espa&ntilde;ol",
-	"et" => "Eesti",
-	"eu" => "Euskara",
-	"fa" => "&#8238;&#1601;&#1585;&#1587;&#1609;&#8236; (Farsi)",
-	"fi" => "Suomi",
-	"fj" => "Fijian",
-	"fo" => "Faeroese",
-	"fr" => "Fran&ccedil;ais",
-	"fy" => "Frysk",
-	"ga" => "Gaelige",
-	"gd" => "G&agrave;idhlig",
-	"gl" => "Galician",
-	"gn" => "Guarani",
-	"gu" => "&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752; (Gujarati)",
-	"gv" => "Gaelg",
-	"ha" => "Hausa",
-	"he" => "&#1506;&#1489;&#1512;&#1497;&#1514; (Ivrit)",
-	"hi" => "&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)",
-	"hr" => "Hrvatski",
-	"hu" => "Magyar",
-	"hy" => "Armenian",
-	"ia" => "Interlingua",
-	"id" => "Indonesia",
-	"ik" => "Inupiak",
-	"is" => "&#205;slenska",
-	"it" => "Italiano",
-	"iu" => "Inuktitut",
-	"ja" => "&#26085;&#26412;&#35486; (Nihongo)",
-	"jv" => "Javanese",
-	"ka" => "&#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4312; (Kartuli)",
-	"kk" => "Kazakh",
-	"kl" => "Greenlandic",
-	"km" => "Cambodian",
-	"kn" => "&#3221;&#3240;&#3277;&#3240;&#3233; (Kannada)",
-	"ko" => "&#54620;&#44397;&#50612; (Hangukeo)",
-	"ks" => "Kashmiri",
-	"kw" => "Kernewek",
-	"ky" => "Kirghiz",
-	"la" => "Latina",
-	"ln" => "Lingala",
-	"lo" => "Laotian",
-	"lt" => "Lietuvi&#371;",
-	"lv" => "Latvian",
-	"mg" => "Malagasy",
-	"mi" => "Maori",
-	"mk" => "Macedonian",
-	"ml" => "Malayalam",
-	"mn" => "Mongolian",
-	"mo" => "Moldavian",
-	"mr" => "Marathi",
-	"ms" => "Bahasa Melayu",
-	"my" => "Burmese",
-	"na" => "Nauru",
-	"nah" => "Nahuatl",
-	"nds" => "Plattd&uuml;&uuml;tsch",
-	"ne" => "&#2344;&#2375;&#2346;&#2366;&#2354;&#2368; (Nepali)",
-	"nl" => "Nederlands",
-	"no" => "Norsk",
-	"oc" => "Occitan",
-	"om" => "Oromo",
-	"or" => "Oriya",
-	"pa" => "Punjabi",
-	"pl" => "Polski",
-	"ps" => "Pashto",
-	"pt" => "Portugu&#234;s",
-	"qu" => "Quechua",
-	"rm" => "Rhaeto-Romance",
-	"rn" => "Kirundi",
-	"ro" => "Rom&#226;n&#259;",
-	"ru" => "&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081; (Russkij)",
-	"rw" => "Kinyarwanda",
-	"sa" => "&#2360;&#2306;&#2360;&#2381;&#2325;&#2371;&#2340; (Samskrta)",
-	"sd" => "Sindhi",
-	"sg" => "Sangro",
-	"sh" => "Serbocroatian",
-	"si" => "Sinhalese",
-	"simple" => "Simple English",
-	"sk" => "Slovak",
-	"sl" => "Slovensko",
-	"sm" => "Samoan",
-	"sn" => "Shona",
-	"so" => "Soomaali",
-	"sq" => "Shqiptare",
-	"sr" => "Srpski",
-	"ss" => "Siswati",
-	"st" => "Sesotho",
-	"su" => "Sundanese",
-	"sv" => "Svenska",
-	"sw" => "Kiswahili",
-	"ta" => "&#2980;&#2990;&#3007;&#2996;&#3021; (Tamil)",
-	"te" => "&#3108;&#3142;&#3122;&#3137;&#3095;&#3137; (Telugu)",
-	"tg" => "Tajik",
-	"th" => "Thai",
-	"ti" => "Tigrinya",
-	"tk" => "Turkmen",
-	"tl" => "Tagalog",
-	"tn" => "Setswana",
-	"to" => "Tonga",
-	"tr" => "T&uuml;rk&ccedil;e",
-	"ts" => "Tsonga",
-	"tt" => "Tatar",
-	"tw" => "Twi",
-	"ug" => "Uighur",
-	"uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072; (Ukrayins`ka)",
-	"ur" => "Urdu",
-	"uz" => "Uzbek",
-	"vi" => "Vietnamese",
-	"vo" => "Volap&#252;k",
-	"wo" => "Wolof",
-	"xh" => "isiXhosa",
-	"yi" => "Yiddish",
-	"yo" => "Yoruba",
-	"za" => "Zhuang",
-	"zh" => "&#20013;&#25991; (Zhongwen)",
-	"zh-cn" => "&#20013;&#25991;(&#31616;&#20307;) (Simplified Chinese)",
-	"zh-tw" => "&#20013;&#25991;(&#32321;&#20307;) (Traditional Chinese)",
-	"zu" => "Zulu"
 );
 
 /* private */ $wgWeekdayNamesFy = array(
@@ -258,12 +100,12 @@ if($wgMetaNamespace === FALSE)
 	"Recentchanges"   => "Koarts feroare",
 	"Upload"		=> "Ofbyld oanbiede",
 	"Imagelist"		=> "Ofbyld list",
-	"Listusers"		=> "Bekinde br鹝ers",
+	"Listusers"		=> "Bekinde br没kers",
 	"Statistics"	=> "Statistyk",
 	"Randompage"	=> "Samar in side",
 
 	"Lonelypages"	=> "Lossteande siden",
-	"Unusedimages"	=> "Lossteande 鬴bylden",
+	"Unusedimages"	=> "Lossteande 么fbylden",
 	"Popularpages"	=> "Grage siden",
 	"Wantedpages"	=> "Nedige siden",
 	"Shortpages"	=> "Koarte siden",
@@ -272,20 +114,20 @@ if($wgMetaNamespace === FALSE)
 	"Ancientpages"	=> "Alde siden",
 	"Allpages"		=> "Alle titels",
 
-	"Ipblocklist"	=> "Utsletten br鹝ers/Ynternet-adressen",
-	"Maintenance"     => "Underh鈒dsside",
-	"Specialpages"    => "Bys鹡dere siden",
+	"Ipblocklist"	=> "Utsletten br没kers/Ynternet-adressen",
+	"Maintenance"     => "Underh芒ldsside",
+	"Specialpages"    => "Bys没ndere siden",
 	"Contributions"   => "",
 	"Emailuser"		=> "",
 	"Whatlinkshere"   => "",
 	"Recentchangeslinked" => "",
 	"Movepage"		=> "",
-	"Booksources"	=> ""
-	"Categories"      => "Kategoryen"
+	"Booksources"	=> "",
+	"Categories"      => "Kategoryen",
 );
 
 /* private */ $wgSysopSpecialPagesFy = array(
-	"Blockip"		=> "Utsletten br鹝er/Ynternet-adres",
+	"Blockip"		=> "Utsletten br没ker/Ynternet-adres",
 	"Asksql"		=> "Freegje de databank",
 	"Undelete"		=> "Set wisse siden wer teplak"
 );
@@ -300,7 +142,8 @@ if($wgMetaNamespace === FALSE)
 
 # Bits of text used by many pages:
 #
-"linktrail"		=> "/^([噌栝祉蝮怅铘腼鳇a-z]+)(.*)\$/sD",
+#"linktrail"		=> "/^([脿谩猫茅矛铆貌贸霉煤芒锚卯么没盲毛茂枚眉a-z]+)(.*)\$/sD",
+"linktrail"		=> "/^((?:[a-z]|脿|谩|猫|茅|矛|铆|貌|贸|霉|煤|芒|锚|卯|么|没|盲|毛|茂|枚|眉)+)(.*)\$/sD",
 "mainpage"		=> "Haadside",
 "mainpagetext"	=> "Wiki-programma goed installearre.",
 "about"		=> "Ynfo",
@@ -317,7 +160,7 @@ if($wgMetaNamespace === FALSE)
 "edithelppage"	=> "$wgMetaNamespace:Bewurk-rie",
 "cancel"		=> "Ferlitte",
 "qbfind"		=> "Sykje",
-"qbbrowse"		=> "Bl阣zje",
+"qbbrowse"		=> "Bl锚dzje",
 "qbedit"		=> "Bewurkje",
 "qbpageoptions" 	=> "Side-opsjes",
 "qbpageinfo"	=> "Side-ynfo",
@@ -330,7 +173,7 @@ if($wgMetaNamespace === FALSE)
 "fromwikipedia"	=> "Fan $wgSitename, de frije ensyklopedy.", # FIXME
 "whatlinkshere"	=> "Siden mei in keppeling hjirhinne",
 "help"		=> "Help",
-"search"		=> "<B>Sykje</B>",
+"search"		=> "Sykje",
 "go"			=> "Side",
 "history"		=> "Sideskiednis",
 "printableversion" => "Ofdruk-ferzje",
@@ -341,24 +184,24 @@ if($wgMetaNamespace === FALSE)
 "newpage" 		=> "Nije side",
 "talkpage"		=> "Sideoerlis",
 "postcomment"   	=> "Skrieuw in opmerking",
-"articlepage"	=> "Side l陑e",
-"subjectpage"	=> "Side l陑e", # For compatibility
-"userpage" 		=> "Br鹝erside",
+"articlepage"	=> "Side l锚ze",
+"subjectpage"	=> "Side l锚ze", # For compatibility
+"userpage" 		=> "Br没kerside",
 "wikipediapage" 	=> "Metaside",
 "imagepage" 	=> "Ofbyldside",
 "viewtalkpage" 	=> "Oerlisside",
 "otherlanguages" 	=> "Oare talen",
 "redirectedfrom" 	=> "(Trochwiisd fan \"$1\")",
-"lastmodified"	=> "L阺te kear bewurke op $1.",
+"lastmodified"	=> "L锚ste kear bewurke op $1.",
 "viewcount"		=> "Disse side is $1 kear iepenslein.",
-"gnunote" 		=> "Alle tekst is beskiber 鹡der de betingsten fan de <a class=internal href='/wiki/GNU_Vrije_Documentatie_Licentie'>GNU Iepen Dokumentaasje Lisinsje</a>.",
+"gnunote" 		=> "Alle tekst is beskiber 没nder de betingsten fan de <a class=internal href='/wiki/GNU_Vrije_Documentatie_Licentie'>GNU Iepen Dokumentaasje Lisinsje</a>.",
 "printsubtitle" 	=> "(Fan http://$wgServer)",
 "protectedpage" 	=> "Beskerme side",
 "administrators" 	=> "$wgMetaNamespace:Behear",
 "sysoptitle"	=> "Allinnich foar behearders",
-"sysoptext"		=> "Om dit te dwaan moatte jo behearder w陑e. Sjoch \"$1\".",
+"sysoptext"		=> "Om dit te dwaan moatte jo behearder w锚ze. Sjoch \"$1\".",
 "developertitle"  => "Allinich foar untwiklers",
-"developertext"	=> "Om dit te dwaan moatte jo 鹡twikler w陑e. Sjoch \"$1\".",
+"developertext"	=> "Om dit te dwaan moatte jo 没ntwikler w锚ze. Sjoch \"$1\".",
 "nbytes"		=> "$1 byte",
 "go"			=> "Side",
 "ok"			=> "Goed",
@@ -368,10 +211,10 @@ if($wgMetaNamespace === FALSE)
 "newmessages" 	=> "Jo hawwe $1.",
 "newmessageslink" => "nije berjochten",
 "editsection"	=> "edit",
-"toc" 		=> "Ynh鈒d",
+"toc" 		=> "Ynh芒ld",
 "showtoc" 		=> "sjen litte",
 "hidetoc" 		=> "net sjen litte",
-"thisisdeleted"	=> "\"$1\" l陑e of werombringje?",
+"thisisdeleted"	=> "\"$1\" l锚ze of werombringje?",
 "restorelink" 	=> "$1 wiske ferzjes",
 
 # Main script and global functions
@@ -388,72 +231,72 @@ if($wgMetaNamespace === FALSE)
 "databaseerror" 		=> "Databankfout",
 "dberrortext"		=> "Sinboufout in databankfraach.
 Dit soe troch in ferkearde sykfraach komme kinne (sjoch \"$5\"),
-of it soe in brek yn it programma w陑e kinne.
-De l阺t besochte databankfraach wie:
+of it soe in brek yn it programma w锚ze kinne.
+De l锚st besochte databankfraach wie:
 <blockquote><tt>$1</tt></blockquote>
-fan funksje \"<tt>$2</tt>\" 鷗.
+fan funksje \"<tt>$2</tt>\" 煤t.
 MySQL joech fout \"<tt>$3: $4</tt>\" werom.",
 
 "dberrortextcl" 		=> "Sinboufout in databankfraach.
-De l阺t besochte databankfraach wie:
+De l锚st besochte databankfraach wie:
 \"$1\"
-fan funksje \"$2\" 鷗.
+fan funksje \"$2\" 煤t.
 MySQL joech fout \"<tt>$3: $4</tt>\" werom.",
 
 "noconnect"			=> "Sorry! Troch in fout yn de technyk, kin de Wiki gjin ferbining meitsje mei de databanktsjinner.",
 "nodb"			=> "Kin databank \"$1\" net berikke.",
-"cachederror"		=> "Dit is in ferzje 鷗 de oerslag, mar it kin w陑e dat dy fer鈒dere is.",
+"cachederror"		=> "Dit is in ferzje 煤t de oerslag, mar it kin w锚ze dat dy fer芒ldere is.",
 "readonly"			=> "Databank is Net-skriuwe",
-"enterlockreason" 	=> "Skriuw w阹om de databank net-skriuwe makke is,
-en sawat hoenear't de men w阹 skriuwe kin",
-"readonlytext"	=> "De $wgSitename databank is 鬴sletten foar nije siden en oare wizigings,
-nei alle gedachten is it foar 鹡derh鈒d, en kinne jo der letter gewoan wer br鹝 fan meitsje.
-De behearder hat dizze 鷗lis joen:
+"enterlockreason" 	=> "Skriuw w锚rom de databank net-skriuwe makke is,
+en sawat hoenear't de men w锚r skriuwe kin",
+"readonlytext"	=> "De $wgSitename databank is 么fsletten foar nije siden en oare wizigings,
+nei alle gedachten is it foar 没nderh芒ld, en kinne jo der letter gewoan wer br没k fan meitsje.
+De behearder hat dizze 煤tlis joen:
 <p>$1</p>",
 
 "missingarticle" 		=> "De databank kin in side net fine, nammentlik: \"$1\".
-<p>Faak is dit om't in 鈒de ferskil-, of skiednisside opfreege wurdt fan in side dy't wiske is.
-<p>As dat it hjir net is, dan hawwe jo faaks in brek yn it programa f鹡.
-Jou dat asjebleaft troch oan de [["$wgMetaNamespace:Brekmelding|behearder]], tegearre mei de URL.",
+<p>Faak is dit om't in 芒lde ferskil-, of skiednisside opfreege wurdt fan in side dy't wiske is.
+<p>As dat it hjir net is, dan hawwe jo faaks in brek yn it programa f没n.
+Jou dat asjebleaft troch oan de [[$wgMetaNamespace:Brekmelding|behearder]], tegearre mei de URL.",
 
 "internalerror" 		=> "Ynwindige fout",
-"filecopyerror" 		=> "Koe best鈔 \"$1\" net kopiearje as \"$2\".",
-"filerenameerror" 	=> "Koe best鈔 \"$1\" net werneame as \"$2\".",
-"filedeleteerror" 	=> "Koe best鈔 \"$1\" net wiskje.",
-"filenotfound"		=> "Koe best鈔 \"$1\" net fine.",
+"filecopyerror" 		=> "Koe best芒n \"$1\" net kopiearje as \"$2\".",
+"filerenameerror" 	=> "Koe best芒n \"$1\" net werneame as \"$2\".",
+"filedeleteerror" 	=> "Koe best芒n \"$1\" net wiskje.",
+"filenotfound"		=> "Koe best芒n \"$1\" net fine.",
 "unexpected"		=> "Hommelse wearde: \"$1\"=\"$2\".",
 "formerror"			=> "Fout: koe formulier net oerlizze",	
 "badarticleerror" 	=> "Dit kin op dizze side net dien wurden.",
-"cannotdelete"		=> "Koe de oantsjutte side of 鬴byld net wiskje. (Faaks hat in oar dat al dien.)",
+"cannotdelete"		=> "Koe de oantsjutte side of 么fbyld net wiskje. (Faaks hat in oar dat al dien.)",
 "badtitle"			=> "Misse titel",
-"badtitletext"		=> "De opfreeche side titel wie 鹡jildich, leech, of in 
+"badtitletext"		=> "De opfreeche side titel wie 没njildich, leech, of in 
 miskeppele ynter-taal of ynter-wiki titel.",
-"perfdisabled" 		=> "Sorry! Dit 鹡derdiel is tydlik 鷗 set om't it de databank sa starich makket
-dat gjinien de wiki br鹝e kin.",
+"perfdisabled" 		=> "Sorry! Dit 没nderdiel is tydlik 煤t set om't it de databank sa starich makket
+dat gjinien de wiki br没ke kin.",
 "perfdisabledsub" 	=> "Dit is in opsleine ferzje fan \"$1\":",
 
 
 # Login and logout pages
 #
 "logouttitle" 	=> "Ofmelde",
-"logouttext"	=> "Jo binne no 鬴meld.
-Jo kinne de $wgSitename fierders anonym br鹝e,
-of jo op 'e nij [[Wiki:Userlogin|oanmelde]] 鹡der in oare namme.\n",
+"logouttext"	=> "Jo binne no 么fmeld.
+Jo kinne de $wgSitename fierders anonym br没ke,
+of jo op 'e nij [[Wiki:Userlogin|oanmelde]] 没nder in oare namme.\n",
 "welcomecreation" => "<h2>Wolkom, $1!</h2><p>Jo ynstellings bin oanmakke.
 Ferjit net se oan jo foarkar oan te passen.",
 
 "loginpagetitle" 	=> "Oanmelde",
-"yourname"  	=> "Jo br鹝ersnamme",
+"yourname"  	=> "Jo br没kersnamme",
 "yourpassword" => "Jo wachtwurd",
 "yourpasswordagain" => "Jo wachtwurd (nochris)",
-"newusersonly" 	=> " (allinnich foar nije br鹝ers)",
+"newusersonly" 	=> " (allinnich foar nije br没kers)",
 "remembermypassword" => "Oare kear fansels oanmelde.",
 "loginproblem" 	=> "<b>Der wie wat mis mei jo oanmelden.</b><br>Besykje it nochris, a.j.w.",
-"alreadyloggedin" => "<font color=red><b>Br鹝er $1, jo binne al oanmeld!</b></font><br>\n",
-"areyounew"  	=> "Binne jo nij op de $wgSitename en wolle jo br鹝ersinstellings oanmeitsje, 
-jou dan in br鹝ersnamme en twa kear itselde wachtwurd yn.
+"alreadyloggedin" => "<font color=red><b>Br没ker $1, jo binne al oanmeld!</b></font><br>\n",
+"areyounew"  	=> "Binne jo nij op de $wgSitename en wolle jo br没kersinstellings oanmeitsje, 
+jou dan in br没kersnamme en twa kear itselde wachtwurd yn.
 In e-postadres hoecht net, mar as jo it wachtwurd in kear ferjitte soenen,
-dan koe jo d阹 in nijenien tastjoerd wurde.<br>\n",
+dan koe jo d锚r in nijenien tastjoerd wurde.<br>\n",
 "login"		=> "Oanmelde",
 "userlogin"		=> "Oanmelde",
 "logout"		=> "Ofmelde",
@@ -461,115 +304,115 @@ dan koe jo d阹 in nijenien tastjoerd wurde.<br>\n",
 "notloggedin"	=> "Net oanmelde",
 "createaccount"	=> "Nije ynstelingd oanmeitsje",
 "badretype"		=> "De infierde wuchtwurden binne net lyk.",
-"userexists"	=> "Dy br鹝ersname wurdt al br鹝t. Besykje in oarenien.",
+"userexists"	=> "Dy br没kersname wurdt al br没kt. Besykje in oarenien.",
 "youremail"		=> "Jo e-postadres (*).",
 "yournick"		=> "Jo alias (foar sinjaturen)",
 "emailforlost"	=> "* In e-postadres hoecht net.<br>
 Mar it helpt, soenen jo jo wachtwurd ferjitte.
 En mei in e-postadres kinne oaren fan de web siden contact mei jo krije,
-s鹡der dat se dat adres witte. (Dat leste kin ek wer 鷗set by de instellings.)",
+s没nder dat se dat adres witte. (Dat leste kin ek wer 煤tset by de instellings.)",
 
 "loginerror"	=> "Oanmeldflater",
-"noname"		=> "Jo moatte in br鹝ersnamme opjaan.",
+"noname"		=> "Jo moatte in br没kersnamme opjaan.",
 "loginsuccesstitle" => "Oanmelden slagge.",
 "loginsuccess"	=> "Jo binne no oanmelde op de $wgSitename as: $1.",
-"nosuchuser"	=> "Br鹝ersnamme en wachtwurd hearre net by elkoar.
-Besykje op 'e nij, of fier it wachtwurd twa kear yn en meitsje neie br鹝ersynstellings.",
+"nosuchuser"	=> "Br没kersnamme en wachtwurd hearre net by elkoar.
+Besykje op 'e nij, of fier it wachtwurd twa kear yn en meitsje neie br没kersynstellings.",
 
-"wrongpassword"	=> "Br鹝ersnamme en wachtwurd hearre net by elkoar.
-Besykje op 'e nij, of fier it wachtwurd twa kear yn en meitsje neie br鹝ersynstellings.",
+"wrongpassword"	=> "Br没kersnamme en wachtwurd hearre net by elkoar.
+Besykje op 'e nij, of fier it wachtwurd twa kear yn en meitsje neie br没kersynstellings.",
 
 "mailmypassword" 	=> "Stjoer my in nij wachtwurd.",
 "passwordremindertitle" => "Nij wachtwurd foar de $wgSitename",
 "passwordremindertext" => "Immen (nei alle gedachten jo, fan Ynternet-adres $1)
 hat frege en stjoer jo in nij $wgSitename wachtwurd.
-I wachtwurd foar br鹝er \"$2\" is no \"$3\".
+I wachtwurd foar br没ker \"$2\" is no \"$3\".
 Meld jo no oan, en feroarje jo wachtwurd.",
-"noemail"		=> "Der is gjin e-postadres foar br鹝er \"$1\".",
+"noemail"		=> "Der is gjin e-postadres foar br没ker \"$1\".",
 "passwordsent"	=> "In nij wachtwurd is tastjoert oan it e-postadres foar \"$1\".
 Please log in again after you receive it.",
 
 # Edit pages
 #
 "summary"		=> "Gearfetting",
-"subject"		=> "M阣",
+"subject"		=> "M锚d",
 "minoredit"		=> "Dit is in tekstwiziging",
 "watchthis"		=> "Folgje dizze side",
-"savearticle"	=> "F阺tlizze",
-"preview"		=> "Oerl陑e",
-"showpreview"	=> "Oerl陑e foar de side f阺tlein is",
-"blockedtitle"	=> "Br鹝er is 鷗sletten troch",
-"blockedtext"	=> "Jo br鹝ersname of Ynternet-adres is 鷗sletten.
-As reden is opj鹡:<br>''$2''<p>As jo wolle, kinne jo hjiroer kontakt op nimme meid de behearder. 
+"savearticle"	=> "F锚stlizze",
+"preview"		=> "Oerl锚ze",
+"showpreview"	=> "Oerl锚ze foar de side f锚stlein is",
+"blockedtitle"	=> "Br没ker is 煤tsletten troch",
+"blockedtext"	=> "Jo br没kersname of Ynternet-adres is 煤tsletten.
+As reden is opj没n:<br>''$2''<p>As jo wolle, kinne jo hjiroer kontakt op nimme meid de behearder. 
 
-(Om't in Ynternet-adressen faak mar foar ien sessie tawiisd wurde, kin it w陑e
+(Om't in Ynternet-adressen faak mar foar ien sessie tawiisd wurde, kin it w锚ze
 dat it eins gjit om in oar dy't deselde tagongferskaffer hat as jo hawwe. As it jo
 net betreft, besykje dan earst of it noch sa is as jo in skofke gjin
-Ynternet-ferbining h鈔 hawwe. As it in probleem bliuwt, skriuw dan de behearder.
-Sorry, foar it 鹡gemak.)
+Ynternet-ferbining h芒n hawwe. As it in probleem bliuwt, skriuw dan de behearder.
+Sorry, foar it 没ngemak.)
 
 Jo Ynternet-adres is: $3. Nim dat op yn jo berjocht.
 
-Tink derom, dat \"skriuw nei dizze br鹝er\" allinich wol as jo in
-e-postadres opj鹡 hawwe in jo [[Wiki:Preferences|ynstellings]].",
+Tink derom, dat \"skriuw nei dizze br没ker\" allinich wol as jo in
+e-postadres opj没n hawwe in jo [[Wiki:Preferences|ynstellings]].",
 
 "newarticle"	=> "(Nij)",
 "newarticletext" =>
-"Jo hawwe in keppeling folge nei in side d阹't noch gjin tekst op stiet.
+"Jo hawwe in keppeling folge nei in side d锚r't noch gjin tekst op stiet.
 Om sels tekst te meistjsen kinne jo dy gewoan yntype in dit bewurkingsfjild 
 ([[$wgMetaNamespace:Bewurk-rie|Mear ynformaasje oer bewurkjen]].)
-Oars kinne jo tebek mei de tebek-knop fan jo bl阣zjer.",
+Oars kinne jo tebek mei de tebek-knop fan jo bl锚dzjer.",
 
-"anontalkpagetext" => "---- ''Dit is de oerlisside fan in unbekinde br鹝er; in br鹝er
-dy't sich net oanmeld hat. Om't der gjin namme is wurd it Ynternet-adres br鹝t om
-oan te jaan wa. Mar faak is it sa dat sa'n adres net altid troch deselde br鹝t wurdt.
-As jo it idee hawwe dat jo as 鹡bekinde br鹝er opmerkings foar in oar krije, dan kinne
+"anontalkpagetext" => "---- ''Dit is de oerlisside fan in unbekinde br没ker; in br没ker
+dy't sich net oanmeld hat. Om't der gjin namme is wurd it Ynternet-adres br没kt om
+oan te jaan wa. Mar faak is it sa dat sa'n adres net altid troch deselde br没kt wurdt.
+As jo it idee hawwe dat jo as 没nbekinde br没ker opmerkings foar in oar krije, dan kinne
 jo jo [[Wiki:Userlogin|oanmelde]], dat jo allinnich opmerkings foar josels krije.'' ",
 "noarticletext" => "(Der stjit noch gjin tekst op dizze side.)",
 "updated"		=> "(Bewurke)",
 "note"		=> "<strong>Opmerking:</strong> ",
-"previewnote"	=> "Tink der om dat dizze side noch net f阺tlein is!",
+"previewnote"	=> "Tink der om dat dizze side noch net f锚stlein is!",
 "previewconflict" => "Dizze side belanget allinich it earste bewurkingsfjild oan.",
 "editing"		=> "Bewurkje \"$1\"",
 "sectionedit"	=> " (seksje)",
 "commentedit"	=> " (nije opmerking)",
 "editconflict"	=> "Tagelyk bewurke: \"$1\"",
-"explainconflict" => "In oar hat de side feroare s鹡t jo beg鹡 binne mei it bewurkjen.
+"explainconflict" => "In oar hat de side feroare s没nt jo beg没n binne mei it bewurkjen.
 It earste bewurkingsfjild is hoe't de tekst wilens wurde is. 
 Jo feroarings stean yn it twadde fjild.
 Dy wurde allinnich tapasse safier as jo se yn it earste fjild ynpasse.
-<b>Allinnich</b> de tekst 鷗 it earste fjild kin f阺tlein wurde.\n<p>",
+<b>Allinnich</b> de tekst 煤t it earste fjild kin f锚stlein wurde.\n<p>",
 "yourtext"		=> "Jo tekst",
-"storedversion" => "F阺tleine ferzje",
-"editingold"	=> "<strong><font color=red>Waarsk鬵ing</font>: Jo binne dwaande mei in 鈒dere ferzje fan dizze side.
-Soenen jo dizze f阺tlizze, dan is al wat s鹡t dy tiid feroare is kwyt.</strong>\n",
+"storedversion" => "F锚stleine ferzje",
+"editingold"	=> "<strong><font color=red>Waarsk么ging</font>: Jo binne dwaande mei in 芒ldere ferzje fan dizze side.
+Soenen jo dizze f锚stlizze, dan is al wat s没nt dy tiid feroare is kwyt.</strong>\n",
 "yourdiff"		=> "Feroarings",
 # REPLACE THE COPYRIGHT WARNING IF YOUR SITE ISN'T GFDL!
 "copyrightwarning" => "Alle bydragen ta de $wgSitename wurde sjoen
-as fallend 鹡der de GNU Iepen Dokumentaasje Lisinsje
+as fallend 没nder de GNU Iepen Dokumentaasje Lisinsje
 (sjoch fierders: \"$1\").
-As jo net wolle dat jo skriuwen 鹡ferbidlik oanpast en frij ferspraat wurdt,
+As jo net wolle dat jo skriuwen 没nferbidlik oanpast en frij ferspraat wurdt,
 dan is it baas, en set it net op de $wgSitename.<br>
-Jo ferklare ek dat jo dit sels skreaun hawwe, of it oernaam hawwe 鷗 in
+Jo ferklare ek dat jo dit sels skreaun hawwe, of it oernaam hawwe 煤t in
 publyk eigendom of in oare iepen boarne.
-<strong><big>Foeg gjin wurk 鹡der auteursrjocht ta s鹡der tastimming!</big></strong>",
-"longpagewarning" => "<font color=red>Waarsk鬵ing</font>: Dizze side is $1 kilobyte lang; 
-der binne bl阣zjers dy problemen hawwe mei siden fan tsjin de 32kb. of langer.
+<strong><big>Foeg gjin wurk 没nder auteursrjocht ta s没nder tastimming!</big></strong>",
+"longpagewarning" => "<font color=red>Waarsk么ging</font>: Dizze side is $1 kilobyte lang; 
+der binne bl锚dzjers dy problemen hawwe mei siden fan tsjin de 32kb. of langer.
 Besykje de side yn lytsere stikken te brekken.",
-"readonlywarning" => "<font color=red>Waarsk鬵ing</font>: De databank is 鬴sletten foar
-鹡derh鈒d, dus jo kinne jo bewurkings no net f阺tlizze.
-It wie baas en nim de tekst foar letter oer yn in tekstbest鈔.",
-"protectedpagewarning" => "<font color=red>Waarsk鬵ing</font>: Dizze side is beskerme, dat
-gewoane br鹝ers dy net bewurkje kinne. Tink om de
+"readonlywarning" => "<font color=red>Waarsk么ging</font>: De databank is 么fsletten foar
+没nderh芒ld, dus jo kinne jo bewurkings no net f锚stlizze.
+It wie baas en nim de tekst foar letter oer yn in tekstbest芒n.",
+"protectedpagewarning" => "<font color=red>Waarsk么ging</font>: Dizze side is beskerme, dat
+gewoane br没kers dy net bewurkje kinne. Tink om de
 <a href='/wiki/$wgMetaNamespace:Beskerm-rie'>rie oer beskerme siden</a>.",
 
 # History pages
 #
 "revhistory"	=> "Sideskiednis",
 "nohistory"		=> "Dit is de earste ferzje fan de side.",
-"revnotfound"	=> "Ferzje net f鹡",
-"revnotfoundtext" => "De 鈒de ferzje fan dizze side d阹't jo om frege hawwe, is der net.
-Gean nei of de keppeling dy jo br鹝t hawwe wol goed is.\n",
+"revnotfound"	=> "Ferzje net f没n",
+"revnotfoundtext" => "De 芒lde ferzje fan dizze side d锚r't jo om frege hawwe, is der net.
+Gean nei of de keppeling dy jo br没kt hawwe wol goed is.\n",
 "loadhist"		=> "Sideskiednis ...",
 "currentrev"	=> "Dizze ferzje",
 "revisionasof"	=> "Ferzje op $1",
@@ -599,7 +442,7 @@ Gean nei of de keppeling dy jo br鹝t hawwe wol goed is.\n",
 "badquerytext"	=> "Jo fraach koe net ferwurke wurde.
 Dit is faaks om't jo besyke hawwe en sykje in word fan ien of twa letters, wat it programma noch net kin.
 Of it soe kinne dat jo de fraach misskreaun hawwe, lykas \"frysk en en frei\". Besykje it nochris.",
-"matchtotals"	=> "Foar \"$1\" binne $2 titles f鹡 en $3 siden.",
+"matchtotals"	=> "Foar \"$1\" binne $2 titles f没n en $3 siden.",
 "nogomatch" => "Der is gjin side mei krekt dizze titel. Faaks is it better en Sykje nei dizze tekst.",
 "titlematches"	=> "Titels",
 "notitlematches" => "Gjin titels",
@@ -608,11 +451,11 @@ Of it soe kinne dat jo de fraach misskreaun hawwe, lykas \"frysk en en frei\". B
 "prevn"		=> "foarige $1",
 "nextn"		=> "folgende $1",
 "viewprevnext"	=> "($1) ($2) ($3) besjen.",
-"showingresults"	=> "<b>$1</b> resultaten fan <b>$2</b> 鬴.",
-"showingresultsnum" => "<b>$3</b> resultaten fan <b>$2</b> 鬴.",
+"showingresults"	=> "<b>$1</b> resultaten fan <b>$2</b> 么f.",
+"showingresultsnum" => "<b>$3</b> resultaten fan <b>$2</b> 么f.",
 "nonefound"		=> "As der gjin resultaten binne, tink der dan om dat der <b>net</b> socht
-wurde kin om wurden as \"it\" en \"in\", om't dy net byh鈒den wurde, en dat as der mear
-wurden syke wurde, allinnich siden f鹡 wurde w阹't <b>alle</b> worden op f鹡 wurde.",
+wurde kin om wurden as \"it\" en \"in\", om't dy net byh芒lden wurde, en dat as der mear
+wurden syke wurde, allinnich siden f没n wurde w锚r't <b>alle</b> worden op f没n wurde.",
 
 "powersearch" => "Sykje",
 "powersearchtext" => "
@@ -655,14 +498,14 @@ value=\"{$wgServer}\" checked> $wgSitename <br>
 "prefsnologin" 		=> "Net oanmeld",
 "prefsnologintext"	=> "Jo moatte <a href=\""
 . wfLocalUrl( "Wiki:Userlogin" ) 
-. "\">oanmeld</a> w陑e om jo ynstellings te feroarjen.",
+. "\">oanmeld</a> w锚ze om jo ynstellings te feroarjen.",
 
 "prefslogintext" 		=> "Jo binne oanmeld, $1.
-Jo Wiki-n鹠er is $2.
+Jo Wiki-n没mer is $2.
 
 ([[$wgMetaNamespace:Ynstelling-rie|Help by de ynstellings]].",
 
-"prefsreset"		=> "De ynstellings binne tebek set sa't se f阺tlein wienen.",
+"prefsreset"		=> "De ynstellings binne tebek set sa't se f锚stlein wienen.",
 "qbsettings"		=> "Menu", 
 "changepassword" 		=> "Wachtword feroarje",
 "skin"			=> "Side-oansjen",
@@ -673,7 +516,7 @@ Jo Wiki-n鹠er is $2.
 "math_unknown_function"	=> "Unbekinde funksje",
 "math_lexing_error"	=> "Unbekind wurd",
 "math_syntax_error"	=> "Sinboufout",
-"saveprefs"			=> "Ynstellings f阺tlizze",
+"saveprefs"			=> "Ynstellings f锚stlizze",
 "resetprefs"		=> "Ynstellings tebek sette",
 "oldpassword"		=> "Ald wachtwurd",
 "newpassword"		=> "Nij wachtwurd",
@@ -683,17 +526,17 @@ Jo Wiki-n鹠er is $2.
 "columns"			=> "Kolommen",
 "searchresultshead" 	=> "Sykje",
 "resultsperpage" 		=> "Treffers de side",
-"contextlines"		=> "Rigels inh鈒d de treffer",
-"contextchars"		=> "Tekens fan de inh鈒d de rigel",
+"contextlines"		=> "Rigels inh芒ld de treffer",
+"contextchars"		=> "Tekens fan de inh芒ld de rigel",
 "stubthreshold" 		=> "Grins foar stobben",
-"recentchangescount" 	=> "N鹠er of titels op 'Koarts feroare'",
-"savedprefs"		=> "Jo ynstellings binne f阺tlein.",
-"timezonetext"		=> "Jou it tal fan oeren dat jo tiids鬾e ferskilt fan UTC (Greenwich).",
-"localtime"			=> "Jo tiids鬾e",
+"recentchangescount" 	=> "N没mer of titels op 'Koarts feroare'",
+"savedprefs"		=> "Jo ynstellings binne f锚stlein.",
+"timezonetext"		=> "Jou it tal fan oeren dat jo tiids么ne ferskilt fan UTC (Greenwich).",
+"localtime"			=> "Jo tiids么ne",
 "timezoneoffset" 		=> "Ferskil",
 "servertime"		=> "UTC",
-"guesstimezone" 		=> "Freegje de bl阣zjer",
-"emailflag"			=> "Gjin post fan oare br鹝ers",
+"guesstimezone" 		=> "Freegje de bl锚dzjer",
+"emailflag"			=> "Gjin post fan oare br没kers",
 "defaultns"			=> "Nammeromten dy't normaal trochsykje wurde:",
 
 # Recent changes
@@ -701,14 +544,14 @@ Jo Wiki-n鹠er is $2.
 "changes" 			=> "feroarings",
 "recentchanges" 		=> "Koarts feroare",
 # This is the default text, and can be overriden by editing [[$wgMetaNamespace::Recentchanges]]
-"recentchangestext" 	=> "De l阺te feroarings fan de $wgSitename.",
+"recentchangestext" 	=> "De l锚ste feroarings fan de $wgSitename.",
 "rcloaderr"			=> "Koarts feroare ...",
-"rcnote"			=> "Dit binne de l阺te <strong>$1</strong> feroarings yn de l阺te <strong>$2</strong> dagen.",
-"rcnotefrom"		=> "Dit binne de feroarings s鹡t <b>$2</b> (maksimaal <b>$1</b>).",
+"rcnote"			=> "Dit binne de l锚ste <strong>$1</strong> feroarings yn de l锚ste <strong>$2</strong> dagen.",
+"rcnotefrom"		=> "Dit binne de feroarings s没nt <b>$2</b> (maksimaal <b>$1</b>).",
 "rclistfrom"		=> "Jou nije feroarings, begjinnende mei $1",
-"rclinks"			=> "Jou $1 nije feroarings yn de l阺te $2 dagen; $3 tekstwiziging",
+"rclinks"			=> "Jou $1 nije feroarings yn de l锚ste $2 dagen; $3 tekstwiziging",
 "rchide"			=> "in $4 form; $1 tekstwizigings; $2 oare nammeromten; $3 meartallige feroarings.",
-"rcliu"			=> "; $1 feroarings troch oanmelde br鹝ers",
+"rcliu"			=> "; $1 feroarings troch oanmelde br没kers",
 "diff"			=> "ferskil",
 "hist"			=> "skiednis",
 "hide"			=> "gjin",
@@ -721,148 +564,148 @@ Jo Wiki-n鹠er is $2.
 
 # Upload
 #
-"upload"		=> "Bied best鈔 oan",
-"uploadbtn"		=> "Bied best鈔 oan",
-"uploadlink"	=> "Bied 鬴bylden oan",
+"upload"		=> "Bied best芒n oan",
+"uploadbtn"		=> "Bied best芒n oan",
+"uploadlink"	=> "Bied 么fbylden oan",
 "reupload"		=> "Op 'e nij oanbiede",
 "reuploaddesc"	=> "Werom nei oanbied-side.",
 "uploadnologin" 	=> "Net oanmelde",
 "uploadnologintext" => "Jo moatte <a href=\""
 . wfLocalUrl( "Wiki:Userlogin" ) 
-. "\">oanmeld</a> w陑e om in best鈔 oanbieden te kinnen.",
+. "\">oanmeld</a> w锚ze om in best芒n oanbieden te kinnen.",
 
-"uploadfile"	=> "Bied 鬴bylden, l鹍en, dokuminten ensfh. oan.",
+"uploadfile"	=> "Bied 么fbylden, l没den, dokuminten ensfh. oan.",
 "uploaderror"	=> "Oanbied-fout",
-"uploadtext"	=> "<strong>STOP!</strong> L阺 ear't jo eat oanbiede
+"uploadtext"	=> "<strong>STOP!</strong> L锚s ear't jo eat oanbiede
 de <a href=\"" . wfLocalUrlE( "$wgMetaNamespace:Ofbyld-rie" )
-. "\">regels foar 鬴byldbr鹝</a> foar de $wgSitename.
-<p>Earder oanbeane 鬴bylden, kinne jo fine op de <a href=\"" 
+. "\">regels foar 么fbyldbr没k</a> foar de $wgSitename.
+<p>Earder oanbeane 么fbylden, kinne jo fine op de <a href=\"" 
 . wfLocalUrlE( "Wiki:Imagelist" ) 
-. "\">list of oanbeane 鬴bylden</a>.
+. "\">list of oanbeane 么fbylden</a>.
 Wat oanbean en wat wiske wurdt, wurdt delskreaun yn it <a href=\"" .
 wfLocalUrlE( "$wgMetaNamespace:Oanbied-loch" ) . "\">lochboek</a>.
-<p>Om't nije 鬴bylden oan te bieden, kieze jo in best鈔 鷗 sa't dat
-normaal is foar jo bl阣zjer en bestjoersysteem.
+<p>Om't nije 么fbylden oan te bieden, kieze jo in best芒n 煤t sa't dat
+normaal is foar jo bl锚dzjer en bestjoersysteem.
 Dan jouwe jo oan jo gjin auteursrjocht skeine troch it oanbieden.
 Mei \"Bied oan\" begjinne jo dan it oanbieden.
 Dit kin efkes duorje as jo Ynternet-ferbining net sa flug is.
-<p>Foar de best鈔sforam wurdt foto's JPEG oanret, foar tekenings ensfh. PNG, en foar
-l鹍en OGG. Br鹝 in d鷇like best鈔snamme, sa't in oar ek wit wat it is.
-<P>Om it 鬴byld yn in side op te nimmen, meitsje jo d阹 sa'n keppeling:<br>
-<b>[[鬴byld:jo_foto.jpg|omskriuwing]]</b> of <b>[[鬴byld:jo_logo.png|omskriuwing]]</b>;
-en foar l鹍en <b>[[media:jo_l鹍.ogg]]</b>.
+<p>Foar de best芒nsforam wurdt foto's JPEG oanret, foar tekenings ensfh. PNG, en foar
+l没den OGG. Br没k in d煤dlike best芒nsnamme, sa't in oar ek wit wat it is.
+<P>Om it 么fbyld yn in side op te nimmen, meitsje jo d锚r sa'n keppeling:<br>
+<b>[[么fbyld:jo_foto.jpg|omskriuwing]]</b> of <b>[[么fbyld:jo_logo.png|omskriuwing]]</b>;
+en foar l没den <b>[[media:jo_l没d.ogg]]</b>.
 <p>Tink derom dat oaren bewurkje kinne wat jo oanbiede, as dat better is foar de $wgSitename,
-krekt's sa't dat foar siden jildt, en dat jo 鷗sletten wurde kinne as jo misbr鹝
+krekt's sa't dat foar siden jildt, en dat jo 煤tsletten wurde kinne as jo misbr没k
 meitsje fan it systeem..",
 
 "uploadlog"		=> "oanbied log",
 "uploadlogpage" 	=> "Oanbied_log",
-"uploadlogpagetext" => "Liste fan de l阺t oanbeane bestannen.
-(Tiid oanj鹡 as UTC).
+"uploadlogpagetext" => "Liste fan de l锚st oanbeane bestannen.
+(Tiid oanj没n as UTC).
 <ul>
 </ul>
 ",
 
-"filename"		=> "Best鈔snamme",
+"filename"		=> "Best芒nsnamme",
 "filedesc"		=> "Omskriuwing",
-"affirmation"	=> "Ik bef阺tigje dat de eigner fan de rjochten op dit best鈔 
-ynstimt mei fersprieding 鹡der de betingsten fan de $1.",
+"affirmation"	=> "Ik bef锚stigje dat de eigner fan de rjochten op dit best芒n 
+ynstimt mei fersprieding 没nder de betingsten fan de $1.",
 
 "copyrightpage" 	=> "$wgMetaNamespace:Auteursrjocht",
 "copyrightpagename" => "$wgSitename auteursrjocht",
 "uploadedfiles"	=> "Oanbeane bestannen",
 "noaffirmation" => "Jo moatte befestigje dat wat jo oanbiede gjin rjochten skeint.",
-"ignorewarning"	=> "Sjoch oer de warsk鬵ing hinne en lis best鈔 dochs f阺t.",
-"minlength"		=> "Ofbyldnammen moatte trije letters of mear w陑e.",
-"badfilename"	=> "De 鬴byldnamme is feroare nei \"$1\".",
-"badfiletype"	=> "\".$1\" is net yn in oanrette best鈔sfoarm.",
-"largefile"		=> "It is baas as 鬴bylden net grutter as 100k binne.",
+"ignorewarning"	=> "Sjoch oer de warsk么ging hinne en lis best芒n dochs f锚st.",
+"minlength"		=> "Ofbyldnammen moatte trije letters of mear w锚ze.",
+"badfilename"	=> "De 么fbyldnamme is feroare nei \"$1\".",
+"badfiletype"	=> "\".$1\" is net yn in oanrette best芒nsfoarm.",
+"largefile"		=> "It is baas as 么fbylden net grutter as 100k binne.",
 "successfulupload" => "Oanbieden slagge.",
-"fileuploaded"	=> "Best鈔 \"$1\" goed oanbean.
-Gean no fierder nei de beskriuwingsside: ($2). D阹 kinne jo oanjaan
-w阹't it best鈔 wei kaam, hoenear it oanmakke is en wa't it makke hat, 
+"fileuploaded"	=> "Best芒n \"$1\" goed oanbean.
+Gean no fierder nei de beskriuwingsside: ($2). D锚r kinne jo oanjaan
+w锚r't it best芒n wei kaam, hoenear it oanmakke is en wa't it makke hat, 
 en wat jo fierder mar oan ynformaasje hawwe.",
 
-"uploadwarning" 	=> "Oanbied waarsk鬵ing",
-"savefile"		=> "Lis best鈔 f阺t",
+"uploadwarning" 	=> "Oanbied waarsk么ging",
+"savefile"		=> "Lis best芒n f锚st",
 "uploadedimage" 	=> " \"$1\" oanbean",
 "uploaddisabled" => "Sorry, op dizze tsjinner kin net oanbean wurde.",
 
 # Image list
 #
 "imagelist"		=> "Ofbyld list",
-"imagelisttext"	=> "Dit is in list fan $1 鬴bylden, op $2.",
+"imagelisttext"	=> "Dit is in list fan $1 么fbylden, op $2.",
 "getimagelist"	=> "Ofbyld list ...",
-"ilshowmatch"	=> "Jou alle 鬴bylden mei in name as",
+"ilshowmatch"	=> "Jou alle 么fbylden mei in name as",
 "ilsubmit"		=> "Sykje",
-"showlast"		=> "Jou l阺te $1 鬴bylden, op $2.",
+"showlast"		=> "Jou l锚ste $1 么fbylden, op $2.",
 "all"			=> "alle",
 "byname"		=> "namme",
 "bydate"		=> "datum",
 "bysize"		=> "grutte",
 "imgdelete"		=> "wisk",
 "imgdesc"		=> "tekst",
-"imglegend"		=> "Utlis: (tekst) = Jou/bewurk 鬴byld-omskriuwing.",
+"imglegend"		=> "Utlis: (tekst) = Jou/bewurk 么fbyld-omskriuwing.",
 "imghistory"	=> "Ofbyldskiednis",
 "revertimg"		=> "tebek",
 "deleteimg"		=> "wisk",
-"imghistlegend"	=> "Utlis: (no) = dit is it hjoeddeiske 鬴byld,
-(wisk) = wiskje dizze 鈒dere ferzje, (tebek) = set 鬴byld tebek nei dizze 鈒dere ferzje.
-<br><i>Fia de datum kinne jo it 鬴byld dat doe oanbean besjen</i>.",
+"imghistlegend"	=> "Utlis: (no) = dit is it hjoeddeiske 么fbyld,
+(wisk) = wiskje dizze 芒ldere ferzje, (tebek) = set 么fbyld tebek nei dizze 芒ldere ferzje.
+<br><i>Fia de datum kinne jo it 么fbyld dat doe oanbean besjen</i>.",
 
 "imagelinks"	=> "Ofbyldkeppelings",
-"linkstoimage"	=> "Dizze siden binne keppele oan it 鬴byld:",
-"nolinkstoimage" => "Der binne gjin siden oan dit 鬴byld keppelje.",
+"linkstoimage"	=> "Dizze siden binne keppele oan it 么fbyld:",
+"nolinkstoimage" => "Der binne gjin siden oan dit 么fbyld keppelje.",
 
 # Statistics
 #
 "statistics"	=> "Statistyk",
 "sitestats"		=> "Side statistyk",
-"userstats"		=> "Br鹝er statistyk",
+"userstats"		=> "Br没ker statistyk",
 "sitestatstext" => "It tal fan siden in de $wgSitename is: <b>$2</b>.<br>
-(Oerlissiden, siden oer de $wgSitename, oare bys鹡dere siden,  stobben en
-trochferwizings yn de databank binne d阹by net meiteld.)<br>
+(Oerlissiden, siden oer de $wgSitename, oare bys没ndere siden,  stobben en
+trochferwizings yn de databank binne d锚rby net meiteld.)<br>
 It tal fan siden in de databank is: <b>$1</b>.
 <p>
 Der is <b>$3</b> kear in side opfrege, en <b>$4</b> kear in side bewurke,
-s鹡t it programma bywurke is (15 oktober 2002).
+s没nt it programma bywurke is (15 oktober 2002).
 Dat komt yn trochslach del op <b>$5</b> kear bewurke de side,
 en <b>$6</b> kear opfrege de bewurking.",
 
-"userstatstext" => "It tal fan registreare br鹝ers is <b>$1</b>.
-It tal fan behearders d阹fan is: <b>$2</b>.",
+"userstatstext" => "It tal fan registreare br没kers is <b>$1</b>.
+It tal fan behearders d锚rfan is: <b>$2</b>.",
 
 # Maintenance Page
 #
-"maintenance"		=> "Underh鈒d",
-"maintnancepagetext"	=> "Op dizze side stiet ark foar it deistich 鹡derh鈒d.
+"maintenance"		=> "Underh芒ld",
+"maintnancepagetext"	=> "Op dizze side stiet ark foar it deistich 没nderh芒ld.
 In part fan de funksjes freegje in soad fan de databank, dus freegje net nei
 eltse oanpassing daalks in fernijde side op.",
 
-"maintenancebacklink"	=> "Werom nei Underh鈒dside",
+"maintenancebacklink"	=> "Werom nei Underh芒ldside",
 "disambiguations"		=> "Trochverwizings",
 "disambiguationspage"	=> "$wgMetaNamespace:trochferwizing",
 "disambiguationstext"	=> "Dizze siden binne keppele fia in
 [[$wgMetaNamespace:trochferwizing]]. 
 Se soenen mei de side sels keppele wurde moatte.<br>
-(Allinnich siden 鷗 deselde nammeromte binne oanj鹡.)",
+(Allinnich siden 煤t deselde nammeromte binne oanj没n.)",
 
-"doubleredirects"	=> "D鸼ele trochverwizings",
+"doubleredirects"	=> "D没bele trochverwizings",
 "doubleredirectstext"	=> "<b>Let op!</b> Der kinne missen yn dizze list stean!
-Dat komt dan ornaris troch oare keppelings 鹡der de \"#REDIRECT\".<br>
+Dat komt dan ornaris troch oare keppelings 没nder de \"#REDIRECT\".<br>
 Eltse rigel jout keppelings nei de earste en twadde trochverwizing, en dan de earste regel fan
-de twadde trochferwizing, wat it \"echte\" doel w陑e moat.",
+de twadde trochferwizing, wat it \"echte\" doel w锚ze moat.",
 
 "brokenredirects"		=> "Misse trochferwizings",
 "brokenredirectstext"	=> "Dizze trochferwizings ferwize nei siden dy't der net binne.",
 "selflinks"			=> "Siden mei sels-ferwizings",
-"selflinkstext"		=> "Dizze siden hawwe in keppeling nei de side sels, wat net sa w陑e moat.",
+"selflinkstext"		=> "Dizze siden hawwe in keppeling nei de side sels, wat net sa w锚ze moat.",
 "mispeelings"           => "Siden mei skriuwflaters",
 "mispeelingstext"		=> "Op dizze siden stiet in skriuw- of typ-flater dy't in soad makke wurd, lykas oanjoen op \"$1\".
-D阹 soe ek stean moatte hoe't it (goed skreaun) wurdt.",
+D锚r soe ek stean moatte hoe't it (goed skreaun) wurdt.",
 "mispeelingspage"       => "List fan faak makke flaters",
 "missinglanguagelinks"  => "Untbrekkende taalkeppelings",
-"missinglanguagelinksbutton"    => "Fyn 鹡tbrekkende taalkeppelings foar",
+"missinglanguagelinksbutton"    => "Fyn 没ntbrekkende taalkeppelings foar",
 "missinglanguagelinkstext"      => "Dizze siden hawwe gjin taalkeppeling nei deselde side yn taal \"$1\".
 (Ferwizings en oanheake siden binne net <i>net</i> besocht.",
 
@@ -871,7 +714,7 @@ D阹 soe ek stean moatte hoe't it (goed skreaun) wurdt.",
 #
 "orphans"		=> "Lossteande siden",
 "lonelypages"	=> "Lossteande siden",
-"unusedimages"	=> "Lossteande 鬮ylden",
+"unusedimages"	=> "Lossteande 么bylden",
 "popularpages"	=> "Grage siden",
 "nviews"		=> "$1 kear sjoen",
 "wantedpages"	=> "Nedige siden",
@@ -880,45 +723,45 @@ D阹 soe ek stean moatte hoe't it (goed skreaun) wurdt.",
 "randompage"	=> "Samar in side",
 "shortpages"	=> "Koarte siden",
 "longpages"		=> "Lange siden",
-"listusers"		=> "Br鹝erlist",
-"specialpages"	=> "Bys鹡dere siden",
-"spheading"		=> "Bys鹡dere siden foar all br鹝ers",
+"listusers"		=> "Br没kerlist",
+"specialpages"	=> "Bys没ndere siden",
+"spheading"		=> "Bys没ndere siden foar all br没kers",
 "sysopspheading"	=> "Allinich foar behearders",
 "developerspheading" => "Allinich foar untwiklers",
 "protectpage"	=> "Beskerm side",
 "recentchangeslinked" => "Folgje keppelings",
-"rclsub"		=> "(nei siden d阹't \"$1\" keppelings nei hat)",
+"rclsub"		=> "(nei siden d锚r't \"$1\" keppelings nei hat)",
 "debug"		=> "Breksykje",
 "newpages"		=> "Nije siden",
 "ancientpages"	=> "Alde siden",
 "movethispage"	=> "Move this side",
 "unusedimagestext" => "<p>Tink derom dat ore web sides lykas fan de oare
 parten fan it meartaliche projekt mei in keppeling nei in direkte URL nei
-an 鬴byld makke hawwe kinne. Dan wurde se noch br鹝e, mar stean al in dizze list.",
+an 么fbyld makke hawwe kinne. Dan wurde se noch br没ke, mar stean al in dizze list.",
 
 "booksources"	=> "",
 "booksourcetext" 	=> "",
 "alphaindexline" 	=> "$1 oan't $2",
 
 
-# Email this br鹝er
+# Email this br没ker
 #
 "mailnologin"	=> "Gjin adres beskikber",
 "mailnologintext" => "Jo moatte <a href=\""
 . wfLocalUrl( "Wiki:Userlogin" ) . "\">oanmeld</a>
-w陑e, en in jildich e-postadres <a href=\"" .
+w锚ze, en in jildich e-postadres <a href=\"" .
   wfLocalUrl( "Wiki:Preferences" ) . "\">ynsteld</a>
-hawwe, om oan oare br鹝ers e-post stjoere te kinnen.",
+hawwe, om oan oare br没kers e-post stjoere te kinnen.",
 
-"emailuser"		=> "Skriuw dizze br鹝er",
-"emailpage"		=> "E-post nei br鹝er",
-"emailpagetext"	=> "As dizze br鹝er in jildich e-postadres in ynsteld hat,
+"emailuser"		=> "Skriuw dizze br没ker",
+"emailpage"		=> "E-post nei br没ker",
+"emailpagetext"	=> "As dizze br没ker in jildich e-postadres in ynsteld hat,
 dan kinne jo ien berjocht ferstjoere.
-It e-postadres dat jo ynsteld hawwe wurdt br鹝t as de 鬴stjoerder, sa't de 鹡tfanger
+It e-postadres dat jo ynsteld hawwe wurdt br没kt as de 么fstjoerder, sa't de 没ntfanger
 antwurdzje kin.",
 "noemailtitle"	=> "Gjin e-postadres",
-"noemailtext"	=> "Dizze br鹝er had gjin jildich e-postadres ynsteld,
-of hat oanjaan gjin post fan oare br鹝ers krije te wollen.",
+"noemailtext"	=> "Dizze br没ker had gjin jildich e-postadres ynsteld,
+of hat oanjaan gjin post fan oare br没kers krije te wollen.",
 "emailfrom"		=> "Fan",
 "emailto"		=> "Oan",
 "emailsubject"	=> "Oer",
@@ -930,21 +773,21 @@ of hat oanjaan gjin post fan oare br鹝ers krije te wollen.",
 # Watchlist
 #
 "watchlist"		=> "Folchlist",
-"watchlistsub"	=> "(foar br鹝er \"$1\")",
+"watchlistsub"	=> "(foar br没ker \"$1\")",
 "nowatchlist"	=> "Jo hawwe gjin siden op jo folchlist.",
 "watchnologin"	=> "Not oanmeld in",
 "watchnologintext"=> "Jo moatte <a href=\""
 . wfLocalUrl( "Wiki:Userlogin" ) 
-. "\">oanmeld</a> w陑e om jo folchlist te feroarjen.",
+. "\">oanmeld</a> w锚ze om jo folchlist te feroarjen.",
 
 "addedwatch"	=> "Oan folchlist tafoege",
 "addedwatchtext"	=> "De side \"$1\" is tafoege oan jo <a href=\"" 
 . wfLocalUrl( "Wiki:Watchlist" ) . "\">folchlist</a>.
-As dizze side sels, of de oerlisside, feroare wurd, dan komt dat d阹 yn,
+As dizze side sels, of de oerlisside, feroare wurd, dan komt dat d锚r yn,
 en de side stiet dan ek <b>fet</b> yn de <a href=\"" .
   wfLocalUrl( "Wiki:Recentchanges" ) . "\">Koarts feroare</a> list.
 
-<p>As jo letter in side net mear folgje wolle, dan br鹝e jo \"Ferjit dizze side\".",
+<p>As jo letter in side net mear folgje wolle, dan br没ke jo \"Ferjit dizze side\".",
 "removedwatch"	=> "Net mear folgje",
 "removedwatchtext" => "De side \"$1\" stiet net mear op jo folchlist.",
 "watchthispage"	=> "Folgje dizze side",
@@ -953,34 +796,34 @@ en de side stiet dan ek <b>fet</b> yn de <a href=\"" .
 "watchnochange" 	=> "Fan de siden dy't jo folgje is der yn dizze perioade net ien feroare.",
 "watchdetails"	=> "Jo folchlist hat $1 siden (oerlissiden net meiteld).
 In dizze perioade binne der $2 siden feroare.
-$3. (<a href='$4'>G鈔s myn folchlist</a>.)",
+$3. (<a href='$4'>G芒ns myn folchlist</a>.)",
 
 "watchmethod-recent" => "Koarts feroare ...",
 "watchmethod-list" => "Folge ...",
 "removechecked"	=> "Ferjit dizze siden",
 "watchlistcontains" => "Jo folgje op it stuit $1 siden.",
 "watcheditlist"	=> "Dit binne de siden op jo folchlist, oardere op alfabet.
-Jou oan hokfoar siden jo net mear folgje wolle, en bef阺tigje dat 鹡deroan de side.",
+Jou oan hokfoar siden jo net mear folgje wolle, en bef锚stigje dat 没nderoan de side.",
 
 "removingchecked" => "Wiskje siden fan jo folchlist ...",
 "couldntremove" 	=> "Koe \"$1\" net ferjitte ...",
 "iteminvalidname" => "Misse namme: \"$1\" ...",
-"wlnote" 		=> "Dit binne de l阺te <strong>$1</strong> feroarings yn de l阺te <strong>$2</strong> oeren.",
+"wlnote" 		=> "Dit binne de l锚ste <strong>$1</strong> feroarings yn de l锚ste <strong>$2</strong> oeren.",
 
 
 # Delete/protect/revert
 #
 "deletepage"	=> "Wisk side",
-"confirm"		=> "Bef阺tigje",
-"excontent"		=> "inh鈒d wie:",
+"confirm"		=> "Bef锚stigje",
+"excontent"		=> "inh芒ld wie:",
 "exbeforeblank" 	=> "foar de tekst wiske wie, wie dat:",
 "exblank"		=> "side wie leech",
 "confirmdelete"	=> "Befestigje wiskjen",
 "deletesub"		=> "(Wiskje \"$1\")",
-"historywarning"	=> "Waarsk鬵ing: De side dy't jo wiskje wolle hat skiednis: ",
+"historywarning"	=> "Waarsk么ging: De side dy't jo wiskje wolle hat skiednis: ",
 "confirmdeletetext" => "Jo binne dwaande mei it foar altyd wiskjen fan in side
-of 鬴byld, tegearre mei alle skiednis, 鷗 de databank.
-Bef阺tigje dat jo dat wier dwaan wolle. Bef阺tigje dat dat is wat jo witte wat it gefolch 
+of 么fbyld, tegearre mei alle skiednis, 煤t de databank.
+Bef锚stigje dat jo dat wier dwaan wolle. Bef锚stigje dat dat is wat jo witte wat it gefolch 
 is en dat jo dit dogge neffens de [[$wgMetaNamespace:wisk-rie]].",
 
 "confirmcheck"	=> "Ja, ik woe dit wier wiskje!",
@@ -990,7 +833,7 @@ Sjoch \"$2\" foar in list fan wat resint wiske is.",
 "deletedarticle"	=> "\"$1\" is wiske",
 "dellogpage"	=> "Wisk_loch",
 "dellogpagetext" => "Dit is wat der resint wiske is.
-(Tiden oanj鹡 as UTC).
+(Tiden oanj没n as UTC).
 <ul>
 </ul>
 ",
@@ -1004,10 +847,10 @@ Sjoch \"$2\" foar in list fan wat resint wiske is.",
 "rollbackfailed"	=> "Feroaring tebeksette net slagge",
 "cantrollback"	=> "Disse feroaringt kin net tebek set, om't der mar ien skriuwer is.",
 "alreadyrolled"	=> "Kin de feroaring fan [[$1]]
-troch [[Br鹝er:$2|$2]] ([[Br鹝er oerlis:$2|Oerlis]]) net tebeksette;
+troch [[Br没ker:$2|$2]] ([[Br没ker oerlis:$2|Oerlis]]) net tebeksette;
 inoar hat de feroaring tebekset, of oars wat oan de side feroare.
 
-De l阺te feroaring wie fan [[Br鹝er:$3|$3]] ([[Br鹝er oerlis:$3|Oerlis]]). ",
+De l锚ste feroaring wie fan [[Br没ker:$3|$3]] ([[Br没ker oerlis:$3|Oerlis]]). ",
 #   only shown if there is an edit comment
 "editcomment"	=> "De gearfetting wie: \"<i>$1</i>\".", 
 "revertpage"	=> "Tebek set ta de ferzje fan \"$1\"",
@@ -1016,12 +859,12 @@ De l阺te feroaring wie fan [[Br鹝er:$3|$3]] ([[Br鹝er oerlis:$3|Oerlis]]). ",
 "undelete"		=> "Side werom set",
 "undeletepage"	=> "Side besjen en werom sette",
 "undeletepagetext" => "Dizze siden binne wiske, mar sitte noch yn it argyf en kinne weromset wurde.
-(It argyf kin 鷗 en troch leechmeitsje wurde.)",
+(It argyf kin 煤t en troch leechmeitsje wurde.)",
 "undeletearticle" => "Set side werom",
 "undeleterevisions" => "$1 ferzjes in it argyf",
 "undeletehistory" => "Soenen jo dizze side weromsette, dan wurde alle ferzjes weromset as part
 fan de skiednis. As der in nije side is mei dizze namme, dan wurd de hjoeddeise ferzje <b>net</b>
-troch de l阺te ferzje 鷗 dy weromsette skiednis ferfangen.",
+troch de l锚ste ferzje 煤t dy weromsette skiednis ferfangen.",
 "undeleterevision" => "Wiske side, sa't dy $1 wie.",
 "undeletebtn" 	=> "Weromset!",
 "undeletedarticle" => "\"$1\" weromset",
@@ -1030,12 +873,12 @@ troch de l阺te ferzje 鷗 dy weromsette skiednis ferfangen.",
 
 # Contributions
 #
-"contributions"	=> "Br鹝er bydragen",
+"contributions"	=> "Br没ker bydragen",
 "mycontris"		=> "Myn bydragen",
 "contribsub"	=> "Foar \"$1\"",
-"nocontribs"	=> "Der binne gjin feroarings f鹡 dyt't hjirmei oerienkomme.",
-"ucnote"		=> "Dit binne dizze br鹝er's leste <b>$1</b> feroarings yn de l阺te <b>$2</b> dagen.",
-"uclinks"		=> "Besjoch de l阺te $1 feroarings; besjoch de l阺te $2 dagen.",
+"nocontribs"	=> "Der binne gjin feroarings f没n dyt't hjirmei oerienkomme.",
+"ucnote"		=> "Dit binne dizze br没ker's leste <b>$1</b> feroarings yn de l锚ste <b>$2</b> dagen.",
+"uclinks"		=> "Besjoch de l锚ste $1 feroarings; besjoch de l锚ste $2 dagen.",
 "uctop"		=> " (boppen)",
 
 # What links here
@@ -1050,64 +893,64 @@ troch de l阺te ferzje 鷗 dy weromsette skiednis ferfangen.",
 
 # Block/unblock IP
 #
-"blockip"		=> "Slut br鹝er 鷗",
-"blockiptext"	=> "Br鹝 dizze fjilden om in br鹝er fan skriuwtagong 鷗 te sluten.
+"blockip"		=> "Slut br没ker 煤t",
+"blockiptext"	=> "Br没k dizze fjilden om in br没ker fan skriuwtagong 煤t te sluten.
 Dit soe allinnich omwillens fan fandalisme dwaan wurde moatte, sa't de
-[[$wgMetaNamespace:Utslut-rie|鷗slut-rie]] it oanjout.
+[[$wgMetaNamespace:Utslut-rie|煤tslut-rie]] it oanjout.
 Meld de krekte reden! Begelyk, neam de siden dy't oantaaste waarden.",
-"ipaddress"		=> "Br鹝ernamme of Ynternet-adres",
+"ipaddress"		=> "Br没kernamme of Ynternet-adres",
 "ipbreason"		=> "Reden",
-"ipbsubmit"		=> "Slut dizze br鹝er 鷗",
-"badipaddress"	=> "Dy br鹝er bestiet net",
+"ipbsubmit"		=> "Slut dizze br没ker 煤t",
+"badipaddress"	=> "Dy br没ker bestiet net",
 "noblockreason"	=> "Jo moatte de krekte reden opjaan.",
 "blockipsuccesssub" => "Utsluting slagge",
-"blockipsuccesstext" => "Br鹝er \"$1\" is 鷗sletten.<br>
-(List fan [[Wiki:Ipblocklist|鷗slette br鹝ers]].)",
-"unblockip"		=> "Lit br鹝er der wer yn",
-"unblockiptext"	=> "Br鹝 dizze fjilden om in br鹝er wer skriuwtagong te jaan.",
-"ipusubmit"		=> "Lit dizze br鹝er der wer yn",
-"ipusuccess"	=> "Br鹝er \"$1\" ynlitten",
-"ipblocklist"	=> "List fan 鷗sletten Ynternet-adressen en br鹝ersnammen",
+"blockipsuccesstext" => "Br没ker \"$1\" is 煤tsletten.<br>
+(List fan [[Wiki:Ipblocklist|煤tslette br没kers]].)",
+"unblockip"		=> "Lit br没ker der wer yn",
+"unblockiptext"	=> "Br没k dizze fjilden om in br没ker wer skriuwtagong te jaan.",
+"ipusubmit"		=> "Lit dizze br没ker der wer yn",
+"ipusuccess"	=> "Br没ker \"$1\" ynlitten",
+"ipblocklist"	=> "List fan 煤tsletten Ynternet-adressen en br没kersnammen",
 "blocklistline"	=> "$\"3\", troch \"$2\" op $1",
-"blocklink"		=> "slut 鷗",
+"blocklink"		=> "slut 煤t",
 "unblocklink"	=> "lit yn",
 "contribslink"	=> "bydragen",
-"autoblocker"	=> "Jo wienen 鷗sletten om't jo Ynternet-adres oerienkomt mei dat fan \"$1\".
-Foar it 鷗slute fan dy br鹝er waard dizze reden joen: \"$2\".",
+"autoblocker"	=> "Jo wienen 煤tsletten om't jo Ynternet-adres oerienkomt mei dat fan \"$1\".
+Foar it 煤tslute fan dy br没ker waard dizze reden joen: \"$2\".",
 
 # Developer tools
 #
 "lockdb"		=> "Meitsje de database 'Net-skriuwe'",
 "unlockdb"  	=> "Meitsje de databank skriuwber",
 "lockdbtext"	=> "Salang as de databank 'Net-skriuwe' is,
-is foar br鹝ers it feroarjen fan siden, ynstellings, folchlisten, ensfh. net mooglik.
-Bef阺tigje dat dit is wat jo wolle, en dat jo de databank wer skriuwber meitsje as
-jo 鹡derh鈒d ree is.",
+is foar br没kers it feroarjen fan siden, ynstellings, folchlisten, ensfh. net mooglik.
+Bef锚stigje dat dit is wat jo wolle, en dat jo de databank wer skriuwber meitsje as
+jo 没nderh芒ld ree is.",
 "unlockdbtext"	=> "As de databank skriuwber makke wurdt,
-is foar br鹝ers it feroarjen fan siden, ynstelingen, folchlisten, ensfh, wer mooglik.
-Bef阺tigje dat dit is wat jo wolle.",
+is foar br没kers it feroarjen fan siden, ynstelingen, folchlisten, ensfh, wer mooglik.
+Bef锚stigje dat dit is wat jo wolle.",
 "lockconfirm"	=> "Ja, ik wol wier de databank 'Net--skriuwe' meitsje.",
 "unlockconfirm"	=> "Ja, ik wol wier de databank skriuwber meitsje.",
 "lockbtn"		=> "Meitsje de database 'Net-skriuwe'",
 "unlockbtn"		=> "Meitsje de databank skriuwber",
-"locknoconfirm"	=> "Jo hawwe jo hanneling net bef阺tige.",
+"locknoconfirm"	=> "Jo hawwe jo hanneling net bef锚stige.",
 "lockdbsuccesssub" => "Databank is 'Net-skriuwe'",
 "unlockdbsuccesssub" => "Database is skriuwber",
 "lockdbsuccesstext" => "De $wgSitename databank is 'Net-skriuwe' makke.
-<br>Tink derom en meitsje de databank skriuwber as jo 鹡derh鈒d ree is.",
+<br>Tink derom en meitsje de databank skriuwber as jo 没nderh芒ld ree is.",
 "unlockdbsuccesstext" => "De $wgSitename databank is skriuwber makke.",
 
 # SQL query
 #
 "asksql"		=> "SQL-fraach",
-"asksqltext"	=> "Br鹝 dizze fjilden foar in databank-fraach oan de $wgSitename databank.
-Br鹝 inkele oanheltekens ('likas dit') foar tekst.
-Dit kin in foar de tsjinner in soad wurk betsjutte. Br鹝 dit dus net 鹡nedig.",
-"sqlislogged"	=> "(Alle fragen komme yn in lochbest鈔.)",
+"asksqltext"	=> "Br没k dizze fjilden foar in databank-fraach oan de $wgSitename databank.
+Br没k inkele oanheltekens ('likas dit') foar tekst.
+Dit kin in foar de tsjinner in soad wurk betsjutte. Br没k dit dus net 没nnedig.",
+"sqlislogged"	=> "(Alle fragen komme yn in lochbest芒n.)",
 "sqlquery"		=> "Fraach",
 "querybtn"		=> "Bied de fraach oan",
-"selectonly"	=> "Oare fragen as \"SELECT\" binne foarbeh鈒den oan
-$wgSitename 鹡twiklers.",
+"selectonly"	=> "Oare fragen as \"SELECT\" binne foarbeh芒lden oan
+$wgSitename 没ntwiklers.",
 "querysuccessful" => "Fraach slagge",
 
 
@@ -1115,39 +958,39 @@ $wgSitename 鹡twiklers.",
 #
 "movepage"		=> "Werneam side",
 "movepagetext"	=> "Dit werneamt in side, mei alle sideskiednis.
-De 鈒de titel wurdt in trochferwizing nei de nije.
-Keppelings mei de 鈒de side wurde net feroare; 
-[[Wiki:Maintenance|gean sels nei]] of't der d鸼ele of misse ferwizings binne.
-It hinget fan jo 鬴 of't de siden noch keppelen binne sa't it mient wie.
+De 芒lde titel wurdt in trochferwizing nei de nije.
+Keppelings mei de 芒lde side wurde net feroare; 
+[[Wiki:Maintenance|gean sels nei]] of't der d没bele of misse ferwizings binne.
+It hinget fan jo 么f of't de siden noch keppelen binne sa't it mient wie.
 
-De side wurdt '''net''' werneamt as der al in side mei dy namme is, 鷗sein as it in side
-s鹡der skiednis is en de side leech is of in trochferwizing is. Sa kinne jo in side
+De side wurdt '''net''' werneamt as der al in side mei dy namme is, 煤tsein as it in side
+s没nder skiednis is en de side leech is of in trochferwizing is. Sa kinne jo in side
 daalks weromneame as jo in flater meitsje, mar jo kinne in oare side net oerskriuwe.",
 
-"movepagetalktext" => "As der in oerlisside by heart, dan bliuwt dy oan de side keppele, '''鷗sein''':
+"movepagetalktext" => "As der in oerlisside by heart, dan bliuwt dy oan de side keppele, '''煤tsein''':
 *De nije sidenamme yn in oare nammeromte is,
 *Der keppele oan de nije namme al in net-lege oerlisside is, of
-*Jo d阹 net foar kieze.
+*Jo d锚r net foar kieze.
 
 In dizze gefallen is it oan jo hoe't jo de oerlisside werneame of ynfoegje wolle.",
 
 "movearticle"	=> "Werneam side",
 "movenologin"	=> "Net oameld",
 "movenologintext" => "Jo moatte <a href=\""
-. wfLocalUrl( "Wikipedy:Userlogin" ) 
-. "\">oanmeld</a> w陑e om in side wer te neamen.",
+. wfLocalUrl( "Wiki:Userlogin" ) 
+. "\">oanmeld</a> w锚ze om in side wer te neamen.",
 
 "newtitle"		=> "As nij titel",
 "movepagebtn"	=> "Werneam side",
 "pagemovedsub"	=> "Werneamen slagge",
 "pagemovedtext"	=> "Side \"[[$1]]\" werneamd as \"[[$2]]\".",
 "articleexists"	=> "Der is al in side mei dy namme,
-of oars is de namme dy't jo oanj鹡 hawwe net tastean.
+of oars is de namme dy't jo oanj没n hawwe net tastean.
 Besykje it op 'e nij.",
 
 "talkexists"	=> "It werneamen op sich is slagge, mar de eardere oerlisside is 
 net mear keppele om't der foar de nije namme el al in oerlisside wie.
-Gearfoegje de oerlissiden h鈔mjittig.",
+Gearfoegje de oerlissiden h芒nmjittig.",
 
 "movedto"		=> "werenamd as",
 "moveoerlis"	=> "De oerlisside, as dy der is, moat oan de side keppele bliuwe.",
@@ -1157,12 +1000,7 @@ Gearfoegje de oerlissiden h鈔mjittig.",
 );
 
 
-class LanguageFy extends Language {
-
-	function getDefaultUserOptions () {
-		global $wgDefaultUserOptionsFy ;
-		return $wgDefaultUserOptionsFy ;
-		}
+class LanguageFy extends LanguageUtf8 {
 
 	function getBookstoreList () {
 		global $wgBookstoreListFy ;
@@ -1185,6 +1023,7 @@ class LanguageFy extends Language {
 		foreach ( $wgNamespaceNamesFy as $i => $n ) {
 			if ( 0 == strcasecmp( $n, $text ) ) { return $i; }
 		}
+		if ( 0 == strcasecmp( "Special", $text ) ) return -1;
 		return false;
 	}
 
@@ -1213,19 +1052,6 @@ class LanguageFy extends Language {
 	function getUserToggles() {
 		global $wgUserTogglesFy;
 		return $wgUserTogglesFy;
-	}
-
-	function getLanguageNames() {
-		global $wgLanguageNamesFy;
-		return $wgLanguageNamesFy;
-	}
-
-	function getLanguageName( $code ) {
-		global $wgLanguageNamesFy;
-		if ( ! array_key_exists( $code, $wgLanguageNamesFy ) ) {
-			return "";
-		}
-		return $wgLanguageNamesFy[$code];
 	}
 
 	function getMonthName( $key )
@@ -1350,7 +1176,5 @@ class LanguageFy extends Language {
 # Inherit isRTL()
 
 }
-global $IP;
-@include_once( "{$IP}/Language" . ucfirst( $wgLanguageCode ) . ".php" );
 
 ?>
