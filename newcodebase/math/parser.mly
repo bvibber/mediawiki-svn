@@ -1,17 +1,20 @@
 %{
     open Tex
     open Render_info
+    
+    let sq_close_ri = HTMLABLEC(FONT_UFH,"]", "]")
 %}
-%token <Render_info.t> LITERAL
-%token <string> FUN_AR2 FUN_INFIX FUN_AR1 DECL FUN_AR1opt
+%token <Render_info.t> LITERAL DELIMITER
+%token <string> FUN_AR2 FUN_INFIX FUN_AR1 DECL FUN_AR1opt BIG
 %token <string*string> BOX
 %token <string*(string*string)> FUN_AR1hl
 %token <string*Render_info.font_force> FUN_AR1hf DECLh
 %token <string*(Tex.t->Tex.t->string*string*string)> FUN_AR2h
 %token <string*(Tex.t list->Tex.t list->string*string*string)> FUN_INFIXh
 %token EOF CURLY_OPEN CURLY_CLOSE SUB SUP SQ_CLOSE NEXT_CELL NEXT_ROW
-%token BEGIN__MATRIX BEGIN_PMATRIX BEGIN_BMATRIX BEGIN_BBMATRIX BEGIN_VMATRIX BEGIN_VVMATRIX
-%token END__MATRIX END_PMATRIX END_BMATRIX END_BBMATRIX END_VMATRIX END_VVMATRIX
+%token BEGIN__MATRIX BEGIN_PMATRIX BEGIN_BMATRIX BEGIN_BBMATRIX BEGIN_VMATRIX BEGIN_VVMATRIX BEGIN_CASES
+%token END__MATRIX END_PMATRIX END_BMATRIX END_BBMATRIX END_VMATRIX END_VVMATRIX END_CASES
+%token LEFT RIGHT
 
 %type <Tex.t list> tex_expr
 %start tex_expr
@@ -43,7 +46,7 @@ litsq_uq:
 litsq_dq:
     litsq_zq SUB lit		{ $1,$3 }
 litsq_zq:
-  | SQ_CLOSE 			{ TEX_LITERAL (HTMLABLEC(FONT_UFH,"]", "]")) }
+  | SQ_CLOSE 			{ TEX_LITERAL sq_close_ri }
 expr_nosqc:
     /* */			{ [] }
   | lit_aq expr_nosqc		{ $1 :: $2 }
@@ -59,8 +62,18 @@ lit_uq:
     lit SUP lit			{ $1,$3 }
 lit_dq:
     lit SUB lit			{ $1,$3 }
+left:
+    LEFT DELIMITER		{ $2 }
+  | LEFT SQ_CLOSE		{ sq_close_ri }
+right:
+    RIGHT DELIMITER		{ $2 }
+  | RIGHT SQ_CLOSE		{ sq_close_ri }
 lit:
     LITERAL			{ TEX_LITERAL $1 }
+  | DELIMITER			{ TEX_LITERAL $1 }
+  | BIG DELIMITER		{ TEX_BIG ($1,$2) }
+  | BIG SQ_CLOSE		{ TEX_BIG ($1,sq_close_ri) }
+  | left expr right		{ TEX_LR ($1,$3,$2) }
   | FUN_AR1 lit			{ TEX_FUN1($1,$2) }
   | FUN_AR1hl lit		{ let t,h=$1 in TEX_FUN1hl(t,h,$2) }
   | FUN_AR1hf lit		{ let t,h=$1 in TEX_FUN1hf(t,h,$2) }
@@ -80,6 +93,7 @@ lit:
   | BEGIN_BBMATRIX matrix END_BBMATRIX	{ TEX_MATRIX ("Bmatrix", $2) }
   | BEGIN_VMATRIX  matrix END_VMATRIX	{ TEX_MATRIX ("vmatrix", $2) }
   | BEGIN_VVMATRIX matrix END_VVMATRIX	{ TEX_MATRIX ("Vmatrix", $2) }
+  | BEGIN_CASES    matrix END_CASES	{ TEX_MATRIX ("cases", $2) }
 matrix:
     line			{ [$1] }
   | line NEXT_ROW matrix	{ $1::$3 }

@@ -26,7 +26,9 @@ let rec render_tex = function
   | TEX_INFIX (s,ll,rl) -> "{" ^ (mapjoin render_tex ll) ^ " " ^ s ^ "" ^ (mapjoin render_tex rl) ^ "}"
   | TEX_INFIXh (s,_,ll,rl) -> "{" ^ (mapjoin render_tex ll) ^ " " ^ s ^ "" ^ (mapjoin render_tex rl) ^ "}"
   | TEX_BOX (bt,s) -> "{"^bt^"{" ^ s ^ "}}"
+  | TEX_BIG (bt,d) -> "{"^bt^(tex_part d)^"}"
   | TEX_MATRIX (t,rows) -> "{\\begin{"^t^"}"^(mapjoine "\\\\" (mapjoine "&" (mapjoin render_tex)) rows)^"\\end{"^t^"}}"
+  | TEX_LR (l,r,tl) -> "\\left "^(tex_part l)^(mapjoin render_tex tl)^"\\right "^(tex_part r)
 
 (* Dynamic loading*)
 type encoding_t = LATIN1 | LATIN2 | UTF8
@@ -134,18 +136,18 @@ let find = function
     | "\\longmapsto"       -> LITERAL (HTMLABLE  (FONT_UF,  "\\longmapsto ", "&rarr;"))
     | "\\Longleftarrow"    -> LITERAL (HTMLABLE  (FONT_UF,  "\\Longleftarrow ", "&lArr;"))
     | "\\Longrightarrow"   -> LITERAL (HTMLABLE  (FONT_UF,  "\\Longrightarrow ", "&rArr;"))
-    | "\\uarr"             -> LITERAL (HTMLABLEM (FONT_UF,  "\\uparrow ", "&uarr;"))
-    | "\\uparrow"          -> LITERAL (HTMLABLEM (FONT_UF,  "\\uparrow ", "&uarr;"))
-    | "\\uArr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\Uparrow ", "&uArr;"))
-    | "\\Uarr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\Uparrow ", "&uArr;"))
-    | "\\Uparrow"          -> LITERAL (HTMLABLE  (FONT_UF,  "\\Uparrow ", "&uArr;"))
-    | "\\darr"             -> LITERAL (HTMLABLEM (FONT_UF,  "\\downarrow ", "&darr;"))
-    | "\\downarrow"        -> LITERAL (HTMLABLEM (FONT_UF,  "\\downarrow ", "&darr;"))
-    | "\\dArr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\Downarrow ", "&dArr;"))
-    | "\\Darr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\Downarrow ", "&dArr;"))
-    | "\\Downarrow"        -> LITERAL (HTMLABLE  (FONT_UF,  "\\Downarrow ", "&dArr;"))
-    | "\\updownarrow"      -> LITERAL (TEX_ONLY "\\updownarrow ")
-    | "\\Updownarrow"      -> LITERAL (TEX_ONLY "\\Updownarrow ")
+    | "\\uarr"             -> DELIMITER (HTMLABLEM (FONT_UF,  "\\uparrow ", "&uarr;"))
+    | "\\uparrow"          -> DELIMITER (HTMLABLEM (FONT_UF,  "\\uparrow ", "&uarr;"))
+    | "\\uArr"             -> DELIMITER (HTMLABLE  (FONT_UF,  "\\Uparrow ", "&uArr;"))
+    | "\\Uarr"             -> DELIMITER (HTMLABLE  (FONT_UF,  "\\Uparrow ", "&uArr;"))
+    | "\\Uparrow"          -> DELIMITER (HTMLABLE  (FONT_UF,  "\\Uparrow ", "&uArr;"))
+    | "\\darr"             -> DELIMITER (HTMLABLEM (FONT_UF,  "\\downarrow ", "&darr;"))
+    | "\\downarrow"        -> DELIMITER (HTMLABLEM (FONT_UF,  "\\downarrow ", "&darr;"))
+    | "\\dArr"             -> DELIMITER (HTMLABLE  (FONT_UF,  "\\Downarrow ", "&dArr;"))
+    | "\\Darr"             -> DELIMITER (HTMLABLE  (FONT_UF,  "\\Downarrow ", "&dArr;"))
+    | "\\Downarrow"        -> DELIMITER (HTMLABLE  (FONT_UF,  "\\Downarrow ", "&dArr;"))
+    | "\\updownarrow"      -> DELIMITER (TEX_ONLY "\\updownarrow ")
+    | "\\Updownarrow"      -> DELIMITER (TEX_ONLY "\\Updownarrow ")
     | "\\leftrightarrow"   -> LITERAL (HTMLABLE  (FONT_UF,  "\\leftrightarrow ", "&harr;"))
     | "\\lrarr"            -> LITERAL (HTMLABLE  (FONT_UF,  "\\leftrightarrow ", "&harr;"))
     | "\\harr"             -> LITERAL (HTMLABLE  (FONT_UF,  "\\leftrightarrow ", "&harr;"))
@@ -219,8 +221,13 @@ let find = function
     | "\\tanh"	           -> LITERAL (HTMLABLEC(FONT_UFH,"\\tanh ","tanh"))
     | "\\sec"	           -> LITERAL (HTMLABLEC(FONT_UFH,"\\sec ","sec"))
     | "\\csc"	           -> LITERAL (HTMLABLEC(FONT_UFH,"\\csc ","csc"))
-    | "\\arcsin"           -> LITERAL (HTMLABLEC(FONT_UFH,"\\arcsin ", "arcsin"))
+    | "\\arcsin"           -> LITERAL (HTMLABLEC(FONT_UFH,"\\arcsin ","arcsin"))
     | "\\arctan"           -> LITERAL (HTMLABLEC(FONT_UFH,"\\arctan ","arctan"))
+    | "\\arccos"           -> (tex_use_ams (); LITERAL (HTMLABLEC(FONT_UFH,"\\mathop{\\mathrm{arccos}}","arccos")))
+    | "\\arccot"           -> (tex_use_ams (); LITERAL (HTMLABLEC(FONT_UFH,"\\mathop{\\mathrm{arccot}}","arccot")))
+    | "\\arcsec"           -> (tex_use_ams (); LITERAL (HTMLABLEC(FONT_UFH,"\\mathop{\\mathrm{arcsec}}","arcsec")))
+    | "\\arccsc"           -> (tex_use_ams (); LITERAL (HTMLABLEC(FONT_UFH,"\\mathop{\\mathrm{arccsc}}","arccsc")))
+    | "\\sgn"              -> (tex_use_ams (); LITERAL (HTMLABLEC(FONT_UFH,"\\mathop{\\mathrm{sgn}}","sgn")))
     | "\\cot"	           -> LITERAL (HTMLABLEC(FONT_UFH,"\\cot ","cot"))
     | "\\coth"	           -> LITERAL (HTMLABLEC(FONT_UFH,"\\coth ","coth"))
     | "\\log"	           -> LITERAL (HTMLABLEC(FONT_UFH,"\\log ", "log"))
@@ -239,8 +246,8 @@ let find = function
     | "\\ddagger"          -> LITERAL (HTMLABLEM(FONT_UFH, "\\ddagger ", "&Dagger;"))
     | "\\Dagger"           -> LITERAL (HTMLABLEM(FONT_UFH, "\\ddagger ", "&Dagger;"))
     | "\\colon"            -> LITERAL (HTMLABLEC(FONT_UFH, "\\colon ", ":"))
-    | "\\Vert"             -> LITERAL (HTMLABLEM(FONT_UFH, "\\Vert ", "||"))
-    | "\\vert"             -> LITERAL (HTMLABLEM(FONT_UFH, "\\vert ", "|"))
+    | "\\Vert"             -> DELIMITER (HTMLABLEM(FONT_UFH, "\\Vert ", "||"))
+    | "\\vert"             -> DELIMITER (HTMLABLEM(FONT_UFH, "\\vert ", "|"))
     | "\\wp"               -> LITERAL (HTMLABLE (FONT_UF,  "\\wp ", "&weierp;"))
     | "\\weierp"           -> LITERAL (HTMLABLE (FONT_UF,  "\\wp ", "&weierp;"))
     | "\\wedge"            -> LITERAL (HTMLABLE (FONT_UF,  "\\wedge ", "&and;"))
@@ -258,12 +265,12 @@ let find = function
     | "\\subseteq"         -> LITERAL (HTMLABLE (FONT_UF,  "\\subseteq ", "&sube;"))
     | "\\perp"             -> LITERAL (HTMLABLE (FONT_UF,  "\\perp ", "&perp;"))
     | "\\bot"              -> LITERAL (HTMLABLE (FONT_UF,  "\\bot ", "&perp;"))
-    | "\\lfloor"           -> LITERAL (HTMLABLE (FONT_UF,  "\\lfloor ", "&lfloor;"))
-    | "\\rfloor"           -> LITERAL (HTMLABLE (FONT_UF,  "\\rfloor ", "&rfloor;"))
-    | "\\lceil"            -> LITERAL (HTMLABLE (FONT_UF,  "\\lceil ", "&lceil;"))
-    | "\\rceil"            -> LITERAL (HTMLABLE (FONT_UF,  "\\rceil ", "&rceil;"))
-    | "\\lbrace"           -> LITERAL (HTMLABLEC(FONT_UFH, "\\lbrace ", "{"))
-    | "\\rbrace"           -> LITERAL (HTMLABLEC(FONT_UFH, "\\rbrace ", "}"))
+    | "\\lfloor"           -> DELIMITER (HTMLABLE (FONT_UF,  "\\lfloor ", "&lfloor;"))
+    | "\\rfloor"           -> DELIMITER (HTMLABLE (FONT_UF,  "\\rfloor ", "&rfloor;"))
+    | "\\lceil"            -> DELIMITER (HTMLABLE (FONT_UF,  "\\lceil ", "&lceil;"))
+    | "\\rceil"            -> DELIMITER (HTMLABLE (FONT_UF,  "\\rceil ", "&rceil;"))
+    | "\\lbrace"           -> DELIMITER (HTMLABLEC(FONT_UFH, "\\lbrace ", "{"))
+    | "\\rbrace"           -> DELIMITER (HTMLABLEC(FONT_UFH, "\\rbrace ", "}"))
     | "\\infty"            -> LITERAL (HTMLABLEM(FONT_UF,  "\\infty ", "&infin;"))
     | "\\infin"            -> LITERAL (HTMLABLEM(FONT_UF,  "\\infty ", "&infin;"))
     | "\\isin"             -> LITERAL (HTMLABLE (FONT_UF,  "\\in ", "&isin;"))
@@ -283,7 +290,7 @@ let find = function
     | "\\Im"               -> LITERAL (HTMLABLE (FONT_UF,  "\\Im ", "&image;"))
     | "\\image"            -> LITERAL (HTMLABLE (FONT_UF,  "\\Im ", "&image;"))
     | "\\prime"            -> LITERAL (HTMLABLE (FONT_UFH,"\\prime ", "&prime;"))
-    | "\\backslash"        -> LITERAL (HTMLABLEM(FONT_UFH,"\\backslash ", "\\"))
+    | "\\backslash"        -> DELIMITER (HTMLABLEM(FONT_UFH,"\\backslash ", "\\"))
     | "\\setminus"         -> LITERAL (HTMLABLEM(FONT_UFH,"\\setminus ", "\\"))
     | "\\times"            -> LITERAL (HTMLABLEM(FONT_UFH,"\\times ", "&times;"))
     | "\\pm"               -> LITERAL (HTMLABLEM(FONT_UFH,"\\pm ", "&plusmn;"))
@@ -315,10 +322,13 @@ let find = function
     | "\\qquad"		   -> LITERAL (HTMLABLE (FONT_UF, "\\qquad ","&nbsp;&nbsp;&nbsp;&nbsp;"))
     | "\\mid"              -> LITERAL (HTMLABLEM(FONT_UFH,"\\mid ", " | "))
     | "\\neg"              -> LITERAL (HTMLABLEM(FONT_UFH,"\\neg ", "&not;"))
-    | "\\langle"           -> LITERAL (HTMLABLE (FONT_UFH,"\\langle ","&lang;"))
-    | "\\rangle"           -> LITERAL (HTMLABLE (FONT_UFH,"\\rangle ","&rang;"))
-    | "\\lang"             -> LITERAL (HTMLABLE (FONT_UFH,"\\langle ","&lang;"))
-    | "\\rang"             -> LITERAL (HTMLABLE (FONT_UFH,"\\rangle ","&rang;"))
+    | "\\langle"           -> DELIMITER (HTMLABLE (FONT_UFH,"\\langle ","&lang;"))
+    | "\\rangle"           -> DELIMITER (HTMLABLE (FONT_UFH,"\\rangle ","&rang;"))
+    | "\\lang"             -> DELIMITER (HTMLABLE (FONT_UFH,"\\langle ","&lang;"))
+    | "\\rang"             -> DELIMITER (HTMLABLE (FONT_UFH,"\\rangle ","&rang;"))
+    | "\\lbrack"	   -> DELIMITER (HTMLABLEC(FONT_UFH,"[","["))
+    | "\\rbrack"	   -> DELIMITER (HTMLABLEC(FONT_UFH,"]","]"))
+    | "\\ddots"            -> LITERAL (TEX_ONLY "\\ddots ")
     | "\\clubs"            -> LITERAL (TEX_ONLY "\\clubsuit ")
     | "\\clubsuit"         -> LITERAL (TEX_ONLY "\\clubsuit ")
     | "\\spades"           -> LITERAL (TEX_ONLY "\\spadesuit ")
@@ -341,8 +351,6 @@ let find = function
     | "\\N"		   -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UFH,"\\mathbb{N}", "<b>N</b>")))
     | "\\lVert"            -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UFH,"\\lVert ", "||")))
     | "\\rVert"            -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UFH,"\\rVert ", "||")))
-    | "\\left"             -> LITERAL (HTMLABLE (FONT_UF, "\\left ", ""))
-    | "\\right"            -> LITERAL (HTMLABLE (FONT_UF, "\\right ", ""))
     | "\\nmid"             -> (tex_use_ams (); LITERAL (TEX_ONLY "\\nmid "))
     | "\\lesssim"          -> (tex_use_ams (); LITERAL (TEX_ONLY "\\lesssim "))
     | "\\ngeq"             -> (tex_use_ams (); LITERAL (TEX_ONLY "\\ngeq "))
@@ -385,6 +393,8 @@ let find = function
     | "\\iiint"            -> (tex_use_ams (); LITERAL (TEX_ONLY "\\iiint "))
     | "\\iiiint"           -> (tex_use_ams (); LITERAL (TEX_ONLY "\\iiiint "))
     | "\\varnothing"       -> (tex_use_ams (); LITERAL (TEX_ONLY "\\varnothing "))
+    | "\\left"             -> LEFT
+    | "\\right"            -> RIGHT
     | "\\hat"	           -> FUN_AR1 "\\hat "
     | "\\widehat"          -> FUN_AR1 "\\widehat "
     | "\\overline"         -> FUN_AR1 "\\overline "
@@ -409,7 +419,6 @@ let find = function
     | "\\binom"            -> FUN_AR2 "\\binom "
     | "\\frac"             -> FUN_AR2h ("\\frac ", fun num den -> Html.html_render [num], "<hr style=\"{background: black}\">", Html.html_render [den])
     | "\\over"             -> FUN_INFIXh ("\\over ", fun num den -> Html.html_render num, "<hr style=\"{background: black}\">", Html.html_render den)
-(* ? *)
     | "\\sqrt"             -> FUN_AR1 "\\sqrt "
     | "\\pmod"             -> FUN_AR1hl ("\\pmod ", ("(mod ", ")"))
     | "\\bmod"             -> FUN_AR1hl ("\\bmod ", ("mod ", ""))
@@ -422,8 +431,13 @@ let find = function
     | "\\it"               -> DECLh ("\\it ", FONTFORCE_IT)
     | "\\cal"              -> DECL "\\cal "
     | "\\bf"               -> DECL "\\bf "
+    | "\\big"		   -> BIG "\\big "
+    | "\\Big"		   -> BIG "\\Big "
+    | "\\bigg"		   -> BIG "\\bigg "
+    | "\\Bigg"		   -> BIG "\\Bigg "
     | "\\mathit"           -> (tex_use_ams (); FUN_AR1hf ("\\mathit ", FONTFORCE_IT))
     | "\\mathrm"           -> (tex_use_ams (); FUN_AR1hf ("\\mathrm ", FONTFORCE_RM))
+    | "\\mathop"           -> (tex_use_ams (); FUN_AR1 "\\mathop ")
     | "\\boldsymbol"       -> (tex_use_ams (); FUN_AR1 "\\boldsymbol ")
     | "\\bold"             -> (tex_use_ams (); FUN_AR1 "\\mathbf ")
     | "\\Bbb"              -> (tex_use_ams (); FUN_AR1 "\\mathbb ")
@@ -433,7 +447,6 @@ let find = function
     | "\\mathbb"           -> (tex_use_ams (); FUN_AR1 "\\mathbb ")
     | "\\mathfrak"         -> (tex_use_ams (); FUN_AR1 "\\mathfrak ")
     | "\\operatorname"     -> (tex_use_ams (); FUN_AR1 "\\operatorname ")
-(* + *)
     | "\\mbox"             -> raise (Failure "malformatted \\mbox")
     | "\\vbox"             -> raise (Failure "malformatted \\vbox")
     | "\\hbox"             -> raise (Failure "malformatted \\hbox")

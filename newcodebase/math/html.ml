@@ -56,6 +56,8 @@ let rec html_render_flat ctx = function
   | TEX_INFIX _::_ -> raise Too_difficult_for_html
   | TEX_INFIXh _::_ -> raise Too_difficult_for_html
   | TEX_MATRIX _::_ -> raise Too_difficult_for_html
+  | TEX_LR _::_ -> raise Too_difficult_for_html
+  | TEX_BIG _::_ -> raise Too_difficult_for_html
   | [] -> ""
 and html_render_size ctx = function
     TEX_LITERAL (HTMLABLE_BIG (_,sh)) -> true,sh
@@ -91,6 +93,8 @@ let rec html_render_deep ctx = function
   | TEX_FUN2sq  _::_ -> raise Too_difficult_for_html
   | TEX_INFIX _::_ -> raise Too_difficult_for_html
   | TEX_MATRIX _::_ -> raise Too_difficult_for_html
+  | TEX_LR _::_ -> raise Too_difficult_for_html
+  | TEX_BIG _::_ -> raise Too_difficult_for_html
   | [] -> []
 
 let rec html_render_table = function
