@@ -309,6 +309,7 @@ recognized by the Wikipedia software.",
 
 # General errors
 #
+"error"			=> "Error",
 "databaseerror" => "Database error",
 "dberrortext"	=> "A database query syntax error has occurred.
 This could be because of an illegal search query (see $5),
