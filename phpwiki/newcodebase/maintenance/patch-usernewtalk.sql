@@ -11,4 +11,4 @@ CREATE TABLE user_newtalk (
   KEY user_ip (user_ip)
 ) TYPE=MyISAM;
 
-ALTER TABLE 'user'  DROP 'user_newtalk';
+ALTER TABLE user DROP COLUMN user_newtalk;
