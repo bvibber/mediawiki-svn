@@ -202,7 +202,7 @@ class WikiPage extends WikiTitle {
 		$sql = "INSERT INTO cur (cur_title) VALUES (\"$this->secureTitle\")" ;
 		mysql_query ( $sql , $connection ) ;
 		if ( $useCachedPages ) { # Flushing cache for all pages that linked to the empty topic
-			$sql = "UPDATE cur SET cur_cache=\"\" WHERE cur_linked_links LIKE \"%$this->secureTitle%\" OR cur_unlinked_links LIKE \"%$this->secureTitle%\"" ;
+			$sql = "UPDATE cur SET cur_cache=\"\", cur_timestamp=cur_timestamp WHERE cur_linked_links LIKE \"%$this->secureTitle%\" OR cur_unlinked_links LIKE \"%$this->secureTitle%\"" ;
 			mysql_query ( $sql , $connection ) ;
 			}
 		#mysql_close ( $connection ) ;
