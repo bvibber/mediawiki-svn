@@ -236,6 +236,7 @@ class Skin {
 	{
 		global $wgUser, $wgTitle;
 
+		$s = "";
 		if ( 0 == $wgUser->getID() ) {
 			$n = getenv( "REMOTE_ADDR" );
 			$rt = $wgTitle->getPrefixedURL();
@@ -243,7 +244,7 @@ class Skin {
 				$q = "";
 			} else { $q = "returnto={$rt}"; }
 
-			$s = $n . "\n<br>" . $this->makeKnownLink( "Special:Userlogin",
+			$s .= $n . "\n<br>" . $this->makeKnownLink( "Special:Userlogin",
 			  wfMsg( "login" ), $q );
 		} else {
 			$n = $wgUser->getName();
@@ -299,7 +300,6 @@ class Skin {
 		if ( $wgOut->isArticle() ) {
 			$s .= " | " . $this->talkLink();
 		}
-		$s .= " | <a href=\"http://validator.w3.org/check/referer\">Validate</a>";
 		$s .= $this->otherLanguages();
 		return $s;
 	}
@@ -331,6 +331,7 @@ class Skin {
 		  . $sep . $this->historyLink();
 		}
 		$s .= $sep . $this->specialLink( "upload" )
+		  . $sep . $this->specialLink( "imagelist" )
 		  . $sep . "<hr>" . $this->specialLink( "statistics" )
 		  . $sep . $this->specialLink( "newpages" )
 		  . $sep . $this->specialLink( "lonelypages" )
@@ -363,8 +364,8 @@ class Skin {
 		} else if ( $wgTitle->userCanEdit() ) {
 			$n = $wgTitle->getPrefixedText();
 			$t = wfMsg( "editthispage" );
-			$oid = "";
-			$red = "";
+			$oid = $red = "";
+
 			if ( $oldid ) { $oid = "&amp;oldid={$oldid}"; }
 			if ( $redirect ) { $red = "&amp;redirect={$redirect}"; }
 			$s = $this->makeKnownLink( $n, $t, "action=edit{$oid}{$red}" );

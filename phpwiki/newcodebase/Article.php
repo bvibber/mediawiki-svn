@@ -361,7 +361,7 @@ $wpTextbox2
 		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', " .
 		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
 		  $wgTitle->getPrefixedText() . "', '" .
-		  $wgUser->getName() . "', $redir)";
+		  wfStrencode( $wgUser->getName() ) . "', $redir)";
 
 		wfDebug( "Art: 2: $sql\n" );
 		$res = mysql_query( $sql, $conn );
@@ -396,7 +396,8 @@ $wpTextbox2
 		  $wgTitle->getDBkey() . "', '" .
 		  wfStrencode( $this->getContent() ) . "', '" .
 		  wfStrencode( $this->getComment() ) . "', " .
-		  $this->getUser() . ", '" . $this->getUserText() . "', '" .
+		  $this->getUser() . ", '" .
+		  wfStrencode( $this->getUserText() ) . "', '" .
 		  $this->getTimestamp() . "', " . $me1 . ")";
 
 		wfDebug( "Art: 4: $sql\n" );
@@ -410,7 +411,7 @@ $wpTextbox2
 		  "',cur_comment='" .  wfStrencode( $summary ) .
 		  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
 		  ",cur_timestamp='" . date( "YmdHis" ) .
-		  "',cur_user_text='" . $wgUser->getName() .
+		  "',cur_user_text='" . wfStrencode( $wgUser->getName() ) .
 		  "',cur_is_redirect={$redir} " .
 		  "WHERE cur_id=" . $this->getID();
 

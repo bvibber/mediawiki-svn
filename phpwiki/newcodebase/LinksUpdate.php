@@ -37,6 +37,7 @@ class LinksUpdate {
 			wfDebug( "LU:2: $sql\n" );
 			$res2 = mysql_query( $sql, $conn );
 		}
+
 		$conn = wfGetDB();
 		$sql = "DELETE FROM brokenlinks WHERE bl_from={$this->mId}";
 		wfDebug( "LU:3: $sql\n" );
@@ -57,6 +58,29 @@ class LinksUpdate {
 		if ( "" != $sql ) {
 			$conn = wfGetDB();
 			wfDebug( "LU:4: $sql\n" );
+			$res2 = mysql_query( $sql, $conn );
+		}
+
+		$conn = wfGetDB();
+		$sql = "DELETE FROM imagelinks WHERE il_from={$this->mId}";
+		wfDebug( "LU:5: $sql\n" );
+		mysql_query( $sql, $conn );
+
+		$a = $wgLinkCache->getImageLinks();
+		$sql = "";
+		if ( 0 != count ( $a ) ) {
+			$sql = "INSERT INTO imagelinks (il_from,il_to) VALUES ";
+			$first = true;
+			foreach( $a as $iname => $val ) {
+				if ( ! $first ) { $sql .= ","; }
+				$first = false;
+
+				$sql .= "($this->mId,'" . wfStrencode( $iname ) . "')";
+			}
+		}
+		if ( "" != $sql ) {
+			$conn = wfGetDB();
+			wfDebug( "LU:6: $sql\n" );
 			$res2 = mysql_query( $sql, $conn );
 		}
 	}
