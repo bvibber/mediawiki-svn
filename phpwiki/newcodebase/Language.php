@@ -312,7 +312,7 @@ Please check the URL you used to access this page.\n",
 "badquery"		=> "Badly formed search query",
 "badquerytext"	=> "We could not process your query.
 This is probably because you have attempted to search for a
-word fewer than four letters long, which is not yet supported.
+word fewer than three letters long, which is not yet supported.
 It could also be that you have mistyped the expression, for
 example \"fish and and scales\".
 Please try another query.",
