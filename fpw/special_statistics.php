@@ -1,9 +1,13 @@
 <?
 function statistics () {
-	global $THESCRIPT , $wikiStatisticsTitle , $wikiStatTotalPages ;
+	global $THESCRIPT , $vpage , $wikiStatisticsTitle , $wikiStatTotalPages , $wikiStatistics ;
 	global $wikiStatTalkPages , $wikiStatCommaPages , $wikiStatWikipediaNoTalk , $wikiStatSubNoTalk ,
 		$wikiStatNoTalk , $wikiStatArticles , $wikiStatJunk , $wikiStatOld , $wikiStatUsers , $wikiStatSysops ,
-		$wikiTalk ;
+		$wikiTalk , $wikiUserStatistics;
+	
+	$vpage->special ( $wikiStatistics ) ;
+	$vpage->namespace = "" ;
+	
 	$connection=getDBconnection() ;
 	$ret = "" ;
 	$ret .= "<h2>$wikiStatisticsTitle</h2><ul>" ;
@@ -73,7 +77,7 @@ function statistics () {
 
 
 	$ret .= "</ul><hr>" ;
-	$ret .= "<h2>User statistics</h2><ul>" ;
+	$ret .= "<h2>$wikiUserStatistics</h2><ul>" ;
 	
 	# USERS
 	$sql = "SELECT COUNT(*) as number FROM user" ;
