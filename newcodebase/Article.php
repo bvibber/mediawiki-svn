@@ -468,7 +468,7 @@ enctype='application/x-www-form-urlencoded'>
 
 		$this->editUpdates( $this->getID(), $wgTitle->getPrefixedDBkey(),
 		  $text, $this->mCountAdjustment );
-		$wgOut->redirect( $wgTitle->getFullURL() );
+		$wgOut->redirect(  wfLocalUrl( $wgTitle->getPrefixedURL() ) );
 	}
 
 	function imageHistory()
