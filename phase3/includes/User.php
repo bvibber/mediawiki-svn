@@ -1,6 +1,8 @@
 <?
 # See user.doc
 
+include_once( "WatchedItem.php" );
+
 class User {
 	/* private */ var $mId, $mName, $mPassword, $mEmail, $mNewtalk;
 	/* private */ var $mRights, $mOptions;
@@ -404,48 +406,23 @@ class User {
 		return $this->mSkin;
 	}
 
-	function isWatched( $title )
-	{
-		# Note - $title should be a Title _object_
-		# Pages and their talk pages are considered equivalent for watching;
-		# remember that talk namespaces are numbered as page namespace+1.
-		if( $this->mId ) {
-			$sql = "SELECT 1 FROM watchlist
-			  WHERE wl_user={$this->mId} AND
-			  wl_namespace = " . ($title->getNamespace() & ~1) . " AND
-			  wl_title='" . wfStrencode( $title->getDBkey() ) . "'";
-			$res = wfQuery( $sql );
-			return (wfNumRows( $res ) > 0);
-		} else {
-			return false;
-		}
+	function isWatched( $title ) {
+		$wl = WatchedItem::fromUserTitle( $this, $title );
+		return $wl->isWatched();
 	}
-
-	function addWatch( $title )
-	{
-		if( $this->mId ) {
-			# REPLACE instead of INSERT because occasionally someone
-			# accidentally reloads a watch-add operation.
-			$sql = "REPLACE INTO watchlist (wl_user, wl_namespace,wl_title)
-			  VALUES ({$this->mId}," . (($title->getNamespace() | 1) - 1) .
-			  ",'" . wfStrencode( $title->getDBkey() ) . "')";
-			wfQuery( $sql );
-			$this->invalidateCache();
-		}
+	
+	function addWatch( $title ) {
+		$wl = WatchedItem::fromUserTitle( $this, $title );
+		$wl->addWatch();
+		$this->invalidateCache();
 	}
-
-	function removeWatch( $title )
-	{
-		if( $this->mId ) {
-			$sql = "DELETE FROM watchlist WHERE wl_user={$this->mId} AND
-			  wl_namespace=" . (($title->getNamespace() | 1) - 1) .
-			  " AND wl_title='" . wfStrencode( $title->getDBkey() ) . "'";
-			wfQuery( $sql );
-            $this->invalidateCache();
-		}
+	
+	function removeWatch( $title ) {
+		$wl = WatchedItem::fromUserTitle( $this, $title );
+		$wl->removeWatch();
+		$this->invalidateCache();
 	}
-
-
+	
 	/* private */ function encodeOptions()
 	{
 		$a = array();
