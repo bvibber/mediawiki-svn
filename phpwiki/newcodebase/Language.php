@@ -380,7 +380,11 @@ The administrator who locked it offered this explanation:
 <p>$1",
 "missingarticle" => "The database did not find the text of a page
 that it should have found, named \"$1\".
-This is not a database error, but likely a bug in the software.
+
+<p>This is usually caused by following an outdated diff or history link to a
+page that has been deleted.
+
+<p>If this is not the case, you may have found a bug in the software.
 Please report this to an administrator, making note of the URL.",
 "internalerror" => "Internal error",
 "filecopyerror" => "Could not copy file \"$1\" to \"$2\".",
