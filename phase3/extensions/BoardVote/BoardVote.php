@@ -105,15 +105,14 @@ class BoardVotePage extends SpecialPage {
 		$record = $this->getRecord();
 		$encrypted = $this->encrypt( $record );
 		$gpgKey = file_get_contents( $wgGPGPubKey );
-		$db = $this->mDBname;
-		
+		$dbName = $this->mDBname;
+		$db =& wfGetDB( DB_WRITE );
 		# Mark previous votes as old
 		$encKey = wfStrencode( $this->mUserKey );
-		$sql = "UPDATE $db.log SET log_current=0 WHERE log_user_key='$encKey'";
-		wfQuery( $sql, DB_WRITE, $fname );
-		
+		$sql = "UPDATE $dbName.log SET log_current=0 WHERE log_user_key='$encKey'";
+		$db->query( $sql, $fname );
 		# Add vote to log
-		wfInsertArray( "$db.log", array(
+		$db->insertArray( "$dbName.log", array(
 			"log_user" => $wgUser->getID(),
 			"log_user_text" => $wgUser->getName(),
 			"log_user_key" => $this->mUserKey,
@@ -249,6 +248,7 @@ class BoardVotePage extends SpecialPage {
 	}
 
 	function getQualifications( &$user ) {
+		$dbr =& wfGetDB( DB_READ );
 		$id = $user->getID();
 		if ( !$id ) {
 			$this->mUserDays = 0;
@@ -259,7 +259,7 @@ class BoardVotePage extends SpecialPage {
 		# Count contributions and find earliest edit
 		# First cur
 		$sql = "SELECT COUNT(*) as n, MIN(cur_timestamp) as t FROM cur WHERE cur_user=$id";
-		$res = wfQuery( $sql, DB_READ, "BoardVotePage::getQualifications" );
+		$res = $dbr->query( $sql, "BoardVotePage::getQualifications" );
 		$cur = wfFetchObject( $res );
 		wfFreeResult( $res );
 
@@ -280,7 +280,7 @@ class BoardVotePage extends SpecialPage {
 
 		# Now check old
 		$sql = "SELECT COUNT(*) as n, MIN(old_timestamp) as t FROM old WHERE old_user=$id";
-		$res = wfQuery( $sql, DB_READ, "BoardVotePage::getQualifications" );
+		$res = $dbr->query( $sql, DB_READ, "BoardVotePage::getQualifications" );
 		$old = wfFetchObject( $res );
 		wfFreeResult( $res );
 		
@@ -296,9 +296,10 @@ class BoardVotePage extends SpecialPage {
 
 		$userRights = $wgUser->getRights();
 		$admin = $this->isAdmin();
+		$dbr =& wfGetDB( DB_READ );
 
 		$sql = "SELECT * FROM {$this->mDBname}.log ORDER BY log_user_key";
-		$res = wfQuery( $sql, DB_READ, "BoardVotePage::list" );
+		$res = $dbr->query( $sql, "BoardVotePage::list" );
 		if ( wfNumRows( $res ) == 0 ) {
 			$wgOut->addWikiText( wfMsg( "boardvote_novotes" ) );
 			return;
@@ -389,9 +390,10 @@ class BoardVotePage extends SpecialPage {
 
 	function dump() {
 		global $wgOut, $wgOutputEncoding, $wgLang, $wgUser;
+		$dbr =& wfGetDB( DB_READ );
 
 		$sql = "SELECT log_record FROM {$this->mDBname}.log WHERE log_current=1 AND log_strike=0";
-		$res = wfQuery( $sql, DB_READ, "BoardVotePage::list" );
+		$res = $dbr->query( $sql, DB_READ, "BoardVotePage::list" );
 		if ( wfNumRows( $res ) == 0 ) {
 			$wgOut->addWikiText( wfMsg( "boardvote_novotes" ) );
 			return;
@@ -417,14 +419,15 @@ class BoardVotePage extends SpecialPage {
 
 	function strike( $id, $unstrike ) {
 		global $wgOut;
-
+		
+		$dbw =& wfGetDB( DB_WRITE );
 		if ( !$this->isAdmin() ) {
 			$wgOut->addWikiText( wfMsg( "boardvote_needadmin" ) );
 			return;
 		}
 		$value = $unstrike ? 0 : 1;
 		$sql = "UPDATE {$this->mDBname}.log SET log_strike=$value WHERE log_id=$id";
-		wfQuery( $sql, DB_WRITE, "BoardVotePage::strike" );
+		$dbw->query( $sql, "BoardVotePage::strike" );
 
 		$title = Title::makeTitle( NS_SPECIAL, "Boardvote" );
 		$wgOut->redirect( $title->getFullURL( "action=list" ) );
