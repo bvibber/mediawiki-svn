@@ -76,13 +76,16 @@ class MogileFS {
 	 * Send a request to mogilefsd and parse the result.
 	 * @private
 	 */
-	function doRequest( $cmd )
+	function doRequest( $cmd,$args=array() )
 	{
+		$params=' domain='.urlencode($this->domain);
+		foreach ($args as $key => $value)
+			$params.='&'.urlencode($key)."=".urlencode($value);
+
 		if ( ! $this->socket ) {
 			$this->connect();
 		}
-
-		fwrite( $this->socket, $cmd . "\n" );
+		fwrite( $this->socket, $cmd . $params."\n" );
 
 		$line = fgets( $this->socket );
 		#print $line;
@@ -124,8 +127,26 @@ class MogileFS {
 	 */
 	function getPaths( $key )
 	{
-		$res = $this->doRequest( "GET_PATHS domain={$this->domain}&key={$key}" );
+		$res = $this->doRequest( "GET_PATHS", array("key" => $key));
 		unset( $res['paths'] );
+		return $res;
+	}
+
+	/** 
+	 * Delete a file from system
+	 */
+	function delete ( $key )
+	{
+		$res = $this->doRequest( "DELETE", array("key" => $key));
+		return $res;
+	}
+
+	/**
+	 * Rename a file
+         */
+	function rename ($from,$to)
+	{
+		$res = $this->doRequest( "RENAME", array("from_key"=>$from,"to_key"=>$to));
 		return $res;
 	}
 
@@ -181,7 +202,7 @@ class MogileFS {
 	 */
 	function saveFile( $key, $class, $filename )
 	{
-		$res = $this->doRequest( "CREATE_OPEN domain={$this->domain}&key={$key}&class={$class}" );
+		$res = $this->doRequest( "CREATE_OPEN", array("key"=>$key, "class"=>$class));
 
 		if ( ! $res )
 			return false;
@@ -208,8 +229,17 @@ class MogileFS {
 			}
 			curl_close($ch);
 
-			$res = $this->doRequest( "CREATE_CLOSE domain={$this->domain}&key={$key}&class={$class}&devid={$res['devid']}&fid={$res['fid']}&path={$res['path']}" );
-			return true;
+			$res = $this->doRequest( "CREATE_CLOSE", array(
+				"key"	=> $key,
+				"class" => $class,
+				"devid" => $res['devid'],
+				"fid"   => $res['fid'],
+				"path"  => urldecode($res['path'])
+				));
+			if ($res)
+				return true;
+			else
+				return false;
 		}
 	}
 }
