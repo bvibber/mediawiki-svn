@@ -350,3 +350,117 @@ HDL(cfg_qbr_description) {
 		return true;
 	}
 };
+
+HDL(cfg_qb_show_rule) {
+	EX {
+		std::vector<smqb::rule> rules;
+		if (cd.num_params() == 0) {
+			rules = SMI(smqb::cfg)->getrules();
+		} else {
+			try {
+				rules.push_back(SMI(smqb::cfg)->getrule(cd.p(0)));
+			} catch (smqb::norule&) {
+				cd.error("No such rule.");
+				return true;
+			}
+		}
+		FE_TC_AS(std::vector<smqb::rule>, rules, i) {
+			cd.wrtln("Rule " + i->name);
+			cd.wrtln("    Description: " + i->description);
+			if (i->enabled)
+				cd.wrtln("    Enabled:     Yes");
+			else
+				cd.wrtln("    Enabled:     No");
+			cd.wrtln("    Match conditions:");
+			cd.wrtln("      Minimum threads:      " + b::lexical_cast<std::string>(i->minthreads));
+			cd.wrtln("      Minimum last threads: " + b::lexical_cast<std::string>(i->minlastthreads));
+			cd.wrtln("      Lowest position:      " + b::lexical_cast<std::string>(i->lowestpos));
+			cd.wrtln("      Minimum run time:     " + b::lexical_cast<std::string>(i->minruntime));
+			std::string userstr;
+			FE_TC_AS(std::set<std::string>, i->users, j) userstr += *j + " ";
+			cd.wrtln("      Users:                " + userstr);
+			cd.wrtln("      Command type:         " + i->cmdtype);
+			cd.wrtln("      Query:                " + i->query);
+		}
+		return true;
+	}
+};
+
+HDL(cfg_qbr_matchif_minthreads) {
+	EX {
+		try {
+			SMI(smqb::cfg)->set_minthreads(cd.getdata(), b::lexical_cast<int>(cd.p(0)));
+		} catch (b::bad_lexical_cast&) {
+			cd.error("Bad number.");
+		}
+		return true;
+	}
+};
+
+HDL(cfg_qbr_matchif_minlastthreads) {
+	EX {
+		try {
+			SMI(smqb::cfg)->set_minlastthreads(cd.getdata(), b::lexical_cast<int>(cd.p(0)));
+		} catch (b::bad_lexical_cast&) {
+			cd.error("Bad number.");
+		}
+		return true;
+	}
+};
+
+HDL(cfg_qbr_matchif_lowestpos) {
+	EX {
+		try {
+			SMI(smqb::cfg)->set_lowestpos(cd.getdata(), b::lexical_cast<int>(cd.p(0)));
+		} catch (b::bad_lexical_cast&) {
+			cd.error("Bad number.");
+		}
+		return true;
+	}
+};
+
+HDL(cfg_qbr_matchif_minruntime) {
+	EX {
+		try {
+			SMI(smqb::cfg)->set_minruntime(cd.getdata(), b::lexical_cast<int>(cd.p(0)));
+		} catch (b::bad_lexical_cast&) {
+			cd.error("Bad number.");
+		}
+		return true;
+	}
+};
+
+HDL(cfg_qbr_matchif_user) {
+	EX {
+		SMI(smqb::cfg)->set_user(cd.getdata(), cd.p(0));
+		return true;
+	}
+};
+
+HDL(cfg_qbr_matchif_command) {
+	EX {
+		SMI(smqb::cfg)->set_command(cd.getdata(), cd.p(0));
+		return true;
+	}
+};
+
+HDL(cfg_qbr_matchif_querystring) {
+	EX {
+		SMI(smqb::cfg)->set_querystring(cd.getdata(), cd.p(0));
+		return true;
+	}
+};
+
+HDL(cfg_qbr_enable) {
+	EX {
+		SMI(smqb::cfg)->set_enabled(cd.getdata());
+		return true;
+	}
+};
+
+HDL(cfg_qbr_noenable) {
+	EX {
+		SMI(smqb::cfg)->set_disabled(cd.getdata());
+		return true;
+	}
+};

@@ -37,7 +37,6 @@ public:
 
 		snmp_sess_init(&session);
 		session.peername = const_cast<char *>(hostport.c_str());
-		std::cerr << "using port: " << port << "\n";
 		session.version = SNMP_VERSION_1;
 		session.remote_port = port;
 		session.community = reinterpret_cast<u_char *>(const_cast<char *>("public"));
@@ -50,28 +49,22 @@ public:
 		}
 
 		pdu = snmp_pdu_create(SNMP_MSG_GET);
-		std::cerr << "port now: " << session.remote_port << '\n';
 		read_objid(oidname.c_str(), anoid, &anoidlen);
 		snmp_add_null_var(pdu, anoid, anoidlen);
 		status = snmp_synch_response(ss, pdu, &response);
 		b::any res;
 		if (status == STAT_SUCCESS && response->errstat == SNMP_ERR_NOERROR) {
 			vars = response->variables;
-			print_variable(vars->name, vars->name_length, vars);
-			std::cerr << "get a reply of type: " << int(vars->type) << "\n";
 			if (vars->type == ASN_OCTET_STR) {
 				std::string s;
 				s.assign(vars->val.string, vars->val.string + vars->val_len);
 				res = s;
-				std::cerr << "result type str: " << s << "\n";
 			} else if (vars->type == 0x41) { /* Counter32 */
 				uint32_t i = 0;
 				memcpy(&i, vars->val.bitstring, std::max(std::size_t(4), vars->val_len));
 				res = i;
-				std::cerr << "result type counter32: " << i << "\n";
 			} else if (vars->type == ASN_INTEGER) {
 				res = *vars->val.integer;
-				std::cerr << "result type int: " << *vars->val.integer << "\n";
 			}
 		} else {
 			if (status == STAT_SUCCESS)
@@ -79,7 +72,7 @@ public:
 			else
 				snmp_sess_perror("snmpget", ss);
 		}
-		snmp_close(&session);
+		snmp_close(ss);
 		return res;
 	}
 		
@@ -214,7 +207,6 @@ cfg::checker::chk1(void)
 void
 cfg::checker::start(void)
 {
-	std::cerr << "checker starting...\n";
 	static int lastirc = 0;
 	for (;;) {
 		int interval = 10, ircinterval = 60;
@@ -226,7 +218,6 @@ cfg::checker::start(void)
 		} catch (smcfg::nokey&) {}
 		
 		sleep(interval);
-		std::cerr << "checker iter...\n";
 		chk1();
 
 		/* IRC report */
@@ -285,14 +276,12 @@ cfg::checker::start(void)
 
 void
 cfg::squidserver::check(void) {
-	std::cerr << "squid: checking " << name << '\n';
 	snmpclient c(name, 3401);
 	uint32_t requests, hits;
 	try {
 		requests = b::any_cast<uint32_t>(c.getoid("1.3.6.1.4.1.3495.1.3.2.1.1"));
 		hits = b::any_cast<uint32_t>(c.getoid("1.3.6.1.4.1.3495.1.3.2.1.2"));
 	} catch (b::bad_any_cast&) {
-		std::cerr << "cast failed...\n";
 		return;
 	}
 	rpsv = rps.val(requests);
@@ -311,10 +300,8 @@ cfg::mysqlserver::getqueries(void)
 			queries = 0;
 		} else {
 			try {
-				std::cerr << "value: [" << res[0]["Value"] << "]\n";
 				queries = b::lexical_cast<uint32_t>(res[0]["Value"]);
 			} catch (b::bad_lexical_cast&) {
-				std::cerr << "cast failed...\n";
 				queries = 0;
 			}
 		}
@@ -344,7 +331,6 @@ cfg::mysqlserver::getnumprocesses(void)
 void
 cfg::mysqlserver::check(void)
 {
-	std::cerr << "mysql: checking " << name << "\n";
 	uint32_t queries = getqueries();
 	qpsv = qps.val(queries);
 	procv = getnumprocesses();
@@ -357,7 +343,6 @@ cfg::mysqlserver::getmasterpos(void)
 	try {
 		mastername = SMI(smcfg::cfg)->fetchstr("/monit/mysql/master");
 	} catch (smcfg::nokey&) {
-		std::cerr << "mysql master not configured...\n";
 		return 0;
 	}
 	mysqlclientp client = mysqlclient::forhost(mastername);

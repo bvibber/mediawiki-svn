@@ -112,9 +112,9 @@ struct handler_node {
 	}
 
 	std::vector<handler_node *>
-	find_matches(std::string const& word, bool& waswild) {
+	find_matches(std::string const& word, int& waswild) {
 		std::vector<handler_node *> result;
-		waswild = false;
+		waswild = 0;
 		for (typename std::map<std::string, handler_node>::iterator it = childs.begin(),
 			end = childs.end(); it != end; ++it) {
 			if (it->first.substr(0, word.size()) == word) {
@@ -129,8 +129,11 @@ struct handler_node {
 		}
 		if (result.empty()) {
 			if (childs.find("%s") != childs.end()) {
-				waswild = true;
+				waswild = 1;
 				result.push_back(&childs.find("%s")->second);
+			} else if (childs.find("%S") != childs.end()) {
+				waswild = 2;
+				result.push_back(&childs.find("%S")->second);
 			}
 		}
 		return result;
@@ -169,6 +172,8 @@ stdrt.install("show irc channels", cfg_irc_showchannels(), "Show configured chan
 stdrt.install("show monitor server", cfg_monit_showservers(), "Show monitored servers");
 stdrt.install("show monitor server %s", cfg_monit_showservers(), "Show information for a particular server");
 stdrt.install("show monitor intervals", cfg_monit_showintervals(), "Show monitoring intervals");
+stdrt.install("show querybane rule %s", cfg_qb_show_rule(), "Show QueryBane rule information");
+stdrt.install("show querybane rules", cfg_qb_show_rule(), "Show all QueryBane rules");
 eblrt = stdrt;
 stdrt.install("enable", cmd_enable(), "Enter privileged mode");
 
@@ -213,7 +218,15 @@ qbrt.install("exit", chg_parser(cfgrt, "%s(conf)# "), "Exit querybane configurat
 
 /* querybane 'rule' mode commands */
 qbrrt.install("exit", chg_parser(qbrt, "%s(conf-qb)# "), "Exit rule configuration mode");
-qbrrt.install("description %s", cfg_qbr_description(), "Rule description");
+qbrrt.install("description %S", cfg_qbr_description(), "Rule description");
+qbrrt.install("match-if min-threads %s", cfg_qbr_matchif_minthreads(), "Miminum thread count");
+qbrrt.install("match-if min-last-threads %s", cfg_qbr_matchif_minlastthreads(), "Minimum thread count previous check");
+qbrrt.install("match-if lowest-position %s", cfg_qbr_matchif_lowestpos(), "Only match if Nth longest running thread");
+qbrrt.install("match-if user %S", cfg_qbr_matchif_user(), "Match threads owned by user");
+qbrrt.install("match-if command %s", cfg_qbr_matchif_command(), "Match command type");
+qbrrt.install("match-if min-run-time %s", cfg_qbr_matchif_minruntime(), "Only match after specified run time (seconds)");
+qbrrt.install("match-if query-string %S", cfg_qbr_matchif_querystring(), "Match specified query text");
+qbrrt.install("enable", cfg_qbr_enable(), "Enable rule");
 	}
 	handler_node<tt> stdrt;
 	handler_node<tt> eblrt;
@@ -328,43 +341,56 @@ public:
 			if (!rlip) wrt(prm);
 			return true;
 		}
+		if (!ln.size()) {
+			wrtln();
+			wrt(prm);
+			return true;
+		}
+		int wild;
 		bool b = true;
-		if (ln[ln.size() - 1] == ' ') {
-			while (ln[ln.size() - 1] == ' ') 
-				ln.erase(ln.end() - 1);
-			if (ln.find(' ') != ln.npos)
-				thisword = ln.substr(ln.rfind(' ') + 1, ln.size());
-			else
-				thisword = ln;
-			hstack.erase(hstack.begin());
+		std::vector<handler_node_t *> matches;
+		std::string precar, word;
+		handler_node_t *here = &cmds_root;
+		int herelen = prm.size();
+		for (;;) {
+			precar = ln;
+			word = smutl::car(ln);
+			if (!word.size()) break;
+			matches = here->find_matches(word, wild);
+			
+			if (matches.size() > 1) {
+				wrtln();
+				wrtln(std::string(herelen, ' ') + '^');
+				wrtln("% [E] Ambiguous command.");
+				goto end;
+			} else if (matches.size() == 0) {
+				wrtln();
+				wrtln(std::string(herelen, ' ') + '^');
+				wrtln("% [E] Unknown command.");
+				goto end;
+			}
+			herelen += word.size() + 1;
+			
+			if (wild == 1)
+				cd.add_p(word);
+			else if (wild == 2) {
+				cd.add_p(precar);
+				break;
+			}
+			here = matches[0];
 		}
-		ln = "";
-		bool waswild;
-		std::vector<handler_node_t *> matches = hstack[0]->find_matches(thisword, waswild);
-		if (matches.empty()) {
+			
+		if (!here->terminal) {
 			wrtln();
-			wrtln("% [E] No matches.");
-			goto end;
-		} else if (matches.size() > 1) {
-			wrtln();
-			wrtln("% [E] Ambiguous command.");
-			goto end;
-		}
-		if (!matches[0]->terminal) {
-			wrtln();
+			wrtln(std::string(herelen, ' ') + '^');
 			wrtln("% [E] Incomplete command.");
 			goto end;
 		}
-		if (waswild)
-			cd.add_p(thisword);
-		else
-			wrt(matches[0]->name.substr(thisword.size()));
 		wrtln();
 		b = matches[0]->terminal->execute(cd);
-	
-end:
+	  end:
+		init();
 		if (b) {
-			init();
 			if (!rlip) wrt(prm + ln);
 		}
 		return b;
@@ -375,54 +401,57 @@ end:
 			if (doecho) wrt(c);
 			return true;
 		}
-		bool waswild;
-		std::vector<handler_node_t *> matches =
-		       hstack[0]->find_matches(thisword + c, waswild);
-		if (matches.empty()) {
-			wrtln();
-			wrtln("% [E] No matching command.");
-			wrt(prm + ln);
-			return true;
-		}
 		ln += c;
-		thisword += c;
 		if (doecho) wrt(c);
 		return true;
 	}
 	bool prc_spc(char c) {
 		if (ln.empty() || (ln[ln.size() - 1] == ' '))
 			return true;
-		bool waswild;
-		std::vector<handler_node_t *> matches = hstack[0]->find_matches(thisword, waswild);
-		if (matches.size() > 1) {
-			wrtln();
-			wrtln("%% [E] Ambiguous command");
-			wrt(prm + ln);
-			return true;
-		}
-		hstack.insert(hstack.begin(), matches[0]);
-		std::string comp;
-		if (!waswild) {
-			comp = matches[0]->name.substr(thisword.size());
-			wrt(comp);
-		} else
-			cd.add_p(thisword);
+
 		if (doecho) wrt(' ');
-		thisword = "";
-		ln += comp + c;
+		ln += + c;
 		return true;
 	}
 	bool prc_help(char) {
-		bool waswild;
 		if (doecho) wrtln("?");
-		std::vector<handler_node_t *> matches = hstack[0]->find_matches(thisword, waswild);
+		std::string l2 = ln;
+		bool showall = l2.empty() || (!l2.empty() && l2[l2.size()-1]==' ');
+		std::vector<handler_node_t *> matches;
+		std::string word;
+		handler_node_t *here = &cmds_root;
+		int wild;
+		for (;;) {
+			word = smutl::car(l2);
+			std::cerr<<"in loop: word now ["<<word<<"]\n";
+			/* if we're at the last word, and they want matches for a partial
+			   command, break now */
+			matches = here->find_matches(word, wild);
+			
+			if (!showall && l2.empty()) break;
+			//matches = here->find_matches(word, wild);
+			/* reached the end of the line anyway */
+			if (word.empty()) break;
+			if (matches.size() > 1 && !word.empty()) {
+				wrtln("% [E] Ambiguous command.");
+				return true;
+			} else if (matches.size() == 0) {
+				wrtln("% [E] Unknown command.");
+				return true;
+			}
+			word = "";
+			here = matches[0];
+		}
+		std::cerr << "word: ["<<word<<"] showall: "<<showall<<"\n";
 		for (typename std::vector<handler_node_t *>::iterator it = matches.begin(),
 			 end = matches.end(); it != end; ++it) {
-			wrtln(b::str(format("  %s %s") % 
-				boost::io::group(std::left, std::setw(20), (**it).name)
-				% (**it).help));
+			std::cerr << "name: ["<<(**it).name<<"]\n";
+			if (showall || (**it).name.substr(0,word.size())==word)
+				wrtln(b::str(format("  %s %s") % 
+					     boost::io::group(std::left, std::setw(20), (**it).name)
+					     % (**it).help));
 		}
-		if (hstack[0]->terminal)
+		if (here && here->terminal)
 			wrtln("  <cr>");
 		wrt(prm + ln);
 		return true;
@@ -436,40 +465,19 @@ end:
 		if (ln.empty())
 			return true;
 		wrt("\b \b");
-		if (ln.size() == 1) {
-			ln = thisword = "";
-			return true;
-		}
-		if (ln.size() > 1 && ln[ln.size() - 1] == ' ') {
-			hstack.erase(hstack.begin());
-			ln.resize(ln.size() - 1);
-			if (ln.find(' ') != ln.npos)
-				thisword = ln.substr(ln.rfind(' ') + 1, ln.size());
-			else
-				thisword = ln;
-			return true;
-		}
-		if (ln.size() > 1 && ln[ln.size() - 1] != ' ') {
-			ln.resize(ln.size() - 1);
-			thisword.resize(thisword.size() ? thisword.size() - 1 : 0);
-			return true;
-		}
+		ln.erase(boost::prior(ln.end()));
 		return true;
 	}
 	bool prc_erase(char) {
 		for (int i = ln.size(); i; --i)
 			wrt("\b \b");
 		init();
-		//wrtln();
-		//wrt(prm + ln);
 		return true;
 	}
 
 	void init(void) {
-		hstack.resize(1);
-		hstack[0] = &cmds_root;
 		cd.rst();
-		ln = thisword = "";
+		ln = "";
 	}
 
 	void disconnect(void) {
@@ -497,9 +505,7 @@ private:
 	// bookkeeping for parser
 	rl_cb_t rl_cb;
 	std::string ln;
-	std::string thisword;
 	typedef handler_node<trmsrv> handler_node_t;
-	std::vector<handler_node_t *> hstack;
 	handler_node_t cmds_root;
 	std::string prm;
 	comdat<trmsrv> cd;
