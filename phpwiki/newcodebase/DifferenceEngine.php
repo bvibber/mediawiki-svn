@@ -67,10 +67,8 @@ cellpadding=0 cellspacing='4px'><tr>
 			$this->mNewtext = explode( "\n", str_replace( "\r\n", "\n",
 			  htmlspecialchars( $s->old_text ) ) );
 
-			$t = $s->old_timestamp;
-			$h = substr( $t, 8, 2 ) . ":" . substr( $t, 10, 2 );
-			$d = $wgLang->dateFromTimestamp( $t );
-			$this->mNewtitle = str_replace( "$1", "{$h}, {$d}",
+			$t = $wgLang->timeanddate( $s->old_timestamp );
+			$this->mNewtitle = str_replace( "$1", "{$t}",
 			  wfMsg( "revisionasof" ) );
 		}
 		$conn = wfGetDB();
@@ -86,10 +84,8 @@ cellpadding=0 cellspacing='4px'><tr>
 		$this->mOldtext = explode( "\n", str_replace( "\r\n", "\n",
 		  htmlspecialchars( $s->old_text ) ) );
 
-		$t = $s->old_timestamp;
-		$h = substr( $t, 8, 2 ) . ":" . substr( $t, 10, 2 );
-		$d = $wgLang->dateFromTimestamp( $t );
-		$this->mOldtitle = str_replace( "$1", "{$h}, {$d}",
+		$t = $wgLang->timeanddate( $s->old_timestamp );
+		$this->mOldtitle = str_replace( "$1", "{$t}",
 		  wfMsg( "revisionasof" ) );
 
 		return true;

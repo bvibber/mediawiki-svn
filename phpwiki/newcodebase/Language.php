@@ -70,6 +70,8 @@
 "subjectpage"	=> "Subject page",
 "otherlanguages" => "Other languages",
 "redirectedfrom" => "(Redirected from $1)",
+"lastmodified"	=> "The page was last modified $1.",
+"viewcount"		=> "This page has been accessed $1 times.",
 
 # Main script and global functions
 #
@@ -386,12 +388,23 @@ class Language {
 		return $wgWeekdayNamesEn[$key-1];
 	}
 
-	function dateFromTimestamp( $ts )
+	function date( $ts )
 	{
-		$d = substr( $ts, 0, 4 ) . "-" .
-		  substr( $ts, 4, 2 ) . "-" .
-		  substr( $ts, 6, 2 );
+		$d = $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
+		  " " . (0 + substr( $ts, 6, 2 )) . ", " .
+		  substr( $ts, 0, 4 );
 		return $d;
+	}
+
+	function time( $ts )
+	{
+		$t = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
+		return $t;
+	}
+
+	function timeanddate( $ts )
+	{
+		return $this->time( $ts ) . " " . $this->date( $ts );
 	}
 
 	function getMessage( $key )

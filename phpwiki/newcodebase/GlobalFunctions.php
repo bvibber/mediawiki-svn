@@ -167,4 +167,13 @@ function wfEscapeHTML( $in )
 	return $in;
 }
 
+function wfUnescapeHTML( $in )
+{
+	$in = str_replace( "&lt;", "<", $in );
+	$in = str_replace( "&gt;", ">", $in );
+	$in = str_replace( "&quot;", "\"", $in );
+	$in = str_replace( "&amp;", "&", $in );
+	return $in;
+}
+
 ?>

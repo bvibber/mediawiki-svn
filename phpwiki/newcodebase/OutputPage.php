@@ -317,8 +317,8 @@ class OutputPage {
 		return $s;
 	}
 
-    # Some functions here used by doBlockLevels()
-    #
+	# Some functions here used by doBlockLevels()
+	#
 	/* private */ function closeParagraph( )
 	{
 		$result = "";
@@ -329,9 +329,9 @@ class OutputPage {
 		$this->mLastSection = "";
 		return $result;
 	}
-    # getCommon() returns the length of the longest common substring
-    # of both arguments, starting at the beginning of both.
-    #
+	# getCommon() returns the length of the longest common substring
+	# of both arguments, starting at the beginning of both.
+	#
 	/* private */ function getCommon( $st1, $st2 )
 	{
 		$fl = strlen( $st1 );
@@ -401,13 +401,12 @@ class OutputPage {
 		# and making lists from lines starting with * # : etc.
 		#
 		$a = explode( "\n", $text );
-		$text = "<p>";
-		$lastPref = "";
-		$this->mLastSection = "";
-		$this->mDTopen = false;
-		$inBlockElem = false;
+		$text = $lastPref = $this->mLastSection = "";
+		$this->mDTopen = $inBlockElem = false;
 
 		foreach ( $a as $t ) {
+			if ( "" != $text ) { $text .= "\n"; }
+
 			$oLine = $t;
 			$opl = strlen( $lastPref );
 			$npl = strspn( $t, "*#:;" );
@@ -422,7 +421,7 @@ class OutputPage {
 					$cpos = strpos( $t, ":" );
 					if ( ! ( false === $cpos ) ) {
 						$term = substr( $t, 0, $cpos );
-						$text .= $term . "</dt><dd>";
+						$text .= $term . $this->nextItem( ":" );
 						$t = substr( $t, $cpos + 1 );
 					}
 				}
@@ -444,7 +443,7 @@ class OutputPage {
 						$cpos = strpos( $t, ":" );
 						if ( ! ( false === $cpos ) ) {
 							$term = substr( $t, 0, $cpos );
-							$text .= $term . "</dt><dd>";
+							$text .= $term . $this->nextItem( ":" );
 							$t = substr( $t, $cpos + 1 );
 						}
 					}
@@ -479,9 +478,8 @@ class OutputPage {
 					$inBlockElem = false;
 				}
 			}
-			$text .= $t . "\n";
+			$text .= $t;
 		}
-		$text .= $this->closeParagraph();
 		return $text;
 	}
 

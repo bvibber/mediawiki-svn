@@ -260,10 +260,10 @@ class Skin {
 		if ( ! $wgOut->isArticle() ) { return ""; }
 
 		$count = $wgArticle->getCount();
-		$s = "This article has been accessed $count times.\n";
+		$s = str_replace( "$1", $count, wfMsg( "viewcount" ) );
 
-		$d = $wgLang->dateFromTimestamp( $wgArticle->getTimestamp() );
-		$s .= "Last modified $d.\n";
+		$d = $wgLang->timeanddate( $wgArticle->getTimestamp() );
+		$s .= " " . str_replace( "$1", $d, wfMsg( "lastmodified" ) );
 		return $s;
 	}
 
@@ -596,7 +596,7 @@ class Skin {
 	{
 		global $wgTitle, $wgLang;
 
-		$d = $wgLang->dateFromTimestamp( $ts );
+		$d = $wgLang->date( $ts );
 		$s = "";
 		if ( $d != $this->lastdate ) {
 			if ( "" != $this->lastdate ) { $s .= "</ul>\n"; }
