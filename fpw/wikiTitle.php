@@ -152,7 +152,7 @@ class WikiTitle {
 		if ( $result == "" ) return false ;
 		if ( $s = mysql_fetch_object ( $result ) ) {
 			mysql_free_result ( $result ) ;
-			if ( $conn == "" ) mysql_close ( $connection ) ; # Closing local connection
+			#if ( $conn == "" ) mysql_close ( $connection ) ; # Closing local connection
 			return true ;
 			}
 		return false ;
