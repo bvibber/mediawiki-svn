@@ -122,15 +122,15 @@ class MessageCache
 	function loadFromDB() {
 			$fname = 'MessageCache::loadFromDB';
 		$dbr =& wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'cur',
-			array( 'cur_title', 'cur_text' ),
-			array( 'cur_is_redirect' => 0, 'cur_namespace' => NS_MEDIAWIKI ),
+		$res = $dbr->select( array( 'page', 'text' ),
+			array( 'page_title', 'old_text' ),
+			'page_is_redirect=0 AND page_namespace = '.NS_MEDIAWIKI.' AND page_latest = old_id',
 			$fname
 		);
 
 		$this->mCache = array();
 		for ( $row = $dbr->fetchObject( $res ); $row; $row = $dbr->fetchObject( $res ) ) {
-			$this->mCache[$row->cur_title] = $row->cur_text;
+			$this->mCache[$row->page_title] = $row->old_text;
 		}
 
 		$dbr->freeResult( $res );
