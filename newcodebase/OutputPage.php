@@ -88,13 +88,14 @@ class OutputPage {
 	function output()
 	{
 		global $wgUser, $wgLang, $wgDebugComments, $wgCookieExpiration;
-		global $wgInputEncoding, $wgOutputEncoding;
+		global $wgInputEncoding, $wgOutputEncoding, $wgLanguageCode;
 		$sk = $wgUser->getSkin();
 
 		header( "Expires: 0" );
 		header( "Cache-Control: no-cache" );
 		header( "Pragma: no-cache" );
 		header( "Content-type: text/html; charset={$wgOutputEncoding}" );
+		header( "Content-language: {$wgLanguageCode}" );
 
 		if ( "" != $this->mRedirect ) {
 			header( "Location: {$this->mRedirect}" );
@@ -130,12 +131,12 @@ class OutputPage {
 
 	function out( $ins )
 	{
-		global $wgInputEncoding, $wgOutputEncoding;
+		global $wgInputEncoding, $wgOutputEncoding, $wgLang;
 
 		if ( 0 == strcmp( $wgInputEncoding, $wgOutputEncoding ) ) {
 			$outs = $ins;
 		} else {
-			$outs = iconv( $wgInputEncoding, $wgOutputEncoding, $ins );
+			$outs = $wgLang->iconv( $wgInputEncoding, $wgOutputEncoding, $ins );
 			if ( false === $outs ) { $outs = $ins; }
 		}
 		print $outs;
@@ -144,9 +145,15 @@ class OutputPage {
 	function setEncodings()
 	{
 		global $HTTP_SERVER_VARS, $wgInputEncoding, $wgOutputEncoding;
+		global $wgUser, $wgLang;
 
 		$wgInputEncoding = strtolower( $wgInputEncoding );
 		$s = $HTTP_SERVER_VARS['HTTP_ACCEPT_CHARSET'];
+		
+		if( $wgUser->getOption( 'altencoding' ) ) {
+			$wgOutputEncoding = $wgLang->getAltEncoding();
+			return;
+		}
 
 		if ( "" == $s ) {
 			$wgOutputEncoding = strtolower( $wgOutputEncoding );

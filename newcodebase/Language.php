@@ -1149,6 +1149,15 @@ class Language {
 		return $s;
 	}
 
+	function getAltEncoding() {
+		# Some languages may have an alternate char encoding option
+		# (Esperanto X-coding, Japanese furigana conversion, etc)
+		# If 'altencoding' is checked in user prefs, this is used
+		# instead of the default $wgOutputEncoding set in LocalSettings.php
+		global $wgOutputEncoding;
+		return $wgOutputEncoding;
+	}
+
 }
 
 include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );

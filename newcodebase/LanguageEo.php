@@ -38,7 +38,8 @@
 	"rememberpassword" => "Rememoru mian pasvorton de seanco al seanco",
 	"editwidth" => "Redaktilo estu plenlarĝa",
 	"editondblclick" => "Redaktu per duobla alklako (JavaScript)",
-	"watchdefault" => "Watch new and modified articles"
+	"watchdefault" => "Priatentu paĝojn de vi redaktintajn",
+	"altencoding" => "Montru supersignojn per X-sistemo"
 );
 
 # Se eble, trovu Esperantajn libroservoj traserĉeblaj laŭ ISBN
@@ -1081,12 +1082,12 @@ class LanguageEo extends Language {
 			return Language::getMessage($key);
 	}
 
-    function iconv( $in, $out, $string ) {
+	function iconv( $in, $out, $string ) {
 		# For most languages, this is a wrapper for iconv
 		# Por multaj lingvoj, ĉi tiu nur voku la sisteman funkcion iconv()
 		# Ni ankaŭ konvertu X-sistemajn surogotajn
 		if( $in == "X" ) {
-		    $xu = array (
+			$xu = array (
 				"xx" => "x" , "xX" => "x" ,
 				"Xx" => "X" , "XX" => "XX" ,
 				"Cx" => "\xc4\x88" , "CX" => "\xc4\x88" ,
@@ -1105,6 +1106,18 @@ class LanguageEo extends Language {
 			return preg_replace ( "/([cghjsux]x)(?=(?:xx)*[^x\$])/ei" , "\$xu[\"\$1\"]" , $string ) ;
 		} else if( $out == "X" ) {
 			# FIXME: For output
+			$ux = array (
+				#"x" => "xx" , "X" => "Xx" ,
+				"\xc4\x88" => "Cx" , "\xc4\x89" => "cx" ,
+				"\xc4\x9c" => "Gx" , "\xc4\x9d" => "gx" ,
+				"\xc4\xa4" => "Hx" , "\xc4\xa5" => "hx" ,
+				"\xc4\xb4" => "Jx" , "\xc4\xb5" => "jx" ,
+				"\xc5\x9c" => "Sx" , "\xc5\x9d" => "sx" ,
+				"\xc5\xac" => "Ux" , "\xc5\xad" => "ux"
+			) ;
+			# Double Xs only if they follow cxapelutaj literoj or other Xs. It's not canon, but it's a lot prettier
+			return strtr ( $string , $ux ) ;
+			#return $textregs[1] . preg_replace ( "/((?:^|[^cghjsux])x)x(?!x)/i" , "\$1" , $text ) ;
 		}
 		return iconv( $in, $out, $string );
 	}
@@ -1140,6 +1153,10 @@ class LanguageEo extends Language {
         	return $this->iconv( "X", "UTF-8", $s );
         
         return $s;
+	}
+
+	function getAltEncoding() {
+		return "X";
 	}
 
 }
