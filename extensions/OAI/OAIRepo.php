@@ -22,7 +22,6 @@
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @todo Charset conversion for Latin-1 wikis
- * @todo Resumption tokens
  * @todo Add hooks to update the updates table!
  * @todo Make sure identifiers are correct format
  * @todo Configurable bits n pieces
@@ -40,9 +39,9 @@ function oaiSetupRepo() {
 	global $IP;
 	require_once( "$IP/includes/SpecialPage.php" );
 
-class OAIRepository extends SpecialPage {
+class OAIRepository extends UnlistedSpecialPage {
 	function OAIRepository() {
-		SpecialPage::SpecialPage( 'OAIRepository' );
+		UnlistedSpecialPage::UnlistedSpecialPage( 'OAIRepository' );
 	}
 	
 	function setHeaders() {
@@ -294,7 +293,15 @@ class OAIRepo {
 	}
 	
 	function listMetadataFormats() {
-		# check for ID
+		if( isset( $this->_request['identifier'] ) ) {
+			# We have the same formats for all records...
+			# If given an identifier, just check it for existence.
+			$row = $this->getRecordItem( $this->_request['identifier'] );
+			if( $this->errorCondition() ) {
+				return;
+			}
+		}
+		
 		$formats = $this->metadataFormats();
 		echo "<ListMetadataFormats>\n";
 		foreach( $formats as $prefix => $format ) {
@@ -307,28 +314,68 @@ class OAIRepo {
 		echo "</ListMetadataFormats>\n";
 	}
 	
+	function validateToken( $var ) {
+		if( !isset( $this->_request[$var] ) ) {
+			return null;
+		}
+		if( preg_match( '/^([a-z_]+):(\d+):(\d{14})$/', $this->_request[$var], $matches ) ) {
+			$token['metadataPrefix'] = $matches[1];
+			$token['resume']         = IntVal( $matches[2] );
+			$token['until']          = wfTimestamp( TS_MW, $matches[3] );
+			$formats = $this->metadataFormats();
+			if( isset( $formats[$token['metadataPrefix']] ) ) {
+				return $token;
+			}
+		}
+		$this->addError( 'badResumptionToken', 'Invalid resumption token.' );
+	}
+	
 	function listRecords( $verb ) {
 		$withData = ($verb == 'ListRecords');
-		$metadataPrefix =  $this->validateMetadata( 'metadataPrefix' );
-		$from = $this->validateDatestamp( 'from' );
-		$until = $this->validateDatestamp( 'until' );
-		if( isset( $this->_request['set'] ) ) {
-			$this->addError( 'noSetHierarchy', 'This repository does not support sets.' );
-		}
+		
+		$token = $this->validateToken( 'resumptionToken' );
 		if( $this->errorCondition() ) {
 			return;
 		}
+		if( $token ) {
+			$metadataPrefix = $token['metadataPrefix'];
+			$resume         = $token['resume'];
+			$from           = null;
+			$until          = $token['until'];
+		} else {
+			$metadataPrefix = $this->validateMetadata( 'metadataPrefix' );
+			$resume         = null;
+			$from           = $this->validateDatestamp( 'from' );
+			$until          = $this->validateDatestamp( 'until' );
+			if( isset( $this->_request['set'] ) ) {
+				$this->addError( 'noSetHierarchy', 'This repository does not support sets.' );
+			}
+			if( $this->errorCondition() ) {
+				return;
+			}
+		}
 		
-		$resultSet = $this->fetchRows( $from, $until, $this->chunkSize() );
-		if( $resultSet->numRows() ) {
+		# Fetch one extra row to check if we need a resumptionToken
+		# If no until limit is set, this will get the current time.
+		$limit = wfTimestamp( TS_MW, $until );
+		$resultSet = $this->fetchRows( $from, $until, $this->chunkSize() + 1, $resume );
+		$count = min( $resultSet->numRows(), $this->chunkSize() );
+		if( $count ) {
 			echo "<$verb>\n";
-			while( $row = $resultSet->fetchObject() ) {
+			$this->_lastSequence = null;
+			for( $i = 0; $i < $count; $i++ ) {
+				$row = $resultSet->fetchObject();
 				$item = new WikiOAIRecord( $row );
 				if( $withData ) {
 					echo $item->renderRecord( $metadataPrefix, $this->timeGranularity() );
 				} else {
 					echo $item->renderHeader( $this->timeGranularity() );
 				}
+				$this->_lastSequence = $row->up_sequence;
+			}
+			if( $row = $resultSet->fetchObject() ) {
+				$token = "$metadataPrefix:$row->up_sequence:$limit";
+				echo oaiTag( 'resumptionToken', array(), $token ) . "\n";
 			}
 			echo "</$verb>\n";
 		} else {
@@ -405,7 +452,7 @@ class OAIRepo {
 		$updates = $this->_db->tableName( 'updates' );
 		$cur = $this->_db->tableName( 'cur' );
 		
-		$sql = "SELECT up_page,up_timestamp,up_action,
+		$sql = "SELECT up_page,up_timestamp,up_action,up_sequence,
 		cur_namespace    AS namespace,
 		cur_title        AS title,
 		cur_text         AS text,
@@ -422,12 +469,12 @@ class OAIRepo {
 		return $this->_db->resultObject( $this->_db->query( $sql ) );
 	}
 	
-	function fetchRows( $from, $until, $chunk ) {
+	function fetchRows( $from, $until, $chunk, $token = null ) {
 		$updates = $this->_db->tableName( 'updates' );
 		$cur = $this->_db->tableName( 'cur' );
 		$chunk = IntVal( $chunk );
 		
-		$sql = "SELECT up_page,up_timestamp,up_action,
+		$sql = "SELECT up_page,up_timestamp,up_action,up_sequence,
 		cur_namespace    AS namespace,
 		cur_title        AS title,
 		cur_text         AS text,
@@ -439,16 +486,22 @@ class OAIRepo {
 		cur_minor_edit   AS minor_edit
 		FROM $updates LEFT JOIN $cur ON cur_id=up_page ";
 		$where = array();
+		if( $token ) {
+			$where[] = 'up_sequence >= ' . IntVal( $token );
+			$order = 'up_sequence';
+		} else {
+			$order = 'up_timestamp';
+		}
 		if( $from ) {
-			$where[] = 'up_timestamp > ' . $this->_db->timestamp( $from );
+			$where[] = 'up_timestamp >= ' . $this->_db->timestamp( $from );
 		}
 		if( $until ) {
-			$where[] = 'up_timestamp < ' . $this->_db->timestamp( $until );
+			$where[] = 'up_timestamp <= ' . $this->_db->timestamp( $until );
 		}
 		if( !empty( $where ) ) {
 			$sql .= ' WHERE ' . implode( ' AND ', $where );
 		}
-		$sql .= " ORDER BY up_timestamp LIMIT $chunk";
+		$sql .= " ORDER BY $order LIMIT $chunk";
 		
 		return $this->_db->resultObject( $this->_db->query( $sql ) );
 	}
@@ -589,18 +642,24 @@ class WikiOAIRecord extends OAIRecord {
 	}
 	
 	function renderDublinCore() {
+		$title = Title::makeTitle( $this->_row->namespace, $this->_row->title );
+		global $wgMimeType, $wgContLanguageCode;
+		
 		$out = oaiTag( 'oai_dc:dc', array(
 			'xmlns:oai_dc'       => 'http://www.openarchives.org/OAI/2.0/oai_dc/',
 			'xmlns:dc'           => 'http://purl.org/dc/elements/1.1/',
 			'xmlns:xsi'          => 'http://www.w3.org/2001/XMLSchema-instance',
 			'xsi:schemaLocation' => 'http://www.openarchives.org/OAI/2.0/oai_dc/ ' .
-			                        'http://www.openarchives.org/OAI/2.0/oai_dc.xsd' ) ) . "\n";
-		$title = Title::makeTitle( $this->_row->namespace, $this->_row->title );
-		$out .= oaiTag( 'dc:title', array(), $title->getPrefixedText() ) . "\n";
-		$out .= oaiTag( 'dc:contributor', array(), $this->_row->user_text ) . "\n";
-		$out .= oaiTag( 'dc:date', array(), oaiDatestamp( $this->getDatestamp() ) ) . "\n";
-		$out .= oaiTag( 'dc:identifier', array(), $title->getFullUrl() ) . "\n";
-		$out .= "</oai_dc:dc>\n";
+			                        'http://www.openarchives.org/OAI/2.0/oai_dc.xsd' ) ) . "\n" .
+			oaiTag( 'dc:title',       array(), $title->getPrefixedText() ) . "\n" .
+			oaiTag( 'dc:language',    array(), $wgContLanguageCode ) . "\n" .
+			oaiTag( 'dc:type',        array(), 'Text' ) . "\n" .
+			oaiTag( 'dc:format',      array(), $wgMimeType ) . "\n" .
+			oaiTag( 'dc:identifier',  array(), $title->getFullUrl() ) . "\n" .
+			oaiTag( 'dc:contributor', array(), $this->_row->user_text ) . "\n" .
+			oaiTag( 'dc:date',        array(), oaiDatestamp( $this->getDatestamp() ) ) . "\n" .
+			oaiTag( 'dc:description', array(), $this->_row->text ) . "\n" .
+			"</oai_dc:dc>\n";
 		return $out;
 	}
 	

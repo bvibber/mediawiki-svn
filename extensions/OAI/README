@@ -8,9 +8,8 @@ http://www.openarchives.org/OAI/openarchivesprotocol.html
 A harvester script will come soon to form the client half.
 
 
-At the moment this script is quite experimental; it doesn't implement the
-whole spec yet (in particular resumption tokens are not supported), and
-hooks for actually updating are not put in yet. ;)
+At the moment this script is quite experimental; it may not implement the
+whole spec yet, and hooks for actually updating are not put in yet. ;)
 
 The extension adds an 'updates' table which associates last-edit timestamps
 with cur_id values. A separate table is used so it can also hold entries for
