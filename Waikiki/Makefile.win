@@ -1,0 +1,56 @@
+# Project: Projekt1
+# Makefile created by Dev-C++ 4.9.8.0
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = main.o TUCS.o TParser.o TOutput.o TSkin.o TUser.o TTitle.o TArticle.o TLanguage.o TSkinBlank.o $(RES)
+LINKOBJ  = main.o TUCS.o TParser.o TOutput.o TSkin.o TUser.o TTitle.o TArticle.o TLanguage.o TSkinBlank.o $(RES)
+LIBS =  -L"C:/Programme/Dev-Cpp/lib" 
+INCS =  -I"C:/Programme/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Programme/Dev-Cpp/include/c++"  -I"C:/Programme/Dev-Cpp/include/c++/mingw32"  -I"C:/Programme/Dev-Cpp/include/c++/backward"  -I"C:/Programme/Dev-Cpp/include" 
+BIN  = Waikiki.exe
+CXXFLAGS = $(CXXINCS)  -w
+CFLAGS = $(INCS)  -w
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Waikiki.exe all-after
+
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(LINKOBJ)
+	$(CPP) $(LINKOBJ) -o "Waikiki.exe" $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+TUCS.o: TUCS.cpp
+	$(CPP) -c TUCS.cpp -o TUCS.o $(CXXFLAGS)
+
+TParser.o: TParser.cpp
+	$(CPP) -c TParser.cpp -o TParser.o $(CXXFLAGS)
+
+TOutput.o: TOutput.cpp
+	$(CPP) -c TOutput.cpp -o TOutput.o $(CXXFLAGS)
+
+TSkin.o: TSkin.cpp
+	$(CPP) -c TSkin.cpp -o TSkin.o $(CXXFLAGS)
+
+TUser.o: TUser.cpp
+	$(CPP) -c TUser.cpp -o TUser.o $(CXXFLAGS)
+
+TTitle.o: TTitle.cpp
+	$(CPP) -c TTitle.cpp -o TTitle.o $(CXXFLAGS)
+
+TArticle.o: TArticle.cpp
+	$(CPP) -c TArticle.cpp -o TArticle.o $(CXXFLAGS)
+
+TLanguage.o: TLanguage.cpp
+	$(CPP) -c TLanguage.cpp -o TLanguage.o $(CXXFLAGS)
+
+TSkinBlank.o: TSkinBlank.cpp
+	$(CPP) -c TSkinBlank.cpp -o TSkinBlank.o $(CXXFLAGS)
