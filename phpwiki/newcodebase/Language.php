@@ -430,9 +430,12 @@ that it be to the address you give.<br>\n",
 "createaccount"	=> "Create new account",
 "badretype"		=> "The passwords you entered do not match.",
 "userexists"	=> "The user name you entered is already in use. Please choosea different name.",
-"youremail"		=> "Your e-mail",
+"youremail"		=> "Your e-mail*",
 "yournick"		=> "Your nickname (for signatures)",
-"emailforlost"	=> "If you forget your password, you can have a new one mailed to your e-mail address.",
+"emailforlost"	=> "* Entering an email address is optional.  But it enables people to
+contact you through the website without you having to reveal your 
+email address to them, and it also helps you if you forget your   
+password.",
 "loginerror"	=> "Login error",
 "noname"		=> "You have not specified a valid user name.",
 "loginsuccesstitle" => "Login successful",
