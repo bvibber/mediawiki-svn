@@ -890,10 +890,11 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$line = wfFetchObject( $res );
 		}
 		
-		if( $offset < 0 ) $offset = 0;
+		$revs = count( $sortbuffer );
 		if( $offset >= $revs ) $offset = $revs-1;
+		if( $offset < 0 ) $offset = 0;
 		$max = $offset + $limit;
-		if( $max >= $revs ) $max = $revs;
+		if( $max > $revs ) $max = $revs;
 				
 		for( $revnum = $offset; $revnum < $max; $revnum++ ) {
 			$line = $sortbuffer[$revnum];
