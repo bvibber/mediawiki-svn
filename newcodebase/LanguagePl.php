@@ -36,16 +36,24 @@ include_once("utf8Case.php");
 	"Standard", "Nostalgia", "Cologne Blue"
 );
 
+/* private */ $wgMathNamesPl = array( 
+    "Zawsze jako PNG",
+	"HTML dla prostych, dla reszty PNG",
+	"Spróbuj HTML; jeśli zawiedzie, to PNG",
+	"Pozostaw w TeXu (tekst)" 
+); 
+
 /* private */ $wgUserTogglesPl = array(
 	"hover"		=> "Pokazuj okienko podpowiedzi ponad linkami",
 	"underline" => "Podkreślenie linków",
 	"highlightbroken" => "Podświetl linki pustych stron",
 	"justify"	=> "Wyrównuj tekst artykułu w kolumnie",
 	"hideminor" => "Ukryj drobne zmiany w \"Ostatnich zmianach\"",
+	"usenewrc" => "Konsolidacja ostatnich zmian (JavaScript)",
 	"numberheadings" => "Automatyczna numeracja nagłówków",
 	"rememberpassword" => "Pamiętaj hasło między sesjami",
 	"editwidth" => "Obszar edycji o pełnej szerokości",
-	"editondblclick" => "Edycja strony poprzez podwójne kliknięcie (JavaScript)",
+	"editondblclick" => "Podwójne kliknięcie rozpoczyna edycję (JavaScript)",
 	"watchdefault" => "Obserwuj nowe i zmodyfikowane artykuły",
 	"minordefault" => "Wszystkie zmiany zaznaczaj domyślnie jako drobne"
 );
@@ -295,18 +303,21 @@ include_once("utf8Case.php");
 "whatlinkshere"	=> "Strony, które odwołują się do tej",
 "help"			=> "Pomoc",
 "search"		=> "Szukaj",
+"go"            => "OK",
 "history"		=> "Historia strony",
 "printableversion" => "Wersja do druku",
 "editthispage"	=> "Edytuj",
 "deletethispage" => "Usuń",
 "protectthispage" => "Zabezpiecz",
 "unprotectthispage" => "Odbezpiecz",
+"newpage" => "Nowa strona",
 "talkpage"		=> "Dyskusja",
 "subjectpage"	=> "Strona dyskutowana", # for compatibility
 "articlepage"   => "Strona dyskutowana", 
 "userpage" => "Strona wikipedysty", 
 "wikipediapage" => "Strona dyskutowana", 
 "imagepage" =>  "Strona grafiki", 
+"viewtalkpage" => "Strona dyskusji",
 "otherlanguages" => "Wersja",
 "redirectedfrom" => "(Przekierowano z $1)",
 "lastmodified"	=> "ostatnio zmodyfikowano o $1;",
@@ -445,7 +456,7 @@ Po otrzymaniu go zaloguj się ponownie.",
 Podany powód to:<br>$2<p>. Możesz się skontaktować z $1 lub innym
 [[Wikipedia:Administratorzy|administratorem]] by wyjaśnić sprawę zablokowania.",
 "newarticle"	=> "(Nowy)",
-"newarticletext" => "Tutaj wpisz tekst artykułu.",
+"newarticletext" => "Nie ma jeszcze artykułu o tym tytule. W tym polu można wpisać pierwszy jego fragment. Jeśli nie to było Twoim zamiarem, wciśnij po prostu Wstecz.",
 "noarticletext" => "(Nie ma jeszcze artykułu o tym tytule. Wybierz ''Edytuj'' by go rozpocząć.)",
 "updated"		=> "(Zmodyfikowano)",
 "note"			=> "<strong>Uwaga:</strong> ",
@@ -515,6 +526,7 @@ Prawdopodobna przyczyna to obecność słowa krótszego niż trzyliterowe.
 Spróbuj, proszę, innego zapytania.",
 "matchtotals"	=> "Zapytanie \"$1\", liczba znalezionych tytułów: $2,
 liczba znalezionych artykułów: $3.",
+"nogomatch" => "Nie istnieją strony o dokładnie takim tytule. Spróbuj pełnego przeszukiwania. ",
 "titlematches"	=> "Znaleziono w tytułach:",
 "notitlematches" => "Nie znaleziono w tytułach",
 "textmatches"	=> "Znaleziono w artykułach:",
@@ -548,6 +560,12 @@ Twój numer identyfikacyjny to $2.",
 "qbsettings"	=> "Pasek szybkiego dostępu", 
 "changepassword" => "Zmiana hasła",
 "skin"			=> "Skórka",
+"math"                  => "Prezentacja wzorów matematycznych", 
+"math_failure"          => "Parser nie umiał rozpoznać", 
+"math_unknown_error"    => "nieznany błąd", 
+"math_unknown_function" => "nieznana funkcja ", 
+"math_lexing_error"     => "błąd leksera", 
+"math_syntax_error"     => "błąd składni", 
 "saveprefs"		=> "Zapisz preferencje",
 "resetprefs"	=> "Preferencje domyślne",
 "oldpassword"	=> "Stare hasło",
@@ -572,6 +590,7 @@ lub \"1\" (czas zimowy).",
 
 # Recent changes
 #
+"changes" => "zmian-a/-y",
 "recentchanges" => "Ostatnie zmiany",
 "recentchangestext" => "Na tej stronie odnajdziesz historię ostatnich zmian na Wikipedii.
 
@@ -1052,6 +1071,11 @@ class LanguagePl extends LanguageUtf8 {
 		global $wgSkinNamesPl;
 		return $wgSkinNamesPl;
 	}
+
+	function getMathNames() { 
+		global $wgMathNamesPl; 
+		return $wgMathNamesPl; 
+    }
 
 	function getUserToggles() {
 		global $wgUserTogglesPl;
