@@ -20,3 +20,5 @@ otherwise they fall back to sending English text (which is why
 the LanguageEn object has no code at all--it just inherits the
 English defaults of the Language base class.
 
+The names of the namespaces are also contained in the language
+object, though the numbers are fixed.
