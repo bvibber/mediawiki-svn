@@ -95,7 +95,7 @@ function rebuildLinkTablesPass2()
 	$sqlX = "";
 	$first = true;
 	while ( $row = wfFetchObject( $res ) ) {
-		$iname = addslashes( substr( $row->rl_to, 6 ) );
+		$iname = addslashes( substr( $row->rl_to, $inslen ) );
 		$pname = addslashes( $row->rl_f_title );
 
 		if ( ! $first ) { $sqlX .= ","; }
