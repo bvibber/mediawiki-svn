@@ -76,7 +76,8 @@ class maparea {
 		$g = new gis_database();
 		$g->select_area( $this->p->latdeg_min, $this->p->londeg_min,
 				 $this->p->latdeg_max, $this->p->londeg_max,
-				 $this->attr['globe'], $this->attr['type'] );
+				 $this->attr['globe'], $this->attr['type'],
+				 $this->attr['arg:type'] );
 
 		$out = ";type:abstract\r\n"
 		     . ";comment:"
@@ -97,9 +98,11 @@ class maparea {
 			$out .= "==[[" . $name . "]]==\r\n"
 			      . ";type:" . $type . "\r\n";
 
-			if ($type == "city") {
-				/* look at population, ignoring commas */
-				$a = str_replace( ',', '', $x->gis_type_arg);
+			if ($type == "city"
+			 or $type == "adm1st"
+			 or $type == "adm2nd") {
+				/* look at population */
+				$a = $x->gis_type_arg;
 				if ($a >= 3000000) {
 					$m = 6;
 				} elseif ($a >= 1000000) {

@@ -14,10 +14,12 @@ CREATE TABLE /*$wgDBprefix*/gis (
 	gis_latitude_max real NOT NULL,
 	gis_longitude_min real NOT NULL,
 	gis_longitude_max real NOT NULL,
-	gis_globe char(12) binary NOT NULL default '',
+	gis_globe char(8) binary NOT NULL default '',
 	gis_type char(12) binary,
-	gis_type_arg char(12) binary,
+	gis_type_arg real NOT NULL default 0,
 
 	KEY gis_id (gis_id),
-	INDEX gis_globe (gis_globe)
+	INDEX gis_globe (gis_globe),
+	INDEX gis_type (gis_type),
+	INDEX gis_type_arg (gis_type_arg)
 );

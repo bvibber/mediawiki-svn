@@ -123,6 +123,8 @@ class gis_database {
 
 		if (!$globe) $globe = "";
 
+		$type_arg = str_replace( ',', '', $type_arg); /* ignore commas */
+
 		$this->db->insert( 'gis',
 			       array(
 					'gis_page'          => $id,
@@ -141,7 +143,7 @@ class gis_database {
 	 *  FIXME: Does not work properly around the poles...
 	 *  Also select by globe and type if specified
 	 */
-	 function select_radius_m( $lat, $lon, $r, $globe, $type )
+	 function select_radius_m( $lat, $lon, $r, $globe, $type, $type_arg )
 	 {
 		$delta_lat = $r / (60 * 1852);
 		$c = cos($lat * (M_PI / 180));
@@ -155,17 +157,19 @@ class gis_database {
 		$latmax = $lat + $delta_lat;
 		$lonmin = $lon - $delta_lon;
 		$lonmax = $lon + $delta_lon;
-		return $this->select_area( $latmin, $lonmin,
-					   $latmax, $lonmax, $globe, $type );
+		return $this->select_area( $latmin, $lonmin, $latmax, $lonmax,
+					   $globe, $type, $type_arg );
 	}
 
 	/**
 	 *  Select entities belonging to or overlapping an area
 	 *  Also select by globe and type if specified
 	 */
-	 function select_area( $latmin, $lonmin, $latmax, $lonmax, $globe, $type )
+	 function select_area( $latmin, $lonmin, $latmax, $lonmax, 
+			       $globe, $type, $type_arg )
 	 {
 		if (!$globe) $globe = "";
+
 		$condition = "gis_globe = '" . $globe . "'";
 
 		if ($latmin > -90) {
@@ -180,10 +184,13 @@ class gis_database {
 		if ($lonmax < 180) {
 			$condition .= " AND gis_longitude_min <= " . $lonmax;
 		}
-		if ($type) {
+		if ($type and $type != "") {
 			$condition .= " AND gis_type = '" . $type . "'";
+			if ($type_arg and $type_arg != "") {
+				$condition .= " AND gis_type_arg >= "
+					   . str_replace( ',', '', $type_arg);
+			}
 		}
-
 		return $this->select_position( $condition );
 	}
 
@@ -202,7 +209,8 @@ class gis_database {
 				'gis_longitude_min',
 				'gis_longitude_max',
 				'gis_globe',
-				'gis_type', 'gis_type_arg' ),
+				'gis_type', 
+				'gis_type_arg' ),
 			      $condition,
 			      $fname );
 	}

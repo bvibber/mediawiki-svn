@@ -75,7 +75,8 @@ class neighbors {
 
 		$g = new gis_database();
 		$g->select_radius_m( $lat0, $lon0, $this->d * 1000,
-				     $this->attr['globe'], $this->attr['type'] );
+				     $this->attr['globe'], $this->attr['type'],
+				     $this->attr['arg:type'] );
 		$all = array();
 		$all_pos = array(); /* temporary store reqd due to sort */
 
