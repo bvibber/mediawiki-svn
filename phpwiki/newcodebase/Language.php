@@ -447,6 +447,12 @@ consequences, and that you are doing this in accordance with
 # What links here
 #
 "whatlinkshere"	=> "What links here",
+"notargettitle" => "No target page",
+"notargettext"	=> "You have not specified which page
+to perform this function on.",
+"linklistsub"	=> "(List of links)",
+"linkshere"		=> "The following pages link to here:",
+"nolinkshere"	=> "No pages link to here.",
 
 # Recent changes linked
 #
