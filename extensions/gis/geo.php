@@ -131,8 +131,8 @@ class geo_param {
 	}
 
 	/**
-	 *   Local:
-	 *   Get a set of coordinates from parameters
+	 *  Private:
+	 *  Get a set of coordinates from parameters
 	 */
 	function get_coor( ) {
 		if ($this->is_coor($this->pieces[1],$this->pieces[3])) {
@@ -201,7 +201,7 @@ class geo_param {
 	 *   Given decimal degrees, convert to 
 	 *   minutes, seconds and direction
 	 */
-	function make_minsec( $deg ) 
+	function make_minsec( $deg )
 	{
 		if ( $deg >= 0) {
 			$NS = "N";

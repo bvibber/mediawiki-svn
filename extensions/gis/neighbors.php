@@ -1,7 +1,8 @@
 <?php
 /** @file
  *
- *  Create a page which link to other articles in Wikipedia
+ *  Create a page which link to other articles in Wikipedia which are
+ *  in the neighborhood
  *
  *  ----------------------------------------------------------------------
  *
@@ -72,59 +73,92 @@ class neighbors {
 		$lat0 = $this->p->latdeg;
 		$lon0 = $this->p->londeg;
 
-		$out .= "''Locations within approx. ".$this->d." km of ";
+		$g = new gis_database();
+		$g->select_radius_m( $lat0, $lon0, $this->d * 1000);
+		$all = array();
+		$all_pos = array();
+
+		while (($x = $g->fetch_position())) {
+			$id = $x->gis_id;
+			$lat = ($x->gis_latitude_min+$x->gis_latitude_max)/2;
+			$lon = ($x->gis_longitude_min+$x->gis_longitude_max)/2;
+			$gc = new greatcircle($lat,$lon, $lat0, $lon0);
+			$all[$id] = $gc->distance;
+			$all_pos[$id] = array(
+				 'lat' => $lat,
+				 'lon' => $lon,
+				 'name' => $g->get_title($id),
+				 'type' => $x->gis_type,
+				 'octant' => $gc->octant(),
+				 'heading' => $gc->heading);
+		}
+
+		/* Sort by distance */
+		asort($all, SORT_NUMERIC);
+		reset($all);
+
+		/* Output */
+		$out .= "''List of ". count($all)
+		      . " locations within approx. ".$this->d." km of ";
 		if ($this->title != "") {
 			$out .= $this->title . ", ";
 		}
 		$out .= "coordinates "
-				. $lat0."&deg; ".$lon0 . "&deg;''<br>";
+		       . $this->show_position($lat0,$lon0)
+		       . "''<br /><hr />\r\n";
 
-		$g = new gis_database();
-		$g->select_radius_m( $lat0, $lon0, $this->d * 1000);
-
-		while (($x = $g->fetch_position())) {
-			$id = $x->gis_id;
-			$type = $x->gis_type; /* BUG: */
-
-			if ( $type == "") $type = "unknown";
-
-			$name_text = $g->get_title( $id );
-
-			$gc = new greatcircle( 
-			       ($x->gis_latitude_min+$x->gis_latitude_max)/2,
-			       ($x->gis_longitude_min+$x->gis_longitude_max)/2,
-				$lat0, $lon0);
-			$d = $gc->distance;
-
-			$out .= "'''[[".$name_text."]]''' ";
-			if ($type != "" and $type != "unknown") {
-				$out .= "(".$type .") ";
-			}
-			if ($d < 1000) {
-				$out .= round($d)." m";
-			} elseif ($d < 10000) {
-				$out .= round($d/100)/10 ." km";
-			} else {
-				$d = round($d/1000);
-				if (d >= 1000) {
-					$m = floor($d/1000);
-					$out .= $m.",";
-					$d -= $m*1000;
-				}
-				$out .= $d." km";
-			}
-			$out .= " bearing ".round($gc->heading)."&deg; "
-			       . $gc->octant()."<br>";
+		while (list($id, $d) = each($all)) {
+			$out .= $this->show_location($id, $d, $all_pos[$id]);
 		}
 		$wgOut->addWikiText( $out );
 	}
+	
+	function show_location( $id, $d, $pos )
+	{
+		$id = $pos->gis_id;
+
+		$out = "'''[[".$pos['name']."]]''' ";
+
+		$type = $pos['type'];
+		if ($type != "" and $type != "unknown") {
+			$out .= "(".$type .") ";
+		}
+		if ($d < 1000) {
+			$out .= round($d)." m ";
+		} elseif ($d < 10000) {
+			$out .= round($d/100)/10 ." km ";
+		} else {
+			$d = round($d/1000);
+			if (d >= 1000) {
+				$m = floor($d/1000);
+				$out .= $m.",";
+				$d -= $m*1000;
+			}
+			$out .= $d." km ";
+		}
+		return $out . $pos['octant'] . ", bearing " 
+		       . round($pos['heading']) . "&deg; towards "
+		       . $this->show_position($pos['lat'],$pos['lon'])
+		       . "<br />\r\n";
+	}
+	
+	function show_position( $lat, $lon )
+	{
+		$a = geo_param::make_minsec( $lat );
+		$b = geo_param::make_minsec( $lon );
+		$outa = intval(abs($a['deg'])) . "&deg;&nbsp;";
+		$outb = intval(abs($b['deg'])) . "&deg;&nbsp;";
+		if ($a['min'] != 0 or $b['min'] != 0
+		 or $a['sec'] != 0 or $b['sec'] != 0) {
+			$outa .= intval($a['min']) . "&prime;&nbsp;";
+			$outb .= intval($b['min']) . "&prime;&nbsp;";
+			if ($a['sec'] != 0 or $b['sec'] != 0) {
+				$outa .= $a['sec']. "&Prime;&nbsp;";
+				$outb .= $b['sec']. "&Prime;&nbsp;";
+			}
+		}
+
+		return $outa . $a['NS'] . " " . $outb . $b['EW'];
+	}
 }
-
 ?>
-
-
-
-
-
-
-
