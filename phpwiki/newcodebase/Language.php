@@ -45,7 +45,9 @@
 	"rememberpassword" => "Remember password across sessions",
 	"editwidth" => "Edit box has full width",
 	"editondblclick" => "Edit pages on double click (JavaScript)",
-	"watchdefault" => "Watch new and modified articles"
+	"watchdefault" => "Watch new and modified articles",
+	"minordefault" => "Mark all edits minor by default"
+	
 );
 
 /* private */ $wgBookstoreListEn = array(
@@ -864,7 +866,7 @@ See [[Wikipedia:Deletion_log]] for a record of recent deletions and restorations
 
 # What links here
 #
-"whatlinkshere"	=> "What links here?",
+"whatlinkshere"	=> "What links here",
 "notargettitle" => "No target",
 "notargettext"	=> "You have not specified a target page or user
 to perform this function on.",
