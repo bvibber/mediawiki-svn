@@ -1003,7 +1003,7 @@ class WikiPage extends WikiTitle {
             $ret .= "</u></b></font>" ;
             $subText = array () ;
             if ( $action == "view" and !$this->isSpecialPage ) $ret .=  "<br>$wikiArticleSubtitle\n" ;
-            if ( $user->isLoggedIn ) {
+            if ( $user->isLoggedIn && ! $this->isSpecialPage ) {
                 if ( $user->doWatch($this->title) )
                     array_push($subText,"<a href=\"".wikiLink("$this->url&amp;action=watch&amp;mode=no")."\">$wikiNoWatch</a>");
                 else array_push($subText,"<a href=\"".wikiLink("$this->url&amp;action=watch&amp;mode=yes")."\">$wikiWatch</a>") ;
