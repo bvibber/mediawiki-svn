@@ -74,8 +74,8 @@ function charInsertCleanChar( $data ) {
 }
 
 function charInsertChar( $start, $end = '', $title = null ) {
-	$estart = htmlspecialchars( $start );
-	$eend   = htmlspecialchars( $end   );
+	$estart = htmlspecialchars( charInsertJsString( $start ) );
+	$eend   = htmlspecialchars( charInsertJsString( $end   ) );
 	if( $eend == '' ) {
 		$inline = $start;
 	} else {
@@ -89,5 +89,17 @@ function charInsertChar( $start, $end = '', $title = null ) {
 	return "<a href=\"javascript:insertTags('$estart','$eend','')\">$inline</a>";
 }
 
+function charInsertJsString( $text ) {
+	return strtr(
+		$text,
+		array(
+			"\\"   => "\\\\",
+			"\""   => "\\\"",
+			"'"    => "\\'",
+			"\r\n" => "\\n",
+			"\r"   => "\\n",
+			"\n"   => "\\n",
+		) );
+}
 
 ?>
