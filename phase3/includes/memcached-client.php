@@ -368,11 +368,16 @@ class memcached
    {
       if (!$this->_active)
          return false;
-         
+
+      $fname = 'memcached::get';
+      wfProfileIn( $fname );
+
       $sock = $this->get_sock($key);
       
-      if (!is_resource($sock))
+      if (!is_resource($sock)) {
+         wfProfileOut( $fname );
          return false;
+      }
          
       @$this->stats['get']++;
       
@@ -380,6 +385,7 @@ class memcached
       if (!fwrite($sock, $cmd, strlen($cmd)))
       {
          $this->_dead_sock($sock);
+         wfProfileOut( $fname );
          return false;
       }
       
@@ -389,7 +395,8 @@ class memcached
       if ($this->_debug)
          foreach ($val as $k => $v)
             $this->_debugprint(@sprintf("MemCache: sock %s got %s => %s\r\n", serialize($sock), $k, $v));
-
+   
+      wfProfileOut( $fname );
       return @$val[$key];
    }
 
@@ -640,6 +647,8 @@ class memcached
     */
    function _connect_sock (&$sock, $host, $timeout = 0.25)
    {
+      $fname = 'memcached::_connect_sock';
+      wfProfileIn( $fname );
       list ($ip, $port) = explode(":", $host);
       if ($this->_persistant == 1)
       {
@@ -652,8 +661,10 @@ class memcached
       if (!$sock) {
          if ($this->_debug)
             $this->_debugprint( "Error connecting to $host: $errstr\n" );
+         wfProfileOut( $fname );
          return false;
       }
+      wfProfileOut( $fname );
       return true;
    }
 
@@ -691,7 +702,7 @@ class memcached
    {
       if (!$this->_active)
          return false;
-
+      
       if ($this->_single_sock !== null)
          return $this->sock_to_host($this->_single_sock);
       
@@ -859,12 +870,18 @@ class memcached
     */
    function _set ($cmd, $key, $val, $exp)
    {
-      if (!$this->_active)
+      $fname = 'memcached::_set';
+      wfProfileIn( $fname );
+      if (!$this->_active) {
+         wfProfileOut( $fname );
          return false;
+      }
          
       $sock = $this->get_sock($key);
-      if (!is_resource($sock))
+      if (!is_resource($sock)) {
+         wfProfileOut( $fname );
          return false;
+      }
          
       @$this->stats[$cmd]++;
       
@@ -895,8 +912,10 @@ class memcached
             $flags |= MEMCACHE_COMPRESSED;
          }
       }
-      if (!fwrite($sock, "$cmd $key $flags $exp $len\r\n$val\r\n"))
+      if (!fwrite($sock, "$cmd $key $flags $exp $len\r\n$val\r\n")) {
+         wfProfileOut( $fname );
          return $this->_dead_sock($sock);
+      }
          
       $line = trim(fgets($sock));
       
@@ -906,6 +925,7 @@ class memcached
             $val = 'compressed data';
          $this->_debugprint(sprintf("MemCache: %s %s => %s (%s)\n", $cmd, $key, $val, $line));
       }
+      wfProfileOut( $fname );
       if ($line == "STORED")
          return true;
       return false;
@@ -954,4 +974,7 @@ class memcached
 }
 
 // }}}
+
+# vim: ts=3 sts=0 sw=3 et
+
 ?>
