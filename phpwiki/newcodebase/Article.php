@@ -462,6 +462,10 @@ class Article {
 				wfMsg( "readonlywarning" ) .
 				"</strong>" );
 		}
+                if( $wgTitle->isProtected() ) {
+                        $wgOut->addHTML( "<strong>" . wfMsg( "protectedpagewarning" ) .
+                                "</strong><br />\n" );
+                }
 
 		$kblength = (int)(strlen( $wpTextbox1 ) / 1024);
 		if( $kblength > 29 ) {
