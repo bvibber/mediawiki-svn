@@ -906,7 +906,7 @@ class Language {
 		global $wgNamespaceNamesEn;
 
 		foreach ( $wgNamespaceNamesEn as $i => $n ) {
-			if ( 0 == strcmp( $n, $text ) ) { return $i; }
+			if ( 0 == strcasecmp( $n, $text ) ) { return $i; }
 		}
 		return false;
 	}

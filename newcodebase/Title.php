@@ -447,11 +447,13 @@ class Title {
 					}
 				}
 				if ( ! $done ) {
-					$p = ucfirst( $p );
-					if ( in_array( $p, $validNamespaces ) ) {
-						$t = $m[2];
-						$this->mNamespace = $wgLang->getNsIndex(
-						  str_replace( " ", "_", $p ) );
+					foreach ( $validNamespaces as $ns ) {
+						if ( 0 == strcasecmp( $p, $ns ) ) {
+							$t = $m[2];
+							$this->mNamespace = $wgLang->getNsIndex(
+							  str_replace( " ", "_", $p ) );
+							break;
+						}
 					}
 				}
 			}
