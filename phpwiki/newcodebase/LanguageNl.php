@@ -298,7 +298,7 @@
 "nbytes"		=> "$1 bytes",
 "go"			=> "OK",
 "ok"			=> "OK",
-"sitetitle"		=> "Wikipedia NL",
+"sitetitle"		=> "<span style=\"text-transform: none\">Wikipedia NL</span>", # Okay, HERE's an ugly hack. There should be a cleaner way to do this.
 "sitesubtitle"	=> "De vrije encyclopedie",
 "retrievedfrom" => "Afkomstig van Wikipedia NL, de Vrije Encyclopedie. \"$1\"",
 
@@ -456,6 +456,8 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "prefsnologintext"	=> "U dient <a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">aangemeld</a> 
 te zijn om voorkeuren te kunnen instellen.",
+"prefslogintext" => "You are logged in as \"$1\".
+Your internal ID number is $2.",
 "prefsreset"	=> "Standaardvoorkeuren hersteld.",
 "qbsettings"	=> "Menubalkinstellingen", 
 "changepassword" => "Wachtwoord wijzigen",
