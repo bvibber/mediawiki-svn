@@ -437,7 +437,7 @@ $wikiStubText = "'''These are all the articles in the database, sorted by length
 $wikiLongPagesText = "'''These are all the articles in the database, sorted by length, longest first.'''<br>''#REDIRECT pages and pages within a namespace (like Talk:) are '''not''' listed here!''\n\n" ;
 $wikiStubChars = "$1 chars" ;
 $wikiAskSQL = "MySQL access" ;
-$wikiAskSQLtext = "This function is available for sysops only.<br>''Please, do not press return/enter, '''always''' click on the ask button!''" ;
+$wikiAskSQLtext = "Developers can submit any <a href=\"" . wikilink("SQL") . "\">SQL</a> query, sysops can only submit SELECT queries. Please refrain from running queries that use a lot of resources. The database scheme is <a href=\"http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/wikipedia/phpwiki/fpw/wikipedia.sql?rev=HEAD&content-type=text/vnd.viewcvs-markup\">here</a>.";
 $wikiSQLSafetyMessage = "Sorry, unless you are a developer you can only run SELECT queries." ;
 $wikiStubDelete = "<b>Delete this page!</b>" ;
 $wikiStubLinkHere = "$1 articles link here." ;

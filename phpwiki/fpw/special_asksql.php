@@ -4,7 +4,11 @@
 function askSQL () {
 	global $THESCRIPT , $wikiAskSQLtext , $Save , $question , $wikiSQLSafetyMessage , $user ;
 	$ret = "" ;
-	$question = stripslashes ( $question ) ;
+	if ($question == "") {
+		$question = "SELECT  ...  FROM  ...  WHERE  ...";
+	} else {
+		$question = stripslashes ( $question ) ;
+	}
 	if ( isset ( $Save ) ) {
 		$ret .= htmlspecialchars ( $question ) . "<br>" ;
 		if ( ! in_array ( "is_developer" , $user->rights ) && strncasecmp($question , "select" , 6) ) {
@@ -29,22 +33,24 @@ function askSQL () {
 					}
 				mysql_free_result ( $result ) ;
 		
-				$ret .= "<table width=\"100%\" border=1 bordercolor=black cellspacing=0 cellpadding=2><tr>" ;
+				$ret .= "<table border=1 bordercolor=black cellspacing=0 cellpadding=2><tr>\n" ;
 				foreach ( $k as $x ) $ret .= "<th>$x</th>" ;
-				$ret .= "</tr><tr>" ;
+				$ret .= "</tr>\n" ;
 				foreach ( $a as $y ) {
-					foreach ( $k as $x ) $ret .= "<td>".$y->$x."</td>" ;
-					$ret .= "</tr><tr>" ;
+					$ret .= "<tr>\n";
+					foreach ( $k as $x ) $ret .= "<td valign=top>".$y->$x."</td>\n" ;
+					$ret .= "</tr>\n" ;
 					}
-				$ret .= "</tr></table>" ;
+				$ret .= "</table>" ;
 				}
 			}
 		}
 	$form = $wikiAskSQLtext ;
-	$form .= "<FORM method=POST>" ;
-	$form .= "<input type=text value=\"" . htmlspecialchars ( $question ) ."\" name=question size=110> \n" ;
-	$form .= "<input type=submit value=Ask name=Save> \n" ;
-	$form .= "</FORM>" ;
+	$form .= "<FORM method=POST>\n" ;
+	$form .= "<input type=hidden name=Save value=1>\n";
+	$form .= "<input type=text value=\"" . htmlspecialchars ( $question ) ."\" name=question size=70> \n" ;
+	$form .= "<input type=submit value=Submit> \n" ;
+	$form .= "</FORM><p>\n" ;
 	return $form.$ret ;
 	}
 ?>
