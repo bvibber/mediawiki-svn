@@ -540,7 +540,7 @@ $wpTextbox2
 		global $wgServer, $wgScript;
 		global $wpConfirm, $image, $oldimage;
 
-		if ( ! $wgUser->isSysop() ) {
+		if ( ( ! $oldimage ) && ( ! $wgUser->isSysop() ) ) {
 			$wgOut->sysopRequired();
 			return;
 		}

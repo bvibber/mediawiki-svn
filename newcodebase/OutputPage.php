@@ -236,16 +236,18 @@ class OutputPage {
 
 	function returnToMain()
 	{
-		global $wgOut, $returnto;
+		global $wgUser, $wgOut, $returnto;
 
+		$sk = $wgUser->getSkin();
 		if ( "" == $returnto ) {
-			$r = wfMsg( "returntomain" );
-		} else {
-			$r = str_replace( "$1", $returnto, wfMsg( "returnto" ) );
-			$wgOut->addMeta( "http:Refresh", "10;url=" .
-			  wfLocalUrl( $returnto ) );
+			$returnto = wfMsg( "mainpage" );
 		}
-		$wgOut->addWikiText( "\n<p>$r\n" );
+		$link = $sk->makeKnownLink( $returnto, "" );
+
+		$r = str_replace( "$1", $link, wfMsg( "returnto" ) );
+		$wgOut->addMeta( "http:Refresh", "10;url=" .
+		  wfLocalUrl( $returnto ) );
+		$wgOut->addHTML( "\n<p>$r\n" );
 	}
 
 	# Well, OK, it's actually about 14 passes.  But since all the
