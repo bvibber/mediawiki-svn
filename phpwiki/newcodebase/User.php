@@ -237,7 +237,11 @@ class User {
 	function getOption( $oname )
 	{
 		$this->loadFromDatabase();
-		return $this->mOptions[$oname];
+		if ( array_key_exists( $oname, $this->mOptions ) ) {
+			return $this->mOptions[$oname];
+		} else {
+			return "";
+		}
 	}
 
 	function setOption( $oname, $val )
