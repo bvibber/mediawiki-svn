@@ -336,9 +336,11 @@ class Skin {
 
 	function searchForm()
 	{
+		global $search;
 		$s = "<form class='inline' method=get action=\""
 		  . wfLocalUrl( "" ) . "\">"
-		  . "<input type=text name=\"search\" size=16 value=\"\">\n"
+		  . "<input type=text name=\"search\" size=16 value=\""
+		  . htmlspecialchars(substr($search,0,256)) . "\">\n"
 		  . "<input type=submit value=\"" . wfMsg( "search" )
 		  . "\"></form>";
 
