@@ -1,0 +1,68 @@
+The "extensions" module regroup code that can be used to enhance your mediawiki
+experience. Some of the extensions are large and we did not want to keep them
+in the main mediawiki branch. For example wikihero is a great tool to easily
+get egyptians hieroglyph but it contains hundreds of pictures.
+
+In this module you will find:
+
+Asksql/
+ Tool to let users directly query the database.
+
+auth/
+ An example to authenticate your user using an external system (such as LDAP).
+
+BoardVote/
+ A tool to run a site wide vote using pgp.
+
+CharInsert/
+
+ee/
+
+enumcat/
+
+experimental/
+
+geo/
+
+gis/ 
+
+icpagent/
+ Tool to handle ICP load balancing between squids and apaches in your cluster.
+
+Makesysop/
+ Special:Makesysop will let you grant sysop / bureaucrat rights to user on
+ others wiki when you run a wiki farm.
+
+MogileClient/
+
+normal/
+
+OAI/
+
+php/
+
+sampleskin/
+ A skin example.
+
+SpamBlacklist/
+
+tidy/
+ Configuration file for tidy.
+
+timeline/
+ A tool to create time line or just other graphs.
+
+wikidiff/
+ A C++ diff engine for wiki syntax differences, it is much faster than the PHP
+ one shipped with MediaWiki.
+
+wikiforum/
+ Add a forum fully integrated with MediaWiki. [[Special:Forum]]
+
+wikihiero/
+ An extension that add a <hiero> tag to let you easily write using egyptians
+ hieroglyphs.
+
+zhdaemon/
+
+
