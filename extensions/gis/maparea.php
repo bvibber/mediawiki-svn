@@ -41,24 +41,34 @@ class maparea {
 		$this->attr = $this->p->get_attr();
 	}
 
-	function show() 
+	function show($action)
 	{
 		global $wgOut, $wgUser, $wgContLang;
 
-		/* No reason for robots to follow map links */
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		if ($action != 'raw') {
+			/* No reason for robots to follow map links */
+			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
-		$wgOut->setPagetitle( "Maparea" );
+			$wgOut->setPagetitle( "Maparea" );
 
-		if (($e = $this->p->get_error()) != "") {
-			$wgOut->addHTML(
-			       "<p>" . htmlspecialchars( $e ) . "</p>");
-			$wgOut->output();
-			wfErrorExit();
-			return;
+			if (($e = $this->p->get_error()) != "") {
+				$wgOut->addHTML(
+				"<p>" . htmlspecialchars( $e ) . "</p>");
+				$wgOut->output();
+				wfErrorExit();
+				return;
+			}
+
+			$wgOut->addWikiText( $this->make_output() );
+		} else {
+			global $wgInputEncoding;
+			$ContentType = 'text/x-wiki';
+			header( "Content-type: ".$ContentType.'; charset='.$wgInputEncoding);
+
+			echo( $this->make_output() );
+
+			$wgOut->disable();
 		}
-
-		$wgOut->addWikiText( $this->make_output() );
 	}
 
 	function make_output()

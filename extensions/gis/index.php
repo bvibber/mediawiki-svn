@@ -31,7 +31,7 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-$wgGisVersion = '0.1alpha';
+$wgGisVersion = '0.2alpha';
 
 include_once ( "gissettings.php" ) ;
 
@@ -63,8 +63,9 @@ if ( isset ( $_GET['geo'] ) ) {
 	$bsl->show();
 } else if ( isset ( $_GET['maparea'] ) ) {
 	$maparea = urldecode ( $_GET['maparea'] ) ;
+	$action = urldecode ( $_GET['action'] ) ;
 	$bsl = new maparea( $maparea );
-	$bsl->show();
+	$bsl->show( $action );
 } else if ( isset ( $_GET['version'] ) ) {
 	$bsl = new gis_version( );
 	$bsl->show();
