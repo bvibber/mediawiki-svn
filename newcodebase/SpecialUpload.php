@@ -2,17 +2,17 @@
 
 function wfSpecialUpload()
 {
-	global $wpUpload, $wpReUpload;
+	global $wpUpload, $wpReUpload, $action;
 
 	$fields = array( "wpUploadFile", "wpUploadDescription" );
 	wfCleanFormFields( $fields );
 
-	if ( isset( $wpUpload ) ) {
+	if ( isset( $wpReUpload) ) {
+		unsaveUploadedFile();
+		mainUploadForm( "" );
+	} else if ( "submit" == $action || isset( $wpUpload ) ) {
 		processUpload();
 	} else {
-		if ( isset( $wpReUpload ) ) {
-			unsaveUploadedFile();
-		}
 		mainUploadForm( "" );
 	}
 }
@@ -157,18 +157,18 @@ function uploadWarning( $warning )
 	$reupload = wfMsg( "reupload" );
 	$iw = wfMsg( "ignorewarning" );
 	$reup = wfMsg( "reuploaddesc" );
-	$action = wfLocalUrl( "Special:Upload" );
+	$action = wfLocalUrl( "Special:Upload", "action=submit" );
 
 	$wgOut->addHTML( "
-<form method=post enctype='multipart/form-data' action='{$action}'>
+<form method=post enctype='multipart/form-data' action=\"{$action}\">
 <input type=hidden name='wpUploadAffirm' value='1'>
 <input type=hidden name='wpIgnoreWarning' value='1'>
-<input type=hidden name='wpUploadDescription' value=\"$wpUploadDescription\">
-<input type=hidden name='wpUploadSaveName' value=\"$wpUploadSaveName\">
-<input type=hidden name='wpUploadTempName' value=\"$wpUploadTempName\">
-<input type=hidden name='wpUploadSize' value=\"$wpUploadSize\">
-<input type=hidden name='wpSavedFile' value=\"$wgSavedFile\">
-<input type=hidden name='wpUploadOldVersion' value=\"$wgUploadOldVersion\">
+<input type=hidden name='wpUploadDescription' value=\"{$wpUploadDescription}\">
+<input type=hidden name='wpUploadSaveName' value=\"{$wpUploadSaveName}\">
+<input type=hidden name='wpUploadTempName' value=\"{$wpUploadTempName}\">
+<input type=hidden name='wpUploadSize' value=\"{$wpUploadSize}\">
+<input type=hidden name='wpSavedFile' value=\"{$wgSavedFile}\">
+<input type=hidden name='wpUploadOldVersion' value=\"{$wgUploadOldVersion}\">
 <table border=0><tr>
 <tr><td align=right>
 <input tabindex=2 type=submit name='wpUpload' value=\"{$save}\">

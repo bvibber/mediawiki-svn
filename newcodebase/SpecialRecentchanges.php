@@ -98,7 +98,7 @@ function rcCountLink( $lim, $d )
 	global $wgUser;
 	$sk = $wgUser->getSkin();
 	$s = $sk->makeKnownLink( "Special:Recentchanges", "{$lim}",
-	  "days={$d}&amp;limit={$lim}" );
+	  "days={$d}&limit={$lim}" );
 	return $s;
 }
 
@@ -107,7 +107,7 @@ function rcDaysLink( $lim, $d )
 	global $wgUser;
 	$sk = $wgUser->getSkin();
 	$s = $sk->makeKnownLink( "Special:Recentchanges", "{$d}",
-	  "days={$d}&amp;limit={$lim}" );
+	  "days={$d}&limit={$lim}" );
 	return $s;
 }
 

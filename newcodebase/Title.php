@@ -153,7 +153,7 @@ class Title {
 			$p = $wgValidInterwikis[$this->mInterwiki];
 		}
 		$n = Namespace::getName( $this->mNamespace );
-		if ( "" != $n ) { $n .= "%3A"; }
+		if ( "" != $n ) { $n .= ":"; }
 		$u = str_replace( "$1", $n . $this->mUrlform, $p );
 		if ( "" != $this->mFragment ) {
 			$u .= "#" . $this->mFragment;

@@ -474,10 +474,10 @@ class Skin {
 		$s = "<form method=get id='specialform' " .
 		  "action='{$wgServer}{$wgRedirectScript}'>\n";
 		$s .= "<select name='wpDropdown'>\n";
-		$s .= "<option value='Special%3ASpecialpages'>{$sp}</option>\n";
+		$s .= "<option value='Special:Specialpages'>{$sp}</option>\n";
 
 		foreach ( $a as $name => $desc ) {
-			$s .= "<option value='Special%3A{$name}'>{$desc}</option>\n";
+			$s .= "<option value='Special:{$name}'>{$desc}</option>\n";
 		}
 		$s .= "</select>\n";
 		$s .= "<input type=submit value='{$go}' name=redirect>\n";
@@ -765,13 +765,11 @@ class Skin {
 		if ( "" == $link ) {
 			$u = "";
 			if ( "" == $text ) { $text = $nt->getFragment(); }
-		} else if ( "" == $query ) {
-			$u = str_replace( "$1", $link, $wgArticlePath );
 		} else {
-			$u = "$wgServer$wgScript?title=$link&amp;$query";
+			$u = wfEscapeHTML( wfLocalUrl( $link, $query ) );
 		}
 		if ( "" != $nt->getFragment() ) {
-			$u .= "#" . $nt->getFragment();
+			$u .= "#" . wfEscapeHTML( $nt->getFragment() );
 		}
 		if ( "" == $text ) { $text = $nt->getPrefixedText(); }
 		$style = $this->getInternalLinkAttributes( $link, $text );
@@ -783,7 +781,7 @@ class Skin {
 				$trail = $m[2];
 			}
 		}
-		$r = "<a href=\"$u\"$style>$text$inside</a>$trail";
+		$r = "<a href=\"{$u}\"{$style}>{$text}{$inside}</a>{$trail}";
 		return $r;
 	}
 
@@ -799,9 +797,9 @@ class Skin {
 
 		if ( $wgOut->isPrintable() ||
 		  ( 1 == $wgUser->getOption( "highlightbroken" ) ) ) {
-			$s = "<a href=\"$link\"$style>$text</a>";
+			$s = "<a href=\"{$link}\"{$style}>{$text}</a>";
 		} else {
-			$s = "$text<a href=\"$link\"$style>?</a>";
+			$s = "{$text}<a href=\"{$link}\"{$style}>?</a>";
 		}
 		return $s;
 	}
@@ -831,7 +829,7 @@ class Skin {
 		$link = $nt->getPrefixedURL();
 		if ( "" == $alt ) { $alt = $name; }
 
-		$u = str_replace( "$1", $link, $wgArticlePath );
+		$u = wfEscapeHTML( wfLocalUrl( $link ) );
 		$s = "<a href=\"{$u}\" class='image' title=\"{$alt}\">" .
 		  "<img border=0 src=\"{$url}\" alt=\"{$alt}\"></a>";
 		return $s;
@@ -842,7 +840,8 @@ class Skin {
 		global $wgOut, $wgServer, $wgScript, $wgArticlePath, $wgTitle;
 
 		if ( "" == $alt ) { $alt = $name; }
-		$s = "<a href=\"{$url}\" class='media' title=\"{$alt}\">{$alt}</a>";
+		$u = wfEscapeHTML( $url );
+		$s = "<a href=\"{$u}\" class='media' title=\"{$alt}\">{$alt}</a>";
 		return $s;
 	}
 

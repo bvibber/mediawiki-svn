@@ -87,7 +87,7 @@ function lcCountLink( $lim, $d, $t )
 	global $wgUser;
 	$sk = $wgUser->getSkin();
 	$s = $sk->makeKnownLink( "Special:Recentchangeslinked", "{$lim}",
-	  "target={$t}&amp;days={$d}&amp;limit={$lim}" );
+	  "target={$t}&days={$d}&limit={$lim}" );
 	return $s;
 }
 
@@ -96,7 +96,7 @@ function lcDaysLink( $lim, $d, $t )
 	global $wgUser;
 	$sk = $wgUser->getSkin();
 	$s = $sk->makeKnownLink( "Special:Recentchangeslinked", "{$d}",
-	  "target={$t}&amp;days={$d}&amp;limit={$lim}" );
+	  "target={$t}&days={$d}&limit={$lim}" );
 	return $s;
 }
 

@@ -19,7 +19,7 @@ class DBLockForm {
 
 	function showForm( $err )
 	{
-		global $wgOut, $wgUser, $wgServer, $wgScript;
+		global $wgOut, $wgUser;
 		global $wpLockConfirm;
 
 		$wgOut->setPagetitle( wfMsg( "lockdb" ) );
@@ -31,11 +31,10 @@ class DBLockForm {
 		}
 		$lc = wfMsg( "lockconfirm" );
 		$lb = wfMsg( "lockbtn" );
-		$action = "$wgServer$wgScript?title=Special%3ALockdb&amp;" .
-		  "action=submit";
+		$action = wfLocalUrlE( "Special:Lockdb","action=submit" );
 
 		$wgOut->addHTML( "<p>
-<form method=post action='{$action}'>
+<form method=post action=\"{$action}\">
 <table border=0><tr>
 <td align='right'>
 <input type=checkbox name='wpLockConfirm'>
@@ -43,7 +42,7 @@ class DBLockForm {
 <td align='left'>{$lc}<td>
 </tr><tr>
 <td>&nbsp;</td><td align='left'>
-<input type=submit name='wpLock' value='{$lb}'>
+<input type=submit name='wpLock' value=\"{$lb}\">
 </td></tr></table>
 </form>\n" );
 
@@ -51,7 +50,7 @@ class DBLockForm {
 
 	function doSubmit()
 	{
-		global $wgOut, $wgUser, $wgServer, $wgScript, $wgLang;
+		global $wgOut, $wgUser, $wgLang;
 		global $wpLockConfirm, $wgReadOnlyFile;
 
 		if ( ! $wpLockConfirm ) {
@@ -68,14 +67,13 @@ class DBLockForm {
 		  $wgLang->timeanddate( date( "YmdHis" ) ) . "\n" );
 		fclose( $fp );
 
-		$success = "$wgServer$wgScript?title=Special%3ALockdb" .
-		  "&action=success";
+		$success = wfLocalUrl( "Special:Lockdb", "action=success" );
 		$wgOut->redirect( $success );
 	}
 
 	function showSuccess()
 	{
-		global $wgOut, $wgUser, $wgServer, $wgScript;
+		global $wgOut, $wgUser;
 		global $ip;
 
 		$wgOut->setPagetitle( wfMsg( "lockdb" ) );
