@@ -19,7 +19,7 @@ function upload () {
 	if (isset($removeFile)) {
 		if ( !$isSysop ) return $wikiUploadDenied ;
 		if (is_file("./upload/$removeFile") ) unlink ("./upload/$removeFile");
-		$message = str_replace ( "$1" , $removeFile , htmlspecialchars ( $wikiUploadDeleted ) ) ;
+		$message = str_replace ( "$1" , htmlspecialchars ( $removeFile ) , $wikiUploadDeleted ) ;
 
 		# Appending log page "log:Uploads"
 		$now = date ( "Y-m-d H:i:s" , time () ) ;
