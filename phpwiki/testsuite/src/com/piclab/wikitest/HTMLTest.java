@@ -16,6 +16,10 @@ import org.w3c.dom.*;
 
 public class HTMLTest extends WikiTest {
 
+/* Regex patterns to look for on every page; "good" patterns should
+ * be found, "bad" patterns should be absent.
+ */
+
 private String[] m_goodpats = {
 	"\\A\\s*<!doctype html", "<meta\\s+[^>]*name\\s*=\\s*.robots",
 	"<link\\s+[^>]*rel\\s*=\\s*.stylesheet", "<h1\\s+[^>]*class\\s*=.pagetitle",
@@ -29,13 +33,12 @@ private String[] m_badpats = {
 };
 private Pattern[] m_cbadpats;
 
-public HTMLTest( WikiSuite ws ) { super(ws); }
 
 public String testName() { return "HTML"; }
 
-protected boolean runTest() throws Exception {
-	m_suite.clearCookies();
 
+protected int initTest() throws Exception {
+	m_suite.logout();
 	/*
 	 * Pre-compile the regexes.
 	 */
@@ -49,84 +52,76 @@ protected boolean runTest() throws Exception {
 		m_cbadpats[i] = Pattern.compile( m_badpats[i],
 		  Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
 	}
-	/*
-	 * Then run the tests.
-	 */
-	/* java.util.logging.Level l = WikiSuite.setLoggingLevel(
-	  java.util.logging.Level.ALL ); */
-
-    WikiSuite.fine( "Starting test \"" + testName() + "\"" );
-	if ( ! part1() ) { throw new WikiSuiteFailureException( "Part 1" ); }
-	if ( ! part2() ) { throw new WikiSuiteFailureException( "Part 2" ); }
-
-	/* WikiSuite.setLoggingLevel( l ); */
-	return true;
+	return 0;
 }
 
+protected int runTest() throws Exception {
+	int c = 0;
 
-private boolean part1() throws Exception {
-	boolean result = true;
+	if ( 0 != ( c = part1() ) ) { return fail(c); }
+	if ( 0 != ( c = part2() ) ) { return fail(c); }
+	return 0;
+}
 
+private int part1() throws Exception {
 	WebResponse wr = m_suite.loginAs( "Fred", "Fred" );
 	Document doc = wr.getDOM();
-	result = matchesAll( wr.getText() );
+	if ( ! matchesAll( wr.getText() ) ) { return 101; }
 
 	wr = setPref( "wpOpnumberheadings", null );
 	wr = setPref( "wpOphighlightbroken", "1" );
 	WikiSuite.fine( "Standard settings" );
 
-	result = part1inner();
+	int c = 0;
+	if ( 0 != ( c = part1inner() ) ) { return 110 + c; }
 
 	wr = setPref( "wpOpnumberheadings", "1" );
 	WikiSuite.fine( "Numbered headings" );
 
-	result = part1inner();
+	if ( 0 != ( c = part1inner() ) ) { return 120 + c; }
 
 	wr = setPref( "wpOphighlightbroken", "1" );
 	WikiSuite.fine( "Question-mark links" );
 
-	result = part1inner();
-	return result;
+	if ( 0 != ( c = part1inner() ) ) { return 130 + c; }
+	return 0;
 }
 
-private boolean part1inner() throws Exception {
-	boolean result = true;
+private int part1inner() throws Exception {
 	WebResponse wr = m_suite.viewPage( "" );
 	/*
 	 * Will throw exception if not parseable:
 	 */
 	Document doc = wr.getDOM();
-	result = matchesAll( wr.getText() );
+	if ( ! matchesAll( wr.getText() ) ) { return 1; }
 
 	wr = m_suite.viewPage( "Opera" );
 	doc = wr.getDOM();
-	result = matchesAll( wr.getText() );
+	if ( ! matchesAll( wr.getText() ) ) { return 2; }
 
 	wr = m_suite.viewPage( "User:Fred" );
 	doc = wr.getDOM();
-	result = matchesAll( wr.getText() );
+	if ( ! matchesAll( wr.getText() ) ) { return 3; }
 
 	wr = m_suite.viewPage( "Special:Recentchanges" );
 	doc = wr.getDOM();
-	result = matchesAll( wr.getText() );
+	if ( ! matchesAll( wr.getText() ) ) { return 4; }
 
 	wr = m_suite.viewPage( "Talk:Poker" );
 	doc = wr.getDOM();
-	result = matchesAll( wr.getText() );
+	if ( ! matchesAll( wr.getText() ) ) { return 5; }
 
 	wr = m_suite.viewPage( "Wikipedia:Upload_log" );
 	doc = wr.getDOM();
-	result = matchesAll( wr.getText() );
+	if ( ! matchesAll( wr.getText() ) ) { return 6; }
 
-	return result;
+	return 0;
 }
 
-private boolean part2() throws Exception {
-	boolean result = true;
-
+private int part2() throws Exception {
 	WebResponse wr = m_suite.loginAs( "Barney", "Barney" );
 	Document doc = wr.getDOM();
-	result = matchesAll( wr.getText() );
+	if ( ! matchesAll( wr.getText() ) ) { return 201; }
 
 	wr = setPref( "wpOpnumberheadings", null );
 	wr = setPref( "wpOphighlightbroken", "1" );
@@ -134,12 +129,12 @@ private boolean part2() throws Exception {
 	for (int q = 0; q < 4; ++q) {
 		wr = setPref( "wpQuickbar", String.valueOf( q ) );
 		doc = wr.getDOM();
-		result = matchesAll( wr.getText() );
-		WikiSuite.fine( "Set quickbar to " + q );
+		if ( ! matchesAll( wr.getText() ) ) { return 200 + 10 * q; }
+		WikiSuite.finer( "Set quickbar to " + q );
 
 		for (int s = 0; s < 3; ++s) {
 			wr = setPref( "wpSkin", String.valueOf( s ) );
-			WikiSuite.fine( "Set skin to " + s );
+			WikiSuite.finer( "Set skin to " + s );
 
 			double r = Math.random();
 			if ( r < .5 ) {
@@ -157,10 +152,10 @@ private boolean part2() throws Exception {
 				wr = m_suite.viewPage( "" );
 			}
 			doc = wr.getDOM();
-			result = matchesAll( wr.getText() );
+			if ( ! matchesAll( wr.getText() ) ) { return 201 + 10 * q + s; }
 		}
 	}
-	return result;
+	return 0;
 }
 
 private boolean matchesAll( String text ) {
@@ -198,9 +193,7 @@ throws Exception {
 }
 
 public static void main( String[] params ) {
-	WikiSuite ws = new WikiSuite();
-	HTMLTest wt = new HTMLTest( ws );
-	wt.run();
+	(new HTMLTest()).runSingle( params );
 }
 
 }

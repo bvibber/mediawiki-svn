@@ -9,32 +9,61 @@ package com.piclab.wikitest;
 
 import com.meterware.httpunit.*;
 
-public class WikiTest implements Runnable {
+public class WikiTest {
 
-protected WikiSuite m_suite;
+protected WikiSuite m_suite = null;
 protected long m_start, m_stop;
+protected boolean m_verboseflag = false;
 
 /* All subclasses of WikiTest should override testName()
  * to return a useful name and runTest() to perform the actual
- * tests.  runTest() hould return true on success.  You also
- * need to duplicate the constructor since that's not
- * inherited.
+ * tests. runTest() should return true on success. You can
+ * also overrise initTest() if you like; it gets run before
+ * the individual test timer is started.
  */
 
-public WikiTest(WikiSuite s) { m_suite = s; }
+public String testName() { return "Error"; }
 
-public String testName() { return "Basic"; }
-
-protected boolean runTest() throws Exception {
-	return true;
+protected int initTest() throws Exception {
+	return 0;
 }
 
-/* You generally won't want to override run(), as it does
- * all the extra stuff around the actual test invocation.
+protected int runTest() throws Exception {
+	return 0;
+}
+
+/*
+ * This is the primary entry point:
  */
 
-public void run() {
-	boolean result = false;
+public void run( WikiSuite ws ) {
+	m_suite = ws;
+	run();
+}
+
+private void run() {
+	int result = 0;
+
+	/* assert( m_suite != null ); */
+
+	java.util.logging.Level ll = null;
+	if ( m_verboseflag ) {
+		ll = WikiSuite.setLoggingLevel( java.util.logging.Level.FINE );
+	}
+
+	try {
+		result = initTest();
+	} catch ( Exception e ) {
+		WikiSuite.error( "Exception (" + e + ") initializing test \"" +
+		  testName() + "\"" );
+		result = 1;
+	}
+	if ( result != 0 ) {
+		WikiSuite.error( "Test \"" + testName() +
+		  "\" failed to initialize with code " + result );
+		return;
+	}
+	WikiSuite.fine( "Started test \"" + testName() + "\"" );
 
 	StringBuffer sb = new StringBuffer(100);
 	java.text.DecimalFormat df =
@@ -47,7 +76,7 @@ public void run() {
 	} catch (Exception e) {
 		WikiSuite.error( "Exception (" + e + ") running test \"" +
 		  testName() + "\"" );
-		result = false;
+		result = 2;
 	}
 	m_stop = System.currentTimeMillis();
 
@@ -57,7 +86,7 @@ public void run() {
 		sb.append( "Test \"" ).append( testName() )
 		  .append( "\"                  " );
 		sb.setLength( 20 );
-		sb.append( result ? "Succeeded" : "Failed   " ).append( "   (" )
+		sb.append( (result==0) ? "Succeeded" : "Failed   " ).append( "   (" )
 		  .append( df.format( (double)(m_stop - m_start) / 1000.0 ) )
 		  .append( " secs)" );
 
@@ -66,6 +95,42 @@ public void run() {
 		WikiSuite.error( "Exception (" + e + ") running test \"" +
 		  testName() + "\"" );
 	}
+	if ( m_verboseflag ) {
+		WikiSuite.setLoggingLevel( ll );
+	}
+}
+
+/*
+ * General utility function
+ */
+
+protected int fail( int code ) {
+	WikiSuite.error( "Test \"" + testName() + "\" failed with code " + code );
+	return code;
+}
+
+/*
+ * The main method of a subclass should be able to just create 
+ * an instance of itself and call runSingle() to perform a
+ * standalone test, and we'll handle the commandline and
+ * setting up a suite object, etc. They are of course welcome
+ * to set up a more complex main if they want.
+ */
+
+public void runSingle( String[] params ) {
+	/*
+	 * Do command line. For now, just verbose flag.
+	 */
+	for ( int i = 0; i < params.length; ++i ) {
+		if ( "-v".equals( params[i].substring( 0, 2 ) ) ) {
+			m_verboseflag = true;
+		}
+	}
+	run( new WikiSuite() );
+}
+
+public static void main( String params ) {
+	System.out.println( "WikiTest is not a runnable class." );
 }
 
 }

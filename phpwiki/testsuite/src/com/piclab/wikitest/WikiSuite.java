@@ -205,6 +205,11 @@ public static void fine( String msg ) {
 	ms_logger.getHandlers()[0].flush();
 }
 
+public static void finer( String msg ) {
+	ms_logger.finer( msg );
+	ms_logger.getHandlers()[0].flush();
+}
+
 public static Level setLoggingLevel( Level newl ) {
 	Level oldl = ms_logger.getLevel();
 
@@ -551,14 +556,14 @@ public static void main( String[] params ) {
 	/*
 	 * All the actual tests go here.
 	 */
-	(new LinkTest(ws)).run();
-	(new HTMLTest(ws)).run();
-	(new EditTest(ws)).run();
-	(new ParserTest(ws)).run();
-	(new SpecialTest(ws)).run();
-	(new UploadTest(ws)).run();
-	(new SearchTest(ws)).run();
-	/* (new MathTest(ws)).run(); */
+	(new LinkTest()).run(ws);
+	(new HTMLTest()).run(ws);
+	(new EditTest()).run(ws);
+	(new ParserTest()).run(ws);
+	(new SpecialTest()).run(ws);
+	(new UploadTest()).run(ws);
+	(new SearchTest()).run(ws);
+	/* (new MathTest()).run(ws); */
 
 	/*
 	 * Tests are all done. Clean up and report.
