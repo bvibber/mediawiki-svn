@@ -278,10 +278,14 @@ See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges r
 # All pages
 #
 "allpages"		=> "All pages",
+"allpagestext"	=> "Below is a list of every article currently in
+the Wikipedia database.",
+"getarticlelist" => "fetching article list",
 
 # Random page
 #
 "randompage"	=> "Random page",
+"findrandom"	=> "looking for random article",
 
 # Short pages
 #

@@ -17,6 +17,27 @@ class Article {
 		$this->mTimestamp = $this->mComment = "";
 	}
 
+	/* static */ function newFromID( $newid )
+	{
+		global $wgTitle, $wgArticle;
+		$a = new Article();
+
+		$conn = wfGetDB();
+		$sql = "SELECT cur_namespace,cur_title FROM cur WHERE " .
+		  "cur_id={$newid}";
+		$res = mysql_query( $sql, $conn );
+		if ( ( false === $res ) || ( 0 == mysql_num_rows( $res ) ) ) {
+			return;
+		}
+		$s = mysql_fetch_object( $res );
+		$wgTitle = Title::newFromDBkey( Title::makeName( $s->cur_namespace,
+		  $s->cur_title ) );
+		$wgTitle->resetArticleID( $newid );
+		mysql_free_result( $res );
+
+		return $a;
+	}
+
 	function getContent()
 	{
 		if ( 0 == $this->getID() ) {

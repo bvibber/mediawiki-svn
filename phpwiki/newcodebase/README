@@ -1,4 +1,4 @@
-2002-05-20
+2002-05-30
 
 This is a new codebase that attempts to reproduce (more or less
 exactly, modulo some bugs and some things I don't like) the
@@ -24,9 +24,21 @@ those problems, and the new code should be fully localizable
 by changing just the one class.
 
 You'll need to convert the database before you run it as well.
-There's a running installation on piclab.com/newwiki, and I can
-be talked into giving accounts there, though I think it should
-be possible to get this running on SourceForge as well.
+There's a running installation on
+http://www.piclab.com/newwiki/wiki.phtml , and I can be talked
+into giving accounts there, though I think it should be possible
+to get this running on SourceForge as well.
+
+The copyright issue is complicated.  At this point, the vast
+majority of the code is probably mine, and therefore public
+domain.  However there are still things shamelessly stolen from
+sources with more GPL-like terms, and Magnus's original version
+is still under GPL.  The DiffEngine, for example, is taken
+almost verbatim.  So, it is safe to use any of this code under
+GPL terms.  If you want to use some particular part of it under
+less restrictive terms, you'll have to figure out if I wrote it
+or not--probably the easiest way to do that is to ask me.  But
+I'm not coing to bother cataloguing every line.
 
 -- Lee Daniel Crocker <lee@piclab.com>
 
