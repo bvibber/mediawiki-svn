@@ -266,8 +266,8 @@ function WantedPages () {
 	$sql = "SELECT cur_title,cur_linked_links,cur_unlinked_links FROM cur" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) {
-		$allPages[$s->cur_title] = -999999999999 ; # Effectively removing existing topics from list
-		$u = explode ( "\n" , $s->cur_unlinked_links ) ; foreach ( $u as $x ) $allPages[$x] += 1 ;
+		$allPages[ucfirst($s->cur_title)] = -999999999999 ; # Effectively removing existing topics from list
+		$u = explode ( "\n" , $s->cur_unlinked_links ) ; foreach ( $u as $x ) $allPages[ucfirst($x)] += 1 ;
 		}
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
@@ -304,9 +304,9 @@ function LonelyPages () {
 	$sql = "SELECT cur_title,cur_linked_links,cur_unlinked_links FROM cur" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) {
-		$allPages[$s->cur_title] = $allPages[$s->cur_title] * 1 ;
-		$u = explode ( "\n" , $s->cur_linked_links ) ; foreach ( $u as $x ) $allPages[$x] += 1 ;
-		$u = explode ( "\n" , $s->cur_unlinked_links ) ; foreach ( $u as $x ) $allPages[$x] += 1 ;
+		$allPages[ucfirst($s->cur_title)] = $allPages[ucfirst($s->cur_title)] * 1 ;
+		$u = explode ( "\n" , $s->cur_linked_links ) ; foreach ( $u as $x ) $allPages[ucfirst($x)] += 1 ;
+		$u = explode ( "\n" , $s->cur_unlinked_links ) ; foreach ( $u as $x ) $allPages[ucfirst($x)] += 1 ;
 		}
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
@@ -747,7 +747,7 @@ function modifyArray ( $a , $sep , $rem , $add = "" ) {
 			array_push ( $c , $x ) ;
 		}
 	if ( $add != "" ) array_push ( $c , $add ) ;
-	return implode ( "'" , $c ) ;
+	return implode ( $sep , $c ) ;
 	}
 
 function watch ( $t , $m ) {
@@ -756,13 +756,14 @@ function watch ( $t , $m ) {
 	if ( !$user->isLoggedIn ) return "NOT LOGGED IN!" ;
 
 	# Modifying user_watch
+	$separator = "\n" ;
 	$a = getMySQL ( "user" , "user_watch" , "user_id=$user->id" ) ;
-	if ( $m == "yes" ) $a = modifyArray ( $a , "'" , $t , $t ) ;
-	else $a = modifyArray ( $a , "'" , $t ) ;
+	if ( $m == "yes" ) $a = modifyArray ( $a , $separator , $t , $t ) ;
+	else $a = modifyArray ( $a , $separator , $t ) ;
 	setMySQL ( "user" , "user_watch" , $a , "user_id=$user->id" ) ;
 
 	$ret = "Watching $t ($m)" ;
-	$ret .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL='$THESCRIPT?title=$t'\">" ;
+	$ret .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL='$THESCRIPT?title=".urlencode($t)."'\">" ;
 	return $ret ;
 	}
 
@@ -772,7 +773,8 @@ function WatchList () {
 	$vpage->special ( "My watchlist" ) ;
 	$ret = "'''Currently, you are watching the following articles :''' " ;
 	$a = getMySQL ( "user" , "user_watch" , "user_id=$user->id" ) ;
-	$b = explode ( "'" , $a ) ;
+	$separator = "\n" ;
+	$b = explode ( $separator , $a ) ;
 	$vpage->namespace = "" ;
 
 	$n = array () ;
@@ -930,8 +932,11 @@ function upload () {
 		$message = "File <b>$Upload_name</b> was successfully uploaded!" ;
 
 		# Appending log page "log:Uploads"
+		global $REMODE_ADDR ;
 		$now = date ( "Y-m-d H:i:s" , time () ) ;
-		$logText = "*On $now, [[user:$user->name|$user->name]] uploaded file '''$Upload_name'''\n" ;
+		$userText = "[[user:$user->name|$user->name]]" ;
+		if ( $user->name == "" ) $userText = $REMODE_ADDR ;
+		$logText = "*On $now, $userText uploaded file '''$Upload_name'''\n" ;
 		makeLog ( "log:Uploads" , $logText , "Upload of file $UploadName" ) ;
 
 		unset ( $Upload_name ) ;

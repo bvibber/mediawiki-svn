@@ -60,13 +60,15 @@ $wikiAllPages = "All pages" ;
 $wikiStubs = "Stub articles" ;
 $wikiListUsers = "List users" ;
 $wikiMyWatchlist = "My watchlist" ;
-
 $wikiBeginDiff = "BEGIN DIFF" ;
 $wikiEndDiff = "END DIFF" ;
 $wikiDiffLegend = "<font color=#2AAA2A>Green text</font> was added or changed, <font color=#AAAA00>yellow text</font> was changed or deleted." ;
 $wikiDiffFirstVersion = "This is the first version of this article. All text is new!<br>\n" ;
 $wikiDiffImpossible = "This is the first version of this article. All text is new!<br>\n" ;
-
+$wikiSearch = "Search" ;
+$wikiCurrentServer = "http://wikipedia.sourceforge.net" ;
+$wikiArticleSource = "$wikiCurrentServer/fpw/wiki.phtml?title=$1" ;
+$wikiInterwiki = array ( "w"=>"http://www.wikipedia.com/wiki/$1" ) ;
 
 
 # date
