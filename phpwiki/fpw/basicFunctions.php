@@ -60,10 +60,17 @@ function strtolowerIntl ( $str ) {
 	return strtr ( $str , $wikiUpperChars , $wikiLowerChars );
 	}
 
+function isBlockedIP () {
+	$ip = getenv ( REMOTE_ADDR ) ;
+	$list = getMySQL ( "cur" , "cur_text" , "cur_title=\"Wikipedia:Blocked_IPs\"" ) ;
+	$list = explode ( "*$ip (" , $list ) ; # The most memory-wasting substring search ever!
+	if ( count ( $list ) > 1 ) return true ;
+	return false ;
+	}
 
 # Called when editing/saving a page
 function edit ( $title ) {
-	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit , $FromEditForm ;
+	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit , $FromEditForm , $wikiIPblocked ;
 	global $user , $CommentBox , $vpage , $EditTime , $wikiDescribePage , $wikiUser ;
 	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend , $wikiEditHelp , $wikiRecodeInput ;
 	global $wikiSummary , $wikiMinorEdit , $wikiCopyrightNotice , $wikiSave , $wikiPreview , $wikiDontSaveChanges ;
@@ -101,12 +108,10 @@ function edit ( $title ) {
 				$editConflict = true ;
 				}
 			}
-		if ( $doSave ) {
+		if ( $doSave ) { # Actually saving the article!
 			$text = $EditBox ;
 			$text = str_replace ( "\\'" , "'" , $text ) ;
 			$text = str_replace ( "\\\"" , "\"" , $text ) ;
-#			$text = urldecode ( $text ) ;
-#			$text = str_replace ( "&" , "&amp;" , $text ) ;
 			if ( $user->isLoggedIn ) $text = str_replace ( "~~~" , "[[$wikiUser:$user->name|$user->name]]" , $text ) ;
 			else $text = str_replace ( "~~~" , $user->getLink() , $text ) ;
 			$title = str_replace ( "\\'" , "'" , $title ) ;
@@ -116,6 +121,10 @@ function edit ( $title ) {
 			$npage->makeAll () ;
 			if ( $npage->doesTopicExist() ) $npage->backup() ;
 			else { $MinorEdit = 2 ; $npage->ensureExistence () ; }
+
+			# Checking for blocked IP
+			if ( isBlockedIP() ) return $wikiIPblocked ;
+
 			if ( !$user->isLoggedIn ) $npage->setEntry ( $text , $CommentBox , 0 , $user->getLink() , $MinorEdit*1 ) ;
 			else $npage->setEntry ( $text , $CommentBox , $user->id , $user->name , $MinorEdit*1 ) ;
 			global $wasSaved ;
