@@ -1,0 +1,7 @@
+2004-05-29	Peter Danenberg	<danenberg at mitdasein dot com>
+
+We're refactoring WikiTeX from the ground up to implement tags of the form:
+
+	<class [parm: value]>content</class>
+	
+most likely of an external parser.
