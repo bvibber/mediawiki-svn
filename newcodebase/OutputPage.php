@@ -429,8 +429,9 @@ class OutputPage {
 
 	/* private */ function replaceExternalLinks( $text )
 	{
-		$text = $this->subReplaceExternalLinks( $text, "http", true );
-		$text = $this->subReplaceExternalLinks( $text, "https", true );
+		global $wgAllowExternalImages;
+		$text = $this->subReplaceExternalLinks( $text, "http", true and $wgAllowExternalImages );
+		$text = $this->subReplaceExternalLinks( $text, "https", true and $wgAllowExternalImages );
 		$text = $this->subReplaceExternalLinks( $text, "ftp", false );
 		$text = $this->subReplaceExternalLinks( $text, "gopher", false );
 		$text = $this->subReplaceExternalLinks( $text, "news", false );

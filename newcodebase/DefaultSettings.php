@@ -31,4 +31,6 @@ $wgOutputEncoding	= "ISO-8859-1";
 $wgDocType          = "-//W3C//DTD HTML 4.01 Transitional//EN";
 $wgCookieExpiration = 2592000;
 
+$wgAllowExternalImages = true;
+
 ?>
