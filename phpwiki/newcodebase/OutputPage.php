@@ -164,13 +164,18 @@ class OutputPage {
 
 	function sysopRequired()
 	{
+		global $wgUser;
+
 		$this->setHTMLTitle( wfMsg( "errorpagetitle" ) );
 		$this->setPageTitle( wfMsg( "sysoptitle" ) );
 		$this->setRobotpolicy( "noindex,nofollow" );
 		$this->setArticleFlag( false );
-
 		$this->mBodytext = "";
-		$this->addWikiText( wfMsg( "sysoptext" ) );
+
+		$sk = $wgUser->getSkin();
+		$ap = $sk->makeKnownLink( wfMsg( "administrators" ), "" );	
+		$text = str_replace( "$1", $ap, wfMsg( "sysoptext" ) );
+		$this->addHTML( $text );
 		$this->returnToMain();
 	}
 

@@ -113,10 +113,11 @@
 "viewcount"		=> "This page has been accessed $1 times.",
 "printsubtitle" => "(From http://www.wikipedia.com)",
 "protectedpage" => "Protected page",
+"administrators" => "Wikipedia:Administrators",
 "sysoptitle"	=> "Sysop access required",
 "sysoptext"		=> "The action you have requested can only be
 performed by users with \"sysop\" status.
-See [[Wikipedia:Administrators]].",
+See $1.",
 
 # Main script and global functions
 #
@@ -407,6 +408,18 @@ this old version, (rev) = revert to this old version.",
 # Statistics
 #
 "statistics"	=> "Statistics",
+"sitestats"		=> "Site statistics",
+"userstats"		=> "User statistics",
+"sitestatstext" => "There <b>$1</b> total pages in the database.
+This inlcludes \"talk\" pages, pages about Wikipedia, minimal \"stub\"
+pages, redirects, and others that probably don't qualify as articles.<br>
+Excluding those, there are <b>$2</b> pages that are probably legitimate
+articles.<br>
+There has been a total of <b>$3</b> page views, and <b>$4</b> page edits.
+That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
+"userstatstext" => "There are <b>$1</b> registered users.
+<b>$2</b> of these are administrators (see $3).",
+
 
 # Orphans
 #
