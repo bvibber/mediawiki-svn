@@ -140,12 +140,12 @@ class SkinCologneBlue extends Skin {
 			  wfMsg( "edithelp" ) );
 
 			if ( 0 != $wgUser->getID() ) {
-				$s .= $sep . $this->specialLink( "upload" );
+				$s .= $sep . $this->specialLink( "upload" )
+				. $sep . $this->moveThisPage();
 			}
 			if ( $wgUser->isSysop() ) {
 				$s .= $sep . $this->deleteThisPage() .
-				$sep . $this->protectThisPage() .
-				$sep . $this->moveThisPage();
+				$sep . $this->protectThisPage();
 			}
 			$s .= $sep;
 

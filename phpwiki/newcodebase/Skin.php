@@ -439,12 +439,12 @@ class Skin {
 		if ( $wgOut->isArticle() ) {
 			$s .= "<strong>" . $this->editThisPage() . "</strong>";
 			if ( 0 != $wgUser->getID() ) {
-				$s .= $sep . $this->watchThisPage();
+				$s .= $sep . $this->watchThisPage()
+				. $sep . $this->moveThisPage();
 			}
 			if ( $wgUser->isSysop() ) {
 				$s .= $sep . $this->deleteThisPage() .
-				$sep . $this->protectThisPage() .
-				$sep . $this->moveThisPage();
+				$sep . $this->protectThisPage();
 			}
 			$s .= $sep . $this->talkLink()
 			  . $sep . $this->historyLink()
