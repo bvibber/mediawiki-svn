@@ -7,6 +7,7 @@ $wgTotalEdits = -1;
 
 include_once( "DatabaseFunctions.php" );
 include_once( "UpdateClasses.php" );
+include_once( "LogPage.php" );
 
 # PHP 4.1+ has array_key_exists, PHP 4.0.6 has key_exists instead, and earlier
 # versions of PHP have neither. So we roll our own. Note that this
@@ -317,7 +318,6 @@ function wfImageArchiveDir( $fname )
 
 function wfRecordUpload( $name, $oldver, $size, $desc )
 {
-	# *** TODO: Merge logpage code with deletion log and make a general function ***
 	global $wgUser, $wgLang, $wgTitle, $wgOut;
 	$fname = "wfRecordUpload";
 
@@ -379,66 +379,13 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 		  wfStrencode( $name ) . "'";
 		wfQuery( $sql, $fname );
 	}
-	$logpage = wfStrencode( wfMsg( "uploadlogpage" ) );
-	$sql = "SELECT cur_id,cur_text FROM cur WHERE cur_namespace=" .
-	  Namespace::getWikipedia() . " AND cur_title='{$logpage}'";
-	$res = wfQuery( $sql, $fname );
 
-	if ( 0 == wfNumRows( $res ) ) {
-		# TODO: Error: need Upload log article
-		$id = 0;
-		$text = wfMsg( "uploadlogpagetext" );
-	} else {
-		$s = wfFetchObject( $res );
-		$text = $s->cur_text;
-		$id = $s->cur_id;
-	}
-
-	$uid = $wgUser->getID();
-	$ut = $wgUser->getName();
-	if ( 0 == $uid ) { $ul = $ut; }
-	else { $ul = "[[" . $wgLang->getNsText( Namespace::getUser() ) .
-	  ":{$ut}|{$ut}]]"; }
-
-	$d = $wgLang->timeanddate( date( "YmdHis" ), false );
-	$ua = str_replace( "$1", $name, wfMsg( "uploadedimage" ) );
-
-	if ( "" == $desc ) {
-		$com = "";
-		$lcom = "{$ua}";
-	} else {
-		$com = " <em>({$desc})</em>";
-		$lcom = "{$ua}: {$desc}";
-	}
-
-	preg_match( "/^(.*?)<ul>(.*)$/sD", $text, $m );	
+	$log = new LogPage( wfMsg( "uploadlogpage" ), wfMsg( "uploadlogpagetext" ) );
 	$da = str_replace( "$1", "[[:" . $wgLang->getNsText(
 	  Namespace::getImage() ) . ":{$name}|{$name}]]",
 	  wfMsg( "uploadedimage" ) );
-
-	$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}{$com}</li>\n{$m[2]}";
-
-	if($id == 0) {
-		$sql = "INSERT INTO cur (cur_timestamp,cur_user,cur_user_text,
-			cur_namespace,cur_title,cur_text,cur_comment) VALUES ('{$now}', {$uid}, '" .
-			wfStrencode( $ut ) . "', 4, '{$logpage}', '" .
-			wfStrencode( trim( $text ) ) . "', '" .
-			wfStrencode( $lcom ) . "')";
-	} else {
-		$sql = "UPDATE cur SET cur_timestamp='" . date( "YmdHis" ) .
-		  "', cur_user={$uid}, cur_user_text='" .wfStrencode( $ut ) .
-		  "', cur_text='" . wfStrencode( trim( $text ) ) . "', " .
-		  "cur_comment='" . wfStrencode( $lcom ) . "' " .
-		  "WHERE cur_id={$id}";
-	}
-	wfQuery( $sql, $fname );
-	
-	if($id == 0) $id = wfInsertId();
-	$sql = "INSERT INTO recentchanges (rc_timestamp,rc_cur_time,
-		rc_user,rc_user_text,rc_namespace,rc_title,rc_comment,
-		rc_cur_id) VALUES ('{$now}','{$now}',{$uid},'" . wfStrencode( $ut ) .
-		"',4,'{$logpage}','" . wfStrencode( $lcom ) . "',{$id})";
-	wfQuery( $sql, $fname );
+	$ta = str_replace( "$1", $name, wfMsg( "uploadedimage" ) );
+	$log->addEntry( $da, $desc, $ta );
 }
 
 ?>
