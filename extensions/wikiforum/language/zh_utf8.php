@@ -46,7 +46,8 @@ if(defined('MEDIAWIKI'))
 		"ThreadExist"     => "这个主题已经存在，请选择一个其它的名称！",
 		"ThreadInvalid"   => "这个主题的标题有错误，请选择一个其它的名字！",
 		"ThreadSHAlt"     => "显示/隐藏", // thread show/hide bouton 'alt' text
-		"ThreadSHTip"     => "点击这里显示或隐藏该主题的内容", // thread show/hide bouton 'title' text (tip)   );
+		"ThreadSHTip"     => "点击这里显示或隐藏该主题的内容", // thread show/hide bouton 'title' text (tip)
+		);
 	} // end if(defined('MEDIAWIKI'))
 
 ?>
