@@ -321,15 +321,23 @@ class Skin {
 
 	function bottomLinks()
 	{ 
-		global $wgOut, $wgUser, $wgUploadPath;
+		global $wgOut, $wgUser;
+		$sep = " |\n";
 
-		$s = $this->topLinks();
+		$s = $this->mainPageLink() . $sep
+		  . $this->specialLink( "recentchanges" );
+
 		if ( $wgOut->isArticle() ) {
-			$s .= " |\n" . $this->talkLink();
+			$s .=  $sep . $this->editThisPage()
+			  . $sep . $this->historyLink();
+		}
+		if ( $wgOut->isArticle() ) {
+			$s .= $sep . $this->talkLink();
 
 			if ( $wgUser->isSysop() ) {
-				$s .= " |\n" . $this->deleteThisPage() .
-				  " |\n" . $this->protectThisPage();
+				$s .= $sep . $this->deleteThisPage() .
+				  $sep . $this->protectThisPage() .
+				  $sep . $this->moveThisPage();
 			}
 		}
 		$s .= $this->otherLanguages();
@@ -377,13 +385,14 @@ class Skin {
 		  . $sep . $this->dateLink() . "\n<hr>";
 
 		if ( $wgOut->isArticle() ) {
-			$s .= $this->editThisPage()
-			  . $sep . $this->watchThisPage()
-			  . $sep . $this->unwatchThisPage();
-
+			$s .= $this->editThisPage();
+			if ( 0 != $wgUser->getID() ) {
+				$s .= $sep . $this->watchThisPage();
+			}
 			if ( $wgUser->isSysop() ) {
 				$s .= $sep . $this->deleteThisPage() .
-				$sep . $this->protectThisPage();
+				$sep . $this->protectThisPage() .
+				$sep . $this->moveThisPage();
 			}
 			$s .= $sep . $this->talkLink()
 			  . $sep . $this->historyLink()
@@ -453,6 +462,7 @@ class Skin {
 
 		if ( $wgOut->isArticle() && ( ! $diff ) && $wgUser->isSysop() ) {
 			$n = $wgTitle->getPrefixedText();
+
 			if ( $wgTitle->isProtected() ) {
 				$t = wfMsg( "unprotectthispage" );
 				$q = "action=unprotect";
@@ -473,30 +483,25 @@ class Skin {
 
 		if ( $wgOut->isArticle() && ( ! $diff ) ) {
 			$n = $wgTitle->getPrefixedText();
-			$t = wfMsg( "watchthispage" );
 
-			$s = $this->makeKnownLink( $n, $t, "action=watch" );
+			if ( $wgTitle->userIsWatching() ) {
+				$t = wfMsg( "unwatchthispage" );
+				$q = "action=unwatch";
+			} else {
+				$t = wfMsg( "watchthispage" );
+				$q = "action=watch";
+			}
+			$s = $this->makeKnownLink( $n, $t, $q );
 		} else {
 			$s = wfMsg( "notanarticle" );
 		}
 		return $s;
 	}
 
-	function unwatchThisPage()
+	function moveThisPage()
 	{
-		global $wgUser, $wgOut, $wgTitle, $diff;
-
-		if ( $wgOut->isArticle() && ( ! $diff ) ) {
-			$n = $wgTitle->getPrefixedText();
-			$t = wfMsg( "unwatchthispage" );
-
-			$s = $this->makeKnownLink( $n, $t, "action=unwatch" );
-		} else {
-			$s = wfMsg( "notanarticle" );
-		}
-		return $s;
+		return wfMsg( "movethispage" );
 	}
-
 
 	function historyLink()
 	{

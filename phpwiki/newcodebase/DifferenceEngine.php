@@ -28,6 +28,7 @@ class DifferenceEngine {
 		$wgOut->supressQuickbar();
 		$wgOut->setSubtitle( wfMsg( "difference" ) );
 		$wgOut->setArticleFlag( true );
+		$wgOut->setRobotpolicy( "noindex,follow" );
 
 		DifferenceEngine::showDiff( $this->mOldtext, $this->mNewtext,
 		  $this->mOldtitle, $this->mNewtitle );

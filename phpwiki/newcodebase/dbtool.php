@@ -637,7 +637,9 @@ function getInternalLinks ( $title, $text )
 			$pre = strtolower( $m[1] );
 			$suf = $m[2];
 			if ( "image" == $pre ) {
-				$wgLinkCache->addImageLink( $suf );
+				$nt = Title::newFromText( $suf );
+				$t = $nt->getDBkey();
+				$wgLinkCache->addImageLink( $t );
 				continue;
 			} else {
 				$l = $wgLang->getLanguageName( $pre );
@@ -653,7 +655,7 @@ function getInternalLinks ( $title, $text )
 
 function fixRedirect( $text )
 {
-	$tc = "[&;%\\-,.\\(\\)' _0-9A-Za-z\\/:\\x80-\\xff]";
+	$tc = "[&;%\\-,.\\(\\)' _0-9A-Za-z\\/:\\xA0-\\xff]";
 	$re = "#redirect";
 	if ( preg_match( "/^{$re}\\s*\\[{$tc}+\\]/i", $text ) ) {
 		$text = preg_replace( "/^({$re})\\s*\\[\\s*({$tc}+)\\]/i",

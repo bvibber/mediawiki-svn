@@ -26,14 +26,14 @@ function wfSpecialPopularpages()
 	  "title=Special%3APopularpages" );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
-	$s = "<ul>";
+	$s = "<ol start=" . ( $offset + 1 ) . ">";
 	while ( $obj = wfFetchObject( $res ) ) {
 		$nv = str_replace( "$1", $obj->cur_counter, wfMsg( "nviews" ) );
 		$link = $sk->makeKnownLink( $obj->cur_title, "" );
 		$s .= "<li>{$link} ({$nv})</li>\n";
 	}
 	wfFreeResult( $res );
-	$s .= "</ul>";
+	$s .= "</ol>";
 	$wgOut->addHTML( $s );
 	$wgOut->addHTML( "<p>{$sl}\n" );
 }
