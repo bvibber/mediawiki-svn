@@ -22,6 +22,8 @@ $wgDBname           = "wikidb";
 $wgDBuser           = "wikiuser";
 $wgDBpassword       = "userpwd";
 $wgDBconnection     = "";
+$wgDBsqluser		= "wikisql";
+$wgDBsqlpassword	= "sqlpass";
 
 $wgReadOnlyFile		= "/usr/local/apache/htdocs/upload/dblockflag838942";
 $wgDebugComments	= false;

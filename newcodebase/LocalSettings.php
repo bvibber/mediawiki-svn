@@ -24,8 +24,9 @@ $wgDBserver         = "127.0.0.1";
 $wgDBname           = "wikidb";
 $wgDBuser           = "wikiuser";
 $wgDBpassword       = "userpass";
-$wgDBadminpassword  = "adminpass";
-$wgDBminWordLen		= 3;
+$wgDBadminpassword  = "adminpass"; # Only needed for admin works
+$wgDBsqluser        = "sqlpass";   # For read-only sql queries by sysops
+$wgDBminWordLen		= 3;	   # Match this to your MySQL fulltext
 
 # Turn this on during database maintenance
 #
