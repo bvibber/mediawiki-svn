@@ -260,6 +260,11 @@ MySQL meldete den Fehler \"<tt>$3: $4</tt>\".",
 "unexpected"	=> "Unerwarteter Wert: \"$1\"=\"$2\".",
 "formerror"		=> "Fehler: Konnte Formular nicht verarbeiten",	
 "badarticleerror" => "Diese AKtion kann auf diesen Artikel nicht angewendet werden.",
+"cannotdelete"	=> "Kann spezifizierte Seite oder Artikel nicht löschen. (Wurde möglicherweise schon von jemand anderem gelöscht.)",
+"badtitle"		=> "Ungültiger Titel",
+"badtitletext"	=> "Der Titel der angeforderten Seite war ungültig, leer, oder ein ungültiger Sprachlink von einer anderen Wikipedia.",
+"perfdisabled" => "Diese Funktion wurde wegen Überlastung des Servers vorrübergehend deaktiviert. Versuchen Sie es bitte zwischen 02:00 und 14:00 UTC noch einmal.",
+
 
 # Login and logout pages
 #
