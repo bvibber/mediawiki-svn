@@ -36,13 +36,13 @@ if(!isset($limit)) $limit = 10;
 
 if($style == 'new') {
 	# 10 newest articles
-$sql = "SELECT rc_title as cur_title FROM recentchanges,cur
+$sql = "SELECT rc_title as cur_title, rc_comment as cur_comment FROM recentchanges,cur
 WHERE rc_cur_id=cur_id AND rc_new=1 AND rc_namespace=0 AND cur_is_redirect=0
 AND LENGTH(cur_text) > 75
 ORDER BY rc_timestamp DESC LIMIT {$limit}";
 } else {
 	# 10 most recently edit articles that aren't frickin tiny
-$sql = "SELECT rc_title as cur_title FROM recentchanges,cur
+$sql = "SELECT rc_title as cur_title,rc_comment as cur_comment FROM recentchanges,cur
 WHERE rc_cur_id=cur_id AND rc_namespace=0 AND rc_this_oldid=0 AND cur_is_redirect=0
 AND LENGTH(cur_text) > 150
 ORDER BY rc_timestamp DESC LIMIT {$limit}";
@@ -54,10 +54,13 @@ while( $row = wfFetchObject( $res ) ) {
 		iconv($wgInputEncoding, "utf-8",
 		str_replace( "_", " ", $row->cur_title ) ) );
 	$url = wfLocalUrl( wfUrlencode( $row->cur_title ) );
+	$description = "<description>" . iconv($wgInputEncoding, "utf-8",
+		htmlspecialchars( $row->cur_comment )) . "</description>";
 	echo "
 <item>
 <title>{$title}</title>
 <link>{$url}</link>
+{$description}
 </item>
 ";
 }
