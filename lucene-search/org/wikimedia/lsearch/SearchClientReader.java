@@ -207,7 +207,7 @@ public class SearchClientReader extends Thread {
 			float score = hits.score(i);
 			String namespace = doc.get("namespace");
 			String title = doc.get("title");
-			sendOutputLine(score + " " + namespace + " " + title.replaceAll(" ", "_"));
+			sendOutputLine(score + " " + namespace + " " + URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8"));
 		}
 		if (numhits == 0) {
 			String spelfix = makeSpelFix(rawsearchterm);
@@ -235,7 +235,7 @@ public class SearchClientReader extends Thread {
 				float score = hits.score(i);
 				String namespace = doc.get("namespace");
 				String title = doc.get("title");
-				sendOutputLine(score + " " + namespace + " " + title.replaceAll(" ", "_"));
+				sendOutputLine(score + " " + namespace + " " + URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8"));
 			}
 			ostrm.flush();
 		} catch (IOException e) {
@@ -264,7 +264,7 @@ public class SearchClientReader extends Thread {
 		//for (Title match : matches) {
 		for (Iterator iter = matches.iterator(); iter.hasNext();) {
 			Title match = (Title)iter.next();
-			sendOutputLine("0 " + match.namespace + " " + match.title.replaceAll(" ", "_"));
+			sendOutputLine("0 " + match.namespace + " " + URLEncoder.encode(match.title.replaceAll(" ", "_"), "UTF-8"));
 		}
 	}
 
