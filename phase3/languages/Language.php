@@ -372,6 +372,8 @@ See $1.",
 "toc" => "Table of contents",
 "showtoc" => "show",
 "hidetoc" => "hide",
+"thisisdeleted" => "View or restore $1?",
+"restorelink" => "$1 deleted edits",
 
 # Main script and global functions
 #
@@ -533,7 +535,7 @@ press \"Save page\".\n<p>",
 revision of this page.
 If you save it, any changes made since this revision will be lost.</strong>\n",
 "yourdiff"		=> "Differences",
-# REPLACE THE COPYRIGHT WARNING IF YOUR SITE ISN'T GPL!
+# REPLACE THE COPYRIGHT WARNING IF YOUR SITE ISN'T GFDL!
 "copyrightwarning" => "Please note that all contributions to $wgSitename are
 considered to be released under the GNU Free Documentation License
 (see $1 for details).
