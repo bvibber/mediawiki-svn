@@ -1,15 +1,20 @@
 <?
-define( "MEDIAWIKI", true );
+include_once ( "geosettings.php" ) ;
 
-$wikibasedir = "../../phase3" ;
-require_once( "{$wikibasedir}/includes/Defines.php" );
-require_once( "{$wikibasedir}/LocalSettings.php" );
-require_once( "{$wikibasedir}/includes/Setup.php" );
+if ( isset ( $wikibasedir ) )
+	{
+	define( "MEDIAWIKI", true );
+
+	require_once( "{$wikibasedir}/includes/Defines.php" );
+	require_once( "{$wikibasedir}/LocalSettings.php" );
+	require_once( "{$wikibasedir}/includes/Setup.php" );
+	}
+	
 require_once( "geo.php");
 
 $p = new geo_params ;
 
-/*
+
 # Default parameters
 $params = "
 languages:de,en
@@ -21,13 +26,17 @@ style:germany.hamburg=fill:red
 label:germany[city]=font-size:medium;fill-opacity:1.0;clickable:yes
 label:germany[state]=font-size:medium;fill-opacity:0.7
 " ;
-*/
 
-$params = "" ;
+
+#$params = "" ;
 if ( isset ( $_GET['params'] ) )
 	{
 	$params = urldecode ( $_GET['params'] ) ;
 	}
+
+if ( isset ( $articlePrefix ) )
+	$p->article_prefix = $articlePrefix ;
+
 $p->settings ( $params ) ;
 
 $svg = $p->getSVG () ;

@@ -19,6 +19,7 @@ class geo_params
 	var $object_tree = array () ; # The current object(s) being rendered
 	var $cache2 = array () ; # The article cache
 	var $later_objects = array () ; # Things that should be drawn at the end, like cities
+	var $article_prefix = "" ; # The prefix for article titles, if any
 
 #	var $geo_cache = array () ; # The article cache
 	
@@ -104,10 +105,15 @@ class geo_params
 		return $svg ;
 		}
 
+	function get_article_name ( $id )
+		{
+		return $this->article_prefix . $id ;
+		}
+
 	# This can read the data directly as an article from the database
 	function read_from_article ( $id )
 		{
-		$t = Title::newFromText ( "Geo:" . $id ) ;
+		$t = Title::newFromText ( $this->get_article_name ( $id ) ) ;
 		$a = new Article ( $t ) ;
 		return $a->getContent ( true ) ;
 		}
@@ -117,7 +123,7 @@ class geo_params
 	function read_from_url ( $id )
 		{
 		$index = "http://127.0.0.1/phase3/index.php" ;
-		$filename = "{$index}?title=Geo:{$id}&action=raw" ;
+		$filename = "{$index}?title=" . $this->get_article_name ( $id ) . "&action=raw" ;
 		$handle = fopen($filename, "r");
 		$contents = '';
 		while (!feof($handle))
