@@ -203,6 +203,8 @@ $WikiPediaLanguages = array(
 	"ms"    => "http://ms.wikipedia.org/wiki/$1",
 	"my"    => "http://my.wikipedia.org/wiki/$1",
 	"na"    => "http://na.wikipedia.org/wiki/$1",
+	"nah"	=> "http://nah.wikipedia.org/wiki/$1",
+	"nds"	=> "http://nds.wikipedia.org/wiki/$1",
 	"ne"    => "http://ne.wikipedia.org/wiki/$1",
 	"nl"	=> "http://nl.wikipedia.org/wiki/$1",
 	"no"    => "http://no.wikipedia.org/wiki/$1",
@@ -264,7 +266,6 @@ $WikiPediaLanguages = array(
 	"zh-cn"	=> "http://zh.wikipedia.org/wiki/$1",
 	"zh-tw"	=> "http://zh.wikipedia.org/wiki/$1",
 	"zu"    => "http://zu.wikipedia.org/wiki/$1",
-	"nds"	=> "http://nds.wikipedia.org/wiki/$1"
 );
 foreach($WikiPediaLanguages as $code => $url) {
 	$wgValidInterwikis[ucfirst($code) . "WikiPedia"] = $url;
