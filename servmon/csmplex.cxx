@@ -18,6 +18,21 @@ public:
 		} catch (smnet::sckterr& e) {
 			std::cerr << "write error: " << e.what() << '\n';
 		}
+		smnet::tnsrv<smnet::inet> tn(nt);
+		for (;;) {
+			std::string ln;
+			try {
+				ln = tn.rdln();
+			} catch (smnet::scktcls&) {
+				break;
+			} catch (smnet::tn2long&) {
+				break;
+			} catch (smnet::sckterr& e) {
+				std::cerr << "error! " << e.what() << "\n";
+				break;
+			}
+			std::cerr << "read: [" << ln << "]\n";
+		}
 		delete this;
 	}
  

@@ -12,6 +12,9 @@ namespace smnet {
 struct sckterr : public std::runtime_error {
 	sckterr(void) : std::runtime_error(std::strerror(errno)) {};
 };
+struct scktcls : public std::exception {
+	scktcls(void) {}
+};
 
 class bsd {
 public:
@@ -70,12 +73,48 @@ public:
 		return i;
 	}
 
-	void wrt(u_char* d, std::size_t l) {
+	void wrt(u_char const* d, std::size_t l) {
 		if (write(s, d, l) < l) 
 			throw sckterr();
 	}
 
+	void rd(std::vector<u_char>& v, uint m = maxrd) {
+		std::vector<u_char>& rdbuf = rdbufs[s];
+		if (!rdbuf.empty()) {
+			int l = std::min(m, rdbuf.size());
+			v.resize(l);
+			copy(rdbuf.begin(), rdbuf.begin() + l, v.begin());
+			rdbuf.erase(rdbuf.begin(), rdbuf.begin() + l);
+			return;
+		}
+		uint i = _need_data();
+		v.resize(i);
+		i = std::min(i, m);
+		copy(rdbuf.begin(), rdbuf.begin() + i, v.begin());
+		rdbuf.erase(rdbuf.begin(), rdbuf.begin() + i);
+	}
+
+	inline u_char rd1(void) {
+		std::vector<u_char>& rdbuf = rdbufs[s];
+		_need_data();
+		u_char c = *rdbuf.begin();
+		rdbuf.erase(rdbuf.begin());
+		return c;
+	}
+	static const int maxrd = 4096;
+	
 private:
+	uint _need_data(void) {
+		std::vector<u_char>& rdbuf = rdbufs[s];
+		if (!rdbuf.empty()) return 0;
+		rdbuf.resize(maxrd);
+		int i = read(s, &rdbuf[0], maxrd);
+		if (i == 0) throw scktcls();
+		else if (i < 0) throw sckterr();
+		rdbuf.resize(i);
+		return i;
+	}
+
 	int _locked_inc(void) {
 		smthr::lck l(mrl);
 		return ++refs[s];
@@ -84,7 +123,10 @@ private:
 	int _locked_dec(void) {
 		smthr::lck l(mrl);
 		int i = --refs[s];
-		if (i == 0) refs.erase(i);
+		if (i == 0) {
+			refs.erase(s);
+			rdbufs.erase(s);
+		}
 		return i;
 	}
 		
@@ -93,6 +135,7 @@ protected:
 	socklen_t len;
 	int s;
 	static std::map<int,int> refs;
+	static std::map<int, std::vector<u_char> > rdbufs;
 	smthr::mtx mrl;
 };
 
@@ -193,6 +236,12 @@ public:
 	void wrt(std::string const& s) {
 		return sckt<fmly>::wr.wrt((u_char *) s.data(), s.size());
 	}
+	void rd(std::vector<u_char>& v, uint m = fmly::maxrd) {
+		sckt<fmly>::wr.rd(v, m);
+	}
+	inline char rd1(void) {
+		return sckt<fmly>::wr.rd1();
+	}
 };
 
 template<class fmly>
@@ -204,6 +253,150 @@ public:
 	clnt<fmly> wt_acc(void) {
 		return clnt<fmly>(sckt<fmly>::wr.wt_acc());
 	}
+};
+
+struct tn2long : public std::runtime_error {
+	tn2long(void) : std::runtime_error("received line too long\n") {}
+};
+
+template<class fmly>
+class tnsrv {
+public:
+	tnsrv(clnt<fmly> c)
+	: sc(c)
+	{
+		wewill.insert(tnsga);
+		wewill.insert(tnecho);
+		wecan.insert(tnsga);
+		wecan.insert(tnecho);
+		youshould.insert(tnsga);
+		youshouldnt.insert(tnecho);
+		do_(tnsga);
+		will(tnecho);
+		will(tnsga);
+		dont(tnecho);
+		dont(tnlinemode);
+	}
+	void tnsth(u_char sth, u_char what) {
+		u_char a[] = {tniac, sth, what};
+		sc.wrt(a, sizeof a);
+	}
+	void do_(u_char what) {
+		tnsth(tndo, what);
+	}
+	void dont(u_char what) {
+		tnsth(tndont, what);
+	}
+	void will(u_char what) {
+		tnsth(tnwill, what);
+	}
+	void wont(u_char what) {
+		tnsth(tnwont, what);
+	}
+	void shouldyou(u_char what) {
+		if (youshouldnt.find(what) != youshouldnt.end())
+			dont(what);
+	}
+	void shouldwe(u_char what) {
+		if (wecan.find(what) == wecan.end())
+			wont(what);
+	}
+	void shouldntwe(u_char what) {
+		wont(what);
+	}
+	void crnl(void) {
+		static u_char a[] = {'\r', '\n'};
+		sc.wrt(a, sizeof a);
+	}
+	std::string rdln(int m = maxln) {
+		std::string lnbuf;
+		enum { nrml, iac, sb, sb_iac, nl, cr } stt = nrml;
+		for (;;) {
+			u_char c = sc.rd1(), req, dowhat;
+			switch (stt) {
+			case iac:
+				switch (c) {
+				case tnwill:
+					shouldyou(sc.rd1()); stt = nrml; break;
+				case tnwont:
+					sc.rd1(); stt = nrml;
+					break;
+				case tndo:
+					shouldwe(sc.rd1()); stt = nrml; break;
+				case tndont:
+					shouldntwe(sc.rd1()); stt = nrml; break;
+				case tnsb:
+					stt = sb;
+					break;
+				case iac:
+					lnbuf += req;
+					stt = nrml;
+					break;
+				default:
+					// ???
+					std::cerr << "i don't understand option code " << int(req) << "\n";
+					stt = nrml;
+					break;
+				}
+				break;
+			case sb:
+				switch (c) {
+				case tniac:
+					stt = sb_iac;
+					break;
+				default:
+					break;
+				}
+				break;
+			case sb_iac:
+				switch (c) {
+				case tniac:
+					stt = sb;
+					break;
+				case tnse:
+					stt = nrml;
+					break;
+				}
+				break;
+			default:	
+				switch (c) {
+				case tniac:
+					stt = iac;
+					break;
+				case '\n': case '\0':
+					break;
+				case '\r':
+					crnl();
+					return lnbuf;
+				default:
+					lnbuf += c;
+					sc.wrt(&c, 1);
+					if (lnbuf.size() > m)
+						throw tn2long();
+					break;
+				}
+				break;
+			}
+		}
+		return lnbuf;
+	}
+
+	static const int
+		tniac = 255,
+		tndont = 254,
+		tndo = 253,
+		tnwont = 252,
+		tnwill = 251,
+		tnsb = 250,
+		tnse = 240,
+		tnecho = 1,
+		tnsga = 3,
+		tnlinemode = 34
+		;
+	std::set<u_char> wewill, wecan, youshould, youshouldnt;
+	static const int maxln = 4096;
+private:
+	clnt<fmly> sc;
 };
 
 } // namespace smnet
