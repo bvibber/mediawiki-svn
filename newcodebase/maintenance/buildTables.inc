@@ -49,6 +49,8 @@ function buildTables()
   cur_is_redirect tinyint(1) unsigned NOT NULL default '0',
   cur_minor_edit tinyint(1) unsigned NOT NULL default '0',
   cur_is_new tinyint(1) unsigned NOT NULL default '0',
+  cur_random real unsigned NOT NULL,
+  inverse_timestamp char(14) binary NOT NULL default '',
   UNIQUE KEY cur_id (cur_id)
 ) TYPE=MyISAM PACK_KEYS=1";
 	wfQuery( $sql );
@@ -67,6 +69,7 @@ function buildTables()
   old_timestamp char(14) binary NOT NULL default '',
   old_minor_edit tinyint(1) NOT NULL default '0',
   old_flags tinyblob NOT NULL default '',
+  inverse_timestamp char(14) binary NOT NULL default '',
   UNIQUE KEY old_id (old_id)
 ) TYPE=MyISAM PACK_KEYS=1";
 	wfQuery( $sql );
@@ -240,15 +243,18 @@ function buildIndexes()
   ADD INDEX cur_namespace (cur_namespace),
   ADD INDEX cur_title (cur_title(20)),
   ADD INDEX cur_timestamp (cur_timestamp),
-  ADD INDEX cur_user (cur_user),
-  ADD INDEX cur_user_text (cur_user_text(8))";
+  ADD INDEX (cur_random),
+  ADD INDEX name_title_timestamp (cur_namespace,cur_title,inverse_timestamp),
+  ADD INDEX user_timestamp (cur_user,inverse_timestamp),
+  ADD INDEX usertext_timestamp (cur_user_text,inverse_timestamp)";
 	wfQuery( $sql );
 
 	$sql = "ALTER TABLE old
   ADD INDEX (old_namespace,old_title(20)),
   ADD INDEX old_timestamp (old_timestamp),
-  ADD INDEX old_user (old_user),
-  ADD INDEX old_user_text (old_user_text(8))";
+  ADD INDEX name_title_timestamp (old_namespace,old_title,inverse_timestamp),
+  ADD INDEX user_timestamp (old_user,inverse_timestamp),
+  ADD INDEX usertext_timestamp (old_user_text,inverse_timestamp)";
 	wfQuery( $sql );
 
 	$sql = "ALTER TABLE links
