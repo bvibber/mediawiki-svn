@@ -181,6 +181,18 @@ class Title {
 		return false;
 	}
 
+	function isLog()
+	{
+		if ( $this->mNamespace != Namespace::getIndex( "Wikipedia" ) ) {
+			return false;
+		}
+		if ( ( 0 == strcmp( "Upload_log", $this->mDbkeyform ) ) ||
+		  ( 0 == strcmp( "Article_deletion_log", $this->mDbkeyform ) ) ) {
+			return true;
+		}
+		return false;
+	}
+
 	function userIsWatching()
 	{
 		global $wgUser;
@@ -280,6 +292,8 @@ class Title {
 
 		$this->mDbkeyform = $t;
 		$done = false;
+
+		if ( 0 == strncasecmp( ":Image:", $t, 7 ) ) { $t = substr( $t, 1 ); }
 		if ( ":" == $t{0} ) {
 			$r = substr( $t, 1 );
 		} else {
