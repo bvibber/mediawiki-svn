@@ -69,7 +69,7 @@ class skinCologneBlue extends skinClass {
 		global $wikiMyOptions, $wikiMyself , $wikiLogOut , $wikiMySettings , $wikiShortPages , $wikiLongPages , $wikiUserList , $wikiEditingHistory , $wikiTopics ;
 		global $wikiAddToWatchlist , $wikiEditPage , $wikiPrintable , $wikiTalk , $wikiEdit , $wikiPageOptions , $wikiBrowse , $wikiFind , $wikiOK;
 		global $wikiEditingHelp , $wikiWikipediaEditingHelp , $wikiShowLastChange , $wikiProtectThisPage , $wikiMainPage , $THESCRIPT , $wikiVoteForPage ;
-		global $wikiMoveThisPage ;
+		global $wikiMoveThisPage , $search;
 
 		$fonts = "face=verdana,arial" ;
 		$bg = "nowrap" ;
@@ -85,17 +85,17 @@ class skinCologneBlue extends skinClass {
 		$ret .= "<a class=menulink href=\"".wikiLink("")."\">$wikiMainPage</a><br>\n" ;
 		$ret .= "<a class=menulink href=\"".wikiLink("special:RecentChanges")."\">$wikiRecentChanges</a><br>\n" ;
 		$ret .= "<a class=menulink href=\"".wikiLink("special:NewPages")."\">$wikiNewPages</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:WantedPages")."\">$wikiMostWanted</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:PopularPages")."\">$wikiPopularPages</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:RandomPage")."\">$wikiRandomPage</a><br>\n" ;
+		$ret .= "<a class=menulink href=\"".wikiLink("special:LonelyPages")."\">$wikiOrphans</a><br>\n" ;
 		$ret .= "<a class=menulink href=\"".wikiLink("special:ShortPages")."\">$wikiShortPages</a><br>\n" ;
 		$ret .= "<a class=menulink href=\"".wikiLink("special:LongPages")."\">$wikiLongPages</a><br>\n" ;
-		$ret .= "<a class=menulink href=\"".wikiLink("special:PopularPages")."\">$wikiPopularPages</a><br>\n" ;
-		$ret .= "<a class=menulink href=\"".wikiLink("special:WantedPages")."\">$wikiMostWanted</a><br>\n" ;
-		$ret .= "<a class=menulink href=\"".wikiLink("special:RandomPage")."\">$wikiRandomPage</a><br>\n" ;
-		$ret .= "<a class=menulink href=\"".wikiLink($wikiBugReportsLink)."\">$wikiBugReports</a><br>\n" ;
 #		$ret .= "<a class=menulink href=\"".wikiLink("special:AllPages")."\">$wikiAllPages</a><br>\n" ; # Took out due to request
+		$ret .= "<a class=menulink href=\"".wikiLink("special:ListUsers")."\">$wikiUserList</a><br>\n" ;
 		$ret .= "<a class=menulink href=\"".wikiLink("special:Statistics")."\">$wikiStatistics</a><br>\n" ;
-		$ret .= "<a class=menulink href=\"".wikiLink("special:LonelyPages")."\">$wikiOrphans</a><br>\n" ;
-		$ret .= "<a class=menulink href=\"".wikiLink("special:ListUsers")."\">$wikiUserList</a>\n" ;
-		$ret .= "</p>" ;
+		$ret .= "<a class=menulink href=\"".wikiLink($wikiBugReportsLink)."\">$wikiBugReports</a>\n" ;
+		$ret .= "</p>\n" ;
 
 
 		# Page edit
@@ -106,7 +106,6 @@ class skinCologneBlue extends skinClass {
 			if ( $page->canDelete() ) $ret .= "<a class=menulink href=\"".wikiLink("special:deletepage&target=".$page->url)."\">$wikiDeleteThisPage</a><br>\n" ;
 			if ( $page->canDelete() ) $ret .= "<a class=menulink href=\"".wikiLink("special:movepage&target=".$page->url)."\">$wikiMoveThisPage</a><br>\n" ;
 			if ( $page->canProtect() ) $ret .= "<a class=menulink href=\"".wikiLink("special:protectpage&target=".$page->url)."\">$wikiProtectThisPage</a><br>\n" ;
-			if ( $user->isLoggedIn ) $ret .= "<a class=menulink href=\"".wikiLink("special:vote&target=".$page->url)."\">$wikiVoteForPage</a><br>\n" ;
 			}
 		$ret .= "<a class=menulink href=\"".wikiLink($wikiWikipediaEditingHelp)."\">$wikiEditingHelp</a><br>\n" ;
 		$ret .= "<a class=menulink href=\"".wikiLink("special:Upload")."\">$wikiUpload</a></p>\n" ;
@@ -117,6 +116,7 @@ class skinCologneBlue extends skinClass {
 			$ret .= "<span class=menuhead>$wikiPageOptions</span><br>\n" ;
 			$ret .= "<a class=menulink href=\"".wikiLink($page->url."&action=print")."\">$wikiPrintable</a><br>\n" ;
 			$ret .= "<a class=menulink href=\"".wikiLink($page->url."&action=watch&mode=yes")."\">$wikiAddToWatchlist</a><br>\n" ;
+			if ( $user->isLoggedIn ) $ret .= "<a class=menulink href=\"".wikiLink("special:vote&target=".$page->url)."\">$wikiVoteForPage</a><br>\n" ;
 
 			$n = $page->namespace ;
 			if ( stristr ( $n , "talk" ) == false ) {
@@ -135,10 +135,14 @@ class skinCologneBlue extends skinClass {
 			global $wikiPageInfo , $wikiWhatLinksHere , $wikiLinkedPages , $wikiEditingHistory , $wikiLastChangeCologne , $wikiShowDiff , $wikiRequests ;
 			$ret .= "</td></tr><tr><td><p class=menu>" ;
 			$ret .= "<span class=menuhead>$wikiPageInfo</span><br>\n" ;
+			# User contributions
+			if ( $page->namespace == "user" ) $ret .= "<a class=menulink href=\"".wikiLink("special:contributions&amp;theuser=$page->mainTitle")."\">This user's edits</a><br>\n" ;
+			$ret .= "<a class=menulink href=\"".wikiLink($page->url."&action=history")."\">$wikiEditingHistory</a><br>\n" ;
+			$ret .= "<a class=menulink href=\"".wikiLink($page->url."&diff=yes")."\">$wikiShowLastChange</a><br>\n" ;
 			$ret .= "<a class=menulink href=\"".wikiLink("special:WhatLinksHere&target=".$page->secureTitle)."\">$wikiWhatLinksHere</a><br>\n" ;
 			$ret .= "<a class=menulink href=\"".wikiLink("special:RecentChangesLinked&target=".$page->secureTitle)."\">$wikiLinkedPages</a><br>\n" ;
-			$ret .= "<a class=menulink href=\"".wikiLink($page->url."&action=history")."\">$wikiEditingHistory</a><br>\n" ;
-			$ret .= "<a class=menulink href=\"".wikiLink($page->url."&diff=yes")."\">$wikiShowLastChange</a></p>\n" ;
+			$ret .= "<span class=menutext>" . str_replace ( '$1' , $page->counter , $wikiRequests ) . "</span>";
+                        $ret .= "</p>\n";
 			}
 
 		# My options
@@ -193,11 +197,11 @@ class skinCologneBlue extends skinClass {
 		global $wikiGetDate , $wikiLastChangeCologne , $wikiRequests , $wikiRedirectFrom ;
 
 		$ret = "<tr><td colspan=2 align=center>\n" ;
-		$ret .= "<FORM class=footnote method=get action=\"$THESCRIPT\">" ;
-		$ret .= "$wikiFindMore : " ;
+		$ret .= "<FORM class=CBtext method=get action=\"$THESCRIPT\">" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("")."\">$wikiWikipediaHome</a> | <a class=CBlink href=\"".wikiLink("wikipedia")."\">$wikiAboutWikipedia</a> | " ;
+		$ret .= "$wikiFindMore: " ;
 		$ret .= "<INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\">" ;
 		$ret .= "<INPUT TYPE=submit value=\"$wikiOK\">" ;
-		$ret .= " &nbsp; <a class=CBlink href=\"".wikiLink("")."\">$wikiWikipediaHome</a> | <a class=CBlink href=\"".wikiLink("wikipedia")."\">$wikiAboutWikipedia</a>" ;
 		$ret .= "</FORM>" ;
 
 		if ( !$page->isSpecialPage ) {
@@ -207,12 +211,8 @@ class skinCologneBlue extends skinClass {
 			$lc = "$day, $time" ;
 
 			$ret .= "<span class=footnote>".str_replace ( '$1' , $lc , $wikiLastChangeCologne ) ;
-			$ret .= " <a href=\"".wikiLink("$page->url&amp;diff=yes")."\">$wikiDiff</a> " ;
-			$ret .= "; ".str_replace ( '$1' , $page->counter , $wikiRequests ) ;
-
-			# User contributions
-			if ( $page->namespace == "user" ) $ret .= "; <a href=\"".wikiLink("special:contributions&amp;theuser=$page->mainTitle")."\">This user's contributions</a>" ;
-
+			# $ret .= " <a href=\"".wikiLink("$page->url&amp;diff=yes")."\">$wikiDiff</a> " ;
+			# $ret .= "; ".str_replace ( '$1' , $page->counter , $wikiRequests ) ;
 			# Redirect from...
 			if ( $page->backLink != "" ) $ret .= "; $wikiRederectFrom $page->backLink" ;
 			}
@@ -235,8 +235,8 @@ class skinCologneBlue extends skinClass {
 		$ret .= "	margin-top: 0px;\n" ;
 		$ret .= "	margin-left: 0px;\n" ;
 		$ret .= "	margin-right: 0px;\n" ;
-		$textcolor = $user->options[text];
-		$bgcolor = $user->options[background];
+		$textcolor = $user->options['text'];
+		$bgcolor = $user->options['background'];
 		$namespaceBackground = "" ;
 		if ( $namespaceBackground != "" ) $bgcolor = $namespaceBackground ;
 		if ( $textcolor == "" )
@@ -256,7 +256,7 @@ class skinCologneBlue extends skinClass {
 			}
 
 			.footnote {
-				font-size: 8pt;
+				font-size: 9pt;
 				color: #666666;
 			}
 
@@ -310,7 +310,7 @@ class skinCologneBlue extends skinClass {
 
 			span.menuhead {
 				font-family: Verdana, sans-serif;
-				font-size: 8pt;
+				font-size: 10pt;
 				font-weight: bold;
 				color: #999999;
 			}
@@ -320,7 +320,13 @@ class skinCologneBlue extends skinClass {
 				text-decoration: none;
 				color: #4B6587;
 			}
-
+			
+			span.menutext {
+				font-weight: bold;
+				text-decoration: none;
+				color: #999999;
+			}
+			
 			a:hover {
 				text-decoration: underline;
 			}
@@ -341,7 +347,7 @@ class skinCologneBlue extends skinClass {
 			a.interwiki { color: #3333BB; text-decoration: none; }
 			" ;
 
-		$ret .= "a { text-decoration: " . (($user->options[underlineLinks] == "no") ? "none" : "underline") . "; }\n";
+		$ret .= "a { text-decoration: " . (($user->options['underlineLinks'] == "no") ? "none" : "underline") . "; }\n";
 
 		$qbside = ( $user->options["quickBar"] == "left" ) ? "right" : "left";
 		$qbside = "nope" ; # nope is a dummy, will be ignored
@@ -349,7 +355,16 @@ class skinCologneBlue extends skinClass {
 		    "a.red { color: red; text-decoration: none; }\n" .
 		    "a.green { color: blue; text-decoration: none; }\n" .
 		    "a.syslink { color:white; text-decoration:none; }\n" .
-		    "a.CBlink { color:#4B6587; text-decoration:none; font-size:11pt; }\n" . # Was:#0000AA
+		    "a.CBlink { color:#4B6587; 	
+				font-family: Verdana, sans-serif;
+				font-weight: bold;
+				text-decoration:none; 
+				font-size:11pt; }\n" . # Was:#0000AA
+		    ".CBtext { color:#999999;
+				font-family: Verdana, sans-serif;
+				font-weight: bold;
+				text-decoration:none; 
+				font-size:11pt; }\n" . 
 		    ".topbar { border-bottom-width: 2; border-bottom-style: ridge; }\n" .
 		    ".middle { background:white }\n" .
 		    ".quickbar { background:$bgcolor; border-$qbside-width: 2; border-$qbside-style: ridge; }\n" .
@@ -358,9 +373,9 @@ class skinCologneBlue extends skinClass {
 		if ( $action == "print" ) {
 		    $ret .= "a { color: inherit; text-decoration: none; font-style: italic; }\n ";
 		    $ret .= "a.newlink { color: inherit; font-style: inherit; }\n.newlinkedge { display: none; }\n";
-		} elseif ( $user->options[markupNewTopics] == "red") {
+		} elseif ( $user->options['markupNewTopics'] == "red") {
 		    $ret .= "a.newlink { color: red; }\n.newlinkedge { display: none; }\n";
-		} elseif ( $user->options[markupNewTopics] == "inverse") {
+		} elseif ( $user->options['markupNewTopics'] == "inverse") {
 		    $ret .= "a.newlink { color: white; background: blue; }\n.newlinkedge { display: inline; }\n";
 		    }
 		$ret .= "//--></style>";
