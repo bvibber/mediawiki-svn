@@ -10,7 +10,7 @@ class SearchEngine {
 		# We display the query, so let's strip it for safety
 		#
 		$lc = SearchEngine::legalSearchChars() . "()";
-		$this->mUsertext = preg_replace( "/[^{$lc}]/", " ", $text );
+		$this->mUsertext = trim( preg_replace( "/[^{$lc}]/", " ", $text ) );
 		$this->mSearchterms = array();
 	}
 
@@ -61,7 +61,7 @@ class SearchEngine {
 		$wgOut->addHTML( "<p>{$top}\n" );
 
 		$sl = SearchEngine::viewPrevNext( $offset, $limit, "",
-		  "search={$this->mUsertext}" );
+		  "search=" . wfUrlencode( $this->mUsertext ) );
 		$wgOut->addHTML( "<br>{$sl}\n" );
 
 		$foundsome = false;
@@ -169,6 +169,8 @@ class SearchEngine {
 				$cond .= " " . strtoupper( $word );
 				$last = "";
 			} else if ( strlen( $word ) < $wgDBminWordLen ) {
+				continue;
+			} else if ( FulltextStoplist::inList( $word ) ) {
 				continue;
 			} else {
 				if ( "" != $last ) { $cond .= " AND"; }

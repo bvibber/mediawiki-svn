@@ -533,15 +533,17 @@ and [[wikipedia:Most common Wikipedia faux pas|most common Wikipedia faux pas]].
 If you want to see Wikipedia succeed, it's very important that you don't add
 material restricted by others' [[wikipedia:Copyrights|copyrights]].
 The legal liability could really hurt the project, so please don't do it.
-
 See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges recent meta discussion].",
 "rcloaderr"		=> "Loading recent changes",
-"rcnote"		=> "Below are the last <b>$1</b> changes in the last <b>$2</b> days.",
-"rclinks"		=> "View the last $1 changes; view the last $2 days; $3 minor edits.",
+"rclinks"		=> "Show last $1 changes in last $2 hours / last $3 days",
+"rchide"		=> "in $4 form; $1 minor edits; $2 secondary namespaces; $3 multiple edits.",
 "diff"			=> "diff",
 "hist"			=> "hist",
 "hide"			=> "hide",
 "show"			=> "show",
+"tableform"		=> "table",
+"listform"		=> "list",
+"nchanges"		=> "$1 changes",
 
 # Upload
 #

@@ -1,5 +1,7 @@
 <?
 
+include_once( "FulltextStoplist.php" );
+
 $wgLastDatabaseQuery = "";
 
 function wfGetDB()
@@ -28,9 +30,9 @@ function wfQuery( $sql, $fname = "" )
 	$ret = mysql_query( $sql, $conn );
 
 	if ( "" != $fname ) {
-#		wfDebug( "{$fname}:SQL: {$sql}\n", true );
+		wfDebug( "{$fname}:SQL: {$sql}\n", true );
 	} else {
-#		wfDebug( "SQL: {$sql}\n", true );
+		wfDebug( "SQL: {$sql}\n", true );
 	}
 	if ( false === $ret ) {
 		$wgOut->databaseError( $fname );
