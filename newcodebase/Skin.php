@@ -280,7 +280,7 @@ class Skin {
 
 		$sub = $wgOut->getSubtitle();
 		if ( "" == $sub ) { $sub = wfMsg( "fromwikipedia" ); }
-		$s = "<p class=\"subtitle\"><strong>{$sub}</strong>\n";
+		$s = "<p class='subtitle'>{$sub}\n";
 		return $s;
 	}
 
