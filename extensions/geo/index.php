@@ -11,13 +11,20 @@ $p = new geo_params ;
 
 $p->settings ( "
 languages:de,en
-show:germany.bavaria
-fit:germany.bavaria
+show:germany
+fit:germany
+draw:germany.sh.cities#kiel
+style:germany[state],germany[isle]=fill:#CCCCCC; stroke:black; stroke-width:10
+style:germany.hamburg=fill:red
+label:germany[state]=font-size:medium;fill-opacity:0.7
 " ) ;
-#style:germany.bavaria[state],germany.bavaria[isle]=fill:#CCCCCC; stroke:black; stroke-width:10
-#style:germany.hamburg=fill:red
 
 $svg = $p->getSVG () ;
+print $svg ;
+exit ( 0 ) ; # just make SVG
+
+
+
 
 $batik_cmd = "java -jar /home/magnus/batik-1.5.1/batik-rasterizer.jar $1 -d $2" ;
 $output_filename = "/srv/www/htdocs/test.png" ;

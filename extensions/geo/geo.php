@@ -12,6 +12,7 @@ class geo_params
 	var $labels = array () ; # The text labels
 	var $languages = array ( "en" ) ; # Default language
 	var $styles = array ( "default" => "fill:#EEEEEE;" ) ; # All the styles
+	var $label_styles = array () ; # All the label styles
 	var $starters = array () ; # The objects to start drawing with
 	var $fits = array () ; # Which objects to fit into the viewport
 	var $object_tree = array () ; # The current object(s) being rendered
@@ -31,7 +32,7 @@ class geo_params
 					{
 					$this->languages = explode ( ";" , str_replace ( "," , ";" , $value ) ) ; # "," and ";" are valid separators
 					}
-				else if ( $key == "style" )
+				else if ( $key == "style" || $key == "label" )
 					{
 					$a = explode ( "=" , $value , 2 ) ;
 					if ( count ( $a ) == 2 )
@@ -39,10 +40,10 @@ class geo_params
 						$b = explode ( ";" , str_replace ( "," , ";" , $a[0] ) ) ;
 						foreach ( $b AS $c )
 							{
-							if ( isset ( $this->styles[$c] ) )
-								$this->styles[$c] .= ";" . $a[1] ;
-							else
-								$this->styles[$c] = $a[1] ;
+							if ( $key == "style" )
+								$this->styles[$c][] = $a[1] ;
+							else if ( $key == "style" )
+								$this->label_styles[$c][] = $a[1] ;
 							}
 						}
 					}
@@ -81,7 +82,7 @@ class geo_params
 		$svg = 
 		'<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
 		<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/SVG/DTD/svg10.dtd">
-		<svg viewbox="' . $viewBox .
+		<svg viewBox="' . $viewBox .
 		'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
 			<g id="mainlayer">
 		'
@@ -136,10 +137,8 @@ class geo_params
 	function match_object_style ( $object , $type )
 		{
 		$ret = array () ;
-		if ( isset ( $this->styles["[{$type}]"] ) )
-			$ret[] = $this->styles["[{$type}]"] ;
 		if ( isset ( $this->styles["{$object}[{$type}]"] ) )
-			$ret[] = $this->styles["{$object}[{$type}]"] ;
+			$ret = $this->styles["{$object}[{$type}]"] ;
 		return implode ( "; " , $ret ) ;
 		}
 		
@@ -218,10 +217,11 @@ class geo_params
 			if ( $fs == "" ) $fs = $medium_font_size * 8 / 10 ;
 			
 			$p = array() ;
-			$p[] = "text-anchor:middle" ;
-			$p[] = "fill-opacity:0.7" ;
-			$p[] = "font-size:{$fs}pt" ;
-			$s .= implode ( ";" , $p ) ;
+			$p["text-anchor"] = "middle" ;
+			$p["fill-opacity"] = "0.7" ;
+			$p["font-size"] = "{$fs}pt" ;
+			foreach ( $p AS $pk => $pv )
+				$s .= "{$pk}: {$pv}; " ;
 			
 			$s .= "' x='{$x}' y='{$y}'>{$text}</text>" ;
 			if ( isset ( $l['href'] ) )
@@ -461,6 +461,16 @@ class geo
 		$ret = "" ;
 		$this->xsum = $this->ysum = $this->count = 0 ;
 		$match = $this->get_specs ( "region" , array ( "political" ) ) ;
+		
+		if ( $this->get_current_type ( $params ) == "city" )
+			{
+			$b = $this->get_data ( $params ) ;
+			$b = $b[0] ; # Only one point for cities...
+			$r = 300 ;
+			$ret .= "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"red\" style=\"fill-opacity:0.5\"/>\n" ;
+			$this->add_label ( $b[0] , $b[1] , $params ) ;
+			}
+		
 		if ( $match != "" )
 			{
 			$a = $this->data[$match] ;
