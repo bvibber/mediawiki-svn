@@ -2,9 +2,11 @@
 
 function wfSpecialWhatlinkshere()
 {
-	global $wgUser, $wgOut;
+	global $wgUser, $wgOut, $target;
+}
 
-	$wgOut->addHTML( "<p>(TODO: What links here)" );
+class TargetLinkList {
+
 }
 
 ?>

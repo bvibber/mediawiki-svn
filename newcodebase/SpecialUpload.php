@@ -35,7 +35,10 @@ function processUpload()
 	if ( ! $wpUploadSize ) {
 		$wpUploadSize = $HTTP_POST_FILES['wpUploadFile']['size'];
 	}
+	$prev = error_reporting( E_ALL & ~( E_NOTICE | E_WARNING ) );
 	$oname = $HTTP_POST_FILES['wpUploadFile']['name'];
+	error_reporting( $prev );
+
 	if ( "" != $oname ) {
 		$basename = strrchr( $oname, "/" );
 		if ( false === $basename ) { $basename = $oname; }
