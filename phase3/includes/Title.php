@@ -1651,14 +1651,11 @@ class Title {
 		$sk =& $wgUser->getSkin();
 		$parents = array();
 		$dbr =& wfGetDB( DB_SLAVE );
-		$cur = $dbr->tableName( 'cur' );
 		$categorylinks = $dbr->tableName( 'categorylinks' );
 
 		# NEW SQL
-		$sql = "SELECT * FROM categorylinks"
-		     ." WHERE cl_from='$titlekey'"
-			 ." AND cl_from <> '0'"
-			 ." ORDER BY cl_sortkey";
+		$sql = "SELECT * FROM $categorylinks WHERE cl_from='$titlekey'"
+			 ." AND cl_from <> '0' ORDER BY cl_sortkey";
 		
 		$res = $dbr->query ( $sql ) ;
 		
