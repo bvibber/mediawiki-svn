@@ -279,7 +279,7 @@ function wfSpecialMispeelings ()
         $a = array () ;
         foreach ( $l as $x )
                 if ( substr ( trim ( $x ) , 0 , 1 ) == "*" )
-                        $a[] = strtolower ( trim ( substr ( trim ( $x ) , 1 ) ) ) ;
+                        $a[] = strtolower ( trim ( substr ( trim ( $x ) , 1 ) ) );
         asort ( $a ) ;
 
         $cnt = 0 ;
@@ -289,7 +289,7 @@ function wfSpecialMispeelings ()
                         $y = $x ;
 			$x = explode ( " " , $x ) ;
 			$x = array_shift ( $x ) ;
-                        $sql = "SELECT DISTINCT cur_title FROM cur WHERE cur_namespace=0 AND cur_is_redirect=0 AND (MATCH(cur_ind_text) AGAINST ('{$x}'))" ;
+                        $sql = "SELECT DISTINCT cur_title FROM cur WHERE cur_namespace=0 AND cur_is_redirect=0 AND (MATCH(cur_ind_text) AGAINST ('" . wfStrencode( $wgLang->stripForSearch( $x ) ) . "'))" ;
                         $res = wfQuery( $sql, $fname );
                         while ( $obj = wfFetchObject ( $res ) ) {
                                 if ( $cnt >= $offset AND $cnt < $offset+$limit ) {
