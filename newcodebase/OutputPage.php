@@ -155,7 +155,7 @@ class OutputPage {
 			else {
 				$q = preg_split( "/<\\/\\s*nowiki\\s*>/i", $p[1], 2 );
 				++$nwsecs;
-				$nwlist[$nwsecs] = wfEscapeHTML($q[0]);
+				$nwlist[$nwsecs] = wfEscapeHTMLTagsOnly($q[0]);
 				$stripped .= $unique;
 				$text = $q[1];
 			}
@@ -185,7 +185,7 @@ class OutputPage {
 			else {
 				$q = preg_split( "/<\\/\\s*pre\\s*>/i", $p[1], 2 );
 				++$presecs;
-				$prelist[$presecs] = "<pre>". wfEscapeHTML($q[0]). "</pre>";
+				$prelist[$presecs] = "<pre>". wfEscapeHTMLTagsOnly($q[0]). "</pre>";
 				$stripped3 .= $unique3;
 				$stripped2 = $q[1];
 			}
