@@ -508,16 +508,15 @@ class Article {
 	}
 
 	/**
-	 * Loads everything from cur except cur_text
+	 * Loads everything except the text
 	 * This isn't necessary for all uses, so it's only done if needed.
 	 * @private
 	 */
 	function loadLastEdit() {
-		## $this->loadContent();
-		## return;
 		global $wgOut;
-		## wfDebugDieBacktrace( "Shouldn't the content do this?" );
-		if ( -1 != $this->mUser ) return;
+
+		if ( -1 != $this->mUser )
+			return;
 
 		$fname = 'Article::loadLastEdit';
 

@@ -272,7 +272,7 @@ class LinksUpdate {
 		$fname = 'LinksUpdate::fixBrokenLinks';
 
 		$dbw =& wfGetDB( DB_MASTER );
-		$cur = $dbw->tableName( 'page' );
+		$page = $dbw->tableName( 'page' );
 		$links = $dbw->tableName( 'links' );
 		
 		$res = $dbw->select( 'brokenlinks', array( 'bl_from' ), array( 'bl_to' => $this->mTitle ), 
