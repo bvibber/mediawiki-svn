@@ -23,7 +23,8 @@ $n = 0;
 $sql = "SELECT cur_id, cur_namespace, cur_title, cur_text FROM cur";
 $res = wfQuery($sql);
 while( $s = wfFetchObject($res)) {
-	$t = wfStrencode( Title::indexTitle( $s->cur_namespace, $s->cur_title ) );
+	$t = wfStrencode( Title::indexTitle( $s->cur_namespace,
+		str_replace("_", " ", $s->cur_title ) ) );
 	$sql2 = "UPDATE cur SET cur_ind_title='{$t}' WHERE cur_id={$s->cur_id}";
 	$res2 = wfQuery( $sql2 );
 	$u = new SearchUpdate( $s->cur_id, $s->cur_title, $s->cur_text );
