@@ -7,6 +7,7 @@ class WikiTitle {
 	# User rights
 	function canEdit () {
 		global $action ;
+		global $oldID ; if ( isset ( $oldID ) ) return false ;
 		if ( !$this->validateTitle() ) return false ;
 		if ( $this->isSpecialPage and $action != "edit" ) return false ;
 		if ( $this->namespace == "special" ) return false ;
@@ -14,6 +15,7 @@ class WikiTitle {
 		}
 	function canDelete () {
 		global $action ;
+		global $oldID ; if ( isset ( $oldID ) ) return false ;
 		if ( !$this->validateTitle() ) return false ;
 		if ( $this->isSpecialPage ) return false ;
 		if ( $this->namespace == "special" ) return false ;
@@ -21,6 +23,7 @@ class WikiTitle {
 		}
 	function canProtect () {
 		global $action ;
+		global $oldID ; if ( isset ( $oldID ) ) return false ;
 		if ( !$this->validateTitle() ) return false ;
 		if ( $this->isSpecialPage ) return false ;
 		if ( $this->namespace == "special" ) return false ;
@@ -28,6 +31,7 @@ class WikiTitle {
 		}
 	function canAdvance () {
 		global $action ;
+		global $oldID ; if ( isset ( $oldID ) ) return false ;
 		if ( !$this->validateTitle() ) return false ;
 		if ( $this->isSpecialPage ) return false ;
 		if ( $this->namespace == "special" ) return false ;

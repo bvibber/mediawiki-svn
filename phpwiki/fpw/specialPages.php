@@ -20,10 +20,19 @@ function edit ( $title ) {
 		$text = $EditBox ;
 		$text = str_replace ( "\\'" , "'" , $text ) ;
 		$text = str_replace ( "\\\"" , "\"" , $text ) ;
+		if ( $user->isLoggedIn )
+			$text = str_replace ( "~~~" , "[[user:$user->name|$user->name]]" , $text ) ;
+		$title = str_replace ( "\\'" , "'" , $title ) ;
+		$title = str_replace ( "\\\"" , "\"" , $title ) ;
+		$npage->title = $title ;
+		$npage->makeAll () ;
 		if ( $npage->doesTopicExist() ) $npage->backup() ;
 		else { $MinorEdit = 2 ; $npage->ensureExistence () ; }
 		$npage->setEntry ( $text , $CommentBox , $user->id , $user->name , $MinorEdit*1 ) ;
-		return "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL='$PHP_SELF?title=$title'\">" ;
+		global $wasSaved ;
+		$wasSaved = true ;
+		return "" ;
+#		return "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL='$PHP_SELF?title=$title'\">" ;
 	} else if ( isset ( $PreviewButton ) ) {
 		unset ( $PreviewButton ) ;
 		$text = $EditBox ;
@@ -59,7 +68,8 @@ function edit ( $title ) {
 	}
 
 function doEdit ( $title ) {
-	global $vpage , $action ;
+	global $vpage , $action , $wasSaved ;
+	$wasSaved = false ;
 	$vpage = new WikiPage ;
 	$vpage->isSpecialPage = true ;
 	$vpage->title = $title ;
@@ -71,6 +81,7 @@ function doEdit ( $title ) {
 	$action = "" ;
 	$ret .= $vpage->getFooter() ;
 	$action = "edit" ;
+	if ( $wasSaved ) return view ( $title ) ;
 	return $ret ;
 	}
 
@@ -529,6 +540,7 @@ function recentChangesLayout ( &$arr ) {
 	$editTypes = array ( "0"=>"" , "1"=>"<font color=green>M</font>" , "2"=>"<font color=red>N</font>" ) ;
 	$ret = " ('''Legend :''' ".$editTypes["1"]."=Minor edit ; ".$editTypes["2"]."=New article.)" ;
 	$ret .= "<table width=100% border=0 cellpadding=2 cellspacing=0>\n" ;
+	$dummy = "$PHP_SELF?x=y" ;
 	foreach ( $arr as $s ) {
 		$nt = $xyz->getNiceTitle ( $s->cur_title ) ;
 		$day = date ( "l, F d, Y" , tsc ( $s->cur_timestamp ) ) ;
@@ -548,17 +560,21 @@ function recentChangesLayout ( &$arr ) {
 
 		$t = "<tr>" ;
 		$t .= "<td$color valign=top>(diff)&nbsp;</td>" ;
-		$t .= "<td$color valign=top nowrap>[[$s->cur_title|$nt]]</td>" ;
+		if ( $s->version == "current" ) $t .= "<td$color valign=top><a href=\"$PHP_SELF?$s->cur_title\">$nt</a></td>" ;
+		else if ( $s->version != "" ) $t .= "<td$color valign=top><a href=\"$PHP_SELF?$s->cur_title&oldID=$s->old_id\">$nt ($s->version)</a></td>" ;
+		else $t .= "<td$color valign=top>[[$s->cur_title|$nt]]</td>" ;
 		$t .= "<td$color valign=top>$time</td>" ;
-		$t .= "<td$color valign=top nowrap>$u</td>" ;
+		if ( $s->version != "" ) {
+			$t .= "<td$color valign=top nowrap>$s->cur_user_text</td>" ;
+			}
+		else $t .= "<td$color valign=top nowrap>$u</td>" ;
 		$t .= "<td$color valign=top>$minor</td>" ;
-		$t .= "<td$color width=100%>$comment</td>" ;
+		$t .= "<td$color >$comment</td>" ;
 		$ret .= $t."</tr>\n" ;
 		if ( $color == $color1 ) $color = $color2 ;
 		else $color = $color1 ;
 		}
 	$ret .= "</table>" ;
-#	$ret .= "<center>'''Legend :''' ".$editTypes["1"]."=Minor edit ; ".$editTypes["2"]."=New article.</center>" ;
 	return $ret ;
 	}
 
@@ -706,6 +722,166 @@ function statistics () {
 
 	mysql_close ( $connection ) ;
 	$ret .= "</ul>" ;
+	return $ret ;
+	}
+
+function upload () {
+	global $removeFile , $xtitle , $removeFile , $Upload , $Upload_name , $no_copyright ;
+	global $user , $vpage ;
+	$vpage->special ( "Upload Page" ) ;
+
+#	if ( $USERLOGGEDIN != "YES" ) return "You are not logged in! You have to be logged in to upload a file. <a href=\"$PHP_SELF?action=login\">Log in</a> or return to the <a href=\"$PHP_SELF?no\">HomePage</a>" ;
+
+#	$rights = ",".getUserSetting ( $USERNAME , "user_rights" )."," ;
+#	if ( strstr ( $rights , ",is_editor," ) or strstr ( $rights , ",is_sysop" ) ) $isEditor = true ;
+#	else $isEditor = false ;
+#	if ( strstr ( $rights , ",is_sysop," ) or strstr ( $rights , ",is_sysop" ) ) $isSysop = true ;
+#	else $isSysop = false ;
+
+	$xtitle = "File upload page";
+	$ret = "<nowiki>" ;
+
+	$message = "" ;
+
+	if (isset($removeFile)) {
+#		if ( !$isSysop and !$isEditor ) return "You are neither an editor nor a sysop. Return to the <a href=\"$PHP_SELF?action=upload\">Upload page</a>" ;
+		if (is_file("upload/$removeFile") ) unlink ("./upload/$removeFile");
+		$message = "File <b>$removeFile</b> deleted!" ;
+		unset ( $removeFile ) ;
+	} else if (isset($Upload_name) or isset($Upload)) {
+		if ( $no_copyright != "AFFIRMED" ) return "You need to affirm that the file is not violating copygights. Return to the <a href=\"$PHP_SELF?action=upload\">Upload page</a>" ;
+		$Upload_name = ereg_replace(" ", "_", $Upload_name);
+		$abc = split("\.", $Upload_name);
+
+		$num = exec ("df");
+		$readata = substr($num,(strpos($num, "%")-2),2);
+
+		if ($readata > 96) {
+			$ret .= "<body bgcolor=white>\n";
+			$ret .= "<br><b>Sorry, we are almost out of disk space. We can't let you upload any files right now.</b>\n";
+			return $ret ;
+			}
+
+		copy ( $Upload , "./upload/$Upload_name" ) ;
+		system ("chmod 777 ./upload/$Upload_name");
+		$message = "File <b>$Upload_name</b> was successfully uploaded!" ;
+
+		unset ( $Upload_name ) ;
+	}
+
+	if ( $message != "" ) $ret .= "<font color=red>$message</font><br>\n" ;
+
+	$ret .= "<h2>Instructions:</h2><ul>\n";
+	$ret .= "<li><strong>Use this form to upload various files</strong></li>\n";
+	$ret .= "<li>To replace a previously-uploaded file (e.g., a\n";
+	$ret .= "new version of the article), simply re-upload the\n";
+	$ret .= "same file. But first look below and make sure you\n";
+	$ret .= "haven't changed the name.</li>\n";
+	$ret .= "<li><strong>Here's how to upload your file. </strong>Click\n";
+	$ret .= "&quot;Browse...&quot; to your find the file you\n";
+	$ret .= "want to upload on your hard drive. This will open\n";
+	$ret .= "a &quot;Choose file&quot; dialogue window.</li>\n";
+	$ret .= "<li>When you've found the file, click &quot;Open.&quot;\n";
+	$ret .= "This will select the file and close the &quot;Choose\n";
+	$ret .= "file&quot; dialogue window.</li>\n";
+	$ret .= "<li>Don't forget to check the copyright statement!</li>\n";
+	$ret .= "<li>Then click &quot;Upload.&quot; The file will start uploading. This may take some time, if it's\n";
+	$ret .= "a big file and you have a slow Internet connection.</li>\n";
+	$ret .= "<li>A message will tell you when the file has successfully uploaded.</li>\n";
+	$ret .= "<li>You can upload as many files you like. Please don't try to crash our server, ha ha.</li>\n";
+	$ret .= "</ul>\n";
+
+	$ret .= " <form enctype=\"multipart/form-data\" action=\"$PHP_SELF?title=special:upload\" method=post>\n";
+	$ret .= " <input type=hidden name=max value=20096>\n";
+	$ret .= " <input name=Upload type=\"file\"><br>\n";
+	$ret .= " <input type=hidden name=update value=1>\n";
+	$ret .= " <input type=hidden name=step value=$step>\n";
+	$ret .= "<INPUT TYPE=checkbox NAME=\"no_copyright\" VALUE=\"AFFIRMED\">I hereby affirm that this file is <b>not copyrighted</b>, or that I own the copyright for this file and donate it to Wikipedia.<br>\n" ;
+	$ret .= " <input type=submit value=UPLOAD>\n";
+	$ret .= "</form>\n";
+
+	if (is_dir("upload")) {
+		$mydir = dir("upload");
+			while ($entry = $mydir->read()) {
+			if ($entry != "." and $entry != "..")
+				$file = "yes";
+			}
+		$mydir->close();
+
+		if ($file == "yes") {
+			$ret .= "<h2>Previously-uploaded files:</h2>";
+			$mydir = opendir("upload");
+			$i = 0;
+			$ret .= "<table border=1 width=\"100%\">\n";
+			$ret .= "<tr><th>File</th><th>Size (byte)</th>";
+#			if ( $isSysop or $isEditor )
+			$ret .= "<th>File removal</th>";
+			$ret .= "</tr>\n" ;
+			while ($entry = readdir($mydir)) {
+				if ($entry != '.' && $entry != '..') {
+					$ret .= "<tr><td align=center>" ;
+					$ret .= "<a href=upload/$entry>$entry</a></td>";
+					$ret .= "<td align=center>".filesize("upload/$entry")." bytes</td>";
+#					if ( $isSysop or $isEditor )
+					$ret .= "<td align=center><a href=\"$PHP_SELF?title=special:upload&removeFile=$entry\">Click here to remove $entry.</a></td>" ;
+					$ret .= "</tr>" ;
+					$i++;
+				}
+			}
+		$ret .= "</table>\n";
+		closedir($mydir);
+		}
+	}
+	$ret .= "</nowiki>" ;
+	return $ret ;
+	}
+
+function doHistory ( $title ) {
+	global $vpage ;
+	$vpage = new WikiPage ;
+	$vpage->title = $title ;
+	$vpage->makeSecureTitle () ;
+	$ti = $vpage->secureTitle ;
+	$vpage->special ( "History of $title" ) ;
+	$vpage->makeSecureTitle () ;
+
+	$a = array () ;
+	$connection = getDBconnection () ;
+	mysql_select_db ( "wikipedia" , $connection ) ;
+	$sql = "SELECT * FROM cur WHERE cur_title=\"$ti\"" ;
+	$result = mysql_query ( $sql , $connection ) ;
+	$s = mysql_fetch_object ( $result ) ;
+	array_push ( $a , $s ) ;
+	mysql_free_result ( $result ) ;
+	$o = $s->cur_old_version ;
+	while ( $o != 0 ) {
+		$sql = "SELECT * FROM old WHERE old_id=$o" ;
+		$result = mysql_query ( $sql , $connection ) ;
+		$s = mysql_fetch_object ( $result ) ;
+		$s->cur_timestamp = $s->old_timestamp ;
+		$s->cur_title = $s->old_title ;
+		$s->cur_user = $s->old_user ;
+		$s->cur_user_text = $s->old_user_text ;
+		$s->cur_minor_edit = $s->old_minor_edit ;
+		array_push ( $a , $s ) ;
+		$o = $s->old_old_version ;
+		mysql_free_result ( $result ) ;
+		}
+	mysql_close ( $connection ) ;
+
+	$i = count ( $a ) ;
+	$k = array_keys ( $a ) ;
+	foreach ( $k as $x ) {
+		if ( $i != count ( $a ) ) $a[$x]->version = $i ;
+		else $a[$x]->version = "current" ;
+		$i-- ;
+		}
+
+	$t = "<b>This is the history of <a href=\"$PHP_SELF?title=$title\">$title</a></b>".recentChangesLayout ( $a ) ;
+
+	$ret = $vpage->getHeader() ;
+	$ret .= $vpage->getMiddle($t) ;
+	$ret .= $vpage->getFooter() ;
 	return $ret ;
 	}
 ?>

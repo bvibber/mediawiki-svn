@@ -1,9 +1,5 @@
 <?
 function getDBconnection () {
-#	$server="127.0.0.1" ;
-#	$user="manske" ;
-#	$passwd="test" ;
-
 	$server="mysql" ;
 	$user="wikipedia" ;
 	$passwd="" ;
