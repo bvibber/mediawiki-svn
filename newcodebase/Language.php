@@ -197,24 +197,24 @@
 	"Userlogin"		=> "",
 	"Userlogout"	=> "",
 	"Preferences"	=> "Set my user preferences",
-	"Watchlist"		=> "Show my watchlist",
-	"Recentchanges" => "List recently updated pages",
+	"Watchlist"		=> "My watchlist",
+	"Recentchanges" => "Recently updated pages",
 	"Upload"		=> "Upload image files",
-	"Imagelist"		=> "List uploaded images",
-	"Listusers"		=> "List registered users",
-	"Statistics"	=> "Show site statistics",
-	"Randompage"	=> "Go to randomly-selected article",
+	"Imagelist"		=> "Image list",
+	"Listusers"		=> "Registered users",
+	"Statistics"	=> "Site statistics",
+	"Randompage"	=> "Random article",
 
-	"Lonelypages"	=> "List orphaned articles",
-	"Unusedimages"	=> "List orphaned images",
-	"Popularpages"	=> "List popular articles",
-	"Wantedpages"	=> "List most wanted articles",
-	"Shortpages"	=> "List short articles",
-	"Longpages"		=> "List long articles",
-	"Newpages"		=> "List newly created articles",
-	"Allpages"		=> "List all pages by title",
+	"Lonelypages"	=> "Orphaned articles",
+	"Unusedimages"	=> "Orphaned images",
+	"Popularpages"	=> "Popular articles",
+	"Wantedpages"	=> "Most wanted articles",
+	"Shortpages"	=> "Short articles",
+	"Longpages"		=> "Long articles",
+	"Newpages"		=> "Newly created articles",
+	"Allpages"		=> "All pages by title",
 
-	"Ipblocklist"	=> "List blocked IP addresses",
+	"Ipblocklist"	=> "Blocked IP addresses",
 	"Specialpages"  => "",
 	"Contributions" => "",
 	"Whatlinkshere" => "",
@@ -230,7 +230,7 @@
 /* private */ $wgDeveloperSpecialPagesEn = array(
 	"Lockdb"		=> "Make database read-only",
 	"Unlockdb"		=> "Restore database write access",
-	"Debug"			=> "Show debugging information"
+	"Debug"			=> "Debugging information"
 );
 
 /* private */ $wgAllMessagesEn = array(
