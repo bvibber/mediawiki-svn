@@ -6,7 +6,7 @@
 #
 # This sample sets up a skin based on PHPTal templates.
 #
-# The sample projects consist of these files:
+# The sample project consists of these files:
 #
 # * extensions/sampleskin/SampleSkin.php
 #   This file. You have to activate it by adding
