@@ -44,6 +44,8 @@ public:
 		session.remote_port = port;
 		session.community = reinterpret_cast<u_char *>(const_cast<char *>("public"));
 		session.community_len = strlen(reinterpret_cast<char const *>(session.community));
+		session.retries = 3;
+		session.timeout = 1000000 * 10;
 
 		ss = snmp_open(&session);
 		if (!ss) {
