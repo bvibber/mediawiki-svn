@@ -3,9 +3,8 @@
 function wfSpecialLonelypages()
 {
 	global $wgUser, $wgOut, $wgLang, $wgTitle;
-	global $wgServer, $wgScript;
 	global $limit, $offset; # From query string
-	$fname = "wfSpecialRecentchanges";
+	$fname = "wfSpecialLonelypages";
 
 	if ( ! $limit ) {
 		$limit = $wgUser->getOption( "searchlimit" );
@@ -20,27 +19,11 @@ function wfSpecialLonelypages()
 
 	$sk = $wgUser->getSkin();
 
-	$top = str_replace( "$1", $limit, wfMsg( "showingorphans" ) );
-	$top = str_replace( "$2", $offset+1, $top );
+	$top = SearchEngine::showingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$prev = str_replace( "$1", $limit, wfMsg( "orphanprev" ) );
-	$next = str_replace( "$1", $limit, wfMsg( "orphannext" ) );
-
-	if ( 0 != $offset ) {
-		$po = $offset - $limit;
-		if ( $po < 0 ) { $po = 0; }
-
-		$plink = "<a href=\"$wgServer$wgScript?title=Special%3ALonelypages" .
-		  "&amp;limit={$limit}&amp;offset={$po}\">{$prev}</a>";
-	} else { $plink = $prev; }
-
-	$no = $offset + $limit;
-	$nlink = "<a href=\"$wgServer$wgScript?title=Special%3ALonelypages" .
-	  "&amp;limit={$limit}&amp;offset={$no}\">{$next}</a>";
-
-	$sl = str_replace( "$1", $plink, wfMsg( "orphanlinks" ) );
-	$sl = str_replace( "$2", $nlink, $sl );
+	$sl = SearchEngine::viewPrevNext( $offset, $limit,
+	  "title=Special%3ALonelypages" );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$s = "<ul>";
