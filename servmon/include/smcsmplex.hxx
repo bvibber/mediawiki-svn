@@ -12,7 +12,7 @@ class csmplexd : public smthr::daemon {
 public:
 	csmplexd(void);
 	void start(void);
-	void newc(smnet::inetlsnrp, int);
+	void newc(smnet::scktp, int);
 
 private:
 };

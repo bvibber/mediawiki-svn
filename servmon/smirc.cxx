@@ -304,14 +304,14 @@ ircclnt::ircclnt(std::string const& serv, int port)
 	cbs["PRIVMSG"] = b::bind(&ircclnt::cb_privmsg, this, _1);
 	pnick = SMI(smcfg::cfg)->fetchstr("/irc/server/"+serv+"/nickname");
 	SMI(smlog::log)->debug(smlog::irc, "ircclnt: connecting to " + serv);
-	sckt = smnet::inetclntp(new smnet::inetclnt);
+	sckt = smnet::clntp(new smnet::clnt);
 	sckt->svc(lexical_cast<std::string>(port));
-	sckt->endpt(serv);
+	sckt->node(serv);
 	cip = true;
 	if (sckt->connect()) { cip = false; connected(); }
-	boost::function<void(smnet::inetclntp, int)> f =
+	boost::function<void(smnet::scktp, int)> f =
 			boost::bind(&ircclnt::data_cb, this, _2);
-	SMI(smnet::smpx)->add(f, sckt, smnet::smpx::srd /*| smnet::smpx::swr*/);
+	SMI(smnet::smpx)->add(f, static_pointer_cast<smnet::sckt>(sckt), smnet::smpx::srd /*| smnet::smpx::swr*/);
 }
 
 ircclnt::~ircclnt()

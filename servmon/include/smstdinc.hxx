@@ -33,6 +33,8 @@ using boost::format;
 using boost::noncopyable;
 using boost::shared_ptr;
 using boost::lambda::var;
+using boost::static_pointer_cast;
+using boost::dynamic_pointer_cast;
 namespace b = boost;
 namespace bl = boost::lambda;
 

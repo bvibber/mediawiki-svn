@@ -11,9 +11,10 @@ csmplexd::csmplexd(void)
 	// no-op
 }
 
-void csmplexd::start(void)
+void
+csmplexd::start(void)
 {
-	smnet::inetlsnrp s (new smnet::inetlsnr);
+	smnet::lsnrp s (new smnet::lsnr);
 	s->svc("5050");
 	try {
 		s->lsn();
@@ -22,18 +23,21 @@ void csmplexd::start(void)
 		return;
 	}
 
-	boost::function<void(smnet::inetlsnrp, int)> f = 
+	boost::function<void(smnet::scktp, int)> f = 
 		boost::bind(&csmplexd::newc, this, _1, _2);
-	SMI(smnet::smpx)->add(f, s, smnet::smpx::srd);
+	SMI(smnet::smpx)->add(f, static_pointer_cast<smnet::sckt>(s), smnet::smpx::srd);
 }
 
-void csmplexd::newc(smnet::inetlsnrp s, int)
+void
+csmplexd::newc(smnet::scktp s_, int)
 {
+	/* yuck */
+	smnet::lsnrp s = dynamic_pointer_cast<smnet::lsnr>(s_);
+	
 	try {
-		smnet::inetclntp c = s->wt_acc();
-		smnet::inettnsrvp tns (new smnet::inettnsrv(c));
-		//smtrm::inettrmsrvp trm (new smtrm::inettrmsrv (tns));
-		smtrm::inettrmsrv* trm (new smtrm::inettrmsrv (tns));
+		smnet::clntp c = s->wt_acc();
+		smnet::tnsrvp tns (new smnet::tnsrv(c));
+		smtrm::trmsrv* trm (new smtrm::trmsrv (tns));
 		trm->start();
 	} catch (smnet::sckterr& e) {
 		SMI(smlog::log)->logmsg(0, std::string("Accept failed: ") + e.what());

@@ -200,10 +200,9 @@ struct tmcmds : public smutl::singleton<tmcmds> {
 	handler_node qbrt, qbrrt;
 };
 
-template<class intft>
 class trmsrv : noncopyable, public terminal {
 public:
-	trmsrv(intft sckt_)
+	trmsrv(smnet::tnsrvp sckt_)
 	: intf(sckt_)
 	, cmds_root(SMI(tmcmds)->stdrt)
 	, prmbase("%s [%d]>")
@@ -243,7 +242,7 @@ public:
 		setlevel(2);
 		wrt(prm);
 	}
-	void gd_cb(smnet::inetclntp, u_char c) {
+	void gd_cb(smnet::clntp, u_char c) {
 		if (!binds[c](c))
 			disconnect();
 		if (destroyme) delete this;
@@ -446,7 +445,7 @@ public:
 		return true;
 	}
 private:
-	intft intf;
+	smnet::tnsrvp intf;
 	std::map<u_char, boost::function<bool (char)> > binds;
 	std::string usrnam;
 	// bookkeeping for parser
@@ -459,8 +458,7 @@ private:
 	bool rlip;
 	bool destroyme;
 };
-typedef trmsrv<smnet::inettnsrvp> inettrmsrv;
-typedef shared_ptr<inettrmsrv> inettrmsrvp;
+typedef shared_ptr<trmsrv> trmsrvp;
 
 } // namespace smtrm
 #endif

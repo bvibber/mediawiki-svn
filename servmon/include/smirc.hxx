@@ -50,7 +50,7 @@ private:
 	std::string mynick;
 	std::string replyto;
 	bool cip;
-	smnet::inetclntp sckt;
+	smnet::clntp sckt;
 	std::string pnick, snick;
 
 	/* stuff for IRC command execution */
