@@ -22,24 +22,33 @@ public WikiFetchThread(WikiSuite s) {
 public void run() {
 	int index = 0;
 
-	WikiSuite.fine( "Started background page-fetch thread." );
+	WikiSuite.info( "Started background page-fetch thread." );
 	m_running = true;
 
+	String url;
+	double r;
+
 	while ( m_suite.stillRunning() ) {
-		String url = WikiSuite.editUrl( WikiSuite.preloadedPages[index] );
+		r = Math.random();
+		if ( r < 0.1 ) {
+			url = WikiSuite.viewUrl( "" ); /* Main page */
+		} else if ( r < 0.15 ) {
+			url = WikiSuite.viewUrl( "Special:Recentchanges" );
+		} else {
+			if ( ++index >= WikiSuite.preloadedPages.length ) { index = 0; }
+			url = WikiSuite.editUrl( WikiSuite.preloadedPages[index] );
+		}
 		try {
 			WebResponse wr = m_conv.getResponse( url );
 		} catch (Exception e) {
-			WikiSuite.warning( "Error (" + e + ") fetching \"" +
-			  WikiSuite.preloadedPages[index] + "\"" );
+			WikiSuite.warning( "Error (" + e + ") fetching \"" + url + "\"" );
 		}
-
-		WikiSuite.fine( "Fetched \"" + WikiSuite.preloadedPages[index] + "\"" );
-		if ( ++index >= WikiSuite.preloadedPages.length ) { index = 0; }
+		WikiSuite.fine( "Fetched \"" + url + "\"" );
+		m_suite.incrementFetchcount();
 	}
 	m_running = false;
 
-	WikiSuite.fine( "Terminated background page-fetch thread." );
+	WikiSuite.info( "Terminated background page-fetch thread." );
 }
 
 

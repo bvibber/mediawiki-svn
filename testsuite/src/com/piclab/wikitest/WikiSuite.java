@@ -87,6 +87,30 @@ public WikiSuite() {
 	m_conv = new WebConversation();
 }
 
+public void clearCookies() {
+	m_conv.clearContents();
+}
+
+public WebResponse loginAs( String name, String password )
+throws WikiSuiteFailureException {
+	WebResponse wr = null;
+	WebRequest req = null;
+
+	try {
+		wr = viewPage( "Special:Userlogin" );
+
+		WebForm loginform = WikiSuite.getFormByName( wr, "userlogin" );
+		req = loginform.getRequest( "wpLoginattempt" );
+		req.setParameter( "wpName", name );
+		req.setParameter( "wpPassword", password );
+    	wr = getResponse( req );
+	} catch (org.xml.sax.SAXException e) {
+		throw new WikiSuiteFailureException( "Exception (" + e +
+		  ") parsing login form." );
+	}
+	return wr;
+}
+
 /* Utility routine to munge page titles into URL form.
  * Should match the ruotines used by the wiki itself.
  */
@@ -166,6 +190,7 @@ public static void info( String msg ) {
 
 public static void fine( String msg ) {
 	ms_logger.fine( msg );
+	ms_logger.getHandlers()[0].flush();
 }
 
 /*
@@ -328,11 +353,10 @@ public static String loadFile( String fname )
  */
 private void initializeDatabase() {
 
-	WebResponse wr;
+	WebResponse wr = null;
 
-	fine( "Preloading database with test pages." );
+	info( "Preloading database with test pages." );
 	for (int i = 0; i < preloadedPages.length; ++i) {
-		wr = null;
 		try {
 			wr = loadPageFromFile( preloadedPages[i] );
 		} catch (WikiSuiteFailureException e) {
@@ -342,6 +366,27 @@ private void initializeDatabase() {
 			fine( "Loaded \"" + preloadedPages[i] + "\"" );
 		}
 	}
+	info( "Creating test users." );
+	try {
+		wr = viewPage( "Special:Userlogin" );
+		WebForm loginform = WikiSuite.getFormByName( wr, "userlogin" );
+		WebRequest req = loginform.getRequest( "wpCreateaccount" );
+		req.setParameter( "wpName", "Fred" );
+		req.setParameter( "wpPassword", "Fred" );
+		req.setParameter( "wpRetype", "Fred" );
+		wr = getResponse( req );
+
+		wr = viewPage( "Special:Userlogin" );
+		loginform = WikiSuite.getFormByName( wr, "userlogin" );
+		req = loginform.getRequest( "wpCreateaccount" );
+		req.setParameter( "wpName", "Barney" );
+		req.setParameter( "wpPassword", "Barney" );
+		req.setParameter( "wpRetype", "Barney" );
+		wr = getResponse( req );
+	} catch (org.xml.sax.SAXException e) {
+		error( "Exception (" + e + ") parsing login form." );
+	}
+	clearCookies();
 }
 
 /*
@@ -352,6 +397,7 @@ private void initializeDatabase() {
 
 private boolean m_stillrunning = false;
 private WikiFetchThread m_wft;
+private int m_fetchcount = 0;
 
 private void startBackgroundFetchThread() {
 	m_stillrunning = true;
@@ -366,6 +412,10 @@ private synchronized void stopBackgroundFetchThread() {
 
 public boolean stillRunning() {
 	return m_stillrunning;
+}
+
+public void incrementFetchcount() {
+	++m_fetchcount;
 }
 
 /*
@@ -406,6 +456,7 @@ public static void main( String[] params ) {
 	sb.append( "Total elapsed time: " ).append( t_hr ).append( " hr, " )
 	  .append( t_min ).append( " min, " ).append( t_sec ).append( " sec." );
 	info( sb.toString() );
+	info( "Total background page fetches: " + ws.m_fetchcount );
 }
 
 

@@ -1,0 +1,42 @@
+
+/*
+ * Template for adding new tests.
+ */
+
+package com.piclab.wikitest;
+
+import com.meterware.httpunit.*;
+
+public class FooTest extends WikiTest {
+
+public FooTest( WikiSuite ws ) { super(ws); }
+
+public String testName() { return "Foo"; }
+
+protected boolean runTest() throws Exception {
+	m_suite.clearCookies();
+	if ( ! part1() ) { throw new WikiSuiteFailureException( "Part 1" ); }
+	if ( ! part2() ) { throw new WikiSuiteFailureException( "Part 2" ); }
+
+	return true;
+}
+
+private boolean part1() throws Exception {
+	boolean result = true;
+
+	return result;
+}
+
+private boolean part2() throws Exception {
+	boolean result = true;
+
+	return result;
+}
+
+public static void main( String[] params ) {
+	WikiSuite ws = new WikiSuite();
+	FooTest wt = new FooTest( ws );
+	wt.run();
+}
+
+}
