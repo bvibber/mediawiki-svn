@@ -219,6 +219,7 @@ class OutputPage {
 		wfProfileIn( "OutputPage::output" );
 		$sk = $wgUser->getSkin();
 
+		wfProfileIn( "OutputPage::output-headers" );
 		header( "Expires: 0" );
 		header( "Cache-Control: no-cache" );
 		header( "Pragma: no-cache" );
@@ -237,6 +238,9 @@ class OutputPage {
 		foreach( $this->mCookies as $name => $val ) {
 			setcookie( $name, $val, $exp, "/" );
 		}
+		wfProfileOut();
+
+		wfProfileIn( "OutputPage::output-middle" );
 		$sk->initPage();
 		$this->out( $this->headElement() );
 
@@ -251,10 +255,14 @@ class OutputPage {
 			  $this->mDebugtext . "-->\n" );
 		}
 		$this->out( $sk->beforeContent() );
-		wfProfileIn( "OutputPage:output-bodytext" );
+		wfProfileOut();
+		
+		wfProfileIn( "OutputPage::output-bodytext" );
 		$this->out( $this->mBodytext );
 		wfProfileOut();
+		wfProfileIn( "OutputPage::output-after" );
 		$this->out( $sk->afterContent() );
+		wfProfileOut();
 
 		wfProfileOut(); # A hack - we can't report after here
 		$this->out( $this->reportTime() );
