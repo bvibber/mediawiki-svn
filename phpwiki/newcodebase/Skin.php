@@ -506,7 +506,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
                 if ( wfMsg ( "currentevents" ) != "-" ) $s .= $sep . $this->makeKnownLink( wfMsg( "currentevents" ), "" ) ;
                 $s .= "\n<hr>";
 		$articleExists = $wgTitle->getArticleId();
-		if ( $wgOut->isArticle() || $action =="edit" || $action =="history" ) {
+		if ( $wgOut->isArticle() || $action =="edit" || $action =="history" || $action="submit") {
 						
 			if($wgOut->isArticle()) {
 				$s .= "<strong>" . $this->editThisPage() . "</strong>";
@@ -563,7 +563,9 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			unwatched. Therefore we do not show the "Watch this page" link in edit mode
 			*/			
 			if ( 0 != $wgUser->getID() && $articleExists) {
-				if($action!="edit" && $action!="history") {$s .= $sep . $this->watchThisPage(); }
+				if($action!="edit" && $action!="history" &&
+                                   $action !=submit) 
+				{$s .= $sep . $this->watchThisPage(); }
 				if ( $wgTitle->userCanEdit() ) $s .= $sep . $this->moveThisPage();
 			}
 			if ( $wgUser->isSysop() and $articleExists ) {
