@@ -80,7 +80,7 @@ class objRend
       // specific security recommendations
       $arrBlack['music'] = array('#');
     
-      $arrBlack['plot'] = array('cd', 'call', 'exit', 'load', 'pause', 'print', 'pwd', 'quit', 'replot', 'reread', 'reset', 'save', 'shell', 'system', 'test', 'update', '!', 'data-file', 'loadpath', 'fontpath', 'historysize', 'mouse', 'x11_mouse', 'output', 'terminal', 'file', '"', '\'');
+      $arrBlack['plot'] = array('cd', 'call', 'exit', 'load', 'pause', 'print', 'pwd', 'quit', 'replot', 'reread', 'reset', 'save', 'shell', 'system', 'test', 'update', '!', 'path', 'historysize', 'mouse', 'out', 'term', 'file', '"', '\'');
 
       // merge arrays, if specific present
       if (!empty($arrBlack[$strClass])) {
