@@ -76,8 +76,9 @@ class LinkCache {
 	}
 	
 	function clearLink( $title ) {
-		global $wgMemc;
-		$wgMemc->delete( $this->getKey( $title ) );
+		global $wgMemc, $wgLinkCacheMemcached;
+		if( $wgLinkCacheMemcached )
+			$wgMemc->delete( $this->getKey( $title ) );
 	}
 
 	function suspend() { $this->mActive = false; }
@@ -103,7 +104,7 @@ class LinkCache {
 		$id = $this->getGoodLinkID( $title );
 		if ( 0 != $id ) { return $id; }
 
-		global $wgMemc;
+		global $wgMemc, $wgLinkCacheMemcached;
 		$fname = "LinkCache::addLinkObj";
 		wfProfileIn( $fname );
 
@@ -115,7 +116,9 @@ class LinkCache {
 			return 0; 
 		}
 		
-		$id = $wgMemc->get( $key = $this->getKey( $title ) );
+		$id = FALSE;
+		if( $wgLinkCacheMemcached )
+			$id = $wgMemc->get( $key = $this->getKey( $title ) );
 		if( $id === FALSE ) {
 			$sql = "SELECT cur_id FROM cur WHERE cur_namespace=" .
 			  "{$ns} AND cur_title='" . wfStrencode( $t ) . "'";
@@ -127,7 +130,8 @@ class LinkCache {
 				$s = wfFetchObject( $res );
 				$id = $s->cur_id;
 			}
-			$wgMemc->add( $key, $id, time() + 3600 );
+			if( $wgLinkCacheMemcached )
+				$wgMemc->add( $key, $id, time() + 3600 );
 		}
 		if ( 0 == $id ) { $this->addBadLink( $title ); }
 		else { $this->addGoodLink( $id, $title ); }

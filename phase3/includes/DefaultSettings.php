@@ -44,6 +44,7 @@ $wgUseMemCached     = false;
 $wgMemCachedServers = array( "127.0.0.1:11000" );
 $wgMemCachedDebug   = false;
 $wgSessionsInMemcached = false;
+$wgLinkCacheMemcached = false; # Not fully tested
 
 # Language settings
 #
