@@ -1,16 +1,20 @@
 <?
-#include_once ( "geo_data.php" ) ;
-include_once ( "geo_functions.php" ) ;
+require_once ( "geo_functions.php" ) ;
 
 $geo_cache = array () ; # Evil global variable - beware!
 
-function get_raw_text ( $id )
+function geo_get_raw_text ( $id )
 	{
 	global $geo_cache ;
 	
 	if ( isset ( $geo_cache[$id] ) ) # Try the cache first...
 		return $geo_cache[$id] ;
 
+	$t = Title::newFromText ( "Geo:" . $id ) ;
+	$a = new Article ( $t ) ;
+	$contents = $a->getContent ( true ) ;
+
+/*
 	# Get the page contents. This is stupidly done through reading the URL right now
 	# It *should* be done by querying the DB through the Article class, of course
 	$filename = "http://127.0.0.1/phase3/index.php?title=Geo:{$id}&action=raw" ;
@@ -19,40 +23,13 @@ function get_raw_text ( $id )
 	while (!feof($handle))
 		$contents .= fread($handle, 8192);
 	fclose($handle);
+*/
 
+	# Return text
 	$geo_cache[$id] = $contents ; # Cache the result
 	return $contents ;
 	}
 
-# Global functions
-function geo_get_text ( $id )
-	{
-	$id = trim ( strtolower ( $id ) ) ;
-	
-	$parts = explode ( "#" , $id ) ;
-	if ( count ( $parts ) == 2 )
-		{
-		$id = array_shift ( $parts ) ;
-		$subid = array_shift ( $parts ) ;
-		}
-	else $subid = "" ;
-	
-	$ret = "\n" . get_raw_text ( $id ) ;
-	$ret = explode ( "\n==" , $ret ) ;
-	
-	if ( $subid == "" ) return $ret[0] ; # Default
-	
-	array_shift ( $ret ) ;
-	foreach ( $ret AS $s )
-		{
-		$s = explode ( "\n" , $s , 2 ) ;
-		$heading = array_shift ( $s ) ;
-		$heading = strtolower ( trim ( str_replace ( "=" , "" , $heading ) ) ) ;
-		if ( $heading == $subid ) return array_shift ( $s ) ;
-		}
-#	print "Not found : {$id}#{$subid}\n" ;
-	return "" ; # Query not found
-	}
 
 
 
@@ -136,8 +113,13 @@ class geo_params
 			$p[] = "font-size:{$fs}pt" ;
 			$s .= implode ( ";" , $p ) ;
 			
-			$s .= "' x='{$x}' y='{$y}'>{$text}</text>\n" ;
-			$ret .= $s ;
+			$s .= "' x='{$x}' y='{$y}'>{$text}</text>" ;
+			if ( isset ( $l['href'] ) )
+				{
+				$href = $l['href'] ;
+				$s = "<a xlink:href={$href}>{$s}</a>" ;
+				}
+			$ret .= $s."\n" ;
 			}
 		return $ret ;
 		}
@@ -149,11 +131,40 @@ class geo
 	var $id ;
 	var $data = array () ;
 	var $xsum , $ysum , $count ;
-	
+
+	function geo_get_text ( $id )
+		{
+		$id = trim ( strtolower ( $id ) ) ;
+		
+		$parts = explode ( "#" , $id ) ;
+		if ( count ( $parts ) == 2 )
+			{
+			$id = array_shift ( $parts ) ;
+			$subid = array_shift ( $parts ) ;
+			}
+		else $subid = "" ;
+		
+		$ret = "\n" . geo_get_raw_text ( $id ) ;
+		$ret = explode ( "\n==" , $ret ) ;
+		
+		if ( $subid == "" ) return $ret[0] ; # Default
+		
+		array_shift ( $ret ) ;
+		foreach ( $ret AS $s )
+			{
+			$s = explode ( "\n" , $s , 2 ) ;
+			$heading = array_shift ( $s ) ;
+			$heading = strtolower ( trim ( str_replace ( "=" , "" , $heading ) ) ) ;
+			if ( $heading == $subid ) return array_shift ( $s ) ;
+			}
+	#	print "Not found : {$id}#{$subid}\n" ;
+		return "" ; # Query not found
+		}
+
 	function set_from_id ( $id )
 		{
 		$this->id = $id ;
-		$t = explode ( "\n;" , "\n".geo_get_text ( $id ) ) ;
+		$t = explode ( "\n;" , "\n".$this->geo_get_text ( $id ) ) ;
 		$this->data = array () ;
 		foreach ( $t AS $x )
 			{
@@ -239,6 +250,14 @@ class geo
 		else $s = $params->get_styles ( $this->id , $t ) ;
 		return "style=\"{$s}\"" ;
 		}
+	
+	function fullid ( $id )
+		{
+		$id = trim ( strtolower ( $id ) ) ;
+		if ( substr ( $id , 0 , 1 ) == "#" )
+ 			$id = $this->id . $id ;
+		return $id ;
+		}
 
 	function draw_line ( $line , &$params )
 		{
@@ -252,7 +271,7 @@ class geo
 			$values = explode ( "," , $values ) ;
 			foreach ( $values AS $v )
 				{
-				$v = trim ( strtolower ( $v ) ) ;
+				$v = $this->fullid ( $v ) ;
 				$ng = new geo ;
 				$ng->set_from_id ( $v ) ;
 				$ret .= $ng->draw ( $params ) ;
@@ -264,7 +283,7 @@ class geo
 			$values = explode ( "," , $values ) ;
 			foreach ( $values AS $v )
 				{
-				$v = trim ( strtolower ( $v ) ) ;
+				$v = $this->fullid ( $v ) ;
 				$ng = new geo ;
 				$ng->set_from_id ( $v ) ;
 				$b = $ng->get_data ( $params ) ;
@@ -321,36 +340,5 @@ class geo
 		return $ret ;
 		}
 	}
-
-
-$g = new geo ;
-$g->set_from_id ( "germany" ) ;
-
-$p = new geo_params ;
-$p->languages = array ( "de" , "en" ) ; # Fallback to "en" if there's no "de"
-$p->style_fill = array ( "germany.hamburg" => "fill:red" ) ;
-
-$svg = $g->draw ( $p ) ;
-$svg .= $p->get_svg_labels () ;
-
-$styles = "" ;
-
-$viewBox = $p->get_view_box () ;
-
-$svg = 
-'<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/SVG/DTD/svg10.dtd">
-<svg viewBox="' . $viewBox .
-'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
-'
-	. $styles .
-'	<g id="mainlayer">
-'
-	. $svg .
-	'</g>
-</svg>
-' ;
-
-print $svg ;
 
 ?>

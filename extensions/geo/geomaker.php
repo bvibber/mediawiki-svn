@@ -1,5 +1,34 @@
 <?
-include_once ( "geo_functions.php" ) ;
+require_once ( "geo_functions.php" ) ;
+
+function get_any_value ( $key )
+	{
+	if ( isset ( $_GET[$key] ) ) return $_GET[$key] ;
+	if ( isset ( $_POST[$key] ) ) return $_POST[$key] ;
+	return "" ;
+	}
+
+$image = get_any_value ( "image" ) ;
+if ( $image == "" )
+	{
+	print "<html><head></head><body><form method=post>" ;
+	print $_POST["image"] ;
+	print "Image location (URL) <input type=text name='image'></input>" ;
+	print "<input type=submit value='OK'/></form></html>" ;
+	exit ( 0 ) ;
+	}
+
+function make_link ( $points )
+	{
+	global $image ;
+	$ret = "./geomaker.php" ;
+	$r = array () ;
+	$r[] = "&image=" . urlencode ( $image ) ;
+	if ( count ( $points ) > 0 )
+		$r[] = "coords={$points}" ;
+	$ret .= "?" . implode ( "&" , $r ) ;
+	return $ret ;
+	}
 
 print "
 <html>
@@ -8,7 +37,7 @@ print "
 " ;
 
 # One should only use free maps here, but since this is just a test...
-$image = "http://www.bmwnation.com/members/ausgang/Germany%20Map.jpg" ;
+#$image = "http://www.bmwnation.com/members/ausgang/Germany%20Map.jpg" ;
 
 # Corner points of the image above:
 # 361,502 <=> 480900,113500
@@ -43,11 +72,11 @@ $c2 = implode ( ";" , $c2 ) ;
 $coords = implode ( ";" , $coords ) ;
 
 print "
-<a href='./geomaker.php?coords={$coords}&'><image src='{$image}' ismap/></a>
+<a href='" . make_link ( $coords ) . "&'><image src='{$image}' ismap/></a>
 " ;
 
-print "<br/><a href='geomaker.php?coords={$c2}'>Remove last coordinates</a>" ;
-print " | <a href='geomaker.php'>Reset</a>" ;
+print "<br/><a href='" .make_link ( $c2 ) . "'>Remove last coordinates</a>" ;
+print " | <a href='" . make_link ( array() ) . "'>Reset</a>" ;
 
 # Conversion form
 
@@ -86,11 +115,11 @@ if ( isset ( $_POST['convert'] ) )
 	}
 else $p1 = $p2 = $np1 = $np2 = "" ;
 
-print "<br />Coordinates so far:<br />\n" ;
+print "<br/>Coordinates so far:<br/>\n" ;
 print "<form method=post><textarea style='width:100%' rows=5 cols=40 name='ctext'>\n" ;
 print str_replace ( ";" , " " , $coords ) ;
 print "</textarea>\n" ;
-print "Conversion : Point <input type='text' name='p1'/ value='{$p1}'> matches coordinates <input type='text' name='np1' value='{$np1}'/><br />" ;
+print "Conversion : Point <input type='text' name='p1'/ value='{$p1}'> matches coordinates <input type='text' name='np1' value='{$np1}'/><br/>" ;
 print "and point <input type='text' name='p2' value='{$p2}'/> matches coordinates <input type='text' name='np2' value='{$np2}'/>" ;
 print " <input type='submit' name='convert' value='Convert'/>" ;
 print "</form>" ;
