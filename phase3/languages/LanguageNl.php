@@ -5,7 +5,6 @@
 # encapsulates some of the magic-ness.
 
 /* private */ $wgNamespaceNamesNl = array(
-	-2	=> "Media",
  -1 => "Speciaal",
  0 => "",
  1 => "Overleg",
@@ -14,7 +13,9 @@
  4 => "Wikipedia",
  5 => "Overleg_Wikipedia",
  6 => "Afbeelding",
- 7 => "Overleg_afbeelding"
+ 7 => "Overleg_afbeelding",
+ 8 => "MediaWiki",
+ 9 => "Overleg_MediaWiki"
 );
 
 /* private */ $wgDefaultUserOptionsNl = array(
@@ -278,6 +279,7 @@
  "Longpages"  => "Lange artikels",
  "Newpages"  => "Nieuwe artikels",
  "Ancientpages" => "Oudste artikels",
+#"Intl" => "Taallinks",
  "Allpages"  => "Alle paginatitels",
 
  "Ipblocklist" => "Geblokkeerde IP-adressen",
@@ -289,7 +291,8 @@
  "Recentchangeslinked" => "",
  "Movepage"  => "",
  "Booksources" => "",
- "Categories" => "Rubrieken"
+ "Categories" => "Rubrieken",
+ "Export" => ""
 );
 
 /* private */ $wgSysopSpecialPagesNl = array(
@@ -692,6 +695,8 @@ Geef uw bestanden een duidelijk omschrijvende naam om verwarring te voorkomen. O
 ",
 "filename"  => "Bestandsnaam",
 "filedesc"  => "Beschrijving",
+"filestatus" => "Auteursrechtensituatie",
+"filesource" => "Auteur/bron",
 "affirmation" => "Ik verklaar dat de eigenaar van de rechten op dit bestand toestemt om het onder de voorwaarden van $1 te verspreiden.",
 "copyrightpage" => "Wikipedia:Auteursrechten",
 "copyrightpagename" => "Wikipedia NL auteursrechten",
@@ -852,6 +857,9 @@ op 'Verwijderen' onderaan deze pagina.",
 "couldntremove" => "Verwijdering van '$1' onmogelijk.",
 "iteminvalidname" => "Incorrecte naam '$1'",
 "wlnote" => "Getoond worden de laatste $1 wijzigingen in de laatste $2 uur.",
+"wlshowlast" => "Toon de laatste ",
+"wlhours" => "uur",
+"wldays" => "dagen",
 
 # Delete/protect/revert
 # Verwijderen/beschermen/annuleren
