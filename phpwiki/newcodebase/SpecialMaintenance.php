@@ -14,6 +14,7 @@ function wfSpecialMaintenance ()
 	if ( $subfunction == "doubleredirects" ) return wfSpecialDoubleRedirects() ;
 	if ( $subfunction == "brokenredirects" ) return wfSpecialBrokenRedirects() ;
 	if ( $subfunction == "selflinks" ) return wfSpecialSelfLinks() ;
+        if ( $subfunction == "mispeelings" ) return wfSpecialMispeelings() ;
 	if ( $subfunction == "missinglanguagelinks" ) return wfSpecialMissingLanguageLinks() ;
 	if ( isset ( $submitmll ) ) return wfSpecialMissingLanguageLinks() ;
 
@@ -25,6 +26,7 @@ function wfSpecialMaintenance ()
 	$r .= "<li>".getMPL("doubleredirects")."</li>\n" ;
 	$r .= "<li>".getMPL("brokenredirects")."</li>\n" ;
 	$r .= "<li>".getMPL("selflinks")."</li>\n" ;
+        $r .= "<li>".getMPL("mispeelings")."</li>\n" ;
 
 	$r .= "<li>";
 	$l = getMPL("missinglanguagelinks");
@@ -242,6 +244,77 @@ function wfSpecialSelfLinks()
 	$wgOut->addHTML( $s );
 	$wgOut->addHTML( "<p>{$sl}\n" );
 }
+
+function wfSpecialMispeelings ()
+{
+        global $wgUser, $wgOut, $wgLang, $wgTitle;
+        global $limit, $offset; # From query string
+        $sk = $wgUser->getSkin();
+        $fname = "wfSpecialMispeelings";
+
+        if ( ! $limit ) {
+                $limit = $wgUser->getOption( "rclimit" );
+                if ( ! $limit ) { $limit = 50; }
+        }
+        if ( ! $offset ) { $offset = 0; }
+
+        # Determine page name
+        $ms = wfMsg ( "mispeelingspage" ) ;
+        $mss = str_replace ( " " , "_" , $ms ) ;
+        $msp = $wgLang->getNsText(4).":".$ms ;
+        $msl = $sk->makeKnownLink ( $msp ) ;
+
+        # Load list from database
+        $sql = "SELECT cur_text FROM cur WHERE cur_title='{$mss}' AND cur_namespace=4" ;
+        $res = wfQuery( $sql, $fname );
+        $obj = wfFetchObject ( $res ) ;
+        $l = $obj->cur_text ;
+        $l = explode ( "\n" , $l ) ;
+        $a = array () ;
+        foreach ( $l as $x )
+                if ( substr ( trim ( $x ) , 0 , 1 ) == "*" )
+                        $a[] = strtolower ( trim ( substr ( trim ( $x ) , 1 ) ) ) ;
+        asort ( $a ) ;
+
+        $cnt = 0 ;
+        $b = array () ;
+        foreach ( $a AS $x ) {
+                if ( $cnt < $offset+$limit && $x != "" ) {
+                        $y = $x ;
+                        $sql = "SELECT DISTINCT cur_title FROM cur WHERE cur_namespace=0 AND cur_is_redirect=0 AND (MATCH(cur_ind_text) AGAINST ('{$x}'))" ;
+                        $res = wfQuery( $sql, $fname );
+                        while ( $obj = wfFetchObject ( $res ) ) {
+                                if ( $cnt >= $offset AND $cnt < $offset+$limit ) {
+                                        if ( $y != "" ) {
+                                                if ( count ( $b ) > 0 ) $b[] = "</OL>\n" ;
+                                                $b[] = "<H3>{$y}</H3>\n<OL start=".($cnt+1).">\n" ;
+                                                $y = "" ;
+                                                }
+                                        $b[] = "<li>".
+                                                $sk->makeKnownLink ( $obj->cur_title ).
+                                                " (".
+                                                $sk->makeBrokenLink ( $obj->cur_title , wfMsg ( "qbedit" ) ).
+                                                ")</li>\n" ;
+                                        }
+                                $cnt++ ;
+                                }
+                        }
+                }
+        $top = getMaintenancePageBacklink();
+        $top .= "<p>".str_replace("$1",$msl,wfMsg("mispeelingstext"))."</p><br>\n";
+        $top .= SearchEngine::showingResults( $offset, $limit );
+        $wgOut->addHTML( "<p>{$top}\n" );
+
+        $sl = SearchEngine::viewPrevNext( $offset, $limit, "REPLACETHIS" ) ;
+        $sl = str_replace ( "REPLACETHIS" , sns().":Maintenance&subfunction=mispeelings" , $sl ) ;
+        $wgOut->addHTML( "<br>{$sl}\n" );
+
+        $s = implode ( "" , $b ) ;
+        if ( count ( $b ) > 0 ) $s .= "</ol>";
+        $wgOut->addHTML( $s );
+        $wgOut->addHTML( "<p>{$sl}\n" );
+}
+
 
 function wfSpecialMissingLanguageLinks()
 {
