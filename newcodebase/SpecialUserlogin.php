@@ -95,7 +95,7 @@ function wfSpecialUserlogin()
 
 /* private */ function mailPassword()
 {
-	global $wgUser, $wpName, $wgDeferredUpdateList;
+	global $wgUser, $wpName, $wgDeferredUpdateList, $wgOutputEncoding;
 
 	if ( "" == $wpName ) {
 		mainLoginForm( wfMsg( "noname" ) );
@@ -128,9 +128,13 @@ function wfSpecialUserlogin()
 	$m = str_replace( "$2", $u->getName(), $m );
 	$m = str_replace( "$3", $np, $m );
 
+	#FIXME: Generilize the email addresses for 3rd party sites...
 	mail( $u->getEmail(), wfMsg( "passwordremindertitle" ), $m,
-	  "From: Wikipedia Mail <apache@www.wikipedia.com>\n" .
-	  "Reply-To: webmaster@www.wikipedia.com\n" );
+	  "MIME-Version: 1.0\r\n" .
+	  "Content-type: text/plain; charset={$wgOutputEncoding}\r\n" .
+	  "Content-transfer-encoding: 8bit\r\n" .
+	  "From: Wikipedia Mail <apache@www.wikipedia.org>\r\n" .
+	  "Reply-To: webmaster@www.wikipedia.org" );
 	$m = str_replace( "$1", $u->getName(), wfMsg( "passwordsent" ) );
 	mainLoginForm( $m );
 }
