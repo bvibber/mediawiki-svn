@@ -472,9 +472,10 @@ class Article {
 		
 		$rows = $wgUser->getOption( "rows" );
 		$cols = $wgUser->getOption( "cols" );
-                $ew = $wgUser->getOption( "editwidth" );
-                if ( $ew ) $ew = " style='width:100%'";
-                else $ew = "" ;
+
+		$ew = $wgUser->getOption( "editwidth" );
+		if ( $ew ) $ew = " style=\"width:100%\"";
+		else $ew = "" ;
 
 		$q = "action=submit";
 		if ( "no" == $redirect ) { $q .= "&redirect=no"; }
@@ -516,7 +517,6 @@ class Article {
 		}
 
 
-		
 		if ( "preview" == $formtype) {
 		
 			$previewhead="<h2>" . wfMsg( "preview" ) . "</h2>\n<p><large><center><font color=\"#cc0000\">" . 
@@ -533,19 +533,21 @@ class Article {
 			}
 		}
 		$wgOut->addHTML( "
-<form method=post action=\"$action\"
-enctype='application/x-www-form-urlencoded' name='editform'>
-<textarea tabindex=1 name='wpTextbox1' rows={$rows} cols={$cols}{$ew} wrap=virtual>" .
+<form id=\"editform\" method=\"post\" action=\"$action\"
+enctype=\"application/x-www-form-urlencoded\">
+<textarea tabindex=1 name=\"wpTextbox1\" rows={$rows}
+cols={$cols}{$ew} wrap=\"virtual\">" .
 $wgLang->recodeForEdit( $wpTextbox1 ) .
 "
 </textarea><br>
-{$summary}: <input tabindex=2 type=text value=\"{$wpSummary}\" name='wpSummary' maxlength=200 size=60><br>
+{$summary}: <input tabindex=2 type=text value=\"{$wpSummary}\"
+name=\"wpSummary\" maxlength=200 size=60><br>
 {$checkboxhtml}
-<input tabindex=5 type=submit value=\"{$save}\" name='wpSave'>
-<input tabindex=6 type=submit value=\"{$prev}\" name='wpPreview'>
+<input tabindex=5 type=submit value=\"{$save}\" name=\"wpSave\">
+<input tabindex=6 type=submit value=\"{$prev}\" name=\"wpPreview\">
 <em>{$cancel}</em> | <em>{$edithelp}</em>
 <br><br>{$copywarn}
-<input type=hidden value=\"{$wpEdittime}\" name='wpEdittime'>\n" );
+<input type=hidden value=\"{$wpEdittime}\" name=\"wpEdittime\">\n" );
 
 		if ( $isConflict ) {
 			$wgOut->addHTML( "<h2>" . wfMsg( "yourdiff" ) . "</h2>\n" );
@@ -553,7 +555,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			  wfMsg( "yourtext" ), wfMsg( "storedversion" ) );
 
 			$wgOut->addHTML( "<h2>" . wfMsg( "yourtext" ) . "</h2>
-<textarea tabindex=6 name='wpTextbox2' rows={$rows} cols={$cols} wrap=virtual>"
+<textarea tabindex=6 name=\"wpTextbox2\" rows={$rows} cols={$cols} wrap=virtual>"
 . $wgLang->recodeForEdit( $wpTextbox2 ) .
 "
 </textarea>" );
@@ -1032,16 +1034,16 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$delcom = wfMsg( "deletecomment" );
 
 		$wgOut->addHTML( "
-<form name='deleteconfirm' method=post action=\"{$formaction}\">
+<form id=\"deleteconfirm\" method=\"post\" action=\"{$formaction}\">
 <table border=0><tr><td align=right>
 {$delcom}:</td><td align=left>
-<input type=text size=20 name='wpReason' value=\"{$wpReason}\">
+<input type=text size=20 name=\"wpReason\" value=\"{$wpReason}\">
 </td></tr><tr><td>&nbsp;</td></tr>
 <tr><td align=right>
-<input type=checkbox name='wpConfirm' value='1'>
+<input type=checkbox name=\"wpConfirm\" value='1'>
 </td><td>{$check}</td>
 </tr><tr><td>&nbsp;</td><td>
-<input type=submit name='wpConfirmB' value=\"{$confirm}\">
+<input type=submit name=\"wpConfirmB\" value=\"{$confirm}\">
 </td></tr></table></form>\n" );
 
 		$wgOut->returnToMain( false );

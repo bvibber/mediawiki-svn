@@ -176,22 +176,22 @@ function uploadWarning( $warning )
 	  "action=submit" );
 
 	$wgOut->addHTML( "
-<form name='uploadwarning' method=post enctype='multipart/form-data'
+<form id=\"uploadwarning\" method=\"post\" enctype=\"multipart/form-data\"
 action=\"{$action}\">
-<input type=hidden name='wpUploadAffirm' value='1'>
-<input type=hidden name='wpIgnoreWarning' value='1'>
-<input type=hidden name='wpUploadDescription' value=\"" . htmlspecialchars( $wpUploadDescription ) . "\">
-<input type=hidden name='wpUploadSaveName' value=\"" . htmlspecialchars( $wpUploadSaveName ) . "\">
-<input type=hidden name='wpUploadTempName' value=\"" . htmlspecialchars( $wpUploadTempName ) . "\">
-<input type=hidden name='wpUploadSize' value=\"" . htmlspecialchars( $wpUploadSize ) . "\">
-<input type=hidden name='wpSavedFile' value=\"" . htmlspecialchars( $wgSavedFile ) . "\">
-<input type=hidden name='wpUploadOldVersion' value=\"" . htmlspecialchars( $wgUploadOldVersion) . "\">
+<input type=hidden name=\"wpUploadAffirm\" value=\"1\">
+<input type=hidden name=\"wpIgnoreWarning\" value=\"1\">
+<input type=hidden name=\"wpUploadDescription\" value=\"" . htmlspecialchars( $wpUploadDescription ) . "\">
+<input type=hidden name=\"wpUploadSaveName\" value=\"" . htmlspecialchars( $wpUploadSaveName ) . "\">
+<input type=hidden name=\"wpUploadTempName\" value=\"" . htmlspecialchars( $wpUploadTempName ) . "\">
+<input type=hidden name=\"wpUploadSize\" value=\"" . htmlspecialchars( $wpUploadSize ) . "\">
+<input type=hidden name=\"wpSavedFile\" value=\"" . htmlspecialchars( $wgSavedFile ) . "\">
+<input type=hidden name=\"wpUploadOldVersion\" value=\"" . htmlspecialchars( $wgUploadOldVersion) . "\">
 <table border=0><tr>
 <tr><td align=right>
-<input tabindex=2 type=submit name='wpUpload' value=\"{$save}\">
+<input tabindex=2 type=submit name=\"wpUpload\" value=\"{$save}\">
 </td><td align=left>{$iw}</td></tr>
 <tr><td align=right>
-<input tabindex=2 type=submit name='wpReUpload' value=\"{$reupload}\">
+<input tabindex=2 type=submit name=\"wpReUpload\" value=\"{$reupload}\">
 </td><td align=left>{$reup}</td></tr></table></form>\n" );
 }
 
@@ -223,20 +223,22 @@ function mainUploadForm( $msg )
 
 	$action = wfLocalUrl( $wgLang->specialPage( "Upload" ) );
 	$wgOut->addHTML( "
-<form name='upload' method=post enctype='multipart/form-data'
+<form id=\"upload\" method=\"post\" enctype=\"multipart/form-data\"
 action=\"{$action}\">
 <table border=0><tr>
 <td align=right>{$fn}:</td><td align=left>
-<input tabindex=1 type='file' name='wpUploadFile' value=\"" . htmlspecialchars( $wpUploadFile ) . "\" size=40>
+<input tabindex=1 type=file name=\"wpUploadFile\" value=\""
+  . htmlspecialchars( $wpUploadFile ) . "\" size=40>
 </td></tr><tr>
 <td align=right>{$fd}:</td><td align=left>
-<input tabindex=2 type=text name='wpUploadDescription' value=\"" . htmlspecialchars( $wpUploadDescription ) . "\" size=40>
+<input tabindex=2 type=text name=\"wpUploadDescription\" value=\""
+  . htmlspecialchars( $wpUploadDescription ) . "\" size=40>
 </td></tr><tr>
 <td align=right>
-<input tabindex=3 type=checkbox name='wpUploadAffirm' value='1'>
+<input tabindex=3 type=checkbox name=\"wpUploadAffirm\" value=\"1\">
 </td><td align=left>{$ca}</td></tr>
 <tr><td>&nbsp;</td><td align=left>
-<input tabindex=5 type=submit name='wpUpload' value=\"{$ulb}\">
+<input tabindex=5 type=submit name=\"wpUpload\" value=\"{$ulb}\">
 </td></tr></table></form>\n" );
 }
 

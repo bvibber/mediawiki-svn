@@ -45,14 +45,14 @@ class IPUnblockForm {
 			$wgOut->addHTML( "<p><font color='red' size='+1'>{$err}</font>\n" );
 		}
 		$wgOut->addHTML( "<p>
-<form name='unblockip' method=post action=\"{$action}\">
+<form id=\"unblockip\" method=\"post\" action=\"{$action}\">
 <table border=0><tr>
-<td align='right'>{$ipa}:</td>
-<td align='left'>
-<input tabindex=1 type=text size=20 name='wpUnblockAddress' value=\"{$wpUnblockAddress}\">
+<td align=right>{$ipa}:</td>
+<td align=left>
+<input tabindex=1 type=text size=20 name=\"wpUnblockAddress\" value=\"{$wpUnblockAddress}\">
 </td></tr><tr>
-<td>&nbsp;</td><td align='left'>
-<input tabindex=2 type=submit name='wpBlock' value=\"{$ipus}\">
+<td>&nbsp;</td><td align=left>
+<input tabindex=2 type=submit name=\"wpBlock\" value=\"{$ipus}\">
 </td></tr></table>
 </form>\n" );
 

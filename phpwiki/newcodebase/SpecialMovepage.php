@@ -67,15 +67,15 @@ class MovePageForm {
 			$wgOut->addHTML( "<p><font color='red' size='+1'>{$err}</font>\n" );
 		}
 		$wgOut->addHTML( "<p>
-<form name='movepage' method=post action=\"{$action}\">
+<form id=\"movepage\" method=\"post\" action=\"{$action}\">
 <table border=0><tr>
 <td align=right>{$ma}:</td>
 <td align=left><strong>{$ott}</strong></td>
 </tr><tr>
 <td align=right>{$newt}:</td>
 <td align=left>
-<input type=text size=40 name='wpNewTitle' value=\"{$wpNewTitle}\">
-<input type=hidden name='wpOldTitle' value=\"{$wpOldTitle}\">
+<input type=text size=40 name=\"wpNewTitle\" value=\"{$wpNewTitle}\">
+<input type=hidden name=\"wpOldTitle\" value=\"{$wpOldTitle}\">
 </td>
 </tr>" );
 
@@ -83,14 +83,14 @@ class MovePageForm {
 			$wgOut->addHTML(
 "<tr>
 <td align=right>
-<input type=checkbox name='wpMovetalk' checked value='1'>
+<input type=checkbox name=\"wpMovetalk\" checked value=\"1\">
 </td><td>{$movetalk}</td>
 </tr>" );
 		}
 		$wgOut->addHTML(
 "<tr>
 <td>&nbsp;</td><td align=left>
-<input type=submit name='wpMove' value=\"{$mpb}\">
+<input type=submit name=\"wpMove\" value=\"{$mpb}\">
 </td></tr></table>
 </form>\n" );
 

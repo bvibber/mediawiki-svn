@@ -36,17 +36,17 @@ class SqlQueryForm {
 		  "action=submit" );
 
 		$wgOut->addHTML( "<p>
-<form name='asksql' method=post action=\"{$action}\">
+<form id=\"asksql\" method=\"post\" action=\"{$action}\">
 <table border=0><tr>
 <td align=right>{$q}:</td>
 <td align=left>
-<textarea name=\"wpSqlQuery\" cols=\"80\" rows=\"4\" wrap=\"virtual\">"
+<textarea name=\"wpSqlQuery\" cols=80 rows=4 wrap=\"virtual\">"
 . htmlspecialchars($wpSqlQuery) ."
 </textarea>
 </td>
 </tr><tr>
-<td>&nbsp;</td><td align='left'>
-<input type=submit name='wpQueryBtn' value=\"{$qb}\">
+<td>&nbsp;</td><td align=\"left\">
+<input type=submit name=\"wpQueryBtn\" value=\"{$qb}\">
 </td></tr></table>
 </form>\n" );
 

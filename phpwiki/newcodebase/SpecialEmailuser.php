@@ -75,7 +75,7 @@ class EmailUserForm {
 			$wgOut->addHTML( "<p><font color='red' size='+1'>{$err}</font>\n" );
 		}
 		$wgOut->addHTML( "<p>
-<form name='emailuser' method=post action=\"{$action}\">
+<form id=\"emailuser\" method=\"post\" action=\"{$action}\">
 <table border=0><tr>
 <td align=right>{$emf}:</td>
 <td align=left><strong>{$sender}</strong></td>
@@ -85,17 +85,17 @@ class EmailUserForm {
 </tr><tr>
 <td align=right>{$emr}:</td>
 <td align=left>
-<input type=text name='wpSubject' value=\"{$wpSubject}\">
+<input type=text name=\"wpSubject\" value=\"{$wpSubject}\">
 </td>
 </tr><tr>
 <td align=right>{$emm}:</td>
 <td align=left>
-<textarea name='wpText' rows='10' cols='60' wrap=virtual>
+<textarea name=\"wpText\" rows=10 cols=60 wrap=virtual>
 {$wpText}
 </textarea>
 </td></tr><tr>
 <td>&nbsp;</td><td align=left>
-<input type=submit name='wpSend' value=\"{$ems}\">
+<input type=submit name=\"wpSend\" value=\"{$ems}\">
 </td></tr></table>
 </form>\n" );
 

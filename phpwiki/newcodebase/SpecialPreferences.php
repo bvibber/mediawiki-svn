@@ -165,8 +165,8 @@ function wfSpecialPreferences()
 	$scc = wfMsg( "contextchars" );
 	$rcc = wfMsg( "recentchangescount" );
 
-	$wgOut->addHTML( "<form name='preferences' action=\"$action\" method=post>
-<table border=\"1\"><tr><td valign=top nowrap><b>$qb:</b><br>\n" );
+	$wgOut->addHTML( "<form id=\"preferences\" action=\"$action\"
+method=\"post\"><table border=\"1\"><tr><td valign=top nowrap><b>$qb:</b><br>\n" );
 
 	# Quickbar setting
 	#

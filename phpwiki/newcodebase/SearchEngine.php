@@ -5,92 +5,10 @@ class SearchEngine {
 	/* private */ var $mUsertext, $mSearchterms;
 	/* private */ var $mTitlecond, $mTextcond;
 
-        var $doSearchRedirects = true ;
-        var $na = array ( 0 ) ;
-        var $add2links = array () ;
-        var $alternateTitle ;
-        function queryNamespaces ()
-                {
-                #return "cur_namespace=".implode ( " OR cur_namespace=" , $this->na ) ;
-                return "cur_namespace IN (" . implode( ",", $this->na ) . ")";
-                }
-        function searchRedirects ()
-                {
-                if ( $this->doSearchRedirects ) return "" ;
-                return "AND cur_is_redirect=0 " ;
-                }
-        function powersearch ()
-                {
-                global $wgUser, $wgOut, $wgLang, $wgTitle;
-                global $search, $wgNs, $wgLR , $wpSearch ;
-
-                $r = wfMsg("powersearchtext") ;
-
-                # Namespaces
-                $ns = $wgLang->getNamespaces() ;
-                $ns2 = $ns ;
-                array_shift ( $ns2 ) ;
-                $a = 0 ;
-                $na = array () ;
-                if ( !isset ( $wgNs ) ) $wgNs = array () ;
-				$this->add2links["wpSearch"] = 1;
-                if ( !isset ( $wpSearch ) )
-                        {
-                        $wgNs[0] = 1 ;
-                        $wgLR = 1 ;
-                        }
-                foreach ( $ns2 AS $x )
-                        {
-                        if ( $a > 0 ) $r1 .= " " ;
-                        $v = $wgNs[$a] ;
-                        if ( $v )
-                                {
-                                $this->add2links["wgNs[$a]"] = 1 ;
-                                $v = " checked" ;
-                                $na[] = $a ;
-                                }
-                        $n = "wgNs[$a]" ;
-                        $x = str_replace ( "_" , " " , $x ) ;
-                        if ( $x == "" ) $x = ":" ;
-                        $r1 .= "<input type=checkbox value=1 name='{$n}'{$v}>$x\n" ;
-                        $a++ ;
-                        }
-
-                # List Redirects
-                $v = "" ;
-                if ( $wgLR )
-                        {
-                        $this->add2links["wgLR"] = 1 ;
-                        $v = " checked" ;
-                        }
-                $r2 = "<input type=checkbox value=1 name='wgLR'{$v}>\n" ;
-
-                # Search field
-                $r3 = "<input type=text name=search value=\"" .
-			htmlspecialchars( $search ) ."\" width=80>\n" ;
-
-                # The search button
-                $r9 = "<input type=submit name='wpSearch' value='".wfMsg("powersearch")."'>\n" ;
-
-                $r = str_replace ( "$1" , $r1 , $r ) ;
-                $r = str_replace ( "$2" , $r2 , $r ) ;
-                $r = str_replace ( "$3" , $r3 , $r ) ;
-                $r = str_replace ( "$9" , $r9 , $r ) ;
-
-                $r = "<div style=\"background: #DDEEFF; border-style: solid; border-width: 1; padding: 2\">".
-                        "\n{$r}\n</div>\n" ;
-                $r = "<FORM method=post>\n{$r}</FORM>\n" ;
-
-                if ( isset ( $wpSearch ) )
-                        {
-                        if ( count ( $na ) == 0 ) $na[] = 0 ;
-                        $this->na = $na ;
-                        if ( !$wgLR ) $this->doSearchRedirects = false ;
-                        }
-
-                return "\n<br><br>\n{$r}\n" ;
-                }
-
+	var $doSearchRedirects = true;
+	var $addtoquery = array();
+	var $namespacesToSearch = array();
+	var $alternateTitle;
 
 	function SearchEngine( $text )
 	{
@@ -101,13 +19,104 @@ class SearchEngine {
 		$this->mSearchterms = array();
 	}
 
+	function queryNamespaces()
+	{
+		return "cur_namespace IN (" . implode( ",", $this->namespacesToSearch ) . ")";
+		#return "1";
+	}
+
+	function searchRedirects()
+	{
+		if ( $this->doSearchRedirects ) return "";
+		return "AND cur_is_redirect=0 ";
+	}
+
+	function powersearch()
+	{
+		global $wgUser, $wgOut, $wgLang, $wgTitle;
+		$nscb = array();
+
+		$search			= $_REQUEST['search'];
+		$searchx		= $_REQUEST['searchx'];
+		$listredirs		= $_REQUEST['redirs'];
+		$nscb[0]		= $_REQUEST['ns0'];
+		$nscb[1]		= $_REQUEST['ns1'];
+		$nscb[2]		= $_REQUEST['ns2'];
+		$nscb[3]		= $_REQUEST['ns3'];
+		$nscb[4]		= $_REQUEST['ns4'];
+		$nscb[5]		= $_REQUEST['ns5'];
+		$nscb[6]		= $_REQUEST['ns6'];
+		$nscb[7]		= $_REQUEST['ns7'];
+
+		if ( ! isset ( $searchx ) ) {	/* First time here */
+			$nscb[0] = $listredirs = 1;	/* All others should be unset */
+		}
+		$this->checkboxes["searchx"] = 1;
+		$ret = wfMsg("powersearchtext");
+
+		# Determine namespace checkboxes
+
+		$ns = $wgLang->getNamespaces();
+		array_shift( $ns ); /* Skip "Special" */
+
+		$r1 = "";
+		for ( $i = 0; $i < count( $ns ); ++$i ) {
+			$checked = "";
+			if ( $nscb[$i] == 1 ) {
+				$checked = " checked";
+				$this->addtoquery["ns{$i}"] = 1;
+				array_push( $this->namespacesToSearch, $i );
+			}
+			$name = str_replace( "_", " ", $ns[$i] );
+			if ( "" == $name ) { $name = "(Main)"; }
+
+			if ( 0 != $i ) { $r1 .= " "; }
+			$r1 .= "<input type=checkbox value=\"1\" name=\"" .
+			  "ns{$i}\"{$checked}>{$name}\n";
+		}
+		$ret = str_replace ( "$1", $r1, $ret );
+
+		# List redirects checkbox
+
+		$checked = "";
+		if ( $listredirs == 1 ) {
+			$this->addtoquery["redirs"] = 1;
+			$checked = " checked";
+		}
+		$r2 = "<input type=checkbox value=1 name=\"redirs\"{$checked}>\n";
+		$ret = str_replace( "$2", $r2, $ret );
+
+		# Search field
+
+		$r3 = "<input type=text name=\"search\" value=\"" .
+			htmlspecialchars( $search ) ."\" width=80>\n";
+        $ret = str_replace( "$3", $r3, $ret );
+
+		# Searchx button
+
+		$r9 = "<input type=submit name=\"searchx\" value=\"" .
+		  wfMsg("powersearch") . "\">\n";
+		$ret = str_replace( "$9", $r9, $ret );
+
+		$ret = "<br><br>\n<form id=\"powersearch\" method=\"get\" " .
+		  "action=\"" . wfLocalUrl( "" ) . "\">\n{$ret}\n</form>\n";
+
+		if ( isset ( $searchx ) ) {
+			if ( ! $listredirs ) { $this->doSearchRedirects = false; }
+		}
+		return $ret;
+	}
+
 	function showResults()
 	{
-		global $wgUser, $wgTitle, $wgOut, $wgLang;
-		global $offset, $limit;
+		global $wgUser, $wgTitle, $wgOut, $wgLang, $wgDisableTextSearch;
 		$fname = "SearchEngine::showResults";
 
-                $powersearch = $this->powersearch() ;
+		$offset		= $_REQUEST['offset'];
+		$limit		= $_REQUEST['limit'];
+		$search		= $_REQUEST['search'];
+
+		$powersearch = $this->powersearch(); /* Need side-effects here? */
 
 		$wgOut->setPageTitle( wfMsg( "searchresults" ) );
 		$q = str_replace( "$1", $this->mUsertext,
@@ -134,65 +143,84 @@ class SearchEngine {
 		}
 		if ( ! $offset ) { $offset = 0; }
 
-                $searchnamespaces = $this->queryNamespaces () ;
-                $redircond = $this->searchRedirects();
-		$sql = "SELECT cur_id,cur_namespace,cur_title," .
-		  "cur_text FROM cur,searchindex " .
-		  "WHERE cur_id=si_page AND {$this->mTitlecond} AND {$searchnamespaces} {$redircond}" .
-		  "LIMIT {$offset}, {$limit}";
-		$res1 = wfQuery( $sql, $fname );
+		$searchnamespaces = $this->queryNamespaces();
+		$redircond = $this->searchRedirects();
 
 		$sql = "SELECT cur_id,cur_namespace,cur_title," .
 		  "cur_text FROM cur,searchindex " .
-		  "WHERE cur_id=si_page AND {$this->mTextcond} AND {$searchnamespaces} {$redircond} " .
+		  "WHERE cur_id=si_page AND {$this->mTitlecond} " .
+		  "AND {$searchnamespaces} {$redircond}" .
 		  "LIMIT {$offset}, {$limit}";
-		$res2 = wfQuery( $sql, $fname );
+		$res1 = wfQuery( $sql, $fname );
+
+		if ( $wgDisableTextSearch ) {
+			$res2 = 0;
+		} else {
+			$sql = "SELECT cur_id,cur_namespace,cur_title," .
+			  "cur_text FROM cur,searchindex " .
+			  "WHERE cur_id=si_page AND {$this->mTextcond} " .
+			  "AND {$searchnamespaces} {$redircond} " .
+			  "LIMIT {$offset}, {$limit}";
+			$res2 = wfQuery( $sql, $fname );
+		}
 
 		$top = wfShowingResults( $offset, $limit );
 		$wgOut->addHTML( "<p>{$top}\n" );
 
 		# For powersearch
-                $a2l = "" ;
-                $akk = array_keys ( $this->add2links ) ;
-                foreach ( $akk AS $ak )
-                        $a2l .= "&{$ak}={$this->add2links[$ak]}" ;
+
+		$a2l = "" ;
+		$akk = array_keys( $this->addtoquery ) ;
+		foreach ( $akk AS $ak ) {
+			$a2l .= "&{$ak}={$this->addtoquery[$ak]}" ;
+		}
 
 		$sl = wfViewPrevNext( $offset, $limit, "",
 		  "search=" . wfUrlencode( $this->mUsertext ) . $a2l );
 		$wgOut->addHTML( "<br>{$sl}\n" );
 
 		$foundsome = false;
+
 		if ( 0 == wfNumRows( $res1 ) ) {
-			$wgOut->addHTML( "<h2>" . wfMsg( "notitlematches" ) . "</h2>\n" );
+			$wgOut->addHTML( "<h2>" . wfMsg( "notitlematches" ) .
+			  "</h2>\n" );
 		} else {
 			$foundsome = true;
 			$off = $offset + 1;
-			$wgOut->addHTML( "<h2>" . wfMsg( "titlematches" ) . "</h2>\n" .
-			  "<ol start='{$off}'>" );
+			$wgOut->addHTML( "<h2>" . wfMsg( "titlematches" ) .
+			  "</h2>\n<ol start='{$off}'>" );
+
 			while ( $row = wfFetchObject( $res1 ) ) {
 				$this->showHit( $row );
 			}
 			wfFreeResult( $res1 );
 			$wgOut->addHTML( "</ol>\n" );
 		}
-		if ( 0 == wfNumRows( $res2 ) ) {
-			$wgOut->addHTML( "<h2>" . wfMsg( "notextmatches" ) . "</h2>\n" );
+
+		if ( $wgDisableTextSearch ) {
+			$wgOut->addHTML( str_replace( "$1",
+			  htmlspecialchars( $search ), wfMsg( "searchdisabled" ) ) );
 		} else {
-			$foundsome = true;
-			$off = $offset + 1;
-			$wgOut->addHTML( "<h2>" . wfMsg( "textmatches" ) . "</h2>\n" .
-			  "<ol start='{$off}'>" );
-			while ( $row = wfFetchObject( $res2 ) ) {
-				$this->showHit( $row );
+			if ( 0 == wfNumRows( $res2 ) ) {
+				$wgOut->addHTML( "<h2>" . wfMsg( "notextmatches" ) .
+				  "</h2>\n" );
+			} else {
+				$foundsome = true;
+				$off = $offset + 1;
+				$wgOut->addHTML( "<h2>" . wfMsg( "textmatches" ) . "</h2>\n" .
+				  "<ol start='{$off}'>" );
+				while ( $row = wfFetchObject( $res2 ) ) {
+					$this->showHit( $row );
+				}
+				wfFreeResult( $res2 );
+				$wgOut->addHTML( "</ol>\n" );
 			}
-			wfFreeResult( $res2 );
-			$wgOut->addHTML( "</ol>\n" );
 		}
 		if ( ! $foundsome ) {
 			$wgOut->addHTML( "<p>" . wfMsg( "nonefound" ) . "\n" );
 		}
 		$wgOut->addHTML( "<p>{$sl}\n" );
-                $wgOut->addHTML( $powersearch );
+		$wgOut->addHTML( $powersearch );
 	}
 
 	function legalSearchChars()
@@ -231,7 +259,9 @@ class SearchEngine {
 		}
 		if ( 0 == count( $this->mSearchterms ) ) { return; }
 
-		## To disable boolean: ## $cond = "MATCH (##field##) AGAINST('" . wfStrencode( $q) . "')";
+		# To disable boolean:
+		# $cond = "MATCH (##field##) AGAINST('" . wfStrencode( $q ) . "')";
+
 		$this->mTitlecond = "(" . str_replace( "##field##",
 		  "si_title", $cond ) . " )";
 
@@ -295,58 +325,59 @@ class SearchEngine {
 		}
 		$wgOut->addHTML( "</li>\n" );
 	}
-	function goResult() {
-	
-	
-		global $wgOut,$wgArticle,$wgTitle,$search;
+
+	function goResult()
+	{
+		global $wgOut, $wgArticle, $wgTitle;
 		$fname = "SearchEngine::goResult";
 		
-		#first try to go to page as entered		
-		$wgArticle=new Article();
-		$wgTitle=Title::newFromText($search);
-		if($wgArticle->getID()) {
-			$wgArticle->view();
-		} else {
-					
-			# now try all lower case (i.e. first letter capitalized)
-			$wgTitle=Title::newFromText(strtolower($search));
-			if($wgArticle->getID()) {
-				$wgArticle->view();
-			} else {
-		
-				# now try capitalized string
-				$wgTitle=Title::newFromText(ucwords(strtolower($search)));
-				if($wgArticle->getID()) {
-					$wgArticle->view();
-				} else {					
-					
-					
-					# try a near match
-					$this->parseQuery();										
-					$sql = "SELECT cur_id,cur_title,cur_namespace,si_page FROM cur,searchindex " .
-					  "WHERE cur_id=si_page AND {$this->mTitlecond} " .
-					  "LIMIT 1";
-					if($this->mTitlecond) {
-						$res = wfQuery( $sql, $fname );
-					} 				
-					if (isset($res) && wfNumRows( $res )) {
-					
-						$s=wfFetchObject($res);
-						$wgTitle=Title::newFromDBkey($s->cur_title);
-						$wgTitle->setNamespace($s->cur_namespace);
-						$wgArticle->view();
-					
-					# run a normal search
-					} else {
-					
-						$wgOut->addHTML(wfMsg("nogomatch"));
-						$this->showResults();
-					}
-					
-				}
-			}
-		}
-	}
+		$search		= $_REQUEST['search'];
 
+		# First try to go to page as entered		
+		#
+		$wgArticle = new Article();
+		$wgTitle = Title::newFromText( $search );
+
+		if ( 0 != $wgArticle->getID() ) {
+			$wgArticle->view();
+			return;
+		}
+
+		# Now try all lower case (i.e. first letter capitalized)
+		#
+		$wgTitle = Title::newFromText( strtolower( $search ) );
+		if ( 0 != $wgArticle->getID() ) {
+			$wgArticle->view();
+			return;
+		}
+		
+		# Now try capitalized string
+		#
+		$wgTitle=Title::newFromText( ucwords( strtolower( $search ) ) );
+		if ( 0 != $wgArticle->getID() ) {
+			$wgArticle->view();
+			return;
+		}
+
+		# Try a near match
+		#
+		$this->parseQuery();										
+		$sql = "SELECT cur_id,cur_title,cur_namespace,si_page FROM cur,searchindex " .
+		  "WHERE cur_id=si_page AND {$this->mTitlecond} LIMIT 1";
+
+		if ( "" != $this->mTitlecond ) {
+			$res = wfQuery( $sql, $fname );
+		} 				
+		if ( isset( $res ) && 0 != wfNumRows( $res ) ) {
+	 		$s = wfFetchObject( $res );
+
+			$wgTitle = Title::newFromDBkey( $s->cur_title );
+			$wgTitle->setNamespace( $s->cur_namespace );
+			$wgArticle->view();
+			return;
+		}
+		$wgOut->addHTML( wfMsg("nogomatch") . "\n<p>" );
+		$this->showResults();
+	}
 }
 

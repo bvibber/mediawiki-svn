@@ -454,12 +454,13 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 	function searchForm()
 	{
 		global $search;
-		$s = "<form name='search' class='inline' method=get action=\""
+		$s = "<form id=\"search\" class=\"inline\" method=\"get\" action=\""
 		  . wfLocalUrl( "" ) . "\">"
 		  . "<input type=text name=\"search\" size=19 value=\""
 		  . htmlspecialchars(substr($search,0,256)) . "\">\n"
 		  . "<input type=submit value=\"" . wfMsg( "search" )
-		  . "\">&nbsp;<input type=submit name=\"go\" value=\"" . wfMsg ("go") . "\"></form>";		  
+		  . "\">&nbsp;<input type=submit name=\"go\" value=\""
+		  . wfMsg ("go") . "\"></form>";		  
 
 		return $s;
 	}
@@ -720,9 +721,9 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		$sp = wfMsg( "specialpages" );
 		$spp = $wgLang->specialPage( "Specialpages" );
 
-		$s = "<form name='specialpages' method=get class='inline' " .
+		$s = "<form id=\"specialpages\" method=\"get\" class=\"inline\" " .
 		  "action=\"{$wgServer}{$wgRedirectScript}\">\n";
-		$s .= "<select name='wpDropdown'>\n";
+		$s .= "<select name=\"wpDropdown\">\n";
 		$s .= "<option value=\"{$spp}\">{$sp}</option>\n";
 
 		foreach ( $a as $name => $desc ) {

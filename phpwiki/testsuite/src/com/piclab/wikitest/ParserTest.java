@@ -42,15 +42,9 @@ private int part1() throws Exception {
 	WebResponse wr = viewPage( "Bracketvars" );
 	String text = getArticle( wr );
 
-	Pattern p = null;
-	Matcher m = null;
-	for (int i = 0; i < pats.length; ++i) {
-		p = Pattern.compile( pats[i], Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
-		m = p.matcher( text );
-
-		if ( ! m.find() ) {
-			return 101 + i;
-		}
+	int ret;
+	if ( 0 != ( ret = checkGoodPatterns( text, pats ) ) ) {
+		return 100 + ret;
 	}
 	return 0;
 }
@@ -101,15 +95,9 @@ private int part2() throws Exception {
 	WebResponse wr = viewPage( "Blocklevels" );
 	String text = getArticle( wr );
 
-	Pattern p = null;
-	Matcher m = null;
-	for (int i = 0; i < pats.length; ++i) {
-		p = Pattern.compile( pats[i], Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
-		m = p.matcher( text );
-
-		if ( ! m.find() ) {
-			return 201 + i;
-		}
+	int ret;
+	if ( 0 != ( ret = checkGoodPatterns( text, pats ) ) ) {
+		return 200 + ret;
 	}
 	return 0;
 }
@@ -143,15 +131,9 @@ private int part3() throws Exception {
 	WebResponse wr = viewPage( "Quotes" );
 	String text = getArticle( wr );
 
-	Pattern p = null;
-	Matcher m = null;
-	for (int i = 0; i < pats.length; ++i) {
-		p = Pattern.compile( pats[i], Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
-		m = p.matcher( text );
-
-		if ( ! m.find() ) {
-			return 301 + i;
-		}
+	int ret;
+	if ( 0 != ( ret = checkGoodPatterns( text, pats ) ) ) {
+		return 300 + ret;
 	}
 	return 0;
 }
@@ -196,15 +178,9 @@ private int part4() throws Exception {
 	WebResponse wr = viewPage( "ExternalLinks" );
 	String text = getArticle( wr );
 
-	Pattern p = null;
-	Matcher m = null;
-	for (int i = 0; i < pats.length; ++i) {
-		p = Pattern.compile( pats[i], Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
-		m = p.matcher( text );
-
-		if ( ! m.find() ) {
-			return 401 + i;
-		}
+	int ret;
+	if ( 0 != ( ret = checkGoodPatterns( text, pats ) ) ) {
+		return 400 + ret;
 	}
 	return 0;
 }
@@ -242,15 +218,10 @@ private int part5() throws Exception {
 	WebResponse wr = viewPage( "InternalLinks" );
 	String text = getArticle( wr );
 
-	Pattern p = null;
-	Matcher m = null;
-	for (int i = 0; i < pats.length; ++i) {
-		p = Pattern.compile( pats[i], Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
-		m = p.matcher( text );
 
-		if ( ! m.find() ) {
-			return 501 + i;
-		}
+	int ret;
+	if ( 0 != ( ret = checkGoodPatterns( text, pats ) ) ) {
+		return 500 + ret;
 	}
 	return 0;
 }
@@ -273,15 +244,9 @@ private int part6() throws Exception {
 	WebResponse wr = viewPage( "Headings" );
 	String text = getArticle( wr );
 
-	Pattern p = null;
-	Matcher m = null;
-	for (int i = 0; i < pats.length; ++i) {
-		p = Pattern.compile( pats[i], Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
-		m = p.matcher( text );
-
-		if ( ! m.find() ) {
-			return 601 + i;
-		}
+	int ret;
+	if ( 0 != ( ret = checkGoodPatterns( text, pats ) ) ) {
+		return 600 + ret;
 	}
 	return 0;
 }
@@ -298,15 +263,9 @@ private int part7() throws Exception {
 	WebResponse wr = viewPage( "Magics" );
 	String text = getArticle( wr );
 
-	Pattern p = null;
-	Matcher m = null;
-	for (int i = 0; i < pats.length; ++i) {
-		p = Pattern.compile( pats[i], Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
-		m = p.matcher( text );
-
-		if ( ! m.find() ) {
-			return 701 + i;
-		}
+	int ret;
+	if ( 0 != ( ret = checkGoodPatterns( text, pats ) ) ) {
+		return 700 + ret;
 	}
 	return 0;
 }

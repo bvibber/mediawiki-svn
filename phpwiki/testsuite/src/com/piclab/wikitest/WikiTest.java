@@ -274,7 +274,7 @@ throws WikiSuiteFailureException {
 	for (int i=0; i < forms.length; ++i) {
 		Node formNode = forms[i].getDOMSubtree();
 		NamedNodeMap nnm = formNode.getAttributes();
-		Node nameNode = nnm.getNamedItem( "name" );
+		Node nameNode = nnm.getNamedItem( "id" );
 
 		if (nameNode == null) continue;
 		if (nameNode.getNodeValue().equalsIgnoreCase( name )) {
