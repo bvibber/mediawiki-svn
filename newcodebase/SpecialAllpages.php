@@ -18,7 +18,7 @@ function wfSpecialAllpages()
 	$wgOut->addHTML( "<br>{$sl}\n<ol start=" . ( $offset + 1 ) . ">" );
 
 	$sql = "SELECT cur_namespace,cur_title FROM cur ORDER BY " .
-	  "cur_namespace,cur_title LIMIT {$offset}, {$limit}";
+	  "cur_title LIMIT {$offset}, {$limit}";
 	$res = wfQuery( $sql, "wfSpecialAllpages" );
 
 	$sk = $wgUser->getSkin();

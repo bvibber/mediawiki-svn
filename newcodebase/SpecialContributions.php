@@ -43,7 +43,7 @@ function wfSpecialContributions()
 	if ( $hideminor ) {
 		$cmq = "AND cur_minor_edit=0";
 		$omq = "AND old_minor_edit=0";
-		$rmq = "AND rc_is_minor_edit=0";
+		$rmq = "AND rc_minor=0";
 	} else { $cmq = $omq = $rmq = ""; }
 
 	$note = str_replace( "$1", $limit, wfMsg( "ucnote" ) );
@@ -154,11 +154,13 @@ function wfSpecialContributions()
 
 function ucListEdit( $sk, $ns, $t, $ts, $topmark, $comment )
 {
-	global $wgLang, $wgOut;
+	global $wgLang, $wgOut, $wgUser;
 	$page = Title::makeName( $ns, $t );
 	$link = $sk->makeKnownLink( $page, "" );
-	if($sysop && $topmark != "") {
-		$topmark .= " [". $sk->makeKnownLink( $page,
+	$topmarktext = $topmark ? wfMsg ( "uctop" ) : "";
+	$sysop = $wgUser->isSysop();
+	if($sysop && $topmark ) {
+		$topmarktext .= " [". $sk->makeKnownLink( $page,
 		  wfMsg( "rollbacklink" ), "action=rollback" ) ."]";
 	}
 	if($comment) {
@@ -168,7 +170,6 @@ function ucListEdit( $sk, $ns, $t, $ts, $topmark, $comment )
 	}
 	$d = $wgLang->timeanddate( $ts, true );
 
-	$topmarktext = $topmark ? wfMsg ( "uctop" ) : "";
 	$wgOut->addHTML( "<li>{$d} {$link} {$comment}{$topmarktext}</li>\n" );
 }
 
