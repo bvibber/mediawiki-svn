@@ -25,9 +25,9 @@ right-to-left parsing; i.e. top-down recursive descent.)
  
      If  WikiTeX'  sum scope, on the other hand, resembles a
 glue-script with regular-expression grinding,1 we might  not
-need  to look past Perl; PHP's fitness as a lexer/parser, in
-any case, is highly questionable.
- 
+need  to  look  past  Perl; PHP, in any case, just passes as
+lexer/parser: but we'd like something more robust and, above
+all, to separate application from interface.
  
  
  
@@ -55,7 +55,7 @@ any case, is highly questionable.
  
  
 -----------
-  1 Raymond, Eric Steven.  The Art  of  Unix  Pro-
+  1 Raymond,  Eric  Steven.   The Art of Unix Pro-
 gramming.
 http://www.faqs.org/docs/artu/ch14s04.html
  
