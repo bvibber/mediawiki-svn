@@ -4,26 +4,27 @@
 
 include_once( "./DefaultSettings.php" );
 
-# URLs for the wiki site
+# URLs and directories for the wiki site
 #
 $wgServer           = "http://www.piclab.com";
-$wgStyleSheetPath   = "$wgServer/style";
-$wgScript           = "/wikitest/wiki.phtml";
-$wgArticlePath      = "$wgServer$wgScript?title=$1";
-$wgUploadPath       = "$wgServer/upload";
+$wgScriptPath	    = "/wiki";
+$wgScript           = "{$wgScriptPath}/wiki.phtml";
+$wgStyleSheetPath   = "{$wgServer}/style";
+$wgArticlePath      = "{$wgServer}{$wgScript}?title=$1";
+$wgUploadPath       = "{$wgServer}/upload";
+$wgLogo				= "{$wgUploadPath}/wiki.png";
 $wgUploadDirectory	= "/var/www/html/upload";
-$wgLogo				= "$wgUploadPath/wiki.png";
 
 # MySQL settings
 #
 $wgDBserver         = "127.0.0.1";
 $wgDBname           = "newwiki";
 $wgDBuser           = "wikiuser";
-$wgDBpassword       = "oberon";
+$wgDBpassword       = "userpwd";
 
 # Turn this on during database maintenance
 #
-$wgReadOnly = true;
+# $wgReadOnly = true;
 
 # Turn this on to get HTML debug comments
 #
@@ -35,5 +36,8 @@ $wgDebugLogFile 	= "/var/www/html/wikitest/logfile";
 # on of the sites recognized as an interwiki.
 #
 $wgLocalInterwiki   = "w";
+
+# $wgInputEncoding	= "ISO-8859-1";
+# $wgOutputEncoding	= "ISO-8859-1";
 
 ?>

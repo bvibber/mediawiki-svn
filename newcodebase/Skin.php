@@ -404,13 +404,7 @@ class Skin {
 		  . $sep . $this->specialLink( "imagelist" )
 		  . $sep . $this->specialLink( "listusers" )
 		  . $sep . $this->specialLink( "statistics" )
-		  . $sep
-		  . $sep . $this->specialLink( "newpages" )
-		  . $sep . $this->specialLink( "lonelypages" )
-		  . $sep . $this->specialLink( "wantedpages" )
-		  . $sep . $this->specialLink( "popularpages" )
-		  . $sep . $this->specialLink( "shortpages" )
-		  . $sep . $this->specialLink( "longpages" );
+		  . $sep . $this->specialLink( "specialpages" );
 
 		$s .= $sep . $this->bugReportsLink();
 

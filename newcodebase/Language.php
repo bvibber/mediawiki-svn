@@ -342,6 +342,8 @@ See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges r
 # Upload
 #
 "upload"		=> "Upload",
+"uploadbtn"		=> "Upload file",
+"uploadlink"		=> "Upload images",
 "reupload"		=> "Re-upload",
 "reuploaddesc"	=> "Return to the upload form.",
 "uploadfile"	=> "Upload file",
