@@ -94,16 +94,15 @@ function edit ( $title ) {
 		$text = str_replace ( "\\'" , "'" , $text ) ;
 		$text = str_replace ( "\\\"" , "\"" , $text ) ;
 		$text = str_replace ( "\\\\" , "\\" , $text ) ;
-#		$text = urldecode ( $text ) ;
 		$append = str_replace ( "$1" , $npage->parseContents($text) , $wikiPreviewAppend ) ;
-		$text = str_replace ( "&" , "&amp;" , $text ) ;
 	} else if ( $npage->doesTopicExist() ) { # The initial edit request for an existing page
 		$npage->load ( $npage->title ) ;
 		$text = $npage->contents ;
-		$text = str_replace ( "&" , "&amp;" , $text ) ;
 	} else { # The initial edit request for a new page
 		$text = $wikiDescribePage ;
 		}
+
+	$text = htmlspecialchars ( $text ) ;
 
 	if ( $MinorEdit ) $checked = "checked" ;
 	else $checked = "" ;
