@@ -20,7 +20,10 @@ class SearchUpdate {
 
 	function doUpdate()
 	{
-		global $wgDBminWordLen, $wgLang;
+		global $wgDBminWordLen, $wgLang, $wgDisableSearchUpdate;
+
+		if( $wgDisableSearchUpdate ) return false;
+
 		$lc = SearchEngine::legalSearchChars() . "&#;";
 		
 		if( $this->mText == false ) {

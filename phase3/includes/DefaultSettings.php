@@ -92,6 +92,7 @@ $wgProfileOnly = false; # Don't put non-profiling info into log file
 
 $wgDisableCounters = false;
 $wgDisableTextSearch = false;
+$wgDisableSearchUpdate = false; # If you've disabled search semi-permanently, this also disables updates to the table. If you ever re-enable, be sure to rebuild the search table.
 $wgDisableUploads = false;
 $wgDisableAnonTalk = false;
 
