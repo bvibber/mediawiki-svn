@@ -654,6 +654,7 @@ dieses Artikels erscheinen.",
 "nocontribs"	=> "Es wurden keine Änderungen für diese Kriterien gefunden.",
 "ucnote"		=> "Dies sind die letzten <b>$1</b> Beiträge des Benutzers in den letzten <b>$2</b> Tagen.",
 "uclinks"		=> "Zeige die letzten $1 Beiträge; zeige die letzten $2 Tage.",
+"uctop"		=> " (top)" ,
 
 # What links here
 #
