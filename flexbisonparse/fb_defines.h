@@ -12,10 +12,12 @@
 /* Change these to
     #define debuglex printf
     #define debuglex2 printf
+    #define debuglex3 printf
    to have the lexer output all the tokens generated. */
 
 #define debuglex(x)
 #define debuglex2(x,y)
+#define debuglex3(x,y,z)
 
 
 /* Change this one to

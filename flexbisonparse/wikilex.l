@@ -13,6 +13,8 @@
 
 #include <stdio.h>
 #include <string.h>
+
+/* This file defines debuglex and debuglex2. */
 #include "fb_defines.h"
 
 /* Notice: We need to include parsetree.h first because wikiparse.tab.h will
@@ -20,27 +22,37 @@
 #include "parsetree.h"
 #include "wikiparse.tab.h"
 
+/* Tells flex to stop processing input when EOF is reached. */
 int yywrap(void) { return 1; }
+
+int encodeTableRowInfo (char* input, int initleng)
+{
+    int i = 1;
+    while (input[i] == '-') i++;
+    return ((i-1)*0x10000 + (initleng-i));
+}
+
+#define COMMONTOKENS \
+    if (YY_START != inattributeapo && YY_START != inattributeq && YY_START != canbeheading) \
+        BEGIN (cannotbelistorheadingorpre);
 
 %}
 
+/* inclusive start conditions */
 %s canbelist canbeheading cannotbelistorheadingorpre attributes
+%s inattributeapo inattributeq startattribute
+
+/* exclusive start conditions */
 %x extension comment
 
 %%
 
-    /* We will use the same buffer every time to accumulate the contents of an
-     * extension token. newExtensionData() will copy the data to a new string */
-    char extension_buf [ 65536 ];
-    char * extension_buf_ptr;
-    char * extension_name = 0;
-    ExtensionData ed;
-    Node node;
+    char* extension_name = 0;
     int i;
 
 
 "<"[[:alnum:]]+">"              {
-                                    extension_buf_ptr = extension_buf;
+                                    fb_create_new_buffer (256); /* for the contents */
                                     i = strlen (yytext)-1;
                                     extension_name = (char*) malloc (i * sizeof (char));
                                     memcpy (extension_name, yytext + 1, --i);
@@ -50,55 +62,77 @@ int yywrap(void) { return 1; }
 <extension>"</"[[:alnum:]]+">"  {
                                     i = strlen (extension_name);
                                     if (strncmp (extension_name, yytext+2, i))
-                                    {
-                                        memcpy (extension_buf_ptr, yytext, yyleng);
-                                        extension_buf_ptr += yyleng;
-                                    }
+                                        fb_write_to_buffer (yytext);
                                     else
                                     {
-                                        *extension_buf_ptr = '\0';
-                                        BEGIN (INITIAL);
-                                        yylval.node = newNodeE (ExtensionToken,
-                                            newExtensionData (extension_name, extension_buf));
+                                        BEGIN (cannotbelistorheadingorpre);
+                                        yylval.node = newNodeN (ExtensionToken,
+                                            extension_name, fb_get_buffer(), 0, 0);
                                         debuglex ("EXTENSION ");
                                         return EXTENSION;
                                     }
                                 }
-<extension>.                    {   *extension_buf_ptr++ = yytext[0];   }
+<extension>.[^<>]*              {   fb_write_to_buffer (yytext);    }
 <extension><<EOF>>              {
-                                    *extension_buf_ptr = '\0';
-                                    yylval.node = newNodeE (ExtensionToken,
-                                        newExtensionData (extension_name, extension_buf));
+                                    BEGIN (cannotbelistorheadingorpre);
+                                    yylval.node = newNodeN (ExtensionToken,
+                                        extension_name, fb_get_buffer(), 0, 0);
                                     debuglex ("EXTENSION ");
-                                    BEGIN (INITIAL);
                                     return EXTENSION;
                                 }
 
-"<!---->"           { BEGIN (cannotbelistorheadingorpre); debuglex ("EMPTYCOMMENT "); return EMPTYCOMMENT; }
 "<!--"              { BEGIN (comment); debuglex ("BEGINCOMMENT "); return BEGINCOMMENT; }
 <comment>.[^-]*     { debuglex ("TEXT "); yylval.node = newNodeS (TextToken, strdup (yytext)); return TEXT; }
 <comment>"-->"      { BEGIN (cannotbelistorheadingorpre); debuglex ("ENDCOMMENT "); return ENDCOMMENT; }
 
-"\[\[:"             { BEGIN (cannotbelistorheadingorpre); debuglex ("OPENLINK "); return OPENLINK; }
-"\[\["              { BEGIN (cannotbelistorheadingorpre); debuglex ("OPENDBLSQBR "); return OPENDBLSQBR; }
-"\]\]"              { BEGIN (cannotbelistorheadingorpre); debuglex ("CLOSEDBLSQBR "); return CLOSEDBLSQBR; }
-\|                  { BEGIN (cannotbelistorheadingorpre); debuglex ("PIPE "); return PIPE; }
-\{\{\{\{\{          { BEGIN (cannotbelistorheadingorpre); debuglex ("OPENPENTUPLECURLY "); return OPENPENTUPLECURLY; }
-\}\}\}\}\}          { BEGIN (cannotbelistorheadingorpre); debuglex ("CLOSEPENTUPLECURLY "); return CLOSEPENTUPLECURLY; }
-\{\{\{              { BEGIN (cannotbelistorheadingorpre); debuglex ("OPENTEMPLATEVAR "); return OPENTEMPLATEVAR; }
-\}\}\}              { BEGIN (cannotbelistorheadingorpre); debuglex ("CLOSETEMPLATEVAR "); return CLOSETEMPLATEVAR; }
-\{\{                { BEGIN (cannotbelistorheadingorpre); debuglex ("OPENTEMPLATE "); return OPENTEMPLATE; }
-\}\}                { BEGIN (cannotbelistorheadingorpre); debuglex ("CLOSETEMPLATE "); return CLOSETEMPLATE; }
-'''''/[^']          { BEGIN (cannotbelistorheadingorpre); debuglex ("APO5 "); return APO5; }
-'''/[^']            { BEGIN (cannotbelistorheadingorpre); debuglex ("APO3 "); return APO3; }
-''/[^']             { BEGIN (cannotbelistorheadingorpre); debuglex ("APO2 "); return APO2; }
+    /* For the table-related tokens, we need to remember enough information so that we can
+     * reliably turn things back into text. */
+"{|"" "*    { BEGIN(attributes); debuglex ("TABLEBEGIN "); yylval.num = yyleng-2; return TABLEBEGIN; }
+"||"" "*    { yylval.num = 2*(yyleng-2);   BEGIN(attributes); debuglex2 ("TABLECELL(%u) ", yylval.num); return TABLECELL;  }
+^"|"" "*    { yylval.num = 2*(yyleng-1)+1; BEGIN(attributes); debuglex2 ("TABLECELL(%u) ", yylval.num); return TABLECELL;  }
+"!!"" "*    { BEGIN(attributes); debuglex ("TABLEHEAD ");  yylval.num = 2*(yyleng-2); return TABLEHEAD;  }
+^"!"" "*    { BEGIN(attributes); debuglex ("TABLEHEAD ");  yylval.num = 2*(yyleng-1)+1; return TABLEHEAD;  }
+"|""-"+" "* { BEGIN(attributes); debuglex ("TABLEROW ");   yylval.num = encodeTableRowInfo (yytext, yyleng); return TABLEROW; }
+"|}"        { BEGIN(cannotbelistorheadingorpre); debuglex ("TABLEEND "); return TABLEEND; }
+
+<attributes>[-a-zA-Z:_]+" "* {
+        debuglex2 ("ATTRIBUTE(%s) ", yytext);
+        yylval.ad = newAttributeDataFromStr (yytext);
+        return ATTRIBUTE;
+    }
+<attributes>"="" "*          {
+        debuglex2 ("EQUALS(%d) ", yyleng-1);
+        yylval.num = yyleng-1;
+        BEGIN (startattribute);
+        return EQUALS;
+    }
+
+<startattribute>\'      { BEGIN (inattributeapo); yylval.num = 0;        debuglex ("ATTRAPO(0) ");             return ATTRAPO; }
+<startattribute>\"      { BEGIN (inattributeq);   yylval.num = 0;        debuglex ("ATTRQ(0) ");               return ATTRQ;   }
+<inattributeapo>\'" "*  { BEGIN (attributes);     yylval.num = yyleng-1; debuglex2 ("ATTRAPO(%d) ", yyleng-1); return ATTRAPO; }
+<inattributeq>\"" "*    { BEGIN (attributes);     yylval.num = yyleng-1; debuglex2 ("ATTRQ(%d) ",   yyleng-1); return ATTRQ;   }
+
+"\[\[:"             { COMMONTOKENS; debuglex ("OPENLINK "); return OPENLINK; }
+"\[\["              { COMMONTOKENS; debuglex ("OPENDBLSQBR "); return OPENDBLSQBR; }
+"\]\]"              { COMMONTOKENS; debuglex ("CLOSEDBLSQBR "); return CLOSEDBLSQBR; }
+\|                  { COMMONTOKENS; debuglex ("PIPE "); return PIPE; }
+\{\{\{\{\{          { COMMONTOKENS; debuglex ("OPENPENTUPLECURLY "); return OPENPENTUPLECURLY; }
+\}\}\}\}\}          { COMMONTOKENS; debuglex ("CLOSEPENTUPLECURLY "); return CLOSEPENTUPLECURLY; }
+\{\{\{              { COMMONTOKENS; debuglex ("OPENTEMPLATEVAR "); return OPENTEMPLATEVAR; }
+\}\}\}              { COMMONTOKENS; debuglex ("CLOSETEMPLATEVAR "); return CLOSETEMPLATEVAR; }
+\{\{                { COMMONTOKENS; debuglex ("OPENTEMPLATE "); return OPENTEMPLATE; }
+\}\}                { COMMONTOKENS; debuglex ("CLOSETEMPLATE "); return CLOSETEMPLATE; }
+'''''/[^']          { COMMONTOKENS; debuglex ("APO5 "); return APO5; }
+'''/[^']            { COMMONTOKENS; debuglex ("APO3 "); return APO3; }
+''/[^']             { COMMONTOKENS; debuglex ("APO2 "); return APO2; }
 \n                  { BEGIN (INITIAL); debuglex ("NEWLINE\n"); return NEWLINE; }
+\r                  { /* ignore this one */ debuglex ("<13> "); }
 
 ^" "                { BEGIN(cannotbelistorheadingorpre); debuglex ("PRELINE "); return PRELINE; }
-^\*[[:space:]]*     { BEGIN(canbelist); debuglex ("LISTBULLET "); return LISTBULLET; }
-<canbelist>\*[[:space:]]*             { debuglex ("LISTBULLET "); return LISTBULLET; }
-^\#[[:space:]]*     { BEGIN(canbelist); debuglex ("LISTNUMBERED "); return LISTNUMBERED; }
-<canbelist>\#[[:space:]]*             { debuglex ("LISTNUMBERED "); return LISTNUMBERED; }
+^\*[ \t]*           { BEGIN(canbelist); debuglex ("LISTBULLET "); return LISTBULLET; }
+<canbelist>\*[ \t]*                   { debuglex ("LISTBULLET "); return LISTBULLET; }
+^\#[ \t]*           { BEGIN(canbelist); debuglex ("LISTNUMBERED "); return LISTNUMBERED; }
+<canbelist>\#[ \t]*                   { debuglex ("LISTNUMBERED "); return LISTNUMBERED; }
 
 ^"="+                           {
                                     BEGIN (canbeheading);
@@ -114,24 +148,28 @@ int yywrap(void) { return 1; }
                                     return ENDHEADING;
                                 }
 
-"{|"" "*                      { BEGIN(attributes); debuglex ("TABLEBEGIN "); return TABLEBEGIN; }
-"||"" "*/[^\| ][^\|]*"|"[^\|] { BEGIN(attributes); debuglex ("TABLECELL ");  return TABLECELL;  }
-"||"" "*      { BEGIN(cannotbelistorheadingorpre); debuglex ("TABLECELL ");  return TABLECELL;  }
-"!!"" "*/[^\! ][^\!]*"!"[^\!] { BEGIN(attributes); debuglex ("TABLEHEAD ");  return TABLEHEAD;  }
-"!!"" "*      { BEGIN(cannotbelistorheadingorpre); debuglex ("TABLEHEAD ");  return TABLEHEAD;  }
+<cannotbelistorheadingorpre,canbeheading>[^\|\r\n][^\<\>\[\]\{\}\r\n\'\|\=\!]*      |
 
-"|""-"+" "*                   { BEGIN(attributes); debuglex ("TABLEROW ");   return TABLEROW;   }
-"|}"" "*      { BEGIN(cannotbelistorheadingorpre); debuglex ("TABLEEND ");   return TABLEEND;   }
+<inattributeapo>[^\'\|\r\n][^\<\>\[\]\{\}\r\n\'\|\=\!]*                             |
 
-
-<cannotbelistorheadingorpre,canbeheading>[^\|\n][^\<\>\[\]\{\}\n\'\|\=]*     {
+<inattributeq>[^\"\|\r\n][^\<\>\[\]\{\}\r\n\'\"\|\=\!]*                             {
     yylval.node = newNodeS (TextToken, strdup (yytext));
-    debuglex2 ("TEXT(%s) ", yytext); return TEXT; }
-<canbelist>[^ \|\*\#\n][^\<\>\[\]\{\}\n\'\|]*                 {
-    BEGIN(cannotbelistorheadingorpre); yylval.node = newNodeS (TextToken, strdup (yytext));
-    debuglex2 ("TEXT(%s) ", yytext); return TEXT; }
-<INITIAL>[^ \|\*\#\n\=][^\<\>\[\]\{\}\n\'\|\=]*               {
-    BEGIN(cannotbelistorheadingorpre); yylval.node = newNodeS (TextToken, strdup (yytext));
-    debuglex2 ("TEXT(%s) ", yytext); return TEXT; }
+    debuglex2 ("TEXT(%s) ", yytext);
+    return TEXT;                                                                    }
 
+<canbelist>[^ \|\*\#\r\n][^\<\>\[\]\{\}\r\n\'\|\!]*                                 |
+
+<attributes>[^-a-zA-Z:_\r\n\|\=][^\<\>\[\]\{\}\r\n\'\|\!]*                          |
+
+<INITIAL>[^ \|\*\#\r\n\=][^\<\>\[\]\{\}\r\n\'\|\=\!]*                               {
+    BEGIN(cannotbelistorheadingorpre);
+    yylval.node = newNodeS (TextToken, strdup (yytext));
+    debuglex2 ("TEXT(%s) ", yytext);
+    return TEXT;                                                                    }
+
+<startattribute>[^ \t\r\n\'\"][^ \t\r\n]*" "*                                       {
+    BEGIN (attributes);
+    yylval.node = newNodeS (TextToken, strdup (yytext));
+    debuglex2 ("TEXT(%s) ", yytext);
+    return TEXT;                                                                    }
 %%

@@ -12,7 +12,8 @@
 typedef enum NodeType {
     Article, Paragraph, Heading, TextBlock, TextToken, ExtensionToken,
     Newlines, PreBlock, PreLine, Bold, Italics, LinkEtc, LinkTarget,
-    LinkOption,
+    LinkOption, Table, TableRow, TableCell, TableHead,
+    Attribute, AttributeGroup, Comment /* 20 */,
 
     /* After first parse */
     ListBlock, ListLine, ListBullet, ListNumbered,
@@ -21,36 +22,58 @@ typedef enum NodeType {
     List, ListItem
 } NodeType;
 
-typedef struct ExtensionDataStruct
+typedef struct NameValueStruct
 {
     char *  name;
-    char *  text;
+    char *  value;
 }
-* ExtensionData;
+* NameValue;
+
+/* During the parsing of table cells, we don't know in advance whether what we are currently
+ * parsing are attributes for the table cell, or the table cell's textual contents. We parse
+ * them as attributes first, but we use AttributeDataStruct to store enough data to allow us
+ * to turn it back into text should we later find out they weren't attributes after all. */
+typedef struct AttributeDataStruct
+{
+    char *  name;
+    int     type;   /* 0 = just an attribute name; 1 = no quotes; 2 = '; 3 = " */
+    int     spacesAfterName;
+    int     spacesAfterEquals;
+    int     spacesAfterValue;
+}
+* AttributeData;
 
 typedef union DataType {
-    char*           str;
+    char *          str;
     int             num;
-    ExtensionData   ext;
+    NameValue       nameval;
+    AttributeData   attrdata;
 } DataType;
 
 typedef struct NodeStruct
 {
     NodeType            type;
     DataType            data;
-    struct NodeStruct*  nextSibling;
-    struct NodeStruct*  firstChild;
+    struct NodeStruct * nextSibling;
+    struct NodeStruct * firstChild;
 }
 * Node;
 
 Node newNode (NodeType newType);
 Node newNodeI (NodeType newType, int data);
 Node newNodeS (NodeType newType, char* data);
-Node newNodeE (NodeType newType, ExtensionData data);
+Node newNodeN (NodeType newType, char* name, char* value, int copyname, int copyvalue); /* see NameValueStruct */
+
+/* Used by the lexer to create a preliminary AttributeData object. */
+AttributeData newAttributeDataFromStr (char* str);
+
+/* Completes an AttributeData object created by newAttributeDataFromStr */
+Node newNodeA (int t, AttributeData ad, int sae, int sav);
 
 /* Return value of all of these is the first parameter */
 Node nodeAddChild (Node node, Node child);
 #define nodeAddChild2(a,b,c) nodeAddChild (nodeAddChild (a, b), c)
+#define nodeAddChild3(a,b,c,d) nodeAddChild (nodeAddChild (nodeAddChild (a, b), c), d)
 Node nodePrependChild (Node node, Node child);
 Node nodeAddSibling (Node node, Node sibling);
 
@@ -63,26 +86,60 @@ Node processPreBlock (Node block);
 /* Returns a TextToken, or null if n < 1 */
 Node processEndHeadingInText (int n);
 
+/* If 'node' is a paragraph node with no siblings, frees it and returns its child.
+ * (We do this because if a table cell contains only text, we don't want it to
+ * count as a "paragraph".) Otherwise just returns node. */
+Node processTableCellContents (Node node);
+
 /* If a is a TextBlock, adds b to it; if b is a TextBlock, prepends a;
  * if both are a TextBlock, adds b's children to a and frees b;
  * otherwise creates new TextBlock with a and b in it.
  * If any parameter is 0, returns the other. */
 Node makeTextBlock (Node a, Node b);
 #define makeTextBlock2(a,b,c) makeTextBlock (makeTextBlock (a, b), c)
+#define makeTextBlock3(a,b,c,d) makeTextBlock (makeTextBlock (makeTextBlock (a, b), c), d)
+
+/* Parameter must be a LinkOption node, optionally with a string of
+ * siblings attached. These will all be freed, and a TextBlock returned. */
+Node convertPipeSeriesToText (Node node);
+
+/* Parameter must be a AttributeGroup node. It and its children will
+ * all be freed, and a TextBlock returned. */
+Node convertAttributesToText (Node node);
+
+/* Parameter will be freed, and a TextBlock returned.
+ * NOTICE: This will process ONLY the attribute name and the spaces after it. */
+Node convertAttributeDataToText (AttributeData data);
+
+/* These all return a TextToken node. */
+Node convertTableRowToText (int info);
+Node convertTableCellToText (int info);
+Node convertTableHeadToText (int info);
 
 /* Parameter must be a TextBlock. Turns something like
  * <italics>X<italics>Y</italics>Z</italics> into
  * <italics>X</italics>Y<italics>Z</italics>. Returns node. */
 Node processNestedItalics (Node node);
 
-ExtensionData newExtensionData (char* name, char* text);
+char* outputXML (Node node, int initialBufferSize);
 
-char* outputXML (Node node);
+/* To store the output, outputXML() will use a dynamically-growing character buffer (char*).
+ * The following routines manage such a buffer. */
+void fb_create_new_buffer (int size);
+void fb_write_to_buffer (const char* str);
+void fb_write_to_buffer_len (const char* str, int len);
+void fb_write_to_buffer_escaped (char* s);
+char* fb_get_buffer();
 
-/* To store the output, outputXML() will use a dynamically-growing buffer.
- * Normally it will start at a size of 1 KB, but if your input is already,
- * say, 1 MB big, you might want to call this before outputXML() to save a
- * few buffer enlargements. ONLY call this function just before calling
- * outputXML(). */
-void fb_set_buffer_size (int size);
+/* More string helper routines ... */
 
+/* e.g. addSpaces ("=", 2) => "=  " */
+char* addSpaces (char* src, int spaces);
+/* trims only *trailing* whitespace. Returns its parameter; does not create a new string. */
+char* strtrim (char* src);
+/* like strtrim, but returns the number of spaces removed. */
+int strtrimC (char* src);
+/* same as strtrim except takes a TextToken node */
+Node strtrimN (Node src);
+/* like strtrimN, but returns the number of spaces removed. */
+int strtrimNC (Node src);

@@ -33,10 +33,35 @@ Node newNodeS (NodeType newType, char* data)
     result->data.str = data;
     return result;
 }
-Node newNodeE (NodeType newType, ExtensionData data)
+Node newNodeN (NodeType newType, char* name, char* value, int copyName, int copyValue)
 {
     Node result = newNode (newType);
-    result->data.ext = data;
+    result->data.nameval = (NameValue) malloc (sizeof (struct NameValueStruct));
+    result->data.nameval->name  = copyName  ? strdup (name)  : name;
+    result->data.nameval->value = copyValue ? strdup (value) : value;
+    return result;
+}
+AttributeData newAttributeDataFromStr (char* str)
+{
+    AttributeData ret = (AttributeData) malloc (sizeof (struct AttributeDataStruct));
+    int len = strlen (str);
+    int i = len-1;
+
+    while (str[i] == ' ') i--;
+    i++;
+    ret->name = (char*) malloc ((i+1) * sizeof (char));
+    memcpy (ret->name, str, i * sizeof (char));
+    ret->name[i] = '\0';
+    ret->spacesAfterName = len-i;
+    return ret;
+}
+Node newNodeA (int t, AttributeData ad, int sae, int sav)
+{
+    Node result = newNode (Attribute);
+    result->data.attrdata = ad;
+    result->data.attrdata->type = t;
+    result->data.attrdata->spacesAfterEquals = sae;
+    result->data.attrdata->spacesAfterValue = sav;
     return result;
 }
 
@@ -61,11 +86,12 @@ Node nodeAddChild (Node node, Node child)
 /* Return value is the first parameter */
 Node nodeAddSibling (Node node, Node sibling)
 {
+    Node examine = node;
     if (sibling)
     {
-        while (node->nextSibling)
-            node = node->nextSibling;
-        node->nextSibling = sibling;
+        while (examine->nextSibling)
+            examine = examine->nextSibling;
+        examine->nextSibling = sibling;
     }
     return node;
 }
@@ -73,18 +99,21 @@ Node nodeAddSibling (Node node, Node sibling)
 /* Return value is the first parameter */
 Node nodePrependChild (Node node, Node child)
 {
-    child->nextSibling = node->firstChild;
+    Node prevChild = node->firstChild;
     node->firstChild = child;
-    return node;
+    return nodeAddChild (node, prevChild);
 }
 
-ExtensionData newExtensionData (char *name, char *text)
+void freeRecursively (Node node)
 {
-    ExtensionData ed = (ExtensionData) malloc (sizeof (struct ExtensionDataStruct));
-    ed->name = name;
-    ed->text = (char *) malloc ((strlen (text)+1) * sizeof (char));
-    strcpy (ed->text, text);
-    return ed;
+    Node next, child = node->firstChild;
+
+    while (child)
+    {
+        next = child->nextSibling;
+        freeRecursively (child);
+        child = next;
+    }
 }
 
 void removeAndFreeFirstChild (Node node)
@@ -92,7 +121,7 @@ void removeAndFreeFirstChild (Node node)
     Node child = node->firstChild;
     if (!child) return;
     node->firstChild = child->nextSibling;
-    free (child);
+    freeRecursively (child);
 }
 
 /* Parameter must be a ListLine node. Returns a List node. */
@@ -255,6 +284,7 @@ Node processPreBlock (Node block)
                 /* Re-attach the next sibling (B) */
                 examine->nextSibling = tmpnode;
             }
+            /* Newlines nodes don't have children, no need for freeRecursively */
             free (newlinesnode);
         }
         examine = examine->nextSibling;
@@ -274,6 +304,20 @@ Node processEndHeadingInText (int n)
     ret[n] = '\0';
     while (n) ret[--n] = '=';
     return newNodeS (TextToken, ret);
+}
+
+Node processTableCellContents (Node node)
+{
+    Node ret;
+
+    if (!node) return 0;
+    if (node->type == Paragraph && !node->nextSibling)
+    {
+        ret = node->firstChild;
+        free (node);
+        return ret;
+    }
+    return node;
 }
 
 Node processNestedItalics (Node node)
@@ -353,6 +397,7 @@ Node processNestedItalics (Node node)
                     /* Move examine on to the newly created sibling */
                     examine = examine->nextSibling;
                     /* Free the now-obsolete Italics node */
+                    /* We have attached its children elsewhere, so don't use freeRecursively */
                     free (childSibling);
                 }
                 /* Any node that is not an Italics node needs to become attached to one.
@@ -390,6 +435,7 @@ Node makeTextBlock (Node a, Node b)
     if (a->type == TextBlock && b->type == TextBlock)
     {
         nodeAddChild (a, b->firstChild);
+        /* We have attached b's children elsewhere, so don't use freeRecursively */
         free (b);
         return a;
     }
@@ -398,16 +444,177 @@ Node makeTextBlock (Node a, Node b)
     else if (b->type == TextBlock)
         return nodePrependChild (b, a);
     else
-        return nodeAddChild (nodeAddChild (newNode (TextBlock), a), b);
+        return nodeAddChild2 (newNode (TextBlock), a, b);
+}
+
+Node convertAttributesToText (Node node)
+{
+    char* str;
+    int len, at, i;
+    Node ret = 0, examine = node->firstChild, prevExamine;
+    AttributeData ad;
+
+    if (node->type != AttributeGroup) return 0;
+
+    /* We've stored the first child in examine, so we can already free the parent */
+    free (node);
+
+    while (examine) /* should be an Attribute node */
+    {
+        ad = examine->data.attrdata;
+        /* first turn attribute name, equals sign (if any) and
+         * opening apostrophe or quotes (if any) into one string */
+        len = strlen (ad->name);
+        at = len;
+        len += ad->spacesAfterName;
+        if (ad->type > 0)
+        {
+            len++; /* '=' */
+            len += ad->spacesAfterEquals;
+            if (ad->type > 1) len++;  /* ' or " */
+        }
+        len++; /* trailing '\0' */
+
+        str = (char*) malloc (len * sizeof (char));
+        memcpy (str, ad->name, at * sizeof (char));
+        while (ad->spacesAfterName--) str[at++] = ' ';
+        if (ad->type > 0)
+        {
+            str[at++] = '=';
+            while (ad->spacesAfterEquals--) str[at++] = ' ';
+            if (ad->type == 2) str[at++] = '\'';
+            else if (ad->type == 3) str[at++] = '"';
+        }
+        str[at] = '\0';
+
+        ret = makeTextBlock2 (ret, newNodeS (TextToken, str), examine->firstChild);
+
+        if (ad->type > 1 || (ad->type == 1 && ad->spacesAfterValue > 0))
+        {
+            at = ad->type > 1 ? 1 : 0;
+            len = at + ad->spacesAfterValue;
+            str = (char*) malloc (len * sizeof (char));
+            if (ad->type == 2) str[0] = '\'';
+            else if (ad->type == 3) str[0] = '"';
+            while (ad->spacesAfterValue--) str[at++] = ' ';
+            str[at] = '\0';
+            ret = makeTextBlock (ret, newNodeS (TextToken, str));
+        }
+        prevExamine = examine;
+        examine = examine->nextSibling;
+        free (prevExamine);
+    }
+
+    return ret;
+}
+
+Node convertAttributeDataToText (AttributeData data)
+{
+    return makeTextBlock (newNodeS (TextToken, data->name),
+                          newNodeS (TextToken, addSpaces ("", data->spacesAfterName)));
+}
+
+Node convertPipeSeriesToText (Node node)
+{
+    Node result = 0;
+    Node nextNode;
+
+    while (node)
+    {
+        result = makeTextBlock2 (result, newNodeS (TextToken, "|"), node->firstChild);
+        nextNode = node->nextSibling;
+        freeRecursively (node);
+        node = nextNode;
+    }
+
+    return result;
+}
+
+Node convertTableRowToText (int info)
+{
+    int minuses, spaces, i;
+    char* text;
+
+    minuses = info / 0x10000;
+    spaces  = info % 0x10000;
+
+    text = (char*) malloc ((minuses + spaces + 2) * sizeof (char));
+    text[0] = '|';
+    i = 1;
+    while (minuses--) text[i++] = '-';
+    while (spaces--)  text[i++] = ' ';
+    text[i] = '\0';
+    return newNodeS (TextToken, text);
+}
+
+Node convertTableCellToText (int info)
+{
+    return newNodeS (TextToken, addSpaces (info % 2 ? "|" : "||", info/2));
+}
+
+Node convertTableHeadToText (int info)
+{
+    return newNodeS (TextToken, addSpaces (info % 2 ? "!" : "!!", info/2));
+}
+
+char* addSpaces (char* src, int spaces)
+{
+    char* ret;
+    int len = strlen (src);
+
+    ret = (char*) malloc ((len + spaces + 1) * sizeof (char));
+    if (len > 0) memcpy (ret, src, len * sizeof (char));
+    ret[len+spaces] = '\0';
+    while (spaces--) ret[len+spaces] = ' ';
+    return ret;
+}
+
+char* strtrim (char* src)
+{
+    int i = strlen (src);
+    i--;
+    while ((i > 0) && (src[i] == ' ')) i--;
+    src[i+1] = '\0';
+    return src;
+}
+
+int strtrimC (char* src)
+{
+    int i = strlen (src), j = i;
+    i--;
+    while ((i > 0) && (src[i] == ' ')) i--;
+    src[i+1] = '\0';
+    return j - i - 1;
+}
+
+Node strtrimN (Node src)
+{
+    if (src->type == TextToken)
+        strtrim (src->data.str);
+    return src;
+}
+int strtrimNC (Node src)
+{
+    if (src->type == TextToken)
+        return strtrimC (src->data.str);
+    return 0;
 }
 
 char* fb_buffer;
-int   fb_buflen = 1024;    /* Start with 1 KB if user doesn't call fb_set_buffer_size() */
+int   fb_buflen;
 int   fb_bufcontentlen;
 
-inline void fb_set_buffer_size (int size)
+void fb_create_new_buffer (int size)
 {
+    fb_buffer = (char*) malloc (size * sizeof (char));
+    fb_buffer[0] = '\0';
+    fb_bufcontentlen = 0;
     fb_buflen = size;
+}
+
+char* fb_get_buffer()
+{
+    return fb_buffer;
 }
 
 void fb_write_to_buffer_len (const char* str, int len)
@@ -429,7 +636,7 @@ void fb_write_to_buffer_len (const char* str, int len)
     fb_buffer[fb_bufcontentlen] = '\0';
 }
 
-inline void fb_write_to_buffer (const char* str)
+void fb_write_to_buffer (const char* str)
 {
     fb_write_to_buffer_len (str, strlen (str));
 }
@@ -459,9 +666,9 @@ void fb_write_to_buffer_escaped (char* s)
             case '>': FB_WRITE_CURRY ("&gt;");
             case '"': FB_WRITE_CURRY ("&quot;");
             default:
-                if (*s < ' ')
+                if (*s < ' ' && *s != '\n')
                 {
-                    sprintf (tmpstr, "&#%d;", *s);
+                    sprintf (tmpstr, "&#%u;", (unsigned char)*s);
                     FB_WRITE_CURRY (tmpstr);
                 }
                 else
@@ -495,9 +702,12 @@ void outputNode (Node node)
 
     rname =
         node->type == TextBlock     ? 0 /* don't output tags for this, just the text */ :
-        node->type == Heading       ? 0 /* outputXML already does this one; it may have attributes */ :
-        node->type == List          ? 0 /* outputXML already does this one; it may have attributes */ :
-        node->type == LinkEtc       ? 0 /* outputXML already does this one; it may have attributes */ :
+
+        /* For the following, the tag is already output by outputXMLHelper: */
+        node->type == Heading       ? 0 :
+        node->type == List          ? 0 :
+        node->type == LinkEtc       ? 0 :
+        node->type == Attribute     ? 0 :
 
         node->type == LinkTarget    ? "linktarget"  :
         node->type == LinkOption    ? "linkoption"  :
@@ -508,6 +718,14 @@ void outputNode (Node node)
         node->type == ListItem      ? "listitem"    :
         node->type == Bold          ? "bold"        :
         node->type == Italics       ? "italics"     :
+        node->type == Comment       ? "comment"     :
+
+        node->type == Table         ? "table"       :
+        node->type == TableRow      ? "tablerow"    :
+        node->type == TableCell     ? "tablecell"   :
+        node->type == TableHead     ? "tablehead"   :
+        node->type == AttributeGroup? "attrs"       :
+
         /* Fallback value */
         (sprintf (defaultname, "type%dnode", node->type), defaultname);
 
@@ -535,7 +753,7 @@ void outputNode (Node node)
 void outputXMLHelper (Node node)
 {
     Node child;
-    ExtensionData ed;
+    NameValue nv;
     int i;
     char tmpstr[255];
 
@@ -553,11 +771,21 @@ void outputXMLHelper (Node node)
             break;
 
         case ExtensionToken:
-            ed = node->data.ext;
-            sprintf (tmpstr, "<extension name=\"%s\">", ed->name);
+            nv = node->data.nameval;
+            sprintf (tmpstr, "<extension name='%s'>", nv->name);
             fb_write_to_buffer (tmpstr);
-            fb_write_to_buffer_escaped (ed->text);
+            fb_write_to_buffer_escaped (nv->value);
             fb_write_to_buffer ("</extension>");
+            break;
+
+        case Attribute:
+            sprintf (tmpstr, "<attr name='%s'", node->data.attrdata->name);
+            fb_write_to_buffer (tmpstr);
+            if (node->data.attrdata->type == 0)
+                fb_write_to_buffer (" isnull='yes'");
+            fb_write_to_buffer (">");
+            outputNode (node);
+            fb_write_to_buffer ("</attr>");
             break;
 
         case List:
@@ -583,12 +811,9 @@ void outputXMLHelper (Node node)
     }
 }
 
-char* outputXML (Node node)
+char* outputXML (Node node, int initialBufferSize)
 {
-    fb_buffer = (char*) malloc (fb_buflen * sizeof (char));
-    fb_buffer[0] = '\0';
-    fb_bufcontentlen = 0;
-
+    fb_create_new_buffer (initialBufferSize);
     outputXMLHelper (node);
-    return fb_buffer;
+    return fb_get_buffer();
 }
