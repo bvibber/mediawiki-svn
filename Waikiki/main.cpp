@@ -130,38 +130,42 @@ void TWikiInterface::run (int argc, char *argv[])
         }
     }
 
-/*
-// Experimental code to convert a MySQL dump to
-// the sqlite format. This has little to do with the
-// actual parser.
-void mysql2sqlite ( string fn_in , string fn_out )
+void loadMySQLdump ( string filename , vector <TArticle*> &va )
     {
-    VTUCS v ;
     long l ;
-    ifstream in ( fn_in.c_str() , ios::in | ios::binary ) ;
+    ifstream in ( filename.c_str() , ios::in | ios::binary ) ;
     in.seekg (0, ios::end);
     l = in.tellg();
     in.seekg (0, ios::beg);    
     char *t = new char[l+5] ;
     in.read ( t , l ) ;
     in.close () ;
-    TUCS t2 = t ;
-    t2.explode ( "\n" , v ) ;
-    t2 = "" ;    
-    delete t ;
+    t[l] = 0 ;
     
-    // All lines now in v
-    ofstream out ( fn_out.c_str() , ios::out ) ;
-    cout << v.size() << " lines\n" ;
+    vector <char*> vc ;
+    char *c ;
+    vc.push_back ( t ) ;
+    for ( c = t ; *c ; c++ )
+        {
+        if ( *c == '\n' )
+           {
+           *c = 0 ;
+           vc.push_back ( c+1 ) ;
+           }
+        }
+    
+    
+    // All lines now indexed in vc
+    cout << vc.size() << " lines\n" ;
     
     VTUCS index ;
     TUCS table_name ;
     uint a ;
     bool creating = false ;
-    bool first = true ;
-    for ( a = 0 ; a < v.size() ; a++ )
+    for ( a = 0 ; a < vc.size() ; a++ )
         {
-        TUCS s = v[a] ;
+        cout << a << endl ;
+        TUCS s ( vc[a] ) ;
         s.trim() ;
         if ( s.substr ( 0 , 2 ) == "--" || s.substr ( 0 , 2 ) == "/*" ) continue ;
         if ( s.substr ( 0 , 7 ) == "CREATE " )
@@ -173,13 +177,10 @@ void mysql2sqlite ( string fn_in , string fn_out )
            s.replace ( "(" , "" ) ;
            s.trim() ;
            table_name = s ;
-           out << "DROP TABLE " << s.getstring() << " ;" << endl ;
-           out << "CREATE TABLE " << s.getstring() << " (" << endl ;
-           cout << "Creating table '" << s.getstring() << "'\n" ;
+//           cout << "Creating table '" << s.getstring() << "'\n" ;
            }
         else if ( s.substr ( 0 , 1 ) == ")" && creating )
            {
-           out << endl << ") ; " << endl ;
            creating = false ;
            }
         else if ( creating )
@@ -190,21 +191,11 @@ void mysql2sqlite ( string fn_in , string fn_out )
               }
            else
               {
-              s.replace ( " integer" , " int" ) ;
-              s.replace ( " int" , " integer" ) ;
-              s.replace ( "auto_increment" , "PRIMARY KEY" ) ;
-              s.replace ( "binary" , "" ) ;
-              s.replace ( "unsigned" , "" ) ;
-              while ( s.replace ( "  " , " " ) > 0 ) ;
               s.trim () ;
-              s.pop_back () ;
-              if ( !first ) out << "," << endl ;
-              out << s.getstring() ;
-              first = false ;
               VTUCS x ;
               s.explode ( " " , x ) ;
               index.push_back ( x[0] ) ;
-              cout << "Creating " << s.getstring() << endl ;
+//              cout << "Creating " << x[0].getstring() << endl ;
               }
            }
         else if ( s.substr ( 0 , 12 ) == "INSERT INTO " )
@@ -223,18 +214,18 @@ void mysql2sqlite ( string fn_in , string fn_out )
                  }
               else if ( ( s[b] == ',' || s[b] == ')' ) && !quote )
                  {
-                 t2 = s.substr ( l , b - l ) ;
+                 TUCS t2 = s.substr ( l , b - l ) ;
                  if ( t2[t2.length()-1] == SINGLE_QUOTE ) t2.pop_back() ;
-                 if ( idx == 0 ) out << "INSERT INTO " << table_name.getstring() << " VALUES (" ;
-                 else out << ", " ;
-                 t2.replace ( "\\'" , "''" ) ;
-                 out << "'" << t2.getstring() << "'" ;
+
+                 if ( idx == 0 ) va.push_back ( new TArticle() ) ;
+                 TArticle *da = va[va.size()-1] ;
+                 if ( index[idx] == "cur_title" ) da->setTitle ( TTitle ( t2 , FROM_DBKEY ) ) ;
+                 if ( index[idx] == "cur_text" ) da->setSource ( t2 ) ;
+
                  idx++ ;
                  l = b+1 ;
                  if ( s[b] == ')' )
                     {
-                    while ( idx++ < index.size() ) out << ",''" ;
-                    out << ") ;" << endl ;
                     while ( b < s.length() && s[b] != '(' ) b++ ;
                     l = b+1 ;
                     idx = 0 ;
@@ -244,9 +235,36 @@ void mysql2sqlite ( string fn_in , string fn_out )
            }
         }
     
-    system("PAUSE");	
+    delete t ;
+//    system("PAUSE");	
     }
-*/
+
+void saveSQLITE ( string filename , vector <TArticle*> &va )
+    {
+    string cur = "CREATE TABLE cur (
+    cur_title varchar(255) NOT NULL default '',
+    cur_text mediumtext NOT NULL
+    );" ;
+    
+    sqlite *db = sqlite_open ( filename.c_str() , 0 , NULL ) ;
+//    sqlite_exec ( db , "BEGIN;" , 0 , 0 , 0 ) ;
+    sqlite_exec ( db , "DROP TABLE cur;" , 0 , 0 , 0 ) ;
+    sqlite_exec ( db , cur.c_str() , 0 , 0 , 0 ) ;
+
+    uint a ;
+    for ( a = 0 ; a < va.size() ; a++ )
+        {
+        string _ti , _tx ;
+        _ti = va[a]->getTitle().getNiceTitle().getstring() ;
+        _tx = va[a]->getSource().getstring() ;
+        sqlite_exec_printf(db,
+                "INSERT INTO cur VALUES('%q','%q');",
+                0, 0, 0, _ti.c_str(), _tx.c_str());
+        }
+//    sqlite_exec ( db , "COMMIT;" , 0 , 0 , 0 ) ;
+
+    sqlite_close ( db ) ;
+    }
 
 //************************************* MAIN
 
@@ -256,7 +274,15 @@ int main(int argc, char *argv[])
     LANG->loadPHP ( "Language.php" ) ;
     w.run ( argc , argv ) ;
     system("PAUSE");	
-//    mysql2sqlite ( "Z:\\brief_cur_table.sql" , "Z:\\test.sqlite" ) ;
+
+/*
+    // Convert a MySQL dump imto a sqlite file
+    vector <TArticle*> va ;
+//    loadMySQLdump ( ".\\brief_cur_table.sql" , va ) ;
+    loadMySQLdump ( ".\\20030906_cur_table.sql" , va ) ;
+
+    saveSQLITE ( ".\\test.sqlite" , va ) ;
+*/
 
     return 0;
 }

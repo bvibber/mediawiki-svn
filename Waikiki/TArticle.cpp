@@ -2,7 +2,7 @@
 
 TArticle::TArticle ()
     {
-    title = new TTitle ;
+    title = new TTitle () ;
     }
 
 TArticle::~TArticle ()

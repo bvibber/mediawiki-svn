@@ -1,5 +1,5 @@
 # Project: Projekt1
-# Makefile created by Dev-C++ 4.9.8.0
+# Makefile created by Dev-C++ 4.9.8.1
 
 CPP  = g++.exe
 CC   = gcc.exe
@@ -7,12 +7,12 @@ WINDRES = windres.exe
 RES  = 
 OBJ  = main.o TUCS.o TParser.o TOutput.o TSkin.o TUser.o TTitle.o TArticle.o TLanguage.o TSkinBlank.o $(RES)
 LINKOBJ  = main.o TUCS.o TParser.o TOutput.o TSkin.o TUser.o TTitle.o TArticle.o TLanguage.o TSkinBlank.o $(RES)
-LIBS =  -L"C:/Programme/Dev-Cpp/lib" 
+LIBS =  -L"C:/Programme/Dev-Cpp/lib" sqlite.dll 
 INCS =  -I"C:/Programme/Dev-Cpp/include" 
 CXXINCS =  -I"C:/Programme/Dev-Cpp/include/c++"  -I"C:/Programme/Dev-Cpp/include/c++/mingw32"  -I"C:/Programme/Dev-Cpp/include/c++/backward"  -I"C:/Programme/Dev-Cpp/include" 
 BIN  = Waikiki.exe
 CXXFLAGS = $(CXXINCS)  -w
-CFLAGS = $(INCS)  -w
+CFLAGS = $(INCS)  -fmessage-length=0 -w
 
 .PHONY: all all-before all-after clean clean-custom
 

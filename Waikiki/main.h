@@ -1,9 +1,15 @@
 #ifndef _COMMON_H_
 #define _COMMON_H_
 
+#define WINDOWS
+
 #define FROM_TEXT 0
 #define FROM_URL 1
 #define FROM_DBKEY 2
+
+#ifdef WINDOWS
+#include "win_sqlite.h"
+#endif
 
 #include <fstream>
 #include "TUCS.h"
