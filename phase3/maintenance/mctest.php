@@ -1,4 +1,5 @@
 <?php
+/* $Id$
 require_once('commandLine.inc');
 define("ITERATIONS", 100);
 
@@ -11,6 +12,7 @@ foreach ( $wgMemCachedServers as $server ) {
 	$set = 0;
 	$incr = 0;
 	$get = 0;
+        $time_start=microtime_float();
 	for ( $i=1; $i<=ITERATIONS; $i++ ) {
 		if ( !is_null( $mcc->set( "test$i", $i ) ) ) {
 			$set++;
@@ -29,7 +31,16 @@ foreach ( $wgMemCachedServers as $server ) {
 			$get++;
 		}
 	}
+        $exectime=microtime_float()-$time_start;
 
-	print "$server set: $set   incr: $incr   get: $get\n";
+	print "$server set: $set   incr: $incr   get: $get time: $exectime\n";
 }
+
+function microtime_float()
+{
+   list($usec, $sec) = explode(" ", microtime());
+   return ((float)$usec + (float)$sec);
+}
+
+
 ?>
