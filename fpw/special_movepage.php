@@ -66,7 +66,7 @@ function movepage ( ) {
 
 	if ( $doshow ) {
 		$ret .= $warning ;
-		$ret .= str_replace ( "$2" , $newname , str_replace ( "$1" , $nt , $wikiMoveForm ) ) ;
+		$ret .= str_replace ( "$3", $checked, str_replace("$2" , $newname , str_replace ( "$1" , $nt , $wikiMoveForm ) ) );
 		}
 
 	return $ret ;

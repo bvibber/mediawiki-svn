@@ -203,7 +203,7 @@ class skinStandard extends skinClass {
 
 		if ( isset ( $framed ) ) return "" ;
 		$ret = $page->getLinkBar() ;
-		$ret = "<table width=\"100%\" $border class=\"footer\" cellspacing=0><tr><td>$ret</td></tr></table>" ;
+		$ret = "<table width=\"100%\" class=\"footer\" cellspacing=0><tr><td>$ret</td></tr></table>" ;
 
 		# Page counter
 		if ( !$page->isSpecialPage )
@@ -247,11 +247,11 @@ class skinStandard extends skinClass {
 
 	function getStylesheet ( &$page ) {
 		global $styleSheet , $user , $namespaceBackground ;
-		$skin = $user->options[skin] ;
+		$skin = $user->options['skin'] ;
 		$ret = "<style type=\"text/css\"><!--\n";
 		$ret .= "body { ";
-		$textcolor = $user->options[text];
-		$bgcolor = $user->options[background];
+		$textcolor = $user->options['text'];
+		$bgcolor = $user->options['background'];
 		if ( $namespaceBackground != "" ) $bgcolor = $namespaceBackground ;
 		if ( $textcolor == "" ) $textcolor = "black"; # For un-coloring links. Should be "inherit" but Netscape 4.x messes it up
 		else $ret .= "color: $textcolor; ";
@@ -259,7 +259,7 @@ class skinStandard extends skinClass {
 		else $ret .= "background: $bgcolor; ";
 		$ret .= "}\n";
 
-		$ret .= "a { text-decoration: " . (($user->options[underlineLinks] == "no") ? "none" : "underline") . "; }\n";
+		$ret .= "a { text-decoration: " . (($user->options['underlineLinks'] == "no") ? "none" : "underline") . "; }\n";
 
 		$qbside = ( $user->options["quickBar"] == "left" ) ? "right" : "left";
 
@@ -276,9 +276,9 @@ class skinStandard extends skinClass {
 		if ( $action == "print" ) {
 		    $ret .= "a { color: inherit; text-decoration: none; font-style: italic; }\n ";
 		    $ret .= "a.newlink { color: inherit; font-style: inherit; }\n.newlinkedge { display: none; }\n";
-		} elseif ( $user->options[markupNewTopics] == "red") {
+		} elseif ( $user->options['markupNewTopics'] == "red") {
 		    $ret .= "a.newlink { color: red; }\n.newlinkedge { display: none; }\n";
-		} elseif ( $user->options[markupNewTopics] == "inverse") {
+		} elseif ( $user->options['markupNewTopics'] == "inverse") {
 		    $ret .= "a.newlink { color: white; background: blue; }\n.newlinkedge { display: inline; }\n";
 		} else {
 		    $ret .= "a.newlink { color: $textcolor; text-decoration: none; }\n.newlinkedge { display: inline; }\n";

@@ -351,7 +351,7 @@ Se vi tutkore certas, ke vi volas fari tion, <a href=\"$THESCRIPT?title=special:
 $wikiProtectTitle = "Protektante artikolon '$1'" ;
 $wikiProtectDenied = "<font size=+3>Vi ne rajtas protekti ĉi tiun paĝon!</font>" ;
 $wikiProtectNow = "Paĝo '$1' nun estas protektata kiel $2." ;
-$wikiProtectText = "<font size=+2>Vi nun povas modifi la protektadon de '$target'</font><br>
+$wikiProtectText = "<font size=+2>Vi nun povas modifi la protektadon de '$1'</font><br>
 <i>Ekzemple, enmetu \"is_sysop\" por malebligi iun krom sistemestroj redakti tiun paĝon. Apartigi plurajn permesojn per komo \",\"</i>" ;
 $wikiProtectCurrent = "Aktuala protektado : " ;
 $wikiContribTitle = "Kontribuaĵoj de $1" ;
@@ -396,7 +396,7 @@ function wikiGetDateEo ( $x ) { # Used in RecentChangesLayout in special_functio
 	$year = date ( "Y" , $x ) ;
 	return "${dayName}n, la ${dayNumber}a de $monthName, $year" ;
 	}
-$wikiGetDate = wikiGetDateEo;
+$wikiGetDate = 'wikiGetDateEo';
 
 # In theory, this could be expanded to allow general conversion of the
 # character encoding used in the database to another encoding optionally
@@ -436,7 +436,7 @@ function wikiRecodeOutputEo($text) {
 	}
 	return $text;
 	}
-	$wikiRecodeOutput = wikiRecodeOutputEo ;
+$wikiRecodeOutput = 'wikiRecodeOutputEo' ;
 
 function wikiRecodeInputEo($text) {
 	# Note that we *always* convert double-Xs into single Xs.
@@ -459,6 +459,6 @@ function wikiRecodeInputEo($text) {
 
 	return preg_replace ( "/([cghjsux]x)(?=(?:xx)*[^x\$])/ei" , "\$xu[\"\$1\"]" , $text ) ;
 	}
-	$wikiRecodeInput = wikiRecodeInputEo ;
+$wikiRecodeInput = 'wikiRecodeInputEo' ;
 
 ?>

@@ -180,7 +180,7 @@ $wikiMoveForm = "
 <h2>Vas a mover '$1' y su histórico a un nuevo nombre.</h2>\n
 <FORM method=post>\n
 Nuevo nombre: <INPUT type=text value='$2' name=newname size=40 maxlength=250><br><br>\n
-<INPUT type=checkbox$checked name=doredirect>Crear una redirección (#REDIRECT) de '$1' al nuevo título<br><br>\n
+<INPUT type=checkbox$3 name=doredirect>Crear una redirección (#REDIRECT) de '$1' al nuevo título<br><br>\n
 <INPUT type=submit name=doit value='Move'>\n
 </FORM>\n" ;
 
@@ -370,7 +370,7 @@ $wikiDeleteAsk = "¡Estás a punto de borrar el artículo \"$1\" y su histórico
 $wikiProtectTitle = "Protegiendo artículo '$1'" ;
 $wikiProtectDenied = "<font size=\"+3\">¡No te está permitido proteger este artículo!</font>" ;
 $wikiProtectNow = "La página '$1' está ahora protegida como $2." ;
-$wikiProtectText = "<font size=\"+2\">Ahora puedes editar la protección para '$target'</font><br><i>Por ejemplo, usa \"is_sysop\" para prevenir que nadie que no sea operador pueda editar esta página. Separa distintos permisos con \",\"</i>" ;
+$wikiProtectText = "<font size=\"+2\">Ahora puedes editar la protección para '$1'</font><br><i>Por ejemplo, usa \"is_sysop\" para prevenir que nadie que no sea operador pueda editar esta página. Separa distintos permisos con \",\"</i>" ;
 $wikiProtectCurrent = "Protección actual : " ;
 $wikiContribTitle = "Contribuciones de $1" ;
 $wikiContribText = "<h1>Contribuciones de $1 :</h1>\n(Con la excepción de cambios menores y cambios en páginas ''discusión'' y ''log'')" ;
@@ -436,8 +436,8 @@ function wikiGetBriefDateEs () { #Brief date for link in sidebar
     $year = date ( "Y" ) ;
     return "$dayNumber $monthName $year" ;
     }
-$wikiGetDate = wikiGetDateEs;
-$wikiGetBriefDate = wikiGetBriefDateEs ;
+$wikiGetDate = 'wikiGetDateEs';
+$wikiGetBriefDate = 'wikiGetBriefDateEs' ;
 
 # In theory, this could be expanded to allow general conversion of the
 # character encoding used in the database to another encoding optionally
@@ -458,6 +458,6 @@ function wikiRecodeInputEs($text) {
   return $text;
 } 
 
-$wikiRecodeOutput = wikiRecodeOutputEs;
-$wikiRecodeInput = wikiRecodeInputEs;
+$wikiRecodeOutput = 'wikiRecodeOutputEs';
+$wikiRecodeInput = 'wikiRecodeInputEs';
 ?>
