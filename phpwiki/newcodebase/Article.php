@@ -55,21 +55,7 @@ class Article {
 			if ( "edit" == $action ) {
 				return wfMsg( "newarticletext" );
 			}
-			#return wfMsg( "noarticletext" );
-			$out = wfMsg( "noarticletext" );
-
-			# Grab some articles that link to us
-			$t = wfStrEncode( $wgTitle->getPrefixedDBkey() );
-			$sql = "SELECT cur_id,cur_namespace,cur_title FROM cur,brokenlinks" .
-				"WHERE bl_from=cur_id AND bl_to='{$t}' LIMIT 10";
-			$res = wfQuery( $sql, "Article::getContent" );
-			if( $res ) {
-				$out .= "Some related articles:\n"; # wfMsg( "related" );
-				while( $s = wfFetchObject( $res ) ) {
-					$out .= "* [[$s]]\n";
-				}
-			}
-			return $out;
+			return wfMsg( "noarticletext" );
 		} else {
 			$this->loadContent( $noredir );
 			return $this->mContent;
