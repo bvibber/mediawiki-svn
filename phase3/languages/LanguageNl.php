@@ -115,6 +115,7 @@
  "dz" => "Dzongkha",
  "et" => "Eesti",
  "el" => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940;",
+ "als" => "Elsässisch",
  "eu" => "Euskara",
  "ee" => "Eve",
  "fo" => "Føroyskt",
