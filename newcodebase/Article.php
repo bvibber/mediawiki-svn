@@ -165,7 +165,7 @@ class Article {
 		global $oldid, $diff;
 
 		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
-		if ( $oldid && isset( $diff ) ) {
+		if ( isset( $diff ) ) {
 			$wgOut->setArticleFlag( false );
 			$de = new DifferenceEngine( $oldid, $diff );
 			$de->showDiffs();
@@ -245,7 +245,7 @@ class Article {
 		if ( "initial" == $formtype ) {
 			$wpEdittime = $this->getTimestamp();
 			$wpTextbox1 = $this->getContent();
-			$wpSummary = "*";
+			$wpSummary = "";
 		}
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 		$wgOut->setArticleFlag( false );

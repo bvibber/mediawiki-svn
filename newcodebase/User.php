@@ -257,18 +257,6 @@ class User {
 		return $this->mRights;
 	}
 
-	function isEditor()
-	{
-		$this->loadFromDatabase();
-		return in_array( "is_editor", $this->mRights );
-	}
-
-	function isSysop()
-	{
-		$this->loadFromDatabase();
-		return in_array( "is_sysop", $this->mRights );
-	}
-
 	function &getSkin()
 	{
 		if ( ! isset( $this->mSkin ) ) {

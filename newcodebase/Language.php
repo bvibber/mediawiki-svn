@@ -204,6 +204,7 @@ Please check the URL you used to access this page.\n",
 "difference"	=> "(Difference between revisions)",
 "loadingrev"	=> "loading revision for diff",
 "lineno"		=> "Line $1:",
+"diff"			=> "diff",
 
 # Preferences page
 #
