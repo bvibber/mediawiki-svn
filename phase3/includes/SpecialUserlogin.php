@@ -103,7 +103,7 @@ function wfSpecialUserlogin()
 /* private */ function mailPassword()
 {
 	global $wgUser, $wpName, $wgDeferredUpdateList, $wgOutputEncoding;
-	global $wgCookiePath, $wgCookieDomain;
+	global $wgCookiePath, $wgCookieDomain, $wgDBname;
 	
 	if ( "" == $wpName ) {
 		mainLoginForm( wfMsg( "noname" ) );
@@ -127,7 +127,7 @@ function wfSpecialUserlogin()
 	$np = User::randomPassword();
 	$u->setNewpassword( $np );
 
-	setcookie( "wcUserPassword", "", time() - 3600, $wgCookiePath, $wgCookieDomain );
+	setcookie( "{$wgDBname}Password", "", time() - 3600, $wgCookiePath, $wgCookieDomain );
 	$u->saveSettings();
 
 	$ip = getenv( "REMOTE_ADDR" );
@@ -168,7 +168,7 @@ function wfSpecialUserlogin()
 {
 	global $wgUser, $wgOut, $wgLang, $returnto;
 	global $wpName, $wpPassword, $wpRetype, $wpRemember;
-	global $wpEmail, $HTTP_COOKIE_VARS;
+	global $wpEmail, $HTTP_COOKIE_VARS, $wgDBname;
 
 	$le = wfMsg( "loginerror" );
 	$yn = wfMsg( "yourname" );
@@ -188,7 +188,7 @@ function wfSpecialUserlogin()
 		if ( 0 != $wgUser->getID() ) {
 			$name = $wgUser->getName();
 		} else {
-			$name = $HTTP_COOKIE_VARS["wcUserName"];
+			$name = $HTTP_COOKIE_VARS["{$wgDBname}UserName"];
 		}
 	}
 	$pwd = $wpPassword;
