@@ -20,7 +20,11 @@ function wfSpecialListusers()
 
 		$l = $sk->makeLink( "User:{$n}", $n );
 
-		if ( "" != $r ) { $l .= " ({$r})"; }
+		if ( "" != $r ) {
+			$link = $sk->makeKnownLink(
+			  "Wikipedia:Administrators", $r );
+			$l .= " ({$link})";
+		}
 		$l .= "<br>\n";
 		$wgOut->addHTML( $l );
 	}
