@@ -7,6 +7,7 @@
 
 function rebuildLinkTablesPass1()
 {
+	global $wgLang;
 	$count = 0;
 	print "Rebuilding link tables (pass 1).\n";
 
@@ -33,7 +34,7 @@ function rebuildLinkTablesPass1()
 	$tc = Title::legalChars();
 	while ( $row = wfFetchObject( $res ) ) {
 		$id = $row->cur_id;
-		$ns = Namespace::getName( $row->cur_namespace );
+		$ns = $wgLang->getNsText( $row->cur_namespace );
 		if ( "" == $ns ) {
 			$title = addslashes( $row->cur_title );
 		} else {
