@@ -533,7 +533,7 @@ Geef uw bestanden een duidelijk omschrijvende naam om verwarring te voorkomen. O
 "badfiletype"	=> "\".$1\" is geen aanbevolen afbeeldings bestandsformaat.",
 "largefile"		=> "Aanbeveling: maak afbeeldingen niet groter dan 100k",
 "successfulupload" => "De upload was succesvol",
-"fileuploaded"	=> "<b>Het uploaden van bestand \"$1\" is geslaagd.</b> Gelieve deze link naar de omschrijvingspagina te volgen: ($2). Vul daar informatie in over dit bestand, bijvoorbeeld de oorsprong, wanneer en door wie het gemaakt is en wat u verder er nog over te vertellen heeft."
+"fileuploaded"	=> "<b>Het uploaden van bestand \"$1\" is geslaagd.</b> Gelieve deze link naar de omschrijvingspagina te volgen: ($2). Vul daar informatie in over dit bestand, bijvoorbeeld de oorsprong, wanneer en door wie het gemaakt is en wat u verder er nog over te vertellen heeft.",
 "uploadwarning" => "Upload waarschuwing ",
 "savefile"		=> "Bestand opslaan",
 "uploadedimage" => "heeft ge-upload: \"$1\"",
