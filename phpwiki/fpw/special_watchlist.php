@@ -14,7 +14,7 @@ function modifyArray ( $a , $sep , $rem , $add = "" ) {
 
 function watch ( $t , $m ) {
     global $THESCRIPT , $user , $wikiUserSettingsError , $wikiWatchYes , $wikiWatchNo ;
-    global $vpage;
+    global $vpage , $returnto ;
     
     if ( !$user->isLoggedIn ) return $wikiUserSettingsError ;
 
@@ -33,14 +33,18 @@ function watch ( $t , $m ) {
 
     if ( $m == "yes" ) $ret = str_replace ( "$1" , $tbare , $wikiWatchYes ) ;
     else str_replace ( "$1" , $tbare , $wikiWatchNo ) ;
-    $ret .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL='".wikiLink(nurlencode($t))."'\">" ;
+    if ( isset ( $returnto ) )
+    	$returnto = "special:WatchList" ;
+    else
+    	$returnto = nurlencode ( $t ) ;
+    $ret .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL='".wikiLink($returnto)."'\">" ;
     return $ret ;
     }
 
 function WatchList () {
     global $THESCRIPT ;
     global $vpage , $user , $wikiWatchlistTitle , $wikiWatchlistExistText , $wikiWatchlistNotExistText, $wikiTalk ;
-    global $wikiAllowedNamespaces , $wikiErrorPageTitle , $wikiErrorMessage ;
+    global $wikiAllowedNamespaces , $wikiErrorPageTitle , $wikiErrorMessage , $wikiNoWatch ;
 
     $vpage->special ( $wikiWatchlistTitle ) ;
     $ret = "$wikiWatchlistExistText\n\n" ;
@@ -82,7 +86,7 @@ function WatchList () {
 	if ( $s ) {
             while ($s) {
 		    array_push ( $arr , $s ) ;
-		    array_push ( $foundtitles , $s->cur_title ) ;
+		    array_push ( $foundtitles , preg_replace ( '/^[^:]*:/' , '' , $s->cur_title ) ) ;
 		    $s = mysql_fetch_object ( $result ) ;
 		    }
             mysql_free_result ( $result ) ;
@@ -95,7 +99,7 @@ function WatchList () {
     # This could be done more efficiently.
     $nonexistent = array_diff ( $b , $foundtitles ) ;
     foreach ( $nonexistent as $x ) {
-	$notexist .= "\n* [[".$vpage->getNiceTitle( $x )."]]" ;
+	$notexist .= "\n* [[".$vpage->getNiceTitle( $x )."]] (<a href=\"$THESCRIPT?title=".rawurlencode($x)."&action=watch&mode=no&returnto=special:WatchList\">$wikiNoWatch</a>)" ;
 	}
 
 /*  # There is no need to make a billion separate database requests
