@@ -356,13 +356,14 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		$text = $this->preSaveTransform( $text );
 		$conn = wfGetDB();
 		$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
-		  "old_comment,old_user,old_timestamp,old_minor_edit) VALUES (" .
+		  "old_comment,old_user,old_user_text,old_timestamp," .
+		  "old_minor_edit) VALUES (" .
 		  $wgTitle->getNamespace() . ", '" .
 		  $wgTitle->getDBkey() . "', '" .
 		  wfStrencode( $this->getContent() ) . "', '" .
-		  wfStrencode( $this->mComment ) . "', " .
-		  $this->mUser . ", '" .
-		  $this->mTimestamp . "', " . $me1 . ")";
+		  wfStrencode( $this->getComment() ) . "', " .
+		  $this->getUser() . ", '" . $this->getUserText() . "', '" .
+		  $this->getTimestamp() . "', " . $me1 . ")";
 
 		wfDebug( "Art: 4: $sql\n" );
 		$res = mysql_query( $sql, $conn );

@@ -110,6 +110,7 @@ that it be to the address you give.<br>\n",
 "badretype"		=> "The passwords you entered do not match.",
 "userexists"	=> "The user name you entered is already in use. Please choosea different name.",
 "youremail"		=> "Your e-mail",
+"yournick"		=> "Your nickname (for signatures)",
 "emailforlost"	=> "If you forget your password, you can have it mailed to your e-mail address.",
 
 "loginerror"	=> "Login error",
@@ -217,6 +218,8 @@ material restricted by others' [[wikipedia:Copyrights|copyrights]].
 The legal liability could really hurt the project, so please don't do it.
 See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges recent meta discussion].",
 "rcloaderr"		=> "Loading recent changes",
+"rcnote"		=> "Below are the last $1 changes in the last $2 days.",
+"rclinks"		=> "View the last $1 changes; view the last $2 days.",
 
 # New pages
 #
