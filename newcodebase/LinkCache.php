@@ -92,7 +92,7 @@ class LinkCache {
 		wfProfileIn( "LinkCache::preFill" );
 		# Note -- $fromtitle is a Title *object*
 		$dbkeyfrom = wfStrencode( $fromtitle->getPrefixedDBKey() );
-		$sql = "SELECT cur_id,cur_namespace,cur_title
+		$sql = "SELECT HIGH_PRIORITY cur_id,cur_namespace,cur_title
 			FROM cur,links
 			WHERE cur_id=l_to AND l_from='{$dbkeyfrom}'";
 		$res = wfQuery( $sql, "LinkCache::preFill" );
