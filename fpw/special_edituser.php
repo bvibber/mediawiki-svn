@@ -8,7 +8,7 @@ function editUser () {
 
 	$ret = "" ;
 	$connection = getDBconnection () ;
-	$sql = "SELECT * from user WHERE user_id=$theuser" ;
+	$sql = "SELECT * from user WHERE user_id=\"$theuser\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$u = mysql_fetch_object ( $result ) ;
 	mysql_free_result ( $result ) ;
@@ -25,7 +25,7 @@ function editUser () {
 				if ( $$c == "yes" ) array_push ( $v1 , $x ) ;
 				}
 			$v1 = implode ( "," , $v1 ) ;
-			$sql = "UPDATE user SET user_rights=\"$v1\" WHERE user_id=$theuser" ;
+			$sql = "UPDATE user SET user_rights=\"$v1\" WHERE user_id=\"$theuser\"" ;
 			$result = mysql_query ( $sql , $connection ) ;
 			$u->user_rights = $v1 ;
 #			$ret .= "<font color=red>The change has been saved!</font><br>\n" ;
