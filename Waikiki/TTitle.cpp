@@ -65,7 +65,7 @@ int TTitle::getNamespaceID ()
     if ( ns == special ) return -1 ;
     char b[100] ;
     strcpy ( b , "NamespaceNames:0" ) ;
-    for ( uint a = 1 ; a <= 7 ; a++ )
+    for ( uint a = 1 ; a <= 9 ; a++ )
         {
         b[15] = '0' + a ;
         TUCS c = LNG(b) ;

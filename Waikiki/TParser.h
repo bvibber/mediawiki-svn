@@ -16,6 +16,7 @@ class TParser
     virtual void parse_heading ( TUCS &s ) ;
     virtual bool parse_internal_link ( TUCS &s ) ;
     virtual bool parse_external_link ( TUCS &s ) ;
+    virtual bool parse_variables ( TUCS &s ) ;
     virtual void parse_links ( TUCS &s ) ;
     virtual void parse_hr ( TUCS &s ) ;
     virtual TUCS get_bullet_tag ( uint c ) ;
@@ -26,6 +27,7 @@ class TParser
     virtual void store_nowiki ( TUCS &s ) ;
     virtual void recall_nowiki ( TUCS &s ) ;
     virtual void replace_variables ( TUCS &s ) ;
+    virtual void parse_table_markup ( VTUCS &vs ) ;
     
     // Variables
     TUCS bullets ;

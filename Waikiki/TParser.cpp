@@ -8,11 +8,15 @@ void TParser::parse_heading ( TUCS &s )
     for ( a = 0 ; a < s.length() && s[a] == '=' && s[s.length()-a-1] == '=' ; a++ ) ;
     s = s.substr ( a , s.length() - a*2 ) ;
     s.trim() ;
-    if ( USER->wantsTOC() )
+    if ( USER->wantsTOC() && !notoc )
         {
         if ( first_header == 0 ) first_header = cur_line + 1 ;
-        toc.push_back ( TUCS::fromint ( a ) + s ) ;
-        s = "<a name='" + s + "'>" + s + "</a>" ;
+        TUCS s2 = s ;
+        s2.replace ( "[[" , "" ) ;
+        s2.replace ( "]]" , "" ) ;
+        s2.replace ( "_" , " " ) ;
+        toc.push_back ( TUCS::fromint ( a ) + s2 ) ;
+        s = "<a name='" + s2 + "'>" + s + "</a>" ;
         }
     TUCS t = "H" + TUCS::fromint ( a ) ;
     s = "<" + t + ">" + s + "</" + t + ">" ;
@@ -25,7 +29,7 @@ bool TParser::parse_external_link ( TUCS &s )
         {
         if ( s[a] == '[' )
            {
-           if ( s[a+4] == ':' || s[a+5] == ':' )
+           if ( s[a+4] == ':' || s[a+5] == ':' || s[a+7] == ':' )
               {
               c = 0 ;
               for ( b = a ; b < s.length() && ( s[b] != ']' && s[a] != '\n' ) ; b++ )
@@ -37,7 +41,6 @@ bool TParser::parse_external_link ( TUCS &s )
                  if ( c == 0 )
                     {
                     text = "[" + TUCS::fromint ( external_link_counter++ ) + "]" ;
-//                    text = s.substr ( a+1 , b-a-1 ) ;
                     c = b ;
                     }
                  else text = s.substr ( c+1 , b - c - 1 ) ;
@@ -48,6 +51,51 @@ bool TParser::parse_external_link ( TUCS &s )
               }
            }
         }
+    return true ; // Why?
+    }
+    
+bool TParser::parse_variables ( TUCS &s )
+    {
+    uint a , b , c ;
+    for ( a = 0 ; a + 2 < s.length() ; a++ )
+        {
+        if ( s[a] == '{' && s[a+1] == '{' )
+           {
+           for ( b = a ; b+1 < s.length() && ( ( s[b] != '}' || s[b+1] != '}' ) && s[a] != '\n' ) ; b++ ) ;
+           if ( b+1 < s.length() && s[b] == '}' && s[b+1] == '}' )
+              {
+              TUCS t = s.substr ( a+2 , b-a+1-3 ) ;
+              TUCS ns ;
+              VTUCS vs ;
+              t.explode ( ":" , vs ) ;
+              if ( vs.size() == 1 ) t = vs[0] ;
+              else
+                 {
+                 ns = vs[0] ;
+                 t = vs[1] ;
+                 }
+
+              ns.toupper () ;
+              if ( ns == "MSG" )
+                 {
+                 TArticle ar ;
+                 TUCS v = "MediaWiki:" ;
+                 v += t ;
+                 TTitle tt ( v ) ;
+                 if ( DB->doesArticleExist ( tt ) )
+                    {
+                    DB->getArticle ( tt , ar ) ;
+                    t = ar.getSource() ;
+                    t.trim () ;
+                    }
+                 else t = "{{" + ns + ":" + t + "}}" ;
+                 }
+
+              s.modify ( a , b-a+2 , t ) ;
+              }
+           }
+        }
+    return true ; // Why?
     }
     
 bool TParser::parse_internal_link ( TUCS &s )
@@ -69,6 +117,9 @@ bool TParser::parse_internal_link ( TUCS &s )
         text = link ;
         }
         
+    link.replace ( "_" , " " ) ;
+    while ( link.replace ( "  " , " " ) ) ;
+        
     // Trail
     b += 2 ;
     c = b ;
@@ -89,6 +140,12 @@ bool TParser::parse_internal_link ( TUCS &s )
         {
         MD5 md ;
         TUCS tt = t.getJustTitle() ;
+        
+        VTUCS vip ;
+        text.explode ( "|" , vip ) ;
+        text = vip[vip.size()-1] ;
+        vip.pop_back () ;
+        
         md.update ( (unsigned char*) tt.getstring().c_str() , tt.length() ) ;
         md.finalize() ;
         string hex = md.hex_digest() ;
@@ -232,6 +289,7 @@ void TParser::parse_line ( TUCS &s )
         }
     lastWasBlank = false ;
     
+//    parse_variables ( s ) ;
     if ( s[0] == '=' ) parse_heading ( s ) ;
     if ( s.substr ( 0 , 4 ) == "----" ) parse_hr ( s ) ;
     if ( s[0] == ' ' )
@@ -261,6 +319,19 @@ void TParser::parse_line ( TUCS &s )
     
 void TParser::remove_evil_HTML ( TUCS &s )
     {
+    uint a , b ;
+    for ( a = 0 ; a+4 < s.length() ; a++ )
+        {
+        if ( s.substr ( a , 4 ) == "<!--" )
+           {
+           for ( b = a ; b+4 < s.length() && s.substr ( b , 3 ) != "-->" ; b++ ) ;
+           if ( b+4 < s.length() )
+              {
+              s.modify ( a , b - a + 3 , "" ) ;
+              a-- ;
+              }
+           }
+        }
     }
     
 void TParser::replace_variables ( TUCS &s )
@@ -334,9 +405,11 @@ void TParser::insertTOC ( VTUCS &vs )
         TUCS s = toc[a] , out ;
         level = s[0] - '1' ;
         s = s.substr ( 1 ) ;
+        if ( level > 9 ) continue ;
+
         cnt[level]++ ;
         for ( b = 1 ; b < level ; b++ )
-           if ( cnt[b] == 0 ) cnt[b] = 1 ;
+           if ( b >= 0 && b < 10 && cnt[b] == 0 ) cnt[b] = 1 ;
         for ( b = level + 1 ; b < 10 ; b++ ) cnt[b] = 0 ;
         for ( b = 1 ; b <= level ; b++ )
            {
@@ -344,7 +417,6 @@ void TParser::insertTOC ( VTUCS &vs )
            out += TUCS::fromint ( cnt[b] ) ;
            }
         out += " " + s ;
-        s.replace ( " " , "_" ) ;
         s.replace ( "'" , "\\'" ) ;
         out = "<a class='internal' href='#" + s + "'>" + out + "</a><br>" ;
         out = "<div style='margin-bottom:0px;'>" + out + "</div>\n" ;
@@ -368,6 +440,102 @@ void TParser::insertTOC ( VTUCS &vs )
     vs.insert ( vs.begin() + first_header - 1 , thetoc ) ;
     }
 
+void TParser::parse_table_markup ( VTUCS &vs )
+    {
+    uint a , tcnt = 0 ;
+    TUCS t ;
+    vector <bool> td , tr ; // Is TD / TR open?
+    VTUCS last_tab ;
+    for ( a = 0 ; a < vs.size() ; a++ )
+        {
+        if ( vs[a].substr ( 0 , 2 ) == "{|" )
+           {
+           tcnt++ ;
+           t = "<table" ;
+           t += vs[a].substr ( 2 ) ;
+           t += ">" ;
+           vs[a] = t ;
+           while ( td.size() < tcnt+1 ) td.push_back ( false ) ;
+           while ( tr.size() < tcnt+1 ) tr.push_back ( false ) ;
+           while ( last_tab.size() < tcnt+1 ) last_tab.push_back ( "" ) ;
+           tr[tcnt] = false ;
+           td[tcnt] = false ;
+           last_tab[tcnt] = "ERROR" ;
+           }
+        else if ( tcnt > 0 && vs[a].substr ( 0 , 2 ) == "|}" )
+           {
+           t = "" ;
+           if ( td[tcnt] ) t += "</td>" ;
+           if ( tr[tcnt] ) t += "</tr>" ;
+           t += "</table>" ;
+           t += vs[a].substr ( 2 ) ;
+           tcnt-- ;
+           vs[a] = t ;
+           }
+        else if ( tcnt > 0 && ( vs[a].substr ( 0 , 2 ) == "|-" || vs[a].substr ( 0 , 2 ) == "|+" ) )
+           {
+           uint ch = vs[a][1] ;
+           t = "" ;
+           if ( td[tcnt] ) t += "</td>" ;
+           if ( tr[tcnt] ) t += "</tr>" ;
+           if ( ch == '-' ) t += "<tr" ;
+           else t += "<caption>" ;
+           TUCS u = vs[a].substr ( 2 ) ;
+           while ( u != "" && u[0] == '-' && ch == '-' ) u = u.substr ( 1 ) ;
+           u.trim () ;
+           if ( u != "" ) t += " " ;
+           t += u ;
+           if ( ch == '-' )
+              {
+              t += ">" ;
+              tr[tcnt] = true ;
+              }
+           else t += "</caption>" ;
+           td[tcnt] = false ;
+           vs[a] = t ;
+           }
+        else if ( tcnt > 0 && ( vs[a][0] == '|' || vs[a][0] == '!' ) )
+           {
+           VTUCS vt , vu ;
+           TUCS tab = "td" ;
+           if ( vs[a][0] == '!' ) tab = "th" ;
+           vs[a].explode ( "||" , vt ) ;
+           uint b ;
+           t = "" ;
+           if ( !tr[tcnt] ) t += "<tr>" ;
+           FOREACH ( vt , b )
+              {
+              if ( td[tcnt] )
+                 {
+                 t += "</" ;
+                 t += last_tab[tcnt] ;
+                 t += ">" ;
+                 }
+              td[tcnt] = true ;
+              last_tab[tcnt] = tab ;
+              t += "<" ;
+              t += tab ;
+              
+              uint c ;
+              vt[b] = vt[b].substr ( 1 ) ;
+              for ( c = 0 ; c < vt[b].length() && vt[b][c] != '|' ; c++ ) ;
+              if ( c < vt[b].length() )
+                 {
+                 t += " " ;
+                 TUCS u = vt[b].substr ( 0 , c ) ;
+                 u.trim () ;
+                 t += u ;
+                 vt[b] = vt[b].substr ( c + 1 ) ;
+                 }
+              t += ">" ;
+              t += vt[b] ;
+              }
+           tr[tcnt] = true ;
+           vs[a] = t ;
+           }
+        }
+    }
+
 TUCS TParser::parse ( TUCS &source )
     {
     TUCS r ;
@@ -384,10 +552,15 @@ TUCS TParser::parse ( TUCS &source )
     first_header = 0 ;
 
     store_nowiki ( source ) ;
+    replace_variables ( source ) ;
+    parse_variables ( source ) ;
+
     if ( source.replace ( "__NOTOC__" , "" ) > 0 ) notoc = true ;
     else notoc = false ;
+    
+    source.replace ( "__NOEDITSECTION__" , "" ) ; // Not supported anyway
+    
     remove_evil_HTML ( source ) ;
-    replace_variables ( source ) ;
     source.explode ( "\n" , vs ) ;
     
     FOREACH ( vs , cur_line )
@@ -402,6 +575,8 @@ TUCS TParser::parse ( TUCS &source )
            a-- ;
            }
         }
+        
+    parse_table_markup ( vs ) ;
         
     r.implode ( "\n" , vs ) ;
 

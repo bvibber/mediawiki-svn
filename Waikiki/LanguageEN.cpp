@@ -17,6 +17,8 @@ void TLanguage::initEN ()
   tg[cnt].addTrans ( "5" , "Wikipedia_talk" ) ;
   tg[cnt].addTrans ( "6" , "Image" ) ;
   tg[cnt].addTrans ( "7" , "Image_talk" ) ;
+  tg[cnt].setTrans ( "8" , "MediaWiki" ) ;
+  tg[cnt].setTrans ( "9" , "MediaWiki_talk" ) ;
   cnt++ ;
   tg.push_back ( TLangGroup () ) ;
   tg[cnt].name = "DefaultUserOptions" ;

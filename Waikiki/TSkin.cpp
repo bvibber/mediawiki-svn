@@ -197,8 +197,13 @@ TUCS TSkin::getTopBar()
     // Language links
     r += "<tr>" ;
     r += "<td colspan=2>" ;
-    if ( !ll.empty() ) r += LNG("otherlanguages") + ": " ;
-    r += ll ;
+    if ( !ll.empty() )
+        {
+        r += "<font size='-2'>" ;
+        r += LNG("otherlanguages") + ": " ;
+        r += ll ;
+        r += "</font>" ;
+        }
     r += "</td>" ;
     r += "</tr>" ;
 //    r += "</tbody>" ;
@@ -211,7 +216,7 @@ TUCS TSkin::getSideBar()
     {
     TUCS r ;
     r += "<div id='quickbar'>\n" ;
-    r += getImageLink ( TTitle ( "Main Page" ) , LANG->getData("stylepath") + "/wiki.png" ) ;
+    r += getImageLink ( TTitle ( LNG("mainpage") ) , LANG->getData("stylepath") + "/wiki.png" ) ;
     r += "<hr class='sep'>\n" ;
     r += getInternalLink ( TTitle ( LNG("mainpage") ) ) ;
     r += "<br>\n" + getSpecialLink ( "recentchanges" ) ;

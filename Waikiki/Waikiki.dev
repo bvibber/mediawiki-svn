@@ -15,7 +15,7 @@ CppCompiler=
 Linker=sqlite.dll_@@_
 IsCpp=1
 Icon=
-ExeOutput=..\..\..\..\burn\Magnus\tinyweb\www\cgi-bin
+ExeOutput=wpol_de\cgi-bin
 ObjectOutput=
 OverrideOutput=0
 OverrideOutputName=Waikiki.exe
@@ -25,7 +25,9 @@ CommandLine=
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=001000000000000000
+CompilerSettings=0010000000000000000000
+UseCustomMakefile=0
+CustomMakefile=
 
 [Unit1]
 FileName=main.cpp

@@ -129,11 +129,28 @@ void TWikiInterface::run (int argc, char *argv[])
         VTUCS v ;
         s.explode ( "=" , v ) ;
         TUCS key = v[0] ;
+        
         v.erase ( v.begin() , v.begin()+1 ) ;
         s.implode ( "=" , v ) ;
+
+        // Drag'n'drop of sql database?
+           {
+           VTUCS v2 ;
+           key.explode ( "." , v2 ) ;
+           TUCS end = v2[v2.size()-1] ;
+           end.toupper () ;
+           if ( end == "SQL" )
+              {
+              s = key ;
+              key = "MYSQL2SQLITE" ;
+              }
+           }
+           
         s.trim() ;
         key.toupper () ;
         key.replace ( "-" , "" ) ;
+        
+        
         if ( key == "SOURCEFILE" )
            {
            sourcefile = s.getstring() ;

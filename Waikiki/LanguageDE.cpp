@@ -15,6 +15,8 @@ void TLanguage::initDE ()
   tg[cnt].setTrans ( "5" , "Wikipedia_Diskussion" ) ;
   tg[cnt].setTrans ( "6" , "Bild" ) ;
   tg[cnt].setTrans ( "7" , "Bild_Diskussion" ) ;
+  tg[cnt].setTrans ( "8" , "MediaWiki" ) ;
+  tg[cnt].setTrans ( "9" , "MediaWiki_Diskussion" ) ;
   cnt = getGroup ( "DefaultUserOptions" ) ;
   tg[cnt].setTrans ( "quickbar" , "" ) ;
   tg[cnt].setTrans ( "underline" , "" ) ;

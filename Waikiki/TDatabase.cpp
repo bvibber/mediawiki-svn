@@ -589,7 +589,6 @@ void TDatabaseSqlite::storeArticle ( TArticle &art , bool makeOldVersion )
     TUCS source = art.getSource() ;
     source.replace ( "\\" , "\\\\" ) ;
     source.replace ( "\n" , "\\n" ) ;
-    addKeyValue ( s1 , s2 , "cur_text" , source ) ;
     addKeyValue ( s1 , s2 , "cur_title" , tt.getDBkey() ) ;
     addKeyValue ( s1 , s2 , "cur_namespace" , TUCS::fromint ( art.id ) ) ;
     if ( doesArticleExist ( tt ) )
@@ -602,15 +601,23 @@ void TDatabaseSqlite::storeArticle ( TArticle &art , bool makeOldVersion )
         sql += "' AND cur_namespace=" ;
         sql += TUCS::fromint ( tt.getNamespaceID() ) ;
         query ( sql ) ;
-//        cout << sql.getstring() << "<br>\n" << endl ;
         addKeyValue ( s1 , s2 , "cur_id" , TUCS::fromint ( art.id ) ) ;
         }
     else
         {
         addKeyValue ( s1 , s2 , "cur_id" , "NULL" ) ;
         }
+
+//    addKeyValue ( s1 , s2 , "cur_text" , source ) ;
+    addKeyValue ( s1 , s2 , "cur_text" , "%q" ) ;
+    
     sql = "INSERT INTO cur (" + s1 + ") VALUES (" + s2 + ")" ;
-//    cout << sql.getstring() << endl ;
+    string sql2 = sql.getstring() ;
+    char *x = sqlite_mprintf ( sql2.c_str() , source.getstring().c_str() ) ;
+    sql = x ;
+    sqlite_freemem ( x ) ;
+    
+
     query ( sql ) ;
     }
 
