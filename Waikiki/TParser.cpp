@@ -69,7 +69,8 @@ bool TParser::parse_external_link ( TUCS &s )
                  TUCS text , link ;
                  if ( c == 0 )
                     {
-                    text = s.substr ( a+1 , b-a-1 ) ;
+                    text = "[" + TUCS::fromint ( external_link_counter++ ) + "]" ;
+//                    text = s.substr ( a+1 , b-a-1 ) ;
                     c = b ;
                     }
                  else text = s.substr ( c+1 , b - c - 1 ) ;
@@ -125,16 +126,19 @@ bool TParser::parse_internal_link ( TUCS &s )
         md.finalize() ;
         string hex = md.hex_digest() ;
 
-        TUCS x = "<img border=0 src=\"http://" + LANG->lid ;
-        x += ".wikipedia.org/upload/" ;
-        x += hex[0] ;
-        x += "/" ;
-        x += hex[0] ;
-        x += hex[1] ;
-        x += "/" + tt ;
-        x += "\" alt=\"" + text + "\">" ;
+        if ( LANG->getData ( "USEONLINEIMAGES" ) == "YES" )
+           {
+           TUCS x = "<img border=0 src=\"http://" + LANG->lid ;
+           x += ".wikipedia.org/upload/" ;
+           x += hex[0] ;
+           x += "/" ;
+           x += hex[0] ;
+           x += hex[1] ;
+           x += "/" + tt ;
+           text = x + "\" title=\"" + text + "\">" ;
+           }
         
-        s = SKIN->getArticleLink ( t , x ) + s.substr ( c ) ;
+        s = SKIN->getArticleLink ( t , text ) + s.substr ( c ) ;
         }
     else s = SKIN->getArticleLink ( t , text ) + s.substr ( c ) ;
     
@@ -345,6 +349,7 @@ TUCS TParser::parse ( TUCS &source )
     hasVariables = false ;
     lastWasPre = false ;
     lastWasBlank = false ;
+    external_link_counter = 1 ;
 
     store_nowiki ( source ) ;
     if ( source.replace ( "__NOTOC__" , "" ) > 0 ) notoc = true ;

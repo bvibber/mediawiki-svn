@@ -151,6 +151,12 @@ void TWikiInterface::run (int argc, char *argv[])
               forcetitle.implode ( "." , v ) ;
               }
            }
+        else if ( key == "USEONLINEIMAGES" )
+           {
+           s.toupper () ;
+           s.trim() ;
+           LANG->setData ( "USEONLINEIMAGES" , s ) ;
+           }
         else if ( key == "SEARCH" )
            {
            forcetitle = s ;

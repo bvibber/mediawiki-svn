@@ -33,6 +33,7 @@ class TParser
     VTUCS nowikiitems ;
     bool notoc , hasVariables ;
     bool lastWasPre , lastWasBlank ;
+    int external_link_counter ;
     } ;
 
 #endif
