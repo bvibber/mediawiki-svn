@@ -6,7 +6,7 @@
 # Language class has internationalized names
 #
 /* private */ $wgValidSkinNames = array(
-	"Standard", "Nostalgia", "CologneBlue", "Framed"
+	"Standard", "Nostalgia", "CologneBlue"
 );
 
 class Skin {
@@ -23,11 +23,10 @@ class Skin {
 		return $wgValidSkinNames;
 	}
 
-	function getStylesheet() { return "wikistandard.css"; }
-	function getHeadScripts() { return ""; }
-	function useBodyTag() { return true; }
-	function getBaseTag() { return ""; }
-	function transformContent( $s ) { return $s; }
+	function getStylesheet()
+	{
+		return "wikistandard.css";
+	}
 
 	function qbSetting()
 	{
@@ -46,6 +45,11 @@ class Skin {
 		if ( $wgOut->isPrintable() ) { $ss = "wikiprintable.css"; }
 		else { $ss = $this->getStylesheet(); }
 		$wgOut->addLink( "stylesheet", "", "{$wgStyleSheetPath}/{$ss}" );
+	}
+
+	function getHeadScripts()
+	{
+		return "";
 	}
 
 	function getUserStyles()
@@ -376,26 +380,10 @@ class Skin {
 
 		$mp = wfMsg( "mainpage" );
 		$s = "\n<div id='quickbar'>";
-
-		$s .= $this->qbLogo();
-		$s .= $this->qbLinks();
-
-		$s .= "\n</div>\n";
-		return $s;
-	}
-		
-	function qbLogo()
-	{
-		$s = "\n" . $this->logoText() . "\n<hr>";
-		return $s;
-	}
-
-	function qbLinks()
-	{
-		global $wgOut, $wgTitle, $wgUser;
+		$s .= "\n" . $this->logoText() . "\n<hr>";
 
 		$sep = "\n<br>";
-		$s = $this->mainPageLink()
+		$s .= $this->mainPageLink()
 		  . $sep . $this->specialLink( "recentchanges" )
 		  . $sep . $this->specialLink( "randompage" ) 
 		  . $sep . $this->specialLink( "watchlist" )
@@ -427,6 +415,7 @@ class Skin {
 		  . $sep . $this->bugReportsLink()
 		  . $sep . $this->specialLink( "specialpages" );
 
+		$s .= "\n</div>\n";
 		return $s;
 	}
 
@@ -582,15 +571,6 @@ class Skin {
 
 		$s = $this->makeKnownLink( "Special:Whatlinkshere",
 		  wfMsg( "whatlinkshere" ), "target=" . $wgTitle->getPrefixedURL() );
-		return $s;
-	}
-
-	function moveThisPage()
-	{
-		global $wgTitle;
-
-		$s = $this->makeKnownLink( "Special:Movepage",
-		  wfMsg( "movepage" ), "target=" . $wgTitle->getPrefixedURL() );
 		return $s;
 	}
 
@@ -1021,6 +1001,5 @@ class Skin {
 include_once( "SkinStandard.php" );
 include_once( "SkinNostalgia.php" );
 include_once( "SkinCologneBlue.php" );
-include_once( "SkinFramed.php" );
 
 ?>
