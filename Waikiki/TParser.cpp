@@ -616,7 +616,7 @@ TUCS TParser::parse ( TUCS &source )
     
     remove_evil_HTML ( source ) ;
     source.explode ( "\n" , vs ) ;
-    
+
     FOREACH ( vs , cur_line )
         parse_line ( vs[cur_line] ) ;
     insertTOC ( vs ) ;

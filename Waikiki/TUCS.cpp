@@ -260,7 +260,8 @@ uint TUCS::find ( TUCS what , uint start )
 
 void TUCS::modify ( uint from , uint len , TUCS repl )
     {
-    if ( from + len > length() ) return ; // Failed
+//    if ( from + len > length() ) return ; // Failed
+    while ( from + len >= length() ) len-- ;
     v.erase ( v.begin() + from , v.begin() + from + len ) ;
     v.insert ( v.begin() + from , repl.v.begin() , repl.v.end()-1 ) ;
     }
