@@ -5,6 +5,90 @@ class SearchEngine {
 	/* private */ var $mUsertext, $mSearchterms;
 	/* private */ var $mTitlecond, $mTextcond;
 
+        var $doSearchRedirects = true ;
+        var $na = array ( 0 ) ;
+        var $add2links = array () ;
+        var $alternateTitle ;
+        function queryNamespaces ()
+                {
+                return "cur_namespace=".implode ( " OR cur_namespace=" , $this->na ) ;
+                }
+        function searchRedirects ()
+                {
+                if ( $this->doSearchRedirects ) return "" ;
+                return "AND cur_is_redirect=0 " ;
+                }
+        function powersearch ()
+                {
+                global $wgUser, $wgOut, $wgLang, $wgTitle;
+                global $search, $wgNs, $wgLR , $wpSearch ;
+
+                $r = wfMsg("powersearchtext") ;
+
+                # Namespaces
+                $ns = $wgLang->getNamespaces() ;
+                $ns2 = $ns ;
+                array_shift ( $ns2 ) ;
+                $a = 0 ;
+                $na = array () ;
+                if ( !isset ( $wgNs ) ) $wgNs = array () ;
+                if ( !isset ( $wpSearch ) )
+                        {
+                        $wgNs[0] = 1 ;
+                        $wgLR = 1 ;
+                        }
+                foreach ( $ns2 AS $x )
+                        {
+                        if ( $a > 0 ) $r1 .= " " ;
+                        $v = $wgNs[$a] ;
+                        if ( $v )
+                                {
+                                $this->add2links["wgNs[$a]"] = 1 ;
+                                $v = " checked" ;
+                                $na[] = $a ;
+                                }
+                        $n = "wgNs[$a]" ;
+                        $x = str_replace ( "_" , " " , $x ) ;
+                        if ( $x == "" ) $x = ":" ;
+                        $r1 .= "<input type=checkbox value=1 name='{$n}'{$v}>$x\n" ;
+                        $a++ ;
+                        }
+
+                # List Redirects
+                $v = "" ;
+                if ( $wgLR )
+                        {
+                        $this->add2links["wgLR"] = 1 ;
+                        $v = " checked" ;
+                        }
+                $r2 = "<input type=checkbox value=1 name='wgLR'{$v}>\n" ;
+
+                # Search field
+                $r3 = "<input type=text name=search value='{$search}' width=80>\n" ;
+
+                # The search button
+                $r9 = "<input type=submit name='wpSearch' value='".wfMsg("powersearch")."'>\n" ;
+
+                $r = str_replace ( "$1" , $r1 , $r ) ;
+                $r = str_replace ( "$2" , $r2 , $r ) ;
+                $r = str_replace ( "$3" , $r3 , $r ) ;
+                $r = str_replace ( "$9" , $r9 , $r ) ;
+
+                $r = "<table width=100% border=1 cellspacing=0 cellpadding=2 bgcolor=#DDEEFF>".
+                        "<tr><td>\n{$r}\n</td></tr></table>\n" ;
+                $r = "<FORM method=post>\n{$r}</FORM>\n" ;
+
+                if ( isset ( $wpSearch ) )
+                        {
+                        if ( count ( $na ) == 0 ) $na[] = 0 ;
+                        $this->na = $na ;
+                        if ( !$wgLR ) $this->doSearchRedirects = false ;
+                        }
+
+                return "\n<br><br>\n{$r}\n" ;
+                }
+
+
 	function SearchEngine( $text )
 	{
 		# We display the query, so let's strip it for safety
@@ -19,6 +103,8 @@ class SearchEngine {
 		global $wgUser, $wgTitle, $wgOut, $wgLang;
 		global $offset, $limit;
 		$fname = "SearchEngine::showResults";
+
+                $powersearch = $this->powersearch() ;
 
 		$wgOut->setPageTitle( wfMsg( "searchresults" ) );
 		$q = str_replace( "$1", $this->mUsertext,
@@ -45,23 +131,30 @@ class SearchEngine {
 		}
 		if ( ! $offset ) { $offset = 0; }
 
+                $searchnamespaces = $this->queryNamespaces () ;
 		$sql = "SELECT cur_id,cur_namespace,cur_title," .
 		  "cur_text FROM cur " .
-		  "WHERE {$this->mTitlecond} AND (cur_namespace=0) " .
+		  "WHERE {$this->mTitlecond} AND ({$searchnamespaces}) " .
 		  "LIMIT {$offset}, {$limit}";
 		$res1 = wfQuery( $sql, $fname );
 
 		$sql = "SELECT cur_id,cur_namespace,cur_title," .
 		  "cur_text FROM cur " .
-		  "WHERE {$this->mTextcond} AND (cur_namespace=0) " .
+		  "WHERE {$this->mTextcond} AND ({$searchnamespaces}) " .
 		  "LIMIT {$offset}, {$limit}";
 		$res2 = wfQuery( $sql, $fname );
 
 		$top = SearchEngine::showingResults( $offset, $limit );
 		$wgOut->addHTML( "<p>{$top}\n" );
 
+		# For powersearch
+                $a2l = "" ;
+                $akk = array_keys ( $this->add2links ) ;
+                foreach ( $akk AS $ak )
+                        $a2l .= "&{$ak}={$this->add2links[$ak]}" ;
+
 		$sl = SearchEngine::viewPrevNext( $offset, $limit, "",
-		  "search=" . wfUrlencode( $this->mUsertext ) );
+		  "search=" . wfUrlencode( $this->mUsertext ) . $a2l );
 		$wgOut->addHTML( "<br>{$sl}\n" );
 
 		$foundsome = false;
@@ -95,6 +188,7 @@ class SearchEngine {
 			$wgOut->addHTML( "<p>" . wfMsg( "nonefound" ) . "\n" );
 		}
 		$wgOut->addHTML( "<p>{$sl}\n" );
+                $wgOut->addHTML( $powersearch );
 	}
 
 	function legalSearchChars()
