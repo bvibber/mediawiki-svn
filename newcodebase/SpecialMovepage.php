@@ -4,7 +4,7 @@ function wfSpecialMovepage()
 {
 	global $wgUser, $wgOut, $action, $target;
 
-	if ( 0 == $wgUser->getID() ) {
+	if ( 0 == $wgUser->getID() or $wgUser->isBlocked() ) {
 		$wgOut->errorpage( "movenologin", "movenologintext" );
 		return;
 	}
