@@ -349,13 +349,12 @@ class User {
 		# Pages and their talk pages are considered equivalent for watching;
 		# remember that talk namespaces are numbered as page namespace+1.
 		if( $this->mId ) {
-			$sql = "SELECT COUNT(wl_user) AS count FROM watchlist
+			$sql = "SELECT 1 FROM watchlist
 			  WHERE wl_user={$this->mId} AND
-			  wl_namespace = " . ($title->getNamespace() & 0xffff) . " AND
+			  wl_namespace = " . ($title->getNamespace() & ~1) . " AND
 			  wl_title='" . wfStrencode( $title->getDBkey() ) . "'";
 			$res = wfQuery( $sql );
-			$s = wfFetchObject( $res );
-			return ( $s->count > 0 );
+			return (wfNumRows( $res ) > 0);
 		} else {
 			return false;
 		}
