@@ -594,6 +594,16 @@ $wpTextbox2
 			$deleted = $image;
 		} else if ( $oldimage ) {
 			$deleted = $oldimage;
+			$name = substr( $oldimage, 15 );
+			$archive = wfImageArchiveDir( $name );
+			if ( ! unlink( "{$archive}/{$oldimage}" ) ) {
+				$wgOut->fileDeleteError( "{$archive}/{$oldimage}" );
+				return;
+			}
+			$conn = wfGetDB();
+			$sql = "DELETE FROM oldimage WHERE oi_archive_name='" .
+			  wfStrencode( $oldimage ) . "'";
+			wfQuery( $sql, $conn );
 		} else {
 			$deleted = $wgTitle->getPrefixedText();
 		}
