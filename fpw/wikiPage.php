@@ -24,6 +24,7 @@ class WikiPage extends WikiTitle {
 		$this->knownUnlinkedLinks = array () ;
 		$this->SetTitle ( $t ) ;
 		$this->isSpecialPage = false ;
+		$this->canBeCached = true ;
 		$this->revision = "current" ;
 		if ( $this->namespace == "special" ) { # Special page, calling appropriate function
 			$allowed = $wikiAllowedSpecialPages ; # List of allowed special pages
@@ -40,6 +41,7 @@ class WikiPage extends WikiTitle {
 #			include_once ( "./specialPages.php") ;
 			$this->contents = $call () ;
 			$this->isSpecialPage = true ;
+			$this->canBeCached = false ;
 			return ; # contents of special page is returned here!!!
 			}
 
@@ -464,8 +466,8 @@ class WikiPage extends WikiTitle {
 			}
 */
 
-		if ( $countvars == substr_count ( "{{" , $s ) ) $this->canBeCached = true ;
-		else $this->canBeCached = false ;
+		if ( $countvars != substr_count ( "{{" , $s ) )
+			$this->canBeCached = false ;
 
 		return $s ;
 		}
@@ -1062,13 +1064,14 @@ class WikiPage extends WikiTitle {
 		global $pageTitle , $diff , $wikiArticleSource , $wikiCurrentServer , $wikiPrintLinksMarkup , $useCachedPages ;
 		$pageTitle = $this->title ;
 		if ( isset ( $diff ) ) {
+			$this->canBeCached = false; # A little crude, but effective
 			$middle = $this->doDiff().$this->contents ;
-			$useCachedPages = false; # A little crude, but effective
 			}
 		else $middle = $this->contents ;
-		if ( $useCachedPages and !$this->isSpecialPage) {
+		if ( $useCachedPages and !$this->isSpecialPage and $this->canBeCached) {
 			if ( $this->cache != "" ) { # Using cache
 				$middle = $this->cache ;
+				#$middle = "<p>(cached)</p>" . $this->cache ; #FIXME
 			} else {
 				$middle = $this->parseContents($middle) ;
 				if ( $this->canBeCached ) { # Generating cache
