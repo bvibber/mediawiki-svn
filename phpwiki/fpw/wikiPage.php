@@ -264,8 +264,10 @@ class WikiPage extends WikiTitle {
             $linkTitle->title = $linked_link ;
             $linkTitle->makeSecureTitle () ;
             $secureLinkTitle = $linkTitle->secureTitle ;
-            $sql = "INSERT INTO linked (linked_from, linked_to) VALUES ( \"$this->secureTitle\" , \"$secureLinkTitle\" ) ;" ;
-            $r = mysql_query ( $sql , $connection ) ;
+            if ( $secureLinkTitle ) {
+                $sql = "INSERT INTO linked (linked_from, linked_to) VALUES ( \"$this->secureTitle\" , \"$secureLinkTitle\" ) ;" ;
+                $r = mysql_query ( $sql , $connection ) ;
+            }
         }
 
         $ull = implode ( "\n" , array_keys ( $unlinkedLinks ) ) ;
@@ -278,8 +280,10 @@ class WikiPage extends WikiTitle {
             $linkTitle->title = $unlinked_link ;
             $linkTitle->makeSecureTitle () ;
             $secureLinkTitle = $linkTitle->secureTitle ;
-            $sql = "INSERT INTO unlinked (unlinked_from, unlinked_to) VALUES ( \"$this->secureTitle\" , \"$secureLinkTitle\" ) ;" ;
-            $r = mysql_query ( $sql , $connection ) ;
+            if ( secureLinkTitle ) {
+                $sql = "INSERT INTO unlinked (unlinked_from, unlinked_to) VALUES ( \"$this->secureTitle\" , \"$secureLinkTitle\" ) ;" ;
+                $r = mysql_query ( $sql , $connection ) ;
+            }
         }
         
         $pa = implode ( "\n" , $this->params ) ;
