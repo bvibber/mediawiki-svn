@@ -22,6 +22,7 @@ $wgDBserver         = "127.0.0.1";
 $wgDBname           = "wikidb";
 $wgDBuser           = "wikiuser";
 $wgDBpassword       = "userpwd";
+$wgDBminWordLen		= 4;
 
 # Creating the file below makes the DB read-only; do this
 # during database maintenance.
