@@ -678,7 +678,7 @@ enctype='application/x-www-form-urlencoded'>
 	function delete()
 	{
 		global $wgUser, $wgOut, $wgTitle;
-		global $wpConfirm, $image, $oldimage;
+		global $wpConfirm, $wpReason, $image, $oldimage;
 
 		if ( ( ! $oldimage ) && ( ! $wgUser->isSysop() ) ) {
 			$wgOut->sysopRequired();
@@ -711,10 +711,15 @@ enctype='application/x-www-form-urlencoded'>
 		$action = wfEscapeHTML( wfLocalUrl( $t, $q ) );
 		$confirm = wfMsg( "confirm" );
 		$check = wfMsg( "confirmcheck" );
+		$delcom = wfMsg( "deletecomment" );
 
 		$wgOut->addHTML( "
 <form method=post action=\"{$action}\">
-<table border=0><tr><td>
+<table border=0><tr><td align=right>
+{$delcom}:</td><td align=left>
+<input type=text size=20 name='wpReason' value=\"{$wpReason}\">
+</td></tr><tr><td>&nbsp;</td></tr>
+<tr><td align=right>
 <input type=checkbox name='wpConfirm' value='1'>
 </td><td>{$check}</td>
 </tr><tr><td>&nbsp;</td><td>
@@ -726,8 +731,8 @@ enctype='application/x-www-form-urlencoded'>
 
 	function doDelete()
 	{
-		global $wgOut, $wgTitle;
-		global $image, $oldimage;
+		global $wgOut, $wgTitle, $wgUser;
+		global $image, $oldimage, $wpReason;
 		$fname = "Article::doDelete";
 
 		if ( $image ) {
@@ -770,7 +775,13 @@ enctype='application/x-www-form-urlencoded'>
 		$wgOut->setPagetitle( wfMsg( "actioncomplete" ) );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 
+		$sk = $wgUser->getSkin();
+		$loglink = $sk->makeKnownLink( "Wikipedia:" . wfMsg( "dellogpage" ),
+		  wfMsg( "deletionlog" ) );
+
 		$text = str_replace( "$1" , $deleted, wfMsg( "deletedtext" ) );
+		$text = str_replace( "$2", $loglink, $text );
+
 		$wgOut->addHTML( "<p>" . $text );
 		$wgOut->returnToMain( false );
 	}
@@ -788,7 +799,7 @@ enctype='application/x-www-form-urlencoded'>
 
 	function doDeleteArticle( $title )
 	{
-		global $wgUser, $wgOut, $wgLang;
+		global $wgUser, $wgOut, $wgLang, $wpReason;
 
 		$fname = "Article::doDeleteArticle";
 		$ns = $title->getNamespace();
@@ -831,7 +842,7 @@ enctype='application/x-www-form-urlencoded'>
 			$sql = "DELETE FROM brokenlinks WHERE bl_from={$id}";
 			wfQuery( $sql, $fname );
 		}
-		$logpage = wfStrencode( wfMsg( "deletionlog" ) );
+		$logpage = wfStrencode( wfMsg( "dellogpage" ) );
 		$sql = "SELECT cur_id,cur_text FROM cur WHERE cur_namespace=" .
 		  Namespace::getIndex( "Wikipedia" ) . " AND cur_title='" .
 		  "{$logpage}'";
@@ -854,12 +865,15 @@ enctype='application/x-www-form-urlencoded'>
 
 		preg_match( "/^(.*?)<ul>(.*)$/sD", $text, $m );	
 		$da = str_replace( "$1", $art, wfMsg( "deletedarticle" ) );
+		if ( "" == $wpReason ) { $com = ""; }
+		else { $com = " <em>({$wpReason})</em>"; }
 
-		$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}</li>\n{$m[2]}";
+		$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}{$com}</li>\n{$m[2]}";
 
 		$sql = "UPDATE cur SET cur_timestamp='" . date( "YmdHis" ) .
-		  "', cur_user={$uid}, cur_user_text='" .wfStrencode( $ut ) .
-		  "', cur_text='" . wfStrencode( trim( $text ) ) . "' " .
+		  "', cur_user={$uid}, cur_user_text='" . wfStrencode( $ut ) .
+		  "', cur_text='" . wfStrencode( trim( $text ) ) . "', " .
+		  "cur_comment='" . wfStrencode( $wpReason ) . "' " .
 		  "WHERE cur_id={$id}";
 		wfQuery( $sql, $fname );
 	}
