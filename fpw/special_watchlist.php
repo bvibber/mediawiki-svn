@@ -60,7 +60,6 @@ function WatchList () {
 			$any = true ;
 			}
 		}
-	#mysql_close ( $connection ) ;
 	if ( $any ) $ret .= recentChangesLayout ( $arr ) ;
 
 	return $ret ;

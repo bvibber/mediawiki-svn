@@ -92,7 +92,6 @@ function statistics () {
 	$ret .= "<li>".str_replace ( "$1" , "$nf1$numEditors$nf2" , $wikiStatSysops )."</li>" ;
 	mysql_free_result ( $result ) ;
 
-	#mysql_close ( $connection ) ;
 	$ret .= "</ul>" ;
 	return $ret ;
 	}

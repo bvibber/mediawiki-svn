@@ -115,7 +115,6 @@ class WikiUser {
 					$this->isLoggedIn = true ;
 					}
 				mysql_free_result ( $result ) ;
-				#mysql_close ( $connection ) ;
 				}
 			}
 		$this->loadSettings () ;
@@ -218,12 +217,10 @@ class WikiUser {
 		$sql = "SELECT user_id FROM user WHERE user_name=\"$s\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		if ( $result == "" ) {
-			#mysql_close ( $connection ) ;
 			return false ;
 			}
 		$s = mysql_fetch_object ( $result ) ;
 		mysql_free_result ( $result ) ;
-		#mysql_close ( $connection ) ;
 		if ( $s == "" ) return false ;
 		return true ;
 		}
@@ -235,7 +232,6 @@ class WikiUser {
 		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "INSERT INTO user (user_name,user_password) VALUES (\"$this->name\",\"$this->password\")" ;
 		$result = mysql_query ( $sql , $connection ) ;
-		#mysql_close ( $connection ) ;
 		}
 
 	# Checks the login
@@ -251,7 +247,6 @@ class WikiUser {
 		if ( $result == "" ) return str_replace ( "$1" , $this->name , $wikiNoSuchUser ) ;
 		if ( $s = mysql_fetch_object ( $result ) ) {
 			mysql_free_result ( $result ) ;
-			#mysql_close ( $connection ) ;
 			if ( $s->user_password == $this->password ) {
 				$ret = str_replace ( "$1" , $this->name , $wikiYouAreLoggedIn ) ;
 				$this->id = $s->user_id ;
@@ -263,7 +258,6 @@ class WikiUser {
 			}
 		else {
 			mysql_free_result ( $result ) ;
-			#mysql_close ( $connection ) ;
 			$this->contents = str_replace ( "$1" , $this->name , $wikiUserError ) ;
 			}
 		

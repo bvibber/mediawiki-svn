@@ -23,7 +23,6 @@ function randompage () {
 	$ret = "<h2>--> [[$thelink|".$nt."]]...</h2>" ;
 	$headerScript .= "<nowiki><META HTTP-EQUIV=Refresh CONTENT=\"0; URL=".wikiLink(nurlencode($thelink))."\"></nowiki>" ;
 	mysql_free_result ( $result ) ;
-	#mysql_close ( $connection ) ;
 
 	return $ret ;
 	}

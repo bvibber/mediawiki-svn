@@ -29,7 +29,6 @@ function contributions () {
 		if ( !in_array ( $s->cur_title , $ac ) )
 			array_push ( $ac , $s->cur_title ) ;
 	mysql_free_result ( $result ) ;
-	#mysql_close ( $connection ) ;
 
 	if ( count ( $ac ) == 0 AND $theuser == ucfirst ( $theuser ) ) { # Rerun with lowercase name
 		$theuser = strtolower(substr($theuser,0,1)).substr($theuser,1) ;

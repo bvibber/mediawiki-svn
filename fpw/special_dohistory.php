@@ -42,7 +42,6 @@ function doHistory ( $title ) {
       $version++;
     }
 
-    #mysql_close ( $connection ) ;
 
     $t = recentChangesLayout ( $a ) ;
     $t = "<b>".str_replace(array("$1","$2"),array($url,$title),$wikiHistoryHeader)."</b>".$t ;

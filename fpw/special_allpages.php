@@ -16,7 +16,6 @@ function AllPages () {
 		$ret .= "<a  href=\"".wikiLink(nurlencode($s->cur_title))."\">".$vpage->getNiceTitle($s->cur_title)."</a><br>\n" ;
 	$ret .= "</nowiki>" ;
 	mysql_free_result ( $result ) ;
-	#mysql_close ( $connection ) ;
 	return $ret ;
 	}
 ?>

@@ -9,7 +9,6 @@ function popularpages () {
 	while ( $s = mysql_fetch_object ( $result ) )
 		array_push ( $a , $s ) ;
 	if ( $result != false ) mysql_free_result ( $result ) ;
-	#mysql_close ( $connection ) ;
 
 	$ret = "" ;
 	$ret .= "<table>\n" ;

@@ -4,7 +4,10 @@ function getDBconnection () {
 	$server = $wikiThisDBserver ;
 	$user = $wikiThisDBuser ;
 	$passwd = $wikiThisDBpassword ;
-	$connection=mysql_connect ( $server , $user , $passwd ) ;
+	# Using persistent connections, so that one apache process
+	# can reuse one database connection over and over.
+	# There is no need for mysql_close.
+	$connection=mysql_pconnect ( $server , $user , $passwd ) ;
 	return $connection ;
 	}
 
@@ -14,7 +17,6 @@ function setMySQL ( $table , $var , $value , $cond ) {
 	mysql_select_db ( $wikiSQLServer , $connection ) ;
 	$sql = "UPDATE $table SET $var = \"$value\" WHERE $cond" ;
 	$result = mysql_query ( $sql , $connection ) ;
-	#mysql_close ( $connection ) ;
 	}
 
 function getMySQL ( $table , $var , $cond ) {
@@ -24,13 +26,11 @@ function getMySQL ( $table , $var , $cond ) {
 	$sql = "SELECT $var FROM $table WHERE $cond" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	if ( $result == "" ) {
-		#mysql_close ( $connection ) ;
 		return "" ;
 		}
 	if ( $s = mysql_fetch_object ( $result ) ) {
 		$ret = $s->$var ;
 		mysql_free_result ( $result ) ;
-		#mysql_close ( $connection ) ;
 	} else $ret = "" ;
 	return $ret ;
 	}

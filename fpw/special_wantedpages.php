@@ -35,7 +35,6 @@ function refreshWantedPages () {
 			}
 		}
 	mysql_free_result ( $result ) ;
-	#mysql_close ( $connection ) ;
 
 	arsort ( $allPages ) ;
 	$somePages = array_slice ( $allPages , 0 , 400 ) ; # Reducing needed memory

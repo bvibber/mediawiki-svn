@@ -162,7 +162,6 @@ function recentchanges () {
       
     }
 
-    #mysql_close ( $connection ) ;
     $ret .= recentChangesLayout($arr) ;
     
     return $ret ;

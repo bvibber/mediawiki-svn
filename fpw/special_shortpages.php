@@ -85,7 +85,6 @@ function ShortPages () {
 	$after = $startat + $perpage ; $fin = $after+$perpage - 1 ; if ( $fin > $total ) $fin = $total ;
 	if ( $after-1 < $total ) $ret .= "<a href=\"".wikiLink("special:ShortPages&startat=$after&showLinksThere=$showLinksThere")."\">&gt;&gt;$after-$fin</a>" ;
 	$ret .= "</nowiki>" ;
-	#mysql_close ( $connection ) ;
 	return $ret ;
 	}
 ?>
