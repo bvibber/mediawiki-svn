@@ -2,9 +2,6 @@
 # Class representing a Wikipedia article and history.
 # See design.doc for an overview.
 
-# FIXME: move the scroller from searchengine to globals
-include_once( "SearchEngine.php" );
-
 class Article {
 	/* private */ var $mContent, $mContentLoaded;
 	/* private */ var $mUser, $mTimestamp, $mUserText;
@@ -526,7 +523,8 @@ class Article {
 enctype='application/x-www-form-urlencoded' name='editform'>
 <textarea tabindex=1 name='wpTextbox1' rows={$rows} cols={$cols}{$ew} wrap=virtual>" .
 $wgLang->recodeForEdit( $wpTextbox1 ) .
-"</textarea><br>
+"
+</textarea><br>
 {$summary}: <input tabindex=2 type=text value=\"{$wpSummary}\" name='wpSummary' maxlength=200 size=60><br>
 {$checkboxhtml}
 <input tabindex=5 type=submit value=\"{$save}\" name='wpSave'>
@@ -543,7 +541,8 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$wgOut->addHTML( "<h2>" . wfMsg( "yourtext" ) . "</h2>
 <textarea tabindex=6 name='wpTextbox2' rows={$rows} cols={$cols} wrap=virtual>"
 . $wgLang->recodeForEdit( $wpTextbox2 ) .
-"</textarea>" );
+"
+</textarea>" );
 		}
 		$wgOut->addHTML( "</form>\n" );
 		if($formtype =="preview" && !$wgUser->getOption("previewontop")) {
@@ -885,7 +884,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		}
 		
 		$sk = $wgUser->getSkin();
-		$numbar = SearchEngine::viewPrevNext(
+		$numbar = wfViewPrevNext(
 			$offset, $limit,
 			$wgTitle->getPrefixedText(),
 			"action=history" );

@@ -76,7 +76,7 @@ function wfSpecialUndelete( )
     $log = wfGetSQL("cur", "cur_text", "cur_namespace=4 AND cur_title=\"".wfMsg("dellogpage")."\"" );
     if(preg_match("/^(.*".
     	preg_quote( ($namespace ? ($wgLang->getNsText($namespace) . ":") : "")
-    	. str_replace("_", " ", $title)).".*)$/m", $log, $m)) {
+    	. str_replace("_", " ", $title), "/" ).".*)$/m", $log, $m)) {
     	$wgOut->addWikiText( $m[1] );
     }
     
@@ -121,9 +121,9 @@ function wfSpecialUndelete( )
 			# Have to create new article...
 			$max = wfGetSQL( "archive", "MAX(ar_timestamp)", "ar_namespace={$namespace} AND ar_title='{$t}'" );
         	$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
-			  "cur_comment,cur_user,cur_user_text,cur_timestamp,cur_minor_edit,cur_random)" .
+			  "cur_comment,cur_user,cur_user_text,cur_timestamp,inverse_timestamp,cur_minor_edit,cur_random)" .
 			  "SELECT ar_namespace,ar_title,ar_text,ar_comment," .
-			  "ar_user,ar_user_text,ar_timestamp,ar_minor_edit,RAND() FROM archive " .
+			  "ar_user,ar_user_text,ar_timestamp,99999999999999-ar_timestamp,ar_minor_edit,RAND() FROM archive " .
 			  "WHERE ar_namespace={$namespace} AND ar_title='{$t}' AND ar_timestamp={$max}";
 			wfQuery( $sql, $fname );
         	$newid = wfInsertId();
@@ -135,9 +135,9 @@ function wfSpecialUndelete( )
 		}
 		
 		$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
-		  "old_comment,old_user,old_user_text,old_timestamp,old_minor_edit," .
+		  "old_comment,old_user,old_user_text,old_timestamp,inverse_timestamp,old_minor_edit," .
 		  "old_flags) SELECT ar_namespace,ar_title,ar_text,ar_comment," .
-		  "ar_user,ar_user_text,ar_timestamp,ar_minor_edit,ar_flags " .
+		  "ar_user,ar_user_text,ar_timestamp,99999999999999-ar_timestamp,ar_minor_edit,ar_flags " .
 		  "FROM archive WHERE ar_namespace={$namespace} AND ar_title='{$t}' {$oldones}";
 		wfQuery( $sql, $fname );
 

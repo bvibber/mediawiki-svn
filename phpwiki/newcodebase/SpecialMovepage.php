@@ -260,12 +260,12 @@ class MovePageForm {
 		$fname = "MovePageForm::moveOverExistingRedirect";
 		$mt = wfMsg( "movedto" );
 
-		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp," .
+		$sql = "UPDATE cur SET " .
 		  "cur_namespace={$this->nns},cur_title='{$this->ndt}' " .
 		  "WHERE cur_id={$this->oldid}";
 		wfQuery( $sql, $fname );
 
-		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp," .
+		$sql = "UPDATE cur SET " .
 		  "cur_namespace={$this->ons},cur_title='{$this->odt}'," .
 		  "cur_text='#REDIRECT [[{$this->nft}]]\n',cur_comment='" .
 		  "{$mt} \\\"{$this->nft}\\\"',cur_user='" .  $wgUser->getID() .
@@ -274,7 +274,7 @@ class MovePageForm {
 		  "cur_is_redirect=1,cur_is_new=0 WHERE cur_id={$this->newid}";
 		wfQuery( $sql, $fname );
 
-		$sql = "UPDATE old SET old_timestamp=old_timestamp," .
+		$sql = "UPDATE old SET " .
 		  "old_namespace={$this->nns},old_title='{$this->ndt}' WHERE " .
 		  "old_namespace={$this->ons} AND old_title='{$this->odt}'";
 		wfQuery( $sql, $fname );
@@ -284,7 +284,7 @@ class MovePageForm {
 			"rc_cur_id={$this->oldid}";
         wfQuery( $sql, $fname );
 
-        $now = date( "YmdHis" );
+        $now = wfTimestampNow();
 		$sql = "INSERT INTO recentchanges (rc_namespace,rc_title,
 			rc_comment,rc_user,rc_user_text,rc_timestamp,
 			rc_cur_time,rc_cur_id,rc_new)
@@ -331,24 +331,25 @@ class MovePageForm {
 		$fname = "MovePageForm::moveToNewTitle";
 		$mt = wfMsg( "movedto" );
 
-		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp," .
+		$sql = "UPDATE cur SET " .
 		  "cur_namespace={$this->nns},cur_title='{$this->ndt}' " .
 		  "WHERE cur_id={$this->oldid}";
 		wfQuery( $sql, $fname );
 
-		$now = date( "YmdHis" );
+		$now = wfTimestampNow();
+		$won = wfInvertTimestamp( $now );
 		$common = "{$this->ons},'{$this->odt}'," .
 		  "'{$mt} \\\"{$this->nft}\\\"','" .
 		  $wgUser->getID() . "','" . wfStrencode( $wgUser->getName() ) .
           "','{$now}'";
 		$sql = "INSERT INTO cur (cur_namespace,cur_title," .
-		  "cur_comment,cur_user,cur_user_text,cur_timestamp," .
+		  "cur_comment,cur_user,cur_user_text,cur_timestamp,inverse_timestamp," .
 		  "cur_text,cur_is_redirect,cur_is_new) " .
-		  "VALUES ({$common},'#REDIRECT [[{$this->nft}]]\n',1,1)";
+		  "VALUES ({$common},'{$won}','#REDIRECT [[{$this->nft}]]\n',1,1)";
 		wfQuery( $sql, $fname );
 		$this->newid = wfInsertId();
 
-		$sql = "UPDATE old SET old_timestamp=old_timestamp," .
+		$sql = "UPDATE old SET " .
 		  "old_namespace={$this->nns},old_title='{$this->ndt}' WHERE " .
 		  "old_namespace={$this->ons} AND old_title='{$this->odt}'";
 		wfQuery( $sql, $fname );
