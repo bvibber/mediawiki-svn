@@ -528,6 +528,7 @@ example \"fish and and scales\".
 Please try another query.",
 "matchtotals"	=> "The query \"$1\" matched $2 article titles
 and the text of $3 articles.",
+"nogomatch" => "No page with this exact title exists, trying full text search. ",
 "titlematches"	=> "Article title matches",
 "notitlematches" => "No article title matches",
 "textmatches"	=> "Article text matches",

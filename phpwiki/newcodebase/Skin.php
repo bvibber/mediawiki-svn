@@ -218,7 +218,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		$s .= $this->topLinks() ;
 		$s .= "<p class='subtitle'>" . $this->pageTitleLinks();
 
-		$s .= "</td>\n<td {$borderhack} valign=top align=right width=200 nowrap>";
+		$s .= "</td>\n<td {$borderhack} valign=top align=right nowrap>";
 		$s .= $this->nameAndLogin();
 		$s .= "\n<br>" . $this->searchForm() . "</td>";
 
@@ -392,10 +392,10 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		global $search;
 		$s = "<form class='inline' method=get action=\""
 		  . wfLocalUrl( "" ) . "\">"
-		  . "<input type=text name=\"search\" size=16 value=\""
+		  . "<input type=text name=\"search\" size=19 value=\""
 		  . htmlspecialchars(substr($search,0,256)) . "\">\n"
 		  . "<input type=submit value=\"" . wfMsg( "search" )
-		  . "\"> <input type=submit name=\"go\"value=\"" . wfMsg ("go") . "\"></form>";
+		  . "\">&nbsp;<input type=submit name=\"go\"value=\"" . wfMsg ("go") . "\"></form>";
 
 		return $s;
 	}
