@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include <fcntl.h>
 
 struct icpheader {
@@ -200,15 +201,30 @@ main(int ac, char **av)
     char *url;
     struct timeval wait;
     fd_set readfds;
+    int port=3130;
+    int remotemanage=0;
+    int c;
+    icp_opcode opcode=ICP_HIT;
 
-
-
+    while ((c = getopt(ac,av,"mp:")) != -1) {
+        switch (c) {
+            case 'p':
+                port=atoi(optarg);
+                break;
+            case 'm':
+                remotemanage=1;
+                break;
+            default:
+                fprintf(stderr, "Usage: icpagent [-p port] -m\n");
+                exit(-1);
+        }
+    }
     TAILQ_INIT(&head);
 
     s = socket(PF_INET, SOCK_DGRAM, 0);
     bzero(&me, sizeof(me));
     me.sin_family = AF_INET;
-    me.sin_port = htons(3130);
+    me.sin_port = htons(port);
 
     if (bind(s, (struct sockaddr *) &me, sizeof(me)) < 0) {
 	printf("Unable to bind a socket");
@@ -233,10 +249,14 @@ main(int ac, char **av)
 	    header.flags = ntohl(header.flags);
 	    header.pad = ntohl(header.pad);
 	    url = msgbuf + sizeof(header) + 4;
-
+            msgbuf[rlen]='\0';
 	    if (rlen != header.length)
 		continue;
-	    queuereply(them, ICP_HIT, url, header.reqnum, delay());
+            if (remotemanage && !strcmp(url,"agent://enable"))
+                opcode=ICP_HIT;
+            else if (remotemanage && !strcmp(url,"agent://disable"))
+                opcode=ICP_MISS;
+            queuereply(them, opcode, url, header.reqnum, delay());
 	}
     }
 }
