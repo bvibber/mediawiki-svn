@@ -218,7 +218,7 @@ class Article {
 			if(
 				# check if we're displaying a [[User talk:x.x.x.x]] anonymous talk page
 				( $this->mTitle->getNamespace() == Namespace::getTalk( Namespace::getUser()) ) &&
-				  wfIsIP( $this->mTitle->getText() )
+				  wfIsIP( $this->mTitle->getText() ) && 
 				  $action=='view'
 				)
 				{

@@ -1022,11 +1022,12 @@ function wfIsIP( $ip ) {
 	$rxIP = '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}';
 	$rxIP6 = '[0-9a-fA-F]+:[0-9a-fA-F:]+';
 	$rx = "/^($rxIP|$rxIP6)$/";
-	if( preg_match( $rx, $ip ) )
-		return true;
-	else
-		return false;
+	return 1 == preg_match( $rx, $ip );
 }
 
+function wfIsIPblock( $ip ) {
+	$rxIPB = '/^[0-9a-fA-F]+:[0-9a-fA-F:*]+$/';
+	return (1 == preg_match( $rxIPB, $ip )) || wfIsIP( $ip );
+}
 
 ?>
