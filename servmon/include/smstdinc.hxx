@@ -34,5 +34,6 @@ using boost::shared_ptr;
 #include <netinet/in.h>
 
 #include <unistd.h>
+#include <netdb.h>
 
 #endif

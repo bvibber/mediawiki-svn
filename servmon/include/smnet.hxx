@@ -11,6 +11,7 @@ namespace smnet {
 
 struct sckterr : public std::runtime_error {
 	sckterr(void) : std::runtime_error(std::strerror(errno)) {};
+	sckterr(char const *s) : std::runtime_error(s) {}
 };
 struct scktcls : public std::exception {
 	scktcls(void) {}
@@ -44,6 +45,8 @@ public:
 	void _bsd_lsn(void) {
 		int one = 1;
 		setsockopt(s, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
+		one = fcntl(s, F_GETFL, 0);
+		fcntl(s, F_SETFL, one | O_NONBLOCK);
 		if (bind(s, reinterpret_cast<sockaddr*>(&addr), len) < 0)
 			throw sckterr();
 		if (listen(s, 5) < 0)
@@ -147,7 +150,19 @@ public:
 		sockaddr_in *sin = (sockaddr_in*) &addr;
 		sin->sin_port = htons(svc_ = lexical_cast<int>(s));
 	}
-
+	void endpt(std::string const& host) {
+		struct hostent *hptr;
+		if ((hptr = gethostbyname(host.c_str())) == NULL)
+			throw sckterr(hstrerror(h_errno));
+		in_addr **pptr = (in_addr **) hptr->h_addr_list;
+		sockaddr_in *sin = (sockaddr_in*) &addr;
+		memcpy(&sin->sin_addr, *pptr, sizeof(struct in_addr));
+		// XXX: try other addresses
+	}
+	void connect(void) {
+		if ((::connect(s, &addr, len) < 0) && errno != EWOULDBLOCK)
+			throw sckterr();
+	}
 	void lsn(void) {
 		_bsd_lsn();
 	}
@@ -211,6 +226,15 @@ public:
 	inline char rd1(void) {
 		return sckt<fmly>::wr.rd1();
 	}
+	void endpt(std::string const& host) {
+		sckt<fmly>::wr->endpt(host);
+	}
+	void connect(void) {
+		sckt<fmly>::wr->connect();
+	}
+
+private:
+	friend class smpx;
 };
 typedef clnt<inet> inetclnt;
 typedef shared_ptr<inetclnt> inetclntp;
@@ -262,8 +286,7 @@ public:
 				it != end; ++it)
 		{
 			std::cout << "testing fd " << it->first << "\n";
-			if (FD_ISSET(it->first, &rfds))
-			{
+			if (FD_ISSET(it->first, &rfds))	{
 				std::cerr << "fd " << it->first << " is ready\n";
 				it->second.cb(srd);
 			}

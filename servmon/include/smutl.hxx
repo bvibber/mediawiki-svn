@@ -26,6 +26,9 @@ template<class T>
 T* instance(void) {
 	return T::instance();
 }
-#define SMI(x) instance< x >()
+#define SMI(x) ::instance< x >()
+
+typedef std::string const& str;
+typedef std::string& strr;
 
 #endif

@@ -97,44 +97,44 @@ struct cfg_no_user : handler<tt> {
 
 struct cfg_irc_servnick : handler<tt> {
 	bool execute(comdat<tt> const& cd) {
-		smirc::cfg.newserv_or_chgnick(cd.p(0), cd.p(1));
+		SMI(smirc::cfg)->newserv_or_chgnick(cd.p(0), cd.p(1));
 		return true;
 	}
 };
 
 struct cfg_irc_servsecnick : handler<tt> {
 	bool execute(comdat<tt> const& cd) {
-		if (!smirc::cfg.server_exists(cd.p(0))) {
+		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
 			cd.error("No such server.");
 			return true;
 		}
-		smirc::cfg.server_set_secnick(cd.p(0), cd.p(1));
+		SMI(smirc::cfg)->server_set_secnick(cd.p(0), cd.p(1));
 		return true;
 	}
 };
 
 struct cfg_irc_noserver : handler<tt> {
 	bool execute(comdat<tt> const& cd) {
-		if (!smirc::cfg.server_exists(cd.p(0))) {
+		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
 			cd.error("No such server.");
 			return true;
 		}
-		smirc::cfg.remove_server(cd.p(0));
+		SMI(smirc::cfg)->remove_server(cd.p(0));
 		return true;
 	}
 };
 
 struct cfg_irc_showserver : handler<tt> {
 	bool execute(comdat<tt> const& cd) {
-		if (!smirc::cfg.server_exists(cd.p(0))) {
+		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
 			cd.error("No such server.");
 			return true;
 		}
 		std::string pnick, snick;
-		pnick = instance<smcfg::cfg>()->fetchstr(
+		pnick = SMI(smcfg::cfg)->fetchstr(
 				str(format("/irc/servers/%s/nickname") % cd.p(0)));
 		try {
-			snick = instance<smcfg::cfg>()->fetchstr(
+			snick = SMI(smcfg::cfg)->fetchstr(
 					str(format("/irc/servers/%s/secnickname") % cd.p(0)));
 		} catch (smcfg::nokey&) {
 			snick = "<none>";

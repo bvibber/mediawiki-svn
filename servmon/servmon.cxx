@@ -11,4 +11,3 @@ main(int argc, char *argv[])
 	cm.start();
 	SMI(smnet::smpx)->run();
 }
-
