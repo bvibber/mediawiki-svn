@@ -3,12 +3,13 @@
 #---------------------------------------------------------------
 
 # Essential stuff, so the script knows where it is, whar database to use, etc.
-$wikiCurrentServer = "http://127.0.0.1" ;
+#$wikiCurrentServer = "http://127.0.0.1" ;
+$wikiCurrentServer = "http://" . getenv("SERVER_NAME");
 $wikiSQLServer = "wikipedia" ; # The name of the database, actually...
 $wikiArticleSource = "$wikiCurrentServer/wiki/$1" ;
-$wikiLogoFile = "/fpw/wiki.png" ;
-$wikiStarTrekImage = "/fpw/startrek.png" ;
-$THESCRIPT = "/fpw/wiki.phtml" ; # The name and location of the script. The $PHP_SELF variable doesn't work with Netscape
+$wikiLogoFile = "/wiki.png" ;
+$wikiStarTrekImage = "/startrek.png" ;
+$THESCRIPT = "/wiki.phtml" ; # The name and location of the script. The $PHP_SELF variable doesn't work with Netscape
 $wikiCharset = "iso-8859-1" ;
 
 # Misc stuff
