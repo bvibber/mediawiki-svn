@@ -17,9 +17,9 @@ CREATE TABLE wikipedia_gis (
 	gis_latitude_max real NOT NULL,
 	gis_longitude_min real NOT NULL,
 	gis_longitude_max real NOT NULL,
-	gis_region char(2) binary default '',
-	gis_type char(12) binary default '',
-	gis_type_arg char(12) binary default '',
+	gis_globe char(12) binary,
+	gis_type char(12) binary,
+	gis_type_arg char(12) binary,
 
 	KEY gis_id (gis_id),
 	INDEX gis_latitude_min (gis_latitude_min),
@@ -86,7 +86,7 @@ function article_save_geo ( $article, $user, $text )
 		$g->add_position( $id,
 				   $p->latdeg_min, $p->londeg_min,
 				   $p->latdeg_max, $p->londeg_max,
-				   $attr['region'],
+				   $attr['globe'],
 				   $attr['type'], $attr['arg:type'] );
 	}
 	return true;
@@ -134,31 +134,33 @@ class gis_database {
 	 *  Add a position to the database
 	 */
 	function add_position( $id, $latmin, $lonmin, 
-			       $latmax, $lonmax, $region, $type, $type_arg )
+			       $latmax, $lonmax, $globe, $type, $type_arg )
 	{
 		$fname = 'gis_database::add_position';
 
 		if ($id == 0) return; # should not happen...
 
+		if ($globe == "") $globe = NULL;
+
 		$this->db->insert( 'gis',
 			       array(
 					'gis_id'    => $id,
-					'gis_latitude_min' => $latmin,
+					'gis_latitude_min'  => $latmin,
 					'gis_longitude_min' => $lonmin,
-					'gis_latitude_max' => $latmax,
+					'gis_latitude_max'  => $latmax,
 					'gis_longitude_max' => $lonmax,
-					'gis_region' => $region,
-					'gis_type'  => $type,
-					'gis_type_arg' => $type_arg),
+					'gis_globe'         => $globe,
+					'gis_type'          => $type,
+					'gis_type_arg'      => $type_arg),
 			       $fname );
 	}
 
 	/**
 	 *  Select entities with a certain radius expressed in meters
 	 *  FIXME: Does not work properly around the poles...
-	 *  Also select by region and type if specified
+	 *  Also select by globe and type if specified
 	 */
-	 function select_radius_m( $lat, $lon, $r, $region, $type )
+	 function select_radius_m( $lat, $lon, $r, $globe, $type )
 	 {
 		$delta_lat = $r / (60 * 1852);
 		$c = cos($lat * (M_PI / 180));
@@ -173,22 +175,23 @@ class gis_database {
 		$lonmin = $lon - $delta_lon;
 		$lonmax = $lon + $delta_lon;
 		return $this->select_area( $latmin, $lonmin,
-					   $latmax, $lonmax, $region, $type );
+					   $latmax, $lonmax, $globe, $type );
 	}
 
 	/**
 	 *  Select entities belonging to or overlapping an area
-	 *  Also select by region and type if specified
+	 *  Also select by globe and type if specified
 	 */
-	 function select_area( $latmin, $lonmin, $latmax, $lonmax, $region, $type )
+	 function select_area( $latmin, $lonmin, $latmax, $lonmax, $globe, $type )
 	 {
 		$condition = "gis_latitude_max >= " . $latmin .
 			" AND gis_latitude_min <= " . $latmax .
 			" AND gis_longitude_max >= " . $lonmin .
 			" AND gis_longitude_min <= " . $lonmax;
-
-		if ($region) {
-			$condition .= " AND gis_region = '" . $region . "'";
+		if ($globe and $globe != "") {
+			$condition .= " AND gis_globe = '" . $globe . "'";
+		} else {
+			$condition .= " AND gis_globe IS NULL";
 		}
 		if ($type) {
 			$condition .= " AND gis_type = '" . $type . "'";
@@ -211,11 +214,10 @@ class gis_database {
 				'gis_latitude_max',
 				'gis_longitude_min',
 				'gis_longitude_max',
-				'gis_region',
-				'gis_type' ),
+				'gis_globe',
+				'gis_type', 'gis_type_arg' ),
 			      $condition,
 			      $fname );
-
 	}
 
 	/**

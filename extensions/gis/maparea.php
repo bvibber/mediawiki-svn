@@ -76,7 +76,7 @@ class maparea {
 		$g = new gis_database();
 		$g->select_area( $this->p->latdeg_min, $this->p->londeg_min,
 				 $this->p->latdeg_max, $this->p->londeg_max,
-				 $this->attr['region'], $this->attr['type'] );
+				 $this->attr['globe'], $this->attr['type'] );
 
 		$out = ";type:abstract\r\n"
 		     . ";comment:"
@@ -93,9 +93,28 @@ class maparea {
 			$type = $x->gis_type;
 			$name = $g->get_title($id);
 			if ($type == "") $type = "unknown";
+
 			$out .= "==[[" . $name . "]]==\r\n"
-			      . ";type:" . $type . "\r\n"
-			      . ";name:" . $name . "\r\n"
+			      . ";type:" . $type . "\r\n";
+
+			if ($type == "city") {
+				$a = $x->gis_type_arg;
+				if ($a >= 3000000) {
+					$m = 6;
+				} elseif ($a >= 1000000) {
+					$m = 5;
+				} elseif ($a >= 300000) {
+					$m = 4;
+				} elseif ($a >= 100000) {
+					$m = 3;
+				} elseif ($a >= 30000) {
+					$m = 2;
+				} else {
+					$m = 1;
+				}
+				$out .= ";magnitude:" . $m . "\r\n";
+			}
+			$out .= ";name:" . $name . "\r\n"
 			      . ";data:" . $this->map_pos($lat,$lon) . "\r\n"
 			      . "\r\n";
 		}

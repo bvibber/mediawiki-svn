@@ -197,6 +197,8 @@ class map_sources {
 		$region = "";
 		if ($attr['page'] != "") {
 		    $src .= "/" . $attr['page']; # subpage specified
+		} elseif ($attr['globe'] != "") {
+		    $src .= "/" . $attr['globe']; # subpage specified
 		} elseif ($attr['region'] != "") {
 		    $region = strtoupper(substr($attr['region'],0,2));
 		    $region = "/" . $region; # subpage specified
@@ -259,8 +261,9 @@ class map_sources {
 		       str_replace( "{span}",            $span,
 		       str_replace( "{type}",            $attr['type'],
 		       str_replace( "{region}",          $attr['region'],
+		       str_replace( "{globe}",           $attr['globe'],
 		       str_replace( "{page}",            $attr['page'],
-		       $bstext )))))))))))))))))))))))))))))))))));
+		       $bstext ))))))))))))))))))))))))))))))))))));
 	}
 }
 

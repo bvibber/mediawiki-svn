@@ -183,10 +183,10 @@ class geo_param {
 			$this->error = "Out of range";
 		}
 
-		if ($latNS == "S") {
+		if (strtoupper($latNS) == "S") {
 			$this->latdeg = -$this->latdeg;
 		}
-		if ($lonEW == "W") {
+		if (strtoupper($lonEW) == "W") {
 			$this->londeg = -$this->londeg;
 		}
 
@@ -283,6 +283,8 @@ class geo_param {
 
 	function is_coor( $ns,$ew )
 	{
+		$ns = strtoupper($ns);
+		$ew = strtoupper($ew);
 		return (($ns=="N" or $ns=="S") and
 			($ew=="E" or $ew=="W"));
 	}
