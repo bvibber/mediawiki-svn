@@ -149,7 +149,7 @@ class WikiUser {
 		}
 
 		h1 {
-			font-family: Helvetica, Arial, sans-serif;
+			font-family: Arial, Helvetica, sans-serif;
 			color: #858585;
 			font-size: 18pt;
 			font-weight: bold;
@@ -191,6 +191,7 @@ class WikiUser {
 			font-family: Verdana, sans-serif;
 			font-size: 10pt;
 			text-align: justify;
+			margin: 0 1em;
 		}
 		a, a.external {
 			color: #4B6587
@@ -275,7 +276,16 @@ class WikiUser {
         if ( $this->options["resultsPerPage"] == "" ) $this->options["resultsPerPage"] = "20" ;
         if ( $this->options["skin"] == "" ) $this->options["skin"] = "None" ;
         if ( $this->options["hourDiff"] == "" ) $this->options["hourDiff"] = "0" ;
-        if ( $this->options["encoding"] == "") $this->options["encoding"] = 0;
+        if ( $this->options["encoding"] == "") {
+		# ***FIXME*** this is hacky, brutish, and short
+		# Use secondary encoding by default for browsers & search engine bots that don't report UTF-8 capability
+		global $wikiCharset , $wikiEncodingCharsets , $HTTP_SERVER_VARS ;
+		if ( ( count ( $wikiEncodingCharsets ) >= 2 ) and ( $wikiEncodingCharsets[0] == "utf-8" )
+		and ( !stristr ( $HTTP_SERVER_VARS[HTTP_ACCEPT_CHARSET] , "utf-8" ) ) )
+			$this->options["encoding"] = 1 ;
+		else
+			$this->options["encoding"] = 0 ;
+		}
         if ( $this->options["numberHeadings"] == "" ) $this->options["numberHeadings"] = "no" ;
         if ( $this->options["viewFrames"] == "" ) $this->options["viewFrames"] = "no" ;
         if ( $this->options["viewRecentChanges"] == "" ) $this->options["viewRecentChanges"] = "50" ;
