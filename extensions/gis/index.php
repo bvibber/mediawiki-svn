@@ -31,7 +31,7 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-$wgGisVersion = '0.2alpha';
+$wgGisVersion = '0.3alpha';
 
 include_once ( "gissettings.php" ) ;
 
