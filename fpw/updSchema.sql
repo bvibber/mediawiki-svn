@@ -58,18 +58,26 @@
 
 # New tables that are going to be used by the MostWanted pages and others
 # there is a PHP script to bring these tables up-to-date: updLinks.php
-# Read this script for further instructions.
+# Read this script for further instructions. It is advised that you 
+# first create the tables, then run the script, and afterwards
+# add the indexes. This is because the script has to do a lot of
+# inserts (about 620.000) which take longer if an index is defined.
+# Of course the total amount of time it takes is the same, but
+# the ALTER TABLE statements can be run without manual interaction.
 
 # CREATE TABLE linked (
 #   linked_to varchar(255) binary NOT NULL default '',
-#   linked_from varchar(255) binary NOT NULL default '',
-#   KEY linked_from (linked_from),
-#   KEY linked_to (linked_to)
+#   linked_from varchar(255) binary NOT NULL default ''
 # ) TYPE=MyISAM;
 
 # CREATE TABLE unlinked (
 #   unlinked_from varchar(255) binary NOT NULL default '',
-#   unlinked_to varchar(255) binary NOT NULL default '',
-#   KEY unlinked_from (unlinked_from),
-#   KEY unlinked_to (unlinked_to)
+#   unlinked_to varchar(255) binary NOT NULL default ''
 # ) TYPE=MyISAM;
+
+# now run the script "updLinks.php".
+
+# ALTER TABLE linked ADD INDEX (linked_from);
+# ALTER TABLE linked ADD INDEX (linked_to)
+# ALTER TABLE unlinked ADD INDEX (unlinked_from),
+# ALTER TABLE unlinked ADD INDEX (unlinked_to)

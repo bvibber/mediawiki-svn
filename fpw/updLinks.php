@@ -1,22 +1,23 @@
 <?
 
 // This script fills the tables 'linked' and 'unlinked' with the current values in
-// the 'linked_links' and 'unlinked_links' from the 'cur' table. Since this operation
-// takes quite some time, so I have cut the work in smaller pieces so you don't get
+// the columns 'linked_links' and 'unlinked_links' from the 'cur' table. Since this operation
+// takes quite some time, I have cut the work in smaller pieces so you don't get
 // a http server time-out.
 
 // The size of each chunk is determined by $size, and you can
 // adapt it to your situation. After every chunk a link is presented that you can
 // click to process the next $size records of table cur. In the URL you can see how
-// far you already are. Note that there is no stopping condition built in, so you have
-// to check yourself if all records have been processed by looking if $offset is larger
-// than the number of records in the table cur.
+// far you already are. Note that no stopping condition built in, so you have
+// to check yourself if all records have been processed by checking if $offset is larger
+// than the number of records in the table 'cur'.
 
-// Also note that there is key defined for
+// Also note that there is no primary key defined for
 // the tables 'linked' and 'link' (because MySQL doesn't allow it for such large columns) so
-// if you process accidentally the same chunk from table cur twice, you will end up
-// with duplicates in your tables. This should be avoided because it might lead to
-// incorrect behavior of the system in the future.
+// if you process accidentally the same chunk twice, you will end up
+// with duplicates in your tables. This is not fatal and can be repaired by making a small
+// edit on the pages from which the concerned links leave, but it can lead to some counting
+// errors on pages such as the MostWanted page.
 
     include_once ( "./wikiSettings.php" ) ;
 
