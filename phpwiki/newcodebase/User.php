@@ -10,7 +10,7 @@
 class User {
 	/* private */ var $mId, $mName, $mPassword, $mEmail;
 	/* private */ var $mRights, $mOptions;
-	/* private */ var $mDataLoaded;
+	/* private */ var $mDataLoaded, $mNewpassword;
 	/* private */ var $mSkin, $mWatchlist;
 	/* private */ var $mBlockedby, $mBlockreason;
 
@@ -57,7 +57,7 @@ class User {
 		$this->mId = 0;
 		$this->mName = getenv( "REMOTE_ADDR" );
 		$this->mEmail = "";
-		$this->mPassword = "";
+		$this->mPassword = $this->mNewpassword = "";
 		$this->mRights = array();
 		foreach ( $wgDefaultOptions as $oname => $val ) {
 			$this->mOptions[$oname] = $val;
@@ -149,11 +149,12 @@ class User {
 		$this->mId = $sId;
 		$this->loadFromDatabase();
 
-		if ( ( $sName != $this->mName )
-		  || ( $sPass != $this->mPassword ) ) {
-			$this->mId = 0;
+		if ( ( $sName == $this->mName ) &&
+		  ( ( $sPass == $this->mPassword ) ||
+		  ( $sPass == $this->mNewpassword ) ) ) {
 			return;
 		}
+		$this->mId = 0; # Can't log in from session
 	}
 
 	function loadFromDatabase()
@@ -162,8 +163,8 @@ class User {
 
 		if ( 0 == $this->mId || $this->mDataLoaded ) { return; }
 		$conn = wfGetDB();
-		$sql = "SELECT user_name,user_password,user_email,user_options," .
-		  "user_rights FROM user WHERE user_id={$this->mId}";
+		$sql = "SELECT user_name,user_password,user_newpassword,user_email," .
+		  "user_options,user_rights FROM user WHERE user_id={$this->mId}";
 
 		wfDebug( "User: 1: $sql\n" );
 		$res = mysql_query( $sql, $conn );
@@ -173,6 +174,7 @@ class User {
 			$this->mName = $s->user_name;
 			$this->mEmail = $s->user_email;
 			$this->mPassword = $s->user_password;
+			$this->mNewpassword = $s->user_newpassword;
 			$this->decodeOptions( $s->user_options );
 			$this->mRights = explode( ",", strtolower( $s->user_rights ) );
 		}
@@ -200,6 +202,12 @@ class User {
 		return $this->mPassword;
 	}
 
+	function getNewpassword()
+	{
+		$this->loadFromDatabase();
+		return $this->mNewpassword;
+	}
+
 	/* static */ function encryptPassword( $p )
 	{
 		$np = md5( $p );
@@ -211,6 +219,12 @@ class User {
 	{
 		$this->loadFromDatabase();
 		$this->mPassword = User::encryptPassword( $str );
+	}
+
+	function setNewpassword( $str )
+	{
+		$this->loadFromDatabase();
+		$this->mNewpassword = User::encryptPassword( $str );
 	}
 
 	function getEmail()
@@ -363,11 +377,11 @@ class User {
 		$sql = "UPDATE user SET " .
 		  "user_name= '" . wfStrencode( $this->mName ) . "', " .
 		  "user_password= '" . wfStrencode( $this->mPassword ) . "', " .
+		  "user_newpassword= '" . wfStrencode( $this->mNewpassword ) . "', " .
 		  "user_email= '" . wfStrencode( $this->mEmail ) . "', " .
 		  "user_options= '" . $this->encodeOptions() . "', " .
 		  "user_rights= '" . wfStrencode( implode( ",", $this->mRights ) ) .
 		  "' WHERE user_id={$this->mId}";
-
 		wfDebug( "User: 2: $sql\n" );
 
 		$conn = wfGetDB();
@@ -406,10 +420,11 @@ class User {
 	function addToDatabase()
 	{
 		$conn = wfGetDB();
-		$sql = "INSERT INTO user (user_name, user_password, " .
+		$sql = "INSERT INTO user (user_name,user_password,user_newpassword," .
 		  "user_email, user_rights, user_options, user_watch) VALUES ('" .
 		  wfStrencode( $this->mName ) . "', '" .
 		  wfStrencode( $this->mPassword ) . "', '" .
+		  wfStrencode( $this->mNewpassword ) . "', '" .
 		  wfStrencode( $this->mEmail ) . "', '" .
 		  wfStrencode( implode( ",", $this->mRights ) ) . "', '" .
 		  $this->encodeOptions() . "', '' )";

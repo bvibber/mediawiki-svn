@@ -66,8 +66,10 @@ function wfSpecialUserlogin()
 	$u->loadFromDatabase();
 	$ep = User::encryptPassword( $wpPassword );
 	if ( 0 != strcmp( $ep, $u->getPassword() ) ) {
-		mainLoginForm( wfMsg( "wrongpassword" ) );
-		return;
+		if ( 0 != strcmp( $ep, $u->getNewpassword() ) ) {
+			mainLoginForm( wfMsg( "wrongpassword" ) );
+			return;
+		}
 	}
 	# We've verified now, update the real record
 	#
@@ -104,12 +106,16 @@ function wfSpecialUserlogin()
 		return;
 	}
 	$np = User::randomPassword();
-	$u->setPassword( $np );
+	$u->setNewpassword( $np );
 	setcookie( "wcUserPassword", "", time() - 3600 );
 	$u->saveSettings();
 
-	$m = str_replace( "$1", $u->getName(), wfMsg( "passwordremindertext" ) );
-	$m = str_replace( "$2", $np, $m );
+	$ip = getenv( "REMOTE_ADDR" );
+	if ( "" == $ip ) { $ip = "(Unknown)"; }
+
+	$m = str_replace( "$1", $ip, wfMsg( "passwordremindertext" ) );
+	$m = str_replace( "$2", $u->getName(), $m );
+	$m = str_replace( "$3", $np, $m );
 
 	mail( $u->getEmail(), wfMsg( "passwordremindertitle" ), $m );
 	$m = str_replace( "$1", $u->getName(), wfMsg( "passwordsent" ) );

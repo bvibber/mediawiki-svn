@@ -47,6 +47,10 @@ function convertUserTable()
 	$newres = mysql_query( $sql, $newconn );
 	if ( ! $newres ) $newres = dbErr( $sql );
 
+	$sql = "LOCK TABLES user WRITE";
+	$newres = mysql_query( $sql, $newconn );
+	if ( ! $newres ) $newres = dbErr( $sql );
+
 	$sql = "";
 	while ( $row = mysql_fetch_object( $oldres ) ) {
 		if ( 0 == ( $count % 10 ) ) {
@@ -56,8 +60,8 @@ function convertUserTable()
 				if ( ! $newres ) $newres = dbErr( $sql );
 			}
 			$sql = "INSERT INTO user (user_id,user_name,user_rights," .
-			  "user_password,user_email,user_options,user_watch)" .
-			  " VALUES ";
+			  "user_password,user_oldpassword,user_email,user_options," .
+			  "user_watch) VALUES ";
 		} else {
 			$sql .= ",";
 		}
@@ -65,10 +69,10 @@ function convertUserTable()
 		$name = wfStrencode( $row->user_name );
 		$rights = wfStrencode( $row->user_rights );
 		$email = wfStrencode( $row->user_email );
-		$pwd = wfStrencode( $row->user_password );
+		$pwd = wfStrencode( User::encryptPassword( $row->user_password ) );
 		$watch = wfStrencode( $row->user_watch );
 
-		$sql .= "({$row->user_id},'$name','$rights','$pwd','$email'," .
+		$sql .= "({$row->user_id},'$name','$rights','$pwd','','$email'," .
 		  "'$ops','$watch')";
 
 		if ( ( ++$count % 1000 ) == 0 ) {
@@ -82,6 +86,11 @@ function convertUserTable()
 	}
 	print "$count records processed.\n";
 	mysql_free_result( $oldres );
+
+	$newconn = getNewDB();
+	$sql = "UNLOCK TABLES user";
+	$newres = mysql_query( $sql, $newconn );
+	if ( ! $newres ) $newres = dbErr( $sql );
 }
 
 # Convert May 2002 version of database into new format.
@@ -100,6 +109,10 @@ function convertCurTable()
 
 	$newconn = getNewDB();
 	$sql = "DELETE FROM cur";
+	$newres = mysql_query( $sql, $newconn );
+	if ( ! $newres ) $newres = dbErr( $sql );
+
+	$sql = "LOCK TABLES cur WRITE";
 	$newres = mysql_query( $sql, $newconn );
 	if ( ! $newres ) $newres = dbErr( $sql );
 
@@ -164,6 +177,11 @@ function convertCurTable()
 	}
 	print "$count records processed.\n";
 	mysql_free_result( $oldres );
+
+	$newconn = getNewDB();
+	$sql = "UNLOCK TABLES cur";
+	$newres = mysql_query( $sql, $newconn );
+	if ( ! $newres ) $newres = dbErr( $sql );
 }
 
 # Convert May 2002 version of database into new format.
@@ -181,6 +199,10 @@ function convertOldTable()
 
 	$newconn = getNewDB();
 	$sql = "DELETE FROM old";
+	$newres = mysql_query( $sql, $newconn );
+	if ( ! $newres ) $newres = dbErr( $sql );
+
+	$sql = "LOCK TABLES old WRITE";
 	$newres = mysql_query( $sql, $newconn );
 	if ( ! $newres ) $newres = dbErr( $sql );
 
@@ -231,6 +253,11 @@ function convertOldTable()
 	}
 	print "$count records processed.\n";
 	mysql_free_result( $oldres );
+
+	$newconn = getNewDB();
+	$sql = "UNLOCK TABLES old";
+	$newres = mysql_query( $sql, $newconn );
+	if ( ! $newres ) $newres = dbErr( $sql );
 }
 
 # Empty and rebuild the "links" and "brokenlinks" tables.

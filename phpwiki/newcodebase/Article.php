@@ -225,7 +225,7 @@ class Article {
 				$this->insertNewArticle( $wpTextbox1, $wpSummary, $wpMinorEdit );
 				return;
 			}
-			# Check for edit conflict. TODO: check oldid here
+			# Check for edit conflict. TODO: check oldid here?
 			#
 			if ( $this->getUser() != $wgUser->getID() &&
 			  $this->mTimestamp > $wpEdittime ) {

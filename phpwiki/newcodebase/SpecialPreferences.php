@@ -33,8 +33,10 @@ function wfSpecialPreferences()
 		}
 		$ep = User::encryptPassword( $wpOldpass );
 		if ( $ep != $wgUser->getPassword() ) {
-			mainPrefsForm( wfMsg( "wrongpassword" ) );
-			return;
+			if ( $ep != $wgUser->getNewpassword() ) {
+				mainPrefsForm( wfMsg( "wrongpassword" ) );
+				return;
+			}
 		}
 		$wgUser->setPassword( $wpNewpass );
 	}
