@@ -1390,6 +1390,8 @@ class WikiPage extends WikiTitle {
 		$ret .= " &nbsp; <a class=CBlink href=\"".wikiLink("")."\">$wikiWikipediaHome</a> | <a class=CBlink href=\"".wikiLink("wikipedia")."\">$wikiAboutWikipedia</a>" ;
 	        $ret .= "</FORM>" ;
 
+		if ( !$this->isSpecialPage ) {
+
 	        $adjusted_time_sc = tsc ( $this->timestamp ) + 3600 * $user->options["hourDiff"];
 	        $day = date ( "l, F d, Y" , $adjusted_time_sc);
 	        $time = date ( "H:i" , $adjusted_time_sc ) ;
@@ -1411,6 +1413,7 @@ class WikiPage extends WikiTitle {
 
 		# Redirect from...
 		if ( $this->backLink != "" ) $ret .= "; $wikiRederectFrom $this->backLink" ;
+		}
 
 		$ret .= "</span></td></tr></table>\n" ;
 	} else {

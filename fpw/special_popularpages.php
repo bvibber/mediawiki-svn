@@ -1,6 +1,6 @@
 <?
 function popularpages () {
-	global $vpage ;
+	global $vpage , $wikiPopularPages ;
 	$a = array () ;
 	$connection = getDBconnection () ;
 	$sql = "SELECT cur_title,cur_counter FROM cur GROUP BY cur_title ORDER BY cur_counter DESC LIMIT 100" ;
@@ -18,6 +18,8 @@ function popularpages () {
 		$ret .= "</tr>\n" ;
 		}
 	$ret .= "</table>" ;
+
+	$vpage->setTitle ( $wikiPopularPages ) ;
 	return $ret ;
 	}
 ?>

@@ -412,7 +412,7 @@ $wikiHistoryHeader = "Dies sind alle Revisionen von <a href=\"$THESCRIPT?title=$
 $wikiCurrentVersion = "aktuell" ;
 $wikiSpecialTitle = "Spezielle Seiten" ;
 $wikiSpecialText = "<b>Dies ist eine Liste spezieller Seiten.</b> Einige von ihnen stehen nur eingeloggten Benutzern zur Verfügung. Wenn Sie eingeloggt sind, können Sie einen Teil dieser Liste stets als Seitenleiste eingeblendet lassen.<br><br>" ;
-$wikiStubTitle = "Kurze Srtikel" ;
+$wikiStubTitle = "Kurze Artikel" ;
 $wikiLongPagesTitle = "Die längsten Artikel" ;
 $wikiStubText = "'''Dies sind alle Artikel in der Datenbank, sortiert nach Länge, mit den kürzesten zuerst.'''<br>''Weitergeleitete (#REDIRECTed) Seiten und Seiten in Namensräumen (z.B. Diskussion:) werden hier '''nicht''' angezeigt!''\n\n" ;
 $wikiLongPagesText = "'''Dies sind alle Artikel in der Datenbank, sortiert nach Länge, mit den längsten zuerst.'''<br>''Weitergeleitete (#REDIRECTed) Seiten und Seiten in Namensräumen (z.B. Diskussion:) werden hier '''nicht''' angezeigt!''\n\n" ;
