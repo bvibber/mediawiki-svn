@@ -94,17 +94,18 @@ class WikiTitle {
 		}
 	function makeAll () { $this->makeSecureTitle(); $this->makeURL(); }
 	function setTitle ( $t ) { $this->title = $t ; $this->makeAll() ; }
-	function doesTopicExist () {
+	function doesTopicExist ( $conn = "" ) {
 		$this->makeSecureTitle () ;
 		if ( $this->namespace == "special" ) return true ;
-		$connection = getDBconnection () ;
+		if ( $conn == "" ) $connection = getDBconnection () ;
+		else $connection = $conn ;
 		mysql_select_db ( "wikipedia" , $connection ) ;
 		$sql = "SELECT cur_id FROM cur WHERE cur_title=\"$this->secureTitle\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		if ( $result == "" ) return false ;
 		if ( $s = mysql_fetch_object ( $result ) ) {
 			mysql_free_result ( $result ) ;
-			mysql_close ( $connection ) ;
+			if ( $conn == "" ) mysql_close ( $connection ) ; # Closing local connection
 			return true ;
 			}
 		return false ;

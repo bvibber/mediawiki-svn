@@ -325,7 +325,7 @@ function WantedPages () {
 
 function LonelyPages () {
 	global $linkedLinks , $unlinkedLinks , $vpage ;
-	$vpage->special ( "The Lonely Pages" ) ;
+	$vpage->special ( "The Orphans" ) ;
 	$vpage->namespace = "" ;
 	$allPages = array () ;
 	$linkedLinks = array () ;
@@ -553,28 +553,30 @@ function tsc ( $t ) {
 	}
 
 function recentchanges () {
-	global $vpage , $maxcnt , $PHP_SELF , $SERVER_NAME ;
+	global $vpage , $maxcnt ;
 	$vpage->special ( "Recent Changes" ) ;
 	$vpage->makeSecureTitle() ;
 	if ( !isset ( $maxcnt ) ) $maxcnt = 100 ;
+	$daysAgo = 3 ;
 
-	$ret = "" ;
-	$ret .= "<b>These are the last $maxcnt changes made on [[Wikipedia]].</b> View the last " ;
-	$ret .= "[http://$SERVER_NAME$PHP_SELF?title=special:RecentChanges&maxcnt=50 50] / " ;
-	$ret .= "[http://$SERVER_NAME$PHP_SELF?title=special:RecentChanges&maxcnt=100 100] / " ;
-	$ret .= "[http://$SERVER_NAME$PHP_SELF?title=special:RecentChanges&maxcnt=250 250] / " ;
-	$ret .= "[http://$SERVER_NAME$PHP_SELF?title=special:RecentChanges&maxcnt=500 500] " ;
-	$ret .= "changes." ;
+	$ret = "<nowiki>" ;
+	$ret .= "These are the last <b>$maxcnt</b> of the changes made on Wikipedia in the last $daysAgo days. View the last " ;
+	$ret .= "<a href=\"$PHP_SELF?title=special:RecentChanges&maxcnt=50\">50</a> / " ;
+	$ret .= "<a href=\"$PHP_SELF?title=special:RecentChanges&maxcnt=100\">100</a> / " ;
+	$ret .= "<a href=\"$PHP_SELF?title=special:RecentChanges&maxcnt=250\">250</a> / " ;
+	$ret .= "<a href=\"$PHP_SELF?title=special:RecentChanges&maxcnt=500\">500</a> " ;
+	$ret .= "changes.<br></nowiki>" ;
 	$arr = array () ;
 
+	$mindate = date ( "Ymd000000" , time () - $daysAgo*24*60*60 ) ;
 	$connection=getDBconnection() ;
 	mysql_select_db ( "wikipedia" , $connection ) ;
-	$sql = "SELECT * FROM cur ORDER BY cur_timestamp DESC LIMIT $maxcnt" ;
+	$sql = "SELECT cur_timestamp,cur_title,cur_comment,cur_user,cur_user_text,cur_minor_edit FROM cur WHERE cur_timestamp>$mindate ORDER BY cur_timestamp DESC LIMIT $maxcnt" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) array_push ( $arr , $s ) ;
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
-	$ret .= recentChangesLayout ( $arr ) ;
+	$ret .= recentChangesLayout($arr) ;
 	return $ret ;
 	}
 
@@ -585,7 +587,7 @@ function recentChangesLayout ( &$arr ) {
 	$color2 = $user->options["tabLine2"] ;
 	$xyz = new WikiTitle ;
 	$editTypes = array ( "0"=>"" , "1"=>"<font color=green>M</font>" , "2"=>"<font color=red>N</font>" ) ;
-	$ret = " ('''Legend :''' ".$editTypes["1"]."=Minor edit ; ".$editTypes["2"]."=New article.)" ;
+	$ret = " (<b>Legend :</b> ".$editTypes["1"]."=Minor edit ; ".$editTypes["2"]."=New article.)" ;
 	$ret .= "<table width=100% border=0 cellpadding=2 cellspacing=0>\n" ;
 	$dummy = "$PHP_SELF?x=y" ;
 	foreach ( $arr as $s ) {
@@ -598,7 +600,11 @@ function recentChangesLayout ( &$arr ) {
 			$color = $color1 ;
 			}
 		$u = $s->cur_user_text ;
-		if ( $s->cur_user != 0 ) $u = "[[user:$u|$u]]" ;
+		if ( $s->cur_user != 0 ) {
+			$xyz->title = $u ;
+			$xyz->makeSecureTitle () ;
+			$u = "<a href=\"$PHP_SELF?title=user:$xyz->secureTitle\">$u</a>" ;
+			}
 		$comment = trim($s->cur_comment) ;
 		if ( $comment == "*" ) $comment = "" ;
 		if ( $s->cur_minor_edit == 1 ) $comment = "<font size=-1><i>$comment</i></font>" ;
@@ -606,12 +612,13 @@ function recentChangesLayout ( &$arr ) {
 		$minor = $editTypes[$s->cur_minor_edit] ;
 
 		$t = "<tr><td$color valign=top width=0%>" ;
-		if ( $s->version == "current" ) $t .= "<a href=\"$PHP_SELF?$s->cur_title&diff=yes\">(diff)</a>&nbsp;" ;
-		else if ( $s->version != "" ) $t .= "<a href=\"$PHP_SELF?$s->cur_title&oldID=$s->old_id&version=$s->version&diff=yes\">(diff)</a>&nbsp;" ;
+		if ( $s->version == "current" ) $t .= "<a href=\"$PHP_SELF?title=$s->cur_title&diff=yes\">(diff)</a>&nbsp;" ;
+		else if ( $s->version != "" ) $t .= "<a href=\"$PHP_SELF?title=$s->cur_title&oldID=$s->old_id&version=$s->version&diff=yes\">(diff)</a>&nbsp;" ;
+		else $t .= "<a href=\"$PHP_SELF?title=$s->cur_title&diff=yes\">(diff)</a>" ;
 		$t .= "</td><td$color valign=top>" ;
 		if ( $s->version == "current" ) $t .= "<a href=\"$PHP_SELF?$s->cur_title\">$nt</a></td>" ;
 		else if ( $s->version != "" ) $t .= "<a href=\"$PHP_SELF?$s->cur_title&oldID=$s->old_id&version=$s->version\">$nt ($s->version)</a></td>" ;
-		else $t .= "[[$s->cur_title|$nt]]</td>" ;
+		else $t .= "<a href=\"$PHP_SELF?title=$s->cur_title\">$nt</a>" ;
 		$t .= "<td$color valign=top width=0% nowrap>$time</td>" ;
 		if ( $s->version != "" ) {
 			$v = new wikiTitle ;
@@ -628,7 +635,7 @@ function recentChangesLayout ( &$arr ) {
 		else $color = $color1 ;
 		}
 	$ret .= "</table>" ;
-	return $ret ;
+	return "<nowiki>$ret</nowiki>" ;
 	}
 
 function modifyArray ( $a , $sep , $rem , $add = "" ) {

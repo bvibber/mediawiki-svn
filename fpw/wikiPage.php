@@ -99,11 +99,12 @@ class WikiPage extends WikiTitle {
 		$s = mysql_fetch_object ( $result ) ;
 		mysql_free_result ( $result ) ;
 
+		$s->cur_text = str_replace ( "\"" , "\\\"" , $s->cur_text ) ;
 		$sql = "INSERT INTO old (old_title,old_old_version,old_text,old_comment,old_user,old_user_text,old_minor_edit)";
-		$sql .= " VALUES (\"$this->secureTitle\",$oid,\"$s->cur_text\",\"$s->cur_comment\",$s->cur_user,\"$s->cur_user_text\",$s->cur_minor_edit)" ;
+		$sql .= " VALUES (\"$this->secureTitle\",\"$oid\",\"".$s->cur_text."\",\"".$s->cur_comment."\",\"$s->cur_user\",\"$s->cur_user_text\",$s->cur_minor_edit)" ;
 		mysql_query ( $sql , $connection ) ;
 
-		$sql = "SELECT old_id FROM old WHERE old_old_version=$oid AND old_title=\"$this->secureTitle\"" ;
+		$sql = "SELECT old_id FROM old WHERE old_old_version=\"$oid\" AND old_title=\"$this->secureTitle\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		$s = mysql_fetch_object ( $result ) ;
 		mysql_free_result ( $result ) ;
@@ -130,6 +131,7 @@ class WikiPage extends WikiTitle {
 		$a = explode ( "[[" , " ".$s ) ;
 		$s = array_shift ( $a ) ;
 		$s = substr ( $s , 1 ) ;
+		$connection = getDBconnection () ;
 		foreach ( $a as $t ) {
 			$b = explode ( "]]" , $t , 2 ) ;
 			if ( count($b) < 2 ) $s .= "Illegal link : ?$b[0]?" ;
@@ -146,7 +148,7 @@ class WikiPage extends WikiTitle {
 				$text = $c[1] ;
 
 
-				if ( $topic->doesTopicExist() ) {
+				if ( $topic->doesTopicExist( $connection ) ) {
 					$linkedLinks[$topic->secureTitle]++ ;
 					if ( $user->options["showHover"] == "yes" ) $hover = "title=\"$link\"" ;
 					$s .= "<a href=\"$PHP_SELF?title=".urlencode($link)."\" $hover>$text</a>" ;
@@ -166,6 +168,7 @@ class WikiPage extends WikiTitle {
 				$s .= $b[1] ;
 				}
 			}
+		mysql_close ( $connection ) ;
 		return $s ;
 		}
 	function parseImages ( $s ) {
@@ -203,7 +206,7 @@ class WikiPage extends WikiTitle {
 
 #		$o = "A-Za-z0-9/\.:?&=~%-@^" ;
 #		$s = eregi_replace ( "([^~])http://([$o]+)([^$o])" , "\\1<a href=\"http://\\2\">http://\\2</a>\\3" , $s ) ;
-#		$s = str_replace ( "~http://" , "http://" , $s ) ;
+		$s = str_replace ( "~http://" , "http://" , $s ) ;
 
 		return $s ;
 		}
@@ -372,7 +375,10 @@ class WikiPage extends WikiTitle {
 		global $user , $action ;
 		$t = $this->getNiceTitle ( $this->title ) ;
 		if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirst ( $t ) ;
-		$ret = "<table ".$user->options["quickBarBackground"]." width=100% border=1 frame=below rules=none bordercolor=black cellspacing=0>\n<tr>" ;
+		global $HTTP_USER_AGENT ;
+		if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=below rules=none" ;
+		else $border = "border=0" ;
+		$ret = "<table ".$user->options["quickBarBackground"]." width=100% $border bordercolor=black cellspacing=0>\n<tr>" ;
 		if ( $user->options["leftImage"] != "" )
 			$ret .= "<td width=1% rowspan=2 bgcolor=#000000><img src=\"".$user->options["leftImage"]."\"></td>" ;
 		$ret .= "<td valign=top height=1>" ;
@@ -411,7 +417,7 @@ class WikiPage extends WikiTitle {
 		$column .= "<br><a href=\"$PHP_SELF?title=special:Upload\">Upload files</a>\n" ;
 		$column .= "<hr>" ;
 		$column .= "<a href=\"$PHP_SELF?title=special:Statistics\">Statistics</a>" ;
-		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:LonelyPages\">Lonely pages</a>" ;
+		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:LonelyPages\">Orphans</a>" ;
 		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:WantedPages\">Most wanted</a>" ;
 		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:AllPages\">All pages</a>" ;
 		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:RandomPage\">Random Page</a>" ;
@@ -433,7 +439,10 @@ class WikiPage extends WikiTitle {
 
 			$column = "<td ".$user->options["quickBarBackground"]." width=110 valign=top nowrap>".$column."</td>" ;
 			$ret = "<td valign=top>".$ret."</td>" ;
-			$table = "<table width=100% border=1 frame=void bordercolor=black rules=cols cellpadding=2 cellspacing=0><tr>" ;
+			global $HTTP_USER_AGENT ;
+			if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=void rules=cols" ;
+			else $border = "border=0" ;
+			$table = "<table width=100% $border bordercolor=black cellpadding=2 cellspacing=0><tr>" ;
 			$qb = $user->options["quickBar"] ;
 			if ( $user->options["forceQuickBar"] != "" ) $qb = $user->options["forceQuickBar"] ;
 			if ( $qb == "left" ) $ret = $table.$column.$ret."</tr></table>" ;
@@ -444,7 +453,10 @@ class WikiPage extends WikiTitle {
 		}
 	function getFooter () {
 		$ret = $this->getLinkBar() ;
-		$ret = "<table width=100% border=1 frame=above rules=none bordercolor=black cellspacing=0><tr><td>$ret</td></tr></table>" ;
+		global $HTTP_USER_AGENT ;
+		if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=above rules=none" ; 
+		else $border = "border=0" ;
+		$ret = "<table width=100% $border bordercolor=black cellspacing=0><tr><td>$ret</td></tr></table>" ;
 		$ret .= "<FORM>Search: <INPUT TYPE=text NAME=search SIZE=20></FORM>" ;
 		return $ret ; 
 		}
@@ -457,7 +469,7 @@ class WikiPage extends WikiTitle {
 		return $this->getHeader().$middle.$this->getFooter() ;
 		}
 	function doDiff () {
-		global $oldID , $version ;
+		global $oldID , $version , $user ;
 		$ret = "<nowiki><font color=red><b>BEGIN DIFF</b></font><br>\n" ;
 		$connection = getDBconnection () ;
 		mysql_select_db ( "wikipedia" , $connection ) ;
@@ -475,6 +487,11 @@ class WikiPage extends WikiTitle {
 			$sql = "SELECT * FROM old WHERE old_id=$s->cur_old_version" ;
 			}
 
+		$fc = $user->options["background"] ;
+		if ( $fc == "" ) $fc = "=white" ;
+		$fc = substr ( $fc , strpos("=",$fc)+1 ) ;
+		$bc = " bordercolor=".$fc ;
+		$fc = " color=".$fc ;
 		$result = mysql_query ( $sql , $connection ) ;
 		if ( $result != "" and $s->old_old_version != 0 ) {
 			$s = mysql_fetch_object ( $result ) ;
@@ -483,13 +500,13 @@ class WikiPage extends WikiTitle {
 			$a2 = explode ( "\n" , $s->old_text ) ;
 			$nl = array () ;
 			$dl = array () ;
-			foreach ( $a1 as $x ) if ( !in_array ( $x , $a2 ) ) array_push ( $nl , $x ) ;
-			foreach ( $a2 as $x ) if ( !in_array ( $x , $a1 ) ) array_push ( $dl , $x ) ;
+			foreach ( $a1 as $x ) if ( !in_array ( $x , $a2 ) ) array_push ( $nl , htmlentities ( $x ) ) ;
+			foreach ( $a2 as $x ) if ( !in_array ( $x , $a1 ) ) array_push ( $dl , htmlentities ( $x ) ) ;
 			# Output
 			$ret .= "<font color=#0000FF>Blue text</font> was added or changed, <font color=red>red text</font> was changed or deleted." ;
-			$ret .= "<table width=100% border=1 bordercolor=white cellspacing=0 cellpadding=2>\n" ;
-			foreach ( $nl as $x ) $ret .= "<tr><td bgcolor=#0000FF><font color=white>$x</font></td></tr>\n" ;
-			foreach ( $dl as $x ) $ret .= "<tr><td bgcolor=#DD0000><font color=white>$x</font></td></tr>\n" ;
+			$ret .= "<table width=100% border=1$bc cellspacing=0 cellpadding=2>\n" ;
+			foreach ( $nl as $x ) $ret .= "<tr><td bgcolor=#0000FF><font$fc>$x</font></td></tr>\n" ;
+			foreach ( $dl as $x ) $ret .= "<tr><td bgcolor=#DD0000><font$fc>$x</font></td></tr>\n" ;
 			$ret .= "</table>\n" ;
 		} else if ( isset ( $oldID ) and $s->old_old_version == 0 ) $ret .= "This is the first version of this article. All text is new!<br>\n" ;
 		else $ret .= "No diff possible. Reason unknown. Blame the programmer! Tell him SQL said \"$sql\"<br>\n" ;
