@@ -72,6 +72,7 @@ public:
 			else
 				snmp_sess_perror("snmpget", ss);
 		}
+		snmp_free_pdu(response);
 		snmp_close(ss);
 		return res;
 	}
