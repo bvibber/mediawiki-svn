@@ -244,9 +244,9 @@ $wgValidSpecialPagesSv = array(
         "Listusers"     => "Registrerade anv&auml;ndare",
         "Statistics"    => "Sidstatistik",
 
-        "Randompage"    => "Slumpm&auml;ssig artikel",
-        "Lonelypages"   => "F&ouml;r&auml;ldral&ouml;s artikel",
-        "Unusedimages"  => "F&ouml;r&auml;ldral&ouml;s filer",
+        "Randompage"    => "Slumpm&auml;ssig sida",
+        "Lonelypages"   => "F&ouml;r&auml;ldral&ouml;sa sidor",
+        "Unusedimages"  => "F&ouml;r&auml;ldral&ouml;sa filer",
         "Popularpages"  => "Popul&auml;ra artiklar",
         "Wantedpages"   => "Mest &ouml;nskade artiklar",
         "Shortpages"    => "Korta artiklar",
@@ -708,7 +708,7 @@ n&auml;r den skapades och vem som gjort den och allt annat du vet om den.",
 "sitestats"             => "Statistiksida",
 "userstats"             => "Anv&auml;ndarstatistik",
 "sitestatstext"         => "Det &auml;r <b>$1</b> sidor i databasen.
-Detta inkluderer \"diskussion\"ssidorna, sidor om Wikipedia, mycket korta\"stub\"
+Detta inkluderer diskussionssidorna, sidor om Wikipedia, mycket korta\"stub\"
 sidor, omdirigeringssidor, och andra sidor som kvalificerar sig som artiklar.
 Om man tar bort ovanst&aring;ende s&aring; &auml;r det <b>$2</b> sidor som anses som riktiga artiklar.<p>
 Det har varit totalt <b>$3</b> sidvisningar och det har varit <b>$4</b> sidor som har &auml;ndrats
@@ -959,7 +959,7 @@ f&ouml;r att kunna flytta en sida.",
 "articleexists"         => "Det finns redan en sida med detta namn eller s&aring; &auml;r namnet du angett ogiltigt. V&auml;lj ett annat namn.",
 "talkexists"            => "Sidan  flyttades korrekt, men den tilh&ouml;rande diskussionssidan kunde inte flyttas, eftersom det redan existerar en sida med denna nya titel. Du m&aring;ste sammanfoga dem manuellt.",
 "movedto"               => "flyttat till",
-"movetalk"              => "Flytta &auml;ven \"diskussion\"ssidan, om den finns.",
+"movetalk"              => "Flytta &auml;ven diskussionssidan, om den finns.",
 "talkpagemoved"         => "Sidans diskussionssida flyttades ocks&aring;.",
 "talkpagenotmoved"      => "Sidans diskussionssida flyttades <strong>inte</strong>.",
 
