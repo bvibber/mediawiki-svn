@@ -447,7 +447,7 @@ class OutputPage {
 
 		if ( $autonumber ) { # Use img tags only for HTTP urls
 			$s = preg_replace( $e1, "\\1" . $sk->makeImage( "{$unique}:\\3" .
-			  ".\\5", "\\4.\\5" ) . "\\6", $s );
+			  "/\\4.\\5", "\\4.\\5" ) . "\\6", $s );
 		}
 		$s = preg_replace( $e2, "\\1" . "<a href=\"{$unique}:\\3\"" .
 		  $sk->getExternalLinkAttributes( "{$unique}:\\3", wfEscapeHTML(
