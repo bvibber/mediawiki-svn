@@ -288,7 +288,7 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 		$sql = "INSERT INTO image (img_name,img_size,img_timestamp," .
 		  "img_description,img_user,img_user_text) VALUES ('" .
 		  wfStrencode( $name ) . "',{$size},'" . date( "YmdHis" ) . "','" .
-		  wfStrencode( $description ) . "', '" . $wgUser->getID() .
+		  wfStrencode( $desc ) . "', '" . $wgUser->getID() .
 		  "', '" . wfStrencode( $wgUser->getName() ) . "')";
 		wfQuery( $sql, $fname );
 	} else {
