@@ -9,11 +9,11 @@ function doMove ( $ot , $nt , $rd ) {
 	$nst = $t->secureTitle ;        
 
 	# Updating old table
-	$sql = "UPDATE old SET old_title=\"$nst\" WHERE old_title=\"$ost\"" ;
+	$sql = "UPDATE old SET old_title=\"$nst\", old_timestamp=old_timestamp WHERE old_title=\"$ost\"" ;
         $result = mysql_query ( $sql , $connection ) ;
 
 	# Updating new entry
-	$sql = "UPDATE cur SET cur_title=\"$nst\" WHERE cur_title=\"$ost\"" ;
+	$sql = "UPDATE cur SET cur_title=\"$nst\", cur_timestamp=cur_timestamp WHERE cur_title=\"$ost\"" ;
         $result = mysql_query ( $sql , $connection ) ;
 
 	# Updating links with the old page as source

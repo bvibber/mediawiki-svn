@@ -30,7 +30,7 @@ function doHistory ( $title ) {
                     old_id
              FROM old
              WHERE old_title=\"$ti\"
-             ORDER BY cur_timestamp DESC" ;
+             ORDER BY cur_timestamp DESC, cur_old_version DESC" ;
     $result = mysql_query ( $sql2 , $connection ) ;
     while ( $s = mysql_fetch_object ( $result ) ) array_push ( $a , $s ) ;
     mysql_free_result ( $result ) ;
