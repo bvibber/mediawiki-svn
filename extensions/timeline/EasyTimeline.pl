@@ -97,7 +97,7 @@
 sub ParseArguments
 {
   my $options ;
-  getopt ("ie", \%options) ;
+  getopt ("iTAPe", \%options) ;
 
   &Abort ("Specify input file as: -i filename") if (! defined (@options {"i"})) ;
 
@@ -107,6 +107,18 @@ sub ParseArguments
   $makehtml  = @options {"h"} ; # make test html file with gif/png + svg output
   $bypass    = @options {"b"} ; # do not use in Wikipedia:bypass some checks
   $showmap   = @options {"d"} ; # debug: shows clickable areas in gif/png
+
+  				# The following parameters are used by MediaWiki
+				# to pass config settings from LocalSettings.php to 
+				# the perl script
+  $tmpdir    = @options {"T"} ; # For MediaWiki: temp directory to use
+  $plcommand = @options {"P"} ; # For MediaWiki: full path of ploticus command
+  $articlepath=@options {"A"} ; # For MediaWiki: Path of an article, relative to this servers root
+
+  if (! defined @options {"A"} )
+  {
+  	$articlepath="http://en.wikipedia.org/wiki/";
+  }
 
   if (! -e $file_in)
   { &Abort ("Input file '" . $file_in . "' not found.") ; }
@@ -139,8 +151,8 @@ sub SetImageFormat
 {
   $env = "" ;
   $dir = cwd() ; # is there a better way to detect OS?
-  if ($dir =~ /\\/) { $env = "Linux" ;   $fmt = "png" ; }
-  if ($dir =~ /\//) { $env = "Windows" ; $fmt = "gif" ; }
+  if ($dir =~ /\//) { $env = "Linux" ;   $fmt = "png" ; $pathseparator = "/";}
+  if ($dir =~ /\\/) { $env = "Windows" ; $fmt = "gif" ; $pathseparator = "\\";}
 
   if ($env ne "")
   { print "\nOS $env detected -> create image in $fmt format.\n" ; }
@@ -2126,7 +2138,8 @@ sub WritePlotFile
   else
   { $AxisBars = "x" ; }
 
-  $file_script = "EasyTimeline.txt" ;
+  $file_script = $tmpdir.$pathseparator."EasyTimeline.txt.$$" ;
+  print "file_script = ".$file_script."<br>\n";
 # $fmt = "gif" ;
   open "FILE_OUT", ">", $file_script ;
 
@@ -2527,9 +2540,17 @@ sub WritePlotFile
   $script .= "#endproc\n" ;
 
   print "\nGenerating output:\n" ;
-  $pl = "pl.exe" ;
-  if ($env eq "Linux")
-  { $pl = "pl" ; }
+  if ( $plcommand ne "" )
+  {
+  	$pl = $plcommand;
+  } else {
+  	$pl = "pl.exe" ;
+  	if ($env eq "Linux")
+  	{
+		$pl = "pl" ;
+	}
+  }
+  print "Using ploticus command \"".$pl."\" (".$plcommand.")\n";
 
   $script_save = $script ;
 
@@ -3307,7 +3328,7 @@ sub ProcessWikiLink
 
   if ($wikilink)
   {
-    if ($link =~ /^\[\[.+\:.+\]\]$/)
+    if ($link =~ /^\[\[.+\:.+\]\]$/) # Has a colon in its name
     {
       $wiki  = lc ($link) ;
       $title = $link ;
@@ -3323,11 +3344,11 @@ sub ProcessWikiLink
       $title =~ s/^\[\[(.*)\]\]$/$1/x ;
     }
     $title =~ s/ /_/g ;
-    $link = "http://$wiki.wikipedia.org/wiki/$title" ;
+    $link = $articlepath . "/$title" ;
   }
 
   if (($hint eq "") && ($title ne ""))
-  { $hint = "-> $wiki: $title" ; }
+  { $hint = "$title" ; }
 
   if (($link ne "") && ($text !~ /\[\[/) && ($text !~ /\]\]/))
   { $text = "[[" . $text . "]]" ; }
