@@ -1,7 +1,7 @@
 <?
 function refreshWantedPages () {
 	global $showNumberPages , $linkedLinks , $unlinkedLinks , $vpage , $wikiWantedText , $wikiWantedLine ;
-	global $wikiWantedToggleNumbers ;
+	global $wikiWantedToggleNumbers, $wikiLastRefreshed ;
 	$vpage->special ( "The Most Wanted Pages" ) ;
 	$vpage->namespace = "" ;
 	if ( $showNumberPages == "" ) $showNumberPages = "off" ;
@@ -61,28 +61,44 @@ function refreshWantedPages () {
 			}
 		}
 	$ret .= implode ( "" , $o ) ;
+	
+	$now = time () ;
+	$lc = wikiGetDate ( $now ) . date ( ", H:i" , $now ) ;
+	#$lc .= ", ".substr ( $now , 8 , 2 ) ;
+	#$lc .= ":".substr ( $now , 10 , 2 ) ;
+	$ret .= "\n<p>" . str_replace ( "$1", $lc, $wikiLastRefreshed ) . "</p>\n" ;
 
 	return $ret ;
 	}
 
 function WantedPages () {
-	global $doRefresh , $wikiRefreshThisPage , $wikiResourcesWarning ;
+	global $doRefresh , $wikiRefreshThisPage , $wikiResourcesWarning , $wikiNoRefresh ;
 	$pn = "Log:Most_Wanted" ;
+	$minRefreshPeriod = 5*60; # Refuse to update more often than every 5 minutes
 	$ret = "<nowiki>" ;
 
 	$ret .= "<p align=center><font size='+1'><b><a href=\"" ;
 	$ret .= wikiLink ( "special:WantedPages&doRefresh=yes" ) ;
 	$ret .= "\">$wikiRefreshThisPage</a></b></font><br>$wikiResourcesWarning</p></nowiki>\n" ;
 	if ( $doRefresh == "yes" ) {
-		$o = refreshWantedPages () ;
-		$ret .= $o ;
-		$p = new wikiPage ;
-		$p->setTitle ( $pn ) ;
-		$p->ensureExistence () ;
-		$p->setEntry ( $o , "Refresh" , 0 , "System" , 1 , ",cur_timestamp=cur_timestamp" ) ; # Storing, don't show on RC
-	} else {
-		$ret .= getMySQL ( "cur" , "cur_text" , "cur_title=\"$pn\"" ) ;
+		$timestamp = getMySQL ( "cur" , "UNIX_TIMESTAMP(cur_timestamp)" , "cur_title=\"$pn\"" ) ;
+		if ( ( $lastrefreshed = time() - $timestamp ) < $minRefreshPeriod ) {
+			$ret .= "<p><i>" . str_replace ( array ( "$1", "$2" ) ,
+				array ( round ( $lastrefreshed / 60 ) , round ( ( $minRefreshPeriod - $lastrefreshed ) / 60 ) ),
+				$wikiNoRefresh ) . "</i></p>\n\n";
+		} else {
+			$o = refreshWantedPages () ;
+			$ret .= $o ;
+			$p = new wikiPage ;
+			$p->setTitle ( $pn ) ;
+			$p->ensureExistence () ;
+			#$p->setEntry ( $o , "Refresh" , 0 , "System" , 1 , ",cur_timestamp=cur_timestamp" ) ; # Storing, don't show on RC
+			$p->setEntry ( $o , "Refresh" , 0 , "System" , 1 , "" ) ; # Storing, don't show on RC
+			$timestamp2 = getMySQL ( "cur" , "UNIX_TIMESTAMP(cur_timestamp)" , "cur_title=\"$pn\"" ) ;
+			return $ret;
+			}
 		}
+	$ret .= getMySQL ( "cur" , "cur_text" , "cur_title=\"$pn\"" ) ;
 	return $ret ;
 	}
 ?>
