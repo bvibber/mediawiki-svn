@@ -71,7 +71,7 @@ function WatchList () {
         $ret .= recentChangesLayout ( $arr ) ;
         
     if ( $notexist )
-        $ret .= "$wikiWatchlistNotExistText\n\n$notexist" ;
+        $ret .= "\n----\n$wikiWatchlistNotExistText\n\n$notexist" ;
 
     return $ret ;
     }
