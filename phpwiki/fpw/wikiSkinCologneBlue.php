@@ -10,7 +10,7 @@ class skinCologneBlue extends skinClass {
 		global $wikiLogoFile , $user , $wikiHelp , $wikiWikipediaHelp , $wikiWikipedia ;
 #		$fonts = "face='verdana,sans-serif' color=white" ;
 		$fonts = "face=serif color=white" ;
-		$ret .= "<table width='100%' border=0 cellspacing=0 cellpadding=1>\n" ;
+		$ret = "<table width='100%' border=0 cellspacing=0 cellpadding=1>\n" ;
 
 		# Row 1
 		$ret .= "<tr class=header>\n" ;
@@ -170,14 +170,14 @@ class skinCologneBlue extends skinClass {
 
 	        $column = $this->getQuickBar ( $page ) ;
 
+        	$qb = $user->options["quickBar"] ;
+		if ( $qb != "left" ) $qb = "right" ;
+
 		$cw = 130 ;
 	        $column = "<td class=\"quickbar\" ".$user->options["quickBarBackground"]." width=$cw valign=top nowrap>".$column."</td>" ;
         	$ret = "<td valign=top>\n".$ret."\n</td>" ;
 
 	        $table = "<table width=\"100%\" class=\"middle\" cellpadding=2 cellspacing=0><tr>" ;
-        	$qb = $user->options["quickBar"] ;
-		if ( $qb != "left" ) $qb = "right" ;
-
 		$tableend = "</table>" ;
 		if ( $action != "print" ) $tableend = "" ;
                	if ( $qb == "left" ) $ret = $table.$column.$ret."</tr>$tableend" ;
@@ -192,27 +192,7 @@ class skinCologneBlue extends skinClass {
 		global $wikiFindMore , $wikiOK , $wikiWikipediaHome , $wikiAboutWikipedia ;
 		global $wikiGetDate , $wikiLastChangeCologne , $wikiRequests , $wikiRedirectFrom ;
 
-		$ret = "<table width=\"100%\" $border class=\"footer\" cellspacing=0><tr><td>$ret</td></tr></table>" ;
-
-		# Page counter
-		if ( !$page->isSpecialPage )
-		    $ret .= str_replace ( "$1" , $page->counter , $wikiCounter ) ;
-
-		# Other namespaces
-		$a = $page->getOtherNamespaces () ;
-		if ( count ( $a ) > 0 ) $ret .= " ".$wikiOtherNamespaces.implode ( " | " , $a )." " ;
-
-		# Last change / Diff
-		if ( !$page->isSpecialPage ) {
-		    $lc = $wikiGetDate ( tsc ( $page->timestamp ) ) ;
-		    $lc .= ", ".substr ( $page->timestamp , 8 , 2 ) ;
-		    $lc .= ":".substr ( $page->timestamp , 10 , 2 ) ;
-		    $ret .= "<br>\n" ;
-		    $ret .= str_replace ( "$1" , $lc , $wikiLastChange ) ;
-		    $ret .= " <a href=\"".wikiLink("$page->url&amp;diff=yes")."\">$wikiDiff</a> " ;
-		    }
-
-		$ret = "<tr><td colspan=1></td><td>\n" ;
+		$ret = "<tr><td colspan=2 align=center>\n" ;
 		$ret .= "<FORM class=footnote method=get action=\"$THESCRIPT\">" ;
 		$ret .= "$wikiFindMore : " ;
 		$ret .= "<INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\">" ;
