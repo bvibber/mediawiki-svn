@@ -1106,6 +1106,25 @@ class Language {
 		# For most languages, this is a wrapper for ucfirst()
 		return ucfirst( $string );
 	}
+	
+	function checkTitleEncoding( $s ) {
+        global $wgInputEncoding;
+		
+        # Check for UTF-8 URLs; Internet Explorer produces these if you
+		# type non-ASCII chars in the URL bar or follow unescaped links.
+		if( $wgInputEncoding != "UTF-8" and preg_match( '/[\x80-\xff]/', $s ) ) {
+			if( preg_match( '/^([\x00-\x7f]|[\xc0-\xdf][\x80-\xbf]|' .
+				'[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xf7][\x80-\xbf]{3})+$/',
+				$s ) ) {
+				$s = iconv( "UTF-8", $wgInputEncoding, $s );
+			}
+		}
+		
+		# Other languages can safely ignore this function, or replace
+		# it with one to detect and convert a legacy encoding.
+		return $s;
+	}
+
 }
 
 include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );

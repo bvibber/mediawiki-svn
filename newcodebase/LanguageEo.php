@@ -1012,7 +1012,27 @@ class LanguageEo extends Language {
 
     function iconv( $in, $out, $string ) {
 		# For most languages, this is a wrapper for iconv
-		#FIXME: need special functions for X-sistemo ktp
+		if( $in == "X" ) {
+		    $xu = array (
+				"xx" => "x" , "xX" => "x" ,
+				"Xx" => "X" , "XX" => "XX" ,
+				"Cx" => "\xc4\x88" , "CX" => "\xc4\x88" ,
+				"cx" => "\xc4\x89" , "cX" => "\xc4\x89" ,
+				"Gx" => "\xc4\x9c" , "GX" => "\xc4\x9c" ,
+				"gx" => "\xc4\x9d" , "gX" => "\xc4\x9d" ,
+				"Hx" => "\xc4\xa4" , "HX" => "\xc4\xa4" ,
+				"hx" => "\xc4\xa5" , "hX" => "\xc4\xa5" ,
+				"Jx" => "\xc4\xb4" , "JX" => "\xc4\xb4" ,
+				"jx" => "\xc4\xb5" , "jX" => "\xc4\xb5" ,
+				"Sx" => "\xc5\x9c" , "SX" => "\xc5\x9c" ,
+				"sx" => "\xc5\x9d" , "sX" => "\xc5\x9d" ,
+				"Ux" => "\xc5\xac" , "UX" => "\xc5\xac" ,
+				"ux" => "\xc5\xad" , "uX" => "\xc5\xad"
+				) ;
+			return preg_replace ( "/([cghjsux]x)(?=(?:xx)*[^x\$])/ei" , "\$xu[\"\$1\"]" , $string ) ;
+		} else if( $out == "X" ) {
+			# FIXME: For output
+		}
 		return iconv( $in, $out, $string );
 	}
 	
@@ -1024,6 +1044,29 @@ class LanguageEo extends Language {
         	"/^([\\x00-\\x7f]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
         	"strtr ( \"\$1\" , \$wikiUpperChars )",
         	$string );
+	}
+
+    function checkTitleEncoding( $s ) {
+        global $wgInputEncoding;
+        
+        # Check for X-system backwards-compatibility URLs
+		$ishigh = preg_match( '/[\x80-\xff]/', $s);
+		$isutf = preg_match( '/^([\x00-\x7f]|[\xc0-\xdf][\x80-\xbf]|' .
+                '[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xf7][\x80-\xbf]{3})+$/', $s );
+        
+        if($ishigh and !$isutf) {
+        	# Assume Latin1
+        	$s = utf8_encode( $s );
+        } else {
+        	if( preg_match( '/(\xc4[\x88\x89\x9c\x9d\xa4\xa5\xb4\xb5]'.
+        		'|\xc5[\x9c\x9d\xac\xad])/', $s ) )
+        		return $s;
+        }
+        
+        if( preg_match( '/[cghjsu]x/i', $s ) )
+        	return $this->iconv( "X", "UTF-8", $s );
+        
+        return $s;
 	}
 
 }

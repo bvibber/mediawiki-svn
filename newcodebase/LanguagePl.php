@@ -1044,6 +1044,18 @@ class LanguagePl extends Language {
         	$string );
 	}
 
+    function checkTitleEncoding( $s ) {
+        # Check for Latin-2 backwards-compatibility URLs
+		$ishigh = preg_match( '/[\x80-\xff]/', $s);
+		$isutf = preg_match( '/^([\x00-\x7f]|[\xc0-\xdf][\x80-\xbf]|' .
+                '[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xf7][\x80-\xbf]{3})+$/', $s );
+        
+        if($ishigh and !$isutf)
+        	return iconv( "ISO-8859-2", "UTF-8", $s );
+        
+        return $s;
+	}
+
 }
 
 ?>

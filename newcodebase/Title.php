@@ -184,9 +184,19 @@ class Title {
 
 	function newFromURL( $url )
 	{
+		global $wgLang, $wgServer, $HTTP_SERVER_VARS;
+		
 		$t = new Title();
 		$s = urldecode( $url ); # This is technically wrong, as anything
-								# we've gotten is already decoded by PHP
+								# we've gotten is already decoded by PHP.
+								# Kept for backwards compatibility with
+								# buggy URLs we had for a while...
+		
+		# For links that came from outside, check for alternate/legacy
+		# character encoding.
+		if( strncmp($wgServer, $HTTP_SERVER_VARS["HTTP_REFERER"], strlen( $wgServer ) ) )
+			$s = $wgLang->checkTitleEncoding( $s );
+		
 		$t->mDbkeyform = str_replace( " ", "_", $s );
 		$t->secureAndSplit();
 		return $t;
@@ -266,6 +276,7 @@ class Title {
 	{
 		$s = $this->prefix( $this->mDbkeyform );
 		$s = str_replace( " ", "_", $s );
+
 		$s = urlencode ( $s ) ;
 		# Cleaning up URL to make it look nice -- is this safe?
 		$s = preg_replace( "/%3[Aa]/", ":", $s );
