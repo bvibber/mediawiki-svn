@@ -70,8 +70,11 @@ class Title {
 			$s = $wgLang->checkTitleEncoding( $s );
 		
 		$t->mDbkeyform = str_replace( " ", "_", $s );
-		$t->secureAndSplit();
-		return $t;
+		if( $t->secureAndSplit() ) {
+			return $t;
+		} else {
+			return NULL;
+		}
 	}
 
 	function legalChars()

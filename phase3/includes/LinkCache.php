@@ -79,6 +79,10 @@ class LinkCache {
 		wfProfileIn( "LinkCache::addLink-checkdatabase" );
 
 		$nt = Title::newFromDBkey( $title );
+		if(!$nt) {
+			wfProfileOut();
+			return 0;
+		}
 		$ns = $nt->getNamespace();
 		$t = $nt->getDBkey();
 
