@@ -218,15 +218,15 @@
 );
 
 /* private */ $wgMonthNamesZh = array(
-	" 1 月", " 2 月", " 3 月", " 4 月", " 5 月", " 6 月",
-	" 7 月", " 8 月", " 9 月", " 10 月", " 11 月",
-	" 12 月"
+	"1月", "2月", "3月", "4月", "5月", "6月",
+	"7月", "8月", "9月", "10月", "11月",
+	"12月"
 );
 
 /* private */ $wgMonthAbbreviationsZh = array(
-	" 1 月", " 2 月", " 3 月", " 4 月", " 5 月", " 6 月",
-	" 7 月", " 8 月", " 9 月", " 10 月", " 11 月",
-	" 12 月"
+	"1月", "2月", "3月", "4月", "5月", "6月",
+	"7月", "8月", "9月", "10月", "11月",
+	"12月"
 );
 
 # All special pages have to be listed here: a description of ""
@@ -237,7 +237,7 @@
 	"Userlogin"	=> "",
 	"Userlogout"	=> "",
 	"Preferences"	=> "我的设置", /* Set my user preferences */
-	"Watchlist"	=> "查看列表", /* My watchlist */
+	"Watchlist"	=> "监视列表", /* My watchlist */
 	"Recentchanges" => "最近更改",  /* Recently updated pages */
 	"Upload"	=> "上载图像",  /* Upload image files */
 	"Imagelist"	=> "图像列表",  /* Image list */
@@ -248,11 +248,11 @@
 	"Lonelypages"	=> "孤立条目",  /* Orphaned articles */
 	"Unusedimages"	=> "孤立图像",  /* Orphaned images */
 	"Popularpages"	=> "热点条目",  /* Popular articles */
-	"Wantedpages"	=> "热链条目",  /* Most wanted articles */
+	"Wantedpages"	=> "待撰页面",  /* Most wanted articles */
 	"Shortpages"	=> "短条目",  /* Short articles */
 	"Longpages"	=> "长条目",  /* Long articles */
 	"Newpages"	=> "新条目",  /* Newly created articles */
-	"Allpages"	=> "所有条目（按标题）",  /* All pages by title */
+	"Allpages"	=> "所有条目",  /* All pages by title */
 
 	"Ipblocklist"	=> "被封 IP 地址",  /* Blocked IP addresses */
 	"Maintenance"   => "维护页",  /* Maintenance page */
@@ -312,7 +312,7 @@
 "whatlinkshere"	=> "链到本页的页面", /* Pages that link here */
 "help"		=> "帮助", /* Help */
 "search"	=> "搜索", /* Search */
-"history"	=> "历史", /* History */
+"history"	=> "修订历史", /* History */
 "printableversion" => "可打印版", /* Printable version */
 "editthispage"	=> "编辑页面", /* Edit this page */
 "deletethispage" => "删除页面", /* Delete this page */
@@ -322,21 +322,21 @@
 "subjectpage"	=> "主题页", /* Subject page */
 "otherlanguages" => "其它语言", /* Other languages */
 "redirectedfrom" => "（重定向自 $1 ）", /* (Redirected from $1) */
-"lastmodified"	=> "页面最后更改于 $1。", /* The page was last modified $1. */
+"lastmodified"	=> "最后更改于 $1。", /* The page was last modified $1. */
 "viewcount"	=> "页面已被浏览 $1 次", /* This page has been accessed $1 times. */
 "printsubtitle" => "（自 http://zh.wikipedia.org ）", /* (From http://www.wikipedia.org) */
 "protectedpage" => "被保护页", /* Protected page */
 "administrators" => "Wikipedia:管理员", /* Wikipedia:Administrators */
 "sysoptitle"	=> "需要 sysop 权限", /* Sysop access required */
-"sysoptext"		=> "您请求的命令只能被拥有 \"sysop\" 权限的用户执行。请参见 $1 。",
+"sysoptext"	=> "您请求的命令只能被拥有 \"sysop\" 权限的用户执行。请参见 $1 。",
 /* The action you have requested can only be performed by users with \"sysop\" status.See $1. */
 "developertitle" => "需要 developer 权限", /* Developer access required */
 "developertext"	=> "您请求的命令只能被拥有 \"developer\" 权限的用户执行。请参见 $1 。",
 /* The action you have requested can only be performed by users with \"developer\" status. See $1.*/
-"nbytes"		=> "$1 位字节", /* $1 bytes */
-"go"			=> "进入", /* Go */
-"ok"			=> "确定", /* OK */
-"sitetitle"		=> "Wikipedia", /* Wikipedia */
+"nbytes"	=> "$1 字节", /* $1 bytes */
+"go"		=> "进入", /* Go */
+"ok"		=> "确定", /* OK */
+"sitetitle"	=> "Wikipedia", /* Wikipedia */
 "sitesubtitle"	=> "自由的百科全书", /* The Free Encyclopedia */
 "retrievedfrom" => "取自 \"$1\"", /* Retrieved from \"$1\" */
 
@@ -360,9 +360,9 @@
 <blockquote><tt>$1</tt></blockquote>
 来自于函数 \"<tt>$2</tt>\".
 MySQL返回错误 \"<tt>$3: $4</tt>\".",
-"noconnect"		=> "无法在 $1上连接数据库",
-"nodb"			=> "无法选择数据库 $1",
-"readonly"		=> "数据库禁止访问",
+"noconnect"	=> "无法在 $1上连接数据库",
+"nodb"		=> "无法选择数据库 $1",
+"readonly"	=> "数据库禁止访问",
 "enterlockreason" => "请输入禁止访问原因, 包括估计重新开放的时间",
 "readonlytext"	=> "Wikipedia数据库目前禁止输入新内容及更改，这很可能是由于数据库正在维修，之后即可恢复。
 管理员有如下解释:
@@ -387,12 +387,12 @@ MySQL返回错误 \"<tt>$3: $4</tt>\".",
 #
 "logouttitle"	=> "用户退出",
 "logouttext"	=> "你现在已经退出.
-你可以继续以无名方式使用Wikipeida，或再次以相同或不同用户身份登录。\n",
+你可以继续以匿名方式使用Wikipeida，或再次以相同或不同用户身份登录。\n",
 
 "welcomecreation" => "<h2>欢迎, $1!</h2><p>你的帐号已经建立，不要忘记设置Wikipedia个人参数。",
 
 "loginpagetitle" => "用户登录",
-"yourname"		=> "用户名",
+"yourname"	=> "用户名",
 "yourpassword"	=> "密码",
 "yourpasswordagain" => "重复密码",
 "newusersonly"	=> " (仅限新用户)",
@@ -400,23 +400,23 @@ MySQL返回错误 \"<tt>$3: $4</tt>\".",
 "loginproblem"	=> "<b>登录有问题。</b><br>再试一次！",
 "alreadyloggedin" => "<font color=red><b> $1, 你已经登录了!</b></font><br>\n",
 
-"areyounew"		=> "如果你是Wikipedia的新用户并想得到一个用户帐号，
+"areyounew"	=> "如果你是Wikipedia的新用户并想得到一个用户帐号，
 请输入用户名，然后重复输入密码两次。
 你可以选择输入电子邮件地址; 这样如果你忘了密码时可以要求将密码寄往你所输入的地址。<br>\n",
 
-"login"			=> "登录",
-"userlogin"		=> "用户登录",
-"logout"		=> "退出",
+"login"		=> "登录",
+"userlogin"	=> "用户登录",
+"logout"	=> "退出",
 "userlogout"	=> "用户退出",
 "createaccount"	=> "建立新帐号",
-"badretype"		=> "你所输入的密码并不相同。",
+"badretype"	=> "你所输入的密码并不相同。",
 "userexists"	=> "你所输入的用户名已有人使用。请另选一个。",
 
-"youremail"		=> "电子邮件",
-"yournick"		=> "绰号 (签名时用)",
+"youremail"	=> "电子邮件",
+"yournick"	=> "绰号 (签名时用)",
 "emailforlost"	=> "如果你忘了你的密码, 你可以得到一个寄往你的电子邮件地址的新密码。",
 "loginerror"	=> "登录错误",
-"noname"		=> "你没有输入一个有效的用户名。",
+"noname"	=> "你没有输入一个有效的用户名。",
 "loginsuccesstitle" => "登录成功",
 "loginsuccess"	=> "你现在以 \"$1\"的身份登录Wikipedia。",
 "nosuchuser"	=> "找不到用户 \"$1\".
@@ -427,16 +427,16 @@ MySQL返回错误 \"<tt>$3: $4</tt>\".",
 "passwordremindertext" => "有人 (可能是你, 来自 IP 地址 $1)要求我们将新的Wikipedia登录密码寄给你。
 用户 \"$2\" 的密码现在是 \"$3\".
 请立即登录并更改密码。",
-"noemail"		=> "用户\"$1\"没有登记电子邮件地址。",
+"noemail"	=> "用户\"$1\"没有登记电子邮件地址。",
 "passwordsent"	=> "用户\"$1\"的新密码已经寄往所登记的电子邮件地址。
 请在收到后再登录。",
 
 # Edit pages
 #
-"summary"		=> "简述",
-"minoredit"		=> "这是一个细微修改",
+"summary"	=> "简述",
+"minoredit"	=> "这是一个细微修改",
 "savearticle"	=> "保存页面",
-"preview"		=> "预览",
+"preview"	=> "预览",
 "showpreview"	=> "显示预览",
 "blockedtitle"	=> "用户被封",
 "blockedtext"	=> "你的用户名或IP地址已被$1封。
@@ -444,22 +444,22 @@ MySQL返回错误 \"<tt>$3: $4</tt>\".",
 "newarticle"	=> "(新)",
 "newarticletext" => "在这里输入新页面内容。",
 "noarticletext" => "(本页目前没有文字)",
-"updated"		=> "(更新)",
-"note"			=> "<strong>注意：</strong> ",
+"updated"	=> "(更新)",
+"note"		=> "<strong>注意：</strong> ",
 "previewnote"	=> "请记住这只是预览，内容还未保存！",
 "previewconflict" => "这个预览显示了上面文字编辑区中的内容。它将在你选择保存后出现。",
-"editing"		=> "正在编辑$1",
+"editing"	=> "正在编辑$1",
 "editconflict"	=> "编辑冲突： $1",
 "explainconflict" => "有人在你开始编辑后更改了页面。
 上面的文字框内显示的是目前本页的内容。
 你所做的修改显示在下面的文字框中。
 你应当将你所做的修改加入现有的内容中。
 <b>只有</b>在上面文字框中的内容会在你点击\"保存页面\"后被保存。\n<p>",
-"yourtext"		=> "你的文字",
+"yourtext"	=> "你的文字",
 "storedversion" => "已保存版本",
 "editingold"	=> "<strong>警告：你正在编辑的是本页的旧版本。
 如果你保存它的话，在本版本之后的任何修改都会丢失。</strong>\n",
-"yourdiff"		=> "不同",
+"yourdiff"	=> "不同",
 "copyrightwarning" => "请注意对Wikipedia的任何贡献都将被认为是在GNU自由文档协议证书下发布。
 (细节请见$1).
 如果你不希望你的文字被任意修改和再散布，请不要提交。<br>
@@ -476,13 +476,13 @@ public domain or similar free resource. */
 "revnotfound"	=> "没有找到修订记录", /* Revision not found */
 "revnotfoundtext" => "您请求的更早版本的修订记录没有找到。请检查您请求本页面用的 URL 是否正确。\n",
 /* The old revision of the page you asked for could not be found.Please check the URL you used to access this page.\n */
-"loadhist"		=> "载入页面修订历史", /* Loading page history */
+"loadhist"	=> "载入页面修订历史", /* Loading page history */
 "currentrev"	=> "Current revision", /* 当前修订版本 */
 "revisionasof"	=> "$1 的修订版本", /* Revision as of $1 */
-"cur"			=> "当前", /* cur */
-"next"			=> "后继", /* next */
-"last"			=> "先前", /* last */
-"orig"			=> "初始", /* orig */
+"cur"		=> "当前", /* cur */
+"next"		=> "后继", /* next */
+"last"		=> "先前", /* last */
+"orig"		=> "初始", /* orig */
 "histlegend"	=> "说明：(当前)指与当前修订版本比较；(先前)指与前一个修订版本比较，小 指细微修改。",
 /* Legend: (cur) = difference with current version,
 (last) = difference with preceding version, M = minor edit */
@@ -491,7 +491,7 @@ public domain or similar free resource. */
 #
 "difference"	=> "（修订版本间差异）", /* Difference between revisions */
 "loadingrev"	=> "载入修订版本比较", /* loading revision for diff */
-"lineno"		=> "第 $1 行：", /* Line $1:",  */
+"lineno"	=> "第 $1 行：", /* Line $1:",  */
 "editcurrent"	=> "编辑本页的当前修订版本",
 /* Edit the current version of this page */
 
@@ -515,8 +515,8 @@ and the text of $3 articles.",
 "notitlematches" => "No article title matches",
 "textmatches"	=> "Article text matches",
 "notextmatches"	=> "No article text matches",
-"prevn"			=> "previous $1",
-"nextn"			=> "next $1",
+"prevn"		=> "previous $1",
+"nextn"		=> "next $1",
 "viewprevnext"	=> "View ($1) ($2) ($3).",
 "showingresults" => "Showing below <b>$1</b> results starting with #<b>$2</b>.",
 "nonefound"		=> "<strong>Note</strong>: unsuccessful searches are
@@ -534,22 +534,22 @@ $2 List redirects &nbsp; Search for $3 $9",
 #
 "preferences"	=> "参数设置",
 "prefsnologin" => "还未登录",
-"prefsnologintext"	=> "你必须先<a href=\"" .
+"prefsnologintext" => "你必须先<a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">登录</a>才能设置个人参数。",
 "prefslogintext" => "你已经以\"$1\"的身份登录。
 你的内部ID是$2.",
 "prefsreset"	=> "参数重新设置。",
 "qbsettings"	=> "快速导航条设置", 
 "changepassword" => "更改密码",
-"skin"			=> "Skin",
-"saveprefs"		=> "保存参数设置",
+"skin"		=> "Skin",
+"saveprefs"	=> "保存参数设置",
 "resetprefs"	=> "重设参数",
 "oldpassword"	=> "旧密码",
 "newpassword"	=> "新密码",
-"retypenew"		=> "重复新密码",
+"retypenew"	=> "重复新密码",
 "textboxsize"	=> "文字框尺寸",
-"rows"			=> "行",
-"columns"		=> "列",
+"rows"		=> "行",
+"columns"	=> "列",
 "searchresultshead" => "搜索结果设定",
 "resultsperpage" => "每页显示连接数",
 "contextlines"	=> "每连接行数",
@@ -560,7 +560,7 @@ $2 List redirects &nbsp; Search for $3 $9",
 "timezonetext"	=> "输入当地时间与服务器时间(UTC)的时差。",
 "localtime"	=> "当地时间",
 "timezoneoffset" => "差",
-"emailflag"		=> "禁止其他用户发e-mail给我",
+"emailflag"	=> "禁止其他用户发e-mail给我",
 
 # Recent changes
 #
@@ -607,10 +607,10 @@ See also the [http://meta.wikipedia.org/wiki/Special:Recentchanges recent meta d
 
 # Upload
 #
-"upload"		=> "Upload",
-"uploadbtn"		=> "Upload file",
+"upload"	=> "上载", /* Upload */
+"uploadbtn"	=> "Upload file",
 "uploadlink"	=> "Upload images",
-"reupload"		=> "Re-upload",
+"reupload"	=> "Re-upload",
 "reuploaddesc"	=> "Return to the upload form.",
 "uploadnologin" => "Not logged in",
 "uploadnologintext"	=> "You must be <a href=\"" .
@@ -652,8 +652,8 @@ All times shown are server time (UTC).
 <ul>
 </ul>
 ",
-"filename"		=> "Filename",
-"filedesc"		=> "Summary",
+"filename"	=> "Filename",
+"filedesc"	=> "Summary",
 "affirmation"	=> "I affirm that the copyright holder of this file
 agrees to license it under the terms of the $1.",
 "copyrightpage" => "Wikipedia:Copyrights",
@@ -743,38 +743,39 @@ articles.<p>There have been a total of <b>$3</b> page views, and <b>$4</b> page 
 
 # Miscellaneous special pages
 #
-"orphans"		=> "Orphaned pages",
-"lonelypages"	=> "Orphaned pages",
-"unusedimages"	=> "Unused images",
-"popularpages"	=> "Popular pages",
-"nviews"		=> "$1 views",
-"wantedpages"	=> "Wanted pages",
-"nlinks"		=> "$1 links",
-"allpages"		=> "All pages",
-"randompage"	=> "Random page",
-"shortpages"	=> "Short pages",
-"longpages"		=> "Long pages",
-"listusers"		=> "User list",
-"specialpages"	=> "Special pages",
-"spheading"		=> "Special pages",
-"sysopspheading" => "Special pages for sysop use",
-"developerspheading" => "Special pages for developer use",
-"protectpage"	=> "Protect page",
-"recentchangeslinked" => "Watch links",
-"rclsub"		=> "(to pages linked from \"$1\")",
-"debug"			=> "Debug",
-"newpages"		=> "New pages",
-"movethispage"	=> "Move this page",
+"orphans"	=> "孤立页面", /* Orphaned pages */
+"lonelypages"	=> "孤立页面", /* Orphaned pages */
+"unusedimages"	=> "未用图像", /* Unused images */
+"popularpages"	=> "热点条目", /* Popular pages */
+"nviews"	=> "$1 次浏览", /* $1 views */
+"wantedpages"	=> "待撰页面", /* Wanted pages */
+"nlinks"	=> "$1 个链接", /* $1 links */
+"allpages"	=> "所有条目", /* All pages */
+"randompage"	=> "随机页面", /* Random page */
+"shortpages"	=> "短条目", /* Short pages */
+"longpages"	=> "长条目", /* Long pages */
+"listusers"	=> "用户列表", /* User list */
+"specialpages"	=> "特殊页面", /* Special pages */
+"spheading"	=> "特殊页面", /* Special pages */
+"sysopspheading" => "Special pages for sysop use", /* Special pages for sysop use */
+"developerspheading" => "Special pages for developer use", /* Special pages for developer use */
+"protectpage"	=> "保护页面", /* Protect page */
+"recentchangeslinked" => "链出更改", /* Watch links */
+"rclsub"	=> "(从 \"$1\"链出的页面)", /* to pages linked from \"$1\") */
+"debug"		=> "调试", /* Debug */
+"newpages"	=> "新页面", /* New pages */
+"movethispage"	=> "移动页面", /* Move this page */
 "unusedimagestext" => "<p>Please note that other web sites
 such as the international Wikipedias may link to an image with
 a direct URL, and so may still be listed here despite being
-in active use.",
-"booksources"	=> "Book sources",
+in active use.", /*  */
+"booksources"	=> "书目来源", /* Book sources */
 "booksourcetext" => "Below is a list of links to other sites that
 sell new and used books, and may also have further information
 about books you are looking for.
 Wikipedia is not affiliated with any of these businesses, and
-this list should not be construed as an endorsement.",
+this list should not be construed as an endorsement.", 
+/*  */
 
 # Email this user
 #
@@ -784,8 +785,8 @@ this list should not be construed as an endorsement.",
 and have a valid e-mail address in your <a href=\"" .
   wfLocalUrl( "Special:Preferences" ) . "\">preferences</a>
 to send e-mail to other users.",
-"emailuser"		=> "E-mail this user",
-"emailpage"		=> "E-mail user",
+"emailuser"	=> "给用户发信", /* E-mail this user */
+"emailpage"	=> "E-mail user",
 "emailpagetext"	=> "If this user has entered a valid e-mail address in
 is user preferences, the form below will send a single message.
 The e-mail address you entered in your user preferences will appear
@@ -794,24 +795,26 @@ to reply.",
 "noemailtitle"	=> "No e-mail address",
 "noemailtext"	=> "This user has not specified a valid e-mail address,
 or has chosen not to receive e-mail from other users.",
-"emailfrom"		=> "From",
-"emailto"		=> "To",
-"emailsubject"	=> "Subject",
-"emailmessage"	=> "Message",
-"emailsend"		=> "Send",
-"emailsent"		=> "E-mail sent",
-"emailsenttext" => "Your e-mail message has been sent.",
+"emailfrom"	=> "发件人", /* From*/
+"emailto"	=> "收件人", /* To*/
+"emailsubject"	=> "主题", /* Subject */
+"emailmessage"	=> "正文", /* Message */
+"emailsend"	=> "发送", /* Send */
+"emailsent"	=> "邮件发送", /* E-mail sent */
+"emailsenttext" => "您的邮件已经被发送",
+/* Your e-mail message has been sent. */
 
 # Watchlist
 #
-"watchlist"		=> "Watch list",
-"watchlistsub"	=> "(for user \"$1\")",
-"nowatchlist"	=> "You have no items on your watchlist.",
-"watchnologin"	=> "Not logged in",
+"watchlist"	=> "监视列表", /* Watch list */
+"watchlistsub"	=> "(用户\"$1\")", /* (for user \"$1\") */
+"nowatchlist"	=> "You have no items on your watchlist.", /*  */
+"watchnologin"	=> "Not logged in", /*  */
 "watchnologintext"	=> "You must be <a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
 to modify your watchlist.",
-"addedwatch"	=> "Added to watchlist",
+/*  */
+"addedwatch"	=> "Added to watchlist", /*  */
 "addedwatchtext" => "The page \"$1\" has been added to your <a href=\"" .
   wfLocalUrl( "Special:Watchlist" ) . "\">watchlist</a>.
 Future changes to this page and its associated Talk page will be listed there,
@@ -820,18 +823,20 @@ and the page will appear <b>bolded</b> in the <a href=\"" .
 make it easier to pick out.</p>
 
 <p>If you want to remove the page from your watchlist later, click \"Stop watching\" in the sidebar.",
-"removedwatch"	=> "Removed from watchlist",
+ /*  */
+"removedwatch"	=> "", /* Removed from watchlist */
 "removedwatchtext" => "The page \"$1\" has been removed from your watchlist.",
-"watchthispage"	=> "Watch this page",
-"unwatchthispage" => "Stop watching",
+/*  */
+"watchthispage"	=> "监视本页", /* Watch this page */
+"unwatchthispage" => "停止监视", /* Stop watching */
 "notanarticle"	=> "Not an article",
 
 # Delete/protect/revert
 #
 "deletepage"	=> "Delete page",
-"confirm"		=> "Confirm",
+"confirm"	=> "Confirm",
 "confirmdelete" => "Confirm delete",
-"deletesub"		=> "(Deleting \"$1\")",
+"deletesub"	=> "(Deleting \"$1\")",
 "confirmdeletetext" => "You are about to permanently delete a page
 or image along with all of its history from the database.
 Please confirm that you intend to do this, that you understand the
@@ -849,7 +854,7 @@ All times shown are server time (UTC).
 </ul>
 ",
 "deletionlog"	=> "deletion log",
-"reverted"		=> "Reverted to earlier revision",
+"reverted"	=> "Reverted to earlier revision",
 "deletecomment"	=> "Reason for deletion",
 "imagereverted" => "Revert to earlier version was successful.",
 
@@ -872,23 +877,25 @@ See [[Wikipedia:Deletion_log]] for a record of recent deletions and restorations
 
 # Contributions
 #
-"contributions"	=> "User contributions",
+"contributions"	=> "用户贡献", /* User contributions */
 "contribsub"	=> "For $1",
 "nocontribs"	=> "No changes were found matching these criteria.",
-"ucnote"		=> "Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
-"uclinks"		=> "View the last $1 changes; view the last $2 days.",
+"ucnote"	=> "Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
+"uclinks"	=> "View the last $1 changes; view the last $2 days.",
 
 # What links here
 #
-"whatlinkshere"	=> "What links here",
-"notargettitle" => "No target",
+"whatlinkshere"	=> "链入页面", /* What links here */
+"notargettitle" => "No target", /*  */
 "notargettext"	=> "You have not specified a target page or user
 to perform this function on.",
+/*  */
 
-"linklistsub"	=> "(List of links)",
-"linkshere"		=> "The following pages link to here:",
-"nolinkshere"	=> "No pages link to here.",
-"isredirect"	=> "redirect page",
+"linklistsub"	=> "(链到本页的页面列表)", /* (List of links) */
+"linkshere"		=> "下列页面链接到本页：",
+/* The following pages link to here:",  */
+"nolinkshere"	=> "没有页面连接到这里。", /* No pages link to here. */
+"isredirect"	=> "重定向页面", /* redirect page */
 
 # Block/unblock IP
 #
@@ -920,8 +927,8 @@ to a previously blocked IP address.",
 
 # Developer tools
 #
-"lockdb"		=> "Lock database",
-"unlockdb"		=> "Unlock database",
+"lockdb"	=> "Lock database",
+"unlockdb"	=> "Unlock database",
 "lockdbtext"	=> "Locking the database will suspend the ability of all
 users to edit pages, change their preferences, edit their watchlists, and
 other things requiring changes in the database.
@@ -933,8 +940,8 @@ other things requiring changes in the database.
 Please confirm that this is what you intend to do.",
 "lockconfirm"	=> "Yes, I really want to lock the database.",
 "unlockconfirm"	=> "Yes, I really want to unlock the database.",
-"lockbtn"		=> "Lock database",
-"unlockbtn"		=> "Unlock database",
+"lockbtn"	=> "Lock database",
+"unlockbtn"	=> "Unlock database",
 "locknoconfirm" => "You did not check the confirmation box.",
 "lockdbsuccesssub" => "Database lock succeeded",
 "unlockdbsuccesssub" => "Database lock removed",
@@ -944,21 +951,21 @@ Please confirm that this is what you intend to do.",
 
 # SQL query
 #
-"asksql"		=> "SQL query",
+"asksql"	=> "SQL query",
 "asksqltext"	=> "Use the form below to make a direct query of the
 Wikipedia database.
 Use single quotes ('like this') to delimit string literals.
 This can often add considerable load to the server, so please use
 this function sparingly.",
-"sqlquery"		=> "Enter query",
-"querybtn"		=> "Submit query",
+"sqlquery"	=> "Enter query",
+"querybtn"	=> "Submit query",
 "selectonly"	=> "Queries other than \"SELECT\" are restricted to
 Wikipedia developers.",
 "querysuccessful" => "Query successful",
 
 # Move page
 #
-"movepage"		=> "Move page",
+"movepage"	=> "移动页面", /* Move page */
 "movepagetext"	=> "Using the form below will rename a page, moving all
 of its history to the new name.
 The old title will become a redirect page to the new title.
@@ -968,20 +975,20 @@ page, if any, will not be moved.
 This can be a drastic and unexpected change for a popular page;
 please be sure you understand the consequences of this before
 proceeding.",
-"movearticle"	=> "Move page",
+"movearticle"	=> "移动页面", /* Move page */
 "movenologin"	=> "Not logged in",
 "movenologintext" => "You must be a registered user and <a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
 to move a page.",
-"newtitle"		=> "To new title",
-"movepagebtn"	=> "Move page",
-"pagemovedsub"	=> "Move succeeded",
+"newtitle"	=> "To new title",
+"movepagebtn"	=> "移动页面", /* Move page */
+"pagemovedsub"	=> "移动成功", /* Move succeeded */
 "pagemovedtext" => "Page \"[[$1]]\" moved to \"[[$2]]\".",
 "articleexists" => "A page of that name already exists, or the
 name you have chosen is not valid.
 Please choose another name.",
-"movedto"		=> "moved to",
-"movetalk"		=> "Move \"talk\" page as well, if applicable.",
+"movedto"	=> "moved to",
+"movetalk"	=> "Move \"talk\" page as well, if applicable.",
 "talkpagemoved" => "The corresponding talk page was also moved.",
 "talkpagenotmoved" => "The corresponding talk page was <strong>not</strong> moved.",
 
@@ -1079,9 +1086,9 @@ class LanguageZh extends Language {
 	{
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
 
-		$d = substr( $ts, 0, 4 ) . " 年" .
+		$d = substr( $ts, 0, 4 ) . "年" .
 		  $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) . " " .
-		  (0 + substr( $ts, 6, 2 )) . " 日";
+		  (0 + substr( $ts, 6, 2 )) . "日";
 		return $d;
 	}
 
