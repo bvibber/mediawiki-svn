@@ -89,6 +89,7 @@ class WikiUser {
 		if ( $this->options["justify"] == "" ) $this->options["justify"] = "no" ;
 		if ( $this->options["resultsPerPage"] == "" ) $this->options["resultsPerPage"] = "20" ;
 		if ( $this->options["skin"] == "" ) $this->options["skin"] = "None" ;
+		if ( $this->options["hourDiff"] == "" ) $this->options["hourDiff"] = "0" ;
 
 #		if ( $this->options["showStructure"] == "" ) # NO SUBPAGES ANYMORE
 		$this->options["showStructure"] = "no" ;
@@ -177,29 +178,30 @@ class WikiUser {
 
 	# Checks the login
 	function verify () {
+		global $wikiNoSuchUser , $wikiWrongPassword , $wikiYouAreLoggedIn , $wikiUserError ;
 		$this->isLoggedIn = false ;
-		if ( !$this->doesUserExist() ) return "<font color=red>Unknown user \"$this->name\"!</font>" ;
+		if ( !$this->doesUserExist() ) return str_replace ( "$1" , $this->name , $wikiNoSuchUser ) ;
 		$connection = getDBconnection () ;
 		mysql_select_db ( "wikipedia" , $connection ) ;
 		$sql = "SELECT * FROM user WHERE user_name=\"$this->name\"" ;
 		$result = mysql_query ( $sql , $connection ) ;
-		if ( $result == "" ) return "<font color=red>No such user \"$this->name\".</font>" ;
+		if ( $result == "" ) return str_replace ( "$1" , $this->name , $wikiNoSuchUser ) ;
 		if ( $s = mysql_fetch_object ( $result ) ) {
 			mysql_free_result ( $result ) ;
 			mysql_close ( $connection ) ;
 			if ( $s->user_password == $this->password ) {
-				$ret = "$this->name, you are logged in!" ; 
+				$ret = str_replace ( "$1" , $this->name , $wikiYouAreLoggedIn ) ;
 				$this->id = $s->user_id ;
 				$this->isLoggedIn = true ;
 				$this->loadSettings() ;
 			} else {
-				$ret = "<font color=red>Wrong password for user $this->name!</font>" ;
+				$ret = str_replace ( "$1" , $this->name , $wikiWrongPassword ) ;
 				}
 			}
 		else {
 			mysql_free_result ( $result ) ;
 			mysql_close ( $connection ) ;
-			$this->contents = "Error with \"".$this->name."\"" ;
+			$this->contents = str_replace ( "$1" , $this->name , $wikiUserError ) ;
 			}
 		
 		return $ret ;

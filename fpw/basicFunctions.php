@@ -1,9 +1,10 @@
 <?
 # Output error message. Rarely used.
 function error ( $error ) {
+	global $wikiErrorPageTitle , $wikiErrorMessage ;
 	$page = new WikiPage ;
-	$page->special ( "Yikes! An error!" ) ;
-	$page->contents = "<h2>$error!</h2>Return to the [[:Main Page|Main Page]]!" ;
+	$page->special ( $wikiErrorPageTitle ) ;
+	$page->contents = str_replace ( "$1" , "$error" , $wikiErrorMessage ) ;
 	return $page->renderPage () ;
 	}
 
@@ -54,11 +55,13 @@ function fixFastSubpageLinks ( $text ) {
 function edit ( $title ) {
 	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit ;
 	global $user , $CommentBox , $vpage , $EditTime , $THESCRIPT ;
+	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend ;
+	global $wikiSummary , $wikiMinorEdit , $wikiCopyrightNotice , $wikiSave , $wikiPreview , $wikiDontSaveChanges ;
 	$npage = new WikiPage ;
 	$npage->title = $title ;
 	$npage->makeAll () ;
 	$ret = "" ;
-	if ( !$vpage->canEdit() ) return "<h3>You cannot edit this page!</h3>" ; # Check for allowance
+	if ( !$vpage->canEdit() ) return $wikiCannotEditPage ;
 	if ( $EditTime == "" ) $EditTime = date ( "YmdHis" ) ; # Stored for edit conflict detection
 	$editConflict = false ;
 
@@ -69,10 +72,7 @@ function edit ( $title ) {
 			$lastTime = getMySQL ( "cur" , "cur_timestamp" , "cur_title=\"$vpage->secureTitle\"" ) ;
 			if ( tsc($EditTime) < tsc($lastTime) ) {
 				$doSave = false ;
-				$ret .= "<h1>Edit conflict!</h1>\n" ;
-				$ret .= "<b>Someone saved this page after you started editing. The top textbox contains the saved text. " ;
-				$ret .= "Only the text in the top textbox will be saved.</b><br>\n" ;
-				$ret .= "Scroll down to see your edited text.<br>\n" ;
+				$ret .= $wikiEditConflictMessage ;
 				$oldSubmittedText = $EditBox ;
 				$oldSubmittedText = str_replace ( "\\'" , "'" , $oldSubmittedText ) ;
 				$oldSubmittedText = str_replace ( "\\\"" , "\"" , $oldSubmittedText ) ;
@@ -109,7 +109,7 @@ function edit ( $title ) {
 		$text = str_replace ( "\\\"" , "\"" , $text ) ;
 		$text = str_replace ( "&" , "&amp;" , $text ) ;
 		$text = fixFastSubpageLinks ( $text ) ;
-		$append = "<hr>\n<h2>Preview :</h2>\n".$npage->parseContents($text)."<hr><h3>Remember, this is only a preview and not yet saved!</h3>" ;
+		$append = str_replace ( "$1" , $npage->parseContents($text) , $wikiPreviewAppend ) ;
 	} else if ( $npage->doesTopicExist() ) { # The initial edit request for an existing page
 		$npage->load ( $npage->title ) ;
 		$text = $npage->contents ;
@@ -123,22 +123,24 @@ function edit ( $title ) {
 
 	# Just trying to set the initial keyboard focus to the edit window; doesn't work, though...
 	global $bodyOptions , $headerScript ;
-	$headerScript = "<script> <!-- function setfocus() { document.f.EditBox.focus(); } --> </script>" ;
+#JAVASCRIPT DEACTIVATED
+#	$headerScript = "<script> <!-- function setfocus() { document.f.EditBox.focus(); } --> </script>" ;
 	$bodyOptions = " onLoad=setfocus()" ;
 
 	$ret .= "<form method=POST name=f>" ;
 	$ret .= "<textarea tabindex=1 name=EditBox rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>".$text."</textarea><br>\n" ;
-	$ret .= "Summary:<input tabindex=2 type=text value=\"$CommentBox\" name=CommentBox size=50 maxlength=200> \n" ;
-	$ret .= "<input tabindex=3 type=checkbox name=MinorEdit $checked value=1>This is a minor edit \n" ;
-	$ret .= "<input tabindex=4 type=submit value=Save name=SaveButton> \n" ;
-	$ret .= "<input tabindex=5 type=submit value=Preview name=PreviewButton>\n" ;
-	$ret .= "<input type=hidden value=\"$EditTime\" name=EditTime>\n" ;
+	$ret .= "$wikiSummary<input tabindex=2 type=text value=\"$CommentBox\" name=CommentBox size=50 maxlength=200> \n" ;
+	$ret .= "<input tabindex=3 type=checkbox name=MinorEdit $checked value=1>$wikiMinorEdit<br>\n" ;
+	$ret .= "$wikiCopyrightNotice<br>\n" ;
 
+	$ret .= "<input tabindex=4 type=submit value=$wikiSave name=SaveButton> \n" ;
+	$ret .= "<input tabindex=5 type=submit value=$wikiPreview name=PreviewButton>\n" ;
+	$ret .= "<input type=hidden value=\"$EditTime\" name=EditTime>\n" ;
 	if ( $editConflict ) {
 		$ret .= "<br><hr><br><b>This is the text you submitted :</b><br>\n" ;
 		$ret .= "<textarea name=NotIMPORTANT rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>$oldSubmittedText</textarea><br>\n" ;
 		}
-	$ret .= " <a href=\"$THESCRIPT?title=$vpage->secureTitle\"><i>Return without saving changes</i></a></form>" ; 
+	$ret .= " <a href=\"$THESCRIPT?title=$vpage->secureTitle\">$wikiDontSaveChanges</a></form>" ; 
 
 	return $ret.$append ;
 	}
@@ -157,11 +159,13 @@ function doEdit ( $title ) {
 
 	$theMiddle = edit ( $title ) ;
 	if ( $wasSaved ) {
-		$ti = new wikiTitle ;
-		$ti->setTitle ( $title ) ;
-		$theMiddle = "<h1>Your page <a href=\"$THESCRIPT?title=$ti->secureTitle\">$title</a> was successfully saved!</h1>" ;
-		$theMiddle .= "(If this page doesn't forward automatically, please click on the link above)" ;
-		$headerScript .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$THESCRIPT?title=$vpage->secureTitle\">";
+		$action = "view" ;
+		return view ( $title ) ;
+#		$ti = new wikiTitle ;
+#		$ti->setTitle ( $title ) ;
+#		$theMiddle = "<h1>Your page <a href=\"$THESCRIPT?title=$ti->secureTitle\">$title</a> was successfully saved!</h1>" ;
+#		$theMiddle .= "(If this page doesn't forward automatically, please click on the link above)" ;
+#		$headerScript .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$THESCRIPT?title=$vpage->secureTitle\">";
 		}
 	$ret .= $vpage->getMiddle ( $theMiddle ) ;
 
@@ -172,9 +176,13 @@ function doEdit ( $title ) {
 	}
 
 function view ( $title ) {
-	global $vpage ;
+	global $vpage , $wikiDescribePage ;
 	$vpage = new WikiPage ;
 	$vpage->load ( $title ) ;
+	if ( $vpage->contents == $wikiDescribePage ) {
+		$action = "edit" ;
+		return doEdit ( $title ) ;
+		}
 	return $vpage->renderPage () ;
 	}
 
