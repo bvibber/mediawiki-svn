@@ -303,6 +303,7 @@ $wikiUploadDeleted = "File <b>$1</b> deleted!" ;
 $wikiUploadDelMsg1 = "*On $now, [[user:$1|$1]] deleted file '''$2'''\n" ;
 $wikiUploadDelMsg2 = "Deletion of file $1" ;
 $wikiUploadAffirm = "<nowiki>You need to affirm that the file is not violating copygights. Return to the <a href=\"$THESCRIPT?title=special:upload\">Upload page</a></nowiki>" ;
+$wikiUploadRestrictions = "<nowiki>You have to log in to upload a file!</nowiki>" ;
 $wikiUploadFull = "Sorry, we are almost out of disk space. We can't let you upload any files right now." ;
 $wikiUploadSuccess = "File <b>$1</b> was successfully uploaded!" ;
 $wikiUploadSuccess1 = "*On $1, $2 uploaded file '''$3'''\n" ;
