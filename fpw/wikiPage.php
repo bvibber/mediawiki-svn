@@ -1086,7 +1086,7 @@ class WikiPage extends WikiTitle {
 		$ret .= $this->getLinkBar()."<hr>\n" ;
 
 	} else {
-	        $ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
+	        $ret .= "<FORM method=get action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
         	$ret .= "</td>\n<td rowspan=2 width=1><a href=\"".wikiLink("")."\"><img border=0 src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a></td></tr>\n" ;
 	        $ret .= "<tr><td valign=bottom>".$this->getLinkBar()."</td></tr></table>" ;
 		}
@@ -1105,7 +1105,7 @@ class WikiPage extends WikiTitle {
 		$bg = "bgcolor=#ddddFF nowrap" ;
 		$ret = "" ;
 
-	        $ret .= "<FORM method=post action=\"".wikiLink("")."\">" ;
+	        $ret .= "<FORM method=get action=\"".wikiLink("")."\">" ;
 		$ret .= "<font color=#666666><b>$wikiFind</b></font><br>\n" ;
 		$ret .= "<INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiOK\"></FORM><br>" ;
 		$ret .= "<font $fonts>\n<table border=0 cellspacing=3 cellpadding=2 width='100%'><tr><td $bg>" ;
@@ -1320,7 +1320,7 @@ class WikiPage extends WikiTitle {
 
 	if ( $user->options[skin] == "Cologne Blue" ) $ret = "<center>\n" ;
 
-        $ret .= "<FORM method=post action=\"".wikiLink("")."\">" ;
+        $ret .= "<FORM method=get action=\"".wikiLink("")."\">" ;
 
 	global $wikiFindMore , $wikiOK , $wikiWikipediaHome , $wikiAboutWikipedia ;
 	if ( $user->options[skin] == "Cologne Blue" ) $ret .= "<font color=#666666>$wikiFindMore : </font>" ;
