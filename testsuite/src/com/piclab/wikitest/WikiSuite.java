@@ -108,6 +108,7 @@ throws WikiSuiteFailureException {
 		throw new WikiSuiteFailureException( "Exception (" + e +
 		  ") parsing login form." );
 	}
+	fine( "Logged in as " + name );
 	return wr;
 }
 
@@ -191,6 +192,14 @@ public static void info( String msg ) {
 public static void fine( String msg ) {
 	ms_logger.fine( msg );
 	ms_logger.getHandlers()[0].flush();
+}
+
+public static Level setLoggingLevel( Level newl ) {
+	Level oldl = ms_logger.getLevel();
+
+	ms_logger.getHandlers()[0].setLevel( newl );
+	ms_logger.setLevel( newl );
+	return oldl;
 }
 
 /*
@@ -425,11 +434,10 @@ public void incrementFetchcount() {
 
 public static void main( String[] params ) {
 	WikiSuite ws = new WikiSuite();
-
-	long start_time = System.currentTimeMillis();
-	info( "Started Wikipedia Test Suite" );
-
 	ws.initializeDatabase();
+
+	info( "Started Wikipedia Test Suite" );
+	long start_time = System.currentTimeMillis();
 	ws.startBackgroundFetchThread();
 
 	/*
@@ -437,6 +445,7 @@ public static void main( String[] params ) {
 	 */
 
 	(new LinkTest(ws)).run();
+	(new HTMLTest(ws)).run();
 	(new EditTest(ws)).run();
 
 	/*

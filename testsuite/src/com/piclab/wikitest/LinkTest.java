@@ -17,12 +17,16 @@ public String testName() { return "Links"; }
 protected boolean runTest() throws Exception {
 	m_suite.clearCookies(); /* Make sure we aren't logged in */
 
+	/* java.util.logging.Level l = WikiSuite.setLoggingLevel(
+	  java.util.logging.Level.ALL ); */
+
 	if ( ! part1() ) { throw new WikiSuiteFailureException( "Part 1" ); }
 	if ( ! part2() ) { throw new WikiSuiteFailureException( "Part 2" ); }
 	if ( ! part3() ) { throw new WikiSuiteFailureException( "Part 3" ); }
 	if ( ! part4() ) { throw new WikiSuiteFailureException( "Part 4" ); }
 	if ( ! part5() ) { throw new WikiSuiteFailureException( "Part 5" ); }
 
+	/* WikiSuite.setLoggingLevel( l ); */
 	return true;
 }
 

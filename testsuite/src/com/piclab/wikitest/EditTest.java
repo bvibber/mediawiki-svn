@@ -16,12 +16,17 @@ public String testName() { return "Editing"; }
 
 protected boolean runTest() throws Exception {
 	m_suite.clearCookies();
+
+	/* java.util.logging.Level l = WikiSuite.setLoggingLevel(
+	  java.util.logging.Level.ALL ); */
+
 	if ( ! part1() ) { throw new WikiSuiteFailureException( "Part 1" ); }
 	if ( ! part2() ) { throw new WikiSuiteFailureException( "Part 2" ); }
 	if ( ! part3() ) { throw new WikiSuiteFailureException( "Part 3" ); }
 	if ( ! part4() ) { throw new WikiSuiteFailureException( "Part 4" ); }
 	if ( ! part5() ) { throw new WikiSuiteFailureException( "Part 5" ); }
 
+	/* WikiSuite.setLoggingLevel( l ); */
 	return true;
 }
 
@@ -43,20 +48,20 @@ private boolean part1() throws Exception {
 	text = wr.getText();
 	if ( text.indexOf( "85769476243364759655" ) < 0 ) { result = false; }
 
-	wr = addText( "Physics", "Edited for testing: 98762415237651243634" );
-	wr = addText( "Mathematics", "Edited for testing: 54637465888374655394" );
+	wr = addText( "Talk:Physics", "Edited for testing: 98762415237651243634" );
+	wr = addText( "User:Fred", "Edited for testing: 54637465888374655394" );
 
 	wr = m_suite.viewPage( "Special:Recentchanges" );
 	text = wr.getText();
 	if ( text.indexOf( "Physics" ) < 0 ) { result = false; }
 	if ( text.indexOf( "Mathematics" ) < 0 ) { result = false; }
 
-	wr = m_suite.viewPage( "Physics" );
+	wr = m_suite.viewPage( "Talk:Physics" );
 	text = wr.getText();
 	if ( text.indexOf( "98762415237651243634" ) < 0 ) { result = false; }
 	if ( text.indexOf( "54637465888374655394" ) >= 0 ) { result = false; }
 
-	wr = m_suite.viewPage( "Mathematics" );
+	wr = m_suite.viewPage( "User:Fred" );
 	text = wr.getText();
 	if ( text.indexOf( "54637465888374655394" ) < 0 ) { result = false; }
 	if ( text.indexOf( "98762415237651243634" ) >= 0 ) { result = false; }
