@@ -333,7 +333,7 @@ function refreshWantedPages () {
 		if ( $x != "" and !$ti->doesTopicExist() ) {
 			$n = str_replace ( "$1" , "[[$x|".$ti->getNiceTitle($x)."]]" , $wikiWantedLine ) ;
 			$n = str_replace ( "$2" , $allPages[$x] , $n ) ;
-			$n = str_replace ( "$3" , wikiLink("special:whatlinkshere&target=$x") , $n ) ;
+			$n = str_replace ( "$3" , wikiLink("special:whatlinkshere&target=".nurlencode($x)) , $n ) ;
 			$n = str_replace ( "$4" , $ti->getNiceTitle($x) , $n ) ;
 			array_push ( $o , "*$n\n" ) ;
 			}
@@ -416,7 +416,7 @@ function AllPages () {
 	$result = mysql_query ( $sql , $connection ) ;
 	$ret .= "<nowiki>" ;
 	while ( $s = mysql_fetch_object ( $result ) )
-		$ret .= "<a  href=\"".wikiLink("$s->cur_title")."\">".$vpage->getNiceTitle($s->cur_title)."</a><br>" ;
+		$ret .= "<a  href=\"".wikiLink(nurlencode($s->cur_title))."\">".$vpage->getNiceTitle($s->cur_title)."</a><br>\n" ;
 	$ret .= "</nowiki>" ;
 	mysql_free_result ( $result ) ;
 	#mysql_close ( $connection ) ;
@@ -609,7 +609,7 @@ function randompage () {
 	$nt = $vpage->getNiceTitle($thelink) ;
 	if ( count ( explode ( ":" , $thelink ) ) == 1 ) $thelink = ":".$thelink ;
 	$ret = "<h2>--> [[$thelink|".$nt."]]...</h2>" ;
-	$headerScript .= "<nowiki><META HTTP-EQUIV=Refresh CONTENT=\"0; URL=".wikiLink($thelink)."\"></nowiki>" ;
+	$headerScript .= "<nowiki><META HTTP-EQUIV=Refresh CONTENT=\"0; URL=".wikiLink(nurlencode($thelink))."\"></nowiki>" ;
 	mysql_free_result ( $result ) ;
 	#mysql_close ( $connection ) ;
 
@@ -821,6 +821,7 @@ function recentChangesLayout ( &$arr ) {
 	$dummy = wikiLink("x=y") ;
 	foreach ( $arr as $s ) {
 		$nt = $xyz->getNiceTitle ( $s->cur_title ) ;
+		$url = nurlencode ( $s->cur_title ) ;
 		$day = date ( "l, F d, Y" , tsc ( $s->cur_timestamp ) ) ;
 		$time = date ( "H:i" , tsc ( $s->cur_timestamp ) ) ;
 		if ( $day != $lastDay ) {
@@ -832,9 +833,8 @@ function recentChangesLayout ( &$arr ) {
 			}
 		$u = $s->cur_user_text ;
 		if ( $s->cur_user != 0 ) {
-			$xyz->title = $u ;
-			$xyz->makeSecureTitle () ;
-			$u = "<a href=\"".wikiLink("user:$xyz->secureTitle")."\">$u</a>" ;
+			$xyz->SetTitle ( $u ) ;
+			$u = "<a href=\"".wikiLink("user:$xyz->url")."\">$u</a>" ;
 			}
 #		else $u = "<font color=red>$u</font>" ; # IPs in red, deactivated
 		$comment = trim($s->cur_comment) ;
@@ -846,22 +846,22 @@ function recentChangesLayout ( &$arr ) {
 		if ( $user->options["changesLayout"] == "table" ) $t = "<tr><td$color valign=top width=0%>" ;
 		else $t = "<li>" ;
 
-		if ( $s->version == "current" ) $t .= "<a href=\"".wikiLink("$s->cur_title&diff=yes")."\">$wikiDiff</a>&nbsp;" ;
-		else if ( $s->version != "" ) $t .= "<a href=\"".wikiLink("$s->cur_title&oldID=$s->old_id&version=$s->version&diff=yes")."\">$wikiDiff</a>&nbsp;";
-		else $t .= "<a href=\"".wikiLink("$s->cur_title&diff=yes")."\">$wikiDiff</a>" ;
+		if ( $s->version == "current" ) $t .= "<a href=\"".wikiLink("$url&diff=yes")."\">$wikiDiff</a>&nbsp;" ;
+		else if ( $s->version != "" ) $t .= "<a href=\"".wikiLink("$url&oldID=$s->old_id&version=$s->version&diff=yes")."\">$wikiDiff</a>&nbsp;";
+		else $t .= "<a href=\"".wikiLink("$url&diff=yes")."\">$wikiDiff</a>" ;
 
 		if ( $user->options["changesLayout"] == "table" ) $t .= "</td><td$color valign=top>" ;
 		else $t .= " " ;
 
-		if ( $s->version == "current" ) $t .= "<a href=\"".wikiLink("$s->cur_title")."\">$nt</a></td>" ;
-		else if ( $s->version != "" ) $t .= "<a href=\"".wikiLink("$s->cur_title&oldID=$s->old_id&version=$s->version")."\">$nt ($s->version)</a></td>" ;
-		else $t .= "<a href=\"".wikiLink("$s->cur_title")."\">$nt</a>" ;
+		if ( $s->version == "current" ) $t .= "<a href=\"".wikiLink("$url")."\">$nt</a></td>" ;
+		else if ( $s->version != "" ) $t .= "<a href=\"".wikiLink("$url&oldID=$s->old_id&version=$s->version")."\">$nt ($s->version)</a></td>" ;
+		else $t .= "<a href=\"".wikiLink("$url")."\">$nt</a>" ;
 
 		if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top width=0% nowrap>$time</td>" ;
 		else $t = str_replace ( "</td>" , "; " , $t ) . " $time" ;
 
 		$noc = $s->changes ;
-		if ( $noc > 1 ) $noc = "$noc <a href=\"".wikiLink("$s->cur_title&action=history")."\">changes</a>" ;
+		if ( $noc > 1 ) $noc = "$noc <a href=\"".wikiLink("$url&action=history")."\">changes</a>" ;
 		if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top width=0% nowrap>$noc</td>" ;
 		else { 
 			if ( $noc != "" ) $t .= " ($noc)" ;
@@ -871,11 +871,10 @@ function recentChangesLayout ( &$arr ) {
 
 		if ( $s->version != "" ) {
 			$v = new wikiTitle ;
-			$v->title = $s->cur_user_text ;
-			$v->makeSecureTitle () ;
+			$v->SetTitle ( $s->cur_user_text ) ;
 			if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top nowrap>" ;
 			if ( $s->cur_user == 0 ) $t .= "$s->cur_user_text</td>" ;
-			else $t .= "<a href=\"".wikiLink("user:$v->secureTitle")."\">$s->cur_user_text</a></td>" ;
+			else $t .= "<a href=\"".wikiLink("user:$v->url")."\">$s->cur_user_text</a></td>" ;
 			if ( $user->options["changesLayout"] == "table" ) $t .= "</td>" ;
 			else $t .= "; " ;
 			}
@@ -1169,9 +1168,9 @@ function upload () {
 function doHistory ( $title ) {
 	global $THESCRIPT , $vpage , $wikiSQLServer , $wikiHistoryTitle , $wikiCurrentVersion , $wikiHistoryHeader ;
 	$vpage = new WikiPage ;
-	$vpage->title = $title ;
-	$vpage->makeSecureTitle () ;
+	$vpage->SetTitle ( $title ) ;
 	$ti = $vpage->secureTitle ;
+	$url = $vpage->url;
 	$vpage->special ( str_replace ( "$1" , $title , $wikiHistoryTitle ) ) ;
 	$vpage->makeSecureTitle () ;
 
@@ -1210,7 +1209,7 @@ function doHistory ( $title ) {
 		}
 
 	$t = recentChangesLayout ( $a ) ;
-	$t = "<b>".str_replace("$1",$title,$wikiHistoryHeader)."</b>".$t ;
+	$t = "<b>".str_replace(array("$1","$2"),array($url,$title),$wikiHistoryHeader)."</b>".$t ;
 
 	$ret = $vpage->getHeader() ;
 	$ret .= $vpage->getMiddle($t) ;
@@ -1284,7 +1283,7 @@ function ShortPages () {
 		$ret .= "<td$color align=right valign=top nowrap>(".str_replace("$1",$s->len,$wikiStubChars).")</td>\n" ;
 		$ret .= "<td$color nowrap valign=top>[[$s->cur_title|".$k->getNiceTitle()."]]</td>\n";
 		if ( in_array ( "is_sysop" , $user->rights ) )
-			$ret .= "<td$color valign=top nowrap><nowiki><a href=\"".wikiLink("special:deletepage&target=$s->cur_title")."\">$wikiStubDelete</a></nowiki></td>" ;
+			$ret .= "<td$color valign=top nowrap><nowiki><a href=\"".wikiLink("special:deletepage&target=$k->url")."\">$wikiStubDelete</a></nowiki></td>" ;
 		else $ret .= "<td$color width=\"100%\" nowrap>&nbsp;</td>" ;
 
 		if ( $showLinksThere == 1 ) {
@@ -1299,7 +1298,7 @@ function ShortPages () {
 				$lf .= ")</font>" ;
 				}
 			$ret .= "<td$color width=\"100%\" valign=top>".str_replace("$1",count($lh),$wikiStubLinkHere)."$lf</td>\n";
-		} else $ret .= "<td$color valign=top><nowiki><a href=\"".wikiLink("special:whatlinkshere&target=$s->cur_title")."\">Show pages that link to \"".$k->getNiceTitle()."\"</a></nowiki></td>\n" ;
+		} else $ret .= "<td$color valign=top><nowiki><a href=\"".wikiLink("special:whatlinkshere&target=$k->url")."\">Show pages that link to \"".$k->getNiceTitle()."\"</a></nowiki></td>\n" ;
 
 		$ret .= "</tr>" ;
 		if ( $color == $color1 ) $color = $color2 ;
@@ -1390,7 +1389,7 @@ function deletepage () {
 		removeFromLinkList ( "cur_linked_links" , $target ) ;
 		removeFromLinkList ( "cur_unlinked_links" , $target ) ;
 	} else {
-		$ret = "<font size=\"+2\">".str_replace("$1",$target,$wikiDeleteAsk)."</font>" ;
+		$ret = "<font size=\"+2\">".str_replace(array("$1","$2"),array($target,nurlencode($target)),$wikiDeleteAsk)."</font>" ;
 		}
 	return "<nowiki>$ret</nowiki>" ;
 	}
@@ -1422,7 +1421,7 @@ function protectpage () {
 		$p = getMySQL ( "cur" , "cur_restrictions" , "cur_title=\"$target\"" ) ;
 
 		$ret = str_replace("$1",$target,$wikiProtectText) ;
-		$ret .= "<br><br><FORM action=\"".wikiLink("special:protectpage&target=$target&protecting=yes")."\" method=post>$wikiProtectCurrent\n" ;
+		$ret .= "<br><br><FORM action=\"".wikiLink("special:protectpage&target=".nurlencode($target)."&protecting=yes")."\" method=post>$wikiProtectCurrent\n" ;
 		$ret .= "<INPUT TABINDEX=1 TYPE=text NAME=newrestrictions VALUE=\"$p\" SIZE=30>\n" ;
 		$ret .= "<INPUT TABINDEX=2 TYPE=submit NAME=save VALUE=\"Save\">" ;
 		$ret .= "</FORM>\n" ;
