@@ -124,15 +124,15 @@ class WikiPage extends WikiTitle {
             }
 
         if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" and !isset ($oldID) ) { # #REDIRECT
-            $link = wikiLink ( $this->getNiceTitle() ) ;
-            $link = "<a href=\"$link&amp;action=view&amp;redirect=no\">".$this->getNiceTitle()."</a>" ;
-            $link = str_replace ( "$1" , $link , $wikiRedirectFrom ) ;
-            $this->backLink = $link ;
 	    if ( preg_match ( '/^#redirect\s*\[\[\s*([^\]\n]+)\s*\]\]/i' , $this->contents , $regs ) ) {
-	    	$target = $regs[1] ;
-            	$this->load ( trim($target) , false ) ;
-		}
+              $target = $regs[1] ;
+              $link = wikiLink ( $this->getNiceTitle() ) ;
+              $link = "<a href=\"$link&amp;action=view&amp;redirect=no\">".$this->getNiceTitle()."</a>" ;
+              $link = str_replace ( "$1" , $link , $wikiRedirectFrom ) ;
+              $this->backLink = $link ;
+              $this->load ( trim($target) , false ) ;
             }
+          }
 	    #echo "***canbecached = $this->canBeCached***"; FIXME
         }
 
