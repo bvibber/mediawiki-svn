@@ -7,7 +7,8 @@ class LinkCache {
 
 	function LinkCache()
 	{
-		$this->mGoodLinks = $this->mBadLinks = array();
+		$this->mGoodLinks = array();
+		$this->mBadLinks = array();
 	}
 
 	function getGoodLinkID( $title )

@@ -5,7 +5,7 @@ class Article {
 	/* private */ var $mTitle; # WikiTitle object
 	/* private */ var $mContent, $mContentLoaded;
 	/* private */ var $mUser, $mTimestamp;
-	/* private */ var $mCounter, $mComment, $mRevision;
+	/* private */ var $mCounter, $mComment, $mOldversion;
 	/* private */ var $mMinorEdit;
 
 	function Article( $t )
@@ -14,7 +14,7 @@ class Article {
 		$this->mContentLoaded = false;
 		$this->mUser = $this->mCounter = -1; # Not loaded
 		$this->mTimestamp = $this->mComment = "";
-		$this->mRevision = 0;
+		$this->mOldversion = 0;
 	}
 
 	function getContent()
@@ -69,7 +69,7 @@ class Article {
 		if ( -1 != $this->mUser ) return;
 
 		$conn = wfGetDB();
-		$sql = "SELECT cur_user,cur_timestamp,cur_revision," .
+		$sql = "SELECT cur_user,cur_timestamp,cur_old_version," .
 		  "cur_comment,cur_minor_edit FROM cur WHERE " .
 		  "cur_id=" . $this->getID();
 		wfDebug( "Art: 3: $sql\n" );
@@ -80,7 +80,7 @@ class Article {
 			$this->mUser = $s->cur_user;
 			$this->mTimestamp = $s->cur_timestamp;
 			$this->mComment = $s->cur_comment;
-			$this->mRevision = $s->cur_revision;
+			$this->mOldversion = $s->cur_old_version;
 			$this->mMinorEdit = $s->cur_minor_edit;
 		}
 	}
@@ -238,10 +238,11 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 	{
 		global $wgOut, $wgUser, $wgTitle;
 
+		$text = $this->preSaveTransform( $text );
 		$conn = wfGetDB();
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
-		  "cur_restrictions,cur_revision,cur_ind_title) VALUES (" .
+		  "cur_restrictions,cur_old_version,cur_ind_title) VALUES (" .
 		  $this->mTitle->getNamespace() . ", '" .
 		  $this->mTitle->getDBKey() . "', '" .
 		  wfStrencode( $text ) . "', '" . wfStrencode( $summary ) . "', '" .
@@ -264,17 +265,18 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		if ( $this->mMinorEdit ) { $me1 = 1; } else { $me1 = 0; }
 		if ( $minor ) { $me2 = 1; } else { $me2 = 0; }
-
 		$this->loadLastEdit();
+
+		$text = $this->preSaveTransform( $text );
 		$conn = wfGetDB();
 		$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
-		  "old_comment,old_user,old_revision,old_timestamp," .
+		  "old_comment,old_user,old_old_version,old_timestamp," .
 		  "old_minor_edit) VALUES (" .
 		  $this->mTitle->getNamespace() . ", '" .
 		  $this->mTitle->getDBKey() . "', '" .
 		  wfStrencode( $this->getContent() ) . "', '" .
 		  wfStrencode( $this->mComment ) . "', " .
-		  $this->mUser . ", " . $this->mRevision . ", '" .
+		  $this->mUser . ", " . $this->mOldversion . ", '" .
 		  $this->mTimestamp . "', " . $me1 . ")";
 
 		wfDebug( "Art: 4: $sql\n" );
@@ -285,7 +287,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		}
 		$cond = "(old_namespace=" . $this->mTitle->getNamespace() .
 		  " AND old_title='" . $this->mTitle->getDBKey() .
-		  "' AND old_revision={$this->mRevision})";
+		  "' AND old_old_version={$this->mOldversion})";
 		$newid = wfGetSQL( "old", "old_id", $cond );
 		if ( 0 == $newid ) {
 			$wgOut->databaseError( wfMsg( "updatingarticle" ) );
@@ -296,7 +298,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 		  "',cur_comment='" .  wfStrencode( $summary ) .
 		  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
 		  ", cur_timestamp='" . date( "YmdHis" ) .
-		  "',cur_revision=$newid " . 
+		  "',cur_old_version=$newid " . 
 		  "WHERE cur_id=" . $this->getID();
 
 		wfDebug( "Art: 5: $sql\n" );
@@ -384,6 +386,41 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 
 		$wgOut->addWikiText( wfMsg( "readonlytext" ) );
 		$wgOut->returnToMain();
+	}
+
+	# This function is called right before saving the wikitext,
+	# so we can do things like signatures.
+	#
+	function preSaveTransform( $text )
+	{
+		$s = "";
+		while ( "" != $text ) {
+			$p = preg_split( "/<\\s*nowiki\\s*>/i", $text, 2 );
+			$s .= $this->pstPass2( $p[0] );
+
+			if ( "" == $p[1] ) { $text = ""; }
+			else {
+				$q = preg_split( "/<\\/\\s*nowiki\\s*>/i", $p[1], 2 );
+				$s .= $q[0];
+				$text = $q[1];
+			}
+		}
+		return $s;
+	}
+
+	/* private */ function pstPass2( $text )
+	{
+		global $wgUser, $wgLang;
+
+		$n = $wgUser->getName();
+		$k = $wgUser->getOption( "nickname" );
+		if ( "" == $k ) { $k = $n; }
+		$d = $wgLang->dateFromTimestamp( date( "YmdHis" ) );
+
+		$text = preg_replace( "/~~~~/", "[[User:$n|$k]] $d", $text );
+		$text = preg_replace( "/~~~/", "[[User:$n|$k]]", $text );
+
+		return $text;
 	}
 }
 

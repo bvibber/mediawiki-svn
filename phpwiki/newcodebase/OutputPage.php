@@ -46,15 +46,14 @@ class OutputPage {
 	function addWikiText( $text )
 	{
 		while ( "" != $text ) {
-			$p = preg_split( "/<\s*nowiki\s*>/i", $text, 2 );
+			$p = preg_split( "/<\\s*nowiki\\s*>/i", $text, 2 );
 			$this->addWikiPass2( $p[0] );
 
-			if ( "" != $p[1] ) {
-				$q = preg_split( "/<\/\s*nowiki\s*>/i", $p[1], 2 );
+			if ( "" == $p[1] ) { $text = ""; }
+			else {
+				$q = preg_split( "/<\\/\\s*nowiki\\s*>/i", $p[1], 2 );
 				$this->addHTML( $q[0] );
 				$text = $q[1];
-			} else {
-				$text = "";
 			}
 		}
 	}
@@ -234,7 +233,7 @@ class OutputPage {
 					else { $text = "[$protocol$link]"; }
 				} else {
 					if ( ! ( strstr( $text, " " ) === false ) &&
-					  1 == $wgUser->getOption( "underlineLinks" ) ) {
+					  1 == $wgUser->getOption( "underline" ) ) {
 						$text = "[$text]";
 					}
 				}
@@ -258,7 +257,7 @@ class OutputPage {
 	{
 		global $wgTitle, $wgUser, $wgServer, $wgUploadPath, $wgLang;
 
-		$tc = "[\\-,.\\(\\)' _0-9A-Za-z\\/:\\x80-\\xff]"; # from Title
+		$tc = "[&;%\\-,.\\(\\)' _0-9A-Za-z\\/:\\x80-\\xff]";
 		$sk = $wgUser->getSkin();
 
 		$a = explode( "[[", " " . $s );
@@ -491,7 +490,7 @@ class OutputPage {
 					$this->mLastSection = $newSection;
 				}
 				if ( $inBlockElem &&
-				  preg_match( "/(<\/table|<\/blockquote|<\/h1|<\/h2|<\/h3|<\/h4|<\/h5|<\/h6)/i", $t ) ) {
+				  preg_match( "/(<\\/table|<\\/blockquote|<\\/h1|<\\/h2|<\\/h3|<\\/h4|<\\/h5|<\\/h6)/i", $t ) ) {
 					$inBlockElem = false;
 				}
 			}
@@ -567,7 +566,8 @@ class OutputPage {
 		$tagstack = array(); $tablestack = array();
 
 		foreach ( $bits as $x ) {
-			preg_match( "/^(\/?)(\w+)([^>]*)(\/{0,1}>)([^<]*)$/", $x, $regs );
+			preg_match( "/^(\\/?)(\\w+)([^>]*)(\\/{0,1}>)([^<]*)$/",
+			  $x, $regs );
 			list( $qbar, $slash, $t, $params, $brace, $rest ) = $regs;
 
 			$badtag = 0 ;
@@ -625,7 +625,7 @@ class OutputPage {
 	/* private */ function autoNumberHeadings( $text )
 	{
 		global $wgUser;
-		if ( 1 != $wgUser->getOption( "numberHeadings" ) ) {
+		if ( 1 != $wgUser->getOption( "numberheadings" ) ) {
 			return $text;
 		}
 		$j = 0;

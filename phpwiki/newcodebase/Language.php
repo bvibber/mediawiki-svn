@@ -14,13 +14,13 @@
 );
 
 /* private */ $wgUserTogglesEn = array(
-	"showHover"	=> "Show hoverbox over wiki links",
-	"underlineLinks" => "Underline links",
-	"markupNewTopics" => "Highlight links to empty topics",
+	"hover"	=> "Show hoverbox over wiki links",
+	"underline" => "Underline links",
+	"highlightbroken" => "Highlight links to empty topics",
 	"justify"	=> "Justify paragraphs",
-	"hideMinor" => "Hide minor edits in recent changes",
-	"numberHeadings" => "Auto-number headings",
-	"rememberPassword" => "Remember my password"
+	"hideminor" => "Hide minor edits in recent changes",
+	"numberheadings" => "Auto-number headings",
+	"rememberpassword" => "Remember password across sessions"
 );
 
 /* private */ $wgLanguageNamesEn= array(

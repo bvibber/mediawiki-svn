@@ -39,7 +39,7 @@ function wfSpecialUserlogin()
 	$u->setEmail( $wpEmail );
 	if ( 1 == $wpRemember ) { $r = 1; }
 	else { $r = 0; }
-	$u->setOption( "rememberPassword", $r );
+	$u->setOption( "rememberpassword", $r );
 
 	$wgUser = $u;
 	$m = str_replace( "$1", $wgUser->getName(), wfMsg( "welcomecreation" ) );
@@ -72,7 +72,7 @@ function wfSpecialUserlogin()
 	#
 	if ( 1 == $wpRemember ) { $r = 1; }
 	else { $r = 0; }
-	$u->setOption( "rememberPassword", $r );
+	$u->setOption( "rememberpassword", $r );
 
 	$wgUser = $u;
 	$m = str_replace( "$1", $wgUser->getName(), wfMsg( "loginsuccess" ) );
@@ -170,7 +170,7 @@ function wfSpecialUserlogin()
 	} else {
 		$wgOut->addHTML( "<h2>$le:</h2>\n<font size='+1' color='red'>$err</font>\n" );
 	}
-	if ( 1 == $wgUser->getOption( "rememberPassword" ) ) {
+	if ( 1 == $wgUser->getOption( "rememberpassword" ) ) {
 		$checked = " checked";
 	} else {
 		$checked = "";

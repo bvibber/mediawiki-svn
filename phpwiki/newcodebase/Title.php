@@ -53,6 +53,11 @@ class Title {
 
 	function newFromText( $text )
 	{
+		$trans = get_html_translation_table( HTML_ENTITIES );
+		$trans = array_flip( $trans );
+		$text = strtr( $text, $trans );
+		$text = urldecode( $text );
+
 		$t = new Title();
 		$t->mDbkeyform = str_replace( " ", "_", $text );
 		$t->secureAndSplit();
