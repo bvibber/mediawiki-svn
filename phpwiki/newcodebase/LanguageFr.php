@@ -555,7 +555,7 @@ Pour incorporer l'image dans un article, placez dans celui-ci un lien rédigé com
 ou <b>[[media:nom_du_fichier.ogg]]</b> pour les sons.
 <p>N'oubliez pas que, comme toutes les pages de Wikipédia, les fichiers que vous copiez peuvent être modifiés ou supprimés par les autres utilisateurs s'ils estiment que cela est dans l'intérêt de l'encyclopédie. Sachez aussi que votre accès au serveur peut être bloqué si vous faites un mauvais usage du système.",
 "uploadlog"  => "log d'upload",
-"uploadlogpage" => "log d'upload",
+"uploadlogpage" => "Log_d'upload",
 "uploadlogpagetext" => "Voici la liste des derniers fichiers copiés sur le serveur.
 L'heure indiquée est celle du serveur (U.S. Pacific time).
 <ul>
@@ -710,7 +710,7 @@ Voir $2 pour une liste des suppressions récentes.",
 "deletedarticle" => "deleted \"$1\"",
 "dellogpage" => "Deletion_log",
 "dellogpagetext" => "Voici la liste des suppressions récentes.
-L'heure indiquée est celle du serveur (U.S. Pacific time).
+L'heure indiquée est celle du serveur (UTC).
 <ul>
 </ul>
 ",
