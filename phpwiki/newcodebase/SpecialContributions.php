@@ -6,7 +6,7 @@ function wfSpecialContributions()
 	$fname = "wfSpecialContributions";
 
 	if ( "" == $target ) {
-		$wgOut->errorpage( "notargetitle", "notargettext" );
+		$wgOut->errorpage( "notargettitle", "notargettext" );
 		return;
 	}
 	if ( ! $days ) { $days = 14; }

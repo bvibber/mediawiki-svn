@@ -6,7 +6,7 @@ function wfSpecialWhatlinkshere()
 	$fname = "wfSpecialWhatlinkshere";
 
 	if ( "" == $target ) {
-		$wgOut->errorpage( "notargetitle", "notargettext" );
+		$wgOut->errorpage( "notargettitle", "notargettext" );
 		return;
 	}
 	$nt = Title::newFromURL( wfCleanQueryVar( $target ) );

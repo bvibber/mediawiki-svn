@@ -341,8 +341,8 @@ class Skin {
 
 			if ( $wgUser->isSysop() ) {
 				$s .= $sep . $this->deleteThisPage() .
-				  $sep . $this->protectThisPage();
-				  # $sep . $this->moveThisPage();
+				  $sep . $this->protectThisPage() .
+				  $sep . $this->moveThisPage();
 			}
 		}
 		$s .= $this->otherLanguages();
@@ -398,8 +398,8 @@ class Skin {
 			}
 			if ( $wgUser->isSysop() ) {
 				$s .= $sep . $this->deleteThisPage() .
-				$sep . $this->protectThisPage();
-				# $sep . $this->moveThisPage();
+				$sep . $this->protectThisPage() .
+				$sep . $this->moveThisPage();
 			}
 			$s .= $sep . $this->talkLink()
 			  . $sep . $this->historyLink()
@@ -553,7 +553,11 @@ class Skin {
 
 	function moveThisPage()
 	{
-		return wfMsg( "movethispage" );
+		global $wgTitle;
+
+		$s = $this->makeKnownLink( "Special:Movepage",
+		  wfMsg( "movethispage" ), "target=" . $wgTitle->getPrefixedURL() );
+		return $s;
 	}
 
 	function historyLink()

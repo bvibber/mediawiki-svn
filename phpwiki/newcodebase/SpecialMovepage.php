@@ -8,12 +8,7 @@ function wfSpecialMovepage()
 		$wgOut->sysopRequired();
 		return;
 	}
-	$target = wfCleanQueryVar( $target );
-	if ( "" == $target ) {
-		$wgOut->errorpage( "notargetitle", "notargettext" );
-		return;
-	}
-	$fields = array( "wpBlockAddress", "wpBlockReason" );
+	$fields = array( "wpNewTitle", "wpOldTitle" );
 	wfCleanFormFields( $fields );
 
 	$f = new MovePageForm();
@@ -23,24 +18,31 @@ function wfSpecialMovepage()
 	else { $f->showForm( "" ); }
 }
 
-	$nt = Title::newFromURL( $target );
-	$oldid = $nt->getArticleID();
+class MovePageForm {
 
-class MovePageForm()
-{
 	function showForm( $err )
 	{
 		global $wgOut, $wgUser, $wgServer, $wgScript;
-		global $ip, $wpBlockAddress, $wpBlockReason;
+		global $wpNewTitle, $wpOldTitle, $target;
 
-		$wgOut->setPagetitle( wfMsg( "blockip" ) );
-		$wgOut->addWikiText( wfMsg( "blockiptext" ) );
+		$wgOut->setPagetitle( wfMsg( "movepage" ) );
+		$wgOut->addWikiText( wfMsg( "movepagetext" ) );
 
-		if ( ! $wpBlockAddress ) { $wpBlockAddress = $ip; }
-		$ipa = wfMsg( "ipaddress" );
-		$reason = wfMsg( "ipbreason" );
-		$ipbs = wfMsg( "ipbsubmit" );
-		$action = "$wgServer$wgScript?title=Special%3ABlockip&amp;" .
+		if ( ! $wpOldTitle ) {
+			$target = wfCleanQueryVar( $target );
+			if ( "" == $target ) {
+				$wgOut->errorpage( "notargettitle", "notargettext" );
+				return;
+			}
+			$wpOldTitle = $target;
+		}
+		$ot = Title::newFromURL( $wpOldTitle );
+		$ott = $ot->getPrefixedText();
+
+		$ma = wfMsg( "movearticle" );
+		$newt = wfMsg( "newtitle" );
+		$mpb = wfMsg( "movepagebtn" );
+		$action = "$wgServer$wgScript?title=Special%3AMovepage&amp;" .
 		  "action=submit";
 
 		if ( "" != $err ) {
@@ -48,18 +50,19 @@ class MovePageForm()
 			$wgOut->addHTML( "<p><font color='red' size='+1'>{$err}</font>\n" );
 		}
 		$wgOut->addHTML( "<p>
-<form method=post action='{$action}'>
+<form method=post action=\"{$action}\">
 <table border=0><tr>
-<td align='right'>{$ipa}:</td>
-<td align='left'>
-<input tabindex=1 type=text size=20 name='wpBlockAddress' value=\"{$wpBlockAddress}\">
-</td></tr><tr>
-<td align='right'>{$reason}:</td>
-<td align='left'>
-<input tabindex=2 type=text size=40 name='wpBlockReason' value=\"{$wpBlockReason}\">
-</td></tr><tr>
-<td>&nbsp;</td><td align='left'>
-<input tabindex=3 type=submit name='wpBlock' value=\"{$ipbs}\">
+<td align=right>{$ma}:</td>
+<td align=left><strong>{$ott}</strong></td>
+</tr><tr>
+<td align=right>{$newt}:</td>
+<td align=left>
+<input type=text size=40 name='wpNewTitle' value=\"{$wpNewTitle}\">
+<input type=hidden name='wpOldTitle' value=\"{$wpOldTitle}\">
+</td>
+</tr><tr>
+<td>&nbsp;</td><td align=left>
+<input type=submit name='wpMove' value=\"{$mpb}\">
 </td></tr></table>
 </form>\n" );
 
@@ -68,37 +71,70 @@ class MovePageForm()
 	function doSubmit()
 	{
 		global $wgOut, $wgUser, $wgServer, $wgScript;
-		global $ip, $wpBlockAddress, $wpBlockReason;
-		$fname = "IPBlockForm::doSubmit";
+		global $wpNewTitle, $wpOldTitle, $target;
+		$fname = "MovePageForm::doSubmit";
 
-		if ( ! preg_match( "/\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}/",
-		  $wpBlockAddress ) ) {
-			$this->showForm( wfMsg( "badipaddress" ) );
+		$ot = Title::newFromText( $wpOldTitle );
+		$nt = Title::newFromText( $wpNewTitle );
+		$nns = $nt->getNamespace();
+		$ndt = wfStrencode( $nt->getDBkey() );
+		$ons = $ot->getNamespace();
+		$odt = wfStrencode( $ot->getDBkey() );
+		$oldid = $ot->getArticleID();
+
+		if ( 0 != $nt->getArticleID() ) {
+			$this->showForm( wfMsg( "articleexists" ) );
 			return;
 		}
-		if ( "" == $wpBlockReason ) {
-			$this->showForm( wfMsg( "noblockreason" ) );
+		if ( ( ! Namespace::isMovable( $ons ) ) || ( "" == $odt ) ||
+		  ( ! Namespace::isMovable( $nns ) ) || ( "" == $ndt ) ) {
+			$this->showForm( wfMsg( "badarticleerror" ) );
 			return;
 		}
-		$sql = "INSERT INTO ipblocks (ipb_address, ipb_user, ipb_by, " .
-		  "ipb_reason, ipb_timestamp ) VALUES ('{$wpBlockAddress}', 0, " .
-		  $wgUser->getID() . ", '" . wfStrencode( $wpBlockReason ) . "','" .
-		  date( "YmdHis" ) . "')";
+		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp," .
+		  "cur_namespace={$nns},cur_title='{$ndt}' WHERE cur_id={$oldid}";
 		wfQuery( $sql, $fname );
 
-		$success = "$wgServer$wgScript?title=Special%3ABlockip" .
-		  "&action=success&ip={$wpBlockAddress}";
+		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
+		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
+		  "cur_restrictions,cur_ind_title,cur_user_text,cur_is_redirect," .
+		  "cur_is_new) VALUES ({$ons},'{$odt}','#REDIRECT [[{$ndt}]]\n','" .
+		  "Moved to \"{$ndt}\"','" .
+		  $wgUser->getID() . "','" . date( "YmdHis" ) . "',0,0,'','" .
+		  wfStrencode( $ot->getIndexTitle() ) . "','" .
+		  wfStrencode( $wgUser->getName() ) . "',1,0)";
+		wfQuery( $sql, $fname );
+		$newid = wfInsertId();
+
+		$sql = "UPDATE old SET old_timestamp=old_timestamp," .
+		  "old_namespace={$nns},old_title='{$ndt}' WHERE old_title='{$odt}'";
+		wfQuery( $sql, $fname );
+
+		$sql = "UPDATE links SET l_from='{$ndt}' WHERE l_from='{$odt}'";
+		wfQuery( $sql, $fname );
+
+		$sql = "UPDATE links SET l_to={$newid} WHERE l_to={$oldid}";
+		wfQuery( $sql, $fname );
+
+		$sql = "UPDATE imagelinks SET il_from='{$ndt}' WHERE il_from='{$odt}'";
+		wfQuery( $sql, $fname );
+
+		$nu = urlencode( $wpNewTitle );
+		$ou = urlencode( $wpOldTitle );
+		$success = "{$wgServer}{$wgScript}?title=Special%3AMovepage" .
+		  "&action=success&oldtitle={$ou}&newtitle={$nu}";
 		$wgOut->redirect( $success );
 	}
 
 	function showSuccess()
 	{
 		global $wgOut, $wgUser, $wgServer, $wgScript;
-		global $ip;
+		global $newtitle, $oldtitle;
 
-		$wgOut->setPagetitle( wfMsg( "blockip" ) );
-		$wgOut->setSubtitle( wfMsg( "blockipsuccesssub" ) );
-		$text = str_replace( "$1", $ip, wfMsg( "blockipsuccesstext" ) );
+		$wgOut->setPagetitle( wfMsg( "movepage" ) );
+		$wgOut->setSubtitle( wfMsg( "pagemovedsub" ) );
+		$text = str_replace( "$1", $oldtitle, wfMsg( "pagemovedtext" ) );
+		$text = str_replace( "$2", $newtitle, $text );
 		$wgOut->addWikiText( $text );
 	}
 }
