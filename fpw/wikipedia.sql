@@ -2,7 +2,7 @@
 #
 # Host: localhost    Database: wikipedia
 #--------------------------------------------------------
-# Server version	3.23.41
+# Server version    3.23.41
 
 #
 # Table structure for table 'cur'
@@ -10,7 +10,7 @@
 
 CREATE TABLE cur (
   cur_id mediumint(8) unsigned NOT NULL auto_increment,
-  cur_title varchar(255) binary default NULL,
+  cur_title varchar(255) binary NOT NULL,
   cur_text mediumtext,
   cur_comment tinyblob,
   cur_user mediumint(8) unsigned default '0',
@@ -23,6 +23,7 @@ CREATE TABLE cur (
   cur_linked_links mediumtext,
   cur_unlinked_links mediumtext,
   cur_counter bigint(20) unsigned default '0',
+  cur_cache mediumtext,
   UNIQUE KEY cur_title (cur_title),
   UNIQUE KEY cur_id (cur_id),
   KEY cur_id_2 (cur_id)
@@ -63,4 +64,3 @@ CREATE TABLE user (
   UNIQUE KEY user_id (user_id),
   KEY user_id_2 (user_id)
 ) TYPE=MyISAM;
-
