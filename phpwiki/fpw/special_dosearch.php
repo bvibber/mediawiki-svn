@@ -28,8 +28,10 @@ function searchLineDisplay ( $v , $words) {
     while ( substr($v,0,1) == "#" ) $v = substr($v,1) ;
     foreach ( $words as $w ) {
         $v = preg_replace ( "/(".preg_quote( $w, "/" ).")/i" , "'''\\1'''" , $v ) ;    # highlight search term
-        $v = preg_replace ( "/(\[\[[^\[\]]*)'''([^\[\]]*)'''([^\[\]]*\]\])/i", "'''\\1\\2\\3'''", $v ) ;
-                                                                    # but NOT in [[links]]
+        # move highlighting outside link, if link is not already highlighted
+        $v = preg_replace ( "/([^']|[^'].)(\[\[[^\[\]]*)'''([^\[\]]*)'''([^\[\]]*\]\])/i", "\\1'''\\2\\3\\4'''", $v ) ;
+        # remove highlighting inside link if link is already highlighted
+        $v = preg_replace ( "/('')(\[\[[^\[\]]*)'''([^\[\]]*)'''([^\[\]]*\]\])/i", "\\1\\2\\3\\4", $v ) ;
     }
 
     $v = "<font size=-1>$v</font>" ;
