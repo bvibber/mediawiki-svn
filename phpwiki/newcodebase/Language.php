@@ -258,7 +258,7 @@
 "qbmyoptions"	=> "My options",
 "mypage"		=> "My page",
 "currentevents" => "Current events",
-"errorpagetitle" => "Erorr",
+"errorpagetitle" => "Error",
 "returnto"		=> "Return to $1.",
 "fromwikipedia"	=> "From Wikipedia, the free encyclopedia.",
 "whatlinkshere"	=> "Pages that link here",
