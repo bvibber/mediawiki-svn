@@ -194,6 +194,9 @@ class WikiPage extends WikiTitle {
 		}
 
 	return $a ;
+	}
+
+/*
 	# THe following is outdated
 
         $n = explode ( ":" , $this->title ) ;
@@ -240,6 +243,7 @@ class WikiPage extends WikiTitle {
         if ( $result != "" ) mysql_free_result ( $result ) ;
         return $a ;
         }
+*/
 
     # This creates a new article if there is none with the same title yet
     function ensureExistence () {
