@@ -131,7 +131,7 @@ class SkinCologneBlue extends Skin {
 		  . $sep . $this->specialLink( "specialpages" ) 
 		  . $sep . $this->bugReportsLink()
 		  . $sep . $this->makeKnownLink( wfMsg( "currentevents" ), "" )
-		  . $sep . $this->dateLink();
+		  . $sep; # . $this->dateLink() . $sep;
 
 		if ( $wgOut->isArticle() ) {
 			$s .= $this->menuHead( "qbedit" );
@@ -145,12 +145,16 @@ class SkinCologneBlue extends Skin {
 				$sep . $this->protectThisPage() .
 				$sep . $this->moveThisPage();
 			}
+			$s .= $sep;
+
 			$s .= $this->menuHead( "qbpageoptions" );
 			$s .= $this->talkLink()
 			  . $sep . $this->printableLink();
 			if ( 0 != $wgUser->getID() ) {
 				$s .= $sep . $this->watchThisPage();
 			}
+			$s .= $sep;
+
 			$s .= $this->menuHead( "qbpageinfo" )
 			  . $this->historyLink()
 			  . $sep . $this->whatLinksHere()
@@ -159,7 +163,7 @@ class SkinCologneBlue extends Skin {
 			if ( Namespace::getIndex( "User" ) == $wgTitle->getNamespace() ) {
 				$s .= $sep . $this->userContribsLink();
 			}
-			# Page views?
+			$s .= $sep;
 		}
 		$s .= $this->menuHead( "qbmyoptions" );
 		if ( 0 != $wgUser->getID() ) {
@@ -172,7 +176,7 @@ class SkinCologneBlue extends Skin {
 		} else {
 			$s .= $this->specialLink( "userlogin" );
 		}
-		$s .= "\n</div>\n";
+		$s .= $sep . "\n</div>\n";
 		return $s;
 	}
 

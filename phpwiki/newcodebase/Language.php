@@ -153,6 +153,7 @@ See $1.",
 "ok"			=> "OK",
 "sitetitle"		=> "Wikipedia",
 "sitesubtitle"	=> "The Free Encyclopedia",
+"retrievedfrom" => "(Retrieved from \"$1\")",
 
 # Main script and global functions
 #
@@ -305,6 +306,9 @@ Please check the URL you used to access this page.\n",
 # Search results
 #
 "searchresults" => "Search results",
+"searchhelppage" => "Wikipedia:Searching",
+"searchingwikipedia" => "Searching Wikipedia",
+"searchresulttext" => "For more information about searching Wikipedia, see $1.",
 "searchquery"	=> "For query \"$1\"",
 "badquery"		=> "Badly formed search query",
 "badquerytext"	=> "We could not process your query.

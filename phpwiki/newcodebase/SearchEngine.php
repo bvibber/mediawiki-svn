@@ -27,6 +27,12 @@ class SearchEngine {
 		$wgOut->setArticleFlag( false );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 
+		$sk = $wgUser->getSkin();
+		$text = str_replace( "$1", $sk->makeKnownLink(
+		  wfMsg( "searchhelppage" ), wfMsg( "searchingwikipedia" ) ),
+		  wfMsg( "searchresulttext" ) );
+		$wgOut->addHTML( $text );
+
 		$this->parseQuery();
 		if ( "" == $this->mTitlecond || "" == $this->mTextcond ) {
 			$wgOut->addHTML( "<h2>" . wfMsg( "badquery" ) . "</h2>\n" .
