@@ -2,7 +2,7 @@
 # See user.doc
 
 /* private */ $wgDefaultOptions = array(
-	"quickbar" => 3, "underline" => 1, "hover" => 1,
+	"quickbar" => 1, "underline" => 1, "hover" => 1,
 	"cols" => 80, "rows" => 25, "searchlimit" => 20,
 	"contextlines" => 5, "contextchars" => 50,
 	"skin" => 0, "rcdays" => 3, "rclimit" => 50
