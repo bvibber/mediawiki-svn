@@ -160,6 +160,9 @@ class OutputPage {
 		if( $ismodsince == $lastmod ) {
 			# Make sure you're in a place you can leave when you call us!
 			header( "HTTP/1.0 304 Not Modified" );
+			header( "Expires: Mon, 15 Jan 2001 00:00:00 GMT" ); # Cachers always validate the page!
+			header( "Cache-Control: private, must-revalidate, max-age=0" );
+			header( "Last-Modified: {$lastmod}" );			
 			exit;
 		} else {
 			$this->mLastModified = $lastmod;
