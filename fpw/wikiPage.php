@@ -822,11 +822,9 @@ class WikiPage extends WikiTitle {
     # This function does the actual parsing of the wiki parts of the article, for regions NOT marked with <nowiki>
     function subParseContents ( $s ) {
         global $user ;
-# Removed automatic links for CamelCase; wasn't working, anyway...
-#       $s = ereg_replace ( "([\.|\n| )([a-z0-9]*[A-Z0-9]+[A-Za-z0-9]*)( |\n|\.)" , "\\1[[\\2]]\\3" , $s ) ;
+
         if ( ! $this->isSpecialPage )
             $s = $this->removeHTMLtags ( $s ) ; # Removing "forbidden" HTML tags
-        #$s = ereg_replace ( "&amp;([a-zA-Z0-9#]+);" , "&\\1;" , $s ) ; # That's a long story... FIXME: What is this for? It mostly seems to make it very hard to write the code for an entity instead of the entity itself.
 
         # Now some repalcements wiki->HTML
         $s = ereg_replace ( "(^|\n)-----*" , "\\1<hr>" , $s ) ;
@@ -842,9 +840,6 @@ class WikiPage extends WikiTitle {
         $s = preg_replace ( "/(^|\\n)= ([^\\n]*) =\s*(\\r|$)/" , "\\1<h1>\\2</h1>\\3" , $s ) ;
 
         $s = ereg_replace ( "\n====*" , "<hr>" , $s ) ;
-
-        # Automatic links to subpages (e.g., /Talk -> [[/Talk]]   #DEACTIVATED
-#       $s = ereg_replace ( "([\n ])/([a-zA-Z0-9]+)" , "\\1[[/\\2|/\\2]]" , $s ) ;
 
         # Parsing through the text line by line
         # The main thing happening here is handling of lines starting with * # : etc.
@@ -1015,33 +1010,31 @@ class WikiPage extends WikiTitle {
             $middle = $this->doDiff().$this->contents ;
             }
         else $middle = $this->contents ;
+
         if ( $useCachedPages and !$this->isSpecialPage and $this->canBeCached) {
             if ( $this->cache != "" ) { # Using cache
                 $middle = $this->cache ;
                 #$middle = "<p>(cached)</p>" . $this->cache ; #FIXME
 
-        # Need to check for other-language links, which do not appear in the link arrays
-        $this->otherLanguages = array () ;
-        global $wikiOtherLanguages ;
-        preg_replace ( "/\[\[([a-z]{2})\:\s*([^\]]+)\s*\]\]/ie" ,
-            "( ( ( \$langurl = \$wikiOtherLanguages[\$lang = strtolower ( \"\$1\" )] ) != '' )
-            ? ( \$this->otherLanguages[\$lang] = str_replace ( '\\$1' ,
-                ucfirstIntl ( str_replace ( array ( '+' , '%25' ) , array ( '_' , '%' ) , nurlencode ( \"\$2\" ) ) ) ,
-                \$langurl ) )
-            : '' )" ,
-            $this->contents ) ;
+	        # Need to check for other-language links, which do not appear in the link arrays
+	        $this->otherLanguages = array () ;
+	        global $wikiOtherLanguages ;
+	        preg_replace ( "/\[\[([a-z]{2})\:\s*([^\]]+)\s*\]\]/ie" ,
+	            "( ( ( \$langurl = \$wikiOtherLanguages[\$lang = strtolower ( \"\$1\" )] ) != '' )
+	            ? ( \$this->otherLanguages[\$lang] = str_replace ( '\\$1' ,
+	                ucfirstIntl ( str_replace ( array ( '+' , '%25' ) , array ( '_' , '%' ) , nurlencode ( \"\$2\" ) ) ) ,
+	                \$langurl ) )
+	            : '' )" ,
+	            $this->contents ) ;
             } else {
                 $middle = $this->parseContents($middle) ;
                 if ( $this->canBeCached ) { # Generating cache
-
-        $this->cache = str_replace ( "\"" , "\\\"" , $middle ) ;
-        $connection = getDBconnection () ;
-        $sql = "UPDATE cur SET cur_cache=\"$this->cache\", cur_timestamp=cur_timestamp WHERE cur_title=\"$this->secureTitle\"" ;
-        mysql_query ( $sql , $connection ) ;
-        $sql = "UPDATE cur SET cur_text=\"\", cur_timestamp=cur_timestamp WHERE cur_title=\"Log:RecentChanges\"" ;
-        mysql_query ( $sql , $connection ) ;
-
-                    
+	        $this->cache = str_replace ( "\"" , "\\\"" , $middle ) ;
+	        $connection = getDBconnection () ;
+	        $sql = "UPDATE cur SET cur_cache=\"$this->cache\", cur_timestamp=cur_timestamp WHERE cur_title=\"$this->secureTitle\"" ;
+	        mysql_query ( $sql , $connection ) ;
+	        $sql = "UPDATE cur SET cur_text=\"\", cur_timestamp=cur_timestamp WHERE cur_title=\"Log:RecentChanges\"" ;
+	        mysql_query ( $sql , $connection ) ;
                     }
                 }
         } else {
