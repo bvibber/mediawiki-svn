@@ -35,7 +35,6 @@ import java.net.URLEncoder;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.queryParser.QueryParser;
@@ -91,7 +90,7 @@ public class SearchClientReader extends Thread {
 			istrm = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			ostrm = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
 			rawsearchterm = istrm.readLine();
-			rawsearchterm = URLDecoder.decode(rawsearchterm);
+			rawsearchterm = URLDecoder.decode(rawsearchterm, "UTF-8");
 			for (int i = 0; i < specialChars.length; ++i)
 				rawsearchterm = rawsearchterm.replaceAll(specialChars[i], 
 						"\\" + specialChars[i]);
@@ -116,7 +115,7 @@ public class SearchClientReader extends Thread {
 	        }
 	        if (numhits == 0) {
 	        	String spelfix = makeSpelFix(rawsearchterm);
-	        	ostrm.write(URLEncoder.encode(spelfix) + "\n");
+	        	ostrm.write(URLEncoder.encode(spelfix, "UTF-8") + "\n");
 	        }
 	        ostrm.flush();
 		} catch (IOException e) {
