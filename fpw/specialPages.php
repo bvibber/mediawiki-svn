@@ -495,13 +495,21 @@ function randompage () {
 function recentchanges () {
 	global $THESCRIPT , $user ;
 	global $vpage , $maxcnt , $daysAgo ;
+	global $from , $wikiRecentChangesText ;
 	$vpage->special ( "Recent Changes" ) ;
 	$vpage->makeSecureTitle() ;
 	if ( !isset ( $maxcnt ) ) $maxcnt = 100 ;
 	if ( !isset ( $daysAgo ) ) $daysAgo = 3 ;
 
-	$ret = "<nowiki>" ;
-	$ret .= "These are the last <b>$maxcnt</b> of the changes made on Wikipedia in the last <b>$daysAgo</b> days.<br>\n" ;
+	$from2 = substr ( $from , 0 , 4 ) . "-" . substr ( $from , 4 , 2 ) . "-" . substr ( $from , 6 , 2 ) ;
+	$from2 .= " " . substr ( $from , 8 , 2 ) . ":" . substr ( $from , 10 , 2 ) . ":" . substr ( $from , 12 , 2 ) ;
+
+	$ret = "" ;
+	if ( $wikiRecentChangesText != "" ) $ret .= "$wikiRecentChangesText<br><br>" ;
+
+	$ret .= "<nowiki>" ;
+	if ( !isset($from) ) $ret .= "These are the last <b>$maxcnt</b> of the changes made on Wikipedia in the last <b>$daysAgo</b> days.<br>\n" ;
+	else $ret .= "These are the last <b>$maxcnt</b> of the changes made on Wikipedia since <b>".$from2."</b>.<br>\n" ;
 	$ret .= "View the last " ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=50\">50</a> | " ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&daysAgo=$daysAgo&maxcnt=100\">100</a> | " ;
@@ -517,12 +525,21 @@ function recentchanges () {
 	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=3\">3 days</a> | " ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=5\">5 days</a> | " ;
 	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=7\">7 days</a> | " ;
-	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=14\">14 days</a><br>\n" ;
-	$ret .= "</nowiki>" ;
-	$arr = array () ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=$maxcnt&daysAgo=14\">14 days</a> | \n" ;
 
 	$mindate = date ( "Ymd000000" , time () - $daysAgo*24*60*60 ) ;
 	$mindate = timestampAddHour ( $mindate , $user->options["hourDiff"] ) ;
+
+	$now = date ( "YmdHis" , time() ) ;
+	$now = timestampAddHour ( $now , $user->options["hourDiff"] ) ;
+
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&from=$now\">List only new changes</a>" ;
+	$ret .= "</nowiki>" ;
+	$ret .= "\n----\n" ;
+	$arr = array () ;
+
+	if ( $from != "" ) $mindate = $from ;
+
 	$connection=getDBconnection() ;
 	mysql_select_db ( "wikipedia" , $connection ) ;
 	$sql = "SELECT cur_timestamp,cur_title,cur_comment,cur_user,cur_user_text,cur_minor_edit FROM cur WHERE cur_timestamp>$mindate ORDER BY cur_timestamp DESC LIMIT $maxcnt" ;
@@ -676,6 +693,7 @@ function recentChangesLayout ( &$arr ) {
 			$xyz->makeSecureTitle () ;
 			$u = "<a href=\"$THESCRIPT?title=user:$xyz->secureTitle\">$u</a>" ;
 			}
+		else $u = "<font color=red>$u</font>" ;
 		$comment = trim($s->cur_comment) ;
 		if ( $comment == "*" ) $comment = "" ;
 		$o_comment = $comment ;
@@ -1269,6 +1287,48 @@ function protectpage () {
 		$ret .= "</FORM>\n" ;
 		}
 	return "<nowiki>$ret</nowiki>" ;
+	}
+
+# This function list the contributions of a user
+function contributions () {
+	global $THESCRIPT , $target , $user , $protecting , $newrestrictions ;
+	global $vpage , $theuser ;
+	$vpage = new WikiPage ;
+	$vpage->title = $title ;
+	$vpage->makeSecureTitle () ;
+	$ti = $vpage->secureTitle ;
+	$vpage->special ( "Contributions of $theuser" ) ;
+	$vpage->makeSecureTitle () ;
+	if ( $theuser == "" ) return "<nowiki><h1>State a user name!</h1></nowiki>" ;
+	$theuser = str_replace ( "_" , " " , $theuser ) ;
+	$ret = "<nowiki><h1>$theuser's contributions :</h1></nowiki>\n" ;
+	$ret .= "(With the exception of ''talk'' and ''log'' pages)\n" ;
+
+	$ac = array () ;
+	$connection = getDBconnection () ;
+	mysql_select_db ( "wikipedia" , $connection ) ;
+	$question = "SELECT cur_title FROM cur WHERE cur_user_text=\"$theuser\"" ;
+	$result = mysql_query ( $question , $connection ) ;
+	while ( $s = mysql_fetch_object ( $result ) ) array_push ( $ac , $s->cur_title ) ;
+	mysql_free_result ( $result ) ;
+
+	$question = "SELECT old_title FROM old WHERE old_user_text=\"$theuser\"" ;
+	$result = mysql_query ( $question , $connection ) ;
+	while ( $s = mysql_fetch_object ( $result ) )
+		if ( !in_array ( $s->cur_title , $ac ) )
+			array_push ( $ac , $s->cur_title ) ;
+	mysql_free_result ( $result ) ;
+
+	asort ( $ac ) ;
+	foreach ( $ac as $x ) {
+		$b = spliti ( "talk:" , $x ) ;
+		if ( $x != "" and substr ( $x , 0 , 4 ) != "Log:" and count ( $b ) == 1 )
+			$ret .= "* [[".$vpage->getNiceTitle($x)."]]\n" ;
+		}
+
+	mysql_close ( $connection ) ;
+
+	return $ret ;
 	}
 
 # A little hack for direct MySQL access; for sysops only!
