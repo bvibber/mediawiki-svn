@@ -1,3 +1,4 @@
+/* $Header$ */
 #ifndef SM_SMIRC_HXX_INCLUDED_
 #define SM_SMIRC_HXX_INCLUDED_
 
@@ -18,7 +19,7 @@ public:
 	void join(str channel);
 	void part(str channel);
 
-	void msg(str message);
+	void msg(int level, str message);
 	void msg(str channel, str message);
 
 private:
@@ -66,7 +67,8 @@ public:
 
 	void channel(str channel);
 	bool nochannel(str channel);
-
+	void channel_level(str channel, int level);
+	
 	ircclntp conn();
 
 private:

@@ -79,7 +79,7 @@ ircclnt::msg(str channel, str message)
 }
 
 void
-ircclnt::msg(str message)
+ircclnt::msg(int level, str message)
 {
 	std::set<std::string> chans;
 	try {
@@ -88,8 +88,15 @@ ircclnt::msg(str message)
 		/* no channels */
 		return;
 	}
-	FE_TC_AS(std::set<std::string>, chans, i)
+	FE_TC_AS(std::set<std::string>, chans, i) {
+		int thislevel = 10;
+		try {
+			thislevel = SMI(smcfg::cfg)->fetchint("/irc/channel/"+*i+"/level");
+		} catch (smcfg::nokey&) {}
+		if (level < thislevel)
+			continue;
 		msg(*i, message);
+	}
 }
 
 void
@@ -283,6 +290,14 @@ cfg::nochannel(str channel)
 	SMI(smcfg::cfg)->dellist("/irc/channels", channel);
 	conn()->part(channel);
 	return true;
+}
+
+void
+cfg::channel_level(str chan, int level)
+{
+	if (!SMI(smcfg::cfg)->listhas("/irc/channels", chan))
+		channel(chan);
+	SMI(smcfg::cfg)->storeint("/irc/channel/"+chan+"/level", level);
 }
 
 int 

@@ -268,7 +268,7 @@ cfg::checker::start(void)
 
 		std::time_t now = std::time(0);
 		if ((now - ircinterval) > lastirc) {
-			SMI(smirc::cfg)->conn()->msg(rep);
+			SMI(smirc::cfg)->conn()->msg(3, rep);
 			lastirc = now;
 		}
 		
@@ -385,6 +385,7 @@ cfg::mysqlserver::getreplag(void)
 {
 	uint64_t masterpos = getmasterpos(), mypos = getmypos();
 	std::cerr << "master pos: " << masterpos << " mypos: " << mypos;
+	if (!masterpos || !mypos) return -1;
 	return masterpos - mypos;
 }
 	

@@ -211,6 +211,8 @@ ircrt.install("no server %s enable", cfg_irc_noenableserver(), "Disable a server
 ircrt.install("server %s enable", cfg_irc_enableserver(), "Enable connection to a server");
 ircrt.install("channel", "Configure channels");
 ircrt.install("channel %s", cfg_irc_channel(), "Specify a channel to join");
+ircrt.install("channel %s level", "Notification level for channel");
+ircrt.install("channel %s level %s", cfg_irc_channel_level(), "Level (1-16)");
 ircrt.install("no channel %s", cfg_irc_nochannel(), "Remove a channel");
 
 /* 'function monitor' mode commands */

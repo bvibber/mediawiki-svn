@@ -133,6 +133,17 @@ HDL(cfg_irc_nochannel) {
 	}
 };
 
+HDL(cfg_irc_channel_level) {
+	EX {
+		try {
+			SMI(smirc::cfg)->channel_level(cd.p(0), b::lexical_cast<int>(cd.p(1)));
+		} catch (b::bad_lexical_cast&) {
+			cd.error("Invalid number.");
+		}
+		return true;
+	}
+};
+
 HDL(cfg_irc_noserver) {
 	EX {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
