@@ -99,7 +99,7 @@ function editUserSettings () {
 	global $ButtonSave ;
 	global $vpage , $user ;
 	$vpage->title = "User Settings" ;
-	if ( !$user->isLoggedIn ) return "You are not logged in! [[special:userLogin|Log in]] or go to the [[:HomePage|Home Page]]" ;
+	if ( !$user->isLoggedIn ) return "You are not logged in! [[special:userLogin|Log in]] or go to the [[:Main Page|Main Page]]" ;
 	$ret = "" ;
 
 	if ( isset ( $ButtonSave ) ) {
@@ -240,7 +240,7 @@ function WantedPages () {
 	$vpage->special ( "The Most Wanted Pages" ) ;
 	$vpage->namespace = "" ;
 	$allPages = array () ;
-	$ret = "'''These articles don't exist, but other articles link to them!''' (the top 50)\n\n" ;
+	$ret = "'''These articles don't exist, but other articles link to them!''' (the top 50)<br>\n" ;
 
 	$connection = getDBconnection () ;
 	mysql_select_db ( "wikipedia" , $connection ) ;
@@ -248,7 +248,6 @@ function WantedPages () {
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) {
 		$allPages[$s->cur_title] = -999999999999 ; # Effectively removing existing topics from list
-		$u = explode ( "\n" , $s->cur_linked_links ) ; foreach ( $u as $x ) $allPages[$x] += 1 ;
 		$u = explode ( "\n" , $s->cur_unlinked_links ) ; foreach ( $u as $x ) $allPages[$x] += 1 ;
 		}
 	mysql_free_result ( $result ) ;
@@ -256,12 +255,20 @@ function WantedPages () {
 
 
 	arsort ( $allPages ) ;
-	array_shift ( $allPages ) ; # Removing blank "link"
+	$allPages = array_slice ( $allPages , 0 , 200 ) ; # Reducing needed memory
+	$ti = new wikiTitle ;
 	$k = array_keys ( $allPages ) ;
-	for ( $a = 0 ; $a < 50 ; $a++ ) {
+
+	$a = 0 ;
+	$o = array () ;
+	while ( count ( $o ) < 50 ) {
 		$x = $k[$a] ;
-		$ret .= "[[$x|".$vpage->getNiceTitle($x)."]] is wanted by ".$allPages[$x]." articles.<br>\n" ;
+		$a++ ;
+		$ti->setTitle ( $x ) ;
+		if ( $x != "" and !$ti->doesTopicExist() )
+			array_push ( $o , "<li><a href=\"$THESCRIPT?action=edit&title=$x\">".$ti->getNiceTitle($x)."</a> is wanted by ".$allPages[$x]." articles.</li>\n" ) ;
 		}
+	$ret .= "<nowiki><ol>".implode ( "" , $o )."</ol></nowiki>" ;
 	return $ret ;
 	}
 
@@ -271,7 +278,7 @@ function LonelyPages () {
 	$vpage->special ( "The Orphans" ) ;
 	$vpage->namespace = "" ;
 	$allPages = array () ;
-	$ret = "'''These articles exist, but no articles link to them!'''\n\n" ;
+	$ret = "'''These articles exist, but no articles link to them!''' (the first 50)\n\n" ;
 
 	$connection = getDBconnection () ;
 	mysql_select_db ( "wikipedia" , $connection ) ;
@@ -284,7 +291,10 @@ function LonelyPages () {
 		}
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
-	
+
+	asort ( $allPages ) ;
+	$allPages = array_slice ( $allPages , 0 , 50 ) ;
+
 	$orphans = array () ;
 	$v = array_keys ( $allPages ) ;
 	foreach ( $v as $x ) {
@@ -825,7 +835,7 @@ function upload () {
 		$message = "File <b>$removeFile</b> deleted!" ;
 		unset ( $removeFile ) ;
 	} else if (isset($Upload_name) or isset($Upload)) {
-		if ( $no_copyright != "AFFIRMED" ) return "You need to affirm that the file is not violating copygights. Return to the <a href=\"$THESCRIPT?action=upload\">Upload page</a>" ;
+		if ( $no_copyright != "AFFIRMED" ) return "<nowiki>You need to affirm that the file is not violating copygights. Return to the <a href=\"$THESCRIPT?title=special:upload\">Upload page</a></nowiki>" ;
 		$Upload_name = ereg_replace(" ", "_", $Upload_name);
 		$abc = split("\.", $Upload_name);
 

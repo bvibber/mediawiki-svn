@@ -4,6 +4,7 @@
 
 class WikiPage extends WikiTitle {
 	var $contents ; # The actual article body
+	var $backLink ; # For redirects
 	var $knownLinkedLinks , $knownUnlinkedLinks ; # Used for faster display
 	
 #### Database management functions
@@ -11,6 +12,7 @@ class WikiPage extends WikiTitle {
 	# This loads an article from the database, or calls a special function instead (all pages with "special:" namespace)
 	function load ( $t , $doRedirect = true ) {
 		global $action , $user ;
+		if ( $doRedirect ) $this->backLink = "" ;
 		$this->knownLinkedLinks = array () ;
 		$this->knownUnlinkedLinks = array () ;
 		$this->title = $t ;
@@ -65,11 +67,13 @@ class WikiPage extends WikiTitle {
 		$this->makeURL () ;
 		$this->splitTitle () ;
 		if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" ) { # #REDIRECT
+			$this->backLink = "(redirected from <a href=\"$THESCRIPT?action=edit&title=$this->secureTitle\">".$this->getNiceTitle()."</a>)" ;
 			$z = $this->contents ;
-			$z = strstr ( $z , "[[" ) ;
-			$z = str_replace ( "[[" , "" , $z ) ;
-			$z = str_replace ( "]]" , "" , $z ) ;
-			$this->load ( trim($z) , false ) ;
+#			$z = strstr ( $z , "[[" ) ;
+			$z = substr ( $z , 10 ) ;
+			$z = str_replace ( "[" , "" , $z ) ;
+			$z = str_replace ( "]" , "" , $z ) ;
+			$this->load ( trim($z) , false , $backLink ) ;
 			}
 		}
 
@@ -199,7 +203,7 @@ class WikiPage extends WikiTitle {
 		}
 
 #### Rendering functions
-	# This function converts wiki-style internal links like [[HomePage]] with the appropriate HTML code
+	# This function converts wiki-style internal links like [[Main Page]] with the appropriate HTML code
 	# It has to handle namespaces, subpages, and alternate names (as in [[namespace:page/subpage name]])
 	function replaceInternalLinks ( $s ) {
 		global $THESCRIPT ;
@@ -253,7 +257,7 @@ class WikiPage extends WikiTitle {
 
 	# This function replaces wiki-style image links with the HTML code to display them
 	function parseImages ( $s ) {
-		$s = ereg_replace ( "http://([a-zA-Z0-9_/:.]*)\.(png|jpg|jpeg|tif|tiff|gif)" , "<img src=\"http://\\1.\\2\">" , $s ) ;
+		$s = ereg_replace ( "([^[])http://([a-zA-Z0-9_/:.\-]*)\.(png|jpg|jpeg|tif|tiff|gif)" , "\\1<img src=\"http://\\2.\\3\">" , $s ) ;
 		return $s ;
 		}
 
@@ -264,7 +268,8 @@ class WikiPage extends WikiTitle {
 		$a = explode ( "[http://" , " ".$s ) ;
 		$s = array_shift ( $a ) ;
 		$s = substr ( $s , 1 ) ;
-		$image = "<img src=earth_small.png valign=center border=0>" ; # Remove or set to blank for no image
+		$image = "" ; # with an <img tag, this will be displayed before external links
+		$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
 		foreach ( $a as $t ) {
 			$b = spliti ( "]" , $t , 2 ) ;
 			if ( count($b) < 2 ) $s .= "Illegal link : ?$b[0]?" ;
@@ -281,13 +286,13 @@ class WikiPage extends WikiTitle {
 				if ( substr_count ( $b[1] , "<hr>" ) > 0 ) $cnt = 1 ;
 				$link = "~http://".$link ;
 				if ( $user->options["showHover"] == "yes" ) $hover = "title=\"$link\"" ;
-				$s .= "<a href=\"$link\" $hover>$image$text</a>" ;
-				$s .= $b[1] ;
+				$theLink = "<a href=\"$link\" $linkStyle $hover>$image$text</a>" ;
+				$s .= $theLink.$b[1] ;
 				}
 			}
 
 		$o = "A-Za-z0-9/\.:?&=_~%-@^" ;
-		$s = eregi_replace ( "([^~\"])http://([$o]+)([^$o])" , "\\1<a href=\"http://\\2\">".$image."http://\\2</a>\\3" , $s ) ;
+		$s = eregi_replace ( "([^~\"])http://([$o]+)([^$o])" , "\\1<a href=\"http://\\2\" $linkStyle>".$image."http://\\2</a>\\3" , $s ) ;
 		$s = str_replace ( "~http://" , "http://" , $s ) ;
 
 		return $s ;
@@ -325,16 +330,23 @@ class WikiPage extends WikiTitle {
 
 	# This function is called to replace wiki-style tags with HTML, e.g., the first occurrence of ''' with <b>, the second with </b>
 	function pingPongReplace ( $f , $r1 , $r2 , $s ) {
-		$a = explode ( $f , " ".$s ) ;
-		if ( count ( $a ) == 1 ) return $s ;
-		$s = substr ( array_shift ( $a ) , 1 ) ;
-		$r = $r1 ;
-		foreach ( $a as $t ) {
-			$s .= $r.$t ;
-			if ( $r == $r1 ) $r = $r2 ;
-			else $r = $r1 ;
+		$ret = "" ;
+		$lines = explode ( "\n" , $s ) ;
+		foreach ( $lines as $s ) {
+			$a = explode ( $f , " ".$s ) ;
+			$app = "" ;
+			$s = substr ( array_shift ( $a ) , 1 ) ;
+			$r = $r1 ;
+			if ( count ( $a ) % 2 != 0 ) $app = $f.array_pop ( $a ) ;
+			foreach ( $a as $t ) {
+				$s .= $r.$t ;
+				if ( $r == $r1 ) $r = $r2 ;
+				else $r = $r1 ;
+				}
+			if ( $ret != "" ) $ret .= "\n" ;
+			$ret .= $s.$app ;
 			}
-		return $s ;
+		return $ret ;
 		}
 
 	# This function organizes the <nowiki> parts and calls subPageContents() for the wiki parts
@@ -355,7 +367,7 @@ class WikiPage extends WikiTitle {
 			if ( count ( $c ) == 2 ) {
 				array_push ( $b , $c[0] ) ;
 				$s .= $d.$c[1] ;
-			} else $s .= "&lt;nowiki&gt;".$x ;
+			} else $s .= "<nowiki>".$x ;
 			}
 
 		# If called from setEntry(), only parse internal links and return dummy entry
@@ -399,9 +411,10 @@ class WikiPage extends WikiTitle {
 		$s = $this->pingPongReplace ( "''" , "<i>" , "</i>" , $s ) ;
 		$s = $this->pingPongReplace ( "====" , "<h4>" , "</h4>" , $s ) ;
 		$s = $this->pingPongReplace ( "===" , "<h3>" , "</h3>" , $s ) ;
+		$s = $this->pingPongReplace ( "==" , "<h2>" , "</h2>" , $s ) ;
 
 		# Automatic links to subpages (e.g., /Talk -> [[/Talk]]
-		$s = ereg_replace ( "([\n| ])/([a-zA-Z0-9_]*)" , "\\1[[/\\2|/\\2]]" , $s ) ;
+		$s = ereg_replace ( "([\n| ])/([a-zA-Z0-9]+)" , "\\1[[/\\2|/\\2]]" , $s ) ;
 
 		# Parsing through the text line by line
 		# The main thing happening here is handling of lines starting with * # : etc.
@@ -491,7 +504,7 @@ class WikiPage extends WikiTitle {
 		global $user , $oldID , $version ;
 		$editOldVersion = "" ;
 		if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
-		$ret = "<a href=\"$THESCRIPT\">Homepage</a>" ;
+		$ret = "<a href=\"$THESCRIPT\">Main Page</a>" ;
 
 		$spl = $this->getSubpageList () ;
 		if ( count ( $spl ) > 0 and $this->subpageTitle != "" ) {
@@ -532,11 +545,12 @@ class WikiPage extends WikiTitle {
 			$subText = array () ;
 			if ( $user->isLoggedIn ) {
 				if ( $user->doWatch($this->title) )
-					array_push($subText,"<br><a href=\"$THESCRIPT?action=watch&title=$this->secureTitle&mode=no\">Stop watching this article for me</a>");
-				else array_push($subText,"<br><a href=\"$THESCRIPT?action=watch&title=$this->secureTitle&mode=yes\">Watch this article for me</a>") ;
+					array_push($subText,"<a href=\"$THESCRIPT?action=watch&title=$this->secureTitle&mode=no\">Stop watching this article for me</a>");
+				else array_push($subText,"<a href=\"$THESCRIPT?action=watch&title=$this->secureTitle&mode=yes\">Watch this article for me</a>") ;
 				}
 			if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"$THESCRIPT?action=print&title=$this->secureTitle\">Printable version</a>" ) ;
-			$ret .= implode ( " | " , $subText ) ;
+			if ( $this->backLink != "" ) array_push ( $subText , $this->backLink ) ;
+			$ret .= "<br>".implode ( " | " , $subText ) ;
 			}
 		$ret .= "</td>\n<td valign=top width=200 rowspan=2 nowrap>".$user->getLink()."<br>" ;
 		if ( $user->isLoggedIn ) $ret .= "<a href=\"$THESCRIPT?title=special:userLogout\">Log out</a> | <a href=\"$THESCRIPT?title=special:editUserSettings\">Preferences</a>" ;
@@ -555,7 +569,7 @@ class WikiPage extends WikiTitle {
 		$editOldVersion = "" ;
 		if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
 		$column = "<nowiki>" ;
-		$column .= "<a href=\"$THESCRIPT?title=HomePage\">HomePage</a>\n" ;
+		$column .= "<a href=\"$THESCRIPT\">Main Page</a>\n" ;
 		$column .= "<br><a href=\"$THESCRIPT?title=special:RecentChanges\">Recent Changes</a>\n" ;
 		if ( $this->canEdit() ) $column .= "<br><a href=\"$THESCRIPT?action=edit&title=$this->url$editOldVersion\">Edit this page</a>\n" ;
 
