@@ -41,7 +41,7 @@ namespace bl = boost::lambda;
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
-#include <fcntl.h>
+#include <sys/utsname.h>
 
 #include <arpa/inet.h>
 
@@ -49,5 +49,6 @@ namespace bl = boost::lambda;
 
 #include <unistd.h>
 #include <netdb.h>
+#include <fcntl.h>
 
 #endif

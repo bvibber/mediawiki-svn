@@ -16,6 +16,10 @@ prefix = ARGUMENTS.get('prefix', '/opt/servmon')
 # Don't change anything below here.
 ####################################
 import os
+try:
+	os.remove('sminfo.cxx')
+except:
+	pass
 
 srcs = Split(	'servmon.cxx csmplex.cxx smthr.cxx smnet.cxx smutl.cxx smcfg.cxx smirc.cxx '
 		'smauth.cxx smtmr.cxx smmon.cxx smqb.cxx smmc.cxx smalrm.cxx l_memcache.c '
@@ -25,9 +29,10 @@ env = Environment(CPPFLAGS = cppflags + ' -DPFX="\\"' + prefix + '\\""',
 		CCFLAGS = cflags,
 		CC = cc,
 		CXX = cxx,
-		CPPPATH = 'include',
+		CPPPATH = ['.', 'include'],
 		LIBPATH = '/usr/lib/mysql',
 		LIBS = ['pthread', 'boost_thread', 'netsnmp', 'ssl', 'mysqlclient'])
+env.Command('sminfo.cxx', 'sminfo.sh', '/bin/sh $SOURCE >$TARGET')
 
 env.Program ('servmon', srcs)
 env.Alias('install', prefix)

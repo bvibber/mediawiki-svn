@@ -14,16 +14,34 @@
 #define EX0 bool execute(smtrm::comdat const&)
 #define EX1(a) bool execute(smtrm::comdat const& a)
 
+#include "sminfo.cxx"
+
 HDL(cmd_show_version) {
 	EX1(cd) {
-		cd.inform("servmon " SM_VERSION);
+		cd.wrtln(b::io::str(format("Version %s, compiled %s by %s::%s")
+				    % SM_VERSION % sm$compile_time % sm$compile_host % sm$compile_user));
+		if (cd.term.prefer_short_output())
+			return true;
+		cd.wrtln();
+		cd.wrtln(b::io::str(format("Compile host type: %s %s (%s)")
+				    % sm$compile_os % sm$compile_release % sm$compile_arch));
+		struct utsname un;
+		uname(&un);
+		cd.wrtln(b::io::str(format("Running host type: %s %s (%s)")
+				    % un.sysname % un.release % un.machine));
+		cd.wrtln();
+		cd.wrtln("Source file version information:");
+
+		for (char const **s = sm$compile_ident; *s; ++s) {
+			cd.wrtln(*s);
+		}
 		return true;
 	}
 };
 
 HDL(cmd_enable) {
 	EX1(cd) {
-		cd.wrt("Password: ");
+		cd.wrt("Type password: ");
 		cd.term.echo(false);
 		cd.term.readline(boost::bind(&cmd_enable::vfypass, this, _1, _2));
 		return true;
@@ -417,7 +435,7 @@ HDL(cfg_qb_rule) {
 	EX1(cd) {
 		cd.setdata(cd.p(0));
 		cd.chgrt(&SMI(smtrm::tmcmds)->qbrrt);
-		cd.term.setprmbase("%s[%d](conf-qb-rule)>");
+		cd.term.setprmbase("%s [%d] conf-qb-rule>");
 		if (!SMI(smqb::cfg)->rule_exists(cd.p(0))) {
 			SMI(smqb::cfg)->create_rule(cd.p(0));
 			cd.inform("Creating new rule.");
@@ -730,7 +748,7 @@ smtrm::tmcmds::tmcmds(void)
 
 	/* 'enable' mode commands */
 	stdrt.install(16, "disable", cmd_disable(), "Return to non-privileged mode");
-	stdrt.install(16, "configure", chg_parser(cfgrt, "%s[%d](conf)#"), "Configure servmon");
+	stdrt.install(16, "configure", chg_parser(cfgrt, "%s [%d] conf>"), "Configure servmon");
 	stdrt.install(16, "debug", "Runtime debugging functions");
 	stdrt.install(16, "debug mysql", "Debug MySQL functions");
 	stdrt.install(16, "debug mysql connect", cmd_debug_mysql_connect(), "Debug MySQL connections");
@@ -745,22 +763,22 @@ smtrm::tmcmds::tmcmds(void)
 	stdrt.install(16, "no debug irc", cmd_no_debug_irc(), "Debug IRC connections");
 
 	/* 'configure' mode commands */
-	cfgrt.install(16, "exit", chg_parser(stdrt, "%s[%d]>"), "Exit configure mode");
+	cfgrt.install(16, "exit", chg_parser(stdrt, "%s [%d] exec>"), "Exit configure mode");
 	cfgrt.install(16, "enable password", cfg_eblpass(), "Change enable password");
 	cfgrt.install(16, "function", "Configure a specific function");
-	cfgrt.install(16, "function irc", chg_parser(ircrt, "%s[%d](conf-irc)#"), "Configure Internet Relay Chat connections");
-	cfgrt.install(16, "function monitor", chg_parser(monrt, "%s[%d](conf-monit)#"), "Configure server monitoring");
-	cfgrt.install(16, "function memcache", chg_parser(memrt, "%s[%d](conf-memcache)#"), "Configure memcached client");
+	cfgrt.install(16, "function irc", chg_parser(ircrt, "%s [%d] conf-irc>"), "Configure Internet Relay Chat connections");
+	cfgrt.install(16, "function monitor", chg_parser(monrt, "%s [%d] conf-monit>"), "Configure server monitoring");
+	cfgrt.install(16, "function memcache", chg_parser(memrt, "%s [%d] conf-memcache>"), "Configure memcached client");
 	cfgrt.install(16, "user", "Define users");
 	cfgrt.install(16, "user %s", "Username");
 	cfgrt.install(16, "user %s password", cfg_userpass(), "Create a new account");
 	cfgrt.install(16, "no", "Negate a setting");
 	cfgrt.install(16, "no user", "Remove a user account");
 	cfgrt.install(16, "no user %s", cfg_no_user(), "User name");
-	cfgrt.install(16, "function querybane", chg_parser(qbrt, "%s[%d](conf-qb)#"), "Configure QueryBane operation");
+	cfgrt.install(16, "function querybane", chg_parser(qbrt, "%s [%d] conf-qb>"), "Configure QueryBane operation");
 
 	/* 'function irc' mode commands */
-	ircrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)>"), "Exit IRC configuration mode");
+	ircrt.install(16, "exit", chg_parser(cfgrt, "%s [%d] conf>"), "Exit IRC configuration mode");
 	ircrt.install(16, "server", "Configure IRC servers");
 	ircrt.install(16, "server %s primary-nickname %s", cfg_irc_servnick(), "Set primary nickname for IRC server");
 	ircrt.install(16, "server %s secondary-nickname %s", cfg_irc_servsecnick(),     "Set secondary nickname for IRC server");
@@ -795,7 +813,7 @@ smtrm::tmcmds::tmcmds(void)
 	monrt.install(16, "threshold mysql replication-lag %s", cfg_monit_alarm_mysql_replag(), "Maximum replication lag in seconds");
 	monrt.install(16, "threshold mysql running-threads", "Maximum number of running threads");
 	monrt.install(16, "threshold mysql running-threads %s", cfg_monit_alarm_mysql_threads(), "Maximum number of threads");
-	monrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)>"), "Exit monitor configuration mode");
+	monrt.install(16, "exit", chg_parser(cfgrt, "%s [%d] conf>"), "Exit monitor configuration mode");
 
 	/* 'function querybane' mode commands */
 	qbrt.install(16, "rule", "Define a new rule");
@@ -803,10 +821,10 @@ smtrm::tmcmds::tmcmds(void)
 	qbrt.install(16, "no", "Negate a setting");
 	qbrt.install(16, "no rule", "Delete a rule");
 	qbrt.install(16, "no rule %s", cfg_qb_norule(), "Rule name");
-	qbrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)>"), "Exit querybane configuration mode");
+	qbrt.install(16, "exit", chg_parser(cfgrt, "%s [%d] conf>"), "Exit querybane configuration mode");
 
 	/* querybane 'rule' mode commands */
-	qbrrt.install(16, "exit", chg_parser(qbrt, "%s[%d](conf-qb)>"), "Exit rule configuration mode");
+	qbrrt.install(16, "exit", chg_parser(qbrt, "%s [%d] conf-qb>"), "Exit rule configuration mode");
 	qbrrt.install(16, "description %S", cfg_qbr_description(), "Rule description");
 	qbrrt.install(16, "match-if", "Specify parameters to match this rule");
 	qbrrt.install(16, "match-if min-threads", "Match on miminum thread count");
@@ -828,5 +846,5 @@ smtrm::tmcmds::tmcmds(void)
 	/* 'function memcache' commands */
 	memrt.install(16, "server-list-command", "Set command used to obtain server list");
 	memrt.install(16, "server-list-command %S", cfg_mc_server_list_command(), "Command name");
-	memrt.install(16, "exit", chg_parser(cfgrt, "%s[%d](conf)>"), "Exit memcache configuration mode");
+	memrt.install(16, "exit", chg_parser(cfgrt, "%s [%d] conf>"), "Exit memcache configuration mode");
 };

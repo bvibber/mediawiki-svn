@@ -16,6 +16,9 @@ public:
 	typedef boost::function<void(terminal&, str)> readline_cb_t;
 
 	virtual bool is_interactive(void) const = 0;
+	virtual bool prefer_short_output(void) const {
+		return false;
+	}
 	virtual void echo(bool) = 0;
 	virtual void wrtln(str = "") = 0;
 	virtual void wrt(u_char) = 0;
@@ -23,13 +26,13 @@ public:
 	virtual void chgrt(handler_node* newrt) = 0;
 	virtual void readline(readline_cb_t) = 0;
 	virtual void error(str msg) {
-		wrtln("%% [E] " + msg);
+		wrtln("% [E] " + msg);
 	}
 	virtual void warn(str msg) {
-		wrtln("%% [W] " + msg);
+		wrtln("% [W] " + msg);
 	}
 	virtual void inform(str msg) {
-		wrtln("%% [I] " + msg);
+		wrtln("% [I] " + msg);
 	}
 
 	virtual str getdata(void) const {
@@ -205,7 +208,7 @@ public:
 	trmsrv(smnet::tnsrvp sckt_)
 	: intf(sckt_)
 	, cmds_root(SMI(tmcmds)->stdrt)
-	, prmbase("%s [%d]>")
+	, prmbase("%s [%d] exec>")
 	, cd(*this)
 	, doecho(true)
 	, rlip(false)
@@ -388,7 +391,7 @@ public:
 		}
 		for (std::vector<handler_node *>::iterator it = matches.begin(),
 			 end = matches.end(); it != end; ++it) {
-			if (showall || (**it).name.substr(0,word.size())==word)
+			if ((showall || (**it).name.substr(0,word.size())==word) && (**it).level <= getlevel())
 				wrtln(b::str(format("  %s %s") % 
 					     boost::io::group(std::left, std::setw(20), (**it).name)
 					     % (**it).help));

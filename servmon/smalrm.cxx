@@ -51,7 +51,7 @@ mgr::hasalarm(str host, str metric)
 int
 mgr::low(int value)
 {
-	return value * 0.75;
+	return int(value * 0.75);
 }
 
 void

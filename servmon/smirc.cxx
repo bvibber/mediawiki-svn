@@ -30,6 +30,10 @@ namespace smirc {
 		bool is_interactive(void) const {
 			return false;
 		}
+
+		bool prefer_short_output(void) const {
+			return true;
+		}
 		
 		void parse(str line) {
 			std::string ln = line;

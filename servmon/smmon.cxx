@@ -103,9 +103,9 @@ struct mysqlerr : public std::runtime_error {
 class mysqlclient {
 public:
 	mysqlclient(str host_, int port_ = 0)
-	: host(host_)
+	: connected(false)
+	, host(host_)
 	, port(port_)
-	, connected(false)
 	{}
 	
 	~mysqlclient() {
