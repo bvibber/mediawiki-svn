@@ -4,10 +4,10 @@
 # are magical, so don't change or move them!  The Namespace class
 # encapsulates some of the magic-ness.
 #
-/* private */ $wgNamespaceNamesEn = array(
+/* private */ $wgNamespaceNamesKo = array(
 	-1	=> "Special",
 	0	=> "",
-	1	=> "Talk",
+	1	=> "토론",
 	2	=> "User",
 	3	=> "User_talk",
 	4	=> "Wikipedia",
@@ -16,175 +16,112 @@
 	7	=> "Image_talk"
 );
 
-/* private */ $wgQuickbarSettingsEn = array(
+/* private */ $wgDefaultUserOptionsKo = array(
+	"quickbar" => 1, "underline" => 1, "hover" => 1,
+	"cols" => 80, "rows" => 25, "searchlimit" => 20,
+	"contextlines" => 5, "contextchars" => 50,
+	"skin" => 0, "rcdays" => 3, "rclimit" => 50,
+	"highlightbroken" => 1, "stubthreshold" => 0
+);
+
+/* private */ $wgQuickbarSettingsKo = array(
 	"None", "Fixed left", "Fixed right", "Floating left"
 );
 
-/* private */ $wgSkinNamesEn = array(
+/* private */ $wgSkinNamesKo = array(
 	"Standard", "Nostalgia", "Cologne Blue"
 );
 
-/* private */ $wgUserTogglesEn = array(
+/* private */ $wgUserTogglesKo = array(
 	"hover"		=> "Show hoverbox over wiki links",
 	"underline" => "Underline links",
 	"highlightbroken" => "Highlight links to empty topics",
 	"justify"	=> "Justify paragraphs",
 	"hideminor" => "Hide minor edits in recent changes",
 	"numberheadings" => "Auto-number headings",
-	"rememberpassword" => "Remember password across sessions"
+	"rememberpassword" => "Remember password across sessions",
+	"editwidth" => "Edit box has full width"
 );
 
-/* private */ $wgLanguageNamesEn = array(
-	"ab"	=> "Abkhazian",
-	"aa"	=> "Afar",
-	"af"	=> "Afrikaans",
-	"sq"	=> "Albanian",
-	"am"	=> "Amharic",
-	"ar"	=> "Arabic",
-	"hy"	=> "Armenian",
-	"as"	=> "Assamese",
-	"ay"	=> "Aymara",
-	"az"	=> "Azerbaijani",
-	"ba"	=> "Bashkir",
-	"eu"	=> "Basque",
-	"be"	=> "Belorusan",
-	"bn"	=> "Bengali",
-	"dz"	=> "Bhutani",
-	"bh"	=> "Bihara",
-	"bi"	=> "Bislama",
-	"my"	=> "Burmese",
-	"km"	=> "Cambodian",
-	"ca"	=> "Catalan",
-	"zh"	=> "Chinese",
-	"co"	=> "Corsican",
-	"hr"	=> "Croatian",
-	"cs"	=> "Czech",
-	"da"	=> "Danish", # Note two different subdomains. 
-	"dk"	=> "Danish", # 'da' is correct for the language.
-	"nl"	=> "Dutch",
-	"en"	=> "English",
-	"w"	=> "English", # Should this be in list this?
+/* private */ $wgBookstoreListKo = array(
+	"AddALL" => "http://www.addall.com/New/Partner.cgi?query=$1&type=ISBN",
+	"PriceSCAN" => "http://www.pricescan.com/books/bookDetail.asp?isbn=$1",
+	"Barnes & Noble" => "http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$1",
+	"Amazon.com" => "http://www.amazon.com/exec/obidos/ISBN=$1"
+);
+
+/* private */ $wgLanguageNamesKo = array(
+    "af" => "Afrikaans",
+	"ar" => "&#8238;&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;&#8236; (Araby)",
+	"be" => "&#1041;&#1077;&#1083;&#1072;&#1088;&#1091;&#1089;&#1082;&#1080;",
+	"br" => "Brezhoneg",
+	"ca" => "Catal&#224;",
+	"ch" => "Chamoru",
+	"cs" => "&#268;esk&#225;",
+	"cy" => "Cymraeg",
+	"da" => "Dansk", # Note two different subdomains. 
+	"dk" => "Dansk", # 'da' is correct for the language.
+	"de" => "Deutsch",
+	"el" => "&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; (Ellenika)",
+	"en" => "English",
 	"simple" => "Simple English",
-	"eo"	=> "Esperanto",
-	"et"	=> "Estonian",
-	"fo"	=> "Faeroese",
-	"fj"	=> "Fijian",
-	"fi"	=> "Finnish",
-	"fr"	=> "French",
-	"fy"	=> "Frisian",
-	"gl"	=> "Galician",
-	"ka"	=> "Georgian",
-	"de"	=> "German",
-	"el"	=> "Greek",
-	"kl"	=> "Greenlandic",
-	"gn"	=> "Guarani",
-	"gu"	=> "Gujarati",
-	"ha"	=> "Hausa",
-	"he"	=> "Hebrew",
-	"hi"	=> "Hindi",
-	"hu"	=> "Hungarian",
-	"is"	=> "Icelandic",
-	"id"	=> "Indonesian",
-	"ia"	=> "Interlingua",
-	"iu"	=> "Inuktitut",
-	"ik"	=> "Inupiak",
-	"ga"	=> "Irish",
-	"it"	=> "Italian",
-	"ja"	=> "Japanese",
-	"jv"	=> "Javanese",
-	"kn"	=> "Kannada",
-	"ks"	=> "Kashmiri",
-	"kk"	=> "Kazakh",
-	"rw"	=> "Kinyarwanda",
-	"ky"	=> "Kirghiz",
-	"rn"	=> "Kirundi",
-	"ko"	=> "Korean",
-	"lo"	=> "Laotian",
-	"la"	=> "Latin",
-	"lv"	=> "Latvian",
-	"ln"	=> "Lingala",
-	"lt"	=> "Lithuanian",
-	"mk"	=> "Macedonian",
-	"mg"	=> "Malagasy",
-	"ms"	=> "Malay",
-	"ml"	=> "Malayalam",
-	"mi"	=> "Maori",
-	"mr"	=> "Marathi",
-	"mo"	=> "Moldavian",
-	"mn"	=> "Mongolian",
-	"na"	=> "Nauru",
-	"ne"	=> "Nepali",
-	"no"	=> "Norwegian",
-	"oc"	=> "Occitan",
-	"or"	=> "Oriya",
-	"om"	=> "Oromo",
-	"ps"	=> "Pashto",
-	"fa"	=> "Persian",
-	"pl"	=> "Polish",
-	"pt"	=> "Portuguese",
-	"pa"	=> "Punjabi",
-	"qu"	=> "Quechua",
-	"rm"	=> "Rhaeto-Romance",
-	"ro"	=> "Romanian",
-	"ru"	=> "Russian",
-	"sm"	=> "Samoan",
-	"sg"	=> "Sangro",
-	"sa"	=> "Sanskrit",
-	"sr"	=> "Serbian",
-	"sh"	=> "Serbocroatian",
-	"st"	=> "Sesotho",
-	"tn"	=> "Setswana",
-	"sn"	=> "Shona",
-	"sd"	=> "Sindhi",
-	"si"	=> "Sinhalese",
-	"ss"	=> "Siswati",
-	"sk"	=> "Slovak",
-	"sl"	=> "Slovene",
-	"so"	=> "Somali",
-	"es"	=> "Spanish",
-	"su"	=> "Sudanese",
-	"sw"	=> "Swahili",
-	"sv"	=> "Swedish",
-	"tl"	=> "Tagalog",
-	"tg"	=> "Tajik",
-	"ta"	=> "Tamil",
-	"tt"	=> "Tatar",
-	"te"	=> "Telugu",
-	"th"	=> "Thai",
-	"bo"	=> "Tibetan",
-	"ti"	=> "Tigrinya",
-	"to"	=> "Tonga",
-	"ts"	=> "Tsonga",
-	"tr"	=> "Turkish",
-	"tk"	=> "Turkmen",
-	"tw"	=> "Twi",
-	"ug"	=> "Uighur",
-	"uk"	=> "Ukrainian",
-	"ur"	=> "Urdu",
-	"uz"	=> "Uzbek",
-	"vi"	=> "Vietnamese",
-	"vo"	=> "Volapuk",
-	"cy"	=> "Welsh",
-	"wo"	=> "Wolof",
-	"xh"	=> "Xhosa",
-	"yi"	=> "Yiddish",
-	"yo"	=> "Yoruba",
-	"za"	=> "Zhuang",
-	"zu"	=> "Zulu"
+	"eo" => "Esperanto",
+	"es" => "Espa&#241;ol",
+	"et" => "Eesti",
+	"eu" => "Euskara",
+	"fa" => "&#8238;&#1601;&#1585;&#1587;&#1609;&#8236;(Farsi)",
+	"fi" => "Suomi",
+	"fr" => "Fran&#231;ais",
+	"gu" => "&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752; (Gujarati)",
+	"he" => "&#1506;&#1489;&#1512;&#1497;&#1514; (Ivrit)",
+	"hi" => "&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)",
+	"hr" => "Hrvatski",
+	"hu" => "Magyar",
+	"ia" => "Interlingua",
+	"id" => "Indonesia",
+	"is" => "&#205;slenska",
+	"it" => "Italiano",
+	"ja" => "&#26085;&#26412;&#35486; (Nihongo)",
+	"ka" => "&#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4312; (Kartuli)",
+	"ko" => "&#54620;&#44397;&#50612; (Hangul)",
+	"kw" => "Kernewek",
+	"la" => "Latina",
+	"lt" => "Lietuvi&#371;",
+	"mg" => "Malagasy",
+	"ms" => "Bahasa Melayu",
+	"ne" => "&#2344;&#2375;&#2346;&#2366;&#2354;&#2368; (Nepali)",
+	"nl" => "Nederlands",
+	"no" => "Norsk",
+	"pl" => "Polski",
+	"pt" => "Portugu&#234;s",
+	"ro" => "Rom&#226;n&#259;",
+	"ru" => "&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081; (Russkij)",
+	"sa" => "&#2360;&#2306;&#2360;&#2381;&#2325;&#2371;&#2340; (Samskrta)",
+	"so" => "Soomaali",
+	"sq" => "Shqiptare",
+	"sr" => "Srpski",
+	"sv" => "Svenska",
+	"sw" => "Kiswahili",
+	"tr" => "T&#252;rk&#231;e",
+	"uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072; (Ukrayins`ka)",
+	"vo" => "Volap&#252;k",
+	"xh" => "isiXhosa",
+	"zh" => "&#20013;&#25991; (Zhongwen)"
 );
 
-/* private */ $wgWeekdayNamesEn = array(
+
+/* private */ $wgWeekdayNamesKo = array(
 	"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
 	"Friday", "Saturday"
 );
 
-/* private */ $wgMonthNamesEn = array(
+/* private */ $wgMonthNamesKo = array(
 	"January", "February", "March", "April", "May", "June",
 	"July", "August", "September", "October", "November",
 	"December"
 );
 
-/* private */ $wgMonthAbbreviationsEn = array(
+/* private */ $wgMonthAbbreviationsKo = array(
 	"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
 	"Sep", "Oct", "Nov", "Dec"
 );
@@ -193,17 +130,17 @@
 # will make them not show up on the "Special Pages" page, which
 # is the right thing for some of them (such as the "targeted" ones).
 #
-/* private */ $wgValidSpecialPagesEn = array(
+/* private */ $wgValidSpecialPagesKo = array(
 	"Userlogin"		=> "",
 	"Userlogout"	=> "",
 	"Preferences"	=> "Set my user preferences",
-	"Watchlist"		=> "My watchlist",
-	"Recentchanges" => "Recently updated pages",
+	"Watchlist"		=> "눈여겨보는항목",
+	"Recentchanges" => "최근 바뀐 항목",
 	"Upload"		=> "Upload image files",
 	"Imagelist"		=> "Image list",
 	"Listusers"		=> "Registered users",
 	"Statistics"	=> "Site statistics",
-	"Randompage"	=> "Random article",
+	"Randompage"	=> "아무거나",
 
 	"Lonelypages"	=> "Orphaned articles",
 	"Unusedimages"	=> "Orphaned images",
@@ -215,6 +152,7 @@
 	"Allpages"		=> "All pages by title",
 
 	"Ipblocklist"	=> "Blocked IP addresses",
+	"Maintenance" => "Maintenance page",
 	"Specialpages"  => "",
 	"Contributions" => "",
 	"Emailuser"		=> "",
@@ -224,22 +162,23 @@
 	"Booksources"	=> "External book sources"
 );
 
-/* private */ $wgSysopSpecialPagesEn = array(
+/* private */ $wgSysopSpecialPagesKo = array(
 	"Blockip"		=> "Block an IP address",
-	"Asksql"		=> "Query the database"
+	"Asksql"		=> "Query the database",
+	"Undelete"		=> "View and restore deleted pages"
 );
 
-/* private */ $wgDeveloperSpecialPagesEn = array(
+/* private */ $wgDeveloperSpecialPagesKo = array(
 	"Lockdb"		=> "Make database read-only",
 	"Unlockdb"		=> "Restore database write access",
 	"Debug"			=> "Debugging information"
 );
 
-/* private */ $wgAllMessagesEn = array(
+/* private */ $wgAllMessagesKo = array(
 
 # Bits of text used by many pages:
 #
-"mainpage"		=> "Main Page",
+"mainpage"		=> "대문",
 "about"			=> "About",
 "aboutwikipedia" => "About Wikipedia",
 "aboutpage"		=> "Wikipedia:About",
@@ -268,13 +207,13 @@
 "whatlinkshere"	=> "Pages that link here",
 "help"			=> "Help",
 "search"		=> "Search",
-"history"		=> "History",
+"history"		=> "문서역사",
 "printableversion" => "Printable version",
 "editthispage"	=> "Edit this page",
 "deletethispage" => "Delete this page",
 "protectthispage" => "Protect this page",
 "unprotectthispage" => "Unprotect this page",
-"talkpage"		=> "Talk page",
+"talkpage"		=> "토론",
 "subjectpage"	=> "Subject page",
 "otherlanguages" => "Other languages",
 "redirectedfrom" => "(Redirected from $1)",
@@ -440,7 +379,7 @@ public domain or similar free resource.
 
 # History pages
 #
-"revhistory"	=> "Revision history",
+"revhistory"	=> "문서역사",
 "nohistory"		=> "There is no edit history for this page.",
 "revnotfound"	=> "Revision not found",
 "revnotfoundtext" => "The old revision of the page you asked for could not be found.
@@ -490,6 +429,12 @@ and the text of $3 articles.",
 often caused by searching for common words like \"have\" and \"from\",
 which are not indexed, or by specifying more than one search term (only pages
 containing all of the search terms will appear in the result).",
+"powersearch" => "Search",
+"powersearchtext" => "
+Search in namespaces :<br>
+$1<br>
+$2 List redirects &nbsp; Search for $3 $9",
+
 
 # Preferences page
 #
@@ -498,6 +443,8 @@ containing all of the search terms will appear in the result).",
 "prefsnologintext"	=> "You must be <a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
 to set user preferences.",
+"prefslogintext" => "You are logged in as \"$1\".
+Your internal ID number is $2.",
 "prefsreset"	=> "Preferences have been reset from storage.",
 "qbsettings"	=> "Quickbar settings", 
 "changepassword" => "Change password",
@@ -514,18 +461,18 @@ to set user preferences.",
 "resultsperpage" => "Hits to show per page",
 "contextlines"	=> "Lines to show per hit",
 "contextchars"	=> "Characters of context per line",
+"stubthreshold" => "Threshold for stub display",
 "recentchangescount" => "Number of titles in recent changes",
 "savedprefs"	=> "Your preferences have been saved.",
 "timezonetext"	=> "Enter number of hours your local time differs
-from server (U.S. Pacific) time.
-For example, for U.S. East coast, enter \"3\".",
+from server time (UTC).",
 "localtime"	=> "Local time",
 "timezoneoffset" => "Offset",
 "emailflag"		=> "Disable e-mail from other users",
 
 # Recent changes
 #
-"recentchanges" => "Recent changes",
+"recentchanges" => "최근 바뀐 항목",
 "recentchangestext" => "Track the most recent changes to Wikipedia on this page.
 [[Wikipedia:Welcome,_newcomers|Welcome, newcomers]]!
 Please have a look at these pages: [[wikipedia:FAQ|Wikipedia FAQ]],
@@ -537,7 +484,7 @@ and [[wikipedia:Most common Wikipedia faux pas|most common Wikipedia faux pas]].
 If you want to see Wikipedia succeed, it's very important that you don't add
 material restricted by others' [[wikipedia:Copyrights|copyrights]].
 The legal liability could really hurt the project, so please don't do it.
-See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges recent meta discussion].",
+See also the [http://meta.wikipedia.org/wiki/Special:Recentchanges recent meta discussion].",
 "rcloaderr"		=> "Loading recent changes",
 "rcnote"		=> "Below are the last <strong>$1</strong> changes in last <strong>$2</strong> days.",
 # "rclinks"		=> "Show last $1 changes in last $2 hours / last $3 days",
@@ -550,6 +497,8 @@ See also the [http://meta.wikipedia.com/wiki.phtml?title=Special:RecentChanges r
 "tableform"		=> "table",
 "listform"		=> "list",
 "nchanges"		=> "$1 changes",
+"minoreditletter" => "M",
+"newpageletter" => "N",
 
 # Upload
 #
@@ -594,7 +543,7 @@ you may be blocked from uploading if you abuse the system.",
 "uploadlog"		=> "upload log",
 "uploadlogpage" => "Upload_log",
 "uploadlogpagetext" => "Below is a list of the most recent file uploads.
-All times shown are server (U.S. Pacific) time.
+All times shown are server time (UTC).
 <ul>
 </ul>
 ",
@@ -662,6 +611,23 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "userstatstext" => "There are <b>$1</b> registered users.
 <b>$2</b> of these are administrators (see $3).",
 
+# Maintenance Page
+#
+"maintenance"		=> "Maintenance page",
+"maintnancepagetext"	=> "This page includes several handy tools for everyday maintenance. Some of these functions tend to stress the database, so please do not hit reload after every item you fixed ;-)",
+"maintenancebacklink"	=> "Back to Maintenance Page",
+"disambiguations"	=> "Disambiguation pages",
+"disambiguationspage"	=> "Wikipedia:Links_to_disambiguating_pages",
+"disambiguationstext"	=> "The following articles link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br>A page is treated as dismbiguation if it is linked from $1.<br>Links from other namespaces are <i>not</i> listed here.",
+"doubleredirects"	=> "Double Redirects",
+"doubleredirectstext"	=> "<b>Attention:</b> This list may contain false positives. That usually means there is additional text with links below the first #REDIRECT.<br>\nEach row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" taget article, which the first redirect should point to.",
+"selflinks"		=> "Pages with Self Links",
+"selflinkstext"		=> "The following pages contain a link to themselves, which they should not.",
+"missinglanguagelinks"  => "Missing Language Links",
+"missinglanguagelinksbutton"    => "Find missing language links for",
+"missinglanguagelinkstext"      => "These articles do <i>not</i> link to their counterpart in $1. Redirects and subpages are <i>not</i> shown.",
+
+
 # Miscellaneous special pages
 #
 "orphans"		=> "Orphaned pages",
@@ -672,7 +638,7 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "wantedpages"	=> "Wanted pages",
 "nlinks"		=> "$1 links",
 "allpages"		=> "All pages",
-"randompage"	=> "Random page",
+"randompage"	=> "아무거나",
 "shortpages"	=> "Short pages",
 "longpages"		=> "Long pages",
 "listusers"		=> "User list",
@@ -765,7 +731,7 @@ See $2 for a record of recent deletions.",
 "deletedarticle" => "deleted \"$1\"",
 "dellogpage"	=> "Deletion_log",
 "dellogpagetext" => "Below is a list of the most recent deletions.
-All times shown are server (U.S. Pacific) time.
+All times shown are server time (UTC).
 <ul>
 </ul>
 ",
@@ -773,6 +739,21 @@ All times shown are server (U.S. Pacific) time.
 "reverted"		=> "Reverted to earlier revision",
 "deletecomment"	=> "Reason for deletion",
 "imagereverted" => "Revert to earlier version was successful.",
+"undelete" => "Restore deleted page",
+"undeletepage" => "View and restore deleted pages",
+"undeletepagetext" => "The following pages have been deleted but are still in the archive and
+can be restored. The archive may be periodically cleaned out.",
+"undeletearticle" => "Restore deleted article",
+"undeleterevisions" => "$1 revisions archived",
+"undeletehistory" => "If you restore the page, all revisions will be restored to the history.
+If a new page with the same name has been created since the deletion, the restored
+revisions will appear in the prior history, and the current revision of the live page
+will not be automatically replaced.",
+"undeleterevision" => "Deleted revision as of $1",
+"undeletebtn" => "Restore!",
+"undeletedarticle" => "restored \"$1\"",
+"undeletedtext"   => "The article [[$1]] has been successfully restored.
+See [[Wikipedia:Deletion_log]] for a record of recent deletions and restorations.",
 
 # Contributions
 #
@@ -784,7 +765,7 @@ All times shown are server (U.S. Pacific) time.
 
 # What links here
 #
-"whatlinkshere"	=> "What links here",
+"whatlinkshere"	=> "여기 걸린 문서",
 "notargettitle" => "No target",
 "notargettext"	=> "You have not specified a target page or user
 to perform this function on.",
@@ -890,22 +871,32 @@ Please choose another name.",
 
 );
 
-class Language {
+class LanguageKo extends Language {
+
+	function getDefaultUserOptions () {
+		global $wgDefaultUserOptionsKo ;
+		return $wgDefaultUserOptionsKo ;
+		}
+
+	function getBookstoreList () {
+		global $wgBookstoreListKo ;
+		return $wgBookstoreListKo ;
+	}
 
 	function getNamespaces() {
-		global $wgNamespaceNamesEn;
-		return $wgNamespaceNamesEn;
+		global $wgNamespaceNamesKo;
+		return $wgNamespaceNamesKo;
 	}
 
 	function getNsText( $index ) {
-		global $wgNamespaceNamesEn;
-		return $wgNamespaceNamesEn[$index];
+		global $wgNamespaceNamesKo;
+		return $wgNamespaceNamesKo[$index];
 	}
 
 	function getNsIndex( $text ) {
-		global $wgNamespaceNamesEn;
+		global $wgNamespaceNamesKo;
 
-		foreach ( $wgNamespaceNamesEn as $i => $n ) {
+		foreach ( $wgNamespaceNamesKo as $i => $n ) {
 			if ( 0 == strcasecmp( $n, $text ) ) { return $i; }
 		}
 		return false;
@@ -916,49 +907,56 @@ class Language {
 	}
 
 	function getQuickbarSettings() {
-		global $wgQuickbarSettingsEn;
-		return $wgQuickbarSettingsEn;
+		global $wgQuickbarSettingsKo;
+		return $wgQuickbarSettingsKo;
 	}
 
 	function getSkinNames() {
-		global $wgSkinNamesEn;
-		return $wgSkinNamesEn;
+		global $wgSkinNamesKo;
+		return $wgSkinNamesKo;
 	}
 
 	function getUserToggles() {
-		global $wgUserTogglesEn;
-		return $wgUserTogglesEn;
+		global $wgUserTogglesKo;
+		return $wgUserTogglesKo;
+	}
+
+	function getLanguageNames() {
+		global $wgLanguageNamesKo;
+		return $wgLanguageNamesKo;
 	}
 
 	function getLanguageName( $code ) {
-		global $wgLanguageNamesEn;
-		if ( ! array_key_exists( $code, $wgLanguageNamesEn ) ) {
+		global $wgLanguageNamesKo;
+		if ( ! array_key_exists( $code, $wgLanguageNamesKo ) ) {
 			return "";
 		}
-		return $wgLanguageNamesEn[$code];
+		return $wgLanguageNamesKo[$code];
 	}
 
 	function getMonthName( $key )
 	{
-		global $wgMonthNamesEn;
-		return $wgMonthNamesEn[$key-1];
+		global $wgMonthNamesKo;
+		return $wgMonthNamesKo[$key-1];
 	}
 
 	function getMonthAbbreviation( $key )
 	{
-		global $wgMonthAbbreviationsEn;
-		return $wgMonthAbbreviationsEn[$key-1];
+		global $wgMonthAbbreviationsKo;
+		return $wgMonthAbbreviationsKo[$key-1];
 	}
 
 	function getWeekdayName( $key )
 	{
-		global $wgWeekdayNamesEn;
-		return $wgWeekdayNamesEn[$key-1];
+		global $wgWeekdayNamesKo;
+		return $wgWeekdayNamesKo[$key-1];
 	}
 
 	function userAdjust( $ts )
 	{
 		global $wgUser;
+		
+		# Default to Korean time?
 
 		$diff = $wgUser->getOption( "timecorrection" );
 		if ( ! $diff ) { $diff = 0; }
@@ -1001,29 +999,49 @@ class Language {
 
 	function getValidSpecialPages()
 	{
-		global $wgValidSpecialPagesEn;
-		return $wgValidSpecialPagesEn;
+		global $wgValidSpecialPagesKo;
+		return $wgValidSpecialPagesKo;
 	}
 
 	function getSysopSpecialPages()
 	{
-		global $wgSysopSpecialPagesEn;
-		return $wgSysopSpecialPagesEn;
+		global $wgSysopSpecialPagesKo;
+		return $wgSysopSpecialPagesKo;
 	}
 
 	function getDeveloperSpecialPages()
 	{
-		global $wgDeveloperSpecialPagesEn;
-		return $wgDeveloperSpecialPagesEn;
+		global $wgDeveloperSpecialPagesKo;
+		return $wgDeveloperSpecialPagesKo;
 	}
 
 	function getMessage( $key )
 	{
-		global $wgAllMessagesEn;
-		return $wgAllMessagesEn[$key];
-	}
-}
+		global $wgAllMessagesKo, $wgAllMessagesEn;
+		$m = $wgAllMessagesKo[$key];
 
-include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );
+		if ( "" == $m ) { return $wgAllMessagesEn[$key]; }
+		else return $m;
+	}
+	
+	function iconv( $in, $out, $string ) {
+		# For most languages, this is a wrapper for iconv
+		return iconv( $in, $out, $string );
+	}
+	
+	function ucfirst( $string ) {
+        #return ucfirst( $string );
+		# For most languages, this is a wrapper for ucfirst()
+		# But that doesn't work right in a UTF-8 locale
+		include("utf8Case.php");
+        return preg_replace (
+        	"/^([\\x00-\\x7f]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
+        	"strtr ( \"\$1\" , \$wikiUpperChars )",
+        	$string );
+	}
+	
+	# Inherit default checkTitleEncoding()
+
+}
 
 ?>
