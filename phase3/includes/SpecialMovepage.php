@@ -129,9 +129,11 @@ class MovePageForm {
 		if ( ( ! Namespace::isMovable( $this->ons ) ) ||
 			 ( "" == $this->odt ) ||
 			 ( "" != $this->ot->getInterwiki() ) ||
+			 ( !$this->ot->userCanEdit() ) ||
 		     ( ! Namespace::isMovable( $nns ) ) ||
 			 ( "" == $this->ndt ) ||
-			 ( "" != $this->nt->getInterwiki() ) ) {
+			 ( "" != $this->nt->getInterwiki() ) ||
+			 ( !$this->nt->userCanEdit() ) ) {
 			$this->showForm( wfMsg( "badarticleerror" ) );
 			return;
 		}
