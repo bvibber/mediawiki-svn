@@ -108,9 +108,11 @@ class WikiTitle {
 		$this->namespace = strtolower ( $this->namespace ) ;
 		}
 
-	# I don't remember what this does, or if I use it somewhere...
+	# This converts an internal link to stay in the same namespace, if desired. Used in wikiPage-getInternalLinks()
 	function getLinkTo ( $target ) {
-		$n = $this->namespace ;
+		$keepNamespace = array ( "stable" ) ; # For future use
+		$n = "" ;
+		if ( in_array ( strtolower ( $this->namespace ) , $keepNamespace ) ) $n = $this->namespace ;
 		if ( $target->hasNamespace ) $n = $target->namespace ;
 		if ( $n != "" ) $n .= ":" ;
 		$p = $target->mainTitle ;

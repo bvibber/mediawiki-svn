@@ -41,9 +41,11 @@ include_once ( "./wikiUser.php" ) ;
 		unset ( $search ) ;
 	} else  if ( $action == "watch" ) {
 		global $mode ;
+		include_once ( "./specialPages.php" ) ;
 		$out = watch ( $title , $mode ) ;
 	} else if ( $action == "view" ) $out = view ( $title ) ;
 	else if ( $action == "edit" ) $out = doEdit ( $title ) ;
+	else if ( $action == "print" ) $out = doPrint ( $title ) ;
 	else if ( $action == "history" ) {
 		include_once ( "./specialPages.php" ) ;
 		$out = doHistory ( $title ) ;

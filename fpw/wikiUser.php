@@ -18,7 +18,7 @@ class WikiUser {
 
 	# This sets the options for the standard skin
 	function skinBlank () {
-		$this->options["background"] = "" ;
+		$this->options["background"] = " BGCOLOR=#FFFFFF" ;
 		$this->options["text"] = "" ;
 		$this->options["forceQuickBar"] = "" ;
 		$this->options["quickBarBackground"] = "" ;

@@ -264,6 +264,7 @@ class WikiPage extends WikiTitle {
 		$a = explode ( "[http://" , " ".$s ) ;
 		$s = array_shift ( $a ) ;
 		$s = substr ( $s , 1 ) ;
+		$image = "<img src=earth_small.png valign=center border=0>" ; # Remove or set to blank for no image
 		foreach ( $a as $t ) {
 			$b = spliti ( "]" , $t , 2 ) ;
 			if ( count($b) < 2 ) $s .= "Illegal link : ?$b[0]?" ;
@@ -280,13 +281,13 @@ class WikiPage extends WikiTitle {
 				if ( substr_count ( $b[1] , "<hr>" ) > 0 ) $cnt = 1 ;
 				$link = "~http://".$link ;
 				if ( $user->options["showHover"] == "yes" ) $hover = "title=\"$link\"" ;
-				$s .= "<a href=\"$link\" $hover>$text</a>" ;
+				$s .= "<a href=\"$link\" $hover>$image$text</a>" ;
 				$s .= $b[1] ;
 				}
 			}
 
 		$o = "A-Za-z0-9/\.:?&=_~%-@^" ;
-		$s = eregi_replace ( "([^~\"])http://([$o]+)([^$o])" , "\\1<a href=\"http://\\2\">[http://\\2]</a>\\3" , $s ) ;
+		$s = eregi_replace ( "([^~\"])http://([$o]+)([^$o])" , "\\1<a href=\"http://\\2\">".$image."http://\\2</a>\\3" , $s ) ;
 		$s = str_replace ( "~http://" , "http://" , $s ) ;
 
 		return $s ;
@@ -325,6 +326,7 @@ class WikiPage extends WikiTitle {
 	# This function is called to replace wiki-style tags with HTML, e.g., the first occurrence of ''' with <b>, the second with </b>
 	function pingPongReplace ( $f , $r1 , $r2 , $s ) {
 		$a = explode ( $f , " ".$s ) ;
+		if ( count ( $a ) == 1 ) return $s ;
 		$s = substr ( array_shift ( $a ) , 1 ) ;
 		$r = $r1 ;
 		foreach ( $a as $t ) {
@@ -373,25 +375,30 @@ class WikiPage extends WikiTitle {
 
 	# This function removes "forbidden" HTML tags
 	function removeHTMLtags ( $s ) {
-		$s = eregi_replace ( "<a (.*)>" , "&lt;a \\1&gt;" , $s ) ;
-		$s = eregi_replace ( "</a(.*)>" , "&lt;/a\\1&gt;" , $s ) ;
-		$s = eregi_replace ( "<script(.*)>" , "&lt;script\\1&gt;" , $s ) ;
-		$s = eregi_replace ( "</script(.*)>" , "&lt;/script\\1&gt;" , $s ) ;
+		$forbidden = array ( "a" , "script" , "title" , "html" , "body" , "header" ) ;
+		foreach ( $forbidden as $x ) {
+			$s = eregi_replace ( "<".$x." (.*)>" , "&lt;".$x." \\1&gt;" , $s ) ;
+			$s = eregi_replace ( "</".$x."(.*)>" , "&lt;/".$x."\\1&gt;" , $s ) ;
+			}
 		return $s ;
 		}
 
-	# This function does the actual parsing of the wiki parts of the article
+	# This function does the actual parsing of the wiki parts of the article, for regions NOT marked with <nowiki>
 	function subParseContents ( $s ) {
 		global $user ;
 # Removed automatic links for mixedThings; wasn't working, anyway...
 #		$s = ereg_replace ( "([\.|\n| )([a-z0-9]*[A-Z0-9]+[A-Za-z0-9]*)( |\n|\.)" , "\\1[[\\2]]\\3" , $s ) ;
 		$s = $this->removeHTMLtags ( $s ) ; # Removing "forbidden" HTML tags
+
 		# Now some repalcements wiki->HTML
 		$s = ereg_replace ( "-----*" , "<hr>" , $s ) ;
 		$s = str_replace ( "<HR>" , "<hr>" , $s ) ;
 		$s = $this->replaceVariables ( $s ) ;
+		$s = $this->pingPongReplace ( "'''''" , "<i><b>" , "</b></i>" , $s ) ;
 		$s = $this->pingPongReplace ( "'''" , "<b>" , "</b>" , $s ) ;
 		$s = $this->pingPongReplace ( "''" , "<i>" , "</i>" , $s ) ;
+		$s = $this->pingPongReplace ( "====" , "<h4>" , "</h4>" , $s ) ;
+		$s = $this->pingPongReplace ( "===" , "<h3>" , "</h3>" , $s ) ;
 
 		# Automatic links to subpages (e.g., /Talk -> [[/Talk]]
 		$s = ereg_replace ( "([\n| ])/([a-zA-Z0-9_]*)" , "\\1[[/\\2|/\\2]]" , $s ) ;
@@ -484,7 +491,7 @@ class WikiPage extends WikiTitle {
 		global $user , $oldID , $version ;
 		$editOldVersion = "" ;
 		if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
-		$ret = "<a href=\"$THESCRIPT?\">HomePage</a>" ;
+		$ret = "<a href=\"$THESCRIPT\">Homepage</a>" ;
 
 		$spl = $this->getSubpageList () ;
 		if ( count ( $spl ) > 0 and $this->subpageTitle != "" ) {
@@ -522,11 +529,14 @@ class WikiPage extends WikiTitle {
 			} else $ret .= "<font size=+3>".$t."</font>" ;
 		} else {
 			$ret .= "<font size=+3><a href=\"$THESCRIPT?search=$this->title\">".$this->getNiceTitle($t)."</a>$this->thisVersion</font>" ;
+			$subText = array () ;
 			if ( $user->isLoggedIn ) {
 				if ( $user->doWatch($this->title) )
-					$ret.="<br><a href=\"$THESCRIPT?action=watch&title=$this->secureTitle&mode=no\">Stop watching this article for me</a>";
-				else $ret .= "<br><a href=\"$THESCRIPT?action=watch&title=$this->secureTitle&mode=yes\">Watch this article for me</a>" ;
+					array_push($subText,"<br><a href=\"$THESCRIPT?action=watch&title=$this->secureTitle&mode=no\">Stop watching this article for me</a>");
+				else array_push($subText,"<br><a href=\"$THESCRIPT?action=watch&title=$this->secureTitle&mode=yes\">Watch this article for me</a>") ;
 				}
+			if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"$THESCRIPT?action=print&title=$this->secureTitle\">Printable version</a>" ) ;
+			$ret .= implode ( " | " , $subText ) ;
 			}
 		$ret .= "</td>\n<td valign=top width=200 rowspan=2 nowrap>".$user->getLink()."<br>" ;
 		if ( $user->isLoggedIn ) $ret .= "<a href=\"$THESCRIPT?title=special:userLogout\">Log out</a> | <a href=\"$THESCRIPT?title=special:editUserSettings\">Preferences</a>" ;
@@ -577,6 +587,7 @@ class WikiPage extends WikiTitle {
 	# Some special pages have their own rendering function
 	function getMiddle ( $ret ) {
 		global $user , $action ;
+		if ( $action == "print" ) return $ret ;
 		$oaction = $action ;
 		if ( $action == "edit" ) $action = "" ;
 		if ( $user->options["quickBar"] == "right" or $user->options["quickBar"] == "left" or $user->options["forceQuickBar"] != "" ) {
@@ -617,13 +628,20 @@ class WikiPage extends WikiTitle {
 
 	# This generates header, diff (if wanted), article body (with QuickBar), and footer
 	# The whole page (for normal pages) is generated here
-	function renderPage () {
-		global $pageTitle , $diff ;
+	function renderPage ( $doPrint = false ) {
+		global $pageTitle , $diff , $THESCRIPT ;
 		$pageTitle = $this->title ;
 		if ( isset ( $diff ) ) $middle = $this->doDiff().$this->contents ;
 		else $middle = $this->contents ;
 		$middle = $this->getMiddle($this->parseContents($middle)) ;
-		return $this->getHeader().$middle.$this->getFooter() ;
+		if ( $doPrint ) {
+			$header = "<h1>".$this->getNiceTitle($pageTitle)."</h1>\n" ;
+			$link = "http://wikipedia.sourceforge.net/fpw/wiki.phtml?title=$this->secureTitle" ;
+#			$link = "http://127.0.0.1/fpw/wiki.phtml?title=$this->secureTitle" ;
+			$footer = "<hr>This article is from <b>Wikipedia</b> (<a href=\"http://wikipedia.com\">http://wikipedia.com</a>), " ;
+			$footer .= "the free online encyclopedia. You can find this article at <a href=\"$link\">$link</a>" ;
+			return $header.$middle.$footer ;
+		} else return $this->getHeader().$middle.$this->getFooter() ;
 		}
 
 	# This displays the diff. Currently, only diff with the last edit!
