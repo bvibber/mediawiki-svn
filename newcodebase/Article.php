@@ -882,12 +882,8 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$wgOut->readOnlyPage();
 			return;
 		}
-		# Likewise, deleting old images doesn't require confirmation
 
-		if ( $oldimage || 1 == $wpConfirm ) {
-			$this->doDelete();
-			return;
-		}
+		# Better double-check that it hasn't been deleted yet!
 		$wgOut->setPagetitle( wfMsg( "confirmdelete" ) );
 		if ( $image ) {
 			if ( "" == trim( $image ) ) {
@@ -896,13 +892,21 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			}
 			$sub = str_replace( "$1", $image, wfMsg( "deletesub" ) );
 		} else {
-			if ( "" == trim( $wgTitle->getText() ) ) {
+			if ( ( "" == trim( $wgTitle->getText() ) )
+			  or ( $wgTitle->getArticleId() == 0 ) ) {
 				$wgOut->fatalError( wfMsg( "cannotdelete" ) );
 				return;
 			}
 			$sub = str_replace( "$1", $wgTitle->getPrefixedText(),
 			  wfMsg( "deletesub" ) );
 		}
+
+		# Likewise, deleting old images doesn't require confirmation
+		if ( $oldimage || 1 == $wpConfirm ) {
+			$this->doDelete();
+			return;
+		}
+
 		$wgOut->setSubtitle( $sub );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 		$wgOut->addWikiText( wfMsg( "confirmdeletetext" ) );
@@ -1012,7 +1016,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 
 	function doDeleteArticle( $title )
 	{
-		global $wgUser, $wgOut, $wgLang, $wpReason;
+		global $wgUser, $wgOut, $wgLang, $wpReason, $wgTitle;
 
 		$fname = "Article::doDeleteArticle";
 		$ns = $title->getNamespace();
@@ -1146,6 +1150,10 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			rc_cur_id) VALUES ('{$now}','{$now}',{$uid},'" . wfStrencode( $ut ) .
 			"',4,'{$logpage}','" . wfStrencode( $lcom ) . "',{$id})";
         wfQuery( $sql, $fname );
+		
+		# Clear the cached article id so the interface doesn't act like we exist
+		$wgTitle->resetArticleID( 0 );
+		$wgTitle->mArticleID = 0;
 	}
 
 	function revert()

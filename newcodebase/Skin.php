@@ -401,7 +401,7 @@ class Skin {
 					$s .= $sep . $this->emailUserLink();
 				}
 			}
-			if ( $wgUser->isSysop() ) {
+			if ( $wgUser->isSysop() && $wgTitle->getArticleId() ) {
 				$s .= "\n<br>" . $this->deleteThisPage() .
 				$sep . $this->protectThisPage() .
 				$sep . $this->moveThisPage();
@@ -469,7 +469,7 @@ class Skin {
 				$s .= $sep . $this->watchThisPage();
 				if ( $wgTitle->userCanEdit() ) $s .= $sep . $this->moveThisPage();
 			}
-			if ( $wgUser->isSysop() ) {
+			if ( $wgUser->isSysop() and $wgTitle->getArticleId() ) {
 				$s .= $sep . $this->deleteThisPage() .
 				$sep . $this->protectThisPage();
 			}
