@@ -719,7 +719,11 @@ class LanguageDe extends Language {
 		global $wgUser;
 
 		$diff = $wgUser->getOption( "timecorrection" );
-		if ( ! $diff ) { $diff = 0; }
+		if ( ! is_numeric( $diff ) ) {
+			# Use Central European Time by default
+			$diff = 1;
+			# note: change this to take DST into account
+		}
 		if ( 0 == $diff ) { return $ts; }
 
 		$t = mktime( ( (int)substr( $ts, 8, 2) ) + $diff,
