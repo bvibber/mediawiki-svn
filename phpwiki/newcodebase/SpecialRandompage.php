@@ -6,7 +6,10 @@ function wfSpecialRandompage()
 	$fname = "wfSpecialRandompage";
 
 	wfSeedRandom();
-	if ( 0 == mt_rand( 0, 899 ) or $force == "yes") { # Time to reload
+	$sqlget = "SELECT ra_title FROM random WHERE ra_current=1 " .
+	  "ORDER BY RAND() LIMIT 1";
+	$res = wfQuery( $sqlget, $fname );
+	if ( 0 == wfNumRows( $res ) or $force == "yes") { # Time to reload
 		# Reload 1000 random titles into random table.  Doing it this
 		# roundabout way avoids the need for any locking.
 		#
@@ -20,11 +23,13 @@ function wfSpecialRandompage()
 
 		$sql = "DELETE FROM random WHERE ra_current>1";
 		wfQuery( $sql, $fname );
+
+		$res = wfQuery( $sqlget, $fname );
 	}
-	$sql = "SELECT ra_title FROM random WHERE ra_current=1 " .
-	  "ORDER BY RAND() LIMIT 1";
-	$res = wfQuery( $sql, $fname );
 	$s = wfFetchObject( $res );
+	$sql = "UPDATE random SET ra_current=(ra_current+1) WHERE ra_title='"
+		. wfStrencode( $s->ra_title ) . "'";
+	wfQuery( $sql, $fname );
 	$rt = wfUrlEncode( $s->ra_title );
 
 	$wgOut->reportTime(); # for logfile
