@@ -350,7 +350,7 @@ sein, um Ihre Einstellungen zu ändern.",
 "contextchars"	=> "Zeichen pro Zeile",
 "recentchangescount" => "Anzahl \"Letzte Änderungen\"",
 "savedprefs"	=> "Ihre Einstellungen wurden gespeichert.",
-"timezonetext"	=> "Geben Sie die Anzahl der Stunden ein, die zwischen Ihrer Zeitzone und U.S.-Westküstenzeit liegen. Für Deutschland \"9\" eintragen.",
+"timezonetext"	=> "Geben Sie die Anzahl der Stunden ein, die zwischen Ihrer Zeitzone und UTC liegen.",
 "localtime"	=> "Ortszeit",
 "timezoneoffset" => "Unterschied",
 "emailflag"		=> "Keine E-Mail von anderen Benutzern erhalten",
@@ -400,7 +400,7 @@ Um ein Bild in einem Artikel zu verwenden, schreiben Sie an Stelle des Bildes
 "uploadlog"		=> "Datei-Logbuch",
 "uploadlogpage" => "Datei-Logbuch",
 "uploadlogpagetext" => "Hier ist die Liste der letzten hochgeladenen Dateien.
-Alle Zeiten sind U.S.-Westküste.
+Alle Zeiten sind UTC.
 <ul>
 </ul>
 ",
@@ -537,7 +537,7 @@ Bitte bestätigen Sie Ihre Absicht, dies zu tun, dass Sie sich der Konsequenzen b
 Im $2 finden Sie eine Liste der letzten Löschungen.",
 "deletedarticle" => "\"$1\" gelöscht",
 "dellogpage"	=> "Lösch-Logbuch",
-"dellogpagetext" => "Hier ist eine Liste der letzten Löschungen (U.S.-Westküsten-Zeit).
+"dellogpagetext" => "Hier ist eine Liste der letzten Löschungen (UTC).
 <ul>
 </ul>
 ",

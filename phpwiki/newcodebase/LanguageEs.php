@@ -514,8 +514,7 @@ para seleccionar preferencias de usuario.",
 "recentchangescount" => "Número de títulos en cambios recientes",
 "savedprefs"	=> "Tus preferencias han sido grabadas.",
 "timezonetext"	=> "Entra el número de horas de diferencia entre tu hora local
-y la hora del servidor (Tiempo del Pacífico de EEUU).
-Por ejemplo, desde España, entra \"8\".",
+y la hora del servidor (UTC).",
 "localtime"	=> "Hora local",
 "timezoneoffset" => "Diferencia",
 
@@ -585,7 +584,7 @@ la enciclopedia, y tú puedes ser bloqueado de subir archivos si abusas del siste
 "uploadlog"		=> "registro de subidas",
 "uploadlogpage" => "Registro_de_subidas",
 "uploadlogpagetext" => "Abajo hay una lista de los archivos que se han
-subido más recientemente. Todas las horas son del servidor (EEUU Pacifico).
+subido más recientemente. Todas las horas son del servidor (UTC).
 <ul>
 </ul>
 ",
@@ -717,7 +716,7 @@ Ve $2 para un registro de los borrados más recientes.",
 "deletedarticle" => "borrado \"$1\"",
 "dellogpage"	=> "Registro de borrados",
 "dellogpagetext" => "Abajo hay una lista de los borrados más recientes.
-Todos los tiempos se muestran en hora del servidor (EEUU Pacifico).
+Todos los tiempos se muestran en hora del servidor (UTC).
 <ul>
 </ul>
 ",
