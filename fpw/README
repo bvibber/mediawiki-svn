@@ -1,3 +1,9 @@
+IMPORTANT: This whole directory tree has been deprecated
+in favor of the "phase3" module.  It is left here as an
+historical record of the evolution of the code, but no
+further development should be done here.
+
+
 1. Introduction
 2. First-time installation
 3. Updating to a newer version
