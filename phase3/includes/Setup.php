@@ -7,7 +7,6 @@
 
 global $IP;
 include_once( "$IP/GlobalFunctions.php" );
-include_once( "$IP/Language.php" );
 include_once( "$IP/Namespace.php" );
 include_once( "$IP/Skin.php" );
 include_once( "$IP/OutputPage.php" );
@@ -35,6 +34,8 @@ if( $wgUseMemCached ) {
 	$wgMemc->set_servers( $wgMemCachedServers );
 	$wgMemc->set_debug( $wgMemCachedDebug );
 }
+
+include_once( "$IP/Language.php" );
 
 $wgOut = new OutputPage();
 $wgLangClass = "Language" . ucfirst( $wgLanguageCode );
