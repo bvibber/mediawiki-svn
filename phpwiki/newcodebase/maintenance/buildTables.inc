@@ -201,13 +201,17 @@ function buildIndexes()
   ADD INDEX cur_namespace (cur_namespace),
   ADD INDEX cur_title (cur_title(20)),
   ADD INDEX cur_timestamp (cur_timestamp),
+  ADD INDEX cur_user (cur_user),
+  ADD INDEX cur_user_text (cur_user_text(8)),
   ADD FULLTEXT cur_ind_title (cur_ind_title),
   ADD FULLTEXT cur_ind_text (cur_ind_text)";
 	wfQuery( $sql );
 
 	$sql = "ALTER TABLE old
   ADD INDEX old_title (old_title(20)),
-  ADD INDEX old_timestamp (old_timestamp)";
+  ADD INDEX old_timestamp (old_timestamp),
+  ADD INDEX old_user (old_user),
+  ADD INDEX old_user_text (old_user_text(8))";
 	wfQuery( $sql );
 
 	$sql = "ALTER TABLE links
