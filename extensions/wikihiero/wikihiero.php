@@ -56,7 +56,7 @@
   define("WH_VER_MED",       2);
   define("WH_VER_MIN",       9);
 
-  define("WH_IMG_DIR",       "img/");
+  define("WH_IMG_DIR",       "extensions/wikihiero/img/");
   define("WH_IMG_PRE",       "hiero_");
   define("WH_IMG_EXT",       "png");
 
