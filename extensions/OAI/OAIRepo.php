@@ -21,12 +21,10 @@
  * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @todo Charset conversion for Latin-1 wikis
  * @todo Check update hooks for all actions
  * @todo Make sure identifiers are correct format
  * @todo Configurable bits n pieces
  * @todo Test for conformance & error conditions
- * @todo Finish the harvester side ;)
  */
 
 if( !defined( 'MEDIAWIKI' ) ) {
