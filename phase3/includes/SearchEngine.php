@@ -142,6 +142,7 @@ class SearchEngine {
 	function showResults()
 	{
 		global $wgUser, $wgTitle, $wgOut, $wgLang, $wgDisableTextSearch;
+		global $wgInputEncoding;
 		$fname = "SearchEngine::showResults";
 
 		$search		= $_REQUEST['search'];
@@ -155,8 +156,7 @@ class SearchEngine {
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 
 		if ( $wgDisableTextSearch ) {
-			$wgOut->addHTML( str_replace( "$1",
-			  htmlspecialchars( $search ), wfMsg( "searchdisabled" ) ) );
+			$wgOut->addHTML( wfMsg( "searchdisabled", $search, $wgInputEncoding ) );
 		} else {
 			$sk = $wgUser->getSkin();
 			$text = wfMsg( "searchresulttext", $sk->makeKnownLink(
