@@ -84,7 +84,7 @@
 	"my"    => "http://my.wikipedia.com/wiki.cgi?$1",
 	"na"    => "http://na.wikipedia.com/wiki.cgi?$1",
 	"ne"    => "http://ne.wikipedia.com/wiki.cgi?$1",
-	"nl"	=> "http://nl.wikipedia.com/wiki.cgi?$1",
+	"nl"	=> "http://nl.wikipedia.org/wiki/$1",
 	"no"    => "http://no.wikipedia.com/wiki.cgi?$1",
 	"oc"    => "http://oc.wikipedia.com/wiki.cgi?$1",
 	"om"    => "http://om.wikipedia.com/wiki.cgi?$1",
@@ -185,7 +185,8 @@ class Title {
 	function newFromURL( $url )
 	{
 		$t = new Title();
-		$s = urldecode( $url );
+		$s = urldecode( $url ); # This is technically wrong, as anything
+								# we've gotten is already decoded by PHP
 		$t->mDbkeyform = str_replace( " ", "_", $s );
 		$t->secureAndSplit();
 		return $t;
