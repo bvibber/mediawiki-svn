@@ -34,7 +34,7 @@ if ( $wikiLanguage =="eo" ) {
 	$wikiSeeAlso = "Legu anka\xc5\xad" ;
 	$wikiConversionScript = "konvertilo" ;
 	$wikiAutomatedConversion = "A\xc5\xadtomata konvertado" ;
-	$recodeCharset = wikiRecodeCharsetEo ;
+	$recodeCharset = wikiRecodeInputEo ;
 	}
 
 ## French
