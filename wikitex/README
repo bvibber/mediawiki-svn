@@ -20,7 +20,7 @@
 
 
 
-29 January 2005
+2 February 2005
 
 
 
@@ -83,8 +83,8 @@
 1. Introduction  . . . . . . . . . . . . . . . . . . . .   1
 2. Acquisition . . . . . . . . . . . . . . . . . . . . .   1
 3. Installation  . . . . . . . . . . . . . . . . . . . .   1
-     3.1. Stand‐alone distribution . . . . . . . . . . .   2
-     3.2. Pre‐packaged distribution  . . . . . . . . . .   2
+     3.1. Stand-alone distribution . . . . . . . . . . .   2
+     3.2. Pre-packaged distribution  . . . . . . . . . .   2
      3.2.1. Java SVG (Batik) . . . . . . . . . . . . . .   3
 4. Expansion . . . . . . . . . . . . . . . . . . . . . .   3
 5. Copyright . . . . . . . . . . . . . . . . . . . . . .   4
@@ -92,7 +92,7 @@
 1.  Introduction
 
           WikiTeX extends MediaWiki by allowing  authors  to
-     manipulate  graphical  objects  directly in their arti‐
+     manipulate  graphical  objects  directly in their arti-
      cles; support so  far  includes:  math,  music,  chess,
      chemistry,  go,  plots and relational diagrams.  To see
      WikiTeX in action, please visit:
@@ -104,10 +104,10 @@
           Unadorned WikiTeX is available via  anonymous  CVS
      from SourceForge:
 
-     cvs ‐d:pserver:anonymous@cvs.sf.net:/cvsroot/wikipedia \
+     cvs -d:pserver:anonymous@cvs.sf.net:/cvsroot/wikipedia \
      co wikitex
 
-     Alternatively, WikiTeX comes  prepackaged  with  Media‐
+     Alternatively, WikiTeX comes  prepackaged  with  Media-
      Wiki; see:
 
           http://wikitex.org
@@ -115,10 +115,10 @@
 3.  Installation
 
           Depending  on  your distribution, installation may
-     consist of three or more steps; and assumes some famil‐
+     consist of three or more steps; and assumes some famil-
      iarity with Apache.
 
-          Each  method below presupposes a succesful instal‐
+          Each  method below presupposes a succesful instal-
      lation of MediaWiki.
 
 
@@ -127,18 +127,18 @@
 
 
 
-                       29 January 2005
+                       2 February 2005
 
 
 
 
 
-                             ‐2‐
+                             -2-
 
 
-     3.1.  Stand‐alone distribution
+     3.1.  Stand-alone distribution
 
-               In addition to the steps  detailed  for  pre‐
+               In addition to the steps  detailed  for  pre-
           packaged distributions, perform these twain:
 
           1.   Create   the  directory  /extensions/wikitex;
@@ -146,21 +146,21 @@
                directory /extensions/wikitex/tmp.
 
           2.   Add  the following line to /LocalSettings.php
-               lastly before the terminal ’?>’:
+               lastly before the terminal '?>':
 
-               include ’./extensions/wikitex/wikitex.php’;
+               include './extensions/wikitex/wikitex.php';
 
-               You  may  now  continue with normal installa‐
+               You  may  now  continue with normal installa-
           tion.
 
-     3.2.  Pre‐packaged distribution
+     3.2.  Pre-packaged distribution
 
           1.   Render /extensions/wikitex/tmp  scribable  to
-               the web server, but beware to disable script‐
+               the web server, but beware to disable script-
                ing.
 
           2.   Verify that ImageMagick (imagemagick.org)  is
-               present,   and   acquire   Jan‐Åke  Larsson’s
+               present,   and   acquire  Jan-Aoke  Larsson's
                dvipng:
 
           http://sourceforge.net/projects/dvipng/
@@ -170,9 +170,9 @@
                (see Expanding WikiTeX):
 
      Class   Package         Author               URL
-     ────────────────────────────────────────────────────────
+     --------------------------------------------------------
      batik SVG Java    Apache               apache.org
-     chem  PPCH‐TeX    Hans Hagen           pragma‐ade.com
+     chem  PPCH-TeX    Hans Hagen           pragma-ade.com
      chess LaTeX Chess Piet Tutelaers       tug.org
      feyn  Feynman     Michael Levine       ctan.org
      go    Go          Daniel Bump          stanford.edu
@@ -180,8 +180,8 @@
      greek Ibycus      Pierre MacKay        tug.org
      ling  AVM         Christopher Manning  stanford.edu
            Parsetree   Eirik Hektoen        essex.ac.uk
-     math  AMS‐LaTeX   Amer. Math. Soc.     ams.org
-     music Lilypond    Han‐Wen Nienhuys     lilypond.org
+     math  AMS-LaTeX   Amer. Math. Soc.     ams.org
+     music Lilypond    Han-Wen Nienhuys     lilypond.org
      plot  Gnuplot     Nikos Drakos         gnuplot.info
      svg   SVG lite    ImageMagick          imagemagick.org
      teng  Tengwar     Ivan Derzhanski      quettar.org
@@ -193,31 +193,31 @@
 
 
 
-                       29 January 2005
+                       2 February 2005
 
 
 
 
 
-                             ‐3‐
+                             -3-
 
 
-          4.   Lastly, ensure that your server’s $PATH vari‐
+          4.   Lastly, ensure that your server's $PATH vari-
                able includes /usr/bin and /usr/local/bin, or
                wherever your binaries are installed.
 
           3.2.1.  Installing Batik
 
-                    Installing  Batik  (the  Java‐based  SVG
+                    Installing  Batik  (the  Java-based  SVG
                toolkit) requires several unique steps:
 
                1.   Install Java (java.sun.com).
 
                2.   Install Batik (xml.apache.org/batik); if
-                    elsewhere than /usr/local/batik, config‐
+                    elsewhere than /usr/local/batik, config-
                     ure wikitex.inc.sh.
 
-               3.   If  you  have XWindows, the Xserver Vir‐
+               3.   If  you  have XWindows, the Xserver Vir-
                     tual Frame Buffer  should  be  included;
                     configure  Xvfb  to  start up at runtime
                     by:
@@ -227,9 +227,9 @@
 
                     b.   Linking xvfb at the prompt:
 
-                    ln ‐s /etc/init.d/xvfb /etc/rc2.d/S98xvfb
+                    ln -s /etc/init.d/xvfb /etc/rc2.d/S98xvfb
 
-               4.   Add the following to apachectl or equiv‐
+               4.   Add the following to apachectl or equiv-
                     alent:
 
                          DISPLAY=localhost:1.0
@@ -248,29 +248,29 @@
                          wikitex.<classname>.inc.<ext>
 
                     The  template should expose said package
-                    to the renderer; see  the  current  tem‐
+                    to the renderer; see  the  current  tem-
                     plates for examples.
 
-               2.   Unless  the  class requires non‐standard
-                    processing  (confer  Lilypond’s   midi),
+               2.   Unless  the  class requires non-standard
+                    processing  (confer  Lilypond's   midi),
                     skip  to  step  three;  else,  add a new
                     function in wikitex.sh under <class>.
 
 
 
 
-                       29 January 2005
+                       2 February 2005
 
 
 
 
 
-                             ‐4‐
+                             -4-
 
 
                     Consult wikitex.sh for examples.
 
-               3.   Lastly, if the package contains undesir‐
+               3.   Lastly, if the package contains undesir-
                     able  or  insecure  directives, add them
                     to:
 
@@ -325,23 +325,13 @@
 
 
 
-                       29 January 2005
+                       2 February 2005
 
 
 
 
 
-                             ‐5‐
-
-
-     WikiTeX: expansible LaTeX module for MediaWiki
-     Copyright (C) 2004  Peter Danenberg
-
-          WikiTeX  is  free   software;   you   can   redis‐
-     tribute  it and/or modify it under the terms of the GNU
-     General  Public License as published by the Free  Soft‐
-     ware  Foundation;  either  version 2 of the License, or
-     (at your option) any later ver‐ sion.
+                             -5-
 
 
 
@@ -391,6 +381,16 @@
 
 
 
-                       29 January 2005
+
+
+
+
+
+
+
+
+
+
+                       2 February 2005
 
 

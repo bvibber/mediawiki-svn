@@ -17,34 +17,34 @@ Sat Jan 29 00:34:09 PST 2005  Peter Danenberg
           Changes almost too numerous to enumerate; but some
      of the more exciting:
 
-     ·    Gnuplot and Graphviz: <plot> and <graph>,  respec‐
+     o    Gnuplot and Graphviz: <plot> and <graph>,  respec-
           tively
 
-     ·    Multi‐page output for music, go and chess
+     o    Multi-page output for music, go and chess
 
-     ·    More detailed, helpful error messages
+     o    More detailed, helpful error messages
 
-          The  installation process, to boot, is less error‐
-     prone; and no Python: but the bash interface  has  been
+          The  installation process, to boot, is less error-
+     prone; no Python:  but  the  bash  interface  has  been
      refactored.
 
 Tue Jan 25 11:23:48 PST 2005  Peter Danenberg
 
           This  candidate  both maintains by tightening down
      our blacklist (thanks, Johannes Berg); and innovates by
-     introducing  Jan‐Åke Larsson’s dvipng.  dvipng replaces
+     introducing Jan-Aoke Larsson's dvipng.  dvipng replaces
      dvi2bitmap; resulting in cleaner, faster renders.
 
-          <math></math> is now <amsmath></amsmath>,  by  the
-     way,  to avoid conflicting with texvc (Brion Vibber had
-     us know it won’t be decoupled short‐term).
+          <math></math> becomes <amsmath></amsmath>  in  the
+     stand-alone  version,  to avoid conflicting with texvc;
+     in pre-packaged WikiTeX, it replaces texvc.
 
-          I’d also like to  un‐cobweb  that  bash  interface
+          I'd also like to  un-cobweb  that  bash  interface
      with Python before we go live.
 
 Mon Oct  4 01:56:23 PDT 2004  Peter Danenberg
 
-          In  order  to  plumb their several virtues’ depth,
+          In  order  to  plumb their several virtues' depth,
      the Batik toolkit  ("heavy  SVG"),  will  be  available
      alongside ImageMagick; its more efficient kin.
 
@@ -53,52 +53,52 @@ Mon Oct  4 01:56:23 PDT 2004  Peter Danenberg
 
 Sun Oct  3 17:38:03 PDT 2004  Peter Danenberg
 
-          SVG is finally here; and we opted for Batik’s  SVG
-     kit (xml.apache.org/batik) which, though very full‐fea‐
-     tured, suffers from a Java‐like retardation.   It  were
+          SVG is finally here; and we opted for Batik's  SVG
+     kit (xml.apache.org/batik) which, though very full-fea-
+     tured, suffers from a Java-like retardation.   It  were
      mere  oeconomy  that  ever  importuned  us to return to
-     ImageMagick’s SVG subset.
+     ImageMagick's SVG subset.
 
 
 
-                       29 January 2005
+                       2 February 2005
 
 
 
 
 
-                             ‐2‐
+                             -2-
 
 
 Mon Sep  6 03:20:26 PDT 2004  Peter Danenberg
 
-          With the introduction of XML‐like  tags,  we  have
-     cleared  a major hurdle towards integration with Media‐
+          With the introduction of XML-like  tags,  we  have
+     cleared  a major hurdle towards integration with Media-
      Wiki; next on the list, parameters of the form:
 
           <music tempo="80"></music>
 
-     WikiTeX’ vulnerability to attack  must  also  be  thor‐
+     WikiTeX' vulnerability to attack  must  also  be  thor-
      oughly sounded.
 
 Sun May 30 00:00:00 PDT 2004  Peter Danenberg
 
-          We’re   refactoring  WikiTeX from the ground up to
+          We're   refactoring  WikiTeX from the ground up to
      implement tags of the form:
 
           <class [parm: value]>content</class>
 
      and likely of an  external  parser;  where  a  lex/yacc
-     solution  might  be attractive.  (Finite state recogni‐
-     tion is probably what  we’re  looking   for,   however,
-     rather   than   look‐ahead  left‐to‐right parsing; i.e.
-     top‐down recursive descent.)
+     solution  might  be attractive.  (Finite state recogni-
+     tion is probably what  we're  looking   for,   however,
+     rather   than   look-ahead  left-to-right parsing; i.e.
+     top-down recursive descent.)
 
-          If  WikiTeX’  sum scope, on the other hand, resem‐
-     bles a glue‐script with  regular‐expression  grinding,*
+          If  WikiTeX'  sum scope, on the other hand, resem-
+     bles a glue-script with  regular-expression  grinding,*
      we  might  not  need  to  look  past  Perl; PHP, in any
-     case, just passes as lexer/parser: but we’d like  some‐
-     thing  more robust and, above all, to separate applica‐
+     case, just passes as lexer/parser: but we'd like  some-
+     thing  more robust and, above all, to separate applica-
      tion from interface.
 
 
@@ -121,29 +121,19 @@ Sun May 30 00:00:00 PDT 2004  Peter Danenberg
 
 
 
-───────────
-  * Raymond,  Eric  Steven.   The Art of Unix Pro‐
+-----------
+  * Raymond,  Eric  Steven.   The Art of Unix Pro-
 gramming (faqs.org/docs/artu).
 
 
 
-                       29 January 2005
+                       2 February 2005
 
 
 
 
 
-                             ‐3‐
-
-
-WikiTeX: expansible LaTeX module for MediaWiki
-Copyright (C) 2004  Peter Danenberg
-
-     WikiTeX  is  free  software;  you  can  redistribute it
-and/or modify it under the terms of the GNU  General  Public
-License as published by the Free Software Foundation; either
-version 2 of the License, or (at your option) any later ver‐
-sion.
+                             -3-
 
 
 
@@ -193,6 +183,16 @@ sion.
 
 
 
-                       29 January 2005
+
+
+
+
+
+
+
+
+
+
+                       2 February 2005
 
 
