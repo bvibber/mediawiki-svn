@@ -1017,7 +1017,7 @@ class WikiPage extends WikiTitle {
         global $user , $action , $wikiNoWatch , $wikiLogIn , $wikiLogOut , $wikiSearch ;
         global $wikiHelp , $wikiHelpLink , $wikiPreferences , $wikiLanguageNames , $wikiWhatLinksHere ;
         global $wikiCharset , $wikiEncodingCharsets , $wikiEncodingNames , $wikiLogoFile ;
-        global $framed,  $search ;
+        global $framed,  $search , $THESCRIPT;
 
 	# Cologne Blue skin has a very special header
 	if ( $user->options[skin] == "Cologne Blue" ) return $this->getCologneBlueHeader () ;
@@ -1078,7 +1078,6 @@ class WikiPage extends WikiTitle {
 
         # Text encoding
         if(count($wikiEncodingNames) > 1) { # Shortcut for switching character encodings
-            global $THESCRIPT;
             #$u = $THESCRIPT . "?" . getenv("QUERY_STRING");
 	    $u = getenv ( "REQUEST_URI" ) ;
             $u = preg_replace("/[\?\&]encoding=[0-9]+/", "", $u);
@@ -1109,13 +1108,13 @@ class WikiPage extends WikiTitle {
         	global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate , $wikiGetDate , $wikiDiff ;
 		global $wikiMyOptions, $wikiMyself , $wikiLogOut , $wikiMySettings , $wikiShortPages , $wikiLongPages , $wikiUserList , $wikiEditingHistory , $wikiTopics ;
 		global $wikiAddToWatchlist , $wikiEditPage , $wikiPrintable , $wikiTalk , $wikiEdit , $wikiPageOptions , $wikiBrowse , $wikiFind , $wikiOK;
-		global $wikiEditingHelp , $wikiWikipediaEditingHelp , $wikiShowLastChange , $wikiProtectThisPage , $wikiMainPage ;
+		global $wikiEditingHelp , $wikiWikipediaEditingHelp , $wikiShowLastChange , $wikiProtectThisPage , $wikiMainPage , $THESCRIPT;
 
 		$fonts = "face=verdana,arial" ;
 		$bg = "bgcolor=#EEF1F5 nowrap" ;
 		$ret = "" ;
 
-	        $ret .= "<FORM method=get action=\"".wikiLink("")."\">" ;
+	        $ret .= "<FORM method=get action=\"$THESCRIPT\">" ;
 		$ret .= "<font color=#666666><b>$wikiFind</b></font><br>\n" ;
 		$ret .= "<INPUT TYPE=text NAME=search SIZE=12 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiOK\"></FORM><br>" ;
 		$ret .= "<font $fonts>\n<table border=0 cellspacing=3 cellpadding=2 width='100%'><tr><td $bg>" ;
@@ -1317,7 +1316,7 @@ class WikiPage extends WikiTitle {
     # This generates the footer with link bar, search box, etc.
     function getFooter () {
         global $wikiSearch , $wikiCategories , $wikiOtherNamespaces , $wikiCounter , $wikiLastChange , $wikiDiff;
-        global $wikiGetDate , $framed, $search , $wikiValidate , $user ;
+        global $wikiGetDate , $framed, $search , $wikiValidate , $user , $THESCRIPT ;
         
         if ( isset ( $framed ) ) return "" ;
         $ret = $this->getLinkBar() ;
@@ -1358,7 +1357,7 @@ class WikiPage extends WikiTitle {
 
 	if ( $user->options[skin] == "Cologne Blue" ) $ret = "<center>\n" ;
 
-        $ret .= "<FORM method=get action=\"".wikiLink("")."\">" ;
+        $ret .= "<FORM method=get action=\"$THESCRIPT\">" ;
 
 	global $wikiFindMore , $wikiOK , $wikiWikipediaHome , $wikiAboutWikipedia ;
 	if ( $user->options[skin] == "Cologne Blue" ) $ret .= "<font color=#666666>$wikiFindMore : </font>" ;
