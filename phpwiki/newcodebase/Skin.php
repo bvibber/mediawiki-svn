@@ -496,7 +496,9 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			  . $sep . $this->whatLinksHere()
 			  . $sep . $this->watchPageLinksLink();
 
-			if ( Namespace::getUser() == $wgTitle->getNamespace())			      
+			if ( $wgTitle->getNamespace() == Namespace::getUser()
+			    || $wgTitle->getNamespace() == Namespace::getTalk(Namespace::getUser()) )
+			    
 			{	
 				$id=User::idFromName($wgTitle->getText());
 				$ip=User::isIP($wgTitle->getText());
@@ -647,7 +649,9 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 				$s .= $sep . $this->watchPageLinksLink();
 			}
 
-			if ( Namespace::getUser() == $wgTitle->getNamespace() ) {
+			if ( Namespace::getUser() == $wgTitle->getNamespace() 
+			|| $wgTitle->getNamespace() == Namespace::getTalk(Namespace::getUser())
+			) {
 			
 				$id=User::idFromName($wgTitle->getText());
 				$ip=User::isIP($wgTitle->getText());
