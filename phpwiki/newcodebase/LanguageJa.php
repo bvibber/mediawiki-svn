@@ -5,17 +5,20 @@ include_once( "utf8Case.php" );
 # The names of the namespaces can be set here, but the numbers
 # are magical, so don't change or move them!  The Namespace class
 # encapsulates some of the magic-ness.
+# 名前空間の名前はここで設定できますが、番号は特別なので、
+# 変更したり移動したりしないでね! 名前空間クラスは特殊性を幾らか
+# 隠匿します。
 #
 /* private */ $wgNamespaceNamesJa = array(
-	-1	=> "Special",
+	-1	=> "特別" /* "Special" */,
 	0	=> "",
-	1	=> "Talk",
-	2	=> "User",
-	3	=> "User_talk",
-	4	=> "Wikipedia",
-	5	=> "Wikipedia_talk",
-	6	=> "Image",
-	7	=> "Image_talk"
+	1	=> "会話" /* "Talk" */,
+	2	=> "利用者" /* "User" */,
+	3	=> "利用者‐会話" /* "User_talk" */,
+	4	=> "Wikipedia" /* "Wikipedia" */,
+	5	=> "Wikipedia‐会話" /* "Wikipedia_talk" */,
+	6	=> "画像" /* "Image" */,
+	7	=> "画像‐会話" /* "Image_talk" */
 );
 
 /* private */ $wgQuickbarSettingsJa = array(
@@ -223,7 +226,7 @@ include_once( "utf8Case.php" );
 	"Allpages"		=> "タイトル別全ページ",
 
 	"Ipblocklist"	=> "ブロックされたIPアドレス",
-	"Maintenance" => "Maintenance page",
+	"Maintenance" => "管理ページ",
 	"Specialpages"  => "",
 	"Contributions" => "",
 	"Emailuser"		=> "",
@@ -418,29 +421,21 @@ Wikipediaの個人オプションを修正することをお忘れなく。",
 "newarticletext" => "あたらしい記事を書き込んでください。",
 "noarticletext" => "(このページには現在記事がありません。)",
 "updated"		=> "(更新)",
-"note"			=> "<strong>Note:</strong> ",
+"note"			=> "<strong>注釈:</strong> ",
 "previewnote"	=> "これはプレビューです。まだ保存されていません！",
 "previewconflict" => "このプレビューは、上の文章編集エリアの文章を保存した場合に
 どう見えるようになるかを示すものです。
 <p>This preview reflects the text in the upper
 text editing area as it will appear if you choose to save.",
 "editing"		=> "Editing $1",
-"editconflict"	=> "Edit conflict: $1",
+"editconflict"	=> "編集競合: $1",
 "explainconflict" => "あなたがこのページを編集し始めてから誰か他の人が
 このページを変更してしまいました。
 上の文章エリアは現在の最新の状態を反映しています。
 あなたの加える変更の内容は下の文章エリアに示されています。
 変更内容を、上の文章エリアの内容に組み込んで下さい。
 <b>上の文章エリアの内容だけ<b>が、\"Save page\"をクリックした時に
-保存されることになります。\n<p>
-
-Someone else has changed this page since you
-started editing it.
-The upper text area contains the page text as it currently exists.
-Your changes are shown in the lower text area.
-You will have to merge your changes into the existing text.
-<b>Only</b> the text in the upper text area will be saved when you
-press \"Save page\".\n<p>",
+保存されることになります。\n<p>",
 "yourtext"		=> "あなたの文章",
 "storedversion" => "保存されたバージョン",
 "editingold"	=> "<strong>警告：あなたはこのページの古いバージョンを
@@ -484,7 +479,7 @@ Please check the URL you used to access this page.\n",
 "lineno"		=> "Line $1:",
 "editcurrent"	=> "Edit the current version of this page",
 
-# Search results
+# 検索結果（Search results）
 #
 "searchresults" => "Search results",
 "searchhelppage" => "Wikipedia:Searching",
@@ -544,10 +539,22 @@ from server time (UTC).",
 "timezoneoffset" => "Offset",
 "emailflag"		=> "Disable e-mail from other users",
 
-# Recent changes
+# 最近更新したページ（Recent changes）
 #
 "recentchanges" => "最近更新したページ",
-"recentchangestext" => "Track the most recent changes to Wikipedia on this page.
+"recentchangestext" => "最近付け加えられた変更はこのページで確認することができます。
+[[Wikipedia:Welcome,_newcomers|新規参加者の方、ようこそ]]！
+以下のページも参照して下さい:
+[[wikipedia:FAQ|ウィキペディア　よくある質問集]],
+[[Wikipedia:Policies and guidelines|ウィキペディア　基本方針]]
+(especially [[wikipedia:Naming conventions|記事名のつけ方]],
+[[wikipedia:Neutral point of view|中立な観点について]]),
+and [[wikipedia:Most common Wikipedia faux pas|ウィキペディアに起こりがちな間違い]].
+
+ウィキペディアが成功するためには、あなたの投稿する内容が他人の著作権などによって束縛されていないことがとても重要です。[[wikipedia:Copyrights|著作権]]
+法的責任問題は、プロジェクトに致命傷を与えることもある問題です。他人の著作物などを流用することは絶対に避けてください。また次のページも参照して下さい。[http://meta.wikipedia.org/wiki/Special:Recentchanges recent meta discussion]
+
+Track the most recent changes to Wikipedia on this page.
 [[Wikipedia:Welcome,_newcomers|Welcome, newcomers]]!
 Please have a look at these pages: [[wikipedia:FAQ|Wikipedia FAQ]],
 [[Wikipedia:Policies and guidelines|Wikipedia policy]]
@@ -692,7 +699,7 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "unusedimages"	=> "使われていない画像",
 "popularpages"	=> "人気のページ",
 "nviews"		=> "$1 回表示",
-"wantedpages"	=> "Wanted pages",
+"wantedpages"	=> "投稿が望まれているページ",
 "nlinks"		=> "$1 個のリンク",
 "allpages"		=> "全ページ",
 "randompage"	=> "おまかせ表示",
@@ -776,34 +783,48 @@ make it easier to pick out.</p>
 "confirm"		=> "Confirm",
 "confirmdelete" => "Confirm delete",
 "deletesub"		=> "(Deleting \"$1\")",
-"confirmdeletetext" => "You are about to permanently delete a page
+"confirmdeletetext" => "指定されたページまたはイメージは、その更新履歴と共に
+データベースから永久に削除されようとしています。
+あなたが削除を望んでおり、それがもたらす帰結を理解しており、かつあなたの
+しようとしていることが[[Wikipedia:Policy|ウィキペディアの基本方針]]に即したものであることを確認して下さい。
+
+You are about to permanently delete a page
 or image along with all of its history from the database.
 Please confirm that you intend to do this, that you understand the
 consequences, and that you are doing this in accordance with
 [[Wikipedia:Policy]].",
-"confirmcheck"	=> "Yes, I really want to delete this.",
-"actioncomplete" => "Action complete",
-"deletedtext"	=> "\"$1\" has been deleted.
+"confirmcheck"	=> "はい。上記の通りです。　Yes, I really want to delete this.",
+"actioncomplete" => "削除を完了しました。　Action complete",
+"deletedtext"	=> "\"$1\" は削除されました。　\"$1\" has been deleted.
+最近の削除に関しては$2 を参照して下さい。
 See $2 for a record of recent deletions.",
-"deletedarticle" => "deleted \"$1\"",
-"dellogpage"	=> "Deletion_log",
-"dellogpagetext" => "Below is a list of the most recent deletions.
+"deletedarticle" => "\"$1\"　を削除しました",
+"dellogpage"	=> "削除記録　Deletion_log",
+"dellogpagetext" => "以下に示すのは最近の削除記録です。時間はサーバーの時間（UTC）によって記録されています。
+
+Below is a list of the most recent deletions.
 All times shown are server time (UTC).
 <ul>
 </ul>
 ",
-"deletionlog"	=> "deletion log",
-"reverted"		=> "Reverted to earlier revision",
-"deletecomment"	=> "Reason for deletion",
-"imagereverted" => "Revert to earlier version was successful.",
+"deletionlog"	=> "削除記録　deletion log",
+"reverted"		=> "以前のバージョンへの差し戻し。　Reverted to earlier revision",
+"deletecomment"	=> "削除の理由　Reason for deletion",
+"imagereverted" => "以前のバージョンへの差し戻しに成功しました。　Revert to earlier version was successful.",
 
 # Contributions
 #
-"contributions"	=> "User contributions",
-"contribsub"	=> "For $1",
-"nocontribs"	=> "No changes were found matching these criteria.",
-"ucnote"		=> "Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
-"uclinks"		=> "View the last $1 changes; view the last $2 days.",
+"contributions"	=> "ユーザーの投稿記録　User contributions",
+"contribsub"	=> "ユーザー名：$1　For $1",
+"nocontribs"	=> "ユーザーの投稿記録は見つかりませんでした。　
+
+No changes were found matching these criteria.",
+"ucnote"		=> "以下に示すのが過去<b>$2</b>日間における、最大<b>$1</b>件の投稿・編集です。
+
+Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
+"uclinks"		=> "$1 件の投稿・編集を見る。; $2日間分の投稿・編集を見る。
+
+View the last $1 changes; view the last $2 days.",
 
 # What links here
 #
