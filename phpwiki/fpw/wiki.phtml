@@ -13,11 +13,6 @@ include_once ( "./wikiUser.php" ) ;
 
 # Main program
 
-global $action , $title , $pageTitle ;
-global $user , $search , $expiration ;
-global $THESCRIPT , $namespaceBackground , $wikiNamespaceBackground ;
-
-global $metaDescription , $metaKeywords , $wikiCharset ; # For meta tags in the HTML code
 $expiration = time()+31536000 ; # Cookies set will expire in one year from now
 $pageTitle = "" ;
 	
@@ -89,10 +84,6 @@ if ( isset ( $search ) ) {
 	include_once ( "./special_watchlist.php" ) ;
 	$out = watch ( $title , $mode ) ;
 } else if ( $action == "view" ) {
-	global $FromEditForm ;
-	if ( $user->options["viewFrames"] == "yes" and substr ( $title , 0 , 8 ) != "Special:" and !isset ( $framed ) and !isset ( $FromEditForm ) ) {
-		exit ( framepage() ) ;
-	}
 	$out = view ( $title ) ;
 } else if ( $action == "edit" ) {
 	include_once ( "basic_edit.php" ) ;
@@ -107,8 +98,6 @@ if ( isset ( $search ) ) {
 }
 
 # Cleaning up, setting <title>, etc.
-global $bodyOptions , $headerScript , $styleSheet;
-global $wikiEditTitle , $wikiRecodeOutput ;
 
 if ( $action == edit ) $pageTitle = str_replace ( "$1" , $title , $wikiEditTitle ) ;
 $pageTitle = str_replace ( "_" , " " , $pageTitle ) ;
@@ -137,10 +126,7 @@ $tail = "\n</BODY></HTML>";
 
 # $mt = getmicrotime()-$mt ;	$out = "$mt<br>\n$out" ;
 
-global $append , $framed ;
-
 $out = $head.$out.$tail.$append ;
-if ( isset ( $framed ) ) $out = str_replace ( "<a " , "<a target=_top " , $out ) ;
 if ( $encodinghack )
 	$out = preg_replace ( "/(<a[^>]+href=\"|<form[^>]+action=\")(" . strtr ( $wikiCurrentServer , array( "/" => "\/" , "." => "\." ) ) . "[^\"]*)(?=\")/ie" ,
 	"\"\$1\" . (\$u = preg_replace(\"/[\\?\\&]encoding=[0-9]+/\", \"\", \"\$2\")) . ((!strchr(\$u, '?') && strstr(\$THESCRIPT,\$u)) ? '?' : '&') . \"encoding=\" . \$user->options[\"encoding\"]",

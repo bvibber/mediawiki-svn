@@ -13,6 +13,7 @@ function recentchanges () {
     $from2 = substr ( $from , 0 , 4 ) . "-" . substr ( $from , 4 , 2 ) . "-" . substr ( $from , 6 , 2 ) ;
     $from2 .= " " . substr ( $from , 8 , 2 ) . ":" . substr ( $from , 10 , 2 ) . ":" . substr ( $from , 12 , 2 ) ;
 
+
     $ret = "" ;
     if ( $wikiRecentChangesText != "" ) $ret .= "$wikiRecentChangesText<br><br>" ;
 
@@ -56,7 +57,7 @@ function recentchanges () {
       # optional parts of the query
       $fromCondOld = ( isset($from) ) ? "AND old_timestamp > $from" : "";
       $fromCondCur = ( isset($from) ) ? "AND cur_timestamp > $from" : "";
-            
+
       # the SQL query that retrieves all information
       $sql = "SELECT cur_timestamp, cur_title, cur_comment, cur_user,
                      cur_user_text, cur_minor_edit,
@@ -136,7 +137,7 @@ function recentchanges () {
       
       $titleIndex = array ();   # maps titles to where the page is stored in $arr
       $index = 0;
-      
+
       foreach ( $arr2 as $row2 ) {
         while ( $arr1 and ( $arr1[0]->cur_timestamp >= $row2->cur_timestamp ) ) {
           $row1 = array_shift ( $arr1 );
