@@ -207,7 +207,7 @@ class Skin {
 	{
 		global $wgUser, $wgOut;
 
-		$s = "\n</div>\n";
+		$s = "\n</div><br clear=all>\n";
 
 		$s .= "\n<div id='footer'>";
 		$s .= $this->bottomLinks();

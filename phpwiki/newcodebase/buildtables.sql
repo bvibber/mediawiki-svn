@@ -101,7 +101,7 @@ CREATE TABLE ipblocks (
 ) TYPE=MyISAM PACK_KEYS=1;
 
 CREATE TABLE image (
-  img_name varchar(64) binary NOT NULL,
+  img_name varchar(128) binary NOT NULL,
   img_size int(8) unsigned default '0',
   img_description tinyblob,
   img_user int(5) unsigned default '0',
