@@ -42,6 +42,7 @@ class LuceneSearch extends SpecialPage
 
 	function makelink($term, $offset, $limit) {
 		global $wgRequest;
+		global $wgScriptPath;
 		$link = "$wgScriptPath?title=Special:Search&amp;search=".
 			urlencode($term)."&amp;fulltext=Search";
 		foreach(SearchEngine::searchableNamespaces() as $ns => $name)
@@ -142,10 +143,17 @@ class LuceneSearch extends SpecialPage
 				$maxresults = 10;
 			global $wgDisableTextSearch;
 			$searchfailed = $wgDisableTextSearch;
-			if (!$searchfailed)
+			if (!$searchfailed) {
 				$r = $this->doLuceneSearch($q, $maxresults);
-			if ($r === null)
+			}
+			if (isset( $r ) ) {
+				$numresults = $r[0];
+				$results = $r[1];
+			} else {
 				$searchfailed = true;
+				$numresults = 0;
+				$results = array();
+			}
 
 			if ($searchfailed) {
 				global $wgInputEncoding;
@@ -156,19 +164,20 @@ class LuceneSearch extends SpecialPage
 				return;
 			}
 
-			$numresults = $r[0];
-			$results = $r[1];
 
 			$wgOut->setSubtitle(wfMsg('searchquery', htmlspecialchars($q)));
 
 
-			$suggestion = trim($results);
+			#$suggestion = trim($results);
+			if (is_string( $results ) ) {
+				$suggestion = trim( $results );
+			}
 			if ($numresults == -1 && strlen($suggestion) > 0) {
-				$o .= " " . wfMsg("searchdidyoumean", 
+				$o = " " . wfMsg("searchdidyoumean", 
 						$this->makelink($suggestion, $offset, $limit),
 						htmlspecialchars($suggestion));
+				$wgOut->addHTML("<div style='text-align: center'>".$o."</div>");
 			}
-			$wgOut->addHTML("<div style='text-align: center'>".$o."</div>");
 
 			$nmtext = "";
 			if ($offset == 0 && !$wgLuceneDisableTitleMatches) {
@@ -240,8 +249,10 @@ class LuceneSearch extends SpecialPage
 				}
 				$out .= "</ul>";
 			}
-			$wgOut->addHTML("<hr/>" . $top . $out);
-			$wgOut->addHTML("<hr/>" . $prevnext);
+			$wgOut->addHTML("<hr/>");
+			if( isset( $top ) ) $wgOut->addHTML( $top );
+			if( isset( $out ) ) $wgOut->addHTML( $out );
+			if( isset( $prevnext ) ) $wgOut->addHTML("<hr/>" . $prevnext);
 			$wgOut->addHTML($this->showFullDialog($q));
 		}
 		$wgOut->setRobotpolicy('noindex,nofollow');
@@ -337,6 +348,8 @@ class LuceneSearch extends SpecialPage
 
 	function doTitlePrefixSearch($query, $limit) {
 		global $wgLuceneHost, $wgLucenePort;
+		global $wgOutputEncoding;
+		
 		wfDebug("title prefix search: $query\n");
 		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		@$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
@@ -366,6 +379,7 @@ class LuceneSearch extends SpecialPage
 
 	function doTitleMatches($query) {
 		global $wgLuceneHost, $wgLucenePort;
+		global $wgOutputEncoding;
 		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		$conn = @socket_connect($sock, $wgLuceneHost, $wgLucenePort);
 		$query = iconv($wgOutputEncoding, "UTF-8", $query);
@@ -390,6 +404,7 @@ class LuceneSearch extends SpecialPage
 
 	function doLuceneSearch($query, $max) {
 		global $wgLuceneHost, $wgLucenePort, $wgDBname;
+		global $wgOutputEncoding;
 		$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		@$conn = socket_connect($sock, $wgLuceneHost, $wgLucenePort);
 		if ($conn === FALSE)
@@ -402,9 +417,10 @@ class LuceneSearch extends SpecialPage
 
 		$numresults = @socket_read($sock, 1024, PHP_NORMAL_READ);
 		wfDebug("total [$numresults] hits\n");
-		if ($numresults === FALSE)
-			return array();
-		$numresults = chop($numresults);
+		if ($numresults === FALSE) {
+			return array( 0, array() );
+		}
+		$numresults = IntVal($numresults);
 
 		if ($numresults == 0) {
 			$suggestion = @socket_read($sock, 1024, PHP_NORMAL_READ);
@@ -412,8 +428,9 @@ class LuceneSearch extends SpecialPage
 			return array(-1, urldecode($suggestion));
 		}
 
-		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE
-		       && count($results) <= $max) {
+		while( ($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE
+		        && count( $results ) <= $max ) {
+			wfDebug( $result );
 			$result = chop($result);
 			$result = iconv("UTF-8", $wgOutputEncoding, $result);
 			list($score, $namespace, $title) = split(" ", $result);
@@ -474,6 +491,7 @@ class LuceneSearch extends SpecialPage
                 $searchButton = '<input type="submit" name="fulltext" value="' .
                   htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
 
+				$redirect = ''; # What's this for?
                 $ret = wfMsg('lucenepowersearchtext',
                         $namespaces, $redirect, $searchField,
                         '', '', '', '', '', # Dummy placeholders
