@@ -76,6 +76,7 @@ function wfSpecialContributions()
 	if ( 0 != $nCur ) { $obj1 = wfFetchObject( $res1 ); }
 	if ( 0 != $nOld ) { $obj2 = wfFetchObject( $res2 ); }
 
+	$wgOut->addHTML( "<ul>\n" );
 	while ( $limit ) {
 		if ( 0 == $nCur && 0 == $nOld ) { break; }
 
@@ -120,7 +121,7 @@ function ucListEdit( $sk, $ns, $t, $ts, $topmark, $comment )
 	}
 	if($comment) {
 	
-		$comment="<I>(". htmlspecialchars( $comment ) .")</I> ";
+		$comment="<em>(". htmlspecialchars( $comment ) .")</em> ";
 	
 	}
 	$d = $wgLang->timeanddate( $ts, true );
