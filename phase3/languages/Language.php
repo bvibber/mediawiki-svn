@@ -505,10 +505,6 @@ You should log in and change your password now.",
 "passwordsent"	=> "A new password has been sent to the e-mail address
 registered for \"$1\".
 Please log in again after you receive it.",
-"failedcookietitle" => "Login failed",
-"failedcookie" => "Unable to login. This may be caused by refusing cookies from
-the site; if you have disabled cookies in your browser, try reenabling them
-and logging in again.",
 
 # Edit pages
 #
