@@ -81,7 +81,7 @@ class geo_params
 		$svg = 
 		'<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
 		<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/SVG/DTD/svg10.dtd">
-		<svg viewBox="' . $viewBox .
+		<svg viewbox="' . $viewBox .
 		'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
 			<g id="mainlayer">
 		'
