@@ -48,7 +48,8 @@ $project = 'mediawiki';
 $from_email = 'lists@wikidev.net';
 
 # Mail all reports to this address.
-$dest_email = 'cia@cia.navi.cx';
+#$dest_email = 'cia@cia.navi.cx';
+$dest_email = 'lists@wikidev.net';
 
 # If using XML-RPC, connect to this URI.
 $rpc_uri = 'http://cia.navi.cx/RPC2';
