@@ -70,6 +70,7 @@ function sqldump () {
 			$out .= implode ( ", " , $f[$x] ) ;
 			$out .= ") VALUES (" ;
 			$a = array () ;
+			$s->cur_old_version = 0 ; # Fixing missing history
 			foreach ( $f[$x] AS $z )
 				array_push ( $a , "\"".$s->$z."\"" ) ;
 			$out .= implode ( ", " , $a ) ;
