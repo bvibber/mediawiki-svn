@@ -70,3 +70,7 @@ changed, both pages by anonymous and those by non-anonymous users.
 
 Run patch-usernewtalk.sql if your database was created before
 this date.
+
+
+* 2003-02-02: Math table changed
+Rerun patch-math.sql to recreate it.
