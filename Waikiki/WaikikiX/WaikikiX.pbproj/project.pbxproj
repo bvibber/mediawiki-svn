@@ -144,7 +144,7 @@
 				29B97317FDCFA39411CA2CEA,
 				29B97323FDCFA39411CA2CEA,
 				19C28FACFE9D520D11CA2CBB,
-				D4D5739C054E1BBD00000057,
+				D45F69EA0552090200FE6F31,
 			);
 			isa = PBXGroup;
 			name = WaikikiX;
@@ -293,7 +293,6 @@
 				D45D7FC5054D4C7D00000057,
 				D45D8004054D539100000057,
 				D4D5739B054E1AD100000057,
-				D4D5739D054E1BBD00000057,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -827,6 +826,12 @@
 			settings = {
 			};
 		};
+		D45F69EA0552090200FE6F31 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			path = README.txt;
+			refType = 4;
+		};
 		D4C0C2FD054BD23800000057 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -883,19 +888,6 @@
 		};
 		D4D5739B054E1AD100000057 = {
 			fileRef = D4D5739A054E1AD100000057;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		D4D5739C054E1BBD00000057 = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			name = README.MacOSX;
-			path = /Users/brion/src/wiki/waikiki/Waikiki/README.MacOSX;
-			refType = 0;
-		};
-		D4D5739D054E1BBD00000057 = {
-			fileRef = D4D5739C054E1BBD00000057;
 			isa = PBXBuildFile;
 			settings = {
 			};
