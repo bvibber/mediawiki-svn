@@ -23,7 +23,11 @@ class Skin {
 	{
 	}
 
-	function getSkinNames() { return $wgValidSkinNames; }
+	function getSkinNames()
+	{
+		global $wgValidSkinNames;
+		return $wgValidSkinNames;
+	}
 
 	function initPage()
 	{
