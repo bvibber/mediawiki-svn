@@ -89,6 +89,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"aa"    => "Afar",
 	"ab"    => "&#1040;&#1191;&#1089;&#1085;&#1099; (Apsny)",
 	"af"	=> "Afrikaans",
+	"als"   => "Els&auml;ssisch", # FIXME: not a real language code; is subsumed under 'gem'
 	"am"	=> "Amharic",
 	"ar" => "&#8238;&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;&#8236; (Araby)",
 	"as"	=> "Assamese",
@@ -220,7 +221,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072; (Ukrayins`ka)",
 	"ur"	=> "Urdu",
 	"uz"	=> "&#1038;&#1079;&#1073;&#1077;&#1082; (Uzbek)",
-	"vi"	=> "Vietnamese",
+	"vi"	=> "Ti&#7871;ng Vi&#7879;t",
 	"vo" => "Volap&#252;k",
 	"wo"	=> "Wolof",
 	"xh" => "isiXhosa",
@@ -504,6 +505,10 @@ You should log in and change your password now.",
 "passwordsent"	=> "A new password has been sent to the e-mail address
 registered for \"$1\".
 Please log in again after you receive it.",
+"failedcookietitle" => "Login failed",
+"failedcookie" => "Unable to login. This may be caused by refusing cookies from
+the site; if you have disabled cookies in your browser, try reenabling them
+and logging in again.",
 
 # Edit pages
 #
