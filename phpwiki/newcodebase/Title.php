@@ -92,7 +92,7 @@
 	"om"    => "http://om.wikipedia.com/wiki.cgi?$1",
 	"or"    => "http://or.wikipedia.com/wiki.cgi?$1",
 	"pa"    => "http://pa.wikipedia.com/wiki.cgi?$1",
-	"pl"	=> "http://pl.wikipedia.org/wiki/",
+	"pl"	=> "http://pl.wikipedia.org/wiki/$1",
 	"ps"    => "http://ps.wikipedia.com/wiki.cgi?$1",
 	"pt"	=> "http://pt.wikipedia.com/wiki.cgi?$1",
 	"qu"    => "http://qu.wikipedia.com/wiki.cgi?$1",
