@@ -95,6 +95,30 @@ void *search(const Tnode *root, const unsigned char *s) {
   return NULL; 
 } 
 
+
+/* search for a string of length n 
+   and return the associated data if found */
+void *searchn(const Tnode *root, const unsigned char *s, int n) { 
+  const Tnode  *p; 
+  if(s[0]=='\0' || n ==0)
+    return NULL;
+  p = root;
+  while (p) { 
+    if (s[0] < p->splitchar) 
+      p = p->lokid; 
+    else if (s[0] == p->splitchar) {
+      n--;
+      if (s[1] == 0 || n == 0)  
+	return p->data;
+      s++;
+      p = p->eqkid; 
+    } else { 
+      p = p->hikid; 
+    }
+  }
+  return NULL; 
+} 
+
 /* find the max matching string in the tree. return the 
    associated data, and set LEN to the matching length
 */
@@ -163,6 +187,25 @@ int searchAll(const Tnode *root, const unsigned char *s, int *lenarray, void *da
   return count;
 }
 
+void traverseRecur(Tnode *p, unsigned char *buf, int i) {
+  if (!p) return; 
+  traverseRecur(p->lokid, buf, i); 
+  if (p->splitchar) {
+    buf[i]=p->splitchar;
+    if(p->data) {
+      buf[i+1]='\0';
+      printf("%s\n", buf);
+    }
+    traverseRecur(p->eqkid, buf, i+1); 
+  }
+  traverseRecur(p->hikid, buf, i); 
+}
+void traverse(Tnode *p)  {
+  unsigned char buf[1024];
+  traverseRecur(p, buf, 0);
+}
+
+
 // TODO...
 void freeTree(Tnode *t) {
 
@@ -182,19 +225,10 @@ void main() {
     if(buf[0]=='\n')
       continue;
     buf[strlen(buf)-1]='\0';
+    printf("read %s\n", buf);
     tree = insert(tree, buf, (void*)i++);
   }
   fclose(fp);
-  i = (int)search(tree, "Abelard");
-  printf("search Abelard: i=%d\n", i);
-
-  i = (int)searchMax(tree, "Adrianax's", &len);
-  printf("search Adrianax's: i=%d, len=%d\n", i, len);
-
-  printf("All matches in Abelard\n");
-  len = searchAll(tree, "Abelard", m, mp);
-  for(i=0;i<len;i++) {
-    printf("%d, %d\n", m[i], (int)mp[i]);
-  }
+  traverse(tree);
 }
 #endif

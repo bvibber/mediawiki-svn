@@ -494,7 +494,8 @@ int main(int argc, char *argv[])
   int reuseport=1;
   int highfd;
   int i, nactive;
-  
+  struct sigaction sa;
+
   fd_set readset, writeset;
 
   processArg(argc, argv);
@@ -516,6 +517,18 @@ int main(int argc, char *argv[])
       clist[i].next = -1;
     else
       clist[i].next = i+1;
+  }
+
+  // ignore SIGPIPE
+  sa.sa_handler = SIG_IGN;
+  sa.sa_flags = 0;
+  if(sigemptyset(&sa.sa_mask) == -1) {
+    fprintf(stderr, "sigemptyset() failed.\n");
+    exit(-1);
+  }
+  if(sigaction(SIGPIPE, &sa, 0) == -1) {
+    fprintf(stderr, "sigaction() failed on SIGPIPE\n");
+    exit(-1); 
   }
     
 

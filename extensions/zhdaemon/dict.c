@@ -2,11 +2,21 @@
 #include "ttree.h"
 #include "dict.h"
 
+WordCount *newWordCount(double v) {
+  WordCount *w = (WordCount*)malloc(sizeof(WordCount));
+  if(w)
+    w->c = v;
+  return w;
+}
+
 Tnode *loadSegmentationDictionary(const char *fname) {
   FILE *fp;
-  unsigned char buf[1024];
+  unsigned char buf[1024], key[1024];
+  double count;
   Tnode *tree=NULL;
-  int i=1;
+  int i;
+  WordCount *w;
+
   fp = fopen(fname, "r");
   if(!fp) {
     fprintf(stderr, "Cannot open dictionary %s\n", fname);
@@ -16,10 +26,20 @@ Tnode *loadSegmentationDictionary(const char *fname) {
     if(buf[0]=='\n')
       continue;
     buf[strlen(buf)-1]='\0';
-    tree = insert(tree, buf, (void*)i++);
+    i = sscanf(buf, "%s %lf", key, &count);
+    if(i<1)
+      continue;
+    if(i==1)
+      count = 1;
+    w = newWordCount(count);
+    if(!w) {
+      fprintf(stderr, "Out of memory loading dictionary.\n");
+      exit(-1);
+    }
+    tree = insert(tree, key, (void*)w);
   }
   fclose(fp);
-  return tree;
+  return tree; 
 }
 
 /* parse a line in the conversion table. fill in the

@@ -1,9 +1,16 @@
+ABOUT
+
 zhdaemon provides various Chinses text processing service, including:
 - conversion to one of the following variants: 
   zh-cn zh-tw zh-hk zh-sg
 - word segmentation
 
 Copyright (C) 2004 Zhengzhu Feng (zhengzhu@gmail.com)
+
+
+STATUS
+
+The code is under developement and is not useful for any practical purpose. 
 
 
 LICENSE
