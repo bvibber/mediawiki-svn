@@ -209,16 +209,6 @@ void mysql2sqlite ( string fn_in , string fn_out )
            }
         else if ( s.substr ( 0 , 12 ) == "INSERT INTO " )
            {
-/*           uint *i ;
-           for ( i = s.c_str() ; *i ; i++ )
-              {
-              if ( *i == SINGLE_QUOTE && *(i-1) == '\\' )
-                 {
-                 *(i-1) = SINGLE_QUOTE ;
-                 }
-              }
-           out << s.getstring() << endl ;
-*/           
            uint l , b ;
            uint idx = 0 ;
            for ( b = 0 ; s[b] != '(' ; b++ ) ;
@@ -263,10 +253,10 @@ void mysql2sqlite ( string fn_in , string fn_out )
 int main(int argc, char *argv[])
 {
     TWikiInterface w ;
-//    LANG->loadPHP ( "Language.php" ) ;
-//    w.run ( argc , argv ) ;
-//    system("PAUSE");	
-    mysql2sqlite ( "Z:\\brief_cur_table.sql" , "Z:\\test.sqlite" ) ;
+    LANG->loadPHP ( "Language.php" ) ;
+    w.run ( argc , argv ) ;
+    system("PAUSE");	
+//    mysql2sqlite ( "Z:\\brief_cur_table.sql" , "Z:\\test.sqlite" ) ;
 
     return 0;
 }
