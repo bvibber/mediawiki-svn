@@ -952,17 +952,20 @@ class Skin {
 		$h = $wgLang->time( $ts );
 		$t = Title::makeName( $ns, $ttl );
 		$clink = $this->makeKnownLink( $t, "" );
+		$nt = Title::newFromText( $t );
 
 		if ( 0 != $wgUser->getID() ) {
-			$nt = Title::newFromText( $t );
 			if ( $nt->userIsWatching() ) {
 				$clink = "<strong>{$clink}</strong>";
 			}
 		}
 		$hlink = $this->makeKnownLink( $t, wfMsg( "hist" ), "action=history" );
-		if ( $isnew ) { $dlink = wfMsg( "diff" ); }
-		else { $dlink = $this->makeKnownLink( $t, wfMsg( "diff" ), "diff=0&oldid=0" ); }
-
+		if ( $isnew || $nt->isLog() ) {
+			$dlink = wfMsg( "diff" );
+		} else {
+			$dlink = $this->makeKnownLink( $t, wfMsg( "diff" ),
+			  "diff=0&oldid=0" );
+		}
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }
 		$cr = wfMsg( "currentrev" );

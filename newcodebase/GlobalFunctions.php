@@ -329,15 +329,19 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 	else { $ul = "[[User:{$ut}|{$ut}]]"; }
 
 	$d = $wgLang->timeanddate( date( "YmdHis" ) );
+	if ( "" == $desc ) { $com = ""; }
+	else { $com = " <em>({$desc})</em>"; }
 
 	preg_match( "/^(.*?)<ul>(.*)$/sD", $text, $m );	
-	$da = str_replace( "$1", $name, wfMsg( "uploadedimage" ) );
+	$da = str_replace( "$1", "[[:Image:{$name}|{$name}]]",
+	  wfMsg( "uploadedimage" ) );
 
-	$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}</li>\n{$m[2]}";
+	$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}{$com}</li>\n{$m[2]}";
 
 	$sql = "UPDATE cur SET cur_timestamp='" . date( "YmdHis" ) .
 	  "', cur_user={$uid}, cur_user_text='" .wfStrencode( $ut ) .
-	  "', cur_text='" . wfStrencode( trim( $text ) ) . "' " .
+	  "', cur_text='" . wfStrencode( trim( $text ) ) . "', " .
+	  "cur_comment='" . wfStrencode( $desc ) . "' " .
 	  "WHERE cur_id={$id}";
 	wfQuery( $sql, $fname );
 }
