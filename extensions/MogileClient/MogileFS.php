@@ -6,7 +6,6 @@
  * existence of a file, etc.
  */
 
-
 class MogileFS {
 	var $socket;
 	var $error;
@@ -16,11 +15,14 @@ class MogileFS {
 	 * 
 	 * TODO
 	 */
-	function MogileFS( $domain,
+	function MogileFS( $domain = null,
 			   $hosts = null,
 			   $root = '' )
 	{
-		global $wgMogileTrackers;
+		global $wgMogileTrackers, $wgDBname;
+
+		if ($domain == null)
+			$domain=$wgDBname;
 
 		if ($hosts == null) {
 			if ($wgMogileTrackers!=null) {
@@ -45,10 +47,15 @@ class MogileFS {
 	 *
 	 * TODO
 	 */
-	function NewMogileFS( $domain,
+	function NewMogileFS( $domain = null,
 			      $hosts = null,
 			      $root = '' )
 	{
+		global $wgDBname; 
+
+		if ($domain == null)
+			$domain=$wgDBname;
+
 		$mfs = new MogileFS( $domain, $hosts, $root );
 		return ( $mfs->connect() ? $mfs : false );
 	}
@@ -86,9 +93,7 @@ class MogileFS {
 			$this->connect();
 		}
 		fwrite( $this->socket, $cmd . $params."\n" );
-
 		$line = fgets( $this->socket );
-		#print $line;
 		$words = explode( ' ', $line );
 		if ( $words[0] == 'OK' ) {
 			parse_str( trim( $words[1] ), $result );
@@ -96,7 +101,6 @@ class MogileFS {
 			$result = false;
 			$this->error = join(" ",$words);
 		}
-
 		return $result;
 	}
 
@@ -138,7 +142,9 @@ class MogileFS {
 	function delete ( $key )
 	{
 		$res = $this->doRequest( "DELETE", array("key" => $key));
-		return $res;
+		if ($res===false)
+			return false;
+		return true;
 	}
 
 	/**
@@ -147,7 +153,9 @@ class MogileFS {
 	function rename ($from,$to)
 	{
 		$res = $this->doRequest( "RENAME", array("from_key"=>$from,"to_key"=>$to));
-		return $res;
+		if ($res===false) 
+			return false;
+		return true;
 	}
 
 	/**
@@ -229,31 +237,19 @@ class MogileFS {
 			}
 			curl_close($ch);
 
-			$res = $this->doRequest( "CREATE_CLOSE", array(
+			$closeres = $this->doRequest( "CREATE_CLOSE", array(
 				"key"	=> $key,
 				"class" => $class,
 				"devid" => $res['devid'],
 				"fid"   => $res['fid'],
 				"path"  => urldecode($res['path'])
 				));
-			if ($res)
-				return true;
-			else
+			if ($closeres===false) {
 				return false;
+			} else {
+				return true;
+			}
 		}
 	}
 }
-
-####
-####
-#### Testing rules
-####
-####
-if( !defined( 'MEDIAWIKI' ) ) {
-	$wgMogileTrackers=array('10.0.0.1:7001','10.0.0.2:7003');
-	$mfs = MogileFS::NewMogileFS('test');
-	$mfs->saveFile('testkey','normal','testfile');
-	$mfs->getFileDataAndSend( 'testkey' );
-}
-
 ?>
