@@ -29,13 +29,12 @@ function wfQuery( $sql, $fname = "" )
 
 	if ( "" != $fname ) {
 		wfDebug( "{$fname}:SQL: {$sql}\n", true );
-
-		if ( false === $ret ) {
-			$wgOut->databaseError( $fname );
-			exit;
-		}
 	} else {
 		wfDebug( "SQL: {$sql}\n", true );
+	}
+	if ( false === $ret ) {
+		$wgOut->databaseError( $fname );
+		exit;
 	}
 	return $ret;
 }
