@@ -83,7 +83,9 @@ function WantedPages () {
 	$ret .= "\">$wikiRefreshThisPage</a></b></font><br>$wikiResourcesWarning</p></nowiki>\n" ;
 	if ( $doRefresh == "yes" ) {
 		$timestamp = getMySQL ( "cur" , "UNIX_TIMESTAMP(cur_timestamp)" , "cur_title=\"$pn\"" ) + $timeOffset ;
-		if ( ( $lastrefreshed = time() - $timestamp ) < $minRefreshPeriod ) {
+		$lastrefreshed = time() - $timestamp ;
+		if ( $lastrefreshed < 0 ) $lastrefreshed = $minRefreshPeriod ;
+		if ( $lastrefreshed < $minRefreshPeriod ) {
 			$ret .= "<p><i>" . str_replace ( array ( "$1", "$2" ) ,
 				array ( round ( $lastrefreshed / 60 ) , round ( ( $minRefreshPeriod - $lastrefreshed ) / 60 ) ),
 				$wikiNoRefresh ) . "</i></p>\n\n";
