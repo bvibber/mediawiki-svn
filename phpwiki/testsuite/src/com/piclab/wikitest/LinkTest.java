@@ -13,7 +13,7 @@ public class LinkTest extends WikiTest {
 public String testName() { return "Links"; }
 
 protected int initTest() throws Exception {
-	WebResponse wr = m_suite.deletePage( "Talk:Poker" ); /* Will logout */
+	WebResponse wr = deletePage( "Talk:Poker" ); /* Will logout */
 	return 0;
 }
 
@@ -33,7 +33,7 @@ private int part1() throws Exception {
 	 * Check that we can click through from main page to games,
 	 * card games, poker, world series.
 	 */
-	WebResponse wr = m_suite.viewPage( "" ); /* Main page */
+	WebResponse wr = viewPage( "" ); /* Main page */
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Game" );
 	if ( l == null ) { return 101; }
 	wr = l.click();
@@ -59,7 +59,7 @@ private int part2() throws Exception {
 	 * _not_ have an upload link or user stat links on it because we
 	 * aren't logged in.
 	 */
-	WebResponse wr = m_suite.viewPage( "Poker" );
+	WebResponse wr = viewPage( "Poker" );
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Printable version" );
 	if ( l == null ) { return 201; }
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Related changes" );
@@ -82,15 +82,15 @@ private int part3() throws Exception {
 	 * then check for some standard links on the new talk page and
 	 * the resulting history page.
 	 */
-	WebResponse wr = m_suite.viewPage( "Poker" );
+	WebResponse wr = viewPage( "Poker" );
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Discuss this page" );
 	if ( l == null ) { return 301; }
 	wr = l.click();
 
-	WebForm editform = WikiSuite.getFormByName( wr, "editform" );
+	WebForm editform = getFormByName( wr, "editform" );
     WebRequest req = editform.getRequest( "wpSave" );
     req.setParameter( "wpTextbox1", "Great article!" );
-    wr = m_suite.getResponse( req );
+    wr = getResponse( req );
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "View article" );
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Older versions" );
@@ -112,13 +112,13 @@ private int part4() throws Exception {
 	/*
 	 * Let's log in now and verify that things are changed.
 	 */
-	WebResponse wr = m_suite.viewPage( "Poker" );
+	WebResponse wr = viewPage( "Poker" );
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Log in" );
 	if ( l == null ) { return 401; }
 	wr = l.click();
 
-	wr = m_suite.loginAs( "Fred", "Fred" );
-	wr = m_suite.viewPage( "Poker" );
+	wr = loginAs( "Fred", "Fred" );
+	wr = viewPage( "Poker" );
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "My watchlist" );
 	if ( l == null ) { return 402; }
@@ -142,7 +142,7 @@ private int part5() throws Exception {
 	/*
 	 * Verify that the user page and user talk page are OK.
 	 */
-	WebResponse wr = m_suite.viewPage( "" );
+	WebResponse wr = viewPage( "" );
 	WebLink l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Fred" );
 	if ( l == null ) { return 501; }
 	wr = l.click();
@@ -162,13 +162,13 @@ private int part5() throws Exception {
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Log out" );
 	if ( l == null ) { return 504; }
 	wr = l.click();
-	m_suite.clearCookies();
+	clearCookies();
 
-	wr = m_suite.editPage( "User talk:Fred" );
-	WebForm editform = WikiSuite.getFormByName( wr, "editform" );
+	wr = editPage( "User talk:Fred" );
+	WebForm editform = getFormByName( wr, "editform" );
     WebRequest req = editform.getRequest( "wpSave" );
     req.setParameter( "wpTextbox1", "Wake up!" );
-    wr = m_suite.getResponse( req );
+    wr = getResponse( req );
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "Main Page" );
 	if ( l == null ) { return 505; }
@@ -178,11 +178,11 @@ private int part5() throws Exception {
 	if ( l == null ) { return 506; }
 	wr = l.click();
 
-	WebForm loginform = WikiSuite.getFormByName( wr, "userlogin" );
+	WebForm loginform = getFormByName( wr, "userlogin" );
 	req = loginform.getRequest( "wpLoginattempt" );
 	req.setParameter( "wpName", "Fred" );
 	req.setParameter( "wpPassword", "Fred" );
-	wr = m_suite.getResponse( req );
+	wr = getResponse( req );
 
 	l = wr.getFirstMatchingLink( WebLink.MATCH_CONTAINED_TEXT, "new messages" );
 	if ( l == null ) { return 507; }

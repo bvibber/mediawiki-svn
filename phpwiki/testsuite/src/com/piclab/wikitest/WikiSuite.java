@@ -9,7 +9,6 @@
 package com.piclab.wikitest;
 
 import com.meterware.httpunit.*;
-import org.w3c.dom.*;
 import java.util.prefs.*;
 import java.util.logging.*;
 import java.io.*;
@@ -21,12 +20,12 @@ private static Preferences ms_uprefs =
 
 /* Settings loaded from preferences:
  */
-private static String ms_server;
-private static String ms_script;
-private static String ms_articlepath;
-private static String ms_uploadpath;
-private static String ms_mainpage;
-private static String ms_sysoppass;
+private static String ms_server = null;
+private static String ms_script = null;
+private static String ms_articlepath = null;
+private static String ms_uploadpath = null;
+private static String ms_mainpage = null;
+private static String ms_sysoppass = null;
 
 /* Primary conversation for test suite; individual
  * tests may also create their own if needed.
@@ -47,7 +46,7 @@ static {
 	ms_logger.setFilter( null );
 }
 
-static String preloadedPages[] = { "Agriculture", "Anthropology",
+public static String preloadedPages[] = { "Agriculture", "Anthropology",
 	"Archaeology", "Architecture", "Astronomy_and_astrophysics",
 	"Biology", "Business_and_industry", "Card_game", "Chemistry",
 	"Classics", "Communication", "Computer_Science", "Cooking",
@@ -91,43 +90,17 @@ public WikiSuite() {
 	m_conv = new WebConversation();
 }
 
-public void clearCookies() {
-	m_conv.clearContents();
-}
+public WebConversation getConv() { return m_conv; }
+public static String getServer() { return ms_server; }
+public static String getScript() { return ms_script; }
+public static String getArticlePath() { return ms_articlepath; }
+public static String getUploadPath() { return ms_uploadpath; }
+public static String getMainPage() { return ms_mainpage; }
+public static String getSysopPass() { return ms_sysoppass; }
 
-public static String getSysopPass() {
-	return ms_sysoppass;
-}
-
-public WebResponse logout() {
-	WebResponse wr = viewPage( "Special:Userlogout" );
-	clearCookies();
-	return wr;
-}
-
-public WebResponse loginAs( String name, String password )
-throws WikiSuiteFailureException {
-	WebResponse wr = null;
-	WebRequest req = null;
-
-	try {
-		wr = viewPage( "Special:Userlogin" );
-
-		WebForm loginform = WikiSuite.getFormByName( wr, "userlogin" );
-		req = loginform.getRequest( "wpLoginattempt" );
-		req.setParameter( "wpName", name );
-		req.setParameter( "wpPassword", password );
-    	wr = getResponse( req );
-	} catch (org.xml.sax.SAXException e) {
-		throw new WikiSuiteFailureException( "Exception (" + e +
-		  ") parsing login form." );
-	}
-	fine( "Logged in as " + name );
-	return wr;
-}
-
-/* Utility routine to munge page titles into URL form.
- * Should match the ruotines used by the wiki itself.
+/*
+ * Encapsulate rules for converting a title to URL form; this
+ * should match the equivalent function in the Wiki code.
  */
 
 public static String titleToUrl( String title ) {
@@ -153,30 +126,6 @@ public static String titleToUrl( String title ) {
 		}
 	}
 	return sb.toString();
-}
-
-public static String viewUrl( String title ) {
-	StringBuffer url = new StringBuffer(200);
-	String t = titleToUrl( title );
-
-	int p = ms_articlepath.indexOf( "$1" );
-	if ( p >= 0 ) {
-		url.append( ms_articlepath );
-		url.replace( p, p+2, t );
-	} else {
-		url.append( ms_server ).append( ms_script ).
-		  append( "?title=" ).append( t );
-	}
-	return url.toString();
-}
-
-public static String editUrl( String title ) {
-	StringBuffer url = new StringBuffer( 200 );
-	String t = titleToUrl( title );
-
-	url.append( ms_server ).append( ms_script ).append( "?title=" )
-	  .append( t ).append( "&action=edit" );
-	return url.toString();
 }
 
 /*
@@ -232,173 +181,7 @@ public static String threeDecimals( double val ) {
 }
 
 /*
- * Utility functions to interact with the wiki:
- */
-
-public WebResponse getResponse( String url ) {
-	WebResponse r = null;
-
-	try {
-		r = m_conv.getResponse( url );
-	} catch (org.xml.sax.SAXException e) {
-		warning( "Error parsing received page \"" + url + "\"" );
-	} catch (java.net.MalformedURLException e) {
-		fatal( "Badly formed URL \"" + url + "\"" );
-	} catch (java.io.IOException e) {
-		warning( "I/O Error receiving page \"" + url + "\"" );
-	}
-	return r;
-}
-
-public WebResponse getResponse( WebRequest req ) {
-	WebResponse r = null;
-
-	try {
-		r = m_conv.getResponse( req );
-	} catch (org.xml.sax.SAXException e) {
-		warning( "Error parsing received page." );
-	} catch (java.io.IOException e) {
-		warning( "I/O Error receiving page." );
-	}
-	return r;
-}
-
-public static void showResponseTitle( WebResponse wr ) {
-	try {
-		fine( "Viewing \"" + wr.getTitle() + "\"" );
-	} catch (org.xml.sax.SAXException e) {
-		error( "Exception (" + e + ")" );
-	}
-}
-
-public WebResponse viewPage( String title ) {
-	WebResponse wr = getResponse( viewUrl( title ) );
-	showResponseTitle( wr );
-	return wr;
-}
-
-public WebResponse editPage( String title ) {
-	WebResponse wr = getResponse( editUrl( title ) );
-	showResponseTitle( wr );
-	return wr;
-}
-
-public WebResponse deletePage( String title )
-throws WikiSuiteFailureException {
-	WebResponse wr = null;
-
-	try {
-		wr = loginAs( "WikiSysop", getSysopPass() );
-	} catch ( WikiSuiteFailureException e ) {
-		error( "Could not log in as Sysop to delete \"" + title + "\"" );
-		return null;
-	}
-	StringBuffer url = new StringBuffer( 200 );
-	String t = titleToUrl( title );
-
-	url.append( ms_server ).append( ms_script ).append( "?title=" )
-	  .append( t ).append( "&action=delete" );
-	wr = getResponse( url.toString() );
-
-	String rt = null;
-	try {
-		rt = wr.getTitle();
-	} catch ( org.xml.sax.SAXException e ) {
-		error( "Could not parse response to delete request." );
-		wr = logout();
-		return null;
-	}
-
-	if ( rt.equals( "Internal error" ) ) {
-		wr = logout();
-		return null;
-		/* Can't delete because it doesn't exist: no problem */
-	}
-
-	WebForm delform = null;
-	try {
-		delform = getFormByName( wr, "deleteconfirm" );
-	} catch (org.xml.sax.SAXException e) {
-		error( "Error parsing delete form." );
-		throw new WikiSuiteFailureException( e.toString() );
-	}
-	WebRequest req = delform.getRequest( "wpConfirmB" );
-	req.setParameter( "wpReason", "Deletion for testing" );
-	req.setParameter( "wpConfirm", "1" );
-
-	WebResponse ret = null;
-	try {
-		ret = m_conv.getResponse( req );
-	} catch (org.xml.sax.SAXException e) {
-		fatal( "Error parsing received page from delete confirmation." );
-		throw new WikiSuiteFailureException( e.toString() );
-	} catch (java.net.MalformedURLException e) {
-		fatal( "Badly formed URL from delete confirmation." );
-		throw new WikiSuiteFailureException( e.toString() );
-	} catch (java.io.IOException e) {
-		fatal( "I/O Error receiving page from delete confirmation." );
-		throw new WikiSuiteFailureException( e.toString() );
-	}
-	wr = logout();
-	fine( "Deleted \"" + title + "\"" );
-	return wr;
-}
-
-public WebResponse loadPageFromFile( String title )
-throws WikiSuiteFailureException {
-	StringBuffer url = new StringBuffer(200);
-	String t = titleToUrl( title );
-
-	url.append( "texts/" ).append( t ).append( ".txt" );
-	String text = loadFile( url.toString() );
-
-	WebResponse wr = editPage( title );
-	WebForm editform = null;
-
-	try {
-		editform = getFormByName( wr, "editform" );
-	} catch (org.xml.sax.SAXException e) {
-		error( "Error parsing edit form for page \"" + title + "\"." );
-		throw new WikiSuiteFailureException( e.toString() );
-	}
-	WebRequest req = editform.getRequest( "wpSave" );
-	req.setParameter( "wpTextbox1", text );
-
-	WebResponse ret = null;
-	try {
-		ret = m_conv.getResponse( req );
-	} catch (org.xml.sax.SAXException e) {
-		fatal( "Error parsing received page from form submission." );
-		throw new WikiSuiteFailureException( e.toString() );
-	} catch (java.net.MalformedURLException e) {
-		fatal( "Badly formed URL from form submission." );
-		throw new WikiSuiteFailureException( e.toString() );
-	} catch (java.io.IOException e) {
-		fatal( "I/O Error receiving page from form submission." );
-		throw new WikiSuiteFailureException( e.toString() );
-	}
-	return ret;
-}
-
-public static WebForm getFormByName( WebResponse resp, String name )
-throws org.xml.sax.SAXException {
-
-	WebForm[] forms = resp.getForms();
-	for (int i=0; i < forms.length; ++i) {
-		Node formNode = forms[i].getDOMSubtree();
-		NamedNodeMap nnm = formNode.getAttributes();
-		Node nameNode = nnm.getNamedItem( "name" );
-
-		if (nameNode == null) continue;
-		if (nameNode.getNodeValue().equalsIgnoreCase( name )) {
-			return forms[i];
-		}
-	}
-	return null;
-}
-
-/*
- * Some utility functions useful for testing and comparing things.
+ * Utility functions for loading and saving strings from/to a file.
  */
 
 public static void saveText( String text, String filename ) {
@@ -408,10 +191,12 @@ public static void saveText( String text, String filename ) {
 		pw.close();
 	} catch( IOException e ) {
 		error( "Couldn't write to \"" + filename + "\"" );
+		return;
 	}
+	fine( "Saved \"" + filename + "\"" );
 }
 
-public static String loadFile( String fname )
+public static String loadText( String fname )
 {
 	FileInputStream fis = null;
 	BufferedInputStream bis;
@@ -420,6 +205,7 @@ public static String loadFile( String fname )
 		fis = new FileInputStream( fname );
 	} catch (FileNotFoundException e) {
 		error( "File \"" + fname + "\" not found." );
+		return null;
 	}
 	bis = new BufferedInputStream( fis );
 
@@ -449,64 +235,8 @@ public static String loadFile( String fname )
 	} catch (IOException e) {
 		warning( "I/O Error closing file \"" + fname + "\"." );
 	}
+	fine( "Loaded \"" + fname + "\"" );
 	return result.toString();
-}
-
-
-/*
- * Load database with initial set of pages for testing.
- */
-private void initializeDatabase() {
-
-	WebResponse wr = viewPage( "" );
-	String text = null;
-
-	if ( ! f_overwrite ) {
-		try {
-			text = wr.getText();
-			if ( text.indexOf( "no text in this page" ) < 0 ) {
-				error( "Target wiki is not empty." );
-				return;
-			}
-		} catch( IOException e ) {
-			error( "Can't access target wiki." );
-			return;
-		}
-	}
-	info( "Preloading database with test pages." );
-/*
-	for (int i = 0; i < preloadedPages.length; ++i) {
-		try {
-			wr = loadPageFromFile( preloadedPages[i] );
-		} catch (WikiSuiteFailureException e) {
-			warning( "Failed to load \"" + preloadedPages[i] + "\"" );
-		}
-		if (wr != null) {
-			fine( "Loaded \"" + preloadedPages[i] + "\"" );
-		}
-	}
-*/
-	info( "Creating test users." );
-	try {
-		wr = viewPage( "Special:Userlogin" );
-		WebForm loginform = WikiSuite.getFormByName( wr, "userlogin" );
-		WebRequest req = loginform.getRequest( "wpCreateaccount" );
-		req.setParameter( "wpName", "Fred" );
-		req.setParameter( "wpPassword", "Fred" );
-		req.setParameter( "wpRetype", "Fred" );
-		wr = getResponse( req );
-
-		wr = viewPage( "Special:Userlogin" );
-		loginform = WikiSuite.getFormByName( wr, "userlogin" );
-		req = loginform.getRequest( "wpCreateaccount" );
-		req.setParameter( "wpName", "Barney" );
-		req.setParameter( "wpPassword", "Barney" );
-		req.setParameter( "wpRetype", "Barney" );
-		wr = getResponse( req );
-	} catch (org.xml.sax.SAXException e) {
-		error( "Exception (" + e + ") parsing login form." );
-	}
-	clearCookies();
 }
 
 /*
@@ -576,7 +306,9 @@ public static void main( String[] params ) {
 		}
 	}
 	WikiSuite ws = new WikiSuite();
-	if ( ! f_skipload ) { ws.initializeDatabase(); }
+	if ( ! f_skipload ) {
+		(new DBLoader()).initializeDatabase( ws, f_overwrite );
+	}
 
 	info( "Started Wikipedia Test Suite" );
 	long start_time = System.currentTimeMillis();

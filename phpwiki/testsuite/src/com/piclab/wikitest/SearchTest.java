@@ -11,7 +11,7 @@ public class SearchTest extends WikiTest {
 public String testName() { return "Search"; }
 
 protected int initTest() throws Exception {
-	m_suite.logout();
+	logout();
 	return 0;
 }
 
