@@ -72,10 +72,10 @@ class LuceneSearch extends SpecialPage
 		$wgOut->addWikiText(wfMsg('searchresulttext'));
 		$wgOut->addHTML($this->showShortDialog($q));
 
-		if ($numresults == 0) {
+		if ($numresults < 1) {
 			$wgOut->addWikiText(wfMsg("searchnoresults"));
 			$suggestion = trim($results);
-			if (strlen($suggestion) > 0) {
+			if ($numresults == -1 && strlen($suggestion) > 0) {
 				$wgOut->addHTML(wfMsg("searchdidyoumean", 
 						$this->makelink($suggestion, $offset, $limit),
 						htmlspecialchars($suggestion)));
@@ -96,7 +96,7 @@ class LuceneSearch extends SpecialPage
 				min($numresults, $offset+$limit), $numresults);
 			$out = "<ul start=".($offset + 1).">";
 			$chunks = array_chunk($results, $limit);
-			$numchunks = $numresults / $limit;
+			$numchunks = ceil($numresults / $limit);
 			$whichchunk = $offset / $limit;
 			$prevnext = "";
 			if ($whichchunk > 0)
@@ -105,6 +105,7 @@ class LuceneSearch extends SpecialPage
 					wfMsg("searchprev")."</a> ";
 			$first = max($whichchunk - 11, 0);
 			$last = min($numchunks, $whichchunk + 11);
+			//$wgOut->addWikiText("whichchunk=$whichchunk numchunks=$numchunks first=$first last=$last num=".count($chunks)." limit=$limit offset=$offset results=".count($results)."\n\n");
 			for($i = $first; $i < $last; $i++) {
 				if ($i === $whichchunk)
 					$prevnext .= "<strong>".($i+1)."</strong> ";
@@ -228,19 +229,22 @@ class LuceneSearch extends SpecialPage
 		wfDebug("total [$numresults] hits\n");
 		if ($numresults === FALSE)
 			return array();
-		$numresults = 0 + chop($numresults);
+		$numresults = chop($numresults);
 
 		if ($numresults == 0) {
 			$suggestion = @socket_read($sock, 1024, PHP_NORMAL_READ);
 			wfdebug("no results; suggest: [$suggestion]\n");
-			return array($numresults, urldecode($suggestion));
+			return array(-1, urldecode($suggestion));
 		}
 
 		while (($result = @socket_read($sock, 1024, PHP_NORMAL_READ)) != FALSE) {
 			$result = chop($result);
 			list($score, $namespace, $title) = split(" ", $result);
-			if (!in_array($namespace, $this->namespaces))
+			wfdebug("result: $namespace $title\n");
+			if (!in_array($namespace, $this->namespaces)) {
+				--$numresults;
 				continue;
+			}
 			$fulltitle = Title::makeTitle($namespace, $title);
 			if ($fulltitle === null) {
 				wfDebug("broken link: $namespace $title");
