@@ -152,6 +152,7 @@ class SearchEngine {
 				$post = substr( $post, 0, 60 ) . "...";
 			}
 			$line = "{$pre}<font color='red'>{$m[2]}</font>{$post}";
+			$line = wfEscapeHTML( $line );
 			$wgOut->addHTML( "<br><small>{$lineno}: {$line}</small>\n" );
 		}
 		$wgOut->addHTML( "</li>\n" );
