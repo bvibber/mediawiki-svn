@@ -5,7 +5,7 @@
 
 HDL(cmd_show_version) {
 	EX1(cd) {
-		cd.inform("servmon pre-release");
+		cd.inform("servmon " SM_VERSION);
 		return true;
 	}
 };

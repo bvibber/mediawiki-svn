@@ -2,6 +2,8 @@
 #ifndef SM_SMSTDINC_HXX_INCLUDED_
 #define SM_SMSTDINC_HXX_INCLUDED_
 
+#define SM_VERSION "2.1.0.0-pre"
+
 #include <iostream>
 #include <fstream>
 #include <iomanip>
