@@ -55,7 +55,7 @@ function editUserSettings () {
 
 	global $wikiLoggedInAs , $wikiID_Help , $wikiViewRecentChanges ;
 	global $wikiQuickBarSettings , $wikiSettingsNone , $wikiSettingsStandard , $wikiSettingsLeft , $wikiSettingsRight ;
-	global $wikiOldPassword , $wikiNewPassword , $wikiYourPasswordAgain , $wikiSkin , $wikiStarTrek ;
+	global $wikiOldPassword , $wikiNewPassword , $wikiYourPasswordAgain , $wikiSkin , $wikiStarTrek , $wikiNostalgy ;
 	global $wikiShowHoverBox , $wikiUnderlineLinks , $wikiNewTopicsRed , $wikiJustifyParagraphs , $wikiShowRecentChangesTable ;
 	global $wikiDoNumberHeadings , $wikiViewWithFrames , $wikiTurnedOn , $wikiTurnedOff ;
 	global $wikiTextboxDimensions , $wikiCols , $wikiRows , $wikiYourEmail , $wikiResultsPerPage , $wikiTimeDiff , $wikiSave , $wikiReset ;
@@ -85,6 +85,7 @@ function editUserSettings () {
 	$ret .= "<tr><td valign=top nowrap><b>$wikiSkin</b><br>\n" ;
 	$ret .= "<input type=radio value=None ".$sk["None"]." name=doSkin>$wikiSettingsNone ($wikiSettingsStandard)<br>\n" ;
 	$ret .= "<input type=radio value=\"Star Trek\" ".$sk["Star Trek"]." name=doSkin>$wikiStarTrek<br>\n" ;
+	$ret .= "<input type=radio value=\"Nostalgy\" ".$sk["Nostalgy"]." name=doSkin>$wikiNostalgy<br>\n" ;
 
 #----------------------------------------------
 	$ret .= "</td><td valign=top nowrap>" ;
