@@ -17,49 +17,45 @@ function wfSpecialUserlogin()
 
 /* private */ function addNewAccount()
 {
-	global $wgUser, $wpPassword2, $wpRetype, $wpName2, $wpRemember2;
+	global $wgUser, $wpPassword, $wpRetype, $wpName, $wpRemember;
 	global $wpEmail, $wgDeferredUpdateList;
 
-	if ( 0 != strcmp( $wpPassword2, $wpRetype ) ) {
+	if ( 0 != strcmp( $wpPassword, $wpRetype ) ) {
 		mainLoginForm( wfMsg( "badretype" ) );
 		return;
 	}
-	if ( "" == $wpName2 ) {
+	if ( "" == $wpName ) {
 		mainLoginForm( wfMsg( "noname" ) );
 		return;
 	}
-	$u = User::newFromName( $wpName2 );
+	$u = User::newFromName( $wpName );
 
 	if ( 0 != $u->idForName() ) {
 		mainLoginForm( wfMsg( "userexists" ) );
 		return;
 	}
 	$u->addToDatabase();
-
-	$u->setPassword( $wpPassword2 );
-	if ( 1 == $wpRemember2 ) {
-		$u->setOption( "rememberPassword", 1 );
-	}
+	$u->setPassword( $wpPassword );
 	$u->setEmail( $wpEmail );
+	if ( 1 == $wpRemember ) { $r = 1; }
+	else { $r = 0; }
+	$u->setOption( "rememberPassword", $r );
 
 	$wgUser = $u;
-	$wgUser->setCookies();
-	$up = new UserUpdate();
-	array_push( $wgDeferredUpdateList, $up );
-
 	$m = str_replace( "$1", $wgUser->getName(), wfMsg( "welcomecreation" ) );
 	successfulLogin( $m );
 }
 
 /* private */ function processLogin()
 {
-	global $wgUser, $wpName1, $wpPassword1, $wpRemember1;
+	global $wgUser, $wpName, $wpPassword, $wpRemember;
+	global $returnto;
 
-	if ( "" == $wpName1 ) {
+	if ( "" == $wpName ) {
 		mainLoginForm( wfMsg( "noname" ) );
 		return;
 	}
-	$u = User::newFromName( $wpName1 );
+	$u = User::newFromName( $wpName );
 	$id = $u->idForName();
 	if ( 0 == $id ) {
 		$m = str_replace( "$1", $u->getName(), wfMsg( "nosuchuser" ) );
@@ -68,30 +64,30 @@ function wfSpecialUserlogin()
 	}
 	$u->setId( $id );
 	$u->loadFromDatabase();
-	if ( 0 != strcmp( $u->getPassword(), $wpPassword1 ) ) {
+	if ( 0 != strcmp( $u->getPassword(), $wpPassword ) ) {
 		mainLoginForm( wfMsg( "wrongpassword" ) );
 		return;
 	}
 	# We've verified now, update the real record
 	#
+	if ( 1 == $wpRemember ) { $r = 1; }
+	else { $r = 0; }
+	$u->setOption( "rememberPassword", $r );
+
 	$wgUser = $u;
-	if ( 1 == $wpRemember1 ) {
-		$wgUser->setOption( "rememberPassword", 1 );
-	}
-	$wgUser->setCookies();
 	$m = str_replace( "$1", $wgUser->getName(), wfMsg( "loginsuccess" ) );
 	successfulLogin( $m );
 }
 
 /* private */ function mailPassword()
 {
-	global $wpName1;
+	global $wpName;
 
-	if ( "" == $wpName1 ) {
+	if ( "" == $wpName ) {
 		mainLoginForm( wfMsg( "noname" ) );
 		return;
 	}
-	$u = User::newFromName( $wpName1 );
+	$u = User::newFromName( $wpName );
 	$id = $u->idForName();
 	if ( 0 == $id ) {
 		$m = str_replace( "$1", $u->getName(), wfMsg( "nosuchuser" ) );
@@ -116,21 +112,31 @@ function wfSpecialUserlogin()
 
 /* private */ function successfulLogin( $msg )
 {
-	global $wgOut;
+	global $wgUser, $wgOut, $returnto;
+	global $wgDeferredUpdateList;
+
+	$wgUser->setCookies();
+	$up = new UserUpdate();
+	array_push( $wgDeferredUpdateList, $up );
 
 	$wgOut->setPageTitle( wfMsg( "loginsuccesstitle" ) );
 	$wgOut->setRobotpolicy( "noindex,nofollow" );
 	$wgOut->addHTML( $msg . "\n<p>" );
-	$wgOut->addWikiText( wfMsg( "returntomain" ) );
+
+	if ( "" == $returnto ) {
+		$r = wfMsg( "returntomain" );
+	} else {
+		$r = str_replace( "$1", $returnto, wfMsg( "returnto" ) );
+		$wgOut->addMeta( "http:Refresh", "5;url=" . wfLocalLink( $returnto ) );
+	}
+	$wgOut->addWikiText( $r );
 }
 
 /* private */ function mainLoginForm( $err )
 {
-	global $wgUser, $wgOut;
-	global $wpName1, $wpPassword1, $wpRemember1;
-	global $wpName2, $wpPassword2, $wpRetype, $wpRemember2;
-	global $wpEmail;
-	global $HTTP_COOKIE_VARS;
+	global $wgUser, $wgOut, $returnto;
+	global $wpName, $wpPassword, $wpRetype, $wpRemember;
+	global $wpEmail, $HTTP_COOKIE_VARS;
 
 	$le = wfMsg( "loginerror" );
 	$yn = wfMsg( "yourname" );
@@ -145,7 +151,7 @@ function wfSpecialUserlogin()
 	$efl = wfMsg( "emailforlost" );
 	$mmp = wfMsg( "mailmypassword" );
 
-	$name = $wpName1;
+	$name = $wpName;
 	if ( "" == $name ) {
 		if ( 0 != $wgUser->getID() ) {
 			$name = $wgUser->getName();
@@ -153,7 +159,7 @@ function wfSpecialUserlogin()
 			$name = $HTTP_COOKIE_VARS["wcUserName"];
 		}
 	}
-	$pwd = $wpPassword1;
+	$pwd = $wpPassword;
 	if ( "" == $pwd ) {
 		if ( 0 != $wgUser->getID() ) {
 			$pwd = $wgUser->getPassword();
@@ -163,10 +169,11 @@ function wfSpecialUserlogin()
 	}
 	$wgOut->setPageTitle( wfMsg( "userlogin" ) );
 	$wgOut->setRobotpolicy( "noindex,nofollow" );
+
 	if ( "" == $err ) {
-		$wgOut->addHTML( "<h2>$li</h2>\n" );
+		$wgOut->addHTML( "<h2>$li:</h2>\n" );
 	} else {
-		$wgOut->addHTML( "<h2>$le</h2>\n<font size='+1' color='red'>$err</font>\n<p>" );
+		$wgOut->addHTML( "<h2>$le:</h2>\n<font size='+1' color='red'>$err</font>\n" );
 	}
 	if ( 1 == $wgUser->getOption( "rememberPassword" ) ) {
 		$checked = " checked";
@@ -174,29 +181,44 @@ function wfSpecialUserlogin()
 		$checked = "";
 	}
 	$action = wfLocalLink( "Special:Userlogin" );
+	if ( "" != $returnto ) { $action .= "&returnto=$returnto"; }
 
 	$wgOut->addHTML( "
-<form action='$action' method=post><tt>
-$yn<input tabindex=1 type=text name='wpName1' value='$name' size=20><br>
-$yp<input tabindex=2 type=password name='wpPassword1' value='$pwd' size=20><br>
-<input tabindex=4 type=checkbox name='wpRemember1' value='1'$checked>$rmp<br>
-<input tabindex=5 type=submit name='wpLoginattempt' value='$li'>
-<input tabindex=6 type=submit name='wpMailmypassword' value='$mmp'>
-</tt></form>\n" );
-
-	if ( isset( $wpRemember2 ) ) { $checked = " checked"; }
-	else { $checked = ""; } 
-
-	$wgOut->addHTML( "<hr>
-<h2>$ca</h2><p>$ayn<br>
-<form action='$action' method=post><tt>
-$yn<input tabindex=6 type=text name='wpName2' value='$wpName2' size=20><br>
-$yp<input tabindex=7 type=password name='wpPassword2' value='$wpPassword2' size=20><br>
-$ypa<input tabindex=8 type=password name='wpRetype' value='$wpRetype' size=20>$nuo<br>
-$ye<input tabindex=9 type=text name='wpEmail' value='$wpEmail' size=20>$efl<br>
-<input tabindex=10 type=checkbox name='wpRemember2' value='1'$checked>$rmp<br>
-<input tabindex=11 type=submit name='wpCreateaccount' value='$ca'>
-</tt></form>\n" );
+<form method=post action='$action'>
+<table border=0><tr>
+<td align=right>$yn:</td>
+<td colspan=2 align=left>
+<input tabindex=1 type=text name='wpName' value='$name' size=20>
+</td></tr><tr>
+<td align=right>$yp:</td>
+<td align=left>
+<input tabindex=2 type=password name='wpPassword' value='$pwd' size=20>
+</td>
+<td align=left>
+<input tabindex=3 type=submit name='wpLoginattempt' value='$li'>
+</td></tr>
+<tr><td colspan=3>&nbsp;</td></tr><tr>
+<td align=right>$ypa:</td>
+<td align=left>
+<input tabindex=4 type=password name='wpRetype' value='$wpRetype' size=20>
+</td><td>$nuo</td></tr>
+<tr>
+<td align=right>$ye:</td>
+<td align=left>
+<input tabindex=5 type=text name='wpEmail' value='$wpEmail' size=20>
+</td><td align=left>
+<input tabindex=6 type=submit name='wpCreateaccount' value='$ca'>
+</td></tr>
+<tr>
+<td colspan=3 align=left>
+<input tabindex=7 type=checkbox name='wpRemember' value='1'$checked>$rmp
+</td></tr>
+<tr><td colspan=3>&nbsp;</td></tr><tr>
+<td colspan=3 align=left>
+<p>$efl<br>
+<input tabindex=8 type=submit name='wpMailmypassword' value='$mmp'>
+</td></tr></table>
+</form>\n" );
 }
 
 ?>

@@ -90,17 +90,23 @@ class Title {
 
 	function getPrefixedDBkey()
 	{
-		return $this->prefixes( false ) . $this->mDbkeyform;
+		$s = $this->prefix( $this->mDbkeyform );
+		$s = str_replace( " ", "_", $s );
+		return $s;
 	}
 
 	function getPrefixedText()
 	{
-		return $this->prefixes( true ) . $this->mTextform;
+		$s = $this->prefix( $this->mTextform );
+		$s = str_replace( "_", " ", $s );
+		return $s;
 	}
 
 	function getPrefixedURL()
 	{
-		return $this->prefixes( false ) . $this->mUrlform;
+		$s = $this->prefix( $this->mDbkeyform );
+		$s = str_replace( " ", "_", $s );
+		return urlencode( $s );
 	}
 
 	function getFullURL()
@@ -112,7 +118,7 @@ class Title {
 		} else {
 			$p = $wgValidInterwikis[$this->mInterwiki];
 		}
-		if ( "" != $this->mNamespace ) { $n = $this->mNamespace . ":"; }
+		if ( "" != $this->mNamespace ) { $n = $this->mNamespace . "%3a"; }
 		return str_replace( "$1", $n . $this->mUrlform, $p );
 	}
 
@@ -154,7 +160,7 @@ class Title {
 			wfDebug( "Title: 2: $sql\n" );
 
 			$res = mysql_query( $sql, $conn );
-			if ( ! $res || 0 == mysql_num_rows( $res ) ) {
+			if ( ( false === $res ) || 0 == mysql_num_rows( $res ) ) {
 				return $this->mOtherNamespaces;
 			}
 
@@ -197,7 +203,7 @@ class Title {
 			# wfDebug( "Title: 1: $sql\n" );
 			$res = mysql_query( $sql, $conn );
 
-			if ( ! $res || 0 == mysql_num_rows( $res ) ) {
+			if ( ( false === $res ) || 0 == mysql_num_rows( $res ) ) {
 				$this->mArticleID = 0;
 			} else {
 				$s = mysql_fetch_object( $res );
@@ -209,19 +215,16 @@ class Title {
 		return $this->mArticleID;
 	}
 
-	/* private */ function prefixes( $textform )
+	/* private */ function prefix( $name )
 	{
+		$p = "";
 		if ( "" != $this->mInterwiki ) {
 			$p = $this->mInterwiki . ":";
 		}
 		if ( "" != $this->mNamespace ) {
-			if ( $textform ) {
-				$p .= str_replace( "_", " ", $this->mNamespace ) . ":";
-			} else {
 				$p .= $this->mNamespace . ":";
-			}
 		}
-		return $p;
+		return $p . $name;
 	}
 
 	# Assumes that mDbkeyform has been set, and is urldecoded
@@ -240,7 +243,7 @@ class Title {
 		$done = false;
 		$t = trim( $this->mDbkeyform );
 		if ( ":" == $t{0} ) {
-			$r = substr( $t, 2 );
+			$r = substr( $t, 1 );
 		} else {
 			if ( preg_match( "/^([A-Za-z][A-Za-z0-9 _]*):(.*)$/", $t, $m ) ) {
 				$p = strtolower( $m[1] );
