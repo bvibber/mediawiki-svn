@@ -210,7 +210,7 @@ main(int ac, char **av)
     s = socket(PF_INET, SOCK_DGRAM, 0);
     bzero(&me, sizeof(me));
     me.sin_family = AF_INET;
-    me.sin_port = htons(3100);
+    me.sin_port = htons(3130);
 
     if (bind(s, (struct sockaddr *) &me, sizeof(me)) < 0) {
 	printf("Unable to bind a socket");
