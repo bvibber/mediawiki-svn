@@ -455,19 +455,19 @@ která popsala příčinu takto:<br><p>Máte právo se spojit se správcem syst�
 "searchhelppage" => "Wikipedie:Hledání",
 "searchingwikipedia" => "Hledání ve Wikipedii",
 "searchresulttext" => "Nápovědu, jak účinně hledat ve Wikipedii, čtěte na  .",
-"searchquery"	=> "Zadání pro vyhledávání \"\"",
+"searchquery"	=> "Zadání pro vyhledávání \"$1\"",
 "badquery"		=> "Zkreslené zadání pro vyhledávání",
 "badquerytext"	=> "Via sercmendo ne estis Vaše zadání pro vyhledávání není splnitelné. Může to být tím, že hledáte slovo kratší než tři písmena, nebo jste zadání napsal nesprávně".
 #", ekzemple \"fisoj kaj kaj skaloj\"".   # FIXME ? eblas
 ". Bonvolu reserci per alia mendo.",
-"maZkuste zadat nové zadání"	=> "Zadání \"\" poskytlo články podle názvu a články dle obsahu.",
+"maZkuste zadat nové zadání"	=> "Zadání \"$1\" poskytlo články podle názvu a články dle obsahu.",
 "titlematches"	=> "Nalezeno dle názvů",
 "notitlematches" => "Nic nebylo nalezeno dle názvu",
 "textmatches"	=> "Nalezeno podle obsahu",
 "notextmatches"	=> "Nic nebylo nalezeno podle obsahu",
-"prevn"			=> " předchozí",
-"nextn"			=> " následující",
-"viewprevnext"	=> "Ukaž () () ().",
+"prevn"			=> "$1 předchozí",
+"nextn"			=> "$1 následující",
+"viewprevnext"	=> "Ukaž ($1) ($2) ($3).",
 "showingresults" => "Ukazuje <b></b> nalezené od <b></b>-a.",
 "nonefound"		=> "<strong>Poznámka</strong>: neúspěšné hledání zaviňuje často zadání slov, které nejsou v indexu, nebo mnoha slov najednou (jen stránky, které obsahují všechna zadaná slova, se objeví ve výsledku).",
 "powersearch" => "Sercu",
@@ -483,7 +483,7 @@ která popsala příčinu takto:<br><p>Máte právo se spojit se správcem syst�
 "prefsnologintext"	=> "Určite <a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">se přihlaste</a>
 dříve než je možno měnit priority.",
-"prefslogintext" => "Přihlásil jste se \"\".
+"prefslogintext" => "Přihlásil jste se \"$1\".
 Vaše interní identifikační číslo je  .",
 "prefsreset"	=> "Priority odstraněny z registru.", #FIXME: Hmm...
 "qbsettings"	=> "Priority na liště nástrojů", 
@@ -577,22 +577,22 @@ může mu být zablokován přístup k redigování.</p>",
 ",
 "filename"		=> "Soubor",
 "filedesc"		=> "Popis",
-"affirmation"	=> "Potvrzuji, že zákonný vlastník copyrightu na tento soubor souhlasí se zveřejněním podle .",
-"copyrightpage" => "Wikipedie:Copyrright",
+"affirmation"	=> "Potvrzuji, že zákonný vlastník copyrightu na tento soubor souhlasí se zveřejněním podle $1.",
+"copyrightpage" => "Wikipedie:Copyright",
 "copyrightpagename" => "povolenka GFDL používaná ve Wikipedii ",
 "uploadedfiles"	=> "Načtené soubory ",
 "noaffirmation" => "Bezpodmínečně musíte potvrdit, že váš příspěvek neporušuje zákony o copyrightu.",
 "ignorewarning"	=> "Ignoruj varování a ulož soubor.",
 "minlength"		=> "Jméno souboru se musí skládat nejméně ze tří písmen.",
-"badfilename"	=> "Jméno souboru bylo změněno na \"\".",
-"badfiletype"	=> "\".\" jedná se o nedoporučený typ souboru.",
+"badfilename"	=> "Jméno souboru bylo změněno na \"$1\".",
+"badfiletype"	=> "\".$1\" jedná se o nedoporučený typ souboru.",
 "largefile"		=> "Doporučuje se, aby soubor nepřesahoval 100 kbytů.",
 "successfulupload" => "Načtení úspěšně provedeno!",
-"fileuploaded"	=> "Úspěšně jsi načetl soubor \"\".
-Věnuj pozornost následujícímu odkazu: () na stránku popisu a napiš pár informací o souboru. Např. odkud pochází, kdy a kdo ho vytvořil či cokoliv dalšího, co o něm víš..",
+"fileuploaded"	=> "Úspěšně jsi načetl soubor \"$1\".
+Věnuj pozornost následujícímu odkazu: ($2) na stránku popisu a napiš pár informací o souboru. Např. odkud pochází, kdy a kdo ho vytvořil či cokoliv dalšího, co o něm víš..",
 "uploadwarning" => "Varování",
-"savefile"		=> "Ulož soubor ",
-"uploadedimage" => "načetl \"\"",
+"savefile"		=> "Ulož soubor $1",
+"uploadedimage" => "načetl \"$1\"",
 
 # Image list
 #
@@ -673,7 +673,7 @@ Každý řádek ukazuje odkaz k prvnímu a druhému přesměrování, plus prvn�
 "developerspheading" => "Speciální stránky pro programátory",
 "protectpage"	=> "Ochrana stránky",
 "recentchangeslinked" => "Ukaž odkazy",
-"rclsub"		=> "(ke stráncej odkazy z \"\")",
+"rclsub"		=> "(ke stráncej odkazy z \"$1\")",
 "debug"			=> "Proti mouchám",
 "newpages"		=> "Nové stránky",
 "movethispage"	=> "Přemístit stránku",
@@ -709,14 +709,14 @@ pošty, aby adresát mohl odpovědět.",
 # Watchlist
 #
 "watchlist"		=> "Oblíbené stránky",
-"watchlistsub"	=> "(uživatele \"\")",
+"watchlistsub"	=> "(uživatele \"$1\")",
 "nowatchlist"	=> "Zatím jsi neuvedl žádné oblíbené stránky.",
 "watchnologin"	=> "Neuvedeno jméno",
 "watchnologintext"	=> "Nutno uvést <a href=\"" .
   wfLocalUrl( "Speciala:Userlogin" ) . "\">jméno</a>
 pro aktivaci tvých oblíbených stránek.",
 "addedwatch"	=> "Přidáno k oblíbeným",
-"addedwatchtext" => "Stránka \"\" je přidána k tvým <a href=\"" .
+"addedwatchtext" => "Stránka \"$1\" je přidána k tvým <a href=\"" .
   wfLocalUrl( "Speciala:Watchlist" ) . "\">oblíbeným</a>.
 Budoucí změny této stránky se objeví <b>tučně</b> v  <a href=\"" .
   wfLocalUrl( "Speciala:Recentchanges" ) . "\">seznamu Poslední Změny </a>,
@@ -724,7 +724,7 @@ a bude počítány v seznamu tvých Oblíbených.
 
 <p>Pokud později budeš chtít odstranit stránku ze seznamu Oblíbených, klikni na \"Ignoruj stránku \" v liště nástrojů.",
 "removedwatch"	=> "Vytaženo z Oblíbených",
-"removedwatchtext" => "Stránka \"\" vytažena z tvých Oblíbených.",
+"removedwatchtext" => "Stránka \"$1\" vytažena z tvých Oblíbených.",
 "watchthispage"	=> "Věnovat pozornost této stránce",
 "unwatchthispage" => "Ignorovat tuto stránku",
 "notanarticle"	=> "Toto není článek",
@@ -734,14 +734,14 @@ a bude počítány v seznamu tvých Oblíbených.
 "deletepage"	=> "Odstranit stránku",
 "confirm"		=> "Potvrdit",
 "confirmdelete" => "Potvrdit odstranění",
-"deletesub"		=> "(Odstraňuje se \"\")",
+"deletesub"		=> "(Odstraňuje se \"$1\")",
 "confirmdeletetext" => "Odstraníš článek nebo soubor a smažeš celou jeho historii z databáze.<br>
 Potvrď prosím, že to opravdu chceš, že si uvědomuješ důsledky a že dodržuješ [[Wikipedie:Pravidla o odstraňování]].",
 "confirmcheck"	=> "Ano, jsem naprosto jist, že chci toto odstranit.",
 "actioncomplete" => "Provedeno",
-"deletedtext"	=> "\"\" je odstraněno.
+"deletedtext"	=> "\"$1\" je odstraněno.
 Pohleď na záznam posledních odstranění.",
-"deletedarticle" => "odstraněno \"\"",
+"deletedarticle" => "odstraněno \"$1\"",
 "dellogpage"	=> "Kniha_odstraněných_souborů",
 "dellogpagetext" => "Zde je seznam posledních odstranění z databáze.
 Všechny časové údaje uvedeny podle časového pásma serveru. (UTC)
@@ -762,7 +762,7 @@ Všechny časové údaje uvedeny podle časového pásma serveru. (UTC)
 "undeletehistory" => "Pokud stránku obnovíš, všechny revize budou v historii obnoveny. Pokud byla vytvořena nová stránka se stejným jménem jako odstraněná, obnovené revize se zapíší na starší místo v historii a nová stránka nebude nahrazena.",
 "undeleterevision" => "Odstraněná revize z ", # ( uveden čas)
 "undeletebtn" => "Obnovit!",
-"undeletedarticle" => "obnoveno \"\"",
+"undeletedarticle" => "obnoveno \"$1\"",
 "undeletedtext"   => "Článek [[]] je úspěšně obnoven.
 Pohleď do [[Wikipedie:Kniha odstranění]] pro záznam posledních odstranění a obnovení.",
 
@@ -795,12 +795,12 @@ Níže objasni přesný důvod (např. uveď stránku, která se stala terčem v
 "badipaddress"	=> "Adresa IP je překroucena.",
 "noblockreason" => "Nutno uvést důvod zablokování.",
 "blockipsuccesssub" => "Úspěšné zablokování",
-"blockipsuccesstext" => "Adresa IP \"\" je zablokována.
+"blockipsuccesstext" => "Adresa IP \"$1\" je zablokována.
 <br>Viz [[Special:Ipblocklist|seznam zablokování IP]].",
 "unblockip"		=> "Zrušit blokování adresy IP",
 "unblockiptext"	=> "Tímto formulářem možno obnovit právo blokované adresy IP opět přispívat do wikipedie.",
 "ipusubmit"		=> "Zrušit blokování adresy",
-"ipusuccess"	=> "Adresa IP \"\" byla uvolněna z blokování",
+"ipusuccess"	=> "Adresa IP \"$1\" byla uvolněna z blokování",
 "ipblocklist"	=> "Seznam blokovaných adres IP",
 "blocklistline"	=> "Dne ,  zablokováno ",
 "blocklink"		=> "zablokuj",
@@ -849,7 +849,7 @@ abys mohl stránku přesunout.",
 "newtitle"		=> "Na nový název",
 "movepagebtn"	=> "Přesuň stránku",
 "pagemovedsub"	=> "Úspěšně přesunuto",
-"pagemovedtext" => "Stránka \"[[]]\" přesunuta na \"[[]]\".",
+"pagemovedtext" => "Stránka \"[[$1]]\" přesunuta na \"[[$2]]\".",
 "articleexists" => "Takto nazvaná stránky již existuje nebo tebou zvolený název je neplatný. Zvol jiný název.",
 "movedto"		=> "přesunuto na",
 "movetalk"		=> "Přesuň také \"diskusní\" stránku, pokud existuje.",
