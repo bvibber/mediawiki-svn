@@ -227,6 +227,7 @@ include_once( "LanguageUtf8.php" );
 	"Shortpages"	=> "短い記事",
 	"Longpages"		=> "長い記事",
 	"Newpages"		=> "新しく登場した記事",
+	"Ancientpages"	=> "Oldest articles",
 	"Allpages"		=> "タイトル別全ページ",
 
 	"Ipblocklist"	=> "ブロックされたIPアドレス",
