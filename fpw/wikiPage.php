@@ -321,7 +321,7 @@ class WikiPage extends WikiTitle {
 					$this->otherLanguages[$topic->namespace] = $iwl ;
 				} else if ( $doesItExist ) {
 					$linkedLinks[$topic->secureTitle]++ ;
-					if ( $user->options["showHover"] == "yes" ) $hover = "title=\"$link\"" ;
+					if ( $user->options["showHover"] == "yes" ) $hover = "title=\"" . htmlspecialchars ( $link ) . "\"" ;
 					#if ( $user->options["underlineLinks"] == "no" ) $linkStyle = " style=\"color:blue;text-decoration:none\"" ;
 					$ulink = nurlencode ( $link ) ;
 					$s .= "<a href=\"".wikiLink($ulink)."\" $hover$linkStyle>$text</a>" ;
@@ -329,7 +329,7 @@ class WikiPage extends WikiTitle {
 					$unlinkedLinks[$link]++ ;
 					#$text2 = $text ;
 					#$style="" ;
-					if ( $user->options["showHover"] == "yes" ) $hover = "title=\"Edit '$link'\"" ;
+					if ( $user->options["showHover"] == "yes" ) $hover = "title=\"Edit '" . htmlspecialchars ( $link ) . "'\"" ;
 					#if ( substr_count ( $text2 , " " ) > 0 ) {
 					#	if ( $action == "print" ) $text2 = "<$wikiPrintLinksMarkup>$text2</$wikiPrintLinksMarkup>" ;
 					#	else $text2 = "[$text2]" ;
@@ -1061,9 +1061,12 @@ class WikiPage extends WikiTitle {
 	function renderPage ( $doPrint = false ) {
 		global $pageTitle , $diff , $wikiArticleSource , $wikiCurrentServer , $wikiPrintLinksMarkup , $useCachedPages ;
 		$pageTitle = $this->title ;
-		if ( isset ( $diff ) ) $middle = $this->doDiff().$this->contents ;
+		if ( isset ( $diff ) ) {
+			$middle = $this->doDiff().$this->contents ;
+			$useCachedPages = false; # A little crude, but effective
+			}
 		else $middle = $this->contents ;
-		if ( $useCachedPages and !$this->isSpecialPage ) {
+		if ( $useCachedPages and !$this->isSpecialPage) {
 			if ( $this->cache != "" ) { # Using cache
 				$middle = $this->cache ;
 			} else {
