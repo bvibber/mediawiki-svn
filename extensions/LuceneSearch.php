@@ -140,7 +140,7 @@ class LuceneSearch extends SpecialPage
 			return "<b>Broken link in search results: ".$t->getDBKey()."</b>";
 
 		$text = $rev->getText();
-                $size = wfMsg('nbytes', strlen($text));
+                $size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024));
 		$text = $this->removeWiki($text);
 
                 $lines = explode("\n", $text);
@@ -178,7 +178,8 @@ class LuceneSearch extends SpecialPage
                 wfProfileOut( "$fname-extract" );
                 wfProfileOut( $fname );
 		$date = $wgContLang->timeanddate($rev->getTimestamp());
-		$score = wfMsg("searchscore", $score);
+		$percent = sprintf("%2.1f%%", $score * 100);
+		$score = wfMsg("searchscore", $percent);
                 return "<li style='padding-bottom: 1em'>{$link}{$extract}<br/>"
 			."<span style='color: green; font-size: small'>"
 			."$score; $size - $date</span></li>\n";
@@ -278,9 +279,10 @@ class LuceneSearch extends SpecialPage
 global $wgMessageCache;
 SpecialPage::addPage( new LuceneSearch );
 $wgMessageCache->addMessage("searchnumber", "<strong>Results $1-$2 of $3</strong>");
-$wgMessageCache->addMessage("searchprev", "&lt;&lt; Prev");
-$wgMessageCache->addMessage("searchnext", "Next &gt;&gt;");
-$wgMessageCache->addMessage("searchscore", "Score: $1");
+$wgMessageCache->addMessage("searchprev", "&#x00AB; <span style='font-size: small'>Prev</span>");
+$wgMessageCache->addMessage("searchnext", "<span style='font-size: small'>Next</span> &#x00BB;");
+$wgMessageCache->addMessage("searchscore", "Relevancy: $1");
+$wgMessageCache->addMessage("searchsize", "$1k");
 $wgMessageCache->addMessage("lucenepowersearchtext", "
 Search in namespaces:\n
 $1\n
