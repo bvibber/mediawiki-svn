@@ -20,7 +20,10 @@ function wfSpecialContributions()
 	$sk = $wgUser->getSkin();
 	$id = User::idFromName( $nt->getDBkey() );
 
-	$ul = $sk->makeKnownLink( $nt->getPrefixedText(), $nt->getText() );
+	if ( 0 == $id ) { $ul = $nt->getText(); }
+	else {
+		$ul = $sk->makeKnownLink( $nt->getPrefixedText(), $nt->getText() );
+	}
 	$sub = str_replace( "$1", $ul, wfMsg( "contribsub" ) );
 	$wgOut->setSubtitle( $sub );
 
