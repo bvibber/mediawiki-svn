@@ -12,7 +12,7 @@ void TParser::parse_heading ( TUCS &s )
         {
         if ( first_header == 0 ) first_header = cur_line + 1 ;
         toc.push_back ( TUCS::fromint ( a ) + s ) ;
-        s = "<a name='#" + s + "'>" + s + "</a>" ;
+        s = "<a name='" + s + "'>" + s + "</a>" ;
         }
     TUCS t = "H" + TUCS::fromint ( a ) ;
     s = "<" + t + ">" + s + "</" + t + ">" ;
