@@ -1118,6 +1118,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$lcom = "{$da}";
 			$com = "";
 		} else {
+			$wpReason = wfCleanQueryVar( $wpReason );
 			$lcom = "{$da}: {$wpReason}";
 			$com = " <em>({$wpReason})</em>";
 		}
