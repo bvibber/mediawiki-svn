@@ -24,8 +24,6 @@
 #include <db.h>
 #include "dbcached.h"
 
-#define PARTSIZE 40;
-
 void usage();
 
 int main(int argc, char **argv)

@@ -56,6 +56,9 @@ struct settings settings;
 
 DB *dbp;
 DBT dbkey, dbdata;
+DBC *dbcp;
+
+int doexpire=0;
 
 time_t realtime(time_t exptime)
 {
@@ -102,6 +105,7 @@ void settings_init(void)
     settings.synctimer = 66;
     settings.verbose = 0;
     settings.oldest_live = 0;
+    settings.expdelay = 3900;
 }
 
 conn **freeconns;
@@ -592,7 +596,7 @@ void process_command(conn * c, char *command)
 
 	sprintf(temp, "%u", value);
 	res = strlen(temp);
-	it->time=time(0);
+	it->time = time(0);
 	if (res + 2 > it->nbytes) {
 	    newit =
 		item_alloc(ITEM_key(it), it->flags, it->exptime, res + 2);
@@ -713,6 +717,16 @@ void process_command(conn * c, char *command)
 	dbp->sync(dbp, 0);
 	out_string(c, "OK");
 	return;
+    }
+
+    if (strcmp(command, "expire") == 0) {
+	if (!doexpire) {
+	    start_expire(0,0,NULL);
+	    out_string(c, "OK");
+	} else {
+	    out_string(c, "ERROR expire in progress");
+	    return;
+	}
     }
 
     if (strcmp(command, "quit") == 0) {
@@ -1204,6 +1218,7 @@ void usage(void)
 	("-c <num>      max simultaneous connections, default is 1024\n");
     printf("-f <file      filename of database\n");
     printf("-s <num>	  sync this often seconds\n");
+    printf("-E <num>	  expire this often seconds\n");
     printf
 	("-v            verbose (print errors/warnings while in event loop)\n");
     printf
@@ -1296,7 +1311,7 @@ int main(int argc, char **argv)
     settings_init();
 
     /* process arguments */
-    while ((c = getopt(argc, argv, "p:m:Mc:khirvdl:u:f:s:")) != -1) {
+    while ((c = getopt(argc, argv, "p:m:Mc:khirvdl:u:f:s:E:")) != -1) {
 	switch (c) {
 	case 'p':
 	    settings.port = atoi(optarg);
@@ -1312,6 +1327,9 @@ int main(int argc, char **argv)
 	    exit(0);
 	case 's':
 	    settings.synctimer = atoi(optarg);
+	    break;
+	case 'E':
+	    settings.expdelay = atoi(optarg);
 	    break;
 	case 'i':
 	    usage_license();
@@ -1406,10 +1424,9 @@ int main(int argc, char **argv)
 
 #if DB_VERSION_MAJOR < 4
     if ((ret = dbp->open(dbp,
-                         dbfile, NULL, DB_BTREE, DB_CREATE,
-                         0664)) != 0) {
-        dbp->err(dbp, ret, "%s", dbfile);
-        exit(1);
+			 dbfile, NULL, DB_BTREE, DB_CREATE, 0664)) != 0) {
+	dbp->err(dbp, ret, "%s", dbfile);
+	exit(1);
     }
 #else
 #if DB_VERSION_MINOR > 0
@@ -1421,10 +1438,9 @@ int main(int argc, char **argv)
     }
 #else
     if ((ret = dbp->open(dbp,
-                         dbfile, NULL, DB_BTREE, DB_CREATE,
-                         0664)) != 0) {
-        dbp->err(dbp, ret, "%s", dbfile);
-        exit(1);
+			 dbfile, NULL, DB_BTREE, DB_CREATE, 0664)) != 0) {
+	dbp->err(dbp, ret, "%s", dbfile);
+	exit(1);
     }
 #endif
 #endif
@@ -1496,9 +1512,17 @@ int main(int argc, char **argv)
 
     /* initialise deletion array and timer event */
     sync_handler(0, 0, 0);	/* sets up the event */
+    start_expire(0,0,NULL);	/* sets up expire loop as well */
 
     /* enter the loop */
-    event_loop(0);
+    while (1) {
+	if (!doexpire) {
+	    event_loop(EVLOOP_ONCE);
+	} else {
+	    expire_step();
+	    event_loop(EVLOOP_NONBLOCK);
+	}
+    }
 
     return 0;
 }
@@ -1512,4 +1536,54 @@ void cleanup_dbt()
 void syncdb()
 {
     dbp->sync(dbp, 0);
+}
+
+struct event expiretimer;
+
+void expire_step()
+{
+    DBT expkey;
+    DBT expdata;
+    DBT delkey;
+    DBT deldata;
+    item *it;
+    time_t now;
+    struct timeval t;
+
+    t.tv_sec=settings.expdelay;
+
+    memset(&expkey, 0, sizeof(expkey));
+    memset(&expdata, 0, sizeof(expdata));
+    memset(&delkey, 0, sizeof(delkey));
+    expdata.flags = DB_DBT_PARTIAL;
+    expdata.doff = 0;
+    expdata.dlen = PARTSIZE;
+
+    now = time(0);
+    if (dbcp->c_get(dbcp, &expkey, &expdata, DB_NEXT) != 0) {
+	doexpire = 0;
+	dbcp->c_close(dbcp);
+	evtimer_del(&expiretimer);
+	evtimer_set(&expiretimer,start_expire,0);
+	evtimer_add(&expiretimer,&t);
+	return;
+    }
+    it = expdata.data;
+    if ((it->exptime && it->exptime <= now)
+	|| it->time < settings.oldest_live) {
+	delkey.size = expkey.size;
+	delkey.data = expkey.data;
+	dbp->del(dbp,NULL,&delkey,0);
+    }
+
+}
+
+void start_expire(int fd, short which, void *arg )
+{
+    int ret;
+    doexpire = 1;
+    if ((ret = dbp->cursor(dbp, NULL, &dbcp, 0)) != 0) {
+	dbp->err(dbp, ret, "DB->cursor");
+	exit(1);
+    }
 }

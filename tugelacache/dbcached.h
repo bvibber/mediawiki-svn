@@ -3,6 +3,8 @@
 
 #define DATA_BUFFER_SIZE 2048
 
+#define PARTSIZE 40
+
 #if defined(TCP_CORK) && !defined(TCP_NOPUSH)
 #define TCP_NOPUSH TCP_CORK
 #endif
@@ -28,6 +30,8 @@ struct settings {
     int maxconns;
     int synctimer;
     int port;
+    int maxexptime;
+    int expdelay;
     struct in_addr interface;
     int verbose;
     time_t oldest_live;		/* ignore existing items older than this */
@@ -168,6 +172,7 @@ int slabs_reassign(unsigned char srcid, unsigned char dstid);
 
 /* event handling, network IO */
 void event_handler(int fd, short which, void *arg);
+void start_expire(int fd, short which, void *arg);
 conn *conn_new(int sfd, int init_state, int event_flags);
 void conn_close(conn * c);
 void conn_init(void);
@@ -202,6 +207,7 @@ int item_link(item * it);	/* may fail if transgresses limits */
 void item_unlink(item * it);
 void item_remove(item * it);
 void cleanup_dbt(void);
+void expire_step(void);
 
 void item_update(item * it);	/* update LRU time to current and reposition */
 int item_replace(item * it, item * new_it);
