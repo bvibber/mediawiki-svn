@@ -494,7 +494,9 @@ at will, then don't submit it here.<br>
 You are also promising us that you wrote this yourself, or copied it from a
 public domain or similar free resource.
 <strong>DO NOT SUBMIT COPYRIGHTED WORK WITHOUT PERMISSION!</strong>",
-
+"longpagewarning" => "WARNING: This page is $1 kilobytes long; some
+browsers may have problems editing pages approaching or longer than 32kb.
+Please consider breaking the page into smaller sections.",
 
 # History pages
 #
