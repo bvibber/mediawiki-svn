@@ -346,6 +346,7 @@ ircclnt::~ircclnt()
 }
 
 ircclnt::ircclnt(void)
+  : trmpimpl(0)
 {
 	cip = false;
 }
