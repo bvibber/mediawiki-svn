@@ -1,51 +1,28 @@
-2002-05-30
+2002-06-08
 
-This is a new codebase that attempts to reproduce (more or less
-exactly, modulo some bugs and some things I don't like) the
-functionality of Magnus Manske's PHP Wikipedia software.  I've
-stolen a lot of Magnus and Brion's code, and nearly all of their
-database structure and output design, changing only those things
-I thought needed fixing (mostly for performance--no more complex
-or non-indexed database queries, for example).
+This is a new codebase for the Wikipedia project
+(http://www.wikipedia.com), though it is intended to be
+usable for other wiki sites without much headache.
 
-The only major changes from the user's point of view are the
-new image upload system, side-by-side diffs, and a few minor
-features like more links in recent changes and history.
+The code as a whole is Copyright 2002 by Lee Daniel Crocker
+and others, licensed under the terms of the GNU General Public
+License, version 2 (see http://www.fsf.org/licenses/gpl.html).
+Derivative works and later versions of the code will also be
+considered free software licensed under the same terms.
 
-This new codebase, however, should be much easier to test, debug,
-enchance, and customize.  My primary motivation, in fact, is
-wanting to have this software for my own site, and not being
-happy with either the limited functionality of UseMod or the
-incomprehensible code of the existing PHP stuff.
+Other developers include Magnus Manske, Jan Hidders,
+Brion Vibber, Axel Boldt, and Geoffrey T. Dairiki.  Many thanks
+to the Wikipedia regulars for testing and suggestions.
 
-In its present state, it is fairly functional, and will do
-the basic Wiki view pages and edit pages, and user logins, and
-a few special pages like recent changes and random page.  It has
-hooks for future internationalization, but no other languages are
-currently ported.  The existing code had dozens of little bits of
-English text still hardcoded, and kept text to be
-intenationalized in globals.  I've taken care of both of those
-problems, and the new code should be fully localizable by
-changing just the one class.
+The code is currently maintained at Sourceforge under the
+project "wikipedia".  You can view the code in CVS, report bugs
+and make feature requests there:
 
-You'll need to convert the database before you run it as well,
-and the dbtool.php script can be used for that.
-There's a running installation on
-http://www.piclab.com/newwiki/wiki.phtml , and I can be talked
-into giving accounts there, though I think it should be possible
-to get this running on SourceForge as well.
+  http://wikipedia.sourceforge.net
 
-The copyright issue is complicated.  At this point, the vast
-majority of the code is probably mine, and therefore public
-domain.  However there are still things shamelessly stolen from
-sources with more GPL-like terms, and Magnus's original version
-is still under GPL.  The DiffEngine, for example, is taken
-almost verbatim.  So, it is safe to use any of this code under
-GPL terms.  If you want to use some particular part of it under
-less restrictive terms, you'll have to figure out if I wrote it
-or not--probably the easiest way to do that is to ask me.  But
-I'm not going to bother cataloguing every line until the issue
-comes up.
+The code is written in PHP.  It is tested mainly on version 4.06,
+but it is known to run in later versions.  I requires MySQL 3.23
+or later, and PHP-MySQL.
 
 -- Lee Daniel Crocker <lee@piclab.com>
 
