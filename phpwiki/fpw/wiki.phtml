@@ -1,8 +1,6 @@
 <?
 # THIS IS THE MAIN FILE OF THE PHP WIKIPEDIA SCRIPT
 
-$THESCRIPT = "wiki.phtml" ; # The name of the script. The $PHP_SELF variable doesn't work with Netscape
-
 # Includes the necessary parts
 include_once ( "./wikiText.php" ) ;
 include_once ( "./basicFunctions.php" ) ;
@@ -41,18 +39,42 @@ function framepage () {
 	return $ret ;
 	}
 
+function getmicrotime(){ 
+    list($usec, $sec) = explode(" ",microtime()); 
+    return ((float)$usec + (float)$sec); 
+    } 
+
 # Main program
 	global $action , $title , $pageTitle ;
 	global $user , $search , $expiration ;
 	global $THESCRIPT ;
 
-	global $metaDescription , $metaKeywords ; # For meta tags in the HTML code
+	global $metaDescription , $metaKeywords , $wikiCharset ; # For meta tags in the HTML code
 	$expiration = time()+315360000 ; # Cookies set will expire in ten years from now
 	$pageTitle = "" ;
+
+#	$mt = getmicrotime() ;
 
 	# Verifying the current user. Logged in? Password in a cookie?
 	$user = new WikiUser ;
 	$user->scanCookies () ;
+
+
+	# Check charset/encoding -- should send correct header as early as possible
+	if ( isset($encoding) && ($encoding != $user->options["encoding"]) ) {
+		$user->options["encoding"] = $encoding; # Manual override
+		if ( $user->isLoggedIn ) {
+	 		$user->saveSettings () ;
+			$user->loadSettings () ;
+		} else {
+			# Can't save setting for those who aren't logged in
+		}
+	}
+	$charset = $wikiEncodingCharsets[$user->options["encoding"]];
+	if ( $charset == "") # Fall back to the encoding used in the database
+		$charset = $wikiCharset; 
+	if ( $charset != "")
+		header("Content-type: text/html; charset=$charset");
 
 	# Default settings
 	if ( $action == "" ) $action = "view" ;
@@ -97,22 +119,24 @@ function framepage () {
 	$pageTitle = str_replace ( "$1" , $pageTitle , $wikiTitleTag ) ;
 	$bodyOptions .= $user->options["background"] ;
 	$bodyOptions .= $user->options["text"] ;
+	if ( $user->options["underlineLinks"] == "no" ) $bodyOptions .= " link=blue vlink=blue alink=blue " ;
+
 	if ( $metaDescription != "" ) $metaDescription = "<META name=\"description\" content=\"$metaDescription\">" ;
 	if ( $metaKeywords != "" ) $metaKeywords = "<META name=\"keywords\" content=\"$metaKeywords\">" ;
-	$head = "<HTML><HEAD><TITLE>$pageTitle</TITLE>\n$metaDescription\n$metaKeywords\n$headerScript\n</HEAD><BODY $bodyOptions>\n" ;
+	if ( $charset != "") $metaCharset = "<META HTTP-EQUIV=\"Content-type\" content=\"text/html; charset=$charset\">" ;
+
+	$head = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">\n" ;
+	$head .= "<HTML><HEAD><TITLE>$pageTitle</TITLE>\n" ;
+	$head .= "$metaCharset\n" ;
+	$head .= "$metaDescription\n$metaKeywords\n$headerScript\n" ;
+	$head .= "</HEAD><BODY $bodyOptions>\n" ;
 	$tail = "</BODY></HTML>" ;
 
-	# Adjusting link style
-	$linkStyle = "style=\"color:blue\"" ;
-	if ( $user->options["underlineLinks"] == "no" ) $linkStyle = "style=\"color:blue;text-decoration:none\"" ;
-	if ( $user->options["forceLinks"] != "" ) $linkStyle = $user->options["forceLinks"] ;
-	$out = str_replace ( "<a href=" , "<a $linkStyle href=" , $out ) ;
-	$out = str_replace ( "&lt;a style=\"color:blue\"" , "&lt;a " , $out ) ; # Correcting weird replacement above
+#	$mt = getmicrotime()-$mt ;	$out = "$mt<br>\n$out" ;
 
 	global $append , $framed ;
 	$out = $head.$out.$tail.$append ;
 	if ( isset ( $framed ) ) $out = str_replace ( "<a " , "<a target=_top " , $out ) ;
 
-
-	print $out ; # FINALLY!!!!
+	print wikiRecodeOutput($out) ; # FINALLY!!!!
 ?>

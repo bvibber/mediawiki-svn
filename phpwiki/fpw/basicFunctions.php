@@ -30,8 +30,8 @@ function tsc ( $t ) {
 # Called when editing/saving a page
 function edit ( $title ) {
 	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit , $FromEditForm ;
-	global $user , $CommentBox , $vpage , $EditTime , $THESCRIPT ;
-	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend ;
+	global $user , $CommentBox , $vpage , $EditTime , $wikiDescribePage ;
+	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend , $wikiEditHelp ;
 	global $wikiSummary , $wikiMinorEdit , $wikiCopyrightNotice , $wikiSave , $wikiPreview , $wikiDontSaveChanges ;
 	$npage = new WikiPage ;
 	$npage->title = $title ;
@@ -42,6 +42,9 @@ function edit ( $title ) {
 	$editConflict = false ;
 
 	if ( isset($FromEditForm) and !isset($SaveButton) and !isset($PreviewButton) ) $SaveButton = "yes" ;
+
+	# Landuage recoding
+	$EditBox = wikiRecodeInput ( $EditBox ) ;
 
 	if ( isset ( $SaveButton ) ) { # The edit is finished, someone pressed the "Save" button
 		unset ( $SaveButton ) ;
@@ -54,9 +57,11 @@ function edit ( $title ) {
 				$oldSubmittedText = $EditBox ;
 				$oldSubmittedText = str_replace ( "\\'" , "'" , $oldSubmittedText ) ;
 				$oldSubmittedText = str_replace ( "\\\"" , "\"" , $oldSubmittedText ) ;
+				$oldSubmittedText = str_replace ( "&" , "&amp;" , $oldSubmittedText ) ;
 				$EditTime = date ( "YmdHis" ) ; # reset time counter
 				$npage->load ( $npage->title ) ;
 				$text = $npage->contents ;
+				$text = str_replace ( "&" , "&amp;" , $text ) ;
 				$editConflict = true ;
 				}
 			}
@@ -64,7 +69,8 @@ function edit ( $title ) {
 			$text = $EditBox ;
 			$text = str_replace ( "\\'" , "'" , $text ) ;
 			$text = str_replace ( "\\\"" , "\"" , $text ) ;
-			$text = str_replace ( "&" , "&amp;" , $text ) ;
+#			$text = urldecode ( $text ) ;
+#			$text = str_replace ( "&" , "&amp;" , $text ) ;
 			if ( $user->isLoggedIn ) $text = str_replace ( "~~~" , "[[user:$user->name|$user->name]]" , $text ) ;
 			else $text = str_replace ( "~~~" , $user->getLink() , $text ) ;
 			$title = str_replace ( "\\'" , "'" , $title ) ;
@@ -86,13 +92,15 @@ function edit ( $title ) {
 		$text = str_replace ( "\\\"" , "\"" , $text ) ;
 		$text = str_replace ( "\\\"" , "\"" , $text ) ;
 		$text = str_replace ( "\\\\" , "\\" , $text ) ;
+#		$text = urldecode ( $text ) ;
 		$text = str_replace ( "&" , "&amp;" , $text ) ;
 		$append = str_replace ( "$1" , $npage->parseContents($text) , $wikiPreviewAppend ) ;
 	} else if ( $npage->doesTopicExist() ) { # The initial edit request for an existing page
 		$npage->load ( $npage->title ) ;
 		$text = $npage->contents ;
+		$text = str_replace ( "&" , "&amp;" , $text ) ;
 	} else { # The initial edit request for a new page
-		$text = "Describe the new page here." ;
+		$text = $wikiDescribePage ;
 		}
 
 	if ( $MinorEdit ) $checked = "checked" ;
@@ -105,17 +113,17 @@ function edit ( $title ) {
 #	$headerScript = "<script> <!-- function setfocus() { document.f.EditBox.focus(); } --> </script>" ;
 #	$bodyOptions = " onLoad=setfocus()" ;
 
-	$ret .= "<form method=POST action=\"$THESCRIPT?title=".$npage->secureTitle."\" name=f>" ;
+	$ret .= "<form method=POST action=\"".wikiLink($npage->secureTitle)."\" name=f\" enctype=\"application/x-www-form-urlencoded\">" ;
 	$ret .= "<textarea tabindex=1 name=EditBox rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>".$text."</textarea><br>\n" ;
 	$ret .= "$wikiSummary<input tabindex=2 type=text value=\"$CommentBox\" name=CommentBox size=50 maxlength=200> \n" ;
-	$ret .= "<input tabindex=3 type=checkbox name=MinorEdit $checked value=1>$wikiMinorEdit<br>\n" ;
+	$ret .= "<input tabindex=3 type=checkbox name=MinorEdit $checked value=1>$wikiMinorEdit &nbsp; $wikiEditHelp<br>\n" ;
 	$ret .= "$wikiCopyrightNotice<br>\n" ;
 
 	$ret .= "<input tabindex=4 type=submit value=$wikiSave name=SaveButton> \n" ;
 	$ret .= "<input tabindex=5 type=submit value=$wikiPreview name=PreviewButton>\n" ;
 	$ret .= "<input type=hidden value=\"$EditTime\" name=EditTime>\n" ;
 	$ret .= "<input type=hidden value=yes name=FromEditForm>\n" ;
-	$ret .= " <a href=\"$THESCRIPT?title=$vpage->secureTitle\">$wikiDontSaveChanges</a></form>" ; 
+	$ret .= " <a href=\"".wikiLink($vpage->secureTitle)."\">$wikiDontSaveChanges</a></form>" ; 
 	if ( $editConflict ) {
 		$ret .= "<br><hr><br><b>This is the text you submitted :</b><br>\n" ;
 		$ret .= "<textarea name=NotIMPORTANT rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>$oldSubmittedText</textarea><br>\n" ;
@@ -125,7 +133,7 @@ function edit ( $title ) {
 	}
 
 function doEdit ( $title ) {
-	global $THESCRIPT , $headerScript ;
+	global $headerScript ;
 	global $vpage , $action , $wasSaved ;
 	$wasSaved = false ;
 	$vpage = new WikiPage ;

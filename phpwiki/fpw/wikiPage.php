@@ -8,6 +8,8 @@ class WikiPage extends WikiTitle {
 	var $knownLinkedLinks , $knownUnlinkedLinks ; # Used for faster display
 	var $otherLanguages ; # This article in other languages
 	var $params ; # For the params entry; updated on Save only
+	var $counter ; # Page view counter
+	var $timestamp ; # Time and date of last edit
 	
 #### Database management functions
 
@@ -15,6 +17,7 @@ class WikiPage extends WikiTitle {
 	function load ( $t , $doRedirect = true ) {
 		global $action , $user , $wikiNoSuchSpecialPage , $wikiAllowedSpecialPages ;
 		if ( $doRedirect ) $this->backLink = "" ;
+		$updateCounter = "" ;
 		$this->knownLinkedLinks = array () ;
 		$this->knownUnlinkedLinks = array () ;
 		$this->title = $t ;
@@ -43,7 +46,7 @@ class WikiPage extends WikiTitle {
 		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$thisVersion = "" ;
 		$this->params = array () ;
-		global $oldID , $version , $THESCRIPT , $wikiOldVersion , $wikiDescribePage , $wikiRedirectFrom ;
+		global $oldID , $version , $wikiOldVersion , $wikiDescribePage , $wikiRedirectFrom ;
 		if ( isset ( $oldID ) ) { # an old article version
 			$sql = "SELECT * FROM old WHERE old_id=$oldID" ;
 			$result = mysql_query ( $sql , $connection ) ;
@@ -65,11 +68,20 @@ class WikiPage extends WikiTitle {
 				$this->contents = $s->cur_text ;
 				$this->knownLinkedLinks = explode ( "\n" , $s->cur_linked_links ) ;
 				$this->knownUnlinkedLinks = explode ( "\n" , $s->cur_unlinked_links ) ;
+				$this->timestamp = $s->cur_timestamp ;
 				if ( $s->cur_params != "" ) $this->params = explode ( "\n" , $s->cur_params ) ;
+				$this->counter = $s->cur_counter+1 ;
+				$updateCounter = $this->counter ;
 				}
 			else $this->contents = $wikiDescribePage ;
 			}
 		mysql_free_result ( $result ) ;
+
+		if ( $updateCounter != "" ) {
+			$sql = "UPDATE cur SET cur_counter=$updateCounter,cur_timestamp=cur_timestamp WHERE cur_title=\"".$this->secureTitle."\"" ;
+			$result = mysql_query ( $sql , $connection ) ;
+			}
+
 		mysql_close ( $connection ) ;
 		$this->makeURL () ;
 		$this->splitTitle () ;
@@ -134,7 +146,6 @@ class WikiPage extends WikiTitle {
 	# This lists all namespaces that contain an article with the same name
 	# Called by QuickBar() and getFooter()
 	function getOtherNamespaces () {
-		global $THESCRIPT ;
 		$a = array () ;
 		if ( $this->isSpecialPage ) return $a ;
 		$n = explode ( ":" , $this->title ) ;
@@ -150,7 +161,7 @@ class WikiPage extends WikiTitle {
 			$dummy = new wikiTitle ;
 			$dummy->setTitle ( $n ) ;
 			if ( $dummy->doesTopicExist ( $connection ) )
-				array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"$THESCRIPT?title=$n\">:".$this->getNiceTitle($n)."</a>" ) ;
+				array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"".wikiLink($n)."\">:".$this->getNiceTitle($n)."</a>" ) ;
 			}
 
 		if ( stristr ( $this->namespace , "talk" ) == false ) {
@@ -161,14 +172,14 @@ class WikiPage extends WikiTitle {
 			$dummy->setTitle ( $n2.":$n" ) ;
 			if ( $dummy->doesTopicExist ( $connection ) ) $style = "color:green;text-decoration:none" ;
 			else $style = "color:red;text-decoration:none" ;
-			array_push ( $a , "<a style=\"$style\" href=\"$THESCRIPT?title=$dummy->secureTitle\">$n2</a>" ) ;
+			array_push ( $a , "<a style=\"$style\" href=\"".wikiLink($dummy->secureTitle)."\">$n2</a>" ) ;
 			}
 
 		while ( $s = mysql_fetch_object ( $result ) ) {
 			$t = explode ( ":" , $s->cur_title ) ;
 			$t = $u->getNiceTitle ( $t[0] ) ;
-			if ( strtolower ( $t ) != "talk" and strtolower ( $t ) != $this->namespace )
-				array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"$THESCRIPT?title=$t:$n\">$t</a>" ) ;
+			if ( strtolower ( substr ( $t , -4 ) ) != "talk" and strtolower ( $t ) != $this->namespace )
+				array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"".wikiLink("$t:$n")."\">$t</a>" ) ;
 			}
 		if ( $result != "" ) mysql_free_result ( $result ) ;
 		mysql_close ( $connection ) ;
@@ -246,7 +257,7 @@ class WikiPage extends WikiTitle {
 	# This function converts wiki-style internal links like [[Main Page]] with the appropriate HTML code
 	# It has to handle namespaces, subpages, and alternate names (as in [[namespace:page/subpage name]])
 	function replaceInternalLinks ( $s ) {
-		global $THESCRIPT , $wikiInterwiki , $action , $wikiOtherLanguages ;
+		global $wikiInterwiki , $action , $wikiOtherLanguages ;
 		global $user , $unlinkedLinks , $linkedLinks , $wikiPrintLinksMarkup ;
 		if ( !isset ( $this->knownLinkedLinks ) ) $this->knownLinkedLinks = array () ;
 		if ( !isset ( $this->knownUnlinkedLinks ) ) $this->knownUnlinkedLinks = array () ;
@@ -299,8 +310,9 @@ class WikiPage extends WikiTitle {
 				} else if ( $doesItExist ) {
 					$linkedLinks[$topic->secureTitle]++ ;
 					if ( $user->options["showHover"] == "yes" ) $hover = "title=\"$link\"" ;
+					if ( $user->options["underlineLinks"] == "no" ) $linkStyle = " style=\"color:blue;text-decoration:none\"" ;
 					$ulink = nurlencode ( $link ) ;
-					$s .= "<a href=\"$THESCRIPT?title=$ulink\" $hover>$text</a>" ;
+					$s .= "<a href=\"".wikiLink($ulink)."\" $hover$linkStyle>$text</a>" ;
 				} else {
 					$unlinkedLinks[$link]++ ;
 					$text2 = $text ;
@@ -313,10 +325,10 @@ class WikiPage extends WikiTitle {
 					if ( $user->options["underlineLinks"] == "no" ) { $text = $text2 ; $style = ";text-decoration:none" ; }
 					$ulink = nurlencode ( $link ) ;
 					if ( $user->options["markupNewTopics"] == "red" )
-						$s .= "<a style=\"color:red$style\" href=\"$THESCRIPT?action=edit&title=$ulink\" $hover>$text</a>" ;
+						$s .= "<a style=\"color:red$style\" href=\"".wikiLink("$ulink&action=edit")."\" $hover>$text</a>" ;
 					else if ( $user->options["markupNewTopics"] == "inverse" )
-						$s .= "<a style=\"color:white;background:blue$style\" href=\"$THESCRIPT?action=edit&title=$ulink\" $hover>$text</a>";
-					else $s .= "$text2<a href=\"$THESCRIPT?action=edit&title=$ulink\" $hover>?</a>" ;
+						$s .= "<a style=\"color:white;background:blue$style\" href=\"".wikiLink("$ulink&action=edit")."\" $hover>$text</a>";
+					else $s .= "$text2<a href=\"".wikiLink("$ulink&action=edit")."\" $hover>?</a>" ;
 					}
 				$s .= $b[1] ;
 				}
@@ -406,7 +418,7 @@ class WikiPage extends WikiTitle {
 			while ( $q = mysql_fetch_object ( $result ) ) array_push ( $var , $this->getNiceTitle ( $q->cur_title ) ) ;
 			if ( count ( $var ) > 0 ) {
 				$var = "[[".implode ( "]] -- [[" , $var )."]]\n" ;
-				$var = "<table bgcolor=#CCCCCC width=100%><th>$wikiThisCategory</th><tr><td>$var</td></tr></table>" ;
+				$var = "<table bgcolor=\"#CCCCCC\" width=\"100%\"><th>$wikiThisCategory</th><tr><td>$var</td></tr></table>" ;
 				}
 			else $var = "" ;
 
@@ -437,6 +449,18 @@ class WikiPage extends WikiTitle {
 		while ( $s != $t ) {
 			$t = $s ;
 			$s = str_replace ( $f , $r , $s ) ;
+			}
+		return $s ;
+		}
+
+	# This function can replace wiki tags that differ
+	function replaceWikiTags ( $s , $w1 , $w2 , $h1 , $h2 ) {
+		$a = explode ( $w1 , $s ) ;
+		$s = array_shift ( $a ) ;
+		foreach ( $a as $x ) {
+			$b = explode ( $w2 , $x , 2 ) ;
+			if ( count ( $b ) < 2 ) $s .= $w1.$x ;
+			else $s .= $h1.$b[0].$h2.$b[1] ;
 			}
 		return $s ;
 		}
@@ -519,7 +543,7 @@ class WikiPage extends WikiTitle {
 		$a = spliti ( "<nowiki>" , $s ) ;
 
 		# $d needs to contain a unique string - this can be altered at will, as long it stays unique!
-		$d = "µµ~~³²²³~~µ~µ²~µ~µ²~µµ~µ~µ~²µ²²µ~³µ³~³µ²~µ" ;
+		$d = "3iyZiyA7iMwg5rhxP0Dcc9oTnj8qD1jm1Sfv" ; #$d = "µµ~~³²²³~~µ~µ²~µ~µ²~µµ~µ~µ~²µ²²µ~³µ³~³µ²~µ" ;
 
 		$b = array () ;
 		$s = array_shift ( $a ) ;
@@ -587,22 +611,33 @@ class WikiPage extends WikiTitle {
 	# This function will auto-number headings
 	function autoNumberHeadings ( $s ) {
 		if ( $this->isSpecialPage ) return $s ;
-		for ( $i ; $i < 9 and stristr ( $s , "<h$i>" ) == false ; $i++ ) ;
-		if ( $i == 10 ) return $s ;
+		$j = 0 ;
+		$n = -1 ;
+		for ( $i ; $i < 9 ; $i++ ) {
+			if ( stristr ( $s , "<h$i>" ) != false ) {
+				$j++ ;
+				if ( $n == -1 ) $n = $i ;
+				}
+			}
+		if ( $j < 2 ) return $s ;
+		$i = $n ;
 		$v = array ( 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) ;
 		$t = "" ;
 		while ( count ( spliti ( "<h" , $s , 2 ) ) == 2 ) {
 			$a = spliti ( "<h" , $s , 2 ) ;
 			$j = substr ( $a[1] , 0 , 1 ) ;
-			$t .= $a[0]."<h".$j.">" ;
-
-			$v[$j]++ ;
-			$b = array () ;
-			for ( $k = $i ; $k <= $j ; $k++ ) array_push ( $b , $v[$k] ) ;
-			for ( $k = $j+1 ; $k < 9 ; $k++ ) $v[$k] = 0 ;
-			$t .= implode ( "." , $b ) . " " ;
-
-			$s = substr ( $a[1] , 2 ) ;
+			if ( strtolower ( $j ) != "r" ) {
+				$t .= $a[0]."<h".$j.">" ;
+				$v[$j]++ ;
+				$b = array () ;
+				for ( $k = $i ; $k <= $j ; $k++ ) array_push ( $b , $v[$k] ) ;
+				for ( $k = $j+1 ; $k < 9 ; $k++ ) $v[$k] = 0 ;
+				$t .= implode ( "." , $b ) . " " ;
+				$s = substr ( $a[1] , 2 ) ;
+			} else { # <HR> tag, not a heading!
+				$t .= $a[0]."<hr>" ;
+				$s = substr ( $a[1] , 2 ) ;
+				}
 			}
 		return $t.$s ;
 		}
@@ -652,9 +687,12 @@ class WikiPage extends WikiTitle {
 		$s = $this->pingPongReplace ( "'''''" , "<i><b>" , "</b></i>" , $s ) ;
 		$s = $this->pingPongReplace ( "'''" , "<b>" , "</b>" , $s ) ;
 		$s = $this->pingPongReplace ( "''" , "<i>" , "</i>" , $s ) ;
-		$s = $this->pingPongReplace ( "====" , "<h4>" , "</h4>" , $s , true ) ;
-		$s = $this->pingPongReplace ( "===" , "<h3>" , "</h3>" , $s , true ) ;
-		$s = $this->pingPongReplace ( "==" , "<h2>" , "</h2>" , $s , true ) ;
+
+		$s = $this->replaceWikiTags ( $s , "==== " , " ====" , "<h4>" , "</h4>" ) ;
+		$s = $this->replaceWikiTags ( $s , "=== " , " ===" , "<h3>" , "</h3>" ) ;
+		$s = $this->replaceWikiTags ( $s , "== " , " ==" , "<h2>" , "</h2>" ) ;
+		$s = $this->replaceWikiTags ( $s , "= " , " =" , "<h1>" , "</h1>" ) ;
+		$s = ereg_replace ( "\n====*" , "<hr>" , $s ) ;
 
 		# Automatic links to subpages (e.g., /Talk -> [[/Talk]]   #DEACTIVATED
 #		$s = ereg_replace ( "([\n ])/([a-zA-Z0-9]+)" , "\\1[[/\\2|/\\2]]" , $s ) ;
@@ -729,6 +767,7 @@ class WikiPage extends WikiTitle {
 		# Removing artefact empty paragraphs like <p></p>
 		$this->replaceAll ( "<p$justify>\n</p>" , "<p$justify></p>" , $s ) ;
 		$this->replaceAll ( "<p$justify></p>" , "" , $s ) ;
+		$this->replaceAll ( "</p><p$justify>" , "<p$justify>" , $s ) ;
 
 		# Stuff for the skins
 		if ( $user->options["textTableBackground"] != "" ) {
@@ -749,11 +788,11 @@ class WikiPage extends WikiTitle {
 	# This generates the bar at the top and bottom of each page
 	# Used by getHeader() and getFooter()
 	function getLinkBar () {
-		global $THESCRIPT , $wikiMainPage ;
+		global $wikiMainPage ;
 		global $user , $oldID , $version ;
 		$editOldVersion = "" ;
 		if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
-		$ret = "<a href=\"$THESCRIPT\">$wikiMainPage</a>" ;
+		$ret = "<a href=\"".wikiLink($wikiMainPage)."\">$wikiMainPage</a>" ;
 
 		$spl = $this->getSubpageList () ;
 		if ( count ( $spl ) > 0 and $this->subpageTitle != "" and $user->options["showStructure"] == "yes" ) {
@@ -766,51 +805,54 @@ class WikiPage extends WikiTitle {
 
 		global $wikiRecentChanges , $wikiRecentChangesLink , $wikiEditThisPage , $wikiHistory , $wikiRandomPage , $wikiSpecialPages ;
 		global $wikiSpecialPagesLink ;
-		$ret .= " | <a href=\"$THESCRIPT?title=special:$wikiRecentChangesLink\">$wikiRecentChanges</a>" ;
-		if ( $this->canEdit() ) $ret .= " | <a href=\"$THESCRIPT?action=edit&title=$this->url$editOldVersion\">$wikiEditThisPage</a>" ;
+		$ret .= " | <a href=\"".wikiLink("special:$wikiRecentChangesLink")."\">$wikiRecentChanges</a>" ;
+		if ( $this->canEdit() ) $ret .= " | <a href=\"".wikiLink("$this->url$editOldVersion&action=edit")."\">$wikiEditThisPage</a>" ;
 		else if ( !$this->isSpecialPage ) $ret .= " | Protected page" ;
-		if ( !$this->isSpecialPage ) $ret .= " | <a href=\"$THESCRIPT?action=history&title=$this->url\">$wikiHistory</a>\n" ;
-		$ret .= " | <a href=\"$THESCRIPT?title=special:RandomPage\">$wikiRandomPage</a>" ;
-		$ret .= " | <a href=\"$THESCRIPT?title=special:$wikiSpecialPagesLink\">$wikiSpecialPages</a>" ;
+		if ( !$this->isSpecialPage ) $ret .= " | <a href=\"".wikiLink("$this->url&action=history")."\">$wikiHistory</a>\n" ;
+		$ret .= " | <a href=\"".wikiLink("special:RandomPage")."\">$wikiRandomPage</a>" ;
+		$ret .= " | <a href=\"".wikiLink("special:$wikiSpecialPagesLink")."\">$wikiSpecialPages</a>" ;
 		return $ret ;
 		}
 
 	# This generates the header with title, user name and functions, wikipedia logo, search box etc.
 	function getHeader () {
-		global $THESCRIPT , $wikiMainPageTitle , $wikiArticleSubtitle , $wikiPrintable , $wikiWatch ;
-		global $user , $action , $wikiEditHelp , $wikiNoWatch , $wikiLogIn , $wikiLogOut , $wikiSearch ;
+		global $wikiMainPageTitle , $wikiArticleSubtitle , $wikiPrintable , $wikiWatch , $wikiMainPage ;
+		global $user , $action , $wikiNoWatch , $wikiLogIn , $wikiLogOut , $wikiSearch ;
 		global $wikiHelp , $wikiHelpLink , $wikiPreferences , $wikiLanguageNames , $wikiWhatLinksHere ;
+		global $wikiCharset , $wikiEncodingCharsets , $wikiEncodingNames , $wikiLogoFile , $wikiEditHelp ;
 		global $framed ; if ( isset ( $framed ) and $framed != "top" ) return "" ;
 		$t = $this->getNiceTitle ( $this->title ) ;
 		if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirst ( $t ) ;
 		global $HTTP_USER_AGENT ;
 		if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=below rules=none" ;
 		else $border = "border=0" ;
-		$ret = "<table ".$user->options["quickBarBackground"]." width=100% $border bordercolor=black cellspacing=0>\n<tr>" ;
+		$ret = "<table ".$user->options["quickBarBackground"]." width=\"100%\" $border style=\"border-color:black\" cellspacing=0>\n<tr>" ;
 		if ( $user->options["leftImage"] != "" )
-			$ret .= "<td width=1% rowspan=2 bgcolor=#000000><img src=\"".$user->options["leftImage"]."\"></td>" ;
+			$ret .= "<td width=\"1%\" rowspan=2 bgcolor=\"#000000\"><img src=\"".$user->options["leftImage"]."\"></td>" ;
 		$ret .= "<td valign=top height=1>" ;
 		if ( $this->isSpecialPage ) {
-			if ( $action == "edit" ) {
-				$ret .= $wikiEditHelp ;
-			} else $ret .= "<font size=+3>".$t."</font>" ;
+			$ret .= "<font size=\"+3\">".$t."</font>" ;
+			if ( $action == "" ) {
+				$ret .= "<br>\n<br>\n<a href=\"".wikiLink("special:whatlinkshere&target=$this->secureTitle")."\">$wikiWhatLinksHere</a>" ;
+				$ret .= " | <a href=\"".wikiLink("wikipedia:How does one edit a page")."\">$wikiEditHelp</a>" ;
+				}
 		} else {
-			$ret .= "<font size=+3><b>" ;
+			$ret .= "<font size=\"+3\"><b>" ;
 			if ( $this->secureTitle == "Main_Page" and $action == "view" ) $ret .= "<font color=blue>$wikiMainPageTitle</font>$this->thisVersion" ;
-			else $ret .= "<a href=\"$THESCRIPT?search=$this->title\">".$this->getNiceTitle($t)."</a>$this->thisVersion" ;
+			else $ret .= "<a href=\"".wikiLink("&search=$this->title")."\">".$this->getNiceTitle($t)."</a>$this->thisVersion" ;
 			$ret .= "</b></font>" ;
 			$subText = array () ;
 			if ( $action == "view" and !$this->isSpecialPage ) $ret .=  "<br>$wikiArticleSubtitle\n" ;
 			if ( $user->isLoggedIn ) {
 				if ( $user->doWatch($this->title) )
-					array_push($subText,"<a href=\"$THESCRIPT?action=watch&title=$this->secureTitle&mode=no\">$wikiNoWatch</a>");
-				else array_push($subText,"<a href=\"$THESCRIPT?action=watch&title=$this->secureTitle&mode=yes\">$wikiWatch</a>") ;
+					array_push($subText,"<a href=\"".wikiLink("$this->secureTitle&action=watch&mode=no")."\">$wikiNoWatch</a>");
+				else array_push($subText,"<a href=\"".wikiLink("$this->secureTitle&action=watch&mode=yes")."\">$wikiWatch</a>") ;
 				}
-			if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"$THESCRIPT?action=print&title=$this->secureTitle\">$wikiPrintable</a>" ) ;
-			if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"$THESCRIPT?title=special:whatlinkshere&target=$this->secureTitle\">$wikiWhatLinksHere</a>" ) ;
+			if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"".wikiLink("$this->secureTitle&action=print")."\">$wikiPrintable</a>" ) ;
+			if ( $action == "view" and !$this->isSpecialPage ) array_push ( $subText , "<a href=\"".wikiLink("special:whatlinkshere&target=$this->secureTitle")."\">$wikiWhatLinksHere</a>" ) ;
 			if ( $this->backLink != "" ) array_push ( $subText , $this->backLink ) ;
 			if ( $this->namespace == "user" and $this->subpageTitle == "" )
-				array_push ( $subText , "<a href=\"$THESCRIPT?title=special:contributions&theuser=$this->mainTitle\">This user's contributions</a>" ) ;
+				array_push ( $subText , "<a href=\"".wikiLink("special:contributions&theuser=$this->mainTitle")."\">This user's contributions</a>");
 			$ret .= "<br>".implode ( " | " , $subText ) ;
 			if ( count ( $this->otherLanguages ) > 0 ) {
 				global $wikiOtherLanguagesText ;
@@ -823,45 +865,60 @@ class WikiPage extends WikiTitle {
 				}
 			}
 		$ret .= "</td>\n<td valign=top width=200 rowspan=2 nowrap>".$user->getLink()."<br>" ;
-		if ( $user->isLoggedIn ) $ret .= "<a href=\"$THESCRIPT?title=special:userLogout\">$wikiLogOut</a> | <a href=\"$THESCRIPT?title=special:editUserSettings\">$wikiPreferences</a>" ;
-		else $ret .= "<a href=\"$THESCRIPT?title=special:userLogin\">$wikiLogIn</a>" ;
-		$ret .= " | <a href=\"$THESCRIPT?title=wikipedia:$wikiHelpLink\">$wikiHelp</a>" ;
-		$ret .= "<FORM><INPUT TYPE=text NAME=search SIZE=16><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
-		$ret .= "</td>\n<td rowspan=2 width=1><a href=\"$THESCRIPT?\"><img border=0 src=\"wiki.png\"></a></td></tr>\n" ;
+		if ( $user->isLoggedIn ) $ret .= "<a href=\"".wikiLink("special:userLogout")."\">$wikiLogOut</a> | <a href=\"".wikiLink("special:editUserSettings")."\">$wikiPreferences</a>" ;
+		else $ret .= "<a href=\"".wikiLink("special:userLogin")."\">$wikiLogIn</a>" ;
+		$ret .= " | <a href=\"".wikiLink("wikipedia:$wikiHelpLink")."\">$wikiHelp</a><br>\n" ;
+
+		# Text encoding
+		if(count($wikiEncodingNames) > 1) { # Shortcut for switching character encodings
+			$u = getenv("REQUEST_URI");
+			$u = preg_replace("/[\?\&]encoding=[0-9]+/", "", $u);
+			$u .= (preg_match("/\?/", $u) ? "&" : "?");
+			reset($wikiEncodingNames);
+			while(list($i, $enc) = each($wikiEncodingNames)) {
+				if($i > 0) $ret .= " | ";
+				if($i == $user->options["encoding"]) $ret .= "<b>";
+				$ret .= "<a href=\"" . $u . "encoding=$i\">$enc</a>";
+				if($i == $user->options["encoding"]) $ret .= "</b>";
+			}
+		}
+
+		$ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
+		$ret .= "</td>\n<td rowspan=2 width=1><a href=\"".wikiLink("")."\"><img border=0 src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a></td></tr>\n" ;
 		$ret .= "<tr><td valign=bottom>".$this->getLinkBar()."</td></tr></table>" ;
 		return $ret ; 
 		}
 
 	# This generates the QuickBar (also used by the list of special pages function)
 	function getQuickBar () {
-		global $THESCRIPT , $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload ;
+		global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload ;
 		global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist ;
 		global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
 		$editOldVersion = "" ;
 		if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
-		$column = "<nowiki>" ;
-		$column .= "<a href=\"$THESCRIPT\">$wikiMainPage</a>\n" ;
-		$column .= "<br><a href=\"$THESCRIPT?title=special:$wikiRecentChangesLink\">$wikiRecentChanges</a>\n" ;
-		if ( $this->canEdit() ) $column .= "<br><a href=\"$THESCRIPT?action=edit&title=$this->url$editOldVersion\">$wikiEditThisPage</a>\n" ;
+		$column = "" ;
+		$column .= "<a href=\"".wikiLink("")."\">$wikiMainPage</a>\n" ;
+		$column .= "<br><a href=\"".wikiLink("special:$wikiRecentChangesLink")."\">$wikiRecentChanges</a>\n" ;
+		if ( $this->canEdit() ) $column .= "<br><a href=\"".wikiLink("$this->url$editOldVersion&action=edit")."\">$wikiEditThisPage</a>\n" ;
 		else if ( !$this->isSpecialPage ) $column .= "<br>Protected page\n" ;
-		if ( $this->canDelete() ) $column .= "<br><a href=\"$THESCRIPT?title=special:deletepage&target=$this->url\">$wikiDeleteThisPage</a>\n" ;
-		if ( $this->canProtect() ) $column .= "<br><a href=\"$THESCRIPT?title=special:protectpage&target=$this->url\">Protect this page</a>\n" ;
+		if ( $this->canDelete() ) $column .= "<br><a href=\"".wikiLink("special:deletepage&target=$this->url")."\">$wikiDeleteThisPage</a>\n" ;
+		if ( $this->canProtect() ) $column .= "<br><a href=\"".wikiLink("special:protectpage&target=$this->url")."\">Protect this page</a>\n" ;
 # To be implemented later
-#		if ( $this->canAdvance() ) $column .= "<br><a href=\"$THESCRIPT?title=special:Advance&topic=$this->safeTitle\">Advance</a>\n" ;
+#		if ( $this->canAdvance() ) $column .= "<br><a href=\"".wikiLink("special:Advance&topic=$this->safeTitle")."\">Advance</a>\n" ;
 
-		if ( !$this->isSpecialPage ) $column .= "<br><a href=\"$THESCRIPT?action=history&title=$this->url\">$wikiHistory</a>\n" ;
-		$column .= "<br><a href=\"$THESCRIPT?title=special:Upload\">$wikiUpload</a>\n" ;
+		if ( !$this->isSpecialPage ) $column .= "<br><a href=\"".wikiLink("$this->url&action=history")."\">$wikiHistory</a>\n" ;
+		$column .= "<br><a href=\"".wikiLink("special:Upload")."\">$wikiUpload</a>\n" ;
 		$column .= "<hr>" ;
-		$column .= "<a href=\"$THESCRIPT?title=special:Statistics\">$wikiStatistics</a>" ;
-		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:NewPages\">$wikiNewPages</a>" ;
-		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:LonelyPages\">$wikiOrphans</a>" ;
-		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:WantedPages\">$wikiMostWanted</a>" ;
-		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:AllPages\">$wikiAllPages</a>" ;
-		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:RandomPage\">$wikiRandomPage</a>" ;
-		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:ShortPages\">$wikiStubs</a>" ;
-		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:ListUsers\">$wikiListUsers</a>" ;
+		$column .= "<a href=\"".wikiLink("special:Statistics")."\">$wikiStatistics</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:NewPages")."\">$wikiNewPages</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:LonelyPages")."\">$wikiOrphans</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:WantedPages")."\">$wikiMostWanted</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:AllPages")."\">$wikiAllPages</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:RandomPage")."\">$wikiRandomPage</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:ShortPages")."\">$wikiStubs</a>" ;
+		$column .= "<br>\n<a href=\"".wikiLink("special:ListUsers")."\">$wikiListUsers</a>" ;
 		if ( $user->isLoggedIn ) {
-			$column .= "<br>\n<a href=\"$THESCRIPT?title=special:WatchList\">$wikiMyWatchlist</a>" ;
+			$column .= "<br>\n<a href=\"".wikiLink("special:WatchList")."\">$wikiMyWatchlist</a>" ;
 			}
 		$a = $this->getOtherNamespaces () ;
 		if ( count ( $a ) > 0 ) $column .= "<hr>".implode ( "<br>\n" , $a ) ;
@@ -874,12 +931,12 @@ class WikiPage extends WikiTitle {
 			$t = new wikiTitle ;
 			foreach ( $cat as $x ) {
 				$t->setTitle ( $x ) ;
-				$column .= "<a href=\"$THESCRIPT?title=".$t->secureTitle."\">".$this->getNiceTitle($x)."</a><br>\n" ;
+				$column .= "<a href=\"".wikiLink($t->secureTitle")."\">".$this->getNiceTitle($x)."</a><br>\n" ;
 				}
 			}
 */
 
-		return $column."</nowiki>" ;
+		return $column ;
 		}
 
 	# This calls the parser and eventually adds the QuickBar. Used for display of normal article pages
@@ -902,7 +959,7 @@ class WikiPage extends WikiTitle {
 			if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=void rules=cols" ;
 			else $border = "border=0" ;
 
-			$table = "<table width=100% $border bordercolor=black cellpadding=2 cellspacing=0><tr>" ;
+			$table = "<table width=\"100%\" $border style=\"border-color:black\" cellpadding=2 cellspacing=0><tr>" ;
 			$qb = $user->options["quickBar"] ;
 			if ( $user->options["forceQuickBar"] != "" ) $qb = $user->options["forceQuickBar"] ;
 
@@ -922,16 +979,31 @@ class WikiPage extends WikiTitle {
 
 	# This generates the footer with link bar, search box, etc.
 	function getFooter () {
-		global $THESCRIPT , $wikiSearch , $wikiCategories , $wikiOtherNamespaces ;
+		global $wikiSearch , $wikiCategories , $wikiOtherNamespaces , $wikiCounter , $wikiLastChange ;
 		global $framed ; if ( isset ( $framed ) ) return "" ;
 		$ret = $this->getLinkBar() ;
 		global $HTTP_USER_AGENT ;
 		if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=above rules=none" ; 
 		else $border = "border=0" ;
-		$ret = "<table width=100% $border bordercolor=black cellspacing=0><tr><td>$ret</td></tr></table>" ;
-		if ( !$this->isSpecialPage ) $ret .= "<a href=\"$THESCRIPT?title=$this->secureTitle&diff=yes\">(diff)</a> " ;
+		$ret = "<table width=\"100%\" $border style=\"border-color:black\" cellspacing=0><tr><td>$ret</td></tr></table>" ;
+
+		# Page counter
+		if ( !$this->isSpecialPage )
+			$ret .= str_replace ( "$1" , $this->counter , $wikiCounter ) ;
+
+		# Other namespaces
 		$a = $this->getOtherNamespaces () ;
-		if ( count ( $a ) > 0 ) $ret .= $wikiOtherNamespaces.implode ( " | " , $a )." " ;
+		if ( count ( $a ) > 0 ) $ret .= " ".$wikiOtherNamespaces.implode ( " | " , $a )." " ;
+
+		# Last change / Diff
+		if ( !$this->isSpecialPage ) {
+			$lc = wikiGetDate ( tsc ( $this->timestamp ) ) ;
+			$lc .= ", ".substr ( $this->timestamp , 8 , 2 ) ;
+			$lc .= ":".substr ( $this->timestamp , 10 , 2 ) ;
+			$ret .= "<br>\n" ;
+			$ret .= str_replace ( "$1" , $lc , $wikiLastChange ) ;
+			$ret .= " <a href=\"".wikiLink("$this->secureTitle&diff=yes")."\">(diff)</a> " ;
+			}
 
 /*
 		# Category functionality deactivated
@@ -942,23 +1014,28 @@ class WikiPage extends WikiTitle {
 			$m = "" ;
 			foreach ( $cat as $x ) {
 				$t->setTitle ( $x ) ;
-				$ret .= "$m<a href=\"$THESCRIPT?title=".$t->secureTitle."\">".$this->getNiceTitle($x)."</a>" ;
+				$ret .= "$m<a href=\"".wikiLink($t->secureTitle)."\">".$this->getNiceTitle($x)."</a>" ;
 				if ( $m == "" ) $m = " | " ;
 				}
 			}
 */
-		$ret .= "<FORM><INPUT TYPE=text NAME=search SIZE=16><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
+
+		$ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16><INPUT TYPE=submit value=\"$wikiSearch\">" ;
+		$ret .= " &nbsp; &nbsp; <a href=\"http://validator.w3.org/check/referer\" target=blank>Validate this page</a>" ;
+		$ret .= "</FORM>" ;
+
 		return $ret ; 
 		}
 
 	# This generates header, diff (if wanted), article body (with QuickBar), and footer
 	# The whole page (for normal pages) is generated here
 	function renderPage ( $doPrint = false ) {
-		global $pageTitle , $diff , $THESCRIPT , $wikiArticleSource , $wikiCurrentServer , $wikiPrintLinksMarkup ;
+		global $pageTitle , $diff , $wikiArticleSource , $wikiCurrentServer , $wikiPrintLinksMarkup ;
 		$pageTitle = $this->title ;
 		if ( isset ( $diff ) ) $middle = $this->doDiff().$this->contents ;
 		else $middle = $this->contents ;
-		$middle = $this->getMiddle($this->parseContents($middle)) ;
+		$middle = $this->parseContents($middle) ;
+		$middle = $this->getMiddle($middle) ;
 		if ( $doPrint ) {
 			$header = "<h1>".$this->getNiceTitle($pageTitle)."</h1>\n" ;
 			$link = str_replace ( "$1" , $this->secureTitle , $wikiArticleSource ) ;
@@ -1015,9 +1092,9 @@ class WikiPage extends WikiTitle {
 			foreach ( $a2 as $x ) if ( !in_array ( $x , $a1 ) ) array_push ( $dl , htmlentities ( $x ) ) ;
 			# Output
 			$ret .= $wikiDiffLegend ;
-			$ret .= "<table width=100% border=1$bc cellspacing=0 cellpadding=2>\n" ;
-			foreach ( $nl as $x ) $ret .= "<tr><td bgcolor=#CFFFCF><font$fc>$x</font></td></tr>\n" ;
-			foreach ( $dl as $x ) $ret .= "<tr><td bgcolor=#FFFFAF><font$fc>$x</font></td></tr>\n" ;
+			$ret .= "<table width=\"100%\" border=1$bc cellspacing=0 cellpadding=2>\n" ;
+			foreach ( $nl as $x ) $ret .= "<tr><td bgcolor=\"#CFFFCF\"><font$fc>$x</font></td></tr>\n" ;
+			foreach ( $dl as $x ) $ret .= "<tr><td bgcolor=\"#FFFFAF\"><font$fc>$x</font></td></tr>\n" ;
 			$ret .= "</table>\n" ;
 		} else if ( isset ( $oldID ) and $s->old_old_version == 0 ) $ret .= $wikiDiffFirstVersion ;
 		else if ( !isset ( $oldID ) ) $ret .= $wikiDiffImpossible ;
