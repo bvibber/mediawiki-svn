@@ -168,7 +168,8 @@ Node processListHelper (Node start)
     type = start->firstChild->type;
     result = newNodeI (List,
         type == ListBullet      ?   1   :
-        type == ListNumbered    ?   2   :   0);
+        type == ListNumbered    ?   2   :
+	type == ListIdent       ?   3   : 0);
 
     curChild = 0;
     examine = start;
@@ -189,7 +190,8 @@ Node processListHelper (Node start)
 
         /* Does this item start a new list? */
         else if (examine->firstChild->type == ListBullet ||
-                 examine->firstChild->type == ListNumbered)
+                 examine->firstChild->type == ListNumbered ||
+                 examine->firstChild->type == ListIdent)
         {
             /* If we are starting a new list, we want it to be inside the previous list item. */
             /* However, if that previous list item does not exist, we need to create a new one. */
@@ -869,6 +871,7 @@ void outputXMLHelper (Node node)
         case List:
             fb_write_to_buffer (node->data.num == 1 ? "<list type='bullet'>"   :
                                 node->data.num == 2 ? "<list type='numbered'>" :
+                                node->data.num == 3 ? "<list type='indent'>" :
                                                       "<list>");
             outputNode (node);
             fb_write_to_buffer ("</list>");

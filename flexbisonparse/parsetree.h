@@ -17,7 +17,7 @@ typedef enum NodeType {
     Attribute, AttributeGroup,
 
     /* After first parse */
-    ListBlock, ListLine, ListBullet, ListNumbered,
+    ListBlock, ListLine, ListBullet, ListNumbered, ListIdent,
 
     /* After processList */
     List, ListItem

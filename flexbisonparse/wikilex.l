@@ -153,8 +153,12 @@ int encodeTableRowInfo (char* input, int initleng)
 ^" "                { BEGIN(cannotbelistorheadingorpre); debuglex ("PRELINE "); return PRELINE; }
 ^\*[ \t]*           { BEGIN(canbelist); debuglex ("LISTBULLET "); return LISTBULLET; }
 <canbelist>\*[ \t]*                   { debuglex ("LISTBULLET "); return LISTBULLET; }
+
 ^\#[ \t]*           { BEGIN(canbelist); debuglex ("LISTNUMBERED "); return LISTNUMBERED; }
-<canbelist>\#[ \t]*                   { debuglex ("LISTNUMBERED "); return LISTNUMBERED; }
+<canbelist>\#[ \t]* { debuglex ("LISTNUMBERED "); return LISTNUMBERED; }
+
+^:[ \t]*           { BEGIN(canbelist); debuglex ("LISTIDENT "); return LISTIDENT; }
+<canbelist>:[ \t]* { debuglex ("LISTIDENT "); return LISTIDENT; }
 
 ^"="+                           {
                                     BEGIN (canbeheading);
@@ -182,12 +186,12 @@ int encodeTableRowInfo (char* input, int initleng)
     debuglex2 ("TEXT(%s) ", yytext);
     return TEXT;                                                                    }
 
-<canbelist>[^ \!\|\*\#\r\n][^\<\>\[\]\{\}\r\n\'\|\!]*                               |
+<canbelist>[^ \!\|\*\#:\r\n][^\<\>\[\]\{\}\r\n\'\|\!]*                               |
 <canbelist>\!                                                                       |
 
 <attributes>[^-a-zA-Z:_\r\n\|\=][^\<\>\[\]\{\}\r\n\'\|\!]*                          |
 
-<INITIAL>[^ \!\|\*\#\r\n\=][^\<\>\[\]\{\}\r\n\'\|\=\!]*                             |
+<INITIAL>[^ \!\|\*\#:\r\n\=][^\<\>\[\]\{\}\r\n\'\|\=\!]*                             |
 <INITIAL>\!                                                                         {
     BEGIN(cannotbelistorheadingorpre);
     yylval.node = newNodeS (TextToken, strdup (yytext));

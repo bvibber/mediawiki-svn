@@ -28,8 +28,8 @@ int i;
     int num;
     AttributeData ad;
 }
-%type <node> article attribute attributes block blockintbl blocks blocksintbl boldnoitalics
-             bulletlistblock bulletlistline comment heading italicsnobold italicsorbold linketc
+%type <node> article attribute attributes block blockintbl blocks blocksintbl boldnoitalics identlistblock
+             bulletlistblock bulletlistline identlistline comment heading italicsnobold italicsorbold linketc
              listblock listseries numberlistblock numberlistline oneormorenewlines
              oneormorenewlinessave paragraph paragraphintbl pipeseries preblock
              preline table tablecell tablecellcontents tablecells tablerow tablerows text
@@ -43,7 +43,7 @@ int i;
              TABLEBEGIN TABLECELL TABLEHEAD TABLEROW TABLECAPTION
 
 %token  EXTENSION BEGINCOMMENT TEXT ENDCOMMENT OPENLINK OPENDBLSQBR CLOSEDBLSQBR PIPE
-        NEWLINE PRELINE LISTBULLET LISTNUMBERED HEADING ENDHEADING APO5 APO3 APO2 TABLEBEGIN
+        NEWLINE PRELINE LISTBULLET LISTNUMBERED LISTIDENT HEADING ENDHEADING APO5 APO3 APO2 TABLEBEGIN
         TABLECELL TABLEHEAD TABLEROW TABLEEND TABLECAPTION ATTRIBUTE EQUALS ATTRAPO ATTRQ
         OPENPENTUPLECURLY CLOSEPENTUPLECURLY OPENTEMPLATEVAR CLOSETEMPLATEVAR OPENTEMPLATE
         CLOSETEMPLATE
@@ -103,11 +103,14 @@ preline         :   PRELINE textorempty zeroormorenewlinessave
 
 listblock       :   bulletlistblock             { debugf ("listblock#1 "); $$ = processListBlock ($1); }
                 |   numberlistblock             { debugf ("listblock#2 "); $$ = processListBlock ($1); }
+                |   identlistblock              { debugf ("listblock#3 "); $$ = processListBlock ($1); }
 
 bulletlistblock :   bulletlistline                  { debugf ("bulletlistblock#1 "); $$ = nodeAddChild (newNode (ListBlock), $1); }
                 |   bulletlistblock bulletlistline  { debugf ("bulletlistblock#2 "); $$ = nodeAddChild ($1, $2); }
 numberlistblock :   numberlistline                  { debugf ("numberlistblock#1 "); $$ = nodeAddChild (newNode (ListBlock), $1); }
                 |   numberlistblock numberlistline  { debugf ("numberlistblock#2 "); $$ = nodeAddChild ($1, $2); }
+identlistblock  :   identlistline                   { debugf ("identlistblock#1 "); $$ = nodeAddChild (newNode (ListBlock), $1); }
+                |   identlistblock identlistline    { debugf ("identlistblock#2 "); $$ = nodeAddChild ($1, $2); }
 
 bulletlistline  :   LISTBULLET listseries textorempty NEWLINE
                         { debugf ("bulletlistline#1 "); $$ = nodeAddChild (nodePrependChild ($2, newNode (ListBullet)), $3); }
@@ -117,14 +120,21 @@ numberlistline  :   LISTNUMBERED listseries textorempty NEWLINE
                         { debugf ("numberlistline#1 "); $$ = nodeAddChild (nodePrependChild ($2, newNode (ListNumbered)), $3); }
                 |   LISTNUMBERED listseries textorempty
                         { debugf ("numberlistline#2 "); $$ = nodeAddChild (nodePrependChild ($2, newNode (ListNumbered)), $3); }
+identlistline  :   LISTIDENT listseries textorempty NEWLINE
+                        { debugf ("identlistline#1 "); $$ = nodeAddChild (nodePrependChild ($2, newNode (ListIdent)), $3); }
+                |   LISTIDENT listseries textorempty
+                        { debugf ("identlistline#2 "); $$ = nodeAddChild (nodePrependChild ($2, newNode (ListIdent)), $3); }
 
 listseries      :   /* empty */                 { debugf ("listseries#1 "); $$ = newNode (ListLine); }
                 |   LISTBULLET
                         { debugf ("listseries#2 "); $$ = nodeAddChild (newNode (ListLine), newNode (ListBullet)); }
                 |   LISTNUMBERED
                         { debugf ("listseries#3 "); $$ = nodeAddChild (newNode (ListLine), newNode (ListNumbered)); }
-                |   listseries LISTBULLET       { debugf ("listseries#4 "); $$ = nodeAddChild ($1, newNode (ListBullet)); }
-                |   listseries LISTNUMBERED     { debugf ("listseries#5 "); $$ = nodeAddChild ($1, newNode (ListNumbered)); }
+                |   LISTIDENT
+                        { debugf ("listseries#4 "); $$ = nodeAddChild (newNode (ListLine), newNode (ListIdent)); }
+                |   listseries LISTBULLET       { debugf ("listseries#5 "); $$ = nodeAddChild ($1, newNode (ListBullet)); }
+                |   listseries LISTNUMBERED     { debugf ("listseries#6 "); $$ = nodeAddChild ($1, newNode (ListNumbered)); }
+                |   listseries LISTIDENT     { debugf ("listseries#6 "); $$ = nodeAddChild ($1, newNode (ListIdent)); }
 
 linketc         :   OPENDBLSQBR textinlink CLOSEDBLSQBR
                         { debugf ("linketc#1 "); $$ = nodeAddChild (newNodeI (LinkEtc, 0), nodeAddChild (newNode (LinkTarget), $2)); }
