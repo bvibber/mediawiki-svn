@@ -74,3 +74,6 @@ this date.
 
 * 2003-02-02: Math table changed
 Rerun patch-math.sql to recreate it.
+
+* 2003-02-03: Index added to USER table for performance reasons. Run
+patch-userindex.sql to create it.

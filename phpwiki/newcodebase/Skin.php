@@ -496,10 +496,18 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			  . $sep . $this->whatLinksHere()
 			  . $sep . $this->watchPageLinksLink();
 
-			if ( Namespace::getUser() == $wgTitle->getNamespace() ) {
-				$s .= $sep . $this->userContribsLink();
-				if ( 0 != $wgUser->getID() ) {
-					$s .= $sep . $this->emailUserLink();
+			if ( Namespace::getUser() == $wgTitle->getNamespace())			      
+			{	
+				$id=User::idFromName($wgTitle->getText());
+				$ip=User::isIP($wgTitle->getText());
+				
+				if($id || $ip) { # both anons and non-anons have contri list
+					$s .= $sep . $this->userContribsLink();
+				}
+				if ( 0 != $wgUser->getID() ) { # show only to signed in users
+					if($id) {	# can only email non-anons
+						$s .= $sep . $this->emailUserLink();
+					}
 				}
 			}
 			if ( $wgUser->isSysop() && $wgTitle->getArticleId() ) {
@@ -640,9 +648,17 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			}
 
 			if ( Namespace::getUser() == $wgTitle->getNamespace() ) {
-				$s .= $sep . $this->userContribsLink();
+			
+				$id=User::idFromName($wgTitle->getText());
+				$ip=User::isIP($wgTitle->getText());
+				
+				if($id||$ip) {
+					$s .= $sep . $this->userContribsLink();
+				}
 				if ( 0 != $wgUser->getID() ) {
-					$s .= $sep . $this->emailUserLink();
+					if($id) { # can only email real users
+						$s .= $sep . $this->emailUserLink(); 
+					}
 				}
 			}
 			$s .= "\n<hr>";
