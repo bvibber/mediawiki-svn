@@ -7,7 +7,7 @@ class WikiTitle {
 	# User rights
 	function canEdit () {
 		global $action ;
-		global $oldID ; if ( isset ( $oldID ) ) return false ;
+#		global $oldID ; if ( isset ( $oldID ) ) return false ;
 		if ( !$this->validateTitle() ) return false ;
 		if ( $this->isSpecialPage and $action != "edit" ) return false ;
 		if ( $this->namespace == "special" ) return false ;
@@ -101,8 +101,8 @@ class WikiTitle {
 	function setTitle ( $t ) { $this->title = $t ; $this->makeAll() ; }
 	function getMainTitle () {
 		$r = $this->title ;
-		if ( $this->hasNamespace and $this->namespace != "" ) $r = $this->namespace.":$r" ;
-		if ( $this->subpageTitle != "" ) $r .= "/".$this->subpageTitle ;
+#		if ( strstr (  $r , ":" ) == false and $this->hasNamespace and $this->namespace != "" ) $r = $this->namespace.":$r" ;
+#		if ( $this->subpageTitle != "" ) $r .= "/".$this->subpageTitle ;
 		return $r ;
 		}
 	function doesTopicExist ( $conn = "" ) {

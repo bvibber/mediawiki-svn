@@ -85,11 +85,15 @@ function doEdit ( $title ) {
 	$action = "" ;
 	$ret = $vpage->getHeader() ;
 	$action = "edit" ;
-	$ret .= $vpage->getMiddle(edit($title)) ;
+
+	$theMiddle = edit ( $title ) ;
+	if ( $wasSaved )
+		$theMiddle = "<h1>Your page was successfully saved!</h1><META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$THESCRIPT?title=$vpage->secureTitle\">" ;
+	$ret .= $vpage->getMiddle ( $theMiddle ) ;
+
 	$action = "" ;
 	$ret .= $vpage->getFooter() ;
 	$action = "edit" ;
-	if ( $wasSaved ) $ret .= "<h1>Your page was successfully saved!</h1><META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$PHP_SELF?title=$vpage->secureTitle\">" ;
 	return $ret ;
 	}
 
@@ -162,7 +166,7 @@ function userLogin () {
 			}
 		if ( $user->options["rememberPassword"] == "on" ) $check = "checked" ;
 		$s .= "If you are new to wikipedia and want to get a user account, enter a user name, type and re-type a password.<br>\n" ;
-	  	$s .= "<FORM action=\"$PHP_SELF?title=special:userLogin\" method=post><font face=courier>\n" ;
+	  	$s .= "<FORM action=\"$THESCRIPT?title=special:userLogin\" method=post><font face=courier>\n" ;
 	  	$s .= "Your user name&nbsp; : <INPUT TABINDEX=1 TYPE=text NAME=USERNAME VALUE=\"$user->name\" SIZE=20><br>\n" ;
 	  	$s .= "Your password&nbsp;&nbsp; : <INPUT TABINDEX=2 TYPE=password NAME=USERPASSWORD VALUE=\"$user->password\" SIZE=20><br>\n" ;
 	  	$s .= "Retype password : <INPUT TABINDEX=2 TYPE=password NAME=RETYPE VALUE=\"\" SIZE=20> (new users only)<br>\n" ;
@@ -212,7 +216,7 @@ function editUserSettings () {
 	$ret .= "<b>You are logged in as [[user:$user->name|$user->name]]. ";
 	$ret .= "Your internal ID is $user->id.</b><br>\n";
 	$ret .= "You can get help [[wikipedia:Help/User preferences|here]].\n" ;
-	$ret .= "<nowiki><FORM action=\"$PHP_SELF?title=special:editUserSettings\" method=post>" ;
+	$ret .= "<nowiki><FORM action=\"$THESCRIPT?title=special:editUserSettings\" method=post>" ;
 	$ret .= "<table border=1 bordercolor=".$user->options["borderColor"]." cellspacing=0 cellpadding=2>" ;
 
 	# QuickBar options
@@ -458,15 +462,15 @@ function doSearch () {
 			$s .= "<nowiki>" ;
 			$last = $startat-$perpage ;
 			$next = $startat+$perpage ;
-			if ( $startat != 1 ) $s .= "<a href=\"$PHP_SELF?search=$search&startat=".$last."\">&lt;&lt;</a> | ";
+			if ( $startat != 1 ) $s .= "<a href=\"$THESCRIPT?search=$search&startat=".$last."\">&lt;&lt;</a> | ";
 			for ( $a = 1 ; $a <= $totalcnt ; $a += $perpage ) {
 				if ( $a != 1 ) $s .= " | " ;
-				if ( $a != $startat ) $s .= "<a href=\"$PHP_SELF?search=$search&startat=$a\">";
+				if ( $a != $startat ) $s .= "<a href=\"$THESCRIPT?search=$search&startat=$a\">";
 				$s .= "$a-" ;
 				$s .= $a+$perpage-1 ;
 				if ( $a != $startat ) $s .= "</a>" ;
 				}
-			if ( $startat != $a-$perpage ) $s .= " | <a href=\"$PHP_SELF?search=$search&startat=".$next."\">&gt;&gt;</a>";
+			if ( $startat != $a-$perpage ) $s .= " | <a href=\"$THESCRIPT?search=$search&startat=".$next."\">&gt;&gt;</a>";
 			$s .= "</nowiki>" ;
 			}
 		}
@@ -513,9 +517,9 @@ function listUsers () {
 	
 	$ret .= "<nowiki>" ;
 	$before = $startat - $perpage ; $fin = $before + $perpage - 1 ;
-	if ( $startat > 1 ) $ret .= "<a href=\"$PHP_SELF?title=special:UserList&startat=$before\">$before-$fin&lt;&lt;</a> &nbsp;" ;
+	if ( $startat > 1 ) $ret .= "<a href=\"$THESCRIPT?title=special:UserList&startat=$before\">$before-$fin&lt;&lt;</a> &nbsp;" ;
 	$after = $startat + $perpage ; $fin = $after+$perpage - 1 ; if ( $fin > $total ) $fin = $total ;
-	if ( $after-1 < $total ) $ret .= "<a href=\"$PHP_SELF?title=special:UserList&startat=$after\">&gt;&gt;$after-$fin</a>" ;
+	if ( $after-1 < $total ) $ret .= "<a href=\"$THESCRIPT?title=special:UserList&startat=$after\">&gt;&gt;$after-$fin</a>" ;
 	$ret .= "</nowiki>" ;
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
@@ -541,7 +545,7 @@ function randompage () {
 		}
 	$thelink = $s->cur_title ;
 	$ret = "<h2>Loading random page [[$thelink|".$vpage->getNiceTitle($thelink)."]]...</h2>" ;
-	$ret .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$PHP_SELF?title=$thelink\">" ;
+	$ret .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$THESCRIPT?title=$thelink\">" ;
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
 
@@ -568,10 +572,10 @@ function recentchanges () {
 
 	$ret = "<nowiki>" ;
 	$ret .= "These are the last <b>$maxcnt</b> of the changes made on Wikipedia in the last $daysAgo days. View the last " ;
-	$ret .= "<a href=\"$PHP_SELF?title=special:RecentChanges&maxcnt=50\">50</a> / " ;
-	$ret .= "<a href=\"$PHP_SELF?title=special:RecentChanges&maxcnt=100\">100</a> / " ;
-	$ret .= "<a href=\"$PHP_SELF?title=special:RecentChanges&maxcnt=250\">250</a> / " ;
-	$ret .= "<a href=\"$PHP_SELF?title=special:RecentChanges&maxcnt=500\">500</a> " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=50\">50</a> / " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=100\">100</a> / " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=250\">250</a> / " ;
+	$ret .= "<a href=\"$THESCRIPT?title=special:RecentChanges&maxcnt=500\">500</a> " ;
 	$ret .= "changes.<br></nowiki>" ;
 	$arr = array () ;
 
@@ -597,7 +601,7 @@ function recentChangesLayout ( &$arr ) {
 	$ret = " (<b>Legend :</b> ".$editTypes["1"]."=Minor edit ; ".$editTypes["2"]."=New article.)" ;
 	if ( $user->options["changesLayout"] == "table" ) $ret .= "<table width=100% border=0 cellpadding=2 cellspacing=0>\n" ;
 	else $ret .= "<ul>\n" ; 
-	$dummy = "$PHP_SELF?x=y" ;
+	$dummy = "$THESCRIPT?x=y" ;
 	foreach ( $arr as $s ) {
 		$nt = $xyz->getNiceTitle ( $s->cur_title ) ;
 		$day = date ( "l, F d, Y" , tsc ( $s->cur_timestamp ) ) ;
@@ -612,7 +616,7 @@ function recentChangesLayout ( &$arr ) {
 		if ( $s->cur_user != 0 ) {
 			$xyz->title = $u ;
 			$xyz->makeSecureTitle () ;
-			$u = "<a href=\"$PHP_SELF?title=user:$xyz->secureTitle\">$u</a>" ;
+			$u = "<a href=\"$THESCRIPT?title=user:$xyz->secureTitle\">$u</a>" ;
 			}
 		$comment = trim($s->cur_comment) ;
 		if ( $comment == "*" ) $comment = "" ;
@@ -622,16 +626,16 @@ function recentChangesLayout ( &$arr ) {
 		if ( $user->options["changesLayout"] == "table" ) $t = "<tr><td$color valign=top width=0%>" ;
 		else $t = "<li>" ;
 
-		if ( $s->version == "current" ) $t .= "<a href=\"$PHP_SELF?title=$s->cur_title&diff=yes\">(diff)</a>&nbsp;" ;
-		else if ( $s->version != "" ) $t .= "<a href=\"$PHP_SELF?title=$s->cur_title&oldID=$s->old_id&version=$s->version&diff=yes\">(diff)</a>&nbsp;" ;
-		else $t .= "<a href=\"$PHP_SELF?title=$s->cur_title&diff=yes\">(diff)</a>" ;
+		if ( $s->version == "current" ) $t .= "<a href=\"$THESCRIPT?title=$s->cur_title&diff=yes\">(diff)</a>&nbsp;" ;
+		else if ( $s->version != "" ) $t .= "<a href=\"$THESCRIPT?title=$s->cur_title&oldID=$s->old_id&version=$s->version&diff=yes\">(diff)</a>&nbsp;" ;
+		else $t .= "<a href=\"$THESCRIPT?title=$s->cur_title&diff=yes\">(diff)</a>" ;
 
 		if ( $user->options["changesLayout"] == "table" ) $t .= "</td><td$color valign=top>" ;
 		else $t .= " " ;
 
-		if ( $s->version == "current" ) $t .= "<a href=\"$PHP_SELF?$s->cur_title\">$nt</a></td>" ;
-		else if ( $s->version != "" ) $t .= "<a href=\"$PHP_SELF?$s->cur_title&oldID=$s->old_id&version=$s->version\">$nt ($s->version)</a></td>" ;
-		else $t .= "<a href=\"$PHP_SELF?title=$s->cur_title\">$nt</a>" ;
+		if ( $s->version == "current" ) $t .= "<a href=\"$THESCRIPT?title=$s->cur_title\">$nt</a></td>" ;
+		else if ( $s->version != "" ) $t .= "<a href=\"$THESCRIPT?title=$s->cur_title&oldID=$s->old_id&version=$s->version\">$nt ($s->version)</a></td>" ;
+		else $t .= "<a href=\"$THESCRIPT?title=$s->cur_title\">$nt</a>" ;
 
 		if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top width=0% nowrap>$time</td>" ;
 		else $t = str_replace ( "</td>" , "; " , $t ) . " ($time) " ;
@@ -640,8 +644,8 @@ function recentChangesLayout ( &$arr ) {
 			$v->title = $s->cur_user_text ;
 			$v->makeSecureTitle () ;
 			if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top nowrap>" ;
-			if ( $s->cur_user == 0 ) $t .= "$s->cur_user_text!!</td>" ;
-			else $t .= "<a href=\"$PHP_SELF?title=user:$v->secureTitle\">$s->cur_user_text</a></td>" ;
+			if ( $s->cur_user == 0 ) $t .= "$s->cur_user_text</td>" ;
+			else $t .= "<a href=\"$THESCRIPT?title=user:$v->secureTitle\">$s->cur_user_text</a></td>" ;
 			if ( $user->options["changesLayout"] == "table" ) $t .= "</td>" ;
 			else $t .= "; " ;
 			}
@@ -689,7 +693,7 @@ function watch ( $t , $m ) {
 	setMySQL ( "user" , "user_watch" , $a , "user_id=$user->id" ) ;
 
 	$ret = "Watching $t ($m)" ;
-	$ret .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL='$PHP_SELF?title=$t'\">" ;
+	$ret .= "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL='$THESCRIPT?title=$t'\">" ;
 	return $ret ;
 	}
 
@@ -741,7 +745,7 @@ function statistics () {
 	mysql_free_result ( $result ) ;
 
 	# /TALK
-	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title LIKE \"%/Talk\"" ;
+	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title LIKE \"%/Talk\" OR cur_title LIKE \"talk:%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$talkPages = $s->number ;
@@ -749,7 +753,7 @@ function statistics () {
 	mysql_free_result ( $result ) ;
 
 	# , NOT /TALK
-	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/Talk\" AND cur_text LIKE \"%,%\"" ;
+	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/Talk\" AND cur_title NOT LIKE \"talk:%\" AND cur_text LIKE \"%,%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$commaPages = $s->number ;
@@ -757,7 +761,7 @@ function statistics () {
 	mysql_free_result ( $result ) ;
 
 	# WIKIPEDIA NOT /TALK
-	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/Talk\" AND cur_title LIKE \"%ikipedia%\"" ;
+	$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/Talk\" AND cur_title NOT LIKE \"talk:%\" AND cur_title LIKE \"%ikipedia%\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
 	$wikiPages = $s->number ;
@@ -784,7 +788,7 @@ function statistics () {
 	$sql = "SELECT COUNT(*) as number FROM old" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	$s = mysql_fetch_object ( $result ) ;
-	$oldPages = $s->number - $talkPages;
+#	$oldPages = $s->number - $talkPages;
 	$p = round ( $oldPages / $totalPages , 2 ) ;
 	$ret .= "<li>And, there are $nf1$oldPages$nf2 old page versions in the database, giving an average of $p old pages on every active page.</li>" ;
 	mysql_free_result ( $result ) ;
@@ -819,7 +823,7 @@ function upload () {
 	global $user , $vpage ;
 	$vpage->special ( "Upload Page" ) ;
 
-#	if ( $USERLOGGEDIN != "YES" ) return "You are not logged in! You have to be logged in to upload a file. <a href=\"$PHP_SELF?action=login\">Log in</a> or return to the <a href=\"$PHP_SELF?no\">HomePage</a>" ;
+#	if ( $USERLOGGEDIN != "YES" ) return "You are not logged in! You have to be logged in to upload a file. <a href=\"$THESCRIPT?action=login\">Log in</a> or return to the <a href=\"$THESCRIPT?no\">HomePage</a>" ;
 
 #	$rights = ",".getUserSetting ( $USERNAME , "user_rights" )."," ;
 #	if ( strstr ( $rights , ",is_editor," ) or strstr ( $rights , ",is_sysop" ) ) $isEditor = true ;
@@ -833,12 +837,12 @@ function upload () {
 	$message = "" ;
 
 	if (isset($removeFile)) {
-#		if ( !$isSysop and !$isEditor ) return "You are neither an editor nor a sysop. Return to the <a href=\"$PHP_SELF?action=upload\">Upload page</a>" ;
+#		if ( !$isSysop and !$isEditor ) return "You are neither an editor nor a sysop. Return to the <a href=\"$THESCRIPT?action=upload\">Upload page</a>" ;
 		if (is_file("upload/$removeFile") ) unlink ("./upload/$removeFile");
 		$message = "File <b>$removeFile</b> deleted!" ;
 		unset ( $removeFile ) ;
 	} else if (isset($Upload_name) or isset($Upload)) {
-		if ( $no_copyright != "AFFIRMED" ) return "You need to affirm that the file is not violating copygights. Return to the <a href=\"$PHP_SELF?action=upload\">Upload page</a>" ;
+		if ( $no_copyright != "AFFIRMED" ) return "You need to affirm that the file is not violating copygights. Return to the <a href=\"$THESCRIPT?action=upload\">Upload page</a>" ;
 		$Upload_name = ereg_replace(" ", "_", $Upload_name);
 		$abc = split("\.", $Upload_name);
 
@@ -880,7 +884,7 @@ function upload () {
 	$ret .= "<li>You can upload as many files you like. Please don't try to crash our server, ha ha.</li>\n";
 	$ret .= "</ul>\n";
 
-	$ret .= " <form enctype=\"multipart/form-data\" action=\"$PHP_SELF?title=special:upload\" method=post>\n";
+	$ret .= " <form enctype=\"multipart/form-data\" action=\"$THESCRIPT?title=special:upload\" method=post>\n";
 	$ret .= " <input type=hidden name=max value=20096>\n";
 	$ret .= " <input name=Upload type=\"file\"><br>\n";
 	$ret .= " <input type=hidden name=update value=1>\n";
@@ -912,7 +916,7 @@ function upload () {
 					$ret .= "<a href=upload/$entry>$entry</a></td>";
 					$ret .= "<td align=center>".filesize("upload/$entry")." bytes</td>";
 #					if ( $isSysop or $isEditor )
-					$ret .= "<td align=center><a href=\"$PHP_SELF?title=special:upload&removeFile=$entry\">Click here to remove $entry.</a></td>" ;
+					$ret .= "<td align=center><a href=\"$THESCRIPT?title=special:upload&removeFile=$entry\">Click here to remove $entry.</a></td>" ;
 					$ret .= "</tr>" ;
 					$i++;
 				}
@@ -969,7 +973,7 @@ function doHistory ( $title ) {
 		}
 
 	$t = recentChangesLayout ( $a ) ;
-	$t = "<b>This is the history of <a href=\"$PHP_SELF?title=$title\">$title</a></b>".$t ;
+	$t = "<b>This is the history of <a href=\"$THESCRIPT?title=$title\">$title</a></b>".$t ;
 
 	$ret = $vpage->getHeader() ;
 	$ret .= $vpage->getMiddle($t) ;
@@ -1022,9 +1026,9 @@ function ShortPages () {
 	
 	$ret .= "<nowiki>" ;
 	$before = $startat - $perpage ; $fin = $before + $perpage - 1 ;
-	if ( $startat > 1 ) $ret .= "<a href=\"$PHP_SELF?title=special:ShortPages&startat=$before\">$before-$fin&lt;&lt;</a> &nbsp;" ;
+	if ( $startat > 1 ) $ret .= "<a href=\"$THESCRIPT?title=special:ShortPages&startat=$before\">$before-$fin&lt;&lt;</a> &nbsp;" ;
 	$after = $startat + $perpage ; $fin = $after+$perpage - 1 ; if ( $fin > $total ) $fin = $total ;
-	if ( $after-1 < $total ) $ret .= "<a href=\"$PHP_SELF?title=special:ShortPages&startat=$after\">&gt;&gt;$after-$fin</a>" ;
+	if ( $after-1 < $total ) $ret .= "<a href=\"$THESCRIPT?title=special:ShortPages&startat=$after\">&gt;&gt;$after-$fin</a>" ;
 	$ret .= "</nowiki>" ;
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;

@@ -10,21 +10,7 @@ class WikiPage extends WikiTitle {
 		$this->isSpecialPage = false ;
 		$this->revision = "current" ;
 		if ( $this->namespace == "special" ) {
-			$allowed = array () ; # I know this is crude, but...
-			array_push ( $allowed , "userlogin" ) ;
-			array_push ( $allowed , "userlogout" ) ;
-			array_push ( $allowed , "recentchanges" ) ;
-			array_push ( $allowed , "upload" ) ;
-			array_push ( $allowed , "statistics" ) ;
-			array_push ( $allowed , "lonelypages" ) ;
-			array_push ( $allowed , "wantedpages" ) ;
-			array_push ( $allowed , "allpages" ) ;
-			array_push ( $allowed , "randompage" ) ;
-			array_push ( $allowed , "shortpages" ) ;
-			array_push ( $allowed , "listusers" ) ;
-			array_push ( $allowed , "watchlist" ) ;
-			array_push ( $allowed , "special_pages" ) ;
-			array_push ( $allowed , "editusersettings" ) ;
+			$allowed = array("userlogin","userlogout","recentchanges","upload","statistics","lonelypages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","asksql") ;
 			$call = $this->mainTitle ;
 			if ( !in_array ( strtolower ( $call ) , $allowed ) ) {
 				$this->isSpecialPage = true ;
@@ -47,7 +33,7 @@ class WikiPage extends WikiTitle {
 				$this->title=$s->old_title ;
 				$this->makeSecureTitle () ;
 				$this->contents = $s->old_text ;
-				$this->thisVersion = "<br><font size=-1>This is the old version #$version; see the <a href=\"$PHP_SELF?title=$this->secureTitle\">current version</a></font>" ;
+				$this->thisVersion = "<br><font size=-1>This is the old version #$version; see the <a href=\"$THESCRIPT?title=$this->secureTitle\">current version</a></font>" ;
 				}
 			else $this->contents = "Describe the new page here." ;
 		} else {
@@ -90,7 +76,7 @@ class WikiPage extends WikiTitle {
 		$u = new WikiTitle ;
 		while ( $s = mysql_fetch_object ( $result ) ) {
 			$t = strstr ( $s->cur_title , "/" ) ;
-			$t = $u->getNiceTitle ( $t ) ;
+			$z = explode ( ":" , $t , 2 ) ;
 			$t = "[[$t]]" ;
 			array_push ( $a , $t ) ;
 			}
@@ -102,7 +88,7 @@ class WikiPage extends WikiTitle {
 	function getOtherNamespaces () {
 		$a = array () ;
 		if ( $this->isSpecialPage ) return $a ;
-		$n = explode ( ":" , $this->secureTitle ) ;
+		$n = explode ( ":" , $this->title ) ;
 		if ( count ( $n ) == 1 ) $n = $n[0] ;
 		else $n = $n[1] ;
 		$connection = getDBconnection () ;
@@ -114,14 +100,15 @@ class WikiPage extends WikiTitle {
 			$dummy = new wikiTitle ;
 			$dummy->setTitle ( $n ) ;
 			if ( $dummy->doesTopicExist ( $connection ) )
-				array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"$PHP_SELF?title=$n\">:".$this->getNiceTitle($n)."</a>" ) ;
+				array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"$THESCRIPT?title=$n\">:".$this->getNiceTitle($n)."</a>" ) ;
 			}
-		if ( $this->namespace != "talk" ) array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"$PHP_SELF?title=talk:$n\">Talk</a>" ) ;
+		if ( $this->namespace == "" )
+			array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"$THESCRIPT?title=talk:$n\">Talk</a>" ) ;
 		while ( $s = mysql_fetch_object ( $result ) ) {
 			$t = explode ( ":" , $s->cur_title ) ;
 			$t = $u->getNiceTitle ( $t[0] ) ;
 			if ( strtolower ( $t ) != "talk" and strtolower ( $t ) != $this->namespace )
-				array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"$PHP_SELF?title=$t:$n\">$t</a>" ) ;
+				array_push ( $a , "<a style=\"color:green;text-decoration:none\" href=\"$THESCRIPT?title=$t:$n\">$t</a>" ) ;
 			}
 		if ( $result != "" ) mysql_free_result ( $result ) ;
 		mysql_close ( $connection ) ;
@@ -195,11 +182,10 @@ class WikiPage extends WikiTitle {
 				if ( count ( $c ) == 1 ) array_push ( $c , $topic->getMainTitle() ) ;
 				$text = $c[1] ;
 
-
 				if ( $topic->doesTopicExist( $connection ) ) {
 					$linkedLinks[$topic->secureTitle]++ ;
 					if ( $user->options["showHover"] == "yes" ) $hover = "title=\"$link\"" ;
-					$s .= "<a href=\"$PHP_SELF?title=".urlencode($link)."\" $hover>$text</a>" ;
+					$s .= "<a href=\"$THESCRIPT?title=".urlencode($link)."\" $hover>$text</a>" ;
 				} else {
 					$unlinkedLinks[$link]++ ;
 					$text2 = $text ;
@@ -208,10 +194,10 @@ class WikiPage extends WikiTitle {
 					if ( substr_count ( $text2 , " " ) > 0 ) $text2 = "[$text2]" ;
 					if ( $user->options["underlineLinks"] == "no" ) { $text = $text2 ; $style = ";text-decoration:none" ; }
 					if ( $user->options["markupNewTopics"] == "red" )
-						$s .= "<a style=\"color:red$style\" href=\"$PHP_SELF?action=edit&title=".urlencode($link)."\" $hover>$text</a>" ;
+						$s .= "<a style=\"color:red$style\" href=\"$THESCRIPT?action=edit&title=".urlencode($link)."\" $hover>$text</a>" ;
 					else if ( $user->options["markupNewTopics"] == "inverse" )
-						$s .= "<a style=\"color:white;background:blue$style\" href=\"$PHP_SELF?action=edit&title=".urlencode($link)."\" $hover>$text</a>" ;
-					else $s .= "$text2<a href=\"$PHP_SELF?action=edit&title=".urlencode($link)."\" $hover>?</a>" ;
+						$s .= "<a style=\"color:white;background:blue$style\" href=\"$THESCRIPT?action=edit&title=".urlencode($link)."\" $hover>$text</a>" ;
+					else $s .= "$text2<a href=\"$THESCRIPT?action=edit&title=".urlencode($link)."\" $hover>?</a>" ;
 					}
 				$s .= $b[1] ;
 				}
@@ -250,7 +236,7 @@ class WikiPage extends WikiTitle {
 				}
 			}
 
-		$o = "A-Za-z0-9/\.:?&=~%-@^" ;
+		$o = "A-Za-z0-9/\.:?&=_~%-@^" ;
 		$s = eregi_replace ( "([^~])http://([$o]+)([^$o])" , "\\1<a href=\"http://\\2\">http://\\2</a>\\3" , $s ) ;
 		$s = str_replace ( "~http://" , "http://" , $s ) ;
 
@@ -407,7 +393,10 @@ class WikiPage extends WikiTitle {
 
 	# Header and footer section
 	function getLinkBar () {
-		$ret = "<a href=\"$PHP_SELF?\">HomePage</a>" ;
+		global $user , $oldID , $version ;
+		$editOldVersion = "" ;
+		if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
+		$ret = "<a href=\"$THESCRIPT?\">HomePage</a>" ;
 
 		$spl = $this->getSubpageList () ;
 		if ( count ( $spl ) > 0 and $this->subpageTitle != "" ) {
@@ -417,11 +406,11 @@ class WikiPage extends WikiTitle {
 			$ret .= " | ".$zz ;
 			}
 
-		$ret .= " | <a href=\"$PHP_SELF?title=special:RecentChanges\">Recent Changes</a>" ;
-		if ( $this->canEdit() ) $ret .= " | <a href=\"$PHP_SELF?action=edit&title=$this->url\">Edit this page</a>" ;
-		if ( !$this->isSpecialPage ) $ret .= " | <a href=\"$PHP_SELF?action=history&title=$this->url\">History</a>\n" ;
-		$ret .= " | <a href=\"$PHP_SELF?title=special:RandomPage\">Random Page</a>" ;
-		$ret .= " | <a href=\"$PHP_SELF?title=special:Special_pages\">Special Pages</a>" ;
+		$ret .= " | <a href=\"$THESCRIPT?title=special:RecentChanges\">Recent Changes</a>" ;
+		if ( $this->canEdit() ) $ret .= " | <a href=\"$THESCRIPT?action=edit&title=$this->url$editOldVersion\">Edit this page</a>" ;
+		if ( !$this->isSpecialPage ) $ret .= " | <a href=\"$THESCRIPT?action=history&title=$this->url\">History</a>\n" ;
+		$ret .= " | <a href=\"$THESCRIPT?title=special:RandomPage\">Random Page</a>" ;
+		$ret .= " | <a href=\"$THESCRIPT?title=special:Special_pages\">Special Pages</a>" ;
 		return $ret ;
 		}
 	function getHeader () {
@@ -438,47 +427,51 @@ class WikiPage extends WikiTitle {
 		if ( $this->isSpecialPage ) {
 			if ( $action == "edit" ) {
 				$ret .= "<font size=+3>Editing ".$t."</font><br>Your changes will not be committed until you hit the <b>Save</b> button.<br>" ;
-				$ret .= "You can get help <a href=\"$PHP_SELF?title=wikipedia:help/edit\">here</a>." ;
+				$ret .= "You can get help <a href=\"$THESCRIPT?title=wikipedia:help/edit\">here</a>." ;
 			} else $ret .= "<font size=+3>".$t."</font>" ;
 		} else {
-			$ret .= "<font size=+3><a href=\"$PHP_SELF?search=$this->title\">".$this->getNiceTitle($t)."</a>$this->thisVersion</font>" ;
+			$ret .= "<font size=+3><a href=\"$THESCRIPT?search=$this->title\">".$this->getNiceTitle($t)."</a>$this->thisVersion</font>" ;
 			if ( $user->isLoggedIn ) {
 				if ( $user->doWatch($this->title) )
-					$ret.="<br><a href=\"$PHP_SELF?action=watch&title=$this->secureTitle&mode=no\">Stop watching this article for me</a>";
-				else $ret .= "<br><a href=\"$PHP_SELF?action=watch&title=$this->secureTitle&mode=yes\">Watch this article for me</a>" ;
+					$ret.="<br><a href=\"$THESCRIPT?action=watch&title=$this->secureTitle&mode=no\">Stop watching this article for me</a>";
+				else $ret .= "<br><a href=\"$THESCRIPT?action=watch&title=$this->secureTitle&mode=yes\">Watch this article for me</a>" ;
 				}
 			}
 		$ret .= "</td>\n<td valign=top width=200 rowspan=2 nowrap>".$user->getLink()."<br>" ;
-		if ( $user->isLoggedIn ) $ret .= "<a href=\"$PHP_SELF?title=special:userLogout\">Log out</a> | <a href=\"$PHP_SELF?title=special:editUserSettings\">Preferences</a>" ;
-		else $ret .= "<a href=\"$PHP_SELF?title=special:userLogin\">Log in</a>" ;
-		$ret .= " | <a href=\"$PHP_SELF?title=wikipedia:Help\">Help</a>" ;
+		if ( $user->isLoggedIn ) $ret .= "<a href=\"$THESCRIPT?title=special:userLogout\">Log out</a> | <a href=\"$THESCRIPT?title=special:editUserSettings\">Preferences</a>" ;
+		else $ret .= "<a href=\"$THESCRIPT?title=special:userLogin\">Log in</a>" ;
+		$ret .= " | <a href=\"$THESCRIPT?title=wikipedia:Help\">Help</a>" ;
 		$ret .= "<FORM>Search: <INPUT TYPE=text NAME=search SIZE=20></FORM>" ;
-		$ret .= "</td>\n<td rowspan=2 width=1><a href=\"$PHP_SELF?\"><img border=0 src=\"wiki.png\"></a></td></tr>\n" ;
+		$ret .= "</td>\n<td rowspan=2 width=1><a href=\"$THESCRIPT?\"><img border=0 src=\"wiki.png\"></a></td></tr>\n" ;
 		$ret .= "<tr><td valign=bottom>".$this->getLinkBar()."</td></tr></table>" ;
 		return $ret ; 
 		}
 	function getQuickBar () {
-		global $user ;
+		global $user , $oldID , $version ;
+		$editOldVersion = "" ;
+		if ( $oldID != "" ) $editOldVersion="&oldID=$oldID&version=$version" ;
 		$column = "<nowiki>" ;
-		$column .= "<a href=\"$PHP_SELF?title=HomePage\">HomePage</a>\n" ;
-		$column .= "<br><a href=\"$PHP_SELF?title=special:RecentChanges\">Recent Changes</a>\n" ;
-		if ( $this->canEdit() ) $column .= "<br><a href=\"$PHP_SELF?action=edit&title=$this->url\">Edit this page</a>\n" ;
+		$column .= "<a href=\"$THESCRIPT?title=HomePage\">HomePage</a>\n" ;
+		$column .= "<br><a href=\"$THESCRIPT?title=special:RecentChanges\">Recent Changes</a>\n" ;
+		if ( $this->canEdit() ) $column .= "<br><a href=\"$THESCRIPT?action=edit&title=$this->url$editOldVersion\">Edit this page</a>\n" ;
+
 # No user management due to request of Larry
-#		if ( $this->canDelete() ) $column .= "<br><a href=\"$PHP_SELF?action=deletepage&title=$this->url\">Delete this page</a>\n" ;
-#		if ( $this->canProtect() ) $column .= "<br><a href=\"$PHP_SELF?action=protectpage&title=$this->url\">Protect this page</a>\n" ;
-#		if ( $this->canAdvance() ) $column .= "<br><a href=\"$PHP_SELF?title=special:Advance&topic=$this->safeTitle\">Advance</a>\n" ;
-		if ( !$this->isSpecialPage ) $column .= "<br><a href=\"$PHP_SELF?action=history&title=$this->url\">History</a>\n" ;
-		$column .= "<br><a href=\"$PHP_SELF?title=special:Upload\">Upload files</a>\n" ;
+#		if ( $this->canDelete() ) $column .= "<br><a href=\"$THESCRIPT?action=deletepage&title=$this->url\">Delete this page</a>\n" ;
+#		if ( $this->canProtect() ) $column .= "<br><a href=\"$THESCRIPT?action=protectpage&title=$this->url\">Protect this page</a>\n" ;
+#		if ( $this->canAdvance() ) $column .= "<br><a href=\"$THESCRIPT?title=special:Advance&topic=$this->safeTitle\">Advance</a>\n" ;
+
+		if ( !$this->isSpecialPage ) $column .= "<br><a href=\"$THESCRIPT?action=history&title=$this->url\">History</a>\n" ;
+		$column .= "<br><a href=\"$THESCRIPT?title=special:Upload\">Upload files</a>\n" ;
 		$column .= "<hr>" ;
-		$column .= "<a href=\"$PHP_SELF?title=special:Statistics\">Statistics</a>" ;
-		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:LonelyPages\">Orphans</a>" ;
-		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:WantedPages\">Most wanted</a>" ;
-		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:AllPages\">All pages</a>" ;
-		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:RandomPage\">Random Page</a>" ;
-		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:ShortPages\">Stub articles</a>" ;
-		$column .= "<br>\n<a href=\"$PHP_SELF?title=special:ListUsers\">List users</a>" ;
+		$column .= "<a href=\"$THESCRIPT?title=special:Statistics\">Statistics</a>" ;
+		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:LonelyPages\">Orphans</a>" ;
+		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:WantedPages\">Most wanted</a>" ;
+		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:AllPages\">All pages</a>" ;
+		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:RandomPage\">Random Page</a>" ;
+		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:ShortPages\">Stub articles</a>" ;
+		$column .= "<br>\n<a href=\"$THESCRIPT?title=special:ListUsers\">List users</a>" ;
 		if ( $user->isLoggedIn ) {
-			$column .= "<br>\n<a href=\"$PHP_SELF?title=special:WatchList\">My watchlist</a>" ;
+			$column .= "<br>\n<a href=\"$THESCRIPT?title=special:WatchList\">My watchlist</a>" ;
 			}
 		$a = $this->getOtherNamespaces () ;
 		if ( count ( $a ) > 0 ) $column .= "<hr>".implode ( "<br>\n" , $a ) ;
@@ -513,7 +506,7 @@ class WikiPage extends WikiTitle {
 		if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=above rules=none" ; 
 		else $border = "border=0" ;
 		$ret = "<table width=100% $border bordercolor=black cellspacing=0><tr><td>$ret</td></tr></table>" ;
-		if ( !$this->isSpecialPage ) $ret .= "<a href=\"$PHP_SELF?title=$this->secureTitle&diff=yes\">(diff)</a> " ;
+		if ( !$this->isSpecialPage ) $ret .= "<a href=\"$THESCRIPT?title=$this->secureTitle&diff=yes\">(diff)</a> " ;
 		$a = $this->getOtherNamespaces () ;
 		if ( count ( $a ) > 0 ) $ret .= "Other namespaces : ".implode ( " | " , $a ) ;
 		$ret .= "<FORM>Search: <INPUT TYPE=text NAME=search SIZE=20></FORM>" ;
