@@ -202,7 +202,7 @@ class OutputPage {
 
 		if ( "" != $wgDebugLogFile ) {
 			$log = sprintf( "T\t%01.2f\t%s\n", $elapsed,
-			  $HTTP_SERVER_VARS['REQUEST_URI'] );
+			  urldecode( $HTTP_SERVER_VARS['REQUEST_URI'] ) );
 			error_log( $log, 3, $wgDebugLogFile );
         }
 		$com = sprintf( "<!-- Time since request: %01.2f secs. -->",
