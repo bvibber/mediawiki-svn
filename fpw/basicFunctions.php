@@ -74,6 +74,7 @@ function edit ( $title ) {
 	global $user , $CommentBox , $vpage , $EditTime , $wikiDescribePage , $wikiUser , $namespaceBackground , $wikiNamespaceBackground ;
 	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend , $wikiEditHelp , $wikiRecodeInput ;
 	global $wikiSummary , $wikiMinorEdit , $wikiCopyrightNotice , $wikiSave , $wikiPreview , $wikiDontSaveChanges , $wikiGetDate ;
+	global $wikiBeginDiff, $wikiEndDiff;
 	$npage = new WikiPage ;
 	$npage->title = $title ;
 	$npage->makeAll () ;
@@ -106,6 +107,7 @@ function edit ( $title ) {
 				$npage->load ( $npage->title ) ;
 				$text = $npage->contents ;
 				$text = str_replace ( "&" , "&amp;" , $text ) ;
+
 				$editConflict = true ;
 				}
 			}
@@ -185,7 +187,16 @@ function edit ( $title ) {
 	if ( $editConflict ) {
 		$ret .= "<br><hr><br><b>This is the text you submitted :</b><br>\n" ;
 		$ret .= "<textarea name=NotIMPORTANT rows=".$user->options["rows"]." cols=".$user->options["cols"]." STYLE=\"width:100%\" WRAP=virtual>$oldSubmittedText</textarea><br>\n" ;
-		}
+		# Add the diffs between the two competing versions:
+		$ret .= "<nowiki><font color=red><b>$wikiBeginDiff</b></font><br>\n\n" ;
+		$old_lines = explode ( "\n" , htmlspecialchars( $oldSubmittedText ) ) ;
+		$new_lines = explode ( "\n" , htmlspecialchars( $text ) ) ;
+		include_once( "./difflib.php" );
+		$diffs = new Diff($old_lines, $new_lines);
+		$formatter = new TableDiffFormatter();
+		$ret .= $formatter->format($diffs);
+		$ret .= "<font color=red><b>$wikiEndDiff</b></font><hr></nowiki>\n" ;
+	      }
 
 	$ret .= " </form>\n" ;
 
