@@ -2005,6 +2005,9 @@ class Article {
 	function quickEdit( $text, $comment = '', $minor = 0 ) {
 		global $wgUser;
 		$fname = 'Article::quickEdit';
+
+		wfDebugDieBacktrace( "$fname called." );
+
 		wfProfileIn( $fname );
 
 		$dbw =& wfGetDB( DB_MASTER );
