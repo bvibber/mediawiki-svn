@@ -1,6 +1,6 @@
 <?
 # ATTENTION:
-# To fit your local settings, PLEASE edit wikiText.php ONLY!
+# To fit your local settings, PLEASE edit wikiSettings.php and wikiLocalSettings.php ONLY!
 # Change settings here ONLY if they're to become global in all wikipedias!
 
 
