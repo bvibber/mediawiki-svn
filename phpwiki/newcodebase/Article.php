@@ -198,8 +198,8 @@ class Article {
 		global $wgUser, $wgOut, $wgTitle, $wgLang;
 		global $oldid, $diff;
 
-		$wgOut->addHeader( "Expires", $wgLang->rfc1123( time() + 3600 ) );
-		$wgOut->addHeader( "Cache-Control", "public" );
+		# $wgOut->addHeader( "Expires", $wgLang->rfc1123( time() + 3600 ) );
+		# $wgOut->addHeader( "Cache-Control", "private" );
 
 		if ( isset( $diff ) ) {
 			$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
@@ -390,14 +390,14 @@ $wpTextbox2
 
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
-		  "cur_restrictions,cur_ind_title,cur_user_text,cur_is_redirect) " .
-		  "VALUES ({$ns},'" . wfStrencode( $ttl ) . "', '" .
+		  "cur_restrictions,cur_ind_title,cur_user_text,cur_is_redirect," .
+		  "cur_is_new) VALUES ({$ns},'" . wfStrencode( $ttl ) . "', '" .
 		  wfStrencode( $text ) . "', '" .
 		  wfStrencode( $summary ) . "', '" .
 		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', " .
 		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
 		  wfStrencode( $wgTitle->getIndexTitle() ) .
-		  "', '" . wfStrencode( $wgUser->getName() ) . "', $redir)";
+		  "', '" . wfStrencode( $wgUser->getName() ) . "', $redir, 1)";
 		$res = wfQuery( $sql, "Article::insertNewArticle" );
 
 		$newid = wfInsertId();
@@ -437,7 +437,7 @@ $wpTextbox2
 			  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
 			  ",cur_timestamp='" . date( "YmdHis" ) .
 			  "',cur_user_text='" . wfStrencode( $wgUser->getName() ) .
-			  "',cur_is_redirect={$redir} " .
+			  "',cur_is_redirect={$redir}, cur_is_new=0 " .
 			  "WHERE cur_id=" . $this->getID();
 			$res = wfQuery( $sql, $fname );
 		}
@@ -597,6 +597,46 @@ $wpTextbox2
 		$wgOut->addHTML( $s );
 	}
 
+	function protect()
+	{
+		global $wgUser, $wgOut, $wgTitle;
+
+		if ( ! $wgUser->isSysop() ) {
+			$wgOut->sysopRequired();
+			return;
+		}
+		$id = $wgTitle->getArticleID();
+		if ( 0 == $id ) {
+			$wgOut->fatalEror( wfMsg( "badarticleerror" ) );
+			return;
+		}
+		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp," .
+		  "cur_restrictions='sysop' WHERE cur_id={$id}";
+		wfQuery( $sql, "Article::protect" );
+
+		$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL() ) );
+	}
+
+	function unprotect()
+	{
+		global $wgUser, $wgOut, $wgTitle;
+
+		if ( ! $wgUser->isSysop() ) {
+			$wgOut->sysopRequired();
+			return;
+		}
+		$id = $wgTitle->getArticleID();
+		if ( 0 == $id ) {
+			$wgOut->fatalEror( wfMsg( "badarticleerror" ) );
+			return;
+		}
+		$sql = "UPDATE cur SET cur_timestamp=cur_timestamp," .
+		  "cur_restrictions='' WHERE cur_id={$id}";
+		wfQuery( $sql, "Article::unprotect" );
+
+		$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL() ) );
+	}
+
 	function delete()
 	{
 		global $wgUser, $wgOut, $wgTitle;
@@ -720,7 +760,28 @@ $wpTextbox2
 		wfQuery( $sql, $fname );
 
 		if ( 0 != $id ) {
+			$t = wfStrencode( $title->getPrefixedDBkey() );
+			$sql = "SELECT l_from FROM links WHERE l_to={$id}";
+			$res = wfQuery( $sql, $fname );
+
+			$sql = "INSERT INTO brokenlinks (bl_from,bl_to) VALUES ";
+			$first = true;
+
+			while ( $s = wfFetchObject( $res ) ) {
+				$nt = Title::newFromDBkey( $s->l_from );
+				$lid = $nt->getArticleID();
+
+				if ( ! $first ) { $sql .= ","; }
+				$first = false;
+				$sql .= "({$lid},'{$t}')";
+			}
+			if ( ! $first ) { wfQuery( $sql, $fname ); }
+			wfFreeResult( $res );
+
 			$sql = "DELETE FROM links WHERE l_to={$id}";
+			wfQuery( $sql, $fname );
+
+			$sql = "DELETE FROM links WHERE l_from={$t}";
 			wfQuery( $sql, $fname );
 
 			$sql = "DELETE FROM brokenlinks WHERE bl_from={$id}";

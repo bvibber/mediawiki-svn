@@ -383,7 +383,8 @@ class Skin {
 			  . $sep . $this->unwatchThisPage();
 
 			if ( $wgUser->isSysop() ) {
-				$s .= $sep . $this->deleteThisPage();
+				$s .= $sep . $this->deleteThisPage() .
+				$sep . $this->protectThisPage();
 			}
 			$s .= $sep . $this->talkLink()
 			  . $sep . $this->historyLink()
@@ -442,7 +443,27 @@ class Skin {
 
 			$s = $this->makeKnownLink( $n, $t, "action=delete" );
 		} else {
-			$s = wfMsg( "protectedpage" );
+			$s = wfMsg( "error" );
+		}
+		return $s;
+	}
+
+	function protectThisPage()
+	{
+		global $wgUser, $wgOut, $wgTitle, $diff;
+
+		if ( $wgOut->isArticle() && ( ! $diff ) && $wgUser->isSysop() ) {
+			$n = $wgTitle->getPrefixedText();
+			if ( $wgTitle->isProtected() ) {
+				$t = wfMsg( "unprotectthispage" );
+				$q = "action=unprotect";
+			} else {
+				$t = wfMsg( "protectthispage" );
+				$q = "action=protect";
+			}
+			$s = $this->makeKnownLink( $n, $t, $q );
+		} else {
+			$s = wfMsg( "error" );
 		}
 		return $s;
 	}

@@ -26,12 +26,13 @@ CREATE TABLE cur (
   cur_user int(5) unsigned default '0',
   cur_user_text varchar(40) binary NOT NULL,
   cur_timestamp char(14) binary NOT NULL default '',
-  cur_minor_edit tinyint(1) default '0',
   cur_restrictions tinyblob,
   cur_counter bigint(20) unsigned default '0',
   cur_ind_title varchar(255) default NULL,
   cur_ind_text mediumtext,
   cur_is_redirect tinyint(1) unsigned NOT NULL default '0',
+  cur_minor_edit tinyint(1) default '0',
+  cur_is_new tinyint(1) default '0',
   UNIQUE KEY cur_id (cur_id)
 ) TYPE=MyISAM PACK_KEYS=1;
 

@@ -168,6 +168,14 @@ class Title {
 
 	function isExternal() { return ( "" != $this->mInterwiki ); }
 
+	function isProtected()
+	{
+		if ( -1 == $this->mNamespace ) { return true; }
+		$a = $this->getRestrictions();
+		if ( in_array( "sysop", $a ) ) { return true; }
+		return false;
+	}
+
 	function userCanEdit()
 	{
 		global $wgUser;
