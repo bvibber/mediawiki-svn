@@ -40,7 +40,8 @@ include_once("utf8Case.php");
     "Zawsze jako PNG",
 	"HTML dla prostych, dla reszty PNG",
 	"Spróbuj HTML; jeśli zawiedzie, to PNG",
-	"Pozostaw w TeXu (tekst)" 
+	"Pozostaw w TeXu (tekst)",
+	"HTML, dla nowszych przeglądarek"
 ); 
 
 /* private */ $wgUserTogglesPl = array(
@@ -340,6 +341,8 @@ Zobacz $1.",
 "sitetitle"		=> "Wikipedia",
 "sitesubtitle"	=> "Wolna Encyklopedia",
 "retrievedfrom" => "Źródło: \"$1\"",
+"newmessages"   => "Masz $1.",
+"newmessageslink" => "Nowe wiadomości",
 
 # Main script and global functions
 #
@@ -456,7 +459,13 @@ Po otrzymaniu go zaloguj się ponownie.",
 Podany powód to:<br>$2<p>. Możesz się skontaktować z $1 lub innym
 [[Wikipedia:Administratorzy|administratorem]] by wyjaśnić sprawę zablokowania.",
 "newarticle"	=> "(Nowy)",
-"newarticletext" => "Nie ma jeszcze artykułu o tym tytule. W tym polu można wpisać pierwszy jego fragment. Jeśli nie to było Twoim zamiarem, wciśnij po prostu Wstecz.",
+"newarticletext" => "Nie ma jeszcze artykułu o tym tytule. W poniższym polu można wpisać pierwszy jego fragment. Jeśli nie to było Twoim zamiarem, wciśnij po prostu ''Wstecz''.",
+"anontalkpagetext" => "---- ''To jest strona dyskusyjna dla użytkowników
+anonimowych - takich, którzy nie mają jeszcze swojego konta na Wikipedii lub
+nie chcą go w tej chwili używać. By ich identyfikować używamy [[IP|numerów IP]].
+Jeśli jesteś anonimowym użytkownikiem i wydaje Ci się, że zamieszczone tu komentarze
+nie są skierowane do Ciebie, [[Specjalna:Userlogin|utwórz proszę konto i/albo zaloguj się]]
+- dzięki temu unikniesz w przyszłości podobnych nieporozumień.'' ",
 "noarticletext" => "(Nie ma jeszcze artykułu o tym tytule. Wybierz ''Edytuj'' by go rozpocząć.)",
 "updated"		=> "(Zmodyfikowano)",
 "note"			=> "<strong>Uwaga:</strong> ",
@@ -487,6 +496,9 @@ dziełem lub pochodzi z materiałów dostępnych na zasadach <i>public domain</i
 licencji <i>GNU Free Documentation License</i> lub kompatybilnej.
 <br><strong>PROSZĘ NIE UŻYWAĆ BEZ POZWOLENIA MATERIAŁÓW OBJĘTYCH PRAWEM
 AUTORSKIM!</strong>",
+"longpagewarning" => "UWAGA: Ta strona ma $1 kilobajt-y/-ów; w przypadku niektórych
+przeglądarek mogą wystąpić problemy w edycji stron mających więcej niż 32 kilobajty.
+Jeśli to możliwe, spróbuj podzielić tekst na mniejsze części.",
 
 
 # History pages
