@@ -8,31 +8,43 @@ function doMove ( $ot , $nt , $rd ) {
 	$t->setTitle ( $nt ) ;
 	$nst = $t->secureTitle ;        
 
+	# Updating old table
 	$sql = "UPDATE old SET old_title=\"$nst\" WHERE old_title=\"$ost\"" ;
         $result = mysql_query ( $sql , $connection ) ;
 
+	# Updating new entry
 	$sql = "UPDATE cur SET cur_title=\"$nst\" WHERE cur_title=\"$ost\"" ;
         $result = mysql_query ( $sql , $connection ) ;
 
+	# Updating links with the old page as source
 	$sql = "UPDATE linked SET linked_from=\"$nst\" WHERE linked_from=\"$ost\"" ;
         $result = mysql_query ( $sql , $connection ) ;
-
 	$sql = "UPDATE unlinked SET unlinked_from=\"$nst\" WHERE unlinked_from=\"$ost\"" ;
         $result = mysql_query ( $sql , $connection ) ;
 
+	# Updating links to the new REDIRECT
+	# INCOMPLETE, thus deactivated
+/*
+	$sql = "UPDATE linked SET linked_to=\"$nst\" WHERE linked_to=\"$ost\"" ;
+        $result = mysql_query ( $sql , $connection ) ;
+	# Now the article bodies will have to be canged...
+*/
+
 	if ( $rd ) {
+		global $wikiMoveRedirectMessage ;
 		$t->setTitle ( $ot ) ;
 		$t->ensureExistence () ;
-		$t->setEntry ( "#REDIRECT [[$nt]]" , "Moved to $nt" , $user->id , $user->name , 1 ) ;
+		$t->setEntry ( "#REDIRECT [[$nt]]" , str_replace ( "$1" , "$nt" , $wikiMoveRedirectMessage ) , $user->id , $user->name , 1 ) ;
 		}
 
-	$ret = "'$ot' was successfully moved to '$nt'." ;
-	if ( $rd ) $ret .= " A redirect was created." ;
+	global $wikiMoveMoved , $wikiMoveRedirected ;
+	$ret = str_replace ( "$1" , $ot , str_replace ( "$2" , $nt , $wikiMoveMoved ) ) ;
+	if ( $rd ) $ret .= $wikiMoveRedirected ;
 	return $ret ;
 	}
 
 function movepage ( ) {
-	global $vpage , $target , $wikiMoveThisPage , $newname , $doredirect , $doit ;
+	global $vpage , $target , $wikiMoveThisPage , $newname , $doredirect , $doit , $wikiMoveWarning , $wikiMoveForm ;
 	$vpage->setTitle ( $wikiMoveThisPage ) ;
 	$ret = "" ;
 	$doshow = true ;
@@ -45,7 +57,7 @@ function movepage ( ) {
 	if ( $doit != "" ) {
 		$npage = new wikiPage ;
 		$npage->setTitle ( $newname ) ;
-		if ( $newname == "" or $npage->doesTopicExist () ) $warning = "<font color=red><b>'$newname' already exists! Please choose another name.</b></font><br><br>\n" ;
+		if ( $newname == "" or $npage->doesTopicExist () ) $warning = str_replace ( "$1" , $newname , $wikiMoveWarning ) ;
 		else {
 			$ret = doMove ( $nt , $newname , $doredirect ) ;
 			$doshow = false ;
@@ -54,12 +66,7 @@ function movepage ( ) {
 
 	if ( $doshow ) {
 		$ret .= $warning ;
-		$ret .= "<h2>You are about to move '$nt' and its history to a new title.</h2>\n" ;
-		$ret .= "<FORM method=post>\n" ;
-		$ret .= "New name : <INPUT type=text value='$newname' name=newname size=40 maxlength=250><br><br>\n" ;
-		$ret .= "<INPUT type=checkbox$checked name=doredirect>Create a #REDIRECT from '$nt' to the new title<br><br>\n" ;
-		$ret .= "<INPUT type=submit name=doit value='Move'>\n" ;
-		$ret .= "</FORM>\n" ;
+		$ret .= str_replace ( "$2" , $newname , str_replace ( "$1" , $nt , $wikiMoveForm ) ) ;
 		}
 
 	return $ret ;

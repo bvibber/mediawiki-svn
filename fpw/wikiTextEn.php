@@ -239,6 +239,19 @@ $wikiDate["december"] = "December" ;
 #-----------------------------------------------------------------------
 ## strings for specialFunctions.php
 
+# Moving
+$wikiMoveRedirectMessage = "Moved to $1" ;
+$wikiMoveMoved = "$1 was successfully moved to $2" ;
+$wikiMoveRedirected = " A redirect was created." ;
+$wikiMoveWarning = "<font color=red><b>'$1' already exists! Please choose another name.</b></font><br><br>\n" ;
+$wikiMoveForm = "
+<h2>You are about to move '$1' and its history to a new title.</h2>\n
+<FORM method=post>\n
+New name : <INPUT type=text value='$2' name=newname size=40 maxlength=250><br><br>\n
+<INPUT type=checkbox$checked name=doredirect>Create a #REDIRECT from '$1' to the new title<br><br>\n
+<INPUT type=submit name=doit value='Move'>\n
+</FORM>\n" ;
+
 # Log out / log in
 $wikiGoodbye = "<h1>Goodbye, $1!</h1>" ;
 $wikiWelcomeCreation = "<h1>Welcome, $1!</h1><font color=red>Don't forget to personalize your wikipedia preferences!</font><br>Your account has been created. Please press \"Log in\" once more to log in!" ; ;
