@@ -3,7 +3,7 @@
 
 /* private */ $wgValidInterwikis = array(
 	# Special cases
-	"w"		=> "http://www.wikipedia.com/wiki/$1",
+	"w"		=> "http://www.wikipedia.org/wiki/$1",
 	"m"		=> "http://meta.wikipedia.com/wiki.phtml?title=$1",
 	"simple"=> "http://simple.wikipedia.com/wiki.cgi?$1",
 
@@ -32,7 +32,7 @@
 	"dk"	=> "http://dk.wikipedia.com/wiki.cgi?$1",
 	"dz"    => "http://dz.wikipedia.com/wiki.cgi?$1",
 	"el"    => "http://el.wikipedia.com/wiki.cgi?$1",
-	"en"	=> "http://www.wikipedia.com/wiki/$1",
+	"en"	=> "http://www.wikipedia.org/wiki/$1",    # May in future be renamed to en.wikipedia.org; should work as alternate
 	"eo"	=> "http://eo.wikipedia.com/wiki/$1",
 	"es"	=> "http://es.wikipedia.com/wiki.cgi?$1",
 	"et"    => "http://et.wikipedia.com/wiki.cgi?$1",

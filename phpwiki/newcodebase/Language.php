@@ -279,7 +279,7 @@
 "redirectedfrom" => "(Redirected from $1)",
 "lastmodified"	=> "The page was last modified $1.",
 "viewcount"		=> "This page has been accessed $1 times.",
-"printsubtitle" => "(From http://www.wikipedia.com)",
+"printsubtitle" => "(From http://www.wikipedia.org)",
 "protectedpage" => "Protected page",
 "administrators" => "Wikipedia:Administrators",
 "sysoptitle"	=> "Sysop access required",
