@@ -220,7 +220,8 @@
 	"Emailuser"		=> "",
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => "",
-	"Movepage"		=> ""
+	"Movepage"		=> "",
+	"Booksources"	=> "External book sources"
 );
 
 /* private */ $wgSysopSpecialPagesEn = array(
@@ -689,6 +690,12 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 such as the international Wikipedias may link to an image with
 a direct URL, and so may still be listed here despite being
 in active use.",
+"booksources"	=> "Book sources",
+"booksourcetext" => "Below is a list of links to other sites that
+sell new and used books, and may also have further information
+about books you are looking for.
+Wikipedia is not affiliated with any of these businesses, and
+this list should not be construed as an endorsement.",
 
 # Email this user
 #

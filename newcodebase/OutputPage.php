@@ -903,6 +903,8 @@ class OutputPage {
 
 	/* private */ function magicISBN( $text )
 	{
+		global $wgLang;
+
 		$a = split( "ISBN ", " $text" );
 		if ( count ( $a ) < 2 ) return $text;
 		$text = substr( array_shift( $a ), 1);
@@ -924,11 +926,9 @@ class OutputPage {
             if ( "" == $num ) {
 				$text .= "ISBN $blank$x";
             } else {
-				$text .= "<a href=\"http://www.pricescan.com/books/bookDetail.asp?isbn=$num\">ISBN $isbn</a> ";
-				#$text .= "<a href=\"http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$num\">Barnes&amp;Noble</a> ";
-				#$text .= "(<a href=\"http://www.amazon.com/exec/obidos/ISBN=$num\">Amazon</a>, ";
-				#$text .= "<a href=\"http://www.pricescan.com/books/bookDetail.asp?isbn=$num\">Pricescan</a>)";
-				$text .= $x ;
+				$text .= "<a href=\"" . wfLocalUrlE( $wgLang->specialPage(
+				  "Booksources"), "isbn={$num}" ) . "\">ISBN $isbn</a>";
+				$text .= $x;
 			}
 		}
         return $text;

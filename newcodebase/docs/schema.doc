@@ -21,6 +21,10 @@ user    (Wikipedia users)
     Newline-separated list of name=value pairs.
   user_watch
     Newline-separated list of page titles on watchlist.
+  user_newtalk
+    Set to "1" when users's talk page is edited by someone
+    else; reset to 0 when user reads it.  Used for the "*"
+    on the user talk link.
 
 
 cur     (Wikipedia "current" articles)
@@ -169,4 +173,8 @@ site_stats (Site-wide statistics)
     Number of total page edits.
   ss_good_articles
     Number of "countable" articles.
+
+recentchanges
+
+  (Will document further when working)
 
