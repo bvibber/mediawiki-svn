@@ -317,7 +317,7 @@ class Article {
 		$wgOut->addHTML( "
 <form method=post action='$action'
 enctype='application/x-www-form-urlencoded'>
-<textarea tabindex=1 name='wpTextbox1' rows=$rows cols=$cols style='width:100%' wrap=virtual>
+<textarea tabindex=1 name='wpTextbox1' rows=$rows cols=$cols wrap=virtual>
 $wpTextbox1
 </textarea><br>
 $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlength=200>
@@ -332,7 +332,7 @@ $summary: <input tabindex=2 type=text value='$wpSummary' name='wpSummary' maxlen
 			  wfMsg( "yourtext" ), wfMsg( "storedversion" ) );
 
 			$wgOut->addHTML( "<h2>" . wfMsg( "yourtext" ) . "</h2>
-<textarea tabindex=6 name='wpTextbox2' rows=$rows cols=$cols style='width:100%' wrap=virtual>
+<textarea tabindex=6 name='wpTextbox2' rows=$rows cols=$cols wrap=virtual>
 $wpTextbox2
 </textarea>" );
 		}
