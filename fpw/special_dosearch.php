@@ -237,12 +237,13 @@ function searchLineDisplay ( $v , $words) {
     
     # highlight the search terms
     foreach ( $words as $w ) {
-        $v = preg_replace ( "/(".preg_quote( $w, "/" ).")/i" , "'''\\1'''" , $v ) ;    # highlight search term
+        $v = preg_replace ( "/(\b".preg_quote( $w, "/" )."\b)/i" , "'''\\1'''" , $v ) ;    # highlight search term
         # move highlighting outside link, if link is not already highlighted
-        $v = preg_replace ( "/([^']|[^'].|^)(\[\[[^\[\]]*)'''([^\[\]]*)'''([^\[\]]*\]\])/i", "\\1'''\\2\\3\\4'''", $v ) ;
+        while ( preg_match ( "/([^']|[^'].|^)(\[\[[^\[\]]*)'''([^\[\]]*)'''([^\[\]]*\]\])/i", $v ) )
+            $v = preg_replace ( "/([^']|[^'].|^)(\[\[[^\[\]]*)'''([^\[\]]*)'''([^\[\]]*\]\])/i", "\\1'''\\2\\3\\4'''", $v ) ;
         # remove highlighting inside link if link is already highlighted
-        $v = preg_replace ( "/('')(\[\[[^\[\]]*)'''([^\[\]]*)'''([^\[\]]*\]\])/i", "\\1\\2\\3\\4", $v ) ;
-
+        while ( preg_match ( "/('')(\[\[[^\[\]]*)'''([^\[\]]*)'''([^\[\]]*\]\])/i", $v ) )
+            $v = preg_replace ( "/('')(\[\[[^\[\]]*)'''([^\[\]]*)'''([^\[\]]*\]\])/i", "\\1\\2\\3\\4", $v ) ;
     }
 
     $v = "<font size=-1>$v</font>" ;
@@ -373,7 +374,7 @@ function doSearch () {
                     if ( $result ) {                                        # don't bother about result we don't have
                         while ( $row = mysql_fetch_object ( $result ) ) {
                             # add extra newlines for what we also consider as paragraph delimiters
-                            $ct = preg_replace ("/(\<p[^>]*>|\n[\*#:\-])/iU", "\r\n\r\n\\1", $row->cur_text ) ;
+                            $ct = preg_replace ("/(\<p [^>]*>|<p>|\n[\*#:\-])/iU", "\r\n\r\n\\1", $row->cur_text ) ;
                             $ct = preg_split ( "/\r\\n\r\\n/", $ct ) ;      # We split everything in paragraphs
                             $par = array_shift( $ct );
                             if ( strlen ( $par ) > 500 ) {                  # if the paragraph is too big we guess the sentences
@@ -404,7 +405,7 @@ function doSearch () {
                                     $pars = array ( $par );
                                 foreach ( $pars as $p ) {
                                     foreach ( $words as $w ) {                      # mark words of $words in $par
-                                        if ( stristr( $p, $w ) ) {
+                                        if ( preg_match ( "/\b".preg_quote ( $w, "/" )."\b/i", $p ) ) {
                                             $y .= "...<br>..." . searchLineDisplay( "$p\n", $words ) ;
                                             $foundpar = 1;
                                             break 3;
