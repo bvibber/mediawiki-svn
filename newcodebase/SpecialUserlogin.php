@@ -195,7 +195,7 @@ function wfSpecialUserlogin()
 		$checked = "";
 	}
 	$q = "action=submit";
-	if ( "" != $returnto ) { $q .= "&returnto={$returnto}"; }
+	if ( "" != $returnto ) { $q .= "&returnto=" . wfUrlencode($returnto); }
 	$action = wfLocalUrlE( $wgLang->specialPage( "Userlogin" ), $q );
 
 	$wpName = wfEscapeHTML( $wpName );

@@ -356,7 +356,7 @@ class OutputPage {
 		$r = str_replace( "$1", $link, wfMsg( "returnto" ) );
 		if ( $auto ) {
 			$wgOut->addMeta( "http:Refresh", "10;url=" .
-			  wfLocalUrlE( $returnto ) );
+			  wfLocalUrlE( wfUrlencode( $returnto ) ) );
 		}
 		$wgOut->addHTML( "\n<p>$r\n" );
 	}
