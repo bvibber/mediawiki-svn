@@ -1,7 +1,7 @@
 .RP
 .DA
 .TL
-WikiTeX 1.0.1 README
+WikiTeX %VERSION% README
 .AU
 Peter Danenberg <pcd at wikitex dot org>
 .AB
@@ -24,9 +24,9 @@ Covers installation and expansion of the WikiTeX system.
 .XA 2
 	3.1. Prerequisites
 .XA 2
-	3.2. Proceeding
+	3.2. Installation
 .XA 3
-	3.2.1. Java SVG (Batik)
+	3.2.1. Batik, gschem
 .XA 4
 4. Hacking
 .XA 4
@@ -35,19 +35,21 @@ Covers installation and expansion of the WikiTeX system.
 	4.2. Extending WikiTeX
 .XA 5
 5. Help
+.XA 5
+6. Colophon
 .XA 6
-6. Copyright
+7. Copyright
 .XE
 .PX
 .NH 1
 Introduction
 .RS
 .PP
-WikiTeX extends MediaWiki by allowing authors to manipulate graphical objects directly in their articles; support so far includes: math, music, chess, chemistry, go, plots and relational diagrams.  To learn more about WikiTeX, please visit:
+WikiTeX extends MediaWiki by allowing authors to manipulate graphical objects directly in their articles; support so far includes: math, music, chess, chemistry, go, plotting, relational diagrams and schematic capture.
+.PP
+Visit http://wikitex.org to learn more; or to see WikiTeX in action:
 .QP
-http://wikitex.org
-.LP
-or http://wikisophia.org to see it in action.
+http://wikisophia.org
 .RE
 .NH 1
 Acquisition
@@ -99,32 +101,51 @@ Installation
 Prerequisites
 .RS
 .PP
-WikiTeX's installation requires at least Media\%Wiki (wikipedia.sourceforge.net) and LaTeX, which comes preinstalled in many Linux distributions.  Depending on which classes you'd like to support, additional packages may be required (see below).
+In a nutshell, WikiTeX requires a successful installation of:
+.RS
+.IP \(bu
+LaTeX (latex-project.org)
+.IP \(bu
+MediaWiki (wikipedia.sf.net)
+.IP \(bu
+ImageMagick (imagemagick.org)
+.IP \(bu
+dvipng (dvipng.sf.net)
+.RE
+.LP
+Lilypond (lilypond.org), Gnuplot (gnuplot.info), Graphviz (graphviz.org) and gschem (geda.seul.org) are required for music, plot, graph and schem; and as many of the packages under \(sc3.2.5 (see below) whose classes you would like to support.
 .PP
-We'll eventually call for ImageMagick and dvipng, whose former is also pretty standard fare.
+At least LaTeX and ImageMagick are standard Linux fare; and you may find some optional packages pre-installed, too.
 .RE
 .NH 2
-Process
+Installation
 .RS
 .PP
-Working from MediaWiki's base installation directory, perform the following:
+Verify or install the essential prerequisites per \(sc3.1 above; then, working from MediaWiki's base installation directory, perform the following:
 .nr i 0 1
 .IP \n+i.
-Create /extensions/wikitex and copy there the distribution.
+Create /extensions/wikitex and copy thither the distribution.
 .IP \n+i.
 Add the following line to /LocalSettings.php before the terminal '?>':
 .QP
 include\ \%'./extensions/wikitex/wikitex.php';
 .IP \n+i.
-Render /extensions/wikitex/tmp scribable to the web server, but beware to disable scripting.
+Render /extensions/wikitex/tmp scribable to the web server:*
+.FS *
+Consult your server config for the appropriate user and group id.
+.FE
+.QP
+chown\ nobody:nobody\ \%/extensions/wikitex/tmp
 .IP \n+i.
-Verify that ImageMagick (imagemagick.org) is present, and acquire Jan-Aoke Larsson's dvipng:
+Disable PHP in /extensions/wikitex/tmp by issuing:
 .RS
 .QP
-\%http://sourceforge.net/projects/dvipng/
+php_flag engine off
+.LP
+from .htaccess in the same directory; disable CGI, if necessary.
 .RE
 .IP \n+i.
-Install as many of the following packages as you would like to support, or add your own (see Expanding WikiTeX):
+Install as many of the following packages whose classes you would like to support, or add your own (see Expanding WikiTeX):
 .RE
 .KS
 .TS
@@ -133,8 +154,9 @@ c c c c
 l l l l .
 Class	Package	Author	URL
 _
+amsmath	AMS-LaTeX	Amer. Math. Soc.	ams.org
 batik	SVG Java	Apache	apache.org
-chem	PPCH-TeX	Hans Hagen	pragma-ade.com
+chem	XyMTeX	Shinsaku Fujita	kit.ac.jp
 chess	LaTeX Chess	Piet Tutelaers	tug.org
 feyn	Feynman	Michael Levine	ctan.org
 go	Go	Daniel Bump	stanford.edu
@@ -142,37 +164,46 @@ graph	Graphviz	Emden Gansner	research.att.com
 greek	Ibycus	Pierre MacKay	tug.org
 ling	AVM	Christopher Manning	stanford.edu
 	Parsetree	Eirik Hektoen	essex.ac.uk
-amsmath	AMS-LaTeX	Amer. Math. Soc.	ams.org
 music	Lilypond	Han-Wen Nienhuys	lilypond.org
 plot	Gnuplot	Nikos Drakos	gnuplot.info
+ppch	PPCH-TeX	Hans Hagen	pragma-ade.com
 svg	SVG lite	ImageMagick	imagemagick.org
+schem	gschem	Ales Hvezda	seul.org
 teng	Tengwar	Ivan Derzhanski	quettar.org
 tipa	TIPA	Rei Fukui	ctan.org
-xym	XyMTeX	Shinsaku Fujita	kit.ac.jp
 .TE
 .KE
 .RS
 .IP \n+i.
 Lastly, ensure that your server's $PATH variable includes /usr/bin and /usr/local/bin, or wherever your binaries are installed.
 .NH 3
-Installing Batik
+Batik, gschem
 .RS
 .PP
-Installing Batik (the Java-based SVG toolkit) requires several unique steps:
+Batik and gschem require a framebuffer which, whether or not WikiTeX runs on a headless server, is best accomplished using a virtual framebuffer such as Xvfb.*
+.FS *
+VNC has been used to similar ends, but with added overhead and vulnerability.
+.FE
+.PP
+Xvfb is included with Xorg and XFree86, but may not be installed by default on some Linux distros; consult the xvfb script which came with WikiTeX.
 .nr i 0 1
 .IP \n+i.
-Install Java (java.sun.com).
+Verify xvfb for path-correctness.
 .IP \n+i.
-Install Batik (xml.apache.org/batik); if elsewhere than /usr/local/batik, configure wikitex.inc.sh.
-.IP \n+i.
-If you have XWindows, the Xserver Virtual Frame Buffer should be included; configure Xvfb to start up at runtime by:
+Start Xvfb manually by issuing:
+.RS
+.QP
+\&./xvfb start
+.LP
+or at boot-time:
 .RS
 .nr j 0 1
 .af j a
 .IP \n+j.
-Copying the provided xvfb script to /etc/init.d
+Copy xvfb to /etc/init.d
 .IP \n+j.
-Linking xvfb at the prompt:
+Link xvfb to rc.d:
+.RE
 .LP
 ln\ -s\ /etc/init.d/xvfb\ /etc/rc2.d/S98xvfb
 .RE
@@ -237,5 +268,13 @@ A great way to meet users and developers is by joining WikiTeX-l (see 4.1 above)
 http://archives.wikitex.org/wikitex-l
 .LP
 to browse the archives.
+.RE
+.NH 1
+Colophon
+.RS
+.PP
+This document was prepared in GNU troff using the ms macro package; preprocessed with tbl, the table formatter; and lastly filtered through col to remove reverse line feeds and tabs:
+.QP
+groff -ms -t -Tascii SOURCE | col -bx > OUT
 .RE
 .bp

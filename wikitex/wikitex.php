@@ -5,7 +5,8 @@ WikiTeX: expansible LaTeX module for MediaWiki
 Copyright (C) 2004-5  Peter Danenberg
 
      WikiTeX is licensed under  the  Open  Software  License
-v. 2.1; to view a copy of this license, visit:
+v. 2.1;  to  view  a  copy  of  this license, see COPYING or
+visit:
 
      http://www.opensource.org/licenses/osl-2.1.php
 
@@ -187,12 +188,6 @@ function strBatik($str)
   return $objRend->strRend($str, array('class' => 'batik'));
 }
 
-function strChem($str)
-{
-  global $objRend;
-  return $objRend->strRend($str, array('class' => 'chem'));
-}
-
 function strChess($str)
 {
   global $objRend;
@@ -247,6 +242,18 @@ function strPlot($str)
   return $objRend->strRend($str, array('class' => 'plot'));
 }
 
+function strPPCH($str)
+{
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'ppch'));
+}
+
+function strSchem($str)
+{
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'schem'));
+}
+
 function strSVG($str)
 {
   global $objRend;
@@ -268,7 +275,7 @@ function strTipa($str)
 function strXym($str)
 {
   global $objRend;
-  return $objRend->strRend($str, array('class' => 'xym'));
+  return $objRend->strRend($str, array('class' => 'chem'));
 }
 
 ?>

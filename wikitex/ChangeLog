@@ -1,3 +1,26 @@
+2005-03-08  Peter Danenberg  <pcd at wikitex dot org>
+
+	* readme.ms: clarified installation; added gschem
+	to xvfb requisants.
+
+	* wikitex.inc.php: added designator for <schem>;
+	switched out PPCH for Xym; called the former
+	<ppch>, the latter <xym>.
+
+	* wikitex.php (strSchem): added hook for
+	<schem> class
+
+	* wikitex.sh (wt_exec): added wt_exec so as to
+	catch errors and show not only whence, but why
+	a render failed.
+	(schem): added support for gschem
+
+2005-03-02  Peter Danenberg  <pcd at wikitex dot org>
+
+	* copying.ms: verbatim license
+
+	* readme.ms: added colophon.
+
 2005-02-28  Peter Danenberg  <pcd at wikitex dot org>
 
 	* wikitex.sh (wt_anch): fixed a catachrestical escape

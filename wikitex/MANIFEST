@@ -7,7 +7,7 @@
 
 
 
-                   WikiTeX 1.0.1 MANIFEST
+                   WikiTeX 1.0.2 MANIFEST
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -39,7 +39,7 @@
 3.  Templates
 
      wikitex.batik.inc.svg   Batik toolkit
-     wikitex.chem.inc.tex    PPCH-TeX
+     wikitex.chem.inc.tex    XyMTeX
      wikitex.chess.inc.tex   LaTeX Chess
      wikitex.error.inc.tex   Generic error
      wikitex.feyn.inc.tex    Feynman diagrams
@@ -50,18 +50,18 @@
      wikitex.math.inc.tex    AMS-LaTeX
      wikitex.music.inc.tex   Lilypond
      wikitex.plot.inc.p      Gnuplot
+     wikitex.ppch.inc.tex    PPCH-TeX
+     wikitex.schem.inc.svg   gEDA-gschem
      wikitex.svg.inc.svg     SVG
      wikitex.teng.inc.tex    Tengwar
      wikitex.tipa.inc.tex    TIPA
-     wikitex.xym.inc.tex     XyMTeX
 
 
 
 
 
 
-
-                      28 February 2005
+                        8 March 2005
 
 
 
@@ -72,7 +72,8 @@
 
 4.  Miscellenea
 
-     xvfb   Xvfb script (Batik toolkit)
+     wikitex.schem.scm   gschem conversion
+     xvfb                Xvfb script (Batik toolkit)
 
 
 
@@ -126,8 +127,7 @@
 
 
 
-
-                      28 February 2005
+                        8 March 2005
 
 
 
@@ -140,7 +140,8 @@ WikiTeX: expansible LaTeX module for MediaWiki
 Copyright (C) 2004-5  Peter Danenberg
 
      WikiTeX  is  licensed  under  the Open Software License
-v. 2.1; to view a copy of this license, visit:
+v. 2.1; to view a copy  of  this  license,  see  COPYING  or
+visit:
 
      http://www.opensource.org/licenses/osl-2.1.php
 
@@ -192,7 +193,6 @@ v. 2.1; to view a copy of this license, visit:
 
 
 
-
-                      28 February 2005
+                        8 March 2005
 
 

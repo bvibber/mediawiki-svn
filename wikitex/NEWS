@@ -7,10 +7,24 @@
 
 
 
-                     WikiTeX 1.0.1 NEWS
+                     WikiTeX 1.0.2 NEWS
 
           Peter Danenberg <pcd at wikitex dot org>
 
+
+Tue Mar  8 16:53:39 PST 2005  Peter Danenberg
+
+          <schem>  added;  id  est,  schematic  capture with
+     gschem (geda.seul.org).  PPCH has been deprecated; XyM-
+     TeX,  meanwhile, has taken its place as the <chem> ren-
+     derer.
+
+          Effort is underway to replace  our  ad-hoc  black-
+     lists  with  chroot-based security; adieu, "directa non
+     grata!"
+
+          Lastly, verbose errors now declare  not  only  the
+     whence, but the why of defects.
 
 Sun Feb  6 14:21:48 PST 2005  Peter Danenberg
 
@@ -44,6 +58,18 @@ Tue Jan 25 11:23:48 PST 2005  Peter Danenberg
 
           <math></math>  becomes  <amsmath></amsmath> in the
      stand-alone version, to avoid conflicting  with  texvc;
+
+
+
+                        8 March 2005
+
+
+
+
+
+                             -2-
+
+
      in pre-packaged WikiTeX, it replaces texvc.
 
           I'd  also  like  to  un-cobweb that bash interface
@@ -57,18 +83,6 @@ Mon Oct  4 01:56:23 PDT 2004  Peter Danenberg
 
           Batik  may  be  invoked  by  <batik></batik>;  and
      <svg></svg>, ImageMagick.
-
-
-
-
-                      28 February 2005
-
-
-
-
-
-                             -2-
-
 
 Sun Oct  3 17:38:03 PDT 2004  Peter Danenberg
 
@@ -106,28 +120,14 @@ Sun May 30 00:00:00 PDT 2004  Peter Danenberg
      bles  a  glue-script with regular-expression grinding,*
      we might not need  to  look  past  Perl;  PHP,  in  any
      case,  just passes as lexer/parser: but we'd like some-
-     thing more robust and, above all, to separate  applica-
-     tion from interface.
-
-
-
-
-
-
-
-
-
-
-
-
-
+     thing  more  robust  and,  above   all,   to   separate
 -----------
   * Raymond,  Eric  Steven.   The Art of Unix Pro-
 gramming (faqs.org/docs/artu).
 
 
 
-                      28 February 2005
+                        8 March 2005
 
 
 
@@ -136,11 +136,78 @@ gramming (faqs.org/docs/artu).
                              -3-
 
 
+     application from interface.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        8 March 2005
+
+
+
+
+
+                             -4-
+
+
 WikiTeX: expansible LaTeX module for MediaWiki
 Copyright (C) 2004-5  Peter Danenberg
 
      WikiTeX  is  licensed  under  the Open Software License
-v. 2.1; to view a copy of this license, visit:
+v. 2.1; to view a copy  of  this  license,  see  COPYING  or
+visit:
 
      http://www.opensource.org/licenses/osl-2.1.php
 
@@ -192,7 +259,6 @@ v. 2.1; to view a copy of this license, visit:
 
 
 
-
-                      28 February 2005
+                        8 March 2005
 
 

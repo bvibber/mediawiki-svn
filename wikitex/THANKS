@@ -7,7 +7,7 @@
 
 
 
-                    WikiTeX 1.0.1 THANKS
+                    WikiTeX 1.0.2 THANKS
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -29,6 +29,7 @@ Massoud Ghyam-khah          support                  usc.edu
 Hugo Looyestijn             testing               phys.uu.nl
 Michel Hardy-Vallee         testing                mcgill.ca
 Jonathan Pennington         testing          oregonstate.edu
+Ales Hvezda                  Scheme                 seul.org
 
 
 
@@ -60,8 +61,7 @@ Jonathan Pennington         testing          oregonstate.edu
 
 
 
-
-                      28 February 2005
+                        8 March 2005
 
 
 
@@ -74,7 +74,8 @@ WikiTeX: expansible LaTeX module for MediaWiki
 Copyright (C) 2004-5  Peter Danenberg
 
      WikiTeX  is  licensed  under  the Open Software License
-v. 2.1; to view a copy of this license, visit:
+v. 2.1; to view a copy  of  this  license,  see  COPYING  or
+visit:
 
      http://www.opensource.org/licenses/osl-2.1.php
 
@@ -126,7 +127,6 @@ v. 2.1; to view a copy of this license, visit:
 
 
 
-
-                      28 February 2005
+                        8 March 2005
 
 

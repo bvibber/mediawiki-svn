@@ -5,7 +5,8 @@ WikiTeX: expansible LaTeX module for MediaWiki
 Copyright (C) 2004-5  Peter Danenberg
 
      WikiTeX is licensed under  the  Open  Software  License
-v. 2.1; to view a copy of this license, visit:
+v. 2.1;  to  view  a  copy  of  this license, see COPYING or
+visit:
 
      http://www.opensource.org/licenses/osl-2.1.php
 
@@ -25,21 +26,22 @@ $strRendPath = "$IP/extensions/wikitex";
 
 // Set class names; which may be customized based on local language, fashion
 // or whim.  Henry V was a maker of these when he was courting Gallrix Kate.
-$arrRend = array ('batik'	=> 'strBatik',
-		  'chem'	=> 'strChem',
+$arrRend = array ('amsmath'	=> 'strMath',
+		  'batik'	=> 'strBatik',
+		  'chem'	=> 'strXym',
 		  'chess'	=> 'strChess',
 		  'feyn'	=> 'strFeyn',
 		  'go'		=> 'strGo',
 		  'greek'	=> 'strGreek',
 		  'graph'	=> 'strGraph',
 		  'ling'	=> 'strLing',
-		  'amsmath'	=> 'strMath',
 		  'music'	=> 'strMusic',
 		  'plot'	=> 'strPlot',
+		  'ppch'	=> 'strPPCH',
+		  'schem'	=> 'strSchem',
 		  'svg'		=> 'strSVG',
 		  'teng'	=> 'strTeng',
-		  'tipa'	=> 'strTipa',
-		  'xym'		=> 'strXym');
+		  'tipa'	=> 'strTipa');
 
 // liberal Latin in errorous dicta
 $arrErr['rend']	= 'directive non gratum.';

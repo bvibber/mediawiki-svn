@@ -1,8 +1,18 @@
 .DA
 .TL
-WikiTeX 1.0.1 NEWS
+WikiTeX %VERSION% NEWS
 .AU
 Peter Danenberg <pcd at wikitex dot org>
+.SH
+Tue Mar  8 16:53:39 PST 2005	Peter Danenberg
+.RS
+.PP
+<schem> added; id est, schematic capture with gschem (geda.seul.org).  PPCH has been deprecated; XyMTeX, meanwhile, has taken its place as the <chem> renderer.
+.PP
+Effort is underway to replace our ad-hoc blacklists with chroot-based security; adieu, \(lqdirecta non grata!\(rq
+.PP
+Lastly, verbose errors now declare not only the whence, but the why of defects.
+.RE
 .SH
 Sun Feb  6 14:21:48 PST 2005	Peter Danenberg
 .RS

@@ -1,6 +1,6 @@
 .DA
 .TL
-WikiTeX 1.0.1 THANKS
+WikiTeX %VERSION% THANKS
 .AU
 Peter Danenberg <pcd at wikitex dot org>
 .PP
@@ -19,5 +19,6 @@ Massoud Ghyam-khah	support	usc.edu
 Hugo Looyestijn	testing	phys.uu.nl
 Michel Hardy-Vallee	testing	mcgill.ca
 Jonathan Pennington	testing	oregonstate.edu
+Ales Hvezda	Scheme	seul.org
 .TE
 .bp

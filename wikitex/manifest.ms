@@ -1,6 +1,6 @@
 .DA
 .TL
-WikiTeX 1.0.1 MANIFEST
+WikiTeX %VERSION% MANIFEST
 .AU
 Peter Danenberg <pcd at wikitex dot org>
 .NH
@@ -39,7 +39,7 @@ Templates
 .TS
 l l .
 wikitex.batik.inc.svg	Batik toolkit
-wikitex.chem.inc.tex	PPCH-TeX
+wikitex.chem.inc.tex	XyMTeX
 wikitex.chess.inc.tex	LaTeX Chess
 wikitex.error.inc.tex	Generic error
 wikitex.feyn.inc.tex	Feynman diagrams
@@ -50,10 +50,11 @@ wikitex.ling.inc.tex	AVM, Parsetree
 wikitex.math.inc.tex	AMS-LaTeX
 wikitex.music.inc.tex	Lilypond
 wikitex.plot.inc.p	Gnuplot
+wikitex.ppch.inc.tex	PPCH-TeX
+wikitex.schem.inc.svg	gEDA-gschem
 wikitex.svg.inc.svg	SVG
 wikitex.teng.inc.tex	Tengwar
 wikitex.tipa.inc.tex	TIPA
-wikitex.xym.inc.tex	XyMTeX
 .TE
 .RE
 .NH
@@ -61,6 +62,7 @@ Miscellenea
 .RS
 .TS
 l l .
+wikitex.schem.scm	gschem conversion
 xvfb	Xvfb script (Batik toolkit)
 .TE
 .RE

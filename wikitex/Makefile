@@ -1,7 +1,9 @@
+VERSION = 1.0.2
 PRE = cat 
-POST = copying.inc.ms | groff -t -ms -Tascii - | col -bx >
+POST = copying.inc.ms | sed "s/\%VERSION\%/${VERSION}/" | groff -t -ms -Tascii - | col -bx >
+DOC = README NEWS COPYING MANIFEST THANKS
 
-all: README NEWS COPYING MANIFEST THANKS
+all: ${DOC}
 
 README: readme.ms
 	$(PRE) $? $(POST) $@
@@ -19,4 +21,4 @@ THANKS: thanks.ms
 	$(PRE) $? $(POST) $@
 
 clean:
-	rm *~
+	rm -f *~ ${DOC}
