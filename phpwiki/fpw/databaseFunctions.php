@@ -1,8 +1,9 @@
 <?
 function getDBconnection () {
-	$server="127.0.0.1" ;
-	$user="root" ;
-	$passwd="" ;
+	global $wikiThisDBserver , $wikiThisDBuser, $wikiThisDBpassword ;
+	$server = $wikiThisDBserver ;
+	$user = $wikiThisDBuser ;
+	$passwd = $wikiThisDBpassword ;
 	$connection=mysql_connect ( $server , $user , $passwd ) ;
 	return $connection ;
 	}

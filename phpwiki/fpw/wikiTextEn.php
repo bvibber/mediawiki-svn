@@ -212,7 +212,7 @@ $wikiOutputEncoding = "Output encoding : ";
 
 # Misc
 $wikiLonelyPagesTitle = "The Orphans" ;
-$wikiLonelyPagesText = "'''These articles exist, but no articles link to them!''' (the first 50)<br>''Talk: pages, empty pages and #REDIRECTs are '''not''' listed here.''\n\n" ;
+$wikiLonelyPagesText = "'''These articles exist, but no articles link to them!'''<br>''Talk: pages, empty pages and #REDIRECTs are '''not''' listed here.''\n\n" ;
 $wikiAllPagesTitle = "All Pages Index" ;
 $wikiAllPagesText = "'''These are all the articles in the database!'''\n\n" ;
 $wikiSearchTitle = "Search" ;

@@ -351,11 +351,11 @@ function LonelyPages () {
 		$u = explode ( "\n" , $s->cur_linked_links ) ; foreach ( $u as $x ) $allPages[ucfirst($x)] += 1 ;
 		$u = explode ( "\n" , $s->cur_unlinked_links ) ; foreach ( $u as $x ) $allPages[ucfirst($x)] += 1 ;
 		}
-	mysql_free_result ( $result ) ;
+	if ( $result != false ) mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
 
 	asort ( $allPages ) ;
-	$allPages = array_slice ( $allPages , 0 , 50 ) ;
+#	$allPages = array_slice ( $allPages , 0 , 50 ) ;
 
 	$orphans = array () ;
 	$v = array_keys ( $allPages ) ;
@@ -366,7 +366,7 @@ function LonelyPages () {
 
 	asort ( $orphans ) ;
 	foreach ( $orphans as $x )
-		$ret .= "[[$x|".$vpage->getNiceTitle($x)."]]<br>\n" ;
+		$ret .= "# [[$x|".$vpage->getNiceTitle($x)."]]<br>\n" ;
 	return $ret ;
 	}
 
@@ -1410,12 +1410,12 @@ function contributions () {
 	$connection = getDBconnection () ;
 	mysql_select_db ( $wikiSQLServer , $connection ) ;
 
-	$question = "SELECT cur_title FROM cur WHERE cur_user_text=\"$theuser\"" ;
+	$question = "SELECT cur_title FROM cur WHERE cur_user_text=\"$theuser\" AND cur_minor_edit<>1" ;
 	$result = mysql_query ( $question , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) ) array_push ( $ac , $s->cur_title ) ;
 	mysql_free_result ( $result ) ;
 
-	$question = "SELECT old_title FROM old WHERE old_user_text=\"$theuser\"" ;
+	$question = "SELECT old_title FROM old WHERE old_user_text=\"$theuser\" AND old_minor_edit<>1" ;
 	$result = mysql_query ( $question , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) )
 		if ( !in_array ( $s->cur_title , $ac ) )
