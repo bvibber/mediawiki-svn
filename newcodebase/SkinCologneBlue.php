@@ -27,14 +27,14 @@ class SkinCologneBlue extends Skin {
 
 		$s .= "</td><td class='top' align=right valign=bottom width='100%'>";
 		$s .= $this->sysLinks();
-		$s .= "</td></tr><tr><td>";
+		$s .= "</td></tr><tr><td valign=top>";
 
 		$s .= "<font size='-1'><span id='sitesub'>";
 		$s .= wfMsg( "sitesubtitle" ) . "</span></font>";
 		$s .= "</td><td align=right>" ;
 
 		$s .= "<font size='-1'><span id='langlinks'>" ;
-		$s .= $this->otherLanguages();
+		$s .= str_replace ( "<br>" , "" , $this->otherLanguages() ) ;
 		$s .= "<br>" . $this->pageTitleLinks();
 		$s .= "</span></font>";
 
