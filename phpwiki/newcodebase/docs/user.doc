@@ -3,6 +3,10 @@ USER.DOC
 
 Documenting the Wikipedia User object.
 
+(DISCLAIMER: The documentation is not guaranteed to be in sync with
+the code at all times. If in doubt, check the table definitions
+and User.php.)
+
 Database fields:
 
   user_id
@@ -12,26 +16,26 @@ Database fields:
   user_name
     Text of full user name; title of "user:" page.  Displayed
     on change lists, etc.  Sent to user as cookie "$WikiUserName".
+    Note that user names can contain spaces, while these are
+    converted to underscores in page titles.
 
   user_rights
-    Comma-separated list of rights. Right now, only "is_editor"
-    and "is_sysop".
+    Comma-separated list of rights. Right now, only "sysop",
+    "developer", and "bot".
 
   user_password
-    Plain text (ugh!) user login password.  If user option to
+    md5 has of user login password.  If user option to
     remember password is set, this is stored in cookie
     "$WikiUserPassword".
 
   user_email
-    User's e-mail address.
+    User's e-mail address. (Optional, used for user-to-user
+    e-mail and password recovery.)
 
   user_options
     A urlencoded string of name=value pairs to set various
     user options. Some of these (but not all) are encoded into
     the cookie "$WikiUserOpts".
-
-  user_watch
-    The user's watch list.
 
 The user object encapsulates all of the settings, and clients
 classes use the getXXX() functions to access them.  These functions
