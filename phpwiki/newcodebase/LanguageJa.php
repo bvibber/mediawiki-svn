@@ -892,7 +892,7 @@ Please choose another name.",
 
 );
 
-class LanguageJa {
+class LanguageJa extends Language {
 
 	function getNamespaces() {
 		global $wgNamespaceNamesJa;
@@ -1022,7 +1022,10 @@ class LanguageJa {
 	function getMessage( $key )
 	{
 		global $wgAllMessagesJa;
-		return $wgAllMessagesJa[$key];
+        if(array_key_exists($key, $wgAllMessagesJa))
+			return $wgAllMessagesJa[$key];
+		else
+			return Language::getMessage($key);
 	}
 }
 
