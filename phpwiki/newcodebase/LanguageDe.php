@@ -83,6 +83,7 @@
 	"Ipblocklist"	=> "Zeige blockierte IP-Addressen",
 	"Specialpages"  => "",
 	"Contributions" => "",
+	"Emailuser"	=> "",
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => ""
 );
@@ -731,8 +732,11 @@ class LanguageDe extends Language {
 
 	function getMessage( $key )
 	{
-		global $wgAllMessagesDe;
-		return $wgAllMessagesDe[$key];
+                global $wgAllMessagesDe, $wgAllMessagesEn;
+                $m = $wgAllMessagesDe[$key];
+
+                if ( "" == $m ) { return $wgAllMessagesEn[$key]; }
+                else return $m;
 	}
 }
 
