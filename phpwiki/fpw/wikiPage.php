@@ -10,6 +10,8 @@ class WikiPage extends WikiTitle {
 	var $params ; # For the params entry; updated on Save only
 	var $counter ; # Page view counter
 	var $timestamp ; # Time and date of last edit
+	var $cache ; # For cached pages
+	var $canBeCached ;
 	
 #### Database management functions
 
@@ -42,7 +44,7 @@ class WikiPage extends WikiTitle {
 			}
 
 		# No special page, loading article form the database
-		global $wikiSQLServer ;
+		global $wikiSQLServer , $useCachedPages ;
 		$connection = getDBconnection () ;
 		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$thisVersion = "" ;
@@ -68,6 +70,7 @@ class WikiPage extends WikiTitle {
 				$this->knownLinkedLinks = explode ( "\n" , $s->cur_linked_links ) ;
 				$this->knownUnlinkedLinks = explode ( "\n" , $s->cur_unlinked_links ) ;
 				$this->timestamp = $s->cur_timestamp ;
+				if ( $useCachedPages ) $this->cache = $s->cur_cache ;
 				if ( $s->cur_params != "" ) $this->params = explode ( "\n" , $s->cur_params ) ;
 				$this->counter = $s->cur_counter+1 ;
 				$updateCounter = $this->counter ;
@@ -188,13 +191,18 @@ class WikiPage extends WikiTitle {
 
 	# This creates a new article if there is none with the same title yet
 	function ensureExistence () {
+		global $useCachedPages ;
 		$this->makeSecureTitle () ;
 		if ( $this->doesTopicExist() ) return ;
 		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
 		mysql_select_db ( $wikiSQLServer , $connection ) ;
 		$sql = "INSERT INTO cur (cur_title) VALUES (\"$this->secureTitle\")" ;
-		$result = mysql_query ( $sql , $connection ) ;
+		mysql_query ( $sql , $connection ) ;
+		if ( $useCachedPages ) { # Flushing cache for all pages that linked to the empty topic
+			$sql = "UPDATE cur SET cur_cache=\"\" WHERE cur_linked_links LIKE \"%$this->secureTitle%\" OR cur_unlinked_links LIKE \"%$this->secureTitle%\"" ;
+			mysql_query ( $sql , $connection ) ;
+			}
 		#mysql_close ( $connection ) ;
 		}
 
@@ -230,6 +238,7 @@ class WikiPage extends WikiTitle {
 	# This function stores the passed parameters into the database (the "cur" table)
 	# The target data set is defined by $this->secureTitle
 	function setEntry ( $text , $comment , $userID , $userName , $minorEdit , $addSQL = "" ) {
+		global $useCachedPages ;
 		$cond = "cur_title=\"$this->secureTitle\"" ;
 
 		global $linkedLinks , $unlinkedLinks ;
@@ -237,6 +246,8 @@ class WikiPage extends WikiTitle {
 		$ll = implode ( "\n" , array_keys ( $linkedLinks ) ) ;
 		$ull = implode ( "\n" , array_keys ( $unlinkedLinks ) ) ;
 		$pa = implode ( "\n" , $this->params ) ;
+
+		if ( $useCachedPages ) $addCache = "cur_cache=\"\"," ;
 
 		global $wikiSQLServer ;
 		$connection = getDBconnection () ;
@@ -247,7 +258,7 @@ class WikiPage extends WikiTitle {
 		$comment = htmlentities ( $comment ) ;
 		$sql = "UPDATE cur SET cur_text=\"$text\",cur_comment=\"$comment\",cur_user=\"$userID\"," ;
 		$sql .= "cur_user_text=\"$userName\",cur_minor_edit=\"$minorEdit\",";
-		$sql .= "cur_linked_links=\"$ll\",cur_unlinked_links=\"$ull\",cur_params=\"$pa\"$addSQL WHERE $cond" ;
+		$sql .= "cur_linked_links=\"$ll\",cur_unlinked_links=\"$ull\",$addCache cur_params=\"$pa\"$addSQL WHERE $cond" ;
 		$r = mysql_query ( $sql , $connection ) ;
 		#mysql_close ( $connection ) ;
 		}
@@ -395,6 +406,7 @@ class WikiPage extends WikiTitle {
 	# This function replaces the newly introduced wiki variables with their values (for display only!)
 	function replaceVariables ( $s ) {
 		global $wikiDate ;
+		$countvars = substr_count ( "{{" , $s ) ;
 		$var=date("m"); $s = str_replace ( "{{CURRENTMONTH}}" , $var , $s ) ;
 		$var=$wikiDate[strtolower(date("F"))]; $s = str_replace ( "{{CURRENTMONTHNAME}}" , $var , $s ) ;
 		$var=date("j"); $s = str_replace ( "{{CURRENTDAY}}" , $var , $s ) ;
@@ -451,6 +463,9 @@ class WikiPage extends WikiTitle {
 			else $s .= $m[1] ;
 			}
 */
+
+		if ( $countvars == substr_count ( "{{" , $s ) ) $this->canBeCached = true ;
+		else $this->canBeCached = false ;
 
 		return $s ;
 		}
@@ -1044,11 +1059,30 @@ class WikiPage extends WikiTitle {
 	# This generates header, diff (if wanted), article body (with QuickBar), and footer
 	# The whole page (for normal pages) is generated here
 	function renderPage ( $doPrint = false ) {
-		global $pageTitle , $diff , $wikiArticleSource , $wikiCurrentServer , $wikiPrintLinksMarkup ;
+		global $pageTitle , $diff , $wikiArticleSource , $wikiCurrentServer , $wikiPrintLinksMarkup , $useCachedPages ;
 		$pageTitle = $this->title ;
 		if ( isset ( $diff ) ) $middle = $this->doDiff().$this->contents ;
 		else $middle = $this->contents ;
-		$middle = $this->parseContents($middle) ;
+		if ( $useCachedPages and !$this->isSpecialPage ) {
+			if ( $this->cache != "" ) { # Using cache
+				$middle = $this->cache ;
+			} else {
+				$middle = $this->parseContents($middle) ;
+				if ( $this->canBeCached ) { # Generating cache
+
+		$this->cache = str_replace ( "\"" , "\\\"" , $middle ) ;
+		$connection = getDBconnection () ;
+		mysql_select_db ( $wikiSQLServer , $connection ) ;
+		$sql = "UPDATE cur SET cur_cache=\"$this->cache\", cur_timestamp=cur_timestamp WHERE cur_title=\"$this->secureTitle\"" ;
+		mysql_query ( $sql , $connection ) ;
+		#mysql_close ( $connection ) ;
+
+					
+					}
+				}
+		} else {
+			$middle = $this->parseContents($middle) ;
+			}
 		$middle = $this->getMiddle($middle) ;
 		if ( $doPrint ) {
 			$header = "<h1>".$this->getNiceTitle($pageTitle)."</h1>\n" ;
