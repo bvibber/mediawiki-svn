@@ -69,7 +69,7 @@ function renderMath( $tex )
 	    return linkToMathImage($tex, $outmd5);
     } else {
 	$rpage = wfFetchObject ( $res );
-	$outputhash = unpack ("H32md5", $rpage->math_outputhash);
+	$outputhash = unpack ("H32md5", $rpage->math_outputhash . "                " );
 	$outputhash = $outputhash ['md5'];
 	if ( ($math == 0) || ($rpage->math_html == '') || (($math == 1) && ($rpage->math_conservative == 0)) )
 	    return linkToMathImage ( $tex, $outputhash );
