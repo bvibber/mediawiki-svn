@@ -443,8 +443,8 @@ class OutputPage {
 		global $wgUser;
 
 		$unique = "4jzAfzB8hNvf4sqyO9Edd8pSmk9rE2in0Tgw3";
-		$uc = "A-Za-z0-9_\\/:.,~%\\-+&;#?!=()@\\xA0-\\xFF";
-		$fnc = "A-Za-z0-9_.,~%\\-+&;#?!=()@\\xA0-\\xFF";
+		$uc = "A-Za-z0-9_\\/:.,~%\\-+&;#?!=()@\\x80-\\xFF";
+		$fnc = "A-Za-z0-9_.,~%\\-+&;#?!=()@\\x80-\\xFF";
 		$images = "gif|png|jpg|jpeg";
 
 		$e1 = "/(^|[^\\[])({$protocol}:)([{$uc}]+)\\/([{$fnc}]+)\\." .

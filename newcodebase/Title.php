@@ -193,7 +193,7 @@ class Title {
 
 	function legalChars()
 	{
-		return "-,.()' &;%!?_0-9A-Za-z\\/:\\xA0-\\xFF";
+		return "-,.()' &;%!?_0-9A-Za-z\\/:\\x80-\\xFF";
 	}
 
 	function getInterwikiLink( $key )
