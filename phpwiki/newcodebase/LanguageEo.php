@@ -224,6 +224,7 @@
 	"Ipblocklist"	=> "Nombrigu forbaritajn IP-adresojn",
 	"Specialpages"  => "",
 	"Contributions" => "",
+    "Emailuser"     => "",
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => "",
 	"Movepage"		=> "",
@@ -695,7 +696,7 @@ komprenata kvazaŭ rekomendo aŭ reklamo.",
 kaj havanta validan retpoŝtadreson en viaj <a href=\"" .
   wfLocalUrl( "Speciala:Preferences" ) . "\">preferoj</a>
 por retpoŝti al aliaj Vikipediistoj.",
-"emailuser"		=> "Retpoŝtu la Vikipediiston",
+"emailuser"		=> "Retpoŝtu",
 "emailpage"		=> "Retpoŝtu",
 "emailpagetext"	=> "Se la alsendota vikipediisto donis validan retpoŝtadreson
 en la preferoj, vi povas sendi unuopan mesaĝon per la jena formulo.
@@ -1009,7 +1010,21 @@ class LanguageEo extends Language {
 			return Language::getMessage($key);
 	}
 
-#FIXME: need special functions for X-sistemo ktp
+    function iconv( $in, $out, $string ) {
+		# For most languages, this is a wrapper for iconv
+		#FIXME: need special functions for X-sistemo ktp
+		return iconv( $in, $out, $string );
+	}
+	
+	function ucfirst( $string ) {
+		# For most languages, this is a wrapper for ucfirst()
+		# But that doesn't work right in a UTF-8 locale
+		include("utf8Case.php");
+        return preg_replace (
+        	"/^([\\x00-\\x7f]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
+        	"strtr ( \"\$1\" , \$wikiUpperChars )",
+        	$string );
+	}
 
 }
 

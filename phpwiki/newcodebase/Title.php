@@ -477,7 +477,7 @@ class Title {
 		$tc = Title::legalChars();
 		$t = preg_replace( "/[^{$tc}]/", "", $r );
 
-		$t = ucfirst( $t );
+		$t = $wgLang->ucfirst( $t );
 		$this->mDbkeyform = $t;
 		$this->mUrlform = wfUrlencode( $t );
 		$this->mTextform = str_replace( "_", " ", $t );

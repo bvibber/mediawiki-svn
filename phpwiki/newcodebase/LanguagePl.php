@@ -1026,10 +1026,22 @@ class LanguagePl extends Language {
 	function getMessage( $key )
 	{
 		global $wgAllMessagesPl;
-		return $wgAllMessagesPl[$key];
+        if(array_key_exists($key, $wgAllMessagesPl))
+			return $wgAllMessagesPl[$key];
+		else
+			return Language::getMessage($key);
 	}
-}
 
-include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );
+    function ucfirst( $string ) {
+		# For most languages, this is a wrapper for ucfirst()
+		# But that doesn't work right in a UTF-8 locale
+		include("utf8Case.php");
+        return preg_replace (
+        	"/^([\\x00-\\x7f]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
+        	"strtr ( \"\$1\" , \$wikiUpperChars )",
+        	$string );
+	}
+
+}
 
 ?>

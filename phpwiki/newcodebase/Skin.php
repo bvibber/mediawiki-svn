@@ -933,7 +933,7 @@ class Skin {
 		global $wgLang;
 
 		if ( "" == $key ) { $key = strtolower( $name ); }
-		$pn = ucfirst( $name );
+		$pn = $wgLang->ucfirst( $name );
 		return $this->makeKnownLink( $wgLang->specialPage( $pn ),
 		  wfMsg( $key ) );
 	}

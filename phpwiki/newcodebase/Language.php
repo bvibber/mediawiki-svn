@@ -1036,6 +1036,16 @@ class Language {
 		global $wgAllMessagesEn;
 		return $wgAllMessagesEn[$key];
 	}
+	
+	function iconv( $in, $out, $string ) {
+		# For most languages, this is a wrapper for iconv
+		return iconv( $in, $out, $string );
+	}
+	
+	function ucfirst( $string ) {
+		# For most languages, this is a wrapper for ucfirst()
+		return ucfirst( $string );
+	}
 }
 
 include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );
