@@ -23,38 +23,20 @@
  */
 package org.wikimedia.lsearch;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.MessageFormat;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Map;
 
-import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
-import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
-import org.apache.lucene.search.IndexSearcher;
-
-import com.sleepycat.bind.serial.SerialBinding;
-import com.sleepycat.bind.tuple.StringBinding;
-import com.sleepycat.je.DatabaseEntry;
-import com.sleepycat.je.DatabaseException;
-import com.sleepycat.je.LockMode;
-import com.sleepycat.je.OperationStatus;
-import com.sleepycat.je.Transaction;
 
 /**
  * @author Kate Turner
  *
  */
 public class SearchIndexUpdater extends Thread {
-	static private final int DEFAULT_DELAY = 10; // seconds
+	static private final int DEFAULT_DELAY = 10*60; // seconds
 	private int delay;
 	IndexWriter writer;
-	private HashMap curTimestamps;
+	private Map<String, String> curTimestamps;
+	Configuration config;
 	
 	SearchIndexUpdater() {
 		this(DEFAULT_DELAY);
@@ -63,72 +45,72 @@ public class SearchIndexUpdater extends Thread {
 		delay = delay_;
 	}
 	public final void run() {
-		curTimestamps = new HashMap();
+/*		config = Configuration.open();
+		curTimestamps = new HashMap<String, String>();
 		System.out.println("Search index updater starting [delay="+delay+"]...");
 		for (;;) {
 			try {
 				Thread.sleep(delay * 1000);
 			} catch (Exception e) {}
 
-			for (int i = 0; i < MWDaemon.dbnames.length; ++i) {
+			for (String dbname : MWDaemon.dbnames) {
+				if (!SearchState.stateOpen(dbname))
+					continue;
+				DatabaseConnection dbconn;
+				try {
+					dbconn = DatabaseConnection.forWiki(dbname);
+				} catch (SQLException e) {
+					System.err.printf("%s: warning: %s\n",
+							dbname, e.getMessage());
+					continue;
+				}
+				Connection conn = dbconn.getConn();
 				try {
 					String indexpath;
-					String[] urlargs = {MWDaemon.dbnames[i]};
 					MessageFormat form = new MessageFormat(MWDaemon.indexPath);
-					indexpath = form.format(urlargs);
+					indexpath = form.format(dbname);
 					writer = new IndexWriter(indexpath, 
 							new EnglishAnalyzer(), false);
 				} catch (IOException e) {
 					System.out.println("Error: opening writer: " + e.getMessage());
 				}
-				String curTimestamp = (String) curTimestamps.get(MWDaemon.dbnames[i]);
+				String curTimestamp = curTimestamps.get(dbname);
 				if (curTimestamp == null) {
 					try {
 						PreparedStatement pstmt;
 						if (MWDaemon.mw_version == MWDaemon.MW_NEW) {
-							pstmt = MWDaemon.getDBConn(
-								MWDaemon.dbnames[i]).prepareStatement(
+							pstmt = conn.prepareStatement(
 								"SELECT MAX(rev_timestamp) FROM revision");
 						} else {
-							pstmt = MWDaemon.getDBConn(
-									MWDaemon.dbnames[i]).prepareStatement(
+							pstmt = conn.prepareStatement(
 									"SELECT MAX(cur_timestamp) FROM cur");							
 						}
 						ResultSet res = pstmt.executeQuery();
 						res.next();
 						curTimestamp = res.getString(1);
-						curTimestamps.put(MWDaemon.dbnames[i], curTimestamp);
+						curTimestamps.put(dbname, curTimestamp);
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
 				}
-				System.out.println("Running update, cur_timestamp="+curTimestamp+"...");
-				/*try {
-					DatabaseEntry dbkey = new DatabaseEntry("timestamp".getBytes("UTF-8"));
-					DatabaseEntry data = new DatabaseEntry();
-					Transaction txn = s.matcher.dbenv.beginTransaction(null, null);
-					OperationStatus status = s.matcher.miscdb.get(txn, dbkey, data, LockMode.DEFAULT);
-					if (status != OperationStatus.NOTFOUND) {
-						curTimestamp = new String(data.getData());
-					}
-					txn.commit();
-				} catch (DatabaseException e) {
-					System.out.println("Warning: database error: " + e.getMessage());
-				} catch (UnsupportedEncodingException e) {}*/
-				SearchClientReader.State s = (SearchClientReader.State) 
-				SearchClientReader.states.get(MWDaemon.dbnames[i]);
+				System.out.println(dbname + ": running update, cur_timestamp=" +
+						curTimestamp + "...");
+				SearchState s;
+				try {
+					s = SearchState.forWiki(dbname);
+				} catch (SQLException e) {
+					continue;
+				}
 				
 				try {
 					Transaction txn = s.matcher.dbenv.beginTransaction(null, null);
 					PreparedStatement pstmt;
 					if (MWDaemon.mw_version == MWDaemon.MW_OLD)
-						pstmt = MWDaemon.getDBConn(
-							MWDaemon.dbnames[i]).prepareStatement(
+						pstmt = conn.prepareStatement(
 							"SELECT cur_title, cur_namespace, cur_text, cur_timestamp FROM cur" +
 							" WHERE cur_timestamp > ?");
 					else
-						pstmt = MWDaemon.getDBConn(
-								MWDaemon.dbnames[i]).prepareStatement(
+						pstmt = conn.prepareStatement(
 								"SELECT page_title, page_namespace, old_text, rev_timestamp "+
 								"FROM page,revision,text "+
 								"WHERE page_id=rev_page AND rev_id=old_id AND rev_timestamp > ?");
@@ -139,13 +121,12 @@ public class SearchIndexUpdater extends Thread {
 						String title = rs.getString(1).replaceAll("_", " ");
 						String content = rs.getString(3);
 						String timestamp = rs.getString(4);
-						System.out.println("Add: [" + namespace + ":" + title + "]");
 						if (timestamp.compareTo(curTimestamp) > 0) {
 							curTimestamp = timestamp;
-							curTimestamps.put(MWDaemon.dbnames[i], curTimestamp);
+							curTimestamps.put(dbname, curTimestamp);
 						}
 						
-						if (!MWDaemon.latin1) {
+						if (!config.islatin1(dbname)) {
 							try {
 								title = new String(title.getBytes("ISO-8859-1"), "UTF-8");
 								content = new String(content.getBytes("ISO-8859-1"), "UTF-8");
@@ -154,7 +135,7 @@ public class SearchIndexUpdater extends Thread {
 						Document d = new Document();
 						d.add(Field.Text("namespace", namespace));
 						d.add(Field.Text("title", title));
-						d.add(new Field("contents", MWSearch.stripWiki(content), false, true, true));
+						d.add(new Field("contents", stripWiki(content), false, true, true));
 						try {
 							writer.addDocument(d);
 						} catch (IOException e5) {
@@ -186,16 +167,9 @@ public class SearchIndexUpdater extends Thread {
 				try {
 					writer.close();
 				} catch (IOException e) {}
+				dbconn.close();
 			}
-			for (Iterator i = SearchClientReader.states.values().iterator(); i.hasNext();) {
-				SearchClientReader.State s = (SearchClientReader.State) i.next();
-				try {
-					s.searcher.close();
-					s.reader.close();
-					s.reader = IndexReader.open(s.indexpath);
-					s.searcher = new IndexSearcher(s.reader);
-				} catch (IOException e) {}
-			}
-		}
+			SearchState.resetStates();
+		}*/
 	}
 }

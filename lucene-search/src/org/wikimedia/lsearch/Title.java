@@ -27,10 +27,11 @@ import java.io.Serializable;
 
 
 class Title implements Serializable {
+	private static final long serialVersionUID = 5264764931866689404L;
 	public int namespace;
 	public String title;
-	public Title(int ns, String title) {
-		this.namespace = ns;
-		this.title = title;
+	public Title(int newns, String newtitle) {
+		namespace = newns;
+		title = newtitle;
 	}
 }

@@ -24,12 +24,10 @@
 package org.wikimedia.lsearch;
 
 import java.io.File;
-import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SortedMap;
-
 import com.sleepycat.bind.EntryBinding;
 import com.sleepycat.bind.serial.SerialBinding;
 import com.sleepycat.bind.serial.StoredClassCatalog;
@@ -50,22 +48,29 @@ import com.sleepycat.je.Transaction;
  *
  */
 public class TitlePrefixMatcher {
-	private Connection dbconn;
-	private SortedMap titles;
 	protected Environment			dbenv;
 	public Database				db, miscdb;
 	protected StoredClassCatalog	catalog;
 	EntryBinding keybind, valuebind;
-	
-	public TitlePrefixMatcher(String dbname, Connection dbconn) {
-		this.dbconn = dbconn;
-		try {
-			String pfxtemp = MWDaemon.p.getProperty("mwsearch.titledb");
-			String pfxdir;
-			String[] pathargs = {dbname};
-			MessageFormat form = new MessageFormat(pfxtemp);
-			pfxdir = form.format(pathargs);
+	private Configuration config;
+	private DatabaseConnection dbconn;
 
+	public TitlePrefixMatcher(String dbname) throws SQLException {
+		config = Configuration.open();
+		
+		try {
+			this.dbconn = DatabaseConnection.forWiki(dbname);
+		} catch (SQLException e) {
+			System.err.println(dbname + ": error: " + e.getMessage());
+			throw e;
+		}
+		try {
+			String pfxdir;
+			pfxdir = MessageFormat.format(config.getString("mwsearch.titledb"), dbname);
+			File f = new File(pfxdir);
+			if (!f.exists())
+				f.mkdirs();
+			
 			EnvironmentConfig envconfig = new EnvironmentConfig();
 			envconfig.setAllowCreate(true);
 			envconfig.setTransactional(true);
@@ -74,13 +79,8 @@ public class TitlePrefixMatcher {
 			dbconfig.setAllowCreate(true);
 			dbconfig.setTransactional(true);
 			Transaction txn = dbenv.beginTransaction(null, null);
-			System.out.print("Title prefix database location: " + pfxdir);
-			File f = new File(pfxdir);
-			if (!f.exists()) {
-				f.mkdir();
-				System.out.print(" [created]");
-			}
-			System.out.println("\n");
+			System.out.printf("%s: title prefix database location: %s\n",
+					dbname, pfxdir);
 			db = dbenv.openDatabase(txn, "db", dbconfig);
 			miscdb = dbenv.openDatabase(txn, "miscdb", dbconfig);
 			catalog = new StoredClassCatalog(db);
@@ -88,13 +88,13 @@ public class TitlePrefixMatcher {
 			valuebind = new SerialBinding(catalog, Title.class);
 			txn.commit();
 		} catch (DatabaseException e) {
-			System.out.println("Error: database exception: " + e.getMessage());
+			System.out.printf("%s: error: database exception: %s\n",
+					dbname, e.getMessage());
 			System.exit(1);
 		}
-		//titles = new StoredSortedMap(db, keybind, valuebind, true);
-		System.out.println("Opened title database OK");
+		System.out.printf("%s: opened title database okay\n", dbname);
 	}
-	public List getMatches(String prefix) {
+	public List<Title> getMatches(String prefix) {
 		String first = prefix;
 		String last;
 		if (prefix.length() >= 2) {
@@ -104,20 +104,19 @@ public class TitlePrefixMatcher {
 		} else {
 			last = Character.toString((char)(prefix.charAt(0) + 1));
 		}
-		//System.out.println("Range: ["+first+"] ["+last+"]");
-		ArrayList l = new ArrayList();
+		List<Title> l = new ArrayList<Title>();
 		int i = 0;
 		try {
 			Cursor c = db.openCursor(null, null);
 			DatabaseEntry dbkey = new DatabaseEntry();
 			DatabaseEntry data = new DatabaseEntry();
-			StringBinding keybind = new StringBinding();
+			StringBinding titlekeybind = new StringBinding();
 			SerialBinding binding = new SerialBinding(catalog, Title.class);
-			keybind.objectToEntry(first, dbkey);
+			titlekeybind.objectToEntry(first, dbkey);
 			if (c.getSearchKeyRange(dbkey, data, LockMode.DEFAULT) != OperationStatus.SUCCESS)
 				return l;
 			while (i++ < 20) {
-				String rettitle = (String) keybind.entryToObject(dbkey);
+				String rettitle = (String) titlekeybind.entryToObject(dbkey);
 				if (rettitle.compareTo(last) >= 0)
 					break;
 				Title t = (Title) binding.entryToObject(data);
@@ -142,5 +141,21 @@ public class TitlePrefixMatcher {
 			}
 		}
 		return res;
+	}
+	public void addArticle(Article article) throws DatabaseException {
+		Transaction txn = dbenv.beginTransaction(null, null);
+		String stripped = TitlePrefixMatcher.stripTitle(article.getTitle());
+		Title t = new Title(Integer.valueOf(article.getNamespace()), article.getTitle());
+		DatabaseEntry dbkey = new DatabaseEntry();
+		DatabaseEntry data = new DatabaseEntry();
+		StringBinding tkeybind = new StringBinding();
+		SerialBinding binding = new SerialBinding(catalog, Title.class);
+		binding.objectToEntry(t, data);
+		tkeybind.objectToEntry(stripped, dbkey);
+		db.put(txn, dbkey, data);
+		txn.commit();
+	}
+	protected void finalize() {
+		dbconn.close();
 	}
 }
