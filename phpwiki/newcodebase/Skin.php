@@ -209,7 +209,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		$s = "";
 		$qb = $this->qbSetting();
 
-		if( $wgOut->isArticle() && $langlinks = $this->otherLanguages() ) {
+		if( $langlinks = $this->otherLanguages() ) {
 			$rows = 2;
 			$borderhack = "";
 		} else {
