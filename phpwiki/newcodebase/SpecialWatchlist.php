@@ -14,7 +14,7 @@ function wfSpecialWatchlist()
 	$wl = $wgUser->getWatchlist();
 	$nw = count( $wl );
 	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_user,cur_comment," .
-	  "cur_user_text,cur_timestamp,cur_minor_edit FROM cur WHERE (";
+	  "cur_user_text,cur_timestamp,cur_minor_edit,cur_is_new FROM cur WHERE (";
 
 	$first = true;
 	foreach ( $wl as $title ) {
