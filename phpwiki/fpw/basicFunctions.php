@@ -326,8 +326,7 @@ function edit ( $title )
 
 	$ret .= "<input tabindex=4 type=submit value=\"$wikiSave\" name=SaveButton> \n" ;
 	$ret .= "<input tabindex=5 type=submit value=\"$wikiPreview\" name=PreviewButton>\n" ;
-	if ( $user->isLoggedIn )
-		$ret .= "<input tabindex=6 type=submit value=\"$wikiAutoWikify\" name=WikifyButton>\n" ;
+	if ( $user->isLoggedIn and $user->options["autowikify"]=="yes" ) $ret .= "<input tabindex=6 type=submit value=\"$wikiAutoWikify\" name=WikifyButton>\n" ;
 	$ret .= "<input type=hidden value=\"$EditTime\" name=EditTime>\n" ;
 	$ret .= "<input type=hidden value=yes name=FromEditForm>\n" ;
 	$ret .= " <a href=\"".wikiLink($vpage->url)."\">$wikiDontSaveChanges</a>\n" ; 
