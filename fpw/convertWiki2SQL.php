@@ -15,6 +15,8 @@ $wikiTalk = "Talk";
 $fieldSeparator = "\xb3" ;
 function recodeCharsetStub ( $text ) {
 	# Some languages may change the internal coding used in the database
+	# To convert ISO-8859-1 to UTF-8
+#	return encode_utf8 ( $text ) ;
 	return $text;
 	}
 	$recodeCharset = recodeCharsetStub ;
@@ -83,16 +85,19 @@ $rootDir = "/stuff/wiki/lib-http/db/wiki/page/" ;
 #$rootDir = "/tmp/home/wiki-pl/wiki/db/page/" ;
 #$rootDir = "/tmp/home/wiki-eo/lib-http/db/wiki/page/" ;
 
-function scanText2 ( $fn ) {
-	global $fieldSeparator ;
-	$ret = "" ;
+$oldid = 100; # Need unique identifiers for page histories; increment each time we use it.
 
-	#CONSTANTS
-	#$FS = "³" ;
 	$FS = $fieldSeparator ;
 	$FS1 = $FS."1" ;
 	$FS2 = $FS."2" ;
 	$FS3 = $FS."3" ;
+
+function scanText2 ( $fn ) {
+	global $fieldSeparator , $FS , $FS1 , $FS2 , $FS3 ;
+	$ret = "" ;
+
+	#CONSTANTS
+	#$FS = "³" ;
 
 	#READING FILE
 	$t = array () ;
@@ -214,8 +219,54 @@ function convertText ( $s ) {
 	return $s ;
 	}
 
+function splitHash ( $sep , $str ) {
+	$temp = explode ( $sep , $str ) ;
+	$ret = array () ;
+	for ( $i = 0; $i+1 < count ( $temp ) ; $i++ ) {
+		$ret[$temp[$i]] = $temp[++$i] ;
+		}
+	return $ret ;
+	}
+
+
+function makeSafe ( $str ) {
+	# Escape strings and convert character set so we can insert text into the db
+	global $recodeCharset ;
+	return strtr ( $recodeCharset ( $str ) ,
+		array ( "\\" => "\\\\" , "\"" => "\\\"" , "'" => "\\'" ) ) ;
+	}
+
+function getHistory ( $title , $st) {
+	global $fieldSeparator , $FS , $FS1 , $FS2 , $FS3 , $oldid , $recodeCharset ;
+	$f = preg_replace ( "/\/page\/(.*)\.db$/" , "/keep/\$1.kp" , getFileName ( $title ) ) ;
+	if ( !file_exists ( $f ) ) return "" ;
+	
+	$fc = file ( $f ) ;
+	$keptlist = explode ( $FS1 , implode ( "\n" , $fc ) ) ;
+	array_shift ( $keptlist ) ;
+
+	$lastoldid = 0; $sql = "";
+	
+	foreach ( $keptlist as $rev ) {
+		$section = splitHash ( $FS2 , $rev ) ;
+		$text = splitHash ( $FS3 , $section["data"] ) ;
+		
+		$user = makeSafe ( $section["username"] ? $section["username"] : $section["host"] ) ;
+		
+		if ( $text["text"] && $text["minor"] != "" ) {
+			$sql .= "INSERT INTO old (old_id,old_title,old_text,old_comment,old_user,old_user_text,old_old_version,old_timestamp,old_minor_edit) "
+			. "VALUES ($oldid,\"$st\",\"" . $recodeCharset ( convertText($text["text"]) ) . "\",\"" . makeSafe($text["summary"]) . "\","
+			. "0,\"$user\",$lastoldid,FROM_UNIXTIME(" . $section["ts"] . ")," . $text["minor"] . ");\n";
+			
+			$lastoldid = $oldid++ ;
+			}
+		
+		}
+	return $sql ;
+	}
+
 function storeInDB ( $title , $text ) {
-	global $of , $npage , $ll , $ull , $wikiTalk , $recodeCharset ;
+	global $of , $npage , $ll , $ull , $wikiTalk , $recodeCharset , $oldid ;
 	$ll = array () ;
 	$ull = array () ;
 	$title = str_replace ( "\\'" , "'" , $title ) ;
@@ -234,15 +285,20 @@ function storeInDB ( $title , $text ) {
 	if ( count ( $talk ) == 2 and $talk[1] == $wikiTalk ) $st = $wikiTalk.":".$talk[0] ;
 	if ( count ( $talk ) == 2 and $talk[1] == strtolower($wikiTalk) ) return ;
 
-	$sql = "INSERT INTO cur (cur_title,cur_ind_title,cur_text,cur_comment,cur_user,cur_user_text,cur_old_version,cur_minor_edit) VALUES ";
+	$lastoldid = $oldid;
+	$sql = getHistory ( $title , $st ) ;
+	if ($lastoldid == $oldid) $lastoldid = 0; else $lastoldid = $oldid ;
+	
+	$sql .= "INSERT INTO cur (cur_title,cur_ind_title,cur_text,cur_comment,cur_user,cur_user_text,cur_old_version,cur_minor_edit) VALUES ";
 	$sql .= "(\"$st\",\"$st\",\"$text\",";
-	$sql .= "\"Automated conversion\",0,\"conversion script\",0,1);\n" ; # ,\"" . $recodeCharset ( $ll1 ) . "\",\"" . $recodeCharset ( $ull1 ) . "\"
+	$sql .= "\"Automated conversion\",0,\"conversion script\",$lastoldid,1);\n" ; # ,\"" . $recodeCharset ( $ll1 ) . "\",\"" . $recodeCharset ( $ull1 ) . "\"
 	foreach ( $ll as $l ) {
 		$sql .= "INSERT INTO linked (linked_from,linked_to) VALUES (\"$st\",\"" . $recodeCharset ( $l ) . "\");\n";
 		}
 	foreach ( $ull as $l ) {
 		$sql .= "INSERT INTO unlinked (unlinked_from,unlinked_to) VALUES (\"$st\",\"" . $recodeCharset ( $l ) . "\");\n";
 		}
+	
 	fwrite ( $of , $sql ) ;
 	}
 
