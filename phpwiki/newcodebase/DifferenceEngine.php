@@ -1078,7 +1078,7 @@ class TableDiffFormatter extends DiffFormatter
 		return "<td colspan=2>&nbsp;</td>";
 	}
 
-	function contextLine() {
+	function contextLine( $line ) {
 		return "<td> </td><td bgcolor='white'><small>{$line}</small></td>";
 	}
     
