@@ -484,7 +484,7 @@ LÄGG ALDRIG UT MATERIAL HÄR SOM SKYDDAS AV [[UPPHOVSRÄTTSLAGEN]] UTAN FÖRFATTARE
 "revnotfoundtext" => "Den gamla versionen av den sida du frågade efter kan inte hittas. Kontrollera den URL du använde för att nå denna sida.\n",
 "loadhist"		=> "Läser sidans versioner",
 "currentrev"	=> "Nuvarande version",
-"revisionasof"	=> "Versionen från ",
+"revisionasof"	=> "Versionen från",
 "cur"			=> "nuvarande",
 "next"			=> "nästa",
 "last"			=> "föregående",
@@ -632,9 +632,7 @@ wfLocalUrlE( "Wikipedia:Upload_log" ) . "\">uppladdnings logg</a>.
 <p>Använd formuläret nedan för att ladda upp nya filer, som 
 du kan illustrera dina artiklar med.
 På de flesta webbläsare kommer du att se en \"Browse...\" knapp eller en 
-\"Öppna...\" knapp, som vill starta ditt operativsystems dialogruta för att öppna filer.
-När du valt en fil kommer namnet på den filen att visas i textfältet brevid knappen.
-Du måste även kryssa för rutan, för att du inte gör något som strider mot uppehovsrätten av filen som laddas upp.
+\"Öppna...\" knapp, som startar ditt operativsystems dialogruta för att öppna filer. När du valt en fil kommer namnet på den filen att visas i textfältet brevid knappen. Du måste även kryssa för rutan, för att du inte gör något som strider mot upphovsrätten av filen som laddas upp.
 Tryck på \"Upload\" knappen för att ladda upp filen.
 Detta kan dröja ett tag om du har en långsam internetförbindelse.
 <p>Formaten på filerna ska helst vara JPEG för bilder, PNG för ritningar 
@@ -826,7 +824,7 @@ och sidan kommer att markeras med<b>tjock text</b> i <a href=\"" .
 "deletesub"		=> "(Tar bort \"$1\")",
 "confirmdeletetext" => "Du håller på och permanent ta bort en sida
 eller bild med all dess historia från databasen.
-Bekräfta att du förstår vad du håller på och vilka konsekvenser
+Bekräfta att du förstår vad du håller på med och vilka konsekvenser
 detta leder till, och att det följer 
 [[Wikipedia:Policy]].",
 "confirmcheck"	=> "Ja, jag vill verkligen ta bort det här.",
@@ -971,6 +969,7 @@ class LanguageSv extends Language {
 		global $wgNamespaceNamesSv;
 		return $wgNamespaceNamesSv;
 	}
+
 
 	function getBookstoreList () {
 		global $wgBookstoreListSv ;
