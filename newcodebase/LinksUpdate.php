@@ -29,12 +29,16 @@ class LinksUpdate {
 				if ( ! $first ) { $sql .= ","; }
 				$first = false;
 
-				$sql .= "('" . wfStrencode( $this->mTitle ) . "',$lid)";
+				$sql .= "('" . wfStrencode( $this->mTitle ) . "', $lid)";
 			}
 		}
 		if ( "" != $sql ) {
 			$res2 = wfQuery( $sql, $fname );
 		}
+
+		$sql = "DELETE FROM brokenlinks WHERE bl_to='" .
+		  wfStrencode( $this->mTitle ) . "'";
+		wfQuery( $sql, $fname );
 
 		$sql = "DELETE FROM brokenlinks WHERE bl_from={$this->mId}";
 		wfQuery( $sql, $fname );

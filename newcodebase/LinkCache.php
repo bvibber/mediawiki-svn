@@ -73,6 +73,7 @@ class LinkCache {
 		$ns = $nt->getNamespace();
 		$t = $nt->getDBkey();
 
+		if ( "" == $t ) { return 0; }
 		$sql = "SELECT cur_id FROM cur WHERE (cur_namespace=" .
 		  "{$ns} AND cur_title='" . wfStrencode( $t ) . "')";
 		$res = wfQuery( $sql, "LinkCache::addLink" );

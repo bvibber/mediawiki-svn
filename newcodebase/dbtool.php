@@ -20,12 +20,12 @@ $wgOldImageDir	= "/rfs/backups/lee/wikiimages";
 # convertCurTable();
 # convertOldTable();
 
-convertImageDirectories();
+# convertImageDirectories();
 
 # Maintenance tasks.
 #
 
-# rebuildLinkTables();
+rebuildLinkTables();
 
 # rebuildIndText();
 
@@ -619,10 +619,10 @@ function getInternalLinks ( $title, $text )
 	$s = array_shift( $a );
 	$s = substr( $s, 1 );
 
-	$tc = "[&;%\\-,.\\(\\)' _0-9A-Za-z\\/:\\x80-\\xff]";
+	$tc = Title::legalChars();
 	foreach ( $a as $line ) {
-		$e1 = "/^({$tc}+)\\|([^]]+)]]/sD";
-		$e2 = "/^({$tc}+)]]/sD";
+		$e1 = "/^([{$tc}]+)\\|([^]]+)]]/sD";
+		$e2 = "/^([{$tc}]+)]]/sD";
 
 		if ( preg_match( $e1, $line, $m )
 		  || preg_match( $e2, $line, $m ) ) {

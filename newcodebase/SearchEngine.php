@@ -119,12 +119,31 @@ class SearchEngine {
 		} else { $plink = $prev; }
 
 		$no = $offset + $limit;
-		$nlink = "<a href=\"$wgServer$wgScript?{$link}" .
+		$nlink = "<a href=\"{$wgServer}{$wgScript}?{$link}" .
 		  "&amp;limit={$limit}&amp;offset={$no}\">{$next}</a>";
+
+		$nums = SearchEngine::numLink( $offset, 20, $link ) . " | " .
+		  SearchEngine::numLink( $offset, 50, $link ) . " | " .
+		  SearchEngine::numLink( $offset, 100, $link ) . " | " .
+		  SearchEngine::numLink( $offset, 250, $link ) . " | " .
+		  SearchEngine::numLink( $offset, 500, $link ) . " | " .
+		  SearchEngine::numLink( $offset, 1000, $link ) . " | " .
+		  SearchEngine::numLink( $offset, 2500, $link ) . " | " .
+		  SearchEngine::numLink( $offset, 5000, $link );
 
 		$sl = str_replace( "$1", $plink, wfMsg( "viewprevnext" ) );
 		$sl = str_replace( "$2", $nlink, $sl );
+		$sl = str_replace( "$3", $nums, $sl );
 		return $sl;
+	}
+
+	function numLink( $offset, $limit, $link )
+	{
+		global $wgUser, $wgServer, $wgScript;
+
+		$s = "<a href=\"{$wgServer}{$wgScript}?{$link}" .
+		  "&amp;limit={$limit}&amp;offset={$offset}\">{$limit}</a>";
+		return $s;
 	}
 
 	function parseQuery()
