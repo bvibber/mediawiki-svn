@@ -34,6 +34,7 @@ print IW <<arrgghsomanyofthem
 	"JEFO"	=>	"http://esperanto.jeunes.free.fr/vikio/index.php?\$1",
 	"PMEG"	=>	"http://www.bertilow.com/pmeg/\$1.php",
 		# ekz [[PMEG:gramatiko/kunligaj vortetoj/au]]
+	"EnciclopediaLibre" => "http://enciclopedia.us.es/wiki.phtml?title=\$1",
 
 	# Wikipedia-specific stuff:
 	# Special cases
