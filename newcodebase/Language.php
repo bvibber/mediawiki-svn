@@ -642,7 +642,7 @@ this old version, (rev) = revert to this old version.
 "statistics"	=> "Statistics",
 "sitestats"		=> "Site statistics",
 "userstats"		=> "User statistics",
-"sitestatstext" => "There <b>$1</b> total pages in the database.
+"sitestatstext" => "There are <b>$1</b> total pages in the database.
 This includes \"talk\" pages, pages about Wikipedia, minimal \"stub\"
 pages, redirects, and others that probably don't qualify as articles.
 Excluding those, there are <b>$2</b> pages that are probably legitimate
