@@ -282,7 +282,7 @@ Bitte fügen Sie Ihre Änderungen in das obere Textfeld ein.
 "yourtext"		=> "Ihr Text",
 "storedversion" => "Gespeicherte Version",
 "editingold"	=> "<strong>ACHTUNG: Sie bearbeiten eine alte Version dieses Artikels.
-Wenn Sie speichern, weden alle neueren Versionen überschrieben.</strong>\n",
+Wenn Sie speichern, werden alle neueren Versionen überschrieben.</strong>\n",
 "yourdiff"		=> "Unterschiede",
 "copyrightwarning" => "
 <i><strong>BITTE BENUTZEN SIE KEINE URHEBERRECHTLICH GESCHÜTZTEN WERKE OHNE ERLAUBNIS DES AUTORS!</strong> Sie geben hiermit Ihre Zusage, dass Sie diesen Text selbst verfasst haben, oder dass der Text Copyright-freies Allgemeingut (\"Public domain\") ist.<br>
