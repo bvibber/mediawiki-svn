@@ -40,12 +40,7 @@ function recentchanges () {
     $ret .= "<a href=\"".wikiLink("special:RecentChanges&maxcnt=$maxcnt&daysAgo=7")."\">7 </a> | " ;
     $ret .= "<a href=\"".wikiLink("special:RecentChanges&maxcnt=$maxcnt&daysAgo=14")."\">14 </a> ".$n[1]."; \n" ;
 
-    $mindate = date ( "Ymd000000" , time () - $daysAgo*24*60*60 ) ;
-    $mindate = timestampAddHour ( $mindate , $user->options["hourDiff"] ) ;
-
     $now = date ( "YmdHis" , time() ) ;
-    $now = timestampAddHour ( $now , $user->options["hourDiff"] ) ;
-
     $ret .= "<a href=\"".wikiLink("special:RecentChanges&from=$now")."\">$wikiListOnlyNewChanges</a>" ;
     $ret .= "</nowiki>" ;
     $ret .= "\n----\n" ;
