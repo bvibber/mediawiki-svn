@@ -15,15 +15,15 @@ $wgDBuser			= "wikiadmin";
 $wgDBpassword		= "adminpass";
 $wgImageDirectory	= "/usr/local/apache/htdocs/wikiimages";
 
-# renameOldTables();
-# buildtables();
+renameOldTables();
+buildtables();
 
-# convertImageDirectories();
-# convertUserTable();
-# convertOldTable();
-# convertCurTable();
+convertImageDirectories();
+convertUserTable();
+convertOldTable();
+convertCurTable();
 
-# buildindexes();
+buildindexes();
 
 rebuildLinkTablesPass1();
 rebuildLinkTablesPass2();
@@ -463,9 +463,7 @@ function indexText( $text, $ititle )
 	$text = preg_replace( "/\\s[{$lc}]\\s/", " ", $text );
 	$text = preg_replace( "/\\s[{$lc}]\\s/", " ", $text );
 
-	$sql = "UPDATE cur SET cur_timestamp=cur_timestamp,cur_ind_text='" .
-	  wfStrencode( $text ) . "' WHERE cur_id={$this->mId}";
-	wfQuery( $sql, "SearchUpdate::doUpdate" );
+	return $text;
 }
 
 function renameOldTables()
@@ -484,6 +482,8 @@ function renameOldTables()
 
 function buildtables()
 {
+	print "Creating new tables.\n";
+
 	$sql = "DROP TABLE IF EXISTS user";
 	wfQuery( $sql );
 
@@ -623,6 +623,8 @@ function buildtables()
 
 function buildindexes()
 {
+	print "Building indexes.\n";
+
 	$sql = "ALTER TABLE user
   ADD INDEX user_name (user_name(10))";
 	wfQuery( $sql );
