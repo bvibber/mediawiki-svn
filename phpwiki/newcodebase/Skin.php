@@ -900,9 +900,26 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		global $wgOut, $wgLang;
 
 		$a = $wgOut->getLanguageLinks();
-		if ( 0 == count( $a ) ) { return ""; }
+		if ( 0 == count( $a ) ) {
+			if ( !$wgUseNewInterlanguage ) return "";
+			$ns = $wgLang->getNsIndex ( $wgTitle->getNamespace () ) ;
+			if ( $ns != 0 AND $ns != 1 ) return "" ;
+		 	$pn = "Intl" ;
+			$x = "mode=addlink&xt=".$wgTitle->getDBkey() ;
+			return $this->makeKnownLink( $wgLang->specialPage( $pn ),
+				  wfMsg( "intl" ) , $x );
+			}
 
-		$s = wfMsg( "otherlanguages" ) . ": ";
+		if ( !$wgUseNewInterlanguage ) {
+			$s = wfMsg( "otherlanguages" ) . ": ";
+		} else {
+			global $wgLanguageCode ;
+			 $x = "mode=zoom&xt=".$wgTitle->getDBkey() ;
+			$x .= "&xl=".$wgLanguageCode ;
+			$s =  $this->makeKnownLink( $wgLang->specialPage( "Intl" ),
+				  wfMsg( "otherlanguages" ) , $x ) . ": " ;
+			}
+
 		$first = true;
 		foreach( $a as $l ) {
 			if ( ! $first ) { $s .= " | "; }

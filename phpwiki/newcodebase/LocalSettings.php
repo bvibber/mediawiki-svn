@@ -46,4 +46,6 @@ $wgLocalInterwiki   = "w";
 $wgInputEncoding	= "ISO-8859-1";
 $wgOutputEncoding	= "ISO-8859-1";
 
+#$wgUseNewInterlanguage = true ;
+
 ?>
