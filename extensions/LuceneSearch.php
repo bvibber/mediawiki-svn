@@ -54,7 +54,7 @@ class LuceneSearch extends SpecialPage
 		
 	function execute($par) {
 		global $wgRequest, $wgOut, $wgTitle, $wgContLang, $wgUser,
-			$wgLuceneCSSPath, $wgLSuseold, $wgInputEncoding,
+			$wgScriptPath, $wgLSuseold, $wgInputEncoding,
 			$wgLuceneDisableTitleMatches, $wgLuceneDisableSuggestions,
 			$wgUser;
 		global $wgGoToEdit;
@@ -103,7 +103,7 @@ class LuceneSearch extends SpecialPage
 			"rel" => "stylesheet",
 			"type" => "text/css",
 			"media" => "screen,projection",
-			"href" => $wgLuceneCSSPath
+			"href" => $wgScriptPath . '/extensions/lucenesearch.css'
 			)
 		);
 
@@ -589,8 +589,8 @@ function showResults(resultArr)
     for (var i=0; i < resultArr.length; i++)
     {
       var linkEl = document.createElement("a");
-      linkEl.href = "$wgScript?title=" + resultArr[i];
-      var textEl = document.createTextNode(resultArr[i].replace(/_/g, ' '));
+      linkEl.href = "$wgScript?title=" + encodeURIComponent(resultArr[i].replace(/ /g, '_'));
+      var textEl = document.createTextNode(resultArr[i]);
       linkEl.appendChild(textEl);
       resultsEl.appendChild(linkEl);
     }
