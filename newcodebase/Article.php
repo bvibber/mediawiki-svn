@@ -166,6 +166,7 @@ class Article {
 
 		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 		if ( $oldid && isset( $diff ) ) {
+			$wgOut->setArticleFlag( false );
 			$de = new DifferenceEngine( $oldid, $diff );
 			$de->showDiffs();
 			return;
