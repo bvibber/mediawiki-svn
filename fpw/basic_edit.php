@@ -144,7 +144,7 @@ function edit ( $title )
 	global $user , $CommentBox , $vpage , $EditTime , $wikiDescribePage , $wikiUser , $namespaceBackground , $wikiNamespaceBackground ;
 	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend , $wikiEditHelp , $wikiEditHelpLink , $wikiRecodeInput ;
 	global $wikiSummary , $wikiMinorEdit , $wikiCopyrightNotice , $wikiSave , $wikiPreview , $wikiDontSaveChanges , $wikiGetDate ;
-	global $wikiBeginDiff, $wikiEndDiff , $WikifyButton , $wikiAutoWikify , $wikiReadOnly , $wikiReadOnlyText ;
+	global $wikiBeginDiff, $wikiEndDiff , $WikifyButton , $wikiAutoWikify , $wikiReadOnly , $wikiReadOnlyText , $wikiDontSaveEmpty ;
 
 	if ( $wikiReadOnly ) return str_replace ( "$1" , $title , $wikiReadOnlyText ) ;
 	$npage = new WikiPage ;
@@ -166,6 +166,7 @@ function edit ( $title )
 		$SaveButton = "" ;
 		$doSave = true ;
 		if ( $vpage->doesTopicExist() ) {
+			$isnewpage = false ;
 			$lastTime = getMySQL ( "cur" , "cur_timestamp" , "cur_title=\"$vpage->secureTitle\"" ) ;
 			if ( tsc($EditTime) < tsc($lastTime) ) {
 				$doSave = false ;
@@ -180,6 +181,8 @@ function edit ( $title )
 
 				$editConflict = true ;
 			}
+		} else {
+			$isnewpage = true ;
 		}
 		if ( $doSave ) { # Actually saving the article!
 			$text = $EditBox ;
@@ -193,6 +196,12 @@ function edit ( $title )
 
 			# Checking for blocked IP
 			if ( isBlockedIP() ) return $wikiIPblocked ;
+			
+			# Checking for empty page
+			if ( $isnewpage
+			    and ( $text == $wikiDescribePage
+			    or !preg_match ( "/[\S]/", $text ) )
+			    ) return $wikiDontSaveEmpty ;
 
 			if ( $npage->doesTopicExist() ) $npage->backup() ;
 			else { $MinorEdit = 2 ; $npage->ensureExistence () ; }

@@ -107,6 +107,7 @@ $wikiPreview = "Antaŭrigardu" ;
 $wikiReset = "Restarigu apriorajn" ;
 $wikiDontSaveChanges = "<i>Revenu sen konservi la ŝanĝojn</i>" ;
 $wikiDescribePage = "Priskribu la novan paĝon ĉiloke." ;
+$wikiDontSaveEmpty = "<h1>Nova paĝo malplenas, tial ne konservita!</h1>\nEble utilos al vi tralegi la <a href=\"/wiki/vikipedio:Helpo\">helppaĝaro</a>." ;
 
 # wikiUser
 $wikiNoSuchUser = "<font color=red>Nekonata uzanto $1!</font>" ;

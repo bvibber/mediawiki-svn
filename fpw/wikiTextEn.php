@@ -91,6 +91,7 @@ $wikiPreview = "Preview" ;
 $wikiReset = "Reset" ;
 $wikiDontSaveChanges = "<i>Cancel</i>" ;
 $wikiDescribePage = "Describe the new page here." ;
+$wikiDontSaveEmpty = "<h1>New page was empty, not saving!</h1>\nYou may want to take a look at the <a href=\"/wiki/Wikipedia:Help\">help pages</a>." ;
 
 # wikiUser
 $wikiNoSuchUser = "<font color=red>Unknown user $1!</font>" ;
