@@ -85,7 +85,7 @@
  "bh" => "Bihari",
  "my" => "Birmaans",
  "bi" => "Bislama",
- "bs" => "Bosnisch"
+ "bs" => "Bosnisch",
  "km" => "Cambodjaans",
  "ca" => "Català",
  "cs" => "Cesky",
@@ -676,7 +676,7 @@ Er is in totaal $3 maal een pagina bekeken, en $4 maal een pagina bewerkt. Dat g
 "newpages"  => "Nieuwe pagina's",
 "movethispage" => "Verplaats deze pagina",
 "unusedimagestext" => "<p>Let op! Het zou kunnen dat er via een directe link verwezen wordt naar een afbeelding, bijvoorbeeld vanuit een anderstalige Wikipedia. Het is daarom mogelijk dat een afbeelding hier vermeld staat terwijl het wel degelijk gebruikt wordt.",
-"bookources" => "Boekhandels",
+"booksources" => "Boekhandels",
 "booksourcetext" => "Hieronder is een lijst van externe websites die boeken verkopen en ook verdere informatie hierover kunnen verstekken. Via een ISBN-nummer in een artikel kan u via deze pagina een werk opzoeken. <p>Deze dienst is enkel ter uwer informatie. Wikipedia NL heeft <u>geen enkele</u> relatie met deze websites.",
 "alphaindexline" => "$1 tot $2",
 
