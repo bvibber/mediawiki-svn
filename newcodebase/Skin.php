@@ -1086,7 +1086,7 @@ class Skin {
 		return $ret;
 	}
 
-	function recentChangesLine( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew )
+	function recentChangesLine( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew, $watched = false)
 	{
 		global $wgTitle, $wgLang, $wgUser;
 
@@ -1102,10 +1102,8 @@ class Skin {
 		$clink = $this->makeKnownLink( $t, "" );
 		$nt = Title::newFromText( $t );
 
-		if ( 0 != $wgUser->getID() ) {
-			if ( $nt->userIsWatching() ) {
-				$clink = "<strong>{$clink}</strong>";
-			}
+		if ( $watched ) {
+			$clink = "<strong>{$clink}</strong>";
 		}
 		$hlink = $this->makeKnownLink( $t, wfMsg( "hist" ), "action=history" );
 		if ( $isnew || $nt->isLog() ) {

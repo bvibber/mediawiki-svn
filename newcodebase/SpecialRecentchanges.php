@@ -38,11 +38,13 @@ function wfSpecialRecentchanges()
 	  	  WfMsg( "hide" ), "days={$days}&limit={$limit}&hideminor=1" );
 	}
 
-	$sql = "SELECT rc_cur_id,rc_namespace,rc_title,rc_user,rc_new," .
-	  "rc_comment,rc_user_text,rc_timestamp,rc_minor FROM recentchanges " .
+	$uid = $wgUser->getID();
+	$sql2 = "SELECT rc_cur_id,rc_namespace,rc_title,rc_user,rc_new," .
+	  "rc_comment,rc_user_text,rc_timestamp,rc_minor" . ($uid ? ",wl_user" : "") . " FROM recentchanges " .
+	  ($uid ? "LEFT OUTER JOIN watchlist ON wl_user={$uid} AND wl_page=rc_cur_id " : "") .
 	  "WHERE rc_timestamp > '{$cutoff}' {$hidem} " .
 	  "ORDER BY rc_timestamp DESC LIMIT {$limit}";
-	$res = wfQuery( $sql, $fname );
+	$res = wfQuery( $sql2, $fname );
 
 	if(isset($from)) {
 		$note = str_replace( "$1", $limit, wfMsg( "rcnotefrom" ) );
@@ -53,7 +55,7 @@ function wfSpecialRecentchanges()
 	}
 	$wgOut->addHTML( "\n<hr>\n{$note}\n<br>" );
 
-	$note = rcLimitLinks( $days, $limit );
+	$note = rcDayLimitLinks( $days, $limit );
 
 	$now = date( "YmdHis" );
 	$note .= "<br>\n" . str_replace( "$1",
@@ -78,12 +80,13 @@ function wfSpecialRecentchanges()
 			$com = $obj1->rc_comment;
 			$me = ( $obj1->rc_minor > 0 );
 			$new = ( $obj1->rc_new > 0 );
+			$watched = ($obj1->wl_user > 0);
 
 			$obj1 = wfFetchObject( $res );
 			--$count1;
 		if ( ! ( $hideminor && $me ) ) {
 			$s .= $sk->recentChangesLine( $ts, $u, $ut, $ns, $ttl,
-			  $com, $me, $new );
+			  $com, $me, $new, $watched );
 			--$limit;
 		}
 	}
@@ -98,7 +101,8 @@ function rcCountLink( $lim, $d, $page="Recentchanges", $more="" )
 	global $wgUser, $wgLang;
 	$sk = $wgUser->getSkin();
 	$s = $sk->makeKnownLink( $wgLang->specialPage( $page ),
-	  "{$lim}", "{$more}days={$d}&limit={$lim}" );
+	  ($lim ? "{$lim}" : wfMsg( "all" ) ), "{$more}" .
+	  ($d ? "days={$d}&" : "") . "limit={$lim}" );
 	return $s;
 }
 
@@ -107,24 +111,40 @@ function rcDaysLink( $lim, $d, $page="Recentchanges", $more="" )
 	global $wgUser, $wgLang;
 	$sk = $wgUser->getSkin();
 	$s = $sk->makeKnownLink( $wgLang->specialPage( $page ),
-	  "{$d}", "{$more}days={$d}&limit={$lim}" );
+	  ($d ? "{$d}" : wfMsg( "all" ) ), "{$more}days={$d}" .
+	  ($lim ? "&limit={$lim}" : "") );
 	return $s;
 }
 
-function rcLimitLinks( $days, $limit, $page="Recentchanges", $more="" )
+function rcDayLimitLinks( $days, $limit, $page="Recentchanges", $more="", $doall = false )
 {
 	if ($more != "") $more .= "&";
 	$cl = rcCountLink( 50, $days, $page, $more ) . " | " .
 	  rcCountLink( 100, $days, $page, $more  ) . " | " .
 	  rcCountLink( 250, $days, $page, $more  ) . " | " .
-	  rcCountLink( 500, $days, $page, $more  );
+	  rcCountLink( 500, $days, $page, $more  ) .
+	  ( $doall ? ( " | " . rcCountLink( 0, $days, $page, $more ) ) : "" );
 	$dl = rcDaysLink( $limit, 1, $page, $more  ) . " | " .
 	  rcDaysLink( $limit, 3, $page, $more  ) . " | " .
 	  rcDaysLink( $limit, 7, $page, $more  ) . " | " .
 	  rcDaysLink( $limit, 14, $page, $more  ) . " | " .
-	  rcDaysLink( $limit, 30, $page, $more  );
+	  rcDaysLink( $limit, 30, $page, $more  ) .
+	  ( $doall ? ( " | " . rcDaysLink( $limit, 0, $page, $more ) ) : "" );
 	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
 	$note = str_replace( "$2", $dl, $note );
+	$note = str_replace( "$3", $mlink, $note );
+	return $note;
+}
+
+function rcLimitLinks( $page="Recentchanges", $more="", $doall = false )
+{
+	if ($more != "") $more .= "&";
+	$cl = rcCountLink( 50, 0, $page, $more ) . " | " .
+	  rcCountLink( 100, 0, $page, $more  ) . " | " .
+	  rcCountLink( 250, 0, $page, $more  ) . " | " .
+	  rcCountLink( 500, 0, $page, $more  ) .
+	  ( $doall ? ( " | " . rcCountLink( 0, $days, $page, $more ) ) : "" );
+	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
 	$note = str_replace( "$3", $mlink, $note );
 	return $note;
 }

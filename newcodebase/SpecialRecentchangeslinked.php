@@ -56,7 +56,7 @@ function wfSpecialRecentchangeslinked()
 	$wgOut->addHTML( "<hr>\n{$note}\n<br>" );
 
 	$tu = "target=" . $nt->getPrefixedURL();
-	$note = rcLimitlinks( $days, $limit, "Recentchangeslinked", $tu );
+	$note = rcDayLimitlinks( $days, $limit, "Recentchangeslinked", $tu );
 	$wgOut->addHTML( "{$note}\n" );
 
 	$s = $sk->beginRecentChangesList();
@@ -83,24 +83,6 @@ function wfSpecialRecentchangeslinked()
 
 	wfFreeResult( $res );
 	$wgOut->addHTML( $s );
-}
-
-function lcCountLink( $lim, $d, $t )
-{
-	global $wgUser, $wgLang;
-	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink( $wgLang->specialPage( "Recentchangeslinked" ),
-	  "{$lim}", "target={$t}&days={$d}&limit={$lim}" );
-	return $s;
-}
-
-function lcDaysLink( $lim, $d, $t )
-{
-	global $wgUser, $wgLang;
-	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink( $wgLang->specialPage( "Recentchangeslinked" ),
-	  "{$d}", "target={$t}&days={$d}&limit={$lim}" );
-	return $s;
 }
 
 ?>

@@ -308,6 +308,7 @@ class User {
 
 	/* private */ function loadWatchlist()
 	{
+		# This function is obsolete
 		if ( 0 == $this->mId ) {
 			$this->mWatchlist = array();
 			return;
@@ -320,21 +321,43 @@ class User {
 
 	function isWatched( $title )
 	{
-		$this->loadWatchlist();
-		return in_array( $title, $this->mWatchlist );
+		#$this->loadWatchlist();
+		#return in_array( $title, $this->mWatchlist );
+		global $wgLinkCache;
+		$pid = $wgLinkCache->addLink( $title );
+		if( $this->mId > 0 and $pid > 0) {
+			$sql = "SELECT wl_page FROM watchlist WHERE wl_user={$this->mId} AND wl_page={$pid}";
+			$res = wfQuery( $sql );
+			$s = wfFetchObject( $res );
+			return ( $s->wl_page == $pid );
+		} else {
+			return false;
+		}
 	}
 
 	function addWatch( $title )
 	{
-		$this->loadWatchlist();
-		array_push( $this->mWatchlist, $title );
+		#$this->loadWatchlist();
+		#array_push( $this->mWatchlist, $title );
+		global $wgLinkCache;
+		$pid = $wgLinkCache->addLink( $title );
+		if( $this->mId > 0 and $pid > 0) {
+			$sql = "INSERT INTO watchlist (wl_user, wl_page) VALUES ({$this->mId},{$pid})";
+			wfQuery( $sql );
+		}
 	}
 
 	function removeWatch( $title )
 	{
-		$this->loadWatchlist();
-		$r = array_search( $title, $this->mWatchlist );
-		if ( false !== $r ) { unset( $this->mWatchlist[$r] ); }
+		#$this->loadWatchlist();
+		#$r = array_search( $title, $this->mWatchlist );
+		#if ( false !== $r ) { unset( $this->mWatchlist[$r] ); }
+		global $wgLinkCache;
+		$pid = $wgLinkCache->addLink( $title );
+		if( $this->mId > 0 and $pid > 0 ) {
+			$sql = "DELETE FROM watchlist WHERE wl_user={$this->mId} AND wl_page={$pid}";
+			wfQuery( $sql );
+		}
 	}
 
 	function getWatchlist()
