@@ -1,15 +1,22 @@
 <?
+# The wikiUser class handles all user information
+
 class WikiUser {
 	var $id , $name , $password , $retypePassword ;
-	var $isLoggedIn ;
 	var $options , $email ;
 	var $rights ;
+	var $isLoggedIn ; # Is this user currently logged in?
 
+#### Skin functions
+
+	# Creates the options for the currently selected skin by calling the appropriate function
 	function skin () {
 		if ( $this->options["skin"] == "" ) $this->skinBlank () ;
 		else if ( $this->options["skin"] == "None" ) $this->skinBlank () ;
 		else if ( $this->options["skin"] == "Star Trek" ) $this->skinStarTrek () ;
 		}
+
+	# This sets the options for the standard skin
 	function skinBlank () {
 		$this->options["background"] = "" ;
 		$this->options["text"] = "" ;
@@ -23,6 +30,8 @@ class WikiUser {
 		$this->options["tabLine1"] = "" ;
 		$this->options["tabLine2"] = " bgcolor=#FFFFCC" ;
 		}
+
+	# This sets the options for the StarTrek skin
 	function skinStarTrek () {
 		$this->options["background"] = " BGCOLOR=#000000 " ;
 		$this->options["text"] = " TEXT=#00BB00 " ;
@@ -36,6 +45,10 @@ class WikiUser {
 		$this->options["tabLine1"] = "" ;
 		$this->options["tabLine2"] = " bgcolor=#333333" ;
 		}
+
+#### Management functions
+
+	# This checks the cookies for prior log-ins
 	function scanCookies () {
 		global $WikiUserID , $WikiUserPassword , $WikiLoggedIn ;
 		$this->id = 0 ;
@@ -62,8 +75,10 @@ class WikiUser {
 		$this->ensureDefaultOptions () ;
 		$this->skin () ;
 		}
+
+	# This sets the default options for new and no-log-in users
 	function ensureDefaultOptions () {
-		if ( $this->options["quickBar"] == "" ) $this->options["quickBar"] = "none" ;
+		if ( $this->options["quickBar"] == "" ) $this->options["quickBar"] = "right" ; # For demonstration
 		if ( $this->options["markupNewTopics"] == "" ) $this->options["markupNewTopics"] = "normal" ;
 		if ( $this->options["underlineLinks"] == "" ) $this->options["underlineLinks"] = "yes" ;
 		if ( $this->options["showHover"] == "" ) $this->options["showHover"] = "yes" ;
@@ -75,7 +90,10 @@ class WikiUser {
 		if ( $this->options["resultsPerPage"] == "" ) $this->options["resultsPerPage"] = "20" ;
 		if ( $this->options["skin"] == "" ) $this->options["skin"] = "None" ;
 		}
+
+	# Loads the user settings from the database
 	function loadSettings () {
+		$this->rights = array () ;
 		if ( !$this->isLoggedIn ) return ;
 		$t = getMySQL ( "user" , "user_options" , "user_id=".$this->id ) ;
 		$t = urldecode ( $t ) ;
@@ -91,6 +109,8 @@ class WikiUser {
 		$this->email = getMySQL ( "user" , "user_email" , "user_id=".$this->id ) ;
 		$this->skin () ;
 		}
+
+	# Saves/updates the user settings in the database
 	function saveSettings () {
 		global $expiration ;
 		if ( !$this->isLoggedIn ) return ;
@@ -107,11 +127,12 @@ class WikiUser {
 		setMySQL ( "user" , "user_email" , $this->email , "user_id=".$this->id ) ;
 		if ( $this->options["rememberPassword"] == "on" ) setcookie ( "WikiUserPassword" , $this->password , $expiration ) ;
 		}
+
+	# Creates a link to the user home page, or returns the IP
 	function getLink () {
 		global $REMOTE_ADDR ;
 		if ( $this->isLoggedIn ) {
 			$s = new WikiPage ;
-#			$s->setTitle ( "user:$this->name" ) ;
 			$s = $s->parseContents ( "[[user:$this->name|$this->name]]" ) ;
 			$s = substr ( strstr ( $s , ">" ) , 1 ) ;
 			$s = str_replace ( "</p>" , "" , $s ) ;
@@ -122,6 +143,8 @@ class WikiUser {
 		$s = $s[0].".".$s[1].".".$s[2].".xxx" ;
 		return $s ;
 		}
+
+	# Checks if a user with that name exists
 	function doesUserExist () {
 		$s = trim ( $this->name ) ;
 		if ( $s == "" ) return false ;
@@ -139,6 +162,8 @@ class WikiUser {
 		if ( $s == "" ) return false ;
 		return true ;
 		}
+
+	# Adds a new user to the database
 	function addToDatabase () {
 		$connection = getDBconnection () ;
 		mysql_select_db ( "wikipedia" , $connection ) ;
@@ -146,6 +171,8 @@ class WikiUser {
 		$result = mysql_query ( $sql , $connection ) ;
 		mysql_close ( $connection ) ;		
 		}
+
+	# Checks the login
 	function verify () {
 		$this->isLoggedIn = false ;
 		if ( !$this->doesUserExist() ) return "<font color=red>Unknown user \"$this->name\"!</font>" ;
@@ -174,6 +201,8 @@ class WikiUser {
 		
 		return $ret ;
 		}
+
+	# Toggles the watch on an article for this user
 	function doWatch ( $t ) {
 		$a = getMySQL ( "user" , "user_watch" , "user_id=$this->id" ) ;
 		$b = explode ( "'" , $a ) ;

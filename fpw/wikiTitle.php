@@ -1,10 +1,14 @@
 <?
+# The wikiTitle class manages the titles of articles. Useful for converting titles into different needed formats.
+# Gives its functions and variables to the wikiPage class
+
 class WikiTitle {
 	var $title , $secureTitle , $url , $isSpecialPage , $thisVersion ;
 	var $namespace , $mainTitle , $subpageTitle , $hasNamespace ;
 
-	# Functions
-	# User rights
+##### Functions
+####### # User rights
+	# Can the current user delete this page?
 	function canEdit () {
 		global $action ;
 #		global $oldID ; if ( isset ( $oldID ) ) return false ;
@@ -18,6 +22,8 @@ class WikiTitle {
 
 		return true ;
 		}
+
+	# Can the current user delete this page?
 	function canDelete () {
 		global $action , $user ;
 		global $oldID ; if ( isset ( $oldID ) ) return false ;
@@ -27,6 +33,8 @@ class WikiTitle {
 		if ( in_array ( "is_sysop" , $user->rights ) ) return true ;
 		return false ;
 		}
+
+	# Can the current user protect this page? (NOT USED YET)
 	function canProtect () {
 		global $action , $user ;
 		global $oldID ; if ( isset ( $oldID ) ) return false ;
@@ -36,6 +44,8 @@ class WikiTitle {
 		if ( in_array ( "is_sysop" , $user->rights ) ) return true ;
 		return false ;
 		}
+
+	# Can the current user advance this page? (NOT USED YET)
 	function canAdvance () {
 		global $action , $user ;
 		global $oldID ; if ( isset ( $oldID ) ) return false ;
@@ -46,7 +56,9 @@ class WikiTitle {
 		return false ;
 		}
 
-	# Title functions
+#### Title functions
+
+	# Generates a "secure" title
 	function makeSecureTitle () {
 		$this->splitTitle () ;
 		$s = ucfirst ( trim ( $this->namespace ) ) ;
@@ -58,14 +70,17 @@ class WikiTitle {
 		$s = str_replace ( "\\'" , "'" , $s ) ;
 
 		# Make it compatible with old wiki
-#		$s = str_replace ( "'" , "" , $s ) ;
 		$s = str_replace ( " " , "_" , $s ) ;
 
 		$this->secureTitle = $s ;
 		}
+
+	# Converts the secure title to an even more secure one (URL-style)
 	function makeURL () {		
 		$this->url = urlencode ( $this->secureTitle ) ;
 		}
+
+	# Converts a secure title back to a nice-looking one
 	function getNiceTitle ( $s  ) {
 		if ( !isset ( $s ) ) $s = $this->secureTitle ;
 		$s = str_replace ( "_" , " " , $s ) ;
@@ -73,6 +88,8 @@ class WikiTitle {
 		$s = str_replace ( "\\\\" , "\\" , $s ) ;
 		return ucfirst ( $s ) ;
 		}
+
+	# Takes apart a title by namespace, subpage...
 	function splitTitle () {
 		$a = explode ( ":" , $this->title , 2 ) ;
 		if ( count ( $a ) == 1 ) {
@@ -90,6 +107,8 @@ class WikiTitle {
 		else $this->subpageTitle = $a[1] ;
 		$this->namespace = strtolower ( $this->namespace ) ;
 		}
+
+	# I don't remember what this does, or if I use it somewhere...
 	function getLinkTo ( $target ) {
 		$n = $this->namespace ;
 		if ( $target->hasNamespace ) $n = $target->namespace ;
@@ -100,14 +119,20 @@ class WikiTitle {
 		if ( $target->subpageTitle != "" ) $ret .= "/".$target->subpageTitle ;
 		return $ret ;
 		}
+
+	# These are pretty straight-forward
 	function makeAll () { $this->makeSecureTitle(); $this->makeURL(); }
 	function setTitle ( $t ) { $this->title = $t ; $this->makeAll() ; }
+
+	# OUTDATED!!! BUT LEAVE IT!!
 	function getMainTitle () {
 		$r = $this->title ;
 #		if ( strstr (  $r , ":" ) == false and $this->hasNamespace and $this->namespace != "" ) $r = $this->namespace.":$r" ;
 #		if ( $this->subpageTitle != "" ) $r .= "/".$this->subpageTitle ;
 		return $r ;
 		}
+
+	# Checks the database if this topic already exists
 	function doesTopicExist ( $conn = "" ) {
 		$this->makeSecureTitle () ;
 		if ( $this->namespace == "special" ) return true ;
@@ -124,6 +149,8 @@ class WikiTitle {
 			}
 		return false ;
 		}
+
+	# Checks for one namespace and one subpage level max.
 	function validateTitle () {
 		$this->makeSecureTitle () ;
 		if ( $this->mainTitle == "" ) return false ;

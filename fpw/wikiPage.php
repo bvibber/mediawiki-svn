@@ -1,9 +1,14 @@
 <?
+# The wikiPage class is used for both database management and rendering (display) of articles
+# It inherits some functions and variables from the wikiTitle class
+
 class WikiPage extends WikiTitle {
-	var $contents ;
-	var $knownLinkedLinks , $knownUnlinkedLinks ;
+	var $contents ; # The actual article body
+	var $knownLinkedLinks , $knownUnlinkedLinks ; # Used for faster display
 	
-	#Functions
+#### Database management functions
+
+	# This loads an article from the database, or calls a special function instead (all pages with "special:" namespace)
 	function load ( $t , $doRedirect = true ) {
 		global $action , $user ;
 		$this->knownLinkedLinks = array () ;
@@ -12,9 +17,9 @@ class WikiPage extends WikiTitle {
 		$this->makeSecureTitle () ;
 		$this->isSpecialPage = false ;
 		$this->revision = "current" ;
-		if ( $this->namespace == "special" ) {
-			$allowed = array("userlogin","userlogout","recentchanges","upload","statistics","lonelypages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","deletepage");
-			if ( in_array ( "is_sysop" , $user->rights ) ) array_push ( $allowed , "asksql" ) ;
+		if ( $this->namespace == "special" ) { # Special page, calling appropriate function
+			$allowed = array("userlogin","userlogout","recentchanges","upload","statistics","lonelypages","wantedpages","allpages","randompage","shortpages","listusers","watchlist","special_pages","editusersettings","deletepage"); # List of allowed special pages
+			if ( in_array ( "is_sysop" , $user->rights ) ) array_push ( $allowed , "asksql" ) ; # Another function just for sysops
 			$call = $this->mainTitle ;
 			if ( !in_array ( strtolower ( $call ) , $allowed ) ) {
 				$this->isSpecialPage = true ;
@@ -22,15 +27,18 @@ class WikiPage extends WikiTitle {
 				return ;
 				}
 			$this->title = $call ;
+			include_once ( "specialPages.php") ;
 			$this->contents = $call () ;
 			$this->isSpecialPage = true ;
-			return ;
+			return ; # contents of special page is returned here!!!
 			}
+
+		# No special page, loading article form the database
 		$connection = getDBconnection () ;
 		mysql_select_db ( "wikipedia" , $connection ) ;
 		$thisVersion = "" ;
 		global $oldID , $version , $THESCRIPT ;
-		if ( isset ( $oldID ) ) {
+		if ( isset ( $oldID ) ) { # an old article version
 			$sql = "SELECT * FROM old WHERE old_id=$oldID" ;
 			$result = mysql_query ( $sql , $connection ) ;
 			if ( $s = mysql_fetch_object ( $result ) ) {
@@ -40,7 +48,7 @@ class WikiPage extends WikiTitle {
 				$this->thisVersion = "<br><font size=-1>This is the old version #$version; see the <a href=\"$THESCRIPT?title=$this->secureTitle\">current version</a></font>" ;
 				}
 			else $this->contents = "Describe the new page here." ;
-		} else {
+		} else { # The current article version
 			$sql = "SELECT * FROM cur WHERE cur_title=\"".$this->secureTitle."\"" ;
 			$result = mysql_query ( $sql , $connection ) ;
 			if ( $s = mysql_fetch_object ( $result ) ) {
@@ -56,7 +64,7 @@ class WikiPage extends WikiTitle {
 		mysql_close ( $connection ) ;
 		$this->makeURL () ;
 		$this->splitTitle () ;
-		if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" ) {
+		if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" ) { # #REDIRECT
 			$z = $this->contents ;
 			$z = strstr ( $z , "[[" ) ;
 			$z = str_replace ( "[[" , "" , $z ) ;
@@ -64,10 +72,14 @@ class WikiPage extends WikiTitle {
 			$this->load ( trim($z) , false ) ;
 			}
 		}
+
+	# This function - well, you know...
 	function special ( $t ) {
 		$this->title = $t ;
 		$this->isSpecialPage = true ;
 		}
+
+	# This lists all the subpages of a page (for the QuickBar)
 	function getSubpageList () {
 		$a = array () ;
 		$t = ucfirst ( $this->namespace ) ;
@@ -91,6 +103,9 @@ class WikiPage extends WikiTitle {
 		if ( count ( $a ) > 0 ) array_unshift ( $a , "[[$mother]]" ) ;
 		return $a ;
 		}
+
+	# This lists all namespaces that contain an article with the same name
+	# Called by QuickBar() and getFooter()
 	function getOtherNamespaces () {
 		global $THESCRIPT ;
 		$a = array () ;
@@ -121,6 +136,8 @@ class WikiPage extends WikiTitle {
 		mysql_close ( $connection ) ;
 		return $a ;
 		}
+
+	# This creates a new article if there is none with the same title yet
 	function ensureExistence () {
 		$this->makeSecureTitle () ;
 		if ( $this->doesTopicExist() ) return ;
@@ -130,6 +147,10 @@ class WikiPage extends WikiTitle {
 		$result = mysql_query ( $sql , $connection ) ;
 		mysql_close ( $connection ) ;		
 		}
+
+	# This function performs a backup from the "cur" to the "old" table, building a
+	#  single-linked chain with the cur_old_version/old_old_version entries
+	# The target data set is defined by $this->secureTitle
 	function backup () {
 		$id = getMySQL ( "cur" , "cur_id" , "cur_title=\"$this->secureTitle\"" ) ;
 		$oid = getMySQL ( "cur" , "cur_old_version" , "cur_id=$id" ) ;
@@ -156,6 +177,9 @@ class WikiPage extends WikiTitle {
 
 		mysql_close ( $connection ) ;
 		}
+
+	# This function stores the passed parameters into the database (the "cur" table)
+	# The target data set is defined by $this->secureTitle
 	function setEntry ( $text , $comment , $userID , $userName , $minorEdit ) {
 		$cond = "cur_title=\"$this->secureTitle\"" ;
 
@@ -174,7 +198,9 @@ class WikiPage extends WikiTitle {
 		mysql_close ( $connection ) ;		
 		}
 
-	# Output functions
+#### Rendering functions
+	# This function converts wiki-style internal links like [[HomePage]] with the appropriate HTML code
+	# It has to handle namespaces, subpages, and alternate names (as in [[namespace:page/subpage name]])
 	function replaceInternalLinks ( $s ) {
 		global $THESCRIPT ;
 		global $user , $unlinkedLinks , $linkedLinks ;
@@ -185,7 +211,7 @@ class WikiPage extends WikiTitle {
 		$connection = getDBconnection () ;
 		foreach ( $a as $t ) {
 			$b = explode ( "]]" , $t , 2 ) ;
-			if ( count($b) < 2 ) $s .= "Illegal link : ?$b[0]?" ;
+			if ( count($b) < 2 ) $s .= "<font color=red><b>Incorrect link : [[$b[0]</b></font>" ;
 			else {
 				$c = explode ( "|" , $b[0] , 2 ) ;
 				$link = $c[0] ;
@@ -224,10 +250,14 @@ class WikiPage extends WikiTitle {
 		mysql_close ( $connection ) ;
 		return $s ;
 		}
+
+	# This function replaces wiki-style image links with the HTML code to display them
 	function parseImages ( $s ) {
 		$s = ereg_replace ( "http://([a-zA-Z0-9_/:.]*)\.(png|jpg|jpeg|tif|tiff|gif)" , "<img src=\"http://\\1.\\2\">" , $s ) ;
 		return $s ;
 		}
+
+	# This function replaces wiki-style external links (both with and without []) with HTML links
 	function replaceExternalLinks ( $s ) {
 		global $user ;
 		$cnt = 1 ;
@@ -261,13 +291,15 @@ class WikiPage extends WikiTitle {
 
 		return $s ;
 		}
+
+	# This function replaces the newly introduced wiki variables with their values (for display only!)
 	function replaceVariables ( $s ) {
 		$var=date("m"); $s = str_replace ( "{{{CURRENTMONTH}}}" , $var , $s ) ;
 		$var=date("F"); $s = str_replace ( "{{{CURRENTMONTHNAME}}}" , $var , $s ) ;
 		$var=date("j"); $s = str_replace ( "{{{CURRENTDAY}}}" , $var , $s ) ;
 		$var=date("l"); $s = str_replace ( "{{{CURRENTDAYNAME}}}" , $var , $s ) ;
 		$var=date("Y"); $s = str_replace ( "{{{CURRENTYEAR}}}" , $var , $s ) ;
-		if ( strstr ( $s , "{{{NUMBEROFARTICLES}}}" ) ) {
+		if ( strstr ( $s , "{{{NUMBEROFARTICLES}}}" ) ) { # This should count only "real" articles!
 			$connection=getDBconnection() ;
 			mysql_select_db ( "wikipedia" , $connection ) ;
 			$sql = "SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%/Talk\" AND cur_title NOT LIKE \"%ikipedia%\" AND cur_text LIKE \"%,%\"" ;
@@ -279,6 +311,8 @@ class WikiPage extends WikiTitle {
 			}
 		return $s ;
 		}
+
+	# This function ensures all occurrences of $f are replaces with $r within $s
 	function replaceAll ( $f , $r , &$s ) {
 		$t = "" ;
 		while ( $s != $t ) {
@@ -287,6 +321,8 @@ class WikiPage extends WikiTitle {
 			}
 		return $s ;
 		}
+
+	# This function is called to replace wiki-style tags with HTML, e.g., the first occurrence of ''' with <b>, the second with </b>
 	function pingPongReplace ( $f , $r1 , $r2 , $s ) {
 		$a = explode ( $f , " ".$s ) ;
 		$s = substr ( array_shift ( $a ) , 1 ) ;
@@ -298,24 +334,40 @@ class WikiPage extends WikiTitle {
 			}
 		return $s ;
 		}
+
+	# This function organizes the <nowiki> parts and calls subPageContents() for the wiki parts
 	function parseContents ( $s ) {
 		global $linkedLinks , $unlinkedLinks ;
 		$linkedLinks = array () ;
 		$unlinkedLinks = array () ;
 		$s .= "\n" ;
 		$a = spliti ( "<nowiki>" , $s ) ;
-		$s = $this->subParseContents ( array_shift ( $a ) ) ;
+
+		# $d needs to contain a unique string - this can be altered at will, as long it stays unique!
+		$d = "µµ~~³²²³~~µ~µ²~µ~µ²~µµ~µ~µ~²µ²²µ~³µ³~³µ²~µ" ;
+
+		$b = array () ;
+		$s = array_shift ( $a ) ;
 		foreach ( $a as $x ) {
-			$b = spliti ( "</nowiki>" , $x , 2 ) ;
-			$s .= $b[0] ;
-			if ( count ( $b ) == 2 ) {
-				$sub = $this->subParseContents ( $b[1] ) ;
-				$sub = substr ( strstr ( $sub , ">" ) , 1 ) ;
-				$s .= $sub ;
-				}
+			$c = spliti ( "</nowiki>" , $x , 2 ) ;
+			if ( count ( $c ) == 2 ) {
+				array_push ( $b , $c[0] ) ;
+				$s .= $d.$c[1] ;
+			} else $s .= "&lt;nowiki&gt;".$x ;
 			}
+		$s = $this->subParseContents ( $s ) ;
+
+		# replacing $d with the actual nowiki contents
+		$a = spliti ( $d , $s ) ;
+		$s = array_shift ( $a ) ;
+		foreach ( $a as $x ) {
+			$s .= array_shift ( $b ) . $x ;
+			}
+
 		return $s ;
 		}
+
+	# This function removes "forbidden" HTML tags
 	function removeHTMLtags ( $s ) {
 		$s = eregi_replace ( "<a (.*)>" , "&lt;a \\1&gt;" , $s ) ;
 		$s = eregi_replace ( "</a(.*)>" , "&lt;/a\\1&gt;" , $s ) ;
@@ -323,19 +375,25 @@ class WikiPage extends WikiTitle {
 		$s = eregi_replace ( "</script(.*)>" , "&lt;/script\\1&gt;" , $s ) ;
 		return $s ;
 		}
+
+	# This function does the actual parsing of the wiki parts of the article
 	function subParseContents ( $s ) {
 		global $user ;
-# Removed autoLink for mixedThings; wasn't working, anyway...
+# Removed automatic links for mixedThings; wasn't working, anyway...
 #		$s = ereg_replace ( "([\.|\n| )([a-z0-9]*[A-Z0-9]+[A-Za-z0-9]*)( |\n|\.)" , "\\1[[\\2]]\\3" , $s ) ;
-		$s = $this->removeHTMLtags ( $s ) ;
+		$s = $this->removeHTMLtags ( $s ) ; # Removing "forbidden" HTML tags
+		# Now some repalcements wiki->HTML
 		$s = ereg_replace ( "-----*" , "<hr>" , $s ) ;
 		$s = str_replace ( "<HR>" , "<hr>" , $s ) ;
 		$s = $this->replaceVariables ( $s ) ;
 		$s = $this->pingPongReplace ( "'''" , "<b>" , "</b>" , $s ) ;
 		$s = $this->pingPongReplace ( "''" , "<i>" , "</i>" , $s ) ;
 
+		# Automatic links to subpages (e.g., /Talk -> [[/Talk]]
 		$s = ereg_replace ( "([\n| ])/([a-zA-Z0-9_]*)" , "\\1[[/\\2|/\\2]]" , $s ) ;
 
+		# Parsing through the text line by line
+		# The main thing happening here is handling of lines starting with * # : etc.
 		$justify = "" ;
 		if ( $user->options["justify"] == "yes" ) $justify = " align=justify" ;
 		$a = explode ( "\n" , $s ) ;
@@ -397,20 +455,26 @@ class WikiPage extends WikiTitle {
 			}
 		$s .= "</p>" ;
 
+		# Removing artefact empty paragraphs like <p></p>
 		$this->replaceAll ( "<p$justify>\n</p>" , "<p$justify></p>" , $s ) ;
 		$this->replaceAll ( "<p$justify></p>" , "" , $s ) ;
 
+		# Stuff for the skins
 		if ( $user->options["textTableBackground"] != "" ) {
 			$s = str_replace ( "<table" , "<table".$user->options["textTableBackground"] , $s ) ;
 			}
 
+		# And now, for the final...
 		$s = $this->parseImages ( $s ) ;
 		$s = $this->replaceExternalLinks ( $s ) ;
 		$s = $this->replaceInternalLinks ( $s ) ;
 		return $s ;
 		}
 
-	# Header and footer section
+#### Header and footer section
+
+	# This generates the bar at the top and bottom of each page
+	# Used by getHeader() and getFooter()
 	function getLinkBar () {
 		global $THESCRIPT ;
 		global $user , $oldID , $version ;
@@ -433,6 +497,8 @@ class WikiPage extends WikiTitle {
 		$ret .= " | <a href=\"$THESCRIPT?title=special:Special_pages\">Special Pages</a>" ;
 		return $ret ;
 		}
+
+	# This generates the header with title, user name and functions, wikipedia logo, search box etc.
 	function getHeader () {
 		global $THESCRIPT ;
 		global $user , $action ;
@@ -467,6 +533,8 @@ class WikiPage extends WikiTitle {
 		$ret .= "<tr><td valign=bottom>".$this->getLinkBar()."</td></tr></table>" ;
 		return $ret ; 
 		}
+
+	# This generates the QuickBar (also used by the list of special pages function)
 	function getQuickBar () {
 		global $THESCRIPT ;
 		global $user , $oldID , $version ;
@@ -478,6 +546,7 @@ class WikiPage extends WikiTitle {
 		if ( $this->canEdit() ) $column .= "<br><a href=\"$THESCRIPT?action=edit&title=$this->url$editOldVersion\">Edit this page</a>\n" ;
 
 		if ( $this->canDelete() ) $column .= "<br><a href=\"$THESCRIPT?title=special:deletepage&target=$this->url\">Delete this page</a>\n" ;
+# To be implemented later
 #		if ( $this->canProtect() ) $column .= "<br><a href=\"$THESCRIPT?action=protectpage&title=$this->url\">Protect this page</a>\n" ;
 #		if ( $this->canAdvance() ) $column .= "<br><a href=\"$THESCRIPT?title=special:Advance&topic=$this->safeTitle\">Advance</a>\n" ;
 
@@ -498,6 +567,9 @@ class WikiPage extends WikiTitle {
 		if ( count ( $a ) > 0 ) $column .= "<hr>".implode ( "<br>\n" , $a ) ;
 		return $column."</nowiki>" ;
 		}
+
+	# This calls the parser and eventually adds the QuickBar. Used fro display of normal article pages
+	# Some special pages have their own rendering function
 	function getMiddle ( $ret ) {
 		global $user , $action ;
 		$oaction = $action ;
@@ -521,6 +593,8 @@ class WikiPage extends WikiTitle {
 		$action = $oaction ;
 		return $ret ; 
 		}
+
+	# This generates the footer with link bar, search box, etc.
 	function getFooter () {
 		global $THESCRIPT ;
 		$ret = $this->getLinkBar() ;
@@ -534,6 +608,9 @@ class WikiPage extends WikiTitle {
 		$ret .= "<FORM>Search: <INPUT TYPE=text NAME=search SIZE=20></FORM>" ;
 		return $ret ; 
 		}
+
+	# This generates header, diff (if wanted), article body (with QuickBar), and footer
+	# The whole page (for normal pages) is generated here
 	function renderPage () {
 		global $pageTitle , $diff ;
 		$pageTitle = $this->title ;
@@ -542,6 +619,8 @@ class WikiPage extends WikiTitle {
 		$middle = $this->getMiddle($this->parseContents($middle)) ;
 		return $this->getHeader().$middle.$this->getFooter() ;
 		}
+
+	# This displays the diff. Currently, only diff with the last edit!
 	function doDiff () {
 		global $oldID , $version , $user ;
 		$ret = "<nowiki><font color=red><b>BEGIN DIFF</b></font><br>\n" ;
@@ -579,8 +658,8 @@ class WikiPage extends WikiTitle {
 			# Output
 			$ret .= "<font color=#2AAA2A>Green text</font> was added or changed, <font color=#AAAA00>yellow text</font> was changed or deleted." ;
 			$ret .= "<table width=100% border=1$bc cellspacing=0 cellpadding=2>\n" ;
-			foreach ( $nl as $x ) $ret .= "<tr><td bgcolor=#FFFFAF><font$fc>$x</font></td></tr>\n" ;
-			foreach ( $dl as $x ) $ret .= "<tr><td bgcolor=#CFFFCF><font$fc>$x</font></td></tr>\n" ;
+			foreach ( $nl as $x ) $ret .= "<tr><td bgcolor=#CFFFCF><font$fc>$x</font></td></tr>\n" ;
+			foreach ( $dl as $x ) $ret .= "<tr><td bgcolor=#FFFFAF><font$fc>$x</font></td></tr>\n" ;
 			$ret .= "</table>\n" ;
 		} else if ( isset ( $oldID ) and $s->old_old_version == 0 ) $ret .= "This is the first version of this article. All text is new!<br>\n" ;
 		else if ( !isset ( $oldID ) ) $ret .= "This is the first version of this article. All text is new!<br>\n" ;
