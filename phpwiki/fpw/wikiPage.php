@@ -204,7 +204,7 @@ class WikiPage extends WikiTitle {
         global $wikiSQLServer ;
         $connection = getDBconnection () ;
         mysql_select_db ( $wikiSQLServer , $connection ) ;
-    $sql = "INSERT INTO cur (cur_title, cur_ind_title) VALUES (\"$this->secureTitle\", \"$this->secureTitle\")" ;
+        $sql = "INSERT INTO cur (cur_title, cur_ind_title) VALUES (\"$this->secureTitle\", REPLACE(\"$this->secureTitle\",'_',' '))" ;
         mysql_query ( $sql , $connection ) ;
         if ( $useCachedPages ) { # Flushing cache for all pages that linked to the empty topic
             $sql = "UPDATE cur SET cur_cache=\"\", cur_timestamp=cur_timestamp WHERE cur_linked_links LIKE \"%$this->secureTitle%\" OR cur_unlinked_links LIKE \"%$this->secureTitle%\"" ;
@@ -987,7 +987,7 @@ class WikiPage extends WikiTitle {
             }
         }
 
-        $ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=$search><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
+        $ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
         $ret .= "</td>\n<td rowspan=2 width=1><a href=\"".wikiLink("")."\"><img border=0 src=\"$wikiLogoFile\" alt=\"[$wikiMainPage]\"></a></td></tr>\n" ;
         $ret .= "<tr><td valign=bottom>".$this->getLinkBar()."</td></tr></table>" ;
         return $ret ;
@@ -1128,7 +1128,7 @@ class WikiPage extends WikiTitle {
             }
 */
 
-        $ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=$search><INPUT TYPE=submit value=\"$wikiSearch\">" ;
+        $ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiSearch\">" ;
         $ret .= " &nbsp; &nbsp; <a href=\"http://validator.w3.org/check/referer\" target=blank>Validate this page</a>" ;
         $ret .= "</FORM>" ;
 
