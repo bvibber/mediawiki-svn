@@ -105,9 +105,10 @@ int encodeTableRowInfo (char* input, int initleng)
 "{|"" "*    { BEGIN(attributes); debuglex ("TABLEBEGIN "); yylval.num = yyleng-2; return TABLEBEGIN; }
 "||"" "*    { yylval.num = 2*(yyleng-2);   BEGIN(attributes); debuglex2 ("TABLECELL(%u) ", yylval.num); return TABLECELL;  }
 ^"|"" "*    { yylval.num = 2*(yyleng-1)+1; BEGIN(attributes); debuglex2 ("TABLECELL(%u) ", yylval.num); return TABLECELL;  }
-"!!"" "*    { BEGIN(attributes); debuglex ("TABLEHEAD ");  yylval.num = 2*(yyleng-2); return TABLEHEAD;  }
-^"!"" "*    { BEGIN(attributes); debuglex ("TABLEHEAD ");  yylval.num = 2*(yyleng-1)+1; return TABLEHEAD;  }
-"|""-"+" "* { BEGIN(attributes); debuglex ("TABLEROW ");   yylval.num = encodeTableRowInfo (yytext, yyleng); return TABLEROW; }
+"!!"" "*    { BEGIN(attributes); debuglex ("TABLEHEAD ");    yylval.num = 2*(yyleng-2); return TABLEHEAD;  }
+^"!"" "*    { BEGIN(attributes); debuglex ("TABLEHEAD ");    yylval.num = 2*(yyleng-1)+1; return TABLEHEAD;  }
+"|""-"+" "* { BEGIN(attributes); debuglex ("TABLEROW ");     yylval.num = encodeTableRowInfo (yytext, yyleng); return TABLEROW; }
+"|+"" "*    { BEGIN(attributes); debuglex ("TABLECAPTION "); yylval.num = yyleng-2; return TABLECAPTION; }
 "|}"        { BEGIN(cannotbelistorheadingorpre); debuglex ("TABLEEND "); return TABLEEND; }
 
 <attributes>[-a-zA-Z:_]+" "* {

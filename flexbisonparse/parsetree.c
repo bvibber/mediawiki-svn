@@ -575,6 +575,11 @@ Node convertTableHeadToText (int info)
     return newNodeS (TextToken, addSpaces (info % 2 ? "!" : "!!", info/2));
 }
 
+Node convertTableCaptionToText (int info)
+{
+    return newNodeS (TextToken, addSpaces ("|+", info));
+}
+
 Node convertHeadingToText (int info)
 {
     int i;
@@ -756,6 +761,7 @@ void outputNode (Node node)
         node->type == TableRow      ? "tablerow"    :
         node->type == TableCell     ? "tablecell"   :
         node->type == TableHead     ? "tablehead"   :
+        node->type == TableCaption  ? "caption"     :
         node->type == AttributeGroup? "attrs"       :
 
         /* Fallback value */

@@ -36,15 +36,15 @@ int i;
              textelement textelementnoboit textelementnobold textelementnoital textelementinlink
              textnoboit textnobold textnoital textinlink textorempty zeroormorenewlines
              zeroormorenewlinessave textintbl textelementintbl textintmpl textelementintmpl
-             template templatevar
+             template templatevar tablecaption
              TEXT EXTENSION
 %type <ad>   ATTRIBUTE
-%type <num>  HEADING ENDHEADING TABLEBEGIN TABLECELL TABLEHEAD TABLEROW EQUALS ATTRAPO ATTRQ
+%type <num>  HEADING ENDHEADING EQUALS ATTRAPO ATTRQ
+             TABLEBEGIN TABLECELL TABLEHEAD TABLEROW TABLECAPTION
 
 %token  EXTENSION BEGINCOMMENT TEXT ENDCOMMENT OPENLINK OPENDBLSQBR CLOSEDBLSQBR PIPE
         NEWLINE PRELINE LISTBULLET LISTNUMBERED HEADING ENDHEADING APO5 APO3 APO2 TABLEBEGIN
-        TABLECELL TABLEHEAD TABLEROW TABLEEND ATTRIBUTE EQUALS ATTRAPO ATTRQ
-        // Not yet used:
+        TABLECELL TABLEHEAD TABLEROW TABLEEND TABLECAPTION ATTRIBUTE EQUALS ATTRAPO ATTRQ
         OPENPENTUPLECURLY CLOSEPENTUPLECURLY OPENTEMPLATEVAR CLOSETEMPLATEVAR OPENTEMPLATE
         CLOSETEMPLATE
 
@@ -283,6 +283,8 @@ tablerow        :   TABLEROW attributes tablecells
                         { debugf ("tablerow#8 "); $$ = 0; }
                 |   TABLEROW
                         { debugf ("tablerow#9 "); $$ = 0; }
+                |   tablecaption
+                        { debugf ("tablerow#10 "); $$ = $1; }
 
 tablecells      :   tablecell               { debugf ("tablecells#1 "); $$ = $1; }
                 |   tablecells tablecell    { debugf ("tablecells#2 "); $$ = nodeAddSibling ($1, $2); }
@@ -316,6 +318,19 @@ tablecellcontents   :   blocksintbl
                             { debugf ("tablecellcontents#1 "); $$ = $1; }
                     |   oneormorenewlines blocksintbl
                             { debugf ("tablecellcontents#2 "); $$ = $2; }
+
+tablecaption    :   TABLECAPTION attributes PIPE textintbl
+                        { debugf ("tablecaption#1 "); $$ = nodeAddChild2 (newNode (TableCaption), $2, $4); }
+                |   TABLECAPTION attributes textintbl
+                        { debugf ("tablecaption#2 "); $$ = nodeAddChild (newNode (TableCaption), makeTextBlock (convertAttributesToText ($2), $3)); }
+                |   TABLECAPTION textintbl
+                        { debugf ("tablecaption#3 "); $$ = nodeAddChild (newNode (TableCaption), $2); }
+                |   TABLECAPTION attributes PIPE
+                        { debugf ("tablecaption#4 "); $$ = nodeAddChild (newNode (TableCaption), makeTextBlock (convertAttributesToText ($2), newNodeS (TextToken, "|"))); }
+                |   TABLECAPTION attributes
+                        { debugf ("tablecaption#5 "); $$ = nodeAddChild (newNode (TableCaption), convertAttributesToText ($2)); }
+                |   TABLECAPTION
+                        { debugf ("tablecaption#6 "); $$ = 0; }
 
 /* In order to reduce the second one (ATTRIBUTE EQUALS TEXT) correctly, this rule must
  * be further up than textelement. */
@@ -363,15 +378,16 @@ textelement         :   TEXT                { debugf ("textelement#1 "); $$ = $1
                     |   TABLEROW            { debugf ("textelement#11 "); $$ = convertTableRowToText ($1); }
                     |   TABLECELL           { debugf ("textelement#12 "); $$ = convertTableCellToText ($1); }
                     |   TABLEHEAD           { debugf ("textelement#13 "); $$ = convertTableHeadToText ($1); }
-                    |   ATTRIBUTE           { debugf ("textelement#14 "); $$ = convertAttributeDataToText ($1); }
-                    |   CLOSEPENTUPLECURLY  { debugf ("textelement#15 "); $$ = newNodeS (TextToken, "}}}}}"); }
-                    |   CLOSETEMPLATEVAR    { debugf ("textelement#16 "); $$ = newNodeS (TextToken, "}}}"); }
-                    |   CLOSETEMPLATE       { debugf ("textelement#17 "); $$ = newNodeS (TextToken, "}}"); }
-                    |   comment             { debugf ("textelement#18 "); $$ = $1; }
-                    |   linketc             { debugf ("textelement#19 "); $$ = $1; }
-                    |   italicsorbold       { debugf ("textelement#20 "); $$ = $1; }
-                    |   template            { debugf ("textelement#21 "); $$ = $1; }
-                    |   templatevar         { debugf ("textelement#22 "); $$ = $1; }
+                    |   TABLECAPTION        { debugf ("textelement#14 "); $$ = convertTableCaptionToText ($1); }
+                    |   ATTRIBUTE           { debugf ("textelement#15 "); $$ = convertAttributeDataToText ($1); }
+                    |   CLOSEPENTUPLECURLY  { debugf ("textelement#16 "); $$ = newNodeS (TextToken, "}}}}}"); }
+                    |   CLOSETEMPLATEVAR    { debugf ("textelement#17 "); $$ = newNodeS (TextToken, "}}}"); }
+                    |   CLOSETEMPLATE       { debugf ("textelement#18 "); $$ = newNodeS (TextToken, "}}"); }
+                    |   comment             { debugf ("textelement#19 "); $$ = $1; }
+                    |   linketc             { debugf ("textelement#20 "); $$ = $1; }
+                    |   italicsorbold       { debugf ("textelement#21 "); $$ = $1; }
+                    |   template            { debugf ("textelement#22 "); $$ = $1; }
+                    |   templatevar         { debugf ("textelement#23 "); $$ = $1; }
 
 textelementnoital   :   TEXT                { debugf ("textelementnoital#1 "); $$ = $1; }
                     |   EXTENSION           { debugf ("textelementnoital#2 "); $$ = $1; }
@@ -382,15 +398,16 @@ textelementnoital   :   TEXT                { debugf ("textelementnoital#1 "); $
                     |   TABLEROW            { debugf ("textelementnoital#7 "); $$ = convertTableRowToText ($1); }
                     |   TABLECELL           { debugf ("textelementnoital#8 "); $$ = convertTableCellToText ($1); }
                     |   TABLEHEAD           { debugf ("textelementnoital#9 "); $$ = convertTableHeadToText ($1); }
-                    |   ATTRIBUTE           { debugf ("textelementnoital#10 "); $$ = convertAttributeDataToText ($1); }
-                    |   CLOSEPENTUPLECURLY  { debugf ("textelementnoital#11 "); $$ = newNodeS (TextToken, "}}}}}"); }
-                    |   CLOSETEMPLATEVAR    { debugf ("textelementnoital#12 "); $$ = newNodeS (TextToken, "}}}"); }
-                    |   CLOSETEMPLATE       { debugf ("textelementnoital#13 "); $$ = newNodeS (TextToken, "}}"); }
-                    |   comment             { debugf ("textelementnoital#14 "); $$ = $1; }
-                    |   linketc             { debugf ("textelementnoital#15 "); $$ = $1; }
-                    |   boldnoitalics       { debugf ("textelementnoital#16 "); $$ = $1; }
-                    |   template            { debugf ("textelementnoital#17 "); $$ = $1; }
-                    |   templatevar         { debugf ("textelementnoital#18 "); $$ = $1; }
+                    |   TABLECAPTION        { debugf ("textelementnoital#10 "); $$ = convertTableCaptionToText ($1); }
+                    |   ATTRIBUTE           { debugf ("textelementnoital#11 "); $$ = convertAttributeDataToText ($1); }
+                    |   CLOSEPENTUPLECURLY  { debugf ("textelementnoital#12 "); $$ = newNodeS (TextToken, "}}}}}"); }
+                    |   CLOSETEMPLATEVAR    { debugf ("textelementnoital#13 "); $$ = newNodeS (TextToken, "}}}"); }
+                    |   CLOSETEMPLATE       { debugf ("textelementnoital#14 "); $$ = newNodeS (TextToken, "}}"); }
+                    |   comment             { debugf ("textelementnoital#15 "); $$ = $1; }
+                    |   linketc             { debugf ("textelementnoital#16 "); $$ = $1; }
+                    |   boldnoitalics       { debugf ("textelementnoital#17 "); $$ = $1; }
+                    |   template            { debugf ("textelementnoital#18 "); $$ = $1; }
+                    |   templatevar         { debugf ("textelementnoital#19 "); $$ = $1; }
 
 textelementnobold   :   TEXT                { debugf ("textelementnobold#1 "); $$ = $1; }
                     |   EXTENSION           { debugf ("textelementnobold#2 "); $$ = $1; }
@@ -401,15 +418,16 @@ textelementnobold   :   TEXT                { debugf ("textelementnobold#1 "); $
                     |   TABLEROW            { debugf ("textelementnobold#7 "); $$ = convertTableRowToText ($1); }
                     |   TABLECELL           { debugf ("textelementnobold#8 "); $$ = convertTableCellToText ($1); }
                     |   TABLEHEAD           { debugf ("textelementnobold#9 "); $$ = convertTableHeadToText ($1); }
-                    |   ATTRIBUTE           { debugf ("textelementnobold#10 "); $$ = convertAttributeDataToText ($1); }
-                    |   CLOSEPENTUPLECURLY  { debugf ("textelementnobold#11 "); $$ = newNodeS (TextToken, "}}}}}"); }
-                    |   CLOSETEMPLATEVAR    { debugf ("textelementnobold#12 "); $$ = newNodeS (TextToken, "}}}"); }
-                    |   CLOSETEMPLATE       { debugf ("textelementnobold#13 "); $$ = newNodeS (TextToken, "}}"); }
-                    |   comment             { debugf ("textelementnobold#14 "); $$ = $1; }
-                    |   linketc             { debugf ("textelementnobold#15 "); $$ = $1; }
-                    |   italicsnobold       { debugf ("textelementnobold#16 "); $$ = $1; }
-                    |   template            { debugf ("textelementnobold#17 "); $$ = $1; }
-                    |   templatevar         { debugf ("textelementnobold#18 "); $$ = $1; }
+                    |   TABLECAPTION        { debugf ("textelementnobold#10 "); $$ = convertTableCaptionToText ($1); }
+                    |   ATTRIBUTE           { debugf ("textelementnobold#11 "); $$ = convertAttributeDataToText ($1); }
+                    |   CLOSEPENTUPLECURLY  { debugf ("textelementnobold#12 "); $$ = newNodeS (TextToken, "}}}}}"); }
+                    |   CLOSETEMPLATEVAR    { debugf ("textelementnobold#13 "); $$ = newNodeS (TextToken, "}}}"); }
+                    |   CLOSETEMPLATE       { debugf ("textelementnobold#14 "); $$ = newNodeS (TextToken, "}}"); }
+                    |   comment             { debugf ("textelementnobold#15 "); $$ = $1; }
+                    |   linketc             { debugf ("textelementnobold#16 "); $$ = $1; }
+                    |   italicsnobold       { debugf ("textelementnobold#17 "); $$ = $1; }
+                    |   template            { debugf ("textelementnobold#18 "); $$ = $1; }
+                    |   templatevar         { debugf ("textelementnobold#19 "); $$ = $1; }
 
 textelementnoboit   :   TEXT                { debugf ("textelementnoboit#1 "); $$ = $1; }
                     |   EXTENSION           { debugf ("textelementnoboit#2 "); $$ = $1; }
@@ -420,14 +438,15 @@ textelementnoboit   :   TEXT                { debugf ("textelementnoboit#1 "); $
                     |   TABLEROW            { debugf ("textelementnoboit#7 "); $$ = convertTableRowToText ($1); }
                     |   TABLECELL           { debugf ("textelementnoboit#8 "); $$ = convertTableCellToText ($1); }
                     |   TABLEHEAD           { debugf ("textelementnoboit#9 "); $$ = convertTableHeadToText ($1); }
-                    |   ATTRIBUTE           { debugf ("textelementnoital#10 "); $$ = convertAttributeDataToText ($1); }
-                    |   CLOSEPENTUPLECURLY  { debugf ("textelementnobold#11 "); $$ = newNodeS (TextToken, "}}}}}"); }
-                    |   CLOSETEMPLATEVAR    { debugf ("textelementnobold#12 "); $$ = newNodeS (TextToken, "}}}"); }
-                    |   CLOSETEMPLATE       { debugf ("textelementnobold#13 "); $$ = newNodeS (TextToken, "}}"); }
-                    |   comment             { debugf ("textelementnoboit#14 "); $$ = $1; }
-                    |   linketc             { debugf ("textelementnoboit#15 "); $$ = $1; }
-                    |   template            { debugf ("textelementnoboit#16 "); $$ = $1; }
-                    |   templatevar         { debugf ("textelementnoboit#17 "); $$ = $1; }
+                    |   TABLECAPTION        { debugf ("textelementnoboit#10 "); $$ = convertTableCaptionToText ($1); }
+                    |   ATTRIBUTE           { debugf ("textelementnoboit#11 "); $$ = convertAttributeDataToText ($1); }
+                    |   CLOSEPENTUPLECURLY  { debugf ("textelementnobold#12 "); $$ = newNodeS (TextToken, "}}}}}"); }
+                    |   CLOSETEMPLATEVAR    { debugf ("textelementnobold#13 "); $$ = newNodeS (TextToken, "}}}"); }
+                    |   CLOSETEMPLATE       { debugf ("textelementnobold#14 "); $$ = newNodeS (TextToken, "}}"); }
+                    |   comment             { debugf ("textelementnoboit#15 "); $$ = $1; }
+                    |   linketc             { debugf ("textelementnoboit#16 "); $$ = $1; }
+                    |   template            { debugf ("textelementnoboit#17 "); $$ = $1; }
+                    |   templatevar         { debugf ("textelementnoboit#18 "); $$ = $1; }
 
 textelementintbl    :   TEXT                { debugf ("textelementintbl#1 "); $$ = $1; }
                     |   EXTENSION           { debugf ("textelementintbl#2 "); $$ = $1; }
@@ -457,15 +476,16 @@ textelementinlink   :   TEXT                { debugf ("textelementinlink#1 "); $
                     |   TABLEROW            { debugf ("textelementinlink#9 "); $$ = convertTableRowToText ($1); }
                     |   TABLECELL           { debugf ("textelementinlink#10 "); $$ = convertTableCellToText ($1); }
                     |   TABLEHEAD           { debugf ("textelementinlink#11 "); $$ = convertTableHeadToText ($1); }
-                    |   ATTRIBUTE           { debugf ("textelementinlink#12 "); $$ = convertAttributeDataToText ($1); }
-                    |   CLOSEPENTUPLECURLY  { debugf ("textelementinlink#13 "); $$ = newNodeS (TextToken, "}}}}}"); }
-                    |   CLOSETEMPLATEVAR    { debugf ("textelementinlink#14 "); $$ = newNodeS (TextToken, "}}}"); }
-                    |   CLOSETEMPLATE       { debugf ("textelementinlink#15 "); $$ = newNodeS (TextToken, "}}"); }
-                    |   comment             { debugf ("textelementinlink#16 "); $$ = $1; }
-                    |   linketc             { debugf ("textelementinlink#17 "); $$ = $1; }
-                    |   italicsorbold       { debugf ("textelementinlink#18 "); $$ = $1; }
-                    |   template            { debugf ("textelementinlink#19 "); $$ = $1; }
-                    |   templatevar         { debugf ("textelementinlink#20 "); $$ = $1; }
+                    |   TABLECAPTION        { debugf ("textelementinlink#12 "); $$ = convertTableCaptionToText ($1); }
+                    |   ATTRIBUTE           { debugf ("textelementinlink#13 "); $$ = convertAttributeDataToText ($1); }
+                    |   CLOSEPENTUPLECURLY  { debugf ("textelementinlink#14 "); $$ = newNodeS (TextToken, "}}}}}"); }
+                    |   CLOSETEMPLATEVAR    { debugf ("textelementinlink#15 "); $$ = newNodeS (TextToken, "}}}"); }
+                    |   CLOSETEMPLATE       { debugf ("textelementinlink#16 "); $$ = newNodeS (TextToken, "}}"); }
+                    |   comment             { debugf ("textelementinlink#17 "); $$ = $1; }
+                    |   linketc             { debugf ("textelementinlink#18 "); $$ = $1; }
+                    |   italicsorbold       { debugf ("textelementinlink#19 "); $$ = $1; }
+                    |   template            { debugf ("textelementinlink#20 "); $$ = $1; }
+                    |   templatevar         { debugf ("textelementinlink#21 "); $$ = $1; }
 
 textelementintmpl   :   TEXT                { debugf ("textelementintmpl#1 "); $$ = $1; }
                     |   EXTENSION           { debugf ("textelementintmpl#2 "); $$ = $1; }
@@ -480,12 +500,13 @@ textelementintmpl   :   TEXT                { debugf ("textelementintmpl#1 "); $
                     |   TABLEROW            { debugf ("textelementintmpl#11 "); $$ = convertTableRowToText ($1); }
                     |   TABLECELL           { debugf ("textelementintmpl#12 "); $$ = convertTableCellToText ($1); }
                     |   TABLEHEAD           { debugf ("textelementintmpl#13 "); $$ = convertTableHeadToText ($1); }
-                    |   ATTRIBUTE           { debugf ("textelementintmpl#14 "); $$ = convertAttributeDataToText ($1); }
-                    |   comment             { debugf ("textelementintmpl#15 "); $$ = $1; }
-                    |   linketc             { debugf ("textelementintmpl#16 "); $$ = $1; }
-                    |   italicsorbold       { debugf ("textelementintmpl#17 "); $$ = $1; }
-                    |   template            { debugf ("textelementintmpl#18 "); $$ = $1; }
-                    |   templatevar         { debugf ("textelementintmpl#19 "); $$ = $1; }
+                    |   TABLECAPTION        { debugf ("textelementintmpl#14 "); $$ = convertTableCaptionToText ($1); }
+                    |   ATTRIBUTE           { debugf ("textelementintmpl#15 "); $$ = convertAttributeDataToText ($1); }
+                    |   comment             { debugf ("textelementintmpl#16 "); $$ = $1; }
+                    |   linketc             { debugf ("textelementintmpl#17 "); $$ = $1; }
+                    |   italicsorbold       { debugf ("textelementintmpl#18 "); $$ = $1; }
+                    |   template            { debugf ("textelementintmpl#19 "); $$ = $1; }
+                    |   templatevar         { debugf ("textelementintmpl#20 "); $$ = $1; }
 
 template            :   OPENTEMPLATE textintmpl CLOSETEMPLATE
                             { debugf ("template#1 "); $$ = nodeAddChild (newNode (Template), $2); }

@@ -13,7 +13,8 @@ typedef enum NodeType {
     Article, Paragraph, Heading, TextBlock, TextToken, ExtensionToken,
     Newlines, PreBlock, PreLine, Bold, Italics, Comment,
     LinkEtc, LinkTarget, LinkOption, Template, TemplateVar,
-    Table, TableRow, TableCell, TableHead /* 20 */, Attribute, AttributeGroup,
+    Table, TableRow, TableCell, TableHead /* 20 */, TableCaption,
+    Attribute, AttributeGroup,
 
     /* After first parse */
     ListBlock, ListLine, ListBullet, ListNumbered,
@@ -115,6 +116,7 @@ Node convertAttributeDataToText (AttributeData data);
 Node convertTableRowToText (int info);
 Node convertTableCellToText (int info);
 Node convertTableHeadToText (int info);
+Node convertTableCaptionToText (int info);
 Node convertHeadingToText (int info);
 
 /* Parameter must be a TextBlock. Turns something like

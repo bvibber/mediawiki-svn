@@ -8,8 +8,9 @@ The [[video game|computer game]] '''R-type''' is <nowiki>cool & stuff</nowiki> b
 ** graphics
 ** sound
 
-{| || Version 1     || not bad
-|- || Version 2     || much better |}
+{| !! Version 1 || not bad
+|- !! Version 2 || much better
+|+ An informative table |}
 
 This is a || token in the middle of text.
 
