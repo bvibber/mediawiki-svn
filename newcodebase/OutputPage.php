@@ -7,6 +7,7 @@ class OutputPage {
 	var $mHTMLtitle, $mRobotpolicy, $mIsarticle, $mPrintable;
 
 	var $mDTopen, $mLastSection; # Used for processing DL, PRE
+	var $mLanguageLinks;
 
 	function OutputPage()
 	{
@@ -15,6 +16,7 @@ class OutputPage {
 		$this->mHTMLtitle = $this->mPagetitle = $this->mBodytext =
 		$this->mDebugtext = $this->mRobotpolicy = "";
 		$this->mIsarticle = $this->mPrintable = true;
+		$this->mLanguageLinks = array();
 	}
 
 	function addHeader( $name, $val ) { array_push( $this->mHeaders, "$name: $val" ) ; }
@@ -33,6 +35,7 @@ class OutputPage {
 	function isArticle() { return $this->mIsarticle; }
 	function setPrintable() { $this->mPrintable = true; }
 	function isPrintable() { return $this->mPrintable; }
+	function getLanguageLinks() { return $this->mLanguageLinks; }
 
 	function addHTML( $text ) { $this->mBodytext .= $text; }
 	function debug( $text ) { $this->mDebugtext .= $text; }
@@ -159,9 +162,12 @@ class OutputPage {
 
 	/* private */ function parseImages( $text )
 	{
+		global $wgUser;
+		$sk = $wgUser->getSkin();
+
 		$text = preg_replace(
 		  "/(^|[^[])http:\/\/([a-zA-Z0-9_\/:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",
-		  "$1<img src=\"http://$2.$3\">", $text );
+		  "$1" . $sk->makeImageLink( "http://$2.$3", "[Image]" ), $text );
 		return $text;
 	}
 
@@ -223,7 +229,7 @@ class OutputPage {
 
 	/* private */ function replaceInternalLinks( $s )
 	{
-		global $wgTitle, $wgUser;
+		global $wgTitle, $wgUser, $wgServer, $wgUploadPath, $wgLang;
 
 		$tc = "[\\-,.\\(\\)' _0-9A-Za-z\\/:\\x80-\\xff]"; # from Title
 		$sk = $wgUser->getSkin();
@@ -278,29 +284,24 @@ class OutputPage {
 
 			# $link, $text, and $trail should all be set now
 			#
-			$nt = Title::newFromText( $link );
-			$id = $nt->getArticleID();
-			$linkStyle = $sk->getInternalLinkAttributes( $link, $text );
-			$isSpecialPage = ( "Special" == $nt->getNamespace() );
-
-			# TODO: I should be calling a Skin function here...
-			#
-			if ( 0 == $id && ( ! $isSpecialPage ) ) {
-				if ( 1 == $wgUser->getOption( "markupNewTopics" ) ) {
-					$s .= "<a class=\"new\" href=\"" . $nt->getEditURL() .
-					  "\"$linkStyle>$text</a>" . $trail;
+			if ( preg_match( "/^([a-z]+):(.*)/", $link,  $m ) ) {
+				$pre = strtolower( $m[1] );
+				$suf = $m[2];
+				if ( "image" == $pre ) {
+					$s .= $sk->makeImageLink( "$wgServer$wgUploadPath/"	.
+					  $suf, $text );
 				} else {
-					$s .= $text . "<a href=\"" . $nt->getEditURL() .
-					  "\"$linkStyle>?</a>" . $trail;
+					$l = $wgLang->getLanguageName( $pre );
+					if ( "" == $l ) {
+						$s .= $sk->makeInternalLink( $link, $text );
+					} else {
+						array_push( $this->mLanguageLinks, "$pre:$suf" );
+					}
 				}
 			} else {
-				$s .= "<a href=\"" . $nt->getFullURL() . "\"$linkStyle>$text";
-				if ( preg_match( "/^([a-z]+)/", $trail, $m ) ) {
-					$s .= $m[1];
-					$trail = substr( $trail, strlen( $m[1] ) );
-				}
-				$s .= "</a>" . $trail;
+				$s .= $sk->makeInternalLink( $link, $text );
 			}
+			$s .= $trail;
 		}
 		return $s;
 	}

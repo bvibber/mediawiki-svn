@@ -10,7 +10,7 @@
 );
 
 /* private */ $wgSkinNamesEn = array(
-	"Standard", "Star Trek", "Nostalgia", "Cologne Blue"
+	"Standard", "StarTrek", "Nostalgia", "CologneBlue"
 );
 
 /* private */ $wgUserTogglesEn = array(
@@ -21,6 +21,18 @@
 	"hideMinor" => "Hide minor edits in recent changes",
 	"numberHeadings" => "Auto-number headings",
 	"rememberPassword" => "Remember my password"
+);
+
+/* private */ $wgLanguageNamesEn= array(
+	"w" => "English", "af" => "Afrikaans", "ar" => "Arabic",
+	"ca" => "Catalan", "zh" => "Chinese", "dk" => "Danish",
+	"nl" => "Dutch", "de" => "German", "eo" => "Esperanto",
+	"fr" => "French", "he" => "Hebrew", "hu" => "Hungarian",
+	"it" => "Italian", "ja" => "Japanese", "no" => "Norwegian",
+	"pl" => "Polish", "pt" => "Portugese", "ru" => "Russian",
+	"sh" => "Serbocroatian", "si" => "Slovene",
+	"simple" => "Simple English", "es" => "Spanish",
+	"sv" => "Swedish", "en" => "English"
 );
 
 /* private */ $wgAllMessagesEn = array(
@@ -39,6 +51,7 @@
 "editthispage"	=> "Edit this page",
 "talkpage"		=> "Talk page",
 "subjectpage"	=> "Subject page",
+"otherlanguages" => "Other languages",
 
 # Main script and global functions
 #
@@ -297,6 +310,11 @@ class Language {
 		return $wgUserTogglesEn;
 	}
 
+	function getLanguageName( $code ) {
+		global $wgLanguageNamesEn;
+		return $wgLanguageNamesEn[$code];
+	}
+
 	function getMonthName( $key )
 	{
 		return ucfirst( $key );
@@ -326,6 +344,6 @@ class Language {
 	}
 }
 
-include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );
+include_once( "./Language" . ucfirst( $wgLanguageCode ) . ".php" );
 
 ?>

@@ -13,13 +13,13 @@ include_once( "./User.php" );
 include_once( "./Title.php" );
 include_once( "./Article.php" );
 
-global $action, $title, $search $target; # From query string
+global $action, $title, $search, $target; # From query string
 global $wgUser, $wgLang, $wgOut, $wgTitle; # Objects to handle output
 global $wgArticle, $wgDeferredUpdateList;
 
 $wgOut = new OutputPage();
 $wgLangClass = "Language" . ucfirst( $wgLanguageCode );
-$wgLang = new $wgLanguageClass();
+$wgLang = new $wgLangClass();
 $wgOut->addHeader( "Content-type", "text/html; charset=iso-8859-1" );
 
 $wgUser = new User();

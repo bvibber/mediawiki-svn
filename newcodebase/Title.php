@@ -73,6 +73,15 @@ class Title {
 		return $t;
 	}
 
+	function getInterwikiLink( $key )
+	{
+		global $wgValidInterwikis;
+
+		if ( key_exists( $key, $wgValidInterwikis ) ) {
+			return $wgValidInterwikis[$key];
+		} else return "";
+	}
+
 	function getText() { return $this->mTextform; }
 	function getURL() { return $this->mUrlform; }
 	function getDBKey() { return $this->mDbkeyform; }

@@ -1,7 +1,7 @@
 <?
 # See language.doc
 
-class LanguageEn {
+class LanguageEn extends Language {
 	# Inherit everything
 }
 

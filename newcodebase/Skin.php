@@ -166,8 +166,7 @@ class Skin {
 				  . " | " . $this->makeLink( "Special:Whatlinkshere",
 				  wfMsg( "whatlinkshere" ), "", $wgTitle->getPrefixedURL() );
 
-				$ol = $this->otherLanguages();
-				if ( "" != $ol ) { $s .= $ol; }
+				$s .= $this->otherLanguages();
 			}
 		}
 		return $s;
@@ -227,6 +226,7 @@ class Skin {
 		if ( $wgOut->isArticle() ) {
 			$s .= " | " . $this->talkLink();
 		}
+		$s .= $this->otherLanguages();
 		return $s;
 	}
 
@@ -320,7 +320,28 @@ class Skin {
 
 	function otherLanguages()
 	{
-		return "";
+		global $wgOut, $wgLang;
+
+		$a = $wgOut->getLanguageLinks();
+		if ( 0 == count( $a ) ) { return ""; }
+
+		$s = "<br>" . wfMsg( "otherlanguages" ) . ": ";
+		$first = true;
+		foreach( $a as $l ) {
+			if ( ! $first ) { $s .= " | "; }
+			$first = false;
+
+			preg_match( "/([a-z]+):([^\|]+)/", $l, $m );
+			$urltemp = Title::getInterwikiLink( $m[1] );
+			$link = $m[2];
+			$text = $wgLang->getLanguageName( $m[1] );
+			$url = str_replace( "$1", $link, $urltemp );
+
+			if ( "" == $text ) { $text = $link; }
+			$style = $this->getExternalLinkAttributes( $link, $text );
+			$s .= "<a href=\"$url\"$style>$text</a>";
+		}
+		return $s . "\n";
 	}
 
 	function bugReportsLink()
@@ -391,6 +412,19 @@ class Skin {
 		return $text;
 	}
 
+	function makeInternalLink( $title, $text= "", $action = "", $target = "" )
+	{
+		$nt = Title::newFromText( $title );
+		if ( "Special" == $nt->getNamespace() ) {
+			return $this->makeLink( $title, $text );
+		}
+		if ( 0 == $nt->getArticleID() ) {
+			return $this->makeBrokenLink( $title, $text );
+		} else {
+			return $this->makeLink( $title, $text, $action, $target );
+		}
+	}
+
 	function makeLink( $title, $text = "", $action = "", $target = "" )
 	{
 		global $wgServer, $wgScript, $wgArticlePath, $wgTitle;
@@ -429,6 +463,13 @@ class Skin {
 		} else {
 			$s = "$text<a href=\"$link\"$style>?</a>";
 		}
+		return $s;
+	}
+
+	function makeImageLink( $url, $alt = "" )
+	{
+		if ( "" == $alt ) { $alt = "[Image]"; }
+		$s = "<img src=\"$url\" alt=\"$alt\">";
 		return $s;
 	}
 
