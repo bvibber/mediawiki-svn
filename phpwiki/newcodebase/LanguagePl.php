@@ -577,6 +577,7 @@ zapoznaj się, proszę, z tymi stronami: [[wikipedia:FAQ|Wikipedia FAQ]],
 [[Wikipedia:Neutralny punkt widzenia|neutralny punkt widzenia]])
 oraz [[Wikipedia:Najczęstsze nieporozumienia|najczęstsze nieporozumienia]].
 
+
 Jeśli chcesz przyczynić się do sukcesu Wikipedii, nie dodawaj materiałów
 zastrzeżonych prawami autorskimi. Konsekwencje prawne złamania tej zasady
 mogłyby Wikipedii bardzo zaszkodzić.
@@ -720,7 +721,7 @@ pomagających w prostej administracji. Niektóre z nich obciążają bazę danyc
 więc, by ich nie nadużywać.",
 "maintenancebacklink"	=> "Powrót do strony prostej administracji",
 "disambiguations"	=> "Strony ujednoznaczniające",
-"disambiguationspage"	=> "Wikipedia:Lista_stron_ujednoznaczniających",
+"disambiguationspage"	=> "Wikipedia:Strony_ujednoznaczniające",
 "disambiguationstext"	=> "Poniższe artykuły odwołują się do <i>stron
 ujednoznaczniających</i>, a powinny odwoływać się bezpośrednio do hasła
 związanego z treścią artykułu.<br> Strona uznawana jest za ujednoznaczniającą
@@ -739,7 +740,7 @@ przekierowywać.",
 "selflinks"		=> "Strony zawierające odwołania do siebie samych",
 "selflinkstext"		=> "Poniższe strony zawierają odnośniki do samych siebie
 (co nie powinno mieć miejsca).",
-"mispeelings"           => "Strony z <i>błędami pisowani</i>",
+"mispeelings"           => "Strony z błędami pisowani",
 "mispeelingstext"               => "Poniższe strony zawierają najczęstsze błędy
 pisowni (ich listę można znaleźć w $1). Poprawna pisowania może być podana (tak
 jak tu).", 
@@ -1050,6 +1051,7 @@ class LanguagePl extends Language {
 
 	function getUserToggles() {
 		global $wgUserTogglesPl;
+
 		return $wgUserTogglesPl;
 	}
 
