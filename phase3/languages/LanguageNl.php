@@ -146,7 +146,6 @@
  "kk" => "Kazak",
  "kw" => "Kernewek",
  "ky" => "Kirghiz",
- "ko" => "Kikongo",
  "kv" => "Komi kyv",
  "ku" => "Kurdy",
  "lo" => "Pha xa lao",
