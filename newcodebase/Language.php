@@ -365,6 +365,9 @@ Please report this to an administrator, making note of the URL.",
 "formerror"		=> "Error: could not submit form",	
 "badarticleerror" => "This action cannot be performed on this page.",
 "cannotdelete"	=> "Could not delete the page or image specified.",
+"badtitle"		=> "Bad title",
+"badtitletext"	=> "The requested page title was invalid, empty, or
+an incorrectly linked inter-language or inter-wiki title.",
 
 # Login and logout pages
 #
