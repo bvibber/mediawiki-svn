@@ -58,7 +58,7 @@ function userLogin () {
 	} else {
 		global $wikiAlreadyLoggedIn , $wikiPleaseLogIn , $wikiAreYouNew ;
 		$s = "" ;
-		if ( $user->isLoggedIn ) $s .= str_replace ( "$" , $user->name , $wikiAlreadyLoggedIn ) ;
+		if ( $user->isLoggedIn ) $s .= str_replace ( "$1" , $user->name , $wikiAlreadyLoggedIn ) ;
 	  	$s .= $wikiPleaseLogIn ;
 		global $WikiUserID , $WikiUserPassword , $WikiLoggedIn ;
 		if ( $WikiUserID != "" ) {
