@@ -95,7 +95,6 @@ class OutputPage {
 			header( "Location: {$this->mRedirect}" );
 			return;
 		}
-		# TODO: Internationalization
 		$this->addHeader( "Content-type",
 		  "text/html; charset={$wgOutputEncoding}" );
 
@@ -152,6 +151,38 @@ class OutputPage {
 			if ( false === $outs ) { $outs = $ins; }
 		}
 		print $outs;
+	}
+
+	function setEncodings()
+	{
+		global $HTTP_SERVER_VARS, $wgInputEncoding, $wgOutputEncoding;
+
+		$wgInputEncoding = strtolower( $wgInputEncoding );
+		$s = $HTTP_SERVER_VARS['HTTP_ACCEPT_CHARSET'];
+
+		if ( "" == $s ) {
+			$wgOutputEncoding = strtolower( $wgOutputEncoding );
+			return;
+		}
+		$a = explode( ",", $s );
+		$best = 0.0;
+		$bestset = "*";
+
+		foreach ( $a as $s ) {
+			if ( preg_match( "/(.*);q=(.*)/", $s, $m ) ) {
+				$set = $m[1];
+				$q = (float)($m[2]);
+			} else {
+				$set = $s;
+				$q = 1.0;
+			}
+			if ( $q > $best ) {
+				$bestset = $set;
+				$best = $q;
+			}
+		}
+		if ( "*" == $bestset ) { $bestset = "iso-8859-1"; }
+		$wgOutputEncoding = strtolower( $bestset );
 	}
 
 	function reportTime()
