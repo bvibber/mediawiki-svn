@@ -201,7 +201,7 @@ class OutputPage {
 		$elapsed = $now - $start;
 
 		if ( "" != $wgDebugLogFile ) {
-			$log = sprintf( "T\t%01.2f\t%s\n", $elapsed,
+			$log = sprintf( "%04.3f\t%s\n", $elapsed,
 			  urldecode( $HTTP_SERVER_VARS['REQUEST_URI'] ) );
 			error_log( $log, 3, $wgDebugLogFile );
         }
