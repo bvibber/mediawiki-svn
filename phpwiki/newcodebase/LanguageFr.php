@@ -187,19 +187,19 @@
 );
 
 /* private */ $wgWeekdayNamesFr = array(
-	"Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi",
-	"Vendredi", "Samedi"
+	"dimanche", "lundi", "mardi", "mercredi", "jeudi",
+	"vendredi", "samedi"
 );
 
 /* private */ $wgMonthNamesFr = array(
-	"Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
-	"Juillet", "Août", "Septembre", "Octobre", "Novembre",
-	"Décembre"
+	"janvier", "février", "mars", "avril", "mai", "juin",
+	"juillet", "août", "septembre", "octobre", "novembre",
+	"décembre"
 );
 
 /* private */ $wgMonthAbbreviationsFr = array(
-	"Jan", "Fév", "Mar", "Avr", "Mai", "Jun", "Jul", "Aoû",
-	"Sep", "Oct", "Nov", "Déc"
+	"jan", "fév", "mar", "avr", "mai", "jun", "jul", "aoû",
+	"sep", "oct", "nov", "déc"
 );
 
 # All special pages have to be listed here: a description of ""
