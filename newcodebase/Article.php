@@ -334,7 +334,7 @@ class Article {
 		global $wgOut, $wgUser, $wgTitle;
 		global $wpTextbox1, $wpSummary, $wpWatchthis;
 		global $wpSave, $wpPreview;
-		global $wpMinoredit, $wpEdittime, $wpTextbox2, $wpCountable;
+		global $wpMinoredit, $wpEdittime, $wpTextbox2;
 		global $oldid, $redirect;
 		global $wgLang;
 
@@ -383,9 +383,6 @@ class Article {
 			}
 			if ( ! $isConflict ) {
 				# All's well: update the article here
-
-				$this->mCountAdjustment = $this->isCountable( $wpTextbox1 ) -
-				  $wpCountable;
 				$this->updateArticle( $wpTextbox1, $wpSummary, $wpMinoredit, $wpWatchthis );
 				return;
 			}
@@ -396,7 +393,6 @@ class Article {
 		if ( "initial" == $formtype ) {
 			$wpEdittime = $this->getTimestamp();
 			$wpTextbox1 = $this->getContent();
-			$wpCountable = $this->isCountable( $wpTextbox1 );
 			$wpSummary = "";
 		}
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
@@ -476,8 +472,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 <input tabindex=6 type=submit value=\"{$prev}\" name='wpPreview'>
 <em>{$cancel}</em> | <em>{$edithelp}</em>
 <br><br>{$copywarn}
-<input type=hidden value=\"{$wpEdittime}\" name='wpEdittime'>
-<input type=hidden value=\"{$wpCountable}\" name='wpCountable'>\n" );
+<input type=hidden value=\"{$wpEdittime}\" name='wpEdittime'>\n" );
 
 		if ( $isConflict ) {
 			$wgOut->addHTML( "<h2>" . wfMsg( "yourdiff" ) . "</h2>\n" );
@@ -570,16 +565,20 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$this->loadLastEdit();
 
 		$text = $this->preSaveTransform( $text );
-
+		
 		# Update article, but only if changed.
+		$oldtext = $this->getContent( true );
 
-		if ( 0 != strcmp( $text, $this->getContent( true ) ) ) {
+		if ( 0 != strcmp( $text, $oldtext ) ) {
+			$this->mCountAdjustment = $this->isCountable( $text )
+			  - $this->isCountable( $oldtext );
+
 			$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
 			  "old_comment,old_user,old_user_text,old_timestamp," .
 			  "old_minor_edit) VALUES (" .
 			  $wgTitle->getNamespace() . ", '" .
 			  wfStrencode( $wgTitle->getDBkey() ) . "', '" .
-			  wfStrencode( $this->getContent( true ) ) . "', '" .
+			  wfStrencode( $oldtext ) . "', '" .
 			  wfStrencode( $this->getComment() ) . "', " .
 			  $this->getUser() . ", '" .
 			  wfStrencode( $this->getUserText() ) . "', '" .
