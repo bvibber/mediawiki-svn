@@ -91,7 +91,7 @@ class OutputPage {
 
 		if ( "" != $this->mRedirect ) {
 			header( "Location: {$this->mRedirect}" );
-			exit;
+			return;
 		}
 		# TODO: Internationalization
 		$this->addHeader( "Content-type",
