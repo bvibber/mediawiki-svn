@@ -252,6 +252,7 @@
 "aboutpage"		=> "Vikipedio:Enkonduko",
 "help"			=> "Helpo",
 "helppage"		=> "Vikipedio:Helpo",
+"wikititlesuffix" => "Vikipedio",
 "bugreports"	=> "Raportu cimojn",
 "bugreportspage" => "Vikipedio:Raportu_cimojn",
 "faq"			=> "Oftaj demandoj",
@@ -419,7 +420,7 @@ La supra tekstujo enhavas la aktualan tekston de la artikolo.
 Viaj ŝanĝoj enestas la malsupran tekstujon.
 Vi devas mem kunfandigi viajn ŝanĝojn kaj la jaman tekston.
 <b>Nur</b> la teksto en la supra tekstujo estos konservita kiam
-vi alpremas \"Konservu\".\n<p>" ; #FIXME - double-check that this makes sense
+vi alpremas \"Konservu\".\n<p>" , #FIXME - double-check that this makes sense
 "yourtext"		=> "Via teksto",
 "storedversion" => "Registrita versio",
 "editingold"	=> "<strong>AVERTO: Vi nun redaktas malnovan revizion de tiu ĉi artikolo.
@@ -850,7 +851,7 @@ class LanguageEo extends Language {
 		global $wgNamespaceNamesEo;
 
 		foreach ( $wgNamespaceNamesEo as $i => $n ) {
-			if ( 0 == strcmp( $n, $text ) ) { return $i; }
+			if ( 0 == strcasecmp( $n, $text ) ) { return $i; }
 		}
 		return false;
 	}
@@ -965,7 +966,10 @@ class LanguageEo extends Language {
 	function getMessage( $key )
 	{
 		global $wgAllMessagesEo;
-		return $wgAllMessagesEo[$key];
+		if(array_key_exists($key, $wgAllMessagesEo))
+			return $wgAllMessagesEo[$key];
+		else
+			return Language::getMessage($key);
 	}
 
 #FIXME: need special functions for X-sistemo ktp
