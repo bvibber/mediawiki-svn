@@ -219,22 +219,18 @@ class Title {
 
 		$lc = SearchEngine::legalSearchChars() . "&#;";
 		$t = preg_replace( "/[^{$lc}]+/", " ", $title );
-
-		if ( $wgDBminWordLen > 3 ) {
-			$t = preg_replace( "/\\b[{$lc}][{$lc}][{$lc}]\\b/", " ", $t );
-		}
-		if ( $wgDBminWordLen > 2 ) {
-			$t = preg_replace( "/\\b[{$lc}][{$lc}]\\b/", " ", $t );
-		}
-		if ( $wgDBminWordLen > 1 ) {
-			$t = preg_replace( "/\\b[{$lc}]\\b/", " ", $t );
-		}
-		$t = preg_replace( "/\\s+/", " ", $t );
 		$t = strtolower( $t );
+
+		# Handle 's, s'
+		$t = preg_replace( "/([{$lc}]+)'s( |$)/", "\\1 \\1's ", $t );
+		$t = preg_replace( "/([{$lc}]+)s'( |$)/", "\\1s ", $t );
+
+		$t = preg_replace( "/\\s+/", " ", $t );
 
 		if ( $ns == Namespace::getImage() ) {
 			$t = preg_replace( "/ (png|gif|jpg|jpeg|ogg)$/", "", $t );
 		}
+wfDebug("IT:{$t}\n");
 		return trim( $t );
 	}
 
