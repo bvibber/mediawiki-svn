@@ -548,7 +548,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 						$link = $nstext . ":" . $link ;
 					}			
 					$s .= $this->makeLink($link, $text );			
-				} else {
+				} elseif( $wgTitle->getNamespace() != Namespace::getSpecial() ) {
 					# we just throw in a "New page" text to tell the user that he's in edit mode,
 					# and to avoid messing with the separator that is prepended to the next item
 					$s .= "<strong>" . wfMsg("newpage") . "</strong>";
