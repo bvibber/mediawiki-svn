@@ -73,33 +73,21 @@ function recentChangesLayout ( &$arr ) {
         else
           $noc = "";
         
-        if ( $user->options["changesLayout"] == "table" )
+        if ( $user->options["changesLayout"] == "table" ) {
           $t .= "<td$color valign=top width=0% nowrap>$noc</td>" ;
+          $t .= "<td$color valign=top nowrap>$u</td>" ;
+          $t .= "<td$color valign=top>$minor</td>" ;
+          $t .= "<td$color >$comment</td>" ;
+          $t .= "</tr>\n" ;
+        }
         else { 
           if ( $noc != "" ) $t .= " ($noc)" ;
           $t .= " . . . " ;
+          $t .= $u ;
+          $t .= " $minor" ;
+          if ( $o_comment != "" ) $t .= " <b>[$comment]</b>" ;
+          $t .= "</li>\n" ;
         }
-
-
-        if ( $s->version != "" ) {
-            $v = new wikiTitle ;
-            $v->SetTitle ( $s->cur_user_text ) ;
-            if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top nowrap>" ;
-            if ( $s->cur_user == 0 ) $t .= $s->cur_user_text."</td>" ;
-            else $t .= "<a href=\"".wikiLink("$wikiUser:$v->url")."\">".$s->cur_user_text."</a></td>" ;
-            if ( $user->options["changesLayout"] == "table" ) $t .= "</td>" ;
-            else $t .= "; " ;
-            }
-        else {
-            if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top nowrap>$u</td>" ;
-            else $t .= $u ;
-            }
-        if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color valign=top>$minor</td>" ;
-        else $t .= " $minor" ;
-        if ( $user->options["changesLayout"] == "table" ) $t .= "<td$color >$comment</td>" ;
-        else if ( $o_comment != "" ) $t .= " <b>[$comment]</b>" ;
-        if ( $user->options["changesLayout"] == "table" ) $t .= "</tr>\n" ;
-        else $t .= "</li>\n" ;
         $ret .= $t ;
         if ( $color == $color1 ) $color = $color2 ;
         else $color = $color1 ;
