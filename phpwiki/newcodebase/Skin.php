@@ -559,6 +559,7 @@ class Skin {
 		$next = wfMsg( "next" );
 		$cr = wfMsg( "currentrev" );
 
+		$s = "<li>";
 		if ( $oid ) {
 			$curlink = $this->makeLink( $artname, $cur,
 			  "diff=0&oldid={$oid}" );
@@ -571,10 +572,13 @@ class Skin {
 			}
 			$this->nextid = $oid;
 
-			$s = "<li>({$curlink}) ({$nextlink}) {$link} . . . {$ul}";
+			$s .= "({$curlink}) ({$nextlink}) . .";
 		} else {
-			$s = "<li>({$cr}) {$link} . . . {$ul}";
+			$s .= "({$cr}) . .";
 		}
+		if ( $isminor ) { $s .= " M"; }
+		$s .= " {$link} . . {$ul}";
+
 		if ( "" != $c && "*" != $c ) {
 			$s .= " <em>({$c})</em>";
 		}
