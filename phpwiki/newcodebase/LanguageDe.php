@@ -193,6 +193,7 @@
 "deletethispage" => "Artikel löschen",
 "protectthispage" => "Artikel schützen",
 "unprotectthispage" => "Schutz aufheben",
+"newpage" => "Neue Seite",
 "talkpage"		=> "Diskussion",
 "articlepage"	=> "Artikel",
 "wikipediapage" => "Wikipedia-Text",

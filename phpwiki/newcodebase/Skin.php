@@ -500,21 +500,78 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		if ($wgUser->getID()) $s.= $sep . $this->specialLink( "watchlist" ) ; // only show watchlist link if logged in
                 if ( wfMsg ( "currentevents" ) != "-" ) $s .= $sep . $this->makeKnownLink( wfMsg( "currentevents" ), "" ) ;
                 $s .= "\n<hr>";
+		$articleExists = $wgTitle->getArticleId();
+		if ( $wgOut->isArticle() || $action =="edit" || $action =="history" ) {
+						
+			if($wgOut->isArticle()) {
+				$s .= "<strong>" . $this->editThisPage() . "</strong>";
+			} else { # backlink to the article in edit or history mode
 
-		if ( $wgOut->isArticle() ) {
-			$s .= "<strong>" . $this->editThisPage() . "</strong>";
-			if ( 0 != $wgUser->getID() ) {
-				$s .= $sep . $this->watchThisPage();
+				if($articleExists){ # no backlink if no article
+					$tns=$wgTitle->getNamespace();		
+					switch($tns) {
+						case 0:
+						$text = wfMsg("articlepage");
+						break;
+						case 1:
+						$text = wfMsg("viewtalkpage");
+						break;
+						case 2:
+						$text = wfMsg("userpage");				
+						break;
+						case 3:
+						$text = wfMsg("viewtalkpage");
+						break;	
+						case 4: 
+						$text = wfMsg("wikipediapage");
+						break;
+						case 5:				
+						$text = wfMsg("viewtalkpage");
+						break;
+						case 6:
+						$text = wfMsg("imagepage");
+						break;
+						case 7:
+						$text = wfMsg("viewtalkpage");
+						break;
+						default:
+						$text= wfMsg("articlepage");
+					}
+				
+					$link = $wgTitle->getText();
+					if ($nstext = $wgLang->getNsText($tns) ) { # add namespace if necessary
+						$link = $nstext . ":" . $link ;
+					}			
+					$s .= $this->makeLink($link, $text );			
+				} else {
+					# we just throw in a "New page" text to tell the user that he's in edit mode,
+					# and to avoid messing with the separator that is prepended to the next item
+					$s .= "<strong>" . wfMsg("newpage") . "</strong>";
+				}
+			
+			}
+			
+			/*
+			watching could cause problems in edit mode:
+			if user edits article, then loads "watch this article" in background and then saves
+			article with "Watch this article" checkbox disabled, the article is transparently
+			unwatched. Therefore we do not show the "Watch this page" link in edit mode
+			*/			
+			if ( 0 != $wgUser->getID() && $articleExists) {
+				if($action!="edit" && $action!="history") {$s .= $sep . $this->watchThisPage(); }
 				if ( $wgTitle->userCanEdit() ) $s .= $sep . $this->moveThisPage();
 			}
-			if ( $wgUser->isSysop() and $wgTitle->getArticleId() ) {
+			if ( $wgUser->isSysop() and $articleExists ) {
 				$s .= $sep . $this->deleteThisPage() .
 				$sep . $this->protectThisPage();
 			}
-			$s .= $sep . $this->talkLink()
-			  . $sep . $this->historyLink()
-			  . $sep . $this->whatLinksHere()
-			  . $sep . $this->watchPageLinksLink();
+			$s .= $sep . $this->talkLink();
+			if ($articleExists) { $s .= $sep . $this->historyLink();}
+			$s.=$sep . $this->whatLinksHere();
+			
+			if($wgOut->isArticle()) {
+				$s .= $sep . $this->watchPageLinksLink();
+			}
 
 			if ( Namespace::getUser() == $wgTitle->getNamespace() ) {
 				$s .= $sep . $this->userContribsLink();
@@ -524,49 +581,6 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			}
 			$s .= "\n<hr>";
 		} 
-		
-		if( $action == "edit" || $action == "history") { # add a backlink to the article
-			
-			if($wgTitle->getArticleID()){ # no backlink if no article
-				$tns=$wgTitle->getNamespace();		
-				switch($tns) {
-					case 0:
-					$text = wfMsg("articlepage");
-					break;
-					case 1:
-					$text = wfMsg("viewtalkpage");
-					break;
-					case 2:
-					$text = wfMsg("userpage");				
-					break;
-					case 3:
-					$text = wfMsg("viewtalkpage");
-					break;	
-					case 4: 
-					$text = wfMsg("wikipediapage");
-					break;
-					case 5:				
-					$text = wfMsg("viewtalkpage");
-					break;
-					case 6:
-					$text = wfMsg("imagepage");
-					break;
-					case 7:
-					$text = wfMsg("viewtalkpage");
-					break;
-					default:
-					$text= wfMsg("articlepage");
-				}
-			
-				$link = $wgTitle->getText();
-				if ($nstext = $wgLang->getNsText($tns) ) { # add namespace if necessary
-					$link = $nstext . ":" . $link ;
-				}			
-				$s .= $this->makeLink($link, $text );			
-				$s .="\n<hr>";
-			}
-		}
-				
 		
 		if ( 0 != $wgUser->getID() ) {
 			$s .= $this->specialLink( "upload" ) . $sep;
