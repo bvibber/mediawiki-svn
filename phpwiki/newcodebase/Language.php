@@ -645,7 +645,8 @@ This includes \"talk\" pages, pages about Wikipedia, minimal \"stub\"
 pages, redirects, and others that probably don't qualify as articles.
 Excluding those, there are <b>$2</b> pages that are probably legitimate
 articles.<p>
-There has been a total of <b>$3</b> page views, and <b>$4</b> page edits.
+There have been a total of <b>$3</b> page views, and <b>$4</b> page edits
+since the software was upgraded (July 20, 2002).
 That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "userstatstext" => "There are <b>$1</b> registered users.
 <b>$2</b> of these are administrators (see $3).",
