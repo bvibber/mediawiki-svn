@@ -287,11 +287,7 @@ main(int ac, char **av)
                 } else {
                     t_adjust = 0;
                 }
-                if(tenloop % 2 == 0)
-                    ++t_adjust;
-                else
-                    --t_adjust;
-                queuereply(them, opcode, url, header.reqnum, t_int + t_adjust);
+                queuereply(them, opcode, url, header.reqnum, t_int+t_adjust);
             }
             
             // printf("t %d, slow_c %d, ss %f\n",tenloop,slow_c,stepstack);
