@@ -4,7 +4,7 @@
 # are magical, so don't change or move them!  The Namespace class
 # encapsulates some of the magic-ness.
 #
-/* private */ $wgNamespaceNamesEn = array(
+/* private */ $wgNamespaceNamesJa = array(
 	-1	=> "Special",
 	0	=> "",
 	1	=> "Talk",
@@ -16,15 +16,15 @@
 	7	=> "Image_talk"
 );
 
-/* private */ $wgQuickbarSettingsEn = array(
+/* private */ $wgQuickbarSettingsJa = array(
 	"None", "Fixed left", "Fixed right", "Floating left"
 );
 
-/* private */ $wgSkinNamesEn = array(
+/* private */ $wgSkinNamesJa = array(
 	"Standard", "Nostalgia", "Cologne Blue"
 );
 
-/* private */ $wgUserTogglesEn = array(
+/* private */ $wgUserTogglesJa = array(
 	"hover"		=> "Show hoverbox over wiki links",
 	"underline" => "Underline links",
 	"highlightbroken" => "Highlight links to empty topics",
@@ -34,7 +34,7 @@
 	"rememberpassword" => "Remember password across sessions"
 );
 
-/* private */ $wgLanguageNamesEn = array(
+/* private */ $wgLanguageNamesJa = array(
 	"ab"	=> "Abkhazian",
 	"aa"	=> "Afar",
 	"af"	=> "アフリカーンス語",
@@ -173,18 +173,18 @@
 	"zu"	=> "Zulu"
 );
 
-/* private */ $wgWeekdayNamesEn = array(
+/* private */ $wgWeekdayNamesJa = array(
 	"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
 	"Friday", "Saturday"
 );
 
-/* private */ $wgMonthNamesEn = array(
+/* private */ $wgMonthNamesJa = array(
 	"January", "February", "March", "April", "May", "June",
 	"July", "August", "September", "October", "November",
 	"December"
 );
 
-/* private */ $wgMonthAbbreviationsEn = array(
+/* private */ $wgMonthAbbreviationsJa = array(
 	"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
 	"Sep", "Oct", "Nov", "Dec"
 );
@@ -193,7 +193,7 @@
 # will make them not show up on the "Special Pages" page, which
 # is the right thing for some of them (such as the "targeted" ones).
 #
-/* private */ $wgValidSpecialPagesEn = array(
+/* private */ $wgValidSpecialPagesJa = array(
 	"Userlogin"		=> "",
 	"Userlogout"	=> "",
 	"Preferences"	=> "Set my user preferences",
@@ -224,18 +224,18 @@
 	"Booksources"	=> "External book sources"
 );
 
-/* private */ $wgSysopSpecialPagesEn = array(
+/* private */ $wgSysopSpecialPagesJa = array(
 	"Blockip"		=> "Block an IP address",
 	"Asksql"		=> "Query the database"
 );
 
-/* private */ $wgDeveloperSpecialPagesEn = array(
+/* private */ $wgDeveloperSpecialPagesJa = array(
 	"Lockdb"		=> "Make database read-only",
 	"Unlockdb"		=> "Restore database write access",
 	"Debug"			=> "Debugging information"
 );
 
-/* private */ $wgAllMessagesEn = array(
+/* private */ $wgAllMessagesJa = array(
 
 # Bits of text used by many pages:
 #
@@ -890,22 +890,22 @@ Please choose another name.",
 
 );
 
-class Language {
+class LanguageJa {
 
 	function getNamespaces() {
-		global $wgNamespaceNamesEn;
-		return $wgNamespaceNamesEn;
+		global $wgNamespaceNamesJa;
+		return $wgNamespaceNamesJa;
 	}
 
 	function getNsText( $index ) {
-		global $wgNamespaceNamesEn;
-		return $wgNamespaceNamesEn[$index];
+		global $wgNamespaceNamesJa;
+		return $wgNamespaceNamesJa[$index];
 	}
 
 	function getNsIndex( $text ) {
-		global $wgNamespaceNamesEn;
+		global $wgNamespaceNamesJa;
 
-		foreach ( $wgNamespaceNamesEn as $i => $n ) {
+		foreach ( $wgNamespaceNamesJa as $i => $n ) {
 			if ( 0 == strcasecmp( $n, $text ) ) { return $i; }
 		}
 		return false;
@@ -916,44 +916,44 @@ class Language {
 	}
 
 	function getQuickbarSettings() {
-		global $wgQuickbarSettingsEn;
-		return $wgQuickbarSettingsEn;
+		global $wgQuickbarSettingsJa;
+		return $wgQuickbarSettingsJa;
 	}
 
 	function getSkinNames() {
-		global $wgSkinNamesEn;
-		return $wgSkinNamesEn;
+		global $wgSkinNamesJa;
+		return $wgSkinNamesJa;
 	}
 
 	function getUserToggles() {
-		global $wgUserTogglesEn;
-		return $wgUserTogglesEn;
+		global $wgUserTogglesJa;
+		return $wgUserTogglesJa;
 	}
 
 	function getLanguageName( $code ) {
-		global $wgLanguageNamesEn;
-		if ( ! array_key_exists( $code, $wgLanguageNamesEn ) ) {
+		global $wgLanguageNamesJa;
+		if ( ! array_key_exists( $code, $wgLanguageNamesJa ) ) {
 			return "";
 		}
-		return $wgLanguageNamesEn[$code];
+		return $wgLanguageNamesJa[$code];
 	}
 
 	function getMonthName( $key )
 	{
-		global $wgMonthNamesEn;
-		return $wgMonthNamesEn[$key-1];
+		global $wgMonthNamesJa;
+		return $wgMonthNamesJa[$key-1];
 	}
 
 	function getMonthAbbreviation( $key )
 	{
-		global $wgMonthAbbreviationsEn;
-		return $wgMonthAbbreviationsEn[$key-1];
+		global $wgMonthAbbreviationsJa;
+		return $wgMonthAbbreviationsJa[$key-1];
 	}
 
 	function getWeekdayName( $key )
 	{
-		global $wgWeekdayNamesEn;
-		return $wgWeekdayNamesEn[$key-1];
+		global $wgWeekdayNamesJa;
+		return $wgWeekdayNamesJa[$key-1];
 	}
 
 	function userAdjust( $ts )
@@ -1001,29 +1001,27 @@ class Language {
 
 	function getValidSpecialPages()
 	{
-		global $wgValidSpecialPagesEn;
-		return $wgValidSpecialPagesEn;
+		global $wgValidSpecialPagesJa;
+		return $wgValidSpecialPagesJa;
 	}
 
 	function getSysopSpecialPages()
 	{
-		global $wgSysopSpecialPagesEn;
-		return $wgSysopSpecialPagesEn;
+		global $wgSysopSpecialPagesJa;
+		return $wgSysopSpecialPagesJa;
 	}
 
 	function getDeveloperSpecialPages()
 	{
-		global $wgDeveloperSpecialPagesEn;
-		return $wgDeveloperSpecialPagesEn;
+		global $wgDeveloperSpecialPagesJa;
+		return $wgDeveloperSpecialPagesJa;
 	}
 
 	function getMessage( $key )
 	{
-		global $wgAllMessagesEn;
-		return $wgAllMessagesEn[$key];
+		global $wgAllMessagesJa;
+		return $wgAllMessagesJa[$key];
 	}
 }
-
-include_once( "Language" . ucfirst( $wgLanguageCode ) . ".php" );
 
 ?>
