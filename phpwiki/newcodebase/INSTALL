@@ -21,6 +21,8 @@ scripts in PHP's include path.
 Use either "createdb.php" or "convertdb.php" from the
 maintenance directory to initialize the database, but not
 both (use "convertdb.php" only if upgrading from Phase II).
+You must also run "rebuildindexes.php" to build the search
+index tables.
 
 Edit LocalSettings.php to reflect local installation paths
 and such.

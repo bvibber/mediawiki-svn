@@ -23,6 +23,9 @@ function buildTables()
 ) TYPE=MyISAM PACK_KEYS=1";
 	wfQuery( $sql );
 	
+	$sql = "DROP TABLE IF EXISTS user_newtalk";
+	wfQuery( $sql );
+
 	$sql ="CREATE TABLE user_newtalk (
   user_id int(5) NOT NULL default '0',
   user_ip varchar(40) NOT NULL default '',
