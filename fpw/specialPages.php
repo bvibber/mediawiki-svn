@@ -271,7 +271,7 @@ function editUserSettings () {
 	return $ret ;
 	}
 
-function WantedPages () {
+function refreshWantedPages () {
 	global $showNumberPages , $linkedLinks , $unlinkedLinks , $vpage , $wikiWantedText , $wikiWantedLine ;
 	global $wikiWantedToggleNumbers ;
 	$vpage->special ( "The Most Wanted Pages" ) ;
@@ -325,14 +325,36 @@ function WantedPages () {
 		$a++ ;
 		$ti->setTitle ( $x ) ;
 		if ( $x != "" and !$ti->doesTopicExist() ) {
-			$n = str_replace ( "$1" , "<a href=\"".wikiLink("$x&action=edit")."\">".$ti->getNiceTitle($x)."</a>" , $wikiWantedLine ) ;
+			$n = str_replace ( "$1" , "[[$x|".$ti->getNiceTitle($x)."]]" , $wikiWantedLine ) ;
 			$n = str_replace ( "$2" , $allPages[$x] , $n ) ;
 			$n = str_replace ( "$3" , wikiLink("special:whatlinkshere&target=$x") , $n ) ;
 			$n = str_replace ( "$4" , $ti->getNiceTitle($x) , $n ) ;
-			array_push ( $o , "<li>$n</li>\n" ) ;
+			array_push ( $o , "*$n\n" ) ;
 			}
 		}
-	$ret .= "<nowiki><ol>".implode ( "" , $o )."</ol></nowiki>" ;
+	$ret .= implode ( "" , $o ) ;
+
+	return $ret ;
+	}
+
+function WantedPages () {
+	global $doRefresh , $wikiRefreshThisPage , $wikiResourcesWarning ;
+	$pn = "Log:Most_Wanted" ;
+	$ret = "<nowiki>" ;
+
+	$ret .= "<p align=center><font size='+1'><b><a href=\"" ;
+	$ret .= wikiLink ( "special:WantedPages&doRefresh=yes" ) ;
+	$ret .= "\">$wikiRefreshThisPage</a></b></font><br>$wikiResourcesWarning</p></nowiki>\n" ;
+	if ( $doRefresh == "yes" ) {
+		$o = refreshWantedPages () ;
+		$ret .= $o ;
+		$p = new wikiPage ;
+		$p->setTitle ( $pn ) ;
+		$p->ensureExistence () ;
+		$p->setEntry ( $o , "Refresh" , 0 , "System" , 1 ) ;
+	} else {
+		$ret .= getMySQL ( "cur" , "cur_text" , "cur_title=\"$pn\"" ) ;
+		}
 	return $ret ;
 	}
 

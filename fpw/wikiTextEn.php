@@ -324,9 +324,11 @@ $wikiBacklinkNolink = "There are no articles that link to [[$1]]!" ;
 $wikiBacklinkFollowing = "The following articles link to [[$1]]:" ;
 $wikiWantedText = "'''These articles don't exist, but other articles link to them!''' (the top 50)<br>\n" ;
 $wikiWantedToggleNumbers = "Click here to toggle the display of page titles starting with numbers (currently $1)" ;
-$wikiWantedLine = "$1 is wanted by <b>$2</b> articles (see the <a href=\"$3\">pages that link to \"$4\"</a>)" ;
+$wikiWantedLine = "$1 is wanted by <b>$2</b> articles <nowiki>(see the <a href=\"$3\">pages that link to \"$4\"</a></nowiki>)" ;
 $wikiLastChange = "Last edited $1" ;
 $wikiPopularPages = "Most popular" ;
+$wikiRefreshThisPage = "Refresh this page" ;
+$wikiResourcesWarning = "(Please, do this only when necessary, as this function uses a high amount of system resources)" ;
 
 #---------------------------
 #Functions
