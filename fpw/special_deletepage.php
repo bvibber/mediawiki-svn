@@ -61,7 +61,7 @@ function deletepage () {
 		removeFromLinkList ( "cur_linked_links" , $target ) ;
 		removeFromLinkList ( "cur_unlinked_links" , $target ) ;
 	} else {
-		$ret = "<font size=\"+2\">".str_replace(array("$1","$2"),array($target,nurlencode($target)),$wikiDeleteAsk)."</font>" ;
+		$ret = "<font size=\"+2\">".str_replace(array("$1","$2"),array($target,wikiLink("special:deletepage&target=$target")),$wikiDeleteAsk)."</font>" ;
 		}
 	return "<nowiki>$ret</nowiki>" ;
 	}
