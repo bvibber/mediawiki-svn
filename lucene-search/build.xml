@@ -16,7 +16,7 @@
 
   <property name="name" value="lucene-search"/>
   <property name="Name" value="Lucene-Search"/>
-  <property name="version" value="20041225"/>
+  <property name="version" value="20041228"/>
   <property name="year" value="2000-${current.year}"/>
   <property name="final.name" value="${name}-${version}"/>
   <property name="javac.deprecation" value="on"/>
@@ -72,7 +72,7 @@
   <target name="jar-core" depends="compile-core"
     description="Generates the Jar file">
     <jar
-      destfile="${build.dir}/${final.name}.jar"
+      destfile="${dist.dir}/${final.name}.jar"
       basedir="${build.dir}/"
       excludes="**/*.java">
       <manifest>
@@ -250,5 +250,6 @@
     description="Removes contents of build and dist directories">
     <delete dir="${build.dir}"/>
     <delete dir="${dist.dir}"/>
+    <delete dir="${bin.dir}"/>
   </target>
 </project>

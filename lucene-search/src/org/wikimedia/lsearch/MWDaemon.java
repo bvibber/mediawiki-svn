@@ -26,6 +26,8 @@ package org.wikimedia.lsearch;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Kate Turner
@@ -43,6 +45,7 @@ public class MWDaemon {
 	,MW_OLD = 2;
 	public static int mw_version = MW_NEW;
 	private static Configuration config;
+	public static int numthreads;
 	
 	public static void main(String[] args) {
 		System.out.println(
@@ -90,15 +93,24 @@ public class MWDaemon {
 		updater = new SearchIndexUpdater();
 		updater.start();
 		Socket client;
-		for (;;) {
+		numthreads = 0;
+/*		for (;;) {
 			try {
 				client = sock.accept();
 			} catch (IOException e1) {
 				System.err.println("Error: accept() error: " + e1.getMessage());
 				return;
 			}
+			++numthreads;
 			SearchClientReader clnt = new SearchClientReader(client);
 			clnt.start();
+		}*/
+		List<SearchClientReader> threads = new ArrayList<SearchClientReader>();
+		for (int j = 0; j < 50; ++j) {
+			++numthreads;
+			SearchClientReader c = new SearchClientReader(j);
+			c.start();
+			threads.add(c);
 		}
 
 	}

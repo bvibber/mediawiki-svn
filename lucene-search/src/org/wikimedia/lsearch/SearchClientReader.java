@@ -24,13 +24,18 @@
 package org.wikimedia.lsearch;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.Term;
@@ -55,7 +60,7 @@ public class SearchClientReader extends Thread {
 	/** Client input stream */
 	BufferedReader istrm;
 	/** Client output stream */
-	PrintStream ostrm;
+	BufferedWriter ostrm;
 	/** What operation we're performing */
 	String what;
 	/** Client-supplied database we should operate on */
@@ -73,69 +78,107 @@ public class SearchClientReader extends Thread {
 	public SearchClientReader(Socket newclient) {
 		this.client = newclient;
 	}
-	
-	public void run() {
+	public SearchClientReader(int i) {
+		num = i;
+	}
+	int num;
+	Map<String, SearchState> myStates;
+	private SearchState getMyState(String dbname) {
+		SearchState ret = myStates.get(dbname);
+		if (ret != null)
+			return ret;
 		try {
-			istrm = new BufferedReader(new InputStreamReader(client.getInputStream()));
-			ostrm = new PrintStream(client.getOutputStream(), true, "UTF-8");
-			/* The protocol format is "database\noperation\nsearchterm"
-			 * Search term is urlencoded.
-			 */
-			dbname = istrm.readLine();
-			state = SearchState.forWiki(dbname);
-			if (state == null) {
-				istrm.close();
-				ostrm.close();
-				return;
-			}
-			what = istrm.readLine();
-			rawsearchterm = istrm.readLine();
-			searchterm = URLDecoder.decode(rawsearchterm, "UTF-8");
-			
-			if (what.equals("TITLEMATCH")) {
-				doTitleMatches();
-			} else if (what.equals("TITLEPREFIX")) {
-				doTitlePrefix();
-			} else if (what.equals("SEARCH")) {
-				doNormalSearch();
-			}
-		} catch (Exception e) {
-			System.out.printf("Unexpected exception: %s\n", e.getMessage());
-			e.printStackTrace();
+			ret = SearchState.forWiki(dbname);
+		} catch (SQLException e) {
 		}
-		try {
+		myStates.put(dbname, ret);
+		return ret;
+	}
+	public void run() {
+		myStates = new HashMap<String, SearchState>();
+		System.out.println("starting handler #" + num);
+		for (;;) {
+			try {
+				client = MWDaemon.sock.accept();
+			} catch (IOException e) {
+				System.out.println("accept() error: " + e.getMessage());
+				continue;
+			}
+			try {
+				handle();
+			} catch (IOException e) {
+				try {
+					istrm.close();
+					ostrm.flush();
+					ostrm.close();
+				} catch (IOException e2) {}
+			} catch (Exception e) {
+				System.out.println("Unexpected exception: " + e.getMessage());
+			}
+		}
+	}
+	
+	private void handle() throws IOException {
+		istrm = new BufferedReader(new InputStreamReader(client.getInputStream()));
+		ostrm = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+		/* The protocol format is "database\noperation\nsearchterm"
+		 * Search term is urlencoded.
+		 */
+		dbname = istrm.readLine();
+		state = getMyState(dbname);
+		if (state == null) {
 			istrm.close();
+			ostrm.flush();
 			ostrm.close();
 			client.close();
-		} catch (IOException e) {}
+			--MWDaemon.numthreads;
+			return;
+		}
+		what = istrm.readLine();
+		rawsearchterm = istrm.readLine();
+		searchterm = URLDecoder.decode(rawsearchterm, "UTF-8");
+		
+		if (what.equals("TITLEMATCH")) {
+			doTitleMatches();
+		} else if (what.equals("TITLEPREFIX")) {
+			doTitlePrefix();
+		} else if (what.equals("SEARCH")) {
+			doNormalSearch();
+		}
 	}
 	
 	private void doNormalSearch() throws IOException {
-		searchterm = "title:(" + searchterm + ")^4 " + searchterm;
+		String encsearchterm = "title:(" + searchterm + ")^4 " + searchterm;
 		
 		Query query;
 		/* If we fail to parse the query, it's probably due to illegal
 		 * use of metacharacters, so we escape them all and try again.
 		 */
 		try {
-			query = state.parser.parse(searchterm);
-		} catch (ParseException e) {
+			query = state.parser.parse(encsearchterm);
+		} catch (Exception e) {
 			String escaped = "";
 			for (int i = 0; i < searchterm.length(); ++i)
 				escaped += "\\" + searchterm.charAt(i);
-			searchterm = "title:(" + escaped + ")^4 " + escaped;
+			encsearchterm = "title:(" + escaped + ")^4 " + escaped;
 			try {
-				query = state.parser.parse(escaped); 
-			} catch (ParseException e2) {
+				query = state.parser.parse(encsearchterm); 
+			} catch (Exception e2) {
 				return;
 			}
 		}
-		Hits hits = state.searcher.search(query);
+		Hits hits;
+		
+		try {
+			hits = state.searcher.search(query);
+		} catch (Exception e) {
+			return;
+		}
 		
 		int numhits = hits.length();
 		UserInteraction.instance.logQuery(dbname, searchterm, query.toString(), numhits);
 		
-		ostrm.printf("%d\n", numhits);
+		ostrm.write(numhits + "\n");
 		
 		int i = 0;
 		while (i < numhits) {
@@ -143,12 +186,12 @@ public class SearchClientReader extends Thread {
 			float score = hits.score(i);
 			String namespace = doc.get("namespace");
 			String title = doc.get("title");
-			ostrm.printf("%f %s %s\n", score, namespace, title.replaceAll(" ", "_"));
+			ostrm.write(score + " " + namespace + " " + title.replaceAll(" ", "_") + "\n");
 			++i;
 		}
 		if (numhits == 0) {
 			String spelfix = makeSpelFix(rawsearchterm);
-			ostrm.printf("%s\n", URLEncoder.encode(spelfix, "UTF-8"));
+			ostrm.write(URLEncoder.encode(spelfix, "UTF-8") + "\n");
 		}
 	}
 	
@@ -170,7 +213,7 @@ public class SearchClientReader extends Thread {
 				float score = hits.score(i);
 				String namespace = doc.get("namespace");
 				String title = doc.get("title");
-				ostrm.printf("%f %s %s\n", score, namespace, title.replaceAll(" ", "_"));
+				ostrm.write(score + " " + namespace + " " + title.replaceAll(" ", "_") + "\n");
 				++i;
 			}
 			ostrm.flush();
@@ -181,20 +224,20 @@ public class SearchClientReader extends Thread {
 		} finally {
 			try {
 				istrm.close();
+				ostrm.flush();
 				ostrm.close();
 			} catch (IOException e) {}
 		}
 	}
 
-	void doTitlePrefix() {
+	void doTitlePrefix() throws IOException {
 		if (searchterm.length() < 1)
 			return;
 		
 		List<Title> matches = state.matcher.getMatches(
 				TitlePrefixMatcher.stripTitle(searchterm));
 		for (Title match : matches) {
-			ostrm.printf("0 %d %s\n", match.namespace, 
-					match.title.replaceAll(" ", "_"));
+			ostrm.write("0 " + match.namespace + " " + match.title.replaceAll(" ", "_") + "\n");
 		}
 	}
 

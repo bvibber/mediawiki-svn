@@ -30,6 +30,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.MessageFormat;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -48,36 +50,46 @@ import com.sleepycat.je.DatabaseException;
  *
  */
 public class SearchState {
-	private static Stack<SearchState> states;
-	
+	//private static Stack<SearchState> states;
+	private static Map<String, SearchState> openWikis;
+	static {
+		//states = new Stack<SearchState>();
+		openWikis = new HashMap<String, SearchState>();
+	}
 	public static SearchState forWiki(String dbname) throws SQLException {
-		if (states == null)
-			states = new Stack<SearchState>();
-		synchronized(states) {
-			SearchState t = null;
-			for (SearchState state : states)
-				if (state.mydbname.equals(dbname))
-					return state;
-			if (states.size() > 100) {
-				t = states.remove(0);
-				t.close();
-			}
+		System.out.println("lookup " + dbname);
+		SearchState t = null;
+		synchronized (openWikis) {
+			System.out.println("got lock");
+			t = openWikis.get(dbname);
+			if (t != null)
+				return t;
+		//}
+		//synchronized(states) {
+			//if (states.size() > 100) {
+			//	t = states.remove(0);
+			//	openWikis.remove(dbname);
+			//	t.close();
+			//}
 			t = new SearchState(dbname);
-			states.push(t);
+			//states.push(t);
+			openWikis.put(dbname, t);
+			System.out.println("got " + dbname);
 			return t;
 		}
 	}
 
 	public static boolean stateOpen(String state) {
-		for (SearchState s : states)
+		/*for (SearchState s : states)
 			if (s.mydbname.equals(state))
-				return true;
-		return false;
+				return true;*/
+		return openWikis.get(state) != null;
+		//return false;
 	}
 	
 	public static void resetStates() {
-		synchronized (states) {
-			for (SearchState state : states)
+		synchronized (openWikis) {
+			for (SearchState state : openWikis.values())
 				state.reopen();
 		}
 	}
