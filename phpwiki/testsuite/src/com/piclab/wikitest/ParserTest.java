@@ -131,7 +131,14 @@ private int part3() throws Exception {
 	  "\\(10\\) normal <strong>bold's</strong> normal",
 	  "\\(11\\) normal <em>italic's</em> normal",
 	  "\\(12\\) normal <em>italic's <strong>bold's italic</strong> italic's</em> normal",
-	  "\\(13\\) normal <strong><em>bold's italic</em> bold's</strong> normal"
+	  "\\(13\\) normal <strong><em>bold's italic</em> bold's</strong> normal",
+	/*  "\\(14\\) normal <em>italic</em>' normal",
+	  "\\(15\\) normal '<strong>bold</strong> normal",
+	  "\\(16\\) normal <em>italic</em> normal <em>italic</em> normal",
+	  "\\(17\\) normal <em>italic</em> normal <strong>bold</strong> normal",
+	  "\\(18\\) normal <strong>bold</strong> normal <strong>bold</strong> normal",
+	  "\\(19\\) normal <strong>bold</strong> normal <em>italic</em> normal"
+	*/
 	};
 
 	WebResponse wr = m_suite.viewPage( "Quotes" );
