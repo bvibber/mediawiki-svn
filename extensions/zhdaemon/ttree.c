@@ -75,8 +75,8 @@ Tnode *insertWithFree(Tnode *t, const unsigned char *s, void *data)  {
 }
 
 /* search for a string and return the associated data if found */
-void *search(Tnode *root, const unsigned char *s) { 
-  Tnode  *p; 
+void *search(const Tnode *root, const unsigned char *s) { 
+  const Tnode  *p; 
   if(s[0]=='\0')
     return NULL;
   p = root;
@@ -98,8 +98,8 @@ void *search(Tnode *root, const unsigned char *s) {
 /* find the max matching string in the tree. return the 
    associated data, and set LEN to the matching length
 */
-void *searchMax(Tnode *root, const unsigned char *s, int *len) {
-  Tnode  *p; 
+void *searchMax(const Tnode *root, const unsigned char *s, int *len) {
+  const Tnode  *p; 
   void *data=NULL;
   int maxlen=0, i=0;
 
@@ -132,11 +132,11 @@ void *searchMax(Tnode *root, const unsigned char *s, int *len) {
 
 /* 
    find all possible matching string in the tree. store each match
-   int lenarray and dataarray, and return the number of matches. 
+   in lenarray and dataarray, and return the number of matches. 
    the lenarray and dataarray are assumed to be large enough!!
 */
-int searchAll(Tnode *root, const unsigned char *s, int *lenarray, void *dataarray[]) {
-  Tnode  *p; 
+int searchAll(const Tnode *root, const unsigned char *s, int *lenarray, void *dataarray[]) {
+  const Tnode  *p; 
   int count=0, i=0;
   if(s[0]=='\0') {
     return 0;
