@@ -41,6 +41,7 @@ function processUpload()
 	}
 	$prev = error_reporting( E_ALL & ~( E_NOTICE | E_WARNING ) );
 	$oname = wfCleanQueryVar( $HTTP_POST_FILES['wpUploadFile']['name'] );
+	if ( $wpUploadSaveName != "" ) $wpUploadSaveName = wfCleanQueryVar( $wpUploadSaveName );
 	error_reporting( $prev );
 
 	if ( "" != $oname ) {
