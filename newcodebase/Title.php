@@ -459,6 +459,8 @@ class Title {
 					} else {
 						$done = true;
 					}
+					if($this->mInterwiki != $wgLocalInterwiki)
+						$done = true;
 				}
 				if ( ! $done ) {
 					if ( $ns = $wgLang->getNsIndex( str_replace( " ", "_", $p ))) {
