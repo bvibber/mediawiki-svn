@@ -385,8 +385,8 @@ class Skin {
 		else { $a = ""; }
 
 		$mp = wfMsg( "mainpage" );
-		$s = "<a href='" . wfLocalUrl( $mp ) . "'><img{$a} border=0 src='" .
-		  $this->getLogo() . "' alt='" . "[$mp]'></a>";
+		$s = "<a href=\"" . wfLocalUrl( $mp ) . "\"><img{$a} border=0 src=\"" .
+		  $this->getLogo() . "\" alt=\"" . "[{$mp}]\"></a>";
 		return $s;
 	}
 
@@ -822,12 +822,20 @@ class Skin {
 		return $r;
 	}
 
+	function fnamePart( $url )
+	{
+		$basename = strrchr( $url, "/" );
+		if ( false === $basename ) { $basename = $url; }
+		else { $basename = substr( $basename, 1 ); }
+		return wfEscapeHTML( $basename );
+	}
+
 	function makeImage( $url, $alt = "" )
 	{
 		global $wgOut;
 
-		if ( "" == $alt ) { $alt = "[Image]"; }
-		$s = "<img src='$url' alt='$alt'>";
+		if ( "" == $alt ) { $alt = $this->fnamePart( $url ); }
+		$s = "<img src=\"{$url}\" alt=\"{$alt}\">";
 		return $s;
 	}
 
@@ -840,8 +848,8 @@ class Skin {
 		if ( "" == $alt ) { $alt = $name; }
 
 		$u = str_replace( "$1", $link, $wgArticlePath );
-		$s = "<a href='{$u}' class='image' title='{$alt}'>" .
-		  "<img border=0 src='{$url}' alt='{$alt}'></a>";
+		$s = "<a href=\"{$u}\" class='image' title=\"{$alt}\">" .
+		  "<img border=0 src=\"{$url}\" alt=\"{$alt}\"></a>";
 		return $s;
 	}
 
@@ -850,7 +858,7 @@ class Skin {
 		global $wgOut, $wgServer, $wgScript, $wgArticlePath, $wgTitle;
 
 		if ( "" == $alt ) { $alt = $name; }
-		$s = "<a href='{$url}' class='media' title='{$alt}'>{$alt}</a>";
+		$s = "<a href=\"{$url}\" class='media' title=\"{$alt}\">{$alt}</a>";
 		return $s;
 	}
 

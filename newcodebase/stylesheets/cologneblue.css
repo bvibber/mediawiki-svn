@@ -48,12 +48,14 @@ td.bottom {
  font-size: 9pt; font-weight: bold; color: black;
  padding-top: 0;
 }
-#quickbar a {
+#quickbar {
  font-family: Verdana, Arial, sans-serif;
  font-size: 8pt; font-weight: bold; line-height: 1.25;
- text-decoration: none; color: #446688;
+ text-decoration: none; color: black;
  padding: 0; margin-top: 0;
 }
+#quickbar a { color: #446688; }
+
 #quickbar h6 {
  font-family: Verdana, Arial, sans-serif;
  font-size: 10pt; font-weight: bold; line-height: 1.25;
