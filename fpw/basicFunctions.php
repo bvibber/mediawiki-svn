@@ -250,11 +250,12 @@ function edit ( $title ) {
 			$title = stripslashes ( $title ) ;
 			$npage->title = $title ;
 			$npage->makeAll () ;
-			if ( $npage->doesTopicExist() ) $npage->backup() ;
-			else { $MinorEdit = 2 ; $npage->ensureExistence () ; }
 
 			# Checking for blocked IP
 			if ( isBlockedIP() ) return $wikiIPblocked ;
+
+			if ( $npage->doesTopicExist() ) $npage->backup() ;
+			else { $MinorEdit = 2 ; $npage->ensureExistence () ; }
 
 			if ( !$user->isLoggedIn ) $npage->setEntry ( $text , $CommentBox , 0 , $user->getLink() , $MinorEdit*1 ) ;
 			else $npage->setEntry ( $text , $CommentBox , $user->id , $user->name , $MinorEdit*1 ) ;
