@@ -11,10 +11,22 @@ function wfSpecialWatchlist()
 	$wgOut->setSubtitle( $sub );
 	$wgOut->setRobotpolicy( "index,follow" );
 
+	if ( ! $days ) {
+		$days = $wgUser->getOption( "rcdays" );
+		if ( ! $days ) { $days = 3; }
+	}
+	if ( ! $limit ) {
+		$limit = $wgUser->getOption( "rclimit" );
+		if ( ! $limit ) { $limit = 100; }
+	}
+	$cutoff = date( "YmdHis", time() - ( $days * 86400 ) );
+	#TODO: add links to change cutoffs
+
 	$wl = $wgUser->getWatchlist();
 	$nw = count( $wl );
 	$sql = "SELECT cur_id,cur_namespace,cur_title,cur_user,cur_comment," .
-	  "cur_user_text,cur_timestamp,cur_minor_edit,cur_is_new FROM cur WHERE (";
+	  "cur_user_text,cur_timestamp,cur_minor_edit,cur_is_new FROM cur WHERE " .
+	  "cur_timestamp > '{$cutoff}' AND (";
 
 	$first = true;
 	foreach ( $wl as $title ) {
@@ -36,7 +48,7 @@ function wfSpecialWatchlist()
 		$wgOut->addHTML( wfMsg( "nowatchlist" ) );
 		return;
 	}
-	$sql .= ") ORDER BY cur_timestamp DESC";
+	$sql .= ") ORDER BY cur_timestamp DESC LIMIT {$limit}";
 	$res = wfQuery( $sql, $fname );
 
 	$sk = $wgUser->getSkin();
