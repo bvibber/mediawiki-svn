@@ -33,7 +33,9 @@
 	"justify"	=> "Alkadrigu liniojn",
 	"hideminor" => "Kasu malgrandajn redaktetojn ce <i>Lastaj Sangoj</i>",
 	"numberheadings" => "Aŭtomate nombrigu sekciojn",
-	"rememberpassword" => "Rememoru mian pasvorton de seanco al seanco"
+	"rememberpassword" => "Rememoru mian pasvorton de seanco al seanco",
+	"editwidth" => "Redaktilo estu plenlarĝa",
+	"editondblclick" => "Redaktu per duobla alklako (JavaScript)"
 );
 
 # El listo de Landoj kaj Lingvoj ce http://www.bertilow.com/lanlin/isoling.php
