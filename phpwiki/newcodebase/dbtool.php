@@ -10,7 +10,7 @@ set_time_limit(0);
 
 # Need to have separate connection to "old" database.
 #
-$wgOldDBname	= "smalldb";
+$wgOldDBname	= "wikidb";
 $wgOldDBuser	= "wikiadmin";
 
 # Convert old (May 2002) database format.
