@@ -37,7 +37,7 @@
 
 /* private */ $wgWeekdayNamesEn = array(
 	"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
-	"Friday", "Saturday", "Sunday"
+	"Friday", "Saturday"
 );
 
 /* private */ $wgMonthNamesEn = array(
@@ -72,6 +72,7 @@
 "redirectedfrom" => "(Redirected from $1)",
 "lastmodified"	=> "The page was last modified $1.",
 "viewcount"		=> "This page has been accessed $1 times.",
+"printsubtitle" => "(Article from http://www.wikipedia.com)",
 
 # Main script and global functions
 #

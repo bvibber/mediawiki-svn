@@ -198,7 +198,7 @@ class Article {
 
 		if ( "" != $this->mRedirectedFrom ) {
 			$sk = $wgUser->getSkin();
-			$redir = $sk->makeLink( $this->mRedirectedFrom, "",
+			$redir = $sk->makeKnownLink( $this->mRedirectedFrom, "",
 			  "redirect=no" );
 			$s = str_replace( "$1", $redir, wfMsg( "redirectedfrom" ) );
 			$wgOut->setSubtitle( $s );
@@ -430,8 +430,7 @@ $wpTextbox2
 	{
 		global $wgOut, $wgUser, $wgTitle;
 
-		$n = $wgTitle->getPrefixedText();
-		$wgOut->setPageTitle( $n );
+		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
 		$wgOut->setPrintable();
 		$wgOut->addWikiText( $this->getContent() );
 

@@ -19,7 +19,7 @@ function wfSpecialAllpages()
 
 	$sk = $wgUser->getSkin();
 	while ( $s = mysql_fetch_object( $res ) ) {
-		$l = $sk->makeLink( Title::makeName( $s->cur_namespace,
+		$l = $sk->makeKnownLink( Title::makeName( $s->cur_namespace,
 		  $s->cur_title ), "" );
 		$wgOut->addHTML( "{$l}<br>\n" );
 	}
