@@ -798,6 +798,7 @@ Tio ne estus enkalkutita en la jena listo.",
 kaj/aŭ informumos pri la libro ligita.
 La Vikipedio ne estas komerce ligita al tiuj vendejoj, kaj la listo ne estu
 komprenata kiel rekomendo aŭ reklamo.", 
+"alphaindexline" => "$1 ĝis $2",
 
 # Email this user
 #
