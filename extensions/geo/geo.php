@@ -51,20 +51,8 @@ class geo_params
 									else $vb = trim ( strtolower ( $e[1] ) ) ;# /*$this->styles*/$kv[$c][$e[0]] = trim ( strtolower ( $e[1] ) ) ;
 									if ( $key == "style" ) $this->styles[$c][$va] = $vb ;
 									else $this->label_styles[$c][$va] = $vb ;
-#									print "{$va} : " .$vb. "\n" ;
 									}
 								}
-#								$this->styles[$c][] = $a[1] ;
-/*							else if ( $key == "label" )
-								{
-								$d = explode ( ";" , str_replace ( "," , ";" , $a[1] ) ) ;
-								foreach ( $d AS $e )
-									{
-									$e = explode ( ":" , $e ) ;
-									if ( count ( $e ) < 2 ) $this->label_styles[$c][$e[0]] = "" ;
-									else $this->label_styles[$c][$e[0]] = $e[1] ;
-									}
-								}*/
 							}
 						}
 					}
@@ -101,7 +89,7 @@ class geo_params
 		# Finalizing
 		$viewBox = $this->get_view_box () ;
 		$svg = 
-		'<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+		'<?xml version="1.0" encoding="utf-8" standalone="no"?>
 		<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/SVG/DTD/svg10.dtd">
 		<svg viewBox="' . $viewBox .
 		'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
@@ -163,29 +151,6 @@ class geo_params
 		return implode ( "; " , $ret ) ;
 		}
 		
-/*
-	function get_styles ( $id , $type )
-		{
-		# Universal constants; rivers are blue!
-		if ( $type == "river" )
-			return "fill:none; stroke:blue; stroke-width:2" ;
-
-		if ( isset ( $this->styles[$id] ) )
-			return $this->styles[$id] ;
-		
-		$ret = $this->styles["default"] ; # Default, if not overwritten by anything more specific
-		foreach ( $this->object_tree AS $object )
-			{
-			$o = explode ( ";" , $object ) ;
-			$s = $this->match_object_style ( $o[0] , $o[1] ) ;
-			if ( $s != "" ) $ret .= "; " . $s ;
-			$s = $this->match_object_style ( $o[0] , $type ) ;
-			if ( $s != "" ) $ret .= "; " . $s ;
-			}
-
-		return $ret ;
-		}
-*/
 	function data_to_real ( &$x , &$y )
 		{
 		$x = coordinate_to_number ( coordinate_take_apart ( $x ) ) ;
@@ -255,11 +220,10 @@ class geo_params
 				$s .= "{$pk}: {$pv}; " ;
 			
 			$s .= "' x='{$x}' y='{$y}'>{$text}</text>" ;
-			if ( isset ( $l['href'] ) )
+			if ( isset ( $l['style']['href'] ) )
 				{
-				print $l['href'] . "\n" ;
-				$href = $l['href'] ;
-				$s = "<a xlink:href={$href}>{$s}</a>" ;
+				$href = $l['style']['href'] ;
+				$s = "<a xlink:href=\"{$href}\">{$s}</a>" ;
 				}
 			$ret .= $s."\n" ;
 			}
@@ -473,7 +437,7 @@ class geo
 		if ( !$this->label_this ( $params ) ) return ;
 		$text = $this->get_specs ( "name" , $params->languages ) ;
 		if ( $text == "" ) return "" ; # No label found
-		$text = utf8_decode ( $this->data[$text][0] ) ;
+		$text = $this->data[$text][0] ;
 		if ( $text == "" ) return "" ; # No point in showing an empty label
 		$x = floor ( $x ) ;
 		$y = floor ( $y ) ;
@@ -482,8 +446,9 @@ class geo
 		$a['style'] = $this->get_label_style ( &$params ) ;
 		if ( isset ( $a['style']['clickable'] ) )
 			{
+			$href = "http://" . $params->languages[0] . ".wikipedia.org/wiki/" . str_replace ( " " , "_" , $text ) ;
 			unset ( $a['style']['clickable'] ) ; # Shouldn't show up in style list
-			$a['style']['href'] = "http://www.google.de" ;
+			$a['style']['href'] = $href ;
 			}
 		$params->add_label ( $a ) ;
 		}
@@ -588,9 +553,6 @@ class geo
 			$s .= "{$k}:{$v}; " ;
 		$ret = "style=\"{$s}\"" ;
 		return $ret ;
-#		$t = trim ( strtolower ( $this->get_current_type ( $params ) ) ) ;
-#		$s = $params->get_styles ( $this->id , $t ) ;
-#		return "style=\"{$s}\"" ;
 		}
 	}
 
