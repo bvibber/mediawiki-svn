@@ -426,17 +426,6 @@ $wpTextbox2
 		$this->editUpdates( $this->getID(), $wgTitle->getPrefixedDBkey() );
 	}
 
-	function viewprintable()
-	{
-		global $wgOut, $wgUser, $wgTitle;
-
-		$wgOut->setPageTitle( $wgTitle->getPrefixedText() );
-		$wgOut->setPrintable();
-		$wgOut->addWikiText( $this->getContent() );
-
-		$this->viewUpdates();
-	}
-
 	function watch()
 	{
 	}
