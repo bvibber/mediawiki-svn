@@ -9,11 +9,11 @@
 	0	=> "",
 	1	=> "Dyskusja",
 	2	=> "Wikipedysta",
-	3	=> "Wikipedysta_dyskusja",
+	3	=> "Dyskusja_wikipedysty",
 	4	=> "Wikipedia",
-	5	=> "Wikipedia_dyskusja",
+	5	=> "Dyskusja_Wikipedii",
 	6	=> "Grafika",
-	7	=> "Grafika_dyskusja"
+	7	=> "Dyskusja_grafiki"
 );
 
 /* private */ $wgQuickbarSettingsPl = array(
@@ -35,40 +35,40 @@
 );
 
 /* private */ $wgLanguageNamesPl = array(
-	"ab"	=> "Abchazka",
-	"aa"	=> "Afar",
-	"af"	=> "afrikaans",
+	"ab"	=> "abchaska",
+	"aa"	=> "w afar",
+	"af"	=> "w afrikaans",
 	"sq"	=> "albańska",
 	"am"	=> "amharska",
 	"ar"	=> "arabska",
 	"hy"	=> "armeńska",
-	"as"	=> "Assamese",
-	"ay"	=> "Aymara",
+	"as"	=> "asamska",
+	"ay"	=> "w ajmara",
 	"az"	=> "azerbejdżańska",
 	"ba"	=> "baszkirska",
 	"eu"	=> "baskijska",
 	"be"	=> "białoruska",
 	"bn"	=> "bengalska",
-	"dz"	=> "Dzongkha",
-	"bh"	=> "Bihara",
-	"bi"	=> "Bislama",
+	"dz"	=> "w druk",
+	"bh"	=> "biharska",
+	"bi"	=> "w bislama",
 	"my"	=> "birmańska",
 	"km"	=> "kambodżańska",
 	"ca"	=> "katalońska",
 	"zh"	=> "chińska",
-	"co"	=> "Corsican",
+	"co"	=> "korsykańska",
 	"hr"	=> "chorwacka",
 	"cs"	=> "czeska",
 	"da"	=> "duńska", # Note two different subdomains. 
 	"dk"	=> "duńska", # 'da' is correct for the language.
-	"nl"	=> "niderlandzka",
+	"nl"	=> "holenderska",
 	"en"	=> "angielska",
 	"w"	=> "angielska", # Should this be in list this?
 	"simple" => "uproszczona angielska",
 	"eo"	=> "esperanto",
 	"et"	=> "estońska",
-	"fo"	=> "Faeroese",
-	"fj"	=> "Fijian",
+	"fo"	=> "farerska",
+	"fj"	=> "fidżyjska",
 	"fi"	=> "fińska",
 	"fr"	=> "francuska",
 	"fy"	=> "fryzyjska",
@@ -77,111 +77,111 @@
 	"de"	=> "niemiecka",
 	"el"	=> "grecka",
 	"kl"	=> "grenlandzka",
-	"gn"	=> "Guarani",
-	"gu"	=> "gudżarati",
-	"ha"	=> "hausa",
+	"gn"	=> "w guarani",
+	"gu"	=> "w gudżarati",
+	"ha"	=> "w hausa",
 	"he"	=> "hebrajska",
-	"hi"	=> "hindi",
+	"hi"	=> "w hindi",
 	"hu"	=> "węgierska",
 	"is"	=> "islandzka",
 	"id"	=> "indonezyjska",
-	"ia"	=> "interlingua",
-	"iu"	=> "Inuktitut",
-	"ik"	=> "Inupiak",
+	"ia"	=> "w interlingua",
+	"iu"	=> "w inuktitut",
+	"ik"	=> "w inupiak",
 	"ga"	=> "irlandzka",
 	"it"	=> "włoska",
 	"ja"	=> "japońska",
 	"jv"	=> "jawajska",
-	"kn"	=> "kannada",
+	"kn"	=> "w kannada",
 	"ks"	=> "kaszmirska",
 	"kk"	=> "kazachska",
-	"rw"	=> "Kinyarwanda",
-	"ky"	=> "kirgizka",
-	"rn"	=> "Kirundi",
+	"rw"	=> "w kinya-ruanda",
+	"ky"	=> "kirgiska",
+	"rn"	=> "w urundi",
 	"ko"	=> "koreańska",
 	"lo"	=> "laotańska",
 	"la"	=> "w łacinie",
 	"lv"	=> "łotewska",
-	"ln"	=> "lingala",
+	"ln"	=> "w lingala",
 	"lt"	=> "litewska",
 	"mk"	=> "macedońska",
 	"mg"	=> "malagaska",
 	"ms"	=> "malajska",
-	"ml"	=> "malajalam",
+	"ml"	=> "w malajalam",
 	"mi"	=> "maoryjska",
-	"mr"	=> "marathi",
+	"mr"	=> "w marathi",
 	"mo"	=> "mołdawska",
 	"mn"	=> "mongolska",
-	"na"	=> "Nauru",
+	"na"	=> "w nauru",
 	"ne"	=> "nepalska",
 	"no"	=> "norweska",
-	"oc"	=> "Occitan",
-	"or"	=> "orija",
-	"om"	=> "oromo",
-	"ps"	=> "paszto",
+	"oc"	=> "prowansalska",
+	"or"	=> "w orija",
+	"om"	=> "w oromo",
+	"ps"	=> "w paszto",
 	"fa"	=> "perska",
 	"pl"	=> "polska",
 	"pt"	=> "portugalska",
 	"pa"	=> "pendżabska",
-	"qu"	=> "keczua",
+	"qu"	=> "w keczua",
 	"rm"	=> "retoromańska",
 	"ro"	=> "rumuńska",
 	"ru"	=> "rosyjska",
 	"sm"	=> "samoańska",
-	"sg"	=> "Sangro",
+	"sg"	=> "w sangro",  //??
 	"sa"	=> "w sanskrycie",
 	"sr"	=> "serbska",
 	"sh"	=> "serbochorwacka",
-	"st"	=> "Sesotho",
-	"tn"	=> "Setswana",
-	"sn"	=> "szona",
-	"sd"	=> "sindhi",
-	"si"	=> "Sinhalese",
-	"ss"	=> "Siswati",
+	"st"	=> "w sotho",
+	"tn"	=> "w setswana",
+	"sn"	=> "w szona",
+	"sd"	=> "w sindhi",
+	"si"	=> "syngaleska",
+	"ss"	=> "w suazi",
 	"sk"	=> "słowacka",
 	"sl"	=> "słoweńska",
 	"so"	=> "w somali",
 	"es"	=> "hiszpańska",
-	"su"	=> "Sudanese",
-	"sw"	=> "suahili",
+	"su"	=> "arabska (sudańska)",
+	"sw"	=> "w suahili",
 	"sv"	=> "szwedzka",
-	"tl"	=> "tagalog",
+	"tl"	=> "w tagalog",
 	"tg"	=> "tadżycka",
 	"ta"	=> "tamilska",
 	"tt"	=> "tatarska",
-	"te"	=> "telugu",
+	"te"	=> "w telugu",
 	"th"	=> "tajska",
 	"bo"	=> "tybetańska",
-	"ti"	=> "Tigrinya",
-	"to"	=> "Tonga",
-	"ts"	=> "Tsonga",
+	"ti"	=> "w tigrinia",
+	"to"	=> "w tonga",
+	"ts"	=> "w tsonga",
 	"tr"	=> "turecka",
 	"tk"	=> "turkmeńska",
-	"tw"	=> "Twi",
+	"tw"	=> "w twi",
 	"ug"	=> "ujgurska",
 	"uk"	=> "ukraińska",
 	"ur"	=> "w urdu",
 	"uz"	=> "uzbecka",
 	"vi"	=> "wietnamska",
-	"vo"	=> "Volapuk",
+	"vo"	=> "w volapuk",
 	"cy"	=> "walijska",
-	"wo"	=> "Wolof",
-	"xh"	=> "Xhosa",
-	"yi"	=> "jidisz",
-	"yo"	=> "Yoruba",
- 	"za"	=> "Zhuang",
-	"zu"	=> "Zulu"
+	"wo"	=> "w wolof",
+	"xh"	=> "w xhosa",
+	"yi"	=> "w jidisz",
+	"yo"	=> "w joruba",
+ 	"za"	=> "w zhuang",
+	"zu"	=> "w zulu"
 );
 
 /* private */ $wgWeekdayNamesPl = array(
-	"Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek",
-	"Piątek", "Sobota"
+	"niedziela", "poniedziałek", "wtorek", "środa", "czwartek",
+	"piątek", "sobota"
 );
 
 /* private */ $wgMonthNamesPl = array(
-	"Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec",
-	"Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad",
-	"Grudzień"
+	"styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec",
+	"lipiec", "sierpień", "wrzesień", "październik", "listopad",
+	"grudzień"
 );
 
 /* private */ $wgMonthAbbreviationsPl = array(
@@ -221,7 +221,7 @@
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => "",
 	"Movepage"		=> "",
-	"Booksources"	=> "Źródła książkowe"
+	"Booksources"	=> "Książki"
 );
 
 /* private */ $wgSysopSpecialPagesPl = array(
@@ -247,7 +247,7 @@
 "helppage"		=> "Wikipedia:Pomoc",
 "wikititlesuffix" => "Wikipedia",
 "bugreports"	=> "Raport o błędach",
-"bugreportspage" => "Wikipedia:Bug_reports",
+"bugreportspage" => "Wikipedia:Błędy",
 "faq"			=> "FAQ",
 "faqpage"		=> "Wikipedia:FAQ",
 "edithelp"		=> "Pomoc w edycji",
@@ -407,7 +407,7 @@ Podany powód to:<br>$2<p>Możesz się skontaktować z administratorem by
 wyjaśnić sprawę zablokowania.",
 "newarticle"	=> "(Nowy)",
 "newarticletext" => "Tutaj wpisz tekst artykułu.",
-"noarticletext" => "(Ta strona obecnie nie zawiera tekstu)",
+"noarticletext" => "(Nie ma jeszcze artykułu o tym tytule. Wybierz ''Edytuj'' by go rozpocząć.)",
 "updated"		=> "(Zmodyfikowano)",
 "note"			=> "<strong>Uwaga:</strong> ",
 "previewnote"	=> "To jest tylko podgląd - artykuł nie został jeszcze zapisany!",
@@ -436,7 +436,7 @@ nie umieszczaj go w Wikipedii.<br>
 Niniejszym jednocześnie oświadczasz, że wkład jest Twoim
 dziełem lub pochodzi z materiałów dostępnych na zasadach public domain albo
 licencji GNU Free Documentation License lub kompatybilnej.
-<strong>PROSZĘ NIE UŻYWAĆ BEZ POZWOLENIA MATERIAŁÓW OBJĘTYCH PRAWEM
+<br><strong>PROSZĘ NIE UŻYWAĆ BEZ POZWOLENIA MATERIAŁÓW OBJĘTYCH PRAWEM
 AUTORSKIM!</strong>",
 
 
@@ -467,15 +467,13 @@ Sprawdź proszę URL użyty przez Ciebie by uzyskać dostęp do tej strony.\n",
 # Search results
 #
 "searchresults" => "Wyniki wyszukiwania",
-"searchhelppage" => "Wikipedia:Searching",
+"searchhelppage" => "Wikipedia:Przeszukiwanie",
 "searchingwikipedia" => "Przeszukiwanie Wikipedii",
 "searchresulttext" => "Aby dowiedzieć się więcej o przeszukiwaniu Wikipedii, zobacz $1.",
 "searchquery"	=> "Dla zapytania \"$1\"",
 "badquery"		=> "Źle sformułowane zapytanie",
 "badquerytext"	=> "Nie można zrealizować Twojego zapytania.
 Prawdopodobna przyczyna to obecność słowa krótszego niż trzyliterowe.
-Inną przyczyną mogła być pomyłka w szukanym wyrażeniu,
-np. \"Jan Jan Kochanowski\".
 Spróbuj, proszę, innego zapytania.",
 "matchtotals"	=> "Zapytanie \"$1\", liczba znalezionych tytułów: $2,
 liczba znalezionych artykułów: $3.",
@@ -492,18 +490,23 @@ spowodowany jest bardzo często szukaniem najpopularniejszych słów, takich jak
 \"jest\" czy \"nie\", które nie są indeksowane, albo z powodu podania w
 zapytaniu więcej niż jednego słowa (na liście odnalezionych stron znajdą się
 tylko te, które zawierają wszystkie podane słowa).",
+"powersearch" => "Szukaj", 
+"powersearchtext" => "
+Szukaj w przestrzeniach nazw :<br>
+$1<br>
+$2 Pokaż przekierowania &nbsp; Szukany tekst $3 $9",
+
 
 # Preferences page
 #
 "preferences"	=> "Preferencje",
 "prefsnologin" => "Brak logowania",
-  //en wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
 "prefsnologintext"	=> "Musisz się <a href=\"" .
   wfLocalUrl( "Specjalna:Userlogin" ) . "\">zalogować</a>
 przez zmianą swoich preferencji.",
 "prefslogintext" => "Zalogowano Cię jako \"$1\".
 Twój numer identyfikacyjny to $2.",
-"prefsreset"	=> "Preferences have been reset from storage.",
+"prefsreset"	=> "Preferencje domyślne zostały odtworzone.",
 "qbsettings"	=> "Pasek szybkiego dostępu", 
 "changepassword" => "Zmiana hasła",
 "skin"			=> "Skórka",
@@ -521,8 +524,9 @@ Twój numer identyfikacyjny to $2.",
 "contextchars"	=> "Litery kontekstu w linijce",
 "recentchangescount" => "Liczba pozycji na liście ostatnich zmian",
 "savedprefs"	=> "Twoje preferencje zostały zapisane.",
-"timezonetext"	=> "Podaj liczbę godzin różnicy między Twoim czasem
-a czasem serwera (UTC). Np. dla Polski jest to liczba \"2\".",
+"timezonetext"	=> "Podaj liczbę godzin różnicy między Twoim czasem,
+a czasem uniwersalnym (UTC). Np. dla Polski jest to liczba \"2\" (czas letni)
+lub \"1\" (czas zimowy).",
 "localtime"	=> "Twój czas",
 "timezoneoffset" => "Różnica",
 "emailflag"		=> "Nie chcę otrzymywać e-maili od innych użytkowników",
@@ -532,12 +536,12 @@ a czasem serwera (UTC). Np. dla Polski jest to liczba \"2\".",
 "recentchanges" => "Ostatnie zmiany",
 "recentchangestext" => "Na tej stronie odnajdziesz historię ostatnich zmian na Wikipedii.
 
-[[Wikipedia:Welcome,_newcomers|Witaj]]! Jeśli jesteś tu po raz pierwszy,
+[[Wikipedia:Powitanie nowicjuszy|Witaj]]! Jeśli jesteś tu po raz pierwszy,
 zapoznaj się, proszę, z tymi stronami: [[wikipedia:FAQ|Wikipedia FAQ]],
-[[Wikipedia:Policies and guidelines|polityka Wikipedii]]
-(a zwłaszcza [[wikipedia:Naming conventions|konwencje nazywania stron]],
-[[wikipedia:Neutral point of view|neutralny punkt widzenia]])
-oraz [[wikipedia:Most common Wikipedia faux pas|najczęstsze nieporozumienia]].
+[[Wikipedia:Zasady i wskazówki|polityka Wikipedii]]
+(a zwłaszcza [[Wikipedia:Nazewnictwo|konwencje nazywania stron]],
+[[Wikipedia:Neutralny punkt widzenia|neutralny punkt widzenia]])
+oraz [[Wikipedia:Najczęstsze nieporozumienia|najczęstsze nieporozumienia]].
 
 Jeśli chcesz przyczynić się do sukcesu Wikipedii, nie dodawaj materiałów
 zastrzeżonych prawami autorskimi. Konsekwencje prawne złamania tej zasady
@@ -570,14 +574,16 @@ przed przesłaniem pików.",
 "uploadfile"	=> "Prześlij plik",
 "uploaderror"	=> "Błąd przesyłki",
 "uploadtext"	=> "<strong>STOP!</strong> Zanim prześlesz plik,
-przeczytaj <a href=\"" . wfLocalUrlE( "Wikipedia:Image_use_policy" ) .
-"\">zasady użycia obrazków</a> i upewnij się przesyłając pozostaniesz z
+przeczytaj <a href=\"" . wfLocalUrlE( "Wikipedia:Zasady_dołączania_plików" ) .
+"\">zasady dołączania plików</a> i upewnij się, że przesyłając pozostaniesz z
 nimi w zgodzie.
 <p>Jeśli chcesz przejrzeć lub przeszukać dotychczas przesłane pliki,
 przejdź do <a href=\"" . wfLocalUrlE( "Specjalna:Imagelist" ) .
-"\">listy przesłanych plików</a>.
-Przesyłki i skasowania są rejestrowane w <a href=\"" .
-wfLocalUrlE( "Wikipedia:Upload_log" ) . "\">rejestrze</a>.
+"\">listy dołączonych plików</a>.
+Wszystkie przesyłki i skasowania są odnotowane na
+specjalnych wykazach (<a href=\"" .  wfLocalUrlE( "Wikipedia:Dołączone" ) .
+"\">dołączone</a>, " . wfLocalUrlE( "Wikipedia:Usunięte" ) .
+"\">usunięte</a>).
 <p>By przesłać nowy plik mający zilustrować Twój artykuł skorzystaj
 z poniższego formularza.
 W przypadku większości przeglądarek zobaczysz przycisk <i>Browse...</i>
@@ -592,16 +598,16 @@ Może zająć kilka chwil, zwłaszcza jeśli masz wolne połączenie z internete
 i obrazków o charakterze ikon oraz OGG dla dźwięków.
 Aby uniknąć nieporozumień nadawaj plikom nazwy związane z zawartością.
 Aby umieścić obrazek w artykule, użyj linku w postaci
-<b>[[image:obrazek.jpg]]</b> lub <b>[[grafika:obrazek.png|opcjonalny tekst]]</b>.
+<b>[[grafika:obrazek.jpg]]</b> lub <b>[[grafika:obrazek.png|opcjonalny tekst]]</b>.
 Dla plików dźwiękowych link będzie miał postać <b>[[media:file.ogg]]</b>.
 <p>Pamiętaj, proszę, że tak jak w przypadku zwykłych stron Wikipedii,
 inni użytkownicy mogą edytować lub kasować przesłane przez Ciebie pliki,
 jeśli stwierdzą, że to będzie lepiej służyć całemu projektowi.
 Twoje prawo do przesyłania może zostać Ci odebrane jeśli nadużyjesz systemu.",
-"uploadlog"		=> "rejestr przesyłek",
-"uploadlogpage" => "Upload_log",
+"uploadlog"		=> "Wykaz przesyłek",
+"uploadlogpage" => "Dołączone",
 "uploadlogpagetext" => "Oto lista ostatnio przesłanych plików.
-Wszystkie czasy odnoszą się do strefy czasowej w serwera (UTC).
+Wszystkie czasy odnoszą się do strefy czasu uniwersalnego (UTC).
 <ul>
 </ul>
 ",
@@ -610,7 +616,7 @@ Wszystkie czasy odnoszą się do strefy czasowej w serwera (UTC).
 "affirmation"	=> "Potwierdzam, że właściciel praw autorskich do tego pliku
 zgadza się udzielić licencji zgodnie z $1.",
 "copyrightpage" => "Wikipedia:Prawa_autorskie",
-"copyrightpagename" => "Wikipedia copyright",
+"copyrightpagename" => "Prawa autorskie Wikipedii",
 "uploadedfiles"	=> "Przesłane pliki",
 "noaffirmation" => "Musisz potwierdzić, że Twoja przesyłka nie narusza żadnych
 praw autorskich.",
@@ -626,7 +632,7 @@ takie jak: pochodzenie pliku, kiedy i przez kogo został utworzony
 i cokolwiek co wiesz o pliku, a wydaje Ci się ważne.",
 "uploadwarning" => "Ostrzeżenie o przesyłce",
 "savefile"		=> "Zapisz plik",
-"uploadedimage" => "przesłano \"$1\"",
+"uploadedimage" => ", przesłano \"$1\"",
 
 # Image list
 #
@@ -671,7 +677,7 @@ Spośród nich <b>$2</b> ma status administratora (zobacz $3).",
 
 # Miscellaneous special pages
 #
-"orphans"		=> "Porzucone strone",
+"orphans"		=> "Porzucone strony",
 "lonelypages"	=> "Porzucone strony",
 "unusedimages"	=> "Nie używane pliki",
 "popularpages"	=> "Najpopularniejsze strony",
@@ -697,7 +703,7 @@ Spośród nich <b>$2</b> ma status administratora (zobacz $3).",
 np. Wikipedie w innych językach, mogą odwoływać się do tych plików
 używając bezpośrednio URL. Dlatego też niektóre z plików mogą się znajdować
 na tej liście mimo, że żadna strona tej Wikipedii nie odwołuje się do nich.",
-"booksources"	=> "Źródła książkowe",
+"booksources"	=> "Książki",
 "booksourcetext" => "Oto lista linków do innych witryn,
 które pośredniczą w sprzedaży nowych i używanych książek i mogą podać
 informacje o książkach, których szukasz.
@@ -764,15 +770,15 @@ a nazwa samej strony zostanie <b>wytłuszczona</b> na <a href=\"" .
 lub plik z bazy danych razem z dotyczącą ich historią.
 Potwierdź, proszę, swoje zamiary, tzn., że rozumiesz konsekwencje,
 i że robisz to w zgodzie z
-[[Wikipedia:Policy]].",
+[[Wikipedia:Zasady]].",
 "confirmcheck"	=> "Tak, naprawdę chcę usunąć.",
 "actioncomplete" => "Operacja wykonana",
 "deletedtext"	=> "Usunięto \"$1\".
 Rejestr ostatnio dokonaych kasowań możesz obejrzeć tutaj: $2.",
-"deletedarticle" => "Usunięto \"$1\"",
+"deletedarticle" => ", usunięto \"$1\"",
 "dellogpage"	=> "Deletion_log",
 "dellogpagetext" => "To jest lista ostatnio wykonanych kasowań.
-Podane czasy odnoszą się do strefy czasowej serwera (UTC).
+Podane czasy odnoszą się do strefy czasu uniwersalnego (UTC).
 <ul>
 </ul>
 ",
@@ -807,7 +813,7 @@ ta operacja ma być wykonana.",
 "blockiptext"	=> "Użyj poniższego formularza aby zablokować prawo
 zapisu spod określonego adresu IP.
 Powinno się to robić jedynie by zapobiec wandalizmowi, a zarazem
-w zgodzie z [[Wikipedia:Policy|polityką Wikipedii]].
+w zgodzie z [[Wikipedia:Zasady|zasadami Wikipedii]].
 Podaj powód (np. umieszczając nazwy stron, na których dopuszczono
 się wandalizmu).",
 "ipaddress"		=> "Adres IP",
@@ -817,7 +823,7 @@ się wandalizmu).",
 "noblockreason" => "Musisz podać powód blokady.",
 "blockipsuccesssub" => "Zablokowanie powiodło się",
 "blockipsuccesstext" => "Adres IP \"$1\" został zablokowany.
-<br>Przejdź do [[Specjalna:Ipblocklist|Listy zablokowanych adresów]] by przejrzeć blokady.",
+<br>Przejdź do [[Specjalna:Ipblocklist|Listy zablokowanych adresów IP]] by przejrzeć blokady.",
 "unblockip"		=> "Odblokuj adres IP",
 "unblockiptext"	=> "Użyj poniższego formularza by przywrócić prawa zapisu
 dla poprzednio zablokowanego adresu IP.",
