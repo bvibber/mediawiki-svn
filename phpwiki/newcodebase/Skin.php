@@ -9,14 +9,19 @@
 	"Standard", "Nostalgia", "CologneBlue"
 );
 
+class RecentChangesClass {
+	var $secureName , $displayName , $link , $namespace ;
+	var $oldid , $diffid , $timestamp , $curlink , $lastlink , $blockuser , $versionlink ;
+	var $usercomment , $userlink ;
+	var $isminor , $isnew , $watched , $islog ;
+	} ;
+
 class Skin {
 
 	/* private */ var $lastdate, $lastline;
 
-	var $rcc ; # Recent Changes Cache for better display
+	var $rc_cache ; # Cache for Enhanced Recent Changes
 	var $rccc ; # Recent Changes Cache Counter for visibility toggle
-	var $rcchl ; # History links
-	var $rcco ; # Old versions for total diff
 
 
 	function Skin()
@@ -1110,10 +1115,8 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 
 	function beginRecentChangesList()
 	{
+		$rc_cache = array() ;
 		$rccc = 0 ;
-		$this->rcc = array() ;
-		$this->rcchl = array() ;
-		$this->rcco = array() ;
 		$this->lastdate = "";
 		return "";
 	}
@@ -1201,41 +1204,153 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		return $ret;
 	}
 
+	function recentChangesBlockLine ( $y ) {
+		global $wgUploadPath ;
+
+		$M = wfMsg( "minoreditletter" );
+		$N = wfMsg( "newpageletter" );
+		$r = "" ;
+		$r .= "<img src='{$wgUploadPath}/Arr_.png' width=12 height=12 border=0>" ;
+		$r .= "<tt>" ;
+		if ( $y->isnew ) $r .= $N ;
+		else $r .= "&nbsp;" ;
+		if ( $y->isminor ) $r .= $M ;
+		else $r .= "&nbsp;" ;
+		$r .= " ".$y->timestamp." " ;
+		$r .= "</tt>" ;
+		$link = $y->link ;
+		if ( $y->watched ) $link = "<strong>{$link}</strong>" ;
+		$r .= $link ;
+
+		$r .= " (" ;
+		$r .= $y->curlink ;
+		$r .= "; " ;
+		$r .= $this->makeKnownLink( $y->secureName, wfMsg( "hist" ), "action=history" );
+
+		$r .= ") . . ".$y->userlink ;
+		$r .= $y->blockuser ;
+		if ( $y->usercomment != "" )
+			$r .= " <em>(".wfEscapeHTML($y->usercomment).")</em>" ;
+		$r .= "<br>\n" ;
+		return $r ;
+		}
+
+	function recentChangesBlockGroup ( $y ) {
+		global $wgUploadPath ;
+
+		$r = "" ;
+		$M = wfMsg( "minoreditletter" );
+		$N = wfMsg( "newpageletter" );
+		$isnew = false ;
+		$userlinks = array () ;
+		foreach ( $y AS $x ) {
+			$oldid = $x->diffid ;
+			if ( $x->isnew ) $isnew = true ;
+			$u = $x->userlink ;
+			if ( !isset ( $userlinks[$u] ) ) $userlinks[$u] = 0 ;
+			$userlinks[$u]++ ;
+			}
+
+		krsort ( $userlinks ) ;
+		asort ( $userlinks ) ;
+		$users = array () ;
+		$u = array_keys ( $userlinks ) ;
+		foreach ( $u as $x ) {
+			$z = $x ;
+			if ( $userlinks[$x] > 1 ) $z .= " ({$userlinks[$x]}&times;)" ;
+			array_push ( $users , $z ) ;
+			}
+		$users = " <font size='-1'>[".implode("; ",$users)."]</font>" ;
+
+		$e = $y ;
+		$e = array_shift ( $e ) ;
+
+		# Arrow
+		$rci = "RCI{$this->rccc}" ;
+		$rcl = "RCL{$this->rccc}" ;
+		$rcm = "RCM{$this->rccc}" ;
+		$tl = "<a href='javascript:toggleVisibility(\"{$rci}\",\"{$rcm}\",\"{$rcl}\")'>" ;
+		$tl .= "<span id='{$rcm}'><img src='{$wgUploadPath}/Arr_r.png' width=12 height=12 border=0></span>" ;
+		$tl .= "<span id='{$rcl}' style='display:none'><img src='{$wgUploadPath}/Arr_d.png' width=12 height=12 border=0></span>" ;
+		$tl .= "</a>" ;
+		$r .= $tl ;
+
+		# Main line
+		$r .= "<tt>" ;
+		if ( $isnew ) $r .= $N ;
+		else $r .= "&nbsp;" ;
+		$r .= "&nbsp;" ; # Minor
+		$r .= " ".$e->timestamp." " ;
+		$r .= "</tt>" ;
+
+		$link = $e->link ;
+		if ( $e->watched ) $link = "<strong>{$link}</strong>" ;
+		$r .= $link ;
+
+		if ( !$e->islog ) {
+			$r .= " (".count($y)." " ;
+			$r .= $this->makeKnownLink( $e->secureName, wfMsg( "changes" ), "action=history" );
+			$r .= "; " ;
+			if ( $isnew ) $r .= wfMsg("diff");
+			else $r .= $this->makeKnownLink( $e->secureName , wfMsg("diff") , "diff=0&oldid=".$oldid ) ;
+			$r .= ")" ;
+			}
+
+		$r .= $users ;
+		$r .= "<br>\n" ;
+
+		# Sub-entries
+		$r .= "<div id='{$rci}' style='display:none'>" ;
+		foreach ( $y AS $x )
+			{
+			$r .= "<img src='{$wgUploadPath}/Arr_.png' width=12 height=12 border=0>";
+			$r .= "<tt>&nbsp; &nbsp; &nbsp; &nbsp;" ;
+			if ( $x->isnew ) $r .= $N ;
+			else $r .= "&nbsp;" ;
+			if ( $x->isminor ) $r .= $M ;
+			else $r .= "&nbsp;" ;
+			$r .= "</tt>" ;
+
+			$o = "" ;
+			if ( $x->oldid != 0 ) $o = "oldid=".$x->oldid ;
+			if ( $x->islog ) $link = $x->timestamp ;
+			else $link = $this->makeKnownLink( $x->secureName, $x->timestamp , $o ) ;
+			$link = "<tt>{$link}</tt>" ;
+
+
+			$r .= $link ;
+			$r .= " (" ;
+			$r .= $x->curlink ;
+			$r .= "; " ;
+			$r .= $x->lastlink ;
+			$r .= ") . . ".$x->userlink ;
+			$r .= $x->blockuser ;
+			if ( $x->usercomment != "" )
+				$r .= " <em>(".wfEscapeHTML($x->usercomment).")</em>" ;
+			$r .= "<br>\n" ;
+			}
+		$r .= "</div>\n" ;
+
+		$this->rccc++ ;
+		return $r ;
+		}
+
 	function recentChangesBlock ()
 	{
 		global $wgUploadPath ;
-		$r = "" ;
-		if ( count ( $this->rcc ) == 0 ) return "" ;
-		$k = array_keys ( $this->rcc ) ;
+		if ( count ( $this->rc_cache ) == 0 ) return "" ;
+		$k = array_keys ( $this->rc_cache ) ;
 		foreach ( $k AS $x )
 			{
-			$a = $this->rcc[$x] ;
-			if ( count ( $a ) < 2 )
-				{
-				$y = array_shift ( $a ) ;
-				$r .= "<li>{$y}</li>\n" ;
-				}
-			else
-				{
-				$noc = count ( $a ) ;
-				$rci = "RCI{$this->rccc}" ;
-				$rcl = "RCL{$this->rccc}" ;
-				$rcm = "RCM{$this->rccc}" ;
-				$tl = "<a href='javascript:toggleVisibility(\"{$rci}\",\"{$rcm}\",\"{$rcl}\")'>" ;
-				$tl .= "<span id='{$rcm}'><img src='{$wgUploadPath}/Arr_r.png' width=12 height=12 border=0></span>" ;
-				$tl .= "<span id='{$rcl}' style='display:none'><img src='{$wgUploadPath}/Arr_d.png' width=12 height=12 border=0></span>" ;
-				$tl .= "</a>" ;
-				$dlink = $this->rcco[$x] ;
-				$r .= "{$tl} ({$dlink}) {$x} ({$noc} " ;
-				$r .= "{$this->rcchl[$x]})<br>\n" ;
-				$r .= "<div id='{$rci}' style='display:none'>" ;
-				foreach ( $a AS $y )
-					$r .= "<dd>{$y}\n" ;
-				$r .= "</div>\n" ;
-				$this->rccc++ ;
+			$y = $this->rc_cache[$x] ;
+			if ( count ( $y ) < 2 ) {
+				$r .= $this->recentChangesBlockLine ( array_shift ( $y ) ) ;
+			} else {
+				$r .= $this->recentChangesBlockGroup ( $y ) ;
 				}
 			}
-		return $r ;
+
+		return "<div align=left>{$r}</div>" ;
 	}
 
 	function recentChangesLine( $ts, $u, $ut, $ns, $ttl, $c, $isminor, $isnew, $watched = false, $oldid = 0 , $diffid = 0 )
@@ -1307,12 +1422,14 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 	{
 		global $wgTitle, $wgLang, $wgUser;
 
+		$rc = new RecentChangesClass ;
+
 		$d = $wgLang->date( $ts, true);
 		$s = "";
 		$ret = "" ;
 		if ( $d != $this->lastdate ) {
 			$ret = $this->recentChangesBlock () ;
-			$this->rcc = array() ;
+			$this->rc_cache = array() ;
 			$ret .= "<h4>{$d}</h4>\n";
 			$this->lastdate = $d;
 		}
@@ -1323,9 +1440,17 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 		else $c2link = $this->makeKnownLink( $t, "" , "oldid={$oldid}" );
 		$nt = Title::newFromText( $t );
 
-		if ( $watched ) {
-			$clink = "<strong>{$clink}</strong>";
-		}
+		$rc->timestamp = $h ;
+		$rc->oldid = $oldid ;
+		$rc->diffid = $diffid ;
+		$rc->watched = $watched ;
+		$rc->isnew = $isnew ;
+		$rc->isminor = $isminor ;
+		$rc->secureName = $t ;
+		$rc->displayName = $nt ;
+		$rc->link = $clink ;
+		$rc->usercomment = $c ;
+		$rc->islog = $nt->isLog() ;
 
 		if ( ( $isnew && $oldid == 0 ) || $nt->isLog() ) {
 			$dlink = wfMsg( "cur" );
@@ -1346,34 +1471,19 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 			$ut, "target=" . $ut );
 		} else { $ul = $this->makeLink( $wgLang->getNsText(
 		  Namespace::getUser() ) . ":{$ut}", $ut ); }
-		$cr = wfMsg( "currentrev" );
 
-		# Here was <li>
-		$s .= "({$dlink}) ({$plink}) . .";
-		$M = wfMsg( "minoreditletter" );
-		$N = wfMsg( "newpageletter" );
-		if ( $isnew ) { $s .= " <strong>{$N}</strong>"; }
-		if ( $isminor ) { $s .= "<strong>{$M}</strong>"; }
-		$s .= " {$c2link}; {$h} . . {$ul}";
+		$rc->userlink = $ul ;
+		$rc->lastlink = $plink ;
+		$rc->curlink = $dlink ;
 
 		if ( ( 0 == $u ) && $wgUser->isSysop() ) {
 			$blink = $this->makeKnownLink( $wgLang->specialPage(
 			  "Blockip" ), wfMsg( "blocklink" ), "ip={$ut}" );
-			$s .= " ({$blink})";
+			$rc->blockuser = " ({$blink})";
 		}
 
-		if ( "" != $c && "*" != $c ) {
-			$s .= " <em>(" . wfEscapeHTML( $c ) . ")</em>";
-		}
-
-		# Here was </li>
-		$s .= "<br>\n";
-
-		$xt = $clink ;
-		if ( !isset ( $this->rcc[$xt] ) ) $this->rcc[$xt] = array() ;
-		array_push ( $this->rcc[$xt] , $s ) ;
-		$this->rcchl[$xt] = $this->makeKnownLink( $t, wfMsg( "changes" ), "action=history" );
-		$this->rcco[$xt] = $dlink ;
+		if ( !isset ( $this->rc_cache[$t] ) ) $this->rc_cache[$t] = array() ;
+		array_push ( $this->rc_cache[$t] , $rc ) ;
 		return $ret;
 	}
 
