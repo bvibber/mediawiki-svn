@@ -11,7 +11,9 @@ function searchLineDisplay ( $v ) {
 	while ( substr($v,0,1) == ":" ) $v = substr($v,1) ;
 	while ( substr($v,0,1) == "*" ) $v = substr($v,1) ;
 	while ( substr($v,0,1) == "#" ) $v = substr($v,1) ;
-	$v = eregi_replace ( $search , "'''".$search."'''" , $v ) ;
+	#$v = eregi_replace ( $search , "'''".$search."'''" , $v ) ;
+	$v = eregi_replace ( "(^|\])([^\[]+)($search)", "\\1\\2<b>\\3</b>", $v ) ; # highlight search terms NOT in [[links]]
+	$v = eregi_replace ( "(\[+[^\]]*)($search)([^\[]*\]+)" , "<b>\\1\\2\\3</b>" , $v ) ; # highlight entire links that contain name. Ugly but works for now
 	$v = "<font size=-1>$v</font>" ;
 	return $v ;
 	}
