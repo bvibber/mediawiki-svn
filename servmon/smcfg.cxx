@@ -5,6 +5,7 @@ namespace smcfg {
 
 namespace {
 std::string cfgfile = PFX "/servmon.cfg";
+std::string cfgtemp = cfgfile + ".tmp";
 u_char const tystr = 0;
 u_char const tyint = 1;
 u_char const tybool = 2;
@@ -143,7 +144,7 @@ void
 cfg::wrcfg(void)
 try {
 	std::cerr << "writing cfg\n";
-	int f = open(cfgfile.c_str(), O_CREAT|O_NOFOLLOW|O_TRUNC|O_WRONLY,
+	int f = open(cfgtemp.c_str(), O_CREAT|O_NOFOLLOW|O_TRUNC|O_WRONLY,
 				S_IRUSR|S_IWUSR);
 	if (f < 0) {
 		std::cerr << "warning: could not write config file: " <<
@@ -190,6 +191,13 @@ try {
 	}
 
 	close(f);
+	if (std::remove(cfgfile.c_str()) < 0) {
+		std::cerr << "unlinking cfg: " << std::strerror(errno) << "\n";
+	}
+	if (std::rename(cfgtemp.c_str(), cfgfile.c_str()) < 0) {
+		std::cerr << "renaming cfg: " << std::strerror(errno) << "\n";
+		return;
+	}
 } catch (shrtwr&) {
 	std::cerr << "short write in configuration file\n";
 }

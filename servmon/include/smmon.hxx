@@ -33,7 +33,7 @@ public:
 	
 	bool knowntype(str type);
 	bool server_exists(str serv);
-	void create_server(str serv, str type);
+	void create_server(str serv, str type, bool addconf = true);
 
 	struct server {
 		server(str name_) : name(name_) {}

@@ -182,7 +182,7 @@ cfg::initialise(void)
 	try {
 		std::set<std::string> servers = SMI(smcfg::cfg)->fetchlist("/monit/servers");
 		FE_TC_AS(std::set<std::string>, servers, i) {
-			create_server(*i, SMI(smcfg::cfg)->fetchstr("/monit/server/"+*i+"/type"));
+			create_server(*i, SMI(smcfg::cfg)->fetchstr("/monit/server/"+*i+"/type"), false);
 		}
 	} catch (smcfg::nokey&) {}
 	checker *c = new checker();
@@ -320,7 +320,13 @@ uint32_t
 cfg::mysqlserver::getnumprocesses(void)
 {
 	mysqlclientp client = getconn();
-	mysqlclient::resultset res = client->query("SHOW PROCESSLIST");
+	mysqlclient::resultset res;
+	try {
+		res = client->query("SHOW PROCESSLIST");
+	} catch (mysqlerr& e) {
+		std::cerr << "mysql connection error: " << e.what() << "\n";
+		return 0;
+	}
 	int numproc = 0;
 	for (uint i = 0; i < res.size(); ++i) {
 		if ((res[i]["User"] != "repl" && res[i]["User"] != "system user") && res[i]["Command"] != "Sleep")
@@ -418,14 +424,16 @@ cfg::server_exists(str serv)
 }
 
 void
-cfg::create_server(str serv, str type)
+cfg::create_server(str serv, str type, bool addconf)
 {
 	if (server_exists(serv)) return; /* XXX error? */
 	try {
 		server* s = server_fortype(type, serv);
 		serverlist[serv] = serverp(s);
-		SMI(smcfg::cfg)->addlist("/monit/servers", serv);
-		SMI(smcfg::cfg)->storestr("/monit/server/"+serv+"/type", type);
+		if (addconf) {
+			SMI(smcfg::cfg)->addlist("/monit/servers", serv);
+			SMI(smcfg::cfg)->storestr("/monit/server/"+serv+"/type", type);
+		}
 	} catch (notype&) {
 		/* XXX error? */
 		return;
