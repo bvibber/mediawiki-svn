@@ -267,7 +267,7 @@ class MovePageForm {
 
 	function moveOverExistingRedirect()
 	{
-		global $wgUser;
+		global $wgUser, $wgLinkCache;
 		$fname = "MovePageForm::moveOverExistingRedirect";
 		$mt = wfMsg( "movedto" );
 
@@ -276,6 +276,7 @@ class MovePageForm {
 		  "cur_namespace={$this->nns},cur_title='{$this->ndt}' " .
 		  "WHERE cur_id={$this->oldid}";
 		wfQuery( $sql, $fname );
+		$wgLinkCache->clearLink( $this->nft );
 
 		$sql = "UPDATE cur SET cur_touched='{$now}'," .
 		  "cur_namespace={$this->ons},cur_title='{$this->odt}'," .
@@ -285,6 +286,7 @@ class MovePageForm {
 		  "cur_user_text='" . wfStrencode( $wgUser->getName() ) . "'," .
 		  "cur_is_redirect=1,cur_is_new=0 WHERE cur_id={$this->newid}";
 		wfQuery( $sql, $fname );
+		$wgLinkCache->clearLink( $this->oft );
 
 		$sql = "UPDATE old SET " .
 		  "old_namespace={$this->nns},old_title='{$this->ndt}' WHERE " .
@@ -348,7 +350,7 @@ class MovePageForm {
 		  "cur_namespace={$this->nns},cur_title='{$this->ndt}' " .
 		  "WHERE cur_id={$this->oldid}";
 		wfQuery( $sql, $fname );
-		$wgLinkCache->clearLink( $this->oft );
+		$wgLinkCache->clearLink( $this->nft );
 
 		$common = "{$this->ons},'{$this->odt}'," .
 		  "'{$mt} \\\"{$this->nft}\\\"','" .
@@ -360,7 +362,7 @@ class MovePageForm {
 		  "VALUES ({$common},'{$won}','{$now}','#REDIRECT [[{$this->nft}]]\n',1,1)";
 		wfQuery( $sql, $fname );
 		$this->newid = wfInsertId();
-		$wgLinkCache->clearLink( $this->nft );
+		$wgLinkCache->clearLink( $this->oft );
 
 		$sql = "UPDATE old SET " .
 		  "old_namespace={$this->nns},old_title='{$this->ndt}' WHERE " .
