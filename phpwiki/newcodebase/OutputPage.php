@@ -191,16 +191,22 @@ class OutputPage {
 
 	function reportTime()
 	{
-		global $wgRequestTime;
+		global $wgRequestTime, $wgDebugLogFile, $HTTP_SERVER_VARS;
 
 		list( $usec, $sec ) = explode( " ", microtime() );
 		$now = (float)$sec + (float)$usec;
 
 		list( $usec, $sec ) = explode( " ", $wgRequestTime );
 		$start = (float)$sec + (float)$usec;
+		$elapsed = $now - $start;
 
+		if ( "" != $wgDebugLogFile ) {
+			$log = sprintf( "T\t%01.2f\t%s\n", $elapsed,
+			  $HTTP_SERVER_VARS['REQUEST_URI'] );
+			error_log( $log, 3, $wgDebugLogFile );
+        }
 		$com = sprintf( "<!-- Time since request: %01.2f secs. -->",
-		  $now - $start );
+		  $elapsed );
 		return $com;
 	}
 
