@@ -143,22 +143,29 @@ class Skin {
 	{
 		global $wgUser, $wgOut, $wgTitle;
 
-		$s = "\n<div id='topbar'><table border=0><tr>" .
-		  "<td valign=top align=left>";
+		$s = "\n<div id='topbar'><p><table width='98%' border=0 " .
+		  "cellspacing=0><tr>";
 
-		if ( 0 == $this->qbSetting() ) {
-			$s .= $this->logoText() .
-			  "</td><td align=left valign=top>";
+		$qb = $this->qbSetting();
+		if ( 0 == $qb ) {
+			$s .= "<td class='top' align=left valign=top>" .
+			  $this->logoText() . "</td>";
+		} else if ( 1 == $qb || 3 == $qb ) {
+			$s .= "<td width='152'>&nbsp;</td>";
 		}
+		$s .= "<td class='top' align=left valign=top>";
+
 		$s .= $this->topLinks() . "\n<br>";
 		$s .= $this->pageTitleLinks();
 
-		$s .= "</td>\n<td valign=top align=right width=200 nowrap>";
+		$s .= "</td>\n<td class='top' valign=top align=right width=200 nowrap>";
 		$s .= $this->nameAndLogin();
-		$s .= "\n<br>" . $this->searchForm();
+		$s .= "\n<br>" . $this->searchForm() . "</td>";
 
-		$s .= "</td></tr></table>\n</div>\n";
-
+		if ( 2 == $qb ) {
+			$s .= "<td width='152'>&nbsp;</td>";
+		}
+		$s .= "</tr></table>\n</div>\n";
 		$s .= "\n<div id='article'>";
 
 		$s .= $this->pageTitle();
@@ -186,11 +193,23 @@ class Skin {
 		$s = "\n</div><br clear=all>\n";
 
 		$s .= "\n<div id='footer'>";
-		$s .= $this->bottomLinks();
+		$s .= "<table width='98%' border=0 cellspacing=0><tr>";
 
+		$qb = $this->qbSetting();
+		if ( 1 == $qb || 3 == $qb ) {
+			$s .= "<td width='152'>&nbsp;</td>";
+		}
+		$s .= "<td class='bottom' align=left valign=top>";
+
+		$s .= $this->bottomLinks();
 		$s .= "\n<br>" . $this->pageStats();
 		$s .= "\n<br>" . $this->searchForm();
-		$s .= "\n</div>\n";
+
+		$s .= "</td>";
+		if ( 2 == $qb ) {
+			$s .= "<td width='152'>&nbsp;</td>";
+		}
+		$s .= "</tr></table>\n</div>\n";
 
 		if ( 0 != $this->qbSetting() ) { $s .= $this->quickBar(); }
 		return $s;
@@ -302,15 +321,16 @@ class Skin {
 
 	function bottomLinks()
 	{ 
-		global $wgOut, $wgUploadPath;
+		global $wgOut, $wgUser, $wgUploadPath;
 
-		$s = "<a href=\"http://validator.w3.org/check/referer\">" . 
-		  "<img align=right border=0 height=31 width=88 alt=\"Valid HTML\" " .
-		  "src=\"$wgUploadPath/valid-html401.png\"></a>";
-		$s .= $this->topLinks();
-
+		$s = $this->topLinks();
 		if ( $wgOut->isArticle() ) {
 			$s .= " |\n" . $this->talkLink();
+
+			if ( $wgUser->isSysop() ) {
+				$s .= " |\n" . $this->deleteThisPage() .
+				  " |\n" . $this->protectThisPage();
+			}
 		}
 		$s .= $this->otherLanguages();
 		return $s;
@@ -907,7 +927,7 @@ class Skin {
 
 		$nb = str_replace( "$1", $size, wfMsg( "nbytes" ) );
 		$s = "<li> ({$dlink}) ({$rlink}) <a href=\"{$url}\">{$dt}</a> . . " .
-		  "{$ut} ({$nb})";
+		  "{$ul} ({$nb})";
 
 		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
 		$s .= "</li>\n";

@@ -37,15 +37,11 @@ class SkinStandard extends Skin {
 		if ( 2 == $qb ) { # Right
 			$s .= "#quickbar { position: absolute; top: 4px; right: 4px; " .
 			  "border-left: 2px solid #000000; }\n" .
-			  "#topbar { margin-left: 4px; margin-right: 152px; }\n" .
-			  "#article { margin-left: 4px; margin-right: 152px; }\n" .
-			  "#footer { margin-left: 4px; margin-right: 152px; }\n";
-		} else {
+			  "#article { margin-left: 4px; margin-right: 152px; }\n";
+		} else if ( 1 == $qb || 3 == $qb ) {
 			$s .= "#quickbar { position: absolute; top: 4px; left: 4px; " .
 			  "border-right: 2px solid #000000; }\n" .
-			  "#topbar { margin-left: 152px; margin-right: 4px; }\n" .
-			  "#article { margin-left: 152px; margin-right: 4px; }\n" .
-			  "#footer { margin-left: 152px; margin-right: 4px; }\n";
+			  "#article { margin-left: 152px; margin-right: 4px; }\n";
 		}
 		return $s;
 	}

@@ -4,26 +4,12 @@ p.subtitle { padding-top: 0; margin-top: 0; }
 a { text-decoration: none; }
 a.interwiki, a.external { color: #3333BB; text-decoration: none; }
 
-body {
- margin: 0px;
- padding: 4px;
-}
-#topbar {
- border-bottom: 2px solid #000000;
- padding: 4px;
-}
-#quickbar {
- width: 140px;
- padding: 4px;
- visibility: visible;
- z-index: 99;
-}
-#article {
- padding: 4px;
-}
-#footer {
- border-top: 2px solid #000000;
- padding: 4px;
-}
+body { margin: 0px; padding: 4px; }
+#topbar { padding: 4px; }
+td.top { border-bottom: 2px solid #000000; }
+#quickbar { width: 140px; padding: 4px; visibility: visible; z-index: 99; }
+#article { padding: 4px; }
+#footer { padding: 4px; }
+td.bottom { border-top: 2px solid #000000; }
 a.newlink { color: black; text-decoration: none; }
 .newlinkedge { display: inline; }
