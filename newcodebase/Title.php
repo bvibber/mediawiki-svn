@@ -76,7 +76,7 @@ class Title {
 	{
 		global $wgValidInterwikis;
 
-		if ( key_exists( $key, $wgValidInterwikis ) ) {
+		if ( array_key_exists( $key, $wgValidInterwikis ) ) {
 			return $wgValidInterwikis[$key];
 		} else return "";
 	}
@@ -224,7 +224,7 @@ class Title {
 		} else {
 	 		if ( preg_match( "/^([A-Za-z][A-Za-z0-9 _]*):(.*)$/", $t, $m ) ) {
 				$p = strtolower( $m[1] );
-				if ( key_exists( $p, $wgValidInterwikis ) ) {
+				if ( array_key_exists( $p, $wgValidInterwikis ) ) {
 					$t = $m[2];
 					$this->mInterwiki = $p;
 
