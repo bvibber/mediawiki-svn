@@ -225,14 +225,11 @@ class WikiPage extends WikiTitle {
 
 		$oid = $s->old_id ;
 		setMySQL ( "cur" , "cur_old_version" , $oid , "cur_id=$id" ) ;
-
-#		Deactivated on behalf of Brion Vibber
-#		mysql_close ( $connection ) ;
 		}
 
 	# This function stores the passed parameters into the database (the "cur" table)
 	# The target data set is defined by $this->secureTitle
-	function setEntry ( $text , $comment , $userID , $userName , $minorEdit ) {
+	function setEntry ( $text , $comment , $userID , $userName , $minorEdit , $addSQL = "" ) {
 		$cond = "cur_title=\"$this->secureTitle\"" ;
 
 		global $linkedLinks , $unlinkedLinks ;
@@ -250,7 +247,7 @@ class WikiPage extends WikiTitle {
 		$comment = htmlentities ( $comment ) ;
 		$sql = "UPDATE cur SET cur_text=\"$text\",cur_comment=\"$comment\",cur_user=\"$userID\"," ;
 		$sql .= "cur_user_text=\"$userName\",cur_minor_edit=\"$minorEdit\",";
-		$sql .= "cur_linked_links=\"$ll\",cur_unlinked_links=\"$ull\",cur_params=\"$pa\" WHERE $cond" ;
+		$sql .= "cur_linked_links=\"$ll\",cur_unlinked_links=\"$ull\",cur_params=\"$pa\"$addSQL WHERE $cond" ;
 		$r = mysql_query ( $sql , $connection ) ;
 		mysql_close ( $connection ) ;
 		}
@@ -398,7 +395,7 @@ class WikiPage extends WikiTitle {
 			$sql="SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%:%\" AND cur_title NOT LIKE \"%ikipedia%\" AND cur_text LIKE \"%,%\"";
 			$result = mysql_query ( $sql , $connection ) ;
 			$var = mysql_fetch_object ( $result ) ;
-			$var = $var->number ;
+			$var = number_format ( $var->number , 0 ) ;
 			mysql_free_result ( $result ) ;
 			mysql_close ( $connection ) ;
 			$s = str_replace ( "{{NUMBEROFARTICLES}}" , $var , $s ) ;
