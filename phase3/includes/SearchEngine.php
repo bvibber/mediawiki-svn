@@ -374,6 +374,7 @@ class SearchEngine {
 	function goResult()
 	{
 		global $wgOut, $wgArticle, $wgTitle;
+		global $wgDisableTextSearch;
 		$fname = "SearchEngine::goResult";
 		
 		$search		= $_REQUEST['search'];
@@ -414,20 +415,22 @@ class SearchEngine {
 
 		# Try a near match
 		#
-		$this->parseQuery();										
-		$sql = "SELECT cur_id,cur_title,cur_namespace,si_page FROM cur,searchindex " .
-		  "WHERE cur_id=si_page AND {$this->mTitlecond} ORDER BY cur_namespace LIMIT 1";
-
-		if ( "" != $this->mTitlecond ) {
-			$res = wfQuery( $sql, $fname );
-		} 				
-		if ( isset( $res ) && 0 != wfNumRows( $res ) ) {
-	 		$s = wfFetchObject( $res );
-
-			$wgTitle = Title::newFromDBkey( $s->cur_title );
-			$wgTitle->setNamespace( $s->cur_namespace );
-			$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL() ) );
-			return;
+		if( !$wgDisableTextSearch ) {
+			$this->parseQuery();										
+			$sql = "SELECT cur_id,cur_title,cur_namespace,si_page FROM cur,searchindex " .
+			  "WHERE cur_id=si_page AND {$this->mTitlecond} ORDER BY cur_namespace LIMIT 1";
+	
+			if ( "" != $this->mTitlecond ) {
+				$res = wfQuery( $sql, $fname );
+			} 				
+			if ( isset( $res ) && 0 != wfNumRows( $res ) ) {
+		 		$s = wfFetchObject( $res );
+	
+				$wgTitle = Title::newFromDBkey( $s->cur_title );
+				$wgTitle->setNamespace( $s->cur_namespace );
+				$wgOut->redirect( wfLocalUrl( $wgTitle->getPrefixedURL() ) );
+				return;
+			}
 		}
 		$wgOut->addHTML( wfMsg("nogomatch", 
 		  htmlspecialchars( wfLocalUrl( ucfirst($this->mUsertext), "action=edit") ) )
