@@ -52,7 +52,7 @@ class SqlQueryForm {
 
 	function doSubmit()
 	{
-		global $wgOut, $wgUser, $wgServer, $wgScript;
+		global $wgOut, $wgUser, $wgServer, $wgScript, $wgArticlePath;
 		global $wpSqlQuery;
 
 		if ( ! $wgUser->isDeveloper() ) {
@@ -85,7 +85,12 @@ class SqlQueryForm {
 			foreach ( $a as $y ) {
 				$r .= "<tr>";
 				foreach ( $k as $x ) {
-					$r .= "<td>" . $y->$x . "</td>\n";
+					$o = $y->$x ;
+					if ( $x == "cur_title" or $x == "old_title" ) {
+						$o = str_replace ( "$1" , $o , $wgArticlePath ) ;
+						$o = "<a href=\"{$o}\" class='internal'>{$y->$x}</a>" ;
+						}
+					$r .= "<td>" . $o . "</td>\n";
 				}
 				$r .= "</tr>\n";
 			}
