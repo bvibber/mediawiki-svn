@@ -1,5 +1,6 @@
-<?
+<?php
 require_once ( "geo_functions.php" ) ;
+include_once ( "geosettings.php" ) ;
 
 # geo paramater class
 # this class is used for parameter storage, data access and caching, etc.
@@ -106,11 +107,16 @@ class geo_params
 		return $svg ;
 		}
 
-	# One can set a previx for all article names,, e.g., a "Geo:" namespace
+	# One can set a prefix for all article names,, e.g., a "Geo:" namespace
 	# This function turns the object id into the actual article name
 	# NOT USED ON WIKIMAPS
 	function get_article_name ( $id )
 		{
+		# *EK* hack: Allow Geo: prefix for includes
+		if (substr( $id, 0, strlen ($this->article_prefix))
+					== strtolower($this->article_prefix)) {
+			return $id ;  /* prefix already in place */
+		}
 		return $this->article_prefix . $id ;
 		}
 
@@ -126,12 +132,12 @@ class geo_params
 	# *Much* slower than the function above
 	function read_from_url ( $id )
 		{
-		$index = "http://127.0.0.1/phase3/index.php" ;
-		$filename = "{$index}?title=" . $this->get_article_name ( $id ) . "&action=raw" ;
+		global $wikibaseurl;
+		$filename = $wikibaseurl."?title=" . $this->get_article_name ( $id ) . "&action=raw" ;
 		$handle = fopen($filename, "r");
 		$contents = '';
 		while (!feof($handle))
-			$contents .= fread($handle, 8192);
+			$contents .= fread($handle, 8192); # FIXME: hard limit
 		fclose($handle);
 		return $contents ;
 		}
@@ -139,6 +145,35 @@ class geo_params
 	# This reads the data and manages the cache
 	function get_raw_text ( $id )
 		{
+		#
+		# *EK* hack: allow GIS content to be embedded
+		# NOTE: this is a temporary hack for testing, needs
+		#       to b replaced with something more elegant
+		#
+		if (substr($id,0,4) == "gis:") {
+			global $gisbasedir;
+			if ( isset ( $gisbasedir ) )
+				{
+				$arg = substr($id,4);
+
+				$m = new maparea( $arg );
+				return $m->make_output();
+				}
+			global $gisbaseurl;
+			if ( isset ( $gisbaseurl ) )
+				{
+				$filename = $gisbaseurl."?maparea=" . $arg. "&action=raw" ;
+				$handle = fopen($filename, "r");
+				$contents = '';
+				# *EK* Î couldn't get this to work...
+				while (!feof($handle))
+					$contents .= fread($handle, 256*1024);
+				fclose($handle);
+				return $contents ;
+			}
+			return '';
+		}
+
 		if ( MEDIAWIKI ) # Direct connection to mediawiki database via Article/Title class
 			$contents = $this->read_from_article ( $id ) ;
 		else # Over-the-net connection via URL "&action=raw", much slower
@@ -552,38 +587,72 @@ class geo
 		}
 	
 	# The "main" drawing routine
-	function draw ( &$params )
-		{
+	function draw ( &$params ) {
 		array_push ( $params->object_tree , $this->id ) ;
 		$ret = "" ;
 		$this->xsum = $this->ysum = $this->count = 0 ;
 		$match = $this->get_specs ( "region" , array ( "political" ) ) ;
 		
-		if ( $this->draw_this ( $params ) AND $this->get_current_type ( $params ) == "city" )
-			{
-			$b = $this->get_data ( $params ) ;
-			$b = $b[0] ; # Only one point for cities...
-			if ( isset ( $this->data['magnitude'][0] ) ) $r = floor ( trim ( $this->data['magnitude'][0] ) ) * 100 ;
-			else $r = 300 ;
-			$params->later_objects[] = "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"red\" style=\"fill-opacity:0.5\"/>\n" ;
-#			$ret .= "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"red\" style=\"fill-opacity:0.5\"/>\n" ;
-			$this->add_label ( $b[0] , $b[1] , $params ) ;
+		if ( $this->draw_this ( $params )) {
+			$t = $this->get_current_type ( $params );
+			if ($t == "city" ) {
+				$b = $this->get_data ( $params ) ;
+				$b = $b[0] ; # Only one point for cities...
+				if ( isset ( $this->data['magnitude'][0] ) ) $r = floor ( trim ( $this->data['magnitude'][0] ) ) * 200 ;
+				else $r = 200 ;  # default to magnitude 1
+				$params->later_objects[] = "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"red\" style=\"fill-opacity:0.5\"/>\n" ;
+#                                                  $ret .= "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"red\" style=\"fill-opacity:0.5\"/>\n" ;
+				$this->add_label ( $b[0] , $b[1] , $params ) ;
+			} else if ($t == "adm1st" or $t == "adm2nd" ) {
+				$b = $this->get_data ( $params ) ;
+				$b = $b[0] ; # One point...
+				# no point marked for these sites
+				$this->add_label ( $b[0] , $b[1] , $params ) ;
+			} else if ($t == "landmark" ) {
+				$b = $this->get_data ( $params ) ;
+				$b = $b[0] ; # One point...
+				$r = 200 ;
+				$params->later_objects[] = "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"yellow\" style=\"fill-opacity:0.5\"/>\n" ;
+				$this->add_label ( $b[0] , $b[1] , $params ) ;
+			} else if ($t == "airport" ) {
+				$b = $this->get_data ( $params ) ;
+				$b = $b[0] ; # One point...
+				$r = 200 ;
+				$params->later_objects[] = "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"orange\" style=\"fill-opacity:0.5\"/>\n" ;
+				$this->add_label ( $b[0] , $b[1] , $params ) ;
+			} else if ($t == "mountain" ) {
+				$b = $this->get_data ( $params ) ;
+				$b = $b[0] ; # One point...
+				$r = 300 ;
+				$params->later_objects[] = "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"brown\" style=\"fill-opacity:0.5\"/>\n" ;
+				$this->add_label ( $b[0] , $b[1] , $params ) ;
+			} else if ($t == "unknown" ) {
+				$b = $this->get_data ( $params ) ;
+				$b = $b[0] ; # One point...
+				$r = 200 ;
+				$params->later_objects[] = "<circle cx=\"{$b[0]}\" cy=\"{$b[1]}\" r=\"{$r}\" fill=\"green\" style=\"fill-opacity:0.5\"/>\n" ;
+				$this->add_label ( $b[0] , $b[1] , $params ) ;
+			} else {
+				/* assume anything else is polygons... */
+				if ( $match != "" ) {
+					$a = $this->data[$match] ;
+					foreach ( $a AS $line )
+						$ret .= $this->draw_line ( $line , $params ) ;
+				}
 			}
-		else if ( $match != "" )
-			{
+		} else if ( $match != "" ) {
 			$a = $this->data[$match] ;
 			foreach ( $a AS $line )
 				$ret .= $this->draw_line ( $line , $params ) ;
-			}
-		if ( $this->count > 0 )
-			{
+		}
+		if ( $this->count > 0 ) {
 			$x = $this->xsum / $this->count ;
 			$y = $this->ysum / $this->count ;
 			$this->add_label ( $x , $y , $params ) ;
-			}
+		}
 		array_pop ( $params->object_tree ) ;
 		return $ret ;
-		}
+	}
 
 	# Determines if this object should actually be drawn
 	function draw_this ( &$params )

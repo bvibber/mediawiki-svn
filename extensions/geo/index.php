@@ -8,6 +8,11 @@ if ( isset ( $wikibasedir ) )
 	require_once( "{$wikibasedir}/includes/Defines.php" );
 	require_once( "{$wikibasedir}/LocalSettings.php" );
 	require_once( "{$wikibasedir}/includes/Setup.php" );
+
+	if ( isset ( $gisbasedir ) )
+		{
+		require_once ( "{$gisbasedir}/maparea.php" ) ;
+		}
 	}
 	
 require_once( "geo.php");
@@ -17,9 +22,9 @@ $p = new geo_params ;
 
 # Default parameters (for command line testing only)
 $params = "
-show:south_america
-draw:south_america,brazil
-style:south_america,brazil=fill:brown
+show:andorra
+draw:andorra
+style:andorra=fill:brown
 " ;
 
 /*

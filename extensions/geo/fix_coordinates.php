@@ -2,11 +2,13 @@
 
 # This file is only needed temporarily and will be deleted
 require_once ( "geo_functions.php" ) ;
+include_once ( "geosettings.php" ) ;
 
 function read_from_url ( $id )
 	{
-	$index = "http://127.0.0.1/phase3/index.php" ;
-	$filename = "{$index}?title=Geo:{$id}&action=raw" ;
+	global $wikibaseurl;
+	global $articlePrefix;
+	$filename = $wikibaseurl."?title=".$articlePrefix.$id."&action=raw" ;
 	$handle = fopen($filename, "r");
 	$contents = '';
 	while (!feof($handle))
