@@ -315,7 +315,7 @@ void processdata(connection *c) {
       ltw = strlen(rtw);
       lhk = strlen(rhk);
       lsg = strlen(rsg);
-      sprintf(info, "ZH-CN %d; ZH-TW %d; ZH-HK %d; ZH-SG %d|",
+      sprintf(info, "ZH-CN %d;ZH-TW %d;ZH-HK %d;ZH-SG %d|",
 	      lcn, ltw, lhk, lsg);
       result = (unsigned char *)malloc(sizeof(unsigned char) * 
 				       (lcn + ltw + lhk + lsg + strlen(info)+1));
