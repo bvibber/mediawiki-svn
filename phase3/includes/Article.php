@@ -889,7 +889,7 @@ class Article {
 		global $wgOut, $wgUser, $wgLinkCache;
 		global $wgDBtransactions, $wgMwRedir;
 		global $wgUseSquid, $wgInternalServer;
-		global $wgIsPg, $wgUseHashTable;
+		global $wgIsPg, $wgUseHashTable, $wgCompressRevisions;
 		$fname = 'Article::updateArticle';
 
 		if ( $this->mMinorEdit ) { $me1 = 1; } else { $me1 = 0; }
@@ -964,10 +964,11 @@ class Article {
 
 			# insert the hash for the old article
 			if ($wgUseHashTable) {
+				$nogzoldtext = $wgCompressRevisions ? gzinflate( $oldtext ) : $oldtext;
 				$sql = "INSERT INTO hashs (hs_nstitle, hs_timestamp, hs_old_id, hs_user_text, hs_hash) " .
 					"VALUES (md5(concat(".$this->mTitle->getNamespace().",'+','".wfStrencode( $this->mTitle->getDBkey() ).
 					"')),'".$this->getTimestamp()."',$oldid,'".wfStrencode( $this->getUserText() )."','".
-					md5( $oldtext ) . "')";
+					md5( $nogzoldtext ) . "')";
 				wfQuery( $sql, DB_WRITE, $fname );
 			}
 
