@@ -415,7 +415,7 @@ function indexTitle( $in )
 {
 	$lc = "A-Za-z_'0-9&#;\\x90-\\xFF\\-";
 	$t = preg_replace( "/[^{$lc}]+/", " ", $in );
-	$t = preg_replace( "/\\b[{$lc}][{$lc}]\\b/", " ", $t );
+#	$t = preg_replace( "/\\b[{$lc}][{$lc}]\\b/", " ", $t );
 	$t = preg_replace( "/\\b[{$lc}]\\b/", " ", $t );
 	$t = preg_replace( "/\\s+/", " ", $t );
 	return $t;
@@ -459,8 +459,8 @@ function indexText( $text, $ititle )
 	$text = preg_replace( "/''[']*/", " ", $text );
 
 	# Strip 1- and 2-letter words
-	$text = preg_replace( "/\\s[{$lc}][{$lc}]\\s/", " ", $text );
-	$text = preg_replace( "/\\s[{$lc}][{$lc}]\\s/", " ", $text );
+#	$text = preg_replace( "/\\s[{$lc}][{$lc}]\\s/", " ", $text );
+#	$text = preg_replace( "/\\s[{$lc}][{$lc}]\\s/", " ", $text );
 	$text = preg_replace( "/\\s[{$lc}]\\s/", " ", $text );
 	$text = preg_replace( "/\\s[{$lc}]\\s/", " ", $text );
 
