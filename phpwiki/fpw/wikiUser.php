@@ -56,7 +56,7 @@ class WikiUser {
 	$this->skinBlank() ;
         $this->options["background"] = "#FFFFFF" ;
         $this->options["text"] = "#000000" ;
-#        $this->options["forceQuickBar"] = "none" ;
+        $this->options["forceQuickBar"] = "none" ;
 #        $this->options["quickBarBackground"] = " bgcolor=yellow " ;
 #        $this->options["textTableBackground"] = " bgcolor=\"#444444\"" ;
 #        $this->options["forceLinks"] = " style=\"color:#0000FF;text-decoration:none\" " ;
@@ -74,6 +74,7 @@ class WikiUser {
         $ret .= "body { ";
         $textcolor = $this->options[text];
         $bgcolor = $this->options[background];
+	if ( $this->options["skin"] == "Nostalgy" ) $namespaceBackground = "" ;
         if ( $namespaceBackground != "" ) $bgcolor = $namespaceBackground ;
         if ( $textcolor == "" )
             $textcolor = "black"; # For un-coloring links. Should be "inherit" but Netscape 4.x messes it up
