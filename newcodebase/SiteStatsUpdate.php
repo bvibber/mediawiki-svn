@@ -31,10 +31,9 @@ class SiteStatsUpdate {
 		else $m = "";
 		array_push( $a, "ss_good_articles=(ss_good_articles$m)" );
 
-		$conn = wfGetDB();
 		$sql = "UPDATE site_stats SET " . implode ( ",", $a ) .
 		  " WHERE ss_row_id=1";
-		wfQuery( $sql, $conn, "SiteStatsUpdate::doUpdate" );
+		wfQuery( $sql, "SiteStatsUpdate::doUpdate" );
 	}
 }
 

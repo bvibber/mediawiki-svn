@@ -22,17 +22,16 @@ class Article {
 		global $wgOut, $wgTitle, $wgArticle;
 		$a = new Article();
 
-		$conn = wfGetDB();
 		$sql = "SELECT cur_namespace,cur_title FROM cur WHERE " .
 		  "cur_id={$newid}";
-		$res = wfQuery( $sql, $conn, "Article::newFromID" );
-		if ( 0 == mysql_num_rows( $res ) ) { return NULL; }
+		$res = wfQuery( $sql, "Article::newFromID" );
+		if ( 0 == wfNumRows( $res ) ) { return NULL; }
 
-		$s = mysql_fetch_object( $res );
+		$s = wfFetchObject( $res );
 		$wgTitle = Title::newFromDBkey( Title::makeName( $s->cur_namespace,
 		  $s->cur_title ) );
 		$wgTitle->resetArticleID( $newid );
-		mysql_free_result( $res );
+		wfFreeResult( $res );
 
 		return $a;
 	}
@@ -67,13 +66,12 @@ class Article {
 			$id = $this->getID();
 			if ( 0 == $id ) return;
 
-			$conn = wfGetDB();
 			$sql = "SELECT cur_text,cur_timestamp,cur_user,cur_counter " .
 			  "FROM cur WHERE cur_id={$id}";
-			$res = wfQuery( $sql, $conn, $fname );
-			if ( 0 == mysql_num_rows( $res ) ) { return; }
+			$res = wfQuery( $sql, $fname );
+			if ( 0 == wfNumRows( $res ) ) { return; }
 
-			$s = mysql_fetch_object( $res );
+			$s = wfFetchObject( $res );
 			if ( ( "no" != $redirect ) &&
 			  ( preg_match( "/^#redirect/i", $s->cur_text ) ) ) {
 				if ( preg_match( "/\\[\\[([^\\]\\|]+)[\\]\\|]/",
@@ -81,15 +79,14 @@ class Article {
 					$rt = Title::newFromText( $m[1] );
 					$rid = $rt->getArticleID();
 					if ( 0 != $rid ) {
-						$conn = wfGetDB();
 						$sql = "SELECT cur_text,cur_timestamp,cur_user," .
 						  "cur_counter FROM cur WHERE cur_id={$rid}";
-						$res = wfQuery( $sql, $conn, $fname );
+						$res = wfQuery( $sql, $fname );
 
-						if ( 0 != mysql_num_rows( $res ) ) {
+						if ( 0 != wfNumRows( $res ) ) {
 							$this->mRedirectedFrom = $wgTitle->getPrefixedText();
 							$wgTitle = $rt;
-							$s = mysql_fetch_object( $res );
+							$s = wfFetchObject( $res );
 						}
 					}
 				}
@@ -98,20 +95,19 @@ class Article {
 			$this->mUser = $s->cur_user;
 			$this->mCounter = $s->cur_counter;
 			$this->mTimestamp = $s->cur_timestamp;
-			mysql_free_result( $res );
+			wfFreeResult( $res );
 		} else {
-			$conn = wfGetDB();
 			$sql = "SELECT old_text,old_timestamp,old_user FROM old " .
 			  "WHERE old_id={$oldid}";
-			$res = wfQuery( $sql, $conn, $fname );
-			if ( 0 == mysql_num_rows( $res ) ) { return; }
+			$res = wfQuery( $sql, $fname );
+			if ( 0 == wfNumRows( $res ) ) { return; }
 
-			$s = mysql_fetch_object( $res );
+			$s = wfFetchObject( $res );
 			$this->mContent = $s->old_text;
 			$this->mUser = $s->old_user;
 			$this->mCounter = 0;
 			$this->mTimestamp = $s->old_timestamp;
-			mysql_free_result( $res );
+			wfFreeResult( $res );
 		}
 		$this->mContentLoaded = true;
 	}
@@ -132,14 +128,13 @@ class Article {
 		global $wgOut;
 		if ( -1 != $this->mUser ) return;
 
-		$conn = wfGetDB();
 		$sql = "SELECT cur_user,cur_user_text,cur_timestamp," .
 		  "cur_comment,cur_minor_edit FROM cur WHERE " .
 		  "cur_id=" . $this->getID();
-		$res = wfQuery( $sql, $conn, "Article::loadLastEdit" );
+		$res = wfQuery( $sql, "Article::loadLastEdit" );
 
-		if ( mysql_num_rows( $res ) > 0 ) {
-			$s = mysql_fetch_object( $res );
+		if ( wfNumRows( $res ) > 0 ) {
+			$s = wfFetchObject( $res );
 			$this->mUser = $s->cur_user;
 			$this->mUserText = $s->cur_user_text;
 			$this->mTimestamp = $s->cur_timestamp;
@@ -364,7 +359,6 @@ $wpTextbox2
 		if ( preg_match( "/^#redirect/i", $text ) ) { $redir = 1; }
 		else { $redir = 0; }
 
-		$conn = wfGetDB();
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
 		  "cur_restrictions,cur_ind_title,cur_user_text,cur_is_redirect) " .
@@ -375,9 +369,9 @@ $wpTextbox2
 		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
 		  wfStrencode( wfStripForSearch( $wgTitle->getPrefixedText() ) ) .
 		  "', '" . wfStrencode( $wgUser->getName() ) . "', $redir)";
-		$res = wfQuery( $sql, $conn, "Article::insertNewArticle" );
+		$res = wfQuery( $sql, "Article::insertNewArticle" );
 
-		$newid = mysql_insert_id( $conn );
+		$newid = wfInsertId();
 		$wgTitle->resetArticleID( $newid );
 
 		$this->showArticle( $text, wfMsg( "newarticle" ) );
@@ -397,7 +391,6 @@ $wpTextbox2
 		$text = $this->preSaveTransform( $text );
 
 		if ( 0 != strcmp( $text, $this->getContent() ) ) {
-			$conn = wfGetDB();
 			$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
 			  "old_comment,old_user,old_user_text,old_timestamp," .
 			  "old_minor_edit) VALUES (" .
@@ -408,9 +401,8 @@ $wpTextbox2
 			  $this->getUser() . ", '" .
 			  wfStrencode( $this->getUserText() ) . "', '" .
 			  $this->getTimestamp() . "', " . $me1 . ")";
-			$res = wfQuery( $sql, $conn, $fname );
+			$res = wfQuery( $sql, $fname );
 
-			$conn = wfGetDB();
 			$sql = "UPDATE cur SET cur_text='" .  wfStrencode( $text ) .
 			  "',cur_comment='" .  wfStrencode( $summary ) .
 			  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
@@ -418,7 +410,7 @@ $wpTextbox2
 			  "',cur_user_text='" . wfStrencode( $wgUser->getName() ) .
 			  "',cur_is_redirect={$redir} " .
 			  "WHERE cur_id=" . $this->getID();
-			$res = wfQuery( $sql, $conn, $fname );
+			$res = wfQuery( $sql, $fname );
 		}
 		$this->showArticle( $text, wfMsg( "updated" ) );
 	}
@@ -440,28 +432,26 @@ $wpTextbox2
 		global $wgUser, $wgOut, $wgLang, $wgTitle;
 		$fname = "Article::imageHistory";
 
-		$conn = wfGetDB();
 		$sql = "SELECT img_size,img_description,img_user," .
 		  "img_user_text,img_timestamp FROM image WHERE " .
 		  "img_name='" . wfStrencode( $wgTitle->getDBkey() ) . "'";
-		$res = wfQuery( $sql, $conn, $fname );
+		$res = wfQuery( $sql, $fname );
 
 		$sk = $wgUser->getSkin();
 		$s = $sk->beginImageHistoryList();		
 
-		$line = mysql_fetch_object( $res );
+		$line = wfFetchObject( $res );
 		$s .= $sk->imageHistoryLine( true, $line->img_timestamp,
 		  $wgTitle->getText(),  $line->img_user,
 		  $line->img_user_text, $line->img_size, $line->img_description );
 
-		$conn = wfGetDB();
 		$sql = "SELECT oi_size,oi_description,oi_user," .
 		  "oi_user_text,oi_timestamp,oi_archive_name FROM oldimage WHERE " .
 		  "oi_name='" . wfStrencode( $wgTitle->getDBkey() ) . "' " .
 		  "ORDER BY oi_timestamp DESC";
-		$res = wfQuery( $sql, $conn, $fname );
+		$res = wfQuery( $sql, $fname );
 
-		while ( $line = mysql_fetch_object( $res ) ) {
+		while ( $line = wfFetchObject( $res ) ) {
 			$s .= $sk->imageHistoryLine( false, $line->oi_timestamp,
 			  $line->oi_archive_name, $line->oi_user,
 			  $line->oi_user_text, $line->oi_size, $line->oi_description );
@@ -476,19 +466,18 @@ $wpTextbox2
 
 		$wgOut->addHTML( "<h2>" . wfMsg( "imagelinks" ) . "</h2>\n" );
 
-		$conn = wfGetDB();
 		$sql = "SELECT il_from FROM imagelinks WHERE il_to='" .
 		  wfStrencode( $wgTitle->getDBkey() ) . "'";
-		$res = wfQuery( $sql, $conn, "Article::imageLinks" );
+		$res = wfQuery( $sql, "Article::imageLinks" );
 
-		if ( 0 == mysql_num_rows( $res ) ) {
+		if ( 0 == wfNumRows( $res ) ) {
 			$wgOut->addHtml( "<p>" . wfMsg( "nolinkstoimage" ) . "\n" );
 			return;
 		}
 		$wgOut->addHTML( "<p>" . wfMsg( "linkstoimage" ) .  "\n<ul>" );
 
 		$sk = $wgUser->getSkin();
-		while ( $s = mysql_fetch_object( $res ) ) {
+		while ( $s = wfFetchObject( $res ) ) {
 			$name = $s->il_from;
 			$link = $sk->makeKnownLink( $name, "" );
 			$wgOut->addHTML( "<li>{$link}</li>\n" );
@@ -510,15 +499,14 @@ $wpTextbox2
 		$wgOut->setSubtitle( wfMsg( "revhistory" ) );
 		$wgOut->setArticleFlag( false );
 
-		$conn = wfGetDB();
 		$sql = "SELECT old_id,old_namespace,old_title,old_user," .
 		  "old_comment,old_user_text,old_timestamp,old_minor_edit FROM old " .
 		  "WHERE old_namespace=" . $wgTitle->getNamespace() . " AND " .
 		  "old_title='" . wfStrencode( $wgTitle->getDBkey() ) . "' " .
 		  "ORDER BY old_timestamp DESC";
-		$res = wfQuery( $sql, $conn, "Article::history" );
+		$res = wfQuery( $sql, "Article::history" );
 
-		$revs = mysql_num_rows( $res );
+		$revs = wfNumRows( $res );
 		$sk = $wgUser->getSkin();
 		$s = $sk->beginHistoryList();		
 
@@ -528,7 +516,7 @@ $wpTextbox2
 		  ( $this->getMinorEdit() > 0 ) );
 
 		while ( $revs ) {
-			$line = mysql_fetch_object( $res );
+			$line = wfFetchObject( $res );
 
 			$s .= $sk->historyLine( $line->old_timestamp, $line->old_user,
 			  $line->old_user_text, $line->old_namespace,
@@ -598,23 +586,20 @@ $wpTextbox2
 				$wgOut->fileDeleteError( "{$dest}/{$image}" );
 				return;
 			}
-			$conn = wfGetDB();
 			$sql = "DELETE FROM image WHERE img_name='" .
 			  wfStrencode( $image ) . "'";
-			wfQuery( $sql, $conn, $fname );
+			wfQuery( $sql, $fname );
 
-			$conn = wfGetDB();
 			$sql = "SELECT oi_archive_name FROM oldimage WHERE oi_name='" .
 			  wfStrencode( $image ) . "'";
-			$res = wfQuery( $sql, $conn, $fname );
+			$res = wfQuery( $sql, $fname );
 
-			while ( $s = mysql_fetch_object( $res ) ) {
+			while ( $s = wfFetchObject( $res ) ) {
 				$this->doDeleteOldImage( $s->oi_archive_name );
 			}	
-			$conn = wfGetDB();
 			$sql = "DELETE FROM oldimage WHERE oi_name='" .
 			  wfStrencode( $image ) . "'";
-			wfQuery( $sql, $conn, $fname );
+			wfQuery( $sql, $fname );
 
 			$nt = Title::newFromText( "Image:{$image}" );
 			$this->doDeleteArticle( $nt );
@@ -622,10 +607,9 @@ $wpTextbox2
 			$deleted = $image;
 		} else if ( $oldimage ) {
 			$this->doDeleteOldImage( $oldimage );
-			$conn = wfGetDB();
 			$sql = "DELETE FROM oldimage WHERE oi_archive_name='" .
 			  wfStrencode( $oldimage ) . "'";
-			wfQuery( $sql, $conn, $fname );
+			wfQuery( $sql, $fname );
 
 			$deleted = $oldimage;
 		} else {
@@ -655,26 +639,23 @@ $wpTextbox2
 		$ns = $title->getNamespace();
 		$t = wfStrencode( $title->getDBkey() );
 
-		$conn = wfGetDB();
 		$sql = "DELETE FROM cur WHERE cur_namespace={$ns} AND " .
 		  "cur_title='{$t}'";
-		wfQuery( $sql, $conn, $fname );
+		wfQuery( $sql, $fname );
 
-		$conn = wfGetDB();
 		$sql = "DELETE FROM old WHERE old_namespace={$ns} AND " .
 		  "old_title='{$t}'";
-		wfQuery( $sql, $conn, $fname );
+		wfQuery( $sql, $fname );
 
-		$conn = wfGetDB();
 		$sql = "SELECT cur_id,cur_text FROM cur WHERE cur_namespace=" .
 		  Namespace::getIndex( "Wikipedia" ) . " AND cur_title='" .
 		  "Article_deletion_log'";
-		$res = wfQuery( $sql, $conn, $fname );
+		$res = wfQuery( $sql, $fname );
 
-		if ( 0 == mysql_num_rows( $res ) ) {
+		if ( 0 == wfNumRows( $res ) ) {
 			# Error: need Article deletion log article
 		}
-		$s = mysql_fetch_object( $res );
+		$s = wfFetchObject( $res );
 		$text = $s->cur_text;
 		$id = $s->cur_id;
 
@@ -690,11 +671,10 @@ $wpTextbox2
 
 		$text = "{$m[1]}<ul><li>{$d} {$ul} {$da}</li>\n{$m[2]}";
 
-		$conn = wfGetDB();
 		$sql = "UPDATE cur SET cur_timestamp='" . date( "YmdHis" ) .
 		  "', cur_text='" . wfStrencode( trim( $text ) ) . "' " .
 		  "WHERE cur_id={$id}";
-		wfQuery( $sql, $conn, $fname );
+		wfQuery( $sql, $fname );
 	}
 
 	function revert()

@@ -6,20 +6,19 @@ function wfSpecialAllpages()
 
 	set_time_limit( 600 ); # 10 minutes ought to be plenty
 
-	$conn = wfGetDB();
 	$sql = "SELECT cur_namespace,cur_title FROM cur ORDER BY " .
 	  "cur_namespace,cur_title";
-	$res = wfQuery( $sql, $conn, "wfSpecialAllpages" );
+	$res = wfQuery( $sql, "wfSpecialAllpages" );
 
 	$wgOut->addHTML( wfMsg( "allpagestext" ) . "\n<p>" );
 
 	$sk = $wgUser->getSkin();
-	while ( $s = mysql_fetch_object( $res ) ) {
+	while ( $s = wfFetchObject( $res ) ) {
 		$l = $sk->makeKnownLink( Title::makeName( $s->cur_namespace,
 		  $s->cur_title ), "" );
 		$wgOut->addHTML( "{$l}<br>\n" );
 	}
-	mysql_free_result( $res );
+	wfFreeResult( $res );
 }
 
 ?>

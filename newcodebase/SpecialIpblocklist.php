@@ -69,9 +69,8 @@ class IPUnblockForm {
 			$this->showForm( wfMsg( "badipaddress" ) );
 			return;
 		}
-		$conn = wfGetDB();
 		$sql = "DELETE FROM ipblocks WHERE ipb_address='{$wpUnblockAddress}'";
-		wfQuery( $sql, $conn, $fname );
+		wfQuery( $sql, $fname );
 
 		$success = "$wgServer$wgScript?title=Special%3AIpblocklist" .
 		  "&action=success&ip={$wpUnblockAddress}";
@@ -87,14 +86,13 @@ class IPUnblockForm {
 		if ( "" != $msg ) {
 			$wgOut->setSubtitle( $msg );
 		}
-		$conn = wfGetDB();
 		$sql = "SELECT ipb_timestamp,ipb_address,ipb_user,ipb_by,ipb_reason " .
 		  "FROM ipblocks ORDER BY ipb_timestamp";
-		$res = wfQuery( $sql, $conn, "IPUnblockForm::showList" );
+		$res = wfQuery( $sql, "IPUnblockForm::showList" );
 
 		$wgOut->addHTML( "<ul>" );
 		$sk = $wgUser->getSkin();
-		while ( $row = mysql_fetch_object( $res ) ) {
+		while ( $row = wfFetchObject( $res ) ) {
 			$name = User::whoIs( $row->ipb_by );
 			$ulink = $sk->makeKnownLink( "User:{$name}", $name );
 			$d = $wgLang->timeanddate( $row->ipb_timestamp );
@@ -117,6 +115,7 @@ class IPUnblockForm {
 			}
 			$wgOut->addHTML( "</li>\n" );
 		}
+		wfFreeResult( $res );
 		$wgOut->addHTML( "</ul>\n" );
 	}
 }

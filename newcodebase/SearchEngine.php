@@ -16,6 +16,7 @@ class SearchEngine {
 		global $wgUser, $wgTitle, $wgOut, $wgLang;
 		global $wgServer, $wgScript;
 		global $offset, $limit;
+		$fname = "SearchEngine::showResults";
 
 		$wgOut->setPageTitle( wfMsg( "searchresults" ) );
 		$q = str_replace( "$1", $this->mUsertext,
@@ -35,19 +36,17 @@ class SearchEngine {
 		}
 		if ( ! $offset ) { $offset = 0; }
 
-		$conn = wfGetDB();
 		$sql = "SELECT cur_id,cur_namespace,cur_title," .
 		  "cur_text FROM cur " .
 		  "WHERE {$this->mTitlecond} AND (cur_namespace=0) " .
 		  "LIMIT {$offset}, {$limit}";
-		$res1 = wfQuery( $sql, $conn );
+		$res1 = wfQuery( $sql, $fname );
 
-		$conn = wfGetDB();
 		$sql = "SELECT cur_id,cur_namespace,cur_title," .
 		  "cur_text FROM cur " .
 		  "WHERE {$this->mTextcond} AND (cur_namespace=0) " .
 		  "LIMIT {$offset}, {$limit}";
-		$res2 = wfQuery( $sql, $conn );
+		$res2 = wfQuery( $sql, $fname );
 
 		$top = str_replace( "$1", $limit, wfMsg( "showingmatches" ) );
 		$top = str_replace( "$2", $offset+1, $top );
@@ -71,30 +70,30 @@ class SearchEngine {
 		$wgOut->addHTML( "<br>{$sl}\n" );
 
 		$foundsome = false;
-		if ( 0 == mysql_num_rows( $res1 ) ) {
+		if ( 0 == wfNumRows( $res1 ) ) {
 			$wgOut->addHTML( "<h2>" . wfMsg( "notitlematches" ) . "</h2>\n" );
 		} else {
 			$foundsome = true;
 			$off = $offset + 1;
 			$wgOut->addHTML( "<h2>" . wfMsg( "titlematches" ) . "</h2>\n" .
 			  "<ol start='{$off}'>" );
-			while ( $row = mysql_fetch_object( $res1 ) ) {
+			while ( $row = wfFetchObject( $res1 ) ) {
 				$this->showHit( $row );
 			}
-			mysql_free_result( $res1 );
+			wfFreeResult( $res1 );
 			$wgOut->addHTML( "</ol>\n" );
 		}
-		if ( 0 == mysql_num_rows( $res2 ) ) {
+		if ( 0 == wfNumRows( $res2 ) ) {
 			$wgOut->addHTML( "<h2>" . wfMsg( "notextmatches" ) . "</h2>\n" );
 		} else {
 			$foundsome = true;
 			$off = $offset + 1;
 			$wgOut->addHTML( "<h2>" . wfMsg( "textmatches" ) . "</h2>\n" .
 			  "<ol start='{$off}'>" );
-			while ( $row = mysql_fetch_object( $res2 ) ) {
+			while ( $row = wfFetchObject( $res2 ) ) {
 				$this->showHit( $row );
 			}
-			mysql_free_result( $res2 );
+			wfFreeResult( $res2 );
 			$wgOut->addHTML( "</ol>\n" );
 		}
 		if ( ! $foundsome ) {

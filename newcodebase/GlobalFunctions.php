@@ -176,17 +176,16 @@ function wfNumberOfArticles()
 	global $wgNumberOfArticles, $wgTotalViews, $wgTotalEdits;
 	if ( -1 != $wgNumberOfArticles ) return;
 
-	$conn = wfGetDB();
 	$sql = "SELECT ss_total_views, ss_total_edits, ss_good_articles " .
 	  "FROM site_stats WHERE ss_row_id=1";
-	$res = wfQuery( $sql, $conn, "wfLoadSiteStats" );
-	if ( 0 == mysql_num_rows( $res ) ) { return; }
+	$res = wfQuery( $sql, "wfLoadSiteStats" );
+	if ( 0 == wfNumRows( $res ) ) { return; }
 	else {
-		$s = mysql_fetch_object( $res );
+		$s = wfFetchObject( $res );
 		$wgTotalViews = $s->ss_total_views;
 		$wgTotalEdits = $s->ss_total_Edits;
 		$wgNumberOfArticles = $s->ss_good_articles;
-		mysql_free_result( $res );
+		wfFreeResult( $res );
 	}
 }
 
@@ -243,25 +242,20 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 	global $wgUser;
 	$fname = "wfRecordUpload";
 
-wfDebug( "Rec: $name, $oldver, $size, $desc\n" );
-
-	$conn = wfGetDB();
 	$sql = "SELECT img_name,img_size,img_timestamp,img_description,img_user," .
 	  "img_user_text FROM image WHERE img_name='{$name}'";
-	$res = wfQuery( $sql, $conn, $fname );
+	$res = wfQuery( $sql, $fname );
 
-	if ( 0 == mysql_num_rows( $res ) ) {
-		$conn = wfGetDB();
+	if ( 0 == wfNumRows( $res ) ) {
 		$sql = "INSERT INTO image (img_name,img_size,img_timestamp," .
 		  "img_description,img_user,img_user_text) VALUES ('" .
 		  wfStrencode( $name ) . "',{$size},'" . date( "YmdHis" ) . "','" .
 		  wfStrencode( $description ) . "', '" . $wgUser->getID() .
 		  "', '" . wfStrencode( $wgUser->getName() ) . "')";
-		wfQuery( $sql, $conn, $fname );
+		wfQuery( $sql, $fname );
 	} else {
-		$s = mysql_fetch_object( $res );
+		$s = wfFetchObject( $res );
 
-		$conn = wfGetDB();
 		$sql = "INSERT INTO oldimage (oi_name,oi_archive_name,oi_size," .
 		  "oi_timestamp,oi_description,oi_user,oi_user_text) VALUES ('" .
 		  wfStrencode( $s->img_name ) . "','" .
@@ -270,16 +264,15 @@ wfDebug( "Rec: $name, $oldver, $size, $desc\n" );
 		  wfStrencode( $s->img_description ) . "','" .
 		  wfStrencode( $s->img_user ) . "','" .
 		  wfStrencode( $s->img_user_text) . "')";
-		wfQuery( $sql, $conn, $fname );
+		wfQuery( $sql, $fname );
 
-		$conn = wfGetDB();
 		$sql = "UPDATE image SET img_size={$size}," .
 		  "img_timestamp='" . date( "YmdHis" ) . "',img_user='" .
 		  $wgUser->getID() . "',img_user_text='" .
 		  wfStrencode( $wgUser->getName() ) . "', img_description='" .
 		  wfStrencode( $desc ) . "' WHERE img_name='" .
 		  wfStrencode( $name ) . "'";
-		wfQuery( $sql, $conn, $fname );
+		wfQuery( $sql, $fname );
 	}
 }
 

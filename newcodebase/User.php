@@ -73,7 +73,6 @@ class User {
 		if ( -1 != $this->mBlockedby ) { return; }
 
 		$remaddr = getenv( "REMOTE_ADDR" );
-		$conn = wfGetDB();
 		if ( 0 == $this->mId ) {
 			$sql = "SELECT ipb_by,ipb_reason FROM ipblocks WHERE " .
 			  "ipb_address='$remaddr'";
@@ -81,12 +80,12 @@ class User {
 			$sql = "SELECT ipb_by,ipb_reason FROM ipblocks WHERE " .
 			  "(ipb_address='$remaddr' OR ipb_user={$this->mId})";
 		}
-		$res = wfQuery( $sql, $conn, "User::getBlockedStatus" );
-		if ( 0 == mysql_num_rows( $res ) ) {
+		$res = wfQuery( $sql, "User::getBlockedStatus" );
+		if ( 0 == wfNumRows( $res ) ) {
 			$this->mBlockedby = 0;
 			return;
 		}
-		$s = mysql_fetch_object( $res );
+		$s = wfFetchObject( $res );
 		$this->mBlockedby = $s->ipb_by;
 		$this->mBlockreason = $s->ipb_reason;
 	}
@@ -160,13 +159,12 @@ class User {
 		global $wgDefaultOptions;
 
 		if ( 0 == $this->mId || $this->mDataLoaded ) { return; }
-		$conn = wfGetDB();
 		$sql = "SELECT user_name,user_password,user_newpassword,user_email," .
 		  "user_options,user_rights FROM user WHERE user_id={$this->mId}";
-		$res = wfQuery( $sql, $conn, "User::loadFromDatabase" );
+		$res = wfQuery( $sql, "User::loadFromDatabase" );
 
-		if ( mysql_num_rows( $res ) > 0 ) {
-			$s = mysql_fetch_object( $res );
+		if ( wfNumRows( $res ) > 0 ) {
+			$s = wfFetchObject( $res );
 			$this->mName = $s->user_name;
 			$this->mEmail = $s->user_email;
 			$this->mPassword = $s->user_password;
@@ -174,7 +172,7 @@ class User {
 			$this->decodeOptions( $s->user_options );
 			$this->mRights = explode( ",", strtolower( $s->user_rights ) );
 		}
-		mysql_free_result( $res );
+		wfFreeResult( $res );
 		$this->mDataLoaded = true;
 	}
 
@@ -369,7 +367,6 @@ class User {
 	{
 		if ( 0 == $this->mId ) { return; }
 
-		$conn = wfGetDB();
 		$sql = "UPDATE user SET " .
 		  "user_name= '" . wfStrencode( $this->mName ) . "', " .
 		  "user_password= '" . wfStrencode( $this->mPassword ) . "', " .
@@ -378,7 +375,7 @@ class User {
 		  "user_options= '" . $this->encodeOptions() . "', " .
 		  "user_rights= '" . wfStrencode( implode( ",", $this->mRights ) ) .
 		  "' WHERE user_id={$this->mId}";
-		wfQuery( $sql, $conn, "User::saveSettings" );
+		wfQuery( $sql, "User::saveSettings" );
 
 		if ( isset( $this->mWatchlist ) ) {
 			wfSetSQL( "user", "user_watch", implode( "\n", $this->mWatchlist ),
@@ -394,23 +391,21 @@ class User {
 		$s = trim( $this->mName );
 		if ( 0 == strcmp( "", $s ) ) return 0;
 
-		$conn = wfGetDB();
 		$sql = "SELECT user_id FROM user WHERE user_name='" .
 		  wfStrencode( $s ) . "'";
-		$res = wfQuery( $sql , $conn, "User::idForName" );
-		if ( 0 == mysql_num_rows( $res ) ) { return 0; }
+		$res = wfQuery( $sql, "User::idForName" );
+		if ( 0 == wfNumRows( $res ) ) { return 0; }
 
-		$s = mysql_fetch_object( $res );
+		$s = wfFetchObject( $res );
 		if ( "" == $s ) return 0;
 
 		$gotid = $s->user_id;
-		mysql_free_result( $res );
+		wfFreeResult( $res );
 		return $gotid;
 	}
 
 	function addToDatabase()
 	{
-		$conn = wfGetDB();
 		$sql = "INSERT INTO user (user_name,user_password,user_newpassword," .
 		  "user_email, user_rights, user_options, user_watch) VALUES ('" .
 		  wfStrencode( $this->mName ) . "', '" .
@@ -419,7 +414,7 @@ class User {
 		  wfStrencode( $this->mEmail ) . "', '" .
 		  wfStrencode( implode( ",", $this->mRights ) ) . "', '" .
 		  $this->encodeOptions() . "', '' )";
-		wfQuery( $sql, $conn, "User::addToDatabase" );
+		wfQuery( $sql, "User::addToDatabase" );
 		$this->mId = $this->idForName();
 
 		if ( isset( $this->mWatchlist ) ) {

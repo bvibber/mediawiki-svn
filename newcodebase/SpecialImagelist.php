@@ -4,7 +4,6 @@ function wfSpecialImagelist()
 {
 	global $wgUser, $wgOut, $wgLang, $sort, $limit;
 
-	$conn = wfGetDB();
 	$sql = "SELECT img_size,img_name,img_user,img_user_text," .
 	  "img_description,img_timestamp FROM image ORDER BY ";
 
@@ -29,7 +28,7 @@ function wfSpecialImagelist()
 		$lt = "${limit}";
 		$sql .= " LIMIT {$limit}";
 	}
-	$res = wfQuery( $sql, $conn, "wfSpecialImagelist" );
+	$res = wfQuery( $sql, "wfSpecialImagelist" );
 
 	$wgOut->addHTML( "<p>" . wfMsg( "imglegend" ) . "\n" );
 
@@ -72,7 +71,7 @@ function wfSpecialImagelist()
 	$text = str_replace( "$2", $bydate, $text );
 	$wgOut->addHTML( "{$text}<br>\n<p>" );
 
-	while ( $s = mysql_fetch_object( $res ) ) {
+	while ( $s = wfFetchObject( $res ) ) {
 		$name = $s->img_name;
 		$ut = $s->img_user_text;
 		if ( 0 == $s->img_user ) { $ul = $ut; }
@@ -91,7 +90,7 @@ function wfSpecialImagelist()
 		}
 		$wgOut->addHTML( "{$l}<br>\n" );
 	}
-	mysql_free_result( $res );
+	wfFreeResult( $res );
 }
 
 ?>
