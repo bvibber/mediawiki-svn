@@ -20,8 +20,7 @@ class WikiPage extends WikiTitle {
 		$updateCounter = "" ;
 		$this->knownLinkedLinks = array () ;
 		$this->knownUnlinkedLinks = array () ;
-		$this->title = $t ;
-		$this->makeSecureTitle () ;
+		$this->SetTitle ( $t ) ;
 		$this->isSpecialPage = false ;
 		$this->revision = "current" ;
 		if ( $this->namespace == "special" ) { # Special page, calling appropriate function
@@ -82,9 +81,6 @@ class WikiPage extends WikiTitle {
 			$result = mysql_query ( $sql , $connection ) ;
 			}
 
-		mysql_close ( $connection ) ;
-		$this->makeURL () ;
-		$this->splitTitle () ;
 		if ( strtolower ( substr ( $this->contents , 0 , 9 ) ) == "#redirect" and $doRedirect and $action != "edit" ) { # #REDIRECT
 			$this->backLink = str_replace ( "$1" , $this->secureTitle , $wikiRedirectFrom ) ;
 			$this->backLink = str_replace ( "$2" , $this->getNiceTitle() , $this->backLink ) ;
@@ -96,6 +92,7 @@ class WikiPage extends WikiTitle {
 			$z = str_replace ( "]" , "" , $z ) ;
 			$this->load ( trim($z) , false , $backLink ) ;
 			}
+		@mysql_close ( $connection ) ;
 		}
 
 	# This function - well, you know...
