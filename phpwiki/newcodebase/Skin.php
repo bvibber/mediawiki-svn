@@ -155,19 +155,21 @@ class Skin {
 		global $wgOut, $wgTitle;
 
 		$s = "<h1 class=\"pagetitle\">" . $wgOut->getPageTitle() . "</h1>";
+		$sub = $wgOut->getSubtitle();
+		if ( ( "" == $sub ) && $wgOut->isArticle() ) {
+			$sub = wfMsg( "fromwikipedia" );
+		}
+		if ( $sub ) {
+			$s .= "<p class=\"subtitle\"><strong>{$sub}</strong>\n";
+		}
 		if ( $wgOut->isArticle() ) {
-			$s .= "<p class=\"subtitle\"><small>" . wfMsg( "fromwikipedia" )
-			  . "</small>\n";
+			$s .= "<p class=\"subtitle\">"
+			  . $this->makeLink( wfMsg( "mainpage" ),
+			  WfMsg( "printableversion" ), "action=print" )
+			  . " | " . $this->makeLink( "Special:Whatlinkshere",
+			  wfMsg( "whatlinkshere" ), "target=" . $wgTitle->getPrefixedURL() );
 
-			if ( $wgOut->isArticle() ) {
-				$s .= "<p class=\"subtitle\">"
-				  . $this->makeLink( wfMsg( "mainpage" ),
-				  WfMsg( "printableversion" ), "action=print" )
-				  . " | " . $this->makeLink( "Special:Whatlinkshere",
-				  wfMsg( "whatlinkshere" ), "target=" . $wgTitle->getPrefixedURL() );
-
-				$s .= $this->otherLanguages();
-			}
+			$s .= $this->otherLanguages();
 		}
 		return $s;
 	}
@@ -419,7 +421,7 @@ class Skin {
 	}
 
 	# Note: This function MUST call getArticleID() on the link,
-	# otherwise the cache won't get updated properly.
+	# otherwise the cache won't get updated properly.  See LINKCACHE.DOC.
 	#
 	function makeInternalLink( $title, $text= "", $query = "", $trail = "" )
 	{

@@ -5,6 +5,7 @@ class OutputPage {
 	var $mHeaders, $mCookies, $mMetatags, $mKeywords;
 	var $mLinktags, $mPagetitle, $mBodytext, $mDebugtext;
 	var $mHTMLtitle, $mRobotpolicy, $mIsarticle, $mPrintable;
+	var $mSubtitle;
 
 	var $mDTopen, $mLastSection; # Used for processing DL, PRE
 	var $mLanguageLinks;
@@ -14,7 +15,7 @@ class OutputPage {
 		$this->mHeaders = $this->mCookies = $this->mMetatags =
 		$this->mKeywords = $this->mLinktags = array();
 		$this->mHTMLtitle = $this->mPagetitle = $this->mBodytext =
-		$this->mDebugtext = $this->mRobotpolicy = "";
+		$this->mSubtitle = $this->mDebugtext = $this->mRobotpolicy = "";
 		$this->mIsarticle = $this->mPrintable = true;
 		$this->mLanguageLinks = array();
 	}
@@ -31,6 +32,8 @@ class OutputPage {
 	function setHTMLtitle( $name ) { $this->mHTMLtitle = $name; }
 	function setPageTitle( $name ) { $this->mPagetitle = $name; }
 	function getPageTitle() { return $this->mPagetitle; }
+	function setSubtitle( $str ) { $this->mSubtitle = $str; }
+	function getSubtitle() { return $this->mSubtitle; }
 	function setArticleFlag( $v ) { $this->mIsarticle = $v; }
 	function isArticle() { return $this->mIsarticle; }
 	function setPrintable() { $this->mPrintable = true; }

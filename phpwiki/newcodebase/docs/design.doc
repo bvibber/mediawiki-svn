@@ -13,10 +13,10 @@ Primary source files/objects:
     are any changes that need to be made to the database that can be
     deferred until after page display, those happen at the end.
 
-    Note that the order in the includes is touchy; Intertext uses
+    Note that the order in the includes is touchy; Language uses
     some global functions, etc.  Likewise with the creation of the
     global variables.  Don't move them around without some forethought.
-   
+
   User
     Encapsulates the state of the user viewing/using the site.
     Can be queried for things like the user's settings, name, etc.
@@ -44,8 +44,7 @@ Primary source files/objects:
   Article
     Encapsulates access to the "cur" table of the database.  The
     object represents a Wikipedia article, and maintains state
-    such as title, text (in Wikitext format), flags, etc.  The
-    constructor takes a Title object.
+    such as text (in Wikitext format), flags, etc.
 
   Skin
     Encapsulates a "look and feel" for the wiki.  All of the
@@ -63,6 +62,9 @@ Primary source files/objects:
     Represents the language used for incidental text, and also
     has some character encoding functions and other locale stuff.
     A global one is allocated in $wgLang.
+
+  LinkCache
+    Keeps information on existence of articles.  See LINKCACHE.DOC.
 
 Naming/coding conventions:
 
