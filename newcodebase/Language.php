@@ -84,6 +84,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"bn"	=> "Bengali",
 	"bo"	=> "Tibetan",
 	"br" => "Brezhoneg",
+	"bs" => "Bosnian",
 	"ca" => "Catal&#224;",
 	"ch" => "Chamoru",
 	"co"	=> "Corsican",
@@ -1105,6 +1106,13 @@ class Language {
 	}
 
 	function getMonthName( $key )
+	{
+		global $wgMonthNamesEn;
+		return $wgMonthNamesEn[$key-1];
+	}
+
+	/* by default we just return base form */
+	function getMonthNameGen( $key )
 	{
 		global $wgMonthNamesEn;
 		return $wgMonthNamesEn[$key-1];
