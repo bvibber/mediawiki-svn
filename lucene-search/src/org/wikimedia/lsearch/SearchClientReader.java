@@ -133,6 +133,7 @@ public class SearchClientReader extends Thread {
 	
 	String makeSpelFix(String query) {
 		try {
+			boolean anysuggest = false;
 			String[] terms = query.split(" +");
 			String ret = "";
 			System.out.println("spelcheck: [" + query + "]");
@@ -150,10 +151,12 @@ public class SearchClientReader extends Thread {
 					if (h.length() > bestscore) {
 						bestscore = h.length();
 						bestmatch = term.text();
+						anysuggest = true;
 					}
 				}
 				ret += bestmatch + " ";
 			}
+			if (!anysuggest) return "";
 			return ret;
 		} catch (IOException e) {
 			return "";
