@@ -462,7 +462,6 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.",
 "spheading"		=> "Special pages",
 "sysopspheading" => "Special pages for sysop use",
 "developerspheading" => "Special pages for developer use",
-"movepage"		=> "Move page",
 "protectpage"	=> "Protect page",
 "recentchangeslinked" => "Watch links",
 "rclsub"		=> "(to pages linked from \"$1\")",
@@ -587,6 +586,22 @@ this function sparingly.",
 "selectonly"	=> "Queries other than \"SELECT\" are restricted to
 Wikipedia developers.",
 "querysuccessful" => "Query successful",
+
+# Move page
+#
+"movepage"		=> "Move page",
+"movepagetext"	=> "Using the form below will rename a page, moving all
+of its history to the new name.
+The old title will become a redirect page to the new title.
+Links to the old page title will not be changed, and the talk
+page, if any, will not be moved.",
+"movearticle"	=> "Move article",
+"newtitle"		=> "To new title",
+"movepagebtn"	=> "Move page",
+"pagemovedsub"	=> "Move succeeded",
+"pagemovedtext" => "Page \"$1\" moved to \"$2\".",
+"articleexists" => "An article of that name already exists.
+Please choose another name.",
 
 );
 

@@ -34,6 +34,12 @@ class Namespace {
 		return -1;
 	}
 
+	function isMovable( $index )
+	{
+		if ( $index < 0 || $index > 5 ) { return false; }
+		return true;
+	}
+
 	function isTalk( $index )
 	{
 		if ( 1 == $index || 3 == $index || 5 == $index || 7 == $index ) {

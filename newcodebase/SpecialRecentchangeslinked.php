@@ -9,7 +9,7 @@ function wfSpecialRecentchangeslinked()
 	$wgOut->setPagetitle( wfMsg( "recentchanges" ) );
 
 	if ( "" == $target ) {
-		$wgOut->errorpage( "notargetitle", "notargettext" );
+		$wgOut->errorpage( "notargettitle", "notargettext" );
 		return;
 	}
 	$nt = Title::newFromURL( $target );
