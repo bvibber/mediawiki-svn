@@ -14,14 +14,14 @@ main(int argc, char *argv[])
 	struct sockaddr_un 	 sa;
 	socklen_t		 len;
 	int			 s;
-	char 			*logmsg;
-	
+	struct iovec		 iovec[3];
+
 	if (argc != 3) {
 		fprintf(stderr, "usage: %s <log level> <message>\n", argv[0]);
 		exit(8);
 	}
 	
-	memset(&sa, 0, sizeof(sa));
+	bzero(&sa, sizeof(sa));
 	sa.sun_family = AF_UNIX;
 	strcpy(sa.sun_path, "/tmp/servmon.log");
 	len = SUN_LEN(&sa);
@@ -31,16 +31,28 @@ main(int argc, char *argv[])
 		exit(8);
 	}
 
-	if (connect(s, (struct sockaddr *)&sa, len) < 0) {
+	if (connect(s, (struct sockaddr *) &sa, len) < 0) {
 		perror("connect");
 		exit(8);
 	}
 	
-	logmsg = malloc(strlen(argv[1]) + strlen(argv[2]) + 2);
-	sprintf(logmsg, "%s %s", argv[1], argv[2]);
-	if (write(s, logmsg, strlen(logmsg)) < 0) {
+	/*
+	 * servmon truncates messages longer than this.
+	 */
+	if (strlen(argv[2]) > 4096)
+		argv[2][4096] = '\0';
+
+	iovec[0].iov_base = argv[1];
+	iovec[0].iov_len = strlen(argv[1]);
+	iovec[1].iov_base = " ";
+	iovec[1].iov_len = 1;
+	iovec[2].iov_base = argv[2];
+	iovec[2].iov_len = strlen(argv[2]);
+
+	if (writev(s, iovec, 3) < 0) {
 		perror("write");
 		exit(8);
 	}
+
 	exit(0);
 }
