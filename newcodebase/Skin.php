@@ -143,10 +143,13 @@ class Skin {
 	{
 		global $wgUser, $wgOut, $wgTitle;
 
-		$s = "\n<div id='topbar'><p><table width='98%' border=0 " .
+		$s = "";
+		$qb = $this->qbSetting();
+		if ( 0 != $qb ) { $s .= $this->quickBar(); }
+
+		$s .= "\n<div id='topbar'><p><table width='98%' border=0 " .
 		  "cellspacing=0><tr>";
 
-		$qb = $this->qbSetting();
 		if ( 0 == $qb ) {
 			$s .= "<td class='top' align=left valign=top>" .
 			  $this->logoText() . "</td>";
@@ -211,7 +214,6 @@ class Skin {
 		}
 		$s .= "</tr></table>\n</div>\n";
 
-		if ( 0 != $this->qbSetting() ) { $s .= $this->quickBar(); }
 		return $s;
 	}
 
