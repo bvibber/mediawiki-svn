@@ -457,16 +457,16 @@ class Skin {
 		$sep = "\n<br>";
 		$s .= $this->mainPageLink()
 		  . $sep . $this->specialLink( "recentchanges" )
-		  . $sep . $this->specialLink( "randompage" ) 
-		  . $sep . $this->specialLink( "watchlist" ) ;
+		  . $sep . $this->specialLink( "randompage" );
+		if ($wgUser->getID()) $s.= $sep . $this->specialLink( "watchlist" ) ; // only show watchlist link if logged in
                 if ( wfMsg ( "currentevents" ) != "-" ) $s .= $sep . $this->makeKnownLink( wfMsg( "currentevents" ), "" ) ;
                 $s .= "\n<hr>";
 
 		if ( $wgOut->isArticle() ) {
 			$s .= "<strong>" . $this->editThisPage() . "</strong>";
 			if ( 0 != $wgUser->getID() ) {
-				$s .= $sep . $this->watchThisPage()
-				. $sep . $this->moveThisPage();
+				$s .= $sep . $this->watchThisPage();
+				if ( $wgTitle->userCanEdit() ) $s .= $sep . $this->moveThisPage();
 			}
 			if ( $wgUser->isSysop() ) {
 				$s .= $sep . $this->deleteThisPage() .
@@ -488,8 +488,8 @@ class Skin {
 		if ( 0 != $wgUser->getID() ) {
 			$s .= $this->specialLink( "upload" ) . $sep;
 		}
-		$s .= $this->bugReportsLink()
-		  . $sep . $this->specialLink( "specialpages" );
+		$s .= $this->specialLink( "specialpages" )
+		  . $sep . $this->bugReportsLink();
 
 		$s .= "\n</div>\n";
 		return $s;
@@ -650,9 +650,7 @@ class Skin {
 		if ( $wgTitle->userCanEdit() ) {
 			$s = $this->makeKnownLink( $wgLang->specialPage( "Movepage" ),
 			  wfMsg( "movethispage" ), "target=" . $wgTitle->getPrefixedURL() );
-		} else {
-			$s = wfMsg( "protectedpage" );
-		}
+		} // no message if page is protected - would be redundant
 		return $s;
 	}
 
