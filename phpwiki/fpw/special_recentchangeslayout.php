@@ -56,7 +56,9 @@ function recentChangesLayout ( &$arr ) {
             $u = explode ( "." , $u ) ;
             $u = $u[0].".".$u[1].".".$u[2].".xxx" ;
 #           $u = "<font color=red>$u</font>" ; # IPs in red, deactivated
-            }
+        } else {
+		$u .= $s->appendix ;
+	}
         $comment = trim($s->cur_comment) ;
         if ( $comment == "*" ) $comment = "" ;
         $o_comment = $comment ;
