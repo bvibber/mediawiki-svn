@@ -495,7 +495,7 @@ class OutputPage {
 	/* private */ function replaceInternalLinks( $s )
 	{
 		global $wgTitle, $wgUser, $wgLang;
-		global $wgLinkCache;
+		global $wgLinkCache, $wgInterwikiMagic;
 
 		$tc = Title::legalChars() . "#";
 		$sk = $wgUser->getSkin();
@@ -544,7 +544,7 @@ class OutputPage {
 					$s .= $trail;
 				} else {
 					$l = $wgLang->getLanguageName( $pre );
-					if ( "" == $l ) {
+					if ( "" == $l or !$wgInterwikiMagic) {
 						if ( "" == $text ) { $text = $link; }
 						$s .= $sk->makeLink( $link, $text, "", $trail );
 					} else {
