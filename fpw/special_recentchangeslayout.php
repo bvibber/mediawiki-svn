@@ -9,28 +9,16 @@ function timestampAddHour ( $x , $d ) {
 
 function recentChangesLayout ( &$arr ) {
     if ( count ( $arr ) == 0 ) return "" ;
-    global $THESCRIPT , $user , $wikiDiff , $wikiGetDate , $wikiUser , $wikiChanges, $wikiChange;
+    global $THESCRIPT , $user , $wikiDiff , $wikiGetDate , $wikiUser , $wikiChanges, $wikiChange, $wikiRCLegend, $wikiEditTypes ;
     $lastDay = "" ;
     $color1 = $user->options["tabLine1"] ;
     $color2 = $user->options["tabLine2"] ;
-
-    # Correcting time difference
-    $arr2 = array () ;
-    foreach ( $arr as $y ) {
-      $y->cur_timestamp = timestampAddHour ( $y->cur_timestamp , $user->options["hourDiff"] );
-      array_push ( $arr2 , $y ) ;
-    }
-    $arr = $arr2 ;
-    $arr2 = array () ;
-
-    global $wikiRCLegend ;
 
     if ( in_array ( "is_sysop" , $user->rights ) ) $isSysop = true ;
     else $isSysop = false ;
 
     $xyz = new WikiTitle ;
-    $editTypes = array ( "0"=>"" , "1"=>"<font color=cyan>M</font>" , "2"=>"<font color=green>N</font>" ) ;
-    $ret = str_replace ( "$1" , $editTypes["1"] , str_replace ( "$2" , $editTypes["2"] ,  $wikiRCLegend ) ) ;
+    $ret = str_replace ( "$1" , $wikiEditTypes["1"] , str_replace ( "$2" , $wikiEditTypes["2"] ,  $wikiRCLegend ) ) ;
     if ( $user->options["changesLayout"] == "table" )
       $ret .= "<table width=\"100%\" border=0 cellpadding=2 cellspacing=0>\n" ;
     else $ret .= "<ul>\n" ; 
@@ -38,11 +26,14 @@ function recentChangesLayout ( &$arr ) {
     foreach ( $arr as $s ) {
         $nt = $xyz->getNiceTitle ( $s->cur_title ) ;
         $url = nurlencode ( $s->cur_title ) ;
-        $day = date ( "l, F d, Y" , tsc ( $s->cur_timestamp ) ) ;
-        $time = date ( "H:i" , tsc ( $s->cur_timestamp ) ) ;
+        # Adjusting date for user's timezone. Inline timestampAddHour to avoid
+        # calling date() and tsc() repeatedly. 
+        $adjusted_time_sc = tsc ( $s->cur_timestamp ) + 3600 * $user->options["hourDiff"];
+        $day = date ( "l, F d, Y" , $adjusted_time_sc);
+        $time = date ( "H:i" , $adjusted_time_sc ) ;
         if ( $day != $lastDay ) {
             $lastDay = $day ;
-            $tday = ucfirst ( $wikiGetDate ( tsc ( $s->cur_timestamp ) ) ) ;
+            $tday = ucfirst ( $wikiGetDate ( $adjusted_time_sc ) ) ;
             if ( $user->options["changesLayout"] == "table" )
               $ret.="<tr><td width=\"100%\" colspan=7".$user->options["tabLine0"]."><b>$tday</b></td></tr>";
             else $ret .= "</ul><b>$tday</b><ul>\n" ;
@@ -63,7 +54,7 @@ function recentChangesLayout ( &$arr ) {
         if ( $comment == "*" ) $comment = "" ;
         $o_comment = $comment ;
         if ( $s->cur_minor_edit == 1 ) $comment = "<font size=-1><i>$comment</i></font>" ;
-        $minor = $editTypes[$s->cur_minor_edit] ;
+        $minor = $wikiEditTypes[$s->cur_minor_edit] ;
 
         if ( $user->options["changesLayout"] == "table" ) $t = "<tr><td$color valign=top width=0%>" ;
         else $t = "<li>" ;

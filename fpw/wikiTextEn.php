@@ -261,6 +261,7 @@ $wikiUserlistText = "'''These are all wikipedia users (that have an account)!'''
 $wikiRecentChangesTitle = "Recent Changes" ;
 $wikiRecentChangesLastDays = "These are the last <b>$1</b> of the changes made on Wikipedia in the last <b>$2</b> days." ;
 $wikiRecentChangesSince = "These are the last <b>$1</b> of the changes made on Wikipedia since <b>$2</b>." ;
+$wikiEditTypes = array ( "0"=>"" , "1"=>"<font color=cyan>M</font>" , "2"=>"<font color=green>N</font>" ) ; #Abbreviations for minor edits (1) and new pages (2) to be used on RecentChanges
 $wikiViewLastDays = "View the last $1 days" ;
 $wikiViewMaxNum = "View the last $1 changes" ;
 $wikiListOnlyNewChanges = "List only new changes" ;
