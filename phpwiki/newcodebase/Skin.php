@@ -550,6 +550,9 @@ class Skin {
 		} else {
 			$u = "$wgServer$wgScript?title=$link&amp;$query";
 		}
+		if ( "" != $nt->getFragment() ) {
+			$u .= "#" . $nt->getFragment();
+		}
 		if ( "" == $text ) { $text = $nt->getPrefixedText(); }
 		$style = $this->getInternalLinkAttributes( $link, $text );
 

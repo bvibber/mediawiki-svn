@@ -354,11 +354,12 @@ $wpTextbox2
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
 		  "cur_restrictions,cur_ind_title,cur_user_text,cur_is_redirect) " .
-		  "VALUES ({$ns},'{$ttl}', '" . wfStrencode( $text ) . "', '" .
+		  "VALUES ({$ns},'" . wfStrencode( $ttl ) . "', '" .
+		  wfStrencode( $text ) . "', '" .
 		  wfStrencode( $summary ) . "', '" .
 		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', " .
 		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
-		  $wgTitle->getPrefixedText() . "', '" .
+		  wfStrencode( $wgTitle->getPrefixedText() ) . "', '" .
 		  wfStrencode( $wgUser->getName() ) . "', $redir)";
 		$res = wfQuery( $sql, $conn, "Article::insertNewArticle" );
 
@@ -387,7 +388,7 @@ $wpTextbox2
 			  "old_comment,old_user,old_user_text,old_timestamp," .
 			  "old_minor_edit) VALUES (" .
 			  $wgTitle->getNamespace() . ", '" .
-			  $wgTitle->getDBkey() . "', '" .
+			  wfStrencode( $wgTitle->getDBkey() ) . "', '" .
 			  wfStrencode( $this->getContent() ) . "', '" .
 			  wfStrencode( $this->getComment() ) . "', " .
 			  $this->getUser() . ", '" .

@@ -27,7 +27,7 @@
 
 class Title {
 	/* private */ var $mTextform, $mUrlform, $mDbkeyform;
-	/* private */ var $mNamespace, $mInterwiki;
+	/* private */ var $mNamespace, $mInterwiki, $mFragment;
 	/* private */ var $mArticleID, $mRestrictions, $mRestrictionsLoaded;
 
 	/* private */ function Title()
@@ -72,6 +72,11 @@ class Title {
 		return $t;
 	}
 
+	function legalChars()
+	{
+		return "-,.()' &;!?_0-9A-Za-z\\/:\\x90-\\xff";
+	}
+
 	function getInterwikiLink( $key )
 	{
 		global $wgValidInterwikis;
@@ -87,6 +92,7 @@ class Title {
 	function getNamespace() { return $this->mNamespace; }
 	function setNamespace( $n ) { $this->mNamespace = $n; }
 	function getInterwiki() { return $this->mInterwiki; }
+	function getFragment() { return $this->mFragment; }
 
 	/* static */ function makeName( $ns, $title )
 	{
@@ -207,14 +213,16 @@ class Title {
     # and uses undersocres, but not otherwise munged.  This function
     # removes illegal characters, splits off the winterwiki and
     # namespace prefixes, sets the other forms, and canonicalizes
-    # everything.
+    # everything.  This one function is really at the core of
+	# Wiki--don't mess with it unless you're really sure you know
+	# what you're doing.
 	#
 	/* private */ function secureAndSplit()
 	{
 		global $wgLang, $wgValidInterwikis, $wgLocalInterwiki;
 
 		$validNamespaces = $wgLang->getNamespaces();
-		$this->mInterwiki = "";
+		$this->mInterwiki = $this->mFragment = "";
 		$this->mNamespace = 0;
 
 		$done = false;
@@ -222,7 +230,7 @@ class Title {
 		if ( ":" == $t{0} ) {
 			$r = substr( $t, 1 );
 		} else {
-	 		if ( preg_match( "/^([A-Za-z][A-Za-z0-9 _]*):(.*)$/", $t, $m ) ) {
+	 		if ( preg_match( "/^([A-Za-z][A-Za-z0-9_]*):(.*)$/", $t, $m ) ) {
 				$p = strtolower( $m[1] );
 				if ( array_key_exists( $p, $wgValidInterwikis ) ) {
 					$t = $m[2];
@@ -254,11 +262,15 @@ class Title {
 		if ( "" != $this->mInterwiki || -1 == $this->mNamespace ) {
 			$this->mArticleID = 0;
 		}
-		# Strip illegal characters. Note that since many troublesome
-		# characters like quote marks are stripped here, we don't
-		# can avoid having to escape them in other places.
+		$f = strstr( $r, "#" );
+		if ( false !== $f ) {
+			$this->mFragment = substr( $f, 1 );
+			$r = substr( $r, 0, strlen( $r ) - strlen( $f ) );
+		}
+		# Strip illegal characters.
 		#
-		$t = preg_replace( "/([^-,.()' _0-9A-Za-z\/:\x80-\xff])/", "", $r );
+		$tc = Title::legalChars();
+		$t = preg_replace( "/[^{$tc}]/", "", $r );
 
 		$t = ucfirst( $t );
 		$this->mDbkeyform = $t;
