@@ -88,8 +88,10 @@ $wgMiserMode = false; # Disable database-intensive features
 $wgUseTeX = false;
 $wgProfiling = false; # Enable for more detailed by-function times in debug log
 
+$wgDisableCounters = false;
 $wgDisableTextSearch = false;
 $wgDisableUploads = false;
+$wgDisableAnonTalk = false;
 
 # We can serve pages compressed in order to save bandwidth,
 # but this will increase CPU usage.

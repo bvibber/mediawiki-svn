@@ -176,6 +176,8 @@ class User {
 	function loadFromDatabase()
 	{
 		if ( $this->mDataLoaded ) { return; }
+		
+		global $wgDisableAnonTalk;
 		# check in separate table if there are changes to the talk page
 		$this->mNewtalk=0; # reset talk page status
 		if($this->mId) {
@@ -186,7 +188,7 @@ class User {
 				$this->mNewtalk= 1;
 			}
 			wfFreeResult( $res );
-		} else {
+		} elseif( !$wgDisableAnonTalk ) {
 			$sql = "SELECT 1 FROM user_newtalk WHERE user_ip='{$this->mName}'";
 			$res = wfQuery ($sql,  "User::loadFromDatabase" );
 

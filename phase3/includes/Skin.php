@@ -1527,9 +1527,14 @@ class Skin {
 		} else { $ul = $this->makeLink( $wgLang->getNsText(
 		  Namespace::getUser() ) . ":{$ut}", $ut ); }
 		  
-		$utns=$wgLang->getNsText(Namespace::getTalk(Namespace::getUser()));
 		$talkname=$wgLang->getNsText(Namespace::getTalk(0)); # use the shorter name
-		$utl= $this->makeLink($utns . ":{$ut}", $talkname );
+		global $wgDisableAnonTalk;
+		if( 0 == $u && $wgDisableAnonTalk ) {
+			$utl = "";
+		} else {
+			$utns=$wgLang->getNsText(Namespace::getTalk(Namespace::getUser()));
+			$utl= $this->makeLink($utns . ":{$ut}", $talkname );
+		}
 		$cr = wfMsg( "currentrev" );
 
 		$s .= "<li> ({$dlink}) ({$hlink}) . .";
@@ -1545,12 +1550,11 @@ class Skin {
 			  "Blockip" ), wfMsg( "blocklink" ), "ip={$ut}" );
 			
 		}
-		if(!$blink) { 
-			$utl = "({$utl})";
-		} else {
-			$utl = "({$utl} | {$blink})";
+		if($blink) { 
+			if($utl) $utl .= " | ";
+			$utl .= $blink;
 		}
-		$s.=" {$utl}";
+		if($utl) $s.=" ({$utl})";
 
 		if ( "" != $c && "*" != $c ) {
 			$s .= " <em>(" . wfEscapeHTML( $c ) . ")</em>";
@@ -1622,12 +1626,19 @@ class Skin {
 		$talkname=$wgLang->getNsText(Namespace::getTalk(0)); # use the shorter name
 		$utl= $this->makeLink($utns . ":{$ut}", $talkname );						
 
+		global $wgDisableAnonTalk;
 		if ( ( 0 == $u ) && $wgUser->isSysop() ) {
 			$blink = $this->makeKnownLink( $wgLang->specialPage(
 			  "Blockip" ), wfMsg( "blocklink" ), "ip={$ut}" );
-			$rc->usertalklink= " ({$utl} | {$blink})";
+			if( $wgDisableAnonTalk )
+				$rc->usertalklink = " ({$blink})";
+			else
+				$rc->usertalklink = " ({$utl} | {$blink})";
 		} else {
-			$rc->usertalklink=" ({$utl})";
+			if( $wgDisableAnonTalk && ($u == 0) )
+				$rc->usertalklink = "";
+			else
+				$rc->usertalklink = " ({$utl})";
 		}
 
 		if ( !isset ( $this->rc_cache[$t] ) ) $this->rc_cache[$t] = array() ;
