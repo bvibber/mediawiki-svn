@@ -154,7 +154,7 @@ class Skin {
 			$s .= "<td class='top' align=left valign=top>" .
 			  $this->logoText() . "</td>";
 		} else if ( 1 == $qb || 3 == $qb ) { # Left
-			$s .= "<td width='152'>&nbsp;</td>";
+			$s .= $this->getQuickbarCompensator();
 		}
 		$s .= "<td class='top' align=left valign=top>";
 
@@ -166,7 +166,7 @@ class Skin {
 		$s .= "\n<br>" . $this->searchForm() . "</td>";
 
 		if ( 2 == $qb ) { # Right
-			$s .= "<td width='152'>&nbsp;</td>";
+			$s .= $this->getQuickbarCompensator();
 		}
 		$s .= "</tr></table>\n</div>\n";
 		$s .= "\n<div id='article'>";
@@ -174,6 +174,11 @@ class Skin {
 		$s .= $this->pageTitle();
 		$s .= $this->pageSubtitle() . "\n<p>";
 		return $s;
+	}
+
+	function getQuickbarCompensator()
+	{
+		return "<td width='152'>&nbsp;</td>";
 	}
 
 	# This gets called immediately before the </body> tag.
@@ -200,7 +205,7 @@ class Skin {
 
 		$qb = $this->qbSetting();
 		if ( 1 == $qb || 3 == $qb ) { # Left
-			$s .= "<td width='152'>&nbsp;</td>";
+			$s .= $this->getQuickbarCompensator();
 		}
 		$s .= "<td class='bottom' align=left valign=top>";
 
@@ -210,7 +215,7 @@ class Skin {
 
 		$s .= "</td>";
 		if ( 2 == $qb ) { # Right
-			$s .= "<td width='152'>&nbsp;</td>";
+			$s .= $this->getQuickbarCompensator();
 		}
 		$s .= "</tr></table>\n</div>\n</div>\n";
 
@@ -383,10 +388,12 @@ class Skin {
 		  . $sep . $this->specialLink( "recentchanges" )
 		  . $sep . $this->specialLink( "randompage" ) 
 		  . $sep . $this->specialLink( "watchlist" )
-		  . $sep . $this->dateLink() . "\n<hr>";
+		  . $sep . $this->makeKnownLink( wfMsg( "currentevents" ), "" )
+		  # . $sep . $this->dateLink()
+		  . "\n<hr>";
 
 		if ( $wgOut->isArticle() ) {
-			$s .= $this->editThisPage();
+			$s .= "<strong>" . $this->editThisPage() . "</strong>";
 			if ( 0 != $wgUser->getID() ) {
 				$s .= $sep . $this->watchThisPage();
 			}

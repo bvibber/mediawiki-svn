@@ -95,6 +95,7 @@
 # Bits of text used by many pages:
 #
 "mainpage"		=> "Main Page",
+"currentevents" => "Current events",
 "errorpagetitle" => "Erorr",
 "returnto"		=> "Return to $1.",
 "fromwikipedia"	=> "From Wikipedia, the free encyclopedia.",
