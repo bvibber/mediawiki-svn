@@ -530,7 +530,8 @@ class OutputPage {
 			if ( preg_match( "/^([A-Za-z]+):(.*)\$/", $link,  $m ) ) {
 				$pre = strtolower( $m[1] );
 				$suf = $m[2];
-				if ( strtolower( Namespace::getImagename() ) == $pre ) {
+				if ( strtolower( $wgLang->getNsText(
+				  Namespace::getImage() ) ) == $pre ) {
 					$nt = Title::newFromText( $suf );
 					$name = $nt->getDBkey();
 					if ( "" == $text ) { $text = $nt->GetText(); }

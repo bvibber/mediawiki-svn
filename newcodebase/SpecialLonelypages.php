@@ -22,7 +22,8 @@ function wfSpecialLonelypages()
 	$top = SearchEngine::showingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit, "Special:Lonelypages" );
+	$sl = SearchEngine::viewPrevNext( $offset, $limit,
+	  $wgLang->specialPage( "Lonelypages" ) );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$s = "<ol start=" . ( $offset + 1 ) . ">";

@@ -20,7 +20,8 @@ function wfSpecialShortpages()
 	$top = SearchEngine::showingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit, "Special:Shortpages" );
+	$sl = SearchEngine::viewPrevNext( $offset, $limit,
+	  $wgLang->specialPage( "Shortpages" ) );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$sk = $wgUser->getSkin();

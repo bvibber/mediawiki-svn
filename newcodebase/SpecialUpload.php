@@ -19,7 +19,7 @@ function wfSpecialUpload()
 
 function processUpload()
 {
-	global $wgUser, $wgOut, $wpUploadAffirm, $wpUploadFile;
+	global $wgUser, $wgOut, $wgLang, $wpUploadAffirm, $wpUploadFile;
 	global $wpUploadDescription, $wpIgnoreWarning;
 	global $HTTP_POST_FILES, $wgUploadDirectory;
 	global $wpUploadSaveName, $wpUploadTempName, $wpUploadSize;
@@ -80,8 +80,8 @@ function processUpload()
 	  $wpUploadSize, $wpUploadDescription );
 
 	$sk = $wgUser->getSkin();
-	$ilink = $sk->makeKnownLink( Namespace::getImagename() .
-	  ":{$wpUploadSaveName}", $wpUploadSaveName );
+	$ilink = $sk->makeKnownLink( $wgLang->getNsText(
+	  Namespace::getImage() ) . ":{$wpUploadSaveName}", $wpUploadSaveName );
 
 	$wgOut->addHTML( "<h2>" . wfMsg( "successfulupload" ) . "</h2>\n" );
 	$text = str_replace( "$1", $ilink, wfMsg( "fileuploaded" ) );
@@ -142,7 +142,7 @@ function unsaveUploadedFile()
 
 function uploadWarning( $warning )
 {
-	global $wgOut, $wgUser, $wgUploadDirectory;
+	global $wgOut, $wgUser, $wgLang, $wgUploadDirectory;
 	global $wpUpload, $wpReUpload, $wpUploadAffirm, $wpUploadFile;
 	global $wpUploadDescription, $wpIgnoreWarning;
 	global $wpUploadSaveName, $wpUploadTempName, $wpUploadSize;
@@ -157,7 +157,8 @@ function uploadWarning( $warning )
 	$reupload = wfMsg( "reupload" );
 	$iw = wfMsg( "ignorewarning" );
 	$reup = wfMsg( "reuploaddesc" );
-	$action = wfLocalUrl( "Special:Upload", "action=submit" );
+	$action = wfLocalUrlE( $wgLang->specialPage( "Upload" ),
+	  "action=submit" );
 
 	$wgOut->addHTML( "
 <form method=post enctype='multipart/form-data' action=\"{$action}\">
@@ -180,7 +181,7 @@ function uploadWarning( $warning )
 
 function mainUploadForm( $msg )
 {
-	global $wgOut, $wgUser, $wgUploadDirectory;
+	global $wgOut, $wgUser, $wgLang, $wgUploadDirectory;
 	global $wpUpload, $wpUploadAffirm, $wpUploadFile;
 	global $wpUploadDescription, $wpIgnoreWarning;
 
@@ -195,7 +196,8 @@ function mainUploadForm( $msg )
 	$wgOut->addHTML( "<p>" . wfMsg( "uploadtext" ) );
 	$sk = $wgUser->getSkin();
 
-	$link = $sk->makeKnownLink( Namespace::getWikipediaName() .
+	$link = $sk->makeKnownLink( $wgLang->getNsText(
+	  Namespace::getWikipedia() ) .
 	  ":" . wfMsg( "uploadlogpage" ), wfMsg( "uploadlog" ) );
 	$ult = str_replace( "$1", $link, wfMsg( "uploadlogtext" ) );
 	$wgOut->addHTML( "\n<p>{$ult}\n" );
@@ -209,7 +211,7 @@ function mainUploadForm( $msg )
 	$ca = str_replace( "$1", $clink, wfMsg( "affirmation" ) );
 	$iw = wfMsg( "ignorewarning" );
 
-	$action = wfLocalUrl( "Special:Upload" );
+	$action = wfLocalUrl( $wgLang->specialPage( "Upload" ) );
 	$wgOut->addHTML( "
 <form method=post enctype='multipart/form-data' action=\"{$action}\">
 <table border=0><tr>

@@ -84,19 +84,19 @@ function wfSpecialRecentchangeslinked()
 
 function lcCountLink( $lim, $d, $t )
 {
-	global $wgUser;
+	global $wgUser, $wgLang;
 	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink( "Special:Recentchangeslinked", "{$lim}",
-	  "target={$t}&days={$d}&limit={$lim}" );
+	$s = $sk->makeKnownLink( $wgLang->specialPage( "Recentchangeslinked" ),
+	  "{$lim}", "target={$t}&days={$d}&limit={$lim}" );
 	return $s;
 }
 
 function lcDaysLink( $lim, $d, $t )
 {
-	global $wgUser;
+	global $wgUser, $wgLang;
 	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink( "Special:Recentchangeslinked", "{$d}",
-	  "target={$t}&days={$d}&limit={$lim}" );
+	$s = $sk->makeKnownLink( $wgLang->specialPage( "Recentchangeslinked" ),
+	  "{$d}", "target={$t}&days={$d}&limit={$lim}" );
 	return $s;
 }
 

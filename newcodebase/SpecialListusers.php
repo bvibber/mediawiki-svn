@@ -2,7 +2,7 @@
 
 function wfSpecialListusers()
 {
-	global $wgUser, $wgOut, $offset, $limit;
+	global $wgUser, $wgOut, $wgLang, $offset, $limit;
 
 	if ( ! $limit ) {
 		$limit = $wgUser->getOption( "rclimit" );
@@ -13,7 +13,8 @@ function wfSpecialListusers()
 	$top = SearchEngine::showingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit, "Special:Listusers" );
+	$sl = SearchEngine::viewPrevNext( $offset, $limit,
+	  $wgLang->specialPage( "Listusers" ) );
 	$wgOut->addHTML( "<br>{$sl}\n<ol start=" . ( $offset + 1 ) . ">" );
 
 	$sql = "SELECT user_name,user_rights FROM user ORDER BY " .
@@ -25,7 +26,8 @@ function wfSpecialListusers()
 		$n = $s->user_name;
 		$r = $s->user_rights;
 
-		$l = $sk->makeLink( Namespace::getUserName() . ":{$n}", $n );
+		$l = $sk->makeLink( $wgLang->getNsText(
+		  Namespace::getUser() ) . ":{$n}", $n );
 
 		if ( "" != $r ) {
 			$link = $sk->makeKnownLink( wfMsg( "administrators" ), $r );

@@ -22,7 +22,8 @@ function wfSpecialPopularpages()
 	$top = SearchEngine::showingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit, "Special:Popularpages" );
+	$sl = SearchEngine::viewPrevNext( $offset, $limit,
+	  $wgLang->specialPage( "Popularpages" ) );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$s = "<ol start=" . ( $offset + 1 ) . ">";

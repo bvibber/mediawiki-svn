@@ -227,7 +227,7 @@ class Article {
 		}
 		$wgOut->addWikiText( $text );
 		
-		if ( Namespace::getImageIndex() == $wgTitle->getNamespace() ) {
+		if ( Namespace::getImage() == $wgTitle->getNamespace() ) {
 			$this->imageHistory();
 			$this->imageLinks();
 		}
@@ -746,7 +746,7 @@ enctype='application/x-www-form-urlencoded'>
 
 	function doDelete()
 	{
-		global $wgOut, $wgTitle, $wgUser;
+		global $wgOut, $wgTitle, $wgUser, $wgLang;
 		global $image, $oldimage, $wpReason;
 		$fname = "Article::doDelete";
 
@@ -791,7 +791,8 @@ enctype='application/x-www-form-urlencoded'>
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 
 		$sk = $wgUser->getSkin();
-		$loglink = $sk->makeKnownLink( Namespace::getWikipediaName() .
+		$loglink = $sk->makeKnownLink( $wgLang->getNsText(
+		  Namespace::getWikipedia() ) .
 		  ":" . wfMsg( "dellogpage" ), wfMsg( "deletionlog" ) );
 
 		$text = str_replace( "$1" , $deleted, wfMsg( "deletedtext" ) );
@@ -862,7 +863,7 @@ enctype='application/x-www-form-urlencoded'>
 		}
 		$logpage = wfStrencode( wfMsg( "dellogpage" ) );
 		$sql = "SELECT cur_id,cur_text FROM cur WHERE cur_namespace=" .
-		  Namespace::getWikipediaIndex() . " AND cur_title='" .
+		  Namespace::getWikipedia() . " AND cur_title='" .
 		  "{$logpage}'";
 		$res = wfQuery( $sql, $fname );
 
@@ -876,7 +877,8 @@ enctype='application/x-www-form-urlencoded'>
 		$uid = $wgUser->getID();
 		$ut = $wgUser->getName();
 		if ( 0 == $uid ) { $ul = $ut; }
-		else { $ul = "[[" . Namespace::getUserName() . ":{$ut}|{$ut}]]"; }
+		else { $ul = "[[" . $wgLang->getNsText( Namespace::getUser() ) .
+		  ":{$ut}|{$ut}]]"; }
 
 		$art = $title->getPrefixedText();
 		$d = $wgLang->timeanddate( date( "YmdHis" ), true );
@@ -935,7 +937,7 @@ enctype='application/x-www-form-urlencoded'>
 		if ( ! copy( "{$archive}/{$oldimage}", $curfile ) ) {
 			$wgOut->fileCopyError( "${archive}/{$oldimage}", $curfile );
 		}
-		wfRecordUpload( $name, $oldver, $size, "Reverted to earlier image" );
+		wfRecordUpload( $name, $oldver, $size, wfMsg( "reverted" ) );
 
 		$wgOut->setPagetitle( wfMsg( "actioncomplete" ) );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
@@ -983,7 +985,7 @@ enctype='application/x-www-form-urlencoded'>
 
 	function blockedIPpage()
 	{
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 
 		$wgOut->setPageTitle( wfMsg( "blockedtitle" ) );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
@@ -993,7 +995,8 @@ enctype='application/x-www-form-urlencoded'>
 		$reason = $wgUser->blockedFor();
 
 		$name = User::whoIs( $id );
-		$link = "[[" . Namespace::getUserName() . ":{$name}|{$name}]]";
+		$link = "[[" . $wglang->getNsText( Namespace::getUser() ) .
+		  ":{$name}|{$name}]]";
 
 		$text = str_replace( "$1", $link, wfMsg( "blockedtext" ) );
 		$text = str_replace( "$2", $reason, $text );
@@ -1033,10 +1036,10 @@ enctype='application/x-www-form-urlencoded'>
 		$d = $wgLang->timeanddate( date( "YmdHis" ), false ) .
 		  " (" . date( "T" ) . ")";
 
-		$text = preg_replace( "/~~~~/", "[[" . Namespace::getUserName() .
-		  ":$n|$k]] $d", $text );
-		$text = preg_replace( "/~~~/", "[[" . Namespace::getUserName() .
-		  ":$n|$k]]", $text );
+		$text = preg_replace( "/~~~~/", "[[" . $wgLang->getNsText(
+		  Namespace::getUser() ) . ":$n|$k]] $d", $text );
+		$text = preg_replace( "/~~~/", "[[" . $wgLang->getNsText(
+		  Namespace::getUser() ) . ":$n|$k]]", $text );
 
 		# Context links: [[|name]] and [[name (context)|]]
 		#

@@ -19,7 +19,7 @@ class DBLockForm {
 
 	function showForm( $err )
 	{
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 		global $wpLockConfirm;
 
 		$wgOut->setPagetitle( wfMsg( "lockdb" ) );
@@ -31,7 +31,8 @@ class DBLockForm {
 		}
 		$lc = wfMsg( "lockconfirm" );
 		$lb = wfMsg( "lockbtn" );
-		$action = wfLocalUrlE( "Special:Lockdb","action=submit" );
+		$action = wfLocalUrlE( $wgLang->specialPage( "Lockdb" ),
+		  "action=submit" );
 
 		$wgOut->addHTML( "<p>
 <form method=post action=\"{$action}\">
@@ -67,7 +68,8 @@ class DBLockForm {
 		  $wgLang->timeanddate( date( "YmdHis" ) ) . "\n" );
 		fclose( $fp );
 
-		$success = wfLocalUrl( "Special:Lockdb", "action=success" );
+		$success = wfLocalUrl( $wgLang->specialPage( "Lockdb" ),
+		  "action=success" );
 		$wgOut->redirect( $success );
 	}
 

@@ -21,7 +21,8 @@ function wfSpecialNewpages()
 	$top = SearchEngine::showingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit, "Special:Newpages" );
+	$sl = SearchEngine::viewPrevNext( $offset, $limit,
+	  $wgLang->specialPage( "Newpages" ) );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 
 	$sk = $wgUser->getSkin();

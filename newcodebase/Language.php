@@ -1,9 +1,19 @@
 <?
 
-/* private */ $wgValidNamespacesEn = array(
-	"Special", "Talk", "User", "User_talk", 
-	"Wikipedia", "Wikipedia_talk", "Image",
-	"Image_talk"
+# The names of the namespaces can be set here, but the numbers
+# are magical, so don't change or move them!  The Namespace class
+# encapsulates some of the magic-ness.
+#
+/* private */ $wgNamespaceNamesEn = array(
+	-1	=> "Special",
+	0	=> "",
+	1	=> "Talk",
+	2	=> "User",
+	3	=> "User_talk",
+	4	=> "Wikipedia",
+	5	=> "Wikipedia_talk",
+	6	=> "Image",
+	7	=> "Image_talk"
 );
 
 /* private */ $wgQuickbarSettingsEn = array(
@@ -15,7 +25,7 @@
 );
 
 /* private */ $wgUserTogglesEn = array(
-	"hover"	=> "Show hoverbox over wiki links",
+	"hover"		=> "Show hoverbox over wiki links",
 	"underline" => "Underline links",
 	"highlightbroken" => "Highlight links to empty topics",
 	"justify"	=> "Justify paragraphs",
@@ -25,15 +35,30 @@
 );
 
 /* private */ $wgLanguageNamesEn = array(
-	"w" => "English", "af" => "Afrikaans", "ar" => "Arabic",
-	"ca" => "Catalan", "zh" => "Chinese", "dk" => "Danish",
-	"nl" => "Dutch", "de" => "German", "eo" => "Esperanto",
-	"fr" => "French", "he" => "Hebrew", "hu" => "Hungarian",
-	"it" => "Italian", "ja" => "Japanese", "no" => "Norwegian",
-	"pl" => "Polish", "pt" => "Portugese", "ru" => "Russian",
-	"sh" => "Serbocroatian", "si" => "Slovene",
-	"simple" => "Simple English", "es" => "Spanish",
-	"sv" => "Swedish", "en" => "English"
+	"w"		=> "English",
+	"af"	=> "Afrikaans",
+	"ar"	=> "Arabic",
+	"ca"	=> "Catalan",
+	"zh"	=> "Chinese",
+	"dk"	=> "Danish",
+	"nl"	=> "Dutch",
+	"de"	=> "German",
+	"eo"	=> "Esperanto",
+	"fr"	=> "French",
+	"he"	=> "Hebrew",
+	"hu"	=> "Hungarian",
+	"it"	=> "Italian",
+	"ja"	=> "Japanese",
+	"no"	=> "Norwegian",
+	"pl"	=> "Polish",
+	"pt"	=> "Portugese",
+	"ru"	=> "Russian",
+	"sh"	=> "Serbocroatian",
+	"si"	=> "Slovene",
+	"simple" => "Simple English",
+	"es"	=> "Spanish",
+	"sv"	=> "Swedish",
+	"en"	=> "English"
 );
 
 /* private */ $wgWeekdayNamesEn = array(
@@ -53,8 +78,8 @@
 );
 
 # All special pages have to be listed here: a description of ""
-# will make them not show up on the "SpecialPages" page, which
-# is the right thing for many of them.
+# will make them not show up on the "Special Pages" page, which
+# is the right thing for some of them (such as the "targeted" ones).
 #
 /* private */ $wgValidSpecialPagesEn = array(
 	"Userlogin"		=> "",
@@ -559,6 +584,7 @@ All times shown are server (U.S. Pacific) time.
 "deletionlog"	=> "deletion log",
 "reverted"		=> "Reverted to earlier revision",
 "deletecomment"	=> "Reason for deletion",
+"imagereverted" => "Revert to earlier version was successful.",
 
 # Contributions
 #
@@ -667,8 +693,26 @@ Please choose another name.",
 class Language {
 
 	function getNamespaces() {
-		global $wgValidNamespacesEn;
-		return $wgValidNamespacesEn;
+		global $wgNamespaceNamesEn;
+		return $wgNamespaceNamesEn;
+	}
+
+	function getNsText( $index ) {
+		global $wgNamespaceNamesEn;
+		return $wgNamespaceNamesEn[$index];
+	}
+
+	function getNsIndex( $text ) {
+		global $wgNamespaceNamesEn;
+
+		foreach ( $wgNamespaceNamesEn as $i => $n ) {
+			if ( 0 == strcmp( $n, $text ) ) { return $i; }
+		}
+		return false;
+	}
+
+	function specialPage( $name ) {
+		return $this->getNsText( Namespace::getSpecial() ) . ":" . $name;
 	}
 
 	function getQuickbarSettings() {

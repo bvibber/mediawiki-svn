@@ -49,14 +49,15 @@ function wfSpecialImagelist()
 	$sk = $wgUser->getSkin();
 	$cap = wfMsg( "ilshowmatch" );
 	$sub = wfMsg( "ilsubmit" );
-	$action = wfLocalUrlE( "Special:Imagelist", "sort=byname&limit={$limit}" );
+	$action = wfLocalUrlE( $wgLang->specialPage( "Imagelist" ),
+	  "sort=byname&limit={$limit}" );
 
 	$wgOut->addHTML( "<form method=post action=\"{$action}\">" .
 	  "{$cap}: <input type=text size=8 name='wpIlMatch' value=''> " .
 	  "<input type=submit name='wpIlSubmit' value='{$sub}'></form>" );
 
 	$nums = array( 50, 100, 250, 500, 1000, 2500, 5000 );
-	$here = "Special:Imagelist";
+	$here = $wgLang->specialPage( "Imagelist" );
 
 	$fill = "";
 	$first = true;
@@ -89,16 +90,16 @@ function wfSpecialImagelist()
 		$name = $s->img_name;
 		$ut = $s->img_user_text;
 		if ( 0 == $s->img_user ) { $ul = $ut; }
-		else { $ul = $sk->makeLink( Namespace::getUserName() . ":{$ut}",
-		  $ut ); }
+		else { $ul = $sk->makeLink( $wgLang->getNsText(
+		  Namespace::getUser() ) . ":{$ut}", $ut ); }
 
 		$ilink = "<a href=\"" . wfImageUrl( $name ) .
 		  "\">{$name}</a>";
 
 		$nb = str_replace( "$1", $s->img_size, wfMsg( "nbytes" ) );
 		$l = "(" .
-		  $sk->makeKnownLink( Namespace::getImageName() . ":{$name}",
-		  wfMsg( "imgdesc" ) ) .
+		  $sk->makeKnownLink( $wgLang->getNsText(
+		  Namespace::getImage() ) . ":{$name}", wfMsg( "imgdesc" ) ) .
 		  ") {$ilink} . . {$nb} . . {$ul} . . " .
 		  $wgLang->timeanddate( $s->img_timestamp, true );
 

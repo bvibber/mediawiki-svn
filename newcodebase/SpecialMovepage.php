@@ -22,7 +22,7 @@ class MovePageForm {
 
 	function showForm( $err )
 	{
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 		global $wpNewTitle, $wpOldTitle, $target;
 
 		$wgOut->setPagetitle( wfMsg( "movepage" ) );
@@ -42,7 +42,8 @@ class MovePageForm {
 		$ma = wfMsg( "movearticle" );
 		$newt = wfMsg( "newtitle" );
 		$mpb = wfMsg( "movepagebtn" );
-		$action = wfLocalUrlE( "Special:Movepage", "action=submit" );
+		$action = wfLocalUrlE( $wgLang->specialPage( "Movepage" ),
+		  "action=submit" );
 
 		if ( "" != $err ) {
 			$wgOut->setSubtitle( wfMsg( "formerror" ) );
@@ -69,7 +70,7 @@ class MovePageForm {
 
 	function doSubmit()
 	{
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 		global $wpNewTitle, $wpOldTitle, $target;
 		global $wgDeferredUpdateList;
 		$fname = "MovePageForm::doSubmit";
@@ -128,7 +129,7 @@ class MovePageForm {
 
 		$nu = urlencode( $wpNewTitle );
 		$ou = urlencode( $wpOldTitle );
-		$success = wfLocalUrl( "Special:Movepage",
+		$success = wfLocalUrl( $wgLang->specialPage( "Movepage" ),
 		  "action=success&oldtitle={$ou}&newtitle={$nu}" );
 		$wgOut->redirect( $success );
 	}
