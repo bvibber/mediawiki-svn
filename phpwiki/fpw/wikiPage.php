@@ -696,7 +696,8 @@ class WikiPage extends WikiTitle {
 		global $user ;
 # Removed automatic links for CamelCase; wasn't working, anyway...
 #		$s = ereg_replace ( "([\.|\n| )([a-z0-9]*[A-Z0-9]+[A-Za-z0-9]*)( |\n|\.)" , "\\1[[\\2]]\\3" , $s ) ;
-		$s = $this->removeHTMLtags ( $s ) ; # Removing "forbidden" HTML tags
+		if ( ! $this->isSpecialPage )
+			$s = $this->removeHTMLtags ( $s ) ; # Removing "forbidden" HTML tags
 		#$s = ereg_replace ( "&amp;([a-zA-Z0-9#]+);" , "&\\1;" , $s ) ; # That's a long story... FIXME: What is this for? It mostly seems to make it very hard to write the code for an entity instead of the entity itself.
 
 		# Now some repalcements wiki->HTML
