@@ -23,6 +23,7 @@ class FindSpamPage extends SpecialPage
 		$this->setHeaders();
 		if ( !$this->userCanExecute( $wgUser ) ) {
 			$this->displayRestrictionError();
+			return;
 		}
 
 		$ip = trim( $wgRequest->getText( 'ip' ) );
