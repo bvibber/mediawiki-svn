@@ -279,14 +279,16 @@ class OutputPage {
 
 	function readOnlyPage()
 	{
-		global $wgUser;
+		global $wgUser, $wgReadOnlyFile;
 
 		$this->setPageTitle( wfMsg( "readonly" ) );
 		$this->setRobotpolicy( "noindex,nofollow" );
 		$this->setArticleFlag( false );
 
-		$this->addHTML( "<p>" . wfMsg( "readonlytext" ) );
-		$this->returnToMain();
+		$reason = implode( "", file( $wgReadOnlyFile ) );
+		$text = str_replace( "$1", $reason, wfMsg( "readonlytext" ) );
+		$this->addHTML( $text );
+		$this->returnToMain( false );
 	}
 
 	function fatalError( $message )
@@ -329,7 +331,7 @@ class OutputPage {
 
 	function fileNotFoundError( $name )
 	{
-		$msg = str_replace( "$1", $name, wfMsg( "filenotfounderror" ) );
+		$msg = str_replace( "$1", $name, wfMsg( "filenotfound" ) );
 		$this->fatalError( $msg );
 	}
 

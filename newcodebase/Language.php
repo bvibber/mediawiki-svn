@@ -317,9 +317,13 @@ MySQL returned error \"<tt>$3: $4</tt>\".",
 "noconnect"		=> "Could not connect to DB on $1",
 "nodb"			=> "Could not select database $1",
 "readonly"		=> "Database locked",
+"enterlockreason" => "Enter a reason for the lock, including an estimate
+of when the lock will be released",
 "readonlytext"	=> "The Wikipedia database is currently locked to new
-entries and other modifications, probably for routine database maintenance.
-Please try again later.\n",
+entries and other modifications, probably for routine database maintenance,
+after which it will be back to normal.
+The administrator who locked it offered this explanation:
+<p>$1",
 "missingarticle" => "The database did not find the text of a page
 that it should have found, named \"$1\".
 This is not a database error, but likely a bug in the software.

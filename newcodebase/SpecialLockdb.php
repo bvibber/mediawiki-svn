@@ -8,6 +8,9 @@ function wfSpecialLockdb()
 		$wgOut->developerRequired();
 		return;
 	}
+	$fields = array( "wpLockReason" );
+	wfCleanFormFields( $fields );
+
 	$f = new DBLockForm();
 
 	if ( "success" == $action ) { $f->showSuccess(); }
@@ -31,11 +34,15 @@ class DBLockForm {
 		}
 		$lc = wfMsg( "lockconfirm" );
 		$lb = wfMsg( "lockbtn" );
+		$elr = wfMsg( "enterlockreason" );
 		$action = wfLocalUrlE( $wgLang->specialPage( "Lockdb" ),
 		  "action=submit" );
 
 		$wgOut->addHTML( "<p>
 <form method=post action=\"{$action}\">
+{$elr}:
+<textarea name='wpLockReason' rows=10 cols=60 wrap=virtual>
+</textarea>
 <table border=0><tr>
 <td align='right'>
 <input type=checkbox name='wpLockConfirm'>
@@ -52,7 +59,7 @@ class DBLockForm {
 	function doSubmit()
 	{
 		global $wgOut, $wgUser, $wgLang;
-		global $wpLockConfirm, $wgReadOnlyFile;
+		global $wpLockConfirm, $wpLockReason, $wgReadOnlyFile;
 
 		if ( ! $wpLockConfirm ) {
 			$this->showForm( wfMsg( "locknoconfirm" ) );
@@ -64,8 +71,9 @@ class DBLockForm {
 			$wgOut->fileNotFoundError( $wgReadOnlyFile );
 			return;
 		}
-		fwrite( $fp, "Database locked by " . $wgUser->getName() . " at " .
-		  $wgLang->timeanddate( date( "YmdHis" ) ) . "\n" );
+		fwrite( $fp, $wpLockReason );
+		fwrite( $fp, "\n<p>(by " . $wgUser->getName() . " at " .
+		  $wgLang->timeanddate( date( "YmdHis" ) ) . ")\n" );
 		fclose( $fp );
 
 		$success = wfLocalUrl( $wgLang->specialPage( "Lockdb" ),

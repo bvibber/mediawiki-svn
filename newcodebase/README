@@ -1,4 +1,4 @@
-2002-06-08
+2002-08-06
 
 This is a new codebase for the Wikipedia project
 (http://www.wikipedia.com), though it is intended to be
@@ -11,18 +11,20 @@ Derivative works and later versions of the code will also be
 considered free software licensed under the same terms.
 
 Other developers include Magnus Manske, Jan Hidders,
-Brion Vibber, Axel Boldt, and Geoffrey T. Dairiki.  Many thanks
-to the Wikipedia regulars for testing and suggestions.
+Brion Vibber, Axel Boldt, and Geoffrey T. Dairiki.
+Many thanks to the Wikipedia regulars for testing and
+suggestions.
 
 The code is currently maintained at Sourceforge under the
-project "wikipedia".  You can view the code in CVS, report bugs
-and make feature requests there:
+project "wikipedia".  You can view the code in CVS, report
+bugs and make feature requests there:
 
   http://wikipedia.sourceforge.net
 
-The code is written in PHP.  It is tested mainly on version 4.06,
+The code is written in PHP.  It was tested mainly on version 4.06,
 but it is known to run in later versions.  I requires MySQL 3.23
-or later, and PHP-MySQL.
+or later, and PHP-MySQL.  It is now running with PHP 4.2.2 and
+MySQL 3.23.49 at http://www.wikipedia.com .
 
 -- Lee Daniel Crocker <lee@piclab.com>
 
