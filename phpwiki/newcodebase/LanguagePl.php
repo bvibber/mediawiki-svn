@@ -463,7 +463,7 @@ By wprowadzić swoje zmiany musisz zmodyfikować tekst z górnego pola.
 \"Zapisz\".\n<p>",
 "yourtext"		=> "Twój tekst",
 "storedversion" => "Zapisana wersja",
-"editingold"	=> "<font color="red"><strong>OSTRZEŻENIE: Edytujesz inną niż bieżąca wersję tej strony.
+"editingold"	=> "<font color=\"red\"><strong>OSTRZEŻENIE: Edytujesz inną niż bieżąca wersję tej strony.
 Jeśli zapiszesz ją wszystkie późniejsze wersje zostaną skasowane.</strong></font>\n",
 "yourdiff"		=> "Różnice",
 "copyrightwarning" => "Proszę pamiętać o tym, że przyjmuje się, iż wszelki
