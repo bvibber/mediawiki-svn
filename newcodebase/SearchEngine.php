@@ -131,13 +131,13 @@ class SearchEngine {
 
 		$nlink = "<a href=\"" . wfLocalUrlE( $link, $q ) . "\">{$next}</a>";
 		$nums = SearchEngine::numLink( $offset, 20, $link ) . " | " .
-		  SearchEngine::numLink( $offset, 50, $link ) . " | " .
-		  SearchEngine::numLink( $offset, 100, $link ) . " | " .
-		  SearchEngine::numLink( $offset, 250, $link ) . " | " .
-		  SearchEngine::numLink( $offset, 500, $link ) . " | " .
-		  SearchEngine::numLink( $offset, 1000, $link ) . " | " .
-		  SearchEngine::numLink( $offset, 2500, $link ) . " | " .
-		  SearchEngine::numLink( $offset, 5000, $link );
+		  SearchEngine::numLink( $offset, 50, $link, $query ) . " | " .
+		  SearchEngine::numLink( $offset, 100, $link, $query ) . " | " .
+		  SearchEngine::numLink( $offset, 250, $link, $query ) . " | " .
+		  SearchEngine::numLink( $offset, 500, $link, $query ) . " | " .
+		  SearchEngine::numLink( $offset, 1000, $link, $query ) . " | " .
+		  SearchEngine::numLink( $offset, 2500, $link, $query ) . " | " .
+		  SearchEngine::numLink( $offset, 5000, $link, $query );
 
 		$sl = str_replace( "$1", $plink, wfMsg( "viewprevnext" ) );
 		$sl = str_replace( "$2", $nlink, $sl );
@@ -145,12 +145,14 @@ class SearchEngine {
 		return $sl;
 	}
 
-	function numLink( $offset, $limit, $link )
+	function numLink( $offset, $limit, $link, $query = "" )
 	{
 		global $wgUser;
+		if ( "" == $query ) { $q = ""; }
+		else { $q = "{$query}&"; }
+		$q .= "limit={$limit}&offset={$offset}";
 
-		$s = "<a href=\"" . wfLocalUrlE( $link,
-		  "limit={$limit}&offset={$offset}" ) . "\">{$limit}</a>";
+		$s = "<a href=\"" . wfLocalUrlE( $link, $q ) . "\">{$limit}</a>";
 		return $s;
 	}
 
