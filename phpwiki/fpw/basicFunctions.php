@@ -149,14 +149,14 @@ function wikify ( $s )
 			if ( count ( $c ) == 1 ) {
 				if ( $c[0] == $title ) $s .= $c[0].$b[1] ; # Removing self-link
 				else if ( in_array ( ucfirst($c[0]) , $l ) ) $s .= $c[0].$b[1] ; # Removing duplicate link
-				else if ( $vpage->getNiceTitle ( $c[0] ) == $talkPage ) # Remove own talk page
+				else if ( ucfirstIntl ( $vpage->getNiceTitle ( $c[0] ) ) == ucfirstIntl ( $talkPage ) ) # Remove own talk page
 					$s .= $b[1] ;
 				else $s .= "[[".$c[0]."]]".$b[1] ;
 			} else {
-				if ( ucfirst ( $c[0] ) == ucfirst ( substr ( $c[1] , 0 , strlen ( $c[0] ) ) ) ) # [[test|tests]] -> [[test]]s
+				if ( ucfirstIntl ( $c[0] ) == ucfirstIntl ( substr ( $c[1] , 0 , strlen ( $c[0] ) ) ) ) # [[test|tests]] -> [[test]]s
 					$s .= "[[".substr ( $c[1] , 0 , strlen ( $c[0] ) )."]]".substr ( $c[1] , strlen ( $c[0] ) ).$b[1] ;
 				else if ( in_array ( ucfirst($c[0]) , $l ) ) $s .= $c[1].$b[1] ; # Removing duplicate link
-				else if ( $vpage->getNiceTitle ( $c[0] ) == $talkPage ) # Remove own talk page
+				else if ( ucfirstIntl ( $vpage->getNiceTitle ( $c[0] ) ) == ucfirstIntl ( $talkPage ) ) # Remove own talk page
 					$s .= $b[1] ;
 				else $s .= "[[".$c[0]."|".$c[1]."]]".$b[1] ;
 			}
