@@ -166,8 +166,9 @@ recognized by the Wikipedia software",
 # General errors
 #
 "databaseerror" => "Database error",
-"dberrortext"	=> "An unrecoverable database error has occurred.
-Please report this to an administrator.
+"dberrortext"	=> "A database query syntax error has occurred.
+This could be because of an illegal search query, or it may indicate
+a bug in the software.
 The last attempted database query was:
 <blockquote><tt>$1</tt></blockquote>
 from within function \"<tt>$2</tt>\".
