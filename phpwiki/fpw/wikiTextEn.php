@@ -377,6 +377,7 @@ $wikiLongPagesText = "'''These are all the articles in the database, sorted by l
 $wikiStubChars = "$1 chars" ;
 $wikiAskSQL = "MySQL access" ;
 $wikiAskSQLtext = "This function is available for sysops only.<br>''Please, do not press return/enter, '''always''' click on the ask button!''" ;
+$wikiSQLSafetyMessage = "Sorry, unless you are a developer you can only run SELECT queries." ;
 $wikiStubDelete = "<b>Delete this page!</b>" ;
 $wikiStubLinkHere = "$1 articles link here." ;
 $wikiStubShowLinks = "Toggle \"show links\" option" ;
