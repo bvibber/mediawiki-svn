@@ -20,10 +20,10 @@ function wfSpecialUnusedimages()
 	$sk = $wgUser->getSkin();
 
 	$wgOut->addHTML( wfMsg( "unusedimagestext" ) );
-	$top = SearchEngine::showingResults( $offset, $limit );
+	$top = wfShowingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit,
+	$sl = wfViewPrevNext( $offset, $limit,
 	  $wgLang->specialPage( "Unusedimages" ) );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 

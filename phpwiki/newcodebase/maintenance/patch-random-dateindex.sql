@@ -9,6 +9,8 @@
 --
 --  * Adds inverse_timestamp columns to cur and old and indexes
 --    to allow descending timestamp sort in history, contribs, etc
+--    (Requires changes to Article.php, DatabaseFunctions.php,
+--     ... )
 --                       cur_timestamp  inverse_timestamp
 --     99999999999999 - 20030209222556 = 79969790777443
 --     99999999999999 - 20030211083412 = 79969788916587

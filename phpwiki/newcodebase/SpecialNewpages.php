@@ -22,10 +22,10 @@ function wfSpecialNewpages()
 	  " ORDER BY rc_timestamp DESC LIMIT {$offset}, {$limit}";
 	$res = wfQuery( $sql, $fname );
 
-	$top = SearchEngine::showingResults( $offset, $limit );
+	$top = wfShowingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit,
+	$sl = wfViewPrevNext( $offset, $limit,
 	  $wgLang->specialPage( "Newpages" ) );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 

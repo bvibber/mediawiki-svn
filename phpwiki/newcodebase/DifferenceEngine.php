@@ -95,20 +95,11 @@ cellpadding=0 cellspacing='4px'><tr>
 			  wfMsg( "revisionasof" ) );
 		}
 		if ( 0 == $this->mOldid ) {
-			# old table is too slow to sort -- check RC first
-			$sql = "SELECT old_timestamp,old_text FROM old,recentchanges
-			WHERE old_id=rc_last_oldid AND rc_this_oldid=0 AND
-			rc_namespace=" . $wgTitle->getNamespace() . " AND
-			rc_title='" . wfStrencode( $wgTitle->getDBkey() ) . "'";
+			$sql = "SELECT old_timestamp,old_text FROM old USE INDEX (name_title_timestamp) WHERE " .
+			  "old_namespace=" . $wgTitle->getNamespace() . " AND " .
+			  "old_title='" . wfStrencode( $wgTitle->getDBkey() ) .
+			  "' ORDER BY inverse_timestamp LIMIT 1";
 			$res = wfQuery( $sql, $fname );
-			
-			if( 0 == wfNumRows( $res ) ) {
-				$sql = "SELECT old_timestamp,old_text FROM old WHERE (" .
-				  "old_namespace=" . $wgTitle->getNamespace() . " AND " .
-				  "old_title='" . wfStrencode( $wgTitle->getDBkey() ) .
-				  "') ORDER BY old_timestamp DESC LIMIT 1";
-				$res = wfQuery( $sql, $fname );
-			}
 		} else {
 			$sql = "SELECT old_timestamp,old_text FROM old WHERE " .
 			  "old_id={$this->mOldid}";

@@ -25,10 +25,10 @@ function wfSpecialLonelypages()
 
 	$sk = $wgUser->getSkin();
 
-	$top = SearchEngine::showingResults( $offset, $limit );
+	$top = wfShowingResults( $offset, $limit );
 	$wgOut->addHTML( "<p>{$top}\n" );
 
-	$sl = SearchEngine::viewPrevNext( $offset, $limit,
+	$sl = wfViewPrevNext( $offset, $limit,
 	  $wgLang->specialPage( "Lonelypages" ) );
 	$wgOut->addHTML( "<br>{$sl}\n" );
 

@@ -48,7 +48,7 @@ function wfSpecialRecentchangeslinked()
 	  "cur_user_text,cur_timestamp,cur_minor_edit,cur_is_new FROM links, cur " .
 	  "WHERE cur_timestamp > '{$cutoff}' {$cmq} AND l_to=cur_id AND l_from='" .
       wfStrencode( $nt->getPrefixedDBkey() ) . "' GROUP BY cur_id " .
-	  "ORDER BY cur_timestamp DESC LIMIT {$limit}";
+	  "ORDER BY inverse_timestamp LIMIT {$limit}";
 	$res = wfQuery( $sql, $fname );
 
 	$note = str_replace( "$1", $limit, wfMsg( "rcnote" ) );

@@ -115,4 +115,18 @@ function wfUnix2Timestamp( $unixtime ) {
 	return date( "YmdHis", $timestamp );
 }
 
+function wfTimestampNow() {
+	# return NOW
+	return date( "YmdHis" );
+}
+
+# Sorting hack for MySQL 3, which doesn't use index sorts for DESC
+function wfInvertTimestamp( $ts ) {
+	return strtr(
+		$ts,
+		"0123456789",
+		"9876543210"
+	);
+}
+
 ?>

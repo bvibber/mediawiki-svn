@@ -145,7 +145,7 @@ class SearchEngine {
 		  "LIMIT {$offset}, {$limit}";
 		$res2 = wfQuery( $sql, $fname );
 
-		$top = SearchEngine::showingResults( $offset, $limit );
+		$top = wfShowingResults( $offset, $limit );
 		$wgOut->addHTML( "<p>{$top}\n" );
 
 		# For powersearch
@@ -154,7 +154,7 @@ class SearchEngine {
                 foreach ( $akk AS $ak )
                         $a2l .= "&{$ak}={$this->add2links[$ak]}" ;
 
-		$sl = SearchEngine::viewPrevNext( $offset, $limit, "",
+		$sl = wfViewPrevNext( $offset, $limit, "",
 		  "search=" . wfUrlencode( $this->mUsertext ) . $a2l );
 		$wgOut->addHTML( "<br>{$sl}\n" );
 
@@ -196,56 +196,6 @@ class SearchEngine {
 	{
 		$lc = "A-Za-z_'0-9\\x80-\\xFF\\-";
 		return $lc;
-	}
-
-	function showingResults( $offset, $limit )
-	{
-		$top = str_replace( "$1", $limit, wfMsg( "showingresults" ) );
-		$top = str_replace( "$2", $offset+1, $top );
-		return $top;
-	}
-
-	function viewPrevNext( $offset, $limit, $link, $query = "" )
-	{
-		global $wgUser;
-		$prev = str_replace( "$1", $limit, wfMsg( "prevn" ) );
-		$next = str_replace( "$1", $limit, wfMsg( "nextn" ) );
-
-		$sk = $wgUser->getSkin();
-		if ( 0 != $offset ) {
-			$po = $offset - $limit;
-			if ( $po < 0 ) { $po = 0; }
-			$q = "limit={$limit}&offset={$po}";
-			if ( "" != $query ) { $q .= "&{$query}"; }
-			$plink = "<a href=\"" . wfLocalUrlE( $link, $q ) . "\">{$prev}</a>";
-		} else { $plink = $prev; }
-
-		$no = $offset + $limit;
-		$q = "limit={$limit}&offset={$no}";
-		if ( "" != $query ) { $q .= "&{$query}"; }
-
-		$nlink = "<a href=\"" . wfLocalUrlE( $link, $q ) . "\">{$next}</a>";
-		$nums = SearchEngine::numLink( $offset, 20, $link , $query ) . " | " .
-		  SearchEngine::numLink( $offset, 50, $link, $query ) . " | " .
-		  SearchEngine::numLink( $offset, 100, $link, $query ) . " | " .
-		  SearchEngine::numLink( $offset, 250, $link, $query ) . " | " .
-		  SearchEngine::numLink( $offset, 500, $link, $query );
-
-		$sl = str_replace( "$1", $plink, wfMsg( "viewprevnext" ) );
-		$sl = str_replace( "$2", $nlink, $sl );
-		$sl = str_replace( "$3", $nums, $sl );
-		return $sl;
-	}
-
-	function numLink( $offset, $limit, $link, $query = "" )
-	{
-		global $wgUser;
-		if ( "" == $query ) { $q = ""; }
-		else { $q = "{$query}&"; }
-		$q .= "limit={$limit}&offset={$offset}";
-
-		$s = "<a href=\"" . wfLocalUrlE( $link, $q ) . "\">{$limit}</a>";
-		return $s;
 	}
 
 	function parseQuery()

@@ -569,16 +569,17 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		if ( preg_match( "/^#redirect/i", $text ) ) { $redir = 1; }
 		else { $redir = 0; }
 
-		$now = date( "YmdHis" );
+		$now = wfTimestampNow();
+		$won = wfInvertTimestamp( $now );
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
 		  "cur_restrictions,cur_user_text,cur_is_redirect," .
-		  "cur_is_new) VALUES ({$ns},'" . wfStrencode( $ttl ) . "', '" .
+		  "cur_is_new,cur_random,inverse_timestamp) VALUES ({$ns},'" . wfStrencode( $ttl ) . "', '" .
 		  wfStrencode( $text ) . "', '" .
 		  wfStrencode( $summary ) . "', '" .
 		  $wgUser->getID() . "', '{$now}', " .
 		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
-		  wfStrencode( $wgUser->getName() ) . "', $redir, 1)";
+		  wfStrencode( $wgUser->getName() ) . "', $redir, 1, RAND(), '{$won}')";
 		$res = wfQuery( $sql, $fname );
 
 		$newid = wfInsertId();
@@ -628,31 +629,33 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$this->mCountAdjustment = $this->isCountable( $text )
 			  - $this->isCountable( $oldtext );
 
+			if( $wgDBtransactions ) {
+				$sql = "BEGIN";
+				wfQuery( $sql );
+			}
+
 			$sql = "INSERT INTO old (old_namespace,old_title,old_text," .
 			  "old_comment,old_user,old_user_text,old_timestamp," .
-			  "old_minor_edit) VALUES (" .
+			  "old_minor_edit,inverse_timestamp) VALUES (" .
 			  $wgTitle->getNamespace() . ", '" .
 			  wfStrencode( $wgTitle->getDBkey() ) . "', '" .
 			  wfStrencode( $oldtext ) . "', '" .
 			  wfStrencode( $this->getComment() ) . "', " .
 			  $this->getUser() . ", '" .
 			  wfStrencode( $this->getUserText() ) . "', '" .
-			  $this->getTimestamp() . "', " . $me1 . ")";
+			  $this->getTimestamp() . "', " . $me1 . ", '" .
+			  wfInvertTimestamp( $this->getTimestamp() ) . "')";
 			$res = wfQuery( $sql, $fname );
 			$oldid = wfInsertID( $res );
 
-			if( $wgDBtransactions ) {
-				$sql = "BEGIN";
-				wfQuery( $sql );
-			}
-
-			$now = date( "YmdHis" );
+			$now = wfTimestampNow();
+			$won = wfInvertTimestamp( $now );
 			$sql = "UPDATE cur SET cur_text='" . wfStrencode( $text ) .
 			  "',cur_comment='" .  wfStrencode( $summary ) .
 			  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
 			  ",cur_timestamp='{$now}',cur_user_text='" .
 			  wfStrencode( $wgUser->getName() ) .
-			  "',cur_is_redirect={$redir}, cur_is_new=0 " .
+			  "',cur_is_redirect={$redir}, cur_is_new=0, inverse_timestamp='{$won}' " .
 			  "WHERE cur_id=" . $this->getID();
 			wfQuery( $sql, $fname );
 
@@ -861,12 +864,17 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			return;
 		}
 		
+		$offset = (int)$offset;
+		$limit = (int)$limit;
+		if( $limit == 0 ) $limit = 50;
 		$namespace = $wgTitle->getNamespace();
 		$title = $wgTitle->getText();
 		$sql = "SELECT old_id,old_user," .
-		  "old_comment,old_user_text,old_timestamp,old_minor_edit FROM old " .
-		  "WHERE old_namespace=" . $namespace . " AND " .
-		  "old_title='" . wfStrencode( $wgTitle->getDBkey() ) . "' ";
+		  "old_comment,old_user_text,old_timestamp,old_minor_edit ".
+		  "FROM old USE INDEX (name_title_timestamp) " .
+		  "WHERE old_namespace={$namespace} AND " .
+		  "old_title='" . wfStrencode( $wgTitle->getDBkey() ) . "' " .
+		  "ORDER BY inverse_timestamp LIMIT $offset, $limit";
 		$res = wfQuery( $sql, "Article::history" );
 
 		$revs = wfNumRows( $res );
@@ -877,9 +885,6 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		}
 		
 		$sk = $wgUser->getSkin();
-		$offset = (int)$offset;
-		$limit = (int)$limit;
-		if( $limit == 0 ) $limit = 50;
 		$numbar = SearchEngine::viewPrevNext(
 			$offset, $limit,
 			$wgTitle->getPrefixedText(),
@@ -893,21 +898,8 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		  $title, 0, $this->getComment(),
 		  ( $this->getMinorEdit() > 0 ) );
 
-		$sortbuffer = array();
-		$line = wfFetchObject( $res );
-		while ( $line ) {
-			array_unshift( $sortbuffer, $line );
-			$line = wfFetchObject( $res );
-		}
-		
-		$revs = count( $sortbuffer );
-		if( $offset >= $revs ) $offset = $revs-1;
-		if( $offset < 0 ) $offset = 0;
-		$max = $offset + $limit;
-		if( $max > $revs ) $max = $revs;
-				
-		for( $revnum = $offset; $revnum < $max; $revnum++ ) {
-			$line = $sortbuffer[$revnum];
+		$revs = wfNumRows( $res );
+		while ( $line = wfFetchObject( $res ) ) {
 			$s .= $sk->historyLine( $line->old_timestamp, $line->old_user,
 			  $line->old_user_text, $namespace,
 			  $title, $line->old_id,
@@ -1228,7 +1220,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			$wgOut->fileNotFoundError( $curfile );
 			return;
 		}
-		$oldver = date( "YmdHis" ) . "!{$name}";
+		$oldver = wfTimestampNow() . "!{$name}";
 		$size = wfGetSQL( "oldimage", "oi_size", "oi_archive_name='" .
 		  wfStrencode( $oldimage ) . "'" );
 
@@ -1275,9 +1267,10 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		
 		# Get the last edit not by this guy
 		$sql = "SELECT old_text,old_user,old_user_text
-		FROM old WHERE old_namespace={$n} AND old_title='{$tt}'
+		FROM old USE INDEX (name_title_timestamp)
+		WHERE old_namespace={$n} AND old_title='{$tt}'
 		AND (old_user <> {$uid} OR old_user_text <> '{$ut}')
-		ORDER BY old_timestamp DESC LIMIT 1";
+		ORDER BY inverse_timestamp LIMIT 1";
 		$res = wfQuery( $sql );
 		if( wfNumRows( $res ) != 1 ) {
 			# Something wrong
@@ -1324,7 +1317,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 
 		wfSeedRandom();
 		if ( 0 == mt_rand( 0, 999 ) ) {
-			$cutoff = date( "YmdHis", time() - ( 7 * 86400 ) );
+			$cutoff = wfUnix2Timestamp( time() - ( 7 * 86400 ) );
 			$sql = "DELETE FROM recentchanges WHERE rc_timestamp < '{$cutoff}'";
 			wfQuery( $sql );
 		}
@@ -1408,7 +1401,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		if(isset($wgLocaltimezone)) {
 			$oldtz = getenv("TZ"); putenv("TZ=$wgLocaltimezone");
 		}
-		$d = $wgLang->timeanddate( date( "YmdHis" ), false ) .
+		$d = $wgLang->timeanddate( wfTimestampNow(), false ) .
 		  " (" . date( "T" ) . ")";
 		if(isset($wgLocaltimezone)) putenv("TZ=$oldtz");
 

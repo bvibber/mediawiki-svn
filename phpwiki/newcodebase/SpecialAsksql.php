@@ -58,12 +58,13 @@ class SqlQueryForm {
 		global $wpSqlQuery;
 		global $wgDBsqluser, $wgDBsqlpassword;
 
+		# Use a limit, folks!
+		$wpSqlQuery = trim( $wpSqlQuery );
+		if( preg_match( "/^SELECT/i", $wpSqlQuery )
+			and !preg_mtch( "/LIMIT/i", $wpSqlQuery ) )
+			$wpSqlQuery .= " LIMIT 99";
+		}
 		if ( ! $wgUser->isDeveloper() ) {
-			#if ( 0 != strcmp( "select", strtolower(
-			#  substr( $wpSqlQuery, 0, 6 ) ) ) ) {
-			#	$this->showForm( wfMsg( "selectonly" ) );
-			#	return;
-			#}
 			$connection = wfGetDB( $wgDBsqluser, $wgDBsqlpassword );
 		}
 		$res = wfQuery( $wpSqlQuery, "SpecialAsksql::doSubmit" );
