@@ -334,7 +334,9 @@ class User {
 	function addWatch( $title )
 	{
 		if( $this->mId ) {
-			$sql = "INSERT INTO watchlist (wl_user, wl_namespace,wl_title)
+			# REPLACE instead of INSERT because occasionally someone
+			# accidentally reloads a watch-add operation.
+			$sql = "REPLACE INTO watchlist (wl_user, wl_namespace,wl_title)
 			  VALUES ({$this->mId}," . (($title->getNamespace() | 1) - 1) .
 			  ",'" . wfStrencode( $title->getDBkey() ) . "')";
 			wfQuery( $sql );
