@@ -14,6 +14,7 @@ class WikiUser {
         if ( $this->options["skin"] == "" ) $this->skinBlank () ;
         else if ( $this->options["skin"] == "None" ) $this->skinBlank () ;
         else if ( $this->options["skin"] == "Star Trek" ) $this->skinStarTrek () ;
+        else if ( $this->options["skin"] == "Nostalgy" ) $this->skinNostalgy () ;
         }
 
     # This sets the options for the standard skin
@@ -48,6 +49,22 @@ class WikiUser {
         $this->options["tabLine0"] = " bgcolor=\"#550055\" " ;
         $this->options["tabLine1"] = "" ;
         $this->options["tabLine2"] = " bgcolor=\"#333333\"" ;
+        }
+    
+    # This sets the options for the Classic skin
+    function skinNostalgy () {
+	$this->skinBlank() ;
+        $this->options["background"] = "#FFFFFF" ;
+        $this->options["text"] = "#000000" ;
+#        $this->options["forceQuickBar"] = "none" ;
+#        $this->options["quickBarBackground"] = " bgcolor=yellow " ;
+#        $this->options["textTableBackground"] = " bgcolor=\"#444444\"" ;
+#        $this->options["forceLinks"] = " style=\"color:#0000FF;text-decoration:none\" " ;
+#        $this->options["leftImage"] = $wikiStarTrekImage ;
+#        $this->options["borderColor"] = "yellow" ;
+#        $this->options["tabLine0"] = " bgcolor=\"#550055\" " ;
+#        $this->options["tabLine1"] = "" ;
+#        $this->options["tabLine2"] = " bgcolor=\"#333333\"" ;
         }
     
     # Creates a style sheet for the page from the skin & link style options

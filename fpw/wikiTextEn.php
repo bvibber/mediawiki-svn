@@ -388,6 +388,7 @@ $wikiNoRefresh = "(The page was last refreshed just $1 minutes ago; please wait 
 $wikiLastRefreshed = "Last refreshed $1" ;
 $wikiValidate = "Validate this page" ;
 $wikiBlockIP = "Block this IP" ;
+$wikiNostalgy = "Nostalgy" ;
 
 #---------------------------
 #Functions
