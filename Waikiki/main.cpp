@@ -7,9 +7,10 @@ class TWikiInterface
     TWikiInterface () ;
     ~TWikiInterface () ;
     virtual void run (int argc, char *argv[]) ;
-    virtual void go ( TUCS s , TArticle &art ) ;
     
     private :
+    virtual void edit ( TUCS s , TArticle &art ) ;
+    virtual void go ( TUCS s , TArticle &art ) ;
     virtual void load_ini ( VTUCS &v ) ;
     TSpecialPages *sp ;
     } ;
@@ -76,8 +77,8 @@ void TWikiInterface::run (int argc, char *argv[])
         cout << "No parameters. Goodbye." << endl ;
         return ;
         }
-    
-    load_ini ( params ) ;
+
+    load_ini ( params ) ; // Imports default settings from ini
     
     TArticle art ;
     
@@ -134,6 +135,12 @@ void TWikiInterface::run (int argc, char *argv[])
            {
            action = s ;
            action.toupper() ;
+           }
+        else if ( key == "PHP2C" )
+           {
+           LANG->loadPHP ( "Language.php" ) ;
+           LANG->dumpCfile () ;
+           exit ( 0 ) ;
            }
         else if ( key == "MYSQL2SQLITE" )
            {
@@ -194,9 +201,10 @@ void TWikiInterface::run (int argc, char *argv[])
         {
         sp->render ( ft.getJustTitle() , art ) ;
         }
-    else if ( loadFromFile ) // View
+    else if ( loadFromFile )
         {
-        DB->getArticle ( ft , art ) ;
+        if ( action == "VIEW" ) DB->getArticle ( ft , art ) ;
+        else if ( action == "EDIT" ) edit ( ft , art ) ;
         }
     else
         {
@@ -215,7 +223,11 @@ void TWikiInterface::run (int argc, char *argv[])
 
     SKIN->setArticle ( &art ) ;
     
+    clock_t start = clock () ;
     TUCS html = SKIN->getArticleHTML() ;
+    html += "\n<!-- Rendering took " ;
+    html += TUCS::fromint ( (clock()-start)*100/CLK_TCK ) ;
+    html += " ms -->" ;
     
     SKIN->doHeaderStuff () ;
     OUTPUT->addHTML ( "<div id='content'>\n" ) ;
@@ -256,6 +268,10 @@ void TWikiInterface::go ( TUCS s , TArticle &art )
     
     art.setSource ( t ) ;
     }
+    
+void TWikiInterface::edit ( TUCS s , TArticle &art )
+    {
+    }
 
 
 //*****************************************************
@@ -269,7 +285,6 @@ int main(int argc, char *argv[])
 {
     cout << "Content-type: text/html\n\n" ;
     TWikiInterface w ;
-    LANG->loadPHP ( "Language.php" ) ;
     w.run ( argc , argv ) ;
 
 /*    TUCS s ( "A1B1C1" ) ;

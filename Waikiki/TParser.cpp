@@ -101,7 +101,10 @@ bool TParser::parse_internal_link ( TUCS &s )
     if ( LANG->isLanguageNamespace ( t.getNamespace() ) )
         {
         text = LANG->getLanguageName ( t.getNamespace() ) ;
-        TUCS x = SKIN->getInternalLink ( t , text , "external" ) ;
+//        TUCS x = SKIN->getInternalLink ( t , text , "external" ) ;
+        TUCS x = "<a class=external href=\"http://" + t.getNamespace() ;
+        x += ".wikipedia.org/wiki/" ;
+        x += t.getJustTitle() + "\">" + text + "</a>" ;
         OUTPUT->languageLinks.push_back ( x ) ;
         s = s.substr ( c ) ;
         }

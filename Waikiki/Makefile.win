@@ -5,25 +5,25 @@ CPP  = g++.exe
 CC   = gcc.exe
 WINDRES = windres.exe
 RES  = 
-OBJ  = main.o TUCS.o TParser.o TOutput.o TSkin.o TUser.o TTitle.o TArticle.o TLanguage.o TSkinBlank.o TDatabase.o TSpecialPages.o $(RES)
-LINKOBJ  = main.o TUCS.o TParser.o TOutput.o TSkin.o TUser.o TTitle.o TArticle.o TLanguage.o TSkinBlank.o TDatabase.o TSpecialPages.o $(RES)
+OBJ  = main.o TUCS.o TParser.o TOutput.o TSkin.o TUser.o TTitle.o TArticle.o TLanguage.o TSkinBlank.o TDatabase.o TSpecialPages.o LanguageEN.o $(RES)
+LINKOBJ  = main.o TUCS.o TParser.o TOutput.o TSkin.o TUser.o TTitle.o TArticle.o TLanguage.o TSkinBlank.o TDatabase.o TSpecialPages.o LanguageEN.o $(RES)
 LIBS =  -L"C:/Programme/Dev-Cpp/lib" sqlite.dll 
 INCS =  -I"C:/Programme/Dev-Cpp/include" 
 CXXINCS =  -I"C:/Programme/Dev-Cpp/include/c++"  -I"C:/Programme/Dev-Cpp/include/c++/mingw32"  -I"C:/Programme/Dev-Cpp/include/c++/backward"  -I"C:/Programme/Dev-Cpp/include" 
-BIN  = Waikiki.exe
+BIN  = ../../../../burn/Magnus/tinyweb/www/cgi-bin/Waikiki.exe
 CXXFLAGS = $(CXXINCS)  -w
 CFLAGS = $(INCS)  -fmessage-length=0 -w
 
 .PHONY: all all-before all-after clean clean-custom
 
-all: all-before Waikiki.exe all-after
+all: all-before ../../../../burn/Magnus/tinyweb/www/cgi-bin/Waikiki.exe all-after
 
 
 clean: clean-custom
 	rm -f $(OBJ) $(BIN)
 
 $(BIN): $(LINKOBJ)
-	$(CPP) $(LINKOBJ) -o "Waikiki.exe" $(LIBS)
+	$(CPP) $(LINKOBJ) -o "..\..\..\..\burn\Magnus\tinyweb\www\cgi-bin\Waikiki.exe" $(LIBS)
 
 main.o: main.cpp
 	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
@@ -60,3 +60,6 @@ TDatabase.o: TDatabase.cpp
 
 TSpecialPages.o: TSpecialPages.cpp
 	$(CPP) -c TSpecialPages.cpp -o TSpecialPages.o $(CXXFLAGS)
+
+LanguageEN.o: LanguageEN.cpp
+	$(CPP) -c LanguageEN.cpp -o LanguageEN.o $(CXXFLAGS)

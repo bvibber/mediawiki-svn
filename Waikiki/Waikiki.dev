@@ -1,7 +1,7 @@
 [Project]
 FileName=Waikiki.dev
 Name=Projekt1
-UnitCount=23
+UnitCount=24
 Type=1
 Ver=1
 ObjFiles=
@@ -15,7 +15,7 @@ CppCompiler=
 Linker=sqlite.dll_@@_
 IsCpp=1
 Icon=
-ExeOutput=
+ExeOutput=..\..\..\..\burn\Magnus\tinyweb\www\cgi-bin
 ObjectOutput=
 OverrideOutput=0
 OverrideOutputName=Waikiki.exe
@@ -269,6 +269,16 @@ BuildCmd=
 FileName=TSpecialPages.cpp
 CompileCpp=1
 Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit24]
+FileName=LanguageEN.cpp
+CompileCpp=1
+Folder=Projekt1
 Compile=1
 Link=1
 Priority=1000

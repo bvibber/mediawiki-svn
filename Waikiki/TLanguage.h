@@ -9,8 +9,10 @@ class TLangGroup
     {
     public :
     TUCS name ;
-    void setTrans ( TUCS k , TUCS v ) ;
-    TUCS getTrans ( TUCS k ) ;
+    virtual void addTrans ( TUCS k , TUCS v ) ;
+    virtual void setTrans ( TUCS k , TUCS v ) ;
+    virtual TUCS getTrans ( TUCS k ) ;
+    virtual VTUCS getKeys () ;
     
     private :
     VTUCS key , value ;
@@ -38,9 +40,13 @@ class TLanguage
     virtual void setData ( TUCS s , TUCS t ) ;
     virtual TUCS getData ( TUCS t ) ;
     
+    virtual void dumpCfile () ;
+    
     private :
+    virtual void initEN () ;
     virtual uint getGroup ( TUCS s ) ;
     vector <TLangGroup> tg ;
+    string lid ;
     } ;
 
 #endif

@@ -33,6 +33,7 @@ void TLanguage::loadPHP ( string file )
     
     VTUCS varr , vname ;
     s.explode ( "$wg" , v ) ;
+    tg.clear() ;
     for ( a = 1 ; a < v.size() ; a++ )
         {
         b = v[a].find ( "=" ) ;
@@ -120,9 +121,43 @@ void TLanguage::fromPHP ( TUCS &s , TUCS y )
         }
     s.trim() ;
     }
+    
+void TLanguage::dumpCfile ()
+    {
+    string fn = "Language" + lid + ".cpp" ;
+    ofstream out ( fn.c_str() , ios::out ) ;
+    uint a , b ;
+    out << "// THIS FILE WAS AUTOMATICALLY GENERATED FROM A Language.php FILE." << endl ;
+    out << "// YOU CAN CONVERT A Language.php FILE BY RUNNING THE PROGRAM " ;
+    out << "// WITH THE 'PHP2C' PARAMETER" << endl ;
+    out << "#include \"TLanguage.h\"" << endl << endl ;
+    out << "void TLanguage::init" << lid << " ()" << endl ;
+    out << "  {" << endl ;
+    out << "  tg.clear() ;" << endl ;
+    out << "  int cnt = 0 ;" << endl ;
+    for ( a = 0 ; a < tg.size() ; a++ )
+        {
+        out << "  tg.push_back ( TLangGroup () ) ;" << endl ;
+        out << "  tg[cnt].name = \"" ;
+        out << tg[a].name.getstring() << "\" ;" << endl ;
+        VTUCS k = tg[a].getKeys() ;
+        for ( b = 0 ; b < k.size() ; b++ )
+           {
+           TUCS v = tg[a].getTrans ( k[b] ) ;
+           out << "  tg[cnt].addTrans ( \"" ;
+           out << k[b].getstring() << "\" , \"" ;
+           out << v.getstring() << "\" ) ;" << endl ;
+           }
+        out << "  cnt++ ;" << endl ;
+        }
+    out << "  }" << endl ;
+    }
 
 TLanguage::TLanguage ( string l )
     {
+    lid = l ;
+    if ( lid == "EN" ) initEN () ;
+    else loadPHP ( "Language.php" ) ; // Fallback
     }
     
 uint TLanguage::getGroup ( TUCS s )
@@ -206,6 +241,14 @@ TUCS TLanguage::getLanguageName ( TUCS s )
 
 //************************************
 
+void TLangGroup::addTrans ( TUCS k , TUCS v )
+    {
+    key.push_back ( k ) ;
+    value.push_back ( v ) ;
+
+//    trans[(char*)k.getstring().c_str()] = v ;
+    }
+    
 void TLangGroup::setTrans ( TUCS k , TUCS v )
     {
     uint a ;
@@ -229,3 +272,8 @@ TUCS TLangGroup::getTrans ( TUCS k )
 //    return trans[(char*)k.getstring().c_str()] ;
     }
 
+VTUCS TLangGroup::getKeys ()
+    {
+    return key ;
+    }
+    
