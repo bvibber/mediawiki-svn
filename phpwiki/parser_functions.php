@@ -23,8 +23,8 @@ function replaceAllEntries ( $s , $f1 , $f2 , $r1 , $r2 ) {
 
 # DISPLAY PARSER ; INCOMPLETE!!!!
 function parseContent ( $s ) {
-	global $title ;
-	if ( $s == "" ) $s = "Describe the new page here." ;
+	global $title , $dummyArticle ;
+	if ( $s == "" ) $s = $dummyArticle ;
 	$s = str_replace ( "\r" , "" , $s ) ;
 
 #	Automatic /Talk page

@@ -42,7 +42,7 @@ function view_old_article ( $mode="parsed" ) {
 	}
 
 function edit () {
-	global $title , $action ;
+	global $title , $action , $dummyArticle ;
 	global $newtext , $comment , $recent_edit ;
 
 	if ( ! $comment ) $comment = "*" ;
@@ -72,7 +72,7 @@ function edit () {
 	$head = getStandardHeader () ;
 	$head .= "<form action=\"$PHP_SELF?title=$title&action=edited\" method=post>\n";
 
-	if ( $content == "" ) $content = "Describe the new page here.\n" ;
+	if ( $content == "" ) $content = $dummyArticle ;
 	$content =  "<textarea name=newtext rows=20 cols=65 STYLE=\"width:100%\" wrap=virtual>$content</textarea><br>\n" ;
 	$content .= "Summary:<INPUT TYPE=text NAME=comment VALUE=\"$comment\" SIZE=60 MAXLENGTH=200><br>\n" ;
 

@@ -7,7 +7,7 @@ function acquireTopic ( $s ) {
 #	$s=strtolower($s);
 	$connection=getDBconnection() ;
 	mysql_select_db ( "nikipedia" , $connection ) ;
-	$sql = "select * from cur where cur_title=\"$s\"" ;
+	$sql = "SELECT * FROM cur WHERE cur_title=\"$s\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	if ( $s = mysql_fetch_object ( $result ) ) {
 		$title=$s->cur_title ;
@@ -134,10 +134,12 @@ function doesTopicExist ( $s ) {
 	mysql_select_db ( "nikipedia" , $connection ) ;
 	$sql = "SELECT COUNT(*) AS number FROM cur WHERE cur_title=\"$s\"" ;
 	$result = mysql_query ( $sql , $connection ) ;
-	$s = mysql_fetch_object ( $result ) ;
-	if ( $s->number > 0 ) $ret = true ;
-	else $ret = false ;
-	mysql_free_result ( $result ) ;
+	if ( $result ) {
+		$s = mysql_fetch_object ( $result ) ;
+		if ( $s->number > 0 ) $ret = true ;
+		else $ret = false ;
+		mysql_free_result ( $result ) ;
+	} else $ret = false ;
 	mysql_close ( $connection ) ;
 	return $ret ;
 	}

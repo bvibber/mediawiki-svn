@@ -105,13 +105,16 @@ function revisions () {
 		$edit_time = MySQLtimestamp ( $edit_time ) ;
 
 		if ( $user_text == "" ) $user_text = "&lt;unknown&gt;" ;
-		if ( $member_id != "" ) $user_text = "<a href=\"$PHP_SELF?action=view&title=user:$user_text\">$user_text</a>" ;
+		if ( $member_id != "" && substr_count ( $user_text , "." ) != 3 ) $user_text = "<a href=\"$PHP_SELF?action=view&title=user:$user_text\">$user_text</a>" ;
 
 		if ( $release == "current" ) $releaseText = $release ;
 		else $releaseText = $revs + 1 - $release ;
 
+		if ( $releaseText == "0" ) $releaseTitle = "initial" ;
+		else $releaseTitle = $releaseText ;
+
 		$ret .= "<tr>" ;
-		$ret .= "<td align=center nowrap><a href=\"$PHP_SELF?title=$title&action=view_old_article&oid=$oid&whichOldVersion=$releaseText\">$releaseText</a></td>";
+		$ret .= "<td align=center nowrap><a href=\"$PHP_SELF?title=$title&action=view_old_article&oid=$oid&whichOldVersion=$releaseText\">$releaseTitle</a></td>";
 		$ret .= "<td align=center nowrap><a href=\"$PHP_SELF?title=$title&action=view_old_source&oid=$oid&whichOldVersion=$releaseText\">edit</a></td>";
 		$ret .= "<td nowrap>$user_text</td>" ;
 		$ret .= "<td nowrap>$edit_time</td>" ;
@@ -159,7 +162,7 @@ function doSearch () {
 		if ( $s->cur_minor_edit == 1 ) $comment = "<i>edit</i> ".$comment ;
 		$cuser=$s->cur_user_text ;
 		if ( $cuser == "" ) $cuser = "&lt;unknown&gt;" ;
-		else $cuser = "<a href=\"$PHP_SELF?title=$cuser&action=view\">$cuser</a>" ;
+		else if ( substr_count ( $cuser , "." ) != 3 ) $cuser = "<a href=\"$PHP_SELF?title=user:$cuser&action=view\">$cuser</a>" ;
 
 		$output .= "<tr>" ;
 		$output .= "<td nowrap><a href=\"$PHP_SELF?title=$secureTitle&action=view\"><b>$s->cur_title</b></a>";
@@ -173,6 +176,8 @@ function doSearch () {
 	mysql_close ( $connection ) ;
 
 	if ( $noresult ) {
+		$search = str_replace ( "[" , "" , $search ) ;
+		$search = str_replace ( "]" , "" , $search ) ;
 		$output = "<h2>Sorry, there are no matches for \"$search\" in our database.</h2>" ;
 		$output .= "You could write about [[$search]] yourself!" ;
 		$output = parseContent ( $output ) ;
@@ -395,7 +400,7 @@ function pageIndex () {
 	}
 
 function listLinks ( $s ) {
-	global $title , $allTopics , $allTopicsKeys ;
+	global $title , $allTopics ;
 	$ns = getNamespace ( $title ) ;
 	$rn = stripNamespace ( $title ) ;
 	$rna = explode ( "/" , $rn."/" ) ;
@@ -404,6 +409,7 @@ function listLinks ( $s ) {
 	$tag1 = "[[" ;
 	$tag2 = "]]" ;
 	$e1 = explode ( $tag1 , $s ) ;
+	$st = getSecureTitle($title);
 	foreach ( $e1 as $x ) {
 		$e2 = explode ( $tag2 , $x , 2 ) ;
 		if ( count ( $e2 ) == 2 ) {
@@ -413,58 +419,101 @@ function listLinks ( $s ) {
 			if ( substr($y,0,1) == "/" ) $y = $rn.$y ;
 			if ( getnamespace ( $y ) == "" ) $y = $ns.$y ;
 			$y = getSecureTitle ( $y ) ;
-#			if ( !in_array ( $y , $allTopicsKeys ) ) {
-#				$allTopics[$y] = 0 ;
-#				array_push ( $allTopicsKeys , $y ) ;
-#				}
-			$allTopics[$y]++ ;
+			if ( $y != "" )
+				$allTopics[$y]++;
 			}
 		}
 	}
 
-function demanded_topics () {
+# $what can be "demanded" , "central" , or "lonely"
+function demanded_topics ( $what , $maxx = 50 ) {
 	global $title , $xtitle ;
 	global $allLinkedTopics , $allUnlinkedTopics , $allTopics, $allTopicsKeys  ;
 	$title = "" ;
-	$xtitle = "Demanded topics" ;
+	$xtitle = ucfirst ( $what." topics" ) ;
 	$ret = getStandardHeader () ;
 	$allUnlinkedTopics = array () ;
 	$allLinkedTopics = array () ;
 	$allTopics = array () ;
-	$allTopicsKeys = array () ;
-
+	$allTheTopics = array () ;
 
 	$connection=getDBconnection() ;
 	mysql_select_db ( "nikipedia" , $connection ) ;
-	$sql = "SELECT cur_title FROM cur" ;
+	$sql = "SELECT DISTINCT cur_title FROM cur" ;
 	$result = mysql_query ( $sql , $connection ) ;
 	while ( $s = mysql_fetch_object ( $result ) )
-		array_push ( $allTopics , $s->cur_title ) ;
+		array_push ( $allTheTopics , getSecureTitle($s->cur_title) ) ;
 	mysql_free_result ( $result ) ;
 	mysql_close ( $connection ) ;
 
-	foreach ( $allTopics as $x ) {
+	foreach ( $allTheTopics as $x ) {
 		$title=$x ;
 		listLinks ( acquireTopic ( $title ) ) ;
 		}
 
-	foreach ( $allTopics as $y ) {
-		$x = key($allTopics) ;
-		if ( !doesTopicExist($x) )
-			$allUnlinkedTopics[$x]  = $y ;
-		next($allTopics);
+	# Deleting unwanted topics
+	if ( $what == "demanded" ) {
+		foreach ( $allTheTopics as $x ) $allTopics[$x] = -1 ;
+	} else if ( $what == "central" ) {
+		foreach ( $allTheTopics as $x ) $allTopics[$x] *= -1 ; 
+		$keys = array_keys ( $allTopics ) ;
+		foreach ( $keys as $x ) $allTopics[$x] *= -1 ;
+	} else if ( $what == "lonely" ) {
+		foreach ( $allTheTopics as $x ) $allTopics[$x] += 0 ; # Ensure all topics are there
+		foreach ( $allTheTopics as $x ) $allTopics[$x] *= -1 ; 
+		$keys = array_keys ( $allTopics ) ;
+		foreach ( $keys as $x ) $allTopics[$x] = -($allTopics[$x]*$allTopics[$x]) ;
+		$maxx = 999999999 ;
 		}
 
-	arsort ( $allUnlinkedTopics ) ;
-	foreach ( $allUnlinkedTopics as $y ) {
-		$x = key($allUnlinkedTopics) ;
-		$x = ucfirst ( getNiceTitle ( $x ) ) ;
-		if ( $x != "" ) $ret .= "$x:$y<br>\n" ;
-		next($allUnlinkedTopics);
+	$topics = array_keys ( $allTopics ) ;
+	foreach ( $topics as $x ) {
+		if ( $allTopics[$x] >= 0 )
+			$allUnlinkedTopics[$x] = $allTopics[$x] ;
 		}
+
+	if ( $what == "lonely" ) ksort ( $allUnlinkedTopics ) ;
+	elseif ( $what == "demanded" ) arsort ( $allUnlinkedTopics ) ;
+	elseif ( $what == "central" ) arsort ( $allUnlinkedTopics ) ;
+
+	$topics = array_keys ( $allUnlinkedTopics ) ;
+	$ret .= "<ul>\n" ;
+	$cnt = 0 ;
+	foreach ( $topics as $x ) {
+		$out = parseContent ( "[[".getNiceTitle($x)."]] (<font color=red>$allUnlinkedTopics[$x]</font>)</b><br>\n" ) ;
+		$ret .= "<li>$out</li>\n" ;
+		$cnt++ ;
+		if ( $cnt >= $maxx ) break ;
+		}
+	$ret .= "</ul>\n" ;
 
 	$title = "" ;
 	return $ret.getStandardFooter () ;
+	}
+
+function empty_topics () {
+	global $title , $xtitle , $dummyArticle ;
+	$title = "" ;
+	$xtitle = "Empty topics" ;
+	$ret = "" ;
+	$d = strtolower ( trim ( $dummyArticle ) ) ;
+
+	$connection=getDBconnection() ;
+	mysql_select_db ( "nikipedia" , $connection ) ;
+	$sql = "SELECT * FROM cur" ;
+	$result = mysql_query ( $sql , $connection ) ;
+	while ( $s = mysql_fetch_object ( $result ) ) {
+		$t = strtolower ( trim ( $s->cur_text ) ) ;
+		if ( $t == "" or $t == $d ) {
+			$ret .= "*[[".$s->cur_title."]] (''\"$t\"'')\n" ;
+			}
+		}
+	mysql_free_result ( $result ) ;
+	mysql_close ( $connection ) ;
+	if ( $ret != "" )
+		$ret = parseContent ( "The following articles do not contain any information :\n".$ret ) ;
+
+	return getStandardHeader().$ret.getStandardFooter() ;
 	}
 
 function special_pages () {
@@ -475,10 +524,14 @@ function special_pages () {
 	$ret .= "This is a list of wikipedia pages with special functions.\n<ul>\n" ;
 	$ret .= "<li><a href=\"$PHPSELF?action=statistics\">Up-to-the-minute statistics</a></li>\n" ;
 	$ret .= "<li><a href=\"$PHPSELF?action=view&title=Random_Page\">A random page</a></li>\n" ;
-	$ret .= "<li><a href=\"$PHPSELF?action=view&title=Page_Index\">The index of all pages</a></li>\n" ;
 	$ret .= "<li><a href=\"$PHPSELF?action=upload\">Upload files</a></li>\n" ;
 	$ret .= "<li><a href=\"$PHPSELF?action=view&title=recentchanges\">Recent changes</a></li>\n" ;
+	$ret .= "<li><a href=\"$PHPSELF?action=empty_topics\">Empty topics</a> (blank page or dummy entry)</li>\n" ;
+	$ret .= "</ul>The following special pages might take some time to load.\n<ul>\n" ;
+	$ret .= "<li><a href=\"$PHPSELF?action=view&title=Page_Index\">The index of all pages</a></li>\n" ;
 	$ret .= "<li><a href=\"$PHPSELF?action=demanded_topics\">Demanded topics</a></li>\n" ;
+	$ret .= "<li><a href=\"$PHPSELF?action=central_topics\">Central topics</a></li>\n" ;
+	$ret .= "<li><a href=\"$PHPSELF?action=lonely_topics\">Lonely (unlinked) topics</a></li>\n" ;
 #	$ret .= "<li><a href=\"$PHPSELF?action=\"></a></li>\n" ;
 	return $ret."</ul>".getStandardFooter();
 	}
