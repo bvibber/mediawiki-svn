@@ -27,11 +27,11 @@ Among the software's features are:
   * Provides various statistics and lists:
          * number of accesses of a given article
          * most popular topics that are referred to but don't have articles yet
-         * list of previously edited articles
+         * list of recently edited articles
          * list of articles that link to a given article
          * list of articles ("orphans") that no other article links to
-         * list of logged in users
-
+         * list of contributions per user
+         
 
 2. Installation
 ===============
@@ -107,7 +107,7 @@ those lines that need to be updated for your database.
 The further development of the software is discussed on the wikitech-l
 mailing list. See 
 
-      http://ross.bomis.com/mailman/listinfo/wikitech-l
+      http://www.nupedia.com/mailman/listinfo/wikitech-l
 
 for information about how to sign up and for the mailing list
 archives.
