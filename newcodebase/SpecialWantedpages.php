@@ -1,15 +1,26 @@
 <?
 
+include_once ( "LogPage.php" ) ;
+
 function wfSpecialWantedpages()
 {
 	global $wgUser, $wgOut, $wgLang, $wgTitle;
 	global $limit, $offset; # From query string
 	$fname = "wfSpecialWantedpages";
 
+	# Cache
+	$vsp = $wgLang->getValidSpecialPages() ;
+	$mw = $vsp["Wantedpages"] ;
+	$mw = str_replace ( " " , "_" , $mw ) ; # DBKEY
+	$log = new LogPage ( $mw ) ;
+
 	$wgOut->setRobotpolicy( "noindex,nofollow" );
 	global $wgMiserMode;
+	$wgMiserMode = true ;
 	if ( $wgMiserMode ) {
-		$wgOut->addWikiText( wfMsg( "perfdisabled" ) );
+		$s = "=== " . wfMsg( "perfdisabled" ) . " ===\n" ;
+		$s .= $log->getContent() ;
+		$wgOut->addWikiText ( $s ) ;
 		return;
 	}
 
@@ -18,6 +29,8 @@ function wfSpecialWantedpages()
 		if ( ! $limit ) { $limit = 50; }
 	}
 	if ( ! $offset ) { $offset = 0; }
+
+	$cache = "" ; # To be saved, eventually
 
 	$sql = "SELECT bl_to, COUNT( DISTINCT bl_from ) as nlinks " .
 	  "FROM brokenlinks GROUP BY bl_to HAVING nlinks > 1 " .
@@ -42,12 +55,20 @@ function wfSpecialWantedpages()
 		$nlink = $sk->makeKnownLink( $wgLang->specialPage(
 		  "Whatlinkshere" ), $nl, "target=" . $nt->getPrefixedURL() );
 
+		$cache .= "* [[".$nt->getPrefixedText()."]] ({$nl})\n" ;
+
 		$s .= "<li>{$plink} ({$nlink})</li>\n";
 	}
 	wfFreeResult( $res );
 	$s .= "</ol>";
 	$wgOut->addHTML( $s );
 	$wgOut->addHTML( "<p>{$sl}\n" );
+
+	# Saving cache
+	if ( $offset > 0 OR $limit < 50 ) return ; #Not suitable
+	$log->mContent = $cache ;
+	$log->mContentLoaded = true ;
+	$log->saveContent() ;
 }
 
 ?>
