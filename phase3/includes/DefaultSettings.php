@@ -62,6 +62,9 @@ $wgReadOnly			= false;
 $wgSqlLogFile		= "{$wgUploadDirectory}/sqllog_mFhyRe6";
 $wgLogQueries		= false;
 $wgUseBetterLinksUpdate = true;
+$wgSysopUserBans        = true; # Allow sysops to ban logged-in users
+$wgIPBlockExpiration    = 86400; # IP blocks expire after this many seconds, 0=infinite
+$wgUserBlockExpiration  = 0; # As above, but for logged-in users
 
 
 # Client-side caching:

@@ -270,7 +270,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"Ancientpages"	=> "Oldest articles",
 	"Allpages"		=> "All pages by title",
 
-	"Ipblocklist"	=> "Blocked IP addresses",
+	"Ipblocklist"	=> "Blocked users/IP addresses",
 	"Maintenance" => "Maintenance page",
 	"Specialpages"  => "",
 	"Contributions" => "",
@@ -282,7 +282,7 @@ this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 );
 
 /* private */ $wgSysopSpecialPagesEn = array(
-	"Blockip"		=> "Block an IP address",
+	"Blockip"		=> "Block a user/IP address",
 	"Asksql"		=> "Query the database",
 	"Undelete"		=> "Restore deleted pages"
 );
@@ -1007,31 +1007,32 @@ to perform this function on.",
 
 # Block/unblock IP
 #
-"blockip"		=> "Block IP address",
+"blockip"		=> "Block user",
 "blockiptext"	=> "Use the form below to block write access
-from a specific IP address.
+from a specific IP address or username.
 This should be done only only to prevent vandalism, and in
 accordance with [[$wgMetaNamespace:Policy|$wgSitename policy]].
 Fill in a specific reason below (for example, citing particular
 pages that were vandalized).",
-"ipaddress"		=> "IP Address",
+"ipaddress"		=> "IP Address/username",
 "ipbreason"		=> "Reason",
-"ipbsubmit"		=> "Block this address",
-"badipaddress"	=> "The IP address is badly formed.",
+"ipbsubmit"		=> "Block this user",
+"badipaddress"	=> "No user exists by that name",
 "noblockreason" => "You must supply a reason for the block.",
 "blockipsuccesssub" => "Block succeeded",
-"blockipsuccesstext" => "The IP address \"$1\" has been blocked.
+"blockipsuccesstext" => "\"$1\" has been blocked.
 <br>See [[Special:Ipblocklist|IP block list]] to review blocks.",
-"unblockip"		=> "Unblock IP address",
+"unblockip"		=> "Unblock user",
 "unblockiptext"	=> "Use the form below to restore write access
-to a previously blocked IP address.",
+to a previously blocked IP address or username.",
 "ipusubmit"		=> "Unblock this address",
-"ipusuccess"	=> "IP address \"$1\" unblocked",
-"ipblocklist"	=> "List of blocked IP addresses",
+"ipusuccess"	=> "\"$1\" unblocked",
+"ipblocklist"	=> "List of blocked IP addresses and usernames",
 "blocklistline"	=> "$1, $2 blocked $3",
 "blocklink"		=> "block",
 "unblocklink"	=> "unblock",
 "contribslink"	=> "contribs",
+"autoblocker"	=> "Autoblocked because you share an IP address with \"$1\". Reason \"$2\".",
 
 # Developer tools
 #

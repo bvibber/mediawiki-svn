@@ -17,6 +17,7 @@ include_once( "$IP/User.php" );
 include_once( "$IP/LinkCache.php" );
 include_once( "$IP/Title.php" );
 include_once( "$IP/Article.php" );
+include_once( "$IP/Block.php" );
 
 global $wgUser, $wgLang, $wgOut, $wgTitle;
 global $wgArticle, $wgDeferredUpdateList, $wgLinkCache;

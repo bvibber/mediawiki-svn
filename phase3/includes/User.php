@@ -94,22 +94,15 @@ class User {
 	{
 		if ( -1 != $this->mBlockedby ) { return; }
 
-		$remaddr = getenv( "REMOTE_ADDR" );
-		if ( 0 == $this->mId ) {
-			$sql = "SELECT ipb_by,ipb_reason FROM ipblocks WHERE " .
-			  "ipb_address='$remaddr'";
-		} else {
-			$sql = "SELECT ipb_by,ipb_reason FROM ipblocks WHERE " .
-			  "(ipb_address='$remaddr' OR ipb_user={$this->mId})";
-		}
-		$res = wfQuery( $sql, "User::getBlockedStatus" );
-		if ( 0 == wfNumRows( $res ) ) {
+		$block = new Block();
+		if ( !$block->load( getenv( "REMOTE_ADDR" ), $this->mId ) ) {
+			wfDebug( getenv( "REMOTE_ADDR" ) ." is not blocked\n" );
 			$this->mBlockedby = 0;
 			return;
 		}
-		$s = wfFetchObject( $res );
-		$this->mBlockedby = $s->ipb_by;
-		$this->mBlockreason = $s->ipb_reason;
+		
+		$this->mBlockedby = $block->mBy;
+		$this->mBlockreason = $block->mReason;
 	}
 
 	function isBlocked()
@@ -174,6 +167,7 @@ class User {
 		}
 
 		if ( ( $sName == $this->mName ) && $passwordCorrect ) {
+			$this->spreadBlock();
 			return;
 		}
 		$this->loadDefaults(); # Can't log in from session
@@ -550,6 +544,46 @@ class User {
 		  $this->encodeOptions() . "')";
 		wfQuery( $sql, "User::addToDatabase" );
 		$this->mId = $this->idForName();
+	}
+	
+	function spreadBlock()
+	{
+		# If the (non-anonymous) user is blocked, this function will block any IP address
+		# that they successfully log on from.
+		$fname = "User::spreadBlock";
+		
+		wfDebug( "User:spreadBlock()\n" );
+		if ( $this->mId == 0 ) {
+			return;
+		}
+		
+		$userblock = Block::newFromDB( "", $this->mId );
+		if ( !$userblock->isValid() ) {
+			return;
+		}
+		
+		# Check if this IP address is already blocked
+		$addr = getenv( "REMOTE_ADDR" );
+		$ipblock = Block::newFromDB( $addr );
+		if ( $ipblock->isValid() ) {
+			# Just update the timestamp
+			$ipblock->updateTimestamp();
+			return;
+		}
+		
+		# Make a new block object with the desired properties
+		wfDebug( "Autoblocking {$this->mUserName}@{$addr}\n" );
+		$ipblock->mAddress = $addr;
+		$ipblock->mUser = 0;
+		$ipblock->mBy = $userblock->mBy;
+		$ipblock->mReason = str_replace( "$1", $this->getName(), wfMsg( "autoblocker" ) );
+		$ipblock->mReason = str_replace( "$2", $userblock->mReason, $ipblock->mReason );
+		$ipblock->mTimestamp = wfTimestampNow();
+		$ipblock->mAuto = 1;
+
+		# Insert it
+		$ipblock->insert();
+	
 	}
 }
 

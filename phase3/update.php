@@ -29,6 +29,25 @@ $wgTitle = Title::newFromText( "Update script" );
 $wgCommandLineMode = true;
 
 do_revision_updates();
+alter_ipblocks();
+
+#
+# Run ALTER TABLE queries.
+#
+if ( count( $wgAlterSpecs ) ) {
+	$rconn = mysql_connect( $wgDBserver, $wgDBadminuser, $wgDBadminpassword );
+	mysql_select_db( $wgDBname );
+	print "\n";
+	foreach ( $wgAlterSpecs as $table => $specs ) {
+		$sql = "ALTER TABLE $table $specs";
+		print "$sql;\n";
+		$res = mysql_query( $sql, $rconn );
+		if ( $res === false ) {
+			print "MySQL error: " . mysql_error( $rconn ) . "\n";
+		}
+	}
+	mysql_close( $rconn );
+}
 
 #
 # Copy files into installation directories
@@ -89,7 +108,7 @@ function copydirectory( $source, $dest ) {
 	$handle = opendir( $source );
 	while ( false !== ( $f = readdir( $handle ) ) ) {
 		if ( "." == $f{0} ) continue;
-		if ( "CVS" == $f ) continue;
+		if ( "CVS" == strtoupper( $f ) ) continue;
 		copyfile( $source, $f, $dest );
 	}
 }
@@ -113,7 +132,7 @@ function update_passwords() {
 	  "database. If you have already done this (if you've run this update\n" .
 	  "script once before, for example), doing so again will make all your\n" .
 	  "user accounts inaccessible, so be sure you only do this once.\n" .
-	  "Update user passwords? (yes/no) ";
+	  "Update user passwords? (yes/no)";
 
 	$resp = readconsole();
     if ( ! ( "Y" == $resp{0} || "y" == $resp{0} ) ) { return; }
@@ -132,4 +151,34 @@ function update_passwords() {
 	}
 }
 
+function alter_ipblocks() {
+	global $wgAlterSpecs;
+	
+	if ( field_exists( "ipblocks", "ipb_id" ) ) {
+		return;
+	}
+	
+	if ( array_key_exists( "ipblocks", $wgAlterSpecs ) ) {
+		$wgAlterSpecs["ipblocks"] .= ",";
+	}
+
+	$wgAlterSpecs["ipblocks"] .=
+		"ADD ipb_auto tinyint(1) NOT NULL default '0', ".
+		"ADD ipb_id int(8) NOT NULL auto_increment,".
+		"ADD PRIMARY KEY (ipb_id)";
+}
+
+function field_exists( $table, $field ) {
+	$fname = "Update script: field_exists";
+	$res = wfQuery( "DESCRIBE $table", $fname );
+	$found = false;
+	
+	while ( $row = wfFetchObject( $res ) ) {
+		if ( $row->Field == $field ) {
+			$found = true;
+			break;
+		}
+	}
+	return $found;
+}
 ?>
