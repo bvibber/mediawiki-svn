@@ -1217,6 +1217,7 @@ class WikiPage extends WikiTitle {
         global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
         global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
         global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate , $wikiProtectThisPage ;
+	global $wikiVoteForPage ;
 
 	if ( $user->options[skin] == "Cologne Blue" ) return $this->getCologneBlueQuickBar () ;
 
@@ -1239,6 +1240,7 @@ class WikiPage extends WikiTitle {
         if ( $this->canProtect() ) $column .= "<br><a href=\"".wikiLink("special:protectpage&amp;target=".$this->url)."\">$wikiProtectThisPage</a>\n" ;
 # To be implemented later
 #       if ( $this->canAdvance() ) $column .= "<br><a href=\"".wikiLink("special:Advance&amp;topic=$this->safeTitle")."\">Advance</a>\n" ;
+	if ( $user->isLoggedIn ) $column .= "<br><a href=\"".wikiLink("special:vote&target=".$this->url)."\">$wikiVoteForPage</a>\n" ;
 
         if ( in_array ( "is_sysop" , $user->rights ) ) $column .= "<br><a href=\"".wikiLink("special:AskSQL")."\">$wikiAskSQL</a>\n" ;
         if ( !$this->isSpecialPage ) $column .= "<br><a href=\"".wikiLink($this->url."&amp;action=history")."\">$wikiHistory</a>\n" ;
