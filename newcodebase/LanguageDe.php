@@ -36,9 +36,10 @@
 	"ca" => "Catalanisch", "zh" => "Chinesisch", "dk" => "Dänisch",
 	"nl" => "Holländisch", "de" => "Deutsch", "eo" => "Esperanto",
 	"fr" => "Französisch", "he" => "Hebräisch", "hu" => "Ungarisch",
-	"it" => "Italienisch", "ja" => "Japanisch", "no" => "Norwegisch",
+	"ia" => "Interlingua", "it" => "Italienisch", "ja" => "Japanisch",
+	"la" => "Latein", "no" => "Norwegisch",
 	"pl" => "Polnisch", "pt" => "Portugiesisch", "ru" => "Russisch",
-	"sh" => "Serbocroatisch", "si" => "Slovenisch",
+	"sh" => "Serbocroatisch", "sl" => "Slovenisch",
 	"simple" => "Einfaches Englisch", "es" => "Spanisch",
 	"sv" => "Swedisch", "en" => "Englisch"
 );
