@@ -155,7 +155,7 @@ class Article {
 
 	# Would the given text make this article a "good" article (i.e.,
 	# suitable for including in the article count)?
-	#
+
 	function isCountable( $text )
 	{
 		global $wgTitle;
@@ -477,7 +477,7 @@ enctype='application/x-www-form-urlencoded'>
 	# functions for after display, but that's taking a big leap
 	# leap of faith, and I want to be able to report database
 	# errors at some point.
-	#
+
 	/* private */ function insertNewArticle( $text, $summary, $isminor )
 	{
 		global $wgOut, $wgUser, $wgTitle, $wgLinkCache;
@@ -598,6 +598,9 @@ enctype='application/x-www-form-urlencoded'>
 		  "redirect=no" ) );
 	}
 
+	# If the page we've just displayed is in the "Image" namespace,
+	# we follow it with an upload history of the image and its usage.
+
 	function imageHistory()
 	{
 		global $wgUser, $wgOut, $wgLang, $wgTitle;
@@ -658,6 +661,8 @@ enctype='application/x-www-form-urlencoded'>
 		$wgOut->addHTML( "</ul>\n" );
 	}
 
+	# Add this page to my watchlist
+
 	function watch()
 	{
 		global $wgUser, $wgTitle, $wgOut, $wgLang;
@@ -715,7 +720,7 @@ enctype='application/x-www-form-urlencoded'>
 	}
 
 	# This shares a lot of issues (and code) with Recent Changes
-	#
+
 	function history()
 	{
 		global $wgUser, $wgOut, $wgLang, $wgTitle;
@@ -807,6 +812,9 @@ enctype='application/x-www-form-urlencoded'>
 		global $wgUser, $wgOut, $wgTitle;
 		global $wpConfirm, $wpReason, $image, $oldimage;
 
+		# Anybody can delete old revisions of images; only sysops
+		# can delete articles and current images
+
 		if ( ( ! $oldimage ) && ( ! $wgUser->isSysop() ) ) {
 			$wgOut->sysopRequired();
 			return;
@@ -815,6 +823,8 @@ enctype='application/x-www-form-urlencoded'>
 			$wgOut->readOnlyPage();
 			return;
 		}
+		# Likewise, deleting old images doesn't require confirmation
+
 		if ( $oldimage || 1 == $wpConfirm ) {
 			$this->doDelete();
 			return;
@@ -897,6 +907,9 @@ enctype='application/x-www-form-urlencoded'>
 			  wfStrencode( $image ) . "'";
 			wfQuery( $sql, $fname );
 
+			# Image itself is now gone, and database is cleaned.
+			# Now we remove the image description page.
+
 			$nt = Title::newFromText( "Image:{$image}" );
 			$this->doDeleteArticle( $nt );
 
@@ -951,6 +964,8 @@ enctype='application/x-www-form-urlencoded'>
 			$wgOut->fatalError( wfMsg( "cannotdelete" ) );
 			return;
 		}
+		# Move article and history to the "archive" table
+
 		$sql = "INSERT INTO archive (ar_namespace,ar_title,ar_text," .
 		  "ar_comment,ar_user,ar_user_text,ar_timestamp,ar_minor_edit," .
 		  "ar_flags) SELECT cur_namespace,cur_title,cur_text,cur_comment," .
@@ -965,6 +980,8 @@ enctype='application/x-www-form-urlencoded'>
 		  "FROM old WHERE old_namespace={$ns} AND old_title='{$t}'";
 		wfQuery( $sql, $fname );
 
+		# Now that it's safely backed up, delete it
+
 		$sql = "DELETE FROM cur WHERE cur_namespace={$ns} AND " .
 		  "cur_title='{$t}'";
 		wfQuery( $sql, $fname );
@@ -972,6 +989,8 @@ enctype='application/x-www-form-urlencoded'>
 		$sql = "DELETE FROM old WHERE old_namespace={$ns} AND " .
 		  "old_title='{$t}'";
 		wfQuery( $sql, $fname );
+
+		# Finally, clean up the link tables
 
 		if ( 0 != $id ) {
 			$t = wfStrencode( $title->getPrefixedDBkey() );
@@ -1089,7 +1108,7 @@ enctype='application/x-www-form-urlencoded'>
 	}
 
 	# Do standard deferred updates after page view
-	#
+
 	/* private */ function viewUpdates()
 	{
 		global $wgDeferredUpdateList;
@@ -1103,21 +1122,16 @@ enctype='application/x-www-form-urlencoded'>
 	}
 
 	# Do standard deferred updates after page edit.
-	# Every 500th edit, prune the recent changes table.
+	# Every 1000th edit, prune the recent changes table.
 
 	/* private */ function editUpdates( $id, $title, $text, $adj )
 	{
 		global $wgDeferredUpdateList;
 
 		wfSeedRandom();
-		if ( 0 == mt_rand( 0, 499 ) ) {
-			$sql = "SELECT rc_timestamp FROM recentchanges " .
-			  "ORDER BY rc_timestamp DESC LIMIT 5000,1";
-			$res = wfQuery( $sql );
-			$obj = wfFetchObject( $res );
-			$ts = $obj->rc_timestamp;
-
-			$sql = "DELETE FROM recentchanges WHERE rc_timestamp < '{$ts}'";
+		if ( 0 == mt_rand( 0, 999 ) ) {
+			$cutoff = date( "YmdHis", time() - ( 7 * 86400 ) );
+			$sql = "DELETE FROM recentchanges WHERE rc_timestamp < '{$cutoff}'";
 			wfQuery( $sql );
 		}
 		if ( 0 != $id ) {
@@ -1162,7 +1176,7 @@ enctype='application/x-www-form-urlencoded'>
 
 	# This function is called right before saving the wikitext,
 	# so we can do things like signatures and links-in-context.
-	#
+
 	function preSaveTransform( $text )
 	{
 		$s = "";
@@ -1208,7 +1222,6 @@ enctype='application/x-www-form-urlencoded'>
 		$p3 = "/\[\[([A-Za-z _]+):({$np}+)\\|]]/";		# [[namespace:page|]]
 		$p4 = "/\[\[([A-Aa-z _]+):({$np}+) \\(({$np}+)\\)\\|]]/";
 														# [[ns:page (cont)|]]
-
 		$context = "";
 		$t = $wgTitle->getText();
 		if ( preg_match( $conpat, $t, $m ) ) {
@@ -1224,7 +1237,7 @@ enctype='application/x-www-form-urlencoded'>
 			$text = preg_replace( $p2, "[[\\1 ({$context})|\\1]]", $text );
 		}
 		# Replace local image links with new [[image:]] style
-		#
+
 		$text = preg_replace(
 		  "/(^|[^[])http:\/\/(www.|)wikipedia.com\/upload\/" .
 		  "([a-zA-Z0-9_:.~\%\-]+)\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF)/",

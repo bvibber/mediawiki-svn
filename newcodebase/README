@@ -15,6 +15,11 @@ Brion Vibber, Axel Boldt, and Geoffrey T. Dairiki.
 Many thanks to the Wikipedia regulars for testing and
 suggestions.
 
+Sections of code written exclusively by Lee Crocker are also
+released into the public domain, wich does not impair the
+obligations of users under the GPL for use of the whole code
+or other sections thereof.
+
 The code is currently maintained at Sourceforge under the
 project "wikipedia".  You can view the code in CVS, report
 bugs and make feature requests there:
