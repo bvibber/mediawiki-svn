@@ -94,6 +94,11 @@ public class SearchClientReader extends Thread {
 		} catch (SQLException e) {
 			// Couldn't load state?
 			// We'll crap out later on the NULL.
+			e.printStackTrace();
+		} catch (RuntimeException e) {
+			// Kaffe for instance currently explodes in here.
+			// Close the connection out if something goes wrong.
+			e.printStackTrace();
 		}
 		myStates.put(dbname, ret);
 		return ret;
