@@ -145,25 +145,62 @@ bool TParser::parse_internal_link ( TUCS &s )
         text.explode ( "|" , vip ) ;
         text = vip[vip.size()-1] ;
         vip.pop_back () ;
+  
+        int pixel = -1 ;
+        TUCS align ;
+        bool thumbnail = false ;
+        while ( vip.size() )
+           {
+           TUCS param = vip[vip.size()-1] ;
+           vip.pop_back () ;
+           param.trim () ;
+           param.toupper () ;
+           if ( param.right(2) == "PX" )
+              {
+              pixel = atoi ( param.getstring().c_str() ) ;
+              }
+           else if ( param == "THUMB" )
+              {
+              thumbnail = true ;
+              if ( pixel == -1 ) pixel = 180 ;
+              if ( align == "" ) align = "right" ;
+              }
+           else if ( param == "RIGHT" || param == "LEFT" || param == "CENTER" )
+              {
+              align = param ;
+              }
+           }
         
         md.update ( (unsigned char*) tt.getstring().c_str() , tt.length() ) ;
         md.finalize() ;
         string hex = md.hex_digest() ;
-
+        
+        TUCS img_param ;
+        if ( pixel != -1 )
+           {
+           img_param += "width='" + TUCS::fromint ( pixel ) + "px' " ;
+           }
+        if ( !thumbnail && align != "" ) img_param += "align='" + align + "' " ;
+        
+        TUCS x ;
         if ( LANG->getData ( "USEONLINEIMAGES" ) == "YES" )
            {
-           TUCS x = "<img border=0 src=\"http://" + LANG->lid ;
+           x = "<img border=0 " ;
+           x += img_param ;
+           x += "src=\"http://" + LANG->lid ;
            x += ".wikipedia.org/upload/" ;
            x += hex[0] ;
            x += "/" ;
            x += hex[0] ;
            x += hex[1] ;
            x += "/" + tt ;
-           text = x + "\" title=\"" + text + "\">" ;
+           x += "\" title=\"" + text + "\">" ;
            }
         else if ( LANG->getData ( "IMAGESOURCE" ) != "" )
            {
-           TUCS x = "<img border=0 src=\"" ;
+           x = "<img border=0 " ;
+           x += img_param ;
+           x += "src=\"" ;
            x += LANG->getData ( "IMAGESOURCE" ) ;
            x += "/" ;
            x += hex[0] ;
@@ -171,10 +208,20 @@ bool TParser::parse_internal_link ( TUCS &s )
            x += hex[0] ;
            x += hex[1] ;
            x += "/" + tt ;
-           text = x + "\" title=\"" + text + "\">" ;
+           x += "\" title=\"" + text + "\">" ;
            }
+           
+        s = SKIN->getArticleLink ( t , x ) + s.substr ( c ) ;
+
+        if ( thumbnail )
+           {
+           x = "<div class='thumbnail-" + align + "' width='180px'>" ;
+           x += s ;
+           x += "<br>\n" + text ;
+           x += "</div>" ;
+           }
+        s = x ;
         
-        s = SKIN->getArticleLink ( t , text ) + s.substr ( c ) ;
         }
     else s = SKIN->getArticleLink ( t , text ) + s.substr ( c ) ;
     
@@ -499,6 +546,7 @@ void TParser::parse_table_markup ( VTUCS &vs )
            VTUCS vt , vu ;
            TUCS tab = "td" ;
            if ( vs[a][0] == '!' ) tab = "th" ;
+           if ( vs[a].right ( 2 ) == "||" ) vs[a] += " " ; // Patch!
            vs[a].explode ( "||" , vt ) ;
            uint b ;
            t = "" ;

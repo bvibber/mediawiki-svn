@@ -278,6 +278,11 @@ void TUCS::toupper ()
         }
     }
     
+TUCS TUCS::right ( uint x )
+    {
+    return substr ( length() - x ) ;
+    }
+    
 // *****************************************************************************
 // THE PRIVATE METHODS
 
