@@ -488,7 +488,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 
 	function quickBar()
 	{
-		global $wgOut, $wgTitle, $wgUser;
+		global $wgOut, $wgTitle, $wgUser, $action, $wgLang;
 
 		$s = "\n<div id='quickbar'>";
 		$s .= "\n" . $this->logoText() . "\n<hr>";
@@ -523,7 +523,51 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 				}
 			}
 			$s .= "\n<hr>";
+		} 
+		
+		if( $action == "edit" || $action == "history") { # add a backlink to the article
+			
+			if($wgTitle->getArticleID()){ # no backlink if no article
+				$tns=$wgTitle->getNamespace();		
+				switch($tns) {
+					case 0:
+					$text = wfMsg("articlepage");
+					break;
+					case 1:
+					$text = wfMsg("viewtalkpage");
+					break;
+					case 2:
+					$text = wfMsg("userpage");				
+					break;
+					case 3:
+					$text = wfMsg("viewtalkpage");
+					break;	
+					case 4: 
+					$text = wfMsg("wikipediapage");
+					break;
+					case 5:				
+					$text = wfMsg("viewtalkpage");
+					break;
+					case 6:
+					$text = wfMsg("imagepage");
+					break;
+					case 7:
+					$text = wfMsg("viewtalkpage");
+					break;
+					default:
+					$text= wfMsg("articlepage");
+				}
+			
+				$link = $wgTitle->getText();
+				if ($nstext = $wgLang->getNsText($tns) ) { # add namespace if necessary
+					$link = $nstext . ":" . $link ;
+				}			
+				$s .= $this->makeLink($link, $text );			
+				$s .="\n<hr>";
+			}
 		}
+				
+		
 		if ( 0 != $wgUser->getID() ) {
 			$s .= $this->specialLink( "upload" ) . $sep;
 		}

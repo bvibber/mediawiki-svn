@@ -317,6 +317,7 @@
 "userpage" => "View user page",
 "wikipediapage" => "View meta page",
 "imagepage" => 	"View image page",
+"viewtalkpage" => "View discussion",
 "otherlanguages" => "Other languages",
 "redirectedfrom" => "(Redirected from $1)",
 "lastmodified"	=> "The page was last modified $1.",
