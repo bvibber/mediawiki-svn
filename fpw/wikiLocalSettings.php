@@ -7,7 +7,7 @@
 # include_once ( "wikiTextEo.php" ) ; # Esperanto
 
 ## Various local options
-# $useCachedPages = false; # Disable page cache
+$useCachedPages = false; # Disable page cache
 # $wikiReadOnly = true; # Don't allow page editing
 
 ?>
