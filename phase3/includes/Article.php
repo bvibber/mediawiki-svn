@@ -552,7 +552,8 @@ class Article {
 			wfQuery( $sql, DB_WRITE );
 		}
 
-		/* stat updates */
+		# stat updates. the other updates are performed in
+		# onArticleCreate(), onArticleEdit() and onArticleDelete()
 		$id = $this->mTitle->getArticleID();
 		$adj = $this->mCountAdjustment;
 		if ( 0 != $id ) {
