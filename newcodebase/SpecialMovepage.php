@@ -4,8 +4,8 @@ function wfSpecialMovepage()
 {
 	global $wgUser, $wgOut, $action, $target;
 
-	if ( ! $wgUser->isSysop() ) {
-		$wgOut->sysopRequired();
+	if ( 0 == $wgUser->getID() ) {
+		$wgOut->errorpage( "movenologin", "movenologintext" );
 		return;
 	}
 	$fields = array( "wpNewTitle", "wpOldTitle" );

@@ -1150,15 +1150,20 @@ enctype='application/x-www-form-urlencoded'>
 		$np = "[&;%\\-,.' _0-9A-Za-z\\/:\\x80-\\xff]"; # No parens
 		$conpat = "/^({$np}+) \\(({$tc}+)\\)$/";
 
-		$p1 = "/\[\[({$np}+) \\(({$np}+)\\)\\|]]/"; # [[page (context)|]]
-		$p2 = "/\[\[\\|({$tc}+)]]/"; # [[|page]]
+		$p1 = "/\[\[({$np}+) \\(({$np}+)\\)\\|]]/";		# [[page (context)|]]
+		$p2 = "/\[\[\\|({$tc}+)]]/";					# [[|page]]
+		$p3 = "/\[\[([A-Za-z]+):({$np}+)\\|]]/";		# [[namespace:page|]]
+		$p4 = "/\[\[([A-Aa-z]+):({$np}+) \\(({$np}+)\\)\\|]]/";
+														# [[ns:page (cont)|]]
 
 		$context = "";
 		$t = $wgTitle->getText();
 		if ( preg_match( $conpat, $t, $m ) ) {
 			$context = $m[2];
 		}
+		$text = preg_replace( $p4, "[[\\1:\\2 (\\3)|\\2]]", $text );
 		$text = preg_replace( $p1, "[[\\1 (\\2)|\\1]]", $text );
+		$text = preg_replace( $p3, "[[\\1:\\2|\\2]]", $text );
 
 		if ( "" == $context ) {
 			$text = preg_replace( $p2, "[[\\1]]", $text );

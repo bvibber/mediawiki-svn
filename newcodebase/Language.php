@@ -821,6 +821,10 @@ page, if any, will not be moved.
 Please be sure you understand the consequences of this before
 proceeding.",
 "movearticle"	=> "Move page",
+"movenologin"	=> "Not logged in",
+"movenologintext" => "You must be a registered user and <a href=\"" .
+  wfLocalUrl( "Special:Userlogin" ) . "\">logged in</a>
+to move a page.",
 "newtitle"		=> "To new title",
 "movepagebtn"	=> "Move page",
 "pagemovedsub"	=> "Move succeeded",
