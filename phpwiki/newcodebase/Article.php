@@ -469,7 +469,7 @@ enctype='application/x-www-form-urlencoded'>
 <textarea tabindex=1 name='wpTextbox1' rows={$rows} cols={$cols}{$ew} wrap=virtual>" .
 $wgLang->recodeForEdit( $wpTextbox1 ) .
 "</textarea><br>
-{$summary}: <input tabindex=2 type=text value=\"{$wpSummary}\" name='wpSummary' maxlength=200>
+{$summary}: <input tabindex=2 type=text value=\"{$wpSummary}\" name='wpSummary' maxlength=200 size=60><br>
 <input tabindex=3 type=checkbox value=1 name='wpMinoredit'".($wpMinoredit?" checked":"").">{$minor}
 {$watchhtml}
 <input tabindex=5 type=submit value=\"{$save}\" name='wpSave'>
