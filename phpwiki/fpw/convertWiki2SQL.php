@@ -13,6 +13,9 @@ include ( "./wikiUser.php" ) ;
 ## Default/English:
 $wikiTalk = "Talk";
 $fieldSeparator = "\xb3" ;
+$wikiSeeAlso = "See also" ;
+$wikiConversionScript = "conversion script" ;
+$wikiAutomatedConversion = "Automated conversion" ;
 function recodeCharsetStub ( $text ) {
 	# Some languages may change the internal coding used in the database
 	# To convert ISO-8859-1 to UTF-8
@@ -24,6 +27,9 @@ function recodeCharsetStub ( $text ) {
 ## Esperanto:
 /*
 $wikiTalk = "Priparolu" ;
+$wikiSeeAlso = "Legu anka\xc5\xad" ;
+$wikiConversionScript = "konvertilo" ;
+$wikiAutomatedConversion = "A\xc5\xadtomata konvertado" ;
 function recodeCharsetEo ( $text ) {
 	  $x = array(
 	  	"Cx", "cx",  "CX", "cX",
@@ -109,9 +115,9 @@ function scanText2 ( $fn ) {
 		}
 	fclose ( $fd ) ;
 
-	array_pop ( $t ) ;
+	#array_pop ( $t ) ;
 	$t = implode ( "" , $t ) ;
-
+/*
 	#SPLIT PAGE
 	$sp = explode ( $FS1 , $t ) ;
 
@@ -120,11 +126,20 @@ function scanText2 ( $fn ) {
 	foreach ( $sections as $y ) {
 		$text = explode ( $FS3 , $y ) ;
 		foreach ( $text as $z ) {
+			if ( $ret == "text" ) return $z ;
 			$ret = $z ;
 			}
 		}
 
 	return $ret ;
+*/
+	$page = splitHash ( $FS1 , $t ) ;
+	$section = splitHash ( $FS2 , $page["text_default"] ) ;
+	$text = splitHash ( $FS3 , $section["data"] ) ; # text_default
+	
+	return array ( "text" => $text["text"] , "summary" => $text["summary"] ,
+		"minor" => $text["minor"] , "ts" => $section["ts"] ,
+		"username" => $section["username"] , "host" => $section["host"] ) ;
 	}
 
 
@@ -141,7 +156,7 @@ function getFileName ( $an ) {
 
 function fixLinks ( $s ) {
 	global $npage , $ll , $ull , $allTopics ;
-	global $wikiTalk ;
+	global $wikiTalk , $wikiSeeAlso ;
 
 	$talk = explode ( "/" , $npage->secureTitle ) ;
 	if ( count($talk)==2 and strtolower($talk[1])==strtolower($wikiTalk) ) $isTalkPage = true ;
@@ -198,7 +213,7 @@ function fixLinks ( $s ) {
 			$s .= "]]".$b[1] ;
 			}
 		}
-	if ( $backLink != "" ) $backLink = "\n:''See also :'' [[$backLink]]" ;
+	if ( $backLink != "" ) $backLink = "\n:''$wikiSeeAlso :'' [[$backLink]]" ;
 	return substr ( $s , 1 ).$backLink ;
 	}
 
@@ -258,12 +273,14 @@ function getHistory ( $title , $st) {
 		
 		$user = makeSafe ( $section["username"] ? $section["username"] : $section["host"] ) ;
 		
-		if ( $text["text"] && $text["minor"] != "" ) {
+		if ( $text["text"] && $text["minor"] != "" && ( $section["ts"]*1 > 0 ) ) {
 			$sql .= "INSERT INTO old (old_id,old_title,old_text,old_comment,old_user,old_user_text,old_old_version,old_timestamp,old_minor_edit) "
-			. "VALUES ($oldid,\"$st\",\"" . convertText($text["text"]) . "\",\"" . makeSafe($text["summary"]) . "\","
+			. "VALUES ($oldid,\"$st\",\"" . makeSafe($text["text"]) . "\",\"" . makeSafe($text["summary"]) . "\","
 			. "0,\"$user\",$lastoldid,FROM_UNIXTIME(" . $section["ts"] . ")," . $text["minor"] . ");\n";
 			
 			$lastoldid = $oldid++ ;
+		} else {
+			echo " (note: skipped a bad old revision)";
 			}
 		
 		}
@@ -271,7 +288,7 @@ function getHistory ( $title , $st) {
 	}
 
 function storeInDB ( $title , $text ) {
-	global $of , $npage , $ll , $ull , $wikiTalk , $recodeCharset , $oldid ;
+	global $of , $npage , $ll , $ull , $wikiTalk , $recodeCharset , $oldid , $wikiAutomatedConversion , $wikiConversionScript ;
 	$ll = array () ;
 	$ull = array () ;
 	$title = str_replace ( "\\'" , "'" , $title ) ;
@@ -279,7 +296,7 @@ function storeInDB ( $title , $text ) {
 	$npage = new wikiPage ;
 	$npage->title = $recodeCharset ( $title ) ;
 	$npage->makeAll () ;
-	$text = convertText ( $text ) ;
+	$thetext = convertText ( $text["text"] ) ;
 	#$ll1 = implode ( "\n" , $ll ) ;
 	#$ull1 = implode ( "\n" , $ull ) ;
 	$st = $npage->secureTitle ;
@@ -294,9 +311,20 @@ function storeInDB ( $title , $text ) {
 	$sql = getHistory ( $title , $st ) ;
 	if ($lastoldid == $oldid) $lastoldid = 0; else $lastoldid = $oldid ;
 	
+	# Insert untouched version as the last in the history chain
+	$user = makeSafe ( $text["username"] ? $text["username"] : $text["host"] ) ;
+	if ( $text["text"] && $text["minor"] != "" && ( $text["ts"]*1 > 0 ) ) {
+		$sql .= "INSERT INTO old (old_id,old_title,old_text,old_comment,old_user,old_user_text,old_old_version,old_timestamp,old_minor_edit) "
+		. "VALUES ($oldid,\"$st\",\"" . makeSafe($text["text"]) . "\",\"" . makeSafe($text["summary"]) . "\","
+		. "0,\"$user\",$lastoldid,FROM_UNIXTIME(" . $text["ts"] . ")," . $text["minor"] . ");\n";
+		$lastoldid = $oldid++ ;
+	} else {
+		echo " (skipping last old revision - $text[ts] $text[minor] $text[text])";
+		}
+
 	$sql .= "INSERT INTO cur (cur_title,cur_ind_title,cur_text,cur_comment,cur_user,cur_user_text,cur_old_version,cur_minor_edit) VALUES ";
-	$sql .= "(\"$st\",\"$st\",\"$text\",";
-	$sql .= "\"Automated conversion\",0,\"conversion script\",$lastoldid,1);\n" ; # ,\"" . $recodeCharset ( $ll1 ) . "\",\"" . $recodeCharset ( $ull1 ) . "\"
+	$sql .= "(\"$st\",\"$st\",\"$thetext\",";
+	$sql .= "\"$wikiAutomatedConversion\",0,\"$wikiConversionScript\",$lastoldid,1);\n" ;
 	foreach ( $ll as $l ) {
 		$sql .= "INSERT INTO linked (linked_from,linked_to) VALUES (\"$st\",\"$l\");\n";
 		}
