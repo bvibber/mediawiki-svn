@@ -479,15 +479,15 @@ Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
 # Maintenance Page
 #
 "maintenance"		=> "Wartungsseite",
-"maintnancepagetext"	=> "This page includes several handy tools for everyday maintenance. Some of these functions tend to stress the database, so please do not hit reload after every item you fixed ;-)",
-"maintenancebacklink"	=> "Zurüch zur Wartungsseite",
+"maintnancepagetext"	=> "Diese Seite enthält mehrere praktische Funktionen zur täglichen Wartung von Wikipedia. Einige dieser Funktionen können die Datenbank stark beanspruchen, also bitte nicht nach jeder Änderung neu laden ;-)",
+"maintenancebacklink"	=> "Zurück zur Wartungsseite",
 "disambiguations"	=> "Begriffsklärungsseiten",
 "disambiguationspage"	=> "Wikipedia:Begriffsklärung",
-"disambiguationstext"	=> "The following articles link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br>A page is treated as dismbiguation if it is linked from $1.<br>Redirects are <i>not</i> listed here.",
+"disambiguationstext"	=> "Die folgenden Artikel verweisen auf eine <i>Seite zur Begriffsklärung</i>. Sie sollten statt dessen auf die eigentlich gemeinte Seite verweisen.<br>Eine Seite wird als Begriffsklärungsseite behandelt, wenn $1 auf sie verweist.<br>Redirects werden hier <i>nicht</i> aufgelistet.",
 "doubleredirects"	=> "Doppelte Redirects",
-"doubleredirectstext"	=> "<b>Attention:</b> This list may contain false positives. That usually means there is additional text with links below the first #REDIRECT.<br>\nEach row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" taget article, which the first redirect should point to.",
+"doubleredirectstext"	=> "<b>Achtung:</b> Diese Liste kann \"falsche Positive\"enthalten. Das ist dann der Fall, wenn ein Redirect ausser dem Redirect-Verweis noch weiteren Text mit anderen Verweisen enthält. Letztere sollten dann entfernt werden.",
 "selflinks"		=> "Seiten, die auf sich selbst verweisen",
-"selflinkstext"		=> "The following pages contain a link to themselves, which they should not.",
+"selflinkstext"		=> "Die folgenden Artikel verweisen auf sich selbst, was sie nicht sollten.",
 
 
 # Miscellaneous special pages

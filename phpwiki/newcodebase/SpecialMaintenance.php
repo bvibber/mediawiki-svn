@@ -33,7 +33,7 @@ function getMaintenancePageBacklink()
 	$ns = $wgLang->getNamespaces() ;
 	$r = $sk->makeKnownLink (
 		$ns[-1].":Maintenance",
-		wfMsg("maintenancebacklink" ) ;
+		wfMsg("maintenancebacklink") ) ;
 	$t = wfMsg ( $subfunction ) ;
 	
 	$s = "<table width=100% border=0><tr><td>";
