@@ -196,7 +196,7 @@ if ( $wgUseDynamicDates ) {
 wfProfileOut( $fname.'-DateFormatter' );
 wfProfileIn( $fname.'-SetupSession' );
 
-if( !$wgCommandLineMode && ( isset( $_COOKIE[ini_get('session.name')] ) || isset( $_COOKIE[$wgDBname.'Password'] ) ) ) {
+if( !$wgCommandLineMode && ( isset( $_COOKIE[ini_get('session.name')] ) || isset( $_COOKIE[$wgDBname.'Token'] ) ) ) {
 	User::SetupSession();
 }
 
