@@ -46,7 +46,8 @@
 /* private */ $wgUserTogglesEn = array(
 	"hover"		=> "Show hoverbox over wiki links",
 	"underline" => "Underline links",
-	"highlightbroken" => "Highlight links to empty topics",
+	"highlightbroken" => "Format broken links <a href=\"\" class=\"new\">like
+this</a> (alternative: like this<a href=\"\" class=\"internal\">?</a>).",
 	"justify"	=> "Justify paragraphs",
 	"hideminor" => "Hide minor edits in recent changes",
 	"usenewrc" => "Enhanced recent changes (not for all browsers)",
@@ -55,7 +56,8 @@
 	"editwidth" => "Edit box has full width",
 	"editondblclick" => "Edit pages on double click (JavaScript)",
 	"watchdefault" => "Watch new and modified articles",
-	"minordefault" => "Mark all edits minor by default"
+	"minordefault" => "Mark all edits minor by default",
+	"previewontop" => "Show preview before edit box and not after it"
 	
 );
 

@@ -49,7 +49,8 @@
 	"editwidth" => "Text-Eingabefeld mit voller Breite",
 	"editondblclick" => "Seiten mit Doppelklick bearbeiten (JavaScript)",
 	"watchdefault" => "Neue und geänderte Seiten beobachten",
-	"minordefault" => "Alle Änderungen als geringfügig markieren"
+	"minordefault" => "Alle Änderungen als geringfügig markieren",
+	"previewontop" => "Vorschau vor dem Editierfenster anzeigen"
 );
 
 /* private */ $wgLanguageNamesDe = array(
