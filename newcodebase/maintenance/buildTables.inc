@@ -19,8 +19,7 @@ function buildTables()
   user_newpassword tinyblob NOT NULL default '',
   user_email tinytext NOT NULL default '',
   user_options blob NOT NULL default '',  
-  UNIQUE KEY user_id (user_id),
-  KEY user_name (user_name)
+  UNIQUE KEY user_id (user_id)
 ) TYPE=MyISAM PACK_KEYS=1";
 	wfQuery( $sql );
 	
