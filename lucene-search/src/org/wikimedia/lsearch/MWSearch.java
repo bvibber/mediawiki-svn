@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -52,6 +53,7 @@ public class MWSearch {
 	static String configfile = "./mwsearch.conf";
 	static String dburl;
 	private static Connection dbconn;
+	private static boolean latin1 = false;
 	
 	public static void main(String[] args) {
 		
@@ -68,6 +70,8 @@ public class MWSearch {
 				what = DOING_INCREMENT;
 			else if (args[i].equals("-configfile"))
 				configfile = args[++i];
+			else if (args[i].equals("-latin1"))
+				latin1 = true;
 			++i;
 		}
 		dburl = args[i];
@@ -117,7 +121,7 @@ public class MWSearch {
 		long numArticles = 0;
 		
 		String query = "SELECT old_namespace,old_title,old_text " +
-			"FROM page, text WHERE old_id=page_latest";
+			"FROM page, text WHERE old_id=page_latest AND page_is_redirect=0";
 		PreparedStatement pstmt;
 		try {
 			pstmt = dbconn.prepareStatement(query);
@@ -126,10 +130,16 @@ public class MWSearch {
 				String namespace = rs.getString(1);
 				String title = rs.getString(2);
 				String content = rs.getString(3);
+				if (!latin1) {
+					try {
+						title = new String(title.getBytes("ISO-8859-1"), "UTF-8");
+						content = new String(content.getBytes("ISO-8859-1"), "UTF-8");
+					} catch (UnsupportedEncodingException e) {}
+				}
 				Document d = new Document();
 				d.add(Field.Text("namespace", namespace));
 				d.add(Field.Text("title", title));
-				d.add(Field.Text("contents", content));
+				d.add(new Field("contents", content, false, true, true));
 				try {
 					writer.addDocument(d);
 				} catch (IOException e5) {

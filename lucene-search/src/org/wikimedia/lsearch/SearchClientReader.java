@@ -34,6 +34,7 @@ import java.net.URLDecoder;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
 import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.search.Hits;
 import org.apache.lucene.search.IndexSearcher;
@@ -53,11 +54,20 @@ public class SearchClientReader extends Thread {
 	
 	static Searcher searcher = null;
 	static Analyzer analyzer = null;
-	
+	static QueryParser parser = null;
+
+	// lucene special chars: + - && || ! ( ) { } [ ] ^ " ~ * ? : \
+	static String[] specialChars = {
+			//"\\+", "-", "&&", "\\|\\|", "!", "\\(", "\\)", "\\{", "\\}", "\\[", "\\]",
+			//"\\^", "\"", "~", "\\*", "\\?", ":", "\\\\"
+			"\\(", "\\)"
+	};
+
 	static {
 		try {
 			searcher = new IndexSearcher(MWDaemon.indexPath);
-			analyzer = new StandardAnalyzer();			
+			analyzer = new StandardAnalyzer();
+			parser = new QueryParser("contents", analyzer);
 		} catch (IOException e) {
 			System.err.println("Could not initialise search reader: " 
 					+ e.getMessage());
@@ -74,11 +84,19 @@ public class SearchClientReader extends Thread {
 			istrm = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			ostrm = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
 			rawsearchterm = istrm.readLine();
-			searchterm = URLDecoder.decode(rawsearchterm);
+			rawsearchterm = URLDecoder.decode(rawsearchterm);
+			for (int i = 0; i < specialChars.length; ++i)
+				rawsearchterm = rawsearchterm.replaceAll(specialChars[i], 
+						"\\" + specialChars[i]);
+			searchterm = "title:(" + rawsearchterm + ")^4 OR contents:(" 
+				+ rawsearchterm + ")";
+			
 			System.out.println("Query: " + searchterm);
-			Query query = QueryParser.parse(searchterm, "contents", analyzer);
+			Query query = parser.parse(searchterm);
+			System.out.println("Parsed: [" + query.toString() + "]");
 	        Hits hits = searcher.search(query);
 	        int numhits = hits.length();
+	        System.out.println(numhits + " hits");
 	        ostrm.write(numhits + "\n");
 	        int i = 0;
 	        while (i < numhits) {
@@ -88,9 +106,16 @@ public class SearchClientReader extends Thread {
 	        	ostrm.write(namespace + " " + title + "\n");
 	        	++i;
 	        }
-			istrm.close();
-			ostrm.close();
+	        ostrm.flush();
+		} catch (IOException e) {
 		} catch (Exception e) {
+			System.out.println("Unexpected exception: " + e.getMessage());
+		} finally {
+			try {
+				istrm.close();
+				ostrm.flush();
+				ostrm.close();
+			} catch (IOException e) {}
 		}
 	}
 }
