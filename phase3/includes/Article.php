@@ -532,7 +532,7 @@ class Article {
 	function showArticle( $text, $subtitle )
 	{
 		global $wgOut, $wgUser, $wgLinkCache;
-		global $wgMwRedir;
+		global $wgMwRedir, $wgDeferredUpdateList;
 
 		$wgLinkCache = new LinkCache();
 
@@ -550,6 +550,14 @@ class Article {
 			$cutoff = wfUnix2Timestamp( time() - ( 7 * 86400 ) );
 			$sql = "DELETE FROM recentchanges WHERE rc_timestamp < '{$cutoff}'";
 			wfQuery( $sql, DB_WRITE );
+		}
+
+		/* stat updates */
+		$id = $this->mTitle->getArticleID();
+		$adj = $this->mCountAdjustment;
+		if ( 0 != $id ) {
+			$u = new SiteStatsUpdate( 0, 1, $adj );
+			array_push( $wgDeferredUpdateList, $u );
 		}
 
 		if( $wgMwRedir->matchStart( $text ) )
@@ -1215,12 +1223,9 @@ class Article {
 		$title = $title_obj->getPrefixedDBkey();
 		$shortTitle = $title_obj->getDBkey();
 
-		$adj = $this->mCountAdjustment;
 
 		if ( 0 != $id ) {
 			$u = new LinksUpdate( $id, $title );
-			array_push( $wgDeferredUpdateList, $u );
-			$u = new SiteStatsUpdate( 0, 1, $adj );
 			array_push( $wgDeferredUpdateList, $u );
 			$u = new SearchUpdate( $id, $title, $text );
 			array_push( $wgDeferredUpdateList, $u );
@@ -1294,12 +1299,9 @@ class Article {
 		$title = $title_obj->getPrefixedDBkey();
 		$shortTitle = $title_obj->getDBkey();
 
-		$adj = $this->mCountAdjustment;
 
 		if ( 0 != $id ) {
 			$u = new LinksUpdate( $id, $title );
-			array_push( $wgDeferredUpdateList, $u );
-			$u = new SiteStatsUpdate( 0, 1, $adj );
 			array_push( $wgDeferredUpdateList, $u );
 			$u = new SearchUpdate( $id, $title, $text );
 			array_push( $wgDeferredUpdateList, $u );
