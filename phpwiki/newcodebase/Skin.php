@@ -377,11 +377,36 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 
 	function pageSubtitle()
 	{
-		global $wgOut;
+		global $wgOut,$wgTitle,$wgNamespacesWithSubpages;
 
 		$sub = $wgOut->getSubtitle();
 		if ( "" == $sub ) { $sub = wfMsg( "fromwikipedia" ); }
-		$s = "<p class='subtitle'>{$sub}\n";
+		if($wgOut->isArticle() && $wgNamespacesWithSubpages[$wgTitle->getNamespace()]) {
+			$ptext=$wgTitle->getPrefixedText();			
+			if(preg_match("/\//",$ptext)) {				
+				$sub.="</p><p class='subpages'>";	
+				$links=explode("/",$ptext);
+				$c=0;
+				$growinglink="";
+				foreach($links as $link) {
+					$c++;
+					if ($c<count($links)) {						
+						$growinglink.=$link;
+						$getlink=$this->makeLink($growinglink,$link);						
+						if(preg_match("/class='new'/i",$getlink)) { break; } # this is a hack, but it saves time
+						if ($c>1) { 
+							$sub .= " | ";
+						} else  {
+							$sub .="&lt; ";
+						}
+						$sub .= $getlink;
+						$growinglink.="/";
+					}
+					
+				}
+			}
+		}
+		$s = "<p class='subtitle'>{$sub}\n";		
 		return $s;
 	}
 

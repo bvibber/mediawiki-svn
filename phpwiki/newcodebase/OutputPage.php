@@ -655,7 +655,7 @@ class OutputPage {
 			} else if ( preg_match( $e2, $line, $m ) ) {
 				$link = "{$protocol}:{$m[1]}";
 				$text = $m[2];
-				$trail = $m[3];
+				$trail = $m[3];			
 			} else {
 				$s .= "[{$protocol}:" . $line;
 				continue;
@@ -673,6 +673,7 @@ class OutputPage {
 	{
 		global $wgTitle, $wgUser, $wgLang;
 		global $wgLinkCache, $wgInterwikiMagic;
+		global $wgNamespacesWithSubpages;
 		wfProfileIn( "OutputPage::replaceInternalLinks" );
 
 		$tc = Title::legalChars() . "#";
@@ -686,18 +687,33 @@ class OutputPage {
 		$e2 = "/^([{$tc}]+)]](.*)\$/sD";
 
 		foreach ( $a as $line ) {
-			if ( preg_match( $e1, $line, $m ) ) {
-				$link = $m[1];
+			if ( preg_match( $e1, $line, $m ) ) { # page with alternate text
+				
 				$text = $m[2];
-				$trail = $m[3];
-			} else if ( preg_match( $e2, $line, $m ) ) {
-				$link = $m[1];
+				$trail = $m[3];				
+			
+			} else if ( preg_match( $e2, $line, $m ) ) { # page with normal text
+			
 				$text = "";
-				$trail = $m[2];
-			} else { # Invalid form; output directly
-				$s .= "[[" . $line;
+				$trail = $m[2];			
+			}
+			
+			else { # Invalid form; output directly
+				$s .= "[[" . $line ;
 				continue;
 			}
+			if(substr($m[1],0,1)=="/") { # subpage
+				$noslash=substr($m[1],1);
+				if($wgNamespacesWithSubpages[$wgTitle->getNamespace()]) { # subpages allowed here
+					$link = $wgTitle->getPrefixedText(). "/" . trim($noslash);					
+					if(!$text) { $text= $m[1]; } # this might be changed for ugliness reasons
+				} else {
+					$link = $noslash; # no subpage allowed, use standard link
+				}
+			} else { # no subpage
+				$link = $m[1]; 
+			}
+
 			if ( preg_match( "/^([A-Za-z\\x80-\\xff]+):(.*)\$/", $link,  $m ) ) {
 				$pre = strtolower( $m[1] );
 				$suf = $m[2];

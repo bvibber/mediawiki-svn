@@ -3,6 +3,7 @@ h1.pagetitle {
  padding-top: 0; margin-top: 0; padding-bottom: 0; margin-bottom: 0;
 }
 p.subtitle { padding-top: 0; margin-top: 0; }
+p.subpages { font-size:small;}
 a.interwiki, a.external { color: #3366BB; }
 body { margin: 0px; padding: 4px; }
 a.stub { color:#772233; text-decoration:none; }
