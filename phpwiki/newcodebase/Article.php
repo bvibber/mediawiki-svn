@@ -1152,8 +1152,8 @@ enctype='application/x-www-form-urlencoded'>
 
 		$p1 = "/\[\[({$np}+) \\(({$np}+)\\)\\|]]/";		# [[page (context)|]]
 		$p2 = "/\[\[\\|({$tc}+)]]/";					# [[|page]]
-		$p3 = "/\[\[([A-Za-z]+):({$np}+)\\|]]/";		# [[namespace:page|]]
-		$p4 = "/\[\[([A-Aa-z]+):({$np}+) \\(({$np}+)\\)\\|]]/";
+		$p3 = "/\[\[([A-Za-z _]+):({$np}+)\\|]]/";		# [[namespace:page|]]
+		$p4 = "/\[\[([A-Aa-z _]+):({$np}+) \\(({$np}+)\\)\\|]]/";
 														# [[ns:page (cont)|]]
 
 		$context = "";
