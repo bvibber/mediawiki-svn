@@ -269,7 +269,7 @@ class WikiPage extends WikiTitle {
         }
 
 #### Rendering functions
-    # This function converts wiki-style internal links like [[Main Page]] with the appropriate HTML code
+    # This function converts wiki-style internal links like [[Main Page]] to the appropriate HTML code
     # It has to handle namespaces, subpages, and alternate names (as in [[namespace:page/subpage name]])
     function replaceInternalLinks ( $s ) {
         global $wikiInterwiki , $action , $wikiOtherLanguages ;
@@ -330,7 +330,7 @@ class WikiPage extends WikiTitle {
                 } else {
                     $unlinkedLinks[$link]++ ;
                     if ( $user->options["showHover"] == "yes" ) $hover = "title=\"Edit '" . htmlspecialchars ( $link ) . "'\"" ;
-                    $ulink = wikilink( nurlencode ( $link ) . "&action=edit" ) ;
+                    $ulink = wikiLink( nurlencode ( $link ) . "&action=edit" ) ;
                     if ( substr_count ( $text , " " ) > 0 ) {
                         $s .= "<span class=\"newlinkedge\">[</span>";
                         $bracket = "]";

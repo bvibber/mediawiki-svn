@@ -130,7 +130,7 @@ function edit ( $title ) {
 	$ret .= "<input type=hidden value=\"$EditTime\" name=EditTime>\n" ;
 	$ret .= "<input type=hidden value=yes name=FromEditForm>\n" ;
 	$ret .= " <a href=\"".wikiLink($vpage->url)."\">$wikiDontSaveChanges</a>\n" ; 
-       	$ret .= " | <a href=\"".wikiLink("wikipedia:How_does_one_edit_a_page")."\">$wikiEditHelp</a>\n" ;
+	$ret .= " | <a href=\"".wikiLink("wikipedia:How_does_one_edit_a_page")."\">$wikiEditHelp</a>\n" ;
 	$ret .= " </form>\n" ;
 
 	if ( $editConflict ) {
