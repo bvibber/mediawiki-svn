@@ -8,6 +8,24 @@
 
 namespace smthr {
 
+class lck;
+
+class mtx {
+public:
+	mtx();
+private:
+	pthread_mutex_t mmtx;
+	friend class lck;
+};
+
+class lck {
+public:
+	lck(mtx&);
+	~lck();
+private:
+	mtx& mymtx;
+};
+
 struct thr_creation_error : public std::runtime_error {
 	thr_creation_error(int en) : std::runtime_error(std::strerror(en)) {}
 };

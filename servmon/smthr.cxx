@@ -43,4 +43,20 @@ void thrbase::run(void)
 	instance<thrmgr>()->crethr(boost::bind(&daemon::start, this));
 }
 
+mtx::mtx(void)
+{
+	pthread_mutex_init(&mmtx, NULL);
+}
+
+lck::lck(mtx& m)
+: mymtx(m)
+{
+	pthread_mutex_lock(&mymtx.mmtx);
+}
+
+lck::~lck(void)
+{
+	pthread_mutex_unlock(&mymtx.mmtx);
+}
+
 }

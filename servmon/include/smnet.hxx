@@ -2,6 +2,7 @@
 #define SM_SMNET_HXX_INCLUDED_
 
 #include "smstdinc.hxx"
+#include "smthr.hxx"
 
 #undef unix
 #undef bsd
@@ -15,13 +16,17 @@ struct sckterr : public std::runtime_error {
 class bsd {
 public:
 	bsd(void) {}
-	bsd(int s_) : s(s_) {}
+
+	bsd(int s_) : s(s_) {
+		_locked_inc();
+	}
+
 	bsd(int s_, sockaddr* addr_, socklen_t len_)
 	: s(s_)
 	, addr(*addr_)
 	, len(len_)
 	{
-		++refs[s];
+		_locked_inc();
 	}
 
 	bsd(bsd const& o)
@@ -29,15 +34,29 @@ public:
 	, addr(o.addr)
 	, len(o.len)
 	{
-		++refs[s];
+		_locked_inc();
+	}
+
+	bsd& operator= (bsd const& o) {
+		s = o.s;
+		addr = o.addr;
+		len = o.len;
+		_locked_inc();
+		return *this;
+	}
+
+	void _bsd_iam(int s_) {
+		s = s_;
+		_locked_inc();
 	}
 
 	virtual ~bsd(void) {
-		if (--refs[s] == 0) close(s);
+		if (_locked_dec() == 0) close(s);
 	}
 
-
 	void _bsd_lsn(void) {
+		int one = 1;
+		setsockopt(s, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
 		if (bind(s, reinterpret_cast<sockaddr*>(&addr), len) < 0)
 			throw sckterr();
 		if (listen(s, 5) < 0)
@@ -51,19 +70,39 @@ public:
 		return i;
 	}
 
+	void wrt(u_char* d, std::size_t l) {
+		if (write(s, d, l) < l) 
+			throw sckterr();
+	}
+
+private:
+	int _locked_inc(void) {
+		smthr::lck l(mrl);
+		return ++refs[s];
+	}
+
+	int _locked_dec(void) {
+		smthr::lck l(mrl);
+		int i = --refs[s];
+		if (i == 0) refs.erase(i);
+		return i;
+	}
+		
 protected:
 	sockaddr addr;
 	socklen_t len;
 	int s;
 	static std::map<int,int> refs;
+	smthr::mtx mrl;
 };
 
 class inet : public bsd {
 public:
 	inet() {
-		if ((s = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+		int i;
+		if ((i = socket(AF_INET, SOCK_STREAM, 0)) < 0)
 			throw sckterr();
-		refs[s] = 1;
+		_bsd_iam(i);
 		ctmkaddr();
 	}
 
@@ -117,6 +156,9 @@ template<class fmly>
 class sckt {
 public:
 	sckt(void) {}
+	sckt(sckt<fmly> const& s)
+	: wr(s.wr)
+	{}
 
 	virtual ~sckt(void) {
 	}
@@ -142,6 +184,15 @@ class clnt : public sckt<fmly> {
 public:
 	clnt(void) {};
 	clnt(fmly wr_) : sckt<fmly>(wr_) {};
+	clnt(clnt<fmly> const& s)
+	: sckt<fmly>(s) {}
+
+	void wrt(u_char const* d, std::size_t l) {
+		return sckt<fmly>::wr.wrt(d, l);
+	}
+	void wrt(std::string const& s) {
+		return sckt<fmly>::wr.wrt((u_char *) s.data(), s.size());
+	}
 };
 
 template<class fmly>

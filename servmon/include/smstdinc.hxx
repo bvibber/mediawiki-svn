@@ -23,4 +23,6 @@ using boost::lexical_cast;
 
 #include <netinet/in.h>
 
+#include <unistd.h>
+
 #endif
