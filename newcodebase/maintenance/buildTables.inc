@@ -65,6 +65,22 @@ function buildTables()
 ) TYPE=MyISAM PACK_KEYS=1";
 	wfQuery( $sql );
 
+	$sql = "DROP TABLE IF EXISTS archive";
+	wfQuery( $sql );
+
+	$sql = "CREATE TABLE archive (
+  ar_namespace tinyint(2) unsigned NOT NULL default '0',
+  ar_title varchar(255) binary NOT NULL default '',
+  ar_text mediumtext NOT NULL default '',
+  ar_comment tinyblob NOT NULL default '',
+  ar_user int(5) unsigned NOT NULL default '0',
+  ar_user_text varchar(255) binary NOT NULL,
+  ar_timestamp char(14) binary NOT NULL default '',
+  ar_minor_edit tinyint(1) NOT NULL default '0',
+  ar_flags tinyblob NOT NULL default ''
+) TYPE=MyISAM PACK_KEYS=1";
+	wfQuery( $sql );
+
 	$sql = "DROP TABLE IF EXISTS links";
 	wfQuery( $sql );
 
