@@ -1,7 +1,19 @@
 %{
 
+/**
+ **
+ **  This file is part of the flex/bison-based parser for MediaWiki.
+ **            This is the lexer - the input file for flex.
+ **  See fb_defines.h on how to make it output debugging information.
+ **
+ ** This source file is licensed unter the GNU General Public License
+ **               http://www.gnu.org/copyleft/gpl.html
+ **                 Originally written 2004 by Timwi
+ **/
+
 #include <stdio.h>
 #include <string.h>
+#include "fb_defines.h"
 
 /* Notice: We need to include parsetree.h first because wikiparse.tab.h will
  * attempt to use the 'Node' type defined therein. */
@@ -10,13 +22,9 @@
 
 int yywrap(void) { return 1; }
 
-/* Change these lines to "#define debuglex[2] printf" to output the token stream */
-#define debuglex(x)
-#define debuglex2(x,y)
-
 %}
 
-%s canbelist canbeheading cannotbelistorheadingorpre
+%s canbelist canbeheading cannotbelistorheadingorpre attributes
 %x extension comment
 
 %%
@@ -100,6 +108,16 @@ int yywrap(void) { return 1; }
                                     debuglex2 ("ENDHEADING(%d) ", yylval.num);
                                     return ENDHEADING;
                                 }
+
+"{|"" "*                      { BEGIN(attributes); debuglex ("TABLEBEGIN "); return TABLEBEGIN; }
+"||"" "*/[^\| ][^\|]*"|"[^\|] { BEGIN(attributes); debuglex ("TABLECELL ");  return TABLECELL;  }
+"||"" "*      { BEGIN(cannotbelistorheadingorpre); debuglex ("TABLECELL ");  return TABLECELL;  }
+"!!"" "*/[^\! ][^\!]*"!"[^\!] { BEGIN(attributes); debuglex ("TABLEHEAD ");  return TABLEHEAD;  }
+"!!"" "*      { BEGIN(cannotbelistorheadingorpre); debuglex ("TABLEHEAD ");  return TABLEHEAD;  }
+
+"|""-"+" "*                   { BEGIN(attributes); debuglex ("TABLEROW ");   return TABLEROW;   }
+"|}"" "*      { BEGIN(cannotbelistorheadingorpre); debuglex ("TABLEEND ");   return TABLEEND;   }
+
 
 <cannotbelistorheadingorpre,canbeheading>[^\|\n][^\<\>\[\]\{\}\n\'\|\=]*     {
     yylval.node = newNodeS (TextToken, strdup (yytext));

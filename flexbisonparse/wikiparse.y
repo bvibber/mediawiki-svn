@@ -1,12 +1,20 @@
-/* declarations */
-
 %{
+
+/**
+ **
+ **  This file is part of the flex/bison-based parser for MediaWiki.
+ **          This is the grammar - the input file for bison.
+ **  See fb_defines.h on how to make it output debugging information.
+ **
+ ** This source file is licensed unter the GNU General Public License
+ **               http://www.gnu.org/copyleft/gpl.html
+ **                 Originally written 2004 by Timwi
+ **/
+
 #include <stdio.h>
 #include "parsetree.h"
+#include "fb_defines.h"
 int yyerror() { printf ("Syntax error.\n"); }
-
-/* Change this line to "#define debugf printf" to output each reduction */
-#define debugf(x)
 
 Node articlenode;
 %}
@@ -28,7 +36,8 @@ Node articlenode;
         NEWLINE PRELINE LISTBULLET LISTNUMBERED HEADING ENDHEADING APO5 APO3 APO2
         // Not yet used:
         OPENPENTUPLECURLY CLOSEPENTUPLECURLY OPENTEMPLATEVAR CLOSETEMPLATEVAR OPENTEMPLATE
-        CLOSETEMPLATE
+        CLOSETEMPLATE TABLEBEGIN TABLECELL TABLEHEAD TABLEROW TABLEEND
+
 %start article
 
 %%
@@ -43,6 +52,9 @@ block           :   preblock                                    { debugf ("block
                 |   heading zeroormorenewlines                  { debugf ("block#2 "); $$ = $1; }
                 |   listblock zeroormorenewlines                { debugf ("block#3 "); $$ = $1; }
                 |   paragraph zeroormorenewlines                { debugf ("block#4 "); $$ = $1; }
+/*
+                |   table zeroormorenewlines                    { debugf ("block#5 "); $$ = $1; }
+*/
 
 preblock        :   preline             { debugf ("preblock#1 "); $$ = nodeAddChild (newNode (PreBlock), $1); }
                 |   preblock preline    { debugf ("preblock#2 "); $$ = nodeAddChild ($1, $2); }
@@ -60,8 +72,12 @@ numberlistblock :   numberlistline                  { debugf ("numberlistblock#1
 
 bulletlistline  :   LISTBULLET listseries textorempty NEWLINE
                         { debugf ("bulletlistline#1 "); $$ = nodeAddChild (nodePrependChild ($2, newNode (ListBullet)), $3); }
+                |   LISTBULLET listseries textorempty
+                        { debugf ("bulletlistline#2 "); $$ = nodeAddChild (nodePrependChild ($2, newNode (ListBullet)), $3); }
 numberlistline  :   LISTNUMBERED listseries textorempty NEWLINE
                         { debugf ("numberlistline#1 "); $$ = nodeAddChild (nodePrependChild ($2, newNode (ListNumbered)), $3); }
+                |   LISTNUMBERED listseries textorempty
+                        { debugf ("numberlistline#2 "); $$ = nodeAddChild (nodePrependChild ($2, newNode (ListNumbered)), $3); }
 
 listseries      :   /* empty */                 { debugf ("listseries#1 "); $$ = newNode (ListLine); }
                 |   LISTBULLET
@@ -88,13 +104,8 @@ linketc         :   OPENDBLSQBR text CLOSEDBLSQBR
                 |   OPENLINK text pipeseries PIPE CLOSEDBLSQBR
                         { debugf ("linketc#8 "); $$ = nodeAddChild2 (newNodeI (LinkEtc, 3), nodeAddChild (newNode (LinkTarget), $2), $3); }
 
-pipeseries      :   PIPE text
-                        { debugf ("pipeseries#1 "); $$ = nodeAddChild (newNode (LinkOption), $2); }
-                |   PIPE text pipeseries
-                        {   debugf ("pipeseries#2 ");
-                            $$ = nodeAddChild (newNode (LinkOption), $2);
-                            $$->nextSibling = $3;
-                        }
+pipeseries      :   PIPE text               { debugf ("pipeseries#1 "); $$ = nodeAddChild (newNode (LinkOption), $2); }
+                |   pipeseries PIPE text    { debugf ("pipeseries#2 "); $$ = nodeAddSibling ($1, nodeAddChild (newNode (LinkOption), $3)); }
 
 textorempty     :   /* empty */             { debugf ("textorempty#1 "); $$ = newNodeS (TextToken, ""); }
                 |   text                    { debugf ("textorempty#2 "); $$ = $1; }
@@ -210,6 +221,14 @@ paragraph       :   text NEWLINE
                 |   text /* for eof */
                         { debugf ("paragraph#3 "); $$ = nodeAddChild (newNode (Paragraph), $1); }
 
+/*
+table           :   TABLEBEGIN tablerows TABLEEND  { debugf ("table#1 "); $$ = $2; }
+                |   TABLEBEGIN tablerows /* eof * /{ debugf ("table#2 "); $$ = $2; }
+
+tablerows       :   tablerow            { debugf ("tablerows#1 "); $$ = $1; }
+                |   tablerows tablerow  { debugf ("tablerows#2 ");
+*/
+
 zeroormorenewlines : /* empty */                { debugf ("zeroormorenewlines#1 "); $$ = 0; }
                 |   oneormorenewlines           { debugf ("zeroormorenewlines#2 "); $$ = 0; }
 oneormorenewlines : NEWLINE                     { debugf ("oneormorenewlines#1 "); $$ = 0; }
@@ -227,16 +246,13 @@ oneormorenewlinessave : NEWLINE                     { debugf ("oneormorenewlines
 
 int main() {
     int result;
-    printf ("Parsing...\n");
+    printf ("Parsing...\n\n");
     result = yyparse();
     if (!result)
     {
-        printf ("\n");
-        printf ("XML output:\n");
-        printf ("\n");
+        printf ("\n\nXML output:\n\n");
         outputXML (articlenode);
-        printf ("\n");
-        printf ("\n");
+        printf ("\n\n");
     }
     return result;
 }

@@ -1,7 +1,13 @@
 
-/* By Timwi
- * GPL - http://www.gnu.org/copyleft/gpl.html
- */
+/**
+ **  This file is part of the flex/bison-based parser for MediaWiki.
+ **       This header file defines all types and functions used
+ **                       throughout the parser.
+ **
+ ** This source file is licensed unter the GNU General Public License
+ **                http://www.gnu.org/copyleft/gpl.html
+ **                  Originally written 2004 by Timwi
+ **/
 
 typedef enum NodeType {
     Article, Paragraph, Heading, TextBlock, TextToken, ExtensionToken,
@@ -42,9 +48,11 @@ Node newNodeI (NodeType newType, int data);
 Node newNodeS (NodeType newType, char* data);
 Node newNodeE (NodeType newType, ExtensionData data);
 
+/* Return value of all of these is the first parameter */
 Node nodeAddChild (Node node, Node child);
 #define nodeAddChild2(a,b,c) nodeAddChild (nodeAddChild (a, b), c)
 Node nodePrependChild (Node node, Node child);
+Node nodeAddSibling (Node node, Node sibling);
 
 /* Parameter must be a ListBlock node. Returns a List node. */
 Node processListBlock (Node block);

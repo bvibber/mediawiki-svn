@@ -1,24 +1,12 @@
+
 /**
- **             .-----------.       .---.       .---.
- **             |           |      /     '.   .'     \
- **             '---.   .---'     .        \ /        .
- **                 |   |         |         '         |
- **                 |   |         '                   '
- **                 |   |          \                 /
- **                 |   |           '.             .'
- **                 |   |             '.         .'
- **                 |   |               '.     .'
- **             .---'   '---.             \   /
- **             |           |              \ /
- **             '-----------'               '
- **             ___                   _____
- **             |  ) _   _  _   _       |  _  _  _  _
- **             |-´  _| |  (_  (_       | |  (_ (_ (_
- **             |   (_| |   _) (_       | |  (_ (_  _)
+ **  This file is part of the flex/bison-based parser for MediaWiki.
+ **           This source file implements all the functions
+ **                       defined in parsetree.h.
  **
- **
- ** This source file licensed unter the GNU General Public License
- **              http://www.gnu.org/copyleft/gpl.html
+ ** This source file is licensed unter the GNU General Public License
+ **                http://www.gnu.org/copyleft/gpl.html
+ **                  Originally written 2004 by Timwi
  **/
 
 #include "parsetree.h"
@@ -66,6 +54,18 @@ Node nodeAddChild (Node node, Node child)
             find->nextSibling = child;
         }
         else node->firstChild = child;
+    }
+    return node;
+}
+
+/* Return value is the first parameter */
+Node nodeAddSibling (Node node, Node sibling)
+{
+    if (sibling)
+    {
+        while (node->nextSibling)
+            node = node->nextSibling;
+        node->nextSibling = sibling;
     }
     return node;
 }
