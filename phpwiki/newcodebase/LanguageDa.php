@@ -39,7 +39,8 @@
 	"Vis altid som PNG",
 	"HTML hvis meget simpel ellers PNG",
 	"HTML hvis muligt ellers PNG",
-	"Lad være som TeX (for tekst browsere)"
+	"Lad være som TeX (for tekst browsere)",
+    "Anbefalet til moderne browsere"
 );
 
 /* private */ $wgUserTogglesDa = array(
@@ -54,11 +55,14 @@
 	"editwidth" => "Redigeringsboksen har fuld bredde",
 	"editondblclick" => "Rediger sider med dobbeltklik (JavaScript)",
 	"watchdefault" => "Overvåg nye og ændrede artikler",
-	"minordefault" => "Marker som standard alle ændringer som mindre"
+	"minordefault" => "Marker som standard alle ændringer som mindre",
+	"previewontop" => "Vis forhåndsvisning før redigeringsboksen"
 	
 );
 
 /* private */ $wgBookstoreListDa = array(
+	"Bibliotek.dk" => "http://bibliotek.dk/vis.php?base=dfa&origin=kommando&field1=ccl&term1=is=$1&element=L&start=1&step=10",
+	"Bogguide.dk" => "http://www.bogguide.dk/find_boeger_bog.asp?ISBN=$1",
 	"AddALL" => "http://www.addall.com/New/Partner.cgi?query=$1&type=ISBN",
 	"PriceSCAN" => "http://www.pricescan.com/books/bookDetail.asp?isbn=$1",
 	"Barnes & Noble" => "http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$1",
@@ -84,6 +88,7 @@
 	"bn"	=> "Bengalsk",
 	"bo"	=> "Tibetansk",
 	"br" => "Brezhoneg",
+	"bs" => "Bosnisk",
 	"ca" => "Catal&#224;",
 	"ch" => "Chamoru",
 	"co"	=> "Korsikansk",
@@ -215,9 +220,9 @@
 );
 
 /* private */ $wgMonthNamesDa = array(
-	"Januar", "Februar", "Marts", "April", "Maj", "Juni",
-	"Juli", "August", "September", "Oktober", "November",
-	"December"
+	"januar", "februar", "marts", "april", "maj", "juni",
+	"juli", "august", "september", "oktober", "november",
+	"december"
 );
 
 /* private */ $wgMonthAbbreviationsDa = array(
@@ -248,17 +253,18 @@
 	"Shortpages"	=> "Korte artikler",
 	"Longpages"	=> "Lange artikler",
 	"Newpages"	=> "De nyeste artikler",
+	"Intl"		=> "Sproglinks",
 	"Allpages"	=> "Alle sider efter titel",
 
 	"Ipblocklist"	=> "Blokerede IP adresser",
 	"Maintenance"	=> "Vedligeholdelsesside",
 	"Specialpages"  => "",
 	"Contributions" => "",
-	"Emailuser"	=> "",
+	"Emailuser"		=> "",
 	"Whatlinkshere" => "",
 	"Recentchangeslinked" => "",
-	"Movepage"	=> "",
-	"Booksources"	=> "Eksterne bog kilder"
+	"Movepage"		=> "",
+	"Booksources"	=> "Eksterne bogkilder"
 );
 
 /* private */ $wgSysopSpecialPagesDa = array(
@@ -295,12 +301,12 @@
 "qbfind"		=> "Find",
 "qbbrowse"		=> "Gennemse",
 "qbedit"		=> "Rediger",
-"qbpageoptions" => "Side indstillinger",
-"qbpageinfo"	=> "Side information",
+"qbpageoptions" => "Indstillinger for side",
+"qbpageinfo"	=> "Information om side",
 "qbmyoptions"	=> "Mine indstillinger",
 "mypage"		=> "Min side",
 "mytalk"		=> "Min diskussion",
-"currentevents" => "-",
+"currentevents" => "Aktuelle begivenheder",
 "errorpagetitle" => "Fejl",
 "returnto"		=> "Tilbage til $1.",
 "fromwikipedia"	=> "Fra Wikipedia, den frie encyklopædi.",
@@ -316,7 +322,7 @@
 "unprotectthispage" => "Fjern beskyttelse af side",
 "newpage" => "Ny side",
 "talkpage"		=> "Diskussionssiden",
-"articlepage"	=> "Se artikelen",
+"articlepage"	=> "Se artiklen",
 "subjectpage"	=> "Se emnesiden",
 "userpage" => "Se brugersiden",
 "wikipediapage" => "Se metasiden",
@@ -324,8 +330,8 @@
 "viewtalkpage" => "Se diskussion",
 "otherlanguages" => "Andre sprog",
 "redirectedfrom" => "(Omdirigeret fra $1)",
-"lastmodified"	=> "Denne side blev sidst ændret $1,",
-"viewcount"		=> "og er blevet vist ialt $1 gange.",
+"lastmodified"	=> "Sidst ændret den $1.",
+"viewcount"		=> "Siden er vist ialt $1 gange.",
 "gnunote" => "Denne side er udgivet under <a class=internal href='/wiki/GNU_FDL'>GNU FDL</a>.",
 "printsubtitle" => "(Fra http://da.wikipedia.org)",
 "protectedpage" => "Beskyttet side",
@@ -393,9 +399,10 @@ specificeret.",
 "badtitle"		=> "Forkert titel",
 "badtitletext"	=> "Den ønskede sides titel var ulovlig, tom eller siden
 er forkert linket fra en Wikipedia på et andet sprog.",
-"perfdisabled" => "Desværre! Denne funktion er midlertidigt afbrudt i 
-de spidsbelastede timer, så siden ikke går helt ned; kom tilbage 
-mellem 02:00 og 14:00 UTC og prøv igen.",
+"perfdisabled" => "Desværre! Denne funktion er midlertidigt afbrudt, 
+fordi den belaster databasen meget hårdt, i en sådan grad at siden 
+bliver meget langsom. Funktionen bliver forhåbentlig omskrevet i den 
+nærmeste fremtid (måske af dig, vi er jo open source!!).",
 
 # Login and logout pages
 #
@@ -431,10 +438,12 @@ at få det sendt til den adresse du har oplyst.<br>\n",
 "badretype"		=> "De passwords du indtastede er ikke ens.",
 "userexists"	=> "Det brugernavn du har valgt er allerede i brug. Vælg 
 venligst et andet brugernavn.",
-"youremail"		=> "Din e-mail",
+"youremail"		=> "Din e-mail *",
 "yournick"		=> "Dit øgenavn (til signaturer)",
-"emailforlost"	=> "Hvis du har glemt dit password, kan du få et nyt et sendt 
-til din e-mail adresse.",
+"emailforlost"	=> "* Det er valgfrit om du vil oplyse din e-mail adresse. 
+Men det gør andre brugere i stand til at sende dig en e-mail, uden at 
+du behøves offentliggøre din e-mail adresse, og det gør at du kan få et 
+nyt password sendt til din e-mail adresse.",
 "loginerror"	=> "Fejl med at logge på",
 "noname"		=> "Du har ikke specificeret et gyldigt brugernavn.",
 "loginsuccesstitle" => "Logget på med success",
@@ -467,9 +476,10 @@ Du bør logge på og ændre dit password straks efter du har modtaget det.",
 $1. Begrundelsen der er blevet givet er denne:<br>$2<p>Du kan kontakte 
 administratoren for at diskutere blokeringen.",
 "newarticle"	=> "(Ny)",
-"newarticletext" => "Der er på nuværende tidspunkt ingen tekst på denne side.
-Du kan slette denne tekst og begynde en artikel.
-Hvis det ikke var din mening så tryk på '''Tilbage''' eller '''Back''' knappen.",
+"newarticletext" => "Der er på nuværende tidspunkt ingen tekst på denne side.<br>
+Du kan begynde en artikel ved at skrive i boksen herunder. 
+(se [[Wikipedia:Hjælp|hjælpen]] for yderligere information).<br>
+Hvis det ikke var din mening, så tryk på '''Tilbage''' eller '''Back''' knappen.",
 "anontalkpagetext" => "---- ''Dette er en diskussionsside for anonyme brugere der 
 ikke har oprettet en konto endnu eller ikke bruger den. Vi er derfor nødt til at 
 bruge den nummeriske [[IP adresse]] til at identificere ham eller hende.
@@ -484,7 +494,7 @@ side)",
 "previewnote"	=> "Husk at dette er kun en forhåndsvisning, og siden er ikke 
 gemt endnu!",
 "previewconflict" => "Denne forhåndsvisning er resultatet af den 
-redigerbarer tekst ovenfor,
+redigerbare tekst ovenfor,
 sådan vil det komme til at se ud hvis du vælger at gemme teksten.",
 "editing"		=> "Redigerer $1",
 "editconflict"	=> "Redigeringskonflikt: $1",
@@ -841,27 +851,29 @@ link til den samme artikel i $1. Omdirigeringer og underartikler er
 "randompage"	=> "Tilfældig artikel",
 "shortpages"	=> "Korte sider",
 "longpages"		=> "Lange sider",
-"listusers"		=> "Bruger liste",
+"listusers"		=> "Brugerliste",
 "specialpages"	=> "Specielle sider",
 "spheading"		=> "Specielle sider",
 "sysopspheading" => "Specielle sider til sysop brug",
 "developerspheading" => "Specielle sider til developer brug",
 "protectpage"	=> "Beskyt side",
-"recentchangeslinked" => "Overvåg links",
+"recentchangeslinked" => "Relaterede ændringer",
 "rclsub"		=> "(til sider linket fra \"$1\")",
 "debug"			=> "Debug",
 "newpages"		=> "Nye sider",
+"intl"		=> "Sproglinks",
 "movethispage"	=> "Flyt side",
 "unusedimagestext" => "<p>Læg mærke til at andre web sider
 såsom de andre internationale Wikipediaer måske linker til et billede med
 en direkte URL, så det kan stadig være listet her selvom det er
 i aktivt brug.",
-"booksources"	=> "Bog kilder",
+"booksources"	=> "Bogkilder",
 "booksourcetext" => "Herunder er en liste af links til steder der
-sælger nye og brugte bøger, og som måske også har yderligere information
-om bøger du leder efter.
-Wikipedia er ikke associeret med nogen af disse firmaer,
+udlåner og/eller sælger nye og brugte bøger, og som måske også har 
+yderligere information om bøger du leder efter.
+Wikipedia er ikke associeret med nogen af disse steder,
 og denne liste skal ikke ses som en anbefaling af disse.",
+"alphaindexline" => "$1 til $2",
 
 # Email this user
 #
@@ -969,6 +981,7 @@ sletninger og gendannelser.",
 # Contributions
 #
 "contributions"	=> "Bruger bidrag",
+"mycontris" => "Mine bidrag",
 "contribsub"	=> "For $1",
 "nocontribs"	=> "Ingen ændringer er fundet som matcher disse kriterier.",
 "ucnote"	=> "Herunder er denne brugers sidste <b>$1</b> ændringer i de 
