@@ -95,6 +95,7 @@ CREATE TABLE ipblocks (
   ipb_user int(8) unsigned default '0',
   ipb_by int(8) unsigned default '0',
   ipb_reason blob default '',
+  ipb_timestamp char(14) binary NOT NULL default '',
   INDEX ipb_address (ipb_address),
   INDEX ipb_user (ipb_user)
 ) TYPE=MyISAM PACK_KEYS=1;

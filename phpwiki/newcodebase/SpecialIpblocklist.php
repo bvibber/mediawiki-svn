@@ -1,0 +1,124 @@
+<?
+
+function wfSpecialIpblocklist()
+{
+	global $wgUser, $wgOut, $action, $ip;
+
+	$fields = array( "wpUnblockAddress" );
+	wfCleanFormFields( $fields );
+	$ipu = new IPUnblockForm();
+
+	if ( "success" == $action ) {
+		$msg = str_replace( "$1", $ip, wfMsg( "ipusuccess" ) );
+		$ipu->showList( $msg );
+	} else if ( "submit" == $action ) {
+		if ( ! $wgUser->isSysop() ) {
+			$wgOut->sysopRequired();
+			return;
+		}
+		$ipu->doSubmit();
+	} else if ( "unblock" == $action ) {
+		$ipu->showForm( "" );
+	} else {
+		$ipu->showList( "" );
+	}
+}
+
+class IPUnblockForm {
+
+	function showForm( $err )
+	{
+		global $wgOut, $wgUser, $wgServer, $wgScript;
+		global $ip, $wpUnblockAddress;
+
+		$wgOut->setPagetitle( wfMsg( "unblockip" ) );
+		$wgOut->addWikiText( wfMsg( "unblockiptext" ) );
+
+		if ( ! $wpUnblockAddress ) { $wpUnblockAddress = $ip; }
+		$ipa = wfMsg( "ipaddress" );
+		$ipus = wfMsg( "ipusubmit" );
+		$action = "$wgServer$wgScript?title=Special%3AIpblocklist&amp;" .
+		  "action=submit";
+
+		if ( "" != $err ) {
+			$wgOut->setSubtitle( wfMsg( "formerror" ) );
+			$wgOut->addHTML( "<p><font color='red' size='+1'>{$err}</font>\n" );
+		}
+		$wgOut->addHTML( "<p>
+<form method=post action='{$action}'>
+<table border=0><tr>
+<td align='right'>{$ipa}:</td>
+<td align='left'>
+<input tabindex=1 type=text size=20 name='wpUnblockAddress' value='{$wpUnblockAddress}'>
+</td></tr><tr>
+<td>&nbsp;</td><td align='left'>
+<input tabindex=2 type=submit name='wpBlock' value='{$ipus}'>
+</td></tr></table>
+</form>\n" );
+
+	}
+
+	function doSubmit()
+	{
+		global $wgOut, $wgUser, $wgServer, $wgScript;
+		global $ip, $wpUnblockAddress;
+		$fname = "IPUnblockForm::doSubmit";
+
+		if ( ! preg_match( "/\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}/",
+		  $wpUnblockAddress ) ) {
+			$this->showForm( wfMsg( "badipaddress" ) );
+			return;
+		}
+		$conn = wfGetDB();
+		$sql = "DELETE FROM ipblocks WHERE ipb_address='{$wpUnblockAddress}'";
+		wfQuery( $sql, $conn, $fname );
+
+		$success = "$wgServer$wgScript?title=Special%3AIpblocklist" .
+		  "&action=success&ip={$wpUnblockAddress}";
+		$wgOut->redirect( $success );
+	}
+
+	function showList( $msg )
+	{
+		global $wgOut, $wgUser, $wgLang, $wgServer, $wgScript;
+		global $ip;
+
+		$wgOut->setPagetitle( wfMsg( "ipblocklist" ) );
+		if ( "" != $msg ) {
+			$wgOut->setSubtitle( $msg );
+		}
+		$conn = wfGetDB();
+		$sql = "SELECT ipb_timestamp,ipb_address,ipb_user,ipb_by,ipb_reason " .
+		  "FROM ipblocks ORDER BY ipb_timestamp";
+		$res = wfQuery( $sql, $conn, "IPUnblockForm::showList" );
+
+		$wgOut->addHTML( "<ul>" );
+		$sk = $wgUser->getSkin();
+		while ( $row = mysql_fetch_object( $res ) ) {
+			$name = User::whoIs( $row->ipb_by );
+			$ulink = $sk->makeKnownLink( "User:{$name}", $name );
+			$d = $wgLang->timeanddate( $row->ipb_timestamp );
+
+			$line = str_replace( "$1", $d, wfMsg( "blocklistline" ) );
+			$line = str_replace( "$2", $ulink, $line );
+			$line = str_replace( "$3", $row->ipb_address, $line );
+
+			$wgOut->addHTML( "<li>{$line}" );
+			if ( $wgUser->isSysop() ) {
+				$ublink = "<a href=\"$wgServer$wgScript?title=" .
+				  "Special%3AIpblocklist&amp;action=unblock&amp;ip=" .
+				  $row->ipb_address . "\">" . wfMsg( "unblocklink" ) .
+				  "</a>";
+				$wgOut->addHTML( " ({$ublink})" );
+			}
+			if ( "" != $row->ipb_reason ) {
+				$wgOut->addHTML( " <em>(" . wfEscapeHTML( $row->ipb_reason ) .
+				  ")</em>" );
+			}
+			$wgOut->addHTML( "</li>\n" );
+		}
+		$wgOut->addHTML( "</ul>\n" );
+	}
+}
+
+?>

@@ -746,7 +746,7 @@ class Skin {
 
 	function recentChangesLine( $ts, $u, $ut, $ns, $ttl, $c, $isminor )
 	{
-		global $wgTitle, $wgLang;
+		global $wgTitle, $wgLang, $wgUser;
 
 		$d = $wgLang->date( $ts );
 		$s = "";
@@ -768,6 +768,13 @@ class Skin {
 		$s .= "<li> ({$dlink}) ({$hlink}) . .";
 		if ( $isminor ) { $s .= " <strong>M</strong>"; }
 		$s .= " {$clink}; {$h} . . {$ul}";
+
+		if ( ( 0 == $u ) && $wgUser->isSysop() ) {
+			$blink = $this->makeKnownLink( "Special:Blockip",
+			  wfMsg( "blocklink" ), "ip={$ut}" );
+			$s .= " ({$blink})";
+		}
+
 		if ( "" != $c && "*" != $c ) { $s .= " <em>({$c})</em>"; }
 		$s .= "</li>\n";
 

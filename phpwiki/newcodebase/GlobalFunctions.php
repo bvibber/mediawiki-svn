@@ -7,7 +7,7 @@ $wgValidSpecialPages = array( "Userlogin", "Userlogout", "Newpages",
 	"Shortpages", "Longpages", "Listusers", "Watchlist",
 	"Specialpages", "Preferences", "Deletepage", "Movepage",
 	"Protectpage", "Contributions", "Whatlinkshere", "Imagelist",
-	"Recentchangeslinked", "Sqldump", "Vote", "Debug" );
+	"Recentchangeslinked", "Sqldump", "Vote", "Debug", "Ipblocklist" );
 
 $wgSysopSpecialPages = array( "Asksql", "Blockip" );
 
@@ -180,6 +180,8 @@ function wfSpecialPage()
 		include_once( $inc );
 		$call = "wfSpecial" . $t;
 		$call();
+	} else if ( in_array( $t, $wgSysopSpecialPages ) ) {
+		$wgOut->sysopRequired();
 	} else {
 		$wgOut->errorpage( "nosuchspecialpage", "nospecialpagetext" );
 	}

@@ -8,10 +8,8 @@ function wfSpecialBlockip()
 		$wgOut->sysopRequired();
 		return;
 	}
-	$wgSpecialBlockipTextfields = array(
-		"wpBlockAddress", "wpBlockReason"
-	);
-	wfCleanFormFields( $wgSpecialBlockipTextfields );
+	$fields = array( "wpBlockAddress", "wpBlockReason" );
+	wfCleanFormFields( $fields );
 	$ipb = new IPBlockForm();
 
 	if ( "success" == $action ) {
@@ -78,9 +76,10 @@ class IPBlockForm {
 			return;
 		}
 		$conn = wfGetDB();
-		$sql = "INSERT INTO ipblocks (ipb_address,ipb_user,ipb_by,ipb_reason) " .
-		  "VALUES ('{$wpBlockAddress}', 0, " . $wgUser->getID() . ", '" .
-		  wfStrencode( $wpBlockReason ) . "')";
+		$sql = "INSERT INTO ipblocks (ipb_address, ipb_user, ipb_by, " .
+		  "ipb_reason, ipb_timestamp ) VALUES ('{$wpBlockAddress}', 0, " .
+		  $wgUser->getID() . ", '" . wfStrencode( $wpBlockReason ) . "','" .
+		  date( "YmdHis" ) . "')";
 		wfQuery( $sql, $conn, $fname );
 
 		$success = "$wgServer$wgScript?title=Special%3ABlockip" .
@@ -97,7 +96,6 @@ class IPBlockForm {
 		$wgOut->setSubtitle( wfMsg( "blockipsuccesssub" ) );
 		$text = str_replace( "$1", $ip, wfMsg( "blockipsuccesstext" ) );
 		$wgOut->addWikiText( $text );
-		$wgOut->returnToMain();
 	}
 }
 
