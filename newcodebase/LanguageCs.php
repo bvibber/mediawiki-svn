@@ -478,7 +478,7 @@ která popsala příčinu takto:<br><p>Máte právo se spojit se správcem syst�
 
 # Preferences page
 #
-"preferences"	=> "Preferoj",
+"preferences"	=> "Preference",
 "prefsnologin" => "Dosud nepřihlášen!",
 "prefsnologintext"	=> "Určite <a href=\"" .
   wfLocalUrl( "Special:Userlogin" ) . "\">se přihlaste</a>
@@ -523,7 +523,7 @@ a [[wikipedie:Časté chyby|Časté chyby ve Wikipedii]].
 Pokud chcete, aby Wikipedie uspěla, je velice důležité, abyste nevkládali články vázané na  [[copyright]] někoho jiného. Zákonná odpovědnost by skutečně mohla ohrozit celý projekt, proto to prosím nedělejte.
 
 Také se podívejte na 
-[http://meta.wikipedia.org/wiki/Special:Recentchanges lastatempan pri-vikipedian diskuton]
+[http://meta.wikipedia.org/wiki/Special:Recentchanges poslední diskusi o Wikipedii]
 (plurlingve)",
 "rcloaderr"		=> "Načti poslední změny",
 "rcnote"		=> "Poslední <b></b> změny během posledních<b></b> dní.",
@@ -840,7 +840,7 @@ Toto může velmi otřást serverem, proto používěj málo a opatrně.",
 "movepagetext"	=> "Touto formulí můžeš změnit název stránky a přenést i seznam její historie na nový název. Původní název se stane přesměrovačem na nový název.
 Odkazy na předchozí název <i>ne</i>budou změněny.
 <b>VAROVÁNÍ!</b>
-Může to být drastická a nečekaná změna pro populární stránky. Ujisti se, že si uvědomuješ důsledky, než změnu provedeš.",
+Může to být drastická a nečekaná změna pro oblíbené stránky. Ujisti se, že si uvědomuješ důsledky, než změnu provedeš.",
 "movearticle"	=> "Přesuň stránku",
 "movenologin"	=> "Neuvedeno přihlašovací jméno",
 "movenologintext" => "Musíš být přihlášeným uživatelem a <a href=\"" .
@@ -854,7 +854,7 @@ abys mohl stránku přesunout.",
 "movedto"		=> "přesunuto na",
 "movetalk"		=> "Přesuň také \"diskusní\" stránku, pokud existuje.",
 "talkpagemoved" => "Diskusní stránka také přesunuta.",
-"talkpagenotmoved" => "Diskusní stránka <strong>ne</strong> je přesunuta."
+"talkpagenotmoved" => "Diskusní stránka <strong>není</strong> přesunuta."
 
 );
 
