@@ -34,7 +34,7 @@
 /* private */ $wgLanguageNamesDe = array(
 	"w" => "Englisch", "af" => "Afrikaans", "ar" => "Arabisch",
 	"ca" => "Catalanisch", "zh" => "Chinesisch", "dk" => "Dänisch",
-	"nl" => "Niederländisch", "de" => "Deutsch", "eo" => "Esperanto",
+	"nl" => "Niederländisch", "eo" => "Esperanto",
 	"fr" => "Französisch", "he" => "Hebräisch", "hu" => "Ungarisch",
 	"it" => "Italienisch", "ja" => "Japanisch", "no" => "Norwegisch",
 	"pl" => "Polnisch", "pt" => "Portugiesisch", "ru" => "Russisch",
