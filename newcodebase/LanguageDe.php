@@ -87,7 +87,8 @@
 	"Movepage"		=> "",
 	"Emailuser"	=> "",
 	"Whatlinkshere" => "",
-	"Recentchangeslinked" => ""
+	"Recentchangeslinked" => "",
+	"Booksources"	=> "External book sources"
 );
 
 /* private */ $wgSysopSpecialPagesDe = array(
