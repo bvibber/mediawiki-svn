@@ -192,9 +192,12 @@ class WikiUser {
 			return $s ;
 			}
 
-		if ( getenv ( HTTP_X_FORWARDED_FOR ) ) $s = getenv ( HTTP_X_FORWARDED_FOR ) ;
-		elseif ( getenv ( HTTP_CLIENT_IP ) ) $s = getenv ( HTTP_CLIENT_IP ) ;
-		else $s = getenv ( REMOTE_ADDR ) ;
+		# These headers can be exploited to falsify an IP. Probably not worth bothering with them,
+		# let proxies be proxies.
+		#if ( getenv ( HTTP_X_FORWARDED_FOR ) ) $s = getenv ( HTTP_X_FORWARDED_FOR ) ;
+		#elseif ( getenv ( HTTP_CLIENT_IP ) ) $s = getenv ( HTTP_CLIENT_IP ) ;
+		#else $s = getenv ( REMOTE_ADDR ) ;
+		$s = getenv ( REMOTE_ADDR ) ;
 
 
 #		THIS USED TO CHANGE THE URL OF NON LOGGED-IN USERS TO ".xxx" ;
