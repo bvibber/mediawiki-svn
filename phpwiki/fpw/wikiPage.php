@@ -986,11 +986,11 @@ class WikiPage extends WikiTitle {
 		$ret .= "<a class=syslink href='".WikiLink("wikipedia")."'>ABOUT</a> | " ;
 		$ret .= "<a class=syslink href='".WikiLink("wikipedia:FAQ")."'>FAQ</a> | " ;
 		$ret .= "<a class=syslink href='".WikiLink("special:Special_pages")."'>SPECIAL PAGES</a> | " ;
-		$ret .= "<a class=syslink href='".WikiLink("")."'>LOG IN</a> " ;
+		$ret .= "<a class=syslink href='".WikiLink("")."'>!LOG IN</a> " ;
 		$ret .= "</font></td></tr>\n" ;
 
 		#Row 2
-		$ret .= "<tr><td colspan=2 bgcolor=white><font color=black $fonts>The free encyclopedia</font></td></tr>\n" ;
+		$ret .= "<tr><td colspan=2 bgcolor=white><font size=+1 color=black $fonts>THE FREE ENCYCLOPEDIA</font><br><br></td></tr>\n" ;
 
 		return $ret ;
 		}
@@ -1090,36 +1090,69 @@ class WikiPage extends WikiTitle {
 	        global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages , $action ;
         	global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
 	        global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
-        	global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate ;
+        	global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate , $wikiGetDate , $wikiDiff ;
 
 		$fonts = "face=verdana,arial" ;
 		$bg = "bgcolor=#ddddFF nowrap" ;
-		$ret = "<font $fonts>\n<table border=0 cellspacing=3 cellpadding=2 width='100%'><tr><td $bg>" ;
+		$ret = "" ;
+
+	        $ret .= "<FORM method=post action=\"".wikiLink("")."\">" ;
+		$ret .= "<font color=#666666><b>Find</b></font><br>\n" ;
+		$ret .= "<INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\"><INPUT TYPE=submit value=\"OK\"></FORM><br>" ;
+		$ret .= "<font $fonts>\n<table border=0 cellspacing=3 cellpadding=2 width='100%'><tr><td $bg>" ;
 
 #		$ret .= "<a class=CBlink href=\"".wikiLink("__")."\">__</a><br>\n" ;
 
 		$ret .= "<font color=#666666><b>Browse</b></font><br>\n" ;
-		$ret .= "<a class=CBlink href=\"".wikiLink("")."\">Topics</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("")."\">!Topics</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:RecentChanges")."\">$wikiRecentChanges</a><br>\n" ;
 		$ret .= "<a class=CBlink href=\"".wikiLink("special:NewPages")."\">$wikiNewPages</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:PopularPages")."\">$wikiPopularPages</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:WantedPages")."\">$wikiMostWanted</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:ShortPages")."\">Short Pages</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:LongPages")."\">Long Pages</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:LonelyPages")."\">$wikiOrphans</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:RandomPage")."\">$wikiRandomPage</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:AllPages")."\">$wikiAllPages</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:Statistics")."\">$wikiStatistics</a><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:ListUsers")."\">User list</a><br>\n" ;
+
+
+		$ret .= "</td></tr><tr><td $bg>" ;
+		$ret .= "<font color=#666666><b>Edit</b></font><br>\n" ;
+		$ret .= "<a class=CBlink href=\"".wikiLink("special:Upload")."\">$wikiUpload</a><br>\n" ;
 
 		$ret .= "</td></tr><tr><td $bg>" ;
 		$ret .= "<font color=#666666><b>Page Options</b></font><br>\n" ;
 		if ( !$this->isSpecialPage ) {
 			$ret .= "<a class=CBlink href=\"".wikiLink($this->secureTitle."&action=edit")."\">Edit Page</a><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink($this->secureTitle."&action=print")."\">Print Page</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink($this->secureTitle."&action=watch&mode=yes")."\">!Add to Watchlist</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink("Talk:".$this->secureTitle)."\">!Talk</a><br>\n" ;
 			}
 
-		$ret .= "</td></tr><tr><td $bg>" ;
-		$ret .= "<font color=#666666><b>Page Info</b></font><br>\n" ;
+		if ( !$this->isSpecialPage ) {
+			$ret .= "</td></tr><tr><td $bg>" ;
+			$ret .= "<font color=#666666><b>Page Info</b></font><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink("special:WhatLinksHere&target=".$this->secureTitle)."\">Pages that link here</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink("special:RecentChangesLinked&target=".$this->secureTitle)."\">Linked pages</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink($this->secureTitle."&action=history")."\">Editing history</a><br>\n" ;
+
+			$lc = $wikiGetDate ( tsc ( $this->timestamp ) ) ;
+			$lc .= ", ".substr ( $this->timestamp , 8 , 2 ) ;
+			$lc .= ":".substr ( $this->timestamp , 10 , 2 ) ;
+			$lc = substr ( strstr ( $lc , ", " ) , 2 ) ;
+			$ret .= "Last edited [<a href=\"".wikiLink("$this->url&amp;diff=yes")."\">show diff</a>]:<br>\n<font size=-2>$lc</font><br>\n" ;
+			$ret .= "Requests : $this->counter" ;
+			}
 
 	        if ( $user->isLoggedIn ) {
 			$ret .= "</td></tr><tr><td $bg>" ;
 			$ret .= "<font color=#666666><b>My Options</b></font><br>\n" ;
-			$ret .= "<a class=CBlink href=\"".wikiLink("")."\">Myself (not working)</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink($user->name)."\">Myself</a><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink("special:watchlist")."\">$wikiMyWatchlist</a><br>\n" ;
 			$ret .= "<a class=CBlink href=\"".wikiLink("special:editUserSettings")."\">My Settings</a><br>\n" ;
-			$ret .= "<a class=CBlink href=\"".wikiLink("special:userLogout")."\">Log out</a><br>\n" ;
+			$ret .= "<a class=CBlink href=\"".wikiLink("special:userLogout")."\">!Log out</a><br>\n" ;
 			}
 
 		$ret .= "</td></tr></table></font>" ;
@@ -1197,8 +1230,8 @@ class WikiPage extends WikiTitle {
     # Some special pages have their own rendering function
     function getMiddle ( $ret ) {
         global $user , $action ;
-	if ( $user->options[skin] == "Cologne Blue" ) {
-		$ret = "<font size=+4 color=#666666>".$this->getNiceTitle($this->title)."</font><br>\n".$ret ;
+	if ( $user->options[skin] == "Cologne Blue" AND $action != "print" ) {
+		$ret = "<font size='8' color=#666666>".$this->getNiceTitle($this->title)."</font><br>\n".$ret ;
 		}
 	$ret = "\n<div class=\"bodytext\">$ret</div>" ;
         if ( $action == "print" ) return $ret ;
@@ -1210,7 +1243,9 @@ class WikiPage extends WikiTitle {
             if ( !$this->isSpecialPage and $user->options["showStructure"]=="yes" and count ( $spl ) > 0 )
                 $column .= "<font size=-1>".$this->parseContents ( "<hr>".implode ( "<br>\n" , $spl ) )."</font>" ;
 
-            $column = "<td class=\"quickbar\" ".$user->options["quickBarBackground"]." width=110 valign=top nowrap>".$column."</td>" ;
+	    $cw = 110 ;
+	    if ( $user->options[skin] == "Cologne Blue" ) $cw = 130 ;
+            $column = "<td class=\"quickbar\" ".$user->options["quickBarBackground"]." width=$cw valign=top nowrap>".$column."</td>" ;
             $ret = "<td valign=top>\n".$ret."\n</td>" ;
 
             $table = "<table width=\"100%\" class=\"middle\" cellpadding=2 cellspacing=0><tr>" ;
@@ -1234,7 +1269,7 @@ class WikiPage extends WikiTitle {
     # This generates the footer with link bar, search box, etc.
     function getFooter () {
         global $wikiSearch , $wikiCategories , $wikiOtherNamespaces , $wikiCounter , $wikiLastChange , $wikiDiff;
-        global $wikiGetDate , $framed, $search , $wikiValidate ;
+        global $wikiGetDate , $framed, $search , $wikiValidate , $user ;
         
         if ( isset ( $framed ) ) return "" ;
         $ret = $this->getLinkBar() ;
@@ -1273,9 +1308,23 @@ class WikiPage extends WikiTitle {
             }
 */
 
-        $ret .= "<FORM method=post action=\"".wikiLink("")."\"><INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\"><INPUT TYPE=submit value=\"$wikiSearch\">" ;
-        $ret .= " &nbsp; &nbsp; <a href=\"http://validator.w3.org/check/referer\" target=blank>$wikiValidate</a>" ;
+	if ( $user->options[skin] == "Cologne Blue" ) $ret = "<center>\n" ;
+
+        $ret .= "<FORM method=post action=\"".wikiLink("")."\">" ;
+
+	if ( $user->options[skin] == "Cologne Blue" ) $ret .= "<font color=#666666>Find more : </font>" ;
+	$ret .= "<INPUT TYPE=text NAME=search SIZE=16 VALUE=\"$search\">" ;
+
+	if ( $user->options[skin] == "Cologne Blue" ) $ret .= "<INPUT TYPE=submit value=\"OK\">" ;
+	else $ret .= "<INPUT TYPE=submit value=\"$wikiSearch\">" ;
+
+	if ( $user->options[skin] == "Cologne Blue" ) {
+		$ret .= " &nbsp; <a class=CBlink href=\"".wikiLink("")."\">Wikipedia Home</a> | <a class=CBlink href=\"".wikiLink("wikipedia")."\">About Wikipedia</a>" ;
+	} else $ret .= " &nbsp; &nbsp; <a href=\"http://validator.w3.org/check/referer\" target=blank>$wikiValidate</a>" ;
+
         $ret .= "</FORM>" ;
+
+	if ( $user->options[skin] == "Cologne Blue" ) $ret .= "</center>\n" ;
 
         return $ret ;
         }
