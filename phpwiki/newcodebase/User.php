@@ -184,7 +184,6 @@ class User {
 			}
 			wfFreeResult( $res );
 		} else {
-			
 			$sql = "SELECT 1 FROM user_newtalk WHERE user_ip='{$this->mName}'";			
 			$res = wfQuery ($sql,  "User::loadFromDatabase" );
 			
@@ -193,7 +192,10 @@ class User {
 			}
 			wfFreeResult( $res );
 		}
-		if(!$this->mId) { return;} # the following stuff is for non-anonymous users only
+		if(!$this->mId) {
+			$this->mDataLoaded = true;
+			return;
+		} # the following stuff is for non-anonymous users only
 		
 		$sql = "SELECT user_name,user_password,user_newpassword,user_email," .
 		  "user_options,user_rights FROM user WHERE user_id=" .
