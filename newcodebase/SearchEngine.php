@@ -74,8 +74,8 @@ class SearchEngine {
                 $r = str_replace ( "$3" , $r3 , $r ) ;
                 $r = str_replace ( "$9" , $r9 , $r ) ;
 
-                $r = "<table width=100% border=1 cellspacing=0 cellpadding=2 bgcolor=#DDEEFF>".
-                        "<tr><td>\n{$r}\n</td></tr></table>\n" ;
+                $r = "<div style=\"background: #DDEEFF; border-style: solid; border-width: 1; padding: 2\">".
+                        "\n{$r}\n</div>\n" ;
                 $r = "<FORM method=post>\n{$r}</FORM>\n" ;
 
                 if ( isset ( $wpSearch ) )
