@@ -179,11 +179,11 @@
 "currentevents" => "-",
 "errorpagetitle" => "Fehler",
 "returnto"		=> "Zurück zu $1.",
-"fromwikipedia"	=> "Von Wikipedia, der freien Enzyklopädie",
+"fromwikipedia"	=> "aus Wikipedia, der freien Enzyklopädie",
 "whatlinkshere"	=> "Was zeigt hierhin",
 "help"			=> "Hilfe",
 "search"		=> "Suche",
-"history"		=> "Revisionen",
+"history"		=> "Versionen",
 "printableversion" => "Druckversion",
 "editthispage"	=> "Bearbeiten",
 "deletethispage" => "Artikel löschen",
@@ -416,11 +416,12 @@ sein, um Ihre Einstellungen zu ändern.",
 #
 "recentchanges" => "Letzte Änderungen",
 "recentchangestext" => "
-Diese Seite wird beim Laden automatisch aktualisiert. Angezeigt werden Seiten, die zuletzt bearbeitet bzw. geändert wurden, sowie die Zeit und der Name des Autors.<br>
-Falls Sie neu bei Wikipedia sind, lesen Sie bitte die [[Wikipedia:Willkommen|Willkommensseite der Wikipedia]]. Dort bekommen Sie eine erste Einführung.<br>
-Wenn Sie möchten, dass Wikipedia zu einem Erfolg wird, dann fügen Sie bitte keine Texte hinzu, die dem Urheberrecht anderer unterliegen. Dies könnte dem Projekt sonst schweren Schaden zufügen.",
+Diese Seite wird beim Laden automatisch aktualisiert. Angezeigt werden Seiten, die zuletzt bearbeitet wurden, sowie die Zeit und der Name des Autors.<br>
+Falls Sie neu bei Wikipedia sind, lesen Sie bitte die [[Wikipedia:Willkommen|Willkommensseite der Wikipedia]] und [[Wikipedia:Erste Schritte|Erste Schritte]].<br>
+Wenn Sie möchten, dass Wikipedia zu einem Erfolg wird, dann fügen Sie bitte keine Texte hinzu, die dem [[Wikipedia:Urheberrechte beachten|Urheberrecht]] anderer unterliegen. Dies könnte dem Projekt sonst schweren Schaden zufügen.
+Beachten Sie auch die letzten Änderrungen auf [[m:Special:Recentchanges|Metawikipedia]]",
 "rcloaderr"		=> "Lade Letzte Änderungen",
-"rcnote"		=> "Hier sind die letzten <b>$1</b> Änderungen der letzten <b>$2</b> Tage.",
+"rcnote"		=> "Hier sind die letzten <b>$1</b> Änderungen der letzten <b>$2</b> Tage. (<b>N</b> - Neuer Artikel; <b>M</b> - kleine Änderung)",
 "rclinks"		=> "Zeige die letzten $1 Änderungen; zeige die letzten $2 Tage.",
 "diff"			=> "Unterschied",
 "hist"			=> "Versionen",
@@ -495,7 +496,7 @@ Alle Zeiten sind UTC.
 "imgdelete"		=> "Löschen",
 "imgdesc"		=> "Beschreibung",
 "imglegend"		=> "Legende: (Beschreibung) = Zeige/Bearbeite Bildbeschreibung.",
-"imghistory"	=> "Bild-Revisionen",
+"imghistory"	=> "Bild-Versionen",
 "revertimg"		=> "Zurücksetzen",
 "deleteimg"		=> "Löschen",
 "imghistlegend" => "Legende: (cur) = Dies ist das aktuelle Bild, (Löschen) = lösche
@@ -535,7 +536,7 @@ Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
 "mispeelingstext"       => "Die folgenden Seiten enthalten falsch geschriebene Worte, wie sie auf $1 definiert sind. In Klammern angegebene Worte geben die korrekte Schreibweise wieder.",
 "mispeelingspage"       => "Liste von Tippfehlern",
 "missinglanguagelinks"  => "Fehlende Sprachverweise",
-"missinglanguagelinksbutton"    => "Zeige fehlende Sprachversweise nach",
+"missinglanguagelinksbutton"    => "Zeige fehlende Sprachverweise nach",
 "missinglanguagelinkstext"      => "Diese Artikel haben <i>keinen</i> Verweis zu ihrem Gegenstück in $1. Redirects und Unterseiten werden <i>nicht</i> angezeigt.",
 
 
@@ -610,7 +611,7 @@ sein, um Ihre Beobachtungsliste zu bearbeiten.",
 "confirm"		=> "Bestätigen",
 "confirmdelete" => "Löschung bestätigen",
 "deletesub"		=> "(Lösche \"$1\")",
-"confirmdeletetext" => "Sie sind dabei, einen Artikel oder ein Bild und alle älteren Revisionen permanent aus der Datenbank zu löschen.
+"confirmdeletetext" => "Sie sind dabei, einen Artikel oder ein Bild und alle älteren Versionen permanent aus der Datenbank zu löschen.
 Bitte bestätigen Sie Ihre Absicht, dies zu tun, dass Sie sich der Konsequenzen bewusst sind, und dass Sie in Übereinstimmung mit [[Wikipedia:Leitlinien|den Wikipedia Leitlinien]] handeln.",
 "confirmcheck"	=> "Ja, ich möchte den Löschvorgang fortsetzen.",
 "actioncomplete" => "Aktion beendet",
@@ -716,7 +717,7 @@ Bitte diese Funktion vorsichtig benutzen!",
 # Move page
 #
 "movepage"		=> "Artikel verschieben",
-"movepagetext"	=> "Mit diesem Formular können Sie einen Artikel umbenennen, mitsamt allen Revisionen. Der alte Titel wird zum neuen weiterleiten. Verweise auf den alten Titel werden nicht geändert, und die Diskussionsseite wird auch nicht mitverschoben.",
+"movepagetext"	=> "Mit diesem Formular können Sie einen Artikel umbenennen, mitsamt allen Versionen. Der alte Titel wird zum neuen weiterleiten. Verweise auf den alten Titel werden nicht geändert, und die Diskussionsseite wird auch nicht mitverschoben.",
 "movearticle"	=> "Artikel verschieben",
 "newtitle"		=> "Zu neuem Titel",
 "movepagebtn"	=> "Artikel verschieben",
