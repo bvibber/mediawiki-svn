@@ -72,7 +72,7 @@ function isBlockedIP () {
 function edit ( $title ) {
 	global $EditBox , $SaveButton , $PreviewButton , $MinorEdit , $FromEditForm , $wikiIPblocked ;
 	global $user , $CommentBox , $vpage , $EditTime , $wikiDescribePage , $wikiUser , $namespaceBackground , $wikiNamespaceBackground ;
-	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend , $wikiEditHelp , $wikiRecodeInput ;
+	global $wikiCannotEditPage , $wikiEditConflictMessage , $wikiPreviewAppend , $wikiEditHelp , $wikiEditHelpLink , $wikiRecodeInput ;
 	global $wikiSummary , $wikiMinorEdit , $wikiCopyrightNotice , $wikiSave , $wikiPreview , $wikiDontSaveChanges , $wikiGetDate ;
 	global $wikiBeginDiff, $wikiEndDiff;
 	$npage = new WikiPage ;
@@ -182,7 +182,7 @@ function edit ( $title ) {
 	$ret .= "<input type=hidden value=\"$EditTime\" name=EditTime>\n" ;
 	$ret .= "<input type=hidden value=yes name=FromEditForm>\n" ;
 	$ret .= " <a href=\"".wikiLink($vpage->url)."\">$wikiDontSaveChanges</a>\n" ; 
-	$ret .= " | <a href=\"".wikiLink("wikipedia:How_does_one_edit_a_page")."\">$wikiEditHelp</a>\n" ;
+	$ret .= " | <a href=\"".wikiLink($wikiEditHelpLink)."\">$wikiEditHelp</a>\n" ;
 
 	if ( $editConflict ) {
 		# Add the diffs between the two competing versions:
