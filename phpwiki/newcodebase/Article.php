@@ -331,6 +331,7 @@ class Article {
 
 		$sk = $wgUser->getSkin();
 		$isConflict = false;
+		$wpTextbox1 = trim ( $wpTextbox1 ) ; # To avoid text getting longer on each preview
 
 		# Attempt submission here.  This will check for edit conflicts,
 		# and redundantly check for locked database, blocked IPs, etc.
