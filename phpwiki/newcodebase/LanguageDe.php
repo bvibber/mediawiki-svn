@@ -45,7 +45,7 @@
 );
 
 /* private */ $wgLanguageNamesDe = array(
-    "af" => "Afrikaans",
+	"af" => "Afrikaans",
 	"ar" => "&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1617;&#1577; (Araby)",
 	"ca" => "Català",
 	"cs" => "&#268;esky",
@@ -85,7 +85,8 @@
 	"sv" => "Svenska",
 	"sw" => "Kiswahili",
 	"tr" => "Türkçe",
-	"uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072; (Ukrayins`ka)"
+	"uk" => "&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072; (Ukrayins`ka)",
+	"zh" => "&#20013;&#25991; (Zhongwen)",
 );
 
 /* private */ $wgBookstoreListDe = array(
