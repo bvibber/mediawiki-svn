@@ -4,7 +4,7 @@ include_once( "FulltextStoplist.php" );
 
 $wgLastDatabaseQuery = "";
 
-function wfGetDB()
+function wfGetDB( $altuser = "", $altpassword = "" )
 {
 	global $wgDBserver, $wgDBuser, $wgDBpassword;
 	global $wgDBname, $wgDBconnection;
@@ -13,6 +13,13 @@ function wfGetDB()
 	$nodb = str_replace( "$1", $wgDBname, wfMsg( "nodb" ) );
 	$helpme = "\n<p>If this error persists after reloading and clearing your browser cache,
         please notify the <a href=\"mailto:wikidown@bomis.com\">Wikipedia developers</a>.</p>";
+
+	if ( $altuser != "" ) {
+		$wgDBconnection = mysql_connect( $wgDBserver, $altuser, $altpassword )
+			or die( "bad sql user" );
+		mysql_select_db( $wgDBname, $wgDBconnection ) or die(
+		  htmlspecialchars(mysql_error()) );
+	}
 
 	if ( ! $wgDBconnection ) {
 		$wgDBconnection = mysql_pconnect( $wgDBserver, $wgDBuser,

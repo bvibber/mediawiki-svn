@@ -54,13 +54,15 @@ class SqlQueryForm {
 	{
 		global $wgOut, $wgUser, $wgServer, $wgScript, $wgArticlePath;
 		global $wpSqlQuery;
+		global $wgDBsqluser, $wgDBsqlpassword;
 
 		if ( ! $wgUser->isDeveloper() ) {
-			if ( 0 != strcmp( "select", strtolower(
-			  substr( $wpSqlQuery, 0, 6 ) ) ) ) {
-				$this->showForm( wfMsg( "selectonly" ) );
-				return;
-			}
+			#if ( 0 != strcmp( "select", strtolower(
+			#  substr( $wpSqlQuery, 0, 6 ) ) ) ) {
+			#	$this->showForm( wfMsg( "selectonly" ) );
+			#	return;
+			#}
+			$connection = wfGetDB( $wgDBsqluser, $wgDBsqlpassword );
 		}
 		$res = wfQuery( $wpSqlQuery, "SpecialAsksql::doSubmit" );
 
