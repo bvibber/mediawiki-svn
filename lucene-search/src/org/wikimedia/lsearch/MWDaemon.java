@@ -29,6 +29,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.text.MessageFormat;
+import java.util.HashMap;
 import java.util.Properties;
 
 /**
@@ -40,17 +45,47 @@ public class MWDaemon {
 	static String configfile = "./mwsearch.conf";
 	static ServerSocket sock;
 	public static String indexPath;
+	private static String dburl, dbhost;
+	static public Properties p;
+	public static boolean latin1 = false;
+	private static SearchIndexUpdater updater = null;
+	public static String[] dbnames;
+	public static HashMap dbconns;
+	public static final int
+	 MW_NEW = 1
+	,MW_OLD = 2;
+	public static int mw_version = MW_NEW;
 	
+	public static Connection getDBConn(String dbname) {
+		return (Connection) dbconns.get(dbname);
+	}
 	public static void main(String[] args) {
+		System.out.println(
+				"MediaWiki Lucene search indexer - runtime search daemon.\n" +
+				"Version 20041225, copyright 2004 Kate Turner.\n"
+				);
 		int i = 0;
 		while (i < args.length - 1) {
 			if (args[i].equals("-port"))
 				port = Integer.valueOf(args[++i]).intValue();
 			else if (args[i].equals("-configfile"))
 				configfile = args[++i];
+			else if (args[i].equals("-latin1"))
+				latin1 = true;
+			else if (args[i].equals("-mwversion")) {
+				String vers = args[++i];
+				if (vers.equals("old"))
+					mw_version = MW_OLD;
+				else if (vers.equals("new"))
+					mw_version = MW_NEW;
+				else {
+					System.err.println("Unknown MediaWiki version " + vers);
+					return;
+				}
+			} else break;
 			++i;
 		}
-		Properties p = new Properties();
+		p = new Properties();
 		try {
 			p.load(new FileInputStream(new File(configfile)));
 		} catch (FileNotFoundException e3) {
@@ -60,6 +95,30 @@ public class MWDaemon {
 			System.err.println("Error: IO error reading config: " + e3.getMessage());
 			return;
 		}
+
+		dbhost = p.getProperty("mwsearch.database.host");
+		dbnames = p.getProperty("mwsearch.databases").split(" ");
+		System.out.println("Using database on " + dbhost);
+		
+		//System.out.println("Connecting to DB server...");
+		dbconns = new HashMap();
+		
+		for (i = 0; i < dbnames.length; ++i) {
+			try {
+				String un = p.getProperty("mwsearch.username"),
+				pw = p.getProperty("mwsearch.password");
+				String[] urlargs = {dbhost, dbnames[i]};
+				MessageFormat form = new MessageFormat(p.getProperty("mwsearch.dburl"));
+				Connection dbconn = DriverManager.getConnection(form.format(urlargs),
+						p.getProperty("mwsearch.username"),
+						p.getProperty("mwsearch.password"));
+				dbconns.put(dbnames[i], dbconn);
+			} catch (SQLException e2) {
+				System.err.println("Error: DB connection error: " + e2.getMessage());
+				return;
+			}
+		}
+
 		indexPath = p.getProperty("mwsearch.indexpath");
 		SearchClientReader.init();
 		System.out.println("Binding server to port " + port);
@@ -70,6 +129,8 @@ public class MWDaemon {
 			System.err.println("Error: bind error: " + e.getMessage());
 			return;
 		}
+		updater = new SearchIndexUpdater();
+		updater.start();
 		Socket client;
 		for (;;) {
 			try {

@@ -31,6 +31,11 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.sql.DriverManager;
+import java.text.MessageFormat;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
@@ -48,17 +53,43 @@ import org.apache.lucene.search.Searcher;
  *
  */
 public class SearchClientReader extends Thread {
+	public static class State {
+		Searcher searcher = null;
+		Analyzer analyzer = null;
+		QueryParser parser = null;
+		IndexReader reader = null;		
+		TitlePrefixMatcher matcher = null;
+		String indexpath;
+		
+		public State(String dbname) {
+			try {
+				String[] urlargs = {dbname};
+				MessageFormat form = new MessageFormat(MWDaemon.indexPath);
+				indexpath = form.format(urlargs);
+
+				analyzer = new EnglishAnalyzer();
+				parser = new QueryParser("contents", analyzer);
+				reader = IndexReader.open(indexpath);
+				searcher = new IndexSearcher(reader);
+				System.out.println("Reading title index...");
+				matcher = new TitlePrefixMatcher(dbname, MWDaemon.getDBConn(dbname));
+			} catch (IOException e) {
+				System.err.println("Could not initialise search reader: " 
+						+ e.getMessage());
+				System.exit(0);
+			}
+		}
+	}
+	
 	Socket client;
 	String rawsearchterm;
 	String searchterm;
 	BufferedReader istrm;
 	BufferedWriter ostrm;
 	String what;
-	
-	static Searcher searcher = null;
-	static Analyzer analyzer = null;
-	static QueryParser parser = null;
-	static IndexReader reader = null;
+	public static HashMap states;
+	String dbname;
+	State state;
 	
 	// lucene special chars: + - && || ! ( ) { } [ ] ^ " ~ * ? : \
 	static String[] specialChars = {
@@ -68,15 +99,10 @@ public class SearchClientReader extends Thread {
 	};
 
 	public static void init() {
-		try {
-			analyzer = new EnglishAnalyzer();
-			parser = new QueryParser("contents", analyzer);
-			reader = IndexReader.open(MWDaemon.indexPath);
-			searcher = new IndexSearcher(reader);
-		} catch (IOException e) {
-			System.err.println("Could not initialise search reader: " 
-					+ e.getMessage());
-			System.exit(0);
+		states = new HashMap();
+		for (int i = 0; i < MWDaemon.dbnames.length; ++i) {
+			State s = new State(MWDaemon.dbnames[i]);
+			states.put(MWDaemon.dbnames[i], s);
 		}
 	}
 	
@@ -88,30 +114,41 @@ public class SearchClientReader extends Thread {
 		try {
 			istrm = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			ostrm = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+			dbname = istrm.readLine();
+			state = (State) states.get(dbname);
+			if (state == null) {
+				istrm.close();
+				ostrm.close();
+				return;
+			}
 			what = istrm.readLine();
 			rawsearchterm = istrm.readLine();
 			rawsearchterm = URLDecoder.decode(rawsearchterm, "UTF-8");
 			//for (int i = 0; i < specialChars.length; ++i)
 			//	rawsearchterm = rawsearchterm.replaceAll(specialChars[i], 
 			//			"\\" + specialChars[i]);
-			String escaped = "";
-			for (int i = 0; i < rawsearchterm.length(); ++i)
-				escaped += "\\" + rawsearchterm.charAt(i);
-
+			//String escaped = "";
+			//for (int i = 0; i < rawsearchterm.length(); ++i)
+			//	if ("")
+			//	escaped += "\\" + rawsearchterm.charAt(i);
+			String escaped = rawsearchterm;
+			
 			if (what.equals("TITLEMATCH")) {
 				doTitleMatches(escaped);
 				return;
+			} else if (what.equals("TITLEPREFIX")) {
+				doTitlePrefix(rawsearchterm);
+				return;
 			}
 			
-			searchterm = "title:(" + escaped + ")^4 OR contents:(" 
-				+ escaped + ")";
+			searchterm = "title:(" + escaped + ")^4 " + escaped + "";
 			
-			System.out.println("Query: " + searchterm);
-			Query query = parser.parse(searchterm);
-			System.out.println("Parsed: [" + query.toString() + "]");
-	        Hits hits = searcher.search(query);
+			//System.out.println("Query: " + searchterm);
+			Query query = state.parser.parse(searchterm);
+			//System.out.println("Parsed: [" + query.toString() + "]");
+	        Hits hits = state.searcher.search(query);
 	        int numhits = hits.length();
-	        System.out.println(numhits + " hits");
+	        //System.out.println(numhits + " hits");
 	        ostrm.write(numhits + "\n");
 	        int i = 0;
 	        while (i < numhits) {
@@ -150,12 +187,12 @@ public class SearchClientReader extends Thread {
 			}
 			searchterm = "title:(" + term + ")";
 			
-			System.out.println("Query: " + searchterm);
-			Query query = parser.parse(searchterm);
-			System.out.println("Parsed: [" + query.toString() + "]");
-			Hits hits = searcher.search(query);
+			//System.out.println("Query: " + searchterm);
+			Query query = state.parser.parse(searchterm);
+			//System.out.println("Parsed: [" + query.toString() + "]");
+			Hits hits = state.searcher.search(query);
 			int numhits = hits.length();
-			System.out.println(numhits + " hits");
+			//System.out.println(numhits + " hits");
 			int i = 0;
 			while (i < numhits && i < 10) {
 				Document doc = hits.doc(i);
@@ -179,29 +216,50 @@ public class SearchClientReader extends Thread {
 			} catch (IOException e) {}
 		}
 	}
-	
+
+	void doTitlePrefix(String term) {
+		//System.out.println("Query: ["+term+"]");
+		List matches = state.matcher.getMatches(TitlePrefixMatcher.stripTitle(term));
+		Iterator i;
+		for (i = matches.iterator(); i.hasNext();) {
+			Title t = (Title) i.next();
+			try {
+				ostrm.write("0 " + t.namespace + " " + 
+						t.title.replaceAll(" ", "_") + "\n");
+			} catch (IOException e) { 
+				System.out.println("IO error: " + e.getMessage());
+				break; 
+			}
+		}
+		try {
+			ostrm.flush();
+			ostrm.close();
+			istrm.close();
+		} catch (IOException e) {}
+	}
+
 	String makeSpelFix(String query) {
 		try {
 			boolean anysuggest = false;
 			String[] terms = query.split(" +");
 			String ret = "";
-			System.out.println("spelcheck: [" + query + "]");
+			//System.out.println("spelcheck: [" + query + "]");
 			for (int i = 0; i < terms.length; ++i) {
-				System.out.println("trying [" + terms[i] + "]");
+				//System.out.println("trying [" + terms[i] + "]");
 				String bestmatch = terms[i];
 				double bestscore = -1;
-				FuzzyTermEnum enum = new FuzzyTermEnum(reader, 
+				FuzzyTermEnum enum = new FuzzyTermEnum(state.reader, 
 						new Term("contents", terms[i]), 0.5f, 1);
 				while (enum.next()) {
 					Term term = enum.term();
 					int score = editDistance(terms[i], term.text(), terms[i].length(),
 							term.text().length());
-					int weight = reader.docFreq(term);
-					double fscore = score * 1/Math.sqrt(weight);
+					int weight = state.reader.docFreq(term);
+					double fscore = (score*2) * 1/Math.sqrt(weight);
 					//Query q = new TermQuery(term);
 					//Hits h = searcher.search(q);
-					System.out.println("match: ["+term.text()+"] score " + score
-							+ " weight " + weight + " = " + fscore);
+					//System.out.println("match: ["+term.text()+"] score " + score
+					//		+ " weight " + weight + " = " + fscore);
 					if (fscore > 4)
 						continue;
 					if (bestscore < 0 || fscore < bestscore) {
