@@ -26,7 +26,8 @@ if ( "" == $title && "delete" != $action ) {
 	$wgTitle = Title::newFromText( wfMsg( "mainpage" ) );
 } else {
 	$wgTitle = Title::newFromURL( $title );
-	if( $wgTitle->getInterwiki() != "" or $wgTitle->getDBkey() == "" or strncmp($wgTitle->getDBkey(),"_",1) == 0 ) {
+#	if( $wgTitle->getInterwiki() != "" or $wgTitle->getDBkey() == "" or strncmp($wgTitle->getDBkey(),"_",1) == 0 ) {
+	if( $wgTitle->getInterwiki() != "" or $wgTitle->getDBkey() == "" ) {
 		$wgOut->errorpage( "badtitle", "badtitletext" );
 		$wgOut->output();
 		exit;
