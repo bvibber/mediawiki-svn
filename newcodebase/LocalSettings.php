@@ -6,19 +6,20 @@ include_once( "DefaultSettings.php" );
 
 # URLs for the wiki site
 #
-$wgServer           = "http://www.piclab.com";
-$wgStyleSheetPath   = "$wgServer/style";
-$wgScript           = "/newwiki/wiki.phtml";
-$wgArticlePath      = "$wgServer$wgScript?title=$1";
-$wgUploadPath       = "/upload";
-$wgLogo				= "$wgServer$wgUploadPath/wiki.png";
+$wgServer           = "http://192.168.0.14";
+$wgDirectory	    = "/cvs/phpwiki/phpwiki/newcodebase" ;
+$wgStyleSheetPath   = "$wgServer$wgDirectory/stylesheets";
+$wgScript           = "$wgDirectory/wiki.phtml";
+$wgArticlePath      = "$wgServer/newwiki/$1";
+$wgUploadPath       = "$wgDirectory/upload";
+$wgLogo		    = "$wgServer$wgUploadPath/wiki.png";
 
 # MySQL settings
 #
 $wgDBserver         = "127.0.0.1";
 $wgDBname           = "newwiki";
-$wgDBuser           = "wikiuser";
-$wgDBpassword       = "xxx";
+$wgDBuser           = "root";
+$wgDBpassword       = "";
 
 # Turn this on during database maintenance
 #
