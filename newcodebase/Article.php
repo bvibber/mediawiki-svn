@@ -2,6 +2,9 @@
 # Class representing a Wikipedia article and history.
 # See design.doc for an overview.
 
+# FIXME: move the scroller from searchengine to globals
+include_once( "SearchEngine.php" );
+
 class Article {
 	/* private */ var $mContent, $mContentLoaded;
 	/* private */ var $mUser, $mTimestamp, $mUserText;
@@ -830,7 +833,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 
 	function history()
 	{
-		global $wgUser, $wgOut, $wgLang, $wgTitle;
+		global $wgUser, $wgOut, $wgLang, $wgTitle, $offset, $limit;
 
 		# If page hasn't changed, client can cache this
 		
@@ -848,11 +851,12 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 			return;
 		}
 		
-		$sql = "SELECT old_id,old_namespace,old_title,old_user," .
+		$namespace = $wgTitle->getNamespace();
+		$title = $wgTitle->getText();
+		$sql = "SELECT old_id,old_user," .
 		  "old_comment,old_user_text,old_timestamp,old_minor_edit FROM old " .
-		  "WHERE old_namespace=" . $wgTitle->getNamespace() . " AND " .
-		  "old_title='" . wfStrencode( $wgTitle->getDBkey() ) . "' " .
-		  "ORDER BY old_timestamp DESC LIMIT 100";
+		  "WHERE old_namespace=" . $namespace . " AND " .
+		  "old_title='" . wfStrencode( $wgTitle->getDBkey() ) . "' ";
 		$res = wfQuery( $sql, "Article::history" );
 
 		$revs = wfNumRows( $res );
@@ -863,23 +867,43 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		}
 		
 		$sk = $wgUser->getSkin();
-		$s = $sk->beginHistoryList();		
+		$offset = (int)$offset;
+		$limit = (int)$limit;
+		if( $limit == 0 ) $limit = 50;
+		$numbar = SearchEngine::viewPrevNext(
+			$offset, $limit,
+			$wgTitle->getPrefixedText(),
+			"action=history" );
+		$s = $numbar;
+		$s .= $sk->beginHistoryList();
 
+		if($offset == 0 )
 		$s .= $sk->historyLine( $this->getTimestamp(), $this->getUser(),
-		  $this->getUserText(), $wgTitle->getNamespace(),
-		  $wgTitle->getText(), 0, $this->getComment(),
+		  $this->getUserText(), $namespace,
+		  $title, 0, $this->getComment(),
 		  ( $this->getMinorEdit() > 0 ) );
 
-		while ( $revs ) {
+		$sortbuffer = array();
+		$line = wfFetchObject( $res );
+		while ( $line ) {
+			array_unshift( $sortbuffer, $line );
 			$line = wfFetchObject( $res );
-
+		}
+		
+		if( $offset < 0 ) $offset = 0;
+		if( $offset >= $revs ) $offset = $revs-1;
+		$max = $offset + $limit;
+		if( $max >= $revs ) $max = $revs;
+				
+		for( $revnum = $offset; $revnum < $max; $revnum++ ) {
+			$line = $sortbuffer[$revnum];
 			$s .= $sk->historyLine( $line->old_timestamp, $line->old_user,
-			  $line->old_user_text, $line->old_namespace,
-			  $line->old_title, $line->old_id,
+			  $line->old_user_text, $namespace,
+			  $title, $line->old_id,
 			  $line->old_comment, ( $line->old_minor_edit > 0 ) );
-			--$revs;
 		}
 		$s .= $sk->endHistoryList();
+		$s .= $numbar;
 		$wgOut->addHTML( $s );
 		wfProfileOut();
 	}
