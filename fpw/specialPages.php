@@ -126,7 +126,7 @@ function editUserSettings () {
 		unset ( $ButtonSave ) ;
 		global $QuickBar , $NewTopics , $UnderlineLinks , $ShowHover , $ROWS , $COLS , $doSkin ;
 		global $OLDPASSWORD , $NEWPASSWORD , $RETYPEPASSWORD , $EMAIL , $RESULTSPERPAGE , $doJustify , $ChangesLayout ;
-		global $SHOWSTRUCTURE , $HOURDIFF , $NumberHeadings , $ViewFrames , $encoding ;
+		global $SHOWSTRUCTURE , $HOURDIFF , $NumberHeadings , $ViewFrames , $encoding , $HideMinor ;
 		if ( $RESULTSPERPAGE < 2 ) $RESULTSPERPAGE = 20 ;
 
 		# Checkbox fixing
@@ -151,6 +151,7 @@ function editUserSettings () {
 		$user->options["showStructure"] = "no" ; #Subpages turned off
 		$user->options["numberHeadings"] = $NumberHeadings ;
 		$user->options["changesLayout"] = $ChangesLayout ;
+		$user->options["hideMinor"] = $HideMinor ;
 		$user->email = $EMAIL ;
 		$user->options["hourDiff"] = $HOURDIFF ;
 		$user->options["encoding"] = $encoding ;
@@ -172,7 +173,7 @@ function editUserSettings () {
 	global $wikiShowHoverBox , $wikiUnderlineLinks , $wikiNewTopicsRed , $wikiJustifyParagraphs , $wikiShowRecentChangesTable ;
 	global $wikiDoNumberHeadings , $wikiViewWithFrames , $wikiTurnedOn , $wikiTurnedOff ;
 	global $wikiTextboxDimensions , $wikiCols , $wikiRows , $wikiYourEmail , $wikiResultsPerPage , $wikiTimeDiff , $wikiSave , $wikiReset ;
-	global $wikiEncodingNames, $wikiOutputEncoding;
+	global $wikiEncodingNames, $wikiOutputEncoding , $wikiHideMinorEdits ;
 
 	$ret .= str_replace ( "$1" , $user->name , $wikiLoggedInAs ) ;
 	$ret .= str_replace ( "$1" , $user->id , $wikiID_Help)."\n" ;
@@ -226,6 +227,11 @@ function editUserSettings () {
 	$cl[$user->options["changesLayout"]] = "checked" ;
 	$ret .= "<input type=checkbox value=table name=ChangesLayout ".$cl["table"].">" ;
 	$ret .= "$wikiShowRecentChangesTable ($wikiSettingsStandard:$wikiTurnedOff)<br>\n" ;
+
+	# Hide minor edits
+	$hm[$user->options["hideMinor"]] = "checked" ;
+	$ret .= "<input type=checkbox value=yes name=HideMinor ".$hm["yes"].">" ;
+	$ret .= "$wikiHideMinorEdits ($wikiSettingsStandard:$wikiTurnedOff)<br>\n" ;
 
 	# Auto number headings
 	$nh[$user->options["numberHeadings"]] = "checked" ;
@@ -671,22 +677,30 @@ function recentchanges () {
 	while ( $s = mysql_fetch_object ( $result ) ) array_push ( $arr , $s ) ;
 	mysql_free_result ( $result ) ;
 
+	$minoredits = ( $user->options["hideMinor"] == "yes" ) ? "AND old_minor_edit<>1" : "" ;
 	$d = array () ;
 	foreach ( $arr as $s ) {
+		$addoriginal = 1 ;
+		if ( $minoredits != "" and $s->cur_minor_edit == 1 ) $addoriginal = 0 ;
 		$i = 0 ;
 		$j = tsc ( $s->cur_timestamp ) ;
 		$ja = date ( "Ymd000000" , $j ) ;
 		$jb = date ( "Ymd000000" , $j + 24*60*60 ) ;
-		$sql = "SELECT count(old_id) AS cnt FROM old WHERE old_title=\"".$s->cur_title."\" AND old_timestamp>=$ja AND old_timestamp<=$jb" ;
+		$sql = "SELECT count(old_id) AS cnt FROM old WHERE old_title=\"".$s->cur_title."\" AND old_timestamp>=$ja AND old_timestamp<=$jb $minoredits" ;
 		$result = mysql_query ( $sql , $connection ) ;
 		if ( $result != "" ) {
 			$t = mysql_fetch_object ( $result ) ;
-			if ( $t != "" ) $i = $t->cnt + 1 ;
+#			print "?$t->cnt? " ;
+			if ( $t != "" ) $i = $t->cnt + $addoriginal ;
 			mysql_free_result ( $result ) ;
 			}
 		if ( $i < 2 ) $i = "" ;
 		$s->changes = $i ;
-		array_push ( $d , $s ) ;
+#		print "!!$s->cur_title, $i!<br>\n" ;
+		if ( $s->cur_minor_edit != 1 OR $i > 1 OR $minoredits == "" ) {
+			if ( $minoredits != "" ) $s->cur_minor_edit = 0 ;
+			array_push ( $d , $s ) ;
+			}
 		}
 	$arr = $d ;
 	$d = array () ;

@@ -453,18 +453,6 @@ class WikiPage extends WikiTitle {
 		return $s ;
 		}
 
-	# This function can replace wiki tags that differ
-	function replaceWikiTags ( $s , $w1 , $w2 , $h1 , $h2 ) {
-		$a = explode ( $w1 , $s ) ;
-		$s = array_shift ( $a ) ;
-		foreach ( $a as $x ) {
-			$b = explode ( $w2 , $x , 2 ) ;
-			if ( count ( $b ) < 2 ) $s .= $w1.$x ;
-			else $s .= $h1.$b[0].$h2.$b[1] ;
-			}
-		return $s ;
-		}
-
 	# This function is called to replace wiki-style tags with HTML, e.g., the first occurrence of ''' with <b>, the second with </b>
 	function pingPongReplace ( $f , $r1 , $r2 , $s , $startAtLine = false ) {
 		$ret = "" ;
@@ -688,10 +676,11 @@ class WikiPage extends WikiTitle {
 		$s = $this->pingPongReplace ( "'''" , "<b>" , "</b>" , $s ) ;
 		$s = $this->pingPongReplace ( "''" , "<i>" , "</i>" , $s ) ;
 
-		$s = $this->replaceWikiTags ( $s , "==== " , " ====" , "<h4>" , "</h4>" ) ;
-		$s = $this->replaceWikiTags ( $s , "=== " , " ===" , "<h3>" , "</h3>" ) ;
-		$s = $this->replaceWikiTags ( $s , "== " , " ==" , "<h2>" , "</h2>" ) ;
-		$s = $this->replaceWikiTags ( $s , "= " , " =" , "<h1>" , "</h1>" ) ;
+		$s = preg_replace ( "/(^|\\n)==== ([^\\n]*) ====\s*(\\r|$)/" , "\\1<h4>\\2</h4>\\3" , $s ) ;
+		$s = preg_replace ( "/(^|\\n)=== ([^\\n]*) ===\s*(\\r|$)/" , "\\1<h3>\\2</h3>\\3" , $s ) ;
+		$s = preg_replace ( "/(^|\\n)== ([^\\n]*) ==\s*(\\r|$)/" , "\\1<h2>\\2</h2>\\3" , $s ) ;
+		$s = preg_replace ( "/(^|\\n)= ([^\\n]*) =\s*(\\r|$)/" , "\\1<h1>\\2</h1>\\3" , $s ) ;
+
 		$s = ereg_replace ( "\n====*" , "<hr>" , $s ) ;
 
 		# Automatic links to subpages (e.g., /Talk -> [[/Talk]]   #DEACTIVATED

@@ -199,6 +199,7 @@ $wikiUnderlineLinks = "Underline links" ;
 $wikiNewTopicsRed = "Show new topics in red" ;
 $wikiJustifyParagraphs = "Justify paragraphs" ;
 $wikiShowRecentChangesTable = "Show <i>Recent changes</i> as a table" ;
+$wikiHideMinorEdits = "Hide minor edits in <i>Recent Changes</i>" ;
 $wikiDoNumberHeadings = "Automatically number headings" ;
 $wikiViewWithFrames = "View pages using frames <i>(experimental, Konqueror ONLY!)</i>" ;
 $wikiTurnedOn = "yes" ;

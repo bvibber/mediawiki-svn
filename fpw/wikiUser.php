@@ -87,6 +87,7 @@ class WikiUser {
 		if ( $this->options["cols"] == "" ) $this->options["cols"] = "60" ;
 		if ( $this->options["rows"] == "" ) $this->options["rows"] = "20" ;
 		if ( $this->options["changesLayout"] == "" ) $this->options["changesLayout"] = "classic" ;
+		if ( $this->options["hideMinor"] == "" ) $this->options["hideMinor"] = "no" ;
 		if ( $this->options["justify"] == "" ) $this->options["justify"] = "no" ;
 		if ( $this->options["resultsPerPage"] == "" ) $this->options["resultsPerPage"] = "20" ;
 		if ( $this->options["skin"] == "" ) $this->options["skin"] = "None" ;
@@ -138,7 +139,6 @@ class WikiUser {
 
 	# Creates a link to the user home page, or returns the IP
 	function getLink () {
-		global $REMOTE_ADDR ;
 		if ( $this->isLoggedIn ) {
 			$s = new WikiPage ;
 			$s = $s->parseContents ( "[[user:$this->name|$this->name]]" ) ;
@@ -146,7 +146,12 @@ class WikiUser {
 			$s = str_replace ( "</p>" , "" , $s ) ;
 			return $s ;
 			}
-		$s = $REMOTE_ADDR ;
+
+		if ( getenv ( HTTP_X_FORWARDED_FOR ) ) $s = getenv ( HTTP_X_FORWARDED_FOR ) ;
+		elseif ( getenv ( HTTP_CLIENT_IP ) ) $s = getenv ( HTTP_CLIENT_IP ) ;
+		else $s = getenv ( REMOTE_ADDR ) ;
+
+
 		$s = explode ( "." , $s ) ;
 		$s = $s[0].".".$s[1].".".$s[2].".xxx" ;
 		return $s ;
