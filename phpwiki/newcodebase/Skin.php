@@ -566,7 +566,7 @@ function toggleVisibility( _levelId, _otherId, _linkId) {
 				$sep . $this->protectThisPage();
 			}
 			$s .= $sep . $this->talkLink();
-			if ($articleExists) { $s .= $sep . $this->historyLink();}
+			if ($articleExists && $action !="history") { $s .= $sep . $this->historyLink();}
 			$s.=$sep . $this->whatLinksHere();
 			
 			if($wgOut->isArticle()) {
