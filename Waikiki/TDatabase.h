@@ -43,6 +43,7 @@ class TDatabase
     virtual bool doesArticleExist ( TTitle &t ) ;
     virtual void findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) ;
     virtual void query ( TUCS s ) ;
+    virtual string identify () { return "BASETYPE" ; }
     
     // Useful methods
     virtual void mysql2sqlite ( string fn_in , string fn_out ) ;
@@ -59,6 +60,7 @@ class TDatabaseFile : public TDatabase
     public :
     virtual bool init ( string s1 ) ;
     virtual void getArticle ( TTitle t , TArticle &art , bool wasRedirected = false ) ;
+    virtual string identify () { return "FILE" ; }
     
     private :
     string filename ;
@@ -74,10 +76,11 @@ class TDatabaseSqlite : public TDatabase
     virtual bool doesArticleExist ( TTitle &t ) ;
     virtual void findArticles ( TUCS s , VTUCS &bytitle , VTUCS &bytext ) ;
     virtual void query ( TUCS s ) ;
+    virtual string identify () { return "SQLITE" ; }
 
     TSQLresult results ;
     
-    private :
+    protected :
     string filename ;
     sqlite *db ;
     } ;
@@ -85,6 +88,7 @@ class TDatabaseSqlite : public TDatabase
 class TDatabaseMySQL : public TDatabase
     {
     public :
+    virtual string identify () { return "MYSQL" ; }
     } ;
 
 #endif

@@ -45,6 +45,10 @@ TUCS TTitle::getDBkey ()
     {
     TUCS s = title ;
     s.replace ( " " , "_" ) ;
+    if ( DB && DB->identify() == "SQLITE" )
+        {
+        s.replace ( "'" , "''" ) ;
+        }
     return s ;
     }
         

@@ -421,3 +421,4 @@ void TDatabaseSqlite::storeArticle ( TArticle &art , bool makeOldVersion )
 //    cout << sql.getstring() << endl ;
     query ( sql ) ;
     }
+
