@@ -1389,8 +1389,9 @@ ta[\'ca-nstab-image\'] = new Array(\'c\',\'View the image page\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'View the system message\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'View the template\');
 ta[\'ca-nstab-help\'] = new Array(\'c\',\'View the help page\');
-ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');
-'
+ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\'); ',
+
+'templatesused' => 'Templates used on this page:'
 );
 
 #--------------------------------------------------------------------------

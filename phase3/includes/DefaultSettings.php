@@ -9,7 +9,7 @@ if( defined( "MEDIAWIKI" ) ) {
 # like $wgScriptPath, you must also localize everything that
 # depends on it.
 
-$wgVersion			= '1.3.7wm';
+$wgVersion			= '1.3.wm';
 
 $wgSitename         = 'MediaWiki'; # Please customize!
 $wgMetaNamespace    = FALSE; # will be same as you set $wgSitename
