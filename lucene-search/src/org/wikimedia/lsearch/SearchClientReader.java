@@ -139,16 +139,23 @@ public class SearchClientReader extends Thread {
 			for (int i = 0; i < terms.length; ++i) {
 				System.out.println("trying [" + terms[i] + "]");
 				String bestmatch = terms[i];
-				int bestscore = 0;
+				double bestscore = -1;
 				FuzzyTermEnum enum = new FuzzyTermEnum(reader, 
-						new Term("contents", terms[i]), 0.71f, 3);
+						new Term("contents", terms[i]), 0.5f, 2);
 				while (enum.next()) {
 					Term term = enum.term();
-					Query q = new TermQuery(term);
-					Hits h = searcher.search(q);
-					System.out.println("match: ["+term.text()+"] score " + h.length());
-					if (h.length() > bestscore) {
-						bestscore = h.length();
+					int score = editDistance(terms[i], term.text(), terms[i].length(),
+							term.text().length());
+					int weight = reader.docFreq(term);
+					double fscore = score * 1/Math.sqrt(weight);
+					//Query q = new TermQuery(term);
+					//Hits h = searcher.search(q);
+					System.out.println("match: ["+term.text()+"] score " + score
+							+ " weight " + weight + " = " + fscore);
+					if (fscore > 4)
+						continue;
+					if (bestscore < 0 || fscore < bestscore) {
+						bestscore = fscore;
 						bestmatch = term.text();
 						anysuggest = true;
 					}
@@ -161,4 +168,42 @@ public class SearchClientReader extends Thread {
 			return "";
 		}
 	}
+	
+	// Taken from the lucene source
+	private int e[][] = new int[1][1];
+
+	private static final int min(int a, int b, int c) {
+        int t = (a < b) ? a : b;
+        return (t < c) ? t : c;
+    }
+
+    private final int editDistance(String s, String t, int n, int m) {
+        if (e.length <= n || e[0].length <= m) {
+            e = new int[Math.max(e.length, n+1)][Math.max(e[0].length, m+1)];
+        }
+        int d[][] = e; // matrix
+        int i; // iterates through s
+        int j; // iterates through t
+        char s_i; // ith character of s
+
+        if (n == 0) return m;
+        if (m == 0) return n;
+
+        // init matrix d
+        for (i = 0; i <= n; i++) d[i][0] = i;
+        for (j = 0; j <= m; j++) d[0][j] = j;
+
+        // start computing edit distance
+        for (i = 1; i <= n; i++) {
+            s_i = s.charAt(i - 1);
+            for (j = 1; j <= m; j++) {
+                if (s_i != t.charAt(j-1))
+                    d[i][j] = min(d[i-1][j], d[i][j-1], d[i-1][j-1])+1;
+                else d[i][j] = min(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1]);
+            }
+        }
+
+        // we got the result!
+        return d[n][m];
+    }
 }
