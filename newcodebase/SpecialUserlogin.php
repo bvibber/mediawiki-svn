@@ -182,7 +182,7 @@ function wfSpecialUserlogin()
 		$checked = "";
 	}
 	$action = wfLocalLink( "Special:Userlogin" );
-	if ( "" != $returnto ) { $action .= "&returnto=$returnto"; }
+	if ( "" != $returnto ) { $action .= "&amp;returnto=$returnto"; }
 
 	$wpName = wfEscapeHTML( $wpName );
 	$wpPassword = wfEscapeHTML( $wpPassword );

@@ -293,8 +293,8 @@ class Article {
 		$rows = $wgUser->getOption( "rows" );
 		$cols = $wgUser->getOption( "cols" );
 		$action = "$wgServer$wgScript?title=" .
-		  $wgTitle->getPrefixedURL() . "&action=edit";
-		if ( "no" == $redirect ) { $action .= "&redirect=no"; }
+		  $wgTitle->getPrefixedURL() . "&amp;action=edit";
+		if ( "no" == $redirect ) { $action .= "&amp;redirect=no"; }
 
 		$summary = wfMsg( "summary" );
 		$minor = wfMsg( "minoredit" );

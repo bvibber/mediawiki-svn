@@ -172,7 +172,7 @@ class Skin {
 
 	function doAfterContent()
 	{
-		global $wgUser, $wgOut;
+		global $wgUser, $wgOut, $_SERVER;
 
 		$s = "</div></td>";
 		$q = $wgUser->getOption( "quickbar" );
@@ -198,7 +198,7 @@ class Skin {
 		$s = "<h1 class=\"pagetitle\">" . $wgOut->getPageTitle() . "</h1>";
 		$s .= $this->pageSubtitle();
 
-		if ( "history" == $action ) { $q = "action=history&"; }
+		if ( "history" == $action ) { $q = "action=history&amp;"; }
 		else { $q = ""; }
 
 		$s .= "<p class=\"subtitle\">"
@@ -289,12 +289,17 @@ class Skin {
 
 	function bottomLinks()
 	{ 
-		global $wgOut;
-		$s = $this->topLinks();
+		global $wgOut, $wgServer, $wgUploadPath;
+
+		$s = "<a href=\"http://validator.w3.org/check/referer\">" . 
+		  "<img align=right border=0 height=31 width=88 alt=\"Valid HTML\" " .
+		  "src=\"$wgServer$wgUploadPath/valid-html401.png\"></a>";
+		$s .= $this->topLinks();
 
 		if ( $wgOut->isArticle() ) {
 			$s .= " | " . $this->talkLink();
 		}
+		$s .= " | <a href=\"http://validator.w3.org/check/referer\">Validate</a>";
 		$s .= $this->otherLanguages();
 		return $s;
 	}
@@ -359,8 +364,8 @@ class Skin {
 			$n = $wgTitle->getPrefixedText();
 			$t = wfMsg( "editthispage" );
 			$oid = "";
-			if ( $oldid ) { $oid = "&oldid={$oldid}"; }
-			if ( $redirect ) { $red = "&redirect={$redirect}"; }
+			if ( $oldid ) { $oid = "&amp;oldid={$oldid}"; }
+			if ( $redirect ) { $red = "&amp;redirect={$redirect}"; }
 			$s = $this->makeKnownLink( $n, $t, "action=edit{$oid}{$red}" );
 		} else {
 			$s = "Protected page";
@@ -522,7 +527,7 @@ class Skin {
 		if ( "" == $query ) {
 			$u = str_replace( "$1", $link, $wgArticlePath );
 		} else {
-			$u = "$wgServer$wgScript?title=$link&$query";
+			$u = "$wgServer$wgScript?title=$link&amp;$query";
 		}
 		if ( "" == $text ) { $text = $nt->getPrefixedText(); }
 		$style = $this->getInternalLinkAttributes( $link, $text );
@@ -640,7 +645,7 @@ class Skin {
 
 		if ( $oid && $this->lastline ) {
 			$ret = preg_replace( "/!OLDID!([0-9]+)!/", $this->makeKnownLink(
-			  $artname, $last, "diff=\\1&oldid={$oid}" ), $this->lastline );
+			  $artname, $last, "diff=\\1&amp;oldid={$oid}" ), $this->lastline );
 		} else {
 			$ret = "";
 		}
@@ -659,7 +664,7 @@ class Skin {
 		$s = "<li>";
 		if ( $oid ) {
 			$curlink = $this->makeKnownLink( $artname, $cur,
-			  "diff=0&oldid={$oid}" );
+			  "diff=0&amp;oldid={$oid}" );
 		} else {
 			$curlink = $cur;
 		}
@@ -692,7 +697,7 @@ class Skin {
 		$t = Title::makeName( $ns, $ttl );
 		$clink = $this->makeKnownLink( $t, "" );
 		$hlink = $this->makeKnownLink( $t, wfMsg( "hist" ), "action=history" );
-		$dlink = $this->makeKnownLink( $t, wfMsg( "diff" ), "diff=0&oldid=0" );
+		$dlink = $this->makeKnownLink( $t, wfMsg( "diff" ), "diff=0&amp;oldid=0" );
 
 		if ( 0 == $u ) { $ul = $ut; }
 		else { $ul = $this->makeLink( "User:{$ut}", $ut ); }
