@@ -199,6 +199,14 @@ Se $1.",
 "sitetitle"             => "Wikipedia",
 "sitesubtitle"          => "Den fria encyklopedin",
 "retrievedfrom"         => "Hämtat från \"$1\"",
+"newmessages"           => "Du har $1.",
+"newmessageslink"       => "nya meddelanden",
+"editsection"           => "edit",
+"toc"                   => "Innehåll",
+"showtoc"               => "visa",
+"hidetoc"               => "göm",
+"thisisdeleted"         => "Visa eller återställ $1?",
+"restorelink"           => "$1 raderade versioner",
 
 // Main script and global functions
 //
