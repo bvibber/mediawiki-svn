@@ -481,26 +481,38 @@ enctype='application/x-www-form-urlencoded'>
 	/* private */ function insertNewArticle( $text, $summary, $isminor )
 	{
 		global $wgOut, $wgUser, $wgTitle, $wgLinkCache;
+		$fname = "Article::insertNewArticle";
+
 		$ns = $wgTitle->getNamespace();
 		$ttl = $wgTitle->getDBkey();
 		$text = $this->preSaveTransform( $text );
 		if ( preg_match( "/^#redirect/i", $text ) ) { $redir = 1; }
 		else { $redir = 0; }
 
+		$now = date( "YmdHis" );
 		$sql = "INSERT INTO cur (cur_namespace,cur_title,cur_text," .
 		  "cur_comment,cur_user,cur_timestamp,cur_minor_edit,cur_counter," .
 		  "cur_restrictions,cur_ind_title,cur_user_text,cur_is_redirect," .
 		  "cur_is_new) VALUES ({$ns},'" . wfStrencode( $ttl ) . "', '" .
 		  wfStrencode( $text ) . "', '" .
 		  wfStrencode( $summary ) . "', '" .
-		  $wgUser->getID() . "', '" . date( "YmdHis" ) . "', " .
+		  $wgUser->getID() . "', '{$now}', " .
 		  ( $isminor ? 1 : 0 ) . ", 0, '', '" .
 		  wfStrencode( $wgTitle->getIndexTitle() ) .
 		  "', '" . wfStrencode( $wgUser->getName() ) . "', $redir, 1)";
-		$res = wfQuery( $sql, "Article::insertNewArticle" );
+		$res = wfQuery( $sql, $fname );
 
 		$newid = wfInsertId();
 		$wgTitle->resetArticleID( $newid );
+
+		$sql = "INSERT INTO recentchanges (rc_timestamp,rc_cur_time," .
+		  "rc_namespace,rc_title,rc_new,rc_minor,rc_cur_id,rc_user," .
+		  "rc_user_text,rc_comment,rc_this_oldid,rc_last_oldid) VALUES (" .
+		  "'{$now}','{$now}',{$ns},'" . wfStrencode( $ttl ) . "',1," .
+		  ( $isminor ? 1 : 0 ) . ",{$newid}," . $wgUser->getID() . ",'" .
+		  wfStrencode( $wgUser->getName() ) . "','" .
+		  wfStrencode( $summary ) . "',0,0)";
+		wfQuery( $sql, $fname );
 
 		$this->showArticle( $text, wfMsg( "newarticle" ) );
 	}
@@ -512,7 +524,10 @@ enctype='application/x-www-form-urlencoded'>
 
 		if ( $this->mMinorEdit ) { $me1 = 1; } else { $me1 = 0; }
 		if ( $minor ) { $me2 = 1; } else { $me2 = 0; }
-		if ( preg_match( "/^#redirect/i", $text ) ) { $redir = 1; }
+		if ( preg_match( "/^(#redirect[^\\n]+)/i", $text, $m ) ) {
+			$redir = 1;
+			$text = $m[1] . "\n"; # Remove all content but redirect
+		}
 		else { $redir = 0; }
 		$this->loadLastEdit();
 
@@ -532,15 +547,37 @@ enctype='application/x-www-form-urlencoded'>
 			  wfStrencode( $this->getUserText() ) . "', '" .
 			  $this->getTimestamp() . "', " . $me1 . ")";
 			$res = wfQuery( $sql, $fname );
+			$oldid = wfInsertID( $res );
 
-			$sql = "UPDATE cur SET cur_text='" .  wfStrencode( $text ) .
+			$now = date( "YmdHis" );
+			$sql = "UPDATE cur SET cur_text='" . wfStrencode( $text ) .
 			  "',cur_comment='" .  wfStrencode( $summary ) .
 			  "',cur_minor_edit={$me2}, cur_user=" . $wgUser->getID() .
-			  ",cur_timestamp='" . date( "YmdHis" ) .
-			  "',cur_user_text='" . wfStrencode( $wgUser->getName() ) .
+			  ",cur_timestamp='{$now}',cur_user_text='" .
+			  wfStrencode( $wgUser->getName() ) .
 			  "',cur_is_redirect={$redir}, cur_is_new=0 " .
 			  "WHERE cur_id=" . $this->getID();
-			$res = wfQuery( $sql, $fname );
+			wfQuery( $sql, $fname );
+
+			$sql = "INSERT INTO recentchanges (rc_timestamp,rc_cur_time," .
+			  "rc_namespace,rc_title,rc_new,rc_minor,rc_cur_id,rc_user," .
+			  "rc_user_text,rc_comment,rc_this_oldid,rc_last_oldid) VALUES (" .
+			  "'{$now}','{$now}'," . $wgTitle->getNamespace() . ",'" .
+			  wfStrencode( $wgTitle->getDBkey() ) . "',0,{$me2}," .
+			  $this->getID() . "," . $wgUser->getID() . ",'" .
+			  wfStrencode( $wgUser->getName() ) . "','" .
+			  wfStrencode( $summary ) . "',0,{$oldid})";
+			wfQuery( $sql, $fname );
+
+			$sql = "UPDATE recentchanges SET rc_this_oldid={$oldid} " .
+			  "WHERE rc_namespace=" . $wgTitle->getNamespace() . " AND " .
+			  "rc_title='" . wfStrencode( $wgTitle->getDBkey() ) . "' AND " .
+			  "rc_timestamp='" . $this->getTimestamp() . "'";
+			wfQuery( $sql, $fname );
+
+			$sql = "UPDATE recentchanges SET rc_cur_time='{$now}' " .
+			  "WHERE rc_cur_id=" . $this->getID();
+			wfQuery( $sql, $fname );
 		}
 		$this->showArticle( $text, wfMsg( "updated" ) );
 	}
@@ -1065,11 +1102,24 @@ enctype='application/x-www-form-urlencoded'>
 		}
 	}
 
-	# Do standard deferred updates after page edit
-	#
+	# Do standard deferred updates after page edit.
+	# Every 500th edit, prune the recent changes table.
+
 	/* private */ function editUpdates( $id, $title, $text, $adj )
 	{
 		global $wgDeferredUpdateList;
+
+		wfSeedRandom();
+		if ( 0 == mt_rand( 0, 499 ) ) {
+			$sql = "SELECT rc_timestamp FROM recentchanges " .
+			  "ORDER BY rc_timestamp DESC LIMIT 5000,1";
+			$res = wfQuery( $sql );
+			$obj = wfFetchObject( $res );
+			$ts = $obj->rc_timestamp;
+
+			$sql = "DELETE FROM recentchanges WHERE rc_timestamp < '{$ts}'";
+			wfQuery( $sql );
+		}
 		if ( 0 != $id ) {
 			$u = new LinksUpdate( $id, $title );
 			array_push( $wgDeferredUpdateList, $u );

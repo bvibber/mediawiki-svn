@@ -167,6 +167,24 @@ function buildTables()
   ra_title varchar(255) binary not null default ''
 ) TYPE=MyISAM PACK_KEYS=1";
 	wfQuery( $sql );
+
+	$sql = "DROP TABLE IF EXISTS recentchanges";
+	wfQuery( $sql );
+
+	$sql = "CREATE TABLE recentchanges (
+  rc_timestamp varchar(14) binary NOT NULL default '',
+  rc_user int(10) unsigned NOT NULL default '0',
+  rc_user_text varchar(255) binary NOT NULL default '',
+  rc_namespace tinyint(3) unsigned NOT NULL default '0',
+  rc_title varchar(255) binary NOT NULL default '',
+  rc_comment varchar(255) binary NOT NULL default '',
+  rc_minor tinyint(3) unsigned NOT NULL default '0',
+  rc_new tinyint(3) unsigned NOT NULL default '0',
+  rc_cur_id int(10) unsigned NOT NULL default '0',
+  rc_this_oldid int(10) unsigned NOT NULL default '0',
+  rc_last_oldid int(10) unsigned NOT NULL default '0'
+) TYPE=MyISAM PACK_KEYS=1;";
+	wfQuery( $sql );
 }
 
 function buildIndexes()
