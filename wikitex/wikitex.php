@@ -4,11 +4,10 @@
 WikiTeX: expansible LaTeX module for MediaWiki
 Copyright (C) 2004-5  Peter Danenberg
 
-     WikiTeX is licensed under  the  Open  Software  License
-v. 2.1;  to  view  a  copy  of  this license, see COPYING or
-visit:
+     WikiTeX is licensed under the Artistic License 2.0;  to
+view a copy of this license, see COPYING or visit:
 
-     http://www.opensource.org/licenses/osl-2.1.php
+     http://dev.perl.org/perl6/rfc/346.html
 
 wikitex.php: main parser  functions, registration  interface
 with $wgParser
@@ -81,6 +80,8 @@ class objRend
       $arrBlack['music'] = array('#');
     
       $arrBlack['plot'] = array('cd', 'call', 'exit', 'load', 'pause', 'print', 'pwd', 'quit', 'replot', 'reread', 'reset', 'save', 'shell', 'system', 'test', 'update', '!', 'path', 'historysize', 'mouse', 'out', 'term', 'file', '"', '\'');
+
+      $arrBlack['chess'] = array('savegame', 'loadgame', 'storegame', 'restoregame');
 
       // merge arrays, if specific present
       if (!empty($arrBlack[$strClass])) {

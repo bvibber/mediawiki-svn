@@ -1,4 +1,4 @@
-VERSION = 1.0.2
+VERSION = 1.0.3
 PRE = cat 
 POST = copying.inc.ms | sed "s/\%VERSION\%/${VERSION}/" | groff -t -ms -Tascii - | col -bx >
 DOC = README NEWS COPYING MANIFEST THANKS
@@ -21,4 +21,7 @@ THANKS: thanks.ms
 	$(PRE) $? $(POST) $@
 
 clean:
-	rm -f *~ ${DOC}
+	rm -f ${DOC}
+
+distclean:
+	rm -fr *~ `find . -name '.svn'`

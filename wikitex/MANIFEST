@@ -7,7 +7,7 @@
 
 
 
-                   WikiTeX 1.0.2 MANIFEST
+                   WikiTeX 1.0.3 MANIFEST
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -40,7 +40,7 @@
 
      wikitex.batik.inc.svg   Batik toolkit
      wikitex.chem.inc.tex    XyMTeX
-     wikitex.chess.inc.tex   LaTeX Chess
+     wikitex.chess.inc.tex   Skak
      wikitex.error.inc.tex   Generic error
      wikitex.feyn.inc.tex    Feynman diagrams
      wikitex.go.inc.sgf      Go, sgf2tex
@@ -61,7 +61,7 @@
 
 
 
-                        8 March 2005
+                        10 March 2005
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-                        8 March 2005
+                        10 March 2005
 
 
 
@@ -139,12 +139,10 @@
 WikiTeX: expansible LaTeX module for MediaWiki
 Copyright (C) 2004-5  Peter Danenberg
 
-     WikiTeX  is  licensed  under  the Open Software License
-v. 2.1; to view a copy  of  this  license,  see  COPYING  or
-visit:
+     WikiTeX  is licensed under the Artistic License 2.0; to
+view a copy of this license, see COPYING or visit:
 
-     http://www.opensource.org/licenses/osl-2.1.php
-
+     http://dev.perl.org/perl6/rfc/346.html
 
 
 
@@ -193,6 +191,8 @@ visit:
 
 
 
-                        8 March 2005
+
+
+                        10 March 2005
 
 

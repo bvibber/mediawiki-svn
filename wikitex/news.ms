@@ -4,6 +4,22 @@ WikiTeX %VERSION% NEWS
 .AU
 Peter Danenberg <pcd at wikitex dot org>
 .SH
+Thu Mar 10 01:26:39 PST 2005	Peter Danenberg
+.RS
+.PP
+Skak by Torben Hoffmann has replaced Piet Tutelaers' package as the <chess> renderer; Skak is backwards compatible and allows, amongst other things:
+.RS
+.IP \(bu
+SAN and PGN notation
+.IP \(bu
+large boards (with \\largeboard)
+.IP \(bu
+move arrows (with \\printarrow)
+.RE
+.LP
+see the docs for details.
+.RE
+.SH
 Tue Mar  8 16:53:39 PST 2005	Peter Danenberg
 .RS
 .PP

@@ -1,3 +1,18 @@
+2005-03-10  Peter Danenberg  <pcd at wikitex dot org>
+
+	* manifest.ms: updated for skak
+
+	* readme.ms: updated for skak
+
+	* wikitex.plot.inc.p: filename placeholder
+
+	* wikitex.chess.inc.tex: updated for skak
+
+	* wikitex.sh: verbose errors enabled on plot;
+	'export DISPLAY' localized
+
+	* wikitex.php: updated blacklist for skak
+
 2005-03-08  Peter Danenberg  <pcd at wikitex dot org>
 
 	* readme.ms: clarified installation; added gschem

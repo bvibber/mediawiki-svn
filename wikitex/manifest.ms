@@ -40,7 +40,7 @@ Templates
 l l .
 wikitex.batik.inc.svg	Batik toolkit
 wikitex.chem.inc.tex	XyMTeX
-wikitex.chess.inc.tex	LaTeX Chess
+wikitex.chess.inc.tex	Skak
 wikitex.error.inc.tex	Generic error
 wikitex.feyn.inc.tex	Feynman diagrams
 wikitex.go.inc.sgf	Go, sgf2tex

@@ -7,7 +7,7 @@
 
 
 
-                    WikiTeX 1.0.2 README
+                    WikiTeX 1.0.3 README
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -20,7 +20,7 @@
 
 
 
-8 March 2005
+10 March 2005
 
 
 
@@ -73,7 +73,7 @@
 
 
 
-                    WikiTeX 1.0.2 README
+                    WikiTeX 1.0.3 README
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -127,7 +127,7 @@ sion below.
 
 
 
-                        8 March 2005
+                        10 March 2005
 
 
 
@@ -193,7 +193,7 @@ sion below.
 
 
 
-                        8 March 2005
+                        10 March 2005
 
 
 
@@ -229,25 +229,25 @@ sion below.
                whose classes you would like to  support,  or
                add your own (see Expanding WikiTeX):
 
-      Class    Package        Author              URL
+      Class   Package        Author               URL
      --------------------------------------------------------
-     amsmath AMS-LaTeX  Amer. Math. Soc.    ams.org
-     batik   SVG Java   Apache              apache.org
-     chem    XyMTeX     Shinsaku Fujita     kit.ac.jp
-     chess   LaTeX ChessPiet Tutelaers      tug.org
-     feyn    Feynman    Michael Levine      ctan.org
-     go      Go         Daniel Bump         stanford.edu
-     graph   Graphviz   Emden Gansner       research.att.com
-     greek   Ibycus     Pierre MacKay       tug.org
-     ling    AVM        Christopher Manning stanford.edu
-             Parsetree  Eirik Hektoen       essex.ac.uk
-     music   Lilypond   Han-Wen Nienhuys    lilypond.org
-     plot    Gnuplot    Nikos Drakos        gnuplot.info
-     ppch    PPCH-TeX   Hans Hagen          pragma-ade.com
-     svg     SVG lite   ImageMagick         imagemagick.org
-     schem   gschem     Ales Hvezda         seul.org
-     teng    Tengwar    Ivan Derzhanski     quettar.org
-     tipa    TIPA       Rei Fukui           ctan.org
+     amsmath AMS-LaTeX Amer. Math. Soc.     ams.org
+     batik   SVG Java  Apache               apache.org
+     chem    XyMTeX    Shinsaku Fujita      kit.ac.jp
+     chess   Skak      Torben Hoffmann      ctan.org
+     feyn    Feynman   Michael Levine       ctan.org
+     go      Go        Daniel Bump          stanford.edu
+     graph   Graphviz  Emden Gansner        research.att.com
+     greek   Ibycus    Pierre MacKay        tug.org
+     ling    AVM       Christopher Manning  stanford.edu
+             Parsetree Eirik Hektoen        essex.ac.uk
+     music   Lilypond  Han-Wen Nienhuys     lilypond.org
+     plot    Gnuplot   Nikos Drakos         gnuplot.info
+     ppch    PPCH-TeX  Hans Hagen           pragma-ade.com
+     svg     SVG lite  ImageMagick          imagemagick.org
+     schem   gschem    Ales Hvezda          seul.org
+     teng    Tengwar   Ivan Derzhanski      quettar.org
+     tipa    TIPA      Rei Fukui            ctan.org
 
 
           6.   Lastly, ensure that your server's $PATH vari-
@@ -259,7 +259,7 @@ user and group id.
 
 
 
-                        8 March 2005
+                        10 March 2005
 
 
 
@@ -325,7 +325,7 @@ added overhead and vulnerability.
 
 
 
-                        8 March 2005
+                        10 March 2005
 
 
 
@@ -391,7 +391,7 @@ added overhead and vulnerability.
 
 
 
-                        8 March 2005
+                        10 March 2005
 
 
 
@@ -403,12 +403,10 @@ added overhead and vulnerability.
 WikiTeX: expansible LaTeX module for MediaWiki
 Copyright (C) 2004-5  Peter Danenberg
 
-     WikiTeX  is  licensed  under  the Open Software License
-v. 2.1; to view a copy  of  this  license,  see  COPYING  or
-visit:
+     WikiTeX  is licensed under the Artistic License 2.0; to
+view a copy of this license, see COPYING or visit:
 
-     http://www.opensource.org/licenses/osl-2.1.php
-
+     http://dev.perl.org/perl6/rfc/346.html
 
 
 
@@ -457,6 +455,8 @@ visit:
 
 
 
-                        8 March 2005
+
+
+                        10 March 2005
 
 

@@ -2,12 +2,11 @@
 # WikiTeX: expansible LaTeX module for MediaWiki
 # Copyright (C) 2004-5  Peter Danenberg
 #
-#      WikiTeX is licensed under  the  Open  Software  License
-# v. 2.1;  to  view  a  copy  of  this license, see COPYING or
-# visit:
+#      WikiTeX is licensed under the Artistic License 2.0;  to
+# view a copy of this license, see COPYING or visit:
 #
-#      http://www.opensource.org/licenses/osl-2.1.php
-# 
+#      http://dev.perl.org/perl6/rfc/346.html
+#
 # wikitex.sh: shell interface to wikitex.php
 # Usage: FILE MODULE OUTPATH
 ARGS=3
@@ -20,7 +19,7 @@ OUT="${3}"
 EXT='.png'
 CHE='.cache'
 MID='.midi'
-ERR='<span class="errwikitex">WikiTeX: %s reported a failure.</span><pre>%s</pre>\n';
+ERR='<span class="errwikitex">WikiTeX: %s reported a failure, namely:</span><pre>%s</pre>\n';
 
 function wt_error() {
     printf "${ERR}" "${1}" "${2}"
@@ -92,12 +91,15 @@ function music() {
 }
 
 function plot() {
-    gnuplot ${HASH} > ${HASH}${EXT}
+    cat ${HASH} | sed "s/\%OUTPUT\%/${HASH}${EXT}/" > ${HASH}
+    wt_exec "gnuplot ${HASH}"
+    wt_exec "mogrify -trim ${HASH}${EXT}"
     wt_img "${OUT}${HASH}${EXT}"
     wt_anch
 }
 
 function schem() {
+    export DISPLAY=localhost:1.0
     wt_exec "gschem -o ${HASH}${EXT} -s ../wikitex.schem.scm ${HASH}"
     wt_exec "mogrify -trim ${HASH}${EXT}"
     wt_img "${OUT}${HASH}${EXT}"

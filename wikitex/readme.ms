@@ -157,7 +157,7 @@ _
 amsmath	AMS-LaTeX	Amer. Math. Soc.	ams.org
 batik	SVG Java	Apache	apache.org
 chem	XyMTeX	Shinsaku Fujita	kit.ac.jp
-chess	LaTeX Chess	Piet Tutelaers	tug.org
+chess	Skak	Torben Hoffmann	ctan.org
 feyn	Feynman	Michael Levine	ctan.org
 go	Go	Daniel Bump	stanford.edu
 graph	Graphviz	Emden Gansner	research.att.com

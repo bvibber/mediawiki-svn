@@ -7,61 +7,61 @@
 
 
 
-                   WikiTeX 1.0.2 LICENSE
+                   WikiTeX 1.0.3 LICENSE
 
           Peter Danenberg <pcd at wikitex dot org>
 
 
-Open Software License v. 2.1
+The Artistic License Version 2.0beta4, October 2000
 
-     This  Open  Software License (the "License") applies to
-any original work of authorship (the "Original Work")  whose
-owner (the "Licensor") has placed the following notice imme-
-diately following the  copyright  notice  for  the  Original
-Work:
+     Copyright  (C) 2000, Larry Wall.  Everyone is permitted
+to copy and distribute verbatim copies of this license docu-
+ment, but changing it is not allowed.
 
-     Licensed  under  the Open Software License version
-     2.1
+Preamble
 
-1.  Grant of Copyright License
+          This  copyright  license  states  the  terms under
+     which a given free software Package may be copied, mod-
+     ified  and/or  redistributed,  while  the Originator(s)
+     maintain some artistic control over the future develop-
+     ment of that Package (at least as much artistic control
+     as can be given under copyright law while still  making
+     the Package open source and free software).
 
-     Licensor hereby grants You a world-wide,  royalty-free,
-non-exclusive,  perpetual,  sublicenseable license to do the
-following:
+          This  license  is bound by copyright law, and thus
+     it legally applies only to works  which  the  copyright
+     holder has permitted copying, distribution or modifica-
+     tion under the terms of the Artistic  License,  Version
+     2.0.
 
-     a.   to reproduce the Original Work in copies;
+          You  are reminded that You are always permitted to
+     make arrangements wholly outside of a  given  copyright
+     license  directly  with  the  copyright  holder(s) of a
+     given Package.  If the terms  of  this  license  impede
+     your  ability  to make full use of the Package, You are
+     encouraged to contact the copyright holder(s) and  seek
+     a different licensing arrangement.
 
-     b.   to prepare derivative works  ("Derivative  Works")
-          based upon the Original Work;
+Definitions
 
-     c.   to  distribute  copies  of  the  Original Work and
-          Derivative Works to the public, with  the  proviso
-          that  copies  of Original Work or Derivative Works
-          that You distribute shall be  licensed  under  the
-          Open Software License;
+     "Package"
+          refers  to  the collection of files distributed by
+          the Originator(s), and derivatives of that collec-
+          tion  of  files  created through textual modifica-
+          tion.
 
-     d.   to perform the Original Work publicly; and
+     "Standard Version"
+          refers to the Package if it has not been modified,
+          or has been modified only in ways suggested by the
+          Originator(s).
 
-     e.   to display the Original Work publicly.
-
-2.  Grant of Patent License
-
-     Licensor  hereby grants You a world-wide, royalty-free,
-non-exclusive,  perpetual,  sublicenseable  license,   under
-patent  claims  owned or controlled by the Licensor that are
-embodied in the Original Work as furnished by the  Licensor,
-to  make, use, sell and offer for sale the Original Work and
-Derivative Works.
-
-3.  Grant of Source Code License
-
-     The term "Source Code" means the preferred form of  the
-Original  Work for making modifications to it and all avail-
-able documentation describing how  to  modify  the  Original
+     "Modified Version"
+          refers to the Package, if it has been  changed  by
+          You  via  textual modification of the source code,
 
 
 
-                        8 March 2005
+                        10 March 2005
 
 
 
@@ -70,64 +70,64 @@ able documentation describing how  to  modify  the  Original
                              -2-
 
 
-Work.  Licensor  hereby agrees to provide a machine-readable
-copy of the Source Code of the Original Work along with each
-copy  of the Original Work that Licensor distributes. Licen-
-sor reserves the right to satisfy this obligation by placing
-a machine-readable copy of the Source Code in an information
-repository reasonably calculated to permit  inexpensive  and
-convenient  access  by You for as long as Licensor continues
-to distribute the  Original  Work,  and  by  publishing  the
-address  of  that information repository in a notice immedi-
-ately following the copyright notice  that  applies  to  the
-Original Work.
+          and such changes were not suggested by the  Origi-
+          nator(s).
 
-4.  Exclusions From License Grant
+     "Originator"
+          refers to the author(s) and/or copyright holder(s)
+          of the Standard Version of the Package.
 
-     Neither  the  names  of  Licensor, nor the names of any
-contributors to the Original Work, nor any of  their  trade-
-marks  or  service  marks, may be used to endorse or promote
-products derived from this  Original  Work  without  express
-prior  written  permission  of the Licensor. Nothing in this
-License shall be deemed to grant any rights  to  trademarks,
-copyrights, patents, trade secrets or any other intellectual
-property of Licensor except as expressly stated  herein.  No
-patent  license  is  granted  to make, use, sell or offer to
-sell  embodiments  of  any  patent  claims  other  than  the
-licensed claims defined in Section 2. No right is granted to
-the trademarks of Licensor even if such marks  are  included
-in  the  Original  Work.  Nothing  in  this License shall be
-interpreted to prohibit Licensor from licensing  under  dif-
-ferent terms from this License any Original Work that Licen-
-sor otherwise would have a right to license.
+     "You" and "Your"
+          refers to any person who would like to copy,  dis-
+          tribute, or modify the Package.
 
-5.  External Deployment
+     "Distribution Fee"
+          is any fee that You charge for providing a copy of
+          this Package to another party. It does  not  refer
+          to licensing fees.
 
-     The term "External Deployment" means the use or distri-
-bution  of  the Original Work or Derivative Works in any way
-such that the Original Work or Derivative Works may be  used
-by  anyone  other  than  You,  whether  the Original Work or
-Derivative Works are distributed to those  persons  or  made
-available as an application intended for use over a computer
-network. As an express condition for the grants  of  license
-hereunder,  You agree that any External Deployment by You of
-a Derivative Work shall be deemed a distribution  and  shall
-be  licensed to all under the terms of this License, as pre-
-scribed in section 1(c) herein.
+     "Freely Available"
+          means that:
 
-6.  Attribution Rights
+          a.   no  fee  is  charged for the right to use the
+               item  (though  a  Distribution  Fee  may   be
+               charged).
 
-     You must retain, in the Source Code of  any  Derivative
-Works  that  You  create, all copyright, patent or trademark
-notices from the Source Code of the Original Work,  as  well
-as any notices of licensing and any descriptive text identi-
-fied therein as an "Attribution Notice." You must cause  the
-Source  Code  for  any  Derivative  Works that You create to
-carry a prominent Attribution Notice  reasonably  calculated
+          b.   recipients  of  the  item may redistribute it
+               under the same conditions they received it.
+
+          c.   If the item is a binary, object  code,  byte-
+               code,  the  complete  corresponding  machine-
+               readable source code  is  included  with  the
+               item.
+
+Permission for Use and Modification Without Redistribution
+
+     1.   You  are permitted to use the Standard Version and
+          create and use Modified Versions for  any  purpose
+          without  restriction,  provided  that  you  do not
+          redistribute the Modified Version to  others  out-
+          side of your company or organization.
+
+Permissions for Redistribution of the Standard Version
+
+     2.   You  may  make  available  verbatim  copies of the
+          source code of the Standard Version of this  Pack-
+          age  in  any  medium  without  restriction, either
+          gratis or for a Distribution  Fee,  provided  that
+          you   duplicate  all  of  the  original  copyright
+          notices and associated disclaimers.  At Your  dis-
+          cretion,  such  verbatim  copies  may  or  may not
+          include compiled bytecode, object code  or  binary
+          versions  of  the corresponding source code in the
+          same medium.
+
+     3.   You may apply any bug fixes, portability  changes,
+          and other modifications made available from any of
 
 
 
-                        8 March 2005
+                        10 March 2005
 
 
 
@@ -136,64 +136,64 @@ carry a prominent Attribution Notice  reasonably  calculated
                              -3-
 
 
-to  inform  recipients  that  You have modified the Original
-Work.
+          the Originator(s).  The resulting modified Package
+          will still be considered the Standard Version, and
+          may be copied, modified  and  redistributed  under
+          the  terms of the original license of the Standard
+          Version as if it were the Standard Version.
 
-7.  Warranty of Provenance and Disclaimer of Warranty
+Permissions for Redistribution of Modified Versions  of  the
+Package as Source
 
-     Licensor warrants that the  copyright  in  and  to  the
-Original Work and the patent rights granted herein by Licen-
-sor are owned by the Licensor  or  are  sublicensed  to  You
-under  the  terms of this License with the permission of the
-contributor(s) of those copyrights and patent rights. Except
-as  expressly stated in the immediately proceeding sentence,
-the Original Work is provided under this License on  an  "AS
-IS"  BASIS  and WITHOUT WARRANTY, either express or implied,
-including,  without  limitation,  the  warranties  of   NON-
-INFRINGEMENT,  MERCHANTABILITY  or  FITNESS FOR A PARTICULAR
-PURPOSE. THE ENTIRE RISK AS TO THE QUALITY OF  THE  ORIGINAL
-WORK IS WITH YOU. This DISCLAIMER OF WARRANTY constitutes an
-essential part of this License. No license to Original  Work
-is granted hereunder except under this disclaimer.
+     4.   You  may  modify  your  copy of the source code of
+          this Package in any way and distribute that  Modi-
+          fied  Version (either gratis or for a Distribution
+          Fee, and with or without a  corresponding  binary,
+          bytecode  or  object  code version of the Modified
+          Version) provided that You clearly  indicate  what
+          changes You made to the Package, and provided that
+          You do at least ONE of the following:
 
-8.  Limitation of Liability
+          a.   make the Modified Version  available  to  the
+               Originator(s)  of the Standard Version, under
+               the exact license of the Standard Version, so
+               that the Originator(s) may include your modi-
+               fications into the Standard Version (at their
+               discretion).
 
-     Under  no  circumstances  and  under  no  legal theory,
-whether in tort (including negligence), contract, or  other-
-wise,  shall  the  Licensor  be liable to any person for any
-direct, indirect, special, incidental, or consequential dam-
-ages of any character arising as a result of this License or
-the use of the Original Work including, without  limitation,
-damages  for loss of goodwill, work stoppage, computer fail-
-ure or malfunction, or any and all other commercial  damages
-or  losses.  This limitation of liability shall not apply to
-liability for death or personal injury resulting from Licen-
-sor's negligence to the extent applicable law prohibits such
-limitation. Some jurisdictions do not allow the exclusion or
-limitation  of  incidental or consequential damages, so this
-exclusion and limitation may not apply to You.
+          b.   modify  any  installation  scripts and proce-
+               dures so that installation  of  the  Modified
+               Version will never conflict with an installa-
+               tion of the  Standard  Version,  include  for
+               each  program  installed by the Modified Ver-
+               sion clear documentation  describing  how  it
+               differs from the Standard Version, and rename
+               your Modified Version so  that  the  name  is
+               substantially  different  from  the  Standard
+               Version.
 
-9.  Acceptance and Termination
+          c.   permit and encourage anyone  who  receives  a
+               copy  of  the  Modified Version permission to
+               make your modifications Freely  Available  in
+               some specific way.
 
-     If You distribute copies of  the  Original  Work  or  a
-Derivative Work, You must make a reasonable effort under the
-circumstances to obtain the express assent of recipients  to
-the terms of this License. Nothing else but this License (or
-another written agreement between Licensor and  You)  grants
-You  permission  to  create  Derivative Works based upon the
-Original Work or to exercise any of the  rights  granted  in
-Section  1 herein, and any attempt to do so except under the
-terms of this License (or another written agreement  between
-Licensor  and You) is expressly prohibited by U.S. copyright
-law, the equivalent laws of other countries, and by interna-
-tional  treaty.  Therefore,  by exercising any of the rights
-granted to You in Section 1 herein, You indicate Your accep-
-tance  of  this License and all of its terms and conditions.
-This License shall terminate  immediately  and  you  may  no
+          If Your Modified Version is in turn derived from a
+          Modified Version made by a third party,  then  You
+          are  still  required  to ensure that Your Modified
+          Version complies with  the  requirements  of  this
+          license.
+
+Permissions  for  Redistribution  of  Non-Source Versions of
+Package
+
+     5.   You may distribute binary, object  code,  bytecode
+          or  other non-source versions of the Standard Ver-
+          sion of the Package,  provided  that  you  include
+          complete  instructions  on where to get the source
 
 
 
-                        8 March 2005
+                        10 March 2005
 
 
 
@@ -202,64 +202,64 @@ This License shall terminate  immediately  and  you  may  no
                              -4-
 
 
-longer  exercise  any  of  the rights granted to You by this
-License upon Your failure to honor the  proviso  in  Section
-1(c) herein.
+          code of the Standard Version.   Such  instructions
+          must  be  valid  at the time of Your distribution.
+          If these instructions, at any time while  You  are
+          carrying  our  such  distribution, become invalid,
+          you must provide new  instructions  on  demand  or
+          cease  further distribution.  If You cease distri-
+          bution within thirty days after You  become  aware
+          that the instructions are invalid, then You do not
+          forfeit any of Your rights under this license.
 
-10.  Termination for Patent Action
+     6.   You may distribute binary, object  code,  bytecode
+          or other non-source versions of a Modified Version
+          provided that You do at least ONE of  the  follow-
+          ing:
 
-     This  License shall terminate automatically and You may
-no longer exercise any of the rights granted to You by  this
-License  as  of the date You commence an action, including a
-cross-claim  or  counterclaim,  against  Licensor   or   any
-licensee alleging that the Original Work infringes a patent.
-This termination provision shall not  apply  for  an  action
-alleging patent infringement by combinations of the Original
-Work with other software or hardware.
+          a.   include  a  copy  of the corresponding source
+               code for the Modified Version under the terms
+               indicated in (4).
 
-11.  Jurisdiction, Venue and Governing Law
+          b.   ensure  that  the  installation  of Your non-
+               source Modified Version does not conflict  in
+               any  way with an installation of the Standard
+               Version, include for each  program  installed
+               by  the  Modified Version clear documentation
+               describing how it differs from  the  Standard
+               Version,  and rename your Modified Version so
+               that the name is substantially different from
+               the Standard Version.
 
-     Any action or suit relating  to  this  License  may  be
-brought  only  in  the  courts of a jurisdiction wherein the
-Licensor resides or in which Licensor conducts  its  primary
-business,  and under the laws of that jurisdiction excluding
-its  conflict-of-law  provisions.  The  application  of  the
-United Nations Convention on Contracts for the International
-Sale of Goods is expressly excluded. Any use of the Original
-Work outside the scope of this License or after its termina-
-tion shall be subject to the requirements and  penalties  of
-the  U.S. Copyright Act, 17 U.S.C.  101 et seq., the equiva-
-lent laws of other countries, and international treaty. This
-section shall survive the termination of this License.
+          c.   ensure  that  the  Modified  Version includes
+               notification of the  changes  made  from  the
+               Standard   Version,   and  offer  to  provide
+               machine-readable source code (under a license
+               that  permits  making that source code Freely
+               Available) of the Modified Version  via  mail
+               order.
 
-12.  Attorneys Fees
+Permissions for Inclusion of the Package in Aggregate Works
 
-     In  any  action to enforce the terms of this License or
-seeking damages relating thereto, the prevailing party shall
-be  entitled  to  recover its costs and expenses, including,
-without limitation, reasonable  attorneys'  fees  and  costs
-incurred  in  connection  with  such  action,  including any
-appeal of such action. This section shall survive the termi-
-nation of this License.
+     7.   You  may  aggregate this Package (either the Stan-
+          dard Version or Modified Version) with other pack-
+          ages and distribute the resulting aggregation pro-
+          vided that You do not charge a licensing  fee  for
+          the Package.  Distribution Fees are permitted, and
+          licensing fees for other packages in the  aggrega-
+          tion are permitted.  Your permission to distribute
+          Standard or Modified Versions of  the  Package  is
+          still  subject  to  the  other  terms set forth in
+          other sections of this license.
 
-13.  Miscellaneous
-
-     This License represents the complete agreement concern-
-ing the subject matter hereof.  If  any  provision  of  this
-License is held to be unenforceable, such provision shall be
-reformed only to the extent necessary to  make  it  enforce-
-able.
-
-14.  Definition of "You" in This License
-
-     "You"  throughout  this  License,  whether  in upper or
-lower case, means an individual or a legal entity exercising
-rights  under,  and complying with all of the terms of, this
-License. For legal entities, "You" includes any entity  that
+     8.   In addition to the permissions given elsewhere  by
+          this license, You are also permitted to link Modi-
+          fied and Standard Versions of  this  Package  with
+          other  works  and  distribute the inary program(s)
 
 
 
-                        8 March 2005
+                        10 March 2005
 
 
 
@@ -268,64 +268,64 @@ License. For legal entities, "You" includes any entity  that
                              -5-
 
 
-controls,  is controlled by, or is under common control with
-you. For purposes of this definition,  "control"  means  (i)
-the  power,  direct  or  indirect, to cause the direction or
-management of such entity, whether by contract or otherwise,
-or (ii) ownership of fifty percent (50%) or more of the out-
-standing shares,  or  (iii)  beneficial  ownership  of  such
-entity.
+          that do not overtly expose the interfaces  of  the
+          Package.   This  includes  permission to embed the
+          Package in a  larger  work  of  your  own  without
+          exposing  a direct interface to the Package.  This
+          also  includes  permission  to  build  stand-alone
+          binary  or  bytecode versions of your scripts that
+          require the Package, but do not otherwise give the
+          casual user direct access to the Package itself.
 
-15.  Right to Use
+Items  That  are Never Considered Part of a Modified Version
+Package
 
-     You may use the Original Work in all ways not otherwise
-restricted or conditioned by this License  or  by  law,  and
-Licensor  promises  not  to interfere with or be responsible
-for such uses by You.
+     9.   Works (including, but not limited to,  subroutines
+          and  scripts)  that  you have linked or aggregated
+          with the Package that merely extend or make use of
+          the  Package,  but  are  not intended to cause the
+          Package to operate differently from  the  Standard
+          Version,  do not, by themselves, cause the Package
+          to be a Modified Version.  In addition, such works
+          are  not  considered  parts of the Package itself,
+          and are not bound by the terms  of  the  Package's
+          license.
 
-     This license is Copyright  (C)  2003-2004  Lawrence  E.
-Rosen.  All rights reserved. Permission is hereby granted to
-copy and distribute this license without modification.  This
-license may not be modified without the express written per-
-mission of its copyright owner.
+Acceptance of License and Disclaimer of Warranty
 
+     10.  You are not required to accept this License, since
+          you have not signed  it.   However,  nothing  else
+          grants  you  permission  to  copy,  modify or dis-
+          tribute the Standard or Modified Versions  of  the
+          Package.   These  actions  are prohibited by copy-
+          right law if  you  do  not  accept  this  License.
+          Therefore,  by  copying, modifying or distributing
+          Standard and Modified Versions of the Package, you
+          indicate  your  acceptance  of  the license of the
+          Package.
 
+     11.  Disclaimer of Warranty:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS
+          AND  CONTRIBUTORS  "AS  IS"  AND  ANY  EXPRESS  OR
+          IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+          THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FIT-
+          NESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.   IN
+          NO  EVENT  UNLESS  REQUIRED BY LAW OR AGREED TO IN
+          WRITING WILL ANY COPYRIGHT HOLDER  OR  CONTRIBUTOR
+          BE  LIABLE  FOR  ANY DIRECT, INDIRECT, INCIDENTAL,
+          SPECIAL,  EXEMPLARY,  OR   CONSEQUENTIAL   DAMAGES
+          (INCLUDING,  BUT  NOT  LIMITED  TO, PROCUREMENT OF
+          SUBSTITUTE GOODS OR SERVICES; LOSS OF  USE,  DATA,
+          PROFITS;  OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+          AND ON ANY THEORY OF LIABILITY,  WHETHER  IN  CON-
+          TRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLI-
+          GENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF  THE
+          USE  OF  THIS  SOFTWARE,  EVEN  IF  ADVISED OF THE
 
 
-                        8 March 2005
+
+                        10 March 2005
 
 
 
@@ -334,15 +334,79 @@ mission of its copyright owner.
                              -6-
 
 
+          POSSIBILITY OF SUCH DAMAGE.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        10 March 2005
+
+
+
+
+
+                             -7-
+
+
 WikiTeX: expansible LaTeX module for MediaWiki
 Copyright (C) 2004-5  Peter Danenberg
 
-     WikiTeX is licensed under  the  Open  Software  License
-v. 2.1;  to  view  a  copy  of  this license, see COPYING or
-visit:
+     WikiTeX is licensed under the Artistic License 2.0;  to
+view a copy of this license, see COPYING or visit:
 
-     http://www.opensource.org/licenses/osl-2.1.php
-
+     http://dev.perl.org/perl6/rfc/346.html
 
 
 
@@ -391,6 +455,8 @@ visit:
 
 
 
-                        8 March 2005
+
+
+                        10 March 2005
 
 
