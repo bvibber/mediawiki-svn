@@ -468,6 +468,8 @@ $wpTextbox2
 		  "img_name='" . wfStrencode( $wgTitle->getDBkey() ) . "'";
 		$res = wfQuery( $sql, $fname );
 
+		if ( 0 == wfNumRows( $res ) ) { return; }
+
 		$sk = $wgUser->getSkin();
 		$s = $sk->beginImageHistoryList();		
 
