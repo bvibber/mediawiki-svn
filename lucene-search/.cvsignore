@@ -1,0 +1,8 @@
+searchdb
+mwsearch.conf
+runsearch
+*.swo
+*.swp
+dist
+*.jar
+bin
