@@ -138,8 +138,9 @@ class WikiPage extends WikiTitle {
         return $ret ;
         }
 
+/*
     # This lists all the subpages of a page (for the QuickBar)
-    # Not in use since we don't have subpages anymore
+    # Not in use since we don't have subpages anymore; should be removed
     function getSubpageList () {
         $a = array () ;
         $t = ucfirstIntl ( $this->namespace ) ;
@@ -161,13 +162,13 @@ class WikiPage extends WikiTitle {
         if ( count ( $a ) > 0 ) array_unshift ( $a , "[[$mother]]" ) ;
         return $a ;
         }
+*/
 
     # This lists all namespaces that contain an article with the same name
     # Called by QuickBar() and getFooter()
     function getOtherNamespaces () {
         $a = array () ;
         if ( $this->isSpecialPage ) return $a ;
-
 
 	global $wikiNS2Talk , $wikiTalk2NS , $wikiTalk , $wikiArticle ;
 	$ns = strtolower ( $this->namespace ) ;
@@ -509,7 +510,7 @@ class WikiPage extends WikiTitle {
         $var=date("Y"); $s = str_replace ( "{{CURRENTYEAR}}" , $var , $s ) ;
         if ( strstr ( $s , "{{NUMBEROFARTICLES}}" ) ) { # This should count only "real" articles!
             $connection=getDBconnection() ;
-            $sql="SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%:%\" AND cur_title NOT LIKE \"%ikipedia%\" AND cur_text LIKE \"%,%\"";
+            $sql="SELECT COUNT(*) as number FROM cur WHERE cur_title NOT LIKE \"%:%\" AND cur_text LIKE \"%,%\"";
             $result = mysql_query ( $sql , $connection ) ;
             $var = mysql_fetch_object ( $result ) ;
             $var = number_format ( $var->number , 0 ) ;
@@ -1112,14 +1113,15 @@ class WikiPage extends WikiTitle {
         if ( $oldID != "" ) $editOldVersion="&amp;oldID=$oldID&amp;version=$version" ;
         $ret = "<a href=\"".wikiLink(urlencode($wikiMainPage))."\">$wikiMainPage</a>" ;
 
-        $spl = $this->getSubpageList () ;
-        if ( count ( $spl ) > 0 and $this->subpageTitle != "" and $user->options["showStructure"] == "yes" ) {
-            $zz = trim ( $this->parseContents ( $spl[0] ) ) ;
-            $zz = strstr ( $zz , "<a"  ) ;
-            $zz = str_replace ( "</p>" , "" , $zz ) ;
-            $zz = $this->getNiceTitle ( $zz ) ;
-            $ret .= " | ".$zz ;
-            }
+#	This is outdated
+#        $spl = $this->getSubpageList () ;
+#        if ( count ( $spl ) > 0 and $this->subpageTitle != "" and $user->options["showStructure"] == "yes" ) {
+#            $zz = trim ( $this->parseContents ( $spl[0] ) ) ;
+#            $zz = strstr ( $zz , "<a"  ) ;
+#            $zz = str_replace ( "</p>" , "" , $zz ) ;
+#            $zz = $this->getNiceTitle ( $zz ) ;
+#            $ret .= " | ".$zz ;
+#            }
 
         global $wikiRecentChanges , $wikiRecentChangesLink , $wikiEditThisPage , $wikiHistory , $wikiRandomPage , $wikiSpecialPages ;
         global $wikiSpecialPagesLink ;
