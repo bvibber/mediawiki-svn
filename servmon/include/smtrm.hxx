@@ -232,7 +232,6 @@ public:
 		echo(true);
 		wrtln();
 		std::string rpass;
-		std::cerr << "user = ["<<usrnam<<"] pass=["<<pass<<"]\n";
 		try {
 			rpass = instance<smcfg::cfg>()->fetchstr(
 					str(format("/users/%s/password") % usrnam));
@@ -246,7 +245,7 @@ public:
 			disconnect();
 			return;
 		}
-		wrt(prm + ln);
+		wrt(prm);
 	}
 	void gd_cb(smnet::inetclntp s, u_char c) {
 		std::cerr << "read data: [" << c << "]\n";
