@@ -14,6 +14,8 @@ static const int
 	
 class mgr : public smutl::singleton<mgr> {
 public:
+	mgr(void);
+	
 	void set_thresh(str metric, int thresh, int type = type_preferhigher);
 	void set_lowthresh(str metrix, int thresh);
 	pair<int, int> get_thresh(str metric);
@@ -28,6 +30,8 @@ public:
 	
 private:
 	std::map<std::string, std::map<std::string, int> > hosts;
+
+	void evt_remind(void);
 };
 	
 } // namespace smalrm

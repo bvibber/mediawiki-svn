@@ -5,6 +5,11 @@
 
 namespace smalrm {
 
+mgr::mgr(void)
+{
+	SMI(smtmr::evthdlr)->install(smtmr::evtp(new smtmr::evt("alarm monitor", 60 * 60, true, boost::bind(&mgr::evt_remind, this))));
+}
+	
 void
 mgr::set_thresh(str metric, int thresh, int type)
 {
@@ -94,5 +99,24 @@ mgr::alarmdown(str host, str metric, int value)
 		hosts.erase(hit);
 	SMI(smlog::log)->logmsg(10, SM$FAC_MONIT, SM$MSG_ALRMCLR, host, metric, value);
 }
-	
+
+void
+mgr::evt_remind(void)
+{
+	if (hosts.empty())
+		return;
+	std::string summ;
+	for(std::map<std::string, std::map<std::string, int> >::const_iterator it = hosts.begin(),
+		    end = hosts.end(); it != end; ++it) {
+		if (it->second.empty())
+			continue;
+		summ += it->first + ": ";
+		for(std::map<std::string, int>::const_iterator jt = it->second.begin(),
+			    jnd = it->second.end(); jt != jnd; ++jt) {
+			summ += b::io::str(format("%s = %s ") % jt->first % jt->second);
+		}
+	}
+	SMI(smlog::log)->logmsg(10, SM$FAC_MONIT, SM$MSG_ALRMSUMM, summ);
+}
+
 } // namespace smalrm
