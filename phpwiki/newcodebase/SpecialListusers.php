@@ -2,7 +2,7 @@
 
 function wfSpecialListusers()
 {
-	global $wgUser, $wgOut;
+	global $wgUser, $wgOut, $offset, $limit;
 
 	if ( ! $limit ) {
 		$limit = $wgUser->getOption( "rclimit" );
