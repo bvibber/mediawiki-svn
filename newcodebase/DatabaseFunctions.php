@@ -10,7 +10,10 @@ function wfGetDB()
 	global $wgDBname, $wgDBconnection;
 
 	$noconn = str_replace( "$1", $wgDBserver, wfMsg( "noconnect" ) );
-	$nodb = str_replace( "$1", $wgDBname, wfMsg( "nodb" ) );
+	$nodb = str_replace( "$1", $wgDBname, wfMsg( "nodb" ) .
+		"\n<p><b>" . htmlspecialchars(mysql_error()) .
+		"</b></p>\n\n<p>If this error persists after reloading and clearing your browser cache,
+		please notify the <a href=\"mailto:wikitech-l@nupedia.com\">Wikipedia developers</a>.</p>");
 
 	if ( ! $wgDBconnection ) {
 		$wgDBconnection = mysql_pconnect( $wgDBserver, $wgDBuser,
