@@ -475,7 +475,7 @@ class SearchEngine {
 		}
 
 		# Entering an IP address goes to the contributions page
-		if ( preg_match( '/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/', $search ) ) {
+		if ( wfIsIP( $search )) {
 			$title = Title::makeTitle( NS_SPECIAL, "Contributions" );
 			$wgOut->redirect( $title->getFullUrl( "target=$search" ) );
 			return;

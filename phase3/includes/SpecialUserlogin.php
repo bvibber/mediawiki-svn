@@ -143,8 +143,7 @@ class LoginForm {
 		$u = User::newFromName( $name );
 		if ( is_null( $u ) ||
 		  ( "" == $name ) ||
-		  preg_match( "/\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}/", $name ) ||
-		  preg_match( "/^[0-9a-fA-F]+:[0-9a-fA-F:]+$/", $name ) ||
+		  wfIsIPblock( $name ) ||
 		  (strpos( $name, "/" ) !== false) ||
 		  (strlen( $name ) > $wgMaxNameChars) ) 
 		{

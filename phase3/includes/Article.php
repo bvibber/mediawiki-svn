@@ -218,7 +218,7 @@ class Article {
 			if(
 				# check if we're displaying a [[User talk:x.x.x.x]] anonymous talk page
 				( $this->mTitle->getNamespace() == Namespace::getTalk( Namespace::getUser()) ) &&
-				  preg_match('/^\d{1,3}\.\d{1,3}.\d{1,3}\.\d{1,3}$/',$this->mTitle->getText()) &&
+				  wfIsIP( $this->mTitle->getText() )
 				  $action=='view'
 				)
 				{

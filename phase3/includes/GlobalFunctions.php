@@ -1018,5 +1018,15 @@ function wfInvertTimestamp( $ts ) {
 	);
 }
 
+function wfIsIP( $ip ) {
+	$rxIP = '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}';
+	$rxIP6 = '[0-9a-fA-F]+:[0-9a-fA-F:]+';
+	$rx = "/^($rxIP|$rxIP6)$/";
+	if( preg_match( $rx, $ip ) )
+		return true;
+	else
+		return false;
+}
+
 
 ?>

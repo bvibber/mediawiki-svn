@@ -65,9 +65,7 @@ class User {
 
 	# does the string match an anonymous user IP address?
 	/* static */ function isIP( $name ) {
-		return preg_match("/^\d{1,3}\.\d{1,3}.\d{1,3}\.\d{1,3}$/",$name) ||
-			preg_match("/^[0-9a-fA-F]+:[0-9a-fA-F:]+$/",$name);
-
+		return wfIsIP( $name );
 	}
 
 	/* static */ function randomPassword() {
