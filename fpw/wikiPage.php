@@ -1063,7 +1063,7 @@ class WikiPage extends WikiTitle {
         global $wikiMainPage , $wikiRecentChanges , $wikiRecentChangesLink , $wikiUpload , $wikiPopularPages , $wikiLongPages , $action ;
         global $user , $oldID , $version , $wikiEditThisPage , $wikiDeleteThisPage , $wikiHistory , $wikiMyWatchlist , $wikiAskSQL ;
         global $wikiStatistics , $wikiNewPages , $wikiOrphans , $wikiMostWanted , $wikiAllPages , $wikiRandomPage , $wikiStubs , $wikiListUsers ;
-        global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink ;
+        global $wikiRecentLinked, $wikiRecentLinkedLink , $wikiBugReports , $wikiBugReportsLink , $wikiGetBriefDate ;
 
         $editOldVersion = "" ;
         if ( $oldID != "" ) $editOldVersion="&amp;oldID=$oldID&amp;version=$version" ;
@@ -1102,7 +1102,8 @@ class WikiPage extends WikiTitle {
         if ( $user->isLoggedIn ) {
             $column .= "<br>\n<a href=\"".wikiLink("special:WatchList")."\">$wikiMyWatchlist</a>" ;
             }
-    $column .= "<br>\n<a href=\"".wikiLink($wikiBugReportsLink)."\">$wikiBugReports</a>" ;
+        $column .= "<br>\n<a href=\"".wikiLink($wikiBugReportsLink)."\">$wikiBugReports</a>" ;
+	$column .= "<br>\n<a href=\"".$wikiGetBriefDate()."\">".$wikiGetBriefDate()."</a>" ;
         $a = $this->getOtherNamespaces () ;
         if ( count ( $a ) > 0 ) $column .= "<hr>".implode ( "<br>\n" , $a ) ;
 

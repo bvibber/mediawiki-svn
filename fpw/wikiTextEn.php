@@ -399,7 +399,15 @@ function wikiGetDateEn ( $x ) { # Used in RecentChangesLayout in special_functio
     $year = date ( "Y" , $x ) ;
     return "$dayName, $monthName $dayNumber, $year" ;
     }
+function wikiGetBriefDateEn () { #Brief date for link in sidebar
+    global $wikiDate ;
+    $monthName = $wikiDate [ strtolower ( date ( "F" ) ) ];
+    $dayNumber = date ( "j" ) ;
+    $year = date ( "Y" ) ;
+    return "$monthName $dayNumber, $year" ;
+    }
 $wikiGetDate = wikiGetDateEn;
+$wikiGetBriefDate = wikiGetBriefDateEn ;
 
 # In theory, this could be expanded to allow general conversion of the
 # character encoding used in the database to another encoding optionally
