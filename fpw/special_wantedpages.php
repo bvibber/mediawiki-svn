@@ -1,7 +1,7 @@
 <?
 function refreshWantedPages () {
 	global $showNumberPages , $linkedLinks , $unlinkedLinks , $vpage , $wikiWantedText , $wikiWantedLine ;
-	global $wikiWantedToggleNumbers, $wikiLastRefreshed ;
+	global $wikiWantedToggleNumbers, $wikiLastRefreshed , $wikiGetDate ;
 	$vpage->special ( "The Most Wanted Pages" ) ;
 	$vpage->namespace = "" ;
 	if ( $showNumberPages == "" ) $showNumberPages = "off" ;
@@ -63,7 +63,7 @@ function refreshWantedPages () {
 	$ret .= implode ( "" , $o ) ;
 	
 	$now = time () ;
-	$lc = wikiGetDate ( $now ) . date ( ", H:i" , $now ) ;
+	$lc = $wikiGetDate ( $now ) . date ( ", H:i" , $now ) ;
 	#$lc .= ", ".substr ( $now , 8 , 2 ) ;
 	#$lc .= ":".substr ( $now , 10 , 2 ) ;
 	$ret .= "\n<p>" . str_replace ( "$1", $lc, $wikiLastRefreshed ) . "</p>\n" ;

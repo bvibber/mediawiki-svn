@@ -10,9 +10,9 @@ function userLogin () {
 		global $USERNAME , $USERPASSWORD , $RETYPE , $REMEMBERPASSWORD ;
 
 		# Language recode
-		$USERNAME = wikiRecodeInput ( $USERNAME ) ;
-		$USERPASSWORD = wikiRecodeInput ( $USERPASSWORD ) ;
-		$RETYPE = wikiRecodeInput ( $RETYPE ) ;
+		$USERNAME = $wikiRecodeInput ( $USERNAME ) ;
+		$USERPASSWORD = $wikiRecodeInput ( $USERPASSWORD ) ;
+		$RETYPE = $wikiRecodeInput ( $RETYPE ) ;
 
 		if ( $REMEMBERPASSWORD == "" ) $REMEMBERPASSWORD = "off" ;
 		$nu = new WikiUser ;

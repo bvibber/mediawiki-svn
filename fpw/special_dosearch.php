@@ -18,7 +18,7 @@ function searchLineDisplay ( $v ) {
 
 function doSearch () {
 	global $THESCRIPT ;
-	global $vpage , $search , $startat , $user ;
+	global $vpage , $search , $startat , $user , $wikiRecodeInput ;
 	global $wikiSearchTitle , $wikiSearchedVoid , $wikiNoSearchResult ;
 	$vpage = new WikiPage ;
 	$vpage->special ( $wikiSearchTitle ) ;
@@ -27,7 +27,7 @@ function doSearch () {
 
 	if ( $search == "" ) $s = $wikiSearchedVoid ;
 	else {
-		$search = wikiRecodeInput ( $search ) ;
+		$search = $wikiRecodeInput ( $search ) ;
 		if ( !isset ( $startat ) ) $startat = 1 ;
 		$perpage = $user->options["resultsPerPage"] ;
 		global $wikiSQLServer ;
