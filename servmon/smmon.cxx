@@ -208,6 +208,34 @@ cfg::initialise(void)
 	c->run();
 }
 
+void cfg::server::check(void)
+{
+	state_t oldstate = state, newstate;
+	nups = ndowns = 0;
+	_check();
+	if (nups && ndowns) {
+		/* some checks succeeded and others failed.
+		   place server in fast-flap state */
+		newstate = state_fast_flap;
+	} else if (nups) {
+		/* all services up. */
+		newstate = state_up;
+	} else if (ndowns) {
+		/* all services down */
+		newstate = state_down;
+	} else {
+		/* no services either up or down.  this probably means
+		   we don't know about any checks for this server type,
+		   so leave it as unknown. */
+		newstate = state_unknown;
+	}
+	if (newstate != oldstate && oldstate != state_unknown) {
+		/* don't log a transition from unknown -> anything */
+		SMI(cfg)->state_transition(name, oldstate, newstate);
+	}
+	state = newstate;
+}
+	
 void
 cfg::checker::chk1(void)
 {
@@ -304,17 +332,13 @@ cfg::server::is(cfg::server::state_t s) const
 void
 cfg::server::markup(void)
 {
-	if (state != state_unknown && state != state_up)
-		SMI(cfg)->state_transition(name, state_down, state_up);
-	state = state_up;
+	nups++;
 }
 
 void
 cfg::server::markdown(void)
 {
-	if (state != state_unknown && state != state_down)
-		SMI(cfg)->state_transition(name, state_up, state_down);
-	state = state_down;
+	ndowns++;
 }
 
 std::string
@@ -325,6 +349,8 @@ cfg::server::statestring(state_t s)
 		return "UP"; break;
 	case state_down:
 		return "DOWN"; break;
+	case state_fast_flap:
+		return "FAST-FLAP"; break;
 	case state_unknown:
 		return "UNKNOWN"; break;
 	default:
@@ -343,7 +369,7 @@ cfg::state_transition(str serv, cfg::server::state_t oldstate, cfg::server::stat
 }
 
 void
-cfg::squidserver::check(void) {
+cfg::squidserver::_check(void) {
 	snmpclient c(name, 3401);
 	uint32_t requests, hits;
 	try {
@@ -411,7 +437,7 @@ cfg::mysqlserver::getnumprocesses(void)
 }
 			
 void
-cfg::mysqlserver::check(void)
+cfg::mysqlserver::_check(void)
 {
 	uint32_t queries = getqueries();
 	qpsv = qps.val(queries);

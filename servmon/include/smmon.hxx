@@ -37,14 +37,21 @@ public:
 	void create_server(str serv, str type, bool addconf = true);
 
 	struct server {
-		server(str name_) : name(name_), state(state_unknown) {}
+		server(str name_)
+			: name(name_)
+			, state(state_unknown)
+			, nups(0)
+			, ndowns(0)
+			{}
 		virtual std::string type(void) const = 0;
-		virtual void check(void) = 0;
+		void check(void);
+		virtual void _check(void) = 0;
 		virtual std::string fmt4irc(void) const = 0;
 		virtual ~server() {}
 		std::string name;
-		enum state_t { state_up, state_down, state_unknown };
+		enum state_t { state_up, state_down, state_fast_flap, state_unknown };
 		state_t state;
+		int nups, ndowns;
 		bool is(state_t s) const;
 		void markup(void);
 		void markdown(void);
@@ -55,7 +62,7 @@ public:
 		squidserver(str name) : server(name), rpsv(0), hpsv(0) {}
 		std::string type(void) const { return "Squid"; }
 		std::string fmt4irc(void) const;
-		void check();
+		void _check();
 		xomitr rps, hps;
 		uint32_t rpsv, hpsv;
 	};
@@ -63,7 +70,7 @@ public:
 		mysqlserver(str name) : server(name), qpsv(0) {}
 		std::string type(void) const { return "MySQL"; }
 		std::string fmt4irc(void) const;
-		void check();
+		void _check();
 		xomitr qps;
 		uint32_t qpsv, procv;
 		std::time_t replag;

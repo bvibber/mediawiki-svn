@@ -1,16 +1,17 @@
 /* @(#) $Header$ */
 #define HDL(x) struct x : handler<tt>
-#define EX bool execute(comdat<tt> const& cd)
+#define EX0 bool execute(comdat<tt> const&)
+#define EX1(a) bool execute(comdat<tt> const& a)
 
 HDL(cmd_show_version) {
-	EX {
+	EX1(cd) {
 		cd.inform("servmon pre-release");
 		return true;
 	}
 };
 
 HDL(cmd_enable) {
-	EX {
+	EX1(cd) {
 		cd.wrt("Password: ");
 		cd.term.echo(false);
 		cd.term.readline(boost::bind(&cmd_enable::vfypass, this, _1, _2));
@@ -26,7 +27,7 @@ HDL(cmd_enable) {
 };
 
 HDL(cmd_exit) {
-	EX {
+	EX1(cd) {
 		cd.inform("Bye");
 		return false;
 	}
@@ -34,7 +35,7 @@ HDL(cmd_exit) {
 
 HDL(cfg_eblpass) {
 	std::string p1;
-	EX {
+	EX1(cd) {
 		cd.term.echo(false);
 		cd.wrt("Enter new password: ");
 		cd.term.readline(boost::bind(&cfg_eblpass::gotp1, this, _1, _2));
@@ -58,11 +59,11 @@ HDL(cfg_eblpass) {
 
 HDL(chg_parser) {
 	chg_parser(handler_node<tt>& newp_, std::string const& prm_)
-	: newp(newp_)
-	, prm(prm_)
+		: newp(newp_)
+		, prm(prm_)
 	{
 	}
-	EX {
+	EX1(cd) {
 		cd.chgrt(&newp, prm);
 		return true;
 	}
@@ -72,7 +73,7 @@ HDL(chg_parser) {
 
 HDL(cfg_userpass) {
 	std::string usr;
-	EX {
+	EX1(cd) {
 		if (smauth::usr_exists(cd.p(0))) {
 			cd.error("User already exists.");
 			return true;
@@ -90,7 +91,7 @@ HDL(cfg_userpass) {
 };
 
 HDL(cfg_no_user) {
-	EX {
+	EX1(cd) {
 		if (!smauth::usr_exists(cd.p(0))) {
 			cd.error("No such user.");
 			return true;
@@ -101,14 +102,14 @@ HDL(cfg_no_user) {
 };
 
 HDL(cfg_irc_servnick) {
-	EX {
+	EX1(cd) {
 		SMI(smirc::cfg)->newserv_or_chgnick(cd.p(0), cd.p(1));
 		return true;
 	}
 };
 
 HDL(cfg_irc_servsecnick) {
-	EX {
+	EX1(cd) {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
 			cd.error("No such server.");
 			return true;
@@ -119,14 +120,14 @@ HDL(cfg_irc_servsecnick) {
 };
 
 HDL(cfg_irc_channel) {
-	EX {
+	EX1(cd) {
 		SMI(smirc::cfg)->channel(cd.p(0));
 		return true;
 	}
 };
 
 HDL(cfg_irc_nochannel) {
-	EX {
+	EX1(cd) {
 		if (!SMI(smirc::cfg)->nochannel(cd.p(0)))
 			cd.error("No such channel.");
 		return true;
@@ -134,7 +135,7 @@ HDL(cfg_irc_nochannel) {
 };
 
 HDL(cfg_irc_channel_level) {
-	EX {
+	EX1(cd) {
 		try {
 			SMI(smirc::cfg)->channel_level(cd.p(0), b::lexical_cast<int>(cd.p(1)));
 		} catch (b::bad_lexical_cast&) {
@@ -145,7 +146,7 @@ HDL(cfg_irc_channel_level) {
 };
 
 HDL(cfg_irc_noserver) {
-	EX {
+	EX1(cd) {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
 			cd.error("No such server.");
 			return true;
@@ -156,7 +157,7 @@ HDL(cfg_irc_noserver) {
 };
 
 HDL(cmd_irc_showchannels) {
-	EX {
+	EX1(cd) {
 		try {
 			std::set<std::string> channels = SMI(smcfg::cfg)->fetchlist("/irc/channels");
 			cd.inform("Currently configured channels:");
@@ -171,7 +172,7 @@ HDL(cmd_irc_showchannels) {
 };
 
 HDL(cmd_irc_showserver) {
-	EX {
+	EX1(cd) {
 		if (cd.num_params() == 0) {
 			try {
 				std::set<std::string> servers = SMI(smcfg::cfg)->fetchlist("/irc/servers");
@@ -210,7 +211,7 @@ HDL(cmd_irc_showserver) {
 };
 
 HDL(cfg_irc_enableserver) {
-	EX {
+	EX1(cd) {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
 			cd.error("No such server.");
 			return true;
@@ -221,7 +222,7 @@ HDL(cfg_irc_enableserver) {
 };
 
 HDL(cfg_irc_noenableserver) {
-	EX {
+	EX1(cd) {
 		if (!SMI(smirc::cfg)->server_exists(cd.p(0))) {
 			cd.error("No such server.");
 			return true;
@@ -232,7 +233,7 @@ HDL(cfg_irc_noenableserver) {
 };
 
 HDL(cmd_monit_showservers) {
-	EX {
+	EX1(cd) {
 		std::map<std::string, smmon::cfg::serverp> servers;
 		if (cd.num_params() == 0) {
 			servers = SMI(smmon::cfg)->servers();
@@ -277,7 +278,7 @@ HDL(cmd_monit_showservers) {
 };
 
 HDL(cfg_monit_server_type) {
-	EX {
+	EX1(cd) {
 		if (!SMI(smmon::cfg)->knowntype(cd.p(1))) {
 			cd.error(b::io::str(b::format("Unknown monitor type %s.") % cd.p(1)));
 			return true;
@@ -292,7 +293,7 @@ HDL(cfg_monit_server_type) {
 };
 		
 HDL(cfg_monit_server_mysql_master) {
-	EX {
+	EX1(cd) {
 		try {
 			std::string curmaster = SMI(smcfg::cfg)->fetchstr("/monit/mysql/master");
 			cd.inform("Removing MySQL master status from " + curmaster);
@@ -303,21 +304,21 @@ HDL(cfg_monit_server_mysql_master) {
 };
 
 HDL(cfg_monit_mysql_username) {
-	EX {
+	EX1(cd) {
 		SMI(smcfg::cfg)->storestr("/monit/mysql/username", cd.p(0));
 		return true;
 	}
 };
 
 HDL(cfg_monit_mysql_password) {
-	EX {
+	EX1(cd) {
 		SMI(smcfg::cfg)->storestr("/monit/mysql/password", cd.p(0));
 		return true;
 	}
 };
 
 HDL(cfg_monit_monitor_interval) {
-	EX {
+	EX1(cd) {
 		try {
 			SMI(smcfg::cfg)->storeint("/monit/interval", b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
@@ -328,7 +329,7 @@ HDL(cfg_monit_monitor_interval) {
 };
 
 HDL(cfg_monit_ircinterval) {
-	EX {
+	EX1(cd) {
 		try {
 			SMI(smcfg::cfg)->storeint("/monit/ircinterval", b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
@@ -339,7 +340,7 @@ HDL(cfg_monit_ircinterval) {
 };
 
 HDL(cmd_monit_showintervals) {
-	EX {
+	EX1(cd) {
 		try {
 			cd.inform("Monitor interval         : " + b::lexical_cast<std::string>(SMI(smcfg::cfg)->fetchint("/monit/interval")));
 		} catch (smcfg::nokey&) {
@@ -355,7 +356,7 @@ HDL(cmd_monit_showintervals) {
 };
 
 HDL(cfg_qb_rule) {
-	EX {
+	EX1(cd) {
 		cd.setdata(cd.p(0));
 		cd.chgrt(&SMI(tmcmds)->qbrrt, "%s(conf-qb-rule)# ");
 		if (!SMI(smqb::cfg)->rule_exists(cd.p(0))) {
@@ -367,7 +368,7 @@ HDL(cfg_qb_rule) {
 };
 
 HDL(cfg_qb_norule) {
-	EX {
+	EX1(cd) {
 		if (!SMI(smqb::cfg)->rule_exists(cd.p(0))) {
 			cd.error("No such rule.");
 			return true;
@@ -378,7 +379,7 @@ HDL(cfg_qb_norule) {
 };
 
 HDL(cfg_qbr_description) {
-	EX {
+	EX1(cd) {
 		std::string const& r = cd.getdata();
 		SMI(smqb::cfg)->rule_description(r, cd.p(0));
 		return true;
@@ -386,7 +387,7 @@ HDL(cfg_qbr_description) {
 };
 
 HDL(cmd_qb_show_rule) {
-	EX {
+	EX1(cd) {
 		std::vector<smqb::rule> rules;
 		if (cd.num_params() == 0) {
 			rules = SMI(smqb::cfg)->getrules();
@@ -421,7 +422,7 @@ HDL(cmd_qb_show_rule) {
 };
 
 HDL(cfg_qbr_matchif_minthreads) {
-	EX {
+	EX1(cd) {
 		try {
 			SMI(smqb::cfg)->set_minthreads(cd.getdata(), b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
@@ -432,7 +433,7 @@ HDL(cfg_qbr_matchif_minthreads) {
 };
 
 HDL(cfg_qbr_matchif_minlastthreads) {
-	EX {
+	EX1(cd) {
 		try {
 			SMI(smqb::cfg)->set_minlastthreads(cd.getdata(), b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
@@ -443,7 +444,7 @@ HDL(cfg_qbr_matchif_minlastthreads) {
 };
 
 HDL(cfg_qbr_matchif_lowestpos) {
-	EX {
+	EX1(cd) {
 		try {
 			SMI(smqb::cfg)->set_lowestpos(cd.getdata(), b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
@@ -454,7 +455,7 @@ HDL(cfg_qbr_matchif_lowestpos) {
 };
 
 HDL(cfg_qbr_matchif_minruntime) {
-	EX {
+	EX1(cd) {
 		try {
 			SMI(smqb::cfg)->set_minruntime(cd.getdata(), b::lexical_cast<int>(cd.p(0)));
 		} catch (b::bad_lexical_cast&) {
@@ -465,42 +466,42 @@ HDL(cfg_qbr_matchif_minruntime) {
 };
 
 HDL(cfg_qbr_matchif_user) {
-	EX {
+	EX1(cd) {
 		SMI(smqb::cfg)->set_user(cd.getdata(), cd.p(0));
 		return true;
 	}
 };
 
 HDL(cfg_qbr_matchif_command) {
-	EX {
+	EX1(cd) {
 		SMI(smqb::cfg)->set_command(cd.getdata(), cd.p(0));
 		return true;
 	}
 };
 
 HDL(cfg_qbr_matchif_querystring) {
-	EX {
+	EX1(cd) {
 		SMI(smqb::cfg)->set_querystring(cd.getdata(), cd.p(0));
 		return true;
 	}
 };
 
 HDL(cfg_qbr_enable) {
-	EX {
+	EX1(cd) {
 		SMI(smqb::cfg)->set_enabled(cd.getdata());
 		return true;
 	}
 };
 
 HDL(cfg_qbr_noenable) {
-	EX {
+	EX1(cd) {
 		SMI(smqb::cfg)->set_disabled(cd.getdata());
 		return true;
 	}
 };
 
 HDL(cfg_mc_server_list_command) {
-	EX {
+	EX1(cd) {
 		SMI(smcfg::cfg)->storestr("/mc/servercmd", cd.p(0));
 		SMI(smmc::mc)->reload_servers();
 		return true;
@@ -508,7 +509,7 @@ HDL(cfg_mc_server_list_command) {
 };
 
 HDL(cmd_mc_show_server_list_command) {
-	EX {
+	EX1(cd) {
 		try {
 			cd.wrtln(SMI(smcfg::cfg)->fetchstr("/mc/servercmd"));
 		} catch (smcfg::nokey&) {
@@ -519,7 +520,7 @@ HDL(cmd_mc_show_server_list_command) {
 };
 
 HDL(cmd_mc_show_parser_cache) {
-	EX {
+	EX1(cd) {
 		float hits, invalid, expired, absent, total;
 		std::string dbname = cd.num_params() ? cd.p(0) : "enwiki";
 		try {
@@ -559,7 +560,7 @@ HDL(cmd_mc_show_parser_cache) {
 };
 
 HDL(cfg_monit_alarm_mysql_replag) {
-	EX {
+	EX1(cd) {
 		int v;
 		try {
 			v = b::lexical_cast<int>(cd.p(0));
@@ -573,7 +574,7 @@ HDL(cfg_monit_alarm_mysql_replag) {
 };
 
 HDL(cfg_monit_alarm_mysql_threads) {
-	EX {
+	EX1(cd) {
 		int v;
 		try {
 			v = b::lexical_cast<int>(cd.p(0));
@@ -587,56 +588,56 @@ HDL(cfg_monit_alarm_mysql_threads) {
 };
 
 HDL(cmd_debug_mysql_connect) {
-	EX {
+	EX0 {
 		SMI(smlog::log)->dodebug(smlog::mysql_connect);
 		return true;
 	}
 };
 
 HDL(cmd_no_debug_mysql_connect) {
-	EX {
+	EX0 {
 		SMI(smlog::log)->dontdebug(smlog::mysql_connect);
 		return true;
 	}
 };
 
 HDL(cmd_debug_mysql_query) {
-	EX {
+	EX0 {
 		SMI(smlog::log)->dodebug(smlog::mysql_query);
 		return true;
 	}
 };
 
 HDL(cmd_no_debug_mysql_query) {
-	EX {
+	EX0 {
 		SMI(smlog::log)->dontdebug(smlog::mysql_query);
 		return true;
 	}
 };
 
 HDL(cmd_debug_mysql_monitoring) {
-	EX {
+	EX0 {
 		SMI(smlog::log)->dodebug(smlog::mysql_monitoring);
 		return true;
 	}
 };
 
 HDL(cmd_no_debug_mysql_monitoring) {
-	EX {
+	EX0 {
 		SMI(smlog::log)->dontdebug(smlog::mysql_monitoring);
 		return true;
 	}
 };
 
 HDL(cmd_debug_irc) {
-	EX {
+	EX0 {
 		SMI(smlog::log)->dodebug(smlog::irc);
 		return true;
 	}
 };
 
 HDL(cmd_no_debug_irc) {
-	EX {
+	EX0 {
 		SMI(smlog::log)->dontdebug(smlog::irc);
 		return true;
 	}
