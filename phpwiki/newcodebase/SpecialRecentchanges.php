@@ -23,9 +23,24 @@ function wfSpecialRecentchanges()
 		unset($from);
 	}
 
+	$sk = $wgUser->getSkin();
+
+	if ( ! isset( $hideminor ) ) {
+		$hideminor = $wgUser->getOption( "hideminor" );
+	}
+	if ( $hideminor ) {
+		$hidem = "AND rc_minor=0";
+		$mlink = $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
+	  	  WfMsg( "show" ), "days={$days}&limit={$limit}&hideminor=0" );
+	} else {
+		$hidem = "";
+		$mlink = $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
+	  	  WfMsg( "hide" ), "days={$days}&limit={$limit}&hideminor=1" );
+	}
+
 	$sql = "SELECT rc_cur_id,rc_namespace,rc_title,rc_user,rc_new," .
 	  "rc_comment,rc_user_text,rc_timestamp,rc_minor FROM recentchanges " .
-	  "WHERE rc_timestamp > '{$cutoff}' " .
+	  "WHERE rc_timestamp > '{$cutoff}' {$hidem}" .
 	  "ORDER BY rc_timestamp DESC LIMIT {$limit}";
 	$res = wfQuery( $sql, $fname );
 
@@ -38,8 +53,6 @@ function wfSpecialRecentchanges()
 	}
 	$wgOut->addHTML( "\n<hr>\n{$note}\n<br>" );
 
-	$sk = $wgUser->getSkin();
-
 	$cl = rcCountLink( 50, $days ) . " | " . rcCountLink( 100, $days ) . " | " .
 	  rcCountLink( 250, $days ) . " | " . rcCountLink( 500, $days );
 	$dl = rcDaysLink( $limit, 1 ) . " | " . rcDaysLink( $limit, 3 ) . " | " .
@@ -48,16 +61,6 @@ function wfSpecialRecentchanges()
 	$note = str_replace( "$1", $cl, wfMsg( "rclinks" ) );
 	$note = str_replace( "$2", $dl, $note );
 
-	if ( ! isset( $hideminor ) ) {
-		$hideminor = $wgUser->getOption( "hideminor" );
-	}
-	if ( $hideminor ) {
-		$mlink = $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
-	  	  WfMsg( "show" ), "days={$days}&limit={$limit}&hideminor=0" );
-	} else {
-		$mlink = $sk->makeKnownLink( $wgLang->specialPage( "Recentchanges" ),
-	  	  WfMsg( "hide" ), "days={$days}&limit={$limit}&hideminor=1" );
-	}
 	$note = str_replace( "$3", $mlink, $note);
 
 	$now = date( "YmdHis" );
