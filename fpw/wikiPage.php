@@ -998,7 +998,7 @@ class WikiPage extends WikiTitle {
         $ret .= "</td>\n<td valign=top width=200 rowspan=2 nowrap>".$user->getLink()."<br>" ;
         if ( $user->isLoggedIn ) $ret .= "<a href=\"".wikiLink("special:userLogout")."\">$wikiLogOut</a> | <a href=\"".wikiLink("special:editUserSettings")."\">$wikiPreferences</a>" ;
         else $ret .= "<a href=\"".wikiLink("special:userLogin")."\">$wikiLogIn</a>" ;
-        $ret .= " | <a href=\"".wikiLink("wikipedia:$wikiHelpLink")."\">$wikiHelp</a><br>\n" ;
+        $ret .= " | <a href=\"".wikiLink($wikiHelpLink)."\">$wikiHelp</a><br>\n" ;
 
         # Text encoding
         if(count($wikiEncodingNames) > 1) { # Shortcut for switching character encodings
