@@ -789,15 +789,16 @@ class Skin {
 
 		$nt = Title::newFromText( $title );
 		$link = $nt->getEditURL();
+		$u = wfEscapeHTML( $link );
 
 		if ( "" == $text ) { $text = $nt->getPrefixedText(); }
 		$style = $this->getInternalLinkAttributes( $link, $text, true );
 
 		if ( $wgOut->isPrintable() ||
 		  ( 1 == $wgUser->getOption( "highlightbroken" ) ) ) {
-			$s = "<a href=\"{$link}\"{$style}>{$text}</a>";
+			$s = "<a href=\"{$u}\"{$style}>{$text}</a>";
 		} else {
-			$s = "{$text}<a href=\"{$link}\"{$style}>?</a>";
+			$s = "{$text}<a href=\"{$u}\"{$style}>?</a>";
 		}
 		return $s;
 	}
