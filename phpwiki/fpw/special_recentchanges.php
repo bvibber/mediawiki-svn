@@ -2,13 +2,29 @@
 include_once ( "special_recentchangeslayout.php" ) ;
 
 function recentchanges () {
-	global $THESCRIPT , $user ;
+	global $THESCRIPT , $user , $useCachedPages ;
 	global $vpage , $maxcnt , $daysAgo , $from , $wikiRecentChangesText , $wikiRecentChangesTitle ;
 	global $wikiRecentChangesLastDays , $wikiRecentChangesSince , $wikiViewLastDays , $wikiViewMaxNum , $wikiListOnlyNewChanges ;
 	$vpage->special ( $wikiRecentChangesTitle ) ;
 	$vpage->makeSecureTitle() ;
 	if ( !isset ( $maxcnt ) ) $maxcnt = 50 ;
 	if ( !isset ( $daysAgo ) ) $daysAgo = 3 ;
+	
+	if ( $maxcnt == 50 and $daysAgo == 3 and !isset($from)
+		and $user->options["hideMinor"] == "no" and $user->options["changesLayout"] == "classic"
+		and $useCachedPages) {
+		# If all default settings are in use, we can show a cached version of the page if available
+		#echo "(caching)"; #FIXME
+		$canBeCached = true;
+		$cache = getMySQL ( "cur" , "cur_text" , "cur_title=\"Log:RecentChanges\"" ) ;
+		
+		if ( $cache != "" )
+			return $cache;
+		#echo "(reforming)"; #FIXME
+	} else {
+		#echo "(not caching)"; #FIXME
+		$canBeCached = false;
+		}
 
 	$from2 = substr ( $from , 0 , 4 ) . "-" . substr ( $from , 4 , 2 ) . "-" . substr ( $from , 6 , 2 ) ;
 	$from2 .= " " . substr ( $from , 8 , 2 ) . ":" . substr ( $from , 10 , 2 ) . ":" . substr ( $from , 12 , 2 ) ;
@@ -89,6 +105,16 @@ function recentchanges () {
 
 	#mysql_close ( $connection ) ;
 	$ret .= recentChangesLayout($arr) ;
+	
+	if ( $canBeCached ) {
+		# Store the cached version
+		#echo "(saving)"; #FIXME
+		$p = new wikiPage ;
+		$p->setTitle ( "log:RecentChanges" ) ;
+		$p->ensureExistence () ;
+		$p->setEntry ( $ret , "Refresh" , 0 , "System" , 1, ",cur_timestamp=0" ) ;
+		}
+	
 	return $ret ;
 	}
 
