@@ -2,11 +2,6 @@
 # ATTENTION:
 # To fit your local settings, PLEASE edit wikiLocalSettings.php ONLY!
 # Change settings here ONLY if they're to become global in all wikipedias!
-#
-# This file loads up the default English message strings
-# and the default server configuration for the English wikipedia.
-
-include_once ( "wikiTextEn.php" ) ;
 
 # Essential stuff, so the script knows where it is, whar database to use, etc.
 #$wikiCurrentServer = "http://127.0.0.1" ;
@@ -31,6 +26,13 @@ include_once ( "wikiLocalSettings.php" ) ;
 # Initialize list of available character encodings to the default if none was set up.
 if ( ! isset ( $wikiEncodingCharsets ) ) $wikiEncodingCharsets = array($wikiCharset);
 if ( ! isset ( $wikiEncodingNames ) ) $wikiEncodingNames = array($wikiCharset); # Localised names
+
+#
+# This file loads up the default English message strings
+# and the default server configuration for the English wikipedia.
+# This has to be done after the local settings have been read in,
+# since variables such as $THESCRIPT are being used.
+include_once ( "wikiTextEn.php" ) ;
 
 
 # Functions
