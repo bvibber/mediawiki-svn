@@ -12,16 +12,6 @@ class LinkCache {
 	/* private */ var $mImageLinks; 
 	/* private */ var $mPreFilled, $mOldGoodLinks, $mOldBadLinks;
 	
-	/* private */ function getKey( $title ) {
-		global $wgDBname;
-		return "$wgDBname:lc:title:$title";
-	}
-	
-	/* private */ function getPrefillKey( $title ) {
-		global $wgDBname;
-		return "$wgDBname:lc:prefill:$title";
-	}
-
 	function LinkCache()
 	{
 		$this->mActive = true;
@@ -77,8 +67,6 @@ class LinkCache {
 		if ( isset( $index ) ) {
 			unset( $this->mBadLinks[$index] );
 		}
-		global $wgMemc;
-		$wgMemc->delete( $this->getKey( $title ) );
 	}
 
 	function suspend() { $this->mActive = false; }
@@ -104,31 +92,21 @@ class LinkCache {
 		$id = $this->getGoodLinkID( $title );
 		if ( 0 != $id ) { return $id; }
 
-		global $wgMemc;
-		$fname = "LinkCache::addLinkObj";
-		wfProfileIn( $fname );
+		wfProfileIn( "LinkCache::addLink-checkdatabase" );
 
 		$ns = $nt->getNamespace();
 		$t = $nt->getDBkey();
 
-		if ( "" == $title ) { 
-			wfProfileOut( $fname );
-			return 0; 
-		}
-		
-		$id = $wgMemc->get( $key = $this->getKey( $title ) );
-		if( $id === FALSE ) {
-			$sql = "SELECT cur_id FROM cur WHERE cur_namespace=" .
-			  "{$ns} AND cur_title='" . wfStrencode( $t ) . "'";
-			$res = wfQuery( $sql, $fname );
-	
-			if ( 0 == wfNumRows( $res ) ) {
-				$id = 0;
-			} else {
-				$s = wfFetchObject( $res );
-				$id = $s->cur_id;
-			}
-			$wgMemc->add( $key, $id, time() + 3600 );
+		if ( "" == $t ) { return 0; }
+		$sql = "SELECT cur_id FROM cur WHERE cur_namespace=" .
+		  "{$ns} AND cur_title='" . wfStrencode( $t ) . "'";
+		$res = wfQuery( $sql, "LinkCache::addLink" );
+
+		if ( 0 == wfNumRows( $res ) ) {
+			$id = 0;
+		} else {
+			$s = wfFetchObject( $res );
+			$id = $s->cur_id;
 		}
 		if ( 0 == $id ) { $this->addBadLink( $title ); }
 		else { $this->addGoodLink( $id, $title ); }
@@ -136,22 +114,15 @@ class LinkCache {
 		return $id;
 	}
 
-	function preFill( &$fromtitle )
+	function preFill( $fromtitle )
 	{
-		$fname = "LinkCache::preFill";
-		wfProfileIn( $fname );
+		wfProfileIn( "LinkCache::preFill" );
 		# Note -- $fromtitle is a Title *object*
 		$dbkeyfrom = wfStrencode( $fromtitle->getPrefixedDBKey() );
-		
-		if( $this->preFillFromCache( $dbkeyfrom ) ) {
-			wfProfileOut();
-			return;
-		}
-		
 		$sql = "SELECT cur_id,cur_namespace,cur_title
 			FROM cur,links
 			WHERE cur_id=l_to AND l_from='{$dbkeyfrom}'";
-		$res = wfQuery( $sql, $fname );
+		$res = wfQuery( $sql, "LinkCache::preFill" );
 		while( $s = wfFetchObject( $res ) ) {
 			$this->addGoodLink( $s->cur_id,
 				Title::makeName( $s->cur_namespace, $s->cur_title )
@@ -164,8 +135,8 @@ class LinkCache {
 		
 		$sql = "SELECT bl_to
 			FROM brokenlinks
-			WHERE bl_from={$id}";
-		$res = wfQuery( $sql, $fname );
+			WHERE bl_from='{$id}'";
+		$res = wfQuery( $sql, "LinkCache::preFill" );
 		while( $s = wfFetchObject( $res ) ) {
 			$this->addBadLink( $s->bl_to );
 		}
@@ -174,29 +145,7 @@ class LinkCache {
 		$this->mOldGoodLinks = $this->mGoodLinks;
 		$this->mPreFilled = true;
 		
-		$this->preFillToCache( $dbkeyfrom );
-		
 		wfProfileOut();
-	}
-	
-	function preFillFromCache( $dbkey ) {
-		global $wgMemc;
-		$prefill = $wgMemc->get( $this->getPrefillKey( $dbkey ) );
-		if( $prefill === FALSE ) return false;
-		list( $this->mGoodLinks, $this->mBadLinks, $this->mImageLinks ) = $prefill;
-		list( $this->mOldGoodLinks, $this->mOldBadLinks ) = $prefill;
-		return $this->mPreFilled = true;
-	}
-	
-	function preFillToCache( $dbkey ) {
-		global $wgMemc;
-		$prefill = array( $this->mGoodLinks, $this->mBadLinks, $this->mImageLinks );
-		$wgMemc->set( $this->getPrefillKey( $dbkey ), $prefill, time() + 3600 );
-	}
-	
-	function clearPreFill( $dbkey ) {
-		global $wgMemc;
-		$wgMemc->delete( $this->getPrefillKey( $dbkey ) );
 	}
 
 	function getGoodAdditions() 

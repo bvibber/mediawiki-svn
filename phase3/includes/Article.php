@@ -679,7 +679,7 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		  wfStrencode( $summary ) . "',0,0," .
 		  ( $wgUser->isBot() ? 1 : 0 ) . ")";
 		wfQuery( $sql, $fname );
-		if ($watchthis) {
+		if ($watchthis) { 		
 			if(!$wgTitle->userIsWatching()) $this->watch(); 
 		} else {
 			if ( $wgTitle->userIsWatching() ) {
@@ -1335,10 +1335,8 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
             $now = wfTimestampNow();
 			$sql2 = "UPDATE cur SET cur_touched='{$now}' WHERE cur_id IN (";
 			$first = true;
-			
-			global $wgLinkCache;
+
 			while ( $s = wfFetchObject( $res ) ) {
-				$wgLinkCache->clearPreFill( $s->l_from );
 				$nt = Title::newFromDBkey( $s->l_from );
 				$lid = $nt->getArticleID();
 
@@ -1365,9 +1363,6 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 
 			$sql = "DELETE FROM brokenlinks WHERE bl_from={$id}";
 			wfQuery( $sql, $fname );
-
-			global $wgLinkCache;
-			$wgLinkCache->clearPreFill( $t );
 		}
 		
 		$log = new LogPage( wfMsg( "dellogpage" ), wfMsg( "dellogpagetext" ) );
