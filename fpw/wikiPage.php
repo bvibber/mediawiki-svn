@@ -896,7 +896,10 @@ class WikiPage extends WikiTitle {
         if ( "*" == $char ) { $result .= "<ul><li>"; }
         else if ( "#" == $char ) { $result .= "<ol><li>"; }
         else if ( ":" == $char ) { $result .= "<dl><dd>"; }
-        else if ( ";" == $char ) { $result .= "<dl><dt>"; }
+        else if ( ";" == $char ) {
+            $result .= "<dl><dt>";
+            $this->dtOpen = true;
+        }
         else { $result = "<!-- ERR 1 -->"; }
 
         return $result;
