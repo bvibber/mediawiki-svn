@@ -9,6 +9,10 @@
 
 #include <sys/types.h>
 
+#if defined(__SVR4) || defined(__svr4__)
+# define RDCP_SVR4
+#endif
+
 /*
  * Opaque handle to RDCP instance.
  */
@@ -31,24 +35,14 @@ struct rdcp_frame {
 };
 
 /*
- * Result codes.
- */
-#define RDCP_RES_OK		1	/* Operation succeeded		*/
-#define RDCP_RES_ERR		0	/* Operation failed 		*/
-#define RDCP_RES_MASK 		0x1
-#define RDCP_IS_OK(x) (((x) & RDCP_RES_MASK) == RDCP_RES_OK)
-
-/*
  * Error codes.
  */
 #define R_ERR_DISAGREE		1	/* Peer disagreed about stream format. 		*/
 #define R_ERR_WRONGSIZE		2	/* Frame size was wrong for this stream.	*/
 #define R_ERR_INVARG		3	/* Invalid internal argument.			*/
-#define R_ERR_XTI		4	/* Ask XTI for the error.			*/
-
-#define R_ERR_MASK 0xE
-#define R_ERR(x) ((((x) & R_ERR_MASK)) >> 1)
-
+#define R_ERR_SYSERR		4	/* Ask XTI for the error.			*/
+#define R_ERR_CLOSED		5	/* Connection was already closed.		*/
+#define R_ERR_NOMEM		6	/* Out of memory.				*/
 /*
  * Record types.
  */
@@ -56,7 +50,15 @@ struct rdcp_frame {
 #define RDCP_RT_VAR	2	/* Variable-length records	*/
 
 /*
- * Bind an XTI descriptor to an RDCP handle and negotiate preferences
+ * Options.
+ */
+#define ROPT_RDRW	1
+#ifdef RDCP_SVR4
+#define ROPT_XTI	2
+#endif
+
+/*
+ * Bind a file descriptor to an RDCP handle and negotiate preferences
  * with peer.
  */
 int rdcp_bind(int desc, struct rdcp_handle* handle, struct rdcp_prefer *opts);
@@ -90,17 +92,16 @@ struct rdcp_handle *rdcp_handle_alloc(void);
 /*
  * Free a handle.  Does not call rdcp_unbind.
  */
-void rdcp_handle_free(struct rdcp_handle*);
+int rdcp_handle_free(struct rdcp_handle*);
 
 /*
  * Format RDCP error as string. 
  */
-const char *rdcp_strerror(struct rdcp_handle *);
+const char *rdcp_strerror(int);
 
 /*
- * Return XTI error number for handle.
+ * Set descriptor type (rdrw / xti)
  */
-int rdcp_xtierrno(struct rdcp_handle *);
+int rdcp_handle_type(struct rdcp_handle*, int type);
 
 #endif
-

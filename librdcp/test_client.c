@@ -29,8 +29,14 @@ main(int argc, char *argv[])
 		return 1;
 	}
 
-	tfd = t_open("/dev/tcp", O_RDWR, NULL);
-	t_bind(tfd, NULL, NULL);
+	if ((tfd = t_open("/dev/tcp", O_RDWR, NULL)) < 0) {
+		t_error("t_open");
+		return 1;
+	}
+	if (t_bind(tfd, NULL, NULL) < 0) {
+		t_error("t_bind");
+		return 1;
+	}
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
 	servaddr.sin_port = htons(atoi(argv[1]));
@@ -62,16 +68,17 @@ main(int argc, char *argv[])
 	opts.rp_rtype = RDCP_RT_VAR;
 	opts.rp_rsize = 0;
 
-	if (!RDCP_IS_OK(rdcp_bind(tfd, handle, &opts)))
+	if ((n = rdcp_bind(tfd, handle, &opts)) != 0) {
+		fprintf(stderr, "rdcp_bind: %s\n", rdcp_strerror(n));
 		return 1;
+	}
 	
-	while (RDCP_IS_OK(n = rdcp_read(handle, &frame))) {
+	while ((n = rdcp_read(handle, &frame)) == 0) {
 		printf("read a frame.  len=%d data=[%*s]\n", frame.rf_len, frame.rf_len, frame.rf_buf);
 		rdcp_frame_free(&frame);
 	}
 
-	fprintf(stderr, "rdcp err: %s (XTI error: %s)\n", rdcp_strerror(handle),
-		t_strerror(rdcp_xtierrno(handle)));
+	fprintf(stderr, "rdcp_read: %s\n", rdcp_strerror(n));
 	rdcp_unbind(handle);
 	rdcp_handle_free(handle);
 	return 0;

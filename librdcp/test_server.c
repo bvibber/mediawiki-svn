@@ -31,7 +31,10 @@ main(int argc, char *argv[])
 		return 1;
 	}
 
-	tfd = t_open("/dev/tcp", O_RDWR, &tinfo);
+	if ((tfd = t_open("/dev/tcp", O_RDWR, &tinfo)) < 0) {
+		t_error("t_open");
+		return 1;
+	}
 
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
@@ -51,11 +54,23 @@ main(int argc, char *argv[])
 		int	connfd, i;
 
 		tcallp = t_alloc(tfd, T_CALL, T_ALL);
-		t_listen(tfd, tcallp);
+		if (t_listen(tfd, tcallp) < 0) {
+			t_error("t_listen");
+			return 1;
+		}
 		
-		connfd = t_open("/dev/tcp", O_RDWR, NULL);
-		t_bind(connfd, NULL, NULL);
-		t_accept(tfd, connfd, tcallp);
+		if ((connfd = t_open("/dev/tcp", O_RDWR, NULL)) < 0) {
+			t_error("t_open");
+			return 1;
+		}
+		if (t_bind(connfd, NULL, NULL) < 0) {
+			t_error("t_bind");
+			return 1;
+		}
+		if (t_accept(tfd, connfd, tcallp) < 0) {
+			t_error("t_accept");
+			return 1;
+		}
 
 		t_free(tcallp, T_CALL);
 		
@@ -63,20 +78,18 @@ main(int argc, char *argv[])
 		opts.rp_rtype = RDCP_RT_VAR;
 		opts.rp_rsize = 0;
 
-		if (!RDCP_IS_OK(rdcp_bind(connfd, handle, &opts)))
+		if (rdcp_bind(connfd, handle, &opts))
 			return 1;
 	
 		frame.rf_buf = "test\n";
 		frame.rf_len = 5;
-		i = rdcp_write(handle, &frame);
-		if (!RDCP_IS_OK(i)) {
+		if (i = rdcp_write(handle, &frame)) {
 			fprintf(stderr, "rdcp err: %d\n", i);
 			return 1;
 		}
 		frame.rf_buf = "another test\n";
 		frame.rf_len = 13;
-		i = rdcp_write(handle, &frame);
-		if (!RDCP_IS_OK(i)) {
+		if (i = rdcp_write(handle, &frame)) {
 			fprintf(stderr, "rdcp err: %d\n", i);
 			return 1;
 		}
