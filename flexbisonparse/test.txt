@@ -1,2 +1,2 @@
-This is a [http://www.bla.com] link.
+This is a [http] link.
 

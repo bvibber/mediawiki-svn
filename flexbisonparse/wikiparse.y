@@ -36,7 +36,7 @@ int i;
              textelement textelementnoboit textelementnobold textelementnoital textelementinlink
              textnoboit textnobold textnoital textinlink textorempty zeroormorenewlines
              zeroormorenewlinessave textintbl textelementintbl textintmpl textelementintmpl
-             template templatevar tablecaption linktrail linktrailtext externallink
+             template templatevar tablecaption linktrail linktrailtext externallink textinexternallink
              TEXT EXTENSION
 %type <ad>   ATTRIBUTE
 %type <num>  HEADING ENDHEADING EQUALS ATTRAPO ATTRQ
@@ -143,9 +143,9 @@ linktrailtext   : linktrailtext LINKTRAIL { $$ = $1 ; }
 linktrail       : CLOSEDBLSQBR linktrailtext { $$ = $2 } /* Don't know how to handle the trail; ignored so far */
                 | CLOSEDBLSQBR {}
 		
-externallink	: OPENEXTERNALLINK PROTOCOL PROTOCOLSEP textinlink CLOSEEXTERNALLINK { $$ = $4 }
+externallink	: OPENEXTERNALLINK textinexternallink CLOSEEXTERNALLINK { debugf ("externallink#1 "); $$ = nodeAddChild (newNodeI (LinkEtc, 0), nodeAddChild (newNode (LinkTarget), $2)); }
 
-linketc         :   externallink { $$ = $1 ; }
+linketc         :   externallink
 		|   OPENDBLSQBR textinlink linktrail
                         { debugf ("linketc#1 "); $$ = nodeAddChild (newNodeI (LinkEtc, 0), nodeAddChild (newNode (LinkTarget), $2)); }
                 |   OPENDBLSQBR textinlink PIPE linktrail
@@ -529,6 +529,9 @@ textelementintmpl   :   TEXT                { debugf ("textelementintmpl#1 "); $
                     |   italicsorbold       { debugf ("textelementintmpl#18 "); $$ = $1; }
                     |   template            { debugf ("textelementintmpl#19 "); $$ = $1; }
                     |   templatevar         { debugf ("textelementintmpl#20 "); $$ = $1; }
+
+textinexternallink  :   TEXT                { debugf ("textelementintmpl#1 "); $$ = $1; }
+		    |   CLOSEEXTERNALLINK   { debugf ("textelementintmpl#4 "); $$ = newNodeS (TextToken, "]"); }
 
 template            :   OPENTEMPLATE textintmpl CLOSETEMPLATE
                             { debugf ("template#1 "); $$ = nodeAddChild (newNode (Template), $2); }
