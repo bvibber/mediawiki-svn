@@ -1,8 +1,13 @@
 2002-08-06
 
 This is a new codebase for the Wikipedia project
-(http://www.wikipedia.org), though it is intended to be
-usable for other wiki sites without much headache.
+(http://www.wikipedia.org). It is possibly usable as a
+general-purpose wiki, but it was not intended as such
+and there is little or no support available for using
+it as such from the developers, who are busy full time
+supporting the Wikipedia project. There are many good
+general-purpose Wikis in the world. I personally
+recommend UseMod (http://www.usemod.com/).
 
 The code as a whole is Copyright 2002 by Lee Daniel Crocker
 and others, licensed under the terms of the GNU General Public
