@@ -48,35 +48,33 @@ class neighbors {
 
 	function show() 
 	{
-		global $wgOut;
+		global $wgOut, $wgUser, $wgContLang;
 
 		/* No reason for robots to follow map links */
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
 		$wgOut->setPagetitle( "Neighbors" );
-		$this->showList();
-	}
-	
-	function showList() 
-	{
-		global $wgOut, $wgUser, $wgContLang;
 
 		if (($e = $this->p->get_error()) != "") {
 			$wgOut->addHTML(
-			       "<p>".
-			       htmlspecialchars( $e ));
+			       "<p>" . htmlspecialchars( $e ) . "</p>");
 			$wgOut->output();
 			wfErrorExit();
 			return;
 		}
 
+		$wgOut->addWikiText( $this->make_output() );
+	}
+
+	function make_output()
+	{
 		$lat0 = $this->p->latdeg;
 		$lon0 = $this->p->londeg;
 
 		$g = new gis_database();
 		$g->select_radius_m( $lat0, $lon0, $this->d * 1000);
 		$all = array();
-		$all_pos = array();
+		$all_pos = array(); /* temporary store reqd due to sort */
 
 		while (($x = $g->fetch_position())) {
 			$id = $x->gis_id;
@@ -97,20 +95,20 @@ class neighbors {
 		asort($all, SORT_NUMERIC);
 		reset($all);
 
-		/* Output */
+		/* Generate output */
 		$out .= "''List of ". count($all)
 		      . " locations within approx. ".$this->d." km of ";
 		if ($this->title != "") {
 			$out .= $this->title . ", ";
 		}
 		$out .= "coordinates "
-		       . $this->show_position($lat0,$lon0)
+		       . $this->p->make_position($lat0,$lon0)
 		       . "''<br /><hr />\r\n";
 
 		while (list($id, $d) = each($all)) {
 			$out .= $this->show_location($id, $d, $all_pos[$id]);
 		}
-		$wgOut->addWikiText( $out );
+		return $out;
 	}
 	
 	function show_location( $id, $d, $pos )
@@ -136,29 +134,10 @@ class neighbors {
 			}
 			$out .= $d." km ";
 		}
-		return $out . $pos['octant'] . ", bearing " 
+		return $out . $pos['octant'] . " (bearing "
 		       . round($pos['heading']) . "&deg; towards "
-		       . $this->show_position($pos['lat'],$pos['lon'])
-		       . "<br />\r\n";
-	}
-	
-	function show_position( $lat, $lon )
-	{
-		$a = geo_param::make_minsec( $lat );
-		$b = geo_param::make_minsec( $lon );
-		$outa = intval(abs($a['deg'])) . "&deg;&nbsp;";
-		$outb = intval(abs($b['deg'])) . "&deg;&nbsp;";
-		if ($a['min'] != 0 or $b['min'] != 0
-		 or $a['sec'] != 0 or $b['sec'] != 0) {
-			$outa .= intval($a['min']) . "&prime;&nbsp;";
-			$outb .= intval($b['min']) . "&prime;&nbsp;";
-			if ($a['sec'] != 0 or $b['sec'] != 0) {
-				$outa .= $a['sec']. "&Prime;&nbsp;";
-				$outb .= $b['sec']. "&Prime;&nbsp;";
-			}
-		}
-
-		return $outa . $a['NS'] . " " . $outb . $b['EW'];
+		       . $this->p->make_position($pos['lat'],$pos['lon'])
+		       . ")<br />\r\n";
 	}
 }
 ?>

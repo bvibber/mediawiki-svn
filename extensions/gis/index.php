@@ -45,6 +45,7 @@ if ( isset ( $wikibasedir ) )
 	
 require_once( "mapsources.php");
 require_once( "neighbors.php");
+require_once( "maparea.php");
 
 if ( isset ( $_GET['geo'] ) ) {
 	$geo = urldecode ( $_GET['geo'] );
@@ -53,11 +54,16 @@ if ( isset ( $_GET['geo'] ) ) {
 	$near = urldecode ( $_GET['near'] ) ;
 	$dist = urldecode ( $_GET['dist'] ) ;
 	$title = urldecode ( $_GET['title'] );
+} else if ( isset ( $_GET['maparea'] ) ) {
+	$maparea = urldecode ( $_GET['maparea'] ) ;
 }
 
 # FIXME: if no params, then what?
 
-if ($near != "") {
+if ($maparea != "") {
+	$bsl = new maparea( $maparea );
+	$bsl->show();
+} else if ($near != "") {
 	$bsl = new neighbors( $near, $dist, $title );
 	$bsl->show();
 } else {

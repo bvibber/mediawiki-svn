@@ -181,9 +181,9 @@ class gis_database {
 	 function select_area( $latmin, $lonmin, $latmax, $lonmax )
 	 {
 	       $condition = 'gis_latitude_max >= ' . $latmin .
-			'AND gis_latitude_min <= ' . $latmax .
-			'AND gis_longitude_max >= ' . $lonmin .
-			'AND gis_longitude_min <= ' . $lonmax;
+			' AND gis_latitude_min <= ' . $latmax .
+			' AND gis_longitude_max >= ' . $lonmin .
+			' AND gis_longitude_min <= ' . $lonmax;
 
 		return $this->select_position( $condition );
 	}

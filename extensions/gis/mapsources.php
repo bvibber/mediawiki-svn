@@ -67,8 +67,7 @@ class map_sources {
 
 		if (($e = $this->p->get_error()) != "") {
 			$wgOut->addHTML(
-			       "<p>".
-			       htmlspecialchars( $e ));
+			       "<p>" . htmlspecialchars( $e ) . "</p>");
 			$wgOut->output();
 			wfErrorExit();
 			return;

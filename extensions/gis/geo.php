@@ -121,12 +121,20 @@ class geo_param {
 		$this->londeg_min = $this->londeg_max = $this->londeg;
 		if ($this->pieces[0] == "to") {
 			array_shift($this->pieces);
-			# FIXME: Shows only 2nd part
 			$this->get_coor();
-			$this->latdeg_max = $this->latdeg;
-			$this->londeg_max = $this->londeg;
+			if ($this->latdeg < $this->latdeg_max) {
+				$this->latdeg_min = $this->latdeg;
+			} else {
+				$this->latdeg_max = $this->latdeg;
+			}
+			if ($this->londeg < $this->londeg_max) {
+				$this->londeg_min = $this->londeg;
+			} else {
+				$this->londeg_max = $this->londeg;
+			}
 			$this->latdeg = ($this->latdeg_max+$this->latdeg_min) / 2;
 			$this->londeg = ($this->londeg_max+$this->londeg_min) / 2;
+			$this->coor = array();
 		}
 	}
 
@@ -227,6 +235,28 @@ class geo_param {
 	}
 
 	/**
+	 *   Given decimal degrees latitude and longitude, convert to
+	 *   string
+	 */
+	function make_position( $lat, $lon )
+	{
+		$a = geo_param::make_minsec( $lat );
+		$b = geo_param::make_minsec( $lon );
+		$outa = intval(abs($a['deg'])) . "&deg;&nbsp;";
+		$outb = intval(abs($b['deg'])) . "&deg;&nbsp;";
+		if ($a['min'] != 0 or $b['min'] != 0
+		 or $a['sec'] != 0 or $b['sec'] != 0) {
+			$outa .= intval($a['min']) . "&prime;&nbsp;";
+			$outb .= intval($b['min']) . "&prime;&nbsp;";
+			if ($a['sec'] != 0 or $b['sec'] != 0) {
+				$outa .= $a['sec']. "&Prime;&nbsp;";
+				$outb .= $b['sec']. "&Prime;&nbsp;";
+			}
+		}
+		return $outa . $a['NS'] . " " . $outb . $b['EW'];
+	}
+
+	/**
 	 *  Get the additional attributes in an associative array
 	 */
 	function get_attr()
@@ -289,8 +319,14 @@ class geo_param {
 	{
 		$n = count($this->coor);
 
-		# FIXME: how to show a range...
-		if ($n == 4) {
+		if ($n == 0) {
+			# Range is special case
+			return $this->make_position( $this->latdeg_min, 
+						     $this->londeg_min )
+			     . " to "
+			     . $this->make_position( $this->latdeg_max,
+						     $this->londeg_max );
+		} elseif ($n == 4) {
 			return $this->coor[0].'&deg;&nbsp;'.
 			       $this->coor[1].' '.
 			       $this->coor[2].'&deg;&nbsp;'.
