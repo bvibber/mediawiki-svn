@@ -39,6 +39,7 @@ function fixFastSubpageLinksSub ( $text ) {
 	return $text ;
 	}
 function fixFastSubpageLinks ( $text ) {
+	return $text ; # SUBPAGES TURNED OFF
 	$a = spliti ( "<nowiki>" , " $text" ) ;
 	$text = substr ( fixFastSubpageLinksSub ( array_shift ( $a ) ) , 1 ) ;
 	foreach ( $a as $x ) {

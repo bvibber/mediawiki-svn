@@ -116,7 +116,7 @@ class WikiTitle {
 		if ( $target->hasNamespace ) $n = $target->namespace ;
 		if ( $n != "" ) $n .= ":" ;
 		$p = $target->mainTitle ;
-		if ( $p == "" ) $p = $this->mainTitle ;
+#		if ( $p == "" ) $p = $this->mainTitle ;  # SUBPAGES TURNED OFF
 		$ret = $n.$p ;
 		if ( $target->subpageTitle != "" ) $ret .= "/".$target->subpageTitle ;
 		return $ret ;
