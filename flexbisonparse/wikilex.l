@@ -128,7 +128,12 @@ int encodeTableRowInfo (char* input, int initleng)
 <inattributeapo>\'" "*  { BEGIN (attributes);     yylval.num = yyleng-1; debuglex2 ("ATTRAPO(%d) ", yyleng-1); return ATTRAPO; }
 <inattributeq>\"" "*    { BEGIN (attributes);     yylval.num = yyleng-1; debuglex2 ("ATTRQ(%d) ",   yyleng-1); return ATTRQ;   }
 
-[a-z]             { COMMONTOKENS; debuglex ("LINKTRAIL "); return LINKTRAIL; }
+http                { COMMONTOKENS; debuglex ("PROTOCOL "); return PROTOCOL ; }
+\:\/\/                { COMMONTOKENS; debuglex ("PROTOCOLSEP "); return PROTOCOLSEP ; }
+\[                  { COMMONTOKENS; debuglex ("OPENEXTERNALLINK "); return OPENEXTERNALLINK ; }
+\]                  { COMMONTOKENS; debuglex ("CLOSEEXTERNALLINK "); return CLOSEEXTERNALLINK ; }
+[a-z]               { COMMONTOKENS; debuglex ("LINKTRAIL "); return LINKTRAIL; }
+
 "\[\[:"             { COMMONTOKENS; debuglex ("OPENLINK "); return OPENLINK; }
 "\[\["              { COMMONTOKENS; debuglex ("OPENDBLSQBR "); return OPENDBLSQBR; }
 "\]\]"              { COMMONTOKENS; debuglex ("CLOSEDBLSQBR "); return CLOSEDBLSQBR; }

@@ -36,7 +36,7 @@ int i;
              textelement textelementnoboit textelementnobold textelementnoital textelementinlink
              textnoboit textnobold textnoital textinlink textorempty zeroormorenewlines
              zeroormorenewlinessave textintbl textelementintbl textintmpl textelementintmpl
-             template templatevar tablecaption linktrail linktrailtext
+             template templatevar tablecaption linktrail linktrailtext externallink
              TEXT EXTENSION
 %type <ad>   ATTRIBUTE
 %type <num>  HEADING ENDHEADING EQUALS ATTRAPO ATTRQ
@@ -46,8 +46,8 @@ int i;
         NEWLINE PRELINE LISTBULLET LISTNUMBERED LISTIDENT HEADING ENDHEADING APO5 APO3 APO2 TABLEBEGIN
         TABLECELL TABLEHEAD TABLEROW TABLEEND TABLECAPTION ATTRIBUTE EQUALS ATTRAPO ATTRQ
         OPENPENTUPLECURLY CLOSEPENTUPLECURLY OPENTEMPLATEVAR CLOSETEMPLATEVAR OPENTEMPLATE
-        CLOSETEMPLATE LINKTRAIL
-
+        CLOSETEMPLATE LINKTRAIL OPENEXTERNALLINK CLOSEEXTERNALLINK PROTOCOL PROTOCOLSEP
+	
 %start article
 
 %%
@@ -142,8 +142,11 @@ linktrailtext   : linktrailtext LINKTRAIL { $$ = $1 ; }
 
 linktrail       : CLOSEDBLSQBR linktrailtext { $$ = $2 } /* Don't know how to handle the trail; ignored so far */
                 | CLOSEDBLSQBR {}
+		
+externallink	: OPENEXTERNALLINK PROTOCOL PROTOCOLSEP textinlink CLOSEEXTERNALLINK { $$ = $4 }
 
-linketc         :   OPENDBLSQBR textinlink linktrail
+linketc         :   externallink { $$ = $1 ; }
+		|   OPENDBLSQBR textinlink linktrail
                         { debugf ("linketc#1 "); $$ = nodeAddChild (newNodeI (LinkEtc, 0), nodeAddChild (newNode (LinkTarget), $2)); }
                 |   OPENDBLSQBR textinlink PIPE linktrail
                         { debugf ("linketc#2 "); $$ = nodeAddChild (newNodeI (LinkEtc, 1), nodeAddChild (newNode (LinkTarget), $2)); }
@@ -177,6 +180,7 @@ linketc         :   OPENDBLSQBR textinlink linktrail
                         { debugf ("linketc#15 "); $$ = makeTextBlock2 (newNodeS (TextToken, "[[:"), $2, convertPipeSeriesToText ($3)); }
                 |   OPENLINK textinlink pipeseries PIPE
                         { debugf ("linketc#16 "); $$ = makeTextBlock3 (newNodeS (TextToken, "[[:"), $2, convertPipeSeriesToText ($3), newNodeS (TextToken, "|")); }
+
 
 pipeseries      :   PIPE textinlink               { debugf ("pipeseries#1 "); $$ = nodeAddChild (newNode (LinkOption), $2); }
                 |   pipeseries PIPE textinlink    { debugf ("pipeseries#2 "); $$ = nodeAddSibling ($1, nodeAddChild (newNode (LinkOption), $3)); }
@@ -405,6 +409,7 @@ textelement         :   TEXT                { debugf ("textelement#1 "); $$ = $1
                     |   italicsorbold       { debugf ("textelement#21 "); $$ = $1; }
                     |   template            { debugf ("textelement#22 "); $$ = $1; }
                     |   templatevar         { debugf ("textelement#23 "); $$ = $1; }
+
 
 textelementnoital   :   TEXT                { debugf ("textelementnoital#1 "); $$ = $1; }
                     |   EXTENSION           { debugf ("textelementnoital#2 "); $$ = $1; }

@@ -1,17 +1,2 @@
-== R-type ==
+This is a [http://www.bla.com] link.
 
-The [[video game|computer game]] '''R-type''' is <nowiki>cool & stuff</nowiki> because:
-
-* it's nice
-* it's fast
-* it has:
-** graphics
-** sound
-
-{| !! Version 1 || not bad
-|- !! Version 2 || much better
-|+ An informative table |}
-
-This is a || token in the middle of text.
-
-{{stub}}
