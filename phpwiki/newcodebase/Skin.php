@@ -751,7 +751,7 @@ class Skin {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
 		if ( 0 == $nt->getArticleID() ) {
-			return $this->makeBrokenLink( $title, $text ) . $trail;
+			return $this->makeBrokenLink( $title, $text, $query, $trail );
 		} else {
 			return $this->makeKnownLink( $title, $text, $query, $trail );
 		}
@@ -778,7 +778,7 @@ class Skin {
 
 		$inside = "";
 		if ( "" != $trail ) {
-			if ( preg_match( "/^([a-z]+)(.*)$$/sD", $trail, $m ) ) {
+			if ( preg_match( "/^([a-z]+)(.*)\$/sD", $trail, $m ) ) {
 				$inside = $m[1];
 				$trail = $m[2];
 			}
@@ -787,22 +787,32 @@ class Skin {
 		return $r;
 	}
 
-	function makeBrokenLink( $title, $text = "" )
+	function makeBrokenLink( $title, $text = "", $query = "", $trail = "" )
 	{
 		global $wgOut, $wgUser;
 
 		$nt = Title::newFromText( $title );
-		$link = $nt->getEditURL();
-		$u = wfEscapeHTML( $link );
+		$link = $nt->getPrefixedURL();
+
+		if ( "" == $query ) { $q = "action=edit"; }
+		else { $q = "action=edit&{$query}"; }
+		$u = wfLocalUrlE( $link, $q );
 
 		if ( "" == $text ) { $text = $nt->getPrefixedText(); }
 		$style = $this->getInternalLinkAttributes( $link, $text, true );
 
+		$inside = "";
+		if ( "" != $trail ) {
+			if ( preg_match( "/^([a-z]+)(.*)\$/sD", $trail, $m ) ) {
+				$inside = $m[1];
+				$trail = $m[2];
+			}
+		}
 		if ( $wgOut->isPrintable() ||
 		  ( 1 == $wgUser->getOption( "highlightbroken" ) ) ) {
-			$s = "<a href=\"{$u}\"{$style}>{$text}</a>";
+			$s = "<a href=\"{$u}\"{$style}>{$text}{$inside}</a>{$trail}";
 		} else {
-			$s = "{$text}<a href=\"{$u}\"{$style}>?</a>";
+			$s = "{$text}{$inside}<a href=\"{$u}\"{$style}>?</a>{$trail}";
 		}
 		return $s;
 	}
