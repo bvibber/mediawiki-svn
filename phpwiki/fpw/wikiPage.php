@@ -210,7 +210,7 @@ class WikiPage extends WikiTitle {
 	# This function converts wiki-style internal links like [[Main Page]] with the appropriate HTML code
 	# It has to handle namespaces, subpages, and alternate names (as in [[namespace:page/subpage name]])
 	function replaceInternalLinks ( $s ) {
-		global $THESCRIPT ;
+		global $THESCRIPT , $wikiInterwiki ;
 		global $user , $unlinkedLinks , $linkedLinks ;
 		if ( !isset ( $this->knownLinkedLinks ) ) $this->knownLinkedLinks = array () ;
 		$abc = " abcdefghijklmnopqrstuvwxyz" ;
@@ -218,6 +218,7 @@ class WikiPage extends WikiTitle {
 		$s = array_shift ( $a ) ;
 		$s = substr ( $s , 1 ) ;
 		$connection = getDBconnection () ;
+		$iws = array_keys ( $wikiInterwiki ) ;
 		foreach ( $a as $t ) {
 			$b = explode ( "]]" , $t , 2 ) ;
 			if ( count($b) < 2 ) { # No matching ]]
@@ -241,7 +242,18 @@ class WikiPage extends WikiTitle {
 				if ( in_array ( $topic->secureTitle , $this->knownLinkedLinks ) ) $doesItExist = true ;
 				else $doesItExist = $topic->doesTopicExist( $connection ) ;
 
-				if ( $doesItExist ) {
+				# Check for interwiki links
+				$iwl = "" ;
+				foreach ( $iws as $ii )
+					if ( strtolower ( $ii ) == strtolower ( $topic->namespace ) )
+						$iwl = $wikiInterwiki[$ii] ;
+				if ( $iwl != "" ) { # Interwiki Link
+					$tt = ucfirst ( str_replace ( " " , "_" , $topic->mainTitle ) ) ;
+					$iwl = str_replace ( "$1" , $tt , $iwl ) ;
+					$text = $topic->getNiceTitle ( $topic->mainTitle ) ;
+					$linkStyle = "style=\"color:#3333BB;text-decoration:none\"" ;
+					$s .= "<a $linkStyle href=\"$iwl\">$text</a>" ;
+				} else if ( $doesItExist ) {
 					$linkedLinks[$topic->secureTitle]++ ;
 					if ( $user->options["showHover"] == "yes" ) $hover = "title=\"$link\"" ;
 					$s .= "<a href=\"$THESCRIPT?title=".urlencode($link)."\" $hover>$text</a>" ;
@@ -301,7 +313,7 @@ class WikiPage extends WikiTitle {
 				}
 			}
 
-		$o = "A-Za-z0-9_./=?\-" ;
+		$o = "A-Za-z0-9_~./=?\-" ;
 		$s = eregi_replace ( "([^~\"])http://([$o]+)([^$o])" , "\\1<a href=\"http://\\2\" $linkStyle>".$image."http://\\2</a>\\3" , $s ) ;
 		$s = str_replace ( "~http://" , "http://" , $s ) ;
 
@@ -431,6 +443,35 @@ class WikiPage extends WikiTitle {
 		return $t.$s ;
 		}
 
+	function ISBN ( $s ) {
+		$a = split ( "ISBN " , " $s" ) ;
+		$s = substr ( array_shift ( $a ) , 1 ) ;
+		$valid = "0123456789-" ;
+		foreach ( $a as $x ) {
+			$isbn = "" ;
+			$blank = "" ;
+			while ( substr ( $x , 0 , 1 ) == " " ) {
+				$blank .= " " ;
+				$x = substr ( $x , 1 ) ;
+				}
+			while ( strstr ( $valid , substr ( $x , 0 , 1 ) ) != false ) {
+				$isbn .= substr ( $x , 0 , 1 ) ;
+				$x = substr ( $x , 1 ) ;
+				}
+			$num = str_replace ( "-" , "" , $isbn ) ;
+			$num = str_replace ( " " , "" , $num ) ;
+			if ( $num == "" ) {
+				$s .= "ISBN $blank$x" ;
+			} else {
+				$s .= "<a href=\"http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$num\">ISBN $isbn</a> " ;
+				$s .= "(<a href=\"http://www.amazon.com/exec/obidos/ISBN=$num\">Amazon</a>, " ;
+				$s .= "<a href=\"http://www.pricescan.com/books/bookDetail.asp?isbn=$num\">Pricescan</a>)" ;
+				$s .= $x ;
+				}
+			}
+		return $s ;
+		}
+
 	# This function does the actual parsing of the wiki parts of the article, for regions NOT marked with <nowiki>
 	function subParseContents ( $s ) {
 		global $user ;
@@ -531,6 +572,7 @@ class WikiPage extends WikiTitle {
 		$s = $this->parseImages ( $s ) ;
 		$s = $this->replaceExternalLinks ( $s ) ;
 		$s = $this->replaceInternalLinks ( $s ) ;
+		$s = $this->ISBN ( $s ) ;
 		if ( $user->options["numberHeadings"] == "yes" ) $s = $this->autoNumberHeadings ( $s ) ;
 		return $s ;
 		}
@@ -568,7 +610,7 @@ class WikiPage extends WikiTitle {
 	# This generates the header with title, user name and functions, wikipedia logo, search box etc.
 	function getHeader () {
 		global $THESCRIPT , $wikiMainPageTitle , $wikiArticleSubtitle , $wikiPrintable , $wikiWatch ;
-		global $user , $action , $wikiEditHelp , $wikiNoWatch , $wikiLogIn , $wikiLogOut ;
+		global $user , $action , $wikiEditHelp , $wikiNoWatch , $wikiLogIn , $wikiLogOut , $wikiSearch ;
 		global $wikiHelp , $wikiHelpLink , $wikiPreferences ;
 		$t = $this->getNiceTitle ( $this->title ) ;
 		if ( substr_count ( $t , ":" ) > 0 ) $t = ucfirst ( $t ) ;
@@ -603,7 +645,7 @@ class WikiPage extends WikiTitle {
 		if ( $user->isLoggedIn ) $ret .= "<a href=\"$THESCRIPT?title=special:userLogout\">$wikiLogOut</a> | <a href=\"$THESCRIPT?title=special:editUserSettings\">$wikiPreferences</a>" ;
 		else $ret .= "<a href=\"$THESCRIPT?title=special:userLogin\">$wikiLogIn</a>" ;
 		$ret .= " | <a href=\"$THESCRIPT?title=wikipedia:$wikiHelpLink\">$wikiHelp</a>" ;
-		$ret .= "<FORM>Search: <INPUT TYPE=text NAME=search SIZE=20></FORM>" ;
+		$ret .= "<FORM><INPUT TYPE=text NAME=search SIZE=16><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
 		$ret .= "</td>\n<td rowspan=2 width=1><a href=\"$THESCRIPT?\"><img border=0 src=\"wiki.png\"></a></td></tr>\n" ;
 		$ret .= "<tr><td valign=bottom>".$this->getLinkBar()."</td></tr></table>" ;
 		return $ret ; 
@@ -674,7 +716,7 @@ class WikiPage extends WikiTitle {
 
 	# This generates the footer with link bar, search box, etc.
 	function getFooter () {
-		global $THESCRIPT ;
+		global $THESCRIPT , $wikiSearch ;
 		$ret = $this->getLinkBar() ;
 		global $HTTP_USER_AGENT ;
 		if ( stristr ( $HTTP_USER_AGENT , "MSIE" ) ) $border = "border=1 frame=above rules=none" ; 
@@ -683,22 +725,22 @@ class WikiPage extends WikiTitle {
 		if ( !$this->isSpecialPage ) $ret .= "<a href=\"$THESCRIPT?title=$this->secureTitle&diff=yes\">(diff)</a> " ;
 		$a = $this->getOtherNamespaces () ;
 		if ( count ( $a ) > 0 ) $ret .= "Other namespaces : ".implode ( " | " , $a ) ;
-		$ret .= "<FORM>Search: <INPUT TYPE=text NAME=search SIZE=20></FORM>" ;
+		$ret .= "<FORM><INPUT TYPE=text NAME=search SIZE=16><INPUT TYPE=submit value=\"$wikiSearch\"></FORM>" ;
 		return $ret ; 
 		}
 
 	# This generates header, diff (if wanted), article body (with QuickBar), and footer
 	# The whole page (for normal pages) is generated here
 	function renderPage ( $doPrint = false ) {
-		global $pageTitle , $diff , $THESCRIPT ;
+		global $pageTitle , $diff , $THESCRIPT , $wikiArticleSource , $wikiCurrentServer ;
 		$pageTitle = $this->title ;
 		if ( isset ( $diff ) ) $middle = $this->doDiff().$this->contents ;
 		else $middle = $this->contents ;
 		$middle = $this->getMiddle($this->parseContents($middle)) ;
 		if ( $doPrint ) {
 			$header = "<h1>".$this->getNiceTitle($pageTitle)."</h1>\n" ;
-			$link = "http://meta.wikipedia.com/wiki.phtml?title=$this->secureTitle" ; # CHANGE LOCAL SERVER HERE!
-			$footer = "<hr>This article is from <b>Wikipedia</b> (<a href=\"http://wikipedia.com\">http://wikipedia.com</a>), " ;
+			$link = str_replace ( "$1" , $this->secureTitle , $wikiArticleSource ) ;
+			$footer = "<hr>This article is from <b>Wikipedia</b> (<a href=\"$wikiCurrentServer\">$wikiCurrentServer</a>), " ;
 			$footer .= "the free online encyclopedia. You can find this article at <a href=\"$link\">$link</a>" ;
 			$ret = $header.$middle ;
 			$ret = eregi_replace ( "<a[^>]*>([^<]*)</a>" , "<i>\\1</i>" , $ret ) ;

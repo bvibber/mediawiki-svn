@@ -211,7 +211,7 @@ class WikiUser {
 	# Toggles the watch on an article for this user
 	function doWatch ( $t ) {
 		$a = getMySQL ( "user" , "user_watch" , "user_id=$this->id" ) ;
-		$b = explode ( "'" , $a ) ;
+		$b = explode ( "\n" , $a ) ;
 		return in_array ( $t , $b ) ;
 		}
 	}
