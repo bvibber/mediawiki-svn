@@ -88,6 +88,30 @@ function wfUrlencode ( $s )
 	return $ulink;
 }
 
+function wfUtf8Sequence($codepoint) {
+	if($codepoint <     0x80) return chr($codepoint);
+	if($codepoint <    0x800) return chr($codepoint >>  6 & 0x3f | 0xc0) .
+                                     chr($codepoint       & 0x3f | 0x80);
+    if($codepoint <  0x10000) return chr($codepoint >> 12 & 0x0f | 0xe0) .
+                                     chr($codepoint >>  6 & 0x3f | 0x80) .
+                                     chr($codepoint       & 0x3f | 0x80);
+	if($codepoint < 0x100000) return chr($codepoint >> 18 & 0x07 | 0xf0) . # Double-check this
+	                                 chr($codepoint >> 12 & 0x3f | 0x80) .
+                                     chr($codepoint >>  6 & 0x3f | 0x80) .
+                                     chr($codepoint       & 0x3f | 0x80);
+	# Doesn't yet handle outside the BMP
+	return "&#$codepoint;";
+}
+
+function wfMungeToUtf($string) {
+	global $wgInputEncoding; # This is debatable
+	$string = iconv($wgInputEncoding, "UTF-8", $string);
+	$string = preg_replace ( '/&#([0-9]+);/e', 'wfUtf8Sequence($1)', $string );
+	$string = preg_replace ( '/&#x([0-9a-f]+);/ie', 'wfUtf8Sequence(0x$1)', $string );
+	# Should also do named entities here
+	return $string;
+}
+
 function wfDebug( $text, $logonly = false )
 {
 	global $wgOut, $wgDebugLogFile;
@@ -304,7 +328,7 @@ function wfRecordUpload( $name, $oldver, $size, $desc )
 			  wfStrencode( $name ) . "','" . wfStrencode( $desc ) . "','" .
 			  wfStrencode( $desc ) . "','" . $wgUser->getID() . "','" .
 			  wfStrencode( $wgUser->getName() ) . "','" . date( "YmdHis" ) .
-			  "',0,0,'','" . Title::indexTitle( Namespace::getImage(), $name ) .
+			  "',0,0,'','" . wfStrencode( Title::indexTitle( Namespace::getImage(), $name ) ) .
 			  "',0,0)";
 			wfQuery( $sql, $fname );
 		}
