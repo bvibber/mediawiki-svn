@@ -25,7 +25,7 @@ class SearchUpdate {
 		
 		if( $this->mText == false ) {
 			# Just update the title
-			$sql = "UPDATE searchindex SET si_title='" .
+			$sql = "UPDATE LOW_PRIORITY searchindex SET si_title='" .
 			  wfStrencode( Title::indexTitle( $this->mNamespace, $this->mTitle ) ) .
 			  "' WHERE si_page={$this->mId}";
 			wfQuery( $sql, "SearchUpdate::doUpdate" );
@@ -68,7 +68,7 @@ class SearchUpdate {
 		# Strip wiki '' and '''
 		$text = preg_replace( "/''[']*/", " ", $text );
 
-		$sql = "REPLACE INTO searchindex (si_page,si_title,si_text) VALUES ({$this->mId},'" .
+		$sql = "REPLACE DELAYED INTO searchindex (si_page,si_title,si_text) VALUES ({$this->mId},'" .
 		  wfStrencode( Title::indexTitle( $this->mNamespace, $this->mTitle ) ) . "','" .
 		  wfStrencode( $text ) . "')";
 		wfQuery( $sql, "SearchUpdate::doUpdate" );
