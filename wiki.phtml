@@ -41,7 +41,10 @@ require ( "./upload_functions.php" ) ;    # Upload page
 #############################
 # MAIN PROGRAM
 #############################
-	global $title , $action , $doSearch , $xtitle ;
+	global $title , $action , $doSearch , $xtitle , $special_pages , $dummyArticle ;
+
+	$dummyArticle = "Describe the new page here.\n" ;
+	$special_pages = array ( "special_pages" , "demanded_topics" , "popular_topics" , "loneley_topics" , "revisions" , "statistics" , "restrictions" , "prefs" , "upload" , "edituserrights" , "empty_topics" ) ;
 
 	if ( $title == "" ) $title="HomePage" ;
 	if ( $action == "" ) $action = "view" ;
@@ -66,7 +69,10 @@ require ( "./upload_functions.php" ) ;    # Upload page
 	if ( $ltitle == "recentchanges" ) $ret = showRecentChanges() ;
 	else if ( $dosearch == 1 ) $ret = doSearch () ;
 	else if ( $action == "special_pages" ) $ret = special_pages () ;
-	else if ( $action == "demanded_topics" ) $ret = demanded_topics () ;
+	else if ( $action == "demanded_topics" ) $ret = demanded_topics ( "demanded" ) ;
+	else if ( $action == "central_topics" ) $ret = demanded_topics ( "central" ) ;
+	else if ( $action == "lonely_topics" ) $ret = demanded_topics ( "lonely" ) ;
+	else if ( $action == "empty_topics" ) $ret = empty_topics () ;
 	else if ( $action == "statistics" ) $ret = statistics() ;
 	else if ( $action == "restrictions" ) $ret = restrictions() ;
 	else if ( $action == "edituserrights" ) $ret = editUserRights() ;
