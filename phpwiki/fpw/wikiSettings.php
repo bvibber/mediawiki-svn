@@ -20,6 +20,16 @@ $minSrchSize = 4;   # this is smallest word size that is indexed by the MySQL fu
 # (can be changed by recompiling MySQL and rebuilding the indexes.)
 $wikiDBconnection = "";  # global variable to hold the current DB
 			 # connection; should be empty initially.
+
+# Namespace backgrounds
+$wikiNamespaceBackground = array () ;
+$wikiNamespaceBackground[$wikiTalk] = "#eeFFFF" ;
+$wikiNamespaceBackground["user_talk"] = $wikiNamespaceBackground["talk"] ;
+$wikiNamespaceBackground["wikipedia_talk"] = $wikiNamespaceBackground["talk"] ;
+$wikiNamespaceBackground[$wikiUser] = "#FFeeee" ;
+$wikiNamespaceBackground[$wikiWikipedia] = "#eeFFee" ;
+$wikiNamespaceBackground["log"] = "#FFFFcc" ;
+$wikiNamespaceBackground["special"] = "#eeeeee" ;
  
 # Cache system enabled by default
 $useCachedPages = true ;
