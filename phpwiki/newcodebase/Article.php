@@ -27,7 +27,6 @@ class Article {
 
 		$wgTitle = Title::newFromDBkey( $n );
 		$wgTitle->resetArticleID( $newid );
-		wfFreeResult( $res );
 
 		return $a;
 	}
@@ -374,7 +373,7 @@ class Article {
 			# Article exists. Check for edit conflict.
 
 			$this->clear(); # Force reload of dates, etc.
-			if ( $this->getTimestamp() > $wpEdittime ) { $isConflict = true; }
+			if ( $this->getTimestamp() != $wpEdittime ) { $isConflict = true; }
 			$u = $wgUser->getID();
 
 			# Supress edit conflict with self
@@ -1190,6 +1189,56 @@ $wgLang->recodeForEdit( $wpTextbox1 ) .
 		$wgOut->addHTML( wfMsg( "imagereverted" ) );
 		$wgOut->returnToMain( false );
 	}
+
+	function rollback()
+	{
+		global $wgUser, $wgTitle, $wgLang, $wgOut;
+
+		if ( ! $wgUser->isSysop() ) {
+			$wgOut->sysopRequired();
+			return;
+		}
+		
+		# Replace all this user's current edits with the next one down
+		$tt = wfStrencode( $wgTitle->getDBKey() );
+		$n = $wgTitle->getNamespace();
+		
+		# Get the last editor
+		$sql = "SELECT cur_id,cur_user,cur_user_text FROM cur WHERE cur_title='{$tt}' AND cur_namespace={$n}";
+		$res = wfQuery( $sql );
+		if( ($x = wfNumRows( $res )) != 1 ) {
+			# Something wrong
+			$wgOut->addHTML( wfMsg( "notanarticle" ) );
+			return;
+		}
+		$s = wfFetchObject( $res );
+		$ut = wfStrencode( $s->cur_user_text );
+		$uid = $s->cur_user;
+		$pid = $s->cur_id;
+		
+		# Get the last edit not by this guy
+		$sql = "SELECT old_text,old_user,old_user_text
+		FROM old WHERE old_namespace={$n} AND old_title='{$tt}'
+		AND (old_user <> {$uid} OR old_user_text <> '{$ut}')
+		ORDER BY old_timestamp DESC LIMIT 1";
+		$res = wfQuery( $sql );
+		if( wfNumRows( $res ) != 1 ) {
+			# Something wrong
+			$wgOut->addHTML( wfMsg( "cantrollback" ) );
+			return;
+		}
+		$s = wfFetchObject( $res );
+	
+		# Save it!
+		$newcomment = str_replace( "$1", $s->old_user_text, wfMsg( "revertpage" ) );
+		$wgOut->setPagetitle( wfMsg( "actioncomplete" ) );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
+		$wgOut->addHTML( "<h2>" . $newcomment . "</h2>\n<hr>\n" );
+		$this->updateArticle( $s->old_text, $newcomment, 1, $wgTitle->userIsWatching() );
+
+		$wgOut->returnToMain( false );
+	}
+	
 
 	# Do standard deferred updates after page view
 

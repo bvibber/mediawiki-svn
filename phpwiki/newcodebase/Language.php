@@ -846,6 +846,9 @@ All times shown are server time (UTC).
 "reverted"		=> "Reverted to earlier revision",
 "deletecomment"	=> "Reason for deletion",
 "imagereverted" => "Revert to earlier version was successful.",
+"rollback"		=> "Roll back edits",
+"cantrollback"	=> "Can't revert edit; last contributor is only author of this article.",
+"revertpage"	=> "Reverted to last edit by $1",
 
 # Undelete
 "undelete" => "Restore deleted page",
