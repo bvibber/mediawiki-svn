@@ -46,7 +46,7 @@ class SiteMatrixPage extends SpecialPage
 			# Find suffix
 			foreach ( $sites as $site ) {
 				if ( preg_match( "/(.*)$site\$/", $db, $m ) ) {
-					$lang = str_replace( '_', '-', $m[1] );
+					$lang =  $m[1];
 					if ( empty( $xLanglist[$lang] ) && $site == 'wiki' ) {
 						$specials[] = $lang;
 					} else {
@@ -69,8 +69,9 @@ class SiteMatrixPage extends SpecialPage
 		# Bulk of table
 		foreach ( $langlist as $lang ) {
 			$s .= "<tr>";
+			$langhost = str_replace( '_', '-', $lang );
 			foreach ( $names as $site => $name ) {
-				$url = "http://$lang." . $hosts[$site] . "/";
+				$url = "http://$langhost." . $hosts[$site] . "/";
 				if ( empty( $matrix[$site][$lang] ) ) {
 					# Non-existent wiki
 					$s .= "<td><a href=\"$url\" class=\"new\">$lang</a></td>";
@@ -86,7 +87,8 @@ class SiteMatrixPage extends SpecialPage
 		# Specials
 		$s .= "<ul>";
 		foreach ( $specials as $lang ) {
-			$s .= "<li><a href=\"http://$lang.wikipedia.org/\">$lang</a></li>\n";
+			$langhost = str_replace( '_', '-', $lang );
+			$s .= "<li><a href=\"http://$langhost.wikipedia.org/\">$lang</a></li>\n";
 		}
 		$s .= "</ul>";
 		$wgOut->addHTML( $s );
