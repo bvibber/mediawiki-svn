@@ -106,6 +106,11 @@ And for TeX support:
   RewriteMap ampescape int:ampescape
   RewriteRule ^/wiki/(.*)$ /wiki.phtml?title=${ampescape:$1} [L]
 
+  It is *seriously* recommended that you configure the webserver
+  to disable running of PHP scripts except in the script directories
+  (the 'php_admin_flag engine off/on' directives above) to prevent
+  the uploading and running of malicious scripts.
+
 8. Optionally, install APC, following standard instructions for
   installing as a Zend extension.
 
@@ -117,7 +122,7 @@ And for TeX support:
   You'll need to compile the 'texvc' helper script; enter the 'math'
   subdirectory of the source tree and run 'make'.
 
-  If you don't want tmbeddex TeX support, disable it by setting
+  If you don't want embedded TeX support, disable it by setting
 
    $wgUseTex = false;
 
@@ -127,3 +132,15 @@ And for TeX support:
   are writable by the apache process and web-accessible. Set the pathnames
   and URLs for these appropriately in LocalSettings.php.
 
+
+11. Don't forget this is pre-release software under development!
+  Chances are good there's a crucial step that hasn't made it
+  into the documentation. You should probably sign up for the
+  Wikipedia developers' mailing list; you can ask for help (please
+  provide enough information to work with, and preferably be aware
+  of what you're doing!) and keep track of major changes to the
+  software, including performance improvements and security patches.
+
+    http://www.wikipedia.org/mailman/listinfo/wikitech-l
+
+.
