@@ -98,6 +98,7 @@ public class TelnetIOStream {
 					break;
 				}
 				default: {							/*       Anything else: return	*/
+					if (i == 0) continue;
 					TelnetReader.logMsg("Returning");
 					return i;
 				}

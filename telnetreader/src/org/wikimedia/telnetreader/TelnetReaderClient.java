@@ -23,8 +23,12 @@
  */
 package org.wikimedia.telnetreader;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Kate Turner
@@ -34,7 +38,11 @@ public class TelnetReaderClient extends Thread {
 	private Socket client;
 	private TelnetIOStream strm;
 	private AnsiTerminal term;
-	
+	private boolean sourceView;
+	private String articleText;
+	private String langcode;
+	private List langcodes;
+
 	private int project;
 	private static final int
 		 P_WIKIPEDIA = 0
@@ -43,8 +51,12 @@ public class TelnetReaderClient extends Thread {
 		,P_WIKIBOOKS = 3
 		;
 	
+	private static final String key =
+		"q - quit; g - go to article; \\ - toggle source view";
+	
 	public TelnetReaderClient(Socket newclient) {
 		this.client = newclient;
+		sourceView = false;
 	}
 	
 	public void run() {
@@ -76,8 +88,16 @@ public class TelnetReaderClient extends Thread {
 				project = P_WIKIQUOTE;
 			else if (choice == 3)
 				project = P_WIKIBOOKS;
-			term.setTopstatus("Wikimedia TELNET Reader: " + nameForProject(project));
 			term.redraw();
+			do {
+				langcode = term.readString(
+						"Enter the language code you would like to read:");
+			} while (!isValidLangcode(langcode));
+			term.setTopstatus("Wikimedia TELNET Reader: " + nameForProject(project)
+					+ " - " + langcode + " - No article selected");
+			term.setBotstatus(key);
+			term.redraw();
+			goToArticle();
 			processInputForever();
 		} catch (IOException e) {
 			TelnetReader.logMsg("I/O error from client " + client.getRemoteSocketAddress().toString()
@@ -104,7 +124,76 @@ public class TelnetReaderClient extends Thread {
 	
 	void processInputForever() throws IOException {
 		int i;
-		while ((i = strm.read()) != -1)
-			;
+		while ((i = term.readKey()) != -1) {
+			TelnetReader.logMsg("Read key: " + i);
+			switch (i) {
+			case 'g':
+				goToArticle();
+				break;
+			case 'q':
+				return;
+			case '\\':
+				toggleSource();
+				break;
+			case AnsiTerminal.KEY_DOWN:
+				term.scroll(1);
+				break;
+			case AnsiTerminal.KEY_UP:
+				term.scroll(-1);
+				break;
+			}
+		}
+	}
+	protected void goToArticle() throws IOException {
+		String title = term.readString("Which article would you like to read?");
+		String text = getArticleText(title);
+		if (text == null) {
+			term.alert("Sorry, that article doesn't exist");
+			return;
+		}
+		this.articleText = text;
+		redrawDisplay();
+	}
+	
+	protected void toggleSource() throws IOException {
+		sourceView = !sourceView;
+		redrawDisplay();
+	}
+	protected void redrawDisplay() throws IOException {
+		term.setPagerText(articleText);
+		term.redraw();
+	}
+	public boolean isValidLangcode(String code) {
+		if (langcodes == null)
+			readLangCodes();
+		return langcodes.contains(code);
+	}
+	public void readLangCodes() {
+		langcodes = new ArrayList();
+		try {
+			File            langlist = new File("/home/wikipedia/common/langlist");
+			FileReader      in       = new FileReader(langlist);
+			String          s        = "";
+			
+			int i;
+			while ((i = in.read()) != -1) {
+				char c = (char) i;
+				if (c == '\n') {
+					langcodes.add(s);
+					s = "";
+				} else
+					s = s + c;
+			}
+			in.close();
+		} catch (Exception e) {}
+	}
+	
+	public String getArticleText(String title) {
+		String what = "wiki";
+		if (project == P_WIKIPEDIA) what = "wiki";
+		else if (project == P_WIKIBOOKS) what = "wikibooks";
+		else if (project == P_WIKTIONARY) what = "wiktionary";
+		else if (project == P_WIKIQUOTE) what = "wikiquote";
+		return TelnetReader.getArticleText(langcode + what, 0, title);
 	}
 }
