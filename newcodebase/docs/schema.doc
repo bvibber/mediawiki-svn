@@ -83,6 +83,22 @@ old     (Historical versions articles. Most fields
     This last is currently unused.
 
 
+
+archive	(Temporary storage of deleted articles which may be restored.
+		Fields correspond to those of "cur" and "old")
+  ar_namespace
+  ar_title
+  ar_text
+  ar_comment
+  ar_user
+  ar_user_text
+  ar_timestamp
+  ar_minor_edit
+  ar_flags
+    This last is currently unused.
+
+
+
 links   (Internal links to existing articles)
 
   l_from
