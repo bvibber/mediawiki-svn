@@ -560,7 +560,7 @@ $wpTextbox2
 				$text = $q[1];
 			}
 		}
-		return $s;
+		return trim( $s );
 	}
 
 	/* private */ function pstPass2( $text )
