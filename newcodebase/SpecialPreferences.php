@@ -126,8 +126,8 @@ function wfSpecialPreferences()
 	$uname = $wgUser->getName();
 	$uid = $wgUser->getID();
 
-	$wgOut->addHTML( "<p>You are logged in as \"$uname\".\n" );
-	$wgOut->addHTML( "Your internal ID number is $uid.\n" );
+	$wgOut->addHTML( "<p>" . str_replace( array("$1","$2"), array($uname,$uid),
+		wfMsg( "prefslogintext" ) );
 
 	$qbs = $wgLang->getQuickbarSettings();
 	$skins = $wgLang->getSkinNames();
