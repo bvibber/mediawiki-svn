@@ -48,7 +48,7 @@ The following versions have been reported to work together:
 
 Mysql 4.0.0 alpha causes problems and should be avoided for now.
 
-Note that PHP can either use its own built in MySQL libraries, or the
+Note that PHP can either use its own built-in MySQL libraries, or the
 MySQL libraries from the MySQL distribution. If you choose the latter
 option, and you upgrade MySQL later, then you also need to recompile PHP.
 
@@ -75,14 +75,18 @@ in order to create the tables needed.
 
 The MySQL server needs to use the same timezone as PHP, or else you
 will later get bogus edit conflicts. Do:
-  $ mysql -u wikiuser
-  mysql> select now();
+  $ mysql -u wikiuser -e "select now();"
 If the output is different from your current local time, you should
 start mysqld with the --timezone command line option, or set your TZ
 environment variable.
 
+In your php.ini file, you need to have the variable register_globals
+set to On. Newer PHP versions set this variable to Off by default.
+If you want, you can set error_reporting to E_ALL in order to get all
+PHP warnings, which may be useful for debugging.
+
 You then need to edit the file wikiLocalSettings.php. Add lines like
-this:
+these:
 
 $wikiThisDBserver = "127.0.0.1";  # the IP address of the computer running mysqld
 $wikiSQLServer = "wikidb";        # the mysql database used for Wikipedia
