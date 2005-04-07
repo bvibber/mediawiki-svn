@@ -58,6 +58,9 @@ $browser->cookie_jar( {} );
 $fileurl=$input->val("File","URL");
 $type=$input->val("Process","Type");
 $script=$input->val("Process","Script");
+$server=$input->val("Process","Server");
+$path=$input->val("Process","Path");
+
 
 if($type eq "Edit file") {
 	$filename=substr($fileurl,rindex($fileurl,"/")+1);	
@@ -102,7 +105,8 @@ if($type eq "Edit file") {
 	# Do we need to convert UTF-8 into ISO 8859-1?
 	if($cfg->val("Settings","Transcode UTF-8") eq "true") {
 		$transcode=1;
-	}	
+	}
+	$firefox=$cfg->val("Settings","Firefox");	
 	$ct=$response->header('Content-Type');
 	$editpage=$response->content;
 	$editpage=~m|<input type='hidden' value="(.*?)" name="wpEditToken" />|i;
@@ -154,9 +158,11 @@ sub makegui {
 	$hbox2 = Gtk2::HBox->new;
 	$savebutton =  Gtk2::Button->new("Save");
 	$savecontbutton =  Gtk2::Button->new("Save and continue");
+	$previewbutton =  Gtk2::Button->new("Preview");
 	$cancelbutton = Gtk2::Button->new("Cancel");
 	$hbox2->pack_start_defaults($savebutton);
 	$hbox2->pack_start_defaults($savecontbutton);
+	$hbox2->pack_start_defaults($previewbutton);
 	$hbox2->pack_start_defaults($cancelbutton);
 	$vbox->pack_start_defaults($hbox);
 	$vbox->pack_start_defaults($hbox2);
@@ -167,6 +173,7 @@ sub makegui {
 	$window->signal_connect (delete_event => sub {Gtk2->main_quit});
 	$savebutton->signal_connect (clicked => \&save);
 	$savecontbutton->signal_connect ( clicked => \&savecont);
+	$previewbutton->signal_connect ( clicked => \&preview);	
 	$cancelbutton->signal_connect (clicked => \&cancel);
 	
 	# Add vbox to window
@@ -181,6 +188,12 @@ sub savecont {
 	save("continue");
 	
 }
+
+sub preview {
+	$preview=1;
+	save("continue");
+}
+
 sub save {
 
 	my $cont=shift;
@@ -195,7 +208,7 @@ sub save {
 	if($is_utf8) {
 		$summary=Encode::encode('utf8',$summary);	
 	}
-	if($type eq "Edit file") {
+	if($type eq "Edit file") {		
 		$response=$browser->post($upload_url,
 		@ns_headers,Content_Type=>'form-data',Content=>
 		[
@@ -204,7 +217,7 @@ sub save {
 		wpUploadAffirm=>"1",
 		wpUpload=>"Upload file",
 		wpIgnoreWarning=>"1"
-		]);
+		]);		
 	} elsif($type eq "Edit text") {	
 		open(TEXT,"<$tempdir/".$filename);
 		$/=undef;
@@ -215,13 +228,34 @@ sub save {
 		if($is_utf8 && $transcode) {
 			Encode::from_to($text,'iso-8859-1','utf8');		
 		}
-		$response=$browser->post($edit_url,@ns_headers,Content=>
-		[
-		wpTextbox1=>$text,
-		wpSummary=>$summary,
-		wpEdittime=>$time,
-		wpEditToken=>$token
-		]);
+		if($preview) {
+			$response=$browser->post($edit_url,@ns_headers,Content=>
+			[
+			wpTextbox1=>$text,
+			wpSummary=>$summary,
+			wpEdittime=>$time,
+			wpEditToken=>$token,
+			wpPreview=>"true",
+			]);		
+			open(PREVIEW,">$tempdir/preview.htm");
+			$preview=$response->content;
+			# Replace relative URLs with absolute ones
+			$preview=~s|$path|$server$path|gi;
+			print PREVIEW $preview;
+			if($firefox) {
+				print "$firefox\n";
+				system(qq|$firefox -remote "openURL(file://$tempdir/preview.htm)"|);
+			}
+			$preview=0;
+		} else {		
+			$response=$browser->post($edit_url,@ns_headers,Content=>
+			[
+			wpTextbox1=>$text,
+			wpSummary=>$summary,
+			wpEdittime=>$time,
+			wpEditToken=>$token,
+			]);		
+		}
 	} elsif($type eq "Diff") {
 		die "Diffs not yet supported.\n";
 	} else {
