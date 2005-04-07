@@ -1,2 +1,0 @@
-#! /bin/sh
-java -Xmx200m -classpath je.jar:$CLASSPATH -Djdbc.drivers=com.mysql.jdbc.Driver org.wikimedia.lsearch.MWSearch -rebuild -mwversion old $*
