@@ -530,15 +530,17 @@ class LuceneSearch extends SpecialPage
 	}
 
 	function showShortDialog($term) {
-		global $wgScript;
+		global $wgScript, $wgLuceneDisableSuggestions;
 
 		$action = "$wgScript";
-                $searchButton = '<input type="submit" name="fulltext" value="' .
-                  htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
-                $searchField = "<div><input type='text' id='lsearchbox' onkeyup=\"resultType()\" "
+		$searchButton = '<input type="submit" name="fulltext" value="' .
+			htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
+		$onkeyup = $wgLuceneDisableSuggestions ? '' :
+			' onkeyup="resultType()" autocomplete="off" ';
+		$searchField = "<div><input type='text' id='lsearchbox' $onkeyup "
 			. "style='margin-left: 25%; width: 50%; ' value=\""
-                        . htmlspecialchars($term) ."\""
-			. " autocomplete=\"off\" name=\"search\" />\n"
+			. htmlspecialchars($term) ."\""
+			. " name=\"search\" />\n"
 			. "<span id='loadStatus'></span>"
 			. $searchButton
 			. "<div id='results'></div></div>";
