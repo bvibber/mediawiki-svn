@@ -345,13 +345,13 @@ public class SearchClientReader extends Thread {
     }
     
     void sendOutputLine(String out) throws IOException {
-        System.out.println(">>>" + out);
+        //System.out.println(">>>" + out);
         ostrm.write(out + "\n");
     	}
     
     String readInputLine() throws IOException {
     		String in = istrm.readLine();
-    		System.out.println("<<<" + in);
+    		//System.out.println("<<<" + in);
     		return in;
     }
 }

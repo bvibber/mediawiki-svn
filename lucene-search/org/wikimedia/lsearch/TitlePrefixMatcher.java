@@ -28,6 +28,7 @@ import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+/*
 import com.sleepycat.bind.EntryBinding;
 import com.sleepycat.bind.serial.SerialBinding;
 import com.sleepycat.bind.serial.StoredClassCatalog;
@@ -42,20 +43,23 @@ import com.sleepycat.je.EnvironmentConfig;
 import com.sleepycat.je.LockMode;
 import com.sleepycat.je.OperationStatus;
 import com.sleepycat.je.Transaction;
+*/
 
 /**
  * @author Kate Turner
  *
  */
 public class TitlePrefixMatcher {
+/*
 	protected Environment			dbenv;
 	public Database				db, miscdb;
 	protected StoredClassCatalog	catalog;
 	EntryBinding keybind, valuebind;
 	private Configuration config;
 	private DatabaseConnection dbconn;
-
-	public TitlePrefixMatcher(String dbname) throws SQLException {
+*/
+	public TitlePrefixMatcher(String dbname) /*throws SQLException*/ {
+	/*
 		config = Configuration.open();
 		
 		try {
@@ -94,6 +98,7 @@ public class TitlePrefixMatcher {
 			System.exit(1);
 		}
 		System.out.println(dbname + ": opened title database okay");
+		*/
 	}
 	
 	//public List<Title> getMatches(String prefix) {
@@ -109,6 +114,7 @@ public class TitlePrefixMatcher {
 		}
 		//List<Title> l = new ArrayList<Title>();
 		List l = new ArrayList();
+		/*
 		int i = 0;
 		try {
 			Cursor c = db.openCursor(null, null);
@@ -133,6 +139,7 @@ public class TitlePrefixMatcher {
 			e.printStackTrace();
 			return l;
 		}
+		*/
 		return l;
 	}
 	
@@ -148,7 +155,8 @@ public class TitlePrefixMatcher {
 		return res;
 	}
 	
-	public void addArticle(Article article) throws DatabaseException {
+	public void addArticle(Article article) /*throws DatabaseException*/ {
+	/*
 		Transaction txn = dbenv.beginTransaction(null, null);
 		String stripped = TitlePrefixMatcher.stripTitle(article.getTitle());
 		Title t = new Title(Integer.valueOf(article.getNamespace()).intValue(), article.getTitle());
@@ -160,8 +168,11 @@ public class TitlePrefixMatcher {
 		tkeybind.objectToEntry(stripped, dbkey);
 		db.put(txn, dbkey, data);
 		txn.commit();
+	*/
 	}
 	protected void finalize() {
+	/*
 		dbconn.close();
+	*/
 	}
 }

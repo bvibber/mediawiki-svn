@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Iterator;
 
-import com.sleepycat.je.DatabaseException;
+//import com.sleepycat.je.DatabaseException;
 
 /**
  * @author Kate Turner
@@ -104,9 +104,9 @@ public class MWSearch {
 				return;
 			} catch (IOException e) {
 				System.out.println("Error: IO error: " + e.getMessage());
-			} catch (DatabaseException e) {
+			}/* catch (DatabaseException e) {
 				System.out.println("Error: database error: " + e.getMessage());
-			}
+			}*/
 			double totaltime = (System.currentTimeMillis() - now) / 1000;
 			//System.out.printf("%s: indexed %d articles in %f seconds (%.2f articles/sec)\n",
 			//		dbname, numArticles, totaltime, numArticles/totaltime);

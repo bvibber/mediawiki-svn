@@ -5,6 +5,13 @@
 # recompile the Cleaner class in je.jar with a bit removed.
 #
 
+#GCJ=gcj
+#GCJ=gcj-3.4
+GCJ=gcj-4.0
+
+#OPTS=
+OPTS=-O2
+
 .PHONY : all clean
 
 all : MWSearch MWDaemon
@@ -13,13 +20,13 @@ clean :
 	rm -f MWDaemon MWSearch *.o
 
 lucene.o : lucene-1.4.3.jar
-	gcj -c -o lucene.o lucene-1.4.3.jar 
+	$(GCJ) -c $(OPTS) -o lucene.o lucene-1.4.3.jar 
 
-je.o : je.jar
-	gcj -c -o je.o je.jar
+#je.o : je.jar
+#	$(GCJ) -c $(OPTS) -o je.o je.jar
 
 mysql-connector.o : mysql-connector-java-3.0.16-ga-bin.jar
-	gcj -c -o mysql-connector.o mysql-connector-java-3.0.16-ga-bin.jar
+	$(GCJ) -c $(OPTS) -o mysql-connector.o mysql-connector-java-3.0.16-ga-bin.jar
 
 MWSearch.o : org/wikimedia/lsearch/Article.java \
         org/wikimedia/lsearch/ArticleIterator.java \
@@ -36,18 +43,18 @@ MWSearch.o : org/wikimedia/lsearch/Article.java \
         org/wikimedia/lsearch/Title.java \
         org/wikimedia/lsearch/TitlePrefixMatcher.java \
         org/wikimedia/lsearch/UserInteraction.java
-	gcj --classpath=je.jar:lucene-1.4.3.jar \
-	    -c -o MWSearch.o \
+	$(GCJ) --classpath=lucene-1.4.3.jar \
+	    -c $(OPTS) -o MWSearch.o \
 	    org/wikimedia/lsearch/*.java
 
-MWSearch : MWSearch.o lucene.o je.o mysql-connector.o
-	gcj -o MWSearch \
+MWSearch : MWSearch.o lucene.o mysql-connector.o
+	$(GCJ) -o MWSearch \
 	--main=org.wikimedia.lsearch.MWSearch \
 	-Djdbc.drivers=com.mysql.jdbc.Driver \
-	MWSearch.o lucene.o je.o mysql-connector.o
+	MWSearch.o lucene.o mysql-connector.o
 
-MWDaemon : MWSearch.o lucene.o je.o mysql-connector.o
-	gcj -o MWDaemon \
+MWDaemon : MWSearch.o lucene.o mysql-connector.o
+	$(GCJ) -o MWDaemon \
 	--main=org.wikimedia.lsearch.MWDaemon \
 	-Djdbc.drivers=com.mysql.jdbc.Driver \
-	MWSearch.o lucene.o je.o mysql-connector.o
+	MWSearch.o lucene.o mysql-connector.o

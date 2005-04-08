@@ -44,7 +44,7 @@ import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Searcher;
 
-import com.sleepycat.je.DatabaseException;
+//import com.sleepycat.je.DatabaseException;
 
 /**
  * @author Kate Turner
@@ -183,7 +183,7 @@ public class SearchState {
 		return new ArticleList(mydbname, rs);
 	}
 	
-	public void addArticle(Article article) throws IOException, DatabaseException {
+	public void addArticle(Article article) throws IOException /*, DatabaseException */ {
 		openForWrite();
 		Document d = new Document();
 		d.add(Field.Text("namespace", article.getNamespace()));
