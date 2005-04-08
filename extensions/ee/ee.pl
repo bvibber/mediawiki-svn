@@ -60,20 +60,35 @@ $type=$input->val("Process","Type");
 $script=$input->val("Process","Script");
 $server=$input->val("Process","Server");
 $path=$input->val("Process","Path");
-
+$login_url=$script."?title=Special:Userlogin&action=submitlogin";
 
 if($type eq "Edit file") {
-	$filename=substr($fileurl,rindex($fileurl,"/")+1);	
+	$filename=substr($fileurl,rindex($fileurl,"/")+1);
+	# Image: is canonical namespace name, should always work
+	$view_url=$script."?title=Image:$filename"; 
+	$upload_url=$script."?title=Special:Upload";
 } elsif($type eq "Edit text") {
 	$fileurl=~m|\?title=(.*?)\&action=|i;
 	$pagetitle=$1;
 	$filename=uri_unescape($pagetitle);
 	$filename=$filename.".wiki";
+	$edit_url=$script."?title=$pagetitle&action=submit";
+	$view_url=$script."?title=$pagetitle";	
 }
 
-$login_url=$script."?title=Special:Userlogin&action=submitlogin";
-$upload_url=$script."?title=Special:Upload";
-$edit_url=$script."?title=$pagetitle&action=submit";
+if($type eq "Diff text") {
+	$secondurl=$input->val("File 2","URL");
+	if(!$secondurl) {
+		die "Process is diff, but only one file specified in input file.\n";
+	}
+	$diffcommand=$cfg->val("Settings","Diff");
+	if(!$diffcommand) {
+		die "Process is diff, but no diff command set in ee.ini.\n";	
+	}
+}
+
+$previewclient=$cfg->val("Settings","Browser");	
+$browseaftersave=$cfg->val("Settings","Browse after save");	
 
 @sections=$cfg->Sections();
 foreach $section(@sections) {
@@ -106,7 +121,6 @@ if($type eq "Edit file") {
 	if($cfg->val("Settings","Transcode UTF-8") eq "true") {
 		$transcode=1;
 	}
-	$firefox=$cfg->val("Settings","Firefox");	
 	$ct=$response->header('Content-Type');
 	$editpage=$response->content;
 	$editpage=~m|<input type='hidden' value="(.*?)" name="wpEditToken" />|i;
@@ -143,9 +157,22 @@ foreach $extensionlist(@extensionlists) {
 	}
 }
 
-system("$app $tempdir/$filename &");
-makegui();
 
+if($type ne "Diff text") {
+
+ 	system("$app $tempdir/$filename &");
+	makegui();
+
+} else {
+	$response1=$browser->get($fileurl);
+	$response2=$browser->get($secondurl);
+	open(DIFF1, ">$tempdir/diff-1.txt");
+	open(DIFF2, ">$tempdir/diff-2.txt");
+	print DIFF1 $response1->content;
+	print DIFF2 $response2->content;
+	system("$diffcommand $tempdir/diff-1.txt $tempdir/diff-2.txt");
+}
+	
 sub makegui {
 
 	$vbox = Gtk2::VBox->new;
@@ -209,15 +236,21 @@ sub save {
 		$summary=Encode::encode('utf8',$summary);	
 	}
 	if($type eq "Edit file") {		
-		$response=$browser->post($upload_url,
-		@ns_headers,Content_Type=>'form-data',Content=>
-		[
-		wpUploadFile=>["$tempdir/".$filename],
-		wpUploadDescription=>$summary,
-		wpUploadAffirm=>"1",
-		wpUpload=>"Upload file",
-		wpIgnoreWarning=>"1"
-		]);		
+ 		$response=$browser->post($upload_url,
+ 		@ns_headers,Content_Type=>'form-data',Content=>
+ 		[
+ 		wpUploadFile=>["$tempdir/".$filename],
+ 		wpUploadDescription=>$summary,
+ 		wpUploadAffirm=>"1",
+ 		wpUpload=>"Upload file",
+ 		wpIgnoreWarning=>"1"
+ 		]);
+		if($browseaftersave eq "true" && $previewclient && !$preview) {
+			$previewclient=~s/\$url/$view_url/i;
+			print "View URL: $view_url\n";
+			system(qq|$previewclient|);
+			$previewclient=$cfg->val("Settings","Browser");	
+		} 
 	} elsif($type eq "Edit text") {	
 		open(TEXT,"<$tempdir/".$filename);
 		$/=undef;
@@ -237,16 +270,18 @@ sub save {
 			wpEditToken=>$token,
 			wpPreview=>"true",
 			]);		
-			open(PREVIEW,">$tempdir/preview.htm");
+			open(PREVIEW,">$tempdir/preview.html");
 			$preview=$response->content;
 			# Replace relative URLs with absolute ones
 			$preview=~s|$path|$server$path|gi;
 			print PREVIEW $preview;
-			if($firefox) {
-				print "$firefox\n";
-				system(qq|$firefox -remote "openURL(file://$tempdir/preview.htm)"|);
+			close(PREVIEW);
+			if($previewclient) {
+				$previewurl="file://$tempdir/preview.html";
+				$previewclient=~s/\$url/$previewurl/i;
+				system(qq|$previewclient|);
+				$previewclient=$cfg->val("Settings","Browser");	
 			}
-			$preview=0;
 		} else {		
 			$response=$browser->post($edit_url,@ns_headers,Content=>
 			[
@@ -256,8 +291,12 @@ sub save {
 			wpEditToken=>$token,
 			]);		
 		}
-	} elsif($type eq "Diff") {
-		die "Diffs not yet supported.\n";
+		if($browseaftersave eq "true" && $previewclient && !$preview) {
+			$previewclient=~s/\$url/$view_url/i;
+			system(qq|$previewclient|);	
+			$previewclient=$cfg->val("Settings","Browser");	
+		}
+		$preview=0;
 	} else {
 	
 		die "Undefined or unknown process in input file.";
