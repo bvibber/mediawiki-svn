@@ -20,7 +20,6 @@ LUCENE=lucene-1.4.3.jar
 MYSQL=mysql-connector-java-3.0.16-ga-bin.jar
 
 SOURCES=org/wikimedia/lsearch/Article.java \
-        org/wikimedia/lsearch/ArticleIterator.java \
         org/wikimedia/lsearch/ArticleList.java \
         org/wikimedia/lsearch/Configuration.java \
         org/wikimedia/lsearch/DatabaseConnection.java \
