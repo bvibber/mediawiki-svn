@@ -464,7 +464,23 @@ class LuceneSearch extends SpecialPage
 		$fname = 'LuceneSearch::queryLuceneServer';
 		wfProfileIn( $fname );
 		
-		global $wgLuceneHost, $wgLucenePort, $wgDBname;
+		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc;
+		
+		// Round up the limit so we can more effectively cache w/ paging
+		$limit = IntVal( floor( $limit / 100.0 ) * 100.0 + 100.0 );
+		
+		// Cache results for five minutes; they'll be read again
+		// on reloads or paging through the result set.
+		$key = "$wgDBname:lucene:$method:$limit:" . md5( $query );
+		$expiry = 60 * 5;
+		
+		$resultset = $wgMemc->get( $key );
+		if( is_array( $resultset ) ) {
+			wfDebug( "$fname: got cached lucene results for key $key\n" );
+			wfProfileOut( $fname );
+			return $resultset;
+		}
+		
 		$sock = socket_create( AF_INET, SOCK_STREAM, SOL_TCP );
 		@$conn = socket_connect( $sock, $wgLuceneHost, $wgLucenePort );
 		if( $conn === false ) {
@@ -482,37 +498,43 @@ class LuceneSearch extends SpecialPage
 			if( $numresults === false ) {
 				# I/O error? this shouldn't happen
 				wfDebug( "Couldn't read summary line...\n" );
-				wfProfileOut( $fname );
-				return array( 0, array() );
-			}
-			$numresults = IntVal( $numresults );
-			wfDebug("total [$numresults] hits\n");
-			if( $numresults == 0 ) {
-				# No results, but we got a suggestion...
-				$suggestion = urldecode( $this->inputLine( $sock ) );
-				wfdebug("no results; suggest: [$suggestion]\n");
-				wfProfileOut( $fname );
-				return array( -1, $suggestion );
+				$resultset = array( 0, array() );
+			} else {
+				$numresults = IntVal( $numresults );
+				wfDebug("total [$numresults] hits\n");
+				if( $numresults == 0 ) {
+					# No results, but we got a suggestion...
+					$suggestion = urldecode( $this->inputLine( $sock ) );
+					wfdebug("no results; suggest: [$suggestion]\n");
+					$resultset = array( -1, $suggestion );
+				}
 			}
 		} else {
 			$numresults = null;
 		}
 		
-		$results = array();
-		while( ( $result = $this->readResult( $sock ) ) !== false
-				&& count( $results ) < $limit ) {
+		if( is_null( $resultset ) ) {
+			$results = array();
+			while( ( $result = $this->readResult( $sock ) ) !== false
+					&& count( $results ) < $limit ) {
+				
+				if( !in_array( $result[1]->getNamespace(), $this->namespaces ) ) {
+					continue;
+				}
+				if( $method == 'SEARCH' ) { # quick hack
+					$results[] = $result;
+				} else {
+					$results[] = $result[1];
+				}
+			}
 			
-			if( !in_array( $result[1]->getNamespace(), $this->namespaces ) ) {
-				continue;
-			}
-			if( $method == 'SEARCH' ) { # quick hack
-				$results[] = $result;
-			} else {
-				$results[] = $result[1];
-			}
+			$resultset = array( $numresults, $results );
 		}
+		
+		wfDebug( "$fname: caching lucene results for key $key\n" );
+		$wgMemc->add( $key, $resultset, $expiry );
 		wfProfileOut( $fname );
-		return array( $numresults, $results );
+		return $resultset;
 	}
 	
 	function doTitlePrefixSearch($query, $limit) {
