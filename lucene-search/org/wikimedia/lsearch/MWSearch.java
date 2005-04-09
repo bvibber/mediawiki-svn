@@ -27,13 +27,12 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Iterator;
 
-//import com.sleepycat.je.DatabaseException;
-
 /**
  * @author Kate Turner
  *
  */
 public class MWSearch {
+	static java.util.logging.Logger log = java.util.logging.Logger.getLogger("MWSearch");
 	static final int
 		 DOING_FULL_UPDATE	= 1
 		,DOING_INCREMENT 	= 2
@@ -45,9 +44,9 @@ public class MWSearch {
 	static int mw_version = MW_NEW;
 	static Configuration config;
 	
-	public static void main(String[] args) {	
+	public static void main(String[] args) {
 		if (args.length < 1) {
-			System.err.println("Must specify database name");
+			log.severe("Must specify database name");
 			return;
 		}
 		
@@ -64,13 +63,13 @@ public class MWSearch {
 
 		config = Configuration.open();
 		if (what == -1) {
-			System.err.println("No action specified");
+			log.severe("No action specified");
 			return;
 		}
 		
 		System.out.println(
 				"MWSearch Lucene search indexer - standalone index rebuilder.\n" +
-				"Version 20050103, copyright 2004 Kate Turner.\n");
+				"Version 20050408, copyright 2004 Kate Turner.\n");
 		String[] dbnames = config.getArray("mwsearch.databases");
 		//for (String dbname: dbnames) {
 		for (int i = 0; i < dbnames.length; i++) {
@@ -78,8 +77,8 @@ public class MWSearch {
 			SearchState state;
 			try {
 				state = SearchState.forWiki(dbname);
-			} catch (SQLException e) {
-				System.out.println("Error connecting to database: " + e.getMessage());
+			} catch (SearchDbException e) {
+				log.severe("Error connecting to database: " + e.getMessage());
 				return;
 			}
 			System.out.println(dbname + ": running " +
@@ -104,9 +103,7 @@ public class MWSearch {
 				return;
 			} catch (IOException e) {
 				System.out.println("Error: IO error: " + e.getMessage());
-			}/* catch (DatabaseException e) {
-				System.out.println("Error: database error: " + e.getMessage());
-			}*/
+			}
 			double totaltime = (System.currentTimeMillis() - now) / 1000;
 			//System.out.printf("%s: indexed %d articles in %f seconds (%.2f articles/sec)\n",
 			//		dbname, numArticles, totaltime, numArticles/totaltime);

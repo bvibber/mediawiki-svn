@@ -25,7 +25,6 @@ package org.wikimedia.lsearch;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +33,13 @@ import java.util.List;
  *
  */
 public class MWDaemon {
+	/** Logger */
+	static java.util.logging.Logger log = java.util.logging.Logger.getLogger("MWDaemon");
+	
 	static int port = 8123;
 	static ServerSocket sock;
 	public static String indexPath;
 	public static String dburl, dbhost;
-	private static SearchIndexUpdater updater = null;
 	public static String[] dbnames;
 	public static final int
 	 MW_NEW = 1
@@ -50,22 +51,22 @@ public class MWDaemon {
 	public static void main(String[] args) {
 		System.out.println(
 				"MediaWiki Lucene search indexer - runtime search daemon.\n" +
-				"Version 20050103, copyright 2004 Kate Turner.\n"
+				"Version 20050408, copyright 2004 Kate Turner.\n"
 				);
 		int i = 0;
 		while (i < args.length - 1) {
-			if (args[i].equals("-port"))
+			if (args[i].equals("-port")) {
 				port = Integer.valueOf(args[++i]).intValue();
-			else if (args[i].equals("-configfile"))
+			} else if (args[i].equals("-configfile")) {
 				Configuration.setConfigFile(args[++i]);
-			else if (args[i].equals("-mwversion")) {
+			} else if (args[i].equals("-mwversion")) {
 				String vers = args[++i];
-				if (vers.equals("old"))
+				if (vers.equals("old")) {
 					mw_version = MW_OLD;
-				else if (vers.equals("new"))
+				} else if (vers.equals("new")) {
 					mw_version = MW_NEW;
-				else {
-					System.err.println("Unknown MediaWiki version " + vers);
+				} else {
+					log.severe("Unknown MediaWiki version " + vers);
 					return;
 				}
 			} else break;
@@ -75,36 +76,18 @@ public class MWDaemon {
 		
 		dbhost = config.getString("mwsearch.database.host");
 		dbnames = config.getString("mwsearch.databases").split(" ");
-		System.out.println("Using database on " + dbhost);
-		
-		//System.out.println("Connecting to DB server...");
+		log.fine("Using database on " + dbhost);
 		
 		indexPath = config.getString("mwsearch.indexpath");
-		System.out.println("Binding server to port " + port);
+		log.info("Binding server to port " + port);
 		
 		try {
 			sock = new ServerSocket(port);
 		} catch (IOException e) {
-			System.err.println("Error: bind error: " + e.getMessage());
+			log.severe("Error: bind error: " + e.getMessage());
 			return;
 		}
-		UserInteraction uii = new UserInteraction();
-		uii.start();
-		updater = new SearchIndexUpdater();
-		updater.start();
-		Socket client;
 		numthreads = 0;
-/*		for (;;) {
-			try {
-				client = sock.accept();
-			} catch (IOException e1) {
-				System.err.println("Error: accept() error: " + e1.getMessage());
-				return;
-			}
-			++numthreads;
-			SearchClientReader clnt = new SearchClientReader(client);
-			clnt.start();
-		}*/
 		//List<SearchClientReader> threads = new ArrayList<SearchClientReader>();
 		List threads = new ArrayList();
 		for (int j = 0; j < 50; ++j) {

@@ -1,34 +1,25 @@
 #
 # Makefile to compile MWDaemon/MWSearch with the GCJ native compiler.
 #
-# You want a recent GCJ version (from CVS probably!) and may need to
-# recompile the Cleaner class in je.jar with a bit removed.
-#
 
-#GCJ=gcj
-#GCJ=gcj-3.4
-GCJ=gcj-4.0
 
-#OPTS=
+# Currently GCC 4.0 is required; older versions had an incomplete
+# class library and will die in various places.
+# Pull a snapshot or CVS: http://gcc.gnu.org/cvs.html
+GCJ=gcj
+#GCJ=gcj-4.0
+
+# Optimization is faster!
 OPTS=-O2
 
-.PHONY : all clean
+# Get Apache Lucene from http://lucene.apache.org/
+LUCENE=lucene-1.4.3.jar
 
-all : MWSearch MWDaemon
+# MySQL Connector/J 3.1 doesn't compile right; it wants log4j or such
+# Get 3.0: http://dev.mysql.com/downloads/connector/j/3.0.html
+MYSQL=mysql-connector-java-3.0.16-ga-bin.jar
 
-clean :
-	rm -f MWDaemon MWSearch *.o
-
-lucene.o : lucene-1.4.3.jar
-	$(GCJ) -c $(OPTS) -o lucene.o lucene-1.4.3.jar 
-
-#je.o : je.jar
-#	$(GCJ) -c $(OPTS) -o je.o je.jar
-
-mysql-connector.o : mysql-connector-java-3.0.16-ga-bin.jar
-	$(GCJ) -c $(OPTS) -o mysql-connector.o mysql-connector-java-3.0.16-ga-bin.jar
-
-MWSearch.o : org/wikimedia/lsearch/Article.java \
+SOURCES=org/wikimedia/lsearch/Article.java \
         org/wikimedia/lsearch/ArticleIterator.java \
         org/wikimedia/lsearch/ArticleList.java \
         org/wikimedia/lsearch/Configuration.java \
@@ -37,15 +28,28 @@ MWSearch.o : org/wikimedia/lsearch/Article.java \
         org/wikimedia/lsearch/MWDaemon.java \
         org/wikimedia/lsearch/MWSearch.java \
         org/wikimedia/lsearch/SearchClientReader.java \
-        org/wikimedia/lsearch/SearchDatabase.java \
-        org/wikimedia/lsearch/SearchIndexUpdater.java \
+        org/wikimedia/lsearch/SearchDbException.java \
         org/wikimedia/lsearch/SearchState.java \
         org/wikimedia/lsearch/Title.java \
-        org/wikimedia/lsearch/TitlePrefixMatcher.java \
-        org/wikimedia/lsearch/UserInteraction.java
-	$(GCJ) --classpath=lucene-1.4.3.jar \
+        org/wikimedia/lsearch/TitlePrefixMatcher.java
+
+.PHONY : all clean
+
+all : MWSearch MWDaemon
+
+clean :
+	rm -f MWDaemon MWSearch *.o
+
+lucene.o : $(LUCENE)
+	$(GCJ) -c $(OPTS) -o lucene.o $(LUCENE)
+
+mysql-connector.o : $(MYSQL)
+	$(GCJ) -c $(OPTS) -o mysql-connector.o $(MYSQL)
+
+MWSearch.o : $(SOURCES)
+	$(GCJ) --classpath=$(LUCENE) \
 	    -c $(OPTS) -o MWSearch.o \
-	    org/wikimedia/lsearch/*.java
+	    $(SOURCES)
 
 MWSearch : MWSearch.o lucene.o mysql-connector.o
 	$(GCJ) -o MWSearch \

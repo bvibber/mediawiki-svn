@@ -28,11 +28,10 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.PrintStream;
 import java.net.Socket;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.sql.SQLException;
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +39,6 @@ import java.util.Iterator;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.Term;
-import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.search.FuzzyTermEnum;
 import org.apache.lucene.search.Hits;
 import org.apache.lucene.search.Query;
@@ -52,6 +50,8 @@ import org.apache.lucene.search.Query;
  *
  */
 public class SearchClientReader extends Thread {
+	/** Logger */
+	static java.util.logging.Logger log = java.util.logging.Logger.getLogger("SearchClientReader");
 	/** A socket for our client. */
 	Socket client;
 	/** The unprocessed search term from the client (urlencoded) */
@@ -68,6 +68,7 @@ public class SearchClientReader extends Thread {
 	String dbname;
 	/** Search state for this database */
 	SearchState state;
+	int maxlines=1000;
 	
 	// lucene special chars: + - && || ! ( ) { } [ ] ^ " ~ * ? : \
 	static String[] specialChars = {
@@ -85,21 +86,14 @@ public class SearchClientReader extends Thread {
 	int num;
 	//Map<String, SearchState> myStates;
 	Map myStates;
-	private SearchState getMyState(String dbname) {
+	
+	private SearchState getMyState(String dbname) throws SearchDbException {
 		SearchState ret = (SearchState)myStates.get(dbname);
-		if (ret != null)
+		if (ret != null) {
 			return ret;
-		try {
-			ret = SearchState.forWiki(dbname);
-		} catch (SQLException e) {
-			// Couldn't load state?
-			// We'll crap out later on the NULL.
-			e.printStackTrace();
-		} catch (RuntimeException e) {
-			// Kaffe for instance currently explodes in here.
-			// Close the connection out if something goes wrong.
-			e.printStackTrace();
 		}
+		
+		ret = SearchState.forWiki(dbname);
 		myStates.put(dbname, ret);
 		return ret;
 	}
@@ -107,53 +101,50 @@ public class SearchClientReader extends Thread {
 	public void run() {
 		//myStates = new HashMap<String, SearchState>();
 		myStates = new HashMap();
-		System.out.println("starting handler #" + num);
+		log.info("starting handler #" + num);
 		for (;;) {
 			try {
 				client = MWDaemon.sock.accept();
 			} catch (IOException e) {
-				System.out.println("accept() error: " + e.getMessage());
+				log.warning("accept() error: " + e.getMessage());
 				continue;
 			}
 			try {
 				handle();
-				System.out.println("request handled.");
+				log.fine("request handled.");
 			} catch (IOException e) {
-				try {
-					istrm.close();
-					ostrm.flush();
-					ostrm.close();
-				} catch (IOException e2) {
-					e.printStackTrace();
-				}
+				// Probably the client closed the connection.
+				log.warning("network error: " + e.getMessage());
 			} catch (Exception e) {
-				System.out.println("Unexpected exception: " + e.getMessage());
-				e.printStackTrace();
+				// Unexpected error; log it!
+				log.warning(e.toString());
+			} finally {
+				// Make sure the client is closed out, so we
+				// don't leave the PHP threads hanging.
+				try {  ostrm.flush(); } catch(Exception e) { }
+				try {  ostrm.close(); } catch(Exception e) { }
+				try {  istrm.close(); } catch(Exception e) { }
+				try { client.close(); } catch(Exception e) { }
 			}
 		}
 	}
 	
-	private void handle() throws IOException {
+	private void handle() throws IOException, SearchDbException {
 		istrm = new BufferedReader(new InputStreamReader(client.getInputStream()));
 		ostrm = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+		
 		/* The protocol format is "database\noperation\nsearchterm"
-		 * Search term is urlencoded.
+		 * Search term is urlencoded UTF-8.
 		 */
 		dbname = readInputLine();
 		state = getMyState(dbname);
-		if (state == null) {
-			istrm.close();
-			ostrm.flush();
-			ostrm.close();
-			client.close();
-			--MWDaemon.numthreads;
-			return;
-		}
+		
 		what = readInputLine();
-		System.out.println("Request type: " + what);
+		log.fine("Request type: " + what);
+		
 		rawsearchterm = readInputLine();
 		searchterm = URLDecoder.decode(rawsearchterm, "UTF-8");
-		System.out.println("Search term: " + rawsearchterm);
+		log.fine("Search term: " + rawsearchterm);
 		
 		if (what.equals("TITLEMATCH")) {
 			doTitleMatches();
@@ -162,21 +153,14 @@ public class SearchClientReader extends Thread {
 		} else if (what.equals("SEARCH")) {
 			doNormalSearch();
 		} else {
-			System.out.println("Unknown request type; ignoring.");
-		}
-		
-		try {
-			ostrm.flush();
-			ostrm.close();
-			istrm.close();
-		} catch (IOException e) {
-			// Silent...
+			log.warning("Unknown request type [" + what + "]; ignoring.");
 		}
 	}
 	
 	private void doNormalSearch() throws IOException {
 		String encsearchterm = "title:(" + searchterm + ")^4 " + searchterm;
 		
+		long now = System.currentTimeMillis();
 		Query query;
 		/* If we fail to parse the query, it's probably due to illegal
 		 * use of metacharacters, so we escape them all and try again.
@@ -191,29 +175,33 @@ public class SearchClientReader extends Thread {
 			try {
 				query = state.parser.parse(encsearchterm); 
 			} catch (Exception e2) {
+				log.warning("Problem parsing search term: " + e2.getMessage() + "\n" + e2.getStackTrace());
 				return;
 			}
 		}
 		Hits hits;
-		
 		try {
 			hits = state.searcher.search(query);
 		} catch (Exception e) {
+			log.warning("Error searching: " + e.getMessage ()+ "\n" + e.getStackTrace());
 			return;
 		}
 		
 		int numhits = hits.length();
-		UserInteraction.instance.logQuery(dbname, searchterm, query.toString(), numhits);
-		
 		sendOutputLine(numhits + "");
 		
-		for (int i = 0; i < numhits; i++) {
+		//StringBuffer buffer = new StringBuffer("");
+		for (int i = 0; i < numhits && i < maxlines; i++) {
 			Document doc = hits.doc(i);
 			float score = hits.score(i);
 			String namespace = doc.get("namespace");
 			String title = doc.get("title");
 			sendOutputLine(score + " " + namespace + " " + URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8"));
+			//buffer.append(score + " " + namespace + " " + URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8") + "\n");
 		}
+		long delta = System.currentTimeMillis() - now;
+		logRequest(searchterm, query, numhits, delta);
+		//ostrm.write(buffer.toString());
 		if (numhits == 0) {
 			String spelfix = makeSpelFix(rawsearchterm);
 			sendOutputLine(URLEncoder.encode(spelfix, "UTF-8"));
@@ -232,9 +220,14 @@ public class SearchClientReader extends Thread {
 			}
 			searchterm = "title:(" + term + ")";
 			
+			long now = System.currentTimeMillis();
 			Query query = state.parser.parse(searchterm);
 			Hits hits = state.searcher.search(query);
+			
 			int numhits = hits.length();
+			long delta = System.currentTimeMillis() - now;
+			logRequest(searchterm, query, numhits, delta);
+			
 			for (int i = 0; i < numhits && i < 10; i++) {
 				Document doc = hits.doc(i);
 				float score = hits.score(i);
@@ -242,20 +235,8 @@ public class SearchClientReader extends Thread {
 				String title = doc.get("title");
 				sendOutputLine(score + " " + namespace + " " + URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8"));
 			}
-			ostrm.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
 		} catch (Exception e) {
-			System.out.println("Unexpected exception: " + e.getMessage());
-			e.printStackTrace();
-		} finally {
-			try {
-				istrm.close();
-				ostrm.flush();
-				ostrm.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			log.warning(e.toString());
 		}
 	}
 
@@ -343,15 +324,21 @@ public class SearchClientReader extends Thread {
         // we got the result!
         return d[n][m];
     }
-    
-    void sendOutputLine(String out) throws IOException {
-        //System.out.println(">>>" + out);
-        ostrm.write(out + "\n");
-    	}
-    
-    String readInputLine() throws IOException {
-    		String in = istrm.readLine();
-    		//System.out.println("<<<" + in);
-    		return in;
-    }
+	
+	void sendOutputLine(String out) throws IOException {
+		log.finest(">>>" + out);
+		ostrm.write(out + "\n");
+	}
+	
+	String readInputLine() throws IOException {
+		String in = istrm.readLine();
+		log.finest("<<<" + in);
+		return in;
+	}
+	
+	void logRequest(String searchterm, Query query, int numhits, long delta) {
+		log.info(MessageFormat.format("{0} {1}: query=[{2}] parsed=[{3}] hit=[{4}] in {5}ms",
+			new Object[] { what, dbname, searchterm, query.toString(),
+				new Integer(numhits), new Long(delta) }));
+	}
 }

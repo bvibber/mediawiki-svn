@@ -23,9 +23,9 @@
  */
 package org.wikimedia.lsearch;
 
-import java.io.File;
-import java.sql.SQLException;
-import java.text.MessageFormat;
+//import java.io.File;
+//import java.sql.SQLException;
+//import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 /*

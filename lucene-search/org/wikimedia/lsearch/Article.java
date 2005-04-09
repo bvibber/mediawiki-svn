@@ -24,8 +24,6 @@
 
 package org.wikimedia.lsearch;
 
-import java.io.UnsupportedEncodingException;
-
 /**
  * @author Kate Turner
  *
@@ -39,12 +37,6 @@ public class Article {
 		title = title_;
 		contents = contents_;
 		timestamp = timestamp_;
-		if (!Configuration.open().islatin1(dbname)) {
-			try {
-				title = new String(title.getBytes("ISO-8859-1"), "UTF-8");
-				contents = new String(contents.getBytes("ISO-8859-1"), "UTF-8");
-			} catch (UnsupportedEncodingException e) {}
-		}
 	}
 	
 	/**

@@ -77,8 +77,8 @@ public class DatabaseConnection {
 		Connection dbconn = DriverManager.getConnection(dburl,
 				config.getString("mwsearch.username"),
 				config.getString("mwsearch.password"));
-		dbconn.prepareStatement("set net_read_timeout=2000").executeUpdate();
-		dbconn.prepareStatement("set net_write_timeout=2000").executeUpdate();
+		dbconn.prepareStatement("set net_read_timeout=4000").executeUpdate();
+		dbconn.prepareStatement("set net_write_timeout=4000").executeUpdate();
 		conn = dbconn;
 		refcount = 1;
 	}

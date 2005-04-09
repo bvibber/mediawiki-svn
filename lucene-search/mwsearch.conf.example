@@ -7,15 +7,16 @@ mwsearch.database.host=localhost
 mwsearch.dburl=jdbc:mysql://localhost/somedatabase
 
 # A directory to put the search index in.  It will be created if
-# it doesn't already exist.
-mwsearch.indexpath=./mwindex
+# it doesn't already exist. The {0} parameter is filled in by
+# the database name.
+mwsearch.indexpath=./mwindex/{0}
 mwsearch.titledb=./mwtitle/{0}
 
-# List of all databases in UTF-8 encoding, separated by spaces.
-mwsearch.databases=somedatabase
+# List of all databases separated by spaces.
+mwsearch.databases=enwiki plwiki svwiki zhwiki
 
-# List of all databases in Latin-1 encoding, separated by spaces.
-#mwsearch.latin1dbs=abc def
+# List of thosedatabases in Latin-1 encoding, separated by spaces.
+#mwsearch.latin1dbs=enwiki svwiki
 
 # Set this to run with MediaWiki 1.4 databases;
 # if running with MediaWiki 1.5, remove it.
@@ -23,3 +24,6 @@ mwsearch.oldmediawiki=true
 
 # If using table prefixes, set it here.
 #mwsearch.tableprefix=mw_
+
+# Max number of results to return to client
+mwsearch.maxlines = 1000

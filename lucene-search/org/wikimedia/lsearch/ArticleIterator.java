@@ -24,6 +24,7 @@
 
 package org.wikimedia.lsearch;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Iterator;
@@ -34,16 +35,23 @@ import java.util.NoSuchElementException;
  *
  */
 public class ArticleIterator implements Iterator {
+	/** Logger */
+	static java.util.logging.Logger log = java.util.logging.Logger.getLogger("ArticleIterator");
+	
 	private ResultSet rs;
 	private String dbname;
 	boolean atend;
+	boolean latin1;
 	
 	public ArticleIterator(String dbname_, ResultSet rs_) {
 		rs = rs_;
 		dbname = dbname_;
+		latin1 = Configuration.open().islatin1(dbname);
 		try {
 			atend = !rs.next();
-		} catch (SQLException e) {}
+		} catch (SQLException e) {
+			log.warning(e.toString());
+		}
 	}
 	
 	public boolean hasNext() {
@@ -58,10 +66,20 @@ public class ArticleIterator implements Iterator {
 			String title = rs.getString(2);
 			String contents = rs.getString(3);
 			String timestamp = rs.getString(4);
+			if (!latin1) {
+				// Nasty hack; MySQL talks to us in Latin-1 so we have to
+				// re-convert it to UTF-8. This may change in future.
+				try {
+					title = new String(title.getBytes("ISO-8859-1"), "UTF-8");
+					contents = new String(contents.getBytes("ISO-8859-1"), "UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					log.warning(e.toString());
+				}
+			}
 			atend = !rs.next();
 			return new Article(dbname, namespace, title, contents, timestamp);
 		} catch (SQLException e) {
-			System.err.println("Warning: SQL exception: " + e.getMessage());
+			log.warning(e.toString());
 			return null;
 		}
 	}

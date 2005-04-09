@@ -32,7 +32,6 @@ import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack;
 import java.util.Iterator;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -51,6 +50,9 @@ import org.apache.lucene.search.Searcher;
  *
  */
 public class SearchState {
+	/** Logger */
+	static java.util.logging.Logger log = java.util.logging.Logger.getLogger("SearchState");
+	
 	//private static Stack<SearchState> states;
 	//private static Map<String, SearchState> openWikis;
 	private static Map openWikis;
@@ -59,26 +61,22 @@ public class SearchState {
 		//openWikis = new HashMap<String, SearchState>();
 		openWikis = new HashMap();
 	}
-	public static SearchState forWiki(String dbname) throws SQLException {
-		System.out.println("lookup " + dbname);
+	public static SearchState forWiki(String dbname) throws SearchDbException {
+		log.fine("lookup " + dbname);
 		SearchState t = null;
 		synchronized (openWikis) {
-			System.out.println("got lock");
-			t = (SearchState)openWikis.get(dbname);
-			if (t != null)
+			log.fine("got lock on openWikis");
+			try {
+				t = (SearchState)openWikis.get(dbname);
+				if (t != null)
+					return t;
+				t = new SearchState(dbname);
+				openWikis.put(dbname, t);
+				log.fine("got " + dbname);
 				return t;
-		//}
-		//synchronized(states) {
-			//if (states.size() > 100) {
-			//	t = states.remove(0);
-			//	openWikis.remove(dbname);
-			//	t.close();
-			//}
-			t = new SearchState(dbname);
-			//states.push(t);
-			openWikis.put(dbname, t);
-			System.out.println("got " + dbname);
-			return t;
+			} finally {
+				log.fine("released lock on openWikis");
+			}
 		}
 	}
 
@@ -111,7 +109,7 @@ public class SearchState {
 	IndexWriter writer;
 	boolean writable = false;
 	
-	private SearchState(String dbname) throws SQLException {
+	private SearchState(String dbname) throws SearchDbException {
 		config = Configuration.open();
 		indexpath = MessageFormat.format(config.getString("mwsearch.indexpath"),
 				new Object[] { dbname });
@@ -119,16 +117,17 @@ public class SearchState {
 		if (!f.exists())
 			f.mkdirs();
 		
-		System.out.println(dbname + ": opening state");
+		log.fine(dbname + ": opening state");
 		analyzer = new EnglishAnalyzer();
 		parser = new QueryParser("contents", analyzer);
 		try {
 			reader = IndexReader.open(indexpath);
 			searcher = new IndexSearcher(reader);
 		} catch (IOException e) {
-			System.out.println(dbname + ": warning: open for read failed");
+			log.warning(dbname + ": warning: open for read failed");
+			//throw new SearchDbException();
 		}
-		System.out.println(dbname + ": reading title index...");
+		log.fine(dbname + ": reading title index...");
 		matcher = new TitlePrefixMatcher(dbname);
 		mydbname = dbname;
 	}
@@ -138,7 +137,7 @@ public class SearchState {
 			searcher.close();
 			reader.close();
 		} catch (IOException e) {
-			System.err.println(mydbname + ": warning: closing index: " + e.getMessage());
+			log.warning(mydbname + ": warning: closing index: " + e.getMessage());
 		}
 	}
 	
@@ -148,15 +147,15 @@ public class SearchState {
 			reader.close();
 			reader = IndexReader.open(indexpath);
 			searcher = new IndexSearcher(reader);
-		} catch (IOException e) {}
+		} catch (IOException e) {
+			log.warning(mydbname + ": warning: reopening index: " + e.getMessage());
+		}
 	}
 	
 	private void openForWrite() throws IOException {
 		if (writable)
 			return;
-		writer = new IndexWriter(
-				MessageFormat.format(config.getString("mwsearch.indexpath"),
-						new Object[] { mydbname }),
+		writer = new IndexWriter( indexpath,
 				new EnglishAnalyzer(), true);
 		writable = true;
 	}

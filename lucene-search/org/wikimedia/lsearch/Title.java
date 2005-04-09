@@ -25,7 +25,6 @@ package org.wikimedia.lsearch;
 
 import java.io.Serializable;
 
-
 class Title implements Serializable {
 	private static final long serialVersionUID = 5264764931866689404L;
 	public int namespace;
