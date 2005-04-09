@@ -1,0 +1,16 @@
+<Combine name="MWBenchmark" fileversion="2.0">
+  <Configurations>
+    <Configuration name="Debug" ctype="CombineConfiguration">
+      <Entry build="True" name="MWBenchmark" />
+    </Configuration>
+    <Configuration name="Release" ctype="CombineConfiguration">
+      <Entry build="True" name="MWBenchmark" />
+    </Configuration>
+  </Configurations>
+  <StartMode startupentry="MWBenchmark" single="True">
+    <Execute type="None" entry="MWBenchmark" />
+  </StartMode>
+  <Entries>
+    <Entry filename="./MWBenchmark.mdp" />
+  </Entries>
+</Combine>
