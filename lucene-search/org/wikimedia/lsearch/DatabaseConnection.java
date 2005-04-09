@@ -46,13 +46,15 @@ public class DatabaseConnection {
 		if (config == null)
 			config = Configuration.open();
 		
+		/*
 		DatabaseConnection t = (DatabaseConnection)dbconns.get(dbname);
 		if (t != null) {
 			t.refcount++;
 			return t;
 		}
-		t = new DatabaseConnection(dbname);
-		dbconns.put(dbname, t);
+		*/
+		DatabaseConnection t = new DatabaseConnection(dbname);
+		// dbconns.put(dbname, t);
 		return t;
 	}
 	

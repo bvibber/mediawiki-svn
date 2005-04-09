@@ -161,6 +161,10 @@ public class SearchState {
 	}
 	
 	public ArticleList enumerateArticles() throws SQLException {
+		return enumerateArticles(0);
+	}
+	
+	public ArticleList enumerateArticles(int startAt) throws SQLException {
 		DatabaseConnection dbconn = DatabaseConnection.forWiki(mydbname);
 		Connection conn = dbconn.getConn();
 		String query;
@@ -169,12 +173,16 @@ public class SearchState {
 		if (tablePrefix == null) tablePrefix = "";
 		
 		if (!config.getBoolean("mwsearch.oldmediawiki"))
-			query = "SELECT page_namespace,page_title,old_text,page_timestamp " +
-				"FROM " + tablePrefix + "page, " + tablePrefix + "text WHERE old_id=page_latest AND page_is_redirect=0";
+			query = "SELECT page_id,page_namespace,page_title,old_text,page_timestamp " +
+				"FROM " + tablePrefix + "page FORCE INDEX(page_id), " +
+				tablePrefix + "revision " +
+				tablePrefix + "text " +
+				"WHERE page_id>" + startAt +
+				" AND old_id=rev_text_id AND rev_id=page_latest AND page_is_redirect=0";
 		else
-			query = "SELECT cur_namespace,cur_title,cur_text,cur_timestamp " +
-				"FROM " + tablePrefix + "cur WHERE cur_is_redirect=0";
-
+			query = "SELECT cur_id,cur_namespace,cur_title,cur_text,cur_timestamp " +
+				"FROM " + tablePrefix + "cur FORCE INDEX (cur_id) " +
+				"WHERE cur_id>" + startAt + " AND cur_is_redirect=0";
 		pstmt = conn.prepareStatement(query, ResultSet.TYPE_FORWARD_ONLY,
 				ResultSet.CONCUR_READ_ONLY);
 		pstmt.setFetchSize(Integer.MIN_VALUE);

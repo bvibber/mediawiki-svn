@@ -23,7 +23,6 @@
  */
 package org.wikimedia.lsearch;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Iterator;
 
@@ -51,13 +50,15 @@ public class MWSearch {
 		}
 		
 		for (int i = 0; i < args.length - 1;) {
-			if (args[i].equals("-rebuild"))
+			if (args[i].equals("-rebuild")) {
 				what = DOING_FULL_UPDATE;
-			else if (args[i].equals("-increment"))
+			} else if (args[i].equals("-increment")) {
 				what = DOING_INCREMENT;
-			else if (args[i].equals("-configfile"))
+			} else if (args[i].equals("-configfile")) {
 				Configuration.setConfigFile(args[++i]);
-			else break;
+			} else {
+				break;
+			}
 			++i;
 		}
 
@@ -69,7 +70,7 @@ public class MWSearch {
 		
 		System.out.println(
 				"MWSearch Lucene search indexer - standalone index rebuilder.\n" +
-				"Version 20050408, copyright 2004 Kate Turner.\n");
+				"Version 20050409, copyright 2004 Kate Turner.\n");
 		String[] dbnames = config.getArray("mwsearch.databases");
 		//for (String dbname: dbnames) {
 		for (int i = 0; i < dbnames.length; i++) {
@@ -78,7 +79,7 @@ public class MWSearch {
 			try {
 				state = SearchState.forWiki(dbname);
 			} catch (SearchDbException e) {
-				log.severe("Error connecting to database: " + e.getMessage());
+				log.severe("Error opening search index: " + e.toString());
 				return;
 			}
 			System.out.println(dbname + ": running " +
@@ -86,23 +87,38 @@ public class MWSearch {
 			
 			long now = System.currentTimeMillis();
 			long numArticles = 0;
-
-			try {
-				ArticleList articles = state.enumerateArticles();
-				//for (Article article: articles) {
-				for (Iterator iter = articles.iterator(); iter.hasNext();) {
-					Article article = (Article)iter.next();
-					state.addArticle(article);
-					if ((++numArticles % 1000) == 0) {
-						System.out.print(numArticles + "...\r");
-						System.out.flush();
+			int startAt = 0;
+			for (boolean done = false; !done; ) {
+				try {
+					ArticleList articles = state.enumerateArticles(startAt);
+					try {
+						//for (Article article: articles) {
+						for (Iterator iter = articles.iterator(); iter.hasNext();) {
+							Article article = (Article)iter.next();
+							state.addArticle(article);
+							if ((++numArticles % 1000) == 0) {
+								System.out.print("[" + dbname + "] " + numArticles + "...\r");
+								System.out.flush();
+							}
+						}
+						done = true;
+					} catch (Exception e) {
+						// wtf!
+						log.warning("[" + dbname + "] Error: " + e.toString());
+						if(startAt == articles.getLastId()) {
+							// Couldn't pick up where we left off? Leave for now...
+							log.severe("[" + dbname + "] Aborting!");
+							done = true;
+						} else {
+							startAt = articles.getLastId();
+							log.warning("[" + dbname + "] Trying to pick up from page id " + startAt);
+						}
 					}
+				} catch (SQLException e) {
+					log.warning("[" + dbname + "] Error starting query: SQL error: " + e.toString());
+					done = true;
+					return;
 				}
-			} catch (SQLException e) {
-				System.out.println("Error: SQL error: " + e.getMessage());
-				return;
-			} catch (IOException e) {
-				System.out.println("Error: IO error: " + e.getMessage());
 			}
 			double totaltime = (System.currentTimeMillis() - now) / 1000;
 			//System.out.printf("%s: indexed %d articles in %f seconds (%.2f articles/sec)\n",
