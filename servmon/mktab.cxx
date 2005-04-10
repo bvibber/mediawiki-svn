@@ -138,7 +138,7 @@ main(int argc, char *argv[])
 		"\tf % a1; f % a2; f % a3;\n"
 		"\treturn boost::io::str(boost::format(\"%%%s-%s-%s, %s\") \n"
 		"\t\t% sm$fac_names[fac]\n"
-		"\t\t% sm$sev_names[sm$fac_idx[fac]->sev]\n"
+		"\t\t% sm$sev_names[sm$fac_idx[fac][msg].sev]\n"
 		"\t\t% sm$fac_idx[fac][msg].name\n"
 		"\t\t% f.str());\n"
 		"}\n"
