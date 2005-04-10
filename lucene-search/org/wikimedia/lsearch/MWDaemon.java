@@ -37,6 +37,7 @@ public class MWDaemon {
 	static java.util.logging.Logger log = java.util.logging.Logger.getLogger("MWDaemon");
 	
 	static int port = 8123;
+	static int maxThreads = 25;
 	static ServerSocket sock;
 	public static String indexPath;
 	public static String dburl, dbhost;
@@ -90,7 +91,7 @@ public class MWDaemon {
 		numthreads = 0;
 		//List<SearchClientReader> threads = new ArrayList<SearchClientReader>();
 		List threads = new ArrayList();
-		for (int j = 0; j < 50; ++j) {
+		for (int j = 0; j < maxThreads; ++j) {
 			++numthreads;
 			SearchClientReader c = new SearchClientReader(j);
 			c.start();
