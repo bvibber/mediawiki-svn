@@ -146,7 +146,7 @@ class LuceneSearch extends SpecialPage
 			if (!$searchfailed) {
 				$r = $this->doLuceneSearch($q, $maxresults);
 			}
-			if (isset( $r ) ) {
+			if (is_array( $r ) ) {
 				$numresults = $r[0];
 				$results = $r[1];
 			} else {
