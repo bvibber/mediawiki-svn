@@ -165,18 +165,23 @@ public class SearchClientReader extends Thread {
 		/* If we fail to parse the query, it's probably due to illegal
 		 * use of metacharacters, so we escape them all and try again.
 		 */
-		try {
-			query = state.parser.parse(encsearchterm);
-		} catch (Exception e) {
-			String escaped = "";
-			for (int i = 0; i < searchterm.length(); ++i)
-				escaped += "\\" + searchterm.charAt(i);
-			encsearchterm = "title:(" + escaped + ")^4 " + escaped;
+		synchronized (state.parser) {
 			try {
-				query = state.parser.parse(encsearchterm); 
-			} catch (Exception e2) {
-				log.warning("Problem parsing search term [" + encsearchterm + "]: " + e2.getMessage() + "\n" + e2.getStackTrace());
-				return;
+				query = state.parser.parse(encsearchterm);
+			} catch (Exception e) {
+				//String escaped = "";
+				//for (int i = 0; i < searchterm.length(); ++i)
+				//	escaped += "\\" + searchterm.charAt(i);
+				String escaped = searchterm;
+				for (int i = 0; i < specialChars.length; ++i)
+					escaped = escaped.replaceAll( "/(" + specialChars[i] + ")/", "\\\\1" );
+				encsearchterm = "title:(" + escaped + ")^4 " + escaped;
+				try {
+					query = state.parser.parse(encsearchterm); 
+				} catch (Exception e2) {
+					log.warning("Problem parsing search term raw=[" + rawsearchterm + "] query=[" + searchterm + "] parsed=[" + encsearchterm + "]: " + e2.getMessage() + "\n" + e2.getStackTrace());
+					return;
+				}
 			}
 		}
 		Hits hits;
@@ -221,7 +226,10 @@ public class SearchClientReader extends Thread {
 			searchterm = "title:(" + term + ")";
 			
 			long now = System.currentTimeMillis();
-			Query query = state.parser.parse(searchterm);
+			Query query;
+			synchronized(state.parser) {
+				query = state.parser.parse(searchterm);
+			}
 			Hits hits = state.searcher.search(query);
 			
 			int numhits = hits.length();
