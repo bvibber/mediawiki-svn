@@ -504,6 +504,8 @@ class LuceneSearch extends SpecialPage
 		}
 		
 		$sock = socket_create( AF_INET, SOCK_STREAM, SOL_TCP );
+		socket_set_option( $sock, SOL_SOCKET, SO_SNDTIMEO,
+			array( "sec" => 2, "usec" => 0 ) );
 		@$conn = socket_connect( $sock, $wgLuceneHost, $wgLucenePort );
 		if( $conn === false ) {
 			wfProfileOut( $fname );
