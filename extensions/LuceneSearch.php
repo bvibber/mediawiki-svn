@@ -207,9 +207,9 @@ class LuceneSearch extends SpecialPage
 				
 				$showresults = min($limit, count($results)-$numresults);
 				$i = $offset;
-				$resq = trim(preg_replace("/[] \\|[()\"{}]+/", " ", $q));
+				$resq = trim(preg_replace("/[ |\\[\\]()\"{}+]+/", " ", $q));
 				$contextWords = implode("|", 
-				$wgContLang->convertForSearchResult(split(" ", $resq)));
+					array_map( 'preg_quote', $wgContLang->convertForSearchResult(split(" ", $resq))));
 
 				$top = wfMsg("searchnumber", $offset + 1, 
 					min($numresults, $offset+$limit), $numresults);
