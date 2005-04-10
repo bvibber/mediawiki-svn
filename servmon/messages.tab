@@ -17,7 +17,7 @@ ERROR NODISK disk %2% is not configured for server %1%
 INFORM NEWMASTER removing MySQL master status from %1%
 INFORM ALRMSUMM hourly alarm summary: %1%
 WARN MTXFAIL could not lock mutex for check running.  Consider increasing check interval
-INFORM TRANSIT state transition for host \002%1%\002: old state \002%2%\002, new state \002%3%\002
+INFORM TRANSIT state transition for host \002%1%\002: new state \002%3%\002 (old state %2%)
 WARN ALRMSET alarm condition \002set\002 for host \002%1%\002: %2% = %3%
 INFORM ALRMCLR alarm condition \002cleared\002 for host \002%1%\002: %2% = %3%
 FACILITY IRC
