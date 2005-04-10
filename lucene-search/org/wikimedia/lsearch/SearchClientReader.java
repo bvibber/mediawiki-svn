@@ -113,8 +113,8 @@ public class SearchClientReader extends Thread {
 				handle();
 				log.fine("request handled.");
 			} catch (IOException e) {
-				// Probably the client closed the connection.
-				log.warning("network error: " + e.getMessage());
+				// Probably the client closed the connection after X entries.
+				// This is normal, so just be silent.
 			} catch (Exception e) {
 				// Unexpected error; log it!
 				log.warning(e.toString());
@@ -175,7 +175,7 @@ public class SearchClientReader extends Thread {
 			try {
 				query = state.parser.parse(encsearchterm); 
 			} catch (Exception e2) {
-				log.warning("Problem parsing search term: " + e2.getMessage() + "\n" + e2.getStackTrace());
+				log.warning("Problem parsing search term [" + encsearchterm + "]: " + e2.getMessage() + "\n" + e2.getStackTrace());
 				return;
 			}
 		}
@@ -183,11 +183,13 @@ public class SearchClientReader extends Thread {
 		try {
 			hits = state.searcher.search(query);
 		} catch (Exception e) {
-			log.warning("Error searching: " + e.getMessage ()+ "\n" + e.getStackTrace());
+			log.warning("Error searching [" + encsearchterm + "]: " + e.getMessage ()+ "\n" + e.getStackTrace());
 			return;
 		}
 		
 		int numhits = hits.length();
+		long delta = System.currentTimeMillis() - now;
+		logRequest(searchterm, query, numhits, delta);
 		sendOutputLine(numhits + "");
 		
 		//StringBuffer buffer = new StringBuffer("");
@@ -199,8 +201,6 @@ public class SearchClientReader extends Thread {
 			sendOutputLine(score + " " + namespace + " " + URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8"));
 			//buffer.append(score + " " + namespace + " " + URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8") + "\n");
 		}
-		long delta = System.currentTimeMillis() - now;
-		logRequest(searchterm, query, numhits, delta);
 		//ostrm.write(buffer.toString());
 		if (numhits == 0) {
 			String spelfix = makeSpelFix(rawsearchterm);

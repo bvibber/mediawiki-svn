@@ -6,8 +6,8 @@
 # Currently GCC 4.0 is required; older versions had an incomplete
 # class library and will die in various places.
 # Pull a snapshot or CVS: http://gcc.gnu.org/cvs.html
-GCJ=gcj
-#GCJ=gcj-4.0
+#GCJ=gcj
+GCJ=gcj-4.0
 
 # Optimization is faster!
 OPTS=-O2
