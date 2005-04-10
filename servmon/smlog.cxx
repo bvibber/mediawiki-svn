@@ -65,6 +65,7 @@ namespace {
 				SMI(smnet::smpx)->rm(c);
 				return;
 			} catch (smnet::sckterr& e) {
+				SMI(log)->logmsg(0, SM$FAC_LOG, SM$MSG_LOGRDERR, e.what());
 				data.erase(s);
 				SMI(smnet::smpx)->rm(c);
 				return;
@@ -96,11 +97,14 @@ namespace {
 			try {
 				lev = lexical_cast<int>(levs);
 			} catch (bad_lexical_cast&) {
+				SMI(log)->logmsg(0, SM$FAC_LOG, SM$MSG_MALFRM);
 				goto errout;
 			}
 			
-			if (lev < 0 || lev > 16)
+			if (lev < 0 || lev > 16) {
+				SMI(log)->logmsg(0, SM$FAC_LOG, SM$MSG_MALFRM);
 				goto errout;
+			}
 			
 			SMI(log)->logmsg(lev, SM$FAC_LOG, SM$MSG_NETMSG,
 					 dynamic_pointer_cast<smnet::clnt>(s)->remote(), msg);

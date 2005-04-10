@@ -46,10 +46,11 @@ WARN RMVFAIL removing old configuration failed: %1%
 ERROR MOVEFAIL error renaming configuration file: %1%
 FACILITY LOG
 INFORM NETMSG [%1%] %2%
-ERROR LSNFAILU Listen failed for UNIX log socket: %1%
-ERROR LSNFAILI Listen failed for IP log socket: %1%
-ERROR LACCFAIL Accept failed for log socket: %1%
-WARN MALFRM Malformed message from log socket
+ERROR LSNFAILU listen failed for UNIX log socket: %1%
+ERROR LSNFAILI listen failed for IP log socket: %1%
+ERROR LACCFAIL accept failed for log socket: %1%
+WARN MALFRM malformed message from log socket
+WARN LOGRDERR error reading remote log message: %1%
 INFORM DEBUG %1%
 FACILITY NET
 ERROR SLCTERR select(2) error: %1%

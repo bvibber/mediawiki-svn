@@ -38,6 +38,9 @@ sckt::~sckt(void) {
 	close(s);
 }
 
+clnt::~clnt(void) {
+}
+
 void
 sckt::setblocking(bool)
 {
@@ -122,7 +125,6 @@ clnt::wrt(u_char const* d, ssize_t l) {
 
 void
 clnt::rd(std::vector<u_char>& v, uint m) {
-	std::vector<u_char>& rdbuf = rdbufs[s];
 	if (!rdbuf.empty()) {
 		int l = std::min(m, rdbuf.size());
 		v.resize(l);
@@ -139,7 +141,6 @@ clnt::rd(std::vector<u_char>& v, uint m) {
 
 u_char
 clnt::rd1(void) {
-	std::vector<u_char>& rdbuf = rdbufs[s];
 	_need_data();
 	u_char c = *rdbuf.begin();
 	rdbuf.erase(rdbuf.begin());
@@ -148,7 +149,6 @@ clnt::rd1(void) {
 
 uint
 clnt::_need_data(void) {
-	std::vector<u_char>& rdbuf = rdbufs[s];
 	if (!rdbuf.empty()) return 0;
 	rdbuf.resize(maxrd);
 	int i = read(s, &rdbuf[0], maxrd);
@@ -163,7 +163,4 @@ clnt::_need_data(void) {
 	return i;
 }
 
-std::map<int, std::vector<u_char> > clnt::rdbufs;
-
-	
 } // namespace smnet

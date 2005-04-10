@@ -105,6 +105,7 @@ struct	iovec	 iovec[3];
 		exit(8);
 	}
 
+	close(s);
 	exit(0);
 }
 

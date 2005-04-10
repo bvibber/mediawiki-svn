@@ -70,7 +70,7 @@ public:
 	clnt(int type = internet)
 		: sckt(type)
 		{}
-
+	~clnt();
 	bool connect(void);
 
 	/* write [d, d + l) to socket */
@@ -98,7 +98,7 @@ private:
 		{}
 	
 	uint _need_data(void);
-	static std::map<int, std::vector<u_char> > rdbufs;
+	std::vector<u_char> rdbuf;
 };
 	
 typedef shared_ptr<clnt> clntp;
