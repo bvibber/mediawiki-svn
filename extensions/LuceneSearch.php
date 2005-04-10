@@ -41,9 +41,8 @@ class LuceneSearch extends SpecialPage
 	}
 
 	function makelink($term, $offset, $limit) {
-		global $wgRequest;
-		global $wgScriptPath;
-		$link = "$wgScriptPath?title=Special:Search&amp;search=".
+		global $wgRequest, $wgScript;
+		$link = "$wgScript?title=Special:Search&amp;search=".
 			urlencode($term)."&amp;fulltext=Search";
 		foreach(SearchEngine::searchableNamespaces() as $ns => $name)
 			if ($wgRequest->getCheck("ns" . $ns))
