@@ -23,8 +23,10 @@ static int sock_tcp(const char *pathname);
 int
 main(int argc, char *argv[])
 {
-struct	iovec	iovec[3];
-	int	s, i;
+struct	iovec	 iovec[3];
+	int	 s, i;
+	char	*msg;
+	size_t	 len;
 
 	progname = argv[0];
 
@@ -55,9 +57,8 @@ struct	iovec	iovec[3];
 	argc -= optind;
 	argv += optind;
 	
-	if (argc != 1) {
-		fprintf(stderr, "%s: %s arguments\n", progname, 
-				argc == 0 ? "not enough" : "too many");
+	if (argc < 1) {
+		fprintf(stderr, "%s: not enough arguments\n", progname);
 		usage();
 	}
 	
@@ -76,18 +77,28 @@ struct	iovec	iovec[3];
 	else
 		s = sock_unix(host ? host : "/tmp/servmon.log");
 	
+	len = 1;
+	for (i = 0; i < argc; ++i)
+		len += strlen(argv[i]) + 1;
+	msg = alloca(len);
+	*msg = '\0';
+	for (i = 0; i < argc; ++i) {
+		strcat(msg, argv[i]);
+		strcat(msg, " ");
+	}
+
 	/*
 	 * servmon truncates messages longer than this.
 	 */
-	if (strlen(argv[0]) > 4096)
-		argv[0][4096] = '\0';
+	if (strlen(msg) > 4096)
+		msg[4096] = '\0';
 
 	iovec[0].iov_base = level;
 	iovec[0].iov_len = strlen(level);
 	iovec[1].iov_base = " ";
 	iovec[1].iov_len = 1;
-	iovec[2].iov_base = argv[0];
-	iovec[2].iov_len = strlen(argv[0]);
+	iovec[2].iov_base = msg;
+	iovec[2].iov_len = strlen(msg);
 
 	if (writev(s, iovec, 3) < 0) {
 		perror("write");
