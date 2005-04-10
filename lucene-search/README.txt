@@ -1,12 +1,13 @@
   Lucene Search extension for MediaWiki
   =====================================
 
-Note, that this is very much under developement, and is not likely to be
-useful right now except for people wishing to help finish it.
+Note: This is at best beta-quality code.  Be aware that it may contain bugs
+and not work as intended. If you want to use it, please report any issues 
+to the authors (see end of file).
 
 To use:
 
-  1. Compile the sources using Eclipse, or download the binary
+  1. Compile the sources using Eclipse or Ant, or download the binary
      distribution [not yet available].
   2. Build the initial search index:
   
@@ -22,16 +23,16 @@ To use:
   5. Install the LuceneSearch extension from the `extensions' module in your
      MediaWiki.  Make sure $wgDisableInternalSearch is enabled.
 
-
-
 Requirements:
-* Jakarta Lucene: http://jakarta.apache.org/lucene/
+* Jakarta Lucene: http://lucene.apache.org/
 * BerkeleyDB Java Edition: http://www.sleepycat.com/
+  (only required if you use TitlePrefixMatcher).
 * MySQL Connector/J: http://www.mysql.com/products/connector/j/
 * MediaWiki 1.4 or 1.5
 
 Should now work with Java 1.4 as well as 1.5.
-Testing w/ GCJ will be done later...
+Testing w/GCJ has been done, and except for the prefix matcher, it appears to work.
+(BerkeleyDB does not work under GCJ at the moment, and the matcher requires it).
 
 Right now the build process is a bit spotty and requires things to be at odd
 paths. This will probably get cleaned up at some point.
@@ -39,6 +40,5 @@ paths. This will probably get cleaned up at some point.
 Todo:
 * Close sockets cleanly on errors
 * Clean up build process
-* GCJ native build
 
-Send feedback to wikitech-l@mail.wikimedia.org or kate.turner@gmail.com.
+Send feedback to wikitech-l@mail.wikimedia.org.
