@@ -8,12 +8,6 @@
   <property file="${user.home}/build.properties"/>
   <property file="${basedir}/build.properties"/>
 
-  <tstamp>
-    <format property="current.year" pattern="yyyy"/>
-    <format property="DSTAMP" pattern="yyyy-MM-dd"/>
-    <format property="TSTAMP" pattern="HH:mm:ss"/>
-  </tstamp>
-
   <property name="name" value="lucene-search"/>
   <property name="Name" value="Lucene-Search"/>
   <property name="version" value="20041228"/>
@@ -54,7 +48,7 @@
     <mkdir dir="${build.dir}/"/>
     <javac
       encoding="${build.encoding}"
-      srcdir="src/"
+      srcdir="org/"
       includes="**/*.java"
       destdir="${build.dir}/"
       deprecation="${javac.deprecation}"
@@ -96,7 +90,7 @@
   <!-- ================================================================== -->
   <target name="jar-src" depends="init">
     <jar destfile="${build.dir}/${final.name}-src.jar">
-      <fileset dir="." includes="src/"/>
+      <fileset dir="." includes="org/"/>
     </jar>
   </target>
 
@@ -108,8 +102,8 @@
   <target name="javadocs">
     <mkdir dir="${build.dir}/docs/api"/>
     <javadoc
-      sourcepath="src/"
-      overview="src/overview.html"
+      sourcepath="org/"
+      overview="org/overview.html"
       packagenames="org.mediawiki.lsearch.*"
       destdir="${build.dir}/docs/api"
       encoding="${build.encoding}"
@@ -143,7 +137,7 @@
     <delete file="${dist.dir}/${final.name}.zip"/>
     <zip destfile="${dist.dir}/${final.name}.zip">
       <zipfileset prefix="${final.name}" dir="."
-        includes="src/,build.xml,docs/,*.txt"/>
+        includes="org/,build.xml,docs/,*.txt"/>
       <zipfileset prefix="${final.name}" dir="${build.dir}"
         includes="${final.name}.jar,${demo.war.name}.war,${demo.name}.jar,docs/"/>
     </zip>
@@ -162,7 +156,7 @@
     <delete file="${dist.dir}/${final.name}.tar.gz"/>
     <tar tarfile="${build.dir}/${final.name}.tar">
       <tarfileset prefix="${final.name}" dir="."
-        includes="src/,build.xml,docs/,*.txt"/>
+        includes="org/,build.xml,docs/,*.txt"/>
       <tarfileset prefix="${final.name}" dir="${build.dir}"
         includes="${final.name}.jar,${demo.war.name}.war,${demo.name}.jar,docs/"/>
     </tar>
@@ -200,7 +194,7 @@
     description="--> Generates the Lucene-Search sources as .zip">
     <zip destfile="${dist.dir}/${final.name}-src.zip">
       <zipfileset prefix="${final.name}" dir="."
-        includes="src/,build.xml,docs/,*.txt"/>
+        includes="org/,build.xml,docs/,*.txt"/>
     </zip>
   </target>
 
@@ -216,7 +210,7 @@
     <delete file="${dist.dir}/${final.name}-src.tar.gz"/>
     <tar tarfile="${build.dir}/${final.name}-src.tar">
       <tarfileset prefix="${final.name}" dir="."
-        includes="src/,build.xml,docs/,*.txt"/>
+        includes="org/,build.xml,docs/,*.txt"/>
     </tar>
 
     <gzip zipfile="${dist.dir}/${final.name}-src.tar.gz"
