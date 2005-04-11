@@ -14,26 +14,30 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <limits.h>
+#include <errno.h>
 #include <tar.h>
 
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
+/*
+ * POSIX 1003.1-1990 tar(1) header.
+ */
 struct tar {
-	char tr_name[100];
-	char tr_mode[8];
-	char tr_uid[8];
-	char tr_gid[8];
-	char tr_size[12];
-	char tr_mtime[12];
-	char tr_chksum[8];
-	char tr_typeflag;
-	char tr_linkname[100];
-	char tr_magic[6];
-	char tr_version[2];
-	char tr_uname[32];
-	char tr_gname[32];
-	char tr_devmajor[8];
-	char tr_devminor[8];
+	char tr_name[100];	/* file name		*/
+	char tr_mode[8];	/* mode			*/
+	char tr_uid[8];		/* owner (numeric)	*/
+	char tr_gid[8];		/* group (numeric)	*/
+	char tr_size[12];	/* size in bytes	*/
+	char tr_mtime[12];	/* mtime		*/
+	char tr_chksum[8];	/* checksum of header	*/
+	char tr_typeflag;	/* file type		*/
+	char tr_linkname[100];	/* symlink target	*/
+	char tr_magic[6];	/* tar magic: "ustar "	*/
+	char tr_version[2];	/* tar version: "00"	*/
+	char tr_uname[32];	/* owner (string)	*/
+	char tr_gname[32];	/* group (string)	*/
+	char tr_devmajor[8];	/* device major		*/
+	char tr_devminor[8];	/* device minor		*/
 	char tr_prefix[155];
 } __attribute__((packed));
 
@@ -41,7 +45,7 @@ const char *progname;
 
 int tflag;
 int blocksleep, filesleep;
-int blocksize;
+int blocksize = 8192;
 char *src, *dest;
 char *curdir;
 FILE *tarfile;
@@ -55,11 +59,11 @@ void __attribute__((noreturn))
 usage(void)
 {
 	fprintf(stderr,
-		"Usage: %s -s blocksize -b blocksleep -f filesleep [-t] <dir1> <dest>\n"
+		"Usage: %s -s blocksize [-b blocksleep] [-f filesleep] [-t] <src> <dest>\n"
+		"\t-s blocksize          amount of data to read/write at one time\n"
 		"\t-b blocksleep         time to sleep between each block (microseconds)\n"
-		"\t-s blocksize          amount of data to reach at one time\n"
 		"\t-f filesleep          time to sleep between each file (microseconds)\n"
-		"\t-t                    output a tar(1) file instead of copying\n",
+		"\t-t                    output a tar(1) file called <dest> instead of copying\n",
 		progname);
 	exit(8);
 }
@@ -97,12 +101,12 @@ main(argc, argv)
 	if (argc != 2)
 		usage();
 
-	if (!blocksize || !blocksleep || !filesleep)
-		usage();
-
 	src = argv[0];
 	dest = argv[1];
 
+	/*
+	 * Ensure dest is an absolute path.
+	 */
 	if (*dest != '/') {
 		char *cwd = getcwd(NULL, PATH_MAX);
 		char *olddest = dest;
@@ -126,11 +130,12 @@ main(argc, argv)
 		exit(8);
 	}
 
-	curdir = strdup(".");
-	copy_directory(curdir);
+	curdir = strdup("");
+	copy_directory(".");
 	
 	if (tarfile)
 		fclose(tarfile);
+
 	return 0;
 }
 
@@ -150,7 +155,7 @@ struct	stat	 sb;
 
 	oldcur = curdir;
 	curdir = alloca(strlen(oldcur) + strlen(dir) + 2);
-	sprintf(curdir, "%s/%s", oldcur, dir);
+	sprintf(curdir, "%s%s/", oldcur, dir);
 
 	if ((dirp = opendir(".")) == NULL) {
 		perror(dir);
@@ -168,22 +173,32 @@ struct	stat	 sb;
 
 		if (sb.st_mode & S_IFDIR) {
 			char *dpath;
-			fprintf(stderr, "d %s/%s\n", curdir, dp->d_name);
+			fprintf(stderr, "d %s%s\n", curdir, dp->d_name);
+			/*
+			 * If not creating a tar file, we need to create the destination directory.
+			 */
 			if (!tflag) {
 				dpath = alloca(strlen(dest) + strlen(curdir) + strlen(dp->d_name) + 3);
-				sprintf(dpath, "%s/%s/%s", dest, curdir, dp->d_name);
-				if (mkdir(dpath, 0777) < 0) {
+				sprintf(dpath, "%s/%s%s", dest, curdir, dp->d_name);
+				/*
+				 * We don't care about permissions, so if the directory already
+				 * exists, just leave it.
+				 */
+				if (mkdir(dpath, 0777) < 0 && errno != EEXIST) {
 					perror(dpath);
 					exit(8);
 				}
 			}
 			copy_directory(dp->d_name);
 		} else if (sb.st_mode & S_IFREG) {
-			fprintf(stderr, "f %s/%s\n", curdir, dp->d_name);
+			fprintf(stderr, "f %s%s\n", curdir, dp->d_name);
 			copy_file(dp->d_name, &sb);
 			usleep(filesleep);
 		} else {
-			fprintf(stderr, "%s: ignoring %s/%s: neither directory nor file\n", progname, curdir, dp->d_name);
+			/*
+			 * Ignore special files...
+			 */
+			fprintf(stderr, "%s: ignoring %s%s: neither directory nor file\n", progname, curdir, dp->d_name);
 		}
 	}
 	closedir(dirp);
@@ -201,8 +216,12 @@ struct	tar	 hdr;
 	char	*buf;
 	int	 sum = 0, i;
 
+	/*
+	 * This is a very lax tar header.  It's accepted by Solaris tar
+	 * and GNU tar, but misses some information we don't use.
+	 */
 	memset(&hdr, 0, sizeof(hdr));
-	snprintf(hdr.tr_name, sizeof(hdr.tr_name), "%s/%s", curdir, name);
+	snprintf(hdr.tr_name, sizeof(hdr.tr_name), "%s%s", curdir, name);
 	sprintf(hdr.tr_mode, "%07o", sb->st_mode & 0777);
 	sprintf(hdr.tr_uid, "%07o", sb->st_uid);
 	sprintf(hdr.tr_gid, "%07o", sb->st_gid);
@@ -243,7 +262,7 @@ copy_file(name, sb)
 		write_tarheader(name, sb);
 	} else {
 		outname = alloca(strlen(dest) + strlen(curdir) + strlen(name) + 3);
-		sprintf(outname, "%s/%s/%s", dest, curdir, name);
+		sprintf(outname, "%s/%s%s", dest, curdir, name);
 		if ((out = fopen(outname, "w")) == NULL) {
 			perror(outname);
 			exit(8);
