@@ -169,11 +169,13 @@ struct	stat	 sb;
 		if (sb.st_mode & S_IFDIR) {
 			char *dpath;
 			fprintf(stderr, "d %s/%s\n", curdir, dp->d_name);
-			dpath = alloca(strlen(dest) + strlen(curdir) + strlen(dp->d_name) + 3);
-			sprintf(dpath, "%s/%s/%s", dest, curdir, dp->d_name);
-			if (mkdir(dpath, 0777) < 0) {
-				perror(dpath);
-				exit(8);
+			if (tflag) {
+				dpath = alloca(strlen(dest) + strlen(curdir) + strlen(dp->d_name) + 3);
+				sprintf(dpath, "%s/%s/%s", dest, curdir, dp->d_name);
+				if (mkdir(dpath, 0777) < 0) {
+					perror(dpath);
+					exit(8);
+				}
 			}
 			copy_directory(dp->d_name);
 		} else if (sb.st_mode & S_IFREG) {
