@@ -169,7 +169,7 @@ struct	stat	 sb;
 		if (sb.st_mode & S_IFDIR) {
 			char *dpath;
 			fprintf(stderr, "d %s/%s\n", curdir, dp->d_name);
-			if (tflag) {
+			if (!tflag) {
 				dpath = alloca(strlen(dest) + strlen(curdir) + strlen(dp->d_name) + 3);
 				sprintf(dpath, "%s/%s/%s", dest, curdir, dp->d_name);
 				if (mkdir(dpath, 0777) < 0) {
