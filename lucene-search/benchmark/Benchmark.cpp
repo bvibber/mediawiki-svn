@@ -33,6 +33,7 @@
 #include <vector>
 #include <string>
 #include <exception>
+#include <ctime>
 
 #include <boost/format.hpp>
 #include <boost/thread.hpp>
@@ -40,7 +41,6 @@
 
 using std::string;
 using std::vector;
-using std::clock_t;
 using std::cout;
 using std::exception;
 
@@ -55,8 +55,39 @@ typedef boost::mutex bmutex;
 string urlencode(string const& s) {
 	string result;
 	for (string::const_iterator it = s.begin(), end = s.end(); it != end; ++it)
-		result += str(format("%02x") % (unsigned int)(unsigned char)*it);
+		if ((*it >= 'a' && *it <= 'z') || (*it >= 'A' && *it <= 'Z'))
+			result += *it;
+		else
+			result += str(format("%%%02x") % (unsigned int)(unsigned char)*it);
 	return result;
+}
+
+double
+timenow(void)
+{
+	struct timeval tp;
+	gettimeofday(&tp, NULL);
+	return tp.tv_sec + (double(tp.tv_usec) / 1000000);
+}
+ 
+string
+tdifffmt(double i)
+{
+	return str(format("%.4f sec.") % i);
+}
+
+template<typename ftype, typename ltype>
+void with_lock(ltype& lock, ftype& func)
+{
+	bmutex::scoped_lock l(lock);
+	func();
+}
+
+template<typename ltype, typename int_t>
+void locked_dec(ltype& lock, int_t& v)
+{
+	bmutex::scoped_lock l(lock);
+	--v;
 }
 
 class sample_terms {
@@ -73,9 +104,9 @@ public:
 class benchmark
 {
 public:
-	static void start(vector<string>)
+	static void start(vector<string> args)
 	{
-		benchmark bench("127.0.0.1", 8123, "entest");
+		benchmark bench("127.0.0.1", 8123, args.empty() ? "entest" : args[0]);
 		bench.runs = 100;
 		bench.run_sets(10);
 		bench.do_report();
@@ -89,10 +120,10 @@ private:
 	
 	/* Access these only with timeslock held */
 	bmutex timeslock;
-	vector<int> times;
+	vector<double> times;
 	int total_requests;
 	int total_results;
-	clock_t total_time;
+	double total_time;
 	/* -- */
 	
 	int running_threads;
@@ -103,14 +134,13 @@ private:
 	: host(host_)
 	, port(port_)
 	, database(database_) 
+	, total_requests(0)
+	, total_results(0)
 	, running_threads(0)
 	{}
 	
 	void run_sets(int threads) {
-		{
-			bmutex::scoped_lock l(threadlock);
-			running_threads = threads;
-		}
+		running_threads = threads;
 		
 		for(int i = 0; i < threads; i++)
 			thread t(bind(&benchmark::run_one, this));
@@ -129,16 +159,12 @@ private:
 		for (int i = 0; i < runs; i++)
 			do_search(sample_terms::next());
 
-		{
-			bmutex::scoped_lock l(threadlock);
-			--running_threads;
-		}
+		locked_dec(threadlock, running_threads);
 		threadcond.notify_one();
 	}
 	
 	 void do_search(string term) {
-		clock_t start = clock();
-		
+		double start = timenow();
 		int client;
 		if ((client = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)) == -1) {
 			perror("socket");
@@ -161,6 +187,7 @@ private:
 		
 		char nresults[50];
 		fgets(nresults, sizeof nresults, f);
+		nresults[strlen(nresults) - 1] = '\0';
 		string num_results = nresults;
 		
 		vector<string> lines;
@@ -172,28 +199,27 @@ private:
 		fclose(f);
 		close(client);
 		
-		clock_t delta = clock() - start;
-		cout << format("'%2%' received %3% of %4% lines in %6%\n")
-			% encterm % num_results % num_received % delta;
+		double delta = timenow() - start;
+
+		bmutex::scoped_lock l(timeslock);
+		cout << format("[%-70s] % 5d/% 5d %s\n")
+			% encterm % num_received % num_results % tdifffmt(delta);
 		
-		{
-			bmutex::scoped_lock l(timeslock);
-			times.push_back(delta);
-			total_time += delta;
-			total_results += num_received;
-			++total_requests;
-		}
+		times.push_back(delta);
+		total_time += delta;
+		total_results += num_received;
+		++total_requests;
 	}
 	
 	void do_report() {
-		cout << format("Made %d total requsts\n") % total_requests;
+		cout << format("Made %d total requests\n") % total_requests;
 		cout << format("Received %d total result lines\n") % total_results;
-		cout << format("Spent %d total on all requests\n") % total_time;
-		cout << format("Average time per request: %d\n") % (total_time / total_requests);
-		cout << format("Average time per result: %d\n") % (total_time / total_results);
+		cout << format("Spent %d total on all requests\n") % tdifffmt(total_time);
+		cout << format("Average time per request: %d\n") % tdifffmt((total_time / total_requests));
+		cout << format("Average time per result: %d\n") % tdifffmt((total_time / total_results));
 		sort(times.begin(), times.end());
-		cout << format("Fastest request: %d\n") % times[0];
-		cout << format("Slowest request: %d\n") % times[times.size() - 1];
+		cout << format("Fastest request: %d\n") % tdifffmt(times[0]);
+		cout << format("Slowest request: %d\n") % tdifffmt(times[times.size() - 1]);
 	}
 };
 
