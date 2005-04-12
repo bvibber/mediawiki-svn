@@ -1,0 +1,72 @@
+.Dd April 11, 2005
+.Dt TRICKLE 1
+.Os Wikimedia
+.Sh NAME
+.Nm trickle
+.Nd copy one directory to another directory or a tar file, slowly
+.Sh SYNOPSIS
+.Nm
+.Op Fl t | u
+.Op Fl s Ar blocksize
+.Op Fl b Ar blocksleep
+.Op Fl f Ar filesleep
+.Ar source
+.Ar destination
+.Sh DESCRIPTION
+The
+.Nm
+utility copies one directory to another directory, or creates a
+.Xr tar 1
+file from it, slowly.  Specifically, it sleeps for
+.Ar blocksleep
+microseconds after copying each 
+.Ar blocksize
+bytes, and sleeps for
+.Ar filesleep
+seconds after copying each file or directory.
+.Pp
+The following options are available:
+.Bl -tag -width Ds
+.It Fl u
+Only copy files which don't exist in the destination, or have a newer modification
+time.  The
+.Fl u
+option may not be specified at the same time as the
+.Fl t
+option.
+.It Fl t
+Instead of copying to a directory tree, output a
+.Xr tar 1
+file named
+.Ar destination ,
+or output to stdout if
+.Ar destination
+is "-".  The
+.Fl t 
+option may not be specified at the same time as the
+.Fl u
+option.
+.It Fl s Ar blocksize
+Copy the file in
+.Ar blocksize
+increments.
+.It Fl b Ar blocksleep
+Sleep for
+.Ar blocksleep
+microseconds after copying each block.
+.It Fl f Ar filesleep
+Sleep for
+.Ar filesleep
+microseconds after copying each file.
+.El
+.Sh NOTES
+The POSIX.1
+.Xr tar 1
+file format is limited to 255 bytes of pathname; 155 bytes for the directory name,
+and 100 bytes for the filename.  Path or filenames longer than this will be truncated.
+.Sh AUTHOR
+Kate Turner <keturner@livejournal.com>.
+.Sh SEE ALSO
+.Xr tar 1
+.Pp
+.St -susv2
