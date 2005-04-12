@@ -19,9 +19,22 @@
 #include <tar.h>
 
 #define min(x,y) ((x) < (y) ? (x) : (y))
+#define max(x,y) ((x) < (y) ? (y) : (x))
 
 /*
- * POSIX 1003.1-1990 tar(1) header.
+ * POSIX 1003.1-1990/SUSv2 tar(1) header.
+ *
+ * Regarding name/prefix, SUSv2 says:
+ *
+ *    The name and the prefix fields produce the pathname of the file. The 
+ *    hierarchical relationship of the file can be retained by specifying the 
+ *    pathname as a path prefix, and a slash character and filename as the 
+ *    suffix. A new pathname is formed, if prefix is not an empty string (its 
+ *    first character is not NUL), by concatenating prefix (up to the first NUL 
+ *    character), a slash character and name; otherwise, name is used alone. 
+ *    In either case, name is terminated at the first NUL character. If prefix 
+ *    begins with a NUL character, it will be ignored. In this manner, pathnames 
+ *    of at most 256 characters can be supported.
  */
 struct tar {
 	char tr_name[100];	/* file name		*/
@@ -39,7 +52,7 @@ struct tar {
 	char tr_gname[32];	/* group (string)	*/
 	char tr_devmajor[8];	/* device major		*/
 	char tr_devminor[8];	/* device minor		*/
-	char tr_prefix[155];
+	char tr_prefix[155];	/* directory		*/
 } __attribute__((packed));
 
 const char *progname;
@@ -55,6 +68,7 @@ static void copy_directory(const char *dir);
 static void copy_file(const char *name, struct stat *sb);
 static size_t write_blocked(void *buf, size_t size, FILE *file);
 static void write_tarheader(const char *name, struct stat *sb);
+static void write_tareof(void);
 static int newer(const char *fa, const char *fb);
 
 void __attribute__((noreturn))
@@ -146,8 +160,11 @@ main(argc, argv)
 	curdir = strdup("");
 	copy_directory(".");
 	
-	if (tarfile && tarfile != stdout)
-		fclose(tarfile);
+	if (tarfile) {
+		write_tareof();
+		if (tarfile != stdout)
+			fclose(tarfile);
+	}
 
 	return 0;
 }
@@ -186,7 +203,7 @@ struct	stat	 sb;
 
 		if (sb.st_mode & S_IFDIR) {
 			char *dpath;
-			fprintf(stderr, "d %s%s\n", curdir, dp->d_name);
+			fprintf(stderr, "d  %s%s\n", curdir, dp->d_name);
 			/*
 			 * If not creating a tar file, we need to create the destination directory.
 			 */
@@ -197,7 +214,7 @@ struct	stat	 sb;
 				 * We don't care about permissions, so if the directory already
 				 * exists, just leave it.
 				 */
-				if (mkdir(dpath, 0777) < 0 && errno != EEXIST) {
+				if (mkdir(dpath, sb.st_mode) < 0 && errno != EEXIST) {
 					perror(dpath);
 					exit(8);
 				}
@@ -233,16 +250,28 @@ struct	tar	 hdr;
 	 * and GNU tar, but misses some information we don't use.
 	 */
 	memset(&hdr, 0, sizeof(hdr));
-	snprintf(hdr.tr_name, sizeof(hdr.tr_name), "%s%s", curdir, name);
-	sprintf(hdr.tr_mode, "%07o", sb->st_mode & 0777);
-	sprintf(hdr.tr_uid, "%07o", sb->st_uid);
-	sprintf(hdr.tr_gid, "%07o", sb->st_gid);
-	sprintf(hdr.tr_size, "%011o", sb->st_size);
-	sprintf(hdr.tr_mtime, "%011o", sb->st_mtime);
+	if (strlen(curdir) > 155)
+		fprintf(stderr, "%s: warning: directory for %s%s truncated to 155 characters\n",
+				progname, curdir, name);
+	/*
+	 * Trim the first two characters of curdir, which is always "./", and the last, 
+	 * which is always a "/".  Saves 3 bytes for pathname...
+	 */
+	strncpy(hdr.tr_prefix, curdir + 2, min(sizeof(hdr.tr_prefix), max(0, strlen(curdir + 2) - 1)));
+	if (strlen(name) > 100)
+		fprintf(stderr, "%s: warning: filename for %s%s truncated to 100 characters\n",
+				progname, curdir, name);
+	strncpy(hdr.tr_name, name, sizeof(hdr.tr_name));
+
+	sprintf(hdr.tr_mode, "%07o", (int)(sb->st_mode & 0777));
+	sprintf(hdr.tr_uid, "%07o", (int)sb->st_uid);
+	sprintf(hdr.tr_gid, "%07o", (int)sb->st_gid);
+	sprintf(hdr.tr_size, "%011o", (int)sb->st_size);
+	sprintf(hdr.tr_mtime, "%011o", (int)sb->st_mtime);
 	memcpy(hdr.tr_magic, TMAGIC, TMAGLEN);
 	memcpy(hdr.tr_version, TVERSION, TVERSLEN);
-	sprintf(hdr.tr_uname, "%d", sb->st_uid);
-	sprintf(hdr.tr_gname, "%d", sb->st_gid);
+	sprintf(hdr.tr_uname, "%d", (int)sb->st_uid);
+	sprintf(hdr.tr_gname, "%d", (int)sb->st_gid);
 	strncpy(hdr.tr_chksum, "        ", 8);
 	hdr.tr_typeflag = REGTYPE;
 	
@@ -281,8 +310,6 @@ copy_file(name, sb)
 			exit(8);
 		}
 	}
-
-	fprintf(stderr, "f  %s%s\n", curdir, name);
 
 	if ((f = fopen(name, "r")) == NULL) {
 		perror(name);
@@ -325,6 +352,9 @@ copy_file(name, sb)
 			exit(8);
 		}
 	}
+
+	fprintf(stderr, "f  %s%s %d bytes, %d blocks\n", curdir, name, (int)sb->st_size, (int)sb->st_blocks);
+
 }
 
 static size_t
@@ -351,7 +381,8 @@ write_blocked(buf, size, file)
 }
 
 static int
-newer(const char *fa, const char *fb)
+newer(fa, fb)
+	const char *fa, *fb;
 {
 struct	stat	sa, sb;
 	if (stat(fa, &sa) < 0) {
@@ -369,4 +400,16 @@ struct	stat	sa, sb;
 	}
 
 	return sa.st_mtime > sb.st_mtime;
+}
+
+static void
+write_tareof(void)
+{
+	char buf[1] = {};
+
+	/*
+	 * Two-block EOF.
+	 */
+	write_blocked(buf, 1, tarfile);
+	write_blocked(buf, 1, tarfile);
 }
