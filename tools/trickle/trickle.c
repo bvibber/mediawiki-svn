@@ -311,6 +311,7 @@ copy_file(name, sb)
 
 	if (out)
 		fclose(out);
+	fclose(f);
 	if (tflag)
 		fflush(tarfile);
 	else {
