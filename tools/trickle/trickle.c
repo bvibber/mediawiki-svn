@@ -15,6 +15,7 @@
 #include <dirent.h>
 #include <limits.h>
 #include <errno.h>
+#include <utime.h>
 #include <tar.h>
 
 #define min(x,y) ((x) < (y) ? (x) : (y))
@@ -43,7 +44,7 @@ struct tar {
 
 const char *progname;
 
-int tflag;
+int tflag, uflag;
 int blocksleep, filesleep;
 int blocksize = 8192;
 char *src, *dest;
@@ -54,16 +55,18 @@ static void copy_directory(const char *dir);
 static void copy_file(const char *name, struct stat *sb);
 static size_t write_blocked(void *buf, size_t size, FILE *file);
 static void write_tarheader(const char *name, struct stat *sb);
+static int newer(const char *fa, const char *fb);
 
 void __attribute__((noreturn))
 usage(void)
 {
 	fprintf(stderr,
-		"Usage: %s -s blocksize [-b blocksleep] [-f filesleep] [-t] <src> <dest>\n"
+		"Usage: %s -s blocksize [-b blocksleep] [-f filesleep] [-tu] <src> <dest>\n"
 		"\t-s blocksize          amount of data to read/write at one time\n"
 		"\t-b blocksleep         time to sleep between each block (microseconds)\n"
 		"\t-f filesleep          time to sleep between each file (microseconds)\n"
-		"\t-t                    output a tar(1) file called <dest> instead of copying\n",
+		"\t-t                    output a tar(1) file called <dest> instead of copying\n"
+		"\t-u                    don't copy files with a modification date older than the target\n",
 		progname);
 	exit(8);
 }
@@ -76,10 +79,13 @@ main(argc, argv)
 
 	progname = argv[0];
 
-	while ((i = getopt(argc, argv, "ts:b:f:")) != -1) {
+	while ((i = getopt(argc, argv, "uts:b:f:")) != -1) {
 		switch(i) {
 		case 't':
 			tflag++;
+			break;
+		case 'u':
+			uflag++;
 			break;
 		case 's':
 			blocksize = atoi(optarg);
@@ -100,6 +106,11 @@ main(argc, argv)
 
 	if (argc != 2)
 		usage();
+
+	if (uflag && tflag) {
+		fprintf(stderr, "%s: -u and -t may not be specified together\n", progname);
+		usage();
+	}
 
 	src = argv[0];
 	dest = argv[1];
@@ -191,7 +202,6 @@ struct	stat	 sb;
 			}
 			copy_directory(dp->d_name);
 		} else if (sb.st_mode & S_IFREG) {
-			fprintf(stderr, "f %s%s\n", curdir, dp->d_name);
 			copy_file(dp->d_name, &sb);
 			usleep(filesleep);
 		} else {
@@ -253,20 +263,28 @@ copy_file(name, sb)
 	char	*buf, *outname;
 	size_t	 bsize;
 
-	if ((f = fopen(name, "r")) == NULL) {
-		perror(name);
-		exit(8);
-	}
-
 	if (tflag) {
 		write_tarheader(name, sb);
 	} else {
 		outname = alloca(strlen(dest) + strlen(curdir) + strlen(name) + 3);
 		sprintf(outname, "%s/%s%s", dest, curdir, name);
+
+		if (uflag && newer(outname, name)) {
+			fprintf(stderr, "fu %s%s\n", curdir, name);
+			return;
+		}
+
 		if ((out = fopen(outname, "w")) == NULL) {
 			perror(outname);
 			exit(8);
 		}
+	}
+
+	fprintf(stderr, "f  %s%s\n", curdir, name);
+
+	if ((f = fopen(name, "r")) == NULL) {
+		perror(name);
+		exit(8);
 	}
 
 	buf = alloca(blocksize);
@@ -295,6 +313,15 @@ copy_file(name, sb)
 		fclose(out);
 	if (tflag)
 		fflush(tarfile);
+	else {
+		struct utimbuf ut;
+		ut.actime = sb->st_atime;
+		ut.modtime = sb->st_mtime;
+		if (utime(outname, &ut) < 0) {
+			perror(outname);
+			exit(8);
+		}
+	}
 }
 
 static size_t
@@ -318,4 +345,25 @@ write_blocked(buf, size, file)
 		size -= tow;
 	}
 	return ret;
+}
+
+static int
+newer(const char *fa, const char *fb)
+{
+struct	stat	sa, sb;
+	if (stat(fa, &sa) < 0) {
+		if (errno == ENOENT)
+			return 0;
+		perror(fa);
+		exit(8);
+	}
+
+	if (stat(fb, &sb) < 0) {
+		if (errno == ENOENT)
+			return 0;
+		perror(fb);
+		exit(8);
+	}
+
+	return sa.st_mtime > sb.st_mtime;
 }
