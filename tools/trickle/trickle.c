@@ -118,7 +118,7 @@ main(argc, argv)
 	/*
 	 * Ensure dest is an absolute path.
 	 */
-	if (*dest != '/' && !strcmp(dest, "-")) {
+	if (*dest != '/' && strcmp(dest, "-")) {
 		char *cwd = getcwd(NULL, PATH_MAX);
 		char *olddest = dest;
 		dest = alloca(strlen(cwd) + strlen(olddest) + 2);
