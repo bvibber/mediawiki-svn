@@ -30,7 +30,11 @@
 #
 #  require_once("../extensions/LuceneSearch.php");
 #
-# The MWDaemon search daemon needs to be running on the specified host
+# To load-balance with from multiple servers:
+#
+#  $wgLuceneHost = array( "192.168.0.1", "192.168.0.2" );
+#
+# The MWDaemon search daemon needs to be running on the specified host(s)
 # - it's in the 'lucene-search' module in CVS.
 ##########
 
@@ -503,10 +507,17 @@ class LuceneSearch extends SpecialPage
 			return $resultset;
 		}
 		
+		if( is_array( $wgLuceneHost ) ) {
+			$pick = mt_rand( 0, count( $wgLuceneHost ) - 1 );
+			$host = $wgLuceneHost[$pick];
+		} else {
+			$host = $wgLuceneHost;
+		}
+		
 		$sock = socket_create( AF_INET, SOCK_STREAM, SOL_TCP );
 		socket_set_option( $sock, SOL_SOCKET, SO_SNDTIMEO,
 			array( "sec" => 2, "usec" => 0 ) );
-		@$conn = socket_connect( $sock, $wgLuceneHost, $wgLucenePort );
+		@$conn = socket_connect( $sock, $host, $wgLucenePort );
 		if( $conn === false ) {
 			wfProfileOut( $fname );
 			return false;
