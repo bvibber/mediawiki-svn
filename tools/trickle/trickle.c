@@ -118,7 +118,7 @@ main(argc, argv)
 	/*
 	 * Ensure dest is an absolute path.
 	 */
-	if (*dest != '/') {
+	if (*dest != '/' && !strcmp(dest, "-")) {
 		char *cwd = getcwd(NULL, PATH_MAX);
 		char *olddest = dest;
 		dest = alloca(strlen(cwd) + strlen(olddest) + 2);
@@ -130,7 +130,9 @@ main(argc, argv)
 		src, tflag ? "tar file " : "", dest, blocksize, blocksleep, filesleep);
 
 	if (tflag) {
-		if ((tarfile = fopen(dest, "w")) == NULL) {
+		if (!strcmp(dest, "-"))
+			tarfile = stdout;
+		else if ((tarfile = fopen(dest, "w")) == NULL) {
 			perror(dest);
 			exit(8);
 		}
@@ -144,7 +146,7 @@ main(argc, argv)
 	curdir = strdup("");
 	copy_directory(".");
 	
-	if (tarfile)
+	if (tarfile && tarfile != stdout)
 		fclose(tarfile);
 
 	return 0;
