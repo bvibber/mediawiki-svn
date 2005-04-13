@@ -10,6 +10,8 @@
 #
 # To do: Edit conflicts
 #
+require("language.pl");
+
 use Config::IniFiles;  # Module for config files in .ini syntax
 use LWP::UserAgent;    # Web agent module for retrieving and posting HTTP data
 use URI::Escape;       # Urlencode functions
@@ -19,8 +21,9 @@ use Encode qw(encode); # UTF-8/iso8859-1 encoding
 # By default, config will be searched for in your Unix home directory 
 # (e.g. ~/.ee-helper/ee.ini). Change path of the configuration file if needed!
 $cfgfile=$ENV{HOME}."/.ee-helper/ee.ini";
-$DEBUG=0;
 
+$DEBUG=0;
+$LANGUAGE="de";
 
 # Read config
 my $cfg = new Config::IniFiles( -file => $cfgfile );
@@ -29,10 +32,7 @@ my $cfg = new Config::IniFiles( -file => $cfgfile );
 my $args=join(" ",@ARGV);
 
 # Where do we store our files?
-my $tempdir=$cfg->val("Settings","Temp Path") or 
-die "No path for temporary files specified. Please edit $cfgfile and add an entry like this:
-[Settings]
-Temp Path=/tmp\n";
+my $tempdir=$cfg->val("Settings","Temp Path") or die _("notemppath",$cfgfile);
 
 # Remove slash at the end of the directory name, if existing
 $/="/";  
@@ -54,9 +54,7 @@ if($DEBUG) {
 if(-e $args) {
 	$input = new Config::IniFiles( -file => $args );
 } else {
-	print "No control file specified.\n";
-	print "Syntax: perl ee.pl <control file>\n";
-	exit 1;
+	die _("nocontrolfile");
 }
 
 # Initialize the browser as Firefox 1.0 with new cookie jar
@@ -98,15 +96,15 @@ if($type eq "Edit file") {
 } elsif($type eq "Diff text") {
 	$secondurl=$input->val("File 2","URL");
 	if(!$secondurl) {
-		die "Process is diff, but only one file specified in input file.\n";
+		die _("twofordiff");
 	}
 	$diffcommand=$cfg->val("Settings","Diff");
 	if(!$diffcommand) {
-		die "Process is diff, but no diff command set in ee.ini.\n";	
+		die _("nodifftool");	
 	}
 } else {
 		# Nothing we know!
-		die "Undefined or unknown process in input file.";	
+		die _("unknownprocess");	
 }
 
 
@@ -142,8 +140,7 @@ Content=>[wpName=>$username,wpPassword=>$password,wpRemember=>"1",wpLoginAttempt
 
 # We expect a redirect after successful login
 if($response->code!=302 && !$ignore_login_error) {
-	die "Could not login with username '$username' and password '$password'.\n
-Make sure you have a definition for this website in your ee.ini.\n"
+	die _("loginfailed",$login_url,$username,$password);
 }
 
 $response=$browser->get($fileurl);
@@ -240,16 +237,16 @@ sub makegui {
 
 	$vbox = Gtk2::VBox->new;
 	$hbox = Gtk2::HBox->new;
-	$label =  Gtk2::Label->new("Summary");
+	$label =  Gtk2::Label->new(_("summary"));
 	$entry = Gtk2::Entry->new;
 	$hbox->pack_start_defaults($label);
 	$hbox->pack_start_defaults($entry);
 	
 	$hbox2 = Gtk2::HBox->new;
-	$savebutton =  Gtk2::Button->new("Save");
-	$savecontbutton =  Gtk2::Button->new("Save and continue");
-	$previewbutton =  Gtk2::Button->new("Preview");
-	$cancelbutton = Gtk2::Button->new("Cancel");
+	$savebutton =  Gtk2::Button->new(_("save"));
+	$savecontbutton =  Gtk2::Button->new(_("savecont"));
+	$previewbutton =  Gtk2::Button->new(_("preview"));
+	$cancelbutton = Gtk2::Button->new(_("cancel"));
 	$hbox2->pack_start_defaults($savebutton);
 	$hbox2->pack_start_defaults($savecontbutton);
 	$hbox2->pack_start_defaults($previewbutton);
@@ -259,7 +256,7 @@ sub makegui {
 	
 	# Set up window
 	$window = Gtk2::Window->new;
-	$window->set_title ('Enter edit summary');
+	$window->set_title (_("entersummary"));
 	$window->signal_connect (delete_event => sub {Gtk2->main_quit});
 	$savebutton->signal_connect (clicked => \&save);
 	$savecontbutton->signal_connect ( clicked => \&savecont);
