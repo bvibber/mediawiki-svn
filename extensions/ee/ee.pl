@@ -70,13 +70,15 @@ $browser->cookie_jar( {} );
 );
 
 # Obtain parameters from control file
+$special=$input->val("Process","Special namespace");
 $fileurl=$input->val("File","URL");
 $type=$input->val("Process","Type");
 $script=$input->val("Process","Script");
 $server=$input->val("Process","Server");
 $path=$input->val("Process","Path");
-$login_url=$script."?title=Special:Userlogin&action=submitlogin";
+$login_url=$script."?title=$special:Userlogin&action=submitlogin";
 $ext=$input->val("File","Extension");
+if($special eq "") { $special="Special"; };
 
 # Edit file: change an image, sound etc. in an external app
 # Edit text: change a regular text file
@@ -86,7 +88,7 @@ if($type eq "Edit file") {
 	$filename=substr($fileurl,rindex($fileurl,"/")+1);
 	# Image: is canonical namespace name, should always work
 	$view_url=$script."?title=Image:$filename"; 
-	$upload_url=$script."?title=Special:Upload";
+	$upload_url=$script."?title=$special:Upload";
 } elsif($type eq "Edit text") {
 	$fileurl=~m|\?title=(.*?)\&action=|i;
 	$pagetitle=$1;
@@ -302,6 +304,7 @@ sub save {
 	}
 	# Upload file back to the server and load URL in browser
 	if($type eq "Edit file") {		
+		print $upload_url;
  		$response=$browser->post($upload_url,
  		@ns_headers,Content_Type=>'form-data',Content=>
  		[
@@ -310,10 +313,9 @@ sub save {
  		wpUploadAffirm=>"1",
  		wpUpload=>"Upload file",
  		wpIgnoreWarning=>"1"
- 		]);
+ 		]);		
 		if($browseaftersave eq "true" && $previewclient && !$preview) {
-			$previewclient=~s/\$url/$view_url/i;
-			print "View URL: $view_url\n";
+			$previewclient=~s/\$url/$view_url/i;			
 			system(qq|$previewclient|);
 			$previewclient=$cfg->val("Settings","Browser");	
 		} 
