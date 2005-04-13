@@ -240,7 +240,8 @@ class LuceneSearch extends SpecialPage
 				$i = $offset;
 				$resq = trim(preg_replace("/[ |\\[\\]()\"{}+]+/", " ", $q));
 				$contextWords = implode("|", 
-					array_map( 'preg_quote', $wgContLang->convertForSearchResult(split(" ", $resq))));
+					array_map( array( &$this, 'regexQuote' ),
+						$wgContLang->convertForSearchResult(split(" ", $resq))));
 
 				$top = wfMsg("searchnumber", $offset + 1, 
 					min($numresults, $offset+$limit), $numresults);
@@ -287,6 +288,14 @@ class LuceneSearch extends SpecialPage
 		}
 		$wgOut->setRobotpolicy('noindex,nofollow');
 		wfProfileOut( $fname );
+	}
+	
+	/**
+	 * Stupid hack around PHP's limited lambda support
+	 * @access private
+	 */
+	function regexQuote( $term ) {
+		return preg_quote( $term, '/' );
 	}
 	
 	/**
