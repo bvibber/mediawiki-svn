@@ -24,7 +24,9 @@
 package org.wikimedia.lsearch;
 
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.ArrayList;
 
 /**
  * @author Kate Turner
@@ -45,11 +47,13 @@ public class MWSearch {
 	
 	public static void main(String[] args) {
 		if (args.length < 1) {
-			log.severe("Must specify database name");
+			log.severe("Must specify an action!");
 			return;
 		}
 		
-		for (int i = 0; i < args.length - 1;) {
+		ArrayList dbnames = new ArrayList();
+		
+		for (int i = 0; i < args.length;) {
 			if (args[i].equals("-rebuild")) {
 				what = DOING_FULL_UPDATE;
 			} else if (args[i].equals("-increment")) {
@@ -57,7 +61,9 @@ public class MWSearch {
 			} else if (args[i].equals("-configfile")) {
 				Configuration.setConfigFile(args[++i]);
 			} else {
-				break;
+				// hope it's a database name
+				dbnames.add(args[i]);
+				//break;
 			}
 			++i;
 		}
@@ -70,11 +76,18 @@ public class MWSearch {
 		
 		System.out.println(
 				"MWSearch Lucene search indexer - standalone index rebuilder.\n" +
-				"Version 20050409, copyright 2004 Kate Turner.\n");
-		String[] dbnames = config.getArray("mwsearch.databases");
+				"Version 20050413, copyright 2004 Kate Turner.\n");
+		if (dbnames.isEmpty()) {
+			System.out.println("No databases specified; processing all.");
+			//dbnames = config.getArray("mwsearch.databases");
+			String[] foo = config.getArray("mwsearch.databases");
+			for(int i = 0; i < foo.length; i++)
+				dbnames.add(foo[i]);
+		}
+		
 		//for (String dbname: dbnames) {
-		for (int i = 0; i < dbnames.length; i++) {
-			String dbname = dbnames[i];
+		for (int i = 0; i < dbnames.size(); i++) {
+			String dbname = (String)dbnames.get(i);
 			SearchState state;
 			try {
 				state = SearchState.forWiki(dbname);
