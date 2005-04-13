@@ -229,8 +229,12 @@ class LuceneSearch extends SpecialPage
 				$o = wfMsg("searchnoresults");
 				$wgOut->addHTML($o);
 			} else {
-				if ($limit == 0 || $limit > 100)
-					$limit = LS_PER_PAGE;
+				if ($limit <= 0 || $limit > 100) {
+					$limit = IntVal( $wgUser->getOption( 'searchlimit' ) );
+					if ($limit <= 0 || $limit > 100) {
+						$limit = LS_PER_PAGE;
+					}
+				}
 				
 				$showresults = min($limit, count($results)-$numresults);
 				$i = $offset;
