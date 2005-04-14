@@ -4,7 +4,7 @@ mwsearch.username=searchuser
 mwsearch.password=whatever
 
 mwsearch.database.host=localhost
-mwsearch.dburl=jdbc:mysql://localhost/somedatabase
+mwsearch.dburl=jdbc:mysql://{0}/{1}
 
 # A directory to put the search index in.  It will be created if
 # it doesn't already exist. The {0} parameter is filled in by
