@@ -24,7 +24,6 @@
 package org.wikimedia.lsearch;
 
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.ArrayList;
 

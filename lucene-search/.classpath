@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lucene-1.4.3.jar"/>
 	<classpathentry kind="lib" path="mysql-connector-java-3.0.16-ga-bin.jar"/>
+	<classpathentry kind="lib" path="db.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

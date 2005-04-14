@@ -24,6 +24,8 @@ SOURCES=org/wikimedia/lsearch/Article.java \
         org/wikimedia/lsearch/Configuration.java \
         org/wikimedia/lsearch/DatabaseConnection.java \
         org/wikimedia/lsearch/EnglishAnalyzer.java \
+        org/wikimedia/lsearch/EsperantoAnalyzer.java \
+        org/wikimedia/lsearch/EsperantoStemFilter.java \
         org/wikimedia/lsearch/MWDaemon.java \
         org/wikimedia/lsearch/MWSearch.java \
         org/wikimedia/lsearch/SearchClientReader.java \

@@ -83,4 +83,15 @@ public class Configuration {
 		String s = getString(name);
 		return s != null && s.equals("true");
 	}
+	
+	public String getLanguage(String dbname) {
+		String[] suffixes = getArray("mwsearch.suffix");
+		if (suffixes == null)
+			return "en";
+		for (int i = 0; i < suffixes.length; i++) {
+			if (dbname.endsWith(suffixes[i]))
+				return dbname.substring(0, dbname.length() - suffixes[i].length());
+		}
+		return "en";
+	}
 }

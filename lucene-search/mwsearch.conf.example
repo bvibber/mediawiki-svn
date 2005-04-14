@@ -15,8 +15,17 @@ mwsearch.titledb=./mwtitle/{0}
 # List of all databases separated by spaces.
 mwsearch.databases=enwiki plwiki svwiki zhwiki
 
-# List of thosedatabases in Latin-1 encoding, separated by spaces.
+# List of those databases in Latin-1 encoding, separated by spaces.
+# Any other database is assumed to be UTF-8 encoded.
+# This affects only the index build, when data is pulled from the DB.
 #mwsearch.latin1dbs=enwiki svwiki
+
+# Databases whose names carry these suffixes are assumed
+# to have a language prefix. The prefix will be used
+# to select a language-specific analyzer to handle
+# stop-words, grammatical normalization, and word separation.
+# Unrecognized languages will get the English analyzer.
+mwsearch.suffix=test wiki wikinews wiktionary
 
 # Set this to run with MediaWiki 1.4 databases;
 # if running with MediaWiki 1.5, remove it.

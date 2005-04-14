@@ -43,6 +43,8 @@ import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Searcher;
 
+import org.apache.lucene.analysis.de.GermanAnalyzer;
+import org.apache.lucene.analysis.ru.RussianAnalyzer;
 //import com.sleepycat.je.DatabaseException;
 
 /**
@@ -118,7 +120,8 @@ public class SearchState {
 			f.mkdirs();
 		
 		log.fine(dbname + ": opening state");
-		analyzer = new EnglishAnalyzer();
+		analyzer = getAnalyzerForLanguage(config.getLanguage(dbname));
+		log.info(dbname + " using analyzer " +analyzer.getClass().getName());
 		parser = new QueryParser("contents", analyzer);
 		try {
 			reader = IndexReader.open(indexpath);
@@ -132,6 +135,20 @@ public class SearchState {
 		mydbname = dbname;
 	}
 	
+	/**
+	 * @param language
+	 * @return
+	 */
+	private Analyzer getAnalyzerForLanguage(String language) {
+		if (language.equals("de"))
+			return new GermanAnalyzer();
+		if (language.equals("eo"))
+			return new EsperantoAnalyzer();
+		if (language.equals("ru"))
+			return new RussianAnalyzer();
+		return new EnglishAnalyzer();
+	}
+
 	private void close() {
 		try {
 			searcher.close();
@@ -156,7 +173,7 @@ public class SearchState {
 		if (writable)
 			return;
 		writer = new IndexWriter( indexpath,
-				new EnglishAnalyzer(), true);
+				analyzer, true);
 		writable = true;
 	}
 	

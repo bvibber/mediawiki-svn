@@ -34,8 +34,8 @@ Should now work with Java 1.4 as well as 1.5.
 Testing w/GCJ has been done, and except for the prefix matcher, it appears to work.
 (BerkeleyDB does not work under GCJ at the moment, and the matcher requires it).
 
-Right now the build process is a bit spotty and requires things to be at odd
-paths. This will probably get cleaned up at some point.
+GCJ 4.0 is required for the native build; a snapshot from 2005-04-07 is known to
+build and work more or less correctly.
 
 Todo:
 * Close sockets cleanly on errors
