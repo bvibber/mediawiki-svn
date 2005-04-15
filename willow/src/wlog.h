@@ -10,7 +10,8 @@
 
 #define WLOG_NOTICE 0
 #define WLOG_WARNING 1
-#define WLOG_MAX 1
+#define WLOG_ERROR 2
+#define WLOG_MAX 2
 
 void wlog_init(void);
 void wlog(int, const char *, ...);

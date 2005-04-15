@@ -34,7 +34,7 @@ add_listener(addr)
 struct	listener	*nl;
 	char		*port, *host = addr;
 
-	if ((nl = malloc(sizeof(struct listener))) == NULL) {
+	if ((nl = malloc(sizeof(*nl))) == NULL) {
 		fputs("out of memory\n", stderr);
 		abort();
 	}

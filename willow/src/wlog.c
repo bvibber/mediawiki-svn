@@ -12,7 +12,8 @@
 
 static const char *sev_names[] = {
 	"notice",
-	"warning"
+	"warning",
+	"error",
 };
 
 void

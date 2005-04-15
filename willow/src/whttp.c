@@ -47,6 +47,7 @@ struct	fde		*cl_fde;			/* backref to fd			*/
 	int		 cl_reqtype;			/* request type or 0			*/
 	int		 cl_ps;				/* parse state				*/
 	char		*cl_path;			/* path they want			*/
+	char		*cl_wrtbuf;			/* write buf (either to client or be)	*/
 };
 #define CL_BUFSIZE(c) ((c)->cl_bufend - (c)->cl_readbuf)
 #define CL_BUFLEFT(c) ((c)->cl_bufend - (c)->cl_bufp)
@@ -61,6 +62,7 @@ static void client_close(struct http_client *);
 static void proxy_request(struct http_client *);
 static void proxy_start_backend(struct backend *, struct fde *, void *);
 static int proxy_backend_read(struct fde *);
+static void proxy_write_done(struct fde *, void *, int);
 
 static struct http_client *
 new_client(e)
@@ -68,7 +70,7 @@ new_client(e)
 {
 struct	http_client	*cl;
 
-	if ((cl = wmalloc(sizeof(struct http_client))) == NULL) {
+	if ((cl = wmalloc(sizeof(*cl))) == NULL) {
 		fputs("out of memory\n", stderr);
 		abort();
 	}
@@ -104,7 +106,7 @@ static int
 http_read(e)
 	struct fde *e;
 {
-struct	http_client	*c = e->fde_data;
+struct	http_client	*c = e->fde_rdata;
 	int		 i;
 	
 	/*
@@ -124,7 +126,7 @@ struct	http_client	*c = e->fde_data;
 	while ((i = read(e->fde_fd, c->cl_bufp, CL_BUFLEFT(c))) > 0) {
 		if (parse_headers(c) == -1) {
 			/* parse error */
-			wfree(e->fde_data);
+			wfree(e->fde_rdata);
 			client_close(c);
 			return 1;
 		}
@@ -318,26 +320,57 @@ proxy_start_backend(backend, e, data)
 {
 struct	http_client	*client = data;
 	int		 i;
+	size_t		 bufsz;
+	char		*wrtbuf;
 	
-	/* XXX */
-	write(e->fde_fd, "GET ", 4);
-	write(e->fde_fd, client->cl_path, strlen(client->cl_path));
-	write(e->fde_fd, " HTTP/1.0\r\n", 11);
+	bufsz = 4 + 11 + strlen(client->cl_path) + 3;
+	for (i = 0; i < client->cl_num; ++i) {
+		if (!strcmp(CL_HEADER(client, i), "Connection"))
+			bufsz += 19;
+		else
+			bufsz += strlen(CL_HEADER(client, i)) + strlen(CL_HEADERVAL(client, i)) + 4;
+	}
+
+	if ((wrtbuf = wmalloc(bufsz)) == NULL) {
+		fputs("out of memory\n", stderr);
+		abort();
+	}
+
+	strcpy(wrtbuf, "GET ");
+	strcat(wrtbuf, client->cl_path);
+	strcat(wrtbuf, " HTTP/1.0\r\n");
 
 	for (i = 0; i < client->cl_num; ++i) {
 		if (!strcmp(CL_HEADER(client, i), "Connection"))
-			write(e->fde_fd, "Connection: close\r\n", 19);
+			strcat(wrtbuf, "Connection: close\r\n");
 		else {
-			write(e->fde_fd, CL_HEADER(client, i), strlen(CL_HEADER(client, i)));
-			write(e->fde_fd, ": ", 2);
-			write(e->fde_fd, CL_HEADERVAL(client, i), strlen(CL_HEADERVAL(client, i)));
-			write(e->fde_fd, "\r\n", 2);
+			strcat(wrtbuf, CL_HEADER(client, i));
+			strcat(wrtbuf, ": ");
+			strcat(wrtbuf, CL_HEADERVAL(client, i));
+			strcat(wrtbuf, "\r\n");
 		}
 	}
 
-	write(e->fde_fd, "\r\n", 2);
-	/* end XXX */
+	strcat(wrtbuf, "\r\n");
+	client->cl_wrtbuf = wrtbuf;
+	wnet_write(e->fde_fd, wrtbuf, bufsz - 1, proxy_write_done, client);
+}
 
+static void
+proxy_write_done(e, data, i)
+	struct fde *e;
+	void *data;
+{
+struct	http_client	*client = data;
+
+	wfree(client->cl_wrtbuf);
+
+	if (i == -1) {
+		client_close(client);
+		wnet_close(e->fde_fd);
+		return;
+	}
+		
 	wnet_register(e->fde_fd, FDE_READ, proxy_backend_read, client);
 }	
 
@@ -345,7 +378,7 @@ static int
 proxy_backend_read(e)
 	struct fde *e;
 {
-struct	http_client	*client = e->fde_data;
+struct	http_client	*client = e->fde_rdata;
 	char		 rdbuf[16384];
 	int		 i;
 

@@ -17,6 +17,7 @@ struct fde;
 #define MAX_FD	8192
 
 typedef int (*fdcb)(struct fde*);
+typedef void (*fdwcb)(struct fde*, void*, int);
 
 struct client_data;
 
@@ -25,7 +26,8 @@ struct fde {
 	fdcb		 fde_read_handler;
 	fdcb		 fde_write_handler;
 struct	client_data	*fde_cdata;
-	void		*fde_data;
+	void		*fde_rdata;
+	void		*fde_wdata;
 };
 extern struct fde fde_table[];
 
@@ -39,8 +41,9 @@ struct	sockaddr_in	cdat_addr;
 void wnet_init(void);
 void wnet_run(void);
 
-void wnet_register(int fd, int what, fdcb handler, void *data);
+void wnet_register(int, int, fdcb, void *);
 int wnet_open(void);
-void wnet_close(int fd);
+void wnet_close(int);
+void wnet_write(int, void *, size_t, fdwcb, void*);
 
 #endif

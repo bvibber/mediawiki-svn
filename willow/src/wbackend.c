@@ -42,7 +42,7 @@ new_backend(addr)
 	char	*host = addr, *port;
 struct	backend	 *nb;
 
-	if ((nb = malloc(sizeof(struct backend))) == NULL) {
+	if ((nb = malloc(sizeof(*nb))) == NULL) {
 		fputs("out of memory\n", stderr);
 		abort();
 	}
@@ -134,7 +134,7 @@ static int
 backend_read(e)
 	struct fde *e;
 {
-struct	backend_cb_data	*cbd = e->fde_data;
+struct	backend_cb_data	*cbd = e->fde_rdata;
 
 	printf("write okay for %d\n", e->fde_fd);
 	cbd->bc_func(cbd->bc_backend, e, cbd->bc_data);
