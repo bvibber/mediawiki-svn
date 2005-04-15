@@ -14,19 +14,6 @@
 
 #include "willow.h"
 
-#if defined(USE_PORTS)
-# include <port.h>
-# include <poll.h>
-#elif defined(USE_EPOLL)
-# include <sys/epoll.h>
-#elif defined(USE_POLL)
-# ifdef HAVE_POLL_H
-#  include <poll.h>
-# else
-#  include <sys/poll.h>
-# endif
-#endif
-
 struct fde;
 
 #define MAX_FD	8192

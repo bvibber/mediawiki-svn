@@ -18,6 +18,7 @@
 #include <assert.h>
 #include <fcntl.h>
 #include <signal.h>
+#include <sys/epoll.h>
 
 #include "willow.h"
 #include "wnet.h"

@@ -18,6 +18,8 @@
 #include <assert.h>
 #include <fcntl.h>
 #include <signal.h>
+#include <ports.h>
+#include <poll.h>
 
 #include "willow.h"
 #include "wnet.h"
