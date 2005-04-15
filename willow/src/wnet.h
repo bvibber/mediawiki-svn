@@ -12,6 +12,19 @@
 
 #include <netinet/in.h>
 
+#if defined HAVE_PORT_CREATE && defined HAVE_PORT_H
+# define USE_SOLARIS_AIO
+# include <port.h>
+# include <poll.h>
+#elif defined HAVE_POLL && (defined HAVE_SYS_POLL_H || defined HAVE_POLL_H)
+# define USE_POLL
+# ifdef HAVE_POLL_H
+#  include <poll.h>
+# else
+#  include <sys/poll.h>
+# endif
+#endif
+
 struct fde;
 
 #define MAX_FD	8192

@@ -15,8 +15,6 @@
 #include <errno.h>
 #include <assert.h>
 #include <fcntl.h>
-#include <poll.h>
-#include <port.h>
 #include <signal.h>
 
 #include "willow.h"
@@ -46,10 +44,12 @@ wnet_init(void)
 
 	signal(SIGPIPE, SIG_IGN);
 
+#ifdef USE_SOLARIS_AIO
 	if ((port = port_create()) < 0) {
 		perror("port_create");
 		exit(8);
 	}
+#endif
 
 	for (i = 0; i < nlisteners; ++i) {
 		struct listener	*lns = listeners[i];
@@ -74,10 +74,13 @@ void
 wnet_run(void)
 {
 	int		i;
+#ifdef USE_SOLARIS_AIO
 	port_event_t	pe;
+#endif
 
 	wlog(WLOG_NOTICE, "running...");
 
+#ifdef USE_SOLARIS_AIO
 	while ((i = port_get(port, &pe, NULL)) != -1) {
 		struct fde *e = &fde_table[pe.portev_object];
 		assert(pe.portev_object < MAX_FD);
@@ -94,6 +97,7 @@ wnet_run(void)
 		}
 	}
 	perror("port_get");
+#endif
 }
 
 void
@@ -109,20 +113,26 @@ struct	fde	*e = &fde_table[fd];
 	e->fde_fd = fd;
 	if (what & FDE_READ) {
 		e->fde_read_handler = handler;
+#ifdef USE_SOLARIS_AIO
 		flags |= POLLRDNORM;
+#endif
 	} 
 	if (what & FDE_WRITE) {
 		e->fde_write_handler = handler;
+#ifdef USE_SOLARIS_AIO
 		flags |= POLLWRNORM;
+#endif
 	}
 
 	if (data)
 		e->fde_rdata = data;
 	
+#ifdef USE_SOLARIS_AIO
 	if (port_associate(port, PORT_SOURCE_FD, fd, flags, NULL) < 0) {
 		perror("port_associate");
 		exit(8);
 	}
+#endif
 }
 
 int
@@ -189,7 +199,9 @@ wnet_close(fd)
 {
 struct	fde	*e = &fde_table[fd];
 
+#ifdef USE_SOLARIS_AIO
 	port_dissociate(port, PORT_SOURCE_FD, e->fde_fd);
+#endif
 	close(e->fde_fd);
 	if (e->fde_cdata)
 		wfree(e->fde_cdata);
