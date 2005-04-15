@@ -17,6 +17,7 @@
 #include <fcntl.h>
 #include <poll.h>
 #include <port.h>
+#include <signal.h>
 
 #include "willow.h"
 #include "wnet.h"
@@ -42,6 +43,8 @@ void
 wnet_init(void)
 {
 	int	 i;
+
+	signal(SIGPIPE, SIG_IGN);
 
 	if ((port = port_create()) < 0) {
 		perror("port_create");
@@ -185,6 +188,7 @@ wnet_close(fd)
 {
 struct	fde	*e = &fde_table[fd];
 
+	port_dissociate(port, PORT_SOURCE_FD, e->fde_fd);
 	close(e->fde_fd);
 	if (e->fde_cdata)
 		wfree(e->fde_cdata);

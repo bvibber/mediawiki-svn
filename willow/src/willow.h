@@ -12,7 +12,8 @@
 
 #ifdef WDEBUG_ALLOC
 void *wmalloc(size_t);
-void wfree(void *);
+void internal_wfree(void *, const char *, int);
+#define wfree(p) internal_wfree(p, __FILE__, __LINE__)
 #else
 #define wmalloc malloc
 #define wfree free

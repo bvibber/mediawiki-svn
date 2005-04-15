@@ -13,6 +13,7 @@
 #include "wlog.h"
 #include "wnet.h"
 #include "wconfig.h"
+#include "willow.h"
 
 int main(argc, argv)
 	char *argv[];
@@ -29,6 +30,8 @@ int main(argc, argv)
 struct alloc_entry {
 	void		*ae_addr;
 	int		 ae_freed;
+	const char	*ae_freed_file;
+	int		 ae_freed_line;
 struct	alloc_entry	*ae_next;
 };
 
@@ -69,18 +72,21 @@ struct	alloc_entry	*ae;
 }
 
 void
-wfree(p)
+internal_wfree(p, file, line)
 	void *p;
+	const char *file;
 {
 struct	alloc_entry	*ae;
 
 	for (ae = allocs.ae_next; ae; ae = ae->ae_next) {
 		if (ae->ae_addr == p) {
 			if (ae->ae_freed) {
-				fprintf(stderr, "wfree: ptr %p already freed!\n", p);
+				fprintf(stderr, "wfree: ptr %p already freed @ %s:%d!\n", p, ae->ae_freed_file, ae->ae_freed_line);
 				abort();
 			}
 			ae->ae_freed = 1;
+			ae->ae_freed_file = file;
+			ae->ae_freed_line = line;
 			return;
 		}
 	}

@@ -129,7 +129,6 @@ struct	http_client	*c = e->fde_rdata;
 	while ((i = read(e->fde_fd, c->cl_bufp, CL_BUFLEFT(c))) > 0) {
 		if (parse_headers(c) == -1) {
 			/* parse error */
-			wfree(e->fde_rdata);
 			client_close(c);
 			return 1;
 		}
@@ -424,7 +423,6 @@ struct	http_client	*client = data;
 	 * Write to client completed.  Wait for the backend to send more data.
 	 */
 	if (res == -1) {
-		wnet_close(e->fde_fd);
 		client_close(client);
 		return;
 	}
