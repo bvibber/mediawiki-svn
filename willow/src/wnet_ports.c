@@ -18,7 +18,7 @@
 #include <assert.h>
 #include <fcntl.h>
 #include <signal.h>
-#include <ports.h>
+#include <port.h>
 #include <poll.h>
 
 #include "willow.h"
@@ -28,6 +28,8 @@
 #include "whttp.h"
 
 static int port;
+#define GETN 256
+static port_event_t pe[GETN];
 
 void
 wnet_init_select(void)
@@ -42,22 +44,25 @@ void
 wnet_run(void)
 {
 	int		i, n;
-	port_event_t	pe;
+	uint		nget = 1;
 
-	while ((i = port_get(port, &pe, NULL)) != -1) {
-		struct fde *e = &fde_table[pe.portev_object];
-		assert(pe.portev_object < MAX_FD);
+	while ((i = port_getn(port, pe, GETN, &nget, NULL)) != -1) {
+		for (i = 0; i < nget; ++i) {
+			struct fde *e = &fde_table[pe[i].portev_object];
+			assert(pe[i].portev_object < MAX_FD);
 
-		if ((pe.portev_events & POLLRDNORM) && e->fde_read_handler) {
-			int ret = e->fde_read_handler(e);
-			if (ret == 0)
-				port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLRDNORM, NULL);
+			if ((pe[i].portev_events & POLLRDNORM) && e->fde_read_handler) {
+				int ret = e->fde_read_handler(e);
+				if (ret == 0)
+					port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLRDNORM, NULL);
+			}
+			if ((pe[i].portev_events & POLLWRNORM) && e->fde_write_handler) {
+				int ret = e->fde_write_handler(e);
+				if (ret == 0)
+					port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLWRNORM, NULL);
+			}
 		}
-		if ((pe.portev_events & POLLWRNORM) && e->fde_write_handler) {
-			int ret = e->fde_write_handler(e);
-			if (ret == 0)
-				port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLWRNORM, NULL);
-		}
+		nget = 1;
 	}
 	perror("port_get");
 }
