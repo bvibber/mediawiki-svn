@@ -39,35 +39,36 @@ AC_CHECK_FUNC(epoll_wait, [have_epoll=yes], [have_epoll=no])
 AC_CHECK_FUNC(poll, [have_poll=yes], [have_poll=no])
 AC_CHECK_HEADERS([port.h poll.h sys/poll.h sys/epoll.h])
 
-prefer_select=none
+SELECTTYPE=none
 if test x$use_poll != xno -a x$have_poll = xyes; then
-	prefer_select=poll
+	SELECTTYPE=poll
 fi
 if test x$use_epoll != xno -a x$have_epoll = xyes; then
-	prefer_select=epoll
+	SELECTTYPE=epoll
 fi
 if test x$use_ports != xno -a x$have_ports = xyes; then
-	prefer_select=ports
+	SELECTTYPE=ports
 fi
 if ! test -z $FORCE_SELECT; then
-	prefer_select=$FORCE_SELECT
+	SELECTTYPE=$FORCE_SELECT
 fi
-if test $prefer_select = none; then
+if test $SELECTTYPE = none; then
 	AC_MSG_ERROR([Couldn't find a suitable I/O system for your platform.])
 fi
 
-if test $prefer_select = poll; then
+if test $SELECTTYPE = poll; then
 	AC_DEFINE([USE_POLL],[],[Define this to use poll() for select])
 fi
-if test $prefer_select = ports; then
+if test $SELECTTYPE = ports; then
 	AC_DEFINE([USE_PORTS],[],[Define this to use ports for select])
 fi
-if test $prefer_select = epoll; then
+if test $SELECTTYPE = epoll; then
 	AC_DEFINE([USE_EPOLL],[],[Define this to use epoll() for select])
 fi
 
+AC_SUBST(SELECTTYPE)
 AC_OUTPUT(Makefile src/Makefile)
 
 echo ""
-echo "Using I/O system      : $prefer_select"
+echo "Using I/O system      : $SELECTTYPE"
 

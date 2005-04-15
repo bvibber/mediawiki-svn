@@ -38,28 +38,13 @@ static int wnet_write_do(struct fde *);
 
 struct fde fde_table[MAX_FD];
 
-#if defined(USE_PORTS) || defined(USE_EPOLL)
-static int port;
-#endif
-
 void
 wnet_init(void)
 {
 	int	 i;
 
 	signal(SIGPIPE, SIG_IGN);
-
-#if defined(USE_PORTS)
-	if ((port = port_create()) < 0) {
-		perror("port_create");
-		exit(8);
-	}
-#elif defined(USE_EPOLL)
-	if ((port = epoll_create(MAX_FD)) < 0) {
-		perror("epoll_create");
-		exit(8);
-	}
-#endif
+	wnet_init_select();
 
 	for (i = 0; i < nlisteners; ++i) {
 		struct listener	*lns = listeners[i];
@@ -78,133 +63,6 @@ wnet_init(void)
 		wnet_register(fd, FDE_READ, wnet_accept, NULL);
 		wlog(WLOG_NOTICE, "listening on %s", lns->name);
 	}
-}
-
-void
-wnet_run(void)
-{
-	int		i, n;
-#if defined(USE_PORTS)
-	port_event_t	pe;
-#elif defined(USE_EPOLL)
-struct	epoll_event	events[256];
-#endif
-
-	wlog(WLOG_NOTICE, "running...");
-
-#if defined(USE_PORTS)
-	while ((i = port_get(port, &pe, NULL)) != -1) {
-		struct fde *e = &fde_table[pe.portev_object];
-		assert(pe.portev_object < MAX_FD);
-
-		if ((pe.portev_events & POLLRDNORM) && e->fde_read_handler) {
-			int ret = e->fde_read_handler(e);
-			if (ret == 0)
-				port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLRDNORM, NULL);
-		}
-		if ((pe.portev_events & POLLWRNORM) && e->fde_write_handler) {
-			int ret = e->fde_write_handler(e);
-			if (ret == 0)
-				port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLWRNORM, NULL);
-		}
-	}
-	perror("port_get");
-#elif defined(USE_EPOLL)
-	while ((i = epoll_wait(port, events, 256, -1)) != -1) {
-		for (n = 0; n < i; ++n) {
-			struct fde *e = &fde_table[events[n].data.fd];
-			struct epoll_event ev;
-			assert(events[n].data.fd < MAX_FD);
-
-			e->fde_epflags &= ~events[n].events;
-			ev.events = e->fde_epflags;
-			ev.data.fd = e->fde_fd;
-			if (e->fde_epflags == 0) {
-				if (epoll_ctl(port, EPOLL_CTL_DEL, e->fde_fd, NULL) < 0) {
-					perror("epoll_ctl(DEL)");
-					exit(8);
-				}
-			} else {
-				if (epoll_ctl(port, EPOLL_CTL_MOD, e->fde_fd, &ev) < 0) {
-					perror("epoll_ctl(MOD)");
-					exit(8);
-				}
-			}
-
-			if ((events[n].events & EPOLLIN) && e->fde_read_handler) {
-				int ret = e->fde_read_handler(e);
-				if (ret == 0)
-					wnet_register(e->fde_fd, FDE_READ, e->fde_read_handler, NULL);
-			}
-
-			if ((events[n].events & EPOLLOUT) && e->fde_write_handler) {
-				int ret = e->fde_write_handler(e);
-				if (ret == 0)
-					wnet_register(e->fde_fd, FDE_WRITE, e->fde_write_handler, NULL);
-			}
-		}
-	}
-	perror("epoll_wait");
-#endif
-}
-
-void
-wnet_register(fd, what, handler, data)
-	fdcb handler;
-	void *data;
-{
-struct	fde		*e = &fde_table[fd];
-#if defined(USE_EPOLL)
-	int		 flags = e->fde_epflags, mod = flags;
-struct	epoll_event	 ev;
-#else
-	int		 flags = 0;
-#endif
-
-	assert(fd < MAX_FD);
-
-	e->fde_fd = fd;
-	if (what & FDE_READ) {
-		e->fde_read_handler = handler;
-#if defined(USE_PORTS)
-		flags |= POLLRDNORM;
-#elif defined(USE_EPOLL)
-		e->fde_epflags |= EPOLLIN;
-#endif
-	} 
-	if (what & FDE_WRITE) {
-		e->fde_write_handler = handler;
-#if defined(USE_PORTS)
-		flags |= POLLWRNORM;
-#elif defined(USE_EPOLL)
-		e->fde_epflags |= EPOLLOUT;
-#endif
-	}
-
-	if (data)
-		e->fde_rdata = data;
-	
-#if defined(USE_PORTS)
-	if (port_associate(port, PORT_SOURCE_FD, fd, flags, NULL) < 0) {
-		perror("port_associate");
-		exit(8);
-	}
-#elif defined(USE_EPOLL)
-	memset(&ev, 0, sizeof(ev));
-	ev.events = e->fde_epflags;
-	ev.data.fd = fd;
-	if (mod) {
-		if (epoll_ctl(port, EPOLL_CTL_MOD, fd, &ev) < 0) {
-			perror("epoll_ctl");
-			exit(8);
-		} 
-	} else {
-		if (epoll_ctl(port, EPOLL_CTL_ADD, fd, &ev) < 0) {
-			perror("epoll_ctl");
-			exit(8);
-		}
-	}
-#endif
 }
 
 int
@@ -277,9 +135,6 @@ wnet_close(fd)
 {
 struct	fde	*e = &fde_table[fd];
 
-#if defined(USE_PORTS)
-	port_dissociate(port, PORT_SOURCE_FD, e->fde_fd);
-#endif
 	close(e->fde_fd);
 	if (e->fde_cdata)
 		wfree(e->fde_cdata);

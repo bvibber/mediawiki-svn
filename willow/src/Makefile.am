@@ -1,5 +1,6 @@
 bin_PROGRAMS = willow
-willow_SOURCES = willow.c wlog.c wconfig.c wnet.c whttp.c wbackend.c
+selectsrc=wnet_@SELECTTYPE@.c
+willow_SOURCES = willow.c wlog.c wconfig.c wnet.c whttp.c wbackend.c ${selectsrc}
 
 # set the include path found by configure
 INCLUDES= $(all_includes)
