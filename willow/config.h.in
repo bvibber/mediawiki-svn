@@ -1,8 +1,5 @@
 /* config.h.in.  Generated from configure.in by autoheader.  */
 
-/* Define to 1 if you have the `epoll_wait' function. */
-#undef HAVE_EPOLL_WAIT
-
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
@@ -15,14 +12,8 @@
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
 
-/* Define to 1 if you have the `poll' function. */
-#undef HAVE_POLL
-
 /* Define to 1 if you have the <poll.h> header file. */
 #undef HAVE_POLL_H
-
-/* Define to 1 if you have the `port_create' function. */
-#undef HAVE_PORT_CREATE
 
 /* Define to 1 if you have the <port.h> header file. */
 #undef HAVE_PORT_H
@@ -74,6 +65,15 @@
 
 /* Define to 1 if you have the ANSI C header files. */
 #undef STDC_HEADERS
+
+/* Define this to use epoll() for select */
+#undef USE_EPOLL
+
+/* Define this to use poll() for select */
+#undef USE_POLL
+
+/* Define this to use ports for select */
+#undef USE_PORTS
 
 /* Version number of package */
 #undef VERSION

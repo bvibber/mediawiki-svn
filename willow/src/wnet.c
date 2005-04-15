@@ -38,7 +38,7 @@ static int wnet_write_do(struct fde *);
 
 struct fde fde_table[MAX_FD];
 
-#if defined(USE_SOLARIS_AIO) || defined(USE_LINUX_EPOLL)
+#if defined(USE_PORTS) || defined(USE_EPOLL)
 static int port;
 #endif
 
@@ -49,12 +49,12 @@ wnet_init(void)
 
 	signal(SIGPIPE, SIG_IGN);
 
-#if defined(USE_SOLARIS_AIO)
+#if defined(USE_PORTS)
 	if ((port = port_create()) < 0) {
 		perror("port_create");
 		exit(8);
 	}
-#elif defined(USE_LINUX_EPOLL)
+#elif defined(USE_EPOLL)
 	if ((port = epoll_create(MAX_FD)) < 0) {
 		perror("epoll_create");
 		exit(8);
@@ -84,15 +84,15 @@ void
 wnet_run(void)
 {
 	int		i, n;
-#if defined(USE_SOLARIS_AIO)
+#if defined(USE_PORTS)
 	port_event_t	pe;
-#elif defined(USE_LINUX_EPOLL)
+#elif defined(USE_EPOLL)
 struct	epoll_event	events[256];
 #endif
 
 	wlog(WLOG_NOTICE, "running...");
 
-#if defined(USE_SOLARIS_AIO)
+#if defined(USE_PORTS)
 	while ((i = port_get(port, &pe, NULL)) != -1) {
 		struct fde *e = &fde_table[pe.portev_object];
 		assert(pe.portev_object < MAX_FD);
@@ -109,7 +109,7 @@ struct	epoll_event	events[256];
 		}
 	}
 	perror("port_get");
-#elif defined(USE_LINUX_EPOLL)
+#elif defined(USE_EPOLL)
 	while ((i = epoll_wait(port, events, 256, -1)) != -1) {
 		for (n = 0; n < i; ++n) {
 			struct fde *e = &fde_table[events[n].data.fd];
@@ -154,7 +154,7 @@ wnet_register(fd, what, handler, data)
 	void *data;
 {
 struct	fde		*e = &fde_table[fd];
-#if defined(USE_LINUX_EPOLL)
+#if defined(USE_EPOLL)
 	int		 flags = e->fde_epflags, mod = flags;
 struct	epoll_event	 ev;
 #else
@@ -166,17 +166,17 @@ struct	epoll_event	 ev;
 	e->fde_fd = fd;
 	if (what & FDE_READ) {
 		e->fde_read_handler = handler;
-#if defined(USE_SOLARIS_AIO)
+#if defined(USE_PORTS)
 		flags |= POLLRDNORM;
-#elif defined(USE_LINUX_EPOLL)
+#elif defined(USE_EPOLL)
 		e->fde_epflags |= EPOLLIN;
 #endif
 	} 
 	if (what & FDE_WRITE) {
 		e->fde_write_handler = handler;
-#if defined(USE_SOLARIS_AIO)
+#if defined(USE_PORTS)
 		flags |= POLLWRNORM;
-#elif defined(USE_LINUX_EPOLL)
+#elif defined(USE_EPOLL)
 		e->fde_epflags |= EPOLLOUT;
 #endif
 	}
@@ -184,12 +184,12 @@ struct	epoll_event	 ev;
 	if (data)
 		e->fde_rdata = data;
 	
-#if defined(USE_SOLARIS_AIO)
+#if defined(USE_PORTS)
 	if (port_associate(port, PORT_SOURCE_FD, fd, flags, NULL) < 0) {
 		perror("port_associate");
 		exit(8);
 	}
-#elif defined(USE_LINUX_EPOLL)
+#elif defined(USE_EPOLL)
 	memset(&ev, 0, sizeof(ev));
 	ev.events = e->fde_epflags;
 	ev.data.fd = fd;
@@ -277,7 +277,7 @@ wnet_close(fd)
 {
 struct	fde	*e = &fde_table[fd];
 
-#if defined(USE_SOLARIS_AIO)
+#if defined(USE_PORTS)
 	port_dissociate(port, PORT_SOURCE_FD, e->fde_fd);
 #endif
 	close(e->fde_fd);

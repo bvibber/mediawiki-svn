@@ -1,3 +1,5 @@
+# @(#) $Header$
+
 AC_INIT(configure.in)
 
 AM_CONFIG_HEADER(config.h)
@@ -6,9 +8,66 @@ AM_INIT_AUTOMAKE(willow, 1.0.0)
 AC_LANG_C
 AC_PROG_CC
 
+AC_ARG_ENABLE(epoll, AC_HELP_STRING([--enable-epoll],[Force epoll(4) use (Linux only)]),
+[	if test $enableval = yes; then
+		FORCE_SELECT="epoll"
+	else
+		use_epoll=no
+	fi
+])
+
+AC_ARG_ENABLE(ports, AC_HELP_STRING([--enable-ports],[Force ports use (Solaris only)]),
+[	if test $enableval = yes; then
+		FORCE_SELECT="ports"
+	else
+		use_ports=no
+	fi
+])
+
+AC_ARG_ENABLE(poll, AC_HELP_STRING([--enable-poll],[Force poll() use]),
+[	if test $enableval = yes; then
+		FORCE_SELECT="poll"
+	else
+		use_poll=no
+	fi
+])
+
 AC_CHECK_LIB(socket, socket)
 AC_CHECK_LIB(nsl, inet_addr)
-AC_CHECK_FUNCS([port_create poll epoll_wait])
+AC_CHECK_FUNC(port_create, [have_ports=yes], [have_ports=no])
+AC_CHECK_FUNC(epoll_wait, [have_epoll=yes], [have_epoll=no])
+AC_CHECK_FUNC(poll, [have_poll=yes], [have_poll=no])
 AC_CHECK_HEADERS([port.h poll.h sys/poll.h sys/epoll.h])
 
+prefer_select=none
+if test x$use_poll != xno -a x$have_poll = xyes; then
+	prefer_select=poll
+fi
+if test x$use_epoll != xno -a x$have_epoll = xyes; then
+	prefer_select=epoll
+fi
+if test x$use_ports != xno -a x$have_ports = xyes; then
+	prefer_select=ports
+fi
+if ! test -z $FORCE_SELECT; then
+	prefer_select=$FORCE_SELECT
+fi
+if test $prefer_select = none; then
+	AC_MSG_ERROR([Couldn't find a suitable I/O system for your platform.])
+fi
+
+if test $prefer_select = poll; then
+	AC_DEFINE([USE_POLL],[],[Define this to use poll() for select])
+fi
+if test $prefer_select = ports; then
+	AC_DEFINE([USE_PORTS],[],[Define this to use ports for select])
+fi
+if test $prefer_select = epoll; then
+	AC_DEFINE([USE_EPOLL],[],[Define this to use epoll() for select])
+fi
+
 AC_OUTPUT(Makefile src/Makefile)
+
+echo ""
+echo "Using I/O system      : $prefer_select"
+

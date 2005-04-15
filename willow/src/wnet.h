@@ -14,15 +14,12 @@
 
 #include "willow.h"
 
-#if defined HAVE_PORT_CREATE && defined HAVE_PORT_H
-# define USE_SOLARIS_AIO
+#if defined(USE_PORTS)
 # include <port.h>
 # include <poll.h>
-#elif defined(HAVE_EPOLL_WAIT) && defined(HAVE_SYS_POLL_H)
-# define USE_LINUX_EPOLL
+#elif defined(USE_EPOLL)
 # include <sys/epoll.h>
-#elif defined HAVE_POLL && (defined HAVE_SYS_POLL_H || defined HAVE_POLL_H)
-# define USE_POLL
+#elif defined(USE_POLL)
 # ifdef HAVE_POLL_H
 #  include <poll.h>
 # else
@@ -48,7 +45,7 @@ struct	client_data	*fde_cdata;
 	void		*fde_rdata;
 	void		*fde_wdata;
 	char		 fde_straddr[16];
-#ifdef USE_LINUX_EPOLL
+#ifdef USE_EPOLL
 	int		 fde_epflags;
 #endif
 };
