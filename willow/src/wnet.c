@@ -135,6 +135,7 @@ wnet_close(fd)
 {
 struct	fde	*e = &fde_table[fd];
 
+	wnet_register(fd, FDE_READ | FDE_WRITE, NULL, NULL);
 	close(e->fde_fd);
 	if (e->fde_cdata)
 		wfree(e->fde_cdata);

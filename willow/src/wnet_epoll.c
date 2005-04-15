@@ -95,6 +95,11 @@ struct	epoll_event	 ev;
 
 	assert(fd < MAX_FD);
 
+	if (handler == NULL) {
+		epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL);
+		return;
+	}
+
 	e->fde_fd = fd;
 	if (what & FDE_READ) {
 		e->fde_read_handler = handler;

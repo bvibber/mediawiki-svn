@@ -32,7 +32,7 @@ struct	client_data	*fde_cdata;
 	void		*fde_rdata;
 	void		*fde_wdata;
 	char		 fde_straddr[16];
-#ifdef USE_EPOLL
+#if defined(USE_EPOLL) || defined(USE_DEVPOLL)
 	int		 fde_epflags;
 #endif
 };

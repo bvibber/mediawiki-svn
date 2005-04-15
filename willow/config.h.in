@@ -66,6 +66,9 @@
 /* Define to 1 if you have the ANSI C header files. */
 #undef STDC_HEADERS
 
+/* Define this to use devpoll() for select */
+#undef USE_DEVPOLL
+
 /* Define this to use epoll() for select */
 #undef USE_EPOLL
 

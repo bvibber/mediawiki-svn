@@ -77,6 +77,11 @@ struct	fde		*e = &fde_table[fd];
 
 	assert(fd < MAX_FD);
 
+	if (handler == NULL) {
+		port_dissociate(port, PORT_SOURCE_FD, fd);
+		return;
+	}
+
 	e->fde_fd = fd;
 	if (what & FDE_READ) {
 		e->fde_read_handler = handler;
