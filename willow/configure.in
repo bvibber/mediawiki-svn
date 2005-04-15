@@ -1,0 +1,13 @@
+AC_INIT(configure.in)
+
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(willow, 1.0.0)
+
+AC_LANG_C
+AC_PROG_CC
+
+AC_CHECK_LIB(socket, socket)
+AC_CHECK_LIB(nsl, inet_addr)
+AC_CHECK_FUNC(port_create)
+
+AC_OUTPUT(Makefile src/Makefile)
