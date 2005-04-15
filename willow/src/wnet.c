@@ -225,7 +225,6 @@ struct	wrtbuf	*buf;
 	buf = e->fde_wdata;
 
 	while ((i = write(e->fde_fd, buf->wb_buf + buf->wb_done, buf->wb_size - buf->wb_done)) > -1) {
-		
 		buf->wb_done += i;
 		if (buf->wb_done == buf->wb_size) {
 			buf->wb_func(e, buf->wb_udata, 0);

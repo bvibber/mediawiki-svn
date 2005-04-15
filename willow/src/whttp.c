@@ -48,6 +48,8 @@ struct	fde		*cl_fde;			/* backref to fd			*/
 	int		 cl_ps;				/* parse state				*/
 	char		*cl_path;			/* path they want			*/
 	char		*cl_wrtbuf;			/* write buf (either to client or be)	*/
+struct	backend		*cl_backend;			/* backend servicing this client	*/
+struct	fde		*cl_backendfde;			/* fde for backend			*/
 };
 #define CL_BUFSIZE(c) ((c)->cl_bufend - (c)->cl_readbuf)
 #define CL_BUFLEFT(c) ((c)->cl_bufend - (c)->cl_bufp)
@@ -62,6 +64,7 @@ static void client_close(struct http_client *);
 static void proxy_request(struct http_client *);
 static void proxy_start_backend(struct backend *, struct fde *, void *);
 static int proxy_backend_read(struct fde *);
+static void proxy_backend_write(struct fde *, void *, int);
 static void proxy_write_done(struct fde *, void *, int);
 
 static struct http_client *
@@ -323,6 +326,9 @@ struct	http_client	*client = data;
 	size_t		 bufsz;
 	char		*wrtbuf;
 	
+	client->cl_backend = backend;
+	client->cl_backendfde = e;
+
 	bufsz = 4 + 11 + strlen(client->cl_path) + 3;
 	for (i = 0; i < client->cl_num; ++i) {
 		if (!strcmp(CL_HEADER(client, i), "Connection"))
@@ -371,6 +377,12 @@ struct	http_client	*client = data;
 		return;
 	}
 		
+	/*
+	 * Re-appropriate the readbuf for the backend...
+	 */
+	free(client->cl_readbuf);
+	client->cl_readbuf = malloc(RDBUF_INC);
+
 	wnet_register(e->fde_fd, FDE_READ, proxy_backend_read, client);
 }	
 
@@ -379,21 +391,43 @@ proxy_backend_read(e)
 	struct fde *e;
 {
 struct	http_client	*client = e->fde_rdata;
-	char		 rdbuf[16384];
 	int		 i;
 
-	while ((i = read(e->fde_fd, rdbuf, sizeof(rdbuf))) > 0) {
-		if (write(client->cl_fde->fde_fd, rdbuf, i) < 0) { /* XXX */
+	/*
+	 * Read possible from the backend.
+	 *
+	 * This is slightly tricky.  Don't ask for more events on this
+	 * fd until the client write completes, otherwise we overrun 
+	 * ourselves.
+	 */
+	if ((i = read(e->fde_fd, client->cl_readbuf, RDBUF_INC)) < 1) {
+		if (i == 0 || (i == -1 && errno != EWOULDBLOCK)) {
 			wnet_close(e->fde_fd);
-			wnet_close(client->cl_fde->fde_fd);
+			client_close(client);
 		}
-	}
-
-	if (i == 0 || (i == -1 && errno != EWOULDBLOCK)) {
-		wnet_close(e->fde_fd);
-		client_close(client);
 		return 1;
 	}
 
-	return 0;
+	wnet_write(client->cl_fde->fde_fd, client->cl_readbuf, i, proxy_backend_write, client);
+	return 1;
+}
+
+static void
+proxy_backend_write(e, data, res)
+	struct fde *e;
+	void *data;
+	int res;
+{
+struct	http_client	*client = data;
+
+	/*
+	 * Write to client completed.  Wait for the backend to send more data.
+	 */
+	if (res == -1) {
+		wnet_close(e->fde_fd);
+		client_close(client);
+		return;
+	}
+
+	wnet_register(client->cl_backendfde->fde_fd, FDE_READ, proxy_backend_read, client);
 }
