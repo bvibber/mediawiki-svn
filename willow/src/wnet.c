@@ -8,6 +8,8 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
+#include <arpa/inet.h>
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -35,7 +37,10 @@ static int wnet_accept(struct fde *);
 static int wnet_write_do(struct fde *);
 
 struct fde fde_table[MAX_FD];
+
+#if defined(USE_SOLARIS_AIO) || defined(USE_LINUX_EPOLL)
 static int port;
+#endif
 
 void
 wnet_init(void)
@@ -44,9 +49,14 @@ wnet_init(void)
 
 	signal(SIGPIPE, SIG_IGN);
 
-#ifdef USE_SOLARIS_AIO
+#if defined(USE_SOLARIS_AIO)
 	if ((port = port_create()) < 0) {
 		perror("port_create");
+		exit(8);
+	}
+#elif defined(USE_LINUX_EPOLL)
+	if ((port = epoll_create(MAX_FD)) < 0) {
+		perror("epoll_create");
 		exit(8);
 	}
 #endif
@@ -54,7 +64,7 @@ wnet_init(void)
 	for (i = 0; i < nlisteners; ++i) {
 		struct listener	*lns = listeners[i];
 
-		int fd = wnet_open();
+		int fd = wnet_open("listener");
 		int one = 1;
 		setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
 		if (bind(fd, &lns->addr, sizeof(lns->addr)) < 0) {
@@ -73,14 +83,16 @@ wnet_init(void)
 void
 wnet_run(void)
 {
-	int		i;
-#ifdef USE_SOLARIS_AIO
+	int		i, n;
+#if defined(USE_SOLARIS_AIO)
 	port_event_t	pe;
+#elif defined(USE_LINUX_EPOLL)
+struct	epoll_event	events[256];
 #endif
 
 	wlog(WLOG_NOTICE, "running...");
 
-#ifdef USE_SOLARIS_AIO
+#if defined(USE_SOLARIS_AIO)
 	while ((i = port_get(port, &pe, NULL)) != -1) {
 		struct fde *e = &fde_table[pe.portev_object];
 		assert(pe.portev_object < MAX_FD);
@@ -97,6 +109,42 @@ wnet_run(void)
 		}
 	}
 	perror("port_get");
+#elif defined(USE_LINUX_EPOLL)
+	while ((i = epoll_wait(port, events, 256, -1)) != -1) {
+		for (n = 0; n < i; ++n) {
+			struct fde *e = &fde_table[events[n].data.fd];
+			struct epoll_event ev;
+			assert(events[n].data.fd < MAX_FD);
+
+			e->fde_epflags &= ~events[n].events;
+			ev.events = e->fde_epflags;
+			ev.data.fd = e->fde_fd;
+			if (e->fde_epflags == 0) {
+				if (epoll_ctl(port, EPOLL_CTL_DEL, e->fde_fd, NULL) < 0) {
+					perror("epoll_ctl(DEL)");
+					exit(8);
+				}
+			} else {
+				if (epoll_ctl(port, EPOLL_CTL_MOD, e->fde_fd, &ev) < 0) {
+					perror("epoll_ctl(MOD)");
+					exit(8);
+				}
+			}
+
+			if ((events[n].events & EPOLLIN) && e->fde_read_handler) {
+				int ret = e->fde_read_handler(e);
+				if (ret == 0)
+					wnet_register(e->fde_fd, FDE_READ, e->fde_read_handler, NULL);
+			}
+
+			if ((events[n].events & EPOLLOUT) && e->fde_write_handler) {
+				int ret = e->fde_write_handler(e);
+				if (ret == 0)
+					wnet_register(e->fde_fd, FDE_WRITE, e->fde_write_handler, NULL);
+			}
+		}
+	}
+	perror("epoll_wait");
 #endif
 }
 
@@ -105,32 +153,56 @@ wnet_register(fd, what, handler, data)
 	fdcb handler;
 	void *data;
 {
-struct	fde	*e = &fde_table[fd];
-	int	 flags = 0;
+struct	fde		*e = &fde_table[fd];
+#if defined(USE_LINUX_EPOLL)
+	int		 flags = e->fde_epflags, mod = flags;
+struct	epoll_event	 ev;
+#else
+	int		 flags = 0;
+#endif
 
 	assert(fd < MAX_FD);
 
 	e->fde_fd = fd;
 	if (what & FDE_READ) {
 		e->fde_read_handler = handler;
-#ifdef USE_SOLARIS_AIO
+#if defined(USE_SOLARIS_AIO)
 		flags |= POLLRDNORM;
+#elif defined(USE_LINUX_EPOLL)
+		e->fde_epflags |= EPOLLIN;
 #endif
 	} 
 	if (what & FDE_WRITE) {
 		e->fde_write_handler = handler;
-#ifdef USE_SOLARIS_AIO
+#if defined(USE_SOLARIS_AIO)
 		flags |= POLLWRNORM;
+#elif defined(USE_LINUX_EPOLL)
+		e->fde_epflags |= EPOLLOUT;
 #endif
 	}
 
 	if (data)
 		e->fde_rdata = data;
 	
-#ifdef USE_SOLARIS_AIO
+#if defined(USE_SOLARIS_AIO)
 	if (port_associate(port, PORT_SOURCE_FD, fd, flags, NULL) < 0) {
 		perror("port_associate");
 		exit(8);
+	}
+#elif defined(USE_LINUX_EPOLL)
+	memset(&ev, 0, sizeof(ev));
+	ev.events = e->fde_epflags;
+	ev.data.fd = fd;
+	if (mod) {
+		if (epoll_ctl(port, EPOLL_CTL_MOD, fd, &ev) < 0) {
+			perror("epoll_ctl");
+			exit(8);
+		} 
+	} else {
+		if (epoll_ctl(port, EPOLL_CTL_ADD, fd, &ev) < 0) {
+			perror("epoll_ctl");
+			exit(8);
+		}
 	}
 #endif
 }
@@ -141,7 +213,7 @@ wnet_accept(e)
 {
 struct	client_data	*cdata;
 	socklen_t	 addrlen;
-	int		 newfd;
+	int		 newfd, val;
 struct	fde		*newe;
 
 	if ((cdata = wmalloc(sizeof(*cdata))) == NULL) {
@@ -165,10 +237,14 @@ struct	fde		*newe;
 		return 0;
 	}
 
+	val = fcntl(newfd, F_GETFL, 0);
+	fcntl(newfd, F_SETFL, val | O_NONBLOCK);
+
 	newe = &fde_table[newfd];
 	memset(newe, 0, sizeof(struct fde));
 	newe->fde_fd = newfd;
 	newe->fde_cdata = cdata;
+	newe->fde_desc = "accept()ed fd";
 	inet_ntop(AF_INET, &cdata->cdat_addr.sin_addr.s_addr, newe->fde_straddr, sizeof(newe->fde_straddr));
 
 	http_new(newe);
@@ -176,7 +252,8 @@ struct	fde		*newe;
 }
 
 int
-wnet_open(void)
+wnet_open(desc)
+	const char *desc;
 {
 	int	fd, val;
 
@@ -190,6 +267,7 @@ wnet_open(void)
 
 	memset(&fde_table[fd], 0, sizeof(fde_table[fd]));
 	fde_table[fd].fde_fd = fd;
+	fde_table[fd].fde_desc = desc;
 
 	return fd;
 }
@@ -199,7 +277,7 @@ wnet_close(fd)
 {
 struct	fde	*e = &fde_table[fd];
 
-#ifdef USE_SOLARIS_AIO
+#if defined(USE_SOLARIS_AIO)
 	port_dissociate(port, PORT_SOURCE_FD, e->fde_fd);
 #endif
 	close(e->fde_fd);

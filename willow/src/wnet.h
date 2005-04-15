@@ -12,10 +12,15 @@
 
 #include <netinet/in.h>
 
+#include "willow.h"
+
 #if defined HAVE_PORT_CREATE && defined HAVE_PORT_H
 # define USE_SOLARIS_AIO
 # include <port.h>
 # include <poll.h>
+#elif defined(HAVE_EPOLL_WAIT) && defined(HAVE_SYS_POLL_H)
+# define USE_LINUX_EPOLL
+# include <sys/epoll.h>
 #elif defined HAVE_POLL && (defined HAVE_SYS_POLL_H || defined HAVE_POLL_H)
 # define USE_POLL
 # ifdef HAVE_POLL_H
@@ -36,12 +41,16 @@ struct client_data;
 
 struct fde {
 	int		 fde_fd;
+	const char	*fde_desc;
 	fdcb		 fde_read_handler;
 	fdcb		 fde_write_handler;
 struct	client_data	*fde_cdata;
 	void		*fde_rdata;
 	void		*fde_wdata;
 	char		 fde_straddr[16];
+#ifdef USE_LINUX_EPOLL
+	int		 fde_epflags;
+#endif
 };
 extern struct fde fde_table[];
 
@@ -56,7 +65,7 @@ void wnet_init(void);
 void wnet_run(void);
 
 void wnet_register(int, int, fdcb, void *);
-int wnet_open(void);
+int wnet_open(const char *desc);
 void wnet_close(int);
 void wnet_write(int, void *, size_t, fdwcb, void*);
 

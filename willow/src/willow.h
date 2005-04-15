@@ -8,6 +8,8 @@
 #ifndef WILLOW_H
 #define WILLOW_H
 
+#include "config.h"
+
 #undef WDEBUG_ALLOC
 
 #ifdef WDEBUG_ALLOC

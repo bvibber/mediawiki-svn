@@ -110,7 +110,7 @@ struct	backend_cb_data	*cbd;
 	cbd->bc_data = data;
 	cbd->bc_backend = next_backend();
 	
-	if ((s = wnet_open()) == -1) {
+	if ((s = wnet_open("backend connection")) == -1) {
 		wlog(WLOG_WARNING, "opening backend socket: %s", strerror(errno));
 		return -1;
 	}
@@ -121,7 +121,7 @@ struct	backend_cb_data	*cbd;
 		return 0;
 	}
 
-	if (errno != EWOULDBLOCK) {
+	if (errno != EINPROGRESS) {
 		wlog(WLOG_WARNING, "%s: %s", cbd->bc_backend->be_name, strerror(errno));
 		return -1;
 	}
@@ -136,7 +136,6 @@ backend_read(e)
 {
 struct	backend_cb_data	*cbd = e->fde_rdata;
 
-	printf("write okay for %d\n", e->fde_fd);
 	cbd->bc_func(cbd->bc_backend, e, cbd->bc_data);
 
 	/*

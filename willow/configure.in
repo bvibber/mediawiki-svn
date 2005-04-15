@@ -8,7 +8,7 @@ AC_PROG_CC
 
 AC_CHECK_LIB(socket, socket)
 AC_CHECK_LIB(nsl, inet_addr)
-AC_CHECK_FUNCS([port_create poll])
-AC_CHECK_HEADERS([port.h poll.h sys/poll.h])
+AC_CHECK_FUNCS([port_create poll epoll_wait])
+AC_CHECK_HEADERS([port.h poll.h sys/poll.h sys/epoll.h])
 
 AC_OUTPUT(Makefile src/Makefile)
