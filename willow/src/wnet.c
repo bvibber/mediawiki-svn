@@ -159,6 +159,7 @@ struct	fde		*newe;
 	memset(newe, 0, sizeof(struct fde));
 	newe->fde_fd = newfd;
 	newe->fde_cdata = cdata;
+	inet_ntop(AF_INET, &cdata->cdat_addr.sin_addr.s_addr, newe->fde_straddr, sizeof(newe->fde_straddr));
 
 	http_new(newe);
 	return 0;

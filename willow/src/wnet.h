@@ -28,6 +28,7 @@ struct fde {
 struct	client_data	*fde_cdata;
 	void		*fde_rdata;
 	void		*fde_wdata;
+	char		 fde_straddr[16];
 };
 extern struct fde fde_table[];
 

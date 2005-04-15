@@ -321,14 +321,14 @@ proxy_start_backend(backend, e, data)
 	void *data;
 {
 struct	http_client	*client = data;
-	int		 i;
+	int		 i, got_xff = 0;
 	size_t		 bufsz;
 	char		*wrtbuf;
 	
 	client->cl_backend = backend;
 	client->cl_backendfde = e;
 
-	bufsz = 4 + 11 + strlen(client->cl_path) + 3;
+	bufsz = 4 + 11 + strlen(client->cl_path) + 3 + 16 + 4 + 15 + 5;
 	for (i = 0; i < client->cl_num; ++i) {
 		if (!strcmp(CL_HEADER(client, i), "Connection"))
 			bufsz += 19;
@@ -348,12 +348,25 @@ struct	http_client	*client = data;
 	for (i = 0; i < client->cl_num; ++i) {
 		if (!strcmp(CL_HEADER(client, i), "Connection"))
 			strcat(wrtbuf, "Connection: close\r\n");
-		else {
+		else if (!strcmp(CL_HEADER(client, i), "X-Forwarded-For")) {
+			got_xff = 1;
+			strcat(wrtbuf, CL_HEADER(client, i));
+			strcat(wrtbuf, ": ");
+			strcat(wrtbuf, CL_HEADERVAL(client, i));
+			strcat(wrtbuf, ", ");
+			strcat(wrtbuf, client->cl_fde->fde_straddr);
+			strcat(wrtbuf, "\r\n");
+		} else {
 			strcat(wrtbuf, CL_HEADER(client, i));
 			strcat(wrtbuf, ": ");
 			strcat(wrtbuf, CL_HEADERVAL(client, i));
 			strcat(wrtbuf, "\r\n");
 		}
+	}
+	if (!got_xff) {
+		strcat(wrtbuf, "X-Forwarded-For: ");
+		strcat(wrtbuf, client->cl_fde->fde_straddr);
+		strcat(wrtbuf, "\r\n");
 	}
 
 	strcat(wrtbuf, "\r\n");

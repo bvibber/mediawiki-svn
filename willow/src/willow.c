@@ -27,6 +27,7 @@ int main(argc, argv)
 	return EXIT_SUCCESS;
 }
 
+#ifdef WDEBUG_ALLOC
 struct alloc_entry {
 	void		*ae_addr;
 	int		 ae_freed;
@@ -94,3 +95,4 @@ struct	alloc_entry	*ae;
 	fprintf(stderr, "wfree: ptr %p never malloced!\n", p);
 	abort();
 }
+#endif
