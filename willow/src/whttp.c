@@ -37,10 +37,20 @@ struct http_header {
 	int	 hdr_valoff;	/* offset of value		*/
 };
 
+struct readbuf {
+	char	*rb_p;		/* start of allocated region	*/
+	int	 rb_size;	/* size of allocated region	*/
+	int	 rb_dsize;	/* [p,p+dsize) is valid data	*/
+	int	 rb_dpos;	/* current data position	*/
+};
+#define READBUF_SPARE_SIZE(b) ((b)->rb_size - (b)->rb_dsize)
+#define READBUF_SPARE_START(b) ((b)->rb_p + (b)->rb_dsize)
+#define READBUF_DATA_LEFT(b) ((b)->rb_dsize - (b)->rb_dpos)
+#define READBUF_INC_DATA_POS(b) ((b)->rb_dpos++)
+#define READBUF_CUR_POS(b) ((b)->rb_p + (b)->rb_dpos)
+
 struct http_client {
-	char		*cl_readbuf;			/* all data we've read from this client	*/
-	char		*cl_bufp;			/* where we are in the buffer		*/
-	char		*cl_bufend;			/* end of the buffer			*/
+struct	readbuf		 cl_readbuf;
 struct	http_header	 cl_headers[MAX_HEADERS];	/* headers				*/
 	int		 cl_num;			/* # of headers				*/
 struct	fde		*cl_fde;			/* backref to fd			*/
@@ -51,11 +61,8 @@ struct	fde		*cl_fde;			/* backref to fd			*/
 struct	backend		*cl_backend;			/* backend servicing this client	*/
 struct	fde		*cl_backendfde;			/* fde for backend			*/
 };
-#define CL_BUFSIZE(c) ((c)->cl_bufend - (c)->cl_readbuf)
-#define CL_BUFLEFT(c) ((c)->cl_bufend - (c)->cl_bufp)
-#define CL_CURPOS(c) ((c)->cl_bufp - (c)->cl_readbuf)
-#define CL_HEADER(c, i) ((c)->cl_readbuf + (c)->cl_headers[i].hdr_off)
-#define CL_HEADERVAL(c, u) ((c)->cl_readbuf + (c)->cl_headers[i].hdr_valoff)
+#define CL_HEADER(c, i) ((c)->cl_readbuf.rb_p + (c)->cl_headers[i].hdr_off)
+#define CL_HEADERVAL(c, u) ((c)->cl_readbuf.rb_p + (c)->cl_headers[i].hdr_valoff)
 
 static int http_read(struct fde *);
 static int parse_headers(struct http_client *);
@@ -66,6 +73,9 @@ static void proxy_start_backend(struct backend *, struct fde *, void *);
 static int proxy_backend_read(struct fde *);
 static void proxy_backend_write(struct fde *, void *, int);
 static void proxy_write_done(struct fde *, void *, int);
+static int readbuf_getdata(int fd, struct readbuf *);
+static void readbuf_free(struct readbuf *);
+static void readbuf_reset(struct readbuf *);
 
 static struct http_client *
 new_client(e)
@@ -98,11 +108,45 @@ static void
 client_close(client)
 	struct http_client *client;
 {
-	if (client->cl_readbuf)
-		free(client->cl_readbuf);
-
+	readbuf_free(&client->cl_readbuf);
 	wnet_close(client->cl_fde->fde_fd);
 	wfree(client);
+}
+
+static int
+readbuf_getdata(fd, buffer)
+	struct readbuf *buffer;
+{
+	int	i;
+
+	for (;;) {
+		if (READBUF_SPARE_SIZE(buffer) == 0) {
+			buffer->rb_size += RDBUF_INC;
+			buffer->rb_p = realloc(buffer->rb_p, buffer->rb_size);
+		}
+
+		if ((i = read(fd, READBUF_SPARE_START(buffer), READBUF_SPARE_SIZE(buffer))) < 1)
+			return i;
+		buffer->rb_dsize += i;
+
+	}
+	return 1;
+}
+
+static void
+readbuf_free(buffer)
+	struct readbuf *buffer;
+{
+	if (buffer->rb_p)
+		wfree(buffer->rb_p);
+	memset(buffer, 0, sizeof(*buffer));
+}
+
+static void
+readbuf_reset(buffer)
+	struct readbuf *buffer;
+{
+	buffer->rb_dpos = buffer->rb_dsize = 0;
 }
 
 static int
@@ -112,28 +156,19 @@ http_read(e)
 struct	http_client	*c = e->fde_rdata;
 	int		 i;
 	
-	/*
-	 * Do we have any buffer room left?
-	 */
-	if (CL_BUFLEFT(c) == 0) {
-		size_t curpos = CL_CURPOS(c);
-		size_t cursize = CL_BUFSIZE(c);
-		if ((c->cl_readbuf = realloc(c->cl_readbuf, CL_BUFSIZE(c) + RDBUF_INC)) == NULL) {
-			fputs("out of memory\n", stderr);
-			abort();
-		}
-		c->cl_bufp = c->cl_readbuf + curpos;
-		c->cl_bufend = c->cl_readbuf + cursize + RDBUF_INC - 1;
-	}
-
-	while ((i = read(e->fde_fd, c->cl_bufp, CL_BUFLEFT(c))) > 0) {
-		if (parse_headers(c) == -1) {
-			/* parse error */
+	if ((i = readbuf_getdata(e->fde_fd, &c->cl_readbuf)) < 1) {
+		if (errno == EWOULDBLOCK && (READBUF_DATA_LEFT(&c->cl_readbuf) == 0))
+			return 0;
+		else if (i == 0 || (i == -1 && errno != EWOULDBLOCK)) {
 			client_close(c);
 			return 1;
 		}
 	}
-
+	if (parse_headers(c) == -1) {
+		/* parse error */
+		client_close(c);
+		return 1;
+	}
 	if (c->cl_ps == PS_DONE) {
 		proxy_request(c);
 		/*
@@ -142,34 +177,22 @@ struct	http_client	*c = e->fde_rdata;
 		 */
 		return 1;
 	}
-
-	/*
-	 * Either an error, socket closed or wouldblock.
-	 */
-	if (i == 0 || (i < 0 && errno != EWOULDBLOCK)) {
-		/*
-		 * Okay, client exited rudely.
-		 */
-		client_close(c);
-		return 1;
-	} 
-	return 0;
 }
 
 static int
 parse_headers(client)
 	struct http_client *client;
 {
-	while (CL_BUFLEFT(client) > 0) {
-		char c = *client->cl_bufp;
+	while (READBUF_DATA_LEFT(&client->cl_readbuf) > 0) {
+		char c = *READBUF_CUR_POS(&client->cl_readbuf);
 
 		switch(client->cl_ps) {
 		case PS_START:
 			/* should be reading a request type */
 			switch(c) {
 				case '\r':
-					*client->cl_bufp = '\0';
-					if (parse_reqtype(client, client->cl_readbuf) == -1)
+					*READBUF_CUR_POS(&client->cl_readbuf) = '\0';
+					if (parse_reqtype(client, client->cl_readbuf.rb_p) == -1)
 						return -1;
 					client->cl_ps = PS_CR;
 					break;
@@ -199,7 +222,7 @@ parse_headers(client)
 					client->cl_ps = PS_HDR;
 					if (client->cl_num + 1 > MAX_HEADERS)
 						return -1;
-					client->cl_headers[client->cl_num].hdr_off = client->cl_bufp - client->cl_readbuf;
+					client->cl_headers[client->cl_num].hdr_off = client->cl_readbuf.rb_dpos;
 					break;
 			}
 			break;
@@ -207,7 +230,7 @@ parse_headers(client)
 			switch(c) {
 				case ':':
 					client->cl_ps = PS_COLON;
-					*client->cl_bufp = '\0';
+					*READBUF_CUR_POS(&client->cl_readbuf) = '\0';
 					break;
 				case ' ': case '\r': case '\n':
 					return -1;
@@ -229,7 +252,7 @@ parse_headers(client)
 				case '\r': case '\n': case ':': case ' ':
 					return -1;
 				default:
-					client->cl_headers[client->cl_num].hdr_valoff = client->cl_bufp - client->cl_readbuf;
+					client->cl_headers[client->cl_num].hdr_valoff = client->cl_readbuf.rb_dpos;
 					client->cl_ps = PS_VALUE;
 					break;
 			}
@@ -237,7 +260,7 @@ parse_headers(client)
 		case PS_VALUE:
 			switch(c) {
 				case '\r': 
-					*client->cl_bufp = '\0';
+					*READBUF_CUR_POS(&client->cl_readbuf) = '\0';
 					client->cl_ps = PS_CR;
 					client->cl_num++;
 					break;
@@ -265,7 +288,7 @@ parse_headers(client)
 		default:
 			abort();
 		}
-		client->cl_bufp++;
+		READBUF_INC_DATA_POS(&client->cl_readbuf);
 	}
 	return 0;
 }
@@ -392,8 +415,7 @@ struct	http_client	*client = data;
 	/*
 	 * Re-appropriate the readbuf for the backend...
 	 */
-	free(client->cl_readbuf);
-	client->cl_readbuf = malloc(RDBUF_INC);
+	readbuf_reset(&client->cl_readbuf);
 
 	wnet_register(e->fde_fd, FDE_READ, proxy_backend_read, client);
 }	
@@ -412,15 +434,16 @@ struct	http_client	*client = e->fde_rdata;
 	 * fd until the client write completes, otherwise we overrun 
 	 * ourselves.
 	 */
-	if ((i = read(e->fde_fd, client->cl_readbuf, RDBUF_INC)) < 1) {
-		if (i == 0 || (i == -1 && errno != EWOULDBLOCK)) {
+	if ((i = readbuf_getdata(e->fde_fd, &client->cl_readbuf)) < 1) {
+		if (READBUF_DATA_LEFT(&client->cl_readbuf) == 0) {
 			wnet_close(e->fde_fd);
 			client_close(client);
+			return 1;
 		}
-		return 1;
 	}
 
-	wnet_write(client->cl_fde->fde_fd, client->cl_readbuf, i, proxy_backend_write, client);
+	wnet_write(client->cl_fde->fde_fd, client->cl_readbuf.rb_p, client->cl_readbuf.rb_dsize, proxy_backend_write, client);
+	readbuf_reset(&client->cl_readbuf);
 	return 1;
 }
 
