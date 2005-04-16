@@ -5,6 +5,8 @@
  * whttp: HTTP implementation.
  */
 
+#include <sys/param.h>
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -16,6 +18,10 @@
 #include "whttp.h"
 #include "wnet.h"
 #include "wbackend.h"
+
+#ifndef MAXHOSTNAMELEN
+# define MAXHOSTNAMELEN HOST_NAME_MAX
+#endif
 
 #define MAX_HEADERS	25
 #define RDBUF_INC	8192	/* buffer in 8KB incrs	*/
