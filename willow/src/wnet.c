@@ -179,6 +179,7 @@ struct	wrtbuf	*buf;
 		buf->wb_done += i;
 		if (buf->wb_done == buf->wb_size) {
 			buf->wb_func(e, buf->wb_udata, 0);
+			wfree(buf);
 			return 1;
 		}
 
@@ -188,5 +189,6 @@ struct	wrtbuf	*buf;
 		return 0;
 			
 	buf->wb_func(e, buf->wb_udata, -1);
+	wfree(buf);
 	return 1;
 }

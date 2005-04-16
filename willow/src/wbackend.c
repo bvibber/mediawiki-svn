@@ -137,6 +137,7 @@ backend_read(e)
 struct	backend_cb_data	*cbd = e->fde_rdata;
 
 	cbd->bc_func(cbd->bc_backend, e, cbd->bc_data);
+	wfree(cbd);
 
 	/*
 	 * After handing the fd off to the caller, we don't care about it

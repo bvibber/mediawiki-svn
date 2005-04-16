@@ -192,6 +192,7 @@ client_close(client)
 	struct http_client *client;
 {
 	readbuf_free(&client->cl_readbuf);
+	header_free(&client->cl_headers);
 	wnet_close(client->cl_fde->fde_fd);
 	wfree(client);
 }
@@ -489,7 +490,7 @@ struct	http_client	*client = data;
 	/*
 	 * Re-appropriate the readbuf for the backend...
 	 */
-	readbuf_reset(&client->cl_readbuf);
+	readbuf_free(&client->cl_readbuf);
 	client->cl_ps = PS_START;
 	header_free(&client->cl_headers);
 
@@ -535,6 +536,7 @@ struct	http_client	*client = e->fde_rdata;
 			header_add(&response_headers, "Via", via_hdr);
 			client->cl_hdrbuf = header_build(&response_headers);
 			client->cl_ps = PS_BODY;
+			header_free(&response_headers);
 
 			wnet_write(client->cl_fde->fde_fd, "HTTP/1.0 200 OK\r\n", 17, proxy_backend_write_request, client);
 			return 1;
@@ -554,6 +556,7 @@ proxy_backend_write_header(e, data, res)
 {
 struct http_client	*client = data;
 
+	free(client->cl_hdrbuf);
 	//wnet_register(client->cl_fde->fde_fd, FDE_READ, proxy_backend_read, client);
 	proxy_backend_read(client->cl_fde);
 }
