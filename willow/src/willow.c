@@ -22,6 +22,7 @@ int main(argc, argv)
 	wlog(WLOG_NOTICE, "Willow: startup");
 	wconfig_init(NULL);
 	wnet_init();
+	whttp_init();
 
 	wnet_run();
 	return EXIT_SUCCESS;
