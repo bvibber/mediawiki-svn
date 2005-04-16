@@ -100,6 +100,11 @@ struct	fde		*newe;
 
 	newe = &fde_table[newfd];
 	memset(newe, 0, sizeof(struct fde));
+	newe->fde_flags.open = 1;
+#ifdef USE_POLL
+	if (newfd > highest_fd)
+		highest_fd = newfd;
+#endif
 	newe->fde_fd = newfd;
 	newe->fde_cdata = cdata;
 	newe->fde_desc = "accept()ed fd";
@@ -126,6 +131,11 @@ wnet_open(desc)
 	memset(&fde_table[fd], 0, sizeof(fde_table[fd]));
 	fde_table[fd].fde_fd = fd;
 	fde_table[fd].fde_desc = desc;
+	fde_table[fd].fde_flags.open = 1;
+#ifdef USE_POLL
+	if (fd > highest_fd)
+		highest_fd = fd;
+#endif
 
 	return fd;
 }
@@ -139,6 +149,11 @@ struct	fde	*e = &fde_table[fd];
 	close(e->fde_fd);
 	if (e->fde_cdata)
 		wfree(e->fde_cdata);
+	e->fde_flags.open = 0;
+#ifdef USE_POLL
+	if (fd == highest_fd)
+		--highest_fd;
+#endif
 }
 
 void

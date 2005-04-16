@@ -57,11 +57,27 @@ AC_CHECK_FUNC(poll, [have_poll=yes], [have_poll=no])
 AC_CHECK_FUNC(kqueue, [have_kqueue=yes], [have_kqueue=no])
 AC_CHECK_HEADER([sys/devpoll.h], [have_devpoll=yes], [have_devpoll=no])
 
+if test x$have_epoll = xyes; then
+	AC_MSG_CHECKING(for epoll support in kernel)
+	AC_TRY_RUN([
+#include <sys/epoll.h>
+#include <stdlib.h>
+int main() {
+	if (epoll_create(256) == -1)
+		exit 1;
+	else
+		exit 0;
+}], [	AC_MSG_RESULT(yes)
+	epoll_in_kernel=yes],
+[	AC_MSG_RESULT(no)
+	epoll_in_kernel=no])
+fi
+
 SELECTTYPE=none
 if test x$use_poll != xno -a x$have_poll = xyes; then
 	SELECTTYPE=poll
 fi
-if test x$use_epoll != xno -a x$have_epoll = xyes; then
+if test x$use_epoll != xno -a x$have_epoll = xyes -a x$epoll_in_kernel = xyes; then
 	SELECTTYPE=epoll
 fi
 if test x$use_devpoll != xno -a x$have_devpoll = xyes; then
@@ -98,6 +114,12 @@ fi
 
 AC_SUBST(SELECTTYPE)
 AC_OUTPUT(Makefile src/Makefile)
+
+if test x$epoll_in_kernel = xno; then
+	echo "Warning: epoll support was detected in libc, but not in the kernel."
+	echo "epoll support will be disabled.  If you wish to force the use of epoll"
+	echo "anyway, reconfigure with --enable-epoll."
+fi
 
 echo ""
 echo "Using I/O system      : $SELECTTYPE"

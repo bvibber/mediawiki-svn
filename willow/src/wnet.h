@@ -23,6 +23,10 @@ typedef void (*fdwcb)(struct fde*, void*, int);
 
 struct client_data;
 
+#ifdef USE_POLL
+extern int highest_fd;
+#endif
+
 struct fde {
 	int		 fde_fd;
 	const char	*fde_desc;
@@ -32,9 +36,12 @@ struct	client_data	*fde_cdata;
 	void		*fde_rdata;
 	void		*fde_wdata;
 	char		 fde_straddr[16];
-#if defined(USE_EPOLL) || defined(USE_DEVPOLL)
+#if defined(USE_EPOLL) || defined(USE_DEVPOLL) || defined(USE_POLL)
 	int		 fde_epflags;
 #endif
+	struct {
+		int	open:1;
+	}		 fde_flags;
 };
 extern struct fde fde_table[];
 

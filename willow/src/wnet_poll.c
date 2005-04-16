@@ -2,7 +2,7 @@
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
- * wnet_ports: Solaris event ports-specific networking
+ * wnet_poll: poll()-specific networking.
  */
 
 #include <sys/types.h>
@@ -18,7 +18,6 @@
 #include <assert.h>
 #include <fcntl.h>
 #include <signal.h>
-#include <port.h>
 #include <poll.h>
 
 #include "willow.h"
@@ -27,44 +26,54 @@
 #include "wlog.h"
 #include "whttp.h"
 
-static int port;
-#define GETN 256
-static port_event_t pe[GETN];
+struct pollfd *pfds;
+int highest_fd;
 
 void
 wnet_init_select(void)
 {
-	if ((port = port_create()) < 0) {
-		perror("port_create");
-		exit(8);
-	}
+	int	 i;
+
+	signal(SIGPIPE, SIG_IGN);
+	pfds = malloc(sizeof(*pfds) * getdtablesize());
 }
 
 void
 wnet_run(void)
 {
-	int		i, n;
-	uint		nget = 1;
+	int		i, n = 0, pn ;
 
-	while ((i = port_getn(port, pe, GETN, &nget, NULL)) != -1) {
-		for (i = 0; i < nget; ++i) {
-			struct fde *e = &fde_table[pe[i].portev_object];
-			assert(pe[i].portev_object < MAX_FD);
-
-			if ((pe[i].portev_events & POLLRDNORM) && e->fde_read_handler) {
-				int ret = e->fde_read_handler(e);
-				if (ret == 0)
-					port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLRDNORM, NULL);
-			}
-			if ((pe[i].portev_events & POLLWRNORM) && e->fde_write_handler) {
-				int ret = e->fde_write_handler(e);
-				if (ret == 0)
-					port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLWRNORM, NULL);
+	for (;;) {
+		for (i = pn = 0; i < highest_fd + 1; ++i) {
+			if (fde_table[i].fde_flags.open) {
+				pfds[pn].fd = fde_table[i].fde_fd;
+				pfds[pn].events = fde_table[i].fde_epflags;
+				++pn;
 			}
 		}
-		nget = 1;
+
+		if ((i = poll(pfds, pn, -1)) == -1)
+			break;
+
+		for (n = 0; n < pn; ++n) {
+			struct fde *e = &fde_table[pfds[n].fd];
+
+			e->fde_epflags &= ~pfds[n].revents;
+
+			if ((pfds[n].revents & POLLRDNORM) && e->fde_read_handler) {
+				int ret = e->fde_read_handler(e);
+				if (ret == 0)
+					wnet_register(e->fde_fd, FDE_READ, e->fde_read_handler, NULL);
+			}
+
+			if ((pfds[n].revents & POLLWRNORM) && e->fde_write_handler) {
+				int ret = e->fde_write_handler(e);
+				if (ret == 0)
+					wnet_register(e->fde_fd, FDE_WRITE, e->fde_write_handler, NULL);
+			}
+		}
 	}
-	perror("port_get");
+	perror("poll");
 }
 
 void
@@ -73,30 +82,25 @@ wnet_register(fd, what, handler, data)
 	void *data;
 {
 struct	fde		*e = &fde_table[fd];
-	int		 flags = 0;
+	int		 flags = e->fde_epflags, mod = flags;
 
 	assert(fd < MAX_FD);
 
 	if (handler == NULL) {
-		port_dissociate(port, PORT_SOURCE_FD, fd);
+		e->fde_epflags = 0;
 		return;
 	}
 
 	e->fde_fd = fd;
 	if (what & FDE_READ) {
 		e->fde_read_handler = handler;
-		flags |= POLLRDNORM;
+		e->fde_epflags |= POLLRDNORM;
 	} 
 	if (what & FDE_WRITE) {
 		e->fde_write_handler = handler;
-		flags |= POLLWRNORM;
+		e->fde_epflags |= POLLWRNORM;
 	}
 
 	if (data)
 		e->fde_rdata = data;
-	
-	if (port_associate(port, PORT_SOURCE_FD, fd, flags, NULL) < 0) {
-		perror("port_associate");
-		abort();
-	}
 }
