@@ -177,6 +177,7 @@ struct	http_client	*c = e->fde_rdata;
 		 */
 		return 1;
 	}
+	return 0;
 }
 
 static int
