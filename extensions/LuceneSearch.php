@@ -510,7 +510,8 @@ class LuceneSearch extends SpecialPage
 		
 		// Cache results for five minutes; they'll be read again
 		// on reloads or paging through the result set.
-		$key = "$wgDBname:lucene:$method:$limit:" . md5( $query );
+		$key = "$wgDBname:lucene:$method:$limit:" . md5( $query ) .
+			":" . implode( ',', $this->namespaces );
 		$expiry = 60 * 5;
 		
 		$resultset = $wgMemc->get( $key );
