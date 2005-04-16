@@ -40,9 +40,10 @@
 #define PS_DONE		8
 #define PS_BODY		9
 
-struct http_header {
-	int	 hdr_off;	/* offset from start of buffer	*/
-	int	 hdr_valoff;	/* offset of value		*/
+struct header_list {
+	const char	*hl_name;
+	const char	*hl_value;
+struct	header_list	*hl_next;
 };
 
 struct readbuf {
@@ -58,9 +59,8 @@ struct readbuf {
 #define READBUF_CUR_POS(b) ((b)->rb_p + (b)->rb_dpos)
 
 struct http_client {
-struct	readbuf		 cl_readbuf;
-struct	http_header	 cl_headers[MAX_HEADERS];	/* headers				*/
-	int		 cl_num;			/* # of headers				*/
+struct	readbuf		 cl_readbuf;			/* read buffer				*/
+struct	header_list	 cl_headers;			/* HTTP headers				*/
 struct	fde		*cl_fde;			/* backref to fd			*/
 	int		 cl_reqtype;			/* request type or 0			*/
 	int		 cl_ps;				/* parse state				*/
@@ -68,9 +68,8 @@ struct	fde		*cl_fde;			/* backref to fd			*/
 	char		*cl_wrtbuf;			/* write buf (either to client or be)	*/
 struct	backend		*cl_backend;			/* backend servicing this client	*/
 struct	fde		*cl_backendfde;			/* fde for backend			*/
+	char 		*cl_hdrbuf;			/* temp offset for hdr parsing		*/
 };
-#define CL_HEADER(c, i) ((c)->cl_readbuf.rb_p + (c)->cl_headers[i].hdr_off)
-#define CL_HEADERVAL(c, u) ((c)->cl_readbuf.rb_p + (c)->cl_headers[i].hdr_valoff)
 
 static int http_read(struct fde *);
 static int parse_headers(struct http_client *, int);
@@ -80,10 +79,15 @@ static void proxy_request(struct http_client *);
 static void proxy_start_backend(struct backend *, struct fde *, void *);
 static int proxy_backend_read(struct fde *);
 static void proxy_backend_write(struct fde *, void *, int);
+static void proxy_backend_write_request(struct fde *, void *, int);
 static void proxy_write_done(struct fde *, void *, int);
+static void proxy_write_done_request(struct fde *, void *, int);
 static int readbuf_getdata(int fd, struct readbuf *);
 static void readbuf_free(struct readbuf *);
 static void readbuf_reset(struct readbuf *);
+static void header_add(struct header_list *, const char *, const char *);
+static void header_free(struct header_list *);
+static char *header_build(struct header_list *);
 
 static char via_hdr[1024];
 
@@ -115,6 +119,61 @@ struct	http_client	*cl;
 	memset(cl, 0, sizeof(*cl));
 	cl->cl_fde = e;
 	return cl;
+}
+
+static void
+header_free(head)
+	struct header_list *head;
+{
+struct	header_list	*next = head->hl_next;
+
+	while (next) {
+		struct header_list *this = next;
+		next = this->hl_next;
+		wfree(this);
+	}
+
+	memset(head, 0, sizeof(*head));
+}
+
+static void
+header_add(head, name, value)
+	struct header_list *head;
+	const char *name, *value;
+{
+	while (head->hl_next)
+		head = head->hl_next;
+	head->hl_next = wmalloc(sizeof(*head->hl_next));
+	head = head->hl_next;
+	head->hl_name = name;
+	head->hl_value = value;
+	head->hl_next = NULL;
+}
+
+static char *
+header_build(head)
+	struct header_list *head;
+{
+	char	*buf = NULL;
+	size_t	 bufsz = 0;
+	size_t	 buflen = 0;
+	size_t	 newsize, need;
+
+	while (head->hl_next) {
+		head = head->hl_next;
+
+		newsize = strlen(head->hl_name) + strlen(head->hl_value) + 7;
+		need = buflen + newsize;
+
+		if (need > bufsz)
+			buf = realloc(buf, need);
+
+		bufsz = need;
+		buflen += sprintf(buf + buflen, "%s: %s\r\n", head->hl_name, head->hl_value);
+	}
+	strcat(buf, "\r\n");
+
+	return buf;
 }
 
 void
@@ -245,9 +304,7 @@ parse_headers(client, isresp)
 					return -1;
 				default: /* header name */
 					client->cl_ps = PS_HDR;
-					if (client->cl_num + 1 > MAX_HEADERS)
-						return -1;
-					client->cl_headers[client->cl_num].hdr_off = client->cl_readbuf.rb_dpos;
+					client->cl_hdrbuf = client->cl_readbuf.rb_p + client->cl_readbuf.rb_dpos;
 					break;
 			}
 			break;
@@ -277,7 +334,8 @@ parse_headers(client, isresp)
 				case '\r': case '\n': case ':': case ' ':
 					return -1;
 				default:
-					client->cl_headers[client->cl_num].hdr_valoff = client->cl_readbuf.rb_dpos;
+					header_add(&client->cl_headers, client->cl_hdrbuf, 
+							client->cl_readbuf.rb_p + client->cl_readbuf.rb_dpos);
 					client->cl_ps = PS_VALUE;
 					break;
 			}
@@ -287,7 +345,6 @@ parse_headers(client, isresp)
 				case '\r': 
 					*READBUF_CUR_POS(&client->cl_readbuf) = '\0';
 					client->cl_ps = PS_CR;
-					client->cl_num++;
 					break;
 				case '\n': 
 					return -1;
@@ -376,57 +433,42 @@ proxy_start_backend(backend, e, data)
 	void *data;
 {
 struct	http_client	*client = data;
-	int		 i, got_xff = 0;
+	int		 i;
 	size_t		 bufsz;
 	char		*wrtbuf;
+struct	header_list	 response_headers, *it;
 	
 	client->cl_backend = backend;
 	client->cl_backendfde = e;
 
-	bufsz = 4 + 11 + strlen(client->cl_path) + 3 + 16 + 4 + 15 + 5;
-	for (i = 0; i < client->cl_num; ++i) {
-		if (!strcmp(CL_HEADER(client, i), "Connection"))
-			bufsz += 19;
-		else
-			bufsz += strlen(CL_HEADER(client, i)) + strlen(CL_HEADERVAL(client, i)) + 4;
+	memset(&response_headers, 0, sizeof(response_headers));
+
+	bufsz = strlen(client->cl_path) + 15;
+	client->cl_wrtbuf = wmalloc(bufsz + 1);
+	sprintf(client->cl_wrtbuf, "GET %s HTTP/1.0\r\n", client->cl_path);
+
+	for (it = client->cl_headers.hl_next; it; it = it->hl_next) {
+		if (!strcmp(it->hl_name, "Connection"))
+			continue;
+		header_add(&response_headers, it->hl_name, it->hl_value);
 	}
 
-	if ((wrtbuf = wmalloc(bufsz)) == NULL) {
-		fputs("out of memory\n", stderr);
-		abort();
-	}
+	header_add(&response_headers, "X-Forwarded-For", client->cl_fde->fde_straddr);
+	client->cl_hdrbuf = header_build(&response_headers);	
+	header_free(&response_headers);
 
-	strcpy(wrtbuf, "GET ");
-	strcat(wrtbuf, client->cl_path);
-	strcat(wrtbuf, " HTTP/1.0\r\n");
+	wnet_write(e->fde_fd, client->cl_wrtbuf, bufsz, proxy_write_done_request, client);
+}
 
-	for (i = 0; i < client->cl_num; ++i) {
-		if (!strcmp(CL_HEADER(client, i), "Connection"))
-			strcat(wrtbuf, "Connection: close\r\n");
-		else if (!strcmp(CL_HEADER(client, i), "X-Forwarded-For")) {
-			got_xff = 1;
-			strcat(wrtbuf, CL_HEADER(client, i));
-			strcat(wrtbuf, ": ");
-			strcat(wrtbuf, CL_HEADERVAL(client, i));
-			strcat(wrtbuf, ", ");
-			strcat(wrtbuf, client->cl_fde->fde_straddr);
-			strcat(wrtbuf, "\r\n");
-		} else {
-			strcat(wrtbuf, CL_HEADER(client, i));
-			strcat(wrtbuf, ": ");
-			strcat(wrtbuf, CL_HEADERVAL(client, i));
-			strcat(wrtbuf, "\r\n");
-		}
-	}
-	if (!got_xff) {
-		strcat(wrtbuf, "X-Forwarded-For: ");
-		strcat(wrtbuf, client->cl_fde->fde_straddr);
-		strcat(wrtbuf, "\r\n");
-	}
+static void
+proxy_write_done_request(e, data, i)
+	struct fde *e;
+	void *data;
+{
+struct	http_client	*client = data;
 
-	strcat(wrtbuf, "\r\n");
-	client->cl_wrtbuf = wrtbuf;
-	wnet_write(e->fde_fd, wrtbuf, bufsz - 1, proxy_write_done, client);
+	wfree(client->cl_wrtbuf);
+	wnet_write(e->fde_fd, client->cl_hdrbuf, strlen(client->cl_hdrbuf), proxy_write_done, client);
 }
 
 static void
@@ -436,7 +478,7 @@ proxy_write_done(e, data, i)
 {
 struct	http_client	*client = data;
 
-	wfree(client->cl_wrtbuf);
+	wfree(client->cl_hdrbuf);
 
 	if (i == -1) {
 		client_close(client);
@@ -449,7 +491,7 @@ struct	http_client	*client = data;
 	 */
 	readbuf_reset(&client->cl_readbuf);
 	client->cl_ps = PS_START;
-	client->cl_num = 0;
+	header_free(&client->cl_headers);
 
 	wnet_register(e->fde_fd, FDE_READ, proxy_backend_read, client);
 }	
@@ -483,60 +525,59 @@ struct	http_client	*client = e->fde_rdata;
 			return 1;
 		}
 		if (client->cl_ps == PS_DONE) {
-			/* XXX */
-			size_t bufsz;
-			char *wrtbuf;
-			int got_via = 0;
+			struct header_list *head;
+			struct header_list response_headers;
+			memset(&response_headers, 0, sizeof(response_headers));
 
-			bufsz = 4 + 11 + 3 + 16 + 4 + 15 + 5;
-			for (i = 0; i < client->cl_num; ++i) {
-				bufsz += strlen(CL_HEADER(client, i)) + strlen(CL_HEADERVAL(client, i)) + 5;
+			for (head = client->cl_headers.hl_next; head; head = head->hl_next) {
+				header_add(&response_headers, head->hl_name, head->hl_value);
 			}
-
-			if ((wrtbuf = wmalloc(bufsz)) == NULL) {
-				fputs("out of memory\n", stderr);
-				abort();
-			}
-
-			strcpy(wrtbuf, "HTTP/1.0 200 OK\r\n");
-
-			for (i = 0; i < client->cl_num; ++i) {
-				strcat(wrtbuf, CL_HEADER(client, i));
-				strcat(wrtbuf, ": ");
-				strcat(wrtbuf, CL_HEADERVAL(client, i));
-				if (!strcmp(CL_HEADER(client, i), "Via")) {
-					got_via = 1;
-					strcat(wrtbuf, ", ");
-					strcat(wrtbuf, via_hdr);
-				}
-				strcat(wrtbuf, "\r\n");
-			}
-			if (!got_via) {
-				strcat(wrtbuf, "Via: ");
-				strcat(wrtbuf, via_hdr);
-				strcat(wrtbuf, "\r\n");
-			}
-			client->cl_wrtbuf = wrtbuf;
+			header_add(&response_headers, "Via", via_hdr);
+			client->cl_hdrbuf = header_build(&response_headers);
 			client->cl_ps = PS_BODY;
-			wnet_write(client->cl_fde->fde_fd, wrtbuf, strlen(wrtbuf), proxy_backend_write, client);
+
+			wnet_write(client->cl_fde->fde_fd, "HTTP/1.0 200 OK\r\n", 17, proxy_backend_write_request, client);
 			return 1;
 		}
+		return 0;
 	}
 
-	wnet_write(client->cl_fde->fde_fd, client->cl_readbuf.rb_p + client->cl_readbuf.rb_dpos, 
-			client->cl_readbuf.rb_dsize, proxy_backend_write, client);
-	readbuf_reset(&client->cl_readbuf);
-	return 1;
+	wnet_write(client->cl_fde->fde_fd, READBUF_CUR_POS(&client->cl_readbuf), 
+			READBUF_DATA_LEFT(&client->cl_readbuf), proxy_backend_write, client);
+	return 0;
+}
+
+static void
+proxy_backend_write_header(e, data, res)
+	struct fde *e;
+	void *data;
+{
+struct http_client	*client = data;
+
+	//wnet_register(client->cl_fde->fde_fd, FDE_READ, proxy_backend_read, client);
+	proxy_backend_read(client->cl_fde);
+}
+
+static void
+proxy_backend_write_request(e, data, res)
+	struct fde *e;
+	void *data;
+{
+struct	http_client	*client = data;
+
+	wnet_write(client->cl_fde->fde_fd, client->cl_hdrbuf, strlen(client->cl_hdrbuf),
+			proxy_backend_write_header, client);
 }
 
 static void
 proxy_backend_write(e, data, res)
 	struct fde *e;
 	void *data;
-	int res;
 {
 struct	http_client	*client = data;
 
+
+	readbuf_free(&client->cl_readbuf);
 	/*
 	 * Write to client completed.  Wait for the backend to send more data.
 	 */
