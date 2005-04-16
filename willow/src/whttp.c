@@ -44,6 +44,7 @@ struct header_list {
 	const char	*hl_name;
 	const char	*hl_value;
 struct	header_list	*hl_next;
+struct	header_list	*hl_tail;
 };
 
 struct readbuf {
@@ -141,13 +142,19 @@ header_add(head, name, value)
 	struct header_list *head;
 	const char *name, *value;
 {
-	while (head->hl_next)
-		head = head->hl_next;
-	head->hl_next = wmalloc(sizeof(*head->hl_next));
-	head = head->hl_next;
-	head->hl_name = name;
-	head->hl_value = value;
-	head->hl_next = NULL;
+struct	header_list	*new = head;
+
+	if (head->hl_tail)
+		new = head->hl_tail;
+	else
+		while (new->hl_next)
+			new = new->hl_next;
+	new->hl_next = wmalloc(sizeof(*head->hl_next));
+	head->hl_tail = new->hl_next;
+	new = new->hl_next;
+	new->hl_name = name;
+	new->hl_value = value;
+	new->hl_next = new->hl_tail = NULL;
 }
 
 static char *
