@@ -11,3 +11,6 @@ INCLUDES= $(all_includes)
 # the library search path.
 willow_LDFLAGS = $(all_libraries) 
 noinst_HEADERS = wlog.h wconfig.h wnet.h whttp.h wbackend.h willow.h
+
+lint: Makefile
+	lint -Ncheck=%all -Nlevel=3 -XCC=yes -lsocket -lnsl $(willow_CPPFLAGS) -I $(top_srcdir) ${willow_SOURCES}

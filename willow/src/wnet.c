@@ -15,7 +15,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
-#include <assert.h>
 #include <fcntl.h>
 #include <signal.h>
 
@@ -26,7 +25,7 @@
 #include "whttp.h"
 
 struct wrtbuf {
-	void	*wb_buf;
+const	void	*wb_buf;
 	int	 wb_size;
 	int	 wb_done;
 	fdwcb	 wb_func;
@@ -56,7 +55,7 @@ wnet_init(void)
 		int fd = wnet_open("listener");
 		int one = 1;
 		setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
-		if (bind(fd, &lns->addr, sizeof(lns->addr)) < 0) {
+		if (bind(fd, (struct sockaddr *) &lns->addr, sizeof(lns->addr)) < 0) {
 			wlog(WLOG_ERROR, "bind: %s: %s\n", lns->name, strerror(errno));
 			exit(8);
 		}
@@ -87,7 +86,7 @@ struct	fde		*newe;
 
 	addrlen = sizeof(cdata->cdat_addr);
 
-	if ((newfd = accept(e->fde_fd, &cdata->cdat_addr, &addrlen)) < 0) {
+	if ((newfd = accept(e->fde_fd, (struct sockaddr *) &cdata->cdat_addr, &addrlen)) < 0) {
 		wlog(WLOG_NOTICE, "accept error: %s", strerror(errno));
 		wfree(cdata);
 		return;
@@ -147,6 +146,7 @@ wnet_open(desc)
 
 void
 wnet_close(fd)
+	int fd;
 {
 struct	fde	*e = &fde_table[fd];
 
@@ -165,6 +165,7 @@ struct	fde	*e = &fde_table[fd];
 
 void
 wnet_write(fd, buf, bufsz, cb, data)
+	int fd;
 	const void *buf;
 	size_t bufsz;
 	fdwcb cb;
@@ -196,7 +197,7 @@ struct	wrtbuf	*buf;
 	int	 i;
 
 	buf = e->fde_wdata;
-	while ((i = write(e->fde_fd, buf->wb_buf + buf->wb_done, buf->wb_size - buf->wb_done)) > -1) {
+	while ((i = write(e->fde_fd, (char *)buf->wb_buf + buf->wb_done, buf->wb_size - buf->wb_done)) > -1) {
 		buf->wb_done += i;
 		if (buf->wb_done == buf->wb_size) {
 			wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);

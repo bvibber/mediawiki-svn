@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <netdb.h>
+#include <assert.h>
 
 #include "willow.h"
 #include "whttp.h"
@@ -30,7 +31,7 @@
 #define ERR_BADREQUEST	1
 #define ERR_BADRESPONSE	2
 
-const char *error_files[] = {
+static const char *error_files[] = {
 	/* ERR_GENERAL		*/	DATADIR "/errors/ERR_GENERAL",
 	/* ERR_BADREQUEST	*/	DATADIR "/errors/ERR_BADREQUEST",
 	/* ERR_BADRESPONSE	*/	DATADIR "/errors/ERR_BADRESPONSE",
@@ -45,7 +46,7 @@ const char *error_files[] = {
 #define REQTYPE_TRACE	3
 #define REQTYPE_OPTIONS	4
 
-const char *request_string[] = {
+static const char *request_string[] = {
 	"GET",
 	"POST",
 	"HEAD",
@@ -253,6 +254,7 @@ client_close(client)
 
 static int
 readbuf_getdata(fd, buffer)
+	int fd;
 	struct readbuf *buffer;
 {
 	int	i;
@@ -268,7 +270,6 @@ readbuf_getdata(fd, buffer)
 		buffer->rb_dsize += i;
 
 	}
-	return 1;
 }
 
 static void
@@ -321,6 +322,7 @@ struct	http_client	*c = e->fde_rdata;
 static int
 parse_headers(client, isresp)
 	struct http_client *client;
+	int isresp;
 {
 	while (READBUF_DATA_LEFT(&client->cl_readbuf) > 0) {
 		char c = *READBUF_CUR_POS(&client->cl_readbuf);
@@ -415,7 +417,6 @@ parse_headers(client, isresp)
 				default:
 					return -1;
 			}
-			break;
 		case PS_DONE:
 			/*
 			 * We're done parsing headers on this client, but they sent
@@ -434,6 +435,7 @@ static int
 parse_reqtype(client, request, isresp)
 	struct http_client *client;
 	char *request;
+	int isresp;
 {
 	char	*p;
 
@@ -523,11 +525,19 @@ static void
 proxy_write_done_request(e, data, i)
 	struct fde *e;
 	void *data;
+	int i;
 {
 struct	http_client	*client = data;
 
 	wfree(client->cl_wrtbuf);
 	client->cl_wrtbuf = NULL;
+
+	if (i == -1) {
+		client_send_error(client, ERR_GENERAL, strerror(errno));
+		wnet_close(e->fde_fd);
+		return;
+	}
+
 	wnet_write(e->fde_fd, client->cl_hdrbuf, strlen(client->cl_hdrbuf), proxy_write_done, client);
 }
 
@@ -535,6 +545,7 @@ static void
 proxy_write_done(e, data, i)
 	struct fde *e;
 	void *data;
+	int i;
 {
 struct	http_client	*client = data;
 
@@ -592,10 +603,9 @@ proxy_backend_read(e)
 	struct fde *e;
 {
 struct	http_client	*client = e->fde_rdata;
-	int		 i;
 struct	header_list	*head;
 
-	if ((i = readbuf_getdata(e->fde_fd, &client->cl_readbuf)) < 1) {
+	if (readbuf_getdata(e->fde_fd, &client->cl_readbuf) < 1) {
 		if (READBUF_DATA_LEFT(&client->cl_readbuf) == 0) {
 			wnet_close(e->fde_fd);
 			client_send_error(client, ERR_GENERAL, strerror(errno));
@@ -628,10 +638,12 @@ struct	header_list	*head;
 	client_send_response(client);
 }
 
+/*ARGSUSED*/
 static void
 client_send_response_fde_write(e, data, res)
 	struct fde *e;
 	void *data;
+	int res;
 {
 struct	http_client	*client = data;
 
@@ -651,6 +663,7 @@ struct	http_client	*client = data;
 static void
 client_send_error(client, errnum, errdata)
 	struct http_client *client;
+	int errnum;
 	const char *errdata;
 {
 	FILE		*errfile;
@@ -729,6 +742,8 @@ client_send_error(client, errnum, errdata)
 	client->cl_response.hr_status_str = "Service unavailable";
 	client->cl_response.hr_source_type = RESP_SOURCE_BUFFER;
 	client->cl_response.hr_source.buffer.addr = client->cl_wrtbuf;
+	assert(u >= client->cl_wrtbuf);
+	/*LINTED possible ptrdiff_t overflow*/
 	client->cl_response.hr_source.buffer.len = u - client->cl_wrtbuf;
 
 	client->cl_response.hr_flags.cachable = 0;
@@ -755,10 +770,12 @@ client_send_response(client)
 			client_send_response_headers_done, client);
 }
 
+/*ARGSUSED*/
 static void
 client_send_response_headers_done(e, data, res)
 	struct fde *e;
 	void *data;
+	int res;
 {
 struct	http_client	*client = data;
 
@@ -776,10 +793,12 @@ struct	http_client	*client = data;
 		client_send_response_fde_read(client->cl_response.hr_source.fde);
 }
 
+/*ARGSUSED*/
 static void
 client_send_response_body_done(e, data, res)
 	struct fde *e;
 	void *data;
+	int res;
 {
 struct	http_client	*client = data;
 

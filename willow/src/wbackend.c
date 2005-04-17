@@ -23,8 +23,6 @@
 static struct backend **backends;
 static int nbackends;
 
-int backendp;
-
 static struct backend *new_backend(char *);
 static void backend_read(struct fde *);
 static struct backend *next_backend(void);
@@ -99,7 +97,7 @@ get_backend(func, data)
 	void *data;
 {
 struct	backend_cb_data	*cbd;
-	int		 s, i;
+	int		 s;
 	
 	if ((cbd = wmalloc(sizeof(*cbd))) == NULL) {
 		fputs("out of memory\n", stderr);
@@ -115,7 +113,7 @@ struct	backend_cb_data	*cbd;
 		return -1;
 	}
 
-	if ((i = connect(s, &cbd->bc_backend->be_addr, sizeof(cbd->bc_backend->be_addr))) == 0) {
+	if (connect(s, (struct sockaddr *)&cbd->bc_backend->be_addr, sizeof(cbd->bc_backend->be_addr)) == 0) {
 		func(cbd->bc_backend, &fde_table[s], data);
 		wfree(cbd);
 		return 0;

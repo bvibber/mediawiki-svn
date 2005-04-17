@@ -8,16 +8,18 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <signal.h>
 
 #include "wlog.h"
 #include "wnet.h"
 #include "wconfig.h"
 #include "willow.h"
+#include "whttp.h"
 
+/*ARGSUSED*/
 static void 
 sig_exit(s)
+	int s;
 {
 	fprintf(stderr, "exit on signal");
 	exit(0);
@@ -25,6 +27,7 @@ sig_exit(s)
 
 int main(argc, argv)
 	char *argv[];
+	int argc;
 {
 	int	i;
 
@@ -34,7 +37,6 @@ int main(argc, argv)
 				config.foreground = 1;
 				break;
 			default:
-				fprintf(stderr, "%s: unknown option '-%c'\n", argv[0], optopt);
 				exit(8);
 		}
 	}

@@ -16,6 +16,8 @@
 #include "wnet.h"
 #include "wconfig.h"
 
+struct log_variables logging;
+
 static const char *sev_names[] = {
 	"Notice",
 	"Warning",

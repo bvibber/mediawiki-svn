@@ -130,7 +130,7 @@ wconfig_init(const char *file)
 	fclose(cfg);
 }
 
-struct syslog_facility {
+static struct syslog_facility {
 	char	 *name;
 	int	  fac;
 } syslog_facilities[] = {

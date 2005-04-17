@@ -8,24 +8,13 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
-#include <arpa/inet.h>
-
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
 #include <assert.h>
 #include <fcntl.h>
-#include <signal.h>
 #include <port.h>
-#include <poll.h>
 
-#include "willow.h"
 #include "wnet.h"
-#include "wconfig.h"
-#include "wlog.h"
-#include "whttp.h"
 
 #define READABLE POLLRDNORM
 
@@ -45,10 +34,10 @@ wnet_init_select(void)
 void
 wnet_run(void)
 {
-	int		i, n;
+	int		i;
 	uint		nget = 1;
 
-	while ((i = port_getn(port, pe, GETN, &nget, NULL)) != -1) {
+	while (port_getn(port, pe, GETN, &nget, NULL) != -1) {
 		wnet_set_time();
 
 		for (i = 0; i < nget; ++i) {
@@ -82,6 +71,7 @@ wnet_run(void)
 
 void
 wnet_register(fd, what, handler, data)
+	int fd, what;
 	fdcb handler;
 	void *data;
 {

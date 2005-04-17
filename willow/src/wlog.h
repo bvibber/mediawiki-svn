@@ -13,7 +13,7 @@
 #define WLOG_ERROR 2
 #define WLOG_MAX 3
 
-struct log_variables {
+extern struct log_variables {
 	char *file;
 	int level;
 	FILE *fp;
