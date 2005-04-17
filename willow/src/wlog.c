@@ -46,6 +46,7 @@ wlog(int sev, const char *fmt, ...)
 	if (logging.level == WLOG_DEBUG)
 		fputs(s, stderr);
 	va_end(ap);
+	free(s);
 }
 
 void
