@@ -18,6 +18,7 @@
 
 #include "wconfig.h"
 #include "wbackend.h"
+#include "wlog.h"
 
 #define CONFIGFILE "./willow.conf"
 
@@ -131,6 +132,27 @@ wconfig_init(const char *file)
 		} else if (!strcmp(opt, "cache_dir")) {
 			add_cachedir(s);
 			continue;
+		} else if (!strcmp(opt, "log_file")) {
+			fputs("Got here\n", stderr);
+			if (!*s) {
+				fprintf(stderr, "%s:%d: no log file specified\n",
+					file, linenum);
+				exit(8);
+			}
+			logging.file = malloc(strlen(s)+1);
+			strcpy(logging.file, s);
+		} else if (!strcmp(opt, "log_level")) {
+			if (!*s) {
+				fprintf(stderr, "%s:%d: no log level specified\n",
+					file, linenum);
+				exit(8);
+			}
+			if (atoi(s) > WLOG_MAX) { 
+				fprintf(stderr, "%s:%d: invalid log level\n",
+					file, linenum);
+				exit(8);
+			}
+			logging.level = atoi(s);
 		} else {
 			fprintf(stderr, "%s:%d: unknown configuration option \"%s\"\n",
 				file, linenum, opt);

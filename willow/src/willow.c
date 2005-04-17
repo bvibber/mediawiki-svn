@@ -26,15 +26,16 @@ sig_exit(s)
 int main(argc, argv)
 	char *argv[];
 {
+	wconfig_init(NULL);
 	wlog_init();
 	wlog(WLOG_NOTICE, "Willow: startup");
-	wconfig_init(NULL);
 	wnet_init();
 	whttp_init();
 
 	signal(SIGINT, sig_exit);
 	
 	wnet_run();
+	wlog_close();
 	return EXIT_SUCCESS;
 }
 

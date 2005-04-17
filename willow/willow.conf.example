@@ -3,3 +3,5 @@
 backend 127.0.0.1:80
 listen 0.0.0.0:8080
 cache_dir /var/spool/willow 10
+log_file willow.log
+log_level 3
