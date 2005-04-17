@@ -49,16 +49,25 @@ wnet_run(void)
 	while ((i = port_getn(port, pe, GETN, &nget, NULL)) != -1) {
 		for (i = 0; i < nget; ++i) {
 			struct fde *e = &fde_table[pe[i].portev_object];
+			int hadwrite, hadread;
 			assert(pe[i].portev_object < MAX_FD);
 
+			hadread = e->fde_epflags & POLLRDNORM;
+			hadwrite = e->fde_epflags & POLLWRNORM;
+
+			/*
+			 * Immediately re-associate.  If the caller doesn't want it,
+			 * they'll dissociate it themselves.  This could be optimised
+			 * a little to save 2 syscalls in some cases...
+			 */
 			if ((pe[i].portev_events & POLLRDNORM) && e->fde_read_handler) {
-				int ret = e->fde_read_handler(e);
-				if (ret == 0)
+				e->fde_read_handler(e);
+				if (hadread && (e->fde_epflags & POLLRDNORM))
 					port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLRDNORM, NULL);
 			}
 			if ((pe[i].portev_events & POLLWRNORM) && e->fde_write_handler) {
-				int ret = e->fde_write_handler(e);
-				if (ret == 0)
+				e->fde_write_handler(e);
+				if (hadwrite && (e->fde_epflags & POLLWRNORM))
 					port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLWRNORM, NULL);
 			}
 		}
@@ -73,30 +82,40 @@ wnet_register(fd, what, handler, data)
 	void *data;
 {
 struct	fde		*e = &fde_table[fd];
-	int		 flags = 0;
+	int		 oldflags = e->fde_epflags;
 
 	assert(fd < MAX_FD);
 
-	if (handler == NULL) {
-		port_dissociate(port, PORT_SOURCE_FD, fd);
-		return;
-	}
-
 	e->fde_fd = fd;
+
 	if (what & FDE_READ) {
 		e->fde_read_handler = handler;
-		flags |= POLLRDNORM;
+		if (handler)
+			e->fde_epflags |= POLLRDNORM;
+		else
+			e->fde_epflags &= ~POLLWRNORM;
 	} 
 	if (what & FDE_WRITE) {
 		e->fde_write_handler = handler;
-		flags |= POLLWRNORM;
+		if (handler)
+			e->fde_epflags |= POLLWRNORM;
+		else
+			e->fde_epflags &= ~POLLWRNORM;
 	}
 
 	if (data)
 		e->fde_rdata = data;
 	
-	if (port_associate(port, PORT_SOURCE_FD, fd, flags, NULL) < 0) {
-		perror("port_associate");
-		abort();
+	if (oldflags == e->fde_epflags)
+		/* no change */
+		return;
+
+	if (e->fde_epflags) {
+		if (port_associate(port, PORT_SOURCE_FD, fd, e->fde_epflags, NULL) < 0) {
+			perror("port_associate");
+			abort();
+		}
+	} else {
+		port_dissociate(port, PORT_SOURCE_FD, fd);
 	}
 }

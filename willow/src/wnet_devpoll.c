@@ -48,7 +48,7 @@ wnet_run(void)
 
 	for (;;) {
 		dvp.dp_fds = pollfds;
-		dvp.dp_nfds = GETN;
+		dvp.dp_nfds = 1;
 		dvp.dp_timeout = -1;
 
 		if ((n = ioctl(polldev, DP_POLL, &dvp)) < 0)
@@ -59,14 +59,10 @@ wnet_run(void)
 			assert(pollfds[i].fd < MAX_FD);
 
 			if ((pollfds[i].revents & POLLRDNORM) && e->fde_read_handler) {
-				int ret = e->fde_read_handler(e);
-				if (ret == 1)
-					wnet_register(e->fde_fd, FDE_READ, NULL, NULL);
+				e->fde_read_handler(e);
 			}
 			if ((pollfds[i].revents & POLLWRNORM) && e->fde_write_handler) {
-				int ret = e->fde_write_handler(e);
-				if (ret == 1)
-					wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
+				e->fde_write_handler(e);
 			}
 		}
 	}
@@ -85,6 +81,15 @@ struct	pollfd		 pfd;
 
 	memset(&pfd, 0, sizeof(pfd));
 	pfd.fd = fd;
+	/*
+	 * Always remove it first, or we just make a no-op when trying to remove flags.
+	 */
+	pfd.events = POLLREMOVE;
+	if (write(polldev, &pfd, sizeof(pfd)) < 0) {
+		perror("/dev/poll");
+		exit(8);
+	}
+
 	pfd.events = e->fde_epflags;
 
 	e->fde_fd = fd;
@@ -104,10 +109,10 @@ struct	pollfd		 pfd;
 		}
 	}
 
-	if (e->fde_epflags)
-		pfd.events = e->fde_epflags;
-	else
-		pfd.events = POLLREMOVE;
+	if (!e->fde_epflags)
+		return;
+
+	pfd.events = e->fde_epflags;
 
 	if (data)
 		e->fde_rdata = data;

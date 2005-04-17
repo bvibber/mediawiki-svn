@@ -26,7 +26,7 @@ static int nbackends;
 int backendp;
 
 static struct backend *new_backend(char *);
-static int backend_read(struct fde *);
+static void backend_read(struct fde *);
 static struct backend *next_backend(void);
 
 struct backend_cb_data {
@@ -126,24 +126,24 @@ struct	backend_cb_data	*cbd;
 		return -1;
 	}
 
-	wnet_register(s, FDE_READ | FDE_WRITE, backend_read, cbd);
+	wnet_register(s, FDE_WRITE, backend_read, cbd);
 	return 0;
 }
 
-static int
+static void
 backend_read(e)
 	struct fde *e;
 {
 struct	backend_cb_data	*cbd = e->fde_rdata;
 
-	cbd->bc_func(cbd->bc_backend, e, cbd->bc_data);
-	wfree(cbd);
-
 	/*
 	 * After handing the fd off to the caller, we don't care about it
 	 * any more. 
 	 */
-	return 1;
+	wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
+
+	cbd->bc_func(cbd->bc_backend, e, cbd->bc_data);
+	wfree(cbd);
 }
 
 static struct backend *

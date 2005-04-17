@@ -75,13 +75,13 @@ struct	fde		*cl_backendfde;			/* fde for backend			*/
 	char 		*cl_hdrbuf;			/* temp offset for hdr parsing		*/
 };
 
-static int http_read(struct fde *);
+static void http_read(struct fde *);
 static int parse_headers(struct http_client *, int);
 static int parse_reqtype(struct http_client *, char *, int);
 static void client_close(struct http_client *);
 static void proxy_request(struct http_client *);
 static void proxy_start_backend(struct backend *, struct fde *, void *);
-static int proxy_backend_read(struct fde *);
+static void proxy_backend_read(struct fde *);
 static void proxy_backend_write(struct fde *, void *, int);
 static void proxy_backend_write_request(struct fde *, void *, int);
 static void proxy_write_done(struct fde *, void *, int);
@@ -237,7 +237,7 @@ readbuf_reset(buffer)
 	buffer->rb_dpos = buffer->rb_dsize = 0;
 }
 
-static int
+static void
 http_read(e)
 	struct fde *e;
 {
@@ -246,26 +246,27 @@ struct	http_client	*c = e->fde_rdata;
 	
 	if ((i = readbuf_getdata(e->fde_fd, &c->cl_readbuf)) < 1) {
 		if (errno == EWOULDBLOCK && (READBUF_DATA_LEFT(&c->cl_readbuf) == 0))
-			return 0;
+			return;
 		else if (i == 0 || (i == -1 && errno != EWOULDBLOCK)) {
 			client_close(c);
-			return 1;
+			return;
 		}
 	}
 	if (parse_headers(c, 0) == -1) {
 		/* parse error */
 		client_close(c);
-		return 1;
+		return;
 	}
 	if (c->cl_ps == PS_DONE) {
-		proxy_request(c);
 		/*
 		 * Don't care about this fd now.  If we're ever interested
 		 * in it again, it'll be reregistered.
 		 */
-		return 1;
+		wnet_register(c->cl_fde->fde_fd, FDE_READ, NULL, NULL);
+
+		proxy_request(c);
 	}
-	return 0;
+	return;
 }
 
 static int
@@ -505,7 +506,7 @@ struct	http_client	*client = data;
 	wnet_register(e->fde_fd, FDE_READ, proxy_backend_read, client);
 }	
 
-static int
+static void
 proxy_backend_read(e)
 	struct fde *e;
 {
@@ -523,7 +524,7 @@ struct	http_client	*client = e->fde_rdata;
 		if (READBUF_DATA_LEFT(&client->cl_readbuf) == 0) {
 			wnet_close(e->fde_fd);
 			client_close(client);
-			return 1;
+			return;
 		}
 	}
 
@@ -531,7 +532,7 @@ struct	http_client	*client = e->fde_rdata;
 		if (parse_headers(client, 1) == -1) {
 			wnet_close(e->fde_fd);
 			client_close(client);
-			return 1;
+			return;
 		}
 		if (client->cl_ps == PS_DONE) {
 			struct header_list *head;
@@ -547,14 +548,14 @@ struct	http_client	*client = e->fde_rdata;
 			header_free(&response_headers);
 
 			wnet_write(client->cl_fde->fde_fd, "HTTP/1.0 200 OK\r\n", 17, proxy_backend_write_request, client);
-			return 1;
+			wnet_register(client->cl_fde->fde_fd, FDE_READ, NULL, NULL);
 		}
-		return 0;
+		return;
 	}
 
+	wnet_register(client->cl_fde->fde_fd, FDE_READ, NULL, NULL);
 	wnet_write(client->cl_fde->fde_fd, READBUF_CUR_POS(&client->cl_readbuf), 
 			READBUF_DATA_LEFT(&client->cl_readbuf), proxy_backend_write, client);
-	return 0;
 }
 
 static void
@@ -597,5 +598,5 @@ struct	http_client	*client = data;
 		return;
 	}
 
-	wnet_register(client->cl_backendfde->fde_fd, FDE_READ, proxy_backend_read, client);
+	wnet_register(e->fde_fd, FDE_READ, proxy_backend_read, client);
 }

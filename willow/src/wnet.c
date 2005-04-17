@@ -33,8 +33,8 @@ struct wrtbuf {
 	void	*wb_udata;
 };
 
-static int wnet_accept(struct fde *);
-static int wnet_write_do(struct fde *);
+static void wnet_accept(struct fde *);
+static void wnet_write_do(struct fde *);
 
 struct fde fde_table[MAX_FD];
 
@@ -65,7 +65,7 @@ wnet_init(void)
 	}
 }
 
-int
+void
 wnet_accept(e)
 	struct fde *e;
 {
@@ -85,14 +85,15 @@ struct	fde		*newe;
 
 	if ((newfd = accept(e->fde_fd, &cdata->cdat_addr, &addrlen)) < 0) {
 		wlog(WLOG_NOTICE, "accept error: %s", strerror(errno));
-		return 0;
+		wfree(cdata);
+		return;
 	}
 
 	if (newfd >= MAX_FD) {
 		wlog(WLOG_NOTICE, "out of file descriptors!");
 		wfree(cdata);
 		close(newfd);
-		return 0;
+		return;
 	}
 
 	val = fcntl(newfd, F_GETFL, 0);
@@ -111,7 +112,7 @@ struct	fde		*newe;
 	inet_ntop(AF_INET, &cdata->cdat_addr.sin_addr.s_addr, newe->fde_straddr, sizeof(newe->fde_straddr));
 
 	http_new(newe);
-	return 0;
+	return;
 }
 
 int
@@ -181,7 +182,7 @@ struct	fde	*e = &fde_table[fd];
 	wnet_register(fd, FDE_WRITE, wnet_write_do, NULL);
 }
 
-static int
+static void
 wnet_write_do(e)
 	struct fde *e;
 {
@@ -189,21 +190,20 @@ struct	wrtbuf	*buf;
 	int	 i;
 
 	buf = e->fde_wdata;
-
 	while ((i = write(e->fde_fd, buf->wb_buf + buf->wb_done, buf->wb_size - buf->wb_done)) > -1) {
 		buf->wb_done += i;
 		if (buf->wb_done == buf->wb_size) {
+			wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
 			buf->wb_func(e, buf->wb_udata, 0);
 			wfree(buf);
-			return 1;
+			return;
 		}
-
 	}
 
 	if (errno == EWOULDBLOCK) 
-		return 0;
+		return;
 			
+	wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
 	buf->wb_func(e, buf->wb_udata, -1);
 	wfree(buf);
-	return 1;
 }

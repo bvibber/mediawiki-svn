@@ -18,7 +18,7 @@ struct fde;
 
 #define MAX_FD	8192
 
-typedef int (*fdcb)(struct fde*);
+typedef void (*fdcb)(struct fde*);
 typedef void (*fdwcb)(struct fde*, void*, int);
 
 struct client_data;
@@ -36,9 +36,7 @@ struct	client_data	*fde_cdata;
 	void		*fde_rdata;
 	void		*fde_wdata;
 	char		 fde_straddr[16];
-#if defined(USE_EPOLL) || defined(USE_DEVPOLL) || defined(USE_POLL)
 	int		 fde_epflags;
-#endif
 	struct {
 		int	open:1;
 	}		 fde_flags;

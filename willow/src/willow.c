@@ -9,11 +9,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <signal.h>
 
 #include "wlog.h"
 #include "wnet.h"
 #include "wconfig.h"
 #include "willow.h"
+
+static void 
+sig_exit(s)
+{
+	fprintf(stderr, "exit on signal");
+	exit(0);
+}
 
 int main(argc, argv)
 	char *argv[];
@@ -24,6 +32,8 @@ int main(argc, argv)
 	wnet_init();
 	whttp_init();
 
+	signal(SIGINT, sig_exit);
+	
 	wnet_run();
 	return EXIT_SUCCESS;
 }

@@ -44,7 +44,6 @@ wnet_init_select(void)
 {
 	int	 i;
 
-	signal(SIGPIPE, SIG_IGN);
 	pfds = malloc(sizeof(*pfds) * getdtablesize());
 }
 
@@ -68,18 +67,12 @@ wnet_run(void)
 		for (n = 0; n < pn; ++n) {
 			struct fde *e = &fde_table[pfds[n].fd];
 
-			e->fde_epflags &= ~pfds[n].revents;
-
 			if ((pfds[n].revents & POLLRDNORM) && e->fde_read_handler) {
-				int ret = e->fde_read_handler(e);
-				if (ret == 0)
-					wnet_register(e->fde_fd, FDE_READ, e->fde_read_handler, NULL);
+				e->fde_read_handler(e);
 			}
 
 			if ((pfds[n].revents & POLLWRNORM) && e->fde_write_handler) {
-				int ret = e->fde_write_handler(e);
-				if (ret == 0)
-					wnet_register(e->fde_fd, FDE_WRITE, e->fde_write_handler, NULL);
+				e->fde_write_handler(e);
 			}
 		}
 	}
