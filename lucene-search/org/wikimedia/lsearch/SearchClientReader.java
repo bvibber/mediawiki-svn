@@ -178,7 +178,7 @@ public class SearchClientReader extends Thread {
 		dbname = paths[2];
 		searchterm = paths[3];
 		
-		log.info("what:"+what+" dbname:"+dbname+" term:"+searchterm);
+		log.info("query:" + bits[1] + " what:"+what+" dbname:"+dbname+" term:"+searchterm);
 		Map query = new QueryStringMap(uri);
 		
 		state = getMyState(dbname);
