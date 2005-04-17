@@ -75,6 +75,20 @@ struct readbuf {
 #define READBUF_INC_DATA_POS(b) ((b)->rb_dpos++)
 #define READBUF_CUR_POS(b) ((b)->rb_p + (b)->rb_dpos)
 
+#define RESP_SOURCE_BUFFER	1
+#define RESP_SOURCE_FDE		2
+
+struct http_response {
+	int		 hr_status;
+	const char	*hr_status_str;	
+struct	header_list	 hr_headers;
+	int		 hr_source_type;
+	union {
+		const char	*buffer;
+		struct fde	*fde;
+	}		 hr_source;
+};
+
 struct http_client {
 struct	readbuf		 cl_readbuf;			/* read buffer				*/
 struct	header_list	 cl_headers;			/* HTTP headers				*/
@@ -86,6 +100,7 @@ struct	fde		*cl_fde;			/* backref to fd			*/
 struct	backend		*cl_backend;			/* backend servicing this client	*/
 struct	fde		*cl_backendfde;			/* fde for backend			*/
 	char 		*cl_hdrbuf;			/* temp offset for hdr parsing		*/
+struct	http_response	 cl_response;			/* reply to send back			*/
 };
 
 static void http_read(struct fde *);
@@ -105,9 +120,11 @@ static void readbuf_reset(struct readbuf *);
 static void header_add(struct header_list *, const char *, const char *);
 static void header_free(struct header_list *);
 static char *header_build(struct header_list *);
+
 static void client_send_error(struct http_client *, int, const char *);
-static void client_send_error_headers_done(struct fde *, void *, int);
-static void client_send_error_body_done(struct fde *, void *, int);
+static void client_send_response(struct http_client *);
+static void client_send_response_headers_done(struct fde *, void *, int);
+static void client_send_response_body_done(struct fde *, void *, int);
 
 static char via_hdr[1024];
 static char my_hostname[MAXHOSTNAMELEN + 1];
@@ -214,6 +231,8 @@ client_close(client)
 {
 	readbuf_free(&client->cl_readbuf);
 	header_free(&client->cl_headers);
+	if (client->cl_wrtbuf)
+		wfree(client->cl_wrtbuf);
 	wnet_close(client->cl_fde->fde_fd);
 	wfree(client);
 }
@@ -627,7 +646,6 @@ client_send_error(client, errnum, errdata)
 	char		 errbuf[8192];
 	ssize_t		 size;
 	char		*p = errbuf, *u;
-struct	header_list	headers;
 
 	if ((errfile = fopen(error_files[errnum], "r")) == NULL) {
 		client_close(client);
@@ -690,22 +708,40 @@ struct	header_list	headers;
 	}
 	*u = '\0';
 
-#define error "HTTP/1.0 503 Service unavailable\r\n"
-	write(client->cl_fde->fde_fd, error, sizeof(error) - 1);
+	memset(&client->cl_response.hr_headers, 0, sizeof(client->cl_response.hr_headers));
+	header_add(&client->cl_response.hr_headers, "Date", current_time_str);
+	header_add(&client->cl_response.hr_headers, "Server", my_version);
+	header_add(&client->cl_response.hr_headers, "Content-Type", "text/html");
+	header_add(&client->cl_response.hr_headers, "Connection", "close");
 
-	memset(&headers, 0, sizeof(headers));
-	header_add(&headers, "Date", current_time_str);
-	header_add(&headers, "Server", my_version);
-	header_add(&headers, "Content-Type", "text/html");
-	header_add(&headers, "Connection", "close");
+	client->cl_response.hr_status = 503;
+	client->cl_response.hr_status_str = "Service unavailable";
+	client->cl_response.hr_source_type = RESP_SOURCE_BUFFER;
+	client->cl_response.hr_source.buffer = client->cl_wrtbuf;
 
-	client->cl_hdrbuf = header_build(&headers);
-	header_free(&headers);
-	wnet_write(client->cl_fde->fde_fd, client->cl_hdrbuf, strlen(client->cl_hdrbuf), client_send_error_headers_done, client);
+	client_send_response(client);
 }
 
 static void
-client_send_error_headers_done(e, data, res)
+client_send_response(client)
+	struct http_client *client;
+{
+	char	status[4];
+
+	sprintf(status, "%d", client->cl_response.hr_status);
+	write(client->cl_fde->fde_fd, "HTTP/1.0 ", 9);
+	write(client->cl_fde->fde_fd, status, strlen(status));
+	write(client->cl_fde->fde_fd, client->cl_response.hr_status_str,
+			strlen(client->cl_response.hr_status_str));
+	write(client->cl_fde->fde_fd, "\r\n", 2);
+
+	client->cl_hdrbuf = header_build(&client->cl_response.hr_headers);
+	wnet_write(client->cl_fde->fde_fd, client->cl_hdrbuf, strlen(client->cl_hdrbuf),
+			client_send_response_headers_done, client);
+}
+
+static void
+client_send_response_headers_done(e, data, res)
 	struct fde *e;
 	void *data;
 {
@@ -714,22 +750,20 @@ struct	http_client	*client = data;
 	wfree(client->cl_hdrbuf);
 
 	if (res == -1) {
-		wfree(client->cl_wrtbuf);
 		client_close(client);
 		return;
 	}
 
-	wnet_write(client->cl_fde->fde_fd, client->cl_wrtbuf, strlen(client->cl_wrtbuf), client_send_error_body_done, client);
+	wnet_write(client->cl_fde->fde_fd, client->cl_response.hr_source.buffer, 
+			strlen(client->cl_response.hr_source.buffer), client_send_response_body_done, client);
 }
 
 static void
-client_send_error_body_done(e, data, res)
+client_send_response_body_done(e, data, res)
 	struct fde *e;
 	void *data;
 {
 struct	http_client	*client = data;
 
-	wfree(client->cl_wrtbuf);
 	client_close(client);
 }
-
