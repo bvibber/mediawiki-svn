@@ -45,6 +45,7 @@ struct header_list {
 	const char	*hl_value;
 struct	header_list	*hl_next;
 struct	header_list	*hl_tail;
+	int		 hl_len;
 };
 
 struct readbuf {
@@ -151,6 +152,7 @@ struct	header_list	*new = head;
 			new = new->hl_next;
 	new->hl_next = wmalloc(sizeof(*head->hl_next));
 	head->hl_tail = new->hl_next;
+	head->hl_len += strlen(name) + strlen(value) + 4;
 	new = new->hl_next;
 	new->hl_name = name;
 	new->hl_value = value;
@@ -164,18 +166,11 @@ header_build(head)
 	char	*buf = NULL;
 	size_t	 bufsz = 0;
 	size_t	 buflen = 0;
-	size_t	 newsize, need;
 
+	bufsz = head->hl_len + 2;
+	buf = wmalloc(bufsz + 1);
 	while (head->hl_next) {
 		head = head->hl_next;
-
-		newsize = strlen(head->hl_name) + strlen(head->hl_value) + 7;
-		need = buflen + newsize;
-
-		if (need > bufsz)
-			buf = realloc(buf, need);
-
-		bufsz = need;
 		buflen += sprintf(buf + buflen, "%s: %s\r\n", head->hl_name, head->hl_value);
 	}
 	strcat(buf, "\r\n");
