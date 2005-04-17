@@ -15,9 +15,17 @@ OPTS=-O2
 # Get Apache Lucene from http://lucene.apache.org/
 LUCENE=lucene-1.4.3.jar
 
+# oh woe is me
+BERKELEYDB=je.jar
+
 # MySQL Connector/J 3.1 doesn't compile right; it wants log4j or such
 # Get 3.0: http://dev.mysql.com/downloads/connector/j/3.0.html
 MYSQL=mysql-connector-java-3.0.16-ga-bin.jar
+
+#OBJECTS=MWSearch.o lucene.o mysql-connector.o je.o
+OBJECTS=MWSearch.o lucene.o mysql-connector.o
+
+RUNTIMEOPTS=-Djdbc.drivers=com.mysql.jdbc.Driver
 
 SOURCES=org/wikimedia/lsearch/Article.java \
         org/wikimedia/lsearch/ArticleList.java \
@@ -28,6 +36,8 @@ SOURCES=org/wikimedia/lsearch/Article.java \
         org/wikimedia/lsearch/EsperantoStemFilter.java \
         org/wikimedia/lsearch/MWDaemon.java \
         org/wikimedia/lsearch/MWSearch.java \
+        org/wikimedia/lsearch/NamespaceFilter.java \
+        org/wikimedia/lsearch/QueryStringMap.java \
         org/wikimedia/lsearch/SearchClientReader.java \
         org/wikimedia/lsearch/SearchDbException.java \
         org/wikimedia/lsearch/SearchState.java \
@@ -48,18 +58,18 @@ mysql-connector.o : $(MYSQL)
 	$(GCJ) -c $(OPTS) -o mysql-connector.o $(MYSQL)
 
 MWSearch.o : $(SOURCES)
-	$(GCJ) --classpath=$(LUCENE) \
+	$(GCJ) --classpath=$(LUCENE):$(BERKELEYDB) \
 	    -c $(OPTS) -o MWSearch.o \
 	    $(SOURCES)
 
-MWSearch : MWSearch.o lucene.o mysql-connector.o
+MWSearch : $(OBJECTS)
 	$(GCJ) -o MWSearch \
 	--main=org.wikimedia.lsearch.MWSearch \
-	-Djdbc.drivers=com.mysql.jdbc.Driver \
-	MWSearch.o lucene.o mysql-connector.o
+	$(RUNTIMEOPTS) \
+	$(OBJECTS)
 
-MWDaemon : MWSearch.o lucene.o mysql-connector.o
+MWDaemon : $(OBJECTS)
 	$(GCJ) -o MWDaemon \
 	--main=org.wikimedia.lsearch.MWDaemon \
-	-Djdbc.drivers=com.mysql.jdbc.Driver \
-	MWSearch.o lucene.o mysql-connector.o
+	$(RUNTIMEOPTS) \
+	$(OBJECTS)
