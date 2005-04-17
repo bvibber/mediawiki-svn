@@ -47,6 +47,9 @@ struct client_data {
 struct	sockaddr_in	cdat_addr;
 };
 
+extern char current_time_str[];
+extern time_t current_time;
+
 #define FDE_READ	0x1
 #define FDE_WRITE	0x2
 
@@ -57,5 +60,8 @@ void wnet_register(int, int, fdcb, void *);
 int wnet_open(const char *desc);
 void wnet_close(int);
 void wnet_write(int, void *, size_t, fdwcb, void*);
+
+void wnet_set_time(void);
+void wnet_init_select(void);
 
 #endif

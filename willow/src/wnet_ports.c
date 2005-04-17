@@ -47,6 +47,8 @@ wnet_run(void)
 	uint		nget = 1;
 
 	while ((i = port_getn(port, pe, GETN, &nget, NULL)) != -1) {
+		wnet_set_time();
+
 		for (i = 0; i < nget; ++i) {
 			struct fde *e = &fde_table[pe[i].portev_object];
 			int hadwrite, hadread;

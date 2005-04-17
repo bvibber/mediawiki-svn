@@ -48,6 +48,8 @@ wnet_run(void)
 struct	epoll_event	events[256];
 
 	while ((i = epoll_wait(epfd, events, 256, -1)) != -1) {
+		wnet_set_time();
+
 		for (n = 0; n < i; ++n) {
 			struct fde *e = &fde_table[events[n].data.fd];
 			struct epoll_event ev;

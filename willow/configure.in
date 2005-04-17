@@ -113,7 +113,9 @@ if test $SELECTTYPE = kqueue; then
 fi
 
 AC_SUBST(SELECTTYPE)
-AC_OUTPUT(Makefile src/Makefile)
+datadir="${datadir}/willow"
+
+AC_OUTPUT(Makefile src/Makefile errors/Makefile)
 
 if test x$epoll_in_kernel = xno; then
 	echo "Warning: epoll support was detected in libc, but not in the kernel."

@@ -33,6 +33,9 @@ struct wrtbuf {
 	void	*wb_udata;
 };
 
+char current_time_str[30];
+time_t current_time;
+
 static void wnet_accept(struct fde *);
 static void wnet_write_do(struct fde *);
 
@@ -179,7 +182,7 @@ struct	fde	*e = &fde_table[fd];
 	wb->wb_udata = data;
 
 	e->fde_wdata = wb;
-	wnet_register(fd, FDE_WRITE, wnet_write_do, NULL);
+	wnet_write_do(e);
 }
 
 static void
@@ -206,4 +209,15 @@ struct	wrtbuf	*buf;
 	wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
 	buf->wb_func(e, buf->wb_udata, -1);
 	wfree(buf);
+}
+
+void
+wnet_set_time(void)
+{
+struct	tm	*now;
+
+	current_time = time(NULL);
+	now = gmtime(&current_time);
+
+	strftime(current_time_str, sizeof(current_time_str), "%a, %d %b %Y %H:%M:%S GMT", now);
 }

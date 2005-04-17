@@ -63,6 +63,7 @@ wnet_run(void)
 
 		if ((i = poll(pfds, pn, -1)) == -1)
 			break;
+		wnet_set_time();
 
 		for (n = 0; n < pn; ++n) {
 			struct fde *e = &fde_table[pfds[n].fd];

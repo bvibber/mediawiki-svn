@@ -52,6 +52,8 @@ wnet_run(void)
 	int		nget;
 
 	while ((nget = kevent(kq, kqchg, kqoff, kqlst, GETN, NULL)) > -1) {
+		wnet_set_time();
+
 		kqoff = 0;
 		for (i = 0; i < nget; ++i) {
 			struct fde *e = &fde_table[kqlst[i].ident];

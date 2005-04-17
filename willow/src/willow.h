@@ -10,7 +10,7 @@
 
 #include "config.h"
 
-#undef WDEBUG_ALLOC
+#define WDEBUG_ALLOC
 
 #ifdef WDEBUG_ALLOC
 void *wmalloc(size_t);

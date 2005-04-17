@@ -23,8 +23,21 @@
 # define MAXHOSTNAMELEN HOST_NAME_MAX
 #endif
 
-#define MAX_HEADERS	25
-#define RDBUF_INC	8192	/* buffer in 8 KiB incrs	*/
+/*
+ * Error handling.
+ */
+#define ERR_GENERAL	0
+#define ERR_BADREQUEST	1
+#define ERR_BADRESPONSE	2
+
+const char *error_files[] = {
+	/* ERR_GENERAL		*/	DATADIR "/errors/ERR_GENERAL",
+	/* ERR_BADREQUEST	*/	DATADIR "/errors/ERR_BADREQUEST",
+	/* ERR_BADRESPONSE	*/	DATADIR "/errors/ERR_BADRESPONSE",
+};
+
+#define MAX_HEADERS	64	/* maximum # of headers to allow	*/
+#define RDBUF_INC	8192	/* buffer in 8 KiB incrs		*/
 
 #define REQTYPE_GET	1
 #define REQTYPE_POST	2
@@ -92,20 +105,24 @@ static void readbuf_reset(struct readbuf *);
 static void header_add(struct header_list *, const char *, const char *);
 static void header_free(struct header_list *);
 static char *header_build(struct header_list *);
+static void client_send_error(struct http_client *, int, const char *);
+static void client_send_error_headers_done(struct fde *, void *, int);
+static void client_send_error_body_done(struct fde *, void *, int);
 
 static char via_hdr[1024];
+static char my_hostname[MAXHOSTNAMELEN + 1];
+static char my_version[1024];
 
 void
 whttp_init(void)
 {
-	char	hostname[MAXHOSTNAMELEN + 1];
-
-	if (gethostname(hostname, MAXHOSTNAMELEN) < 0) {
+	if (gethostname(my_hostname, MAXHOSTNAMELEN) < 0) {
 		perror("gethostname");
 		exit(8);
 	}
 
-	sprintf(via_hdr, "1.0 %s (Willow/" VERSION ")", hostname);
+	strcpy(my_version, "Willow/" VERSION);
+	sprintf(via_hdr, "1.0 %s (%s)", my_hostname, my_version);
 }
 
 
@@ -226,7 +243,7 @@ readbuf_free(buffer)
 	struct readbuf *buffer;
 {
 	if (buffer->rb_p)
-		wfree(buffer->rb_p);
+		free(buffer->rb_p);
 	memset(buffer, 0, sizeof(*buffer));
 }
 
@@ -254,7 +271,7 @@ struct	http_client	*c = e->fde_rdata;
 	}
 	if (parse_headers(c, 0) == -1) {
 		/* parse error */
-		client_close(c);
+		client_send_error(c, ERR_BADREQUEST, NULL);
 		return;
 	}
 	if (c->cl_ps == PS_DONE) {
@@ -431,7 +448,7 @@ proxy_request(client)
 	struct http_client *client;
 {
 	if (get_backend(proxy_start_backend, client) == -1) {
-		client_close(client);
+		client_send_error(client, ERR_GENERAL, strerror(errno));
 		return;
 	}
 }
@@ -491,7 +508,7 @@ struct	http_client	*client = data;
 	wfree(client->cl_hdrbuf);
 
 	if (i == -1) {
-		client_close(client);
+		client_send_error(client, ERR_GENERAL, strerror(errno));
 		wnet_close(e->fde_fd);
 		return;
 	}
@@ -523,7 +540,7 @@ struct	http_client	*client = e->fde_rdata;
 	if ((i = readbuf_getdata(e->fde_fd, &client->cl_readbuf)) < 1) {
 		if (READBUF_DATA_LEFT(&client->cl_readbuf) == 0) {
 			wnet_close(e->fde_fd);
-			client_close(client);
+			client_send_error(client, ERR_GENERAL, strerror(errno));
 			return;
 		}
 	}
@@ -531,7 +548,7 @@ struct	http_client	*client = e->fde_rdata;
 	if (client->cl_ps < PS_DONE) {
 		if (parse_headers(client, 1) == -1) {
 			wnet_close(e->fde_fd);
-			client_close(client);
+			client_send_error(client, ERR_BADRESPONSE, NULL);
 			return;
 		}
 		if (client->cl_ps == PS_DONE) {
@@ -600,3 +617,119 @@ struct	http_client	*client = data;
 
 	wnet_register(e->fde_fd, FDE_READ, proxy_backend_read, client);
 }
+
+static void
+client_send_error(client, errnum, errdata)
+	struct http_client *client;
+	const char *errdata;
+{
+	FILE		*errfile;
+	char		 errbuf[8192];
+	ssize_t		 size;
+	char		*p = errbuf, *u;
+struct	header_list	headers;
+
+	if ((errfile = fopen(error_files[errnum], "r")) == NULL) {
+		client_close(client);
+		return;
+	}
+
+	if ((size = fread(errbuf, 1, sizeof(errbuf) - 1, errfile)) < 0) {
+		fclose(errfile);
+		client_close(client);
+		return;
+	}
+
+	fclose(errfile);
+	errbuf[size] = '\0';
+
+	if (!errdata)
+		errdata = "Unknown error";
+	if (!client->cl_path)
+		client->cl_path = "NONE";
+
+	size = strlen(errbuf) + strlen(client->cl_path) + strlen(errdata) + strlen(current_time_str) + strlen(my_version)
+		+ strlen(my_hostname) + 1;
+	u = client->cl_wrtbuf = wmalloc(size);
+	memset(u, 0, size);
+
+	while (*p) {
+		switch(*p) {
+		case '%':
+			switch (*++p) {
+			case 'U':
+				strcat(u, client->cl_path);
+				u += strlen(u);
+				break;
+			case 'D':
+				strcat(u, current_time_str);
+				u += strlen(u);
+				break;
+			case 'H':
+				strcat(u, my_hostname);
+				u += strlen(u);
+				break;
+			case 'E':
+				strcat(u, errdata);
+				u += strlen(u);
+				break;
+			case 'V':
+				strcat(u, my_version);
+				u += strlen(u);
+				break;
+			default:
+				break;
+			}
+			p++;
+			continue;
+		default:
+			*u++ = *p;
+			break;
+		}
+		++p;
+	}
+	*u = '\0';
+
+#define error "HTTP/1.0 503 Service unavailable\r\n"
+	write(client->cl_fde->fde_fd, error, sizeof(error) - 1);
+
+	memset(&headers, 0, sizeof(headers));
+	header_add(&headers, "Date", current_time_str);
+	header_add(&headers, "Server", my_version);
+	header_add(&headers, "Content-Type", "text/html");
+	header_add(&headers, "Connection", "close");
+
+	client->cl_hdrbuf = header_build(&headers);
+	header_free(&headers);
+	wnet_write(client->cl_fde->fde_fd, client->cl_hdrbuf, strlen(client->cl_hdrbuf), client_send_error_headers_done, client);
+}
+
+static void
+client_send_error_headers_done(e, data, res)
+	struct fde *e;
+	void *data;
+{
+struct	http_client	*client = data;
+
+	wfree(client->cl_hdrbuf);
+
+	if (res == -1) {
+		wfree(client->cl_wrtbuf);
+		client_close(client);
+		return;
+	}
+
+	wnet_write(client->cl_fde->fde_fd, client->cl_wrtbuf, strlen(client->cl_wrtbuf), client_send_error_body_done, client);
+}
+
+static void
+client_send_error_body_done(e, data, res)
+	struct fde *e;
+	void *data;
+{
+struct	http_client	*client = data;
+
+	wfree(client->cl_wrtbuf);
+	client_close(client);
+}
+

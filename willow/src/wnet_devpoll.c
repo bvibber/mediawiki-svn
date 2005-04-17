@@ -54,6 +54,8 @@ wnet_run(void)
 		if ((n = ioctl(polldev, DP_POLL, &dvp)) < 0)
 			break;
 		
+		wnet_set_time();
+
 		for (i = 0; i < n; ++i) {
 			struct fde *e = &fde_table[pollfds[i].fd];
 			assert(pollfds[i].fd < MAX_FD);

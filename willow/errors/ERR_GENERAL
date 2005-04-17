@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Error</title>
+<style type="text/css">
+body {
+	background-color: white;
+	color: black;
+}
+</style>
+</head>
+<body>
+<h1>Request failed</h1>
+<p>While trying to retrieve the URL:</p>
+<ul><li>%U</li></ul>
+<p>The following error was encountered:</p>
+<ul><li>%E</li></ul>
+<hr>
+Generated %D by %H (%V)
+</body>
+</html>
