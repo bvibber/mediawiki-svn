@@ -9,18 +9,34 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <string.h>
+#include <syslog.h>
 
 #include "wlog.h"
+#include "wnet.h"
+#include "wconfig.h"
 
 static const char *sev_names[] = {
-	"notice",
-	"warning",
-	"error",
+	"Notice",
+	"Warning",
+	"Error",
+};
+
+static const int syslog_pri[] = {
+	LOG_INFO,
+	LOG_WARNING,
+	LOG_ERR,
 };
 
 void
 wlog_init(void)
 {
+	if (logging.syslog)
+		openlog("willow", LOG_PID, logging.facility);
+
+	if (!logging.file)
+		return;
+
 	logging.fp = fopen(logging.file, "a");
 	if (logging.fp == NULL) {
 		perror(logging.file);
@@ -33,17 +49,21 @@ wlog(int sev, const char *fmt, ...)
 {
 	char *s = malloc(1024);
 	va_list ap;
+	int i;
 
 	if (sev > WLOG_MAX)
 		sev = WLOG_NOTICE;
-	if (sev > logging.level)
+	if (sev < logging.level)
 		return;
 	va_start(ap, fmt);
-	sprintf(s, "%s: ", sev_names[sev]);
-	vsnprintf(s, 1021-strlen(sev_names[sev]), fmt, ap);
+	i = sprintf(s, "%s| %s: ", current_time_short, sev_names[sev]);
+	vsnprintf(s + i, 1021 - i, fmt, ap);
+	if (logging.syslog)
+		syslog(syslog_pri[sev], "%s", s + i);
 	strcat(s, "\n");
-	fputs(s, logging.fp);
-	if (logging.level == WLOG_DEBUG)
+	if (logging.fp)
+		fputs(s, logging.fp);
+	if (config.foreground)
 		fputs(s, stderr);
 	va_end(ap);
 	free(s);

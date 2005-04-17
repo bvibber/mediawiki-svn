@@ -26,14 +26,37 @@ sig_exit(s)
 int main(argc, argv)
 	char *argv[];
 {
+	int	i;
+
+	while ((i = getopt(argc, argv, "f")) != -1) {
+		switch (i) {
+			case 'f':
+				config.foreground = 1;
+				break;
+			default:
+				fprintf(stderr, "%s: unknown option '-%c'\n", argv[0], optopt);
+				exit(8);
+		}
+	}
+
+	argv += optind;
+	argc -= optind;
+
+	wnet_set_time();
+
 	wconfig_init(NULL);
 	wlog_init();
-	wlog(WLOG_NOTICE, "Willow: startup");
+	wlog(WLOG_NOTICE, "startup");
 	wnet_init();
 	whttp_init();
 
 	signal(SIGINT, sig_exit);
 	
+	wlog(WLOG_NOTICE, "running");
+
+	if (!config.foreground)
+		daemon(0, 0);
+
 	wnet_run();
 	wlog_close();
 	return EXIT_SUCCESS;

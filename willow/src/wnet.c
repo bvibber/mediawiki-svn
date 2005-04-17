@@ -34,6 +34,7 @@ struct wrtbuf {
 };
 
 char current_time_str[30];
+char current_time_short[30];
 time_t current_time;
 
 static void wnet_accept(struct fde *);
@@ -217,9 +218,14 @@ void
 wnet_set_time(void)
 {
 struct	tm	*now;
+	time_t	 old = current_time;
 
 	current_time = time(NULL);
+	if (current_time == old)
+		return;
+
 	now = gmtime(&current_time);
 
 	strftime(current_time_str, sizeof(current_time_str), "%a, %d %b %Y %H:%M:%S GMT", now);
+	strftime(current_time_short, sizeof(current_time_short), "%Y-%m-%d %H:%M:%S", now);
 }

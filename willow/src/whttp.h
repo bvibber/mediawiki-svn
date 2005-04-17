@@ -11,5 +11,6 @@
 struct fde;
 
 void http_new(struct fde *);
+void whttp_init(void);
 
 #endif

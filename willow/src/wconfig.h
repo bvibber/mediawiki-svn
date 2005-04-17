@@ -20,6 +20,10 @@ struct	sockaddr_in	addr;
 extern int nlisteners;
 extern struct listener **listeners;
 
+extern struct configuration {
+	int	 foreground;
+} config;
+
 void wconfig_init(const char *);
 
 #endif

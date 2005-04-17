@@ -1,7 +1,24 @@
 # @(#) $Header$
 
+# Any number of backends can be specified, in the form
+# "host:port".  Port defaults to 80 if not given.
 backend 127.0.0.1:80
+
+# Listen for HTTP connections on this address.  Use
+# 0.0.0.0 to listen on all IPs.
 listen 0.0.0.0:8080
+
+# Cache 10MB of objects in this directory.
 cache_dir /var/spool/willow 10
-log_file willow.log
-log_level 3
+
+# Log to a file.
+log file /var/log/willow.log
+
+# Log to syslog
+log syslog daemon
+
+# Log messages at this level or above
+# 0 - notice
+# 1 - warning
+# 2 - error
+log_level 0

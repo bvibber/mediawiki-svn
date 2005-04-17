@@ -21,4 +21,8 @@ void internal_wfree(void *, const char *, int);
 #define wfree free
 #endif
 
+#ifndef HAVE_DAEMON
+int daemon(int, int);
+#endif
+
 #endif

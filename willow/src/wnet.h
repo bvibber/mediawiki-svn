@@ -48,6 +48,7 @@ struct	sockaddr_in	cdat_addr;
 };
 
 extern char current_time_str[];
+extern char current_time_short[];
 extern time_t current_time;
 
 #define FDE_READ	0x1
