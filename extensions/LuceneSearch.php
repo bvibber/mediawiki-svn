@@ -605,7 +605,7 @@ class LuceneSearchSet {
 		}
 		
 		global $wgUseLatin1, $wgContLang, $wgInputEncoding;
-		$enctext = urlencode( trim( $wgUseLatin1
+		$enctext = rawurlencode( trim( $wgUseLatin1
 			? $wgContLang->iconv( $wgInputEncoding, 'utf-8', $query )
 			: $query ) );
 		$searchUrl = "http://$host:$wgLucenePort/$method/$wgDBname/$enctext?" .
