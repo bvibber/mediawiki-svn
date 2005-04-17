@@ -64,9 +64,9 @@ if test x$have_epoll = xyes; then
 #include <stdlib.h>
 int main() {
 	if (epoll_create(256) == -1)
-		exit 1;
+		exit(1);
 	else
-		exit 0;
+		exit(0);
 }], [	AC_MSG_RESULT(yes)
 	epoll_in_kernel=yes],
 [	AC_MSG_RESULT(no)
