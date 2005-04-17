@@ -33,12 +33,12 @@ wlog(int sev, const char *fmt, ...)
 {
 	char *s = malloc(1024);
 	va_list ap;
-	va_start(ap, fmt);
 
-	if (sev > WLOG_MAX)
-		sev = WLOG_NOTICE;
 	if (sev > logging.level)
 		return;
+	if (sev > WLOG_MAX)
+		sev = WLOG_NOTICE;
+	va_start(ap, fmt);
 	sprintf(s, "%s: ", sev_names[sev]);
 	vsnprintf(s, 1021-strlen(sev_names[sev]), fmt, ap);
 	strcat(s, "\n");
