@@ -121,6 +121,16 @@ wconfig_init(const char *file)
 				exit(8);
 			}
 			logging.level = atoi(s);
+		} else if (!strcmp(opt, "access_log")) {
+			if (!*s) {
+				fprintf(stderr, "%s:%d: no filename specified\n",
+						file, current_line);
+				exit(8);
+			}
+			if ((config.access_log = fopen(s, "a")) == NULL) {
+				perror(s);
+				exit(8);
+			}
 		} else {
 			fprintf(stderr, "%s:%d: unknown configuration option \"%s\"\n",
 				file, current_line, opt);

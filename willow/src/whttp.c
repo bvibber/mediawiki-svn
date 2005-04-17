@@ -19,6 +19,7 @@
 #include "whttp.h"
 #include "wnet.h"
 #include "wbackend.h"
+#include "wconfig.h"
 
 #ifndef MAXHOSTNAMELEN
 # define MAXHOSTNAMELEN HOST_NAME_MAX
@@ -140,6 +141,7 @@ static void client_send_response(struct http_client *);
 static void client_send_response_headers_done(struct fde *, void *, int);
 static void client_send_response_body_done(struct fde *, void *, int);
 static void client_send_response_fde_write(struct fde *, void *, int);
+static void client_log_request(struct http_client *);
 
 static char via_hdr[1024];
 static char my_hostname[MAXHOSTNAMELEN + 1];
@@ -248,6 +250,8 @@ client_close(client)
 	header_free(&client->cl_headers);
 	if (client->cl_wrtbuf)
 		wfree(client->cl_wrtbuf);
+	if (client->cl_path)
+		wfree(client->cl_path);
 	wnet_close(client->cl_fde->fde_fd);
 	wfree(client);
 }
@@ -437,7 +441,7 @@ parse_reqtype(client, request, isresp)
 	char *request;
 	int isresp;
 {
-	char	*p;
+	char	*p, *s;
 
 	/*
 	 * Ignore responses for now...
@@ -464,14 +468,14 @@ parse_reqtype(client, request, isresp)
 	else
 		return -1;
 
-	client->cl_path = p;
-
 	/* /path/to/file */
-	if ((p = strchr(p, ' ')) == NULL)
+	if ((s = strchr(p, ' ')) == NULL)
 		return -1;
 
-	*p++ = '\0';
+	*s++ = '\0';
 	
+	client->cl_path = strdup(p);
+
 	/* HTTP/1.0 */
 	/*
 	 * Ignore this for now...
@@ -688,7 +692,7 @@ client_send_error(client, errnum, errdata)
 	if (!errdata)
 		errdata = "Unknown error";
 	if (!client->cl_path)
-		client->cl_path = "NONE";
+		client->cl_path = strdup("NONE");
 
 	size = strlen(errbuf) + strlen(client->cl_path) + strlen(errdata) + strlen(current_time_str) + strlen(my_version)
 		+ strlen(my_hostname) + 1;
@@ -757,6 +761,8 @@ client_send_response(client)
 {
 	char	status[4];
 
+	client_log_request(client);
+
 	sprintf(status, "%d", client->cl_response.hr_status);
 	write(client->cl_fde->fde_fd, "HTTP/1.0 ", 9);
 	write(client->cl_fde->fde_fd, status, strlen(status));
@@ -803,4 +809,19 @@ client_send_response_body_done(e, data, res)
 struct	http_client	*client = data;
 
 	client_close(client);
+}
+
+static void
+client_log_request(client)
+	struct http_client *client;
+{
+	if (!config.access_log)
+		return;
+
+	fprintf(config.access_log, "[%s] %s %s \"%s\" %d %s\n",
+			current_time_short, client->cl_fde->fde_straddr,
+			request_string[client->cl_reqtype],
+			client->cl_path, client->cl_response.hr_status,
+			client->cl_backend->be_name);
+	fflush(config.access_log);
 }

@@ -22,6 +22,7 @@ extern struct listener **listeners;
 
 extern struct configuration {
 	int	 foreground;
+	FILE	*access_log;
 } config;
 
 void wconfig_init(const char *);

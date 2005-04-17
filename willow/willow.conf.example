@@ -22,3 +22,6 @@ log syslog daemon
 # 1 - warning
 # 2 - error
 log_level 0
+
+# Log client requests to this file
+access_log /var/log/willow/access_log
