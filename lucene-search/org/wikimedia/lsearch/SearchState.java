@@ -207,7 +207,7 @@ public class SearchState {
 		return new ArticleList(mydbname, rs);
 	}
 	
-	public void addArticle(Article article) throws IOException /*, DatabaseException */ {
+	public void addArticle(Article article) throws IOException, SearchDbException {
 		openForWrite();
 		Document d = new Document();
 		d.add(Field.Text("namespace", article.getNamespace()));
@@ -263,4 +263,5 @@ public class SearchState {
 			.replaceAll("</?[uU]>", "");
 		return text;
 	}
+
 }

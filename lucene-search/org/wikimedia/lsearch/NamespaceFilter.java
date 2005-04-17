@@ -24,12 +24,44 @@
 
 package org.wikimedia.lsearch;
 
-public class SearchDbException extends Exception {
-	public SearchDbException() {
-		super();
+public class NamespaceFilter {
+	private boolean[] included;
+	private boolean empty;
+	
+	public NamespaceFilter() {
+		empty = true;
+		included = new boolean[256];
 	}
 	
-	public SearchDbException(String s, Throwable cause) {
-		super(s, cause);
+	public NamespaceFilter(String namespaces) {
+		empty = true;
+		included = new boolean[256];
+		
+		if (namespaces != null) {
+			String[] bits = namespaces.split(",");
+			for (int i = 0; i < bits.length; i++) {
+				try {
+					empty = false;
+					included[Integer.parseInt(bits[i])] = true;
+				} catch (ArrayIndexOutOfBoundsException e) {
+					// owie
+				}
+			}
+		}
 	}
+	
+	public boolean filter(String namespace) {
+		return filter(Integer.parseInt(namespace));
+	}
+	
+	public boolean filter(int namespace) {
+		if (empty)
+			return true;
+		try {
+			return included[namespace];
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return false;
+		}
+	}
+
 }

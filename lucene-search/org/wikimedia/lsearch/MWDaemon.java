@@ -52,7 +52,7 @@ public class MWDaemon {
 	public static void main(String[] args) {
 		System.out.println(
 				"MediaWiki Lucene search indexer - runtime search daemon.\n" +
-				"Version 20050408, copyright 2004 Kate Turner.\n"
+				"Version 20050416, copyright 2004 Kate Turner.\n"
 				);
 		int i = 0;
 		while (i < args.length - 1) {

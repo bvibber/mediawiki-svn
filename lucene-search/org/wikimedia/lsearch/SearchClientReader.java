@@ -28,8 +28,10 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.Socket;
-import java.net.URLDecoder;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.text.MessageFormat;
 import java.util.HashMap;
@@ -54,8 +56,6 @@ public class SearchClientReader extends Thread {
 	static java.util.logging.Logger log = java.util.logging.Logger.getLogger("SearchClientReader");
 	/** A socket for our client. */
 	Socket client;
-	/** The unprocessed search term from the client (urlencoded) */
-	String rawsearchterm;
 	/** The search term after urlencoding */
 	String searchterm;
 	/** Client input stream */
@@ -69,6 +69,8 @@ public class SearchClientReader extends Thread {
 	/** Search state for this database */
 	SearchState state;
 	int maxlines=1000;
+	int maxoffset=10000;
+	boolean headersSent;
 	
 	// lucene special chars: + - && || ! ( ) { } [ ] ^ " ~ * ? : \
 	static String[] specialChars = {
@@ -109,6 +111,7 @@ public class SearchClientReader extends Thread {
 				log.warning("accept() error: " + e.getMessage());
 				continue;
 			}
+			headersSent = false;
 			try {
 				handle();
 				log.fine("request handled.");
@@ -118,7 +121,13 @@ public class SearchClientReader extends Thread {
 			} catch (Exception e) {
 				// Unexpected error; log it!
 				log.warning(e.toString());
+				e.printStackTrace();
 			} finally {
+				if (!headersSent) {
+					try {
+						sendHeaders(500, "Internal server error");
+					} catch (IOException e) { }
+				}
 				// Make sure the client is closed out, so we
 				// don't leave the PHP threads hanging.
 				try {  ostrm.flush(); } catch(Exception e) { }
@@ -133,31 +142,73 @@ public class SearchClientReader extends Thread {
 		istrm = new BufferedReader(new InputStreamReader(client.getInputStream()));
 		ostrm = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
 		
-		/* The protocol format is "database\noperation\nsearchterm"
-		 * Search term is urlencoded UTF-8.
+		/* Simple HTTP protocol; accepts GET requests only.
+		 * URL path format is /operation/database/searchterm
+		 * The path should be URL-encoded UTF-8 (standard IRI).
+		 * 
+		 * Additional paramters may be specified in a query string:
+		 *   namespaces: comma-separated list of namespace numeric keys to subset results
+		 *   limit: maximum number of results to return
+		 *   offset: number of matches to skip before returning results
+		 * 
+		 * Content-type is text/plain and results are listed.
 		 */
-		dbname = readInputLine();
+		String request = readInputLine();
+		if (!request.startsWith("GET ")) {
+			sendOutputLine("HTTP/1.x 400 Error");
+			log.warning("Bad request: " + request);
+			return;
+		}
+		// Ignore any remaining headers...
+		for(String headerline = readInputLine(); !headerline.equals("");)
+			headerline = readInputLine();
+		
+		String[] bits = request.split(" ");
+		URI uri = null;
+		try {
+			uri = new URI(bits[1]);
+		} catch (URISyntaxException e) {
+			sendHeaders(400, "Bad request");
+			log.warning("Bad URI in request: " + bits[1]);
+			return;
+		}
+		
+		String[] paths = uri.getPath().split("/", 4);
+		what = paths[1];
+		dbname = paths[2];
+		searchterm = paths[3];
+		
+		log.info("what:"+what+" dbname:"+dbname+" term:"+searchterm);
+		Map query = new QueryStringMap(uri);
+		
 		state = getMyState(dbname);
-		
-		what = readInputLine();
-		log.fine("Request type: " + what);
-		
-		rawsearchterm = readInputLine();
-		searchterm = URLDecoder.decode(rawsearchterm, "UTF-8");
-		log.fine("Search term: " + rawsearchterm);
-		
-		if (what.equals("TITLEMATCH")) {
+
+		if (what.equals("titlematch")) {
 			doTitleMatches();
-		} else if (what.equals("TITLEPREFIX")) {
+		} else if (what.equals("titleprefix")) {
 			doTitlePrefix();
-		} else if (what.equals("SEARCH")) {
-			doNormalSearch();
+		} else if (what.equals("search")) {
+			int startAt = 0, endAt = 100;
+			if (query.containsKey("offset"))
+				startAt = Math.max(Integer.parseInt((String)query.get("offset")), 0);
+			if (query.containsKey("limit"))
+				endAt = Math.min(Integer.parseInt((String)query.get("limit")), maxlines);
+			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
+			doNormalSearch(startAt, endAt, namespaces);
 		} else {
+			sendHeaders(404, "Search type not found");
 			log.warning("Unknown request type [" + what + "]; ignoring.");
 		}
 	}
 	
-	private void doNormalSearch() throws IOException {
+	private void sendHeaders(int code, String message) throws IOException {
+		sendOutputLine("HTTP/1.1 " + code + " " + message);
+		sendOutputLine("Content-Type: text/plain");
+		sendOutputLine("");
+		headersSent = true;
+	}
+	
+	private void doNormalSearch(int offset, int limit, NamespaceFilter namespaces) throws IOException {
 		String encsearchterm = "title:(" + searchterm + ")^4 " + searchterm;
 		
 		long now = System.currentTimeMillis();
@@ -179,7 +230,7 @@ public class SearchClientReader extends Thread {
 				try {
 					query = state.parser.parse(encsearchterm); 
 				} catch (Exception e2) {
-					log.warning("Problem parsing search term raw=[" + rawsearchterm + "] query=[" + searchterm + "] parsed=[" + encsearchterm + "]: " + e2.getMessage() + "\n" + e2.getStackTrace());
+					log.warning("Problem parsing search term query=[" + searchterm + "] parsed=[" + encsearchterm + "]: " + e2.getMessage() + "\n" + e2.getStackTrace());
 					return;
 				}
 			}
@@ -192,24 +243,38 @@ public class SearchClientReader extends Thread {
 			return;
 		}
 		
+		sendHeaders(200, "OK");
+		
 		int numhits = hits.length();
 		long delta = System.currentTimeMillis() - now;
 		logRequest(searchterm, query, numhits, delta);
-		sendOutputLine(numhits + "");
+		sendOutputLine(Integer.toString(numhits));
 		
-		//StringBuffer buffer = new StringBuffer("");
-		for (int i = 0; i < numhits && i < maxlines; i++) {
-			Document doc = hits.doc(i);
-			float score = hits.score(i);
-			String namespace = doc.get("namespace");
-			String title = doc.get("title");
-			sendOutputLine(score + " " + namespace + " " + URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8"));
-			//buffer.append(score + " " + namespace + " " + URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8") + "\n");
-		}
-		//ostrm.write(buffer.toString());
 		if (numhits == 0) {
-			String spelfix = makeSpelFix(rawsearchterm);
+			String spelfix = makeSpelFix(searchterm);
 			sendOutputLine(URLEncoder.encode(spelfix, "UTF-8"));
+		} else {
+			// Lucene's filters seem to want to run over the entire
+			// document set, which is really slow. We'll do namespace
+			// checks as we go along, and stop once we've seen enough.
+			//
+			// The good side is that we can return the first N documents
+			// pretty quickly. The bad side is that the total hits
+			// number we return is bogus: it's for all namespaces combined.
+			int matches = 0;
+			for (int i = 0; i < numhits && i < maxoffset; i++) {
+				Document doc = hits.doc(i);
+				String namespace = doc.get("namespace");
+				if (namespaces.filter(namespace)) {
+					if (matches++ < offset)
+						continue;
+					String title = doc.get("title");
+					float score = hits.score(i);
+					sendResultLine(score, namespace, title);
+					if (matches >= (limit + offset))
+						break;
+				}
+			}
 		}
 	}
 	
@@ -236,12 +301,13 @@ public class SearchClientReader extends Thread {
 			long delta = System.currentTimeMillis() - now;
 			logRequest(searchterm, query, numhits, delta);
 			
+			sendHeaders(200, "OK");
 			for (int i = 0; i < numhits && i < 10; i++) {
 				Document doc = hits.doc(i);
 				float score = hits.score(i);
 				String namespace = doc.get("namespace");
 				String title = doc.get("title");
-				sendOutputLine(score + " " + namespace + " " + URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8"));
+				sendResultLine(score, namespace, title);
 			}
 		} catch (Exception e) {
 			log.warning(e.toString());
@@ -255,10 +321,12 @@ public class SearchClientReader extends Thread {
 		//List<Title> matches = state.matcher.getMatches(
 		List matches = state.matcher.getMatches(
 				TitlePrefixMatcher.stripTitle(searchterm));
+		
+		sendHeaders(200, "OK");
 		//for (Title match : matches) {
 		for (Iterator iter = matches.iterator(); iter.hasNext();) {
 			Title match = (Title)iter.next();
-			sendOutputLine("0 " + match.namespace + " " + URLEncoder.encode(match.title.replaceAll(" ", "_"), "UTF-8"));
+			sendResultLine(0.0f, Integer.toString(match.namespace), match.title);
 		}
 	}
 
@@ -348,5 +416,17 @@ public class SearchClientReader extends Thread {
 		log.info(MessageFormat.format("{0} {1}: query=[{2}] parsed=[{3}] hit=[{4}] in {5}ms",
 			new Object[] { what, dbname, searchterm, query.toString(),
 				new Integer(numhits), new Long(delta) }));
+	}
+	
+	/**
+	 * @param score
+	 * @param namespace
+	 * @param title
+	 * @throws IOException
+	 * @throws UnsupportedEncodingException
+	 */
+	private void sendResultLine(float score, String namespace, String title) throws UnsupportedEncodingException, IOException {
+		sendOutputLine(score + " " + namespace + " " +
+			URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8"));
 	}
 }

@@ -75,7 +75,7 @@ public class MWSearch {
 		
 		System.out.println(
 				"MWSearch Lucene search indexer - standalone index rebuilder.\n" +
-				"Version 20050413, copyright 2004 Kate Turner.\n");
+				"Version 20050416, copyright 2004 Kate Turner.\n");
 		if (dbnames.isEmpty()) {
 			System.out.println("No databases specified; processing all.");
 			//dbnames = config.getArray("mwsearch.databases");
