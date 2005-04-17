@@ -24,10 +24,12 @@
 #endif
 
 #define MAX_HEADERS	25
-#define RDBUF_INC	8192	/* buffer in 8KB incrs	*/
+#define RDBUF_INC	8192	/* buffer in 8 KiB incrs	*/
 
 #define REQTYPE_GET	1
 #define REQTYPE_POST	2
+#define REQTYPE_HEAD	3
+#define REQTYPE_TRACE	4
 
 #define PS_START	0
 #define PS_CR		1
@@ -401,6 +403,10 @@ parse_reqtype(client, request, isresp)
 		client->cl_reqtype = REQTYPE_GET;
 	else if (!strcmp(request, "POST"))
 		client->cl_reqtype = REQTYPE_POST;
+	else if (!strcmp(request, "HEAD"))
+		client->cl_reqtype = REQTYPE_HEAD;
+	else if (!strcmp(request, "TRACE"))
+		client->cl_reqtype = REQTYPE_TRACE;
 	else
 		return -1;
 

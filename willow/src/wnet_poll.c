@@ -26,6 +26,16 @@
 #include "wlog.h"
 #include "whttp.h"
 
+/* May not have X/Open macros */
+
+#ifndef POLLRDNORM
+# define POLLRDNORM POLLIN
+#endif
+
+#ifndef POLLWRNORM
+# define POLLWRNORM POLLOUT
+#endif
+
 struct pollfd *pfds;
 int highest_fd;
 
