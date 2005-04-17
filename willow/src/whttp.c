@@ -39,10 +39,19 @@ const char *error_files[] = {
 #define MAX_HEADERS	64	/* maximum # of headers to allow	*/
 #define RDBUF_INC	8192	/* buffer in 8 KiB incrs		*/
 
-#define REQTYPE_GET	1
-#define REQTYPE_POST	2
-#define REQTYPE_HEAD	3
-#define REQTYPE_TRACE	4
+#define REQTYPE_GET	0
+#define REQTYPE_POST	1
+#define REQTYPE_HEAD	2
+#define REQTYPE_TRACE	3
+#define REQTYPE_OPTIONS	4
+
+const char *request_string[] = {
+	"GET",
+	"POST",
+	"HEAD",
+	"TRACE",
+	"OPTIONS",
+};
 
 #define PS_START	0
 #define PS_CR		1
@@ -307,7 +316,6 @@ struct	http_client	*c = e->fde_rdata;
 
 		proxy_request(c);
 	}
-	return;
 }
 
 static int
@@ -449,6 +457,8 @@ parse_reqtype(client, request, isresp)
 		client->cl_reqtype = REQTYPE_HEAD;
 	else if (!strcmp(request, "TRACE"))
 		client->cl_reqtype = REQTYPE_TRACE;
+	else if (!strcmp(request, "OPTIONS"))
+		client->cl_reqtype = REQTYPE_OPTIONS;
 	else
 		return -1;
 
@@ -492,9 +502,9 @@ struct	header_list	 response_headers, *it;
 
 	memset(&response_headers, 0, sizeof(response_headers));
 
-	bufsz = strlen(client->cl_path) + 15;
+	bufsz = strlen(client->cl_path) + 12 + strlen(request_string[client->cl_reqtype]);
 	client->cl_wrtbuf = wmalloc(bufsz + 1);
-	sprintf(client->cl_wrtbuf, "GET %s HTTP/1.0\r\n", client->cl_path);
+	sprintf(client->cl_wrtbuf, "%s %s HTTP/1.0\r\n", request_string[client->cl_reqtype], client->cl_path);
 
 	for (it = client->cl_headers.hl_next; it; it = it->hl_next) {
 		if (!strcmp(it->hl_name, "Connection"))
@@ -517,6 +527,7 @@ proxy_write_done_request(e, data, i)
 struct	http_client	*client = data;
 
 	wfree(client->cl_wrtbuf);
+	client->cl_wrtbuf = NULL;
 	wnet_write(e->fde_fd, client->cl_hdrbuf, strlen(client->cl_hdrbuf), proxy_write_done, client);
 }
 
@@ -563,12 +574,11 @@ struct	http_client	*client = e->fde_rdata;
 			(i = readbuf_getdata(e->fde_fd, &client->cl_readbuf)) < 1) {
 		if (READBUF_DATA_LEFT(&client->cl_readbuf) == 0) {
 			wnet_close(e->fde_fd);
-			if (i == -1) {
+			if (i == -1 && errno != EWOULDBLOCK) {
 				client_send_error(client, ERR_GENERAL, strerror(errno));
-				return;
 			}
+			client_close(client);
 		}
-		client_close(client);
 		return;
 	}
 
@@ -634,6 +644,7 @@ struct	http_client	*client = data;
 		return;
 	}
 
+	wnet_register(client->cl_backendfde->fde_fd, FDE_READ, client_send_response_fde_read, client);
 	client_send_response_fde_read(client->cl_backendfde);
 }
 

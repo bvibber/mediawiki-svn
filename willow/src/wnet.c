@@ -154,6 +154,8 @@ struct	fde	*e = &fde_table[fd];
 	if (e->fde_cdata)
 		wfree(e->fde_cdata);
 	e->fde_flags.open = 0;
+	e->fde_read_handler = NULL;
+	e->fde_write_handler = NULL;
 #ifdef USE_POLL
 	if (fd == highest_fd)
 		--highest_fd;
