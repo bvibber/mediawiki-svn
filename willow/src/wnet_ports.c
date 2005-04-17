@@ -27,6 +27,8 @@
 #include "wlog.h"
 #include "whttp.h"
 
+#define READABLE POLLRDNORM
+
 static int port;
 #define GETN 256
 static port_event_t pe[GETN];
@@ -54,7 +56,7 @@ wnet_run(void)
 			int hadwrite, hadread;
 			assert(pe[i].portev_object < MAX_FD);
 
-			hadread = e->fde_epflags & POLLRDNORM;
+			hadread = e->fde_epflags & READABLE;
 			hadwrite = e->fde_epflags & POLLWRNORM;
 
 			/*
@@ -62,12 +64,12 @@ wnet_run(void)
 			 * they'll dissociate it themselves.  This could be optimised
 			 * a little to save 2 syscalls in some cases...
 			 */
-			if ((pe[i].portev_events & POLLRDNORM) && e->fde_read_handler) {
+			if ((pe[i].portev_events & READABLE) && e->fde_read_handler) {
 				e->fde_read_handler(e);
-				if (hadread && (e->fde_epflags & POLLRDNORM))
-					port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLRDNORM, NULL);
+				if (hadread && (e->fde_epflags & READABLE))
+					port_associate(port, PORT_SOURCE_FD, e->fde_fd, READABLE, NULL);
 			}
-			if ((pe[i].portev_events & POLLWRNORM) && e->fde_write_handler) {
+			if ((pe[i].portev_events & (POLLWRNORM | POLLERR)) && e->fde_write_handler) {
 				e->fde_write_handler(e);
 				if (hadwrite && (e->fde_epflags & POLLWRNORM))
 					port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLWRNORM, NULL);
@@ -93,9 +95,9 @@ struct	fde		*e = &fde_table[fd];
 	if (what & FDE_READ) {
 		e->fde_read_handler = handler;
 		if (handler)
-			e->fde_epflags |= POLLRDNORM;
+			e->fde_epflags |= READABLE;
 		else
-			e->fde_epflags &= ~POLLWRNORM;
+			e->fde_epflags &= ~READABLE;
 	} 
 	if (what & FDE_WRITE) {
 		e->fde_write_handler = handler;

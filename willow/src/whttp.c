@@ -84,9 +84,15 @@ struct http_response {
 struct	header_list	 hr_headers;
 	int		 hr_source_type;
 	union {
-		const char	*buffer;
+		struct {
+			const char	*addr;
+			int		 len;
+		}		 buffer;
 		struct fde	*fde;
 	}		 hr_source;
+	struct {
+		int	 cachable:1;
+	}		 hr_flags;
 };
 
 struct http_client {
@@ -110,8 +116,6 @@ static void client_close(struct http_client *);
 static void proxy_request(struct http_client *);
 static void proxy_start_backend(struct backend *, struct fde *, void *);
 static void proxy_backend_read(struct fde *);
-static void proxy_backend_write(struct fde *, void *, int);
-static void proxy_backend_write_request(struct fde *, void *, int);
 static void proxy_write_done(struct fde *, void *, int);
 static void proxy_write_done_request(struct fde *, void *, int);
 static int readbuf_getdata(int fd, struct readbuf *);
@@ -125,6 +129,7 @@ static void client_send_error(struct http_client *, int, const char *);
 static void client_send_response(struct http_client *);
 static void client_send_response_headers_done(struct fde *, void *, int);
 static void client_send_response_body_done(struct fde *, void *, int);
+static void client_send_response_fde_write(struct fde *, void *, int);
 
 static char via_hdr[1024];
 static char my_hostname[MAXHOSTNAMELEN + 1];
@@ -479,9 +484,7 @@ proxy_start_backend(backend, e, data)
 	void *data;
 {
 struct	http_client	*client = data;
-	int		 i;
 	size_t		 bufsz;
-	char		*wrtbuf;
 struct	header_list	 response_headers, *it;
 	
 	client->cl_backend = backend;
@@ -543,7 +546,7 @@ struct	http_client	*client = data;
 }	
 
 static void
-proxy_backend_read(e)
+client_send_response_fde_read(e)
 	struct fde *e;
 {
 struct	http_client	*client = e->fde_rdata;
@@ -556,6 +559,32 @@ struct	http_client	*client = e->fde_rdata;
 	 * fd until the client write completes, otherwise we overrun 
 	 * ourselves.
 	 */
+	if (READBUF_DATA_LEFT(&client->cl_readbuf) == 0 && 
+			(i = readbuf_getdata(e->fde_fd, &client->cl_readbuf)) < 1) {
+		if (READBUF_DATA_LEFT(&client->cl_readbuf) == 0) {
+			wnet_close(e->fde_fd);
+			if (i == -1) {
+				client_send_error(client, ERR_GENERAL, strerror(errno));
+				return;
+			}
+		}
+		client_close(client);
+		return;
+	}
+
+	wnet_register(client->cl_fde->fde_fd, FDE_READ, NULL, NULL);
+	wnet_write(client->cl_fde->fde_fd, READBUF_CUR_POS(&client->cl_readbuf), 
+			READBUF_DATA_LEFT(&client->cl_readbuf), client_send_response_fde_write, client);
+}
+
+static void
+proxy_backend_read(e)
+	struct fde *e;
+{
+struct	http_client	*client = e->fde_rdata;
+	int		 i;
+struct	header_list	*head;
+
 	if ((i = readbuf_getdata(e->fde_fd, &client->cl_readbuf)) < 1) {
 		if (READBUF_DATA_LEFT(&client->cl_readbuf) == 0) {
 			wnet_close(e->fde_fd);
@@ -564,66 +593,37 @@ struct	http_client	*client = e->fde_rdata;
 		}
 	}
 
-	if (client->cl_ps < PS_DONE) {
-		if (parse_headers(client, 1) == -1) {
-			wnet_close(e->fde_fd);
-			client_send_error(client, ERR_BADRESPONSE, NULL);
-			return;
-		}
-		if (client->cl_ps == PS_DONE) {
-			struct header_list *head;
-			struct header_list response_headers;
-			memset(&response_headers, 0, sizeof(response_headers));
-
-			for (head = client->cl_headers.hl_next; head; head = head->hl_next) {
-				header_add(&response_headers, head->hl_name, head->hl_value);
-			}
-			header_add(&response_headers, "Via", via_hdr);
-			client->cl_hdrbuf = header_build(&response_headers);
-			client->cl_ps = PS_BODY;
-			header_free(&response_headers);
-
-			wnet_write(client->cl_fde->fde_fd, "HTTP/1.0 200 OK\r\n", 17, proxy_backend_write_request, client);
-			wnet_register(client->cl_fde->fde_fd, FDE_READ, NULL, NULL);
-		}
+	if (parse_headers(client, 1) == -1) {
+		wnet_close(e->fde_fd);
+		client_send_error(client, ERR_BADRESPONSE, NULL);
 		return;
 	}
 
+	if (client->cl_ps < PS_DONE)
+		return;
+
 	wnet_register(client->cl_fde->fde_fd, FDE_READ, NULL, NULL);
-	wnet_write(client->cl_fde->fde_fd, READBUF_CUR_POS(&client->cl_readbuf), 
-			READBUF_DATA_LEFT(&client->cl_readbuf), proxy_backend_write, client);
+	wnet_register(e->fde_fd, FDE_READ, NULL, NULL);
+
+	for (head = client->cl_headers.hl_next; head; head = head->hl_next)
+		header_add(&client->cl_response.hr_headers, head->hl_name, head->hl_value);
+	header_add(&client->cl_response.hr_headers, "Via", via_hdr);
+
+	client->cl_response.hr_status = 200;
+	client->cl_response.hr_status_str = "OK";
+	client->cl_response.hr_source_type = RESP_SOURCE_FDE;
+	client->cl_response.hr_source.fde = e;
+	client->cl_response.hr_flags.cachable = 1;
+
+	client_send_response(client);
 }
 
 static void
-proxy_backend_write_header(e, data, res)
-	struct fde *e;
-	void *data;
-{
-struct http_client	*client = data;
-
-	free(client->cl_hdrbuf);
-	//wnet_register(client->cl_fde->fde_fd, FDE_READ, proxy_backend_read, client);
-	proxy_backend_read(client->cl_fde);
-}
-
-static void
-proxy_backend_write_request(e, data, res)
-	struct fde *e;
-	void *data;
-{
-struct	http_client	*client = data;
-
-	wnet_write(client->cl_fde->fde_fd, client->cl_hdrbuf, strlen(client->cl_hdrbuf),
-			proxy_backend_write_header, client);
-}
-
-static void
-proxy_backend_write(e, data, res)
+client_send_response_fde_write(e, data, res)
 	struct fde *e;
 	void *data;
 {
 struct	http_client	*client = data;
-
 
 	readbuf_free(&client->cl_readbuf);
 	/*
@@ -634,7 +634,7 @@ struct	http_client	*client = data;
 		return;
 	}
 
-	wnet_register(e->fde_fd, FDE_READ, proxy_backend_read, client);
+	client_send_response_fde_read(client->cl_backendfde);
 }
 
 static void
@@ -717,7 +717,10 @@ client_send_error(client, errnum, errdata)
 	client->cl_response.hr_status = 503;
 	client->cl_response.hr_status_str = "Service unavailable";
 	client->cl_response.hr_source_type = RESP_SOURCE_BUFFER;
-	client->cl_response.hr_source.buffer = client->cl_wrtbuf;
+	client->cl_response.hr_source.buffer.addr = client->cl_wrtbuf;
+	client->cl_response.hr_source.buffer.len = u - client->cl_wrtbuf;
+
+	client->cl_response.hr_flags.cachable = 0;
 
 	client_send_response(client);
 }
@@ -731,6 +734,7 @@ client_send_response(client)
 	sprintf(status, "%d", client->cl_response.hr_status);
 	write(client->cl_fde->fde_fd, "HTTP/1.0 ", 9);
 	write(client->cl_fde->fde_fd, status, strlen(status));
+	write(client->cl_fde->fde_fd, " ", 1);
 	write(client->cl_fde->fde_fd, client->cl_response.hr_status_str,
 			strlen(client->cl_response.hr_status_str));
 	write(client->cl_fde->fde_fd, "\r\n", 2);
@@ -754,8 +758,11 @@ struct	http_client	*client = data;
 		return;
 	}
 
-	wnet_write(client->cl_fde->fde_fd, client->cl_response.hr_source.buffer, 
-			strlen(client->cl_response.hr_source.buffer), client_send_response_body_done, client);
+	if (client->cl_response.hr_source_type == RESP_SOURCE_BUFFER)
+		wnet_write(client->cl_fde->fde_fd, client->cl_response.hr_source.buffer.addr,
+			       client->cl_response.hr_source.buffer.len, client_send_response_body_done, client);
+	else
+		client_send_response_fde_read(client->cl_response.hr_source.fde);
 }
 
 static void

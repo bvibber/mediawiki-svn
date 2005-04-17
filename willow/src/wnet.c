@@ -162,7 +162,7 @@ struct	fde	*e = &fde_table[fd];
 
 void
 wnet_write(fd, buf, bufsz, cb, data)
-	void *buf;
+	const void *buf;
 	size_t bufsz;
 	fdwcb cb;
 	void *data;

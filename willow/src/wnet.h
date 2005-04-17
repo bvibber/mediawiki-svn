@@ -59,7 +59,7 @@ void wnet_run(void);
 void wnet_register(int, int, fdcb, void *);
 int wnet_open(const char *desc);
 void wnet_close(int);
-void wnet_write(int, void *, size_t, fdwcb, void*);
+void wnet_write(int, const void *, size_t, fdwcb, void*);
 
 void wnet_set_time(void);
 void wnet_init_select(void);
