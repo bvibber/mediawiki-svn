@@ -1,0 +1,51 @@
+@(#) $Header$
+
+                         Source code style guidelines
+                         ============================
+
+Use 8-space tabs.  Don't indent with spaces.
+
+The '*' of a pointer is attached to the variable name, not the type.
+
+Functions are formatted with 'static' (if applicable), followed by
+the return type, a newline, the function name and argments, another
+newline, and the argument types.  Don't declare 'int' argments.  For
+example:
+
+static void *
+my_function(buf, size)
+	void *buf;
+{
+
+Local variables have their names aligned.  Use the first (empty) column
+for 'const', 'struct' or 'union':
+
+	int	 i, j;
+	char	*s;
+struct	foo	 S;
+
+Braces attach to the end of the opening statement.  Don't use braces unless
+they're required. Function names are not followed by a space, but keywords
+ are:
+
+	if (foo)
+		f(arg);
+
+Operators are surrounded by whitespace except for "->" and ".".  Use
+"for (;;)", not "while (1)".
+
+Structure members should be prefixed by a string indicating the type of
+struct, e.g.:
+
+struct foo_buffer {
+	int	 fb_size;
+	void	*fb_addr;
+};
+
+	/* format minor comments like this */
+
+	/*
+	 * Format important comments like this, even if it's only one line.
+	 */
+
+Use if (!strcmp(...)), not if (strcmp(...) == 0).
