@@ -597,24 +597,6 @@ class LuceneSearchSet {
 		
 		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc;
 		
-		/*
-		// Round up the limit so we can more effectively cache w/ paging
-		$limit = IntVal( floor( $limit / 100.0 ) * 100.0 + 100.0 );
-		
-		// Cache results for five minutes; they'll be read again
-		// on reloads or paging through the result set.
-		$key = "$wgDBname:lucene:$method:$limit:" . md5( $query ) .
-			":" . implode( ',', $this->namespaces );
-		$expiry = 60 * 5;
-		
-		$resultset = $wgMemc->get( $key );
-		if( is_array( $resultset ) ) {
-			wfDebug( "$fname: got cached lucene results for key $key\n" );
-			wfProfileOut( $fname );
-			return $resultset;
-		}
-		*/
-		
 		if( is_array( $wgLuceneHost ) ) {
 			$pick = mt_rand( 0, count( $wgLuceneHost ) - 1 );
 			$host = $wgLuceneHost[$pick];
@@ -633,6 +615,18 @@ class LuceneSearchSet {
 				'limit'      => $limit,
 			) );
 		
+		
+		// Cache results for fifteen minutes; they'll be read again
+		// on reloads and paging.
+		$key = "$wgDBname:lucene:" . md5( $searchUrl );
+		$expiry = 60 * 15;
+		$resultSet = $wgMemc->get( $key );
+		if( is_object( $resultSet ) ) {
+			wfDebug( "$fname: got cached lucene results for key $key\n" );
+			wfProfileOut( $fname );
+			return $resultSet;
+		}
+
 		wfDebug( "Fetching search data from $searchUrl\n" );
 		$resultLines = array_map( 'trim', file( $searchUrl ) );
 		if( $resultLines === false ) {
@@ -662,10 +656,8 @@ class LuceneSearchSet {
 		
 		$resultSet = new LuceneSearchSet( $resultLines, $totalHits, $suggestion );
 		
-		/*
 		wfDebug( "$fname: caching lucene results for key $key\n" );
 		$wgMemc->add( $key, $resultSet, $expiry );
-		*/
 		
 		wfProfileOut( $fname );
 		return $resultSet;
