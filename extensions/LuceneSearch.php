@@ -86,7 +86,20 @@ class LuceneSearch extends SpecialPage
 			return parent::setHeaders();
 		}
 	}
-		
+	
+	/**
+	 * Callback for formatting of near-match title list.
+	 *
+	 * @param LuceneSearchSet $result
+	 * @return string
+	 * @access private
+	 */
+	function formatNearMatch( $result ) {
+		$title = $result->getTitle();
+		return wfMsg( 'searchnearmatch',
+			$this->mSkin->makeKnownLinkObj( $title ) );
+	}
+	
 	function execute($par) {
 		global $wgRequest, $wgOut, $wgTitle, $wgContLang, $wgUser,
 			$wgScriptPath, $wgLSuseold, $wgInputEncoding,
@@ -117,8 +130,7 @@ class LuceneSearch extends SpecialPage
 			$q = str_replace("_", " ", $bits[1]);
 		else
 			$q = $wgRequest->getText('search');
-		$limit = $wgRequest->getInt('limit');
-		$offset = $wgRequest->getInt('offset');
+		list( $limit, $offset ) = $wgRequest->getLimitOffset( LS_PER_PAGE, 'searchlimit' );
 
 		if( $wgRequest->getVal( 'gen' ) == 'titlematch' ) {
 			$this->sendTitlePrefixes( $q, $limit );
@@ -126,6 +138,7 @@ class LuceneSearch extends SpecialPage
 			return;
 		}
 
+		$this->mSkin =& $wgUser->getSkin();
 		if (!$wgLuceneDisableSuggestions)
 			$wgOut->addHTML($this->makeSuggestJS());
 		$wgOut->addLink(array(
@@ -165,24 +178,12 @@ class LuceneSearch extends SpecialPage
 					htmlspecialchars($q)) . "</p>\n");
 			}
 
-			$maxresults = $offset + $limit;
-			if ($maxresults < 10)
-				$maxresults = 10;
 			global $wgDisableTextSearch;
-			$searchfailed = $wgDisableTextSearch;
-			if (!$searchfailed) {
-				$r = $this->doLuceneSearch($q, $maxresults);
-			}
-			if (is_array( $r ) ) {
-				$numresults = $r[0];
-				$results = $r[1];
-			} else {
-				$searchfailed = true;
-				$numresults = 0;
-				$results = array();
+			if( !$wgDisableTextSearch ) {
+				$results = LuceneSearchSet::newFromQuery( 'search', $q, $this->namespaces, $limit, $offset );
 			}
 
-			if ($searchfailed) {
+			if( $wgDisableTextSearch || $results === false ) {
 				global $wgInputEncoding;
 				$wgOut->addHTML(wfMsg('searchdisabled'));
 				$wgOut->addHTML(wfMsg('googlesearch',
@@ -195,29 +196,24 @@ class LuceneSearch extends SpecialPage
 			$wgOut->setSubtitle(wfMsg('searchquery', htmlspecialchars($q)));
 
 
-			if (is_string( $results ) ) {
-				$suggestion = trim( $results );
-			}
-			if ($numresults == -1 && strlen($suggestion) > 0) {
+			// If the search returned no results, an alternate fuzzy search
+			// match may be displayed as a suggested search. Link it.
+			if( $results->hasSuggestion() ) {
+				$suggestion = $results->getSuggestion();
 				$o = " " . wfMsg("searchdidyoumean", 
-						$this->makelink($suggestion, $offset, $limit),
-						htmlspecialchars($suggestion));
-				$wgOut->addHTML("<div style='text-align: center'>".$o."</div>");
+						$this->makeLink( $suggestion, $offset, $limit ),
+						htmlspecialchars( $suggestion ) );
+				$wgOut->addHTML( "<div style='text-align: center'>".$o."</div>" );
 			}
 
 			$nmtext = "";
 			if ($offset == 0 && !$wgLuceneDisableTitleMatches) {
-				$titles = $this->doTitleMatches($q);
-				if (count($titles) > 0) {
-					$sk =& $wgUser->getSkin();
+				$titles = LuceneSearchSet::newFromQuery( 'titlematch', $q, $this->namespaces, 5 );
+				if( $titles && $titles->hasResults() ) {
 					$nmtext = "<p>".wfMsg('searchnearmatches')."</p>";
-					$i = 0;
 					$nmtext .= "<ul>";
-					foreach ($titles as $title) {
-						if (++$i > 5) break;
-						$nmtext .= wfMsg('searchnearmatch',
-							$sk->makeKnownLinkObj($title, ''));
-					}
+					$nmtext .= implode( "\n", $titles->iterateResults(
+						array( &$this, 'formatNearMatch' ) ) );
 					$nmtext .= "</ul>";
 					$nmtext .= "<hr/>";
 				}
@@ -225,18 +221,11 @@ class LuceneSearch extends SpecialPage
 	
 			$wgOut->addHTML($nmtext);
 
-			if ($numresults < 1) {
+			if( !$results->hasResults() ) {
 				$o = wfMsg("searchnoresults");
 				$wgOut->addHTML($o);
 			} else {
-				if ($limit <= 0 || $limit > 100) {
-					$limit = IntVal( $wgUser->getOption( 'searchlimit' ) );
-					if ($limit <= 0 || $limit > 100) {
-						$limit = LS_PER_PAGE;
-					}
-				}
-				
-				$showresults = min($limit, count($results)-$numresults);
+				#$showresults = min($limit, count($results)-$numresults);
 				$i = $offset;
 				$resq = trim(preg_replace("/[ |\\[\\]()\"{}+]+/", " ", $q));
 				$contextWords = implode("|", 
@@ -244,10 +233,9 @@ class LuceneSearch extends SpecialPage
 						$wgContLang->convertForSearchResult(split(" ", $resq))));
 
 				$top = wfMsg("searchnumber", $offset + 1, 
-					min($numresults, $offset+$limit), $numresults);
+					min($results->getTotalHits(), $offset+$limit), $results->getTotalHits());
 				$out = "<ul>";
-				$chunks = array_chunk($results, $limit);
-				$numchunks = ceil($numresults / $limit);
+				$numchunks = ceil($results->getTotalHits() / $limit);
 				$whichchunk = $offset / $limit;
 				$prevnext = "";
 				if ($whichchunk > 0)
@@ -273,11 +261,8 @@ class LuceneSearch extends SpecialPage
 						wfMsg("searchnext")."</a> ";
 				$prevnext = "<div style='text-align: center'>$prevnext</div>";
 				$top .= $prevnext;
-				if ($chunks && count($chunks) > 0) {
-					foreach ($chunks[$whichchunk] as $result) {
-						$out .= $this->showHit($result[0], $result[1], $contextWords);
-					}
-				}
+				$out .= implode( "\n", $results->iterateResults(
+					array( &$this, 'showHit'), $contextWords ) );
 				$out .= "</ul>";
 			}
 			$wgOut->addHTML("<hr/>");
@@ -327,16 +312,16 @@ class LuceneSearch extends SpecialPage
 		}
 	}
 
-	function showHit($score, $t, $terms) {
+	function showHit($result, $terms) {
 		$fname = 'LuceneSearch::showHit';
 		wfProfileIn($fname);
 		global $wgUser, $wgContLang, $wgLSuseold;
 
+		$t = $result->getTitle();
 		if(is_null($t)) {
 			wfProfileOut($fname);
 			return "<!-- Broken link in search result -->\n";
 		}
-		$sk =& $wgUser->getSkin();
 
 		//$contextlines = $wgUser->getOption('contextlines');
 		$contextlines = 2;
@@ -344,7 +329,7 @@ class LuceneSearch extends SpecialPage
 		if ('' == $contextchars) 
 			$contextchars = 50;
 
-		$link = $sk->makeKnownLinkObj($t, '');
+		$link = $this->mSkin->makeKnownLinkObj($t, '');
 
 		$rev = $wgLSuseold ? new Article($t) : Revision::newFromTitle($t);
 		if ($rev === null)
@@ -389,12 +374,12 @@ class LuceneSearch extends SpecialPage
 		wfProfileOut("$fname-extract");
 		wfProfileOut($fname);
 		$date = $wgContLang->timeanddate($rev->getTimestamp());
-		$percent = sprintf("%2.1f%%", $score * 100);
-		//$score = wfMsg("searchscore", $percent);
-		$url = $t->getFullURL();
+		$percent = sprintf("%2.1f%%", $result->getScore() * 100);
+		$score = wfMsg("searchscore", $percent);
+		//$url = $t->getFullURL();
 		return "<li style='padding-bottom: 1em'>{$link}{$extract}<br/>"
 			."<span style='color: green; font-size: small'>"
-			."$url - $size - $date</span></li>\n";
+			."$score - $size - $date</span></li>\n";
 	}
 
 	/* Basic wikitext removal */
@@ -413,191 +398,6 @@ class LuceneSearch extends SpecialPage
 		$text = preg_replace("/''/", "", $text);
 
 		return $text;
-	}
-
-	/**
-	 * Read an input line from a socket and convert it to local encoding.
-	 * Trailing newline is trimmed.
-	 * Will return FALSE if no more data or I/O error.
-	 *
-	 * @param resource $sock
-	 * @return string
-	 * @access private
-	 */
-	function inputLine( $sock ) {
-		$result = @socket_read( $sock, 1024, PHP_NORMAL_READ );
-		if( $result ) {
-			global $wgInputEncoding;
-			$result = chop( $result ); # Trim newline
-			if( $wgInputEncoding != 'utf-8' ) {
-				global $wgContLang;
-				$result = $wgContLang->iconv( 'utf-8', $wgInputEncoding, $result );
-			}
-		}
-		return $result;
-	}
-
-	/**
-	 * Read an input line from a socket and return a score & title pair.
-	 * Will return FALSE if no more data or I/O error.
-	 *
-	 * @param resource $sock
-	 * @return array (float, Title)
-	 * @access private
-	 */
-	function readResult( $sock ) {
-		$result = @socket_read( $sock, 1024, PHP_NORMAL_READ );
-		if( !$result ) {
-			return false;
-		}
-		$result = chop( $result ); # Trim newline
-		list( $score, $namespace, $title ) = split( ' ', $result );
-		
-		$score = FloatVal( $score );
-		$namespace = IntVal( $namespace );
-		$title = urldecode( $title );
-		
-		global $wgInputEncoding;
-		if( $wgInputEncoding != 'utf-8' ) {
-			global $wgContLang;
-			$title = $wgContLang->iconv( 'utf-8', $wgInputEncoding, $title );
-		}
-		
-		$fulltitle = Title::makeTitle( $namespace, $title );
-		return array( $score, $fulltitle );
-	}
-	
-	/**
-	 * Write given lines of text out to a socket.
-	 * Text is converted to UTF-8 if internal encoding is different,
-	 * URL-encoded, and a newline is automatically appended.
-	 *
-	 * @param resource $sock
-	 * @param array $lines
-	 * @return int Number of bytes written
-	 * @access private
-	 */
-	function sendLines( $sock, $lines ) {
-		global $wgInputEncoding;
-		if( $wgInputEncoding != 'utf-8' ) {
-			global $wgContLang;
-			foreach( $lines as $i => $text ) {
-				$lines[$i] = $wgContLang->iconv( $wgInputEncoding, 'utf-8', $text );
-			}
-		}
-		return socket_write( $sock,
-			implode( "\n",
-				array_map( 'urlencode',
-					$lines ) )
-			. "\n" );
-	}
-	
-	/**
-	 * @param string $method The protocol verb to use
-	 * @param string $query
-	 * @param int $limit
-	 * @return array
-	 * @access private
-	 */
-	function queryLuceneServer( $method, $query, $limit = 65536 ) {
-		$fname = 'LuceneSearch::queryLuceneServer';
-		wfProfileIn( $fname );
-		
-		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc;
-		
-		// Round up the limit so we can more effectively cache w/ paging
-		$limit = IntVal( floor( $limit / 100.0 ) * 100.0 + 100.0 );
-		
-		// Cache results for five minutes; they'll be read again
-		// on reloads or paging through the result set.
-		$key = "$wgDBname:lucene:$method:$limit:" . md5( $query ) .
-			":" . implode( ',', $this->namespaces );
-		$expiry = 60 * 5;
-		
-		$resultset = $wgMemc->get( $key );
-		if( is_array( $resultset ) ) {
-			wfDebug( "$fname: got cached lucene results for key $key\n" );
-			wfProfileOut( $fname );
-			return $resultset;
-		}
-		
-		if( is_array( $wgLuceneHost ) ) {
-			$pick = mt_rand( 0, count( $wgLuceneHost ) - 1 );
-			$host = $wgLuceneHost[$pick];
-		} else {
-			$host = $wgLuceneHost;
-		}
-		
-		$sock = socket_create( AF_INET, SOCK_STREAM, SOL_TCP );
-		socket_set_option( $sock, SOL_SOCKET, SO_SNDTIMEO,
-			array( "sec" => 2, "usec" => 0 ) );
-		@$conn = socket_connect( $sock, $host, $wgLucenePort );
-		if( $conn === false ) {
-			wfProfileOut( $fname );
-			return false;
-		}
-		$this->sendLines( $sock, array(
-			$wgDBname,
-			$method,
-			$query ) );
-		
-		if( $method == 'SEARCH' ) {
-			# This method outputs a summary line first.
-			$numresults = $this->inputLine( $sock );
-			if( $numresults === false ) {
-				# I/O error? this shouldn't happen
-				wfDebug( "Couldn't read summary line...\n" );
-				$resultset = array( 0, array() );
-			} else {
-				$numresults = IntVal( $numresults );
-				wfDebug("total [$numresults] hits\n");
-				if( $numresults == 0 ) {
-					# No results, but we got a suggestion...
-					$suggestion = urldecode( $this->inputLine( $sock ) );
-					wfdebug("no results; suggest: [$suggestion]\n");
-					$resultset = array( -1, $suggestion );
-				}
-			}
-		} else {
-			$numresults = null;
-		}
-		
-		if( is_null( $resultset ) ) {
-			$results = array();
-			while( ( $result = $this->readResult( $sock ) ) !== false
-					&& count( $results ) < $limit ) {
-				
-				if( !in_array( $result[1]->getNamespace(), $this->namespaces ) ) {
-					continue;
-				}
-				if( $method == 'SEARCH' ) { # quick hack
-					$results[] = $result;
-				} else {
-					$results[] = $result[1];
-				}
-			}
-			
-			$resultset = array( $numresults, $results );
-		}
-		
-		wfDebug( "$fname: caching lucene results for key $key\n" );
-		$wgMemc->add( $key, $resultset, $expiry );
-		wfProfileOut( $fname );
-		return $resultset;
-	}
-	
-	function doTitlePrefixSearch($query, $limit) {
-		list( $numresults, $results ) = $this->queryLuceneServer( 'TITLEPREFIX', $query, $limit );
-		return $results;
-	}
-
-	function doTitleMatches($query) {
-		list( $numresults, $results ) = $this->queryLuceneServer( 'TITLEMATCH', $query, 10 );
-		return $results;
-	}
-
-	function doLuceneSearch($query, $max) {
-		return $this->queryLuceneServer( 'SEARCH', $query, $max );
 	}
 
 	function showShortDialog($term) {
@@ -741,6 +541,204 @@ function resultType()
 }
 //--></script>
 ___EOF___;
+	}
+}
+
+class LuceneResult {
+	/**
+	 * Read an input line from a socket and return a score & title pair.
+	 * Will return FALSE if no more data or I/O error.
+	 *
+	 * @param resource $sock
+	 * @return array (float, Title)
+	 * @access private
+	 */
+	function LuceneResult( $line ) {
+		list( $score, $namespace, $title ) = split( ' ', $line );
+		
+		$score     = FloatVal( $score );
+		$namespace = IntVal( $namespace );
+		$title     = urldecode( $title );
+		
+		global $wgUseLatin1;
+		if( $wgUseLatin1 ) {
+			global $wgContLang, $wgInputEncoding;
+			$title = $wgContLang->iconv( 'utf-8', $wgInputEncoding, $title );
+		}
+		
+		$this->mTitle = Title::makeTitle( $namespace, $title );
+		$this->mScore = $score;
+	}
+	
+	function getTitle() {
+		return $this->mTitle;
+	}
+	
+	function getScore() {
+		return $this->mScore;
+	}
+}
+
+class LuceneSearchSet {
+	/**
+	 * Contact the MWDaemon search server and return a wrapper
+	 * object with the set of results. Results may be cached.
+	 *
+	 * @param string $method The protocol verb to use
+	 * @param string $query
+	 * @param int $limit
+	 * @return array
+	 * @access public
+	 * @static
+	 */
+	function newFromQuery( $method, $query, $namespaces = array(), $limit = 10, $offset = 0 ) {
+		$fname = 'LuceneSearchSet::newFromQuery';
+		wfProfileIn( $fname );
+		
+		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc;
+		
+		/*
+		// Round up the limit so we can more effectively cache w/ paging
+		$limit = IntVal( floor( $limit / 100.0 ) * 100.0 + 100.0 );
+		
+		// Cache results for five minutes; they'll be read again
+		// on reloads or paging through the result set.
+		$key = "$wgDBname:lucene:$method:$limit:" . md5( $query ) .
+			":" . implode( ',', $this->namespaces );
+		$expiry = 60 * 5;
+		
+		$resultset = $wgMemc->get( $key );
+		if( is_array( $resultset ) ) {
+			wfDebug( "$fname: got cached lucene results for key $key\n" );
+			wfProfileOut( $fname );
+			return $resultset;
+		}
+		*/
+		
+		if( is_array( $wgLuceneHost ) ) {
+			$pick = mt_rand( 0, count( $wgLuceneHost ) - 1 );
+			$host = $wgLuceneHost[$pick];
+		} else {
+			$host = $wgLuceneHost;
+		}
+		
+		global $wgUseLatin1, $wgContLang, $wgInputEncoding;
+		$enctext = urlencode( trim( $wgUseLatin1
+			? $wgContLang->iconv( $wgInputEncoding, 'utf-8', $query )
+			: $query ) );
+		$searchUrl = "http://$host:$wgLucenePort/$method/$wgDBname/$enctext?" .
+			wfArrayToCGI( array(
+				'namespaces' => implode( ',', $namespaces ),
+				'offset'     => $offset,
+				'limit'      => $limit,
+			) );
+		
+		wfDebug( "Fetching search data from $searchUrl\n" );
+		$resultLines = array_map( 'trim', file( $searchUrl ) );
+		if( $resultLines === false ) {
+			wfProfileOut( $fname );
+			return false;
+		}
+
+		$suggestion = null;
+		$totalHits = null;
+		
+		if( $method == 'search' ) {
+			# This method outputs a summary line first.
+			$totalHits = array_shift( $resultLines );
+			if( $totalHits === false ) {
+				# I/O error? this shouldn't happen
+				wfDebug( "Couldn't read summary line...\n" );
+			} else {
+				$totalHits = IntVal( $totalHits );
+				wfDebug( "total [$totalHits] hits\n" );
+				if( $totalHits == 0 ) {
+					# No results, but we got a suggestion...
+					$suggestion = urldecode( array_shift( $resultLines ) );
+					wfDebug( "no results; suggest: [$suggestion]\n" );
+				}
+			}
+		}
+		
+		$resultSet = new LuceneSearchSet( $resultLines, $totalHits, $suggestion );
+		
+		/*
+		wfDebug( "$fname: caching lucene results for key $key\n" );
+		$wgMemc->add( $key, $resultSet, $expiry );
+		*/
+		
+		wfProfileOut( $fname );
+		return $resultSet;
+	}
+	
+	/**
+	 * Private constructor. Use LuceneSearchSet::newFromQuery().
+	 *
+	 * @param array $lines
+	 * @param int $totalHits
+	 * @param string $suggestion
+	 * @access private
+	 */
+	function LuceneSearchSet( $lines, $totalHits = null, $suggestion = null ) {
+		$this->mTotalHits  = $totalHits;
+		$this->mSuggestion = $suggestion;
+		$this->mResults    = $lines;
+	}
+	
+	function hasResults() {
+		return count( $this->mResults ) > 0;
+	}
+	
+	/**
+	 * Some search modes return a total hit count for the query
+	 * in the entire article database. This may include pages
+	 * in namespaces that would not be matched on the given
+	 * settings.
+	 *
+	 * @return int
+	 * @access public
+	 */
+	function getTotalHits() {
+		return $this->mTotalHits;
+	}
+	
+	/**
+	 * Some search modes return a suggested alternate term if there are
+	 * no exact hits. Returns true if there is one on this set.
+	 *
+	 * @return bool
+	 * @access public
+	 */
+	function hasSuggestion() {
+		return is_string( $this->mSuggestion ) && $this->mSuggestion != '';
+	}
+	
+	/**
+	 * Some search modes return a suggested alternate term if there are
+	 * no exact hits. Check hasSuggestion() first.
+	 *
+	 * @return string
+	 * @access public
+	 */
+	function getSuggestion() {
+		return $this->mSuggestion;
+	}
+	
+	/**
+	 * Iterate over all returned results, passing LuceneResult objects
+	 * to a given callback for processing.
+	 *
+	 * @param callback $callback
+	 * @param mixed $userdata Optional data to pass to the callback
+	 * @return array
+	 * @access public
+	 */
+	function iterateResults( $callback, $userdata = null ) {
+		$out = array();
+		foreach( $this->mResults as $key => $line ) {
+			$out[$key] = call_user_func( $callback, new LuceneResult( $line ), $userdata );
+		}
+		return $out;
 	}
 }
 
