@@ -127,10 +127,7 @@ wconfig_init(const char *file)
 						file, current_line);
 				exit(8);
 			}
-			if ((config.access_log = fopen(s, "a")) == NULL) {
-				perror(s);
-				exit(8);
-			}
+			config.access_log = strdup(s);
 		} else {
 			fprintf(stderr, "%s:%d: unknown configuration option \"%s\"\n",
 				file, current_line, opt);

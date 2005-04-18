@@ -20,6 +20,7 @@
 #include "wnet.h"
 #include "wbackend.h"
 #include "wconfig.h"
+#include "wlogwriter.h"
 
 #ifndef MAXHOSTNAMELEN
 # define MAXHOSTNAMELEN HOST_NAME_MAX
@@ -146,6 +147,8 @@ static void client_log_request(struct http_client *);
 static char via_hdr[1024];
 static char my_hostname[MAXHOSTNAMELEN + 1];
 static char my_version[1024];
+static int logwr_pipe[2];
+static FILE *alf;
 
 void
 whttp_init(void)
@@ -157,6 +160,19 @@ whttp_init(void)
 
 	strcpy(my_version, "Willow/" VERSION);
 	sprintf(via_hdr, "1.0 %s (%s)", my_hostname, my_version);
+
+	/*
+	 * Fork the logwriter.
+	 */
+	if (pipe(logwr_pipe) < 0) {
+		perror("pipe");
+		exit(8);
+	}
+	wlogwriter_start(logwr_pipe[1]);
+	if ((alf = fdopen(logwr_pipe[0], "w")) == NULL) {
+		perror("fdopen");
+		exit(8);
+	}
 }
 
 
@@ -738,6 +754,7 @@ client_send_error(client, errnum, errdata)
 
 	memset(&client->cl_response.hr_headers, 0, sizeof(client->cl_response.hr_headers));
 	header_add(&client->cl_response.hr_headers, "Date", current_time_str);
+	header_add(&client->cl_response.hr_headers, "Expires", current_time_str);
 	header_add(&client->cl_response.hr_headers, "Server", my_version);
 	header_add(&client->cl_response.hr_headers, "Content-Type", "text/html");
 	header_add(&client->cl_response.hr_headers, "Connection", "close");
@@ -818,10 +835,10 @@ client_log_request(client)
 	if (!config.access_log)
 		return;
 
-	fprintf(config.access_log, "[%s] %s %s \"%s\" %d %s\n",
+	fprintf(alf, "[%s] %s %s \"%s\" %d %s\n",
 			current_time_short, client->cl_fde->fde_straddr,
 			request_string[client->cl_reqtype],
 			client->cl_path, client->cl_response.hr_status,
 			client->cl_backend->be_name);
-	fflush(config.access_log);
+	fflush(alf);
 }

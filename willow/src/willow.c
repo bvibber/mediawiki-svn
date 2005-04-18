@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
+#include <stdarg.h>
 
 #include "wlog.h"
 #include "wnet.h"

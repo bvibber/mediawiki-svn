@@ -1,7 +1,7 @@
 bin_PROGRAMS = willow
 selectsrc=wnet_@SELECTTYPE@.c
 willow_CPPFLAGS = -DDATADIR=\"${datadir}\"
-willow_SOURCES = willow.c wlog.c wconfig.c wnet.c whttp.c wbackend.c ${selectsrc}
+willow_SOURCES = willow.c wlog.c wconfig.c wnet.c whttp.c wbackend.c wlogwriter.c ${selectsrc}
 willow_LDADD = $(LIBOBJS)
 EXTRA_DIST=wnet_poll.c wnet_ports.c wnet_kqueue.c wnet_epoll.c wnet_devpoll.c
 
