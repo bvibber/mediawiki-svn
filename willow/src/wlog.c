@@ -59,7 +59,7 @@ wlog(int sev, const char *fmt, ...)
 		return;
 	va_start(ap, fmt);
 	i = sprintf(s, "%s| %s: ", current_time_short, sev_names[sev]);
-	vsnprintf(s + i, 1021 - i, fmt, ap);
+	vsnprintf(s + i, 1023 - i, fmt, ap);
 	if (logging.syslog)
 		syslog(syslog_pri[sev], "%s", s + i);
 	strcat(s, "\n");
@@ -75,4 +75,6 @@ void
 wlog_close(void)
 {
 	fclose(logging.fp);
+	if (logging.syslog)
+		closelog();
 }
