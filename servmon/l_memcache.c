@@ -96,6 +96,7 @@
 #include <netinet/tcp.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <stdarg.h>
 
 #include "l_memcache.h"
 

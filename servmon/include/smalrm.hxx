@@ -25,8 +25,8 @@ public:
 
 	bool hasalarm(str host, str metric);
 
-	void alarmup(str host, str metric, int value);
-	void alarmdown(str host, str metric, int value);
+	void alarmup(str host, str metric, int value, bool notify);
+	void alarmdown(str host, str metric, int value, bool notify);
 	
 private:
 	std::map<std::string, std::map<std::string, int> > hosts;

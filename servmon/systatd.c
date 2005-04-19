@@ -116,6 +116,7 @@ main(void)
  */
 #ifndef __svr4__
 # define mnt_mountp mnt_dir
+# define mnttab mntent
 #endif
 
 #ifndef HAVE_SETMNTENT
@@ -127,7 +128,7 @@ setmntent(path, mode)
 }
 #endif
 
-#ifndef HAVE_ENDMNTENT
+#ifndef HAVE_SETMNTENT
 static int
 endmntent(mtab)
 	FILE *mtab;

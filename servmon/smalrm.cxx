@@ -58,14 +58,10 @@ mgr::value(str host, str metric, int value)
 	if (!hthresh) return;
 	if ((type == type_preferhigher && value > hthresh)
 	    || (type == type_preferlower && value < hthresh)) {
-		if (hasalarm(host, metric))
-			return;
-		alarmup(host, metric, value);
+		alarmup(host, metric, value, !hasalarm(host, metric));
 	} else if ((type == type_preferhigher && value < lthresh)
 		   || (type == type_preferlower && value > lthresh)) {
-		if (!hasalarm(host, metric))
-			return;
-		alarmdown(host, metric, value);
+		alarmdown(host, metric, value, hasalarm(host, metric));
 	}
 	return;
 }
@@ -81,14 +77,15 @@ mgr::hasalarm(str host, str metric)
 }
 
 void
-mgr::alarmup(str host, str metric, int value)
+mgr::alarmup(str host, str metric, int value, bool notify)
 {
 	hosts[host][metric] = value;
-	SMI(smlog::log)->logmsg(10, SM$FAC_MONIT, SM$MSG_ALRMSET, host, metric, value);
+	if (notify)
+		SMI(smlog::log)->logmsg(10, SM$FAC_MONIT, SM$MSG_ALRMSET, host, metric, value);
 }
 
 void
-mgr::alarmdown(str host, str metric, int value)
+mgr::alarmdown(str host, str metric, int value, bool notify)
 {
 	std::map<std::string, std::map<std::string, int> >::iterator hit = hosts.find(host);
 	if (hit == hosts.end()) return;
@@ -97,7 +94,8 @@ mgr::alarmdown(str host, str metric, int value)
 	hit->second.erase(mit);
 	if (hit->second.begin() == hit->second.end())
 		hosts.erase(hit);
-	SMI(smlog::log)->logmsg(10, SM$FAC_MONIT, SM$MSG_ALRMCLR, host, metric, value);
+	if (notify)
+		SMI(smlog::log)->logmsg(10, SM$FAC_MONIT, SM$MSG_ALRMCLR, host, metric, value);
 }
 
 void
