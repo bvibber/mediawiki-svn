@@ -54,8 +54,9 @@ public class MWDaemon {
 				"MediaWiki Lucene search indexer - runtime search daemon.\n" +
 				"Version 20050416, copyright 2004 Kate Turner.\n"
 				);
+		boolean singleThreaded = false;
 		int i = 0;
-		while (i < args.length - 1) {
+		while (i < args.length) {
 			if (args[i].equals("-port")) {
 				port = Integer.valueOf(args[++i]).intValue();
 			} else if (args[i].equals("-configfile")) {
@@ -70,6 +71,8 @@ public class MWDaemon {
 					log.severe("Unknown MediaWiki version " + vers);
 					return;
 				}
+			} else if (args[i].equals("-single")) {
+				singleThreaded = true;
 			} else break;
 			++i;
 		}
@@ -90,13 +93,18 @@ public class MWDaemon {
 		}
 		numthreads = 0;
 		//List<SearchClientReader> threads = new ArrayList<SearchClientReader>();
-		List threads = new ArrayList();
-		for (int j = 0; j < maxThreads; ++j) {
-			++numthreads;
-			SearchClientReader c = new SearchClientReader(j);
-			c.start();
-			threads.add(c);
+		if (singleThreaded) {
+			// Debugging mode; gprof gets confused on multiple threads
+			SearchClientReader c = new SearchClientReader(0);
+			c.run();
+		} else {
+			List threads = new ArrayList();
+			for (int j = 0; j < maxThreads; ++j) {
+				++numthreads;
+				SearchClientReader c = new SearchClientReader(j);
+				c.start();
+				threads.add(c);
+			}
 		}
-
 	}
 }

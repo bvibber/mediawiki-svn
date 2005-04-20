@@ -9,8 +9,11 @@
 #GCJ=gcj
 GCJ=gcj-4.0
 
+PROFILING=
+#PROFILING=-pg -g
+
 # Optimization is faster!
-OPTS=-O2
+OPTS=-O2 $(PROFILING)
 
 # Get Apache Lucene from http://lucene.apache.org/
 LUCENE=lucene-1.4.3.jar
@@ -25,7 +28,7 @@ MYSQL=mysql-connector-java-3.0.16-ga-bin.jar
 #OBJECTS=MWSearch.o lucene.o mysql-connector.o je.o
 OBJECTS=MWSearch.o lucene.o mysql-connector.o
 
-RUNTIMEOPTS=-Djdbc.drivers=com.mysql.jdbc.Driver
+RUNTIMEOPTS=-Djdbc.drivers=com.mysql.jdbc.Driver $(PROFILING)
 
 SOURCES=org/wikimedia/lsearch/Article.java \
         org/wikimedia/lsearch/ArticleList.java \

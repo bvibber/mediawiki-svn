@@ -120,7 +120,7 @@ public class SearchClientReader extends Thread {
 				// This is normal, so just be silent.
 			} catch (Exception e) {
 				// Unexpected error; log it!
-				log.warning(e.toString());
+				log.warning(e.getMessage());
 				e.printStackTrace();
 			} finally {
 				if (!headersSent) {
@@ -174,6 +174,11 @@ public class SearchClientReader extends Thread {
 		}
 		
 		String[] paths = uri.getPath().split("/", 4);
+		if (paths.length != 4) {
+			sendHeaders(404, "Not found");
+			log.warning("Unknown request " + uri.getPath());
+			return;
+		}
 		what = paths[1];
 		dbname = paths[2];
 		searchterm = paths[3];
@@ -195,6 +200,9 @@ public class SearchClientReader extends Thread {
 				endAt = Math.min(Integer.parseInt((String)query.get("limit")), maxlines);
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
 			doNormalSearch(startAt, endAt, namespaces);
+		} else if (what.equals("quit")) {
+			// TEMP HACK
+			System.exit(0);
 		} else {
 			sendHeaders(404, "Search type not found");
 			log.warning("Unknown request type [" + what + "]; ignoring.");
@@ -230,7 +238,8 @@ public class SearchClientReader extends Thread {
 				try {
 					query = state.parser.parse(encsearchterm); 
 				} catch (Exception e2) {
-					log.warning("Problem parsing search term query=[" + searchterm + "] parsed=[" + encsearchterm + "]: " + e2.getMessage() + "\n" + e2.getStackTrace());
+					log.warning("Problem parsing search term query=[" + searchterm + "] parsed=[" + encsearchterm + "]: " + e2.getMessage());
+					e2.printStackTrace();
 					return;
 				}
 			}
@@ -239,7 +248,8 @@ public class SearchClientReader extends Thread {
 		try {
 			hits = state.searcher.search(query);
 		} catch (Exception e) {
-			log.warning("Error searching [" + encsearchterm + "]: " + e.getMessage ()+ "\n" + e.getStackTrace());
+			log.warning("Error searching [" + encsearchterm + "]: " + e.getMessage() + "\n");
+			e.printStackTrace();
 			return;
 		}
 		
@@ -310,7 +320,7 @@ public class SearchClientReader extends Thread {
 				sendResultLine(score, namespace, title);
 			}
 		} catch (Exception e) {
-			log.warning(e.toString());
+			log.warning(e.getMessage());
 		}
 	}
 
