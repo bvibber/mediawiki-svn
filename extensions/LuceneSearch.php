@@ -628,10 +628,13 @@ class LuceneSearchSet {
 		}
 
 		wfDebug( "Fetching search data from $searchUrl\n" );
-		$resultLines = array_map( 'trim', file( $searchUrl ) );
-		if( $resultLines === false ) {
+		$inputLines = @file( $searchUrl );
+		if( $inputLines === false ) {
+			// Network error or server error
 			wfProfileOut( $fname );
 			return false;
+		} else {
+			$resultLines = array_map( 'trim', $inputLines );
 		}
 
 		$suggestion = null;
