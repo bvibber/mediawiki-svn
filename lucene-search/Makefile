@@ -11,10 +11,12 @@ PROFILING ?=
 #PROFILING=-pg -g
 
 # Optimization is faster!
-OPTS=-O2 $(PROFILING)
+CFLAGS ?= -O3
+OPTS=$(CFLAGS) $(PROFILING)
 
 # Get Apache Lucene from http://lucene.apache.org/
 LUCENE=lucene-1.4.3.jar
+#LUCENE=lucene-1.9-rc1-dev.jar
 
 # oh woe is me
 BERKELEYDB=je.jar
@@ -25,6 +27,7 @@ MYSQL=mysql-connector-java-3.0.16-ga-bin.jar
 
 #OBJECTS=MWSearch.o lucene.o mysql-connector.o je.o
 OBJECTS=MWSearch.o lucene.o mysql-connector.o
+#OBJECTS=MWSearch.o lucene-1.9-rc1-dev.a mysql-connector.o
 
 RUNTIMEOPTS=-Djdbc.drivers=com.mysql.jdbc.Driver $(PROFILING)
 

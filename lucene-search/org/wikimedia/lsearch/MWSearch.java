@@ -109,7 +109,9 @@ public class MWSearch {
 							Article article = (Article)iter.next();
 							state.addArticle(article);
 							if ((++numArticles % 1000) == 0) {
-								System.out.print("[" + dbname + "] " + numArticles + "...\r");
+								double delta = (System.currentTimeMillis() - now) / 1000.0;
+								double rate = delta == 0.0 ? 0.0 : numArticles / delta;
+								System.out.print("[" + dbname + "] " + numArticles + "... (" + rate + "/sec)\r");
 								System.out.flush();
 							}
 						}
