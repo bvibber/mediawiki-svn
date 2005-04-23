@@ -34,11 +34,11 @@ Should now work with Java 1.4 as well as 1.5.
 Testing w/GCJ has been done, and except for the prefix matcher, it appears to work.
 (BerkeleyDB does not work under GCJ at the moment, and the matcher requires it).
 
-GCJ 4.0 is required for the native build; a snapshot from 2005-04-07 is known to
-build and work more or less correctly.
+GCJ 4.0 is required for the native build.
 
 Todo:
-* Close sockets cleanly on errors
-* Clean up build process
+* Speed up index building
+* Incremental index updates
+* Fix title prefix matcher for GCJ
 
 Send feedback to wikitech-l@mail.wikimedia.org.
