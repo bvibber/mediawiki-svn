@@ -23,6 +23,7 @@
  */
 package org.wikimedia.lsearch;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.ArrayList;
@@ -51,12 +52,14 @@ public class MWSearch {
 		}
 		
 		ArrayList dbnames = new ArrayList();
+		String updateFrom = "19700101000000";
 		
 		for (int i = 0; i < args.length;) {
 			if (args[i].equals("-rebuild")) {
 				what = DOING_FULL_UPDATE;
-			} else if (args[i].equals("-increment")) {
+			} else if (args[i].equals("-update")) {
 				what = DOING_INCREMENT;
+				updateFrom = args[++i];
 			} else if (args[i].equals("-configfile")) {
 				Configuration.setConfigFile(args[++i]);
 			} else {
@@ -90,8 +93,15 @@ public class MWSearch {
 			SearchState state;
 			try {
 				state = SearchState.forWiki(dbname);
+				if (what == DOING_FULL_UPDATE)
+					state.initializeIndex();
 			} catch (SearchDbException e) {
-				log.severe("Error opening search index: " + e.toString());
+				log.severe("Error opening search index: " + e.getMessage());
+				e.printStackTrace();
+				return;
+			} catch (IOException e) {
+				log.severe("Error creating search index: " + e.getMessage());
+				e.printStackTrace();
 				return;
 			}
 			System.out.println(dbname + ": running " +
@@ -99,15 +109,18 @@ public class MWSearch {
 			
 			long now = System.currentTimeMillis();
 			long numArticles = 0;
-			int startAt = 0;
+			String startTimestamp = updateFrom;
 			for (boolean done = false; !done; ) {
 				try {
-					ArticleList articles = state.enumerateArticles(startAt);
+					ArticleList articles = state.enumerateArticles(startTimestamp);
 					try {
 						//for (Article article: articles) {
 						for (Iterator iter = articles.iterator(); iter.hasNext();) {
 							Article article = (Article)iter.next();
-							state.addArticle(article);
+							if (what == DOING_INCREMENT)
+								state.replaceArticle(article);
+							else
+								state.addArticle(article);
 							if ((++numArticles % 1000) == 0) {
 								double delta = (System.currentTimeMillis() - now) / 1000.0;
 								double rate = delta == 0.0 ? 0.0 : numArticles / delta;
@@ -118,21 +131,24 @@ public class MWSearch {
 						done = true;
 					} catch (Exception e) {
 						// wtf!
-						log.warning("[" + dbname + "] Error: " + e.toString());
-						if(startAt == articles.getLastId()) {
+						log.warning("[" + dbname + "] Error: " + e.getMessage());
+						e.printStackTrace();
+						if(startTimestamp == articles.getLastTimestamp()) {
 							// Couldn't pick up where we left off? Leave for now...
 							log.severe("[" + dbname + "] Aborting!");
 							done = true;
 						} else {
-							startAt = articles.getLastId();
-							log.warning("[" + dbname + "] Trying to pick up from page id " + startAt);
+							startTimestamp = articles.getLastTimestamp();
+							log.warning("[" + dbname + "] Trying to pick up from timestamp " + startTimestamp);
 						}
 					}
 				} catch (SQLException e) {
-					log.warning("[" + dbname + "] Error starting query: SQL error: " + e.toString());
+					log.warning("[" + dbname + "] Error starting query: SQL error: " + e.getMessage());
+					e.printStackTrace();
 					done = true;
 					return;
 				}
+				state.close();
 			}
 			double totaltime = (System.currentTimeMillis() - now) / 1000;
 			//System.out.printf("%s: indexed %d articles in %f seconds (%.2f articles/sec)\n",

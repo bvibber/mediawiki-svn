@@ -39,9 +39,14 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.queryParser.QueryParser;
+import org.apache.lucene.search.Hits;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Searcher;
+import org.apache.lucene.search.TermQuery;
+import org.apache.lucene.store.Directory;
+import org.apache.lucene.store.RAMDirectory;
 
 import org.apache.lucene.analysis.de.GermanAnalyzer;
 import org.apache.lucene.analysis.ru.RussianAnalyzer;
@@ -83,11 +88,7 @@ public class SearchState {
 	}
 
 	public static boolean stateOpen(String state) {
-		/*for (SearchState s : states)
-			if (s.mydbname.equals(state))
-				return true;*/
 		return openWikis.get(state) != null;
-		//return false;
 	}
 	
 	public static void resetStates() {
@@ -110,6 +111,10 @@ public class SearchState {
 	Configuration config;
 	IndexWriter writer;
 	boolean writable = false;
+
+	// An in-memory directory which we'll write updates into.
+	private Directory buffer;
+	private int updatesWritten;
 	
 	private SearchState(String dbname) throws SearchDbException {
 		config = Configuration.open();
@@ -149,15 +154,47 @@ public class SearchState {
 		return new EnglishAnalyzer();
 	}
 
-	private void close() {
+	void close() {
 		try {
 			searcher.close();
 			reader.close();
 		} catch (IOException e) {
 			log.warning(mydbname + ": warning: closing index: " + e.getMessage());
 		}
+		if (writable) {
+			try {
+				mergeWrites();
+			} catch (IOException e) {
+				log.warning(mydbname + ": warning: closing index: " + e.getMessage());
+			}
+		}
 	}
 	
+	/**
+	 * @throws IOException
+	 * 
+	 */
+	private void mergeWrites() throws IOException {
+		writer.close();
+		writable = false;
+		
+		log.info("Merging " + updatesWritten + " updates to disk on " + mydbname);
+		try {
+			IndexWriter ondisk = new IndexWriter(indexpath, analyzer, false);
+			ondisk.addIndexes(new Directory[] { buffer });
+			ondisk.close();
+		} finally {
+			updatesWritten = 0;
+			buffer.close();
+		}
+	}
+	
+	private void countOrMerge() throws IOException {
+		updatesWritten++;
+		if (updatesWritten >= 1000)
+			mergeWrites();
+	}
+
 	private void reopen() {
 		try {
 			searcher.close();
@@ -169,19 +206,39 @@ public class SearchState {
 		}
 	}
 	
+	/**
+	 * Open the index for writing if it's not already. This is implicitly
+	 * called when addDocument() is used, so callers don't need to do it.
+	 * 
+	 * We won't actually write to the main index yet; we're actually opening
+	 * an in-memory directory which we'll buffer updates to, and merge them
+	 * in chunks to disk.
+	 * 
+	 * @throws IOException
+	 */
 	private void openForWrite() throws IOException {
 		if (writable)
 			return;
-		writer = new IndexWriter( indexpath,
-				analyzer, true);
+		buffer = new RAMDirectory();
+		writer = new IndexWriter(buffer, analyzer, true);
 		writable = true;
+		updatesWritten = 0;
+	}
+	
+	/**
+	 * Create a fresh new index.
+	 * Any existing database will be overwritten.
+	 * @throws IOException
+	 */
+	public void initializeIndex() throws IOException {
+		new IndexWriter(indexpath, analyzer, true).close();
 	}
 	
 	public ArticleList enumerateArticles() throws SQLException {
-		return enumerateArticles(0);
+		return enumerateArticles("19700101000000");
 	}
 	
-	public ArticleList enumerateArticles(int startAt) throws SQLException {
+	public ArticleList enumerateArticles(String startDate) throws SQLException {
 		DatabaseConnection dbconn = DatabaseConnection.forWiki(mydbname);
 		Connection conn = dbconn.getConn();
 		String query;
@@ -191,15 +248,15 @@ public class SearchState {
 		
 		if (!config.getBoolean("mwsearch.oldmediawiki"))
 			query = "SELECT page_id,page_namespace,page_title,old_text,page_timestamp " +
-				"FROM " + tablePrefix + "page FORCE INDEX(page_id), " +
+				"FROM " + tablePrefix + "page FORCE INDEX(page_timestamp), " +
 				tablePrefix + "revision " +
 				tablePrefix + "text " +
-				"WHERE page_id>" + startAt +
-				" AND old_id=rev_text_id AND rev_id=page_latest AND page_is_redirect=0";
+				"WHERE page_timestamp > \"" + startDate +
+				"\" AND old_id=rev_text_id AND rev_id=page_latest AND page_is_redirect=0";
 		else
 			query = "SELECT cur_id,cur_namespace,cur_title,cur_text,cur_timestamp " +
-				"FROM " + tablePrefix + "cur FORCE INDEX (cur_id) " +
-				"WHERE cur_id>" + startAt + " AND cur_is_redirect=0";
+				"FROM " + tablePrefix + "cur FORCE INDEX (cur_timestamp) " +
+				"WHERE cur_timestamp>\"" + startDate + "\" AND cur_is_redirect=0";
 		pstmt = conn.prepareStatement(query, ResultSet.TYPE_FORWARD_ONLY,
 				ResultSet.CONCUR_READ_ONLY);
 		pstmt.setFetchSize(Integer.MIN_VALUE);
@@ -210,17 +267,68 @@ public class SearchState {
 	public void addArticle(Article article) throws IOException, SearchDbException {
 		openForWrite();
 		Document d = new Document();
+		
+		// This will be used to look up and replace entries on index updates.
+		d.add(Field.Keyword("key", article.getKey()));
+		
+		// These fields are returned with results
 		d.add(Field.Text("namespace", article.getNamespace()));
 		d.add(Field.Text("title", article.getTitle()));
+		
+		// Bulk contents are indexed only, not stored.
+		// Clients can pull up-to-date text from the source database for hit matching.
 		d.add(new Field("contents", stripWiki(article.getContents()), 
 				false, true, true));
 		writer.addDocument(d);
+		
+		countOrMerge();
+		
 		if (article.getNamespace().equals("0")) {
 			matcher.addArticle(article);
 		}
 
 	}
+
+	/**
+	 * When altering an existing index, we have to manually remove the previous
+	 * version of an article when we update it, or results will include both
+	 * old and new versions.
+	 * 
+	 * @param article
+	 * @throws IOException
+	 * @throws SearchDbException
+	 */
+	public void replaceArticle(Article article) throws IOException, SearchDbException {
+		deleteArticle(article);
+		addArticle(article);
+	}
 	
+	/**
+	 * Lucene doesn't let us do deletes from an IndexWriter, only an IndexReader.
+	 * To avoid locking or constant open-close switches, be sure that writing
+	 * is only happening on an in-memory writer.
+	 * @param article
+	 * @throws IOException
+	 */
+	private void deleteArticle(Article article) throws IOException {
+		String key = article.getKey();
+		Hits hits = searcher.search(new TermQuery(
+				new Term("key", key)));
+		if (hits.length() == 0)
+			log.fine("Nothing to delete for " + key);
+		for (int i = 0; i < hits.length(); i++) {
+			int id = hits.id(i);
+			log.fine("Trying to delete article number " + id + "for " + key);
+			try {
+				reader.delete(id);
+			} catch (IOException e) {
+				log.warning("Couldn't delete article number " + 
+					id + " for " + key + "... " + e.getMessage());
+				e.printStackTrace();
+			}
+		}
+	}
+
 	private static String stripWiki(String text) {
 		int i = 0, j, k;
 		i = text.indexOf("[[Image:");

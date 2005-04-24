@@ -42,6 +42,7 @@ public class ArticleList {
 	private ResultSet rs;
 	private String dbname;
 	private int lastId;
+	private String lastTimestamp;
 	
 	private class ArticleIterator implements Iterator {
 		boolean atend;
@@ -54,6 +55,7 @@ public class ArticleList {
 			} catch (SQLException e) {
 				log.warning(e.toString());
 			}
+			lastTimestamp = "19700101000000";
 		}
 		
 		public boolean hasNext() {
@@ -69,6 +71,7 @@ public class ArticleList {
 				String title     = rs.getString(3);
 				String contents  = rs.getString(4);
 				String timestamp = rs.getString(5);
+				lastTimestamp = timestamp;
 				if (!latin1) {
 					// Nasty hack; MySQL talks to us in Latin-1 so we have to
 					// re-convert it to UTF-8. This may change in future.
@@ -110,5 +113,9 @@ public class ArticleList {
 	
 	public int getLastId() {
 		return lastId;
+	}
+	
+	public String getLastTimestamp() {
+		return lastTimestamp;
 	}
 }
