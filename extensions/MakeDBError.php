@@ -4,7 +4,7 @@ $wgExtensionFunctions[] = "wfMakeDBErrorExt";
 
 function wfMakeDBErrorExt() {
 
-require_once( "includes/SpecialPage.php" );
+require_once( "SpecialPage.php" );
 
 class MakeDBErrorPage extends UnlistedSpecialPage
 {
