@@ -129,8 +129,7 @@ public class SearchState {
 		log.info(dbname + " using analyzer " +analyzer.getClass().getName());
 		parser = new QueryParser("contents", analyzer);
 		try {
-			reader = IndexReader.open(indexpath);
-			searcher = new IndexSearcher(reader);
+			openReader();
 		} catch (IOException e) {
 			log.warning(dbname + ": warning: open for read failed");
 			//throw new SearchDbException();
@@ -156,17 +155,11 @@ public class SearchState {
 
 	void close() {
 		try {
-			searcher.close();
-			reader.close();
+			if (writable)
+				mergeWrites();
+			closeReader();
 		} catch (IOException e) {
 			log.warning(mydbname + ": warning: closing index: " + e.getMessage());
-		}
-		if (writable) {
-			try {
-				mergeWrites();
-			} catch (IOException e) {
-				log.warning(mydbname + ": warning: closing index: " + e.getMessage());
-			}
 		}
 	}
 	
@@ -180,12 +173,19 @@ public class SearchState {
 		
 		log.info("Merging " + updatesWritten + " updates to disk on " + mydbname);
 		try {
+			// Need to flush any pending deletions on the reader...
+			closeReader();
+			
+			// Merge updates from RAM to disk...
 			IndexWriter ondisk = new IndexWriter(indexpath, analyzer, false);
 			ondisk.addIndexes(new Directory[] { buffer });
 			ondisk.close();
 		} finally {
 			updatesWritten = 0;
+			openReader();
 			buffer.close();
+			
+			// A new in-RAM buffer will be created on demand.
 		}
 	}
 	
@@ -197,15 +197,29 @@ public class SearchState {
 
 	private void reopen() {
 		try {
-			searcher.close();
-			reader.close();
-			reader = IndexReader.open(indexpath);
-			searcher = new IndexSearcher(reader);
+			closeReader();
+			openReader();
 		} catch (IOException e) {
 			log.warning(mydbname + ": warning: reopening index: " + e.getMessage());
 		}
 	}
 	
+	/**
+	 * @throws IOException
+	 */
+	private void openReader() throws IOException {
+		reader = IndexReader.open(indexpath);
+		searcher = new IndexSearcher(reader);
+	}
+
+	/**
+	 * @throws IOException
+	 */
+	private void closeReader() throws IOException {
+		searcher.close();
+		reader.close();
+	}
+
 	/**
 	 * Open the index for writing if it's not already. This is implicitly
 	 * called when addDocument() is used, so callers don't need to do it.

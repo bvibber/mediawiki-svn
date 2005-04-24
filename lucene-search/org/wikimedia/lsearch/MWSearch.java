@@ -124,7 +124,7 @@ public class MWSearch {
 							if ((++numArticles % 1000) == 0) {
 								double delta = (System.currentTimeMillis() - now) / 1000.0;
 								double rate = delta == 0.0 ? 0.0 : numArticles / delta;
-								System.out.print("[" + dbname + "] " + numArticles + "... (" + rate + "/sec)\r");
+								System.out.print("[" + dbname + "] " + numArticles + "... (" + rate + "/sec)");
 								System.out.flush();
 							}
 						}
