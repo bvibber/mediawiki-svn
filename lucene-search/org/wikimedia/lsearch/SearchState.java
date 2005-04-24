@@ -261,14 +261,14 @@ public class SearchState {
 		if (tablePrefix == null) tablePrefix = "";
 		
 		if (!config.getBoolean("mwsearch.oldmediawiki"))
-			query = "SELECT page_id,page_namespace,page_title,old_text,page_timestamp " +
+			query = "/* MWSearch */ SELECT page_id,page_namespace,page_title,old_text,page_timestamp " +
 				"FROM " + tablePrefix + "page FORCE INDEX(page_timestamp), " +
 				tablePrefix + "revision " +
 				tablePrefix + "text " +
 				"WHERE page_timestamp > \"" + startDate +
 				"\" AND old_id=rev_text_id AND rev_id=page_latest AND page_is_redirect=0";
 		else
-			query = "SELECT cur_id,cur_namespace,cur_title,cur_text,cur_timestamp " +
+			query = "/* MWSearch */ SELECT cur_id,cur_namespace,cur_title,cur_text,cur_timestamp " +
 				"FROM " + tablePrefix + "cur FORCE INDEX (cur_timestamp) " +
 				"WHERE cur_timestamp>\"" + startDate + "\" AND cur_is_redirect=0";
 		pstmt = conn.prepareStatement(query, ResultSet.TYPE_FORWARD_ONLY,
