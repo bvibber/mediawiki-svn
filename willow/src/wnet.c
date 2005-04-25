@@ -39,13 +39,18 @@ time_t current_time;
 static void wnet_accept(struct fde *);
 static void wnet_write_do(struct fde *);
 
-struct fde fde_table[MAX_FD];
+struct fde *fde_table;
+int max_fd;
 
 void
 wnet_init(void)
 {
 	int	 i;
 
+	max_fd = getdtablesize();
+	fde_table = calloc(sizeof(struct fde), max_fd);
+	wlog(WLOG_NOTICE, "maximum number of open files: %d", max_fd);
+	
 	signal(SIGPIPE, SIG_IGN);
 	wnet_init_select();
 
@@ -92,7 +97,7 @@ struct	fde		*newe;
 		return;
 	}
 
-	if (newfd >= MAX_FD) {
+	if (newfd >= max_fd) {
 		wlog(WLOG_NOTICE, "out of file descriptors!");
 		wfree(cdata);
 		close(newfd);

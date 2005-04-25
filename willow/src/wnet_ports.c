@@ -44,7 +44,7 @@ wnet_run(void)
 		for (i = 0; i < nget; ++i) {
 			struct fde *e = &fde_table[pe[i].portev_object];
 			int hadwrite, hadread;
-			assert(pe[i].portev_object < MAX_FD);
+			assert(pe[i].portev_object < max_fd);
 
 			hadread = e->fde_epflags & READABLE;
 			hadwrite = e->fde_epflags & POLLWRNORM;
@@ -84,7 +84,7 @@ struct	fde		*e = &fde_table[fd];
 	int		 oldflags = e->fde_epflags;
 
 	DEBUG((WLOG_DEBUG, "wnet_register: %d [%s] for %d %p", fd, e->fde_desc, what, handler));
-	assert(fd < MAX_FD);
+	assert(fd < max_fd);
 
 	e->fde_fd = fd;
 

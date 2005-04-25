@@ -16,7 +16,7 @@
 
 struct fde;
 
-#define MAX_FD	8192
+extern int max_fd;
 
 typedef void (*fdcb)(struct fde*);
 typedef void (*fdwcb)(struct fde*, void*, int);
@@ -41,7 +41,7 @@ struct	client_data	*fde_cdata;
 		int	open:1;
 	}		 fde_flags;
 };
-extern struct fde fde_table[];
+extern struct fde *fde_table;
 
 struct client_data {
 struct	sockaddr_in	cdat_addr;
