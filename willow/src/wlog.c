@@ -19,6 +19,7 @@
 struct log_variables logging;
 
 static const char *sev_names[] = {
+	"Debug",
 	"Notice",
 	"Warning",
 	"Error",
@@ -49,7 +50,7 @@ wlog_init(void)
 void
 wlog(int sev, const char *fmt, ...)
 {
-	char *s = malloc(1024);
+	char s[1024];
 	va_list ap;
 	int i;
 
@@ -68,7 +69,6 @@ wlog(int sev, const char *fmt, ...)
 	if (config.foreground)
 		fputs(s, stderr);
 	va_end(ap);
-	free(s);
 }
 
 void

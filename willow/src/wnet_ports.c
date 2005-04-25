@@ -15,6 +15,7 @@
 #include <port.h>
 
 #include "wnet.h"
+#include "wlog.h"
 
 #define READABLE POLLRDNORM
 
@@ -48,17 +49,21 @@ wnet_run(void)
 			hadread = e->fde_epflags & READABLE;
 			hadwrite = e->fde_epflags & POLLWRNORM;
 
+			DEBUG((WLOG_DEBUG, "activity on fd %d", e->fde_fd));
+
 			/*
 			 * Immediately re-associate.  If the caller doesn't want it,
 			 * they'll dissociate it themselves.  This could be optimised
 			 * a little to save 2 syscalls in some cases...
 			 */
 			if ((pe[i].portev_events & READABLE) && e->fde_read_handler) {
+				DEBUG((WLOG_DEBUG, "\tread", e->fde_fd));
 				e->fde_read_handler(e);
 				if (hadread && (e->fde_epflags & READABLE))
 					port_associate(port, PORT_SOURCE_FD, e->fde_fd, READABLE, NULL);
 			}
 			if ((pe[i].portev_events & (POLLWRNORM | POLLERR)) && e->fde_write_handler) {
+				DEBUG((WLOG_DEBUG, "\twrite", e->fde_fd));
 				e->fde_write_handler(e);
 				if (hadwrite && (e->fde_epflags & POLLWRNORM))
 					port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLWRNORM, NULL);
