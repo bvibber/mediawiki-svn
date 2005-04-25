@@ -157,6 +157,7 @@ class LuceneSearch extends SpecialPage
 				$t = SearchEngine::getNearMatch($q);
 				if(!is_null($t)) {
 					$wgOut->redirect($t->getFullURL());
+					wfProfileOut( $fname );
 					return;
 				}
 			}
@@ -189,6 +190,7 @@ class LuceneSearch extends SpecialPage
 				$wgOut->addHTML(wfMsg('googlesearch',
 					htmlspecialchars($q),
 					htmlspecialchars($wgInputEncoding)));
+				wfProfileOut( $fname );
 				return;
 			}
 
