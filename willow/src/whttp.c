@@ -197,6 +197,11 @@ backend_headers_done(entity, data, res)
 struct	http_client	*client = data;
 	
 	DEBUG((WLOG_DEBUG, "backend_headers_done: called"));
+	if (res == -1) {
+		client_send_error(client, ERR_GENERAL, strerror(errno));
+		return;
+	}
+	
 	memset(&client->cl_entity, 0, sizeof(client->cl_entity));
 	client->cl_entity.he_source_type = ENT_SOURCE_FDE;
 	client->cl_entity.he_source.fde = client->cl_backendfde;
@@ -218,6 +223,11 @@ client_headers_done(entity, data, res)
 struct	http_client	*client = data;
 
 	DEBUG((WLOG_DEBUG, "client_headers_done: called"));
+	
+	if (res == -1) {
+		client_close(client);
+		return;
+	}
 	
 	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client);
 }

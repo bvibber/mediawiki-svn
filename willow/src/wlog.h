@@ -26,7 +26,7 @@ void wlog_init(void);
 void wlog(int, const char *, ...);
 void wlog_close(void);
 
-#ifdef NDEBUG
+#ifndef WILLOW_DEBUG
 # define DEBUG(x)
 #else
 # define DEBUG(x) wlog x

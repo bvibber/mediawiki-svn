@@ -48,6 +48,12 @@ AC_ARG_ENABLE(poll, AC_HELP_STRING([--enable-poll],[Force poll() use]),
 	fi
 ])
 
+AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug],[Compile with debug support]),
+[	if test $enableval = yes; then
+		AC_DEFINE([WILLOW_DEBUG], [], [Compile with debug support])
+	fi
+])
+
 AC_CHECK_LIB(socket, socket)
 AC_CHECK_LIB(nsl, inet_addr)
 AC_CHECK_FUNC(daemon,,[AC_LIBOBJ(daemon)])
