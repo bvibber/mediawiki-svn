@@ -192,6 +192,6 @@ function setupCatRSSExtension() {
 
 function viewCatRSS( &$CategoryPage ) {
 	$catfeed = new CategoryFeed($CategoryPage);
-	$catfeed->view();
+	return $catfeed->view();
 }
 ?>
