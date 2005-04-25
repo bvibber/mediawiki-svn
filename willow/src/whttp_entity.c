@@ -491,7 +491,8 @@ struct	http_entity	*entity = data;
 	
 	if (entity->he_source_type == ENT_SOURCE_BUFFER) {
 		/* write buffer, callback when done */
-		DEBUG((WLOG_DEBUG, "entity_send_headers_done: source is buffer"));
+		DEBUG((WLOG_DEBUG, "entity_send_headers_done: source is buffer, %d bytes", 
+				entity->he_source.buffer.len));
 		wnet_write(fde->fde_fd, entity->he_source.buffer.addr,
 			       entity->he_source.buffer.len, entity_send_buf_done, entity);
 		return;
@@ -577,6 +578,7 @@ entity_send_buf_done(fde, data, res)
 {
 struct	http_entity	*entity = data;
 
+	DEBUG((WLOG_DEBUG, "entity_send_buf_done: called for %d [%s], res=%d", fde->fde_fd, fde->fde_desc, res));
 	entity->_he_func(entity, entity->_he_cbdata, res);
 	return;
 }

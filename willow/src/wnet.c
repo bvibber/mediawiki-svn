@@ -174,6 +174,8 @@ wnet_write(fd, buf, bufsz, cb, data)
 struct	wrtbuf	*wb;
 struct	fde	*e = &fde_table[fd];
 
+	DEBUG((WLOG_DEBUG, "wnet_write: %d bytes to %d [%s]", bufsz, e->fde_fd, e->fde_desc));
+	
 	if ((wb = wmalloc(sizeof(*wb))) == NULL) {
 		fputs("out of memory\n", stderr);
 		abort();

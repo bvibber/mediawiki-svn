@@ -150,6 +150,13 @@ client_read_done(entity, data, res)
 {
 struct	http_client	*client = data;
 
+	if (res == -1) {
+		client_close(client);
+		return;
+	}
+	
+	client->cl_path = client->cl_entity.he_rdata.request.path;
+	
 	DEBUG((WLOG_DEBUG, "client_read_done: called"));
 	/*
 	 * Got the headers from the client.  Find a backend.
@@ -172,6 +179,11 @@ struct	http_client	*client = data;
 struct	header_list	 *it;
 	
 	DEBUG((WLOG_DEBUG, "proxy_start_backend: called"));
+	
+	if (backend == NULL) {
+		client_send_error(client, ERR_GENERAL, strerror(errno));
+		return;
+	}
 	
 	client->cl_backend = backend;
 	client->cl_backendfde = e;
@@ -378,6 +390,7 @@ client_send_error(client, errnum, errdata)
 	header_add(&client->cl_entity.he_headers, "Content-Type", "text/html");
 	header_add(&client->cl_entity.he_headers, "Connection", "close");
 
+	client->cl_entity.he_flags.response = 1;
 	client->cl_entity.he_rdata.response.status = 503;
 	client->cl_entity.he_rdata.response.status_str = "Service unavailable";
 	client->cl_entity.he_source_type = ENT_SOURCE_BUFFER;
