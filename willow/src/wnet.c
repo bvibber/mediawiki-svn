@@ -125,8 +125,8 @@ wnet_open(desc)
 	int	fd, val;
 
 	if ((fd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) {
-		perror("socket");
-		exit(8);
+		wlog(WLOG_WARNING, "socket: %s", strerror(errno));
+		return -1;
 	}
 
 	val = fcntl(fd, F_GETFL, 0);
