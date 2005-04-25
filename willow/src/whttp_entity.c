@@ -41,64 +41,90 @@
  *    opened for reading.
  */
  
+#include <unistd.h>
+#include <errno.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 #include "willow.h"
 #include "whttp.h"
 #include "whttp_entity.h"
+#include "wnet.h"
+#include "wlog.h"
 
-static void entity_read_callback(struct fde *, void *);
-static int parse_headers(struct http_entity*);
-static int parse_reqtype(struct http_entity *, char *, int);
+#define ENTITY_STATE_START	0
+#define ENTITY_STATE_CR		1
+#define ENTITY_STATE_NL		2
+#define ENTITY_STATE_HDR	3
+#define ENTITY_STATE_COLON	4
+#define ENTITY_STATE_SPACE	5
+#define ENTITY_STATE_VALUE	6
+#define ENTITY_STATE_CREMPTY	7
+#define ENTITY_STATE_DONE	8
+#define ENTITY_STATE_BODY	9
+
+static void entity_read_callback(struct fde *);
+static int parse_headers(struct http_entity *);
+static int parse_reqtype(struct http_entity *);
 
 static void entity_send_headers_done(struct fde *, void *, int);
-static void entity_send_body_done(struct fde *, void *, int);
-static void entity_send_fde_write(struct fde *, void *, int);
+static void entity_send_fde_write_done(struct fde *, void *, int);
+static void entity_send_buf_done(struct fde *, void *, int);
+static void entity_send_fde_read(struct fde *);
 
 void
-entity_read_headers(entity, readbuf, func, udata)
+entity_read_headers(entity, func, udata)
 	struct http_entity *entity;
-	struct readbuf *readbuf;
 	header_cb func;
 	void *udata;
 {
-	entity->_hr_data = udata;
-	entity->_hr_func = func;
-	entity->_hr_readbuf = readbuf;
+	entity->_he_cbdata = udata;
+	entity->_he_func = func;
 
-	/* XXX source for an entity read is _always_ an fde */
-	wnet_register(entity->hr_source.fde, FDE_READ, entity_read_callback, entity);
-	entity_read_callback(entity->hr_source.fde, entity);
+	DEBUG((WLOG_DEBUG, "entity_read_headers: starting"));
+	/* XXX source for an entity header read is _always_ an fde */
+	wnet_register(entity->he_source.fde->fde_fd, FDE_READ, entity_read_callback, entity);
+	//entity_read_callback(entity->he_source.fde);
 }
 
 static void
-entity_read_callback(e, data)
+entity_read_callback(e)
 	struct fde *e;
-	void *data;
 {
-struct	http_entity	*entity = data;
+struct	http_entity	*entity = e->fde_rdata;
 
-	if (READBUF_DATA_LEFT(entity->_hr_readbuf) == 0) {
-		switch (readbuf_getdata(entity->he_source.fde->fde_fd, entity->_he_readbuf)) {
+	DEBUG((WLOG_DEBUG, "entity_read_callback: called"));
+	
+	if (READBUF_DATA_LEFT(&entity->_he_readbuf) == 0) {
+		switch (readbuf_getdata(entity->he_source.fde->fde_fd, &entity->_he_readbuf)) {
 		case -1:
+			DEBUG((WLOG_DEBUG, "entity_read_callback: readbuf_getdata returned -1, errno=%d %s", 
+					errno, strerror(errno)));
 			if (errno == EWOULDBLOCK)
 				return;
 		case 0:
+			DEBUG((WLOG_DEBUG, "entity_read_callback: readbuf_getdata returned 0"));
 			wnet_register(entity->he_source.fde->fde_fd, FDE_READ, NULL, NULL);
 			entity->he_flags.error = 1;
-			entity->_he_func(entity->_he_data);
+			entity->_he_func(entity, entity->_he_cbdata, 0);
 			return;
 		}
 	}
 
-	if (parse_headers(entity, 0) == -1) {
+	DEBUG((WLOG_DEBUG, "entity_read_callback: running header parse"));
+	if (parse_headers(entity) == -1) {
+		DEBUG((WLOG_DEBUG, "entity_read_callback: parse_headers returned -1"));
 		wnet_register(entity->he_source.fde->fde_fd, FDE_READ, NULL, NULL);
 		entity->he_flags.error = 1;
-		entity->_he_func(entity->_he_data);
+		entity->_he_func(entity, entity->_he_cbdata, -1);
 		return;
 	}
 
-	if (entity->_hr_state == HE_STATE_DONE) {
+	if (entity->_he_state == ENTITY_STATE_DONE) {
+		DEBUG((WLOG_DEBUG, "entity_read_callback: client is ENTITY_STATE_DONE"));
 		wnet_register(entity->he_source.fde->fde_fd, FDE_READ, NULL, NULL);
-		entity->_he_func(entity->_he_data);
+		entity->_he_func(entity, entity->_he_cbdata, 01);
 		return;
 	}
 
@@ -115,20 +141,19 @@ struct	http_entity	*entity = data;
  * \r\n over \n.
  */
 static int
-parse_headers(entity, isresp)
+parse_headers(entity)
 	struct http_entity *entity;
-	int isresp;
 {
-	while (READBUF_DATA_LEFT(entity->_he_readbuf) > 0) {
-		char c = *READBUF_CUR_POS(entity->_he_readbuf);
+	while (READBUF_DATA_LEFT(&entity->_he_readbuf) > 0) {
+		char c = *READBUF_CUR_POS(&entity->_he_readbuf);
 
-		switch(entity->_he_ps) {
+		switch(entity->_he_state) {
 		case ENTITY_STATE_START:
 			/* should be reading a request type */
 			switch(c) {
 				case '\r':
-					*READBUF_CUR_POS(entity->_he_readbuf) = '\0';
-					if (parse_reqtype(entity->_he_readbuf->rb_p, isresp) == -1)
+					*READBUF_CUR_POS(&entity->_he_readbuf) = '\0';
+					if (parse_reqtype(entity) == -1)
 						return -1;
 					entity->_he_state = ENTITY_STATE_CR;
 					break;
@@ -141,7 +166,7 @@ parse_headers(entity, isresp)
 		case ENTITY_STATE_CR:
 			switch(c) {
 				case '\n':
-					entity->_he_state = PS_NL;
+					entity->_he_state = ENTITY_STATE_NL;
 					break;
 				default:
 					return -1;
@@ -156,15 +181,15 @@ parse_headers(entity, isresp)
 					return -1;
 				default: /* header name */
 					entity->_he_state = ENTITY_STATE_HDR;
-					client->cl_hdrbuf = client->cl_readbuf.rb_p + client->cl_readbuf.rb_dpos;
+					entity->_he_hdrbuf = entity->_he_readbuf.rb_p + entity->_he_readbuf.rb_dpos;
 					break;
 			}
 			break;
-		case ENTIRY_STATE_HDR:
+		case ENTITY_STATE_HDR:
 			switch(c) {
 				case ':':
-					client->cl_ps = ENTITY_STATE_COLON;
-					*READBUF_CUR_POS(&client->cl_readbuf) = '\0';
+					entity->_he_state = ENTITY_STATE_COLON;
+					*READBUF_CUR_POS(&entity->_he_readbuf) = '\0';
 					break;
 				case ' ': case '\r': case '\n':
 					return -1;
@@ -175,7 +200,7 @@ parse_headers(entity, isresp)
 		case ENTITY_STATE_COLON:
 			switch(c) {
 				case ' ':
-					client->cl_ps = ENTITY_STATE_SPACE;
+					entity->_he_state = ENTITY_STATE_SPACE;
 					break;
 				default:
 					return -1;
@@ -186,17 +211,17 @@ parse_headers(entity, isresp)
 				case '\r': case '\n': case ':': case ' ':
 					return -1;
 				default:
-					header_add(&client->cl_headers, client->cl_hdrbuf, 
-							client->cl_readbuf.rb_p + client->cl_readbuf.rb_dpos);
-					client->cl_ps = ENTITY_STATE_VALUE;
+					header_add(&entity->he_headers, entity->_he_hdrbuf, 
+						entity->_he_readbuf.rb_p + entity->_he_readbuf.rb_dpos);
+					entity->_he_state = ENTITY_STATE_VALUE;
 					break;
 			}
 			break;
 		case ENTITY_STATE_VALUE:
 			switch(c) {
 				case '\r': 
-					*READBUF_CUR_POS(&client->cl_readbuf) = '\0';
-					client->cl_ps = ENTITY_STATE_CR;
+					*READBUF_CUR_POS(&entity->_he_readbuf) = '\0';
+					entity->_he_state = ENTITY_STATE_CR;
 					break;
 				case '\n': 
 					return -1;
@@ -207,7 +232,7 @@ parse_headers(entity, isresp)
 		case ENTITY_STATE_CREMPTY:
 			switch(c) {
 				case '\n':
-					client->cl_ps = ENTITY_STATE_DONE;
+					entity->_he_state = ENTITY_STATE_DONE;
 					return 0;
 				default:
 					return -1;
@@ -223,25 +248,46 @@ parse_headers(entity, isresp)
 				  * (ENTITY_STATE_BODY) but i don't know which is correct.
 				  */
 		}
-		READBUF_INC_DATA_POS(&client->cl_readbuf);
+		READBUF_INC_DATA_POS(&entity->_he_readbuf);
 	}
 	return 0;
 }
 
 static int 
-parse_reqtype(entity, request, isresp)
+parse_reqtype(entity)
 	struct http_entity *entity;
-	char *request;
-	int isresp;
 {
 	char	*p, *s;
+	char	*request = entity->_he_readbuf.rb_p;
 
+	DEBUG((WLOG_DEBUG, "parse_reqtype: called, response=%d", (int)entity->he_flags.response));
+	
 	/*
-	 * Ignore responses for now...
+	 * These probably shouldn't be handled in the same function.
 	 */
-	if (isresp)
+	if (entity->he_flags.response) {
+		/* 
+		 * HTTP/1.0
+		 */
+		if ((p = strchr(request, ' ')) == NULL)
+			return -1;
+		*p++ = '\0';
+		
+		/* 200 */
+		if ((s = strchr(p, ' ')) == NULL)
+			return -1;
+		*s++ = '\0';
+		entity->he_rdata.response.status = atoi(p);
+		
+		/* OK */
+		entity->he_rdata.response.status_str = s;
+		
+		DEBUG((WLOG_DEBUG, "parse_reqtype: \"%s\" \"%d\" \"%s\"",
+				request, entity->he_rdata.response.status,
+				entity->he_rdata.response.status_str));
 		return 0;
-
+	}	
+	
 	/* GET */
 	if ((p = strchr(request, ' ')) == NULL)
 		return -1;
@@ -268,7 +314,7 @@ parse_reqtype(entity, request, isresp)
 
 	*s++ = '\0';
 	
-	client->cl_path = strdup(p);
+	entity->he_rdata.request.path = strdup(p);
 
 	/* HTTP/1.0 */
 	/*
@@ -316,6 +362,21 @@ struct	header_list	*new = head;
 	new->hl_next = new->hl_tail = NULL;
 }
 
+void
+header_remove(head, it)
+	struct header_list *head, *it;
+{
+struct	header_list	*jt;
+
+	jt = head;
+	while (jt->hl_next && jt->hl_next != it)
+		jt = jt->hl_next;
+	jt->hl_next = jt->hl_next->hl_next;
+	if (it == head->hl_tail)
+		head->hl_tail = jt;
+	wfree(it);
+}
+
 char *
 header_build(head)
 	struct header_list *head;
@@ -360,117 +421,162 @@ header_build(head)
  * entity_send_from_buf:
  *   calls wnet_write on the buffer with entity_send_buf_done as the callback.
  *   entity_send_buf_done calls the user's callback and returns.
+ *
+ * WARNING: if wnet_write completes immediately, i.e. does not block, it will call
+ * your callback before it returns.  after this, the entity may no longer exist.
+ * wnet_write should generally be the last thing a function does before it returns.
  */
 
 void
-entity_send(client, entity, cb)
-	struct http_client *client;
+entity_send(fde, entity, cb, data)
+	struct fde *fde;
 	struct http_entity *entity;
 	header_cb cb;
+	void *data;
 {
 	char	status[4];
 
-	client_log_request(client);
+	entity->_he_func = cb;
+	entity->_he_cbdata = data;
+	
+	DEBUG((WLOG_DEBUG, "entity_send: writing to %d [%s]", fde->fde_fd, fde->fde_desc));
+	
+	if (entity->he_flags.response) {
+		sprintf(status, "%d", entity->he_rdata.response.status);
+		write(fde->fde_fd, "HTTP/1.0 ", 9);
+		write(fde->fde_fd, status, strlen(status));
+		write(fde->fde_fd, " ", 1);
+		write(fde->fde_fd, entity->he_rdata.response.status_str,
+			strlen(entity->he_rdata.response.status_str));
+		write(fde->fde_fd, "\r\n", 2);
+	} else {
+		write(fde->fde_fd, request_string[entity->he_rdata.request.reqtype],
+				strlen(request_string[entity->he_rdata.request.reqtype]));
+		write(fde->fde_fd, " ", 1);
+		write(fde->fde_fd, entity->he_rdata.request.path,
+				strlen(entity->he_rdata.request.path));
+		write(fde->fde_fd, " HTTP/1.0\r\n", 11);
+	}
+		
+	entity->_he_target = fde;
+	entity->_he_hdrbuf = header_build(&entity->he_headers);
+	wnet_write(fde->fde_fd, entity->_he_hdrbuf, strlen(entity->_he_hdrbuf),
+			entity_send_headers_done, entity);
+}
 
-	sprintf(status, "%d", client->cl_response.hr_status);
-	write(client->cl_fde->fde_fd, "HTTP/1.0 ", 9);
-	write(client->cl_fde->fde_fd, status, strlen(status));
-	write(client->cl_fde->fde_fd, " ", 1);
-	write(client->cl_fde->fde_fd, client->cl_response.hr_status_str,
-			strlen(client->cl_response.hr_status_str));
-	write(client->cl_fde->fde_fd, "\r\n", 2);
+/*ARGSUSED*/
+static void
+entity_send_headers_done(fde, data, res)
+	struct fde *fde;
+	void *data;
+	int res;
+{
+struct	http_entity	*entity = data;
 
-	client->cl_hdrbuf = header_build(&client->cl_response.hr_headers);
-	wnet_write(client->cl_fde->fde_fd, client->cl_hdrbuf, strlen(client->cl_hdrbuf),
-			client_send_response_headers_done, client);
+	wfree(entity->_he_hdrbuf);
+
+	DEBUG((WLOG_DEBUG, "entity_send_headers_done: called for %d [%s], res=%d", fde->fde_fd, fde->fde_desc, res));
+	
+	if (res == -1) {
+		entity->_he_func(entity, entity->_he_cbdata, -1);
+		return;
+	}
+
+	if (entity->he_source_type == ENT_SOURCE_NONE) {
+		/* no body for this request */
+		DEBUG((WLOG_DEBUG, "entity_send_headers_done: no body, return immediately"));
+		entity->_he_func(entity, entity->_he_cbdata, 0);
+		return;
+	}
+	
+	if (entity->he_source_type == ENT_SOURCE_BUFFER) {
+		/* write buffer, callback when done */
+		DEBUG((WLOG_DEBUG, "entity_send_headers_done: source is buffer"));
+		wnet_write(fde->fde_fd, entity->he_source.buffer.addr,
+			       entity->he_source.buffer.len, entity_send_buf_done, entity);
+		return;
+	}
+	
+	/* FDE backended write */
+	/*
+	 * fde_read reads some amount of data (not necessarily all of it), and then calls
+	 * wnet_write to write it.  it then unregisters the fd as readable.
+	 * when wnet_write completes and calls fde_write_done, it registers the fd as
+	 * readable again..
+	 */ 
+	DEBUG((WLOG_DEBUG, "entity_send_headers_done: source is FDE"));
+	wnet_register(entity->he_source.fde->fde_fd, FDE_READ, entity_send_fde_read, entity);
 }
 
 static void
-entity_send_fde_read(e)
-	struct fde *e;
+entity_send_fde_read(fde)
+	struct fde *fde;
 {
-struct	http_client	*client = e->fde_rdata;
-	int		 i;
-
+struct	http_entity	*entity = fde->fde_rdata;
+	ssize_t		 len;
+	
+	DEBUG((WLOG_DEBUG, "entity_send_fde_read: called for %d [%s]", fde->fde_fd, fde->fde_desc));
+	
 	/*
-	 * Read possible from the backend.
-	 *
-	 * This is slightly tricky.  Don't ask for more events on this
-	 * fd until the client write completes, otherwise we overrun 
-	 * ourselves.
+	 * This is disgusting.
+	 * The problem is that when reading headers, the readbuf_getdata buffers too much
+	 * data (i.e. part of the response), so we have to process that first.  This should
+	 * move to wnet.
 	 */
-	if (READBUF_DATA_LEFT(&client->cl_readbuf) == 0 && 
-			(i = readbuf_getdata(e->fde_fd, &client->cl_readbuf)) < 1) {
-		if (READBUF_DATA_LEFT(&client->cl_readbuf) == 0) {
-			wnet_close(e->fde_fd);
-			if (i == -1 && errno != EWOULDBLOCK) {
-				client_send_error(client, ERR_GENERAL, strerror(errno));
-			}
-			client_close(client);
+	if (READBUF_DATA_LEFT(&entity->_he_readbuf) > 0) {
+		/* XXX for some reason \r\n gets left at the start of the readbuf */
+		DEBUG((WLOG_DEBUG, "entity_send_fde_read: %d bytes left in readbuf",
+				READBUF_DATA_LEFT(&entity->_he_readbuf) - 2));
+		memcpy(entity->_he_rdbuf, READBUF_CUR_POS(&entity->_he_readbuf) + 2,
+				READBUF_DATA_LEFT(&entity->_he_readbuf) - 2);
+		len = READBUF_DATA_LEFT(&entity->_he_readbuf);
+		readbuf_free(&entity->_he_readbuf);
+	} else {
+		len = read(entity->he_source.fde->fde_fd, entity->_he_rdbuf, 8192);
+		wnet_register(entity->he_source.fde->fde_fd, FDE_READ, NULL, NULL);
+	}
+	
+	DEBUG((WLOG_DEBUG, "entity_send_fde_read: read %d bytes", len));
+	
+	if (len == 0) {
+		/* remote closed */
+		entity->_he_func(entity, entity->_he_cbdata, 0);
+		return;
+	}
+	
+	if (len == -1) {
+		if (errno == EAGAIN) {
+			/* ? this shouldn't happen */
+			abort();
 		}
+		
+		entity->_he_func(entity, entity->_he_cbdata, -1);
 		return;
 	}
-
-	wnet_register(client->cl_fde->fde_fd, FDE_READ, NULL, NULL);
-	wnet_write(client->cl_fde->fde_fd, READBUF_CUR_POS(&client->cl_readbuf), 
-			READBUF_DATA_LEFT(&client->cl_readbuf), client_send_response_fde_write, client);
+	
+	wnet_write(entity->_he_target->fde_fd, entity->_he_rdbuf, len,
+			entity_send_fde_write_done, entity);
 }
 
-
-/*ARGSUSED*/
 static void
-client_send_response_fde_write(e, data, res)
-	struct fde *e;
+entity_send_fde_write_done(fde, data, res)
+	struct fde *fde;
 	void *data;
 	int res;
 {
-struct	http_client	*client = data;
+struct	http_entity	*entity = data;
 
-	readbuf_free(&client->cl_readbuf);
-	/*
-	 * Write to client completed.  Wait for the backend to send more data.
-	 */
-	if (res == -1) {
-		client_close(client);
-		return;
-	}
-
-	wnet_register(client->cl_backendfde->fde_fd, FDE_READ, client_send_response_fde_read, client);
-	client_send_response_fde_read(client->cl_backendfde);
+	wnet_register(entity->he_source.fde->fde_fd, FDE_READ, entity_send_fde_read, entity);
 }
 
-
-/*ARGSUSED*/
 static void
-client_send_response_headers_done(e, data, res)
-	struct fde *e;
+entity_send_buf_done(fde, data, res)
+	struct fde *fde;
 	void *data;
 	int res;
 {
-struct	http_client	*client = data;
+struct	http_entity	*entity = data;
 
-	wfree(client->cl_hdrbuf);
-
-	if (res == -1) {
-		client_close(client);
-		return;
-	}
-
-	if (client->cl_response.hr_source_type == RESP_SOURCE_BUFFER)
-		wnet_write(client->cl_fde->fde_fd, client->cl_response.hr_source.buffer.addr,
-			       client->cl_response.hr_source.buffer.len, client_send_response_body_done, client);
-	else
-		client_send_response_fde_read(client->cl_response.hr_source.fde);
-}
-
-/*ARGSUSED*/
-static void
-client_send_response_body_done(e, data, res)
-	struct fde *e;
-	void *data;
-	int res;
-{
-struct	http_client	*client = data;
-
-	client_close(client);
+	entity->_he_func(entity, entity->_he_cbdata, res);
+	return;
 }

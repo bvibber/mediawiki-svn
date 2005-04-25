@@ -24,5 +24,10 @@ struct fde;
 
 void http_new(struct fde *);
 void whttp_init(void);
+extern const char *request_string[];
+
+int readbuf_getdata(int fd, struct readbuf *);
+void readbuf_free(struct readbuf *);
+void readbuf_reset(struct readbuf *);
 
 #endif

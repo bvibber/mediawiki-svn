@@ -99,6 +99,8 @@ get_backend(func, data)
 struct	backend_cb_data	*cbd;
 	int		 s;
 	
+	DEBUG((WLOG_DEBUG, "get_backend: called"));
+	
 	if ((cbd = wmalloc(sizeof(*cbd))) == NULL) {
 		fputs("out of memory\n", stderr);
 		abort();
@@ -114,6 +116,7 @@ struct	backend_cb_data	*cbd;
 	}
 
 	if (connect(s, (struct sockaddr *)&cbd->bc_backend->be_addr, sizeof(cbd->bc_backend->be_addr)) == 0) {
+		DEBUG((WLOG_DEBUG, "get_backend: connection completed immediately"));
 		func(cbd->bc_backend, &fde_table[s], data);
 		wfree(cbd);
 		return 0;
@@ -124,6 +127,7 @@ struct	backend_cb_data	*cbd;
 		return -1;
 	}
 
+	DEBUG((WLOG_DEBUG, "get_backend: waiting for connection to complete"));
 	wnet_register(s, FDE_WRITE, backend_read, cbd);
 	return 0;
 }

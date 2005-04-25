@@ -25,6 +25,8 @@
 #include "wbackend.h"
 #include "wconfig.h"
 #include "wlogwriter.h"
+#include "whttp_entity.h"
+#include "wlog.h"
 
 #ifndef MAXHOSTNAMELEN
 # define MAXHOSTNAMELEN HOST_NAME_MAX /* SysV / BSD disagreement */
@@ -46,24 +48,13 @@ static const char *error_files[] = {
 #define MAX_HEADERS	64	/* maximum # of headers to allow	*/
 #define RDBUF_INC	8192	/* buffer in 8 KiB incrs		*/
 
-static const char *request_string[] = {
+const char *request_string[] = {
 	"GET",
 	"POST",
 	"HEAD",
 	"TRACE",
 	"OPTIONS",
 };
-
-#define PS_START	0
-#define PS_CR		1
-#define PS_NL		2
-#define PS_HDR		3
-#define PS_COLON	4
-#define PS_SPACE	5
-#define PS_VALUE	6
-#define PS_CREMPTY	7
-#define PS_DONE		8
-#define PS_BODY		9
 
 struct http_client {
 struct	readbuf		 cl_readbuf;			/* read buffer				*/
@@ -79,16 +70,12 @@ struct	fde		*cl_backendfde;			/* fde for backend			*/
 struct	http_entity	 cl_entity;			/* reply to send back			*/
 };
 
-static void http_read(struct fde *);
-static void client_close(struct http_client *);
-static void proxy_request(struct http_client *);
+static void http_read(struct fde *);static void client_close(struct http_client *);
 static void proxy_start_backend(struct backend *, struct fde *, void *);
-static void proxy_backend_read(struct fde *);
-static void proxy_write_done(struct fde *, void *, int);
-static void proxy_write_done_request(struct fde *, void *, int);
-static int readbuf_getdata(int fd, struct readbuf *);
-static void readbuf_free(struct readbuf *);
-static void readbuf_reset(struct readbuf *);
+static void client_read_done(struct http_entity *, void *, int);
+static void client_response_done(struct http_entity *, void *, int);
+static void backend_headers_done(struct http_entity *, void *, int);
+static void client_headers_done(struct http_entity *, void *, int);
 
 static void client_send_error(struct http_client *, int, const char *);
 static void client_log_request(struct http_client *);
@@ -148,9 +135,105 @@ http_new(e)
 struct	http_client	*cl;
 
 	cl = new_client(e);
-	entity_read_headers(&cl->cl_entity, &cl->cl_readbuf, client_read_done, cl);
+	cl->cl_entity.he_source_type = ENT_SOURCE_FDE;
+	cl->cl_entity.he_source.fde = e;
+	
+	DEBUG((WLOG_DEBUG, "http_new: starting header read for %d", cl->cl_fde->fde_fd));
+	entity_read_headers(&cl->cl_entity, client_read_done, cl);
 }
 
+static void
+client_read_done(entity, data, res)
+	struct http_entity *entity;
+	void *data;
+	int res;
+{
+struct	http_client	*client = data;
+
+	DEBUG((WLOG_DEBUG, "client_read_done: called"));
+	/*
+	 * Got the headers from the client.  Find a backend.
+	 */
+
+	if (get_backend(proxy_start_backend, client) == -1) {
+		client_send_error(client, ERR_GENERAL, strerror(errno));
+		return;
+	}
+}
+
+static void
+proxy_start_backend(backend, e, data)
+	struct backend *backend;
+	struct fde *e;
+	void *data;
+{
+struct	http_client	*client = data;
+	size_t		 bufsz;
+struct	header_list	 *it;
+	
+	DEBUG((WLOG_DEBUG, "proxy_start_backend: called"));
+	
+	client->cl_backend = backend;
+	client->cl_backendfde = e;
+
+	for (it = client->cl_entity.he_headers.hl_next; it; it = it->hl_next) {
+		if (!strcmp(it->hl_name, "Connection")) {
+			header_remove(&client->cl_entity.he_headers, it);
+			continue;
+		}
+	}
+
+	header_add(&client->cl_entity.he_headers, "X-Forwarded-For", client->cl_fde->fde_straddr);
+	client->cl_entity.he_source_type = ENT_SOURCE_NONE;
+	entity_send(e, &client->cl_entity, backend_headers_done, client);
+}
+
+static void
+backend_headers_done(entity, data, res)
+	struct http_entity *entity;
+	void *data;
+	int res;
+{
+struct	http_client	*client = data;
+	
+	DEBUG((WLOG_DEBUG, "backend_headers_done: called"));
+	memset(&client->cl_entity, 0, sizeof(client->cl_entity));
+	client->cl_entity.he_source_type = ENT_SOURCE_FDE;
+	client->cl_entity.he_source.fde = client->cl_backendfde;
+	client->cl_entity.he_flags.response = 1;
+
+	/*
+	 * This should probably be handled somewhere inside
+	 * whttp_entity.c ...
+	 */
+	entity_read_headers(&client->cl_entity, client_headers_done, client);
+}
+
+static void
+client_headers_done(entity, data, res)
+	struct http_entity *entity;
+	void *data;
+	int res;
+{
+struct	http_client	*client = data;
+
+	DEBUG((WLOG_DEBUG, "client_headers_done: called"));
+	
+	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client);
+}
+
+static void
+client_response_done(entity, data, res)
+	struct http_entity *entity;
+	void *data;
+	int res;
+{
+struct	http_client	*client = data;
+
+	DEBUG((WLOG_DEBUG, "client_response_done: called"));
+	client_close(client);
+}
+	
 static void
 client_close(client)
 	struct http_client *client;
@@ -162,18 +245,22 @@ client_close(client)
 	if (client->cl_path)
 		wfree(client->cl_path);
 	wnet_close(client->cl_fde->fde_fd);
+	if (client->cl_backendfde)
+		wnet_close(client->cl_backendfde->fde_fd);
 	wfree(client);
 }
 
-static int
+int
 readbuf_getdata(fd, buffer)
 	int fd;
 	struct readbuf *buffer;
 {
 	int	i;
 
-	for (;;) {
+	DEBUG((WLOG_DEBUG, "readbuf_getdata: called"));
+//	for (;;) {
 		if (READBUF_SPARE_SIZE(buffer) == 0) {
+			DEBUG((WLOG_DEBUG, "readbuf_getdata: no space in buffer"));
 			buffer->rb_size += RDBUF_INC;
 			buffer->rb_p = realloc(buffer->rb_p, buffer->rb_size);
 		}
@@ -181,11 +268,12 @@ readbuf_getdata(fd, buffer)
 		if ((i = read(fd, READBUF_SPARE_START(buffer), READBUF_SPARE_SIZE(buffer))) < 1)
 			return i;
 		buffer->rb_dsize += i;
-
-	}
+		DEBUG((WLOG_DEBUG, "readbuf_getdata: read %d bytes", i));
+//	}
+	return i;
 }
 
-static void
+void
 readbuf_free(buffer)
 	struct readbuf *buffer;
 {
@@ -194,172 +282,12 @@ readbuf_free(buffer)
 	memset(buffer, 0, sizeof(*buffer));
 }
 
-static void
+void
 readbuf_reset(buffer)
 	struct readbuf *buffer;
 {
 	buffer->rb_dpos = buffer->rb_dsize = 0;
-}
-
-static void
-http_read(e)
-	struct fde *e;
-{
-struct	http_client	*c = e->fde_rdata;
-	int		 i;
-	
-	if ((i = readbuf_getdata(e->fde_fd, &c->cl_readbuf)) < 1) {
-		if (errno == EWOULDBLOCK && (READBUF_DATA_LEFT(&c->cl_readbuf) == 0))
-			return;
-		else if (i == 0 || (i == -1 && errno != EWOULDBLOCK)) {
-			client_close(c);
-			return;
-		}
-	}
-	if (parse_headers(c, 0) == -1) {
-		/* parse error */
-		client_send_error(c, ERR_BADREQUEST, NULL);
-		return;
-	}
-	if (c->cl_ps == PS_DONE) {
-		/*
-		 * Don't care about this fd now.  If we're ever interested
-		 * in it again, it'll be reregistered.
-		 */
-		wnet_register(c->cl_fde->fde_fd, FDE_READ, NULL, NULL);
-
-		proxy_request(c);
-	}
-}
-
-static void
-proxy_request(client)
-	struct http_client *client;
-{
-	if (get_backend(proxy_start_backend, client) == -1) {
-		client_send_error(client, ERR_GENERAL, strerror(errno));
-		return;
-	}
-}
-	
-static void
-proxy_start_backend(backend, e, data)
-	struct backend *backend;
-	struct fde *e;
-	void *data;
-{
-struct	http_client	*client = data;
-	size_t		 bufsz;
-struct	header_list	 response_headers, *it;
-	
-	client->cl_backend = backend;
-	client->cl_backendfde = e;
-
-	memset(&response_headers, 0, sizeof(response_headers));
-
-	bufsz = strlen(client->cl_path) + 12 + strlen(request_string[client->cl_reqtype]);
-	client->cl_wrtbuf = wmalloc(bufsz + 1);
-	sprintf(client->cl_wrtbuf, "%s %s HTTP/1.0\r\n", request_string[client->cl_reqtype], client->cl_path);
-
-	for (it = client->cl_headers.hl_next; it; it = it->hl_next) {
-		if (!strcmp(it->hl_name, "Connection"))
-			continue;
-		header_add(&response_headers, it->hl_name, it->hl_value);
-	}
-
-	header_add(&response_headers, "X-Forwarded-For", client->cl_fde->fde_straddr);
-	client->cl_hdrbuf = header_build(&response_headers);	
-	header_free(&response_headers);
-
-	wnet_write(e->fde_fd, client->cl_wrtbuf, bufsz, proxy_write_done_request, client);
-}
-
-static void
-proxy_write_done_request(e, data, i)
-	struct fde *e;
-	void *data;
-	int i;
-{
-struct	http_client	*client = data;
-
-	wfree(client->cl_wrtbuf);
-	client->cl_wrtbuf = NULL;
-
-	if (i == -1) {
-		client_send_error(client, ERR_GENERAL, strerror(errno));
-		wnet_close(e->fde_fd);
-		return;
-	}
-
-	wnet_write(e->fde_fd, client->cl_hdrbuf, strlen(client->cl_hdrbuf), proxy_write_done, client);
-}
-
-static void
-proxy_write_done(e, data, i)
-	struct fde *e;
-	void *data;
-	int i;
-{
-struct	http_client	*client = data;
-
-	wfree(client->cl_hdrbuf);
-
-	if (i == -1) {
-		client_send_error(client, ERR_GENERAL, strerror(errno));
-		wnet_close(e->fde_fd);
-		return;
-	}
-		
-	/*
-	 * Re-appropriate the readbuf for the backend...
-	 */
-	readbuf_free(&client->cl_readbuf);
-	client->cl_ps = PS_START;
-	header_free(&client->cl_headers);
-
-	wnet_register(e->fde_fd, FDE_READ, proxy_backend_read, client);
 }	
-
-
-static void
-proxy_backend_read(e)
-	struct fde *e;
-{
-struct	http_client	*client = e->fde_rdata;
-struct	header_list	*head;
-
-	if (readbuf_getdata(e->fde_fd, &client->cl_readbuf) < 1) {
-		if (READBUF_DATA_LEFT(&client->cl_readbuf) == 0) {
-			wnet_close(e->fde_fd);
-			client_send_error(client, ERR_GENERAL, strerror(errno));
-			return;
-		}
-	}
-
-	if (parse_headers(client, 1) == -1) {
-		wnet_close(e->fde_fd);
-		client_send_error(client, ERR_BADRESPONSE, NULL);
-		return;
-	}
-
-	if (client->cl_ps < PS_DONE)
-		return;
-
-	wnet_register(client->cl_fde->fde_fd, FDE_READ, NULL, NULL);
-	wnet_register(e->fde_fd, FDE_READ, NULL, NULL);
-
-	for (head = client->cl_headers.hl_next; head; head = head->hl_next)
-		header_add(&client->cl_response.hr_headers, head->hl_name, head->hl_value);
-	header_add(&client->cl_response.hr_headers, "Via", via_hdr);
-
-	client->cl_response.hr_status = 200;
-	client->cl_response.hr_status_str = "OK";
-	client->cl_response.hr_source_type = RESP_SOURCE_FDE;
-	client->cl_response.hr_source.fde = e;
-	client->cl_response.hr_flags.cachable = 1;
-
-	client_send_response(client);
-}
 
 static void
 client_send_error(client, errnum, errdata)
@@ -433,24 +361,23 @@ client_send_error(client, errnum, errdata)
 	}
 	*u = '\0';
 
-	memset(&client->cl_response.hr_headers, 0, sizeof(client->cl_response.hr_headers));
-	header_add(&client->cl_response.hr_headers, "Date", current_time_str);
-	header_add(&client->cl_response.hr_headers, "Expires", current_time_str);
-	header_add(&client->cl_response.hr_headers, "Server", my_version);
-	header_add(&client->cl_response.hr_headers, "Content-Type", "text/html");
-	header_add(&client->cl_response.hr_headers, "Connection", "close");
+	memset(&client->cl_entity.he_headers, 0, sizeof(client->cl_entity.he_headers));
+	header_add(&client->cl_entity.he_headers, "Date", current_time_str);
+	header_add(&client->cl_entity.he_headers, "Expires", current_time_str);
+	header_add(&client->cl_entity.he_headers, "Server", my_version);
+	header_add(&client->cl_entity.he_headers, "Content-Type", "text/html");
+	header_add(&client->cl_entity.he_headers, "Connection", "close");
 
-	client->cl_response.hr_status = 503;
-	client->cl_response.hr_status_str = "Service unavailable";
-	client->cl_response.hr_source_type = RESP_SOURCE_BUFFER;
-	client->cl_response.hr_source.buffer.addr = client->cl_wrtbuf;
+	client->cl_entity.he_rdata.response.status = 503;
+	client->cl_entity.he_rdata.response.status_str = "Service unavailable";
+	client->cl_entity.he_source_type = ENT_SOURCE_BUFFER;
+	client->cl_entity.he_source.buffer.addr = client->cl_wrtbuf;
 	assert(u >= client->cl_wrtbuf);
 	/*LINTED possible ptrdiff_t overflow*/
-	client->cl_response.hr_source.buffer.len = u - client->cl_wrtbuf;
+	client->cl_entity.he_source.buffer.len = u - client->cl_wrtbuf;
 
-	client->cl_response.hr_flags.cachable = 0;
-
-	client_send_response(client);
+	client->cl_entity.he_flags.cachable = 0;
+	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client);
 }
 
 static void
@@ -459,11 +386,12 @@ client_log_request(client)
 {
 	if (!config.access_log)
 		return;
-
+#if 0
 	fprintf(alf, "[%s] %s %s \"%s\" %d %s\n",
 			current_time_short, client->cl_fde->fde_straddr,
 			request_string[client->cl_reqtype],
 			client->cl_path, client->cl_response.hr_status,
 			client->cl_backend->be_name);
 	fflush(alf);
+#endif
 }

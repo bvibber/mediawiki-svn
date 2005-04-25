@@ -49,7 +49,7 @@ wnet_run(void)
 			hadread = e->fde_epflags & READABLE;
 			hadwrite = e->fde_epflags & POLLWRNORM;
 
-			DEBUG((WLOG_DEBUG, "activity on fd %d", e->fde_fd));
+			DEBUG((WLOG_DEBUG, "activity on fd %d [%s]", e->fde_fd, e->fde_desc));
 
 			/*
 			 * Immediately re-associate.  If the caller doesn't want it,
@@ -83,6 +83,7 @@ wnet_register(fd, what, handler, data)
 struct	fde		*e = &fde_table[fd];
 	int		 oldflags = e->fde_epflags;
 
+	DEBUG((WLOG_DEBUG, "wnet_register: %d [%s] for %d %p", fd, e->fde_desc, what, handler));
 	assert(fd < MAX_FD);
 
 	e->fde_fd = fd;
