@@ -24,6 +24,8 @@
 #include "wlog.h"
 #include "whttp.h"
 
+#define RDBUF_INC	8192	/* buffer in 8 KiB incrs		*/
+
 struct wrtbuf {
 const	void	*wb_buf;
 	int	 wb_size;
@@ -38,6 +40,9 @@ time_t current_time;
 
 static void wnet_accept(struct fde *);
 static void wnet_write_do(struct fde *);
+
+static void readbuf_free(struct readbuf *);
+static void readbuf_reset(struct readbuf *);
 
 struct fde *fde_table;
 int max_fd;
@@ -159,6 +164,7 @@ struct	fde	*e = &fde_table[fd];
 	close(e->fde_fd);
 	if (e->fde_cdata)
 		wfree(e->fde_cdata);
+	readbuf_free(&e->fde_readbuf);
 	e->fde_flags.open = 0;
 	e->fde_read_handler = NULL;
 	e->fde_write_handler = NULL;
@@ -237,3 +243,44 @@ struct	tm	*now;
 	strftime(current_time_str, sizeof(current_time_str), "%a, %d %b %Y %H:%M:%S GMT", now);
 	strftime(current_time_short, sizeof(current_time_short), "%Y-%m-%d %H:%M:%S", now);
 }
+
+
+int
+readbuf_getdata(fde)
+	struct fde *fde;
+{
+	int	i;
+
+	DEBUG((WLOG_DEBUG, "readbuf_getdata: called"));
+	if (readbuf_data_left(&fde->fde_readbuf) == 0)
+		readbuf_reset(&fde->fde_readbuf);
+	
+	if (readbuf_spare_size(&fde->fde_readbuf) == 0) {
+		DEBUG((WLOG_DEBUG, "readbuf_getdata: no space in buffer"));
+		fde->fde_readbuf.rb_size += RDBUF_INC;
+		fde->fde_readbuf.rb_p = realloc(fde->fde_readbuf.rb_p, fde->fde_readbuf.rb_size);
+	}
+
+	if ((i = read(fde->fde_fd, readbuf_spare_start(&fde->fde_readbuf), readbuf_spare_size(&fde->fde_readbuf))) < 1)
+		return i;
+	fde->fde_readbuf.rb_dsize += i;
+	DEBUG((WLOG_DEBUG, "readbuf_getdata: read %d bytes", i));
+
+	return i;
+}
+
+static void
+readbuf_free(buffer)
+	struct readbuf *buffer;
+{
+	if (buffer->rb_p)
+		free(buffer->rb_p);
+	memset(buffer, 0, sizeof(*buffer));
+}
+
+static void
+readbuf_reset(buffer)
+	struct readbuf *buffer;
+{
+	buffer->rb_dpos = buffer->rb_dsize = 0;
+}	

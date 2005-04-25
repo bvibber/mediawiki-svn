@@ -46,6 +46,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 
 #include "willow.h"
 #include "whttp.h"
@@ -89,15 +90,15 @@ entity_read_headers(entity, func, udata)
 }
 
 static void
-entity_read_callback(e)
-	struct fde *e;
+entity_read_callback(fde)
+	struct fde *fde;
 {
-struct	http_entity	*entity = e->fde_rdata;
+struct	http_entity	*entity = fde->fde_rdata;
 
 	DEBUG((WLOG_DEBUG, "entity_read_callback: called"));
 	
-	if (READBUF_DATA_LEFT(&entity->_he_readbuf) == 0) {
-		switch (readbuf_getdata(entity->he_source.fde->fde_fd, &entity->_he_readbuf)) {
+	if (readbuf_data_left(&entity->he_source.fde->fde_readbuf) == 0) {
+		switch (readbuf_getdata(entity->he_source.fde)) {
 		case -1:
 			DEBUG((WLOG_DEBUG, "entity_read_callback: readbuf_getdata returned -1, errno=%d %s", 
 					errno, strerror(errno)));
@@ -144,15 +145,17 @@ static int
 parse_headers(entity)
 	struct http_entity *entity;
 {
-	while (READBUF_DATA_LEFT(&entity->_he_readbuf) > 0) {
-		char c = *READBUF_CUR_POS(&entity->_he_readbuf);
+	assert(entity->he_source_type == ENT_SOURCE_FDE);
+	
+	while (readbuf_data_left(&entity->he_source.fde->fde_readbuf) > 0) {
+		char c = *readbuf_cur_pos(&entity->he_source.fde->fde_readbuf);
 
 		switch(entity->_he_state) {
 		case ENTITY_STATE_START:
 			/* should be reading a request type */
 			switch(c) {
 				case '\r':
-					*READBUF_CUR_POS(&entity->_he_readbuf) = '\0';
+					*readbuf_cur_pos(&entity->he_source.fde->fde_readbuf) = '\0';
 					if (parse_reqtype(entity) == -1)
 						return -1;
 					entity->_he_state = ENTITY_STATE_CR;
@@ -181,7 +184,8 @@ parse_headers(entity)
 					return -1;
 				default: /* header name */
 					entity->_he_state = ENTITY_STATE_HDR;
-					entity->_he_hdrbuf = entity->_he_readbuf.rb_p + entity->_he_readbuf.rb_dpos;
+					entity->_he_hdrbuf = entity->he_source.fde->fde_readbuf.rb_p 
+							+ entity->he_source.fde->fde_readbuf.rb_dpos;
 					break;
 			}
 			break;
@@ -189,7 +193,7 @@ parse_headers(entity)
 			switch(c) {
 				case ':':
 					entity->_he_state = ENTITY_STATE_COLON;
-					*READBUF_CUR_POS(&entity->_he_readbuf) = '\0';
+					*readbuf_cur_pos(&entity->he_source.fde->fde_readbuf) = '\0';
 					break;
 				case ' ': case '\r': case '\n':
 					return -1;
@@ -212,7 +216,15 @@ parse_headers(entity)
 					return -1;
 				default:
 					header_add(&entity->he_headers, entity->_he_hdrbuf, 
-						entity->_he_readbuf.rb_p + entity->_he_readbuf.rb_dpos);
+						entity->he_source.fde->fde_readbuf.rb_p + 
+							entity->he_source.fde->fde_readbuf.rb_dpos);
+					/*
+					 * Check for "interesting" headers that we want to do
+					 * extra processing on.
+					 */
+					if (!strcmp(entity->_he_hdrbuf, "Host"))
+						entity->he_rdata.request.host = entity->he_source.fde->fde_readbuf.rb_p +
+								entity->he_source.fde->fde_readbuf.rb_dpos;
 					entity->_he_state = ENTITY_STATE_VALUE;
 					break;
 			}
@@ -220,7 +232,7 @@ parse_headers(entity)
 		case ENTITY_STATE_VALUE:
 			switch(c) {
 				case '\r': 
-					*READBUF_CUR_POS(&entity->_he_readbuf) = '\0';
+					*readbuf_cur_pos(&entity->he_source.fde->fde_readbuf) = '\0';
 					entity->_he_state = ENTITY_STATE_CR;
 					break;
 				case '\n': 
@@ -233,6 +245,7 @@ parse_headers(entity)
 			switch(c) {
 				case '\n':
 					entity->_he_state = ENTITY_STATE_DONE;
+					readbuf_inc_data_pos(&entity->he_source.fde->fde_readbuf, 1);
 					return 0;
 				default:
 					return -1;
@@ -248,7 +261,7 @@ parse_headers(entity)
 				  * (ENTITY_STATE_BODY) but i don't know which is correct.
 				  */
 		}
-		READBUF_INC_DATA_POS(&entity->_he_readbuf);
+		readbuf_inc_data_pos(&entity->he_source.fde->fde_readbuf, 1);
 	}
 	return 0;
 }
@@ -258,7 +271,7 @@ parse_reqtype(entity)
 	struct http_entity *entity;
 {
 	char	*p, *s;
-	char	*request = entity->_he_readbuf.rb_p;
+	char	*request = entity->he_source.fde->fde_readbuf.rb_p;
 
 	DEBUG((WLOG_DEBUG, "parse_reqtype: called, response=%d", (int)entity->he_flags.response));
 	
@@ -517,25 +530,13 @@ struct	http_entity	*entity = fde->fde_rdata;
 	ssize_t		 len;
 	
 	DEBUG((WLOG_DEBUG, "entity_send_fde_read: called for %d [%s]", fde->fde_fd, fde->fde_desc));
-	
-	/*
-	 * This is disgusting.
-	 * The problem is that when reading headers, the readbuf_getdata buffers too much
-	 * data (i.e. part of the response), so we have to process that first.  This should
-	 * move to wnet.
-	 */
-	if (READBUF_DATA_LEFT(&entity->_he_readbuf) > 0) {
-		/* XXX for some reason \r\n gets left at the start of the readbuf */
-		DEBUG((WLOG_DEBUG, "entity_send_fde_read: %d bytes left in readbuf",
-				READBUF_DATA_LEFT(&entity->_he_readbuf) - 2));
-		memcpy(entity->_he_rdbuf, READBUF_CUR_POS(&entity->_he_readbuf) + 2,
-				READBUF_DATA_LEFT(&entity->_he_readbuf) - 2);
-		len = READBUF_DATA_LEFT(&entity->_he_readbuf);
-		readbuf_free(&entity->_he_readbuf);
-	} else {
-		len = read(entity->he_source.fde->fde_fd, entity->_he_rdbuf, 8192);
-		wnet_register(entity->he_source.fde->fde_fd, FDE_READ, NULL, NULL);
-	}
+	DEBUG((WLOG_DEBUG, "entity_send_fde_read: %d bytes left in readbuf",
+			READBUF_DATA_LEFT(&entity->_he_readbuf)));
+
+	if (readbuf_data_left(&entity->he_source.fde->fde_readbuf) == 0) {
+		len = readbuf_getdata(fde);
+	} else
+		len = readbuf_data_left(&entity->he_source.fde->fde_readbuf);
 	
 	DEBUG((WLOG_DEBUG, "entity_send_fde_read: read %d bytes", len));
 	
@@ -555,8 +556,9 @@ struct	http_entity	*entity = fde->fde_rdata;
 		return;
 	}
 	
-	wnet_write(entity->_he_target->fde_fd, entity->_he_rdbuf, len,
-			entity_send_fde_write_done, entity);
+	wnet_write(entity->_he_target->fde_fd, readbuf_cur_pos(&entity->he_source.fde->fde_readbuf),
+			readbuf_data_left(&entity->he_source.fde->fde_readbuf), entity_send_fde_write_done, entity);
+	readbuf_inc_data_pos(&entity->he_source.fde->fde_readbuf, readbuf_data_left(&entity->he_source.fde->fde_readbuf));
 }
 
 static void

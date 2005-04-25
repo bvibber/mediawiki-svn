@@ -42,6 +42,7 @@ struct http_entity {
 		struct {
 			int	 reqtype;
 			char	*path;
+			char	*host;	/* HTTP Host: header */
 		} request;
 	}		 he_rdata;
 	
@@ -70,7 +71,6 @@ struct	header_list	 he_headers;
 	char		*_he_hdrbuf;
 	char		 _he_rdbuf[8192]; /* does this really need to be here? */
 struct	fde		*_he_target;
-struct	readbuf		 _he_readbuf;
 	int		 _he_state;
 };
 

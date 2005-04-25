@@ -46,7 +46,6 @@ static const char *error_files[] = {
 };
 
 #define MAX_HEADERS	64	/* maximum # of headers to allow	*/
-#define RDBUF_INC	8192	/* buffer in 8 KiB incrs		*/
 
 const char *request_string[] = {
 	"GET",
@@ -57,16 +56,12 @@ const char *request_string[] = {
 };
 
 struct http_client {
-struct	readbuf		 cl_readbuf;			/* read buffer				*/
-struct	header_list	 cl_headers;			/* HTTP headers				*/
 struct	fde		*cl_fde;			/* backref to fd			*/
 	int		 cl_reqtype;			/* request type or 0			*/
-	int		 cl_ps;				/* parse state				*/
 	char		*cl_path;			/* path they want			*/
 	char		*cl_wrtbuf;			/* write buf (either to client or be)	*/
 struct	backend		*cl_backend;			/* backend servicing this client	*/
 struct	fde		*cl_backendfde;			/* fde for backend			*/
-	char 		*cl_hdrbuf;			/* temp offset for hdr parsing		*/
 struct	http_entity	 cl_entity;			/* reply to send back			*/
 };
 
@@ -155,7 +150,17 @@ struct	http_client	*client = data;
 		return;
 	}
 	
-	client->cl_path = client->cl_entity.he_rdata.request.path;
+	if (client->cl_entity.he_rdata.request.host == NULL)
+		client->cl_path = strdup(client->cl_entity.he_rdata.request.path);
+	else {
+		client->cl_path = malloc(strlen(client->cl_entity.he_rdata.request.host) +
+					strlen(client->cl_entity.he_rdata.request.path)
+					+ 8);
+		sprintf(client->cl_path, "http://%s%s", client->cl_entity.he_rdata.request.host,
+				client->cl_entity.he_rdata.request.path);
+	}
+	
+	client->cl_reqtype = client->cl_entity.he_rdata.request.reqtype;
 	
 	DEBUG((WLOG_DEBUG, "client_read_done: called"));
 	/*
@@ -241,6 +246,7 @@ struct	http_client	*client = data;
 		return;
 	}
 	
+	header_add(&client->cl_entity.he_headers, "Via", via_hdr);
 	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client);
 }
 
@@ -253,6 +259,7 @@ client_response_done(entity, data, res)
 struct	http_client	*client = data;
 
 	DEBUG((WLOG_DEBUG, "client_response_done: called"));
+	client_log_request(client);
 	client_close(client);
 }
 	
@@ -260,8 +267,6 @@ static void
 client_close(client)
 	struct http_client *client;
 {
-	readbuf_free(&client->cl_readbuf);
-	header_free(&client->cl_headers);
 	if (client->cl_wrtbuf)
 		wfree(client->cl_wrtbuf);
 	if (client->cl_path)
@@ -271,45 +276,6 @@ client_close(client)
 		wnet_close(client->cl_backendfde->fde_fd);
 	wfree(client);
 }
-
-int
-readbuf_getdata(fd, buffer)
-	int fd;
-	struct readbuf *buffer;
-{
-	int	i;
-
-	DEBUG((WLOG_DEBUG, "readbuf_getdata: called"));
-//	for (;;) {
-		if (READBUF_SPARE_SIZE(buffer) == 0) {
-			DEBUG((WLOG_DEBUG, "readbuf_getdata: no space in buffer"));
-			buffer->rb_size += RDBUF_INC;
-			buffer->rb_p = realloc(buffer->rb_p, buffer->rb_size);
-		}
-
-		if ((i = read(fd, READBUF_SPARE_START(buffer), READBUF_SPARE_SIZE(buffer))) < 1)
-			return i;
-		buffer->rb_dsize += i;
-		DEBUG((WLOG_DEBUG, "readbuf_getdata: read %d bytes", i));
-//	}
-	return i;
-}
-
-void
-readbuf_free(buffer)
-	struct readbuf *buffer;
-{
-	if (buffer->rb_p)
-		free(buffer->rb_p);
-	memset(buffer, 0, sizeof(*buffer));
-}
-
-void
-readbuf_reset(buffer)
-	struct readbuf *buffer;
-{
-	buffer->rb_dpos = buffer->rb_dsize = 0;
-}	
 
 static void
 client_send_error(client, errnum, errdata)
@@ -409,12 +375,11 @@ client_log_request(client)
 {
 	if (!config.access_log)
 		return;
-#if 0
+
 	fprintf(alf, "[%s] %s %s \"%s\" %d %s\n",
 			current_time_short, client->cl_fde->fde_straddr,
 			request_string[client->cl_reqtype],
-			client->cl_path, client->cl_response.hr_status,
+			client->cl_path, client->cl_entity.he_rdata.response.status,
 			client->cl_backend->be_name);
 	fflush(alf);
-#endif
 }

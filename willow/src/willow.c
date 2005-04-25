@@ -22,7 +22,7 @@ static void
 sig_exit(s)
 	int s;
 {
-	fprintf(stderr, "exit on signal");
+	fprintf(stderr, "exit on signal\n");
 	exit(0);
 }
 
@@ -50,8 +50,13 @@ int main(argc, argv)
 	wconfig_init(NULL);
 	wlog_init();
 	wlog(WLOG_NOTICE, "startup");
-	wnet_init();
+	
+	/*
+	 * HTTP should be initialised before the network so that
+	 * the wlogwriter exits cleanly.
+	 */
 	whttp_init();
+	wnet_init();
 
 	signal(SIGINT, sig_exit);
 	
