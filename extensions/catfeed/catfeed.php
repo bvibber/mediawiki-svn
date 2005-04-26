@@ -120,8 +120,8 @@ function setupCatRSSExtension() {
 				return false;
 			}
 
-			$timekey = "$wgDBname:catfeed:timestamp";
-			$key = "$wgDBname:catfeed:$this->mTitle->getDBKey():$this->mFeedFormat:limit:$limit";
+			$timekey = "$wgDBname:catfeed:" . $this->mTitle->getDBKey() . ":timestamp";
+			$key = "$wgDBname:catfeed:" . $this->mTitle->getDBKey() . ":$this->mFeedFormat:limit:$limit";
 
 			$feedTitle = $this->mTitle->getPrefixedText() . ' - ' . $wgSitename;
 			$feed = new $wgFeedClasses[$this->mFeedFormat](
@@ -155,15 +155,15 @@ function setupCatRSSExtension() {
 					$feed->httpHeaders();
 					echo $cachedFeed;
 				} else {
-				wfDebug( "CatFeed: rendering new feed and caching it\n" );
-				ob_start();
-				$this->catDoOutputFeed( $rows, $feed );
-				$cachedFeed = ob_get_contents();
-				ob_end_flush();
+					wfDebug( "CatFeed: rendering new feed and caching it\n" );
+					ob_start();
+					$this->catDoOutputFeed( $rows, $feed );
+					$cachedFeed = ob_get_contents();
+					ob_end_flush();
 
-				$expire = 3600 * 24; # One day
-				$messageMemc->set( $key, $cachedFeed );
-				$messageMemc->set( $timekey, wfTimestamp( TS_MW ), $expire );
+					$expire = 3600 * 24; # One day
+					$messageMemc->set( $key, $cachedFeed );
+					$messageMemc->set( $timekey, wfTimestamp( TS_MW ), $expire );
 				}
 				return true;
 		}
