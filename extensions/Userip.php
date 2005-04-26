@@ -64,7 +64,6 @@ function wfUserip() {
 				$sql = "SELECT rc_ip,rc_timestamp FROM $recentchanges
 					WHERE rc_user_text = " . $dbr->addQuotes( $username ) .
 					"AND rc_ip != '' GROUP BY rc_ip";
-#					"AND rc_ip != ''";
 
 				$res = $dbr->query( $sql, 'wfUserip' );
 
@@ -72,7 +71,6 @@ function wfUserip() {
 					$skin = $wgUser->getSkin();
 					
 					$wgOut->addHTML( '<hr /><ul>' );
-					#$wgOut->addHTML( User::idFromName( $username ) );
 					while ( $row = $dbr->fetchObject( $res ) ) {
 						$time = $wgLang->timeanddate( $row->rc_timestamp );
 						$link = $skin->makeKnownLinkObj(
