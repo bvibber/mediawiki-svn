@@ -5,40 +5,42 @@
  * whttp_entity: HTTP entity handling.
  */
 
-/*
- * How does this work?
- *
- * Each HTTP request can be divided into two entities: the request and the response.
- * The client sends the request, i.e. the headers and possibly a body, to the server,
- * which considers it and sends a reply.
- *
- * Internally, we read the request headers and ignore the body [entity_read_headers].  
- * We then examine the headers [whttp:client_read_done] and decide if it has a body.
- * We modify the entry slightly, and send it to the backend with either no source or,
- * if it had a body, the client's FDE as the source [entity_send].  We then wait for
- * the server to reply with its header.  When it does [whttp:backend_headers_done], 
- * we send the request to the client, using the backend's FDE as the body, if it has 
- * one, and close it.
- *
- * See "Entity sending" below for a detailed description of how entity sending works.
- *
- * TODO: We don't have to buffer the headers, _but_ it makes things easier for now and
- * doesn't cost much.  if we start not buffering we need to decide what to do when the
- * client goes away unexpectedly.  probably it's easiest to just drop the backend
- * connection (this is wasteful of backends but we don't cache them at the moment
- * anyway).  what do we do when the client sends "Foo: bar\r\n  baz\r\n" and we decide
- * after baz that we shouldn't send that header after all? 
- *
- * There is a trade-off in some places between excessive copying and excessive syscalls.
- * In some cases we copy data (headers) when we could undo the parser mangling and send
- * them as-is.  IMO this is not likely to be a worthwhile optimisation, needs profiling.
- *
+/* How does this work?
+ * 
+ * Each HTTP request can be divided into two entities: the request and the
+ * response.  The client sends the request, i.e. the headers and possibly
+ * a body, to the server, which considers it and sends a reply.
+ * 
+ * Internally, we read the request headers and ignore the
+ * body [entity_read_headers].  We then examine the headers
+ * [whttp:client_read_done] and decide if it has a body.  We modify
+ * the entry slightly, and send it to the backend with either no source
+ * or, if it had a body, the client's FDE as the source [entity_send].
+ * We then wait for the server to reply with its header.  When it does
+ * [whttp:backend_headers_done], we send the request to the client, using
+ * the backend's FDE as the body, if it has one, and close it.
+ * 
+ * See "Entity sending" below for a detailed description of how entity
+ * sending works.
+ * 
+ * TODO: We don't have to buffer the headers, _but_ it makes things easier
+ * for now and doesn't cost much.  if we start not buffering we need to
+ * decide what to do when the client goes away unexpectedly.  probably it's
+ * easiest to just drop the backend connection (this is wasteful of backends
+ * but we don't cache them at the moment anyway).  what do we do when the
+ * client sends "Foo: bar\r\n  baz\r\n" and we decide after baz that we
+ * shouldn't send that header after all?
+ * 
+ * There is a trade-off in some places between excessive copying and
+ * excessive syscalls.  In some cases we copy data (headers) when we could
+ * undo the parser mangling and send them as-is.  IMO this is not likely
+ * to be a worthwhile optimisation, needs profiling.
+ * 
  * As for FDE backending, Unix sucks:
- *
- *    The sendfile() function copies data  from  in_fd  to  out_fd
- *    starting  at  offset  off and of length len bytes. The in_fd
- *    argument should be a  file  descriptor  to  a  regular  file
- *    opened for reading.
+ * 
+ *    The sendfile() function copies data  from  in_fd  to  out_fd starting
+ *    at  offset  off and of length len bytes. The in_fd argument should
+ *    be a  file  descriptor  to  a  regular  file opened for reading.
  */
  
 #include <unistd.h>
@@ -133,8 +135,8 @@ struct	http_entity	*entity = fde->fde_rdata;
 }
 
 /*
- * I don't like this.  There should be an easier/faster way to do it, but this is
- * the most understandable form for me...
+ * I don't like this.  There should be an easier/faster way to do it, but this
+ * is  the most understandable form for me...
  *
  * TODO: handle headers of the form "Name: value\r\n  more value\r\n".
  * 
@@ -252,13 +254,15 @@ parse_headers(entity)
 			}
 		case ENTITY_STATE_DONE:
 			/*
-			 * We're done parsing headers on this client, but they sent
-			 * more data.  Shouldn't ever happen, but kill them if it does.
+			 * We're done parsing headers on this client, but they
+			 * sent more data.  Shouldn't ever happen, but kill
+			 * them if it does.
 			 */
 			return -1;
 		default:
-			abort(); /* ??? This should be handled above for consistency
-				  * (ENTITY_STATE_BODY) but i don't know which is correct.
+			abort(); /* ??? This should be handled above for
+				  * consistency (ENTITY_STATE_BODY) but i
+				  * don't know which is correct.
 				  */
 		}
 		readbuf_inc_data_pos(&entity->he_source.fde->fde_readbuf, 1);
@@ -423,21 +427,23 @@ header_build(head)
  *   BUF BODY -> entity_send_from_buf
  *
  * entity_send_start_proxy:
- *   registers a read callback for the source FDE with entity_send_source_read as
- *   the callback.  entity_send_source_read reads the available data, then writes
- *   it with entity_send_source_write as the callback.  _write CALLS SOURCE_READ
- *   AGAIN.  this is important because otherwise we run into bad interactions with
- *   the edge-triggered wnet [? i don't think this is actually true but it's what
- *   the old code did and it's simpler than registering in two places].  
- *   source_read handles EAGAIN and wnet_register itself.
+ *   registers a read callback for the source FDE with entity_send_source_read
+ *   as the callback.  entity_send_source_read reads the available data,  then
+ *   writes it with entity_send_source_write as the callback.  _write CALLS
+ *   SOURCE_READ AGAIN.  this is important because otherwise we run into bad
+ *   interactions with the edge-triggered wnet [? i don't think this is
+ *   actually true but it's what the old code did and it's simpler than
+ *   registering in two places].  source_read handles EAGAIN and wnet_register
+ *   itself.
  *       
  * entity_send_from_buf:
  *   calls wnet_write on the buffer with entity_send_buf_done as the callback.
  *   entity_send_buf_done calls the user's callback and returns.
  *
- * WARNING: if wnet_write completes immediately, i.e. does not block, it will call
- * your callback before it returns.  after this, the entity may no longer exist.
- * wnet_write should generally be the last thing a function does before it returns.
+ * WARNING: if wnet_write completes immediately, i.e. does not block, it will
+ * call your callback before it returns.  after this, the entity may no longer
+ * exist.  wnet_write should generally be the last thing a function does
+ * before it returns.
  */
 
 void
@@ -513,10 +519,10 @@ struct	http_entity	*entity = data;
 	
 	/* FDE backended write */
 	/*
-	 * fde_read reads some amount of data (not necessarily all of it), and then calls
-	 * wnet_write to write it.  it then unregisters the fd as readable.
-	 * when wnet_write completes and calls fde_write_done, it registers the fd as
-	 * readable again..
+	 * fde_read reads some amount of data (not necessarily all of it), and
+	 * then calls * wnet_write to write it.  it then unregisters the fd as
+	 * readable.  * when wnet_write completes and calls fde_write_done, it
+	 * registers the fd as readable again..
 	 */ 
 	DEBUG((WLOG_DEBUG, "entity_send_headers_done: source is FDE"));
 	wnet_register(entity->he_source.fde->fde_fd, FDE_READ, entity_send_fde_read, entity);
