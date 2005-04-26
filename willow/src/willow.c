@@ -16,6 +16,7 @@
 #include "wconfig.h"
 #include "willow.h"
 #include "whttp.h"
+#include "wcache.h"
 
 /*ARGSUSED*/
 static void 
@@ -26,14 +27,18 @@ sig_exit(s)
 	exit(0);
 }
 
-int main(argc, argv)
+int 
+main(argc, argv)
 	char *argv[];
 	int argc;
 {
 	int	i;
-
-	while ((i = getopt(argc, argv, "f")) != -1) {
+	int	zflag = 0;
+	
+	while ((i = getopt(argc, argv, "fz")) != -1) {
 		switch (i) {
+			case 'z':
+				zflag++;
 			case 'f':
 				config.foreground = 1;
 				break;
@@ -49,8 +54,12 @@ int main(argc, argv)
 
 	wconfig_init(NULL);
 	wlog_init();
-	wlog(WLOG_NOTICE, "startup");
-	
+	if (zflag) {
+		wcache_setupfs();
+		exit(0);
+	}
+	wcache_init();
+		
 	/*
 	 * HTTP should be initialised before the network so that
 	 * the wlogwriter exits cleanly.

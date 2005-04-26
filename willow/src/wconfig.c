@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <syslog.h>
+#include <errno.h>
 
 #include "wconfig.h"
 #include "wbackend.h"
@@ -33,6 +34,7 @@ static int current_line;
 static void add_listener(char *);
 static void add_cachedir(char *);
 static void add_log_options(char *);
+static long strtosize(const char *);
 
 static char *skip(char **);
 
@@ -53,17 +55,41 @@ skip(s)
 	return r;
 }
 
+long
+strtosize(s)
+	const char *s;
+{
+	char	*end;
+	long	 r;
+	
+	errno = 0;
+	if ((r = strtol(s, &end, 0)) == -1 && errno == ERANGE)
+		return -1;
+	if (r < 0)
+		return -1;
+	if (*end == '\0')
+		return r;
+	switch (*end++) {
+	case 'K': r *= 1024; break;
+	case 'M': r *= 1024*1024; break;
+	case 'G': r *= 1024*1024*1024; break;
+	default: return -1;
+	}
+	if (*end != '\0')
+		return -1;
+	return r;
+}
+
 void
 wconfig_init(const char *file)
 {
 	char	 line[1024];
 	FILE	*cfg;
 	
-	current_file = file;
-
 	if (file == NULL)
 		file = CONFIGFILE;
-	
+	current_file = file;
+
 	if ((cfg = fopen(file, "r")) == NULL) {
 		perror(file);
 		exit(8);
@@ -196,7 +222,31 @@ static void
 add_cachedir(line)
 	char *line;
 {
-	fprintf(stderr, "add cache_dir: %s\n", line);
+	int	 size;
+	char	*dir, *sizes;
+	
+	dir = skip(&line);
+	sizes = skip(&line);
+	if (!*dir) {
+		fprintf(stderr, "%s:%d: must specify directory\n", current_file, current_line);
+		exit(8);
+	}
+	if (!*sizes) {
+		fprintf(stderr, "%s:%d: must specify size\n", current_file, current_line);
+		exit(8);
+	}
+	if ((size = strtosize(sizes)) == -1) {
+		fprintf(stderr, "%s:%d: invalid cache size \"%s\"\n", current_file, current_line, sizes);
+		exit(8);
+	}
+	
+	config.caches = realloc(config.caches, config.ncaches + 1);
+	config.caches[config.ncaches].dir = strdup(dir);
+	config.caches[config.ncaches].maxsize = size;
+	wlog(WLOG_NOTICE, "add cache dir %s, size %d bytes",
+			config.caches[config.ncaches].dir,
+			config.caches[config.ncaches].maxsize);
+	config.ncaches++;
 }
 
 static void

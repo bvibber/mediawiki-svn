@@ -7,6 +7,7 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/sendfile.h>
 
 #include <arpa/inet.h>
 
@@ -27,8 +28,13 @@
 #define RDBUF_INC	8192	/* buffer in 8 KiB incrs		*/
 
 struct wrtbuf {
+	/* for buffers only */
 const	void	*wb_buf;
-	int	 wb_size;
+	/* for sendfile only */
+	off_t	 wb_off;
+	int	 wb_source;
+	/* for buffers & sendfile */
+	size_t	 wb_size;
 	int	 wb_done;
 	fdwcb	 wb_func;
 	void	*wb_udata;
@@ -40,6 +46,7 @@ time_t current_time;
 
 static void wnet_accept(struct fde *);
 static void wnet_write_do(struct fde *);
+static void wnet_sendfile_do(struct fde *);
 
 static void readbuf_free(struct readbuf *);
 static void readbuf_reset(struct readbuf *);
@@ -175,6 +182,37 @@ struct	fde	*e = &fde_table[fd];
 }
 
 void
+wnet_sendfile(fd, source, size, off, cb, data)
+	int fd, source;
+	size_t size;
+	off_t off;
+	fdwcb cb;
+	void *data;
+{
+struct	wrtbuf	*wb;
+struct	fde	*e = &fde_table[fd];
+
+	DEBUG((WLOG_DEBUG, "wnet_sendfile: %d (+%d) bytes from %d to %d [%s]", size, off, source, fd, e->fde_desc));
+	
+	if ((wb = wmalloc(sizeof(*wb))) == NULL) {
+		fputs("out of memory\n", stderr);
+		abort();
+	}
+	
+	memset(wb, 0, sizeof(*wb));
+	wb->wb_done = 0;
+	wb->wb_func = cb;
+	wb->wb_udata = data;
+	wb->wb_size = size;
+	wb->wb_source = source;
+	wb->wb_off = off;
+	
+	e->fde_wdata = wb;
+	wnet_register(e->fde_fd, FDE_WRITE, wnet_sendfile_do, e);
+	wnet_sendfile_do(e);
+}
+
+void
 wnet_write(fd, buf, bufsz, cb, data)
 	int fd;
 	const void *buf;
@@ -199,6 +237,8 @@ struct	fde	*e = &fde_table[fd];
 	wb->wb_udata = data;
 
 	e->fde_wdata = wb;
+
+	wnet_register(e->fde_fd, FDE_WRITE, wnet_sendfile_do, e);
 	wnet_write_do(e);
 }
 
@@ -223,6 +263,32 @@ struct	wrtbuf	*buf;
 	if (errno == EWOULDBLOCK) 
 		return;
 			
+	wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
+	buf->wb_func(e, buf->wb_udata, -1);
+	wfree(buf);
+}
+
+static void
+wnet_sendfile_do(e)
+	struct fde *e;
+{
+struct	wrtbuf *buf;
+	int	i;
+	
+	buf = e->fde_wdata;
+	while ((i = sendfile(e->fde_fd, buf->wb_source, &buf->wb_off, buf->wb_size)) > -1) {
+		buf->wb_size -= i;
+		if (buf->wb_size == 0) {
+			wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
+			buf->wb_func(e, buf->wb_udata, 0);
+			wfree(buf);
+			return;
+		}
+	}
+	
+	if (errno == EWOULDBLOCK)
+		return;
+	
 	wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
 	buf->wb_func(e, buf->wb_udata, -1);
 	wfree(buf);

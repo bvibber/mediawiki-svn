@@ -20,9 +20,16 @@ struct	sockaddr_in	addr;
 extern int nlisteners;
 extern struct listener **listeners;
 
+struct cachedir {
+	char	*dir;
+	size_t	 maxsize;
+};
+
 extern struct configuration {
-	int	 foreground;
-const	char	*access_log;
+	int		 foreground;
+const	char		*access_log;
+struct	cachedir	*caches;
+	int		 ncaches;
 } config;
 
 void wconfig_init(const char *);

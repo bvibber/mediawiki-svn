@@ -82,13 +82,14 @@ wnet_run(void)
 
 void
 wnet_register(fd, what, handler, data)
+	int fd, what;
 	fdcb handler;
 	void *data;
 {
 struct	fde		*e = &fde_table[fd];
 	int		 flags = e->fde_epflags, mod = flags;
 
-	assert(fd < MAX_FD);
+	assert(fd < max_fd);
 
 	if (handler == NULL) {
 		e->fde_epflags = 0;

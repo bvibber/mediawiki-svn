@@ -1,4 +1,4 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 
 SUBDIRS = src
-nobase_data_DATA = errors/ERR_GENERAL errors/ERR_BADREQUEST errors/ERR_BADRESPONSE
+nobase_data_DATA = errors/ERR_GENERAL errors/ERR_BADREQUEST errors/ERR_BADRESPONSE errors/ERR_CACHE_IO

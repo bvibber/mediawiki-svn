@@ -8,6 +8,8 @@
 #ifndef WLOG_H
 #define WLOG_H
 
+#include "config.h"
+
 #define WLOG_DEBUG 0
 #define WLOG_NOTICE 1
 #define WLOG_WARNING 2

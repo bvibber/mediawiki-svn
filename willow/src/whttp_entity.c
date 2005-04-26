@@ -75,6 +75,7 @@ static void entity_send_headers_done(struct fde *, void *, int);
 static void entity_send_fde_write_done(struct fde *, void *, int);
 static void entity_send_buf_done(struct fde *, void *, int);
 static void entity_send_fde_read(struct fde *);
+static void entity_send_file_done(struct fde *, void *, int);
 
 void
 entity_read_headers(entity, func, udata)
@@ -352,6 +353,8 @@ struct	header_list	*next = head->hl_next;
 	while (next) {
 		struct header_list *this = next;
 		next = this->hl_next;
+		if (head->hl_flags & HDR_ALLOCED)
+			wfree((char *)this->hl_name);
 		wfree(this);
 	}
 
@@ -404,6 +407,7 @@ header_build(head)
 
 	bufsz = head->hl_len + 2;
 	buf = wmalloc(bufsz + 1);
+	*buf = '\0';
 	while (head->hl_next) {
 		head = head->hl_next;
 		buflen += sprintf(buf + buflen, "%s: %s\r\n", head->hl_name, head->hl_value);
@@ -411,6 +415,77 @@ header_build(head)
 	strcat(buf, "\r\n");
 
 	return buf;
+}
+
+void
+header_dump(head, fd)
+	struct header_list *head;
+	int fd;
+{
+	int i = 0;
+struct	header_list	*h;
+
+	h = head->hl_next;
+	while (h) {
+		h = h->hl_next;
+		++i;
+	}
+	
+	write(fd, &i, sizeof(i));	
+	
+	while (head->hl_next) {
+		int i, j;
+		head = head->hl_next;
+		i = strlen(head->hl_name);
+		write(fd, &i, sizeof(i));
+		j = strlen(head->hl_value);
+		write(fd, &j, sizeof(j));
+		write(fd, head->hl_name, i);
+		write(fd, head->hl_value, j);
+	}
+}
+
+void
+header_undump(head, fd, len)
+	struct header_list *head;
+	int fd;
+	off_t *len;
+{
+	int		 i, j, n;
+struct	header_list	*it = head;
+
+	*len = 0;
+	memset(head, 0, sizeof(*head));
+	head->hl_flags |= HDR_ALLOCED;
+	*len += read(fd, &n, sizeof(n));
+	DEBUG((WLOG_DEBUG, "header_undump: %d entries", n));
+	
+	while (n--) {
+		char *n, *v, *s;
+		int k;
+		
+		it->hl_next = wmalloc(sizeof(struct header_list));
+		it = it->hl_next;
+		*len += read(fd, &i, sizeof(i));	
+		*len += read(fd, &j, sizeof(j));
+		DEBUG((WLOG_DEBUG, "header_undump: i=%d j=%d", i, j));
+		n = wmalloc(i + j + 2);
+		i = read(fd, n, i);
+		*len += i;
+		s = n + i;
+		*s++ = '\0';
+		v = s;
+		k = read(fd, s, j);
+		*len += k;
+		s += k;
+		*s = '\0';
+		it->hl_name = n;
+		it->hl_value = v;
+		head->hl_len += i + j + 4;
+	}
+	
+	head->hl_tail = it;
+	
 }
 
 /*
@@ -517,11 +592,19 @@ struct	http_entity	*entity = data;
 		return;
 	}
 	
+	if (entity->he_source_type == ENT_SOURCE_FILE) {
+		/* write file */
+		wnet_sendfile(fde->fde_fd, entity->he_source.fd.fd, 
+				entity->he_source.fd.size - entity->he_source.fd.off,
+				entity->he_source.fd.off, entity_send_file_done, entity);
+		return;
+	}
+	
 	/* FDE backended write */
 	/*
 	 * fde_read reads some amount of data (not necessarily all of it), and
-	 * then calls * wnet_write to write it.  it then unregisters the fd as
-	 * readable.  * when wnet_write completes and calls fde_write_done, it
+	 * then calls wnet_write to write it.  it then unregisters the fd as
+	 * readable. when wnet_write completes and calls fde_write_done, it
 	 * registers the fd as readable again..
 	 */ 
 	DEBUG((WLOG_DEBUG, "entity_send_headers_done: source is FDE"));
@@ -537,7 +620,7 @@ struct	http_entity	*entity = fde->fde_rdata;
 	
 	DEBUG((WLOG_DEBUG, "entity_send_fde_read: called for %d [%s]", fde->fde_fd, fde->fde_desc));
 	DEBUG((WLOG_DEBUG, "entity_send_fde_read: %d bytes left in readbuf",
-			READBUF_DATA_LEFT(&entity->_he_readbuf)));
+			readbuf_data_left(&entity->he_source.fde->fde_readbuf)));
 
 	if (readbuf_data_left(&entity->he_source.fde->fde_readbuf) == 0) {
 		len = readbuf_getdata(fde);
@@ -560,6 +643,12 @@ struct	http_entity	*entity = fde->fde_rdata;
 		
 		entity->_he_func(entity, entity->_he_cbdata, -1);
 		return;
+	}
+	
+	if (entity->he_cache_callback) {
+		entity->he_cache_callback(readbuf_cur_pos(&entity->he_source.fde->fde_readbuf),
+				readbuf_data_left(&entity->he_source.fde->fde_readbuf),
+				entity->he_cache_callback_data);
 	}
 	
 	wnet_write(entity->_he_target->fde_fd, readbuf_cur_pos(&entity->he_source.fde->fde_readbuf),
@@ -590,3 +679,16 @@ struct	http_entity	*entity = data;
 	entity->_he_func(entity, entity->_he_cbdata, res);
 	return;
 }
+
+static void
+entity_send_file_done(fde, data, res)
+	struct fde *fde;
+	void *data;
+	int res;
+{
+struct	http_entity	*entity = data;
+
+	DEBUG((WLOG_DEBUG, "entity_send_file_done: called for %d [%s], res=%d", fde->fde_fd, fde->fde_desc, res));
+	entity->_he_func(entity, entity->_he_cbdata, res);
+	return;
+}	
