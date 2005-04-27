@@ -1,0 +1,19 @@
+# @(#) $Header$
+#
+# Install data files.
+
+@include@ @q@@top_srcdir@/mk/vars.mk@q@
+
+all clean depend:
+
+_DEST=$(_DATADIR)/$(DATADIR)
+
+install:
+	@echo "	$(_MKDIR) $(_DEST)"
+	@$(_MKDIR) $(_DEST)
+	@for file in $(DATAFILES); do \
+		echo "	$(_INSTALLDATA) $$file $(_DEST)" ;\
+		$(_INSTALLDATA) $$file $(_DEST) ;\
+	done
+	
+		

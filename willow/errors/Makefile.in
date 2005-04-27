@@ -1,0 +1,12 @@
+# @(#) $Header$
+# 
+# Error messages.
+
+DATADIR=errors
+DATAFILES=\
+	ERR_BADREQUEST	\
+	ERR_BADRESPONSE	\
+	ERR_CACHE_IO	\
+	ERR_GENERAL
+
+@include@ @q@@top_srcdir@/mk/data.mk@q@

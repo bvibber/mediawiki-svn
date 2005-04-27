@@ -1,0 +1,18 @@
+PROGRAM = willow
+
+selectsrc=wnet_@SELECTTYPE@.c
+
+CPPFLAGS = -DDATADIR=\"$(_DATADIR)\"
+SRCS = willow.c wlog.c wconfig.c wnet.c whttp.c wbackend.c wlogwriter.c \
+	whttp_entity.c wcache.c ${selectsrc}
+OBJADD = @LIBOBJS@
+
+EXTRA_DIST=wnet_poll.c wnet_ports.c wnet_kqueue.c wnet_epoll.c wnet_devpoll.c \
+	wlog.h wconfig.h wnet.h whttp.h wbackend.h willow.h
+
+LDFLAGS = $(LIBOBJS)
+
+lint: Makefile
+	lint -Ncheck=%all -Nlevel=3 -XCC=yes -lsocket -lnsl $(CPPFLAGS) -I $(top_srcdir) ${SOURCES}
+
+@include@ @q@@top_srcdir@/mk/prog.mk@q@

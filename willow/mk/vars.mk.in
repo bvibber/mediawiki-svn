@@ -1,0 +1,19 @@
+# @(#) $Header$
+# 
+# Standard variables.
+
+CC=		@CC@
+_CPPFLAGS=	-I@top_srcdir@ -I. @CPPFLAGS@
+_CFLAGS=	@CFLAGS@
+_LDFLAGS=	@LDFLAGS@ @LIBS@
+
+_LINK=$(CC) $(_CFLAGS) $(CFLAGS) $(_LDFLAGS) $(LDFLAG) $(OBJS)
+_COMPILE=$(CC) $(_CPPFLAGS) $(CPPFLAGS) $(_CFLAGS) $(CFLAGS)
+_RMF=rm -f
+_INSTALL=@INSTALL@
+_INSTALLPROG=$(_INSTALL) -m 0755
+_INSTALLDATA=$(_INSTALL) -m 0644
+_MKDIR=$(_INSTALL) -m 0755 -d
+
+_BINDIR=@prefix@@bindir@
+_DATADIR=@prefix@@datadir@

@@ -1,0 +1,12 @@
+# @(#) $Header$
+#
+# make depend: cc -M / -xM 
+
+depend: $(SRCS)
+	@echo "	creating dependencies..."
+	@mv Makefile Makefile.depend
+	@sed -e '/#DO NOT DELETE/,$$d' <Makefile.depend >Makefile
+	@echo "#DO NOT DELETE -- make depend needs it" >>Makefile
+	@@CC@ $(_CPPFLAGS) $(CPPFLAGS) @dashMflag@ $(SRCS) >>Makefile 2>/dev/null
+	@rm -f Makefile.depend
+

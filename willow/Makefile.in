@@ -1,0 +1,7 @@
+# @(#) $Header$
+#
+# Top-level makefile.
+
+SUBDIRS=src errors
+
+@include@ @q@@top_srcdir@/mk/subdir.mk@q@

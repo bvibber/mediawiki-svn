@@ -1,0 +1,9 @@
+# @(#) $Header$
+#
+# General build rules.
+
+@include@ @q@@top_srcdir@/mk/vars.mk@q@
+
+.c.o:
+	@echo "	$(_COMPILE) -c $<"
+	@$(_COMPILE) -c $<

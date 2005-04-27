@@ -1,0 +1,34 @@
+# @(#) $Header$
+#
+# Build a program.
+
+@include@ @q@@top_srcdir@/mk/vars.mk@q@
+@include@ @q@@top_srcdir@/mk/rules.mk@q@
+
+default: all
+
+_PROGRAM=@exec_prefix@$(PROGRAM)
+
+all: $(_PROGRAM)
+
+OBJS=$(SRCS:.c=.o) $(OBJADD)
+
+$(_PROGRAM): $(OBJS)
+	@echo "	$(_LINK) -o $@"
+	@$(_LINK) -o $@
+	
+clean:
+	@echo "	$(_RMF) $(_PROGRAM) $(OBJS)
+	@$(_RMF) $(_PROGRAM) $(OBJS)
+
+install:
+	@echo "	$(_MKDIR) $(_BINDIR)"
+	@$(_MKDIR) $(_BINDIR)
+	@echo "	$(_INSTALLPROG) $(_PROGRAM) $(_BINDIR)"
+	@$(_INSTALLPROG) $(_PROGRAM) $(_BINDIR)
+
+# Magical Solaris make flag causes dependencies to be handled
+# automatically
+#.KEEP_STATE:
+
+@include@ @q@@top_srcdir@/mk/depend.@dependstyle@.mk@q@
