@@ -41,18 +41,11 @@ struct	header_list	*hl_tail;
 	int		 hl_flags;
 };
 
-struct request_type {
+extern struct request_type {
 	const char *name;
 	int len;
 	int type;
-} supported_reqtypes[] = {
-	{ "GET",	3,	REQTYPE_GET	},
-	{ "POST",	4,	REQTYPE_POST	},
-	{ "HEAD",	4,	REQTYPE_HEAD	},
-	{ "TRACE",	5,	REQTYPE_TRACE	},
-	{ "OPTIONS",	7,	REQTYPE_OPTIONS	},
-	{ NULL,		0,	REQTYPE_INVALID }
-};
+} supported_reqtypes[];
 
 struct http_entity {
 	union {
@@ -115,8 +108,8 @@ struct	fde		*_he_target;
 };
 
 void entity_read_headers(struct http_entity *, header_cb, void *);
-
 void entity_send(struct fde *, struct http_entity *, header_cb, void *);
+void entity_free(struct http_entity *);
 
 void header_add(struct header_list *, const char *, const char *);
 void header_free(struct header_list *);

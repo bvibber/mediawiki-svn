@@ -124,6 +124,7 @@ struct	stat		 sb;
 	for (cd = config.caches; cd < config.caches + config.ncaches; ++cd) {
 		char *dir;
 		
+		fprintf(stderr, "pass\n");
 		dir = wmalloc(strlen(cd->dir) + 9);
 		sprintf(dir, "%s/__env__", cd->dir);
 		
@@ -285,9 +286,12 @@ void
 wcache_free_object(obj)
 	struct cache_object *obj;
 {
-	if (obj->co_flags & WCACHE_FREE)
+	if (obj->co_flags & WCACHE_FREE) {
 		wfree(obj->co_path);
-	wfree(obj);
+		wfree(obj);
+	} else {
+		free(obj);
+	}
 }
 
 static void
@@ -371,7 +375,7 @@ struct	cache_object	*ret;
 	ret->co_id = cache_next_id();
 	
 	ret->co_plen = (log10(ret->co_id) + 1) + 6;
-	ret->co_path = wmalloc(ret->co_plen) + 1;
+	ret->co_path = wmalloc(ret->co_plen + 1);
 	p = ret->co_path;
 	sprintf(a, "%d", ret->co_id);
 	s = a + strlen(a) - 1;

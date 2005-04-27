@@ -48,7 +48,7 @@ wnet_run(void)
 
 	for (;;) {
 		dvp.dp_fds = pollfds;
-		dvp.dp_nfds = 1;
+		dvp.dp_nfds = GETN;
 		dvp.dp_timeout = -1;
 
 		if ((n = ioctl(polldev, DP_POLL, &dvp)) < 0)
@@ -58,7 +58,6 @@ wnet_run(void)
 
 		for (i = 0; i < n; ++i) {
 			struct fde *e = &fde_table[pollfds[i].fd];
-			assert(pollfds[i].fd < MAX_FD);
 
 			if ((pollfds[i].revents & POLLRDNORM) && e->fde_read_handler) {
 				e->fde_read_handler(e);
@@ -79,15 +78,14 @@ wnet_register(fd, what, handler, data)
 struct	fde		*e = &fde_table[fd];
 struct	pollfd		 pfd;
 
-	assert(fd < MAX_FD);
-
 	memset(&pfd, 0, sizeof(pfd));
 	pfd.fd = fd;
+	
 	/*
 	 * Always remove it first, or we just make a no-op when trying to remove flags.
 	 */
 	pfd.events = POLLREMOVE;
-	if (write(polldev, &pfd, sizeof(pfd)) < 0) {
+	if (e->fde_epflags && write(polldev, &pfd, sizeof(pfd)) < 0) {
 		perror("/dev/poll");
 		exit(8);
 	}

@@ -82,6 +82,16 @@ static void entity_send_file_done(struct fde *, void *, int);
 static void *thr_sendfile(void *);
 
 void
+entity_free(entity)
+	struct http_entity *entity;
+{
+	if (!entity->he_flags.response)
+		if (entity->he_rdata.request.path)
+			wfree(entity->he_rdata.request.path);
+	header_free(&entity->he_headers);
+}
+
+void
 entity_read_headers(entity, func, udata)
 	struct http_entity *entity;
 	header_cb func;
@@ -115,7 +125,7 @@ struct	http_entity	*entity = fde->fde_rdata;
 			DEBUG((WLOG_DEBUG, "entity_read_callback: readbuf_getdata returned 0"));
 			wnet_register(entity->he_source.fde->fde_fd, FDE_READ, NULL, NULL);
 			entity->he_flags.error = 1;
-			entity->_he_func(entity, entity->_he_cbdata, 0);
+			entity->_he_func(entity, entity->_he_cbdata, -1);
 			return;
 		}
 	}
@@ -318,10 +328,10 @@ parse_reqtype(entity)
 	*p++ = '\0';
 
 	for (i = 0; supported_reqtypes[i].name; i++)
-		if (!strcmp(request, supported.reqtypes[i].name))
+		if (!strcmp(request, supported_reqtypes[i].name))
 			break;
 
-	entity->he_rdata.request.reqtype = supported.reqtypes[i].type;
+	entity->he_rdata.request.reqtype = supported_reqtypes[i].type;
 	if (entity->he_rdata.request.reqtype == REQTYPE_INVALID)
 		return -1;
 
@@ -331,7 +341,7 @@ parse_reqtype(entity)
 
 	*s++ = '\0';
 	
-	entity->he_rdata.request.path = strdup(p);
+	entity->he_rdata.request.path = wstrdup(p);
 
 	/* HTTP/1.0 */
 	/*
@@ -352,7 +362,7 @@ struct	header_list	*next = head->hl_next;
 	while (next) {
 		struct header_list *this = next;
 		next = this->hl_next;
-		if (head->hl_flags & HDR_ALLOCED)
+		if (this->hl_flags & HDR_ALLOCED)
 			wfree((char *)this->hl_name);
 		wfree(this);
 	}
@@ -379,6 +389,7 @@ struct	header_list	*new = head;
 	new->hl_name = name;
 	new->hl_value = value;
 	new->hl_next = new->hl_tail = NULL;
+	new->hl_flags = 0;
 }
 
 void
@@ -464,6 +475,7 @@ struct	header_list	*it = head;
 		int k;
 		
 		it->hl_next = wmalloc(sizeof(struct header_list));
+		memset(it->hl_next, 0, sizeof(*it->hl_next));
 		it = it->hl_next;
 		*len += read(fd, &i, sizeof(i));	
 		*len += read(fd, &j, sizeof(j));
@@ -480,6 +492,7 @@ struct	header_list	*it = head;
 		*s = '\0';
 		it->hl_name = n;
 		it->hl_value = v;
+		it->hl_flags = HDR_ALLOCED;
 		head->hl_len += i + j + 4;
 	}
 	

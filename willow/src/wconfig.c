@@ -18,6 +18,7 @@
 #include <syslog.h>
 #include <errno.h>
 
+#include "willow.h"
 #include "wconfig.h"
 #include "wbackend.h"
 #include "wlog.h"
@@ -153,7 +154,7 @@ wconfig_init(const char *file)
 						file, current_line);
 				exit(8);
 			}
-			config.access_log = strdup(s);
+			config.access_log = wstrdup(s);
 		} else {
 			fprintf(stderr, "%s:%d: unknown configuration option \"%s\"\n",
 				file, current_line, opt);
@@ -213,7 +214,7 @@ struct	listener	*nl;
 		nl->port = atoi(port);
 	} else
 		nl->port = 80;
-	nl->name = strdup(host);
+	nl->name = wstrdup(host);
 	nl->addr.sin_family = AF_INET;
 	nl->addr.sin_port = htons(nl->port);
 	nl->addr.sin_addr.s_addr = inet_addr(nl->name);
@@ -243,7 +244,7 @@ add_cachedir(line)
 	}
 	
 	config.caches = realloc(config.caches, config.ncaches + 1);
-	config.caches[config.ncaches].dir = strdup(dir);
+	config.caches[config.ncaches].dir = wstrdup(dir);
 	config.caches[config.ncaches].maxsize = size;
 	wlog(WLOG_NOTICE, "add cache dir %s, size %d bytes",
 			config.caches[config.ncaches].dir,

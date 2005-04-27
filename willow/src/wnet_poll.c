@@ -45,6 +45,7 @@ wnet_init_select(void)
 	int	 i;
 
 	pfds = malloc(sizeof(*pfds) * getdtablesize());
+	memset(pfds, 0, sizeof(*pfds) * getdtablesize());
 }
 
 void
@@ -53,19 +54,11 @@ wnet_run(void)
 	int		i, n = 0, pn ;
 
 	for (;;) {
-		for (i = pn = 0; i < highest_fd + 1; ++i) {
-			if (fde_table[i].fde_flags.open) {
-				pfds[pn].fd = fde_table[i].fde_fd;
-				pfds[pn].events = fde_table[i].fde_epflags;
-				++pn;
-			}
-		}
-
-		if ((i = poll(pfds, pn, -1)) == -1)
+		if ((i = poll(pfds, highest_fd + 1, -1)) == -1)
 			break;
 		wnet_set_time();
 
-		for (n = 0; n < pn; ++n) {
+		for (n = 0; n < highest_fd + 1; ++n) {
 			struct fde *e = &fde_table[pfds[n].fd];
 
 			if ((pfds[n].revents & POLLRDNORM) && e->fde_read_handler) {
@@ -90,9 +83,11 @@ struct	fde		*e = &fde_table[fd];
 	int		 flags = e->fde_epflags, mod = flags;
 
 	assert(fd < max_fd);
-
+	
 	if (handler == NULL) {
 		e->fde_epflags = 0;
+		pfds[fd].fd = -1;
+		pfds[fd].events = 0;
 		return;
 	}
 
@@ -106,6 +101,9 @@ struct	fde		*e = &fde_table[fd];
 		e->fde_epflags |= POLLWRNORM;
 	}
 
+	pfds[fd].fd = fd;
+	pfds[fd].events = e->fde_epflags;
+	
 	if (data)
 		e->fde_rdata = data;
 }

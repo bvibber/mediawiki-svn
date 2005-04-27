@@ -61,6 +61,15 @@ const char *request_string[] = {
 	"OPTIONS",
 };
 
+struct request_type supported_reqtypes[] = {
+	{ "GET",	3,	REQTYPE_GET	},
+	{ "POST",	4,	REQTYPE_POST	},
+	{ "HEAD",	4,	REQTYPE_HEAD	},
+	{ "TRACE",	5,	REQTYPE_TRACE	},
+	{ "OPTIONS",	7,	REQTYPE_OPTIONS	},
+	{ NULL,		0,	REQTYPE_INVALID }
+};
+
 struct http_client {
 struct	fde		*cl_fde;	/* backref to fd			*/
 	int		 cl_reqtype;	/* request type or 0			*/
@@ -136,6 +145,13 @@ whttp_init(void)
 	}
 }
 
+void
+whttp_shutdown(void)
+{
+	wfree(cache_hit_hdr);
+	wfree(cache_miss_hdr);
+}
+
 /*
  * Create a new client associated with the FDE 'e'.
  */
@@ -196,9 +212,9 @@ struct	cache_object	*cobj;
 	}
 	
 	if (client->cl_entity.he_rdata.request.host == NULL)
-		client->cl_path = strdup(client->cl_entity.he_rdata.request.path);
+		client->cl_path = wstrdup(client->cl_entity.he_rdata.request.path);
 	else {
-		client->cl_path = malloc(strlen(client->cl_entity.he_rdata.request.host) +
+		client->cl_path = wmalloc(strlen(client->cl_entity.he_rdata.request.host) +
 					strlen(client->cl_entity.he_rdata.request.path)
 					+ 8);
 		sprintf(client->cl_path, "http://%s%s", client->cl_entity.he_rdata.request.host,
@@ -281,6 +297,7 @@ struct	http_client	*client = data;
 		return;
 	}
 	
+	entity_free(&client->cl_entity);
 	memset(&client->cl_entity, 0, sizeof(client->cl_entity));
 	client->cl_entity.he_source_type = ENT_SOURCE_FDE;
 	client->cl_entity.he_source.fde = client->cl_backendfde;
@@ -375,6 +392,9 @@ struct	stat	 sb;
 		return;
 	}
 	
+	wfree(cache_path);
+	
+	entity_free(&client->cl_entity);
 	memset(&client->cl_entity, 0, sizeof(client->cl_entity));
 	header_undump(&client->cl_entity.he_headers, client->cl_cfd, &client->cl_entity.he_source.fd.off);
 	header_add(&client->cl_entity.he_headers, "Via", via_hdr);
@@ -435,6 +455,7 @@ client_close(client)
 	wnet_close(client->cl_fde->fde_fd);
 	if (client->cl_backendfde)
 		wnet_close(client->cl_backendfde->fde_fd);
+	entity_free(&client->cl_entity);
 	wfree(client);
 }
 
@@ -466,7 +487,7 @@ client_send_error(client, errnum, errdata)
 	if (!errdata)
 		errdata = "Unknown error";
 	if (!client->cl_path)
-		client->cl_path = strdup("NONE");
+		client->cl_path = wstrdup("NONE");
 
 	size = strlen(errbuf) + strlen(client->cl_path) + strlen(errdata) + strlen(current_time_str) + strlen(my_version)
 		+ strlen(my_hostname) + 1;

@@ -10,15 +10,17 @@
 
 #include "config.h"
 
-#undef WDEBUG_ALLOC
-
 #ifdef WDEBUG_ALLOC
-void *wmalloc(size_t);
+void *internal_wmalloc(size_t, const char *, int);
 void internal_wfree(void *, const char *, int);
-#define wfree(p) internal_wfree(p, __FILE__, __LINE__)
+char *internal_wstrdup(const char *, const char *, int);
+# define wmalloc(s) internal_wmalloc(s, __FILE__, __LINE__)
+# define wfree(p) internal_wfree(p, __FILE__, __LINE__)
+# define wstrdup(p) internal_wstrdup(p, __FILE__, __LINE__)
 #else
-#define wmalloc malloc
-#define wfree free
+# define wmalloc malloc
+# define wfree free
+# define wstrdup strdup
 #endif
 
 #ifndef HAVE_DAEMON

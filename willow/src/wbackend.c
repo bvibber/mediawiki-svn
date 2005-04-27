@@ -52,7 +52,7 @@ struct	backend	 *nb;
 		nb->be_port = atoi(port);
 	} else
 		nb->be_port = 80;
-	nb->be_name = strdup(host);
+	nb->be_name = wstrdup(host);
 	nb->be_addr.sin_family = AF_INET;
 	nb->be_addr.sin_port = htons(nb->be_port);
 	nb->be_addr.sin_addr.s_addr = inet_addr(nb->be_name);

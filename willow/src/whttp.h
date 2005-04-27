@@ -12,6 +12,8 @@ struct fde;
 
 void http_new(struct fde *);
 void whttp_init(void);
+void whttp_shutdown(void);
+
 extern const char *request_string[];
 
 #endif
