@@ -25,6 +25,8 @@
 static void ae_checkleaks(void);
 #endif
 
+#define min(x,y) ((x) < (y) ? (x) : (y))
+
 /*ARGSUSED*/
 static void 
 sig_exit(s)
@@ -239,5 +241,37 @@ internal_wstrdup(s, file, line)
 	char *ret = internal_wmalloc(strlen(s) + 1, file, line);
 	strcpy(ret, s);
 	return ret;
+}
+
+void *
+internal_wrealloc(p, size, file, line)
+	void *p;
+	const char *file;
+	int line;
+	size_t size;
+{
+	void 		*new;
+struct	alloc_entry	*ae;
+	size_t		 osize = 0;
+		
+	if (!p)
+		return internal_wmalloc(size, file, line);
+	
+	for (ae = allocs.ae_next; ae; ae = ae->ae_next)
+		if (ae->ae_addr == p) {
+			osize = ae->ae_size;
+			break;
+		}
+		
+	if (osize == 0) {
+		fprintf(stderr, "wrealloc: ptr %p never malloced!\n", p);
+		ae_checkleaks();
+		abort();
+	}
+	
+	new = internal_wmalloc(size, file, line);
+	memcpy(new, p, min(osize, size));
+	internal_wfree(p, file, line);
+	return new;
 }
 #endif

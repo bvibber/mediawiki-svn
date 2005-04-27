@@ -44,7 +44,7 @@ wnet_init_select(void)
 {
 	int	 i;
 
-	pfds = malloc(sizeof(*pfds) * getdtablesize());
+	pfds = wmalloc(sizeof(*pfds) * getdtablesize());
 	memset(pfds, 0, sizeof(*pfds) * getdtablesize());
 }
 

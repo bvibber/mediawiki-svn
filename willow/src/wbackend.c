@@ -40,7 +40,7 @@ new_backend(addr)
 	char	*host = addr, *port;
 struct	backend	 *nb;
 
-	if ((nb = malloc(sizeof(*nb))) == NULL) {
+	if ((nb = wmalloc(sizeof(*nb))) == NULL) {
 		fputs("out of memory\n", stderr);
 		abort();
 	}
@@ -64,7 +64,7 @@ void
 add_backend(addr)
 	char *addr;
 {
-	if ((backends = realloc(backends, sizeof(struct backend*) * ++nbackends)) == NULL) {
+	if ((backends = wrealloc(backends, sizeof(struct backend*) * ++nbackends)) == NULL) {
 		fputs("out of memory\n", stderr);
 		abort();
 	}

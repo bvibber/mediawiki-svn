@@ -197,14 +197,14 @@ add_listener(addr)
 struct	listener	*nl;
 	char		*port, *host = addr;
 
-	if ((nl = malloc(sizeof(*nl))) == NULL) {
+	if ((nl = wmalloc(sizeof(*nl))) == NULL) {
 		fputs("out of memory\n", stderr);
 		abort();
 	}
 
 	memset(nl, 0, sizeof(struct listener));
 
-	if ((listeners = realloc(listeners, sizeof(struct listener *) * ++nlisteners)) == NULL) {
+	if ((listeners = wrealloc(listeners, sizeof(struct listener *) * ++nlisteners)) == NULL) {
 		fputs("out of memory\n", stderr);
 		abort();
 	}
@@ -243,7 +243,7 @@ add_cachedir(line)
 		exit(8);
 	}
 	
-	config.caches = realloc(config.caches, config.ncaches + 1);
+	config.caches = wrealloc(config.caches, sizeof(*config.caches) * (config.ncaches + 1));
 	config.caches[config.ncaches].dir = wstrdup(dir);
 	config.caches[config.ncaches].maxsize = size;
 	wlog(WLOG_NOTICE, "add cache dir %s, size %d bytes",
@@ -269,7 +269,7 @@ add_log_options(line)
 				current_file, current_line);
 			exit(8);
 		}
-		logging.file = malloc(strlen(line)+1);
+		logging.file = wmalloc(strlen(line)+1);
 		strcpy(logging.file, line);
 	} else if (!strcmp(option, "syslog")) {
 		struct syslog_facility *fac = syslog_facilities;
