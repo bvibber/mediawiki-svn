@@ -540,20 +540,32 @@ entity_send(fde, entity, cb, data)
 	DEBUG((WLOG_DEBUG, "entity_send: writing to %d [%s]", fde->fde_fd, fde->fde_desc));
 	
 	if (entity->he_flags.response) {
+		struct iovec vec[5];
+		
 		sprintf(status, "%d", entity->he_rdata.response.status);
-		write(fde->fde_fd, "HTTP/1.0 ", 9);
-		write(fde->fde_fd, status, strlen(status));
-		write(fde->fde_fd, " ", 1);
-		write(fde->fde_fd, entity->he_rdata.response.status_str,
-			strlen(entity->he_rdata.response.status_str));
-		write(fde->fde_fd, "\r\n", 2);
+		vec[0].iov_base = "HTTP/1.0 ";
+		vec[0].iov_len = 9;
+		vec[1].iov_base = status;
+		vec[1].iov_len = strlen(status);
+		vec[2].iov_base = " ";
+		vec[2].iov_len = 1;
+		vec[3].iov_base = entity->he_rdata.response.status_str;
+		vec[3].iov_len = strlen(entity->he_rdata.response.status_str);
+		vec[4].iov_base = "\r\n";
+		vec[4].iov_len = 2;
+		writev(fde->fde_fd, vec, 5);
 	} else {
-		write(fde->fde_fd, request_string[entity->he_rdata.request.reqtype],
-				strlen(request_string[entity->he_rdata.request.reqtype]));
-		write(fde->fde_fd, " ", 1);
-		write(fde->fde_fd, entity->he_rdata.request.path,
-				strlen(entity->he_rdata.request.path));
-		write(fde->fde_fd, " HTTP/1.0\r\n", 11);
+		struct iovec vec[4];
+		
+		vec[0].iov_base =  request_string[entity->he_rdata.request.reqtype];
+		vec[0].iov_len = strlen(request_string[entity->he_rdata.request.reqtype]);
+		vec[1].iov_base = " ";
+		vec[1].iov_len = 1;
+		vec[2].iov_base = entity->he_rdata.request.path;
+		vec[2].iov_len = strlen(entity->he_rdata.request.path);
+		vec[3].iov_base = " HTTP/1.0\r\n";
+		vec[3].iov_len = 11;
+		writev(fde->fde_fd, vec, 4);
 	}
 		
 	entity->_he_target = fde;

@@ -136,7 +136,8 @@ struct	stat		 sb;
 		cacheenv->set_errfile(cacheenv, stderr);
 		cacheenv->set_errpfx(cacheenv, "willow");
 
-		if (i = cacheenv->open(cacheenv, dir, DB_CREATE | DB_INIT_TXN | DB_INIT_LOCK | DB_INIT_MPOOL, 0)) {
+		if (i = cacheenv->open(cacheenv, dir, DB_CREATE | DB_INIT_TXN | DB_INIT_LOCK | 
+				DB_INIT_MPOOL | DB_PRIVATE | DB_THREAD, 0)) {
 			wlog(WLOG_ERROR, "%s: open: %s",
 					cd->dir, db_strerror(i));
 			exit(8);
@@ -200,7 +201,7 @@ struct	cache_object	*data;
 	memset(&datat, 0, sizeof(datat));
 	
 	keyt.data = keybuf;
-	keyt.size = sizeof(struct cache_key) + key->ck_len + 1;
+	keyt.size = key->ck_len + 1;
 	
 	datat.flags = DB_DBT_MALLOC;
 	
@@ -211,7 +212,7 @@ struct	cache_object	*data;
 	wfree(keybuf);
 	
 	if (i) {
-		//if (i != DB_NOTFOUND)
+		if (i != DB_NOTFOUND)
 			wlog(WLOG_WARNING, "database error: %s", db_strerror(i));
 		return NULL;
 	}
@@ -240,7 +241,7 @@ wcache_store_object(key, obj)
 	keybuf = make_keybuf(key);
 	
 	keyt.data = keybuf;
-	keyt.size = sizeof(struct cache_key) + key->ck_len + 1;
+	keyt.size = key->ck_len + 1;
 	
 	datat.data = make_databuf(obj);
 	datat.size = sizeof(struct cache_object) + obj->co_plen + 1;

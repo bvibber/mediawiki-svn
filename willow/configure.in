@@ -70,8 +70,9 @@ AC_SEARCH_LIBS(socket, socket)
 AC_SEARCH_LIBS(inet_addr, nsl)
 AC_SEARCH_LIBS(log10, m)
 AC_SEARCH_LIBS(sendfile, sendfile)
-AC_CHECK_FUNC(daemon,,[AC_LIBOBJ(daemon)])
-AC_CHECK_FUNC(setproctitle)
+AC_CHECK_FUNC(sendfilev,AC_DEFINE([HAVE_SENDFILE],,[Define this if you have sendfile()]))
+AC_CHECK_FUNC(daemon,AC_DEFINE([HAVE_DAEMON],,[Define this if you have daemon()]),[AC_LIBOBJ(daemon)])
+AC_CHECK_FUNC(setproctitle,AC_DEFINE([HAVE_SETPROCTITLE],,[Define this if you have setproctitle()]))
 AC_CHECK_HEADER(db.h, [], [
 	AC_MSG_ERROR([cannot not find required Berkeley DB headers.])])
 AC_CHECK_LIB(db-4.3, db_env_create, [], [
