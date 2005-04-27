@@ -89,8 +89,8 @@ function setupCatRSSExtension() {
 
 			$rules = array(
 				"/\[\[(".implode('|',$prefixes)."):[^\]]*\]\]/i" => "", # interwiki links, cat links
-				"/\[\[([^\[\]]+)\|([^[\]\|]*)\]\]/" => "\$2", # piped links
-				"/\[\[([^\[\]]+)\]\]/" => "\$1", # links
+				"/\[\[(?!".$imgprefix.")([^\[\]]+)\|([^[\]\|]*)\]\]/" => "\$2", # piped links
+				"/\[\[(?!".$imgprefix.")([^\[\]]+)\]\]/i" => "\$1", # links
 				"/\[http:\/\/[^\s]+\s*(.*?)\]/" => "\$1", # external links
 				"/\[\[".$imgprefix.":[^\]]*\]\]/i" => "", # images
 				"/<br([^>]{1,60})>/i" => "\n", # break
@@ -104,7 +104,7 @@ function setupCatRSSExtension() {
 				"/''(.*)''/" => "\$1", # italic
 				"/<([^>]{1,1500})>/s" => "", # any html tags
 				"/__\w{1,60}__/i" => "", # __notoc__ etc
-				"/\n+/" => "\n" # many newlines
+				"/(\n\s*)+/" => "\n" # many newlines
 			);
 
 			$text = preg_replace( array_keys($rules), array_values($rules), $text); 
@@ -151,11 +151,11 @@ function setupCatRSSExtension() {
 						wfDebug( "CatFeed: cached feed timestamp check failed ($feedLastmod; $this->mMaxTimeStamp)\n" );
 					}
 				}
-				if( is_string( $cachedFeed ) ) {
+				/*if( is_string( $cachedFeed ) ) {
 					wfDebug( "CatFeed: Outputting cached feed\n" );
 					$feed->httpHeaders();
 					echo $cachedFeed;
-				} else {
+				} else {*/
 					wfDebug( "CatFeed: rendering new feed and caching it\n" );
 					ob_start();
 					$this->catDoOutputFeed( $rows, $feed );
@@ -165,7 +165,7 @@ function setupCatRSSExtension() {
 					$expire = 3600 * 24; # One day
 					$messageMemc->set( $key, $cachedFeed );
 					$messageMemc->set( $timekey, wfTimestamp( TS_MW ), $expire );
-				}
+					#	}
 				return true;
 		}
 
