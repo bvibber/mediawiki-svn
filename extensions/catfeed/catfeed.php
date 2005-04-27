@@ -151,11 +151,11 @@ function setupCatRSSExtension() {
 						wfDebug( "CatFeed: cached feed timestamp check failed ($feedLastmod; $this->mMaxTimeStamp)\n" );
 					}
 				}
-				/*if( is_string( $cachedFeed ) ) {
+				if( is_string( $cachedFeed ) ) {
 					wfDebug( "CatFeed: Outputting cached feed\n" );
 					$feed->httpHeaders();
 					echo $cachedFeed;
-				} else {*/
+				} else {
 					wfDebug( "CatFeed: rendering new feed and caching it\n" );
 					ob_start();
 					$this->catDoOutputFeed( $rows, $feed );
@@ -165,7 +165,7 @@ function setupCatRSSExtension() {
 					$expire = 3600 * 24; # One day
 					$messageMemc->set( $key, $cachedFeed );
 					$messageMemc->set( $timekey, wfTimestamp( TS_MW ), $expire );
-					#	}
+			    	}
 				return true;
 		}
 
