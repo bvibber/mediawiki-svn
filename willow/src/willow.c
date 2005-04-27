@@ -131,7 +131,7 @@ segv_action(sig, si, data)
 {
 struct	alloc_entry	*ae;
 
-	fprintf(stderr, "SEGV at %p%s\n", si->si_addr, si->si_code == SI_NOINFO ? " [SI_INFO]" : "");
+	fprintf(stderr, "SEGV at %p%s\n", si->si_addr, si->si_code == SI_NOINFO ? " [SI_NOINFO]" : "");
 	for (ae = allocs.ae_next; ae; ae = ae->ae_next)
 		if (!ae->ae_freed && si->si_addr > ae->ae_mapping && si->si_addr < ae->ae_mapping + ae->ae_mapsize) {
 			fprintf(stderr, "\t%p [map @ %p size %d] from %s:%d\n", ae->ae_addr, ae->ae_mapping,
