@@ -272,6 +272,7 @@ struct	header_list	 *it;
 	for (it = client->cl_entity.he_headers.hl_next; it; it = it->hl_next) {
 		if (!strcmp(it->hl_name, "Connection")) {
 			header_remove(&client->cl_entity.he_headers, it);
+			it = client->cl_entity.he_headers.hl_next;
 			continue;
 		}
 	}

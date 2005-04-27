@@ -557,7 +557,7 @@ entity_send(fde, entity, cb, data)
 		vec[1].iov_len = strlen(status);
 		vec[2].iov_base = " ";
 		vec[2].iov_len = 1;
-		vec[3].iov_base = entity->he_rdata.response.status_str;
+		vec[3].iov_base = (void *)entity->he_rdata.response.status_str;
 		vec[3].iov_len = strlen(entity->he_rdata.response.status_str);
 		vec[4].iov_base = "\r\n";
 		vec[4].iov_len = 2;
@@ -565,7 +565,7 @@ entity_send(fde, entity, cb, data)
 	} else {
 		struct iovec vec[4];
 		
-		vec[0].iov_base =  request_string[entity->he_rdata.request.reqtype];
+		vec[0].iov_base = (void *)request_string[entity->he_rdata.request.reqtype];
 		vec[0].iov_len = strlen(request_string[entity->he_rdata.request.reqtype]);
 		vec[1].iov_base = " ";
 		vec[1].iov_len = 1;

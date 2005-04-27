@@ -108,8 +108,8 @@ struct	sigaction	segv_act;
 
 #ifdef WDEBUG_ALLOC
 struct alloc_entry {
-	void		*ae_addr;
-	void		*ae_mapping;
+	char		*ae_addr;
+	char		*ae_mapping;
 	size_t		 ae_mapsize;
 	size_t		 ae_size;
 	int		 ae_freed;
@@ -131,9 +131,11 @@ segv_action(sig, si, data)
 {
 struct	alloc_entry	*ae;
 
-	fprintf(stderr, "SEGV at %p%s\n", si->si_addr, si->si_code == SI_NOINFO ? " [SI_NOINFO]" : "");
+	fprintf(stderr, "SEGV at %p%s (pid %d)\n", si->si_addr, si->si_code == SI_NOINFO ? " [SI_NOINFO]" : "",
+			(int) getpid());
 	for (ae = allocs.ae_next; ae; ae = ae->ae_next)
-		if (!ae->ae_freed && si->si_addr > ae->ae_mapping && si->si_addr < ae->ae_mapping + ae->ae_mapsize) {
+		if (!ae->ae_freed && (char *)si->si_addr > ae->ae_mapping && 
+				(char *)si->si_addr < ae->ae_mapping + ae->ae_mapsize) {
 			fprintf(stderr, "\t%p [map @ %p size %d] from %s:%d\n", ae->ae_addr, ae->ae_mapping,
 					ae->ae_mapsize, ae->ae_alloced_file, ae->ae_alloced_line);
 			break;
@@ -206,6 +208,7 @@ void
 internal_wfree(p, file, line)
 	void *p;
 	const char *file;
+	int line;
 {
 struct	alloc_entry	*ae;
 
@@ -223,7 +226,11 @@ struct	alloc_entry	*ae;
 			ae->ae_freed = 1;
 			ae->ae_freed_file = file;
 			ae->ae_freed_line = line;
-			mprotect(ae->ae_addr + ae->ae_size, pgsize, PROT_READ | PROT_WRITE);
+			if (mprotect(ae->ae_addr + ae->ae_size, pgsize, PROT_READ | PROT_WRITE) < 0) {
+				fprintf(stderr, "mprotect(0x%p, %d, PROT_READ | PROT_WRITE): %s\n", 
+						ae->ae_addr + ae->ae_size, pgsize, strerror(errno));
+				exit(8);
+			}
 			munmap(ae->ae_mapping, ae->ae_mapsize);
 			return;
 		}
@@ -237,6 +244,7 @@ struct	alloc_entry	*ae;
 char *
 internal_wstrdup(s, file, line)
 	const char *s, *file;
+	int line;
 {
 	char *ret = internal_wmalloc(strlen(s) + 1, file, line);
 	strcpy(ret, s);
