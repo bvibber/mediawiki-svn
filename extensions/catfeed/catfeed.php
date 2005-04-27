@@ -91,14 +91,15 @@ function setupCatRSSExtension() {
 				"/\[\[(".implode('|',$prefixes)."):[^\]]*\]\]/i" => "", # interwiki links, cat links
 				"/\[\[([^\[\]]+)\|([^[\]\|]*)\]\]/" => "\$2", # piped links
 				"/\[\[([^\[\]]+)\]\]/" => "\$1", # links
+				"/\[http:\/\/[^\s]+\s*(.*?)\]/" => "\$1", # external links
 				"/\[\[".$imgprefix.":[^\]]*\]\]/i" => "", # images
 				"/<br([^>]{1,60})>/i" => "\n", # break
 				"/{{([^}]+)}}/s" => "", # templates
-				"/<table[^<]{0,660}>(.*)<\/table>/si" => "", # table
+				"/<table[^<]{0,660}>(.*?)<\/table>/si" => "", # table
 				"/\n{\|(.+)\n\|}/s" => "", # table
-				"/\n===\s*(.*)\s*===\n/" => "\n* \$1\n", # h3
-				"/\n==\s*(.*)\s*==\n/" => "\n* \$1\n", # h2
-				"/\n=\s*(.*)\s*=\n/" => "\n* \$1\n", # h1
+				"/\n===\s*(.*)\s*===\s*\n/" => "\n* \$1\n", # h3
+				"/\n==\s*(.*)\s*==\s*\n/" => "\n* \$1\n", # h2
+				"/\n=\s*(.*)\s*=\s*\n/" => "\n* \$1\n", # h1
 				"/'''(.*)'''/" => "\$1", # bold
 				"/''(.*)''/" => "\$1", # italic
 				"/<([^>]{1,1500})>/s" => "", # any html tags
@@ -108,7 +109,7 @@ function setupCatRSSExtension() {
 
 			$text = preg_replace( array_keys($rules), array_values($rules), $text); 
 			$shorttext = substr($text,1,145); # only return the first few chars for now
-			return $shorttext.'...';
+			return htmlspecialchars( $shorttext.'...');
 		}
 
 		function categoryOutputFeed( $rows, $limit ) {
