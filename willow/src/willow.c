@@ -55,13 +55,16 @@ struct	sigaction	segv_act;
 	
 	sigaction(SIGSEGV, &segv_act, NULL);
 #endif
-	while ((i = getopt(argc, argv, "fz")) != -1) {
+	while ((i = getopt(argc, argv, "fzv")) != -1) {
 		switch (i) {
 			case 'z':
 				zflag++;
 			case 'f':
 				config.foreground = 1;
 				break;
+			case 'v':
+				fprintf(stderr, "%s\n", VERSION);
+				exit(0);
 			default:
 				exit(8);
 		}
