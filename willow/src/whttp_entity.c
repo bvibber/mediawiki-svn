@@ -281,6 +281,7 @@ parse_reqtype(entity)
 {
 	char	*p, *s;
 	char	*request = entity->he_source.fde->fde_readbuf.rb_p;
+	int	i;
 
 	DEBUG((WLOG_DEBUG, "parse_reqtype: called, response=%d", (int)entity->he_flags.response));
 	
@@ -316,18 +317,12 @@ parse_reqtype(entity)
 
 	*p++ = '\0';
 
-	/* XXX parse this using request_type */
-	if (!strcmp(request, "GET"))
-		entity->he_rdata.request.reqtype = REQTYPE_GET;
-	else if (!strcmp(request, "POST"))
-		entity->he_rdata.request.reqtype = REQTYPE_POST;
-	else if (!strcmp(request, "HEAD"))
-		entity->he_rdata.request.reqtype = REQTYPE_HEAD;
-	else if (!strcmp(request, "TRACE"))
-		entity->he_rdata.request.reqtype = REQTYPE_TRACE;
-	else if (!strcmp(request, "OPTIONS"))
-		entity->he_rdata.request.reqtype = REQTYPE_OPTIONS;
-	else
+	for (i = 0; supported_reqtypes[i].name; i++)
+		if (!strcmp(request, supported.reqtypes[i].name))
+			break;
+
+	entity->he_rdata.request.reqtype = supported.reqtypes[i].type;
+	if (entity->he_rdata.request.reqtype == REQTYPE_INVALID)
 		return -1;
 
 	/* /path/to/file */

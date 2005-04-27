@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 #include "wlog.h"
 #include "wnet.h"

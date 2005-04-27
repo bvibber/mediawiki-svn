@@ -22,6 +22,7 @@
 #define REQTYPE_HEAD	2
 #define REQTYPE_TRACE	3
 #define REQTYPE_OPTIONS	4
+#define REQTYPE_INVALID	-1
 
 struct http_entity;
 struct http_client;
@@ -38,6 +39,19 @@ struct	header_list	*hl_next;
 struct	header_list	*hl_tail;
 	int		 hl_len;
 	int		 hl_flags;
+};
+
+struct request_type {
+	const char *name;
+	int len;
+	int type;
+} supported_reqtypes[] = {
+	{ "GET",	3,	REQTYPE_GET	},
+	{ "POST",	4,	REQTYPE_POST	},
+	{ "HEAD",	4,	REQTYPE_HEAD	},
+	{ "TRACE",	5,	REQTYPE_TRACE	},
+	{ "OPTIONS",	7,	REQTYPE_OPTIONS	},
+	{ NULL,		0,	REQTYPE_INVALID }
 };
 
 struct http_entity {

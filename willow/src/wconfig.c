@@ -175,7 +175,9 @@ static struct syslog_facility {
 	{"news", LOG_NEWS},
 	{"uucp", LOG_UUCP},
 	{"cron", LOG_CRON},
+#ifdef LOG_AUDIT
 	{"audit", LOG_AUDIT},
+#endif
 	{"local0", LOG_LOCAL0},	
 	{"local1", LOG_LOCAL0},	
 	{"local2", LOG_LOCAL0},	
