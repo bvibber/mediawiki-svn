@@ -137,8 +137,7 @@ whttp_init(void)
 		perror("pipe");
 		exit(8);
 	}
-	wlogwriter_start(logwr_pipe[1]);
-	close(logwr_pipe[1]);
+	wlogwriter_start(logwr_pipe);
 	if ((alf = fdopen(logwr_pipe[0], "w")) == NULL) {
 		perror("fdopen");
 		exit(8);
@@ -226,14 +225,16 @@ struct	cache_object	*cobj;
 	/*
 	 * Check for cached object.
 	 */
-	ckey.ck_len = strlen(client->cl_path);
-	ckey.ck_key = client->cl_path;
-	cobj = wcache_find_object(&ckey);
-	if (cobj != NULL) {
-		client->cl_co = cobj;
-		DEBUG((WLOG_DEBUG, "client_read_done: object %s cached", client->cl_path));
-		client_write_cached(client);
-		return;
+	if (client->cl_reqtype == REQTYPE_GET) {
+		ckey.ck_len = strlen(client->cl_path);
+		ckey.ck_key = client->cl_path;
+		cobj = wcache_find_object(&ckey);
+		if (cobj != NULL) {
+			client->cl_co = cobj;
+			DEBUG((WLOG_DEBUG, "client_read_done: object %s cached", client->cl_path));
+			client_write_cached(client);
+			return;
+		}
 	}
 	
 	/*

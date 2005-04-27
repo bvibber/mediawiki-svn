@@ -12,6 +12,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <unistd.h>
+#include <errno.h>
 
 #include "wlog.h"
 #include "wnet.h"
@@ -32,6 +33,10 @@ sig_exit(s)
 	wnet_exit = 1;
 }
 
+#ifdef WDEBUG_ALLOC
+static void segv_action(int, siginfo_t *, void *);
+#endif
+
 int 
 main(argc, argv)
 	char *argv[];
@@ -40,6 +45,14 @@ main(argc, argv)
 	int	i;
 	int	zflag = 0;
 	
+#ifdef WDEBUG_ALLOC
+struct	sigaction	segv_act;
+	memset(&segv_act, 0, sizeof(segv_act));
+	segv_act.sa_sigaction = segv_action;
+	segv_act.sa_flags = SA_SIGINFO;
+	
+	sigaction(SIGSEGV, &segv_act, NULL);
+#endif
 	while ((i = getopt(argc, argv, "fz")) != -1) {
 		switch (i) {
 			case 'z':
@@ -94,6 +107,9 @@ main(argc, argv)
 #ifdef WDEBUG_ALLOC
 struct alloc_entry {
 	void		*ae_addr;
+	void		*ae_mapping;
+	size_t		 ae_mapsize;
+	size_t		 ae_size;
 	int		 ae_freed;
 	const char	*ae_freed_file;
 	int		 ae_freed_line;
@@ -103,7 +119,29 @@ struct	alloc_entry	*ae_next;
 };
 
 static struct alloc_entry allocs;
+static int pgsize;
 
+static void
+segv_action(sig, si, data)
+	int sig;
+	siginfo_t *si;
+	void *data;
+{
+struct	alloc_entry	*ae;
+
+	fprintf(stderr, "SEGV at %p%s\n", si->si_addr, si->si_code == SI_NOINFO ? " [SI_INFO]" : "");
+	for (ae = allocs.ae_next; ae; ae = ae->ae_next)
+		if (!ae->ae_freed && si->si_addr > ae->ae_mapping && si->si_addr < ae->ae_mapping + ae->ae_mapsize) {
+			fprintf(stderr, "\t%p [map @ %p size %d] from %s:%d\n", ae->ae_addr, ae->ae_mapping,
+					ae->ae_mapsize, ae->ae_alloced_file, ae->ae_alloced_line);
+			break;
+		}
+	if (ae == NULL)
+		fprintf(stderr, "\tunknown address\n");
+	abort();
+	_exit(1);
+}		
+	
 static void
 ae_checkleaks(void)
 {
@@ -122,12 +160,19 @@ internal_wmalloc(size, file, line)
 {
 	void		*p;
 struct	alloc_entry	*ae;
-
-	if ((p = malloc(size)) == NULL)
+	size_t		 mapsize;
+	
+	if (pgsize == 0)
+		pgsize = sysconf(_SC_PAGESIZE);
+	
+	mapsize = (size/pgsize + 2) * pgsize;
+	if ((p = mmap(NULL, mapsize, PROT_READ|PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0)) == (void *)-1) {
+		fprintf(stderr, "mmap: %s\n", strerror(errno));
 		return NULL;
+	}
 
 	for (ae = &allocs; ae->ae_next; ae = ae->ae_next)
-		if (ae->ae_next->ae_addr == p)
+		if (ae->ae_next->ae_mapping == p)
 			break;
 
 	if (!ae->ae_next) {
@@ -139,12 +184,20 @@ struct	alloc_entry	*ae;
 	}
 
 	ae = ae->ae_next;
-	ae->ae_addr = p;
+	ae->ae_addr = ((char *)p + (mapsize - pgsize)) - size;
+	ae->ae_mapping = p;
+	ae->ae_mapsize = mapsize;
+	ae->ae_size = size;
 	ae->ae_freed = 0;
 	ae->ae_alloced_file = file;
 	ae->ae_alloced_line = line;
-	fprintf(stderr, "alloc %p at %s:%d\n", p, file, line);
-	return p;
+	fprintf(stderr, "alloc %d @ %p [map @ %p:%p, size %d] at %s:%d\n", size, ae->ae_addr,
+			ae->ae_mapping, ae->ae_mapping + ae->ae_mapsize, ae->ae_mapsize, file, line);
+	if (mprotect(ae->ae_addr + size, pgsize, PROT_NONE) < 0) {
+		fprintf(stderr, "mprotect(0x%p, %d, PROT_NONE): %s\n", ae->ae_addr + size, pgsize, strerror(errno));
+		exit(8);
+	}
+	return ae->ae_addr;
 }
 
 void
@@ -168,7 +221,8 @@ struct	alloc_entry	*ae;
 			ae->ae_freed = 1;
 			ae->ae_freed_file = file;
 			ae->ae_freed_line = line;
-			free(p);
+			mprotect(ae->ae_addr + ae->ae_size, pgsize, PROT_READ | PROT_WRITE);
+			munmap(ae->ae_mapping, ae->ae_mapsize);
 			return;
 		}
 	}
