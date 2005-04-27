@@ -133,8 +133,9 @@ class transversemercator
 			return "";
 		}
 
-		$grid_x = round( $this->Easting / 100000 );
-		$grid_y = round( $this->Northing / 100000 );
+		/* fix by Roger W Haworth */
+		$grid_x = floor( $this->Easting / 100000 );
+		$grid_y = floor( $this->Northing / 100000 );
 		if ($grid_x < 0 or $grid_x > 6
 		 or $grid_y < 0 or $grid_y > 12) {
 			/* outside area for OSGB36 */
