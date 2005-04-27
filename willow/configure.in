@@ -59,6 +59,13 @@ AC_ARG_ENABLE(debug-alloc, AC_HELP_STRING([--enable-debug-alloc],[Compile with d
 		AC_DEFINE([WDEBUG_ALLOC], [], [Compile with debugging allocator])
 	fi
 ])
+
+AC_ARG_ENABLE(threaded-io, AC_HELP_STRING([--enable-threaded-io],[Use threads for I/O operations]),
+[	if test $enableval = yes; then
+		AC_DEFINE([THREADED_IO], [], [Use threads for I/O operations])
+	fi
+])
+
 AC_SEARCH_LIBS(socket, socket)
 AC_SEARCH_LIBS(inet_addr, nsl)
 AC_SEARCH_LIBS(log10, m)

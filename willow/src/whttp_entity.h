@@ -8,6 +8,8 @@
 #ifndef WHTTP_ENTITY
 #define WHTTP_ENTITY
 
+#include <pthread.h>
+
 #include "whttp.h"
 
 #define ENT_SOURCE_BUFFER	1
@@ -95,6 +97,7 @@ struct	header_list	 he_headers;
 	char		 _he_rdbuf[8192]; /* does this really need to be here? */
 struct	fde		*_he_target;
 	int		 _he_state;
+	pthread_t	 _he_thread;
 };
 
 void entity_read_headers(struct http_entity *, header_cb, void *);

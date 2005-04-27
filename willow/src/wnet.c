@@ -54,6 +54,8 @@ static void readbuf_reset(struct readbuf *);
 struct fde *fde_table;
 int max_fd;
 
+int wnet_exit;
+
 void
 wnet_init(void)
 {
@@ -274,9 +276,18 @@ wnet_sendfile_do(e)
 {
 struct	wrtbuf *buf;
 	int	i;
+	off_t	off;
 	
 	buf = e->fde_wdata;
+#if defined __linux__ || defined __sun
 	while ((i = sendfile(e->fde_fd, buf->wb_source, &buf->wb_off, buf->wb_size)) > -1) {
+#elif defined __FreeBSD__
+	while ((i = sendfile(buf->wb_source, e->fde_fd, buf->wb_size, NULL, &off, 0))) {
+		buf->wb_off += off;
+		i = off;
+#else
+# error i don't know how to invoke sendfile() on this system
+#endif
 		buf->wb_size -= i;
 		if (buf->wb_size == 0) {
 			wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);

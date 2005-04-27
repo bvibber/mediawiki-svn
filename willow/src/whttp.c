@@ -316,9 +316,10 @@ struct	http_client	*client = data;
 	/*
 	 * If cachable, open the cache file and write data.
 	 *
-	 * XXX: should check if it's actually cachable...
+	 * Don't cache responses to non-GET requests, or non-200 replies.
 	 */
-	if (client->cl_reqtype == REQTYPE_GET && config.ncaches) {
+	if (client->cl_reqtype == REQTYPE_GET && entity->he_rdata.response.status == 200
+	    && config.ncaches) {
 		client->cl_key.ck_len = strlen(client->cl_path);
 		client->cl_key.ck_key = client->cl_path;
 		client->cl_co = wcache_new_object(&client->cl_key);

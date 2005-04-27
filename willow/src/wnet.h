@@ -63,6 +63,7 @@ struct	sockaddr_in	cdat_addr;
 extern char current_time_str[];
 extern char current_time_short[];
 extern time_t current_time;
+extern int wnet_exit;
 
 #define FDE_READ	0x1
 #define FDE_WRITE	0x2

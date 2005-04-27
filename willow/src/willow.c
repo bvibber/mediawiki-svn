@@ -23,7 +23,7 @@ static void
 sig_exit(s)
 	int s;
 {
-	fprintf(stderr, "exit on signal\n");
+	wnet_exit = 1;
 	exit(0);
 }
 
@@ -68,6 +68,7 @@ main(argc, argv)
 	wnet_init();
 
 	signal(SIGINT, sig_exit);
+	signal(SIGTERM, sig_exit);
 	
 	wlog(WLOG_NOTICE, "running");
 
@@ -76,6 +77,8 @@ main(argc, argv)
 
 	wnet_run();
 	wlog_close();
+	wcache_shutdown();
+	
 	return EXIT_SUCCESS;
 }
 

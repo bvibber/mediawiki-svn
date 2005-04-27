@@ -148,21 +148,13 @@ struct	stat		 sb;
 			exit(8);
 		}
 		
-		if (i = cacheenv->txn_begin(cacheenv, NULL, &txn, 0)) {
-			wlog(WLOG_ERROR, "init: %s: txn_begin: %s", cd->dir, db_strerror(i));
-			exit(8);
-		}
-		
+		cacheenv->txn_begin(cacheenv, NULL, &txn, 0);
 		if (i = cacheobjs->open(cacheobjs, txn, "cacheobjs.db", NULL, DB_HASH,
 				DB_CREATE, 0600)) {
 			wlog(WLOG_ERROR, "%s: db open: %s", cd->dir, db_strerror(i));
 			exit(8);
 		}
-		
-		if (i = txn->commit(txn, 0)) {
-			wlog(WLOG_ERROR, "init: %s: commit: %s", cd->dir, db_strerror(i));
-			exit(8);
-		}
+		txn->commit(txn, 0);
 		
 		wfree(dir);
 	}
@@ -176,9 +168,8 @@ static char *
 make_keybuf(key)
 	struct cache_key *key;
 {
-	char *buf = wmalloc(sizeof(struct cache_key) + key->ck_len + 1);
-	memcpy(buf, key, sizeof(struct cache_key));
-	memcpy(buf + sizeof(struct cache_key), key->ck_key, key->ck_len + 1);
+	char *buf = wmalloc(key->ck_len + 1);
+	memcpy(buf, key->ck_key, key->ck_len + 1);
 	return buf;
 }
 
@@ -202,7 +193,7 @@ struct	cache_object	*data;
 	int		 i;
 	char		*keybuf, *databuf;
 
-	DEBUG((WLOG_DEBUG, "wcache_find_object: looking for %s", key->ck_key));
+	DEBUG((WLOG_DEBUG, "wcache_find_object: looking for %s %d", key->ck_key, key->ck_len));
 	keybuf = make_keybuf(key);	
 	
 	memset(&keyt, 0, sizeof(keyt));
@@ -220,7 +211,7 @@ struct	cache_object	*data;
 	wfree(keybuf);
 	
 	if (i) {
-		if (i != DB_NOTFOUND)
+		//if (i != DB_NOTFOUND)
 			wlog(WLOG_WARNING, "database error: %s", db_strerror(i));
 		return NULL;
 	}
@@ -242,7 +233,7 @@ wcache_store_object(key, obj)
 	char		*keybuf, *databuf;
 	int		 i;
 	
-	DEBUG((WLOG_DEBUG, "storing %s in cache, path %s", key->ck_key, obj->co_path));
+	DEBUG((WLOG_DEBUG, "storing %s %d in cache, path %s", key->ck_key, key->ck_len, obj->co_path));
 	
 	memset(&keyt, 0, sizeof(keyt));
 	memset(&datat, 0, sizeof(datat));
@@ -358,19 +349,11 @@ cache_next_id(void)
 	DB_TXN *txn;
 	int	i;
 	
-	if (i = cacheenv->txn_begin(cacheenv, NULL, &txn, 0)) {
-		wlog(WLOG_ERROR, "txn_begin: %s", db_strerror(i));
-		exit(8);
-	}
-	
+	cacheenv->txn_begin(cacheenv, NULL, &txn, 0);
 	state.cs_id++;
 	cache_writestate(&state, txn);
-	
-	if (i = txn->commit(txn, 0)) {
-		wlog(WLOG_ERROR, "commit: %s", db_strerror(i));
-		exit(8);
-	}
-	
+	txn->commit(txn, 0);
+
 	return state.cs_id;
 }
 

@@ -13,6 +13,7 @@
 #include <assert.h>
 #include <fcntl.h>
 #include <port.h>
+#include <errno.h>
 
 #include "wnet.h"
 #include "wlog.h"
@@ -38,7 +39,18 @@ wnet_run(void)
 	int		i;
 	uint		nget = 1;
 
-	while (port_getn(port, pe, GETN, &nget, NULL) != -1) {
+	for (;;) {
+		i = port_getn(port, pe, GETN, &nget, NULL);
+		
+		if (i == -1) {
+			if (errno == EINTR) {
+				if (wnet_exit)
+					return;
+				continue;
+			}
+			break;
+		}
+		
 		wnet_set_time();
 
 		for (i = 0; i < nget; ++i) {
@@ -71,7 +83,6 @@ wnet_run(void)
 		}
 		nget = 1;
 	}
-	perror("port_get");
 }
 
 void

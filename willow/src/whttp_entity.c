@@ -42,6 +42,8 @@
  *    at  offset  off and of length len bytes. The in_fd argument should
  *    be a  file  descriptor  to  a  regular  file opened for reading.
  */
+
+#include <sys/sendfile.h>
  
 #include <unistd.h>
 #include <errno.h>
@@ -49,6 +51,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
+#include <fcntl.h>
 
 #include "willow.h"
 #include "whttp.h"
@@ -76,6 +79,7 @@ static void entity_send_fde_write_done(struct fde *, void *, int);
 static void entity_send_buf_done(struct fde *, void *, int);
 static void entity_send_fde_read(struct fde *);
 static void entity_send_file_done(struct fde *, void *, int);
+static void *thr_sendfile(void *);
 
 void
 entity_read_headers(entity, func, udata)
@@ -553,6 +557,7 @@ entity_send(fde, entity, cb, data)
 	}
 		
 	entity->_he_target = fde;
+
 	entity->_he_hdrbuf = header_build(&entity->he_headers);
 	wnet_write(fde->fde_fd, entity->_he_hdrbuf, strlen(entity->_he_hdrbuf),
 			entity_send_headers_done, entity);
@@ -594,9 +599,13 @@ struct	http_entity	*entity = data;
 	
 	if (entity->he_source_type == ENT_SOURCE_FILE) {
 		/* write file */
+#ifdef THREADED_IO
+		pthread_create(&entity->_he_thread, NULL, thr_sendfile, entity);
+#else
 		wnet_sendfile(fde->fde_fd, entity->he_source.fd.fd, 
-				entity->he_source.fd.size - entity->he_source.fd.off,
-				entity->he_source.fd.off, entity_send_file_done, entity);
+			entity->he_source.fd.size - entity->he_source.fd.off,
+			entity->he_source.fd.off, entity_send_file_done, entity);
+#endif
 		return;
 	}
 	
@@ -692,3 +701,25 @@ struct	http_entity	*entity = data;
 	entity->_he_func(entity, entity->_he_cbdata, res);
 	return;
 }	
+
+#ifdef THREADED_IO
+static void *
+thr_sendfile(data)
+	void *data;
+{
+struct	http_entity	*entity = data;
+	int i, val;
+
+	val = fcntl(entity->_he_target->fde_fd, F_GETFL, 0);
+	fcntl(entity->_he_target->fde_fd, F_SETFL, val & ~O_NONBLOCK);
+
+	i = sendfile(entity->_he_target->fde_fd, entity->he_source.fd.fd, &entity->he_source.fd.off,
+			entity->he_source.fd.size - entity->he_source.fd.off);
+
+	val = fcntl(entity->_he_target->fde_fd, F_GETFL, 0);
+	fcntl(entity->_he_target->fde_fd, F_SETFL, val | O_NONBLOCK);
+	
+	entity->_he_func(entity, entity->_he_cbdata, i);
+	return NULL;
+}
+#endif
