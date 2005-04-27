@@ -92,17 +92,19 @@ function setupCatRSSExtension() {
 				"/\[\[(?!".$imgprefix.")([^\[\]]+)\|([^[\]\|]*)\]\]/" => "\$2", # piped links
 				"/\[\[(?!".$imgprefix.")([^\[\]]+)\]\]/i" => "\$1", # links
 				"/\[http:\/\/[^\s]+\s*(.*?)\]/" => "\$1", # external links
-				"/\[\[".$imgprefix.":[^\]]*\]\]/i" => "", # images
+				"/\[\[(".$imgprefix."|Image|Media):[^\]]*\]\]/i" => "", # images, plus int. prefix
 				"/<br([^>]{1,60})>/i" => "\n", # break
 				"/{{([^}]+)}}/s" => "", # templates
-				"/<table[^<]{0,660}>(.*?)<\/table>/si" => "", # table
-				"/\n{\|(.+)\n\|}/s" => "", # table
+				"/<table[^>]{0,660}>(.{1,1200})<\/table>/si" => "", # short tables are removed
+				"/\n{\|(.{1,1200})\n\|}/s" => "", # short tables are removed
+				"/\n\|-.*(?=\n)/" => "", # table row in long tables
+				"/\n{?\|.*\|?(?=\n)/" => "", # table cell in long tables
 				"/\n===\s*(.*)\s*===\s*\n/" => "\n* \$1\n", # h3
 				"/\n==\s*(.*)\s*==\s*\n/" => "\n* \$1\n", # h2
 				"/\n=\s*(.*)\s*=\s*\n/" => "\n* \$1\n", # h1
 				"/'''(.*)'''/" => "\$1", # bold
 				"/''(.*)''/" => "\$1", # italic
-				"/<([^>]{1,1500})>/s" => "", # any html tags
+				"/<([^>]{1,2000})>/s" => "", # any html tags
 				"/__\w{1,60}__/i" => "", # __notoc__ etc
 				"/(\n\s*)+/" => "\n" # many newlines
 			);
