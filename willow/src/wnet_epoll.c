@@ -119,7 +119,7 @@ struct	epoll_event	 ev;
 	if (data)
 		e->fde_rdata = data;
 
-	bzero(&ev, 0, sizeof(ev));
+	bzero(&ev, sizeof(ev));
 	ev.events = e->fde_epflags;
 	ev.data.fd = fd;
 	if (mod) {

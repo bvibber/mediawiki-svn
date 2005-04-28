@@ -55,8 +55,6 @@ static const char *error_files[] = {
 	/* ERR_CACHE_IO		*/	DATADIR "/errors/ERR_CACHE_IO",
 };
 
-#define MAX_HEADERS	64	/* maximum # of headers to allow	*/
-
 const char *request_string[] = {
 	"GET",
 	"POST",
@@ -89,8 +87,12 @@ struct	cache_key	 cl_key;	/* Cache key				*/
 struct	cache_object	*cl_co;		/* Cache object				*/
 	struct {
 		int	f_cached:1;
-	}		cl_flags;
+	}		 cl_flags;
+	
+struct	http_client	*fe_next;	/* freelist 				*/
 };
+
+static struct http_client freelist;
 
 static void client_close(struct http_client *);
 static void proxy_start_backend(struct backend *, struct fde *, void *);
@@ -170,10 +172,15 @@ new_client(e)
 {
 struct	http_client	*cl;
 
-	if ((cl = wmalloc(sizeof(*cl))) == NULL)
-		outofmemory();
+	if (freelist.fe_next) {
+		cl = freelist.fe_next;
+		freelist.fe_next = cl->fe_next;
+		bzero(cl, sizeof(*cl));
+	} else {
+		if ((cl = wcalloc(1, sizeof(*cl))) == NULL)
+			outofmemory();
+	}
 
-	bzero(cl, sizeof(*cl));
 	cl->cl_fde = e;
 	return cl;
 }
@@ -357,8 +364,8 @@ struct	http_client	*client = data;
 		client->cl_key.ck_key = client->cl_path;
 		client->cl_co = wcache_new_object();
 		plen = strlen(config.caches[0].dir) + client->cl_co->co_plen + 12 + 2;
-		cache_path = wmalloc(plen + 1);
-		bzero(cache_path, plen + 1);
+		if ((cache_path = wcalloc(1, plen + 1)) == NULL)
+			outofmemory();
 		safe_snprintf(cache_path, plen, "%s/__objects__/%s", config.caches[0].dir, client->cl_co->co_path);
 		WDEBUG((WLOG_DEBUG, "caching %s at %s", client->cl_path, cache_path));
 		if ((client->cl_cfd = open(cache_path, O_WRONLY | O_CREAT | O_EXCL, 0600)) == -1) {
@@ -389,8 +396,8 @@ client_write_cached(client)
 struct	stat	 sb;
 	
 	plen = strlen(config.caches[0].dir) + client->cl_co->co_plen + 12 + 2;
-	cache_path = wmalloc(plen + 1);
-	bzero(cache_path, plen + 1);
+	if ((cache_path = wcalloc(1, plen + 1)) == NULL)
+		outofmemory();
 	safe_snprintf(cache_path, plen, "%s/__objects__/%s", config.caches[0].dir, client->cl_co->co_path);
 	WDEBUG((WLOG_DEBUG, "serving %s from cache at %s [path %s]", client->cl_path, cache_path, client->cl_co->co_path));
 
@@ -481,7 +488,9 @@ client_close(client)
 	if (client->cl_backendfde)
 		wnet_close(client->cl_backendfde->fde_fd);
 	entity_free(&client->cl_entity);
-	wfree(client);
+	
+	client->fe_next = freelist.fe_next;
+	freelist.fe_next = client;
 }
 
 static void

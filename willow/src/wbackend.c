@@ -45,11 +45,9 @@ new_backend(addr)
 	char	*host = addr, *port;
 struct	backend	 *nb;
 
-	if ((nb = wmalloc(sizeof(*nb))) == NULL)
+	if ((nb = wcalloc(1, sizeof(*nb))) == NULL)
 		outofmemory();
 
-	bzero(nb, sizeof(*nb));
-	
 	if ((port = strchr(host, ':')) != NULL) {
 		*port++ = '\0';
 		nb->be_port = atoi(port);

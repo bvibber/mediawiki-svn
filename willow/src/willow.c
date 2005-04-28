@@ -143,7 +143,7 @@ struct	sigaction	segv_act;
 }
 
 #ifdef __lint
-# pragma error_messages(on, E_H_C_CHECK2)
+# pragma error_messages(default, E_H_C_CHECK2)
 #endif
 
 void
@@ -387,4 +387,20 @@ struct	alloc_entry	*ae;
 	
 	return new;
 }
+
+void *
+internal_wcalloc(num, size, file, line)
+	size_t num, size;
+	const char *file;
+	int line;
+{
+	size_t	 t = size * num;
+	void	*p;
+	
+	if ((p = internal_wmalloc(t)) == NULL)
+		return NULL;
+	bzero(p, t);
+	return p;
+}
+		
 #endif

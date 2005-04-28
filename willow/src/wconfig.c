@@ -202,10 +202,8 @@ add_listener(addr)
 struct	listener	*nl;
 	char		*port, *host = addr;
 
-	if ((nl = wmalloc(sizeof(*nl))) == NULL)
+	if ((nl = wcalloc(1, sizeof(*nl))) == NULL)
 		outofmemory();
-
-	bzero(nl, sizeof(struct listener));
 
 	if ((listeners = wrealloc(listeners, sizeof(struct listener *) * ++nlisteners)) == NULL)
 		outofmemory();

@@ -28,6 +28,8 @@
 #define REQTYPE_OPTIONS	4
 #define REQTYPE_INVALID	-1
 
+#define MAX_HEADERS	64	/* maximum # of headers to allow	*/
+
 struct http_entity;
 struct http_client;
 
@@ -37,11 +39,12 @@ typedef void (*cache_callback)(const char *, size_t, void *);
 #define HDR_ALLOCED	1
 
 struct header_list {
-	const char	*hl_name;
-	const char	*hl_value;
+const	char		*hl_name;
+const	char		*hl_value;
 struct	header_list	*hl_next;
 struct	header_list	*hl_tail;
 	int		 hl_len;
+	int		 hl_num;
 	int		 hl_flags;
 };
 

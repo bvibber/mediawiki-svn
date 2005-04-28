@@ -241,6 +241,9 @@ parse_headers(entity)
 					header_add(&entity->he_headers, entity->_he_hdrbuf, 
 						entity->he_source.fde->fde_readbuf.rb_p + 
 							entity->he_source.fde->fde_readbuf.rb_dpos);
+					if (entity->he_headers.hl_num > MAX_HEADERS)
+						return -1;
+					
 					/*
 					 * Check for "interesting" headers that we want to do
 					 * extra processing on.
@@ -379,7 +382,7 @@ struct	header_list	*next = head->hl_next;
 	bzero(head, sizeof(*head));
 }
 #ifdef __lint
-# pragma error_messages(on, E_GLOBAL_COULD_BE_STATIC)
+# pragma error_messages(default, E_GLOBAL_COULD_BE_STATIC)
 #endif
 
 void
@@ -389,6 +392,8 @@ header_add(head, name, value)
 {
 struct	header_list	*new = head;
 
+	head->hl_num++;
+	
 	if (head->hl_tail)
 		new = head->hl_tail;
 	else
@@ -445,7 +450,7 @@ header_build(head)
 	return buf;
 }
 #ifdef __lint
-# pragma error_messages(on, E_GLOBAL_COULD_BE_STATIC)
+# pragma error_messages(default, E_GLOBAL_COULD_BE_STATIC)
 #endif
 
 void
@@ -501,8 +506,8 @@ struct	header_list	*it = head;
 		char *n, *v, *s;
 		int k;
 		
-		it->hl_next = wmalloc(sizeof(struct header_list));
-		bzero(it->hl_next, sizeof(*it->hl_next));
+		if ((it->hl_next = wcalloc(1, sizeof(struct header_list))) == NULL)
+			outofmemory();
 		it = it->hl_next;
 		*len += read(fd, &i, sizeof(i));	
 		*len += read(fd, &j, sizeof(j));

@@ -53,7 +53,7 @@ char current_time_short[30];
 #endif
 time_t current_time;
 #ifdef __lint
-# pragma error_messages(on, E_GLOBAL_COULD_BE_STATIC)
+# pragma error_messages(default, E_GLOBAL_COULD_BE_STATIC)
 #endif
 
 static void init_fde(struct fde *);
@@ -76,7 +76,9 @@ wnet_init(void)
 	int	 i;
 
 	max_fd = getdtablesize();
-	fde_table = calloc(sizeof(struct fde), max_fd);
+	if ((fde_table = wcalloc(max_fd, sizeof(struct fde))) == NULL)
+		outofmemory();
+				
 	wlog(WLOG_NOTICE, "maximum number of open files: %d", max_fd);
 	
 	(void)signal(SIGPIPE, SIG_IGN);
@@ -113,10 +115,8 @@ struct	client_data	*cdata;
 	int		 newfd, val;
 struct	fde		*newe;
 
-	if ((cdata = wmalloc(sizeof(*cdata))) == NULL)
+	if ((cdata = wcalloc(1, sizeof(*cdata))) == NULL)
 		outofmemory();
-
-	bzero(cdata, sizeof(*cdata));
 
 	addrlen = sizeof(cdata->cdat_addr);
 
@@ -236,10 +236,9 @@ struct	fde	*e = &fde_table[fd];
 
 	WDEBUG((WLOG_DEBUG, "wnet_sendfile: %d (+%d) bytes from %d to %d [%s]", size, off, source, fd, e->fde_desc));
 	
-	if ((wb = wmalloc(sizeof(*wb))) == NULL)
+	if ((wb = wcalloc(1, sizeof(*wb))) == NULL)
 		outofmemory();
 	
-	bzero(wb, sizeof(*wb));
 	wb->wb_done = 0;
 	wb->wb_func = cb;
 	wb->wb_udata = data;

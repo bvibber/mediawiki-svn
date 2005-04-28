@@ -422,10 +422,9 @@ struct	cache_object	*ret;
 	int		 i;
 	char		 *p, *s, a[11];
 
-	if ((ret = wmalloc(sizeof(*ret))) == NULL)
+	if ((ret = wcalloc(1, sizeof(*ret))) == NULL)
 		outofmemory();
 	
-	bzero(ret, sizeof(*ret));
 	ret->co_id = cache_next_id();
 	
 	ret->co_plen = ((int) log10((double) ret->co_id) + 1) + 6;
