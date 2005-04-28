@@ -63,7 +63,7 @@ int main() { return 0; }
 eof
 if $CC -pthread conftest.c -o conftest >/dev/null 2>&1; then
 	AC_MSG_RESULT(yes)
-	CFLAGS="$CFLAGS -pthread"
+	THRCFLAGS="-pthread"
 	threadflag=yes
 else
 	AC_MSG_RESULT(no)
@@ -76,7 +76,7 @@ int main() { return 0; }
 eof	
 if $CC -mt conftest.c -o conftest >/dev/null 2>&1; then
 	AC_MSG_RESULT(yes)
-	CFLAGS="$CFLAGS -mt"
+	THRCFLAGS="-mt"
 	threadflag=yes
 else
 	AC_MSG_RESULT(no)
@@ -84,8 +84,8 @@ fi
 rm -f conftest.c conftest
 
 if test x$threadflag = xno; then
-	CPPFLAGS="$CPPFLAGS -D_REENTRANT"
-	LDFLAGS="$LDFLAGS -lpthread"
+	THRCPPFLAGS="-D_REENTRANT"
+	THRLDFLAGS="$LDFLAGS -lpthread"
 fi
 
 echo ""
@@ -159,9 +159,16 @@ AC_ARG_ENABLE(debug-alloc, AC_HELP_STRING([--enable-debug-alloc],[Compile with d
 
 AC_ARG_ENABLE(threaded-io, AC_HELP_STRING([--enable-threaded-io],[Use threads for I/O operations]),
 [	if test $enableval = yes; then
-		AC_DEFINE([THREADED_IO], [], [Use threads for I/O operations])
+		use_threads=yes
 	fi
 ])
+
+if test x$use_threads = xyes; then
+	AC_DEFINE([THREADED_IO], [], [Use threads for I/O operations])
+	CPPFLAGS="$CPPFLAGS $THRCPPFLAGS"
+	CFLAGS="$CFLAGS $THRCFLAGS"
+	LDFLAGS="$LDFLAGS $THRLDFLAGS"
+fi
 
 AC_CHECK_HEADERS([port.h poll.h sys/poll.h sys/epoll.h])
 AC_CHECK_FUNC(port_create, [have_ports=yes], [have_ports=no])
@@ -225,6 +232,10 @@ if test $SELECTTYPE = kqueue; then
 	AC_DEFINE([USE_KQUEUE],[],[Define this to use kqueue() for select])
 fi
 
+if test x$SELECTTYPE != xports -a x$use_threads = xyes; then
+	AC_MSG_ERROR(threaded I/O may only be used with --enable-ports)
+fi
+
 AC_SUBST(SELECTTYPE)
 datadir="${datadir}/willow"
 
@@ -248,4 +259,4 @@ fi
 
 echo ""
 echo "Using I/O system      : $SELECTTYPE"
-
+echo "Threaded I/O          : $use_threads"

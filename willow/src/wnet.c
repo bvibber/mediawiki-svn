@@ -153,6 +153,7 @@ struct	fde		*newe;
 	newe->fde_desc = "accept()ed fd";
 	(void)inet_ntop(AF_INET, &cdata->cdat_addr.sin_addr.s_addr, newe->fde_straddr, sizeof(newe->fde_straddr));
 
+	WDEBUG((WLOG_DEBUG, "wnet_accept: new fd %d", newfd));
 	http_new(newe);
 	return;
 }
@@ -312,33 +313,41 @@ wnet_sendfile_do(e)
 struct	wrtbuf *buf;
 	int	i;
 	/*LINTED unused variable: freebsd-only*/
-	off_t	off;
+	off_t	off, origoff;
 	
 	buf = e->fde_wdata;
+	origoff = buf->wb_off;
+	
+	WDEBUG((WLOG_DEBUG, "wnet_sendfile_do: for %d, off=%d, size=%d", e->fde_fd, buf->wb_off, buf->wb_size));
 #if defined __linux__ || defined __sun
-	while ((i = sendfile(e->fde_fd, buf->wb_source, &buf->wb_off, buf->wb_size)) > -1) {
+	i = sendfile(e->fde_fd, buf->wb_source, &buf->wb_off, buf->wb_size);
 #elif defined __FreeBSD__
-	while ((i = sendfile(buf->wb_source, e->fde_fd, buf->wb_size, NULL, &off, 0))) {
-		buf->wb_off += off;
-		i = off;
+	i = sendfile(buf->wb_source, e->fde_fd, buf->wb_size, NULL, &off, 0);
+	buf->wb_off += off;
+	i = off;
 #else
 # error i don't know how to invoke sendfile() on this system
 #endif
-		buf->wb_size -= i;
-		if (buf->wb_size == 0) {
-			wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
-			buf->wb_func(e, buf->wb_udata, 0);
-			wfree(buf);
-			return;
-		}
+	if (buf->wb_size == 0) {
+		wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
+		buf->wb_func(e, buf->wb_udata, 0);
+		wfree(buf);
+		return;
 	}
+
+	if (i == -1 && errno != EWOULDBLOCK) {
+		wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
+		buf->wb_func(e, buf->wb_udata, -1);
+		wfree(buf);
+	}
+	
+	buf->wb_size -= (buf->wb_off - origoff);
+	
+	WDEBUG((WLOG_DEBUG, "wnet_sendfile_do: sendfile failed %s", strerror(errno)));
 	
 	if (errno == EWOULDBLOCK)
 		return;
 	
-	wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
-	buf->wb_func(e, buf->wb_udata, -1);
-	wfree(buf);
 }
 
 void
