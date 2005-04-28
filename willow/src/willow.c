@@ -183,6 +183,15 @@ realloc_strcat(sp, s)
 }
 			
 #ifdef WDEBUG_ALLOC
+# ifdef THREADED_IO
+pthread_mutex_t ae_mtx = PTHREAD_MUTEX_INITIALIZER;
+#  define ALLOC_LOCK pthread_mutex_lock(&ae_mtx)
+#  define ALLOC_UNLOCK pthread_mutex_unlock(&ae_mtx)
+# else
+#  define ALLOC_LOCK ((void)0)
+#  define ALLOC_UNLOCK ((void)0)
+# endif
+
 struct alloc_entry {
 	char		*ae_addr;
 	char		*ae_mapping;
@@ -232,9 +241,11 @@ ae_checkleaks(void)
 {
 struct	alloc_entry	*ae;
 
+	ALLOC_LOCK();
 	for (ae = allocs.ae_next; ae; ae = ae->ae_next)
 		if (!ae->ae_freed)
 			(void)fprintf(stderr, "%p @ %s:%d\n", ae->ae_addr, ae->ae_alloced_file, ae->ae_alloced_line);
+	ALLOC_UNLOCK();
 }
 
 void *
@@ -247,12 +258,15 @@ internal_wmalloc(size, file, line)
 struct	alloc_entry	*ae;
 	size_t		 mapsize;
 	
+	ALLOC_LOCK();
+	
 	if (pgsize == 0)
 		pgsize = sysconf(_SC_PAGESIZE);
 	
 	mapsize = (size/pgsize + 2) * pgsize;
 	if ((p = mmap(NULL, mapsize, PROT_READ|PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0)) == (void *)-1) {
 		(void)fprintf(stderr, "mmap: %s\n", strerror(errno));
+		ALLOC_UNLOCK();
 		return NULL;
 	}
 
@@ -282,6 +296,8 @@ struct	alloc_entry	*ae;
 		(void)fprintf(stderr, "mprotect(0x%p, %d, PROT_NONE): %s\n", ae->ae_addr + size, pgsize, strerror(errno));
 		exit(8);
 	}
+
+	ALLOC_UNLOCK();
 	return ae->ae_addr;
 }
 
@@ -293,6 +309,8 @@ internal_wfree(p, file, line)
 {
 struct	alloc_entry	*ae;
 
+	ALLOC_LOCK();
+	
 	(void)fprintf(stderr, "free %p @ %s:%d\n", p, file, line);
 	
 	for (ae = allocs.ae_next; ae; ae = ae->ae_next) {
@@ -313,6 +331,7 @@ struct	alloc_entry	*ae;
 				exit(8);
 			}
 			munmap(ae->ae_mapping, ae->ae_mapsize);
+			ALLOC_UNLOCK();
 			return;
 		}
 	}
@@ -346,6 +365,8 @@ struct	alloc_entry	*ae;
 	if (!p)
 		return internal_wmalloc(size, file, line);
 	
+	ALLOC_LOCK();
+	
 	for (ae = allocs.ae_next; ae; ae = ae->ae_next)
 		if (ae->ae_addr == p) {
 			osize = ae->ae_size;
@@ -357,10 +378,13 @@ struct	alloc_entry	*ae;
 		ae_checkleaks();
 		abort();
 	}
-	
+
+	ALLOC_UNLOCK();
+		
 	new = internal_wmalloc(size, file, line);
 	bcopy(p, new, min(osize, size));
 	internal_wfree(p, file, line);
+	
 	return new;
 }
 #endif

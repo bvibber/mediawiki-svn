@@ -56,6 +56,8 @@ time_t current_time;
 # pragma error_messages(on, E_GLOBAL_COULD_BE_STATIC)
 #endif
 
+static void init_fde(struct fde *);
+
 static void wnet_accept(struct fde *);
 static void wnet_write_do(struct fde *);
 static void wnet_sendfile_do(struct fde *);
@@ -140,7 +142,7 @@ struct	fde		*newe;
 	}
 
 	newe = &fde_table[newfd];
-	bzero(newe, sizeof(struct fde));
+	init_fde(newe);
 	newe->fde_flags.open = 1;
 #ifdef USE_POLL
 	if (newfd > highest_fd)
@@ -153,6 +155,22 @@ struct	fde		*newe;
 
 	http_new(newe);
 	return;
+}
+
+static void
+init_fde(fde)
+	struct fde *fde;
+{
+	fde->fde_fd = 0;
+	fde->fde_desc = "<unknown>";
+	fde->fde_read_handler = NULL;
+	fde->fde_write_handler = NULL;
+	fde->fde_cdata = NULL;
+	fde->fde_rdata = fde->fde_wdata = NULL;
+	strcpy(fde->fde_straddr, "NONE");
+	fde->fde_epflags = 0;
+	bzero(&fde->fde_readbuf, sizeof(fde->fde_readbuf));
+	fde->fde_flags.open = 0;
 }
 
 int
@@ -172,7 +190,7 @@ wnet_open(desc)
 		return -1;
 	}
 
-	bzero(&fde_table[fd], sizeof(fde_table[fd]));
+	init_fde(&fde_table[fd]);
 	fde_table[fd].fde_fd = fd;
 	fde_table[fd].fde_desc = desc;
 	fde_table[fd].fde_flags.open = 1;

@@ -85,9 +85,6 @@ static void entity_send_fde_write_done(struct fde *, void *, int);
 static void entity_send_buf_done(struct fde *, void *, int);
 static void entity_send_fde_read(struct fde *);
 static void entity_send_file_done(struct fde *, void *, int);
-#ifdef THREADED_IO
-static void *thr_sendfile(void *);
-#endif
 
 void
 entity_free(entity)
@@ -649,13 +646,9 @@ struct	http_entity	*entity = data;
 	
 	if (entity->he_source_type == ENT_SOURCE_FILE) {
 		/* write file */
-#ifdef THREADED_IO
-		pthread_create(&entity->_he_thread, NULL, thr_sendfile, entity);
-#else
 		wnet_sendfile(fde->fde_fd, entity->he_source.fd.fd, 
 			entity->he_source.fd.size - entity->he_source.fd.off,
 			entity->he_source.fd.off, entity_send_file_done, entity);
-#endif
 		return;
 	}
 	
@@ -754,31 +747,3 @@ struct	http_entity	*entity = data;
 	entity->_he_func(entity, entity->_he_cbdata, res);
 	return;
 }	
-
-#ifdef THREADED_IO
-static void *
-thr_sendfile(data)
-	void *data;
-{
-struct	http_entity	*entity = data;
-	int i, val;
-
-	val = fcntl(entity->_he_target->fde_fd, F_GETFL, 0);
-	if (val == -1 || fcntl(entity->_he_target->fde_fd, F_SETFL, val & ~O_NONBLOCK) == -1) {
-		wlog(WLOG_WARNING, "fcntl(%d) failed: %s", entity->_he_target->fde_fd, strerror(errno));
-		entity->_he_func(entity, entity->_he_cbdata, -1);
-	}
-
-	i = sendfile(entity->_he_target->fde_fd, entity->he_source.fd.fd, &entity->he_source.fd.off,
-			entity->he_source.fd.size - entity->he_source.fd.off);
-
-	val = fcntl(entity->_he_target->fde_fd, F_GETFL, 0);
-	if (val == -1 || fcntl(entity->_he_target->fde_fd, F_SETFL, val | O_NONBLOCK) == -1) {
-		wlog(WLOG_WARNING, "fcntl(%d) failed: %s", entity->_he_target->fde_fd, strerror(errno));
-		entity->_he_func(entity, entity->_he_cbdata, -1);
-	}
-	
-	entity->_he_func(entity, entity->_he_cbdata, i);
-	return NULL;
-}
-#endif

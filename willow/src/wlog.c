@@ -17,9 +17,23 @@
 #include <syslog.h>
 #include <errno.h>
 
+#include "config.h"
+#ifdef THREADED_IO
+# include <pthread.h>
+#endif
+
 #include "wlog.h"
 #include "wnet.h"
 #include "wconfig.h"
+
+#ifdef THREADED_IO
+static pthread_mutex_t wlog_mtx = PTHREAD_MUTEX_INITIALIZER;
+# define WLOG_LOCK() pthread_mutex_lock(&wlog_mtx)
+# define WLOG_UNLOCK() pthread_mutex_unlock(&wlog_mtx)
+#else
+# define WLOG_LOCK()
+# define WLOG_UNLOCK()
+#endif
 
 struct log_variables logging;
 
@@ -71,6 +85,7 @@ wlog(int sev, const char *fmt, ...)
 	if (vsnprintf(s + i, 1023 - i, fmt, ap) > (1023 - i - 1))
 		abort();
 	
+	WLOG_LOCK();
 	if (logging.syslog)
 		syslog(syslog_pri[sev], "%s", s + i);
 	if (logging.fp) {
@@ -84,6 +99,7 @@ wlog(int sev, const char *fmt, ...)
 	
 	if (config.foreground)
 		(void)fprintf(stderr, "%s\n", s);
+	WLOG_UNLOCK();
 	va_end(ap);
 }
 

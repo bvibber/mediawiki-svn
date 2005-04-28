@@ -571,11 +571,18 @@ static void
 client_log_request(client)
 	struct http_client *client;
 {
+#ifdef THREADED_IO
+static	pthread_mutex_t	mtx;
+#endif
+
 	int	i;
 	
 	if (!config.access_log)
 		return;
 
+#ifdef THREADED_IO
+	pthread_mutex_lock(&mtx);
+#endif
 	i = fprintf(alf, "[%s] %s %s \"%s\" %d %s %s\n",
 			current_time_short, client->cl_fde->fde_straddr,
 			request_string[client->cl_reqtype],
@@ -591,6 +598,9 @@ client_log_request(client)
 		wlog(WLOG_ERROR, "flushing logfile: %s", strerror(errno));
 		exit(8);
 	}
+#ifdef THREADED_IO
+	pthread_mutex_unlock(&mtx);
+#endif
 }
 
 static void

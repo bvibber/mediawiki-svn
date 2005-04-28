@@ -16,6 +16,11 @@
 
 #include <netinet/in.h>
 
+#include "config.h"
+#ifdef THREADED_IO
+# include <pthread.h>
+#endif
+
 #include "willow.h"
 
 struct fde;
@@ -57,8 +62,30 @@ struct	readbuf		 fde_readbuf;
 	struct {
 		int	open:1;
 	}		 fde_flags;
+#ifdef THREADED_IO
+	pthread_mutex_t	 fde_mtx;
+#endif
 };
 extern struct fde *fde_table;
+
+#ifdef THREADED_IO
+# ifdef WILLOW_DEBUG
+#  define FDE_LOCK(e) do { \
+	wlog(WLOG_DEBUG, "%u locks %d", pthread_self(), (e)->fde_fd); \
+	pthread_mutex_lock(&(e)->fde_mtx); \
+} while(0)
+#  define FDE_UNLOCK(e) do { \
+	wlog(WLOG_DEBUG, "%u unlocks %d", pthread_self(), (e)->fde_fd); \
+	pthread_mutex_unlock(&(e)->fde_mtx); \
+} while(0)
+# else
+#  define FDE_LOCK(e) pthread_mutex_lock(&(e)->fde_mtx)
+#  define FDE_UNLOCK(e) pthread_mutex_unlock(&(e)->fde_mtx)
+# endif
+#else
+# define FDE_LOCK(e)
+# define FDE_UNLOCK(e)
+#endif
 
 struct client_data {
 struct	sockaddr_in	cdat_addr;

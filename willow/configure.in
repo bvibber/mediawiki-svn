@@ -56,6 +56,38 @@ rm -f conftest.c conftest.h
 
 AC_SUBST(dependstyle)
 
+threadflag=no
+AC_MSG_CHECKING(if $CC supports -pthread)
+cat >conftest.c <<eof
+int main() { return 0; }
+eof
+if $CC -pthread conftest.c -o conftest >/dev/null 2>&1; then
+	AC_MSG_RESULT(yes)
+	CFLAGS="$CFLAGS -pthread"
+	threadflag=yes
+else
+	AC_MSG_RESULT(no)
+fi
+rm -f conftest.c conftest
+
+AC_MSG_CHECKING(if $CC supports -mt)
+cat >conftest.c <<eof
+int main() { return 0; }
+eof	
+if $CC -mt conftest.c -o conftest >/dev/null 2>&1; then
+	AC_MSG_RESULT(yes)
+	CFLAGS="$CFLAGS -mt"
+	threadflag=yes
+else
+	AC_MSG_RESULT(no)
+fi
+rm -f conftest.c conftest
+
+if test x$threadflag = xno; then
+	CPPFLAGS="$CPPFLAGS -D_REENTRANT"
+	LDFLAGS="$LDFLAGS -lpthread"
+fi
+
 echo ""
 echo "looking for required C functions..."
 AC_SEARCH_LIBS(socket, socket)
