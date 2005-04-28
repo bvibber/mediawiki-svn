@@ -285,7 +285,7 @@ wcache_store_object(key, obj)
 	DBT		 keyt, datat;
 	DB_TXN		 *txn;
 	char		*keybuf;
-	int		 i, ret;
+	int		 i, ret = 0;
 	
 	WDEBUG((WLOG_DEBUG, "storing %s %d in cache, path %s", key->ck_key, key->ck_len, obj->co_path));
 	
@@ -301,7 +301,7 @@ wcache_store_object(key, obj)
 	
 	if (i = cacheenv->txn_begin(cacheenv, NULL, &txn, 0))
 		dberror("store_object: txn_begin", i);
-	if (i = cacheobjs->put(cacheobjs, txn, &keyt, &datat, DB_NOOVERWRITE))
+	if (cacheobjs->put(cacheobjs, txn, &keyt, &datat, DB_NOOVERWRITE))
 		ret = -1;
 	if (i = txn->commit(txn, 0))
 		dberror("store_object: commit", i);
