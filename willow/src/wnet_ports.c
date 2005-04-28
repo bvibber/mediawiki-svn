@@ -131,7 +131,7 @@ wnet_init_select(void)
 #ifdef THREADED_IO
 	WDEBUG((WLOG_DEBUG, "wnet_init_select: thread startup"));
 	
-	pthread_mutex_lock(&t_mtx);
+	(void) pthread_mutex_lock(&t_mtx);
 	
 	for (i = 0; i < NTHREADS; ++i) {
 		pthread_attr_t attr;

@@ -72,15 +72,15 @@ extern struct fde *fde_table;
 # ifdef WILLOW_DEBUG
 #  define FDE_LOCK(e) do { \
 	wlog(WLOG_DEBUG, "%u locks %d", pthread_self(), (e)->fde_fd); \
-	pthread_mutex_lock(&(e)->fde_mtx); \
+	(void)pthread_mutex_lock(&(e)->fde_mtx); \
 } while(0)
 #  define FDE_UNLOCK(e) do { \
 	wlog(WLOG_DEBUG, "%u unlocks %d", pthread_self(), (e)->fde_fd); \
-	pthread_mutex_unlock(&(e)->fde_mtx); \
+	(void)pthread_mutex_unlock(&(e)->fde_mtx); \
 } while(0)
 # else
-#  define FDE_LOCK(e) pthread_mutex_lock(&(e)->fde_mtx)
-#  define FDE_UNLOCK(e) pthread_mutex_unlock(&(e)->fde_mtx)
+#  define FDE_LOCK(e) (void)pthread_mutex_lock(&(e)->fde_mtx)
+#  define FDE_UNLOCK(e) (void)pthread_mutex_unlock(&(e)->fde_mtx)
 # endif
 #else
 # define FDE_LOCK(e)

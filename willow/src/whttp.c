@@ -581,7 +581,7 @@ static	pthread_mutex_t	mtx;
 		return;
 
 #ifdef THREADED_IO
-	pthread_mutex_lock(&mtx);
+	(void)pthread_mutex_lock(&mtx);
 #endif
 	i = fprintf(alf, "[%s] %s %s \"%s\" %d %s %s\n",
 			current_time_short, client->cl_fde->fde_straddr,
@@ -599,7 +599,7 @@ static	pthread_mutex_t	mtx;
 		exit(8);
 	}
 #ifdef THREADED_IO
-	pthread_mutex_unlock(&mtx);
+	(void)pthread_mutex_unlock(&mtx);
 #endif
 }
 

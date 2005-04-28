@@ -62,9 +62,13 @@ cat >conftest.c <<eof
 int main() { return 0; }
 eof
 if $CC -pthread conftest.c -o conftest >/dev/null 2>&1; then
-	AC_MSG_RESULT(yes)
-	THRCFLAGS="-pthread"
-	threadflag=yes
+	if ! $CC -pthread conftest.c -o conftest 2>&1 | grep unrecognized >/dev/null; then
+		AC_MSG_RESULT(yes)
+		THRCFLAGS="-pthread"
+		threadflag=yes
+	else
+		AC_MSG_RESULT(no)
+	fi
 else
 	AC_MSG_RESULT(no)
 fi
@@ -157,6 +161,7 @@ AC_ARG_ENABLE(debug-alloc, AC_HELP_STRING([--enable-debug-alloc],[Compile with d
 	fi
 ])
 
+use_threads=no
 AC_ARG_ENABLE(threaded-io, AC_HELP_STRING([--enable-threaded-io],[Use threads for I/O operations]),
 [	if test $enableval = yes; then
 		use_threads=yes

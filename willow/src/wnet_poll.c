@@ -40,7 +40,7 @@
 # define POLLWRNORM POLLOUT
 #endif
 
-struct pollfd *pfds;
+static struct pollfd *pfds;
 int highest_fd;
 
 void
@@ -55,7 +55,7 @@ wnet_init_select(void)
 void
 wnet_run(void)
 {
-	int		i, n = 0, pn ;
+	int		n = 0, i;
 
 	for (;;) {
 		if ((i = poll(pfds, highest_fd + 1, -1)) == -1)
@@ -84,7 +84,7 @@ wnet_register(fd, what, handler, data)
 	void *data;
 {
 struct	fde		*e = &fde_table[fd];
-	int		 flags = e->fde_epflags, mod = flags;
+	int		 flags = e->fde_epflags;
 
 	assert(fd < max_fd);
 	
