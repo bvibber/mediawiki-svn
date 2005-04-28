@@ -168,7 +168,7 @@ init_fde(fde)
 	fde->fde_write_handler = NULL;
 	fde->fde_cdata = NULL;
 	fde->fde_rdata = fde->fde_wdata = NULL;
-	strcpy(fde->fde_straddr, "NONE");
+	(void)strcpy(fde->fde_straddr, "NONE");
 	fde->fde_epflags = 0;
 	bzero(&fde->fde_readbuf, sizeof(fde->fde_readbuf));
 	fde->fde_flags.open = 0;
@@ -318,7 +318,7 @@ struct	wrtbuf *buf;
 	buf = e->fde_wdata;
 	origoff = buf->wb_off;
 	
-	WDEBUG((WLOG_DEBUG, "wnet_sendfile_do: for %d, off=%d, size=%d", e->fde_fd, buf->wb_off, buf->wb_size));
+	WDEBUG((WLOG_DEBUG, "wnet_sendfile_do: for %d, off=%ld, size=%d", e->fde_fd, (long) buf->wb_off, buf->wb_size));
 #if defined __linux__ || defined __sun
 	i = sendfile(e->fde_fd, buf->wb_source, &buf->wb_off, buf->wb_size);
 #elif defined __FreeBSD__

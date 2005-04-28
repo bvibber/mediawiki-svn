@@ -98,7 +98,7 @@ run_event(fde, events)
 	 */
 
 	if ((events & READABLE) && fde->fde_read_handler) {
-		WDEBUG((WLOG_DEBUG, "\tread", fde->fde_fd));
+		WDEBUG((WLOG_DEBUG, "\tread"));
 		fde->fde_read_handler(fde);
 		if (hadread && (fde->fde_epflags & READABLE))
 			if (port_associate(port, PORT_SOURCE_FD, fde->fde_fd, READABLE, NULL) == -1) {
@@ -108,7 +108,7 @@ run_event(fde, events)
 	}
 	
 	if ((events & (POLLWRNORM | POLLERR)) && fde->fde_write_handler) {
-		WDEBUG((WLOG_DEBUG, "\twrite", fde->fde_fd));
+		WDEBUG((WLOG_DEBUG, "\twrite"));
 		fde->fde_write_handler(fde);
 		if (hadwrite && (fde->fde_epflags & POLLWRNORM))
 			if (port_associate(port, PORT_SOURCE_FD, fde->fde_fd, POLLWRNORM, NULL) == -1) {
@@ -163,12 +163,12 @@ wnet_init_select(void)
 void
 wnet_run(void)
 {
-	int		i;
 	uint		nget = 1;
 
 #ifdef THREADED_IO
 	thread_event_wait(NULL);
 #else
+	int		i;
 	for (;;) {
 		i = port_getn(port, pe, GETN, &nget, NULL);
 		
@@ -185,8 +185,6 @@ wnet_run(void)
 
 		for (i = 0; i < nget; ++i) {
 			struct fde *e = &fde_table[pe[i].portev_object];
-			int hadwrite, hadread;
-			assert(pe[i].portev_object < max_fd);
 
 			WDEBUG((WLOG_DEBUG, "activity on fd %d [%s]", e->fde_fd, e->fde_desc));
 
@@ -206,7 +204,7 @@ wnet_register(fd, what, handler, data)
 struct	fde		*e = &fde_table[fd];
 	int		 oldflags = e->fde_epflags;
 
-	WDEBUG((WLOG_DEBUG, "wnet_register: %d [%s] for %d %p", fd, e->fde_desc, what, handler));
+	WDEBUG((WLOG_DEBUG, "wnet_register: %d [%s] for %d %p", fd, e->fde_desc, what, (void *)handler));
 
 	FDE_LOCK(e);
 	

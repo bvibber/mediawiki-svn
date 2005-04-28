@@ -2,6 +2,20 @@
 
 AC_INIT(configure.in)
 
+USER_CFLAGS="$CFLAGS"
+
+# autoconf brokenness
+if test -z $CC; then
+	CC=cc
+fi
+
+gcc_common="-W -Wall -Wno-unused"
+debug_cflags_gcc="$gcc_common -Werror -O0 -g"
+prod_cflags_gcc="$gcc_common -O3"
+sunpro_common="-errshort=tags -errtags -mc"
+debug_cflags_sunpro="-g $sunpro_common -v -xs"
+prod_cflags_sunpro="-fast $sunpro_common -xdepend=yes -xipo=2 -xalias_level=std"
+
 AC_CONFIG_HEADER(config.h)
 AC_DEFINE([VERSION], ["1.0.0-cvs"], [Version number of program])
 
@@ -9,6 +23,34 @@ echo ""
 echo "examining environment..."
 AC_LANG_C
 AC_PROG_CC
+
+if test x${ac_compiler_gnu+no} = xyes; then
+	debug_cflags=$debug_cflags_gcc
+	prod_cflags=$prod_cflags_gcc
+fi
+
+AC_MSG_CHECKING(whether we are using the SunPro C compiler)
+if $CC -V 2>&1 | grep "Sun C" >/dev/null; then
+	AC_MSG_RESULT(yes)
+	debug_cflags=$debug_cflags_sunpro
+	prod_cflags=$prod_cflags_sunpro
+fi
+
+mycflags=$prod_cflags
+AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug],[Compile with debug support]),
+[	if test $enableval = yes; then
+		AC_DEFINE([WILLOW_DEBUG], [], [Compile with debug support])
+		mycflags=$debug_cflags
+	fi
+])
+
+if test -z $USER_CFLAGS; then
+	USE_CFLAGS=$mycflags
+else
+	USE_CFLAGS=$USER_CFLAGS
+fi
+
+echo "using CFLAGS: $USE_CFLAGS"
 
 AC_PROG_INSTALL
 AC_MAKE_INCLUDE
@@ -149,12 +191,6 @@ AC_ARG_ENABLE(poll, AC_HELP_STRING([--enable-poll],[Force poll() use]),
 	fi
 ])
 
-AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug],[Compile with debug support]),
-[	if test $enableval = yes; then
-		AC_DEFINE([WILLOW_DEBUG], [], [Compile with debug support])
-	fi
-])
-
 AC_ARG_ENABLE(debug-alloc, AC_HELP_STRING([--enable-debug-alloc],[Compile with debugging memory allocator]),
 [	if test $enableval = yes; then
 		AC_DEFINE([WDEBUG_ALLOC], [], [Compile with debugging allocator])
@@ -242,7 +278,9 @@ if test x$SELECTTYPE != xports -a x$use_threads = xyes; then
 fi
 
 AC_SUBST(SELECTTYPE)
+
 datadir="${datadir}/willow"
+CFLAGS="$USE_CFLAGS"
 
 AC_OUTPUT(
 	mk/prog.mk 

@@ -482,7 +482,7 @@ header_undump(head, fd, len)
 	int fd;
 	off_t *len;
 {
-	int		 i, j, n = 0;
+	int		 i = 0, j = 0, n = 0;
 struct	header_list	*it = head;
 	ssize_t		 r;
 	
