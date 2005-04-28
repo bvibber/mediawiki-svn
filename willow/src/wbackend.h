@@ -8,6 +8,10 @@
 #ifndef WBACKEND_H
 #define WBACKEND_H
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include <sys/types.h>
 
 #include <netinet/in.h>

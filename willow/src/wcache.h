@@ -4,9 +4,13 @@
  * Willow: Lightweight HTTP reverse-proxy.
  * wcache: entity caching.
  */
- 
+
 #ifndef WCACHE_H
 #define WCACHE_H
+
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
 
 #define WCACHE_FREE	1
 
@@ -32,7 +36,7 @@ struct cache_object {
 	char	 *co_path;	/* Object data location			*/
 };
 
-void wcache_init(void);
+void wcache_init(int);
 void wcache_setupfs(void);
 void wcache_shutdown(void);
 
@@ -40,7 +44,7 @@ struct cache_key *wcache_make_key(const char *host, const char *path);
 void wcache_free_key(struct cache_key *);
 
 struct cache_object *wcache_find_object(struct cache_key *);
-struct cache_object *wcache_new_object(struct cache_key *);
+struct cache_object *wcache_new_object(void);
 int wcache_store_object(struct cache_key *, struct cache_object *);
 void wcache_free_object(struct cache_object *);
 

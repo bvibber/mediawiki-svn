@@ -50,3 +50,16 @@ struct foo_buffer {
 	 */
 
 Use if (!strcmp(...)), not if (strcmp(...) == 0).
+
+The standard source code header is:
+
+/* @(#) $Header$ */
+/* This source code is in the public domain. */
+/*
+ * Willow: Lightweight HTTP reverse-proxy.
+ * <module>: <description>
+ */
+
+#ifdef __SUNPRO_CC
+# pragma ident "@(#)$Header$"
+#endif

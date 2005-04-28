@@ -5,11 +5,20 @@
  * wcache: entity caching.
  */
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 /*
  * Cache metadata is stored in a BerkeleyDB database, along with a key which
  * represents the filename. The objects themselves are stored on a filesystem,
  * using the key and a path constructed from the key's prefix; for example,
  * the key "123456" would be stored as "1/2/3/123456".
+ *
+ * This is rather flawed, because if two people try to start caching the same
+ * object at the same time, duplicate files are created in the cache, and
+ * won't ever be deleted.  What should happen is that finding or creating
+ * a cached object is a single atomic operation.
  */
  
 #include <sys/types.h>
@@ -19,6 +28,7 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <math.h>
+#include <strings.h>
 
 #include <db.h>
  
@@ -27,16 +37,26 @@
 #include "wconfig.h"
 #include "willow.h"
 
-DB_ENV *cacheenv;
-DB *cacheobjs;
+static DB_ENV *cacheenv;
+static DB *cacheobjs;
 
 #define CACHEDIR "__objects__"
 
+static void dberror(const char *, int);
 static void cache_writestate(struct cache_state *, DB_TXN *);
 static int cache_getstate(struct cache_state *, DB_TXN *);
 static int cache_next_id(void);
 
 static struct cache_state state;
+
+static void dberror(txt, err)
+	const char *txt;
+	int err;
+{
+	wlog(WLOG_ERROR, "fatal database error: %s: %s", txt, db_strerror(err));
+	wcache_shutdown();
+	exit(8);
+}
 
 void
 wcache_setupfs(void)
@@ -47,34 +67,47 @@ struct	cache_state	 state;
 	DB_TXN		 *txn;
 	
 	for (cd = config.caches; cd < config.caches + config.ncaches; ++cd) {
-		char *dir = wmalloc(strlen(cd->dir) + sizeof(CACHEDIR) + 7);
-		char *env;
+		size_t	 len, dlen;
+		char 	*dir, *env;
 		
-		sprintf(dir, "%s/%s", cd->dir, CACHEDIR);
-		env = wmalloc(strlen(cd->dir) + 9);
-		sprintf(env, "%s/__env__", cd->dir);
+		dlen = strlen(cd->dir) + sizeof(CACHEDIR) + 1 + 6 /* 0/1/2/ */;
+		if ((dir = wmalloc(dlen)) == NULL)
+			outofmemory();
+		
+		safe_snprintf(dir, dlen, "%s/%s", cd->dir, CACHEDIR);
+		
+		len = strlen(cd->dir) + sizeof("/__env__") + 1;
+		if ((env = wmalloc(len)) == NULL)
+			outofmemory();
+		
+		safe_snprintf(env, len, "%s/__env__", cd->dir);
 		
 		/* create base directory if it doesn't exist */
+		/*LINTED unsafe mkdir*/
 		if (mkdir(cd->dir, 0700) < 0 || mkdir(dir, 0700) < 0 || mkdir(env, 0700)) {
 			wlog(WLOG_ERROR, "%s: mkdir: %s", cd->dir, strerror(errno));
 			exit(8);
 		}
 		
 		for (i = 0; i < 10; ++i) {
-			sprintf(dir, "%s/%s/%d", cd->dir, CACHEDIR, i);
+			safe_snprintf(dir, dlen, "%s/%s/%d", cd->dir, CACHEDIR, i);
+			
+			/*LINTED unsafe mkdir*/
 			if (mkdir(dir, 0700) < 0) {
 				wlog(WLOG_ERROR, "%s: mkdir: %s", dir, strerror(errno));
 				exit(8);
 			}
 			
 			for (j = 0; j < 10; ++j) {
-				sprintf(dir, "%s/%s/%d/%d", cd->dir, CACHEDIR, i, j);
+				safe_snprintf(dir, dlen, "%s/%s/%d/%d", cd->dir, CACHEDIR, i, j);
+				/*LINTED unsafe mkdir*/
 				if (mkdir(dir, 0700) < 0) {
 					wlog(WLOG_ERROR, "%s: mkdir: %s", dir, strerror(errno));
 					exit(8);
 				}
 				for (k = 0; k < 10; ++k) {
-					sprintf(dir, "%s/%s/%d/%d/%d", cd->dir, CACHEDIR, i, j, k);
+					safe_snprintf(dir, dlen, "%s/%s/%d/%d/%d", cd->dir, CACHEDIR, i, j, k);
+					/*LINTED unsafe mkdir*/
 					if (mkdir(dir, 0700) < 0) {
 						wlog(WLOG_ERROR, "%s: mkdir: %s", dir, strerror(errno));
 						exit(8);
@@ -86,19 +119,18 @@ struct	cache_state	 state;
 		wfree(env);
 		wlog(WLOG_NOTICE, "created cache directory structure for %s", cd->dir);
 	}
-	wcache_init();
+	wcache_init(0);
 	
-	memset(&state, 0, sizeof(state));
+	bzero(&state, sizeof(state));
 	state.cs_id = 1000;
-	if (i = cacheenv->txn_begin(cacheenv, NULL, &txn, 0)) {
-		wlog(WLOG_ERROR, "setupfs: txn_begin: %s", db_strerror(i));
-		exit(8);
-	}
+	if (i = cacheenv->txn_begin(cacheenv, NULL, &txn, 0))
+		dberror("setupfs: txn_begin", i);
+	
 	cache_writestate(&state, txn);
-	if (i = txn->commit(txn, 0)) {
-		wlog(WLOG_ERROR, "setupfs: commit: %s", db_strerror(i));
-		exit(8);
-	}
+	
+	if (i = txn->commit(txn, 0))
+		dberror("setupfs: commit", i);
+
 	wlog(WLOG_NOTICE, "wrote initial cache state");
 	wcache_shutdown();
 }									
@@ -106,72 +138,84 @@ struct	cache_state	 state;
 void
 wcache_shutdown(void)
 {
-	cacheobjs->close(cacheobjs, 0);
-	cacheenv->close(cacheenv, 0);
+	int i;
+	
+	/* don't use dberror() here because it calls us */
+	/*LINTED =/==*/
+	if ((i = cacheobjs->close(cacheobjs, 0)) || (i = cacheenv->close(cacheenv, 0))) {
+		wlog(WLOG_ERROR, "error closing database: %s", db_strerror(i));
+		exit(8);
+	}
 }
 
 void
-wcache_init(void)
+wcache_init(readstate)
+	int readstate;
 {
 struct	cachedir	*cd;
 	int		 i;
-struct	stat		 sb;
 	DB_TXN		*txn;
 	
 	wlog(WLOG_NOTICE, "using bdb: %s", DB_VERSION_STRING);
 	
 	/* only one cache dir supported for now... */
 	for (cd = config.caches; cd < config.caches + config.ncaches; ++cd) {
-		char *dir;
+		size_t	 len;
+		char	*dir;
+
+		len = strlen(cd->dir) + sizeof("/__env__");		
+		if ((dir = wmalloc(len)) == NULL)
+			outofmemory();
 		
-		fprintf(stderr, "pass\n");
-		dir = wmalloc(strlen(cd->dir) + 9);
-		sprintf(dir, "%s/__env__", cd->dir);
+		safe_snprintf(dir, len, "%s/__env__", cd->dir);
 		
-		if (i = db_env_create(&cacheenv, 0)) {
-			wlog(WLOG_ERROR, "%s: db_env_create: %s", 
-					cd->dir, db_strerror(i));
-			exit(8);
-		}
+		if (i = db_env_create(&cacheenv, 0))
+			dberror("init: env_create", i);
 
 		cacheenv->set_errfile(cacheenv, stderr);
 		cacheenv->set_errpfx(cacheenv, "willow");
 
 		if (i = cacheenv->open(cacheenv, dir, DB_CREATE | DB_INIT_TXN | DB_INIT_LOCK | 
-				DB_INIT_MPOOL | DB_PRIVATE | DB_THREAD, 0)) {
-			wlog(WLOG_ERROR, "%s: open: %s",
-					cd->dir, db_strerror(i));
-			exit(8);
-		}
+				DB_INIT_MPOOL | DB_PRIVATE | DB_THREAD, 0))
+			dberror("init: env open", i);
 		
-		if (i = db_create(&cacheobjs, cacheenv, 0)) {
-			wlog(WLOG_ERROR, "%s: db_create: %s",
-					cd->dir, db_strerror(i));
-			exit(8);
-		}
+		if (i = db_create(&cacheobjs, cacheenv, 0))
+			dberror("init: db_create", i);
 		
-		cacheenv->txn_begin(cacheenv, NULL, &txn, 0);
+		if (i = cacheenv->txn_begin(cacheenv, NULL, &txn, 0))
+			dberror("init: open txn_begin", i);
+		
 		if (i = cacheobjs->open(cacheobjs, txn, "cacheobjs.db", NULL, DB_HASH,
-				DB_CREATE, 0600)) {
-			wlog(WLOG_ERROR, "%s: db open: %s", cd->dir, db_strerror(i));
-			exit(8);
-		}
-		txn->commit(txn, 0);
+				DB_CREATE, 0600))
+			dberror("init: db open", i);
+		
+		if (i = txn->commit(txn, 0))
+			dberror("init: open commit", i);
 		
 		wfree(dir);
 	}
 	
-	cacheenv->txn_begin(cacheenv, NULL, &txn, 0);
-	cache_getstate(&state, txn);
-	txn->commit(txn, 0);
+	if (readstate) {
+		if (i = cacheenv->txn_begin(cacheenv, NULL, &txn, 0))
+			dberror("init: state txn_begin", i);
+		if (cache_getstate(&state, txn) == -1) {
+			wlog(WLOG_ERROR, "cache state unavailable");
+			exit(8);
+		}
+		if (i = txn->commit(txn, 0))
+			dberror("init: state commit", i);
+	}
 }
 
 static char *
 make_keybuf(key)
 	struct cache_key *key;
 {
-	char *buf = wmalloc(key->ck_len + 1);
-	memcpy(buf, key->ck_key, key->ck_len + 1);
+	char	*buf;
+	
+	if ((buf = wmalloc(key->ck_len + 1)) == NULL)
+		outofmemory();
+	bcopy(key->ck_key, buf, key->ck_len + 1);
 	return buf;
 }
 
@@ -179,9 +223,13 @@ static char *
 make_databuf(obj)
 	struct cache_object *obj;
 {
-	char *buf = wmalloc(sizeof(struct cache_object) + obj->co_plen + 1);
-	memcpy(buf, obj, sizeof(struct cache_object));
-	memcpy(buf + sizeof(struct cache_object), obj->co_path, obj->co_plen + 1);
+	char	*buf;
+	
+	if ((buf = wmalloc(sizeof(struct cache_object) + obj->co_plen + 1)) == NULL)
+		outofmemory();
+	
+	bcopy(obj, buf, sizeof(struct cache_object));
+	bcopy(obj->co_path, buf + sizeof(struct cache_object), obj->co_plen + 1);
 	return buf;
 }
 	
@@ -192,35 +240,39 @@ wcache_find_object(key)
 	DBT		 keyt, datat;
 	DB_TXN		*txn;
 struct	cache_object	*data;
-	int		 i;
-	char		*keybuf, *databuf;
+	int		 i, j;
+	char		*keybuf;
 
-	DEBUG((WLOG_DEBUG, "wcache_find_object: looking for %s %d", key->ck_key, key->ck_len));
+	WDEBUG((WLOG_DEBUG, "wcache_find_object: looking for %s %d", key->ck_key, key->ck_len));
 	keybuf = make_keybuf(key);	
 	
-	memset(&keyt, 0, sizeof(keyt));
-	memset(&datat, 0, sizeof(datat));
+	bzero(&keyt, sizeof(keyt));
+	bzero(&datat, sizeof(datat));
 	
 	keyt.data = keybuf;
 	keyt.size = key->ck_len + 1;
 	
 	datat.flags = DB_DBT_MALLOC;
 	
-	cacheenv->txn_begin(cacheenv, NULL, &txn, 0);
-	i = cacheobjs->get(cacheobjs, txn, &keyt, &datat, 0);
-	txn->commit(txn, 0);
+	if (i = cacheenv->txn_begin(cacheenv, NULL, &txn, 0))
+		dberror("find_object: txn_begin", i);
 	
-	wfree(keybuf);
-	
-	if (i) {
+	if (i = cacheobjs->get(cacheobjs, txn, &keyt, &datat, 0)) {
+		wfree(keybuf);
+		if (j = txn->abort(txn))
+			dberror("find_object: abort", j);
 		if (i != DB_NOTFOUND)
-			wlog(WLOG_WARNING, "database error: %s", db_strerror(i));
+			dberror("find_object: get", i);
 		return NULL;
 	}
-	
+	if (i = txn->commit(txn, 0))
+		dberror("find_object: commit", i);
+
+	wfree(keybuf);
+			
 	data = datat.data;
 	data->co_path = (char *)data + sizeof(*data);
-	DEBUG((WLOG_DEBUG, "found %s, path=[%s]", key->ck_key, data->co_path));
+	WDEBUG((WLOG_DEBUG, "found %s, path=[%s]", key->ck_key, data->co_path));
 	data->co_flags &= ~WCACHE_FREE;
 	return data;
 }
@@ -232,13 +284,13 @@ wcache_store_object(key, obj)
 {
 	DBT		 keyt, datat;
 	DB_TXN		 *txn;
-	char		*keybuf, *databuf;
-	int		 i;
+	char		*keybuf;
+	int		 i, ret;
 	
-	DEBUG((WLOG_DEBUG, "storing %s %d in cache, path %s", key->ck_key, key->ck_len, obj->co_path));
+	WDEBUG((WLOG_DEBUG, "storing %s %d in cache, path %s", key->ck_key, key->ck_len, obj->co_path));
 	
-	memset(&keyt, 0, sizeof(keyt));
-	memset(&datat, 0, sizeof(datat));
+	bzero(&keyt, sizeof(keyt));
+	bzero(&datat, sizeof(datat));
 	keybuf = make_keybuf(key);
 	
 	keyt.data = keybuf;
@@ -247,18 +299,17 @@ wcache_store_object(key, obj)
 	datat.data = make_databuf(obj);
 	datat.size = sizeof(struct cache_object) + obj->co_plen + 1;
 	
-	cacheenv->txn_begin(cacheenv, NULL, &txn, 0);
-	i = cacheobjs->put(cacheobjs, txn, &keyt, &datat, DB_NOOVERWRITE);
-	txn->commit(txn, 0);
+	if (i = cacheenv->txn_begin(cacheenv, NULL, &txn, 0))
+		dberror("store_object: txn_begin", i);
+	if (i = cacheobjs->put(cacheobjs, txn, &keyt, &datat, DB_NOOVERWRITE))
+		ret = -1;
+	if (i = txn->commit(txn, 0))
+		dberror("store_object: commit", i);
 	
 	wfree(keybuf);
 	wfree(datat.data);
 	
-	if (i) {
-		wlog(WLOG_WARNING, "cache_put: %s", db_strerror(i));
-		return i;
-	}
-	return 0;
+	return ret;
 }
 
 struct cache_key *
@@ -267,10 +318,12 @@ wcache_make_key(host, path)
 {
 struct	cache_key	*ret;
 	
-	ret = wmalloc(sizeof(*ret));
+	if ((ret = wmalloc(sizeof(*ret))) == NULL)
+		outofmemory();
+	
 	ret->ck_len = strlen(host) + strlen(path);
 	ret->ck_key = wmalloc(ret->ck_len + 1);
-	sprintf(ret->ck_key, "%s%s", host, path);
+	safe_snprintf(ret->ck_key, ret->ck_len, "%s%s", host, path);
 	return ret;
 }
 
@@ -302,10 +355,10 @@ cache_writestate(state, txn)
 	DBT	keyt, datat;
 	int	i;
 	
-	DEBUG((WLOG_DEBUG, "writing cache state"));
+	WDEBUG((WLOG_DEBUG, "writing cache state"));
 	
-	memset(&keyt, 0, sizeof(keyt));
-	memset(&datat, 0, sizeof(datat));
+	bzero(&keyt, sizeof(keyt));
+	bzero(&datat, sizeof(datat));
 	
 	keyt.size = 5;
 	keyt.data = "STATE";
@@ -313,10 +366,8 @@ cache_writestate(state, txn)
 	datat.size = sizeof(*state);
 	datat.data = state;
 	
-	if (i = cacheobjs->put(cacheobjs, txn, &keyt, &datat, 0)) {
-		wlog(WLOG_ERROR, "writing cache state: %s", db_strerror(i));
-	}
-	DEBUG((WLOG_DEBUG, "write: cs_id = %d", state->cs_id));
+	if (i = cacheobjs->put(cacheobjs, txn, &keyt, &datat, 0))
+		dberror("writestate: put", i);
 }
 
 static int
@@ -327,10 +378,10 @@ cache_getstate(state, txn)
 	DBT	keyt, datat;
 	int	i;
 	
-	DEBUG((WLOG_DEBUG, "reading cache state"));
+	WDEBUG((WLOG_DEBUG, "reading cache state"));
 	
-	memset(&keyt, 0, sizeof(keyt));
-	memset(&datat, 0, sizeof(datat));
+	bzero(&keyt, sizeof(keyt));
+	bzero(&datat, sizeof(datat));
 	
 	keyt.size = 5;
 	keyt.data = "STATE";
@@ -339,55 +390,60 @@ cache_getstate(state, txn)
 	datat.data = state;
 	datat.flags = DB_DBT_USERMEM;
 		
-	if (i = cacheobjs->get(cacheobjs, txn, &keyt, &datat, 0)) {
-		wlog(WLOG_WARNING, "reading cache state: %s", db_strerror(i));
-		return i;
-	}
+	if (i = cacheobjs->get(cacheobjs, txn, &keyt, &datat, 0))
+		dberror("getstate: get", i);
 	
-	DEBUG((WLOG_DEBUG, "cs_id = %d", state->cs_id));
+	WDEBUG((WLOG_DEBUG, "cs_id = %d", state->cs_id));
 	return 0;
 }
 
 static int
 cache_next_id(void)
 {
-	DB_TXN *txn;
-	int	i;
+	DB_TXN	*txn;
+	int	 i;
 	
-	cacheenv->txn_begin(cacheenv, NULL, &txn, 0);
+	if (i = cacheenv->txn_begin(cacheenv, NULL, &txn, 0))
+		dberror("next_id: txn_begin", i);
+	
 	state.cs_id++;
 	cache_writestate(&state, txn);
-	txn->commit(txn, 0);
+	
+	if (i = txn->commit(txn, 0))
+		dberror("next_id: commit", i);
 
 	return state.cs_id;
 }
 
 struct cache_object *
-wcache_new_object(key)
-	struct cache_key *key;
+wcache_new_object(void)
 {
 struct	cache_object	*ret;
 	int		 i;
 	char		 *p, *s, a[11];
 
-	ret = wmalloc(sizeof(*ret));
-	memset(ret, 0, sizeof(*ret));
+	if ((ret = wmalloc(sizeof(*ret))) == NULL)
+		outofmemory();
+	
+	bzero(ret, sizeof(*ret));
 	ret->co_id = cache_next_id();
 	
-	ret->co_plen = (log10(ret->co_id) + 1) + 6;
-	ret->co_path = wmalloc(ret->co_plen + 1);
+	ret->co_plen = ((int) log10((double) ret->co_id) + 1) + 6;
+	if ((ret->co_path = wmalloc(ret->co_plen + 1)) == NULL)
+		outofmemory();
 	p = ret->co_path;
-	sprintf(a, "%d", ret->co_id);
+	safe_snprintf(a, 10, "%d", ret->co_id);
 	s = a + strlen(a) - 1;
-	DEBUG((WLOG_DEBUG, "id=%d a=%s", ret->co_id, a));
+	WDEBUG((WLOG_DEBUG, "id=%d a=%s", ret->co_id, a));
 	
 	for (i = 0; i < 3; ++i) {
 		*p++ = *s--;
 		*p++ = '/';
 	}
 	*p = '\0';
-	strcat(ret->co_path, a);
+	if (strlcat(ret->co_path, a, ret->co_plen + 1) >= ret->co_plen + 1)
+		abort();
 	ret->co_flags |= WCACHE_FREE;
-	DEBUG((WLOG_DEBUG, "new object path is [%s], len %d", ret->co_path, ret->co_plen));
+	WDEBUG((WLOG_DEBUG, "new object path is [%s], len %d", ret->co_path, ret->co_plen));
 	return ret;
 }

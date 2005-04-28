@@ -5,6 +5,10 @@
  * wconfig: configuration.
  */
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include <sys/types.h>
 #include <sys/socket.h>
 
@@ -17,6 +21,7 @@
 #include <string.h>
 #include <syslog.h>
 #include <errno.h>
+#include <strings.h>
 
 #include "willow.h"
 #include "wconfig.h"
@@ -106,10 +111,10 @@ wconfig_init(const char *file)
 			*p = '\0';
 		if (!*line)
 			continue;
-		skip(&s);
+		(void)skip(&s);
 		if (!strcmp(opt, "backend")) {
 			if (!*s) {
-				fprintf(stderr, "%s:%d: no backend specified\n",
+				(void)fprintf(stderr, "%s:%d: no backend specified\n",
 					file, current_line);
 				exit(8);
 			}
@@ -117,7 +122,7 @@ wconfig_init(const char *file)
 			continue;
 		} else if (!strcmp(opt, "backend_file")) {
 			if (!*s) {
-				fprintf(stderr, "%s:%d: no file specified\n",
+				(void)fprintf(stderr, "%s:%d: no file specified\n",
 					file, current_line);
 				exit(8);
 			}
@@ -125,7 +130,7 @@ wconfig_init(const char *file)
 			continue;
 		} else if (!strcmp(opt, "listen")) {
 			if (!*s) {
-				fprintf(stderr, "%s:%d: no address specified\n",
+				(void)fprintf(stderr, "%s:%d: no address specified\n",
 					file, current_line);
 				exit(8);
 			}
@@ -138,30 +143,30 @@ wconfig_init(const char *file)
 			add_log_options(s);
 		} else if (!strcmp(opt, "log_level")) {
 			if (!*s) {
-				fprintf(stderr, "%s:%d: no log level specified\n",
+				(void)fprintf(stderr, "%s:%d: no log level specified\n",
 					file, current_line);
 				exit(8);
 			}
 			if (atoi(s) > WLOG_MAX) { 
-				fprintf(stderr, "%s:%d: invalid log level\n",
+				(void)fprintf(stderr, "%s:%d: invalid log level\n",
 					file, current_line);
 				exit(8);
 			}
 			logging.level = atoi(s);
 		} else if (!strcmp(opt, "access_log")) {
 			if (!*s) {
-				fprintf(stderr, "%s:%d: no filename specified\n",
+				(void)fprintf(stderr, "%s:%d: no filename specified\n",
 						file, current_line);
 				exit(8);
 			}
 			config.access_log = wstrdup(s);
 		} else {
-			fprintf(stderr, "%s:%d: unknown configuration option \"%s\"\n",
+			(void)fprintf(stderr, "%s:%d: unknown configuration option \"%s\"\n",
 				file, current_line, opt);
 			exit(8);
 		}
 	}
-	fclose(cfg);
+	(void)fclose(cfg);
 }
 
 static struct syslog_facility {
@@ -197,17 +202,13 @@ add_listener(addr)
 struct	listener	*nl;
 	char		*port, *host = addr;
 
-	if ((nl = wmalloc(sizeof(*nl))) == NULL) {
-		fputs("out of memory\n", stderr);
-		abort();
-	}
+	if ((nl = wmalloc(sizeof(*nl))) == NULL)
+		outofmemory();
 
-	memset(nl, 0, sizeof(struct listener));
+	bzero(nl, sizeof(struct listener));
 
-	if ((listeners = wrealloc(listeners, sizeof(struct listener *) * ++nlisteners)) == NULL) {
-		fputs("out of memory\n", stderr);
-		abort();
-	}
+	if ((listeners = wrealloc(listeners, sizeof(struct listener *) * ++nlisteners)) == NULL)
+		outofmemory();
 	
 	if ((port = strchr(host, ':')) != NULL) {
 		*port++ = '\0';
@@ -231,15 +232,15 @@ add_cachedir(line)
 	dir = skip(&line);
 	sizes = skip(&line);
 	if (!*dir) {
-		fprintf(stderr, "%s:%d: must specify directory\n", current_file, current_line);
+		(void)fprintf(stderr, "%s:%d: must specify directory\n", current_file, current_line);
 		exit(8);
 	}
 	if (!*sizes) {
-		fprintf(stderr, "%s:%d: must specify size\n", current_file, current_line);
+		(void)fprintf(stderr, "%s:%d: must specify size\n", current_file, current_line);
 		exit(8);
 	}
 	if ((size = strtosize(sizes)) == -1) {
-		fprintf(stderr, "%s:%d: invalid cache size \"%s\"\n", current_file, current_line, sizes);
+		(void)fprintf(stderr, "%s:%d: invalid cache size \"%s\"\n", current_file, current_line, sizes);
 		exit(8);
 	}
 	
@@ -259,24 +260,23 @@ add_log_options(line)
 	char *option = skip(&line);
 
 	if (!*option) {
-		fprintf(stderr, "%s:%d: must specify type\n", current_file, current_line);
+		(void)fprintf(stderr, "%s:%d: must specify type\n", current_file, current_line);
 		exit(8);
 	}
 
 	if (!strcmp(option, "file")) {
 		if (!*line) {
-			fprintf(stderr, "%s:%d: no log file specified\n",
+			(void)fprintf(stderr, "%s:%d: no log file specified\n",
 				current_file, current_line);
 			exit(8);
 		}
-		logging.file = wmalloc(strlen(line)+1);
-		strcpy(logging.file, line);
+		logging.file = wstrdup(line);
 	} else if (!strcmp(option, "syslog")) {
 		struct syslog_facility *fac = syslog_facilities;
 
 		logging.syslog = 1;
 		if (!*line) {
-			fprintf(stderr, "%s:%d: must specify facility\n",
+			(void)fprintf(stderr, "%s:%d: must specify facility\n",
 					current_file, current_line);
 			exit(8);
 		}
@@ -288,7 +288,7 @@ add_log_options(line)
 			}
 		}
 		if (!fac->name) {
-			fprintf(stderr, "%s:%d: uinrecognised facility '%s'\n",
+			(void)fprintf(stderr, "%s:%d: uinrecognised facility '%s'\n",
 					current_file, current_line, line);
 			exit(8);
 		}

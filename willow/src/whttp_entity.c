@@ -5,6 +5,10 @@
  * whttp_entity: HTTP entity handling.
  */
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 /* How does this work?
  * 
  * Each HTTP request can be divided into two entities: the request and the
@@ -51,7 +55,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
+/*LINTED*/
 #include <fcntl.h>
+#include <strings.h>
 
 #include "willow.h"
 #include "whttp.h"
@@ -79,7 +85,9 @@ static void entity_send_fde_write_done(struct fde *, void *, int);
 static void entity_send_buf_done(struct fde *, void *, int);
 static void entity_send_fde_read(struct fde *);
 static void entity_send_file_done(struct fde *, void *, int);
+#ifdef THREADED_IO
 static void *thr_sendfile(void *);
+#endif
 
 void
 entity_free(entity)
@@ -100,7 +108,7 @@ entity_read_headers(entity, func, udata)
 	entity->_he_cbdata = udata;
 	entity->_he_func = func;
 
-	DEBUG((WLOG_DEBUG, "entity_read_headers: starting"));
+	WDEBUG((WLOG_DEBUG, "entity_read_headers: starting"));
 	/* XXX source for an entity header read is _always_ an fde */
 	wnet_register(entity->he_source.fde->fde_fd, FDE_READ, entity_read_callback, entity);
 	//entity_read_callback(entity->he_source.fde);
@@ -112,17 +120,18 @@ entity_read_callback(fde)
 {
 struct	http_entity	*entity = fde->fde_rdata;
 
-	DEBUG((WLOG_DEBUG, "entity_read_callback: called"));
+	WDEBUG((WLOG_DEBUG, "entity_read_callback: called"));
 	
 	if (readbuf_data_left(&entity->he_source.fde->fde_readbuf) == 0) {
 		switch (readbuf_getdata(entity->he_source.fde)) {
 		case -1:
-			DEBUG((WLOG_DEBUG, "entity_read_callback: readbuf_getdata returned -1, errno=%d %s", 
+			WDEBUG((WLOG_DEBUG, "entity_read_callback: readbuf_getdata returned -1, errno=%d %s", 
 					errno, strerror(errno)));
 			if (errno == EWOULDBLOCK)
 				return;
+		/*FALLTHRU*/
 		case 0:
-			DEBUG((WLOG_DEBUG, "entity_read_callback: readbuf_getdata returned 0"));
+			WDEBUG((WLOG_DEBUG, "entity_read_callback: readbuf_getdata returned 0"));
 			wnet_register(entity->he_source.fde->fde_fd, FDE_READ, NULL, NULL);
 			entity->he_flags.error = 1;
 			entity->_he_func(entity, entity->_he_cbdata, -1);
@@ -130,9 +139,9 @@ struct	http_entity	*entity = fde->fde_rdata;
 		}
 	}
 
-	DEBUG((WLOG_DEBUG, "entity_read_callback: running header parse"));
+	WDEBUG((WLOG_DEBUG, "entity_read_callback: running header parse"));
 	if (parse_headers(entity) == -1) {
-		DEBUG((WLOG_DEBUG, "entity_read_callback: parse_headers returned -1"));
+		WDEBUG((WLOG_DEBUG, "entity_read_callback: parse_headers returned -1"));
 		wnet_register(entity->he_source.fde->fde_fd, FDE_READ, NULL, NULL);
 		entity->he_flags.error = 1;
 		entity->_he_func(entity, entity->_he_cbdata, -1);
@@ -140,7 +149,7 @@ struct	http_entity	*entity = fde->fde_rdata;
 	}
 
 	if (entity->_he_state == ENTITY_STATE_DONE) {
-		DEBUG((WLOG_DEBUG, "entity_read_callback: client is ENTITY_STATE_DONE"));
+		WDEBUG((WLOG_DEBUG, "entity_read_callback: client is ENTITY_STATE_DONE"));
 		wnet_register(entity->he_source.fde->fde_fd, FDE_READ, NULL, NULL);
 		entity->_he_func(entity, entity->_he_cbdata, 01);
 		return;
@@ -293,7 +302,7 @@ parse_reqtype(entity)
 	char	*request = entity->he_source.fde->fde_readbuf.rb_p;
 	int	i;
 
-	DEBUG((WLOG_DEBUG, "parse_reqtype: called, response=%d", (int)entity->he_flags.response));
+	WDEBUG((WLOG_DEBUG, "parse_reqtype: called, response=%d", (int)entity->he_flags.response));
 	
 	/*
 	 * These probably shouldn't be handled in the same function.
@@ -315,7 +324,7 @@ parse_reqtype(entity)
 		/* OK */
 		entity->he_rdata.response.status_str = s;
 		
-		DEBUG((WLOG_DEBUG, "parse_reqtype: \"%s\" \"%d\" \"%s\"",
+		WDEBUG((WLOG_DEBUG, "parse_reqtype: \"%s\" \"%d\" \"%s\"",
 				request, entity->he_rdata.response.status,
 				entity->he_rdata.response.status_str));
 		return 0;
@@ -350,6 +359,9 @@ parse_reqtype(entity)
 	return 0;
 }
 
+#ifdef __lint
+# pragma error_messages(off, E_GLOBAL_COULD_BE_STATIC)
+#endif
 /*
  * Header handling.
  */
@@ -367,8 +379,11 @@ struct	header_list	*next = head->hl_next;
 		wfree(this);
 	}
 
-	memset(head, 0, sizeof(*head));
+	bzero(head, sizeof(*head));
 }
+#ifdef __lint
+# pragma error_messages(on, E_GLOBAL_COULD_BE_STATIC)
+#endif
 
 void
 header_add(head, name, value)
@@ -407,25 +422,34 @@ struct	header_list	*jt;
 	wfree(it);
 }
 
+#ifdef __lint
+# pragma error_messages(off, E_GLOBAL_COULD_BE_STATIC)
+#endif
 char *
 header_build(head)
 	struct header_list *head;
 {
-	char	*buf = NULL;
-	size_t	 bufsz = 0;
+	char	*buf;
+	size_t	 bufsz;
 	size_t	 buflen = 0;
 
-	bufsz = head->hl_len + 2;
-	buf = wmalloc(bufsz + 1);
+	bufsz = head->hl_len + 3;
+	if ((buf = wmalloc(bufsz)) == NULL)
+		outofmemory();
+	
 	*buf = '\0';
 	while (head->hl_next) {
 		head = head->hl_next;
-		buflen += sprintf(buf + buflen, "%s: %s\r\n", head->hl_name, head->hl_value);
+		buflen += snprintf(buf + buflen, bufsz - buflen - 1, "%s: %s\r\n", head->hl_name, head->hl_value);
 	}
-	strcat(buf, "\r\n");
+	if (strlcat(buf, "\r\n", bufsz) >= bufsz )
+		abort();
 
 	return buf;
 }
+#ifdef __lint
+# pragma error_messages(on, E_GLOBAL_COULD_BE_STATIC)
+#endif
 
 void
 header_dump(head, fd)
@@ -455,31 +479,37 @@ struct	header_list	*h;
 	}
 }
 
-void
+int
 header_undump(head, fd, len)
 	struct header_list *head;
 	int fd;
 	off_t *len;
 {
-	int		 i, j, n;
+	int		 i, j, n = 0;
 struct	header_list	*it = head;
-
-	*len = 0;
-	memset(head, 0, sizeof(*head));
-	head->hl_flags |= HDR_ALLOCED;
-	*len += read(fd, &n, sizeof(n));
-	DEBUG((WLOG_DEBUG, "header_undump: %d entries", n));
+	ssize_t		 r;
 	
+	*len = 0;
+	bzero(head, sizeof(*head));
+	head->hl_flags |= HDR_ALLOCED;
+	if ((r = read(fd, &n, sizeof(n))) < 0) {
+		wlog(WLOG_WARNING, "reading cache file: %s", strerror(errno));
+		return -1; /* XXX */
+	}
+	
+	*len += r;
+	WDEBUG((WLOG_DEBUG, "header_undump: %d entries", n));
+
 	while (n--) {
 		char *n, *v, *s;
 		int k;
 		
 		it->hl_next = wmalloc(sizeof(struct header_list));
-		memset(it->hl_next, 0, sizeof(*it->hl_next));
+		bzero(it->hl_next, sizeof(*it->hl_next));
 		it = it->hl_next;
 		*len += read(fd, &i, sizeof(i));	
 		*len += read(fd, &j, sizeof(j));
-		DEBUG((WLOG_DEBUG, "header_undump: i=%d j=%d", i, j));
+		WDEBUG((WLOG_DEBUG, "header_undump: i=%d j=%d", i, j));
 		n = wmalloc(i + j + 2);
 		i = read(fd, n, i);
 		*len += i;
@@ -497,7 +527,7 @@ struct	header_list	*it = head;
 	}
 	
 	head->hl_tail = it;
-	
+	return 0;
 }
 
 /*
@@ -545,12 +575,12 @@ entity_send(fde, entity, cb, data)
 	entity->_he_func = cb;
 	entity->_he_cbdata = data;
 	
-	DEBUG((WLOG_DEBUG, "entity_send: writing to %d [%s]", fde->fde_fd, fde->fde_desc));
+	WDEBUG((WLOG_DEBUG, "entity_send: writing to %d [%s]", fde->fde_fd, fde->fde_desc));
 	
 	if (entity->he_flags.response) {
 		struct iovec vec[5];
 		
-		sprintf(status, "%d", entity->he_rdata.response.status);
+		safe_snprintf(status, 4, "%d", entity->he_rdata.response.status);
 		vec[0].iov_base = "HTTP/1.0 ";
 		vec[0].iov_len = 9;
 		vec[1].iov_base = status;
@@ -594,7 +624,7 @@ struct	http_entity	*entity = data;
 
 	wfree(entity->_he_hdrbuf);
 
-	DEBUG((WLOG_DEBUG, "entity_send_headers_done: called for %d [%s], res=%d", fde->fde_fd, fde->fde_desc, res));
+	WDEBUG((WLOG_DEBUG, "entity_send_headers_done: called for %d [%s], res=%d", fde->fde_fd, fde->fde_desc, res));
 	
 	if (res == -1) {
 		entity->_he_func(entity, entity->_he_cbdata, -1);
@@ -603,14 +633,14 @@ struct	http_entity	*entity = data;
 
 	if (entity->he_source_type == ENT_SOURCE_NONE) {
 		/* no body for this request */
-		DEBUG((WLOG_DEBUG, "entity_send_headers_done: no body, return immediately"));
+		WDEBUG((WLOG_DEBUG, "entity_send_headers_done: no body, return immediately"));
 		entity->_he_func(entity, entity->_he_cbdata, 0);
 		return;
 	}
 	
 	if (entity->he_source_type == ENT_SOURCE_BUFFER) {
 		/* write buffer, callback when done */
-		DEBUG((WLOG_DEBUG, "entity_send_headers_done: source is buffer, %d bytes", 
+		WDEBUG((WLOG_DEBUG, "entity_send_headers_done: source is buffer, %d bytes", 
 				entity->he_source.buffer.len));
 		wnet_write(fde->fde_fd, entity->he_source.buffer.addr,
 			       entity->he_source.buffer.len, entity_send_buf_done, entity);
@@ -636,7 +666,7 @@ struct	http_entity	*entity = data;
 	 * readable. when wnet_write completes and calls fde_write_done, it
 	 * registers the fd as readable again..
 	 */ 
-	DEBUG((WLOG_DEBUG, "entity_send_headers_done: source is FDE"));
+	WDEBUG((WLOG_DEBUG, "entity_send_headers_done: source is FDE"));
 	wnet_register(entity->he_source.fde->fde_fd, FDE_READ, entity_send_fde_read, entity);
 }
 
@@ -647,8 +677,8 @@ entity_send_fde_read(fde)
 struct	http_entity	*entity = fde->fde_rdata;
 	ssize_t		 len;
 	
-	DEBUG((WLOG_DEBUG, "entity_send_fde_read: called for %d [%s]", fde->fde_fd, fde->fde_desc));
-	DEBUG((WLOG_DEBUG, "entity_send_fde_read: %d bytes left in readbuf",
+	WDEBUG((WLOG_DEBUG, "entity_send_fde_read: called for %d [%s]", fde->fde_fd, fde->fde_desc));
+	WDEBUG((WLOG_DEBUG, "entity_send_fde_read: %d bytes left in readbuf",
 			readbuf_data_left(&entity->he_source.fde->fde_readbuf)));
 
 	if (readbuf_data_left(&entity->he_source.fde->fde_readbuf) == 0) {
@@ -656,7 +686,7 @@ struct	http_entity	*entity = fde->fde_rdata;
 	} else
 		len = readbuf_data_left(&entity->he_source.fde->fde_readbuf);
 	
-	DEBUG((WLOG_DEBUG, "entity_send_fde_read: read %d bytes", len));
+	WDEBUG((WLOG_DEBUG, "entity_send_fde_read: read %d bytes", len));
 	
 	if (len == 0) {
 		/* remote closed */
@@ -685,6 +715,7 @@ struct	http_entity	*entity = fde->fde_rdata;
 	readbuf_inc_data_pos(&entity->he_source.fde->fde_readbuf, readbuf_data_left(&entity->he_source.fde->fde_readbuf));
 }
 
+/*ARGSUSED*/
 static void
 entity_send_fde_write_done(fde, data, res)
 	struct fde *fde;
@@ -696,6 +727,7 @@ struct	http_entity	*entity = data;
 	wnet_register(entity->he_source.fde->fde_fd, FDE_READ, entity_send_fde_read, entity);
 }
 
+/*ARGSUSED*/
 static void
 entity_send_buf_done(fde, data, res)
 	struct fde *fde;
@@ -704,11 +736,12 @@ entity_send_buf_done(fde, data, res)
 {
 struct	http_entity	*entity = data;
 
-	DEBUG((WLOG_DEBUG, "entity_send_buf_done: called for %d [%s], res=%d", fde->fde_fd, fde->fde_desc, res));
+	WDEBUG((WLOG_DEBUG, "entity_send_buf_done: called for %d [%s], res=%d", fde->fde_fd, fde->fde_desc, res));
 	entity->_he_func(entity, entity->_he_cbdata, res);
 	return;
 }
 
+/*ARGSUSED*/
 static void
 entity_send_file_done(fde, data, res)
 	struct fde *fde;
@@ -717,7 +750,7 @@ entity_send_file_done(fde, data, res)
 {
 struct	http_entity	*entity = data;
 
-	DEBUG((WLOG_DEBUG, "entity_send_file_done: called for %d [%s], res=%d", fde->fde_fd, fde->fde_desc, res));
+	WDEBUG((WLOG_DEBUG, "entity_send_file_done: called for %d [%s], res=%d", fde->fde_fd, fde->fde_desc, res));
 	entity->_he_func(entity, entity->_he_cbdata, res);
 	return;
 }	
@@ -731,13 +764,19 @@ struct	http_entity	*entity = data;
 	int i, val;
 
 	val = fcntl(entity->_he_target->fde_fd, F_GETFL, 0);
-	fcntl(entity->_he_target->fde_fd, F_SETFL, val & ~O_NONBLOCK);
+	if (val == -1 || fcntl(entity->_he_target->fde_fd, F_SETFL, val & ~O_NONBLOCK) == -1) {
+		wlog(WLOG_WARNING, "fcntl(%d) failed: %s", entity->_he_target->fde_fd, strerror(errno));
+		entity->_he_func(entity, entity->_he_cbdata, -1);
+	}
 
 	i = sendfile(entity->_he_target->fde_fd, entity->he_source.fd.fd, &entity->he_source.fd.off,
 			entity->he_source.fd.size - entity->he_source.fd.off);
 
 	val = fcntl(entity->_he_target->fde_fd, F_GETFL, 0);
-	fcntl(entity->_he_target->fde_fd, F_SETFL, val | O_NONBLOCK);
+	if (val == -1 || fcntl(entity->_he_target->fde_fd, F_SETFL, val | O_NONBLOCK) == -1) {
+		wlog(WLOG_WARNING, "fcntl(%d) failed: %s", entity->_he_target->fde_fd, strerror(errno));
+		entity->_he_func(entity, entity->_he_cbdata, -1);
+	}
 	
 	entity->_he_func(entity, entity->_he_cbdata, i);
 	return NULL;

@@ -12,7 +12,4 @@ EXTRA_DIST=wnet_poll.c wnet_ports.c wnet_kqueue.c wnet_epoll.c wnet_devpoll.c \
 
 LDFLAGS = $(LIBOBJS)
 
-lint: Makefile
-	lint -Ncheck=%all -Nlevel=3 -XCC=yes -lsocket -lnsl $(CPPFLAGS) -I $(top_srcdir) ${SOURCES}
-
 @include@ @q@@top_srcdir@/mk/prog.mk@q@

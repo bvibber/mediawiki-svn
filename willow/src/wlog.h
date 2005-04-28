@@ -8,6 +8,10 @@
 #ifndef WLOG_H
 #define WLOG_H
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include "config.h"
 
 #define WLOG_DEBUG 0
@@ -25,13 +29,14 @@ extern struct log_variables {
 } logging;
 
 void wlog_init(void);
+/*PRINTFLIKE2*/
 void wlog(int, const char *, ...);
 void wlog_close(void);
 
 #ifndef WILLOW_DEBUG
-# define DEBUG(x)
+# define WDEBUG(x) ((void)0)
 #else
-# define DEBUG(x) wlog x
+# define WDEBUG(x) wlog x
 #endif
 
 #endif

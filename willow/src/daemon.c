@@ -30,6 +30,11 @@
  * SUCH DAMAGE.
  */
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+# pragma ident "$NetBSD: daemon.c,v 1.9 2003/08/07 16:42:46 agc Exp $"
+#endif
+
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>

@@ -5,12 +5,17 @@
  * wlog: logging.
  */
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
 #include <syslog.h>
+#include <errno.h>
 
 #include "wlog.h"
 #include "wnet.h"
@@ -40,6 +45,7 @@ wlog_init(void)
 	if (!logging.file)
 		return;
 
+	/*LINTED unsafe fopen*/
 	logging.fp = fopen(logging.file, "a");
 	if (logging.fp == NULL) {
 		perror(logging.file);
@@ -50,31 +56,45 @@ wlog_init(void)
 void
 wlog(int sev, const char *fmt, ...)
 {
-	char s[1024];
+	char	s[1024];
 	va_list ap;
-	int i;
+	int	i;
 
 	if (sev > WLOG_MAX)
 		sev = WLOG_NOTICE;
 	if (sev < logging.level)
 		return;
 	va_start(ap, fmt);
-	i = sprintf(s, "%s| %s: ", current_time_short, sev_names[sev]);
-	vsnprintf(s + i, 1023 - i, fmt, ap);
+	i = snprintf(s, 1024, "%s| %s: ", current_time_short, sev_names[sev]);
+	if (i > 1023)
+		abort();
+	if (vsnprintf(s + i, 1023 - i, fmt, ap) > (1023 - i - 1))
+		abort();
+	
 	if (logging.syslog)
 		syslog(syslog_pri[sev], "%s", s + i);
-	strcat(s, "\n");
-	if (logging.fp)
-		fputs(s, logging.fp);
+	if (logging.fp) {
+		if (fprintf(logging.fp, "%s\n", s) < 0) {
+			(void)fclose(logging.fp);
+			logging.fp = NULL;
+			wlog(WLOG_ERROR, "writing to logfile: %s", strerror(errno));
+			exit(8);
+		}
+	}
+	
 	if (config.foreground)
-		fputs(s, stderr);
+		(void)fprintf(stderr, "%s\n", s);
 	va_end(ap);
 }
 
 void
 wlog_close(void)
 {
-	fclose(logging.fp);
+	if (fclose(logging.fp) == EOF) {
+		logging.fp = NULL;
+		wlog(WLOG_WARNING, "closing logfile: %s", strerror(errno));
+	}
+	
 	if (logging.syslog)
 		closelog();
 }

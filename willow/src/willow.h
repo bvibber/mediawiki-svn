@@ -8,6 +8,10 @@
 #ifndef WILLOW_H
 #define WILLOW_H
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include "config.h"
 
 #ifdef WDEBUG_ALLOC
@@ -26,8 +30,18 @@ void *internal_wrealloc(void *, size_t, const char *, int);
 # define wrealloc realloc
 #endif
 
+void realloc_strcat(char **, const char *);
+void realloc_addchar(char **, int);
+
 #ifndef HAVE_DAEMON
 int daemon(int, int);
 #endif
+
+void outofmemory(void);
+#ifdef __SUNPRO_C
+# pragma does_not_return(outofmemory)
+#endif
+
+#define safe_snprintf(s,n,f,__VA_LIST__...) if (snprintf(s, n, f, __VA_LIST__) > (n - 1)) abort();
 
 #endif

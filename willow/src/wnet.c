@@ -5,6 +5,10 @@
  * wnet: Networking.
  */
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/sendfile.h>
@@ -18,6 +22,8 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <signal.h>
+#include <assert.h>
+#include <strings.h>
 
 #include "willow.h"
 #include "wnet.h"
@@ -42,7 +48,13 @@ const	void	*wb_buf;
 
 char current_time_str[30];
 char current_time_short[30];
+#ifdef __lint
+# pragma error_messages(off, E_GLOBAL_COULD_BE_STATIC)
+#endif
 time_t current_time;
+#ifdef __lint
+# pragma error_messages(on, E_GLOBAL_COULD_BE_STATIC)
+#endif
 
 static void wnet_accept(struct fde *);
 static void wnet_write_do(struct fde *);
@@ -65,7 +77,7 @@ wnet_init(void)
 	fde_table = calloc(sizeof(struct fde), max_fd);
 	wlog(WLOG_NOTICE, "maximum number of open files: %d", max_fd);
 	
-	signal(SIGPIPE, SIG_IGN);
+	(void)signal(SIGPIPE, SIG_IGN);
 	wnet_init_select();
 
 	for (i = 0; i < nlisteners; ++i) {
@@ -73,7 +85,10 @@ wnet_init(void)
 
 		int fd = wnet_open("listener");
 		int one = 1;
-		setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
+		if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one)) == -1) {
+			wlog(WLOG_ERROR, "setsockopt: %s: %s\n", lns->name, strerror(errno));
+			exit(8);
+		}
 		if (bind(fd, (struct sockaddr *) &lns->addr, sizeof(lns->addr)) < 0) {
 			wlog(WLOG_ERROR, "bind: %s: %s\n", lns->name, strerror(errno));
 			exit(8);
@@ -96,12 +111,10 @@ struct	client_data	*cdata;
 	int		 newfd, val;
 struct	fde		*newe;
 
-	if ((cdata = wmalloc(sizeof(*cdata))) == NULL) {
-		fputs("out of memory\n", stderr);
-		abort();
-	}
+	if ((cdata = wmalloc(sizeof(*cdata))) == NULL)
+		outofmemory();
 
-	memset(cdata, 0, sizeof(*cdata));
+	bzero(cdata, sizeof(*cdata));
 
 	addrlen = sizeof(cdata->cdat_addr);
 
@@ -114,15 +127,20 @@ struct	fde		*newe;
 	if (newfd >= max_fd) {
 		wlog(WLOG_NOTICE, "out of file descriptors!");
 		wfree(cdata);
-		close(newfd);
+		(void)close(newfd);
 		return;
 	}
 
 	val = fcntl(newfd, F_GETFL, 0);
-	fcntl(newfd, F_SETFL, val | O_NONBLOCK);
+	if (val == -1 || fcntl(newfd, F_SETFL, val | O_NONBLOCK) == -1) {
+		wlog(WLOG_WARNING, "fcntl(%d) failed: %s", newfd, strerror(errno));
+		wfree(cdata);
+		(void)close(newfd);
+		return;
+	}
 
 	newe = &fde_table[newfd];
-	memset(newe, 0, sizeof(struct fde));
+	bzero(newe, sizeof(struct fde));
 	newe->fde_flags.open = 1;
 #ifdef USE_POLL
 	if (newfd > highest_fd)
@@ -131,7 +149,7 @@ struct	fde		*newe;
 	newe->fde_fd = newfd;
 	newe->fde_cdata = cdata;
 	newe->fde_desc = "accept()ed fd";
-	inet_ntop(AF_INET, &cdata->cdat_addr.sin_addr.s_addr, newe->fde_straddr, sizeof(newe->fde_straddr));
+	(void)inet_ntop(AF_INET, &cdata->cdat_addr.sin_addr.s_addr, newe->fde_straddr, sizeof(newe->fde_straddr));
 
 	http_new(newe);
 	return;
@@ -149,9 +167,12 @@ wnet_open(desc)
 	}
 
 	val = fcntl(fd, F_GETFL, 0);
-	fcntl(fd, F_SETFL, val | O_NONBLOCK);
+	if (val == -1 || fcntl(fd, F_SETFL, val | O_NONBLOCK) == -1) {
+		wlog(WLOG_WARNING, "fcntl(%d) failed: %s", fd, strerror(errno));
+		return -1;
+	}
 
-	memset(&fde_table[fd], 0, sizeof(fde_table[fd]));
+	bzero(&fde_table[fd], sizeof(fde_table[fd]));
 	fde_table[fd].fde_fd = fd;
 	fde_table[fd].fde_desc = desc;
 	fde_table[fd].fde_flags.open = 1;
@@ -170,7 +191,7 @@ wnet_close(fd)
 struct	fde	*e = &fde_table[fd];
 
 	wnet_register(fd, FDE_READ | FDE_WRITE, NULL, NULL);
-	close(e->fde_fd);
+	(void)close(e->fde_fd);
 	if (e->fde_cdata)
 		wfree(e->fde_cdata);
 	readbuf_free(&e->fde_readbuf);
@@ -194,14 +215,12 @@ wnet_sendfile(fd, source, size, off, cb, data)
 struct	wrtbuf	*wb;
 struct	fde	*e = &fde_table[fd];
 
-	DEBUG((WLOG_DEBUG, "wnet_sendfile: %d (+%d) bytes from %d to %d [%s]", size, off, source, fd, e->fde_desc));
+	WDEBUG((WLOG_DEBUG, "wnet_sendfile: %d (+%d) bytes from %d to %d [%s]", size, off, source, fd, e->fde_desc));
 	
-	if ((wb = wmalloc(sizeof(*wb))) == NULL) {
-		fputs("out of memory\n", stderr);
-		abort();
-	}
+	if ((wb = wmalloc(sizeof(*wb))) == NULL)
+		outofmemory();
 	
-	memset(wb, 0, sizeof(*wb));
+	bzero(wb, sizeof(*wb));
 	wb->wb_done = 0;
 	wb->wb_func = cb;
 	wb->wb_udata = data;
@@ -225,12 +244,10 @@ wnet_write(fd, buf, bufsz, cb, data)
 struct	wrtbuf	*wb;
 struct	fde	*e = &fde_table[fd];
 
-	DEBUG((WLOG_DEBUG, "wnet_write: %d bytes to %d [%s]", bufsz, e->fde_fd, e->fde_desc));
+	WDEBUG((WLOG_DEBUG, "wnet_write: %d bytes to %d [%s]", bufsz, e->fde_fd, e->fde_desc));
 	
-	if ((wb = wmalloc(sizeof(*wb))) == NULL) {
-		fputs("out of memory\n", stderr);
-		abort();
-	}
+	if ((wb = wmalloc(sizeof(*wb))) == NULL)
+		outofmemory();
 
 	wb->wb_buf = buf;
 	wb->wb_size = bufsz;
@@ -276,6 +293,7 @@ wnet_sendfile_do(e)
 {
 struct	wrtbuf *buf;
 	int	i;
+	/*LINTED unused variable: freebsd-only*/
 	off_t	off;
 	
 	buf = e->fde_wdata;
@@ -310,15 +328,18 @@ wnet_set_time(void)
 {
 struct	tm	*now;
 	time_t	 old = current_time;
-
+	size_t	 n;
+	
 	current_time = time(NULL);
 	if (current_time == old)
 		return;
 
 	now = gmtime(&current_time);
 
-	strftime(current_time_str, sizeof(current_time_str), "%a, %d %b %Y %H:%M:%S GMT", now);
-	strftime(current_time_short, sizeof(current_time_short), "%Y-%m-%d %H:%M:%S", now);
+	n = strftime(current_time_str, sizeof(current_time_str), "%a, %d %b %Y %H:%M:%S GMT", now);
+	assert(n);
+	n = strftime(current_time_short, sizeof(current_time_short), "%Y-%m-%d %H:%M:%S", now);
+	assert(n);
 }
 
 
@@ -328,12 +349,12 @@ readbuf_getdata(fde)
 {
 	int	i;
 
-	DEBUG((WLOG_DEBUG, "readbuf_getdata: called"));
+	WDEBUG((WLOG_DEBUG, "readbuf_getdata: called"));
 	if (readbuf_data_left(&fde->fde_readbuf) == 0)
 		readbuf_reset(&fde->fde_readbuf);
 	
 	if (readbuf_spare_size(&fde->fde_readbuf) == 0) {
-		DEBUG((WLOG_DEBUG, "readbuf_getdata: no space in buffer"));
+		WDEBUG((WLOG_DEBUG, "readbuf_getdata: no space in buffer"));
 		fde->fde_readbuf.rb_size += RDBUF_INC;
 		fde->fde_readbuf.rb_p = realloc(fde->fde_readbuf.rb_p, fde->fde_readbuf.rb_size);
 	}
@@ -341,7 +362,7 @@ readbuf_getdata(fde)
 	if ((i = read(fde->fde_fd, readbuf_spare_start(&fde->fde_readbuf), readbuf_spare_size(&fde->fde_readbuf))) < 1)
 		return i;
 	fde->fde_readbuf.rb_dsize += i;
-	DEBUG((WLOG_DEBUG, "readbuf_getdata: read %d bytes", i));
+	WDEBUG((WLOG_DEBUG, "readbuf_getdata: read %d bytes", i));
 
 	return i;
 }
@@ -352,7 +373,7 @@ readbuf_free(buffer)
 {
 	if (buffer->rb_p)
 		free(buffer->rb_p);
-	memset(buffer, 0, sizeof(*buffer));
+	bzero(buffer, sizeof(*buffer));
 }
 
 static void

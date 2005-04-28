@@ -5,6 +5,10 @@
  * wnet: Networking.
  */
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include <sys/types.h>
 #include <sys/socket.h>
 
@@ -115,7 +119,7 @@ struct	epoll_event	 ev;
 	if (data)
 		e->fde_rdata = data;
 
-	memset(&ev, 0, sizeof(ev));
+	bzero(&ev, 0, sizeof(ev));
 	ev.events = e->fde_epflags;
 	ev.data.fd = fd;
 	if (mod) {

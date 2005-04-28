@@ -5,6 +5,10 @@
  * wbackend: HTTP backend handling.
  */
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include <sys/types.h>
 #include <sys/socket.h>
 
@@ -14,6 +18,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
+#include <strings.h>
 
 #include "willow.h"
 #include "wbackend.h"
@@ -40,12 +45,10 @@ new_backend(addr)
 	char	*host = addr, *port;
 struct	backend	 *nb;
 
-	if ((nb = wmalloc(sizeof(*nb))) == NULL) {
-		fputs("out of memory\n", stderr);
-		abort();
-	}
+	if ((nb = wmalloc(sizeof(*nb))) == NULL)
+		outofmemory();
 
-	memset(nb, 0, sizeof(*nb));
+	bzero(nb, sizeof(*nb));
 	
 	if ((port = strchr(host, ':')) != NULL) {
 		*port++ = '\0';
@@ -64,10 +67,8 @@ void
 add_backend(addr)
 	char *addr;
 {
-	if ((backends = wrealloc(backends, sizeof(struct backend*) * ++nbackends)) == NULL) {
-		fputs("out of memory\n", stderr);
-		abort();
-	}
+	if ((backends = wrealloc(backends, sizeof(struct backend*) * ++nbackends)) == NULL)
+		outofmemory();
 	backends[nbackends - 1] = new_backend(addr);
 }
 
@@ -88,7 +89,7 @@ backend_file(file)
 		add_backend(line);
 	}
 
-	fclose(f);
+	(void)fclose(f);
 }
 
 int
@@ -99,12 +100,10 @@ get_backend(func, data)
 struct	backend_cb_data	*cbd;
 	int		 s;
 	
-	DEBUG((WLOG_DEBUG, "get_backend: called"));
+	WDEBUG((WLOG_DEBUG, "get_backend: called"));
 	
-	if ((cbd = wmalloc(sizeof(*cbd))) == NULL) {
-		fputs("out of memory\n", stderr);
-		abort();
-	}
+	if ((cbd = wmalloc(sizeof(*cbd))) == NULL)
+		outofmemory();
 
 	cbd->bc_func = func;
 	cbd->bc_data = data;
@@ -116,7 +115,7 @@ struct	backend_cb_data	*cbd;
 	}
 
 	if (connect(s, (struct sockaddr *)&cbd->bc_backend->be_addr, sizeof(cbd->bc_backend->be_addr)) == 0) {
-		DEBUG((WLOG_DEBUG, "get_backend: connection completed immediately"));
+		WDEBUG((WLOG_DEBUG, "get_backend: connection completed immediately"));
 		func(cbd->bc_backend, &fde_table[s], data);
 		wfree(cbd);
 		return 0;
@@ -127,7 +126,7 @@ struct	backend_cb_data	*cbd;
 		return -1;
 	}
 
-	DEBUG((WLOG_DEBUG, "get_backend: waiting for connection to complete"));
+	WDEBUG((WLOG_DEBUG, "get_backend: waiting for connection to complete"));
 	wnet_register(s, FDE_WRITE, backend_read, cbd);
 	return 0;
 }

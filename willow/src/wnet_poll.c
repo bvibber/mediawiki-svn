@@ -5,6 +5,10 @@
  * wnet_poll: poll()-specific networking.
  */
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include <sys/types.h>
 #include <sys/socket.h>
 
@@ -45,7 +49,7 @@ wnet_init_select(void)
 	int	 i;
 
 	pfds = wmalloc(sizeof(*pfds) * getdtablesize());
-	memset(pfds, 0, sizeof(*pfds) * getdtablesize());
+	bzero(pfds, sizeof(*pfds) * getdtablesize());
 }
 
 void

@@ -5,6 +5,10 @@
  * wnet_kqueue: FreeBSD kqueue-specific networking.
  */
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/event.h>
@@ -60,7 +64,7 @@ wnet_run(void)
 			assert(kqlst[i].ident < MAX_FD);
 			
 			if (kqlst[i].flags & EV_ERROR) {
-				fprintf(stderr, "error for %d (%s): %s\n", 
+				(void)fprintf(stderr, "error for %d (%s): %s\n", 
 						kqlst[i].ident, e->fde_desc, strerror(kqlst[i].data));
 				exit(8);
 			}

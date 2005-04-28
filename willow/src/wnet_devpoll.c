@@ -5,6 +5,10 @@
  * wnet_ports: Solaris /dev/poll-specific networking
  */
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/devpoll.h>
@@ -78,7 +82,7 @@ wnet_register(fd, what, handler, data)
 struct	fde		*e = &fde_table[fd];
 struct	pollfd		 pfd;
 
-	memset(&pfd, 0, sizeof(pfd));
+	bzero(&pfd, sizeof(pfd));
 	pfd.fd = fd;
 	
 	/*

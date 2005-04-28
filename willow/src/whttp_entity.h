@@ -8,6 +8,10 @@
 #ifndef WHTTP_ENTITY
 #define WHTTP_ENTITY
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include <pthread.h>
 
 #include "whttp.h"
@@ -40,12 +44,6 @@ struct	header_list	*hl_tail;
 	int		 hl_len;
 	int		 hl_flags;
 };
-
-extern struct request_type {
-	const char *name;
-	int len;
-	int type;
-} supported_reqtypes[];
 
 struct http_entity {
 	union {
@@ -112,10 +110,11 @@ void entity_send(struct fde *, struct http_entity *, header_cb, void *);
 void entity_free(struct http_entity *);
 
 void header_add(struct header_list *, const char *, const char *);
+
 void header_free(struct header_list *);
-void header_remove(struct header_list *, struct header_list *);
 char *header_build(struct header_list *);
+void header_remove(struct header_list *, struct header_list *);
 void header_dump(struct header_list *, int);
-void header_undump(struct header_list *, int, off_t *);
+int header_undump(struct header_list *, int, off_t *);
 
 #endif

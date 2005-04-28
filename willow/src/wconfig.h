@@ -8,6 +8,10 @@
 #ifndef WCONFIG_H
 #define WCONFIG_H
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include <sys/types.h>
 #include <netinet/in.h>
 

@@ -5,6 +5,10 @@
  * wnet_ports: Solaris event ports-specific networking
  */
 
+#ifdef __SUNPRO_C
+# pragma ident "@(#)$Header$"
+#endif
+
 #include <sys/types.h>
 #include <sys/socket.h>
 
@@ -14,6 +18,7 @@
 #include <fcntl.h>
 #include <port.h>
 #include <errno.h>
+#include <string.h>
 
 #include "wnet.h"
 #include "wlog.h"
@@ -61,7 +66,7 @@ wnet_run(void)
 			hadread = e->fde_epflags & READABLE;
 			hadwrite = e->fde_epflags & POLLWRNORM;
 
-			DEBUG((WLOG_DEBUG, "activity on fd %d [%s]", e->fde_fd, e->fde_desc));
+			WDEBUG((WLOG_DEBUG, "activity on fd %d [%s]", e->fde_fd, e->fde_desc));
 
 			/*
 			 * Immediately re-associate.  If the caller doesn't want it,
@@ -69,16 +74,22 @@ wnet_run(void)
 			 * a little to save 2 syscalls in some cases...
 			 */
 			if ((pe[i].portev_events & READABLE) && e->fde_read_handler) {
-				DEBUG((WLOG_DEBUG, "\tread", e->fde_fd));
+				WDEBUG((WLOG_DEBUG, "\tread", e->fde_fd));
 				e->fde_read_handler(e);
 				if (hadread && (e->fde_epflags & READABLE))
-					port_associate(port, PORT_SOURCE_FD, e->fde_fd, READABLE, NULL);
+					if (port_associate(port, PORT_SOURCE_FD, e->fde_fd, READABLE, NULL) == -1) {
+						wlog(WLOG_ERROR, "port_associate: %s", strerror(errno));
+						exit(8);
+					}
 			}
 			if ((pe[i].portev_events & (POLLWRNORM | POLLERR)) && e->fde_write_handler) {
-				DEBUG((WLOG_DEBUG, "\twrite", e->fde_fd));
+				WDEBUG((WLOG_DEBUG, "\twrite", e->fde_fd));
 				e->fde_write_handler(e);
 				if (hadwrite && (e->fde_epflags & POLLWRNORM))
-					port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLWRNORM, NULL);
+					if (port_associate(port, PORT_SOURCE_FD, e->fde_fd, POLLWRNORM, NULL) == -1) {
+						wlog(WLOG_ERROR, "port_associate: %s", strerror(errno));
+						exit(8);
+					}
 			}
 		}
 		nget = 1;
@@ -94,8 +105,7 @@ wnet_register(fd, what, handler, data)
 struct	fde		*e = &fde_table[fd];
 	int		 oldflags = e->fde_epflags;
 
-	DEBUG((WLOG_DEBUG, "wnet_register: %d [%s] for %d %p", fd, e->fde_desc, what, handler));
-	assert(fd < max_fd);
+	WDEBUG((WLOG_DEBUG, "wnet_register: %d [%s] for %d %p", fd, e->fde_desc, what, handler));
 
 	e->fde_fd = fd;
 
@@ -127,6 +137,6 @@ struct	fde		*e = &fde_table[fd];
 			abort();
 		}
 	} else {
-		port_dissociate(port, PORT_SOURCE_FD, fd);
+		(void)port_dissociate(port, PORT_SOURCE_FD, fd);
 	}
 }
