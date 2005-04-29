@@ -9,7 +9,10 @@ SRCS = willow.c wlog.c wconfig.c wnet.c whttp.c wbackend.c wlogwriter.c \
 OBJADD = @LIBOBJS@
 
 EXTRA_DIST=wnet_poll.c wnet_ports.c wnet_kqueue.c wnet_epoll.c wnet_devpoll.c \
-	wlog.h wconfig.h wnet.h whttp.h wbackend.h willow.h
+	wlog.h wconfig.h wnet.h whttp.h wbackend.h willow.h confparse.h \
+	wcache.h wlogwriter.h whttp_entity.h queue.h lexer.l parser.y \
+	daemon.c \
+	Makefile.in
 
 LDFLAGS = $(LIBOBJS)
 

@@ -84,7 +84,7 @@ struct	sigaction	segv_act;
 				config.foreground = 1;
 				break;
 			case 'v':
-				(void)fprintf(stderr, "%s\n", VERSION);
+				(void)fprintf(stderr, "%s\n", PACKAGE_VERSION);
 				exit(0);
 			default:
 				usage();

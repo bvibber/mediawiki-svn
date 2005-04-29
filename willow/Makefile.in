@@ -2,6 +2,23 @@
 #
 # Top-level makefile.
 
-SUBDIRS=src errors
+default: all
+
+SUBDIRS=src errors mk
 
 @include@ @q@@top_srcdir@/mk/subdir.mk@q@
+
+DISTFILES=\
+	Makefile.in \
+	configure configure.in \
+	acinclude.m4 aclocal.m4 \
+	config.h.in \
+	install-sh missing mkinstalldirs willow.conf.example
+
+DISTNAME=$(PACKAGE)-$(VERSION)
+dist: 
+	rm -rf $(DISTNAME) $(DISTNAME).tar $(DISTNAME).tar.Z
+	$(MAKE) _dist
+	tar cf $(DISTNAME).tar $(DISTNAME)
+	compress $(DISTNAME).tar
+	rm -rf $(PACKAGE)-$(VERSION) $(PACKAGE)-$(VERSION).tar

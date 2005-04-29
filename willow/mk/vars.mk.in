@@ -2,6 +2,9 @@
 # 
 # Standard variables.
 
+PACKAGE=	willow
+VERSION=	@VERSION@
+
 _LEX=		@LEX@
 _YACC=		@YACC@
 
@@ -20,3 +23,5 @@ _MKDIR=$(_INSTALL) -m 0755 -d
 
 _BINDIR=@prefix@@bindir@
 _DATADIR=@prefix@@datadir@
+
+DISTDEST=	@abs_top_srcdir@/$(PACKAGE)-$(VERSION)

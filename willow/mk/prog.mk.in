@@ -36,5 +36,7 @@ lint:
 # Magical Solaris make flag causes dependencies to be handled
 # automatically
 #.KEEP_STATE:
+_MYDISTFILES=$(SRCS) $(EXTRA_DIST)
+_extradist:
 
 @include@ @q@@top_srcdir@/mk/depend.@dependstyle@.mk@q@

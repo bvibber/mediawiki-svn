@@ -3,6 +3,7 @@
 # Install data files.
 
 @include@ @q@@top_srcdir@/mk/vars.mk@q@
+@include@ @q@@top_srcdir@/mk/rules.mk@q@
 
 all clean depend lint:
 
@@ -15,5 +16,7 @@ install:
 		echo "	$(_INSTALLDATA) $$file $(_DEST)" ;\
 		$(_INSTALLDATA) $$file $(_DEST) ;\
 	done
+
+_MYDISTFILES=Makefile.in $(DATAFILES)
 	
-		
+_extradist:

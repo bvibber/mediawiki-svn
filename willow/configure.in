@@ -17,7 +17,9 @@ debug_cflags_sunpro="-g $sunpro_common -v -xs"
 prod_cflags_sunpro="-fast $sunpro_common -xdepend=yes -xipo=2 -xalias_level=std"
 
 AC_CONFIG_HEADER(config.h)
-AC_DEFINE([VERSION], ["1.0.0-cvs"], [Version number of program])
+VERSION=1.0-cvs
+AC_DEFINE([PACKAGE_VERSION], $VERSION, [Version number of program])
+AC_SUBST(VERSION)
 
 echo ""
 echo "examining environment..."
@@ -158,6 +160,14 @@ AC_CHECK_LIB(db-4.3, db_env_create, [], [
 AC_CHECK_LIB(db, db_env_create, [], [
 	AC_MSG_ERROR([cannot not find required libdb-4.3 or libdb.])])])
 AC_CHECK_HEADER([sys/queue.h],AC_DEFINE([HAVE_SYS_QUEUE_H],,[Define this if you have <sys/queue.h]))
+AC_MSG_CHECKING(for transaction support in libdb)
+AC_COMPILE_IFELSE([
+#include <db.h>
+int main() {
+	DB_ENV *env;
+	DB_TXN *txn;
+	env->txn_begin(env, NULL, &txn, 0);
+}],AC_MSG_RESULT(yes),AC_MSG_ERROR([your db library is too old or doesn't support transactions]))
 
 echo ""
 echo "examining supported I/O systems..."
@@ -297,9 +307,11 @@ AC_OUTPUT(
 	mk/vars.mk 
 	mk/rules.mk 
 	mk/data.mk 
+	mk/subdir.mk
 	mk/depend.dashM.mk 
 	mk/depend.makedepend.mk 
 	mk/depend.null.mk
+	mk/Makefile
 	Makefile 
 	src/Makefile 
 	errors/Makefile)

@@ -1,0 +1,20 @@
+# @(#) $Header$
+#
+# Run make in subdirectories.
+
+THISDIR=	@srcdir@
+
+@include@ @q@@abs_top_srcdir@/mk/vars.mk@q@
+@include@ @q@@abs_top_srcdir@/mk/rules.mk@q@
+
+default: all
+
+all install lint clean depend _extradist:
+	@for dir in $(SUBDIRS); do \
+		echo "$@ ==> $$dir" ;\
+		cd $$dir && $(MAKE) `echo $@ | sed -e s/_extradist/_dist/` _DISTPATH="$(_DISTPATH)/$$dir" || exit 1 ;\
+		echo "$@ <== $$dir" ;\
+		cd .. ;\
+	done
+
+_MYDISTFILES=$(DISTFILES)

@@ -129,7 +129,7 @@ whttp_init(void)
 		exit(8);
 	}
 
-	(void)strlcpy(my_version, "Willow/" VERSION, 64);
+	(void)strlcpy(my_version, "Willow/" PACKAGE_VERSION, 64);
 	safe_snprintf(via_hdr, 1023, "1.0 %s (%s)", my_hostname, my_version);
 
 	hsize = sizeof("MISS from ") + strlen(my_hostname);

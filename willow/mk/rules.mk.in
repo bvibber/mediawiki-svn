@@ -2,8 +2,15 @@
 #
 # General build rules.
 
-@include@ @q@@top_srcdir@/mk/vars.mk@q@
+@include@ @q@@abs_top_srcdir@/mk/vars.mk@q@
 
 .c.o:
 	@echo "	$(_COMPILE) -c $<"
 	@$(_COMPILE) -c $<
+
+_dist: 
+	[ -d $(DISTDEST)/$(_DISTPATH) ] || mkdir -p $(DISTDEST)/$(_DISTPATH)
+	cp $(_MYDISTFILES) $(DISTDEST)/$(_DISTPATH)
+	$(MAKE) _extradist
+
+dist: _dist
