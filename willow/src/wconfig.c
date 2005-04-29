@@ -27,70 +27,26 @@
 #include "wconfig.h"
 #include "wbackend.h"
 #include "wlog.h"
+#include "confparse.h"
 
 #define CONFIGFILE "./willow.conf"
+
+int yyparse();
 
 struct listener **listeners;
 int nlisteners;
 struct configuration config;
 
-static const char *current_file;
-static int current_line;
+const char *current_file;
 
-static void add_listener(char *);
-static void add_cachedir(char *);
 static void add_log_options(char *);
-static long strtosize(const char *);
-
-static char *skip(char **);
-
-static char *
-skip(s)
-	char **s;
-{
-	char	*p;
-	char	*r = *s;
-	
-	if ((p = strchr(*s, ' ')) == NULL) {
-		*s += strlen(*s);
-		return r;
-	}
-	
-	*p++ = '\0';
-	*s = p;
-	return r;
-}
-
-long
-strtosize(s)
-	const char *s;
-{
-	char	*end;
-	long	 r;
-	
-	errno = 0;
-	if ((r = strtol(s, &end, 0)) == -1 && errno == ERANGE)
-		return -1;
-	if (r < 0)
-		return -1;
-	if (*end == '\0')
-		return r;
-	switch (*end++) {
-	case 'K': r *= 1024; break;
-	case 'M': r *= 1024*1024; break;
-	case 'G': r *= 1024*1024*1024; break;
-	default: return -1;
-	}
-	if (*end != '\0')
-		return -1;
-	return r;
-}
 
 void
 wconfig_init(const char *file)
 {
 	char	 line[1024];
 	FILE	*cfg;
+extern	FILE	*yyin;
 	
 	if (file == NULL)
 		file = CONFIGFILE;
@@ -100,7 +56,28 @@ wconfig_init(const char *file)
 		perror(file);
 		exit(8);
 	}
+	wlog(WLOG_NOTICE, "loading configuration from %s", current_file);
+	yyin = cfg;
+	newconf_init();
 	
+	if (yyparse()) {
+		wlog(WLOG_ERROR, "could not parse configuration file");
+		exit(8);
+	}
+	if (nerrors) {
+		wlog(WLOG_ERROR, "%d error(s) in configuration file.  cannot continue.", nerrors);
+		exit(8);
+	}
+	if (!nlisteners) {
+		wlog(WLOG_ERROR, "no listeners defined");
+		exit(8);
+	}
+	if (!nbackends) {
+		wlog(WLOG_ERROR, "no backends defined");
+		exit(8);
+	}
+	
+#if 0
 	while (fgets(line, sizeof line, cfg)) {
 		char *p = strchr(line, '#');
 		char *s = line, *opt = s;
@@ -152,143 +129,66 @@ wconfig_init(const char *file)
 					file, current_line);
 				exit(8);
 			}
-			logging.level = atoi(s);
 		} else if (!strcmp(opt, "access_log")) {
 			if (!*s) {
 				(void)fprintf(stderr, "%s:%d: no filename specified\n",
 						file, current_line);
 				exit(8);
 			}
-			config.access_log = wstrdup(s);
 		} else {
 			(void)fprintf(stderr, "%s:%d: unknown configuration option \"%s\"\n",
 				file, current_line, opt);
 			exit(8);
 		}
 	}
+#endif
 	(void)fclose(cfg);
 }
 
-static struct syslog_facility {
-	char	 *name;
-	int	  fac;
-} syslog_facilities[] = {
-	{"user", LOG_USER},
-	{"mail", LOG_MAIL},
-        {"daemon", LOG_DAEMON},
-	{"auth", LOG_AUTH},
-	{"lpr", LOG_LPR},
-	{"news", LOG_NEWS},
-	{"uucp", LOG_UUCP},
-	{"cron", LOG_CRON},
-#ifdef LOG_AUDIT
-	{"audit", LOG_AUDIT},
-#endif
-	{"local0", LOG_LOCAL0},	
-	{"local1", LOG_LOCAL0},	
-	{"local2", LOG_LOCAL0},	
-	{"local3", LOG_LOCAL0},	
-	{"local4", LOG_LOCAL0},	
-	{"local5", LOG_LOCAL0},	
-	{"local6", LOG_LOCAL0},	
-	{"local7", LOG_LOCAL0},	
-	{NULL, 0},
-};
-
-static void 
-add_listener(addr)
-	char *addr;
+int 
+add_listener(addr, port)
+	const char *addr;
+	int port;
 {
 struct	listener	*nl;
-	char		*port, *host = addr;
 
+	if (port < 0 || port > 65535) {
+		conf_report_error("invalid listener port %d", port);
+		nerrors++;
+		return -1;
+	}
+	
 	if ((nl = wcalloc(1, sizeof(*nl))) == NULL)
 		outofmemory();
 
 	if ((listeners = wrealloc(listeners, sizeof(struct listener *) * ++nlisteners)) == NULL)
 		outofmemory();
 	
-	if ((port = strchr(host, ':')) != NULL) {
-		*port++ = '\0';
-		nl->port = atoi(port);
-	} else
-		nl->port = 80;
-	nl->name = wstrdup(host);
+	nl->port = port;
+	nl->name = wstrdup(addr);
 	nl->addr.sin_family = AF_INET;
 	nl->addr.sin_port = htons(nl->port);
 	nl->addr.sin_addr.s_addr = inet_addr(nl->name);
 	listeners[nlisteners - 1] = nl;
+	wlog(WLOG_NOTICE, "listening on %s:%d", addr, port);
 }
 
-static void
-add_cachedir(line)
-	char *line;
+int
+add_cachedir(dir, size)
+	const char *dir;
+	int size;
 {
-	int	 size;
-	char	*dir, *sizes;
-	
-	dir = skip(&line);
-	sizes = skip(&line);
-	if (!*dir) {
-		(void)fprintf(stderr, "%s:%d: must specify directory\n", current_file, current_line);
-		exit(8);
-	}
-	if (!*sizes) {
-		(void)fprintf(stderr, "%s:%d: must specify size\n", current_file, current_line);
-		exit(8);
-	}
-	if ((size = strtosize(sizes)) == -1) {
-		(void)fprintf(stderr, "%s:%d: invalid cache size \"%s\"\n", current_file, current_line, sizes);
-		exit(8);
+	if (size < 1) {
+		conf_report_error("invalid cache size %d\n", size);
+		nerrors++;
+		return -1;
 	}
 	
 	config.caches = wrealloc(config.caches, sizeof(*config.caches) * (config.ncaches + 1));
 	config.caches[config.ncaches].dir = wstrdup(dir);
 	config.caches[config.ncaches].maxsize = size;
-	wlog(WLOG_NOTICE, "add cache dir %s, size %d bytes",
+	wlog(WLOG_NOTICE, "cache dir \"%s\", size %d bytes",
 			config.caches[config.ncaches].dir,
 			config.caches[config.ncaches].maxsize);
 	config.ncaches++;
-}
-
-static void
-add_log_options(line)
-	char *line;
-{
-	char *option = skip(&line);
-
-	if (!*option) {
-		(void)fprintf(stderr, "%s:%d: must specify type\n", current_file, current_line);
-		exit(8);
-	}
-
-	if (!strcmp(option, "file")) {
-		if (!*line) {
-			(void)fprintf(stderr, "%s:%d: no log file specified\n",
-				current_file, current_line);
-			exit(8);
-		}
-		logging.file = wstrdup(line);
-	} else if (!strcmp(option, "syslog")) {
-		struct syslog_facility *fac = syslog_facilities;
-
-		logging.syslog = 1;
-		if (!*line) {
-			(void)fprintf(stderr, "%s:%d: must specify facility\n",
-					current_file, current_line);
-			exit(8);
-		}
-
-		for (; fac->name; fac++) {
-			if (!strcmp(fac->name, line)) {
-				logging.facility = fac->fac;
-				break;
-			}
-		}
-		if (!fac->name) {
-			(void)fprintf(stderr, "%s:%d: uinrecognised facility '%s'\n",
-					current_file, current_line, line);
-			exit(8);
-		}
-	}
 }

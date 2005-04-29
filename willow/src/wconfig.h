@@ -38,4 +38,7 @@ struct	cachedir	*caches;
 
 void wconfig_init(const char *);
 
+int add_listener(const char *, int);
+int add_cachedir(const char *, int);
+
 #endif

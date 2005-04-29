@@ -158,6 +158,11 @@ struct	cachedir	*cd;
 	
 	wlog(WLOG_NOTICE, "using bdb: %s", DB_VERSION_STRING);
 	
+	if (config.ncaches == 0) {
+		wlog(WLOG_WARNING, "no cache directories specified");
+		return;
+	}
+	
 	/* only one cache dir supported for now... */
 	for (cd = config.caches; cd < config.caches + config.ncaches; ++cd) {
 		size_t	 len;

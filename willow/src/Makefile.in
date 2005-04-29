@@ -4,12 +4,23 @@ selectsrc=wnet_@SELECTTYPE@.c
 
 CPPFLAGS = -DDATADIR=\"$(_DATADIR)\"
 SRCS = willow.c wlog.c wconfig.c wnet.c whttp.c wbackend.c wlogwriter.c \
-	whttp_entity.c wcache.c ${selectsrc}
+	whttp_entity.c wcache.c confparse.c ${selectsrc} \
+	y.tab.c lex.yy.c
 OBJADD = @LIBOBJS@
 
 EXTRA_DIST=wnet_poll.c wnet_ports.c wnet_kqueue.c wnet_epoll.c wnet_devpoll.c \
 	wlog.h wconfig.h wnet.h whttp.h wbackend.h willow.h
 
 LDFLAGS = $(LIBOBJS)
+
+y.tab.o: y.tab.c
+lex.yy.o: lex.yy.c y.tab.h
+
+y.tab.c y.tab.h: parser.y
+	@echo "	yacc -d parser.y"
+	@yacc -d parser.y
+lex.yy.c: lexer.l y.tab.h
+	@echo "	lex lexer.l"
+	@lex lexer.l || rm -f lex.yy.c
 
 @include@ @q@@top_srcdir@/mk/prog.mk@q@

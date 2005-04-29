@@ -27,9 +27,11 @@ struct	sockaddr_in	 be_addr;	/* socket address		*/
 
 typedef void (*backend_cb)(struct backend *, struct fde *, void *);
 
-void add_backend(char *);
+void add_backend(const char *, int);
 void backend_file(char *);
 
 int get_backend(backend_cb, void *);
+
+extern int nbackends;
 
 #endif

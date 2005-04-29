@@ -24,11 +24,12 @@
 #include "wbackend.h"
 #include "wnet.h"
 #include "wlog.h"
+#include "confparse.h"
 
 static struct backend **backends;
-static int nbackends;
+int nbackends;
 
-static struct backend *new_backend(char *);
+static struct backend *new_backend(const char *, int);
 static void backend_read(struct fde *);
 static struct backend *next_backend(void);
 
@@ -39,21 +40,17 @@ struct	backend		*bc_backend;
 };
 
 static struct backend *
-new_backend(addr)
-	char *addr;
+new_backend(addr, port)
+	const char *addr;
+	int port;
 {
-	char	*host = addr, *port;
 struct	backend	 *nb;
 
 	if ((nb = wcalloc(1, sizeof(*nb))) == NULL)
 		outofmemory();
 
-	if ((port = strchr(host, ':')) != NULL) {
-		*port++ = '\0';
-		nb->be_port = atoi(port);
-	} else
-		nb->be_port = 80;
-	nb->be_name = wstrdup(host);
+	nb->be_port = port;
+	nb->be_name = wstrdup(addr);
 	nb->be_addr.sin_family = AF_INET;
 	nb->be_addr.sin_port = htons(nb->be_port);
 	nb->be_addr.sin_addr.s_addr = inet_addr(nb->be_name);
@@ -62,14 +59,23 @@ struct	backend	 *nb;
 }
 
 void
-add_backend(addr)
-	char *addr;
+add_backend(addr, port)
+	const char *addr;
+	int port;
 {
+	if (port < 1 || port > 65535) {
+		conf_report_error("invalid backend port: %d", port);
+		nerrors++;
+		return;
+	}
+	
 	if ((backends = wrealloc(backends, sizeof(struct backend*) * ++nbackends)) == NULL)
 		outofmemory();
-	backends[nbackends - 1] = new_backend(addr);
+	backends[nbackends - 1] = new_backend(addr, port);
+	wlog(WLOG_NOTICE, "backend: %s:%d", addr, port);
 }
 
+#if 0
 void
 backend_file(file)
 	char *file;
@@ -89,6 +95,7 @@ backend_file(file)
 
 	(void)fclose(f);
 }
+#endif
 
 int
 get_backend(func, data)
