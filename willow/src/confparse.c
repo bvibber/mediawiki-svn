@@ -24,9 +24,9 @@
 
 #define CF_TYPE(x) ((x) & CF_MTYPE)
 
+int nerrors;
 struct top_conf *conf_cur_block;
 char *conf_cur_block_name;
-int nerrors;
 
 static LIST_HEAD(conf_items_head, top_conf) conf_items =
 		LIST_HEAD_INITIALIZER(conf_items);
@@ -44,7 +44,7 @@ conf_report_error(const char *fmt, ...)
 	va_list	ap;
 	
 	va_start(ap, fmt);
-	vsnprintf(buf, 1024, fmt, ap);
+	(void)vsnprintf(buf, 1024, fmt, ap);
 	va_end(ap);
 	
 	wlog(WLOG_ERROR, "\"%s\", line %d: %s", current_file, lineno, buf);

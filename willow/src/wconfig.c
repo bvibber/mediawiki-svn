@@ -42,7 +42,6 @@ const char *current_file;
 void
 wconfig_init(const char *file)
 {
-	char	 line[1024];
 	FILE	*cfg;
 extern	FILE	*yyin;
 	
@@ -60,18 +59,18 @@ extern	FILE	*yyin;
 	
 	if (yyparse()) {
 		wlog(WLOG_ERROR, "could not parse configuration file");
-		exit(8);
-	}
-	if (nerrors) {
-		wlog(WLOG_ERROR, "%d error(s) in configuration file.  cannot continue.", nerrors);
-		exit(8);
+		nerrors++;
 	}
 	if (!nlisteners) {
 		wlog(WLOG_ERROR, "no listeners defined");
-		exit(8);
+		nerrors++;
 	}
 	if (!nbackends) {
 		wlog(WLOG_ERROR, "no backends defined");
+		nerrors++;
+	}
+	if (nerrors) {
+		wlog(WLOG_ERROR, "%d error(s) in configuration file.  cannot continue.", nerrors);
 		exit(8);
 	}
 	

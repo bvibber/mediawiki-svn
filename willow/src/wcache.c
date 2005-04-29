@@ -29,6 +29,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include <strings.h>
+#include <limits.h>
+#include <assert.h>
 
 #include <db.h>
  
@@ -48,6 +50,7 @@ static int cache_getstate(struct cache_state *, DB_TXN *);
 static int cache_next_id(void);
 
 static struct cache_state state;
+static int int_max_len;
 
 static void dberror(txt, err)
 	const char *txt;
@@ -214,6 +217,8 @@ struct	cachedir	*cd;
 		if (i = txn->commit(txn, 0))
 			dberror("init: state commit", i);
 	}
+	
+	int_max_len = log10(INT_MAX) + 1;
 }
 
 static char *
@@ -438,8 +443,9 @@ struct	cache_object	*ret;
 		outofmemory();
 	
 	ret->co_id = cache_next_id();
-	
-	ret->co_plen = ((int) log10((double) ret->co_id) + 1) + 6;
+
+	assert(ret->co_id > 999);
+	ret->co_plen = int_max_len + 6;
 	if ((ret->co_path = wmalloc(ret->co_plen + 1)) == NULL)
 		outofmemory();
 	p = ret->co_path;
@@ -450,7 +456,7 @@ struct	cache_object	*ret;
 	for (i = 0; i < 3; ++i) {
 		*p++ = *s--;
 		*p++ = '/';
-	}
+ 	}
 	*p = '\0';
 	if (strlcat(ret->co_path, a, ret->co_plen + 1) >= ret->co_plen + 1)
 		abort();

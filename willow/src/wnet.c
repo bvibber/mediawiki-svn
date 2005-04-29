@@ -241,7 +241,7 @@ wnet_sendfile(fd, source, size, off, cb, data)
 struct	wrtbuf	*wb;
 struct	fde	*e = &fde_table[fd];
 
-	WDEBUG((WLOG_DEBUG, "wnet_sendfile: %d (+%d) bytes from %d to %d [%s]", size, off, source, fd, e->fde_desc));
+	WDEBUG((WLOG_DEBUG, "wnet_sendfile: %d (+%ld) bytes from %d to %d [%s]", size, (long)off, source, fd, e->fde_desc));
 	
 	if ((wb = wcalloc(1, sizeof(*wb))) == NULL)
 		outofmemory();

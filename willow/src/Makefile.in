@@ -3,10 +3,11 @@ PROGRAM = willow
 selectsrc=wnet_@SELECTTYPE@.c
 
 CPPFLAGS = -DDATADIR=\"$(_DATADIR)\"
-SRCS = willow.c wlog.c wconfig.c wnet.c whttp.c wbackend.c wlogwriter.c \
-	whttp_entity.c wcache.c confparse.c ${selectsrc} \
-	y.tab.c lex.yy.c
-OBJADD = @LIBOBJS@
+BASESRCS = willow.c wlog.c wconfig.c wnet.c whttp.c wbackend.c wlogwriter.c \
+	whttp_entity.c wcache.c confparse.c ${selectsrc}
+#GENSRCS=y.tab.c lex.yy.c
+SRCS=$(BASESRCS)
+OBJADD = @LIBOBJS@ y.tab.o lex.yy.o
 
 EXTRA_DIST=wnet_poll.c wnet_ports.c wnet_kqueue.c wnet_epoll.c wnet_devpoll.c \
 	wlog.h wconfig.h wnet.h whttp.h wbackend.h willow.h confparse.h \
