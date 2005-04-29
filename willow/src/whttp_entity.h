@@ -61,7 +61,11 @@ struct http_entity {
 		struct {
 			int	 reqtype;
 			char	*path;
-			char	*host;	/* HTTP Host: header */
+			/*
+			 * Interesting headers.
+			 */
+			char	*host;		/* Host			*/
+			int	 contlen;	/* Content-Length	*/
 		} request;
 	}		 he_rdata;
 	
@@ -81,7 +85,11 @@ struct	header_list	 he_headers;
 			off_t	off;
 		}		 fd;
 		/* fde data */
-		struct fde	*fde;
+		struct {
+			struct fde	*fde;
+			int		 len; /* or -1 */
+			int		 _wrt;	/* amount left to write */
+		}		 fde;
 	}		 he_source;
 
 	struct {
@@ -108,6 +116,8 @@ struct	header_list	 he_headers;
 struct	fde		*_he_target;
 	int		 _he_state;
 	pthread_t	 _he_thread;
+	char		*_he_lastname;
+	char		*_he_valstart;
 };
 
 void entity_read_headers(struct http_entity *, header_cb, void *);

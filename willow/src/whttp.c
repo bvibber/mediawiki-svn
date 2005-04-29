@@ -199,8 +199,9 @@ struct	http_client	*cl;
 
 	cl = new_client(e);
 	cl->cl_entity.he_source_type = ENT_SOURCE_FDE;
-	cl->cl_entity.he_source.fde = e;
-	
+	cl->cl_entity.he_source.fde.fde = e;
+	cl->cl_entity.he_rdata.request.contlen = -1;
+		
 	WDEBUG((WLOG_DEBUG, "http_new: starting header read for %d", cl->cl_fde->fde_fd));
 	entity_read_headers(&cl->cl_entity, client_read_done, cl);
 }
@@ -300,12 +301,27 @@ struct	header_list	 *it;
 	}
 
 	header_add(&client->cl_entity.he_headers, "X-Forwarded-For", client->cl_fde->fde_straddr);
-	client->cl_entity.he_source_type = ENT_SOURCE_NONE;
+	/*
+	 * POST requests require Content-Length.
+	 */
+	if (client->cl_reqtype == REQTYPE_POST) {
+		if (client->cl_entity.he_rdata.request.contlen == -1) {
+			client_send_error(client, ERR_BADREQUEST, "POST request without Content-Length");
+			return;
+		}
+		
+		WDEBUG((WLOG_DEBUG, "client content-length=%d", client->cl_entity.he_rdata.request.contlen));
+		client->cl_entity.he_source_type = ENT_SOURCE_FDE;
+		client->cl_entity.he_source.fde.fde = client->cl_fde;
+		client->cl_entity.he_source.fde.len = client->cl_entity.he_rdata.request.contlen;
+	} else
+		client->cl_entity.he_source_type = ENT_SOURCE_NONE;
+	
 	entity_send(e, &client->cl_entity, backend_headers_done, client);
 }
 
 /*
- * Called when clients headers were written to the backend.
+ * Called when clients request was written to the backend.
  */
 /*ARGSUSED*/
 static void
@@ -325,7 +341,9 @@ struct	http_client	*client = data;
 	entity_free(&client->cl_entity);
 	bzero(&client->cl_entity, sizeof(client->cl_entity));
 	client->cl_entity.he_source_type = ENT_SOURCE_FDE;
-	client->cl_entity.he_source.fde = client->cl_backendfde;
+	client->cl_entity.he_source.fde.fde = client->cl_backendfde;
+	client->cl_entity.he_source.fde.len = -1;
+	
 	client->cl_entity.he_flags.response = 1;
 
 	/*
@@ -383,6 +401,7 @@ struct	http_client	*client = data;
 	
 	header_add(&client->cl_entity.he_headers, "Via", via_hdr);
 	header_add(&client->cl_entity.he_headers, "X-Cache", cache_miss_hdr);
+	client->cl_entity.he_source.fde.len = -1;
 	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client);
 }
 

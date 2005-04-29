@@ -107,7 +107,7 @@ entity_read_headers(entity, func, udata)
 
 	WDEBUG((WLOG_DEBUG, "entity_read_headers: starting"));
 	/* XXX source for an entity header read is _always_ an fde */
-	wnet_register(entity->he_source.fde->fde_fd, FDE_READ, entity_read_callback, entity);
+	wnet_register(entity->he_source.fde.fde->fde_fd, FDE_READ, entity_read_callback, entity);
 	//entity_read_callback(entity->he_source.fde);
 }
 
@@ -117,10 +117,12 @@ entity_read_callback(fde)
 {
 struct	http_entity	*entity = fde->fde_rdata;
 
-	WDEBUG((WLOG_DEBUG, "entity_read_callback: called"));
+	WDEBUG((WLOG_DEBUG, "entity_read_callback: called, source %d, left=%d", 
+			entity->he_source.fde.fde->fde_fd, 
+			readbuf_data_left(&entity->he_source.fde.fde->fde_readbuf)));
 	
-	if (readbuf_data_left(&entity->he_source.fde->fde_readbuf) == 0) {
-		switch (readbuf_getdata(entity->he_source.fde)) {
+	if (readbuf_data_left(&entity->he_source.fde.fde->fde_readbuf) == 0) {
+		switch (readbuf_getdata(entity->he_source.fde.fde)) {
 		case -1:
 			WDEBUG((WLOG_DEBUG, "entity_read_callback: readbuf_getdata returned -1, errno=%d %s", 
 					errno, strerror(errno)));
@@ -129,17 +131,18 @@ struct	http_entity	*entity = fde->fde_rdata;
 		/*FALLTHRU*/
 		case 0:
 			WDEBUG((WLOG_DEBUG, "entity_read_callback: readbuf_getdata returned 0"));
-			wnet_register(entity->he_source.fde->fde_fd, FDE_READ, NULL, NULL);
+			wnet_register(entity->he_source.fde.fde->fde_fd, FDE_READ, NULL, NULL);
 			entity->he_flags.error = 1;
 			entity->_he_func(entity, entity->_he_cbdata, -1);
 			return;
 		}
 	}
 
-	WDEBUG((WLOG_DEBUG, "entity_read_callback: running header parse"));
+	WDEBUG((WLOG_DEBUG, "entity_read_callback: running header parse, %d left in buffer",
+			readbuf_data_left(&entity->he_source.fde.fde->fde_readbuf)));
 	if (parse_headers(entity) == -1) {
 		WDEBUG((WLOG_DEBUG, "entity_read_callback: parse_headers returned -1"));
-		wnet_register(entity->he_source.fde->fde_fd, FDE_READ, NULL, NULL);
+		wnet_register(entity->he_source.fde.fde->fde_fd, FDE_READ, NULL, NULL);
 		entity->he_flags.error = 1;
 		entity->_he_func(entity, entity->_he_cbdata, -1);
 		return;
@@ -147,7 +150,7 @@ struct	http_entity	*entity = fde->fde_rdata;
 
 	if (entity->_he_state == ENTITY_STATE_DONE) {
 		WDEBUG((WLOG_DEBUG, "entity_read_callback: client is ENTITY_STATE_DONE"));
-		wnet_register(entity->he_source.fde->fde_fd, FDE_READ, NULL, NULL);
+		wnet_register(entity->he_source.fde.fde->fde_fd, FDE_READ, NULL, NULL);
 		entity->_he_func(entity, entity->_he_cbdata, 01);
 		return;
 	}
@@ -170,15 +173,15 @@ parse_headers(entity)
 {
 	assert(entity->he_source_type == ENT_SOURCE_FDE);
 	
-	while (readbuf_data_left(&entity->he_source.fde->fde_readbuf) > 0) {
-		char c = *readbuf_cur_pos(&entity->he_source.fde->fde_readbuf);
+	while (readbuf_data_left(&entity->he_source.fde.fde->fde_readbuf) > 0) {
+		char c = *readbuf_cur_pos(&entity->he_source.fde.fde->fde_readbuf);
 
 		switch(entity->_he_state) {
 		case ENTITY_STATE_START:
 			/* should be reading a request type */
 			switch(c) {
 				case '\r':
-					*readbuf_cur_pos(&entity->he_source.fde->fde_readbuf) = '\0';
+					*readbuf_cur_pos(&entity->he_source.fde.fde->fde_readbuf) = '\0';
 					if (parse_reqtype(entity) == -1)
 						return -1;
 					entity->_he_state = ENTITY_STATE_CR;
@@ -207,8 +210,9 @@ parse_headers(entity)
 					return -1;
 				default: /* header name */
 					entity->_he_state = ENTITY_STATE_HDR;
-					entity->_he_hdrbuf = entity->he_source.fde->fde_readbuf.rb_p 
-							+ entity->he_source.fde->fde_readbuf.rb_dpos;
+					entity->_he_hdrbuf = entity->he_source.fde.fde->fde_readbuf.rb_p 
+							+ entity->he_source.fde.fde->fde_readbuf.rb_dpos;
+					entity->_he_lastname = entity->_he_hdrbuf;
 					break;
 			}
 			break;
@@ -216,7 +220,7 @@ parse_headers(entity)
 			switch(c) {
 				case ':':
 					entity->_he_state = ENTITY_STATE_COLON;
-					*readbuf_cur_pos(&entity->he_source.fde->fde_readbuf) = '\0';
+					*readbuf_cur_pos(&entity->he_source.fde.fde->fde_readbuf) = '\0';
 					break;
 				case ' ': case '\r': case '\n':
 					return -1;
@@ -238,19 +242,8 @@ parse_headers(entity)
 				case '\r': case '\n': case ':': case ' ':
 					return -1;
 				default:
-					header_add(&entity->he_headers, entity->_he_hdrbuf, 
-						entity->he_source.fde->fde_readbuf.rb_p + 
-							entity->he_source.fde->fde_readbuf.rb_dpos);
-					if (entity->he_headers.hl_num > MAX_HEADERS)
-						return -1;
-					
-					/*
-					 * Check for "interesting" headers that we want to do
-					 * extra processing on.
-					 */
-					if (!strcmp(entity->_he_hdrbuf, "Host"))
-						entity->he_rdata.request.host = entity->he_source.fde->fde_readbuf.rb_p +
-								entity->he_source.fde->fde_readbuf.rb_dpos;
+					entity->_he_valstart = entity->he_source.fde.fde->fde_readbuf.rb_p +
+							entity->he_source.fde.fde->fde_readbuf.rb_dpos;
 					entity->_he_state = ENTITY_STATE_VALUE;
 					break;
 			}
@@ -258,7 +251,22 @@ parse_headers(entity)
 		case ENTITY_STATE_VALUE:
 			switch(c) {
 				case '\r': 
-					*readbuf_cur_pos(&entity->he_source.fde->fde_readbuf) = '\0';
+					*readbuf_cur_pos(&entity->he_source.fde.fde->fde_readbuf) = '\0';
+					/*
+					 * Check for "interesting" headers that we want to do
+					 * extra processing on.
+					 */
+					if (entity->he_headers.hl_num++ > MAX_HEADERS)
+						return -1;
+					header_add(&entity->he_headers, entity->_he_lastname, entity->_he_valstart);
+					if (!strcmp(entity->_he_lastname, "Host"))
+						entity->he_rdata.request.host = entity->_he_valstart;
+					else if (!strcmp(entity->_he_lastname, "Content-Length")) {
+						char *cl = entity->_he_valstart;
+						entity->he_rdata.request.contlen = atoi(cl);
+						WDEBUG((WLOG_DEBUG, "got content-length: %d [%s]", 
+								entity->he_rdata.request.contlen, cl));
+					}
 					entity->_he_state = ENTITY_STATE_CR;
 					break;
 				case '\n': 
@@ -271,7 +279,7 @@ parse_headers(entity)
 			switch(c) {
 				case '\n':
 					entity->_he_state = ENTITY_STATE_DONE;
-					readbuf_inc_data_pos(&entity->he_source.fde->fde_readbuf, 1);
+					readbuf_inc_data_pos(&entity->he_source.fde.fde->fde_readbuf, 1);
 					return 0;
 				default:
 					return -1;
@@ -289,7 +297,7 @@ parse_headers(entity)
 				  * don't know which is correct.
 				  */
 		}
-		readbuf_inc_data_pos(&entity->he_source.fde->fde_readbuf, 1);
+		readbuf_inc_data_pos(&entity->he_source.fde.fde->fde_readbuf, 1);
 	}
 	return 0;
 }
@@ -299,7 +307,7 @@ parse_reqtype(entity)
 	struct http_entity *entity;
 {
 	char	*p, *s;
-	char	*request = entity->he_source.fde->fde_readbuf.rb_p;
+	char	*request = entity->he_source.fde.fde->fde_readbuf.rb_p;
 	int	i;
 
 	WDEBUG((WLOG_DEBUG, "parse_reqtype: called, response=%d", (int)entity->he_flags.response));
@@ -665,7 +673,9 @@ struct	http_entity	*entity = data;
 	 * registers the fd as readable again..
 	 */ 
 	WDEBUG((WLOG_DEBUG, "entity_send_headers_done: source is FDE"));
-	wnet_register(entity->he_source.fde->fde_fd, FDE_READ, entity_send_fde_read, entity);
+	entity->he_source.fde._wrt = entity->he_source.fde.len;
+	wnet_register(entity->he_source.fde.fde->fde_fd, FDE_READ, entity_send_fde_read, entity);
+	entity_send_fde_read(entity->he_source.fde.fde);
 }
 
 static void
@@ -674,15 +684,22 @@ entity_send_fde_read(fde)
 {
 struct	http_entity	*entity = fde->fde_rdata;
 	ssize_t		 len;
+	size_t		 wrt;
+	void		*cur_pos;
 	
 	WDEBUG((WLOG_DEBUG, "entity_send_fde_read: called for %d [%s]", fde->fde_fd, fde->fde_desc));
 	WDEBUG((WLOG_DEBUG, "entity_send_fde_read: %d bytes left in readbuf",
-			readbuf_data_left(&entity->he_source.fde->fde_readbuf)));
+			readbuf_data_left(&entity->he_source.fde.fde->fde_readbuf)));
 
-	if (readbuf_data_left(&entity->he_source.fde->fde_readbuf) == 0) {
+	if (entity->he_source.fde._wrt == 0) {
+		entity->_he_func(entity, entity->_he_cbdata, 0);
+		return;
+	}
+	
+	if (readbuf_data_left(&entity->he_source.fde.fde->fde_readbuf) == 0) {
 		len = readbuf_getdata(fde);
 	} else
-		len = readbuf_data_left(&entity->he_source.fde->fde_readbuf);
+		len = readbuf_data_left(&entity->he_source.fde.fde->fde_readbuf);
 	
 	WDEBUG((WLOG_DEBUG, "entity_send_fde_read: read %d bytes", len));
 	
@@ -694,8 +711,7 @@ struct	http_entity	*entity = fde->fde_rdata;
 	
 	if (len == -1) {
 		if (errno == EAGAIN) {
-			/* ? this shouldn't happen */
-			abort();
+			return;
 		}
 		
 		entity->_he_func(entity, entity->_he_cbdata, -1);
@@ -703,14 +719,24 @@ struct	http_entity	*entity = fde->fde_rdata;
 	}
 	
 	if (entity->he_cache_callback) {
-		entity->he_cache_callback(readbuf_cur_pos(&entity->he_source.fde->fde_readbuf),
-				readbuf_data_left(&entity->he_source.fde->fde_readbuf),
+		entity->he_cache_callback(readbuf_cur_pos(&entity->he_source.fde.fde->fde_readbuf),
+				readbuf_data_left(&entity->he_source.fde.fde->fde_readbuf),
 				entity->he_cache_callback_data);
 	}
 	
-	wnet_write(entity->_he_target->fde_fd, readbuf_cur_pos(&entity->he_source.fde->fde_readbuf),
-			readbuf_data_left(&entity->he_source.fde->fde_readbuf), entity_send_fde_write_done, entity);
-	readbuf_inc_data_pos(&entity->he_source.fde->fde_readbuf, readbuf_data_left(&entity->he_source.fde->fde_readbuf));
+	if (entity->he_source.fde._wrt == -1)
+		wrt = readbuf_data_left(&entity->he_source.fde.fde->fde_readbuf);
+	else {
+		wrt = min(readbuf_data_left(&entity->he_source.fde.fde->fde_readbuf),
+				entity->he_source.fde._wrt);
+		entity->he_source.fde._wrt -= wrt;
+	}
+
+	WDEBUG((WLOG_DEBUG, "_wrt=%d, writing %d", entity->he_source.fde._wrt, wrt));
+	cur_pos = readbuf_cur_pos(&entity->he_source.fde.fde->fde_readbuf);
+	readbuf_inc_data_pos(&entity->he_source.fde.fde->fde_readbuf, wrt);
+	wnet_write(entity->_he_target->fde_fd, cur_pos,
+			wrt, entity_send_fde_write_done, entity);
 }
 
 /*ARGSUSED*/
@@ -722,7 +748,18 @@ entity_send_fde_write_done(fde, data, res)
 {
 struct	http_entity	*entity = data;
 
-	wnet_register(entity->he_source.fde->fde_fd, FDE_READ, entity_send_fde_read, entity);
+	WDEBUG((WLOG_DEBUG, "entity_send_fde_write_done: called"));
+	
+	if (entity->he_source.fde._wrt == 0) {
+		wnet_register(entity->he_source.fde.fde->fde_fd, FDE_READ, NULL, NULL);
+		WDEBUG((WLOG_DEBUG, "entity_send_fde_write_done: _wrt = 0, fd=%d, target=%d",
+				entity->he_source.fde.fde->fde_fd, entity->_he_target->fde_fd));
+		readbuf_free(&entity->_he_target->fde_readbuf);
+		entity->_he_func(entity, entity->_he_cbdata, 0);
+		return;
+	}
+	
+	wnet_register(entity->he_source.fde.fde->fde_fd, FDE_READ, entity_send_fde_read, entity);
 }
 
 /*ARGSUSED*/

@@ -119,5 +119,6 @@ void wnet_set_time(void);
 void wnet_init_select(void);
 
 int readbuf_getdata(struct fde *);
+void readbuf_free(struct readbuf *);
 
 #endif

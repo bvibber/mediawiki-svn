@@ -253,6 +253,9 @@ struct	cache_object	*data;
 	char		*keybuf;
 
 	WDEBUG((WLOG_DEBUG, "wcache_find_object: looking for %s %d", key->ck_key, key->ck_len));
+	if (cacheobjs == NULL)
+		return NULL;
+	
 	keybuf = make_keybuf(key);	
 	
 	bzero(&keyt, sizeof(keyt));

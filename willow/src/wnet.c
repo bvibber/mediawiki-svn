@@ -11,6 +11,8 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
+
+#include "config.h"
 #ifdef HAVE_SYS_SENDFILE_H
 # include <sys/sendfile.h>
 #endif
@@ -64,7 +66,6 @@ static void wnet_accept(struct fde *);
 static void wnet_write_do(struct fde *);
 static void wnet_sendfile_do(struct fde *);
 
-static void readbuf_free(struct readbuf *);
 static void readbuf_reset(struct readbuf *);
 
 struct fde *fde_table;
@@ -291,10 +292,20 @@ wnet_write_do(e)
 {
 struct	wrtbuf	*buf;
 	int	 i;
-
+#ifdef WILLOW_DEBUG
+	char	*p;
+#endif
+	
 	buf = e->fde_wdata;
 	while ((i = write(e->fde_fd, (char *)buf->wb_buf + buf->wb_done, buf->wb_size - buf->wb_done)) > -1) {
+#ifdef WILLOW_DEBUG
+		fprintf(stderr, "write buf: [");
+		for (p = ((char *)buf->wb_buf + buf->wb_done); p < ((char *)buf->wb_buf + buf->wb_done + i); ++p)
+			fputc(*p, stderr);
+		fputs("]\n", stderr);
+#endif
 		buf->wb_done += i;
+		WDEBUG((WLOG_DEBUG, "%d of %d done", buf->wb_done, buf->wb_size));
 		if (buf->wb_done == buf->wb_size) {
 			wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
 			buf->wb_func(e, buf->wb_udata, 0);
@@ -343,6 +354,8 @@ struct	wrtbuf *buf;
 #else
 # error i don't know how to invoke sendfile() on this system
 #endif
+	buf->wb_size -= (buf->wb_off - origoff);
+	
 	if (buf->wb_size == 0) {
 		wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
 		buf->wb_func(e, buf->wb_udata, 0);
@@ -355,9 +368,7 @@ struct	wrtbuf *buf;
 		buf->wb_func(e, buf->wb_udata, -1);
 		wfree(buf);
 	}
-	
-	buf->wb_size -= (buf->wb_off - origoff);
-	
+
 	WDEBUG((WLOG_DEBUG, "wnet_sendfile_do: sendfile failed %s", strerror(errno)));
 	
 	if (errno == EWOULDBLOCK)
@@ -409,7 +420,7 @@ readbuf_getdata(fde)
 	return i;
 }
 
-static void
+void
 readbuf_free(buffer)
 	struct readbuf *buffer;
 {

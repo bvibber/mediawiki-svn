@@ -52,5 +52,6 @@ void outofmemory(void);
 #endif
 
 #define safe_snprintf(n,a) if (snprintf a > (n - 1)) abort();
+#define min(x,y) ((x) < (y) ? (x) : (y))
 
 #endif
