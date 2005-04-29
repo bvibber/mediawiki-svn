@@ -145,14 +145,16 @@ whttp_init(void)
 	/*
 	 * Fork the logwriter.
 	 */
-	if (pipe(logwr_pipe) < 0) {
-		perror("pipe");
-		exit(8);
-	}
-	wlogwriter_start(logwr_pipe);
-	if ((alf = fdopen(logwr_pipe[0], "w")) == NULL) {
-		perror("fdopen");
-		exit(8);
+	if (config.access_log) {
+		if (pipe(logwr_pipe) < 0) {
+			perror("pipe");
+			exit(8);
+		}
+		wlogwriter_start(logwr_pipe);
+		if ((alf = fdopen(logwr_pipe[0], "w")) == NULL) {
+			perror("fdopen");
+			exit(8);
+		}
 	}
 }
 
