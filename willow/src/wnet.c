@@ -11,7 +11,9 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <sys/sendfile.h>
+#ifdef HAVE_SYS_SENDFILE_H
+# include <sys/sendfile.h>
+#endif
 
 #include <arpa/inet.h>
 
@@ -111,7 +113,11 @@ wnet_accept(e)
 	struct fde *e;
 {
 struct	client_data	*cdata;
+#ifdef __hpux
+	int		 addrlen;
+#else
 	socklen_t	 addrlen;
+#endif
 	int		 newfd, val;
 struct	fde		*newe;
 
@@ -320,10 +326,13 @@ struct	wrtbuf *buf;
 	WDEBUG((WLOG_DEBUG, "wnet_sendfile_do: for %d, off=%ld, size=%d", e->fde_fd, (long) buf->wb_off, buf->wb_size));
 #if defined __linux__ || defined __sun
 	i = sendfile(e->fde_fd, buf->wb_source, &buf->wb_off, buf->wb_size);
-#elif defined __FreeBSD__
+#elif defined __FreeBSD__ 
 	i = sendfile(buf->wb_source, e->fde_fd, buf->wb_size, NULL, &off, 0);
 	buf->wb_off += off;
 	i = off;
+#elif defined __hpux
+	i = sendfile(e->fde_fd, buf->wb_source, buf->wb_off, buf->wb_size, NULL, 0);
+	buf->wb_off += i;
 #else
 # error i don't know how to invoke sendfile() on this system
 #endif

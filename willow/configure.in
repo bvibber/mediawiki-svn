@@ -5,7 +5,7 @@ AC_INIT(configure.in)
 USER_CFLAGS="$CFLAGS"
 
 # autoconf brokenness
-if test -z $CC; then
+if test -z "$CC"; then
 	CC=cc
 fi
 
@@ -46,7 +46,7 @@ AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug],[Compile with debug support
 	fi
 ])
 
-if test -z $USER_CFLAGS; then
+if test -z "$USER_CFLAGS"; then
 	USE_CFLAGS=$mycflags
 else
 	USE_CFLAGS=$USER_CFLAGS
@@ -151,6 +151,8 @@ AC_SEARCH_LIBS(socket, socket)
 AC_SEARCH_LIBS(inet_addr, nsl)
 AC_SEARCH_LIBS(log10, m)
 AC_SEARCH_LIBS(sendfile, sendfile)
+AC_CHECK_FUNC(strlcat,AC_DEFINE([HAVE_STRLCAT],,[Define this if you have strlcat()]),[AC_LIBOBJ(strlcat)])
+AC_CHECK_FUNC(strlcpy,AC_DEFINE([HAVE_STRLCPY],,[Define this if you have strlcpy()]),[AC_LIBOBJ(strlcpy)])
 AC_CHECK_FUNC(sendfilev,AC_DEFINE([HAVE_SENDFILE],,[Define this if you have sendfile()]))
 AC_CHECK_FUNC(daemon,AC_DEFINE([HAVE_DAEMON],,[Define this if you have daemon()]),[AC_LIBOBJ(daemon)])
 AC_CHECK_FUNC(setproctitle,AC_DEFINE([HAVE_SETPROCTITLE],,[Define this if you have setproctitle()]))
@@ -160,6 +162,7 @@ AC_CHECK_LIB(db-4.3, db_env_create, [], [
 AC_CHECK_LIB(db, db_env_create, [], [
 	AC_MSG_ERROR([cannot not find required libdb-4.3 or libdb.])])])
 AC_CHECK_HEADER([sys/queue.h],AC_DEFINE([HAVE_SYS_QUEUE_H],,[Define this if you have <sys/queue.h]))
+AC_CHECK_HEADER([sys/sendfile.h],AC_DEFINE([HAVE_SYS_SENDFILE_H],,[Define this if you have <sys/sendfile.h>]))
 AC_MSG_CHECKING(for transaction support in libdb)
 AC_COMPILE_IFELSE([
 #include <db.h>
@@ -270,7 +273,7 @@ fi
 if test x$use_kqueue != xno -a x$have_kqueue = xyes; then
 	SELECTTYPE=kqueue
 fi
-if ! test -z $FORCE_SELECT; then
+if ! test -z "$FORCE_SELECT"; then
 	SELECTTYPE=$FORCE_SELECT
 fi
 if test $SELECTTYPE = none; then

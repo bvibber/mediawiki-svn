@@ -47,8 +47,8 @@
  *    be a  file  descriptor  to  a  regular  file opened for reading.
  */
 
-#include <sys/sendfile.h>
- 
+#include <sys/uio.h>
+
 #include <unistd.h>
 #include <errno.h>
 #include <string.h>

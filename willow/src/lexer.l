@@ -1,3 +1,4 @@
+%{
 /* @(#) $Header$ */
 /* This source code is in the public domain. */
 /*
@@ -5,8 +6,6 @@
  * lexer: configuration file lexer.
  */
  
-%{
-
 #ifdef __SUNPRO_C
 # pragma ident "@(#)$Header$"
 #endif

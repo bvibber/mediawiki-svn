@@ -18,5 +18,5 @@ install:
 	done
 
 _MYDISTFILES=Makefile.in $(DATAFILES)
-	
+
 _extradist:
