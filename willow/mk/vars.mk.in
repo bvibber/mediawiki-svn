@@ -2,6 +2,9 @@
 # 
 # Standard variables.
 
+_LEX=		@LEX@
+_YACC=		@YACC@
+
 CC=		@CC@
 _CPPFLAGS=	-I@top_srcdir@ -I. @CPPFLAGS@
 _CFLAGS=	@CFLAGS@

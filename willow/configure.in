@@ -54,6 +54,15 @@ echo "using CFLAGS: $USE_CFLAGS"
 
 AC_PROG_INSTALL
 AC_MAKE_INCLUDE
+AC_PATH_PROG([YACC], [yacc],none)
+if test x$YACC = xnone; then
+	AC_MSG_ERROR([you don't have yacc])
+fi
+
+AC_PATH_PROG([LEX], [lex],none)
+if test x$LEX = xnone; then
+	AC_MSG_ERROR([you don't have lex])
+fi
 
 dependstyle=null
 
