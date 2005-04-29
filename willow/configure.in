@@ -148,6 +148,7 @@ AC_CHECK_HEADER(db.h, [], [
 AC_CHECK_LIB(db-4.3, db_env_create, [], [
 AC_CHECK_LIB(db, db_env_create, [], [
 	AC_MSG_ERROR([cannot not find required libdb-4.3 or libdb.])])])
+AC_CHECK_HEADER([sys/queue.h],AC_DEFINE([HAVE_SYS_QUEUE_H],,[Define this if you have <sys/queue.h]))
 
 echo ""
 echo "examining supported I/O systems..."
