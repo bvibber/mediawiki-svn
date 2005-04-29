@@ -12,6 +12,13 @@
 # pragma ident "@(#)$Header$"
 #endif
 
+#if defined __digital__ && defined __unix__
+/* sendfile prototype is missing on Tru64 UNIX */
+# include <sys/uio.h>
+
+ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
+#endif
+
 #include <sys/types.h>
 
 #include <netinet/in.h>

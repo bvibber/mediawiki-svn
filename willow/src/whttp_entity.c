@@ -582,7 +582,7 @@ entity_send(fde, entity, cb, data)
 	if (entity->he_flags.response) {
 		struct iovec vec[5];
 		
-		safe_snprintf(status, 4, "%d", entity->he_rdata.response.status);
+		safe_snprintf(4, (status, 4, "%d", entity->he_rdata.response.status));
 		vec[0].iov_base = "HTTP/1.0 ";
 		vec[0].iov_len = 9;
 		vec[1].iov_base = status;

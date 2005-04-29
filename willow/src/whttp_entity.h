@@ -12,7 +12,9 @@
 # pragma ident "@(#)$Header$"
 #endif
 
-#include <pthread.h>
+#ifdef THREADED_IO
+# include <pthread.h>
+#endif
 
 #include "whttp.h"
 

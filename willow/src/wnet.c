@@ -324,13 +324,20 @@ struct	wrtbuf *buf;
 	origoff = buf->wb_off;
 	
 	WDEBUG((WLOG_DEBUG, "wnet_sendfile_do: for %d, off=%ld, size=%d", e->fde_fd, (long) buf->wb_off, buf->wb_size));
+	/*
+	 * On Solaris (sendfilev), FreeBSD, Tru64 UNIX and HP-UX (sendfile), we can write header data
+	 * along with the sendfile, which improves performance and reduces syscall usage.
+	 * At the moment this isn't supported, though...
+	 *
+	 * Linux sendfile() doesn't seem to have anything similar.
+	 */
 #if defined __linux__ || defined __sun
 	i = sendfile(e->fde_fd, buf->wb_source, &buf->wb_off, buf->wb_size);
 #elif defined __FreeBSD__ 
 	i = sendfile(buf->wb_source, e->fde_fd, buf->wb_size, NULL, &off, 0);
 	buf->wb_off += off;
 	i = off;
-#elif defined __hpux
+#elif defined __hpux || (defined __digital__ && defined __unix__)
 	i = sendfile(e->fde_fd, buf->wb_source, buf->wb_off, buf->wb_size, NULL, 0);
 	buf->wb_off += i;
 #else

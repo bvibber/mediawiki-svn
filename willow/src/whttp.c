@@ -130,7 +130,7 @@ whttp_init(void)
 	}
 
 	(void)strlcpy(my_version, "Willow/" PACKAGE_VERSION, 64);
-	safe_snprintf(via_hdr, 1023, "1.0 %s (%s)", my_hostname, my_version);
+	safe_snprintf(1023, (via_hdr, 1023, "1.0 %s (%s)", my_hostname, my_version));
 
 	hsize = sizeof("MISS from ") + strlen(my_hostname);
 	cache_hit_hdr = wmalloc(hsize + 1);
@@ -139,8 +139,8 @@ whttp_init(void)
 	if (cache_hit_hdr == NULL || cache_miss_hdr == NULL)
 		outofmemory();
 	
-	safe_snprintf(cache_hit_hdr, hsize, "HIT from %s", my_hostname);
-	safe_snprintf(cache_miss_hdr, hsize, "MISS from %s", my_hostname);
+	safe_snprintf(hsize, (cache_hit_hdr, hsize, "HIT from %s", my_hostname));
+	safe_snprintf(hsize, (cache_miss_hdr, hsize, "MISS from %s", my_hostname));
 	
 	/*
 	 * Fork the logwriter.
@@ -239,8 +239,8 @@ struct	cache_object	*cobj;
 		client->cl_path = wmalloc(len + 1);
 		if (client->cl_path == NULL)
 			outofmemory();
-		safe_snprintf(client->cl_path, len + 1, "http://%s%s", client->cl_entity.he_rdata.request.host,
-				client->cl_entity.he_rdata.request.path);
+		safe_snprintf(len + 1, (client->cl_path, len + 1, "http://%s%s", client->cl_entity.he_rdata.request.host,
+				client->cl_entity.he_rdata.request.path));
 	}
 	
 	client->cl_reqtype = client->cl_entity.he_rdata.request.reqtype;
@@ -368,7 +368,7 @@ struct	http_client	*client = data;
 		plen = strlen(config.caches[0].dir) + client->cl_co->co_plen + 12 + 2;
 		if ((cache_path = wcalloc(1, plen + 1)) == NULL)
 			outofmemory();
-		safe_snprintf(cache_path, plen, "%s/__objects__/%s", config.caches[0].dir, client->cl_co->co_path);
+		safe_snprintf(plen, (cache_path, plen, "%s/__objects__/%s", config.caches[0].dir, client->cl_co->co_path));
 		WDEBUG((WLOG_DEBUG, "caching %s at %s", client->cl_path, cache_path));
 		if ((client->cl_cfd = open(cache_path, O_WRONLY | O_CREAT | O_EXCL, 0600)) == -1) {
 			wlog(WLOG_WARNING, "opening cache file %s: %s", cache_path, strerror(errno));
@@ -400,7 +400,7 @@ struct	stat	 sb;
 	plen = strlen(config.caches[0].dir) + client->cl_co->co_plen + 12 + 2;
 	if ((cache_path = wcalloc(1, plen + 1)) == NULL)
 		outofmemory();
-	safe_snprintf(cache_path, plen, "%s/__objects__/%s", config.caches[0].dir, client->cl_co->co_path);
+	safe_snprintf(plen, (cache_path, plen, "%s/__objects__/%s", config.caches[0].dir, client->cl_co->co_path));
 	WDEBUG((WLOG_DEBUG, "serving %s from cache at %s [path %s]", client->cl_path, cache_path, client->cl_co->co_path));
 
 	if ((client->cl_cfd = open(cache_path, O_RDONLY)) == -1) {

@@ -42,11 +42,15 @@ void realloc_addchar(char **, int);
 int daemon(int, int);
 #endif
 
+#ifndef HAVE_SOCKLEN_T
+typedef int socklen_t;
+#endif
+
 void outofmemory(void);
 #ifdef __SUNPRO_C
 # pragma does_not_return(outofmemory)
 #endif
 
-#define safe_snprintf(s,n,f,__VA_LIST__...) if (snprintf(s, n, f, __VA_LIST__) > (n - 1)) abort();
+#define safe_snprintf(n,a) if (snprintf a > (n - 1)) abort();
 
 #endif

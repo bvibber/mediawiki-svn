@@ -74,13 +74,13 @@ struct	cache_state	 state;
 		if ((dir = wmalloc(dlen)) == NULL)
 			outofmemory();
 		
-		safe_snprintf(dir, dlen, "%s/%s", cd->dir, CACHEDIR);
+		safe_snprintf(dlen, (dir, dlen, "%s/%s", cd->dir, CACHEDIR));
 		
 		len = strlen(cd->dir) + sizeof("/__env__") + 1;
 		if ((env = wmalloc(len)) == NULL)
 			outofmemory();
 		
-		safe_snprintf(env, len, "%s/__env__", cd->dir);
+		safe_snprintf(len, (env, len, "%s/__env__", cd->dir));
 		
 		/* create base directory if it doesn't exist */
 		/*LINTED unsafe mkdir*/
@@ -90,7 +90,7 @@ struct	cache_state	 state;
 		}
 		
 		for (i = 0; i < 10; ++i) {
-			safe_snprintf(dir, dlen, "%s/%s/%d", cd->dir, CACHEDIR, i);
+			safe_snprintf(dlen, (dir, dlen, "%s/%s/%d", cd->dir, CACHEDIR, i));
 			
 			/*LINTED unsafe mkdir*/
 			if (mkdir(dir, 0700) < 0) {
@@ -99,14 +99,14 @@ struct	cache_state	 state;
 			}
 			
 			for (j = 0; j < 10; ++j) {
-				safe_snprintf(dir, dlen, "%s/%s/%d/%d", cd->dir, CACHEDIR, i, j);
+				safe_snprintf(dlen, (dir, dlen, "%s/%s/%d/%d", cd->dir, CACHEDIR, i, j));
 				/*LINTED unsafe mkdir*/
 				if (mkdir(dir, 0700) < 0) {
 					wlog(WLOG_ERROR, "%s: mkdir: %s", dir, strerror(errno));
 					exit(8);
 				}
 				for (k = 0; k < 10; ++k) {
-					safe_snprintf(dir, dlen, "%s/%s/%d/%d/%d", cd->dir, CACHEDIR, i, j, k);
+					safe_snprintf(dlen, (dir, dlen, "%s/%s/%d/%d/%d", cd->dir, CACHEDIR, i, j, k));
 					/*LINTED unsafe mkdir*/
 					if (mkdir(dir, 0700) < 0) {
 						wlog(WLOG_ERROR, "%s: mkdir: %s", dir, strerror(errno));
@@ -172,7 +172,7 @@ struct	cachedir	*cd;
 		if ((dir = wmalloc(len)) == NULL)
 			outofmemory();
 		
-		safe_snprintf(dir, len, "%s/__env__", cd->dir);
+		safe_snprintf(len, (dir, len, "%s/__env__", cd->dir));
 		
 		if (i = db_env_create(&cacheenv, 0))
 			dberror("init: env_create", i);
@@ -181,7 +181,11 @@ struct	cachedir	*cd;
 		cacheenv->set_errpfx(cacheenv, "willow");
 
 		if (i = cacheenv->open(cacheenv, dir, DB_CREATE | DB_INIT_TXN | DB_INIT_LOCK | 
-				DB_INIT_MPOOL | DB_PRIVATE | DB_THREAD, 0))
+				DB_INIT_MPOOL | DB_PRIVATE
+#ifdef THREADED_IO
+				| DB_THREAD
+#endif
+				, 0))
 			dberror("init: env open", i);
 		
 		if (i = db_create(&cacheobjs, cacheenv, 0))
@@ -328,7 +332,7 @@ struct	cache_key	*ret;
 	
 	ret->ck_len = strlen(host) + strlen(path);
 	ret->ck_key = wmalloc(ret->ck_len + 1);
-	safe_snprintf(ret->ck_key, ret->ck_len, "%s%s", host, path);
+	safe_snprintf(ret->ck_len, (ret->ck_key, ret->ck_len, "%s%s", host, path));
 	return ret;
 }
 
@@ -436,7 +440,7 @@ struct	cache_object	*ret;
 	if ((ret->co_path = wmalloc(ret->co_plen + 1)) == NULL)
 		outofmemory();
 	p = ret->co_path;
-	safe_snprintf(a, 10, "%d", ret->co_id);
+	safe_snprintf(10, (a, 10, "%d", ret->co_id));
 	s = a + strlen(a) - 1;
 	WDEBUG((WLOG_DEBUG, "id=%d a=%s", ret->co_id, a));
 	
