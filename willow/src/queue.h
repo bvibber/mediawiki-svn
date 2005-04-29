@@ -35,7 +35,7 @@
 #ifndef QUEUE_H
 #define	QUEUE_H
 
-#ifdef __SUNPRO_C
+#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Header$"
 #endif
 

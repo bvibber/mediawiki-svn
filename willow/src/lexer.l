@@ -6,7 +6,7 @@
  * lexer: configuration file lexer.
  */
  
-#ifdef __SUNPRO_C
+#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Header$"
 #endif
 

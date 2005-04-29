@@ -8,8 +8,8 @@ Use 8-space tabs.  Don't indent with spaces.
 The '*' of a pointer is attached to the variable name, not the type.
 
 Functions are formatted with 'static' (if applicable), followed by
-the return type, a newline, the function name and argments, another
-newline, and the argument types.  Do declare 'int' argments.  For
+the return type, a newline, the function name and arguments, another
+newline, and the argument types.  Do declare 'int' arguments.  For
 example:
 
 static void *
@@ -27,7 +27,7 @@ struct	foo	 S;
 
 Braces attach to the end of the opening statement.  Don't use braces unless
 they're required. Function names are not followed by a space, but keywords
- are:
+are:
 
 	if (foo)
 		f(arg);
@@ -60,6 +60,6 @@ The standard source code header is:
  * <module>: <description>
  */
 
-#ifdef __SUNPRO_CC
+#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Header$"
 #endif
