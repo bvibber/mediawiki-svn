@@ -24,6 +24,7 @@ initmsg();
 $cfgfile=$ENV{HOME}."/.ee-helper/ee.ini";
 
 $DEBUG=0;
+$NOGUIERRORS=0;
 $LANGUAGE="de";
 
 # Read config
@@ -33,7 +34,7 @@ my $cfg = new Config::IniFiles( -file => $cfgfile );
 my $args=join(" ",@ARGV);
 
 # Where do we store our files?
-my $tempdir=$cfg->val("Settings","Temp Path") or die _("notemppath",$cfgfile);
+my $tempdir=$cfg->val("Settings","Temp Path") or vdie (_("notemppath",$cfgfile));
 
 # Remove slash at the end of the directory name, if existing
 $/="/";  
@@ -55,7 +56,7 @@ if($DEBUG) {
 if(-e $args) {
 	$input = new Config::IniFiles( -file => $args );
 } else {
-	die _("nocontrolfile");
+	vdie (_("nocontrolfile"));
 }
 
 # Initialize the browser as Firefox 1.0 with new cookie jar
@@ -99,15 +100,15 @@ if($type eq "Edit file") {
 } elsif($type eq "Diff text") {
 	$secondurl=$input->val("File 2","URL");
 	if(!$secondurl) {
-		die _("twofordiff");
+		vdie (_("twofordiff"));
 	}
 	$diffcommand=$cfg->val("Settings","Diff");
 	if(!$diffcommand) {
-		die _("nodifftool");	
+		vdie (_("nodifftool"));	
 	}
 } else {
 		# Nothing we know!
-		die _("unknownprocess");	
+		vdie (_("unknownprocess"));	
 }
 
 
@@ -138,12 +139,15 @@ foreach $section(@sections) {
 }
 
 # Log into server
+# Note that we also log in for diffs, as the raw text might only be available
+# to logged in users (depending on the wiki security settings), and we may want
+# to offer GUI-based rollback functionality later
 $response=$browser->post($login_url,@ns_headers,
 Content=>[wpName=>$username,wpPassword=>$password,wpRemember=>"1",wpLoginAttempt=>"Log in"]);
 
 # We expect a redirect after successful login
 if($response->code!=302 && !$ignore_login_error) {
-	die _("loginfailed",$login_url,$username,$password);
+	vdie (_("loginfailed",$login_url,$username,$password));
 }
 
 $response=$browser->get($fileurl);
@@ -293,7 +297,7 @@ sub save {
 	my $summary=$entry->get_text();	
 	# Spam the summary if room is available :-)
 	if(length($summary)<190) {
-		my $tosummary="using [[Help:External editors|an external editor]]";
+		my $tosummary=_("usingexternal");
 		if(length($summary)>0) {
 			$tosummary=" [".$tosummary."]";
 		}
@@ -390,6 +394,30 @@ sub _{
 	return $msg;
 }
 
+sub vdie {
+
+my $errortext=shift;
+if(!$NOGUIERRORS) {
+	errorbox($errortext);
+}
+die($errortext);
+
+}
+
+sub errorbox {
+
+my $errortext=shift;
+
+my $dialog = Gtk2::MessageDialog->new ($window,
+				   [qw/modal destroy-with-parent/],
+				   'error',
+				   'ok',
+				   $errortext);
+$dialog->run;
+$dialog->destroy;
+				   
+}
+
 sub initmsg {
 
 %messages=(
@@ -484,6 +512,11 @@ entersummary=>
 "Enter edit summary",
 entersummary_de=>
 "Zusammenfassung eingeben",
+
+usingexternal=>
+"using [[Help:External editors|an external editor]]",
+usingexternal_de,
+"mit [[Hilfe:Externe Editoren|externem Editor]]",
 
 );
 
