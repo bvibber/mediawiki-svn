@@ -345,8 +345,8 @@ sub save {
 			]);		
 			open(PREVIEW,">$tempdir/preview.html");
 			$preview=$response->content;
-			# Replace relative URLs with absolute ones
-			$preview=~s|$path|$server$path|gi;
+			# Replace relative URLs with absolute ones	
+			$preview=~s|<head>|<head>\n    <base href="$server$path">|gi;
 			print PREVIEW $preview;
 			close(PREVIEW);
 			if($previewclient) {
