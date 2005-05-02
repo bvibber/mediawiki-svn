@@ -22,6 +22,7 @@ initmsg();
 # By default, config will be searched for in your Unix home directory 
 # (e.g. ~/.ee-helper/ee.ini). Change path of the configuration file if needed!
 $cfgfile=$ENV{HOME}."/.ee-helper/ee.ini";
+$cfgfile=getunixpath($cfgfile);
 
 $DEBUG=0;
 $NOGUIERRORS=0;
@@ -39,10 +40,13 @@ my $tempdir=$cfg->val("Settings","Temp Path") or vdie (_("notemppath",$cfgfile))
 # Remove slash at the end of the directory name, if existing
 $/="/";  
 chomp($tempdir);
+$/="\\";
+chomp($tempdir);
+my $unixtempdir=getunixpath($tempdir);
 
 if($DEBUG) {
 	# Make a copy of the control (input) file in the log
-	open(DEBUGLOG,">$tempdir/debug.log");
+	open(DEBUGLOG,">$unixtempdir/debug.log");
 	open(INPUT,"<$args");
 	$/=undef; # slurp mode
 	while(<INPUT>) {
@@ -153,7 +157,9 @@ if($response->code!=302 && !$ignore_login_error) {
 $response=$browser->get($fileurl);
 if($type eq "Edit file") {
 
-	open(OUTPUT,">$tempdir/".$filename);
+	open(OUTPUT,">$unixtempdir/".$filename);
+	binmode(OUTPUT);
+	select OUTPUT; $|=1; select STDOUT;
 	print OUTPUT $response->content;
 	close(OUTPUT);
 
@@ -187,7 +193,7 @@ if($type eq "Edit file") {
 	}
 	
 	# Flush the raw text of the page to the disk
-	open(OUTPUT,">$tempdir/".$filename);
+	open(OUTPUT,">$unixtempdir/".$filename);
 	select OUTPUT; $|=1; select STDOUT;
 	print OUTPUT $text;
 	close(OUTPUT);
@@ -209,23 +215,34 @@ foreach $extensionlist(@extensionlists) {
 # In most cases, we'll want to run the GUI for managing saves & previews,
 # and run the external editor application.
 if($type ne "Diff text") {
-		
- 	system("$app $tempdir/$filename &");
+	
+	if($^O eq "MSWin32") {
+	
+		$appstring="$app $tempdir\\$filename";
+	} else {
+		$appstring="$app $tempdir/$filename &";
+	}
+ 	system($appstring);
 	makegui();
 
 } else {
 	# For external diffs, we need to create two temporary files.
 	$response1=$browser->get($fileurl);
 	$response2=$browser->get($secondurl);
-	open(DIFF1, ">$tempdir/diff-1.txt");
+	open(DIFF1, ">$unixtempdir/diff-1.txt");
 	select DIFF1; $|=1; select STDOUT;
-	open(DIFF2, ">$tempdir/diff-2.txt");
+	open(DIFF2, ">$unixtempdir/diff-2.txt");
 	select DIFF2; $|=1; select STDOUT;
 	print DIFF1 $response1->content;
 	print DIFF2 $response2->content;
 	close(DIFF1);
 	close(DIFF2);
-	system("$diffcommand $tempdir/diff-1.txt $tempdir/diff-2.txt");
+	if($^O eq "MSWin32") {
+		$appstring="$diffcommand $tempdir\\diff-1.txt $tempdir\\diff-2.txt";
+	} else {
+		$appstring="$diffcommand $tempdir/diff-1.txt $tempdir/diff-2.txt";
+	}
+	system($appstring);	
 }
 	
 # Create the GTK2 graphical user interface
@@ -312,7 +329,7 @@ sub save {
  		$response=$browser->post($upload_url,
  		@ns_headers,Content_Type=>'form-data',Content=>
  		[
- 		wpUploadFile=>["$tempdir/".$filename],
+ 		wpUploadFile=>["$unixtempdir/".$filename],
  		wpUploadDescription=>$summary,
  		wpUploadAffirm=>"1",
  		wpUpload=>"Upload file",
@@ -325,7 +342,7 @@ sub save {
 		} 
 	# Save text back to the server & load in browser
 	} elsif($type eq "Edit text") {	
-		open(TEXT,"<$tempdir/".$filename);
+		open(TEXT,"<$unixtempdir/".$filename);
 		$/=undef;
 		while(<TEXT>) {
 			$text=$_;
@@ -343,14 +360,14 @@ sub save {
 			wpEditToken=>$token,
 			wpPreview=>"true",
 			]);		
-			open(PREVIEW,">$tempdir/preview.html");
+			open(PREVIEW,">$unixtempdir/preview.html");
 			$preview=$response->content;
 			# Replace relative URLs with absolute ones	
 			$preview=~s|<head>|<head>\n    <base href="$server$path">|gi;
 			print PREVIEW $preview;
 			close(PREVIEW);
 			if($previewclient) {
-				$previewurl="file://$tempdir/preview.html";
+				$previewurl="file://$unixtempdir/preview.html";
 				$previewclient=~s/\$url/$previewurl/i;
 				system(qq|$previewclient|);
 				$previewclient=$cfg->val("Settings","Browser");	
@@ -396,26 +413,35 @@ sub _{
 
 sub vdie {
 
-my $errortext=shift;
-if(!$NOGUIERRORS) {
-	errorbox($errortext);
-}
-die($errortext);
+	my $errortext=shift;
+	if(!$NOGUIERRORS) {
+		errorbox($errortext);
+	}
+	die($errortext);
 
 }
 
 sub errorbox {
 
-my $errortext=shift;
-
-my $dialog = Gtk2::MessageDialog->new ($window,
-				   [qw/modal destroy-with-parent/],
-				   'error',
-				   'ok',
-				   $errortext);
-$dialog->run;
-$dialog->destroy;
+	my $errortext=shift;
+	
+	my $dialog = Gtk2::MessageDialog->new ($window,
+					[qw/modal destroy-with-parent/],
+					'error',
+					'ok',
+					$errortext);
+	$dialog->run;
+	$dialog->destroy;
 				   
+}
+
+sub getunixpath {
+
+	my $getpath=shift;
+	if($^O eq 'MSWin32') {
+		$getpath=~s|\\|/|gi;
+	}
+	return $getpath;
 }
 
 sub initmsg {
