@@ -61,8 +61,9 @@ main(argc, argv)
 	char *argv[];
 	int argc;
 {
-	int	i;
-	int	zflag = 0;
+	int	 i;
+	int	 zflag = 0;
+	char	*cfg = NULL;
 	
 #ifdef WDEBUG_ALLOC
 struct	sigaction	segv_act;
@@ -75,7 +76,7 @@ struct	sigaction	segv_act;
 	
 	progname = argv[0];
 	
-	while ((i = getopt(argc, argv, "fzv")) != -1) {
+	while ((i = getopt(argc, argv, "fzvc:")) != -1) {
 		switch (i) {
 			case 'z':
 				zflag++;
@@ -86,6 +87,9 @@ struct	sigaction	segv_act;
 			case 'v':
 				(void)fprintf(stderr, "%s\n", PACKAGE_VERSION);
 				exit(0);
+			case 'c':
+				cfg = optarg;
+				break;
 			default:
 				usage();
 				exit(8);
@@ -103,7 +107,7 @@ struct	sigaction	segv_act;
 	
 	wnet_set_time();
 
-	wconfig_init(NULL);
+	wconfig_init(cfg);
 	wlog_init();
 	if (zflag) {
 		wcache_setupfs();

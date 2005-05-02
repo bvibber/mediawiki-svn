@@ -1,8 +1,8 @@
 # @(#) $Header$
 #
-# src/ makefile.
+# src/bin makefile.
 
-SUBDIRS=willow
+SUBDIRS=willow wlogwriter
 
 @include@ @q@@top_srcdir@/mk/subdir.mk@q@
 

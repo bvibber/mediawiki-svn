@@ -32,8 +32,12 @@ _INSTALLPROG=	$(_INSTALL) -m 0755
 _INSTALLDATA=	$(_INSTALL) -m 0644
 _MKDIR=		$(_INSTALL) -m 0755 -d
 
-_BINDIR=	$(ALTROOT)@prefix@@bindir@
-_LIBDIR=	$(ALTROOT)@prefix@@libdir@
-_DATADIR=	$(ALTROOT)@prefix@@datadir@
+_BINDIR=	$(ALTROOT)@bindir@
+_LIBDIR=	$(ALTROOT)@libdir@
+_DATADIR=	$(ALTROOT)@datadir@
+_LIBEXECDIR=	$(ALTROOT)@libexecdir@
 
 DISTDEST=	@abs_top_srcdir@/$(PACKAGE)-$(VERSION)
+
+prefix=		@prefix@
+exec_prefix=	@exec_prefix@

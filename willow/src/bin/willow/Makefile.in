@@ -1,9 +1,8 @@
 PROGRAM = willow
+BINDIR = @bindir@
+CPPFLAGS = -DLIBEXECDIR=\"@libexecdir@\" -DDATADIR=\"@datadir@\"
 
-CPPFLAGS = -DDATADIR=\"$(_DATADIR)\"
-BASESRCS = willow.c wconfig.c whttp.c wbackend.c wlogwriter.c \
-	whttp_entity.c wcache.c confparse.c
-#GENSRCS=y.tab.c lex.yy.c
+BASESRCS = willow.c wconfig.c whttp.c wbackend.c whttp_entity.c wcache.c confparse.c
 SRCS=$(BASESRCS)
 OBJADD = @LIBOBJS@ y.tab.o lex.yy.o
 

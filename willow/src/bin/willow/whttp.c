@@ -145,12 +145,24 @@ whttp_init(void)
 	/*
 	 * Fork the logwriter.
 	 */
+
 	if (config.access_log) {
 		if (pipe(logwr_pipe) < 0) {
 			perror("pipe");
 			exit(8);
 		}
-		wlogwriter_start(logwr_pipe);
+		switch (fork()) {
+		case -1:
+			wlog(WLOG_ERROR, "starting logwriter: %s", strerror(errno));
+			exit(8);
+		case 0:
+			(void)dup2(logwr_pipe[1], STDIN_FILENO);
+			if (execl(LIBEXECDIR "/wlogwriter", "wlogwriter", config.access_log, NULL) < 0)
+				exit(8);
+			break;
+		default:
+			break;
+		}
 		if ((alf = fdopen(logwr_pipe[0], "w")) == NULL) {
 			perror("fdopen");
 			exit(8);
@@ -602,7 +614,7 @@ client_log_request(client)
 	struct http_client *client;
 {
 #ifdef THREADED_IO
-static	pthread_mutex_t	mtx;
+static	pthread_mutex_t	mtx = PTHREAD_MUTEX_INITIALIZER;
 #endif
 
 	int	i;

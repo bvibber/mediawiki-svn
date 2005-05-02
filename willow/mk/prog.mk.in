@@ -7,8 +7,7 @@
 
 default: all
 
-_PROGRAM=@exec_prefix@$(PROGRAM)
-
+_PROGRAM=$(PROGRAM)
 all: $(_PROGRAM)
 
 OBJS=$(SRCS:.c=.o) $(OBJADD)
@@ -22,10 +21,10 @@ clean:
 	@$(_RMF) $(_PROGRAM) $(OBJS)
 
 install:
-	@echo "	$(_MKDIR) $(_BINDIR)"
-	@$(_MKDIR) $(_BINDIR)
-	@echo "	$(_INSTALLPROG) $(_PROGRAM) $(_BINDIR)"
-	@$(_INSTALLPROG) $(_PROGRAM) $(_BINDIR)
+	@echo "	$(_MKDIR) $(BINDIR)"
+	@$(_MKDIR) $(BINDIR)
+	@echo "	$(_INSTALLPROG) $(_PROGRAM) $(BINDIR)"
+	@$(_INSTALLPROG) $(_PROGRAM) $(BINDIR)
 
 # this only works with Solaris lint... may be worth checking for lint type in configure.
 lint:

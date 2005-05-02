@@ -145,10 +145,11 @@ wcache_shutdown(void)
 	
 	/* don't use dberror() here because it calls us */
 	/*LINTED =/==*/
-	if ((i = cacheobjs->close(cacheobjs, 0)) || (i = cacheenv->close(cacheenv, 0))) {
-		wlog(WLOG_ERROR, "error closing database: %s", db_strerror(i));
-		exit(8);
-	}
+	if (cacheobjs) 
+		if ((i = cacheobjs->close(cacheobjs, 0)) || (i = cacheenv->close(cacheenv, 0))) {
+			wlog(WLOG_ERROR, "error closing database: %s", db_strerror(i));
+			exit(8);
+		}
 }
 
 void
