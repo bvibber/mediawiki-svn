@@ -39,8 +39,8 @@ require_once( "geo.php" );
 function wfGISDatabaseExtension ()
 {
 	global $wgHooks ;
-	$wgHooks['ArticleSaveComplete'][] = article_save_geo;
-	$wgHooks['ArticleDelete'][] = article_delete_geo;
+	$wgHooks['ArticleSaveComplete'][] = 'article_save_geo';
+	$wgHooks['ArticleDelete'][] = 'article_delete_geo';
 }
 
 /**

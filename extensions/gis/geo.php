@@ -43,7 +43,7 @@ $wgExtensionFunctions[] = "wfGeoExtension";
  */
 function wfGeoExtension () {
 	global $wgParser ;
-	$wgParser->setHook ( "geo" , parse_geo ) ;
+	$wgParser->setHook ( 'geo' , 'parse_geo' ) ;
 }
 
 /**
