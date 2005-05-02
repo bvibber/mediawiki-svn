@@ -220,9 +220,12 @@ if($type ne "Diff text") {
 	
 		$appstring="$app $tempdir\\$filename";
 	} else {
-		$appstring="$app $tempdir/$filename &";
+		$appstring="$app $tempdir/$filename";
 	}
- 	system($appstring);
+	$cid=fork();
+	if(!$cid) {
+ 		exec($appstring);
+	}
 	makegui();
 
 } else {
