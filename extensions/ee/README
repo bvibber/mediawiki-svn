@@ -22,3 +22,5 @@ example should be part of the archive containing this program. To
 save files back to the server, you also have to add authentication
 information to the configuration file.
 
+Installation: See INSTALL for detailed setup instructions under
+Unix and Windows.

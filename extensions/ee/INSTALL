@@ -1,0 +1,129 @@
+Installation of ee.pl reference implementation
+Erik Möller - moeller(at)scireview(dot)de
+
+See README for the purpose and usage of the program.
+
+Be advised that ee.pl is primarily a proof of concept. It is usable, but it
+may be difficult to set up, particularly under Microsoft Windows. I hope
+that other people will write implementations of the external editor protocol
+as well.
+
+MediaWiki presently (V1.5) supports external editors for images and text,
+and external diff tools. You can enable external editing for text and
+external diffs in your user preferences. You can launch external editors
+for images by clicking the link at the bottom of the image history. 
+
+If you want to be able to choose selectively when to use external editing
+for text, you may want to try hacking your Monobook.css/js to add a tab that
+points to the "action=edit&externaledit=true" for the page you're viewing.
+A bookmarklet would also work.
+
+ee.pl is a Perl script with the following dependencies:
+
+- a recent distribution of Perl (>V5.004)
+- the following modules:
+  - LWP (should be bundled with recent Perl distributions)
+  - Config::IniFiles
+  - Gtk2
+  - Encode
+- Gtk2 libraries for graphical user itnerfaces
+
+== Installation under Unix ==
+
+1) Install Perl if required, www.perl.com is your friend
+
+2) Become Root and run the CPAN shell with
+   
+    perl -MCPAN -e shell
+   
+3) Install the individual modules above with:
+
+    install Config::IniFiles
+    install Encode
+
+4) As for libgtk2-perl, it may be easiest to get binaries for your
+   platform. See the FAQ at
+   http://live.gnome.org/GTK2_2dPerl_2fFrequentlyAskedQuestions
+   for more information. Under Debian, it's particularly easy.
+   Just become root and type:
+   
+    apt-get install libgtk2-perl
+    
+   Any dependencies should be automagically resolved. If you're
+   brave, you can also try to compile everything from source;
+   http://gtk2-perl.sourceforge.net/ and the FAQ will have
+   information to guide you through the process.
+
+If everything is set up properly, you should get a graphical error message
+if you run ee.pl without any command line parameters.
+
+Edit ee.ini to define wikis (usernames and passwords) and applications. The
+bundled ee.ini file contains comments and should be largely
+self-explanatory. It needs to reside in the path which is set as $cfgfile
+in your ee.pl; by default, that is ~/.ee-helper/.
+
+Now, when you click an external-editor-powered link in your browser,
+associate the MIME type application/x-external-editor with your ee.pl
+executable.
+
+== Installation under Windows ==
+
+1) Get ActivePerl from
+http://www.activestate.com/Products/Download/Download.plex?id=ActivePerl
+
+2) Open a command line window and type
+
+    ppm
+    
+   Now type the following commands:
+     
+    install Config-IniFiles
+    install Encode
+    rep add Gtk http://gtk2-perl.sourceforge.net/win32/ppm/
+    install Gtk2
+    
+   Note that these may take a while to produce any output on the screen.
+   If a firewall warning pops up, approve the program to access the
+   Internet. If you have a proxy set up, see the ActivePerl docs
+   for configuring ppm to use it.
+   
+
+3) Edit ee.pl in a text editor and change the variable $cfgfile to point it
+   to the location of ee.ini. Example:
+      
+      $cfgfile='C:\ee\ee.ini';
+      
+   Note that you have to use single quotes, or the backslash will be
+   interpreted as a special character.
+
+4) If you run ee.pl without parameters, a graphical error message should
+   pop up. If that is the case, you're almost there already.
+
+5) Edit ee.ini and adapt the programs, wikis and paths. You can use regular
+   Windows paths like C:\Program Files\My Program\program.exe. As noted
+   above, the file should be largely self-explanatory.
+   
+   For the browser configuration, don't use the -openurl syntax in the
+   example file if running Firefox. Instead, just run the Firefox executable
+   with the URL as the only parameter (C:\bla\firefox.exe $url).
+
+6) Edit ee.bat and adapt the paths to point to the right files (your
+   Perl executable and your ee.pl).
+
+Now, when you click an external-editor-powered link in your browser,
+associate the MIME type application/x-external-editor with your ee.bat
+executable (not ee.pl -- I found this to be unreliable in different
+browsers).
+
+I haven't managed to get rid of the annoying pop up console window
+under Windows. If you find a way to do that, please let me know.
+
+== General comments ==
+
+Change the $LANGUAGE variable in ee.pl to set the program language (use a
+language code like "en" or "de").
+
+Caveat: Versions of Firefox I've tested are very buggy when indicating the
+MIME type. It may be displayed as "PHP script" instead of
+application/x-external-editor -- it will still be correctly associated,
+though.

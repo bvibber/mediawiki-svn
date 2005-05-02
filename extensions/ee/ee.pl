@@ -26,7 +26,7 @@ $cfgfile=getunixpath($cfgfile);
 
 $DEBUG=0;
 $NOGUIERRORS=0;
-$LANGUAGE="de";
+$LANGUAGE="en";
 
 # Read config
 my $cfg = new Config::IniFiles( -file => $cfgfile );

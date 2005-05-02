@@ -23,3 +23,6 @@ programme, in dem Sie in ee.cfg Applikationen mit MIME-Typen
 assoziieren. Um Dateien hochzuladen, muessen auch Authentifizierungs-
 Informationen fuer die gewuenschten Websites in der Konfigurationsdatei
 eingetragen werden.
+
+Installation: Lesen sie die Datei INSTALL für detaillierte Installations-
+Anweisungen unter Unix und Windows (Englisch).
