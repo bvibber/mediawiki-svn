@@ -1,0 +1,9 @@
+# @(#) $Header$
+
+@include@ @q@@top_srcdir@/mk/rules.mk@q@
+
+all depend clean lint install:
+
+_extradist:
+_MYDISTFILES=data.mk.in depend.dashM.mk.in depend.makedepend.mk.in depend.null.mk.in \
+	prog.mk.in rules.mk.in subdir.mk.in vars.mk.in Makefile.in
