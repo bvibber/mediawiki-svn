@@ -1,0 +1,10 @@
+LIB = willowlog
+
+CPPFLAGS = -DDATADIR=\"$(_DATADIR)\"
+SRCS = wlog.c
+
+EXTRA_DIST=Makefile.in
+
+LDFLAGS = $(LIBOBJS)
+
+@include@ @q@@top_srcdir@/mk/lib.mk@q@

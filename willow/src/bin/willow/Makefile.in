@@ -1,0 +1,29 @@
+PROGRAM = willow
+
+CPPFLAGS = -DDATADIR=\"$(_DATADIR)\"
+BASESRCS = willow.c wconfig.c whttp.c wbackend.c wlogwriter.c \
+	whttp_entity.c wcache.c confparse.c
+#GENSRCS=y.tab.c lex.yy.c
+SRCS=$(BASESRCS)
+OBJADD = @LIBOBJS@ y.tab.o lex.yy.o
+
+EXTRA_DIST=wnet_poll.c wnet_ports.c wnet_kqueue.c wnet_epoll.c wnet_devpoll.c \
+	lexer.l parser.y \
+	daemon.c \
+	Makefile.in
+
+LDFLAGS = -L$(SRCROOT)/src/lib/wnet -lwillownet \
+	  -L$(SRCROOT)/src/lib/wlog -lwillowlog \
+	  $(LIBOBJS)
+
+y.tab.o: y.tab.c
+lex.yy.o: lex.yy.c y.tab.h
+
+y.tab.c y.tab.h: parser.y
+	@echo "	$(_YACC) -d parser.y"
+	@$(_YACC) -d parser.y
+lex.yy.c: lexer.l y.tab.h
+	@echo "	$(_LEX) lexer.l"
+	@$(_LEX) lexer.l || rm -f lex.yy.c
+
+@include@ @q@@top_srcdir@/mk/prog.mk@q@

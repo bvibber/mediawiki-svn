@@ -2,8 +2,8 @@
 #
 # Build a program.
 
-@include@ @q@@top_srcdir@/mk/vars.mk@q@
-@include@ @q@@top_srcdir@/mk/rules.mk@q@
+@include@ @q@@abs_top_srcdir@/mk/vars.mk@q@
+@include@ @q@@abs_top_srcdir@/mk/rules.mk@q@
 
 default: all
 
@@ -39,4 +39,4 @@ lint:
 _MYDISTFILES=$(SRCS) $(EXTRA_DIST)
 _extradist:
 
-@include@ @q@@top_srcdir@/mk/depend.@dependstyle@.mk@q@
+@include@ @q@@abs_top_srcdir@/mk/depend.@dependstyle@.mk@q@

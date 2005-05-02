@@ -7,6 +7,7 @@ default: all
 SUBDIRS=src errors mk
 
 @include@ @q@@top_srcdir@/mk/subdir.mk@q@
+@include@ @q@@top_srcdir@/mk/vars.mk@q@
 
 DISTFILES=\
 	Makefile.in \
@@ -22,3 +23,16 @@ dist:
 	tar cf $(DISTNAME).tar $(DISTNAME)
 	compress $(DISTNAME).tar
 	rm -rf $(PACKAGE)-$(VERSION) $(PACKAGE)-$(VERSION).tar
+
+svr4-package:
+	$(_RMF) -r stage-install
+	./configure --prefix=/opt/willow
+	$(MAKE) all
+	mkdir stage-install
+	$(MAKE) install ALTROOT=`pwd`/stage-install
+	cp COPYRIGHT svr4/copyright
+	cd svr4 && \
+	(find ../stage-install | pkgproto ../stage-install=/ ; cat proto.suffix) >prototype && \
+	pkgmk -o && \
+	pkgtrans -s /var/spool/pkg `pwd`/../WMFwillow-@VERSION@.pkg WMFwillow
+	

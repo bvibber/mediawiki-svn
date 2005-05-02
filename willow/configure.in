@@ -308,6 +308,7 @@ CFLAGS="$USE_CFLAGS"
 
 AC_OUTPUT(
 	mk/prog.mk 
+	mk/lib.mk
 	mk/vars.mk 
 	mk/rules.mk 
 	mk/data.mk 
@@ -318,6 +319,11 @@ AC_OUTPUT(
 	mk/Makefile
 	Makefile 
 	src/Makefile 
+	src/bin/Makefile
+	src/bin/willow/Makefile
+	src/lib/Makefile
+	src/lib/wnet/Makefile
+	src/lib/wlog/Makefile
 	errors/Makefile)
 
 if test x$epoll_in_kernel = xno; then

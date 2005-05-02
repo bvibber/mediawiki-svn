@@ -1,6 +1,9 @@
 # @(#) $Header$
 # 
 # Standard variables.
+#
+# Warning! don't use top_srcdir in this file, use abs_top_srcdir (or, better,
+# use $(SRCROOT).)
 
 PACKAGE=	willow
 VERSION=	@VERSION@
@@ -9,19 +12,28 @@ _LEX=		@LEX@
 _YACC=		@YACC@
 
 CC=		@CC@
-_CPPFLAGS=	-I@top_srcdir@ -I. @CPPFLAGS@
+_CPPFLAGS=	-I@abs_top_srcdir@ -I. -I@abs_top_srcdir@/src/include @CPPFLAGS@
 _CFLAGS=	@CFLAGS@
 _LDFLAGS=	@LDFLAGS@ @LIBS@
 
-_LINK=$(CC) $(_CFLAGS) $(CFLAGS) $(_LDFLAGS) $(LDFLAG) $(OBJS)
-_COMPILE=$(CC) $(_CPPFLAGS) $(CPPFLAGS) $(_CFLAGS) $(CFLAGS)
-_RMF=rm -f
-_INSTALL=@INSTALL@
-_INSTALLPROG=$(_INSTALL) -m 0755
-_INSTALLDATA=$(_INSTALL) -m 0644
-_MKDIR=$(_INSTALL) -m 0755 -d
+SRCROOT=	@abs_top_srcdir@
 
-_BINDIR=@prefix@@bindir@
-_DATADIR=@prefix@@datadir@
+_LINK=		$(CC) $(_CFLAGS) $(CFLAGS) $(_LDFLAGS) $(OBJS) $(LDFLAGS) 
+_COMPILE=	$(CC) $(_CPPFLAGS) $(CPPFLAGS) $(_CFLAGS) $(CFLAGS)
+_RMF=		rm -f
+_AR=		ar
+_RANLIB=	ranlib
+
+# autoconf will replace this with "../install-sh", which breaks when this file is included
+# from a directory 2 level deep.  use the distributed install-sh program instead.
+#_INSTALL=@INSTALL@
+_INSTALL=	$(SRCROOT)/install-sh -c
+_INSTALLPROG=	$(_INSTALL) -m 0755
+_INSTALLDATA=	$(_INSTALL) -m 0644
+_MKDIR=		$(_INSTALL) -m 0755 -d
+
+_BINDIR=	$(ALTROOT)@prefix@@bindir@
+_LIBDIR=	$(ALTROOT)@prefix@@libdir@
+_DATADIR=	$(ALTROOT)@prefix@@datadir@
 
 DISTDEST=	@abs_top_srcdir@/$(PACKAGE)-$(VERSION)

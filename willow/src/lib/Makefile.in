@@ -1,8 +1,8 @@
 # @(#) $Header$
 #
-# src/ makefile.
+# src/lib makefile.
 
-SUBDIRS=lib bin
+SUBDIRS=wnet wlog
 
 @include@ @q@@top_srcdir@/mk/subdir.mk@q@
 

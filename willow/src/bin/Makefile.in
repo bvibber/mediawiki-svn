@@ -2,7 +2,7 @@
 #
 # src/ makefile.
 
-SUBDIRS=lib bin
+SUBDIRS=willow
 
 @include@ @q@@top_srcdir@/mk/subdir.mk@q@
 

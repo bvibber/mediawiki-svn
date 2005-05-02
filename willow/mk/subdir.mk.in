@@ -11,9 +11,9 @@ default: all
 
 all install lint clean depend _extradist:
 	@for dir in $(SUBDIRS); do \
-		echo "$@ ==> $$dir" ;\
-		cd $$dir && $(MAKE) `echo $@ | sed -e s/_extradist/_dist/` _DISTPATH="$(_DISTPATH)/$$dir" || exit 1 ;\
-		echo "$@ <== $$dir" ;\
+		echo "$@ ==> $(_DISTPATH)$$dir" ;\
+		cd $$dir && $(MAKE) `echo $@ | sed -e s/_extradist/_dist/` _DISTPATH="$(_DISTPATH)$$dir/" || exit 1 ;\
+		echo "$@ <== $(_DISTPATH)$$dir" ;\
 		cd .. ;\
 	done
 

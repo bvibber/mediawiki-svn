@@ -1,0 +1,6 @@
+PKG=WMFwillow
+ARCH=i86pc
+VERSION=1.0-cvs
+NAME=Lightweight HTTP reverse-proxy
+CATEGORY=application
+BASEDIR=/
