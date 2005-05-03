@@ -29,7 +29,7 @@ $NOGUIERRORS=0;
 $LANGUAGE="en";
 
 # Read config
-my $cfg = new Config::IniFiles( -file => $cfgfile );
+my $cfg = new Config::IniFiles( -file => $cfgfile )  or vdie (_("noinifile",$cfgfile));
 
 # Treat spaces as part of input filename
 my $args=join(" ",@ARGV);
@@ -450,6 +450,17 @@ sub getunixpath {
 sub initmsg {
 
 %messages=(
+
+noinifile=>
+"____ could not be found.
+Please move the configuration file (ee.ini) there, or edit ee.pl 
+and point the variable \$cfgfile to the proper location.",
+
+noinifile_de=>
+"____ konnte nicht gefunden werden.
+Bitte verschieben Sie die Konfigurations-Datei (ee.ini) dorthin, 
+oder bearbeiten Sie ee.pl und zeigen Sie die Variable \$cfgfile 
+auf die korrekte Datei.",
 
 notemppath=>
 "No path for temporary files specified. Please edit ____ 
