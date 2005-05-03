@@ -54,4 +54,8 @@ void outofmemory(void);
 #define safe_snprintf(n,a) if (snprintf a > (n - 1)) abort();
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
+#define CHAR_HOST	1
+
+extern int char_table[];
+
 #endif

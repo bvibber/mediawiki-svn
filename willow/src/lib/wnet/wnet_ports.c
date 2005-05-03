@@ -121,7 +121,9 @@ run_event(fde, events)
 void
 wnet_init_select(void)
 {
+#ifdef THREADED_IO
 	int	 i;
+#endif
 	
 	if ((port = port_create()) < 0) {
 		perror("port_create");

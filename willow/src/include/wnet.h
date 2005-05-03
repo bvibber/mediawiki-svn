@@ -113,7 +113,7 @@ void wnet_register(int, int, fdcb, void *);
 int wnet_open(const char *desc);
 void wnet_close(int);
 void wnet_write(int, const void *, size_t, fdwcb, void *);
-void wnet_sendfile(int, int, size_t, off_t, fdwcb, void *);
+int wnet_sendfile(int, int, size_t, off_t, fdwcb, void *);
 
 void wnet_set_time(void);
 void wnet_init_select(void);

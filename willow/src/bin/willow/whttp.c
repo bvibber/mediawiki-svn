@@ -155,11 +155,13 @@ whttp_init(void)
 		case -1:
 			wlog(WLOG_ERROR, "starting logwriter: %s", strerror(errno));
 			exit(8);
+			/*NOTREACHED*/
 		case 0:
 			(void)dup2(logwr_pipe[1], STDIN_FILENO);
-			if (execl(LIBEXECDIR "/wlogwriter", "wlogwriter", config.access_log, NULL) < 0)
-				exit(8);
-			break;
+			/*LINTED execl*/
+			(void)execl(LIBEXECDIR "/wlogwriter", "wlogwriter", config.access_log, NULL);
+			exit(8);
+			/*NOTREACHED*/
 		default:
 			break;
 		}
@@ -236,6 +238,11 @@ struct	cache_object	*cobj;
 
 	WDEBUG((WLOG_DEBUG, "client_read_done: called"));
 
+	if (res == -2) {
+		client_send_error(client, ERR_BADREQUEST, NULL);
+		return;
+	}
+	
 	if (res == -1) {
 		client_close(client);
 		return;

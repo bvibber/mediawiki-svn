@@ -144,8 +144,8 @@ wcache_shutdown(void)
 	int i;
 	
 	/* don't use dberror() here because it calls us */
-	/*LINTED =/==*/
 	if (cacheobjs) 
+		/*LINTED =/==*/
 		if ((i = cacheobjs->close(cacheobjs, 0)) || (i = cacheenv->close(cacheenv, 0))) {
 			wlog(WLOG_ERROR, "error closing database: %s", db_strerror(i));
 			exit(8);
@@ -219,7 +219,7 @@ struct	cachedir	*cd;
 			dberror("init: state commit", i);
 	}
 	
-	int_max_len = log10(INT_MAX) + 1;
+	int_max_len = (int) log10((double) INT_MAX) + 1;
 }
 
 static char *
@@ -440,15 +440,19 @@ struct	cache_object	*ret;
 	int		 i;
 	char		 *p, *s, a[11];
 
-	if ((ret = wcalloc(1, sizeof(*ret))) == NULL)
+	if ((ret = wcalloc(1, sizeof(*ret))) == NULL) {
 		outofmemory();
+		/*NOTREACHED*/
+	}
 	
 	ret->co_id = cache_next_id();
 
 	assert(ret->co_id > 999);
 	ret->co_plen = int_max_len + 6;
-	if ((ret->co_path = wmalloc(ret->co_plen + 1)) == NULL)
+	if ((ret->co_path = wmalloc(ret->co_plen + 1)) == NULL) {
 		outofmemory();
+		/*NOTREACHED*/
+	}
 	p = ret->co_path;
 	safe_snprintf(10, (a, 10, "%d", ret->co_id));
 	s = a + strlen(a) - 1;

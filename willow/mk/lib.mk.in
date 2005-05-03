@@ -30,8 +30,11 @@ install:
 # this only works with Solaris lint... may be worth checking for lint type in configure.
 lint:
 	lint -Ncheck=%all -erroff=E_INCL_MNUSD,E_INCL_NUSD,E_UNCAL_F,E_H_C_CHECK0,E_H_C_CHECK1 \
-		-errhdr -errsecurity=extended -errtags \
-		-u -Xc99=all -Nlevel=4 -errfmt=src $(_LDFLAGS) $(LDFLAGS) $(CPPFLAGS) $(_CPPFLAGS) -I @top_srcdir@ $(SRCS)
+		-errhdr -errsecurity=extended -errtags -o$(LIB) \
+		-u -Xc99=all -Nlevel=4 -errfmt=src \
+		$(_LDFLAGS) $(LDFLAGS) \
+		$(CPPFLAGS) $(_CPPFLAGS) -I @top_srcdir@ \
+		$(SRCS)
 
 _MYDISTFILES=$(SRCS) $(EXTRA_DIST)
 _extradist:

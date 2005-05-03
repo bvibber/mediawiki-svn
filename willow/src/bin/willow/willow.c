@@ -87,6 +87,7 @@ struct	sigaction	segv_act;
 			case 'v':
 				(void)fprintf(stderr, "%s\n", PACKAGE_VERSION);
 				exit(0);
+				/*NOTREACHED*/
 			case 'c':
 				cfg = optarg;
 				break;
@@ -168,8 +169,14 @@ realloc_addchar(sp, c)
 	int c;
 {
 	char	*p;
+	int	 len;
 	
-	if ((*sp = wrealloc(*sp, strlen(*sp) + 2)) == NULL)
+	if (*sp)
+		len = strlen(*sp);
+	else
+		len = 1;
+	
+	if ((*sp = wrealloc(*sp, len + 2)) == NULL)
 		outofmemory();
 	p = *sp + strlen(*sp);
 	*p++ = (char) c;
@@ -181,11 +188,61 @@ realloc_strcat(sp, s)
 	char **sp;
 	const char *s;
 {
-	if ((*sp = wrealloc(*sp, strlen(*sp) + strlen(s) + 1)) == NULL)
+	int	 len;
+	
+	if (*sp)
+		len = strlen(*sp);
+	else
+		len = 1;
+	if ((*sp = wrealloc(*sp, len + strlen(s) + 1)) == NULL)
 		outofmemory();
 	(void)strcat(*sp, s);
 }
-			
+
+int char_table[256] = {
+	/* 0   */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 8   */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 16  */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 24  */ 0, 0, 0, 0, 0, 0, 0, 0, 
+	/* 32  */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 40  */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 48  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST, 
+	/* 52  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,
+	/* 56  */ CHAR_HOST, CHAR_HOST, 0, 0,
+	/* 60  */ 0, 0, 0, 0,
+	/* 64  */ 0, CHAR_HOST, CHAR_HOST, CHAR_HOST,
+	/* 68  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,
+	/* 72  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,
+	/* 76  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,
+	/* 80  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,
+	/* 84  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,
+	/* 88  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, 0,
+	/* 92  */ 0, 0, 0, 0,
+	/* 96  */ 0, CHAR_HOST, CHAR_HOST, CHAR_HOST,
+	/* 100 */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,
+	/* 104 */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,
+	/* 108 */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,
+	/* 112 */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,
+	/* 116 */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,
+	/* 120 */ CHAR_HOST, CHAR_HOST, 0, 0,
+	/* 124 */ 0, 0, 0, 0,
+	/* 136 */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 144 */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 152 */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 160 */ 0, 0, 0, 0, 0, 0, 0, 0, 
+	/* 168 */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 176 */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 184 */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 192 */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 200 */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 208 */ 0, 0, 0, 0, 0, 0, 0, 0, 
+	/* 216 */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 224 */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 232 */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 240 */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 248 */ 0, 0, 0, 0, 0, 0, 0, 0,
+};
+	
 #ifdef WDEBUG_ALLOC
 # ifdef THREADED_IO
 pthread_mutex_t ae_mtx = PTHREAD_MUTEX_INITIALIZER;

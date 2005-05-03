@@ -230,7 +230,7 @@ struct	fde	*e = &fde_table[fd];
 #endif
 }
 
-void
+int
 wnet_sendfile(fd, source, size, off, cb, data)
 	int fd, source;
 	size_t size;
@@ -243,8 +243,10 @@ struct	fde	*e = &fde_table[fd];
 
 	WDEBUG((WLOG_DEBUG, "wnet_sendfile: %d (+%ld) bytes from %d to %d [%s]", size, (long)off, source, fd, e->fde_desc));
 	
-	if ((wb = wcalloc(1, sizeof(*wb))) == NULL)
-		outofmemory();
+	if ((wb = wcalloc(1, sizeof(*wb))) == NULL) {
+		wlog(WLOG_WARNING, "out of memory");
+		return -1;
+	}
 	
 	wb->wb_done = 0;
 	wb->wb_func = cb;
@@ -299,10 +301,10 @@ struct	wrtbuf	*buf;
 	buf = e->fde_wdata;
 	while ((i = write(e->fde_fd, (char *)buf->wb_buf + buf->wb_done, buf->wb_size - buf->wb_done)) > -1) {
 #ifdef WILLOW_DEBUG
-		fprintf(stderr, "write buf: [");
+		(void)fprintf(stderr, "write buf: [");
 		for (p = ((char *)buf->wb_buf + buf->wb_done); p < ((char *)buf->wb_buf + buf->wb_done + i); ++p)
-			fputc(*p, stderr);
-		fputs("]\n", stderr);
+			(void)fputc(*p, stderr);
+		(void)fputs("]\n", stderr);
 #endif
 		buf->wb_done += i;
 		WDEBUG((WLOG_DEBUG, "%d of %d done", buf->wb_done, buf->wb_size));
@@ -352,7 +354,7 @@ struct	wrtbuf *buf;
 	i = sendfile(e->fde_fd, buf->wb_source, buf->wb_off, buf->wb_size, NULL, 0);
 	buf->wb_off += i;
 #else
-# error i don't know how to invoke sendfile() on this system
+# error i dont know how to invoke sendfile on this system
 #endif
 	buf->wb_size -= (buf->wb_off - origoff);
 	

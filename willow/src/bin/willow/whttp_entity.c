@@ -79,6 +79,7 @@
 static void entity_read_callback(struct fde *);
 static int parse_headers(struct http_entity *);
 static int parse_reqtype(struct http_entity *);
+static int validhost(const char *);
 
 static void entity_send_headers_done(struct fde *, void *, int);
 static void entity_send_fde_write_done(struct fde *, void *, int);
@@ -144,14 +145,14 @@ struct	http_entity	*entity = fde->fde_rdata;
 		WDEBUG((WLOG_DEBUG, "entity_read_callback: parse_headers returned -1"));
 		wnet_register(entity->he_source.fde.fde->fde_fd, FDE_READ, NULL, NULL);
 		entity->he_flags.error = 1;
-		entity->_he_func(entity, entity->_he_cbdata, -1);
+		entity->_he_func(entity, entity->_he_cbdata, -2);
 		return;
 	}
 
 	if (entity->_he_state == ENTITY_STATE_DONE) {
 		WDEBUG((WLOG_DEBUG, "entity_read_callback: client is ENTITY_STATE_DONE"));
 		wnet_register(entity->he_source.fde.fde->fde_fd, FDE_READ, NULL, NULL);
-		entity->_he_func(entity, entity->_he_cbdata, 01);
+		entity->_he_func(entity, entity->_he_cbdata, 0);
 		return;
 	}
 
@@ -176,6 +177,9 @@ parse_headers(entity)
 	while (readbuf_data_left(&entity->he_source.fde.fde->fde_readbuf) > 0) {
 		char c = *readbuf_cur_pos(&entity->he_source.fde.fde->fde_readbuf);
 
+		if (c == 0)
+			return -1; /* NUL not allowed */
+		
 		switch(entity->_he_state) {
 		case ENTITY_STATE_START:
 			/* should be reading a request type */
@@ -259,9 +263,13 @@ parse_headers(entity)
 					if (entity->he_headers.hl_num++ > MAX_HEADERS)
 						return -1;
 					header_add(&entity->he_headers, entity->_he_lastname, entity->_he_valstart);
-					if (!strcmp(entity->_he_lastname, "Host"))
+					if (!strcmp(entity->_he_lastname, "Host")) {
+						if (!validhost(entity->_he_valstart))
+							return -1;
+						
 						entity->he_rdata.request.host = entity->_he_valstart;
-					else if (!strcmp(entity->_he_lastname, "Content-Length")) {
+						WDEBUG((WLOG_DEBUG, "host: [%s]", entity->_he_valstart));
+					} else if (!strcmp(entity->_he_lastname, "Content-Length")) {
 						char *cl = entity->_he_valstart;
 						entity->he_rdata.request.contlen = atoi(cl);
 						WDEBUG((WLOG_DEBUG, "got content-length: %d [%s]", 
@@ -659,9 +667,11 @@ struct	http_entity	*entity = data;
 	
 	if (entity->he_source_type == ENT_SOURCE_FILE) {
 		/* write file */
-		wnet_sendfile(fde->fde_fd, entity->he_source.fd.fd, 
+		if (wnet_sendfile(fde->fde_fd, entity->he_source.fd.fd, 
 			entity->he_source.fd.size - entity->he_source.fd.off,
-			entity->he_source.fd.off, entity_send_file_done, entity);
+			entity->he_source.fd.off, entity_send_file_done, entity) == -1) {
+			entity->_he_func(entity, entity->_he_cbdata, -1);
+		}
 		return;
 	}
 	
@@ -789,3 +799,16 @@ struct	http_entity	*entity = data;
 	entity->_he_func(entity, entity->_he_cbdata, res);
 	return;
 }	
+
+static int
+validhost(host)
+	const char *host;
+{
+	for (; *host; ++host) {
+		WDEBUG((WLOG_DEBUG, "char %c, char_table[%d] = %d", *host, 
+				(int)(unsigned char)*host, char_table[(unsigned char)*host]));
+		if (!(char_table[(unsigned char)*host] & CHAR_HOST))
+			return 0;
+	}
+	return 1;
+}

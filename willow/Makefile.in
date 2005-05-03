@@ -34,5 +34,5 @@ svr4-package:
 	cd svr4 && \
 	(find ../stage-install | pkgproto ../stage-install=/ ; cat proto.suffix) >prototype && \
 	pkgmk -o && \
-	pkgtrans -s /var/spool/pkg `pwd`/../WMFwillow-@VERSION@.pkg WMFwillow
+	pkgtrans -s /var/spool/pkg `pwd`/../WMFwillow-@PACKAGE_VERSION@.pkg WMFwillow
 	

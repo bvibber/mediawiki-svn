@@ -6,7 +6,7 @@
 # use $(SRCROOT).)
 
 PACKAGE=	willow
-VERSION=	@VERSION@
+VERSION=	@PACKAGE_VERSION@
 
 _LEX=		@LEX@
 _YACC=		@YACC@

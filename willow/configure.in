@@ -1,6 +1,6 @@
 # @(#) $Header$
 
-AC_INIT(configure.in)
+AC_INIT(willow, 1.0-cvs, keturner@livejournal.com)
 
 USER_CFLAGS="$CFLAGS"
 
@@ -17,9 +17,6 @@ debug_cflags_sunpro="-g $sunpro_common -v -xs"
 prod_cflags_sunpro="-fast $sunpro_common -xdepend=yes -xipo=2 -xalias_level=std"
 
 AC_CONFIG_HEADER(config.h)
-VERSION=1.0-cvs
-AC_DEFINE([PACKAGE_VERSION], $VERSION, [Version number of program])
-AC_SUBST(VERSION)
 
 echo ""
 echo "examining environment..."

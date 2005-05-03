@@ -138,6 +138,7 @@ struct	conf_entry *cf;
 	return NULL;
 }
 
+/*ARGSUSED*/
 int
 conf_call_set(tc, item, value, type)
 	struct top_conf *tc;
@@ -288,6 +289,7 @@ conf_set_generic_string(data, len, location)
 
 static int backend_port;
 
+/*ARGSUSED*/
 static int
 conf_begin_backend(tc)
 	struct top_conf *tc;
@@ -301,6 +303,7 @@ conf_begin_backend(tc)
 	return 0;
 }
 
+/*ARGSUSED*/
 static int
 conf_end_backend(tc)
 	struct top_conf *tc;
@@ -313,6 +316,7 @@ conf_end_backend(tc)
 
 static int listen_port;
 
+/*ARGSUSED*/
 static int
 conf_begin_listen(tc)
 	struct top_conf *tc;
@@ -326,6 +330,7 @@ conf_begin_listen(tc)
 	return 0;
 }
 
+/*ARGSUSED*/
 static int
 conf_end_listen(tc)
 	struct top_conf *tc;
@@ -338,6 +343,7 @@ conf_end_listen(tc)
 
 static int cachedir_size;
 
+/*ARGSUSED*/
 static int
 conf_begin_cachedir(tc)
 	struct top_conf *tc;
@@ -351,6 +357,7 @@ conf_begin_cachedir(tc)
 	return 0;
 }
 
+/*ARGSUSED*/
 static int
 conf_end_cachedir(tc)
 	struct top_conf *tc;
@@ -390,6 +397,7 @@ static struct syslog_facility {
 	{NULL, 0},
 };
 
+/*ARGSUSED*/
 static int
 conf_end_log(tc)
 	struct top_conf *tc;
