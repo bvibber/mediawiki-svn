@@ -238,8 +238,8 @@ struct	cache_object	*cobj;
 
 	WDEBUG((WLOG_DEBUG, "client_read_done: called"));
 
-	if (res == -2) {
-		client_send_error(client, ERR_BADREQUEST, NULL);
+	if (res < -1) {
+		client_send_error(client, ERR_BADREQUEST, ent_errors[-res]);
 		return;
 	}
 	

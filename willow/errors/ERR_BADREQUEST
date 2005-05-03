@@ -11,8 +11,10 @@ body {
 </head>
 <body>
 <h1>Request failed</h1>
-<p>While trying to service your request, the following error was encountered:</p>
-<ul><li>Could not parse client request.</li></ul>
+<p>While trying to retrieve the URL:</p>
+<ul><li>%U</li></ul>
+<p>The following error was encountered:</p>
+<ul><li>%E.</li></ul>
 <hr>
 Generated %D by %H (%V)
 </body>

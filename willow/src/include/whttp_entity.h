@@ -30,6 +30,14 @@
 #define REQTYPE_OPTIONS	4
 #define REQTYPE_INVALID	-1
 
+#define ENT_ERR_READERR	-1	/* read error while parsing headers	*/
+#define ENT_ERR_INVHDR	-2	/* invalid headers 			*/
+#define ENT_ERR_INVHOST	-3	/* invalid Host:			*/
+#define ENT_ERR_INVREQ	-4	/* invalid request type			*/
+#define ENT_ERR_2MANY	-5	/* too many headers			*/
+
+extern const char *ent_errors[];
+
 #define MAX_HEADERS	64	/* maximum # of headers to allow	*/
 
 struct http_entity;

@@ -87,6 +87,15 @@ static void entity_send_buf_done(struct fde *, void *, int);
 static void entity_send_fde_read(struct fde *);
 static void entity_send_file_done(struct fde *, void *, int);
 
+const char *ent_errors[] = {
+	/* 0  */	"Unknown error",
+	/* -1 */	"Read error",
+	/* -2 */	"Could not parse request headers",
+	/* -3 */	"Invalid Host",
+	/* -4 */	"Invalid request type",
+	/* -5 */	"Too many headers",
+};
+	
 void
 entity_free(entity)
 	struct http_entity *entity;
@@ -117,7 +126,8 @@ entity_read_callback(fde)
 	struct fde *fde;
 {
 struct	http_entity	*entity = fde->fde_rdata;
-
+	int		 i;
+	
 	WDEBUG((WLOG_DEBUG, "entity_read_callback: called, source %d, left=%d", 
 			entity->he_source.fde.fde->fde_fd, 
 			readbuf_data_left(&entity->he_source.fde.fde->fde_readbuf)));
@@ -141,11 +151,11 @@ struct	http_entity	*entity = fde->fde_rdata;
 
 	WDEBUG((WLOG_DEBUG, "entity_read_callback: running header parse, %d left in buffer",
 			readbuf_data_left(&entity->he_source.fde.fde->fde_readbuf)));
-	if (parse_headers(entity) == -1) {
+	if ((i = parse_headers(entity)) < 0) {
 		WDEBUG((WLOG_DEBUG, "entity_read_callback: parse_headers returned -1"));
 		wnet_register(entity->he_source.fde.fde->fde_fd, FDE_READ, NULL, NULL);
 		entity->he_flags.error = 1;
-		entity->_he_func(entity, entity->_he_cbdata, -2);
+		entity->_he_func(entity, entity->_he_cbdata, i);
 		return;
 	}
 
@@ -178,7 +188,7 @@ parse_headers(entity)
 		char c = *readbuf_cur_pos(&entity->he_source.fde.fde->fde_readbuf);
 
 		if (c == 0)
-			return -1; /* NUL not allowed */
+			return ENT_ERR_INVHDR; /* NUL not allowed */
 		
 		switch(entity->_he_state) {
 		case ENTITY_STATE_START:
@@ -187,11 +197,11 @@ parse_headers(entity)
 				case '\r':
 					*readbuf_cur_pos(&entity->he_source.fde.fde->fde_readbuf) = '\0';
 					if (parse_reqtype(entity) == -1)
-						return -1;
+						return ENT_ERR_INVREQ;
 					entity->_he_state = ENTITY_STATE_CR;
 					break;
 				case '\n':
-					return -1;
+					return ENT_ERR_INVHDR;
 				default:
 					break;
 			}
@@ -202,7 +212,7 @@ parse_headers(entity)
 					entity->_he_state = ENTITY_STATE_NL;
 					break;
 				default:
-					return -1;
+					return ENT_ERR_INVHDR;
 			}
 			break;
 		case ENTITY_STATE_NL:
@@ -211,7 +221,7 @@ parse_headers(entity)
 					entity->_he_state = ENTITY_STATE_CREMPTY;
 					break;
 				case '\n': case ' ': case ':':
-					return -1;
+					return ENT_ERR_INVHDR;
 				default: /* header name */
 					entity->_he_state = ENTITY_STATE_HDR;
 					entity->_he_hdrbuf = entity->he_source.fde.fde->fde_readbuf.rb_p 
@@ -227,7 +237,7 @@ parse_headers(entity)
 					*readbuf_cur_pos(&entity->he_source.fde.fde->fde_readbuf) = '\0';
 					break;
 				case ' ': case '\r': case '\n':
-					return -1;
+					return ENT_ERR_INVHDR;
 				default:
 					break;
 			}
@@ -238,13 +248,13 @@ parse_headers(entity)
 					entity->_he_state = ENTITY_STATE_SPACE;
 					break;
 				default:
-					return -1;
+					return ENT_ERR_INVHDR;
 			}
 			break;
 		case ENTITY_STATE_SPACE:
 			switch(c) {
 				case '\r': case '\n': case ':': case ' ':
-					return -1;
+					return ENT_ERR_INVHDR;
 				default:
 					entity->_he_valstart = entity->he_source.fde.fde->fde_readbuf.rb_p +
 							entity->he_source.fde.fde->fde_readbuf.rb_dpos;
@@ -261,11 +271,11 @@ parse_headers(entity)
 					 * extra processing on.
 					 */
 					if (entity->he_headers.hl_num++ > MAX_HEADERS)
-						return -1;
+						return ENT_ERR_2MANY;
 					header_add(&entity->he_headers, entity->_he_lastname, entity->_he_valstart);
 					if (!strcmp(entity->_he_lastname, "Host")) {
 						if (!validhost(entity->_he_valstart))
-							return -1;
+							return ENT_ERR_INVHOST;
 						
 						entity->he_rdata.request.host = entity->_he_valstart;
 						WDEBUG((WLOG_DEBUG, "host: [%s]", entity->_he_valstart));
@@ -278,7 +288,7 @@ parse_headers(entity)
 					entity->_he_state = ENTITY_STATE_CR;
 					break;
 				case '\n': 
-					return -1;
+					return ENT_ERR_INVHDR;
 				default:
 					break;
 			}
@@ -290,7 +300,7 @@ parse_headers(entity)
 					readbuf_inc_data_pos(&entity->he_source.fde.fde->fde_readbuf, 1);
 					return 0;
 				default:
-					return -1;
+					return ENT_ERR_INVHDR;
 			}
 		case ENTITY_STATE_DONE:
 			/*
