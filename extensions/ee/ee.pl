@@ -21,7 +21,13 @@ initmsg();
 
 # By default, config will be searched for in your Unix home directory 
 # (e.g. ~/.ee-helper/ee.ini). Change path of the configuration file if needed!
+#
+# Under Windows, set to something like 
+#   $cfgfile='c:\ee\ee.ini'; 
+# (note single quotes!)
 $cfgfile=$ENV{HOME}."/.ee-helper/ee.ini";
+
+
 $cfgfile=getunixpath($cfgfile);
 
 $DEBUG=0;
