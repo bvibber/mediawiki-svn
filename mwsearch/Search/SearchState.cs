@@ -31,6 +31,8 @@ namespace MediaWiki.Search {
 	using System.Text.RegularExpressions;
 
 	using Lucene.Net.Analysis;
+	using Lucene.Net.Analysis.DE;
+	using Lucene.Net.Analysis.RU;
 	using Lucene.Net.Analysis.Standard;
 	using Lucene.Net.Documents;
 	using Lucene.Net.Index;
@@ -111,7 +113,7 @@ namespace MediaWiki.Search {
 				System.IO.Directory.CreateDirectory(indexpath);
 			
 			log.Debug(dbname + ": opening state");
-			analyzer = new EnglishAnalyzer();
+			analyzer = GetAnalyzerForLanguage(config.GetLanguage(dbname));
 			try {
 				OpenReader();
 			} catch (IOException e) {
@@ -120,6 +122,20 @@ namespace MediaWiki.Search {
 			mydbname = dbname;
 		}
 
+		/**
+		 * @param language
+		 * @return
+		 */
+		private Analyzer GetAnalyzerForLanguage(string language) {
+			if (language.Equals("de"))
+				return new GermanAnalyzer();
+			if (language.Equals("eo"))
+				return new EsperantoAnalyzer();
+			if (language.Equals("ru"))
+				return new RussianAnalyzer();
+			return new EnglishAnalyzer();
+		}
+		
 		public void Close() {
 			try {
 				if (writable)

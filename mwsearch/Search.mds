@@ -6,6 +6,7 @@
       <Entry name="Daemon" build="False" />
       <Entry name="Benchmark" build="True" />
       <Entry name="Prefix" build="True" />
+      <Entry name="Tests" configurationname="Debug" build="False" />
     </Configuration>
     <Configuration name="Release" ctype="CombineConfiguration">
       <Entry name="Search" build="False" />
@@ -13,6 +14,7 @@
       <Entry name="Daemon" build="False" />
       <Entry name="Benchmark" build="True" />
       <Entry name="Prefix" build="True" />
+      <Entry name="Tests" configurationname="Debug" build="False" />
     </Configuration>
   </Configurations>
   <StartMode startupentry="Updater" single="True">
@@ -21,12 +23,14 @@
     <Execute type="Execute" entry="Daemon" />
     <Execute type="None" entry="Benchmark" />
     <Execute type="None" entry="Prefix" />
+    <Execute type="None" entry="Tests" />
   </StartMode>
   <Entries>
-    <Entry filename="./Search.mdp" />
-    <Entry filename="../Updater/Updater.mdp" />
-    <Entry filename="../Daemon/Daemon.mdp" />
-    <Entry filename="../Benchmark/Benchmark.mdp" />
-    <Entry filename="../Prefix/Prefix.mdp" />
+    <Entry filename="./Search/Search.mdp" />
+    <Entry filename="./Updater/Updater.mdp" />
+    <Entry filename="./Daemon/Daemon.mdp" />
+    <Entry filename="./Benchmark/Benchmark.mdp" />
+    <Entry filename="./Prefix/Prefix.mdp" />
+    <Entry filename="./Tests/Tests.mdp" />
   </Entries>
 </Combine>

@@ -98,5 +98,17 @@ namespace MediaWiki.Search {
 			}
 			return false;
 		}
+		
+		public string GetLanguage(string dbname) {
+			string[] suffixes = GetArray("Database", "suffix");
+			if (suffixes == null)
+				return "en";
+			foreach (string suffix in suffixes) {
+				if (dbname.EndsWith(suffix))
+					return dbname.Substring(0, dbname.Length - suffix.Length);
+			}
+			return "en";
+		}
+	
 	}
 }
