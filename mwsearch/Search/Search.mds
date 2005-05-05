@@ -1,0 +1,32 @@
+<Combine name="Search" fileversion="2.0" outputpath="./build/bin">
+  <Configurations>
+    <Configuration name="Debug" ctype="CombineConfiguration">
+      <Entry name="Search" build="False" />
+      <Entry name="Updater" build="False" />
+      <Entry name="Daemon" build="False" />
+      <Entry name="Benchmark" build="True" />
+      <Entry name="Prefix" build="True" />
+    </Configuration>
+    <Configuration name="Release" ctype="CombineConfiguration">
+      <Entry name="Search" build="False" />
+      <Entry name="Updater" build="False" />
+      <Entry name="Daemon" build="False" />
+      <Entry name="Benchmark" build="True" />
+      <Entry name="Prefix" build="True" />
+    </Configuration>
+  </Configurations>
+  <StartMode startupentry="Updater" single="True">
+    <Execute type="None" entry="Search" />
+    <Execute type="None" entry="Updater" />
+    <Execute type="Execute" entry="Daemon" />
+    <Execute type="None" entry="Benchmark" />
+    <Execute type="None" entry="Prefix" />
+  </StartMode>
+  <Entries>
+    <Entry filename="./Search.mdp" />
+    <Entry filename="../Updater/Updater.mdp" />
+    <Entry filename="../Daemon/Daemon.mdp" />
+    <Entry filename="../Benchmark/Benchmark.mdp" />
+    <Entry filename="../Prefix/Prefix.mdp" />
+  </Entries>
+</Combine>
