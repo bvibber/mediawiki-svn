@@ -1,4 +1,0 @@
-SOURCES=Benchmark.cs SampleTerms.cs
-
-Benchmark.exe : $(SOURCES)
-	mcs -r:System.Web -o Benchmark.exe $(SOURCES)
