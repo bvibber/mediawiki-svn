@@ -1,5 +1,5 @@
 <Project name="Updater" fileversion="2.0" language="C#" ctype="DotNetProject">
-  <Configurations>
+  <Configurations active="Debug">
     <Configuration name="Debug" ctype="DotNetProjectConfiguration">
       <Output directory="./bin/Debug" assembly="MWUpdater" />
       <Build debugmode="True" target="Exe" />

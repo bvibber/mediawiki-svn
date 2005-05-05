@@ -24,6 +24,7 @@
 
 namespace MediaWiki.Search.Updater {
 	using System;
+	using System.Collections;
 	using System.Data;
 	using System.IO;
 
@@ -55,23 +56,28 @@ namespace MediaWiki.Search.Updater {
 			BasicConfigurator.Configure();
 			LogLog.InternalDebugging = true;
 			
-			//if (args.Length < 1) {
-				//Console.WriteLine("Must specify database name");
-				//return;
-			//}
+			String updateFrom = "19700101000000";
+			IList dbnames = new ArrayList();
 			
 			for (int i = 0; i < args.Length;) {
-				if (args[i].Equals("--rebuild"))
+				if (args[i].Equals("--rebuild")) {
 					what = DOING_FULL_UPDATE;
-				else if (args[i].Equals("--increment"))
+				} else if (args[i].Equals("--update")) {
 					what = DOING_INCREMENT;
-				else if (args[i].Equals("--configfile"))
+					updateFrom = args[++i];
+				} else if (args[i].Equals("--configfile")) {
 					Configuration.SetConfigFile(args[++i]);
-				else break;
+				} else {
+					dbnames.Add(args[i]);
+				}
 				++i;
 			}
-
+			
 			config = Configuration.Open();
+			if(dbnames.Count == 0) {
+				dbnames = config.GetArray("mwsearch", "databases");
+			}
+
 			if (what == -1) {
 				Console.WriteLine("No action specified");
 				return;
@@ -79,8 +85,7 @@ namespace MediaWiki.Search.Updater {
 			
 			Console.WriteLine(
 					"MWSearch Lucene search indexer - standalone index rebuilder.\n" +
-					"Version 20050406, copyright 2004 Kate Turner.\n");
-			string[] dbnames = config.GetArray("mwsearch", "databases");
+					"Version 20050506, copyright 2004 Kate Turner.\n");
 			foreach (string dbname in dbnames) {
 				SearchState state;
 				try {
@@ -107,6 +112,7 @@ namespace MediaWiki.Search.Updater {
 				
 				DateTime now = DateTime.UtcNow;
 				long numArticles = 0;
+				string startTimestamp = updateFrom;
 
 				try {
 					Console.Out.Flush();
@@ -117,7 +123,7 @@ namespace MediaWiki.Search.Updater {
 					}
 					*/
 					DatabaseConnection conn = DatabaseConnection.ForWiki(dbname);
-					ArticleList articles = conn.EnumerateArticles();
+					ArticleList articles = conn.EnumerateArticles(startTimestamp);
 					log.Debug("Opened enumeration...");
 					Console.Out.Flush();
 					foreach (Article article in articles) {

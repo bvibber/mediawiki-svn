@@ -92,6 +92,10 @@ namespace MediaWiki.Search.Updater {
 		}
 
 		public ArticleList EnumerateArticles() {
+			return EnumerateArticles("19700101000000");
+		}
+		
+		public ArticleList EnumerateArticles(string startDate) {
 			string query;
 			IDbCommand pstmt;
 			string tablePrefix = config.GetString("Database", "tableprefix");
@@ -99,11 +103,13 @@ namespace MediaWiki.Search.Updater {
 			
 			string version = config.GetString("Database", "version");
 			if (version == "" || version.Equals("1.5")) {
+				// FIXME FOR TIMESTAMPS
 				query = "SELECT page_namespace,page_title,old_text,page_timestamp " +
 					"FROM " + tablePrefix + "page, " + tablePrefix + "text WHERE old_id=page_latest AND page_is_redirect=0";
 			} else if (version.Equals("1.4")) {
 				query = "SELECT cur_namespace,cur_title,cur_text,cur_timestamp " +
-					"FROM " + tablePrefix + "cur WHERE cur_is_redirect=0";
+					"FROM " + tablePrefix + "cur FORCE INDEX (cur_timestamp) " +
+					"WHERE cur_timestamp>\"" + startDate + "\" AND cur_is_redirect=0";
 			} else {
 				throw new Exception("Unknown MediaWiki version given in config.");
 			}
