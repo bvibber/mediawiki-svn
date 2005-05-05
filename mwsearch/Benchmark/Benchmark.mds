@@ -1,10 +1,10 @@
 <Combine name="Benchmark" fileversion="2.0">
   <Configurations>
     <Configuration name="Debug" ctype="CombineConfiguration">
-      <Entry build="True" name="Benchmark" />
+      <Entry name="Benchmark" build="True" />
     </Configuration>
     <Configuration name="Release" ctype="CombineConfiguration">
-      <Entry build="True" name="Benchmark" />
+      <Entry name="Benchmark" build="True" />
     </Configuration>
   </Configurations>
   <StartMode startupentry="Benchmark" single="True">

@@ -81,6 +81,19 @@ namespace MediaWiki.Search {
 				return title;
 			}
 		}
+		
+		/**
+		 * Articles need to be easily identifiable by an exact match
+		 * for replacement of updated items when updating an existing
+		 * search index.
+		 * 
+		 * @return Returns unique id.
+		 */
+		public string Key {
+			get {
+				return Namespace + ":" + Title;
+			}
+		}
 	}
 }
 

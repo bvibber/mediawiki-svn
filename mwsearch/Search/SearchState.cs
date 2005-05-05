@@ -35,20 +35,18 @@ namespace MediaWiki.Search {
 	using Lucene.Net.Documents;
 	using Lucene.Net.Index;
 	using Lucene.Net.Search;
+	using Lucene.Net.Store;
 
 	/**
 	 * @author Kate Turner
 	 *
 	 */
 	public class SearchState {
-		//private static Stack<SearchState> states;
-		//private static Map<String, SearchState> openWikis;
 		private static IDictionary openWikis;
 
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 		static SearchState() {
-			//openWikis = new Hashtable<string, SearchState>();
 			openWikis = new Hashtable();
 		}
 		
@@ -85,8 +83,13 @@ namespace MediaWiki.Search {
 		IndexReader reader = null;
 		string indexpath;
 		Configuration config;
+		
 		IndexWriter writer;
 		bool writable = false;
+		
+		// An in-memory directory which we'll write updates into.
+		private Lucene.Net.Store.Directory buffer;
+		private int updatesWritten;
 		
 		public Searcher Searcher {
 			get {
@@ -105,28 +108,60 @@ namespace MediaWiki.Search {
 			indexpath = string.Format(config.GetString("mwsearch","indexpath"),
 					dbname );
 			if (!File.Exists(indexpath))
-				Directory.CreateDirectory(indexpath);
+				System.IO.Directory.CreateDirectory(indexpath);
 			
 			log.Debug(dbname + ": opening state");
 			analyzer = new EnglishAnalyzer();
 			try {
-				reader = IndexReader.Open(indexpath);
-				searcher = new IndexSearcher(reader);
+				OpenReader();
 			} catch (IOException e) {
 				log.Error(dbname + ": warning: open for read failed");
 			}
 			mydbname = dbname;
 		}
-		
-		private void Close() {
+
+		public void Close() {
 			try {
-				searcher.Close();
-				reader.Close();
+				if (writable)
+					MergeWrites();
+				CloseReader();
 			} catch (IOException e) {
 				log.Error(mydbname + ": warning: closing index: " + e.Message);
 			}
 		}
 		
+		/**
+		 * @throws IOException
+		 *
+		 */
+		private void MergeWrites() {
+			writer.Close();
+			writable = false;
+			
+			log.Info("Merging " + updatesWritten + " updates to disk on " + mydbname);
+			try {
+				// Need to flush any pending deletions on the reader...
+				CloseReader();
+				
+				// Merge updates from RAM to disk...
+				IndexWriter ondisk = new IndexWriter(indexpath, analyzer, false);
+				ondisk.AddIndexes(new Lucene.Net.Store.Directory[] { buffer });
+				ondisk.Close();
+			} finally {
+				updatesWritten = 0;
+				OpenReader();
+				buffer.Close();
+				
+				// A new in-RAM buffer will be created on demand.
+			}
+		}
+		
+		private void CountOrMerge() {
+			updatesWritten++;
+			if (updatesWritten >= 10000)
+				MergeWrites();
+		}
+
 		private void Reopen() {
 			try {
 				searcher.Close();
@@ -136,24 +171,106 @@ namespace MediaWiki.Search {
 			} catch (IOException e) {}
 		}
 		
+		/**
+		 * @throws IOException
+		 */
+		private void OpenReader() {
+			reader = IndexReader.Open(indexpath);
+			searcher = new IndexSearcher(reader);
+		}
+
+		/**
+		 * @throws IOException
+		 */
+		private void CloseReader() {
+			searcher.Close();
+			reader.Close();
+		}
+
+		/**
+		 * Open the index for writing if it's not already. This is implicitly
+		 * called when addDocument() is used, so callers don't need to do it.
+		 * 
+		 * We won't actually write to the main index yet; we're actually opening
+		 * an in-memory directory which we'll buffer updates to, and merge them
+		 * in chunks to disk.
+		 * 
+		 * @throws IOException
+		 */
 		private void OpenForWrite() {
 			if (writable)
 				return;
-			writer = new IndexWriter(
-					string.Format(config.GetString("mwsearch", "indexpath"),
-							mydbname ),
-					new EnglishAnalyzer(), true);
+			buffer = new RAMDirectory();
+			writer = new IndexWriter(buffer, analyzer, true);
 			writable = true;
+			updatesWritten = 0;
+		}
+		
+		/**
+		 * Create a fresh new index.
+		 * Any existing database will be overwritten.
+		 * @throws IOException
+		 */
+		public void initializeIndex() {
+			new IndexWriter(indexpath, analyzer, true).Close();
 		}
 		
 		public void AddArticle(Article article) {
 			OpenForWrite();
 			Document d = new Document();
+			// This will be used to look up and replace entries on index updates.
+			d.Add(Field.Keyword("key", article.Key));
+			
+			// These fields are returned with results
 			d.Add(Field.Text("namespace", article.Namespace));
 			d.Add(Field.Text("title", article.Title));
+			
+			// Bulk contents are indexed only, not stored.
+			// Clients can pull up-to-date text from the source database for hit matching.
 			d.Add(new Field("contents", StripWiki(article.Contents), 
 					false, true, true));
 			writer.AddDocument(d);
+			
+			CountOrMerge();
+		}
+		
+		/**
+		 * When altering an existing index, we have to manually remove the previous
+		 * version of an article when we update it, or results will include both
+		 * old and new versions.
+		 * 
+		 * @param article
+		 * @throws IOException
+		 * @throws SearchDbException
+		 */
+		public void ReplaceArticle(Article article) {
+			DeleteArticle(article);
+			AddArticle(article);
+		}
+		
+		/**
+		 * Lucene doesn't let us do deletes from an IndexWriter, only an IndexReader.
+		 * To avoid locking or constant open-close switches, be sure that writing
+		 * is only happening on an in-memory writer.
+		 * @param article
+		 * @throws IOException
+		 */
+		private void DeleteArticle(Article article) {
+			String key = article.Key;
+			Hits hits = searcher.Search(new TermQuery(
+					new Term("key", key)));
+			if (hits.Length() == 0)
+				log.Debug("Nothing to delete for " + key);
+			for (int i = 0; i < hits.Length(); i++) {
+				int id = hits.Id(i);
+				log.Debug("Trying to delete article number " + id + "for " + key);
+				try {
+					reader.Delete(id);
+				} catch (IOException e) {
+					log.Warn("Couldn't delete article number " + 
+						id + " for " + key + "... " + e);
+				}
+			}
 		}
 		
 		private static string StripWiki(string text) {

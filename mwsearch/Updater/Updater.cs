@@ -85,6 +85,8 @@ namespace MediaWiki.Search.Updater {
 				SearchState state;
 				try {
 					state = SearchState.ForWiki(dbname);
+					if (what == DOING_FULL_UPDATE)
+						state.initializeIndex();
 				} catch (Exception e) {
 					Console.WriteLine("Error opening search index: " + e.ToString());
 					return;
@@ -119,9 +121,10 @@ namespace MediaWiki.Search.Updater {
 					log.Debug("Opened enumeration...");
 					Console.Out.Flush();
 					foreach (Article article in articles) {
-						if((numArticles % 10) == 0)
-							log.Debug("updating article #" + numArticles);
-						state.AddArticle(article);
+						if (what == DOING_INCREMENT)
+							state.ReplaceArticle(article);
+						else
+							state.AddArticle(article);
 						//matcher.AddArticle(article);
 						if ((++numArticles % 1000) == 0) {
 							Console.WriteLine("{0}... ({1}/sec)", numArticles,
@@ -136,6 +139,7 @@ namespace MediaWiki.Search.Updater {
 					}
 					*/
 					conn.Close();
+					state.Close();
 				} catch (DataException e) {
 					Console.WriteLine("Error: DB error: " + e.ToString());
 					return;
