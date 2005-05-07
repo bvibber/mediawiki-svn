@@ -40,7 +40,7 @@ namespace MediaWiki.Search {
 	public class Configuration {
 		// static members...
 		private static Configuration instance;
-		private static string configfile = "/home/brion/mwsearch.conf";
+		private static string configfile = "/etc/mwsearch.conf";
 		
 		public static void SetConfigFile(string file) {
 			configfile = file;
