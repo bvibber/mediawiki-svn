@@ -69,6 +69,7 @@ function setupCatRSSExtension() {
 			return $this->getData();
 		}
 		function getData() {
+			$fname = __CLASS__ . '::' . __FUNCTION__;
 			$this->mMaxTimeStamp = 0;
 			
 			$limit = 50;
@@ -207,7 +208,7 @@ function setupCatRSSExtension() {
 			# format members of a category as 'news list' within a page
 			# useful for portals, probably wikinews etc
 			# todo: allow multiple categories to be merged ('or' in sql)
-			global $wgUser;
+			global $wgUser, $wgLang;
 			$skin = &$wgUser->getSkin();
 			$list = '';
 			$ts = $closedl = $date = $oldns = $oldtitle = '';
@@ -218,7 +219,7 @@ function setupCatRSSExtension() {
 					$oldtitle = $row->cur_title;
 					$title = Title::makeTitle( $row->cur_namespace, $row->cur_title );
 					$ts = $row->cl_timestamp;
-					$newdate = gmdate( 'D, d M Y', wfTimestamp( TS_UNIX, $ts ) );
+					$newdate = $wgLang->timeanddate( wfTimestamp( TS_MW, $ts ) );
 					if( $date != $newdate ) {
 						$date = $newdate;
 						$list .= "$closedl\n<h2> ".$date." </h2>\n<dl>";
@@ -226,7 +227,7 @@ function setupCatRSSExtension() {
 					}
 					$list .= '<dt>' . $skin->makeKnownLinkObj($title) .
 					' <span style="font-size: 0.76em;font-weight:normal;">' .
-					gmdate( 'H:i:s \G\M\T', wfTimestamp( TS_UNIX, $ts ) ) . '</span></dt><dd> ' .
+					$wgLang->time( wfTimestamp( TS_MW, $ts ) ) . '</span></dt><dd> ' .
 					$this->formatSummary( $row->cur_text ).'</dd>';
 				}
 			}
