@@ -34,58 +34,71 @@ function setupCatRSSExtension() {
 
 	global $IP;
 	require_once( "$IP/includes/CategoryPage.php" );
+	require_once("Feed.php");
 
 	global $wgHooks;
 
-	$wgHooks['CategoryPageView'][] = 'viewCatRSS';
+	$wgHooks['CategoryPageView'][] = 'viewCatFeed';
+	global $wgParser;
+	$wgParser->setHook( "catnews", "viewCatNewslist" );
 
-	class CategoryFeed extends CategoryPage {
+
+	class CategoryByDate extends CategoryPage {
 		/**
 		* Feed for recently-added members of a category based on cl_timestamp
 		* Uses bits of the recentchanges feeds (caching and formatting)
 		* @package MediaWiki
 		*/
 
-		function CategoryFeed( &$CategoryPage ) {
-			$this->mTitle = $CategoryPage->mTitle;
+		function CategoryByDate( &$title, $tarray = false ) {
+			global $wgRequest;
+			$this->mTitle = $title;
+			$this->mFeedFormat = $wgRequest->getVal( 'feed', '' );
+			$this->mTitleStrings = array();
+			if ( is_array($tarray) ) {
+				foreach($tarray as $title) {
+					$this->mTitleStrings[] = $title->getDBKey();
+				}
+			} else {
+				$this->mTitleStrings[] = $title->getDBKey();
+			}
 		}
 
 		function view() {
-			global $wgRequest;
-			require_once("Feed.php");
-			$this->mFeedFormat = $wgRequest->getVal( 'feed', '' );
-			if ( $this->mFeedFormat == '') return true; # let CategoryPage::view continue, no feed requested
+			// cache handling in subclass
+			return $this->getData();
+		}
+		function getData() {
 			$this->mMaxTimeStamp = 0;
+			
 			$limit = 50;
 			$dbr =& wfGetDB( DB_SLAVE );
 			$res = $dbr->select(
 				array( 'cur', 'categorylinks' ),
 				array( 'cur_title', 'cur_namespace', 'cur_text', 'cur_user_text', 'cl_sortkey', 'cl_timestamp' ),
 				array( 'cl_from          =  cur_id',
-				'cl_to'           => $this->mTitle->getDBKey(),
+				'cl_to IN ("'.implode('","', $this->mTitleStrings).'")',
 				'cur_is_redirect' => 0),
 				$fname,
 				array( 'ORDER BY' => 'cl_timestamp DESC, cl_sortkey ASC',
 				'LIMIT'    => $limit ));
 				$rows = array();
-				while( $row = $dbr->fetchObject ( $res ) ) {
-					$rows[] = $row;
-					if ( $row->cl_timestamp > $this->mMaxTimeStamp ) {
-						$this->mMaxTimeStamp = $row->cl_timestamp;
-					}
+			while( $row = $dbr->fetchObject ( $res ) ) {
+				$rows[] = $row;
+				if ( $row->cl_timestamp > $this->mMaxTimeStamp ) {
+					$this->mMaxTimeStamp = $row->cl_timestamp;
 				}
-				$this->categoryOutputFeed( &$rows, $limit );
-				# stop CategoryPage::view from continuing
-				return false;
+			}
+			return $this->formatRows( &$rows );
 		}
 
 		# strip images, links, tags
-		function formatSummary ( $row ) {
+		function formatSummary ( $text ) {
 			global $wgContLang;
 			$prefixes = array_keys($wgContLang->getLanguageNames());
 			$prefixes[] = $wgContLang->getNsText(NS_CATEGORY);
 			$imgprefix = $wgContLang->getNsText(NS_IMAGE);
-			$text = "\n".$row->cur_text;
+			$text = "\n".$text;
 
 			$rules = array(
 				"/\[\[(".implode('|',$prefixes)."):[^\]]*\]\]/i" => "", # interwiki links, cat links
@@ -115,87 +128,137 @@ function setupCatRSSExtension() {
 			return htmlspecialchars( $shorttext.'...');
 		}
 
-		function categoryOutputFeed( $rows, $limit ) {
-			global $messageMemc, $wgDBname, $wgFeedCacheTimeout;
+	}
+
+	class CategoryByDateFeed extends CategoryByDate {
+
+		function view() {
+			global $wgRequest;
+			global $messageMemc, $wgDBname;
 			global $wgFeedClasses, $wgTitle, $wgSitename, $wgContLanguageCode;
 
 			if( !isset( $wgFeedClasses[$this->mFeedFormat] ) ) {
 				wfHttpError( 500, "Internal Server Error", "Unsupported feed type." );
 				return false;
 			}
-
-			$timekey = "$wgDBname:catfeed:" . $this->mTitle->getDBKey() . ":timestamp";
-			$key = "$wgDBname:catfeed:" . $this->mTitle->getDBKey() . ":$this->mFeedFormat:limit:$limit";
-
 			$feedTitle = $this->mTitle->getPrefixedText() . ' - ' . $wgSitename;
-			$feed = new $wgFeedClasses[$this->mFeedFormat](
+			$this->feed = new $wgFeedClasses[$this->mFeedFormat](
 				$feedTitle,
 				htmlspecialchars( wfMsgForContent( 'catfeedsummary' ) ),
 				$wgTitle->getFullUrl() );
 
-				/**
-				* Loading and parsing cur_text for all added pages is slow, so we cache it
-				*/
-				$cachedFeed = false;
-				if( $feedLastmod = $messageMemc->get( $timekey ) ) {
-					/**
-					* If the cached feed was rendered very recently, we may
-					* go ahead and use it even if there have been edits made
-					* since it was rendered. This keeps a swarm of requests
-					* from being too bad on a super-frequently edited wiki.
-					*/
-					if( time() - wfTimestamp( TS_UNIX, $feedLastmod )
-					< $wgFeedCacheTimeout
-					|| wfTimestamp( TS_UNIX, $feedLastmod )
-					> wfTimestamp( TS_UNIX, $this->mMaxTimeStamp ) ) {
-						wfDebug( "CatFeed: loading feed from cache ($key; $feedLastmod; $this->mMaxTimeStamp)...\n" );
-						$cachedFeed = $messageMemc->get( $key );
-					} else {
-						wfDebug( "CatFeed: cached feed timestamp check failed ($feedLastmod; $this->mMaxTimeStamp)\n" );
-					}
-				}
-				if( is_string( $cachedFeed ) ) {
-					wfDebug( "CatFeed: Outputting cached feed\n" );
-					$feed->httpHeaders();
-					echo $cachedFeed;
-				} else {
-					wfDebug( "CatFeed: rendering new feed and caching it\n" );
-					ob_start();
-					$this->catDoOutputFeed( $rows, $feed );
-					$cachedFeed = ob_get_contents();
-					ob_end_flush();
+			$timekey = "$wgDBname:catfeed:" . $this->mTitle->getDBKey() . ":$this->mFeedFormat:limit:$limit:timestamp";
+			$key = "$wgDBname:catfeed:" . $this->mTitle->getDBKey() . ":$this->mFeedFormat:limit:$limit";
+			$cachedFeed = false;
+			$adddeltimestamp = $wgDBname.':Category:'.$wgTitle->getDBkey().':adddeltimestamp';
+			
+			$catLastAddDel = $messageMemc->get( $adddeltimestamp );
 
-					$expire = 3600 * 24; # One day
-					$messageMemc->set( $key, $cachedFeed );
-					$messageMemc->set( $timekey, wfTimestamp( TS_MW ), $expire );
-			    	}
-				return true;
+			if( $feedLastmod = $messageMemc->get( $timekey )
+			and $catLastAddDel <= $feedLastmod ) {
+				wfDebug( "CatFeed: loading feed from cache ($key; $feedLastmod; $catLastAddDel )...\n" );
+				$cachedFeed = $messageMemc->get( $key );
+			} else {
+				wfDebug( "CatFeed: cached feed timestamp check failed ($feedLastmod; $catLastAddDel) timekey: $timekey; adddel: $adddeltimestamp \n" );
+
+			}
+			if( is_string( $cachedFeed ) ) {
+				wfDebug( "CatFeed: Outputting cached feed\n" );
+				$this->feed->httpHeaders();
+				echo $cachedFeed;
+			} else {
+				wfDebug( "CatFeed: rendering new feed and caching it\n" );
+				ob_start();
+				$this->getData();
+				$cachedFeed = ob_get_contents();
+				ob_end_flush();
+
+				$expire = 3600 * 24; # One day
+				$messageMemc->set( $key, $cachedFeed );
+				$messageMemc->set( $timekey, $catLastAddDel , $expire );
+			}
+			return true;
 		}
 
-		function catDoOutputFeed( $rows, &$feed ) {
+		function formatRows( $rows ) {
 			global $wgSitename, $wgFeedClasses, $wgContLanguageCode;
 
-			$feed->outHeader();
+			$this->feed->outHeader();
 			foreach( $rows as $row ) {
 				$title = Title::makeTitle( $row->cur_namespace, $row->cur_title );
 				$item = new FeedItem(
 					$title->getPrefixedText(),
-					$this->formatSummary( &$row ),
+					$this->formatSummary( $row->cur_text ),
 					$title->getFullURL(),
-					$row->lc_timestamp,
+					$row->cl_timestamp,
 					$row->cur_user_text,
 					'' #$talkpage->getFullURL()
 				);
-				$feed->outItem( $item );
+				$this->feed->outItem( $item );
 			}
-			$feed->outFooter();
+			$this->feed->outFooter();
+		}
+
+	}
+
+	class CategoryByDateNewslist extends CategoryByDate {
+		
+		function formatRows( $rows ) {
+			# format members of a category as 'news list' within a page
+			# useful for portals, probably wikinews etc
+			# todo: allow multiple categories to be merged ('or' in sql)
+			global $wgUser;
+			$skin = &$wgUser->getSkin();
+			$list = '';
+			$ts = $closedl = $date = $oldns = $oldtitle = '';
+			foreach( $rows as $row ) {
+				# check for duplicates, cheaper than in the db
+				if($row->cur_namespace != $oldns or $row->cur_title != $oldtitle) {
+					$oldns = $row->cur_namespace;
+					$oldtitle = $row->cur_title;
+					$title = Title::makeTitle( $row->cur_namespace, $row->cur_title );
+					$ts = $row->cl_timestamp;
+					$newdate = gmdate( 'D, d M Y', wfTimestamp( TS_UNIX, $ts ) );
+					if( $date != $newdate ) {
+						$date = $newdate;
+						$list .= "$closedl\n<h2> ".$date." </h2>\n<dl>";
+						$closedl = '</dl>';
+					}
+					$list .= '<dt>' . $skin->makeKnownLinkObj($title) .
+					' <span style="font-size: 0.76em;font-weight:normal;">' .
+					gmdate( 'H:i:s \G\M\T', wfTimestamp( TS_UNIX, $ts ) ) . '</span></dt><dd> ' .
+					$this->formatSummary( $row->cur_text ).'</dd>';
+				}
+			}
+			return $list . $closedl;
 		}
 	}
 
 }
 
-function viewCatRSS( &$CategoryPage ) {
-	$catfeed = new CategoryFeed($CategoryPage);
-	return $catfeed->view();
+function viewCatFeed( &$CategoryPage ) {
+	global $wgRequest;
+	$catfeed = new CategoryByDateFeed($CategoryPage->mTitle);
+	# nothing to do,CategoryPage::view continues
+	if(!$wgRequest->getBool('feed',false)) return true;
+	
+	# else continue
+	$catfeed->view();
+	# stop CategoryPage::view from continuing
+	return false;
+}
+function viewCatNewslist( $input ) {
+	$text = '';
+	$iptitles = split("\n",trim($input));
+	$dbtitles = array();
+	foreach ( $iptitles as $title ) {
+		$dbtitles[] = Title::newFromUrl($title);
+	}
+	# search for 5 categories max for now 
+	$dbtitles = array_slice($dbtitles, 0, 4);
+	$catnews = new CategoryByDateNewslist($dbtitles[0], $dbtitles);
+	$text .= $catnews->view();
+	
+	return $text;
 }
 ?>
