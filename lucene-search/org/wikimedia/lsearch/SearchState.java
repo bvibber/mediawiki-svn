@@ -191,7 +191,7 @@ public class SearchState {
 	
 	private void countOrMerge() throws IOException {
 		updatesWritten++;
-		if (updatesWritten >= 1000)
+		if (updatesWritten >= 10000)
 			mergeWrites();
 	}
 
@@ -245,7 +245,9 @@ public class SearchState {
 	 * @throws IOException
 	 */
 	public void initializeIndex() throws IOException {
+		log.info("Creating new index for " + mydbname);
 		new IndexWriter(indexpath, analyzer, true).close();
+		openReader();
 	}
 	
 	public ArticleList enumerateArticles() throws SQLException {
