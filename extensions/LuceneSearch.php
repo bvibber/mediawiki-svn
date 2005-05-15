@@ -121,8 +121,14 @@ class LuceneSearch extends SpecialPage
 					$this->namespaces[] = $ns;
 				}
 			}
-			if (count($this->namespaces) == 0)
-				$this->namespaces = array(0);
+			if (count($this->namespaces) == 0) {
+				global $wgNamespacesToBeSearchedDefault;
+				foreach( $wgNamespacesToBeSearchedDefault as $ns => $searchit ) {
+					if( $searchit ) {
+						$this->namespaces[] = $ns;
+					}
+				}
+			}
 		}
 
 		$bits = split("/", $wgRequest->getVal("title"), 2);
