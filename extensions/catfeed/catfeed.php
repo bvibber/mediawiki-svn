@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * CategoryFeed extension for MediaWiki 1.4+
  *
@@ -74,11 +74,14 @@ function setupCatRSSExtension() {
 			
 			$limit = 50;
 			$dbr =& wfGetDB( DB_SLAVE );
+			$set = implode( ',', array_map(
+				array( &$dbr, 'addQuotes' ),
+				$this->mTitleStrings ) );
 			$res = $dbr->select(
 				array( 'cur', 'categorylinks' ),
 				array( 'cur_title', 'cur_namespace', 'cur_text', 'cur_user_text', 'cl_sortkey', 'cl_timestamp' ),
 				array( 'cl_from          =  cur_id',
-				'cl_to IN ("'.implode('","', $this->mTitleStrings).'")',
+				'cl_to IN (' . $set . ')',
 				'cur_is_redirect' => 0),
 				$fname,
 				array( 'ORDER BY' => 'cl_timestamp DESC, cl_sortkey ASC',
@@ -125,8 +128,10 @@ function setupCatRSSExtension() {
 			);
 
 			$text = preg_replace( array_keys($rules), array_values($rules), $text); 
-			$shorttext = substr($text,1,145); # only return the first few chars for now
-			return htmlspecialchars( $shorttext.'...');
+			
+			# only return the first few chars for now
+			$shorttext = $wgContLang->truncate( trim( $text ), 145, '...' );
+			return htmlspecialchars( $shorttext );
 		}
 
 	}
@@ -147,11 +152,13 @@ function setupCatRSSExtension() {
 				$feedTitle,
 				htmlspecialchars( wfMsgForContent( 'catfeedsummary' ) ),
 				$wgTitle->getFullUrl() );
-
-			$timekey = "$wgDBname:catfeed:" . $this->mTitle->getDBKey() . ":$this->mFeedFormat:limit:$limit:timestamp";
-			$key = "$wgDBname:catfeed:" . $this->mTitle->getDBKey() . ":$this->mFeedFormat:limit:$limit";
+			
+			$limit = 50;
+			$pagekey = md5( $this->mTitle->getDBKey() );
+			$timekey = "$wgDBname:catfeed:$pagekey:$this->mFeedFormat:limit:$limit:timestamp";
+			$key = "$wgDBname:catfeed:$pagekey:$this->mFeedFormat:limit:$limit";
 			$cachedFeed = false;
-			$adddeltimestamp = $wgDBname.':Category:'.$wgTitle->getDBkey().':adddeltimestamp';
+			$adddeltimestamp = $wgDBname.':Category:'.$pagekey.':adddeltimestamp';
 			
 			$catLastAddDel = $messageMemc->get( $adddeltimestamp );
 
