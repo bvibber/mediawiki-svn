@@ -1,0 +1,40 @@
+; By default, will check /etc/mwsearch.conf
+
+[mwsearch]
+; Space-separated list of wiki database names:
+databases=frtest rutest entest detest
+
+; Directory to put the Lucene index files into
+indexpath=/usr/local/var/mwsearch/index/{0}
+
+; For title prefix database; not really used yet...
+titledb=/usr/local/var/mwsearch/title/{0}
+
+[mwdaemon]
+port=8123
+verbose=true
+
+[Database]
+;protocol=unix
+;host=/var/run/mysqld/mysqld.sock
+
+protocol=socket
+host=localhost
+port=3306
+
+username=wikiuser
+password=somepassword
+tableprefix=
+version=1.4
+
+latin1=entest
+suffix=test
+
+
+[Logging]
+; Point config to the path of a log4net configuration file
+; If left blank, errors will be logged to the console.
+;config=/home/brion/mwsearch.log4net
+
+; Set debug to true to diagnose problems with log4net configuration
+debug=false
