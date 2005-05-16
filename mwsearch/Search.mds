@@ -17,7 +17,7 @@
       <Entry build="False" name="Tests" />
     </Configuration>
   </Configurations>
-  <StartMode startupentry="Daemon" single="True">
+  <StartMode startupentry="Benchmark" single="True">
     <Execute type="None" entry="Search" />
     <Execute type="None" entry="Updater" />
     <Execute type="Execute" entry="Daemon" />
