@@ -51,6 +51,7 @@ namespace MediaWiki.Search.Daemon {
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 		private static readonly Encoding utf8 = new UTF8Encoding();
 		
+
 		/** A socket for our client. */
 		TcpClient client;
 		/** The search term after urlencoding */
@@ -159,7 +160,7 @@ namespace MediaWiki.Search.Daemon {
 			}
 			what = paths[1];
 			dbname = paths[2];
-			searchterm = paths[3];
+			searchterm = HttpUtility.UrlDecode(paths[3], Encoding.UTF8);
 			
 			log.Info("query:" + bits[1] + " what:"+what+" dbname:"+dbname+" term:"+searchterm);
 			IDictionary query = new QueryStringMap(uri);
