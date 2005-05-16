@@ -127,6 +127,7 @@ namespace MediaWiki.Search.Benchmark {
 			string encterm = HttpUtility.UrlEncode(term, Encoding.UTF8);
 			string req = "http://" + host + ":" + port + "/" + verb + "/" + database + "/" + encterm;
 			WebRequest web = WebRequest.Create(req);
+			web.Timeout = 1000 * 300; // profiling mode on mono is really slow
 			WebResponse response = web.GetResponse();
 			StreamReader reader = new StreamReader(response.GetResponseStream());
 
