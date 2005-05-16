@@ -36,6 +36,7 @@ namespace MediaWiki.Search {
 	using Lucene.Net.Analysis.Standard;
 	using Lucene.Net.Documents;
 	using Lucene.Net.Index;
+	using Lucene.Net.QueryParsers;
 	using Lucene.Net.Search;
 	using Lucene.Net.Store;
 
@@ -333,6 +334,10 @@ namespace MediaWiki.Search {
 			text = Regex.Replace(text, "''", "");
 			text = Regex.Replace(text, "</?[uU]>", "");
 			return text;
+		}
+	
+		public Query Parse(string term) {
+			return QueryParser.Parse(term, "contents", analyzer);
 		}
 	}
 }

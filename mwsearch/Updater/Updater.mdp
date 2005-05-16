@@ -3,7 +3,7 @@
     <Configuration name="Debug" ctype="DotNetProjectConfiguration">
       <Output directory="./bin/Debug" assembly="MWUpdater" />
       <Build debugmode="True" target="Exe" />
-      <Execution runwithwarnings="False" commandlineparameters="--rebuild" consolepause="False" runtime="MsNet" />
+      <Execution runwithwarnings="False" commandlineparameters="--update 19700101000000" consolepause="False" runtime="MsNet" />
       <CodeGeneration compiler="Csc" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
     </Configuration>
     <Configuration name="Release" ctype="DotNetProjectConfiguration">

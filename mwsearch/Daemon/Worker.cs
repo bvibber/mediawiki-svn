@@ -53,8 +53,6 @@ namespace MediaWiki.Search.Daemon {
 		
 		/** A socket for our client. */
 		TcpClient client;
-		/** The unprocessed search term from the client (urlencoded) */
-		string rawsearchterm;
 		/** The search term after urlencoding */
 		string searchterm;
 		/** Client input stream */
@@ -69,6 +67,8 @@ namespace MediaWiki.Search.Daemon {
 		SearchState state;
 		
 		int maxlines = 1000;
+		int maxoffset = 10000;
+		bool headersSent;
 		
 		// lucene special chars: + - && || ! ( ) { } [ ] ^ " ~ * ? : \.
 		static string[] specialChars = {
@@ -93,6 +93,7 @@ namespace MediaWiki.Search.Daemon {
 				client = Daemon.NextClient();
 				using (log4net.NDC.Push("thread" + num)) {
 					log.Debug("Thread " + num + " accepted a client");
+					headersSent = false;
 					try {
 						Handle();
 						log.Debug("request handled.");
@@ -101,6 +102,11 @@ namespace MediaWiki.Search.Daemon {
 					} catch (Exception e) {
 						log.Error(e);
 					} finally {
+						if (!headersSent) {
+							try {
+								SendHeaders(500, "Internal server error");
+							} catch (IOException e) { }
+						}
 						// Make sure the client is closed out.
 						try {  ostrm.Close(); } catch { }
 						try {  istrm.Close(); } catch { }
@@ -113,60 +119,98 @@ namespace MediaWiki.Search.Daemon {
 		private void Handle() {
 			istrm = new StreamReader(client.GetStream());
 			ostrm = new StreamWriter(client.GetStream());
-			/* The protocol format is "database\noperation\nsearchterm"
-			 * Search term is urlencoded.
+			
+			/* Simple HTTP protocol; accepts GET requests only.
+			 * URL path format is /operation/database/searchterm
+			 * The path should be URL-encoded UTF-8 (standard IRI).
+			 * 
+			 * Additional paramters may be specified in a query string:
+			 *   namespaces: comma-separated list of namespace numeric keys to subset results
+			 *   limit: maximum number of results to return
+			 *   offset: number of matches to skip before returning results
+			 * 
+			 * Content-type is text/plain and results are listed.
 			 */
-			dbname = ReadInputLine();
-			state = SearchState.ForWiki(dbname);
-			if (state == null) {
-				/*
-				istrm.Close();
-				ostrm.Flush();
-				ostrm.Close();
-				client.Close();
-				*/
-				// ?????
-				log.Error("What the hell? Null searchstate");
-				--Daemon.numthreads;
+			string request = ReadInputLine();
+			if (!request.StartsWith("GET ")) {
+				SendOutputLine("HTTP/1.x 400 Error");
+				log.Warn("Bad request: " + request);
 				return;
 			}
-			what = ReadInputLine();
-			log.Debug("Request type: " + what);
+			// Ignore any remaining headers...
+			for (string headerline = ReadInputLine(); !headerline.Equals("");)
+				headerline = ReadInputLine();
 			
-			rawsearchterm = ReadInputLine();
-			searchterm = HttpUtility.UrlDecode(rawsearchterm, utf8);
-			log.Debug("Search term: " + rawsearchterm);
-			
-			if (what.Equals("TITLEMATCH")) {
-				DoTitleMatches();
-			} else if (what.Equals("TITLEPREFIX")) {
-				DoTitlePrefix();
-			} else if (what.Equals("SEARCH")) {
-				DoNormalSearch();
-			} else {
-				log.ErrorFormat("Unknown request type [{1}]; ignoring.", rawsearchterm);
+			string[] bits = request.Split(' ');
+			Uri uri = null;
+			try {
+				uri = new Uri(bits[1]);
+			} catch (UriFormatException e) {
+				SendHeaders(400, "Bad request");
+				log.Warn("Bad URI in request: " + bits[1]);
+				return;
 			}
 			
+			string[] paths = uri.AbsolutePath.Split( new char[] { '/' }, 4);
+			if (paths.Length != 4) {
+				SendHeaders(404, "Not found");
+				log.Warn("Unknown request " + uri.AbsolutePath);
+				return;
+			}
+			what = paths[1];
+			dbname = paths[2];
+			searchterm = paths[3];
+			
+			log.Info("query:" + bits[1] + " what:"+what+" dbname:"+dbname+" term:"+searchterm);
+			IDictionary query = new QueryStringMap(uri);
+			
+			state = SearchState.ForWiki(dbname);
+
+			if (what.Equals("titlematch")) {
+				DoTitleMatches();
+			} else if (what.Equals("titleprefix")) {
+				DoTitlePrefix();
+			} else if (what.Equals("search")) {
+				int startAt = 0, endAt = 100;
+				if (query.Contains("offset"))
+					startAt = Math.Max(Int32.Parse((string)query["offset"]), 0);
+				if (query.Contains("limit"))
+					endAt = Math.Min(Int32.Parse((string)query["limit"]), maxlines);
+				NamespaceFilter namespaces = new NamespaceFilter((string)query["namespaces"]);
+				DoNormalSearch(startAt, endAt, namespaces);
+			} else if (what.Equals("quit")) {
+				// TEMP HACK for profiling
+				System.Environment.Exit(0);
+			} else {
+				SendHeaders(404, "Search type not found");
+				log.Warn("Unknown request type [" + what + "]; ignoring.");
+			}
 		}
 		
-		private void DoNormalSearch() {
+		private void SendHeaders(int code, string message) {
+			SendOutputLine("HTTP/1.1 " + code + " " + message);
+			SendOutputLine("Content-Type: text/plain");
+			SendOutputLine("");
+			headersSent = true;
+		}
+		
+		private void DoNormalSearch(int offset, int limit, NamespaceFilter namespaces) {
 			string encsearchterm = "title:(" + searchterm + ")^4 " + searchterm;
 			
+			DateTime now = DateTime.UtcNow;
 			Query query;
 			/* If we fail to parse the query, it's probably due to illegal
 			 * use of metacharacters, so we escape them all and try again.
 			 */
 			try {
-				//query = state.Parser.Parse(encsearchterm);
-				query = QueryParser.Parse(encsearchterm, "contents", new EnglishAnalyzer());
+				query = state.Parse(encsearchterm);
 			} catch (Exception e) {
 				string escaped = "";
 				for (int i = 0; i < searchterm.Length; ++i)
 					escaped += "\\" + searchterm[i];
 				encsearchterm = "title:(" + escaped + ")^4 " + escaped;
 				try {
-					//query = state.Parser.Parse(encsearchterm); 
-					query = QueryParser.Parse(encsearchterm, "contents", new EnglishAnalyzer());
+					query = state.Parse(encsearchterm); 
 				} catch (Exception e2) {
 					log.Error("Problem parsing search term: " + e2.Message + "\n" + e2.StackTrace);
 					return;
@@ -181,23 +225,41 @@ namespace MediaWiki.Search.Daemon {
 				return;
 			}
 			
+			SendHeaders(200, "OK");
+						
 			int numhits = hits.Length();
-			log.InfoFormat("SEARCH {0}: query=[{1}] parsed=[{2}] hit=[{3}]",
-				dbname, searchterm, query.ToString(), numhits);
+			TimeSpan delta = DateTime.UtcNow - now;
+			LogRequest(searchterm, query, numhits, delta);
 			
 			SendOutputLine(numhits + "");
 			
-			for (int i = 0; i < numhits && i < maxlines; i++) {
-				Document doc = hits.Doc(i);
-				float score = hits.Score(i);
-				string pageNamespace = doc.Get("namespace");
-				string title = doc.Get("title");
-				SendTitleLine(score, pageNamespace, title);
-			}
 			if (numhits == 0) {
-				string spelfix = MakeSpelFix(rawsearchterm);
+				string spelfix = MakeSpelFix(searchterm);
 				SendOutputLine(HttpUtility.UrlEncode(spelfix, utf8));
+			} else {
+				// Lucene's filters seem to want to run over the entire
+				// document set, which is really slow. We'll do namespace
+				// checks as we go along, and stop once we've seen enough.
+				//
+				// The good side is that we can return the first N documents
+				// pretty quickly. The bad side is that the total hits
+				// number we return is bogus: it's for all namespaces combined.
+				int matches = 0;
+				for (int i = 0; i < numhits && i < maxoffset; i++) {
+					Document doc = hits.Doc(i);
+					string pageNamespace = doc.Get("namespace");
+					if (namespaces.filter(pageNamespace)) {
+						if (matches++ < offset)
+							continue;
+						string title = doc.Get("title");
+						float score = hits.Score(i);
+						SendResultLine(score, pageNamespace, title);
+						if (matches >= (limit + offset))
+							break;
+					}
+				}
 			}
+
 		}
 		
 		void DoTitleMatches() {
@@ -210,20 +272,22 @@ namespace MediaWiki.Search.Daemon {
 				}
 				searchterm = "title:(" + term + ")";
 				
-				//Query query = state.Parser.Parse(searchterm);
-				Query query = QueryParser.Parse(searchterm, "contents", new EnglishAnalyzer());
+				DateTime now = DateTime.UtcNow;
+				Query query = state.Parse(searchterm);
 				Hits hits = state.Searcher.Search(query);
+				
 				int numhits = hits.Length();
-				log.InfoFormat("TITLEMATCH {0}: query=[{1}] parsed=[{2}] hit=[{3}]",
-					dbname, searchterm, query.ToString(), numhits);
+				TimeSpan delta = DateTime.UtcNow - now;
+				LogRequest(searchterm, query, numhits, delta);
+				
+				SendHeaders(200, "OK");
 				for (int i = 0; i < numhits && i < 10; i++) {
 					Document doc = hits.Doc(i);
 					float score = hits.Score(i);
 					string pageNamespace = doc.Get("namespace");
 					string title = doc.Get("title");
-					SendTitleLine(score, pageNamespace, title);
+					SendResultLine(score, pageNamespace, title);
 				}
-				ostrm.Flush();
 			} catch (Exception e) {
 				log.Error(e.Message + e.StackTrace);
 			}
@@ -233,12 +297,13 @@ namespace MediaWiki.Search.Daemon {
 			if (searchterm.Length < 1)
 				return;
 			PrefixMatcher matcher = PrefixMatcher.ForWiki(dbname);
+			SendHeaders(200, "OK");
 			foreach (Article match in matcher.GetMatches(searchterm)) {
-				SendTitleLine(0.0f, match.Namespace, match.Title);
+				SendResultLine(0.0f, match.Namespace, match.Title);
 			}
 		}
 		
-		string MakeSpelFix(String query) {
+		string MakeSpelFix(string query) {
 			try {
 				bool anysuggest = false;
 				string[] terms = Regex.Split(query, " +");
@@ -317,15 +382,28 @@ namespace MediaWiki.Search.Daemon {
 	        ostrm.WriteLine(sout);
 		}
 	 	
-	 	private void SendTitleLine(float score, string pageNamespace, string title) {
-			SendOutputLine(score + " " + pageNamespace + " " +
-				HttpUtility.UrlEncode(title.Replace(" ", "_"), utf8));
-	 	}
-	 	   
 	    private string ReadInputLine() {
 			string sin = istrm.ReadLine();
 			log.Debug("<<<" + sin);
 			return sin;
 	    }
+	
+		void LogRequest(String searchterm, Query query, int numhits, TimeSpan delta) {
+			log.InfoFormat("{0} {1}: query=[{2}] parsed=[{3}] hit=[{4}] in {5}ms",
+				what, dbname, searchterm, query.ToString(), numhits, delta.Milliseconds);
+		}
+		
+		/**
+		 * @param score
+		 * @param namespace
+		 * @param title
+		 * @throws IOException
+		 * @throws UnsupportedEncodingException
+		 */
+		private void SendResultLine(float score, string pageNamespace, string title) {
+			SendOutputLine(score + " " + pageNamespace + " " +
+				HttpUtility.UrlEncode(title.Replace(" ", "_"), Encoding.UTF8));
+		}
+
 	}
 }
