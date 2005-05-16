@@ -13,10 +13,17 @@ LIBS=\
   libs/MySql.Data.dll \
   libs/Nini.dll
 
-ASSEMBLIES=build/MWSearch.dll build/MWPrefix.dll build/MWDaemon.exe build/MWUpdater.exe
-SCRIPTS=build/MWDaemon.sh build/MWUpdater.sh
+ASSEMBLIES=\
+  build/MWSearch.dll \
+  build/MWPrefix.dll \
+  build/MWDaemon.exe \
+  build/MWUpdater.exe \
+  build/MWBenchmark.exe
 
-
+SCRIPTS=\
+  build/MWDaemon.sh \
+  build/MWUpdater.sh \
+  build/MWBenchmark.sh
 
 
 all: $(ASSEMBLIES) $(SCRIPTS)
@@ -30,16 +37,36 @@ install: all
 	install -d $(INSTALL_ASSEMBLYDIR)
 	install $(ASSEMBLIES) $(INSTALL_ASSEMBLYDIR)
 	install $(LIBS) $(INSTALL_ASSEMBLYDIR)
+	install -m 0755 build/MWDaemon.sh $(INSTALL_BINDIR)/MWBenchmark
 	install -m 0755 build/MWDaemon.sh $(INSTALL_BINDIR)/MWDaemon
 	install -m 0755 build/MWUpdater.sh $(INSTALL_BINDIR)/MWUpdater
 	echo "Don't forget to set up /etc/mwsearch.conf"
 
 uninstall :
+	rm -f $(INSTALL_BINDIR)/MWBenchmark
 	rm -f $(INSTALL_BINDIR)/MWDaemon
 	rm -f $(INSTALL_BINDIR)/MWUpdater
 	rm -f $(INSTALL_ASSEMBLYDIR)/*.dll
 	rm -f $(INSTALL_ASSEMBLYDIR)/*.exe
 	rmdir $(INSTALL_ASSEMBLYDIR) || true
+
+
+# MWBenchmark.exe: quickie search benchmark tool
+# Not reliant on any of the other code.
+BENCHMARK_SOURCES=\
+  Benchmark/AssemblyInfo.cs \
+  Benchmark/Benchmark.cs \
+  Benchmark/SampleTerms.cs
+
+build/MWBenchmark.exe : $(BENCHMARK_SOURCES)
+	mcs -target:exe -out:build/MWBenchmark.exe \
+	    $(CSFLAGS) \
+	    -r:System.Web \
+        $(BENCHMARK_SOURCES)
+
+build/MWBenchmark.sh :
+	echo "#!/bin/sh" > build/MWBenchmark.sh
+	echo "mono $(INSTALL_ASSEMBLYDIR)/MWBenchmark.exe \$$@" >> build/MWBenchmark.sh
 
 
 # MWSearch.dll: core code
