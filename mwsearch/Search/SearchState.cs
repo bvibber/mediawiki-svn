@@ -114,6 +114,7 @@ namespace MediaWiki.Search {
 			
 			log.Debug(dbname + ": opening state");
 			analyzer = GetAnalyzerForLanguage(config.GetLanguage(dbname));
+			log.Info(dbname + " using analyzer " + analyzer.GetType().FullName);
 			try {
 				OpenReader();
 			} catch (IOException e) {
@@ -228,7 +229,9 @@ namespace MediaWiki.Search {
 		 * @throws IOException
 		 */
 		public void initializeIndex() {
+			log.Info("Creating new index for " + mydbname);
 			new IndexWriter(indexpath, analyzer, true).Close();
+			OpenReader();
 		}
 		
 		public void AddArticle(Article article) {
