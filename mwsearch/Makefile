@@ -7,11 +7,11 @@ INSTALL_ASSEMBLYDIR=$(INSTALL_PREFIX)/lib/mwsearch
 CFLAGS=-codepage:utf8
 
 LIBS=\
-  libs/ICSharpCode.SharpZipLib.dll \
-  libs/log4net.dll \
-  libs/Lucene.Net.dll \
-  libs/MySql.Data.dll \
-  libs/Nini.dll
+  build/ICSharpCode.SharpZipLib.dll \
+  build/log4net.dll \
+  build/Lucene.Net.dll \
+  build/MySql.Data.dll \
+  build/Nini.dll
 
 ASSEMBLIES=\
   build/MWSearch.dll \
@@ -80,11 +80,16 @@ SEARCH_SOURCES=\
 
 # External libraries used by the core
 SEARCH_REFERENCES=\
-  -r:libs/log4net.dll \
-  -r:libs/Lucene.Net.dll \
-  -r:libs/Nini.dll
+  -r:build/log4net.dll \
+  -r:build/Lucene.Net.dll \
+  -r:build/Nini.dll
 
-build/MWSearch.dll : $(SEARCH_SOURCES)
+SEARCH_LIBS=\
+  build/log4net.dll \
+  build/Lucene.Net.dll \
+  build/Nini.dll
+
+build/MWSearch.dll : $(SEARCH_SOURCES) $(SEARCH_LIBS)
 	mcs -target:library -out:build/MWSearch.dll \
 	    $(CSFLAGS) \
         $(SEARCH_REFERENCES) \
@@ -93,7 +98,7 @@ build/MWSearch.dll : $(SEARCH_SOURCES)
 
 # MWPrefix.dll: title prefix matcher. UNFINISHED.
 PREFIX_SOURCES=Prefix/PrefixMatcher.cs
-build/MWPrefix.dll : $(PREFIX_SOURCES)
+build/MWPrefix.dll : $(PREFIX_SOURCES) build/MWSearch.dll
 	mcs -target:library -out:build/MWPrefix.dll \
 	    $(CSFLAGS) \
 	    -r:build/MWSearch.dll \
@@ -131,15 +136,40 @@ UPDATER_SOURCES=\
   Updater/DatabaseConnection.cs \
   Updater/Updater.cs
 
-build/MWUpdater.exe : build/MWSearch.dll build/MWPrefix.dll $(UPDATER_SOURCES)
+UPDATER_LIBS=\
+  build/MWSearch.dll \
+  build/MWPrefix.dll \
+  build/MySql.Data.dll \
+  build/ICSharpCode.SharpZipLib.dll
+
+UPDATER_REFERENCES=\
+  -r:build/MWSearch.dll \
+  -r:build/MWPrefix.dll \
+  -r:build/MySql.Data.dll \
+  -r:System.Data \
+  $(SEARCH_REFERENCES)
+
+build/MWUpdater.exe : $(UPDATER_LIBS) $(UPDATER_SOURCES)
 	mcs -target:exe -out:build/MWUpdater.exe \
 	    $(CSFLAGS) \
-	    -r:build/MWSearch.dll -r:build/MWPrefix.dll \
-	    $(SEARCH_REFERENCES) \
-	    -r:System.Data \
-        -r:libs/MySql.Data.dll \
+	    $(UPDATER_REFERENCES) \
         $(UPDATER_SOURCES)
 
 build/MWUpdater.sh :
 	echo "#!/bin/sh" > build/MWUpdater.sh
 	echo "mono $(INSTALL_ASSEMBLYDIR)/MWUpdater.exe \$$@" >> build/MWUpdater.sh
+
+build/ICSharpCode.SharpZipLib.dll: libs/ICSharpCode.SharpZipLib.dll
+	cp -p libs/ICSharpCode.SharpZipLib.dll build/
+
+build/log4net.dll: libs/log4net.dll
+	cp -p libs/log4net.dll build/
+
+build/Lucene.Net.dll: libs/Lucene.Net.dll
+	cp -p libs/Lucene.Net.dll build/
+
+build/MySql.Data.dll: libs/MySql.Data.dll
+	cp -p libs/MySql.Data.dll build/
+
+build/Nini.dll: libs/Nini.dll
+	cp -p libs/Nini.dll build/
