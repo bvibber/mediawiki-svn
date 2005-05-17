@@ -226,7 +226,7 @@ function setupCatRSSExtension() {
 					$oldtitle = $row->cur_title;
 					$title = Title::makeTitle( $row->cur_namespace, $row->cur_title );
 					$ts = $row->cl_timestamp;
-					$newdate = $wgLang->timeanddate( wfTimestamp( TS_MW, $ts ) );
+					$newdate = $wgLang->date( wfTimestamp( TS_MW, $ts ) );
 					if( $date != $newdate ) {
 						$date = $newdate;
 						$list .= "$closedl\n<h2> ".$date." </h2>\n<dl>";
