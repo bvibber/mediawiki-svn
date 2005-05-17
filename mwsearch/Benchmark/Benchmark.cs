@@ -43,6 +43,7 @@ namespace MediaWiki.Search.Benchmark {
 			string verb = "search";
 			int runs = 20;
 			int threads = 1;
+			ITermSet termset = new SampleTerms();
 			
 			for(int i = 0; i < args.Length; i++) {
 				if (args[i].Equals("--host")) {
@@ -57,10 +58,12 @@ namespace MediaWiki.Search.Benchmark {
 					runs = int.Parse(args[++i]);
 				} else if (args[i].Equals("--verb")) {
 					verb = args[++i];
+				} else if (args[i].Equals("--terms")) {
+					termset = new FileTermSet(args[++i]);
 				}
 			}
 			
-			Benchmark bench = new Benchmark(host, port, database, verb);
+			Benchmark bench = new Benchmark(host, port, database, verb, termset);
 			bench.RunSets(runs, threads);
 			bench.Report();
 		}
@@ -70,6 +73,7 @@ namespace MediaWiki.Search.Benchmark {
 		private string database;
 		private string verb;
 		private int runs;
+		private ITermSet termset;
 		
 		/* Access these only in lock(times){} */
 		private ArrayList times;
@@ -81,12 +85,13 @@ namespace MediaWiki.Search.Benchmark {
 		private int runningThreads = 0;
 		private readonly object threadlock = new object();
 		
-		private Benchmark(string host, ushort port, string database, string verb) {
+		private Benchmark(string host, ushort port, string database, string verb, ITermSet termset) {
 			this.host = host;
 			this.port = port;
 			this.database = database;
 			this.verb = verb;
 			this.times = new ArrayList();
+			this.termset = termset;
 		}
 		
 		private void RunSets(int runs, int threads) {
@@ -111,7 +116,7 @@ namespace MediaWiki.Search.Benchmark {
 			Console.Out.Flush();
 			try {
 				for (int i = 0; i < runs; i++) {
-					Search(SampleTerms.Next);
+					Search(termset.Next);
 				}
 			} finally {
 				lock (threadlock) {
@@ -126,29 +131,35 @@ namespace MediaWiki.Search.Benchmark {
 			
 			string encterm = HttpUtility.UrlEncode(term, Encoding.UTF8);
 			string req = "http://" + host + ":" + port + "/" + verb + "/" + database + "/" + encterm;
-			WebRequest web = WebRequest.Create(req);
-			web.Timeout = 1000 * 300; // profiling mode on mono is really slow
-			WebResponse response = web.GetResponse();
-			StreamReader reader = new StreamReader(response.GetResponseStream());
-
-			string numResults = reader.ReadLine();
-			string remainder = reader.ReadToEnd();
-			reader.Close();
-			response.Close();
 			
-			string[] lines = remainder.Split('\n'); // last is empty, as \n is terminator
-			int numReceived = lines.Length - 1;
-			
-			TimeSpan delta = DateTime.UtcNow - start;
-			Console.WriteLine("[{0}] '{1}' received {2} of {3} lines ({4} chars) in {5}.",
-				Thread.CurrentThread.GetHashCode(),
-				encterm, numReceived, numResults, remainder.Length, delta);
-			
-			lock(times) {
-				times.Add(delta);
-				totalTime += delta;
-				totalResults += numReceived;
-				++totalRequests;
+			try {
+				WebRequest web = WebRequest.Create(req);
+				web.Timeout = 1000 * 300; // profiling mode on mono is really slow
+				WebResponse response = web.GetResponse();
+				StreamReader reader = new StreamReader(response.GetResponseStream());
+	
+				string numResults = reader.ReadLine();
+				string remainder = reader.ReadToEnd();
+				reader.Close();
+				response.Close();
+				
+				string[] lines = remainder.Split('\n'); // last is empty, as \n is terminator
+				int numReceived = lines.Length - 1;
+				
+				TimeSpan delta = DateTime.UtcNow - start;
+				Console.WriteLine("[{0}] '{1}' received {2} of {3} lines ({4} chars) in {5}.",
+					Thread.CurrentThread.GetHashCode(),
+					encterm, numReceived, numResults, remainder.Length, delta);
+				lock(times) {
+					times.Add(delta);
+					totalTime += delta;
+					totalResults += numReceived;
+					++totalRequests;
+				}
+			} catch (Exception e) {
+				Console.WriteLine("[{0}] '{1}' exploded: {2}",
+					Thread.CurrentThread.GetHashCode(),
+					encterm, e.ToString());
 			}
 		}
 		

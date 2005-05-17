@@ -1,7 +1,16 @@
 // created on 4/8/2005 at 5:22 PM
 
+using System;
+using System.IO;
+
 namespace MediaWiki.Search.Benchmark {
-	class SampleTerms {
+	interface ITermSet {
+		string Next {
+			get;
+		}
+	}
+	
+	class SampleTerms : ITermSet {
 		private static string[] terms = {
 			"1406",
 			"new york",
@@ -952,11 +961,12 @@ namespace MediaWiki.Search.Benchmark {
 			"volcom",
 			"Charlotte ross"
 		};
-		private static int position = 0;
+		private int position = 0;
+		private readonly object locker = new object();
 		
-		public static string Next {
+		public string Next {
 			get {
-				lock(terms) {
+				lock(locker) {
 					string next = terms[position];
 					if (++position >= terms.Length)
 						position = 0;
@@ -965,4 +975,28 @@ namespace MediaWiki.Search.Benchmark {
 			}
 		}
 	}
+
+	class FileTermSet : ITermSet {
+		string filename;
+		TextReader reader;
+		
+		public FileTermSet(string filename) {
+			this.filename = filename;
+			reader = File.OpenText(filename);
+		}
+		
+		public string Next {
+			get {
+				lock(reader) {
+					string next = reader.ReadLine();
+					if (next == null) {
+						reader.Close();
+						reader = File.OpenText(filename);
+					}
+					return next;
+				}
+			}
+		}
+	}
+
 }
