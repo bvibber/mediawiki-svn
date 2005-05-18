@@ -47,34 +47,22 @@ namespace MediaWiki.Search.Daemon {
 		
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 		
-		private static Queue openConnections;
-		
 		public static void Main(string[] args) {
 			Console.WriteLine(
 					"MediaWiki Lucene search indexer - runtime search daemon.\n" +
-					"Version 20050103, copyright 2004 Kate Turner.\n"
+					"Version 20050517, copyright 2004 Kate Turner.\n"
 					);
-			/*
 			int i = 0;
-			while (i < args.length - 1) {
-				if (args[i].equals("-port"))
-					port = Integer.valueOf(args[++i]).intValue();
-				else if (args[i].equals("-configfile"))
-					Configuration.setConfigFile(args[++i]);
-				else if (args[i].equals("-mwversion")) {
-					String vers = args[++i];
-					if (vers.equals("old"))
-						mw_version = MW_OLD;
-					else if (vers.equals("new"))
-						mw_version = MW_NEW;
-					else {
-						System.err.println("Unknown MediaWiki version " + vers);
-						return;
-					}
-				} else break;
+			while (i < args.Length - 1) {
+				if (args[i].Equals("--port")) {
+					port = Int32.Parse(args[++i]);
+				} else if (args[i].Equals("--configfile")) {
+					Configuration.SetConfigFile(args[++i]);
+				} else {
+					break;
+				}
 				++i;
 			}
-			*/
 			config = Configuration.Open();
 			
 			indexPath = config.GetString("mwsearch", "indexpath");
@@ -88,25 +76,12 @@ namespace MediaWiki.Search.Daemon {
 			}
 			sock.Start();
 			
+			/*
 			log.Debug("Blah blah debug");
 			log.Info("Blah blah info");
 			log.Error("Blah blah error");
 			log.Fatal("Blah blah fatal");
-			
-			Queue xxx = new Queue();
-			openConnections = Queue.Synchronized(xxx);
-			
-			// start some worker threads
-			int maxThreads = 25;
-			IList threads = new ArrayList();
-			for (int i = 0; i < maxThreads; i++) {
-				log.Debug("Starting worker thread #" + i);
-				Worker worker = new Worker(i);
-				ThreadStart start = new ThreadStart(worker.Run);
-				Thread thread = new Thread(start);
-				threads.Add(thread);
-				thread.Start();
-			}
+			*/
 			
 			// go!
 			for (;;) {
@@ -118,21 +93,10 @@ namespace MediaWiki.Search.Daemon {
 					log.Error("accept() error: " + e.Message);
 					continue;
 				}
-				lock (openConnections) {
-					log.Debug("Queueing connection...");
-					openConnections.Enqueue(client);
-					Monitor.Pulse(openConnections);
-				}
+				Worker worker = new Worker(client.GetStream());
+				ThreadPool.QueueUserWorkItem(worker.Run);
 			}
 
-		}
-		
-		public static TcpClient NextClient() {
-			lock (openConnections) {
-				Monitor.Wait(openConnections);
-				TcpClient client = (TcpClient)openConnections.Dequeue();
-				return client;
-			}
 		}
 	}
 }

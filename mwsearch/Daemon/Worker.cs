@@ -52,8 +52,6 @@ namespace MediaWiki.Search.Daemon {
 		private static readonly Encoding utf8 = new UTF8Encoding();
 		
 
-		/** A socket for our client. */
-		TcpClient client;
 		/** The search term after urlencoding */
 		string searchterm;
 		/** Client input stream */
@@ -72,55 +70,46 @@ namespace MediaWiki.Search.Daemon {
 		bool headersSent;
 		
 		// lucene special chars: + - && || ! ( ) { } [ ] ^ " ~ * ? : \.
+		/*
 		static string[] specialChars = {
 				"\\+", "-", "&&", "\\|\\|", "!", "\\(", "\\)", "\\{", "\\}", "\\[", "\\]",
 				"\\^", "\"", "~", "\\*", "\\?", ":", "\\\\"
 				//"\\(", "\\)"
 		};
+		*/
 
-		public Worker(TcpClient newclient) {
-			this.client = newclient;
+		public Worker(Stream stream) {
+			istrm = new StreamReader(stream);
+			ostrm = new StreamWriter(stream);
 		}
-		public Worker(int i) {
-			num = i;
+		
+		public void Run(object par) {
+			Run();
 		}
-		int num;
 		
 		public void Run() {
-			Console.WriteLine("wtf" + num);
-			log.Info("starting handler #" + num);
 			//using (log4net.NDC.Push(client.Client.RemoteEndPoint)) {
-			for (;;) {
-				client = Daemon.NextClient();
-				using (log4net.NDC.Push("thread" + num)) {
-					log.Debug("Thread " + num + " accepted a client");
-					headersSent = false;
+			headersSent = false;
+			try {
+				Handle();
+				log.Debug("request handled.");
+			} catch (IOException e) {
+				log.Error("net error: " + e.Message);
+			} catch (Exception e) {
+				log.Error(e);
+			} finally {
+				if (!headersSent) {
 					try {
-						Handle();
-						log.Debug("request handled.");
-					} catch (IOException e) {
-						log.Error("net error: " + e.Message);
-					} catch (Exception e) {
-						log.Error(e);
-					} finally {
-						if (!headersSent) {
-							try {
-								SendHeaders(500, "Internal server error");
-							} catch (IOException e) { }
-						}
-						// Make sure the client is closed out.
-						try {  ostrm.Close(); } catch { }
-						try {  istrm.Close(); } catch { }
-						try { client.Close(); } catch { }
-					}
+						SendHeaders(500, "Internal server error");
+					} catch (IOException e) { }
 				}
+				// Make sure the client is closed out.
+				try {  ostrm.Close(); } catch { }
+				try {  istrm.Close(); } catch { }
 			}
 		}
 		
 		private void Handle() {
-			istrm = new StreamReader(client.GetStream());
-			ostrm = new StreamWriter(client.GetStream());
-			
 			/* Simple HTTP protocol; accepts GET requests only.
 			 * URL path format is /operation/database/searchterm
 			 * The path should be URL-encoded UTF-8 (standard IRI).
