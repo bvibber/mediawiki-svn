@@ -39,6 +39,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 # Need shared code...
 require_once( 'OAIRepo.php' );
+require_once( 'maintenance/refreshLinks.inc' );
 
 global $oaiSourceRepository;
 global $oaiAgentExtra;
@@ -386,19 +387,43 @@ class OAIUpdateRecord {
 				$fname );
 		}
 		$dbw->commit();
+		
+		fixLinksFromArticle( $id );
+		
 		return true;
 	}
 	
 	function doDelete() {
+		$fname = 'OAIUpdateRecord::doDelete';
 		$id = $this->getArticleId();
 		
 		echo "DELETING\n";
 		
+		/*
 		$dbw =& wfGetDB( DB_WRITE );
 		$dbw->begin();
 		$dbw->delete( 'cur', array( 'cur_id' => $id ), $fname );
 		$dbw->commit();
-		
+		*/
+		$dbw =& wfGetDB( DB_WRITE );
+		$dbw->begin();
+		$title = Title::newFromId( $id );
+		if( is_null( $title ) ) {
+			$dbw->commit();
+			return new OAIError( "Failed to delete article id $id" );
+		} else {
+			$article = new Article( $title );
+			$article->doDeleteArticle( '(deleted via OAI updater)' );
+			
+			global $wgDeferredUpdateList, $wgPostCommitUpdateList;
+			while( $up = array_shift( $wgDeferredUpdateList ) ) {
+				$up->doUpdate();
+			}
+			$dbw->commit();
+			while( $up = array_shift( $wgPostCommitUpdateList ) ) {
+				$up->doUpdate();
+			}
+		}
 		return true;
 	}
 	
