@@ -1,0 +1,562 @@
+Fixes for Lucene.Net:
+* make GermanAnalyzer work
+* Makefile for Mono's MCS compiler (but it's buggy... build with CSC for now)
+* Work around some (but not all) MCS compiler bugs
+* backport http://svn.apache.org/viewcvs.cgi?rev=150581&view=rev
+
+
+diff -urwN Lucene.Net-1.4.3.final-002/Lucene.Net/Analysis/DE/GermanAnalyzer.cs Lucene.Net-work/Lucene.Net/Analysis/DE/GermanAnalyzer.cs
+--- Lucene.Net-1.4.3.final-002/Lucene.Net/Analysis/DE/GermanAnalyzer.cs	2004-11-02 12:50:46.000000000 -0800
++++ Lucene.Net-work/Lucene.Net/Analysis/DE/GermanAnalyzer.cs	2005-05-14 02:03:56.000000000 -0700
+@@ -43,8 +43,8 @@
+                 "das", "dass", "daß", "du", "er", "sie", "es", "was", "wer", 
+                 "wie", "wir", "und", "oder", "ohne", "mit", "am", "im", "in", 
+                 "aus", "auf", "ist", "sein", "war", "wird", "ihr", "ihre", 
+-                "ihres", "als", "für", "von", "mit", "dich", "dir", "mich", 
+-                "mir", "mein", "sein", "kein", "durch", "wegen", "wird"
++                "ihres", "als", "für", "von", "dich", "dir", "mich", 
++                "mir", "mein", "kein", "durch", "wegen"
+             };
+ 		
+ 		/// <summary> Contains the stopwords used with the StopFilter.</summary>
+
+diff -urwN Lucene.Net-1.4.3.final-002/Lucene.Net/Analysis/DE/GermanStemmer.cs Lucene.Net-work/Lucene.Net/Analysis/DE/GermanStemmer.cs
+--- Lucene.Net-1.4.3.final-002/Lucene.Net/Analysis/DE/GermanStemmer.cs	2004-11-24 20:18:50.000000000 -0800
++++ Lucene.Net-work/Lucene.Net/Analysis/DE/GermanStemmer.cs	2005-05-14 02:04:03.000000000 -0700
+@@ -85,17 +85,17 @@
+ 			bool doMore = true;
+ 			while (doMore && buffer.Length > 3)
+ 			{
+-				if ((buffer.Length + substCount > 5) && buffer.ToString(buffer.Length - 2, buffer.Length).Equals("nd"))
++				if ((buffer.Length + substCount > 5) && buffer.ToString(buffer.Length - 2, 2).Equals("nd"))
+ 				{
+-					buffer.Remove(buffer.Length - 2, buffer.Length - (buffer.Length - 2));
++					buffer.Remove(buffer.Length - 2, 2);
+ 				}
+-				else if ((buffer.Length + substCount > 4) && buffer.ToString(buffer.Length - 2, buffer.Length).Equals("em"))
++				else if ((buffer.Length + substCount > 4) && buffer.ToString(buffer.Length - 2, 2).Equals("em"))
+ 				{
+-					buffer.Remove(buffer.Length - 2, buffer.Length - (buffer.Length - 2));
++					buffer.Remove(buffer.Length - 2, 2);
+ 				}
+-				else if ((buffer.Length + substCount > 4) && buffer.ToString(buffer.Length - 2, buffer.Length).Equals("er"))
++				else if ((buffer.Length + substCount > 4) && buffer.ToString(buffer.Length - 2, 2).Equals("er"))
+ 				{
+-					buffer.Remove(buffer.Length - 2, buffer.Length - (buffer.Length - 2));
++					buffer.Remove(buffer.Length - 2, 2);
+ 				}
+ 				else if (buffer[buffer.Length - 1] == 'e')
+ 				{
+@@ -127,7 +127,7 @@
+ 		private void  Optimize(System.Text.StringBuilder buffer)
+ 		{
+ 			// Additional step for female plurals of professions and inhabitants.
+-			if (buffer.Length > 5 && buffer.ToString(buffer.Length - 5, buffer.Length).Equals("erin*"))
++			if (buffer.Length > 5 && buffer.ToString(buffer.Length - 5, 5).Equals("erin*"))
+ 			{
+ 				buffer.Remove(buffer.Length - 1, 1);
+ 				Strip(buffer);
+@@ -146,9 +146,9 @@
+ 			{
+ 				for (int c = 0; c < buffer.Length - 3; c++)
+ 				{
+-					if (buffer.ToString(c, c + 4).Equals("gege"))
++					if (buffer.ToString(c, 4).Equals("gege"))
+ 					{
+-						buffer.Remove(c, c + 2 - c);
++						buffer.Remove(c, 2);
+ 						return ;
+ 					}
+ 				}
+@@ -204,7 +204,7 @@
+ 					else if ((c < buffer.Length - 2) && buffer[c] == 's' && buffer[c + 1] == 'c' && buffer[c + 2] == 'h')
+ 					{
+ 						buffer[c] = '$';
+-						buffer.Remove(c + 1, c + 3 - (c + 1));
++						buffer.Remove(c + 1, 2);
+ 						substCount = + 2;
+ 					}
+ 					else if (buffer[c] == 'c' && buffer[c + 1] == 'h')
+diff -urwN Lucene.Net-1.4.3.final-002/Lucene.Net/Analysis/Standard/StandardTokenizer.cs Lucene.Net-work/Lucene.Net/Analysis/Standard/StandardTokenizer.cs
+--- Lucene.Net-1.4.3.final-002/Lucene.Net/Analysis/Standard/StandardTokenizer.cs	2004-12-27 17:15:00.000000000 -0800
++++ Lucene.Net-work/Lucene.Net/Analysis/Standard/StandardTokenizer.cs	2005-05-16 16:13:02.000000000 -0700
+@@ -157,8 +157,8 @@
+ 		
+ 		private Token Jj_consume_token(int kind)
+ 		{
+-			Token oldToken;
+-			if ((oldToken = token).next != null)
++			Token oldToken = token;
++			if (oldToken.next != null)
+ 				token = token.next;
+ 			else
+ 				token = token.next = token_source.GetNextToken();
+diff -urwN Lucene.Net-1.4.3.final-002/Lucene.Net/Index/SegmentTermEnum.cs Lucene.Net-work/Lucene.Net/Index/SegmentTermEnum.cs
+--- Lucene.Net-1.4.3.final-002/Lucene.Net/Index/SegmentTermEnum.cs	2004-11-02 13:03:18.000000000 -0800
++++ Lucene.Net-work/Lucene.Net/Index/SegmentTermEnum.cs	2005-05-16 17:47:30.000000000 -0700
+@@ -25,7 +25,10 @@
+ 		internal long size;
+ 		internal long position = - 1;
+ 		
+-		private Term term = new Term("", "");
++		private TermBuffer termBuffer = new TermBuffer();
++		private TermBuffer prevBuffer = new TermBuffer();
++		private TermBuffer scratch;                     // used for scanning
++		
+ 		private TermInfo termInfo = new TermInfo();
+ 		
+ 		private int format;
+@@ -34,9 +37,6 @@
+ 		internal int indexInterval;
+ 		internal int skipInterval;
+ 		private int formatM1SkipInterval;
+-		internal Term prev;
+-		
+-		private char[] buffer = new char[]{};
+ 		
+ 		internal SegmentTermEnum(InputStream i, FieldInfos fis, bool isi)
+ 		{
+@@ -98,8 +98,10 @@
+ 			
+ 			clone.input = (InputStream) input.Clone();
+ 			clone.termInfo = new TermInfo(termInfo);
+-			if (term != null)
+-				clone.GrowBuffer(term.text.Length);
++			
++			clone.termBuffer = (TermBuffer)termBuffer.Clone();
++			clone.prevBuffer = (TermBuffer)prevBuffer.Clone();
++			clone.scratch = null;
+ 			
+ 			return clone;
+ 		}
+@@ -108,10 +110,9 @@
+ 		{
+ 			input.Seek(pointer);
+ 			position = p;
+-			term = t;
+-			prev = null;
++			termBuffer.Set(t);
++			prevBuffer.Reset();
+ 			termInfo.Set(ti);
+-			GrowBuffer(term.text.Length); // copy term text into buffer
+ 		}
+ 		
+ 		/// <summary>Increments the enumeration to the next element.  True if one exists.</summary>
+@@ -119,12 +120,12 @@
+ 		{
+ 			if (position++ >= size - 1)
+ 			{
+-				term = null;
++				termBuffer.Reset();
+ 				return false;
+ 			}
+ 			
+-			prev = term;
+-			term = ReadTerm();
++			prevBuffer.Set(termBuffer);
++			termBuffer.Read(input, fieldInfos);
+ 			
+ 			termInfo.docFreq = input.ReadVInt(); // read doc freq
+ 			termInfo.freqPointer += input.ReadVLong(); // read freq pointer
+@@ -154,24 +155,13 @@
+ 			return true;
+ 		}
+ 		
+-		private Term ReadTerm()
+-		{
+-			int start = input.ReadVInt();
+-			int length = input.ReadVInt();
+-			int totalLength = start + length;
+-			if (buffer.Length < totalLength)
+-				GrowBuffer(totalLength);
+-			
+-			input.ReadChars(buffer, start, length);
+-			return new Term(fieldInfos.FieldName(input.ReadVInt()), new System.String(buffer, 0, totalLength), false);
+-		}
+-		
+-		private void  GrowBuffer(int length)
++		/** Optimized scan, without allocating new terms. */
++		internal void ScanTo(Term term)
+ 		{
+-			buffer = new char[length];
+-			for (int i = 0; i < term.text.Length; i++)
+-			// copy contents
+-				buffer[i] = term.text[i];
++			if (scratch == null)
++				scratch = new TermBuffer();
++			scratch.Set(term);
++			while (scratch.CompareTo(termBuffer) > 0 && Next()) {}
+ 		}
+ 		
+ 		/// <summary>Returns the current Term in the enumeration.
+@@ -179,7 +169,13 @@
+ 		/// </summary>
+ 		public override Term Term()
+ 		{
+-			return term;
++			return termBuffer.ToTerm();
++		}
++		
++		/** Returns the previous Term enumerated. Initially null.*/
++		public Term Prev()
++		{
++			return prevBuffer.ToTerm();
+ 		}
+ 		
+ 		/// <summary>Returns the current TermInfo in the enumeration.
+diff -urwN Lucene.Net-1.4.3.final-002/Lucene.Net/Index/TermBuffer.cs Lucene.Net-work/Lucene.Net/Index/TermBuffer.cs
+--- Lucene.Net-1.4.3.final-002/Lucene.Net/Index/TermBuffer.cs	1969-12-31 16:00:00.000000000 -0800
++++ Lucene.Net-work/Lucene.Net/Index/TermBuffer.cs	2005-05-16 17:45:51.000000000 -0700
+@@ -0,0 +1,131 @@
++/**
++ * Copyright 2004 The Apache Software Foundation
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *		 http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++using System;
++using Lucene.Net.Store;
++namespace Lucene.Net.Index
++{
++
++//import java.io.IOException;
++//import org.apache.lucene.store.IndexInput;
++
++	sealed class TermBuffer : ICloneable
++	{
++		private static readonly char[] NO_CHARS = new char[0];
++		
++		private string field;
++		private char[] text = NO_CHARS;
++		private int textLength;
++		private Term term;  // cached
++		
++		public int CompareTo(TermBuffer other)
++		{
++			if (field == other.field) // fields are interned
++				return CompareChars(text, textLength, other.text, other.textLength);
++			else
++				return field.CompareTo(other.field);
++		}
++		
++		private static int CompareChars(char[] v1, int len1, char[] v2, int len2)
++		{
++			int end = Math.Min(len1, len2);
++			for (int k = 0; k < end; k++) {
++				char c1 = v1[k];
++				char c2 = v2[k];
++				if (c1 != c2) {
++					return c1 - c2;
++				}
++			}
++			return len1 - len2;
++		}
++		
++		private void SetTextLength(int newLength)
++		{
++			if (text.Length < newLength) {
++				char[] newText = new char[newLength];
++				Array.Copy(text, 0, newText, 0, textLength);
++				text = newText;
++			}
++			textLength = newLength;
++		}
++		
++		public void Read(InputStream input, FieldInfos fieldInfos)
++		{
++			this.term = null;  // invalidate cache
++			int start = input.ReadVInt();
++			int length = input.ReadVInt();
++			int totalLength = start + length;
++			SetTextLength(totalLength);
++			input.ReadChars(this.text, start, length);
++			this.field = fieldInfos.FieldName(input.ReadVInt());
++		}
++		
++		public void Set(Term term)
++		{
++			if (term == null) {
++				Reset();
++				return;
++			}
++			
++			// copy text into the buffer
++			SetTextLength(term.Text().Length);
++			term.Text().CopyTo(0, text, 0, term.Text().Length);
++			
++			this.field = term.Field();
++			this.term = term;
++		}
++		
++		public void Set(TermBuffer other)
++		{
++			SetTextLength(other.textLength);
++			Array.Copy(other.text, 0, text, 0, textLength);
++			
++			this.field = other.field;
++			this.term = other.term;
++		}
++		
++		public void Reset()
++		{
++			this.field = null;
++			this.textLength = 0;
++			this.term = null;
++		}
++		
++		public Term ToTerm()
++		{
++			if (field == null) // unset
++				return null;
++			
++			if (term == null)
++				term = new Term(field, new string(text, 0, textLength), false);
++			
++			return term;
++		}
++		
++		public object Clone()
++		{
++			TermBuffer clone = null;
++			try {
++				clone = (TermBuffer)base.MemberwiseClone();
++			} catch (System.Exception e) {}
++			
++			clone.text = new char[text.Length];
++			Array.Copy(text, 0, clone.text, 0, textLength);
++			
++			return clone;
++		}
++	}
++}
+
+diff -urwN Lucene.Net-1.4.3.final-002/Lucene.Net/Index/TermInfosReader.cs Lucene.Net-work/Lucene.Net/Index/TermInfosReader.cs
+--- Lucene.Net-1.4.3.final-002/Lucene.Net/Index/TermInfosReader.cs	2004-11-02 13:03:18.000000000 -0800
++++ Lucene.Net-work/Lucene.Net/Index/TermInfosReader.cs	2005-05-16 17:15:12.000000000 -0700
+@@ -133,7 +133,7 @@
+ 			
+ 			// optimize sequential access: first try scanning cached enum w/o seeking
+ 			SegmentTermEnum enumerator = GetEnum();
+-			if (enumerator.Term() != null && ((enumerator.prev != null && term.CompareTo(enumerator.prev) > 0) || term.CompareTo(enumerator.Term()) >= 0))
++			if (enumerator.Term() != null && ((enumerator.Prev() != null && term.CompareTo(enumerator.Prev()) > 0) || term.CompareTo(enumerator.Term()) >= 0))
+ 			{
+ 				int enumOffset = (int) (enumerator.position / enumerator.indexInterval) + 1;
+ 				if (indexTerms.Length == enumOffset || term.CompareTo(indexTerms[enumOffset]) < 0)
+@@ -149,9 +149,7 @@
+ 		private TermInfo ScanEnum(Term term)
+ 		{
+ 			SegmentTermEnum enumerator = GetEnum();
+-			while (term.CompareTo(enumerator.Term()) > 0 && enumerator.Next())
+-			{
+-			}
++			enumerator.ScanTo(term);
+ 			if (enumerator.Term() != null && term.CompareTo(enumerator.Term()) == 0)
+ 				return enumerator.TermInfo();
+ 			else
+diff -urwN Lucene.Net-1.4.3.final-002/Lucene.Net/Makefile Lucene.Net-work/Lucene.Net/Makefile
+--- Lucene.Net-1.4.3.final-002/Lucene.Net/Makefile	1969-12-31 16:00:00.000000000 -0800
++++ Lucene.Net-work/Lucene.Net/Makefile	2005-05-16 19:29:39.000000000 -0700
+@@ -0,0 +1,178 @@
++# Quickie makefile for building Lucene.Net.dll with Mono
++
++.PHONY : all clean
++
++MCS ?= mcs
++
++LUCENE_SOURCES=\
++Analysis/Analyzer.cs \
++Analysis/CharTokenizer.cs \
++Analysis/DE/GermanAnalyzer.cs \
++Analysis/DE/GermanStemFilter.cs \
++Analysis/DE/GermanStemmer.cs \
++Analysis/DE/WordlistLoader.cs \
++Analysis/LetterTokenizer.cs \
++Analysis/LowerCaseFilter.cs \
++Analysis/LowerCaseTokenizer.cs \
++Analysis/PerFieldAnalyzerWrapper.cs \
++Analysis/PorterStemFilter.cs \
++Analysis/PorterStemmer.cs \
++Analysis/RU/RussianAnalyzer.cs \
++Analysis/RU/RussianCharsets.cs \
++Analysis/RU/RussianLetterTokenizer.cs \
++Analysis/RU/RussianLowerCaseFilter.cs \
++Analysis/RU/RussianStemFilter.cs \
++Analysis/RU/RussianStemmer.cs \
++Analysis/SimpleAnalyzer.cs \
++Analysis/Standard/CharStream.cs \
++Analysis/Standard/FastCharStream.cs \
++Analysis/Standard/ParseException.cs \
++Analysis/Standard/StandardAnalyzer.cs \
++Analysis/Standard/StandardFilter.cs \
++Analysis/Standard/StandardTokenizer.cs \
++Analysis/Standard/StandardTokenizerConstants.cs \
++Analysis/Standard/StandardTokenizerTokenManager.cs \
++Analysis/Standard/Token.cs \
++Analysis/Standard/TokenMgrError.cs \
++Analysis/StopAnalyzer.cs \
++Analysis/StopFilter.cs \
++Analysis/Token.cs \
++Analysis/TokenFilter.cs \
++Analysis/Tokenizer.cs \
++Analysis/TokenStream.cs \
++Analysis/WhitespaceAnalyzer.cs \
++Analysis/WhitespaceTokenizer.cs \
++AssemblyInfo.cs \
++Document/DateField.cs \
++Document/Document.cs \
++Document/Field.cs \
++Index/CompoundFileReader.cs \
++Index/CompoundFileWriter.cs \
++Index/DocumentWriter.cs \
++Index/FieldInfo.cs \
++Index/FieldInfos.cs \
++Index/FieldsReader.cs \
++Index/FieldsWriter.cs \
++Index/FilterIndexReader.cs \
++Index/IndexReader.cs \
++Index/IndexWriter.cs \
++Index/MultipleTermPositions.cs \
++Index/MultiReader.cs \
++Index/SegmentInfo.cs \
++Index/SegmentInfos.cs \
++Index/SegmentMergeInfo.cs \
++Index/SegmentMergeQueue.cs \
++Index/SegmentMerger.cs \
++Index/SegmentReader.cs \
++Index/SegmentTermDocs.cs \
++Index/SegmentTermEnum.cs \
++Index/SegmentTermPositions.cs \
++Index/SegmentTermVector.cs \
++Index/Term.cs \
++Index/TermBuffer.cs \
++Index/TermDocs.cs \
++Index/TermEnum.cs \
++Index/TermFreqVector.cs \
++Index/TermInfo.cs \
++Index/TermInfosReader.cs \
++Index/TermInfosWriter.cs \
++Index/TermPositions.cs \
++Index/TermPositionVector.cs \
++Index/TermVectorsReader.cs \
++Index/TermVectorsWriter.cs \
++QueryParser/CharStream.cs \
++QueryParser/FastCharStream.cs \
++QueryParser/MultiFieldQueryParser.cs \
++QueryParser/ParseException.cs \
++QueryParser/QueryParser.cs \
++QueryParser/QueryParserConstants.cs \
++QueryParser/QueryParserTokenManager.cs \
++QueryParser/Token.cs \
++QueryParser/TokenMgrError.cs \
++Search/BooleanClause.cs \
++Search/BooleanQuery.cs \
++Search/BooleanScorer.cs \
++Search/CachingWrapperFilter.cs \
++Search/ConjunctionScorer.cs \
++Search/DateFilter.cs \
++Search/DefaultSimilarity.cs \
++Search/ExactPhraseScorer.cs \
++Search/Explanation.cs \
++Search/FieldCache.cs \
++Search/FieldCacheImpl.cs \
++Search/FieldDoc.cs \
++Search/FieldDocSortedHitQueue.cs \
++Search/FieldSortedHitQueue.cs \
++Search/Filter.cs \
++Search/FilteredQuery.cs \
++Search/FilteredTermEnum.cs \
++Search/FuzzyQuery.cs \
++Search/FuzzyTermEnum.cs \
++Search/HitCollector.cs \
++Search/HitQueue.cs \
++Search/Hits.cs \
++Search/IndexSearcher.cs \
++Search/MultiSearcher.cs \
++Search/MultiTermQuery.cs \
++Search/ParallelMultiSearcher.cs \
++Search/PhrasePositions.cs \
++Search/PhrasePrefixQuery.cs \
++Search/PhraseQuery.cs \
++Search/PhraseQueue.cs \
++Search/PhraseScorer.cs \
++Search/PrefixQuery.cs \
++Search/Query.cs \
++Search/QueryFilter.cs \
++Search/QueryTermVector.cs \
++Search/RangeQuery.cs \
++Search/RemoteSearchable.cs \
++Search/ScoreDoc.cs \
++Search/ScoreDocComparator.cs \
++Search/Scorer.cs \
++Search/Searchable.cs \
++Search/Searcher.cs \
++Search/Similarity.cs \
++Search/SloppyPhraseScorer.cs \
++Search/Sort.cs \
++Search/SortComparator.cs \
++Search/SortComparatorSource.cs \
++Search/SortField.cs \
++Search/Spans/NearSpans.cs \
++Search/Spans/SpanFirstQuery.cs \
++Search/Spans/SpanNearQuery.cs \
++Search/Spans/SpanNotQuery.cs \
++Search/Spans/SpanOrQuery.cs \
++Search/Spans/SpanQuery.cs \
++Search/Spans/Spans.cs \
++Search/Spans/SpanScorer.cs \
++Search/Spans/SpanTermQuery.cs \
++Search/Spans/SpanWeight.cs \
++Search/TermQuery.cs \
++Search/TermScorer.cs \
++Search/TopDocs.cs \
++Search/TopFieldDocs.cs \
++Search/Weight.cs \
++Search/WildcardQuery.cs \
++Search/WildcardTermEnum.cs \
++Store/Directory.cs \
++Store/FSDirectory.cs \
++Store/InputStream.cs \
++Store/Lock.cs \
++Store/OutputStream.cs \
++Store/RAMDirectory.cs \
++Store/RAMFile.cs \
++Store/RAMInputStream.cs \
++Store/RAMOutputStream.cs \
++SupportClass.cs \
++Util/BitVector.cs \
++Util/Constants.cs \
++Util/PriorityQueue.cs \
++Util/StringHelper.cs
++
++all : Lucene.Net.dll
++
++clean :
++	rm -f Lucene.Net.dll
++
++Lucene.Net.dll : $(LUCENE_SOURCES)
++	$(MCS) -target:library -out:Lucene.Net.dll -r:System.Runtime.Remoting $(LUCENE_SOURCES)
+
+diff -urwN Lucene.Net-1.4.3.final-002/Lucene.Net/QueryParser/QueryParser.cs Lucene.Net-work/Lucene.Net/QueryParser/QueryParser.cs
+--- Lucene.Net-1.4.3.final-002/Lucene.Net/QueryParser/QueryParser.cs	2004-12-12 19:15:52.000000000 -0800
++++ Lucene.Net-work/Lucene.Net/QueryParser/QueryParser.cs	2005-05-16 16:12:53.000000000 -0700
+@@ -1272,8 +1272,8 @@
+ 		
+ 		private Token Jj_consume_token(int kind)
+ 		{
+-			Token oldToken;
+-			if ((oldToken = token).next != null)
++			Token oldToken = token;
++			if (oldToken.next != null)
+ 				token = token.next;
+ 			else
+ 				token = token.next = token_source.GetNextToken();
