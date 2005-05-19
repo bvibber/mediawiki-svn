@@ -6,6 +6,7 @@ if( !function_exists( 'domxml_open_mem' ) ) {
 	#dl( '/usr/lib/php/extensions/no-debug-non-zts-20020429/domxml.so' );
 }
 
+$options = array( 'dry-run' );
 require_once( 'commandLine.inc' );
 #require_once( 'extensions/OAI/OAIHarvest.php' );
 
@@ -18,12 +19,21 @@ require_once( 'commandLine.inc' );
 $harvester = new OAIHarvester( $oaiSourceRepository );
 
 $dbr =& wfGetDB( DB_SLAVE );
-$lastUpdate = wfTimestamp( TS_MW, $dbr->selectField( 'cur', 'MAX(cur_timestamp)' ) );
+$highest = $dbr->selectField( 'cur', 'MAX(cur_timestamp)' );
+if( $highest ) {
+	$lastUpdate = wfTimestamp( TS_MW, $highest );
+} else {
+	# Starting from an empty database!
+	$lastUpdate = '19700101000000';
+}
 
 $callback = 'showUpdates';
 function showUpdates( $record ) {
+	global $options;
 	$record->dump();
-	$record->apply();
+	if( !isset( $options['dry-run'] ) ) {
+		$record->apply();
+	}
 }
 
 $result = $harvester->listUpdates( $lastUpdate, $callback );

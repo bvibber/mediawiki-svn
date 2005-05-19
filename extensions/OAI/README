@@ -19,3 +19,10 @@ to a harvester even if it comes back after quite a while.
 Clients will get only the latest current update; this does not include
 complete old page entries by design, as basic mirrors generally don't need
 to maintain that extra stuff.
+
+
+As of May 19, the updater will attempt to update the links tables on edits,
+and can fetch uploaded image files automatically.
+
+(Uploads must be enabled locally with $wgDisableUploads = false; or no files
+will be fetched. image table records will be updated either way.)

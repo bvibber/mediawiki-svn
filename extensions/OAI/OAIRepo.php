@@ -553,8 +553,8 @@ class OAIRepo {
 				'namespace' => 'http://www.openarchives.org/OAI/2.0/oai_dc/',
 				'schema'    => 'http://www.openarchives.org/OAI/2.0/oai_dc.xsd' ),
 			'mediawiki' => array(
-				'namespace'	=> 'http://www.mediawiki.org/xml/export-0.1/',
-				'schema'    => 'http://www.mediawiki.org/xml/export-0.1.xsd' ) );
+				'namespace'	=> 'http://www.mediawiki.org/xml/export-0.2/',
+				'schema'    => 'http://www.mediawiki.org/xml/export-0.2.xsd' ) );
 	}
 	
 }
@@ -691,11 +691,11 @@ class WikiOAIRecord extends OAIRecord {
 		global $wgContLanguageCode;
 		$title = Title::makeTitle( $this->_row->namespace, $this->_row->title );
 		$out = oaiTag( 'mediawiki', array(
-			'xmlns'              => 'http://www.mediawiki.org/xml/export-0.1/',
+			'xmlns'              => 'http://www.mediawiki.org/xml/export-0.2/',
 			'xmlns:xsi'          => 'http://www.w3.org/2001/XMLSchema-instance',
-			'xsi:schemaLocation' => 'http://www.mediawiki.org/xml/export-0.1/ ' .
-			                        'http://www.mediawiki.org/xml/export-0.1.xsd',
-			'version'            => '0.1',
+			'xsi:schemaLocation' => 'http://www.mediawiki.org/xml/export-0.2/ ' .
+			                        'http://www.mediawiki.org/xml/export-0.2.xsd',
+			'version'            => '0.2',
 			'xml:lang'           => $wgContLanguageCode ) ) . "\n";
 		$out .= "<page>\n";
 		$out .= oaiTag( 'title', array(), $title->getPrefixedText() ) . "\n";
@@ -704,9 +704,50 @@ class WikiOAIRecord extends OAIRecord {
 			$out .= oaiTag( 'restrictions', array(), $this->_row->restrictions ) . "\n";
 		}
 		$out .= revision2xml( $this->_row, true, true );
+		if( $title->getNamespace() == NS_IMAGE ) {
+			$out .= $this->renderUpload();
+		}
 		$out .= "</page>\n";
 		$out .= "</mediawiki>\n";
 		return $out;
+	}
+	
+	function renderUpload() {
+		$fname = 'WikiOAIRecord::renderUpload';
+		$db =& wfGetDB( DB_SLAVE );
+		$imageRow = $db->selectRow( 'image',
+			array( 'img_name', 'img_size', 'img_description',
+				'img_user', 'img_user_text', 'img_timestamp' ),
+			array( 'img_name' => $this->_row->title ),
+			$fname );
+		if( $imageRow ) {
+			$url = Image::wfImageUrl( $imageRow->img_name );
+			if( $url{0} == '/' ) {
+				global $wgServer;
+				$url = $wgServer . $url;
+			}
+			return implode( "\n", array(
+				"<upload>",
+				oaiTag( 'timestamp', array(), wfTimestamp2ISO8601( $imageRow->img_timestamp ) ),
+				$this->renderContributor( $imageRow->img_user, $imageRow->img_user_text ),
+				oaiTag( 'comment',   array(), $imageRow->img_description ),
+				oaiTag( 'filename',  array(), $imageRow->img_name ),
+				oaiTag( 'src',       array(), $url ),
+				oaiTag( 'size',      array(), $imageRow->img_size ),
+				"</upload>\n" ) );
+		} else {
+			return '';
+		}
+	}
+	
+	function renderContributor( $id, $text ) {
+		if( $id ) {
+			$tag = oaiTag( 'username', array(), $text ) .
+				oaiTag( 'id', array(), $id );
+		} else {
+			$tag = oaiTag( 'ip', array(), $text );
+		}
+		return '<contributor>' . $tag . '</contributor>';
 	}
 	
 }

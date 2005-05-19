@@ -224,6 +224,7 @@ class OAIHarvester {
 		}
 		
 		$uagent = ini_set( 'user_agent', $this->userAgent() );
+		echo "Fetching: $url\n";
 		$result = file_get_contents( $url );
 		ini_set( 'user_agent', $uagent );
 		
@@ -284,8 +285,7 @@ class OAIUpdateRecord {
 		return Title::newFromText( $this->_page['title'] );
 	}
 	
-	function getTimestamp() {
-		$time = $this->_page['revisions'][0]['timestamp'];
+	function getTimestamp( $time ) {
 		if( preg_match( '/^(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z$/', $time, $matches ) ) {
 			return wfTimestamp( TS_MW,
 				$matches[1] . $matches[2] . $matches[3] .
@@ -302,7 +302,7 @@ class OAIUpdateRecord {
 			$title = $this->getTitle();
 			if( $title ) {
 				printf( "%s %10d [[%s]]\n",
-					$this->getTimestamp(),
+					$this->getTimestamp( $this->_page['revisions'][0]['timestamp'] ),
 					$this->getArticleId(),
 					$title->getPrefixedText() );
 			} else {
@@ -314,8 +314,6 @@ class OAIUpdateRecord {
 	}
 	
 	function apply() {
-		$fname = 'OAIUpdateRecord::apply';
-		
 		if( $this->isDeleted() ) {
 			return $this->doDelete();
 		}
@@ -328,9 +326,27 @@ class OAIUpdateRecord {
 				$this->_page['title'] ) );
 		}
 		
+		$id = 0;
+		foreach( $this->_page['revisions'] as $revision ) {
+			$id = $this->applyRevision( $revision );
+		}
+		
+		fixLinksFromArticle( $id );
+		
+		foreach( $this->_page['uploads'] as $upload ) {
+			if( OAIError::isError( $err = $this->applyUpload( $upload ) ) )
+				return $err;
+		}
+		
+		return true;
+	}
+	
+	function applyRevision( $revision ) {
+		$fname = 'OAIUpdateRecord::applyRevision';
+		
+		$title = $this->getTitle();
 		$id = $this->getArticleId();
-		$timestamp = $this->getTimestamp();
-		$revision = $this->_page['revisions'][0];
+		$timestamp = $this->getTimestamp( $revision['timestamp'] );
 		
 		$dbw =& wfGetDB( DB_WRITE );
 		$dbw->begin();
@@ -388,7 +404,83 @@ class OAIUpdateRecord {
 		}
 		$dbw->commit();
 		
-		fixLinksFromArticle( $id );
+		return $id;
+	}
+	
+	function applyUpload( $upload ) {
+		$fname = 'WikiOAIUpdate::applyUpload';
+		
+		# FIXME: validate these files...
+		if( strpos( $upload['filename'], '/' ) !== false
+			|| strpos( $upload['filename'], '\\' ) !== false
+			|| $upload['filename'] == ''
+			|| $upload['filename'] !== trim( $upload['filename'] ) ) {
+			return new OAIError( 'Invalid filename "' . $upload['filename'] . '"' );
+		}
+		
+		$dbw =& wfGetDB( DB_MASTER );
+		$data = array(
+			'img_name'        => $upload['filename'],
+			'img_size'        => IntVal( $upload['size'] ),
+			'img_description' => $upload['comment'],
+			'img_user'        => IntVal( $upload['contributor']['id'] ),
+			'img_user_text'   => $upload['contributor']['username'],
+			'img_timestamp'   => $dbw->timestamp( $this->getTimestamp( $upload['timestamp'] ) ) );
+		
+		$dbw->begin();
+		echo "REPLACING image row\n";
+		$dbw->replace( 'image', array( 'img_name' ), $data, $fname );
+		$dbw->commit();
+		
+		return $this->downloadUpload( $upload );
+	}
+	
+	function downloadUpload( $upload ) {
+		global $wgDisableUploads;
+		if( $wgDisableUploads ) {
+			echo "Uploads disabled locally: NOT fetching URL '" .
+				$upload['src'] . "'.\n";
+			return true;
+		}
+		
+		# We assume the filename has already been validated by code above us.
+		$filename = wfImageDir( $upload['filename'] ) . '/' . $upload['filename'];
+		
+		$timestamp = wfTimestamp( TS_UNIX, $this->getTimestamp( $upload['timestamp'] ) );
+		if( file_exists( $filename )
+			&& filemtime( $filename ) == $timestamp
+			&& filesize( $filename ) == $upload['size'] ) {
+			echo "Local file $filename matches; skipping download.\n";
+			return true;
+		}
+		
+		if( !preg_match( '!^http://!', $upload['src'] ) )
+			return new OAIError( 'Invalid image source URL "' . $upload['src'] . "'." );
+		
+		$input = fopen( $upload['src'], 'rb' );
+		if( !$input ) {
+			unlink( $filename );
+			return new OAIError( 'Could not fetch image source URL "' . $upload['src'] . "'." );
+		}
+		
+		if( file_exists( $filename ) ) {
+			unlink( $filename );
+		}
+		if( !( $output = fopen( $filename, 'xb' ) ) ) {
+			return new OAIError( 'Could not create local image file "' . $filename . '" for writing.' );
+		}
+
+		echo "Fetching " . $upload['src'] . " to $filename: ";
+		while( !feof( $input ) ) {
+			$buffer = fread( $input, 65536 );
+			fwrite( $output, $buffer );
+			echo ".";
+		}
+		fclose( $input );
+		fclose( $output );
+		
+		touch( $filename, $timestamp );
+		echo " done.\n";
 		
 		return true;
 	}
@@ -454,7 +546,7 @@ class OAIUpdateRecord {
 		        <contributor>
 		          <ip>
 		          <id>
-		          <name>
+		          <username>
 		        <comment>
 		        <text>
 		        <minor>
@@ -519,6 +611,11 @@ class OAIUpdateRecord {
 					return $revision;
 				$data['revisions'][] = $revision;
 				break;
+			case 'upload':
+				if( OAIError::isError( $upload = OAIUpdateRecord::grabUpload( $node ) ) )
+					return $upload;
+				$data['uploads'][] = $upload;
+				break;
 			default:
 				return new OAIError( "Unexpected page element <$element>" );
 			}
@@ -546,6 +643,31 @@ class OAIUpdateRecord {
 				break;
 			default:
 				return new OAIError( "Unexpected revision element <$element>" );
+			}
+		}
+		return $data;
+	}
+	
+	function grabUpload( $upload ) {
+		$data = array();
+		for( $node = oaiNextChild( $upload );
+			 !OAIError::isError( $node );
+			 $node = oaiNextSibling( $node ) ) {
+			switch( $element = $node->node_name() ) {
+			case 'timestamp':
+			case 'comment':
+			case 'filename':
+			case 'src':
+			case 'size':
+				$data[$element] = OAIUpdateRecord::decode( $node->get_content() );
+				break;
+			case 'contributor':
+				if( OAIError::isError( $contrib = OAIUpdateRecord::grabContributor( $node ) ) )
+					return $contrib;				
+				$data[$element] = $contrib;
+				break;
+			default:
+				return new OAIError( "Unexpected upload element <$element>" );
 			}
 		}
 		return $data;
