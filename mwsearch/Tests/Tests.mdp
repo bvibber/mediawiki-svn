@@ -16,6 +16,7 @@
   <References>
     <ProjectReference type="Project" localcopy="True" refto="Search" />
     <ProjectReference type="Assembly" localcopy="True" refto="../libs/Lucene.Net.dll" />
+    <ProjectReference type="Project" localcopy="True" refto="Daemon" />
   </References>
   <DeploymentInformation strategy="File">
     <excludeFiles />

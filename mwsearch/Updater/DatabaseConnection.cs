@@ -104,8 +104,10 @@ namespace MediaWiki.Search.Updater {
 			string version = config.GetString("Database", "version");
 			if (version == "" || version.Equals("1.5")) {
 				// FIXME FOR TIMESTAMPS
-				query = "SELECT page_namespace,page_title,old_text,page_timestamp " +
-					"FROM " + tablePrefix + "page, " + tablePrefix + "text WHERE old_id=page_latest AND page_is_redirect=0";
+				query = "SELECT page_namespace,page_title,old_text,rev_timestamp " +
+					"FROM " + tablePrefix + "page, " +
+					tablePrefix + "revision, " +
+					tablePrefix + "text WHERE page_latest=rev_id AND rev_text_id=old_id AND page_is_redirect=0";
 			} else if (version.Equals("1.4")) {
 				query = "SELECT cur_namespace,cur_title,cur_text,cur_timestamp " +
 					"FROM " + tablePrefix + "cur FORCE INDEX (cur_timestamp) " +

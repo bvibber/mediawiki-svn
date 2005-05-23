@@ -24,18 +24,6 @@
 
 namespace MediaWiki.Search.Daemon {
 
-	/*
-	import java.io.UnsupportedEncodingException;
-	import java.net.URI;
-	import java.net.URISyntaxException;
-	import java.net.URLDecoder;
-	import java.util.HashMap;
-	import java.util.Iterator;
-	import java.util.Map;
-	import java.util.Set;
-	import java.util.StringTokenizer;
-	*/
-	
 	using System;
 	using System.Collections;
 	using System.Text;
@@ -50,7 +38,9 @@ namespace MediaWiki.Search.Daemon {
 		private void GrabQueryItems(string query) {
 			if (query == null)
 				return;
-			foreach (string token in query.Split('&')) {
+			if (query == "")
+				return;
+			foreach (string token in query.Substring(1, query.Length - 1).Split('&')) {
 				SlurpItem(token);
 			}
 		}
@@ -67,43 +57,5 @@ namespace MediaWiki.Search.Daemon {
 			}
 		}
 
-		/*
-		public static void main(String[] args) {
-			try {
-				testURI("/x");
-				testURI("/x?foo=bar");
-				testURI("/x?foo=bar&biz=bax");
-				
-				// The %26 should _not_ split 'foo' from 'bogo'
-				testURI("/x?foo=bar+%26bogo&next=extreme");
-				
-				// UTF-8 good encoding
-				testURI("/x?serveuse=%c3%a9nid");
-				
-				// bad encoding; you'll see replacement char
-				testURI("/x?serveuse=%e9nid");
-				
-				// corner cases; missing params
-				testURI("/x?foo");
-				testURI("/x?foo&bar=baz");
-				testURI("/x?foo&&bar");
-				testURI("/x?&");
-				testURI("/x?=");
-				testURI("/x?==&");
-			} catch (URISyntaxException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		private static void testURI(String uri) throws URISyntaxException {
-			QueryStringMap map = new QueryStringMap(new URI(uri));
-			System.out.println(uri);
-			Set keys = map.keySet();
-			for (Iterator i = keys.iterator(); i.hasNext();) {
-				 String key = (String)i.next();
-				 System.out.println("  \"" + key + "\" => \"" + map.get(key) + "\"");
-			}
-		}
-		*/
 	}
 }

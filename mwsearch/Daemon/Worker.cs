@@ -134,7 +134,7 @@ namespace MediaWiki.Search.Daemon {
 			string[] bits = request.Split(' ');
 			Uri uri = null;
 			try {
-				uri = new Uri(bits[1]);
+				uri = new Uri("http://localhost:8123" + bits[1]);
 			} catch (UriFormatException e) {
 				SendHeaders(400, "Bad request");
 				log.Warn("Bad URI in request: " + bits[1]);
