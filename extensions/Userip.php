@@ -1,6 +1,8 @@
 <?php
 /**
- * A Special:Userip extension, useful for wiki-espionage
+ * Given a username returns a list of IP addresses that user has made edits to
+ * the wiki from, listing one time per IP which is the latest edit from that
+ * address.
  *
  * @package MediaWiki
  * @subpackage Extensions
@@ -8,26 +10,48 @@
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  */
 
-if (defined('MEDIAWIKI')) {
+if (!defined('MEDIAWIKI'))
+	die;
 
-$wgExtensionFunctions[] = 'wfUserip';
+$wgExtensionFunctions[] = 'wfEspionage';
 
-function wfUserip() {
+function wfEspionage() {
 	global $IP;
 	
 	require_once( "$IP/includes/SpecialPage.php" );
 
-	class Userip extends SpecialPage {
-		function Userip() {
-			SpecialPage::SpecialPage('Userip', 'block');
+	class Espionage extends SpecialPage {
+		function Espionage() {
+			SpecialPage::SpecialPage('Espionage', 'block');
+		}
+		
+		function makelink($user, $time) {
+				global $wgContLang, $wgLang;
+				
+				$ns_user = $wgContLang->getNsText( NS_USER );
+				$ns_talk = $wgContLang->getNsText( NS_TALK );;
+				$ns_user_talk = $wgContLang->getNsText( NS_USER_TALK );
+				$sp_contrib = $wgContLang->specialPage( "Contributions" );
+				$conmsg = wfMsg( 'contribslink' );
+
+				$time = $wgLang->timeanddate( $time );
+				
+				return "$time: [[$ns_user:$user|$user]] ([[$ns_user_talk:$user|$ns_talk]] | [[$sp_contrib/$user|$conmsg]])";
 		}
 
-		function execute( $par ) {
-			global $wgRequest, $wgOut, $wgTitle, $wgLang, $wgPutIPinRC, $wgUser;
+		function execute( $par = null ) {
+			global $wgRequest, $wgOut, $wgTitle, $wgContLang, $wgLang, $wgPutIPinRC, $wgUser, $wgVersion;
 			
-			if ( ! $wgUser->isAllowed('block') ) {
-				$wgOut->sysopRequired();
-				return;
+			if (preg_match("/^1\.4/", $wgVersion)) {
+				if ( ! $wgUser->isSysop() ) {
+					$wgOut->sysopRequired();
+					return;
+				}
+			} else {
+				if ( ! $wgUser->isAllowed('block') ) {
+					$wgOut->sysopRequired();
+					return;
+				}
 			}
 			
 			if ( ! $wgPutIPinRC ) {
@@ -38,13 +62,13 @@ function wfUserip() {
 			$this->setHeaders();
 
 			$action = $wgTitle->escapeLocalUrl();
-			$username = $wgRequest->getText( 'user' );
+			$username = is_null($par) ? $wgRequest->getText( 'user' ) : strtr($par, '_', ' ');
 			
 			$wgOut->addHTML( "
-<form id='userip' method='post' action=\"$action\">
-	<table border='0'>
+<form id='espionage' method='post' action=\"$action\">
+	<table>
 		<tr>
-			<td align='right'>" . wfMsg('specialloguserlabel') . "</td>
+			<td align='right'>" . wfMsg('ipadressorusername') . "</td>
 			<td align='left'>
 				<input tabindex='1' type='text' size='20' name='user' value=\"" . htmlspecialchars($username) . "\" />
 			</td>
@@ -57,39 +81,47 @@ function wfUserip() {
 		</tr>
 	</table>
 </form>");
-			if ( !is_null( $username ) && $username !== 0 ) {
-				$dbr =& wfGetDB( DB_READ );
-				
-				$recentchanges = $dbr->tableName( 'recentchanges' );
-				$sql = "SELECT rc_ip,rc_timestamp FROM $recentchanges
-					WHERE rc_user_text = " . $dbr->addQuotes( $username ) .
-					"AND rc_ip != '' GROUP BY rc_ip";
+			if ($username == '')
+				return;
 
-				$res = $dbr->query( $sql, 'wfUserip' );
+			$dbr =& wfGetDB( DB_READ );
 
-				if (mysql_num_rows($res) > 0 ) {
-					$skin = $wgUser->getSkin();
+			$ip = $wgUser->isIP($username);
+			
+			$username = $dbr->addQuotes( $username );
+			$recentchanges = $dbr->tableName( 'recentchanges' );
+			
+			# SELECT MAX(rc_user_text) AS i,rc_timestamp FROM recentchanges GROUP BY rc_user_text ORDER BY i DESC;
+			$sql = "SELECT rc_ip,rc_timestamp FROM $recentchanges WHERE rc_user_text = $username AND rc_ip != '' " .
+				"GROUP BY rc_ip DESC ORDER BY rc_timestamp DESC";
+
+			$res = $dbr->query( $sql, 'wfEspionage' );
+
+			if ( mysql_num_rows($res) ) {
+				$skin = $wgUser->getSkin();
+				$out = "----\n";
+				while ( $row = $dbr->fetchObject( $res ) ) {
+					if (!$ip)
+						$out .= '*' . $this->makelink($row->rc_ip, $row->rc_timestamp) . "\n";
 					
-					$wgOut->addHTML( '<hr /><ul>' );
-					while ( $row = $dbr->fetchObject( $res ) ) {
-						$time = $wgLang->timeanddate( $row->rc_timestamp );
-						$link = $skin->makeKnownLinkObj(
-							Title::makeTitle( NS_SPECIAL, 'Contributions' ),
-							$row->rc_ip,
-							'target=' . $row->rc_ip
-						);
-						$wgOut->addHTML( "<li>$time: $link</li>");
+					$sql2 = "SELECT rc_user_text,rc_timestamp FROM $recentchanges " .
+						"WHERE (rc_ip != rc_user_text AND rc_ip = '$row->rc_ip' AND rc_user_text != $username) " .
+						"GROUP BY rc_user_text DESC ORDER BY rc_timestamp";
+					$res2 = $dbr->query( $sql2, 'wfEspionage' );
+					while ( $row2 = $dbr->fetchObject($res2) ) {
+						if (!$ip)
+							$out .= '*';
+						$out .= '*' . $this->makelink($row2->rc_user_text, $row2->rc_timestamp) . "\n";
 					}
-					$wgOut->addHTML( '</ul>' );
 				}
+				$wgOut->addWikiText($out);
 			}
 		}
 	}
 
 	global $wgMessageCache;
-	SpecialPage::addPage( new Userip );
-	$wgMessageCache->addMessage( "userip", "User ip" );
+	SpecialPage::addPage( new Espionage );
+	$wgMessageCache->addMessage( 'espionage', 'Espionage' );
 
-	} # End of extension function
-} # End of invocation guard
+} # End of extension function
 ?>
