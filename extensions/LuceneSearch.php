@@ -751,7 +751,7 @@ $wgMessageCache->addMessage("searchnumber", "<strong>Results $1-$2 of $3</strong
 $wgMessageCache->addMessage("searchprev", "&#x00AB; <span style='font-size: small'>Prev</span>");
 $wgMessageCache->addMessage("searchnext", "<span style='font-size: small'>Next</span> &#x00BB;");
 $wgMessageCache->addMessage("searchscore", "Relevancy: $1");
-$wgMessageCache->addMessage("searchsize", "$1k ($2 words)");
+$wgMessageCache->addMessage("searchsize", "$1KB ($2 words)");
 $wgMessageCache->addMessage("searchdidyoumean", "Did you mean: \"<a href=\"$1\">$2</a>\"?");
 $wgMessageCache->addMessage("searchnoresults", "Sorry, there were no exact matches to your query.");
 $wgMessageCache->addMessage("searchnearmatches", "<b>These pages have similar titles to your query:</b>\n");
