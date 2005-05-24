@@ -51,7 +51,7 @@
     <!-- end content -->
     <hr />
 
-    <div class="portlet" id="p-nav">
+    <div class="portlet" id="p-navigation">
       <strong><span i18n:translate="string:navigation">Navigation</span>:</strong>
       <a href="${nav_urls/mainpage/href}" i18n:translate="string:mainpage">Main Page</a>
       <a href="${nav_urls/portal/href}" i18n:translate="string:portal">Community Portal</a>
