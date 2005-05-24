@@ -4,6 +4,11 @@
 ; Space-separated list of wiki database names:
 databases=frtest rutest entest detest
 
+; If you have a lot of databases, specify instead
+; the path to file containing a list of all dbs.
+; Each database should be on its own line in the file.
+;databaselist=/etc/mwsearch.dblist
+
 ; Directory to put the Lucene index files into
 indexpath=/usr/local/var/mwsearch/index/{0}
 

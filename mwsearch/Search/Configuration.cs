@@ -25,6 +25,7 @@
 
 namespace MediaWiki.Search {
 	using System;
+	using System.Collections;
 	using System.IO;
 	
 	using log4net;
@@ -108,6 +109,28 @@ namespace MediaWiki.Search {
 					return dbname.Substring(0, dbname.Length - suffix.Length);
 			}
 			return "en";
+		}
+		
+		public string[] Databases {
+			get {
+				string[] explicitList = GetArray("mwsearch", "databases");
+				if (explicitList != null)
+					return explicitList;
+				
+				string dblistSource = GetString("mwsearch", "databaselist");
+				if (dblistSource == null)
+					return new string[] { };
+				
+				TextReader dblistFile = File.OpenText(dblistSource);
+				
+				ArrayList dblist = new ArrayList();
+				for (string line = dblistFile.ReadLine(); line != null; line = dblistFile.ReadLine()) {
+					string trimmed = line.Trim();
+					if (trimmed.Length > 0)
+						dblist.Add(trimmed);
+				}
+				return (string[])dblist.ToArray(typeof(string));
+			}
 		}
 	
 	}

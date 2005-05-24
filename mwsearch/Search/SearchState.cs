@@ -142,7 +142,8 @@ namespace MediaWiki.Search {
 			try {
 				if (writable)
 					MergeWrites();
-				CloseReader();
+				if (reader != null)
+					CloseReader();
 			} catch (IOException e) {
 				log.Error(mydbname + ": warning: closing index: " + e.Message);
 			}

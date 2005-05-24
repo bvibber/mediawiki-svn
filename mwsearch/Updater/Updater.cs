@@ -46,15 +46,11 @@ namespace MediaWiki.Search.Updater {
 			,DOING_INCREMENT 	= 2
 			;
 		static int what = -1;
-		const int
-			 MW_NEW = 1
-			,MW_OLD = 2;
-		static int mw_version = MW_NEW;
 		static Configuration config;
 		
 		public static void Main(string[] args) {	
 			BasicConfigurator.Configure();
-			LogLog.InternalDebugging = true;
+			//LogLog.InternalDebugging = true;
 			
 			String updateFrom = "19700101000000";
 			IList dbnames = new ArrayList();
@@ -75,7 +71,7 @@ namespace MediaWiki.Search.Updater {
 			
 			config = Configuration.Open();
 			if(dbnames.Count == 0) {
-				dbnames = config.GetArray("mwsearch", "databases");
+				dbnames = config.Databases;
 			}
 
 			if (what == -1) {
