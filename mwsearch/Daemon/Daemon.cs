@@ -40,10 +40,7 @@ namespace MediaWiki.Search.Daemon {
 	public class Daemon {
 		static int port = 8123;
 		public static TcpListener sock;
-		public static string indexPath;
-		public static string[] dbnames;
 		private static Configuration config;
-		public static int numthreads;
 		
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 		
@@ -63,9 +60,9 @@ namespace MediaWiki.Search.Daemon {
 				}
 				++i;
 			}
+			Configuration.SetIndexSection("Daemon");
 			config = Configuration.Open();
 			
-			indexPath = config.GetString("mwsearch", "indexpath");
 			log.Info("Binding server to port " + port);
 			
 			try {

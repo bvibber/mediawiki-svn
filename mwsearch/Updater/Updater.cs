@@ -69,6 +69,7 @@ namespace MediaWiki.Search.Updater {
 				++i;
 			}
 			
+			Configuration.SetIndexSection("Updater");
 			config = Configuration.Open();
 			if(dbnames.Count == 0) {
 				dbnames = config.Databases;

@@ -50,7 +50,7 @@ namespace MediaWiki.Search.Prefix {
 			
 			try {
 				string pfxdir;
-				pfxdir = string.Format(config.GetString("mwsearch", "titledb"), dbname );
+				pfxdir = string.Format(config.GetIndexString("titledb"), dbname );
 				if (!Directory.Exists(pfxdir)) {
 					Directory.CreateDirectory(pfxdir);
 				}

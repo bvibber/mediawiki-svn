@@ -43,8 +43,15 @@ namespace MediaWiki.Search {
 		private static Configuration instance;
 		private static string configfile = "/etc/mwsearch.conf";
 		
+		/** Which [section] is preferred for GetIndex* */
+		private static string indexSection = "Search";
+		
 		public static void SetConfigFile(string file) {
 			configfile = file;
+		}
+		
+		public static void SetIndexSection(string section) {
+			indexSection = section;
 		}
 		
 		public static Configuration Open() {
@@ -63,7 +70,7 @@ namespace MediaWiki.Search {
 				LogLog.InternalDebugging = true;
 			}
 			
-			string logconfig = GetString("Logging", "config");
+			string logconfig = GetIndexString("logconfig");
 			if (logconfig == null) {
 				// debug!
 				Console.WriteLine("Errors will be logged to console...");
@@ -113,11 +120,11 @@ namespace MediaWiki.Search {
 		
 		public string[] Databases {
 			get {
-				string[] explicitList = GetArray("mwsearch", "databases");
+				string[] explicitList = GetArray("Search", "databases");
 				if (explicitList != null)
 					return explicitList;
 				
-				string dblistSource = GetString("mwsearch", "databaselist");
+				string dblistSource = GetString("Search", "databaselist");
 				if (dblistSource == null)
 					return new string[] { };
 				
@@ -131,6 +138,14 @@ namespace MediaWiki.Search {
 				}
 				return (string[])dblist.ToArray(typeof(string));
 			}
+		}
+		
+		public string GetIndexString(string name) {
+			string val = GetString(indexSection, name);
+			if (val == null)
+				return GetString("Search", name);
+			else
+				return val;
 		}
 	
 	}

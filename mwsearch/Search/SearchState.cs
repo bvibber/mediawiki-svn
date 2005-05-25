@@ -108,7 +108,7 @@ namespace MediaWiki.Search {
 		
 		private SearchState(string dbname) {
 			config = Configuration.Open();
-			indexpath = string.Format(config.GetString("mwsearch","indexpath"),
+			indexpath = string.Format(config.GetIndexString("indexpath"),
 					dbname );
 			if (!File.Exists(indexpath))
 				System.IO.Directory.CreateDirectory(indexpath);

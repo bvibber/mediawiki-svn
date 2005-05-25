@@ -1,6 +1,6 @@
 ; By default, will check /etc/mwsearch.conf
 
-[mwsearch]
+[Search]
 ; Space-separated list of wiki database names:
 databases=frtest rutest entest detest
 
@@ -15,9 +15,24 @@ indexpath=/usr/local/var/mwsearch/index/{0}
 ; For title prefix database; not really used yet...
 titledb=/usr/local/var/mwsearch/title/{0}
 
-[mwdaemon]
+; Point config to the path of a log4net configuration file
+; If left blank, debug info will be logged to the console.
+;logconfig=/etc/mwsearch.log4net
+
+
+[Daemon]
 port=8123
 verbose=true
+
+[Updater]
+; Override to have updates made to a separate copy of the index.
+; This can be useful to do updates independtly from a running
+; search daemon, then merge them intermittently.
+;indexpath=/kalman/Projects/mwsearch/index-update/{0}
+
+; Logging can also be overridden here, to keep separate
+; log files for the daemon and updater:
+;logconfig=/etc/mwupdater.log4net
 
 [Database]
 ;protocol=unix
@@ -37,9 +52,5 @@ suffix=test
 
 
 [Logging]
-; Point config to the path of a log4net configuration file
-; If left blank, errors will be logged to the console.
-;config=/home/brion/mwsearch.log4net
-
 ; Set debug to true to diagnose problems with log4net configuration
 debug=false
