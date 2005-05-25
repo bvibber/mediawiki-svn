@@ -50,11 +50,12 @@ function setupCatRSSExtension() {
 		* @package MediaWiki
 		*/
 
-		function CategoryByDate( &$title, $tarray = false ) {
+		function CategoryByDate( &$title, $tarray = false, $limit=50 ) {
 			global $wgRequest;
 			$this->mTitle = $title;
 			$this->mFeedFormat = $wgRequest->getVal( 'feed', '' );
 			$this->mTitleStrings = array();
+			$this->mLimit=$limit;
 			if ( is_array($tarray) ) {
 				foreach($tarray as $title) {
 					$this->mTitleStrings[] = $title->getDBKey();
@@ -72,7 +73,6 @@ function setupCatRSSExtension() {
 			$fname = __CLASS__ . '::' . __FUNCTION__;
 			$this->mMaxTimeStamp = 0;
 			
-			$limit = 50;
 			$dbr =& wfGetDB( DB_SLAVE );
 			$set = implode( ',', array_map(
 				array( &$dbr, 'addQuotes' ),
@@ -85,7 +85,7 @@ function setupCatRSSExtension() {
 				'cur_is_redirect' => 0),
 				$fname,
 				array( 'ORDER BY' => 'cl_timestamp DESC, cl_sortkey ASC',
-				'LIMIT'    => $limit ));
+				'LIMIT'    => $this->mLimit ));
 				$rows = array();
 			while( $row = $dbr->fetchObject ( $res ) ) {
 				$rows[] = $row;
@@ -152,11 +152,10 @@ function setupCatRSSExtension() {
 				$feedTitle,
 				htmlspecialchars( wfMsgForContent( 'catfeedsummary' ) ),
 				$wgTitle->getFullUrl() );
-			
-			$limit = 50;
+						
 			$pagekey = md5( $this->mTitle->getDBKey() );
-			$timekey = "$wgDBname:catfeed:$pagekey:$this->mFeedFormat:limit:$limit:timestamp";
-			$key = "$wgDBname:catfeed:$pagekey:$this->mFeedFormat:limit:$limit";
+			$timekey = "$wgDBname:catfeed:$pagekey:$this->mFeedFormat:limit:{$this->mLimit}:timestamp";
+			$key = "$wgDBname:catfeed:$pagekey:$this->mFeedFormat:limit:{$this->mLimit}";
 			$cachedFeed = false;
 			$adddeltimestamp = $wgDBname.':Category:'.$pagekey.':adddeltimestamp';
 			
@@ -257,15 +256,32 @@ function viewCatFeed( &$CategoryPage ) {
 }
 function viewCatNewslist( $input ) {
 	$text = '';
+	
+	# Has limit=x been set? Then extract that option from the
+	# input
+	if(preg_match("/limit\s*=\s*(\d+)/mi",$input,$matches)) {
+		$limit=$matches[1];
+		$input=preg_replace("/limit\s*=\s*\d+/mi","",$input);		
+	} else {
+		$limit=50;
+	}
+	
 	$iptitles = split("\n",trim($input));
 	$dbtitles = array();
+	
+	# Add only valid title objects
 	foreach ( $iptitles as $title ) {
-		$dbtitles[] = Title::newFromUrl($title);
+		$addtitle = Title::newFromUrl($title);
+		if(get_class($addtitle)=="title") {
+			$dbtitles[] = $addtitle;
+		}
 	}
 	# search for 5 categories max for now 
 	$dbtitles = array_slice($dbtitles, 0, 4);
-	$catnews = new CategoryByDateNewslist($dbtitles[0], $dbtitles);
-	$text .= $catnews->view();
+	if(count($dbtitles)>0) {
+		$catnews = new CategoryByDateNewslist($dbtitles[0], $dbtitles, $limit);
+		$text .= $catnews->view();
+	}
 	
 	return $text;
 }
