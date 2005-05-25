@@ -49,13 +49,15 @@ function setupCatRSSExtension() {
 		* Uses bits of the recentchanges feeds (caching and formatting)
 		* @package MediaWiki
 		*/
+		
+		var $mLimit = 50;
+		var $mDatelevel = 2;
 
-		function CategoryByDate( &$title, $tarray = false, $limit=50 ) {
+		function CategoryByDate( &$title, $tarray = false ) {
 			global $wgRequest;
 			$this->mTitle = $title;
 			$this->mFeedFormat = $wgRequest->getVal( 'feed', '' );
 			$this->mTitleStrings = array();
-			$this->mLimit=$limit;
 			if ( is_array($tarray) ) {
 				foreach($tarray as $title) {
 					$this->mTitleStrings[] = $title->getDBKey();
@@ -132,6 +134,14 @@ function setupCatRSSExtension() {
 			# only return the first few chars for now
 			$shorttext = $wgContLang->truncate( trim( $text ), 145, '...' );
 			return htmlspecialchars( $shorttext );
+		}
+		
+		function setLimit($limit) {
+			$this->mLimit=$limit;
+		}
+		
+		function setDatelevel($datelevel) {
+			$this->mDatelevel=$datelevel;
 		}
 
 	}
@@ -228,7 +238,7 @@ function setupCatRSSExtension() {
 					$newdate = $wgLang->date( wfTimestamp( TS_MW, $ts ) );
 					if( $date != $newdate ) {
 						$date = $newdate;
-						$list .= "$closedl\n<h2> ".$date." </h2>\n<dl>";
+						$list .= "$closedl\n<h{$this->mDatelevel}> ".$date." </h{$this->mDatelevel}>\n<dl>";
 						$closedl = '</dl>';
 					}
 					$list .= '<dt>' . $skin->makeKnownLinkObj($title) .
@@ -257,15 +267,17 @@ function viewCatFeed( &$CategoryPage ) {
 function viewCatNewslist( $input ) {
 	$text = '';
 	
-	# Has limit=x been set? Then extract that option from the
-	# input
-	if(preg_match("/limit\s*=\s*(\d+)/mi",$input,$matches)) {
-		$limit=$matches[1];
-		$input=preg_replace("/limit\s*=\s*\d+/mi","",$input);		
-	} else {
-		$limit=50;
-	}
+	# Defaults
+	#
+	# Number of headlines to be shown	
+	$limit=50;
+	# Header level to be used for dates
+	$datelevel=2;
 	
+	# Extract possible options from input
+	getCatOption($limit,$input,"limit");
+	getCatOption($datelevel,$input,"datelevel");	
+
 	$iptitles = split("\n",trim($input));
 	$dbtitles = array();
 	
@@ -279,10 +291,22 @@ function viewCatNewslist( $input ) {
 	# search for 5 categories max for now 
 	$dbtitles = array_slice($dbtitles, 0, 4);
 	if(count($dbtitles)>0) {
-		$catnews = new CategoryByDateNewslist($dbtitles[0], $dbtitles, $limit);
+		$catnews = new CategoryByDateNewslist($dbtitles[0], $dbtitles);
+		$catnews->setLimit($limit);
+		$catnews->setDatelevel($datelevel);		
 		$text .= $catnews->view();
 	}
 	
 	return $text;
 }
+
+function getCatOption(&$value,&$input,$name) {
+
+	if(preg_match("/$name\s*=\s*(\d+)/mi",$input,$matches)) {
+		$value=$matches[1];
+		# Extract from input
+		$input=preg_replace("/$name\s*=\s*\d+/mi","",$input);		
+	} 
+}
+
 ?>
