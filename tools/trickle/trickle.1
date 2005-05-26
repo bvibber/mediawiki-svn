@@ -6,7 +6,8 @@
 .Nd copy one directory to another directory or a tar file, slowly
 .Sh SYNOPSIS
 .Nm
-.Op Fl t | u
+.Op Fl Ft | u
+.Op Fl q
 .Op Fl s Ar blocksize
 .Op Fl b Ar blocksleep
 .Op Fl f Ar filesleep
@@ -58,6 +59,12 @@ microseconds after copying each block.
 Sleep for
 .Ar filesleep
 microseconds after copying each file.
+.It Fl F 
+If
+.Ar dest
+is a file and already exists, overwrite it without prompting.
+.It Fl q
+Be less verbose.
 .El
 .Sh NOTES
 The POSIX.1

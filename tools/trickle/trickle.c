@@ -19,6 +19,7 @@
 #include <errno.h>
 #include <utime.h>
 #include <tar.h>
+#include <strings.h>
 
 #define min(x,y) ((x) < (y) ? (x) : (y))
 #define max(x,y) ((x) < (y) ? (y) : (x))
@@ -59,7 +60,7 @@ struct tar {
 
 const char *progname;
 
-int tflag, uflag;
+int tflag, uflag, Fflag, qflag;
 int blocksleep, filesleep;
 int blocksize = 8192;
 char *src, *dest;
@@ -67,22 +68,23 @@ char *curdir;
 FILE *tarfile;
 
 static void copy_directory(const char *dir);
-static void copy_file(const char *name, struct stat *sb);
+static void copy_file(const char *name, const char *outname);
 static size_t write_blocked(void *buf, size_t size, FILE *file);
 static void write_tarheader(const char *name, struct stat *sb);
 static void write_tareof(void);
-static int newer(const char *fa, const char *fb);
+static int newerorsame(const char *fa, const char *fb);
 
 void __attribute__((noreturn))
 usage(void)
 {
 	fprintf(stderr,
-		"Usage: %s -s blocksize [-b blocksleep] [-f filesleep] [-tu] <src> <dest>\n"
-		"\t-s blocksize          amount of data to read/write at one time\n"
-		"\t-b blocksleep         time to sleep between each block (microseconds)\n"
-		"\t-f filesleep          time to sleep between each file (microseconds)\n"
-		"\t-t                    output a tar(1) file called <dest> instead of copying\n"
-		"\t-u                    don't copy files with a modification date older than the target\n",
+"Usage: %s -s blocksize [-b blocksleep] [-f filesleep] [-tuF] <src> <dest>\n"
+"\t-s blocksize          amount of data to read/write at one time\n"
+"\t-b blocksleep         time to sleep between each block (microseconds)\n"
+"\t-f filesleep          time to sleep between each file (microseconds)\n"
+"\t-t                    output a tar(1) file called <dest> instead of copying\n"
+"\t-u                    don't copy files with a modification date older than the target\n"
+"\t-F                    if <src> is a file, and <dest> already exists, overwrite without warning\n",
 		progname);
 	exit(8);
 }
@@ -92,11 +94,18 @@ main(argc, argv)
 	char *argv[];
 {
 	int	i;
+struct	stat	sb;
 
 	progname = argv[0];
 
-	while ((i = getopt(argc, argv, "uts:b:f:")) != -1) {
+	while ((i = getopt(argc, argv, "qFuts:b:f:")) != -1) {
 		switch(i) {
+		case 'F':
+			Fflag++;
+			break;
+		case 'q':
+			qflag++;
+			break;
 		case 't':
 			tflag++;
 			break;
@@ -142,9 +151,6 @@ main(argc, argv)
 		free(cwd);
 	}
 
-	fprintf(stderr, "Copying from %s to %s%s, using blocksize %d, sleeps block/file %d/%d\n",
-		src, tflag ? "tar file " : "", dest, blocksize, blocksleep, filesleep);
-
 	if (tflag) {
 		if (!strcmp(dest, "-"))
 			tarfile = stdout;
@@ -154,10 +160,61 @@ main(argc, argv)
 		}
 	}
 
-	if (chdir(src) < 0) {
-		perror("chdir");
+	if (stat(src, &sb) < 0) {
+		perror(src);
 		exit(8);
 	}
+
+	if ((sb.st_mode & (S_IFREG | S_IFDIR)) == 0) {
+		fprintf(stderr, "%s: %s: neither file nor directory\n", progname, src);
+		exit(8);
+	}
+
+	if (sb.st_mode & S_IFREG) {
+		struct stat sd;
+		char *filename, *slash;
+
+		errno = 0;
+		if (stat(dest, &sd) < 0 && errno != ENOENT) {
+			perror(dest);
+			exit(8);
+		}
+
+		if ((sd.st_mode & S_IFDIR) == 0 || errno == ENOENT) {
+			if (errno == 0 && !Fflag) {
+				char c;
+
+				fprintf(stderr, "%s: overwrite \"%s\"? [y/n] ", progname, dest);
+				fflush(stderr);
+				for (;;) switch (fgetc(stdin)) {
+					case (int)'y': goto ok;
+					case (int)'n': case EOF: exit(0);
+					default: fprintf(stderr, "Please enter 'y' or 'n': \n");
+						continue;
+				} ok:
+				if ((c = fgetc(stdin)) != '\n') ungetc(c, stdin);
+				if (unlink(dest) < 0) {
+					perror(dest);
+					exit(8);
+				}
+			}
+		} else {
+			char *t = dest, *slash = rindex(src, '/');
+			dest = malloc(strlen(t) + strlen(dest) + 1);
+			sprintf(dest, "%s/%s", dest, slash ? slash : src);
+		}
+
+		copy_file(src, dest);
+		exit(0);
+	}
+		
+	if (chdir(src) < 0) {
+		perror(src);
+		exit(8);
+	}
+
+	if (!qflag) fprintf(stderr, "Copying from %s to %s%s, using blocksize %d, sleeps block/file %d/%d\n",
+		src, tflag ? "tar file " : "", dest, blocksize, blocksleep, filesleep);
 
 	curdir = strdup("");
 	copy_directory(".");
@@ -205,7 +262,7 @@ struct	stat	 sb;
 
 		if (sb.st_mode & S_IFDIR) {
 			char *dpath;
-			fprintf(stderr, "d  %s%s\n", curdir, dp->d_name);
+			if (!qflag) fprintf(stderr, "d  %s%s\n", curdir, dp->d_name);
 			/*
 			 * If not creating a tar file, we need to create the destination directory.
 			 */
@@ -223,13 +280,18 @@ struct	stat	 sb;
 			}
 			copy_directory(dp->d_name);
 		} else if (sb.st_mode & S_IFREG) {
-			copy_file(dp->d_name, &sb);
+			char *outname;
+			outname = alloca(strlen(dest) + strlen(curdir) + strlen(dp->d_name) + 3);
+			sprintf(outname, "%s/%s%s", dest, curdir, dp->d_name);
+
+			copy_file(dp->d_name, outname);
 			usleep(filesleep);
 		} else {
 			/*
 			 * Ignore special files...
 			 */
-			fprintf(stderr, "%s: ignoring %s%s: neither directory nor file\n", progname, curdir, dp->d_name);
+			fprintf(stderr, "%s: ignoring %s%s: neither directory nor file\n", 
+						progname, curdir, dp->d_name);
 		}
 	}
 	closedir(dirp);
@@ -288,22 +350,24 @@ struct	tar	 hdr;
 }
 
 static void
-copy_file(name, sb)
-	const char *name;
-	struct stat *sb;
+copy_file(name, outname)
+	const char *name, *outname;
 {
 	FILE	*f, *out = NULL;
-	char	*buf, *outname;
+	char	*buf;
 	size_t	 bsize;
+struct	stat	sb;
+
+	if (stat(name, &sb) < 0) {
+		perror(name);
+		exit(8);
+	}
 
 	if (tflag) {
-		write_tarheader(name, sb);
+		write_tarheader(name, &sb);
 	} else {
-		outname = alloca(strlen(dest) + strlen(curdir) + strlen(name) + 3);
-		sprintf(outname, "%s/%s%s", dest, curdir, name);
-
-		if (uflag && newer(outname, name)) {
-			fprintf(stderr, "fu %s%s\n", curdir, name);
+		if (uflag && newerorsame(outname, name)) {
+			if (!qflag) fprintf(stderr, "fu %s%s\n", curdir ? curdir : "", name);
 			return;
 		}
 
@@ -347,15 +411,17 @@ copy_file(name, sb)
 		fflush(tarfile);
 	else {
 		struct utimbuf ut;
-		ut.actime = sb->st_atime;
-		ut.modtime = sb->st_mtime;
+
+		ut.actime = sb.st_atime;
+		ut.modtime = sb.st_mtime;
 		if (utime(outname, &ut) < 0) {
 			perror(outname);
 			exit(8);
 		}
 	}
 
-	fprintf(stderr, "f  %s%s %d bytes, %d blocks\n", curdir, name, (int)sb->st_size, (int)sb->st_blocks);
+	if (!qflag) fprintf(stderr, "f  %s%s %d bytes, %d blocks\n", curdir ? curdir : "",
+		name, (int)sb.st_size, (int)sb.st_blocks);
 
 }
 
@@ -383,7 +449,7 @@ write_blocked(buf, size, file)
 }
 
 static int
-newer(fa, fb)
+newerorsame(fa, fb)
 	const char *fa, *fb;
 {
 struct	stat	sa, sb;
@@ -401,7 +467,7 @@ struct	stat	sa, sb;
 		exit(8);
 	}
 
-	return sa.st_mtime > sb.st_mtime;
+	return sa.st_mtime >= sb.st_mtime;
 }
 
 static void
