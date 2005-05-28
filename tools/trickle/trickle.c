@@ -502,6 +502,7 @@ addexclude(name)
 {
 	excludes = realloc(excludes, nexcl + 1);
 	excludes[nexcl] = strdup(name);
+	++nexcl;
 }
 
 static int
