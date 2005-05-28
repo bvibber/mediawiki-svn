@@ -255,8 +255,8 @@ struct	stat	 sb;
 		if (!strcmp(dp->d_name, ".") || !strcmp(dp->d_name, ".."))
 			continue;
 	
-		if (stat(dp->d_name, &sb) < 0) {
-			perror("stat");
+		if (lstat(dp->d_name, &sb) < 0) {
+			perror(dp->d_name);
 			exit(8);
 		}
 
@@ -358,7 +358,7 @@ copy_file(name, outname)
 	size_t	 bsize;
 struct	stat	sb;
 
-	if (stat(name, &sb) < 0) {
+	if (lstat(name, &sb) < 0) {
 		perror(name);
 		exit(8);
 	}
@@ -453,14 +453,14 @@ newerorsame(fa, fb)
 	const char *fa, *fb;
 {
 struct	stat	sa, sb;
-	if (stat(fa, &sa) < 0) {
+	if (lstat(fa, &sa) < 0) {
 		if (errno == ENOENT)
 			return 0;
 		perror(fa);
 		exit(8);
 	}
 
-	if (stat(fb, &sb) < 0) {
+	if (lstat(fb, &sb) < 0) {
 		if (errno == ENOENT)
 			return 0;
 		perror(fb);
