@@ -73,6 +73,8 @@ static size_t write_blocked(void *buf, size_t size, FILE *file);
 static void write_tarheader(const char *name, struct stat *sb);
 static void write_tareof(void);
 static int newerorsame(const char *fa, const char *fb);
+static int exclude(const char *name);
+static void addexclude(const char *name);
 
 void __attribute__((noreturn))
 usage(void)
@@ -84,8 +86,10 @@ usage(void)
 "\t-f filesleep          time to sleep between each file (microseconds)\n"
 "\t-t                    output a tar(1) file called <dest> instead of copying\n"
 "\t-u                    don't copy files with a modification date older than the target\n"
-"\t-F                    if <src> is a file, and <dest> already exists, overwrite without warning\n",
-		progname);
+"\t-F                    if <src> is a file, and <dest> already exists, overwrite without warning\n"
+"\t-q                    be less verbose\n"
+"\t-x name               don't include directories called \"name\"\n"
+		,progname);
 	exit(8);
 }
 
@@ -98,7 +102,7 @@ struct	stat	sb;
 
 	progname = argv[0];
 
-	while ((i = getopt(argc, argv, "qFuts:b:f:")) != -1) {
+	while ((i = getopt(argc, argv, "qFuts:b:f:x:")) != -1) {
 		switch(i) {
 		case 'F':
 			Fflag++;
@@ -120,6 +124,9 @@ struct	stat	sb;
 			break;
 		case 'f':
 			filesleep = atoi(optarg);
+			break;
+		case 'x':
+			addexclude(optarg);
 			break;
 		case 'h':
 		default:
@@ -262,6 +269,10 @@ struct	stat	 sb;
 
 		if (sb.st_mode & S_IFDIR) {
 			char *dpath;
+			if (exclude(dp->d_name)) {
+				if (!qflag) fprintf(stderr, "de %s%s\n", curdir, dp->d_name);
+				continue;
+			}
 			if (!qflag) fprintf(stderr, "d  %s%s\n", curdir, dp->d_name);
 			/*
 			 * If not creating a tar file, we need to create the destination directory.
@@ -480,4 +491,28 @@ write_tareof(void)
 	 */
 	write_blocked(buf, 1, tarfile);
 	write_blocked(buf, 1, tarfile);
+}
+
+char **excludes;
+int nexcl;
+
+static void
+addexclude(name)
+	const char *name;
+{
+	excludes = realloc(excludes, nexcl + 1);
+	excludes[nexcl] = strdup(name);
+}
+
+static int
+exclude(name)
+	const char *name;
+{
+	char **excl;
+
+	for (excl = excludes; excl < &excludes[nexcl]; ++excl)
+		if (!strcmp(*excl, name))
+			return 1;
+
+	return 0;
 }
