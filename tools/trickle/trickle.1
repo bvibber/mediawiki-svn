@@ -6,7 +6,7 @@
 .Nd copy one directory to another directory or a tar file, slowly
 .Sh SYNOPSIS
 .Nm
-.Op Fl Ft | u
+.Op Fl Fpt | u
 .Op Fl q
 .Op Fl s Ar blocksize
 .Op Fl b Ar blocksleep
@@ -65,6 +65,12 @@ If
 is a file and already exists, overwrite it without prompting.
 .It Fl q
 Be less verbose.
+.It Fl x
+Write pax(1) extended headers when a filename is too long to be
+represented by tar.  When this occurs, the file will still be
+extractable by tar, but its filename will be truncated, and a
+dummy file called "@PAX.HEADER" will be created.  The pax(1)
+format is compatible with GNU tar.
 .El
 .Sh NOTES
 The POSIX.1

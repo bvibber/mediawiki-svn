@@ -4,7 +4,7 @@
  * trickle: copy one directory to another, slowly.
  */
 
-#define _FILE_OFFSET_BITS 64
+#include "trickle.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -18,65 +18,28 @@
 #include <limits.h>
 #include <errno.h>
 #include <utime.h>
-#include <tar.h>
 #include <strings.h>
-
-#define min(x,y) ((x) < (y) ? (x) : (y))
-#define max(x,y) ((x) < (y) ? (y) : (x))
-
-/*
- * POSIX 1003.1-1990/SUSv2 tar(1) header.
- *
- * Regarding name/prefix, SUSv2 says:
- *
- *    The name and the prefix fields produce the pathname of the file. The 
- *    hierarchical relationship of the file can be retained by specifying the 
- *    pathname as a path prefix, and a slash character and filename as the 
- *    suffix. A new pathname is formed, if prefix is not an empty string (its 
- *    first character is not NUL), by concatenating prefix (up to the first NUL 
- *    character), a slash character and name; otherwise, name is used alone. 
- *    In either case, name is terminated at the first NUL character. If prefix 
- *    begins with a NUL character, it will be ignored. In this manner, pathnames 
- *    of at most 256 characters can be supported.
- */
-struct tar {
-	char tr_name[100];	/* file name		*/
-	char tr_mode[8];	/* mode			*/
-	char tr_uid[8];		/* owner (numeric)	*/
-	char tr_gid[8];		/* group (numeric)	*/
-	char tr_size[12];	/* size in bytes	*/
-	char tr_mtime[12];	/* mtime		*/
-	char tr_chksum[8];	/* checksum of header	*/
-	char tr_typeflag;	/* file type		*/
-	char tr_linkname[100];	/* symlink target	*/
-	char tr_magic[6];	/* tar magic: "ustar "	*/
-	char tr_version[2];	/* tar version: "00"	*/
-	char tr_uname[32];	/* owner (string)	*/
-	char tr_gname[32];	/* group (string)	*/
-	char tr_devmajor[8];	/* device major		*/
-	char tr_devminor[8];	/* device minor		*/
-	char tr_prefix[155];	/* directory		*/
-} __attribute__((packed));
 
 const char *progname;
 
-int tflag, uflag, Fflag, qflag;
+int tflag, uflag, Fflag, qflag, pflag;
+int archive;
 int blocksleep, filesleep;
 int blocksize = 8192;
 char *src, *dest;
 char *curdir;
-FILE *tarfile;
+FILE *archfile;
 
 static void copy_directory(const char *dir);
 static void copy_file(const char *name, const char *outname);
-static size_t write_blocked(void *buf, size_t size, FILE *file);
-static void write_tarheader(const char *name, struct stat *sb);
-static void write_tareof(void);
 static int newerorsame(const char *fa, const char *fb);
 static int exclude(const char *name);
 static void addexclude(const char *name);
 
-void __attribute__((noreturn))
+static void (*arch_writeheader) (FILE *, const char *name);
+static void (*arch_writeeof) (FILE *);
+
+void
 usage(void)
 {
 	fprintf(stderr,
@@ -89,12 +52,14 @@ usage(void)
 "\t-F                    if <src> is a file, and <dest> already exists, overwrite without warning\n"
 "\t-q                    be less verbose\n"
 "\t-x name               don't include directories called \"name\"\n"
+"\t-p                    write SUSv3 \"pax\" format tar headers where required (long filenames)\n"
 		,progname);
 	exit(8);
 }
 
 int
 main(argc, argv)
+	int argc;
 	char *argv[];
 {
 	int	i;
@@ -102,7 +67,7 @@ struct	stat	sb;
 
 	progname = argv[0];
 
-	while ((i = getopt(argc, argv, "qFuts:b:f:x:")) != -1) {
+	while ((i = getopt(argc, argv, "pqFuts:b:f:x:")) != -1) {
 		switch(i) {
 		case 'F':
 			Fflag++;
@@ -128,6 +93,9 @@ struct	stat	sb;
 		case 'x':
 			addexclude(optarg);
 			break;
+		case 'p':
+			pflag++;
+			break;
 		case 'h':
 		default:
 			usage();
@@ -136,10 +104,16 @@ struct	stat	sb;
 	argc -= optind;
 	argv += optind;
 
+	if (tflag) {
+		archive = 1;
+		arch_writeheader = tar_writeheader;
+		arch_writeeof = tar_writeeof;
+	}
+
 	if (argc != 2)
 		usage();
 
-	if (uflag && tflag) {
+	if (uflag && archive) {
 		fprintf(stderr, "%s: -u and -t may not be specified together\n", progname);
 		usage();
 	}
@@ -158,10 +132,10 @@ struct	stat	sb;
 		free(cwd);
 	}
 
-	if (tflag) {
+	if (archive) {
 		if (!strcmp(dest, "-"))
-			tarfile = stdout;
-		else if ((tarfile = fopen(dest, "w")) == NULL) {
+			archfile = stdout;
+		else if ((archfile = fopen(dest, "w")) == NULL) {
 			perror(dest);
 			exit(8);
 		}
@@ -226,10 +200,10 @@ struct	stat	sb;
 	curdir = strdup("");
 	copy_directory(".");
 	
-	if (tarfile) {
-		write_tareof();
-		if (tarfile != stdout)
-			fclose(tarfile);
+	if (archfile) {
+		arch_writeeof(archfile);
+		if (archfile != stdout)
+			fclose(archfile);
 	}
 
 	return 0;
@@ -270,10 +244,12 @@ struct	stat	 sb;
 		if (sb.st_mode & S_IFDIR) {
 			char *dpath;
 			if (exclude(dp->d_name)) {
-				if (!qflag) fprintf(stderr, "de %s%s\n", curdir, dp->d_name);
+				if (!qflag) 
+					fprintf(stderr, "de %s%s\n", curdir, dp->d_name);
 				continue;
 			}
-			if (!qflag) fprintf(stderr, "d  %s%s\n", curdir, dp->d_name);
+			if (!qflag) 
+				fprintf(stderr, "d  %s%s\n", curdir, dp->d_name);
 			/*
 			 * If not creating a tar file, we need to create the destination directory.
 			 */
@@ -312,55 +288,6 @@ struct	stat	 sb;
 }
 
 static void
-write_tarheader(name, sb)
-	const char *name;
-	struct stat *sb;
-{
-struct	tar	 hdr;
-	char	*buf;
-	int	 sum = 0, i;
-
-	/*
-	 * This is a very lax tar header.  It's accepted by Solaris tar
-	 * and GNU tar, but misses some information we don't use.
-	 */
-	memset(&hdr, 0, sizeof(hdr));
-	if (strlen(curdir) > 155)
-		fprintf(stderr, "%s: warning: directory for %s%s truncated to 155 characters\n",
-				progname, curdir, name);
-	/*
-	 * Trim the first two characters of curdir, which is always "./", and the last, 
-	 * which is always a "/".  Saves 3 bytes for pathname...
-	 */
-	strncpy(hdr.tr_prefix, curdir + 2, min(sizeof(hdr.tr_prefix), max(0, strlen(curdir + 2) - 1)));
-	if (strlen(name) > 100)
-		fprintf(stderr, "%s: warning: filename for %s%s truncated to 100 characters\n",
-				progname, curdir, name);
-	strncpy(hdr.tr_name, name, sizeof(hdr.tr_name));
-
-	sprintf(hdr.tr_mode, "%07o", (int)(sb->st_mode & 0777));
-	sprintf(hdr.tr_uid, "%07o", (int)sb->st_uid);
-	sprintf(hdr.tr_gid, "%07o", (int)sb->st_gid);
-	sprintf(hdr.tr_size, "%011o", (int)sb->st_size);
-	sprintf(hdr.tr_mtime, "%011o", (int)sb->st_mtime);
-	memcpy(hdr.tr_magic, TMAGIC, TMAGLEN);
-	memcpy(hdr.tr_version, TVERSION, TVERSLEN);
-	sprintf(hdr.tr_uname, "%d", (int)sb->st_uid);
-	sprintf(hdr.tr_gname, "%d", (int)sb->st_gid);
-	strncpy(hdr.tr_chksum, "        ", 8);
-	hdr.tr_typeflag = REGTYPE;
-	
-	for (buf = &hdr, i = sizeof(hdr); i--;)
-	       sum += *buf++;
-	snprintf(hdr.tr_chksum, 8, "%06o", sum);
-
-	if (write_blocked(&hdr, sizeof(hdr), tarfile) < 1) {
-		perror(dest);
-		exit(8);
-	}
-}
-
-static void
 copy_file(name, outname)
 	const char *name, *outname;
 {
@@ -374,8 +301,8 @@ struct	stat	sb;
 		exit(8);
 	}
 
-	if (tflag) {
-		write_tarheader(name, &sb);
+	if (archive) {
+		arch_writeheader(archfile, name);
 	} else {
 		if (uflag && newerorsame(outname, name)) {
 			if (!qflag) fprintf(stderr, "fu %s%s\n", curdir ? curdir : "", name);
@@ -402,7 +329,7 @@ struct	stat	sb;
 			}
 		}
 		if (tflag) {
-			if (write_blocked(buf, bsize, tarfile) < 1) {
+			if (write_blocked(buf, bsize, archfile) < 1) {
 				perror(dest);
 				exit(8);
 			}
@@ -418,8 +345,8 @@ struct	stat	sb;
 	if (out)
 		fclose(out);
 	fclose(f);
-	if (tflag)
-		fflush(tarfile);
+	if (archive)
+		fflush(archfile);
 	else {
 		struct utimbuf ut;
 
@@ -431,12 +358,13 @@ struct	stat	sb;
 		}
 	}
 
-	if (!qflag) fprintf(stderr, "f  %s%s %d bytes, %d blocks\n", curdir ? curdir : "",
-		name, (int)sb.st_size, (int)sb.st_blocks);
+	if (!qflag) 
+		fprintf(stderr, "f  %s%s %d bytes, %d blocks\n", curdir ? curdir : "",
+			name, (int)sb.st_size, (int)sb.st_blocks);
 
 }
 
-static size_t
+size_t
 write_blocked(buf, size, file)
 	void *buf;
 	size_t size;
@@ -479,18 +407,6 @@ struct	stat	sa, sb;
 	}
 
 	return sa.st_mtime >= sb.st_mtime;
-}
-
-static void
-write_tareof(void)
-{
-	char buf[1] = {};
-
-	/*
-	 * Two-block EOF.
-	 */
-	write_blocked(buf, 1, tarfile);
-	write_blocked(buf, 1, tarfile);
 }
 
 char **excludes;
