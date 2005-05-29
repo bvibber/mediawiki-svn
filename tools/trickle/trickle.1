@@ -8,6 +8,7 @@
 .Nm
 .Op Fl Fpt | u
 .Op Fl q
+.Op Fl x Ar filename
 .Op Fl s Ar blocksize
 .Op Fl b Ar blocksleep
 .Op Fl f Ar filesleep
@@ -65,12 +66,15 @@ If
 is a file and already exists, overwrite it without prompting.
 .It Fl q
 Be less verbose.
-.It Fl x
+.It Fl p
 Write pax(1) extended headers when a filename is too long to be
 represented by tar.  When this occurs, the file will still be
 extractable by tar, but its filename will be truncated, and a
 dummy file called "@PAX.HEADER" will be created.  The pax(1)
 format is compatible with GNU tar.
+.It Fl x Ar name
+Don't copy directories called
+.Ar name
 .El
 .Sh NOTES
 The POSIX.1
