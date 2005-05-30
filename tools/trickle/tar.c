@@ -40,7 +40,7 @@ struct	stat	 sb;
 	 * Long filenames can't be represented in standard tar(1).  If -p
 	 * was specified, we write a pax(1) extended tar header, type "x",
 	 * which contains the real filename.  However, we still write the
-	 * standard ustar header to give tar users a change to extract it.
+	 * standard ustar header to give tar users a chance to extract it.
 	 *
 	 * The pax format is described in IEEE Std 1003.1-2004, "The Open 
 	 * Group Base Specifications Issue 6".
@@ -51,10 +51,6 @@ struct	stat	 sb;
 		truncate++;
 	}
 
-	/*
-	 * Trim the first two characters of curdir, which is always "./", and the last, 
-	 * which is always a "/".  Saves 3 bytes for pathname...
-	 */
 	if (strlen(name) > 100) {
 		fprintf(stderr, "%s: warning: filename for %s%s truncated to 100 characters in ustar header\n",
 				progname, curdir, name);
@@ -102,7 +98,11 @@ struct	stat	 sb;
 	}		
 
 	memset(&hdr, 0, sizeof(hdr));
-	
+
+	/*
+	 * Trim the first two characters of curdir, which is always "./", and the last, 
+	 * which is always a "/".  Saves 3 bytes for pathname...
+	 */
 	strncpy(hdr.tr_prefix, curdir + 2, min(sizeof(hdr.tr_prefix), max(0, strlen(curdir + 2) - 1)));
 	strncpy(hdr.tr_name, name, sizeof(hdr.tr_name));
 

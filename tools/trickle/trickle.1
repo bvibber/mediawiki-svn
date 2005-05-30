@@ -6,7 +6,7 @@
 .Nd copy one directory to another directory or a tar file, slowly
 .Sh SYNOPSIS
 .Nm
-.Op Fl Fpt | u
+.Op Fl Fpt | uP
 .Op Fl q
 .Op Fl x Ar filename
 .Op Fl s Ar blocksize
@@ -74,7 +74,9 @@ dummy file called "@PAX.HEADER" will be created.  The pax(1)
 format is compatible with GNU tar.
 .It Fl x Ar name
 Don't copy directories called
-.Ar name
+.Ar name .
+.It Fl P
+Preserve ownership and file permissions of copied files.
 .El
 .Sh NOTES
 The POSIX.1

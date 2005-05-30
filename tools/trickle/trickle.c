@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,7 +23,7 @@
 
 const char *progname;
 
-int tflag, uflag, Fflag, qflag, pflag;
+int tflag, uflag, Fflag, qflag, pflag, Pflag;
 int archive;
 int blocksleep, filesleep;
 int blocksize = 8192;
@@ -33,6 +34,7 @@ FILE *archfile;
 static void copy_directory(const char *dir);
 static void copy_file(const char *name, const char *outname);
 static int newerorsame(const char *fa, const char *fb);
+static int samefile(const char *fa, const char *fb);
 static int exclude(const char *name);
 static void addexclude(const char *name);
 
@@ -43,7 +45,7 @@ void
 usage(void)
 {
 	fprintf(stderr,
-"Usage: %s -s blocksize [-b blocksleep] [-f filesleep] [-tuF] <src> <dest>\n"
+"Usage: %s -s blocksize [-b blocksleep] [-f filesleep] [-tp | -uFP] <src> <dest>\n"
 "\t-s blocksize          amount of data to read/write at one time\n"
 "\t-b blocksleep         time to sleep between each block (microseconds)\n"
 "\t-f filesleep          time to sleep between each file (microseconds)\n"
@@ -53,6 +55,7 @@ usage(void)
 "\t-q                    be less verbose\n"
 "\t-x name               don't include directories called \"name\"\n"
 "\t-p                    write SUSv3 \"pax\" format tar headers where required (long filenames)\n"
+"\t-P                    preserve ownership and owner of copied files\n"
 		,progname);
 	exit(8);
 }
@@ -67,7 +70,7 @@ struct	stat	sb;
 
 	progname = argv[0];
 
-	while ((i = getopt(argc, argv, "pqFuts:b:f:x:")) != -1) {
+	while ((i = getopt(argc, argv, "PpqFuts:b:f:x:")) != -1) {
 		switch(i) {
 		case 'F':
 			Fflag++;
@@ -95,6 +98,9 @@ struct	stat	sb;
 			break;
 		case 'p':
 			pflag++;
+			break;
+		case 'P':
+			Pflag++;
 			break;
 		case 'h':
 		default:
@@ -194,7 +200,8 @@ struct	stat	sb;
 		exit(8);
 	}
 
-	if (!qflag) fprintf(stderr, "Copying from %s to %s%s, using blocksize %d, sleeps block/file %d/%d\n",
+	if (!qflag) fprintf(stderr, 
+		"Copying from %s to %s%s, using blocksize %d, sleeps block/file %d/%d\n",
 		src, tflag ? "tar file " : "", dest, blocksize, blocksleep, filesleep);
 
 	curdir = strdup("");
@@ -254,7 +261,8 @@ struct	stat	 sb;
 			 * If not creating a tar file, we need to create the destination directory.
 			 */
 			if (!tflag) {
-				dpath = alloca(strlen(dest) + strlen(curdir) + strlen(dp->d_name) + 3);
+				dpath = alloca(strlen(dest) + strlen(curdir) + 
+					strlen(dp->d_name) + 3);
 				sprintf(dpath, "%s/%s%s", dest, curdir, dp->d_name);
 				/*
 				 * We don't care about permissions, so if the directory already
@@ -292,6 +300,7 @@ copy_file(name, outname)
 	const char *name, *outname;
 {
 	FILE	*f, *out = NULL;
+	int	 outf;
 	char	*buf;
 	size_t	 bsize;
 struct	stat	sb;
@@ -305,14 +314,28 @@ struct	stat	sb;
 		arch_writeheader(archfile, name);
 	} else {
 		if (uflag && newerorsame(outname, name)) {
-			if (!qflag) fprintf(stderr, "fu %s%s\n", curdir ? curdir : "", name);
+			if (!qflag) 
+				fprintf(stderr, "fu %s%s\n", curdir ? curdir : "", name);
 			return;
 		}
 
-		if ((out = fopen(outname, "w")) == NULL) {
+		if (samefile(outname, name)) {
+			if (!qflag)
+				fprintf(stderr, "%s: %s%s and %s are the same file\n",
+					progname, curdir, name, outname);
+			return;
+		}
+
+		unlink(outname);
+		if ((outf = open(outname, O_WRONLY | O_CREAT | O_EXCL, sb.st_mode)) == -1) {
+			if (errno == EEXIST) {
+				fprintf(stderr, "%s: %s exists and I didn't expect it to\n",
+					progname, outname);
+			}
 			perror(outname);
 			exit(8);
 		}
+		out = fdopen(outf, "w");
 	}
 
 	if ((f = fopen(name, "r")) == NULL) {
@@ -342,9 +365,8 @@ struct	stat	sb;
 		usleep(blocksleep);
 	}
 
-	if (out)
-		fclose(out);
 	fclose(f);
+
 	if (archive)
 		fflush(archfile);
 	else {
@@ -356,7 +378,16 @@ struct	stat	sb;
 			perror(outname);
 			exit(8);
 		}
+
+		if (Pflag) {
+			if (fchown(fileno(out), sb.st_uid, sb.st_gid) < 0) {
+				perror(outname);
+			}
+		}
 	}
+
+	if (out)
+		fclose(out);
 
 	if (!qflag) 
 		fprintf(stderr, "f  %s%s %d bytes, %d blocks\n", curdir ? curdir : "",
@@ -407,6 +438,29 @@ struct	stat	sa, sb;
 	}
 
 	return sa.st_mtime >= sb.st_mtime;
+}
+
+static int
+samefile(fa, fb)
+	const char *fa, *fb;
+{
+struct	stat	sa, sb;
+	if (lstat(fa, &sa) < 0) {
+		if (errno == ENOENT)
+			return 0;
+		perror(fa);
+		exit(8);
+	}
+
+	if (lstat(fb, &sb) < 0) {
+		if (errno == ENOENT)
+			return 0;
+		perror(fb);
+		exit(8);
+	}
+
+	return (sa.st_ino == sb.st_ino)
+		&& (sa.st_dev == sb.st_dev);
 }
 
 char **excludes;
