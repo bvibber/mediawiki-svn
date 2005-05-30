@@ -333,9 +333,11 @@ class OAIUpdateRecord {
 		
 		fixLinksFromArticle( $id );
 		
-		foreach( $this->_page['uploads'] as $upload ) {
-			if( OAIError::isError( $err = $this->applyUpload( $upload ) ) )
-				return $err;
+		if( isset( $this->_page['uploads'] ) ) {
+			foreach( $this->_page['uploads'] as $upload ) {
+				if( OAIError::isError( $err = $this->applyUpload( $upload ) ) )
+					return $err;
+			}
 		}
 		
 		return true;
@@ -423,8 +425,10 @@ class OAIUpdateRecord {
 			'img_name'        => $upload['filename'],
 			'img_size'        => IntVal( $upload['size'] ),
 			'img_description' => $upload['comment'],
-			'img_user'        => IntVal( $upload['contributor']['id'] ),
-			'img_user_text'   => $upload['contributor']['username'],
+			'img_user'        => IntVal( @$upload['contributor']['id'] ),
+			'img_user_text'   => isset( $revision['contributor']['username'] )
+								   ? $revision['contributor']['username']
+								   : $revision['contributor']['ip'],
 			'img_timestamp'   => $dbw->timestamp( $this->getTimestamp( $upload['timestamp'] ) ) );
 		
 		$dbw->begin();
