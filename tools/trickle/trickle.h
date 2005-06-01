@@ -7,6 +7,8 @@
 #ifndef TRICKLE_H
 #define TRICKLE_H
 
+#pragma ident "@(#) $Id$"
+
 #include <sys/types.h>
 
 #include <stdio.h>
@@ -18,8 +20,40 @@ extern int pflag;
 extern char *dest;		/* destination name	*/
 extern const char *progname;	/* argv[0]		*/
 extern char *curdir;		/* cwd name		*/
+extern char *trickle;
 
 size_t write_blocked(void *buf, size_t size, FILE *file);
+
+#define PROTO_VERS	1
+#define P_ACCEPT 1
+#define P_DECLINE 2
+#define T_FILE 1
+#define T_DIR 2
+
+struct pfile {
+	char	*name;
+	int	 type;
+	int	 uid, gid;
+	int	 actime, mtime;
+	int	 mode;
+};
+
+struct rdcp_frame;
+struct stat;
+
+int proto_neg(int);
+int proto_rsh(const char *, const char *);
+struct pfile *proto_getfile(void);
+void proto_decline(void);
+void proto_accept(void);
+int proto_read(struct rdcp_frame *);
+void proto_write(struct rdcp_frame *);
+int proto_offer(const char *file, struct stat *);
+void proto_eof(void);
+void proto_writeblock(void *, size_t);
+char *proto_readdir();
+char *allocf();
+void fatal();
 
 /** Tar support */
 

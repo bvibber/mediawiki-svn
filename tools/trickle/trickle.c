@@ -4,7 +4,7 @@
  * trickle: copy one directory to another, slowly.
  */
 
-#include "trickle.h"
+#pragma ident "@(#) $Id$"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -13,7 +13,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <alloca.h>
 #include <unistd.h>
 #include <dirent.h>
 #include <limits.h>
@@ -21,9 +20,13 @@
 #include <utime.h>
 #include <strings.h>
 
+#include "trickle.h"
+#include "rdcp.h"
+
 const char *progname;
 
-int tflag, uflag, Fflag, qflag, pflag, Pflag;
+int tflag, uflag, Fflag, qflag, pflag, Pflag, rflag, Zflag;
+char *rsh = "rsh", *remote, *trickle;
 int archive;
 int blocksleep, filesleep;
 int blocksize = 8192;
@@ -31,12 +34,17 @@ char *src, *dest;
 char *curdir;
 FILE *archfile;
 
-static void copy_directory(const char *dir);
+static void copy_directory(const char *dir, 
+	void (*cf)(const char *, const char *));
 static void copy_file(const char *name, const char *outname);
-static int newerorsame(const char *fa, const char *fb);
+static void copy_file_net(const char *, const char *);
+static int contemplate_file(const char *name, struct stat *sb);
 static int samefile(const char *fa, const char *fb);
 static int exclude(const char *name);
 static void addexclude(const char *name);
+static void copy_from_to(int from, int to, const char *destname);
+static void discuss_files(void);
+static void send_files(void);
 
 static void (*arch_writeheader) (FILE *, const char *name);
 static void (*arch_writeeof) (FILE *);
@@ -45,7 +53,8 @@ void
 usage(void)
 {
 	fprintf(stderr,
-"Usage: %s -s blocksize [-b blocksleep] [-f filesleep] [-tp | -uFP] <src> <dest>\n"
+"Usage: %s -s blocksize [-b blocksleep] [-f filesleep] [-tp | -ruFP] [-q] [-x name] "
+"[-z program] [-T trickle] <src> <dest>\n"
 "\t-s blocksize          amount of data to read/write at one time\n"
 "\t-b blocksleep         time to sleep between each block (microseconds)\n"
 "\t-f filesleep          time to sleep between each file (microseconds)\n"
@@ -54,8 +63,11 @@ usage(void)
 "\t-F                    if <src> is a file, and <dest> already exists, overwrite without warning\n"
 "\t-q                    be less verbose\n"
 "\t-x name               don't include directories called \"name\"\n"
-"\t-p                    write SUSv3 \"pax\" format tar headers where required (long filenames)\n"
+"\t-p                    write pax(1) format tar headers where required (long filenames)\n"
 "\t-P                    preserve ownership and owner of copied files\n"
+"\t-r			 copy files to a remote host via rsh\n"
+"\t-z program            use an alternative rsh\n"
+"\t-T trickle            name of trickle on remote host\n"
 		,progname);
 	exit(8);
 }
@@ -65,12 +77,13 @@ main(argc, argv)
 	int argc;
 	char *argv[];
 {
-	int	i;
-struct	stat	sb;
+	int	 i;
+struct	stat	 sb;
+	char	*s;
 
 	progname = argv[0];
 
-	while ((i = getopt(argc, argv, "PpqFuts:b:f:x:")) != -1) {
+	while ((i = getopt(argc, argv, "T:Zz:rPpqFuts:b:f:x:")) != -1) {
 		switch(i) {
 		case 'F':
 			Fflag++;
@@ -102,6 +115,18 @@ struct	stat	sb;
 		case 'P':
 			Pflag++;
 			break;
+		case 'z':
+			rsh = optarg;
+			break;
+		case 'r':
+			rflag++;
+			break;
+		case 'Z':
+			Zflag++;
+			break;
+		case 'T':
+			trickle = optarg;
+			break;
 		case 'h':
 		default:
 			usage();
@@ -109,6 +134,17 @@ struct	stat	sb;
 	}
 	argc -= optind;
 	argv += optind;
+
+	if (Zflag) {
+		if (isatty(0))
+			fatal("-Z should not be used directly");
+		discuss_files();
+	}
+
+	if ((rflag || uflag) && archive) {
+		fprintf(stderr, "%s: -u/-r and -t may not be specified together\n", progname);
+		usage();
+	}
 
 	if (tflag) {
 		archive = 1;
@@ -119,26 +155,36 @@ struct	stat	sb;
 	if (argc != 2)
 		usage();
 
-	if (uflag && archive) {
-		fprintf(stderr, "%s: -u and -t may not be specified together\n", progname);
-		usage();
-	}
-
 	src = argv[0];
 	dest = argv[1];
+
+	if (s = index(dest, ':')) {
+		*s++ = '\0';
+		if (!rflag) {
+			fprintf(stderr, "%s: remote host specified but not -r\n", progname);
+			exit(8);
+		}
+		remote = dest;
+		dest = s;
+	}
+	
+	if (rflag)
+		send_files();
 
 	/*
 	 * Ensure dest is an absolute path.
 	 */
-	if (*dest != '/' && strcmp(dest, "-")) {
+
+	if (!rflag && *dest != '/' && strcmp(dest, "-")) {
 		char *cwd = getcwd(NULL, PATH_MAX);
 		char *olddest = dest;
-		dest = alloca(strlen(cwd) + strlen(olddest) + 2);
-		sprintf(dest, "%s/%s", cwd, olddest);
+		dest = allocf("%s/%s", cwd, olddest);
 		free(cwd);
 	}
 
 	if (archive) {
+		if (rflag)
+			fatal("-r is not compatible with archive mode");
 		if (!strcmp(dest, "-"))
 			archfile = stdout;
 		else if ((archfile = fopen(dest, "w")) == NULL) {
@@ -187,8 +233,7 @@ struct	stat	sb;
 			}
 		} else {
 			char *t = dest, *slash = rindex(src, '/');
-			dest = malloc(strlen(t) + strlen(dest) + 1);
-			sprintf(dest, "%s/%s", dest, slash ? slash : src);
+			dest = allocf("%s/%s", dest, slash ? slash : src);
 		}
 
 		copy_file(src, dest);
@@ -205,7 +250,7 @@ struct	stat	sb;
 		src, tflag ? "tar file " : "", dest, blocksize, blocksleep, filesleep);
 
 	curdir = strdup("");
-	copy_directory(".");
+	copy_directory(".", copy_file);
 	
 	if (archfile) {
 		arch_writeeof(archfile);
@@ -217,8 +262,9 @@ struct	stat	sb;
 }
 
 static void
-copy_directory(dir)
+copy_directory(dir, cf)
 	const char *dir;
+	void (*cf)(const char *, const char *);
 {
 	DIR 	*dirp;
 struct	dirent	*dp;
@@ -231,8 +277,7 @@ struct	stat	 sb;
 	}
 
 	oldcur = curdir;
-	curdir = alloca(strlen(oldcur) + strlen(dir) + 2);
-	sprintf(curdir, "%s%s/", oldcur, dir);
+	curdir = allocf("%s%s/", oldcur, dir);
 
 	if ((dirp = opendir(".")) == NULL) {
 		perror(dir);
@@ -260,10 +305,8 @@ struct	stat	 sb;
 			/*
 			 * If not creating a tar file, we need to create the destination directory.
 			 */
-			if (!tflag) {
-				dpath = alloca(strlen(dest) + strlen(curdir) + 
-					strlen(dp->d_name) + 3);
-				sprintf(dpath, "%s/%s%s", dest, curdir, dp->d_name);
+			if (!tflag && !rflag) {
+				dpath = allocf("%s/%s%s", dest, curdir, dp->d_name);
 				/*
 				 * We don't care about permissions, so if the directory already
 				 * exists, just leave it.
@@ -272,14 +315,17 @@ struct	stat	 sb;
 					perror(dpath);
 					exit(8);
 				}
+				free(dpath);
+			} else if (rflag) {
+				dpath = allocf("%s/%s%s", dest, curdir, dp->d_name);
+				proto_offer(dpath, &sb);
+				free(dpath);
 			}
-			copy_directory(dp->d_name);
+			copy_directory(dp->d_name, cf);
 		} else if (sb.st_mode & S_IFREG) {
-			char *outname;
-			outname = alloca(strlen(dest) + strlen(curdir) + strlen(dp->d_name) + 3);
-			sprintf(outname, "%s/%s%s", dest, curdir, dp->d_name);
-
-			copy_file(dp->d_name, outname);
+			char *outname = allocf("%s/%s%s", dest, curdir, dp->d_name);
+			cf(dp->d_name, outname);
+			free(outname);
 			usleep(filesleep);
 		} else {
 			/*
@@ -292,6 +338,7 @@ struct	stat	 sb;
 	closedir(dirp);
 
 	chdir("..");
+	free(curdir);
 	curdir = oldcur;
 }
 
@@ -299,11 +346,11 @@ static void
 copy_file(name, outname)
 	const char *name, *outname;
 {
-	FILE	*f, *out = NULL;
-	int	 outf;
+	int	 in, out;
 	char	*buf;
 	size_t	 bsize;
-struct	stat	sb;
+struct	stat	 sb;
+struct	utimbuf	ut;
 
 	if (lstat(name, &sb) < 0) {
 		perror(name);
@@ -313,7 +360,7 @@ struct	stat	sb;
 	if (archive) {
 		arch_writeheader(archfile, name);
 	} else {
-		if (uflag && newerorsame(outname, name)) {
+		if (uflag && !contemplate_file(outname, &sb)) {
 			if (!qflag) 
 				fprintf(stderr, "fu %s%s\n", curdir ? curdir : "", name);
 			return;
@@ -327,7 +374,7 @@ struct	stat	sb;
 		}
 
 		unlink(outname);
-		if ((outf = open(outname, O_WRONLY | O_CREAT | O_EXCL, sb.st_mode)) == -1) {
+		if ((out = open(outname, O_WRONLY | O_CREAT | O_EXCL, sb.st_mode)) == -1) {
 			if (errno == EEXIST) {
 				fprintf(stderr, "%s: %s exists and I didn't expect it to\n",
 					progname, outname);
@@ -335,63 +382,67 @@ struct	stat	sb;
 			perror(outname);
 			exit(8);
 		}
-		out = fdopen(outf, "w");
 	}
-
-	if ((f = fopen(name, "r")) == NULL) {
+	if ((in = open(name, O_RDONLY)) == -1) {
 		perror(name);
 		exit(8);
 	}
+	copy_from_to(in, out, outname);
 
-	buf = alloca(blocksize);
-	while (bsize = fread(buf, 1, blocksize, f)) {
-		if (bsize < blocksize) {
-			if (ferror(f)) {
-				perror(dest);
-				exit(8);
-			}
+	ut.actime = sb.st_atime;
+	ut.modtime = sb.st_mtime;
+	if (utime(outname, &ut) < 0) {
+		perror(outname);
+	}
+
+	if (Pflag) {
+		if (fchown(out, sb.st_uid, sb.st_gid) < 0) {
+			perror(outname);
 		}
+	}
+
+}
+
+void
+copy_from_to(from, to, destname)
+	int from, to;
+	const char *destname;
+{
+static	char *buf;
+	int bytes, blocks, bsize;
+	if (buf == NULL)
+		buf = malloc(blocksize);
+
+	while ((bsize = read(from, buf, blocksize)) != -1) {
 		if (tflag) {
 			if (write_blocked(buf, bsize, archfile) < 1) {
 				perror(dest);
 				exit(8);
 			}
 		} else {
-			if (fwrite(buf, bsize, 1, out) < 1) {
-				perror(outname);
+			if (write(to, buf, bsize) < 1) {
+				perror(destname);
 				exit(8);
 			}
 		}
-		usleep(blocksleep);
+		bytes += bsize;
+		blocks++;
+		if (blocksleep)
+			usleep(blocksleep);
 	}
 
-	fclose(f);
+	if (bsize == -1) {
+		if (destname)
+			unlink(destname);
+		exit(8);
+	}
 
 	if (archive)
 		fflush(archfile);
-	else {
-		struct utimbuf ut;
-
-		ut.actime = sb.st_atime;
-		ut.modtime = sb.st_mtime;
-		if (utime(outname, &ut) < 0) {
-			perror(outname);
-			exit(8);
-		}
-
-		if (Pflag) {
-			if (fchown(fileno(out), sb.st_uid, sb.st_gid) < 0) {
-				perror(outname);
-			}
-		}
-	}
-
-	if (out)
-		fclose(out);
 
 	if (!qflag) 
 		fprintf(stderr, "f  %s%s %d bytes, %d blocks\n", curdir ? curdir : "",
-			name, (int)sb.st_size, (int)sb.st_blocks);
+			destname, bytes, blocks);
 
 }
 
@@ -419,25 +470,19 @@ write_blocked(buf, size, file)
 }
 
 static int
-newerorsame(fa, fb)
-	const char *fa, *fb;
+contemplate_file(name, sb)
+	const char *name;
+	struct stat *sb;
 {
-struct	stat	sa, sb;
-	if (lstat(fa, &sa) < 0) {
+struct	stat	sa;
+	if (lstat(name, &sa) < 0) {
 		if (errno == ENOENT)
-			return 0;
-		perror(fa);
+			return 1;
+		perror(name);
 		exit(8);
 	}
 
-	if (lstat(fb, &sb) < 0) {
-		if (errno == ENOENT)
-			return 0;
-		perror(fb);
-		exit(8);
-	}
-
-	return sa.st_mtime >= sb.st_mtime;
+	return sa.st_mtime < sb->st_mtime;
 }
 
 static int
@@ -486,4 +531,111 @@ exclude(name)
 			return 1;
 
 	return 0;
+}
+
+static void
+discuss_files()
+{
+struct	pfile		*file;
+struct	stat		 sb;
+struct	utimbuf		 ut;
+struct	rdcp_frame	 frame;
+	int		 in, out, n;
+	char		 *dir;
+	proto_neg(0);
+	dir = proto_readdir();
+	chdir(dir);
+	free(dir);
+	while (file = proto_getfile()) {
+		sb.st_mtime = file->mtime;
+		if (file->type == T_DIR) {
+			mkdir(file->name, file->mode);
+			proto_accept();
+			continue;
+		}
+
+		if (!contemplate_file(file->name, &sb)) {
+			proto_decline();
+			continue;
+		}
+		proto_accept();
+
+		unlink(file->name);
+		if ((out = open(file->name, O_WRONLY | O_CREAT | O_EXCL, file->mode)) == -1)
+			exit(8);
+
+		while ((n = proto_read(&frame)) == 0) {
+			if (frame.rf_len == 0)
+				break;
+			if (write(out, frame.rf_buf, frame.rf_len) < frame.rf_len)
+				exit(8);
+			rdcp_frame_free(&frame);
+		}
+
+		ut.modtime = ut.actime = file->mtime;
+		utime(file->name, &ut);
+
+		if (file->gid > -1 && file->uid > -1)
+			fchown(out, file->uid, file->gid);
+		close(out);
+	}
+	exit(0);
+}
+
+static void
+send_files()
+{
+struct	rdcp_frame	 frame;
+	int		 n, sock;
+
+	if (!qflag) fprintf(stderr, 
+		"Copying from %s to %s:%s, using blocksize %d, sleeps block/file %d/%d\n",
+		src, remote, dest, blocksize, blocksleep, filesleep);
+
+	sock = proto_rsh(remote, rsh);
+	proto_neg(sock);
+	if (chdir(src) < 0) {
+		perror(src);
+		exit(8);
+	}
+	frame.rf_buf = dest;
+	frame.rf_len = strlen(dest);
+	proto_write(&frame);
+	curdir = strdup("");
+	copy_directory(".", copy_file_net);
+	exit(0);
+}
+
+static void
+copy_file_net(from, to)
+	const char *from, *to;
+{
+static	char	*buf;
+struct	stat	 sb;
+	int	 in, i;
+	size_t	 bytes = 0, blocks = 0;
+	if (buf == NULL)
+		buf = malloc(blocksize);
+	if ((in = open(from, O_RDONLY)) == -1) {
+		perror(from);
+		exit(8);
+	}
+	if (fstat(in, &sb) < 0) {
+		perror(from);
+		exit(8);
+	}
+	if (!proto_offer(from, &sb)) {
+		fprintf(stderr, "fd %s\n", from);
+		return;
+	}
+	while ((i = read(in, buf, blocksize)) > 0) {
+		proto_writeblock(buf, i);
+		bytes += i;
+		blocks++;
+		if (blocksleep)
+			usleep(blocksleep);
+	}
+	proto_eof();
+	close(in);
+	fprintf(stderr, "fr %s %d bytes, %d blocks\n", from, (int)bytes, (int)blocks);
 }

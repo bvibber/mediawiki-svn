@@ -4,6 +4,8 @@
  * trickle: copy one directory to another, slowly.
  */
 
+#pragma ident "@(#) $Id$"
+
 #include <sys/types.h>
 #include <sys/stat.h>
 
@@ -11,7 +13,6 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-#include <alloca.h>
 
 #include "trickle.h"
 
@@ -69,10 +70,8 @@ struct	stat	 sb;
 		 * <length> includes the length of the decimal representation of
 		 * itself!  just pad it to 31 characters...
 		 */
-		tardata = alloca(32 + 7 + strlen(curdir) + 1 + strlen(name) + 2);
 		len = 31 + 6 + strlen(curdir) + 1 + strlen(name);
-		sprintf(tardata, "%031d path=%s%s\n", len,
-				curdir, name);
+		tardata = allocf("%031d path=%s%s\n", len, curdir, name);
 
 		memset(&hdr, 0, sizeof(hdr));
 		sprintf(hdr.tr_size, "%011o", strlen(tardata));
