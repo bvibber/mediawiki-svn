@@ -6,7 +6,26 @@
 .Nd copy one directory to another directory or a tar file, slowly
 .Sh SYNOPSIS
 .Nm
-.Op Fl Fpt | uPr
+.Op Fl uPq
+.Op Fl x Ar filename
+.Op Fl s Ar blocksize
+.Op Fl b Ar blocksleep
+.Op Fl f Ar filesleep
+.Ar source
+.Ar destination
+.sp
+.Nm
+.Fl t
+.Op Fl Fpq
+.Op Fl x Ar filename
+.Op Fl s Ar blocksize
+.Op Fl b Ar blocksleep
+.Op Fl f Ar filesleep
+.Ar source
+.Ar destination
+.sp
+.Nm
+.Fl r
 .Op Fl q
 .Op Fl x Ar filename
 .Op Fl s Ar blocksize
@@ -15,7 +34,7 @@
 .Op Fl T Ar path
 .Op Fl z Ar program
 .Ar source
-.Ar [host:]destination
+.Ar host:destination
 .Sh DESCRIPTION
 The
 .Nm
