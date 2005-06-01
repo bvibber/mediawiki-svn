@@ -6,14 +6,16 @@
 .Nd copy one directory to another directory or a tar file, slowly
 .Sh SYNOPSIS
 .Nm
-.Op Fl Fpt | uP
+.Op Fl Fpt | uPr
 .Op Fl q
 .Op Fl x Ar filename
 .Op Fl s Ar blocksize
 .Op Fl b Ar blocksleep
 .Op Fl f Ar filesleep
+.Op Fl T Ar path
+.Op Fl z Ar program
 .Ar source
-.Ar destination
+.Ar [host:]destination
 .Sh DESCRIPTION
 The
 .Nm
@@ -77,6 +79,20 @@ Don't copy directories called
 .Ar name .
 .It Fl P
 Preserve ownership and file permissions of copied files.
+.It Fl z Ar path
+Use
+.Ar path
+instead of
+.Xr rsh 1 .
+.It Fl r
+Copy files to a remote host using
+.Xr rsh 1
+.It Fl T Ar path
+Use
+.Ar path
+as the
+.Nm
+program on the remote host.
 .El
 .Sh NOTES
 The POSIX.1
@@ -86,6 +102,8 @@ and 100 bytes for the filename.  Path or filenames longer than this will be trun
 .Sh AUTHOR
 Kate Turner <keturner@livejournal.com>.
 .Sh SEE ALSO
-.Xr tar 1
+.Xr tar 1 ,
+.Xr pax 1 ,
+.Xr rsh 1 .
 .Pp
 .St -susv2
