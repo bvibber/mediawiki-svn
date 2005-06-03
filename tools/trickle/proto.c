@@ -16,6 +16,11 @@
 #include <stdio.h>
 #include <strings.h>
 
+#include "t_stdint.h"
+#ifdef T_STDINT
+# include <stdint.h>
+#endif
+
 #include "trickle.h"
 #include "rdcp.h"
 

@@ -11,6 +11,7 @@
 
 #if defined(__SVR4) || defined(__svr4__)
 # define RDCP_SVR4
+# include <xti.h>
 #endif
 
 /*

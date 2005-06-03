@@ -13,6 +13,11 @@
 
 #include <stdio.h>
 
+#include "t_stdint.h"
+#ifdef T_STDINT
+# include <stdint.h>
+#endif
+
 #define min(x,y) ((x) < (y) ? (x) : (y))
 #define max(x,y) ((x) < (y) ? (y) : (x))
 

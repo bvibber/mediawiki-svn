@@ -10,7 +10,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <alloca.h>
-#include <xti.h>
+
+#include "t_stdint.h"
+#ifdef T_STDINT
+# include <stdint.h>
+#endif
 
 #include "rdcp.h"
 
