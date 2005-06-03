@@ -137,12 +137,12 @@ struct	stat	 sb;
 
 	if (Zflag) {
 		if (isatty(0))
-			fatal("-Z should not be used directly");
+			fatal("m1", "-Z should not be used directly");
 		discuss_files();
 	}
 
 	if ((rflag || uflag) && archive) {
-		fprintf(stderr, "%s: -u/-r and -t may not be specified together\n", progname);
+		fatal("m2", "-u/-r and -t may not be specified together");
 		usage();
 	}
 
@@ -188,13 +188,13 @@ struct	stat	 sb;
 		if (!strcmp(dest, "-"))
 			archfile = stdout;
 		else if ((archfile = fopen(dest, "w")) == NULL) {
-			perror(dest);
+			pfatal("m3", dest);
 			exit(8);
 		}
 	}
 
 	if (stat(src, &sb) < 0) {
-		perror(src);
+		pfatal("m4", dest);
 		exit(8);
 	}
 
@@ -209,7 +209,7 @@ struct	stat	 sb;
 
 		errno = 0;
 		if (stat(dest, &sd) < 0 && errno != ENOENT) {
-			perror(dest);
+			pfatal("m5", dest);
 			exit(8);
 		}
 
@@ -227,7 +227,7 @@ struct	stat	 sb;
 				} ok:
 				if ((c = fgetc(stdin)) != '\n') ungetc(c, stdin);
 				if (unlink(dest) < 0) {
-					perror(dest);
+					pfatal("m6", dest);
 					exit(8);
 				}
 			}
@@ -241,7 +241,7 @@ struct	stat	 sb;
 	}
 		
 	if (chdir(src) < 0) {
-		perror(src);
+		pfatal("m7", src);
 		exit(8);
 	}
 
@@ -272,7 +272,7 @@ struct	stat	 sb;
 	char	*oldcur;
 
 	if (chdir(dir) < 0) {
-		perror("chdir");
+		pfatal("cd1", dir);
 		exit(8);
 	}
 
@@ -280,7 +280,7 @@ struct	stat	 sb;
 	curdir = allocf("%s%s/", oldcur, dir);
 
 	if ((dirp = opendir(".")) == NULL) {
-		perror(dir);
+		pfatal("cd2", dir);
 		exit(8);
 	}
 	
@@ -289,11 +289,16 @@ struct	stat	 sb;
 			continue;
 	
 		if (lstat(dp->d_name, &sb) < 0) {
-			perror(dp->d_name);
+			pfatal("cd3", dp->d_name);
 			exit(8);
 		}
 
-		if (sb.st_mode & S_IFDIR) {
+		if ((sb.st_mode & S_IFLNK) == S_IFLNK) {
+			if (!qflag)
+				fprintf(stderr, "fs %s%s\n", curdir, dp->d_name);
+			/* XXX should be possible to include symlinks in the output */
+			continue;
+		} else if (sb.st_mode & S_IFDIR) {
 			char *dpath;
 			if (exclude(dp->d_name)) {
 				if (!qflag) 
@@ -312,7 +317,7 @@ struct	stat	 sb;
 				 * exists, just leave it.
 				 */
 				if (mkdir(dpath, sb.st_mode) < 0 && errno != EEXIST) {
-					perror(dpath);
+					pfatal("cd4", dpath);
 					exit(8);
 				}
 				free(dpath);
@@ -323,7 +328,11 @@ struct	stat	 sb;
 			}
 			copy_directory(dp->d_name, cf);
 		} else if (sb.st_mode & S_IFREG) {
-			char *outname = allocf("%s/%s%s", dest, curdir, dp->d_name);
+			char *outname;
+			if (archive)
+				outname = allocf("%s%s", curdir, dp->d_name);
+			else
+				outname = allocf("%s/%s%s", dest, curdir, dp->d_name);
 			cf(dp->d_name, outname);
 			free(outname);
 			usleep(filesleep);
@@ -353,7 +362,7 @@ struct	stat	 sb;
 struct	utimbuf	ut;
 
 	if (lstat(name, &sb) < 0) {
-		perror(name);
+		pfatal("cf1", name);
 		exit(8);
 	}
 
@@ -379,28 +388,27 @@ struct	utimbuf	ut;
 				fprintf(stderr, "%s: %s exists and I didn't expect it to\n",
 					progname, outname);
 			}
-			perror(outname);
+			pfatal("cf2", outname);
 			exit(8);
 		}
 	}
 	if ((in = open(name, O_RDONLY)) == -1) {
-		perror(name);
+		pfatal("cf3", name);
 		exit(8);
 	}
 	copy_from_to(in, out, outname);
 
-	ut.actime = sb.st_atime;
-	ut.modtime = sb.st_mtime;
-	if (utime(outname, &ut) < 0) {
-		perror(outname);
-	}
+	if (!archive) {
+		ut.actime = sb.st_atime;
+		ut.modtime = sb.st_mtime;
+		if (utime(outname, &ut) < 0)
+			fprintf(stderr, "%s: %s: %s (cf4)\n", progname, outname, strerror(errno));
 
-	if (Pflag) {
-		if (fchown(out, sb.st_uid, sb.st_gid) < 0) {
-			perror(outname);
+		if (Pflag) {
+			if (fchown(out, sb.st_uid, sb.st_gid) < 0)
+				fprintf(stderr, "%s: %s: %s (cf5)\n", progname, outname, strerror(errno));
 		}
 	}
-
 }
 
 void
@@ -409,19 +417,20 @@ copy_from_to(from, to, destname)
 	const char *destname;
 {
 static	char *buf;
-	int bytes, blocks, bsize;
+	int bytes = 0, blocks = 0, bsize;
+
 	if (buf == NULL)
 		buf = malloc(blocksize);
 
-	while ((bsize = read(from, buf, blocksize)) != -1) {
+	while ((bsize = read(from, buf, blocksize)) > 0) {
 		if (tflag) {
 			if (write_blocked(buf, bsize, archfile) < 1) {
-				perror(dest);
+				pfatal("ct1", destname);
 				exit(8);
 			}
 		} else {
 			if (write(to, buf, bsize) < 1) {
-				perror(destname);
+				pfatal("ct2", destname);
 				exit(8);
 			}
 		}
@@ -456,7 +465,7 @@ write_blocked(buf, size, file)
 	char	*p = buf;
 	size_t	 ret = 0, tow;
 
-	while (size) {
+	do {
 		tow = min(size, sizeof(block));
 
 		memset(block, 0, sizeof block);
@@ -465,7 +474,8 @@ write_blocked(buf, size, file)
 			return ret;
 		p += tow;
 		size -= tow;
-	}
+		++records;
+	} while (size > 0);
 	return ret;
 }
 
@@ -478,7 +488,7 @@ struct	stat	sa;
 	if (lstat(name, &sa) < 0) {
 		if (errno == ENOENT)
 			return 1;
-		perror(name);
+		pfatal("co1", name);
 		exit(8);
 	}
 
@@ -493,14 +503,14 @@ struct	stat	sa, sb;
 	if (lstat(fa, &sa) < 0) {
 		if (errno == ENOENT)
 			return 0;
-		perror(fa);
+		pfatal("sf1", fa);
 		exit(8);
 	}
 
 	if (lstat(fb, &sb) < 0) {
 		if (errno == ENOENT)
 			return 0;
-		perror(fb);
+		pfatal("sf2", fb);
 		exit(8);
 	}
 
@@ -595,7 +605,7 @@ struct	rdcp_frame	 frame;
 	sock = proto_rsh(remote, rsh);
 	proto_neg(sock);
 	if (chdir(src) < 0) {
-		perror(src);
+		pfatal("sf1", src);
 		exit(8);
 	}
 	frame.rf_buf = dest;
@@ -617,11 +627,11 @@ struct	stat	 sb;
 	if (buf == NULL)
 		buf = malloc(blocksize);
 	if ((in = open(from, O_RDONLY)) == -1) {
-		perror(from);
+		pfatal("cn1", from);
 		exit(8);
 	}
 	if (fstat(in, &sb) < 0) {
-		perror(from);
+		pfatal("cn2", from);
 		exit(8);
 	}
 	if (!proto_offer(from, &sb)) {

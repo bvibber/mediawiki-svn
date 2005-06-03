@@ -10,6 +10,8 @@
 #include <unistd.h>
 #include <varargs.h>
 #include <stdlib.h>
+#include <errno.h>
+#include <string.h>
 
 #include "trickle.h"
 
@@ -48,5 +50,13 @@ fatal(fmt, va_alist)
 	vfprintf(stderr, fmt, args);
 	va_end(args);
 	fputs("\n", stderr);
+	exit(8);
+}
+
+void
+pfatal(c, e)
+	const char *c, *e;
+{
+	fprintf(stderr, "%s: %s (%s)\n", e, strerror(errno), c);
 	exit(8);
 }

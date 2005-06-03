@@ -16,14 +16,21 @@
 #define min(x,y) ((x) < (y) ? (x) : (y))
 #define max(x,y) ((x) < (y) ? (y) : (x))
 
+#define RECORD_SIZE	20	/* one record = RECORD_SIZE blocks	*/
+
 extern int pflag;
 extern char *dest;		/* destination name	*/
 extern const char *progname;	/* argv[0]		*/
 extern char *curdir;		/* cwd name		*/
 extern char *trickle;
+extern int records;
 
 size_t write_blocked(void *buf, size_t size, FILE *file);
+char *allocf();
+void fatal();
+void pfatal(const char *, const char *);
 
+/** Protocol support */
 #define PROTO_VERS	1
 #define P_ACCEPT 1
 #define P_DECLINE 2
@@ -41,19 +48,19 @@ struct pfile {
 struct rdcp_frame;
 struct stat;
 
-int proto_neg(int);
-int proto_rsh(const char *, const char *);
-struct pfile *proto_getfile(void);
-void proto_decline(void);
-void proto_accept(void);
-int proto_read(struct rdcp_frame *);
-void proto_write(struct rdcp_frame *);
-int proto_offer(const char *file, struct stat *);
-void proto_eof(void);
-void proto_writeblock(void *, size_t);
-char *proto_readdir();
-char *allocf();
-void fatal();
+int		 proto_neg		(int);
+int		 proto_rsh		(const char *, const char *);
+struct pfile 	*proto_getfile		(void);
+void		 proto_decline		(void);
+void		 proto_accept		(void);
+int		 proto_read		(struct rdcp_frame *);
+void		 proto_write		(struct rdcp_frame *);
+int		 proto_offer		(const char *file, struct stat *);
+void		 proto_eof		(void);
+void		 proto_writeblock	(void *, size_t);
+char		*proto_readdir		(void);
+void		 proto_ack		(void);
+void		 proto_nack		(const char *error);
 
 /** Tar support */
 
