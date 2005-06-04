@@ -15,7 +15,10 @@
 #ifdef T_STDINT
 # include <stdint.h>
 #endif
-
+#include "t_xti.h"
+#ifdef T_XTI
+# include <xti.h>
+#endif
 #include "rdcp.h"
 
 #define F_CLOSED 1
@@ -40,7 +43,7 @@ rdcp_internal_send_rdwr(fd, data, size)
 	return write(fd, data, size);
 }
 
-#ifdef RDCP_SVR4
+#ifdef T_XTI
 static int
 rdcp_internal_send_xti(fd, data, size)
 	const void *data;
@@ -58,7 +61,7 @@ rdcp_internal_recv_rdwr(fd, data, size)
 	return read(fd, data, size);
 }
 
-#ifdef RDCP_SVR4
+#ifdef T_XTI
 static int
 rdcp_internal_recv_xti(fd, data, size)
 	void *data;
@@ -109,7 +112,7 @@ rdcp_handle_alloc(void)
 	if ((handle = malloc(sizeof(struct rdcp_handle))) == NULL)
 		return NULL;
 	memset(handle, 0, sizeof(*handle));
-#ifdef RDCP_SVR4
+#ifdef T_XTI
 	handle->sendf = rdcp_internal_send_xti;
 	handle->recvf = rdcp_internal_recv_xti;
 #endif
@@ -127,7 +130,7 @@ rdcp_handle_type(handle, type)
 	if (type == ROPT_RDWR) {
 		handle->sendf = rdcp_internal_send_rdwr;
 		handle->recvf = rdcp_internal_recv_rdwr;
-#ifdef RDCP_SVR4
+#ifdef T_XTI
 	} else if (type == ROPT_XTI) {
 		handle->sendf = rdcp_internal_send_xti;
 		handle->recvf = rdcp_internal_recv_xti;

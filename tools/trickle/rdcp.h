@@ -9,8 +9,7 @@
 
 #include <sys/types.h>
 
-#if defined(__SVR4) || defined(__svr4__)
-# define RDCP_SVR4
+#ifdef T_XTI
 # include <xti.h>
 #endif
 
@@ -54,8 +53,8 @@ struct rdcp_frame {
  * Options.
  */
 #define ROPT_RDWR	1
-#ifdef RDCP_SVR4
-#define ROPT_XTI	2
+#ifdef T_XTI
+# define ROPT_XTI	2
 #endif
 
 /*
