@@ -396,6 +396,7 @@ struct	utimbuf	ut;
 		pfatal("cf3", name);
 		exit(8);
 	}
+
 	copy_from_to(in, out, outname);
 
 	if (!archive) {
@@ -409,6 +410,9 @@ struct	utimbuf	ut;
 				fprintf(stderr, "%s: %s: %s (cf5)\n", progname, outname, strerror(errno));
 		}
 	}
+
+	close(in);
+	close(out);
 }
 
 void

@@ -9,6 +9,7 @@
 
 #include <sys/types.h>
 
+#include "t_xti.h"
 #ifdef T_XTI
 # include <xti.h>
 #endif
