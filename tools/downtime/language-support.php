@@ -5,7 +5,9 @@ $our_langs = array(
     "Dansk" => "da",
     "Deutsch" => "de",
     "English" => "en",
+    "Español" => "es",
     "Esperanto" => "eo",
+    "Français" => "fr",
     "Nederlands" => "nl",
     "Polski" => "pl",
 	"Slovensky" => "sk",
@@ -212,6 +214,29 @@ kaj la Komunejo Wikimedia, kolekto de bildoj kaj sondosieroj."
 	"about" => "The Wikimedia Foundation, Inc. - международная некоммерческая организация занимающаяся поддержкой развития, создания и распространения свободной многоязычной информации и предоставлением полного содержания этих проектов, основанных на вики, бесплатно. Викимедия полагается на пожертвования для достижения своей цели: предоставления свободного знания каждому человеку в мире.",
 	"projectstitle" => "Проекты Викимедии",
 	"projects" => "Фонд Викимедия является материнской организацией наибольших совместно-редактируемых справочных проектов в мире, включая Википедию, один из 100 наиболее посещаемых сайтов в мире. Другие онлайновые проекты включают Викисловарь, многоязычный толковый словарь, Викиучебники, коллекцию учебников со свободным содержимым, Викицитатник, коллекцию знаменитых цитат, Викиновости, источник свободных новостей, Wikisource, репозиторий первоисточников и Викисклад, репозиторий изображений и звуков.",
+),
+
+"fr" => array(
+	"mainp1" => "Toutes les oeuvres Wikimedia, ( soit Wikipedia, Wiktionary, Wikibooks, Wikiquote, Wikisource, et Wikinews ) sont hors service en ce moment tant que nous les entretenons.",
+	"mainp2" => "Nous ne attendons pas que les réparations dépassent 21h UTC. Dans l'entretemps, vous pouvez vous servez des miroirs suivants:",
+	"mainp3" => "Veuillez nous pardonnez de tout inconvenient.",
+	"mainp4" => "Bisous,<br />L'administration",
+	"abouttitle" => "A propos de l'organization Wikimedia",
+	"about" => "Le Wikimedia Foundation, Inc, est une organization internationale dédié à l'encouragement du croissance, du développement et de la distribution d'information a plusieurs lingues, et dédié à donner gratuitement cette information au public. Wikimedia est soutenu des donations publiques afin d'atteindre cet but pour tout le monde.",
+	"projectstitle" => "Oeuvres Wikimedia",
+	"projects" => "Le Wikimedia Foundation est la société mère des plus grands projets du monde, y compris Wikipedia, un des 100 plus populaires sites du web. Voici des autres oeuvres:  Wiktionary, une dictionaire a plusieurs lingues; Wikibooks, une collection de livres gratuits, Wikiquote, une collection des expressions populaires; Wikinews, une source gratuite de nouvelles; Wikisource, une collection de sources primaires, et Wikimedia Commons, une collection d'images et de sons.",
+),
+
+"es" => array(
+	"maintitle" => "Manutención del sitio Wikimedia",
+	"mainp1" => "Todos los proyectos Wikimedia (Wikipedia, Wikcionario, Wikilibros, Wikiquote, Wikisource, y Wikinoticias) están sin servicio mientras se desarrolla una manutención de equipos.",
+	"mainp2" => "Esperamos que esta manutención no se extienda más allá de 21:00 UTC. En el intertanto, quizás quiera utilizar uno de los siguientes espejos del contenido de Wikipedia:",
+	"mainp3" => "Pedimos disculpas por cualquier inconveniente que esto pueda causarle.",
+	"mainp4" => "Con cariño,<br/>La Administración.",
+	"abouttitle" => "Acerca de la Fundación Wikimedia",
+	"about" => "La Fundación Wikimedia, Inc. es una organización internacional sin ánimo de lucro, dedicada a fomentar el crecimiento, desarrollo y distribución de contenido libre y plurilingüe, y a proporcionar la totalidad del contenido de ese proyecto, basado en la herramienta wiki, en forma gratuita al público. Wikimedia necesita donaciones públicas para poder cumplir su objetivo de proveer conocimiento libre a cada persona en el mundo.",
+	"projectstitle" => "Los proyectos Wikimedia",
+	"La Fundación Wikimedia es la organización matriz de algunos de los más importantes proyectos de edición colaborativa en el mundo, incluyendo Wikipedia, ubicada entre los 100 sitios web más visitados en el mundo. Otros proyectos incluyen Wikcionario, un diccionario plurilingüe; Wikilibros, una colección de materiales de enseñanza libres; Wikiquote, un compendio de frases célebres; Wikinoticias, una fuente de noticias libre; Wikisource, un repositorio de textos originales; y Wikimedia Commons, un repositorio para imágenes y otros archivos multimedia bajo licencias libres.",
 ),
 
 );
