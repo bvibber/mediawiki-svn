@@ -120,7 +120,7 @@ img {border:0px;}
 		<ul>
 <? if ($lang == "da") { ?>
 			<li><a href="http://www.netleksikon.dk">www.netleksikon.dk</a> (Dansk)</li>
-<? else if ($lang == "pl") { ?>
+<? } else if ($lang == "pl") { ?>
 			<li><a href="http://pl.efactory.pl/allpl.php">efactory.pl</a> (Polski)</li>
 <? } ?>
 			<li><a href="http://www.answers.com/">Answers.com</a></li>
