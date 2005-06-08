@@ -484,7 +484,7 @@ cache_getstate(state, txn)
 	if (i = cacheobjs->get(cacheobjs, txn, &keyt, &datat, 0))
 		dberror("getstate: get", i);
 	
-	WDEBUG((WLOG_DEBUG, "cs_id = %d", state->cs_id));
+	WDEBUG((WLOG_DEBUG, "cs_id = %lld", state->cs_id));
 	return 0;
 }
 

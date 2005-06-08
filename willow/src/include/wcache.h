@@ -21,7 +21,7 @@
  * (length 0).
  */
 struct cache_state {
-	int		cs_id;
+	w_size_t	cs_id;
 	w_size_t	cs_size;
 };
 
