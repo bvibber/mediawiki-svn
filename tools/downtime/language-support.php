@@ -8,6 +8,7 @@ $our_langs = array(
     "Español" => "es",
     "Esperanto" => "eo",
     "Français" => "fr",
+    "Italiano" => "it",
     "Nederlands" => "nl",
     "Polski" => "pl",
 	"Slovensky" => "sk",
@@ -237,6 +238,35 @@ kaj la Komunejo Wikimedia, kolekto de bildoj kaj sondosieroj."
 	"about" => "La Fundación Wikimedia, Inc. es una organización internacional sin ánimo de lucro, dedicada a fomentar el crecimiento, desarrollo y distribución de contenido libre y plurilingüe, y a proporcionar la totalidad del contenido de ese proyecto, basado en la herramienta wiki, en forma gratuita al público. Wikimedia necesita donaciones públicas para poder cumplir su objetivo de proveer conocimiento libre a cada persona en el mundo.",
 	"projectstitle" => "Los proyectos Wikimedia",
 	"La Fundación Wikimedia es la organización matriz de algunos de los más importantes proyectos de edición colaborativa en el mundo, incluyendo Wikipedia, ubicada entre los 100 sitios web más visitados en el mundo. Otros proyectos incluyen Wikcionario, un diccionario plurilingüe; Wikilibros, una colección de materiales de enseñanza libres; Wikiquote, un compendio de frases célebres; Wikinoticias, una fuente de noticias libre; Wikisource, un repositorio de textos originales; y Wikimedia Commons, un repositorio para imágenes y otros archivos multimedia bajo licencias libres.",
+),
+
+"it" => array(
+	"maintitle" => "Manutenzione del sito Wikimedia",
+	"mainp1" => "Tutti i progetti Wikimedia (Wikipedia, Wikizionary, Wikibooks,
+Wikiquote, Wikisource e Wikinotizie) sono al momento offline per
+consentire la manutenzione dell'hardware.",
+	"mainp2" => "Non ci aspettiamo che la manutenzione duri oltre le 21:00 UTC. Nel
+frattempo potresti voler consultare uno dei seguenti mirror del
+contenuto di Wikipedia:",
+	"mainp3" => "Ci scusiamo per gli inconvenienti che questo può causarti.",
+	"mainp4" => "Ciao,<br />gli amministratori",
+	"abouttitle" => "Sulla Wikimedia Foundation",
+	"about" => "La Wikimedia Foundation, Inc. è un'organizzazione internazionale
+non-profit dedicata a incoraggiare la crescita, lo sviluppo e la
+distribuzione di contenuti liberi e multilingue, e fornire
+gratuitamente alle persone il contenuto completo di questi progetti
+basati sul wiki gratuitamente. Wikimedia si basa sulle donazioni per
+raggiungere il suo scopo di fornire conoscenza libera ad ogni persona
+nel mondo.",
+	"projectstitle" => "Wikimedia Projects",
+	"projects" => "La Wikimedia Foundation è l'organizzazione che si occupa di alcuni tra
+i più ampi progetti nel mondo realizzati in maniera collaborativa, tra
+cui Wikipedia, uno del 100 più visitati siti al mondo. Altri progetti
+online comprendono il Wikizionary, un dizionario multilingue;
+Wikibooks, una collezione di libri di testo a contenuto gratuito;
+Wikiquote, un insieme di citazioni famose; Wikinotizie, una fonte
+libera di notizie; Wikisource, un insieme di documenti da fonti
+primarie e Wikimedia Commons, un contenitore di immagini e suoni.",
 ),
 
 );
