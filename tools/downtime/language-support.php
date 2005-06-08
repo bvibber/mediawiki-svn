@@ -52,11 +52,55 @@ function langbar() {
     return implode(" | ", $a);
 }
 
+function fmttimeen($hour) {
+	return "$hour:00 UTC";
+}
+
+function fmttimede($hour) {
+	return "$hour Uhr UTC";
+}
+
+function fmttimepl($hour) {
+	$hour += 2;
+	return "${hour}:00 CET";
+}
+
+function fmttimenl($hour) {
+	$hour += 2;
+	return "$hour uur Nederlandse/Belgische tijd";
+}
+
+function fmttimesk($hour) {
+	$hour += 2;
+	return "${hour}:00 CEST";
+}
+
+function fmttimefr($hour) {
+	return "${hour}h UTC";
+}
+
+function fmttimeda($hour) {
+	$hour += 2;
+	return "${hour}.00 dansk tid";
+}
+
+function langtime($hour) {
+	global $lang;
+	if (function_exists("fmttime$lang"))
+		$func = "fmttime$lang";
+	else
+		$func = "fmttimeen";
+
+	return $func($hour);
+}
+
+$until = langtime($untilhour);
+
 $text = array(
 "en" => array(
     "maintitle" => "Wikimedia Site Maintenance",
     "mainp1" => "All Wikimedia projects (Wikipedia, Wiktionary, Wikibooks, Wikiquote, Wikisource, and Wikinews) are currently offline while hardware maintenance is carried out.",
-    "mainp2" => "We don't expect this maintenance to extend past 21:00 UTC. In the meantime, you may wish to use one of the following mirrors of Wikipedia content:",
+    "mainp2" => "We don't expect this maintenance to extend past <strong>$until</strong>. In the meantime, you may wish to use one of the following mirrors of Wikipedia content:",
     "mainp3" => "We apologise for any inconvenience this may cause you.",
     "mainp4" => "Love,<br/>The Administration.",
     "credit" => "Page design based on www.wikipedia.org template by <a class=\"dark\" href=\"mailto:forseti@autograf.pl\">Forseti</a>.",
@@ -92,7 +136,7 @@ Wissen zugänglich zu machen.",
 "de" => array(
     "maintitle" => "Seitenwartung der Wikimedia",
     "mainp1" => "Alle Wikimedia-Projekte (Wikipedia, Wiktionary, Wikibooks, Wikiquote, Wikisource und Wikinews) sind gegenwärtig offline, solange wir eine Wartung der Hardware durchführen.",
-    "mainp2" => "Wir gehen nicht davon aus, daß die Wartung länger als 21 Uhr UTC dauern wird. In der Zwischenzeit können sie auf einer der folgenden Seiten Mirror der Wikipedia besuchen:",
+    "mainp2" => "Wir gehen nicht davon aus, daß die Wartung länger als <strong>$until</strong> dauern wird. In der Zwischenzeit können sie auf einer der folgenden Seiten Mirror der Wikipedia besuchen:",
     "mainp3" => "Wir entschuldigen uns für alle Unannehmlichkeiten, die das für Sie bedeuten mag.",
     "mainp4" => "Alles Liebe,<br/> Die Verwaltung",
     "abouttitle" => "Über die Wikimedia Foundation",
@@ -112,7 +156,7 @@ Wissen zugänglich zu machen.",
     "mainp1" =>
 "Wszystkie projekty Wikimedia (Wikipedia, Wikisłownik, Wikibooks, Wikicytaty, Wikisource i Wikinews) są obecnie niedostępne, do czasu zakończenia prac administracyjnych.",
     "mainp2" =>
-"Prawdopodobny termin zakończenia prac to 23:00 CET. W międzyczasie możesz skorzystać z jednego z poniższych mirrorów angielskiej Wikipedii:",
+"Prawdopodobny termin zakończenia prac to <strong>$until</strong>. W międzyczasie możesz skorzystać z jednego z poniższych mirrorów angielskiej Wikipedii:",
     "mainp3" =>
 "Przepraszamy za wszelkie niedogodności.",
     "mainp4" =>
@@ -129,7 +173,7 @@ Wissen zugänglich zu machen.",
 "da" => array(
     "maintitle" => "Vedligeholdelse af Wikimedias websted",
     "mainp1" => "Alle Wikimedia-projekter (Wikipedia, Wiktionary, Wikibooks, Wikiquote, Wikisource og Wikinews) er ikke tilgængelige lige nu på grund af arbejde med vores hardware.",
-    "mainp2" => "Vi forventer ikke at være nede længere end til 23.00 dansk tid. I mellemtiden kan du bruge et af de websteder, der viser en kopi af vores indhold:",
+    "mainp2" => "Vi forventer ikke at være nede længere end til <strong>$until</strong>. I mellemtiden kan du bruge et af de websteder, der viser en kopi af vores indhold:",
     "mainp3" => "Vi beklager på forhånd de gener, dette måtte medføre for dig.",
     "mainp4" => "Med venlig hilsen,<br/>administratorerne.",
     "abouttitle" => "Om Wikimedia",
@@ -151,7 +195,7 @@ Wissen zugänglich zu machen.",
 "eo" => array(
     "maintitle" => "Servilozorgado ĉe Wikimedia",
     "mainp1" => "Ĉiu projekto de Wikimedia (Vikipedio, Vikivortaro, Vikilibroj, Vikicitaro, Vikifonto, kaj Wikinews) estas neatingebla ĉi-momente, dum agordoj al la serviloj.",
-    "mainp2" => "Ni atendas, ke ni finlaboros antaŭ horo 21:00 UTC. Intertempe, vi povas konsulti spegulojn de la enhavo de Vikipedio, ekzemple:",
+    "mainp2" => "Ni atendas, ke ni finlaboros antaŭ horo <strong>$until</strong>. Intertempe, vi povas konsulti spegulojn de la enhavo de Vikipedio, ekzemple:",
     "mainp3" => "Ni petas pardonon por la malkonveno!",
     "mainp4" => "Ĝis la rereto!<br/>La Servilestroj.",
     "credit" => "Paĝaspekto bazita sur proponita www.wikipedia.org-ŝablono de <a class=\"dark\" href=\"mailto:forseti@autograf.pl\">Forseti</a>.",
@@ -179,7 +223,7 @@ kaj la Komunejo Wikimedia, kolekto de bildoj kaj sondosieroj."
 "nl" => array(
     "maintitle" => "Wikimedia Site Onderhoud",
     "mainp1" => "Alle Wikimedia projecten (Wikipedia, Wiktionary, Wikibooks, Wikiquote, Wikisource, and Wikinews) zijn op dit moment offline vanwege een gepland onderhoud aan de hardware.",
-    "mainp2" => "Naar verwachting zal het onderhoud om uiterlijk 23 uur Nederlandse/Belgische tijd afgerond zijn. In de tussentijd kunt u een van de volgende mirrors van wikipedia content bezoeken:",
+    "mainp2" => "Naar verwachting zal het onderhoud om uiterlijk <strong>$until</strong> afgerond zijn. In de tussentijd kunt u een van de volgende mirrors van wikipedia content bezoeken:",
     "mainp3" => "We bieden onze verontschuldigingen aan voor het ongemak dat dit met zich mee kan brengen.",
     "mainp4" => "Met vriendelijke groet,<br/>De beheerders",
     "credit" => "Page design based on www.wikipedia.org template by <a class=\"dark\" href=\"mailto:forseti@autograf.pl\">Forseti</a>.",
@@ -195,7 +239,7 @@ kaj la Komunejo Wikimedia, kolekto de bildoj kaj sondosieroj."
 "sk" => array(
 	"maintitle" => "Údržba serverov Wikimédie",
 	"mainp1" => "Všetky projekty Wikimédie (Wikipédia, Wikislovník, Wikiknihy, Wikicitáty, Wikizdroj, a Wikinoviny) sú momentálne nedostupné (offline), pretože prebieha údržba hardvéru.",
-	"mainp2" => "Neočakávame, že táto údržba bude trvať dlhšie ako do 23:00 CEST. V tomto čase môžete použiť nasledujúce zrkadlá obsahu Wikipédie:",
+	"mainp2" => "Neočakávame, že táto údržba bude trvať dlhšie ako do <strong>$until</strong>. V tomto čase môžete použiť nasledujúce zrkadlá obsahu Wikipédie:",
 	"mainp3" => "Ospravedlňujeme sa Vám za ťažkosti, ktoré Vám tento výpadok môže spôsobiť.",
 	"mainp4" => "Vaši<br/>Administrátori",
 	"abouttitle" => "O Nadácii Wikimédia",
@@ -208,7 +252,7 @@ kaj la Komunejo Wikimedia, kolekto de bildoj kaj sondosieroj."
 "ru" => array(
 	"maintitle" => "Обслуживание сайтов Викимедии",
 	"mainp1" => "Все проекты фонда Викимедия (Википедия, Викисловарь,  Викиучебники, Викицитатник, Викисорс и Викиновости) в настоящее время в оффлайне для проведения обслуживания оборудования.",
-	"mainp2" => "Скорее всего обслуживание будет длится до 21:00 UTC. Тем временем вы можете воспользоваться одним из следующих зеркал Википедии:",
+	"mainp2" => "Скорее всего обслуживание будет длится до <strong>$until</strong>. Тем временем вы можете воспользоваться одним из следующих зеркал Википедии:",
 	"mainp3" => "Просим прощения за причинённые неудобства.",
 	"mainp4" => "С любовью,<br/> Администрация.",
 	"abouttitle" => "О Фонде Викимедия",
@@ -219,7 +263,7 @@ kaj la Komunejo Wikimedia, kolekto de bildoj kaj sondosieroj."
 
 "fr" => array(
 	"mainp1" => "Toutes les oeuvres Wikimedia, ( soit Wikipedia, Wiktionary, Wikibooks, Wikiquote, Wikisource, et Wikinews ) sont hors service en ce moment tant que nous les entretenons.",
-	"mainp2" => "Nous ne attendons pas que les réparations dépassent 21h UTC. Dans l'entretemps, vous pouvez vous servez des miroirs suivants:",
+	"mainp2" => "Nous ne attendons pas que les réparations dépassent <strong>$until</strong>. Dans l'entretemps, vous pouvez vous servez des miroirs suivants:",
 	"mainp3" => "Veuillez nous pardonnez de tout inconvenient.",
 	"mainp4" => "Bisous,<br />L'administration",
 	"abouttitle" => "A propos de l'organization Wikimedia",
@@ -231,7 +275,7 @@ kaj la Komunejo Wikimedia, kolekto de bildoj kaj sondosieroj."
 "es" => array(
 	"maintitle" => "Manutención del sitio Wikimedia",
 	"mainp1" => "Todos los proyectos Wikimedia (Wikipedia, Wikcionario, Wikilibros, Wikiquote, Wikisource, y Wikinoticias) están sin servicio mientras se desarrolla una manutención de equipos.",
-	"mainp2" => "Esperamos que esta manutención no se extienda más allá de 21:00 UTC. En el intertanto, quizás quiera utilizar uno de los siguientes espejos del contenido de Wikipedia:",
+	"mainp2" => "Esperamos que esta manutención no se extienda más allá de <strong>$until</strong>. En el intertanto, quizás quiera utilizar uno de los siguientes espejos del contenido de Wikipedia:",
 	"mainp3" => "Pedimos disculpas por cualquier inconveniente que esto pueda causarle.",
 	"mainp4" => "Con cariño,<br/>La Administración.",
 	"abouttitle" => "Acerca de la Fundación Wikimedia",
@@ -245,7 +289,7 @@ kaj la Komunejo Wikimedia, kolekto de bildoj kaj sondosieroj."
 	"mainp1" => "Tutti i progetti Wikimedia (Wikipedia, Wikizionary, Wikibooks,
 Wikiquote, Wikisource e Wikinotizie) sono al momento offline per
 consentire la manutenzione dell'hardware.",
-	"mainp2" => "Non ci aspettiamo che la manutenzione duri oltre le 21:00 UTC. Nel
+	"mainp2" => "Non ci aspettiamo che la manutenzione duri oltre le <strong>$until</strong>. Nel
 frattempo potresti voler consultare uno dei seguenti mirror del
 contenuto di Wikipedia:",
 	"mainp3" => "Ci scusiamo per gli inconvenienti che questo può causarti.",

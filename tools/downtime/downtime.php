@@ -1,8 +1,12 @@
 <?php
 header('HTTP/1.x 503 Service Unavailable');
 $rootpath = '/downtime/';
+$untilhour = 21;
 $statpath = "${rootpath}stat/";
 $scriptpath = "${rootpath}downtime.php";
+
+include "language-support.php";
+
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -101,7 +105,6 @@ img {border:0px;}
 </head>
 
 <body>
-<?php include "language-support.php" ?>
 	<div id="header">
 		<h1><img id="wikilogo" src="<?php echo $statpath ?>Wikilogo.png" alt="Wikipedia" width="230" height="31" /></h1>	
 	</div> 
