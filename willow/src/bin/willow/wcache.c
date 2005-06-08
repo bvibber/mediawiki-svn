@@ -56,6 +56,10 @@ static void *run_expirey(void *);
 static void wcache_evict(struct cache_object *, DBT *, DB_TXN *);
 
 static struct cache_state state;
+pthread_mutex_t state_mtx = PTHREAD_MUTEX_INITIALIZER;
+void state_lock(void);
+void state_unlock(void);
+
 static int int_max_len;
 static pthread_t expire_thread;
 
@@ -158,6 +162,18 @@ wcache_shutdown(void)
 			wlog(WLOG_ERROR, "error closing database: %s", db_strerror(i));
 			exit(8);
 		}
+}
+
+void
+state_lock()
+{
+	pthread_mutex_lock(&state_mtx);
+}
+
+void
+state_unlock()
+{
+	pthread_mutex_unlock(&state_mtx);
 }
 
 void
@@ -493,12 +509,14 @@ cache_next_id(void)
 {
 	DB_TXN	*txn;
 	int	 i;
-	
+
 	if (i = cacheenv->txn_begin(cacheenv, NULL, &txn, 0))
 		dberror("next_id: txn_begin", i);
-	
+
+	state_lock();
 	state.cs_id++;
 	cache_writestate(&state, txn);
+	state_unlock();
 	
 	if (i = txn->commit(txn, 0))
 		dberror("next_id: commit", i);
