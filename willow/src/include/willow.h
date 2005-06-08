@@ -14,6 +14,8 @@
 
 #include "config.h"
 
+typedef long long w_size_t;
+
 #ifdef WDEBUG_ALLOC
 void *internal_wmalloc(size_t, const char *, int);
 void internal_wfree(void *, const char *, int);

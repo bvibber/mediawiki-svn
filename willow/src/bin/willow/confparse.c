@@ -432,6 +432,27 @@ conf_end_log(tc)
 	return 0;
 }
 
+static int cache_expire_threshold = 25;
+static int cache_expire_every = 60;
+
+static int
+conf_end_cache(tc)
+	struct top_conf *tc;
+{
+	if (cache_expire_threshold < 0 || cache_expire_threshold > 100) {
+		conf_report_error("cache::expire_threshold must be between 0 and 100");
+		nerrors++;
+	}
+	if (cache_expire_every < 0) {
+		conf_report_error("cache::expire_every must be greater than 0");
+		nerrors++;
+	}
+
+	config.cache_expevery = cache_expire_every;
+	config.cache_expthresh = cache_expire_threshold;
+	return 0;
+}
+
 static struct conf_entry conf_backend_table[] = {
 	{ "port", 	CF_INT, NULL, 0, &backend_port	},
 	{ NULL }
@@ -456,6 +477,12 @@ static struct conf_entry conf_log_table[] = {
 	{ NULL }
 };
 
+static struct conf_entry conf_cache_table[] = {
+	{ "expire_every",	CF_TIME,	NULL, 0, &cache_expire_every		},
+	{ "expire_threshold",	CF_INT,		NULL, 0, &cache_expire_threshold	},
+	{ NULL }
+};
+
 void
 newconf_init(void)
 {
@@ -463,4 +490,5 @@ newconf_init(void)
 	add_top_conf("listen", conf_begin_listen, conf_end_listen, conf_listen_table);
 	add_top_conf("cache-dir", conf_begin_cachedir, conf_end_cachedir, conf_cachedir_table);
 	add_top_conf("log", NULL, conf_end_log, conf_log_table);
+	add_top_conf("cache", NULL, conf_end_cache, conf_cache_table);
 }

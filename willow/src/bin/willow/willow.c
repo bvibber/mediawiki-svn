@@ -208,7 +208,7 @@ int char_table[256] = {
 	/* 40  */ 0, 0, 0, 0, 0, 0, 0, 0,
 	/* 48  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST, 
 	/* 52  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,
-	/* 56  */ CHAR_HOST, CHAR_HOST, 0, 0,
+	/* 56  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, 0,
 	/* 60  */ 0, 0, 0, 0,
 	/* 64  */ 0, CHAR_HOST, CHAR_HOST, CHAR_HOST,
 	/* 68  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,

@@ -88,7 +88,7 @@ struct	cache_object	*cl_co;		/* Cache object				*/
 	struct {
 		int	f_cached:1;
 	}		 cl_flags;
-	
+	size_t		 cl_dsize;	/* Object size				*/
 struct	http_client	*fe_next;	/* freelist 				*/
 };
 
@@ -259,7 +259,8 @@ struct	cache_object	*cobj;
 		client->cl_path = wmalloc(len + 1);
 		if (client->cl_path == NULL)
 			outofmemory();
-		safe_snprintf(len + 1, (client->cl_path, len + 1, "http://%s%s", client->cl_entity.he_rdata.request.host,
+		safe_snprintf(len + 1, (client->cl_path, len + 1, "http://%s%s",
+				client->cl_entity.he_rdata.request.host,
 				client->cl_entity.he_rdata.request.path));
 	}
 	
@@ -664,5 +665,6 @@ struct	http_client	*client = data;
 		/*EMPTY*/
 		WDEBUG((WLOG_WARNING, "writing cached data: %s", strerror(errno)));
 	}
+	client->cl_co->co_size += len;
 }
 		

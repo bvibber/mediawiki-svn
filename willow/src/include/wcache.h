@@ -12,6 +12,8 @@
 # pragma ident "@(#)$Header$"
 #endif
 
+#include "willow.h"
+
 #define WCACHE_FREE	1
 
 /*
@@ -19,7 +21,8 @@
  * (length 0).
  */
 struct cache_state {
-	int	 cs_id;
+	int		cs_id;
+	w_size_t	cs_size;
 };
 
 struct cache_key {
@@ -31,8 +34,10 @@ struct cache_object {
 	int	  co_flags;
 	time_t	  co_expires;	/* Expires: header or -1		*/
 	time_t	  co_time;	/* Last-Modified / retrieval time	*/
+	time_t	  co_lru;	/* Last used timestamp, for eviction	*/
 	int	  co_id;	/* Object id				*/
-	int	  co_plen;	/* Size of cache object			*/
+	int	  co_plen;	/* Size of cache object path		*/
+	size_t	  co_size;	/* Object size				*/
 	char	 *co_path;	/* Object data location			*/
 };
 

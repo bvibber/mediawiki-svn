@@ -34,6 +34,8 @@ extern struct configuration {
 const	char		*access_log;
 struct	cachedir	*caches;
 	int		 ncaches;
+	time_t		 cache_expevery;
+	int		 cache_expthresh;
 } config;
 
 void wconfig_init(const char *);

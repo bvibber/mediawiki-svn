@@ -31,6 +31,8 @@
 #include <strings.h>
 #include <limits.h>
 #include <assert.h>
+#include <pthread.h>
+#include <unistd.h>
 
 #include <db.h>
  
@@ -41,6 +43,7 @@
 
 static DB_ENV *cacheenv;
 static DB *cacheobjs;
+static DB *lru_idx;
 
 #define CACHEDIR "__objects__"
 
@@ -48,9 +51,13 @@ static void dberror(const char *, int);
 static void cache_writestate(struct cache_state *, DB_TXN *);
 static int cache_getstate(struct cache_state *, DB_TXN *);
 static int cache_next_id(void);
+static int lru_get_used(DB *dbp, const DBT *pkey, const DBT *pdata, DBT *skey);
+static void *run_expirey(void *);
+static void wcache_evict(struct cache_object *, DBT *, DB_TXN *);
 
 static struct cache_state state;
 static int int_max_len;
+static pthread_t expire_thread;
 
 static void dberror(txt, err)
 	const char *txt;
@@ -144,9 +151,10 @@ wcache_shutdown(void)
 	int i;
 	
 	/* don't use dberror() here because it calls us */
-	if (cacheobjs) 
+	if (cacheobjs)
 		/*LINTED =/==*/
-		if ((i = cacheobjs->close(cacheobjs, 0)) || (i = cacheenv->close(cacheenv, 0))) {
+		if ((i = cacheobjs->close(cacheobjs, 0)) || (i = lru_idx->close(lru_idx, 0))
+		    || (i = cacheenv->close(cacheenv, 0))) {
 			wlog(WLOG_ERROR, "error closing database: %s", db_strerror(i));
 			exit(8);
 		}
@@ -202,6 +210,15 @@ struct	cachedir	*cd;
 				DB_CREATE, 0600))
 			dberror("init: db open", i);
 		
+		if (i = db_create(&lru_idx, cacheenv, 0))
+			dberror("init: lru db_create", i);
+		if (i = lru_idx->set_flags(lru_idx, DB_DUP | DB_DUPSORT))
+			dberror("init: lru set_flags", i);
+		if (i = lru_idx->open(lru_idx, txn, "lru.db", NULL, DB_BTREE, DB_CREATE, 0600))
+			dberror("init: lru open", i);
+		if (i = cacheobjs->associate(cacheobjs, txn, lru_idx, lru_get_used, 0))
+			dberror("init: associate", i);
+
 		if (i = txn->commit(txn, 0))
 			dberror("init: open commit", i);
 		
@@ -220,6 +237,9 @@ struct	cachedir	*cd;
 	}
 	
 	int_max_len = (int) log10((double) INT_MAX) + 1;
+
+	if (readstate)
+		pthread_create(&expire_thread, NULL, run_expirey, NULL);
 }
 
 static char *
@@ -247,7 +267,48 @@ make_databuf(obj)
 	bcopy(obj->co_path, buf + sizeof(struct cache_object), obj->co_plen + 1);
 	return buf;
 }
-	
+
+static int
+lru_get_used(dbp, pkey, pdata, skey)
+	DB *dbp;
+	const DBT *pkey, *pdata;
+	DBT *skey;
+{
+static	time_t zero = INT_MAX;
+	if (pkey->size == 5 && memcpy(pkey->data, "STATE", 5)) {
+		skey->data = &zero;
+		skey->size = sizeof(zero);
+		return 0;
+	}
+
+	skey->data = &((struct cache_object *)pdata->data)->co_lru;
+	skey->size = sizeof(time_t);
+	return 0;
+}
+
+static void
+wcache_evict(obj, key, txn)
+	struct cache_object *obj;
+	DBT *key;
+	DB_TXN *txn;
+{
+	char	*path;
+	size_t	plen;
+
+	plen = strlen(config.caches[0].dir) + obj->co_plen + 12 + 2;
+	if ((path = wcalloc(1, plen + 1)) == NULL)
+		outofmemory();
+
+	safe_snprintf(plen, (path, plen, "%s/__objects__/%s", config.caches[0].dir,
+			obj->co_path));
+
+	unlink(path);
+	wfree(path);
+
+	cacheobjs->del(cacheobjs, txn, key, 0);
+	WDEBUG((WLOG_DEBUG, "[%s] is evicted", obj->co_path));
+}
+
 struct cache_object *
 wcache_find_object(key)
 	struct cache_key *key;
@@ -283,15 +344,25 @@ struct	cache_object	*data;
 			dberror("find_object: get", i);
 		return NULL;
 	}
+
+	data = datat.data;
+	data->co_path = (char *)data + sizeof(*data);
+
+	/*
+	 * Update the last used time.
+	 */
+	data->co_lru = time(0);
+	if (cacheobjs->put(cacheobjs, txn, &keyt, &datat, 0))
+		dberror("find_object: put", i);
+
 	if (i = txn->commit(txn, 0))
 		dberror("find_object: commit", i);
 
 	wfree(keybuf);
 			
-	data = datat.data;
-	data->co_path = (char *)data + sizeof(*data);
 	WDEBUG((WLOG_DEBUG, "found %s, path=[%s]", key->ck_key, data->co_path));
 	data->co_flags &= ~WCACHE_FREE;
+
 	return data;
 }
 
@@ -321,6 +392,8 @@ wcache_store_object(key, obj)
 		dberror("store_object: txn_begin", i);
 	if (cacheobjs->put(cacheobjs, txn, &keyt, &datat, DB_NOOVERWRITE))
 		ret = -1;
+	state.cs_size += obj->co_size;
+	cache_writestate(&state, txn);
 	if (i = txn->commit(txn, 0))
 		dberror("store_object: commit", i);
 	
@@ -468,4 +541,48 @@ struct	cache_object	*ret;
 	ret->co_flags |= WCACHE_FREE;
 	WDEBUG((WLOG_DEBUG, "new object path is [%s], len %d", ret->co_path, ret->co_plen));
 	return ret;
+}
+
+static void *
+run_expirey(data)
+	void *data;
+{
+	wlog(WLOG_NOTICE, "cache expirey thread starting");
+	for (;;) {
+		w_size_t	 wantsize;
+		int		 i;
+		DBC		*cursor;
+		DB_TXN		*txn;
+		DBT		ckey, pkey, data;
+	struct	cache_object	*obj;
+
+		WDEBUG((WLOG_DEBUG, "expire: start, run every %d", config.cache_expevery));
+		sleep(config.cache_expevery);
+
+		wantsize = config.caches[0].maxsize * ((100.0-config.cache_expthresh)/100);
+		if (state.cs_size <= wantsize) {
+			WDEBUG((WLOG_DEBUG, "expire: cache only %lld bytes large", state.cs_size));
+			continue;
+		}
+		WDEBUG((WLOG_DEBUG, "expiring some objects, size=%lld, want=%lld", state.cs_size, wantsize));
+		cacheenv->txn_begin(cacheenv, NULL, &txn, 0);
+		lru_idx->cursor(lru_idx, txn, &cursor, 0);
+		while (state.cs_size > wantsize) {
+			if (i = cursor->c_pget(cursor, &ckey, &pkey, &data, DB_FIRST))
+				if (i == DB_NOTFOUND)
+					break;
+				else
+					dberror("c_pget", i);
+			if (pkey.size == 5 && memcpy(pkey.data, "STATE", 5))
+				break;
+			obj = data.data;
+			obj->co_path = (char *)obj + sizeof(*obj);
+			state.cs_size -= obj->co_size;
+			wcache_evict(obj, &pkey, txn);
+			WDEBUG((WLOG_DEBUG, "size now=%lld", state.cs_size));
+		}
+		cursor->c_close(cursor);
+		cache_writestate(&state, txn);
+		txn->commit(txn, 0);
+	}
 }

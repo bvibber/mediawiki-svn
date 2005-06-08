@@ -15,6 +15,8 @@ LDFLAGS = -L$(SRCROOT)/src/lib/wnet -lwillownet \
 	  -L$(SRCROOT)/src/lib/wlog -lwillowlog \
 	  $(LIBOBJS)
 
+default: all
+
 y.tab.o: y.tab.c
 lex.yy.o: lex.yy.c y.tab.h
 

@@ -25,6 +25,20 @@ listen "127.0.0.1" {
 };
 
 /*
+ * Controls global caching options.
+ */
+cache {
+	/*
+	 * Every expire_time seconds, the oldest expire_threshold%
+	 * objects will be removed from the cache, using an LRU
+	 * algorithm.  This only occurs if the cache is more than
+	 * (100 - expire_theshold)% full.
+	 */
+	expire_time = 1 hour;
+	expire_theshold = 5;
+};
+
+/*
  * For now, only one cache directory is allowed.
  * Run "willow -z" to create the initial directory.  Make sure it
  * doesn't exist first.
