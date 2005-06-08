@@ -12,12 +12,12 @@ include "language-support.php";
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-	<title>Wikimedia site maintenance</title>  
+	<title><?= langet("maintitle") ?></title>  
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 body {
 	font-family: serif;
-	background: url(<?php echo $statpath ?>Headbg.jpg) #FAFAFA no-repeat top left;
+	background: url(<?= $statpath ?>Headbg.jpg) #FAFAFA no-repeat top left;
 	margin: 0px;
 	padding: 0px;
 	width: 100%;
@@ -32,9 +32,6 @@ h1 {
 	margin:0px;
 }
 
-/*h2 {
-	font-size: 200%;
-}*/
 h2 {
  font-size: 150%;border-bottom: 1px #535353 dashed; font-weight: bold; 
  margin-top:25px;margin-bottom:0px;line-height:200%;
@@ -42,7 +39,7 @@ h2 {
 
 li {
 	list-style-type: square;
-	list-style-image: url("<?php echo $statpath ?>bullet.gif");
+	list-style-image: url("<?= $statpath ?>bullet.gif");
 }
 
 #firstsection {
@@ -74,13 +71,13 @@ p:first-letter {
 #body {
 	padding-right: 4em;
 	padding-left: 4em;
-	background: url(<?php echo $statpath ?>Logoparabg1.jpg) no-repeat 0px 0px;
+	background: url(<?= $statpath ?>Logoparabg1.jpg) no-repeat 0px 0px;
 }
 
 #footer {
 	width: 100%;
 	height: 109px; 
-	background: url(<?php echo $statpath ?>Footbg.jpg) no-repeat 0px 0px; 
+	background: url(<?= $statpath ?>Footbg.jpg) no-repeat 0px 0px; 
 	clear: left;
 }
 #footer p {margin:0px}
@@ -108,47 +105,46 @@ img {border:0px;}
 
 <body>
 	<div id="header">
-		<h1><img id="wikilogo" src="<?php echo $statpath ?>Wikilogo.png" alt="Wikipedia" width="230" height="31" /></h1>	
+		<h1><img id="wikilogo" src="<?= $statpath ?>Wikilogo.png" alt="Wikipedia" width="230" height="31" /></h1>	
 	</div> 
 	<div id="languages">
-		<?php echo langbar() ?>
+		<?= langbar() ?>
 	</div>
 	<div id="body">
 	<div id="firstsection">
 
-		<h2><?php echo langet("maintitle") ?></h2>
-		<p><?php echo langet("mainp1") ?></p>
-		<p><?php echo langet("mainp2") ?></p>
+		<h2><?= langet("maintitle") ?></h2>
+		<p><?= langet("mainp1") ?></p>
+		<p><?= langet("mainp2") ?></p>
 
 		<ul>
-<?php if ($lang == "da") { ?>
+<? if ($lang == "da") { ?>
 			<li><a href="http://www.netleksikon.dk">www.netleksikon.dk</a> (Dansk)</li>
-<?php } ?>
-<?php if ($lang == "pl") { ?>
+<? else if ($lang == "pl") { ?>
 			<li><a href="http://pl.efactory.pl/allpl.php">efactory.pl</a> (Polski)</li>
-<?php } ?>
+<? } ?>
 			<li><a href="http://www.answers.com/">Answers.com</a></li>
 			<li><a href="http://www.fact-index.com/">fact-index.com</a></li>
 		</ul>
 
-		<p><?php echo langet("mainp3") ?></p>
-		<p><?php echo langet("mainp4") ?></p>
+		<p><?= langet("mainp3") ?></p>
+		<p><?= langet("mainp4") ?></p>
 	</div>
 
-	<h2><?php echo langet("abouttitle")?></h2>
-	<p><?php echo langet("about")?></p>
+	<h2><?= langet("abouttitle") ?></h2>
+	<p><?= langet("about")?></p>
 
-<?php if ($lang != "da") { ?>
-	<h2><?php echo langet("projectstitle")?></h2>
-	<p><?php echo langet("projects")?></p>
-<?php } ?>
+<? if ($lang != "da") { ?>
+	<h2><?= langet("projectstitle") ?></h2>
+	<p><?= langet("projects") ?></p>
+<? } ?>
 
 	</div>
 
 	<div id="footer">
 		<div id="copyright">
 <a class="dark" href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a>.
-<?php echo langet("credit") ?>
+<?= langet("credit") ?>
 		</div>
 	</div>
 </body>
