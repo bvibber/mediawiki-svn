@@ -1,4 +1,6 @@
 <?php
+# $Header$
+
 header('HTTP/1.x 503 Service Unavailable');
 $rootpath = '/downtime/';
 $untilhour = 21;

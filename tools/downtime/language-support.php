@@ -1,4 +1,5 @@
 <?php
+# $Header$
 
 $lang = "en";
 $our_langs = array(
@@ -13,6 +14,7 @@ $our_langs = array(
     "Polski" => "pl",
     "Slovensky" => "sk",
     "Русский" => "ru",
+    "日本語" => "ja",
 );
 
 if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
@@ -311,6 +313,18 @@ Wikibooks, una collezione di libri di testo a contenuto gratuito;
 Wikiquote, un insieme di citazioni famose; Wikinotizie, una fonte
 libera di notizie; Wikisource, un insieme di documenti da fonti
 primarie e Wikimedia Commons, un contenitore di immagini e suoni.",
+),
+
+"ja" => array(
+	"maintitle" => "ウィキメディアサイト保守作業中",
+	"mainp1" => "ウィキメディアの全てのプロジェクト（ウィキペディア、ウィクショナリー、ウィキブックス、ウィキクォート、ウィキソース、ウィキニュース）は現在ハードウェアの保守作業のためアクセスできません。",
+	"mainp2" => "この保守作業は $until 頃までには終了する予定です。それまでは以下のミラーサイトをご利用ください。",
+	"mainp3" => "ご不便をおかけしまして申し訳ございません。ご理解、ご協力の程お願いいたします。",
+	"mainp4" => "サーバ管理担当",
+	"abouttitle" => "ウィキメディア財団について",
+	"about" => "ウィキメディア財団は無料で公開されたWikiを利用したプロジェクトにより、多言語のコンテンツの作成、開発、配布を行う国際的な非営利団体です。ウィキメディア財団はそうして集めた知識を世界中の人々に無料で提供する事を目標としており、寄付によって運営されています。",
+	"projectstitle" => "ウィキメディアプロジェクト",
+	"ウィキメディア財団はいくつかの共同作業プロジェクトの母体となる組織です。プロジェクトの中には世界で最も頻繁にアクセスされるサイトの100位以内に入るウィキペディアを含みます。他のオンラインプロジェクトには、多言語辞書のウィクショナリー、フリー教科書収集プロジェクトのウィキブックス、引用句集ウィキクォート、フリーニュースリソースのウィキニュース、1次ソース収集プロジェクトのウィキソース、画像や音声などメディアファイルの収集を行うウィキメディアコモンズがあります。",
 ),
 
 );
