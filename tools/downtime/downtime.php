@@ -1,6 +1,8 @@
 <?php
-# return code added by brion to keep things out of indexes etc
-header( 'HTTP/1.x 503 Service Unavailable' );
+header('HTTP/1.x 503 Service Unavailable');
+$rootpath = '/downtime/';
+$statpath = "${rootpath}stat/";
+$scriptpath = "${rootpath}downtime.php";
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -9,7 +11,7 @@ header( 'HTTP/1.x 503 Service Unavailable' );
 <style type="text/css">
 body {
 	font-family: serif;
-	background: url(/stat/Headbg.jpg) #FAFAFA no-repeat top left;
+	background: url(<?php echo $statpath ?>Headbg.jpg) #FAFAFA no-repeat top left;
 	margin: 0px;
 	padding: 0px;
 	width: 100%;
@@ -34,7 +36,7 @@ h2 {
 
 li {
 	list-style-type: square;
-	list-style-image: url("/stat/bullet.gif");
+	list-style-image: url("<?php echo $statpath ?>bullet.gif");
 }
 
 #firstsection {
@@ -66,13 +68,13 @@ p:first-letter {
 #body {
 	padding-right: 4em;
 	padding-left: 4em;
-	background: url(/stat/Logoparabg1.jpg) no-repeat 0px 0px;
+	background: url(<?php echo $statpath ?>Logoparabg1.jpg) no-repeat 0px 0px;
 }
 
 #footer {
 	width: 100%;
 	height: 109px; 
-	background: url(/stat/Footbg.jpg) no-repeat 0px 0px; 
+	background: url(<?php echo $statpath ?>Footbg.jpg) no-repeat 0px 0px; 
 	clear: left;
 }
 #footer p {margin:0px}
@@ -101,7 +103,7 @@ img {border:0px;}
 <body>
 <?php include "language-support.php" ?>
 	<div id="header">
-		<h1><img id="wikilogo" src="/stat/Wikilogo.png" alt="Wikipedia" width="230" height="31" /></h1>	
+		<h1><img id="wikilogo" src="<?php echo $statpath ?>Wikilogo.png" alt="Wikipedia" width="230" height="31" /></h1>	
 	</div> 
 	<div id="languages">
 		<?php echo langbar() ?>

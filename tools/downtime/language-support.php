@@ -11,8 +11,8 @@ $our_langs = array(
     "Italiano" => "it",
     "Nederlands" => "nl",
     "Polski" => "pl",
-	"Slovensky" => "sk",
-	"Русский" => "ru",
+    "Slovensky" => "sk",
+    "Русский" => "ru",
 );
 
 if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
@@ -41,13 +41,13 @@ function langet($name) {
 }
 
 function langbar() {
-    global $lang, $our_langs;
+    global $lang, $our_langs, $scriptpath;
     $a = array();
     foreach ($our_langs as $name => $code) {
         if ($code == $lang)
             $a[] = "<strong>$name</strong>";
         else
-            $a[] = "<a href=\"/downtime.php?lang=$code\">$name</a>";
+            $a[] = "<a href=\"${scriptpath}?lang=$code\">$name</a>";
     }
     return implode(" | ", $a);
 }
