@@ -21,6 +21,7 @@
 #include <assert.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <event.h>
 
 #include "wcache.h"
 #include "wlog.h"
@@ -29,19 +30,22 @@
 
 #define CACHEDIR "__objects__"
 
-struct cache_object cache_meta;
-
 static void dberror(const char *, int);
 static int cache_next_id(void);
-static void *run_expirey(void *);
+static void run_expiry(int, short, void*);
 static void wcache_evict(struct cache_object *);
 static void cache_getstate(struct cache_state *);
 static struct cache_object *wcache_new_object(const char *);
 static void wcache_free_object(struct cache_object *);
 static int cache_open(struct cache_object *, int, int);
+static int cache_unlink(struct cache_object *);
 static void cache_writestate(struct cache_state *state);
+static void expire_sched(void);
 
 static struct cache_state state;
+static struct event expire_ev;
+static struct timeval expire_tv;
+static struct cache_object cache_meta;
 
 static int int_max_len;
 
@@ -62,6 +66,22 @@ cache_open(obj, flags, mode)
 	i = open(path, flags, mode);
 	wfree(path);
 	return i;
+}
+
+static int
+cache_unlink(obj)
+	struct cache_object *obj;
+{
+	char *path;
+	int plen;
+	int i;
+
+	plen = strlen(config.caches[0].dir) + 1 + sizeof(CACHEDIR) + 1 + 6 + int_max_len;
+	path = wmalloc(plen + 1);
+	sprintf(path, "%s/%s/%s", config.caches[0].dir, CACHEDIR, obj->co_path);
+	unlink(path);
+	wfree(path);
+	return;
 }
 
 void
@@ -131,6 +151,7 @@ struct	cache_state	 state;
 void
 wcache_shutdown(void)
 {
+	cache_writestate(&state);
 }
 
 void
@@ -152,6 +173,18 @@ struct	cachedir	*cd;
 	int_max_len = (int) log10((double) INT_MAX) + 1;
 
 	cache_getstate(&state);
+	if (readstate) {
+		expire_sched();
+	}
+}
+
+static void
+expire_sched()
+{
+	expire_tv.tv_usec = 0;
+	expire_tv.tv_sec = config.cache_expevery;
+	evtimer_set(&expire_ev, run_expiry, NULL);
+	event_add(&expire_ev, &expire_tv);
 }
 
 void
@@ -168,10 +201,22 @@ wcache_release(obj, comp)
 		for (o = &cache_meta; o->co_next; o = o->co_next)
 			if (o->co_next == obj) {
 				o->co_next = o->co_next->co_next;
-				wcache_free_object(obj);
+				wcache_evict(obj);
 				break;
 			}
 	}
+}
+
+static void
+wcache_evict(obj)
+	struct cache_object *obj;
+{
+struct	cache_object *prev	= obj->co_prev;
+	prev->co_next = obj->co_next;
+	if (cache_meta.co_tail == obj)
+		cache_meta.co_tail = prev;
+	cache_unlink(obj);
+	wcache_free_object(obj);
 }
 
 struct cache_object *
@@ -282,8 +327,8 @@ struct	cache_object	*obj;
 		obj->co_lru = lru;
 		obj->co_id = id;
 		obj->co_expires = expires;
-		obj->co_next = cache_meta.co_next;
-		cache_meta.co_next = obj;
+		obj->co_prev = cache_meta.co_tail;
+		cache_meta.co_tail = obj;
 		WDEBUG((WLOG_DEBUG, "load %s %s from cache", obj->co_key, obj->co_path));
 	}
 
@@ -335,6 +380,8 @@ struct	cache_object	*ret;
 	WDEBUG((WLOG_DEBUG, "new object path is [%s], len %d", ret->co_path, ret->co_plen));
 
 	ret->co_next = cache_meta.co_next;
+	if (cache_meta.co_next)
+		cache_meta.co_next->co_prev = ret;
 	cache_meta.co_next = ret;
 	return ret;
 }
@@ -345,25 +392,29 @@ wcache_free_object(obj)
 {
 }
 
-static void *
-run_expirey(data)
+static void
+run_expiry(fd, ev, data)
+	int fd;
+	short ev;
 	void *data;
 {
-	wlog(WLOG_NOTICE, "cache expirey thread starting");
-	for (;;) {
-		w_size_t	 wantsize;
-		int		 i;
-	struct	cache_object	*obj;
+	w_size_t	 wantsize;
+	int		 i;
+struct	cache_object	*obj;
 
-		WDEBUG((WLOG_DEBUG, "expire: start, run every %d", config.cache_expevery));
-		sleep(config.cache_expevery);
+	WDEBUG((WLOG_DEBUG, "expire: start, run every %d", config.cache_expevery));
 
-		cache_writestate(&state);
-		wantsize = config.caches[0].maxsize * ((100.0-config.cache_expthresh)/100);
-		if (state.cs_size <= wantsize) {
-			WDEBUG((WLOG_DEBUG, "expire: cache only %lld bytes large", state.cs_size));
-			continue;
-		}
-		WDEBUG((WLOG_DEBUG, "expiring some objects, size=%lld, want=%lld", state.cs_size, wantsize));
+	cache_writestate(&state);
+	wantsize = config.caches[0].maxsize * ((100.0-config.cache_expthresh)/100);
+	if (state.cs_size <= wantsize) {
+		WDEBUG((WLOG_DEBUG, "expire: cache only %lld bytes large", state.cs_size));
+		expire_sched();
+		return;
 	}
+	while (state.cs_size > wantsize) {
+		struct cache_object *obj = cache_meta.co_tail;
+		WDEBUG((WLOG_DEBUG, "expiring some objects, size=%lld, want=%lld", state.cs_size, wantsize));
+		wcache_evict(obj);
+	}
+	expire_sched();
 }

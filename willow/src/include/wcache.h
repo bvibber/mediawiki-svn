@@ -38,6 +38,8 @@ struct cache_object {
 	int		  co_complete;	/* Finished being cached		*/
 
 struct	cache_object	 *co_next;
+struct	cache_object	 *co_prev;
+struct	cache_object	 *co_tail;
 };
 
 void wcache_init(int);

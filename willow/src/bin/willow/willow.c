@@ -141,7 +141,6 @@ struct	sigaction	segv_act;
 		wcache_setupfs();
 		exit(0);
 	}
-	wcache_init(1);
 		
 	/*
 	 * HTTP should be initialised before the network so that
@@ -149,6 +148,7 @@ struct	sigaction	segv_act;
 	 */
 	whttp_init();
 	wnet_init();
+	wcache_init(1);
 
 	(void)signal(SIGINT, sig_exit);
 	(void)signal(SIGTERM, sig_exit);
