@@ -12,32 +12,9 @@ if ( defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionFunctions[] = 'wfSetupMakesysop';
 
-define( 'GR_SYSOP', 3 );
-define( 'GR_BUREAUCRAT', 4 );
-define( 'GR_STEWARD', 5); 
-
 // Set groups to the appropriate sysop/bureaucrat structure
-// This record was retrieved from Special:Groups?showrecord=1
-
-$wgStaticGroups = 
-	'a:5:{i:1;O:5:"group":5:{s:4:"name";s:16:":group-anon-name";s:2:"id";s:1:"1";' .
-	's:11:"description";s:16:":group-anon-desc";s:10:"dataLoaded";b:1;s:6:"rights' .
-	'";s:23:"read,edit,createaccount";}i:2;O:5:"group":5:{s:4:"name";s:20:":group' .
-	'-loggedin-name";s:2:"id";s:1:"2";s:11:"description";s:20:":group-loggedin-de' .
-	'sc";s:10:"dataLoaded";b:1;s:6:"rights";s:44:"read,edit,move,upload,validate,' .
-	'createaccount";}i:3;O:5:"group":5:{s:4:"name";s:17:":group-admin-name";s:2:"' .
-	'id";s:1:"3";s:11:"description";s:17:":group-admin-desc";s:10:"dataLoaded";b:' .
-	'1;s:6:"rights";s:125:"read,edit,move,upload,validate,createaccount,delete,un' .
-	'delete,protect,block,upload,asksql,rollback,patrol,editinterface,import";}i:' .
-	'4;O:5:"group":5:{s:4:"name";s:22:":group-bureaucrat-name";s:2:"id";s:1:"4";s' .
-	':11:"description";s:22:":group-bureaucrat-desc";s:10:"dataLoaded";b:1;s:6:"r' .
-	'ights";s:135:"read,edit,move,upload,validate,createaccount,delete,undelete,p' .
-	'rotect,block,upload,asksql,rollback,patrol,editinterface,import,makesysop";}' .
-	'i:5;O:5:"group":5:{s:4:"name";s:19:":group-steward-name";s:2:"id";s:1:"5";s:' .
-	'11:"description";s:19:":group-steward-desc";s:10:"dataLoaded";b:1;s:6:"right' .
-	's";s:168:"read,edit,move,upload,validate,createaccount,delete,undelete,prote' .
-	'ct,block,upload,asksql,rollback,patrol,editinterface,import,makesysop,userri' .
-	'ghts,grouprights,siteadmin";}}';
+$wgGroupPermissions['steward'] = array( 'makesysop' );
+$wgGroupPermissions['bureaucrat'][] = 'makesysop';
 
 $wgAvailableRights[] = 'makesysop';
 
@@ -98,7 +75,7 @@ class MakesysopForm {
 		$this->mSetBureaucrat = $request->getBool( 'wpSetBureaucrat' );
 		$this->mSetSteward = $request->getBool( 'wpSetSteward' );
 
-		$this->mIsSteward = in_array( GR_STEWARD, $wgUser->getGroups() );
+		$this->mIsSteward = in_array( 'steward', $wgUser->getGroups() );
 	}
 
 	function showForm( $err = '') {
@@ -223,16 +200,16 @@ class MakesysopForm {
 		$dbw->freeResult( $res );
 
 		$rightsNotation = array();
-		$wasSysop = !empty( $groups[GR_SYSOP] );
-		$wasBureaucrat = !empty( $groups[GR_BUREAUCRAT] );
-		$wasSteward = !empty( $groups[GR_STEWARD] );
+		$wasSysop = !empty( $groups['sysop'] );
+		$wasBureaucrat = !empty( $groups['bureaucrat'] );
+		$wasSteward = !empty( $groups['steward'] );
 
 		if ( $this->mSetSteward ) {
 			if ( $wasSteward ) {
 				$this->showFail( 'already_steward' );
 				return;
 			} else {
-				$dbw->insert( $user_groups, array( 'ug_user' => $id, 'ug_group' => GR_STEWARD ), $fname );
+				$dbw->insert( $user_groups, array( 'ug_user' => $id, 'ug_group' => 'steward' ), $fname );
 			}
 		}
 		if ( $this->mSetBureaucrat ) {
@@ -242,7 +219,7 @@ class MakesysopForm {
 					return;
 				}
 			} else {
-				$dbw->insert( $user_groups, array( 'ug_user' => $id, 'ug_group' => GR_BUREAUCRAT ), $fname );
+				$dbw->insert( $user_groups, array( 'ug_user' => $id, 'ug_group' => 'bureaucrat' ), $fname );
 				$rightsNotation[] = "+bureaucrat";
 			}
 		} elseif ( $wasSysop ) {
@@ -250,7 +227,7 @@ class MakesysopForm {
 			return;
 		}
 		if ( !$wasSysop ) {
-			$dbw->insert( $user_groups, array( 'ug_user' => $id, 'ug_group' => GR_SYSOP ), $fname );
+			$dbw->insert( $user_groups, array( 'ug_user' => $id, 'ug_group' => 'sysop' ), $fname );
 			$rightsNotation[] = "+sysop";
 		}
 		
