@@ -24,9 +24,6 @@ ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
 #include <netinet/in.h>
 
 #include "config.h"
-#ifdef THREADED_IO
-# include <pthread.h>
-#endif
 #ifdef USE_LIBEVENT
 # include <sys/time.h>
 # include <event.h>
@@ -77,30 +74,8 @@ struct	readbuf		 fde_readbuf;
 #ifdef USE_LIBEVENT
 struct	event		 fde_ev;
 #endif
-#ifdef THREADED_IO
-	pthread_mutex_t	 fde_mtx;
-#endif
 };
 extern struct fde *fde_table;
-
-#ifdef THREADED_IO
-# ifdef WILLOW_DEBUG
-#  define FDE_LOCK(e) do { \
-	wlog(WLOG_DEBUG, "%u locks %d", pthread_self(), (e)->fde_fd); \
-	(void)pthread_mutex_lock(&(e)->fde_mtx); \
-} while(0)
-#  define FDE_UNLOCK(e) do { \
-	wlog(WLOG_DEBUG, "%u unlocks %d", pthread_self(), (e)->fde_fd); \
-	(void)pthread_mutex_unlock(&(e)->fde_mtx); \
-} while(0)
-# else
-#  define FDE_LOCK(e) (void)pthread_mutex_lock(&(e)->fde_mtx)
-#  define FDE_UNLOCK(e) (void)pthread_mutex_unlock(&(e)->fde_mtx)
-# endif
-#else
-# define FDE_LOCK(e)
-# define FDE_UNLOCK(e)
-#endif
 
 struct client_data {
 struct	sockaddr_in	cdat_addr;

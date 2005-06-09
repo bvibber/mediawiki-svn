@@ -19,7 +19,6 @@
 #include <strings.h>
 #include <limits.h>
 #include <assert.h>
-#include <pthread.h>
 #include <unistd.h>
 #include <fcntl.h>
 
@@ -40,12 +39,11 @@ static void cache_getstate(struct cache_state *);
 static struct cache_object *wcache_new_object(const char *);
 static void wcache_free_object(struct cache_object *);
 static int cache_open(struct cache_object *, int, int);
+static void cache_writestate(struct cache_state *state);
 
 static struct cache_state state;
-pthread_mutex_t state_mtx = PTHREAD_MUTEX_INITIALIZER;
 
 static int int_max_len;
-static pthread_t expire_thread;
 
 static int
 cache_open(obj, flags, mode)
@@ -124,6 +122,7 @@ struct	cache_state	 state;
 	bzero(&state, sizeof(state));
 	state.cs_id = 1000;
 	state.cs_size = 0;
+	cache_writestate(&state);
 	
 	wlog(WLOG_NOTICE, "wrote initial cache state");
 	wcache_shutdown();
@@ -132,22 +131,6 @@ struct	cache_state	 state;
 void
 wcache_shutdown(void)
 {
-}
-
-void
-state_lock()
-{
-#ifdef THREADED_IO
-	pthread_mutex_lock(&state_mtx);
-#endif
-}
-
-void
-state_unlock()
-{
-#ifdef THREADED_IO
-	pthread_mutex_unlock(&state_mtx);
-#endif
 }
 
 void
@@ -169,9 +152,6 @@ struct	cachedir	*cd;
 	int_max_len = (int) log10((double) INT_MAX) + 1;
 
 	cache_getstate(&state);
-
-	if (readstate)
-		pthread_create(&expire_thread, NULL, run_expirey, NULL);
 }
 
 void
@@ -201,21 +181,23 @@ wcache_find_object(key, fd)
 {
 struct	cache_object	*co;
 
-	state_lock();
-	for (co = cache_meta.co_next; co; co = co->co_next)
+	WDEBUG((WLOG_DEBUG, "wcache_find_object: looking for %s", key));
+	for (co = cache_meta.co_next; co; co = co->co_next) {
+		WDEBUG((WLOG_DEBUG, "trying %s, comp=%d", co->co_key, co->co_complete));
 		if (!strcmp(key, co->co_key)) {
 			if (!co->co_complete) {
-				state_unlock();
 				return NULL;
 			}
 			*fd = cache_open(co, O_RDONLY, 0);
-			if (*fd == -1)
+			WDEBUG((WLOG_DEBUG, "found! fd=%d", *fd));
+			if (*fd == -1) {
+				wlog(WLOG_WARNING, "opening cache file %s: %s", co->co_path, strerror(errno));
 				co = NULL;
-			state_unlock();
+			}
 			return co;
 		}
+	}
 
-	state_unlock();
 	co = wcache_new_object(key);
 	if ((*fd = cache_open(co, O_WRONLY | O_CREAT | O_EXCL, 0600)) == -1) {
 		wlog(WLOG_WARNING, "opening cached file: %s", strerror(errno));
@@ -244,8 +226,12 @@ struct	cache_object	*obj;
 		exit(8);
 	}
 	fprintf(stfil, "%d\n", state->cs_id);
-	for (obj = cache_meta.co_next; obj; obj = obj->co_next)
-		fprintf(stfil, "%s %s %d %d\n", obj->co_key, obj->co_path, obj->co_lru, obj->co_size);
+	for (obj = cache_meta.co_next; obj; obj = obj->co_next) {
+		if (!obj->co_complete)
+			continue;
+		fprintf(stfil, "%s %s %d %d %d %d %d\n", obj->co_key, obj->co_path, obj->co_size, obj->co_time,
+			obj->co_lru, obj->co_id, obj->co_expires);
+	}
 	fclose(stfil);
 }
 
@@ -253,17 +239,62 @@ static void
 cache_getstate(state)
 	struct cache_state *state;
 {
-	state->cs_id = 1000;
+	FILE 		*stfil;
+	char		*stpath;
+	int		 stlen;
+struct	cache_object	*obj;
+	int		 i;
+	char		*s;
+	size_t		 l;
+
+	stlen = strlen(config.caches[0].dir) + 1 + 5 + 1;
+	if ((stpath = wmalloc(stlen)) == NULL)
+		outofmemory();
+	safe_snprintf(stlen, (stpath, stlen, "%s/%s", config.caches[0].dir, "state"));
+	if ((stfil = fopen(stpath, "r")) == NULL) {
+		wlog(WLOG_WARNING, "opening cache state %s: %s", stpath, strerror(errno));
+		wlog(WLOG_WARNING, "using default cache state");
+		state->cs_id = 1000;
+		return;
+	}
+
+	if (fscanf(stfil, "%d\n", &state->cs_id) != 1) {
+		wlog(WLOG_ERROR, "data format error in cache state file %s", stpath);
+		exit(8);
+	}
+
+	s = wmalloc(65535);
+	while (fgets(s, 65534, stfil)) {
+		char url[65535], path[128];
+		int size, time, lru, id, expires;
+		struct cache_object *obj;
+		if (sscanf(s, "%65534s %127s %d %d %d %d %d", url, path, &size, &time, &lru, &id, &expires) != 7) {
+			wlog(WLOG_ERROR, "data format error in cache state file %s", stpath);
+			exit(8);
+		}
+		obj = wmalloc(sizeof(*obj));
+		bzero(obj, sizeof(*obj));
+		obj->co_key = wstrdup(url);
+		obj->co_size = size;
+		obj->co_path = wstrdup(path);
+		obj->co_complete = 1;
+		obj->co_time = time;
+		obj->co_lru = lru;
+		obj->co_id = id;
+		obj->co_expires = expires;
+		obj->co_next = cache_meta.co_next;
+		cache_meta.co_next = obj;
+		WDEBUG((WLOG_DEBUG, "load %s %s from cache", obj->co_key, obj->co_path));
+	}
+
 }
 
 static int
 cache_next_id(void)
 {
 	int i;
-	state_lock();
 	i = state.cs_id;
 	++state.cs_id;
-	state_unlock();
 	return i;
 }
 
@@ -281,7 +312,6 @@ struct	cache_object	*ret;
 	}
 	
 	ret->co_id = cache_next_id();
-	state_lock();
 	ret->co_key = wstrdup(key);
 
 	assert(ret->co_id > 999);
@@ -306,7 +336,6 @@ struct	cache_object	*ret;
 
 	ret->co_next = cache_meta.co_next;
 	cache_meta.co_next = ret;
-	state_unlock();
 	return ret;
 }
 

@@ -12,10 +12,6 @@
 # pragma ident "@(#)$Header$"
 #endif
 
-#ifdef THREADED_IO
-# include <pthread.h>
-#endif
-
 #include "whttp.h"
 
 #define ENT_SOURCE_BUFFER	1
@@ -126,7 +122,6 @@ struct	header_list	 he_headers;
 	char		 _he_rdbuf[8192]; /* does this really need to be here? */
 struct	fde		*_he_target;
 	int		 _he_state;
-	pthread_t	 _he_thread;
 	char		*_he_lastname;
 	char		*_he_valstart;
 };

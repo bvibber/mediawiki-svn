@@ -88,7 +88,6 @@ struct	cache_object	*cl_co;		/* Cache object				*/
 		int	f_cached:1;
 	}		 cl_flags;
 	size_t		 cl_dsize;	/* Object size				*/
-	pthread_t	 cl_thr;
 
 struct	http_client	*fe_next;	/* freelist 				*/
 };
@@ -102,7 +101,6 @@ static void client_response_done(struct http_entity *, void *, int);
 static void backend_headers_done(struct http_entity *, void *, int);
 static void client_headers_done(struct http_entity *, void *, int);
 static void client_write_cached(struct http_client *);
-static void *client_start_threaded_request(void *);
 
 static void client_send_error(struct http_client *, int, const char *);
 static void client_log_request(struct http_client *);
@@ -117,23 +115,6 @@ static char my_hostname[MAXHOSTNAMELEN + 1];
 static char my_version[64];
 static int logwr_pipe[2];
 static FILE *alf;
-
-static pthread_mutex_t freelist_mtx = PTHREAD_MUTEX_INITIALIZER;
-
-void freelist_lock(void);
-void freelist_unlock(void);
-
-void
-freelist_lock()
-{
-	pthread_mutex_lock(&freelist_mtx);
-}
-
-void
-freelist_unlock()
-{
-	pthread_mutex_unlock(&freelist_mtx);
-}
 
 /*
  * Initialize whttp, start loggers.
@@ -207,7 +188,6 @@ new_client(e)
 {
 struct	http_client	*cl;
 
-	freelist_lock();
 	if (freelist.fe_next) {
 		cl = freelist.fe_next;
 		freelist.fe_next = cl->fe_next;
@@ -216,7 +196,6 @@ struct	http_client	*cl;
 		if ((cl = wcalloc(1, sizeof(*cl))) == NULL)
 			outofmemory();
 	}
-	freelist_unlock();
 
 	cl->cl_fde = e;
 	return cl;
@@ -268,17 +247,6 @@ struct	cache_object	*cobj;
 		return;
 	}
 	
-#if 0
-	wnet_register(client->cl_fde->fde_fd, FDE_READ | FDE_WRITE, NULL, NULL);
-	pthread_create(&client->cl_thr, NULL, client_start_threaded_request, client);
-}
-
-static void *
-client_start_threaded_request(data)
-	void *data;
-{
-#endif
-
 	if (client->cl_entity.he_rdata.request.host == NULL)
 		client->cl_path = wstrdup(client->cl_entity.he_rdata.request.path);
 	else {
@@ -307,6 +275,7 @@ client_start_threaded_request(data)
 			client_write_cached(client);
 			return;
 		}
+		WDEBUG((WLOG_DEBUG, "client_read_done: %s not cached", client->cl_path));
 	}
 	
 	/*
@@ -527,10 +496,8 @@ client_close(client)
 		wnet_close(client->cl_backendfde->fde_fd);
 	entity_free(&client->cl_entity);
 	
-	freelist_lock();
 	client->fe_next = freelist.fe_next;
 	freelist.fe_next = client;
-	freelist_unlock();
 }
 
 static void
@@ -620,18 +587,11 @@ static void
 client_log_request(client)
 	struct http_client *client;
 {
-#ifdef THREADED_IO
-static	pthread_mutex_t	mtx = PTHREAD_MUTEX_INITIALIZER;
-#endif
-
 	int	i;
 	
 	if (!config.access_log)
 		return;
 
-#ifdef THREADED_IO
-	(void)pthread_mutex_lock(&mtx);
-#endif
 	i = fprintf(alf, "[%s] %s %s \"%s\" %d %s %s\n",
 			current_time_short, client->cl_fde->fde_straddr,
 			request_string[client->cl_reqtype],
@@ -647,9 +607,6 @@ static	pthread_mutex_t	mtx = PTHREAD_MUTEX_INITIALIZER;
 		wlog(WLOG_ERROR, "flushing logfile: %s", strerror(errno));
 		exit(8);
 	}
-#ifdef THREADED_IO
-	(void)pthread_mutex_unlock(&mtx);
-#endif
 }
 
 static void

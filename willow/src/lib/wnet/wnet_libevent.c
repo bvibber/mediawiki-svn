@@ -28,7 +28,6 @@
 #include <fcntl.h>
 #include <signal.h>
 #include <event.h>
-#include <pthread.h>
 
 #include "willow.h"
 #include "wnet.h"
@@ -95,7 +94,6 @@ wnet_register(fd, what, handler, data)
 struct	fde	*fde = &fde_table[fd];
 	int	 ev_flags = 0;
 
-	FDE_LOCK(fde);
 	fde->fde_fd = fd;
 
 	if (fde->fde_flags.held)
@@ -112,7 +110,6 @@ struct	fde	*fde = &fde_table[fd];
 
 	if (handler == NULL) {
 		event_del(&fde->fde_ev);
-		FDE_UNLOCK(fde);
 		return;
 	}
 
@@ -122,6 +119,4 @@ struct	fde	*fde = &fde_table[fd];
 	/*ev_flags |= EV_PERSIST;*/
 	event_set(&fde->fde_ev, fde->fde_fd, ev_flags, fde_ev_callback, fde);
 	event_add(&fde->fde_ev, NULL);
-
-	FDE_UNLOCK(fde);
 }
