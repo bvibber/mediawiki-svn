@@ -14,7 +14,9 @@ include "language-support.php";
 <head>
 	<title><?= langet("maintitle") ?></title>  
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<style type="text/css"><!--
+<style type="text/css">
+/* E-mail brion@pobox.com if you see this text rendered at the top of the page. */
+
 body {
 	font-family: serif;
 	background: url(<?= $statpath ?>Headbg.jpg) #FAFAFA no-repeat top left;
@@ -99,7 +101,7 @@ a.dark {
 a:hover {text-decoration:underline;}
 .plainlinks p, .plainlinks a {vertical-align:middle;}
 img {border:0px;}
---></style>	
+</style>	
 
 </head>
 
