@@ -57,8 +57,6 @@ static void wcache_evict(struct cache_object *, DBT *, DB_TXN *);
 
 static struct cache_state state;
 pthread_mutex_t state_mtx = PTHREAD_MUTEX_INITIALIZER;
-void state_lock(void);
-void state_unlock(void);
 
 static int int_max_len;
 static pthread_t expire_thread;

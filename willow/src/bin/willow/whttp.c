@@ -500,10 +500,18 @@ struct	http_client	*client = data;
 	if (client->cl_co) {
 		if (res != -1) {
 			if (!client->cl_flags.f_cached) {
-				if (wcache_store_object(&client->cl_key, client->cl_co) == -1) {
-					/* normally, this means someone else cached it before us */
-					wlog(WLOG_WARNING, "object cache store failed");
-				}
+				/*
+				 * Try to find it again... it may've been cached in the mean time.
+				 */
+				state_lock();
+				if (wcache_find_object(&client->cl_key) == NULL)
+					if (wcache_store_object(&client->cl_key, client->cl_co) == -1) {
+						/* normally, this means someone else cached it before us */
+						wlog(WLOG_WARNING, "object cache store failed");
+					}
+				else
+					unlink(client->cl_co->co_path);
+				state_unlock();
 			}
 		} else {
 			wlog(WLOG_WARNING, "writing cached file: %s", strerror(errno));

@@ -44,6 +44,8 @@ struct cache_object {
 void wcache_init(int);
 void wcache_setupfs(void);
 void wcache_shutdown(void);
+void state_lock(void);
+void state_unlock(void);
 
 struct cache_key *wcache_make_key(const char *host, const char *path);
 void wcache_free_key(struct cache_key *);
