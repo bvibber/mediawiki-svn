@@ -106,7 +106,7 @@ wlog(int sev, const char *fmt, ...)
 void
 wlog_close(void)
 {
-	if (fclose(logging.fp) == EOF) {
+	if (logging.fp && fclose(logging.fp) == EOF) {
 		logging.fp = NULL;
 		wlog(WLOG_WARNING, "closing logfile: %s", strerror(errno));
 	}

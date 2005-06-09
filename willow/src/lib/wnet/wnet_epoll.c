@@ -39,7 +39,7 @@ wnet_init_select(void)
 
 	signal(SIGPIPE, SIG_IGN);
 
-	if ((epfd = epoll_create(MAX_FD)) < 0) {
+	if ((epfd = epoll_create(1024)) < 0) {
 		perror("epoll_create");
 		exit(8);
 	}
@@ -56,34 +56,13 @@ struct	epoll_event	events[256];
 
 		for (n = 0; n < i; ++n) {
 			struct fde *e = &fde_table[events[n].data.fd];
-			struct epoll_event ev;
-			assert(events[n].data.fd < MAX_FD);
-
-			e->fde_epflags &= ~events[n].events;
-			ev.events = e->fde_epflags;
-			ev.data.fd = e->fde_fd;
-			if (e->fde_epflags == 0) {
-				if (epoll_ctl(epfd, EPOLL_CTL_DEL, e->fde_fd, NULL) < 0) {
-					perror("epoll_ctl(DEL)");
-					exit(8);
-				}
-			} else {
-				if (epoll_ctl(epfd, EPOLL_CTL_MOD, e->fde_fd, &ev) < 0) {
-					perror("epoll_ctl(MOD)");
-					exit(8);
-				}
-			}
 
 			if ((events[n].events & EPOLLIN) && e->fde_read_handler) {
-				int ret = e->fde_read_handler(e);
-				if (ret == 0)
-					wnet_register(e->fde_fd, FDE_READ, e->fde_read_handler, NULL);
+				e->fde_read_handler(e);
 			}
 
 			if ((events[n].events & EPOLLOUT) && e->fde_write_handler) {
-				int ret = e->fde_write_handler(e);
-				if (ret == 0)
-					wnet_register(e->fde_fd, FDE_WRITE, e->fde_write_handler, NULL);
+				e->fde_write_handler(e);
 			}
 		}
 	}
@@ -99,9 +78,8 @@ struct	fde		*e = &fde_table[fd];
 	int		 flags = e->fde_epflags, mod = flags;
 struct	epoll_event	 ev;
 
-	assert(fd < MAX_FD);
-
 	if (handler == NULL) {
+		e->fde_epflags = 0;
 		epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL);
 		return;
 	}
@@ -124,12 +102,12 @@ struct	epoll_event	 ev;
 	ev.data.fd = fd;
 	if (mod) {
 		if (epoll_ctl(epfd, EPOLL_CTL_MOD, fd, &ev) < 0) {
-			perror("epoll_ctl");
+			perror("epoll_ctl(MOD)");
 			exit(8);
 		} 
 	} else {
 		if (epoll_ctl(epfd, EPOLL_CTL_ADD, fd, &ev) < 0) {
-			perror("epoll_ctl");
+			perror("epoll_ctl(ADD)");
 			exit(8);
 		}
 	}

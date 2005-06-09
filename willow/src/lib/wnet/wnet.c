@@ -28,6 +28,7 @@
 #include <signal.h>
 #include <assert.h>
 #include <strings.h>
+#include <time.h>
 
 #include "willow.h"
 #include "wnet.h"
@@ -258,6 +259,7 @@ struct	fde	*e = &fde_table[fd];
 	e->fde_wdata = wb;
 	wnet_register(e->fde_fd, FDE_WRITE, wnet_sendfile_do, e);
 	wnet_sendfile_do(e);
+	return 0;
 }
 
 void

@@ -40,7 +40,7 @@
 #endif
 
 #include "config.h"
-#ifdef HAVE_SYS_QUEUE_H
+#if defined(HAVE_SYS_QUEUE_H) && !defined(__linux__)
 # include <sys/queue.h>
 #else
 

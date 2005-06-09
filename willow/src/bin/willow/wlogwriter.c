@@ -61,7 +61,7 @@ wlogwriter_run(pipe)
 	wlog(WLOG_NOTICE, "wlogwriter starting (pid %d) for %s", (int)getpid(), config.access_log);
 
 	if ((inf = fdopen(pipe, "r")) == NULL) {
-		perror("fdopen");
+		perror("wlogwriter: fdopen");
 		exit(8);
 	}
 	/*LINTED unsafe fopen*/

@@ -291,7 +291,7 @@ lru_get_used(dbp, pkey, pdata, skey)
 	DBT *skey;
 {
 static	time_t zero = INT_MAX;
-	if (pkey->size == 5 && memcpy(pkey->data, "STATE", 5)) {
+	if (pkey->size == 5 && !memcmp(pkey->data, "STATE", 5)) {
 		skey->data = &zero;
 		skey->size = sizeof(zero);
 		return 0;
@@ -591,7 +591,7 @@ run_expirey(data)
 					break;
 				else
 					dberror("c_pget", i);
-			if (pkey.size == 5 && memcpy(pkey.data, "STATE", 5))
+			if (pkey.size == 5 && !memcmp(pkey.data, "STATE", 5))
 				break;
 			obj = data.data;
 			obj->co_path = (char *)obj + sizeof(*obj);

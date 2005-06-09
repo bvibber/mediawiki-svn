@@ -434,6 +434,7 @@ conf_end_log(tc)
 
 static int cache_expire_threshold = 25;
 static int cache_expire_every = 60;
+char *cache_user, *cache_group;
 
 static int
 conf_end_cache(tc)
@@ -450,6 +451,8 @@ conf_end_cache(tc)
 
 	config.cache_expevery = cache_expire_every;
 	config.cache_expthresh = cache_expire_threshold;
+	config.suid = cache_user;
+	config.sgid = cache_group;
 	return 0;
 }
 
@@ -480,6 +483,8 @@ static struct conf_entry conf_log_table[] = {
 static struct conf_entry conf_cache_table[] = {
 	{ "expire_every",	CF_TIME,	NULL, 0, &cache_expire_every		},
 	{ "expire_threshold",	CF_INT,		NULL, 0, &cache_expire_threshold	},
+	{ "user",		CF_STRING,	NULL, 0, &cache_user			},
+	{ "group",		CF_STRING,	NULL, 0, &cache_group			},
 	{ NULL }
 };
 

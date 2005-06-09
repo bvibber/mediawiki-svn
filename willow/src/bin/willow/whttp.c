@@ -157,7 +157,7 @@ whttp_init(void)
 			exit(8);
 			/*NOTREACHED*/
 		case 0:
-			(void)dup2(logwr_pipe[1], STDIN_FILENO);
+			(void)dup2(logwr_pipe[0], STDIN_FILENO);
 			/*LINTED execl*/
 			(void)execl(LIBEXECDIR "/wlogwriter", "wlogwriter", config.access_log, NULL);
 			exit(8);
@@ -165,8 +165,8 @@ whttp_init(void)
 		default:
 			break;
 		}
-		if ((alf = fdopen(logwr_pipe[0], "w")) == NULL) {
-			perror("fdopen");
+		if ((alf = fdopen(logwr_pipe[1], "a")) == NULL) {
+			perror("whttp: fdopen");
 			exit(8);
 		}
 	}
@@ -667,4 +667,3 @@ struct	http_client	*client = data;
 	}
 	client->cl_co->co_size += len;
 }
-		

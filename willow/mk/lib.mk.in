@@ -18,7 +18,7 @@ $(_LIB): $(OBJS)
 	@$(_AR) cru $@ $(OBJS)
 	
 clean:
-	@echo "	$(_RMF) $(_LIB) $(OBJS)
+	@echo "	$(_RMF) $(_LIB) $(OBJS)"
 	@$(_RMF) $(_LIB) $(OBJS)
 
 install:

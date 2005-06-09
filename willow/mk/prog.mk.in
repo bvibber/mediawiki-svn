@@ -17,7 +17,7 @@ $(_PROGRAM): $(OBJS)
 	@$(_LINK) -o $@
 	
 clean:
-	@echo "	$(_RMF) $(_PROGRAM) $(OBJS)
+	@echo "	$(_RMF) $(_PROGRAM) $(OBJS)"
 	@$(_RMF) $(_PROGRAM) $(OBJS)
 
 install:

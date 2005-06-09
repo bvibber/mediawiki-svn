@@ -17,6 +17,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <errno.h>
+#include <pwd.h>
+#include <grp.h>
 
 #include "wlog.h"
 #include "wnet.h"
@@ -109,6 +111,31 @@ struct	sigaction	segv_act;
 	wnet_set_time();
 
 	wconfig_init(cfg);
+
+	if (config.sgid) {
+		struct group *group = getgrnam(config.sgid);
+		if (!group) {
+			fprintf(stderr, "group %s does not exist", config.sgid);
+			exit(8);
+		}
+		if (setgid(group->gr_gid) < 0) {
+			perror("setgid");
+			exit(8);
+		}
+	}
+
+	if (config.suid) {
+		struct passwd *user = getpwnam(config.suid);
+		if (!user) {
+			fprintf(stderr, "user %s does not exist", config.suid);
+			exit(8);
+		}
+		if (setuid(user->pw_uid) < 0) {
+			perror("setuid");
+			exit(8);
+		}
+	}
+
 	wlog_init();
 	if (zflag) {
 		wcache_setupfs();
@@ -174,11 +201,11 @@ realloc_addchar(sp, c)
 	if (*sp)
 		len = strlen(*sp);
 	else
-		len = 1;
+		len = 0;
 	
 	if ((*sp = wrealloc(*sp, len + 2)) == NULL)
 		outofmemory();
-	p = *sp + strlen(*sp);
+	p = *sp + len;
 	*p++ = (char) c;
 	*p++ = '\0';
 }
@@ -205,7 +232,7 @@ int char_table[256] = {
 	/* 16  */ 0, 0, 0, 0, 0, 0, 0, 0,
 	/* 24  */ 0, 0, 0, 0, 0, 0, 0, 0, 
 	/* 32  */ 0, 0, 0, 0, 0, 0, 0, 0,
-	/* 40  */ 0, 0, 0, 0, 0, 0, 0, 0,
+	/* 40  */ 0, 0, 0, 0, 0, 0, CHAR_HOST, 0,
 	/* 48  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST, 
 	/* 52  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, CHAR_HOST,
 	/* 56  */ CHAR_HOST, CHAR_HOST, CHAR_HOST, 0,

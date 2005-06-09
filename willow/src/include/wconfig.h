@@ -36,6 +36,7 @@ struct	cachedir	*caches;
 	int		 ncaches;
 	time_t		 cache_expevery;
 	int		 cache_expthresh;
+	char		*suid, *sgid;
 } config;
 
 void wconfig_init(const char *);
