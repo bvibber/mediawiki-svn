@@ -36,6 +36,8 @@
 #define ENT_ERR_INVREQ	-4	/* invalid request type			*/
 #define ENT_ERR_2MANY	-5	/* too many headers			*/
 
+#define ENT_IMMED	0x1
+
 extern const char *ent_errors[];
 
 #define MAX_HEADERS	64	/* maximum # of headers to allow	*/
@@ -104,6 +106,7 @@ struct	header_list	 he_headers;
 		int	 cachable:1;
 		int	 response:1;
 		int	 error:1;
+		int	 immed:1;
 	}		 he_flags;
 
 	/*
@@ -129,7 +132,7 @@ struct	fde		*_he_target;
 };
 
 void entity_read_headers(struct http_entity *, header_cb, void *);
-void entity_send(struct fde *, struct http_entity *, header_cb, void *);
+void entity_send(struct fde *, struct http_entity *, header_cb, void *, int);
 void entity_free(struct http_entity *);
 
 void header_add(struct header_list *, const char *, const char *);

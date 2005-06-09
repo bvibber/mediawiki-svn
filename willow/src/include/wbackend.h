@@ -18,6 +18,8 @@
 
 struct fde;
 
+#define WBE_IMMED	0x1	/* use blocking i/o, no callback	*/
+
 struct backend {
 	char		*be_name;	/* IP as specified in config	*/
 	int	 	 be_port;	/* port number			*/
@@ -30,7 +32,7 @@ typedef void (*backend_cb)(struct backend *, struct fde *, void *);
 void add_backend(const char *, int);
 void backend_file(char *);
 
-int get_backend(backend_cb, void *);
+int get_backend(backend_cb, void *, int);
 
 extern int nbackends;
 

@@ -25,20 +25,19 @@ struct cache_state {
 	w_size_t	cs_size;
 };
 
-struct cache_key {
-	int	 ck_len;
-	char	 *ck_key;
-};
-
 struct cache_object {
-	int	  co_flags;
-	time_t	  co_expires;	/* Expires: header or -1		*/
-	time_t	  co_time;	/* Last-Modified / retrieval time	*/
-	time_t	  co_lru;	/* Last used timestamp, for eviction	*/
-	int	  co_id;	/* Object id				*/
-	int	  co_plen;	/* Size of cache object path		*/
-	size_t	  co_size;	/* Object size				*/
-	char	 *co_path;	/* Object data location			*/
+	char		 *co_key;
+	int		  co_flags;
+	time_t		  co_expires;	/* Expires: header or -1		*/
+	time_t		  co_time;	/* Last-Modified / retrieval time	*/
+	time_t		  co_lru;	/* Last used timestamp, for eviction	*/
+	int		  co_id;	/* Object id				*/
+	int		  co_plen;	/* Size of cache object path		*/
+	size_t		  co_size;	/* Object size				*/
+	char		 *co_path;	/* Object data location			*/
+	int		  co_complete;	/* Finished being cached		*/
+
+struct	cache_object	 *co_next;
 };
 
 void wcache_init(int);
@@ -47,12 +46,7 @@ void wcache_shutdown(void);
 void state_lock(void);
 void state_unlock(void);
 
-struct cache_key *wcache_make_key(const char *host, const char *path);
-void wcache_free_key(struct cache_key *);
-
-struct cache_object *wcache_find_object(struct cache_key *);
-struct cache_object *wcache_new_object(void);
-int wcache_store_object(struct cache_key *, struct cache_object *);
-void wcache_free_object(struct cache_object *);
+struct cache_object *wcache_find_object(const char *key, int *);
+void wcache_release(struct cache_object *, int complete);
 
 #endif

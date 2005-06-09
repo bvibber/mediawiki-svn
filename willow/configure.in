@@ -180,6 +180,14 @@ AC_ARG_ENABLE(epoll, AC_HELP_STRING([--enable-epoll],[Force epoll(4) use (Linux 
 	fi
 ])
 
+AC_ARG_ENABLE(libevent, AC_HELP_STRING([--enable-libevent],[Force libevent use]),
+[	if test $enableval = yes; then
+		FORCE_SELECT="libevent"
+	else
+		use_libevent=no
+	fi
+])
+
 AC_ARG_ENABLE(kqueue, AC_HELP_STRING([--enable-kqueue],[Force kqueue(2) use (FreeBSD only)]),
 [	if test $enableval = yes; then
 		FORCE_SELECT="kqueue"
@@ -238,6 +246,7 @@ AC_CHECK_FUNC(epoll_wait, [have_epoll=yes], [have_epoll=no])
 AC_CHECK_FUNC(poll, [have_poll=yes], [have_poll=no])
 AC_CHECK_FUNC(kqueue, [have_kqueue=yes], [have_kqueue=no])
 AC_CHECK_HEADER([sys/devpoll.h], [have_devpoll=yes], [have_devpoll=no])
+AC_CHECK_LIB(event, event_add, [have_libevent=yes],[have_libevent=no])
 
 if test x$have_epoll = xyes; then
 	AC_MSG_CHECKING(for epoll support in kernel)
@@ -271,6 +280,10 @@ fi
 if test x$use_kqueue != xno -a x$have_kqueue = xyes; then
 	SELECTTYPE=kqueue
 fi
+if test x$use_libevent != xno -a x$have_libevent = xyes; then
+	SELECTTYPE=libevent
+fi
+
 if ! test -z "$FORCE_SELECT"; then
 	SELECTTYPE=$FORCE_SELECT
 fi
@@ -293,10 +306,14 @@ fi
 if test $SELECTTYPE = kqueue; then
 	AC_DEFINE([USE_KQUEUE],[],[Define this to use kqueue() for select])
 fi
-
-if test x$SELECTTYPE != xports -a x$use_threads = xyes; then
-	AC_MSG_ERROR(threaded I/O may only be used with --enable-ports)
+if test $SELECTTYPE = libevent; then
+	AC_DEFINE([USE_LIBEVENT],[],[Define this to use libevent for select])
+	LIBS="$LIBS -levent"
 fi
+
+#if test x$SELECTTYPE != xports -a x$use_threads = xyes; then
+#	AC_MSG_ERROR(threaded I/O may only be used with --enable-ports)
+#fi
 
 AC_SUBST(SELECTTYPE)
 

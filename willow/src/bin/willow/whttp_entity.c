@@ -592,19 +592,27 @@ struct	header_list	*it = head;
  */
 
 void
-entity_send(fde, entity, cb, data)
+entity_send(fde, entity, cb, data, flags)
 	struct fde *fde;
 	struct http_entity *entity;
 	header_cb cb;
 	void *data;
+	int flags;
 {
 	char	status[4];
+	int	wn_flags = 0;
 
 	entity->_he_func = cb;
 	entity->_he_cbdata = data;
 	
 	WDEBUG((WLOG_DEBUG, "entity_send: writing to %d [%s]", fde->fde_fd, fde->fde_desc));
 	
+	if (flags & ENT_IMMED) {
+		wnet_set_blocking(fde->fde_fd);
+		wn_flags = WNET_IMMED;
+		entity->he_flags.immed = 1;
+	}
+
 	if (entity->he_flags.response) {
 		struct iovec vec[5];
 		
@@ -638,7 +646,7 @@ entity_send(fde, entity, cb, data)
 
 	entity->_he_hdrbuf = header_build(&entity->he_headers);
 	wnet_write(fde->fde_fd, entity->_he_hdrbuf, strlen(entity->_he_hdrbuf),
-			entity_send_headers_done, entity);
+			entity_send_headers_done, entity, wn_flags);
 }
 
 /*ARGSUSED*/
@@ -649,6 +657,10 @@ entity_send_headers_done(fde, data, res)
 	int res;
 {
 struct	http_entity	*entity = data;
+	int		 wn_flags = 0;
+
+	if (entity->he_flags.immed)
+		wn_flags = WNET_IMMED;
 
 	wfree(entity->_he_hdrbuf);
 
@@ -671,7 +683,7 @@ struct	http_entity	*entity = data;
 		WDEBUG((WLOG_DEBUG, "entity_send_headers_done: source is buffer, %d bytes", 
 				entity->he_source.buffer.len));
 		wnet_write(fde->fde_fd, entity->he_source.buffer.addr,
-			       entity->he_source.buffer.len, entity_send_buf_done, entity);
+			       entity->he_source.buffer.len, entity_send_buf_done, entity, wn_flags);
 		return;
 	}
 	
@@ -679,7 +691,7 @@ struct	http_entity	*entity = data;
 		/* write file */
 		if (wnet_sendfile(fde->fde_fd, entity->he_source.fd.fd, 
 			entity->he_source.fd.size - entity->he_source.fd.off,
-			entity->he_source.fd.off, entity_send_file_done, entity) == -1) {
+			entity->he_source.fd.off, entity_send_file_done, entity, wn_flags) == -1) {
 			entity->_he_func(entity, entity->_he_cbdata, -1);
 		}
 		return;
@@ -693,6 +705,8 @@ struct	http_entity	*entity = data;
 	 * registers the fd as readable again..
 	 */ 
 	WDEBUG((WLOG_DEBUG, "entity_send_headers_done: source is FDE"));
+	/* FDE backended writes _cannot_ be immediate... */
+	assert(!entity->he_flags.immed);
 	entity->he_source.fde._wrt = entity->he_source.fde.len;
 	wnet_register(entity->he_source.fde.fde->fde_fd, FDE_READ, entity_send_fde_read, entity);
 	entity_send_fde_read(entity->he_source.fde.fde);
@@ -756,7 +770,7 @@ struct	http_entity	*entity = fde->fde_rdata;
 	cur_pos = readbuf_cur_pos(&entity->he_source.fde.fde->fde_readbuf);
 	readbuf_inc_data_pos(&entity->he_source.fde.fde->fde_readbuf, wrt);
 	wnet_write(entity->_he_target->fde_fd, cur_pos,
-			wrt, entity_send_fde_write_done, entity);
+			wrt, entity_send_fde_write_done, entity, 0);
 }
 
 /*ARGSUSED*/

@@ -98,9 +98,10 @@ backend_file(file)
 #endif
 
 int
-get_backend(func, data)
+get_backend(func, data, flags)
 	backend_cb func;
 	void *data;
+	int flags;
 {
 struct	backend_cb_data	*cbd;
 	int		 s;
@@ -118,6 +119,9 @@ struct	backend_cb_data	*cbd;
 		wlog(WLOG_WARNING, "opening backend socket: %s", strerror(errno));
 		return -1;
 	}
+
+	if (flags & WBE_IMMED)
+		wnet_set_blocking(s);
 
 	if (connect(s, (struct sockaddr *)&cbd->bc_backend->be_addr, sizeof(cbd->bc_backend->be_addr)) == 0) {
 		WDEBUG((WLOG_DEBUG, "get_backend: connection completed immediately"));

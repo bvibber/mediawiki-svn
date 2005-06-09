@@ -73,13 +73,15 @@ wlog(int sev, const char *fmt, ...)
 	char	s[1024];
 	va_list ap;
 	int	i;
+struct	timeval	tv;
 
 	if (sev > WLOG_MAX)
 		sev = WLOG_NOTICE;
 	if (sev < logging.level)
 		return;
 	va_start(ap, fmt);
-	i = snprintf(s, 1024, "%s| %s: ", current_time_short, sev_names[sev]);
+	gettimeofday(&tv, NULL);
+	i = snprintf(s, 1024, "%s+%.04f| %s: ", current_time_short, tv.tv_usec / 1000000.0, sev_names[sev]);
 	if (i > 1023)
 		abort();
 	if (vsnprintf(s + i, 1023 - i, fmt, ap) > (1023 - i - 1))

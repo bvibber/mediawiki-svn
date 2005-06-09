@@ -27,6 +27,10 @@ ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
 #ifdef THREADED_IO
 # include <pthread.h>
 #endif
+#ifdef USE_LIBEVENT
+# include <sys/time.h>
+# include <event.h>
+#endif
 
 #include "willow.h"
 
@@ -68,7 +72,11 @@ struct	client_data	*fde_cdata;
 struct	readbuf		 fde_readbuf;
 	struct {
 		int	open:1;
+		int	held:1;
 	}		 fde_flags;
+#ifdef USE_LIBEVENT
+struct	event		 fde_ev;
+#endif
 #ifdef THREADED_IO
 	pthread_mutex_t	 fde_mtx;
 #endif
@@ -106,14 +114,17 @@ extern int wnet_exit;
 #define FDE_READ	0x1
 #define FDE_WRITE	0x2
 
+#define WNET_IMMED 0x1
+
 void wnet_init(void);
 void wnet_run(void);
 
 void wnet_register(int, int, fdcb, void *);
 int wnet_open(const char *desc);
 void wnet_close(int);
-void wnet_write(int, const void *, size_t, fdwcb, void *);
-int wnet_sendfile(int, int, size_t, off_t, fdwcb, void *);
+void wnet_write(int, const void *, size_t, fdwcb, void *, int);
+int wnet_sendfile(int, int, size_t, off_t, fdwcb, void *, int);
+void wnet_set_blocking(int);
 
 void wnet_set_time(void);
 void wnet_init_select(void);

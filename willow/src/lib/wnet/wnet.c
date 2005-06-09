@@ -212,6 +212,17 @@ wnet_open(desc)
 }
 
 void
+wnet_set_blocking(fd)
+	int fd;
+{
+	int	val;
+
+	val = fcntl(fd, F_GETFL, 0);
+	if (val == -1 || fcntl(fd, F_SETFL, val & ~O_NONBLOCK) == -1)
+		wlog(WLOG_WARNING, "fcntl(%d) failed: %s", fd, strerror(errno));
+}
+
+void
 wnet_close(fd)
 	int fd;
 {
@@ -232,8 +243,8 @@ struct	fde	*e = &fde_table[fd];
 }
 
 int
-wnet_sendfile(fd, source, size, off, cb, data)
-	int fd, source;
+wnet_sendfile(fd, source, size, off, cb, data, flags)
+	int fd, source, flags;
 	size_t size;
 	off_t off;
 	fdwcb cb;
@@ -257,14 +268,15 @@ struct	fde	*e = &fde_table[fd];
 	wb->wb_off = off;
 	
 	e->fde_wdata = wb;
-	wnet_register(e->fde_fd, FDE_WRITE, wnet_sendfile_do, e);
+	if (!(flags & WNET_IMMED))
+		wnet_register(e->fde_fd, FDE_WRITE, wnet_sendfile_do, e);
 	wnet_sendfile_do(e);
 	return 0;
 }
 
 void
-wnet_write(fd, buf, bufsz, cb, data)
-	int fd;
+wnet_write(fd, buf, bufsz, cb, data, flags)
+	int fd, flags;
 	const void *buf;
 	size_t bufsz;
 	fdwcb cb;
@@ -286,7 +298,8 @@ struct	fde	*e = &fde_table[fd];
 
 	e->fde_wdata = wb;
 
-	wnet_register(e->fde_fd, FDE_WRITE, wnet_sendfile_do, e);
+	if (!(flags & WNET_IMMED))
+		wnet_register(e->fde_fd, FDE_WRITE, wnet_write_do, e);
 	wnet_write_do(e);
 }
 

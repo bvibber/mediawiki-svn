@@ -83,12 +83,13 @@ struct	http_entity	 cl_entity;	/* reply to send back			*/
 
 	/* Cache-related data */
 	int		 cl_cfd;	/* FD of cache file for writing, or 0	*/
-struct	cache_key	 cl_key;	/* Cache key				*/
 struct	cache_object	*cl_co;		/* Cache object				*/
 	struct {
 		int	f_cached:1;
 	}		 cl_flags;
 	size_t		 cl_dsize;	/* Object size				*/
+	pthread_t	 cl_thr;
+
 struct	http_client	*fe_next;	/* freelist 				*/
 };
 
@@ -101,6 +102,7 @@ static void client_response_done(struct http_entity *, void *, int);
 static void backend_headers_done(struct http_entity *, void *, int);
 static void client_headers_done(struct http_entity *, void *, int);
 static void client_write_cached(struct http_client *);
+static void *client_start_threaded_request(void *);
 
 static void client_send_error(struct http_client *, int, const char *);
 static void client_log_request(struct http_client *);
@@ -115,6 +117,23 @@ static char my_hostname[MAXHOSTNAMELEN + 1];
 static char my_version[64];
 static int logwr_pipe[2];
 static FILE *alf;
+
+static pthread_mutex_t freelist_mtx = PTHREAD_MUTEX_INITIALIZER;
+
+void freelist_lock(void);
+void freelist_unlock(void);
+
+void
+freelist_lock()
+{
+	pthread_mutex_lock(&freelist_mtx);
+}
+
+void
+freelist_unlock()
+{
+	pthread_mutex_unlock(&freelist_mtx);
+}
 
 /*
  * Initialize whttp, start loggers.
@@ -188,6 +207,7 @@ new_client(e)
 {
 struct	http_client	*cl;
 
+	freelist_lock();
 	if (freelist.fe_next) {
 		cl = freelist.fe_next;
 		freelist.fe_next = cl->fe_next;
@@ -196,6 +216,7 @@ struct	http_client	*cl;
 		if ((cl = wcalloc(1, sizeof(*cl))) == NULL)
 			outofmemory();
 	}
+	freelist_unlock();
 
 	cl->cl_fde = e;
 	return cl;
@@ -233,7 +254,6 @@ client_read_done(entity, data, res)
 	int res;
 {
 struct	http_client	*client = data;
-struct	cache_key	 ckey;
 struct	cache_object	*cobj;
 
 	WDEBUG((WLOG_DEBUG, "client_read_done: called"));
@@ -248,6 +268,17 @@ struct	cache_object	*cobj;
 		return;
 	}
 	
+#if 0
+	wnet_register(client->cl_fde->fde_fd, FDE_READ | FDE_WRITE, NULL, NULL);
+	pthread_create(&client->cl_thr, NULL, client_start_threaded_request, client);
+}
+
+static void *
+client_start_threaded_request(data)
+	void *data;
+{
+#endif
+
 	if (client->cl_entity.he_rdata.request.host == NULL)
 		client->cl_path = wstrdup(client->cl_entity.he_rdata.request.path);
 	else {
@@ -270,11 +301,8 @@ struct	cache_object	*cobj;
 	 * Check for cached object.
 	 */
 	if (client->cl_reqtype == REQTYPE_GET) {
-		ckey.ck_len = strlen(client->cl_path);
-		ckey.ck_key = client->cl_path;
-		cobj = wcache_find_object(&ckey);
-		if (cobj != NULL) {
-			client->cl_co = cobj;
+		client->cl_co = wcache_find_object(client->cl_path, &client->cl_cfd);
+		if (client->cl_co && client->cl_co->co_complete) {
 			WDEBUG((WLOG_DEBUG, "client_read_done: object %s cached", client->cl_path));
 			client_write_cached(client);
 			return;
@@ -284,7 +312,7 @@ struct	cache_object	*cobj;
 	/*
 	 * Not cached.  Find a backend.
 	 */
-	if (get_backend(proxy_start_backend, client) == -1) {
+	if (get_backend(proxy_start_backend, client, 0) == -1) {
 		client_send_error(client, ERR_GENERAL, strerror(errno));
 		return;
 	}
@@ -337,7 +365,7 @@ struct	header_list	 *it;
 	} else
 		client->cl_entity.he_source_type = ENT_SOURCE_NONE;
 	
-	entity_send(e, &client->cl_entity, backend_headers_done, client);
+	entity_send(e, &client->cl_entity, backend_headers_done, client, 0);
 }
 
 /*
@@ -398,31 +426,20 @@ struct	http_client	*client = data;
 	 *
 	 * Don't cache responses to non-GET requests, or non-200 replies.
 	 */
-	if (client->cl_reqtype == REQTYPE_GET && entity->he_rdata.response.status == 200
-	    && config.ncaches) {
-		client->cl_key.ck_len = strlen(client->cl_path);
-		client->cl_key.ck_key = client->cl_path;
-		client->cl_co = wcache_new_object();
-		plen = strlen(config.caches[0].dir) + client->cl_co->co_plen + 12 + 2;
-		if ((cache_path = wcalloc(1, plen + 1)) == NULL)
-			outofmemory();
-		safe_snprintf(plen, (cache_path, plen, "%s/__objects__/%s", config.caches[0].dir, client->cl_co->co_path));
-		WDEBUG((WLOG_DEBUG, "caching %s at %s", client->cl_path, cache_path));
-		if ((client->cl_cfd = open(cache_path, O_WRONLY | O_CREAT | O_EXCL, 0600)) == -1) {
-			wlog(WLOG_WARNING, "opening cache file %s: %s", cache_path, strerror(errno));
-			client->cl_cfd = 0;
-		} else {
-			entity->he_cache_callback = do_cache_write;
-			entity->he_cache_callback_data = client;
-			header_dump(&client->cl_entity.he_headers, client->cl_cfd);
-		}
-		wfree(cache_path);
+	if (client->cl_reqtype != REQTYPE_GET || entity->he_rdata.response.status != 200
+	    || !config.ncaches || !client->cl_co) {
+		if (client->cl_co)
+			wcache_release(client->cl_co, 0);
+	} else {
+		entity->he_cache_callback = do_cache_write;
+		entity->he_cache_callback_data = client;
+		header_dump(&client->cl_entity.he_headers, client->cl_cfd);
 	}
 	
 	header_add(&client->cl_entity.he_headers, "Via", via_hdr);
 	header_add(&client->cl_entity.he_headers, "X-Cache", cache_miss_hdr);
 	client->cl_entity.he_source.fde.len = -1;
-	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client);
+	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client, 0);
 }
 
 /*
@@ -439,15 +456,6 @@ struct	stat	 sb;
 	plen = strlen(config.caches[0].dir) + client->cl_co->co_plen + 12 + 2;
 	if ((cache_path = wcalloc(1, plen + 1)) == NULL)
 		outofmemory();
-	safe_snprintf(plen, (cache_path, plen, "%s/__objects__/%s", config.caches[0].dir, client->cl_co->co_path));
-	WDEBUG((WLOG_DEBUG, "serving %s from cache at %s [path %s]", client->cl_path, cache_path, client->cl_co->co_path));
-
-	if ((client->cl_cfd = open(cache_path, O_RDONLY)) == -1) {
-		wlog(WLOG_WARNING, "opening cache file %s: %s", cache_path, strerror(errno));
-		client_send_error(client, ERR_CACHE_IO, strerror(errno));
-		wfree(cache_path);
-		return;
-	}
 
 	if (fstat(client->cl_cfd, &sb) < 0) {
 		wlog(WLOG_WARNING, "stat(%s): %s", cache_path, strerror(errno));
@@ -474,7 +482,7 @@ struct	stat	 sb;
 	client->cl_entity.he_source_type = ENT_SOURCE_FILE;
 
 	client->cl_flags.f_cached = 1;
-	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client);
+	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client, 0);
 }
 
 /*
@@ -493,31 +501,12 @@ struct	http_client	*client = data;
 
 	if (client->cl_cfd) {
 		if (close(client->cl_cfd) < 0) {
-			wlog(WLOG_WARNING, "writing cache file: %s\n", strerror(errno));
+			wlog(WLOG_WARNING, "closing cache file: %s", strerror(errno));
 		}
 	}
 	
 	if (client->cl_co) {
-		if (res != -1) {
-			if (!client->cl_flags.f_cached) {
-				/*
-				 * Try to find it again... it may've been cached in the mean time.
-				 */
-				state_lock();
-				if (wcache_find_object(&client->cl_key) == NULL)
-					if (wcache_store_object(&client->cl_key, client->cl_co) == -1) {
-						/* normally, this means someone else cached it before us */
-						wlog(WLOG_WARNING, "object cache store failed");
-					}
-				else
-					unlink(client->cl_co->co_path);
-				state_unlock();
-			}
-		} else {
-			wlog(WLOG_WARNING, "writing cached file: %s", strerror(errno));
-			/* XXX should unlink cached file */
-		}
-		wcache_free_object(client->cl_co);
+		wcache_release(client->cl_co, (res != -1));
 	}
 	
 	client_log_request(client);
@@ -538,8 +527,10 @@ client_close(client)
 		wnet_close(client->cl_backendfde->fde_fd);
 	entity_free(&client->cl_entity);
 	
+	freelist_lock();
 	client->fe_next = freelist.fe_next;
 	freelist.fe_next = client;
+	freelist_unlock();
 }
 
 static void
@@ -622,7 +613,7 @@ client_send_error(client, errnum, errdata)
 	client->cl_entity.he_source.buffer.len = strlen(client->cl_wrtbuf);
 
 	client->cl_entity.he_flags.cachable = 0;
-	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client);
+	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client, 0);
 }
 
 static void

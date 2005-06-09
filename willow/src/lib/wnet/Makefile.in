@@ -6,7 +6,7 @@ CPPFLAGS = -DDATADIR=\"$(_DATADIR)\"
 SRCS = wnet.c ${selectsrc}
 
 EXTRA_DIST=wnet_poll.c wnet_ports.c wnet_kqueue.c wnet_epoll.c wnet_devpoll.c \
-	Makefile.in
+	wnet_libevent.c Makefile.in
 
 LDFLAGS = $(LIBOBJS)
 

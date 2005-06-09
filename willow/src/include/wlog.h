@@ -12,6 +12,8 @@
 # pragma ident "@(#)$Header$"
 #endif
 
+#include <stdio.h>
+
 #include "config.h"
 
 #define WLOG_DEBUG 0
