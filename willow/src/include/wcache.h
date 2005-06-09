@@ -13,6 +13,7 @@
 #endif
 
 #include "willow.h"
+#include "queue.h"
 
 #define WCACHE_FREE	1
 
@@ -37,9 +38,7 @@ struct cache_object {
 	char		 *co_path;	/* Object data location			*/
 	int		  co_complete;	/* Finished being cached		*/
 
-struct	cache_object	 *co_next;
-struct	cache_object	 *co_prev;
-struct	cache_object	 *co_tail;
+	TAILQ_ENTRY(cache_object) entries;
 };
 
 void wcache_init(int);

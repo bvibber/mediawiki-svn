@@ -45,9 +45,10 @@ static void expire_sched(void);
 static struct cache_state state;
 static struct event expire_ev;
 static struct timeval expire_tv;
-static struct cache_object cache_meta;
 
 static int int_max_len;
+
+TAILQ_HEAD(objlist, cache_object) objects;
 
 static int
 cache_open(obj, flags, mode)
@@ -172,6 +173,8 @@ struct	cachedir	*cd;
 	
 	int_max_len = (int) log10((double) INT_MAX) + 1;
 
+	TAILQ_INIT(&objects);
+
 	cache_getstate(&state);
 	if (readstate) {
 		expire_sched();
@@ -195,15 +198,11 @@ wcache_release(obj, comp)
 	WDEBUG((WLOG_DEBUG, "release %s, comp=%d", obj->co_key, comp));
 
 	if (comp) {
+		if (!obj->co_complete)
+			state.cs_size += obj->co_size;
 		obj->co_complete = 1;
 	} else {
-		struct cache_object *o;
-		for (o = &cache_meta; o->co_next; o = o->co_next)
-			if (o->co_next == obj) {
-				o->co_next = o->co_next->co_next;
-				wcache_evict(obj);
-				break;
-			}
+		wcache_evict(obj);
 	}
 }
 
@@ -211,11 +210,9 @@ static void
 wcache_evict(obj)
 	struct cache_object *obj;
 {
-struct	cache_object *prev	= obj->co_prev;
-	prev->co_next = obj->co_next;
-	if (cache_meta.co_tail == obj)
-		cache_meta.co_tail = prev;
+	TAILQ_REMOVE(&objects, obj, entries);
 	cache_unlink(obj);
+	state.cs_size -= obj->co_size;
 	wcache_free_object(obj);
 }
 
@@ -227,7 +224,7 @@ wcache_find_object(key, fd)
 struct	cache_object	*co;
 
 	WDEBUG((WLOG_DEBUG, "wcache_find_object: looking for %s", key));
-	for (co = cache_meta.co_next; co; co = co->co_next) {
+	TAILQ_FOREACH(co, &objects, entries) {
 		WDEBUG((WLOG_DEBUG, "trying %s, comp=%d", co->co_key, co->co_complete));
 		if (!strcmp(key, co->co_key)) {
 			if (!co->co_complete) {
@@ -270,8 +267,8 @@ struct	cache_object	*obj;
 		wlog(WLOG_WARNING, "opening cache dir %s: %s", stpath, strerror(errno));
 		exit(8);
 	}
-	fprintf(stfil, "%d\n", state->cs_id);
-	for (obj = cache_meta.co_next; obj; obj = obj->co_next) {
+	fprintf(stfil, "%lld %lld\n", state->cs_id, state->cs_size);
+	TAILQ_FOREACH(obj, &objects, entries) {
 		if (!obj->co_complete)
 			continue;
 		fprintf(stfil, "%s %s %d %d %d %d %d\n", obj->co_key, obj->co_path, obj->co_size, obj->co_time,
@@ -303,7 +300,7 @@ struct	cache_object	*obj;
 		return;
 	}
 
-	if (fscanf(stfil, "%d\n", &state->cs_id) != 1) {
+	if (fscanf(stfil, "%lld %lld\n", &state->cs_id, &state->cs_size) != 2) {
 		wlog(WLOG_ERROR, "data format error in cache state file %s", stpath);
 		exit(8);
 	}
@@ -327,8 +324,7 @@ struct	cache_object	*obj;
 		obj->co_lru = lru;
 		obj->co_id = id;
 		obj->co_expires = expires;
-		obj->co_prev = cache_meta.co_tail;
-		cache_meta.co_tail = obj;
+		TAILQ_INSERT_TAIL(&objects, obj, entries);
 		WDEBUG((WLOG_DEBUG, "load %s %s from cache", obj->co_key, obj->co_path));
 	}
 
@@ -379,10 +375,7 @@ struct	cache_object	*ret;
 		abort();
 	WDEBUG((WLOG_DEBUG, "new object path is [%s], len %d", ret->co_path, ret->co_plen));
 
-	ret->co_next = cache_meta.co_next;
-	if (cache_meta.co_next)
-		cache_meta.co_next->co_prev = ret;
-	cache_meta.co_next = ret;
+	TAILQ_INSERT_HEAD(&objects, ret, entries);
 	return ret;
 }
 
@@ -402,7 +395,8 @@ run_expiry(fd, ev, data)
 	int		 i;
 struct	cache_object	*obj;
 
-	WDEBUG((WLOG_DEBUG, "expire: start, run every %d", config.cache_expevery));
+	WDEBUG((WLOG_DEBUG, "expire: start, run every %d, cache is %lld bytes large", 
+		config.cache_expevery, state.cs_size));
 
 	cache_writestate(&state);
 	wantsize = config.caches[0].maxsize * ((100.0-config.cache_expthresh)/100);
@@ -412,8 +406,11 @@ struct	cache_object	*obj;
 		return;
 	}
 	while (state.cs_size > wantsize) {
-		struct cache_object *obj = cache_meta.co_tail;
-		WDEBUG((WLOG_DEBUG, "expiring some objects, size=%lld, want=%lld", state.cs_size, wantsize));
+		struct cache_object *obj = TAILQ_LAST(&objects, objlist);
+		WDEBUG((WLOG_DEBUG, "expiring some objects, size=%lld, want=%lld, obj=%p, last=%p, *last=%p", 
+			state.cs_size, wantsize, obj, objects.tqh_last, *objects.tqh_last));
+		if (!obj)
+			break;
 		wcache_evict(obj);
 	}
 	expire_sched();
