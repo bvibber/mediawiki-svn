@@ -297,7 +297,8 @@ proxy_start_backend(backend, e, data)
 	void *data;
 {
 struct	http_client	*client = data;
-struct	header_list	 *it;
+struct	header_list	*it;
+	int		 error = 0, len = sizeof(error);
 	
 	WDEBUG((WLOG_DEBUG, "proxy_start_backend: called"));
 	
@@ -306,6 +307,12 @@ struct	header_list	 *it;
 		return;
 	}
 	
+	getsockopt(e->fde_fd, SOL_SOCKET, SO_ERROR, &error, &len);
+	if (error) {
+		client_send_error(client, ERR_GENERAL, strerror(error));
+		return;
+	}
+
 	client->cl_backend = backend;
 	client->cl_backendfde = e;
 
