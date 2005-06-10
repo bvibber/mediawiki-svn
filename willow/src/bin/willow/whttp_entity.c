@@ -324,7 +324,7 @@ static int
 parse_reqtype(entity)
 	struct http_entity *entity;
 {
-	char	*p, *s;
+	char	*p, *s, *t;
 	char	*request = entity->he_source.fde.fde->fde_readbuf.rb_p;
 	int	i;
 
@@ -375,8 +375,31 @@ parse_reqtype(entity)
 		return -1;
 
 	*s++ = '\0';
-	
-	entity->he_rdata.request.path = wstrdup(p);
+	if (*p != '/') {
+		/*
+		 * This normally means the request URI was of the form
+		 * "http://host.tld/file".  Clients don't send this, but
+		 * Squid does when it thinks we're a proxy.
+		 *
+		 * Extract the host and set it now.  If there's another host
+		 * later, it'll overwrite it, but if the client sends two
+		 * different hosts it's probably broken anyway...
+		 *
+		 * We could handle non-http URIs here, but there's not much
+		 * points, the backend will reject it anyway.
+		 */
+		if (strncmp(p, "http://", 7))
+			return -1;
+		p += 7;
+		t = strchr(p, '/');
+		if (t == NULL)
+			return -1;
+		entity->he_rdata.request.path = wstrdup(t);
+		*t = '\0';
+		entity->he_rdata.request.host = p;
+	} else {
+		entity->he_rdata.request.path = wstrdup(p);
+	}
 
 	/* HTTP/1.0 */
 	/*
