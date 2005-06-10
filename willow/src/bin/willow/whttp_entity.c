@@ -887,7 +887,13 @@ via_includes_me(s)
 			break;
 		while (*via == ' ')
 			++via;
-		if (!strncmp(via, my_hostname, strlen(my_hostname))) {
+		space = strchr(via, ' ');
+		if (!space) {
+			wfree(orig);
+			return 0;
+		}
+		*space = '\0';
+		if (!strcmp(via, my_hostname)) {
 			wfree(orig);
 			return 1;
 		}
