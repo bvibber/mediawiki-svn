@@ -29,13 +29,13 @@ listen "127.0.0.1" {
  */
 cache {
 	/*
-	 * Every expire_time seconds, the oldest expire_threshold%
+	 * Every expire_every seconds, the oldest expire_threshold%
 	 * objects will be removed from the cache, using an LRU
 	 * algorithm.  This only occurs if the cache is more than
 	 * (100 - expire_theshold)% full.
 	 */
-	expire_time = 1 hour;
-	expire_theshold = 5;
+	expire_every = 1 hour;
+	expire_threshold = 5;
 };
 
 /*
