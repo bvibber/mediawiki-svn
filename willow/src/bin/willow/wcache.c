@@ -38,9 +38,15 @@ static void cache_getstate(struct cache_state *);
 static struct cache_object *wcache_new_object(const char *);
 static void wcache_free_object(struct cache_object *);
 static int cache_open(struct cache_object *, int, int);
-static int cache_unlink(struct cache_object *);
+static void cache_unlink(struct cache_object *);
 static void cache_writestate(struct cache_state *state);
 static void expire_sched(void);
+static unsigned int hash(const char *);
+static void idx_add(struct cache_object *);
+static void idx_rem(struct cache_object *);
+static struct cache_object *idx_find(const char *key);
+
+#define HASH_ELEMS 262140
 
 static struct cache_state state;
 static struct event expire_ev;
@@ -48,6 +54,15 @@ static struct timeval expire_tv;
 
 static int int_max_len;
 
+struct key_idx_entry {
+	struct cache_object *obj;
+	LIST_ENTRY(key_idx_entry) entries;
+};
+
+struct key_idx_bucket {
+	LIST_HEAD(key_idx_head, key_idx_entry) head;
+} key_idx[HASH_ELEMS];
+ 	
 TAILQ_HEAD(objlist, cache_object) objects;
 
 static int
@@ -69,7 +84,7 @@ cache_open(obj, flags, mode)
 	return i;
 }
 
-static int
+static void
 cache_unlink(obj)
 	struct cache_object *obj;
 {
@@ -213,6 +228,7 @@ wcache_evict(obj)
 	TAILQ_REMOVE(&objects, obj, entries);
 	cache_unlink(obj);
 	state.cs_size -= obj->co_size;
+	idx_rem(obj);
 	wcache_free_object(obj);
 }
 
@@ -224,7 +240,8 @@ wcache_find_object(key, fd)
 struct	cache_object	*co;
 
 	WDEBUG((WLOG_DEBUG, "wcache_find_object: looking for %s", key));
-	TAILQ_FOREACH(co, &objects, entries) {
+	co = idx_find(key);
+	if (co) {
 		WDEBUG((WLOG_DEBUG, "trying %s, comp=%d", co->co_key, co->co_complete));
 		if (!strcmp(key, co->co_key)) {
 			if (!co->co_complete) {
@@ -241,6 +258,7 @@ struct	cache_object	*co;
 	}
 
 	co = wcache_new_object(key);
+	idx_add(co);
 	if ((*fd = cache_open(co, O_WRONLY | O_CREAT | O_EXCL, 0600)) == -1) {
 		wlog(WLOG_WARNING, "opening cached file: %s", strerror(errno));
 		wcache_free_object(co);
@@ -325,6 +343,7 @@ struct	cache_object	*obj;
 		obj->co_id = id;
 		obj->co_expires = expires;
 		TAILQ_INSERT_TAIL(&objects, obj, entries);
+		idx_add(obj);
 		WDEBUG((WLOG_DEBUG, "load %s %s from cache", obj->co_key, obj->co_path));
 	}
 
@@ -414,4 +433,48 @@ struct	cache_object	*obj;
 		wcache_evict(obj);
 	}
 	expire_sched();
+}
+
+unsigned int
+hash(s)
+	const char *s;
+{
+	int	i;
+	for (i = 0; *s; s++)
+		i = 131 * i + *s;
+	return ((unsigned int)i) % HASH_ELEMS;
+}
+
+static void
+idx_add(obj)
+	struct cache_object *obj;
+{
+	struct key_idx_head *head = &key_idx[hash(obj->co_key)].head;
+	struct key_idx_entry *entry = wmalloc(sizeof(*entry));
+	bzero(entry, sizeof(*entry));
+	entry->obj = obj;
+	LIST_INSERT_HEAD(head, entry, entries);
+}
+
+static struct cache_object *
+idx_find(key)
+	const char *key;
+{
+	struct key_idx_head *head = &key_idx[hash(key)].head;
+	struct key_idx_entry *entry;
+	LIST_FOREACH(entry, head, entries)
+		if (!strcmp(entry->obj->co_key, key))	
+			return entry->obj;
+	return NULL;
+}
+
+static void
+idx_rem(obj)
+	struct cache_object *obj;
+{
+	struct key_idx_head *head = &key_idx[hash(obj->co_key)].head;
+	struct key_idx_entry *entry;
+	LIST_FOREACH(entry, head, entries)
+		if (entry->obj == obj)	
+			LIST_REMOVE(entry, entries);
 }

@@ -323,7 +323,7 @@ struct	wrtbuf	*buf;
 #endif
 		buf->wb_done += i;
 		WDEBUG((WLOG_DEBUG, "%d of %d done", buf->wb_done, buf->wb_size));
-		if (buf->wb_done == buf->wb_size) {
+		if (buf->wb_done == (off_t)buf->wb_size) {
 			wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
 			buf->wb_func(e, buf->wb_udata, 0);
 			wfree(buf);
@@ -348,6 +348,8 @@ struct	wrtbuf *buf;
 	/*LINTED unused variable: freebsd-only*/
 	off_t	off, origoff;
 	
+	(void)off;
+
 	buf = e->fde_wdata;
 	origoff = buf->wb_off;
 	
