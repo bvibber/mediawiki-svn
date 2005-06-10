@@ -11,6 +11,7 @@
 
 #define _XOPEN_SOURCE 600
 #define _XOPEN_SOURCE_EXTENDED
+#define __EXTENSIONS__
 #define _GNU_SOURCE
 
 #include <sys/types.h>
@@ -40,6 +41,7 @@ struct event ev_sigint;
 static void fde_ev_callback(int, short, void *);
 
 void sig_exit(int, short, void *);
+
 void sig_exit(sig, what, d)
 	int sig;
 	short what;

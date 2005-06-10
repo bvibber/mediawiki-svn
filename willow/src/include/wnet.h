@@ -24,10 +24,8 @@ ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
 #include <netinet/in.h>
 
 #include "config.h"
-#ifdef USE_LIBEVENT
-# include <sys/time.h>
-# include <event.h>
-#endif
+#include <sys/time.h>
+#include <event.h>
 
 #include "willow.h"
 
@@ -39,10 +37,6 @@ typedef void (*fdcb)(struct fde*);
 typedef void (*fdwcb)(struct fde*, void*, int);
 
 struct client_data;
-
-#ifdef USE_POLL
-extern int highest_fd;
-#endif
 
 struct readbuf {
 	char	*rb_p;		/* start of allocated region	*/
@@ -71,9 +65,7 @@ struct	readbuf		 fde_readbuf;
 		int	open:1;
 		int	held:1;
 	}		 fde_flags;
-#ifdef USE_LIBEVENT
 struct	event		 fde_ev;
-#endif
 };
 extern struct fde *fde_table;
 

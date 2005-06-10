@@ -1,12 +1,7 @@
 LIB = willownet
 
-selectsrc=wnet_@SELECTTYPE@.c
-
 CPPFLAGS = -DDATADIR=\"$(_DATADIR)\"
-SRCS = wnet.c ${selectsrc}
-
-EXTRA_DIST=wnet_poll.c wnet_ports.c wnet_kqueue.c wnet_epoll.c wnet_devpoll.c \
-	wnet_libevent.c Makefile.in
+SRCS = wnet.c wnet_libevent.c
 
 LDFLAGS = $(LIBOBJS)
 
