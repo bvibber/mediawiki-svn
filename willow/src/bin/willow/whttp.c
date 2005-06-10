@@ -111,7 +111,7 @@ static char via_hdr[1024];
 static char *cache_hit_hdr;
 static char *cache_miss_hdr;
 
-static char my_hostname[MAXHOSTNAMELEN + 1];
+char my_hostname[MAXHOSTNAMELEN + 1];
 static char my_version[64];
 static int logwr_pipe[2];
 static FILE *alf;

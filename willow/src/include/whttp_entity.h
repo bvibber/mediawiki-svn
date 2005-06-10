@@ -31,6 +31,7 @@
 #define ENT_ERR_INVHOST	-3	/* invalid Host:			*/
 #define ENT_ERR_INVREQ	-4	/* invalid request type			*/
 #define ENT_ERR_2MANY	-5	/* too many headers			*/
+#define ENT_ERR_LOOP	-6	/* forwarding loop detected		*/
 
 #define ENT_IMMED	0x1
 

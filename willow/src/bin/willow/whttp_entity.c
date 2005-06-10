@@ -80,6 +80,7 @@ static void entity_read_callback(struct fde *);
 static int parse_headers(struct http_entity *);
 static int parse_reqtype(struct http_entity *);
 static int validhost(const char *);
+static int via_includes_me(const char *);
 
 static void entity_send_headers_done(struct fde *, void *, int);
 static void entity_send_fde_write_done(struct fde *, void *, int);
@@ -94,6 +95,7 @@ const char *ent_errors[] = {
 	/* -3 */	"Invalid Host",
 	/* -4 */	"Invalid request type",
 	/* -5 */	"Too many headers",
+	/* -6 */	"Forwarding loop detected",
 };
 	
 void
@@ -284,6 +286,9 @@ parse_headers(entity)
 						entity->he_rdata.request.contlen = atoi(cl);
 						WDEBUG((WLOG_DEBUG, "got content-length: %d [%s]", 
 								entity->he_rdata.request.contlen, cl));
+					} else if (!strcmp(entity->_he_lastname, "Via")) {
+						if (via_includes_me(entity->_he_valstart))
+							return ENT_ERR_LOOP;
 					}
 					entity->_he_state = ENTITY_STATE_CR;
 					break;
@@ -865,3 +870,30 @@ validhost(host)
 	}
 	return 1;
 }
+
+static int
+via_includes_me(s)
+        const char *s;
+{
+	char    *orig = wstrdup(s);
+	char    *via = orig, *comma, *space;
+
+	do {
+		comma = strchr(via, ',');
+		if (comma)
+			*comma++ = '\0';
+		via = strchr(via, ' ');
+		if (!via)
+			break;
+		while (*via == ' ')
+			++via;
+		if (!strncmp(via, my_hostname, strlen(my_hostname))) {
+			wfree(orig);
+			return 1;
+		}
+		via = comma;
+	} while (comma);
+	wfree(orig);
+	return 0;
+}
+

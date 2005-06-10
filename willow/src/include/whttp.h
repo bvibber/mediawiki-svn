@@ -19,6 +19,7 @@ void whttp_init(void);
 void whttp_shutdown(void);
 
 extern const char *request_string[];
+extern char my_hostname[];
 
 extern struct request_type {
 	const char *name;
