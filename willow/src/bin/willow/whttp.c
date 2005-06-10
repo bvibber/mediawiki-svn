@@ -395,6 +395,9 @@ struct	http_client	*client = data;
 	if (res == -1) {
 		client_close(client);
 		return;
+	} else if (res < -1) {
+		client_send_error(client, ERR_GENERAL, ent_errors[-res]);
+		return;
 	}
 	
 	/*

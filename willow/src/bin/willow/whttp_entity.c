@@ -650,7 +650,10 @@ entity_send(fde, entity, cb, data, flags)
 		vec[3].iov_len = strlen(entity->he_rdata.response.status_str);
 		vec[4].iov_base = "\r\n";
 		vec[4].iov_len = 2;
-		writev(fde->fde_fd, vec, 5);
+		if (writev(fde->fde_fd, vec, 5) < 0) {
+			entity->_he_func(entity, entity->_he_cbdata, -1);
+			return;
+		}
 	} else {
 		struct iovec vec[4];
 		
@@ -662,7 +665,10 @@ entity_send(fde, entity, cb, data, flags)
 		vec[2].iov_len = strlen(entity->he_rdata.request.path);
 		vec[3].iov_base = " HTTP/1.0\r\n";
 		vec[3].iov_len = 11;
-		writev(fde->fde_fd, vec, 4);
+		if (writev(fde->fde_fd, vec, 4) < 0) {
+			entity->_he_func(entity, entity->_he_cbdata, -1);
+			return;
+		}
 	}
 		
 	entity->_he_target = fde;
