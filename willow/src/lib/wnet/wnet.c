@@ -176,6 +176,7 @@ init_fde(fde)
 	fde->fde_epflags = 0;
 	bzero(&fde->fde_readbuf, sizeof(fde->fde_readbuf));
 	fde->fde_flags.open = 0;
+	bzero(&fde->fde_ev, sizeof(fde->fde_ev));
 }
 
 int
@@ -219,7 +220,6 @@ wnet_close(fd)
 	int fd;
 {
 struct	fde	*e = &fde_table[fd];
-
 	wnet_register(fd, FDE_READ | FDE_WRITE, NULL, NULL);
 	(void)close(e->fde_fd);
 	if (e->fde_cdata)
@@ -256,8 +256,7 @@ struct	fde	*e = &fde_table[fd];
 	wb->wb_off = off;
 	
 	e->fde_wdata = wb;
-	if (!(flags & WNET_IMMED))
-		wnet_register(e->fde_fd, FDE_WRITE, wnet_sendfile_do, e);
+	wnet_register(e->fde_fd, FDE_WRITE, wnet_sendfile_do, e);
 	wnet_sendfile_do(e);
 	return 0;
 }
@@ -286,8 +285,7 @@ struct	fde	*e = &fde_table[fd];
 
 	e->fde_wdata = wb;
 
-	if (!(flags & WNET_IMMED))
-		wnet_register(e->fde_fd, FDE_WRITE, wnet_write_do, e);
+	wnet_register(e->fde_fd, FDE_WRITE, wnet_write_do, e);
 	wnet_write_do(e);
 }
 
@@ -361,7 +359,24 @@ struct	wrtbuf *buf;
 #else
 # error i dont know how to invoke sendfile on this system
 #endif
+
+#ifdef __linux
+	/*
+	 * The Linux sendfile() manual page says:
+	 *
+	 *   When sendfile() returns, this variable will be set to the offset of the byte following the
+	 *   last byte that was read.
+	 *
+	 * However, this is not true on x86-64 when we are compiled as a 32-bit binary; the correct
+	 * number of bytes is returned, but off is _not_ updated.  So, we fudge it into working as we
+	 * expect.
+	 */
+	if (i > 0)
+		buf->wb_off += i;
+#endif
+
 	buf->wb_size -= (buf->wb_off - origoff);
+	WDEBUG((WLOG_DEBUG, "sent %d bytes i=%d", (int)(buf->wb_off - origoff), i));
 	
 	if (buf->wb_size == 0) {
 		wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
