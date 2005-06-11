@@ -371,7 +371,7 @@ struct	wrtbuf *buf;
 	 * number of bytes is returned, but off is _not_ updated.  So, we fudge it into working as we
 	 * expect.
 	 */
-	if (i > 0)
+	if (i > 0 && buf->wb_off == origoff)
 		buf->wb_off += i;
 #endif
 
