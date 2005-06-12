@@ -243,7 +243,7 @@ struct	cache_object	*cobj;
 		return;
 	}
 	
-	if (res == -1) {
+	if (res == -1 || res == 1) {
 		client_close(client);
 		return;
 	}

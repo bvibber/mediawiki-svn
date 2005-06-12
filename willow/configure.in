@@ -23,7 +23,7 @@ echo "examining environment..."
 AC_LANG_C
 AC_PROG_CC
 
-if test x${ac_compiler_gnu+no} = xyes; then
+if test x${ac_compiler_gnu} = xyes; then
 	debug_cflags=$debug_cflags_gcc
 	prod_cflags=$prod_cflags_gcc
 fi
@@ -33,6 +33,8 @@ if $CC -V 2>&1 | grep "Sun C" >/dev/null; then
 	AC_MSG_RESULT(yes)
 	debug_cflags=$debug_cflags_sunpro
 	prod_cflags=$prod_cflags_sunpro
+else
+	AC_MSG_RESULT(no)
 fi
 
 mycflags=$prod_cflags

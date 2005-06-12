@@ -236,10 +236,8 @@ wstrvec(str, sep, lim)
 	int	 nres = 0;
 	char	*s;
 const	char	*st = str;
-fprintf(stderr, "str=[%s]\n", str);
 	while (--lim && (s = strstr(st, sep))) {
 		result = wrealloc(result, ++nres * sizeof(char *));
-fprintf(stderr, "loop nres=%d\n", nres);
 		result[nres - 1] = wmalloc((s - st) + 1);
 		memcpy(result[nres - 1], st, s - st);
 		result[nres - 1][s - st] = '\0';
@@ -251,7 +249,6 @@ fprintf(stderr, "loop nres=%d\n", nres);
 
 	result = wrealloc(result, (nres + 1) * sizeof(char *));
 	result[nres] = NULL;
-fprintf(stderr, "nres=%d\n", nres);
 	return result;
 }
 

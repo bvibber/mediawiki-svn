@@ -193,7 +193,7 @@ struct	http_entity	*entity = d;
 		 * End of file from backend.
 		 */
 		WDEBUG((WLOG_DEBUG, "entity_error_callback: EOF"));
-		entity->_he_func(entity, entity->_he_cbdata, 0);
+		entity->_he_func(entity, entity->_he_cbdata, 1);
 		return;
 	}
 
@@ -271,8 +271,8 @@ struct	http_entity	*entity = d;
 		if (entity->_he_chunk_size)
 			want = entity->_he_chunk_size;
 
-		WDEBUG((WLOG_DEBUG, "rw %d", want));
 		read = bufferevent_read(entity->_he_frombuf, buf, want);
+		WDEBUG((WLOG_DEBUG, "rw %d, got %d", want, read));
 		if (read == 0)
 			break;	/* No more data */
 		
@@ -289,6 +289,7 @@ struct	http_entity	*entity = d;
 	}
 
 	bufferevent_disable(entity->_he_frombuf, EV_READ);
+	bufferevent_enable(entity->_he_tobuf, EV_WRITE);
 }
 
 static void
@@ -359,11 +360,12 @@ struct	http_entity	*entity = d;
 		return;
 	}
 
+	WDEBUG((WLOG_DEBUG, "entity_send_write_callback"));
 	/*
 	 * Otherwise, we're sending from an FDE, and the last write completed.
 	 */
 	bufferevent_enable(entity->_he_frombuf, EV_READ);
-	entity_read_callback(entity->_he_frombuf, entity);
+	//entity_read_callback(entity->_he_frombuf, entity);
 }
 
 static void
@@ -651,9 +653,7 @@ parse_headers(entity)
 			value = hdr[1];
 			while (isspace(*value))
 				++value;
-fprintf(stderr, "hdr[2]=%p\n", hdr[2]);
 			value = wstrdup(value);
-fprintf(stderr, "hdr[2]=%p\n", hdr[2]);
 
 			WDEBUG((WLOG_DEBUG, "header: from [%s], [%s] = [%s]",
 				line, hdr[0], value));
