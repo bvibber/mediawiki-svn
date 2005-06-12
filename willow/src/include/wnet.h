@@ -66,7 +66,7 @@ struct	readbuf		 fde_readbuf;
 		int	held:1;
 		int	pend:1;
 	}		 fde_flags;
-struct	event		*fde_ev;
+struct	event		 fde_ev;
 };
 extern struct fde *fde_table;
 

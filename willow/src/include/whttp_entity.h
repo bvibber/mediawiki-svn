@@ -33,12 +33,16 @@
 #define ENT_ERR_2MANY	-5	/* too many headers			*/
 #define ENT_ERR_LOOP	-6	/* forwarding loop detected		*/
 
+#define TE_CHUNKED	0x1	/* Chunked encoding			*/
+
 extern const char *ent_errors[];
 
 #define MAX_HEADERS	64	/* maximum # of headers to allow	*/
 
 struct http_entity;
 struct http_client;
+
+struct bufferevent;
 
 typedef void (*header_cb)(struct http_entity *, void *, int);
 typedef void (*cache_callback)(const char *, size_t, void *);
@@ -73,7 +77,8 @@ struct http_entity {
 			int	 contlen;	/* Content-Length	*/
 		} request;
 	}		 he_rdata;
-	
+
+	char		*he_reqstr;	
 struct	header_list	 he_headers;
 	int		 he_source_type;
 	
@@ -101,7 +106,11 @@ struct	header_list	 he_headers;
 		int	 cachable:1;
 		int	 response:1;
 		int	 error:1;
+		int	 hdr_only:1;
+		int	 eof:1;
 	}		 he_flags;
+
+	int		 he_te;		/* transfer encoding */
 
 	/*
 	 * If you want a callback when each piece of data is written, set this.  
@@ -116,12 +125,11 @@ struct	header_list	 he_headers;
 	 */
 	void		*_he_cbdata;
 	header_cb	 _he_func;
-	char		*_he_hdrbuf;
-	char		 _he_rdbuf[8192]; /* does this really need to be here? */
 struct	fde		*_he_target;
 	int		 _he_state;
-	char		*_he_lastname;
-	char		*_he_valstart;
+	int		 _he_chunk_size;	/* For chunked encoding			*/
+struct	bufferevent	*_he_frombuf;
+struct	bufferevent	*_he_tobuf;
 };
 
 void entity_read_headers(struct http_entity *, header_cb, void *);

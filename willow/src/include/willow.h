@@ -40,6 +40,9 @@ void *internal_wcalloc(size_t, size_t, const char *, int);
 void realloc_strcat(char **, const char *);
 void realloc_addchar(char **, int);
 
+char **wstrvec(const char *, const char *, int);
+void wstrvecfree(char **);
+
 #ifndef HAVE_DAEMON
 int daemon(int, int);
 #endif

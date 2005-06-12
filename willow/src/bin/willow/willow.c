@@ -19,6 +19,7 @@
 #include <errno.h>
 #include <pwd.h>
 #include <grp.h>
+#include <strings.h>
 
 #include "wlog.h"
 #include "wnet.h"
@@ -226,6 +227,46 @@ realloc_strcat(sp, s)
 	(void)strcat(*sp, s);
 }
 
+char **
+wstrvec(str, sep, lim)
+	const char *str, *sep;
+	int lim;
+{
+	char	**result = NULL;
+	int	 nres = 0;
+	char	*s;
+const	char	*st = str;
+fprintf(stderr, "str=[%s]\n", str);
+	while (--lim && (s = strstr(st, sep))) {
+		result = wrealloc(result, ++nres * sizeof(char *));
+fprintf(stderr, "loop nres=%d\n", nres);
+		result[nres - 1] = wmalloc((s - st) + 1);
+		memcpy(result[nres - 1], st, s - st);
+		result[nres - 1][s - st] = '\0';
+		st = s + strlen(sep);
+	}
+
+	result = wrealloc(result, ++nres * sizeof(char *));
+	result[nres - 1] = wstrdup(st);
+
+	result = wrealloc(result, (nres + 1) * sizeof(char *));
+	result[nres] = NULL;
+fprintf(stderr, "nres=%d\n", nres);
+	return result;
+}
+
+void wstrvecfree(vec)
+	char **vec;
+{
+	char **s = vec;
+	while (*s) {
+		wfree(*s);
+		s++;
+	}
+	wfree(vec);
+}
+
+							
 int char_table[256] = {
 	/* 0   */ 0, 0, 0, 0, 0, 0, 0, 0,
 	/* 8   */ 0, 0, 0, 0, 0, 0, 0, 0,

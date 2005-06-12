@@ -169,8 +169,6 @@ init_fde(fde)
 	bzero(fde, sizeof(*fde));
 	fde->fde_desc = "<unknown>";
 	(void)strcpy(fde->fde_straddr, "NONE");
-	fde->fde_ev = wmalloc(sizeof(*fde->fde_ev));
-	bzero(fde->fde_ev, sizeof(*fde->fde_ev));
 }
 
 int
@@ -217,7 +215,6 @@ struct	fde	*e = &fde_table[fd];
 	assert(e->fde_flags.open);
 	WDEBUG((WLOG_DEBUG, "close fd %d [%s]", e->fde_fd, e->fde_desc));
 	wnet_register(fd, FDE_READ | FDE_WRITE, NULL, NULL);
-	wfree(e->fde_ev);
 	(void)close(e->fde_fd);
 	if (e->fde_cdata)
 		wfree(e->fde_cdata);

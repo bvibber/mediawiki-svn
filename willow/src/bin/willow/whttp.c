@@ -304,7 +304,6 @@ struct	header_list	*it;
 	WDEBUG((WLOG_DEBUG, "proxy_start_backend: called; for client=%d backend=%d", client->cl_fde->fde_fd, e->fde_fd));
 	
 	if (backend == NULL) {
-wlog(WLOG_DEBUG, "failed to get a backend");
 		client_send_error(client, ERR_GENERAL, strerror(errno));
 		return;
 	}
@@ -314,7 +313,6 @@ wlog(WLOG_DEBUG, "failed to get a backend");
 
 	getsockopt(e->fde_fd, SOL_SOCKET, SO_ERROR, &error, &len);
 	if (error) {
-wlog(WLOG_DEBUG, "failed to get a backend (2)");
 		client_send_error(client, ERR_GENERAL, strerror(error));
 		return;
 	}
@@ -396,7 +394,6 @@ struct	http_client	*client = data;
 	WDEBUG((WLOG_DEBUG, "client_headers_done: called"));
 	
 	if (res == -1) {
-wlog(WLOG_DEBUG, "close client on error fd=%d backend fd=%d", client->cl_fde->fde_fd, client->cl_backendfde->fde_fd);
 		client_close(client);
 		return;
 	} else if (res < -1) {

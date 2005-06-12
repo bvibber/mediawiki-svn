@@ -47,7 +47,7 @@ static struct cache_object *idx_find(const char *key);
 
 typedef  unsigned long  int  ub4;   /* unsigned 4-byte quantities */
 typedef  unsigned       char ub1;   /* unsigned 1-byte quantities */
-static ub4 hash(ub1 *);
+static ub4 hash(const ub1 *);
 
 #define hashsize(n) ((ub4)1<<(n))
 #define hashmask(n) (hashsize(n)-1)
@@ -412,10 +412,7 @@ wcache_free_object(obj)
 }
 
 static void
-run_expiry(fd, ev, data)
-	int fd;
-	short ev;
-	void *data;
+run_expiry(int fd, short ev, void *data)
 {
 	w_size_t	 wantsize;
 	int		 i;
@@ -446,7 +443,7 @@ static void
 idx_add(obj)
 	struct cache_object *obj;
 {
-	struct key_idx_head *head = &key_idx[hash(obj->co_key)].head;
+	struct key_idx_head *head = &key_idx[hash((ub1 *)obj->co_key)].head;
 	struct key_idx_entry *entry = wmalloc(sizeof(*entry));
 	bzero(entry, sizeof(*entry));
 	entry->obj = obj;
@@ -457,7 +454,7 @@ static struct cache_object *
 idx_find(key)
 	const char *key;
 {
-	struct key_idx_head *head = &key_idx[hash(key)].head;
+	struct key_idx_head *head = &key_idx[hash((ub1 *)key)].head;
 	struct key_idx_entry *entry;
 	LIST_FOREACH(entry, head, entries)
 		if (!strcmp(entry->obj->co_key, key))	
@@ -469,7 +466,7 @@ static void
 idx_rem(obj)
 	struct cache_object *obj;
 {
-	struct key_idx_head *head = &key_idx[hash(obj->co_key)].head;
+	struct key_idx_head *head = &key_idx[hash((ub1 *)obj->co_key)].head;
 	struct key_idx_entry *entry;
 	LIST_FOREACH(entry, head, entries)
 		if (entry->obj == obj)	
@@ -497,7 +494,7 @@ idx_rem(obj)
  */
 
 ub4 hash(k)
-register ub1 *k;        /* the key */
+register const ub1 *k;        /* the key */
 {
    register ub4 a,b,c,len;
    register ub4 length = strlen((char *)k);
