@@ -18,8 +18,6 @@
 
 struct fde;
 
-#define WBE_IMMED	0x1	/* use blocking i/o, no callback	*/
-
 struct backend {
 	char		*be_name;	/* IP as specified in config	*/
 	int	 	 be_port;	/* port number			*/

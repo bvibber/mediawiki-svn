@@ -64,8 +64,9 @@ struct	readbuf		 fde_readbuf;
 	struct {
 		int	open:1;
 		int	held:1;
+		int	pend:1;
 	}		 fde_flags;
-struct	event		 fde_ev;
+struct	event		*fde_ev;
 };
 extern struct fde *fde_table;
 
@@ -80,8 +81,6 @@ extern int wnet_exit;
 
 #define FDE_READ	0x1
 #define FDE_WRITE	0x2
-
-#define WNET_IMMED 0x1
 
 void wnet_init(void);
 void wnet_run(void);

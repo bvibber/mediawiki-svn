@@ -26,7 +26,7 @@ void *internal_wcalloc(size_t, size_t, const char *, int);
 # define wfree(p) internal_wfree(p, __FILE__, __LINE__)
 # define wstrdup(p) internal_wstrdup(p, __FILE__, __LINE__)
 # define wrealloc(p,s) internal_wrealloc(p, s, __FILE__, __LINE__)
-# define wcalloc(n,s) internal_wcalloc(n, s, __FILE__, __LINE))
+# define wcalloc(n,s) internal_wcalloc(n, s, __FILE__, __LINE__)
 #else
 # include <stdlib.h>
 

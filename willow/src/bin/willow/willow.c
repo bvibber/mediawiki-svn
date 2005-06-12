@@ -301,10 +301,15 @@ struct	alloc_entry	*ae;
 	 * is enabled, it's more important to produce useful errors than conform to the letter
 	 * of the law.
 	 */
-	(void)fprintf(stderr, "SEGV at %p%s (pid %d)\n", si->si_addr, si->si_code == SI_NOINFO ? " [SI_NOINFO]" : "",
+	(void)fprintf(stderr, "SEGV at %p%s (pid %d)\n", si->si_addr, 
+#ifdef SI_NOINFO
+			si->si_code == SI_NOINFO ? " [SI_NOINFO]" : "",
+#else
+			"",
+#endif
 			(int) getpid());
 	for (ae = allocs.ae_next; ae; ae = ae->ae_next)
-		if (!ae->ae_freed && (char *)si->si_addr > ae->ae_mapping && 
+		if (/*!ae->ae_freed &&*/ (char *)si->si_addr > ae->ae_mapping && 
 				(char *)si->si_addr < ae->ae_mapping + ae->ae_mapsize) {
 			(void)fprintf(stderr, "\t%p [map @ %p size %d] from %s:%d\n", ae->ae_addr, ae->ae_mapping,
 					ae->ae_mapsize, ae->ae_alloced_file, ae->ae_alloced_line);
@@ -365,8 +370,10 @@ struct	alloc_entry	*ae;
 	ae->ae_freed = 0;
 	ae->ae_alloced_file = file;
 	ae->ae_alloced_line = line;
+#if 0
 	(void)fprintf(stderr, "alloc %d @ %p [map @ %p:%p, size %d] at %s:%d\n", size, ae->ae_addr,
 			ae->ae_mapping, ae->ae_mapping + ae->ae_mapsize, ae->ae_mapsize, file, line);
+#endif
 	if (mprotect(ae->ae_addr + size, pgsize, PROT_NONE) < 0) {
 		(void)fprintf(stderr, "mprotect(0x%p, %d, PROT_NONE): %s\n", ae->ae_addr + size, pgsize, strerror(errno));
 		exit(8);
@@ -383,7 +390,11 @@ internal_wfree(p, file, line)
 {
 struct	alloc_entry	*ae;
 
+#if 0
 	(void)fprintf(stderr, "free %p @ %s:%d\n", p, file, line);
+#endif
+	if (!p)	
+		return;
 	
 	for (ae = allocs.ae_next; ae; ae = ae->ae_next) {
 		if (ae->ae_addr == p) {
@@ -464,7 +475,7 @@ internal_wcalloc(num, size, file, line)
 	size_t	 t = size * num;
 	void	*p;
 	
-	if ((p = internal_wmalloc(t)) == NULL)
+	if ((p = internal_wmalloc(t, __FILE__, __LINE__)) == NULL)
 		return NULL;
 	bzero(p, t);
 	return p;

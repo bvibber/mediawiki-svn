@@ -166,17 +166,11 @@ static void
 init_fde(fde)
 	struct fde *fde;
 {
-	fde->fde_fd = 0;
+	bzero(fde, sizeof(*fde));
 	fde->fde_desc = "<unknown>";
-	fde->fde_read_handler = NULL;
-	fde->fde_write_handler = NULL;
-	fde->fde_cdata = NULL;
-	fde->fde_rdata = fde->fde_wdata = NULL;
 	(void)strcpy(fde->fde_straddr, "NONE");
-	fde->fde_epflags = 0;
-	bzero(&fde->fde_readbuf, sizeof(fde->fde_readbuf));
-	fde->fde_flags.open = 0;
-	bzero(&fde->fde_ev, sizeof(fde->fde_ev));
+	fde->fde_ev = wmalloc(sizeof(*fde->fde_ev));
+	bzero(fde->fde_ev, sizeof(*fde->fde_ev));
 }
 
 int
@@ -220,7 +214,10 @@ wnet_close(fd)
 	int fd;
 {
 struct	fde	*e = &fde_table[fd];
+	assert(e->fde_flags.open);
+	WDEBUG((WLOG_DEBUG, "close fd %d [%s]", e->fde_fd, e->fde_desc));
 	wnet_register(fd, FDE_READ | FDE_WRITE, NULL, NULL);
+	wfree(e->fde_ev);
 	(void)close(e->fde_fd);
 	if (e->fde_cdata)
 		wfree(e->fde_cdata);
@@ -301,7 +298,7 @@ struct	wrtbuf	*buf;
 	
 	buf = e->fde_wdata;
 	while ((i = write(e->fde_fd, (char *)buf->wb_buf + buf->wb_done, buf->wb_size - buf->wb_done)) > -1) {
-#ifdef WILLOW_DEBUG
+#ifdef WILLOW_DEBUG_no
 		(void)fprintf(stderr, "write buf: [");
 		for (p = ((char *)buf->wb_buf + buf->wb_done); p < ((char *)buf->wb_buf + buf->wb_done + i); ++p)
 			(void)fputc(*p, stderr);
@@ -352,7 +349,6 @@ struct	wrtbuf *buf;
 #elif defined __FreeBSD__ 
 	i = sendfile(buf->wb_source, e->fde_fd, buf->wb_size, NULL, &off, 0);
 	buf->wb_off += off;
-	i = off;
 #elif defined __hpux || (defined __digital__ && defined __unix__)
 	i = sendfile(e->fde_fd, buf->wb_source, buf->wb_off, buf->wb_size, NULL, 0);
 	buf->wb_off += i;

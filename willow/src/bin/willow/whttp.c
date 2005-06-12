@@ -101,6 +101,7 @@ static void client_response_done(struct http_entity *, void *, int);
 static void backend_headers_done(struct http_entity *, void *, int);
 static void client_headers_done(struct http_entity *, void *, int);
 static void client_write_cached(struct http_client *);
+static int removable_header(const char *);
 
 static void client_send_error(struct http_client *, int, const char *);
 static void client_log_request(struct http_client *);
@@ -130,7 +131,7 @@ whttp_init(void)
 	}
 
 	(void)strlcpy(my_version, "Willow/" PACKAGE_VERSION, 64);
-	safe_snprintf(1023, (via_hdr, 1023, "1.0 %s (%s)", my_hostname, my_version));
+	safe_snprintf(1023, (via_hdr, 1023, "1.1 %s (%s)", my_hostname, my_version));
 
 	hsize = sizeof("MISS from ") + strlen(my_hostname);
 	cache_hit_hdr = wmalloc(hsize + 1);
@@ -300,24 +301,26 @@ struct	http_client	*client = data;
 struct	header_list	*it;
 	int		 error = 0, len = sizeof(error);
 	
-	WDEBUG((WLOG_DEBUG, "proxy_start_backend: called"));
+	WDEBUG((WLOG_DEBUG, "proxy_start_backend: called; for client=%d backend=%d", client->cl_fde->fde_fd, e->fde_fd));
 	
 	if (backend == NULL) {
+wlog(WLOG_DEBUG, "failed to get a backend");
 		client_send_error(client, ERR_GENERAL, strerror(errno));
 		return;
 	}
 	
+	client->cl_backend = backend;
+	client->cl_backendfde = e;
+
 	getsockopt(e->fde_fd, SOL_SOCKET, SO_ERROR, &error, &len);
 	if (error) {
+wlog(WLOG_DEBUG, "failed to get a backend (2)");
 		client_send_error(client, ERR_GENERAL, strerror(error));
 		return;
 	}
 
-	client->cl_backend = backend;
-	client->cl_backendfde = e;
-
 	for (it = client->cl_entity.he_headers.hl_next; it; it = it->hl_next) {
-		if (!strcmp(it->hl_name, "Connection")) {
+		if (removable_header(it->hl_name)) {
 			header_remove(&client->cl_entity.he_headers, it);
 			it = client->cl_entity.he_headers.hl_next;
 			continue;
@@ -393,6 +396,7 @@ struct	http_client	*client = data;
 	WDEBUG((WLOG_DEBUG, "client_headers_done: called"));
 	
 	if (res == -1) {
+wlog(WLOG_DEBUG, "close client on error fd=%d backend fd=%d", client->cl_fde->fde_fd, client->cl_backendfde->fde_fd);
 		client_close(client);
 		return;
 	} else if (res < -1) {
@@ -633,3 +637,27 @@ struct	http_client	*client = data;
 	}
 	client->cl_co->co_size += len;
 }
+
+static int
+removable_header(hdr)
+	const char *hdr;
+{
+static const char *removable_headers[] = {
+	"Connection",
+	"Keep-Alive",
+	"Proxy-Authenticate",
+	"Proxy-Authorization",
+	"TE",
+	"Trailers",
+	"Transfer-Encoding",
+	"Upgrade",
+	NULL,
+};
+	const char **s;
+	for (s = &removable_headers[0]; *s; s++)
+		if (!strcasecmp(*s, hdr))
+			return 1;
+	return 0;
+}
+
+

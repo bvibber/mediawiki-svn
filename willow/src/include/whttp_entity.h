@@ -33,8 +33,6 @@
 #define ENT_ERR_2MANY	-5	/* too many headers			*/
 #define ENT_ERR_LOOP	-6	/* forwarding loop detected		*/
 
-#define ENT_IMMED	0x1
-
 extern const char *ent_errors[];
 
 #define MAX_HEADERS	64	/* maximum # of headers to allow	*/
@@ -103,7 +101,6 @@ struct	header_list	 he_headers;
 		int	 cachable:1;
 		int	 response:1;
 		int	 error:1;
-		int	 immed:1;
 	}		 he_flags;
 
 	/*

@@ -78,14 +78,20 @@ fde_ev_callback(fd, ev, d)
 	short ev;
 	void *d;
 {
-struct	fde	*fde = d;
+struct	fde	*fde = &fde_table[fd];
+struct	event	*evt = (struct event *) d;
 
-	if (ev & EV_READ && fde->fde_read_handler)
+	assert(fde->fde_flags.open);
+	assert(fde->fde_fd == fd);
+	assert(fd == fde->fde_ev->ev_fd);
+	assert(fd == evt->ev_fd);
+
+	if ((ev & EV_READ) && fde->fde_read_handler)
 		fde->fde_read_handler(fde);
-	if (ev & EV_WRITE && fde->fde_write_handler)
+	if ((ev & EV_WRITE) && fde->fde_write_handler)
 		fde->fde_write_handler(fde);
-	if ((fde->fde_read_handler || fde->fde_write_handler) && !fde->fde_flags.held)
-		event_add(&fde->fde_ev, NULL);
+	if (fde->fde_read_handler || fde->fde_write_handler)
+		event_add(fde->fde_ev, NULL);
 }
 
 void
@@ -96,10 +102,12 @@ wnet_register(fd, what, handler, data)
 struct	fde	*fde = &fde_table[fd];
 	int	 ev_flags = 0;
 
-	fde->fde_fd = fd;
-
 	if (fde->fde_flags.held)
 		return;
+
+	event_del(fde->fde_ev);
+
+	assert(fde->fde_flags.open);
 
 	if (what & FDE_READ) {
 		fde->fde_read_handler = handler;
@@ -111,14 +119,18 @@ struct	fde	*fde = &fde_table[fd];
 	}
 
 	if (handler == NULL) {
-		event_del(&fde->fde_ev);
+		//if (event_pending(&fde->fde_ev, EV_READ | EV_WRITE, NULL))
+		//if (fde->fde_flags.pend)
+		//	event_del(fde->fde_ev);
+		fde->fde_flags.pend = 0;
 		return;
 	}
 
 	if (data)
 		fde->fde_rdata = data;
 
-	/*ev_flags |= EV_PERSIST;*/
-	event_set(&fde->fde_ev, fde->fde_fd, ev_flags, fde_ev_callback, fde);
-	event_add(&fde->fde_ev, NULL);
+	//ev_flags |= EV_PERSIST;
+	event_set(fde->fde_ev, fde->fde_fd, ev_flags, fde_ev_callback, fde->fde_ev);
+	event_add(fde->fde_ev, NULL);
+	fde->fde_flags.pend = 1;
 }

@@ -635,17 +635,11 @@ entity_send(fde, entity, cb, data, flags)
 	
 	WDEBUG((WLOG_DEBUG, "entity_send: writing to %d [%s]", fde->fde_fd, fde->fde_desc));
 	
-	if (flags & ENT_IMMED) {
-		wnet_set_blocking(fde->fde_fd);
-		wn_flags = WNET_IMMED;
-		entity->he_flags.immed = 1;
-	}
-
 	if (entity->he_flags.response) {
 		struct iovec vec[5];
 		
 		safe_snprintf(4, (status, 4, "%d", entity->he_rdata.response.status));
-		vec[0].iov_base = "HTTP/1.0 ";
+		vec[0].iov_base = "HTTP/1.1 ";
 		vec[0].iov_len = 9;
 		vec[1].iov_base = status;
 		vec[1].iov_len = strlen(status);
@@ -668,7 +662,7 @@ entity_send(fde, entity, cb, data, flags)
 		vec[1].iov_len = 1;
 		vec[2].iov_base = entity->he_rdata.request.path;
 		vec[2].iov_len = strlen(entity->he_rdata.request.path);
-		vec[3].iov_base = " HTTP/1.0\r\n";
+		vec[3].iov_base = " HTTP/1.1\r\n";
 		vec[3].iov_len = 11;
 		if (writev(fde->fde_fd, vec, 4) < 0) {
 			entity->_he_func(entity, entity->_he_cbdata, -1);
@@ -692,9 +686,6 @@ entity_send_headers_done(fde, data, res)
 {
 struct	http_entity	*entity = data;
 	int		 wn_flags = 0;
-
-	if (entity->he_flags.immed)
-		wn_flags = WNET_IMMED;
 
 	wfree(entity->_he_hdrbuf);
 
@@ -739,8 +730,6 @@ struct	http_entity	*entity = data;
 	 * registers the fd as readable again..
 	 */ 
 	WDEBUG((WLOG_DEBUG, "entity_send_headers_done: source is FDE"));
-	/* FDE backended writes _cannot_ be immediate... */
-	assert(!entity->he_flags.immed);
 	entity->he_source.fde._wrt = entity->he_source.fde.len;
 	wnet_register(entity->he_source.fde.fde->fde_fd, FDE_READ, entity_send_fde_read, entity);
 	entity_send_fde_read(entity->he_source.fde.fde);

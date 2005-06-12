@@ -120,9 +120,6 @@ struct	backend_cb_data	*cbd;
 		return -1;
 	}
 
-	if (flags & WBE_IMMED)
-		wnet_set_blocking(s);
-
 	if (connect(s, (struct sockaddr *)&cbd->bc_backend->be_addr, sizeof(cbd->bc_backend->be_addr)) == 0) {
 		WDEBUG((WLOG_DEBUG, "get_backend: connection completed immediately"));
 		func(cbd->bc_backend, &fde_table[s], data);
@@ -131,6 +128,7 @@ struct	backend_cb_data	*cbd;
 	}
 
 	if (errno != EINPROGRESS) {
+		wnet_close(s);
 		wlog(WLOG_WARNING, "%s: %s", cbd->bc_backend->be_name, strerror(errno));
 		return -1;
 	}
