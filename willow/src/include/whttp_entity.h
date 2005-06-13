@@ -47,8 +47,6 @@ struct bufferevent;
 typedef void (*header_cb)(struct http_entity *, void *, int);
 typedef void (*cache_callback)(const char *, size_t, void *);
 
-#define HDR_ALLOCED	1
-
 struct header_list {
 const	char		*hl_name;
 const	char		*hl_value;
@@ -135,6 +133,7 @@ struct	bufferevent	*_he_tobuf;
 void entity_read_headers(struct http_entity *, header_cb, void *);
 void entity_send(struct fde *, struct http_entity *, header_cb, void *, int);
 void entity_free(struct http_entity *);
+void entity_set_response(struct http_entity *, int isresp);
 
 void header_add(struct header_list *, const char *, const char *);
 

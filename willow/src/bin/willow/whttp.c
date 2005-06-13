@@ -25,6 +25,7 @@
 #include <netdb.h>
 #include <fcntl.h>
 #include <strings.h>
+#include <assert.h>
 
 #include "willow.h"
 #include "whttp.h"
@@ -86,6 +87,7 @@ struct	http_entity	 cl_entity;	/* reply to send back			*/
 struct	cache_object	*cl_co;		/* Cache object				*/
 	struct {
 		int	f_cached:1;
+		int	f_closed:1;
 	}		 cl_flags;
 	size_t		 cl_dsize;	/* Object size				*/
 
@@ -93,6 +95,7 @@ struct	http_client	*fe_next;	/* freelist 				*/
 };
 
 static struct http_client freelist;
+static struct http_client deadlist;
 
 static void client_close(struct http_client *);
 static void proxy_start_backend(struct backend *, struct fde *, void *);
@@ -325,7 +328,7 @@ struct	header_list	*it;
 		}
 	}
 
-	header_add(&client->cl_entity.he_headers, "X-Forwarded-For", client->cl_fde->fde_straddr);
+	header_add(&client->cl_entity.he_headers, wstrdup("X-Forwarded-For"), wstrdup(client->cl_fde->fde_straddr));
 	/*
 	 * POST requests require Content-Length.
 	 */
@@ -369,7 +372,7 @@ struct	http_client	*client = data;
 	client->cl_entity.he_source.fde.fde = client->cl_backendfde;
 	client->cl_entity.he_source.fde.len = -1;
 	
-	client->cl_entity.he_flags.response = 1;
+	entity_set_response(&client->cl_entity, 1);
 
 	/*
 	 * This should probably be handled somewhere inside
@@ -416,8 +419,8 @@ struct	http_client	*client = data;
 		header_dump(&client->cl_entity.he_headers, client->cl_cfd);
 	}
 	
-	header_add(&client->cl_entity.he_headers, "Via", via_hdr);
-	header_add(&client->cl_entity.he_headers, "X-Cache", cache_miss_hdr);
+	header_add(&client->cl_entity.he_headers, wstrdup("Via"), wstrdup(via_hdr));
+	header_add(&client->cl_entity.he_headers, wstrdup("X-Cache"), wstrdup(cache_miss_hdr));
 	client->cl_entity.he_source.fde.len = -1;
 	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client, 0);
 }
@@ -449,10 +452,10 @@ struct	stat	 sb;
 	entity_free(&client->cl_entity);
 	bzero(&client->cl_entity, sizeof(client->cl_entity));
 	header_undump(&client->cl_entity.he_headers, client->cl_cfd, &client->cl_entity.he_source.fd.off);
-	header_add(&client->cl_entity.he_headers, "Via", via_hdr);
-	header_add(&client->cl_entity.he_headers, "X-Cache", cache_hit_hdr);
+	header_add(&client->cl_entity.he_headers, wstrdup("Via"), wstrdup(via_hdr));
+	header_add(&client->cl_entity.he_headers, wstrdup("X-Cache"), wstrdup(cache_hit_hdr));
 	
-	client->cl_entity.he_flags.response = 1;
+	entity_set_response(&client->cl_entity, 1);
 	client->cl_entity.he_rdata.response.status = 200;
 	client->cl_entity.he_rdata.response.status_str = "OK";
 			
@@ -498,6 +501,8 @@ client_close(client)
 	struct http_client *client;
 {
 	WDEBUG((WLOG_DEBUG, "close client %d", client->cl_fde->fde_fd));
+	assert(!client->cl_flags.f_closed);
+	client->cl_flags.f_closed = 1;
 	if (client->cl_wrtbuf)
 		wfree(client->cl_wrtbuf);
 	if (client->cl_path)
@@ -576,14 +581,15 @@ client_send_error(client, errnum, errdata)
 
 	client->cl_wrtbuf = u;
 	
+	header_free(&client->cl_entity.he_headers);
 	bzero(&client->cl_entity.he_headers, sizeof(client->cl_entity.he_headers));
-	header_add(&client->cl_entity.he_headers, "Date", current_time_str);
-	header_add(&client->cl_entity.he_headers, "Expires", current_time_str);
-	header_add(&client->cl_entity.he_headers, "Server", my_version);
-	header_add(&client->cl_entity.he_headers, "Content-Type", "text/html");
-	header_add(&client->cl_entity.he_headers, "Connection", "close");
+	header_add(&client->cl_entity.he_headers, wstrdup("Date"), wstrdup(current_time_str));
+	header_add(&client->cl_entity.he_headers, wstrdup("Expires"), wstrdup(current_time_str));
+	header_add(&client->cl_entity.he_headers, wstrdup("Server"), wstrdup(my_version));
+	header_add(&client->cl_entity.he_headers, wstrdup("Content-Type"), wstrdup("text/html"));
+	header_add(&client->cl_entity.he_headers, wstrdup("Connection"), wstrdup("close"));
 
-	client->cl_entity.he_flags.response = 1;
+	entity_set_response(&client->cl_entity, 1);
 	client->cl_entity.he_rdata.response.status = 503;
 	client->cl_entity.he_rdata.response.status_str = "Service unavailable";
 	client->cl_entity.he_source_type = ENT_SOURCE_BUFFER;

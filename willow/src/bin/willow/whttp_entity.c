@@ -104,15 +104,42 @@ void
 entity_free(entity)
 	struct http_entity *entity;
 {
-	if (!entity->he_flags.response)
-		if (entity->he_rdata.request.path)
-			wfree(entity->he_rdata.request.path);
 	header_free(&entity->he_headers);
 	if (entity->_he_frombuf)
 		bufferevent_free(entity->_he_frombuf);
 	if (entity->_he_tobuf)
 		bufferevent_free(entity->_he_tobuf);
+	if (entity->he_reqstr)
+		wfree(entity->he_reqstr);
+	if (!entity->he_flags.response) {
+		if (entity->he_rdata.request.host)
+			wfree(entity->he_rdata.request.host);
+		if (entity->he_rdata.request.path)
+			wfree(entity->he_rdata.request.path);
+	}
 	bzero(entity, sizeof(*entity));
+}
+
+void
+entity_set_response(ent, isresp)
+	struct http_entity *ent;
+	int isresp;
+{
+	if (isresp) {
+		if (ent->he_flags.response)
+			return;
+		if (ent->he_rdata.request.path)
+			wfree(ent->he_rdata.request.path);
+		if (ent->he_rdata.request.host)
+			wfree(ent->he_rdata.request.host);
+		bzero(&ent->he_rdata.response, sizeof(ent->he_rdata.response));
+		ent->he_flags.response = 1;
+	} else {
+		if (!ent->he_flags.response)
+			return;
+		bzero(&ent->he_rdata.request, sizeof(ent->he_rdata.request));
+		ent->he_flags.response = 0;
+	}
 }
 
 void
@@ -144,9 +171,10 @@ entity_send(fde, entity, cb, data, flags)
 	void *data;
 	int flags;
 {
-	char	 status[4];
-	int	 wn_flags = 0;
-	char	*hdr;
+	char		 status[4];
+	int		 wn_flags = 0;
+	char		*hdr;
+struct	header_list	*hl;
 
 	entity->_he_func = cb;
 	entity->_he_cbdata = data;
@@ -173,9 +201,13 @@ entity_send(fde, entity, cb, data, flags)
 	}
 		
 	
-	hdr = header_build(&entity->he_headers);
-	bufferevent_write(entity->_he_tobuf, hdr, strlen(hdr));
-	wfree(hdr);
+	//hdr = header_build(&entity->he_headers);
+	//bufferevent_write(entity->_he_tobuf, hdr, strlen(hdr));
+	//wfree(hdr);
+	for (hl = entity->he_headers.hl_next; hl; hl = hl->hl_next)
+		evbuffer_add_printf(entity->_he_tobuf->output, "%s: %s\r\n", hl->hl_name, hl->hl_value);
+	bufferevent_write(entity->_he_tobuf, "\r\n", 2);
+
 //	entity_read_callback(entity->_he_frombuf, entity);
 }
 
@@ -268,24 +300,28 @@ struct	http_entity	*entity = d;
 			}
 		}
 
-		if (entity->_he_chunk_size)
+		if (entity->_he_chunk_size) {
 			want = entity->_he_chunk_size;
 
-		read = bufferevent_read(entity->_he_frombuf, buf, want);
-		WDEBUG((WLOG_DEBUG, "rw %d, got %d", want, read));
-		if (read == 0)
-			break;	/* No more data */
+			read = bufferevent_read(entity->_he_frombuf, buf, want);
+			WDEBUG((WLOG_DEBUG, "rw %d, got %d", want, read));
+			if (read == 0)
+				break;	/* No more data */
 		
-		if (entity->_he_chunk_size)
 			entity->_he_chunk_size -= read;
 
-		/*
-		 * Cache callback - used to allow whttp to cache the data while it's being written.
-		 */
-		if (entity->he_cache_callback) {
-			entity->he_cache_callback(buf, read, entity->he_cache_callback_data);
+			if (entity->he_cache_callback) {
+				entity->he_cache_callback(buf, read, entity->he_cache_callback_data);
+			}
+			bufferevent_write(entity->_he_tobuf, buf, read);
+		} else {
+			if (entity->he_cache_callback) {
+				entity->he_cache_callback(entity->_he_frombuf->input->buffer,
+					entity->_he_frombuf->input->off, entity->he_cache_callback_data);
+			}
+			if (bufferevent_write_buffer(entity->_he_tobuf, entity->_he_frombuf->input) == 0)
+				break;
 		}
-		bufferevent_write(entity->_he_tobuf, buf, read);
 	}
 
 	bufferevent_disable(entity->_he_frombuf, EV_READ);
@@ -454,8 +490,8 @@ struct	header_list	*next = head->hl_next;
 	while (next) {
 		struct header_list *this = next;
 		next = this->hl_next;
-		if (this->hl_flags & HDR_ALLOCED)
-			wfree((char *)this->hl_name);
+		wfree((char *)this->hl_name);
+		wfree((char *)this->hl_value);
 		wfree(this);
 	}
 
@@ -574,7 +610,6 @@ struct	header_list	*it = head;
 	
 	*len = 0;
 	bzero(head, sizeof(*head));
-	head->hl_flags |= HDR_ALLOCED;
 	if ((r = read(fd, &n, sizeof(n))) < 0) {
 		wlog(WLOG_WARNING, "reading cache file: %s", strerror(errno));
 		return -1; /* XXX */
@@ -604,8 +639,7 @@ struct	header_list	*it = head;
 		s += k;
 		*s = '\0';
 		it->hl_name = n;
-		it->hl_value = v;
-		it->hl_flags = HDR_ALLOCED;
+		it->hl_value = wstrdup(v);
 		head->hl_len += i + j + 4;
 	}
 	

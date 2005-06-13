@@ -223,7 +223,7 @@ wcache_release(obj, comp)
 		if (!obj->co_complete)
 			state.cs_size += obj->co_size;
 		obj->co_complete = 1;
-	} else {
+	} else if (!obj->co_complete) {
 		wcache_evict(obj);
 	}
 }

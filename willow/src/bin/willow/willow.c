@@ -456,7 +456,7 @@ struct	alloc_entry	*ae;
 		}
 	}
 
-	(void)fprintf(stderr, "wfree: ptr %p never malloced!\n", p);
+	(void)fprintf(stderr, "wfree: ptr %p never malloced! [%s:%d]\n", p, file, line);
 	ae_checkleaks();
 	abort();
 }
