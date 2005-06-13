@@ -240,7 +240,7 @@ client_read_done(entity, data, res)
 {
 struct	http_client	*client = data;
 struct	cache_object	*cobj;
-struct	header_list	*pragma, *cache_control;
+struct	header_list	*pragma, *cache_control, *ifmod;
 	int		 cacheable = 1;
 
 	WDEBUG((WLOG_DEBUG, "client_read_done: called"));
@@ -314,6 +314,26 @@ struct	header_list	*pragma, *cache_control;
 		else
 			client->cl_co = wcache_find_object(client->cl_path, &client->cl_cfd,
 				WCACHE_WRONLY);
+
+		if (cacheable && client->cl_co && client->cl_co->co_time && 
+		    (ifmod = header_find(&client->cl_entity.he_headers, "If-Modified-Since"))) {
+			char *s;
+			time_t t;
+			struct tm m;
+			s = strptime(ifmod->hl_value, "%a, %d %b %Y %H:%M:%S", &m);
+			if (s) {
+				t = mktime(&m);
+				WDEBUG((WLOG_DEBUG, "if-mod: %d, last-mod: %d", t, client->cl_co->co_time));
+				if (t >= client->cl_co->co_time) {
+					/*
+					 * Not modified
+					 */
+					client_send_error(client, -1, NULL, 304, "Not modified (#10.3.5)");
+					return;
+				}
+			}
+		}
+
 		if (client->cl_co && client->cl_co->co_complete) {
 			WDEBUG((WLOG_DEBUG, "client_read_done: object %s cached", client->cl_path));
 			client_write_cached(client);
@@ -459,10 +479,25 @@ struct	http_client	*client = data;
 	    || !config.ncaches || !client->cl_co) {
 		if (client->cl_co)
 			wcache_release(client->cl_co, 0);
-	} else {
+	} else if (client->cl_co) {
+		struct header_list *lastmod;
+
 		entity->he_cache_callback = do_cache_write;
 		entity->he_cache_callback_data = client;
 		header_dump(&client->cl_entity.he_headers, client->cl_cfd);
+
+		/*
+		 * Look for last-modified
+		 */
+		if (lastmod = header_find(&client->cl_entity.he_headers, "Last-Modified")) {
+			struct tm tim;
+			char *res;
+			res = strptime(lastmod->hl_value, "%a, %d %b %Y %H:%M:%S", &tim);
+			if (res) {
+				WDEBUG((WLOG_DEBUG, "last-modified: %d", mktime(&tim)));
+				client->cl_co->co_time = mktime(&tim);
+			}
+		}
 	}
 	
 	header_add(&client->cl_entity.he_headers, wstrdup("Via"), wstrdup(via_hdr));
@@ -626,84 +661,94 @@ client_send_error(client, errnum, errdata, status, statstr)
 	char		*p = errbuf, *u;
 	ssize_t		 size;
 	
-	if ((errfile = fopen(error_files[errnum], "r")) == NULL) {
-		client_close(client);
-		return;
-	}
+	if (client->cl_co)
+		wcache_release(client->cl_co, 0);
 
-	if ((size = fread(errbuf, 1, sizeof(errbuf) - 1, errfile)) < 0) {
-		(void)fclose(errfile);
-		client_close(client);
-		return;
-	}
-
-	(void)fclose(errfile);
-	errbuf[size] = '\0';
-
-	if (!errdata)
-		errdata = "Unknown error";
-	if (!client->cl_path)
-		client->cl_path = wstrdup("NONE");
-
-	u = NULL;
-
-	while (*p) {
-		switch(*p) {
-		case '%':
-			switch (*++p) {
-			case 'U':
-				realloc_strcat(&u, client->cl_path);
-				break;
-			case 'D':
-				realloc_strcat(&u, current_time_str);
-				break;
-			case 'H':
-				realloc_strcat(&u, my_hostname);
-				break;
-			case 'E':
-				realloc_strcat(&u, errdata);
-				break;
-			case 'V':
-				realloc_strcat(&u, my_version);
-				break;
-			case 'C': {
-				char *s = wmalloc(4);
-				sprintf(s, "%d", status);
-				realloc_strcat(&u, s);
-				wfree(s);
-				break;
-			}
-			case 'S':
-				realloc_strcat(&u, statstr);
-				break;
-			default:
-				break;
-			}
-			p++;
-			continue;
-		default:
-			realloc_addchar(&u, *p);
-			break;
+	if (errnum >= 0) {
+		if ((errfile = fopen(error_files[errnum], "r")) == NULL) {
+			client_close(client);
+			return;
 		}
-		++p;
+
+		if ((size = fread(errbuf, 1, sizeof(errbuf) - 1, errfile)) < 0) {
+			(void)fclose(errfile);
+			client_close(client);
+			return;
+		}
+
+		(void)fclose(errfile);
+		errbuf[size] = '\0';
+
+		if (!errdata)
+			errdata = "Unknown error";
+		if (!client->cl_path)
+			client->cl_path = wstrdup("NONE");
+
+		u = NULL;
+
+		while (*p) {
+			switch(*p) {
+			case '%':
+				switch (*++p) {
+				case 'U':
+					realloc_strcat(&u, client->cl_path);
+					break;
+				case 'D':
+					realloc_strcat(&u, current_time_str);
+					break;
+				case 'H':
+					realloc_strcat(&u, my_hostname);
+					break;
+				case 'E':
+					realloc_strcat(&u, errdata);
+					break;
+				case 'V':
+					realloc_strcat(&u, my_version);
+					break;
+				case 'C': {
+					char *s = wmalloc(4);
+					sprintf(s, "%d", status);
+					realloc_strcat(&u, s);
+					wfree(s);
+					break;
+				}
+				case 'S':
+					realloc_strcat(&u, statstr);
+					break;
+				default:
+					break;
+				}
+				p++;
+				continue;
+			default:
+				realloc_addchar(&u, *p);
+				break;
+			}
+			++p;
+		}
+
+
+		client->cl_wrtbuf = u;
 	}
 
-	client->cl_wrtbuf = u;
-	
 	header_free(&client->cl_entity.he_headers);
 	bzero(&client->cl_entity.he_headers, sizeof(client->cl_entity.he_headers));
 	header_add(&client->cl_entity.he_headers, wstrdup("Date"), wstrdup(current_time_str));
 	header_add(&client->cl_entity.he_headers, wstrdup("Expires"), wstrdup(current_time_str));
 	header_add(&client->cl_entity.he_headers, wstrdup("Server"), wstrdup(my_version));
-	header_add(&client->cl_entity.he_headers, wstrdup("Content-Type"), wstrdup("text/html"));
 	header_add(&client->cl_entity.he_headers, wstrdup("Connection"), wstrdup("close"));
 
 	entity_set_response(&client->cl_entity, 1);
 	client->cl_entity.he_rdata.response.status = status;
 	client->cl_entity.he_rdata.response.status_str = statstr;
-	client->cl_entity.he_source_type = ENT_SOURCE_BUFFER;
-	client->cl_entity.he_source.buffer.addr = client->cl_wrtbuf;
-	client->cl_entity.he_source.buffer.len = strlen(client->cl_wrtbuf);
+	if (errnum >= 0) {
+		header_add(&client->cl_entity.he_headers, wstrdup("Content-Type"), wstrdup("text/html"));
+		client->cl_entity.he_source_type = ENT_SOURCE_BUFFER;
+		client->cl_entity.he_source.buffer.addr = client->cl_wrtbuf;
+		client->cl_entity.he_source.buffer.len = strlen(client->cl_wrtbuf);
+	} else {
+		client->cl_entity.he_source_type = ENT_SOURCE_NONE;
+	}
 
 	client->cl_entity.he_flags.cachable = 0;
 	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client, 0);
