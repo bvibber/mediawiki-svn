@@ -182,6 +182,10 @@ struct	header_list	*hl;
 	entity->_he_cbdata = data;
 	entity->_he_target = fde;
 	entity->he_flags.hdr_only = 0;
+	if (!entity->he_flags.response && entity->he_rdata.request.reqtype == REQTYPE_POST) {
+		entity->he_source.fde._wrt = entity->he_rdata.request.contlen;
+	}
+
 	entity->_he_tobuf = bufferevent_new(entity->_he_target->fde_fd,
 		NULL, entity_send_target_write,
 		entity_send_target_error, entity);
@@ -259,7 +263,7 @@ struct	http_entity	*entity = d;
 	int		 i;
 #define RD_BUFSZ	 16386
 	char		 buf[RD_BUFSZ];
-	int		 wrote = 0;
+	int		 wrote = 0, contdone = 0;
 
 	/*
 	 * Data was available from the backend.  If state is ENTITY_STATE_SEND_BODY,
@@ -351,10 +355,17 @@ struct	http_entity	*entity = d;
 			entity->_he_chunk_size += 2;
 		}
 
+		want = RD_BUFSZ;
+		if (entity->_he_chunk_size)
+			want = entity->_he_chunk_size;
+		else if (entity->he_source.fde._wrt)
+			want = entity->_he_chunk_size;
+
 		want = entity->_he_chunk_size ? entity->_he_chunk_size : RD_BUFSZ;
 
 		read = bufferevent_read(entity->_he_frombuf, buf, want);
-		WDEBUG((WLOG_DEBUG, "rw %d, got %d wrote=%d", want, read, wrote));
+		WDEBUG((WLOG_DEBUG, "rw %d, got %d wrote=%d wrt=%d", want, read, wrote,
+				entity->he_source.fde._wrt));
 		if (read == 0) {
 			if (!wrote)
 				bufferevent_enable(entity->_he_frombuf, EV_READ);
@@ -365,6 +376,12 @@ struct	http_entity	*entity = d;
 		
 		if (entity->_he_chunk_size)
 			entity->_he_chunk_size -= read;
+		if (entity->he_source.fde._wrt) {
+			entity->he_source.fde._wrt -= read;
+			if (entity->he_source.fde._wrt == 0)
+				contdone = 1;
+		}
+
 		if ((entity->he_te & TE_CHUNKED) && entity->_he_chunk_size == 0)
 			/* subtract the +2 we added above */
 			read -= 2;
@@ -381,6 +398,12 @@ struct	http_entity	*entity = d;
 		if (entity->he_flags.chunked)
 			evbuffer_add_printf(entity->_he_tobuf->output, "\r\n");
 		wrote++;
+		if (contdone) {
+			bufferevent_disable(entity->_he_frombuf, EV_READ);
+			//entity->_he_func(entity, entity->_he_cbdata, 0);
+			entity->he_flags.eof = 1;
+			return;
+		}
 	}
 
 	bufferevent_disable(entity->_he_frombuf, EV_READ);
