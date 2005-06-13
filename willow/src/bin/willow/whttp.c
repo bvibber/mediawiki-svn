@@ -534,7 +534,53 @@ struct	http_client	*client = data;
 	}
 	
 	if (client->cl_co) {
-		wcache_release(client->cl_co, (res != -1));
+		int complete = (res != -1);
+		struct header_list *hdr;
+
+		/*
+		 * The server may have indicated that we shouldn't cache this document.
+		 * If so, release it in an incomplete state so it gets evicted.
+		 */
+
+		/*
+		 * HTTP/1.0 Pragma
+		 */
+		hdr = header_find(&client->cl_entity.he_headers, "Pragma");
+		if (hdr) {
+			char **pragmas = wstrvec(hdr->hl_value, ",", 0);
+			char **s;
+			for (s = pragmas; *s; ++s) {
+				if (!strcasecmp(*s, "no-cache")) {
+					complete = 0;
+					break;
+				}
+			}
+			wstrvecfree(pragmas);
+		}
+
+		/*
+		 * HTTP/1.1 Cache-Control
+		 */
+		hdr = header_find(&client->cl_entity.he_headers, "Cache-Control");
+		if (hdr) {
+			char **controls = wstrvec(hdr->hl_value, ",", 0);
+			char **s;
+			for (s = controls; *s; ++s) {
+				/*
+				 * According to the standard, we can still cache no-cache
+				 * documents, but we have to revalidate them on every request.
+				 */
+				if (!strcasecmp(*s, "no-cache") ||
+				    !strcasecmp(*s, "private") ||
+				    !strcasecmp(*s, "no-store")) {
+					complete = 0;
+					break;
+				}
+			}
+			wstrvecfree(controls);
+		}
+
+		wcache_release(client->cl_co, complete);
 	}
 	
 	client_log_request(client);
