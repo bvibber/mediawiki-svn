@@ -306,8 +306,13 @@ struct	header_list	*pragma, *cache_control;
 	/*
 	 * Check for cached object.
 	 */
-	if (cacheable && client->cl_reqtype == REQTYPE_GET) {
-		client->cl_co = wcache_find_object(client->cl_path, &client->cl_cfd);
+	if (client->cl_reqtype == REQTYPE_GET) {
+		if (cacheable)
+			client->cl_co = wcache_find_object(client->cl_path, &client->cl_cfd,
+				WCACHE_RDWR);
+		else
+			client->cl_co = wcache_find_object(client->cl_path, &client->cl_cfd,
+				WCACHE_WRONLY);
 		if (client->cl_co && client->cl_co->co_complete) {
 			WDEBUG((WLOG_DEBUG, "client_read_done: object %s cached", client->cl_path));
 			client_write_cached(client);

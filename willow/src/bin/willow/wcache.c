@@ -240,16 +240,22 @@ wcache_evict(obj)
 }
 
 struct cache_object *
-wcache_find_object(key, fd)
+wcache_find_object(key, fd, flags)
 	const char *key;
-	int *fd;
+	int *fd, flags;
 {
 struct	cache_object	*co;
 
 	WDEBUG((WLOG_DEBUG, "wcache_find_object: looking for %s", key));
 	co = idx_find(key);
+
 	if (co) {
-		WDEBUG((WLOG_DEBUG, "trying %s, comp=%d", co->co_key, co->co_complete));
+		/*
+		 * If they only want it for writing, fail if it exists
+		 */
+		if (flags & WCACHE_WRONLY)
+			return NULL;
+
 		if (!strcmp(key, co->co_key)) {
 			if (!co->co_complete) {
 				return NULL;

@@ -17,6 +17,9 @@
 
 #define WCACHE_FREE	1
 
+#define WCACHE_WRONLY	0x1
+#define WCACHE_RDWR	0x2
+
 /*
  * Information about the current cache state, stored in the null key
  * (length 0).
@@ -47,7 +50,7 @@ void wcache_shutdown(void);
 void state_lock(void);
 void state_unlock(void);
 
-struct cache_object *wcache_find_object(const char *key, int *);
+struct cache_object *wcache_find_object(const char *key, int *, int);
 void wcache_release(struct cache_object *, int complete);
 
 #endif
