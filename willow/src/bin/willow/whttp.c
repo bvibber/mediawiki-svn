@@ -461,7 +461,7 @@ struct	stat	 sb;
 	header_undump(&client->cl_entity.he_headers, client->cl_cfd, &client->cl_entity.he_source.fd.off);
 	header_add(&client->cl_entity.he_headers, wstrdup("Via"), wstrdup(via_hdr));
 	header_add(&client->cl_entity.he_headers, wstrdup("X-Cache"), wstrdup(cache_hit_hdr));
-	if (!header_has(&client->cl_entity.he_headers, "Content-Length")) {
+	if (!header_find(&client->cl_entity.he_headers, "Content-Length")) {
 		safe_snprintf(sizeof size, (size, sizeof size, "%d", client->cl_co->co_size));
 		header_add(&client->cl_entity.he_headers, wstrdup("Content-Length"), wstrdup(size));
 	}

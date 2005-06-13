@@ -205,9 +205,12 @@ struct	header_list	*hl;
 	}
 		
 	if (flags & ENT_CHUNKED_OKAY) {
+		struct header_list *contlen;
 		entity->he_flags.chunked = 1;
-		if (!header_has(&entity->he_headers, "Transfer-Encoding"))
+		if (!header_find(&entity->he_headers, "Transfer-Encoding"))
 			header_add(&entity->he_headers, wstrdup("Transfer-Encoding"), wstrdup("chunked"));
+		if (contlen = header_find(&entity->he_headers, "Content-Length"))
+			header_remove(&entity->he_headers, contlen);
 	}
 
 	for (hl = entity->he_headers.hl_next; hl; hl = hl->hl_next)
@@ -230,6 +233,13 @@ struct	http_entity	*entity = d;
 		/*
 		 * End of file from backend.
 		 */
+		if (entity->he_flags.chunked && !entity->he_flags.eof) {
+			WDEBUG((WLOG_DEBUG, "writing chunked data, append EOF"));
+			entity->he_flags.eof = 1;
+			bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+			bufferevent_write(entity->_he_tobuf, "0\r\n", 3);
+			return;
+		}
 		WDEBUG((WLOG_DEBUG, "entity_error_callback: EOF"));
 		entity->_he_func(entity, entity->_he_cbdata, 1);
 		//entity->he_flags.eof = 1;
@@ -355,7 +365,7 @@ struct	http_entity	*entity = d;
 		
 		if (entity->_he_chunk_size)
 			entity->_he_chunk_size -= read;
-		if (entity->_he_chunk_size == 0)
+		if ((entity->he_te & TE_CHUNKED) && entity->_he_chunk_size == 0)
 			/* subtract the +2 we added above */
 			read -= 2;
 
@@ -560,7 +570,7 @@ struct	header_list	*next = head->hl_next;
 void
 header_add(head, name, value)
 	struct header_list *head;
-	const char *name, *value;
+	char *name, *value;
 {
 struct	header_list	*new = head;
 
@@ -593,11 +603,13 @@ struct	header_list	*jt;
 	jt->hl_next = jt->hl_next->hl_next;
 	if (it == head->hl_tail)
 		head->hl_tail = jt;
+	wfree(it->hl_name);
+	wfree(it->hl_value);
 	wfree(it);
 }
 
-int
-header_has(head, name)
+struct header_list *
+header_find(head, name)
 	struct header_list *head;
 	const char *name;
 {
@@ -605,8 +617,8 @@ struct	header_list	*it;
 
 	for (it = head->hl_next; it; it = it->hl_next)
 		if (!strcasecmp(name, it->hl_name))
-			return 1;
-	return 0;
+			return it;
+	return NULL;
 }
 
 #ifdef __lint

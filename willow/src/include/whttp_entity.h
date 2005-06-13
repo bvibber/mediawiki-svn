@@ -50,8 +50,8 @@ typedef void (*header_cb)(struct http_entity *, void *, int);
 typedef void (*cache_callback)(const char *, size_t, void *);
 
 struct header_list {
-const	char		*hl_name;
-const	char		*hl_value;
+	char		*hl_name;
+	char		*hl_value;
 struct	header_list	*hl_next;
 struct	header_list	*hl_tail;
 	int		 hl_len;
@@ -142,13 +142,13 @@ void entity_send(struct fde *, struct http_entity *, header_cb, void *, int);
 void entity_free(struct http_entity *);
 void entity_set_response(struct http_entity *, int isresp);
 
-void header_add(struct header_list *, const char *, const char *);
+void header_add(struct header_list *, char *, char *);
 
 void header_free(struct header_list *);
 char *header_build(struct header_list *);
 void header_remove(struct header_list *, struct header_list *);
 void header_dump(struct header_list *, int);
 int header_undump(struct header_list *, int, off_t *);
-int header_has(struct header_list *, const char *);
+struct header_list *header_find(struct header_list *, const char *);
 
 #endif
