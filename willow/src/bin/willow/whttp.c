@@ -107,7 +107,8 @@ static void client_headers_done(struct http_entity *, void *, int);
 static void client_write_cached(struct http_client *);
 static int removable_header(const char *);
 
-static void client_send_error(struct http_client *, int, const char *);
+static void client_send_error(struct http_client *, int errcode, const char *error,
+				int status, const char *statusstr);
 static void client_log_request(struct http_client *);
 
 static void do_cache_write(const char *, size_t, void *);
@@ -245,7 +246,7 @@ struct	header_list	*pragma, *cache_control;
 	WDEBUG((WLOG_DEBUG, "client_read_done: called"));
 
 	if (res < -1) {
-		client_send_error(client, ERR_BADREQUEST, ent_errors[-res]);
+		client_send_error(client, ERR_BADREQUEST, ent_errors[-res], 400, "Bad request (#10.4.1)");
 		return;
 	}
 	
@@ -325,7 +326,8 @@ struct	header_list	*pragma, *cache_control;
 	 * Not cached.  Find a backend.
 	 */
 	if (get_backend(proxy_start_backend, client, 0) == -1) {
-		client_send_error(client, ERR_GENERAL, strerror(errno));
+		client_send_error(client, ERR_GENERAL, strerror(errno), 503, 
+			"Service unavailable (#10.5.4)");
 		return;
 	}
 }
@@ -346,7 +348,8 @@ struct	header_list	*it;
 	WDEBUG((WLOG_DEBUG, "proxy_start_backend: called; for client=%d backend=%d", client->cl_fde->fde_fd, e->fde_fd));
 	
 	if (backend == NULL) {
-		client_send_error(client, ERR_GENERAL, strerror(errno));
+		client_send_error(client, ERR_GENERAL, strerror(errno), 503, 
+			"Service unavailable (#10.5.4)");
 		return;
 	}
 	
@@ -355,7 +358,8 @@ struct	header_list	*it;
 
 	getsockopt(e->fde_fd, SOL_SOCKET, SO_ERROR, &error, &len);
 	if (error) {
-		client_send_error(client, ERR_GENERAL, strerror(error));
+		client_send_error(client, ERR_GENERAL, strerror(error), 503, 
+			"Service unavailable (#10.5.4)");
 		return;
 	}
 
@@ -373,7 +377,8 @@ struct	header_list	*it;
 	 */
 	if (client->cl_reqtype == REQTYPE_POST) {
 		if (client->cl_entity.he_rdata.request.contlen == -1) {
-			client_send_error(client, ERR_BADREQUEST, "POST request without Content-Length");
+			client_send_error(client, ERR_BADREQUEST, "POST request without Content-Length",
+						411, "Length required (#10.4.12)");
 			return;
 		}
 		
@@ -401,7 +406,8 @@ struct	http_client	*client = data;
 	
 	WDEBUG((WLOG_DEBUG, "backend_headers_done: called"));
 	if (res == -1) {
-		client_send_error(client, ERR_GENERAL, strerror(errno));
+		client_send_error(client, ERR_GENERAL, strerror(errno), 503,
+			"Service unavailable (#10.5.4)");
 		return;
 	}
 	
@@ -439,7 +445,8 @@ struct	http_client	*client = data;
 		client_close(client);
 		return;
 	} else if (res < -1) {
-		client_send_error(client, ERR_GENERAL, ent_errors[-res]);
+		client_send_error(client, ERR_GENERAL, ent_errors[-res], 503,
+			"Service unavailable (#10.5.4)");
 		return;
 	}
 	
@@ -483,7 +490,8 @@ struct	stat	 sb;
 
 	if (fstat(client->cl_cfd, &sb) < 0) {
 		wlog(WLOG_WARNING, "stat(%s): %s", cache_path, strerror(errno));
-		client_send_error(client, ERR_CACHE_IO, strerror(errno));
+		client_send_error(client, ERR_CACHE_IO, strerror(errno),
+			500, "Internal server error (#10.5.1)");
 		wfree(cache_path);
 		return;
 	}
@@ -608,10 +616,10 @@ client_close(client)
 }
 
 static void
-client_send_error(client, errnum, errdata)
+client_send_error(client, errnum, errdata, status, statstr)
 	struct http_client *client;
-	int errnum;
-	const char *errdata;
+	int errnum, status;
+	const char *errdata, *statstr;
 {
 	FILE		*errfile;
 	char		 errbuf[8192];
@@ -658,6 +666,16 @@ client_send_error(client, errnum, errdata)
 			case 'V':
 				realloc_strcat(&u, my_version);
 				break;
+			case 'C': {
+				char *s = wmalloc(4);
+				sprintf(s, "%d", status);
+				realloc_strcat(&u, s);
+				wfree(s);
+				break;
+			}
+			case 'S':
+				realloc_strcat(&u, statstr);
+				break;
 			default:
 				break;
 			}
@@ -681,8 +699,8 @@ client_send_error(client, errnum, errdata)
 	header_add(&client->cl_entity.he_headers, wstrdup("Connection"), wstrdup("close"));
 
 	entity_set_response(&client->cl_entity, 1);
-	client->cl_entity.he_rdata.response.status = 503;
-	client->cl_entity.he_rdata.response.status_str = "Service unavailable";
+	client->cl_entity.he_rdata.response.status = status;
+	client->cl_entity.he_rdata.response.status_str = statstr;
 	client->cl_entity.he_source_type = ENT_SOURCE_BUFFER;
 	client->cl_entity.he_source.buffer.addr = client->cl_wrtbuf;
 	client->cl_entity.he_source.buffer.len = strlen(client->cl_wrtbuf);
