@@ -239,6 +239,8 @@ client_read_done(entity, data, res)
 {
 struct	http_client	*client = data;
 struct	cache_object	*cobj;
+struct	header_list	*pragma, *cache_control;
+	int		 cacheable = 1;
 
 	WDEBUG((WLOG_DEBUG, "client_read_done: called"));
 
@@ -274,10 +276,37 @@ struct	cache_object	*cobj;
 	
 	client->cl_reqtype = client->cl_entity.he_rdata.request.reqtype;
 
+	pragma = header_find(&client->cl_entity.he_headers, "Pragma");
+	cache_control = header_find(&client->cl_entity.he_headers, "Cache-control");
+
+	if (pragma) {
+		char **pragmas = wstrvec(pragma->hl_value, ",", 0);
+		char **s;
+		for (s = pragmas; *s; ++s) {
+			if (!strcasecmp(*s, "no-cache")) {
+				cacheable = 0;
+				break;
+			}
+		}
+		wstrvecfree(pragmas);
+	}
+
+	if (cache_control) {
+		char **cache_controls = wstrvec(cache_control->hl_value, ",", 0);
+		char **s;
+		for (s = cache_controls; *s; ++s) {
+			if (!strcasecmp(*s, "no-cache")) {
+				cacheable = 0;
+				break;
+			}
+		}
+		wstrvecfree(cache_controls);
+	}
+
 	/*
 	 * Check for cached object.
 	 */
-	if (client->cl_reqtype == REQTYPE_GET) {
+	if (cacheable && client->cl_reqtype == REQTYPE_GET) {
 		client->cl_co = wcache_find_object(client->cl_path, &client->cl_cfd);
 		if (client->cl_co && client->cl_co->co_complete) {
 			WDEBUG((WLOG_DEBUG, "client_read_done: object %s cached", client->cl_path));

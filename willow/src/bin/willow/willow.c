@@ -237,8 +237,10 @@ wstrvec(str, sep, lim)
 	char	*s;
 const	char	*st = str;
 
-	while (--lim && (s = strstr(st, sep))) {
+	while ((!lim || --lim) && (s = strstr(st, sep))) {
 		result = wrealloc(result, ++nres * sizeof(char *));
+		while (isspace(*st))
+			st++;
 		result[nres - 1] = wmalloc((s - st) + 1);
 		memcpy(result[nres - 1], st, s - st);
 		result[nres - 1][s - st] = '\0';
@@ -246,6 +248,8 @@ const	char	*st = str;
 	}
 
 	result = wrealloc(result, ++nres * sizeof(char *));
+	while (isspace(*st))
+		st++;
 	result[nres - 1] = wstrdup(st);
 
 	result = wrealloc(result, (nres + 1) * sizeof(char *));
