@@ -1,6 +1,6 @@
 PROGRAM = willow
 BINDIR = @bindir@
-CPPFLAGS = -DLIBEXECDIR=\"@libexecdir@\" -DDATADIR=\"@datadir@\"
+CPPFLAGS = -DLIBEXECDIR=\"@libexecdir@\" -DDATADIR=\"@datadir@\" -DSYSCONFDIR=\"@sysconfdir@\"
 
 BASESRCS = willow.c wconfig.c whttp.c wbackend.c whttp_entity.c wcache.c confparse.c
 SRCS=$(BASESRCS)

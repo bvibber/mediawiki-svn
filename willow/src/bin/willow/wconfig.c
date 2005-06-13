@@ -29,7 +29,7 @@
 #include "wlog.h"
 #include "confparse.h"
 
-#define CONFIGFILE "./willow.conf"
+#define CONFIGFILE SYSCONFDIR "/willow.conf"
 
 int yyparse();
 

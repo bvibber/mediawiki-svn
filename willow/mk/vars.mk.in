@@ -36,6 +36,7 @@ _BINDIR=	$(ALTROOT)@bindir@
 _LIBDIR=	$(ALTROOT)@libdir@
 _DATADIR=	$(ALTROOT)@datadir@
 _LIBEXECDIR=	$(ALTROOT)@libexecdir@
+_SYSCONFDIR=	$(ALTROOT)@sysconfdir@
 
 DISTDEST=	@abs_top_srcdir@/$(PACKAGE)-$(VERSION)
 
