@@ -35,6 +35,8 @@
 
 #define TE_CHUNKED	0x1	/* Chunked encoding			*/
 
+#define ENT_CHUNKED_OKAY	0x1
+
 extern const char *ent_errors[];
 
 #define MAX_HEADERS	64	/* maximum # of headers to allow	*/
@@ -68,6 +70,7 @@ struct http_entity {
 		struct {
 			int	 reqtype;
 			char	*path;
+			int	 httpmaj, httpmin;
 			/*
 			 * Interesting headers.
 			 */
@@ -107,6 +110,7 @@ struct	header_list	 he_headers;
 		int	 hdr_only:1;
 		int	 eof:1;
 		int	 drained:1;
+		int	 chunked:1;
 	}		 he_flags;
 
 	int		 he_te;		/* transfer encoding */

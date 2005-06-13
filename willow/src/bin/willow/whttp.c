@@ -88,6 +88,7 @@ struct	cache_object	*cl_co;		/* Cache object				*/
 	struct {
 		int	f_cached:1;
 		int	f_closed:1;
+		int	f_http11:1;	/* Client understands HTTP/1.1		*/
 	}		 cl_flags;
 	size_t		 cl_dsize;	/* Object size				*/
 
@@ -251,6 +252,10 @@ struct	cache_object	*cobj;
 		return;
 	}
 	
+	if (client->cl_entity.he_rdata.request.httpmaj >= 1 &&
+	    client->cl_entity.he_rdata.request.httpmin >= 1)
+		client->cl_flags.f_http11 = 1;
+
 	if (client->cl_entity.he_rdata.request.host == NULL)
 		client->cl_path = wstrdup(client->cl_entity.he_rdata.request.path);
 	else {
@@ -422,7 +427,8 @@ struct	http_client	*client = data;
 	header_add(&client->cl_entity.he_headers, wstrdup("Via"), wstrdup(via_hdr));
 	header_add(&client->cl_entity.he_headers, wstrdup("X-Cache"), wstrdup(cache_miss_hdr));
 	client->cl_entity.he_source.fde.len = -1;
-	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client, 0);
+	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client,
+			client->cl_flags.f_http11 ? ENT_CHUNKED_OKAY : 0);
 }
 
 /*

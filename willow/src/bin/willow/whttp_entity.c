@@ -204,15 +204,15 @@ struct	header_list	*hl;
 			entity->he_rdata.request.path);
 	}
 		
-	
-	//hdr = header_build(&entity->he_headers);
-	//bufferevent_write(entity->_he_tobuf, hdr, strlen(hdr));
-	//wfree(hdr);
+	if (flags & ENT_CHUNKED_OKAY) {
+		entity->he_flags.chunked = 1;
+		if (!header_has(&entity->he_headers, "Transfer-Encoding"))
+			header_add(&entity->he_headers, wstrdup("Transfer-Encoding"), wstrdup("chunked"));
+	}
+
 	for (hl = entity->he_headers.hl_next; hl; hl = hl->hl_next)
 		evbuffer_add_printf(entity->_he_tobuf->output, "%s: %s\r\n", hl->hl_name, hl->hl_value);
 	bufferevent_write(entity->_he_tobuf, "\r\n", 2);
-
-//	entity_read_callback(entity->_he_frombuf, entity);
 }
 
 static void
@@ -286,6 +286,16 @@ struct	http_entity	*entity = d;
 
 	bufferevent_enable(entity->_he_tobuf, EV_WRITE);
 
+	if (entity->he_flags.eof) {
+		/*
+		 * This means the last chunk was written (see below).
+		 */
+		bufferevent_disable(entity->_he_frombuf, EV_READ);
+		entity->_he_func(entity, entity->_he_cbdata, 0);
+		bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+		return;
+	}
+
 	/*
 	 * While data is available, read it and forward.  If we're using chunked encoding,
 	 * don't read past the end of the chunk.
@@ -307,15 +317,28 @@ struct	http_entity	*entity = d;
 			if (entity->_he_chunk_size == 0) {
 				/*
 				 * Zero-sized chunk = end of request.
+				 *
+				 * If this client is receiving TE:chunked data, we have to write
+				 * the terminating block and finish up the next time round.  If 
+				 * not, mark it finished now.
 				 */
 				
 				entity->he_flags.eof = 1;
-				bufferevent_disable(entity->_he_frombuf, EV_READ);
-				if (!wrote)
-					entity->_he_func(entity, entity->_he_cbdata, 0);
-				bufferevent_enable(entity->_he_tobuf, EV_WRITE);
-				return;
+				if (entity->he_flags.chunked) {
+					bufferevent_disable(entity->_he_frombuf, EV_READ);
+					bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+					bufferevent_write(entity->_he_tobuf, "0\r\n", 3);
+					return;
+				} else {
+					bufferevent_disable(entity->_he_frombuf, EV_READ);
+					if (!wrote)
+						entity->_he_func(entity, entity->_he_cbdata, 0);
+					bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+					return;
+				}
 			}
+			/* +2 for CRLF */
+			entity->_he_chunk_size += 2;
 		}
 
 		want = entity->_he_chunk_size ? entity->_he_chunk_size : RD_BUFSZ;
@@ -332,13 +355,21 @@ struct	http_entity	*entity = d;
 		
 		if (entity->_he_chunk_size)
 			entity->_he_chunk_size -= read;
+		if (entity->_he_chunk_size == 0)
+			/* subtract the +2 we added above */
+			read -= 2;
+
 		entity->he_size += read;
 
 		if (entity->he_cache_callback) {
 			entity->he_cache_callback(buf, read, entity->he_cache_callback_data);
 		}
 		bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+		if (entity->he_flags.chunked)
+			evbuffer_add_printf(entity->_he_tobuf->output, "%x\r\n", read);
 		bufferevent_write(entity->_he_tobuf, buf, read);
+		if (entity->he_flags.chunked)
+			evbuffer_add_printf(entity->_he_tobuf->output, "\r\n");
 		wrote++;
 	}
 
@@ -856,8 +887,9 @@ parse_reqtype(entity)
 	}
 
 	/* HTTP/1.0 */
-	/*
-	 * Ignore this for now...
-	 */
+	if (sscanf(s, "HTTP/%d.%d", &entity->he_rdata.request.httpmaj,
+			&entity->he_rdata.request.httpmin) != 2)
+		return -1;
+
 	return 0;
 }
