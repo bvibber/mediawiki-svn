@@ -106,6 +106,7 @@ struct	header_list	 he_headers;
 		int	 error:1;
 		int	 hdr_only:1;
 		int	 eof:1;
+		int	 drained:1;
 	}		 he_flags;
 
 	int		 he_te;		/* transfer encoding */

@@ -236,6 +236,7 @@ wstrvec(str, sep, lim)
 	int	 nres = 0;
 	char	*s;
 const	char	*st = str;
+
 	while (--lim && (s = strstr(st, sep))) {
 		result = wrealloc(result, ++nres * sizeof(char *));
 		result[nres - 1] = wmalloc((s - st) + 1);

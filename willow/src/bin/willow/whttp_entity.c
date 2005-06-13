@@ -176,6 +176,8 @@ entity_send(fde, entity, cb, data, flags)
 	char		*hdr;
 struct	header_list	*hl;
 
+	errno = 0;
+
 	entity->_he_func = cb;
 	entity->_he_cbdata = data;
 	entity->_he_target = fde;
@@ -185,8 +187,10 @@ struct	header_list	*hl;
 		entity_send_target_error, entity);
 	bufferevent_disable(entity->_he_tobuf, EV_READ);
 	bufferevent_enable(entity->_he_tobuf, EV_WRITE);
-	if (entity->_he_frombuf)
+	if (entity->_he_frombuf) {
 		bufferevent_disable(entity->_he_frombuf, EV_READ);
+		bufferevent_disable(entity->_he_frombuf, EV_WRITE);
+	}
 	entity->_he_state = ENTITY_STATE_SEND_HDR;
 
 	WDEBUG((WLOG_DEBUG, "entity_send: writing to %d [%s]", fde->fde_fd, fde->fde_desc));
@@ -219,13 +223,16 @@ struct	http_entity	*entity = d;
 	/*
 	 * Some kind of error occured while we were reading from the backend.
 	 */
-	WDEBUG((WLOG_DEBUG, "entity_error_callback called, what=%hd", what));
+	WDEBUG((WLOG_DEBUG, "entity_error_callback called, what=%hd errno=%d %s", what,
+			errno, strerror(errno)));
+
 	if (what & EVBUFFER_EOF) {
 		/*
 		 * End of file from backend.
 		 */
 		WDEBUG((WLOG_DEBUG, "entity_error_callback: EOF"));
 		entity->_he_func(entity, entity->_he_cbdata, 1);
+		//entity->he_flags.eof = 1;
 		return;
 	}
 
@@ -242,6 +249,7 @@ struct	http_entity	*entity = d;
 	int		 i;
 #define RD_BUFSZ	 16386
 	char		 buf[RD_BUFSZ];
+	int		 wrote = 0;
 
 	/*
 	 * Data was available from the backend.  If state is ENTITY_STATE_SEND_BODY,
@@ -271,6 +279,13 @@ struct	http_entity	*entity = d;
 
 	assert(entity->_he_state == ENTITY_STATE_SEND_BODY);
 
+	if (entity->he_flags.eof) {
+		entity->_he_func(entity, entity->_he_cbdata, 0);
+		return;
+	}
+
+	bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+
 	/*
 	 * While data is available, read it and forward.  If we're using chunked encoding,
 	 * don't read past the end of the chunk.
@@ -293,27 +308,34 @@ struct	http_entity	*entity = d;
 				/*
 				 * Zero-sized chunk = end of request.
 				 */
+				
 				entity->he_flags.eof = 1;
 				bufferevent_disable(entity->_he_frombuf, EV_READ);
-//				entity->_he_func(entity, entity->_he_cbdata, 0);
+				if (!wrote)
+					entity->_he_func(entity, entity->_he_cbdata, 0);
+				bufferevent_enable(entity->_he_tobuf, EV_WRITE);
 				return;
 			}
 		}
 
-		if (entity->_he_chunk_size) {
-			want = entity->_he_chunk_size;
+		if (!(entity->he_te & TE_CHUNKED) || entity->_he_chunk_size) {
+			want = entity->_he_chunk_size ? entity->_he_chunk_size : RD_BUFSZ;
 
 			read = bufferevent_read(entity->_he_frombuf, buf, want);
 			WDEBUG((WLOG_DEBUG, "rw %d, got %d", want, read));
-			if (read == 0)
-				break;	/* No more data */
+			if (read == 0) {
+				bufferevent_enable(entity->_he_frombuf, EV_READ);
+				return;
+			}
 		
-			entity->_he_chunk_size -= read;
+			if (entity->_he_chunk_size)
+				entity->_he_chunk_size -= read;
 
 			if (entity->he_cache_callback) {
 				entity->he_cache_callback(buf, read, entity->he_cache_callback_data);
 			}
 			bufferevent_write(entity->_he_tobuf, buf, read);
+			wrote++;
 		} else {
 			if (entity->he_cache_callback) {
 				entity->he_cache_callback(entity->_he_frombuf->input->buffer,
@@ -321,6 +343,7 @@ struct	http_entity	*entity = d;
 			}
 			if (bufferevent_write_buffer(entity->_he_tobuf, entity->_he_frombuf->input) == 0)
 				break;
+			wrote++;
 		}
 	}
 
@@ -341,6 +364,8 @@ entity_send_target_write(struct bufferevent *buf, void *d)
 {
 struct	http_entity	*entity = d;
 
+	WDEBUG((WLOG_DEBUG, "entity_send_target_write: eof=%d", entity->he_flags.eof));
+
 	if (entity->he_flags.eof) {
 		bufferevent_disable(entity->_he_frombuf, EV_READ);
 		entity->_he_func(entity, entity->_he_cbdata, 0);
@@ -357,13 +382,13 @@ struct	http_entity	*entity = d;
 		switch (entity->he_source_type) {
 		case ENT_SOURCE_NONE:
 			/* no body for this request */
-			WDEBUG((WLOG_DEBUG, "entity_send_headers_done: no body, return immediately"));
+			WDEBUG((WLOG_DEBUG, "entity_send_target_write: no body, return immediately"));
 			entity->_he_func(entity, entity->_he_cbdata, 0);
 			return;
 		
 		case ENT_SOURCE_BUFFER:
 			/* write buffer, callback when done */
-			WDEBUG((WLOG_DEBUG, "entity_send_headers_done: source is buffer, %d bytes", 
+			WDEBUG((WLOG_DEBUG, "entity_send_target_write: source is buffer, %d bytes", 
 					entity->he_source.buffer.len));
 			entity->_he_state = ENTITY_STATE_SEND_BUF;
 			bufferevent_write(entity->_he_tobuf,
@@ -396,12 +421,17 @@ struct	http_entity	*entity = d;
 		return;
 	}
 
-	WDEBUG((WLOG_DEBUG, "entity_send_write_callback"));
+	WDEBUG((WLOG_DEBUG, "entity_send_target_write: FDE"));
+
 	/*
 	 * Otherwise, we're sending from an FDE, and the last write completed.
 	 */
 	bufferevent_enable(entity->_he_frombuf, EV_READ);
-	//entity_read_callback(entity->_he_frombuf, entity);
+	bufferevent_disable(entity->_he_tobuf, EV_WRITE);
+	if (!entity->he_flags.drained) {
+		entity->he_flags.drained = 1;
+		entity_read_callback(entity->_he_frombuf, entity);
+	}
 }
 
 static void
