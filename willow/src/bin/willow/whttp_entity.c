@@ -318,37 +318,31 @@ struct	http_entity	*entity = d;
 			}
 		}
 
-		if (!(entity->he_te & TE_CHUNKED) || entity->_he_chunk_size) {
-			want = entity->_he_chunk_size ? entity->_he_chunk_size : RD_BUFSZ;
+		want = entity->_he_chunk_size ? entity->_he_chunk_size : RD_BUFSZ;
 
-			read = bufferevent_read(entity->_he_frombuf, buf, want);
-			WDEBUG((WLOG_DEBUG, "rw %d, got %d", want, read));
-			if (read == 0) {
+		read = bufferevent_read(entity->_he_frombuf, buf, want);
+		WDEBUG((WLOG_DEBUG, "rw %d, got %d wrote=%d", want, read, wrote));
+		if (read == 0) {
+			if (!wrote)
 				bufferevent_enable(entity->_he_frombuf, EV_READ);
-				return;
-			}
-		
-			if (entity->_he_chunk_size)
-				entity->_he_chunk_size -= read;
-
-			if (entity->he_cache_callback) {
-				entity->he_cache_callback(buf, read, entity->he_cache_callback_data);
-			}
-			bufferevent_write(entity->_he_tobuf, buf, read);
-			wrote++;
-		} else {
-			if (entity->he_cache_callback) {
-				entity->he_cache_callback(entity->_he_frombuf->input->buffer,
-					entity->_he_frombuf->input->off, entity->he_cache_callback_data);
-			}
-			if (bufferevent_write_buffer(entity->_he_tobuf, entity->_he_frombuf->input) == 0)
-				break;
-			wrote++;
+			else
+				bufferevent_disable(entity->_he_frombuf, EV_READ);
+			return;
 		}
+		
+		if (entity->_he_chunk_size)
+			entity->_he_chunk_size -= read;
+		entity->he_size += read;
+
+		if (entity->he_cache_callback) {
+			entity->he_cache_callback(buf, read, entity->he_cache_callback_data);
+		}
+		bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+		bufferevent_write(entity->_he_tobuf, buf, read);
+		wrote++;
 	}
 
 	bufferevent_disable(entity->_he_frombuf, EV_READ);
-	bufferevent_enable(entity->_he_tobuf, EV_WRITE);
 }
 
 static void
@@ -569,6 +563,19 @@ struct	header_list	*jt;
 	if (it == head->hl_tail)
 		head->hl_tail = jt;
 	wfree(it);
+}
+
+int
+header_has(head, name)
+	struct header_list *head;
+	const char *name;
+{
+struct	header_list	*it;
+
+	for (it = head->hl_next; it; it = it->hl_next)
+		if (!strcasecmp(name, it->hl_name))
+			return 1;
+	return 0;
 }
 
 #ifdef __lint

@@ -435,7 +435,8 @@ client_write_cached(client)
 	size_t	 plen;
 	char	*cache_path;
 struct	stat	 sb;
-	
+	char	 size[64];
+
 	plen = strlen(config.caches[0].dir) + client->cl_co->co_plen + 12 + 2;
 	if ((cache_path = wcalloc(1, plen + 1)) == NULL)
 		outofmemory();
@@ -454,7 +455,11 @@ struct	stat	 sb;
 	header_undump(&client->cl_entity.he_headers, client->cl_cfd, &client->cl_entity.he_source.fd.off);
 	header_add(&client->cl_entity.he_headers, wstrdup("Via"), wstrdup(via_hdr));
 	header_add(&client->cl_entity.he_headers, wstrdup("X-Cache"), wstrdup(cache_hit_hdr));
-	
+	if (!header_has(&client->cl_entity.he_headers, "Content-Length")) {
+		safe_snprintf(sizeof size, (size, sizeof size, "%d", client->cl_co->co_size));
+		header_add(&client->cl_entity.he_headers, wstrdup("Content-Length"), wstrdup(size));
+	}
+
 	entity_set_response(&client->cl_entity, 1);
 	client->cl_entity.he_rdata.response.status = 200;
 	client->cl_entity.he_rdata.response.status_str = "OK";

@@ -119,6 +119,8 @@ struct	header_list	 he_headers;
 	cache_callback	 he_cache_callback;
 	void		*he_cache_callback_data;
 	
+	size_t		 he_size;
+
 	/*
 	 * This is internal to whttp_entity.  Don't touch it.
 	 */
@@ -143,5 +145,6 @@ char *header_build(struct header_list *);
 void header_remove(struct header_list *, struct header_list *);
 void header_dump(struct header_list *, int);
 int header_undump(struct header_list *, int, off_t *);
+int header_has(struct header_list *, const char *);
 
 #endif
