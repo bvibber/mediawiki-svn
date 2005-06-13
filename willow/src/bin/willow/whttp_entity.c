@@ -615,6 +615,26 @@ struct	header_list	*new = head;
 }
 
 void
+header_append_last(head, append)
+	struct header_list *head;
+	const char *append;
+{
+struct	header_list	*last = head;
+	char		*cur;
+
+	assert(last->hl_next);
+
+	while (last->hl_next)
+		last = last->hl_next;
+
+	cur = last->hl_value;
+	last->hl_value = wmalloc(strlen(cur) + 1 + strlen(append) + 1);
+	sprintf(last->hl_value, "%s %s", cur, append);
+	wfree(cur);
+}
+
+	
+void
 header_remove(head, it)
 	struct header_list *head, *it;
 {
@@ -779,6 +799,19 @@ parse_headers(entity)
 			entity->_he_state = ENTITY_STATE_HDR;
 			break;
 		case ENTITY_STATE_HDR:
+			if (isspace(*line)) {
+				char *s = line;
+				if (!entity->he_headers.hl_next) {
+					free(line);
+					return -1;
+				}
+				while (isspace(*s))
+					s++;
+				header_append_last(&entity->he_headers, s);
+				free(line);
+				continue;
+			}
+
 			hdr = wstrvec(line, ":", 2);
 
 			if (!hdr[0] || !hdr[1]) {

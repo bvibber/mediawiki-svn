@@ -143,7 +143,7 @@ void entity_free(struct http_entity *);
 void entity_set_response(struct http_entity *, int isresp);
 
 void header_add(struct header_list *, char *, char *);
-
+void header_append_last(struct header_list *, const char *);
 void header_free(struct header_list *);
 char *header_build(struct header_list *);
 void header_remove(struct header_list *, struct header_list *);
