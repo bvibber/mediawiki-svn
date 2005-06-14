@@ -36,6 +36,18 @@ cache {
 	 */
 	expire_every = 1 hour;
 	expire_threshold = 5;
+
+	/*
+	 * Compress data if the client indicates it supports deflate or
+	 * gzip encoding.  Note that this has a large impact on raw
+	 * throughput when serving cached documents.
+	 *
+	 * compress_level should be between 1 (fastest, worst compression)
+	 * and 9 (slowest, best compression).  The default is 6.
+	 */
+        compress = yes;
+	compress_level = 6;
+
 };
 
 /*

@@ -38,6 +38,7 @@ struct	cachedir	*caches;
 	int		 cache_expthresh;
 	char		*suid, *sgid;
 	int		 compress;
+	int		 complevel;
 } config;
 
 void wconfig_init(const char *);

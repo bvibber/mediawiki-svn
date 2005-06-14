@@ -434,7 +434,7 @@ conf_end_log(tc)
 
 static int cache_expire_threshold = 25;
 static int cache_expire_every = 60;
-static int cache_compress;
+static int cache_compress, cache_complevel = 6;
 char *cache_user, *cache_group;
 
 static int
@@ -455,6 +455,11 @@ conf_end_cache(tc)
 	config.suid = cache_user;
 	config.sgid = cache_group;
 	config.compress = cache_compress;
+	if (cache_complevel < 1 || cache_complevel > 9) {
+		conf_report_error("cache::compress_level must be between 1 and 9");
+		nerrors++;
+	}
+	config.complevel = cache_complevel;
 	return 0;
 }
 
@@ -488,6 +493,7 @@ static struct conf_entry conf_cache_table[] = {
 	{ "user",		CF_STRING,	NULL, 0, &cache_user			},
 	{ "group",		CF_STRING,	NULL, 0, &cache_group			},
 	{ "compress",		CF_YESNO,	NULL, 0, &cache_compress		},
+	{ "compress_level",	CF_INT,		NULL, 0, &cache_complevel		},
 	{ NULL }
 };
 

@@ -67,6 +67,7 @@
 #include "whttp_entity.h"
 #include "wnet.h"
 #include "wlog.h"
+#include "wconfig.h"
 
 #define ENTITY_STATE_START	0
 #define ENTITY_STATE_HDR	1
@@ -240,8 +241,8 @@ struct	header_list	*hl;
 	case E_DEFLATE: case E_X_DEFLATE: {
 		int err;
 
-		if ((err = deflateInit2(&entity->_he_zbuf, 1 /*Z_DEFAULT_COMPRESSION*/, Z_DEFLATED,
-				window, 6, Z_DEFAULT_STRATEGY)) != Z_OK) {
+		if ((err = deflateInit2(&entity->_he_zbuf, config.complevel, Z_DEFLATED,
+				window, 8, Z_DEFAULT_STRATEGY)) != Z_OK) {
 			wlog(WLOG_WARNING, "deflateInit: %s", zError(err));
 			entity->he_encoding = E_NONE;
 		}
