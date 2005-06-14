@@ -4,6 +4,18 @@ WikiTeX %VERSION% NEWS
 .AU
 Peter Danenberg <pcd at wikitex dot org>
 .SH
+Mon Jun 13 19:44:31 PDT 2005	Peter Danenberg
+.RS
+.PP
+Added support for abc2ly, an abc to Lilypond converter,*
+.FS *
+\%http://www.gre.ac.uk/~c.walshaw/abc2mtex/abc.txt
+.FE
+under <abc>.
+.PP
+<graph> and <neato> are now capable of rendering links, and their source has been relegated to '[source]'.
+.RE
+.SH
 Thu Mar 10 01:26:39 PST 2005	Peter Danenberg
 .RS
 .PP
@@ -97,9 +109,9 @@ what we're looking  for,  however,  rather  than  look-ahead
 left-to-right parsing; i.e. top-down recursive descent.)
 .PP
 If  WikiTeX'  sum scope, on the other hand, resembles a
-glue-script with regular-expression grinding,*
-.FS *
-Raymond,  Eric  Steven.   The Art of Unix Programming (faqs.org/docs/artu).
+glue-script with regular-expression grinding,**
+.FS **
+Raymond,  Eric  Steven.  The Art of Unix Programming (catb.org/~esr/writings/taoup), chap. 14, sec. "Perl".
 .FE
 we might not need  to  look  past  Perl; PHP, in any case, just passes as
 lexer/parser: but we'd like something more robust and, above

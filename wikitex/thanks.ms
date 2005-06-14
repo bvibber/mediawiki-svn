@@ -20,5 +20,6 @@ Hugo Looyestijn	testing	phys.uu.nl
 Michel Hardy-Vallee	testing	mcgill.ca
 Jonathan Pennington	testing	oregonstate.edu
 Ales Hvezda	Scheme	seul.org
+Forrest Oliphant	testing	folktunes.org
 .TE
 .bp

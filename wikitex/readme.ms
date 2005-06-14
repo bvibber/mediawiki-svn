@@ -154,6 +154,7 @@ c c c c
 l l l l .
 Class	Package	Author	URL
 _
+abc	abc2ly	Han-Wen Nienhuys	lilypond.org
 amsmath	AMS-LaTeX	Amer. Math. Soc.	ams.org
 batik	SVG Java	Apache	apache.org
 chem	XyMTeX	Shinsaku Fujita	kit.ac.jp
@@ -165,6 +166,7 @@ greek	Ibycus	Pierre MacKay	tug.org
 ling	AVM	Christopher Manning	stanford.edu
 	Parsetree	Eirik Hektoen	essex.ac.uk
 music	Lilypond	Han-Wen Nienhuys	lilypond.org
+neato	Graphviz	Emden Gansner	research.att.com
 plot	Gnuplot	Nikos Drakos	gnuplot.info
 ppch	PPCH-TeX	Hans Hagen	pragma-ade.com
 svg	SVG lite	ImageMagick	imagemagick.org

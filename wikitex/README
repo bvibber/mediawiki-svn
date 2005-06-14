@@ -7,7 +7,7 @@
 
 
 
-                    WikiTeX 1.0.3 README
+                    WikiTeX 1.0.4 README
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -20,7 +20,7 @@
 
 
 
-10 March 2005
+13 June 2005
 
 
 
@@ -73,7 +73,7 @@
 
 
 
-                    WikiTeX 1.0.3 README
+                    WikiTeX 1.0.4 README
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -127,7 +127,7 @@ sion below.
 
 
 
-                        10 March 2005
+                        13 June 2005
 
 
 
@@ -193,7 +193,7 @@ sion below.
 
 
 
-                        10 March 2005
+                        13 June 2005
 
 
 
@@ -231,6 +231,7 @@ sion below.
 
       Class   Package        Author               URL
      --------------------------------------------------------
+     abc     abc2ly    Han-Wen Nienhuys     lilypond.org
      amsmath AMS-LaTeX Amer. Math. Soc.     ams.org
      batik   SVG Java  Apache               apache.org
      chem    XyMTeX    Shinsaku Fujita      kit.ac.jp
@@ -242,6 +243,7 @@ sion below.
      ling    AVM       Christopher Manning  stanford.edu
              Parsetree Eirik Hektoen        essex.ac.uk
      music   Lilypond  Han-Wen Nienhuys     lilypond.org
+     neato   Graphviz  Emden Gansner        research.att.com
      plot    Gnuplot   Nikos Drakos         gnuplot.info
      ppch    PPCH-TeX  Hans Hagen           pragma-ade.com
      svg     SVG lite  ImageMagick          imagemagick.org
@@ -250,16 +252,14 @@ sion below.
      tipa    TIPA      Rei Fukui            ctan.org
 
 
-          6.   Lastly, ensure that your server's $PATH vari-
-               able includes /usr/bin and /usr/local/bin, or
-               wherever your binaries are installed.
+
 -----------
   * Consult your server config for the appropriate
 user and group id.
 
 
 
-                        10 March 2005
+                        13 June 2005
 
 
 
@@ -267,6 +267,10 @@ user and group id.
 
                              -4-
 
+
+          6.   Lastly, ensure that your server's $PATH vari-
+               able includes /usr/bin and /usr/local/bin, or
+               wherever your binaries are installed.
 
           3.2.1.  Batik, gschem
 
@@ -313,11 +317,7 @@ user and group id.
           (http://subversion.tigris.org), our  collaborative
           development tool.
 
-     4.2.  Extending WikiTeX
 
-               Adding  novel  packages  to  WikiTeX  can  be
-          achieved in several discrete steps; after you have
-          downloaded and installed the package:
 
 -----------
   * VNC has been used to similar  ends,  but  with
@@ -325,7 +325,7 @@ added overhead and vulnerability.
 
 
 
-                        10 March 2005
+                        13 June 2005
 
 
 
@@ -333,6 +333,12 @@ added overhead and vulnerability.
 
                              -5-
 
+
+     4.2.  Extending WikiTeX
+
+               Adding  novel  packages  to  WikiTeX  can  be
+          achieved in several discrete steps; after you have
+          downloaded and installed the package:
 
           1.   Devise  a class name for the package, and add
                a template  to  /extensions/wikitex  in  this
@@ -385,13 +391,7 @@ added overhead and vulnerability.
 
 
 
-
-
-
-
-
-
-                        10 March 2005
+                        13 June 2005
 
 
 
@@ -457,6 +457,6 @@ view a copy of this license, see COPYING or visit:
 
 
 
-                        10 March 2005
+                        13 June 2005
 
 

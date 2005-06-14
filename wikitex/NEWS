@@ -7,10 +7,19 @@
 
 
 
-                     WikiTeX 1.0.3 NEWS
+                     WikiTeX 1.0.4 NEWS
 
           Peter Danenberg <pcd at wikitex dot org>
 
+
+Mon Jun 13 19:44:31 PDT 2005  Peter Danenberg
+
+          Added  support for abc2ly, an abc to Lilypond con-
+     verter,* under <abc>.
+
+          <graph>  and  <neato> are now capable of rendering
+     links,  and  their  source  has   been   relegated   to
+     '[source]'.
 
 Thu Mar 10 01:26:39 PST 2005  Peter Danenberg
 
@@ -47,6 +56,20 @@ Sun Feb  6 14:21:48 PST 2005  Peter Danenberg
      bundle  in  the  future, our release cycles can be dis-
      tinct.
 
+-----------
+  * http://www.gre.ac.uk/~c.walshaw/abc2mtex/abc.txt
+
+
+
+                        13 June 2005
+
+
+
+
+
+                             -2-
+
+
 Sat Jan 29 00:34:09 PST 2005  Peter Danenberg
 
           Changes almost too numerous to enumerate; but some
@@ -56,19 +79,6 @@ Sat Jan 29 00:34:09 PST 2005  Peter Danenberg
           tively
 
      o    Multi-page output for music, go and chess
-
-
-
-
-
-                        10 March 2005
-
-
-
-
-
-                             -2-
-
 
      o    More detailed, helpful error messages
 
@@ -113,6 +123,19 @@ Mon Sep  6 03:20:26 PDT 2004  Peter Danenberg
      cleared a major hurdle towards integration with  Media-
      Wiki; next on the list, parameters of the form:
 
+
+
+
+
+                        13 June 2005
+
+
+
+
+
+                             -3-
+
+
           <music tempo="80"></music>
 
      WikiTeX'  vulnerability  to  attack  must also be thor-
@@ -123,19 +146,6 @@ Sun May 30 00:00:00 PDT 2004  Peter Danenberg
           We're  refactoring WikiTeX from the ground  up  to
      implement tags of the form:
 
-
-
-
-
-                        10 March 2005
-
-
-
-
-
-                             -3-
-
-
           <class [parm: value]>content</class>
 
      and  likely  of  an  external  parser; where a lex/yacc
@@ -145,10 +155,10 @@ Sun May 30 00:00:00 PDT 2004  Peter Danenberg
      top-down recursive descent.)
 
           If  WikiTeX'  sum scope, on the other hand, resem-
-     bles  a  glue-script with regular-expression grinding,*
-     we might not need  to  look  past  Perl;  PHP,  in  any
-     case,  just passes as lexer/parser: but we'd like some-
-     thing more robust and, above all, to separate  applica-
+     bles a glue-script with regular-expression  grinding,**
+     we  might  not  need  to  look  past  Perl; PHP, in any
+     case, just passes as lexer/parser: but we'd like  some-
+     thing  more robust and, above all, to separate applica-
      tion from interface.
 
 
@@ -176,24 +186,14 @@ Sun May 30 00:00:00 PDT 2004  Peter Danenberg
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 -----------
-  * Raymond,  Eric  Steven.   The Art of Unix Pro-
-gramming (faqs.org/docs/artu).
+  ** Raymond,  Eric  Steven.  The Art of Unix Pro-
+gramming (catb.org/~esr/writings/taoup), chap. 14,
+sec. "Perl".
 
 
 
-                        10 March 2005
+                        13 June 2005
 
 
 
@@ -205,7 +205,7 @@ gramming (faqs.org/docs/artu).
 WikiTeX: expansible LaTeX module for MediaWiki
 Copyright (C) 2004-5  Peter Danenberg
 
-     WikiTeX  is licensed under the Artistic License 2.0; to
+     WikiTeX is licensed under the Artistic License 2.0;  to
 view a copy of this license, see COPYING or visit:
 
      http://dev.perl.org/perl6/rfc/346.html
@@ -259,6 +259,6 @@ view a copy of this license, see COPYING or visit:
 
 
 
-                        10 March 2005
+                        13 June 2005
 
 

@@ -38,6 +38,7 @@ Templates
 .RS
 .TS
 l l .
+wikitex.abc.inc.abc	abc2ly
 wikitex.batik.inc.svg	Batik toolkit
 wikitex.chem.inc.tex	XyMTeX
 wikitex.chess.inc.tex	Skak
@@ -49,6 +50,7 @@ wikitex.greek.inc.tex	Ibycus
 wikitex.ling.inc.tex	AVM, Parsetree
 wikitex.math.inc.tex	AMS-LaTeX
 wikitex.music.inc.tex	Lilypond
+wikitex.neato.inc.dot	Graphviz
 wikitex.plot.inc.p	Gnuplot
 wikitex.ppch.inc.tex	PPCH-TeX
 wikitex.schem.inc.svg	gEDA-gschem

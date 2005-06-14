@@ -19,6 +19,8 @@ OUT="${3}"
 EXT='.png'
 CHE='.cache'
 MID='.midi'
+LY='.ly'
+MAP='.map'
 ERR='<span class="errwikitex">WikiTeX: %s reported a failure, namely:</span><pre>%s</pre>\n';
 
 function wt_error() {
@@ -78,16 +80,26 @@ function go() {
 }
 
 function graph() {
-    wt_exec "dot -Tpng -o ${HASH}${EXT} ${HASH}"
-    wt_img "${OUT}${HASH}${EXT}"
-    wt_anch
+    wt_exec "graph -Tpng -o ${HASH}${EXT} ${HASH}"
+    wt_exec "graph -Tcmap -o ${HASH}${MAP} ${HASH}"
+    STR=$(printf '<map name="%s">%s</map>' "${HASH}" "$(<"${HASH}${MAP}")")
+    STR="${STR}"$(printf '<img src="%s" alt="%s" usemap="#%s"/>' "${OUT}${HASH}${EXT}" "${MOD}" "${HASH}")
+    STR="${STR}"$(printf '<a href="%s">[source]</a>' "${OUT}${HASH}")
+}
+
+function neato() {
+    wt_exec "command neato -Tpng -o ${HASH}${EXT} ${HASH}"
+    wt_exec "command neato -Tcmap -o ${HASH}${MAP} ${HASH}"
+    STR=$(printf '<map name="%s">%s</map>' "${HASH}" "$(<"${HASH}${MAP}")")
+    STR="${STR}"$(printf '<img src="%s" alt="%s" usemap="#%s"/>' "${OUT}${HASH}${EXT}" "${MOD}" "${HASH}")
+    STR="${STR}"$(printf '<a href="%s">[source]</a>' "${OUT}${HASH}")
 }
 
 function music() {
     wt_exec "lilypond --no-pdf --no-ps --png ${HASH}"
     for i in ${HASH}*${EXT}; do wt_exec "mogrify -trim ${i}"; wt_img "${OUT}${i}"; done
     wt_anch
-    STR="$STR"$(printf '<a href="%s">[listen]</a>' "${OUT}${HASH}${MID}")
+    STR="${STR}"$(printf '<a href="%s">[listen]</a>' "${OUT}${HASH}${MID}")
 }
 
 function plot() {
@@ -106,6 +118,14 @@ function schem() {
     wt_anch
 }
 
+function abc() {
+    wt_exec "abc2ly ${HASH}"
+    wt_exec "lilypond --no-pdf --no-ps --png ${HASH}"
+    for i in ${HASH}*${EXT}; do wt_exec "mogrify -crop +0-24! ${i}"; wt_exec "mogrify -trim ${i}"; wt_img "${OUT}${i}"; done
+    wt_anch
+    STR="${STR}"$(printf '<a href="%s">[listen]</a>' "${OUT}${HASH}${MID}")
+}
+
 # Check for module-specific functions; otherwise resort to generic.
 if [[ $(type -t "${MOD}") == 'function' ]]; then
     "${MOD}" "${HASH}" "${OUT}"
@@ -114,7 +134,7 @@ else
 fi
 
 # Clean up, but not on wt_error; and allow the examination of logs.
-find . -name "${HASH}*" ! -name "${HASH}" ! -name "${HASH}*${EXT}" ! -name "${HASH}${MID}" ! -name "${HASH}${CHE}" -exec rm {} \;
+find . -name "${HASH}*" ! -name "${HASH}" ! -name "${HASH}*${EXT}" ! -name "${HASH}${MID}" ! -name "${HASH}${MAP}" ! -name "${HASH}${CHE}" -exec rm {} \;
 
 # Cache
 echo "${STR}" > "${HASH}${CHE}"

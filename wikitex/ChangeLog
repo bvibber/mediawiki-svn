@@ -1,3 +1,10 @@
+2005-06-13  Peter Danenberg  <pcd at wikitex dot org>
+
+	* wikitex.php: fixed spurious <pre>'s by trimming
+	bash output.
+
+	* wikitex.sh: added <abc>, <neato>
+
 2005-03-10  Peter Danenberg  <pcd at wikitex dot org>
 
 	* manifest.ms: updated for skak

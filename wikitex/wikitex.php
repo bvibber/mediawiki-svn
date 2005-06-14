@@ -78,6 +78,8 @@ class objRend
 
       // specific security recommendations
       $arrBlack['music'] = array('#');
+
+      $arrBlack['abc'] = array('#');
     
       $arrBlack['plot'] = array('cd', 'call', 'exit', 'load', 'pause', 'print', 'pwd', 'quit', 'replot', 'reread', 'reset', 'save', 'shell', 'system', 'test', 'update', '!', 'path', 'historysize', 'mouse', 'out', 'term', 'file', '"', '\'');
 
@@ -178,9 +180,15 @@ class objRend
       if (!is_executable(substr($strBash, 0, strpos($strBash, ' ')))) {
 	return $arrErr['bash'];
       } else {
-	return shell_exec(sprintf($strBash, $strHash, $arr['class'], $strURI));
+	return trim(shell_exec(sprintf($strBash, $strHash, $arr['class'], $strURI)));
       }
     }
+}
+
+function strABC($str)
+{
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'abc'));
 }
 
 function strBatik($str)
@@ -235,6 +243,12 @@ function strMusic($str)
 {
   global $objRend;
   return $objRend->strRend($str, array('class' => 'music'));
+}
+
+function strNeato($str)
+{
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'neato'));
 }
 
 function strPlot($str)
