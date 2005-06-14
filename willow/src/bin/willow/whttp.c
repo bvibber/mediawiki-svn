@@ -241,17 +241,20 @@ client_read_done(entity, data, res)
 {
 struct	http_client	*client = data;
 struct	cache_object	*cobj;
-struct	header_list	*pragma, *cache_control, *ifmod;
+	char		*pragma, *cache_control, *ifmod;
 struct	qvalue_head	*acceptenc;
 struct	qvalue		*val;
 	int		 cacheable = 1;
 
-	WDEBUG((WLOG_DEBUG, "client_read_done: called"));
+	WDEBUG((WLOG_DEBUG, "client_read_done: called, res=%d"));
 
 	if (res < -1) {
 		client_send_error(client, ERR_BADREQUEST, ent_errors[-res], 400, "Bad request (#10.4.1)");
 		return;
 	} else if (res == -1) {
+		client_close(client);
+		return;
+	} else if (res == 1) {
 		client_close(client);
 		return;
 	}
@@ -278,11 +281,11 @@ struct	qvalue		*val;
 	
 	client->cl_reqtype = client->cl_entity.he_rdata.request.reqtype;
 
-	pragma = header_find(&client->cl_entity.he_headers, "Pragma");
-	cache_control = header_find(&client->cl_entity.he_headers, "Cache-control");
+	pragma = entity->he_h_pragma;
+	cache_control = entity->he_h_cache_control;
 
 	if (pragma) {
-		char **pragmas = wstrvec(pragma->hl_value, ",", 0);
+		char **pragmas = wstrvec(pragma, ",", 0);
 		char **s;
 		for (s = pragmas; *s; ++s) {
 			if (!strcasecmp(*s, "no-cache")) {
@@ -294,7 +297,7 @@ struct	qvalue		*val;
 	}
 
 	if (cache_control) {
-		char **cache_controls = wstrvec(cache_control->hl_value, ",", 0);
+		char **cache_controls = wstrvec(cache_control, ",", 0);
 		char **s;
 		for (s = cache_controls; *s; ++s) {
 			if (!strcasecmp(*s, "no-cache")) {
@@ -327,11 +330,11 @@ struct	qvalue		*val;
 				WCACHE_WRONLY);
 
 		if (cacheable && client->cl_co && client->cl_co->co_time && 
-		    (ifmod = header_find(&client->cl_entity.he_headers, "If-Modified-Since"))) {
+		    (ifmod = entity->he_h_if_modified_since)) {
 			char *s;
 			time_t t;
 			struct tm m;
-			s = strptime(ifmod->hl_value, "%a, %d %b %Y %H:%M:%S", &m);
+			s = strptime(ifmod, "%a, %d %b %Y %H:%M:%S", &m);
 			if (s) {
 				t = mktime(&m);
 				WDEBUG((WLOG_DEBUG, "if-mod: %d, last-mod: %d", t, client->cl_co->co_time));
@@ -491,7 +494,7 @@ struct	http_client	*client = data;
 		if (client->cl_co)
 			wcache_release(client->cl_co, 0);
 	} else if (client->cl_co) {
-		struct header_list *lastmod;
+		char *lastmod;
 
 		entity->he_cache_callback = do_cache_write;
 		entity->he_cache_callback_data = client;
@@ -500,10 +503,10 @@ struct	http_client	*client = data;
 		/*
 		 * Look for last-modified
 		 */
-		if (lastmod = header_find(&client->cl_entity.he_headers, "Last-Modified")) {
+		if (lastmod = entity->he_h_last_modified) {
 			struct tm tim;
 			char *res;
-			res = strptime(lastmod->hl_value, "%a, %d %b %Y %H:%M:%S", &tim);
+			res = strptime(lastmod, "%a, %d %b %Y %H:%M:%S", &tim);
 			if (res) {
 				WDEBUG((WLOG_DEBUG, "last-modified: %d", mktime(&tim)));
 				client->cl_co->co_time = mktime(&tim);
@@ -514,7 +517,8 @@ struct	http_client	*client = data;
 	header_add(&client->cl_entity.he_headers, wstrdup("Via"), wstrdup(via_hdr));
 	header_add(&client->cl_entity.he_headers, wstrdup("X-Cache"), wstrdup(cache_miss_hdr));
 	client->cl_entity.he_source.fde.len = -1;
-	client->cl_entity.he_encoding = client->cl_enc;
+	if (config.compress)
+		client->cl_entity.he_encoding = client->cl_enc;
 
 	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client,
 			client->cl_flags.f_http11 ? ENT_CHUNKED_OKAY : 0);
@@ -551,7 +555,7 @@ struct	stat	 sb;
 	header_undump(&client->cl_entity.he_headers, client->cl_cfd, &client->cl_entity.he_source.fd.off);
 	header_add(&client->cl_entity.he_headers, wstrdup("Via"), wstrdup(via_hdr));
 	header_add(&client->cl_entity.he_headers, wstrdup("X-Cache"), wstrdup(cache_hit_hdr));
-	if (!header_find(&client->cl_entity.he_headers, "Content-Length")) {
+	if (!client->cl_enc && !header_find(&client->cl_entity.he_headers, "Content-Length")) {
 		safe_snprintf(sizeof size, (size, sizeof size, "%d", client->cl_co->co_size));
 		header_add(&client->cl_entity.he_headers, wstrdup("Content-Length"), wstrdup(size));
 	}
@@ -562,7 +566,8 @@ struct	stat	 sb;
 			
 	client->cl_entity.he_source.fd.fd = client->cl_cfd;
 	client->cl_entity.he_source.fd.size = sb.st_size;
-	client->cl_entity.he_encoding = client->cl_enc;
+	if (config.compress)
+		client->cl_entity.he_encoding = client->cl_enc;
 
 	client->cl_entity.he_source_type = ENT_SOURCE_FILE;
 

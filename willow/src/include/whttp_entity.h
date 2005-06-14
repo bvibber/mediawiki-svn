@@ -99,6 +99,11 @@ struct http_entity {
 		} request;
 	}		 he_rdata;
 
+	char		*he_h_pragma;
+	char		*he_h_cache_control;
+	char		*he_h_transfer_encoding;
+	char		*he_h_if_modified_since;
+	char		*he_h_last_modified;
 	char		*he_reqstr;	
 struct	header_list	 he_headers;
 	int		 he_source_type;
@@ -175,6 +180,7 @@ enum	encoding	 accept_encoding	(const char *ent);
 	void		 header_remove		(struct header_list *, struct header_list *);
 	void		 header_dump		(struct header_list *, int);
 	int		 header_undump		(struct header_list *, int, off_t *);
-struct	header_list	*header_find		(struct header_list *, const char *);
+struct header_list * header_find(struct header_list *head, const char *name);
+
 
 #endif

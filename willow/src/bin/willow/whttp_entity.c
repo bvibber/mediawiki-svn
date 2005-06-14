@@ -75,6 +75,8 @@
 #define ENTITY_STATE_SEND_BODY	4
 #define ENTITY_STATE_SEND_BUF	5
 
+#define ZLIB_BLOCK	(1024 * 32)
+
 static void entity_error_callback(struct bufferevent *, short, void *);
 static void entity_read_callback(struct bufferevent *, void *);
 static int parse_headers(struct http_entity *);
@@ -224,7 +226,7 @@ struct	header_list	*hl;
 	if (flags & ENT_CHUNKED_OKAY) {
 		struct header_list *contlen;
 		entity->he_flags.chunked = 1;
-		if (!header_find(&entity->he_headers, "Transfer-Encoding"))
+		if (!entity->he_h_transfer_encoding)
 			header_add(&entity->he_headers, wstrdup("Transfer-Encoding"), wstrdup("chunked"));
 		if (contlen = header_find(&entity->he_headers, "Content-Length"))
 			header_remove(&entity->he_headers, contlen);
@@ -238,7 +240,7 @@ struct	header_list	*hl;
 	case E_DEFLATE: case E_X_DEFLATE: {
 		int err;
 
-		if ((err = deflateInit2(&entity->_he_zbuf, Z_DEFAULT_COMPRESSION, Z_DEFLATED,
+		if ((err = deflateInit2(&entity->_he_zbuf, 1 /*Z_DEFAULT_COMPRESSION*/, Z_DEFLATED,
 				window, 6, Z_DEFAULT_STRATEGY)) != Z_OK) {
 			wlog(WLOG_WARNING, "deflateInit: %s", zError(err));
 			entity->he_encoding = E_NONE;
@@ -308,6 +310,7 @@ write_zlib_eof(entity)
 
 	if (zerr != Z_STREAM_END) {
 		wlog(WLOG_WARNING, "deflate: %s", zError(zerr));
+		deflateEnd(&entity->_he_zbuf);
 		return -1;
 	}
 	n = sizeof zbuf - entity->_he_zbuf.avail_out;
@@ -321,6 +324,7 @@ write_zlib_eof(entity)
 		if (entity->he_flags.chunked)
 			evbuffer_add_printf(entity->_he_tobuf->output, "\r\n");
 	}
+	deflateEnd(&entity->_he_zbuf);
 	return 0;
 }
 
@@ -497,6 +501,8 @@ struct	http_entity	*entity;
 	void		*buf;
 	size_t		 len;
 {
+static	unsigned char zbuf[ZLIB_BLOCK * 2];
+
 	switch (entity->he_encoding) {
 	case E_NONE:
 		if (entity->he_flags.chunked)
@@ -507,7 +513,6 @@ struct	http_entity	*entity;
 		return 0;
 
 	case E_DEFLATE: case E_X_DEFLATE: case E_GZIP: case E_X_GZIP: {
-		unsigned char zbuf[16384];
 		int zerr;
 
 		entity->_he_zbuf.next_in = (unsigned char *)buf;
@@ -549,6 +554,7 @@ static void
 entity_send_target_write(struct bufferevent *buf, void *d)
 {
 struct	http_entity	*entity = d;
+static  char		 fbuf[ZLIB_BLOCK];
 
 	WDEBUG((WLOG_DEBUG, "entity_send_target_write: eof=%d, state=%d", 
 		entity->he_flags.eof, entity->_he_state));
@@ -625,7 +631,6 @@ struct	http_entity	*entity = d;
 		/*
 		 * We only get here if we're writing deflate data.
 		 */
-		char buf[16384];
 		ssize_t i;
 
 		WDEBUG((WLOG_DEBUG, "write file, eof=%d, size=%d, off=%d",
@@ -638,12 +643,12 @@ struct	http_entity	*entity = d;
 			return;
 		}
 
-		if ((i = read(entity->he_source.fd.fd, buf, sizeof buf)) == -1) {
+		if ((i = read(entity->he_source.fd.fd, fbuf, sizeof fbuf)) == -1) {
 			bufferevent_disable(entity->_he_tobuf, EV_WRITE);
 			entity->_he_func(entity, entity->_he_cbdata, -1);
 			return;
 		}
-		if (write_data(entity, buf, i) == -1) {
+		if (write_data(entity, fbuf, i) == -1) {
 			bufferevent_disable(entity->_he_tobuf, EV_WRITE);
 			entity->_he_func(entity, entity->_he_cbdata, -1);
 			return;
@@ -1041,6 +1046,21 @@ parse_headers(entity)
 					WDEBUG((WLOG_DEBUG, "a-e parse failed"));
 					goto error;
 				}
+			} else if (!strcasecmp(hdr[0], "Pragma")) {
+				entity->he_h_pragma = wstrdup(value);
+				header_add(&entity->he_headers, wstrdup(hdr[0]), entity->he_h_pragma);
+			} else if (!strcasecmp(hdr[0], "Cache-Control")) {
+				entity->he_h_cache_control = wstrdup(value);
+				header_add(&entity->he_headers, wstrdup(hdr[0]), entity->he_h_cache_control);
+			} else if (!strcasecmp(hdr[0], "If-Modified-Since")) {
+				entity->he_h_if_modified_since = wstrdup(value);
+				header_add(&entity->he_headers, wstrdup(hdr[0]), entity->he_h_if_modified_since);
+			} else if (!strcasecmp(hdr[0], "Transfer-Encoding")) {
+				entity->he_h_transfer_encoding = wstrdup(value);
+				header_add(&entity->he_headers, wstrdup(hdr[0]), entity->he_h_transfer_encoding);
+			} else if (!strcasecmp(hdr[0], "Last-Modified")) {
+				entity->he_h_last_modified = wstrdup(value);
+				header_add(&entity->he_headers, wstrdup(hdr[0]), entity->he_h_last_modified);
 			} else 
 				header_add(&entity->he_headers, wstrdup(hdr[0]), value);
 

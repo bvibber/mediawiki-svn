@@ -6,7 +6,7 @@ BASESRCS = willow.c wconfig.c whttp.c wbackend.c whttp_entity.c wcache.c confpar
 SRCS=$(BASESRCS)
 OBJADD = @LIBOBJS@ y.tab.o lex.yy.o
 
-EXTRA_DIST=wnet_poll.c wnet_ports.c wnet_kqueue.c wnet_epoll.c wnet_devpoll.c \
+EXTRA_DIST= strlcat.c strlcpy.c \
 	lexer.l parser.y \
 	daemon.c \
 	Makefile.in
