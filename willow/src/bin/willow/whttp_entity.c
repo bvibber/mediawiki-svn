@@ -118,11 +118,17 @@ void
 entity_free(entity)
 	struct http_entity *entity;
 {
+	WDEBUG((WLOG_DEBUG, "free entity @ %p", entity));
+
 	header_free(&entity->he_headers);
-	if (entity->_he_frombuf)
+	if (entity->_he_frombuf) {
+		bufferevent_disable(entity->_he_frombuf, EV_READ | EV_WRITE);
 		bufferevent_free(entity->_he_frombuf);
-	if (entity->_he_tobuf)
+	}
+	if (entity->_he_tobuf) {
+		bufferevent_disable(entity->_he_tobuf, EV_READ | EV_WRITE);
 		bufferevent_free(entity->_he_tobuf);
+	}
 	if (entity->he_reqstr)
 		wfree(entity->he_reqstr);
 	if (!entity->he_flags.response) {
@@ -359,14 +365,16 @@ struct	http_entity	*entity = d;
 		if (entity->_he_state == ENTITY_STATE_DONE) {
 			if (entity->he_flags.hdr_only) {
 				WDEBUG((WLOG_DEBUG, "entity_read_callback: client is ENTITY_STATE_DONE"));
+				bufferevent_disable(entity->_he_frombuf, EV_READ);
 				entity->_he_func(entity, entity->_he_cbdata, 0);
 				return;
 			} else
 				entity->_he_state = ENTITY_STATE_SEND_BODY;
 		}
+		bufferevent_disable(entity->_he_frombuf, EV_READ);
+		//if (entity->he_flags.hdr_only)
+			return;
 	}
-
-	assert(entity->_he_state == ENTITY_STATE_SEND_BODY);
 
 	if (entity->he_flags.eof) {
 		entity->_he_func(entity, entity->_he_cbdata, 0);
@@ -412,7 +420,7 @@ struct	http_entity	*entity = d;
 				 * not, mark it finished now.
 				 */
 				int more = 0;
-				
+
 				if (entity->he_encoding) {
 					bufferevent_enable(entity->_he_tobuf, EV_WRITE);
 					write_zlib_eof(entity);
@@ -434,7 +442,8 @@ struct	http_entity	*entity = d;
 				bufferevent_disable(entity->_he_frombuf, EV_READ);
 				if (!wrote)
 					entity->_he_func(entity, entity->_he_cbdata, 0);
-				bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+				else
+					bufferevent_enable(entity->_he_tobuf, EV_WRITE);
 				return;
 			}
 			/* +2 for CRLF */
@@ -563,6 +572,7 @@ static  char		 fbuf[ZLIB_BLOCK];
 	if (entity->he_flags.eof) {
 		if (entity->_he_frombuf)
 			bufferevent_disable(entity->_he_frombuf, EV_READ);
+		bufferevent_disable(entity->_he_tobuf, EV_WRITE);
 		entity->_he_func(entity, entity->_he_cbdata, 0);
 		return;
 	}
@@ -708,8 +718,6 @@ validhost(host)
 	const char *host;
 {
 	for (; *host; ++host) {
-		WDEBUG((WLOG_DEBUG, "char %c, char_table[%d] = %d", *host, 
-				(int)(unsigned char)*host, char_table[(unsigned char)*host]));
 		if (!(char_table[(unsigned char)*host] & CHAR_HOST))
 			return 0;
 	}

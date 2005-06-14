@@ -360,7 +360,8 @@ struct	qvalue		*val;
 	 * Not cached.  Find a backend.
 	 */
 	if (get_backend(proxy_start_backend, client, 0) == -1) {
-		client_send_error(client, ERR_GENERAL, strerror(errno), 503, 
+		client_send_error(client, ERR_GENERAL, 
+			"No backends were available to service your request", 503, 
 			"Service unavailable (#10.5.4)");
 		return;
 	}
@@ -661,10 +662,10 @@ client_close(client)
 		wfree(client->cl_wrtbuf);
 	if (client->cl_path)
 		wfree(client->cl_path);
+	entity_free(&client->cl_entity);
 	wnet_close(client->cl_fde->fde_fd);
 	if (client->cl_backendfde)
 		wnet_close(client->cl_backendfde->fde_fd);
-	entity_free(&client->cl_entity);
 	
 	client->fe_next = freelist.fe_next;
 	freelist.fe_next = client;

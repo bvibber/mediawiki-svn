@@ -143,8 +143,7 @@ struct	backend_cb_data	*cbd;
 			wlog(WLOG_WARNING, "%s: %s; retry in %d seconds", 
 				cbd->bc_backend->be_name, strerror(errno), config.backend_retry);
 			cbd->bc_backend->be_dead = 1;
-			cbd->bc_backend->be_time = retry;;
-			wfree(cbd);
+			cbd->bc_backend->be_time = retry;
 			continue;
 		}
 
@@ -163,11 +162,11 @@ struct	backend_cb_data	*cbd = e->fde_rdata;
 
 	getsockopt(e->fde_fd, SOL_SOCKET, SO_ERROR, &error, &len);
 
-	if (error) {
+	if (error && error != EINPROGRESS) {
 		time_t retry = time(NULL) + config.backend_retry;
 		wnet_close(e->fde_fd);
-		wlog(WLOG_WARNING, "%s: %s; retry in %d seconds", 
-			cbd->bc_backend->be_name, strerror(errno));
+		wlog(WLOG_WARNING, "%s: [%d] %s; retry in %d seconds", 
+			cbd->bc_backend->be_name, error, strerror(error), config.backend_retry);
 		cbd->bc_backend->be_dead = 1;
 		cbd->bc_backend->be_time = time(NULL) + config.backend_retry;
 		if (get_backend(cbd->bc_func, cbd->bc_data, 0) == -1) {
