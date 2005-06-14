@@ -246,7 +246,7 @@ struct	qvalue_head	*acceptenc;
 struct	qvalue		*val;
 	int		 cacheable = 1;
 
-	WDEBUG((WLOG_DEBUG, "client_read_done: called, res=%d"));
+	WDEBUG((WLOG_DEBUG, "client_read_done: called, res=%d", res));
 
 	if (res < -1) {
 		client_send_error(client, ERR_BADREQUEST, ent_errors[-res], 400, "Bad request (#10.4.1)");
