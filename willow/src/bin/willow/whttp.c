@@ -26,6 +26,7 @@
 #include <fcntl.h>
 #include <strings.h>
 #include <assert.h>
+#include <time.h>
 
 #include "willow.h"
 #include "whttp.h"
@@ -128,7 +129,7 @@ static FILE *alf;
 void
 whttp_init(void)
 {
-	size_t	hsize;
+	int	hsize;
 	
 	if (gethostname(my_hostname, MAXHOSTNAMELEN) < 0) {
 		perror("gethostname");
@@ -262,7 +263,7 @@ struct	qvalue		*val;
 	if (client->cl_entity.he_rdata.request.host == NULL)
 		client->cl_path = wstrdup(client->cl_entity.he_rdata.request.path);
 	else {
-		size_t	len;
+		int	len;
 		
 		len = strlen(client->cl_entity.he_rdata.request.host) +
 			strlen(client->cl_entity.he_rdata.request.path)	+ 7;

@@ -51,6 +51,13 @@ int daemon(int, int);
 typedef int socklen_t;
 #endif
 
+#ifndef HAVE_STRLCAT
+size_t strlcat(char *dst, const char *src, size_t siz);
+#endif
+#ifndef HAVE_STRLCPY
+size_t strlcpy(char *dst, const char *src, size_t siz);
+#endif
+
 void outofmemory(void);
 #ifdef __SUNPRO_C
 # pragma does_not_return(outofmemory)

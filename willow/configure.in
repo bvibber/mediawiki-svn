@@ -10,7 +10,7 @@ if test -z "$CC"; then
 fi
 
 gcc_common="-W -Wall -Wno-unused -g"
-debug_cflags_gcc="$gcc_common -Werror -O0"
+debug_cflags_gcc="$gcc_common -O0"
 prod_cflags_gcc="$gcc_common -O3"
 sunpro_common="-errshort=tags -errtags -mc -xc99"
 debug_cflags_sunpro="-g $sunpro_common -v -xs"

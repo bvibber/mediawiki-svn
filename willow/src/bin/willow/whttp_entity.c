@@ -81,6 +81,7 @@ static int parse_headers(struct http_entity *);
 static int parse_reqtype(struct http_entity *);
 static int validhost(const char *);
 static int via_includes_me(const char *);
+static int write_zlib_eof(struct http_entity *);
 
 static void entity_send_headers_done(struct fde *, void *, int);
 static void entity_send_fde_write_done(struct fde *, void *, int);
