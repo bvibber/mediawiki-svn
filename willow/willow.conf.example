@@ -48,6 +48,22 @@ cache {
         compress = yes;
 	compress_level = 6;
 
+	/*
+	 * If a backend is not available, wait this amount of time before
+	 * retrying it.
+	 */
+	backend_retry = 30 seconds;
+
+	/*
+	 * According to RFC2616, data marked as "private" should not be
+	 * stored by a proxy cache which is shared by more than one user.
+	 * If you want this cache to treat itself as private, and cache
+	 * such data anyway, enable this.  Note that this means one user's
+	 * private data may be served to other users, so don't enable this
+	 * unless you're sure the backend application will never mark data
+	 * which is actually private this way.
+	 */
+	cache_private = no;
 };
 
 /*

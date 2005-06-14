@@ -40,6 +40,7 @@ struct	cachedir	*caches;
 	int		 compress;
 	int		 complevel;
 	int		 backend_retry;
+	int		 cache_private;
 } config;
 
 void wconfig_init(const char *);

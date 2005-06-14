@@ -635,7 +635,7 @@ struct	http_client	*client = data;
 				 * documents, but we have to revalidate them on every request.
 				 */
 				if (!strcasecmp(*s, "no-cache") ||
-				    !strcasecmp(*s, "private") ||
+				    (!config.cache_private && !strcasecmp(*s, "private")) ||
 				    !strcasecmp(*s, "no-store")) {
 					complete = 0;
 					break;
