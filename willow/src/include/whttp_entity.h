@@ -66,14 +66,16 @@ struct qvalue {
 	float	 val;
 const	char	*name;
 
-	LIST_ENTRY(qvalue) entries;
+	TAILQ_ENTRY(qvalue) entries;
 };
-LIST_HEAD(qvalue_head, qvalue);
+TAILQ_HEAD(qvalue_head, qvalue);
 
 enum encoding {
 	E_NONE = 0,
 	E_DEFLATE,
 	E_X_DEFLATE,
+	E_GZIP,
+	E_X_GZIP,
 };
 
 struct http_entity {

@@ -105,6 +105,8 @@ const char *ent_encodings[] = {
 	"identity",
 	"deflate",
 	"x-deflate",
+	"gzip",
+	"x-gzip",
 };
 
 void
@@ -182,6 +184,7 @@ entity_send(fde, entity, cb, data, flags)
 	int		 wn_flags = 0;
 	char		*hdr;
 struct	header_list	*hl;
+	int		 window = 15;
 
 	errno = 0;
 
@@ -228,9 +231,13 @@ struct	header_list	*hl;
 	switch (entity->he_encoding) {
 	case E_NONE:
 		break;
-	case E_DEFLATE: {
+	case E_GZIP: case E_X_GZIP:
+		window += 16;
+	case E_DEFLATE: case E_X_DEFLATE: {
 		int err;
-		if ((err = deflateInit(&entity->_he_zbuf, Z_DEFAULT_COMPRESSION)) != Z_OK) {
+
+		if ((err = deflateInit2(&entity->_he_zbuf, Z_DEFAULT_COMPRESSION, Z_DEFLATED,
+				window, 6, Z_DEFAULT_STRATEGY)) != Z_OK) {
 			wlog(WLOG_WARNING, "deflateInit: %s", zError(err));
 			entity->he_encoding = E_NONE;
 		}
@@ -259,6 +266,13 @@ struct	http_entity	*entity = d;
 		/*
 		 * End of file from backend.
 		 */
+		if (entity->he_encoding) {
+			if (write_zlib_eof(entity) == -1) {
+				entity->_he_func(entity, entity->_he_cbdata, -1);
+				return;
+			}
+		}
+
 		if (entity->he_flags.chunked && !entity->he_flags.eof) {
 			WDEBUG((WLOG_DEBUG, "writing chunked data, append EOF"));
 			entity->he_flags.eof = 1;
@@ -274,6 +288,38 @@ struct	http_entity	*entity = d;
 
 	entity->he_flags.error = 1;
 	entity->_he_func(entity, entity->_he_cbdata, -1);
+}
+
+static int
+write_zlib_eof(entity)
+	struct http_entity *entity;
+{
+	int zerr;
+	unsigned char zbuf[16384];
+	int n;
+
+	entity->_he_zbuf.avail_in = 0;
+	entity->_he_zbuf.next_out = zbuf;
+	entity->_he_zbuf.avail_out = sizeof zbuf;
+
+	zerr = deflate(&entity->_he_zbuf, Z_FINISH);
+
+	if (zerr != Z_STREAM_END) {
+		wlog(WLOG_WARNING, "deflate: %s", zError(zerr));
+		return -1;
+	}
+	n = sizeof zbuf - entity->_he_zbuf.avail_out;
+	WDEBUG((WLOG_DEBUG, "writing zlib, append finish, left=%d avail=%d",
+		n, entity->_he_zbuf.avail_out));
+	if (n) {
+		bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+		if (entity->he_flags.chunked)
+			evbuffer_add_printf(entity->_he_tobuf->output, "%x\r\n", n);
+		bufferevent_write(entity->_he_tobuf, zbuf, n);
+		if (entity->he_flags.chunked)
+			evbuffer_add_printf(entity->_he_tobuf->output, "\r\n");
+	}
+	return 0;
 }
 
 static void
@@ -358,20 +404,31 @@ struct	http_entity	*entity = d;
 				 * the terminating block and finish up the next time round.  If 
 				 * not, mark it finished now.
 				 */
+				int more = 0;
 				
-				entity->he_flags.eof = 1;
+				if (entity->he_encoding) {
+					bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+					write_zlib_eof(entity);
+					more = 1;
+				}
+
 				if (entity->he_flags.chunked) {
 					bufferevent_disable(entity->_he_frombuf, EV_READ);
 					bufferevent_enable(entity->_he_tobuf, EV_WRITE);
 					bufferevent_write(entity->_he_tobuf, "0\r\n", 3);
-					return;
-				} else {
-					bufferevent_disable(entity->_he_frombuf, EV_READ);
-					if (!wrote)
-						entity->_he_func(entity, entity->_he_cbdata, 0);
-					bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+					more = 1;
+				}
+
+				if (more) {
+					entity->he_flags.eof = 1;
 					return;
 				}
+
+				bufferevent_disable(entity->_he_frombuf, EV_READ);
+				if (!wrote)
+					entity->_he_func(entity, entity->_he_cbdata, 0);
+				bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+				return;
 			}
 			/* +2 for CRLF */
 			entity->_he_chunk_size += 2;
@@ -420,8 +477,10 @@ struct	http_entity	*entity = d;
 			if (entity->he_flags.chunked)
 				evbuffer_add_printf(entity->_he_tobuf->output, "%x\r\n", read);
 			bufferevent_write(entity->_he_tobuf, buf, read);
+			if (entity->he_flags.chunked)
+				evbuffer_add_printf(entity->_he_tobuf->output, "\r\n");
 			break;
-		case E_DEFLATE: case E_X_DEFLATE: {
+		case E_DEFLATE: case E_X_DEFLATE: case E_GZIP: case E_X_GZIP: {
 			unsigned char zbuf[16384];
 			entity->_he_zbuf.next_in = (unsigned char *)buf;
 			entity->_he_zbuf.avail_in = read;
@@ -441,14 +500,15 @@ struct	http_entity	*entity = d;
 						(sizeof zbuf - entity->_he_zbuf.avail_out));
 				bufferevent_write(entity->_he_tobuf, zbuf, 
 					(sizeof zbuf - entity->_he_zbuf.avail_out));
+				if (entity->he_flags.chunked)
+					evbuffer_add_printf(entity->_he_tobuf->output, "\r\n");
 				entity->_he_zbuf.next_out = zbuf;
 				entity->_he_zbuf.avail_out = sizeof zbuf;
 			}
+			break;
 		}
 		}
 			
-		if (entity->he_flags.chunked)
-			evbuffer_add_printf(entity->_he_tobuf->output, "\r\n");
 		wrote++;
 		if (contdone) {
 			bufferevent_disable(entity->_he_frombuf, EV_READ);
@@ -1030,6 +1090,8 @@ qvalue_parse(list, header)
 	char **values;
 	char **value;
 
+	TAILQ_INIT(list);
+
 	values = wstrvec(header, ",", 0);
 	for (value = values; *value; ++value) {
 		char **bits;
@@ -1041,7 +1103,7 @@ qvalue_parse(list, header)
 			entry->val = atof(bits[1]);
 		else
 			entry->val = 1.0;
-		LIST_INSERT_HEAD(list, entry, entries);
+		TAILQ_INSERT_TAIL(list, entry, entries);
 		wstrvecfree(bits);
 	}
 
@@ -1055,7 +1117,7 @@ qvalue_remove_best(list)
 {
 	struct qvalue *entry, *best = NULL;
 	float bestf = 0;
-	LIST_FOREACH(entry, list, entries) {
+	TAILQ_FOREACH(entry, list, entries) {
 		if (entry->val > bestf) {
 			best = entry;
 			bestf = entry->val;
@@ -1063,7 +1125,7 @@ qvalue_remove_best(list)
 	}
 	if (!best)
 		return NULL;
-	LIST_REMOVE(best, entries);
+	TAILQ_REMOVE(list, best, entries);
 	return best;
 }
 
@@ -1078,6 +1140,8 @@ static	struct {
 	{ "deflate",	E_DEFLATE	},
 	{ "x-deflate",	E_X_DEFLATE	},
 	{ "identity",	E_NONE		},
+	{ "gzip",	E_GZIP		},
+	{ "x-gzip",	E_X_GZIP	},
 	{ NULL }
 }, *s;
 	for (s = encs; s->name; s++)
