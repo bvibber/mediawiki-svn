@@ -379,11 +379,12 @@ struct	http_client	*client = data;
 struct	header_list	*it;
 	int		 error = 0, len = sizeof(error);
 	
-	WDEBUG((WLOG_DEBUG, "proxy_start_backend: called; for client=%d backend=%d", client->cl_fde->fde_fd, e->fde_fd));
+	WDEBUG((WLOG_DEBUG, "proxy_start_backend: called; for client=%d", client->cl_fde->fde_fd));
 	
 	if (backend == NULL) {
-		client_send_error(client, ERR_GENERAL, strerror(errno), 503, 
-			"Service unavailable (#10.5.4)");
+		client_send_error(client, ERR_GENERAL, 
+			"No backends were available to service your request", 
+			503, "Service unavailable (#10.5.4)");
 		return;
 	}
 	

@@ -22,7 +22,8 @@ struct backend {
 	char		*be_name;	/* IP as specified in config	*/
 	int	 	 be_port;	/* port number			*/
 struct	sockaddr_in	 be_addr;	/* socket address		*/
-	int	 	 be_okay;	/* 1 if okay, 0 if unavailable	*/
+	int	 	 be_dead;	/* 0 if okay, 1 if unavailable	*/
+	time_t		 be_time;	/* If dead, time to retry	*/
 };
 
 typedef void (*backend_cb)(struct backend *, struct fde *, void *);
