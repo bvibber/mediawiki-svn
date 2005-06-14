@@ -12,7 +12,10 @@
 # pragma ident "@(#)$Header$"
 #endif
 
+#include <zlib.h>
+
 #include "whttp.h"
+#include "queue.h"
 
 #define ENT_SOURCE_BUFFER	1
 #define ENT_SOURCE_FDE		2
@@ -59,6 +62,20 @@ struct	header_list	*hl_tail;
 	int		 hl_flags;
 };
 
+struct qvalue {
+	float	 val;
+const	char	*name;
+
+	LIST_ENTRY(qvalue) entries;
+};
+LIST_HEAD(qvalue_head, qvalue);
+
+enum encoding {
+	E_NONE = 0,
+	E_DEFLATE,
+	E_X_DEFLATE,
+};
+
 struct http_entity {
 	union {
 		/* response-only data */
@@ -76,6 +93,7 @@ struct http_entity {
 			 */
 			char	*host;		/* Host			*/
 			int	 contlen;	/* Content-Length	*/
+		struct	qvalue_head accept_encoding;
 		} request;
 	}		 he_rdata;
 
@@ -113,7 +131,8 @@ struct	header_list	 he_headers;
 		int	 chunked:1;
 	}		 he_flags;
 
-	int		 he_te;		/* transfer encoding */
+	int		 he_te;		/* transfer encoding		*/
+enum	encoding	 he_encoding;
 
 	/*
 	 * If you want a callback when each piece of data is written, set this.  
@@ -135,20 +154,25 @@ struct	fde		*_he_target;
 	int		 _he_chunk_size;	/* For chunked encoding			*/
 struct	bufferevent	*_he_frombuf;
 struct	bufferevent	*_he_tobuf;
+	z_stream	 _he_zbuf;
 };
 
-void entity_read_headers(struct http_entity *, header_cb, void *);
-void entity_send(struct fde *, struct http_entity *, header_cb, void *, int);
-void entity_free(struct http_entity *);
-void entity_set_response(struct http_entity *, int isresp);
+	void	entity_read_headers	(struct http_entity *, header_cb, void *);
+	void	entity_send		(struct fde *, struct http_entity *, header_cb, void *, int);
+	void	entity_free		(struct http_entity *);
+	void	entity_set_response	(struct http_entity *, int isresp);
 
-void header_add(struct header_list *, char *, char *);
-void header_append_last(struct header_list *, const char *);
-void header_free(struct header_list *);
-char *header_build(struct header_list *);
-void header_remove(struct header_list *, struct header_list *);
-void header_dump(struct header_list *, int);
-int header_undump(struct header_list *, int, off_t *);
-struct header_list *header_find(struct header_list *, const char *);
+	int 		 qvalue_parse		(struct qvalue_head *list, const char *header);
+struct	qvalue		*qvalue_remove_best	(struct qvalue_head *list);
+enum	encoding	 accept_encoding	(const char *ent);
+
+	void		 header_add		(struct header_list *, char *, char *);
+	void		 header_append_last	(struct header_list *, const char *);
+	void		 header_free		(struct header_list *);
+	char		*header_build		(struct header_list *);
+	void		 header_remove		(struct header_list *, struct header_list *);
+	void		 header_dump		(struct header_list *, int);
+	int		 header_undump		(struct header_list *, int, off_t *);
+struct	header_list	*header_find		(struct header_list *, const char *);
 
 #endif

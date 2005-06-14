@@ -114,6 +114,8 @@ AC_SEARCH_LIBS(socket, socket)
 AC_SEARCH_LIBS(inet_addr, nsl)
 AC_SEARCH_LIBS(log10, m)
 AC_SEARCH_LIBS(sendfile, sendfile)
+AC_SEARCH_LIBS(zlibVersion, z,,AC_MSG_ERROR([zlib not found]))
+
 AC_CHECK_FUNC(strlcat,AC_DEFINE([HAVE_STRLCAT],,[Define this if you have strlcat()]),[AC_LIBOBJ(strlcat)])
 AC_CHECK_FUNC(strlcpy,AC_DEFINE([HAVE_STRLCPY],,[Define this if you have strlcpy()]),[AC_LIBOBJ(strlcpy)])
 AC_CHECK_FUNC(sendfilev,AC_DEFINE([HAVE_SENDFILE],,[Define this if you have sendfile()]))
@@ -122,6 +124,7 @@ AC_CHECK_FUNC(setproctitle,AC_DEFINE([HAVE_SETPROCTITLE],,[Define this if you ha
 AC_CHECK_TYPE(socklen_t, AC_DEFINE([HAVE_SOCKLEN_T],,[Define this if you have socklen_t]),,[#include <sys/socket.h>])
 AC_CHECK_HEADER([sys/queue.h],AC_DEFINE([HAVE_SYS_QUEUE_H],,[Define this if you have <sys/queue.h]))
 AC_CHECK_HEADER([sys/sendfile.h],AC_DEFINE([HAVE_SYS_SENDFILE_H],,[Define this if you have <sys/sendfile.h>]))
+AC_CHECK_HEADER([zlib.h],,AC_MSG_ERROR([zlib not found]))
 
 AC_ARG_ENABLE(debug-alloc, AC_HELP_STRING([--enable-debug-alloc],[Compile with debugging memory allocator]),
 [	if test $enableval = yes; then

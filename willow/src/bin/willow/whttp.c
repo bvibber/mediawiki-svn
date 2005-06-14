@@ -91,7 +91,7 @@ struct	cache_object	*cl_co;		/* Cache object				*/
 		int	f_http11:1;	/* Client understands HTTP/1.1		*/
 	}		 cl_flags;
 	size_t		 cl_dsize;	/* Object size				*/
-
+enum	encoding	 cl_enc;
 struct	http_client	*fe_next;	/* freelist 				*/
 };
 
@@ -241,6 +241,8 @@ client_read_done(entity, data, res)
 struct	http_client	*client = data;
 struct	cache_object	*cobj;
 struct	header_list	*pragma, *cache_control, *ifmod;
+struct	qvalue_head	*acceptenc;
+struct	qvalue		*val;
 	int		 cacheable = 1;
 
 	WDEBUG((WLOG_DEBUG, "client_read_done: called"));
@@ -248,9 +250,7 @@ struct	header_list	*pragma, *cache_control, *ifmod;
 	if (res < -1) {
 		client_send_error(client, ERR_BADREQUEST, ent_errors[-res], 400, "Bad request (#10.4.1)");
 		return;
-	}
-	
-	if (res == -1 || res == 1) {
+	} else if (res == -1) {
 		client_close(client);
 		return;
 	}
@@ -302,6 +302,16 @@ struct	header_list	*pragma, *cache_control, *ifmod;
 			}
 		}
 		wstrvecfree(cache_controls);
+	}
+
+	acceptenc = &entity->he_rdata.request.accept_encoding;
+	while (val = qvalue_remove_best(acceptenc)) {
+		WDEBUG((WLOG_DEBUG, "client offers [%s] q=%f", val->name, (double) val->val));
+		if (client->cl_enc = accept_encoding(val->name)) {
+			wfree(val);
+			break;
+		}
+		wfree(val);
 	}
 
 	/*
@@ -503,6 +513,8 @@ struct	http_client	*client = data;
 	header_add(&client->cl_entity.he_headers, wstrdup("Via"), wstrdup(via_hdr));
 	header_add(&client->cl_entity.he_headers, wstrdup("X-Cache"), wstrdup(cache_miss_hdr));
 	client->cl_entity.he_source.fde.len = -1;
+	client->cl_entity.he_encoding = client->cl_enc;
+
 	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client,
 			client->cl_flags.f_http11 ? ENT_CHUNKED_OKAY : 0);
 }
@@ -549,7 +561,8 @@ struct	stat	 sb;
 			
 	client->cl_entity.he_source.fd.fd = client->cl_cfd;
 	client->cl_entity.he_source.fd.size = sb.st_size;
-	
+	//client->cl_entity.he_encoding = client->cl_enc;
+
 	client->cl_entity.he_source_type = ENT_SOURCE_FILE;
 
 	client->cl_flags.f_cached = 1;
@@ -568,7 +581,7 @@ client_response_done(entity, data, res)
 {
 struct	http_client	*client = data;
 
-	WDEBUG((WLOG_DEBUG, "client_response_done: called"));
+	WDEBUG((WLOG_DEBUG, "client_response_done: called, res=%d", res));
 
 	if (client->cl_cfd) {
 		if (close(client->cl_cfd) < 0) {

@@ -60,6 +60,7 @@
 #include <strings.h>
 #include <event.h>
 #include <ctype.h>
+#include <zlib.h>
 
 #include "willow.h"
 #include "whttp.h"
@@ -99,7 +100,13 @@ const char *ent_errors[] = {
 	/* -5 */	"Too many headers",
 	/* -6 */	"Forwarding loop detected",
 };
-	
+
+const char *ent_encodings[] = {
+	"identity",
+	"deflate",
+	"x-deflate",
+};
+
 void
 entity_free(entity)
 	struct http_entity *entity;
@@ -197,7 +204,8 @@ struct	header_list	*hl;
 	}
 	entity->_he_state = ENTITY_STATE_SEND_HDR;
 
-	WDEBUG((WLOG_DEBUG, "entity_send: writing to %d [%s]", fde->fde_fd, fde->fde_desc));
+	WDEBUG((WLOG_DEBUG, "entity_send: writing to %d [%s], enc=%d", fde->fde_fd, fde->fde_desc,
+			entity->he_encoding));
 	
 	if (entity->he_flags.response) {
 		evbuffer_add_printf(entity->_he_tobuf->output, "HTTP/1.1 %d %s\r\n",
@@ -217,6 +225,20 @@ struct	header_list	*hl;
 			header_remove(&entity->he_headers, contlen);
 	}
 
+	switch (entity->he_encoding) {
+	case E_NONE:
+		break;
+	case E_DEFLATE: {
+		int err;
+		if ((err = deflateInit(&entity->_he_zbuf, Z_DEFAULT_COMPRESSION)) != Z_OK) {
+			wlog(WLOG_WARNING, "deflateInit: %s", zError(err));
+			entity->he_encoding = E_NONE;
+		}
+		break;
+	}
+	}
+	header_add(&entity->he_headers, wstrdup("Content-Encoding"),
+			wstrdup(ent_encodings[entity->he_encoding]));
 	for (hl = entity->he_headers.hl_next; hl; hl = hl->hl_next)
 		evbuffer_add_printf(entity->_he_tobuf->output, "%s: %s\r\n", hl->hl_name, hl->hl_value);
 	bufferevent_write(entity->_he_tobuf, "\r\n", 2);
@@ -263,7 +285,7 @@ struct	http_entity	*entity = d;
 	int		 i;
 #define RD_BUFSZ	 16386
 	char		 buf[RD_BUFSZ];
-	int		 wrote = 0, contdone = 0;
+	int		 wrote = 0, contdone = 0, zerr = 0;
 
 	/*
 	 * Data was available from the backend.  If state is ENTITY_STATE_SEND_BODY,
@@ -392,9 +414,39 @@ struct	http_entity	*entity = d;
 			entity->he_cache_callback(buf, read, entity->he_cache_callback_data);
 		}
 		bufferevent_enable(entity->_he_tobuf, EV_WRITE);
-		if (entity->he_flags.chunked)
-			evbuffer_add_printf(entity->_he_tobuf->output, "%x\r\n", read);
-		bufferevent_write(entity->_he_tobuf, buf, read);
+		
+		switch (entity->he_encoding) {
+		case E_NONE:
+			if (entity->he_flags.chunked)
+				evbuffer_add_printf(entity->_he_tobuf->output, "%x\r\n", read);
+			bufferevent_write(entity->_he_tobuf, buf, read);
+			break;
+		case E_DEFLATE: case E_X_DEFLATE: {
+			unsigned char zbuf[16384];
+			entity->_he_zbuf.next_in = (unsigned char *)buf;
+			entity->_he_zbuf.avail_in = read;
+			entity->_he_zbuf.next_out = zbuf;
+			entity->_he_zbuf.avail_out = sizeof zbuf;
+			while (entity->_he_zbuf.avail_in) {
+				zerr = deflate(&entity->_he_zbuf, Z_SYNC_FLUSH);
+				if (zerr != Z_OK) {
+					wlog(WLOG_WARNING, "deflate: %s", zError(zerr));
+					entity->_he_func(entity, entity->_he_cbdata, -1);
+					return;
+				}
+				WDEBUG((WLOG_DEBUG, "avail_in=%d avail_out=%d",
+					entity->_he_zbuf.avail_in, entity->_he_zbuf.avail_out));
+				if (entity->he_flags.chunked)
+					evbuffer_add_printf(entity->_he_tobuf->output, "%x\r\n", 
+						(sizeof zbuf - entity->_he_zbuf.avail_out));
+				bufferevent_write(entity->_he_tobuf, zbuf, 
+					(sizeof zbuf - entity->_he_zbuf.avail_out));
+				entity->_he_zbuf.next_out = zbuf;
+				entity->_he_zbuf.avail_out = sizeof zbuf;
+			}
+		}
+		}
+			
 		if (entity->he_flags.chunked)
 			evbuffer_add_printf(entity->_he_tobuf->output, "\r\n");
 		wrote++;
@@ -779,6 +831,7 @@ parse_headers(entity)
 	while (line = evbuffer_readline(entity->_he_frombuf->input)) {
 		char **hdr;
 		char *value;
+		int error = 1;
 
 		if (!line)
 			return 0;
@@ -802,8 +855,8 @@ parse_headers(entity)
 			if (isspace(*line)) {
 				char *s = line;
 				if (!entity->he_headers.hl_next) {
-					free(line);
-					return -1;
+					error = -1;
+					goto error;
 				}
 				while (isspace(*s))
 					s++;
@@ -815,9 +868,8 @@ parse_headers(entity)
 			hdr = wstrvec(line, ":", 2);
 
 			if (!hdr[0] || !hdr[1]) {
-				free(line);
-				wstrvecfree(hdr);
-				return ENT_ERR_INVREQ;
+				error = ENT_ERR_INVREQ;
+				goto error;
 			}
 
 			value = hdr[1];
@@ -829,17 +881,13 @@ parse_headers(entity)
 				line, hdr[0], value));
 
 			if (++entity->he_headers.hl_num > MAX_HEADERS) {
-				free(line);
-				wfree(value);
-				wstrvecfree(hdr);
-				return ENT_ERR_2MANY;
+				error = ENT_ERR_2MANY;
+				goto error;
 			}
 			if (!strcasecmp(hdr[0], "Host")) {
 				if (!validhost(value)) {
-					free(line);
-					wfree(value);
-					wstrvecfree(hdr);
-					return ENT_ERR_INVHOST;
+					error = ENT_ERR_INVHOST;
+					goto error;
 				}
 				header_add(&entity->he_headers, wstrdup(hdr[0]), value);
 				entity->he_rdata.request.host = wstrdup(value);
@@ -848,10 +896,8 @@ parse_headers(entity)
 				entity->he_rdata.request.contlen = atoi(value);
 			} else if (!strcasecmp(hdr[0], "Via")) {
 				if (via_includes_me(value)) {
-					free(line);
-					wfree(value);
-					wstrvecfree(hdr);
-					return ENT_ERR_LOOP;
+					error = ENT_ERR_LOOP;
+					goto error;
 				}
 				header_add(&entity->he_headers, wstrdup(hdr[0]), value);
 			} else if (!strcasecmp(hdr[0], "transfer-encoding")) {
@@ -861,11 +907,25 @@ parse_headers(entity)
 				}
 				/* Don't forward transfer-encoding... */
 				wfree(value);
+			} else if (!strcasecmp(hdr[0], "Accept-Encoding")) {
+				if (!entity->he_flags.response &&
+				    qvalue_parse(&entity->he_rdata.request.accept_encoding, value) == -1) {
+					error = -1;
+					WDEBUG((WLOG_DEBUG, "a-e parse failed"));
+					goto error;
+				}
 			} else 
 				header_add(&entity->he_headers, wstrdup(hdr[0]), value);
 
 			wstrvecfree(hdr);
 			break;
+		error:
+			if (hdr)
+				wstrvecfree(hdr);
+			if (value)
+				wfree(value);
+			free(line);
+			return -1;
 		}
 
 		free(line);
@@ -959,5 +1019,69 @@ parse_reqtype(entity)
 			&entity->he_rdata.request.httpmin) != 2)
 		return -1;
 
+	return 0;
+}
+
+int
+qvalue_parse(list, header)
+	struct qvalue_head *list;
+	const char *header;
+{
+	char **values;
+	char **value;
+
+	values = wstrvec(header, ",", 0);
+	for (value = values; *value; ++value) {
+		char **bits;
+		struct qvalue *entry;
+		bits = wstrvec(*value, ";", 0);
+		entry = wcalloc(1, sizeof(*entry));
+		entry->name = wstrdup(bits[0]);
+		if (bits[1])
+			entry->val = atof(bits[1]);
+		else
+			entry->val = 1.0;
+		LIST_INSERT_HEAD(list, entry, entries);
+		wstrvecfree(bits);
+	}
+
+	wstrvecfree(values);
+	return 0;
+}
+
+struct qvalue *
+qvalue_remove_best(list)
+	struct qvalue_head *list;
+{
+	struct qvalue *entry, *best = NULL;
+	float bestf = 0;
+	LIST_FOREACH(entry, list, entries) {
+		if (entry->val > bestf) {
+			best = entry;
+			bestf = entry->val;
+		}
+	}
+	if (!best)
+		return NULL;
+	LIST_REMOVE(best, entries);
+	return best;
+}
+
+enum encoding
+accept_encoding(enc)
+	const char *enc;
+{
+static	struct {
+	const char *name;
+	enum encoding value;
+} encs[] = {
+	{ "deflate",	E_DEFLATE	},
+	{ "x-deflate",	E_X_DEFLATE	},
+	{ "identity",	E_NONE		},
+	{ NULL }
+}, *s;
+	for (s = encs; s->name; s++)
+		if (!strcasecmp(s->name, enc))
+			return s->value;
 	return 0;
 }

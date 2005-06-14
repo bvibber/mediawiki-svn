@@ -53,7 +53,7 @@ static ub4 hash(const ub1 *);
 #define hashmask(n) (hashsize(n)-1)
 
 #define HASH_BITS 20
-#define HASH_ELEMS hashmask(HASH_BITS)
+#define HASH_ELEMS hashsize(HASH_BITS)
 
 static struct cache_state state;
 static struct event expire_ev;
