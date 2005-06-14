@@ -82,6 +82,7 @@ static int parse_reqtype(struct http_entity *);
 static int validhost(const char *);
 static int via_includes_me(const char *);
 static int write_zlib_eof(struct http_entity *);
+static int write_data(struct http_entity *, void *buf, size_t len);
 
 static void entity_send_headers_done(struct fde *, void *, int);
 static void entity_send_fde_write_done(struct fde *, void *, int);
@@ -332,7 +333,7 @@ struct	http_entity	*entity = d;
 	int		 i;
 #define RD_BUFSZ	 16386
 	char		 buf[RD_BUFSZ];
-	int		 wrote = 0, contdone = 0, zerr = 0;
+	int		 wrote = 0, contdone = 0;
 
 	/*
 	 * Data was available from the backend.  If state is ENTITY_STATE_SEND_BODY,
@@ -473,43 +474,11 @@ struct	http_entity	*entity = d;
 		}
 		bufferevent_enable(entity->_he_tobuf, EV_WRITE);
 		
-		switch (entity->he_encoding) {
-		case E_NONE:
-			if (entity->he_flags.chunked)
-				evbuffer_add_printf(entity->_he_tobuf->output, "%x\r\n", read);
-			bufferevent_write(entity->_he_tobuf, buf, read);
-			if (entity->he_flags.chunked)
-				evbuffer_add_printf(entity->_he_tobuf->output, "\r\n");
-			break;
-		case E_DEFLATE: case E_X_DEFLATE: case E_GZIP: case E_X_GZIP: {
-			unsigned char zbuf[16384];
-			entity->_he_zbuf.next_in = (unsigned char *)buf;
-			entity->_he_zbuf.avail_in = read;
-			entity->_he_zbuf.next_out = zbuf;
-			entity->_he_zbuf.avail_out = sizeof zbuf;
-			while (entity->_he_zbuf.avail_in) {
-				zerr = deflate(&entity->_he_zbuf, Z_SYNC_FLUSH);
-				if (zerr != Z_OK) {
-					wlog(WLOG_WARNING, "deflate: %s", zError(zerr));
-					entity->_he_func(entity, entity->_he_cbdata, -1);
-					return;
-				}
-				WDEBUG((WLOG_DEBUG, "avail_in=%d avail_out=%d",
-					entity->_he_zbuf.avail_in, entity->_he_zbuf.avail_out));
-				if (entity->he_flags.chunked)
-					evbuffer_add_printf(entity->_he_tobuf->output, "%x\r\n", 
-						(sizeof zbuf - entity->_he_zbuf.avail_out));
-				bufferevent_write(entity->_he_tobuf, zbuf, 
-					(sizeof zbuf - entity->_he_zbuf.avail_out));
-				if (entity->he_flags.chunked)
-					evbuffer_add_printf(entity->_he_tobuf->output, "\r\n");
-				entity->_he_zbuf.next_out = zbuf;
-				entity->_he_zbuf.avail_out = sizeof zbuf;
-			}
-			break;
+		if (write_data(entity, buf, read) == -1) {
+			entity->_he_func(entity, entity->_he_cbdata, -1);
+			return;	
 		}
-		}
-			
+
 		wrote++;
 		if (contdone) {
 			bufferevent_disable(entity->_he_frombuf, EV_READ);
@@ -520,6 +489,52 @@ struct	http_entity	*entity = d;
 	}
 
 	bufferevent_disable(entity->_he_frombuf, EV_READ);
+}
+
+static int
+write_data(entity, buf, len)
+struct	http_entity	*entity;
+	void		*buf;
+	size_t		 len;
+{
+	switch (entity->he_encoding) {
+	case E_NONE:
+		if (entity->he_flags.chunked)
+			evbuffer_add_printf(entity->_he_tobuf->output, "%x\r\n", len);
+		bufferevent_write(entity->_he_tobuf, buf, len);
+		if (entity->he_flags.chunked)
+			evbuffer_add_printf(entity->_he_tobuf->output, "\r\n");
+		return 0;
+
+	case E_DEFLATE: case E_X_DEFLATE: case E_GZIP: case E_X_GZIP: {
+		unsigned char zbuf[16384];
+		int zerr;
+
+		entity->_he_zbuf.next_in = (unsigned char *)buf;
+		entity->_he_zbuf.avail_in = len;
+		entity->_he_zbuf.next_out = zbuf;
+		entity->_he_zbuf.avail_out = sizeof zbuf;
+		while (entity->_he_zbuf.avail_in) {
+			zerr = deflate(&entity->_he_zbuf, Z_SYNC_FLUSH);
+			if (zerr != Z_OK) {
+				wlog(WLOG_WARNING, "deflate: %s", zError(zerr));
+				return -1;
+			}
+			WDEBUG((WLOG_DEBUG, "avail_in=%d avail_out=%d",
+				entity->_he_zbuf.avail_in, entity->_he_zbuf.avail_out));
+			if (entity->he_flags.chunked)
+				evbuffer_add_printf(entity->_he_tobuf->output, "%x\r\n", 
+					(sizeof zbuf - entity->_he_zbuf.avail_out));
+			bufferevent_write(entity->_he_tobuf, zbuf, 
+				(sizeof zbuf - entity->_he_zbuf.avail_out));
+			if (entity->he_flags.chunked)
+				evbuffer_add_printf(entity->_he_tobuf->output, "\r\n");
+			entity->_he_zbuf.next_out = zbuf;
+			entity->_he_zbuf.avail_out = sizeof zbuf;
+		}
+		return 0;
+	}
+	}
 }
 
 static void
@@ -535,10 +550,12 @@ entity_send_target_write(struct bufferevent *buf, void *d)
 {
 struct	http_entity	*entity = d;
 
-	WDEBUG((WLOG_DEBUG, "entity_send_target_write: eof=%d", entity->he_flags.eof));
+	WDEBUG((WLOG_DEBUG, "entity_send_target_write: eof=%d, state=%d", 
+		entity->he_flags.eof, entity->_he_state));
 
 	if (entity->he_flags.eof) {
-		bufferevent_disable(entity->_he_frombuf, EV_READ);
+		if (entity->_he_frombuf)
+			bufferevent_disable(entity->_he_frombuf, EV_READ);
 		entity->_he_func(entity, entity->_he_cbdata, 0);
 		return;
 	}
@@ -569,12 +586,24 @@ struct	http_entity	*entity = d;
 
 		case ENT_SOURCE_FILE:
 			/* write file */
-			bufferevent_disable(entity->_he_tobuf, EV_WRITE);
 			//entity->_he_tobuf = entity->_he_frombuf = NULL;
 
+			/*
+			 * Compressed data can't be written using sendfile
+			 */
+			entity->_he_state = ENTITY_STATE_SEND_BODY;
+
+			if (entity->he_encoding) {
+				bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+				/* The write handler does this for us */
+				return;
+			}
+
+			bufferevent_disable(entity->_he_tobuf, EV_WRITE);
+				
 			if (wnet_sendfile(entity->_he_target->fde_fd, entity->he_source.fd.fd, 
-				entity->he_source.fd.size - entity->he_source.fd.off,
-				entity->he_source.fd.off, entity_send_file_done, entity, 0) == -1) {
+			    entity->he_source.fd.size - entity->he_source.fd.off,
+			    entity->he_source.fd.off, entity_send_file_done, entity, 0) == -1) {
 				entity->_he_func(entity, entity->_he_cbdata, -1);
 			}
 			return;
@@ -589,6 +618,43 @@ struct	http_entity	*entity = d;
 		bufferevent_disable(entity->_he_tobuf, EV_WRITE);
 		bufferevent_disable(entity->_he_frombuf, EV_READ);
 		entity->_he_func(entity, entity->_he_cbdata, 0);
+		return;
+	}
+
+	if (entity->he_source_type == ENT_SOURCE_FILE) {
+		/*
+		 * We only get here if we're writing deflate data.
+		 */
+		char buf[16384];
+		ssize_t i;
+
+		WDEBUG((WLOG_DEBUG, "write file, eof=%d, size=%d, off=%d",
+			entity->he_flags.eof, entity->he_source.fd.size,
+			entity->he_source.fd.off));
+
+		if (entity->he_flags.eof) {
+			bufferevent_disable(entity->_he_tobuf, EV_WRITE);
+			entity->_he_func(entity, entity->_he_cbdata, 0);
+			return;
+		}
+
+		if ((i = read(entity->he_source.fd.fd, buf, sizeof buf)) == -1) {
+			bufferevent_disable(entity->_he_tobuf, EV_WRITE);
+			entity->_he_func(entity, entity->_he_cbdata, -1);
+			return;
+		}
+		if (write_data(entity, buf, i) == -1) {
+			bufferevent_disable(entity->_he_tobuf, EV_WRITE);
+			entity->_he_func(entity, entity->_he_cbdata, -1);
+			return;
+		}
+		entity->he_source.fd.off += i;
+		if (entity->he_source.fd.off == entity->he_source.fd.size) {
+			entity->he_flags.eof = 1;
+			write_zlib_eof(entity);
+			return;
+		}
+
 		return;
 	}
 

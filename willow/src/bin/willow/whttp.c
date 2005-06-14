@@ -562,7 +562,7 @@ struct	stat	 sb;
 			
 	client->cl_entity.he_source.fd.fd = client->cl_cfd;
 	client->cl_entity.he_source.fd.size = sb.st_size;
-	//client->cl_entity.he_encoding = client->cl_enc;
+	client->cl_entity.he_encoding = client->cl_enc;
 
 	client->cl_entity.he_source_type = ENT_SOURCE_FILE;
 
