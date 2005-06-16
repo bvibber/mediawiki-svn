@@ -1,7 +1,12 @@
+2005-06-16  Peter Danenberg  <pcd at wikitex dot org>
+
+	* wikitex.sh: fixed recursion in <graph>; added <twopi>,
+	<circo>, <fdp>
+
 2005-06-13  Peter Danenberg  <pcd at wikitex dot org>
 
 	* wikitex.php: fixed spurious <pre>'s by trimming
-	bash output.
+	bash output
 
 	* wikitex.sh: added <abc>, <neato>
 

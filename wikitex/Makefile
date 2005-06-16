@@ -1,4 +1,4 @@
-VERSION = 1.0.4
+VERSION = 1.0.5
 PRE = cat 
 POST = copying.inc.ms | sed "s/\%VERSION\%/${VERSION}/" | groff -t -ms -Tascii - | col -bx >
 DOC = README NEWS COPYING MANIFEST THANKS

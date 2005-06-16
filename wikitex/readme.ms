@@ -147,7 +147,6 @@ from .htaccess in the same directory; disable CGI, if necessary.
 .IP \n+i.
 Install as many of the following packages whose classes you would like to support, or add your own (see Expanding WikiTeX):
 .RE
-.KS
 .TS
 expand;
 c c c c
@@ -159,6 +158,8 @@ amsmath	AMS-LaTeX	Amer. Math. Soc.	ams.org
 batik	SVG Java	Apache	apache.org
 chem	XyMTeX	Shinsaku Fujita	kit.ac.jp
 chess	Skak	Torben Hoffmann	ctan.org
+circo	Graphviz	Emden Gansner	research.att.com
+fdp	Graphviz	Emden Gansner	research.att.com
 feyn	Feynman	Michael Levine	ctan.org
 go	Go	Daniel Bump	stanford.edu
 graph	Graphviz	Emden Gansner	research.att.com
@@ -173,8 +174,8 @@ svg	SVG lite	ImageMagick	imagemagick.org
 schem	gschem	Ales Hvezda	seul.org
 teng	Tengwar	Ivan Derzhanski	quettar.org
 tipa	TIPA	Rei Fukui	ctan.org
+twopi	Graphviz	Emden Gansner	research.att.com
 .TE
-.KE
 .RS
 .IP \n+i.
 Lastly, ensure that your server's $PATH variable includes /usr/bin and /usr/local/bin, or wherever your binaries are installed.

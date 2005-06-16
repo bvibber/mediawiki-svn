@@ -7,10 +7,16 @@
 
 
 
-                     WikiTeX 1.0.4 NEWS
+                     WikiTeX 1.0.5 NEWS
 
           Peter Danenberg <pcd at wikitex dot org>
 
+
+Thu Jun 16 01:49:59 PDT 2005  Peter Danenberg
+
+          Repleted Graphviz with <twopi>, <circo> and <fdp>;
+     three interesting, but sparsely documented, graph-util-
+     ities.
 
 Mon Jun 13 19:44:31 PDT 2005  Peter Danenberg
 
@@ -49,19 +55,13 @@ Tue Mar  8 16:53:39 PST 2005  Peter Danenberg
           Lastly, verbose errors now declare  not  only  the
      whence, but the why of defects.
 
-Sun Feb  6 14:21:48 PST 2005  Peter Danenberg
-
-          We've disassociated our versioning from MediaWiki,
-     and started with a pristine 1.0;  so  that,  should  we
-     bundle  in  the  future, our release cycles can be dis-
-     tinct.
 
 -----------
   * http://www.gre.ac.uk/~c.walshaw/abc2mtex/abc.txt
 
 
 
-                        13 June 2005
+                        16 June 2005
 
 
 
@@ -69,6 +69,13 @@ Sun Feb  6 14:21:48 PST 2005  Peter Danenberg
 
                              -2-
 
+
+Sun Feb  6 14:21:48 PST 2005  Peter Danenberg
+
+          We've disassociated our versioning from MediaWiki,
+     and started with a pristine 1.0;  so  that,  should  we
+     bundle  in  the  future, our release cycles can be dis-
+     tinct.
 
 Sat Jan 29 00:34:09 PST 2005  Peter Danenberg
 
@@ -117,17 +124,10 @@ Sun Oct  3 17:38:03 PDT 2004  Peter Danenberg
      mere oeconomy that ever  importuned  us  to  return  to
      ImageMagick's SVG subset.
 
-Mon Sep  6 03:20:26 PDT 2004  Peter Danenberg
-
-          With  the  introduction  of XML-like tags, we have
-     cleared a major hurdle towards integration with  Media-
-     Wiki; next on the list, parameters of the form:
 
 
 
-
-
-                        13 June 2005
+                        16 June 2005
 
 
 
@@ -135,6 +135,12 @@ Mon Sep  6 03:20:26 PDT 2004  Peter Danenberg
 
                              -3-
 
+
+Mon Sep  6 03:20:26 PDT 2004  Peter Danenberg
+
+          With  the  introduction  of XML-like tags, we have
+     cleared a major hurdle towards integration with  Media-
+     Wiki; next on the list, parameters of the form:
 
           <music tempo="80"></music>
 
@@ -180,12 +186,6 @@ Sun May 30 00:00:00 PDT 2004  Peter Danenberg
 
 
 
-
-
-
-
-
-
 -----------
   ** Raymond,  Eric  Steven.  The Art of Unix Pro-
 gramming (catb.org/~esr/writings/taoup), chap. 14,
@@ -193,7 +193,7 @@ sec. "Perl".
 
 
 
-                        13 June 2005
+                        16 June 2005
 
 
 
@@ -259,6 +259,6 @@ view a copy of this license, see COPYING or visit:
 
 
 
-                        13 June 2005
+                        16 June 2005
 
 

@@ -30,6 +30,8 @@ $arrRend = array ('abc'         => 'strABC',
 		  'batik'       => 'strBatik',
 		  'chem'        => 'strXym',
 		  'chess'       => 'strChess',
+		  'circo'       => 'strCirco',
+		  'fdp'         => 'strFDP',
 		  'feyn'        => 'strFeyn',
 		  'go'	        => 'strGo',
 		  'greek'       => 'strGreek',
@@ -42,7 +44,8 @@ $arrRend = array ('abc'         => 'strABC',
 		  'schem'       => 'strSchem',
 		  'svg'	        => 'strSVG',
 		  'teng'        => 'strTeng',
-		  'tipa'        => 'strTipa');
+		  'tipa'        => 'strTipa',
+		  'twopi'       => 'strTwopi');
 
 // liberal Latin in errorous dicta
 $arrErr['rend']	= 'directive non gratum.';

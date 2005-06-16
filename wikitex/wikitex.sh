@@ -80,8 +80,8 @@ function go() {
 }
 
 function graph() {
-    wt_exec "graph -Tpng -o ${HASH}${EXT} ${HASH}"
-    wt_exec "graph -Tcmap -o ${HASH}${MAP} ${HASH}"
+    wt_exec "dot -Tpng -o ${HASH}${EXT} ${HASH}"
+    wt_exec "dot -Tcmap -o ${HASH}${MAP} ${HASH}"
     STR=$(printf '<map name="%s">%s</map>' "${HASH}" "$(<"${HASH}${MAP}")")
     STR="${STR}"$(printf '<img src="%s" alt="%s" usemap="#%s"/>' "${OUT}${HASH}${EXT}" "${MOD}" "${HASH}")
     STR="${STR}"$(printf '<a href="%s">[source]</a>' "${OUT}${HASH}")
@@ -90,6 +90,30 @@ function graph() {
 function neato() {
     wt_exec "command neato -Tpng -o ${HASH}${EXT} ${HASH}"
     wt_exec "command neato -Tcmap -o ${HASH}${MAP} ${HASH}"
+    STR=$(printf '<map name="%s">%s</map>' "${HASH}" "$(<"${HASH}${MAP}")")
+    STR="${STR}"$(printf '<img src="%s" alt="%s" usemap="#%s"/>' "${OUT}${HASH}${EXT}" "${MOD}" "${HASH}")
+    STR="${STR}"$(printf '<a href="%s">[source]</a>' "${OUT}${HASH}")
+}
+
+function twopi() {
+    wt_exec "command twopi -Tpng -o ${HASH}${EXT} ${HASH}"
+    wt_exec "command twopi -Tcmap -o ${HASH}${MAP} ${HASH}"
+    STR=$(printf '<map name="%s">%s</map>' "${HASH}" "$(<"${HASH}${MAP}")")
+    STR="${STR}"$(printf '<img src="%s" alt="%s" usemap="#%s"/>' "${OUT}${HASH}${EXT}" "${MOD}" "${HASH}")
+    STR="${STR}"$(printf '<a href="%s">[source]</a>' "${OUT}${HASH}")
+}
+
+function circo() {
+    wt_exec "command circo -Tpng -o ${HASH}${EXT} ${HASH}"
+    wt_exec "command circo -Tcmap -o ${HASH}${MAP} ${HASH}"
+    STR=$(printf '<map name="%s">%s</map>' "${HASH}" "$(<"${HASH}${MAP}")")
+    STR="${STR}"$(printf '<img src="%s" alt="%s" usemap="#%s"/>' "${OUT}${HASH}${EXT}" "${MOD}" "${HASH}")
+    STR="${STR}"$(printf '<a href="%s">[source]</a>' "${OUT}${HASH}")
+}
+
+function fdp() {
+    wt_exec "command fdp -Tpng -o ${HASH}${EXT} ${HASH}"
+    wt_exec "command fdp -Tcmap -o ${HASH}${MAP} ${HASH}"
     STR=$(printf '<map name="%s">%s</map>' "${HASH}" "$(<"${HASH}${MAP}")")
     STR="${STR}"$(printf '<img src="%s" alt="%s" usemap="#%s"/>' "${OUT}${HASH}${EXT}" "${MOD}" "${HASH}")
     STR="${STR}"$(printf '<a href="%s">[source]</a>' "${OUT}${HASH}")

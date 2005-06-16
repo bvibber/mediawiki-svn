@@ -251,6 +251,24 @@ function strNeato($str)
   return $objRend->strRend($str, array('class' => 'neato'));
 }
 
+function strTwopi($str)
+{
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'twopi'));
+}
+
+function strCirco($str)
+{
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'circo'));
+}
+
+function strFDP($str)
+{
+  global $objRend;
+  return $objRend->strRend($str, array('class' => 'fdp'));
+}
+
 function strPlot($str)
 {
   global $objRend;

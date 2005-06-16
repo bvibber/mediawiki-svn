@@ -4,6 +4,12 @@ WikiTeX %VERSION% NEWS
 .AU
 Peter Danenberg <pcd at wikitex dot org>
 .SH
+Thu Jun 16 01:49:59 PDT 2005	Peter Danenberg
+.RS
+.PP
+Repleted Graphviz with <twopi>, <circo> and <fdp>; three interesting, but sparsely documented, graph-utilities.
+.RE
+.SH
 Mon Jun 13 19:44:31 PDT 2005	Peter Danenberg
 .RS
 .PP

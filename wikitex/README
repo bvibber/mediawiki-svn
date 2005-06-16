@@ -7,7 +7,7 @@
 
 
 
-                    WikiTeX 1.0.4 README
+                    WikiTeX 1.0.5 README
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -20,7 +20,7 @@
 
 
 
-13 June 2005
+16 June 2005
 
 
 
@@ -73,7 +73,7 @@
 
 
 
-                    WikiTeX 1.0.4 README
+                    WikiTeX 1.0.5 README
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -127,7 +127,7 @@ sion below.
 
 
 
-                        13 June 2005
+                        16 June 2005
 
 
 
@@ -193,7 +193,7 @@ sion below.
 
 
 
-                        13 June 2005
+                        16 June 2005
 
 
 
@@ -236,6 +236,8 @@ sion below.
      batik   SVG Java  Apache               apache.org
      chem    XyMTeX    Shinsaku Fujita      kit.ac.jp
      chess   Skak      Torben Hoffmann      ctan.org
+     circo   Graphviz  Emden Gansner        research.att.com
+     fdp     Graphviz  Emden Gansner        research.att.com
      feyn    Feynman   Michael Levine       ctan.org
      go      Go        Daniel Bump          stanford.edu
      graph   Graphviz  Emden Gansner        research.att.com
@@ -251,21 +253,22 @@ sion below.
      teng    Tengwar   Ivan Derzhanski      quettar.org
      tipa    TIPA      Rei Fukui            ctan.org
 
-
-
 -----------
   * Consult your server config for the appropriate
 user and group id.
 
 
 
-                        13 June 2005
+                        16 June 2005
 
 
 
 
 
                              -4-
+
+
+     twopi   Graphviz  Emden Gansner        research.att.com
 
 
           6.   Lastly, ensure that your server's $PATH vari-
@@ -316,16 +319,13 @@ user and group id.
           and    familiarize    yourself   with   Subversion
           (http://subversion.tigris.org), our  collaborative
           development tool.
-
-
-
 -----------
   * VNC has been used to similar  ends,  but  with
 added overhead and vulnerability.
 
 
 
-                        13 June 2005
+                        16 June 2005
 
 
 
@@ -391,7 +391,7 @@ added overhead and vulnerability.
 
 
 
-                        13 June 2005
+                        16 June 2005
 
 
 
@@ -457,6 +457,6 @@ view a copy of this license, see COPYING or visit:
 
 
 
-                        13 June 2005
+                        16 June 2005
 
 
