@@ -329,6 +329,7 @@ cfg::checker::start(void)
 		std::string mysqlrep, squidrep;
 		b::try_mutex::scoped_lock m (chk_m);
 		std::map<std::string, serverp>& serverlist = SMI(cfg)->servers();
+                int mysqltotal = 0;
 
                 /* mysql */
 		std::map<std::string, std::string> mysqlreps;
@@ -337,6 +338,7 @@ cfg::checker::start(void)
 			if (it->second->type() != "MySQL") continue;
 			b::shared_ptr<mysqlserver> s = b::dynamic_pointer_cast<mysqlserver>(it->second);
 			mysqlreps[it->first] = "\002" + it->first + "\002: " + s->fmt4irc() + " ";
+                        mysqltotal += s->qpsv;
 		}
 		/* do master first, then the rest */
 		std::string mastername;
@@ -352,6 +354,7 @@ cfg::checker::start(void)
 			    end = mysqlreps.end(); it != end; ++it) {
 			mysqlrep += it->second;
 		}
+                mysqlrep += b::io::str(b::format(" total qps: %d") % mysqltotal);
 	       
 		/* squids */
 		int squidreqs = 0, squidhits = 0;
