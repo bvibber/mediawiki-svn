@@ -12,9 +12,13 @@ if ( defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionFunctions[] = 'wfSetupMakesysop';
 
-// Set groups to the appropriate sysop/bureaucrat structure
-$wgGroupPermissions['steward'] = array( 'makesysop' );
-$wgGroupPermissions['bureaucrat'][] = 'makesysop';
+// Set groups to the appropriate sysop/bureaucrat structure:
+// * Steward can do 'full' work (makesysop && userrights)
+// * Bureaucrat can only do limited work (makesysop)
+$wgGroupPermissions['steward'   ]['makesysop' ] = true;
+$wgGroupPermissions['steward'   ]['userrights'] = true;
+$wgGroupPermissions['bureaucrat']['makesysop' ] = true;
+$wgGroupPermissions['bureaucrat']['userrights'] = false;
 
 $wgAvailableRights[] = 'makesysop';
 
@@ -36,11 +40,6 @@ function wfSpecialMakesysop() {
 		$wgOut->errorpage( "movenologin", "movenologintext" );
 		return;
 	}
-	if (! $wgUser->isAllowed('userrights') ) {
-		$wgOut->errorpage( "bureaucrattitle", "bureaucrattext" );
-		return;
-	}
-	
 	if ( wfReadOnly() ) {
 		$wgOut->readOnlyPage();
 		return;
@@ -75,7 +74,8 @@ class MakesysopForm {
 		$this->mSetBureaucrat = $request->getBool( 'wpSetBureaucrat' );
 		$this->mSetSteward = $request->getBool( 'wpSetSteward' );
 
-		$this->mIsSteward = in_array( 'steward', $wgUser->getGroups() );
+		$this->mIsSteward = $wgUser->isAllowed( 'makesysop' ) &&
+			$wgUser->isAllowed( 'userrights' );
 	}
 
 	function showForm( $err = '') {
