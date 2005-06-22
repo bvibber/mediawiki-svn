@@ -1,4 +1,6 @@
 <?php
+/* $Id$ */
+
 /**
  * If enabled through $wgAllowSysopQueries = true, this class
  * let users with sysop right the possibility to make sql queries
@@ -10,45 +12,77 @@
  * @subpackage SpecialPage
  */
 
+if (!defined('MEDIAWIKI'))
+	exit;
+
 # Sysop SQL queries
 #   The sql user shouldn't have too many rights other the database, restrict
 #   it to SELECT only on 'page', 'revision' and 'text' tables for example
 #
 /** Dangerous if not configured properly. */
-$wgAllowSysopQueries = false;
-$wgDBsqluser = 'sqluser';
-$wgDBsqlpassword = 'sqlpass';
-$wgDBpassword = 'userpass';
+$wgAllowSysopQueries = true;
+#$wgDBsqluser = 'sqluser';
+#$wgDBsqlpassword = 'sqlpass';
 $wgSqlLogFile = "{$wgUploadDirectory}/sqllog_mFhyRe6";
+
+$wgExtensionFunctions[] = "wfSpecialAsksql";
+
+require_once( "$IP/includes/SpecialPage.php" );
 
 /**
  *
  */
 function wfSpecialAsksql() {
-	global $wgUser, $wgOut, $wgRequest, $wgAllowSysopQueries;
+	global $wgMessageCache;
 
-	if( !$wgAllowSysopQueries ) {
-		$wgOut->errorpage( 'nosuchspecialpage', 'nospecialpagetext' );
-		return;
+	SpecialPage::addPage(new SpecialAsksql);
+
+	$wgMessageCache->addMessage('asksql', 'SQL query');
+	$wgMessageCache->addMessage('asksqltext', "Use the form below to make a direct query of the
+database.
+Use single quotes ('like this') to delimit string literals.
+This can often add considerable load to the server, so please use
+this function sparingly.");
+	$wgMessageCache->addMessage('sqlislogged', 'Please note that all queries are logged.');
+	$wgMessageCache->addMessage('sqlquery', 'Enter query');
+	$wgMessageCache->addMessage('querybtn', 'Submit query');
+	$wgMessageCache->addMessage('selectonly', 'Only read-only queries are allowed.');
+	$wgMessageCache->addMessage('querysuccessful', 'Query successful');
+
+}
+
+class SpecialAsksql extends SpecialPage {
+
+	function SpecialAsksql() {
+		SpecialPage::SpecialPage("Asksql");
 	}
-	if( !$wgUser->isAllowed('asksql') ) {
-		$wgOut->sysopRequired();
-		return;
-	}
+
+	function execute() {
+		global $wgAllowSysopQueries, $wgUser, $wgRequest, $wgOut;
+
+		if( !$wgAllowSysopQueries ) {
+			$wgOut->errorpage( 'nosuchspecialpage', 'nospecialpagetext' );
+			return;
+		}
+		if( !$wgUser->isAllowed('asksql') ) {
+			$wgOut->sysopRequired();
+			return;
+		}
 	
-	if( $wgRequest->wasPosted() ) {
-		$query = $wgRequest->getVal( 'wpSqlQuery' );
-		$action = $wgRequest->getVal( 'action' );
-	} else {
-		$query = '';
-		$action = '';
-	}
-	$f = new SqlQueryForm( $query);
+		if( $wgRequest->wasPosted() ) {
+			$query = $wgRequest->getVal( 'wpSqlQuery' );
+			$action = $wgRequest->getVal( 'action' );
+		} else {
+			$query = '';
+			$action = '';
+		}
+		$f = new SqlQueryForm( $query);
 
-	if ( "submit" == $action ) {
-		$f->doSubmit();
-	} else {
-		$f->showForm( '' );
+		if ( "submit" == $action ) {
+			$f->doSubmit();
+		} else {
+			$f->showForm( '' );
+		}
 	}
 }
 
