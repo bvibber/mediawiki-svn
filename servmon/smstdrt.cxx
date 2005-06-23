@@ -385,6 +385,28 @@ HDL(cfg_monit_server_type) {
 	}
 };
 
+HDL(cfg_monit_no_server) {
+    EX1(cd) {
+        if (!SMI(smmon::cfg)->server_exists(cd.p(0))) {
+            cd.term.message(SM$FAC_MONIT, SM$MSG_UNKSRV, cd.p(0));
+            return true;
+        }
+        SMI(smmon::cfg)->remove_server(cd.p(0));
+        return true;
+    }
+};
+
+HDL(cfg_monit_server_cluster) {
+    EX1(cd) {
+        if (!SMI(smmon::cfg)->server_exists(cd.p(0))) {
+            cd.term.message(SM$FAC_MONIT, SM$MSG_UNKSRV, cd.p(0));
+            return true;
+        }
+        SMI(smmon::cfg)->set_cluster(cd.p(0), cd.p(1));
+        return true;
+    }
+};
+
 HDL(cfg_monit_server_max_disk) {
 	EX1(cd) {
 		if (!SMI(smcfg::cfg)->listhas("/monit/server/"+cd.p(0)+"/disks", cd.p(1)))
@@ -875,6 +897,9 @@ smtrm::tmcmds::tmcmds(void)
 	ircrt.install(16, "no channel %s", cfg_irc_nochannel(), "Remove a channel");
 
 	/* 'function monitor' mode commands */
+        monrt.install(16, "no", "Negate a command or setting");
+        monrt.install(16, "no server", "Remove a configured server");
+        monrt.install(16, "no server %s", cfg_monit_no_server(), "Server name");
 	monrt.install(16, "server", "Configure servers to monitor");
 	monrt.install(16, "server %s", "Server name");
 	monrt.install(16, "server %s type", "Specify server type");
@@ -883,6 +908,8 @@ smtrm::tmcmds::tmcmds(void)
 	monrt.install(16, "server %s minimum-disk-free", "Set disk-usage alarm for server");
 	monrt.install(16, "server %s minimum-disk-free %s", "Device mount point");
 	monrt.install(16, "server %s minimum-disk-free %s %s", cfg_monit_server_max_disk(), "Minimum number of MB free");
+        monrt.install(16, "server %s cluster", "Set server-o cluster");
+        monrt.install(16, "server %s cluster %s", cfg_monit_server_cluster(), "Cluster name");
 	monrt.install(16, "mysql", "Configure global MySQL parameters");
 	monrt.install(16, "mysql username", "MySQL username");
 	monrt.install(16, "mysql password", "MySQL password");

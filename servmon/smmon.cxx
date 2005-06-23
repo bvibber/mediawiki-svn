@@ -194,14 +194,25 @@ xomitr::val(uint32_t newval)
 		nv = uint64_t(4294967296LL) + nv;
 	return (nv - q) / (now - then);
 }
-	
+
+std::string
+cfg::get_option(str server, str option, str deflt)
+{
+    try {
+        return SMI(smcfg::cfg)->fetchstr("/monit/server/" + server + "/" + option);
+    } catch (smcfg::nokey&) {
+        return deflt;
+    }
+}
+
 void
 cfg::initialise(void)
 {
 	try {
 		std::set<std::string> servers = SMI(smcfg::cfg)->fetchlist("/monit/servers");
 		FE_TC_AS(std::set<std::string>, servers, i) {
-			create_server(*i, SMI(smcfg::cfg)->fetchstr("/monit/server/"+*i+"/type"), false);
+			create_server(*i, get_option(*i, "type", "none"), false);
+                        set_cluster(*i, get_option(*i, "cluster", "unknown"));
 		}
 	} catch (smcfg::nokey&) {}
 	checker *c = new checker();
@@ -325,61 +336,71 @@ cfg::checker::start(void)
 		sleep(interval);
 		chk1();
 
-		/* IRC report */
-		std::string mysqlrep, squidrep;
+		std::time_t now = std::time(0);
+		if ((now - ircinterval) <= lastirc) {
+                    continue;
+		}
+                lastirc = now;
+
+		/* IRC report, split by cluster */
 		b::try_mutex::scoped_lock m (chk_m);
 		std::map<std::string, serverp>& serverlist = SMI(cfg)->servers();
-                int mysqltotal = 0;
+                std::map<std::string, int> mysqltotal;
+
+                std::map<std::string, std::map<std::string, std::string> > mysqlreps;
+                std::map<std::string, std::string> squidreps;
 
                 /* mysql */
-		std::map<std::string, std::string> mysqlreps;
 		for(std::map<std::string, serverp>::const_iterator
 			    it = serverlist.begin(), end = serverlist.end(); it != end; ++it) {
 			if (it->second->type() != "MySQL") continue;
 			b::shared_ptr<mysqlserver> s = b::dynamic_pointer_cast<mysqlserver>(it->second);
-			mysqlreps[it->first] = "\002" + it->first + "\002: " + s->fmt4irc() + " ";
-                        mysqltotal += s->qpsv;
+			mysqlreps[s->cluster][it->first] = "\002" + it->first + "\002: " + s->fmt4irc() + " ";
+                        mysqltotal[s->cluster] += s->qpsv;
 		}
 		/* do master first, then the rest */
-		std::string mastername;
-		try {
-			mastername = SMI(smcfg::cfg)->fetchstr("/monit/mysql/master");
-			std::map<std::string,std::string>::iterator it = mysqlreps.find(mastername);
-			if (it != mysqlreps.end()) {
-				mysqlrep += it->second;
-				mysqlreps.erase(it);
-			}
-		} catch (smcfg::nokey&) {}
-		for(std::map<std::string,std::string>::iterator it = mysqlreps.begin(),
-			    end = mysqlreps.end(); it != end; ++it) {
-			mysqlrep += it->second;
-		}
-                mysqlrep += b::io::str(b::format(" total qps: %d") % mysqltotal);
+                for (std::map<std::string, std::map<std::string, std::string> >::iterator clusit
+                        = mysqlreps.begin(), end = mysqlreps.end(); clusit != end; ++clusit) {
+                    std::string mastername, s;
+                    try {
+                            mastername = SMI(smcfg::cfg)->fetchstr("/monit/mysql/master");
+                            std::map<std::string,std::string>::iterator it = clusit->second.find(mastername);
+                            if (it != clusit->second.end()) {
+                                    s += it->second;
+                                    clusit->second.erase(it);
+                            }
+                    } catch (smcfg::nokey&) {}
+                    for (std::map<std::string,std::string>::iterator it = clusit->second.begin(),
+                                end = clusit->second.end(); it != end; ++it) {
+                            s += it->second;
+                    }
+                    s += b::io::str(b::format(" total qps: %d") % mysqltotal[clusit->first]);
+                    SMI(smirc::cfg)->conn()->msg(3, "\002mysql\002 ["+clusit->first+"]: " + s);
+                }
 	       
 		/* squids */
-		int squidreqs = 0, squidhits = 0;
+                std::map<std::string,int> squidreqs, squidhits;
 		for(std::map<std::string, serverp>::const_iterator
 			    it = serverlist.begin(), end = serverlist.end(); it != end; ++it) {
 			if (it->second->type() != "Squid") continue;
 			b::shared_ptr<squidserver> s = b::dynamic_pointer_cast<squidserver>(it->second);
-			squidrep += "\002" + it->first + "\002: ";
-			squidrep += s->fmt4irc() + " ";
-			squidreqs += s->rpsv;
-			squidhits += s->hpsv;
+			squidreps[s->cluster] += "\002" + it->first + "\002: ";
+			squidreps[s->cluster] += s->fmt4irc() + " ";
+			squidreqs[s->cluster] += s->rpsv;
+			squidhits[s->cluster] += s->hpsv;
 		}
-		float squidperc;
-		if (squidhits && squidreqs)
-			squidperc = (float(squidhits)/squidreqs)*100;
-		else squidperc = 0;
-		squidrep += b::io::str(b::format("\002total:\002 \00311\002\002%d\003/\00303\002\002%d\003/\0036\002\002%.02f%%\003") % squidreqs % squidhits % squidperc);
-
-		std::time_t now = std::time(0);
-		if ((now - ircinterval) > lastirc) {
-			SMI(smirc::cfg)->conn()->msg(3, "\002mysql\002: " + mysqlrep);
-			SMI(smirc::cfg)->conn()->msg(3, "\002squid\002: " + squidrep);
-			lastirc = now;
-		}
-		
+                for (std::map<std::string, std::string>::iterator clusit
+                        = squidreps.begin(), end = squidreps.end(); clusit != end; ++clusit) {
+                    float squidperc;
+                    if (squidhits[clusit->first] && squidreqs[clusit->first])
+                            squidperc = (float(squidhits[clusit->first])/squidreqs[clusit->first])*100;
+                    else squidperc = 0;
+                    clusit->second += b::io::str(b::format(
+                                "\002total:\002 \00311\002\002%d\003/\00303\002\002%d\003/"
+                                "\0036\002\002%.02f%%\003") 
+                            % squidreqs[clusit->first] % squidhits[clusit->first] % squidperc);
+                    SMI(smirc::cfg)->conn()->msg(3, "\002squid\002 ["+clusit->first+"]: " + clusit->second);
+                }
 	}
 }
 
@@ -610,6 +631,23 @@ cfg::create_server(str serv, str type, bool addconf)
 		/* XXX error? */
 		return;
 	}
+}
+
+void
+cfg::remove_server(str serv)
+{
+    if (!server_exists(serv)) return;
+    serverlist.erase(serv);
+    SMI(smcfg::cfg)->dellist("/monit/servers", serv);
+}
+
+void
+cfg::set_cluster(str serv, str cluster)
+{
+    if (!server_exists(serv))
+        return;
+    serverlist[serv]->cluster = cluster;
+    SMI(smcfg::cfg)->storestr("/monit/server/" + serv + "/cluster", cluster);
 }
 
 cfg::server*

@@ -28,6 +28,7 @@ public:
 	bool listhas(std::string const& list, std::string const& value);
 
 	void storestr(std::string const& key, std::string const& value);
+        void remstr(str key);
 	void storeint(std::string const& key, int value);
 	void storebool(std::string const& key, bool value);
 	void addlist(std::string const& list, std::string const& value);

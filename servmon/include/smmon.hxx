@@ -35,6 +35,8 @@ public:
 	bool knowntype(str type);
 	bool server_exists(str serv);
 	void create_server(str serv, str type, bool addconf = true);
+        void remove_server(str serv);
+        void set_cluster(str serv, str cluster);
 
 	struct server {
 		server(str name_)
@@ -50,7 +52,7 @@ public:
 		void _stdchecks(void);
 		virtual std::string fmt4irc(void) const = 0;
 		virtual ~server() {}
-		std::string name;
+		std::string name, cluster;
 		enum state_t {
 			state_up,        /* server is completely up                        */
 			state_down,      /* server is completely down                      */
@@ -125,6 +127,7 @@ public:
 	
 private:
 	server* server_fortype(str type, str name);
+        std::string get_option(str server, str option, str type);
 	std::map<std::string, serverp> serverlist;
 	mysqlclientp sqlp;
 };
