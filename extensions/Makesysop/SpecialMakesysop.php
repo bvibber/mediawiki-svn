@@ -35,6 +35,9 @@ function wfSpecialMakesysop() {
 	require_once( "LinksUpdate.php" );
 	
 	global $wgUser, $wgOut, $wgRequest;
+	global $wgMessageCache;
+	$wgMessageCache->addMessage('bureaucrattitle', 'Bureaucrat access required');
+	$wgMessageCache->addMessage('bureaucrattext', 'The action you have requested can only be performed by sysops with "bureaucrat" status.');
 
 	if ( $wgUser->isAnon() or $wgUser->isBlocked() ) {
 		$wgOut->errorpage( "movenologin", "movenologintext" );
@@ -112,8 +115,9 @@ class MakesysopForm {
 		$makeburo = wfMsg( "setbureaucratflag" );
 		$wgOut->addHTML(
 			"<tr>
-				<td>&nbsp;</td><td align=left>
-					<input type=checkbox name=\"wpSetBureaucrat\" value=1>$makeburo
+				<td>&nbsp;</td>
+				<td align='left'>
+					<input type='checkbox' name='wpSetBureaucrat' value='1'>$makeburo</input>
 				</td>
 			</tr>"
 		);
