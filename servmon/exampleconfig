@@ -1,0 +1,13 @@
+# $Header$
+#
+# name of C compiler
+#CC=cc
+#
+# name of C++ compiler
+#CXX=CC
+#
+# flags
+#CFLAGS=-g
+#CXXFLAGS=-g
+#CPPFLAGS=-I/usr/local/include
+#LDFLAGS=-L/usr/local/lib
