@@ -25,7 +25,7 @@ static char const *sm\$compile_release = "`uname -r`";
 static char const *sm\$compile_arch = "`uname -m`";
 static char const *sm\$compile_ident[] = { 
 $idents
-	NULL 
+	(char const *)0 
 };
 #endif
 _EOF_

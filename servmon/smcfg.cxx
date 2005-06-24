@@ -3,6 +3,8 @@
 #include "smcfg.hxx"
 #include "smlog.hxx"
 
+#include "bconf/prelude.h"
+
 namespace smcfg {
 
 namespace {
@@ -223,6 +225,14 @@ cfg::fetchint(std::string const& key)
 {
 	if (intvals.find(key) == intvals.end())
 		throw nokey();
+	return intvals[key];
+}
+
+int
+cfg::fetchint(std::string const& key, int deflt)
+{
+	if (intvals.find(key) == intvals.end())
+		return deflt;
 	return intvals[key];
 }
 

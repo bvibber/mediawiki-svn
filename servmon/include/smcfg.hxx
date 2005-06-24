@@ -23,6 +23,7 @@ public:
 	
 	std::string const& fetchstr(std::string const& key);
 	int fetchint(std::string const& key);
+	int fetchint(std::string const& key, int);
 	bool fetchbool(std::string const& key);
 	std::set<std::string> const& fetchlist(std::string const& key);
 	bool listhas(std::string const& list, std::string const& value);

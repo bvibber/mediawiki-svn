@@ -95,7 +95,7 @@ HDL(cmd_login) {
 		}
                 cd.term.wrt("Type username: ");
 		cd.term.readline(boost::bind(&cmd_login::vfyusername, this, _1, _2));
-		
+
 		return true;
 	}
 	void vfyusername(smtrm::terminal& trm, std::string const& user) const {
@@ -327,7 +327,7 @@ HDL(cfg_irc_noenableserver) {
 
 HDL(cmd_monit_showservers) {
 	EX1(cd) {
-		std::map<std::string, smmon::cfg::serverp> servers;
+		std::map<std::string, serverp> servers;
 		if (cd.num_params() == 0) {
 			servers = SMI(smmon::cfg)->servers();
 		} else {
@@ -338,13 +338,13 @@ HDL(cmd_monit_showservers) {
 				return true;
 			}
 		}
-		for(std::map<std::string, smmon::cfg::serverp>::const_iterator i
+		for(std::map<std::string, serverp>::const_iterator i
 			    = servers.begin(), end = servers.end(); i != end; ++i) {
 			cd.term.wrtln(i->first + ":");
 			cd.term.wrtln("  Type:  " + i->second->type());
 			if (i->second->type() == "Squid") {
-				shared_ptr<smmon::cfg::squidserver> p =
-					b::dynamic_pointer_cast<smmon::cfg::squidserver>(i->second);
+				shared_ptr<squidserver> p =
+					b::dynamic_pointer_cast<squidserver>(i->second);
 				cd.term.wrtln(b::io::str(b::format("  Requests/sec:    %d") % p->rpsv));
 				cd.term.wrtln(b::io::str(b::format("  Hits/sec:        %d") % p->hpsv));
 				float perc = 0;
@@ -352,8 +352,8 @@ HDL(cmd_monit_showservers) {
 					perc = (float(p->hpsv)/p->rpsv)*100;
 				cd.term.wrtln(b::io::str(b::format("  Cache hit ratio: %02.2f%%") % perc));
 			} else if (i->second->type() == "MySQL") {
-				shared_ptr<smmon::cfg::mysqlserver> p =
-					b::dynamic_pointer_cast<smmon::cfg::mysqlserver>(i->second);
+				shared_ptr<mysqlserver> p =
+					b::dynamic_pointer_cast<mysqlserver>(i->second);
 				std::string mastername;
 				try {
 					mastername = SMI(smcfg::cfg)->fetchstr("/monit/mysql/master");
@@ -430,7 +430,7 @@ HDL(cfg_monit_server_max_disk_low) {
 			cd.term.message(SM$FAC_MONIT, SM$MSG_NODISK, cd.p(0), cd.p(1));
 			return true;
 		}
-		
+
 		try {
 			SMI(smalrm::mgr)->set_lowthresh("disk free for "+cd.p(0)+":"+cd.p(1)+" (MB)",
 							lexical_cast<int>(cd.p(2)));

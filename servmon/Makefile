@@ -54,6 +54,10 @@ bconf/headers.h:
 	echo '#include <sys/mnttab.h>' >>test.c
 	-($(CC) -c -o /dev/null test.c && echo '#define T_SYS_MNTTAB 1') >>bconf/headers.h
 	rm -f test.c
+clean:
+	rm -rf bconf
+	rm -f servmon systatd smlogmsg smlogmsg.o systatd.o msgtab.cxx msgtab.hxx $(SERVMONOBJS)
+configure: bconf/prelude.h bconf/ldflags bconf/headers.h
 .PHONY: install clean
 .SUFFIXES: .cxx .c .o
 .KEEP_STATE:

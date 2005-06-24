@@ -11,15 +11,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifdef HAVE_PATHS_H
+#include "bconf/headers.h"
+
+#ifdef T_PATHS
 # include <paths.h>
 #endif
 
-#ifdef HAVE_MNTENT_H
+#ifdef T_MNTENT
 # include <mntent.h>
 #endif
 
-#ifdef HAVE_SYS_MNTTAB_H
+#ifdef T_SYS_MNTTAB
 # include <sys/mnttab.h>
 #endif
 
