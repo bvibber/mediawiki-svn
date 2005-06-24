@@ -9,9 +9,9 @@ SERVMONOBJS=	csmplex.o servmon.o smalrm.o smauth.o smcfg.o	\
 SYSTATDOBJS=	systatd.o
 SMLOGMSGOBJS=	smlogmsg.o
 
-all: servmon smlogmsg systatd
+all: exec smlogmsg systatd sm-monitor
 
-servmon: $(SERVMONOBJS) bconf/ldflags
+exec: $(SERVMONOBJS) bconf/ldflags
 	$(CXX) $(CXXFLAGS) $(SERVMONOBJS) -o $@ $(LDFLAGS) -lboost_thread$(BOOST) \
 		-lboost_regex$(BOOST) -lnetsnmp -lmysqlclient -lssl -lcrypto \
 		`cat bconf/ldflags`
@@ -27,6 +27,16 @@ smlogmsg: smlogmsg.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) smlogmsg.c -o smlogmsg $(LDFLAGS) `cat bconf/ldflags`
 systatd: systatd.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) systatd.c -o systatd $(LDFLAGS) `cat bconf/ldflags`
+sm-monitor: monitor.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) monitor.c -o sm-monitor $(LDFLAGS)
+
+install:
+	mkdir -p $(PREFIX)/bin
+	mkdir -p $(PREFIX)/sbin
+	mkdir -p $(PREFIX)/lib/servmon
+	cp systatd sm-monitor $(PREFIX)/sbin
+	cp smlogmsg $(PREFIX)/bin
+	cp exec $(PREFIX)/lib/servmon
 
 .c.o:
 	$(CC) $(CPPFLAGS) $(CXXFLAGS) -c $<
