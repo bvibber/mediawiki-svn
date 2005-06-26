@@ -25,12 +25,12 @@ int
 main(int argc, char *argv[])
 {
 	boottime = std::time(0);
-	
+
 	if (argc > 1 && !strcmp(argv[1], "-initconf")) {
 		initconf();
-		return 0;
+		return 253;
 	}
-	       
+
 	SMI(smcfg::cfg); // force reading
 	SMI(smirc::cfg)->initialise();
 	SMI(smmon::cfg)->initialise();

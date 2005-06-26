@@ -28,7 +28,7 @@ smlogmsg: smlogmsg.c
 systatd: systatd.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) systatd.c -o systatd $(LDFLAGS) `cat bconf/ldflags`
 sm-monitor: monitor.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) monitor.c -o sm-monitor $(LDFLAGS)
+	$(CC) $(CPPFLAGS) $(CFLAGS) monitor.c -o sm-monitor $(LDFLAGS) `cat bconf/ldflags` -levent
 
 install:
 	mkdir -p $(PREFIX)/bin
