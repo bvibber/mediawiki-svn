@@ -60,6 +60,43 @@ class OAIRepository extends UnlistedSpecialPage {
 		header( 'Content-type: text/xml' );
 		
 		require_once( 'includes/SpecialExport.php' );
+		
+		if( !function_exists( 'revision2xml' ) ) {
+			// Quick hack for 1.5 compatibility.
+			// We'll improve this later to use the new
+			// native interface...
+			function revision2xml( $s, $full, $cur ) {
+				$fname = 'revision2xml';
+				wfProfileIn( $fname );
+				
+				$ts = wfTimestamp2ISO8601( $s->timestamp );
+				$xml = "    <revision>\n";
+				if($full && !$cur)
+					$xml .= "    <id>$s->id</id>\n";
+				$xml .= "      <timestamp>$ts</timestamp>\n";
+				if($s->user) {
+					$u = "<username>" . xmlsafe( $s->user_text ) . "</username>";
+					if($full)
+						$u .= "<id>$s->user</id>";
+				} else {
+					$u = "<ip>" . xmlsafe( $s->user_text ) . "</ip>";
+				}
+				$xml .= "      <contributor>$u</contributor>\n";
+				if( $s->minor_edit ) {
+					$xml .= "      <minor/>\n";
+				}
+				if($s->comment != "") {
+					$c = xmlsafe( $s->comment );
+					$xml .= "      <comment>$c</comment>\n";
+				}
+				$t = xmlsafe( Revision::getRevisionText( $s, "" ) );
+				$xml .= "      <text>$t</text>\n";
+				$xml .= "    </revision>\n";
+				wfProfileOut( $fname );
+				return $xml;
+			}
+		}
+		
 		$repo = new OAIRepo( $wgRequest );
 		$repo->respond();
 	}
@@ -472,43 +509,85 @@ class OAIRepo {
 		}
 	}
 	
+	function newSchema() {
+		global $wgVersion;
+		return version_compare( $wgVersion, '1.5alpha', 'ge' );
+	}
+	
 	function fetchRecord( $pageid ) {
-		$updates = $this->_db->tableName( 'updates' );
-		$cur = $this->_db->tableName( 'cur' );
-		
-		$sql = "SELECT up_page,up_timestamp,up_action,up_sequence,
-		cur_namespace    AS namespace,
-		cur_title        AS title,
-		cur_text         AS text,
-		cur_comment      AS comment,
-		cur_user         AS user,
-		cur_user_text    AS user_text,
-		cur_timestamp    AS timestamp,
-		cur_restrictions AS restrictions,
-		cur_minor_edit   AS minor_edit
-		FROM $updates LEFT JOIN $cur ON cur_id=up_page
-		WHERE up_page=" . IntVal( $pageid ) .
-		' LIMIT 1';
+		extract( $this->_db->tableNames( 'updates', 'cur', 'page', 'revision', 'text' ) );
+		if( $this->newSchema() ) {
+			$sql = "SELECT up_page,up_timestamp,up_action,up_sequence,
+			page_namespace    AS namespace,
+			page_title        AS title,
+			old_text          AS text,
+			old_flags         AS flags,
+			rev_comment       AS comment,
+			rev_user          AS user,
+			rev_user_text     AS user_text,
+			rev_timestamp     AS timestamp,
+			page_restrictions AS restrictions,
+			rev_minor_edit    AS minor_edit
+			FROM $updates,$page,$revision,$text
+			WHERE up_page=" . IntVal( $pageid ) . '
+			AND page_id=up_page
+			AND page_latest=rev_id
+			AND rev_text_id=old_id
+			LIMIT 1';
+		} else {
+			$sql = "SELECT up_page,up_timestamp,up_action,up_sequence,
+			cur_namespace    AS namespace,
+			cur_title        AS title,
+			cur_text         AS text,
+			''               AS flags,
+			cur_comment      AS comment,
+			cur_user         AS user,
+			cur_user_text    AS user_text,
+			cur_timestamp    AS timestamp,
+			cur_restrictions AS restrictions,
+			cur_minor_edit   AS minor_edit
+			FROM $updates LEFT JOIN $cur ON cur_id=up_page
+			WHERE up_page=" . IntVal( $pageid ) .
+			' LIMIT 1';
+		}
 		
 		return $this->_db->resultObject( $this->_db->query( $sql ) );
 	}
 	
 	function fetchRows( $from, $until, $chunk, $token = null ) {
-		$updates = $this->_db->tableName( 'updates' );
-		$cur = $this->_db->tableName( 'cur' );
+		extract( $this->_db->tableNames( 'updates', 'cur', 'page', 'revision', 'text' ) );
 		$chunk = IntVal( $chunk );
 		
-		$sql = "SELECT up_page,up_timestamp,up_action,up_sequence,
-		cur_namespace    AS namespace,
-		cur_title        AS title,
-		cur_text         AS text,
-		cur_comment      AS comment,
-		cur_user         AS user,
-		cur_user_text    AS user_text,
-		cur_timestamp    AS timestamp,
-		cur_restrictions AS restrictions,
-		cur_minor_edit   AS minor_edit
-		FROM $updates LEFT JOIN $cur ON cur_id=up_page ";
+		if( $this->newSchema() ) {
+			$sql = "SELECT up_page,up_timestamp,up_action,up_sequence,
+			page_namespace    AS namespace,
+			page_title        AS title,
+			old_text          AS text,
+			old_flags         AS flags,
+			rev_comment       AS comment,
+			rev_user          AS user,
+			rev_user_text     AS user_text,
+			rev_timestamp     AS timestamp,
+			page_restrictions AS restrictions,
+			rev_minor_edit    AS minor_edit
+			FROM $updates
+			LEFT JOIN $page ON page_id=up_page
+			LEFT JOIN $revision ON page_latest=rev_id
+			LEFT JOIN $text ON rev_text_id=old_id ";
+		} else {
+			$sql = "SELECT up_page,up_timestamp,up_action,up_sequence,
+			cur_namespace    AS namespace,
+			cur_title        AS title,
+			cur_text         AS text,
+			''               AS flags,
+			cur_comment      AS comment,
+			cur_user         AS user,
+			cur_user_text    AS user_text,
+			cur_timestamp    AS timestamp,
+			cur_restrictions AS restrictions,
+			cur_minor_edit   AS minor_edit
+			FROM $updates LEFT JOIN $cur ON cur_id=up_page ";
+		}
 		$where = array();
 		if( $token ) {
 			$where[] = 'up_sequence >= ' . IntVal( $token );
@@ -682,7 +761,7 @@ class WikiOAIRecord extends OAIRecord {
 			oaiTag( 'dc:identifier',  array(), $title->getFullUrl() ) . "\n" .
 			oaiTag( 'dc:contributor', array(), $this->_row->user_text ) . "\n" .
 			oaiTag( 'dc:date',        array(), oaiDatestamp( $this->getDatestamp() ) ) . "\n" .
-			oaiTag( 'dc:description', array(), $this->_row->text ) . "\n" .
+			oaiTag( 'dc:description', array(), Article::getRevisionText( $this->_row, '' ) ) . "\n" .
 			"</oai_dc:dc>\n";
 		return $out;
 	}
