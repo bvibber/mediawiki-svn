@@ -800,7 +800,11 @@ class WikiOAIRecord extends OAIRecord {
 			array( 'img_name' => $this->_row->title ),
 			$fname );
 		if( $imageRow ) {
-			$url = Image::wfImageUrl( $imageRow->img_name );
+			if( OAIRepo::newSchema() ) {
+				$url = Image::imageUrl( $imageRow->img_name );
+			} else {
+				$url = Image::wfImageUrl( $imageRow->img_name );
+			}
 			if( $url{0} == '/' ) {
 				global $wgServer;
 				$url = $wgServer . $url;
