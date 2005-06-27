@@ -3,21 +3,24 @@
 # Wikimedia Foundation Board of Trustees Election
 
 # Not a valid entry point, skip unless MEDIAWIKI is defined
-if (defined('MEDIAWIKI')) {
+if (!defined('MEDIAWIKI')) {
+	die( "Not a valid entry point\n" );
+}
 
 # Register extension
 $wgExtensionFunctions[] = "wfBoardvoteSetup";
 
-# This extension act as a special page
+# This extension acts as a special page
 
 # Default settings
-if ( !isset( $wgBoardVoteDB ) ) $wgBoardVoteDB = "boardvote";
-if ( !isset( $wgContributingCandidates ) ) $wgContributingCandidates = array();
-if ( !isset( $wgContributingCandidates ) ) $wgVolunteerCandidates = array();
-if ( !isset( $wgGPGCommand ) ) $wgGPGCommand = "gpg";
-if ( !isset( $wgGPGRecipient ) ) $wgGPGRecipient = "boardvote";
-if ( !isset( $wgGPGHomedir ) ) $wgGPGHomedir = false;
-if ( !isset( $wgGPGPubKey ) ) $wgGPGPubKey = "C:\\Program Files\\gpg\\pub.txt";
+$wgBoardVoteDB = "boardvote";
+$wgBoardCandidates = array();
+$wgGPGCommand = "gpg";
+$wgGPGRecipient = "boardvote";
+$wgGPGHomedir = false;
+$wgGPGPubKey = "C:\\Program Files\\gpg\\pub.txt";
+$wgBoardVoteEditCount = 400;
+$wgBoardVoteCountDate = '20050530000000';
 
 function wfBoardvoteSetup()
 {
@@ -26,7 +29,7 @@ global $IP;
 require_once( "$IP/includes/SpecialPage.php" );
 
 class BoardVotePage extends SpecialPage {
-	var $mPosted, $mContributing, $mVolunteer, $mDBname, $mUserDays, $mUserEdits;
+	var $mPosted, $mVotedFor, $mDBname, $mUserDays, $mUserEdits;
 	var $mHasVoted, $mAction, $mUserKey, $mId, $mFinished;
 
 	function BoardVotePage() {
@@ -34,12 +37,11 @@ class BoardVotePage extends SpecialPage {
 	}
 
 	function execute( $par ) {
-		global $wgUser, $wgDBname, $wgInputEncoding, $wgRequest, $wgBoardVoteDB;
+		global $wgUser, $wgDBname, $wgInputEncoding, $wgRequest, $wgBoardVoteDB, $wgBoardVoteEditCount;
 
 		$this->mUserKey = iconv( $wgInputEncoding, "UTF-8", $wgUser->getName() ) . "@$wgDBname";
 		$this->mPosted = $wgRequest->wasPosted();
-		$this->mContributing = $wgRequest->getVal( "contributing", array() );
-		$this->mVolunteer = $wgRequest->getVal( "volunteer", array() );
+		$this->mVotedFor = $wgRequest->getArray( "votedfor", array() );
 		$this->mId = $wgRequest->getInt( "id", 0 );
 		
 		$this->mDBname = $wgBoardVoteDB;
@@ -53,11 +55,12 @@ class BoardVotePage extends SpecialPage {
 
 		$this->setHeaders();
 
-		if ( time() > 1087084800 ) {
-			$this->mFinished = true; 
-		} else {
+		//if ( time() > 1087084800 ) {
+		//	$this->mFinished = true; 
+		//} else {
 			$this->mFinished = false;
-		}
+		//}
+
 		if ( $this->mAction == "list" ) {
 			$this->displayList();
 		} elseif ( $this->mAction == "dump" ) {
@@ -71,7 +74,7 @@ class BoardVotePage extends SpecialPage {
 				$this->notLoggedIn();
 			} else {
 				$this->getQualifications( $wgUser );
-				if ( $this->mUserDays < 90 ) {
+				if ( $this->mUserEdits < $wgBoardVoteEditCount ) {
 					$this->notQualified();
 				} elseif ( $this->mPosted ) {
 					$this->logVote();
@@ -92,7 +95,7 @@ class BoardVotePage extends SpecialPage {
 	function hasVoted( &$user ) {
 		global $wgDBname;
 		$dbr =& wfGetDB( DB_SLAVE );
-		$row = $dbr->selectRow( $this->mDBname . ".log", array( "1" ), 
+		$row = $dbr->selectRow( "`{$this->mDBname}`.log", array( "1" ), 
 		  array( "log_user_key" => $this->mUserKey ), "BoardVotePage::getUserVote" );
 		if ( $row === false ) {
 			return false;
@@ -110,23 +113,28 @@ class BoardVotePage extends SpecialPage {
 		$encrypted = $this->encrypt( $record );
 		$gpgKey = file_get_contents( $wgGPGPubKey );
 		$dbw =& wfGetDB( DB_MASTER );
-		$log = $dbw->tableName( "{$this->mDBname}.log" );
+		$log = $dbw->tableName( "`{$this->mDBname}`.log" );
 
 		# Mark previous votes as old
 		$encKey = $dbw->strencode( $this->mUserKey );
 		$sql = "UPDATE $log SET log_current=0 WHERE log_user_key='$encKey'";
-		$db->query( $sql, $fname );
+		$dbw->query( $sql, $fname );
+
 		# Add vote to log
-		$db->insert( $log, array(
+		$xff = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+		if ( !$xff ) {
+			$xff = '';
+		}
+		
+		$dbw->insert( $log, array(
 			"log_user" => $wgUser->getID(),
 			"log_user_text" => $wgUser->getName(),
 			"log_user_key" => $this->mUserKey,
 			"log_wiki" => $wgDBname,
 			"log_edits" => $this->mUserEdits,
-			"log_days" => $this->mUserDays,
 			"log_record" => $encrypted,
 			"log_ip" => $wgIP,
-			"log_xff" => @$_SERVER['HTTP_X_FORWARDED_FOR'],
+			"log_xff" => $xff,
 			"log_ua" => $_SERVER['HTTP_USER_AGENT'],
 			"log_timestamp" => $now,
 			"log_current" => 1
@@ -136,7 +144,7 @@ class BoardVotePage extends SpecialPage {
 	}
 	
 	function displayVote() {
-		global $wgContributingCandidates, $wgVolunteerCandidates, $wgOut;
+		global $wgBoardCandidates, $wgOut;
 		
 		$thisTitle = Title::makeTitle( NS_SPECIAL, "Boardvote" );
 		$action = $thisTitle->getLocalURL( "action=vote" );
@@ -145,36 +153,23 @@ class BoardVotePage extends SpecialPage {
 		} else {
 			$intro = wfMsg( "boardvote_intro" );
 		}
-		$contributing = wfMsg( "boardvote_contributing" );
-		$volunteer = wfMsg( "boardvote_volunteer" );
+
 		$ok = wfMsg( "ok" );
 		
-		$candidatesV = $candidatesC = array();
-		foreach( $wgContributingCandidates as $i => $candidate ) {
-			$candidatesC[] = array( $i, $candidate );
+		$candidates = array();
+		foreach( $wgBoardCandidates as $i => $candidate ) {
+			$candidates[] = array( $i, $candidate );
 		}
-		foreach ( $wgVolunteerCandidates as $i => $candidate ) {
-			$candidatesV[] = array( $i, $candidate );
-		}
-
+		
 		srand ((float)microtime()*1000000);
-		shuffle( $candidatesC );
-		shuffle( $candidatesV );
+		shuffle( $candidates );
 
 		$text = "
 		  $intro
 		  <form name=\"boardvote\" id=\"boardvote\" method=\"post\" action=\"$action\">
-		  <table border='0'><tr><td colspan=2>
-		  <h2>$contributing</h2>
-		  </td></tr>";
-		foreach ( $candidatesC as $candidate ) {
-			$text .= $this->voteEntry( $candidate[0], $candidate[1], "contributing" );
-		}
-		$text .= "
-		  <tr><td colspan=2>
-		  <h2>$volunteer</h2></td></tr>";
-		foreach ( $candidatesV as $candidate ) {
-			$text .= $this->voteEntry( $candidate[0], $candidate[1], "volunteer" );
+		  <table border='0'>";
+		foreach ( $candidates as $candidate ) {
+			$text .= $this->voteEntry( $candidate[0], $candidate[1] );
 		}
 		
 		$text .= "<tr><td>&nbsp;</td><td>
@@ -184,40 +179,39 @@ class BoardVotePage extends SpecialPage {
 		$wgOut->addHTML( $text );
 	}
 
-	function voteEntry( $index, $candidate, $name ) {
+	function voteEntry( $index, $candidate ) {
 		return "
 		<tr><td align=\"right\">
-		  <input type=\"checkbox\" name=\"{$name}[{$index}]\" value=\"1\">
+		  <input type=\"checkbox\" name=\"votedfor[{$index}]\" value=\"1\">
 		</td><td align=\"left\">
 		  $candidate
 		</td></tr>";
 	}
 
 	function notLoggedIn() {
-		global $wgOut;
-		$wgOut->addWikiText( wfMsg( "boardvote_notloggedin" ) );
+		global $wgOut, $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgLang;
+		$wgOut->addWikiText( wfMsg( "boardvote_notloggedin", $wgBoardVoteEditCount, 
+   			$wgLang->timeanddate( $wgBoardVoteCountDate ) ) );
 	}
 	
 	function notQualified() {
-		global $wgOut;
-		$wgOut->addWikiText( wfMsg( "boardvote_notqualified", $this->mUserDays ) );
+		global $wgOut, $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgLang;
+		$wgOut->addWikiText( wfMsg( "boardvote_notqualified", $this->mUserEdits, 
+   			$wgLang->timeanddate( $wgBoardVoteCountDate ), $wgBoardVoteEditCount ) );
 	}
 	
 	function getRecord() {
-		global $wgContributingCandidates, $wgVolunteerCandidates;
-		
-		$file = @fopen( "/dev/urandom", "r" );
-		if ( $file ) {
-			$salt = implode( "", unpack( "H*", fread( $file, 64 ) ));
-			fclose( $file );
-		} else {
-			$salt = Parser::getRandomString() . Parser::getRandomString();
-		}
+		global $wgBoardCandidates;
 		
 		$record = 
-		  "Contributing: " . implode( ", ", wfArrayLookup( $wgContributingCandidates, $this->mContributing ) ). "\n" .
-		  "Volunteer: " . implode( ", ", wfArrayLookup( $wgVolunteerCandidates , $this->mVolunteer ) ). "\n" .
-		  "Salt: $salt\n";
+		  "I voted for: " . implode( ", ", wfArrayLookup( $wgBoardCandidates, $this->mVotedFor ) ). "\n";
+
+		// Pad it out with spaces to a constant length, so that the encrypted record is secure
+		$padLength = array_sum( array_map( 'strlen', $wgBoardCandidates ) ) + count( $wgBoardCandidates ) * 2 + 20;
+		//           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^
+		//               length of the candidate names added together            room for separators           extra
+
+		$record = str_pad( $record, $padLength );
 		return $record;
 	}
 
@@ -234,16 +228,21 @@ class BoardVotePage extends SpecialPage {
 
 		# Call GPG
 		$command = wfEscapeShellArg( $wgGPGCommand ) . " --batch --yes -ear " . 
-		  wfEscapeShellArg( $wgGPGRecipient ) . " -o " . wfEscapeShellArg( $output );
+			wfEscapeShellArg( $wgGPGRecipient ) . " -o " . wfEscapeShellArg( $output );
 		if ( $wgGPGHomedir ) {
 			$command .= " --homedir " . wfEscapeShellArg( $wgGPGHomedir );
 		} 
-		$command .= " " . wfEscapeShellArg( $input );
+		$command .= " " . wfEscapeShellArg( $input ) . " 2>&1";
 
-		shell_exec( $command );
+		$error = shell_exec( $command );
 
 		# Read result
 		$result = file_get_contents( $output );
+
+		if ( !$result ) {
+			//$result = "Command: $command\nError: $error";
+			$result = "Error\n";
+		}
 
 		# Delete temporary files
 		unlink( $input );
@@ -253,49 +252,49 @@ class BoardVotePage extends SpecialPage {
 	}
 
 	function getQualifications( &$user ) {
+		global $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgVersion;
+		
 		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'cur', 'old' ) );
 
+		# Count contributions before $wgBoardVoteCountDate
+		
 		$id = $user->getID();
 		if ( !$id ) {
-			$this->mUserDays = 0;
 			$this->mUserEdits = 0;
 			return;
 		}
+		$date = $dbr->addQuotes( $wgBoardVoteCountDate );
 
-		# Count contributions and find earliest edit
-		# First cur
-		$sql = "SELECT COUNT(*) as n, MIN(cur_timestamp) as t FROM $cur WHERE cur_user=$id";
-		$res = $dbr->query( $sql, "BoardVotePage::getQualifications" );
-		$cur = $dbr->fetchObject( $res );
-		$dbr->freeResult( $res );
-
-		# If the user has stacks of contributions, don't check old as well
-		$now = time();
-		if ( is_null( $cur->t ) ) {
-			$signup = $now;
+		if ( version_compare( $wgVersion, '1.5alpha1' ) >= 0 ) {
+			# New schema
+			extract( $dbr->tableNames( 'revision' ) );
+			$sql = "SELECT COUNT(*) as n FROM $revision WHERE rev_timestamp<=$date AND rev_user=$id";
+			$res = $dbr->query( $sql, "BoardVotePage::getQualifications" );
+			$row = $dbr->fetchObject( $res );
+			$this->mUserEdits = $row->n;
 		} else {
-			$signup = wfTimestamp2Unix( $cur->t );
-		}
-		
-		$days = ($now - $signup) / 86400;
-		if ( $cur->n > 400 && $days > 180 ) {
-			$this->mUserDays = 0x7fffffff;
-			$this->mUserEdits = 0x7fffffff;
-			return;
-		}
+			# Old schema
+			extract( $dbr->tableNames( 'cur', 'old' ) );
+			# First cur
+			$sql = "SELECT COUNT(*) as n FROM $cur WHERE cur_timestamp<=$date AND cur_user=$id";
+			$res = $dbr->query( $sql, "BoardVotePage::getQualifications" );
+			$cur = $dbr->fetchObject( $res );
+			$dbr->freeResult( $res );
 
-		# Now check old
-		$sql = "SELECT COUNT(*) as n, MIN(old_timestamp) as t FROM $old WHERE old_user=$id";
-		$res = $dbr->query( $sql, DB_SLAVE, "BoardVotePage::getQualifications" );
-		$old = $dbr->fetchObject( $res );
-		$dbr->freeResult( $res );
-		
-		if ( !is_null( $old->t ) ) {
-			$signup = min( wfTimestamp2Unix( $old->t ), $signup );
+			# If the user has stacks of contributions, don't check old as well			
+			if ( $cur->n > $wgBoardVoteEditCount * 2 ) {
+				$this->mUserEdits = 0x7fffffff;
+				return;
+			}
+
+			# Now check old
+			$sql = "SELECT COUNT(*) as n FROM $old WHERE old_timestamp<=$date AND old_user=$id";
+			$res = $dbr->query( $sql, DB_SLAVE, "BoardVotePage::getQualifications" );
+			$old = $dbr->fetchObject( $res );
+			$dbr->freeResult( $res );
+			
+			$this->mUserEdits = $cur->n + $old->n;
 		}
-		$this->mUserDays = (int)(($now - $signup) / 86400);
-		$this->mUserEdits = $cur->n + $old->n;
 	}
 	
 	function displayList() {
@@ -304,7 +303,7 @@ class BoardVotePage extends SpecialPage {
 		$userRights = $wgUser->getRights();
 		$admin = $this->isAdmin();
 		$dbr =& wfGetDB( DB_SLAVE );
-		$log = $dbr->tableName( "{$this->mDBname}.log" );
+		$log = $dbr->tableName( "`{$this->mDBname}`.log" );
 
 		$sql = "SELECT * FROM $log ORDER BY log_user_key";
 		$res = $dbr->query( $sql, "BoardVotePage::list" );
@@ -320,7 +319,6 @@ class BoardVotePage extends SpecialPage {
 		$hTime = wfMsg( "boardvote_time" );
 		$hUser = wfMsg( "boardvote_user" );
 		$hEdits = wfMsg( "boardvote_edits" );
-		$hDays = wfMsg( "boardvote_days" );
 		$hIp = wfMsg( "boardvote_ip" );
 		$hUa = wfMsg( "boardvote_ua" );
 
@@ -330,8 +328,6 @@ class BoardVotePage extends SpecialPage {
 			$hTime
 		  </th><th>
 			$hEdits
-		  </th><th>
-			$hDays
 		  </th>";
 
 		if ( $admin ) {
@@ -361,15 +357,12 @@ class BoardVotePage extends SpecialPage {
 				$cellClose = "</del>$cellClose";
 			}
 			$edits = $row->log_edits == 0x7fffffff ? "many" : $row->log_edits;
-			$days = $row->log_days == 0x7fffffff ? "many" : $row->log_days;
 			$s .= "<tr>$cellOpen
 				  $user
 				{$cellClose}{$cellOpen}
 				  $time
 				{$cellClose}{$cellOpen}
 				  $edits
-				{$cellClose}{$cellOpen}
-				  $days
 				{$cellClose}";
 
 			if ( $admin ) {
@@ -399,7 +392,7 @@ class BoardVotePage extends SpecialPage {
 	function dump() {
 		global $wgOut, $wgOutputEncoding, $wgLang, $wgUser;
 		$dbr =& wfGetDB( DB_SLAVE );
-		$log = $dbr->tableName( "{$this->mDBname}.log" );
+		$log = $dbr->tableName( "`{$this->mDBname}`.log" );
 
 		$sql = "SELECT log_record FROM $log WHERE log_current=1 AND log_strike=0";
 		$res = $dbr->query( $sql, DB_SLAVE, "BoardVotePage::list" );
@@ -430,7 +423,7 @@ class BoardVotePage extends SpecialPage {
 		global $wgOut;
 		
 		$dbw =& wfGetDB( DB_MASTER );
-		$log = $dbw->tableName( "{$this->mDBname}.log" );
+		$log = $dbw->tableName( "`{$this->mDBname}`.log" );
 
 		if ( !$this->isAdmin() ) {
 			$wgOut->addWikiText( wfMsg( "boardvote_needadmin" ) );
@@ -456,10 +449,9 @@ $wgMessageCache->addMessages( array(
 * [[Special:Boardvote/list|List votes to date]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]",
 "boardvote_intro"         => "
-<p>Welcome to the first elections for the Wikimedia Board of Trustees. We are
+<p>Welcome to the second elections for the Wikimedia Board of Trustees. We are
 voting for two people to represent the community of users on the various
-Wikimedia projects: the <strong>Contributing Active User Representative</strong> and the
-<strong>Volunteer User Representative</strong>. They will help to determine the future direction
+Wikimedia projects. They will help to determine the future direction
 that the Wikimedia projects will take, individually and as a group, and
 represent <em>your</em> interests and concerns to the Board of Trustees. They will
 decide on ways to generate income and the allocation of moneys raised.</p>
@@ -469,13 +461,13 @@ before voting. Each of the candidates is a respected user, who has contributed
 considerable time and effort to making these projects a welcoming environment
 committed to the pursuit and free distribution of human knowledge.</p>
 
-<p>You may vote for as many candidates in each category as you want. The
+<p>You may vote for as many candidates as you want. The
 candidate with the most votes in each position will be declared the winner of that
 position. In the event of a tie, a run-off election will be held.</p>
 
 <p>For more information, see:</p>
-<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ\" class=\"external\">Election FAQ</a></li>
-<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates\" class=\"external\">Candidates</a></li></ul>
+<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2005\" class=\"external\">Election FAQ</a></li>
+<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2005\" class=\"external\">Candidates</a></li></ul>
 ",
 "boardvote_intro_change"  => "<p>You have voted before. However you may change 
 your vote using the form below. Please check the boxes next to each candidate whom 
@@ -497,12 +489,10 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 
 [[Special:Boardvote/entry|Back]]",
 "boardvote_notloggedin"   => "You are not logged in. To vote, you must use an account
-which has existed for at least 90 days.",
-"boardvote_notqualified"  => "Sorry, your first contribution was only $1 days ago. 
-You need to have been contributing for at least 90 days to vote in this election.",
+with at least $1 contributions before $2.",
+"boardvote_notqualified"  => "Sorry, you made only $1 edits before $2. You 
+need at least $3 to be able to vote.",
 "boardvote_novotes"       => "Nobody has voted yet.",
-"boardvote_contributing"  => "Contributing candidate",
-"boardvote_volunteer"     => "Volunteer candidate",
 "boardvote_time"          => "Time",
 "boardvote_user"          => "User",
 "boardvote_edits"         => "Edits",
@@ -515,7 +505,7 @@ to date. $1 for the encrypted data.</p>",
 "boardvote_strike"        => "Strike",
 "boardvote_unstrike"      => "Unstrike",
 "boardvote_needadmin"     => "Only election administrators can perform this operation.",
-"boardvote_sitenotice"    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:  Vote open until June 12",
+"boardvote_sitenotice"    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:  Vote open until July 11",
 ));
 /*
 global $wgSiteNotice, $wgUser;
@@ -528,6 +518,5 @@ if ( $wgUser->getID() != 0 ) {
 */
 
 } # End of extension function
-} # End of invocation guard
 
 ?>
