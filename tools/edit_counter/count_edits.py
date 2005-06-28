@@ -1,16 +1,14 @@
 #! /usr/bin/env python
-#
-# $Header$
-#
-# MediaWiki user edit counter.
-# This code is in the public domain.
 
 execfile("/home/kate/degree.cf", globals());
 
 import sys
+#sys.path.append('/home/kate/pylib64/lib64/python2.3/site-packages')
+sys.path.append('/home/kate/pylib/lib/python2.2/site-packages')
 import MySQLdb
 
 import cgi
+#import cgitb; cgitb.enable()
 f = cgi.FieldStorage()
 
 def getdblist():
@@ -31,7 +29,7 @@ def getdblist():
 if f.has_key('dbname') and f['dbname'].value in getdblist():
 	dbname = f['dbname'].value
 
-print "Content-Type: text/html; charset=iso-8859-1"
+print "Content-Type: text/html; charset=UTF-8"
 print
 print """
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -62,55 +60,37 @@ namespaces = {
 def ns2name(ns):
 	return namespaces[ns]
 
-def editcount(user, nsb):
+def editcount(user):
 	ns = dict()
 	total = 0
 	db = MySQLdb.connect(db=dbname, host=dbserver, user=dbuser, passwd=dbpassword)
 	c = db.cursor()
-	c.execute("SELECT user_id FROM user WHERE user_name=%s", user)
-	t = c.fetchone()
-	if t == None:
-		print "<strong>user '" + cgi.escape(user) + "' does not exist</strong><br/>"
-		return
-	uid = t[0]
-	if nsb:
-		for i in range(0, 16):
-			c.execute("SELECT COUNT(*) FROM cur WHERE cur_user=%s AND cur_namespace=%s", (uid, i))
-			t = c.fetchone()
-			ns[i] = t[0]
-			c.execute("SELECT COUNT(*) FROM old WHERE old_user=%s AND old_namespace=%s", (uid, i))
-			t = c.fetchone()
-			ns[i] += t[0]
-		print """
-<table cellspacing="0">
-<tr><th style="border-bottom: solid 1px black; border-right: solid 1px black">namespace</th><th style="border-bottom: solid 1px black">edits</th></tr>
-"""
-		for nsn in ns.keys():
-			print "<tr><td style='border-right: solid 1px black'>%s</td><td style='text-align: right'>%d</td></tr>" % (ns2name(nsn), ns[nsn])
-			total += ns[nsn]
-		print "</table>"
-	else:
-		c.execute("SELECT COUNT(*) FROM cur WHERE cur_user=%s", uid)
-		t = c.fetchone()
-		total = int(t[0])
-		c.execute("SELECT COUNT(*) FROM old WHERE old_user=%s", uid)
-		t = c.fetchone()
-		total += t[0]
-	print cgi.escape(user) + " has a total of %d edits<br/>" % total
+        c.execute("SELECT page_namespace, COUNT(*) FROM user, revision, page WHERE "
+                "user_name=%s AND rev_user = user_id AND rev_page = page_id "
+                "GROUP BY page_namespace", user);
+        
+        print "<table style='border: solid 1px black' cellspacing='0' cellpadding='3'>"
+        print "<tr><th>Namespace</th><th>Edits</th></tr>"
+        t = c.fetchone()
+        while t != None:
+            print "<tr><td style='border-right: solid 1px black'>%s</td><td style='text-align: right'>%d</td></tr>" % (ns2name(t[0]), t[1])
+            total += t[1]
+            t = c.fetchone()
+        print "</table>"
+        print "<hr/>Total edits for <string>%s</strong>: %d<br/>" % (cgi.escape(user), total)
 	return
 
 if f.has_key('user'):
 	print "<div>"
 	print "<br/>"
-	nsb = False
-	# too slow
-	#if f.has_key('nsb'):
-	#	nsb = True
-	editcount(f['user'].value, nsb)
+        s = f['user'].value
+        s = s[0].upper() + s[1:]
+	editcount(s)
 	print "</div>"
 
 print """
 <hr/>
+<p><a href="count_edits_14">MW 1.4 version</a></p>
 <form action="count_edits" method="get">
 user name: <input type="text" name="user"/>
 <select name="dbname">
@@ -126,7 +106,6 @@ for db in dblist:
 print """
 </select>
 <input type="submit" value="go" />
-<!--<input type="checkbox" name="nsb"/>breakdown by namespace (slow)-->
 <br/>
 <p>
 <strong>warning:</strong> <em>editcountitis can be fatal</em>
