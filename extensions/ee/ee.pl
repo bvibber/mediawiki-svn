@@ -160,7 +160,7 @@ if($response->code!=302 && !$ignore_login_error) {
 	vdie (_("loginfailed",$login_url,$username,$password));
 }
 
-$response=$browser->get($fileurl);
+$response=$browser->get($fileurl,@ns_headers);
 if($type eq "Edit file") {
 
 	open(OUTPUT,">$unixtempdir/".$filename);
@@ -236,8 +236,8 @@ if($type ne "Diff text") {
 
 } else {
 	# For external diffs, we need to create two temporary files.
-	$response1=$browser->get($fileurl);
-	$response2=$browser->get($secondurl);
+	$response1=$browser->get($fileurl,@ns_headers);
+	$response2=$browser->get($secondurl,@ns_headers);
 	open(DIFF1, ">$unixtempdir/diff-1.txt");
 	select DIFF1; $|=1; select STDOUT;
 	open(DIFF2, ">$unixtempdir/diff-2.txt");
