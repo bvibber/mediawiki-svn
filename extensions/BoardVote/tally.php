@@ -15,8 +15,7 @@ if( $contents === false ) {
 }
 $entries = explode( $end, $contents );
 
-$ctally = array();
-$vtally = array();
+$tally = array();
 $infile = tempnam( "/tmp", "gpg" );
 $outfile = tempnam( "/tmp", "gpg" );
 
@@ -30,40 +29,26 @@ foreach ( $entries as $entry ) {
 	$file = fopen( $infile, "w" );
 	fwrite( $file, trim( $entry ) . "\n" );
 	fclose( $file );
-	`gpg --batch --yes -do $outfile $infile`;
+	`gpg -q --batch --yes -do $outfile $infile`;
 	$lines = file( $outfile );
-	$cset = process_line( $lines[0] );
-	$vset = process_line( $lines[1] );
-	foreach ( $cset as $c ) {
-		if  ( !array_key_exists( $c, $ctally ) ) {
-			$ctally[$c] = 0;
+	$set = process_line( $lines[0] );
+	foreach ( $set as $c ) {
+		if  ( !array_key_exists( $c, $tally ) ) {
+			$tally[$c] = 0;
 		}
-		$ctally[$c]++;
-	}
-	foreach ( $vset as $v ) {
-		if  ( !array_key_exists( $v, $vtally ) ) {
-			$vtally[$v] = 0;
-		}
-
-		$vtally[$v]++;
+		$tally[$c]++;
 	}
 }
 
 unlink( $infile );
 unlink( $outfile );
 
-arsort( $ctally );
-arsort( $vtally );
+arsort( $tally );
 
-print "Contributing representative\n";
-foreach ( $ctally as $candidate => $tally ) {
-	printf( "%-30s%d\n", $candidate, $tally );
+foreach ( $tally as $candidate => $count ) {
+	printf( "%-30s%d\n", $candidate, $count );
 }
 	
-print "\nVolunteer representative\n";
-foreach ( $vtally as $candidate => $tally ) {
-	printf( "%-30s%d\n", $candidate, $tally );
-}
 
 #-----------------------------------------------------------
 
