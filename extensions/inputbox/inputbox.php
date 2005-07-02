@@ -38,8 +38,10 @@ function renderInputbox($input)
 	getBoxOption($width,$input,"width");	
 	getBoxOption($preload,$input,"preload");
 	getBoxOption($editintro,$input,"editintro");
+	# Escapin' time
 	$preload=wfEscapeWikiText($preload);
 	$editintro=wfEscapeWikiText($editintro);
+	$width=intval($width);
 	if($type=="search") {	
 		$inputbox=getSearchForm($width);
 	} elseif($type=="create") {
@@ -53,9 +55,10 @@ function renderInputbox($input)
 	}
 }
 
-function getSearchForm($width=45) {
+function getSearchForm($width) {
 
 	global $wgArticlePath,$wgUser;
+	if(!$width) $width=45;
 	$sk=$wgUser->getSkin();
 	$searchpath=$sk->escapeSearchLink();
 	$tryexact=wfMsg('tryexact');
@@ -80,9 +83,10 @@ ENDFORM;
 	return $searchform;
 }
 
-function getCreateForm($width=45,$preload='',$editintro='') {
+function getCreateForm($width,$preload='',$editintro='') {
 	
 	global $wgScript;	
+	if(!$width) $width=45;	
 	$createarticle=wfMsg("createarticle");
 	$createform=<<<ENDFORM
 <table border="0" width="100%">
