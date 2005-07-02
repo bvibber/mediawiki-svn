@@ -60,7 +60,7 @@ class LatexDoc {
 		global $wgOut, $IP;
 
 		// Filter out obvious insecure control sequences
-		preg_replace( "/\\\\(input|openin|openout|read|write|escapechar)/", 
+		$text = preg_replace( "/\\\\(input|openin|openout|read|write|escapechar)/", 
 		  '\begin{math}\backslash\end{math}\1', $text );
 		
 		// Get path
