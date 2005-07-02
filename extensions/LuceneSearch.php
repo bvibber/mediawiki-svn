@@ -1,30 +1,30 @@
 <?php
 /*
  * Copyright 2004, 2005 Kate Turner, Brion Vibber.
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy 
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights 
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
- * copies of the Software, and to permit persons to whom the Software is 
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in 
+ * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  * $Id$
  */
 
 # To use this, add something like the following to LocalSettings:
-# 
+#
 #  $wgLuceneHost = "192.168.0.1";
 #  $wgLucenePort = 8123;
 #
@@ -43,6 +43,7 @@ $wgLuceneDisableTitleMatches = false;
 
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 require_once("SearchEngine.php");
+require_once("Article.php");
 
 if (defined('MEDIAWIKI')) {
 $wgExtensionFunctions[] = "wfLuceneSearch";
@@ -77,7 +78,7 @@ class LuceneSearch extends SpecialPage
 		$link .= "&amp;offset=$offset&amp;limit=$limit";
 		return $link;
 	}
-	
+
 	function setHeaders() {
 		global $wgRequest;
 		if( $wgRequest->getVal( 'gen' ) == 'titlematch' ) {
@@ -86,7 +87,7 @@ class LuceneSearch extends SpecialPage
 			return parent::setHeaders();
 		}
 	}
-	
+
 	/**
 	 * Callback for formatting of near-match title list.
 	 *
@@ -99,7 +100,7 @@ class LuceneSearch extends SpecialPage
 		return wfMsg( 'searchnearmatch',
 			$this->mSkin->makeKnownLinkObj( $title ) );
 	}
-	
+
 	function execute($par) {
 		global $wgRequest, $wgOut, $wgTitle, $wgContLang, $wgUser,
 			$wgScriptPath, $wgLSuseold, $wgInputEncoding,
@@ -181,7 +182,7 @@ class LuceneSearch extends SpecialPage
 					$editurl = $t->escapeLocalURL('action=edit');
 				}
 				# FIXME: HTML in wiki message
-				$wgOut->addHTML('<p>' . wfMsg('nogomatch', $editurl, 
+				$wgOut->addHTML('<p>' . wfMsg('nogomatch', $editurl,
 					htmlspecialchars($q)) . "</p>\n");
 			}
 
@@ -208,7 +209,7 @@ class LuceneSearch extends SpecialPage
 			// match may be displayed as a suggested search. Link it.
 			if( $results->hasSuggestion() ) {
 				$suggestion = $results->getSuggestion();
-				$o = " " . wfMsg("searchdidyoumean", 
+				$o = " " . wfMsg("searchdidyoumean",
 						$this->makeLink( $suggestion, $offset, $limit ),
 						htmlspecialchars( $suggestion ) );
 				$wgOut->addHTML( "<div style='text-align: center'>".$o."</div>" );
@@ -226,7 +227,7 @@ class LuceneSearch extends SpecialPage
 					$nmtext .= "<hr/>";
 				}
 			}
-	
+
 			$wgOut->addHTML($nmtext);
 
 			if( !$results->hasResults() ) {
@@ -236,11 +237,11 @@ class LuceneSearch extends SpecialPage
 				#$showresults = min($limit, count($results)-$numresults);
 				$i = $offset;
 				$resq = trim(preg_replace("/[ |\\[\\]()\"{}+]+/", " ", $q));
-				$contextWords = implode("|", 
+				$contextWords = implode("|",
 					array_map( array( &$this, 'regexQuote' ),
 						$wgContLang->convertForSearchResult(split(" ", $resq))));
 
-				$top = wfMsg("searchnumber", $offset + 1, 
+				$top = wfMsg("searchnumber", $offset + 1,
 					min($results->getTotalHits(), $offset+$limit), $results->getTotalHits());
 				$out = "<ul>";
 				$numchunks = ceil($results->getTotalHits() / $limit);
@@ -259,7 +260,7 @@ class LuceneSearch extends SpecialPage
 							$prevnext .= "<strong>".($i+1)."</strong> ";
 						else
 							$prevnext .= "<a href=\"".
-								$this->makelink($q, $limit*$i, 
+								$this->makelink($q, $limit*$i,
 								$limit)."\">".($i+1)."</a> ";
 					}
 				}
@@ -282,7 +283,7 @@ class LuceneSearch extends SpecialPage
 		$wgOut->setRobotpolicy('noindex,nofollow');
 		wfProfileOut( $fname );
 	}
-	
+
 	/**
 	 * Stupid hack around PHP's limited lambda support
 	 * @access private
@@ -290,7 +291,7 @@ class LuceneSearch extends SpecialPage
 	function regexQuote( $term ) {
 		return preg_quote( $term, '/' );
 	}
-	
+
 	/**
 	 * Send a list of titles starting with the given prefix.
 	 * These are read by JavaScript code via an XmlHttpRequest
@@ -304,7 +305,7 @@ class LuceneSearch extends SpecialPage
 	function sendTitlePrefixes( $query, $limit ) {
 		global $wgOut, $wgInputEncoding;
 		$wgOut->disable();
-		
+
 		if( $limit < 1 || $limit > 50 )
 			$limit = 20;
 		header("Content-Type: text/plain; charset=$wgInputEncoding");
@@ -334,7 +335,7 @@ class LuceneSearch extends SpecialPage
 		//$contextlines = $wgUser->getOption('contextlines');
 		$contextlines = 2;
 		$contextchars = $wgUser->getOption('contextchars');
-		if ('' == $contextchars) 
+		if ('' == $contextchars)
 			$contextchars = 50;
 
 		$link = $this->mSkin->makeKnownLinkObj($t, '');
@@ -342,11 +343,11 @@ class LuceneSearch extends SpecialPage
 		$rev = $wgLSuseold ? new Article($t) : Revision::newFromTitle($t);
 		if ($rev === null)
 			return "<!--Broken link in search results: ".$t->getDBKey()."-->\n";
-		
+
 		$text = $wgLSuseold ? $rev->getContent(false) : $rev->getText();
 				$size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024), str_word_count($text));
 		$text = $this->removeWiki($text);
-	
+
 		$lines = explode("\n", $text);
 
 		$max = IntVal($contextchars) + 1;
@@ -357,7 +358,7 @@ class LuceneSearch extends SpecialPage
 		$extract = '';
 		wfProfileIn("$fname-extract");
 		foreach ($lines as $line) {
-			if (0 == $contextlines) 
+			if (0 == $contextlines)
 				break;
 			++$lineno;
 			if (!preg_match($pat1, $line, $m))
@@ -425,7 +426,7 @@ class LuceneSearch extends SpecialPage
 			. "<div id='results'></div></div>";
 
 		$ret = $searchField /*. $searchButton*/;
-                return 
+                return
 		  "<form id=\"search\" method=\"get\" "
                   . "action=\"$action\"><input type='hidden' name='title' value='Special:Search'>\n<div>{$ret}</div>\n</form>\n";
 	}
@@ -486,7 +487,7 @@ var searchTimeout;
 function getResults()
 {
   var encStr = escape(searchStr.replace(/ /g, '_'));
-  xmlHttp.open("GET", "$wgScript?title=Special:Search&gen=titlematch&ns0=0&limit=10&search=" 
+  xmlHttp.open("GET", "$wgScript?title=Special:Search&gen=titlematch&ns0=0&limit=10&search="
     + encStr, true);
 
   xmlHttp.onreadystatechange = parseResults;
@@ -563,25 +564,25 @@ class LuceneResult {
 	 */
 	function LuceneResult( $line ) {
 		list( $score, $namespace, $title ) = split( ' ', $line );
-		
+
 		$score     = FloatVal( $score );
 		$namespace = IntVal( $namespace );
 		$title     = urldecode( $title );
-		
+
 		global $wgUseLatin1;
 		if( $wgUseLatin1 ) {
 			global $wgContLang, $wgInputEncoding;
 			$title = $wgContLang->iconv( 'utf-8', $wgInputEncoding, $title );
 		}
-		
+
 		$this->mTitle = Title::makeTitle( $namespace, $title );
 		$this->mScore = $score;
 	}
-	
+
 	function getTitle() {
 		return $this->mTitle;
 	}
-	
+
 	function getScore() {
 		return $this->mScore;
 	}
@@ -602,16 +603,16 @@ class LuceneSearchSet {
 	function newFromQuery( $method, $query, $namespaces = array(), $limit = 10, $offset = 0 ) {
 		$fname = 'LuceneSearchSet::newFromQuery';
 		wfProfileIn( $fname );
-		
+
 		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc;
-		
+
 		if( is_array( $wgLuceneHost ) ) {
 			$pick = mt_rand( 0, count( $wgLuceneHost ) - 1 );
 			$host = $wgLuceneHost[$pick];
 		} else {
 			$host = $wgLuceneHost;
 		}
-		
+
 		global $wgUseLatin1, $wgContLang, $wgInputEncoding;
 		$enctext = rawurlencode( trim( $wgUseLatin1
 			? $wgContLang->iconv( $wgInputEncoding, 'utf-8', $query )
@@ -622,8 +623,8 @@ class LuceneSearchSet {
 				'offset'     => $offset,
 				'limit'      => $limit,
 			) );
-		
-		
+
+
 		// Cache results for fifteen minutes; they'll be read again
 		// on reloads and paging.
 		$key = "$wgDBname:lucene:" . md5( $searchUrl );
@@ -647,7 +648,7 @@ class LuceneSearchSet {
 
 		$suggestion = null;
 		$totalHits = null;
-		
+
 		if( $method == 'search' ) {
 			# This method outputs a summary line first.
 			$totalHits = array_shift( $resultLines );
@@ -664,16 +665,16 @@ class LuceneSearchSet {
 				}
 			}
 		}
-		
+
 		$resultSet = new LuceneSearchSet( $resultLines, $totalHits, $suggestion );
-		
+
 		wfDebug( "$fname: caching lucene results for key $key\n" );
 		$wgMemc->add( $key, $resultSet, $expiry );
-		
+
 		wfProfileOut( $fname );
 		return $resultSet;
 	}
-	
+
 	/**
 	 * Private constructor. Use LuceneSearchSet::newFromQuery().
 	 *
@@ -687,11 +688,11 @@ class LuceneSearchSet {
 		$this->mSuggestion = $suggestion;
 		$this->mResults    = $lines;
 	}
-	
+
 	function hasResults() {
 		return count( $this->mResults ) > 0;
 	}
-	
+
 	/**
 	 * Some search modes return a total hit count for the query
 	 * in the entire article database. This may include pages
@@ -704,7 +705,7 @@ class LuceneSearchSet {
 	function getTotalHits() {
 		return $this->mTotalHits;
 	}
-	
+
 	/**
 	 * Some search modes return a suggested alternate term if there are
 	 * no exact hits. Returns true if there is one on this set.
@@ -715,7 +716,7 @@ class LuceneSearchSet {
 	function hasSuggestion() {
 		return is_string( $this->mSuggestion ) && $this->mSuggestion != '';
 	}
-	
+
 	/**
 	 * Some search modes return a suggested alternate term if there are
 	 * no exact hits. Check hasSuggestion() first.
@@ -726,7 +727,7 @@ class LuceneSearchSet {
 	function getSuggestion() {
 		return $this->mSuggestion;
 	}
-	
+
 	/**
 	 * Iterate over all returned results, passing LuceneResult objects
 	 * to a given callback for processing.
