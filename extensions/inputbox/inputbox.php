@@ -38,10 +38,7 @@ function renderInputbox($input)
 	getBoxOption($width,$input,"width");	
 	getBoxOption($preload,$input,"preload");
 	getBoxOption($editintro,$input,"editintro");
-	# Escapin' time
-	$preload=wfEscapeWikiText($preload);
-	$editintro=wfEscapeWikiText($editintro);
-	$width=intval($width);
+	
 	if($type=="search") {	
 		$inputbox=getSearchForm($width);
 	} elseif($type=="create") {
@@ -56,13 +53,17 @@ function renderInputbox($input)
 }
 
 function getSearchForm($width) {
-
-	global $wgArticlePath,$wgUser;
+	global $wgUser;
+	
+	$width=intval($width);
 	if(!$width) $width=45;
+
 	$sk=$wgUser->getSkin();
-	$searchpath=$sk->escapeSearchLink();
-	$tryexact=wfMsg('tryexact');
-	$searchfulltext=wfMsg('searchfulltext');
+	$searchpath = $sk->escapeSearchLink();
+	
+	$tryexact = wfMsgHtml( 'tryexact' );
+	$searchfulltext = wfMsgHtml( 'searchfulltext' );
+	
 	$searchform=<<<ENDFORM
 <table border="0" width="100%">
 <tr>
@@ -84,18 +85,25 @@ ENDFORM;
 }
 
 function getCreateForm($width,$preload='',$editintro='') {
-	
 	global $wgScript;	
-	if(!$width) $width=45;	
-	$createarticle=wfMsg("createarticle");
+	
+	$width=intval($width);
+	if(!$width) $width = 45;
+	
+	$action = htmlspecialchars( $wgScript );
+	$preloadEnc = htmlspecialchars( $preload );
+	$editintroEnc = htmlspecialchars( $editintro );
+	
+	$createarticle = wfMsgHtml( "createarticle" );
+	
 	$createform=<<<ENDFORM
 <table border="0" width="100%">
 <tr>
 <td align="center">
-<form name="createbox" action="{$wgScript}" method="get" id="createbox">
+<form name="createbox" action="$action" method="get" id="createbox">
 	<input type='hidden' name="action" value="edit">
-	<input type="hidden" name="preload" value="$preload" />
-	<input type="hidden" name="editintro" value="$editintro" />	
+	<input type="hidden" name="preload" value="$preloadEnc" />
+	<input type="hidden" name="editintro" value="$editintroEnc" />	
 	<input id="createboxInput" name="title" type="text"
 	value="" size="$width"/><br />		
 	<input type='submit' name="create" id="createboxButton"
