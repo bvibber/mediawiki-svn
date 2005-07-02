@@ -36,10 +36,14 @@ function renderInputbox($input)
 {
 	getBoxOption($type,$input,"type");	
 	getBoxOption($width,$input,"width");	
+	getBoxOption($preload,$input,"preload");
+	getBoxOption($editintro,$input,"editintro");
+	$preload=wfEscapeWikiText($preload);
+	$editintro=wfEscapeWikiText($editintro);
 	if($type=="search") {	
 		$inputbox=getSearchForm($width);
 	} elseif($type=="create") {
-		$inputbox=getCreateForm($width);
+		$inputbox=getCreateForm($width,$preload,$editintro);
 	}
 	if(isset($inputbox)) {
 		return $inputbox;
@@ -52,7 +56,6 @@ function renderInputbox($input)
 function getSearchForm($width=45) {
 
 	global $wgArticlePath,$wgUser;
-	#$searchpath=str_replace('$1','Special:Search',$wgArticlePath);
 	$sk=$wgUser->getSkin();
 	$searchpath=$sk->escapeSearchLink();
 	$tryexact=wfMsg('tryexact');
@@ -64,10 +67,10 @@ function getSearchForm($width=45) {
 <form name="searchbox" action="$searchpath" id="searchbox">
 	<input id="searchboxInput" name="search" type="text"
 	value="" size="$width"/><br />
-	<input type='submit' name="go" class="searchboxGoButton" id="searchboxGoButton"
+	<input type='submit' name="go" id="searchboxGoButton"
 	value="$tryexact"
 	/>&nbsp;<input type='submit' name="fulltext"
-	class="searchboxSearchButton"
+	id="searchboxSearchButton"
 	value="$searchfulltext" />
 </form>
 </td>
@@ -77,20 +80,22 @@ ENDFORM;
 	return $searchform;
 }
 
-function getCreateForm($width=45) {
+function getCreateForm($width=45,$preload='',$editintro='') {
 	
-	global $wgScript;
-	$editpath="{$wgScript}?action=edit";
+	global $wgScript;	
 	$createarticle=wfMsg("createarticle");
 	$createform=<<<ENDFORM
 <table border="0" width="100%">
 <tr>
 <td align="center">
-<form name="createbox" action="$editpath" method="post" id="createbox">
+<form name="createbox" action="{$wgScript}" method="get" id="createbox">
+	<input type='hidden' name="action" value="edit">
+	<input type="hidden" name="preload" value="$preload" />
+	<input type="hidden" name="editintro" value="$editintro" />	
 	<input id="createboxInput" name="title" type="text"
-	value="" size="$width"/><br />
-	<input type='submit' name="create" class="createboxButton" id="createboxButton"
-	value="$createarticle"/>
+	value="" size="$width"/><br />		
+	<input type='submit' name="create" id="createboxButton"
+	value="$createarticle"/>	
 </form>
 </td>
 </tr>
