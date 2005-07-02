@@ -97,7 +97,9 @@ class LatexDoc {
 
 			// Report errors
 			if ( !file_exists( "$fn.$ext" ) ){ 
+				wfSuppressWarnings();
 				$log = '<pre>' . file_get_contents( "$fn.log" ) . '</pre>';
+				wfRestoreWarnings();
 				$wgOut->addWikiText( wfMsg( 'latexdoc_error', $cmd, $errorText, $log ) );
 				return;
 			}
