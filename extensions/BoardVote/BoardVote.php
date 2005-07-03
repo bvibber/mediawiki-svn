@@ -22,6 +22,10 @@ $wgGPGPubKey = "C:\\Program Files\\gpg\\pub.txt";
 $wgBoardVoteEditCount = 400;
 $wgBoardVoteCountDate = '20050530000000';
 
+if ( isset( $wgGroupPermissions ) ) {
+	$wgGroupPermissions['boardvote'] = array( 'boardvote' => true );
+}
+
 function wfBoardvoteSetup()
 {
 # Look out, freaky indenting
@@ -41,7 +45,11 @@ class BoardVotePage extends SpecialPage {
 
 		$this->mUserKey = iconv( $wgInputEncoding, "UTF-8", $wgUser->getName() ) . "@$wgDBname";
 		$this->mPosted = $wgRequest->wasPosted();
-		$this->mVotedFor = $wgRequest->getArray( "votedfor", array() );
+		if ( method_exists( $wgRequest, 'getArray' ) ) {
+			$this->mVotedFor = $wgRequest->getArray( "votedfor", array() );
+		} else {
+			$this->mVotedFor = $wgRequest->getVal( "votedfor", array() );
+		}
 		$this->mId = $wgRequest->getInt( "id", 0 );
 		
 		$this->mDBname = $wgBoardVoteDB;
@@ -227,7 +235,7 @@ class BoardVotePage extends SpecialPage {
 		fclose( $file );
 
 		# Call GPG
-		$command = wfEscapeShellArg( $wgGPGCommand ) . " --batch --yes -ear " . 
+		$command = wfEscapeShellArg( $wgGPGCommand ) . " --batch --yes -eaisz0 -r" . 
 			wfEscapeShellArg( $wgGPGRecipient ) . " -o " . wfEscapeShellArg( $output );
 		if ( $wgGPGHomedir ) {
 			$command .= " --homedir " . wfEscapeShellArg( $wgGPGHomedir );
@@ -240,8 +248,8 @@ class BoardVotePage extends SpecialPage {
 		$result = file_get_contents( $output );
 
 		if ( !$result ) {
-			//$result = "Command: $command\nError: $error";
-			$result = "Error\n";
+			$result = "Command: $command\nError: $error";
+			//$result = "Error\n";
 		}
 
 		# Delete temporary files
@@ -275,8 +283,11 @@ class BoardVotePage extends SpecialPage {
 		} else {
 			# Old schema
 			extract( $dbr->tableNames( 'cur', 'old' ) );
+			$etad = $dbr->addQuotes( wfInvertTimestamp( $wgBoardVoteCountDate ) );
+			
 			# First cur
-			$sql = "SELECT COUNT(*) as n FROM $cur WHERE cur_timestamp<=$date AND cur_user=$id";
+			#$sql = "SELECT COUNT(*) as n FROM $cur WHERE cur_timestamp<=$date AND cur_user=$id";
+			$sql = "SELECT COUNT(*) as n FROM $cur WHERE inverse_timestamp>=$etad AND cur_user=$id";
 			$res = $dbr->query( $sql, "BoardVotePage::getQualifications" );
 			$cur = $dbr->fetchObject( $res );
 			$dbr->freeResult( $res );
@@ -288,7 +299,8 @@ class BoardVotePage extends SpecialPage {
 			}
 
 			# Now check old
-			$sql = "SELECT COUNT(*) as n FROM $old WHERE old_timestamp<=$date AND old_user=$id";
+			#$sql = "SELECT COUNT(*) as n FROM $old WHERE old_timestamp<=$date AND old_user=$id";
+			$sql = "SELECT COUNT(*) as n FROM $old WHERE inverse_timestamp>=$etad AND old_user=$id";
 			$res = $dbr->query( $sql, DB_SLAVE, "BoardVotePage::getQualifications" );
 			$old = $dbr->fetchObject( $res );
 			$dbr->freeResult( $res );
@@ -505,7 +517,7 @@ to date. $1 for the encrypted data.</p>",
 "boardvote_strike"        => "Strike",
 "boardvote_unstrike"      => "Unstrike",
 "boardvote_needadmin"     => "Only election administrators can perform this operation.",
-"boardvote_sitenotice"    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:  Vote open until July 11",
+"boardvote_sitenotice"    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:  Vote open until July 12",
 ));
 /*
 global $wgSiteNotice, $wgUser;
