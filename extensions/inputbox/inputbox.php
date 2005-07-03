@@ -38,6 +38,7 @@ function renderInputbox($input)
 	getBoxOption($width,$input,"width");	
 	getBoxOption($preload,$input,"preload");
 	getBoxOption($editintro,$input,"editintro");
+	# Make sure you escape any user input in the output!
 	
 	if($type=="search") {	
 		$inputbox=getSearchForm($width);
@@ -68,13 +69,13 @@ function getSearchForm($width) {
 <table border="0" width="100%">
 <tr>
 <td align="center">
-<form name="searchbox" action="$searchpath" id="searchbox">
-	<input id="searchboxInput" name="search" type="text"
+<form name="searchbox" action="$searchpath" class="searchbox">
+	<input class="searchboxInput" name="search" type="text"
 	value="" size="$width"/><br />
-	<input type='submit' name="go" id="searchboxGoButton"
+	<input type='submit' name="go" class="searchboxGoButton"
 	value="$tryexact"
 	/>&nbsp;<input type='submit' name="fulltext"
-	id="searchboxSearchButton"
+	class="searchboxSearchButton"
 	value="$searchfulltext" />
 </form>
 </td>
@@ -100,13 +101,13 @@ function getCreateForm($width,$preload='',$editintro='') {
 <table border="0" width="100%">
 <tr>
 <td align="center">
-<form name="createbox" action="$action" method="get" id="createbox">
+<form name="createbox" action="$action" method="get" class="createbox">
 	<input type='hidden' name="action" value="edit">
 	<input type="hidden" name="preload" value="$preloadEnc" />
 	<input type="hidden" name="editintro" value="$editintroEnc" />	
-	<input id="createboxInput" name="title" type="text"
+	<input class="createboxInput" name="title" type="text"
 	value="" size="$width"/><br />		
-	<input type='submit' name="create" id="createboxButton"
+	<input type='submit' name="create" class="createboxButton"
 	value="$createarticle"/>	
 </form>
 </td>
