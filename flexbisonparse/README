@@ -1,0 +1,18 @@
+flex bison based parser for wiki syntax
+
+Authors: Timwi,  Magnus Manske
+
+
+You need the following packages (at least):
+ _ bison
+ _ flex
+ _ swig
+ _ gcc
+ _ php4-dev
+
+Use the command 'make' to build the htm2xml and wikiparse tool.
+
+'make -f Makefile.mediawiki' will generate a php extension.
+
+wikiparse expect wikitext on standard input and will generate the xml on
+standard output.
