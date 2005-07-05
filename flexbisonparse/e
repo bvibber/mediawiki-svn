@@ -1,3 +1,4 @@
+#!/bin/sh
 swig -php4 wikiparse.i  &&  \
 flex wikilex.l  &&  \
 bison --report=all -d wikiparse.y  &&  \
