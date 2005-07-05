@@ -1,2 +1,10 @@
 This is a [http] link.
 
+Bullet list:
+* first entry
+* second entry
+
+[[Standard link]] and [[pipe link|with a pipe]]
+
+
+'''Bold text''' or ''italic text'', even have '''''fively quoted'''''
