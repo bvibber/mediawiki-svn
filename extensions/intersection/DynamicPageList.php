@@ -78,7 +78,7 @@ function DynamicPageList( $input ) {
     $sOrderMethod = 'categoryadd';
     $sOrder = 'descending';
 
-    #bNamespace = false;
+    $bNamespace = false;
     $iNamespace = 0;
 
     $bSuppressErrors = false;
