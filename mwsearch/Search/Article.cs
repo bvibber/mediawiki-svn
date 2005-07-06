@@ -94,6 +94,10 @@ namespace MediaWiki.Search {
 				return Namespace + ":" + Title;
 			}
 		}
+		
+		public override string ToString() {
+			return "(" + Namespace + ",\"" + Title + "\")";
+		}
 	}
 }
 

@@ -88,7 +88,7 @@ namespace MediaWiki.Search.Updater {
 				try {
 					state = SearchState.ForWiki(dbname);
 					if (what == DOING_FULL_UPDATE)
-						state.initializeIndex();
+						state.InitializeIndex();
 				} catch (Exception e) {
 					Console.WriteLine("Error opening search index: " + e.ToString());
 					return;

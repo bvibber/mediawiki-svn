@@ -4,3 +4,4 @@ Put here to build:
 * Lucene.Net.dll
 * MySql.Data.dll
 * Nini.dll
+* CookComputing.XmlRpc.dll

@@ -72,12 +72,15 @@ namespace MediaWiki.Search {
 			return openWikis[state] != null;
 		}
 		
-		public static void ResetStates() {
+		public static int ResetStates() {
+			int statesReset = 0;
 			lock (openWikis) {
-				foreach (SearchState state in openWikis) {
+				foreach (SearchState state in openWikis.Values) {
 					state.Reopen();
+					statesReset++;
 				}
 			}
+			return statesReset;
 		}
 
 		private string mydbname;
@@ -89,6 +92,7 @@ namespace MediaWiki.Search {
 		
 		IndexWriter writer;
 		bool writable = false;
+		bool _errorOnOpen;
 		
 		// An in-memory directory which we'll write updates into.
 		private Lucene.Net.Store.Directory buffer;
@@ -118,8 +122,10 @@ namespace MediaWiki.Search {
 			log.Info(dbname + " using analyzer " + analyzer.GetType().FullName);
 			try {
 				OpenReader();
+				_errorOnOpen = false;
 			} catch (IOException e) {
 				log.Error(dbname + ": warning: open for read failed");
+				_errorOnOpen = true;
 			}
 			mydbname = dbname;
 		}
@@ -183,11 +189,11 @@ namespace MediaWiki.Search {
 
 		private void Reopen() {
 			try {
-				searcher.Close();
-				reader.Close();
-				reader = IndexReader.Open(indexpath);
-				searcher = new IndexSearcher(reader);
-			} catch (IOException e) {}
+				Close();
+				OpenReader();
+			} catch (IOException e) {
+				log.Error("Exception reopening " + mydbname + ": " + e);
+			}
 		}
 		
 		/**
@@ -230,10 +236,21 @@ namespace MediaWiki.Search {
 		 * Any existing database will be overwritten.
 		 * @throws IOException
 		 */
-		public void initializeIndex() {
+		public void InitializeIndex() {
 			log.Info("Creating new index for " + mydbname);
 			new IndexWriter(indexpath, analyzer, true).Close();
 			OpenReader();
+		}
+		
+		/**
+		 * Create a fresh new index if and only if the index doesn't exist yet.
+		 * @throws IOException
+		 */
+		public void InitializeIfNew() {
+			if (_errorOnOpen) {
+				InitializeIndex();
+				_errorOnOpen = false;
+			}
 		}
 		
 		public void AddArticle(Article article) {
@@ -276,7 +293,8 @@ namespace MediaWiki.Search {
 		 * @param article
 		 * @throws IOException
 		 */
-		private void DeleteArticle(Article article) {
+		public void DeleteArticle(Article article) {
+			OpenForWrite();
 			String key = article.Key;
 			Hits hits = searcher.Search(new TermQuery(
 					new Term("key", key)));

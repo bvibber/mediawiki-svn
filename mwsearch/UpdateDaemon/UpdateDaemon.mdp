@@ -1,0 +1,33 @@
+<Project name="UpdateDaemon" fileversion="2.0" Description="Search index updater daemon.&#xA;Accepts XML-RPC requests on port 8124&#xA;and merges page updates into a copy of&#xA;the index. Periodically that can be copied&#xA;to the search daemons' local read-only dbs." language="C#" ctype="DotNetProject">
+  <Configurations>
+    <Configuration name="Debug" ctype="DotNetProjectConfiguration">
+      <Output directory="./bin/Debug" assembly="MWUpdateDaemon" />
+      <Build debugmode="True" target="Exe" />
+      <Execution executeScript="../../../../../../opt/monodev/bin/mono " runwithwarnings="True" externalconsole="True" consolepause="True" runtime="MsNet" />
+      <CodeGeneration compiler="Csc" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="MediaWiki.Search.UpdateDaemon.Daemon" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+    </Configuration>
+    <Configuration name="Release" ctype="DotNetProjectConfiguration">
+      <Output directory="./bin/Release" assembly="MWUpdateDaemon" />
+      <Build debugmode="False" target="Exe" />
+      <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" />
+      <CodeGeneration compiler="Csc" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+    </Configuration>
+  </Configurations>
+  <References>
+    <ProjectReference type="Assembly" localcopy="True" refto="../libs/CookComputing.XmlRpc.dll" />
+    <ProjectReference type="Project" localcopy="True" refto="Search" />
+    <ProjectReference type="Assembly" localcopy="True" refto="../libs/log4net.dll" />
+    <ProjectReference type="Assembly" localcopy="True" refto="../libs/Lucene.Net.dll" />
+    <ProjectReference type="Assembly" localcopy="True" refto="../libs/Nini.dll" />
+  </References>
+  <DeploymentInformation strategy="File">
+    <excludeFiles />
+  </DeploymentInformation>
+  <Contents>
+    <File name="./Daemon.cs" subtype="Code" buildaction="Compile" />
+    <File name="./AssemblyInfo.cs" subtype="Code" buildaction="Compile" />
+    <File name="./UpdateThread.cs" subtype="Code" buildaction="Compile" />
+    <File name="./app.config" subtype="Code" buildaction="Compile" />
+    <File name="./UpdateRecord.cs" subtype="Code" buildaction="Compile" />
+  </Contents>
+</Project>
