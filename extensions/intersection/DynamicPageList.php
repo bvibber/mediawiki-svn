@@ -64,6 +64,7 @@ function wfDynamicPageList() {
 // The callback function for converting the input text to HTML output
 function DynamicPageList( $input ) {
     global $wgUser;
+    global $wgContLang;
     global $wgDLPminCategories, $wgDLPmaxCategories,$wgDLPMinResultCount, $wgDLPMaxResultCount;
     global $wgDLPAllowUnlimitedResults, $wgDLPAllowUnlimitedCategories;
      
@@ -109,7 +110,7 @@ function DynamicPageList( $input ) {
       }
       else if ('namespace' == $sType)
       {
-        $ns = Namespace::getCanonicalIndex( strtolower($sArg) );
+        $ns = $wgContLang->getNsIndex($sArg);
 	if (NULL != $ns)
 	{
 	  $iNamespace = $ns;
@@ -320,7 +321,7 @@ function DynamicPageList( $input ) {
       if (true == $bShowNamespace)
 	$output .= $sk->makeKnownLinkObj($title);
       else
-	$output .= $sk->makeKnownLinkObj($title, $title->getText());
+	$output .= $sk->makeKnownLinkObj($title, htmlspecialchars($title->getText()));
       $output .= $sEndItem . "\n";
     }
 
