@@ -24,6 +24,7 @@
 
 namespace MediaWiki.Search.UpdateDaemon {
 	using System;
+	using System.IO;
 	using System.Runtime.Remoting;
 	
 	using CookComputing.XmlRpc;
@@ -39,7 +40,9 @@ namespace MediaWiki.Search.UpdateDaemon {
 			Configuration.SetIndexSection("Updater");
 			config = Configuration.Open();
 			
-			RemotingConfiguration.Configure("MWUpdateDaemon.exe.config");
+			string configFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+				"MWUpdateDaemon.exe.config");
+			RemotingConfiguration.Configure(configFile);
 			RemotingConfiguration.RegisterWellKnownServiceType(
 				typeof(Daemon),
 				"SearchUpdater",

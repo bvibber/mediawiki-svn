@@ -11,41 +11,48 @@ LIBS=\
   build/log4net.dll \
   build/Lucene.Net.dll \
   build/MySql.Data.dll \
-  build/Nini.dll
+  build/Nini.dll \
+  build/CookComputing.XmlRpc.dll
 
 ASSEMBLIES=\
   build/MWSearch.dll \
   build/MWPrefix.dll \
   build/MWDaemon.exe \
   build/MWUpdater.exe \
-  build/MWBenchmark.exe
+  build/MWBenchmark.exe \
+  build/MWUpdateDaemon.exe
 
 SCRIPTS=\
   build/MWDaemon.sh \
   build/MWUpdater.sh \
-  build/MWBenchmark.sh
+  build/MWBenchmark.sh \
+  build/MWUpdateDaemon.sh
 
+CONFIG=\
+  build/MWUpdateDaemon.exe.config
 
-all: $(ASSEMBLIES) $(SCRIPTS)
+all: $(ASSEMBLIES) $(SCRIPTS) $(CONFIG)
 
 clean :
-	rm -f build/*.dll build/*.exe build/*.sh
+	rm -f build/*.dll build/*.exe build/*.sh build/*.config
 
 distclean : clean
 
 install: all
 	install -d $(INSTALL_ASSEMBLYDIR)
-	install $(ASSEMBLIES) $(INSTALL_ASSEMBLYDIR)
+	install $(ASSEMBLIES) $(CONFIG) $(INSTALL_ASSEMBLYDIR)
 	install $(LIBS) $(INSTALL_ASSEMBLYDIR)
 	install -m 0755 build/MWDaemon.sh $(INSTALL_BINDIR)/MWBenchmark
 	install -m 0755 build/MWDaemon.sh $(INSTALL_BINDIR)/MWDaemon
 	install -m 0755 build/MWUpdater.sh $(INSTALL_BINDIR)/MWUpdater
+	install -m 0755 build/MWUpdateDaemon.sh $(INSTALL_BINDIR)/MWUpdateDaemon
 	echo "Don't forget to set up /etc/mwsearch.conf"
 
 uninstall :
 	rm -f $(INSTALL_BINDIR)/MWBenchmark
 	rm -f $(INSTALL_BINDIR)/MWDaemon
 	rm -f $(INSTALL_BINDIR)/MWUpdater
+	rm -f $(INSTALL_BINDIR)/MWUpdateDaemon
 	rm -f $(INSTALL_ASSEMBLYDIR)/*.dll
 	rm -f $(INSTALL_ASSEMBLYDIR)/*.exe
 	rmdir $(INSTALL_ASSEMBLYDIR) || true
@@ -159,6 +166,36 @@ build/MWUpdater.sh :
 	echo "#!/bin/sh" > build/MWUpdater.sh
 	echo "mono $(INSTALL_ASSEMBLYDIR)/MWUpdater.exe \$$@" >> build/MWUpdater.sh
 
+# MWUpdateDaemon.exe: database refresher, daemon version
+UPDATEDAEMON_SOURCES=\
+  UpdateDaemon/AssemblyInfo.cs \
+  UpdateDaemon/Daemon.cs \
+  UpdateDaemon/UpdateRecord.cs \
+  UpdateDaemon/UpdateThread.cs
+
+UPDATEDAEMON_LIBS=\
+  build/MWSearch.dll \
+  build/CookComputing.XmlRpc.dll
+
+UPDATEDAEMON_REFERENCES=\
+  -r:build/MWSearch.dll \
+  -r:build/CookComputing.XmlRpc.dll \
+  $(SEARCH_REFERENCES)
+
+build/MWUpdateDaemon.exe : $(UPDATEDAEMON_LIBS) $(UPDATEDAEMON_SOURCES)
+	mcs -target:exe -out:build/MWUpdateDaemon.exe \
+	    $(CSFLAGS) \
+	    $(UPDATEDAEMON_REFERENCES) \
+        $(UPDATEDAEMON_SOURCES)
+
+build/MWUpdateDaemon.sh :
+	echo "#!/bin/sh" > build/MWUpdateDaemon.sh
+	echo "mono $(INSTALL_ASSEMBLYDIR)/MWUpdateDaemon.exe \$$@" >> build/MWUpdateDaemon.sh
+
+build/MWUpdateDaemon.exe.config :
+	cp -p UpdateDaemon/app.config build/MWUpdateDaemon.exe.config
+
+
 build/ICSharpCode.SharpZipLib.dll: libs/ICSharpCode.SharpZipLib.dll
 	cp -p libs/ICSharpCode.SharpZipLib.dll build/
 
@@ -173,3 +210,6 @@ build/MySql.Data.dll: libs/MySql.Data.dll
 
 build/Nini.dll: libs/Nini.dll
 	cp -p libs/Nini.dll build/
+
+build/CookComputing.XmlRpc.dll: libs/CookComputing.XmlRpc.dll
+	cp -p libs/CookComputing.XmlRpc.dll build/
