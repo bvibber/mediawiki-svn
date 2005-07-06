@@ -1,72 +1,72 @@
 <?php
-/*                                                                                                                                  
-                                                                                                                                    
- Purpose:       outputs a bulleted list of most recent                                                                              
-                items residing in a category, or a union                                                                            
-                of several categories.                                                                                              
-                                                                                                                                    
-                                                                                                                                    
- Contributors: n:en:User:IlyaHaykinson n:en:User:Amgine                                                                             
- http://en.wikinews.org/wiki/User:Amgine                                                                                            
- http://en.wikinews.org/wiki/User:IlyaHaykinson                                                                                     
-                                                                                                                                    
- This program is free software; you can redistribute it and/or modify                                                               
- it under the terms of the GNU General Public License as published by                                                               
- the Free Software Foundation; either version 2 of the License, or                                                                  
- (at your option) any later version.                                                                                                
-                                                                                                                                    
- This program is distributed in the hope that it will be useful,                                                                    
- but WITHOUT ANY WARRANTY; without even the implied warranty of                                                                     
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the                                                                       
- GNU General Public License for more details.                                                                                       
-                                                                                                                                    
- You should have received a copy of the GNU General Public License along                                                            
- with this program; if not, write to the Free Software Foundation, Inc.,                                                            
- 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.                                                                           
- http://www.gnu.org/copyleft/gpl.html                                                                                               
-                                                                                                                                    
- Current feature request list                                                                                                       
-     1. Unset cached of calling page                                                                                                
-     2. Alternative formatting (not just unordered list)                                                                            
-     3. Configurable sort order, ascending/descending                                                                               
-     4. RSS feed output?                                                                                                            
-                                                                                                                                    
- To install, add following to LocalSettings.php                                                                                     
-   include("extensions/intersection/DynamicPageList.php");                                                                          
-                                                                                                                                    
+/*
+
+ Purpose:       outputs a bulleted list of most recent
+                items residing in a category, or a union
+                of several categories.
+
+
+ Contributors: n:en:User:IlyaHaykinson n:en:User:Amgine
+ http://en.wikinews.org/wiki/User:Amgine
+ http://en.wikinews.org/wiki/User:IlyaHaykinson
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or 
+ (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ http://www.gnu.org/copyleft/gpl.html
+
+ Current feature request list
+     1. Unset cached of calling page
+     2. Alternative formatting (not just unordered list)
+     3. Configurable sort order, ascending/descending
+     4. RSS feed output?
+
+ To install, add following to LocalSettings.php
+   include("extensions/intersection/DynamicPageList.php");
+
 */
 
-$wgDLPminCategories = 1;                // Minimum number of categories to look for                                                 
-$wgDLPmaxCategories = 4;                // Maximum number of categories to look for 
-$wgDLPMinResultCount = 1;               // Minimum number of results to allow                                                       
-$wgDLPMaxResultCount = 50;              // Maximum number of results to allow                                                       
-$wgDLPAllowUnlimitedResults = true;     // Allow unlimited results                                                                  
-$wgDLPAllowUnlimitedCategories = false; // Allow unlimited categories                                                               
+$wgDLPminCategories = 1;                // Minimum number of categories to look for
+$wgDLPmaxCategories = 4;                // Maximum number of categories to look for
+$wgDLPMinResultCount = 1;               // Minimum number of results to allow
+$wgDLPMaxResultCount = 50;              // Maximum number of results to allow
+$wgDLPAllowUnlimitedResults = true;     // Allow unlimited results
+$wgDLPAllowUnlimitedCategories = false; // Allow unlimited categories
 
 
 $wgExtensionFunctions[] = "wfDynamicPageList";
 
-
+ 
 function wfDynamicPageList() {
     global $wgParser, $wgMessageCache;
-
+   
     $wgMessageCache->addMessages( array(
-                                        'dynamicpagelist_toomanycats' => 'DynamicPageList: Too many categories!',
-                                        'dynamicpagelist_toofewcats' => 'DynamicPageList: Too few categories!',
-                                        'dynamicpagelist_noresults' => 'DynamicPageList: No results!',
-                                        'dynamicpagelist_noincludecats' => 'DynamicPageList: You need to include at least one category!',
-                                        )
-                                  );
+					'dynamicpagelist_toomanycats' => 'DynamicPageList: Too many categories!',
+					'dynamicpagelist_toofewcats' => 'DynamicPageList: Too few categories!',
+					'dynamicpagelist_noresults' => 'DynamicPageList: No results!',
+					'dynamicpagelist_noincludecats' => 'DynamicPageList: You need to include at least one category, or specify a namespace!',
+					)
+				  );
 
     $wgParser->setHook( "DynamicPageList", "DynamicPageList" );
 }
-
-// The callback function for converting the input text to HTML output                                                               
+ 
+// The callback function for converting the input text to HTML output
 function DynamicPageList( $input ) {
     global $wgUser;
     global $wgDLPminCategories, $wgDLPmaxCategories,$wgDLPMinResultCount, $wgDLPMaxResultCount;
     global $wgDLPAllowUnlimitedResults, $wgDLPAllowUnlimitedCategories;
-
+     
     $aParams = array();
     $bCountSet = false;
 
@@ -74,11 +74,15 @@ function DynamicPageList( $input ) {
     $sEndList = '</ul>';
     $sStartItem = '<li>';
     $sEndItem = '</li>';
-    
+
     $sOrderMethod = 'categoryadd';
     $sOrder = 'descending';
 
+    #bNamespace = false;
+    $iNamespace = 0;
+
     $bSuppressErrors = false;
+    $bShowNamespace = true;
 
     $aParams = explode("\n", $input);
 
@@ -94,76 +98,102 @@ function DynamicPageList( $input ) {
         $title = Title::newFromText( $sArg );
         if( is_null( $title ) )
           continue;
-        $aCategories[] = $title;
+        $aCategories[] = $title; 
       }
       if ($sType == 'notcategory')
       {
         $title = Title::newFromText( $sArg );
         if( is_null( $title ) )
           continue;
-        $aExcludeCategories[] = $title;
+        $aExcludeCategories[] = $title; 
+      }
+      else if ('namespace' == $sType)
+      {
+        $ns = Namespace::getCanonicalIndex( strtolower($sArg) );
+	if (NULL != $ns)
+	{
+	  $iNamespace = $ns;
+	  $bNamespace = true;
+	}
+	else
+	{
+	  $iNamespace = intval($sArg);
+	  if ($iNamespace >= 0)
+	  {
+	    $bNamespace = true;
+	  }
+	  else
+	  {
+	    $bNamespace = false;
+	  }
+	}
       }
       else if ('count' == $sType)
       {
-        //ensure that $iCount is a number;                                                                                          
+        //ensure that $iCount is a number;
         $iCount = IntVal( $sArg );
         $bCountSet = true;
       }
       else if ('mode' == $sType)
       {
-        switch ($sArg)
-        {
-        case 'none':
-          $sStartList = '';
-          $sEndList = '';
-          $sStartItem = '';
-          $sEndItem = '<br/>';
-          break;
-        case 'ordered':
-          $sStartList = '<ol>';
-          $sEndList = '</ol>';
-          $sStartItem = '<li>';
-          $sEndItem = '</li>';
-          break;
-        case 'unordered':
-        default:
-          $sStartList = '<ul>';
-          $sEndList = '</ul>';
-          $sStartItem = '<li>';
-          $sEndItem = '</li>';
-          break;
-        }
+	switch ($sArg)
+	{
+	case 'none':
+	  $sStartList = '';
+	  $sEndList = '';
+	  $sStartItem = '';
+	  $sEndItem = '<br/>';
+	  break;
+	case 'ordered':
+	  $sStartList = '<ol>';
+	  $sEndList = '</ol>';
+	  $sStartItem = '<li>';
+	  $sEndItem = '</li>';
+	  break;
+	case 'unordered':
+	default:
+	  $sStartList = '<ul>';
+	  $sEndList = '</ul>';
+	  $sStartItem = '<li>';
+	  $sEndItem = '</li>';
+	  break;
+	}
       }
       else if ('order' == $sType)
       {
         switch ($sArg)
-        {
-        case 'ascending':
-          $sOrder = 'ascending';
-          break;
-        case 'descending':
-        default:
-          $sOrder = 'descending';
-          break;
-        }
+	{
+	case 'ascending':
+	  $sOrder = 'ascending';
+	  break;
+	case 'descending':
+	default:
+	  $sOrder = 'descending';
+	  break;
+	}
       }
       else if ('ordermethod' == $sType)
       {
-        switch ($sArg)
-        {
-        case 'lastedit':
-          $sOrderMethod = 'lastedit';
-          break;
-        case 'categoryadd':
-        default:
-          $sOrderMethod = 'categoryadd';
-          break;
-        }
+	switch ($sArg)
+	{
+	case 'lastedit':
+	  $sOrderMethod = 'lastedit';
+	  break;
+	case 'categoryadd':
+	default:
+	  $sOrderMethod = 'categoryadd';
+	  break;
+	}
       }
       else if ('suppresserrors' == $sType)
       {
-        if ('true' == $sArg)
-          $bSuppressErrors = true;
+	if ('true' == $sArg)
+	  $bSuppressErrors = true;
+      }
+      else if ('shownamespace' == $sType)
+      {
+	if ('false' == $sArg)
+	  $bShowNamespace = false;
       }
     }
 
@@ -171,28 +201,28 @@ function DynamicPageList( $input ) {
     $iExcludeCatCount = count($aExcludeCategories);
     $iTotalCatCount = $iCatCount + $iExcludeCatCount;
 
-    if ($iCatCount < 1)
+    if ($iCatCount < 1 && false == $bNamespace)
     {
       if (false == $bSuppressErrors)
-        return htmlspecialchars( wfMsg( 'dynamicpagelist_noincludecats' ) ); // "!!no included categories!!";                       
+	return htmlspecialchars( wfMsg( 'dynamicpagelist_noincludecats' ) ); // "!!no included categories!!";
       else
-        return '';
+	return '';
     }
 
     if ($iTotalCatCount < $wgDLPminCategories)
     {
       if (false == $bSuppressErrors)
-        return htmlspecialchars( wfMsg( 'dynamicpagelist_toofewcats' ) ); // "!!too few categories!!";                              
+	return htmlspecialchars( wfMsg( 'dynamicpagelist_toofewcats' ) ); // "!!too few categories!!";
       else
-        return '';
+	return '';
     }
 
     if ( $iTotalCatCount > $wgDLPmaxCategories && !$wgDLPAllowUnlimitedCategories )
     {
       if (false == $bSuppressErrors)
-        return htmlspecialchars( wfMsg( 'dynamicpagelist_toomanycats' ) ); // "!!too many categories!!";                            
+	return htmlspecialchars( wfMsg( 'dynamicpagelist_toomanycats' ) ); // "!!too many categories!!";
       else
-        return '';
+	return '';
     }
 
     if ($bCountSet)
@@ -212,12 +242,16 @@ function DynamicPageList( $input ) {
     }
 
 
-    //build the SQL query                                                                                                           
+    //build the SQL query
     $dbr =& wfGetDB( DB_SLAVE );
     $sPageTable = $dbr->tableName( 'page' );
     $categorylinks = $dbr->tableName( 'categorylinks' );
     $sSqlSelectFrom = "SELECT page_namespace, page_title FROM $sPageTable";
-    $sSqlWhere = ' WHERE 1=1 ';
+
+    if (true == $bNamespace)
+      $sSqlWhere = ' WHERE page_namespace='.$iNamespace.' ';
+    else
+      $sSqlWhere = ' WHERE 1=1 ';
 
     $iCurrentTableNumber = 0;
 
@@ -226,6 +260,7 @@ function DynamicPageList( $input ) {
       $sSqlSelectFrom .= ' ON page_id = c'.($iCurrentTableNumber+1).'.cl_from';
       $sSqlSelectFrom .= ' AND c'.($iCurrentTableNumber+1).'.cl_to='.
         $dbr->addQuotes( $aCategories[$i]->getDbKey() );
+
       $iCurrentTableNumber++;
     }
 
@@ -251,40 +286,45 @@ function DynamicPageList( $input ) {
       $sSqlWhere .= ' ORDER BY c1.cl_timestamp ';
 
     $sSqlWhere .= $sSqlOrder;
-
+    
 
     if ($bCountSet)
     {
       $sSqlWhere .= ' LIMIT ' . $iCount;
     }
 
-    //DEBUG: output SQL query                                                                                                       
-    //$output .= 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br />";                                                             
+    //DEBUG: output SQL query 
+    //$output .= 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br />";    
 
-    // process the query                                                                                                            
+    // process the query
     $res = $dbr->query($sSqlSelectFrom . $sSqlWhere);
-
+	
     $sk =& $wgUser->getSkin();
 
-    if ($dbr->numRows( $res ) == 0)
+    if ($dbr->numRows( $res ) == 0) 
     {
       if (false == $bSuppressErrors)
-        return htmlspecialchars( wfMsg( 'dynamicpagelist_noresults' ) );
+	return htmlspecialchars( wfMsg( 'dynamicpagelist_noresults' ) );
       else
-        return '';
+	return '';
     }
-
-    //start unordered list                                                                                                          
+    
+    //start unordered list
     $output .= $sStartList . "\n";
-
-    //process results of query, outputing equivalent of <li>[[Article]]</li> for each result,                                       
-    //or something similar if the list uses other startlist/endlist                                                                 
+	
+    //process results of query, outputing equivalent of <li>[[Article]]</li> for each result,
+    //or something similar if the list uses other startlist/endlist
     while ($row = $dbr->fetchObject( $res ) ) {
       $title = Title::makeTitle( $row->page_namespace, $row->page_title);
-      $output .= $sStartItem . $sk->makeKnownLinkObj($title) . $sEndItem . "\n";
+      $output .= $sStartItem;
+      if (true == $bShowNamespace)
+	$output .= $sk->makeKnownLinkObj($title);
+      else
+	$output .= $sk->makeKnownLinkObj($title, $title->getText());
+      $output .= $sEndItem . "\n";
     }
 
-    //end unordered list                                                                                                            
+    //end unordered list
     $output .= $sEndList . "\n";
 
     return $output;
