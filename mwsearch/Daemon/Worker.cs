@@ -69,6 +69,8 @@ namespace MediaWiki.Search.Daemon {
 		int maxoffset = 10000;
 		bool headersSent;
 		
+		Configuration config;
+		
 		// lucene special chars: + - && || ! ( ) { } [ ] ^ " ~ * ? : \.
 		/*
 		static string[] specialChars = {
@@ -78,9 +80,10 @@ namespace MediaWiki.Search.Daemon {
 		};
 		*/
 
-		public Worker(Stream stream) {
+		public Worker(Stream stream, Configuration config) {
 			istrm = new StreamReader(stream);
 			ostrm = new StreamWriter(stream);
+			this.config = config;
 		}
 		
 		public void Run(object par) {
@@ -294,6 +297,9 @@ namespace MediaWiki.Search.Daemon {
 		}
 		
 		string MakeSpelFix(string query) {
+			if (!config.GetBoolean("Daemon", "spelfix")) {
+				return "";
+			}
 			try {
 				bool anysuggest = false;
 				string[] terms = Regex.Split(query, " +");

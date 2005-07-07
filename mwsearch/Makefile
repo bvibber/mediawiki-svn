@@ -73,7 +73,7 @@ build/MWBenchmark.exe : $(BENCHMARK_SOURCES)
 
 build/MWBenchmark.sh :
 	echo "#!/bin/sh" > build/MWBenchmark.sh
-	echo "mono $(INSTALL_ASSEMBLYDIR)/MWBenchmark.exe \$$@" >> build/MWBenchmark.sh
+	echo "exec mono $(INSTALL_ASSEMBLYDIR)/MWBenchmark.exe \$$@" >> build/MWBenchmark.sh
 
 
 # MWSearch.dll: core code
@@ -132,7 +132,7 @@ build/MWDaemon.exe : build/MWSearch.dll build/MWPrefix.dll $(DAEMON_SOURCES)
 
 build/MWDaemon.sh :
 	echo "#!/bin/sh" > build/MWDaemon.sh
-	echo "mono $(INSTALL_ASSEMBLYDIR)/MWDaemon.exe \$$@" >> build/MWDaemon.sh
+	echo "exec mono $(INSTALL_ASSEMBLYDIR)/MWDaemon.exe \$$@" >> build/MWDaemon.sh
 
 
 # MWUpdater.exe: database refresher
@@ -164,7 +164,7 @@ build/MWUpdater.exe : $(UPDATER_LIBS) $(UPDATER_SOURCES)
 
 build/MWUpdater.sh :
 	echo "#!/bin/sh" > build/MWUpdater.sh
-	echo "mono $(INSTALL_ASSEMBLYDIR)/MWUpdater.exe \$$@" >> build/MWUpdater.sh
+	echo "exec mono $(INSTALL_ASSEMBLYDIR)/MWUpdater.exe \$$@" >> build/MWUpdater.sh
 
 # MWUpdateDaemon.exe: database refresher, daemon version
 UPDATEDAEMON_SOURCES=\

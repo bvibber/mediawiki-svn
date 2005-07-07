@@ -90,7 +90,7 @@ namespace MediaWiki.Search.Daemon {
 					log.Error("accept() error: " + e.Message);
 					continue;
 				}
-				Worker worker = new Worker(client.GetStream());
+				Worker worker = new Worker(client.GetStream(), config);
 				ThreadPool.QueueUserWorkItem(worker.Run);
 			}
 
