@@ -5,8 +5,8 @@
 require_once( 'PEAR.php' );
 require_once( 'XML/RPC.php' );
 
-$MWSearchUpdateHost = 'localhost';
-$MWSearchUpdatePort = 8124;
+$mwSearchUpdateHost = 'localhost';
+$mwSearchUpdatePort = 8124;
 
 class MWSearchUpdater {
 	/**
@@ -77,8 +77,8 @@ class MWSearchUpdater {
 	 * @static
 	 */
 	function sendRPC( $method, $params=array() ) {
-		global $MWSearchUpdateHost, $MWSearchUpdatePort;
-		$client = new XML_RPC_Client( '/SearchUpdater', $MWSearchUpdateHost, $MWSearchUpdatePort );
+		global $mwSearchUpdateHost, $mwSearchUpdatePort;
+		$client = new XML_RPC_Client( '/SearchUpdater', $mwSearchUpdateHost, $mwSearchUpdatePort );
 		
 		$rpcParams = array();
 		foreach( $params as $param ) {
