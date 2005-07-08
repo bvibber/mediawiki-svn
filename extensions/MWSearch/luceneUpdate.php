@@ -2,12 +2,13 @@
 
 // symlink me into maintenance/
 
+$options = array( 'skip' );
 require_once( 'commandLine.inc' );
 
 
 if( !isset( $args[0] ) ) {
 	print "Call MWUpdateDaemon remotely for status or updates.\n";
-	print "Usage: php luceneUpdate.php [database] {status|stop|start|restart|rebuild}\n";
+	print "Usage: php luceneUpdate.php [database] [--skip=n] {status|flush|stop|start|restart|rebuild}\n";
 	exit( -1 );
 }
 
@@ -35,6 +36,9 @@ case 'quit':
 	break;
 case 'rebuild':
 	$builder = new LuceneBuilder();
+	if( isset( $options['skip'] ) ) {
+		$builder->skip( intval( $options['skip'] ) );
+	}
 	$ret = $builder->rebuildAll();
 	break;
 default:
@@ -57,6 +61,7 @@ class LuceneBuilder {
 	function LuceneBuilder() {
 		$this->db       =& wfGetDB( DB_SLAVE );
 		$this->dbstream =& $this->streamingSlave( $this->db );
+		$this->offset = 0;
 	}
 	
 	function &streamingSlave( $db ) {
@@ -68,6 +73,10 @@ class LuceneBuilder {
 		$stream->query( "SET net_read_timeout=$timeout" );
 		$stream->query( "SET net_write_timeout=$timeout" );
 		return $stream;
+	}
+	
+	function skip( $offset ) {
+		$this->offset = intval( $offset );
 	}
 	
 	function init( $max ) {
@@ -94,6 +103,42 @@ class LuceneBuilder {
 				$this->count,
 				$this->max,
 				$rate );
+			
+			$this->wait();
+		}
+	}
+	
+	/**
+	 * See if the daemon's getting overloaded and pause if so
+	 */
+	function wait() {
+		$cutoff = 500;
+		$waittime = 10;
+		
+		while( true ) {
+			$status = MWSearchUpdater::getStatus();
+			if( WikiError::isError( $status ) ) {
+				echo $status->getMessage() . "\n";
+				sleep( $waittime );
+				continue;
+			}
+			
+			// Updater IS running; 90418 items queued.
+			if( !preg_match( '/([0-9]+) items queued/', $status, $matches ) ) {
+				// ?! confused
+				break;
+			}
+			
+			$count = intval( $matches[1] );
+			if( $count < $cutoff ) {
+				break;
+			}
+			
+			printf( "%s: %s\n",
+				wfTimestamp( TS_DB ),
+				$status );
+			
+			sleep( $waittime );
 		}
 	}
 	
@@ -120,16 +165,23 @@ class LuceneBuilder {
 		$lastError = true;
 		
 		$maxId = $this->db->selectField( 'page', 'MAX(page_id)', '', $fname );
+		$maxId -= $this->offset; // hack for percentages
 		$this->init( $maxId );
 		if( $maxId < 1 ) {
 			echo "Nothing to do.\n";
 			return;
 		}
 		
+		$limit = array();
+		if( $this->offset ) {
+			$limit = array( 'LIMIT $offset, 10000000' );
+		}
+		
 		$result = $this->dbstream->select( array( 'page' ),
 			array( 'page_namespace', 'page_title', 'page_latest' ),
 			'',
-			$fname );
+			$fname,
+			$limit );
 		
 		$errorCount = 0;
 		while( $row = $this->dbstream->fetchObject( $result ) ) {
