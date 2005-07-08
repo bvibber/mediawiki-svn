@@ -71,6 +71,27 @@ class MWSearchUpdater {
 	function quit() {
 		return MWSearchUpdater::sendRPC( 'searchupdater.quit' );
 	}
+
+	/**
+	 * Request that the daemon flush and reopen all indexes, without changing
+	 * the global is-running state.
+	 * @return bool
+	 * @static
+	 */
+	function flushAll() {
+		return MWSearchUpdater::sendRPC( 'searchupdater.flushAll' );
+	}
+	
+	/**
+	 * Request that the daemon flush and reopen a given index, without changing
+	 * the global is-running state.
+	 * @return bool
+	 * @static
+	 */
+	function flush( $dbname ) {
+		return MWSearchUpdater::sendRPC( 'searchupdater.flush',
+			array( $dbname ) );
+	}
 	
 	/**
 	 * @access private
