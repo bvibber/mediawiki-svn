@@ -183,11 +183,11 @@ namespace MediaWiki.Search {
 		
 		private void CountOrMerge() {
 			updatesWritten++;
-			if (updatesWritten >= 10000)
+			if (updatesWritten >= 1000)
 				MergeWrites();
 		}
 
-		private void Reopen() {
+		public void Reopen() {
 			try {
 				Close();
 				OpenReader();

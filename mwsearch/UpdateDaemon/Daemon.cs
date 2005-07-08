@@ -80,6 +80,18 @@ namespace MediaWiki.Search.UpdateDaemon {
 			return true;
 		}
 		
+		[XmlRpcMethod("searchupdater.flush")]
+		public bool Flush(string databaseName) {
+			UpdateThread.Flush(databaseName);
+			return true;
+		}
+		
+		[XmlRpcMethod("searchupdater.flushAll")]
+		public bool FlushAll() {
+			UpdateThread.FlushAll();
+			return true;
+		}
+		
 		[XmlRpcMethod("searchupdater.quit")]
 		public bool Quit() {
 			UpdateThread.Quit();

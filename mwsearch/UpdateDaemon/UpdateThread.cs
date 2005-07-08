@@ -90,7 +90,8 @@ namespace MediaWiki.Search.UpdateDaemon {
 					
 					try {
 						int resetStatesCount = SearchState.ResetStates();
-						log.InfoFormat("Reset {0} search index states", resetStatesCount);
+						log.InfoFormat("Reset {0} search index states, {1} updates queued",
+							resetStatesCount, _updateQueue.Count);
 					} catch (Exception e) {
 						log.Error("Error resetting indexes: " + e);
 					}
@@ -126,5 +127,32 @@ namespace MediaWiki.Search.UpdateDaemon {
 				count,
 				(count == 1 ? "" : "s" ));
 		}
+		
+		public static void Flush(string databaseName) {
+			lock (_threadLock) {
+				log.InfoFormat("Flushing index for {0}, {1} updates queued",
+					databaseName, _updateQueue.Count);
+				SearchState state = SearchState.ForWiki(databaseName);
+				state.Reopen();
+				log.InfoFormat("Done flushing {0}, {1} updates queued",
+					databaseName, _updateQueue.Count);
+			}
+		}
+
+		public static void FlushAll() {
+			lock (_threadLock) {
+				log.InfoFormat("Flushing all indexes, {0} updates queued",
+					_updateQueue.Count);
+				
+				try {
+					int resetStatesCount = SearchState.ResetStates();
+					log.InfoFormat("Reset {0} search index states, {1} updates queued",
+						resetStatesCount, _updateQueue.Count);
+				} catch (Exception e) {
+					log.Error("Error resetting indexes: " + e);
+				}
+			}
+		}
+
 	}
 }
