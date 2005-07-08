@@ -15,16 +15,23 @@ switch( $args[0] ) {
 case 'stop':
 	$ret = MWSearchUpdater::stop();
 	break;
-case 'flush':
 case 'restart':
-	$ret = MWSearchUpdater::stop();
-	// fallthrough
+case 'flushall':
+	$ret = MWSearchUpdater::flushAll();
+	break;
 case 'start':
 	$ret = MWSearchUpdater::start();
+	break;
+case 'flush':
+	global $wgDBname;
+	$ret = MWSearchUpdater::flush( $wgDBname );
 	break;
 case 'status':
 	// no-op
 	$ret = true;
+	break;
+case 'quit':
+	$ret = MWSearchUpdater::quit();
 	break;
 case 'rebuild':
 	$builder = new LuceneBuilder();
@@ -56,6 +63,10 @@ class LuceneBuilder {
 		global $wgDBname;
 		$stream = new Database( $db->mServer, $db->mUser, $db->mPassword, $wgDBname );
 		$stream->bufferResults( false );
+		
+		$timeout = 3600 * 24;
+		$stream->query( "SET net_read_timeout=$timeout" );
+		$stream->query( "SET net_write_timeout=$timeout" );
 		return $stream;
 	}
 	
@@ -126,7 +137,12 @@ class LuceneBuilder {
 			
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 			$rev = Revision::newFromId( $row->page_latest );
-			$text = $rev->getText();
+			if( is_null( $rev ) ) {
+				// Page was probably deleted while we were running
+				continue;
+			}
+			
+ 			$text = $rev->getText();
 			$hit = MWSearchUpdater::updatePage( $wgDBname, $title, $text );
 			
 			if( WikiError::isError( $hit ) ) {
