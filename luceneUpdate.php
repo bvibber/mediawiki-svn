@@ -92,7 +92,7 @@ class LuceneBuilder {
 			$now = wfTime();
 			$delta = $now - $this->startTime;
 			$portion = $this->count / $this->max;
-			$eta = $now + ($delta / $portion);
+			$eta = $this->startTime + ($delta / $portion);
 			$rate = $this->count / $delta;
 			
 			printf( "%s: %6.3f%% on %s, ETA %s [%d/%d] %.2f/sec\n",
