@@ -24,9 +24,16 @@ $wgAvailableRights[] = 'makesysop';
 
 function wfSetupMakesysop() {
 	require_once( 'SpecialPage.php' );
+	require_once( 'SpecialUserrights.php' );
 
+	global $wgMessageCache;
+	$wgMessageCache->addMessages(
+		array(
+			'makesysop-nodatabase' => 'Bad interwiki username: $1',
+		)
+	);
+	
 	SpecialPage::addPage( new SpecialPage( 'Makesysop', 'makesysop', /*listed*/ true, /*function*/ false, /*file*/ false ) );
-}
 
 /**
  * Constructor
@@ -48,12 +55,16 @@ function wfSpecialMakesysop() {
 		return;
 	}
 
-	$f = new MakesysopForm( $wgRequest );
-
-	if ( $f->mSubmit ) { 
-		$f->doSubmit(); 
-	} else { 
-		$f->showForm( '' ); 
+	if( $wgUser->isAllowed( 'userrights' ) ) {
+		$f = new MakesysopStewardForm( $wgRequest );
+		$f->execute();
+	} else {
+		$f = new MakesysopForm( $wgRequest );
+		if ( $f->mSubmit ) { 
+			$f->doSubmit(); 
+		} else { 
+			$f->showForm( '' ); 
+		}
 	}
 }
 
@@ -63,7 +74,7 @@ function wfSpecialMakesysop() {
  * @subpackage SpecialPage
  */
 class MakesysopForm {
-	var $mTarget, $mAction, $mRights, $mUser, $mSubmit, $mSetBureaucrat, $mSetSteward;
+	var $mTarget, $mAction, $mRights, $mUser, $mSubmit, $mSetBureaucrat;
 
 	function MakesysopForm( &$request ) {
 		global $wgUser;
@@ -75,10 +86,6 @@ class MakesysopForm {
 			$request->wasPosted() &&
 			$wgUser->matchEditToken( $request->getVal( 'wpEditToken' ) );		
 		$this->mSetBureaucrat = $request->getBool( 'wpSetBureaucrat' );
-		$this->mSetSteward = $request->getBool( 'wpSetSteward' );
-
-		$this->mIsSteward = $wgUser->isAllowed( 'makesysop' ) &&
-			$wgUser->isAllowed( 'userrights' );
 	}
 
 	function showForm( $err = '') {
@@ -122,17 +129,6 @@ class MakesysopForm {
 			</tr>"
 		);
 
-		if ( $this->mIsSteward ) {
-			$setstewardflag = wfMsg( "setstewardflag" );
-			$wgOut->addHTML(
-				"<tr>
-					<td>&nbsp;</td><td align=left>
-						<input type=checkbox name=\"wpSetSteward\" value=1>$setstewardflag
-					</td>
-				</tr>"
-			);
-		}
-
 
 		$mss = wfMsg( "set_user_rights" );
 
@@ -156,24 +152,9 @@ class MakesysopForm {
 		$dbw =& wfGetDB( DB_MASTER );
 		$user_groups = $dbw->tableName( 'user_groups' );
 		$usertable   = $dbw->tableName( 'user' );
-		$parts = explode( '@', $this->mUser );
 
-		if( count( $parts ) == 2 && $this->mIsSteward && strpos( '.', $user_groups ) === false ){
-			$username = $parts[0];
-			if ( array_key_exists( $parts[1], $wgLocalDatabases ) ) {
-				$dbName = $wgLocalDatabases[$parts[1]];
-				$user_groups = "`$dbName`.$user_groups";
-				if ( !$wgSharedDB ) {
-					$usertable   = "`$dbName`.$usertable";
-				}
-			} else {
-				$this->showFail();
-				return;
-			}
-		} else {
-			$username = $this->mUser;
-			$dbName = $wgDBname;
-		}
+		$username = $this->mUser;
+		$dbName = $wgDBname;
 
 		// Clean up username
 		$t = Title::newFromText( $username );
@@ -206,22 +187,11 @@ class MakesysopForm {
 		$rightsNotation = array();
 		$wasSysop = !empty( $groups['sysop'] );
 		$wasBureaucrat = !empty( $groups['bureaucrat'] );
-		$wasSteward = !empty( $groups['steward'] );
 
-		if ( $this->mSetSteward ) {
-			if ( $wasSteward ) {
-				$this->showFail( 'already_steward' );
-				return;
-			} else {
-				$dbw->insert( $user_groups, array( 'ug_user' => $id, 'ug_group' => 'steward' ), $fname );
-			}
-		}
 		if ( $this->mSetBureaucrat ) {
 			if ( $wasBureaucrat ) {
-				if ( !$this->mSetSteward ) {
-					$this->showFail( 'already_bureaucrat' );
-					return;
-				}
+				$this->showFail( 'already_bureaucrat' );
+				return;
 			} else {
 				$dbw->insert( $user_groups, array( 'ug_user' => $id, 'ug_group' => 'bureaucrat' ), $fname );
 				$rightsNotation[] = "+bureaucrat";
@@ -261,6 +231,193 @@ class MakesysopForm {
 		$wgOut->setPagetitle( wfMsg( "makesysoptitle" ) );
 		$this->showForm( wfMsg( $msg, $this->mUser ) );
 	}
+}
+
+/**
+ *
+ * @package MediaWiki
+ * @subpackage SpecialPage
+ */
+class MakesysopStewardForm extends UserrightsForm {
+	function MakesysopStewardForm( $request ) {
+		$this->mPosted = $request->wasPosted();
+		$this->mRequest =& $request;
+		$this->mName = 'userrights';
+		
+		$titleObj = Title::makeTitle( NS_SPECIAL, 'Makesysop' );
+		$this->action = $titleObj->escapeLocalURL();
+		
+		$this->db =& wfGetDB( DB_MASTER );
+	}
+
+	function saveUserGroups( $username, $removegroup, $addgroup) {
+		$split = $this->splitUsername( $username );
+		if( WikiError::isError( $split ) ) {
+			$wgOut->addWikiText( wfMsg( 'makesysop-nodatabase', $split->getMessage() ) );
+			return;
+		}
+		
+		list( $database, $name ) = $split;
+		$userid = $this->getUserId( $database, $name );
+
+		if( $userid == 0) {
+			$wgOut->addWikiText( wfMsg( 'nosuchusershort', wfEscapeWikiText( $username ) ) );
+			return;
+		}		
+
+		$oldGroups = $this->getUserGroups( $database, $userid );
+		$newGroups = $oldGroups;
+		$logcomment = ' ';
+		// remove then add groups		
+		if(isset($removegroup)) {
+			$newGroups = array_diff($newGroups, $removegroup);
+			foreach( $removegroup as $group ) {
+				$this->removeUserGroup( $database, $userid, $group );
+			}
+		}
+		if(isset($addgroup)) {
+			$newGroups = array_merge($newGroups, $addgroup);
+			foreach( $addgroup as $group ) {
+				$this->addUserGroup( $database, $userid, $group );
+			}
+		}
+		$newGroups = array_unique( $newGroups );
+		
+		// Ensure that caches are cleared
+		$this->touchUser( $database, $userid );
+		
+		wfDebug( 'oldGroups: ' . print_r( $oldGroups, true ) );
+		wfDebug( 'newGroups: ' . print_r( $newGroups, true ) );
+
+		$log = new LogPage( 'rights' );
+		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), '', array( $this->makeGroupNameList( $oldGroups ),
+			$this->makeGroupNameList( $newGroups ) ) );
+	}
+
+	/**
+	 * Edit user groups membership
+	 * @param string $username Name of the user.
+	 */
+	function editUserGroupsForm($username) {
+		global $wgOut, $wgUser;
+		
+		$split = $this->splitUsername( $username );
+		if( WikiError::isError( $split ) ) {
+			$wgOut->addWikiText( wfMsg( 'makesysop-nodatabase', $split->getMessage() ) );
+			return;
+		}
+		
+		list( $database, $name ) = $split;
+		$userid = $this->getUserId( $database, $name );
+
+		if( $userid == 0) {
+			$wgOut->addWikiText( wfMsg( 'nosuchusershort', wfEscapeWikiText( $username ) ) );
+			return;
+		}		
+		
+		$groups = $this->getUserGroups( $database, $userid );
+
+		$wgOut->addHTML( "<form name=\"editGroup\" action=\"$this->action\" method=\"post\">\n".
+			wfElement( 'input', array(
+				'type'  => 'hidden',
+				'name'  => 'user-editname',
+				'value' => $username ) ) .
+			wfElement( 'input', array(
+				'type'  => 'hidden',
+				'name'  => 'wpEditToken',
+				'value' => $wgUser->editToken( $username ) ) ) .
+			$this->fieldset( 'editusergroup',
+			$wgOut->parse( wfMsg('editing', $username ) ) .
+			'<table border="0" align="center"><tr><td>'.
+			HTMLSelectGroups('member', $this->mName.'-groupsmember', $groups,true,6).
+			'</td><td>'.
+			HTMLSelectGroups('available', $this->mName.'-groupsavailable', $groups,true,6,true).
+			'</td></tr></table>'."\n".
+			$wgOut->parse( wfMsg('userrights-groupshelp') ) .
+			wfElement( 'input', array(
+				'type'  => 'submit',
+				'name'  => 'saveusergroups',
+				'value' => wfMsg( 'saveusergroups' ) ) )
+			));
+		$wgOut->addHTML( "</form>\n" );
+	}
+	
+	function splitUsername( $username ) {
+		$parts = explode( '@', $username );
+		if( count( $parts ) < 2 ) {
+			return array( '', $username );
+		}
+		list( $name, $database ) = $parts;
+		
+		global $wgLocalDatabases;
+		return array_key_exists( $database, $wgLocalDatabases )
+			? array( $database, $name )
+			: new WikiError( 'Bogus database suffix "' . wfEscapeWikiText( $database ) . '"' );
+	}
+	
+	function tableName( $database, $base ) {
+		global $wgSharedDB;
+		return ( $database == '' || ( $base == 'user' && $wgSharedDB ) )
+			? $base
+			: "`{$database}`." . $this->db->tableName( $base );
+	}
+	
+	function getUserId( $database, $name ) {
+		$table = $this->tableName( $database, 'user' );
+		return IntVal( $this->db->selectField( $table,
+			'user_id',
+			array( 'user_name' => $name ),
+			'MakesysopStewardForm::getUserId' ) );
+	}
+	
+	function getUserGroups( $database, $userid ) {
+		$table = $this->tableName( $database, 'user_groups' );
+		$res = $this->db->select( $table,
+			array( 'ug_group' ),
+			array( 'ug_user' => $userid ),
+			'MakesysopStewardForm::getUserGroups' );
+		$groups = array();
+		while( $row = $this->db->fetchObject( $res ) ) {
+			$groups[] = $row->ug_group;
+		}
+		return $groups;
+	}
+	
+	function addUserGroup( $database, $userid, $group ) {
+		$table = $this->tableName( $database, 'user_groups' );
+		$this->db->insert( $table,
+			array(
+				'ug_user' => $userid,
+				'ug_group' => $group,
+			),
+			'MakesysopStewardForm::addUserGroup',
+			array( 'IGNORE' ) );
+	}
+	
+	function removeUserGroup( $database, $userid, $group ) {
+		$table = $this->tableName( $database, 'user_groups' );
+		$this->db->delete( $table,
+			array(
+				'ug_user' => $userid,
+				'ug_group' => $group,
+			),
+			'MakesysopStewardForm::addUserGroup' );
+	}
+	
+	function touchUser( $database, $userid ) {
+		$table = $this->tableName( $database, 'user' );
+		$this->db->update( $table,
+			array( 'user_touched' => $this->db->timestamp() ),
+			array( 'user_id' => $userid ),
+			'MakesysopStewardForm::touchUser' );
+		
+		global $wgMemc;
+		$key = "$database:user:id:$userid";
+		$wgMemc->delete( $key );
+	}
+
+}
+
 }
 
 } // End of invocation guard
