@@ -64,6 +64,7 @@ function wfDynamicPageList() {
 // The callback function for converting the input text to HTML output
 function DynamicPageList( $input ) {
     global $wgUser;
+    global $wgLang;
     global $wgContLang;
     global $wgDLPminCategories, $wgDLPmaxCategories,$wgDLPMinResultCount, $wgDLPMaxResultCount;
     global $wgDLPAllowUnlimitedResults, $wgDLPAllowUnlimitedCategories;
@@ -78,12 +79,14 @@ function DynamicPageList( $input ) {
 
     $sOrderMethod = 'categoryadd';
     $sOrder = 'descending';
+    $sRedirects = 'exclude';
 
     $bNamespace = false;
     $iNamespace = 0;
 
     $bSuppressErrors = false;
     $bShowNamespace = true;
+    $bAddFirstCategoryDate = false;
 
     $aParams = explode("\n", $input);
 
@@ -101,7 +104,7 @@ function DynamicPageList( $input ) {
           continue;
         $aCategories[] = $title; 
       }
-      if ($sType == 'notcategory')
+      else if ($sType == 'notcategory')
       {
         $title = Title::newFromText( $sArg );
         if( is_null( $title ) )
@@ -186,15 +189,42 @@ function DynamicPageList( $input ) {
 	  break;
 	}
       }
+      else if ('redirects' == $sType)
+      {
+      	switch ($sArg)
+      	{
+      	case 'include':
+      	  $sRedirects = 'include';
+      	  break;
+      	case 'only':
+      	  $sRedirects = 'only';
+      	  break;
+      	case 'exclude':
+      	default:
+      	  $sRedirects = 'exclude';
+      	  break;
+      	}
+      }
       else if ('suppresserrors' == $sType)
       {
 	if ('true' == $sArg)
 	  $bSuppressErrors = true;
+	else
+	  $bSuppressErrors = false;
+      }
+      else if ('addfirstcategorydate' == $sType)
+      {
+        if ('true' == $sArg)
+          $bAddFirstCategoryDate = true;
+        else
+          $bAddFirstCategoryDate = false;
       }
       else if ('shownamespace' == $sType)
       {
 	if ('false' == $sArg)
 	  $bShowNamespace = false;
+	else
+	  $bShowNamespace = true;
       }
     }
 
@@ -241,18 +271,32 @@ function DynamicPageList( $input ) {
         $bCountSet = true;
       }
     }
+    
+    //disallow showing date if the query doesn't have an inclusion category parameter
+    if ($iCatCount < 1)
+      $bAddFirstCategoryDate = false;
 
 
     //build the SQL query
     $dbr =& wfGetDB( DB_SLAVE );
     $sPageTable = $dbr->tableName( 'page' );
     $categorylinks = $dbr->tableName( 'categorylinks' );
-    $sSqlSelectFrom = "SELECT page_namespace, page_title FROM $sPageTable";
+    $sSqlSelectFrom = "SELECT page_namespace, page_title, c1.cl_timestamp FROM $sPageTable";
 
     if (true == $bNamespace)
       $sSqlWhere = ' WHERE page_namespace='.$iNamespace.' ';
     else
       $sSqlWhere = ' WHERE 1=1 ';
+      
+    switch ($sRedirects)
+    {
+      case 'only':
+        $sSqlWhere .= ' AND page_is_redirect = 1 ';
+        break;
+      case 'exclude':
+        $sSqlWhere .= ' AND page_is_redirect = 0 ';
+        break;
+    }
 
     $iCurrentTableNumber = 0;
 
@@ -318,6 +362,9 @@ function DynamicPageList( $input ) {
     while ($row = $dbr->fetchObject( $res ) ) {
       $title = Title::makeTitle( $row->page_namespace, $row->page_title);
       $output .= $sStartItem;
+      if (true == $bAddFirstCategoryDate)
+        $output .= $wgLang->date($row->cl_timestamp) . ': ';
+
       if (true == $bShowNamespace)
 	$output .= $sk->makeKnownLinkObj($title);
       else
