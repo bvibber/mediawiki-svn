@@ -238,6 +238,7 @@ namespace MediaWiki.Search.Daemon {
 				// pretty quickly. The bad side is that the total hits
 				// number we return is bogus: it's for all namespaces combined.
 				int matches = 0;
+				string lastMatch = "";
 				for (int i = 0; i < numhits && i < maxoffset; i++) {
 					Document doc = hits.Doc(i);
 					string pageNamespace = doc.Get("namespace");
@@ -245,6 +246,14 @@ namespace MediaWiki.Search.Daemon {
 						if (matches++ < offset)
 							continue;
 						string title = doc.Get("title");
+						string squish=pageNamespace+":"+title;
+						if (lastMatch.Equals(squish)) {
+							// skip duplicate results due to indexing bugs
+							maxoffset++;
+							matches--;
+							continue;
+						}
+						lastMatch = squish;
 						float score = hits.Score(i);
 						SendResultLine(score, pageNamespace, title);
 						if (matches >= (limit + offset))
