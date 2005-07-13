@@ -1119,7 +1119,6 @@ class Title {
 	 */
 	function getArticleID( $flags = 0 ) {
 		global $wgLinkCache;
-
 		if ( $flags & GAID_FOR_UPDATE ) {
 			$oldUpdate = $wgLinkCache->forUpdate( true );
 			$this->mArticleID = $wgLinkCache->addLinkObj( $this );
@@ -1129,6 +1128,7 @@ class Title {
 				$this->mArticleID = $wgLinkCache->addLinkObj( $this );
 			}
 		}
+wfdebug("title: articleid = ".$this->mArticleID."\n");
 		return $this->mArticleID;
 	}
 

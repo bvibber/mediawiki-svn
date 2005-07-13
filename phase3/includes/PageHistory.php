@@ -261,7 +261,7 @@ class PageHistory {
 	/** @todo document */
 	function revLink( $row ) {
 		global $wgUser, $wgLang;
-		$date = $wgLang->timeanddate( $row->rev_timestamp, true );
+		$date = $wgLang->timeanddate( wfTimestamp(TS_MW, $row->rev_timestamp), true );
 		if( $row->rev_deleted && !$wgUser->isAllowed( 'undelete' ) ) {
 			return $date;
 		} else {
@@ -382,7 +382,8 @@ class PageHistory {
 		$db =& wfGetDB(DB_SLAVE);
 		$revision = $db->tableName( 'revision' );
 		$sql = "SELECT rev_timestamp FROM $revision WHERE rev_page = $id " .
-			"ORDER BY rev_timestamp ASC LIMIT $step";
+			"ORDER BY rev_timestamp ASC";
+		$sql = $db->limitResult($sql, $step, 0);
 		$res = $db->query( $sql, "PageHistory::getLastOffsetForPaging" );
 		$n = $db->numRows( $res );
 
@@ -429,8 +430,6 @@ class PageHistory {
 		if ($offset)
 			$offsets .= " AND rev_timestamp $oper '$offset' ";
 
-		if ($limit)
-			$limits .= " LIMIT $limitplus ";
 		$page_id = $this->mTitle->getArticleID();
 
 		$sql = "SELECT rev_id,rev_user," .
@@ -438,8 +437,9 @@ class PageHistory {
 		  "FROM $revision $use_index " .
 		  "WHERE rev_page=$page_id " .
 		  $offsets .
-		  "ORDER BY rev_timestamp $dirs " .
-		  $limits;
+		  "ORDER BY rev_timestamp $dirs ";
+		if ($limit)
+			$sql = $db->limitResult($sql, $limitplus, 0);
 		$res = $db->query($sql, "PageHistory::fetchRevisions");
 
 		$result = array();

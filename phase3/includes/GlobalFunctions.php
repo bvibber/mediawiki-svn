@@ -8,7 +8,7 @@
 /**
  * Some globals and requires needed
  */
- 
+
 /**
  * Total number of articles
  * @global integer $wgNumberOfArticles
@@ -67,14 +67,14 @@ if( !function_exists('is_a') ) {
 
 # UTF-8 substr function based on a PHP manual comment
 if ( !function_exists( 'mb_substr' ) ) {
-	function mb_substr( $str, $start ) { 
+	function mb_substr( $str, $start ) {
 		preg_match_all( '/./us', $str, $ar );
 
 		if( func_num_args() >= 3 ) {
-			$end = func_get_arg( 2 ); 
-			return join( '', array_slice( $ar[0], $start, $end ) ); 
-		} else { 
-			return join( '', array_slice( $ar[0], $start ) ); 
+			$end = func_get_arg( 2 );
+			return join( '', array_slice( $ar[0], $start, $end ) );
+		} else {
+			return join( '', array_slice( $ar[0], $start ) );
 		}
 	}
 }
@@ -224,7 +224,7 @@ function wfReadOnly() {
 	if ( '' == $wgReadOnlyFile ) {
 		return false;
 	}
-	
+
 	// Set $wgReadOnly and unset $wgReadOnlyFile, for faster access next time
 	if ( is_file( $wgReadOnlyFile ) ) {
 		$wgReadOnly = true;
@@ -239,7 +239,7 @@ function wfReadOnly() {
 /**
  * Get a message from anywhere, for the current user language
  *
- * @param string 
+ * @param string
  */
 function wfMsg( $key ) {
 	$args = func_get_args();
@@ -291,7 +291,7 @@ function wfMsgNoDBForContent( $key ) {
 function wfMsgReal( $key, $args, $useDB, $forContent=false ) {
 	$fname = 'wfMsgReal';
 	wfProfileIn( $fname );
-	
+
 	$message = wfMsgGetKey( $key, $useDB, $forContent );
 	$message = wfMsgReplaceArgs( $message, $args );
 	wfProfileOut( $fname );
@@ -310,7 +310,7 @@ function wfMsgGetKey( $key, $useDB, $forContent = false ) {
 	global $wgParser, $wgMsgParserOptions;
 	global $wgContLang, $wgLanguageCode;
 	global $wgMessageCache, $wgLang;
-	
+
 	if( is_object( $wgMessageCache ) ) {
 		$message = $wgMessageCache->get( $key, $useDB, $forContent );
 	} else {
@@ -321,7 +321,7 @@ function wfMsgGetKey( $key, $useDB, $forContent = false ) {
 		}
 
 		wfSuppressWarnings();
-		
+
 		if( is_object( $lang ) ) {
 			$message = $lang->getMessage( $key );
 		} else {
@@ -347,7 +347,7 @@ function wfMsgGetKey( $key, $useDB, $forContent = false ) {
  */
 function wfMsgReplaceArgs( $message, $args ) {
 	static $replacementKeys = array( '$1', '$2', '$3', '$4', '$5', '$6', '$7', '$8', '$9' );
-	
+
 	# Fix windows line-endings
 	# Some messages are split with explode("\n", $msg)
 	$message = str_replace( "\r", '', $message );
@@ -438,7 +438,7 @@ function wfBacktrace() {
 	if ( !function_exists( 'debug_backtrace' ) ) {
 		return false;
 	}
-	
+
 	if ( $wgCommandLineMode ) {
 		$msg = '';
 	} else {
@@ -508,7 +508,7 @@ function wfViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 	$fmtLimit = $wgLang->formatNum( $limit );
 	$prev = wfMsg( 'prevn', $fmtLimit );
 	$next = wfMsg( 'nextn', $fmtLimit );
-	
+
 	if( is_object( $link ) ) {
 		$title =& $link;
 	} else {
@@ -517,7 +517,7 @@ function wfViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 			return false;
 		}
 	}
-	
+
 	$sk = $wgUser->getSkin();
 	if ( 0 != $offset ) {
 		$po = $offset - $limit;
@@ -600,7 +600,7 @@ function wfCheckLimits( $deflimit = 50, $optionname = 'rclimit' ) {
  * @param string $text Text to be escaped
  */
 function wfEscapeWikiText( $text ) {
-	$text = str_replace( 
+	$text = str_replace(
 		array( '[',		'|',	  '\'',	   'ISBN '	  , '://'	  , "\n=", '{{' ),
 		array( '&#91;', '&#124;', '&#39;', 'ISBN&#32;', '&#58;//' , "\n&#61;", '&#123;&#123;' ),
 		htmlspecialchars($text) );
@@ -644,7 +644,7 @@ function wfEscapeJsString( $string ) {
 		'\'' => '\\\'',
 		"\n" => "\\n",
 		"\r" => "\\r",
-		
+
 		# To avoid closing the element or CDATA section
 		"<" => "\\x3c",
 		">" => "\\x3e",
@@ -730,7 +730,7 @@ function wfPurgeSquidServers ($urlArr) {
 
 /**
  * Windows-compatible version of escapeshellarg()
- * Windows doesn't recognise single-quotes in the shell, but the escapeshellarg() 
+ * Windows doesn't recognise single-quotes in the shell, but the escapeshellarg()
  * function puts single quotes in regardless of OS
  */
 function wfEscapeShellArg( ) {
@@ -743,7 +743,7 @@ function wfEscapeShellArg( ) {
 		} else {
 			$first = false;
 		}
-	
+
 		if ( wfIsWindows() ) {
 			$retVal .= '"' . str_replace( '"','\"', $arg ) . '"';
 		} else {
@@ -832,8 +832,8 @@ function wfHttpError( $code, $label, $desc ) {
 
 	header( 'Content-type: text/html' );
 	print "<html><head><title>" .
-		htmlspecialchars( $label ) . 
-		"</title></head><body><h1>" . 
+		htmlspecialchars( $label ) .
+		"</title></head><body><h1>" .
 		htmlspecialchars( $label ) .
 		"</h1><p>" .
 		htmlspecialchars( $desc ) .
@@ -947,7 +947,7 @@ function wfNegotiateType( $cprefs, $sprefs ) {
  * Array lookup
  * Returns an array where the values in the first array are replaced by the
  * values in the second array with the corresponding keys
- * 
+ *
  * @return array
  */
 function wfArrayLookup( $a, $b ) {
@@ -994,7 +994,7 @@ function wfRestoreWarnings() {
 
 # Autodetect, convert and provide timestamps of various types
 
-/** 
+/**
  * Unix time - the number of seconds since 1970-01-01 00:00:00 UTC
  */
 define('TS_UNIX', 0);
@@ -1023,6 +1023,10 @@ define('TS_RFC2822', 3);
  */
 define('TS_EXIF', 4);
 
+/**
+ * Oracle format time.
+ */
+define('TS_ORACLE', 5);
 
 /**
  * @param mixed $outputtype A timestamp in one of the supported formats, the
@@ -1031,8 +1035,9 @@ define('TS_EXIF', 4);
  * @return string Time in the format specified in $outputtype
  */
 function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
-	if ($ts==0) { 
-		$uts=time(); 
+wfdebug("ts: $ts\n");
+	if ($ts==0) {
+		$uts=time();
 	} elseif (preg_match("/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)$/",$ts,$da)) {
 		# TS_DB
 		$uts=gmmktime((int)$da[4],(int)$da[5],(int)$da[6],
@@ -1048,13 +1053,17 @@ function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
 	} elseif (preg_match("/^(\d{1,13})$/",$ts,$datearray)) {
 		# TS_UNIX
 		$uts=$ts;
+	} elseif (preg_match('/^(\d{1,2})-(...)-(\d\d) (\d\d)\.(\d\d)\.(\d\d)/', $ts, $da)) {
+		# TS_ORACLE
+		$uts = strtotime(preg_replace('/(\d\d)\.(\d\d)\.(\d\d)/', "$1:$2:$3", $ts));
+wfdebug("oracle = $uts\n");
 	} else {
 		# Bogus value; fall back to the epoch...
 		wfDebug("wfTimestamp() fed bogus time value: $outputtype; $ts\n");
 		$uts = 0;
 	}
 
-		
+
  	switch($outputtype) {
 		case TS_UNIX:
 			return $uts;
@@ -1067,6 +1076,8 @@ function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
 			return gmdate(  'Y:m:d H:i:s', $uts );
 		case TS_RFC2822:
 			return gmdate( 'D, d M Y H:i:s', $uts ) . ' GMT';
+		case TS_ORACLE:
+			return gmdate( 'd-M-Y h:i:s A', $uts);
 		default:
 			wfDebugDieBacktrace( 'wfTimestamp() called with illegal output type.');
 	}
@@ -1092,13 +1103,13 @@ function wfTimestampOrNull( $outputtype = TS_UNIX, $ts = null ) {
  *
  * @return bool True if it's windows, False otherwise.
  */
-function wfIsWindows() {   
-	if (substr(php_uname(), 0, 7) == 'Windows') {   
-		return true;   
-	} else {   
-		return false;   
-	}   
-} 
+function wfIsWindows() {
+	if (substr(php_uname(), 0, 7) == 'Windows') {
+		return true;
+	} else {
+		return false;
+	}
+}
 
 /**
  * Swap two variables
@@ -1186,7 +1197,7 @@ function wfElementClean( $element, $attribs = array(), $contents = '') {
 
 /** Global singleton instance of MimeMagic. This is initialized on demand,
 * please always use the wfGetMimeMagic() function to get the instance.
-* 
+*
 * @private
 */
 $wgMimeMagic= NULL;
@@ -1199,7 +1210,7 @@ $wgMimeMagic= NULL;
 */
 function &wfGetMimeMagic() {
 	global $wgMimeMagic;
-	
+
 	if (!is_null($wgMimeMagic)) {
 		return $wgMimeMagic;
 	}
@@ -1208,9 +1219,9 @@ function &wfGetMimeMagic() {
 		#include on demand
 		require_once("MimeMagic.php");
 	}
-	
+
 	$wgMimeMagic= new MimeMagic();
-	
+
 	return $wgMimeMagic;
 }
 

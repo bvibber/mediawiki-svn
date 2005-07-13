@@ -596,7 +596,7 @@ class Article {
 
 	function getTimestamp() {
 		$this->loadLastEdit();
-		return $this->mTimestamp;
+		return wfTimestamp(TS_MW, $this->mTimestamp);
 	}
 
 	function getUser() {
@@ -905,7 +905,7 @@ class Article {
 				'page_latest'      => $revision->getId(),
 				'page_touched'     => $dbw->timestamp(),
 				'page_is_new'      => ($lastRevision === 0) ? 1 : 0,
-				'page_is_redirect' => Article::isRedirect( $text ),
+				'page_is_redirect' => Article::isRedirect( $text ) ? 1 : 0,
 				'page_len'         => strlen( $text ),
 			),
 			$conditions,
