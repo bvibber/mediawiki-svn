@@ -71,7 +71,7 @@ function getSearchForm($width,$default='',$bgcolor='') {
 	$searchform=<<<ENDFORM
 <table border="0" width="100%">
 <tr>
-<td align="center" bgcolor="$bgcolorEnc">
+<td align="center" bgcolor="$bgcolorEnc" cellspacing="0">
 <form name="searchbox" action="$searchpath" class="searchbox">
 	<input class="searchboxInput" name="search" type="text"
 	value="$defaultEnc" size="$width"/><br />
@@ -102,7 +102,7 @@ function getCreateForm($width,$preload='',$editintro='',$default='', $bgcolor=''
 	$createarticle = wfMsgHtml( "createarticle" );
 	
 	$createform=<<<ENDFORM
-<table border="0" width="100%">
+<table border="0" width="100%" cellspacing="0">
 <tr>
 <td align="center" bgcolor="$bgcolorEnc">
 <form name="createbox" action="$action" method="get" class="createbox">
