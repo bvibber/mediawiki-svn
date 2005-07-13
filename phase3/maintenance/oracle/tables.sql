@@ -163,13 +163,11 @@ CREATE SEQUENCE ipblocks_ipb_id_val;
 CREATE TABLE ipblocks (
 	ipb_id		NUMBER(8) NOT NULL,
 	ipb_address	VARCHAR2(40),
-	ipb_user	NUMBER(8)
-				REFERENCES "user" (user_id)
-				ON DELETE CASCADE,
+	ipb_user	NUMBER(8),
 	ipb_by		NUMBER(8) NOT NULL
 				REFERENCES "user" (user_id)
 				ON DELETE CASCADE,
-	ipb_reason	CLOB NOT NULL,
+	ipb_reason	CLOB,
 	ipb_timestamp	TIMESTAMP NOT NULL,
 	ipb_auto	NUMBER(1) DEFAULT 0 NOT NULL,
 	ipb_expiry	TIMESTAMP,

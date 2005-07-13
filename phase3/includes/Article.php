@@ -899,7 +899,7 @@ class Article {
 			# An extra check against threads stepping on each other
 			$conditions['page_latest'] = $lastRevision;
 		}
-wfdebug("updaterevisionon: page_latest=".$revision->getId()."\n");
+
 		$text = $revision->getText();
 		$dbw->update( 'page',
 			array( /* SET */

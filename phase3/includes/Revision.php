@@ -258,7 +258,7 @@ class Revision {
 		} elseif( is_array( $row ) ) {
 			// Build a new revision to be saved...
 			global $wgUser;
-wfdebug("CREATING REVISION: rev_id = [". $row['id'] . "]\n");
+
 			$this->mId        = isset( $row['id']         ) ? IntVal( $row['id']         ) : null;
 			$this->mPage      = isset( $row['page']       ) ? IntVal( $row['page']       ) : null;
 			$this->mTextId    = isset( $row['text_id']    ) ? IntVal( $row['text_id']    ) : null;
