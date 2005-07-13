@@ -120,7 +120,7 @@ ENDFORM;
 			}
 		} else {
 			$comment='';
-			if(!$this>buttonlabel) {			
+			if(!$this->buttonlabel) {			
 				$this->buttonlabel = wfMsgHtml( "createarticle" );
 			}
 		}		
