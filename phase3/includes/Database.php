@@ -953,9 +953,6 @@ class Database {
 		$first = true;
 		$list = '';
 		foreach ( $a as $field => $value ) {
-			$quote = true;
-			if (is_array($value))
-				list($quote, $value) = $value;
 			if ( !$first ) {
 				if ( $mode == LIST_AND ) {
 					$list .= ' AND ';
@@ -974,7 +971,7 @@ class Database {
 					$list .= $field.'=';
 				}
 				$list .= ($mode==LIST_NAMES ? $value :
-						($quote ? $this->addQuotes( $value ) : $value));
+						(!is_numeric($value) ? $this->addQuotes( $value ) : $value));
 			}
 		}
 		return $list;

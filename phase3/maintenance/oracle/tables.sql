@@ -216,88 +216,38 @@ CREATE TABLE ipblocks (
 CREATE INDEX ipb_address ON ipblocks(ipb_address);
 CREATE INDEX ipb_user ON ipblocks(ipb_user);
 
---
--- Uploaded images and other files.
---
-CREATE TABLE /*$wgDBprefix*/image (
-  -- Filename.
-  -- This is also the title of the associated description page,
-  -- which will be in namespace 6 (NS_IMAGE).
-  img_name varchar(255) binary NOT NULL default '',
+CREATE TABLE image (
+	img_name	VARCHAR2(255) NOT NULL,
+	img_size	NUMBER(8) NOT NULL,
+	img_width	NUMBER(5) NOT NULL,
+	img_height	NUMBER(5) NOT NULL,
+	img_metadata	CLOB,
+	img_bits	NUMBER(3),
+	img_media_type	VARCHAR2(10),
+	img_major_mime	VARCHAR2(12) DEFAULT 'unknown',
+	img_minor_mime	VARCHAR2(32) DEFAULT 'unknown',
+	img_description	CLOB NOT NULL,
+	img_user	NUMBER(8) NOT NULL REFERENCES "user"(user_id) ON DELETE CASCADE,
+	img_user_text	VARCHAR2(255) NOT NULL,
+	img_timestamp	TIMESTAMP,
+	CONSTRAINT image_pk PRIMARY KEY (img_name)
+);
+CREATE INDEX img_size_idx ON image(img_size);
+CREATE INDEX img_timestamp_idx ON image(img_timestamp);
 
-  -- File size in bytes.
-  img_size int(8) unsigned NOT NULL default '0',
-
-  -- For images, size in pixels.
-  img_width int(5)  NOT NULL default '0',
-  img_height int(5)  NOT NULL default '0',
-
-  -- Extracted EXIF metadata stored as a serialized PHP array.
-  img_metadata mediumblob NOT NULL,
-
-  -- For images, bits per pixel if known.
-  img_bits int(3)  NOT NULL default '0',
-
-  -- Media type as defined by the MEDIATYPE_xxx constants
-  img_media_type ENUM("UNKNOWN", "BITMAP", "DRAWING", "AUDIO", "VIDEO", "MULTIMEDIA", "OFFICE", "TEXT", "EXECUTABLE", "ARCHIVE") default NULL,
-
-  -- major part of a MIME media type as defined by IANA
-  -- see http://www.iana.org/assignments/media-types/
-  img_major_mime ENUM("unknown", "application", "audio", "image", "text", "video", "message", "model", "multipart") NOT NULL default "unknown",
-
-  -- minor part of a MIME media type as defined by IANA
-  -- the minor parts are not required to adher to any standard
-  -- but should be consistent throughout the database
-  -- see http://www.iana.org/assignments/media-types/
-  img_minor_mime varchar(32) NOT NULL default "unknown",
-
-  -- Description field as entered by the uploader.
-  -- This is displayed in image upload history and logs.
-  img_description tinyblob NOT NULL default '',
-
-  -- user_id and user_name of uploader.
-  img_user int(5) unsigned NOT NULL default '0',
-  img_user_text varchar(255) binary NOT NULL default '',
-
-  -- Time of the upload.
-  img_timestamp char(14) binary NOT NULL default '',
-
-  PRIMARY KEY img_name (img_name),
-
-  -- Used by Special:Imagelist for sort-by-size
-  INDEX img_size (img_size),
-
-  -- Used by Special:Newimages and Special:Imagelist
-  INDEX img_timestamp (img_timestamp)
-
-) TYPE=InnoDB;
-
---
--- Previous revisions of uploaded files.
--- Awkwardly, image rows have to be moved into
--- this table at re-upload time.
---
-CREATE TABLE /*$wgDBprefix*/oldimage (
-  -- Base filename: key to image.img_name
-  oi_name varchar(255) binary NOT NULL default '',
-
-  -- Filename of the archived file.
-  -- This is generally a timestamp and '!' prepended to the base name.
-  oi_archive_name varchar(255) binary NOT NULL default '',
-
-  -- Other fields as in image...
-  oi_size int(8) unsigned NOT NULL default 0,
-  oi_width int(5) NOT NULL default 0,
-  oi_height int(5) NOT NULL default 0,
-  oi_bits int(3) NOT NULL default 0,
-  oi_description tinyblob NOT NULL default '',
-  oi_user int(5) unsigned NOT NULL default '0',
-  oi_user_text varchar(255) binary NOT NULL default '',
-  oi_timestamp char(14) binary NOT NULL default '',
-
-  INDEX oi_name (oi_name(10))
-
-) TYPE=InnoDB;
+CREATE TABLE oldimage (
+	oi_name		VARCHAR2(255) NOT NULL,
+	oi_archive_name	VARCHAR2(255) NOT NULL,
+	oi_size		NUMBER(8) NOT NULL,
+	oi_width	NUMBER(5) NOT NULL,
+	oi_height	NUMBER(5) NOT NULL,
+	oi_bits		NUMBER(3) NOT NULL,
+	oi_description	CLOB,
+	oi_user		NUMBER(8) NOT NULL REFERENCES "user"(user_id),
+	oi_user_text	VARCHAR2(255) NOT NULL,
+	oi_timestamp	TIMESTAMP NOT NULL
+);
+CREATE INDEX oi_name ON oldimage (oi_name);
 
 CREATE SEQUENCE rc_rc_id_seq;
 CREATE TABLE recentchanges (
@@ -312,9 +262,7 @@ CREATE TABLE recentchanges (
 	rc_minor	NUMBER(3) DEFAULT 0 NOT NULL,
 	rc_bot		NUMBER(3) DEFAULT 0 NOT NULL,
 	rc_new 		NUMBER(3) DEFAULT 0 NOT NULL,
-	rc_cur_id	NUMBER(8) NOT NULL
-				REFERENCES page(page_id)
-				ON DELETE CASCADE,
+	rc_cur_id	NUMBER(8),
 	rc_this_oldid	NUMBER(8) NOT NULL,
 	rc_last_oldid	NUMBER(8) NOT NULL,
 	rc_type		NUMBER(3) DEFAULT 0 NOT NULL,
@@ -456,39 +404,19 @@ CREATE TABLE /*$wgDBprefix*/validate (
 ) TYPE=InnoDB;
 
 
-CREATE TABLE /*$wgDBprefix*/logging (
-  -- Symbolic keys for the general log type and the action type
-  -- within the log. The output format will be controlled by the
-  -- action field, but only the type controls categorization.
-  log_type char(10) NOT NULL default '',
-  log_action char(10) NOT NULL default '',
-
-  -- Timestamp. Duh.
-  log_timestamp char(14) NOT NULL default '19700101000000',
-
-  -- The user who performed this action; key to user_id
-  log_user int unsigned NOT NULL default 0,
-
-  -- Key to the page affected. Where a user is the target,
-  -- this will point to the user page.
-  log_namespace int NOT NULL default 0,
-  log_title varchar(255) binary NOT NULL default '',
-
-  -- Freeform text. Interpreted as edit history comments.
-  log_comment varchar(255) NOT NULL default '',
-
-  -- LF separated list of miscellaneous parameters
-  log_params blob NOT NULL default '',
-
-  KEY type_time (log_type, log_timestamp),
-  KEY user_time (log_user, log_timestamp),
-  KEY page_time (log_namespace, log_title, log_timestamp)
-
-) TYPE=InnoDB;
-
-
-
-
+CREATE TABLE logging (
+  log_type		CHAR(10) NOT NULL,
+  log_action		CHAR(10) NOT NULL,
+  log_timestamp		TIMESTAMP NOT NULL,
+  log_user		NUMBER(8) REFERENCES "user"(user_id),
+  log_namespace		NUMBER(4),
+  log_title		VARCHAR2(255) NOT NULL,
+  log_comment		VARCHAR2(255),
+  log_params		CLOB
+);
+CREATE INDEX logging_type_name ON logging(log_type, log_timestamp);
+CREATE INDEX logging_user_time ON logging(log_user, log_timestamp);
+CREATE INDEX logging_page_time ON logging(log_namespace, log_title, log_timestamp);
 
 -- Hold group name and description
 --CREATE TABLE /*$wgDBprefix*/groups (
