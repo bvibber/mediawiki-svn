@@ -550,7 +550,7 @@ wfdebug("CREATING REVISION: rev_id = [". $row['id'] . "]\n");
 			), $fname
 		);
 
-		$this->mId = $rev_id;
+		$this->mId = !is_null($rev_id) ? $rev_id : $dbw->insertIi();
 
 		wfProfileOut( $fname );
 		return $this->mId;
