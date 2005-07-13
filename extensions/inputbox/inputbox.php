@@ -38,12 +38,14 @@ function renderInputbox($input)
 	getBoxOption($width,$input,"width");	
 	getBoxOption($preload,$input,"preload");
 	getBoxOption($editintro,$input,"editintro");
+	getBoxOption($default,$input,"default");	
+	getBoxOption($bgcolor,$input,"bgcolor");	
 	# Make sure you escape any user input in the output!
 	
 	if($type=="search") {	
-		$inputbox=getSearchForm($width);
+		$inputbox=getSearchForm($width,$default,$bgcolor);
 	} elseif($type=="create") {
-		$inputbox=getCreateForm($width,$preload,$editintro);
+		$inputbox=getCreateForm($width,$preload,$editintro,$default,$bgcolor);
 	}
 	if(isset($inputbox)) {
 		return $inputbox;
@@ -53,7 +55,7 @@ function renderInputbox($input)
 	}
 }
 
-function getSearchForm($width) {
+function getSearchForm($width,$default='',$bgcolor='') {
 	global $wgUser;
 	
 	$width=intval($width);
@@ -61,17 +63,18 @@ function getSearchForm($width) {
 
 	$sk=$wgUser->getSkin();
 	$searchpath = $sk->escapeSearchLink();
-	
+	$defaultEnc = htmlspecialchars( $default );
+	$bgcolorEnc = htmlspecialchars( $bgcolor );
 	$tryexact = wfMsgHtml( 'tryexact' );
 	$searchfulltext = wfMsgHtml( 'searchfulltext' );
 	
 	$searchform=<<<ENDFORM
 <table border="0" width="100%">
 <tr>
-<td align="center">
+<td align="center" bgcolor="$bgcolorEnc">
 <form name="searchbox" action="$searchpath" class="searchbox">
 	<input class="searchboxInput" name="search" type="text"
-	value="" size="$width"/><br />
+	value="$defaultEnc" size="$width"/><br />
 	<input type='submit' name="go" class="searchboxGoButton"
 	value="$tryexact"
 	/>&nbsp;<input type='submit' name="fulltext"
@@ -85,7 +88,7 @@ ENDFORM;
 	return $searchform;
 }
 
-function getCreateForm($width,$preload='',$editintro='') {
+function getCreateForm($width,$preload='',$editintro='',$default='', $bgcolor='') {
 	global $wgScript;	
 	
 	$width=intval($width);
@@ -94,19 +97,20 @@ function getCreateForm($width,$preload='',$editintro='') {
 	$action = htmlspecialchars( $wgScript );
 	$preloadEnc = htmlspecialchars( $preload );
 	$editintroEnc = htmlspecialchars( $editintro );
-	
+	$defaultEnc = htmlspecialchars( $default );	
+	$bgcolorEnc = htmlspecialchars( $bgcolor );
 	$createarticle = wfMsgHtml( "createarticle" );
 	
 	$createform=<<<ENDFORM
 <table border="0" width="100%">
 <tr>
-<td align="center">
+<td align="center" bgcolor="$bgcolorEnc">
 <form name="createbox" action="$action" method="get" class="createbox">
 	<input type='hidden' name="action" value="edit">
 	<input type="hidden" name="preload" value="$preloadEnc" />
 	<input type="hidden" name="editintro" value="$editintroEnc" />	
 	<input class="createboxInput" name="title" type="text"
-	value="" size="$width"/><br />		
+	value="$defaultEnc" size="$width"/><br />		
 	<input type='submit' name="create" class="createboxButton"
 	value="$createarticle"/>	
 </form>
@@ -121,5 +125,5 @@ function getBoxOption(&$value,&$input,$name) {
 
 	if(preg_match("/$name\s*=\s*(.*)/mi",$input,$matches)) {
 		$value=$matches[1];
-	} 
+	} 	
 }
