@@ -327,3 +327,15 @@ CREATE INDEX logging_page_time ON logging(log_namespace, log_title, log_timestam
 --  PRIMARY KEY  (gr_id)
 --
 --) TYPE=InnoDB;
+
+CREATE OR REPLACE PROCEDURE add_user_right (name VARCHAR2, new_right VARCHAR2) AS
+	user_id		"user".user_id%TYPE;
+	user_is_missing	EXCEPTION;
+BEGIN
+	SELECT user_id INTO user_id FROM "user" WHERE user_name = name;
+	INSERT INTO user_groups (ug_user, ug_group) VALUES(user_id, new_right);
+EXCEPTION
+	WHEN NO_DATA_FOUND THEN
+		DBMS_OUTPUT.PUT_LINE('The specified user does not exist.');
+END add_user_right;
+/
