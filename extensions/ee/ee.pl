@@ -15,6 +15,7 @@ use LWP::UserAgent;    # Web agent module for retrieving and posting HTTP data
 use URI::Escape;       # Urlencode functions
 use Gtk2 '-init';      # Graphical user interface, requires GTK2 libraries
 use Encode qw(encode); # UTF-8/iso8859-1 encoding
+use HTML::Entities;    # Encode or decode strings with HTML entities
 
 # Load interface messages
 initmsg();
@@ -104,6 +105,8 @@ if($type eq "Edit file") {
 	$fileurl=~m|\?title=(.*?)\&action=|i;
 	$pagetitle=$1;
 	$filename=uri_unescape($pagetitle);
+	# replace colons from filename, since they aren't allowed on MS's OS
+	$filename =~ s/:/__/g;
 	$filename=$filename.".wiki";
 	$edit_url=$script."?title=$pagetitle&action=submit";
 	$view_url=$script."?title=$pagetitle";	
@@ -197,6 +200,9 @@ if($type eq "Edit file") {
 	if($is_utf8 && $transcode) {
 		Encode::from_to($text,'utf8','iso-8859-1');
 	}
+	
+	# decode HTML entities
+	HTML::Entities::decode($text);
 	
 	# Flush the raw text of the page to the disk
 	open(OUTPUT,">$unixtempdir/".$filename);
