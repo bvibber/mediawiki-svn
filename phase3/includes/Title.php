@@ -2060,7 +2060,8 @@ wfdebug("title: articleid = ".$this->mArticleID."\n");
 		while( $row = $dbw->fetchObject( $res ) ) {
 			$toucharr[] = $row->pl_from;
 		}
-
+		if (!count($toucharr))
+			return;
 		$dbw->update( 'page', /* SET */ array( 'page_touched' => $dbw->timestamp() ),
 							/* WHERE */ array( 'page_id' => $toucharr ),$fname);
 	}

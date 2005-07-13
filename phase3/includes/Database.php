@@ -970,8 +970,7 @@ class Database {
 				if ( $mode == LIST_AND || $mode == LIST_SET ) {
 					$list .= $field.'=';
 				}
-				$list .= ($mode==LIST_NAMES ? $value :
-						(!is_numeric($value) ? $this->addQuotes( $value ) : $value));
+				$list .= ($mode==LIST_NAMES ? $value : $this->addQuotes( $value ));
 			}
 		}
 		return $list;

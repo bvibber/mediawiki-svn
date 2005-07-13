@@ -25,7 +25,7 @@ CREATE TABLE user_groups (
 	ug_user		NUMBER(5) DEFAULT '0' NOT NULL
 				REFERENCES "user" (user_id)
 				ON DELETE CASCADE,
-	ug_group	CHAR(16) DEFAULT '' NOT NULL,
+	ug_group	VARCHAR2(16) NOT NULL,
 	CONSTRAINT user_groups_pk PRIMARY KEY (ug_user, ug_group)
 );
 CREATE INDEX user_groups_group_idx ON user_groups(ug_group);
@@ -86,58 +86,20 @@ CREATE TABLE text (
 	CONSTRAINT text_pk PRIMARY KEY (old_id)
 );
 
---
--- Holding area for deleted articles, which may be viewed
--- or restored by admins through the Special:Undelete interface.
--- The fields generally correspond to the page, revision, and text
--- fields, with several caveats.
---
-CREATE TABLE /*$wgDBprefix*/archive (
-  ar_namespace int NOT NULL default '0',
-  ar_title varchar(255) binary NOT NULL default '',
-
-  -- Newly deleted pages will not store text in this table,
-  -- but will reference the separately existing text rows.
-  -- This field is retained for backwards compatibility,
-  -- so old archived pages will remain accessible after
-  -- upgrading from 1.4 to 1.5.
-  -- Text may be gzipped or otherwise funky.
-  ar_text mediumblob NOT NULL default '',
-
-  -- Basic revision stuff...
-  ar_comment tinyblob NOT NULL default '',
-  ar_user int(5) unsigned NOT NULL default '0',
-  ar_user_text varchar(255) binary NOT NULL,
-  ar_timestamp char(14) binary NOT NULL default '',
-  ar_minor_edit tinyint(1) NOT NULL default '0',
-
-  -- See ar_text note.
-  ar_flags tinyblob NOT NULL default '',
-
-  -- When revisions are deleted, their unique rev_id is stored
-  -- here so it can be retained after undeletion. This is necessary
-  -- to retain permalinks to given revisions after accidental delete
-  -- cycles or messy operations like history merges.
-  --
-  -- Old entries from 1.4 will be NULL here, and a new rev_id will
-  -- be created on undeletion for those revisions.
-  ar_rev_id int(8) unsigned,
-
-  -- For newly deleted revisions, this is the text.old_id key to the
-  -- actual stored text. To avoid breaking the block-compression scheme
-  -- and otherwise making storage changes harder, the actual text is
-  -- *not* deleted from the text table, merely hidden by removal of the
-  -- page and revision entries.
-  --
-  -- Old entries deleted under 1.2-1.4 will have NULL here, and their
-  -- ar_text and ar_flags fields will be used to create a new text
-  -- row upon undeletion.
-  ar_text_id int(8) unsigned,
-
-  KEY name_title_timestamp (ar_namespace,ar_title,ar_timestamp)
-
-) TYPE=InnoDB;
-
+CREATE TABLE archive (
+	ar_namespace	NUMBER(5) NOT NULL,
+	ar_title	VARCHAR2(255) NOT NULL,
+	ar_text		CLOB,
+	ar_comment	CLOB,
+	ar_user		NUMBER(8),
+	ar_user_text	VARCHAR2(255) NOT NULL,
+	ar_timestamp	TIMESTAMP NOT NULL,
+	ar_minor_edit	NUMBER(1) DEFAULT 0 NOT NULL,
+	ar_flags	CLOB,
+	ar_rev_id	NUMBER(8),
+	ar_text_id	NUMBER(8)
+);
+CREATE INDEX archive_name_title_timestamp ON archive(ar_namespace,ar_title,ar_timestamp)
 
 CREATE TABLE pagelinks (
 	pl_from	NUMBER(8) NOT NULL
@@ -405,8 +367,8 @@ CREATE TABLE /*$wgDBprefix*/validate (
 
 
 CREATE TABLE logging (
-  log_type		CHAR(10) NOT NULL,
-  log_action		CHAR(10) NOT NULL,
+  log_type		VARCHAR2(10) NOT NULL,
+  log_action		VARCHAR2(10) NOT NULL,
   log_timestamp		TIMESTAMP NOT NULL,
   log_user		NUMBER(8) REFERENCES "user"(user_id),
   log_namespace		NUMBER(4),

@@ -18,10 +18,10 @@ require_once( 'Database.php' );
 class DatabaseOracle extends Database {
 	var $mInsertId = NULL;
 	var $mLastResult = NULL;
-	var $mFetchCache = NULL;
-	var $mFetchID = 0;
-	var $mNcols;
-	var $mFieldNames, $mFieldTypes;
+	var $mFetchCache = array();
+	var $mFetchID = array();
+	var $mNcols = array();
+	var $mFieldNames = array(), $mFieldTypes = array();
 
 	function DatabaseOracle($server = false, $user = false, $password = false, $dbName = false,
 		$failFunction = false, $flags = 0, $tablePrefix = 'get from global' )
@@ -82,22 +82,24 @@ class DatabaseOracle extends Database {
 	}
 
 	function doQuery($sql) {
-		$this->mFetchCache = array();
-		$this->mFetchID = 0;
 		if (($stmt = oci_parse($this->mConn, $sql)) === false)
 			return $this->mLastResult = false;
 		$this->mLastResult = $stmt;
-		if (!oci_execute($stmt, OCI_DEFAULT))
+		if (!oci_execute($stmt, OCI_DEFAULT)) {
+			oci_free_statement($stmt);
 			return false;
-		$this->mNcols = oci_num_fields($stmt);
-		if ($this->mNcols == 0)
+		}
+		$this->mFetchCache[$stmt] = array();
+		$this->mFetchID[$stmt] = 0;
+		$this->mNcols[$stmt] = oci_num_fields($stmt);
+		if ($this->mNcols[$stmt] == 0)
 			return $this->mLastResult;
-		for ($i = 1; $i <= $this->mNcols; $i++) {
-			$this->mFieldNames[$i] = oci_field_name($stmt, $i);
-			$this->mFieldTypes[$i] = oci_field_type($stmt, $i);
+		for ($i = 1; $i <= $this->mNcols[$stmt]; $i++) {
+			$this->mFieldNames[$stmt][$i] = oci_field_name($stmt, $i);
+			$this->mFieldTypes[$stmt][$i] = oci_field_type($stmt, $i);
 		}
 		while (($o = oci_fetch_array($stmt)) !== false)
-			$this->mFetchCache[] = $o;
+			$this->mFetchCache[$stmt][] = $o;
 		return $this->mLastResult;
 	}
 
@@ -109,17 +111,22 @@ class DatabaseOracle extends Database {
 		if (!oci_free_statement($res)) {
 			wfDebugDieBacktrace( "Unable to free Oracle result\n" );
 		}
+		unset($this->mFetchID[$res]);
+		unset($this->mFetchCache[$res]);
+		unset($this->mNcols[$res]);
+		unset($this->mFieldNames[$res]);
+		unset($this->mFieldTypes[$res]);
 	}
 
 	function fetchAssoc($res) {
-		if ($this->mFetchID >= count($this->mFetchCache))
+		if ($this->mFetchID[$res] >= count($this->mFetchCache[$res]))
 			return false;
 
-		for ($i = 1; $i <= $this->mNcols; $i++) {
-			$name = $this->mFieldNames[$i];
-			$type = $this->mFieldTypes[$i];
-			if (isset($this->mFetchCache[$this->mFetchID][$name]))
-				$value = $this->mFetchCache[$this->mFetchID][$name];
+		for ($i = 1; $i <= $this->mNcols[$res]; $i++) {
+			$name = $this->mFieldNames[$res][$i];
+			$type = $this->mFieldTypes[$res][$i];
+			if (isset($this->mFetchCache[$res][$this->mFetchID[$res]][$name]))
+				$value = $this->mFetchCache[$res][$this->mFetchID[$res]][$name];
 			else	$value = NULL;
 			$key = strtolower($name);
 			if ($type === 'CLOB' && $value)
@@ -127,7 +134,7 @@ class DatabaseOracle extends Database {
 			wfdebug("'$key' => '$value'\n");
 			$ret[$key] = $value;
 		}
-		$this->mFetchID++;
+		$this->mFetchID[$res]++;
 		return $ret;
 	}
 
@@ -155,12 +162,7 @@ class DatabaseOracle extends Database {
 	}
 
 	function numRows($res) {
-		return count($this->mFetchCache);
-#		$n = oci_num_rows($res);
-#		if(oci_error($this->mConn)) {
-#			wfDebugDieBacktrace( 'SQL error: ' . htmlspecialchars( pg_last_error($this->mConn) ) );
-#		}
-#		return $n;
+		return count($this->mFetchCache[$res]);
 	}
 	function numFields( $res ) { return pg_num_fields( $res ); }
 	function fieldName( $res, $n ) { return pg_field_name( $res, $n ); }
@@ -172,7 +174,10 @@ class DatabaseOracle extends Database {
 		return $this->mInsertId;
 	}
 
-	function dataSeek( $res, $row ) { return pg_result_seek( $res, $row ); }
+	function dataSeek($res, $row) {
+		$this->mFetchID[$res] = $row;
+	}
+
 	function lastError() { return $this->mConn ? oci_error($this->mConn) : oci_error(); }
 	function lastErrno() { return 1; }
 
