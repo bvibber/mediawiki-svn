@@ -55,7 +55,7 @@ function renderInputbox($input)
 
 function getBoxOption(&$value,&$input,$name,$isNumber=false) {
 
-	if(preg_match("/^$name\s*=\s*(.*)/mi",$input,$matches)) {
+	if(preg_match("/^\s*$name\s*=\s*(.*)/mi",$input,$matches)) {
 		if($isNumber) {
 			$value=intval($matches[1]);
 		} else {
