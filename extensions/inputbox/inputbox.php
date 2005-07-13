@@ -34,96 +34,115 @@ function registerInputboxExtension()
  */
 function renderInputbox($input)
 {
-	getBoxOption($type,$input,"type");	
-	getBoxOption($width,$input,"width");	
-	getBoxOption($preload,$input,"preload");
-	getBoxOption($editintro,$input,"editintro");
-	getBoxOption($default,$input,"default");	
-	getBoxOption($bgcolor,$input,"bgcolor");	
-	# Make sure you escape any user input in the output!
+	$inputbox=new Inputbox();
+	getBoxOption($inputbox->type,$input,"type");
+	getBoxOption($inputbox->width,$input,"width",true);	
+	getBoxOption($inputbox->preload,$input,"preload");
+	getBoxOption($inputbox->editintro,$input,"editintro");
+	getBoxOption($inputbox->defaulttext,$input,"default");	
+	getBoxOption($inputbox->bgcolor,$input,"bgcolor");
+	getBoxOption($inputbox->buttonlabel,$input,"buttonlabel");	
+	getBoxOption($inputbox->searchbuttonlabel,$input,"searchbuttonlabel");		
 	
-	if($type=="search") {	
-		$inputbox=getSearchForm($width,$default,$bgcolor);
-	} elseif($type=="create") {
-		$inputbox=getCreateForm($width,$preload,$editintro,$default,$bgcolor);
-	}
-	if(isset($inputbox)) {
-		return $inputbox;
+	$boxhtml=$inputbox->render();
+	if($boxhtml) {
+		return $boxhtml;
 	} else {
-		# Careful with HTML insertions here
-		return "<br /> <font color='red'>Input box not defined.</font>";
+		return "<br /> <font color='red'>Input box '{$inputbox->type}' not defined.</font>";
 	}
 }
 
-function getSearchForm($width,$default='',$bgcolor='') {
-	global $wgUser;
-	
-	$width=intval($width);
-	if(!$width) $width=45;
 
-	$sk=$wgUser->getSkin();
-	$searchpath = $sk->escapeSearchLink();
-	$defaultEnc = htmlspecialchars( $default );
-	$bgcolorEnc = htmlspecialchars( $bgcolor );
-	$tryexact = wfMsgHtml( 'tryexact' );
-	$searchfulltext = wfMsgHtml( 'searchfulltext' );
+function getBoxOption(&$value,&$input,$name,$isNumber=false) {
+
+	if(preg_match("/^$name\s*=\s*(.*)/mi",$input,$matches)) {
+		if($isNumber) {
+			$value=intval($matches[1]);
+		} else {
+			$value=htmlspecialchars($matches[1]);
+		}
+	}
+}
+
+class Inputbox {
+	var $type,$width,$preload,$editintro;
+	var $defaulttext,$bgcolor,$buttonlabel,$searchbuttonlabel;
 	
-	$searchform=<<<ENDFORM
+	function render() {
+		if($this->type=="create" || $this->type=="comment") {
+			return $this->getCreateForm();		
+		} elseif($this->type=="search") {
+			return $this->getSearchForm();		
+		} else {
+			return false;
+		}	
+	}
+	function getSearchForm() {
+		global $wgUser;
+		
+		$sk=$wgUser->getSkin();
+		$searchpath = $sk->escapeSearchLink();		
+		if(!$this->buttonlabel) {
+			$this->buttonlabel = wfMsgHtml( 'tryexact' );
+		}
+		if(!$this->searchbuttonlabel) {
+			$this->searchbuttonlabel = wfMsgHtml( 'searchfulltext' );
+		}
+		
+		$searchform=<<<ENDFORM
 <table border="0" width="100%">
 <tr>
-<td align="center" bgcolor="$bgcolorEnc" cellspacing="0">
+<td align="center" bgcolor="{$this->bgcolor}" cellspacing="0">
 <form name="searchbox" action="$searchpath" class="searchbox">
 	<input class="searchboxInput" name="search" type="text"
-	value="$defaultEnc" size="$width"/><br />
+	value="{$this->defaulttext}" size="{$this->width}"/><br />
 	<input type='submit' name="go" class="searchboxGoButton"
-	value="$tryexact"
+	value="{$this->buttonlabel}"
 	/>&nbsp;<input type='submit' name="fulltext"
 	class="searchboxSearchButton"
-	value="$searchfulltext" />
+	value="{$this->searchbuttonlabel}" />
 </form>
 </td>
 </tr>
 </table>
 ENDFORM;
-	return $searchform;
-}
-
-function getCreateForm($width,$preload='',$editintro='',$default='', $bgcolor='') {
-	global $wgScript;	
+		return $searchform;
+	}
 	
-	$width=intval($width);
-	if(!$width) $width = 45;
-	
-	$action = htmlspecialchars( $wgScript );
-	$preloadEnc = htmlspecialchars( $preload );
-	$editintroEnc = htmlspecialchars( $editintro );
-	$defaultEnc = htmlspecialchars( $default );	
-	$bgcolorEnc = htmlspecialchars( $bgcolor );
-	$createarticle = wfMsgHtml( "createarticle" );
-	
-	$createform=<<<ENDFORM
+	function getCreateForm() {
+		global $wgScript;	
+		
+		$action = htmlspecialchars( $wgScript );		
+		if($this->type=="comment") {
+			$comment='<input type="hidden" name="section" value="new">';
+			if(!$this->buttonlabel) {
+				$this->buttonlabel = wfMsgHtml( "postcomment" );
+			}
+		} else {
+			$comment='';
+			if(!$this>buttonlabel) {			
+				$this->buttonlabel = wfMsgHtml( "createarticle" );
+			}
+		}		
+		$createform=<<<ENDFORM
 <table border="0" width="100%" cellspacing="0">
 <tr>
-<td align="center" bgcolor="$bgcolorEnc">
+<td align="center" bgcolor="{$this->bgcolor}">
 <form name="createbox" action="$action" method="get" class="createbox">
 	<input type='hidden' name="action" value="edit">
-	<input type="hidden" name="preload" value="$preloadEnc" />
-	<input type="hidden" name="editintro" value="$editintroEnc" />	
+	<input type="hidden" name="preload" value="{$this->preload}" />
+	<input type="hidden" name="editintro" value="{$this->editintro}" />	
+	{$comment}
 	<input class="createboxInput" name="title" type="text"
-	value="$defaultEnc" size="$width"/><br />		
+	value="{$this->defaulttext}" size="{$this->width}"/><br />		
 	<input type='submit' name="create" class="createboxButton"
-	value="$createarticle"/>	
+	value="{$this->buttonlabel}"/>	
 </form>
 </td>
 </tr>
 </table>
 ENDFORM;
-	return $createform;
-}
-
-function getBoxOption(&$value,&$input,$name) {
-
-	if(preg_match("/$name\s*=\s*(.*)/mi",$input,$matches)) {
-		$value=$matches[1];
-	} 	
+		return $createform;
+	}
+	
 }
