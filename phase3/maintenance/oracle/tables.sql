@@ -150,9 +150,9 @@ CREATE UNIQUE INDEX ss_row_id ON site_stats(ss_row_id);
 -- in the page table updated for the all articles
 -- that have been visited.)
 --
-CREATE TABLE /*$wgDBprefix*/hitcounter (
-  hc_id INTEGER UNSIGNED NOT NULL
-) TYPE=HEAP MAX_ROWS=25000;
+CREATE TABLE hitcounter (
+	hc_id	NUMBER NOT NULL
+); /* XXX TYPE=HEAP MAX_ROWS=25000; */
 
 
 --
@@ -256,91 +256,31 @@ CREATE INDEX wl_namespace_title ON watchlist(wl_namespace, wl_title);
 -- Used by texvc math-rendering extension to keep track
 -- of previously-rendered items.
 --
-CREATE TABLE /*$wgDBprefix*/math (
-  -- Binary MD5 hash of the latex fragment, used as an identifier key.
-  math_inputhash varchar(16) NOT NULL,
-
-  -- Not sure what this is, exactly...
-  math_outputhash varchar(16) NOT NULL,
-
-  -- texvc reports how well it thinks the HTML conversion worked;
-  -- if it's a low level the PNG rendering may be preferred.
-  math_html_conservativeness tinyint(1) NOT NULL,
-
-  -- HTML output from texvc, if any
-  math_html text,
-
-  -- MathML output from texvc, if any
-  math_mathml text,
-
-  UNIQUE KEY math_inputhash (math_inputhash)
-
-) TYPE=InnoDB;
-
---
--- When using the default MySQL search backend, page titles
--- and text are munged to strip markup, do Unicode case folding,
--- and prepare the result for MySQL's fulltext index.
---
--- This table must be MyISAM; InnoDB does not support the needed
--- fulltext index.
---
-CREATE TABLE /*$wgDBprefix*/searchindex (
-  -- Key to page_id
-  si_page int(8) unsigned NOT NULL,
-
-  -- Munged version of title
-  si_title varchar(255) NOT NULL default '',
-
-  -- Munged version of body text
-  si_text mediumtext NOT NULL default '',
-
-  UNIQUE KEY (si_page),
-  FULLTEXT si_title (si_title),
-  FULLTEXT si_text (si_text)
-
-) TYPE=MyISAM;
+CREATE TABLE math (
+	math_inputhash			VARCHAR2(16) NOT NULL UNIQUE,
+	math_outputhash			VARCHAR2(16) NOT NULL,
+	math_html_conservativeness	NUMBER(1) NOT NULL,
+	math_html			CLOB,
+	math_mathml			CLOB,
+);
 
 --
 -- Recognized interwiki link prefixes
 --
-CREATE TABLE /*$wgDBprefix*/interwiki (
-  -- The interwiki prefix, (e.g. "Meatball", or the language prefix "de")
-  iw_prefix char(32) NOT NULL,
+CREATE TABLE interwiki (
+  iw_prefix	VARCHAR2(32) NOT NULL UNIQUE,
+  iw_url	VARCHAR2(127) NOT NULL,
+  iw_local	NUMBER(1) NOT NULL,
+  iw_trans	NUMBER(1) DEFAULT 0 NOT NULL,
+);
 
-  -- The URL of the wiki, with "$1" as a placeholder for an article name.
-  -- Any spaces in the name will be transformed to underscores before
-  -- insertion.
-  iw_url char(127) NOT NULL,
-
-  -- A boolean value indicating whether the wiki is in this project
-  -- (used, for example, to detect redirect loops)
-  iw_local BOOL NOT NULL,
-
-  -- Boolean value indicating whether interwiki transclusions are allowed.
-  iw_trans TINYINT(1) NOT NULL DEFAULT 0,
-
-  UNIQUE KEY iw_prefix (iw_prefix)
-
-) TYPE=InnoDB;
-
---
--- Used for caching expensive grouped queries
---
-CREATE TABLE /*$wgDBprefix*/querycache (
-  -- A key name, generally the base name of of the special page.
-  qc_type char(32) NOT NULL,
-
-  -- Some sort of stored value. Sizes, counts...
-  qc_value int(5) unsigned NOT NULL default '0',
-
-  -- Target namespace+title
-  qc_namespace int NOT NULL default '0',
-  qc_title char(255) binary NOT NULL default '',
-
-  KEY (qc_type,qc_value)
-
-) TYPE=InnoDB;
+CREATE TABLE querycache (
+	qc_type		VARCHAR2(32) NOT NULL,
+	qc_value	NUMBER(5) DEFAULT 0 NOT NULL,
+	qc_namespace	NUMBER(4) DEFAULT 0 NOT NULL,
+	qc_title	VARCHAR2(255),
+);
+CREATE INDEX querycache_type_value ON querycache(qc_type, qc_value);
 
 --
 -- For a few generic cache operations if not using Memcached
@@ -353,18 +293,16 @@ CREATE TABLE objectcache (
 CREATE UNIQUE INDEX oc_keyname_idx ON objectcache(keyname);
 CREATE INDEX oc_exptime_idx ON objectcache(exptime);
 
--- For article validation
-CREATE TABLE /*$wgDBprefix*/validate (
-  `val_user` int(11) NOT NULL default '0',
-  `val_page` int(11) unsigned NOT NULL default '0',
-  `val_revision` int(11) unsigned NOT NULL default '0',
-  `val_type` int(11) unsigned NOT NULL default '0',
-  `val_value` int(11) default '0',
-  `val_comment` varchar(255) NOT NULL default '',
-  `val_ip` varchar(20) NOT NULL default '',
-  KEY `val_user` (`val_user`,`val_revision`)
-) TYPE=InnoDB;
-
+CREATE TABLE "validate" (
+	val_user	NUMBER(11) DEFAULT 0 NOT NULL,
+	val_page	NUMBER(11) DEFAULT 0 NOT NULL,
+	val_revision	NUMBER(11) DEFAULT 0 NOT NULL,
+	val_type	NUMBER(11) DEFAULT 0 NOT NULL,
+	val_value	NUMBER(11) DEFAULT 0,
+	val_comment	VARCHAR2(255),
+	val_ip		VARCHAR2(20)
+);
+CREATE INDEX val_user ON "validate" (val_user,val_revision);
 
 CREATE TABLE logging (
   log_type		VARCHAR2(10) NOT NULL,
