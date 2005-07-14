@@ -5,7 +5,7 @@
  *
  * @package MediaWiki
  */
- 
+
 if( !defined( 'MEDIAWIKI' ) )
 	die();
 
@@ -15,7 +15,7 @@ if( $wgCategoryMagicGallery )
 	require_once('ImageGallery.php');
 
 /**
- * @package MediaWiki 
+ * @package MediaWiki
  */
 class CategoryPage extends Article {
 
@@ -27,7 +27,7 @@ class CategoryPage extends Article {
 		}
 
 		Article::view();
-		
+
 		# If the article we've just shown is in the "Image" namespace,
 		# follow it with the history list and link list for the image
 		# it describes.
@@ -40,7 +40,7 @@ class CategoryPage extends Article {
 	function openShowCategory() {
 		# For overloading
 	}
-	
+
 	# generate a list of subcategories and pages for a category
 	# depending on wfMsg("usenewcategorypage") it either calls the new
 	# or the old code. The new code will not work properly for some
@@ -85,7 +85,7 @@ class CategoryPage extends Article {
 			$pageCondition = 'cl_sortkey < ' . $dbr->addQuotes( $until );
 			$flip = true;
 		} else {
-			$pageCondition = '1';
+			$pageCondition = '1 = 1';
 			$flip = false;
 		}
 		$limit = 200;
@@ -100,7 +100,7 @@ class CategoryPage extends Article {
 			$fname,
 			array( 'ORDER BY' => $flip ? 'cl_sortkey DESC' : 'cl_sortkey',
 			       'LIMIT'    => $limit + 1 ) );
-		
+
 		$sk =& $wgUser->getSkin();
 		$r = "<br style=\"clear:both;\"/>\n";
 		$count = 0;
@@ -112,13 +112,13 @@ class CategoryPage extends Article {
 				$nextPage = $x->cl_sortkey;
 				break;
 			}
-			
+
 			$title = Title::makeTitle( $x->page_namespace, $x->page_title );
-			
+
 			if( $title->getNamespace() == NS_CATEGORY ) {
 				// Subcategory; strip the 'Category' namespace from the link text.
 				array_push( $children, $sk->makeKnownLinkObj( $title, $wgContLang->convertHtml( $title->getText() ) ) );
-				
+
 				// If there's a link from Category:A to Category:B, the sortkey of the resulting
 				// entry in the categorylinks table is Category:A, not A, which it SHOULD be.
 				// Workaround: If sortkey == "Category:".$title, than use $title for sorting,
@@ -145,7 +145,7 @@ class CategoryPage extends Article {
 		}
 
 		$root_length = 0;
-		
+
 		for ($i = 0 ; $i < count($articles) - 1; ++$i){
 			if ($articles_start_char[$i][$root_length] != $articles_start_char[$i + 1][$root_length] ) {
 				break;
@@ -154,7 +154,7 @@ class CategoryPage extends Article {
 				$i = -1;
 			}
 		}
-		
+
 		for ($i = 0 ; $i < count($articles) ; ++$i) {
 			$articles_start_char[$i] = $wgContLang->truncate($articles_start_char[$i], $root_length + 1);
 		}
@@ -167,13 +167,13 @@ class CategoryPage extends Article {
 			$articles            = array_reverse( $articles );
 			$articles_start_char = array_reverse( $articles_start_char );
 		}
-		
+
 		if( $until != '' ) {
 			$r .= $this->pagingLinks( $this->mTitle, $nextPage, $until, $limit );
 		} elseif( $nextPage != '' || $from != '' ) {
 			$r .= $this->pagingLinks( $this->mTitle, $from, $nextPage, $limit );
 		}
-		
+
 		# Don't show subcategories section if there are none.
 		if( count( $children ) > 0 ) {
 			# Showing subcategories
@@ -230,7 +230,7 @@ class CategoryPage extends Article {
 		}
 		return '';
 	}
-	
+
 	/**
 	 * Format a list of articles chunked by letter in a three-column
 	 * list, ordered vertically.
@@ -247,7 +247,7 @@ class CategoryPage extends Article {
 		// get and display header
 		$r = '<table width="100%"><tr valign="top">';
 
-		$prev_start_char = 'none'; 
+		$prev_start_char = 'none';
 
 		// loop through the chunks
 		for($startChunk = 0, $endChunk = $chunk, $chunkIndex = 0;
@@ -291,7 +291,7 @@ class CategoryPage extends Article {
 		$r .= '</tr></table>';
 		return $r;
 	}
-	
+
 	/**
 	 * Format a list of articles chunked by letter in a bullet list.
 	 * @param array $articles
@@ -314,7 +314,7 @@ class CategoryPage extends Article {
 		$r .= '</ul>';
 		return $r;
 	}
-	
+
 	/**
 	 * @param Title  $title
 	 * @param string $first
@@ -328,7 +328,7 @@ class CategoryPage extends Article {
 		global $wgUser, $wgLang;
 		$sk =& $wgUser->getSkin();
 		$limitText = $wgLang->formatNum( $limit );
-		
+
 		$prevLink = htmlspecialchars( wfMsg( 'prevn', $limitText ) );
 		if( $first != '' ) {
 			$prevLink = $sk->makeLinkObj( $title, $prevLink,
@@ -339,7 +339,7 @@ class CategoryPage extends Article {
 			$nextLink = $sk->makeLinkObj( $title, $nextLink,
 				wfArrayToCGI( $query + array( 'from' => $last ) ) );
 		}
-		
+
 		return "($prevLink) ($nextLink)";
 	}
 }

@@ -729,7 +729,10 @@ class Database {
 	function selectRow( $table, $vars, $conds, $fname = 'Database::selectRow', $options = array() ) {
 		$options['LIMIT'] = 1;
 		$res = $this->select( $table, $vars, $conds, $fname, $options );
-		if ( $res === false || !$this->numRows( $res ) ) {
+		if ( $res === false )
+			return false;
+		if ( !$this->numRows($res) ) {
+			$this->freeResult($res);
 			return false;
 		}
 		$obj = $this->fetchObject( $res );
