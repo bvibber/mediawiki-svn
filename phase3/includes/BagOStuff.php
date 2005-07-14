@@ -255,9 +255,6 @@ class SqlBagOStuff extends BagOStuff {
 					'value' => $this->_serialize($value),
 					'exptime' => $exp
 				));
-//		$this->_query(
-//			"INSERT INTO $0 (keyname,value,exptime) VALUES('$1','$2', '$exp')",
-//			$key, $this->_serialize($value));
 		return true; /* ? */
 	}
 

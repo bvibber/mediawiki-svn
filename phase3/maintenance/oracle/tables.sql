@@ -12,7 +12,7 @@ CREATE TABLE "user" (
   user_newpassword	VARCHAR2(128) default '',
   user_email		VARCHAR2(255) default '',
   user_options		CLOB default '',
-  user_touched		TIMESTAMP DEFAULT SYSTIMESTAMP NOT NULL,
+  user_touched		TIMESTAMP,
   user_token		CHAR(32) default '',
   user_email_authenticated TIMESTAMP DEFAULT NULL,
   user_email_token	CHAR(32),
@@ -47,7 +47,7 @@ CREATE TABLE page (
 	page_is_redirect	NUMBER(1) DEFAULT 0 NOT NULL,
 	page_is_new		NUMBER(1) DEFAULT 0 NOT NULL,
 	page_random		NUMBER(25, 24) NOT NULL,
-	page_touched		TIMESTAMP DEFAULT SYSTIMESTAMP NOT NULL,
+	page_touched		TIMESTAMP,
 	page_latest		NUMBER(8) NOT NULL,
 	page_len 		NUMBER(8) DEFAULT 0
 );
@@ -65,7 +65,7 @@ CREATE TABLE revision (
 	rev_comment	CLOB,
 	rev_user	NUMBER(8) DEFAULT 0 NOT NULL,
 	rev_user_text	VARCHAR2(255) DEFAULT '' NOT NULL,
-	rev_timestamp	TIMESTAMP DEFAULT SYSTIMESTAMP NOT NULL,
+	rev_timestamp	TIMESTAMP NOT NULL,
 	rev_minor_edit	NUMBER(1) DEFAULT 0 NOT NULL,
 	rev_deleted	NUMBER(1) DEFAULT 0 NOT NULL,
 	CONSTRAINT revision_pk PRIMARY KEY (rev_page, rev_id)
@@ -211,8 +211,8 @@ CREATE INDEX oi_name ON oldimage (oi_name);
 CREATE SEQUENCE rc_rc_id_seq;
 CREATE TABLE recentchanges (
 	rc_id 		NUMBER(8) NOT NULL,
-	rc_timestamp	TIMESTAMP DEFAULT SYSTIMESTAMP NOT NULL,
-	rc_cur_time	TIMESTAMP DEFAULT SYSTIMESTAMP NOT NULL,
+	rc_timestamp	TIMESTAMP,
+	rc_cur_time	TIMESTAMP,
 	rc_user		NUMBER(8) DEFAULT 0 NOT NULL,
 	rc_user_text	VARCHAR2(255),
 	rc_namespace	NUMBER(4) DEFAULT 0 NOT NULL,

@@ -110,8 +110,14 @@ class DatabaseOracle extends Database {
 			$this->mFieldNames[$stmt][$i] = oci_field_name($stmt, $i);
 			$this->mFieldTypes[$stmt][$i] = oci_field_type($stmt, $i);
 		}
-		while (($o = oci_fetch_array($stmt)) !== false)
+		while (($o = oci_fetch_array($stmt)) !== false) {
+			foreach ($o as $key => $value) {
+				if (is_object($value)) {
+					$o[$key] = $value->load();
+				}
+			}
 			$this->mFetchCache[$stmt][] = $o;
+		}
 		$this->mAffectedRows[$stmt] = oci_num_rows($stmt);
 		return $this->mLastResult;
 	}
@@ -142,8 +148,6 @@ class DatabaseOracle extends Database {
 				$value = $this->mFetchCache[$res][$this->mFetchID[$res]][$name];
 			else	$value = NULL;
 			$key = strtolower($name);
-			if ($type === 'CLOB' && $value)
-				$value = $value->load();
 			wfdebug("'$key' => '$value'\n");
 			$ret[$key] = $value;
 		}
@@ -646,10 +650,10 @@ class DatabaseOracle extends Database {
 		if (!$multi)
 			$a = array($a);
 
-		foreach ($a as $row) {
+		foreach ($a as $key => $row) {
 			$s = '';
 			foreach ($row as $k => $value) {
-				oci_bind_by_name($stmt, ":$k", $row[$k], -1);
+				oci_bind_by_name($stmt, ":$k", $a[$key][$k], -1);
 				if ($this->debug())
 					$s .= " [$k] = {$row[$k]}";
 			}
