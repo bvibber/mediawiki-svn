@@ -54,7 +54,7 @@ class DatabaseOracle extends Database {
 		$success = false;
 
 		$hstring="";
-		$this->mConn = @oci_connect($user, $password, $dbName);
+		$this->mConn = @oci_new_connect($user, $password, $dbName, "AL32UTF8");
 		if ( $this->mConn == false ) {
 			wfDebug( "DB connection error\n" );
 			wfDebug( "Server: $server, Database: $dbName, User: $user, Password: "

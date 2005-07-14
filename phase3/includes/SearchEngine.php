@@ -14,7 +14,7 @@ class SearchEngine {
 	var $searchTerms = array();
 	var $namespaces = array( 0 );
 	var $showRedirects = false;
-	
+
 	/**
 	 * Perform a full text search query and return a result set.
 	 * If title searches are not supported or disabled, return null.
@@ -40,7 +40,7 @@ class SearchEngine {
 	function searchTitle( $term ) {
 		return null;
 	}
-	
+
 	/**
 	 * If an exact title match can be find, or a very slightly close match,
 	 * return the title. If no match, returns NULL.
@@ -94,15 +94,15 @@ class SearchEngine {
 		if ( $title->getNamespace() == NS_USER ) {
 			return $title;
 		}
-		
+
 		# Quoted term? Try without the quotes...
 		if( preg_match( '/^"([^"]+)"$/', $term, $matches ) ) {
 			return SearchEngine::getNearMatch( $matches[1] );
 		}
-		
+
 		return NULL;
 	}
-	
+
 	function legalSearchChars() {
 		return "A-Za-z_'0-9\\x80-\\xFF\\-";
 	}
@@ -119,7 +119,7 @@ class SearchEngine {
 		$this->limit = IntVal( $limit );
 		$this->offset = IntVal( $offset );
 	}
-	
+
 	/**
 	 * Set which namespaces the search should include.
 	 * Give an array of namespace index numbers.
@@ -130,7 +130,7 @@ class SearchEngine {
 	function setNamespaces( $namespaces ) {
 		$this->namespaces = $namespaces;
 	}
-	
+
 	/**
 	 * Make a list of searchable namespaces and their canonical names.
 	 * @return array
@@ -146,7 +146,7 @@ class SearchEngine {
 		}
 		return $arr;
 	}
-	
+
 	/**
 	 * Return a 'cleaned up' search string
 	 *
@@ -186,7 +186,7 @@ class SearchEngine {
 		$search->setLimitOffset(0,0);
 		return $search;
 	}
-	
+
 	/**
 	 * Create or update the search index record for the given page.
 	 * Title and text should be pre-processed.
@@ -226,11 +226,11 @@ class SearchResultSet {
 	function termMatches() {
 		return array();
 	}
-	
+
 	function numRows() {
 		return 0;
 	}
-	
+
 	/**
 	 * Return true if results are included in this result set.
 	 * @return bool
@@ -239,7 +239,7 @@ class SearchResultSet {
 	function hasResults() {
 		return false;
 	}
-	
+
 	/**
 	 * Some search modes return a total hit count for the query
 	 * in the entire article database. This may include pages
@@ -254,7 +254,7 @@ class SearchResultSet {
 	function getTotalHits() {
 		return null;
 	}
-	
+
 	/**
 	 * Some search modes return a suggested alternate term if there are
 	 * no exact hits. Returns true if there is one on this set.
@@ -265,7 +265,7 @@ class SearchResultSet {
 	function hasSuggestion() {
 		return false;
 	}
-	
+
 	/**
 	 * Some search modes return a suggested alternate term if there are
 	 * no exact hits. Check hasSuggestion() first.
@@ -276,7 +276,7 @@ class SearchResultSet {
 	function getSuggestion() {
 		return '';
 	}
-	
+
 	/**
 	 * Fetches next search result, or false.
 	 * @return SearchResult
@@ -293,7 +293,7 @@ class SearchResult {
 	function SearchResult( $row ) {
 		$this->mTitle = Title::makeTitle( $row->page_namespace, $row->page_title );
 	}
-	
+
 	/**
 	 * @return Title
 	 * @access public
@@ -301,7 +301,7 @@ class SearchResult {
 	function getTitle() {
 		return $this->mTitle;
 	}
-	
+
 	/**
 	 * @return double or null if not supported
 	 */
@@ -317,5 +317,8 @@ class SearchEngineDummy {
 	function search( $term ) {
 		return null;
 	}
+	function setLimitOffset($l, $o) {}
+	function legalSearchChars() {}
+	function update() {}
 }
 
