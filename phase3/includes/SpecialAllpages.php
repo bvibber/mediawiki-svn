@@ -17,7 +17,7 @@ function wfSpecialAllpages( $par=NULL, $specialPage ) {
 	$from = $wgRequest->getVal( 'from' );
 	$namespace = $wgRequest->getInt( 'namespace' );
 	$invert = $wgRequest->getBool( 'invert' );
-	
+
 	$namespaces = $wgContLang->getNamespaces();
 
 	if( !in_array($namespace, array_keys($namespaces)) )
@@ -34,7 +34,7 @@ function wfSpecialAllpages( $par=NULL, $specialPage ) {
 			wfMsg( 'allarticles' )
 			);
 	}
-	
+
 	if ( isset($par) ) {
 		indexShowChunk( $namespace, $par, $invert, $specialPage->including() );
 	} elseif ( isset($from) ) {
@@ -61,14 +61,14 @@ function indexNamespaceForm ( $namespace = NS_MAIN, $from = '', $invert = false 
 			continue;
 		$n = $ns == 0 ? wfMsg ( 'blanknamespace' ) : $name;
 		$sel = $ns == $namespace ? ' selected="selected"' : '';
-		$namespaceselect .= "<option value='$ns'$sel>$n</option>";	
+		$namespaceselect .= "<option value='$ns'$sel>$n</option>";
 	}
 	$namespaceselect .= '</select>';
 
 	$frombox = "<input type='text' size='20' name='from' id='nsfrom' value=\""
 	            . htmlspecialchars ( $from ) . '"/>';
 	$submitbutton = '<input type="submit" value="' . wfMsg( 'allpagessubmit' ) . '" />';
-	
+
 	$invertbox = "<input type='checkbox' name='invert' value='1' id='nsinvert'" . ( $invert ? ' checked="checked"' : '' ) . ' />';
 
 	$out = "<div class='namespaceselector'><form method='get' action='{$wgScript}'>";
@@ -79,7 +79,7 @@ function indexNamespaceForm ( $namespace = NS_MAIN, $from = '', $invert = false 
 		<td align='right'>" . wfMsg('allpagesfrom') . "</td>
 		<td align='left'><label for='nsfrom'>$frombox</label></td>
 	</tr>
-	<tr>    
+	<tr>
 		<td align='right'><label for='nsselectbox'>" . wfMsg('namespace') . "</label></td>
 		<td align='left'>
 			$namespaceselect $submitbutton $invertbox
@@ -115,7 +115,7 @@ function indexShowToplevel ( $namespace = NS_MAIN, $invert = false,  $including 
 
 	$count = $dbr->selectField( 'page', 'COUNT(*)', $where, $fname );
 	$sections = ceil( $count / $indexMaxperpage );
-	
+
 	if ( $sections < 3 ) {
 		# If there are only two or less sections, don't even display them.
 		# Instead, display the first section directly.
@@ -146,7 +146,7 @@ function indexShowToplevel ( $namespace = NS_MAIN, $invert = false,  $including 
 		else
 			$from = $i * $indexMaxperpage;
 		$limit = ( $i == $offset || $i == $stopat ) ? 1 : 2;
-		$sql = "SELECT page_title $fromwhere $order_str " . $dbr->limitResult ( $limit, $from );
+		$sql = $dbr->limitResult("SELECT page_title $fromwhere $order_str", $limit, $from);
 		$res = $dbr->query( $sql, $fname );
 		if ( $s = $dbr->fetchObject( $res ) ) {
 			array_push ( $lines, $s->page_title );
@@ -165,9 +165,9 @@ function indexShowToplevel ( $namespace = NS_MAIN, $invert = false,  $including 
 		$out .= indexShowline ( $inpoint, $outpoint, $namespace, $invert );
 	}
 	$out .= '</table>';
-	
+
 	$nsForm = indexNamespaceForm ( $namespace, '', $invert );
-	
+
 	# Is there more?
 	if ( $including ) {
 		$out2 = '';
@@ -204,7 +204,7 @@ function indexShowToplevel ( $namespace = NS_MAIN, $invert = false,  $including 
 
 /**
  * @todo Document
- * @param string $from 
+ * @param string $from
  * @param integer $namespace (Default NS_MAIN)
  * @param bool $invert true if we want the namespaces inverted (default false)
  */
@@ -218,7 +218,7 @@ function indexShowline( $inpoint, $outpoint, $namespace = NS_MAIN, $invert ) {
 	$queryparams = ($namespace ? "namespace=$namespace" : '') . ($invert ? "&invert=$invert" : '');
 	$special = Title::makeTitle( NS_SPECIAL, 'Allpages/' . $inpoint );
 	$link = $special->escapeLocalUrl( $queryparams );
-	
+
 	$out = wfMsg(
 		'alphaindexline',
 		"<a href=\"$link\">$inpointf</a></td><td><a href=\"$link\">",
@@ -240,21 +240,22 @@ function indexShowChunk( $namespace = NS_MAIN, $from, $invert = false, $includin
 	$out = '';
 	$dbr =& wfGetDB( DB_SLAVE );
 	$page = $dbr->tableName( 'page' );
-	
+
 	$fromTitle = Title::newFromURL( $from );
 	$fromKey = is_null( $fromTitle ) ? '' : $fromTitle->getDBkey();
-	
+
 	$sql = "SELECT page_namespace,page_title FROM $page WHERE page_namespace" .
 		($invert ? '!' : '') . "=$namespace" .
 		" AND page_title >= ".  $dbr->addQuotes( $fromKey ) .
-		" ORDER BY page_title LIMIT " . $maxPlusOne;
+		" ORDER BY page_title";
+	$sql = $dbr->limitResult($sql, $maxPlusOne, 0);
 	$res = $dbr->query( $sql, 'indexShowChunk' );
 
 	### FIXME: side link to previous
 
 	$n = 0;
 	$out = '<table style="background: inherit;" border="0" width="100%">';
-	
+
 	$namespaces = $wgContLang->getFormattedNamespaces();
 	while( ($n < $indexMaxperpage) && ($s = $dbr->fetchObject( $res )) ) {
 		$t = Title::makeTitle( $s->page_namespace, $s->page_title );
@@ -262,7 +263,7 @@ function indexShowChunk( $namespace = NS_MAIN, $from, $invert = false, $includin
 			$ns = $s->page_namespace;
 			$prefix = $invert ? $namespaces[$ns] : '';
 			$prefix .= $invert && $namespaces[$ns] != $wgContLang->getNsText(NS_MAIN) ? ':' : '';
-			$link = $sk->makeKnownLinkObj( $t, $t->getText(), false, false, $prefix ); 
+			$link = $sk->makeKnownLinkObj( $t, $t->getText(), false, false, $prefix );
 		} else {
 			$link = '[[' . htmlspecialchars( $s->page_title ) . ']]';
 		}
@@ -279,7 +280,7 @@ function indexShowChunk( $namespace = NS_MAIN, $from, $invert = false, $includin
 		$out .= '</tr>';
 	}
 	$out .= '</table>';
-	
+
 	if ( $including ) {
 		$out2 = '';
 	} else {
