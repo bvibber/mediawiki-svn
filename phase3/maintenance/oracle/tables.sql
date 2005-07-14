@@ -12,11 +12,11 @@ CREATE TABLE "user" (
   user_newpassword	VARCHAR2(128) default '',
   user_email		VARCHAR2(255) default '',
   user_options		CLOB default '',
-  user_touched		TIMESTAMP,
+  user_touched		TIMESTAMP WITH TIME ZONE,
   user_token		CHAR(32) default '',
-  user_email_authenticated TIMESTAMP DEFAULT NULL,
+  user_email_authenticated TIMESTAMP WITH TIME ZONE DEFAULT NULL,
   user_email_token	CHAR(32),
-  user_email_token_expires TIMESTAMP DEFAULT NULL
+  user_email_token_expires TIMESTAMP WITH TIME ZONE DEFAULT NULL
 );
 CREATE UNIQUE INDEX user_name_idx ON "user" (user_name);
 CREATE INDEX user_email_token_idx ON "user" (user_email_token);
@@ -47,7 +47,7 @@ CREATE TABLE page (
 	page_is_redirect	NUMBER(1) DEFAULT 0 NOT NULL,
 	page_is_new		NUMBER(1) DEFAULT 0 NOT NULL,
 	page_random		NUMBER(25, 24) NOT NULL,
-	page_touched		TIMESTAMP,
+	page_touched		TIMESTAMP WITH TIME ZONE,
 	page_latest		NUMBER(8) NOT NULL,
 	page_len 		NUMBER(8) DEFAULT 0
 );
@@ -65,7 +65,7 @@ CREATE TABLE revision (
 	rev_comment	CLOB,
 	rev_user	NUMBER(8) DEFAULT 0 NOT NULL,
 	rev_user_text	VARCHAR2(255) DEFAULT '' NOT NULL,
-	rev_timestamp	TIMESTAMP NOT NULL,
+	rev_timestamp	TIMESTAMP WITH TIME ZONE NOT NULL,
 	rev_minor_edit	NUMBER(1) DEFAULT 0 NOT NULL,
 	rev_deleted	NUMBER(1) DEFAULT 0 NOT NULL,
 	CONSTRAINT revision_pk PRIMARY KEY (rev_page, rev_id)
@@ -93,7 +93,7 @@ CREATE TABLE archive (
 	ar_comment	CLOB,
 	ar_user		NUMBER(8),
 	ar_user_text	VARCHAR2(255) NOT NULL,
-	ar_timestamp	TIMESTAMP NOT NULL,
+	ar_timestamp	TIMESTAMP WITH TIME ZONE NOT NULL,
 	ar_minor_edit	NUMBER(1) DEFAULT 0 NOT NULL,
 	ar_flags	CLOB,
 	ar_rev_id	NUMBER(8),
@@ -122,7 +122,7 @@ CREATE TABLE categorylinks (
   cl_from	NUMBER(8) NOT NULL REFERENCES page(page_id) ON DELETE CASCADE,
   cl_to		VARCHAR2(255) NOT NULL,
   cl_sortkey	VARCHAR2(86) default '',
-  cl_timestamp	TIMESTAMP NOT NULL
+  cl_timestamp	TIMESTAMP WITH TIME ZONE NOT NULL
 );
 CREATE UNIQUE INDEX cl_from ON categorylinks(cl_from, cl_to);
 CREATE INDEX cl_sortkey ON categorylinks(cl_to, cl_sortkey);
@@ -167,9 +167,9 @@ CREATE TABLE ipblocks (
 				REFERENCES "user" (user_id)
 				ON DELETE CASCADE,
 	ipb_reason	CLOB,
-	ipb_timestamp	TIMESTAMP NOT NULL,
+	ipb_timestamp	TIMESTAMP WITH TIME ZONE NOT NULL,
 	ipb_auto	NUMBER(1) DEFAULT 0 NOT NULL,
-	ipb_expiry	TIMESTAMP,
+	ipb_expiry	TIMESTAMP WITH TIME ZONE,
 	CONSTRAINT ipblocks_pk PRIMARY KEY (ipb_id)
 );
 CREATE INDEX ipb_address ON ipblocks(ipb_address);
@@ -188,7 +188,7 @@ CREATE TABLE image (
 	img_description	CLOB NOT NULL,
 	img_user	NUMBER(8) NOT NULL REFERENCES "user"(user_id) ON DELETE CASCADE,
 	img_user_text	VARCHAR2(255) NOT NULL,
-	img_timestamp	TIMESTAMP,
+	img_timestamp	TIMESTAMP WITH TIME ZONE,
 	CONSTRAINT image_pk PRIMARY KEY (img_name)
 );
 CREATE INDEX img_size_idx ON image(img_size);
@@ -204,15 +204,15 @@ CREATE TABLE oldimage (
 	oi_description	CLOB,
 	oi_user		NUMBER(8) NOT NULL REFERENCES "user"(user_id),
 	oi_user_text	VARCHAR2(255) NOT NULL,
-	oi_timestamp	TIMESTAMP NOT NULL
+	oi_timestamp	TIMESTAMP WITH TIME ZONE NOT NULL
 );
 CREATE INDEX oi_name ON oldimage (oi_name);
 
 CREATE SEQUENCE rc_rc_id_seq;
 CREATE TABLE recentchanges (
 	rc_id 		NUMBER(8) NOT NULL,
-	rc_timestamp	TIMESTAMP,
-	rc_cur_time	TIMESTAMP,
+	rc_timestamp	TIMESTAMP WITH TIME ZONE,
+	rc_cur_time	TIMESTAMP WITH TIME ZONE,
 	rc_user		NUMBER(8) DEFAULT 0 NOT NULL,
 	rc_user_text	VARCHAR2(255),
 	rc_namespace	NUMBER(4) DEFAULT 0 NOT NULL,
@@ -243,7 +243,7 @@ CREATE TABLE watchlist (
 						ON DELETE CASCADE,
 	wl_namespace			NUMBER(8) DEFAULT 0 NOT NULL,
 	wl_title			VARCHAR2(255) NOT NULL,
-	wl_notificationtimestamp	TIMESTAMP DEFAULT NULL
+	wl_notificationtimestamp	TIMESTAMP WITH TIME ZONE DEFAULT NULL
 );
 CREATE UNIQUE INDEX wl_user_namespace_title ON watchlist
 	(wl_user, wl_namespace, wl_title);
@@ -285,7 +285,7 @@ CREATE INDEX querycache_type_value ON querycache(qc_type, qc_value);
 CREATE TABLE objectcache (
 	keyname		CHAR(255) DEFAULT '',
 	value		CLOB,
-	exptime		TIMESTAMP
+	exptime		TIMESTAMP WITH TIME ZONE
 );
 CREATE UNIQUE INDEX oc_keyname_idx ON objectcache(keyname);
 CREATE INDEX oc_exptime_idx ON objectcache(exptime);
@@ -304,7 +304,7 @@ CREATE INDEX val_user ON "validate" (val_user,val_revision);
 CREATE TABLE logging (
   log_type		VARCHAR2(10) NOT NULL,
   log_action		VARCHAR2(10) NOT NULL,
-  log_timestamp		TIMESTAMP NOT NULL,
+  log_timestamp		TIMESTAMP WITH TIME ZONE NOT NULL,
   log_user		NUMBER(8) REFERENCES "user"(user_id),
   log_namespace		NUMBER(4),
   log_title		VARCHAR2(255) NOT NULL,

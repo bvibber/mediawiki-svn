@@ -101,6 +101,7 @@ class DatabaseOracle extends Database {
 			oci_free_statement($stmt);
 			return false;
 		}
+		$this->mAffectedRows[$stmt] = oci_num_rows($stmt);
 		$this->mFetchCache[$stmt] = array();
 		$this->mFetchID[$stmt] = 0;
 		$this->mNcols[$stmt] = oci_num_fields($stmt);
@@ -118,7 +119,6 @@ class DatabaseOracle extends Database {
 			}
 			$this->mFetchCache[$stmt][] = $o;
 		}
-		$this->mAffectedRows[$stmt] = oci_num_rows($stmt);
 		return $this->mLastResult;
 	}
 
@@ -609,6 +609,7 @@ class DatabaseOracle extends Database {
 		if (!is_array($options))
 			$options = array($options);
 
+		$oldIgnore = false;
 		if (in_array('IGNORE', $options))
 			$oldIgnore = $this->ignoreErrors( true );
 
@@ -620,8 +621,7 @@ class DatabaseOracle extends Database {
 			$keys = array_keys( $a );
 		}
 
-		$sql = 'INSERT ' . implode( ' ', $options ) .
-			" INTO $table (" . implode( ',', $keys ) . ') VALUES (';
+		$sql = "INSERT INTO $table (" . implode( ',', $keys ) . ') VALUES (';
 		$first = true;
 		foreach ($keys as $key) {
 			if ($first)
@@ -665,6 +665,7 @@ class DatabaseOracle extends Database {
 				return false;
 			}
 		}
+		$this->ignoreErrors($oldIgnore);
 		return $this->mLastResult = $s;
 	}
 }

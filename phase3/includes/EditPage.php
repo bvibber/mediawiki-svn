@@ -400,6 +400,7 @@ class EditPage {
 			$this->mArticle->clear(); # Force reload of dates, etc.
 			$this->mArticle->forUpdate( true ); # Lock the article
 
+wfdebug("CONFLICT: edittime=".$this->edittime." article timestamp=".$this->mArticle->getTimestamp()."\n");
 			if( ( $this->section != 'new' ) &&
 				($this->mArticle->getTimestamp() != $this->edittime ) ) {
 				$isConflict = true;
@@ -458,16 +459,17 @@ class EditPage {
 				}
 
 				if (wfRunHooks('ArticleSave', array(&$this->mArticle, &$wgUser, &$text,
-													&$this->summary, &$this->minoredit,
-													&$this->watchthis, &$sectionanchor)))
+								&$this->summary, &$this->minoredit,
+								&$this->watchthis, &$sectionanchor)))
 				{
 					# update the article here
 					if($this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
-													   $this->watchthis, '', $sectionanchor ))
+									   $this->watchthis, '', $sectionanchor ))
 					{
-						wfRunHooks('ArticleSaveComplete', array(&$this->mArticle, &$wgUser, $text,
-																$this->summary, $this->minoredit,
-																$this->watchthis, $sectionanchor));
+						wfRunHooks('ArticleSaveComplete',
+							array(&$this->mArticle, &$wgUser, $text,
+								$this->summary, $this->minoredit,
+								$this->watchthis, $sectionanchor));
 						return;
 					}
 					else

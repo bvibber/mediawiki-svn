@@ -1055,8 +1055,8 @@ wfdebug("ts: $ts\n");
 		$uts=$ts;
 	} elseif (preg_match('/^(\d{1,2})-(...)-(\d\d) (\d\d)\.(\d\d)\.(\d\d)/', $ts, $da)) {
 		# TS_ORACLE
-		$uts = strtotime(preg_replace('/(\d\d)\.(\d\d)\.(\d\d)/', "$1:$2:$3", $ts));
-wfdebug("oracle = $uts\n");
+		$uts = strtotime(preg_replace('/(\d\d)\.(\d\d)\.(\d\d)/', "$1:$2:$3",
+				str_replace("+00:00", "UTC", $ts)));
 	} else {
 		# Bogus value; fall back to the epoch...
 		wfDebug("wfTimestamp() fed bogus time value: $outputtype; $ts\n");
@@ -1077,7 +1077,7 @@ wfdebug("oracle = $uts\n");
 		case TS_RFC2822:
 			return gmdate( 'D, d M Y H:i:s', $uts ) . ' GMT';
 		case TS_ORACLE:
-			return gmdate( 'd-M-Y h:i:s A', $uts);
+			return gmdate( 'd-M-Y h:i:s A', $uts) . ' +00:00';
 		default:
 			wfDebugDieBacktrace( 'wfTimestamp() called with illegal output type.');
 	}
