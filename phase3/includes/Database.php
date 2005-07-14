@@ -1500,6 +1500,13 @@ class Database {
 		}
 		return $status;
 	}
+
+	/**
+	 * Return the maximum number of items allowed in a list, or 0 for unlimited.
+	 */
+	function maxListLen() {
+		return 0;
+	}
 }
 
 /**

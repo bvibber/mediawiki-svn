@@ -22,6 +22,7 @@ class DatabaseOracle extends Database {
 	var $mFetchID = array();
 	var $mNcols = array();
 	var $mFieldNames = array(), $mFieldTypes = array();
+	var $mErr;
 
 	function DatabaseOracle($server = false, $user = false, $password = false, $dbName = false,
 		$failFunction = false, $flags = 0, $tablePrefix = 'get from global' )
@@ -52,18 +53,15 @@ class DatabaseOracle extends Database {
 
 		$success = false;
 
-		if ( '' != $dbName ) {
-			# start a database connection
-			$hstring="";
-			$this->mConn = oci_connect($user, $password, $dbName);
-			if ( $this->mConn == false ) {
-				wfDebug( "DB connection error\n" );
-				wfDebug( "Server: $server, Database: $dbName, User: $user, Password: "
-					. substr( $password, 0, 3 ) . "...\n" );
-				wfDebug( $this->lastError()."\n" );
-			} else {
-				$this->mOpened = true;
-			}
+		$hstring="";
+		$this->mConn = @oci_connect($user, $password, $dbName);
+		if ( $this->mConn == false ) {
+			wfDebug( "DB connection error\n" );
+			wfDebug( "Server: $server, Database: $dbName, User: $user, Password: "
+				. substr( $password, 0, 3 ) . "...\n" );
+			wfDebug( $this->lastError()."\n" );
+		} else {
+			$this->mOpened = true;
 		}
 		return $this->mConn;
 	}
@@ -82,10 +80,12 @@ class DatabaseOracle extends Database {
 	}
 
 	function doQuery($sql) {
-		if (($stmt = oci_parse($this->mConn, $sql)) === false)
+		$this->mErr = false;
+		if (($stmt = @oci_parse($this->mConn, $sql)) === false)
 			return $this->mLastResult = false;
 		$this->mLastResult = $stmt;
-		if (!oci_execute($stmt, OCI_DEFAULT)) {
+		if (!@oci_execute($stmt, OCI_DEFAULT)) {
+			$this->lastError();
 			oci_free_statement($stmt);
 			return false;
 		}
@@ -178,7 +178,19 @@ class DatabaseOracle extends Database {
 		$this->mFetchID[$res] = $row;
 	}
 
-	function lastError() { return $this->mConn ? oci_error($this->mConn) : oci_error(); }
+	function lastError() {
+		if ($this->mErr === false) {
+			if ($this->mLastResult !== false) $what = $this->mLastResult;
+			else if ($this->mConn !== false) $what = $this->mConn;
+			else $what = false;
+			$err = ($what !== false) ? oci_error($what) : oci_error();
+			if ($err === false)
+				$this->mErr = 'no error';
+			else
+				$this->mErr = $err['message'];
+		}
+		return str_replace("\n", '<br />', $this->mErr);
+	}
 	function lastErrno() { return 1; }
 
 	function affectedRows() {
@@ -520,6 +532,7 @@ wfdebug($seqName."\n");
 		$result = array('Threads_running' => 0, 'Threads_connected' => 0);
 		return $result;
 	}
+
 	/**
 	 * Returns an optional USE INDEX clause to go after the table, and a
 	 * string to go at the end of the query
@@ -538,6 +551,25 @@ wfdebug($seqName."\n");
 		}
 
 		return array('', $tailOpts);
+	}
+
+	function maxListLen() {
+		return 1000;
+	}
+
+	/**
+	 * Query whether a given table exists
+	 */
+	function tableExists( $table ) {
+		$table = $this->tableName( $table );
+		$old = $this->ignoreErrors( true );
+		$res = $this->query( "SELECT COUNT(*) as NUM FROM user_tables WHERE table_name='"
+			. $this->strencode($table) . "'" );
+		if (!$res)
+			return false;
+		$row = $this->fetchObject($res);
+		$this->freeResult($res);
+		return $row->num >= 1;
 	}
 }
 

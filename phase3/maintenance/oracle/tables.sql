@@ -99,7 +99,7 @@ CREATE TABLE archive (
 	ar_rev_id	NUMBER(8),
 	ar_text_id	NUMBER(8)
 );
-CREATE INDEX archive_name_title_timestamp ON archive(ar_namespace,ar_title,ar_timestamp)
+CREATE INDEX archive_name_title_timestamp ON archive(ar_namespace,ar_title,ar_timestamp);
 
 CREATE TABLE pagelinks (
 	pl_from	NUMBER(8) NOT NULL
@@ -152,8 +152,7 @@ CREATE UNIQUE INDEX ss_row_id ON site_stats(ss_row_id);
 --
 CREATE TABLE hitcounter (
 	hc_id	NUMBER NOT NULL
-); /* XXX TYPE=HEAP MAX_ROWS=25000; */
-
+);
 
 --
 -- The internet is full of jerks, alas. Sometimes it's handy
@@ -327,13 +326,19 @@ CREATE INDEX logging_page_time ON logging(log_namespace, log_title, log_timestam
 --) TYPE=InnoDB;
 
 CREATE OR REPLACE PROCEDURE add_user_right (name VARCHAR2, new_right VARCHAR2) AS
-	user_id		"user".user_id%TYPE;
-	user_is_missing	EXCEPTION;
+	user_id		"user".user_id%TYPE;;
+	user_is_missing	EXCEPTION;;
 BEGIN
-	SELECT user_id INTO user_id FROM "user" WHERE user_name = name;
-	INSERT INTO user_groups (ug_user, ug_group) VALUES(user_id, new_right);
+	SELECT user_id INTO user_id FROM "user" WHERE user_name = name;;
+	INSERT INTO user_groups (ug_user, ug_group) VALUES(user_id, new_right);;
 EXCEPTION
 	WHEN NO_DATA_FOUND THEN
-		DBMS_OUTPUT.PUT_LINE('The specified user does not exist.');
-END add_user_right;
-/
+		DBMS_OUTPUT.PUT_LINE('The specified user does not exist.');;
+END add_user_right;;
+;
+
+CREATE OR REPLACE PROCEDURE add_interwiki (prefix VARCHAR2, url VARCHAR2, is_local NUMBER) AS
+BEGIN
+	INSERT INTO interwiki (iw_prefix, iw_url, iw_local) VALUES(prefix, url, is_local);;
+END add_interwiki;;
+;
