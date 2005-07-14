@@ -96,7 +96,7 @@ class DatabaseOracle extends Database {
 	}
 
 	function executeStatement($stmt) {
-		if (!@oci_execute($stmt, OCI_DEFAULT)) {
+		if (!oci_execute($stmt, OCI_DEFAULT)) {
 			$this->lastError();
 			oci_free_statement($stmt);
 			return false;
@@ -556,8 +556,13 @@ class DatabaseOracle extends Database {
 		$table = $this->tableName( $table );
 
 		$sql = "UPDATE $table SET ";
+		$first = true;
 		foreach ($values as $field => $v) {
-			$sql .= "$field = :$field ";
+			if ($first)
+				$first = false;
+			else
+				$sql .= ", ";
+			$sql .= "$field = :n$field ";
 		}
 		if ( $conds != '*' ) {
 			$sql .= " WHERE " . $this->makeList( $conds, LIST_AND );
@@ -567,9 +572,16 @@ class DatabaseOracle extends Database {
 			$this->reportQueryError( $this->lastError(), $this->lastErrno(), $stmt );
 			return false;
 		}
+		if ($this->debug())
+			wfDebug("SQL: $sql\n");
+		$s = '';
 		foreach ($values as $field => $v) {
-			oci_bind_by_name($stmt, ":$field", $v);
+			oci_bind_by_name($stmt, ":n$field", $values[$field]);
+			if ($this->debug())
+				$s .= " [$field] = [$v]\n";
 		}
+		if ($this->debug())
+			wfdebug(" PH: $s\n");
 		$ret = $this->executeStatement($stmt);
 		return $ret;
 	}
@@ -616,6 +628,10 @@ class DatabaseOracle extends Database {
 		}
 		$sql .= ")";
 
+		if ($this->debug()) {
+			wfDebug("SQL: $sql\n");
+		}
+
 		if (($stmt = $this->parseStatement($sql)) === false) {
 			$this->reportQueryError($this->lastError(), $this->lastErrno(), $sql, $fname);
 			$this->ignoreErrors($oldIgnore);
@@ -631,9 +647,14 @@ class DatabaseOracle extends Database {
 			$a = array($a);
 
 		foreach ($a as $row) {
+			$s = '';
 			foreach ($row as $k => $value) {
 				oci_bind_by_name($stmt, ":$k", $row[$k], -1);
+				if ($this->debug())
+					$s .= " [$k] = {$row[$k]}";
 			}
+			if ($this->debug())
+				wfDebug(" PH: $s\n");
 			if (($s = $this->executeStatement($stmt)) === false) {
 				$this->reportQueryError($this->lastError(), $this->lastErrno(), $sql, $fname);
 				$this->ignoreErrors($oldIgnore);
