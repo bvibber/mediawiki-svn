@@ -44,7 +44,6 @@ class DatabaseOracle extends Database {
 		if ( !function_exists( 'oci_connect' ) ) {
 			die( "Oracle functions missing, have you compiled PHP with the --with-oci8 option?\n" );
 		}
-
 		$this->close();
 		$this->mServer = $server;
 		$this->mUser = $user;
@@ -54,8 +53,8 @@ class DatabaseOracle extends Database {
 		$success = false;
 
 		$hstring="";
-		$this->mConn = @oci_new_connect($user, $password, $dbName, "AL32UTF8");
-		if ( $this->mConn == false ) {
+		$this->mConn = oci_new_connect($user, $password, $dbName, "AL32UTF8");
+		if ( $this->mConn === false ) {
 			wfDebug( "DB connection error\n" );
 			wfDebug( "Server: $server, Database: $dbName, User: $user, Password: "
 				. substr( $password, 0, 3 ) . "...\n" );
@@ -80,9 +79,11 @@ class DatabaseOracle extends Database {
 	}
 
 	function doQuery($sql) {
-		$this->mErr = false;
-		if (($stmt = @oci_parse($this->mConn, $sql)) === false)
+		$this->mErr = $this->mLastResult = false;
+		if (($stmt = oci_parse($this->mConn, $sql)) === false) {
+			$this->lastError();
 			return $this->mLastResult = false;
+		}
 		$this->mLastResult = $stmt;
 		if (!@oci_execute($stmt, OCI_DEFAULT)) {
 			$this->lastError();
@@ -202,12 +203,11 @@ class DatabaseOracle extends Database {
 	 * If errors are explicitly ignored, returns NULL on failure
 	 */
 	function indexInfo ($table, $index, $fname = 'Database::indexInfo' ) {
-		if ($table != 'user')
-			$table = strtoupper($table);
+		$table = $this->tableName($table, true);
 		if ($index == 'PRIMARY')
 			$index = "${table}_pk";
 		$sql = "SELECT uniqueness FROM all_indexes WHERE table_name='" .
-			$this->strencode($table) . "' AND index_name='" .
+			$table . "' AND index_name='" .
 			$this->strencode(strtoupper($index)) . "'";
 		$res = $this->query($sql, $fname);
 		if (!$res)
@@ -215,6 +215,7 @@ class DatabaseOracle extends Database {
 		if (($row = $this->fetchObject($res)) == NULL)
 			return false;
 		$this->freeResult($res);
+		$row->Non_unique = !$row->uniqueness;
 		return $row;
 	}
 
@@ -225,29 +226,18 @@ class DatabaseOracle extends Database {
 	}
 
 	function fieldInfo( $table, $field ) {
-		wfDebugDieBacktrace( 'Database::fieldInfo() error : mysql_fetch_field() not implemented for postgre' );
-		/*
-		$res = $this->query( "SELECT * FROM '$table' LIMIT 1" );
-		$n = pg_num_fields( $res );
-		for( $i = 0; $i < $n; $i++ ) {
-			// FIXME
-			wfDebugDieBacktrace( "Database::fieldInfo() error : mysql_fetch_field() not implemented for postgre" );
-			$meta = mysql_fetch_field( $res, $i );
-			if( $field == $meta->name ) {
-				return $meta;
-			}
-		}
-		return false;*/
+		$o = new stdClass;
+		$o->multiple_key = true; /* XXX */
+		return $o;
 	}
 
 	function getColumnInformation($table, $field) {
-		if ($table != 'user')
-			$table = strtoupper($table);
+		$table = $this->tableName($table, true);
 		$field = strtoupper($field);
 
 		$res = $this->doQuery("SELECT * FROM all_tab_columns " .
-			"WHERE table_name='".$this->strencode($table)."' " .
-			"AND   column_name='".$this->strencode($field)."'");
+			"WHERE table_name='".$table."' " .
+			"AND   column_name='".$field."'");
 		if (!$res)
 			return false;
 		$o = $this->fetchObject($res);
@@ -299,7 +289,7 @@ class DatabaseOracle extends Database {
 		exec( "php $IP/killthread.php $timeout $tid &>/dev/null &" );*/
 	}
 
-	function tableName( $name ) {
+	function tableName($name, $forddl = false) {
 		# First run any transformations from the parent object
 		$name = parent::tableName( $name );
 
@@ -311,10 +301,14 @@ class DatabaseOracle extends Database {
 		switch( $name ) {
 			case 'user':
 			case 'group':
-				return '"' . $name . '"';
+			case 'validate':
+				if ($forddl)
+					return $name;
+				else
+					return '"' . $name . '"';
 
 			default:
-				return $name;
+				return strtoupper($name);
 		}
 	}
 
@@ -561,10 +555,9 @@ wfdebug($seqName."\n");
 	 * Query whether a given table exists
 	 */
 	function tableExists( $table ) {
-		$table = $this->tableName( $table );
-		$old = $this->ignoreErrors( true );
+		$table = $this->tableName($table, true);
 		$res = $this->query( "SELECT COUNT(*) as NUM FROM user_tables WHERE table_name='"
-			. $this->strencode($table) . "'" );
+			. $table . "'" );
 		if (!$res)
 			return false;
 		$row = $this->fetchObject($res);

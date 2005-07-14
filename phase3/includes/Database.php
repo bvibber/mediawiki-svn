@@ -272,7 +272,7 @@ class Database {
 		if ( $this->mFailFunction ) {
 			if ( !is_int( $this->mFailFunction ) ) {
 				$ff = $this->mFailFunction;
-				$ff( $this, mysql_error() );
+				$ff( $this, $this->lastError() );
 			}
 		} else {
 			wfEmergencyAbort( $this, mysql_error() );
