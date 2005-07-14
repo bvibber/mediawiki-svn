@@ -250,9 +250,14 @@ class SqlBagOStuff extends BagOStuff {
 			$exp = $this->_fromunixtime($exptime);
 		}
 		$this->delete( $key );
-		$this->_query(
-			"INSERT INTO $0 (keyname,value,exptime) VALUES('$1','$2', '$exp')",
-			$key, $this->_serialize($value));
+		$this->_doinsert($this->getTableName(), array(
+					'keyname' => $key,
+					'value' => $this->_serialize($value),
+					'exptime' => $exp
+				));
+//		$this->_query(
+//			"INSERT INTO $0 (keyname,value,exptime) VALUES('$1','$2', '$exp')",
+//			$key, $this->_serialize($value));
 		return true; /* ? */
 	}
 
@@ -288,6 +293,9 @@ class SqlBagOStuff extends BagOStuff {
 		return str_replace( "'", "''", $str );
 	}
 
+	function _doinsert($table, $vals) {
+		die( 'abstract function SqlBagOStuff::_doinsert() must be defined' );
+	}
 	function _doquery($sql) {
 		die( 'abstract function SqlBagOStuff::_doquery() must be defined' );
 	}
@@ -380,7 +388,11 @@ class MediaWikiBagOStuff extends SqlBagOStuff {
 
 	function _doquery($sql) {
 		$dbw =& wfGetDB( DB_MASTER );
-		return $dbw->query($sql, 'MediaWikiBagOStuff:_doquery');
+		return $dbw->query($sql, 'MediaWikiBagOStuff::_doquery');
+	}
+	function _doinsert($t, $v) {
+		$dbw =& wfGetDB( DB_MASTER );
+		return $dbw->insert($t, $v, 'MediaWikiBagOStuff::_doinsert');
 	}
 	function _fetchobject($result) {
 		$dbw =& wfGetDB( DB_MASTER );
