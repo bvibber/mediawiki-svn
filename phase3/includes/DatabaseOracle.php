@@ -22,6 +22,7 @@ class DatabaseOracle extends Database {
 	var $mFetchID = array();
 	var $mNcols = array();
 	var $mFieldNames = array(), $mFieldTypes = array();
+	var $mAffectedRows = array();
 	var $mErr;
 
 	function DatabaseOracle($server = false, $user = false, $password = false, $dbName = false,
@@ -78,13 +79,23 @@ class DatabaseOracle extends Database {
 		}
 	}
 
-	function doQuery($sql) {
+	function parseStatement($sql) {
 		$this->mErr = $this->mLastResult = false;
 		if (($stmt = oci_parse($this->mConn, $sql)) === false) {
 			$this->lastError();
 			return $this->mLastResult = false;
 		}
-		$this->mLastResult = $stmt;
+		$this->mAffectedRows[$stmt] = 0;
+		return $this->mLastResult = $stmt;
+	}
+
+	function doQuery($sql) {
+		if (($stmt = $this->parseStatement($sql)) === false)
+			return false;
+		return $this->executeStatement($stmt);
+	}
+
+	function executeStatement($stmt) {
 		if (!@oci_execute($stmt, OCI_DEFAULT)) {
 			$this->lastError();
 			oci_free_statement($stmt);
@@ -101,6 +112,7 @@ class DatabaseOracle extends Database {
 		}
 		while (($o = oci_fetch_array($stmt)) !== false)
 			$this->mFetchCache[$stmt][] = $o;
+		$this->mAffectedRows[$stmt] = oci_num_rows($stmt);
 		return $this->mLastResult;
 	}
 
@@ -192,10 +204,12 @@ class DatabaseOracle extends Database {
 		}
 		return str_replace("\n", '<br />', $this->mErr);
 	}
-	function lastErrno() { return 1; }
+	function lastErrno() {
+		return 0;
+	}
 
 	function affectedRows() {
-		return oci_num_rows( $this->mLastResult );
+		return $this->mAffectedRows[$this->mLastResult];
 	}
 
 	/**
@@ -252,35 +266,6 @@ class DatabaseOracle extends Database {
 		return true;
 	}
 
-	function insert( $table, $a, $fname = 'Database::insert', $options = array() ) {
-		# PostgreSQL doesn't support options
-		# We have a go at faking one of them
-		# TODO: DELAYED, LOW_PRIORITY
-
-		if ( !is_array($options))
-			$options = array($options);
-
-		if ( in_array( 'IGNORE', $options ) )
-			$oldIgnore = $this->ignoreErrors( true );
-
-		# IGNORE is performed using single-row inserts, ignoring errors in each
-		# FIXME: need some way to distiguish between key collision and other types of error
-		$oldIgnore = $this->ignoreErrors( true );
-		if ( !is_array( reset( $a ) ) ) {
-			$a = array( $a );
-		}
-		foreach ( $a as $row ) {
-			parent::insert( $table, $row, $fname, array() );
-		}
-		$this->ignoreErrors( $oldIgnore );
-		$retVal = true;
-
-		if ( in_array( 'IGNORE', $options ) )
-			$this->ignoreErrors( $oldIgnore );
-
-		return $retVal;
-	}
-
 	function startTimer( $timeout )
 	{
 		global $IP;
@@ -321,7 +306,6 @@ class DatabaseOracle extends Database {
 	 */
 	function nextSequenceValue( $seqName ) {
 		$r = $this->doQuery("SELECT $seqName.nextval AS val FROM dual");
-wfdebug($seqName."\n");
 		$o = $this->fetchObject($r);
 		$this->freeResult($r);
 		return $this->mInsertId = (int)$o->val;
@@ -563,6 +547,100 @@ wfdebug($seqName."\n");
 		$row = $this->fetchObject($res);
 		$this->freeResult($res);
 		return $row->num >= 1;
+	}
+
+	/**
+	 * UPDATE wrapper, takes a condition array and a SET array
+	 */
+	function update( $table, $values, $conds, $fname = 'Database::update' ) {
+		$table = $this->tableName( $table );
+
+		$sql = "UPDATE $table SET ";
+		foreach ($values as $field => $v) {
+			$sql .= "$field = :$field ";
+		}
+		if ( $conds != '*' ) {
+			$sql .= " WHERE " . $this->makeList( $conds, LIST_AND );
+		}
+		$stmt = $this->parseStatement($sql);
+		if ($stmt === false) {
+			$this->reportQueryError( $this->lastError(), $this->lastErrno(), $stmt );
+			return false;
+		}
+		foreach ($values as $field => $v) {
+			oci_bind_by_name($stmt, ":$field", $v);
+		}
+		$ret = $this->executeStatement($stmt);
+		return $ret;
+	}
+
+	/**
+	 * INSERT wrapper, inserts an array into a table
+	 *
+	 * $a may be a single associative array, or an array of these with numeric keys, for
+	 * multi-row insert.
+	 *
+	 * Usually aborts on failure
+	 * If errors are explicitly ignored, returns success
+	 */
+	function insert( $table, $a, $fname = 'Database::insert', $options = array() ) {
+		# No rows to insert, easy just return now
+		if ( !count( $a ) ) {
+			return true;
+		}
+
+		$table = $this->tableName( $table );
+		if (!is_array($options))
+			$options = array($options);
+
+		if (in_array('IGNORE', $options))
+			$oldIgnore = $this->ignoreErrors( true );
+
+		if ( isset( $a[0] ) && is_array( $a[0] ) ) {
+			$multi = true;
+			$keys = array_keys( $a[0] );
+		} else {
+			$multi = false;
+			$keys = array_keys( $a );
+		}
+
+		$sql = 'INSERT ' . implode( ' ', $options ) .
+			" INTO $table (" . implode( ',', $keys ) . ') VALUES (';
+		$first = true;
+		foreach ($keys as $key) {
+			if ($first)
+				$first = false;
+			else
+				$sql .= ", ";
+			$sql .= ":$key";
+		}
+		$sql .= ")";
+
+		if (($stmt = $this->parseStatement($sql)) === false) {
+			$this->reportQueryError($this->lastError(), $this->lastErrno(), $sql, $fname);
+			$this->ignoreErrors($oldIgnore);
+			return false;
+		}
+
+		/*
+		 * If we're inserting multiple rows, parse the statement once and
+		 * execute it for each set of values.  Otherwise, convert it into an
+		 * array and pretend.
+		 */
+		if (!$multi)
+			$a = array($a);
+
+		foreach ($a as $row) {
+			foreach ($row as $k => $value) {
+				oci_bind_by_name($stmt, ":$k", $row[$k], -1);
+			}
+			if (($s = $this->executeStatement($stmt)) === false) {
+				$this->reportQueryError($this->lastError(), $this->lastErrno(), $sql, $fname);
+				$this->ignoreErrors($oldIgnore);
+				return false;
+			}
+		}
+		return $this->mLastResult = $s;
 	}
 }
 

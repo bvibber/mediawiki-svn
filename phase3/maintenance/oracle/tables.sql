@@ -81,8 +81,8 @@ CREATE SEQUENCE text_old_id_val;
 
 CREATE TABLE text (
 	old_id		NUMBER(8) NOT NULL,
-	old_text	CLOB NOT NULL,
-	old_flags	CLOB NOT NULL,
+	old_text	CLOB,
+	old_flags	CLOB,
 	CONSTRAINT text_pk PRIMARY KEY (old_id)
 );
 

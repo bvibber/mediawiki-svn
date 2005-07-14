@@ -1271,7 +1271,7 @@ class Database {
 	function deadlockLoop() {
 		$myFname = 'Database::deadlockLoop';
 
-		$this->query( 'BEGIN', $myFname );
+		$this->begin();
 		$args = func_get_args();
 		$function = array_shift( $args );
 		$oldIgnore = $this->ignoreErrors( true );
