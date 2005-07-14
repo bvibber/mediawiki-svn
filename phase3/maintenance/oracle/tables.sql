@@ -259,7 +259,7 @@ CREATE TABLE math (
 	math_outputhash			VARCHAR2(16) NOT NULL,
 	math_html_conservativeness	NUMBER(1) NOT NULL,
 	math_html			CLOB,
-	math_mathml			CLOB,
+	math_mathml			CLOB
 );
 
 --
@@ -269,14 +269,14 @@ CREATE TABLE interwiki (
   iw_prefix	VARCHAR2(32) NOT NULL UNIQUE,
   iw_url	VARCHAR2(127) NOT NULL,
   iw_local	NUMBER(1) NOT NULL,
-  iw_trans	NUMBER(1) DEFAULT 0 NOT NULL,
+  iw_trans	NUMBER(1) DEFAULT 0 NOT NULL
 );
 
 CREATE TABLE querycache (
 	qc_type		VARCHAR2(32) NOT NULL,
 	qc_value	NUMBER(5) DEFAULT 0 NOT NULL,
 	qc_namespace	NUMBER(4) DEFAULT 0 NOT NULL,
-	qc_title	VARCHAR2(255),
+	qc_title	VARCHAR2(255)
 );
 CREATE INDEX querycache_type_value ON querycache(qc_type, qc_value);
 
