@@ -645,7 +645,7 @@ END;
 				$n = $wgIP;
 
 				$tl = $this->makeKnownLinkObj( $wgUser->getTalkPage(),
-				  $wgContLang->getNsText( NS_TALK ) );
+				  $wgLang->getNsText( NS_TALK ) );
 
 				$s .= $n . ' ('.$tl.')';
 			} else {
@@ -664,7 +664,7 @@ END;
 			$n = $wgUser->getName();
 			$rt = $wgTitle->getPrefixedURL();
 			$tl = $this->makeKnownLinkObj( $wgUser->getTalkPage(),
-			  $wgContLang->getNsText( NS_TALK ) );
+			  $wgLang->getNsText( NS_TALK ) );
 
 			$tl = " ({$tl})";
 
