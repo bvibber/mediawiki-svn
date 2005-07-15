@@ -623,7 +623,7 @@ class DatabaseOracle extends Database {
 
 		$sql = "INSERT INTO $table (" . implode( ',', $keys ) . ') VALUES (';
 		$first = true;
-		foreach ($keys as $key) {
+		foreach ($a as $key => $value) {
 			if ($first)
 				$first = false;
 			else
@@ -671,6 +671,10 @@ class DatabaseOracle extends Database {
 
 	function ping() {
 		return true;
+	}
+
+	function encodeBlob($b) {
+		return bin2hex($b);
 	}
 }
 

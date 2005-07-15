@@ -58,12 +58,14 @@ class PageArchive {
 	 */
 	function &listRevisions() {
 		$dbr =& wfGetDB( DB_SLAVE );
-		return $dbr->resultObject( $dbr->select( 'archive',
+		$res = $dbr->select( 'archive',
 			array( 'ar_minor_edit', 'ar_timestamp', 'ar_user', 'ar_user_text', 'ar_comment' ),
 			array( 'ar_namespace' => $this->title->getNamespace(),
 			       'ar_title' => $this->title->getDBkey() ),
 			'PageArchive::listRevisions',
-			array( 'ORDER BY' => 'ar_timestamp DESC' ) ) );
+			array( 'ORDER BY' => 'ar_timestamp DESC' ) );
+		$ret = $dbr->resultObject( $res );
+		return $ret;
 	}
 
 	/**

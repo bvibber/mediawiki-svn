@@ -475,8 +475,10 @@ class Article {
 	 * Get the database which should be used for reads
 	 */
 	function &getDB() {
+		$ret = wfGetDB( DB_MASTER );
+		return $ret;
 		#if ( $this->mForUpdate ) {
-			return wfGetDB( DB_MASTER );
+		#	return wfGetDB( DB_MASTER );
 		#} else {
 		#	return wfGetDB( DB_SLAVE );
 		#}

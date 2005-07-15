@@ -133,7 +133,8 @@ class SkinTemplate extends Skin {
 	 * @access private
 	 */
 	function &setupTemplate( $classname, $repository=false, $cache_dir=false ) {
-		return new $classname();
+		$ret = new $classname();
+		return $ret;
 	}
 
 	/**
@@ -536,16 +537,18 @@ class SkinTemplate extends Skin {
 		$content_actions = array();
 
 		if( $this->iscontent ) {
+			$subjpage = $this->mTitle->getSubjectPage();
+			$talkpage = $this->mTitle->getTalkPage();
 
 			$nskey = $this->getNameSpaceKey();
 			$content_actions[$nskey] = $this->tabAction(
-				$this->mTitle->getSubjectPage(),
+				$subjpage,
 				$nskey,
 				!$this->mTitle->isTalkPage(),
 				'', true);
 
 			$content_actions['talk'] = $this->tabAction(
-				$this->mTitle->getTalkPage(),
+				$talkpage,
 				'talk',
 				$this->mTitle->isTalkPage(),
 				'',

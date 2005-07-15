@@ -145,7 +145,8 @@ class Title {
 			return $t;
 		} else {
 			wfProfileOut( $fname );
-			return NULL;
+			$ret = NULL;
+			return $ret;
 		}
 	}
 

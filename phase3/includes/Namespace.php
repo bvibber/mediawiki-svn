@@ -3,13 +3,13 @@
  * Provide things related to namespaces
  * @package MediaWiki
  */
- 
+
 /**
  * This is not a valid entry point, perform no further processing unless MEDIAWIKI is defined
  */
 if( defined( 'MEDIAWIKI' ) ) {
 
- 
+
 /**
  * Definitions of the NS_ constants are in Defines.php
  * @private
@@ -56,8 +56,8 @@ class Namespace {
 	 * @return bool
 	 */
 	function isMovable( $index ) {
-		if ( $index < NS_MAIN || $index == NS_IMAGE  || $index == NS_CATEGORY ) { 
-			return false; 
+		if ( $index < NS_MAIN || $index == NS_IMAGE  || $index == NS_CATEGORY ) {
+			return false;
 		}
 		return true;
 	}
@@ -71,10 +71,10 @@ class Namespace {
 		return ( $index == NS_TALK           || $index == NS_USER_TALK     ||
 				 $index == NS_PROJECT_TALK   || $index == NS_IMAGE_TALK    ||
 				 $index == NS_MEDIAWIKI_TALK || $index == NS_TEMPLATE_TALK ||
-				 $index == NS_HELP_TALK      || $index == NS_CATEGORY_TALK 
+				 $index == NS_HELP_TALK      || $index == NS_CATEGORY_TALK
 				 ||  ( (isset($wgExtraNamespaces) && $index % 2) )
 				 );
-		
+
 	}
 
 	/**
@@ -110,6 +110,8 @@ class Namespace {
 	 * The input *must* be converted to lower case first
 	 */
 	function &getCanonicalIndex( $name ) {
+		static $null_namespace = NULL;
+
 		global $wgCanonicalNamespaceNames;
 		static $xNamespaces = false;
 		if ( $xNamespaces === false ) {
@@ -121,7 +123,7 @@ class Namespace {
 		if ( array_key_exists( $name, $xNamespaces ) ) {
 			return $xNamespaces[$name];
 		} else {
-			return NULL;
+			return $null_namespace;
 		}
 	}
 }

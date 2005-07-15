@@ -1432,11 +1432,10 @@ class Database {
 	 * @todo document
 	 */
 	function &resultObject( &$result ) {
-		if( empty( $result ) ) {
-			return NULL;
-		} else {
-			return new ResultWrapper( $this, $result );
-		}
+		$ret = NULL;
+		if( !empty($result) )
+			$ret = new ResultWrapper( $this, $result );
+		return $ret;
 	}
 
 	/**
@@ -1510,6 +1509,10 @@ class Database {
 	function maxListLen() {
 		return 0;
 	}
+
+	function encodeBlob($b) {
+		return $b;
+	}
 }
 
 /**
@@ -1551,7 +1554,8 @@ class ResultWrapper {
 	 * @todo document
 	 */
 	function &fetchObject() {
-		return $this->db->fetchObject( $this->result );
+		$ret = $this->db->fetchObject( $this->result );
+		return $ret;
 	}
 
 	/**

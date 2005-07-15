@@ -252,7 +252,7 @@ class SqlBagOStuff extends BagOStuff {
 		$this->delete( $key );
 		$this->_doinsert($this->getTableName(), array(
 					'keyname' => $key,
-					'value' => $this->_serialize($value),
+					'value' => $this->_blobencode($this->_serialize($value)),
 					'exptime' => $exp
 				));
 		return true; /* ? */
@@ -289,7 +289,9 @@ class SqlBagOStuff extends BagOStuff {
 		/* Protect strings in SQL */
 		return str_replace( "'", "''", $str );
 	}
-
+	function _blobencode($str) {
+		return $str;
+	}
 	function _doinsert($table, $vals) {
 		die( 'abstract function SqlBagOStuff::_doinsert() must be defined' );
 	}
@@ -372,7 +374,8 @@ class SqlBagOStuff extends BagOStuff {
 			}
 		}
 		wfdebug("serial: [$serial]\n");
-		return unserialize( $serial );
+		$ret = unserialize( $serial );
+		return $ret;
 	}
 }
 
@@ -414,6 +417,10 @@ class MediaWikiBagOStuff extends SqlBagOStuff {
 	function _strencode($s) {
 		$dbw =& wfGetDB( DB_MASTER );
 		return $dbw->strencode($s);
+	}
+	function _blobencode($s) {
+		$dbw =& wfGetDB( DB_MASTER );
+		return $dbw->encodeBlob($s);
 	}
 	function getTableName() {
 		if ( !$this->tableInitialised ) {

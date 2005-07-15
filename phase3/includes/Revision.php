@@ -22,9 +22,10 @@ class Revision {
 	 * @access public
 	 */
 	function &newFromId( $id ) {
-		return Revision::newFromConds(
+		$ret = Revision::newFromConds(
 			array( 'page_id=rev_page',
 			       'rev_id' => IntVal( $id ) ) );
+		return $ret;
 	}
 
 	/**
@@ -68,11 +69,12 @@ class Revision {
 		} else {
 			$matchId = 'page_latest';
 		}
-		return Revision::loadFromConds(
+		$ret = Revision::loadFromConds(
 			$db,
 			array( "rev_id=$matchId",
 			       'rev_page' => IntVal( $pageid ),
 			       'page_id=rev_page' ) );
+		return $ret;
 	}
 
 	/**
@@ -155,10 +157,12 @@ class Revision {
 			$row = $res->fetchObject();
 			$res->free();
 			if( $row ) {
-				return new Revision( $row );
+				$ret = new Revision( $row );
+				return $ret;
 			}
 		}
-		return null;
+		$ret = null;
+		return $ret;
 	}
 
 	/**
@@ -227,7 +231,8 @@ class Revision {
 			$conditions,
 			'Revision::fetchRow',
 			array( 'LIMIT' => 1 ) );
-		return $db->resultObject( $res );
+		$ret = $db->resultObject( $res );
+		return $ret;
 	}
 
 	/**
