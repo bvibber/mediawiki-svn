@@ -39,6 +39,7 @@ static string username, password, connid;
 static string user_filter;
 static bool do_exit = false;
 static int update_delay = 1;
+static int next_update, last_update;
 static bool show_nonactive = true;
 
 static Environment *env;
@@ -52,6 +53,8 @@ try
 {
 	int		 row = 0;
 	OCIError	*errh;
+struct	timeval		 now;
+	int		 unow;
 
 	if (argc < 2) {
 		cerr << "usage: " << argv[0] << " <username>[@connect identifier] [password]\n";
@@ -93,6 +96,10 @@ try
 	curs_addstr("SID      USERNAME  TIME   STS   COMMAND");
 	curs_move(row++, 0);
 	curs_addstr("===      ========  ====   ===   =======");
+
+	gettimeofday(&now, NULL);
+	unow = (now.tv_sec * 1000000) + now.tv_usec;
+	last_update = next_update = unow;
 
 	for (;;) {
 		stringstream	buf;
@@ -154,7 +161,14 @@ try
 		stmt->closeResultSet(rs);
 		conn->terminateStatement(stmt);
 
-		sleep(update_delay);
+		gettimeofday(&now, NULL);
+		unow = (now.tv_sec * 1000000) + now.tv_usec;
+		next_update = last_update + (update_delay * 1000000);
+		usleep(next_update - unow);
+		gettimeofday(&now, NULL);
+		unow = (now.tv_sec * 1000000) + now.tv_usec;
+		last_update = unow;
+
 		if (do_exit)
 			break;
 		clear_status();
