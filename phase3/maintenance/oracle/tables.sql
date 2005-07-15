@@ -122,7 +122,7 @@ CREATE TABLE categorylinks (
   cl_from	NUMBER(8) NOT NULL REFERENCES page(page_id) ON DELETE CASCADE,
   cl_to		VARCHAR2(255) NOT NULL,
   cl_sortkey	VARCHAR2(86) default '',
-  cl_timestamp	TIMESTAMP WITH TIME ZONE
+  cl_timestamp	TIMESTAMP WITH TIME ZONE NOT NULL
 );
 CREATE UNIQUE INDEX cl_from ON categorylinks(cl_from, cl_to);
 CREATE INDEX cl_sortkey ON categorylinks(cl_to, cl_sortkey);

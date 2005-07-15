@@ -1053,7 +1053,7 @@ wfdebug("ts: $ts\n");
 	} elseif (preg_match("/^(\d{1,13})$/",$ts,$datearray)) {
 		# TS_UNIX
 		$uts=$ts;
-	} elseif (preg_match('/^(\d{1,2})-(...)-(\d\d) (\d\d)\.(\d\d)\.(\d\d)/', $ts, $da)) {
+	} elseif (preg_match('/^(\d{1,2})-(...)-(\d\d(\d\d)?) (\d\d)\.(\d\d)\.(\d\d)/', $ts, $da)) {
 		# TS_ORACLE
 		$uts = strtotime(preg_replace('/(\d\d)\.(\d\d)\.(\d\d)/', "$1:$2:$3",
 				str_replace("+00:00", "UTC", $ts)));
@@ -1077,7 +1077,7 @@ wfdebug("ts: $ts\n");
 		case TS_RFC2822:
 			return gmdate( 'D, d M Y H:i:s', $uts ) . ' GMT';
 		case TS_ORACLE:
-			return gmdate( 'd-M-Y h:i:s A', $uts) . ' +00:00';
+			return gmdate( 'd-M-y h.i.s A', $uts) . ' +00:00';
 		default:
 			wfDebugDieBacktrace( 'wfTimestamp() called with illegal output type.');
 	}

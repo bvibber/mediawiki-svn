@@ -668,6 +668,10 @@ class DatabaseOracle extends Database {
 		$this->ignoreErrors($oldIgnore);
 		return $this->mLastResult = $s;
 	}
+
+	function ping() {
+		return true;
+	}
 }
 
 ?>
