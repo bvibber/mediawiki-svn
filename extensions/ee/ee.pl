@@ -105,8 +105,9 @@ if($type eq "Edit file") {
 	$fileurl=~m|\?title=(.*?)\&action=|i;
 	$pagetitle=$1;
 	$filename=uri_unescape($pagetitle);
-	# replace colons from filename, since they aren't allowed on MS's OS
-	$filename =~ s/:/__/g;
+	# substitute illegal or special characters
+	$filename =~ s/:/__/g;  # : - illegal on Windows
+        $filename =~ s/\//__/g; # / - path character under Unix and others
 	$filename=$filename.".wiki";
 	$edit_url=$script."?title=$pagetitle&action=submit";
 	$view_url=$script."?title=$pagetitle";	
