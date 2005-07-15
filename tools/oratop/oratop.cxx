@@ -1,5 +1,6 @@
 /*
  * Display Oracle process list.
+ * $Id$
  */
 
 #include <iostream>
@@ -32,6 +33,7 @@ static void	clear_status	(void);
 static string	read_input	(const string& prompt);
 static void	set_status	(const string& text);
 static string	fmttime		(unsigned long long etime);
+static string	get_uptime	(void);
 
 static string username, password, connid;
 static string user_filter;
@@ -88,14 +90,15 @@ try
 	string vers_str = "Server: " + string(vers);
 	curs_addstr(vers_str.c_str());
 	curs_move(row++, 0);
-	curs_addstr("SID      USERNAME  TIME   STATUS   COMMAND");
+	curs_addstr("SID      USERNAME  TIME   STS   COMMAND");
 	curs_move(row++, 0);
-	curs_addstr("===      ========  ====   ======   =======");
+	curs_addstr("===      ========  ====   ===   =======");
 
 	for (;;) {
 		stringstream	buf;
 		string		line;
 		string		sid, username, sql_text, status;
+		string		uptime;
 		unsigned int	etime;
 		int		nrow = row;
 		int		nchars = 0;
@@ -105,6 +108,10 @@ try
 		ioctl(0, FIONREAD, &nchars);
 		if (nchars)
 			handle_command();
+
+		uptime = "Up: " + get_uptime();
+		curs_move(0, curs_cols() - uptime.length());
+		curs_addstr(uptime.c_str());
 
 		stmt = conn->createStatement(
 				"SELECT sid, username, elapsed_time, sql_text, status "
@@ -119,9 +126,9 @@ try
 			username = rs->getString(2);
 			sql_text = rs->getString(4);
 			etime = rs->getUInt(3);
-			status = rs->getString(5);
+			status = rs->getString(5).substr(0, 3);
 
-			if (status != "ACTIVE") {
+			if (status != "ACT") {
 				if (!show_nonactive)
 					continue;
 				etime = 0;
@@ -133,11 +140,11 @@ try
 			buf << left << setw(8) << sid << ' '
 			    << left << setw(9) << username << ' '
 			    << left << setw(6) << fmttime(etime / 1000000ULL) << ' '
-			    << left << setw(8) << status << ' '
+			    << left << setw(5) << status << ' '
 			    << sql_text << '\n';
 			line = buf.str().substr(0, curs_cols());
 			curs_move(nrow++, 0);
-			if (status == "ACTIVE")
+			if (status == "ACT")
 				curs_attron(CURS_A_BOLD);
 			curs_addstr(line.c_str());
 			curs_attroff(CURS_A_BOLD);
@@ -256,4 +263,17 @@ fmttime(unsigned long long etime)
 		buf << mins << 'm';
 	buf << secs << 's';
 	return buf.str();
+}
+
+static string
+get_uptime(void)
+{
+	Statement *stmt = conn->createStatement("select to_char(systimestamp - startup_time) from v$instance");
+	ResultSet *rs = stmt->executeQuery();
+	if (!rs->next())
+		return "unknown";
+	string r = rs->getString(1);
+	stmt->closeResultSet(rs);
+	conn->terminateStatement(stmt);
+	return r;
 }
