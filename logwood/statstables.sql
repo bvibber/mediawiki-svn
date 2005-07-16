@@ -114,7 +114,7 @@ CREATE TABLE topagents (
 	ta_agent	INTEGER NOT NULL REFERENCES agent_ids(ag_id) ON DELETE CASCADE,
 	ta_count	INTEGER NOT NULL
 );
-CREATE INDEX ta_count_idx ON toprefs(ta_site, ta_count);
+CREATE INDEX ta_count_idx ON topagents(ta_site, ta_count);
 
 DROP TABLE IF EXISTS wdays;
 CREATE TABLE wdays (

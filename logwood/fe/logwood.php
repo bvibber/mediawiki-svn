@@ -58,7 +58,7 @@ div {
 </style>
 </head>
 <body>
-<form action='logwood.php' method='get'>
+<form action='' method='get'>
 
 <?php
 $site = false;

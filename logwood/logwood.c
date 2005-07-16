@@ -65,8 +65,8 @@ static const char *cfgdir = "/etc/logwood";
 #define STMT_INCR_AGENT		"UPDATE agent_count SET ac_count = ac_count + 1, ac_touched = NOW() WHERE ac_id = ?"
 
 #define STMT_QUERY_WDAY		"SELECT COUNT(*) FROM wdays WHERE wd_site = ? AND wd_day = ?"
-#define STMT_INSERT_WDAY	"INSERT INTO wdays (wd_site, wg_day, wd_hits) VALUES (?, ?, 0)"
-#define STMT_UPDATE_WDAY		"UPDATE wdays SET wd_hits = wd_hits + 1 WHERE wd_site = ? AND wd_day = ?"
+#define STMT_INSERT_WDAY	"INSERT INTO wdays (wd_site, wd_day, wd_hits) VALUES (?, ?, 0)"
+#define STMT_UPDATE_WDAY	"UPDATE wdays SET wd_hits = wd_hits + 1 WHERE wd_site = ? AND wd_day = ?"
 
 int 
 main(argc, argv)
@@ -137,7 +137,7 @@ int		 c;
 		exit(1);
 	}
 
-	for (argv++; *argv; argv++) {
+	for (; *argv; argv++) {
 		process_file(*argv);
 	}
 
