@@ -85,9 +85,9 @@ mysql_free_result($q);
 if ($site !== false) {
 
 $top_urls = mysql_query("
-	SELECT si_name, ur_path, uc_count FROM sites, url_id, url_count
-	WHERE sites.si_name='$site' AND ur_site=si_id AND uc_url_id=ur_id
-	ORDER BY uc_count DESC LIMIT 100
+	SELECT si_name, ur_path FROM sites, topurls, url_id 
+	WHERE tu_site=si_id and si_name='$site' and tu_url=ur_id 
+	ORDER BY tu_count DESC LIMIT 100;
 	");
 
 ?>
@@ -153,17 +153,18 @@ echo "</tr>\n";
 <tr><th>#</th><th>Count</th><th>Referer</th></tr>
 <?php
 $refers = mysql_query("
-	SELECT ref_url, ref_count, ref_grouped FROM sites, ref_ids, ref_count
-	WHERE si_name='$site' AND ref_site=si_id AND ref_count.ref_id=ref_ids.ref_id
-	ORDER BY ref_count DESC LIMIT 50;
+	SELECT ref_url, ref_grouped, tr_count
+	FROM sites, ref_ids, toprefs
+	WHERE si_name='$site' AND ref_site=si_id AND tr_ref=ref_id
+	ORDER BY tr_count DESC LIMIT 50
 	");
 $i = 1;
 while ($refer = mysql_fetch_assoc($refers)) {
 	$purl = htmlspecialchars(urldecode(urldecode($refer["ref_url"])));
 	$lurl = htmlspecialchars(urldecode($refer["ref_url"]));
 	$group = $refer["ref_grouped"] ? " class='grouped'" : "";
-	$count = $refer["ref_count"];
-	echo "<tr><td $group>$i</td><td $group>$count</td><td $group><a rel='nofollow' href=\"$lurl\">$purl</a></td></tr>\n";
+	$count = $refer["tr_count"];
+	echo "<tr><td$group>$i</td><td$group>$count</td><td$group><a rel='nofollow' href=\"$lurl\">$purl</a></td></tr>\n";
 	$i++;
 }
 mysql_free_result($refers);
@@ -176,14 +177,15 @@ mysql_free_result($refers);
 <tr><th>#</th><th>Count</th><th>Agent</th></tr>
 <?php
 $agents = mysql_query("
-	SELECT ag_name, ac_count, ag_grouped FROM sites, agent_ids, agent_count
-	WHERE si_name='$site' AND ag_site=si_id AND ac_id=ag_id
-	ORDER BY ac_count DESC LIMIT 50;
+	SELECT ag_name, ag_grouped, ta_count
+	FROM sites, agent_ids, topagents
+	WHERE si_name='$site' AND ag_site=si_id AND ta_agent=ag_id
+	ORDER BY ta_count DESC LIMIT 50
 	");
 $i = 1;
 while ($agent = mysql_fetch_assoc($agents)) {
 	$pagent = htmlspecialchars(urldecode($agent["ag_name"]));
-	$count = $agent["ac_count"];
+	$count = $agent["ta_count"];
 	$group = $agent["ag_grouped"] ? " class='grouped'" : "";
 	echo "<tr><td$group>$i</td><td$group>$count</td><td$group>$pagent</td></tr>\n";
 	$i++;

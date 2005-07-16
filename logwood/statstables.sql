@@ -92,3 +92,27 @@ CREATE TABLE hours (
 CREATE INDEX hours_site_count ON hours(hr_site, hr_count);
 CREATE INDEX hr_hour_all_idx ON hours(hr_hour,hr_count);
 
+DROP TABLE IF EXISTS topurls;
+CREATE TABLE topurls (
+	tu_site		INTEGER NOT NULL REFERENCES sites(si_id) ON DELETE CASCADE,
+	tu_url		INTEGER REFERENCES url_id(ur_id) ON DELETE CASCADE,
+	tu_count	INTEGER NOT NULL
+);
+CREATE INDEX tu_count_idx ON topurls(tu_site, tu_count);
+
+DROP TABLE IF EXISTS toprefs;
+CREATE TABLE toprefs (
+	tr_site		INTEGER NOT NULL REFERENCES sites(si_id) ON DELETE CASCADE,
+	tr_ref		INTEGER NOT NULL REFERENCES ref_ids(ref_id) ON DELETE CASCADE,
+	tr_count	INTEGER NOT NULL
+);
+CREATE INDEX tr_count_idx ON toprefs(tr_site, tr_count);
+
+DROP TABLE IF EXISTS topagents;
+CREATE TABLE topagents (
+	ta_site		INTEGER NOT NULL REFERENCES sites(si_id) ON DELETE CASCADE,
+	ta_agent	INTEGER NOT NULL REFERENCES agent_ids(ag_id) ON DELETE CASCADE,
+	ta_count	INTEGER NOT NULL
+);
+CREATE INDEX ta_count_idx ON toprefs(ta_site, ta_count);
+
