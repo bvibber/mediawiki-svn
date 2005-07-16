@@ -72,7 +72,8 @@ if (isset($_REQUEST['site']))
 $q = mysql_query("SELECT si_name FROM sites ORDER BY si_name ASC", $dbh);
 while ($o = mysql_fetch_assoc($q)) {
 	$opt = $o["si_name"];
-	echo "<option value='$opt'>$opt</option>\n";
+	$selected = ($opt == $site) ? " selected='selected'" : "";
+	echo "<option value='$opt'$selected>$opt</option>\n";
 }
 mysql_free_result($q);
 ?>
@@ -85,7 +86,7 @@ mysql_free_result($q);
 if ($site !== false) {
 
 $top_urls = mysql_query("
-	SELECT si_name, ur_path FROM sites, topurls, url_id 
+	SELECT si_name, ur_path,tu_count FROM sites, topurls, url_id 
 	WHERE tu_site=si_id and si_name='$site' and tu_url=ur_id 
 	ORDER BY tu_count DESC LIMIT 100;
 	");
@@ -100,7 +101,7 @@ $i = 1;
 while ($url = mysql_fetch_assoc($top_urls)) {
 	$purl = htmlspecialchars("http://" . $url["si_name"] . "/" . urldecode($url["ur_path"]));
 	$lurl = htmlspecialchars("http://" . $url["si_name"] . "/" . $url["ur_path"]);
-	$count = $url["uc_count"];
+	$count = $url["tu_count"];
 	echo "<tr><td>$i</td><td>$count</td><td><a href=\"$lurl\">$purl</a></td></tr>\n";
 	++$i;
 }
