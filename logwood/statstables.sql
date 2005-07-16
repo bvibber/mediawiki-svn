@@ -3,7 +3,7 @@ CREATE TABLE sites (
 	si_id		INTEGER PRIMARY KEY AUTO_INCREMENT,
 	si_name		VARCHAR(64) NOT NULL
 );
-CREATE INDEX site_name_idx ON sites(si_name);
+CREATE UNIQUE INDEX site_name_idx ON sites(si_name);
 
 DROP TABLE IF EXISTS url_id;
 CREATE TABLE url_id (
@@ -12,7 +12,7 @@ CREATE TABLE url_id (
 	ur_path		VARCHAR(255) NOT NULL,
 	ur_grouped	TINYINT(1) NOT NULL
 );
-CREATE INDEX url_url_idx ON url_id(ur_site, ur_path);
+CREATE UNIQUE INDEX url_url_idx ON url_id(ur_site, ur_path);
 
 DROP TABLE IF EXISTS url_count;
 CREATE TABLE url_count (
@@ -34,7 +34,7 @@ CREATE TABLE agent_ids (
 	ag_name		VARCHAR(255) NOT NULL,
 	ag_grouped	TINYINT(1) NOT NULL
 );
-CREATE INDEX agent_name_idx ON agent_ids(ag_site, ag_name);
+CREATE UNIQUE INDEX agent_name_idx ON agent_ids(ag_site, ag_name);
 
 DROP TABLE IF EXISTS agent_count;
 CREATE TABLE agent_count (
@@ -51,6 +51,7 @@ CREATE TABLE ref_ids (
 	ref_url		VARCHAR(255) NOT NULL,
 	ref_grouped	TINYINT(1) NOT NULL
 );
+CREATE UNIQUE INDEX ref_site_url_idx ON ref_ids(ref_site, ref_url);
 
 DROP TABLE IF EXISTS ref_count;
 CREATE TABLE ref_count (
@@ -89,6 +90,7 @@ CREATE TABLE hours (
 	hr_hour		INTEGER(2) NOT NULL,
 	hr_count	INTEGER NOT NULL
 );
+CREATE UNIQUE INDEX hr_hour_idx ON hours(hr_hour);
 CREATE INDEX hours_site_count ON hours(hr_site, hr_count);
 CREATE INDEX hr_hour_all_idx ON hours(hr_hour,hr_count);
 

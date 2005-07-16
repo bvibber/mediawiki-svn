@@ -631,7 +631,7 @@ MYSQL_BIND	 bind_update_wday[2];
 		mysql_stmt_bind_param(stmt_insert_site, bind_insert_site);
 		mysql_stmt_execute(stmt_insert_site);
 
-		if (mysql_warning_count(&connection)) {
+		if (!mysql_stmt_affected_rows(stmt_insert_site)) {
 			/*
 			 * Already existed, check the id.
 			 */
@@ -642,6 +642,7 @@ MYSQL_BIND	 bind_update_wday[2];
 			bind_query_site_si_site_length = strlen(host);
 
 			mysql_stmt_bind_param(stmt_query_site, bind_query_site);
+			mysql_stmt_bind_result(stmt_query_site, bind_query_site_result);
 			mysql_stmt_execute(stmt_query_site);
 			mysql_stmt_fetch(stmt_query_site);
 			mysql_stmt_free_result(stmt_query_site);
@@ -670,7 +671,7 @@ MYSQL_BIND	 bind_update_wday[2];
 		mysql_stmt_bind_param(stmt_insert_url, bind_insert_url);
 		mysql_stmt_execute(stmt_insert_url);
 
-		if (mysql_warning_count(&connection)) {
+		if (!mysql_stmt_affected_rows(stmt_insert_url)) {
 			/*
 			 * Already existed.
 			 */
@@ -686,12 +687,13 @@ MYSQL_BIND	 bind_update_wday[2];
 			bind_query_url_ur_url_length = strlen(path);
 
 			mysql_stmt_bind_param(stmt_query_url, bind_query_url);
+			mysql_stmt_bind_result(stmt_query_url, bind_query_url_result);
 			mysql_stmt_execute(stmt_query_url);
 			mysql_stmt_fetch(stmt_query_url);
 			mysql_stmt_free_result(stmt_query_url);
 
 		} else {
-			bind_query_url_ur_url_length = mysql_stmt_insert_id(stmt_insert_url);
+			bind_query_url_ur_id = mysql_stmt_insert_id(stmt_insert_url);
 
 			bind_insert_count[0].buffer_type = MYSQL_TYPE_LONGLONG;
 			bind_insert_count[0].buffer = &bind_query_url_ur_id;
@@ -715,7 +717,9 @@ MYSQL_BIND	 bind_update_wday[2];
 		bind_query_hour_hr_hour = tm->tm_hour;
 		mysql_stmt_execute(stmt_insert_hour);
 
-		if (mysql_warning_count(&connection)) {
+		if (!mysql_stmt_affected_rows(stmt_insert_hour)) {
+			mysql_stmt_bind_param(stmt_query_hour, bind_query_hour);
+			mysql_stmt_bind_result(stmt_query_hour, bind_query_hour_result);
 			mysql_stmt_execute(stmt_query_hour);
 			mysql_stmt_fetch(stmt_query_hour);
 			mysql_stmt_free_result(stmt_query_hour);
@@ -738,7 +742,7 @@ MYSQL_BIND	 bind_update_wday[2];
 		/*
 		 * Insert the referer.
 		 */
-		if (refer) {
+		if (refer && *refer) {
 			nrefer = consider_grouping(refer_groups, refer);
 			
 			if (nrefer) {
@@ -752,7 +756,8 @@ MYSQL_BIND	 bind_update_wday[2];
 				refer = NULL;
 		}
 
-		if (refer) {
+		if (refer && *refer) {
+			bind_query_ref_url_length = strlen(refer);
 			bind_query_ref[1].buffer = refer;
 			bind_insert_ref[1].buffer = refer;
 			bind_query_ref[1].length = &bind_query_ref_url_length;
@@ -761,8 +766,9 @@ MYSQL_BIND	 bind_update_wday[2];
 
 			mysql_stmt_bind_param(stmt_insert_ref, bind_insert_ref);
 			mysql_stmt_execute(stmt_insert_ref);
-			if (mysql_warning_count(&connection)) {
+			if (!mysql_stmt_affected_rows(stmt_insert_ref)) {
 				mysql_stmt_bind_param(stmt_query_ref, bind_query_ref);
+				mysql_stmt_bind_result(stmt_query_ref, bind_query_ref_result);
 				mysql_stmt_execute(stmt_query_ref);
 				mysql_stmt_fetch(stmt_query_ref);
 				mysql_stmt_free_result(stmt_query_ref);
@@ -779,7 +785,7 @@ MYSQL_BIND	 bind_update_wday[2];
 		/*
 		 * Insert the user-agent.
 		 */
-		if (agent) {
+		if (agent && *agent) {
 			nagent = consider_grouping(agent_groups, agent);
 			
 			if (nagent) {
@@ -794,6 +800,7 @@ MYSQL_BIND	 bind_update_wday[2];
 		}
 
 		if (agent) {
+			bind_query_agent_name_length = strlen(agent);
 			bind_query_agent[1].buffer = agent;
 			bind_insert_agent[1].buffer = agent;
 			bind_query_agent[1].length = &bind_query_agent_name_length;
@@ -802,9 +809,9 @@ MYSQL_BIND	 bind_update_wday[2];
 			mysql_stmt_bind_param(stmt_insert_agent, bind_insert_agent);
 			mysql_stmt_execute(stmt_insert_agent);
 
-			if (mysql_warning_count(&connection)) {
-				bind_query_agent_name_length = strlen(agent);
+			if (!mysql_stmt_affected_rows(stmt_insert_agent)) {
 				mysql_stmt_bind_param(stmt_query_agent, bind_query_agent);
+				mysql_stmt_bind_result(stmt_query_agent, bind_query_agent_result);
 				mysql_stmt_execute(stmt_query_agent);
 				mysql_stmt_fetch(stmt_query_agent);
 				mysql_stmt_free_result(stmt_query_agent);
