@@ -64,6 +64,10 @@ static const char *cfgdir = "/etc/logwood";
 #define STMT_INSERT_AGENT_COUNT	"INSERT INTO agent_count (ac_id, ac_count) VALUES (?, 0)"
 #define STMT_INCR_AGENT		"UPDATE agent_count SET ac_count = ac_count + 1, ac_touched = NOW() WHERE ac_id = ?"
 
+#define STMT_QUERY_WDAY		"SELECT COUNT(*) FROM wdays WHERE wd_site = ? AND wd_day = ?"
+#define STMT_INSERT_WDAY	"INSERT INTO wdays (wd_site, wg_day, wd_hits) VALUES (?, ?, 0)"
+#define STMT_UPDATE_WDAY		"UPDATE wdays SET wd_hits = wd_hits + 1 WHERE wd_site = ? AND wd_day = ?"
+
 int 
 main(argc, argv)
 int 	 argc;
@@ -232,6 +236,55 @@ MYSQL_BIND	 bind_insert_agent_count[1];
 
 MYSQL_STMT	*stmt_incr_agent;
 MYSQL_BIND	 bind_incr_agent[1];
+
+MYSQL_STMT	*stmt_query_wday;
+MYSQL_BIND	 bind_query_wday[2];
+MYSQL_BIND	 bind_query_wday_result[1];
+my_ulonglong	 bind_query_wday_day;
+my_ulonglong	 bind_query_wday_count;
+my_bool		 bind_query_wday_count_is_null;
+unsigned long	 bind_query_wday_count_length;
+
+MYSQL_STMT	*stmt_insert_wday;
+MYSQL_BIND	 bind_insert_wday[2];
+
+MYSQL_STMT	*stmt_update_wday;
+MYSQL_BIND	 bind_update_wday[2];
+
+	bind_query_wday[0].buffer_type = MYSQL_TYPE_LONGLONG;
+	bind_query_wday[0].buffer = &bind_query_site_si_id;
+	bind_query_wday[0].is_null = 0;
+	bind_query_wday[0].length = 0;
+
+	bind_query_wday[1].buffer_type = MYSQL_TYPE_LONGLONG;
+	bind_query_wday[1].buffer = &bind_query_wday_day;
+	bind_query_wday[1].length = 0;
+	bind_query_wday[1].is_null = 0;
+
+	bind_query_wday_result[0].buffer_type = MYSQL_TYPE_LONGLONG;
+	bind_query_wday_result[0].buffer = &bind_query_wday_count;
+	bind_query_wday_result[0].is_null = &bind_query_wday_count_is_null;
+	bind_query_wday_result[0].length = &bind_query_wday_count_length;
+
+	bind_insert_wday[0].buffer_type = MYSQL_TYPE_LONGLONG;
+	bind_insert_wday[0].buffer = &bind_query_site_si_id;
+	bind_insert_wday[0].is_null = 0;
+	bind_insert_wday[0].length = 0;
+
+	bind_insert_wday[1].buffer_type = MYSQL_TYPE_LONGLONG;
+	bind_insert_wday[1].buffer = &bind_query_wday_day;
+	bind_insert_wday[1].length = 0;
+	bind_insert_wday[1].is_null = 0;
+
+	bind_update_wday[0].buffer_type = MYSQL_TYPE_LONGLONG;
+	bind_update_wday[0].buffer = &bind_query_site_si_id;
+	bind_update_wday[0].is_null = 0;
+	bind_update_wday[0].length = 0;
+
+	bind_update_wday[1].buffer_type = MYSQL_TYPE_LONGLONG;
+	bind_update_wday[1].buffer = &bind_query_wday_day;
+	bind_update_wday[1].length = 0;
+	bind_update_wday[1].is_null = 0;
 
 	bind_incr_ref[0].buffer_type = MYSQL_TYPE_LONGLONG;
 	bind_incr_ref[0].buffer = &bind_query_ref_id;
@@ -423,6 +476,19 @@ MYSQL_BIND	 bind_incr_agent[1];
 	mysql_stmt_prepare(stmt_incr_agent, STMT_INCR_AGENT, strlen(STMT_INCR_AGENT));
 	mysql_stmt_bind_param(stmt_incr_agent, bind_incr_agent);
 
+	stmt_query_wday = mysql_stmt_init(&connection);
+	mysql_stmt_prepare(stmt_query_wday, STMT_QUERY_WDAY, strlen(STMT_QUERY_WDAY));
+	mysql_stmt_bind_param(stmt_query_wday, bind_query_wday);
+	mysql_stmt_bind_result(stmt_query_wday, bind_query_wday_result);
+
+	stmt_insert_wday = mysql_stmt_init(&connection);
+	mysql_stmt_prepare(stmt_insert_wday, STMT_INSERT_WDAY, strlen(STMT_INSERT_WDAY));
+	mysql_stmt_bind_param(stmt_insert_wday, bind_insert_wday);
+
+	stmt_update_wday = mysql_stmt_init(&connection);
+	mysql_stmt_prepare(stmt_update_wday, STMT_UPDATE_WDAY, strlen(STMT_UPDATE_WDAY));
+	mysql_stmt_bind_param(stmt_update_wday, bind_update_wday);
+
 	if ((in = fopen(name, "r")) == NULL) {
 		perror(name);
 		return;
@@ -536,6 +602,10 @@ MYSQL_BIND	 bind_incr_agent[1];
 			continue;
 		*s++ = '\0';
 		path = s;
+
+		s = strchr(host, ':');
+		if (s)	
+			*s = '\0';
 
 		if (!host_ok(host) || !path_ok(path))
 			continue;
@@ -664,6 +734,7 @@ MYSQL_BIND	 bind_incr_agent[1];
 		}
 
 		mysql_stmt_free_result(stmt_query_url);
+		mysql_query(&connection, "COMMIT");
 
 		bind_incr_count[0].buffer_type = MYSQL_TYPE_LONGLONG;
 		bind_incr_count[0].buffer = &bind_query_url_ur_id;
@@ -674,7 +745,6 @@ MYSQL_BIND	 bind_incr_agent[1];
 			fprintf(stderr, "MySQL error (executing stmt_incr_count): %s\n", mysql_stmt_error(stmt_incr_count));
 			exit(1);
 		}
-		mysql_query(&connection, "COMMIT");
 
 		/*
 		 * Insert the hour.
@@ -694,11 +764,31 @@ MYSQL_BIND	 bind_incr_agent[1];
 			bind_query_hour_hr_id = mysql_stmt_insert_id(stmt_insert_hour);
 		}
 		mysql_stmt_free_result(stmt_query_hour);
+		mysql_query(&connection, "COMMIT");
 		if (mysql_stmt_execute(stmt_incr_hour)) {
 			fprintf(stderr, "MySQL error (executing stmt_incr_hour): %s\n", mysql_stmt_error(stmt_incr_hour));
 			exit(1);
 		}
+
+		/*
+		 * Insert day-of-week.
+		 */
+
+		bind_query_wday_day = tm->tm_wday;
+		mysql_query(&connection, "BEGIN");
+		mysql_stmt_bind_param(stmt_query_wday, bind_query_wday);
+		mysql_stmt_bind_result(stmt_query_wday, bind_query_wday_result);
+		mysql_stmt_execute(stmt_query_wday);
+		mysql_stmt_fetch(stmt_query_wday);
+		mysql_stmt_free_result(stmt_query_wday);
+
+		if (!bind_query_wday_count) {
+			mysql_stmt_bind_param(stmt_insert_wday, bind_insert_wday);
+			mysql_stmt_execute(stmt_insert_wday);
+		}
 		mysql_query(&connection, "COMMIT");
+		mysql_stmt_bind_param(stmt_update_wday, bind_update_wday);
+		mysql_stmt_execute(stmt_update_wday);
 
 		/*
 		 * Insert the referer.
@@ -735,9 +825,9 @@ MYSQL_BIND	 bind_incr_agent[1];
 				mysql_stmt_execute(stmt_insert_ref_count);
 			} else
 				mysql_stmt_free_result(stmt_query_ref);
+			mysql_query(&connection, "COMMIT");
 			mysql_stmt_bind_param(stmt_incr_ref, bind_incr_ref);
 			mysql_stmt_execute(stmt_incr_ref);
-			mysql_query(&connection, "COMMIT");
 		}
 
 		/*
@@ -775,9 +865,9 @@ MYSQL_BIND	 bind_incr_agent[1];
 				mysql_stmt_execute(stmt_insert_agent_count);
 			} else
 				mysql_stmt_free_result(stmt_query_agent);
+			mysql_query(&connection, "COMMIT");
 			mysql_stmt_bind_param(stmt_incr_agent, bind_incr_agent);
 			mysql_stmt_execute(stmt_incr_agent);
-			mysql_query(&connection, "COMMIT");
 		}
 		++lines;
 	}

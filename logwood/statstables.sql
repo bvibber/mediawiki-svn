@@ -116,3 +116,11 @@ CREATE TABLE topagents (
 );
 CREATE INDEX ta_count_idx ON toprefs(ta_site, ta_count);
 
+DROP TABLE IF EXISTS wdays;
+CREATE TABLE wdays (
+	wd_site		INTEGER NOT NULL REFERENCES sites(si_id) ON DELETE CASCADE,
+	wd_day		INTEGER(1) NOT NULL,
+	wd_hits		INTEGER NOT NULL,
+	PRIMARY KEY(wd_site, wd_day)
+);
+
