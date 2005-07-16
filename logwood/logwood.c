@@ -42,30 +42,31 @@ static unsigned long	 lines = 0;
 static char *dbuser, *dbpass, *dbhost, *dbname;
 static const char *cfgdir = "/etc/logwood";
 
-#define	STMT_INSERT_SITE 	"INSERT INTO sites (si_name) VALUES (LOWER(?))"
-#define	STMT_INSERT_URL 	"INSERT INTO url_id (ur_site, ur_path, ur_grouped) VALUES (?, ?, ?)"
-#define STMT_INSERT_COUNT	"INSERT INTO url_count (uc_url_id, uc_count) VALUES (?, 0)"
+#define	STMT_INSERT_SITE 	"INSERT IGNORE INTO sites (si_name) VALUES (LOWER(?))"
+#define STMT_QUERY_SITE		"SELECT si_id FROM sites WHERE si_name = ?"
+
+#define STMT_INSERT_COUNT	"INSERT IGNORE INTO url_count (uc_url_id, uc_count) VALUES (?, 0)"
 #define STMT_INCR_COUNT		"UPDATE url_count SET uc_count = uc_count + 1 WHERE uc_url_id = ?"
 
 #define STMT_QUERY_HOUR		"SELECT hr_id FROM hours WHERE hr_site = ? AND hr_hour = ?"
-#define STMT_INSERT_HOUR	"INSERT INTO hours (hr_site, hr_hour, hr_count) VALUES (?, ?, 0)"
+#define STMT_INSERT_HOUR	"INSERT IGNORE INTO hours (hr_site, hr_hour, hr_count) VALUES (?, ?, 0)"
 #define STMT_INCR_HOUR		"UPDATE hours SET hr_count = hr_count + 1 WHERE hr_id = ?"
 
-#define STMT_QUERY_SITE		"SELECT si_id FROM sites WHERE si_name = ?"
 #define STMT_QUERY_URL		"SELECT ur_id FROM url_id WHERE ur_site = ? AND ur_path = ?"
+#define	STMT_INSERT_URL 	"INSERT IGNORE INTO url_id (ur_site, ur_path, ur_grouped) VALUES (?, ?, ?)"
 
 #define STMT_QUERY_REF		"SELECT ref_id FROM ref_ids WHERE ref_site = ? AND ref_url = ?"
-#define STMT_INSERT_REF		"INSERT INTO ref_ids (ref_site, ref_url, ref_grouped) VALUES (?, ?, ?)"
+#define STMT_INSERT_REF		"INSERT IGNORE INTO ref_ids (ref_site, ref_url, ref_grouped) VALUES (?, ?, ?)"
 #define STMT_INSERT_REF_COUNT	"INSERT INTO ref_count (ref_id, ref_count) VALUES (?, 0)"
 #define STMT_INCR_REF		"UPDATE ref_count SET ref_count = ref_count + 1, ref_touched = NOW() WHERE ref_id = ?"
 
 #define STMT_QUERY_AGENT	"SELECT ag_id FROM agent_ids WHERE ag_site = ? AND ag_name = ?"
-#define STMT_INSERT_AGENT	"INSERT INTO agent_ids (ag_site, ag_name, ag_grouped) VALUES (?, ?, ?)"
+#define STMT_INSERT_AGENT	"INSERT IGNORE INTO agent_ids (ag_site, ag_name, ag_grouped) VALUES (?, ?, ?)"
 #define STMT_INSERT_AGENT_COUNT	"INSERT INTO agent_count (ac_id, ac_count) VALUES (?, 0)"
 #define STMT_INCR_AGENT		"UPDATE agent_count SET ac_count = ac_count + 1, ac_touched = NOW() WHERE ac_id = ?"
 
 #define STMT_QUERY_WDAY		"SELECT COUNT(*) FROM wdays WHERE wd_site = ? AND wd_day = ?"
-#define STMT_INSERT_WDAY	"INSERT INTO wdays (wd_site, wd_day, wd_hits) VALUES (?, ?, 0)"
+#define STMT_INSERT_WDAY	"INSERT IGNORE INTO wdays (wd_site, wd_day, wd_hits) VALUES (?, ?, 0)"
 #define STMT_UPDATE_WDAY	"UPDATE wdays SET wd_hits = wd_hits + 1 WHERE wd_site = ? AND wd_day = ?"
 
 int 
@@ -156,6 +157,7 @@ char		*s;
 struct tm	*tm;
 time_t		 tmt;
 MYSQL		 connection;
+my_ulonglong	 zero = 0;
 
 MYSQL_STMT	*stmt_insert_site;
 MYSQL_BIND	 bind_insert_site[1];
@@ -616,109 +618,80 @@ MYSQL_BIND	 bind_update_wday[2];
 		/* 
 		 * Line looks okay, insert it to DB 
 		 */
-		if (mysql_query(&connection, "BEGIN")) {
-			fprintf(stderr, "MySQL error (BEGIN): %s\n", mysql_error(&connection));
-			exit(1);
-		}
 		
 
 		/*
 		 * Check if the site exists already.
 		 */
-		bind_query_site[0].buffer_type = MYSQL_TYPE_STRING;
-		bind_query_site[0].buffer = host;
-		bind_query_site[0].is_null = 0;
-		bind_query_site[0].length = &bind_query_site_si_site_length;
-		bind_query_site_si_site_length = strlen(host);
+		bind_insert_site[0].buffer_type = MYSQL_TYPE_STRING;
+		bind_insert_site[0].buffer = host;
+		bind_insert_site[0].is_null = 0;
+		bind_insert_site[0].length = &bind_insert_site_si_site_length;
+		bind_insert_site_si_site_length = strlen(host);
+		mysql_stmt_bind_param(stmt_insert_site, bind_insert_site);
+		mysql_stmt_execute(stmt_insert_site);
 
-		if (mysql_stmt_bind_param(stmt_query_site, bind_query_site)) {
-			fprintf(stderr, "MySQL error (bind_query_site): %s\n", mysql_error(&connection));
-			exit(1);
-		}
-		if (mysql_stmt_execute(stmt_query_site)) {
-			fprintf(stderr, "MySQL error (executing stmt_query_site): %s\n", mysql_error(&connection));
-			exit(1);
-		}
-				
-		if (mysql_stmt_fetch(stmt_query_site)) {
+		if (mysql_warning_count(&connection)) {
 			/*
-			 * No site, insert it.
+			 * Already existed, check the id.
 			 */
-			bind_insert_site[0].buffer_type = MYSQL_TYPE_STRING;
-			bind_insert_site[0].buffer = host;
-			bind_insert_site[0].is_null = 0;
-			bind_insert_site[0].length = &bind_insert_site_si_site_length;
-			bind_insert_site_si_site_length = strlen(host);
+			bind_query_site[0].buffer_type = MYSQL_TYPE_STRING;
+			bind_query_site[0].buffer = host;
+			bind_query_site[0].is_null = 0;
+			bind_query_site[0].length = &bind_query_site_si_site_length;
+			bind_query_site_si_site_length = strlen(host);
 
-			if (mysql_stmt_bind_param(stmt_insert_site, bind_insert_site)) {
-				fprintf(stderr, "MySQL error (bind_insert_site): %s\n", mysql_error(&connection));
-				exit(1);
-			}
-			if (mysql_stmt_execute(stmt_insert_site)) {
-				fprintf(stderr, "MySQL error (executing stmt_insert_site): %s\n", mysql_error(&connection));
-				exit(1);
-			}
+			mysql_stmt_bind_param(stmt_query_site, bind_query_site);
+			mysql_stmt_execute(stmt_query_site);
+			mysql_stmt_fetch(stmt_query_site);
+			mysql_stmt_free_result(stmt_query_site);
+		} else
 			bind_query_site_si_id = mysql_stmt_insert_id(stmt_insert_site);
-		}
-		mysql_stmt_free_result(stmt_query_site);
-		if (mysql_query(&connection, "COMMIT")) {
-			fprintf(stderr, "MySQL error (COMMIT): %s\n", mysql_error(&connection));
-			exit(1);
-		}
 
 		/*
 		 * Insert a URL, if none.
 		 */
-		mysql_query(&connection, "BEGIN");
+		bind_insert_url[0].buffer_type = MYSQL_TYPE_LONGLONG;
+		bind_insert_url[0].buffer = (char *)&bind_query_site_si_id;
+		bind_insert_url[0].is_null = 0;
+		bind_insert_url[0].length = 0;
 
-		bind_query_url[0].buffer_type = MYSQL_TYPE_LONGLONG;
-		bind_query_url[0].buffer = &bind_query_site_si_id;
-		bind_query_url[0].is_null = 0;
-		bind_query_url[0].length = 0;
+		bind_insert_url[1].buffer_type = MYSQL_TYPE_STRING;
+		bind_insert_url[1].buffer = path;
+		bind_insert_url[1].is_null = 0;
+		bind_insert_url[1].length = &bind_insert_url_length;
+		bind_insert_url_length = strlen(path);
 
-		bind_query_url[1].buffer_type = MYSQL_TYPE_STRING;
-		bind_query_url[1].buffer = path;
-		bind_query_url[1].is_null = 0;
-		bind_query_url[1].length = &bind_query_url_ur_url_length;
-		bind_query_url_ur_url_length = strlen(path);
-
-		if (mysql_stmt_bind_param(stmt_query_url, bind_query_url)) {
-			fprintf(stderr, "MySQL error (bind_query_url): %s\n", mysql_stmt_error(stmt_query_url));
-			exit(1);
-		}
-		if (mysql_stmt_execute(stmt_query_url)) {
-			fprintf(stderr, "MySQL error (executing stmt_query_url): %s\n", mysql_error(&connection));
-			exit(1);
-		}
-		
-		if (mysql_stmt_fetch(stmt_query_url)) {
-			unsigned long zero = 0;
-
-			/*
-			 * URL doesn't exist.
-			 */			
-			bind_insert_url[0].buffer_type = MYSQL_TYPE_LONGLONG;
-			bind_insert_url[0].buffer = (char *)&bind_query_site_si_id;
-			bind_insert_url[0].is_null = 0;
-			bind_insert_url[0].length = 0;
-
-			bind_insert_url[1].buffer_type = MYSQL_TYPE_STRING;
-			bind_insert_url[1].buffer = path;
-			bind_insert_url[1].is_null = 0;
-			bind_insert_url[1].length = &bind_insert_url_length;
-			bind_insert_url_length = strlen(path);
-
-			bind_insert_url[2].buffer_type = MYSQL_TYPE_LONG;
-			bind_insert_url[2].buffer = &zero;
-			bind_insert_url[2].is_null = 0;
-			bind_insert_url[2].length = 0;
+		bind_insert_url[2].buffer_type = MYSQL_TYPE_LONG;
+		bind_insert_url[2].buffer = &zero;
+		bind_insert_url[2].is_null = 0;
+		bind_insert_url[2].length = 0;
 			
-			mysql_stmt_bind_param(stmt_insert_url, bind_insert_url);
-			if (mysql_stmt_execute(stmt_insert_url)) {
-				fprintf(stderr, "MySQL error (executing stmt_insert_url): %s\n", mysql_stmt_error(stmt_insert_url));
-				exit(1);
-			}
-			bind_query_url_ur_id = mysql_stmt_insert_id(stmt_insert_url);
+		mysql_stmt_bind_param(stmt_insert_url, bind_insert_url);
+		mysql_stmt_execute(stmt_insert_url);
+
+		if (mysql_warning_count(&connection)) {
+			/*
+			 * Already existed.
+			 */
+			bind_query_url[0].buffer_type = MYSQL_TYPE_LONGLONG;
+			bind_query_url[0].buffer = &bind_query_site_si_id;
+			bind_query_url[0].is_null = 0;
+			bind_query_url[0].length = 0;
+
+			bind_query_url[1].buffer_type = MYSQL_TYPE_STRING;
+			bind_query_url[1].buffer = path;
+			bind_query_url[1].is_null = 0;
+			bind_query_url[1].length = &bind_query_url_ur_url_length;
+			bind_query_url_ur_url_length = strlen(path);
+
+			mysql_stmt_bind_param(stmt_query_url, bind_query_url);
+			mysql_stmt_execute(stmt_query_url);
+			mysql_stmt_fetch(stmt_query_url);
+			mysql_stmt_free_result(stmt_query_url);
+
+		} else {
+			bind_query_url_ur_url_length = mysql_stmt_insert_id(stmt_insert_url);
 
 			bind_insert_count[0].buffer_type = MYSQL_TYPE_LONGLONG;
 			bind_insert_count[0].buffer = &bind_query_url_ur_id;
@@ -726,67 +699,39 @@ MYSQL_BIND	 bind_update_wday[2];
 			bind_insert_count[0].length = 0;
 
 			mysql_stmt_bind_param(stmt_insert_count, bind_insert_count);
-			if (mysql_stmt_execute(stmt_insert_count)) {
-				fprintf(stderr, "MySQL error (executing stmt_insert_url): %s\n", 
-					mysql_stmt_error(stmt_insert_count));
-				exit(1);
-			}
+			mysql_stmt_execute(stmt_insert_count);
 		}
-
-		mysql_stmt_free_result(stmt_query_url);
-		mysql_query(&connection, "COMMIT");
 
 		bind_incr_count[0].buffer_type = MYSQL_TYPE_LONGLONG;
 		bind_incr_count[0].buffer = &bind_query_url_ur_id;
 		bind_incr_count[0].is_null = 0;
 		bind_incr_count[0].length = 0;
 		mysql_stmt_bind_param(stmt_incr_count, bind_incr_count);
-		if (mysql_stmt_execute(stmt_incr_count)) {
-			fprintf(stderr, "MySQL error (executing stmt_incr_count): %s\n", mysql_stmt_error(stmt_incr_count));
-			exit(1);
-		}
+		mysql_stmt_execute(stmt_incr_count);
 
 		/*
 		 * Insert the hour.
 		 */
 		bind_query_hour_hr_hour = tm->tm_hour;
-		mysql_query(&connection, "BEGIN");
-		if (mysql_stmt_execute(stmt_query_hour)) {
-			fprintf(stderr, "MySQL error (executing stmt_query_hour): %s\n", mysql_stmt_error(stmt_query_hour));
-			exit(1);
-		}
-		if (mysql_stmt_fetch(stmt_query_hour)) {
-			if (mysql_stmt_execute(stmt_insert_hour)) {
-				fprintf(stderr, "MySQL error (executing stmt_insert_hour): %s\n", 
-					mysql_stmt_error(stmt_insert_hour));
-				exit(1);
-			}
+		mysql_stmt_execute(stmt_insert_hour);
+
+		if (mysql_warning_count(&connection)) {
+			mysql_stmt_execute(stmt_query_hour);
+			mysql_stmt_fetch(stmt_query_hour);
+			mysql_stmt_free_result(stmt_query_hour);
+		} else
 			bind_query_hour_hr_id = mysql_stmt_insert_id(stmt_insert_hour);
-		}
-		mysql_stmt_free_result(stmt_query_hour);
-		mysql_query(&connection, "COMMIT");
-		if (mysql_stmt_execute(stmt_incr_hour)) {
-			fprintf(stderr, "MySQL error (executing stmt_incr_hour): %s\n", mysql_stmt_error(stmt_incr_hour));
-			exit(1);
-		}
+		mysql_stmt_execute(stmt_incr_hour);
 
 		/*
 		 * Insert day-of-week.
 		 */
 
 		bind_query_wday_day = tm->tm_wday;
-		mysql_query(&connection, "BEGIN");
-		mysql_stmt_bind_param(stmt_query_wday, bind_query_wday);
-		mysql_stmt_bind_result(stmt_query_wday, bind_query_wday_result);
-		mysql_stmt_execute(stmt_query_wday);
-		mysql_stmt_fetch(stmt_query_wday);
-		mysql_stmt_free_result(stmt_query_wday);
 
-		if (!bind_query_wday_count) {
-			mysql_stmt_bind_param(stmt_insert_wday, bind_insert_wday);
-			mysql_stmt_execute(stmt_insert_wday);
-		}
-		mysql_query(&connection, "COMMIT");
+		mysql_stmt_bind_param(stmt_insert_wday, bind_insert_wday);
+		mysql_stmt_execute(stmt_insert_wday);
+
 		mysql_stmt_bind_param(stmt_update_wday, bind_update_wday);
 		mysql_stmt_execute(stmt_update_wday);
 
@@ -808,24 +753,25 @@ MYSQL_BIND	 bind_update_wday[2];
 		}
 
 		if (refer) {
-			mysql_query(&connection, "BEGIN");
 			bind_query_ref[1].buffer = refer;
 			bind_insert_ref[1].buffer = refer;
 			bind_query_ref[1].length = &bind_query_ref_url_length;
 			bind_insert_ref[1].length = &bind_query_ref_url_length;
 			bind_query_ref_url_length = strlen(refer);
-			mysql_stmt_bind_param(stmt_query_ref, bind_query_ref);
-			mysql_stmt_execute(stmt_query_ref);
-			if (mysql_stmt_fetch(stmt_query_ref)) {
+
+			mysql_stmt_bind_param(stmt_insert_ref, bind_insert_ref);
+			mysql_stmt_execute(stmt_insert_ref);
+			if (mysql_warning_count(&connection)) {
+				mysql_stmt_bind_param(stmt_query_ref, bind_query_ref);
+				mysql_stmt_execute(stmt_query_ref);
+				mysql_stmt_fetch(stmt_query_ref);
 				mysql_stmt_free_result(stmt_query_ref);
-				mysql_stmt_bind_param(stmt_insert_ref, bind_insert_ref);
-				mysql_stmt_execute(stmt_insert_ref);
+			} else {
 				bind_query_ref_id = mysql_stmt_insert_id(stmt_insert_ref);
 				mysql_stmt_bind_param(stmt_insert_ref_count, bind_insert_ref_count);
 				mysql_stmt_execute(stmt_insert_ref_count);
-			} else
-				mysql_stmt_free_result(stmt_query_ref);
-			mysql_query(&connection, "COMMIT");
+			}
+
 			mysql_stmt_bind_param(stmt_incr_ref, bind_incr_ref);
 			mysql_stmt_execute(stmt_incr_ref);
 		}
@@ -848,24 +794,25 @@ MYSQL_BIND	 bind_update_wday[2];
 		}
 
 		if (agent) {
-			mysql_query(&connection, "BEGIN");
 			bind_query_agent[1].buffer = agent;
 			bind_insert_agent[1].buffer = agent;
 			bind_query_agent[1].length = &bind_query_agent_name_length;
 			bind_insert_agent[1].length = &bind_query_agent_name_length;
-			bind_query_agent_name_length = strlen(agent);
-			mysql_stmt_bind_param(stmt_query_agent, bind_query_agent);
-			mysql_stmt_execute(stmt_query_agent);
-			if (mysql_stmt_fetch(stmt_query_agent)) {
+
+			mysql_stmt_bind_param(stmt_insert_agent, bind_insert_agent);
+			mysql_stmt_execute(stmt_insert_agent);
+
+			if (mysql_warning_count(&connection)) {
+				bind_query_agent_name_length = strlen(agent);
+				mysql_stmt_bind_param(stmt_query_agent, bind_query_agent);
+				mysql_stmt_execute(stmt_query_agent);
+				mysql_stmt_fetch(stmt_query_agent);
 				mysql_stmt_free_result(stmt_query_agent);
-				mysql_stmt_bind_param(stmt_insert_agent, bind_insert_agent);
-				mysql_stmt_execute(stmt_insert_agent);
+			} else {
 				bind_query_agent_id = mysql_stmt_insert_id(stmt_insert_agent);
 				mysql_stmt_bind_param(stmt_insert_agent_count, bind_insert_agent_count);
 				mysql_stmt_execute(stmt_insert_agent_count);
-			} else
-				mysql_stmt_free_result(stmt_query_agent);
-			mysql_query(&connection, "COMMIT");
+			}
 			mysql_stmt_bind_param(stmt_incr_agent, bind_incr_agent);
 			mysql_stmt_execute(stmt_incr_agent);
 		}
