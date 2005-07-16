@@ -163,7 +163,7 @@ while ($refer = mysql_fetch_assoc($refers)) {
 	$lurl = htmlspecialchars(urldecode($refer["ref_url"]));
 	$group = $refer["ref_grouped"] ? " class='grouped'" : "";
 	$count = $refer["ref_count"];
-	echo "<tr><td $group>$i</td><td $group>$count</td><td $group><a href=\"$lurl\">$purl</a></td></tr>\n";
+	echo "<tr><td $group>$i</td><td $group>$count</td><td $group><a rel='nofollow' href=\"$lurl\">$purl</a></td></tr>\n";
 	$i++;
 }
 mysql_free_result($refers);
