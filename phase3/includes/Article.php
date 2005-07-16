@@ -937,7 +937,7 @@ class Article {
 				'page_latest=rev_id' ),
 			$fname );
 		if( $row ) {
-			if( $row->rev_timestamp >= $revision->getTimestamp() ) {
+			if( wfTimestamp(TS_MW, $row->rev_timestamp) >= $revision->getTimestamp() ) {
 				wfProfileOut( $fname );
 				return false;
 			}

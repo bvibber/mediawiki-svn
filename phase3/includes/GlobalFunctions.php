@@ -1055,7 +1055,7 @@ wfdebug("ts: $ts\n");
 		$uts=$ts;
 	} elseif (preg_match('/^(\d{1,2})-(...)-(\d\d(\d\d)?) (\d\d)\.(\d\d)\.(\d\d)/', $ts, $da)) {
 		# TS_ORACLE
-		$uts = strtotime(preg_replace('/(\d\d)\.(\d\d)\.(\d\d)\.(\d+)/', "$1:$2:$3",
+		$uts = strtotime(preg_replace('/(\d\d)\.(\d\d)\.(\d\d)(\.(\d+))?/', "$1:$2:$3",
 				str_replace("+00:00", "UTC", $ts)));
 	} else {
 		# Bogus value; fall back to the epoch...

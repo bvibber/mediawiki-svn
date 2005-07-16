@@ -688,7 +688,6 @@ class DatabaseOracle extends Database {
 
 			if ($blob) {
 				$blob->save($bdata);
-				$blob->close();
 			}
 		}
 		$this->ignoreErrors($oldIgnore);
