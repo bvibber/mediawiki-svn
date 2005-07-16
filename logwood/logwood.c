@@ -491,14 +491,13 @@ MYSQL_BIND	 bind_incr_agent[1];
 
 		/* MIME hrs */
 		if (s && *s == '[') {
-			char *next;
-			s++;
-			do {
-				if (!*s)
-					break;
-				if ((next = strstr(s, "\\r\\n")) != NULL) {
+			char *next = s;
+			next++;
+			do {	
+				s = next;
+				if ((next = strstr(next, "\\r\\n")) != NULL) {
 					*next = '\0';
-					next += 2;
+					next += 4;
 				}
 #define REFERSTR "Referer: "
 #define REFERLEN (sizeof(REFERSTR) - 1)
@@ -509,7 +508,7 @@ MYSQL_BIND	 bind_incr_agent[1];
 				} else if (!strncasecmp(s, AGENTSTR, AGENTLEN)) {
 					agent = s + AGENTLEN;
 				}
-			} while (next && *next != ']');
+			} while (next && *next && *next != ']');
 		}
 				
 		if ((status = strchr(status, '/')) == NULL)

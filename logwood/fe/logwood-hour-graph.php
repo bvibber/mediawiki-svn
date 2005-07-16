@@ -27,7 +27,7 @@ mysql_close($dbh);
 
 $g = new Graph_Bar(500,300);
 $g->load_data($data);
-$g->set_title("Visits by hour");
+$g->set_title("Visit rates over day for ".htmlspecialchars($site));
 $g->titlefont = "Vera.ttf";
 $g->titlesize = 10;
 $g->labelfont = "Vera.ttf";
