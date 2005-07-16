@@ -320,5 +320,8 @@ class SearchEngineDummy {
 	function setLimitOffset($l, $o) {}
 	function legalSearchChars() {}
 	function update() {}
+	function setnamespaces() {}
+	function searchtitle() {}
+	function searchtext() {}
 }
 

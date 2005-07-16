@@ -23,6 +23,22 @@ define( 'DEADLOCK_DELAY_MIN', 500000 );
 /** Maximum time to wait before retry */
 define( 'DEADLOCK_DELAY_MAX', 1500000 );
 
+class DBObject {
+	var $mData;
+
+	function DBObject($data) {
+		$this->mData = $data;
+	}
+
+	function isLOB() {
+		return false;
+	}
+
+	function data() {
+		return $this->mData;
+	}
+};
+
 /**
  * Database abstraction object
  * @package MediaWiki

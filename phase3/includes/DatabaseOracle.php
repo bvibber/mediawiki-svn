@@ -11,6 +11,15 @@
  */
 require_once( 'Database.php' );
 
+class OracleBlob extends DBObject {
+	function isLOB() {
+		return true;
+	}
+	function data() {
+		return $this->mData;
+	}
+};
+
 /**
  *
  * @package MediaWiki
@@ -622,15 +631,20 @@ class DatabaseOracle extends Database {
 		}
 
 		$sql = "INSERT INTO $table (" . implode( ',', $keys ) . ') VALUES (';
+		$return = '';
 		$first = true;
 		foreach ($a as $key => $value) {
 			if ($first)
 				$first = false;
 			else
 				$sql .= ", ";
-			$sql .= ":$key";
+			if (is_object($value) && $value->isLOB()) {
+				$sql .= "EMPTY_BLOB()";
+				$return = "RETURNING $key INTO :bobj";
+			} else
+				$sql .= ":$key";
 		}
-		$sql .= ")";
+		$sql .= ") $return";
 
 		if ($this->debug()) {
 			wfDebug("SQL: $sql\n");
@@ -651,9 +665,16 @@ class DatabaseOracle extends Database {
 			$a = array($a);
 
 		foreach ($a as $key => $row) {
+			$blob = false;
+			$bdata = false;
 			$s = '';
 			foreach ($row as $k => $value) {
-				oci_bind_by_name($stmt, ":$k", $a[$key][$k], -1);
+				if (is_object($value) && $value->isLOB()) {
+					$blob = oci_new_descriptor($this->mConn, OCI_D_LOB);
+					$bdata = $value->data();
+					oci_bind_by_name($stmt, ":bobj", &$blob, -1, OCI_B_BLOB);
+				} else
+					oci_bind_by_name($stmt, ":$k", $a[$key][$k], -1);
 				if ($this->debug())
 					$s .= " [$k] = {$row[$k]}";
 			}
@@ -663,6 +684,11 @@ class DatabaseOracle extends Database {
 				$this->reportQueryError($this->lastError(), $this->lastErrno(), $sql, $fname);
 				$this->ignoreErrors($oldIgnore);
 				return false;
+			}
+
+			if ($blob) {
+				$blob->save($bdata);
+				$blob->close();
 			}
 		}
 		$this->ignoreErrors($oldIgnore);
@@ -674,7 +700,7 @@ class DatabaseOracle extends Database {
 	}
 
 	function encodeBlob($b) {
-		return bin2hex($b);
+		return new OracleBlob($b);
 	}
 }
 
