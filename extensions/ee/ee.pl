@@ -105,9 +105,9 @@ if($type eq "Edit file") {
 	$fileurl=~m|\?title=(.*?)\&action=|i;
 	$pagetitle=$1;
 	$filename=uri_unescape($pagetitle);
-	# substitute illegal or special characters
-	$filename =~ s/:/__/g;  # : - illegal on Windows
-        $filename =~ s/\//__/g; # / - path character under Unix and others
+        # substitute illegal or special characters
+        $filename =~ s/:/__/g;  # : - illegal on Windows
+	$filename =~ s/\//__/g; # / - path character under Unix and others	
 	$filename=$filename.".wiki";
 	$edit_url=$script."?title=$pagetitle&action=submit";
 	$view_url=$script."?title=$pagetitle";	
@@ -291,10 +291,18 @@ sub makegui {
 	$hbox2->pack_start_defaults($savebutton);
 	$hbox2->pack_start_defaults($savecontbutton);
 	$hbox2->pack_start_defaults($previewbutton);
-	$hbox2->pack_start_defaults($cancelbutton);
+	$hbox2->pack_start_defaults($cancelbutton);		
 	$vbox->pack_start_defaults($hbox);
 	$vbox->pack_start_defaults($hbox2);
-	
+	if($type ne "Edit file") {
+		$hbox3 = Gtk2::HBox->new;
+		$minoreditcheck = Gtk2::CheckButton->new_with_label(_("minoredit"));
+		$watchcheck = Gtk2::CheckButton->new_with_label(_("watchpage"));
+		$hbox3->pack_start_defaults($minoreditcheck);
+		$hbox3->pack_start_defaults($watchcheck);
+		$vbox->pack_start_defaults($hbox3);
+	}
+
 	# Set up window
 	$window = Gtk2::Window->new;
 	$window->set_title (_("entersummary"));
@@ -303,7 +311,10 @@ sub makegui {
 	$savecontbutton->signal_connect ( clicked => \&savecont);
 	$previewbutton->signal_connect ( clicked => \&preview);	
 	$cancelbutton->signal_connect (clicked => \&cancel);
-	
+	if($type ne "Edit file") {
+		$minoreditcheck->get_active();
+		$watchcheck->get_active();
+	}
 	# Add vbox to window
 	$window->add($vbox);
 	$window->show_all;
@@ -313,7 +324,7 @@ sub makegui {
 
 # Just let save function know that it shouldn't quit
 sub savecont {
-	
+
 	save("continue");
 	
 }
@@ -328,6 +339,10 @@ sub save {
 
 	my $cont=shift;
 	my $summary=$entry->get_text();	
+	if($type ne "Edit file") {
+		my $minorvar=$minoreditcheck->get_active();
+		my $watchvar=$watchcheck->get_active();	
+	}
 	# Spam the summary if room is available :-)
 	if(length($summary)<190) {
 		my $tosummary=_("usingexternal");
@@ -365,23 +380,27 @@ sub save {
 		}
 		close(TEXT);
 		if($is_utf8 && $transcode) {
-			Encode::from_to($text,'iso-8859-1','utf8');		
+			Encode::from_to( $text, 'iso-8859-1','utf8');
 		}
-		if($preview) {
-			$response=$browser->post($edit_url,@ns_headers,Content=>
-			[
+		@content = (		
+			Content=>[
 			wpTextbox1=>$text,
 			wpSummary=>$summary,
 			wpEdittime=>$time,
-			wpEditToken=>$token,
-			wpPreview=>"true",
-			]);		
+			wpEditToken=>$token]
+			);		
+		$watchvar && push @{$content[1]}, (wpWatchthis=>"1");
+		$minorvar && push @{$content[1]}, (wpMinoredit=>"1");
+		$preview && push @{$content[1]}, (wpPreview=>"true");
+		if($preview) {	
+			$response=$browser->post($edit_url,@ns_headers,
+			@content);
 			open(PREVIEW,">$unixtempdir/preview.html");
 			$preview=$response->content;
 			# Replace relative URLs with absolute ones	
 			$preview=~s|<head>|<head>\n    <base href="$server$path">|gi;
 			print PREVIEW $preview;
-			close(PREVIEW);
+			close(PREVIEW);	
 			if($previewclient) {
 				$previewurl="file://$unixtempdir/preview.html";
 				$previewclient=~s/\$url/$previewurl/i;
@@ -389,13 +408,7 @@ sub save {
 				$previewclient=$cfg->val("Settings","Browser");	
 			}
 		} else {		
-			$response=$browser->post($edit_url,@ns_headers,Content=>
-			[
-			wpTextbox1=>$text,
-			wpSummary=>$summary,
-			wpEdittime=>$time,
-			wpEditToken=>$token,
-			]);		
+			$response=$browser->post($edit_url,@ns_headers,@content);		
 		}
 		if($browseaftersave eq "true" && $previewclient && !$preview) {
 			$previewclient=~s/\$url/$view_url/i;
@@ -566,9 +579,19 @@ entersummary=>
 entersummary_de=>
 "Zusammenfassung eingeben",
 
+minoredit=>
+"Check as minor edit",
+minoredit_de=>
+"Kleine Änderung",
+
+watchpage=>
+"Watch this page",
+watchpage_de=>
+"Seite beobachten",
+
 usingexternal=>
 "using [[Help:External editors|an external editor]]",
-usingexternal_de,
+usingexternal_de=>
 "mit [[Hilfe:Externe Editoren|externem Editor]]",
 
 );
