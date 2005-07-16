@@ -7,6 +7,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 #include <glib.h>
 #include <mysql.h>
@@ -39,6 +40,7 @@ static int one = 1;
 static unsigned long	 lines = 0;
 
 static char *dbuser, *dbpass, *dbhost, *dbname;
+static const char *cfgdir = "/etc/logwood";
 
 #define	STMT_INSERT_SITE 	"INSERT INTO sites (si_name) VALUES (LOWER(?))"
 #define	STMT_INSERT_URL 	"INSERT INTO url_id (ur_site, ur_path, ur_grouped) VALUES (?, ?, ?)"
@@ -67,9 +69,21 @@ main(argc, argv)
 int 	 argc;
 char 	*argv[];
 {
-FILE	*f;
-char	 lang[32];
-time_t		 start = time(NULL);
+FILE		*f;
+char		 lang[32];
+int		 c;
+
+	while ((c = getopt(argc, argv, "d:")) != -1) {
+		switch (c) {
+		case 'd':
+			cfgdir = optarg;
+			break;
+		default:
+			exit(1);
+		}
+	}
+	argc -= optind;
+	argv += optind;
 
 	all_langs = g_hash_table_new(g_str_hash, g_str_equal);
 	all_projects = g_hash_table_new(g_str_hash, g_str_equal);
@@ -96,25 +110,25 @@ time_t		 start = time(NULL);
 	refer_groups = g_list_alloc();
 	agent_groups = g_list_alloc();
 
-	refer_groups = read_group("/etc/logwood/refer_groups");
-	agent_groups = read_group("/etc/logwood/agent_groups");
+	refer_groups = read_group("refer_groups");
+	agent_groups = read_group("agent_groups");
 
-	if ((dbuser = readfile("/etc/logwood/dbuser")) == NULL) {
+	if ((dbuser = readfile("dbuser")) == NULL) {
 		fprintf(stderr, "Database name not specified\n");
 		exit(1);
 	}
 
-	if ((dbhost = readfile("/etc/logwood/dbhost")) == NULL) {
+	if ((dbhost = readfile("dbhost")) == NULL) {
 		fprintf(stderr, "Database host not specified\n");
 		exit(1);
 	}
 
-	if ((dbpass = readfile("/etc/logwood/dbpass")) == NULL) {
+	if ((dbpass = readfile("dbpass")) == NULL) {
 		fprintf(stderr, "Database password not specified");
 		exit(1);
 	}
 
-	if ((dbname = readfile("/etc/logwood/dbname")) == NULL) {
+	if ((dbname = readfile("dbname")) == NULL) {
 		fprintf(stderr, "Database name not specified");
 		exit(1);
 	}
@@ -123,8 +137,6 @@ time_t		 start = time(NULL);
 		process_file(*argv);
 	}
 
-	fprintf(stderr, "Processed %lu lines from %ld seconds (%.02f lines/sec)\n",
-		lines, (long)(time(NULL) - start), (double)lines/(time(NULL) - start));
 	return 0;
 }
 
@@ -808,9 +820,12 @@ read_group(filename)
 const char	*filename;
 {
 GList	*list = NULL;
+char	*fname;
 FILE	*f;
 
-	if ((f = fopen(filename, "r")) != NULL) {
+	fname = g_strdup_printf("%s/%s", cfgdir, filename);
+
+	if ((f = fopen(fname, "r")) != NULL) {
 		char line[2048];
 		while (fgets(line, sizeof line, f)) {
 		char		*s;
@@ -836,6 +851,7 @@ FILE	*f;
 		fclose(f);
 	}
 
+	g_free(fname);
 	return list;
 }
 
@@ -861,18 +877,25 @@ readfile(name)
 const char	*name;
 {
 FILE	*f;
+char	*fname;
 char	 str[256];
 
-	if ((f = fopen(name, "r")) == NULL)
+	fname = g_strdup_printf("%s/%s", cfgdir, name);
+
+	if ((f = fopen(fname, "r")) == NULL) {
+		g_free(fname);
 		return NULL;
+	}
 
 	if (!fgets(str, sizeof str, f)) {
+		g_free(fname);
 		fclose(f);
 		return NULL;
 	}
 
 	str[strlen(str) - 1] = '\0';
 	fclose(f);
+	g_free(fname);
 	return g_strdup(str);
 }
 
