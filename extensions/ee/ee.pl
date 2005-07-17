@@ -339,7 +339,7 @@ sub save {
 
 	my $cont=shift;
 	my $summary=$entry->get_text();	
-	my $minorvar, $watchvar;
+	my ($minorvar, $watchvar);
 	if($type ne "Edit file") {
 		$minorvar=$minoreditcheck->get_active();
 		$watchvar=$watchcheck->get_active();	
