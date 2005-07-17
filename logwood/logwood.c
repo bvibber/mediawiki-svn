@@ -106,6 +106,7 @@ int		 c;
 	fclose(f);
 
 	g_hash_table_insert(all_projects, "wikipedia", &one);
+	g_hash_table_insert(all_projects, "wikimedia", &one);
 	g_hash_table_insert(all_projects, "wikibooks", &one);
 	g_hash_table_insert(all_projects, "wikinews", &one);
 	g_hash_table_insert(all_projects, "wikionary", &one);
@@ -715,6 +716,7 @@ MYSQL_BIND	 bind_update_wday[2];
 		 * Insert the hour.
 		 */
 		bind_query_hour_hr_hour = tm->tm_hour;
+		mysql_stmt_bind_param(stmt_insert_hour, bind_insert_hour);
 		mysql_stmt_execute(stmt_insert_hour);
 
 		if (!mysql_stmt_affected_rows(stmt_insert_hour)) {
@@ -725,6 +727,7 @@ MYSQL_BIND	 bind_update_wday[2];
 			mysql_stmt_free_result(stmt_query_hour);
 		} else
 			bind_query_hour_hr_id = mysql_stmt_insert_id(stmt_insert_hour);
+		mysql_stmt_bind_param(stmt_incr_hour, bind_incr_hour);
 		mysql_stmt_execute(stmt_incr_hour);
 
 		/*

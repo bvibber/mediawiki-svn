@@ -24,9 +24,16 @@ h2 {
 }
 
 body {
-	background-color: white;
+	font-family: serif;
+	background: url(/stat/Headbg.jpg) #FAFAFA no-repeat top left;
+	margin: 0px;
+	padding: 5px;
 	color: black;
 }
+#header {
+	width: 100%; height: 90px;
+}
+
 table {
 	margin-top: 2em;
 	margin-right: 2em;
@@ -49,15 +56,26 @@ td.grouped {
 th {
 	background-color: #eeeeff;
 }
-div {
+div.image {
 	text-align: center;
 }
 #motif {
 	color: #666666;
 }
+img {
+	margin: 0.5em;
+}
+div.selectsite {
+	float: right;
+}
 </style>
 </head>
 <body>
+	<div id="header">
+		<h1><img id="wikilogo" src="/stat/Wikilogo.png" alt="Wikipedia" width="230" height="31" /></h1>	
+	</div> 
+
+<div class='selectsite'>
 <form action='' method='get'>
 
 <?php
@@ -66,7 +84,7 @@ if (isset($_REQUEST['site']))
 	$site = mysql_real_escape_string($_REQUEST['site'], $dbh);
 ?>
 
-<p>Select a site:
+Site: 
 <select name="site">
 <?php
 $q = mysql_query("SELECT si_name FROM sites ORDER BY si_name ASC", $dbh);
@@ -80,8 +98,8 @@ mysql_free_result($q);
 </select>
 
 <input type='submit' value='Go' />
-</p>
-
+</form>
+</div>
 <?php
 if ($site !== false) {
 
@@ -111,7 +129,7 @@ mysql_free_result($top_urls);
 
 <h2>Most active hours</h2>
 
-<div>
+<div class='image'>
 <img src="/logwood-hour-graph.php?site=<?php echo htmlspecialchars(urlencode($site))?>" />
 </div>
 
@@ -147,6 +165,27 @@ echo "</tr>\n";
 
 ?>
 </table>
+
+<h2>Most active days</h2>
+
+<div class='image'>
+<img src="/logwood-wday-graph.php?site=<?php echo htmlspecialchars(urlencode($site))?>" />
+</div>
+<table>
+<tr><th></th><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>
+<tr><th>Hits</th>
+<?php
+$wdays = mysql_query("
+	SELECT wd_day, SUM(wd_hits) AS total FROM sites,wdays 
+	WHERE si_name='$site' AND wd_site=si_id
+	GROUP BY wd_day ORDER BY wd_day ASC
+	");
+while ($wday = mysql_fetch_assoc($wdays)) {
+	echo "<td>{$wday['total']}</td>\n";
+}
+mysql_free_result($wdays);
+?>
+</tr></table>
 
 <h2>Most common referers</h2>
 

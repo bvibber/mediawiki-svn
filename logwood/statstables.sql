@@ -90,7 +90,7 @@ CREATE TABLE hours (
 	hr_hour		INTEGER(2) NOT NULL,
 	hr_count	INTEGER NOT NULL
 );
-CREATE UNIQUE INDEX hr_hour_idx ON hours(hr_hour);
+CREATE UNIQUE INDEX hr_hour_idx ON hours(hr_site, hr_hour);
 CREATE INDEX hours_site_count ON hours(hr_site, hr_count);
 CREATE INDEX hr_hour_all_idx ON hours(hr_hour,hr_count);
 
@@ -125,4 +125,3 @@ CREATE TABLE wdays (
 	wd_hits		INTEGER NOT NULL,
 	PRIMARY KEY(wd_site, wd_day)
 );
-
