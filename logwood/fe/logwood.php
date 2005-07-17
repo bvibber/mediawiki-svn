@@ -41,11 +41,13 @@ mysql_free_result($q);
 <input type='submit' value='Go' />
 </form>
 </div>
-	<h1>Statistics for <strong><?php echo htmlspecialchars($site)?></strong></h1>	
+	<h1>Statistics<?php if ($site != '') { ?> 
+		for <strong><?php echo htmlspecialchars($site)?></strong><?php } ?>
+	</h1>
 </div> 
 
 <?php
-if ($site !== false) {
+if ($site !== false && $site != '') {
 
 $top_urls = mysql_query("
 	SELECT si_name, ur_path,tu_count FROM sites, topurls, url_id 

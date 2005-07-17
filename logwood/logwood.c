@@ -855,8 +855,9 @@ int	 ok;
 		g_free(host);
 		return 0;
 	}
-	*s = '\0';
-	ok = g_hash_table_lookup(all_langs, lang)
+	*s++ = '\0';
+	ok = !strcmp(s, "org")
+	     && g_hash_table_lookup(all_langs, lang)
 	     && g_hash_table_lookup(all_projects, proj);
 	g_free(host);
 	return ok;
