@@ -339,9 +339,10 @@ sub save {
 
 	my $cont=shift;
 	my $summary=$entry->get_text();	
+	my $minorvar, $watchvar;
 	if($type ne "Edit file") {
-		my $minorvar=$minoreditcheck->get_active();
-		my $watchvar=$watchcheck->get_active();	
+		$minorvar=$minoreditcheck->get_active();
+		$watchvar=$watchcheck->get_active();	
 	}
 	# Spam the summary if room is available :-)
 	if(length($summary)<190) {
