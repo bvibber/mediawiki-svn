@@ -1,33 +1,27 @@
 <?
 require_once("/etc/logwood-fe.conf");
+require_once("/etc/logwood-fe/lw-support.php");
 require_once("$graphloc/class_graphs.php");
+
 if (!isset($_REQUEST['site'])) {
 	echo "no site\n";
 	exit;
 }
-$dbh = mysql_connect($server, $username, $password);
-mysql_select_db($database, $dbh);
-$site = mysql_real_escape_string($_REQUEST['site'], $dbh);
-$hours = mysql_query("
-        SELECT hr_hour, SUM(hr_count) AS total FROM sites,hours
-        WHERE si_name='$site' AND hr_site=si_id
-        GROUP BY hr_hour ORDER BY hr_hour ASC
-        ");
+$site = $_REQUEST['site'];
 
 $data = array();
 
-for ($i = 0; $i < 24; ++$i)
-	$data[$i] = array("label" => $i, "value" => 0);
+$db = new lw_db($site);
+$hours = $db->edits_by_hour();
 
-while ($hour = mysql_fetch_assoc($hours)) {
-	$data[$hour["hr_hour"]] = array("label" => $hour["hr_hour"], "value" => $hour["total"]);
+foreach ($hours as $hour => $count) {
+	$data[$hour] = array("label" => (int)$hour, "value" => (int)$count);
 }
-mysql_free_result($hours);
-mysql_close($dbh);
+$db->close();
 
 $g = new Graph_Bar(500,300);
 $g->load_data($data);
-$g->set_title("Visit rates over day for ".htmlspecialchars($site));
+$g->set_title("Visit rates by hour for " . htmlspecialchars($site));
 $g->titlefont = "Vera.ttf";
 $g->titlesize = 10;
 $g->labelfont = "Vera.ttf";
@@ -37,6 +31,7 @@ $g->smallsize = 7;
 $g->xtitle = "Hour";
 $g->ytitle = "Visits";
 $g->bordersize = 0;
+$g->bgcolor = new Color(0xFA, 0xFA, 0xFA);
 $g->draw();
 $g->output();
 $g->destroy();

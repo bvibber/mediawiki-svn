@@ -16,6 +16,8 @@
 static GHashTable *all_langs;
 static GHashTable *all_projects;
 
+static GHashTable *site_ids;
+
 struct group {
 	char		*gr_pattern;
 	char		*gr_name;
@@ -92,6 +94,7 @@ int		 c;
 
 	all_langs = g_hash_table_new(g_str_hash, g_str_equal);
 	all_projects = g_hash_table_new(g_str_hash, g_str_equal);
+	site_ids = g_hash_table_new(g_str_hash, g_str_equal);
 
 	if ((f = fopen("/home/knshare/langlist", "r")) == NULL) {
 		perror("/home/knshare/langlist");
@@ -246,7 +249,6 @@ MYSQL_BIND	 bind_query_wday_result[1];
 my_ulonglong	 bind_query_wday_day;
 my_ulonglong	 bind_query_wday_count;
 my_bool		 bind_query_wday_count_is_null;
-unsigned long	 bind_query_wday_count_length;
 
 MYSQL_STMT	*stmt_insert_wday;
 MYSQL_BIND	 bind_insert_wday[2];
@@ -254,41 +256,39 @@ MYSQL_BIND	 bind_insert_wday[2];
 MYSQL_STMT	*stmt_update_wday;
 MYSQL_BIND	 bind_update_wday[2];
 
-	bind_query_wday[0].buffer_type = MYSQL_TYPE_LONGLONG;
-	bind_query_wday[0].buffer = &bind_query_site_si_id;
-	bind_query_wday[0].is_null = 0;
-	bind_query_wday[0].length = 0;
+#define BIND_LONG(bind, l)					\
+	do {							\
+		bzero(&bind, sizeof(bind));			\
+		bind.buffer_type = MYSQL_TYPE_LONGLONG;		\
+		bind.buffer = &l;				\
+	} while (0)
+#define BIND_LONG_R(bind, l, in)				\
+	do {							\
+		BIND_LONG(bind, l);				\
+		bind.is_null = &in;				\
+	} while (0)
 
-	bind_query_wday[1].buffer_type = MYSQL_TYPE_LONGLONG;
-	bind_query_wday[1].buffer = &bind_query_wday_day;
-	bind_query_wday[1].length = 0;
-	bind_query_wday[1].is_null = 0;
+	BIND_LONG(bind_query_wday[0], bind_query_site_si_id);
+	BIND_LONG(bind_query_wday[1], bind_query_wday_day);
 
-	bind_query_wday_result[0].buffer_type = MYSQL_TYPE_LONGLONG;
-	bind_query_wday_result[0].buffer = &bind_query_wday_count;
-	bind_query_wday_result[0].is_null = &bind_query_wday_count_is_null;
-	bind_query_wday_result[0].length = &bind_query_wday_count_length;
+	BIND_LONG_R(bind_query_wday_result[0], bind_query_wday_count, 
+			bind_query_wday_count_is_null);
 
-	bind_insert_wday[0].buffer_type = MYSQL_TYPE_LONGLONG;
-	bind_insert_wday[0].buffer = &bind_query_site_si_id;
-	bind_insert_wday[0].is_null = 0;
-	bind_insert_wday[0].length = 0;
+	BIND_LONG_R(bind_query_wday_result[0], bind_query_wday_count,
+			bind_query_wday_count_is_null);
 
-	bind_insert_wday[1].buffer_type = MYSQL_TYPE_LONGLONG;
-	bind_insert_wday[1].buffer = &bind_query_wday_day;
-	bind_insert_wday[1].length = 0;
-	bind_insert_wday[1].is_null = 0;
+	BIND_LONG(bind_insert_wday[0], bind_query_site_si_id);
+	BIND_LONG(bind_insert_wday[1], bind_query_wday_day);
 
+
+	bzero(bind_update_wday, sizeof(bind_update_wday));
 	bind_update_wday[0].buffer_type = MYSQL_TYPE_LONGLONG;
 	bind_update_wday[0].buffer = &bind_query_site_si_id;
-	bind_update_wday[0].is_null = 0;
-	bind_update_wday[0].length = 0;
 
 	bind_update_wday[1].buffer_type = MYSQL_TYPE_LONGLONG;
 	bind_update_wday[1].buffer = &bind_query_wday_day;
-	bind_update_wday[1].length = 0;
-	bind_update_wday[1].is_null = 0;
 
+	bzero(bind_incr_ref, sizeof(bind_incr_ref));
 	bind_incr_ref[0].buffer_type = MYSQL_TYPE_LONGLONG;
 	bind_incr_ref[0].buffer = &bind_query_ref_id;
 	bind_incr_ref[0].is_null = 0;

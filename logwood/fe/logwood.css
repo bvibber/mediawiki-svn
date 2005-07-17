@@ -1,0 +1,69 @@
+/*
+ * $Id$
+ */
+h1, h2, h3 {
+        font-family: sans-serif;
+        font-variant: small-caps;
+}
+
+h1 {
+        margin:0px;
+	font-size: 25px;
+	margin-top: 35px;
+}
+
+h2 {
+	font-size: 150%;
+	border-bottom: 1px #535353 dashed; 
+	font-weight: bold;
+	margin-top: 25px;
+	margin-bottom: 0px;
+	line-height: 200%;
+}
+
+body {
+	font-family: serif;
+	background: url(/stat/Headbg.jpg) #FAFAFA no-repeat top left;
+	margin: 0px;
+	padding: 5px;
+	color: black;
+}
+#header {
+	width: 100%; height: 60px;
+	color: #FAFAFA;
+}
+
+table {
+	margin-top: 2em;
+	margin-right: 2em;
+	border-collapse: collapse;
+	border: solid 1px #444444;
+	margin-left: auto;
+	margin-right: auto;
+}
+th, td {
+	border: solid 1px #444444;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+td {
+	background-color: #f6f6f6;
+}
+td.grouped {
+	background-color: #f6e0e0;
+}
+th {
+	background-color: #eeeeff;
+}
+div.image {
+	text-align: center;
+}
+#motif {
+	color: #666666;
+}
+img {
+	margin: 0.5em;
+}
+div.selectsite {
+	float: right;
+}
