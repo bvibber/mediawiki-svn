@@ -47,26 +47,27 @@ $qsites->bind_result($si_id, $si_name);
 $qsites->execute();
 $qsites->store_result();
 while ($qsites->fetch()) {
-	$site = $row["si_id"];
-
-	$insert_topurls->bind_param("i", $site);
+	$insert_topurls->bind_param("i", $si_id);
 	$insert_topurls->execute();
 
-	$insert_topagents->bind_param("i", $site);
+	$insert_topagents->bind_param("i", $si_id);
 	$insert_topagents->execute();
 
-	$insert_toprefs->bind_param("i", $site);
+	$insert_toprefs->bind_param("i", $si_id);
 	$insert_toprefs->execute();
 
 	$date = date('Y-m');
 	$fdate = date('Y-m-d H:i:s');
-	fwrite($fh, "# This is a list of all URLs for ". $row["si_name"] . "\n");	
+	@mkdir("$lwbase/archive");
+	@mkdir("$lwbase/archive/$si_name");
+	@mkdir("$lwbase/archive/$si_name/$date");
+	$dir = "$lwbase/archive/$si_name/$date";
+	$fh = fopen("$dir/$date.$si_name.all_urls.txt", "w");
+	fwrite($fh, "# This is a list of all URLs for $si_name\n");	
 	fwrite($fh, "# It was last updated on $fdate.\n");
-
-	$fh = fopen("$lwbase/$date.all_urls.txt");
 	
 	$a_name = $a_path = $a_count = false;
-	$qallurls->bind_param("i", $site);
+	$qallurls->bind_param("i", $si_id);
 	$qallurls->bind_result($a_name, $a_path, $a_count);
 	$qallurls->execute();
 	while ($qallurls->fetch())

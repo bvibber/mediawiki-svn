@@ -58,6 +58,15 @@ $top_urls = mysql_query("
 ?>
 
 <h2>Most popular URLs</h2>
+<div class='titlesub'>
+<?php 
+$fdate = date('Y-m');
+$fname = "/archive/$site/$fdate/$fdate.$site.all_urls.txt";
+$st = @stat($lwbase.$fname);
+?>
+<a href="<?php echo "$htmlbase$fname"?>">View all URLs</a> (<?php echo $st["size"]?> bytes)
+</div>
+
 <table><tr><th>#</th><th>Views</th><th>URL</th></tr>
 <?php
 $i = 1;
