@@ -628,6 +628,9 @@ MYSQL_BIND	 bind_url_touched[1];
 		if (!host_ok(host) || !path_ok(path))
 			continue;
 
+		if (refer && strncasecmp(refer, "http://", 7))
+			refer = NULL;
+
 		tmt = atoi(reqtime);
 		tm = gmtime(&tmt);
 

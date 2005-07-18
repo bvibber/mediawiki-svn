@@ -71,7 +71,11 @@ while ($qsites->fetch()) {
 	$qallurls->bind_result($a_name, $a_path, $a_count);
 	$qallurls->execute();
 	while ($qallurls->fetch())
-		fwrite($fh, "$a_count\t$a_name\t$a_path\n");
+		fwrite($fh, "$a_count\t$a_name\t" . 
+			str_replace("\n", "%0A", 	
+			str_replace("\r", "%0D",
+			str_replace("%", "%25",
+				urldecode($a_path)))) . "\n");
 	fclose($fh);
 	$qallurls->free_result();
 }
