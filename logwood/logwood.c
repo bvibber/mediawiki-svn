@@ -56,6 +56,8 @@ static const char *cfgdir = "/etc/logwood";
 
 #define STMT_QUERY_URL		"SELECT ur_id FROM url_id WHERE ur_site = ? AND ur_path = ?"
 #define	STMT_INSERT_URL 	"INSERT IGNORE INTO url_id (ur_site, ur_path, ur_grouped) VALUES (?, ?, ?)"
+#define STMT_URL_TOUCHED_DEL	"DELETE FROM url_touched WHERE ur_url_id = ?"
+#define STMT_URL_TOUCHED_INS	"INSERT INTO url_touched (ur_url_id) VALUES (?)"
 
 #define STMT_QUERY_REF		"SELECT ref_id FROM ref_ids WHERE ref_site = ? AND ref_url = ?"
 #define STMT_INSERT_REF		"INSERT IGNORE INTO ref_ids (ref_site, ref_url, ref_grouped) VALUES (?, ?, ?)"
@@ -256,6 +258,10 @@ MYSQL_BIND	 bind_insert_wday[2];
 MYSQL_STMT	*stmt_update_wday;
 MYSQL_BIND	 bind_update_wday[2];
 
+MYSQL_STMT	*stmt_url_touched_del;
+MYSQL_STMT	*stmt_url_touched_ins;
+MYSQL_BIND	 bind_url_touched[1];
+
 #define BIND_LONG(bind, l)					\
 	do {							\
 		bzero(&bind, sizeof(bind));			\
@@ -280,6 +286,7 @@ MYSQL_BIND	 bind_update_wday[2];
 	BIND_LONG(bind_insert_wday[0], bind_query_site_si_id);
 	BIND_LONG(bind_insert_wday[1], bind_query_wday_day);
 
+	BIND_LONG(bind_url_touched[0], bind_query_url_ur_id);
 
 	bzero(bind_update_wday, sizeof(bind_update_wday));
 	bind_update_wday[0].buffer_type = MYSQL_TYPE_LONGLONG;
@@ -491,6 +498,14 @@ MYSQL_BIND	 bind_update_wday[2];
 	stmt_update_wday = mysql_stmt_init(&connection);
 	mysql_stmt_prepare(stmt_update_wday, STMT_UPDATE_WDAY, strlen(STMT_UPDATE_WDAY));
 	mysql_stmt_bind_param(stmt_update_wday, bind_update_wday);
+
+	stmt_url_touched_ins = mysql_stmt_init(&connection);
+	mysql_stmt_prepare(stmt_url_touched_ins, STMT_URL_TOUCHED_INS, strlen(STMT_URL_TOUCHED_INS));
+	mysql_stmt_bind_param(stmt_url_touched_ins, bind_url_touched);
+
+	stmt_url_touched_del = mysql_stmt_init(&connection);
+	mysql_stmt_prepare(stmt_url_touched_del, STMT_URL_TOUCHED_DEL, strlen(STMT_URL_TOUCHED_DEL));
+	mysql_stmt_bind_param(stmt_url_touched_del, bind_url_touched);
 
 	if ((in = fopen(name, "r")) == NULL) {
 		perror(name);
@@ -711,6 +726,12 @@ MYSQL_BIND	 bind_update_wday[2];
 		bind_incr_count[0].length = 0;
 		mysql_stmt_bind_param(stmt_incr_count, bind_incr_count);
 		mysql_stmt_execute(stmt_incr_count);
+
+		/*
+		 * Update last touched.
+		 */
+		mysql_stmt_execute(stmt_url_touched_del);
+		mysql_stmt_execute(stmt_url_touched_ins);
 
 		/*
 		 * Insert the hour.
