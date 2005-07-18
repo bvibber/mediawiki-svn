@@ -114,7 +114,7 @@ int		 c;
 	g_hash_table_insert(all_projects, "wikimedia", &one);
 	g_hash_table_insert(all_projects, "wikibooks", &one);
 	g_hash_table_insert(all_projects, "wikinews", &one);
-	g_hash_table_insert(all_projects, "wikionary", &one);
+	g_hash_table_insert(all_projects, "wiktionary", &one);
 	g_hash_table_insert(all_projects, "wikisource", &one);
 	g_hash_table_insert(all_projects, "wikiquote", &one);
 
