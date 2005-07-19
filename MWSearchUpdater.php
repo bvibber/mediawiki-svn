@@ -7,6 +7,7 @@ require_once( 'XML/RPC.php' );
 
 $mwSearchUpdateHost = 'localhost';
 $mwSearchUpdatePort = 8124;
+$mwSearchUpdateDebug = false;
 
 class MWSearchUpdater {
 	/**
@@ -98,7 +99,7 @@ class MWSearchUpdater {
 	 * @static
 	 */
 	function sendRPC( $method, $params=array() ) {
-		global $mwSearchUpdateHost, $mwSearchUpdatePort;
+		global $mwSearchUpdateHost, $mwSearchUpdatePort, $mwSearchUpdateDebug;
 		$client = new XML_RPC_Client( '/SearchUpdater', $mwSearchUpdateHost, $mwSearchUpdatePort );
 		
 		$rpcParams = array();
@@ -118,8 +119,17 @@ class MWSearchUpdater {
 		
 		$message = new XML_RPC_Message( $method, $rpcParams );
 		wfSuppressWarnings();
+		$start = wfTime();
 		$result = $client->send( $message );
+		$delta = wfTime() - $start;
 		wfRestoreWarnings();
+		
+		$debug = sprintf( "MWSearchUpdater::sendRPC for %s took %0.2fms\n",
+			$method, $delta * 1000.0 );
+		wfDebug( $debug );
+		if( $mwSearchUpdateDebug ) {
+			echo $debug;
+		}
 		
 		if( !is_object( $result ) ) {
 			return new WikiError( "Unknown XML-RPC error" );
