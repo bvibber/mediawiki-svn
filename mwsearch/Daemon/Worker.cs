@@ -183,6 +183,7 @@ namespace MediaWiki.Search.Daemon {
 		private void SendHeaders(int code, string message) {
 			SendOutputLine("HTTP/1.1 " + code + " " + message);
 			SendOutputLine("Content-Type: text/plain");
+			SendOutputLine("Connection: Close");
 			SendOutputLine("");
 			headersSent = true;
 		}
