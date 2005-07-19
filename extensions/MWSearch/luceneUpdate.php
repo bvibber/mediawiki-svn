@@ -18,21 +18,35 @@ case 'stop':
 	break;
 case 'restart':
 case 'flushall':
+case 'flush':
 	$ret = MWSearchUpdater::flushAll();
 	break;
 case 'start':
 	$ret = MWSearchUpdater::start();
 	break;
-case 'flush':
-	global $wgDBname;
-	$ret = MWSearchUpdater::flush( $wgDBname );
-	break;
+//case 'flush':
+//	global $wgDBname;
+//	$ret = MWSearchUpdater::flush( $wgDBname );
+//	break;
 case 'status':
 	// no-op
 	$ret = true;
 	break;
 case 'quit':
 	$ret = MWSearchUpdater::quit();
+	break;
+case 'update':
+	$title = Title::newFromText( $args[1] );
+	if( is_null( $title ) ) {
+		die( "Invalid title\n" );
+	}
+	$rev = Revision::newFromTitle( $title );
+	if( $rev ) {
+		$text = $rev->getText();
+		$ret = MWSearchUpdater::updatePage( $wgDBname, $title, $text );
+	} else {
+		$ret = MWSearchUpdater::deletePage( $wgDBname, $title );
+	}
 	break;
 case 'rebuild':
 	$builder = new LuceneBuilder();
