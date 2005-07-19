@@ -31,17 +31,26 @@ namespace MediaWiki.Search.UpdateDaemon {
 		public string Text;
 	}
 	
-	public interface UpdateRecord {
-		string Database {
-			get;
+	public abstract class UpdateRecord {
+		protected string _database;
+		protected Article _article;
+		
+		public string Database {
+			get {
+				return _database;
+			}
 		}
-		void Apply(SearchState state);
+		
+		public string Key {
+			get {
+				return _article.Key;
+			}
+		}
+		
+		public abstract void Apply(SearchState state);
 	}
 	
 	public class PageUpdate : UpdateRecord {
-		string _database;
-		Article _article;
-		
 		public PageUpdate(string databaseName, Title title, string text) {
 			_database = databaseName;
 			_article = new Article(databaseName,
@@ -49,9 +58,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 				text, "bogus timestamp");
 		}
 		
-		public string Database { get { return _database; } }
-		
-		public void Apply(SearchState state) {
+		public override void Apply(SearchState state) {
 			state.ReplaceArticle(_article);
 		}
 		
@@ -61,17 +68,12 @@ namespace MediaWiki.Search.UpdateDaemon {
 	}
 	
 	public class PageDeletion : UpdateRecord {
-		string _database;
-		Article _article;
-		
 		public PageDeletion(string databaseName, Title title) {
 			_database = databaseName;
 			_article = new Article(title.Namespace, title.Text);
 		}
 		
-		public string Database { get { return _database; } }
-		
-		public void Apply(SearchState state) {
+		public override void Apply(SearchState state) {
 			state.DeleteArticle(_article);
 		}
 		

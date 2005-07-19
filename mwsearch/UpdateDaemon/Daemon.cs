@@ -48,7 +48,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 				"SearchUpdater",
 				WellKnownObjectMode.Singleton);
 			
-			UpdateThread.Run();
+			UpdateThread.Run(config);
 		}
 		
 		[XmlRpcMethod("searchupdater.updatePage")]
@@ -80,15 +80,9 @@ namespace MediaWiki.Search.UpdateDaemon {
 			return true;
 		}
 		
-		[XmlRpcMethod("searchupdater.flush")]
-		public bool Flush(string databaseName) {
-			UpdateThread.Flush(databaseName);
-			return true;
-		}
-		
 		[XmlRpcMethod("searchupdater.flushAll")]
 		public bool FlushAll() {
-			UpdateThread.FlushAll();
+			UpdateThread.Flush();
 			return true;
 		}
 		

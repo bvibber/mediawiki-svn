@@ -98,6 +98,17 @@ namespace MediaWiki.Search {
 			return s != null && s.Equals("true");
 		}
 		
+		public int GetInt(string section, string name, int defaultValue) {
+			string s = GetString(section, name);
+			if (s == null)
+				return defaultValue;
+			try {
+				return int.Parse(s);
+			} catch (Exception e) {
+				return defaultValue;
+			}
+		}
+		
 		public bool IsLatin1(string dbname) {
 			foreach (string name in GetArray("Database", "latin1")) {
 				if (dbname.Equals(name)) {

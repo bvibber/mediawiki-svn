@@ -302,7 +302,7 @@ namespace MediaWiki.Search {
 				log.Debug("Nothing to delete for " + key);
 			for (int i = 0; i < hits.Length(); i++) {
 				int id = hits.Id(i);
-				log.Debug("Trying to delete article number " + id + "for " + key);
+				log.Debug("Trying to delete article number " + id + " for " + key);
 				try {
 					reader.Delete(id);
 				} catch (IOException e) {
