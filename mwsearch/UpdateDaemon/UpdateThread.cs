@@ -63,7 +63,9 @@ namespace MediaWiki.Search.UpdateDaemon {
 			}
 			
 			// Apply any remaining updates before we quit
-			ApplyAll(_queuedUpdates);
+			lock (_threadLock) {
+				ApplyAll(_queuedUpdates);
+			}
 			
 			log.Info("Updater thread ending, quit requested.");
 		}
@@ -127,10 +129,14 @@ namespace MediaWiki.Search.UpdateDaemon {
 				log.Info("Applying updates to " + databaseName);
 				SearchState state = GetSearchState(databaseName);
 				foreach (UpdateRecord record in queue) {
-					log.Info("Applying: " + record);
-					record.Apply(state);
+					log.Info("Applying read pass: " + record);
+					record.ApplyReads(state);
 				}
-				state.Close();
+				foreach (UpdateRecord record in queue) {
+					log.Info("Applying write pass: " + record);
+					record.ApplyWrites(state);
+				}
+				state.Reopen();
 				log.Info("Closed updates on " + databaseName);
 			} catch (Exception e) {
 				log.Error("Unexpected error in update for " + databaseName + ": " + e);

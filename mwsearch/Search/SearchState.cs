@@ -95,8 +95,8 @@ namespace MediaWiki.Search {
 		bool _errorOnOpen;
 		
 		// An in-memory directory which we'll write updates into.
-		private Lucene.Net.Store.Directory buffer;
-		private int updatesWritten;
+		// private Lucene.Net.Store.Directory buffer;
+		// private int updatesWritten;
 		
 		public Searcher Searcher {
 			get {
@@ -147,7 +147,7 @@ namespace MediaWiki.Search {
 		public void Close() {
 			try {
 				if (writable)
-					MergeWrites();
+					CloseWriter();
 				if (reader != null)
 					CloseReader();
 			} catch (IOException e) {
@@ -159,6 +159,7 @@ namespace MediaWiki.Search {
 		 * @throws IOException
 		 *
 		 */
+		/*
 		private void MergeWrites() {
 			writer.Close();
 			writable = false;
@@ -186,6 +187,7 @@ namespace MediaWiki.Search {
 			if (updatesWritten >= 1000)
 				MergeWrites();
 		}
+		*/
 
 		public void Reopen() {
 			try {
@@ -200,16 +202,41 @@ namespace MediaWiki.Search {
 		 * @throws IOException
 		 */
 		private void OpenReader() {
-			reader = IndexReader.Open(indexpath);
-			searcher = new IndexSearcher(reader);
+			if (writable)
+				CloseWriter();
+			if (reader == null) {
+				log.Info("Opening reader for " + mydbname);
+				reader = IndexReader.Open(indexpath);
+			}
+			if (searcher == null) {
+				log.Info("Opening searcher for " + mydbname);
+				searcher = new IndexSearcher(reader);
+			}
 		}
 
 		/**
 		 * @throws IOException
 		 */
 		private void CloseReader() {
-			searcher.Close();
-			reader.Close();
+			if (searcher != null) {
+				log.Info("Closing searcher for " + mydbname);
+				searcher.Close();
+				searcher = null;
+			}
+			if (reader != null) {
+				log.Info("Closing reader for " + mydbname);
+				reader.Close();
+				reader = null;
+			}
+		}
+		
+		private void CloseWriter() {
+			if (writable) {
+				log.Info("Closing writer for " + mydbname);
+				writer.Close();
+				writer = null;
+				writable = false;
+			}
 		}
 
 		/**
@@ -225,10 +252,15 @@ namespace MediaWiki.Search {
 		private void OpenForWrite() {
 			if (writable)
 				return;
-			buffer = new RAMDirectory();
-			writer = new IndexWriter(buffer, analyzer, true);
+			//buffer = new RAMDirectory();
+			//writer = new IndexWriter(buffer, analyzer, true);
+			
+			Reopen();
+			
+			log.Info("Opening index writer for " + mydbname);
+			writer = new IndexWriter(indexpath, analyzer, true);
 			writable = true;
-			updatesWritten = 0;
+			//updatesWritten = 0;
 		}
 		
 		/**
@@ -269,7 +301,7 @@ namespace MediaWiki.Search {
 					false, true, true));
 			writer.AddDocument(d);
 			
-			CountOrMerge();
+			// CountOrMerge();
 		}
 		
 		/**
@@ -282,6 +314,7 @@ namespace MediaWiki.Search {
 		 * @throws SearchDbException
 		 */
 		public void ReplaceArticle(Article article) {
+			// WARNING: THIS WILL SUCK IF USED
 			DeleteArticle(article);
 			AddArticle(article);
 		}
@@ -294,7 +327,7 @@ namespace MediaWiki.Search {
 		 * @throws IOException
 		 */
 		public void DeleteArticle(Article article) {
-			OpenForWrite();
+			OpenReader();
 			String key = article.Key;
 			Hits hits = searcher.Search(new TermQuery(
 					new Term("key", key)));

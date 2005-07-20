@@ -47,7 +47,19 @@ namespace MediaWiki.Search.UpdateDaemon {
 			}
 		}
 		
-		public abstract void Apply(SearchState state);
+		/**
+		 * Updates to run on a lucene IndexReader:
+		 * mark any current page record deleted.
+		 */
+		public void ApplyReads(SearchState state) {
+			state.DeleteArticle(_article);
+		}
+		
+		/**
+		 * Updates to run on a lucene IndexWriter.
+		 * These are run in a second pass after the reads.
+		 */
+		public abstract void ApplyWrites(SearchState state);
 	}
 	
 	public class PageUpdate : UpdateRecord {
@@ -58,8 +70,8 @@ namespace MediaWiki.Search.UpdateDaemon {
 				text, "bogus timestamp");
 		}
 		
-		public override void Apply(SearchState state) {
-			state.ReplaceArticle(_article);
+		public override void ApplyWrites(SearchState state) {
+			state.AddArticle(_article);
 		}
 		
 		public override string ToString() {
@@ -73,8 +85,8 @@ namespace MediaWiki.Search.UpdateDaemon {
 			_article = new Article(title.Namespace, title.Text);
 		}
 		
-		public override void Apply(SearchState state) {
-			state.DeleteArticle(_article);
+		public override void ApplyWrites(SearchState state) {
+			// do nothing
 		}
 		
 		public override string ToString() {
