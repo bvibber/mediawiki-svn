@@ -57,7 +57,8 @@ case 'rebuild':
 	break;
 case 'deleted':
 	$builder = new LuceneBuilder();
-	$ret = $builder->rebuildDeleted();
+	$since = @$args[1];
+	$ret = $builder->rebuildDeleted( $since );
 	break;
 default:
 	echo "Unknown command.\n";
