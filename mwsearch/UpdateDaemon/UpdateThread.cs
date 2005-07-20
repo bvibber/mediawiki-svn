@@ -123,14 +123,19 @@ namespace MediaWiki.Search.UpdateDaemon {
 		}
 		
 		private static void ApplyOn(string databaseName, ICollection queue) {
-			log.Info("Applying updates to " + databaseName);
-			SearchState state = GetSearchState(databaseName);
-			foreach (UpdateRecord record in queue) {
-				log.Info("Applying: " + record);
-				record.Apply(state);
+			try {
+				log.Info("Applying updates to " + databaseName);
+				SearchState state = GetSearchState(databaseName);
+				foreach (UpdateRecord record in queue) {
+					log.Info("Applying: " + record);
+					record.Apply(state);
+				}
+				state.Close();
+				log.Info("Closed updates on " + databaseName);
+			} catch (Exception e) {
+				log.Error("Unexpected error in update for " + databaseName + ": " + e);
+				return;
 			}
-			state.Close();
-			log.Info("Closed updates on " + databaseName);
 		}
 
 		private static void ApplyAll(Hashtable workUpdates) {
