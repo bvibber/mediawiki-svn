@@ -55,6 +55,10 @@ case 'rebuild':
 	}
 	$ret = $builder->rebuildAll();
 	break;
+case 'deleted':
+	$builder = new LuceneBuilder();
+	$ret = $builder->rebuildDeleted();
+	break;
 default:
 	echo "Unknown command.\n";
 	exit( -1 );
@@ -65,8 +69,14 @@ if( WikiError::isError( $ret ) ) {
 	exit( -1 );
 }
 
-echo MWSearchUpdater::getStatus() . "\n";
-exit( 0 );
+$status = MWSearchUpdater::getStatus();
+if( WikiError::isError( $status ) ) {
+	echo $status->getMessage() . "\n";
+	exit( -1 );
+} else {
+	echo $status . "\n";
+	exit( 0 );
+}
 
 
 ///
@@ -221,6 +231,57 @@ class LuceneBuilder {
 				}
 			}
 		}
+		$this->final();
+		$this->dbstream->freeResult( $result );
+		
+		return $lastError;
+	}
+	
+	/**
+	 * Trawl thorugh the deletion log entries to remove any deleted pages
+	 * that might have been missed when the index updater daemon was broken.
+	 */
+	function rebuildDeleted( $since = null ) {
+		global $wgDBname, $options;
+		$fname   = 'LuceneBuilder::rebuildDeleted';
+		
+		if( is_null( $since ) ) {
+			$since = '20010115000000';
+		}
+
+		// Turn buffering back on; these are relatively small.
+		$this->dbstream->bufferResults( true );
+		
+		$cutoff  = $this->dbstream->addQuotes( $this->dbstream->timestamp( $since ) );
+		$logging = $this->dbstream->tableName( 'logging' );
+		$page    = $this->dbstream->tableName( 'page' );
+		$result  = $this->dbstream->query(
+			"SELECT log_namespace,log_title
+			 FROM $logging
+			 LEFT OUTER JOIN $page
+			 ON log_namespace=page_namespace AND log_title=page_title
+			 WHERE log_type='delete'
+			 AND log_timestamp > $cutoff
+			 AND page_namespace IS NULL", $fname );
+		
+		$max = $this->dbstream->numRows( $result );
+		if( $max == 0 ) {
+			echo "Nothing to do.\n";
+			return;
+		}
+		$this->init( $max );
+		$lastError = true;
+		
+		while( $row = $this->dbstream->fetchObject( $result ) ) {
+			$this->progress();
+			$title = Title::makeTitle( $row->log_namespace, $row->log_title );
+			$hit = MWSearchUpdater::deletePage( $wgDBname, $title );
+			if( WikiError::isError( $hit ) ) {
+				echo "ERROR: " . $hit->getMessage() . "\n";
+				$lastError = $hit;
+			}
+		}
+		
 		$this->final();
 		$this->dbstream->freeResult( $result );
 		
