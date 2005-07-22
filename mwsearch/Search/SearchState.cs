@@ -124,7 +124,7 @@ namespace MediaWiki.Search {
 				OpenReader();
 				_errorOnOpen = false;
 			} catch (IOException e) {
-				log.Error(dbname + ": warning: open for read failed");
+				log.Error(dbname + ": warning: open for read failed" + e);
 				_errorOnOpen = true;
 			}
 			mydbname = dbname;
@@ -258,7 +258,7 @@ namespace MediaWiki.Search {
 			Reopen();
 			
 			log.Info("Opening index writer for " + mydbname);
-			writer = new IndexWriter(indexpath, analyzer, true);
+			writer = new IndexWriter(indexpath, analyzer, false);
 			writable = true;
 			//updatesWritten = 0;
 		}
