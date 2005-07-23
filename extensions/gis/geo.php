@@ -64,13 +64,13 @@ function parse_geo ( $text ) {
 	$wgOut->addMeta( "geo.position", $geo->latdeg.";".$geo->londeg );
 
 	# FIXME: obtain title
-	if ($this->title == "") {
+	if ($geo->title == "") {
 		global $wgTitle;
-		$this->title = $wgTitle->getDBkey();
+		$geo->title = $wgTitle->getDBkey();
 	}
-	$this->title = str_replace($this->title,'_',' ');
-	if ($this->title != "" && $this->title != " ") {
-		$wgOut->addMeta( "geo.placename", $this->title );
+	$geo->title = str_replace($geo->title,'_',' ');
+	if ($geo->title != "" && $geo->title != " ") {
+		$wgOut->addMeta( "geo.placename", $geo->title );
 	}
 	$attr = $geo->get_attr();
 	if (($r = $attr['region'])) {
@@ -81,7 +81,7 @@ function parse_geo ( $text ) {
 	if ( isset ( $wgMapsourcesURL ) ) {
 		return '<a href="'
 			. $wgMapsourcesURL . "?geo=" . urlencode($text)
-			. '&title="' . $this->title
+			. '&title="' . $geo->title
 			. '">'
 			. $geo->get_markup()
 			. '</a>';
@@ -249,20 +249,20 @@ class geo_param {
 	 */
 	function make_position( $lat, $lon )
 	{
-		$a = geo_param::make_minsec( $lat );
-		$b = geo_param::make_minsec( $lon );
-		$outa = intval(abs($a['deg'])) . "&deg;&nbsp;";
-		$outb = intval(abs($b['deg'])) . "&deg;&nbsp;";
-		if ($a['min'] != 0 or $b['min'] != 0
-		 or $a['sec'] != 0 or $b['sec'] != 0) {
-			$outa .= intval($a['min']) . "&prime;&nbsp;";
-			$outb .= intval($b['min']) . "&prime;&nbsp;";
-			if ($a['sec'] != 0 or $b['sec'] != 0) {
-				$outa .= $a['sec']. "&Prime;&nbsp;";
-				$outb .= $b['sec']. "&Prime;&nbsp;";
+		$latdms = geo_param::make_minsec( $lat );
+		$londms = geo_param::make_minsec( $lon );
+		$outlat = intval(abs($latdms['deg'])) . "&deg;&nbsp;";
+		$outlon = intval(abs($londms['deg'])) . "&deg;&nbsp;";
+		if ($latdms['min'] != 0 or $londms['min'] != 0
+		 or $latdms['sec'] != 0 or $londms['sec'] != 0) {
+			$outlat .= intval($latdms['min']) . "&prime;&nbsp;";
+			$outlon .= intval($londms['min']) . "&prime;&nbsp;";
+			if ($latdms['sec'] != 0 or $londms['sec'] != 0) {
+				$outlat .= $latdms['sec']. "&Prime;&nbsp;";
+				$outlon .= $londms['sec']. "&Prime;&nbsp;";
 			}
 		}
-		return $outa . $a['NS'] . " " . $outb . $b['EW'];
+		return $outlat . $latdms['NS'] . " " . $outlon . $londms['EW'];
 	}
 
 	/**

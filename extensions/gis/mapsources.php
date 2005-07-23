@@ -71,11 +71,13 @@ class map_sources {
 
 		$attr = $this->p->get_attr();
 
+		$sk = $wgUser->getSkin();
+
 		#
 		#  Default scale
 		#
-		if ($attr['scale'] <= 0) {
-			if ($attr['default'] == 0) {
+		if ( !isset( $attr['scale'] ) || $attr['scale'] <= 0) {
+			if ( !isset( $attr['default'] ) || $attr['default'] == 0) {
 				$default_scale = array(
 				'country'   =>  10000000, # 10 mill
 				'state'     =>   3000000, # 3 mill
@@ -128,7 +130,7 @@ class map_sources {
 		 *  2 is approx 1:8,570,000
 		 *  0 is minimum
 		 */
-		if ($attr['scale'] > 0) {
+		if ( isset( $attr['scale'] ) && $attr['scale'] > 0) {
 			$zoom = intval(18.0 - log($attr['scale']));
 		} else {
 			$zoom = 9;
@@ -195,11 +197,11 @@ class map_sources {
 		 */
 		$src = $this->mapsources;
 		$region = "";
-		if ($attr['page'] != "") {
+		if ( isset( $attr['page'] ) && $attr['page'] != "") {
 		    $src .= "/" . $attr['page']; # subpage specified
-		} elseif ($attr['globe'] != "") {
+		} elseif ( isset( $attr['globe'] ) && $attr['globe'] != "") {
 		    $src .= "/" . $attr['globe']; # subpage specified
-		} elseif ($attr['region'] != "") {
+		} elseif ( isset( $attr['region'] ) && $attr['region'] != "") {
 		    $region = strtoupper(substr($attr['region'],0,2));
 		    $region = "/" . $region; # subpage specified
 		}
@@ -214,10 +216,8 @@ class map_sources {
 			$bsarticle = new Article( $bstitle );
 		}
 		if ($bsarticle->getID() == 0) {
-			$wgOut->addHTML( 
-			       "<p>".
-			       htmlspecialchars( "Please add this page: ".
-						  $bstitle->getText() )."</p>");
+			$wgOut->addHTML( "<p>Please add this page: " .
+				$sk->makeBrokenLinkObj( $bstitle ).".</p>");
 			$wgOut->output();
 			wfErrorExit();
 			return "";
