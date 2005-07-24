@@ -36,6 +36,7 @@ class Article {
 	var $mOldId;
 	var $mRevIdFetched;
 	var $mRevision;
+	var $mIdVerified;
 	/**#@-*/
 
 	/**
@@ -80,7 +81,7 @@ class Article {
 	 * @param $noredir
 	 * @return Return the text of this revision
 	*/
-	function getContent( $noredir ) {
+	function getContent( $noredir, $use_idverified = false ) {
 		global $wgRequest, $wgUser, $wgOut;
 
 		# Get variables from query string :P
@@ -107,7 +108,7 @@ class Article {
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 			return wfMsg( 'noarticletext' );
 		} else {
-			$this->loadContent( $noredir );
+			$this->loadContent( $noredir, $use_idverified );
 			# check if we're displaying a [[User talk:x.x.x.x]] anonymous talk page
 			if ( $this->mTitle->getNamespace() == NS_USER_TALK &&
 			  $wgUser->isIP($this->mTitle->getText()) &&
@@ -274,7 +275,7 @@ class Article {
 	/**
 	 * Load the revision (including cur_text) into this object
 	 */
-	function loadContent( $noredir = false ) {
+	function loadContent( $noredir = false, $use_idverified = false ) {
 		global $wgOut, $wgRequest;
 
 		if ( $this->mContentLoaded ) return;
@@ -293,7 +294,8 @@ class Article {
 		$noredir = $noredir || ($wgRequest->getVal( 'redirect' ) == 'no')
 			|| $wgRequest->getCheck( 'rdfrom' );
 		$this->mOldId = $oldid;
-		$this->fetchContent( $oldid, $noredir, true );
+		$this->fetchContent( $oldid, $noredir, true, $use_idverified );
+
 	}
 
 
@@ -316,6 +318,7 @@ class Article {
 				'page_random',
 				'page_touched',
 				'page_latest',
+				'page_idverified',
 				'page_len' ),
 			$conditions,
 			'Article::pageData' );
@@ -347,6 +350,7 @@ class Article {
 		$this->mTouched    = wfTimestamp( TS_MW, $data->page_touched );
 		$this->mIsRedirect = $data->page_is_redirect;
 		$this->mLatest     = $data->page_latest;
+		$this->mIdVerified = $data->page_idverified;
 
 		$this->mDataLoaded = true;
 	}
@@ -358,7 +362,7 @@ class Article {
 	 * @param bool $globalTitle Set to true to change the global $wgTitle object when following redirects or other unexpected title changes
 	 * @return string
 	 */
-	function fetchContent( $oldid = 0, $noredir = true, $globalTitle = false ) {
+	function fetchContent( $oldid = 0, $noredir = true, $globalTitle = false, $use_idverified = false ) {
 		if ( $this->mContentLoaded ) {
 			return $this->mContent;
 		}
@@ -399,7 +403,7 @@ class Article {
 				}
 				$this->loadPageData( $data );
 			}
-			$revision = Revision::newFromId( $this->mLatest );
+			$revision = Revision::newFromId( ( $use_idverified && ($this->mIdVerified != 0 ) ) ? $this->mIdVerified : $this->mLatest );
 			if( is_null( $revision ) ) {
 				wfDebug( "$fname failed to retrieve current page, rev_id $data->page_latest\n" );
 				return false;
@@ -430,7 +434,7 @@ class Article {
 				}
 				$redirData = $this->pageDataFromTitle( $dbr, $rt );
 				if( $redirData ) {
-					$redirRev = Revision::newFromId( $redirData->page_latest );
+					$redirRev = Revision::newFromId( ( $use_idverified && ($redirData->page_idverified != 0) ) ? $redirData->page_idverified : $redirData->page_latest );
 					if( !is_null( $redirRev ) ) {
 						$this->mRedirectedFrom = $this->mTitle->getPrefixedText();
 						$this->mTitle = $rt;
@@ -636,6 +640,18 @@ class Article {
 		return $this->mRevIdFetched;
 	}
 
+	function getTouched() {
+		# Ensure that page data has been loaded
+		if( !$this->mDataLoaded ) {
+			$dbr =& $this->getDB();
+			$data = $this->pageDataFromId( $dbr, $this->getId() );
+			if( $data ) {
+				$this->loadPageData( $data );
+			}
+		}
+		return $this->mTouched;
+	}
+
 	function getContributors($limit = 0, $offset = 0) {
 		$fname = 'Article::getContributors';
 
@@ -678,7 +694,7 @@ class Article {
 	function view()	{
 		global $wgUser, $wgOut, $wgRequest, $wgOnlySysopsCanPatrol, $wgLang;
 		global $wgLinkCache, $IP, $wgEnableParserCache, $wgStylePath, $wgUseRCPatrol;
-		global $wgEnotif, $wgParser, $wgParserCache, $wgUseTrackbacks;
+		global $wgEnotif, $wgParser, $wgParserCache, $wgUseTrackbacks, $wgEnableVerify;
 		$sk = $wgUser->getSkin();
 
 		$fname = 'Article::view';
@@ -739,7 +755,10 @@ class Article {
 			}
 		}
 		if ( !$outputDone ) {
-			$text = $this->getContent( false ); # May change mTitle by following a redirect
+			# Check if we must use verify protection
+			$use_idverified = $wgEnableVerify;
+
+			$text = $this->getContent( false, $use_idverified ); # May change mTitle by following a redirect
 
 			# Another whitelist check in case oldid or redirects are altering the title
 			if ( !$this->mTitle->userCanRead() ) {
@@ -754,12 +773,23 @@ class Article {
 				$this->setOldSubtitle( isset($this->mOldId) ? $this->mOldId : $oldid );
 				$wgOut->setRobotpolicy( 'noindex,follow' );
 			}
+
+			# We are looking at the latest verified revision but there have been some other edits
+			$s = '';
+			if ( $wgEnableVerify && empty( $oldid ) && !empty( $this->mIdVerified ) && ($this->mLatest != $this->mIdVerified) ) {
+				$sk = $wgUser->getSkin();
+				$current = $sk->makeKnownLink( $this->mTitle->GetPartialURL(), '',
+				  "oldid={$this->mLatest}" );
+
+				$s .= wfMsg( 'verifiedpage', $current );
+				$s .= "<br/>";
+			}
+
 			if ( '' != $this->mRedirectedFrom ) {
 				$sk = $wgUser->getSkin();
 				$redir = $sk->makeKnownLink( $this->mRedirectedFrom, '',
 				  'redirect=no' );
-				$s = wfMsg( 'redirectedfrom', $redir );
-				$wgOut->setSubtitle( $s );
+				$s .= wfMsg( 'redirectedfrom', $redir );
 
 				# Can't cache redirects
 				$pcache = false;
@@ -768,10 +798,10 @@ class Article {
 				if( $wgRedirectSources && preg_match( $wgRedirectSources, $rdfrom ) ) {
 					$sk = $wgUser->getSkin();
 					$redir = $sk->makeExternalLink( $rdfrom, $rdfrom );
-					$s = wfMsg( 'redirectedfrom', $redir );
-					$wgOut->setSubtitle( $s );
+					$s .= wfMsg( 'redirectedfrom', $redir );
 				}
 			}
+			if ($s != '') $wgOut->setSubTitle( $s );
 
 			# wrap user css and user js in pre and don't parse
 			# XXX: use $this->mTitle->usCssJsSubpage() when php is fixed/ a workaround is found
@@ -939,6 +969,7 @@ class Article {
 			'page_random'       => wfRandom(),
 			'page_touched'      => $dbw->timestamp(),
 			'page_latest'       => 0, # Fill this in shortly...
+			'page_idverified'   => 0
 		), $fname );
 		$newid = $dbw->insertId();
 
@@ -1637,6 +1668,129 @@ class Article {
 	function unprotect() {
 		return $this->protect( '' );
 	}
+
+	/**
+	 * set verify protection to the page
+
+	 */
+	function verify() {
+		global $wgUser, $wgOut, $wgRequest;
+
+		if ( ! $wgUser->isAllowed('verify') ) {
+			$wgOut->sysopRequired();
+			return;
+		}
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+
+		}
+		$id = $this->mTitle->getArticleID();
+		if ( 0 == $id ) {
+			$wgOut->fatalError( wfMsg( 'badarticleerror' ) );
+			return;
+		}
+
+		$oldid = $this->getOldID();
+
+		#TODO: how can avoid this?
+		$dbw =& wfGetDB( DB_MASTER );
+
+		$lastRevision = $dbw->selectField(
+			'page', 'page_latest', array( 'page_id' => $id ) );
+		$page_idverified = $dbw->selectField(
+			'page', 'page_idverified', array( 'page_id' => $id ) );
+
+		if ( !isset($oldid) && !$page_idverified ){
+			# Set verify protection
+			$new_idverified = $lastRevision;
+		} else if ( !isset($oldid) && $page_idverified ) {
+			# Don't do nothing
+			$wgOut->redirect( $this->mTitle->getFullURL() );
+			return;
+		} else /* if isset($oldid) */ {
+		    # Update page_idverified to the wanted revision
+		    $new_idverified = $oldid;
+		}
+
+		$dbw->update( 'page',
+			array( /* SET */
+				'page_touched' => $dbw->timestamp(),
+				'page_idverified' => $new_idverified
+			), array( /* WHERE */
+				'page_id' => $id
+			), 'Article::verify'
+		);
+
+
+		# TODO: is this correct?
+		$this->mTitle->invalidateCache();
+
+ 		if ( $wgUseSquid ) {
+ 			$urls = array(
+ 				$this->mTitle->getInternalURL(),
+ 				$this->mTitle->getInternalURL( 'history' )
+ 			);
+  			$u = new SquidUpdate( $urls );
+ 			array_push( $wgPostCommitUpdateList, $u );
+ 		}
+
+		# TODO: Add an entry to some log page
+            
+		$wgOut->redirect( $this->mTitle->getFullURL() );
+
+		return;
+	}
+
+	/**
+	 * remove verify protection to the page
+	 */
+	function unverify() {
+		global $wgUser, $wgOut, $wgRequest;
+
+		if ( ! $wgUser->isAllowed('unverify') ) {
+			$wgOut->sysopRequired();
+			return;
+		}
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		}
+		$id = $this->mTitle->getArticleID();
+		if ( 0 == $id ) {
+			$wgOut->fatalError( wfMsg( 'badarticleerror' ) );
+			return;
+		}
+
+		$dbw =& wfGetDB( DB_MASTER );
+		$dbw->update( 'page',
+			array( /* SET */
+				'page_touched' => $dbw->timestamp(),
+				'page_idverified' => 0
+			), array( /* WHERE */
+				'page_id' => $id
+			), 'Article::unverify'
+		);
+
+		$this->mTitle->invalidateCache();
+
+ 		if ( $wgUseSquid ) {
+ 			$urls = array(
+ 				$this->mTitle->getInternalURL(),
+ 				$this->mTitle->getInternalURL( 'history' )
+ 			);
+  			$u = new SquidUpdate( $urls );
+ 			array_push( $wgPostCommitUpdateList, $u );
+ 		}
+
+		# TODO: Add an entry to some log page
+           
+		$wgOut->redirect( $this->mTitle->getFullURL() );
+
+		return;
+	}
+
+
 
 	/*
 	 * UI entry point for page deletion

@@ -418,6 +418,10 @@ and the [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide User's Guide] f
 'protectthispage' => 'Protect this page',
 'unprotect' => 'unprotect',
 'unprotectthispage' => 'Unprotect this page',
+'verify' => 'Verify',
+'verifythispage' => 'Verify this page',
+'unverify' => 'Unverify',
+'unverifythispage' => 'Unverify this page',
 'newpage' => 'New page',
 'talkpage'		=> 'Discuss this page',
 'specialpage' => 'Special Page',
@@ -441,6 +445,7 @@ and the [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide User's Guide] f
 'poweredby'	=> "{{SITENAME}} is powered by [http://www.mediawiki.org/ MediaWiki], an open source wiki engine.",
 'printsubtitle' => "(From {{SERVER}})",
 'protectedpage' => 'Protected page',
+'verifiedpage' => 'This page is being verified by the admins. The revisions after the last verify will not be shown until a new verify. <br/> You can view the current version here: $1',
 'administrators' => "Project:Administrators",
 
 'sysoptitle'	=> 'Sysop access required',

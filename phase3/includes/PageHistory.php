@@ -51,15 +51,24 @@ class PageHistory {
 	 */
 	function history() {
 		global $wgUser, $wgOut, $wgLang, $wgShowUpdatedMarker, $wgRequest,
-			$wgTitle, $wgUseValidation;
+			$wgTitle, $wgUseValidation, $wgAggressiveHistoryCaching;
 
 		/*
 		 * Allow client caching.
 		 */
 
-		if( $wgOut->checkLastModified( $this->mArticle->getTimestamp() ) )
-			/* Client cache fresh and headers sent, nothing more to do. */
-			return;
+		if( $wgAggressiveHistoryCaching ) {
+			if( $wgOut->checkLastModified( $this->mArticle->getTimestamp() ) )
+				/* Client cache fresh and headers sent, nothing more to do. */
+				return;
+		} else {
+			# non-aggressive caching
+			$touched = $this->mArticle->getTouched();
+			$lastmodified = $this->mArticle->getTimestamp();
+			if( $wgOut->checkLastModified( $this->mArticle->getTouched() ) )
+				/* Client cache fresh and headers sent, nothing more to do. */
+				return;
+		}
 
 		$fname = 'PageHistory::history';
 		wfProfileIn( $fname );
@@ -212,7 +221,7 @@ class PageHistory {
 
 	/** @todo document */
 	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false, $latest = false ) {
-		global $wgLang, $wgContLang;
+		global $wgLang, $wgContLang, $wgEnableVerify;
 
 		static $message;
 		if( !isset( $message ) ) {
@@ -233,7 +242,18 @@ class PageHistory {
 			$ul = $this->mSkin->makeLinkObj( $userPage , htmlspecialchars( $row->rev_user_text ) );
 		}
 
+		if ( $wgEnableVerify && !$this->mArticle->mDataLoaded ) {
+			$dbr =& $this->mArticle->getDB();
+			$data = $this->mArticle->pageDataFromId( $dbr, $row->rev_page );
+			$this->mArticle->loadPageData( $data );
+		}
+
 		$s = '<li>';
+
+		# Print the row bold if it's the verified revision
+		if ($wgEnableVerify && $this->mArticle->mIdVerified == $row->rev_id) $s .= '<b>';
+
+
 		if( $row->rev_deleted ) {
 			$s .= '<span class="deleted">';
 		}
@@ -254,6 +274,8 @@ class PageHistory {
 			$s .= "</span> " . htmlspecialchars( wfMsg( 'deletedrev' ) );
 		}
 		$s .= '</li>';
+
+		if ($wgEnableVerify && $this->mArticle->mIdVerified == $row->rev_id) $s .= '</b>';
 
 		return $s;
 	}
@@ -433,7 +455,7 @@ class PageHistory {
 			$limits .= " LIMIT $limitplus ";
 		$page_id = $this->mTitle->getArticleID();
 
-		$sql = "SELECT rev_id,rev_user," .
+		$sql = "SELECT rev_id, rev_page, rev_user," .
 		  "rev_comment,rev_user_text,rev_timestamp,rev_minor_edit,rev_deleted ".
 		  "FROM $revision $use_index " .
 		  "WHERE rev_page=$page_id " .

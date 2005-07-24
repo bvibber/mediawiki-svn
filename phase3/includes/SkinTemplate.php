@@ -530,7 +530,7 @@ class SkinTemplate extends Skin {
 	 * @access private
 	 */
 	function buildContentActionUrls () {
-		global $wgContLang, $wgUseValidation, $wgDBprefix, $wgValidationForAnons;
+		global $wgContLang, $wgUseValidation, $wgDBprefix, $wgValidationForAnons, $wgEnableVerify;
 		$fname = 'SkinTemplate::buildContentActionUrls';
 		wfProfileIn( $fname );
 
@@ -610,6 +610,24 @@ class SkinTemplate extends Skin {
 						);
 					}
 				}
+
+				if($wgEnableVerify && $wgUser->isAllowed('verify')) {
+					if(!$this->mTitle->isVerified() || (isset($oldid) && ($oldid != $this->mTitle->getIdVerified()))) {
+						$oid = !isset( $oldid ) ? "" : '&oldid='.$oldid;
+						$content_actions['verify'] = array(
+							'class' => ($action == 'verify') ? 'selected' : false,
+							'text' => wfMsg('verify'),
+							'href' => $this->mTitle->getLocalUrl( 'action=verify'.$oid )
+						);
+					} else {
+						$content_actions['unverify'] = array(
+							'class' => ($action == 'unverify') ? 'selected' : false,
+							'text' => wfMsg('unverify'),
+							'href' => $this->mTitle->getLocalUrl( 'action=unverify' )
+						);
+					}
+				}
+
 				if($wgUser->isAllowed('delete')){
 					$content_actions['delete'] = array(
 						'class' => ($action == 'delete') ? 'selected' : false,

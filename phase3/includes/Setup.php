@@ -103,6 +103,8 @@ if ( $wgSkipSkin ) {
 
 $wgUseEnotif = $wgEnotifUserTalk || $wgEnotifWatchlist;
 
+if ( isset( $wgEnableVerify ) && ($wgEnableVerify == true) ) $wgAggressiveHistoryCaching = false;
+
 wfProfileOut( $fname.'-misc1' );
 wfProfileIn( $fname.'-memcached' );
 

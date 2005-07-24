@@ -45,6 +45,7 @@ class Title {
 	var $mLatestID;         # ID of most recent revision
 	var $mRestrictions;       # Array of groups allowed to edit this article
                               # Only null or "sysop" are supported
+	var $mIdVerified;         # page_idverified
 	var $mRestrictionsLoaded; # Boolean for initialisation on demand
 	var $mPrefixedText;       # Text form including namespace/interwiki, initialised on demand
 	var $mDefaultNamespace;   # Namespace index when there is no namespace
@@ -861,6 +862,30 @@ class Title {
 			if ( in_array( 'sysop', $a ) ) { return true; }
 		}
 		return false;
+	}
+
+ 	/**
+	 * Gets page_idverified
+	 * @return int
+	 * @access public
+	 */
+	function getIdVerified() {
+		$id = $this->getArticleID();
+		if ($id == 0) return 0;
+		if ( empty( $this->mIdVerified ) ) {
+			$dbr =& wfGetDB( DB_SLAVE );
+			$this->mIdVerified = $dbr->selectField( 'page', 'page_idverified', array( 'page_id' => $id ) );            
+		}
+		return $this->mIdVerified;
+	}
+
+	/**
+	 * Does the title correspond to an article with verify protection?
+	 * @return boolean
+	 * @access public
+	 */
+	function isVerified() {
+		return ($this->getIdVerified() != 0);
 	}
 
 	/**

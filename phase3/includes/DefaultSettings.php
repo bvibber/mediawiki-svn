@@ -645,6 +645,13 @@ $wgUseCategoryBrowser   = false;
 $wgEnableParserCache = true;
 
 /**
+ * Set to true to make PageHistory.php flush the history page from the cache
+ * just on article edits (that is, checking rev_timestamp); false to
+ * do it on every change to page_touched.
+*/
+$wgAggressiveHistoryCaching = true;
+
+/**
  * Under which condition should a page in the main namespace be counted
  * as a valid article? If $wgUseCommaCount is set to true, it will be
  * counted if it contains at least one comma. If it is set to false
@@ -714,6 +721,8 @@ $wgGroupPermissions['sysop']['move']            = true;
 $wgGroupPermissions['sysop']['patrol']          = true;
 $wgGroupPermissions['sysop']['protect']         = true;
 $wgGroupPermissions['sysop']['rollback']        = true;
+$wgGroupPermissions['sysop']['verify']          = true;
+$wgGroupPermissions['sysop']['unverify']        = true;
 $wgGroupPermissions['sysop']['upload']          = true;
 
 $wgGroupPermissions['bureaucrat']['userrights'] = true;

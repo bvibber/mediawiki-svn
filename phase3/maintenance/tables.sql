@@ -191,6 +191,10 @@ CREATE TABLE /*$wgDBprefix*/page (
   -- This may be 0 during page creation, but that shouldn't
   -- happen outside of a transaction... hopefully.
   page_latest int(8) unsigned NOT NULL,
+
+  -- Key to revision.rev_id of the revision marked as "verified"
+  -- This is 0 if verify protection is not enabled
+  page_idverified int(8) unsigned NOT NULL,
   
   -- Uncompressed length in bytes of the page's current source text.
   page_len int(8) unsigned NOT NULL,

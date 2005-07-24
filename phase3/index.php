@@ -240,6 +240,13 @@ if( !$wgDisableInternalSearch && !is_null( $search ) && $search !== '' ) {
 				$wgTitle->invalidateCache();
 				$wgArticle->view();
 				break;
+			case 'verify':
+			case 'unverify':
+				if ( $wgEnableVerify ) {
+					$wgArticle->$action();
+					break;
+				}
+				# Else execute default
 			default:
 				if (wfRunHooks('UnknownAction', array($action, $wgArticle))) {
 					$wgOut->errorpage( 'nosuchaction', 'nosuchactiontext' );
