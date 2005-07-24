@@ -284,6 +284,7 @@ $wgUploadNavigationUrl = false;
  *
  * Example:
  *   $wgThumbnailScriptPath = "{$wgScriptPath}/thumb.php";
+
  */
 $wgThumbnailScriptPath = false;
 $wgSharedThumbnailScriptPath = false;
@@ -1602,5 +1603,10 @@ $wgEnableScaryTranscluding = false;
  * http://www.sixapart.com/pronet/docs/trackback_spec for details.
  */
 $wgUseTrackbacks = false;
+
+/**
+ * Activates/inactivates the verify feature.
+ */
+$wgEnableVerify = false;
 
 ?>
