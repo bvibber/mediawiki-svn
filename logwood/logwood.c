@@ -2,12 +2,19 @@
  * Logwood: Convert Squid logs to MySQL database.
  */
 
+#include <sys/types.h>
+
+#include <dirent.h>
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
+#include <pthread.h>
+#include <syslog.h>
+#include <signal.h>
+#include <errno.h>
 
 #include <glib.h>
 #include <mysql.h>
@@ -28,7 +35,9 @@ struct group {
 GList *refer_groups;
 GList *agent_groups;
 
-static void process_file(const char *name);
+static void *process_file(void *ign);
+static void sigusr1(int);
+static int exitnow;
 
 static char	*readfile	(const char *name);
 
@@ -39,10 +48,15 @@ static GList	*read_group		(const char *);
 static char	*consider_grouping	(GList *, char *);
 
 static int one = 1;
-static unsigned long	 lines = 0;
+static char **logdirs;
 
 static char *dbuser, *dbpass, *dbhost, *dbname;
 static const char *cfgdir = "/etc/logwood";
+static pthread_mutex_t logdir_mtx = PTHREAD_MUTEX_INITIALIZER;
+
+#define NTHREADS 4
+pthread_t	threads[NTHREADS];
+
 
 #define	STMT_INSERT_SITE 	"INSERT IGNORE INTO sites (si_name) VALUES (LOWER(?))"
 #define STMT_QUERY_SITE		"SELECT si_id FROM sites WHERE si_name = ?"
@@ -144,16 +158,28 @@ int		 c;
 		exit(1);
 	}
 
-	for (; *argv; argv++) {
-		process_file(*argv);
+	signal(SIGUSR1, sigusr1);
+
+	logdirs = argv;
+	if (argc < 1) {
+		fprintf(stderr, "usage: %s <logdir>[,<logdir>...]\n", argv[0]);
+		exit(1);
 	}
+
+	daemon(0, 0);
+	openlog("logwood", LOG_PID, LOG_DAEMON);
+	syslog(LOG_NOTICE, "startup");
+	for (c = 0; c < NTHREADS; ++c)
+		pthread_create(&threads[c], NULL, process_file, NULL);
+	for (c = 0; c < NTHREADS; ++c)
+		pthread_join(threads[c], NULL);
 
 	return 0;
 }
 
-static void
-process_file(name)
-const char	*name;
+static void *
+process_file(ign)
+void		*ign;
 {
 FILE		*in;
 char		 line[65535];
@@ -414,7 +440,7 @@ MYSQL_BIND	 bind_url_touched[1];
 
 	mysql_init(&connection);
 	if (!mysql_real_connect(&connection, dbhost, dbuser, dbpass, dbname, 0, NULL, 0)) {
-		fprintf(stderr, "MySQL connection error: %s\n", mysql_error(&connection));
+		syslog(LOG_ERR, "MySQL connection error: %s\n", mysql_error(&connection));
 		exit(1);
 	}
 
@@ -507,10 +533,55 @@ MYSQL_BIND	 bind_url_touched[1];
 	mysql_stmt_prepare(stmt_url_touched_del, STMT_URL_TOUCHED_DEL, strlen(STMT_URL_TOUCHED_DEL));
 	mysql_stmt_bind_param(stmt_url_touched_del, bind_url_touched);
 
-	if ((in = fopen(name, "r")) == NULL) {
-		perror(name);
-		return;
-	}
+	for (;;) {
+	DIR             *dir;
+	struct dirent   *de;
+	char            *fname;
+	char            **ldir;
+
+		if (exitnow) {
+			syslog(LOG_NOTICE, "exiting on signal");
+			return NULL;
+		}
+
+		pthread_mutex_lock(&logdir_mtx);
+
+		for (ldir = logdirs; *ldir; ++ldir) {
+			chdir(*ldir);
+
+			if ((dir = opendir(".")) == NULL) {
+				syslog(LOG_ERR, "%s: %s", *ldir, strerror(errno));
+				return NULL;
+			}
+
+			while ((de = readdir(dir)) != NULL) {
+				if (*de->d_name == '.')
+					continue;
+				fname = g_strdup(de->d_name);
+				break;
+			}
+			closedir(dir);
+
+			if (fname)
+				break;
+		}
+
+		if (fname == NULL) {
+			pthread_mutex_unlock(&logdir_mtx);
+			sleep(10);
+			continue;
+		}
+
+		if ((in = fopen(fname, "r")) == NULL) {
+			syslog(LOG_ERR, "%s: %s", fname, strerror(errno));
+			pthread_mutex_unlock(&logdir_mtx);
+			return NULL;
+		}
+
+		unlink(fname);
+		syslog(LOG_INFO, "processing %s", fname);
+
+		pthread_mutex_unlock(&logdir_mtx);
 
 	/*
 	 * A logfile line looks like this:
@@ -850,7 +921,9 @@ MYSQL_BIND	 bind_url_touched[1];
 			mysql_stmt_bind_param(stmt_incr_agent, bind_incr_agent);
 			mysql_stmt_execute(stmt_incr_agent);
 		}
-		++lines;
+	}
+	syslog(LOG_INFO, "finished %s", fname);
+	g_free(fname);
 	}
 }
 
@@ -913,7 +986,7 @@ FILE	*f;
 			gr->gr_pattern = strdup(line);
 			gr->gr_name = strdup(s);
 			if ((gr->gr_re = pcre_compile(line, 0, &err, &erroff, NULL)) == NULL) {
-				fprintf(stderr, "Invalid RE: at \"%s\": %s\n", gr->gr_pattern + erroff, err);
+				syslog(LOG_ERR, "Invalid RE: at \"%s\": %s\n", gr->gr_pattern + erroff, err);
 				exit(1);
 			}
 			gr->gr_study = pcre_study(gr->gr_re, 0, &err);
@@ -969,5 +1042,12 @@ char	 str[256];
 	fclose(f);
 	g_free(fname);
 	return g_strdup(str);
+}
+
+static void
+sigusr1(sig)
+int    sig;
+{
+	exitnow = 1;
 }
 
