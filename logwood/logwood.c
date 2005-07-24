@@ -206,6 +206,7 @@ my_ulonglong	 bind_query_site_si_id;
 my_bool		 bind_query_site_si_id_is_null;
 unsigned long	 bind_query_site_si_id_length;
 unsigned long	 bind_query_site_si_site_length;
+my_ulonglong	*siteid;
 
 MYSQL_STMT	*stmt_query_url;
 MYSQL_BIND	 bind_query_url[2];
@@ -713,31 +714,40 @@ MYSQL_BIND	 bind_url_touched[1];
 		/*
 		 * Check if the site exists already.
 		 */
-		bind_insert_site[0].buffer_type = MYSQL_TYPE_STRING;
-		bind_insert_site[0].buffer = host;
-		bind_insert_site[0].is_null = 0;
-		bind_insert_site[0].length = &bind_insert_site_si_site_length;
-		bind_insert_site_si_site_length = strlen(host);
-		mysql_stmt_bind_param(stmt_insert_site, bind_insert_site);
-		mysql_stmt_execute(stmt_insert_site);
+		siteid = g_hash_table_lookup(site_ids, host);
+		if (siteid) {
+			bind_query_site_si_id = *(my_ulonglong *)siteid;
+		} else {
+			bind_insert_site[0].buffer_type = MYSQL_TYPE_STRING;
+			bind_insert_site[0].buffer = host;
+			bind_insert_site[0].is_null = 0;
+			bind_insert_site[0].length = &bind_insert_site_si_site_length;
+			bind_insert_site_si_site_length = strlen(host);
+			mysql_stmt_bind_param(stmt_insert_site, bind_insert_site);
+			mysql_stmt_execute(stmt_insert_site);
 
-		if (!mysql_stmt_affected_rows(stmt_insert_site)) {
-			/*
-			 * Already existed, check the id.
-			 */
-			bind_query_site[0].buffer_type = MYSQL_TYPE_STRING;
-			bind_query_site[0].buffer = host;
-			bind_query_site[0].is_null = 0;
-			bind_query_site[0].length = &bind_query_site_si_site_length;
-			bind_query_site_si_site_length = strlen(host);
+			if (!mysql_stmt_affected_rows(stmt_insert_site)) {
+				/*
+				 * Already existed, check the id.
+				 */
+				bind_query_site[0].buffer_type = MYSQL_TYPE_STRING;
+				bind_query_site[0].buffer = host;
+				bind_query_site[0].is_null = 0;
+				bind_query_site[0].length = &bind_query_site_si_site_length;
+				bind_query_site_si_site_length = strlen(host);
 
-			mysql_stmt_bind_param(stmt_query_site, bind_query_site);
-			mysql_stmt_bind_result(stmt_query_site, bind_query_site_result);
-			mysql_stmt_execute(stmt_query_site);
-			mysql_stmt_fetch(stmt_query_site);
-			mysql_stmt_free_result(stmt_query_site);
-		} else
-			bind_query_site_si_id = mysql_stmt_insert_id(stmt_insert_site);
+				mysql_stmt_bind_param(stmt_query_site, bind_query_site);
+				mysql_stmt_bind_result(stmt_query_site, bind_query_site_result);
+				mysql_stmt_execute(stmt_query_site);
+				mysql_stmt_fetch(stmt_query_site);
+				mysql_stmt_free_result(stmt_query_site);
+			} else
+				bind_query_site_si_id = mysql_stmt_insert_id(stmt_insert_site);
+
+			siteid = malloc(sizeof(my_ulonglong));
+			*siteid = bind_query_site_si_id;
+			g_hash_table_insert(site_ids, host, siteid);
+		}
 
 		/*
 		 * Insert a URL, if none.
@@ -922,6 +932,7 @@ MYSQL_BIND	 bind_url_touched[1];
 			mysql_stmt_execute(stmt_incr_agent);
 		}
 	}
+	fclose(in);
 	syslog(LOG_INFO, "finished %s", fname);
 	g_free(fname);
 	}
