@@ -139,7 +139,8 @@ class gis_database {
 					'gis_longitude_max' => $lonmax,
 					'gis_globe'         => $globe,
 					'gis_type'          => $type,
-					'gis_type_arg'      => $type_arg),
+					'gis_type_arg'      => $type_arg,
+					'gis_sector'	    => ( IntVal( $latmin+90 ) *360 + IntVal( $lonmin ) ) ),
 			       $fname );
 	}
 
@@ -214,7 +215,7 @@ class gis_database {
 		$fname = 'gis_database::select_position';
 
 		# BUG: use selectRow instead
-		$this->result = $this->db->select( 'gis',
+		$this->result = $this->db->select( array( 'gis', 'page' ),
 			      array(
 				'gis_page',
 				'gis_latitude_min',
@@ -223,8 +224,10 @@ class gis_database {
 				'gis_longitude_max',
 				'gis_globe',
 				'gis_type', 
-				'gis_type_arg' ),
-			      $condition,
+				'gis_type_arg',
+				'page_title',
+				'page_namespace' ),
+			      array_merge($condition , array( 'page_id = gis_page' ) ),
 			      $fname );
 	}
 
@@ -234,33 +237,6 @@ class gis_database {
 	function fetch_position()
 	{
 		return $this->db->fetchObject ( $this->result );
-	}
-
-	/**
-	 *  Get title of article, given the id
-	 */
-	function get_title( $id )
-	{
-		$fname = 'gis_database::get_title';
-
-		global $wgVersion;
-		$v = substr($wgVersion,0,3);
-		$out .= $v;
-
-		if ($this->version[0] <= 1 and $this->version[1] <= 4) {
-			# version 1.4 uses 'cur'
-			$name_dbkey = $this->db->selectField( 'cur',
-				      'cur_title',
-				       array( 'cur_id' => $id),
-				       $fname );
-		} else {
-			# version 1.5 uses 'page'
-			$name_dbkey = $this->db->selectField( 'page',
-				      'page_title',
-				       array( 'page_id' => $id),
-				       $fname );
-		}
-		return str_replace( '_', ' ', $name_dbkey );
 	}
 }
 ?>

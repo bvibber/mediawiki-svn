@@ -64,16 +64,16 @@ function parse_geo ( $text ) {
 	$wgOut->addMeta( "geo.position", $geo->latdeg.";".$geo->londeg );
 
 	# FIXME: obtain title
-	if ($geo->title == "") {
+	if ( !isset( $geo->title ) || $geo->title == "") {
 		global $wgTitle;
 		$geo->title = $wgTitle->getDBkey();
 	}
-	$geo->title = str_replace($geo->title,'_',' ');
+	$geo->title = str_replace(' ', '_', $geo->title );
 	if ($geo->title != "" && $geo->title != " ") {
 		$wgOut->addMeta( "geo.placename", $geo->title );
 	}
 	$attr = $geo->get_attr();
-	if (($r = $attr['region'])) {
+	if ( isset( $attr['region'] ) && ($r = $attr['region'])) {
 		$wgOut->addMeta( "geo.region", $r);
 	}
 
@@ -81,7 +81,7 @@ function parse_geo ( $text ) {
 	if ( isset ( $wgMapsourcesURL ) ) {
 		return '<a href="'
 			. $wgMapsourcesURL . "?geo=" . urlencode($text)
-			. '&title="' . $geo->title
+			. '&title=' . $geo->title
 			. '">'
 			. $geo->get_markup()
 			. '</a>';
@@ -119,7 +119,7 @@ class geo_param {
 
 		$this->latdeg_min = $this->latdeg_max = $this->latdeg;
 		$this->londeg_min = $this->londeg_max = $this->londeg;
-		if ($this->pieces[0] == "to") {
+		if ( isset( $this->pieces[0] ) && $this->pieces[0] == "to") {
 			array_shift($this->pieces);
 			$this->get_coor();
 			if ($this->latdeg < $this->latdeg_max) {

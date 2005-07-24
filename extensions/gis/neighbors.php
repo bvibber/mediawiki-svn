@@ -74,7 +74,7 @@ class neighbors {
 		$lon0 = $this->p->londeg;
 
 		$g = new gis_database();
-		$g->select_radius_m( $lat0, $lon0, $this->d * 1000,
+		@$g->select_radius_m( $lat0, $lon0, $this->d * 1000,
 				     $this->attr['globe'], $this->attr['type'],
 				     $this->attr['arg:type'] );
 		$all = array();
@@ -94,7 +94,7 @@ class neighbors {
 				$all_pos[$id] = array(
 					'lat' => $lat,
 					'lon' => $lon,
-					'name' => $g->get_title($id),
+					'name' => $x->page_title,
 					'type' => $x->gis_type,
 					'octant' => $gc->octant(),
 					'heading' => $gc->heading);
@@ -106,7 +106,7 @@ class neighbors {
 		reset($all);
 
 		/* Generate output */
-		$out .= "''List of ". count($all)
+		$out = "''List of ". count($all)
 		      . " locations within ".$this->d." km of ";
 		if ($this->title != "") {
 			$out .= $this->title . ", ";
@@ -137,7 +137,7 @@ class neighbors {
 			$out .= round($d/100)/10 ." km ";
 		} else {
 			$d = round($d/1000);
-			if (d >= 1000) {
+			if ($d >= 1000) {
 				$m = floor($d/1000);
 				$out .= $m.",";
 				$d -= $m*1000;

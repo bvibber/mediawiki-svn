@@ -52,20 +52,22 @@ require_once( "neighbors.php");
 require_once( "maparea.php");
 require_once( "gisversion.php");
 
+global $wgRequest;
+
 if ( isset ( $_GET['geo'] ) ) {
-	$geo = urldecode ( $_GET['geo'] );
-	$title = urldecode ( $_GET['title'] );
+	$geo = $wgRequest->getVal( 'geo' );
+	$title = $wgRequest->getVal( 'title' );
 	$bsl = new map_sources( $geo, $title );
 	$bsl->show();
 } else if ( isset ( $_GET['near'] ) ) {
-	$near = urldecode ( $_GET['near'] ) ;
-	$dist = urldecode ( $_GET['dist'] ) ;
-	$title = urldecode ( $_GET['title'] );
+	$near = $wgRequest->getVal( 'near' );
+	$dist = $wgRequest->getVal( 'dist' );
+	$title = $wgRequest->getVal( 'title' ); 
 	$bsl = new neighbors( $near, $dist, $title );
 	$bsl->show();
 } else if ( isset ( $_GET['maparea'] ) ) {
-	$maparea = urldecode ( $_GET['maparea'] ) ;
-	$action = urldecode ( $_GET['action'] ) ;
+	$maparea = $wgRequest->getVal( 'maparea' );
+	$action = $wgRequest->getVal( 'action' );
 	$bsl = new maparea( $maparea );
 	$bsl->show( $action );
 } else if ( isset ( $_GET['version'] ) ) {

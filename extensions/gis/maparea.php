@@ -87,12 +87,13 @@ class maparea {
 		     . ";region:include(#*)\r\n"
 		     . "\r\n";
 
-		while (($x = $g->fetch_position())) {
-			$id = $x->gis_page;
-			$lat = ($x->gis_latitude_min+$x->gis_latitude_max)/2;
-			$lon = ($x->gis_longitude_min+$x->gis_longitude_max)/2;
-			$type = $x->gis_type;
-			$name = $g->get_title($id);
+		while ( ( $place = $g->fetch_position() ) ) {
+			$id = $place->gis_page;
+			$lat = ($place->gis_latitude_min+$place->gis_latitude_max)/2;
+			$lon = ($place->gis_longitude_min+$place->gis_longitude_max)/2;
+			$type = $place->gis_type;
+			$nt = Title::makeTitle( $place->page_namespace, $place->page_title );
+			$name = $nt->getText();
 			if ($type == "") $type = "unknown";
 
 			$out .= "==[[" . $name . "]]==\r\n"
@@ -102,7 +103,7 @@ class maparea {
 			 or $type == "adm1st"
 			 or $type == "adm2nd") {
 				/* look at population */
-				$a = $x->gis_type_arg;
+				$a = $place->gis_type_arg;
 				if ($a >= 3000000) {
 					$m = 6;
 				} elseif ($a >= 1000000) {

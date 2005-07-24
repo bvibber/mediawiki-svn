@@ -59,7 +59,7 @@ class map_sources {
 	}
 	
 	function build_output() {
-		global $wgOut, $wgUser, $wgContLang;
+		global $wgOut, $wgUser, $wgContLang, $wgRequest;
 
 		if (($e = $this->p->get_error()) != "") {
 			$wgOut->addHTML(
@@ -227,43 +227,67 @@ class map_sources {
 		/*
 		 * Replace in page
 		 */
-		return str_replace( "{latdegdec}",       $lat['deg'],
-		       str_replace( "{londegdec}",       $lon['deg'],
-		       str_replace( "{londegneg}",       -$lon['deg'],
-		       str_replace( "{latdegint}",       $latdegint,
-		       str_replace( "{londegint}",       $londegint,
-		       str_replace( "{latdegabs}",       abs(intval($lat['deg'])),
-		       str_replace( "{londegabs}",       abs(intval($lon['deg'])),
-		       str_replace( "{latmindec}",       $lat['min'],
-		       str_replace( "{lonmindec}",       $lon['min'],
-		       str_replace( "{latminint}",       intval($lat['min']),
-		       str_replace( "{lonminint}",       intval($lon['min']),
-		       str_replace( "{latsecdec}",       $lat['sec'],
-		       str_replace( "{lonsecdec}",       $lon['sec'],
-		       str_replace( "{latsecint}",       intval($lat['sec']),
-		       str_replace( "{lonsecint}",       intval($lon['sec']),
-		       str_replace( "{latNS}",           $lat['NS'],
-		       str_replace( "{lonEW}",           $lon['EW'],
-		       str_replace( "{utmzone}",         $utm->Zone,
-		       str_replace( "{utmnorthing}",     round($utm->Northing),
-		       str_replace( "{utmeasting}",      round($utm->Easting),
-		       str_replace( "{utm33northing}",   round($utm33->Northing),
-		       str_replace( "{utm33easting}",    round($utm33->Easting),
-		       str_replace( "{osgb36ref}",       $osgb36ref,
-		       str_replace( "{osgb36northing}",  round($osgb36->Northing),
-		       str_replace( "{osgb36easting}",   round($osgb36->Easting),
-		       str_replace( "{ch1903northing}",  round($ch1903->Northing),
-		       str_replace( "{ch1903easting}",   round($ch1903->Easting),
-		       str_replace( "{scale}",           $attr['scale'],
-		       str_replace( "{mmscale}",         $mmscale,
-		       str_replace( "{altitude}",        $altitude,
-		       str_replace( "{zoom}",            $zoom,
-		       str_replace( "{span}",            $span,
-		       str_replace( "{type}",            $attr['type'],
-		       str_replace( "{region}",          $attr['region'],
-		       str_replace( "{globe}",           $attr['globe'],
-		       str_replace( "{page}",            $attr['page'],
-		       $bstext ))))))))))))))))))))))))))))))))))));
+		$search = array( 
+			"{latdegdec}", "{londegdec}",
+			"{londegneg}", "{latdegint}",
+			"{londegint}", "{latdegabs}",
+			"{londegabs}", "{latmindec}",
+			"{lonmindec}", "{latminint}",
+			"{lonminint}", "{latsecdec}",
+			"{lonsecdec}", "{latsecint}",
+			"{lonsecint}", "{latNS}",
+			"{lonEW}", "{utmzone}",
+			"{utmnorthing}", "{utmeasting}",
+			"{utm33northing}", "{utm33easting}",
+			"{osgb36ref}", "{osgb36northing}",
+			"{osgb36easting}", "{ch1903northing}",
+			"{ch1903easting}", "{scale}",
+			"{mmscale}", "{altitude}",
+			"{zoom}", "{span}",
+			"{type}", "{region}",
+			"{globe}", "{page}",
+			"{title}" );
+		$replace = array(
+			$lat['deg'],
+			$lon['deg'],
+			-$lon['deg'],
+			$latdegint,
+			$londegint,
+			abs(intval($lat['deg'])),
+			abs(intval($lon['deg'])),
+			$lat['min'],
+			$lon['min'],
+			intval($lat['min']),
+			intval($lon['min']),
+			$lat['sec'],
+			$lon['sec'],
+			intval($lat['sec']),
+			intval($lon['sec']),
+			$lat['NS'],
+			$lon['EW'],
+			$utm->Zone,
+			round($utm->Northing),
+			round($utm->Easting),
+			round($utm33->Northing),
+			round($utm33->Easting),
+			$osgb36ref,
+			round($osgb36->Northing),
+			round($osgb36->Easting),
+			round($ch1903->Northing),
+			round($ch1903->Easting),
+			$attr['scale'],
+			$mmscale,
+			$altitude,
+			$zoom,
+			$span,
+			isset( $attr['type'] ) ? $attr['type'] : "",
+			isset( $attr['region'] ) ? $attr['region'] : "",
+			isset( $attr['globe'] ) ? $attr['globe'] : "",
+			isset( $attr['page'] ) ? $attr['page'] : "",
+			$wgRequest->getVal( 'title', '' )
+		);
+
+		return str_replace( $search, $replace, $bstext );
 	}
 }
 
