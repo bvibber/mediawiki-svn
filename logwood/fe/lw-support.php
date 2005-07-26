@@ -47,7 +47,7 @@ class lw_db {
 		$stmt->bind_result($r_hour, $r_count);
 
 		if (!$stmt->execute()) {
-			printf("MySQL query failed: %s\n", $stmt->error());
+			printf("MySQL query failed: %s\n", $stmt->error);
 			exit();
 		}
 
