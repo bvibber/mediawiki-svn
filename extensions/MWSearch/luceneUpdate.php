@@ -60,6 +60,33 @@ case 'deleted':
 	$since = @$args[1];
 	$ret = $builder->rebuildDeleted( $since );
 	break;
+case 'recent':
+	$builder = new LuceneBuilder();
+	$since = @$args[1];
+	$ret = $builder->rebuildRecent( $since );
+	break;
+case 'random':
+	// fill with random junk for load testing and heap profiling
+	// don't run this on your production database ;)
+	function wfRandomString( $length ) {
+		$str = '';
+		for( $i = 0; $i < $length; $i++ ) {
+			$char = mt_rand( 32, 127 );
+			$str .= chr( $char );
+		}
+		return $str;
+	}
+	while(true) {
+		$randomTitle = Title::makeTitle( NS_MAIN, wfRandomString( 20 ) );
+		$randomText = wfRandomString( 2048 );
+		MWSearchUpdater::updatePage( $wgDBname, $randomTitle, $randomText );
+		$n++;
+		if( $n % 100 == 0 ) {
+			echo MWSearchUpdater::getStatus();
+			LuceneBuilder::wait();
+		}
+	}
+	break;
 default:
 	echo "Unknown command.\n";
 	exit( -1 );
@@ -288,6 +315,63 @@ class LuceneBuilder {
 		
 		return $lastError;
 	}
+
+	/**
+	 * Trawl thorugh the recentchanges log to update pages which have been
+	 * modified since a given date. This gives a chance to catch up if
+	 * the index updater daemon was broken or disabled since last build.
+	 */
+	function rebuildRecent( $since = null ) {
+		global $wgDBname, $options;
+		$fname   = 'LuceneBuilder::rebuildDeleted';
+		
+		if( is_null( $since ) ) {
+			$since = '20010115000000';
+		}
+
+		// Turn buffering back on; these are relatively small.
+		$this->dbstream->bufferResults( true );
+		
+		$cutoff  = $this->dbstream->addQuotes( $this->dbstream->timestamp( $since ) );
+		$recentchanges = $this->dbstream->tableName( 'recentchanges' );
+		$revision      = $this->dbstream->tableName( 'revision' );
+		$page          = $this->dbstream->tableName( 'page' );
+		$result        = $this->dbstream->query(
+			"SELECT *
+			 FROM $recentchanges,$page,$revision
+			 WHERE rc_namespace=page_namespace
+			 AND rc_title=page_title
+			 AND rc_this_oldid=page_latest
+			 AND page_latest=rev_id
+			 AND rc_timestamp > $cutoff", $fname );
+		
+		$max = $this->dbstream->numRows( $result );
+		if( $max == 0 ) {
+			echo "Nothing to do.\n";
+			return;
+		}
+		$this->init( $max );
+		$lastError = true;
+		
+		while( $row = $this->dbstream->fetchObject( $result ) ) {
+			$this->progress();
+			$rev = new Revision( $row );
+			if( is_object( $rev ) ) {
+				$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+				$hit = MWSearchUpdater::updatePage( $wgDBname, $title, $rev->getText() );
+				if( WikiError::isError( $hit ) ) {
+					echo "ERROR: " . $hit->getMessage() . "\n";
+					$lastError = $hit;
+				}
+			}
+		}
+		
+		$this->final();
+		$this->dbstream->freeResult( $result );
+		
+		return $lastError;
+	}
+
 }
 
 ?>
