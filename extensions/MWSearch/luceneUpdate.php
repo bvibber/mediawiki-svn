@@ -330,7 +330,7 @@ class LuceneBuilder {
 		}
 
 		// Turn buffering back on; these are relatively small.
-		$this->dbstream->bufferResults( true );
+		//$this->dbstream->bufferResults( true );
 		
 		$cutoff  = $this->dbstream->addQuotes( $this->dbstream->timestamp( $since ) );
 		$recentchanges = $this->dbstream->tableName( 'recentchanges' );
@@ -345,7 +345,8 @@ class LuceneBuilder {
 			 AND page_latest=rev_id
 			 AND rc_timestamp > $cutoff", $fname );
 		
-		$max = $this->dbstream->numRows( $result );
+		#$max = $this->dbstream->numRows( $result );
+		$max = 10000; // wacky estimate
 		if( $max == 0 ) {
 			echo "Nothing to do.\n";
 			return;
