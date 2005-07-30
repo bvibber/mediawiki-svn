@@ -84,6 +84,17 @@ class MWSearchUpdater {
 	}
 	
 	/**
+	 * Request that the daemon flush and reopen all indexes, without changing
+	 * the global is-running state, and that indexes should be optimized when
+	 * closed.
+	 * @return bool
+	 * @static
+	 */
+	function optimize() {
+		return MWSearchUpdater::sendRPC( 'searchupdater.optimize' );
+	}
+	
+	/**
 	 * Request that the daemon flush and reopen a given index, without changing
 	 * the global is-running state.
 	 * @return bool
