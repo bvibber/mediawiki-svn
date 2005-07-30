@@ -161,6 +161,8 @@ class LogPage {
 			'block/unblock'     => 'unblocklogentry',
 			'protect/protect'   => 'protectedarticle',
 			'protect/unprotect' => 'unprotectedarticle',
+			'protect/verify'    => 'verifiedarticle',
+			'protect/unverify'  => 'unverifiedarticle',
 			'rights/rights'     => 'bureaucratlogentry',
 			'rights/addgroup'   => 'addgrouplogentry',
 			'rights/rngroup'    => 'renamegrouplogentry',

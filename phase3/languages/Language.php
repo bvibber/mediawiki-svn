@@ -1346,6 +1346,11 @@ See [[Project:Protected page]] for more information.",
 'unprotectcomment' => 'Reason for unprotecting',
 'protectreason' => '(give a reason)',
 
+# Verify
+'verifiedarticle' => 'set "[[$1]]" as verified',
+'unverifiedarticle' => 'set "[[$1]]" as not verified',
+
+
 # Undelete
 'undelete' => 'Restore deleted page',
 'undeletepage' => 'View and restore deleted pages',

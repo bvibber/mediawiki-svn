@@ -612,7 +612,7 @@ class SkinTemplate extends Skin {
 				}
 
 				if($wgEnableVerify && $wgUser->isAllowed('verify')) {
-					if(!$this->mTitle->isVerified() || (isset($oldid) && ($oldid != $this->mTitle->getIdVerified()))) {
+					if(!$this->mTitle->isVerified() || (isset($oldid) && ($oldid != $this->mTitle->getVerifiedRev()))) {
 						$oid = !isset( $oldid ) ? "" : '&oldid='.$oldid;
 						$content_actions['verify'] = array(
 							'class' => ($action == 'verify') ? 'selected' : false,

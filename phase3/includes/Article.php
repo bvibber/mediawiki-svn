@@ -36,7 +36,7 @@ class Article {
 	var $mOldId;
 	var $mRevIdFetched;
 	var $mRevision;
-	var $mIdVerified;
+	var $mVerifiedRev;
 	/**#@-*/
 
 	/**
@@ -79,9 +79,10 @@ class Article {
 	 * not told otherwise, and so may cause a change to mTitle.
 	 *
 	 * @param $noredir
+	 * @param $use_verified_rev
 	 * @return Return the text of this revision
 	*/
-	function getContent( $noredir, $use_idverified = false ) {
+	function getContent( $noredir, $use_verified_rev = false ) {
 		global $wgRequest, $wgUser, $wgOut;
 
 		# Get variables from query string :P
@@ -108,7 +109,7 @@ class Article {
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 			return wfMsg( 'noarticletext' );
 		} else {
-			$this->loadContent( $noredir, $use_idverified );
+			$this->loadContent( $noredir, $use_verified_rev );
 			# check if we're displaying a [[User talk:x.x.x.x]] anonymous talk page
 			if ( $this->mTitle->getNamespace() == NS_USER_TALK &&
 			  $wgUser->isIP($this->mTitle->getText()) &&
@@ -151,6 +152,7 @@ class Article {
 			if($rev) {
 				return $rev->getText();
 				}
+
 			}
 		}
 		return '';
@@ -275,7 +277,7 @@ class Article {
 	/**
 	 * Load the revision (including cur_text) into this object
 	 */
-	function loadContent( $noredir = false, $use_idverified = false ) {
+	function loadContent( $noredir = false, $use_verified_rev = false ) {
 		global $wgOut, $wgRequest;
 
 		if ( $this->mContentLoaded ) return;
@@ -294,7 +296,7 @@ class Article {
 		$noredir = $noredir || ($wgRequest->getVal( 'redirect' ) == 'no')
 			|| $wgRequest->getCheck( 'rdfrom' );
 		$this->mOldId = $oldid;
-		$this->fetchContent( $oldid, $noredir, true, $use_idverified );
+		$this->fetchContent( $oldid, $noredir, true, $use_verified_rev );
 
 	}
 
@@ -318,7 +320,7 @@ class Article {
 				'page_random',
 				'page_touched',
 				'page_latest',
-				'page_idverified',
+				'page_verified_rev',
 				'page_len' ),
 			$conditions,
 			'Article::pageData' );
@@ -346,13 +348,13 @@ class Article {
 		$this->mTitle->loadRestrictions( $data->page_restrictions );
 		$this->mTitle->mRestrictionsLoaded = true;
 
-		$this->mCounter    = $data->page_counter;
-		$this->mTouched    = wfTimestamp( TS_MW, $data->page_touched );
-		$this->mIsRedirect = $data->page_is_redirect;
-		$this->mLatest     = $data->page_latest;
-		$this->mIdVerified = $data->page_idverified;
+		$this->mCounter     = $data->page_counter;
+		$this->mTouched     = wfTimestamp( TS_MW, $data->page_touched );
+		$this->mIsRedirect  = $data->page_is_redirect;
+		$this->mLatest      = $data->page_latest;
+		$this->mVerifiedRev = $data->page_verified_rev;
 
-		$this->mDataLoaded = true;
+		$this->mDataLoaded  = true;
 	}
 
 	/**
@@ -362,7 +364,7 @@ class Article {
 	 * @param bool $globalTitle Set to true to change the global $wgTitle object when following redirects or other unexpected title changes
 	 * @return string
 	 */
-	function fetchContent( $oldid = 0, $noredir = true, $globalTitle = false, $use_idverified = false ) {
+	function fetchContent( $oldid = 0, $noredir = true, $globalTitle = false, $use_verified_rev = false ) {
 		if ( $this->mContentLoaded ) {
 			return $this->mContent;
 		}
@@ -403,7 +405,7 @@ class Article {
 				}
 				$this->loadPageData( $data );
 			}
-			$revision = Revision::newFromId( ( $use_idverified && ($this->mIdVerified != 0 ) ) ? $this->mIdVerified : $this->mLatest );
+			$revision = Revision::newFromId( ( $use_verified_rev && ($this->mVerifiedRev != 0 ) ) ? $this->mVerifiedRev : $this->mLatest );
 			if( is_null( $revision ) ) {
 				wfDebug( "$fname failed to retrieve current page, rev_id $data->page_latest\n" );
 				return false;
@@ -434,7 +436,7 @@ class Article {
 				}
 				$redirData = $this->pageDataFromTitle( $dbr, $rt );
 				if( $redirData ) {
-					$redirRev = Revision::newFromId( ( $use_idverified && ($redirData->page_idverified != 0) ) ? $redirData->page_idverified : $redirData->page_latest );
+					$redirRev = Revision::newFromId( ( $use_verified_rev && ($redirData->page_verified_rev != 0) ) ? $redirData->page_verified_rev : $redirData->page_latest );
 					if( !is_null( $redirRev ) ) {
 						$this->mRedirectedFrom = $this->mTitle->getPrefixedText();
 						$this->mTitle = $rt;
@@ -756,9 +758,9 @@ class Article {
 		}
 		if ( !$outputDone ) {
 			# Check if we must use verify protection
-			$use_idverified = $wgEnableVerify;
+			$use_verified_rev = $wgEnableVerify;
 
-			$text = $this->getContent( false, $use_idverified ); # May change mTitle by following a redirect
+			$text = $this->getContent( false, $use_verified_rev ); # May change mTitle by following a redirect
 
 			# Another whitelist check in case oldid or redirects are altering the title
 			if ( !$this->mTitle->userCanRead() ) {
@@ -776,7 +778,7 @@ class Article {
 
 			# We are looking at the latest verified revision but there have been some other edits
 			$s = '';
-			if ( $wgEnableVerify && empty( $oldid ) && !empty( $this->mIdVerified ) && ($this->mLatest != $this->mIdVerified) ) {
+			if ( $wgEnableVerify && empty( $oldid ) && !empty( $this->mVerifiedRev ) && ($this->mLatest != $this->mVerifiedRev) ) {
 				$sk = $wgUser->getSkin();
 				$current = $sk->makeKnownLink( $this->mTitle->GetPartialURL(), '',
 				  "oldid={$this->mLatest}" );
@@ -969,7 +971,7 @@ class Article {
 			'page_random'       => wfRandom(),
 			'page_touched'      => $dbw->timestamp(),
 			'page_latest'       => 0, # Fill this in shortly...
-			'page_idverified'   => 0
+			'page_verified_rev' => 0
 		), $fname );
 		$newid = $dbw->insertId();
 
@@ -1698,25 +1700,27 @@ class Article {
 
 		$lastRevision = $dbw->selectField(
 			'page', 'page_latest', array( 'page_id' => $id ) );
-		$page_idverified = $dbw->selectField(
-			'page', 'page_idverified', array( 'page_id' => $id ) );
+		$page_verified_rev = $dbw->selectField(
+			'page', 'page_verified_rev', array( 'page_id' => $id ) );
 
-		if ( !isset($oldid) && !$page_idverified ){
+		if ( !isset($oldid) && !$page_verified_rev ){
 			# Set verify protection
-			$new_idverified = $lastRevision;
-		} else if ( !isset($oldid) && $page_idverified ) {
+			$new_verified_rev = $lastRevision;
+		} else if ( !isset($oldid) && $page_verified_rev ) {
 			# Don't do nothing
 			$wgOut->redirect( $this->mTitle->getFullURL() );
 			return;
 		} else /* if isset($oldid) */ {
-		    # Update page_idverified to the wanted revision
-		    $new_idverified = $oldid;
+			# Update page_verified_rev to the wanted revision
+			$new_verified_rev = $oldid;
 		}
+
+		$addEntryToLog = ( $page_verified_rev == 0 );
 
 		$dbw->update( 'page',
 			array( /* SET */
 				'page_touched' => $dbw->timestamp(),
-				'page_idverified' => $new_idverified
+				'page_verified_rev' => $new_verified_rev
 			), array( /* WHERE */
 				'page_id' => $id
 			), 'Article::verify'
@@ -1735,7 +1739,11 @@ class Article {
  			array_push( $wgPostCommitUpdateList, $u );
  		}
 
-		# TODO: Add an entry to some log page
+		if ( $addEntryToLog ) {
+			# Add an entry to the log if the article was not verified yet
+			$log = new LogPage( 'protect' );
+			$log->addEntry( 'verify', $this->mTitle, "" );
+		}
             
 		$wgOut->redirect( $this->mTitle->getFullURL() );
 
@@ -1766,7 +1774,7 @@ class Article {
 		$dbw->update( 'page',
 			array( /* SET */
 				'page_touched' => $dbw->timestamp(),
-				'page_idverified' => 0
+				'page_verified_rev' => 0
 			), array( /* WHERE */
 				'page_id' => $id
 			), 'Article::unverify'
@@ -1783,7 +1791,9 @@ class Article {
  			array_push( $wgPostCommitUpdateList, $u );
  		}
 
-		# TODO: Add an entry to some log page
+		# Add an entry to the log
+		$log = new LogPage( 'protect' );
+		$log->addEntry( 'unverify', $this->mTitle, "" );
            
 		$wgOut->redirect( $this->mTitle->getFullURL() );
 

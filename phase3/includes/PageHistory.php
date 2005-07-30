@@ -251,7 +251,7 @@ class PageHistory {
 		$s = '<li>';
 
 		# Print the row bold if it's the verified revision
-		if ($wgEnableVerify && $this->mArticle->mIdVerified == $row->rev_id) $s .= '<b>';
+		if ($wgEnableVerify && $this->mArticle->mVerifiedRev == $row->rev_id) $s .= '<b>';
 
 
 		if( $row->rev_deleted ) {
@@ -275,7 +275,7 @@ class PageHistory {
 		}
 		$s .= '</li>';
 
-		if ($wgEnableVerify && $this->mArticle->mIdVerified == $row->rev_id) $s .= '</b>';
+		if ($wgEnableVerify && $this->mArticle->mVerifiedRev == $row->rev_id) $s .= '</b>';
 
 		return $s;
 	}

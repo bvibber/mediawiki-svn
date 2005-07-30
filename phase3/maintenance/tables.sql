@@ -194,7 +194,7 @@ CREATE TABLE /*$wgDBprefix*/page (
 
   -- Key to revision.rev_id of the revision marked as "verified"
   -- This is 0 if verify protection is not enabled
-  page_idverified int(8) unsigned NOT NULL,
+  page_verifed_rev int(8) unsigned NOT NULL,
   
   -- Uncompressed length in bytes of the page's current source text.
   page_len int(8) unsigned NOT NULL,

@@ -45,7 +45,7 @@ class Title {
 	var $mLatestID;         # ID of most recent revision
 	var $mRestrictions;       # Array of groups allowed to edit this article
                               # Only null or "sysop" are supported
-	var $mIdVerified;         # page_idverified
+	var $mVerifiedRev;        # page_verified_rev
 	var $mRestrictionsLoaded; # Boolean for initialisation on demand
 	var $mPrefixedText;       # Text form including namespace/interwiki, initialised on demand
 	var $mDefaultNamespace;   # Namespace index when there is no namespace
@@ -865,18 +865,18 @@ class Title {
 	}
 
  	/**
-	 * Gets page_idverified
+	 * Gets page_verified_rev
 	 * @return int
 	 * @access public
 	 */
-	function getIdVerified() {
+	function getVerifiedRev() {
 		$id = $this->getArticleID();
 		if ($id == 0) return 0;
-		if ( empty( $this->mIdVerified ) ) {
+		if ( empty( $this->mVerifiedRev ) ) {
 			$dbr =& wfGetDB( DB_SLAVE );
-			$this->mIdVerified = $dbr->selectField( 'page', 'page_idverified', array( 'page_id' => $id ) );            
+			$this->mVerifiedRev = $dbr->selectField( 'page', 'page_verified_rev', array( 'page_id' => $id ) );            
 		}
-		return $this->mIdVerified;
+		return $this->mVerifiedRev;
 	}
 
 	/**
@@ -885,7 +885,7 @@ class Title {
 	 * @access public
 	 */
 	function isVerified() {
-		return ($this->getIdVerified() != 0);
+		return ($this->getVerifiedRev() != 0);
 	}
 
 	/**
