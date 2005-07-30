@@ -91,6 +91,12 @@ namespace MediaWiki.Search.UpdateDaemon {
 			UpdateThread.Quit();
 			return true;
 		}
+		
+		[XmlRpcMethod("searchupdater.optimize")]
+		public bool Optimize() {
+			UpdateThread.Optimize();
+			return true;
+		}
 	
 	}
 }

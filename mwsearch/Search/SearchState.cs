@@ -391,5 +391,10 @@ namespace MediaWiki.Search {
 		public Query Parse(string term) {
 			return QueryParser.Parse(term, "contents", analyzer);
 		}
+		
+		public void Optimize() {
+			OpenForWrite();
+			writer.Optimize();
+		}
 	}
 }

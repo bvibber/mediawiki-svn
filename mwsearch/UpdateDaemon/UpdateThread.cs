@@ -35,6 +35,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 		static bool _isRunning = false;
 		static bool _done = false;
 		static bool _flushNow = false;
+		static bool _flushOptimize = false;
 		static object _threadLock = new object();
 		
 		// If more than this number are queued, try to flush out updates
@@ -64,7 +65,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 			
 			// Apply any remaining updates before we quit
 			lock (_threadLock) {
-				ApplyAll(_queuedUpdates);
+				ApplyAll(_queuedUpdates, _flushOptimize);
 			}
 			
 			log.Info("Updater thread ending, quit requested.");
@@ -74,6 +75,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 			log.Debug("Checking for updates...");
 			try {
 				Hashtable workUpdates = null;
+				bool optimize;
 				lock (_threadLock) {
 					if (!_isRunning && !_flushNow) {
 						log.Debug("Update thread suspended.");
@@ -97,8 +99,9 @@ namespace MediaWiki.Search.UpdateDaemon {
 					}
 					
 					workUpdates = SwitchOut();
+					optimize = _flushOptimize;
 				}
-				ApplyAll(workUpdates);
+				ApplyAll(workUpdates, optimize);
 			} catch (Exception e) {
 				log.Error("Unexpected error in update thread: " + e);
 				return;
@@ -119,12 +122,13 @@ namespace MediaWiki.Search.UpdateDaemon {
 				_queuedUpdates = new Hashtable();
 				_lastFlush = DateTime.UtcNow;
 				_flushNow = false;
+				_flushOptimize = false;
 				
 				return workUpdates;
 			}
 		}
 		
-		private static void ApplyOn(string databaseName, ICollection queue) {
+		private static void ApplyOn(string databaseName, ICollection queue, bool optimize) {
 			try {
 				log.Info("Applying updates to " + databaseName);
 				SearchState state = GetSearchState(databaseName);
@@ -136,6 +140,8 @@ namespace MediaWiki.Search.UpdateDaemon {
 					log.Info("Applying write pass: " + record);
 					record.ApplyWrites(state);
 				}
+				if (optimize)
+					state.Optimize();
 				state.Reopen();
 				log.Info("Closed updates on " + databaseName);
 			} catch (Exception e) {
@@ -144,9 +150,9 @@ namespace MediaWiki.Search.UpdateDaemon {
 			}
 		}
 
-		private static void ApplyAll(Hashtable workUpdates) {
+		private static void ApplyAll(Hashtable workUpdates, bool optimize) {
 			foreach (string dbname in workUpdates.Keys) {
-				ApplyOn(dbname, ((Hashtable)workUpdates[dbname]).Values);
+				ApplyOn(dbname, ((Hashtable)workUpdates[dbname]).Values, optimize);
 			}
 		}
 		
@@ -212,6 +218,12 @@ namespace MediaWiki.Search.UpdateDaemon {
 		
 		public static void Flush() {
 			log.Info("Flush requested.");
+			_flushNow = true;
+		}
+		
+		public static void Optimize() {
+			log.Info("Flush with optimization requested.");
+			_flushOptimize = true;
 			_flushNow = true;
 		}
 	}
