@@ -35,6 +35,9 @@ case 'status':
 case 'quit':
 	$ret = MWSearchUpdater::quit();
 	break;
+case 'optimize':
+	$ret = MWSearchUpdater::optimize();
+	break;
 case 'update':
 	$title = Title::newFromText( $args[1] );
 	if( is_null( $title ) ) {
