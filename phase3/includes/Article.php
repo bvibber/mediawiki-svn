@@ -574,6 +574,7 @@ class Article {
 			$titleObj = Title::newFromRedirect( $text );
 		}
 		return $titleObj !== NULL;
+
 	}
 
 	/**
@@ -1673,9 +1674,8 @@ class Article {
 
 	/**
 	 * set verify protection to the page
-
 	 */
-	function verify() {
+	function verify($unverify = false) {
 		global $wgUser, $wgOut, $wgRequest;
 
 		if ( ! $wgUser->isAllowed('verify') ) {
@@ -1693,9 +1693,6 @@ class Article {
 			return;
 		}
 
-		$oldid = $this->getOldID();
-
-		#TODO: how can avoid this?
 		$dbw =& wfGetDB( DB_MASTER );
 
 		$lastRevision = $dbw->selectField(
@@ -1703,101 +1700,137 @@ class Article {
 		$page_verified_rev = $dbw->selectField(
 			'page', 'page_verified_rev', array( 'page_id' => $id ) );
 
-		if ( !isset($oldid) && !$page_verified_rev ){
-			# Set verify protection
-			$new_verified_rev = $lastRevision;
-		} else if ( !isset($oldid) && $page_verified_rev ) {
-			# Don't do nothing
-			$wgOut->redirect( $this->mTitle->getFullURL() );
-			return;
-		} else /* if isset($oldid) */ {
-			# Update page_verified_rev to the wanted revision
-			$new_verified_rev = $oldid;
+
+		if ( !$unverify ) {
+			# Action: verify
+			$oldid = $this->getOldID();
+			if ( !isset($oldid) && !$page_verified_rev ){
+				# Set verify protection
+				$new_verified_rev = $lastRevision;
+			} else if ( !isset($oldid) && $page_verified_rev ) {
+				# Don't do nothing
+				$wgOut->redirect( $this->mTitle->getFullURL() );
+				return;
+			} else /* if isset($oldid) */ {
+				# Update page_verified_rev to the wanted revision
+				$new_verified_rev = $oldid;
+			}
+			# We don't add an entry to the log if article was being verified yet
+			$addEntryToLog = ( $page_verified_rev == 0 );
+		} else {
+			# Action: unverify
+			$new_verified_rev = 0;
+			$addEntryToLog = true;
 		}
 
-		$addEntryToLog = ( $page_verified_rev == 0 );
+		$confirm = $wgRequest->wasPosted() &&
+			$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) );
+		$reason = $wgRequest->getText( 'wpReasonVerify' );
 
-		$dbw->update( 'page',
-			array( /* SET */
-				'page_touched' => $dbw->timestamp(),
-				'page_verified_rev' => $new_verified_rev
-			), array( /* WHERE */
-				'page_id' => $id
-			), 'Article::verify'
-		);
+		# We do not show confirmation dialog if the article was verified yet
+		if ( $confirm || !$addEntryToLog ) {
+			$dbw->update( 'page',
+				array( /* SET */
+					'page_touched' => $dbw->timestamp(),
+					'page_verified_rev' => $new_verified_rev
+				), array( /* WHERE */
+					'page_id' => $id
+				), 'Article::verify'
+			);
 
 
-		# TODO: is this correct?
-		$this->mTitle->invalidateCache();
+			/*
+			# TODO: check if this is needed
+			$this->mTitle->invalidateCache();
 
- 		if ( $wgUseSquid ) {
- 			$urls = array(
- 				$this->mTitle->getInternalURL(),
- 				$this->mTitle->getInternalURL( 'history' )
- 			);
-  			$u = new SquidUpdate( $urls );
- 			array_push( $wgPostCommitUpdateList, $u );
- 		}
+ 			if ( $wgUseSquid ) {
+	 			$urls = array(
+ 					$this->mTitle->getInternalURL(),
+ 					$this->mTitle->getInternalURL( 'history' )
+ 				);
+	  			$u = new SquidUpdate( $urls );
+ 				array_push( $wgPostCommitUpdateList, $u );
+ 			} */
 
-		if ( $addEntryToLog ) {
-			# Add an entry to the log if the article was not verified yet
-			$log = new LogPage( 'protect' );
-			$log->addEntry( 'verify', $this->mTitle, "" );
-		}
+			if ( $addEntryToLog ) {
+				$log = new LogPage( 'protect' );
+				if ( !$unverify )
+					$log->addEntry( 'verify', $this->mTitle, $reason );
+				else
+					$log->addEntry( 'unverify', $this->mTitle, $reason );
+			}
             
-		$wgOut->redirect( $this->mTitle->getFullURL() );
+			$wgOut->redirect( $this->mTitle->getFullURL() );
 
-		return;
+			return;
+		} else {
+			$reason = htmlspecialchars( wfMsg( 'verifyreason' ) );
+			return $this->confirmVerify( '', $reason, $unverify );
+		}
+
+
+	}
+
+	/**
+	 * Output verify protection confirmation dialog
+	 */
+	function confirmVerify( $par, $reason, $unverify = false ) {
+		global $wgOut, $wgUser;
+
+		wfDebug( "Article::confirmVerify\n" );
+
+		$sub = $this->mTitle->getPrefixedText();
+		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+
+		$check = '';
+		$protcom = '';
+
+		if ( $unverify ) {
+			$wgOut->setPageTitle( wfMsg( 'confirmunverify' ) );
+			$wgOut->setSubtitle( wfMsg( 'unverifysub', $sub ) );
+			$wgOut->addWikiText( wfMsg( 'confirmunverifytext' ) );
+			$protcom = htmlspecialchars( wfMsg( 'unverifycomment' ) );
+			$formaction = $this->mTitle->escapeLocalURL( 'action=unverify' . $par );
+		} else {
+			$wgOut->setPageTitle( wfMsg( 'confirmverify' ) );
+			$wgOut->setSubtitle( wfMsg( 'verifysub', $sub ) );
+			$wgOut->addWikiText( wfMsg( 'confirmverifytext' ) );
+			$protcom = htmlspecialchars( wfMsg( 'verifycomment' ) );
+			$formaction = $this->mTitle->escapeLocalURL( 'action=verify' . $par );
+		}
+
+		$confirm = htmlspecialchars( wfMsg( 'confirm' ) );
+		$token = htmlspecialchars( $wgUser->editToken() );
+
+		$wgOut->addHTML( "
+<form id='verifyconfirm' method='post' action=\"{$formaction}\">
+	<table border='0'>
+		<tr>
+			<td align='right'>
+				<label for='wpReasonVerify'>{$protcom}:</label>
+			</td>
+			<td align='left'>
+				<input type='text' size='60' name='wpReasonVerify' id='wpReasonVerify' value=\"" . htmlspecialchars( $reason ) . "\" />
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>
+				<input type='submit' name='wpConfirmVerifyB' value=\"{$confirm}\" />
+			</td>
+		</tr>
+	</table>
+	<input type='hidden' name='wpEditToken' value=\"{$token}\" />
+</form>" );
+
+		$wgOut->returnToMain( false );
 	}
 
 	/**
 	 * remove verify protection to the page
 	 */
 	function unverify() {
-		global $wgUser, $wgOut, $wgRequest;
-
-		if ( ! $wgUser->isAllowed('unverify') ) {
-			$wgOut->sysopRequired();
-			return;
-		}
-		if ( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
-			return;
-		}
-		$id = $this->mTitle->getArticleID();
-		if ( 0 == $id ) {
-			$wgOut->fatalError( wfMsg( 'badarticleerror' ) );
-			return;
-		}
-
-		$dbw =& wfGetDB( DB_MASTER );
-		$dbw->update( 'page',
-			array( /* SET */
-				'page_touched' => $dbw->timestamp(),
-				'page_verified_rev' => 0
-			), array( /* WHERE */
-				'page_id' => $id
-			), 'Article::unverify'
-		);
-
-		$this->mTitle->invalidateCache();
-
- 		if ( $wgUseSquid ) {
- 			$urls = array(
- 				$this->mTitle->getInternalURL(),
- 				$this->mTitle->getInternalURL( 'history' )
- 			);
-  			$u = new SquidUpdate( $urls );
- 			array_push( $wgPostCommitUpdateList, $u );
- 		}
-
-		# Add an entry to the log
-		$log = new LogPage( 'protect' );
-		$log->addEntry( 'unverify', $this->mTitle, "" );
-           
-		$wgOut->redirect( $this->mTitle->getFullURL() );
-
-		return;
+		$this->verify(true);
 	}
 
 

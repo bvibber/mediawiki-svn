@@ -1349,7 +1349,15 @@ See [[Project:Protected page]] for more information.",
 # Verify
 'verifiedarticle' => 'set "[[$1]]" as verified',
 'unverifiedarticle' => 'set "[[$1]]" as not verified',
-
+'verifysub' => '(Setting "$1" as verified)',
+'confirmverifytext' => 'Do you really want to add the verify protection to this page?',
+'confirmverify' => 'Confirm verify protection',
+'verifycomment' => 'Reason for protecting',
+'unverifysub' =>"(Setting \"$1\" as unverified)",
+'confirmunverifytext' => 'Do you really want to remove the verify protection from this page?',
+'confirmunverify' => 'Confirm verify protection removal',
+'unverifycomment' => 'Reason for unprotecting',
+'verifyreason' => '(give a reason)',
 
 # Undelete
 'undelete' => 'Restore deleted page',
