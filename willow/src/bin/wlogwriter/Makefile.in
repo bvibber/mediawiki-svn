@@ -1,8 +1,0 @@
-PROGRAM = wlogwriter
-
-SRCS = wlogwriter.c
-BINDIR=@libexecdir@
-
-EXTRA_DIST=Makefile.in
-
-@include@ @q@@top_srcdir@/mk/prog.mk@q@
