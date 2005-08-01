@@ -51,6 +51,8 @@ function wfMetaDataActionHook( $action, &$article ) {
 function wfMetaDataParserHook( $text, $params, &$parser ) {
 	// Expand templates
 	$text = $parser->replaceVariables( $text );
+
+	print "$text\n\n\n";
 	
 	if ( !isset( $parser->mOutput->mMetaData ) ) {
 		$parser->mMetaData = array();
@@ -72,7 +74,7 @@ function wfMetaDataParserHook( $text, $params, &$parser ) {
 	// Display text if requested
 	if ( isset( $params['display'] ) ) {
 		if ( ( $params['display'] == 'immediate' && !count( $parser->mArgStack ) ) 
-       			|| $params['display'] == 'always' || $params['display'] === '' )
+       			|| $params['display'] == 'always' || $params['display'] === 'display' /*default*/ )
 		{
 			return $parser->internalParse( nl2br( $text ) );
 		}
