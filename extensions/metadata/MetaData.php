@@ -52,8 +52,6 @@ function wfMetaDataParserHook( $text, $params, &$parser ) {
 	// Expand templates
 	$text = $parser->replaceVariables( $text );
 
-	print "$text\n\n\n";
-	
 	if ( !isset( $parser->mOutput->mMetaData ) ) {
 		$parser->mMetaData = array();
 	}
