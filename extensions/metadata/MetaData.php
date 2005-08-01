@@ -39,7 +39,7 @@ function wfMetaDataActionHook( $action, &$article ) {
 	}
 	$s = '';
 	foreach ( $pout->mMetaData as $pair ) {
-		list( $key, $value ) = explode( '=', $pair );
+		list( $key, $value ) = explode( '=', $pair, 2 );
 		$s .= "$key = $value<br />";
 	}
 	$wgOut->addWikiText( $s );
