@@ -174,6 +174,8 @@ namespace MediaWiki.Search.Daemon {
 			} else if (what.Equals("quit")) {
 				// TEMP HACK for profiling
 				System.Environment.Exit(0);
+			} else if (what.Equals("raw")) {
+				DoRawSearch();
 			} else {
 				SendHeaders(404, "Search type not found");
 				log.Warn("Unknown request type [" + what + "]; ignoring.");
@@ -293,6 +295,25 @@ namespace MediaWiki.Search.Daemon {
 				}
 			} catch (Exception e) {
 				log.Error(e.Message + e.StackTrace);
+			}
+		}
+		
+		void DoRawSearch() {
+			DateTime now = DateTime.UtcNow;
+			Query query = state.Parse(searchterm);
+			Hits hits = state.Searcher.Search(query);
+			
+			int numhits = hits.Length();
+			TimeSpan delta = DateTime.UtcNow - now;
+			LogRequest("(raw)", query, numhits, delta);
+			
+			SendHeaders(200, "OK");
+			for (int i = 0; i < numhits && i < 10; i++) {
+				Document doc = hits.Doc(i);
+				float score = hits.Score(i);
+				string pageNamespace = doc.Get("namespace");
+				string title = doc.Get("title");
+				SendResultLine(score, pageNamespace, title);
 			}
 		}
 

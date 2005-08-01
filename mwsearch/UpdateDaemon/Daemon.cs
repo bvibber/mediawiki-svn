@@ -57,6 +57,12 @@ namespace MediaWiki.Search.UpdateDaemon {
 			return true;
 		}
 		
+		[XmlRpcMethod("searchupdater.updatePageData")]
+		public bool UpdatePageData(string databaseName, Title title, string text, KeyValue[] metadata) {
+			UpdateThread.Enqueue(new PageUpdate(databaseName, title, text, metadata));
+			return true;
+		}
+		
 		[XmlRpcMethod("searchupdater.deletePage")]
 		public bool DeletePage(string databaseName, Title title) {
 			UpdateThread.Enqueue(new PageDeletion(databaseName, title));

@@ -63,6 +63,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 	}
 	
 	public class PageUpdate : UpdateRecord {
+		private KeyValue[] _metadata;
 		public PageUpdate(string databaseName, Title title, string text) {
 			_database = databaseName;
 			_article = new Article(databaseName,
@@ -70,8 +71,16 @@ namespace MediaWiki.Search.UpdateDaemon {
 				text, "bogus timestamp");
 		}
 		
+		public PageUpdate(string databaseName, Title title, string text, KeyValue[] metadata) {
+			_database = databaseName;
+			_article = new Article(databaseName,
+				title.Namespace.ToString(), title.Text,
+				text, "bogus timestamp");
+			_metadata = metadata;
+		}
+		
 		public override void ApplyWrites(SearchState state) {
-			state.AddArticle(_article);
+			state.AddArticle(_article, _metadata);
 		}
 		
 		public override string ToString() {

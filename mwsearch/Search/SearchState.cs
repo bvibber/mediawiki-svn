@@ -40,6 +40,11 @@ namespace MediaWiki.Search {
 	using Lucene.Net.Search;
 	using Lucene.Net.Store;
 
+	public struct KeyValue {
+		public string Key;
+		public string Value;
+	}
+	
 	/**
 	 * @author Kate Turner
 	 *
@@ -286,6 +291,10 @@ namespace MediaWiki.Search {
 		}
 		
 		public void AddArticle(Article article) {
+			AddArticle(article, new KeyValue[] {});
+		}
+		
+		public void AddArticle(Article article, KeyValue[] metadata) {
 			OpenForWrite();
 			Document d = new Document();
 			// This will be used to look up and replace entries on index updates.
@@ -299,6 +308,10 @@ namespace MediaWiki.Search {
 			// Clients can pull up-to-date text from the source database for hit matching.
 			d.Add(new Field("contents", StripWiki(article.Contents), 
 					false, true, true));
+			
+			foreach(KeyValue pair in metadata) {
+				d.Add(new Field("metadata." + pair.Key, pair.Value, false, true, true));
+			}
 			writer.AddDocument(d);
 			
 			// CountOrMerge();
