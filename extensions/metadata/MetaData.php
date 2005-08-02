@@ -37,11 +37,14 @@ function wfMetaDataActionHook( $action, &$article ) {
 		// Done with hook chain
 		return false;
 	}
-	$s = '';
+	$nameMsg = wfMsg( 'metadata_name' );
+	$valueMsg = wfMsg( 'metadata_value' );
+	$s = "<table border=\"1\"><tr><th>$nameMsg</th><th>$valueMsg</th></tr>";
 	foreach ( $pout->mMetaData as $pair ) {
 		list( $key, $value ) = explode( '=', $pair, 2 );
-		$s .= "$key = $value<br />";
+		$s .= "<tr><td>$key</td><td>$value</td></tr>\n";
 	}
+	$s .= "</table>";
 	$wgOut->addWikiText( $s );
 
 	// Done with hook chain
@@ -93,6 +96,8 @@ function wfMetaDataSetup() {
 		'metadata_noarticle' => 'The specified article does not exist',
 		'metadata_nometa' => 'No key/value pairs were found',
 		'metadata_title' => 'Metadata for $1',
+		'metadata_name' => 'Name',
+		'metadata_value' => 'Value',
 	));
 }
 
