@@ -50,8 +50,11 @@ function wfMetaDataActionHook( $action, &$article ) {
 
 function wfMetaDataParserHook( $text, $params, &$parser ) {
 	// Expand templates
-	$text = $parser->replaceVariables( $text );
+	$text = $parser->replaceVariables( $text, $parser->mAssocArgs );
+	$text = $parser->unstrip( $text, $parser->mStripState );
+	$text = $parser->unstripNoWiki( $text, $parser->mStripState );
 
+	// Initialise mMetaData
 	if ( !isset( $parser->mOutput->mMetaData ) ) {
 		$parser->mMetaData = array();
 	}
