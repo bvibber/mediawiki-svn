@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+# $Id$
 
 execfile("/home/kate/degree.cf", globals());
 
@@ -58,7 +59,10 @@ namespaces = {
 }
 
 def ns2name(ns):
+    try:
 	return namespaces[ns]
+    except KeyError:
+        return "Unknown namespace %d" % ns
 
 def editcount(user):
 	ns = dict()
@@ -77,7 +81,7 @@ def editcount(user):
             total += t[1]
             t = c.fetchone()
         print "</table>"
-        print "<hr/>Total edits for <string>%s</strong>: %d<br/>" % (cgi.escape(user), total)
+        print "<hr/>Total edits for <strong>%s</strong>: %d<br/>" % (cgi.escape(user), total)
 	return
 
 if f.has_key('user'):
