@@ -364,10 +364,12 @@ class MakesysopStewardForm extends UserrightsForm {
 	
 	function getUserId( $database, $name ) {
 		$table = $this->tableName( $database, 'user' );
-		return IntVal( $this->db->selectField( $table,
-			'user_id',
-			array( 'user_name' => $name ),
-			'MakesysopStewardForm::getUserId' ) );
+		return ( $name{0} == "#" )
+			? IntVal( substr( $name, 1 ) )
+			: IntVal( $this->db->selectField( $table,
+				'user_id',
+				array( 'user_name' => $name ),
+				'MakesysopStewardForm::getUserId' ) );
 	}
 	
 	function getUserGroups( $database, $userid ) {
