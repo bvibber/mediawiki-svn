@@ -1,4 +1,9 @@
 <?
+# Example use :
+#
+# There is a <citation>author=Manske M ||title="The best paper ever" ||journal=''Biochemistry'' ||volume='''5''', 11</citation> citation here!
+
+
 $wgHooks['ParserBeforeTidy'][] = 'citation_hooker' ;
 $wgExtensionFunctions[] = "wfCitation";
 
