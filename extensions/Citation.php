@@ -1,4 +1,4 @@
-<?
+<?php
 # Example use :
 #
 # There is a <citation>author=Manske M ||title="The best paper ever" ||journal=''Biochemistry'' ||volume='''5''', 11</citation> citation here!
@@ -9,7 +9,7 @@ $wgExtensionFunctions[] = "wfCitation";
 
 function wfCitation () {
 	global $wgParser ;
-	$wgParser->setHook ( "citation" , parse_citation ) ;
+	$wgParser->setHook ( "citation" , 'parse_citation' ) ;
 }
 
 $citeendcache = array () ;
@@ -21,7 +21,7 @@ function citation_hooker ( $parser , $text ) {
 	
 	$ret = "" ;
 	foreach ( $citeendcache AS $num => $entry ) {
-		$x = "<li>" . $entry . " <a href='citeback{$num}'>&uarr;</a></li>\n" ;
+		$x = "<li>" . $entry . " <a href='#citeback{$num}'>&uarr;</a></li>\n" ;
 		$ret .= $x ;
 	}
 	$ret = "<hr/><ol>" . $ret . "</ol>" ;
@@ -73,7 +73,7 @@ function parse_citation ( $text ) {
 		global $citeendcache , $citecount ;
 		$ret = "<a name='citation{$citecount}'></a>{$ret}" ;
 		$citeendcache[$citecount] = $ret ;
-		$ret = "<a href='citation{$citecount}' name='citeback{$citecount}'>{" . $citecount . "}</a>" ;
+		$ret = "<a href='#citation{$citecount}' name='citeback{$citecount}'>{" . $citecount . "}</a>" ;
 		$citecount++ ;
 	} else {
 		$ret = "<font size='-2'>[{$ret}]</font>" ;
