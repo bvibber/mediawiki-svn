@@ -34,6 +34,7 @@ function parse_citation ( $text ) {
 	$attheend = false ;
 	$res = array () ;
 	$order = "" ;
+	$href = "" ;
 	$a = explode ( "||" , $text ) ;
 	
 	foreach ( $a AS $line ) {
@@ -45,6 +46,7 @@ function parse_citation ( $text ) {
 		// Parsed now : "$key" = "$value"
 		if ( $key == "attheend" ) $attheend = true ;
 		else if ( $key == "order" ) $order = $value ;
+		else if ( $key == "href" ) $href = $value ;
 		else if ( $value != "" ) $res[$key] = $value ;
 	}
 	
@@ -59,17 +61,19 @@ function parse_citation ( $text ) {
 		$ret .= $res[$item] ;
 	}
 	
+	if ( $href != "" ) $ret .= " [{$href}]" ;
+	
 
 	global $wgTitle , $wgOut ;
 	$p = new Parser ;
-	$ret = $p->parse ( $ret , $wgTitle , $wgOut->mParserOptions, true ) ;
+	$ret = $p->parse ( $ret , $wgTitle , $wgOut->mParserOptions, false ) ;
 	$ret = $ret->getText();
 
-	if ( !$attheend ) {
+	if ( $attheend ) {
 		global $citeendcache , $citecount ;
-		$ret = "<a name='citation{$citecount}' name='citeback{$citecount}'>{$ret}</a>" ;
+		$ret = "<a name='citation{$citecount}'></a>{$ret}" ;
 		$citeendcache[$citecount] = $ret ;
-		$ret = "<a href='citation{$citecount}'>{" . $citecount . "}</a>" ;
+		$ret = "<a href='citation{$citecount}' name='citeback{$citecount}'>{" . $citecount . "}</a>" ;
 		$citecount++ ;
 	} else {
 		$ret = "<font size='-2'>[{$ret}]</font>" ;
