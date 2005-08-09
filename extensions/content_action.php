@@ -16,10 +16,11 @@ $wgExtensionCredits['other'][] = array(
 function wfAddaction() {
 	global $wgHooks, $wgMessageCache;
 	$wgMessageCache->addMessage( 'myact', 'My action' );
-	$wgHooks['SkinTemplateContentActions'][] = 'wfAddactionHook';
+	$wgHooks['SkinTemplateContentActions'][] = 'wfAddactionContentHook';
+	$wgHooks['UnknownAction'][] = 'wfAddactActionHook';
 }
 
-function wfAddActionHook( &$content_actions ) {
+function wfAddActionContentHook( &$content_actions ) {
 	global $wgRequest, $wgRequest, $wgTitle;
 	
 	$action = $wgRequest->getText( 'action' );
@@ -31,4 +32,13 @@ function wfAddActionHook( &$content_actions ) {
 			'href' => $wgTitle->getLocalUrl( 'action=myact' )
 		);
 	}
+}
+
+function wfAddactActionHook( $action, &$wgArticle ) {
+	global $wgOut;
+	
+	$title = $wgArticle->getTitle(); 
+	
+	if ($action == 'myact')
+		$wgOut->addHTML( 'The page name is ' . $title->getText() . ' and you are ' . $wgArticle->getUserText() );
 }
