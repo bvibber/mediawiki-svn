@@ -51,7 +51,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 		 * Updates to run on a lucene IndexReader:
 		 * mark any current page record deleted.
 		 */
-		public void ApplyReads(SearchState state) {
+		public void ApplyReads(SearchReader state) {
 			state.DeleteArticle(_article);
 		}
 		
@@ -59,7 +59,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 		 * Updates to run on a lucene IndexWriter.
 		 * These are run in a second pass after the reads.
 		 */
-		public abstract void ApplyWrites(SearchState state);
+		public abstract void ApplyWrites(SearchWriter state);
 	}
 	
 	public class PageUpdate : UpdateRecord {
@@ -79,7 +79,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 			_metadata = metadata;
 		}
 		
-		public override void ApplyWrites(SearchState state) {
+		public override void ApplyWrites(SearchWriter state) {
 			state.AddArticle(_article, _metadata);
 		}
 		
@@ -94,7 +94,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 			_article = new Article(title.Namespace, title.Text);
 		}
 		
-		public override void ApplyWrites(SearchState state) {
+		public override void ApplyWrites(SearchWriter state) {
 			// do nothing
 		}
 		

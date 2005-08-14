@@ -10,7 +10,6 @@ LIBS=\
   build/ICSharpCode.SharpZipLib.dll \
   build/log4net.dll \
   build/Lucene.Net.dll \
-  build/MySql.Data.dll \
   build/Nini.dll \
   build/CookComputing.XmlRpc.dll
 
@@ -18,13 +17,11 @@ ASSEMBLIES=\
   build/MWSearch.dll \
   build/MWPrefix.dll \
   build/MWDaemon.exe \
-  build/MWUpdater.exe \
   build/MWBenchmark.exe \
   build/MWUpdateDaemon.exe
 
 SCRIPTS=\
   build/MWDaemon.sh \
-  build/MWUpdater.sh \
   build/MWBenchmark.sh \
   build/MWUpdateDaemon.sh
 
@@ -44,14 +41,12 @@ install: all
 	install $(LIBS) $(INSTALL_ASSEMBLYDIR)
 	install -m 0755 build/MWDaemon.sh $(INSTALL_BINDIR)/MWBenchmark
 	install -m 0755 build/MWDaemon.sh $(INSTALL_BINDIR)/MWDaemon
-	install -m 0755 build/MWUpdater.sh $(INSTALL_BINDIR)/MWUpdater
 	install -m 0755 build/MWUpdateDaemon.sh $(INSTALL_BINDIR)/MWUpdateDaemon
 	echo "Don't forget to set up /etc/mwsearch.conf"
 
 uninstall :
 	rm -f $(INSTALL_BINDIR)/MWBenchmark
 	rm -f $(INSTALL_BINDIR)/MWDaemon
-	rm -f $(INSTALL_BINDIR)/MWUpdater
 	rm -f $(INSTALL_BINDIR)/MWUpdateDaemon
 	rm -f $(INSTALL_ASSEMBLYDIR)/*.dll
 	rm -f $(INSTALL_ASSEMBLYDIR)/*.exe
@@ -83,7 +78,10 @@ SEARCH_SOURCES=\
   Search/Configuration.cs \
   Search/EnglishAnalyzer.cs \
   Search/EsperantoAnalyzer.cs \
-  Search/SearchState.cs
+  Search/SearchPool.cs \
+  Search/SearchReader.cs \
+  Search/SearchState.cs \
+  Search/SearchWriter.cs
 
 # External libraries used by the core
 SEARCH_REFERENCES=\
@@ -135,37 +133,6 @@ build/MWDaemon.sh :
 	echo "exec mono $(INSTALL_ASSEMBLYDIR)/MWDaemon.exe \$$@" >> build/MWDaemon.sh
 
 
-# MWUpdater.exe: database refresher
-UPDATER_SOURCES=\
-  Updater/ArticleIterator.cs \
-  Updater/ArticleList.cs \
-  Updater/AssemblyInfo.cs \
-  Updater/DatabaseConnection.cs \
-  Updater/Updater.cs
-
-UPDATER_LIBS=\
-  build/MWSearch.dll \
-  build/MWPrefix.dll \
-  build/MySql.Data.dll \
-  build/ICSharpCode.SharpZipLib.dll
-
-UPDATER_REFERENCES=\
-  -r:build/MWSearch.dll \
-  -r:build/MWPrefix.dll \
-  -r:build/MySql.Data.dll \
-  -r:System.Data \
-  $(SEARCH_REFERENCES)
-
-build/MWUpdater.exe : $(UPDATER_LIBS) $(UPDATER_SOURCES)
-	mcs -target:exe -out:build/MWUpdater.exe \
-	    $(CSFLAGS) \
-	    $(UPDATER_REFERENCES) \
-        $(UPDATER_SOURCES)
-
-build/MWUpdater.sh :
-	echo "#!/bin/sh" > build/MWUpdater.sh
-	echo "exec mono $(INSTALL_ASSEMBLYDIR)/MWUpdater.exe \$$@" >> build/MWUpdater.sh
-
 # MWUpdateDaemon.exe: database refresher, daemon version
 UPDATEDAEMON_SOURCES=\
   UpdateDaemon/AssemblyInfo.cs \
@@ -204,9 +171,6 @@ build/log4net.dll: libs/log4net.dll
 
 build/Lucene.Net.dll: libs/Lucene.Net.dll
 	cp -p libs/Lucene.Net.dll build/
-
-build/MySql.Data.dll: libs/MySql.Data.dll
-	cp -p libs/MySql.Data.dll build/
 
 build/Nini.dll: libs/Nini.dll
 	cp -p libs/Nini.dll build/

@@ -63,7 +63,7 @@ namespace MediaWiki.Search.Daemon {
 		/** Client-supplied database we should operate on */
 		string dbname;
 		/** Lucene search state for this database */
-		SearchState state;
+		SearchReader state;
 		
 		int maxlines = 1000;
 		int maxoffset = 10000;
@@ -157,7 +157,7 @@ namespace MediaWiki.Search.Daemon {
 			log.Info("query:" + bits[1] + " what:"+what+" dbname:"+dbname+" term:"+searchterm);
 			IDictionary query = new QueryStringMap(uri);
 			
-			state = SearchState.ForWiki(dbname);
+			state = SearchPool.ForWiki(dbname);
 
 			if (what.Equals("titlematch")) {
 				DoTitleMatches();

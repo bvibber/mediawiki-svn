@@ -28,5 +28,8 @@
     <File name="./EnglishAnalyzer.cs" subtype="Code" buildaction="Compile" />
     <File name="./SearchState.cs" subtype="Code" buildaction="Compile" />
     <File name="./EsperantoAnalyzer.cs" subtype="Code" buildaction="Compile" />
+    <File name="./SearchReader.cs" subtype="Code" buildaction="Compile" />
+    <File name="./SearchWriter.cs" subtype="Code" buildaction="Compile" />
+    <File name="./SearchPool.cs" subtype="Code" buildaction="Compile" />
   </Contents>
 </Project>

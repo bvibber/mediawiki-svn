@@ -108,12 +108,6 @@ namespace MediaWiki.Search.UpdateDaemon {
 			}
 		}
 		
-		private static SearchState GetSearchState(string databaseName) {
-			SearchState state = SearchState.ForWiki(databaseName);
-			state.InitializeIfNew();
-			return state;
-		}
-		
 		private static Hashtable SwitchOut() {
 			lock (_threadLock) {
 				log.Info("Preparing to flush all indexes...");
@@ -131,18 +125,23 @@ namespace MediaWiki.Search.UpdateDaemon {
 		private static void ApplyOn(string databaseName, ICollection queue, bool optimize) {
 			try {
 				log.Info("Applying updates to " + databaseName);
-				SearchState state = GetSearchState(databaseName);
+				
+				SearchReader reader = new SearchReader(databaseName, SearchReader.CreateIfNew);
 				foreach (UpdateRecord record in queue) {
 					log.Info("Applying read pass: " + record);
-					record.ApplyReads(state);
+					record.ApplyReads(reader);
 				}
+				reader.Close();
+				
+				SearchWriter writer = new SearchWriter(databaseName);
 				foreach (UpdateRecord record in queue) {
 					log.Info("Applying write pass: " + record);
-					record.ApplyWrites(state);
+					record.ApplyWrites(writer);
 				}
 				if (optimize)
-					state.Optimize();
-				state.Reopen();
+					writer.Optimize();
+				writer.Close();
+				
 				log.Info("Closed updates on " + databaseName);
 			} catch (Exception e) {
 				log.Error("Unexpected error in update for " + databaseName + ": " + e);
