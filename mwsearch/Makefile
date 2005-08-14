@@ -7,7 +7,6 @@ INSTALL_ASSEMBLYDIR=$(INSTALL_PREFIX)/lib/mwsearch
 CFLAGS=-codepage:utf8
 
 LIBS=\
-  build/ICSharpCode.SharpZipLib.dll \
   build/log4net.dll \
   build/Lucene.Net.dll \
   build/Nini.dll \
