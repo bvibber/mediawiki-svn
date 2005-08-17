@@ -3,4 +3,4 @@
 -- Added 2005-07-23
 
 ALTER TABLE /*$wgDBprefix*/page
-  ADD page_verified_rev int(8) unsigned NOT NULL
+  ADD page_verified_rev int(8) unsigned NOT NULL;
