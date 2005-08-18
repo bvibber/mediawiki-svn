@@ -93,6 +93,11 @@ if f.has_key('user'):
         s = f['user'].value.replace('_', ' ')
         s = s[0].upper() + s[1:]
 	editcount(s)
+	c = db.cursor()
+	c.execute("SELECT COUNT(DISTINCT page_id) FROM user, revision, page WHERE "
+		 "user_name=%s AND rev_user = user_id AND rev_page = page_id", user);
+	t = c.fetchone()
+	print "%s has edited a total of <strong>%s</strong> distinct pages.<br/></p>" % (cgi.escape(user), t[0])
 	print "</div>"
 
 print """
