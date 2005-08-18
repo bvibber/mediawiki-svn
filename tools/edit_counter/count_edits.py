@@ -1,4 +1,7 @@
 #! /usr/bin/env python
+#
+# Count number of edits from a user.
+# This source code is in the public domain.
 # $Id$
 
 execfile("/home/kate/degree.cf", globals());
@@ -87,7 +90,7 @@ def editcount(user):
 if f.has_key('user'):
 	print "<div>"
 	print "<br/>"
-        s = f['user'].value
+        s = f['user'].value.replace('_', ' ')
         s = s[0].upper() + s[1:]
 	editcount(s)
 	print "</div>"
