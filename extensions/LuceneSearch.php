@@ -111,6 +111,7 @@ class LuceneSearch extends SpecialPage
 		$fname = 'LuceneSearch::execute';
 		wfProfileIn( $fname );
 		$this->setHeaders();
+$wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 
 		foreach(SearchEngine::searchableNamespaces() as $ns => $name)
 			if ($wgRequest->getCheck("ns" . $ns))
@@ -281,6 +282,7 @@ class LuceneSearch extends SpecialPage
 			$wgOut->addHTML($this->showFullDialog($q));
 		}
 		$wgOut->setRobotpolicy('noindex,nofollow');
+                $wgOut->setArticleRelated(false);
 		wfProfileOut( $fname );
 	}
 
@@ -324,7 +326,7 @@ class LuceneSearch extends SpecialPage
 	function showHit($result, $terms) {
 		$fname = 'LuceneSearch::showHit';
 		wfProfileIn($fname);
-		global $wgUser, $wgContLang, $wgLSuseold;
+		global $wgUser, $wgContLang, $wgLSuseold, $wgTitle, $wgOut;
 
 		$t = $result->getTitle();
 		if(is_null($t)) {
@@ -341,8 +343,10 @@ class LuceneSearch extends SpecialPage
 		$link = $this->mSkin->makeKnownLinkObj($t, '');
 
 		$rev = $wgLSuseold ? new Article($t) : Revision::newFromTitle($t);
-		if ($rev === null)
+		if ($rev === null) {
+			wfProfileOut( $fname );
 			return "<!--Broken link in search results: ".$t->getDBKey()."-->\n";
+		}
 
 		$text = $wgLSuseold ? $rev->getContent(false) : $rev->getText();
 				$size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024), str_word_count($text));
@@ -612,6 +616,8 @@ class LuceneSearchSet {
 		} else {
 			$host = $wgLuceneHost;
 		}
+		global $wgOut;
+		$wgOut->addHtml( "<!-- querying $host -->\n" );
 
 		global $wgUseLatin1, $wgContLang, $wgInputEncoding;
 		$enctext = rawurlencode( trim( $wgUseLatin1
@@ -637,7 +643,11 @@ class LuceneSearchSet {
 		}
 
 		wfDebug( "Fetching search data from $searchUrl\n" );
-		$inputLines = @file( $searchUrl );
+		wfProfileIn( "$fname-contact-$host" );
+		$inputLines = explode( "\n", wfGetHTTP( $searchUrl ) );
+		wfProfileOut( "$fname-contact-$host" );
+		//$inputLines = @file( $searchUrl );
+
 		if( $inputLines === false ) {
 			// Network error or server error
 			wfProfileOut( $fname );
