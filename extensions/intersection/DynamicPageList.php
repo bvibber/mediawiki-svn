@@ -37,7 +37,7 @@
 */
 
 $wgDLPminCategories = 1;                // Minimum number of categories to look for
-$wgDLPmaxCategories = 4;                // Maximum number of categories to look for
+$wgDLPmaxCategories = 5;                // Maximum number of categories to look for
 $wgDLPMinResultCount = 1;               // Minimum number of results to allow
 $wgDLPMaxResultCount = 50;              // Maximum number of results to allow
 $wgDLPAllowUnlimitedResults = true;     // Allow unlimited results
