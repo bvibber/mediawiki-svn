@@ -1,6 +1,0 @@
-# @(#) $Header$
-#
-# make depend: X11 "makedepend"
-
-depend:
-	makedepend $(SRCS)

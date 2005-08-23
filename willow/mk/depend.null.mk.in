@@ -1,6 +1,0 @@
-# @(#) $Header$
-# 
-# make depend: null
-
-depend:
-	@echo "	warning: do not know how to make dependencies on this platform"
