@@ -434,7 +434,7 @@ conf_end_log(tc)
 
 static int cache_expire_threshold = 25;
 static int cache_expire_every = 60;
-static int cache_compress, cache_complevel = 6, cache_private;
+static int cache_compress, cache_complevel = 6, cache_private, cache_use_carp;
 static int backend_retry;
 char *cache_user, *cache_group;
 
@@ -463,6 +463,7 @@ conf_end_cache(tc)
 	config.complevel = cache_complevel;
 	config.backend_retry = backend_retry;
 	config.cache_private = cache_private;
+	config.use_carp = cache_use_carp;
 	return 0;
 }
 
@@ -499,6 +500,7 @@ static struct conf_entry conf_cache_table[] = {
 	{ "compress_level",	CF_INT,		NULL, 0, &cache_complevel		},
 	{ "backend_retry",	CF_TIME,	NULL, 0, &backend_retry			},
 	{ "cache_private",	CF_YESNO,	NULL, 0, &cache_private			},
+	{ "use_carp",		CF_YESNO,	NULL, 0, &cache_use_carp		},
 	{ NULL }
 };
 

@@ -19,6 +19,8 @@
 #include <string.h>
 #include <errno.h>
 #include <strings.h>
+#include <limits.h>
+#include <math.h>
 
 #include "willow.h"
 #include "wbackend.h"
@@ -27,22 +29,30 @@
 #include "confparse.h"
 #include "wconfig.h"
 
+#define rotl(i,r) ((i) << (r) | (i) >> sizeof(i)*CHAR_BIT-(r));
+
 static struct backend **backends;
 int nbackends;
 
-static struct backend *new_backend(const char *, int);
+static struct backend *new_backend(const char *, const char *, int);
 static void backend_read(struct fde *);
-static struct backend *next_backend(void);
+static struct backend *next_backend(const char *url);
+static uint32_t carp_urlhash(const char *);
+static uint32_t carp_hosthash(const char *);
+static uint32_t carp_combine(const char *url, uint32_t host);
+static void carp_recalc(const char *url);
+static int becalc_cmp(const struct backend *a, const struct backend *b);
 
 struct backend_cb_data {
 struct	backend		*bc_backend;
 	backend_cb	 bc_func;
 	void		*bc_data;
+const	char		*bc_url;
 };
 
 static struct backend *
-new_backend(addr, port)
-	const char *addr;
+new_backend(name, addr, port)
+	const char *name, *addr;
 	int port;
 {
 struct	backend	 *nb;
@@ -51,11 +61,14 @@ struct	backend	 *nb;
 		outofmemory();
 
 	nb->be_port = port;
-	nb->be_name = wstrdup(addr);
+	nb->be_straddr = wstrdup(addr);
+	nb->be_name = wstrdup(name);
 	nb->be_addr.sin_family = AF_INET;
 	nb->be_addr.sin_port = htons(nb->be_port);
 	nb->be_addr.sin_addr.s_addr = inet_addr(nb->be_name);
 	nb->be_dead = 0;
+	nb->be_hash = carp_hosthash(nb->be_name);
+	nb->be_load = 1.0;
 	return nb;
 }
 
@@ -72,7 +85,7 @@ add_backend(addr, port)
 	
 	if ((backends = wrealloc(backends, sizeof(struct backend*) * ++nbackends)) == NULL)
 		outofmemory();
-	backends[nbackends - 1] = new_backend(addr, port);
+	backends[nbackends - 1] = new_backend(addr, addr, port);
 	wlog(WLOG_NOTICE, "backend: %s:%d", addr, port);
 }
 
@@ -99,7 +112,8 @@ backend_file(file)
 #endif
 
 int
-get_backend(func, data, flags)
+get_backend(url, func, data, flags)
+	const char *url;
 	backend_cb func;
 	void *data;
 	int flags;
@@ -114,9 +128,10 @@ struct	backend_cb_data	*cbd;
 
 	cbd->bc_func = func;
 	cbd->bc_data = data;
+	cbd->bc_url = url;
 	
 	for (;;) {
-		cbd->bc_backend = next_backend();
+		cbd->bc_backend = next_backend(url);
 
 		if (cbd->bc_backend == NULL) {
 			wfree(cbd);
@@ -169,7 +184,7 @@ struct	backend_cb_data	*cbd = e->fde_rdata;
 			cbd->bc_backend->be_name, error, strerror(error), config.backend_retry);
 		cbd->bc_backend->be_dead = 1;
 		cbd->bc_backend->be_time = time(NULL) + config.backend_retry;
-		if (get_backend(cbd->bc_func, cbd->bc_data, 0) == -1) {
+		if (get_backend(cbd->bc_url, cbd->bc_func, cbd->bc_data, 0) == -1) {
 			cbd->bc_func(NULL, NULL, cbd->bc_data);
 		}
 
@@ -188,10 +203,14 @@ struct	backend_cb_data	*cbd = e->fde_rdata;
 }
 
 static struct backend *
-next_backend(void)
+next_backend(url)
+	const char *url;
 {
 static	int	cur = 0;
 	int	tried = 0;
+
+	if (config.use_carp)
+		carp_recalc(url);
 
 	while (tried++ <= nbackends) {
 		time_t now = time(NULL);
@@ -211,4 +230,75 @@ static	int	cur = 0;
 	}
 
 	return NULL;
+}
+
+static uint32_t
+carp_urlhash(str)
+	const char *str;
+{
+	uint32_t h = 0;
+	for (; *str; ++str)
+		h += rotl(h, 19) + *str;
+	return h;
+}
+
+static uint32_t
+carp_hosthash(str)
+	const char *str;
+{
+	uint32_t h = carp_urlhash(str) * 0x62531965;
+	return rotl(h, 21);
+}
+
+static uint32_t
+carp_combine(url, host)
+	const char *url;
+	uint32_t host;
+{
+	uint32_t c = carp_urlhash(url) ^ host;
+	c += c * 0x62531965;
+	return rotl(c, 21);
+}
+
+static void
+carp_calc(void)
+{
+struct	backend *be, *prev;
+	int	 i, j;
+
+	backends[0]->be_carp = pow((nbackends * backends[0]->be_load), 1.0 / nbackends);
+	for (i = 1; i < nbackends; ++i) {
+		float l = 0;
+		be = backends[i];
+		prev = backends[i - 1];
+		be->be_carplfm = ((nbackends-i+1) * (be->be_load - prev->be_load));
+		for (j = 0; j < i; ++j)
+			l *= backends[j]->be_carp;
+		be->be_carp /= l;
+		be->be_carp += pow(prev->be_carp, nbackends-i+1);
+		be->be_carp = pow(be->be_carp, 1/(nbackends-i+1));
+	}
+}
+
+static void
+carp_recalc(url)
+	const char *url;
+{
+	uint32_t	hash;
+	int		i;
+	for (i = 0; i < nbackends; ++i) {
+		hash = carp_urlhash(url) ^ backends[i]->be_hash;
+		hash += hash * 0x62531965;
+		hash = rotl(hash, 21);
+		hash *= backends[i]->be_carplfm;
+		backends[i]->be_carp = hash;
+	}
+	qsort(backends, nbackends, sizeof(struct backend *), becalc_cmp);
+}
+
+static int
+becalc_cmp(a, b)
+const 	struct	backend	*a, *b;
+{
+	return a->be_carp - b->be_carp;
 }

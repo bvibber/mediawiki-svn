@@ -359,7 +359,7 @@ struct	qvalue		*val;
 	/*
 	 * Not cached.  Find a backend.
 	 */
-	if (get_backend(proxy_start_backend, client, 0) == -1) {
+	if (get_backend(client->cl_path, proxy_start_backend, client, 0) == -1) {
 		client_send_error(client, ERR_GENERAL, 
 			"No backends were available to service your request", 503, 
 			"Service unavailable (#10.5.4)");
@@ -408,6 +408,7 @@ struct	header_list	*it;
 	}
 
 	header_add(&client->cl_entity.he_headers, wstrdup("X-Forwarded-For"), wstrdup(client->cl_fde->fde_straddr));
+	header_add(&client->cl_entity.he_headers, wstrdup("Connection"), wstrdup("Close"));
 	/*
 	 * POST requests require Content-Length.
 	 */
@@ -521,6 +522,9 @@ struct	http_client	*client = data;
 	client->cl_entity.he_source.fde.len = -1;
 	if (config.compress)
 		client->cl_entity.he_encoding = client->cl_enc;
+
+	if (!HAS_BODY(client->cl_entity.he_rdata.response.status))
+		client->cl_entity.he_source_type = ENT_SOURCE_NONE;
 
 	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client,
 			client->cl_flags.f_http11 ? ENT_CHUNKED_OKAY : 0);

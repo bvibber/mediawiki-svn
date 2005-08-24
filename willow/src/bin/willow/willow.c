@@ -20,6 +20,7 @@
 #include <pwd.h>
 #include <grp.h>
 #include <strings.h>
+#include <ctype.h>
 
 #include "wlog.h"
 #include "wnet.h"

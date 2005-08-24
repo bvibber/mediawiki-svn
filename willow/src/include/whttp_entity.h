@@ -44,6 +44,8 @@ extern const char *ent_errors[];
 
 #define MAX_HEADERS	64	/* maximum # of headers to allow	*/
 
+#define HAS_BODY(x)	((x) != 304)
+
 struct http_entity;
 struct http_client;
 

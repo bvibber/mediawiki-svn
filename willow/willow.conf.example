@@ -64,6 +64,13 @@ cache {
 	 * which is actually private this way.
 	 */
 	cache_private = no;
+
+	/*
+	 * Use the CARP algorithm to route requests for the same object
+	 * to the same proxy? (Improves cache ratio of caches behind this
+	 * one, at the expense of a small bit of performance).
+	 */
+	use_carp = yes;
 };
 
 /*

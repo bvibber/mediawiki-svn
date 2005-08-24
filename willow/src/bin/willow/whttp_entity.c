@@ -362,6 +362,8 @@ struct	http_entity	*entity = d;
 			return;
 		}
 
+		WDEBUG((WLOG_DEBUG, "parse_headers returned; client now %d", entity->_he_state));
+
 		if (entity->_he_state == ENTITY_STATE_DONE) {
 			if (entity->he_flags.hdr_only) {
 				WDEBUG((WLOG_DEBUG, "entity_read_callback: client is ENTITY_STATE_DONE"));
@@ -371,7 +373,7 @@ struct	http_entity	*entity = d;
 			} else
 				entity->_he_state = ENTITY_STATE_SEND_BODY;
 		}
-		bufferevent_disable(entity->_he_frombuf, EV_READ);
+		//bufferevent_disable(entity->_he_frombuf, EV_READ);
 		//if (entity->he_flags.hdr_only)
 			return;
 	}
@@ -978,6 +980,11 @@ parse_headers(entity)
 			return 0;
 
 		if (!*line) {
+			if (!entity->he_reqstr) {
+				free(line);
+				return ENT_ERR_INVREQ;
+			}
+
 			entity->_he_state = ENTITY_STATE_DONE;
 			free(line);
 			return 0;
