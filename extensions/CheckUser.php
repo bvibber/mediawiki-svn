@@ -3,22 +3,22 @@
 
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (defined('MEDIAWIKI')) {
-$wgExtensionFunctions[] = "wfCheckUser";
+$wgExtensionFunctions[] = 'wfCheckUser';
 
 $wgAvailableRights[] = 'checkuser';
 $wgGroupPermissions['checkuser']['checkuser'] = true;
 
-$wgCheckUserLog = "/home/wikipedia/logs/checkuser.log";
+$wgCheckUserLog = '/home/wikipedia/logs/checkuser.log';
 
 function wfCheckUser() {
 global $IP;
-require_once( "$IP/includes/SpecialPage.php" );
-require_once( "$IP/includes/ChangesList.php" );
+require_once( $IP.'/includes/SpecialPage.php' );
+require_once( $IP.'/includes/ChangesList.php' );
 
 class CheckUser extends UnlistedSpecialPage
 {
 	function CheckUser() {
-		UnlistedSpecialPage::UnlistedSpecialPage("CheckUser");
+		UnlistedSpecialPage::UnlistedSpecialPage('CheckUser');
 	}
 
 	function execute( $par ) {
@@ -26,8 +26,8 @@ class CheckUser extends UnlistedSpecialPage
 		
 		if ( !in_array( 'checkuser', $wgUser->getRights() ) ) {
 			$wgOut->setArticleRelated( false );
-			$wgOut->setRobotpolicy( "noindex,follow" );
-			$wgOut->errorpage( "nosuchspecialpage", "nospecialpagetext" );
+			$wgOut->setRobotpolicy( 'noindex,follow' );
+			$wgOut->errorpage( 'nosuchspecialpage', 'nospecialpagetext' );
 			return;
 		}
 
@@ -70,12 +70,12 @@ EOT
 
 	function doIPRequest( $ip ) {
 		global $wgUser, $wgOut, $wgLang;
-		$fname = "CheckUser::doIPRequest";
+		$fname = 'CheckUser::doIPRequest';
 
 		if ( !$this->addLogEntry( $wgLang->timeanddate( wfTimestampNow() ) . ' ' .
-		  $wgUser->getName() . " got edits for " . htmlspecialchars( $ip ) )) 
+		  $wgUser->getName() . ' got edits for ' . htmlspecialchars( $ip ) )) 
 		{
-			$wgOut->addHTML( "<p>Unable to add log entry</p>" );
+			$wgOut->addHTML( '<p>Unable to add log entry</p>' );
 		}
 
 		$dbr =& wfGetDB( DB_SLAVE );
@@ -100,12 +100,12 @@ EOT
 
 	function doUserRequest( $user ) {
 		global $wgOut, $wgTitle, $wgLang, $wgUser;
-		$fname = "CheckUser::doUserRequest";
+		$fname = 'CheckUser::doUserRequest';
 
 		if ( !$this->addLogEntry( $wgLang->timeanddate( wfTimestampNow() ) . ' ' .
-		  $wgUser->getName() . " got IPs for " . htmlspecialchars( $user ) ) ) 
+		  $wgUser->getName() . ' got IPs for ' . htmlspecialchars( $user ) ) ) 
 		{
-			$wgOut->addHTML( "<p>Unable to add log entry</p>" );
+			$wgOut->addHTML( '<p>Unable to add log entry</p>' );
 		}
 
 		$dbr =& wfGetDB( DB_SLAVE );
@@ -146,7 +146,7 @@ EOT
 
 global $wgMessageCache;
 SpecialPage::addPage( new CheckUser );
-$wgMessageCache->addMessage( "checkuser", "Check user" );
+$wgMessageCache->addMessage( 'checkuser', 'Check user' );
 
 } # End of extension function
 } # End of invocation guard
