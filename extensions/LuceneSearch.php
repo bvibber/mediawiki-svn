@@ -179,12 +179,8 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 				if ($wgGoToEdit) {
 					$wgOut->redirect($t->getFullURL('action=edit'));
 					return;
-				} else {
-					$editurl = $t->escapeLocalURL('action=edit');
 				}
-				# FIXME: HTML in wiki message
-				$wgOut->addHTML('<p>' . wfMsg('nogomatch', $editurl,
-					htmlspecialchars($q)) . "</p>\n");
+                		$wgOut->addWikiText( wfMsg('nogomatch', ":" . $t->getPrefixedText() ) );
 			}
 
 			global $wgDisableTextSearch;
@@ -194,7 +190,12 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 
 			if( $wgDisableTextSearch || $results === false ) {
 				global $wgInputEncoding;
-				$wgOut->addHTML(wfMsg('searchdisabled'));
+				if ( $wgDisableTextSearch ) {
+					$wgOut->addHTML(wfMsg('searchdisabled'));
+				} else {
+					global $wgLastLuceneHost;
+					$wgOut->addWikiText(wfMsg('lucenefailure', $wgLastLuceneHost));
+				}
 				$wgOut->addHTML(wfMsg('googlesearch',
 					htmlspecialchars($q),
 					htmlspecialchars($wgInputEncoding)));
@@ -608,7 +609,7 @@ class LuceneSearchSet {
 		$fname = 'LuceneSearchSet::newFromQuery';
 		wfProfileIn( $fname );
 
-		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc;
+		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc, $wgLastLuceneHost;
 
 		if( is_array( $wgLuceneHost ) ) {
 			$pick = mt_rand( 0, count( $wgLuceneHost ) - 1 );
@@ -616,8 +617,7 @@ class LuceneSearchSet {
 		} else {
 			$host = $wgLuceneHost;
 		}
-		global $wgOut;
-		$wgOut->addHtml( "<!-- querying $host -->\n" );
+		$wgLastLuceneHost = $host;
 
 		global $wgUseLatin1, $wgContLang, $wgInputEncoding;
 		$enctext = rawurlencode( trim( $wgUseLatin1
@@ -630,6 +630,8 @@ class LuceneSearchSet {
 				'limit'      => $limit,
 			) );
 
+		global $wgOut;
+		$wgOut->addHtml( "<!-- querying $searchUrl -->\n" );
 
 		// Cache results for fifteen minutes; they'll be read again
 		// on reloads and paging.
@@ -648,7 +650,7 @@ class LuceneSearchSet {
 		wfProfileOut( "$fname-contact-$host" );
 		//$inputLines = @file( $searchUrl );
 
-		if( $inputLines === false ) {
+		if( $inputLines === false || $inputLines === array('') ) {
 			// Network error or server error
 			wfProfileOut( $fname );
 			return false;
@@ -771,6 +773,7 @@ $wgMessageCache->addMessage("lucenepowersearchtext", "
 Search in namespaces:\n
 $1\n
 Search for $3 $9");
+$wgMessageCache->addMessage("lucenefailure", "Internal error: no valid response from search server ($1)\n");
 
 } # End of extension function
 } # End of invocation guard
