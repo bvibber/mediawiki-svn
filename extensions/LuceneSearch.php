@@ -198,7 +198,8 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 				}
 				$wgOut->addHTML(wfMsg('googlesearch',
 					htmlspecialchars($q),
-					htmlspecialchars($wgInputEncoding)));
+					htmlspecialchars($wgInputEncoding),
+                                        htmlspecialchars( wfMsg( 'search' ) ) ) );
 				wfProfileOut( $fname );
 				return;
 			}
