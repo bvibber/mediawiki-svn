@@ -47,7 +47,8 @@ $wgDLPAllowUnlimitedCategories = false; // Allow unlimited categories
 $wgExtensionFunctions[] = "wfDynamicPageList";
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'DynamicPageList',
-	'description' => 'outputs a bulleted list of the most recent items residing in a category, or a union of several categories'
+	'description' => 'outputs a bulleted list of the most recent items residing in a category, or a union of several categories',
+	'url' => 'http://meta.wikimedia.org/wiki/DynamicPageList'
 );
 
  
