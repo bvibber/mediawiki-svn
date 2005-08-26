@@ -6,6 +6,8 @@
  *
  * Usage: require_once("path/to/inputbox.php" in LocalSettings.php
  *
+ * This extension requires MediaWiki 1.5 or higher.
+ *
  * @author Erik Moeller <moeller@scireview.de>
  * @copyright Public domain
  * @license Public domain
@@ -18,8 +20,9 @@
  */ 
 $wgExtensionFunctions[] = 'registerInputboxExtension';
 $wgExtensionCredits['parserhook'][] = array(
-	'name' => 'inputbox',
-	'author' => 'Erik Moeller'
+'name' => 'Inputbox',
+'author' => 'Erik Moeller',
+'url' => 'http://meta.wikimedia.org/wiki/Help:Inputbox',
 );
 
 /**
@@ -28,7 +31,7 @@ $wgExtensionCredits['parserhook'][] = array(
  */
 function registerInputboxExtension()
 {
-    global $wgParser;
+    global $wgParser,$wgExtensionCredits;
     $wgParser->setHook('inputbox', 'renderInputbox');
 }
 
