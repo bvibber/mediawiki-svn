@@ -130,7 +130,7 @@ if (defined('MEDIAWIKI')) {
 
 	# Add to global list of extensions
 	
-	$wgExtensionFunctions[] = setupSyslog;
+	$wgExtensionFunctions[] = 'setupSyslog';
 }
 
 ?>
