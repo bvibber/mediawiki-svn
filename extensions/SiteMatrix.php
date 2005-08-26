@@ -6,6 +6,10 @@
 if (defined('MEDIAWIKI')) {
 	
 $wgExtensionFunctions[] = "wfSiteMatrix";
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'SiteMatrix',
+	'description' => 'display a list of wikimedia wikis'
+);
 
 function wfSiteMatrix() {
 global $IP;

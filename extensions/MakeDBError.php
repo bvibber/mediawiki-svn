@@ -5,6 +5,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionFunctions[] = "wfMakeDBErrorExt";
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'MakeDBError',
+	'description' => 'makes a database error with an invalid query'
+);
 
 function wfMakeDBErrorExt() {
 

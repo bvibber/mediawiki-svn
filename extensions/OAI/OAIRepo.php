@@ -38,6 +38,10 @@ global $oaiAgentRegex;
 $oaiAgentRegex = false;
 
 $wgExtensionFunctions[] = 'oaiSetupRepo';
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'OAIRepository',
+	'author' => 'Brion Vibber'
+);
 
 function oaiSetupRepo() {
 	global $IP;

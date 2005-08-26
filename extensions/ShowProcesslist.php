@@ -3,6 +3,10 @@
 if (defined('MEDIAWIKI')) {
 
 $wgExtensionFunctions[] = "wfShowProcesslist";
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'ShowProcesslist',
+	'description' => 'display the output of SHOW FULL PROCESSLIST'
+);
 
 function wfShowProcesslist() {
 global $IP;

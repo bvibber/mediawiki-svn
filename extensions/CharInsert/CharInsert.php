@@ -32,6 +32,10 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionFunctions[] = 'setupSpecialChars';
+$wgExtensionCredits['parserhook'][] = array(
+	'name' => 'CharInsert',
+	'author' => 'Brion Vibber'
+);
 
 function setupSpecialChars() {
     global $wgParser;

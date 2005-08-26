@@ -17,6 +17,10 @@
  * Register the Inputbox extension with MediaWiki
  */ 
 $wgExtensionFunctions[] = 'registerInputboxExtension';
+$wgExtensionCredits['parserhook'][] = array(
+	'name' => 'inputbox',
+	'author' => 'Erik Moeller'
+);
 
 /**
  * Sets the tag that this extension looks for and the function by which it

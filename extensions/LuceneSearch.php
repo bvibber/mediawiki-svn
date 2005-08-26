@@ -47,6 +47,10 @@ require_once("Article.php");
 
 if (defined('MEDIAWIKI')) {
 $wgExtensionFunctions[] = "wfLuceneSearch";
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'LuceneSearch',
+	'author' => array( 'Kate Turner', 'Brion Vibber' )
+);
 
 if (class_exists("Revision"))
 	$wgLSuseold = false;

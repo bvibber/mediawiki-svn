@@ -11,6 +11,10 @@
 if ( defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionFunctions[] = 'wfSetupMakesysop';
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Makesysop',
+	'description' => 'gives bureaucrats/stewards the ability to modify user levels'
+);
 
 // Set groups to the appropriate sysop/bureaucrat structure:
 // * Steward can do 'full' work (makesysop && userrights)
