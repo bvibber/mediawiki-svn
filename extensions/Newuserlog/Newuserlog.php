@@ -14,6 +14,7 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionFunctions[] = 'wfNewuserlog';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Newuserlog',
+	'description' => 'adds a [[Special:Log/newusers|log of recent account creations]] to [[Special:Log]]',
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
@@ -24,7 +25,7 @@ function wfNewuserlog() {
 	
 	$wgMessageCache->addMessages(
 		array(
-			'newuserlogpage' => 'New user log',
+			'newuserlogpage' => 'User creation log',
 			'newuserlogpagetext' => 'This is a log of recent user creations',
 			'newuserloglog' => 'Created the user "[[User:$1|$1]]" ([[User talk:$1|' . $talk . ']])'
 		)
@@ -44,6 +45,7 @@ function wfNewuserlogHook() {
 	
 	$log = new LogPage( 'newusers' );
 	$log->addEntry( 'newusers', $wgTitle, wfMsg( 'newuserloglog', $wgUser->getName() ) );
+	
 	return true;
 }
 
