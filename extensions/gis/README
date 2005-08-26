@@ -40,8 +40,7 @@ Installation
    gisdb.sql. Remember to replace /*$wgDBprefix*/ with your actual
    prefix. It can also be done directly in MySQL:
 
-   # mysql -u USERNAME -p
-   use wikidb;
+   # mysql -u USERNAME -p -D wikidb
    source extensions/gis/gisdb.sql;
    quit;
 
