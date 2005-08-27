@@ -38,55 +38,62 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionFunctions[] = "wfFootnote";
 
 function wfFootnote() {
-	global $wgParser ;
+  global $wgParser, $wgHooks ;
 	$wgParser->setHook( "footnote" , 'parse_footnote' ) ;
+	$wgHooks['ParserBeforeTidy'][] = 'insert_endnotes' ;
 }
 
-$footnotes = array() ;
-$footnotecount = 1 ;
-$recursion_guard = 0;
+$footnoteNotes = array() ;
+$footnoteCount = 1 ;
+$footnoteRecursionGuard = false;
 
-function footnote_hooker( $parser , $text ) {
-	global $footnotes , $footnotecount, $recursion_guard ;
+function insert_endnotes( $parser , $text ) {
+	global $footnoteNotes , $footnoteCount, $footnoteRecursionGuard ;
 	
-	if( $recursion_guard != 0 ) return;
-	if( count( $footnotes ) == 0 ) return ;
+	wfDebug("insert_endnotes:\n<<<$text>>>\n");
 
+	if( $footnoteRecursionGuard ) return;
+	if( count( $footnoteNotes ) == 0 ) return ;
+	
 	$ret = "" ;
-	foreach( $footnotes AS $num => $entry ) {
+	foreach( $footnoteNotes AS $num => $entry ) {
 		$x = " <a name='footnote{$num}'></a>\n";
 		$x = $x . "<li>$entry <a href='#footnoteback{$num}'>&uarr;</a></li>\n" ;
 		$ret .= $x ;
 	}
-	$ret = "<hr/><ol>" . $ret . "</ol>" ;
+	$ret = "<hr /><ol>" . $ret . "</ol>" ;
 	
 	$text .= $ret ;
+
+	/* Clear global array after rendering */
+	$footnoteNotes = array();
+	$footnoteCount = 1 ;
 }
 
 function parse_footnote( $text ) {
 	$ret = "" ;
 
-	global $footnotes , $footnotecount, $recursion_guard ;
+	global $footnoteNotes , $footnoteCount, $footnoteRecursionGuard ;
 
-	global $wgTitle , $wgOut, $p;
+	global $wgTitle , $wgOut, $footnoteParserObj;
 
-	if( !isset( $p )) {
-		$p = new Parser ;
+	if( !isset( $footnoteParserObj )) {
+		$footnoteParserObj = new Parser ;
 	}
 
-	$recursion_guard = 1;
-	$ret = $p->parse( $text , $wgTitle , $wgOut->mParserOptions, false ) ;
+	$footnoteRecursionGuard = true;
+	$ret = $footnoteParserObj->parse( $text , $wgTitle , $wgOut->mParserOptions, false ) ;
 	$ret = $ret->getText();
-	$recursion_guard = 0;
+	$footnoteRecursionGuard = false;
 
-	$footnotes[$footnotecount] = $ret;
+	$footnoteNotes[$footnoteCount] = $ret;
 
-	$ret = "<a href='#footnote{$footnotecount}' name='footnoteback{$footnotecount}'><sup>$footnotecount</sup></a>" ;
+	$ret = "<a href='#footnote{$footnoteCount}' name='footnoteback{$footnoteCount}'><sup>$footnoteCount</sup></a>" ;
 	
-	$footnotecount++ ;
-	if( $footnotecount == 2 ) {
+	$footnoteCount++ ;
+	if( $footnoteCount == 2 ) {
 		global $wgHooks;
-		$wgHooks['ParserBeforeTidy'][] = 'footnote_hooker' ;
+		$wgHooks['ParserBeforeTidy'][] = 'insert_endnotes' ;
 	}
 
 	return $ret ;
