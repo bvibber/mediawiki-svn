@@ -1,0 +1,16 @@
+<Combine name="mwdumper" fileversion="2.0">
+  <Configurations>
+    <Configuration name="Debug" ctype="CombineConfiguration">
+      <Entry build="True" name="mwdumper" />
+    </Configuration>
+    <Configuration name="Release" ctype="CombineConfiguration">
+      <Entry build="True" name="mwdumper" />
+    </Configuration>
+  </Configurations>
+  <StartMode startupentry="mwdumper" single="True">
+    <Execute type="None" entry="mwdumper" />
+  </StartMode>
+  <Entries>
+    <Entry filename="./mwdumper.mdp" />
+  </Entries>
+</Combine>

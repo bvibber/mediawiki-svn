@@ -1,0 +1,5 @@
+A quick little tool for extracting sets of pages from a MediaWiki dump file.
+
+Still very much under construction.
+
+MIT-style license like our other Java/C# tools; boilerplate to be added.
