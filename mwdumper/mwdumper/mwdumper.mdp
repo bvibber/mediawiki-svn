@@ -23,5 +23,6 @@
     <File name="./PageFilter.cs" subtype="Code" buildaction="Compile" />
     <File name="./TitleMatchFilter.cs" subtype="Code" buildaction="Compile" />
     <File name="./FilterSet.cs" subtype="Code" buildaction="Compile" />
+    <File name="./ListFilter.cs" subtype="Code" buildaction="Compile" />
   </Contents>
 </Project>

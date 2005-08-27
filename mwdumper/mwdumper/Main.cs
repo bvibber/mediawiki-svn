@@ -9,9 +9,8 @@ class MainClass
 	{
 		XmlTextReader reader = new XmlTextReader(Console.In);
 		XmlTextWriter writer = new XmlTextWriter(Console.Out);
-		FilterSet filters = new FilterSet();
 		
-		filters.Add(new TitleMatchFilter(args[0]));
+		FilterSet filters = new FilterSet(args);
 		
 		// <mediawiki>
 		//   <siteinfo>

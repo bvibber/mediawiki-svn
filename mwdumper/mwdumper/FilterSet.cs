@@ -8,6 +8,17 @@ class FilterSet {
 		_set = new ArrayList();
 	}
 	
+	public FilterSet(string[] args) {
+		_set = new ArrayList();
+		for (int i = 0; i < args.Length; i++) {
+			string param = args[i];
+			if (param.Equals("--regex"))
+				Add(new TitleMatchFilter(args[++i]));
+			else if (param.Equals("--list"))
+				Add(new ListFilter(args[++i]));
+		}
+	}
+	
 	public void Add(PageFilter filter) {
 		_set.Add(filter);
 	}
