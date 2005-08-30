@@ -16,7 +16,7 @@ class SqlWriter15 : SqlWriter {
 	}
 	
 	public override void WriteStartPage(Page page) {
-		IDictionary row = new Hashtable();
+		IDictionary row = new SortedList();
 		row["page_id"] = page.Id;
 		row["page_namespace"] = page.Title.Namespace;
 		row["page_title"] = TitleFormat(page.Title.Text);
@@ -39,13 +39,13 @@ class SqlWriter15 : SqlWriter {
 	}
 	
 	public override void WriteRevision(Revision revision) {
-		IDictionary row = new Hashtable();
+		IDictionary row = new SortedList();
 		row["old_id"] = null;
 		row["old_text"] = revision.Text;
 		row["old_flags"] = "utf-8";
 		object textId = InsertRow("text", row);
 
-		row = new Hashtable();
+		row = new SortedList();
 		row["rev_id"] = revision.Id;
 		row["rev_page"] = _currentPage.Id;
 		row["rev_text_id"] = textId;
@@ -61,7 +61,7 @@ class SqlWriter15 : SqlWriter {
 	}
 	
 	private void UpdatePage(Page page, Revision revision) {
-		IDictionary row = new Hashtable();
+		IDictionary row = new SortedList();
 		row["page_len"] = revision.Text.Length; // TODO: UTF-8 byte length
 		row["page_latest"] = revision.Id;
 		row["page_is_redirect"] = revision.IsRedirect ? 1 : 0;

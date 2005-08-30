@@ -31,7 +31,7 @@ class SqlWriter14 : SqlWriter {
 	}
 	
 	private void WriteOldRevision(Page page, Revision revision) {
-		IDictionary row = new Hashtable();
+		IDictionary row = new SortedList();
 		row["old_id"] = revision.Id;
 		row["old_namespace"] = page.Title.Namespace;
 		row["old_title"] = TitleFormat(page.Title.Text);
@@ -47,7 +47,7 @@ class SqlWriter14 : SqlWriter {
 	}
 	
 	private void WriteCurRevision(Page page, Revision revision) {
-		IDictionary row = new Hashtable();
+		IDictionary row = new SortedList();
 		row["cur_id"] = revision.Id;
 		row["cur_namespace"] = page.Title.Namespace;
 		row["cur_title"] = TitleFormat(page.Title.Text);
