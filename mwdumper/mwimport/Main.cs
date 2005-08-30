@@ -41,25 +41,34 @@ using ICSharpCode.SharpZipLib.GZip;
 
 class MainClass {
 	public static void Main(string[] args) {
-		XmlTextReader reader = new XmlTextReader(Console.In);
+		TextReader inputStream = OpenInput(args);
+		XmlTextReader reader = new XmlTextReader(inputStream);
 		reader.WhitespaceHandling = WhitespaceHandling.Significant;
+		
 		SqlWriter14 writer = new SqlWriter14(Console.Out);
 		
-		reader.ReadStartElement();
 		writer.WriteStartWiki();
 		Siteinfo siteinfo = null;
 		
-		while (!reader.EOF) {
-			reader.Read();
+		while (reader.Read()) {
 			if (reader.NodeType == XmlNodeType.Element) {
-				if (reader.LocalName.Equals("page"))
-					ReadPage(reader, writer, siteinfo);
-				else if (reader.LocalName.Equals("siteinfo"))
+				string name = reader.LocalName;
+				if (name.Equals("siteinfo")) {
 					siteinfo = ReadSiteinfo(reader, writer);
+				} else if (name.Equals("page")) {
+					ReadPage(reader, writer, siteinfo);
+				}
 			}
 		}
 		reader.Close();
 		writer.WriteEndWiki();
+	}
+	
+	static TextReader OpenInput(string[] args) {
+		if (args.Length == 0 || args[0] == "-") {
+			return Console.In; // hope it's not borken
+		}
+		return File.OpenText(args[0]);
 	}
 	
 	static Siteinfo ReadSiteinfo(XmlReader reader, IDumpWriter writer) {
@@ -122,6 +131,11 @@ class MainClass {
 	
 	static void ReadPage(XmlReader reader, IDumpWriter writer, Siteinfo siteinfo) {
 		Page page = new Page();
+		
+		if (siteinfo == null)
+			throw new ArgumentException("siteinfo must exist");
+		if (siteinfo.Namespaces == null)
+			throw new ArgumentException("Namespaces must exist");
 		
 		while (reader.Read()) {
 			string name = reader.LocalName;
