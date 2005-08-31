@@ -54,11 +54,13 @@ public class XmlDumpReader {
 		
 		_path = new ArrayList();
 		ReadThrough();
+		
+		_writer.Close();
+		_reader.Close();
 	}
 	
 	private void ReadThrough() {
 		string current = _reader.LocalName;
-		int depth = _reader.Depth;
 		
 		while (_reader.Read()) {
 			string name = _reader.LocalName;

@@ -12,6 +12,10 @@ abstract class SqlWriter : IDumpWriter {
 		_stream = output;
 	}
 	
+	public void Close() {
+		_stream.Close();
+	}
+	
 	public void WriteStartWiki() {
 		_stream.WriteLine("-- MediaWiki XML dump converted to SQL");
 	}

@@ -35,4 +35,10 @@ public struct Title {
 	public override string ToString() {
 		return _prefix + Text;
 	}
+	
+	public bool IsTalk {
+		get {
+			return (Namespace & 0x0001) == 1;
+		}
+	}
 }

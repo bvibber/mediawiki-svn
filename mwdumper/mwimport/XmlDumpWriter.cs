@@ -21,6 +21,10 @@ class XmlDumpWriter : IDumpWriter {
 		_writer.Formatting = Formatting.Indented;
 	}
 	
+	public void Close() {
+		_writer.Close();
+	}
+	
 	public void WriteStartWiki() {
 		_writer.WriteStartDocument();
 		_writer.WriteStartElement("mediawiki", _ns);
