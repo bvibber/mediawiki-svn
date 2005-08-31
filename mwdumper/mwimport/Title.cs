@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 
-struct Title {
+public struct Title {
 	public int Namespace;
 	public string Text;
 	

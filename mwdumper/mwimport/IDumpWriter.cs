@@ -1,6 +1,6 @@
 // created on 8/29/2005 at 12:06 AM
 
-interface IDumpWriter {
+public interface IDumpWriter {
 	void WriteStartWiki();
 	void WriteEndWiki();
 	

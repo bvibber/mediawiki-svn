@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 
-class Revision {
+public class Revision {
 	public int Id;
 	public DateTime Timestamp;
 	public Contributor Contributor;

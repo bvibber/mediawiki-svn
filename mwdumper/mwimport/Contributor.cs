@@ -1,5 +1,5 @@
 // created on 8/28/2005 at 11:53 PM
-class Contributor {
+public class Contributor {
 	public string Username;
 	public int Id;
 	
