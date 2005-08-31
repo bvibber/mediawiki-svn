@@ -253,9 +253,9 @@ class Skin extends Linker {
 	 * Some styles that are set by user through the user settings interface.
 	 */
 	function doGetUserStyles() {
-		global $wgUser, $wgContLang;
+		global $wgUser, $wgContLang, $wgNamespaces;
 
-		$csspage = $wgContLang->getNsText( NS_MEDIAWIKI ) . ':' . $this->getSkinName() . '.css';
+		$csspage = $wgNamespaces[NS_MEDIAWIKI]->getDefaultName() . ':' . $this->getSkinName() . '.css';
 		$s = '@import "'.$this->makeUrl($csspage, 'action=raw&ctype=text/css')."\";\n";
 
 		return $s . $this->reallyDoGetUserStyles();
@@ -617,9 +617,9 @@ END;
 	}
 
 	function subPageSubtitle() {
-		global $wgOut,$wgTitle,$wgNamespacesWithSubpages;
+		global $wgOut,$wgTitle,$wgNamespaces;
 		$subpages = '';
-		if($wgOut->isArticle() && !empty($wgNamespacesWithSubpages[$wgTitle->getNamespace()])) {
+		if($wgOut->isArticle() && $wgNamespaces[$wgTitle->getNamespace()]->allowsSubpages()) {
 			$ptext=$wgTitle->getPrefixedText();
 			if(preg_match('/\//',$ptext)) {
 				$links = explode('/',$ptext);
@@ -646,7 +646,7 @@ END;
 	}
 
 	function nameAndLogin() {
-		global $wgUser, $wgTitle, $wgLang, $wgContLang, $wgShowIPinHeader, $wgIP;
+		global $wgUser, $wgTitle, $wgLang, $wgContLang, $wgShowIPinHeader, $wgIP, $wgNamespaces;
 
 		$li = $wgContLang->specialPage( 'Userlogin' );
 		$lo = $wgContLang->specialPage( 'Userlogout' );
@@ -657,7 +657,7 @@ END;
 				$n = $wgIP;
 
 				$tl = $this->makeKnownLinkObj( $wgUser->getTalkPage(),
-				  $wgLang->getNsText( NS_TALK ) );
+				  $wgNamespaces[NS_TALK]->getDefaultName() );
 
 				$s .= $n . ' ('.$tl.')';
 			} else {
@@ -676,7 +676,7 @@ END;
 			$n = $wgUser->getName();
 			$rt = $wgTitle->getPrefixedURL();
 			$tl = $this->makeKnownLinkObj( $wgUser->getTalkPage(),
-			  $wgLang->getNsText( NS_TALK ) );
+			  $wgNamespaces[NS_TALK]->getDefaultName() );
 
 			$tl = " ({$tl})";
 

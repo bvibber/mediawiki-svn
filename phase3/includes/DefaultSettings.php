@@ -728,7 +728,8 @@ $wgGroupPermissions['sysop']['upload']          = true;
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
 // Used by the Special:Renameuser extension
 $wgGroupPermissions['bureaucrat']['renameuser'] = true;
-
+// read/write access to Special:Namespaces
+$wgGroupPermissions['bureaucrat']['namespaces'] = true;
 /**
  * The developer group is deprecated, but can be activated if need be
  * to use the 'lockdb' and 'unlockdb' special pages. Those require
@@ -1039,6 +1040,7 @@ $wgPasswordSalt = true;
 /** Which namespaces should support subpages?
  * See Language.php for a list of namespaces.
  */
+/* deprecated 
 $wgNamespacesWithSubpages = array(
 	NS_TALK           => true,
  	NS_USER           => true,
@@ -1054,6 +1056,7 @@ $wgNamespacesWithSubpages = array(
 $wgNamespacesToBeSearchedDefault = array(
 	NS_MAIN           => true,
 );
+*/
 
 /** If set, a bold ugly notice will show up at the top of every page. */
 $wgSiteNotice = '';

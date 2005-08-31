@@ -169,7 +169,7 @@ class MovePageForm {
 	function doSubmit() {
 		global $wgOut, $wgUser, $wgLang;
 		global $wgDeferredUpdateList, $wgMessageCache;
-		global  $wgUseSquid, $wgRequest;
+		global  $wgUseSquid, $wgRequest, $wgNamespaces;
 		$fname = "MovePageForm::doSubmit";
 		
 		if ( $wgUser->pingLimiter( 'move' ) ) {

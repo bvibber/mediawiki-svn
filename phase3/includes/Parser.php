@@ -82,8 +82,7 @@ define( 'EXT_IMAGE_REGEX',
  *
  * settings:
  *  $wgUseTex*, $wgUseDynamicDates*, $wgInterwikiMagic*,
- *  $wgNamespacesWithSubpages, $wgAllowExternalImages*,
- *  $wgLocaltimezone, $wgAllowSpecialInclusion*
+ *  $wgAllowExternalImages*, $wgLocaltimezone, $wgAllowSpecialInclusion*
  *
  *  * only within ParserOptions
  * </pre>
@@ -168,7 +167,7 @@ class Parser
 	 * @return ParserOutput a ParserOutput
 	 */
 	function parse( $text, &$title, $options, $linestart = true, $clearState = true ) {
-		global $wgUseTidy, $wgContLang;
+		global $wgUseTidy, $wgContLang, $wgNamespaces;
 		$fname = 'Parser::parse';
 		wfProfileIn( $fname );
 
@@ -189,7 +188,6 @@ class Parser
 		wfRunHooks( 'ParserBeforeStrip', array( &$this, &$text, &$x ) );
 		$text = $this->strip( $text, $x );
 		wfRunHooks( 'ParserAfterStrip', array( &$this, &$text, &$x ) );
-
 		$text = $this->internalParse( $text );
 
 		$text = $this->unstrip( $text, $this->mStripState );
@@ -306,7 +304,7 @@ class Parser
 		}
 		return $stripped;
 	}
-
+	
 	/**
 	 * Wrapper function for extractTagsAndParams
 	 * for cases where $tags and $params isn't needed
@@ -1204,7 +1202,9 @@ class Parser
 	 * @access private
 	 */
 	function replaceInternalLinks( $s ) {
-		global $wgContLang, $wgLinkCache, $wgUrlProtocols;
+		global $wgContLang, $wgLinkCache, $wgUrlProtocols,
+		       $wgNamespaces;
+		
 		static $fname = 'Parser::replaceInternalLinks' ;
 
 		wfProfileIn( $fname );
@@ -1232,8 +1232,9 @@ class Parser
 		# e.g. in the case of 'The Arab al[[Razi]]', 'al' will be matched
 		$e2 = wfMsgForContent( 'linkprefix' );
 
+		# Should foo[[bar]] be rendered as [[bar|foobar]]?
+		# This is dependent on the content language.
 		$useLinkPrefixExtension = $wgContLang->linkPrefixExtension();
-
 		if( is_null( $this->mTitle ) ) {
 			wfDebugDieBacktrace( 'nooo' );
 		}
@@ -1258,6 +1259,28 @@ class Parser
 		# Loop for each link
 		for ($k = 0; isset( $a[$k] ); $k++) {
 			$line = $a[$k];
+			
+			$targetprefix=$wgNamespaces[$this->mTitle->getNamespace()]->target;
+			if ( $targetprefix ) {
+				# FIXME: BREAKS LINKS WITH COLONS like [[:DOOBIE:BARI]]
+				#	
+				# Replace links without a prefix or those with a
+				# prefix which is neither a valid namespace name
+				# nor a valid InterWiki link with the desired
+				# default prefix (see Namespace.php).
+				if( preg_match('/^[^:]+\]\]/',$line) ||
+				(preg_match('/^(.+?):.*?\]\]/',$line,$nsmatch) &&
+				is_null(Namespace::getIndexForName($nsmatch[1])) && !Title::getInterwikiLink($nsmatch[1]))
+				) {
+					# If not already a piped link, hide the
+					# namespace prefix.
+					$line=preg_replace('/^([^|]*)\]\]/','$1|$1]]',$line);
+					
+					# Now add the default prefix.
+					$line=$targetprefix . ':' . $line;
+				}
+			
+			}
 			if ( $useLinkPrefixExtension ) {
 				wfProfileIn( $fname.'-prefixhandling' );
 				if ( preg_match( $e2, $s, $m ) ) {
@@ -1504,8 +1527,8 @@ class Parser
 	 */
 	function areSubpagesAllowed() {
 		# Some namespaces don't allow subpages
-		global $wgNamespacesWithSubpages;
-		return !empty($wgNamespacesWithSubpages[$this->mTitle->getNamespace()]);
+		global $wgNamespaces;
+		return $wgNamespaces[$this->mTitle->getNamespace()]->allowsSubpages();
 	}
 
 	/**
@@ -1867,7 +1890,8 @@ class Parser
 	 * @access private
 	 */
 	function getVariableValue( $index ) {
-		global $wgContLang, $wgSitename, $wgServer, $wgServerName, $wgArticle, $wgScriptPath;
+	
+		global $wgContLang, $wgSitename, $wgServer, $wgServerName, $wgArticle, $wgScriptPath, $wgNamespaces;
 
 		/**
 		 * Some of these require message or data lookups and can be
@@ -1895,7 +1919,7 @@ class Parser
 				return $wgArticle->getRevIdFetched();
 			case MAG_NAMESPACE:
 				# return Namespace::getCanonicalName($this->mTitle->getNamespace());
-				return $wgContLang->getNsText($this->mTitle->getNamespace()); # Patch by Dori
+				return $wgNamespaces[$this->mTitle->getNamespace()]->getDefaultName(); # Patch by Dori
 			case MAG_CURRENTDAYNAME:
 				return $varCache[$index] = $wgContLang->getWeekdayName( date('w')+1 );
 			case MAG_CURRENTYEAR:
@@ -2054,7 +2078,7 @@ class Parser
 	 * @access private
 	 */
 	function braceSubstitution( $matches ) {
-		global $wgLinkCache, $wgContLang;
+		global $wgLinkCache, $wgContLang, $wgNamespaces;
 		$fname = 'Parser::braceSubstitution';
 		wfProfileIn( $fname );
 
@@ -2127,12 +2151,12 @@ class Parser
 			$mwNs = MagicWord::get( MAG_NS );
 			if ( $mwNs->matchStartAndRemove( $part1 ) ) {
 				if ( intval( $part1 ) ) {
-					$text = $linestart . $wgContLang->getNsText( intval( $part1 ) );
+					$text = $linestart . $wgNamespaces[intval( $part1 )]->getDefaultName( );
 					$found = true;
 				} else {
-					$index = Namespace::getCanonicalIndex( strtolower( $part1 ) );
+					$index=Namespace::getDefaultNameForName( $part1 );
 					if ( !is_null( $index ) ) {
-						$text = $linestart . $wgContLang->getNsText( $index );
+						$text = $linestart . $wgNamespaces[$index]->getDefaultName();
 						$found = true;
 					}
 				}
@@ -2843,7 +2867,7 @@ class Parser
 	 * @access private
 	 */
 	function pstPass2( $text, &$user ) {
-		global $wgContLang, $wgLocaltimezone;
+		global $wgContLang, $wgLocaltimezone, $wgNamespaces;
 
 		# Variable replacement
 		# Because mOutputType is OT_WIKI, this will only process {{subst:xxx}} type tags
@@ -2873,7 +2897,7 @@ class Parser
 		if( $user->getOption( 'fancysig' ) ) {
 			$sigText = $k;
 		} else {
-			$sigText = '[[' . $wgContLang->getNsText( NS_USER ) . ":$n|$k]]";
+			$sigText = '[[' . $wgNamespaces[NS_USER]->getDefaultName() . ":$n|$k]]";
 		}
 		$text = preg_replace( '/~~~~~/', $d, $text );
 		$text = preg_replace( '/~~~~/', "$sigText $d", $text );

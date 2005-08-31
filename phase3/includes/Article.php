@@ -1856,7 +1856,7 @@ class Article {
 	 * Perform a deletion and output success or failure messages
 	 */
 	function doDelete( $reason ) {
-		global $wgOut, $wgUser, $wgContLang;
+		global $wgOut, $wgUser, $wgContLang, $wgNamespaces;
 		$fname = 'Article::doDelete';
 		wfDebug( $fname."\n" );
 
@@ -1867,7 +1867,7 @@ class Article {
 				$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
 				$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
-				$loglink = '[[Special:Log/delete|' . wfMsg( 'deletionlog' ) . ']]';
+				$loglink = '[['.$wgNamespaces[NS_SPECIAL]->getDefaultName().':Log/delete|' . wfMsg( 'deletionlog' ) . ']]';
 				$text = wfMsg( 'deletedtext', $deleted, $loglink );
 
 				$wgOut->addWikiText( $text );

@@ -426,11 +426,11 @@ class UploadForm {
 	 * @access private
 	 */
 	function showSuccess() {
-		global $wgUser, $wgOut, $wgContLang;
+		global $wgUser, $wgOut, $wgContLang, $wgNamespaces;
 
 		$sk = $wgUser->getSkin();
 		$ilink = $sk->makeMediaLink( $this->mUploadSaveName, Image::imageUrl( $this->mUploadSaveName ) );
-		$dname = $wgContLang->getNsText( NS_IMAGE ) . ':'.$this->mUploadSaveName;
+		$dname = $wgNamespaces[NS_IMAGE]->getDefaultName() . ':'.$this->mUploadSaveName;
 		$dlink = $sk->makeKnownLink( $dname, $dname );
 
 		$wgOut->addHTML( '<h2>' . wfMsgHtml( 'successfulupload' ) . "</h2>\n" );

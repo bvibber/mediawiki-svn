@@ -65,7 +65,7 @@ class NewPagesPage extends QueryPage {
 			$ul = $ut;
 		}
 		else {
-			$ul = $skin->makeLink( $wgContLang->getNsText(NS_USER) . ":{$ut}", $ut );
+			$ul = $skin->makeLink( $wgNamespaces[NS_USER]->getDefaultName() . ":{$ut}", $ut );
 		}
 
 		$d = $wgLang->timeanddate( $result->timestamp, true );

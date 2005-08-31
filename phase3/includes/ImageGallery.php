@@ -88,7 +88,7 @@ class ImageGallery
 	 *
 	 */
 	function toHTML() {
-		global $wgLang, $wgContLang, $wgUser;
+		global $wgLang, $wgContLang, $wgUser, $wgNamespaces;
 
 		$sk = $wgUser->getSkin();
 
@@ -111,7 +111,7 @@ class ImageGallery
 			}
 
 			//TODO
-			//$ul = $sk->makeLink( $wgContLang->getNsText( Namespace::getUser() ) . ":{$ut}", $ut );
+			//$ul = $sk->makeLink( Namespace::getDefaultName( Namespace::getUser() ) . ":{$ut}", $ut );
 
 			if( $this->mShowBytes ) {
 				if( $img->exists() ) {

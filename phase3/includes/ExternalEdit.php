@@ -32,7 +32,7 @@ class ExternalEdit {
 	
 	function edit() {
 		global $wgUser, $wgOut, $wgScript, $wgScriptPath, $wgServer,
-		       $wgLang;
+		       $wgLang, $wgNamespaces;
 		$wgOut->disable();
 		$name=$this->mTitle->getText();
 		$pos=strrpos($name,".")+1;
@@ -58,7 +58,7 @@ class ExternalEdit {
 			}
 			$extension=substr($name, $pos);
 		}
-		$special=$wgLang->getNsText(NS_SPECIAL);		 
+		$special=$wgNamespaces[NS_SPECIAL]->getDefaultName();		 
 		$control = <<<CONTROL
 [Process]
 Type=$type

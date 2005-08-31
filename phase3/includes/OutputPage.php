@@ -633,7 +633,7 @@ class OutputPage {
 	}
 
 	function loginToUse() {
-		global $wgUser, $wgTitle, $wgContLang;
+		global $wgUser, $wgTitle, $wgContLang, $wgNamespaces;
 
 		$this->setPageTitle( wfMsg( 'loginreqtitle' ) );
 		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
@@ -649,7 +649,7 @@ class OutputPage {
 		# We put a comment in the .html file so a Sysop can diagnose the page the
 		# user can't see.
 		$this->addHTML( "\n<!--" .
-						$wgContLang->getNsText( $wgTitle->getNamespace() ) .
+						$wgNamespaces[$wgTitle->getNamespace()]->getDefaultName() .
 						':' .
 						$wgTitle->getDBkey() . '-->' );
 		$this->returnToMain();		# Flip back to the main page after 10 seconds.

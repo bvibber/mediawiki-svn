@@ -87,7 +87,7 @@ class PreferencesForm {
 		# Note: namespaces don't necessarily have consecutive keys
 		$this->mSearchNs = array();
 		if ( $this->mPosted ) {
-			$namespaces = $wgContLang->getNamespaces();
+			$namespaces = Namespace::getDefaultNamespaces();
 			foreach ( $namespaces as $i => $namespace ) {
 				if ( $i >= 0 ) {
 					$this->mSearchNs[$i] = $request->getCheck( "wpNs$i" ) ? 1 : 0;
@@ -352,7 +352,7 @@ class PreferencesForm {
 			$this->mToggles[$tname] = $wgUser->getOption( $tname );
 		}
 
-		$namespaces = $wgContLang->getNamespaces();
+		$namespaces = Namespace::getDefaultNamespaces();
 		foreach ( $namespaces as $i => $namespace ) {
 			if ( $i >= NS_MAIN ) {
 				$this->mSearchNs[$i] = $wgUser->getOption( 'searchNs'.$i );
@@ -367,7 +367,7 @@ class PreferencesForm {
 		global $wgContLang, $wgUser;
 
 		# Determine namespace checkboxes
-		$namespaces = $wgContLang->getNamespaces();
+		$namespaces = Namespace::getDefaultNamespaces();
 		$r1 = null;
 
 		foreach ( $namespaces as $i => $name ) {

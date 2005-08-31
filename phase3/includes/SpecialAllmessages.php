@@ -87,14 +87,15 @@ function makePhp($messages) {
  *
  */
 function makeHTMLText( $messages ) {
-	global $wgLang, $wgUser, $wgLanguageCode, $wgContLanguageCode, $wgContLang;
+	global $wgLang, $wgUser, $wgLanguageCode, $wgContLanguageCode, $wgContLang,
+	       $wgNamespaces;
 	$fname = "makeHTMLText";
 	wfProfileIn( $fname );
 	
 	$sk =& $wgUser->getSkin();
-	$talk = $wgLang->getNsText( NS_TALK );
-	$mwnspace = $wgLang->getNsText( NS_MEDIAWIKI );
-	$mwtalk = $wgLang->getNsText( NS_MEDIAWIKI_TALK );
+	$talk = $wgNamespaces[NS_TALK]->getDefaultName();
+	$mwnspace = $wgNamespaces[NS_MEDIAWIKI]->getDefaultName();
+	$mwtalk = $wgNamespaces[NS_MEDIAWIKI_TALK]->getDefaultName();
 	$txt = "
 <table border='1' cellspacing='0' width='100%' id='allmessagestable'>
 	<tr>

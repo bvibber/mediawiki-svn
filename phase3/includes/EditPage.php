@@ -47,7 +47,9 @@ class EditPage {
 	 *  and set $wgMetadataWhitelist to the *full* title of the template whitelist
 	 */
 	function extractMetaDataFromArticle () {
-		global $wgUseMetadataEdit , $wgMetadataWhitelist , $wgLang ;
+		global $wgUseMetadataEdit , $wgMetadataWhitelist , $wgLang,
+		       $wgNamespaces ;
+
 		$this->mMetaData = '' ;
 		if ( !$wgUseMetadataEdit ) return ;
 		if ( $wgMetadataWhitelist == '' ) return ;
@@ -58,7 +60,7 @@ class EditPage {
 
 		# Categories and language links
 		$t = explode ( "\n" , $t ) ;
-		$catlow = strtolower ( $wgLang->getNsText ( NS_CATEGORY ) ) ;
+		$catlow = strtolower ( $wgNamespaces[NS_CATEGORY]->getDefaultName()) ;
 		$cat = $ll = array() ;
 		foreach ( $t AS $key => $x )
 		{
@@ -407,7 +409,8 @@ class EditPage {
 	 * @return bool false if output is done, true if the rest of the form should be displayed
 	 */
 	function attemptSave() {
-		global $wgSpamRegex, $wgFilterCallback, $wgUser, $wgOut;
+		global $wgSpamRegex, $wgFilterCallback, $wgUser, $wgOut,
+		       $wgNamespaces;
 		
 		$fname = 'EditPage::attemptSave';
 		wfProfileIn( $fname );
@@ -595,7 +598,8 @@ class EditPage {
 	 * Send the edit form and related headers to $wgOut
 	 */
 	function showEditForm() {
-		global $wgOut, $wgUser, $wgAllowAnonymousMinor, $wgLang, $wgContLang;
+		global $wgOut, $wgUser, $wgAllowAnonymousMinor, $wgLang, $wgContLang,
+		       $wgNamespaces, $wgTitle;
 
 		$fname = 'EditPage::showEditForm';
 		wfProfileIn( $fname );
@@ -688,6 +692,17 @@ class EditPage {
 			htmlspecialchars( wfMsg( 'newwindow' ) );
 
 		global $wgRightsText;
+		
+		# If we're editing in a namespace where all unprefixed links point to
+		# a target (see Namespace.php), we add some info to the edit screen.
+		$nstarget='';
+		
+		if($wgNamespaces[$wgTitle->getNamespace()]->getTarget()) {
+			$nstarget="<div id=\"editpage-nstarget\">\n" .
+				wfMsg("nstarget",$wgNamespaces[$wgTitle->getNamespace()]->getTarget()) .
+				"\n</div>";
+		}
+
 		$copywarn = "<div id=\"editpage-copywarn\">\n" .
 			wfMsg( $wgRightsText ? 'copyrightwarning' : 'copyrightwarning2',
 				'[[' . wfMsgForContent( 'copyrightpage' ) . ']]',
@@ -829,6 +844,7 @@ END
 <input tabindex='7' id='wpDiff' type='submit' value=\"{$diff}\" name=\"wpDiff\" accesskey=\"".wfMsg('accesskey-diff')."\"".
 " title=\"".wfMsg('tooltip-diff')."\"/>
 <em>{$cancel}</em> | <em>{$edithelp}</em>{$templates}" );
+		$wgOut->addWikiText( $nstarget );
 		$wgOut->addWikiText( $copywarn );
 		$wgOut->addHTML( "
 <input type='hidden' value=\"" . htmlspecialchars( $this->section ) . "\" name=\"wpSection\" />
@@ -1016,7 +1032,7 @@ END
 	 * @todo document
 	 */
 	function blockedIPpage() {
-		global $wgOut, $wgUser, $wgContLang, $wgIP;
+		global $wgOut, $wgUser, $wgContLang, $wgIP, $wgNamespaces;
 
 		$wgOut->setPageTitle( wfMsg( 'blockedtitle' ) );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
@@ -1031,7 +1047,7 @@ END
 		} else {
 			$name = $id;
 		}
-		$link = '[[' . $wgContLang->getNsText( NS_USER ) .
+		$link = '[[' . $wgNamespaces[NS_USER]->getDefaultName() .
 		  ":{$name}|{$name}]]";
 
 		$wgOut->addWikiText( wfMsg( 'blockedtext', $link, $reason, $ip, $name ) );
@@ -1191,7 +1207,8 @@ END
 	 * The necessary JavaScript code can be found in style/wikibits.js.
 	 */
 	function getEditToolbar() {
-		global $wgStylePath, $wgLang, $wgMimeType, $wgJsMimeType;
+		global $wgStylePath, $wgLang, $wgMimeType, $wgJsMimeType,
+		       $wgNamespaces;
 
 		/**
 		 * toolarray an array of arrays which each include the filename of
@@ -1241,14 +1258,14 @@ END
 					'key'	=>	'H'
 				),
 			array(	'image'=>'button_image.png',
-					'open'	=>	'[['.$wgLang->getNsText(NS_IMAGE).":",
+					'open'	=>	'[['.$wgNamespaces[NS_IMAGE]->getDefaultName().":",
 					'close'	=>	']]',
 					'sample'=>	wfMsg('image_sample'),
 					'tip'	=>	wfMsg('image_tip'),
 					'key'	=>	'D'
 				),
 			array(	'image'	=>'button_media.png',
-					'open'	=>	'[['.$wgLang->getNsText(NS_MEDIA).':',
+					'open'	=>	'[['.$wgNamespaces[NS_MEDIA]->getDefaultName().':',
 					'close'	=>	']]',
 					'sample'=>	wfMsg('media_sample'),
 					'tip'	=>	wfMsg('media_tip'),

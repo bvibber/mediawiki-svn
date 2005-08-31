@@ -15,7 +15,7 @@ function wfSpecialAllpages( $par=NULL, $specialPage ) {
 	$from = $wgRequest->getVal( 'from' );
 	$namespace = $wgRequest->getInt( 'namespace' );
 	
-	$namespaces = $wgContLang->getNamespaces();
+	$namespaces = Namespace::getDefaultNamespaces();
 
 	$indexPage = new SpecialAllpages();
 
@@ -247,7 +247,6 @@ function showChunk( $namespace = NS_MAIN, $from, $including = false ) {
 	$n = 0;
 	$out = '<table style="background: inherit;" border="0" width="100%">';
 
-	$namespaces = $wgContLang->getFormattedNamespaces();
 	while( ($n < $this->maxPerPage) && ($s = $dbr->fetchObject( $res )) ) {
 		$t = Title::makeTitle( $s->page_namespace, $s->page_title );
 		if( $t ) {

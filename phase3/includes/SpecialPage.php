@@ -69,6 +69,7 @@ $wgSpecialPages = array(
 	"Import"		=> new SpecialPage( "Import", 'import' ),
 	'Lockdb'		=> new SpecialPage( 'Lockdb', 'siteadmin' ),
 	'Unlockdb'		=> new SpecialPage( 'Unlockdb', 'siteadmin' ),
+	'Namespaces'		=> new SpecialPage( 'Namespaces', 'namespaces' ),	
 	'Userrights'	=> new SpecialPage( 'Userrights', 'userrights' ),
 );
 

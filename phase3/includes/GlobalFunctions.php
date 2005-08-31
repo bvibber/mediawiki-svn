@@ -1281,9 +1281,9 @@ function wfElementClean( $element, $attribs = array(), $contents = '') {
  * @return Html string containing the namespace selector
  */
 function &HTMLnamespaceselector($selected = '', $allnamespaces = null) {
-	global $wgContLang;
+
 	$s = "<select name='namespace' class='namespaceselector'>\n";
-	$arr = $wgContLang->getFormattedNamespaces();
+	$arr = Namespace::getFormattedDefaultNamespaces();
 	if( !is_null($allnamespaces) ) {
 		$arr = array($allnamespaces => wfMsgHtml('namespacesall')) + $arr;
 	}

@@ -274,7 +274,7 @@ class User {
 		wfProfileIn( $fname );
 
 		global $wgContLang, $wgIP, $wgDBname;
-		global $wgNamespacesToBeSearchedDefault;
+		global $wgNamespaces;
 
 		$this->mId = 0;
 		$this->mNewtalk = -1;
@@ -286,8 +286,8 @@ class User {
 		$this->mGroups = array();
 		$this->mOptions = User::getDefaultOptions();
 
-		foreach( $wgNamespacesToBeSearchedDefault as $nsnum => $val ) {
-			$this->mOptions['searchNs'.$nsnum] = $val;
+		foreach( $wgNamespaces as $ns ) {
+			$this->mOptions['searchNs'.$ns->getIndex()] = $ns->isSearchedByDefault();				
 		}
 		unset( $this->mSkin );
 		$this->mDataLoaded = false;

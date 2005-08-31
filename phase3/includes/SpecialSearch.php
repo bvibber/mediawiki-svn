@@ -239,7 +239,7 @@ class SpecialSearch {
 	 */
 	function userNamespaces( &$user ) {
 		$arr = array();
-		foreach( SearchEngine::searchableNamespaces() as $ns => $name ) {
+		foreach( Namespace::getDefaultNamespaces() as $ns => $name ) {
 			if( $user->getOption( 'searchNs' . $ns ) ) {
 				$arr[] = $ns;
 			}
@@ -257,7 +257,7 @@ class SpecialSearch {
 	 */
 	function powerSearch( &$request ) {
 		$arr = array();
-		foreach( SearchEngine::searchableNamespaces() as $ns => $name ) {
+		foreach( Namespace::getDefaultNamespaces() as $ns => $name ) {
 			if( $request->getCheck( 'ns' . $ns ) ) {
 				$arr[] = $ns;
 			}

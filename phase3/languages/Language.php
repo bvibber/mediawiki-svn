@@ -22,10 +22,18 @@ if( defined( 'MEDIAWIKI' ) ) {
 # Language-specific text
 #--------------------------------------------------------------------------
 
-if($wgMetaNamespace === FALSE)
-	$wgMetaNamespace = str_replace( ' ', '_', $wgSitename );
+# The names of the namespaces can be set here, but the numbers
+# are magical, so don't change or move them!  The Namespace class
+# encapsulates some of the magic-ness.
+#
 
-/* private */ $wgNamespaceNamesEn = array(
+#if($wgMetaNamespace === FALSE)
+#	$wgMetaNamespace = str_replace( ' ', '_', $wgSitename );
+
+
+# Default namespace names to be loaded upon installation
+# Change this into an array of arrays aka allnamespaces
+/* private */ $wgInstallNamespaceNamesEn = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Special',
 	NS_MAIN	            => '',
@@ -46,9 +54,9 @@ if($wgMetaNamespace === FALSE)
 	NS_CATEGORY_TALK    => 'Category_talk',
 );
 
-if(isset($wgExtraNamespaces)) {
-	$wgNamespaceNamesEn=$wgNamespaceNamesEn+$wgExtraNamespaces;
-}
+#if(isset($wgExtraNamespaces)) {
+#	$wgNamespaceNamesEn=$wgNamespaceNamesEn+$wgExtraNamespaces;
+#}
 
 /* private */ $wgDefaultUserOptionsEn = array(
 	'quickbar' 		=> 1,
@@ -539,6 +547,7 @@ Please report this to an administrator, making note of the URL.',
 'filenotfound'	=> 'Could not find file "$1".',
 'unexpected'	=> 'Unexpected value: "$1"="$2".',
 'formerror'		=> 'Error: could not submit form',
+'transactionerror'      => 'Error: could not complete transaction',
 'badarticleerror' => 'This action cannot be performed on this page.',
 'cannotdelete'	=> 'Could not delete the page or file specified. (It may have already been deleted by someone else.)',
 'badtitle'		=> 'Bad title',
@@ -669,6 +678,7 @@ format. Please enter a well-formatted address or empty that field.',
 'preview'		=> 'Preview',
 'showpreview'	=> 'Show preview',
 'showdiff'	=> 'Show changes',
+'nstarget'      => "''In this namespace, unprefixed links will be treated as if they were prefixed with \"'''<tt>$1:</tt>'''\" (for example, <tt><nowiki>[[Scratchpad]]</nowiki></tt> will point to <tt><nowiki>[[$1:Scratchpad]]</nowiki></tt>). To suppress this behavior, add a colon in front of the title, e.g. <tt><nowiki>[[:Scratchpad]]</nowiki></tt>.''",
 'blockedtitle'	=> 'User is blocked',
 'blockedtext'	=> "Your user name or IP address has been blocked by $1.
 The reason given is this:<br />''$2''<p>You may contact $1 or one of the other
@@ -2110,6 +2120,57 @@ If this is *not* you, don't follow the link. This confirmation code
 will expire at $4.
 ",
 
+# Namespace manager
+'namespaces' => 'Namespace management',
+'no_parent_namespace'=>'(Not a discussion namespace)',
+'add_namespaces_header' => 'Create new namespaces here, then set all namespace-specific preferences below. In most cases, you will also want to add a matching talk (discussion) namespace.',
+'add_namespace_default_name' => 'Namespace default name',
+'add_namespace_default_talk' => 'Talk namespace default name',
+'add_namespace_talk_confirm' => 'Yes, I want to create a talk namespace',
+'add_namespace_button' => 'Add namespace',
+'namespace_created'=>'Namespace "$1" was successfully created.',
+'talk_namespace_created'=>'A corresponding talk (discussion) namespace has also been created.',
+'namespace_name_issues'=>'There are issues with the following name(s):',
+'namespace_name_illegal_characters'=>'The namespace name contains illegal characters. The following characters are not allowed in namespace names: \'\'\'$1\'\'\'',
+'namespace_name_missing'=>'You have not entered a namespace name.',
+'namespace_name_dupe'=>'The namespace name is already in use. Please choose a different name.',
+'namespace_name_not_empty'=>'Some pages still refer to this namespace using this name. It canot be deleted or renamed until all links are changed.',
+'namespace_name_prefix'=>'There are pages which contain this name as a "pseudonamespace" in the title. These pages would become invisible if the namespace was created.',
+'namespace_name_interwiki'=>'The name is already used as an Interwiki prefix to link to another wiki site. This Interwiki prefix would become unusable if this name was used.',
+'namespace_name_linked'=>'The namespace name is still linked to from some pages. If it was deleted, these links would be broken.',
+'namespace_error'=>'The namespace "$1" cannot be created.',
+'namespace_delete_error'=>'The namespace "$1" cannot be deleted.',
+'namespace_deleted'=>'The namespace "$1" has been deleted successfully.',
+'talk_namespace_error'=>'The corresponding discussion (talk) namespace "$1" cannot be created. No namespaces have been added.',
+'modify_namespaces_header' => 'Configure namespaces here. System namespaces cannot be deleted.',
+'canonicalname' => 'canonical name',
+'namespace_name_header'=>'Namespace name',
+'namespace_issue_header'=>'Problem',
+# This is appended via JavaScript to the entered namsepace name
+# as a suggested talkpage name in Special:Namespaces. If set to '-', 
+# it will not be used.
+'talkpagesuffix' => ' talk',
+'special_namespace'=>'This is a special namespace that cannot contain pages.',
+'namespace_child_of'=>'Discussion namespace of',
+'namespace_support_subpages'=>'Support subpages',
+'namespace_search_by_default'=>'Search by default',
+'namespace_hide_in_lists'=>'Hide in lists',
+'namespace_default_link_prefix'=>'Default link prefix',
+'namespace_system'=>'System namespace',
+'delete_namespace'=>'Delete namespace',
+'namespace_properties'=>'Namespace properties',
+'namespace_slot'=>'Internal slot',
+'namespace_names'=>'Names',
+'namespace_existing_names'=>'Existing names',
+'namespace_new_names'=>'New names',
+'namespace_default_name'=>'Default',
+'namespace_delete_name'=>'Delete',
+'namespace_save_changes'=>'Save changes',
+'namespace_not_deletable'=>'The namespace cannot be deleted.',
+'namespace_not_deletable_missing'=>'A namespace with the number $1 was not found.',
+'namespace_not_deletable_system'=>'The namespace with the number $1 is a system namespace which is required for the operation of MediaWiki.',
+
+
 # Inputbox extension, may be useful in other contexts as well
 'tryexact' => 'Try exact match',
 'searchfulltext' => 'Search full text',
@@ -2211,74 +2272,7 @@ class Language {
 	}
 
 	/**
-	 * @return array
-	 */
-	function getNamespaces() {
-		global $wgNamespaceNamesEn;
-		return $wgNamespaceNamesEn;
-	}
-
-	/**
-	 * A convenience function that returns the same thing as
-	 * getNamespaces() except with the array values changed to ' '
-	 * where it found '_', useful for producing output to be displayed
-	 * e.g. in <select> forms.
-	 *
-	 * @return array
-	 */
-	function getFormattedNamespaces() {
-		$ns = $this->getNamespaces();
-		foreach($ns as $k => $v) {
-			$ns[$k] = strtr($v, '_', ' ');
-		}
-		return $ns;
-	}
-
-	/**
-	 * Get a namespace value by key
-	 * <code>
-	 * $mw_ns = $wgContLang->getNsText( NS_MEDIAWIKI );
-	 * echo $mw_ns; // prints 'MediaWiki'
-	 * </code>
-	 *
-	 * @param int $index the array key of the namespace to return
-	 * @return mixed, string if the namespace value exists, otherwise false
-	 */
-	function getNsText( $index ) {
-		$ns = $this->getNamespaces();
-		return isset( $ns[$index] ) ? $ns[$index] : false;
-	}
-
-	/**
-	 * A convenience function that returns the same thing as
-	 * getNsText() except with '_' changed to ' ', useful for
-	 * producing output.
-	 *
-	 * @return array
-	 */
-	function getFormattedNsText( $index ) {
-		$ns = $this->getNsText( $index );
-		return strtr($ns, '_', ' ');
-	}
-
-	/**
-	 * Get a namespace key by value, case insensetive.
-	 *
-	 * @param string $text
-	 * @return mixed An integer if $text is a valid value otherwise false
-	 */
-	function getNsIndex( $text ) {
-		$ns = $this->getNamespaces();
-
-		foreach ( $ns as $i => $n ) {
-			if ( strcasecmp( $n, $text ) == 0)
-				return $i;
-		}
-		return false;
-	}
-
-	/**
-	 * short names for language variants used for language conversion links.
+	 * short names for language variants used for language conversion links. 
 	 *
 	 * @param string $code
 	 * @return string
@@ -2288,7 +2282,8 @@ class Language {
 	}
 
 	function specialPage( $name ) {
-		return $this->getNsText(NS_SPECIAL) . ':' . $name;
+		global $wgNamespaces;
+		return $wgNamespaces[NS_SPECIAL]->getDefaultName() . ':' . $name;
 	}
 
 	function getQuickbarSettings() {

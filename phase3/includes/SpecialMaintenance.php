@@ -9,8 +9,8 @@
  * shortcut to get the current language "special" namespace name
  */
 function sns() {
-	global $wgContLang;
-	return $wgContLang->getNsText(NS_SPECIAL);
+	global $wgContLang, $wgNamespaces;
+	return $wgNamespaces[NS_SPECIAL]->getDefaultName();	
 }
 
 
@@ -103,10 +103,10 @@ function getMPL ( $x ) {
 
 
 function getMaintenancePageBacklink( $subfunction ) {
-	global $wgUser, $wgContLang;
+	global $wgUser, $wgContLang, $wgNamespaces;
 	$sk = $wgUser->getSkin();
 	$r = $sk->makeKnownLink (
-		$wgContLang->getNsText( NS_SPECIAL ) . ':Maintenance',
+		$wgNamespaces[NS_SPECIAL]->getDefaultName() . ':Maintenance',
 		wfMsg( 'maintenancebacklink' ) ) ;
 	$t = wfMsg ( $subfunction ) ;
 	
@@ -186,7 +186,7 @@ function wfSpecialSelfLinks() {
  * 
  */
 function wfSpecialMispeelings () {
-	global $wgUser, $wgOut, $wgContLang, $wgTitle;
+	global $wgUser, $wgOut, $wgContLang, $wgTitle, $wgNamespaces;
 	$sk = $wgUser->getSkin();
 	$fname = 'wfSpecialMispeelings';
 
@@ -197,7 +197,7 @@ function wfSpecialMispeelings () {
 	# Determine page name
 	$ms = wfMsg ( 'mispeelingspage' ) ;
 	$mss = str_replace ( ' ' , '_' , $ms );
-	$msp = $wgContLang->getNsText(4).':'.$ms ;
+	$msp = $wgNamespaces[NS_PROJECT]->getDefaultName().':'.$ms ;
 	$msl = $sk->makeKnownLink ( $msp ) ;
 
 	# Load list from database

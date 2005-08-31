@@ -156,7 +156,8 @@ class contribs_finder {
  */
 function wfSpecialContributions( $par = null ) {
 	global $wgUser, $wgOut, $wgLang, $wgContLang, $wgRequest, $wgTitle,
-	       $wgScript;
+	       $wgScript, $wgNamespaces;
+
 	$fname = 'wfSpecialContributions';
 
 	$target = isset($par) ? $par : $wgRequest->getVal( 'target' );
@@ -220,7 +221,7 @@ function wfSpecialContributions( $par = null ) {
 	}
 	$talk = $nt->getTalkPage();
 	if( $talk ) {
-		$ul .= ' (' . $sk->makeLinkObj( $talk, $wgLang->getNsText( NS_TALK ) ) . ')';
+		$ul .= ' (' . $sk->makeLinkObj( $talk, $wgNamespaces[NS_TALK]->getDefaultName() ) . ')';
 	}
 
 	if ($target == 'newbies') {

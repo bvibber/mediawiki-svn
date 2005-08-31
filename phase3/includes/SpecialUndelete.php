@@ -183,7 +183,9 @@ class PageArchive {
 			$newid             = 0;
 			$pageId            = $page->page_id;
 			$previousRevId     = $page->page_latest;
-			$previousTimestamp = $page->rev_timestamp;
+			if(isset($page->rev_timestamp)) {
+				$previousTimestamp = $page->rev_timestamp;
+			}
 		} else {
 			# Have to create a new article...
 			$newid  = $article->insertOn( $dbw );
@@ -352,7 +354,7 @@ class UndeleteForm {
 	}
 
 	/* private */ function showList() {
-		global $wgLang, $wgContLang, $wgUser, $wgOut;
+		global $wgLang, $wgContLang, $wgUser, $wgOut, $wgNamespaces;
 		$fname = "UndeleteForm::showList";
 
 		# List undeletable articles
@@ -370,7 +372,7 @@ class UndeleteForm {
 		$wgOut->addHTML( "<ul>\n" );
 		while( $row = $result->fetchObject() ) {
 			$n = ($row->ar_namespace ?
-				($wgContLang->getNsText( $row->ar_namespace ) . ":") : "").
+				($wgNamespaces[$row->ar_namespace]->getDefaultName(). ":") : "").
 				$row->ar_title;
 			$link = $sk->makeKnownLinkObj( $undelete,
 				htmlspecialchars( $n ), "target=" . urlencode( $n ) );

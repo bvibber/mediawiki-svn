@@ -68,7 +68,7 @@ class DifferenceEngine {
 
 	function showDiffPage() {
 		global $wgUser, $wgTitle, $wgOut, $wgContLang, $wgOnlySysopsCanPatrol,
-		       $wgUseExternalEditor, $wgUseRCPatrol;
+		       $wgUseExternalEditor, $wgUseRCPatrol, $wgNamespaces;
 		$fname = 'DifferenceEngine::showDiffPage';
 		wfProfileIn( $fname );
 				
@@ -81,7 +81,7 @@ class DifferenceEngine {
 			header ( "Content-type: application/x-external-editor; charset=".$wgInputEncoding );
 			$url1=$wgTitle->getFullURL("action=raw&oldid=".$this->mOldid);			
 			$url2=$wgTitle->getFullURL("action=raw&oldid=".$this->mNewid);
-			$special=$wgLang->getNsText(NS_SPECIAL);
+			$special=$wgNamespaces[NS_SPECIAL]->getDefaultName();
 			$control=<<<CONTROL
 [Process]
 Type=Diff text
@@ -141,7 +141,7 @@ CONTROL;
 		}
 
 		$sk = $wgUser->getSkin();
-		$talk = $wgContLang->getNsText( NS_TALK );
+		$talk = $wgNamespaces[NS_TALK]->getDefaultName();
 		$contribs = wfMsg( 'contribslink' );
 
 		$this->mOldComment = $sk->formatComment($this->mOldComment);
@@ -241,7 +241,7 @@ CONTROL;
 		#
 		$sk = $wgUser->getSkin();
 
-		$uTLink = $sk->makeLinkObj( Title::makeTitleSafe( NS_USER_TALK, $this->mOldUser ),  $wgLang->getNsText( NS_TALK ) );
+		$uTLink = $sk->makeLinkObj( Title::makeTitleSafe( NS_USER_TALK, $this->mOldUser ),  $wgNamespaces[NS_TALK]->getDefaultName() );
 		$userLink = $sk->makeLinkObj( Title::makeTitleSafe( NS_USER, $this->mOldUser ), $this->mOldUser );
 		$contribs = $sk->makeKnownLinkObj( Title::makeTitle( NS_SPECIAL, 'Contributions' ), wfMsg( 'contribslink' ),
 			'target=' . urlencode($this->mOldUser) );

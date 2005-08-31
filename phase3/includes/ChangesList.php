@@ -267,7 +267,7 @@ class ChangesList {
 
 	function recentChangesLineOld( &$rc, $watched = false ) {
 		global $wgTitle, $wgLang, $wgContLang, $wgUser, $wgUseRCPatrol,
-			$wgOnlySysopsCanPatrol, $wgSysopUserBans;
+			$wgOnlySysopsCanPatrol, $wgSysopUserBans, $wgNamespaces;
 
 		$fname = 'Skin::recentChangesLineOld';
 		wfProfileIn( $fname );
@@ -370,7 +370,7 @@ class ChangesList {
 		$s .= $userLink;
 
 		# User talk link
-		$talkname = $wgContLang->getNsText(NS_TALK); # use the shorter name
+		$talkname = $wgNamespaces[NS_TALK]->getDefaultName(); # use the shorter name
 		global $wgDisableAnonTalk;
 		if( 0 == $rc_user && $wgDisableAnonTalk ) {
 			$userTalkLink = '';
@@ -409,7 +409,7 @@ class ChangesList {
 	}
 
 	function recentChangesLineNew( &$baseRC, $watched = false ) {
-		global $wgTitle, $wgLang, $wgContLang, $wgUser,
+		global $wgTitle, $wgLang, $wgContLang, $wgUser, $wgNamespaces,
 			$wgUseRCPatrol, $wgOnlySysopsCanPatrol, $wgSysopUserBans;
 
 		static $message;
@@ -511,7 +511,7 @@ class ChangesList {
 		$rc->difflink = $diffLink;
 
 		# Make user talk link
-		$talkname = $wgContLang->getNsText( NS_TALK ); # use the shorter name
+		$talkname = $wgNamespaces[NS_TALK]->getDefaultName(); # use the shorter name
 		$userTalkPage =& Title::makeTitle( NS_USER_TALK, $rc_user_text );
 		$userTalkLink = $this->skin->makeLinkObj( $userTalkPage, $talkname );
 

@@ -1711,7 +1711,7 @@ function wfIsBadImage( $name ) {
 
 		$lines = explode("\n", wfMsgForContent( 'bad_image_list' ));
 		foreach ( $lines as $line ) {
-			if ( preg_match( '/^\*\s*\[{2}:(' . $wgContLang->getNsText( NS_IMAGE ) . ':.*?)\]{2}/', $line, $m ) ) {
+			if ( preg_match( '/^\*\s*\[{2}:(' . Namespace::getDefaultName( NS_IMAGE ) . ':.*?)\]{2}/', $line, $m ) ) {
 				$t = Title::newFromText( $m[1] );
 				$titleList[$t->getDBkey()] = 1;
 			}

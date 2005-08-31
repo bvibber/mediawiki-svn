@@ -152,8 +152,21 @@ class ListUsersPage extends QueryPage {
 	}
 
 	function formatResult( $skin, $result ) {
-		global $wgContLang;
-		
+		global $wgContLang,$wgNamespaces;
+
+		if( is_object( $this->previousResult ) &&
+			(is_null( $result ) || ( $this->previousResult->title != $result->title ) ) ) {
+			// Different username, give back name(group1,group2)
+			$name = $skin->makeLink( $wgNamespaces[$this->previousResult->namespace]->getDefaultName() . ':' . $this->previousResult->title, $this->previousResult->title );
+			$name .= $this->concatGroups ? ' ('.substr($this->concatGroups,0,-1).')' : '';
+			$this->clearGroups();
+		}
+
+		if( is_object( $result ) && $result->type != '') {
+			$group = Group::newFromId( intval( strstr( $result->type, ' ' ) ) );
+			if ( $group ) {
+				$groupName = $group->getExpandedName();
+				$this->appendGroups( $skin->makeLink( wfMsgForContent( 'administrators' ), $groupName ) );
 		$userPage = Title::makeTitle( $result->namespace, $result->title );
 		$name = $skin->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) );
 		
