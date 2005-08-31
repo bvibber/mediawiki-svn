@@ -193,23 +193,25 @@ namespace MediaWiki.Import {
 		}
 		
 		protected string TimestampFormat(DateTime time) {
+			DateTime utc = time.ToUniversalTime();
 			return string.Format("{0:0000}{1:00}{2:00}{3:00}{4:00}{5:00}",
-				time.Year,
-				time.Month,
-				time.Day,
-				time.Hour,
-				time.Minute,
-				time.Second);
+				utc.Year,
+				utc.Month,
+				utc.Day,
+				utc.Hour,
+				utc.Minute,
+				utc.Second);
 		}
 		
 		protected string InverseTimestamp(DateTime time) {
+			DateTime utc = time.ToUniversalTime();
 			return string.Format("{0:0000}{1:00}{2:00}{3:00}{4:00}{5:00}",
-				9999 - time.Year,
-				99 - time.Month,
-				99 - time.Day,
-				99 - time.Hour,
-				99 - time.Minute,
-				99 - time.Second);
+				9999 - utc.Year,
+				99 - utc.Month,
+				99 - utc.Day,
+				99 - utc.Hour,
+				99 - utc.Minute,
+				99 - utc.Second);
 		}
 	}
 }
