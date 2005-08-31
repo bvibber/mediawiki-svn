@@ -1,4 +1,27 @@
-// project created on 8/28/2005 at 11:08 PM
+/*
+ * MediaWiki import/export processing tools
+ * Copyright 2005 by Brion Vibber
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * $Id$
+ */
 
 /*
 	-> read header info
@@ -39,6 +62,8 @@ using System.Text.RegularExpressions;
 using System.Xml;
 
 using ICSharpCode.SharpZipLib.GZip;
+
+using MediaWiki.Import;
 
 class MainClass {
 	public static void Main(string[] args) {
@@ -151,48 +176,5 @@ class MainClass {
 			return new ListFilter(sink, param);
 		else
 			throw new ArgumentException("Filter unknown: " + filter);
-	}
-	
-	public static void Test(string[] args) {
-		Siteinfo info = new Siteinfo();
-		info.Sitename = "OneFive";
-		info.Base = "http://localhost/head/index.php/Main_Page";
-		info.Generator = "MediaWiki 1.6alpha";
-		info.Case = "first-letter";
-		info.Namespaces = new Hashtable();
-		info.Namespaces[-2] = "Media";
-		info.Namespaces[-1] = "Special";
-		info.Namespaces[0] = "";
-		info.Namespaces[1] = "Talk";
-		
-		Page page = new Page();
-		page.Id = 1;
-		page.Title = new Title("Talk:Main Page", info.Namespaces);
-		page.Restrictions = "";
-		
-		Revision revision = new Revision();
-		revision.Id = 1;
-		revision.Text = "This is a bunch of stuff\nyo momma!";
-		revision.Minor = true;
-		revision.Timestamp = DateTime.UtcNow;
-		revision.Contributor = new Contributor("WikiSysop", 1);
-		revision.Comment = "wacky edit o doom (it's all good)";
-		
-		Revision revision2 = new Revision();
-		revision2.Id = 2;
-		revision2.Text = "''''''''\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\" VANDALE!!!!!";
-		revision2.Minor = false;
-		revision2.Timestamp = DateTime.UtcNow;
-		revision2.Contributor = new Contributor("127.0.0.1");
-		revision2.Comment = "/* fuk uuuu */";
-		
-		SqlWriter14 writer = new SqlWriter14(Console.Out);
-		writer.WriteStartWiki();
-		writer.WriteSiteinfo(info);
-		writer.WriteStartPage(page);
-		writer.WriteRevision(revision);
-		writer.WriteRevision(revision2);
-		writer.WriteEndPage();
-		writer.WriteEndWiki();
 	}
 }

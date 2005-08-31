@@ -1,16 +1,20 @@
 <Combine name="mwdumper" fileversion="2.0">
-  <Configurations>
+  <Configurations active="Debug">
     <Configuration name="Debug" ctype="CombineConfiguration">
-      <Entry build="True" name="mwdumper" />
+      <Entry configuration="Debug" build="True" name="mwdumper" />
+      <Entry configuration="Debug" build="True" name="mwimport" />
     </Configuration>
     <Configuration name="Release" ctype="CombineConfiguration">
-      <Entry build="True" name="mwdumper" />
+      <Entry configuration="Release" build="True" name="mwdumper" />
+      <Entry configuration="Debug" build="True" name="mwimport" />
     </Configuration>
   </Configurations>
-  <StartMode startupentry="mwdumper" single="True">
+  <StartMode startupentry="mwimport" single="True">
     <Execute type="None" entry="mwdumper" />
+    <Execute type="None" entry="mwimport" />
   </StartMode>
   <Entries>
     <Entry filename="./mwdumper.mdp" />
+    <Entry filename="../mwimport/mwimport.mdp" />
   </Entries>
 </Combine>

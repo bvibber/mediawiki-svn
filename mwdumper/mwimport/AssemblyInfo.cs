@@ -7,12 +7,12 @@ using System.Runtime.CompilerServices;
 // change them to the information which is associated with the assembly
 // you compile.
 
-[assembly: AssemblyTitle("")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("MediaWiki.Import")]
+[assembly: AssemblyDescription("Import/Export XML dump handler routines for MediaWiki")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyCompany("MediaWiki")]
+[assembly: AssemblyProduct("MediaWiki")]
+[assembly: AssemblyCopyright("(c) 2005 Brion Vibber")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
