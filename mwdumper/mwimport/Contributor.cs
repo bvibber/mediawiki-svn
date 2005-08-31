@@ -1,5 +1,5 @@
 // created on 8/28/2005 at 11:53 PM
-struct Contributor {
+class Contributor {
 	public string Username;
 	public int Id;
 	
@@ -7,7 +7,14 @@ struct Contributor {
 		get {
 			return Username;
 		}
-	} 
+	}
+	
+	public bool IsAnon {
+		get {
+			// Fixme; dumps w/o id numbers...
+			return (Id == 0);
+		}
+	}
 	
 	public Contributor(string username, int id) {
 		Username = username;

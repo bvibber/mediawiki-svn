@@ -6,6 +6,8 @@ struct Title {
 	public int Namespace;
 	public string Text;
 	
+	private string _prefix;
+	
 	public Title(string prefixedTitle, IDictionary namespaces) {
 		foreach (int key in namespaces.Keys) {
 			string prefix = (string)namespaces[key];
@@ -15,16 +17,22 @@ struct Title {
 				&& prefixedTitle.StartsWith(prefix)
 				&& prefixedTitle[len] == ':') {
 				Namespace = key;
+				_prefix = prefix + ":";
 				Text = Title.ValidateTitleChars(prefixedTitle.Substring(len + 1));
 				return;
 			}
 		}
 		Namespace = 0;
+		_prefix = "";
 		Text = prefixedTitle;
 	}
 	
 	public static string ValidateTitleChars(string text) {
 		// FIXME
 		return text;
+	}
+	
+	public override string ToString() {
+		return _prefix + Text;
 	}
 }

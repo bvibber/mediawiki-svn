@@ -6,6 +6,6 @@ class Page {
 	
 	public Page() {
 		// <restrictions> is optional...
-		Restrictions = null;
+		Restrictions = "";
 	}
 }

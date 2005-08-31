@@ -45,7 +45,8 @@ class MainClass {
 		XmlTextReader reader = new XmlTextReader(inputStream);
 		reader.WhitespaceHandling = WhitespaceHandling.Significant;
 		
-		SqlWriter14 writer = new SqlWriter14(Console.Out);
+		//IDumpWriter writer = new SqlWriter14(Console.Out);
+		IDumpWriter writer = new XmlDumpWriter(Console.Out);
 		
 		writer.WriteStartWiki();
 		Siteinfo siteinfo = null;
@@ -76,18 +77,19 @@ class MainClass {
 		while (reader.Read()) {
 			string name = reader.LocalName;
 			if (reader.NodeType == XmlNodeType.Element) {
-				reader.MoveToContent();
+				string val = ReadElementContent(reader);
 				if (name.Equals("sitename"))
-					info.Sitename = reader.Value;
+					info.Sitename = val;
 				else if (name.Equals("base"))
-					info.Sitename = reader.Value;
+					info.Base = val;
 				else if (name.Equals("generator"))
-					info.Sitename = reader.Value;
+					info.Generator = val;
 				else if (name.Equals("case"))
-					info.Sitename = reader.Value;
+					info.Case = val;
 				else if (name.Equals("namespaces"))
 					info.Namespaces = ReadNamespaces(reader);
 			} else if (reader.NodeType == XmlNodeType.EndElement && name.Equals("siteinfo")) {
+				writer.WriteSiteinfo(info);
 				return info;
 			}
 		}
@@ -100,8 +102,7 @@ class MainClass {
 			string name = reader.LocalName;
 			if (reader.NodeType == XmlNodeType.Element && name.Equals("namespace")) {
 				int key = XmlConvert.ToInt32(reader.GetAttribute("key"));
-				reader.MoveToContent();
-				namespaces[key] = reader.Value;
+				namespaces[key] = ReadElementContent(reader);
 			} else if (reader.NodeType == XmlNodeType.EndElement && name.Equals("namespaces")) {
 				return namespaces;
 			}
@@ -170,13 +171,15 @@ class MainClass {
 		while (reader.Read()) {
 			string name = reader.LocalName;
 			if (reader.NodeType == XmlNodeType.Element) {
+				if (name.Equals("contributor")) {
+					rev.Contributor = ReadContributor(reader);
+					continue;
+				}
 				string val = ReadElementContent(reader);
 				if (name.Equals("id"))
 					rev.Id = XmlConvert.ToInt32(val);
 				else if (name.Equals("timestamp"))
 					rev.Timestamp = XmlConvert.ToDateTime(val);
-				else if (name.Equals("contributor"))
-					rev.Contributor = new Contributor("test");
 				else if (name.Equals("minor"))
 					rev.Minor = true;
 				else if (name.Equals("comment"))
@@ -188,6 +191,29 @@ class MainClass {
 				return;
 			}
 		}
+	}
+	
+	static Contributor ReadContributor(XmlReader reader) {
+		Contributor contrib = null;
+		while (reader.Read()) {
+			string name = reader.LocalName;
+			//Console.WriteLine("??? " + name);
+			if (reader.NodeType == XmlNodeType.Element) {
+				string val = ReadElementContent(reader);
+				//Console.WriteLine("-- " + name + ": " + val);
+				if (name.Equals("ip"))
+					contrib = new Contributor(val);
+				else if (name.Equals("username"))
+					contrib = new Contributor(val);
+				else if (name.Equals("id"))
+					contrib.Id = XmlConvert.ToInt32(val);
+			} else if (reader.NodeType == XmlNodeType.EndElement && name.Equals("contributor")) {
+				if (contrib == null)
+					throw new ArgumentException("Didn't find valid contents for a <contributor>");
+				return contrib;
+			}
+		}
+		throw new ArgumentException("Ran out of XML early; couldn't complete <contributor>");
 	}
 	
 	public static void Test(string[] args) {
