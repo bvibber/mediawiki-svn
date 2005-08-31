@@ -100,6 +100,8 @@ namespace MediaWiki.Import {
 			if (rev.Id != 0)
 				_writer.WriteElementString("id", rev.Id.ToString());
 			
+			_writer.WriteElementString("timestamp", FormatTimestamp(rev.Timestamp));
+			
 			WriteContributor(rev.Contributor);
 			
 			if (rev.Minor) {
@@ -116,6 +118,10 @@ namespace MediaWiki.Import {
 			_writer.WriteEndElement();
 			
 			_writer.WriteEndElement();
+		}
+		
+		string FormatTimestamp(DateTime ts) {
+			return ts.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss") + "Z";
 		}
 		
 		void WriteContributor(Contributor contrib) {
