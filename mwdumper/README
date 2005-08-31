@@ -1,5 +1,88 @@
 A quick little tool for extracting sets of pages from a MediaWiki dump file.
 
+Can read MediaWiki XML export dumps (version 0.3, minus uploads), perform
+optional filtering, and output back to XML or to SQL statements to add things
+directly to a database in 1.4 or 1.5 schema.
+
 Still very much under construction.
 
 MIT-style license like our other Java/C# tools; boilerplate to be added.
+
+Uses SharpZipLib for cross-platform gzip output support. SharpZipLib
+is under GPL with linking exception, see libs/COPYING.txt and libs/README.rtf
+
+
+USAGE:
+
+Sample command line:
+  gzip -dc pages_full.xml.gz | \
+  mono mwimport.exe \
+    --output=gzip:pages_public.xml.gz \
+    --format=xml \
+    --filter=notalk \
+    --filter=namespace:\!NS_USER \
+    --filter=latest
+
+A bare parameter will be interpreted as a file to read uncompressed
+XML input from; if none is given or "-" input will be read from stdin.
+
+At a minimum you must specify either an output format or a filter action.
+
+Output sinks:
+  --output=stdout
+      Send uncompressed XML or SQL output to stdout for piping.
+      (May have charset issues.) This is the default if no output
+      is specified.
+  --output=file:<filename.xml>
+      Write uncompressed output to a file.
+  --output=gzip:<filename.xml.gz>
+      Write compressed output to a file.
+
+Output formats:
+  --format=xml
+      Output back to MediaWiki's XML export format; use this for
+      filtering dumps for limited import. Output should be idempotent.
+  --format=sql:1.4
+      Untested, may not work correctly.
+  --format=sql:1.5
+      Probably doesn't work.
+
+Filter actions:
+  --filter=latest
+      Skips all but the last revision listed for each page.
+      FIXME: currently this pays no attention to the timestamp or
+      revision number, but simply the order of items in the dump.
+      This may or may not be strictly correct.
+  --filter=list:<list-filename>
+      Excludes all pages whose titles do not appear in the given file.
+      Use one title per line; blanks and lines starting with # are
+      ignored.
+  --filter=namespace:[!]<NS_KEY,NS_OTHERKEY,100,...>
+      Includes (or excludes with !) all pages in the given namespaces.
+      You can give the NS_* constant names or the raw numeric keys.
+  --filter=notalk
+      Excludes all talk pages from output (including custom namespaces)
+  --filter=titlematch:<regex>
+      Excludes all pages whose titles do not match the regex.
+
+  
+TODO:
+* Accept compressed input
+* Support multiple output+filter sinks
+
+* Test on .NET runtime
+* Add some nunit tests
+
+* Double-check that XML output is correct
+* Test 1.4-schema SQL output
+* Finish and test 1.5-schema SQL output
+* Add direct-to-MySQL output as well as SQL file
+
+* Ensure that titles and other bits are validated correctly.
+* Test XML input for robustness
+
+* Provide filter to strip ID numbers
+* <siteinfo> is technically optional; live without it and use default namespaces
+
+* Progress feedback hooks
+* GUI frontend(s)
