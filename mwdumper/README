@@ -16,12 +16,17 @@ USAGE:
 
 Sample command line:
   gzip -dc pages_full.xml.gz | \
-  mono mwimport.exe \
+  mono mwdumper.exe \
     --output=gzip:pages_public.xml.gz \
-    --format=xml \
-    --filter=notalk \
-    --filter=namespace:\!NS_USER \
-    --filter=latest
+      --format=xml \
+      --filter=notalk \
+      --filter=namespace:\!NS_USER \
+      --filter=latest \
+    --output=gzip:pages_current.xml.gz \
+      --format=xml \
+      --filter=latest \
+    --output=gzip:pages_full_1.4.sql.gz \
+      --format=sql:1.4
 
 A bare parameter will be interpreted as a file to read uncompressed
 XML input from; if none is given or "-" input will be read from stdin.
@@ -58,8 +63,8 @@ Filter actions:
       Use one title per line; blanks and lines starting with # are
       ignored.
   --filter=namespace:[!]<NS_KEY,NS_OTHERKEY,100,...>
-      Includes (or excludes with !) all pages in the given namespaces.
-      You can give the NS_* constant names or the raw numeric keys.
+      Excludes all pages in (or not in, with "!") the given namespaces.
+      You can use the NS_* constant names or the raw numeric keys.
   --filter=notalk
       Excludes all talk pages from output (including custom namespaces)
   --filter=titlematch:<regex>
@@ -68,9 +73,7 @@ Filter actions:
   
 TODO:
 * Accept compressed input
-* Support multiple output+filter sinks
 
-* Test on .NET runtime
 * Add some nunit tests
 
 * Double-check that XML output is correct

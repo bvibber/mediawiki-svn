@@ -70,13 +70,19 @@ class MainClass {
 		TextReader input = null;
 		TextWriter output = null;
 		IDumpWriter sink = null;
+		MultiWriter writers = new MultiWriter();
 		
 		foreach (string arg in args) {
 			string opt = null, val = null, param = null;
 			if (SplitArg(arg, out opt, out val, out param)) {
 				if (opt == "output") {
-					if (output != null)
-						throw new ArgumentException("Currently only one output is supported.");
+					if (output != null) {
+						// Finish constructing the previous output...
+						if (sink == null)
+							sink = new XmlDumpWriter(output);
+						writers.Add(sink);
+						sink = null;
+					}
 					output = OpenOutputFile(val, param);
 				} else if (opt == "format") {
 					if (output == null)
@@ -109,10 +115,13 @@ class MainClass {
 			input = Console.In;
 		if (output == null)
 			throw new ArgumentException("You managed not to specify any output.");
+		// Finish stacking the last output sink
 		if (sink == null)
-			throw new ArgumentException("You managed not to specify any output format.");
+			sink = new XmlDumpWriter(output);
+		writers.Add(sink);
 		
-		XmlDumpReader reader = new XmlDumpReader(input, sink);
+		
+		XmlDumpReader reader = new XmlDumpReader(input, writers);
 		reader.ReadDump();
 	}
 	

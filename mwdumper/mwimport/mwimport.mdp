@@ -35,6 +35,7 @@
     <File name="./TitleMatchFilter.cs" subtype="Code" buildaction="Compile" />
     <File name="./NamespaceFilter.cs" subtype="Code" buildaction="Compile" />
     <File name="./NotalkFilter.cs" subtype="Code" buildaction="Compile" />
+    <File name="./MultiWriter.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System.Xml, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
