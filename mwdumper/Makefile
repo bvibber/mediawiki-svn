@@ -1,5 +1,9 @@
 .PHONY : all clean distclean install
 
+INSTALL_PREFIX=/usr/local
+INSTALL_BINDIR=$(INSTALL_PREFIX)/bin
+INSTALL_ASSEMBLYDIR=$(INSTALL_PREFIX)/lib/mwdumper
+
 MCS?=mcs
 CSFLAGS=-codepage:utf8
 
@@ -50,11 +54,27 @@ REFS_DUMPER=\
   /r:build/MediaWiki.Import.dll \
   $(REFS_IMPORT)
 
+SCRIPTS=\
+  build/mwdumper.sh
 
-all: $(ASSEMBLIES)
+all: $(ASSEMBLIES) $(SCRIPTS)
 
 clean:
-	rm -f build/*.dll build/*.exe
+	rm -f build/*.dll build/*.exe build/*.sh
+
+distclean : clean
+
+install: all
+	install -d $(INSTALL_ASSEMBLYDIR)
+	install $(ASSEMBLIES) $(INSTALL_ASSEMBLYDIR)
+	install $(LIBS) $(INSTALL_ASSEMBLYDIR)
+	install -m 0755 build/mwdumper.sh $(INSTALL_BINDIR)/mwdumper
+
+uninstall :
+	rm -f $(INSTALL_BINDIR)/mwdumper
+	rm -f $(INSTALL_ASSEMBLYDIR)/*.dll
+	rm -f $(INSTALL_ASSEMBLYDIR)/*.exe
+	rmdir $(INSTALL_ASSEMBLYDIR) || true
 
 
 build/MediaWiki.Import.dll : $(SOURCES_IMPORT) $(LIBS_IMPORT)
@@ -73,3 +93,7 @@ build/mwdumper.exe : $(SOURCES_DUMPER) $(LIBS_DUMPER)
 
 build/ICSharpCode.SharpZipLib.dll : libs/ICSharpCode.SharpZipLib.dll
 	cp -p libs/ICSharpCode.SharpZipLib.dll build/ICSharpCode.SharpZipLib.dll
+
+build/mwdumper.sh :
+	echo "#!/bin/sh" > $@
+	echo "exec mono $(INSTALL_ASSEMBLYDIR)/mwdumper.exe \$$@" >> $@
