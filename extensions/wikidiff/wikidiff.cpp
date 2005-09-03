@@ -2,6 +2,8 @@
 #include <vector>
 #include <string>
 
+#define MAX_DIFF_LINE 10000
+
 enum optype { ins, rep, del, copy };
 
 // a small class to accomodate word-level diffs; basically, a body and an
@@ -162,6 +164,12 @@ inline bool my_istext(unsigned char ch)
 // split a string into multiple tokens, just like the monster regex in DifferenceEngine.php
 void split_tokens(const char *text, std::vector<Word> &tokens)
 {
+	if (strlen(text) > MAX_DIFF_LINE) {
+		std::string everything(text);
+		tokens.push_back(Word(everything, everything));
+		return;
+	}
+	
 	const char *ptr = text;
 
 	while (*ptr) {
@@ -317,17 +325,23 @@ void line_explode(const char *text, std::vector<std::string> &lines)
 // Finally, the entry point for the PHP code.
 const char *wikidiff_do_diff(const char *text1, const char *text2, int num_lines_context)
 {
-	std::vector<std::string> lines1;
-	std::vector<std::string> lines2;
-	std::string ret;
-
-	// constant reallocation is bad for performance (note: we might want to reduce this
-	// later, it might be too much)
-	ret.reserve(strlen(text1) + strlen(text2) + 10000);
-	
-	line_explode(text1, lines1);
-	line_explode(text2, lines2);
-	print_diff(lines1, lines2, num_lines_context, ret);
-	
-	return strdup( ret.c_str() );
+	try {
+		std::vector<std::string> lines1;
+		std::vector<std::string> lines2;
+		std::string ret;
+		
+		// constant reallocation is bad for performance (note: we might want to reduce this
+		// later, it might be too much)
+		ret.reserve(strlen(text1) + strlen(text2) + 10000);
+		
+		line_explode(text1, lines1);
+		line_explode(text2, lines2);
+		print_diff(lines1, lines2, num_lines_context, ret);
+		
+		return strdup(ret.c_str());
+	} catch (std::bad_alloc &e) {
+		return strdup("Out of memory in diff.");
+	} catch (...) {
+		return strdup("Unknown exception in diff.");
+	}
 }
