@@ -121,7 +121,7 @@ namespace MediaWiki.Import {
 		}
 		
 		string FormatTimestamp(DateTime ts) {
-			return ts.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss") + "Z";
+			return ts.ToString("yyyy-MM-ddTHH:mm:ss") + "Z";
 		}
 		
 		void WriteContributor(Contributor contrib) {

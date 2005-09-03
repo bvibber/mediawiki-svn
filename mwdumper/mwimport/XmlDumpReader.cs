@@ -226,7 +226,13 @@ namespace MediaWiki.Import {
 		}
 
 		private void ReadTimestamp() {
-			_rev.Timestamp = XmlConvert.ToDateTime(ReadElementContent());
+			// This is slow, took up 10% of runtime trying 17 different formats!
+			//_rev.Timestamp = XmlConvert.ToDateTime(ReadElementContent()).ToUniversalTime();
+			
+			// We've declared a standard format, so just check it.
+			_rev.Timestamp = DateTime.ParseExact(ReadElementContent(),
+				@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'",
+				System.Globalization.CultureInfo.CurrentCulture);
 		}
 
 		private void ReadComment() {
