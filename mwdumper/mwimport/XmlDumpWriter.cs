@@ -35,7 +35,7 @@ namespace MediaWiki.Import {
 		protected XmlTextWriter _writer;
 		
 		public const string Version = "0.3";
-		protected const string _ns = "http://www.mediawiki.org/xml/export-" + Version;
+		protected const string _ns = "http://www.mediawiki.org/xml/export-" + Version + "/";
 		protected const string _schema = "http://www.mediawiki.org/xml/export-" + Version + ".xsd";
 		
 		public XmlDumpWriter(TextWriter output) {
@@ -52,7 +52,8 @@ namespace MediaWiki.Import {
 			_writer.WriteStartDocument();
 			_writer.WriteStartElement("mediawiki", _ns);
 			
-			_writer.WriteAttributeString("xsi", "schemaLocation", "http://www.w3.org/2001/XMLSchema-instance", _schema);
+			_writer.WriteAttributeString("xsi", "schemaLocation", "http://www.w3.org/2001/XMLSchema-instance",
+				_ns + " " + _schema);
 			_writer.WriteAttributeString("version", Version);
 			
 			// TODO: store and keep the xml:lang
@@ -121,7 +122,7 @@ namespace MediaWiki.Import {
 		}
 		
 		string FormatTimestamp(DateTime ts) {
-			return ts.ToString("yyyy-MM-ddTHH:mm:ss") + "Z";
+			return ts.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'");
 		}
 		
 		void WriteContributor(Contributor contrib) {
