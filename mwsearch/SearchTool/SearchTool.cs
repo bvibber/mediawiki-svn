@@ -62,9 +62,13 @@ namespace MediaWiki.Search.SearchTool {
 			config = Configuration.Open();
 			
 			foreach (string dbname in databases) {
-				SearchWriter state = new SearchWriter(dbname);
-				Console.WriteLine("Optimizing " + dbname);
-				state.Optimize();
+				try {
+					SearchWriter state = new SearchWriter(dbname);
+					Console.WriteLine("Optimizing " + dbname);
+					state.Optimize();
+				} catch (Exception e) {
+					Console.WriteLine(e);
+				}
 			}
 			
 			Console.WriteLine("Done!");
