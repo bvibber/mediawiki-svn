@@ -29,20 +29,22 @@ class SiteMatrixPage extends SpecialPage
 		sort( $langlist );
 		$xLanglist = array_flip( $langlist );
 
-		$sites = array( 'wiki', 'wiktionary', 'wikibooks', 'wikinews', 'wikiquote' );
+		$sites = array( 'wiki', 'wiktionary', 'wikibooks', 'wikinews', 'wikisource', 'wikiquote' );
 		$names = array( 
 			'wiki' => 'Wikipedia<br />w',
 			'wiktionary' => 'Wiktionary<br />wikt',
 			'wikibooks' => 'Wikibooks<br />b',
 			'wikinews' => 'Wikinews<br />n',
-			'wikiquote' => 'Wikiquote<br />q'
+			'wikiquote' => 'Wikiquote<br />q',
+			'wikisource' => 'Wikisource<br />s',
 		);
 		$hosts = array(
 			'wiki' => 'wikipedia.org',
 			'wiktionary' => 'wiktionary.org',
 			'wikibooks' => 'wikibooks.org',
 			'wikinews' => 'wikinews.org',
-			'wikiquote' => 'wikiquote.org'
+			'wikisource' => 'wikisource.org',
+			'wikiquote' => 'wikiquote.org',
 		);
 		
 		# Tabulate the matrix
