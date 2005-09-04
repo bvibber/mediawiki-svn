@@ -1,5 +1,5 @@
 <Project name="Search" fileversion="2.0" language="C#" ctype="DotNetProject">
-  <Configurations>
+  <Configurations active="Debug">
     <Configuration name="Debug" ctype="DotNetProjectConfiguration">
       <Output directory="./bin/Debug" assembly="MWSearch" />
       <Build debugmode="True" target="Library" />
@@ -13,11 +13,6 @@
       <CodeGeneration compiler="Csc" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
     </Configuration>
   </Configurations>
-  <References>
-    <ProjectReference type="Assembly" localcopy="True" refto="../libs/log4net.dll" />
-    <ProjectReference type="Assembly" localcopy="True" refto="../libs/Lucene.Net.dll" />
-    <ProjectReference type="Assembly" localcopy="True" refto="../libs/Nini.dll" />
-  </References>
   <DeploymentInformation strategy="File">
     <excludeFiles />
   </DeploymentInformation>
@@ -32,4 +27,10 @@
     <File name="./SearchWriter.cs" subtype="Code" buildaction="Compile" />
     <File name="./SearchPool.cs" subtype="Code" buildaction="Compile" />
   </Contents>
+  <References>
+    <ProjectReference type="Assembly" localcopy="True" refto="../libs/log4net.dll" />
+    <ProjectReference type="Assembly" localcopy="True" refto="../libs/Lucene.Net.dll" />
+    <ProjectReference type="Assembly" localcopy="True" refto="../libs/Nini.dll" />
+    <ProjectReference type="Gac" localcopy="True" refto="System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  </References>
 </Project>

@@ -84,7 +84,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 		}
 		
 		public override string ToString() {
-			return "update on " + _database + " to " + _article;
+			return String.Format("update on {0} to {1}", _database, _article);
 		}
 	}
 	
@@ -99,7 +99,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 		}
 		
 		public override string ToString() {
-			return "deletion on " + _database + " to " + _article;
+			return String.Format("deletion on {0} to {1}", _database, _article);
 		}
 	}
 }

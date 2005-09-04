@@ -42,12 +42,12 @@ namespace MediaWiki.Search {
 		public void Close() {
 			try {
 				if (writer != null) {
-					log.Info("Closing writer for " + mydbname);
+					log.InfoFormat("Closing writer for {0}", mydbname);
 					writer.Close();
 					writer = null;
 				}
 			} catch (IOException e) {
-				log.Error(mydbname + ": warning: closing index: " + e.Message);
+				log.ErrorFormat("{0}: warning: closing index: {1}", mydbname, e.Message);
 			}
 		}
 
@@ -65,7 +65,7 @@ namespace MediaWiki.Search {
 			if (writer != null)
 				return;
 			
-			log.Info("Opening index writer for " + mydbname);
+			log.InfoFormat("Opening index writer for {0}", mydbname);
 			writer = new IndexWriter(indexpath, analyzer, false);
 		}
 		

@@ -17,12 +17,14 @@ ASSEMBLIES=\
   build/MWPrefix.dll \
   build/MWDaemon.exe \
   build/MWBenchmark.exe \
-  build/MWUpdateDaemon.exe
+  build/MWUpdateDaemon.exe \
+  build/MWSearchTool.exe
 
 SCRIPTS=\
   build/MWDaemon.sh \
   build/MWBenchmark.sh \
-  build/MWUpdateDaemon.sh
+  build/MWUpdateDaemon.sh \
+  build/MWSearchTool.sh
 
 CONFIG=\
   build/MWUpdateDaemon.exe.config
@@ -41,12 +43,14 @@ install: all
 	install -m 0755 build/MWDaemon.sh $(INSTALL_BINDIR)/MWBenchmark
 	install -m 0755 build/MWDaemon.sh $(INSTALL_BINDIR)/MWDaemon
 	install -m 0755 build/MWUpdateDaemon.sh $(INSTALL_BINDIR)/MWUpdateDaemon
+	install -m 0755 build/MWSearchTool.sh $(INSTALL_BINDIR)/MWSearchTool
 	echo "Don't forget to set up /etc/mwsearch.conf"
 
 uninstall :
 	rm -f $(INSTALL_BINDIR)/MWBenchmark
 	rm -f $(INSTALL_BINDIR)/MWDaemon
 	rm -f $(INSTALL_BINDIR)/MWUpdateDaemon
+	rm -f $(INSTALL_BINDIR)/MWSearchTool
 	rm -f $(INSTALL_ASSEMBLYDIR)/*.dll
 	rm -f $(INSTALL_ASSEMBLYDIR)/*.exe
 	rmdir $(INSTALL_ASSEMBLYDIR) || true
@@ -160,6 +164,29 @@ build/MWUpdateDaemon.sh :
 
 build/MWUpdateDaemon.exe.config :
 	cp -p UpdateDaemon/app.config build/MWUpdateDaemon.exe.config
+
+
+# MWSearchTool.exe: command-line tool to optimize indexes and such
+SEARCHTOOL_SOURCES=\
+  SearchTool/AssemblyInfo.cs \
+  SearchTool/SearchTool.cs
+
+SEARCHTOOL_LIBS=\
+  build/MWSearch.dll
+
+SEARCHTOOL_REFERENCES=\
+  -r:build/MWSearch.dll \
+  $(SEARCH_REFERENCES)
+
+build/MWSearchTool.exe : $(SEARCHTOOL_LIBS) $(SEARCHTOOL_SOURCES)
+	mcs -target:exe -out:$@ \
+	    $(CSFLAGS) \
+	    $(SEARCHTOOL_REFERENCES) \
+        $(SEARCHTOOL_SOURCES)
+
+build/MWSearchTool.sh :
+	echo "#!/bin/sh" > $@
+	echo "mono $(INSTALL_ASSEMBLYDIR)/MWSearchTool.exe \$$@" >> $@
 
 
 build/ICSharpCode.SharpZipLib.dll: libs/ICSharpCode.SharpZipLib.dll

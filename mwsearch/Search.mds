@@ -1,29 +1,32 @@
 <Combine name="Search" fileversion="2.0" outputpath="./build/bin">
-  <Configurations>
+  <Configurations active="Debug">
     <Configuration name="Debug" ctype="CombineConfiguration">
-      <Entry build="False" name="Search" />
-      <Entry build="False" name="Daemon" />
-      <Entry build="True" name="Benchmark" />
-      <Entry build="True" name="Prefix" />
-      <Entry build="False" name="Tests" />
-      <Entry build="True" name="UpdateDaemon" />
+      <Entry configuration="Debug" build="False" name="Search" />
+      <Entry configuration="Debug" build="False" name="Daemon" />
+      <Entry configuration="Debug" build="True" name="Benchmark" />
+      <Entry configuration="Debug" build="True" name="Prefix" />
+      <Entry configuration="Debug" build="False" name="Tests" />
+      <Entry configuration="Debug" build="True" name="UpdateDaemon" />
+      <Entry configuration="Debug" build="True" name="MWSearchTool" />
     </Configuration>
     <Configuration name="Release" ctype="CombineConfiguration">
-      <Entry build="False" name="Search" />
-      <Entry build="False" name="Daemon" />
-      <Entry build="True" name="Benchmark" />
-      <Entry build="True" name="Prefix" />
-      <Entry build="False" name="Tests" />
-      <Entry build="True" name="UpdateDaemon" />
+      <Entry configuration="Release" build="False" name="Search" />
+      <Entry configuration="Release" build="False" name="Daemon" />
+      <Entry configuration="Release" build="True" name="Benchmark" />
+      <Entry configuration="Release" build="True" name="Prefix" />
+      <Entry configuration="Release" build="False" name="Tests" />
+      <Entry configuration="Release" build="True" name="UpdateDaemon" />
+      <Entry configuration="Debug" build="True" name="MWSearchTool" />
     </Configuration>
   </Configurations>
-  <StartMode startupentry="UpdateDaemon" single="True">
+  <StartMode startupentry="Search" single="True">
     <Execute type="None" entry="Search" />
     <Execute type="Execute" entry="Daemon" />
     <Execute type="None" entry="Benchmark" />
     <Execute type="None" entry="Prefix" />
     <Execute type="None" entry="Tests" />
     <Execute type="None" entry="UpdateDaemon" />
+    <Execute type="None" entry="MWSearchTool" />
   </StartMode>
   <Entries>
     <Entry filename="./Search/Search.mdp" />
@@ -32,5 +35,6 @@
     <Entry filename="./Prefix/Prefix.mdp" />
     <Entry filename="./Tests/Tests.mdp" />
     <Entry filename="./UpdateDaemon/UpdateDaemon.mdp" />
+    <Entry filename="./SearchTool/MWSearchTool.mdp" />
   </Entries>
 </Combine>

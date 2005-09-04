@@ -49,8 +49,6 @@ namespace MediaWiki.Search.Daemon {
 	 */
 	public class Worker {
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-		private static readonly Encoding utf8 = new UTF8Encoding();
-		
 
 		/** The search term after urlencoding */
 		string searchterm;
@@ -154,7 +152,9 @@ namespace MediaWiki.Search.Daemon {
 			dbname = paths[2];
 			searchterm = HttpUtility.UrlDecode(paths[3], Encoding.UTF8);
 			
-			log.Info("query:" + bits[1] + " what:"+what+" dbname:"+dbname+" term:"+searchterm);
+			log.InfoFormat("query:{0} what:{1} dbname:{2} term:{3}",
+				bits[1], what, dbname, searchterm);
+			
 			IDictionary query = new QueryStringMap(uri);
 			
 			state = SearchPool.ForWiki(dbname);
@@ -183,7 +183,7 @@ namespace MediaWiki.Search.Daemon {
 		}
 		
 		private void SendHeaders(int code, string message) {
-			SendOutputLine("HTTP/1.1 " + code + " " + message);
+			SendOutputLine(String.Format("HTTP/1.1 {0} {1}", code, message));
 			SendOutputLine("Content-Type: text/plain");
 			SendOutputLine("Connection: Close");
 			SendOutputLine("");
@@ -191,7 +191,7 @@ namespace MediaWiki.Search.Daemon {
 		}
 		
 		private void DoNormalSearch(int offset, int limit, NamespaceFilter namespaces) {
-			string encsearchterm = "title:(" + searchterm + ")^4 " + searchterm;
+			string encsearchterm = String.Format("title:({0})^4 {1}", searchterm, searchterm);
 			
 			DateTime now = DateTime.UtcNow;
 			Query query;
@@ -227,11 +227,11 @@ namespace MediaWiki.Search.Daemon {
 			TimeSpan delta = DateTime.UtcNow - now;
 			LogRequest(searchterm, query, numhits, delta);
 			
-			SendOutputLine(numhits + "");
+			SendOutputLine(numhits.ToString());
 			
 			if (numhits == 0) {
 				string spelfix = MakeSpelFix(searchterm);
-				SendOutputLine(HttpUtility.UrlEncode(spelfix, utf8));
+				SendOutputLine(HttpUtility.UrlEncode(spelfix, Encoding.UTF8));
 			} else {
 				// Lucene's filters seem to want to run over the entire
 				// document set, which is really slow. We'll do namespace
@@ -249,7 +249,8 @@ namespace MediaWiki.Search.Daemon {
 						if (matches++ < offset)
 							continue;
 						string title = doc.Get("title");
-						string squish=pageNamespace+":"+title;
+						/*
+						string squish = pageNamespace+":"+title;
 						if (lastMatch.Equals(squish)) {
 							// skip duplicate results due to indexing bugs
 							maxoffset++;
@@ -257,6 +258,7 @@ namespace MediaWiki.Search.Daemon {
 							continue;
 						}
 						lastMatch = squish;
+						*/
 						float score = hits.Score(i);
 						SendResultLine(score, pageNamespace, title);
 						if (matches >= (limit + offset))
@@ -405,13 +407,13 @@ namespace MediaWiki.Search.Daemon {
 	    }
 	    
 	    private void SendOutputLine(string sout) {
-	        log.Debug(">>>" + sout);
+	        log.DebugFormat(">>>{0}", sout);
 	        ostrm.WriteLine(sout);
 		}
 	 	
 	    private string ReadInputLine() {
 			string sin = istrm.ReadLine();
-			log.Debug("<<<" + sin);
+			log.DebugFormat("<<<{0}", sin);
 			return sin;
 	    }
 	
@@ -428,8 +430,8 @@ namespace MediaWiki.Search.Daemon {
 		 * @throws UnsupportedEncodingException
 		 */
 		private void SendResultLine(float score, string pageNamespace, string title) {
-			SendOutputLine(score + " " + pageNamespace + " " +
-				HttpUtility.UrlEncode(title.Replace(" ", "_"), Encoding.UTF8));
+			SendOutputLine(String.Format("{0} {1} {2}", score, pageNamespace,
+				HttpUtility.UrlEncode(title.Replace(" ", "_"), Encoding.UTF8)));
 		}
 
 	}

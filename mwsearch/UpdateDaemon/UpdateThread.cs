@@ -103,7 +103,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 				}
 				ApplyAll(workUpdates, optimize);
 			} catch (Exception e) {
-				log.Error("Unexpected error in update thread: " + e);
+				log.ErrorFormat("Unexpected error in update thread: {0}", e);
 				return;
 			}
 		}
@@ -124,27 +124,27 @@ namespace MediaWiki.Search.UpdateDaemon {
 		
 		private static void ApplyOn(string databaseName, ICollection queue, bool optimize) {
 			try {
-				log.Info("Applying updates to " + databaseName);
+				log.InfoFormat("Applying updates to {0}", databaseName);
 				
 				SearchReader reader = new SearchReader(databaseName, SearchReader.CreateIfNew);
 				foreach (UpdateRecord record in queue) {
-					log.Info("Applying read pass: " + record);
+					log.InfoFormat("Applying read pass: {0}", record);
 					record.ApplyReads(reader);
 				}
 				reader.Close();
 				
 				SearchWriter writer = new SearchWriter(databaseName);
 				foreach (UpdateRecord record in queue) {
-					log.Info("Applying write pass: " + record);
+					log.InfoFormat("Applying write pass: {0}", record);
 					record.ApplyWrites(writer);
 				}
 				if (optimize)
 					writer.Optimize();
 				writer.Close();
 				
-				log.Info("Closed updates on " + databaseName);
+				log.InfoFormat("Closed updates on {0}", databaseName);
 			} catch (Exception e) {
-				log.Error("Unexpected error in update for " + databaseName + ": " + e);
+				log.ErrorFormat("Unexpected error in update for {0}: {1}", databaseName, e);
 				return;
 			}
 		}
@@ -184,7 +184,7 @@ namespace MediaWiki.Search.UpdateDaemon {
 				// so we don't end up with duplicates in the index.
 				((Hashtable)_queuedUpdates[record.Database])[record.Key] = record;
 			}
-			log.Info("Queued item: " + record);
+			log.InfoFormat("Queued item: {0}", record);
 		}
 		
 		public static void Quit() {
