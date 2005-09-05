@@ -122,11 +122,9 @@ namespace MediaWiki.Import {
 				return "";
 			}
 			while (_reader.Read()) {
-				//Console.WriteLine("XXX: " + reader.NodeType + ", " + reader.LocalName + ", " + reader.Value);
 				switch (_reader.NodeType) {
 				case XmlNodeType.SignificantWhitespace:
 				case XmlNodeType.Text:
-					_reader.MoveToContent();
 					val.Append(_reader.Value);
 					break;
 				case XmlNodeType.EndElement:
@@ -226,13 +224,7 @@ namespace MediaWiki.Import {
 		}
 
 		private void ReadTimestamp() {
-			// This is slow, took up 10% of runtime trying 17 different formats!
-			//_rev.Timestamp = XmlConvert.ToDateTime(ReadElementContent()).ToUniversalTime();
-			
-			// We've declared a standard format, so just check it.
-			_rev.Timestamp = DateTime.ParseExact(ReadElementContent(),
-				@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'",
-				System.Globalization.CultureInfo.CurrentCulture);
+			_rev.Timestamp = ParseUTCTimestamp(ReadElementContent());
 		}
 
 		private void ReadComment() {
@@ -272,6 +264,24 @@ namespace MediaWiki.Import {
 		
 		private void ReadIp() {
 			_contrib = new Contributor(ReadElementContent());
+		}
+		
+		private DateTime ParseUTCTimestamp(string text) {
+			// 2003-10-26T04:50:47Z
+			//
+			// We're doing this manually because:
+			// * XmlConvert.ToDateTime() is slow
+			// * XmlConvert.ToDateTime() is lossy at local DST boundary
+			// * DateTime.ParseExact seems to be similarly lossy, unless
+			//   there's a magic formula I haven't found yet.
+			string trimmed = text.Trim();
+			return new DateTime(
+				int.Parse(trimmed.Substring(0,4)),   // year
+				int.Parse(trimmed.Substring(5,2)),   // month
+				int.Parse(trimmed.Substring(8,2)),   // day
+				int.Parse(trimmed.Substring(11,2)),  // hour
+				int.Parse(trimmed.Substring(14,2)),  // minute
+				int.Parse(trimmed.Substring(17,2))); // second
 		}
 	}
 }
