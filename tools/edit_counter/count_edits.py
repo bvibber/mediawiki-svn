@@ -58,7 +58,9 @@ namespaces = {
 	12: 'Help',
 	13: 'Help talk',
 	14: 'Category',
-	15: 'Category talk'
+	15: 'Category talk',
+	100: 'Portal',
+	101: 'Portal talk'
 }
 
 def ns2name(ns):
