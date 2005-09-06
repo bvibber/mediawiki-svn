@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+# vim:ts=4 sw=4 et:
 #
 # Count number of edits from a user.
 # This source code is in the public domain.
@@ -39,6 +40,37 @@ print """
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head><title>editcount</title>
+<style type="text/css">
+table.edittable {
+    border: solid 1px #6666aa;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+td, th {
+    padding: 0.1em 0.3em 0.1em 0.3em;
+    text-align: center;
+}
+th {
+    vertical-align: top;
+}
+table.edittable tr {
+    border-bottom: solid 1px #6666aa;
+}
+table.edittable th {    
+    border-right: solid 1px #6666aa;
+}
+td.nedits {
+    text-align: right;
+}
+td.nsname {
+    border-right: solid 1px #6666aa;
+    text-align: left;
+}
+table.edittable tr.nsn {
+    border-bottom: 0px;
+}
+</style>
 </head>
 <body>"""
 
@@ -58,53 +90,82 @@ namespaces = {
 	12: 'Help',
 	13: 'Help talk',
 	14: 'Category',
-	15: 'Category talk',
-	100: 'Portal',
-	101: 'Portal talk'
+	15: 'Category talk'
 }
 
-def ns2name(ns):
+extra_ns = {
+    'enwiki': {
+        100: 'Portal',
+        101: 'Portal talk'
+    }
+}
+
+def ns2name(ns, wiki):
     try:
-	return namespaces[ns]
+        return namespaces[ns]
     except KeyError:
-        return "Unknown namespace %d" % ns
+        try:
+            return "%s: %s" % (wiki, extra_ns[wiki][ns])
+        except KeyError:
+            return "Unknown namespace %d" % ns
+
+def fmttime(t):
+    return "%s-%s-%s %s:%s:%s" % (t[0:4], t[4:6], t[6:8], t[8:10], t[10:12], t[12:14])
 
 def editcount(user):
-	ns = dict()
-	total = 0
-	db = MySQLdb.connect(db=dbname, host=dbserver, user=dbuser, passwd=dbpassword)
-	c = db.cursor()
-        c.execute("SELECT page_namespace, COUNT(*) FROM user, revision, page WHERE "
-                "user_name=%s AND rev_user = user_id AND rev_page = page_id "
-                "GROUP BY page_namespace", user);
-        
-        print "<table style='border: solid 1px black' cellspacing='0' cellpadding='3'>"
-        print "<tr><th>Namespace</th><th>Edits</th></tr>"
+    ns = dict()
+    total = 0
+    db = MySQLdb.connect(db=dbname, host=dbserver, user=dbuser, passwd=dbpassword)
+    c = db.cursor()
+    c.execute("SELECT COUNT(DISTINCT page_id) FROM user, revision, page WHERE "
+              "user_name=%s AND rev_user = user_id AND rev_page = page_id", user);
+    t = c.fetchone()
+    distinct = t[0]
+    c = db.cursor()
+    c.execute("SELECT MIN(rev_timestamp) FROM user, revision, page WHERE "
+              "user_name=%s AND rev_user = user_id AND rev_page = page_id", user)
+    t = c.fetchone()
+    firstedit = t[0]
+    c = db.cursor()
+    c.execute("SELECT page_namespace, COUNT(*) FROM user, revision, page WHERE "
+              "user_name=%s AND rev_user = user_id AND rev_page = page_id "
+              "GROUP BY page_namespace", user);
+    edits = {}    
+    t = c.fetchone()
+    while t != None:
+        total += t[1]
+        edits[t[0]] = t[1]
         t = c.fetchone()
-        while t != None:
-            print "<tr><td style='border-right: solid 1px black'>%s</td><td style='text-align: right'>%d</td></tr>" % (ns2name(t[0]), t[1])
-            total += t[1]
-            t = c.fetchone()
-        print "</table>"
-        print "<hr/>Total edits for <strong>%s</strong>: %d<br/>" % (cgi.escape(user), total)
-	return
+    print """
+<table class="edittable">
+<tr><th>Username</th><td colspan='2'>%s</td></tr>
+<tr><th>Total edits</th><td colspan='2'>%s</td></tr>
+<tr><th>Distinct pages edited</th><td colspan='2'>%s</td></tr>
+<tr><th>Edits/page (avg)</th><td colspan='2'>%0.02f</td></tr>
+<tr><th>First edit</th><td colspan='2'>%s</td></tr>
+<tr>
+<th rowspan='%s'>Edits by namespace</th>
+<th>Namespace</th><th>Edits</th>
+</tr>
+""" % (cgi.escape(user), total, distinct, (float(total) / float(distinct)), fmttime(firstedit), len(edits) + 1)
+    for nsn in edits.keys():
+        print "<tr class='nsn'><td class='nsname'>%s</td><td class='nedits'>%d</td></tr>" \
+                % (ns2name(nsn, dbname), edits[nsn])
+    print """
+</table>
+    """
+    return
 
 if f.has_key('user'):
 	print "<div>"
 	print "<br/>"
-        s = f['user'].value.replace('_', ' ')
-        s = s[0].upper() + s[1:]
+    s = f['user'].value.replace('_', ' ')
+    s = s[0].upper() + s[1:]
 	editcount(s)
-	c = db.cursor()
-	c.execute("SELECT COUNT(DISTINCT page_id) FROM user, revision, page WHERE "
-		 "user_name=%s AND rev_user = user_id AND rev_page = page_id", user);
-	t = c.fetchone()
-	print "%s has edited a total of <strong>%s</strong> distinct pages.<br/></p>" % (cgi.escape(user), t[0])
 	print "</div>"
 
 print """
 <hr/>
-<p><a href="count_edits_14">MW 1.4 version</a></p>
 <form action="count_edits" method="get">
 user name: <input type="text" name="user"/>
 <select name="dbname">
