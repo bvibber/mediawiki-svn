@@ -27,7 +27,7 @@ function wfNewuserlog() {
 		array(
 			'newuserlogpage' => 'User creation log',
 			'newuserlogpagetext' => 'This is a log of recent user creations',
-			'newuserloglog' => 'Created the user "[[User:$1|$1]]" ([[User talk:$1|' . $talk . ']])'
+			'newuserloglog' => 'Created the user "[[User:$1|$1]]" ([[User talk:$1|' . $talk . ']]; [[Special:Contributions/$1|Contributions]])'
 		)
 	);
 
