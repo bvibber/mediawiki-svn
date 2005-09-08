@@ -21,13 +21,11 @@ $wgExtensionCredits['other'][] = array(
 function wfNewuserlog() {
 	global $wgMessageCache, $wgHooks, $wgContLang;
 	
-	$talk = $wgContLang->getFormattedNsText( NS_TALK );
-	
 	$wgMessageCache->addMessages(
 		array(
 			'newuserlogpage' => 'User creation log',
 			'newuserlogpagetext' => 'This is a log of recent user creations',
-			'newuserloglog' => 'Created the user "[[User:$1|$1]]" ([[User talk:$1|' . $talk . ']]; [[Special:Contributions/$1|Contributions]])'
+			'newuserloglog' => "Created the user [[User:$1|$1]] ([[User talk:$1|$2]] | [[Special:Contributions/$1|$3]])"
 		)
 	);
 
@@ -41,10 +39,13 @@ function wfNewuserlog() {
 }
 
 function wfNewuserlogHook() {
-	global $wgUser, $wgTitle;
+	global $wgUser, $wgTitle, $wgContLang;
+
+	$talk = $wgContLang->getFormattedNsText( NS_TALK );
+	$contribs = wfMsgForContent( 'contribslink' );
 	
 	$log = new LogPage( 'newusers' );
-	$log->addEntry( 'newusers', $wgTitle, wfMsg( 'newuserloglog', $wgUser->getName() ) );
+	$log->addEntry( 'newusers', $wgTitle, wfMsgForContent( 'newuserloglog', $wgUser->getName(), $talk, $contribs ) );
 	
 	return true;
 }
