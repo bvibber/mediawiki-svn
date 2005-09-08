@@ -31,7 +31,7 @@ $wgExtensionCredits['parserhook'][] = array(
  */
 function registerInputboxExtension()
 {
-    global $wgParser,$wgExtensionCredits;
+    global $wgParser;
     $wgParser->setHook('inputbox', 'renderInputbox');
 }
 
