@@ -43,7 +43,14 @@ public class CheckPort:
 	
 	def Connect(suspect as IPAddress):
 		Log("Connecting to port " + _port)
-		_client = TcpClient()
+		iface = Config.Get("blocker", "interface")
+		if iface:
+			// Bind to a particular local IP address
+			endpoint = IPEndPoint(IPAddress.Parse(iface), 0)
+			_client = TcpClient(endpoint)
+		else:
+			// Bind to default interface
+			_client = TcpClient()
 		timeout = int.Parse(Config.Get("blocker", "timeout", "2000")) // milliseconds
 		_client.SendTimeout = timeout
 		_client.ReceiveTimeout = timeout
