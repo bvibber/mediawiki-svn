@@ -4,6 +4,7 @@ namespace MediaWiki.Blocker
 
 import System
 import System.Data
+import System.IO
 
 // Current MySQL Connector/NET is broken on non-Windows platforms
 //import MySql.Data.MySqlClient
@@ -28,6 +29,8 @@ class Recorder:
 			return false
 	
 	static def Record(suspect as Suspect, blocked as bool, log as string):
+		if blocked:
+			RecordToList(suspect)
 		cmd = MySqlCommand("""INSERT INTO checklog
 			(check_timestamp, check_ip, check_blocked, check_log)
 			VALUES (@timestamp, @ip, @blocked, @log)""", Connection)
@@ -37,28 +40,25 @@ class Recorder:
 		cmd.Parameters.Add("@log", log)
 		cmd.ExecuteNonQuery()
 	
-	static def FormatTimestamp(ts as DateTime):
-		return ts.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'")
-	
-	static def TimestampFormat(time as DateTime):
-		return "{0:0000}{1:00}{2:00}{3:00}{4:00}{5:00}" % (
-			time.Year,
-			time.Month,
-			time.Day,
-			time.Hour,
-			time.Minute,
-			time.Second)
+	static def RecordToList(suspect):
+		logfile = Config.Get("blocker", "blocklog")
+		if logfile:
+			try:
+				using writer = File.AppendText(logfile):
+					writer.WriteLine(suspect)
+			except e:
+				print "Failed to append to log file: ${e}"
 	
 	static _db as MySqlConnection
 	
 	static Connection as MySqlConnection:
 		get:
 			if _db is null:
-				server = "localhost"
-				user = "wikiuser"
-				password = "userman"
-				database = "blocker"
-				connstr = "server=${server};uid=${user};pwd=${password};database=${database};pooling=false"
+				server = Config.Get("database", "server", "localhost")
+				user = Config.Get("database", "username", "root")
+				password = Config.Get("database", "password", "")
+				database = Config.Get("database", "database", "blocker")
+				connstr = "server=${server};uid=${user};pwd=${password};database=${database}"
 				db = MySqlConnection(connstr)
 				db.Open()
 				_db = db

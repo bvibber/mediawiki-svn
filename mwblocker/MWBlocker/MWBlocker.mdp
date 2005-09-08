@@ -27,6 +27,7 @@
     <File name="./app.config" subtype="Code" buildaction="Nothing" />
     <File name="./Suspect.boo" subtype="Code" buildaction="Compile" />
     <File name="./Recorder.boo" subtype="Code" buildaction="Compile" />
+    <File name="./Config.boo" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="Boo.Lang, Version=1.0.0.0, Culture=neutral, PublicKeyToken=32c39770e9a21a67" />

@@ -28,7 +28,7 @@ the queue or we'll never get anywhere, of course."""
 					_checkedCount++
 			except e as InvalidOperationException:
 				// Nothing there; wait a bit.
-				Thread.Sleep(1000)
+				Thread.Sleep(250) // milliseconds
 	
 	static def Enqueue(suspect as Suspect):
 		_queue.Enqueue(suspect)

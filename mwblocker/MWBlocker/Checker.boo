@@ -9,29 +9,15 @@ import System.Net.Sockets
 import System.Web.Mail
 import System.Text
 
-import Nini.Config
-
 class Checker:
 	_suspect as Suspect
 	_log = StringBuilder()
-	_config as IConfigSource = IniConfigSource("/home/brion/src/wiki/mwblocker/mwblocker.conf")
 	
 	def constructor(suspect as Suspect):
 		_suspect = suspect
 	
-	def CommaList(section as string, key as string):
-		return CommaList(section, key, "")
-	
-	def CommaList(section as string, key as string, default as string):
-		sec = _config.Configs[section]
-		if sec:
-			val = sec.Get(key, default)
-		else:
-			val = default
-		return /\s*,\s*/.Split(val)
-	
 	def Check():
-		for sig as string in CommaList("blocker", "signatures"):
+		for sig as string in Config.CommaList("blocker", "signatures"):
 			if Check(sig):
 				return Guilty(sig)
 		return Innocent()
@@ -39,7 +25,7 @@ class Checker:
 	def Check(signature as string):
 		Log("Running ${signature} check on ${_suspect}")
 		checkCount = 0
-		for command in CommaList(signature, "check"):
+		for command in Config.CommaList(signature, "check"):
 			try:
 				check = ParseCheck(command)
 				checkCount++
@@ -80,7 +66,7 @@ class Checker:
 		Log("${_suspect} matches scan signature ${sig}")
 		block = false
 		mail = false
-		for action in CommaList(sig, "action"):
+		for action in Config.CommaList(sig, "action"):
 			if action == "block":
 				Log("Blocking IP.")
 				block = true
@@ -106,8 +92,8 @@ class Checker:
 	def MailReport():
 		try:
 			message = MailMessage()
-			message.From = _config.Configs["mail"].Get("from", "mwblocker@localhost")
-			message.To = _config.Configs["mail"].Get("to", "root@localhost")
+			message.From = Config.Get("mail", "from", "mwblocker@localhost")
+			message.To = Config.Get("mail", "to", "root@localhost")
 			message.Subject = "Wiki IP checker hit: " + _suspect
 			message.Body = \
 """The wiki IP checker has found ${_suspect.IP} to be suspicious.
@@ -124,7 +110,7 @@ To look up the owner of the IP block:
 hugs and kisses,
   the MWBlocker daemon
 """
-			SmtpMail.SmtpServer = _config.Configs["mail"].Get("smtp", "localhost")
+			SmtpMail.SmtpServer = Config.Get("mail", "smtp", "localhost")
 			SmtpMail.Send(message)
 		except e:
 			print e

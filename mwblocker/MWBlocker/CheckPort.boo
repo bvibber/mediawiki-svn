@@ -44,8 +44,9 @@ public class CheckPort:
 	def Connect(suspect as IPAddress):
 		Log("Connecting to port " + _port)
 		_client = TcpClient()
-		_client.SendTimeout = 2000 // milliseconds
-		_client.ReceiveTimeout = 2000 // milliseconds
+		timeout = int.Parse(Config.Get("blocker", "timeout", "2000")) // milliseconds
+		_client.SendTimeout = timeout
+		_client.ReceiveTimeout = timeout
 		_client.Connect(suspect, _port)
 		
 		stream = _client.GetStream()
