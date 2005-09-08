@@ -78,13 +78,29 @@ class Checker:
 	
 	def Guilty(sig as string):
 		Log("${_suspect} matches scan signature ${sig}")
-		//LogScan(_suspect, sig)
-		actions = CommaList(sig, "action")
-		MailReport()
+		block = false
+		mail = false
+		for action in CommaList(sig, "action"):
+			if action == "block":
+				Log("Blocking IP.")
+				block = true
+			if action == "mail":
+				mail = true
+				MailReport()
+		try:
+			Recorder.Record(_suspect, block, _log.ToString())
+		except e:
+			Log("Failed to record to block database: ${e}")
+		if mail:
+			MailReport()
 		return true
 	
 	def Innocent():
 		Log("${_suspect} is clear of known signatures")
+		try:
+			Recorder.Record(_suspect, false, _log.ToString())
+		except e:
+			Log("Failed to record to check log database: ${e}")
 		return false
 	
 	def MailReport():

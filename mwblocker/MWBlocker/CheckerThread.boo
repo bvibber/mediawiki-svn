@@ -20,10 +20,12 @@ the queue or we'll never get anywhere, of course."""
 		while true:
 			try:
 				next = _queue.Dequeue() as Suspect
-				if Checker(next).Check():
-					_positiveCount++
-				_checkedCount++
-				print next
+				if Recorder.IsChecked(next):
+					print "Skipping previously checked ${next}"
+				else:
+					if Checker(next).Check():
+						_positiveCount++
+					_checkedCount++
 			except e as InvalidOperationException:
 				// Nothing there; wait a bit.
 				Thread.Sleep(1000)
