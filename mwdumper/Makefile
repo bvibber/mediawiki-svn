@@ -18,6 +18,7 @@ ASSEMBLIES=\
 SOURCES_IMPORT=\
   mwimport/AssemblyInfo.cs \
   mwimport/Contributor.cs \
+  mwimport/ExactListFilter.cs \
   mwimport/IDumpWriter.cs \
   mwimport/LatestFilter.cs \
   mwimport/ListFilter.cs \

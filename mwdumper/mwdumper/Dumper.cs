@@ -183,6 +183,8 @@ class MainClass {
 			return new TitleMatchFilter(sink, param);
 		else if (filter == "list")
 			return new ListFilter(sink, param);
+		else if (filter == "exactlist")
+			return new ExactListFilter(sink, param);
 		else
 			throw new ArgumentException("Filter unknown: " + filter);
 	}

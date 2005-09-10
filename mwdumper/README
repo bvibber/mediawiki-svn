@@ -61,7 +61,9 @@ Filter actions:
   --filter=list:<list-filename>
       Excludes all pages whose titles do not appear in the given file.
       Use one title per line; blanks and lines starting with # are
-      ignored.
+      ignored. Talk and subject pages of given titles are both matched.
+  --filter=exactlist:<list-filename>
+      As above, but does not try to match associated talk/subject pages.
   --filter=namespace:[!]<NS_KEY,NS_OTHERKEY,100,...>
       Excludes all pages in (or not in, with "!") the given namespaces.
       You can use the NS_* constant names or the raw numeric keys.

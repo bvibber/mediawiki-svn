@@ -28,29 +28,13 @@ namespace MediaWiki.Import {
 	using System.Collections;
 	using System.IO;
 
-	public class ListFilter : PageFilter {
-		protected IDictionary _list;
-		
-		public ListFilter(IDumpWriter sink, string sourceFileName) : base(sink) {
-			_list = new Hashtable();
-			using (TextReader input = File.OpenText(sourceFileName)) {
-				string line = input.ReadLine();
-				while (line != null) {
-					if (!line.StartsWith("#")) {
-						string cleaned = line.TrimStart(' ', '\n', '\r', '\t', ':');
-						string title = cleaned.TrimEnd(' ', '\n', '\r', '\t');
-						
-						if (title.Length > 0)
-							_list[title] = title;
-					}
-					line = input.ReadLine();
-				}
-			}
+	public class ExactListFilter : ListFilter {
+		public ExactListFilter(IDumpWriter sink, string sourceFileName)
+			: base(sink, sourceFileName) {
 		}
 		
 		protected override bool Pass(Page page) {
-			return _list.Contains(page.Title.SubjectPage.ToString())
-				|| _list.Contains(page.Title.TalkPage.ToString());
+			return _list.Contains(page.Title.ToString());
 		}
 	}
 }

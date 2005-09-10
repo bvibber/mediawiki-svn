@@ -32,8 +32,19 @@ namespace MediaWiki.Import {
 		public string Text;
 		
 		private string _prefix;
+		private IDictionary _namespaces;
+		
+		public Title(int namespaceKey, string text, IDictionary namespaces) {
+			_namespaces = namespaces;
+			Namespace = namespaceKey;
+			_prefix = (string)namespaces[namespaceKey];
+			if (_prefix != "")
+				_prefix = _prefix + ":";
+			Text = text;
+		}
 		
 		public Title(string prefixedTitle, IDictionary namespaces) {
+			_namespaces = namespaces;
 			foreach (int key in namespaces.Keys) {
 				string prefix = (string)namespaces[key];
 				int len = prefix.Length;
@@ -63,7 +74,25 @@ namespace MediaWiki.Import {
 		
 		public bool IsTalk {
 			get {
-				return (Namespace & 0x0001) == 1;
+				return (Namespace > 0) && (Namespace % 2 == 1);
+			}
+		}
+		
+		public Title TalkPage {
+			get {
+				if (IsTalk)
+					return this;
+				else
+					return new Title(Namespace + 1, Text, _namespaces);
+			}
+		}
+		
+		public Title SubjectPage {
+			get {
+				if (IsTalk)
+					return new Title(Namespace - 1, Text, _namespaces);
+				else
+					return this;
 			}
 		}
 	}
