@@ -72,7 +72,6 @@ class Checker:
 				block = true
 			if action == "mail":
 				mail = true
-				MailReport()
 		try:
 			Recorder.Record(_suspect, block, _log.ToString())
 		except e:
