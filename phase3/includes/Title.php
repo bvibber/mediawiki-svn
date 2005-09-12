@@ -316,24 +316,8 @@ class Title {
 	 * @access public
 	 */
 	function legalChars() {
-		# Missing characters:
-		#  * []|# Needed for link syntax
-		#  * % and + are corrupted by Apache when they appear in the path
-		#
-		# % seems to work though
-		#
-		# The problem with % is that URLs are double-unescaped: once by Apache's
-		# path conversion code, and again by PHP. So %253F, for example, becomes "?".
-		# Our code does not double-escape to compensate for this, indeed double escaping
-		# would break if the double-escaped title was passed in the query string
-		# rather than the path. This is a minor security issue because articles can be
-		# created such that they are hard to view or edit. -- TS
-		#
-		# Theoretically 0x80-0x9F of ISO 8859-1 should be disallowed, but
-		# this breaks interlanguage links
-
-		$set = " %!\"$&'()*,\\-.\\/0-9:;=?@A-Z\\\\^_`a-z~\\x80-\\xFF";
-		return $set;
+		global $wgLegalTitleChars;
+		return $wgLegalTitleChars;
 	}
 
 	/**
@@ -392,6 +376,8 @@ class Title {
 		$fname = 'Title::getInterwikiLink';
 
 		wfProfileIn( $fname );
+
+		$key = strtolower( $key );
 
 		$k = $wgDBname.':interwiki:'.$key;
 		if( array_key_exists( $k, $wgTitleInterwikiCache ) ) {
@@ -1334,7 +1320,7 @@ class Title {
 
 					# Interwiki link
 					$t = $m[2];
-					$this->mInterwiki = $p;
+					$this->mInterwiki = strtolower( $p );
 
 					# Redundant interwiki prefix to the local wiki
 					if ( 0 == strcasecmp( $this->mInterwiki, $wgLocalInterwiki ) ) {
@@ -1871,7 +1857,7 @@ class Title {
 		# Is it a redirect?
 		$id  = $nt->getArticleID();
 		$obj = $dbw->selectRow( array( 'page', 'revision', 'text'),
-			array( 'page_is_redirect','old_text' ),
+			array( 'page_is_redirect','old_text','old_flags' ),
 			array( 'page_id' => $id, 'page_latest=rev_id', 'rev_text_id=old_id' ),
 			$fname, 'FOR UPDATE' );
 
@@ -1879,14 +1865,18 @@ class Title {
 			# Not a redirect
 			return false;
 		}
+		$text = Revision::getRevisionText( $obj );
 
 		# Does the redirect point to the source?
-		if ( preg_match( "/\\[\\[\\s*([^\\]\\|]*)]]/", $obj->old_text, $m ) ) {
+		if ( preg_match( "/\\[\\[\\s*([^\\]\\|]*)]]/", $text, $m ) ) {
 			$redirTitle = Title::newFromText( $m[1] );
 			if( !is_object( $redirTitle ) ||
 				$redirTitle->getPrefixedDBkey() != $this->getPrefixedDBkey() ) {
 				return false;
 			}
+		} else {
+			# Fail safe
+			return false;
 		}
 
 		# Does the article have a history?

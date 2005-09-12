@@ -2198,6 +2198,16 @@ class Parser
 			}
 		}
 
+		# PLURAL
+		if ( !$found && $argc >= 2 ) {
+			$mwPluralForm =& MagicWord::get( MAG_PLURAL );
+			if ( $mwPluralForm->matchStartAndRemove( $part1 ) ) {
+				if ($argc==2) {$args[2]=$args[1];}
+				$text = $linestart . $wgContLang->convertPlural( $part1, $args[0], $args[1], $args[2]);
+				$found = true;
+			}
+		}
+
 		# Template table test
 
 		# Did we encounter this template already? If yes, it is in the cache

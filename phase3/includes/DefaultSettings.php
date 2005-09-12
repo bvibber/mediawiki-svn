@@ -122,6 +122,32 @@ $wgUploadBaseUrl    = "";
 /**#@-*/
 
 /**
+ * Allowed title characters -- regex character class
+ * Don't change this unless you know what you're doing
+ *
+ * Problematic punctuation:
+ *  []{}|#    Are needed for link syntax, never enable these
+ *  %         Enabled by default, minor problems with path to query rewrite rules, see below
+ *  +         Doesn't work with path to query rewrite rules, corrupted by apache
+ *  ?         Enabled by default, but doesn't work with path to PATH_INFO rewrites
+ *
+ * All three of these punctuation problems can be avoided by using an alias, instead of a 
+ * rewrite rule of either variety.
+ *
+ * The problem with % is that when using a path to query rewrite rule, URLs are 
+ * double-unescaped: once by Apache's path conversion code, and again by PHP. So 
+ * %253F, for example, becomes "?". Our code does not double-escape to compensate 
+ * for this, indeed double escaping would break if the double-escaped title was 
+ * passed in the query string rather than the path. This is a minor security issue 
+ * because articles can be created such that they are hard to view or edit.
+ *
+ * Theoretically 0x80-0x9F of ISO 8859-1 should be disallowed, but
+ * this breaks interlanguage links
+ */
+$wgLegalTitleChars = " %!\"$&'()*,\\-.\\/0-9:;=?@A-Z\\\\^_`a-z~\\x80-\\xFF";
+
+
+/**
  * The external URL protocols (regexp)
  */
 $wgUrlProtocols = 'http:\/\/|https:\/\/|ftp:\/\/|irc:\/\/|gopher:\/\/|news:|mailto:';
@@ -710,6 +736,8 @@ $wgGroupPermissions['user' ]['move']            = true;
 $wgGroupPermissions['user' ]['read']            = true;
 $wgGroupPermissions['user' ]['edit']            = true;
 $wgGroupPermissions['user' ]['upload']          = true;
+$wgGroupPermissions['user' ]['reupload']        = true;
+$wgGroupPermissions['user' ]['reupload-shared'] = true;
 
 $wgGroupPermissions['bot'  ]['bot']             = true;
 
@@ -724,6 +752,8 @@ $wgGroupPermissions['sysop']['patrol']          = true;
 $wgGroupPermissions['sysop']['protect']         = true;
 $wgGroupPermissions['sysop']['rollback']        = true;
 $wgGroupPermissions['sysop']['upload']          = true;
+$wgGroupPermissions['sysop']['reupload']        = true;
+$wgGroupPermissions['sysop']['reupload-shared'] = true;
 
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
 // Used by the Special:Renameuser extension
@@ -1090,11 +1120,14 @@ $wgSVGConverters = array(
 	'sodipodi' => '$path/sodipodi -z -w $width -f $input -e $output',
 	'inkscape' => '$path/inkscape -z -w $width -f $input -e $output',
 	'batik' => 'java -Djava.awt.headless=true -jar $path/batik-rasterizer.jar -w $width -d $output $input',
+	'rsvg' => '$path/rsvg -w$width -h$height $input $output',
 	);
 /** Pick one of the above */
 $wgSVGConverter = 'ImageMagick';
 /** If not in the executable PATH, specify */
 $wgSVGConverterPath = '';
+/** Don't scale a SVG larger than this unless its native size is larger */
+$wgSVGMaxSize = 1024;
 
 /** Set $wgCommandLineMode if it's not set already, to avoid notices */
 if( !isset( $wgCommandLineMode ) ) {
@@ -1390,12 +1423,36 @@ $wgBrowserBlackList = array(
  * Fake out the timezone that the server thinks it's in. This will be used for
  * date display and not for what's stored in the DB. Leave to null to retain
  * your server's OS-based timezone value. This is the same as the timezone.
+ *
+ * This variable is currently used ONLY for signature formatting, not for
+ * anything else.
  */
 # $wgLocaltimezone = 'GMT';
 # $wgLocaltimezone = 'PST8PDT';
 # $wgLocaltimezone = 'Europe/Sweden';
 # $wgLocaltimezone = 'CET';
 $wgLocaltimezone = null;
+
+/**
+ * Set an offset from UTC in hours to use for the default timezone setting
+ * for anonymous users and new user accounts.
+ *
+ * This setting is used for most date/time displays in the software, and is
+ * overrideable in user preferences. It is *not* used for signature timestamps.
+ *
+ * You can set it to match the configured server timezone like this:
+ *   $wgLocalTZoffset = date("Z") / 3600;
+ *
+ * If your server is not configured for the timezone you want, you can set
+ * this in conjunction with the signature timezone and override the TZ
+ * environment variable like so:
+ *   $wgLocaltimezone="Europe/Berlin";
+ *   putenv("TZ=$wgLocaltimezone");
+ *   $wgLocalTZoffset = date("Z") / 3600;
+ *
+ * Leave at NULL to show times in universal time (UTC/GMT).
+ */
+$wgLocalTZoffset = null;
 
 
 /**

@@ -380,10 +380,10 @@ function wfMsgGetKey( $key, $useDB, $forContent = false ) {
 		if( is_object( $lang ) ) {
 			$message = $lang->getMessage( $key );
 		} else {
-			$message = '';
+			$message = false;
 		}
 		wfRestoreWarnings();
-		if(!$message)
+		if($message === false)
 			$message = Language::getMessage($key);
 		if(strstr($message, '{{' ) !== false) {
 			$message = $wgParser->transformMsg($message, $wgMsgParserOptions);
@@ -1114,6 +1114,7 @@ define('TS_ORACLE', 5);
  * @return string Time in the format specified in $outputtype
  */
 function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
+	$uts = 0;
 	if ($ts==0) {
 		$uts=time();
 	} elseif (preg_match("/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)$/",$ts,$da)) {
@@ -1281,7 +1282,6 @@ function wfElementClean( $element, $attribs = array(), $contents = '') {
  * @return Html string containing the namespace selector
  */
 function &HTMLnamespaceselector($selected = '', $allnamespaces = null) {
-
 	$s = "<select name='namespace' class='namespaceselector'>\n";
 	$arr = Namespace::getFormattedDefaultNamespaces();
 	if( !is_null($allnamespaces) ) {
@@ -1300,7 +1300,7 @@ function &HTMLnamespaceselector($selected = '', $allnamespaces = null) {
 			$s .= wfElement("option", array("value" => $index), $name);
 		}
 	}
-	$s .= "</select>\n";
+	$s .= "\n</select>\n";
 	return $s;
 }
 
@@ -1434,7 +1434,7 @@ function wfAppendToArrayIfNotDefault( $key, $value, $default, &$changed ) {
  * @param $wfMsgOut The output of wfMsg*()
  * @return bool
  */
-function wfNoMsg( $msg, $wfMsgOut ) {
+function wfEmptyMsg( $msg, $wfMsgOut ) {
 	return $wfMsgOut === "&lt;$msg&gt;";
 }
 ?>

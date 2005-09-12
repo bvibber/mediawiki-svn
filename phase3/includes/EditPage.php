@@ -450,6 +450,7 @@ class EditPage {
 			}
 			else {
 				$wgOut->readOnlyPage();
+				wfProfileOut( "$fname-checks" );
 				wfProfileOut( $fname );
 				return false;
 			}
@@ -482,12 +483,11 @@ class EditPage {
 		$aid = $this->mTitle->getArticleID( GAID_FOR_UPDATE );
 		if ( 0 == $aid ) {
 			# Don't save a new article if it's blank.
-			if ( ( '' == $this->textbox1 ) ||
-				( wfMsg( 'newarticletext' ) == $this->textbox1 ) ) {
+			if ( ( '' == $this->textbox1 ) ) {
 					$wgOut->redirect( $this->mTitle->getFullURL() );
 					wfProfileOut( $fname );
 					return false;
-				}
+			}
 
 			$isComment=($this->section=='new');
 			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
@@ -519,8 +519,8 @@ class EditPage {
 			$text = $this->mArticle->replaceSection( $this->section, $this->textbox1, $this->summary);
 		}
 
-		# Suppress edit conflict with self
-		if ( ( 0 != $userid ) && ( $this->mArticle->getUser() == $userid ) ) {
+		# Suppress edit conflict with self, except for section edits where merging is required.
+		if ( ( $this->section == '' ) && ( 0 != $userid ) && ( $this->mArticle->getUser() == $userid ) ) {
 			wfDebug( "Suppressing edit conflict, same user.\n" );
 			$this->isConflict = false;
 		} else {
@@ -591,7 +591,7 @@ class EditPage {
 		$this->edittime = $this->mArticle->getTimestamp();
 		$this->textbox1 = $this->mArticle->getContent( true );
 		$this->summary = '';
-		$this->proxyCheck();
+		wfProxyCheck();
 	}
 
 	/**
@@ -1040,7 +1040,7 @@ END
 
 		$id = $wgUser->blockedBy();
 		$reason = $wgUser->blockedFor();
-		$ip = $wgIP;
+		$ip = wfGetIP();
 
 		if ( is_numeric( $id ) ) {
 			$name = User::whoIs( $id );
@@ -1083,50 +1083,6 @@ END
 			$wgOut->addWikiText( wfMsg( 'spamprotectionmatch', "<nowiki>{$match}</nowiki>" ) );
 		}
 		$wgOut->returnToMain( false );
-	}
-
-	/**
-	 * Forks processes to scan the originating IP for an open proxy server
-	 * MemCached can be used to skip IPs that have already been scanned
-	 */
-	function proxyCheck() {
-		global $wgBlockOpenProxies, $wgProxyPorts, $wgProxyScriptPath;
-		global $wgIP, $wgUseMemCached, $wgMemc, $wgDBname, $wgProxyMemcExpiry;
-
-		if ( !$wgBlockOpenProxies ) {
-			return;
-		}
-
-		# Get MemCached key
-		$skip = false;
-		if ( $wgUseMemCached ) {
-			$mcKey = $wgDBname.':proxy:ip:'.$wgIP;
-			$mcValue = $wgMemc->get( $mcKey );
-			if ( $mcValue ) {
-				$skip = true;
-			}
-		}
-
-		# Fork the processes
-		if ( !$skip ) {
-			$title = Title::makeTitle( NS_SPECIAL, 'Blockme' );
-			$iphash = md5( $wgIP . $wgProxyKey );
-			$url = $title->getFullURL( 'ip='.$iphash );
-
-			foreach ( $wgProxyPorts as $port ) {
-				$params = implode( ' ', array(
-							escapeshellarg( $wgProxyScriptPath ),
-							escapeshellarg( $wgIP ),
-							escapeshellarg( $port ),
-							escapeshellarg( $url )
-							));
-				exec( "php $params &>/dev/null &" );
-			}
-			# Set MemCached key
-			if ( $wgUseMemCached ) {
-				$wgMemc->set( $mcKey, 1, $wgProxyMemcExpiry );
-			}
-		}
 	}
 
 	/**

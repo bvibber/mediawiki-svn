@@ -804,7 +804,7 @@ class Namespace {
 		$this->names=array();
 		return true;
 	}
-	
+
 }
 		
 }

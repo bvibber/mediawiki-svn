@@ -195,7 +195,7 @@ class Image
 				'metadata'   => $this->metadata,
 				'size'       => $this->size );
 
-			$wgMemc->set( $keys[0], $cachedValues );
+			$wgMemc->set( $keys[0], $cachedValues, 60 * 60 * 24 * 7 ); // A week
 		} else {
 			// However we should clear them, so they aren't leftover
 			// if we've deleted the file.
@@ -580,7 +580,7 @@ class Image
 		
 		if (!$mime || $mime==='unknown' || $mime==='unknown/unknown') return false;
 		
-		#if it's SVG, check if ther's a converter enabled    
+		#if it's SVG, check if there's a converter enabled    
 		if ($mime === 'image/svg') {
 			global $wgSVGConverters, $wgSVGConverter;
 			
@@ -934,7 +934,11 @@ class Image
 			return null;
 		}
 
-		if( $width >= $this->width && !$this->mustRender() ) {
+		global $wgSVGMaxSize;
+		$maxsize = $this->mustRender()
+			? max( $this->width, $wgSVGMaxSize )
+			: $this->width - 1;
+		if( $width > $maxsize ) {
 			# Don't make an image bigger than the source
 			$thumb = new ThumbnailImage( $this->getViewURL(), $this->getWidth(), $this->getHeight() );
 			wfProfileOut( $fname );
@@ -1007,12 +1011,14 @@ class Image
 			if( isset( $wgSVGConverters[$wgSVGConverter] ) ) {
 				global $wgSVGConverterPath;
 				$cmd = str_replace(
-					array( '$path/', '$width', '$input', '$output' ),
-					array( $wgSVGConverterPath,
-						   $width,
+					array( '$path/', '$width', '$height', '$input', '$output' ),
+					array( $wgSVGConverterPath ? "$wgSVGConverterPath/" : "",
+						   intval( $width ),
+						   intval( $height ),
 						   wfEscapeShellArg( $this->imagePath ),
 						   wfEscapeShellArg( $thumbPath ) ),
 					$wgSVGConverters[$wgSVGConverter] );
+				wfDebug( "reallyRenderThumb SVG: $cmd\n" );
 				$conv = shell_exec( $cmd );
 			} else {
 				$conv = false;
@@ -1022,10 +1028,10 @@ class Image
 			# Specify white background color, will be used for transparent images
 			# in Internet Explorer/Windows instead of default black.
 			$cmd  =  $wgImageMagickConvertCommand .
-				" -quality 85 -background white -geometry {$width} ".
-				wfEscapeShellArg($this->imagePath) . " " .
+				" -quality 85 -background white -size {$width}x{$height} ".
+				wfEscapeShellArg($this->imagePath) . " -resize {$width}x{$height} " .
 				wfEscapeShellArg($thumbPath);				
-			wfDebug("reallyRenderThumb: running ImageMagick: $cmd");
+			wfDebug("reallyRenderThumb: running ImageMagick: $cmd\n");
 			$conv = shell_exec( $cmd );
 		} else {
 			# Use PHP's builtin GD library functions.
@@ -1253,7 +1259,7 @@ class Image
 	/**
 	 * Record an image upload in the upload log and the image table
 	 */
-	function recordUpload( $oldver, $desc, $license, $copyStatus = '', $source = '' ) {
+	function recordUpload( $oldver, $desc, $license = '', $copyStatus = '', $source = '' ) {
 		global $wgUser, $wgLang, $wgTitle, $wgDeferredUpdateList;
 		global $wgUseCopyrightUpload, $wgUseSquid, $wgPostCommitUpdateList;
 
@@ -1421,6 +1427,7 @@ class Image
 			}
 		}
 		$db->freeResult( $res );
+		wfProfileOut( $fname );
 		return $retVal;
 	}
 	/**
@@ -1450,6 +1457,7 @@ class Image
 		$newver = Exif::version();
 		
 		if ( !count( $ret ) || $purge || $oldver != $newver ) {
+			$this->purgeCache();
 			$this->updateExifData( $newver );
 		}
 		if ( isset( $ret['MEDIAWIKI_EXIF_VERSION'] ) )
@@ -1483,6 +1491,16 @@ class Image
 			array( 'img_name' => $this->name ),
 			$fname
 		);
+	}
+	
+	/**
+	 * Returns true if the image does not come from the shared
+	 * image repository.
+	 *
+	 * @return bool
+	 */
+	function isLocal() {
+		return !$this->fromSharedDirectory;
 	}
 
 } //class

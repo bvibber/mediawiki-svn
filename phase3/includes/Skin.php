@@ -311,7 +311,7 @@ END;
 		}
 		else $a = array( 'bgcolor' => '#FFFFFF' );
 		if($wgOut->isArticle() && $wgUser->getOption('editondblclick') &&
-		  (!$wgTitle->isProtected() || $wgUser->isAllowed('protect')) ) {
+		  $wgTitle->userCanEdit() ) {
 			$t = wfMsg( 'editthispage' );
 			$oid = $red = '';
 			if ( !empty($redirect) && $redirect == 'no' ) {
@@ -654,7 +654,7 @@ END;
 		$s = '';
 		if ( $wgUser->isAnon() ) {
 			if( $wgShowIPinHeader && isset( $_COOKIE[ini_get('session.name')] ) ) {
-				$n = $wgIP;
+				$n = wfGetIP();
 
 				$tl = $this->makeKnownLinkObj( $wgUser->getTalkPage(),
 				  $wgNamespaces[NS_TALK]->getDefaultName() );
@@ -1329,9 +1329,9 @@ END;
 					$link = wfMsgForContent( $line[0] );
 					if ($link == '-')
 						continue;
-					if (wfNoMsg($line[1], $text = wfMsg($line[1])))
+					if (wfEmptyMsg($line[1], $text = wfMsg($line[1])))
 						$text = $line[1];
-					if (wfNoMsg($line[0], $link))
+					if (wfEmptyMsg($line[0], $link))
 						$link = $line[0];
 					$bar[$heading][] = array(
 						'text' => $text,

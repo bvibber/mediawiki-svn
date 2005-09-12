@@ -241,6 +241,7 @@ $wgLanguageNamesEn =& $wgLanguageNames;
 	MAG_CURRENTWEEK          => array( 1,    'CURRENTWEEK'            ),
 	MAG_CURRENTDOW           => array( 1,    'CURRENTDOW'             ),
 	MAG_REVISIONID           => array( 1,    'REVISIONID'             ),
+	MAG_PLURAL               => array( 0,    'PLURAL:'                ),
 );
 
 #-------------------------------------------------------------------
@@ -624,9 +625,13 @@ Check your spelling, or use the form below to create a new user account.",
 'mailmypassword' 	=> 'Mail me a new password',
 'passwordremindertitle' => "Password reminder from {{SITENAME}}",
 'passwordremindertext' => "Someone (probably you, from IP address $1)
-requested that we send you a new {{SITENAME}} login password.
+requested that we send you a new {{SITENAME}} login password for {{SERVERNAME}}.
 The password for user \"$2\" is now \"$3\".
-You should log in and change your password now.",
+You should log in and change your password now.
+
+If someone else made this request or if you have remembered your password and
+you no longer wish to change it, you may ignore this message and continue using
+your old password.",
 'noemail'		            => "There is no e-mail address recorded for user \"$1\".",
 'passwordsent'	=> "A new password has been sent to the e-mail address
 registered for \"$1\".
@@ -992,14 +997,10 @@ to upload files.",
 'uploaderror'	=> 'Upload error',
 'uploadtext'	=>
 "
-Use the form below to upload new files,
+Use the form below to upload files,
 to view or search previously uploaded images
 go to the [[Special:Imagelist|list of uploaded files]],
-uploads and deletions are also logged in the [[Special:Log|project log]].
-
-You must also check the box affirming that you are not
-violating any copyrights by uploading the file.
-Press the \"Upload\" button to finish the upload.
+uploads and deletions are also logged in the [[Special:Log/upload|upload log]].
 
 To include the image in a page, use a link in the form
 '''<nowiki>[[{{ns:6}}:file.jpg]]</nowiki>''',
@@ -1027,6 +1028,8 @@ To include the image in a page, use a link in the form
 'largefileserver' => 'This file is bigger than the server is configured to allow.',
 'emptyfile'		=> 'The file you uploaded seems to be empty. This might be due to a typo in the file name. Please check whether you really want to upload this file.',
 'fileexists'		=> 'A file with this name exists already, please check $1 if you are not sure if you want to change it.',
+'fileexists-forbidden' => 'A file with this name exists already; please go back and upload this file under a new name. [[Image:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => 'A file with this name exists already in the shared file repository; please go back and upload this file under a new name. [[Image:$1|thumb|center|$1]]',
 'successfulupload' => 'Successful upload',
 'fileuploaded'	=> "File $1 uploaded successfully.
 Please follow this link: $2 to the description page and fill
@@ -1991,7 +1994,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');
 'exif-lightsource-3' => 'Tungsten (incandescent light)',
 'exif-lightsource-4' => 'Flash',
 'exif-lightsource-9' => 'Fine weather',
-'exif-lightsource-10' => 'Clody weather',
+'exif-lightsource-10' => 'Cloudy weather',
 'exif-lightsource-11' => 'Shade',
 'exif-lightsource-12' => 'Daylight fluorescent (D 5700 – 7100K)',
 'exif-lightsource-13' => 'Day white fluorescent (N 4600 – 5400K)',
@@ -2773,6 +2776,27 @@ class Language {
 	 */
 	function convertGrammar( $word, $case ) {
 		return $word;
+	}
+
+	/**
+	 * Plural form transformations, needed for some languages.
+	 * For example, where are 3 form of plural in Russian and Polish,
+	 * depending on "count mod 10". See [[w:Plural]]
+	 * For English it is pretty simple.
+	 *
+	 * Invoked by putting {{plural:count|wordform1|wordform2}}
+	 * or {{plural:count|wordform1|wordform2|wordform3}}
+	 *
+	 * Example: {{plural:{{NUMBEROFARTICLES}}|article|articles}} 
+	 *
+	 * @param string $count
+	 * @param string $wordform1
+	 * @param string $wordform2
+	 * @param string $wordform3 (optional)
+	 * @return string
+	 */
+	function convertPlural( $count, $wordform1, $wordform2, $wordform3) {
+		return $count == 1 ? $wordform1 : $wordform2;
 	}
 
 	/**

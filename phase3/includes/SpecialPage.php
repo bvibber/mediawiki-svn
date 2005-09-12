@@ -32,7 +32,7 @@ $wgSpecialPages = array(
 	'Recentchanges'     => new IncludableSpecialPage( 'Recentchanges' ),
 	'Upload'            => new SpecialPage( 'Upload' ),
 	'Imagelist'         => new SpecialPage( 'Imagelist' ),
-	'Newimages'         => new SpecialPage( 'Newimages' ),
+	'Newimages'         => new IncludableSpecialPage( 'Newimages' ),
 	'Listusers'         => new SpecialPage( 'Listusers' ),
 	'Statistics'        => new SpecialPage( 'Statistics' ),
 	'Random'        => new SpecialPage( 'Randompage' ),
@@ -385,10 +385,11 @@ class SpecialPage
 		$this->setHeaders();
 
 		if ( $this->userCanExecute( $wgUser ) ) {
-			if ( $this->mFile ) {
+			$func = $this->mFunction;
+			// only load file if the function does not exist
+			if(!function_exists($func) and $this->mFile) {
 				require_once( $this->mFile );
 			}
-			$func = $this->mFunction;
 			$func( $par, $this );
 		} else {
 			$this->displayRestrictionError();

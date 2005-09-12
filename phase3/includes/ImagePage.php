@@ -168,8 +168,7 @@ class ImagePage extends Article {
 					$width = floor( $width * $maxHeight / $height );
 					$height = $maxHeight;
 				}
-				if ( !$this->img->mustRender()
-				   && ( $width != $this->img->getWidth() || $height != $this->img->getHeight() ) ) {
+				if ( $width != $this->img->getWidth() || $height != $this->img->getHeight() ) {
 					if( $wgUseImageResize ) {
 						$thumbnail = $this->img->getThumbnail( $width );
 						if ( $thumbnail == null ) {
@@ -286,9 +285,11 @@ END
 			return;
 
 		$sk = $wgUser->getSkin();
-		$wgOut->addHTML( '<br /><ul><li>' );
-		$wgOut->addWikiText( '<div>'. wfMsg( 'uploadnewversion', $this->getUploadUrl() ) .'</div>' );
-		$wgOut->addHTML( '</li><li>' );
+		$wgOut->addHTML( '<br /><ul>' );
+		if( $wgUser->isAllowed( 'reupload' ) ) {	
+			$wgOut->addWikiText( "<li>\n<div>". wfMsg( 'uploadnewversion', $this->getUploadUrl() ) ."</div>\n</li>\n" );
+		}
+		$wgOut->addHTML( '<li>' );
 		$wgOut->addHTML( $sk->makeKnownLinkObj( $this->mTitle,
 			wfMsg( 'edit-externally' ), "action=edit&externaledit=true&mode=file" ) );
 		$wgOut->addWikiText( '<div>' .  wfMsg('edit-externally-help') . '</div>' );

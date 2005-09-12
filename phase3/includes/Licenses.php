@@ -63,12 +63,11 @@ class Licenses {
 					$this->stackItem( $this->licenses, $levels, $obj );
 				} else {
 					if ( $level < count( $levels ) )
-						$levels = array_slice( $levels, count( $levels ) - $level );
+						$levels = array_slice( $levels, 0, $level );
 					if ( $level == count( $levels ) )
 						$levels[$level - 1] = $line;
 					else if ( $level > count( $levels ) )
 						$levels[] = $line;
-	
 				}
 			}
 		}
@@ -76,17 +75,18 @@ class Licenses {
 	
 	function trimStars( $str ) {
 		$i = $count = 0;
+		$len = strlen( $str );
 		
-		while ($str[$i++] == '*')
+		while ($len < $i && $str[$i++] == '*')
 			++$count;
-	
+
 		return array( $count, ltrim( $str, '* ' ) );
 	}
 	
 	function stackItem( &$list, $path, $item ) {
 		$position =& $list;
-		if( $path ) {
-			foreach( $path as $key ) {
+		if ( $path ) {
+			foreach ( $path as $key ) {
 				$position =& $position[$key];
 			}
 		}
@@ -96,7 +96,6 @@ class Licenses {
 	function makeHtml( &$tagset, $depth = 0 ) {
 		foreach ( $tagset as $key => $val )
 			if ( is_array( $val ) ) {
-				
 				$this->html .= $this->outputOption(
 					$this->msg( $key ),
 					array(
@@ -125,7 +124,7 @@ class Licenses {
 	
 	function msg( $str ) {
 		$out = wfMsg( $str );
-		return wfNoMsg( $str, $out ) ? $str : $out;
+		return wfEmptyMsg( $str, $out ) ? $str : $out;
 	}
 	
 	/**#@-*/

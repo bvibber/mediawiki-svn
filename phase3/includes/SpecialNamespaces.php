@@ -409,11 +409,10 @@ END;
 
 	function changeNamespaces() {
 		global $wgOut;
-		$wgOut->addWikiText("We're gonna change things!\n\n");
 		
-		# How to do this
-		
-		
+		# Use wgNamespaces as basis
+		# Check up to highest name array value from wgNamespaces
+		# + up to 3 default names
 		# do delete last
 		# For each namespace:
 		# clone
