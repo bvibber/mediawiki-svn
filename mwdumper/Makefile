@@ -1,8 +1,14 @@
 .PHONY : all clean distclean install
 
-INSTALL_PREFIX=/usr/local
+VERSION=0.0.1
+
+INSTALL_PREFIX?=/usr/local
 INSTALL_BINDIR=$(INSTALL_PREFIX)/bin
 INSTALL_ASSEMBLYDIR=$(INSTALL_PREFIX)/lib/mwdumper
+
+PACKAGE_PREFIX?=$(INSTALL_PREFIX)
+PACKAGE_BINDIR=$(PACKAGE_PREFIX)/bin
+PACKAGE_ASSEMBLYDIR=$(PACKAGE_PREFIX)/lib/mwdumper
 
 MCS?=mcs
 CSFLAGS=-codepage:utf8
@@ -58,18 +64,44 @@ REFS_DUMPER=\
 SCRIPTS=\
   build/mwdumper.sh
 
+TMPDIST=mwdumper-$(VERSION)
+DISTDIRS=build libs mwdumper mwimport
+MISCFILES=Makefile mwdumper.spec README \
+  mwdumper/mwdumper.mds mwdumper/mwdumper.mdp \
+  mwimport/mwimport.mds mwdumper/mwdumper.mdp \
+  libs/ICSharpCode.SharpZipLib.dll \
+  libs/COPYING.SharpZipLib.txt \
+  libs/Readme.SharpZipLib.rtf
+
+DISTFILES=$(SOURCES_IMPORT) $(SOURCES_DUMPER) $(MISCFILES)
+
 all: $(ASSEMBLIES) $(SCRIPTS)
 
 clean:
 	rm -f build/*.dll build/*.exe build/*.sh
 
 distclean : clean
+	rm -rf $(TMPDIST)
+	rm -f $(TMPDIST).tar.gz
+
+dist : $(DISTFILES) Makefile
+	rm -rf $(TMPDIST)
+	mkdir $(TMPDIST)
+	for x in $(DISTDIRS); do mkdir $(TMPDIST)/$$x; done
+	for x in $(DISTFILES); do cp -p $$x $(TMPDIST)/$$x; done
+	tar zcvf $(TMPDIST).tar.gz $(TMPDIST)
+
+rpm : dist
+	cp $(TMPDIST).tar.gz /usr/src/redhat/SOURCES
+	cp mwdumper.spec /usr/src/redhat/SPECS
+	cd /usr/src/redhat/SPECS && rpmbuild -ba mwdumper.spec
 
 install: all
-	install -d $(INSTALL_ASSEMBLYDIR)
-	install $(ASSEMBLIES) $(INSTALL_ASSEMBLYDIR)
-	install $(LIBS) $(INSTALL_ASSEMBLYDIR)
-	install -m 0755 build/mwdumper.sh $(INSTALL_BINDIR)/mwdumper
+	install -d $(PACKAGE_ASSEMBLYDIR)
+	install $(ASSEMBLIES) $(PACKAGE_ASSEMBLYDIR)
+	install $(LIBS) $(PACKAGE_ASSEMBLYDIR)
+	install -d $(PACKAGE_BINDIR)
+	install -m 0755 build/mwdumper.sh $(PACKAGE_BINDIR)/mwdumper
 
 uninstall :
 	rm -f $(INSTALL_BINDIR)/mwdumper
@@ -98,3 +130,4 @@ build/ICSharpCode.SharpZipLib.dll : libs/ICSharpCode.SharpZipLib.dll
 build/mwdumper.sh :
 	echo "#!/bin/sh" > $@
 	echo "exec mono $(INSTALL_ASSEMBLYDIR)/mwdumper.exe \$$@" >> $@
+
