@@ -352,7 +352,9 @@ class BoardVotePage extends SpecialPage {
 		$s .= "</tr>";
 
 		while ( $row = $dbr->fetchObject( $res ) ) {
-			if ( $wgOutputEncoding != "utf-8" ) {
+			# Earlier versions of medaiwiki had selectable character set, wfUtf8HTML is removed
+			# in later versions.
+			if ( $wgOutputEncoding != "utf-8" && function_exists( 'wfUtf8ToHTML' ) ) {
 				$user = wfUtf8ToHTML( $row->log_user_key );
 			} else {
 				$user = $row->log_user_key;
