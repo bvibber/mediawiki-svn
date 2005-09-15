@@ -83,8 +83,7 @@ EOT
 		if ( !$dbr->numRows( $res ) ) {
 			$s =  "No results\n";
 		} else {
-			$sk = $wgUser->getSkin();
-			$list = new ChangesList( $sk );
+			$list = ChangesList::newFromUser( $wgUser );
 			$s = $list->beginRecentChangesList();
 			$counter = 1;
 			while ( ($row = $dbr->fetchObject( $res ) ) != false ) {
