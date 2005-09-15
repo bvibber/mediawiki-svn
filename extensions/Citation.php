@@ -12,15 +12,17 @@ function wfCitation () {
 	$wgParser->setHook ( "citation" , 'parse_citation' ) ;
 }
 
-$citeendcache = array () ;
-$citecount = 1 ;
+$wgCitationCache = array () ;
+$wgCitationCounter = 1 ;
+$wgCitationRunning = false ;
 
 function citation_hooker ( $parser , $text ) {
-	global $citeendcache , $citecount ;
-	if ( count ( $citeendcache ) == 0 ) return ;
+	global $wgCitationCache , $wgCitationCounter , $wgCitationRunning ;
+	if ( $wgCitationRunning ) return ;
+	if ( count ( $wgCitationCache ) == 0 ) return ;
 	
 	$ret = "" ;
-	foreach ( $citeendcache AS $num => $entry ) {
+	foreach ( $wgCitationCache AS $num => $entry ) {
 		$x = "<li>" . $entry . " <a href='#citeback{$num}'>&uarr;</a></li>\n" ;
 		$ret .= $x ;
 	}
@@ -30,6 +32,8 @@ function citation_hooker ( $parser , $text ) {
 }
 
 function parse_citation ( $text ) {
+	global $wgCitationRunning ;
+	if ( $wgCitationRunning ) return ;
 	$ret = "" ;
 	$attheend = false ;
 	$res = array () ;
@@ -66,17 +70,19 @@ function parse_citation ( $text ) {
 
 	global $wgTitle , $wgOut ;
 	$p = new Parser ;
+	$wgCitationRunning = true ;
 	$ret = $p->parse ( $ret , $wgTitle , $wgOut->mParserOptions, false ) ;
+	$wgCitationRunning = false ;
 	$ret = $ret->getText();
 
 	if ( $attheend ) {
-		global $citeendcache , $citecount ;
-		$ret = "<a name='citation{$citecount}'></a>{$ret}" ;
-		$citeendcache[$citecount] = $ret ;
-		$ret = "<a href='#citation{$citecount}' name='citeback{$citecount}'>{" . $citecount . "}</a>" ;
-		$citecount++ ;
+		global $wgCitationCache , $wgCitationCounter ;
+		$ret = "<a name='citation{$wgCitationCounter}'></a>{$ret}" ;
+		$wgCitationCache[$wgCitationCounter] = $ret ;
+		$ret = "<a href='#citation{$wgCitationCounter}' name='citeback{$wgCitationCounter}'>{" . $wgCitationCounter . "}</a>" ;
+		$wgCitationCounter++ ;
 	} else {
-		$ret = "<font size='-2'>[{$ret}]</font>" ;
+		$ret = "<span style='font-size:8pt'>[{$ret}]</span>" ;
 	}
 
 	return $ret ;
