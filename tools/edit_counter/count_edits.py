@@ -44,8 +44,9 @@ print """
 table.edittable {
     border: solid 1px #6666aa;
     border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
+    /*margin-left: auto;
+    margin-right: auto;*/
+    float: left;
 }
 td, th {
     padding: 0.1em 0.3em 0.1em 0.3em;
@@ -157,14 +158,22 @@ def editcount(user):
     return
 
 if f.has_key('user'):
-	print "<div>"
-	print "<br/>"
+    print "<div>"
+    print "<br/>"
     s = f['user'].value.replace('_', ' ')
     s = s[0].upper() + s[1:]
-	editcount(s)
-	print "</div>"
+    editcount(s)
+    print "</div>"
+
+if f.has_key('user0'):
+    for j in range(0, 15):
+        key = "user%d" % j
+        if not f.has_key(key):
+            break
+        editcount(f[key].value.replace('_', ' '))
 
 print """
+<br clear="all"/>
 <hr/>
 <form action="count_edits" method="get">
 user name: <input type="text" name="user"/>
@@ -189,6 +198,15 @@ print """
 kate's tools:
 <strong>user edit counter</strong>
 | <a href="six_degrees">six degrees of wikipedia</a>
+<hr>
+<p style='font-size: smaller'>
+Aggregated data on user edits for all users of Wikimedia projects is made available to the general public under
+the terms of the <a href="http://wikimediafoundation.org/wiki/Privacy_policy#User_data">Wikimedia
+Foundation privacy policy</a>.   No data is available via the "edit counter" which is not already available
+via the "user contributions" pages on the wiki itself, or as part of the periodic database dumps.
+If you do not wish your edit data to be made publically available, you should not make any edits or contributions
+to Wikimedia projects.  Requests to remove user data from the "edit counter" will be ignored.
+</p>
 </form>
 </body>
 </html>
