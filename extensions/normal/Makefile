@@ -1,4 +1,4 @@
-INSTALL_TARGET?=`php-config --extension-dir`/php_utfnormal.so
+INSTALL_TARGET?=`php-config --extension-dir`
 PRODUCT=utfnormal
 VERSION=0.0.1
 
@@ -11,6 +11,7 @@ TMPDIST=$(PRODUCT)-$(VERSION)
 DISTFILES=Makefile \
   $(PRODUCT).spec \
   $(PRODUCT).cpp $(PRODUCT).i \
+  $(PRODUCT)_wrap.cpp php_$(PRODUCT).h \
   test.php
 
 
