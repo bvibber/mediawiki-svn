@@ -1,4 +1,4 @@
-.PHONY : all clean distclean install
+.PHONY : all clean dist distclean install uninstall rpm bundle
 
 VERSION=0.0.1
 
@@ -17,9 +17,8 @@ LIBS=\
   build/ICSharpCode.SharpZipLib.dll
 
 ASSEMBLIES=\
-  build/MediaWiki.Import.dll \
-  build/mwdumper.exe
-
+  build/mwdumper.exe \
+  build/MediaWiki.Import.dll
 
 SOURCES_IMPORT=\
   mwimport/AssemblyInfo.cs \
@@ -78,7 +77,7 @@ DISTFILES=$(SOURCES_IMPORT) $(SOURCES_DUMPER) $(MISCFILES)
 all: $(ASSEMBLIES) $(SCRIPTS)
 
 clean:
-	rm -f build/*.dll build/*.exe build/*.sh
+	rm -f build/*.dll build/*.exe build/*.sh build/mwdumper
 
 distclean : clean
 	rm -rf $(TMPDIST)
@@ -95,6 +94,8 @@ rpm : dist
 	cp $(TMPDIST).tar.gz /usr/src/redhat/SOURCES
 	cp mwdumper.spec /usr/src/redhat/SPECS
 	cd /usr/src/redhat/SPECS && rpmbuild -ba mwdumper.spec
+
+bundle : build/mwdumper
 
 install: all
 	install -d $(PACKAGE_ASSEMBLYDIR)
@@ -131,3 +132,6 @@ build/mwdumper.sh :
 	echo "#!/bin/sh" > $@
 	echo "exec mono $(INSTALL_ASSEMBLYDIR)/mwdumper.exe \$$@" >> $@
 
+build/mwdumper : $(ASSEMBLIES) $(LIBS)
+	mkbundle -o $@ --deps --static $(ASSEMBLIES) $(LIBS)
+	strip $@
