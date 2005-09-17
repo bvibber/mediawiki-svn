@@ -15,6 +15,7 @@ TMPDIST=$(PRODUCT)-$(VERSION)
 DISTFILES=Makefile \
   $(PRODUCT).spec \
   $(PRODUCT).cpp $(PRODUCT).i \
+  $(PRODUCT)_wrap.cpp php_$(PRODUCT).h \
   test.php memleak.php t1.txt t2.txt
 
 $(OUTPUT) : $(PRODUCT).cpp $(PRODUCT)_wrap.cpp
