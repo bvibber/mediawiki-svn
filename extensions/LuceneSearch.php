@@ -49,7 +49,7 @@ if (defined('MEDIAWIKI')) {
 $wgExtensionFunctions[] = "wfLuceneSearch";
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'LuceneSearch',
-	'author' => array( 'Kate Turner', 'Brion Vibber' )
+	'author' => array( 'Brion Vibber' )
 );
 
 if (class_exists("Revision"))
