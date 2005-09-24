@@ -30,8 +30,13 @@ Sample command line:
 
 A bare parameter will be interpreted as a file to read uncompressed
 XML input from; if none is given or "-" input will be read from stdin.
+Input files with ".gz" or ".bz2" extensions will be decompressed as
+gzip and bzip2 streams, respectively.
 
-At a minimum you must specify either an output format or a filter action.
+Defaults if no parameters are given:
+* read uncompressed XML from stdin
+* write uncompressed XML to stdout
+* no filtering
 
 Output sinks:
   --output=stdout
@@ -41,6 +46,8 @@ Output sinks:
   --output=file:<filename.xml>
       Write uncompressed output to a file.
   --output=gzip:<filename.xml.gz>
+      Write compressed output to a file.
+  --output=bzip2:<filename.xml.bz2>
       Write compressed output to a file.
 
 Output formats:
@@ -74,8 +81,6 @@ Filter actions:
 
   
 TODO:
-* Accept compressed input
-
 * Add some nunit tests
 
 * Double-check that XML output is correct
@@ -91,3 +96,4 @@ TODO:
 
 * Progress feedback hooks
 * GUI frontend(s)
+* Port to Python? ;)

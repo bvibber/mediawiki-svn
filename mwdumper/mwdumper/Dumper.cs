@@ -35,22 +35,25 @@
 			on next one or end of sequence, write out
 			[so for 1.4 schema we can be friendly]
 	
-	progress report:
+	progress report: [TODO]
 		if possible, a percentage through file. this might not be possible.
 		rates and counts definitely
 	
 	input:
 		stdin or file
-		allow gzip -> autodetect if possible
+		gzip and bzip2 decompression on files with standard extensions
 	
 	output:
-		SQL on stdout
-		SQL on file
-		SQL directly to a server
+		stdout
+		file
+		gzip file
+		bzip2 file
+		future: SQL directly to a server?
 	
 	output formats:
-		1.4 schema
-		1.5 schema
+		XML export format 0.3
+		1.4 SQL schema
+		1.5 SQL schema
 		
 */
 
@@ -62,6 +65,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 
 using ICSharpCode.SharpZipLib.GZip;
+using ICSharpCode.SharpZipLib.BZip2;
 
 using MediaWiki.Import;
 
@@ -107,14 +111,14 @@ class MainClass {
 			} else {
 				if (input != null)
 					throw new ArgumentException("Input already set; can't set to " + arg);
-				input = File.OpenText(arg);
+				input = OpenInputFile(arg);
 			}
 		}
 		
 		if (input == null)
 			input = Console.In;
 		if (output == null)
-			throw new ArgumentException("You managed not to specify any output.");
+			output = Console.Out;
 		// Finish stacking the last output sink
 		if (sink == null)
 			sink = new XmlDumpWriter(output);
@@ -147,6 +151,15 @@ class MainClass {
 		return true;
 	}
 	
+	static TextReader OpenInputFile(string arg) {
+		if (arg.EndsWith(".gz"))
+			return new StreamReader(new GZipInputStream(File.Open(arg, FileMode.Open)));
+		else if (arg.EndsWith(".bz2"))
+			return new StreamReader(new BZip2InputStream(File.Open(arg, FileMode.Open)));
+		else
+			return File.OpenText(arg);
+	}
+	
 	static TextWriter OpenOutputFile(string dest, string param) {
 		if (dest == "stdout")
 			return Console.Out;
@@ -154,6 +167,8 @@ class MainClass {
 			return File.CreateText(param);
 		else if (dest == "gzip")
 			return new StreamWriter(new GZipOutputStream(File.Create(param)));
+		else if (dest == "bzip2")
+			return new StreamWriter(new BZip2OutputStream(File.Create(param)));
 		else
 			throw new ArgumentException("Destination sink not implemented: " + dest);
 	}
