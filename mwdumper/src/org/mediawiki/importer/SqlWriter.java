@@ -83,7 +83,7 @@ public abstract class SqlWriter implements DumpWriter {
 	}
 	
 	protected Object insertRow(String table, Object[][] row) {
-		StringBuilder sql = new StringBuilder();
+		StringBuffer sql = new StringBuffer();
 		
 		sql.append("INSERT INTO ");
 		//sql.append(_tablePrefix);
@@ -111,7 +111,7 @@ public abstract class SqlWriter implements DumpWriter {
 	}
 	
 	protected void updateRow(String table, Object[][] row, String keyField, Object keyValue) {
-		StringBuilder sql = new StringBuilder();
+		StringBuffer sql = new StringBuffer();
 		
 		sql.append("UPDATE ");
 		//sql.append(_tablePrefix);
@@ -155,7 +155,7 @@ public abstract class SqlWriter implements DumpWriter {
 	}
 	
 	protected String sqlEscape(String str) {
-		StringBuilder sql = new StringBuilder();
+		StringBuffer sql = new StringBuffer();
 		sql.append('\'');
 		int len = str.length();
 		for (int i = 0; i < len; i++) {

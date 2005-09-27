@@ -178,7 +178,7 @@ public class XmlWriter {
 	}
 	
 	String spaces(int level) {
-		StringBuilder buffer = new StringBuilder();
+		StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i < level * 2; i++)
 			buffer.append(' ');
 		return buffer.toString();

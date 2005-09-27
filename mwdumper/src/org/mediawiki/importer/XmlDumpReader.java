@@ -42,7 +42,7 @@ public class XmlDumpReader {
 	InputStream input;
 	DumpWriter writer;
 	
-	StringBuilder buffer;
+	StringBuffer buffer;
 	
 	Siteinfo siteinfo;
 	Page page;
@@ -59,7 +59,7 @@ public class XmlDumpReader {
 	class MediaWikiHandler extends DefaultHandler {
 		public void startElement(String uri, String localname, String qName, Attributes attributes) throws SAXException {
 			//System.out.println("<" + qName + ">");
-			buffer = new StringBuilder();
+			buffer = new StringBuffer();
 			try {
 				if (qName.equals("mediawiki")) openMediaWiki();
 				else if (qName.equals("siteinfo")) openSiteinfo();
