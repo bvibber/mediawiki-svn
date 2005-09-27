@@ -188,7 +188,7 @@ public abstract class SqlWriter implements DumpWriter {
 	}
 	
 	protected String titleFormat(String title) {
-		return title.replace(" ", "_");
+		return title.replace(' ', '_');
 	}
 	
 	final MessageFormat timestampFormatter = new MessageFormat(
