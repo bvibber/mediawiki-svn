@@ -31,6 +31,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.TimeZone;
 
 public class XmlDumpWriter implements DumpWriter {
 	protected OutputStream stream;
@@ -44,6 +45,7 @@ public class XmlDumpWriter implements DumpWriter {
 	public XmlDumpWriter(OutputStream output) throws IOException {
 		stream = output;
 		writer = new XmlWriter(stream);
+		dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 	}
 	
 	public void close() throws IOException {

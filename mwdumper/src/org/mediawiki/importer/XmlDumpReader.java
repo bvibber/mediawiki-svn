@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -262,21 +263,19 @@ public class XmlDumpReader {
 		contrib = new Contributor(buffer.toString());
 	}
 	
+	TimeZone utc = TimeZone.getTimeZone("UTC");
 	private Calendar parseUTCTimestamp(String text) {
 		// 2003-10-26T04:50:47Z
-		//
-		// We're doing this manually because:
-		// * XmlConvert.ToDateTime() is slow
-		// * XmlConvert.ToDateTime() is lossy at local DST boundary
-		// * DateTime.ParseExact seems to be similarly lossy, unless
-		//   there's a magic formula I haven't found yet.
+		// We're doing this manually for now, though DateFormatter might work...
 		String trimmed = text.trim();
-		return new GregorianCalendar(
+		GregorianCalendar ts = new GregorianCalendar(utc);
+		ts.set(
 			Integer.parseInt(trimmed.substring(0,0+4)),     // year
 			Integer.parseInt(trimmed.substring(5,5+2)) - 1, // month is 0-based!
 			Integer.parseInt(trimmed.substring(8,8+2)),     // day
 			Integer.parseInt(trimmed.substring(11,11+2)),   // hour
 			Integer.parseInt(trimmed.substring(14,14+2)),   // minute
 			Integer.parseInt(trimmed.substring(17,17+2)));  // second
+		return ts;
 	}
 }
