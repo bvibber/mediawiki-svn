@@ -41,7 +41,7 @@ public class Title {
 		this.namespaces = namespaces;
 		int colon = prefixedTitle.indexOf(':');
 		if (colon > 0) {
-			String prefix = prefixedTitle.substring(0, colon - 1);
+			String prefix = prefixedTitle.substring(0, colon);
 			if (namespaces.hasPrefix(prefix)) {
 				Namespace = namespaces.getIndex(prefix);
 				Text = prefixedTitle.substring(colon + 1);
@@ -72,6 +72,8 @@ public class Title {
 	public Title talkPage() {
 		if (isTalk())
 			return this;
+		else if (isSpecial())
+			return null;
 		else
 			return new Title(Namespace + 1, Text, namespaces);
 	}
@@ -81,5 +83,13 @@ public class Title {
 			return new Title(Namespace - 1, Text, namespaces);
 		else
 			return this;
+	}
+	
+	public boolean equals(Object other) {
+		if (other instanceof Title)
+			return (Namespace == ((Title)other).Namespace) &&
+				(Text.equals(((Title)other).Text));
+		else
+			return false;
 	}
 }
