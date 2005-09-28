@@ -34,6 +34,7 @@ SOURCES_IMPORT=\
   src/org/mediawiki/importer/PageFilter.java \
   src/org/mediawiki/importer/Revision.java \
   src/org/mediawiki/importer/Siteinfo.java \
+  src/org/mediawiki/importer/SqlFileStream.java \
   src/org/mediawiki/importer/SqlWriter.java \
   src/org/mediawiki/importer/SqlWriter14.java \
   src/org/mediawiki/importer/SqlWriter15.java \
