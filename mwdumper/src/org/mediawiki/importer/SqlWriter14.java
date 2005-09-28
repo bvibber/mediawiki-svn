@@ -25,7 +25,6 @@
 
 package org.mediawiki.importer;
 
-import java.io.OutputStream;
 import java.util.Random;
 
 
@@ -34,7 +33,7 @@ public class SqlWriter14 extends SqlWriter {
 	Page currentPage;
 	Revision lastRevision;
 	
-	public SqlWriter14(OutputStream output) {
+	public SqlWriter14(SqlFileStream output) {
 		super(output);
 		random = new Random();
 	}

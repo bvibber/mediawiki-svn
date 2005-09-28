@@ -25,8 +25,6 @@
 
 package org.mediawiki.importer;
 
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.text.MessageFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -35,38 +33,37 @@ import java.util.TimeZone;
 
 
 public abstract class SqlWriter implements DumpWriter {
-	protected PrintStream stream;
+	SqlFileStream stream;
 	
-	public SqlWriter(OutputStream output) {
-		stream = new PrintStream(output);
+	public SqlWriter(SqlFileStream output) {
+		stream = output;
 	}
 	
 	public void close() {
-		stream.flush();
 		stream.close();
 	}
 	
 	public void writeStartWiki() {
-		stream.println("-- MediaWiki XML dump converted to SQL");
+		stream.writeComment("-- MediaWiki XML dump converted to SQL");
 	}
 	
 	public void writeEndWiki() {
-		stream.println("-- DONE");
+		stream.writeComment("-- DONE");
 	}
 	
 	public void writeSiteinfo(Siteinfo info) {
-		stream.println("");
-		stream.println("-- Site: " + commentSafe(info.Sitename));
-		stream.println("-- URL: " + commentSafe(info.Base));
-		stream.println("-- Generator: " + commentSafe(info.Generator));
-		stream.println("-- Case: " + commentSafe(info.Case));
-		stream.println("--");
-		stream.println("-- Namespaces:");
+		stream.writeComment("");
+		stream.writeComment("-- Site: " + commentSafe(info.Sitename));
+		stream.writeComment("-- URL: " + commentSafe(info.Base));
+		stream.writeComment("-- Generator: " + commentSafe(info.Generator));
+		stream.writeComment("-- Case: " + commentSafe(info.Case));
+		stream.writeComment("--");
+		stream.writeComment("-- Namespaces:");
 		for (Iterator i = info.Namespaces.keys(); i.hasNext();) {
 			int key = ((Integer)i.next()).intValue();
-			stream.println("-- " + key + ": " + info.Namespaces.getPrefix(key));
+			stream.writeComment("-- " + key + ": " + info.Namespaces.getPrefix(key));
 		}
-		stream.println("");
+		stream.writeComment("");
 	}
 	
 	public abstract void writeStartPage(Page page);
@@ -104,9 +101,9 @@ public abstract class SqlWriter implements DumpWriter {
 				sql.append(',');
 			sql.append(sqlSafe(val));
 		}
-		sql.append(");");
+		sql.append(")");
 		
-		stream.println(sql);
+		stream.writeStatement(sql);
 		return null;
 	}
 	
@@ -133,9 +130,7 @@ public abstract class SqlWriter implements DumpWriter {
 		sql.append('=');
 		sql.append(sqlSafe(keyValue));
 		
-		sql.append(";");
-		
-		stream.println(sql);
+		stream.writeStatement(sql);
 	}
 	
 	protected String sqlSafe(Object val) {

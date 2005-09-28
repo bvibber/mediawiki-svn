@@ -27,7 +27,6 @@
 
 package org.mediawiki.importer;
 
-import java.io.OutputStream;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
@@ -36,7 +35,7 @@ public class SqlWriter15 extends SqlWriter {
 	Page currentPage;
 	Revision lastRevision;
 	
-	public SqlWriter15(OutputStream output) {
+	public SqlWriter15(SqlFileStream output) {
 		super(output);
 		random = new Random();
 	}
@@ -71,7 +70,7 @@ public class SqlWriter15 extends SqlWriter {
 				{"old_text", revision.Text},
 				{"old_flags", "utf-8"}});
 
-		insertRow("rev", new Object[][] {
+		insertRow("revision", new Object[][] {
 				{"rev_id", new Integer(revision.Id)},
 				{"rev_page", new Integer(currentPage.Id)},
 				{"rev_text_id", new Integer(revision.Id)}, // FIXME

@@ -211,10 +211,11 @@ class Dumper {
 		if (format.equals("xml"))
 			return new XmlDumpWriter(output);
 		else if (format.equals("sql")) {
+			SqlFileStream sqlStream = new SqlFileStream(output);
 			if (param.equals("1.4"))
-				return new SqlWriter14(output);
+				return new SqlWriter14(sqlStream);
 			else if (param.equals("1.5"))
-				return new SqlWriter15(output);
+				return new SqlWriter15(sqlStream);
 			else
 				throw new IllegalArgumentException("SQL version not known: " + param);
 		} else
