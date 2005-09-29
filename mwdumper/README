@@ -8,15 +8,15 @@ Still very much under construction.
 
 MIT-style license like our other Java/C# tools; boilerplate to be added.
 
-Uses SharpZipLib for cross-platform gzip output support. SharpZipLib
-is under GPL with linking exception, see libs/COPYING.txt and libs/README.rtf
+Contains code from the Apache Commons Compress project for cross-platform
+bzip2 input/output support (Apache License 2.0).
 
 
 USAGE:
 
 Sample command line:
   gzip -dc pages_full.xml.gz | \
-  mono mwdumper.exe \
+  mwdumper \
     --output=gzip:pages_public.xml.gz \
       --format=xml \
       --filter=notalk \
@@ -28,10 +28,12 @@ Sample command line:
     --output=gzip:pages_full_1.4.sql.gz \
       --format=sql:1.4
 
-A bare parameter will be interpreted as a file to read uncompressed
-XML input from; if none is given or "-" input will be read from stdin.
-Input files with ".gz" or ".bz2" extensions will be decompressed as
-gzip and bzip2 streams, respectively.
+A bare parameter will be interpreted as a file to read XML input from;
+if none is given or "-" input will be read from stdin. Input files with
+".gz" or ".bz2" extensions will be decompressed as gzip and bzip2 streams,
+respectively.
+
+(To read compressed data on stdin, pipe it through gunzip or bunzip2.)
 
 Defaults if no parameters are given:
 * read uncompressed XML from stdin
@@ -55,9 +57,9 @@ Output formats:
       Output back to MediaWiki's XML export format; use this for
       filtering dumps for limited import. Output should be idempotent.
   --format=sql:1.4
-      Untested, may not work correctly.
+      Not well, may not work correctly.
   --format=sql:1.5
-      Probably doesn't work.
+      Probably doesn't work quite right yet.
 
 Filter actions:
   --filter=latest
