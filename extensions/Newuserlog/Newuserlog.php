@@ -26,6 +26,7 @@ function wfNewuserlog() {
 		array(
 			'newuserlogpage' => 'User creation log',
 			'newuserlogpagetext' => 'This is a log of recent user creations',
+			'newuserlogentry' => '',
 			'newuserloglog' => "Created the user [[User:$1|$1]] ([[User talk:$1|$2]] | [[Special:Contributions/$1|$3]])"
 		)
 	);
@@ -34,6 +35,7 @@ function wfNewuserlog() {
 	$wgHooks['LogPageValidTypes'][] = 'wfNewuserlogAddLogType';
 	$wgHooks['LogPageLogName'][] = 'wfNewuserlogAddLogName';
 	$wgHooks['LogPageLogHeader'][] = 'wfNewuserlogAddLogHeader';
+	$wgHooks['LogPageActionText'][] = 'wfNewuserlogAddActionText';
 	
 	# Run this hook on new account creation
 	$wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
@@ -64,6 +66,11 @@ function wfNewuserlogAddLogName( &$names ) {
 
 function wfNewuserlogAddLogHeader( &$headers ) {
 	$headers['newusers'] = 'newuserlogpagetext';
+	return true;
+}
+
+function wfNewuserlogAddActionText( &$actions ) {
+	$actions['newusers/newusers'] = 'newuserlogentry';
 	return true;
 }
 ?>
