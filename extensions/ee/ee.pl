@@ -106,8 +106,11 @@ if($type eq "Edit file") {
 	$pagetitle=$1;
 	$filename=uri_unescape($pagetitle);
         # substitute illegal or special characters
-        $filename =~ s/:/__/g;  # : - illegal on Windows
-	$filename =~ s/\//__/g; # / - path character under Unix and others	
+	$filename =~ s/:/__/g; # : - illegal on Windows
+	$filename =~ s|/|__|g; # / - path character under Unix and others
+	# potential shell metacharacters:
+	$filename =~ s/[\[\]\{\}\(\)~!#\$\^\&\*;'"<>\?]/__/g;
+	
 	$filename=$filename.".wiki";
 	$edit_url=$script."?title=$pagetitle&action=submit";
 	$view_url=$script."?title=$pagetitle";	
@@ -275,6 +278,7 @@ if($type ne "Diff text") {
 # Cancel: Quit ee.pl
 #
 sub makegui {
+	$title_label = Gtk2::Label->new($filename);
 
 	$vbox = Gtk2::VBox->new;
 	$hbox = Gtk2::HBox->new;
@@ -292,6 +296,7 @@ sub makegui {
 	$hbox2->pack_start_defaults($savecontbutton);
 	$hbox2->pack_start_defaults($previewbutton);
 	$hbox2->pack_start_defaults($cancelbutton);		
+	$vbox->pack_start_defaults($title_label);
 	$vbox->pack_start_defaults($hbox);
 	$vbox->pack_start_defaults($hbox2);
 	if($type ne "Edit file") {
@@ -301,6 +306,13 @@ sub makegui {
 		$hbox3->pack_start_defaults($minoreditcheck);
 		$hbox3->pack_start_defaults($watchcheck);
 		$vbox->pack_start_defaults($hbox3);
+		if ($cfg->val("Settings","Minor edit default") =~ m/^(?:true|1)$/i) {
+			$minoreditcheck->set_active(1);
+		}
+		if ($cfg->val("Settings","Watch default") =~ m/^(?:true|1)$/i) {
+			$watchcheck->set_active(1);
+		}
+
 	}
 
 	# Set up window
