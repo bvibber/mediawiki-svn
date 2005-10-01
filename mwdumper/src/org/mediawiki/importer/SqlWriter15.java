@@ -58,19 +58,21 @@ public class SqlWriter15 extends SqlWriter {
 	}
 	
 	public void writeEndPage() {
-		if (lastRevision != null)
+		if (lastRevision != null) {
+			flushInsertBuffers();
 			updatePage(currentPage, lastRevision);
+		}
 		currentPage = null;
 		lastRevision = null;
 	}
 	
 	public void writeRevision(Revision revision) {
-		insertRow("text", new Object[][] {
+		bufferInsertRow("text", new Object[][] {
 				{"old_id", new Integer(revision.Id)}, // FIXME
 				{"old_text", revision.Text},
 				{"old_flags", "utf-8"}});
 
-		insertRow("revision", new Object[][] {
+		bufferInsertRow("revision", new Object[][] {
 				{"rev_id", new Integer(revision.Id)},
 				{"rev_page", new Integer(currentPage.Id)},
 				{"rev_text_id", new Integer(revision.Id)}, // FIXME

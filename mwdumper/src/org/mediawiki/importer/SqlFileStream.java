@@ -3,7 +3,7 @@ package org.mediawiki.importer;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
-public class SqlFileStream {
+public class SqlFileStream implements SqlStream {
 	protected PrintStream stream;
 	
 	public SqlFileStream(OutputStream output) {

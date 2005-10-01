@@ -28,6 +28,7 @@ package org.mediawiki.importer;
 import java.text.MessageFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.TimeZone;
 
@@ -79,11 +80,41 @@ public abstract class SqlWriter implements DumpWriter {
 		return text;
 	}
 	
-	protected Object insertRow(String table, Object[][] row) {
+	Hashtable insertBuffers = new Hashtable();
+	int blockSize = 1024 * 512; // default 512k inserts
+	protected void bufferInsertRow(String table, Object[][] row) {
+		StringBuffer sql = (StringBuffer)insertBuffers.get(table);
+		if (sql != null) {
+			if (sql.length() < blockSize) {
+				sql.append(',');
+				appendInsertValues(sql, row);
+				return;
+			} else {
+				flushInsertBuffers();
+			}
+		}
+		sql = new StringBuffer();
+		appendInsertStatement(sql, table, row);
+		insertBuffers.put(table, sql);
+	}
+	
+	protected void flushInsertBuffers() {
+		Iterator iter = insertBuffers.values().iterator();
+		while (iter.hasNext()) {
+			stream.writeStatement((CharSequence)iter.next());
+		}
+		insertBuffers.clear();
+	}
+	
+	protected void insertRow(String table, Object[][] row) {
 		StringBuffer sql = new StringBuffer();
-		
+		appendInsertStatement(sql, table, row);		
+		stream.writeStatement(sql);
+	}
+	
+	private void appendInsertStatement(StringBuffer sql, String table, Object[][] row) {
 		sql.append("INSERT INTO ");
-		//sql.append(_tablePrefix);
+		//sql.append(tablePrefix);
 		sql.append(table);
 		sql.append(" (");
 		
@@ -93,25 +124,26 @@ public abstract class SqlWriter implements DumpWriter {
 				sql.append(',');
 			sql.append(field);
 		}
-		sql.append(") VALUES (");
-		
+		sql.append(") VALUES ");
+		appendInsertValues(sql, row);
+	}
+	
+	private void appendInsertValues(StringBuffer sql, Object[][] row) {
+		sql.append('(');
 		for (int i = 0; i < row.length; i++) {
 			Object val = row[i][1];
 			if (i > 0)
 				sql.append(',');
 			sql.append(sqlSafe(val));
 		}
-		sql.append(")");
-		
-		stream.writeStatement(sql);
-		return null;
+		sql.append(')');
 	}
 	
 	protected void updateRow(String table, Object[][] row, String keyField, Object keyValue) {
 		StringBuffer sql = new StringBuffer();
 		
 		sql.append("UPDATE ");
-		//sql.append(_tablePrefix);
+		//sql.append(tablePrefix);
 		sql.append(table);
 		sql.append(" SET ");
 		
