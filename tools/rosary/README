@@ -1,0 +1,12 @@
+To use:
+
+ 1) make
+ 2) cp rosary /usr/local/sbin
+ 3) rosary -I -m /path/to/Solaris_10/Product
+
+To search for a package:
+  rosary search <glob>
+To install a package:
+  rosary install <name> [<name> <name>...]
+To open a command shell:
+  rosary shell
