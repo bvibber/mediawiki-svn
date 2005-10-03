@@ -73,7 +73,7 @@ public class SqlWriter14 extends SqlWriter {
 	
 	private void writeCurRevision(Page page, Revision revision) {
 		insertRow("cur", new Object[][] {
-				{"cur_id", new Integer(revision.Id)},
+				{"cur_id", new Integer(page.Id)},
 				{"cur_namespace", new Integer(page.Title.Namespace)},
 				{"cur_title", titleFormat(page.Title.Text)},
 				{"cur_text", revision.Text},
