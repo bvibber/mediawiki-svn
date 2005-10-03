@@ -81,6 +81,11 @@ Filter actions:
   --filter=titlematch:<regex>
       Excludes all pages whose titles do not match the regex.
 
+Misc options:
+  --progress=<n>
+      Change progress reporting interval from the default 1000 revisions.
+  --quiet
+      Don't send any progress output to stderr.
   
 TODO:
 * Add some nunit tests
@@ -96,6 +101,5 @@ TODO:
 * Provide filter to strip ID numbers
 * <siteinfo> is technically optional; live without it and use default namespaces
 
-* Progress feedback hooks
 * GUI frontend(s)
 * Port to Python? ;)

@@ -82,6 +82,7 @@ class Dumper {
 		OutputStream output = null;
 		DumpWriter sink = null;
 		MultiWriter writers = new MultiWriter();
+		int progressInterval = 1000;
 		
 		for (int i = 0; i < args.length; i++) {
 			String arg = args[i];
@@ -110,6 +111,10 @@ class Dumper {
 						sink = new XmlDumpWriter(output);
 					}
 					sink = addFilter(sink, val, param);
+				} else if (opt.equals("progress")) {
+					progressInterval = Integer.parseInt(val);
+				} else if (opt.equals("quiet")) {
+					progressInterval = 0;
 				} else {
 					throw new IllegalArgumentException("Unrecognized option " + opt);
 				}
@@ -133,7 +138,11 @@ class Dumper {
 			sink = new XmlDumpWriter(output);
 		writers.add(sink);
 		
-		XmlDumpReader reader = new XmlDumpReader(input, writers);
+		DumpWriter outputSink = (progressInterval > 0)
+				? (DumpWriter)new ProgressFilter(writers, progressInterval)
+				: (DumpWriter)writers;
+		
+		XmlDumpReader reader = new XmlDumpReader(input, outputSink);
 		reader.readDump();
 	}
 	
