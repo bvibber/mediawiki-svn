@@ -427,8 +427,8 @@ class OAIUpdateRecord {
 			'img_description' => $upload['comment'],
 			'img_user'        => IntVal( @$upload['contributor']['id'] ),
 			'img_user_text'   => isset( $revision['contributor']['username'] )
-								   ? $revision['contributor']['username']
-								   : $revision['contributor']['ip'],
+								   ? strval( $revision['contributor']['username'] )
+								   : strval( $revision['contributor']['ip'] ),
 			'img_timestamp'   => $dbw->timestamp( $this->getTimestamp( $upload['timestamp'] ) ) );
 		
 		$dbw->begin();
