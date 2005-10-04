@@ -79,13 +79,14 @@ case 'random':
 		}
 		return $str;
 	}
+	$n = 0;
 	while(true) {
 		$randomTitle = Title::makeTitle( NS_MAIN, wfRandomString( 20 ) );
-		$randomText = wfRandomString( 2048 );
+		$randomText = wfRandomString( 16384 );
 		MWSearchUpdater::updatePage( $wgDBname, $randomTitle, $randomText );
 		$n++;
 		if( $n % 100 == 0 ) {
-			echo MWSearchUpdater::getStatus();
+			echo MWSearchUpdater::getStatus() . "\n";
 			LuceneBuilder::wait();
 		}
 	}
@@ -197,7 +198,7 @@ class LuceneBuilder {
 		}
 	}
 	
-	function final() {
+	function finalStatus() {
 		global $wgDBname;
 		$now = wfTime();
 		$delta = $now - $this->startTime;
@@ -262,7 +263,7 @@ class LuceneBuilder {
 				}
 			}
 		}
-		$this->final();
+		$this->finalStatus();
 		$this->dbstream->freeResult( $result );
 		
 		return $lastError;
@@ -313,7 +314,7 @@ class LuceneBuilder {
 			}
 		}
 		
-		$this->final();
+		$this->finalStatus();
 		$this->dbstream->freeResult( $result );
 		
 		return $lastError;
@@ -370,7 +371,7 @@ class LuceneBuilder {
 			}
 		}
 		
-		$this->final();
+		$this->finalStatus();
 		$this->dbstream->freeResult( $result );
 		
 		return $lastError;
