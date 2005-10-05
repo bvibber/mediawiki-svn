@@ -361,7 +361,7 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 
 		$lines = explode("\n", $text);
 
-		$max = IntVal($contextchars) + 1;
+		$max = intval($contextchars) + 1;
 		$pat1 = "/(.*)($terms)(.{0,$max})/i";
 
 		$lineno = 0;
@@ -574,10 +574,11 @@ class LuceneResult {
 	 * @access private
 	 */
 	function LuceneResult( $line ) {
+		wfDebug( "Lucene line: '$line'\n" );
 		list( $score, $namespace, $title ) = split( ' ', $line );
 
-		$score     = FloatVal( $score );
-		$namespace = IntVal( $namespace );
+		$score     = floatval( $score );
+		$namespace = intval( $namespace );
 		$title     = urldecode( $title );
 
 		global $wgUseLatin1;
@@ -652,7 +653,7 @@ class LuceneSearchSet {
 
 		wfDebug( "Fetching search data from $searchUrl\n" );
 		wfProfileIn( "$fname-contact-$host" );
-		$inputLines = explode( "\n", wfGetHTTP( $searchUrl ) );
+		$inputLines = explode( "\n", trim( wfGetHTTP( $searchUrl ) ) );
 		wfProfileOut( "$fname-contact-$host" );
 		//$inputLines = @file( $searchUrl );
 
@@ -674,7 +675,7 @@ class LuceneSearchSet {
 				# I/O error? this shouldn't happen
 				wfDebug( "Couldn't read summary line...\n" );
 			} else {
-				$totalHits = IntVal( $totalHits );
+				$totalHits = intval( $totalHits );
 				wfDebug( "total [$totalHits] hits\n" );
 				if( $totalHits == 0 ) {
 					# No results, but we got a suggestion...
