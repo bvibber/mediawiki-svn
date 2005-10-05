@@ -202,7 +202,7 @@ class Dumper {
 			throw new IllegalArgumentException("Destination sink not implemented: " + dest);
 	}
 
-	private static CBZip2OutputStream createBZip2File(String param) throws IOException, FileNotFoundException {
+	private static OutputStream createBZip2File(String param) throws IOException, FileNotFoundException {
 		OutputStream outfile = createOutputFile(param);
 		// bzip2 expects a two-byte 'BZ' signature header
 		outfile.write('B');
