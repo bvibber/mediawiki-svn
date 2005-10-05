@@ -11,29 +11,47 @@ MIT-style license like our other Java/C# tools; boilerplate to be added.
 Contains code from the Apache Commons Compress project for cross-platform
 bzip2 input/output support (Apache License 2.0).
 
+If strange XML errors are encountered under Java 1.4, try 1.5:
+* http://java.sun.com/j2se/1.5.0/download.jsp
+* http://www.apple.com/downloads/macosx/apple/java2se50release1.html
+
 
 USAGE:
 
-Sample command line:
-  gzip -dc pages_full.xml.gz | \
-  mwdumper \
-    --output=gzip:pages_public.xml.gz \
+Sample command line for a direct database import:
+  java -server -jar mwdumper.jar --format=sql:1.5 pages_full.xml.bz2 |
+    mysql -u <username> -p <databasename>
+
+(The -server option may significantly increase performance on some
+versions of Sun's JVM for large files.)
+
+You can also do complex filtering to produce multiple output files:
+  java -jar mwdumper.jar \
+    --output=bzip2:pages_public.xml.bz2 \
       --format=xml \
       --filter=notalk \
       --filter=namespace:\!NS_USER \
       --filter=latest \
-    --output=gzip:pages_current.xml.gz \
+    --output=bzip2:pages_current.xml.bz2 \
       --format=xml \
       --filter=latest \
+    --output=gzip:pages_full_1.5.sql.gz \
+      --format=sql:1.5 \
     --output=gzip:pages_full_1.4.sql.gz \
-      --format=sql:1.4
+      --format=sql:1.4 \
+    pages_full.xml.gz
 
 A bare parameter will be interpreted as a file to read XML input from;
 if none is given or "-" input will be read from stdin. Input files with
 ".gz" or ".bz2" extensions will be decompressed as gzip and bzip2 streams,
 respectively.
 
-(To read compressed data on stdin, pipe it through gunzip or bunzip2.)
+Internal decompression of 7-zip .7z files is not yet supported; you can
+pipe such files through p7zip's 7za:
+
+  7za e -so pages_full.xml.7z |
+    java -server -jar mwdumper --format=sql:1.5 |
+    mysql -u <username> -p <databasename>
 
 Defaults if no parameters are given:
 * read uncompressed XML from stdin
@@ -86,9 +104,26 @@ Misc options:
       Change progress reporting interval from the default 1000 revisions.
   --quiet
       Don't send any progress output to stderr.
-  
+
+
+PERFORMANCE TIPS:
+
+To speed up importing into a database, you might try:
+
+* Increase the innodb_log_file_size. The default is as little as 5mb, but
+  you can improve performance dramatically by increasing this to reduce
+  the number of disk writes. (See the my-huge.cnf sample config.)
+
+* If you don't need it, disable the binary log (log-bin option) during the
+  import. On a standalone machine this is just wasteful, writing a second
+  copy of every query that you'll never use.
+
+* Various other wacky tips in the MySQL reference manual at
+  http://dev.mysql.com/mysql/en/innodb-tuning.html
+
+
 TODO:
-* Add some nunit tests
+* Add some more junit tests
 
 * Double-check that XML output is correct
 * Test 1.4-schema SQL output

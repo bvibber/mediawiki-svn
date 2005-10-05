@@ -45,10 +45,13 @@ public abstract class SqlWriter implements DumpWriter {
 	}
 	
 	public void writeStartWiki() {
-		stream.writeComment("-- MediaWiki XML dump converted to SQL");
+		stream.writeComment("-- MediaWiki XML dump converted to SQL by mwdumper");
+		stream.writeStatement("BEGIN");
 	}
 	
 	public void writeEndWiki() {
+		flushInsertBuffers();
+		stream.writeStatement("COMMIT");
 		stream.writeComment("-- DONE");
 	}
 	
@@ -90,12 +93,17 @@ public abstract class SqlWriter implements DumpWriter {
 				appendInsertValues(sql, row);
 				return;
 			} else {
-				flushInsertBuffers();
+				flushInsertBuffer(table);
 			}
 		}
 		sql = new StringBuffer();
 		appendInsertStatement(sql, table, row);
 		insertBuffers.put(table, sql);
+	}
+	
+	protected void flushInsertBuffer(String table) {
+		stream.writeStatement((CharSequence)insertBuffers.get(table));
+		insertBuffers.remove(table);
 	}
 	
 	protected void flushInsertBuffers() {
@@ -244,5 +252,16 @@ public abstract class SqlWriter implements DumpWriter {
 	TimeZone utc = TimeZone.getTimeZone("UTC");
 	protected GregorianCalendar now() {
 		return new GregorianCalendar(utc);
+	}
+
+	int commitInterval = 1000; // Commit a transaction every n pages
+	int pageCount = 0;
+	protected void checkpoint() {
+		pageCount++;
+		if (pageCount % commitInterval == 0) {
+			flushInsertBuffers();
+			stream.writeStatement("COMMIT");
+			stream.writeStatement("BEGIN");
+		}
 	}
 }

@@ -31,35 +31,21 @@ import java.util.GregorianCalendar;
 import java.util.Random;
 
 public class SqlWriter15 extends SqlWriter {
-	Random random;
+	Random random = new Random();
 	Page currentPage;
 	Revision lastRevision;
 	
 	public SqlWriter15(SqlFileStream output) {
 		super(output);
-		random = new Random();
 	}
 	
 	public void writeStartPage(Page page) {
 		currentPage = page;
 		lastRevision = null;
-		insertRow("page", new Object[][] {
-				{"page_id", new Integer(page.Id)},
-				{"page_namespace", new Integer(page.Title.Namespace)},
-				{"page_title", titleFormat(page.Title.Text)},
-				{"page_restrictions", page.Restrictions},
-				{"page_counter", new Integer(0)},
-				{"page_is_redirect", new Integer(0)},
-				{"page_is_new", new Integer(0)},
-				{"page_random", new Double(random.nextDouble())},
-				{"page_touched", timestampFormat(new GregorianCalendar())},
-				{"page_latest", new Integer(0)}, // We'll touch this up at the end...
-				{"page_len", new Integer(0)}}); // .....
 	}
 	
 	public void writeEndPage() {
 		if (lastRevision != null) {
-			flushInsertBuffers();
 			updatePage(currentPage, lastRevision);
 		}
 		currentPage = null;
@@ -68,14 +54,14 @@ public class SqlWriter15 extends SqlWriter {
 	
 	public void writeRevision(Revision revision) {
 		bufferInsertRow("text", new Object[][] {
-				{"old_id", new Integer(revision.Id)}, // FIXME
+				{"old_id", new Integer(revision.Id)},
 				{"old_text", revision.Text},
 				{"old_flags", "utf-8"}});
 
 		bufferInsertRow("revision", new Object[][] {
 				{"rev_id", new Integer(revision.Id)},
 				{"rev_page", new Integer(currentPage.Id)},
-				{"rev_text_id", new Integer(revision.Id)}, // FIXME
+				{"rev_text_id", new Integer(revision.Id)},
 				{"rev_comment", revision.Comment},
 				{"rev_user", new Integer(revision.Contributor.Id)},
 				{"rev_user_text", revision.Contributor.Username},
@@ -87,11 +73,19 @@ public class SqlWriter15 extends SqlWriter {
 	}
 	
 	private void updatePage(Page page, Revision revision) {
-		updateRow("page", new Object[][] {
-				{"page_len", new Integer(revision.Text.length())}, // TODO: UTF-8 byte length
+		bufferInsertRow("page", new Object[][] {
+				{"page_id", new Integer(page.Id)},
+				{"page_namespace", new Integer(page.Title.Namespace)},
+				{"page_title", titleFormat(page.Title.Text)},
+				{"page_restrictions", page.Restrictions},
+				{"page_counter", new Integer(0)},
+				{"page_is_redirect", new Integer(revision.isRedirect() ? 1 : 0)},
+				{"page_is_new", new Integer(0)},
+				{"page_random", new Double(random.nextDouble())},
+				{"page_touched", timestampFormat(new GregorianCalendar())},
 				{"page_latest", new Integer(revision.Id)},
-				{"page_is_redirect", new Integer(revision.isRedirect() ? 1 : 0)}},
-				 "page_id", new Integer(page.Id));
+				{"page_len", new Integer(revision.Text.length())}}); // TODO: UTF-8 byte length
+		checkpoint();
 	}
 
 }

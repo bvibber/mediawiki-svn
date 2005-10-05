@@ -57,7 +57,7 @@ public class SqlWriter14 extends SqlWriter {
 	}
 	
 	private void writeOldRevision(Page page, Revision revision) {
-		insertRow("old", new Object[][] {
+		bufferInsertRow("old", new Object[][] {
 				{"old_id", new Integer(revision.Id)},
 				{"old_namespace", new Integer(page.Title.Namespace)},
 				{"old_title", titleFormat(page.Title.Text)},
@@ -72,7 +72,7 @@ public class SqlWriter14 extends SqlWriter {
 	}
 	
 	private void writeCurRevision(Page page, Revision revision) {
-		insertRow("cur", new Object[][] {
+		bufferInsertRow("cur", new Object[][] {
 				{"cur_id", new Integer(page.Id)},
 				{"cur_namespace", new Integer(page.Title.Namespace)},
 				{"cur_title", titleFormat(page.Title.Text)},
@@ -88,5 +88,6 @@ public class SqlWriter14 extends SqlWriter {
 				{"cur_random", new Double(random.nextDouble())},
 				{"cur_touched", timestampFormat(now())},
 				{"inverse_timestamp", inverseTimestamp(revision.Timestamp)}});
+		checkpoint();
 	}
 }
