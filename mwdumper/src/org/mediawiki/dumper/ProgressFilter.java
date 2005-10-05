@@ -30,6 +30,7 @@ import java.text.MessageFormat;
 import java.util.Date;
 
 import org.mediawiki.importer.DumpWriter;
+import org.mediawiki.importer.Page;
 import org.mediawiki.importer.PageFilter;
 import org.mediawiki.importer.Revision;
 
@@ -47,16 +48,26 @@ public class ProgressFilter extends PageFilter {
 			throw new IllegalArgumentException("Reportint interval must be positive.");
 	}
 	
-	public void writeEndPage() throws IOException {
-		super.writeEndPage();
+	public void writeStartPage(Page page) throws IOException {
+		super.writeStartPage(page);
 		pages++;
-		reportProgress();
 	}
 	
 	public void writeRevision(Revision rev) throws IOException {
 		super.writeRevision(rev);
 		revisions++;
 		reportProgress();
+	}
+	
+	/**
+	 * If we didn't just show a progress report on the last revision,
+	 * show the final results.
+	 * @throws IOException 
+	 */
+	public void writeEndWiki() throws IOException {
+		super.writeEndWiki();
+		if (revisions % interval != 0)
+			showProgress();
 	}
 
 	private void reportProgress() {
