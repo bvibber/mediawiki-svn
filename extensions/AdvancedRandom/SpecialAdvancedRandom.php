@@ -56,8 +56,7 @@ function wfAdvancedRandom() {
 
 			$ft = Title::newFromText( $page );
 			if ( is_null( $ft ) ) {
-				$mainpage = $this->mainpage();
-				$this->redirect( $mainpage );
+				$this->redirect( Title::newMainPage() );
 				wfProfileOut( $fname );
 				return;
 			}
@@ -84,11 +83,8 @@ function wfAdvancedRandom() {
 			);
 
 			$title =& Title::makeTitle( Namespace::getSubject( $namespace ), $res->page_title );
-			if ( is_null( $title ) || $title->getText() == '' ) {
-				$mainpage = $this->mainpage();
-				$title = $mainpage;
-			}
-			
+			if ( is_null( $title ) || $title->getText() == '' )
+				$title = Title::newMainPage();;
 			$this->redirect( $title );
 			wfProfileOut( $fname );
 		}
@@ -129,15 +125,6 @@ function wfAdvancedRandom() {
 				$namespace = NS_MAIN;
 
 			return array( $page, $namespace );
-		}
-
-		/**
-		 * Return a mainpage title object
-		 *
-		 * @return object
-		 */
-		function mainpage() {
-			return Title::newFromText( wfMsgForContent( 'mainpage' ) );
 		}
 	}
 	
