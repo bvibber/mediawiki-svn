@@ -10,6 +10,7 @@ $wgExtensionFunctions[] = "wfCitation";
 function wfCitation () {
 	global $wgParser ;
 	$wgParser->setHook ( "citation" , 'parse_citation' ) ;
+	$wgParser->isMainParser = true ;
 }
 
 $wgCitationCache = array () ;
@@ -20,7 +21,7 @@ function citation_hooker ( $parser , $text ) {
 	global $wgCitationCache , $wgCitationCounter , $wgCitationRunning ;
 	if ( $wgCitationRunning ) return ;
 	if ( count ( $wgCitationCache ) == 0 ) return ;
-	
+	if ( !isset ( $parser->isMainParser ) ) return ;
 	$ret = "" ;
 	foreach ( $wgCitationCache AS $num => $entry ) {
 		$x = "<li>" . $entry . " <a href='#citeback{$num}'>&uarr;</a></li>\n" ;
