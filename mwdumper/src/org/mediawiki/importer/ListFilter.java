@@ -29,14 +29,14 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Hashtable;
+import java.util.HashMap;
 
 public class ListFilter extends PageFilter {
-	protected Hashtable list;
+	protected HashMap list;
 	
 	public ListFilter(DumpWriter sink, String sourceFileName) throws IOException {
 		super(sink);
-		list = new Hashtable();
+		list = new HashMap();
 		BufferedReader input = new BufferedReader(new InputStreamReader(
 			new FileInputStream(sourceFileName), "utf-8"));
 		String line = input.readLine();

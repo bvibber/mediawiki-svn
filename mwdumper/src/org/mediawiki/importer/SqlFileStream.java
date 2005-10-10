@@ -11,11 +11,11 @@ public class SqlFileStream implements SqlStream {
 	}
 	
 	public void writeComment(CharSequence sql) {
-		stream.println(sql);
+		stream.println(sql.toString());
 	}
 	
 	public void writeStatement(CharSequence sql) {
-		stream.print(sql);
+		stream.print(sql.toString());
 		stream.println(';');
 	}
 	

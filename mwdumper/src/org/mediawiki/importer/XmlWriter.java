@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.util.Stack;
+import java.util.ArrayList;
 
 /**
  * Quickie little class for sending properly encoded, prettily
@@ -14,13 +14,13 @@ import java.util.Stack;
 public class XmlWriter {
 	OutputStream stream;
 	String encoding;
-	Stack stack;
+	ArrayList stack;
 	BufferedWriter writer;
 	
 	public XmlWriter(OutputStream stream) throws IOException {
 		this.stream = stream;
 		encoding = "utf-8";
-		stack = new Stack();
+		stack = new ArrayList();
 		writer = new BufferedWriter(new OutputStreamWriter(stream, "UTF8"));
 	}
 	
@@ -88,11 +88,10 @@ public class XmlWriter {
 		String[] bits = deindent();
 		String element = bits[0];
 		String space = bits[1];
-		String closer = "</" + element + ">\n";
 		if (indent)
-			writeRaw(space + closer);
+			writeRaw(space + "</" + element + ">\n");
 		else
-			writeRaw(closer);
+			writeRaw("</" + element + ">\n");
 	}
 	
 	/**
@@ -107,7 +106,7 @@ public class XmlWriter {
 	}
 	
 	public void textElement(String element, String text, String[][] attributes) throws IOException {
-		if (text.equals("")) {
+		if (text.length() == 0) {
 			emptyElement(element, attributes);
 		} else {
 			startElement(element, attributes, ">");
@@ -165,19 +164,19 @@ public class XmlWriter {
 		}
 	}
 	
-	String indent(String element) {
+	private String indent(String element) {
 		int level = stack.size();
 		stack.add(element);
 		return spaces(level);
 	}
 	
-	String[] deindent() {
-		String element = (String)stack.pop();
+	private String[] deindent() {
+		String element = (String)stack.remove(stack.size() - 1);
 		String space = spaces(stack.size());
 		return new String[] {element, space};
 	}
 	
-	String spaces(int level) {
+	private String spaces(int level) {
 		StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i < level * 2; i++)
 			buffer.append(' ');

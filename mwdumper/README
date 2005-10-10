@@ -138,3 +138,10 @@ TODO:
 
 * GUI frontend(s)
 * Port to Python? ;)
+
+
+Change history (abbreviated):
+2005-10-10: Applied speedup patches from Folke Behrens
+2005-10-05: Use bulk inserts in SQL mode
+2005-09-29: Converted from C# to Java
+2005=08-27: Initial extraction code

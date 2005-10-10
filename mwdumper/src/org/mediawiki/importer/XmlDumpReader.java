@@ -39,11 +39,11 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class XmlDumpReader {
+public class XmlDumpReader  extends DefaultHandler {
 	InputStream input;
 	DumpWriter writer;
 	
-	StringBuffer buffer;
+	private StringBuffer buffer;
 	
 	Siteinfo siteinfo;
 	Page page;
@@ -52,149 +52,169 @@ public class XmlDumpReader {
 	Revision rev;
 	int nskey;
 	
+	/**
+	 * Initialize a processor for a MediaWiki XML dump stream.
+	 * Events are sent to a single DumpWriter output sink, but you
+	 * can chain multiple output processors with a MultiWriter.
+	 * @param inputStream Stream to read XML from.
+	 * @param writer Output sink to send processed events to.
+	 */
 	public XmlDumpReader(InputStream inputStream, DumpWriter writer) {
 		input = inputStream;
 		this.writer = writer;
 	}
 	
-	class MediaWikiHandler extends DefaultHandler {
-		public void startElement(String uri, String localname, String qName, Attributes attributes) throws SAXException {
-			//System.out.println("<" + qName + ">");
-			buffer = new StringBuffer();
-			try {
-				if (qName.equals("mediawiki")) openMediaWiki();
-				else if (qName.equals("siteinfo")) openSiteinfo();
-				else if (qName.equals("namespaces")) openNamespaces();
-				else if (qName.equals("namespace")) openNamespace(attributes);
-				else if (qName.equals("page")) openPage();
-				else if (qName.equals("revision")) openRevision();
-				else if (qName.equals("contributor")) openContributor();
-			} catch (IOException e) {
-				throw new SAXException(e);
-			}
-		}
-		
-		public void characters(char[] ch, int start, int length) {
-			buffer.append(ch, start, length);
-		}
-		
-		public void endElement(String uri, String localname, String qName) throws SAXException {
-			//System.out.println("</" + qName + ">");
-			try {
-				if (qName.equals("mediawiki")) closeMediaWiki();
-				else if (qName.equals("siteinfo")) closeSiteinfo();
-				else if (qName.equals("sitename")) readSitename();
-				else if (qName.equals("base")) readBase();
-				else if (qName.equals("generator")) readGenerator();
-				else if (qName.equals("case")) readCase();
-				else if (qName.equals("namespaces")) closeNamespaces();
-				else if (qName.equals("namespace")) closeNamespace();
-				else if (qName.equals("page")) closePage();
-				else if (qName.equals("title")) readTitle();
-				else if (qName.equals("id")) readId();
-				else if (qName.equals("restrictions")) readRestrictions();
-				else if (qName.equals("revision")) closeRevision();
-				else if (qName.equals("timestamp")) readTimestamp();
-				else if (qName.equals("contributor")) closeContributor();
-				else if (qName.equals("username")) readUsername();
-				else if (qName.equals("ip")) readIp();
-				else if (qName.equals("comment")) readComment();
-				else if (qName.equals("minor")) readMinor();
-				else if (qName.equals("text")) readText();
-			} catch (IOException e) {
-				throw new SAXException(e);
-			}
-		}
-	}
-	
+	/**
+	 * Reads through the entire XML dump on the input stream, sending
+	 * events to the DumpWriter as it goes. May throw exceptions on
+	 * invalid input or due to problems with the output.
+	 * @throws IOException
+	 */
 	public void readDump() throws IOException {
 		try {
-		SAXParserFactory factory = SAXParserFactory.newInstance();
-		//_reader.WhitespaceHandling = WhitespaceHandling.Significant;
-		SAXParser parser = factory.newSAXParser();
-		
-		parser.parse(input, new MediaWikiHandler());
+			SAXParserFactory factory = SAXParserFactory.newInstance();
+			SAXParser parser = factory.newSAXParser();
+	
+			parser.parse(input, this);
 		} catch (ParserConfigurationException e) {
-			throw new IOException(e.toString());
+			throw new IOException(e.getMessage());
 		} catch (SAXException e) {
-			throw new IOException(e.toString());
+			throw new IOException(e.getMessage());
 		}
 		writer.close();
 	}
 	
+	// --------------------------
+	// SAX handler interface methods:
+	
+	public void startElement(String uri, String localname, String qName, Attributes attributes) throws SAXException {
+		// Clear the buffer for character data; we'll initialize it
+		// if and when character data arrives -- at that point we
+		// have a length.
+		buffer = null;
+		try {
+			if (qName.equals("mediawiki")) openMediaWiki();
+			else if (qName.equals("siteinfo")) openSiteinfo();
+			else if (qName.equals("namespaces")) openNamespaces();
+			else if (qName.equals("namespace")) openNamespace(attributes);
+			else if (qName.equals("page")) openPage();
+			else if (qName.equals("revision")) openRevision();
+			else if (qName.equals("contributor")) openContributor();
+		} catch (IOException e) {
+			throw new SAXException(e);
+		}
+	}
+	
+	public void characters(char[] ch, int start, int length) {
+		if (buffer == null)
+			buffer = new StringBuffer(length);
+		buffer.append(ch, start, length);
+	}
+	
+	public void endElement(String uri, String localname, String qName) throws SAXException {
+		try {
+			if (qName.equals("mediawiki")) closeMediaWiki();
+			else if (qName.equals("siteinfo")) closeSiteinfo();
+			else if (qName.equals("sitename")) readSitename();
+			else if (qName.equals("base")) readBase();
+			else if (qName.equals("generator")) readGenerator();
+			else if (qName.equals("case")) readCase();
+			else if (qName.equals("namespaces")) closeNamespaces();
+			else if (qName.equals("namespace")) closeNamespace();
+			else if (qName.equals("page")) closePage();
+			else if (qName.equals("title")) readTitle();
+			else if (qName.equals("id")) readId();
+			else if (qName.equals("restrictions")) readRestrictions();
+			else if (qName.equals("revision")) closeRevision();
+			else if (qName.equals("timestamp")) readTimestamp();
+			else if (qName.equals("contributor")) closeContributor();
+			else if (qName.equals("username")) readUsername();
+			else if (qName.equals("ip")) readIp();
+			else if (qName.equals("comment")) readComment();
+			else if (qName.equals("minor")) readMinor();
+			else if (qName.equals("text")) readText();
+		} catch (IOException e) {
+			throw new SAXException(e);
+		}
+	}
+
 	// ----------
 	
-	private void openMediaWiki() throws IOException {
+	void openMediaWiki() throws IOException {
 		siteinfo = null;
 		writer.writeStartWiki();
 	}
 	
-	private void closeMediaWiki() throws IOException {
+	void closeMediaWiki() throws IOException {
 		writer.writeEndWiki();
 		siteinfo = null;
 	}
 	
 	// ------------------
 		
-	private void openSiteinfo() {
+	void openSiteinfo() {
 		siteinfo = new Siteinfo();
 	}
 	
-	private void closeSiteinfo() throws IOException {
+	void closeSiteinfo() throws IOException {
 		writer.writeSiteinfo(siteinfo);
 	}
-	
-	private void readSitename() {
-		siteinfo.Sitename = buffer.toString();
+
+	private String bufferContents() {
+		return buffer == null ? "" : buffer.toString();
 	}
 	
-	private void readBase() {
-		siteinfo.Base = buffer.toString();
+	void readSitename() {
+		siteinfo.Sitename = bufferContents();
 	}
 	
-	private void readGenerator() {
-		siteinfo.Generator = buffer.toString();
+	void readBase() {
+		siteinfo.Base = bufferContents();
 	}
 	
-	private void readCase() {
-		siteinfo.Case = buffer.toString();
+	void readGenerator() {
+		siteinfo.Generator = bufferContents();
 	}
 	
-	private void openNamespaces() {
+	void readCase() {
+		siteinfo.Case = bufferContents();
+	}
+	
+	void openNamespaces() {
 		siteinfo.Namespaces = new NamespaceSet();
 	}
 	
-	private void openNamespace(Attributes attribs) {
+	void openNamespace(Attributes attribs) {
 		nskey = Integer.parseInt(attribs.getValue("key"));
 	}
 	
-	private void closeNamespace() {
-		siteinfo.Namespaces.add(nskey, buffer.toString());
+	void closeNamespace() {
+		siteinfo.Namespaces.add(nskey, bufferContents());
 	}
 
-	private void closeNamespaces() {
+	void closeNamespaces() {
 		// NOP
 	}
 	
 	// -----------
 	
-	private void openPage() {
+	void openPage() {
 		page = new Page();
 		pageSent = false;
 	}
 	
-	private void closePage() throws IOException {
+	void closePage() throws IOException {
 		if (pageSent)
 			writer.writeEndPage();
 		page = null;
 	}
 	
-	private void readTitle() {
-		page.Title = new Title(buffer.toString(), siteinfo.Namespaces);
+	void readTitle() {
+		page.Title = new Title(bufferContents(), siteinfo.Namespaces);
 	}
 	
-	private void readId() {
-		int id = Integer.parseInt(buffer.toString());
+	void readId() {
+		int id = Integer.parseInt(bufferContents());
 		if (contrib != null)
 			contrib.Id = id;
 		else if (rev != null)
@@ -205,13 +225,13 @@ public class XmlDumpReader {
 			throw new IllegalArgumentException("Unexpected <id> outside a <page>, <revision>, or <contributor>");
 	}
 	
-	private void readRestrictions() {
-		page.Restrictions = buffer.toString();
+	void readRestrictions() {
+		page.Restrictions = bufferContents();
 	}
 	
 	// ------
 	
-	private void openRevision() throws IOException {
+	void openRevision() throws IOException {
 		if (!pageSent) {
 			writer.writeStartPage(page);
 			pageSent = true;
@@ -220,33 +240,33 @@ public class XmlDumpReader {
 		rev = new Revision();
 	}
 	
-	private void closeRevision() throws IOException {
+	void closeRevision() throws IOException {
 		writer.writeRevision(rev);
 		rev = null;
 	}
 
-	private void readTimestamp() {
-		rev.Timestamp = parseUTCTimestamp(buffer.toString());
+	void readTimestamp() {
+		rev.Timestamp = parseUTCTimestamp(bufferContents());
 	}
 
-	private void readComment() {
-		rev.Comment = buffer.toString();
+	void readComment() {
+		rev.Comment = bufferContents();
 	}
 
-	private void readMinor() {
+	void readMinor() {
 		rev.Minor = true;
 	}
 
-	private void readText() {
-		rev.Text = buffer.toString();
+	void readText() {
+		rev.Text = bufferContents();
 	}
 	
 	// -----------
-	private void openContributor() {
+	void openContributor() {
 		contrib = null;
 	}
 	
-	private void closeContributor() {
+	void closeContributor() {
 		if (contrib == null)
 			throw new IllegalArgumentException("Invalid contributor");
 		
@@ -255,16 +275,16 @@ public class XmlDumpReader {
 	}
 
 
-	private void readUsername() {
-		contrib = new Contributor(buffer.toString());
+	void readUsername() {
+		contrib = new Contributor(bufferContents());
 	}
 	
-	private void readIp() {
-		contrib = new Contributor(buffer.toString());
+	void readIp() {
+		contrib = new Contributor(bufferContents());
 	}
 	
-	TimeZone utc = TimeZone.getTimeZone("UTC");
-	private Calendar parseUTCTimestamp(String text) {
+	private static final TimeZone utc = TimeZone.getTimeZone("UTC");
+	private static Calendar parseUTCTimestamp(String text) {
 		// 2003-10-26T04:50:47Z
 		// We're doing this manually for now, though DateFormatter might work...
 		String trimmed = text.trim();

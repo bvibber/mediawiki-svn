@@ -31,12 +31,17 @@ import java.util.GregorianCalendar;
 import java.util.Random;
 
 public class SqlWriter15 extends SqlWriter {
-	Random random = new Random();
-	Page currentPage;
-	Revision lastRevision;
+	private Random random = new Random();
+	private Page currentPage;
+	private Revision lastRevision;
 	
 	public SqlWriter15(SqlFileStream output) {
 		super(output);
+	}
+	
+	public void writeEndWiki() {
+		flushInsertBuffers();
+		super.writeEndWiki();
 	}
 	
 	public void writeStartPage(Page page) {
@@ -66,25 +71,45 @@ public class SqlWriter15 extends SqlWriter {
 				{"rev_user", new Integer(revision.Contributor.Id)},
 				{"rev_user_text", revision.Contributor.Username},
 				{"rev_timestamp", timestampFormat(revision.Timestamp)},
-				{"rev_minor_edit", new Integer(revision.Minor ? 1 : 0)},
-				{"rev_deleted", new Integer(0)}});
+				{"rev_minor_edit", revision.Minor ? ONE : ZERO},
+				{"rev_deleted", ZERO}});
 		
 		lastRevision = revision;
+	}
+	
+	private static int lengthUTF8(CharSequence s) {
+		final int slen = s.length();
+		int len = 0;
+		for (int i = 0; i < slen; i++) {
+			char c = s.charAt(i);
+			if (c < 0x80)
+				len++;
+			else if (c < 0x800)
+				len+=2;
+			else if (c < 0xD800 || c >= 0xE000)
+				len+=3;
+			else {
+				// Surrogate pairs are assumed to be valid.
+				len+=4;
+				i++;
+			}
+		}
+		return len;
 	}
 	
 	private void updatePage(Page page, Revision revision) {
 		bufferInsertRow("page", new Object[][] {
 				{"page_id", new Integer(page.Id)},
-				{"page_namespace", new Integer(page.Title.Namespace)},
+				{"page_namespace", page.Title.Namespace},
 				{"page_title", titleFormat(page.Title.Text)},
 				{"page_restrictions", page.Restrictions},
-				{"page_counter", new Integer(0)},
-				{"page_is_redirect", new Integer(revision.isRedirect() ? 1 : 0)},
-				{"page_is_new", new Integer(0)},
+				{"page_counter", ZERO},
+				{"page_is_redirect", revision.isRedirect() ? ONE : ZERO},
+				{"page_is_new", ZERO},
 				{"page_random", new Double(random.nextDouble())},
 				{"page_touched", timestampFormat(new GregorianCalendar())},
 				{"page_latest", new Integer(revision.Id)},
-				{"page_len", new Integer(revision.Text.length())}}); // TODO: UTF-8 byte length
+				{"page_len", new Integer(lengthUTF8(revision.Text))}});
 		checkpoint();
 	}
 

@@ -59,6 +59,8 @@
 
 package org.mediawiki.dumper;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -77,6 +79,9 @@ import org.mediawiki.importer.*;
 
 
 class Dumper {
+	private static final int IN_BUF_SZ = 1024 * 1024;
+	private static final int OUT_BUF_SZ = 1024 * 1024;
+	
 	public static void main(String[] args) throws IOException {
 		InputStream input = null;
 		OutputStream output = null;
@@ -100,14 +105,14 @@ class Dumper {
 					output = openOutputFile(val, param);
 				} else if (opt.equals("format")) {
 					if (output == null)
-						output = System.out;
+						output = new BufferedOutputStream(System.out, OUT_BUF_SZ);
 					if (sink != null)
 						throw new IllegalArgumentException("Only one format per output allowed.");
 					sink = openOutputSink(output, val, param);
 				} else if (opt.equals("filter")) {
 					if (sink == null) {
 						if (output == null)
-							output = System.out;
+							output = new BufferedOutputStream(System.out, OUT_BUF_SZ);
 						sink = new XmlDumpWriter(output);
 					}
 					sink = addFilter(sink, val, param);
@@ -121,7 +126,7 @@ class Dumper {
 			} else if (arg.equals("-")) {
 				if (input != null)
 					throw new IllegalArgumentException("Input already set; can't set to stdin");
-				input = System.in;
+				input = new BufferedInputStream(System.in, IN_BUF_SZ);
 			} else {
 				if (input != null)
 					throw new IllegalArgumentException("Input already set; can't set to " + arg);
@@ -130,9 +135,9 @@ class Dumper {
 		}
 		
 		if (input == null)
-			input = System.in;
+			input = new BufferedInputStream(System.in, IN_BUF_SZ);
 		if (output == null)
-			output = System.out;
+			output = new BufferedOutputStream(System.out, OUT_BUF_SZ);
 		// Finish stacking the last output sink
 		if (sink == null)
 			sink = new XmlDumpWriter(output);
@@ -172,7 +177,7 @@ class Dumper {
 	}
 	
 	static InputStream openInputFile(String arg) throws IOException {
-		InputStream infile = new FileInputStream(arg);
+		InputStream infile = new BufferedInputStream(new FileInputStream(arg), IN_BUF_SZ);
 		if (arg.endsWith(".gz"))
 			return new GZIPInputStream(infile);
 		else if (arg.endsWith(".bz2"))
@@ -191,7 +196,7 @@ class Dumper {
 	
 	static OutputStream openOutputFile(String dest, String param) throws IOException {
 		if (dest.equals("stdout"))
-			return System.out;
+			return new BufferedOutputStream(System.out, OUT_BUF_SZ);
 		else if (dest.equals("file"))
 			return createOutputFile(param);
 		else if (dest.equals("gzip"))
@@ -213,7 +218,7 @@ class Dumper {
 	private static OutputStream createOutputFile(String param) throws IOException, FileNotFoundException {
 		File file = new File(param);
 		file.createNewFile();
-		return new FileOutputStream(file);
+		return new BufferedOutputStream(new FileOutputStream(file), OUT_BUF_SZ);
 	}
 	
 	static DumpWriter openOutputSink(OutputStream output, String format, String param) throws IOException {

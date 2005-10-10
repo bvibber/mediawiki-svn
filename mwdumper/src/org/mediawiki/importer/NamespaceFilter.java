@@ -25,17 +25,17 @@
 
 package org.mediawiki.importer;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 
 public class NamespaceFilter extends PageFilter {
 	boolean invert;
-	Hashtable matches;
+	HashMap matches;
 	
 	public NamespaceFilter(DumpWriter sink, String configString) {
 		super(sink);
 		
 		invert = configString.startsWith("!");
-		matches = new Hashtable();
+		matches = new HashMap();
 		
 		String[] namespaceKeys = {
 			"NS_MAIN",
@@ -64,7 +64,7 @@ public class NamespaceFilter extends PageFilter {
 				matches.put(new Integer(key), trimmed);
 			} catch (NumberFormatException e) {
 				for (int key = 0; key < namespaceKeys.length; key++) {
-					if (trimmed == namespaceKeys[key])
+					if (trimmed.equalsIgnoreCase(namespaceKeys[key]))
 						matches.put(new Integer(key), trimmed);
 				}
 			}
@@ -72,6 +72,6 @@ public class NamespaceFilter extends PageFilter {
 	}
 	
 	protected boolean pass(Page page) {
-		return invert ^ matches.containsKey(new Integer(page.Title.Namespace));
+		return invert ^ matches.containsKey(page.Title.Namespace);
 	}
 }

@@ -28,13 +28,17 @@ package org.mediawiki.importer;
 import java.text.MessageFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Hashtable;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.TimeZone;
 
 
 public abstract class SqlWriter implements DumpWriter {
-	SqlFileStream stream;
+	private SqlFileStream stream;
+	
+	protected static final Integer ONE = new Integer(1);
+	protected static final Integer ZERO = new Integer(0);
 	
 	public SqlWriter(SqlFileStream output) {
 		stream = output;
@@ -63,9 +67,9 @@ public abstract class SqlWriter implements DumpWriter {
 		stream.writeComment("-- Case: " + commentSafe(info.Case));
 		stream.writeComment("--");
 		stream.writeComment("-- Namespaces:");
-		for (Iterator i = info.Namespaces.keys(); i.hasNext();) {
-			int key = ((Integer)i.next()).intValue();
-			stream.writeComment("-- " + key + ": " + info.Namespaces.getPrefix(key));
+		for (Iterator i = info.Namespaces.orderedEntries(); i.hasNext();) {
+			Map.Entry e = (Map.Entry)i.next();
+			stream.writeComment("-- " + e.getKey() + ": " + e.getValue());
 		}
 		stream.writeComment("");
 	}
@@ -83,8 +87,8 @@ public abstract class SqlWriter implements DumpWriter {
 		return text;
 	}
 	
-	Hashtable insertBuffers = new Hashtable();
-	int blockSize = 1024 * 512; // default 512k inserts
+	private HashMap insertBuffers = new HashMap();
+	private static final int blockSize = 1024 * 512; // default 512k inserts
 	protected void bufferInsertRow(String table, Object[][] row) {
 		StringBuffer sql = (StringBuffer)insertBuffers.get(table);
 		if (sql != null) {
@@ -96,9 +100,11 @@ public abstract class SqlWriter implements DumpWriter {
 				flushInsertBuffer(table);
 			}
 		}
-		sql = new StringBuffer();
+		sql = new StringBuffer(blockSize);
+		synchronized (sql) { //only for StringBuffer
 		appendInsertStatement(sql, table, row);
 		insertBuffers.put(table, sql);
+		}
 	}
 	
 	protected void flushInsertBuffer(String table) {
@@ -115,12 +121,12 @@ public abstract class SqlWriter implements DumpWriter {
 	}
 	
 	protected void insertRow(String table, Object[][] row) {
-		StringBuffer sql = new StringBuffer();
+		StringBuffer sql = new StringBuffer(65536);
 		appendInsertStatement(sql, table, row);		
 		stream.writeStatement(sql);
 	}
 	
-	private void appendInsertStatement(StringBuffer sql, String table, Object[][] row) {
+	private static void appendInsertStatement(StringBuffer sql, String table, Object[][] row) {
 		sql.append("INSERT INTO ");
 		//sql.append(tablePrefix);
 		sql.append(table);
@@ -136,7 +142,7 @@ public abstract class SqlWriter implements DumpWriter {
 		appendInsertValues(sql, row);
 	}
 	
-	private void appendInsertValues(StringBuffer sql, Object[][] row) {
+	private static void appendInsertValues(StringBuffer sql, Object[][] row) {
 		sql.append('(');
 		for (int i = 0; i < row.length; i++) {
 			Object val = row[i][1];
@@ -148,8 +154,8 @@ public abstract class SqlWriter implements DumpWriter {
 	}
 	
 	protected void updateRow(String table, Object[][] row, String keyField, Object keyValue) {
-		StringBuffer sql = new StringBuffer();
-		
+		StringBuffer sql = new StringBuffer(65536);
+		synchronized (sql) { //only for StringBuffer
 		sql.append("UPDATE ");
 		//sql.append(tablePrefix);
 		sql.append(table);
@@ -171,9 +177,10 @@ public abstract class SqlWriter implements DumpWriter {
 		sql.append(sqlSafe(keyValue));
 		
 		stream.writeStatement(sql);
+		}
 	}
 	
-	protected String sqlSafe(Object val) {
+	protected static String sqlSafe(Object val) {
 		if (val == null)
 			return "NULL";
 		
@@ -189,24 +196,27 @@ public abstract class SqlWriter implements DumpWriter {
 		}
 	}
 	
-	protected String sqlEscape(String str) {
-		StringBuffer sql = new StringBuffer();
+	protected static String sqlEscape(String str) {
+		if (str.length() == 0)
+			return "''"; //TODO "NULL",too ?
+		final int len = str.length();
+		StringBuffer sql = new StringBuffer(len * 2);
+		synchronized (sql) { //only for StringBuffer
 		sql.append('\'');
-		int len = str.length();
 		for (int i = 0; i < len; i++) {
 			char c = str.charAt(i);
 			switch (c) {
 			case '\u0000':
-				sql.append("\\0");
+				sql.append('\\').append('0');
 				break;
 			case '\n':
-				sql.append("\\n");
+				sql.append('\\').append('n');
 				break;
 			case '\r':
-				sql.append("\\r");
+				sql.append('\\').append('r');
 				break;
 			case '\u001a':
-				sql.append("\\Z");
+				sql.append('\\').append('Z');
 				break;
 			case '"':
 			case '\'':
@@ -220,16 +230,17 @@ public abstract class SqlWriter implements DumpWriter {
 		}
 		sql.append('\'');
 		return sql.toString();
+		}
 	}
 	
-	protected String titleFormat(String title) {
+	protected static String titleFormat(String title) {
 		return title.replace(' ', '_');
 	}
 	
-	final MessageFormat timestampFormatter = new MessageFormat(
+	private static final MessageFormat timestampFormatter = new MessageFormat(
 			"{0,number,0000}{1,number,00}{2,number,00}{3,number,00}{4,number,00}{5,number,00}");
 	
-	protected String timestampFormat(Calendar time) {
+	protected static String timestampFormat(Calendar time) {
 		return timestampFormatter.format(new Object[] {
 				new Integer(time.get(Calendar.YEAR)),
 				new Integer(time.get(Calendar.MONTH) + 1),
@@ -239,7 +250,7 @@ public abstract class SqlWriter implements DumpWriter {
 				new Integer(time.get(Calendar.SECOND))});
 	}
 	
-	protected String inverseTimestamp(Calendar time) {
+	protected static String inverseTimestamp(Calendar time) {
 		return timestampFormatter.format(new Object[] {
 				new Integer(9999 - time.get(Calendar.YEAR)),
 				new Integer(99 - time.get(Calendar.MONTH) - 1),
@@ -249,8 +260,8 @@ public abstract class SqlWriter implements DumpWriter {
 				new Integer(99 - time.get(Calendar.SECOND))});
 	}
 
-	TimeZone utc = TimeZone.getTimeZone("UTC");
-	protected GregorianCalendar now() {
+	private static final TimeZone utc = TimeZone.getTimeZone("UTC");
+	protected static GregorianCalendar now() {
 		return new GregorianCalendar(utc);
 	}
 

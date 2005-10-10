@@ -26,12 +26,12 @@
 package org.mediawiki.importer;
 
 public class Title {
-	public int Namespace;
+	public Integer Namespace;
 	public String Text;
 	
 	private NamespaceSet namespaces;
 	
-	public Title(int namespaceKey, String text, NamespaceSet namespaces) {
+	public Title(Integer namespaceKey, String text, NamespaceSet namespaces) {
 		this.namespaces = namespaces;
 		Namespace = namespaceKey;
 		Text = text;
@@ -48,7 +48,7 @@ public class Title {
 				return;
 			}
 		}
-		Namespace = 0;
+		Namespace = new Integer(0);
 		Text = prefixedTitle;
 	}
 	
@@ -58,15 +58,18 @@ public class Title {
 	}
 	
 	public String toString() {
-		return namespaces.getColonPrefix(Namespace) + Text;
+		String prefix = namespaces.getPrefix(Namespace);
+		if (Namespace.intValue() == 0)
+			return prefix.concat(Text);
+		return prefix + ':' + Text;
 	}
 	
 	public boolean isSpecial() {
-		return (Namespace < 0);
+		return Namespace.intValue() < 0;
 	}
 	
 	public boolean isTalk() {
-		return !isSpecial() && (Namespace % 2 == 1);
+		return !isSpecial() && (Namespace.intValue() % 2 == 1);
 	}
 	
 	public Title talkPage() {
@@ -75,21 +78,28 @@ public class Title {
 		else if (isSpecial())
 			return null;
 		else
-			return new Title(Namespace + 1, Text, namespaces);
+			return new Title(new Integer(Namespace.intValue() + 1), Text, namespaces);
 	}
 	
 	public Title subjectPage() {
 		if (isTalk())
-			return new Title(Namespace - 1, Text, namespaces);
+			return new Title(new Integer(Namespace.intValue() - 1), Text, namespaces);
 		else
 			return this;
 	}
 	
+	public int hashCode() {
+		return Namespace.hashCode() ^ Text.hashCode();
+	}
+	
 	public boolean equals(Object other) {
-		if (other instanceof Title)
-			return (Namespace == ((Title)other).Namespace) &&
-				(Text.equals(((Title)other).Text));
-		else
-			return false;
+		if (other == this)
+			return true;
+		if (other instanceof Title) {
+			Title ot = (Title)other;
+			return Namespace.equals(ot.Namespace) &&
+				Text.equals(ot.Text);
+		}
+		return false;
 	}
 }

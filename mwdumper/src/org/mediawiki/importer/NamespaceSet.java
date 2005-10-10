@@ -25,52 +25,53 @@
 
 package org.mediawiki.importer;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Iterator;
 
 public class NamespaceSet {
-	ArrayList order;
-	Hashtable byname;
-	Hashtable bynumber;
+	Map byname;
+	Map bynumber;
 	
 	public NamespaceSet() {
-		order = new ArrayList();
-		byname = new Hashtable();
-		bynumber = new Hashtable();
+		byname = new HashMap();
+		bynumber = new LinkedHashMap();
 	}
 	
 	public void add(int index, String prefix) {
-		order.add(new Integer(index));
-		byname.put(prefix, new Integer(index));
-		bynumber.put(new Integer(index), prefix);
+		add(new Integer(index), prefix);
+	}
+	
+	public void add(Integer index, String prefix) {
+		byname.put(prefix, index);
+		bynumber.put(index, prefix);
 	}
 	
 	public boolean hasPrefix(String prefix) {
 		return byname.containsKey(prefix);
 	}
 	
-	public boolean hasIndex(int index) {
-		return bynumber.containsKey(new Integer(index));
+	public boolean hasIndex(Integer index) {
+		return bynumber.containsKey(index);
 	}
 	
-	public String getPrefix(int index) {
-		return (String)bynumber.get(new Integer(index));
+	public String getPrefix(Integer index) {
+		return (String)bynumber.get(index);
 	}
 	
-	public int getIndex(String prefix) {
-		return ((Integer)byname.get(prefix)).intValue();
+	public Integer getIndex(String prefix) {
+		return (Integer)byname.get(prefix);
 	}
 	
-	public String getColonPrefix(int index) {
+	public String getColonPrefix(Integer index) {
 		String prefix = getPrefix(index);
-		if (index != 0)
-			return prefix + ":";
-		else
-			return prefix;
+		if (index.intValue() != 0)
+			return prefix.concat(":");
+		return prefix;
 	}
 	
-	public Iterator keys() {
-		return order.listIterator();
+	public Iterator orderedEntries() {
+		return bynumber.entrySet().iterator();
 	}
 }

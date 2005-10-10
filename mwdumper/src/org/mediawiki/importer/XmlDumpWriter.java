@@ -31,21 +31,24 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.TimeZone;
 
 public class XmlDumpWriter implements DumpWriter {
 	protected OutputStream stream;
 	protected XmlWriter writer;
 	
-	protected final String version = "0.3";
-	protected final String ns = "http://www.mediawiki.org/xml/export-" + version + "/";
-	protected final String schema = "http://www.mediawiki.org/xml/export-" + version + ".xsd";
-	protected final DateFormat dateFormat = new SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'");
+	protected static final String version = "0.3";
+	protected static final String ns = "http://www.mediawiki.org/xml/export-" + version + "/";
+	protected static final String schema = "http://www.mediawiki.org/xml/export-" + version + ".xsd";
+	protected static final DateFormat dateFormat = new SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'");
+	static {
+		dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+	}
 	
 	public XmlDumpWriter(OutputStream output) throws IOException {
 		stream = output;
 		writer = new XmlWriter(stream);
-		dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 	}
 	
 	public void close() throws IOException {
@@ -69,6 +72,7 @@ public class XmlDumpWriter implements DumpWriter {
 	}
 	
 	public void writeSiteinfo(Siteinfo info) throws IOException {
+		XmlWriter writer = this.writer;
 		writer.openElement("siteinfo");
 		writer.textElement("sitename", info.Sitename);
 		writer.textElement("base", info.Base);
@@ -76,11 +80,10 @@ public class XmlDumpWriter implements DumpWriter {
 		writer.textElement("case", info.Case);
 		
 		writer.openElement("namespaces");
-		for (Iterator i = info.Namespaces.keys(); i.hasNext();) {
-			int key = ((Integer)i.next()).intValue();
-			String name = info.Namespaces.getPrefix(key);
-			writer.textElement("namespace", name, new String[][] {
-					{"key", Integer.toString(key)}});
+		for (Iterator i = info.Namespaces.orderedEntries(); i.hasNext();) {
+			Map.Entry e = (Map.Entry)i.next();
+			writer.textElement("namespace", e.getValue().toString(), new String[][] {
+					{"key", e.getKey().toString()}});
 		}
 		writer.closeElement();
 		
@@ -88,11 +91,12 @@ public class XmlDumpWriter implements DumpWriter {
 	}
 	
 	public void writeStartPage(Page page) throws IOException {
+		XmlWriter writer = this.writer;
 		writer.openElement("page");
 		writer.textElement("title", page.Title.toString());
 		if (page.Id != 0)
 			writer.textElement("id", Integer.toString(page.Id));
-		if (page.Restrictions != "")
+		if (page.Restrictions != null && page.Restrictions.length() != 0)
 			writer.textElement("restrictions", page.Restrictions);
 	}
 	
@@ -101,6 +105,7 @@ public class XmlDumpWriter implements DumpWriter {
 	}
 	
 	public void writeRevision(Revision rev) throws IOException {
+		XmlWriter writer = this.writer;
 		writer.openElement("revision");
 		if (rev.Id != 0)
 			writer.textElement("id", Integer.toString(rev.Id));
@@ -113,7 +118,7 @@ public class XmlDumpWriter implements DumpWriter {
 			writer.emptyElement("minor");
 		}
 		
-		if (rev.Comment != "")
+		if (rev.Comment != null && rev.Comment.length() != 0)
 			writer.textElement("comment", rev.Comment);
 		
 		writer.textElement("text", rev.Text, new String[][] {
@@ -122,11 +127,12 @@ public class XmlDumpWriter implements DumpWriter {
 		writer.closeElement();
 	}
 	
-	String formatTimestamp(Calendar ts) {
+	static String formatTimestamp(Calendar ts) {
 		return dateFormat.format(ts.getTime());
 	}
 	
 	void writeContributor(Contributor contrib) throws IOException {
+		XmlWriter writer = this.writer;
 		writer.openElement("contributor");
 		if (contrib.isAnon()) {
 			writer.textElement("ip", contrib.Username);

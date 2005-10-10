@@ -27,7 +27,6 @@ package org.mediawiki.dumper;
 
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.Date;
 
 import org.mediawiki.importer.DumpWriter;
 import org.mediawiki.importer.Page;
@@ -39,13 +38,13 @@ public class ProgressFilter extends PageFilter {
 	int revisions = 0;
 	int interval = 1000;
 	MessageFormat format = new MessageFormat("{0} pages ({1}/sec), {2} revs ({3}/sec)");
-	long start = new Date().getTime();
+	long start = System.currentTimeMillis();
 	
 	public ProgressFilter(DumpWriter sink, int interval) {
 		super(sink);
 		this.interval = interval;
 		if (interval <= 0)
-			throw new IllegalArgumentException("Reportint interval must be positive.");
+			throw new IllegalArgumentException("Reporting interval must be positive.");
 	}
 	
 	public void writeStartPage(Page page) throws IOException {
@@ -76,7 +75,7 @@ public class ProgressFilter extends PageFilter {
 	}
 	
 	private void showProgress() {
-		long delta = new Date().getTime() - start;
+		long delta = System.currentTimeMillis() - start;
 		System.err.println(format.format(new Object[] {
 			new Integer(pages),
 			rate(delta, pages),
@@ -84,8 +83,8 @@ public class ProgressFilter extends PageFilter {
 			rate(delta, revisions)}));
 	}
 
-	private Object rate(long delta, int count) {
-		return (delta > 0)
+	private static Object rate(long delta, int count) {
+		return (delta > 0.001)
 			? (Object)new Double(1000.0 * (double)count / (double)delta)
 			: (Object)"-";
 	}

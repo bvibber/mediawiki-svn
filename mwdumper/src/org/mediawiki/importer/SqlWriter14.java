@@ -29,9 +29,9 @@ import java.util.Random;
 
 
 public class SqlWriter14 extends SqlWriter {
-	Random random;
-	Page currentPage;
-	Revision lastRevision;
+	private Random random;
+	private Page currentPage;
+	private Revision lastRevision;
 	
 	public SqlWriter14(SqlFileStream output) {
 		super(output);
@@ -59,14 +59,14 @@ public class SqlWriter14 extends SqlWriter {
 	private void writeOldRevision(Page page, Revision revision) {
 		bufferInsertRow("old", new Object[][] {
 				{"old_id", new Integer(revision.Id)},
-				{"old_namespace", new Integer(page.Title.Namespace)},
+				{"old_namespace", page.Title.Namespace},
 				{"old_title", titleFormat(page.Title.Text)},
 				{"old_text", revision.Text},
 				{"old_comment", revision.Comment},
 				{"old_user", new Integer(revision.Contributor.Id)},
 				{"old_user_text", revision.Contributor.Username},
 				{"old_timestamp", timestampFormat(revision.Timestamp)},
-				{"old_minor_edit", new Integer(revision.Minor ? 1 : 0)},
+				{"old_minor_edit", revision.Minor ? ONE : ZERO},
 				{"old_flags", "utf-8"},
 				{"inverse_timestamp", inverseTimestamp(revision.Timestamp)}});
 	}
@@ -74,7 +74,7 @@ public class SqlWriter14 extends SqlWriter {
 	private void writeCurRevision(Page page, Revision revision) {
 		bufferInsertRow("cur", new Object[][] {
 				{"cur_id", new Integer(page.Id)},
-				{"cur_namespace", new Integer(page.Title.Namespace)},
+				{"cur_namespace", page.Title.Namespace},
 				{"cur_title", titleFormat(page.Title.Text)},
 				{"cur_text", revision.Text},
 				{"cur_comment", revision.Comment},
@@ -82,9 +82,9 @@ public class SqlWriter14 extends SqlWriter {
 				{"cur_user_text", revision.Contributor.Username},
 				{"cur_timestamp", timestampFormat(revision.Timestamp)},
 				{"cur_restrictions", page.Restrictions},
-				{"cur_counter", new Integer(0)},
-				{"cur_is_redirect", new Integer(revision.isRedirect() ? 1 : 0)},
-				{"cur_minor_edit", new Integer(revision.Minor ? 1 : 0)},
+				{"cur_counter", ZERO},
+				{"cur_is_redirect", revision.isRedirect() ? ONE : ZERO},
+				{"cur_minor_edit", revision.Minor ? ONE : ZERO},
 				{"cur_random", new Double(random.nextDouble())},
 				{"cur_touched", timestampFormat(now())},
 				{"inverse_timestamp", inverseTimestamp(revision.Timestamp)}});

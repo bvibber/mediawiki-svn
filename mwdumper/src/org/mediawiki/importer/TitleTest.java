@@ -90,7 +90,7 @@ public class TitleTest extends TestCase {
 	 */
 	public void testTitleIntStringNamespaceSet() {
 		for (int i = 0; i < tests.length; i++) {
-			Title title = new Title(tests[i].ns, tests[i].text, namespaces);
+			Title title = new Title(new Integer(tests[i].ns), tests[i].text, namespaces);
 			assertEquals(tests[i].toString(), tests[i].prefixed, title.toString());
 		}
 	}
@@ -101,7 +101,7 @@ public class TitleTest extends TestCase {
 	public void testTitleStringNamespaceSet() {
 		for (int i = 0; i < tests.length; i++) {
 			Title title = new Title(tests[i].prefixed, namespaces);
-			assertEquals(tests[i].toString(), tests[i].ns, title.Namespace);
+			assertEquals(tests[i].toString(), tests[i].ns, title.Namespace.intValue());
 			assertEquals(tests[i].toString(), tests[i].text, title.Text);
 		}
 	}
