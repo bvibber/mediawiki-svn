@@ -76,11 +76,15 @@ public class ProgressFilter extends PageFilter {
 	
 	private void showProgress() {
 		long delta = System.currentTimeMillis() - start;
-		System.err.println(format.format(new Object[] {
+		sendOutput(format.format(new Object[] {
 			new Integer(pages),
 			rate(delta, pages),
 			new Integer(revisions),
 			rate(delta, revisions)}));
+	}
+	
+	protected void sendOutput(String text) {
+		System.err.println(text);		
 	}
 
 	private static Object rate(long delta, int count) {

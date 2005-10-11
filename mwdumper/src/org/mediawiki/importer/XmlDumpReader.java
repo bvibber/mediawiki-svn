@@ -93,13 +93,15 @@ public class XmlDumpReader  extends DefaultHandler {
 		// have a length.
 		buffer = null;
 		try {
-			if (qName.equals("mediawiki")) openMediaWiki();
+			// frequent tags:
+			if (qName.equals("revision")) openRevision();
+			else if (qName.equals("contributor")) openContributor();
+			else if (qName.equals("page")) openPage();
+			// rare tags:
+			else if (qName.equals("mediawiki")) openMediaWiki();
 			else if (qName.equals("siteinfo")) openSiteinfo();
 			else if (qName.equals("namespaces")) openNamespaces();
 			else if (qName.equals("namespace")) openNamespace(attributes);
-			else if (qName.equals("page")) openPage();
-			else if (qName.equals("revision")) openRevision();
-			else if (qName.equals("contributor")) openContributor();
 		} catch (IOException e) {
 			throw new SAXException(e);
 		}
@@ -113,7 +115,21 @@ public class XmlDumpReader  extends DefaultHandler {
 	
 	public void endElement(String uri, String localname, String qName) throws SAXException {
 		try {
-			if (qName.equals("mediawiki")) closeMediaWiki();
+			// frequent tags:
+			if (qName.equals("id")) readId();
+			else if (qName.equals("revision")) closeRevision();
+			else if (qName.equals("timestamp")) readTimestamp();
+			else if (qName.equals("text")) readText();
+			else if (qName.equals("contributor")) closeContributor();
+			else if (qName.equals("username")) readUsername();
+			else if (qName.equals("ip")) readIp();
+			else if (qName.equals("comment")) readComment();
+			else if (qName.equals("minor")) readMinor();
+			else if (qName.equals("page")) closePage();
+			else if (qName.equals("title")) readTitle();
+			else if (qName.equals("restrictions")) readRestrictions();
+			// rare tags:
+			else if (qName.equals("mediawiki")) closeMediaWiki();
 			else if (qName.equals("siteinfo")) closeSiteinfo();
 			else if (qName.equals("sitename")) readSitename();
 			else if (qName.equals("base")) readBase();
@@ -121,18 +137,6 @@ public class XmlDumpReader  extends DefaultHandler {
 			else if (qName.equals("case")) readCase();
 			else if (qName.equals("namespaces")) closeNamespaces();
 			else if (qName.equals("namespace")) closeNamespace();
-			else if (qName.equals("page")) closePage();
-			else if (qName.equals("title")) readTitle();
-			else if (qName.equals("id")) readId();
-			else if (qName.equals("restrictions")) readRestrictions();
-			else if (qName.equals("revision")) closeRevision();
-			else if (qName.equals("timestamp")) readTimestamp();
-			else if (qName.equals("contributor")) closeContributor();
-			else if (qName.equals("username")) readUsername();
-			else if (qName.equals("ip")) readIp();
-			else if (qName.equals("comment")) readComment();
-			else if (qName.equals("minor")) readMinor();
-			else if (qName.equals("text")) readText();
 		} catch (IOException e) {
 			throw new SAXException(e);
 		}
