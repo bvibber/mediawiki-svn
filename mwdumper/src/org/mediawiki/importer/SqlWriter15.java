@@ -27,6 +27,7 @@
 
 package org.mediawiki.importer;
 
+import java.io.IOException;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
@@ -35,11 +36,11 @@ public class SqlWriter15 extends SqlWriter {
 	private Page currentPage;
 	private Revision lastRevision;
 	
-	public SqlWriter15(SqlFileStream output) {
+	public SqlWriter15(SqlStream output) {
 		super(output);
 	}
 	
-	public void writeEndWiki() {
+	public void writeEndWiki() throws IOException {
 		flushInsertBuffers();
 		super.writeEndWiki();
 	}
@@ -49,7 +50,7 @@ public class SqlWriter15 extends SqlWriter {
 		lastRevision = null;
 	}
 	
-	public void writeEndPage() {
+	public void writeEndPage() throws IOException {
 		if (lastRevision != null) {
 			updatePage(currentPage, lastRevision);
 		}
@@ -57,7 +58,7 @@ public class SqlWriter15 extends SqlWriter {
 		lastRevision = null;
 	}
 	
-	public void writeRevision(Revision revision) {
+	public void writeRevision(Revision revision) throws IOException {
 		bufferInsertRow("text", new Object[][] {
 				{"old_id", new Integer(revision.Id)},
 				{"old_text", revision.Text},
@@ -77,7 +78,7 @@ public class SqlWriter15 extends SqlWriter {
 		lastRevision = revision;
 	}
 	
-	private static int lengthUTF8(CharSequence s) {
+	private static int lengthUtf8(CharSequence s) {
 		final int slen = s.length();
 		int len = 0;
 		for (int i = 0; i < slen; i++) {
@@ -97,7 +98,7 @@ public class SqlWriter15 extends SqlWriter {
 		return len;
 	}
 	
-	private void updatePage(Page page, Revision revision) {
+	private void updatePage(Page page, Revision revision) throws IOException {
 		bufferInsertRow("page", new Object[][] {
 				{"page_id", new Integer(page.Id)},
 				{"page_namespace", page.Title.Namespace},
@@ -109,7 +110,7 @@ public class SqlWriter15 extends SqlWriter {
 				{"page_random", new Double(random.nextDouble())},
 				{"page_touched", timestampFormat(new GregorianCalendar())},
 				{"page_latest", new Integer(revision.Id)},
-				{"page_len", new Integer(lengthUTF8(revision.Text))}});
+				{"page_len", new Integer(lengthUtf8(revision.Text))}});
 		checkpoint();
 	}
 

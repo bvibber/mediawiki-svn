@@ -25,6 +25,7 @@
 
 package org.mediawiki.importer;
 
+import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -35,31 +36,31 @@ import java.util.TimeZone;
 
 
 public abstract class SqlWriter implements DumpWriter {
-	private SqlFileStream stream;
+	private SqlStream stream;
 	
 	protected static final Integer ONE = new Integer(1);
 	protected static final Integer ZERO = new Integer(0);
 	
-	public SqlWriter(SqlFileStream output) {
+	public SqlWriter(SqlStream output) {
 		stream = output;
 	}
 	
-	public void close() {
+	public void close() throws IOException {
 		stream.close();
 	}
 	
-	public void writeStartWiki() {
+	public void writeStartWiki() throws IOException {
 		stream.writeComment("-- MediaWiki XML dump converted to SQL by mwdumper");
 		stream.writeStatement("BEGIN");
 	}
 	
-	public void writeEndWiki() {
+	public void writeEndWiki() throws IOException {
 		flushInsertBuffers();
 		stream.writeStatement("COMMIT");
 		stream.writeComment("-- DONE");
 	}
 	
-	public void writeSiteinfo(Siteinfo info) {
+	public void writeSiteinfo(Siteinfo info) throws IOException {
 		stream.writeComment("");
 		stream.writeComment("-- Site: " + commentSafe(info.Sitename));
 		stream.writeComment("-- URL: " + commentSafe(info.Base));
@@ -74,11 +75,11 @@ public abstract class SqlWriter implements DumpWriter {
 		stream.writeComment("");
 	}
 	
-	public abstract void writeStartPage(Page page);
+	public abstract void writeStartPage(Page page) throws IOException;
 	
-	public abstract void writeEndPage();
+	public abstract void writeEndPage() throws IOException;
 	
-	public abstract void writeRevision(Revision revision);
+	public abstract void writeRevision(Revision revision) throws IOException;
 	
 	
 	
@@ -89,7 +90,7 @@ public abstract class SqlWriter implements DumpWriter {
 	
 	private HashMap insertBuffers = new HashMap();
 	private static final int blockSize = 1024 * 512; // default 512k inserts
-	protected void bufferInsertRow(String table, Object[][] row) {
+	protected void bufferInsertRow(String table, Object[][] row) throws IOException {
 		StringBuffer sql = (StringBuffer)insertBuffers.get(table);
 		if (sql != null) {
 			if (sql.length() < blockSize) {
@@ -102,17 +103,17 @@ public abstract class SqlWriter implements DumpWriter {
 		}
 		sql = new StringBuffer(blockSize);
 		synchronized (sql) { //only for StringBuffer
-		appendInsertStatement(sql, table, row);
-		insertBuffers.put(table, sql);
+			appendInsertStatement(sql, table, row);
+			insertBuffers.put(table, sql);
 		}
 	}
 	
-	protected void flushInsertBuffer(String table) {
+	protected void flushInsertBuffer(String table) throws IOException {
 		stream.writeStatement((CharSequence)insertBuffers.get(table));
 		insertBuffers.remove(table);
 	}
 	
-	protected void flushInsertBuffers() {
+	protected void flushInsertBuffers() throws IOException {
 		Iterator iter = insertBuffers.values().iterator();
 		while (iter.hasNext()) {
 			stream.writeStatement((CharSequence)iter.next());
@@ -120,7 +121,7 @@ public abstract class SqlWriter implements DumpWriter {
 		insertBuffers.clear();
 	}
 	
-	protected void insertRow(String table, Object[][] row) {
+	protected void insertRow(String table, Object[][] row) throws IOException {
 		StringBuffer sql = new StringBuffer(65536);
 		appendInsertStatement(sql, table, row);		
 		stream.writeStatement(sql);
@@ -153,7 +154,7 @@ public abstract class SqlWriter implements DumpWriter {
 		sql.append(')');
 	}
 	
-	protected void updateRow(String table, Object[][] row, String keyField, Object keyValue) {
+	protected void updateRow(String table, Object[][] row, String keyField, Object keyValue) throws IOException {
 		StringBuffer sql = new StringBuffer(65536);
 		synchronized (sql) { //only for StringBuffer
 		sql.append("UPDATE ");
@@ -267,7 +268,7 @@ public abstract class SqlWriter implements DumpWriter {
 
 	int commitInterval = 1000; // Commit a transaction every n pages
 	int pageCount = 0;
-	protected void checkpoint() {
+	protected void checkpoint() throws IOException {
 		pageCount++;
 		if (pageCount % commitInterval == 0) {
 			flushInsertBuffers();

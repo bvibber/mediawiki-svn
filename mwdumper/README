@@ -69,15 +69,23 @@ Output sinks:
       Write compressed output to a file.
   --output=bzip2:<filename.xml.bz2>
       Write compressed output to a file.
+  --output=mysql:<jdbc url>
+      Valid only for SQL format output; opens a connection to the
+      MySQL server and sends commands to it directly.
+      This will look something like:
+      mysql://localhost/databasename?user=<username>&password=<password>
 
 Output formats:
   --format=xml
       Output back to MediaWiki's XML export format; use this for
       filtering dumps for limited import. Output should be idempotent.
   --format=sql:1.4
-      Not well, may not work correctly.
+      SQL statements formatted for bulk import in MediaWiki 1.4's schema.
   --format=sql:1.5
-      Probably doesn't work quite right yet.
+      SQL statements formatted for bulk import in MediaWiki 1.5's schema.
+      Both SQL schema versions currently require that the table structure
+      be already set up in an empty database; use maintenance/tables.sql
+      from the MediaWiki distribution.
 
 Filter actions:
   --filter=latest
@@ -125,10 +133,8 @@ To speed up importing into a database, you might try:
 TODO:
 * Add some more junit tests
 
-* Double-check that XML output is correct
-* Test 1.4-schema SQL output
-* Finish and test 1.5-schema SQL output
-* Add direct-to-MySQL output as well as SQL file
+* Include table initialization in SQL output
+* Allow use of table prefixes in SQL output
 
 * Ensure that titles and other bits are validated correctly.
 * Test XML input for robustness
@@ -141,6 +147,7 @@ TODO:
 
 
 Change history (abbreviated):
+2005-10-11: SQL direct connection, GUI work begins
 2005-10-10: Applied speedup patches from Folke Behrens
 2005-10-05: Use bulk inserts in SQL mode
 2005-09-29: Converted from C# to Java

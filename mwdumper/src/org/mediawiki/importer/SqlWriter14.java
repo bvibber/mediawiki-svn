@@ -25,6 +25,7 @@
 
 package org.mediawiki.importer;
 
+import java.io.IOException;
 import java.util.Random;
 
 
@@ -33,7 +34,7 @@ public class SqlWriter14 extends SqlWriter {
 	private Page currentPage;
 	private Revision lastRevision;
 	
-	public SqlWriter14(SqlFileStream output) {
+	public SqlWriter14(SqlStream output) {
 		super(output);
 		random = new Random();
 	}
@@ -43,20 +44,20 @@ public class SqlWriter14 extends SqlWriter {
 		lastRevision = null;
 	}
 	
-	public void writeEndPage() {
+	public void writeEndPage() throws IOException {
 		if (lastRevision != null)
 			writeCurRevision(currentPage, lastRevision);
 		currentPage = null;
 		lastRevision = null;
 	}
 	
-	public void writeRevision(Revision revision) {
+	public void writeRevision(Revision revision) throws IOException {
 		if (lastRevision != null)
 			writeOldRevision(currentPage, lastRevision);
 		lastRevision = revision;
 	}
 	
-	private void writeOldRevision(Page page, Revision revision) {
+	private void writeOldRevision(Page page, Revision revision) throws IOException {
 		bufferInsertRow("old", new Object[][] {
 				{"old_id", new Integer(revision.Id)},
 				{"old_namespace", page.Title.Namespace},
@@ -71,7 +72,7 @@ public class SqlWriter14 extends SqlWriter {
 				{"inverse_timestamp", inverseTimestamp(revision.Timestamp)}});
 	}
 	
-	private void writeCurRevision(Page page, Revision revision) {
+	private void writeCurRevision(Page page, Revision revision) throws IOException {
 		bufferInsertRow("cur", new Object[][] {
 				{"cur_id", new Integer(page.Id)},
 				{"cur_namespace", page.Title.Namespace},

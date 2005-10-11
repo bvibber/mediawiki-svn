@@ -69,6 +69,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -84,7 +86,7 @@ class Dumper {
 	
 	public static void main(String[] args) throws IOException {
 		InputStream input = null;
-		OutputStream output = null;
+		OutputWrapper output = null;
 		DumpWriter sink = null;
 		MultiWriter writers = new MultiWriter();
 		int progressInterval = 1000;
@@ -98,22 +100,22 @@ class Dumper {
 					if (output != null) {
 						// Finish constructing the previous output...
 						if (sink == null)
-							sink = new XmlDumpWriter(output);
+							sink = new XmlDumpWriter(output.getFileStream());
 						writers.add(sink);
 						sink = null;
 					}
 					output = openOutputFile(val, param);
 				} else if (opt.equals("format")) {
 					if (output == null)
-						output = new BufferedOutputStream(System.out, OUT_BUF_SZ);
+						output = openStandardOutput();
 					if (sink != null)
 						throw new IllegalArgumentException("Only one format per output allowed.");
 					sink = openOutputSink(output, val, param);
 				} else if (opt.equals("filter")) {
 					if (sink == null) {
 						if (output == null)
-							output = new BufferedOutputStream(System.out, OUT_BUF_SZ);
-						sink = new XmlDumpWriter(output);
+							output = openStandardOutput();
+						sink = new XmlDumpWriter(output.getFileStream());
 					}
 					sink = addFilter(sink, val, param);
 				} else if (opt.equals("progress")) {
@@ -137,10 +139,10 @@ class Dumper {
 		if (input == null)
 			input = new BufferedInputStream(System.in, IN_BUF_SZ);
 		if (output == null)
-			output = new BufferedOutputStream(System.out, OUT_BUF_SZ);
+			output = openStandardOutput();
 		// Finish stacking the last output sink
 		if (sink == null)
-			sink = new XmlDumpWriter(output);
+			sink = new XmlDumpWriter(output.getFileStream());
 		writers.add(sink);
 		
 		DumpWriter outputSink = (progressInterval > 0)
@@ -150,7 +152,7 @@ class Dumper {
 		XmlDumpReader reader = new XmlDumpReader(input, outputSink);
 		reader.readDump();
 	}
-	
+
 	/**
 	 * @param arg string in format "--option=value:parameter"
 	 * @return array of option, value, and parameter, or null if no match
@@ -176,7 +178,9 @@ class Dumper {
 		return new String[] {opt, val, param};
 	}
 	
-	static InputStream openInputFile(String arg) throws IOException {
+	// ----------------
+	
+	private static InputStream openInputFile(String arg) throws IOException {
 		InputStream infile = new BufferedInputStream(new FileInputStream(arg), IN_BUF_SZ);
 		if (arg.endsWith(".gz"))
 			return new GZIPInputStream(infile);
@@ -194,19 +198,56 @@ class Dumper {
 		return new CBZip2InputStream(infile);
 	}
 	
-	static OutputStream openOutputFile(String dest, String param) throws IOException {
+	// ----------------
+	
+	private static class OutputWrapper {
+		private OutputStream fileStream = null;
+		private Connection sqlConnection = null;
+		
+		OutputWrapper(OutputStream aFileStream) {
+			fileStream = aFileStream;
+		}
+		
+		OutputWrapper(Connection anSqlConnection) {
+			sqlConnection= anSqlConnection;
+		}
+		
+		OutputStream getFileStream() {
+			if (fileStream != null)
+				return fileStream;
+			if (sqlConnection != null)
+				throw new IllegalArgumentException("Expected file stream, got SQL connection?");
+			throw new IllegalArgumentException("Have neither file nor SQL connection. Very confused!");
+		}
+		
+		SqlStream getSqlStream() {
+			if (fileStream != null)
+				return new SqlFileStream(fileStream);
+			if (sqlConnection != null)
+				return new SqlServerStream(sqlConnection);
+			throw new IllegalArgumentException("Have neither file nor SQL connection. Very confused!");
+		}
+	}
+	
+	static OutputWrapper openOutputFile(String dest, String param) throws IOException {
 		if (dest.equals("stdout"))
-			return new BufferedOutputStream(System.out, OUT_BUF_SZ);
+			return openStandardOutput();
 		else if (dest.equals("file"))
-			return createOutputFile(param);
+			return new OutputWrapper(createOutputFile(param));
 		else if (dest.equals("gzip"))
-			return new GZIPOutputStream(createOutputFile(param));
+			return new OutputWrapper(new GZIPOutputStream(createOutputFile(param)));
 		else if (dest.equals("bzip2"))
-			return createBZip2File(param);
+			return new OutputWrapper(createBZip2File(param));
+		else if (dest.equals("mysql"))
+			return connectMySql(param);
 		else
 			throw new IllegalArgumentException("Destination sink not implemented: " + dest);
 	}
 
+	private static OutputWrapper openStandardOutput() {
+		return new OutputWrapper(new BufferedOutputStream(System.out, OUT_BUF_SZ));
+	}
+	
 	private static OutputStream createBZip2File(String param) throws IOException, FileNotFoundException {
 		OutputStream outfile = createOutputFile(param);
 		// bzip2 expects a two-byte 'BZ' signature header
@@ -221,11 +262,22 @@ class Dumper {
 		return new BufferedOutputStream(new FileOutputStream(file), OUT_BUF_SZ);
 	}
 	
-	static DumpWriter openOutputSink(OutputStream output, String format, String param) throws IOException {
+	private static OutputWrapper connectMySql(String param) throws IOException {
+        try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection conn = DriverManager.getConnection("jdbc:mysql:" + param);
+			return new OutputWrapper(conn);
+		} catch (Exception e) {
+			//e.printStackTrace();
+			throw new IOException(e.getMessage());
+		}
+	}
+	
+	static DumpWriter openOutputSink(OutputWrapper output, String format, String param) throws IOException {
 		if (format.equals("xml"))
-			return new XmlDumpWriter(output);
+			return new XmlDumpWriter(output.getFileStream());
 		else if (format.equals("sql")) {
-			SqlFileStream sqlStream = new SqlFileStream(output);
+			SqlStream sqlStream = output.getSqlStream();
 			if (param.equals("1.4"))
 				return new SqlWriter14(sqlStream);
 			else if (param.equals("1.5"))
@@ -235,6 +287,8 @@ class Dumper {
 		} else
 			throw new IllegalArgumentException("Output format not known: " + format);
 	}
+	
+	// ----------------
 	
 	static DumpWriter addFilter(DumpWriter sink, String filter, String param) throws IOException {
 		if (filter.equals("latest"))
