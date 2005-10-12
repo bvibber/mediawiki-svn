@@ -73,6 +73,9 @@ function wfSpecialCrossNamespaceLinks() {
 			// templates that indicate that there's something wrong
 			// with the article link to the talk page.
 			NS_TALK,
+			// Templates like the stub template link to the
+			// project namespace
+			NS_PROJECT,
 			NS_TEMPLATE,
 			NS_CATEGORY
 		);
