@@ -95,10 +95,10 @@ function wfSpecialCrossNamespaceLinks() {
 					COUNT(*) as namespace,
 					page_title as title,
 					pl_namespace as value
-				FROM $page
-				LEFT JOIN $pagelinks ON page_id = pl_from
+				FROM $pagelinks
+				LEFT JOIN $page ON page_id = pl_from
 				WHERE page_is_redirect = 0 AND page_namespace = " . NS_MAIN . " AND pl_namespace NOT IN ($namespaces)
-				GROUP BY page_title
+				GROUP BY page_id
 				";
 		}
 
