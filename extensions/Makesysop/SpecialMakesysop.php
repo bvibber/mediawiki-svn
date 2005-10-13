@@ -251,7 +251,7 @@ class MakesysopStewardForm extends UserrightsForm {
 		$titleObj = Title::makeTitle( NS_SPECIAL, 'Makesysop' );
 		$this->action = $titleObj->escapeLocalURL();
 		
-		$this->db =& wfGetDB( DB_MASTER );
+		$this->db = null;
 	}
 
 	function saveUserGroups( $username, $removegroup, $addgroup) {
@@ -262,6 +262,7 @@ class MakesysopStewardForm extends UserrightsForm {
 		}
 		
 		list( $database, $name ) = $split;
+		$this->db =& $this->getDB( $database );
 		$userid = $this->getUserId( $database, $name );
 
 		if( $userid == 0) {
@@ -312,6 +313,7 @@ class MakesysopStewardForm extends UserrightsForm {
 		}
 		
 		list( $database, $name ) = $split;
+		$this->db =& $this->getDB( $database );
 		$userid = $this->getUserId( $database, $name );
 
 		if( $userid == 0) {
@@ -359,26 +361,34 @@ class MakesysopStewardForm extends UserrightsForm {
 			: new WikiError( 'Bogus database suffix "' . wfEscapeWikiText( $database ) . '"' );
 	}
 	
-	function tableName( $database, $base ) {
-		global $wgSharedDB;
-		return ( $database == '' || ( $base == 'user' && $wgSharedDB ) )
-			? $base
-			: "`{$database}`." . $this->db->tableName( $base );
+	/**
+	 * Open a database connection to work on for the requested user.
+	 * This may be a new connection to another database for remote users.
+	 * @param string $database
+	 * @return Database
+	 */
+	function &getDB( $database ) {
+		global $wgDBname;
+		if( $database == '' ) {
+			$db =& wfGetDB( DB_MASTER );
+		} else {
+			global $wgDBserver, $wgDBuser, $wgDBpassword;
+			$db =& new Database( $wgDBserver, $wgDBuser, $wgDBpassword, $database );
+		}
+		return $db;
 	}
 	
 	function getUserId( $database, $name ) {
-		$table = $this->tableName( $database, 'user' );
 		return ( $name{0} == "#" )
 			? IntVal( substr( $name, 1 ) )
-			: IntVal( $this->db->selectField( $table,
+			: IntVal( $this->db->selectField( 'user',
 				'user_id',
 				array( 'user_name' => $name ),
 				'MakesysopStewardForm::getUserId' ) );
 	}
 	
 	function getUserGroups( $database, $userid ) {
-		$table = $this->tableName( $database, 'user_groups' );
-		$res = $this->db->select( $table,
+		$res = $this->db->select( 'user_groups',
 			array( 'ug_group' ),
 			array( 'ug_user' => $userid ),
 			'MakesysopStewardForm::getUserGroups' );
@@ -390,8 +400,7 @@ class MakesysopStewardForm extends UserrightsForm {
 	}
 	
 	function addUserGroup( $database, $userid, $group ) {
-		$table = $this->tableName( $database, 'user_groups' );
-		$this->db->insert( $table,
+		$this->db->insert( 'user_groups',
 			array(
 				'ug_user' => $userid,
 				'ug_group' => $group,
@@ -401,8 +410,7 @@ class MakesysopStewardForm extends UserrightsForm {
 	}
 	
 	function removeUserGroup( $database, $userid, $group ) {
-		$table = $this->tableName( $database, 'user_groups' );
-		$this->db->delete( $table,
+		$this->db->delete( 'user_groups',
 			array(
 				'ug_user' => $userid,
 				'ug_group' => $group,
@@ -411,8 +419,7 @@ class MakesysopStewardForm extends UserrightsForm {
 	}
 	
 	function touchUser( $database, $userid ) {
-		$table = $this->tableName( $database, 'user' );
-		$this->db->update( $table,
+		$this->db->update( 'user',
 			array( 'user_touched' => $this->db->timestamp() ),
 			array( 'user_id' => $userid ),
 			'MakesysopStewardForm::touchUser' );
