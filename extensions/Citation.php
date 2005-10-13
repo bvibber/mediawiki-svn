@@ -32,13 +32,13 @@ function citation_hooker ( $parser , $text ) {
 	$text .= $ret ;
 }
 
-function parse_citation ( $text ) {
+function parse_citation ( $text , $params , $parser ) {
 	global $wgCitationRunning ;
 	if ( $wgCitationRunning ) return ;
 	$ret = "" ;
 	$attheend = false ;
 	$res = array () ;
-	$order = "" ;
+	$res2 = array () ;
 	$href = "" ;
 	$a = explode ( "||" , $text ) ;
 	
@@ -49,26 +49,31 @@ function parse_citation ( $text ) {
 		$value = array_shift ( $data ) ;
 		
 		// Parsed now : "$key" = "$value"
-		if ( $key == "attheend" ) $attheend = true ;
-		else if ( $key == "order" ) $order = $value ;
+		if ( substr ( $value , 0 , 3 ) == "{{{" ) {} // Unset variable, ignore 
+		else if ( $key == "attheend" ) $attheend = true ;
 		else if ( $key == "href" ) $href = $value ;
-		else if ( $value != "" ) $res[$key] = $value ;
+		else if ( $value != "" ) {
+			$x = array ( "key" => $key , "value" => $value ) ;
+			$res[] = $x ;
+			$res2[$key] = $value ;
+		}
 	}
 	
-	if ( $order == "" ) { # No order given, just use the one used
-		$order = array_keys ( $res ) ;
-	} else { # Special order
-		$order = explode ( "," , $order ) ;
+	// Creating output string
+	foreach ( $res AS $item ) {
+		$key = $item["key"] ;
+		$value = $item["value"] ;
+		$key2 = urldecode ( $key ) ;
+		if ( strtolower ( substr ( $key2 , 0 , 3 ) ) == "if:" ) {
+			$key2 = trim ( substr ( $key2 , 3 ) ) ;
+			$key = urlencode ( $key2 ) ;
+		}
+		if ( isset ( $res2[$key] ) ) $ret .= $value ;
 	}
-	
-	foreach ( $order AS $item ) {
-		if ( !isset ( $res[$item] ) ) continue ;
-		$ret .= $res[$item] ;
-	}
-	
+
 	if ( $href != "" ) $ret .= " [{$href}]" ;
 	
-
+	// Adding to footer list or showing inline
 	global $wgTitle , $wgOut ;
 	$p = new Parser ;
 	$wgCitationRunning = true ;
