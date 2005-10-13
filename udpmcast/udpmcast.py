@@ -6,7 +6,7 @@
 #
 # $Id$
 
-import socket, getopt, sys, os, signal
+import socket, getopt, sys, os, signal, pwd, grp
 
 debugging = False
 
@@ -127,6 +127,8 @@ def print_help():
     print '\t-d\tFork into the background (become a daemon)'
     print '\t-p {portnr}\tUDP port number to listen on (default is 4827)'
     print '\t-j {multicast address}\tMulticast group to join on startup'
+    print '\t-u {username}Change uid'
+    print '\t-g {group}Change group'
     print '\t-v\tBe more verbose'
 
 if __name__ == '__main__':
@@ -134,7 +136,8 @@ if __name__ == '__main__':
     portnr = 4827
     multicast_group = None
     daemon = False
-    opts = 'dhj:p:v'
+    user = group = None
+    opts = 'dhj:p:vu:g:'
 
     # Parse options
     options, arguments = getopt.getopt(sys.argv[1:], opts)
@@ -152,10 +155,22 @@ if __name__ == '__main__':
                 sys.exit()
             elif option == '-d':
                 daemon = True
+            elif option == '-u':
+                user = value
+            elif option == '-g':
+                group = value
             elif option == '-v':
                 debugging = True
 
     try:
+        # Change uid and gid
+        try:
+            if group: os.setgid(grp.getgrnam(group).gr_gid)
+            if user: os.setuid(pwd.getpwnam(user).pw_uid)
+        except:
+            print "Error: Could not change uid or gid."
+            sys.exit(-1)
+
         # Become a daemon
         if daemon:
             createDaemon()
