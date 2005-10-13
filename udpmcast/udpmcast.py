@@ -118,6 +118,9 @@ def join_multicast_group(sock, multicast_group):
                     socket.IP_ADD_MEMBERSHIP,
                     ip_mreq)
 
+    # We do not want to see our own messages back
+    sock.setsockopts(socket.IPPROTO_IP, socket.IP_MULTICAST_LOOP, 0)
+
 def print_help():
     print 'Usage:\n\tudpmcast [ options ] { addresses | forward rules }\n'
     print 'Options:'
