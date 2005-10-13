@@ -89,12 +89,18 @@ def debug(msg):
     if debugging:
         print msg;
 
-def multicast_diagrams(sock, addresses):
+def multicast_diagrams(sock, addrrules):
     portnr = sock.getsockname()[1];
 
     while 1:
-        diagram = sock.recv(2**14)
+        diagram, srcaddr = sock.recvfrom(2**14)
         if not diagram: break
+
+        try:
+            addresses = addrrules[srcaddr[0]]
+        except KeyError:
+            addresses = addrrules[0]
+
         for addr in addresses:
             try:
                 sock.sendto(diagram, 0, (addr, portnr))
@@ -113,7 +119,7 @@ def join_multicast_group(sock, multicast_group):
                     ip_mreq)
 
 def print_help():
-    print 'Usage:\n\tudpmcast [ options ] { addresses }\n'
+    print 'Usage:\n\tudpmcast [ options ] { addresses | forward rules }\n'
     print 'Options:'
     print '\t-d\tFork into the background (become a daemon)'
     print '\t-p {portnr}\tUDP port number to listen on (default is 4827)'
@@ -160,8 +166,20 @@ if __name__ == '__main__':
             debug('Joining multicast group ' + multicast_group)
             join_multicast_group(sock, multicast_group)
 
+        # Parse the argument list
+        addrrules = { 0: [] }
+        for argument in arguments:
+            if argument[0] == '{':
+                # Forward rule
+                addrrules.update(eval(argument))
+            else:
+                # Default forward
+                addrrules[0].append(argument)
+
+        debug('Forward rules: ' + str(addrrules))
+
         # Multiplex everything that comes in
-        multicast_diagrams(sock, arguments)
+        multicast_diagrams(sock, addrrules)
     except socket.error, msg:
         print msg[1];
     except KeyboardInterrupt:
