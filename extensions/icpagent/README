@@ -7,6 +7,7 @@ Options:
 -d      - daemonize
 -m      - enable remote management
 -p #    - port number to listen at
+-h ip   - IP to bind at 
 -t #    - static delay time in milliseconds, defaults to 5.0
 	  use negative number to send icp misses only
           supports 0.1ms adjustments by varying the response times over ten
