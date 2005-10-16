@@ -217,7 +217,8 @@ main(int ac, char **av)
         switch (c) {
             case 'h':
                 /* IP to bind at */
-                printf("AAA: %d\n",inet_aton(optarg,&me.sin_addr));
+                inet_aton(optarg,&me.sin_addr);
+                break;
             case 'p':
                 /* Port to bind at */
                 port=atoi(optarg);
