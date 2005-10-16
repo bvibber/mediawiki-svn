@@ -63,6 +63,8 @@ long		 pagesize, npages;
 		output_end();
 		return 0;
 	}
+	if (!strlen(query))
+		query = "/";
 	output_start();
 	i = sysinfo(SI_HW_PROVIDER, hw_provider, sizeof (hw_provider));
 	/*
@@ -109,6 +111,9 @@ long		 pagesize, npages;
 		output_end();
 		return 0;
 	}
+	printf("<h2><tt>");
+	safeprint(query);
+	printf("</tt></h2>");
 	printf("<ul>");
 	prtnode(dinode, 1);
 	printf("</ul>");
