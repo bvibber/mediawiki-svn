@@ -210,9 +210,14 @@ main(int ac, char **av)
     int maincount = 0, step = 0, stepsum = 0;
     struct rlimit rlim;
 
+    bzero(&me, sizeof(me));
+
     /* Work with command line options */
-    while ((c = getopt(ac,av,"dmr:t:p:cn:")) != -1) {
+    while ((c = getopt(ac,av,"dmr:t:p:h:cn:")) != -1) {
         switch (c) {
+            case 'h':
+                /* IP to bind at */
+                printf("AAA: %d\n",inet_aton(optarg,&me.sin_addr));
             case 'p':
                 /* Port to bind at */
                 port=atoi(optarg);
@@ -256,7 +261,6 @@ main(int ac, char **av)
 
     /* Initialize server socket */
     s = socket(PF_INET, SOCK_DGRAM, 0);
-    bzero(&me, sizeof(me));
     me.sin_family = AF_INET;
     me.sin_port = htons(port);
 
