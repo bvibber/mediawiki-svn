@@ -40,6 +40,7 @@ function wfSpecialCrossNamespaceLinks() {
 		function CrossNamespaceLinks() {
 			$this->name( 'CrossNamespaceLinks' );
 			$this->file( __FILE__ );
+			$this->listed( true );
 		}
 
 		/**
@@ -84,6 +85,18 @@ function wfSpecialCrossNamespaceLinks() {
 		function isExpensive() { return true; }
 		function isSyndicated() { return false; }
 		
+		/**
+		 * Note: NS_SPECIAL and NS_MEDIA are not on our namespace
+		 * whitelist so articles linking to them will be reported,
+		 * however, when using the querycache the namespace will be
+		 * inserted into qc_value which is defined as unsigned, so <0
+		 * will be truncated to 0 so it will appear that these pages
+		 * link to the main namespace when they do infact link to
+		 * either NS_SPECIAL or NS_MEDIA, I figured it was better to
+		 * report that there was something wrong with the article so
+		 * that it could be fixed rather than put these two on the
+		 * whitelist.
+		 */
 		function getSQL() {
 			$dbr =& wfGetDB( DB_SLAVE );
 			extract( $dbr->tableNames( 'page', 'pagelinks' ) );
