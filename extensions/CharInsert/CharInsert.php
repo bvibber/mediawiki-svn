@@ -57,7 +57,7 @@ function charInsertLine( $data ) {
 function charInsertItem( $data ) {
 	$chars = array_map( 'charInsertCleanChar', explode( '+', $data ) );
 	if( count( $chars ) > 1 ) {
-		return charInsertChar( $chars[0], $chars[1], 'CLick the character while selecting a text' );
+		return charInsertChar( $chars[0], $chars[1], 'Click the character while selecting a text' );
 	} elseif( count( $chars ) == 1 ) {
 		return charInsertChar( $chars[0] );
 	} else {
@@ -90,7 +90,7 @@ function charInsertChar( $start, $end = '', $title = null ) {
 	} else {
 		$extra = '';
 	}
-	return "<a href=\"javascript:insertTags('$estart','$eend','')\">$inline</a>";
+	return "<a href=\"javascript:insertTags('$estart','$eend','')\">$inline</a>\n";
 }
 
 function charInsertJsString( $text ) {
