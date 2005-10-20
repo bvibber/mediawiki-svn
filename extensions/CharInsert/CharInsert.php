@@ -90,7 +90,7 @@ function charInsertChar( $start, $end = '', $title = null ) {
 	} else {
 		$extra = '';
 	}
-	return "<a href=\"javascript:insertTags('$estart','$eend','')\">$inline</a>\n";
+	return "<a href=\"javascript:insertTags('$estart','$eend','')\">$inline</a>";
 }
 
 function charInsertJsString( $text ) {
