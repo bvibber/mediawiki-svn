@@ -439,7 +439,7 @@ $wgOut->addHTML('<!-- titlens = '. $wgTitle->getNamespace() . '-->');
 		$ret = $searchField /*. $searchButton*/;
                 return
 		  '<form id="search" method="get" '
-                  . "action=\"$action\"><input type='hidden' name='title' value='Special:Search'>\n<div>{$ret}</div>\n</form>\n";
+                  . "action=\"$action\"><input type='hidden' name='title' value='Special:Search' />\n<div>{$ret}</div>\n</form>\n";
 	}
 
 	function showFullDialog($term) {
@@ -457,7 +457,7 @@ $wgOut->addHTML('<!-- titlens = '. $wgTitle->getNamespace() . '-->');
 		}
 
 		$searchField = "<input type='text' name=\"search\" value=\"" .
-					   htmlspecialchars($term) ."\" width=\"80\" />\n";
+					   htmlspecialchars($term) ."\" size=\"16\" />\n";
 
 		$searchButton = '<input type="submit" name="fulltext" value="' .
 						htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
