@@ -42,17 +42,17 @@ $wgLuceneDisableSuggestions = false;
 $wgLuceneDisableTitleMatches = false;
 
 # Not a valid entry point, skip unless MEDIAWIKI is defined
-require_once("SearchEngine.php");
-require_once("Article.php");
+require_once('SearchEngine.php');
+require_once('Article.php');
 
 if (defined('MEDIAWIKI')) {
-$wgExtensionFunctions[] = "wfLuceneSearch";
+$wgExtensionFunctions[] = 'wfLuceneSearch';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'LuceneSearch',
 	'author' => array( 'Brion Vibber' )
 );
 
-if (class_exists("Revision"))
+if (class_exists('Revision'))
 	$wgLSuseold = false;
 else
 	$wgLSuseold = true;
@@ -62,24 +62,24 @@ define('LS_PER_PAGE', 10);
 function wfLuceneSearch() {
 
 global $IP;
-require_once("$IP/includes/SpecialPage.php");
+require_once( $IP.'/includes/SpecialPage.php');
 
 class LuceneSearch extends SpecialPage
 {
 	var $namespaces;
 
 	function LuceneSearch() {
-		SpecialPage::SpecialPage("Search");
+		SpecialPage::SpecialPage('Search');
 	}
 
 	function makelink($term, $offset, $limit) {
 		global $wgRequest, $wgScript;
-		$link = "$wgScript?title=Special:Search&amp;search=".
-			urlencode($term)."&amp;fulltext=Search";
+		$link = $wgScript.'?title=Special:Search&amp;search='.
+			urlencode($term).'&amp;fulltext=Search';
 		foreach(SearchEngine::searchableNamespaces() as $ns => $name)
-			if ($wgRequest->getCheck("ns" . $ns))
-				$link .= "&amp;ns".$ns."=1";
-		$link .= "&amp;offset=$offset&amp;limit=$limit";
+			if ($wgRequest->getCheck('ns' . $ns))
+				$link .= '&amp;ns'.$ns.'=1';
+		$link .= '&amp;offset='.$offset.'&amp;limit='.$limit;
 		return $link;
 	}
 
@@ -115,10 +115,10 @@ class LuceneSearch extends SpecialPage
 		$fname = 'LuceneSearch::execute';
 		wfProfileIn( $fname );
 		$this->setHeaders();
-$wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
+$wgOut->addHTML('<!-- titlens = '. $wgTitle->getNamespace() . '-->');
 
 		foreach(SearchEngine::searchableNamespaces() as $ns => $name)
-			if ($wgRequest->getCheck("ns" . $ns))
+			if ($wgRequest->getCheck('ns' . $ns))
 				$this->namespaces[] = $ns;
 
 		if (count($this->namespaces) == 0) {
@@ -137,9 +137,9 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 			}
 		}
 
-		$bits = split("/", $wgRequest->getVal("title"), 2);
+		$bits = split('/', $wgRequest->getVal('title'), 2);
 		if(!empty($bits[1]))
-			$q = str_replace("_", " ", $bits[1]);
+			$q = str_replace('_', ' ', $bits[1]);
 		else
 			$q = $wgRequest->getText('search');
 		list( $limit, $offset ) = $wgRequest->getLimitOffset( LS_PER_PAGE, 'searchlimit' );
@@ -154,10 +154,10 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 		if (!$wgLuceneDisableSuggestions)
 			$wgOut->addHTML($this->makeSuggestJS());
 		$wgOut->addLink(array(
-			"rel" => "stylesheet",
-			"type" => "text/css",
-			"media" => "screen,projection",
-			"href" => $wgScriptPath . '/extensions/lucenesearch.css'
+			'rel' => 'stylesheet',
+			'type' => 'text/css',
+			'media' => 'screen,projection',
+			'href' => $wgScriptPath . '/extensions/lucenesearch.css'
 			)
 		);
 
@@ -176,7 +176,7 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 
 			# No match, generate an edit URL
 			$t = Title::newFromText($q);
-			if(!$wgRequest->getText("go") || is_null($t)) {
+			if(!$wgRequest->getText('go') || is_null($t)) {
 				$editurl = ''; # hrm...
 			} else {
 				wfRunHooks( 'SpecialSearchNogomatch', array( &$t ) );
@@ -185,7 +185,7 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 					$wgOut->redirect($t->getFullURL('action=edit'));
 					return;
 				}
-                		$wgOut->addWikiText( wfMsg('nogomatch', ":" . $t->getPrefixedText() ) );
+                		$wgOut->addWikiText( wfMsg('nogomatch', ':' . $t->getPrefixedText() ) );
 			}
 
 			global $wgDisableTextSearch;
@@ -217,29 +217,29 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 			// match may be displayed as a suggested search. Link it.
 			if( $results->hasSuggestion() ) {
 				$suggestion = $results->getSuggestion();
-				$o = " " . wfMsg("searchdidyoumean",
+				$o = ' ' . wfMsg('searchdidyoumean',
 						$this->makeLink( $suggestion, $offset, $limit ),
 						htmlspecialchars( $suggestion ) );
-				$wgOut->addHTML( "<div style='text-align: center'>".$o."</div>" );
+				$wgOut->addHTML( '<div style="text-align: center;">'.$o.'</div>' );
 			}
 
-			$nmtext = "";
+			$nmtext = '';
 			if ($offset == 0 && !$wgLuceneDisableTitleMatches) {
 				$titles = LuceneSearchSet::newFromQuery( 'titlematch', $q, $this->namespaces, 5 );
 				if( $titles && $titles->hasResults() ) {
-					$nmtext = "<p>".wfMsg('searchnearmatches')."</p>";
-					$nmtext .= "<ul>";
+					$nmtext = '<p>'.wfMsg('searchnearmatches').'</p>';
+					$nmtext .= '<ul>';
 					$nmtext .= implode( "\n", $titles->iterateResults(
 						array( &$this, 'formatNearMatch' ) ) );
-					$nmtext .= "</ul>";
-					$nmtext .= "<hr/>";
+					$nmtext .= '</ul>';
+					$nmtext .= '<hr/>';
 				}
 			}
 
 			$wgOut->addHTML($nmtext);
 
 			if( !$results->hasResults() ) {
-				$o = wfMsg("searchnoresults");
+				$o = wfMsg('searchnoresults');
 				$wgOut->addHTML($o);
 			} else {
 				#$showresults = min($limit, count($results)-$numresults);
@@ -249,43 +249,43 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 					array_map( array( &$this, 'regexQuote' ),
 						$wgContLang->convertForSearchResult(split(" ", $resq))));
 
-				$top = wfMsg("searchnumber", $offset + 1,
+				$top = wfMsg('searchnumber', $offset + 1,
 					min($results->getTotalHits(), $offset+$limit), $results->getTotalHits());
 				$out = "<ul>";
 				$numchunks = ceil($results->getTotalHits() / $limit);
 				$whichchunk = $offset / $limit;
 				$prevnext = "";
 				if ($whichchunk > 0)
-					$prevnext .= "<a href=\"".
-						$this->makelink($q, $offset-$limit, $limit)."\">".
-						wfMsg("searchprev")."</a> ";
+					$prevnext .= '<a href="'.
+						$this->makelink($q, $offset-$limit, $limit).'">'.
+						wfMsg('searchprev').'</a> ';
 				$first = max($whichchunk - 11, 0);
 				$last = min($numchunks, $whichchunk + 11);
 				//$wgOut->addWikiText("whichchunk=$whichchunk numchunks=$numchunks first=$first last=$last num=".count($chunks)." limit=$limit offset=$offset results=".count($results)."\n\n");
 				if ($last - $first > 1) {
 					for($i = $first; $i < $last; $i++) {
 						if ($i === $whichchunk)
-							$prevnext .= "<strong>".($i+1)."</strong> ";
+							$prevnext .= '<strong>'.($i+1).'</strong> ';
 						else
-							$prevnext .= "<a href=\"".
+							$prevnext .= '<a href="'.
 								$this->makelink($q, $limit*$i,
-								$limit)."\">".($i+1)."</a> ";
+								$limit).'">'.($i+1).'</a> ';
 					}
 				}
 				if ($whichchunk < $last-1)
-					$prevnext .= "<a href=\"".
-						$this->makelink($q, $offset + $limit, $limit)."\">".
-						wfMsg("searchnext")."</a> ";
-				$prevnext = "<div style='text-align: center'>$prevnext</div>";
+					$prevnext .= '<a href="'.
+						$this->makelink($q, $offset + $limit, $limit).'">'.
+						wfMsg('searchnext').'</a> ';
+				$prevnext = '<div style="text-align: center;">'.$prevnext.'</div>';
 				$top .= $prevnext;
 				$out .= implode( "\n", $results->iterateResults(
 					array( &$this, 'showHit'), $contextWords ) );
-				$out .= "</ul>";
+				$out .= '</ul>';
 			}
-			$wgOut->addHTML("<hr/>");
+			$wgOut->addHTML('<hr/>');
 			if( isset( $top ) ) $wgOut->addHTML( $top );
 			if( isset( $out ) ) $wgOut->addHTML( $out );
-			if( isset( $prevnext ) ) $wgOut->addHTML("<hr/>" . $prevnext);
+			if( isset( $prevnext ) ) $wgOut->addHTML('<hr/>' . $prevnext);
 			$wgOut->addHTML($this->showFullDialog($q));
 		}
 		$wgOut->setRobotpolicy('noindex,nofollow');
@@ -317,7 +317,7 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 
 		if( $limit < 1 || $limit > 50 )
 			$limit = 20;
-		header("Content-Type: text/plain; charset=$wgInputEncoding");
+		header('Content-Type: text/plain; charset='.$wgInputEncoding);
 		if( strlen( $query ) < 1 ) {
 			return;
 		}
@@ -367,7 +367,7 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 		$lineno = 0;
 
 		$extract = '';
-		wfProfileIn("$fname-extract");
+		wfProfileIn($fname.'-extract');
 		foreach ($lines as $line) {
 			if (0 == $contextlines)
 				break;
@@ -391,14 +391,14 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 
 			$extract .= "<br /><small>{$line}</small>\n";
 		}
-		wfProfileOut("$fname-extract");
+		wfProfileOut($fname.'-extract');
 		wfProfileOut($fname);
 		$date = $wgContLang->timeanddate($rev->getTimestamp());
-		$percent = sprintf("%2.1f%%", $result->getScore() * 100);
-		$score = wfMsg("searchscore", $percent);
+		$percent = sprintf('%2.1f%%', $result->getScore() * 100);
+		$score = wfMsg('searchscore', $percent);
 		//$url = $t->getFullURL();
-		return "<li style='padding-bottom: 1em'>{$link}{$extract}<br/>"
-			."<span style='color: green; font-size: small'>"
+		return '<li style="padding-bottom: 1em;">'.$link.$extract.'<br/>'
+			.'<span style="color: green; font-size: small;">'
 			."$score - $size - $date</span></li>\n";
 	}
 
@@ -430,7 +430,7 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 			' onkeyup="resultType()" autocomplete="off" ';
 		$searchField = "<div><input type='text' id='lsearchbox' $onkeyup "
 			. "style='margin-left: 25%; width: 50%; ' value=\""
-			. htmlspecialchars($term) ."\""
+			. htmlspecialchars($term) . '"'
 			. " name=\"search\" />\n"
 			. "<span id='loadStatus'></span>"
 			. $searchButton
@@ -438,7 +438,7 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 
 		$ret = $searchField /*. $searchButton*/;
                 return
-		  "<form id=\"search\" method=\"get\" "
+		  '<form id="search" method="get" '
                   . "action=\"$action\"><input type='hidden' name='title' value='Special:Search'>\n<div>{$ret}</div>\n</form>\n";
 	}
 
@@ -447,32 +447,31 @@ $wgOut->addHTML("<!-- titlens = ". $wgTitle->getNamespace() . "-->");
 		$namespaces = '';
 		foreach(SearchEngine::searchableNamespaces() as $ns => $name) {
 			$checked = in_array($ns, $this->namespaces)
-				? ' checked="checked"'
-                                : '';
-                        $name = str_replace('_', ' ', $name);
-                        if('' == $name) {
-                                $name = wfMsg('blanknamespace');
-                        }
-                        $namespaces .= " <label><input type='checkbox' value=\"1\" name=\"" .
-                          "ns{$ns}\"{$checked} />{$name}</label>\n";
-                }
+			           ? ' checked="checked"' : '';
+			$name = str_replace('_', ' ', $name);
+			if('' == $name) {
+				$name = wfMsg('blanknamespace');
+			}
+			$namespaces .= " <label><input type='checkbox' value=\"1\" name=\"" .
+			               "ns{$ns}\"{$checked} />{$name}</label>\n";
+		}
 
-                $searchField = "<input type='text' name=\"search\" value=\"" .
-                        htmlspecialchars($term) ."\" width=\"80\" />\n";
+		$searchField = "<input type='text' name=\"search\" value=\"" .
+					   htmlspecialchars($term) ."\" width=\"80\" />\n";
 
-                $searchButton = '<input type="submit" name="fulltext" value="' .
-                  htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
+		$searchButton = '<input type="submit" name="fulltext" value="' .
+						htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
 
-				$redirect = ''; # What's this for?
-                $ret = wfMsg('lucenepowersearchtext',
-                        $namespaces, $redirect, $searchField,
-                        '', '', '', '', '', # Dummy placeholders
-                        $searchButton);
+		$redirect = ''; # What's this for?
+		$ret = wfMsg('lucenepowersearchtext',
+			$namespaces, $redirect, $searchField,
+			'', '', '', '', '', # Dummy placeholders
+			$searchButton);
 
-                $title = Title::makeTitle(NS_SPECIAL, 'Search');
-                $action = $title->escapeLocalURL();
-                return "<br /><br />\n<form id=\"powersearch\" method=\"get\" " .
-                  "action=\"$action\">\n{$ret}\n</form>\n";
+		$title = Title::makeTitle(NS_SPECIAL, 'Search');
+		$action = $title->escapeLocalURL();
+		return "<br /><br />\n<form id=\"powersearch\" method=\"get\" " .
+		"action=\"$action\">\n{$ret}\n</form>\n";
 	}
 
 	function makeSuggestJS() {
@@ -642,7 +641,7 @@ class LuceneSearchSet {
 
 		// Cache results for fifteen minutes; they'll be read again
 		// on reloads and paging.
-		$key = "$wgDBname:lucene:" . md5( $searchUrl );
+		$key = $wgDBname.':lucene:' . md5( $searchUrl );
 		$expiry = 60 * 15;
 		$resultSet = $wgMemc->get( $key );
 		if( is_object( $resultSet ) ) {
@@ -652,9 +651,9 @@ class LuceneSearchSet {
 		}
 
 		wfDebug( "Fetching search data from $searchUrl\n" );
-		wfProfileIn( "$fname-contact-$host" );
+		wfProfileIn( $fname.'-contact-'.$host );
 		$inputLines = explode( "\n", trim( wfGetHTTP( $searchUrl ) ) );
-		wfProfileOut( "$fname-contact-$host" );
+		wfProfileOut( $fname.'-contact-'.$host );
 		//$inputLines = @file( $searchUrl );
 
 		if( $inputLines === false || $inputLines === array('') ) {
@@ -687,7 +686,7 @@ class LuceneSearchSet {
 
 		$resultSet = new LuceneSearchSet( $resultLines, $totalHits, $suggestion );
 
-		wfDebug( "$fname: caching lucene results for key $key\n" );
+		wfDebug( $fname.": caching lucene results for key $key\n" );
 		$wgMemc->add( $key, $resultSet, $expiry );
 
 		wfProfileOut( $fname );
@@ -767,16 +766,16 @@ class LuceneSearchSet {
 
 global $wgMessageCache;
 SpecialPage::addPage(new LuceneSearch);
-$wgMessageCache->addMessage("searchnumber", "<strong>Results $1-$2 of $3</strong>");
-$wgMessageCache->addMessage("searchprev", "&#x00AB; <span style='font-size: small'>Prev</span>");
-$wgMessageCache->addMessage("searchnext", "<span style='font-size: small'>Next</span> &#x00BB;");
-$wgMessageCache->addMessage("searchscore", "Relevancy: $1");
-$wgMessageCache->addMessage("searchsize", "$1KB ($2 words)");
-$wgMessageCache->addMessage("searchdidyoumean", "Did you mean: \"<a href=\"$1\">$2</a>\"?");
-$wgMessageCache->addMessage("searchnoresults", "Sorry, there were no exact matches to your query.");
-$wgMessageCache->addMessage("searchnearmatches", "<b>These pages have similar titles to your query:</b>\n");
-$wgMessageCache->addMessage("searchnearmatch", "<li>$1</li>\n");
-$wgMessageCache->addMessage("lucenepowersearchtext", "
+$wgMessageCache->addMessage('searchnumber', "<strong>Results $1-$2 of $3</strong>");
+$wgMessageCache->addMessage('searchprev', "&#x00AB; <span style='font-size: small'>Prev</span>");
+$wgMessageCache->addMessage('searchnext', "<span style='font-size: small'>Next</span> &#x00BB;");
+$wgMessageCache->addMessage('searchscore', "Relevancy: $1");
+$wgMessageCache->addMessage('searchsize', "$1KB ($2 words)");
+$wgMessageCache->addMessage('searchdidyoumean', "Did you mean: \"<a href=\"$1\">$2</a>\"?");
+$wgMessageCache->addMessage('searchnoresults', "Sorry, there were no exact matches to your query.");
+$wgMessageCache->addMessage('searchnearmatches', "<b>These pages have similar titles to your query:</b>\n");
+$wgMessageCache->addMessage('searchnearmatch', "<li>$1</li>\n");
+$wgMessageCache->addMessage('lucenepowersearchtext', "
 Search in namespaces:\n
 $1\n
 Search for $3 $9");
