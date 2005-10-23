@@ -198,40 +198,44 @@ public abstract class SqlWriter implements DumpWriter {
 	}
 	
 	protected static String sqlEscape(String str) {
-		if (str.length() == 0)
+		final int slen = str.length();
+		if (slen == 0)
 			return "''"; //TODO "NULL",too ?
-		final int len = str.length();
-		StringBuffer sql = new StringBuffer(len * 2);
-		synchronized (sql) { //only for StringBuffer
-		sql.append('\'');
-		for (int i = 0; i < len; i++) {
-			char c = str.charAt(i);
+		final char[] buf = Buffer.get(3 * slen + 2);
+		str.getChars(0, slen, buf, 0);
+		int len = slen;
+		buf[len++] = '\'';
+		for (int i = 0; i < slen; i++) {
+			char c = buf[i];
 			switch (c) {
 			case '\u0000':
-				sql.append('\\').append('0');
+				buf[len++] = '\\';
+				buf[len++] = '0';
 				break;
 			case '\n':
-				sql.append('\\').append('n');
+				buf[len++] = '\\';
+				buf[len++] = 'n';
 				break;
 			case '\r':
-				sql.append('\\').append('r');
+				buf[len++] = '\\';
+				buf[len++] = 'r';
 				break;
 			case '\u001a':
-				sql.append('\\').append('Z');
+				buf[len++] = '\\';
+				buf[len++] = 'Z';
 				break;
 			case '"':
 			case '\'':
 			case '\\':
-				sql.append('\\');
+				buf[len++] = '\\';
 				// fall through
 			default:
-				sql.append(c);
+				buf[len++] = c;
 				break;
 			}
 		}
-		sql.append('\'');
-		return sql.toString();
-		}
+		buf[len++] = '\'';
+		return new String(buf, slen, len - slen);
 	}
 	
 	protected static String titleFormat(String title) {

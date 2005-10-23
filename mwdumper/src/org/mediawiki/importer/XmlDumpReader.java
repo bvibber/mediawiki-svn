@@ -29,6 +29,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TimeZone;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -43,7 +45,8 @@ public class XmlDumpReader  extends DefaultHandler {
 	InputStream input;
 	DumpWriter writer;
 	
-	private StringBuffer buffer;
+	private char[] buffer;
+	private int len;
 	
 	Siteinfo siteinfo;
 	Page page;
@@ -62,6 +65,8 @@ public class XmlDumpReader  extends DefaultHandler {
 	public XmlDumpReader(InputStream inputStream, DumpWriter writer) {
 		input = inputStream;
 		this.writer = writer;
+		buffer = new char[4096];
+		len = 0;
 	}
 	
 	/**
@@ -87,56 +92,102 @@ public class XmlDumpReader  extends DefaultHandler {
 	// --------------------------
 	// SAX handler interface methods:
 	
+	private static final Map startElements = new HashMap(64);
+	private static final Map endElements = new HashMap(64);
+	static {
+		startElements.put("revision","revision");
+		startElements.put("contributor","contributor");
+		startElements.put("page","page");
+		startElements.put("mediawiki", "mediawiki");
+		startElements.put("siteinfo","siteinfo");
+		startElements.put("namespaces","namespaces");
+		startElements.put("namespace","namespace");
+
+		endElements.put("base","base");
+		endElements.put("case","case");
+		endElements.put("comment","comment");
+		endElements.put("contributor","contributor");
+		endElements.put("generator","generator");
+		endElements.put("id","id");
+		endElements.put("ip","ip");
+		endElements.put("mediawiki", "mediawiki");
+		endElements.put("minor","minor");
+		endElements.put("namespaces","namespaces");
+		endElements.put("namespace","namespace");
+		endElements.put("page","page");
+		endElements.put("restrictions","restrictions");
+		endElements.put("revision","revision");
+		endElements.put("siteinfo","siteinfo");
+		endElements.put("sitename","sitename");
+		endElements.put("text","text");
+		endElements.put("timestamp","timestamp");
+		endElements.put("title","title");
+		endElements.put("username","username");
+	}
+	
 	public void startElement(String uri, String localname, String qName, Attributes attributes) throws SAXException {
 		// Clear the buffer for character data; we'll initialize it
 		// if and when character data arrives -- at that point we
 		// have a length.
-		buffer = null;
+		len = 0;
 		try {
+			qName = (String)startElements.get(qName);
+			if (qName == null)
+				return;
 			// frequent tags:
-			if (qName.equals("revision")) openRevision();
-			else if (qName.equals("contributor")) openContributor();
-			else if (qName.equals("page")) openPage();
+			if (qName == "revision") openRevision();
+			else if (qName == "contributor") openContributor();
+			else if (qName == "page") openPage();
 			// rare tags:
-			else if (qName.equals("mediawiki")) openMediaWiki();
-			else if (qName.equals("siteinfo")) openSiteinfo();
-			else if (qName.equals("namespaces")) openNamespaces();
-			else if (qName.equals("namespace")) openNamespace(attributes);
+			else if (qName == "mediawiki") openMediaWiki();
+			else if (qName == "siteinfo") openSiteinfo();
+			else if (qName == "namespaces") openNamespaces();
+			else if (qName == "namespace") openNamespace(attributes);
 		} catch (IOException e) {
 			throw new SAXException(e);
 		}
 	}
 	
 	public void characters(char[] ch, int start, int length) {
-		if (buffer == null)
-			buffer = new StringBuffer(length);
-		buffer.append(ch, start, length);
+		if (buffer.length < len + length) {
+			int maxlen = buffer.length * 2;
+			if (maxlen < len + length)
+				maxlen = len + length;
+			char[] tmp = new char[maxlen];
+			System.arraycopy(buffer, 0, tmp, 0, len);
+			buffer = tmp;
+		}
+		System.arraycopy(ch, start, buffer, len, length);
+		len += length;
 	}
 	
 	public void endElement(String uri, String localname, String qName) throws SAXException {
 		try {
+			qName = (String)endElements.get(qName);
+			if (qName == null)
+				return;
 			// frequent tags:
-			if (qName.equals("id")) readId();
-			else if (qName.equals("revision")) closeRevision();
-			else if (qName.equals("timestamp")) readTimestamp();
-			else if (qName.equals("text")) readText();
-			else if (qName.equals("contributor")) closeContributor();
-			else if (qName.equals("username")) readUsername();
-			else if (qName.equals("ip")) readIp();
-			else if (qName.equals("comment")) readComment();
-			else if (qName.equals("minor")) readMinor();
-			else if (qName.equals("page")) closePage();
-			else if (qName.equals("title")) readTitle();
-			else if (qName.equals("restrictions")) readRestrictions();
+			if (qName == "id") readId();
+			else if (qName == "revision") closeRevision();
+			else if (qName == "timestamp") readTimestamp();
+			else if (qName == "text") readText();
+			else if (qName == "contributor") closeContributor();
+			else if (qName == "username") readUsername();
+			else if (qName == "ip") readIp();
+			else if (qName == "comment") readComment();
+			else if (qName == "minor") readMinor();
+			else if (qName == "page") closePage();
+			else if (qName == "title") readTitle();
+			else if (qName == "restrictions") readRestrictions();
 			// rare tags:
-			else if (qName.equals("mediawiki")) closeMediaWiki();
-			else if (qName.equals("siteinfo")) closeSiteinfo();
-			else if (qName.equals("sitename")) readSitename();
-			else if (qName.equals("base")) readBase();
-			else if (qName.equals("generator")) readGenerator();
-			else if (qName.equals("case")) readCase();
-			else if (qName.equals("namespaces")) closeNamespaces();
-			else if (qName.equals("namespace")) closeNamespace();
+			else if (qName == "mediawiki") closeMediaWiki();
+			else if (qName == "siteinfo") closeSiteinfo();
+			else if (qName == "sitename") readSitename();
+			else if (qName == "base") readBase();
+			else if (qName == "generator") readGenerator();
+			else if (qName == "case") readCase();
+			else if (qName == "namespaces") closeNamespaces();
+			else if (qName == "namespace") closeNamespace();
 		} catch (IOException e) {
 			throw new SAXException(e);
 		}
@@ -165,7 +216,7 @@ public class XmlDumpReader  extends DefaultHandler {
 	}
 
 	private String bufferContents() {
-		return buffer == null ? "" : buffer.toString();
+		return len == 0 ? "" : new String(buffer, 0, len);
 	}
 	
 	void readSitename() {

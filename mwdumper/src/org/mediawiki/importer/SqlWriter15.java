@@ -28,6 +28,7 @@
 package org.mediawiki.importer;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
@@ -78,11 +79,13 @@ public class SqlWriter15 extends SqlWriter {
 		lastRevision = revision;
 	}
 	
-	private static int lengthUtf8(CharSequence s) {
+	private static int lengthUtf8(String s) {
 		final int slen = s.length();
+		final char[] buf = Buffer.get(slen);
+		s.getChars(0, slen, buf, 0);
 		int len = 0;
 		for (int i = 0; i < slen; i++) {
-			char c = s.charAt(i);
+			char c = buf[i];
 			if (c < 0x80)
 				len++;
 			else if (c < 0x800)
@@ -98,6 +101,8 @@ public class SqlWriter15 extends SqlWriter {
 		return len;
 	}
 	
+	private static final String TOUCHED = timestampFormat(new GregorianCalendar()); 
+	
 	private void updatePage(Page page, Revision revision) throws IOException {
 		bufferInsertRow("page", new Object[][] {
 				{"page_id", new Integer(page.Id)},
@@ -108,7 +113,7 @@ public class SqlWriter15 extends SqlWriter {
 				{"page_is_redirect", revision.isRedirect() ? ONE : ZERO},
 				{"page_is_new", ZERO},
 				{"page_random", new Double(random.nextDouble())},
-				{"page_touched", timestampFormat(new GregorianCalendar())},
+				{"page_touched", TOUCHED},
 				{"page_latest", new Integer(revision.Id)},
 				{"page_len", new Integer(lengthUtf8(revision.Text))}});
 		checkpoint();

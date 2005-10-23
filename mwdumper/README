@@ -147,6 +147,7 @@ TODO:
 
 
 Change history (abbreviated):
+2005-10-21: Applied more speedup patches from Folke
 2005-10-11: SQL direct connection, GUI work begins
 2005-10-10: Applied speedup patches from Folke Behrens
 2005-10-05: Use bulk inserts in SQL mode
