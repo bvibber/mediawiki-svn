@@ -30,13 +30,11 @@ import java.util.Random;
 
 
 public class SqlWriter14 extends SqlWriter {
-	private Random random;
 	private Page currentPage;
 	private Revision lastRevision;
 	
 	public SqlWriter14(SqlStream output) {
 		super(output);
-		random = new Random();
 	}
 	
 	public void writeStartPage(Page page) {
@@ -86,8 +84,8 @@ public class SqlWriter14 extends SqlWriter {
 				{"cur_counter", ZERO},
 				{"cur_is_redirect", revision.isRedirect() ? ONE : ZERO},
 				{"cur_minor_edit", revision.Minor ? ONE : ZERO},
-				{"cur_random", new Double(random.nextDouble())},
-				{"cur_touched", timestampFormat(now())},
+				{"cur_random", RANDOM},
+				{"cur_touched", TOUCHED},
 				{"inverse_timestamp", inverseTimestamp(revision.Timestamp)}});
 		checkpoint();
 	}

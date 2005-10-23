@@ -28,12 +28,8 @@
 package org.mediawiki.importer;
 
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Random;
 
 public class SqlWriter15 extends SqlWriter {
-	private Random random = new Random();
 	private Page currentPage;
 	private Revision lastRevision;
 	
@@ -101,8 +97,6 @@ public class SqlWriter15 extends SqlWriter {
 		return len;
 	}
 	
-	private static final String TOUCHED = timestampFormat(new GregorianCalendar()); 
-	
 	private void updatePage(Page page, Revision revision) throws IOException {
 		bufferInsertRow("page", new Object[][] {
 				{"page_id", new Integer(page.Id)},
@@ -112,7 +106,7 @@ public class SqlWriter15 extends SqlWriter {
 				{"page_counter", ZERO},
 				{"page_is_redirect", revision.isRedirect() ? ONE : ZERO},
 				{"page_is_new", ZERO},
-				{"page_random", new Double(random.nextDouble())},
+				{"page_random", RANDOM},
 				{"page_touched", TOUCHED},
 				{"page_latest", new Integer(revision.Id)},
 				{"page_len", new Integer(lengthUtf8(revision.Text))}});

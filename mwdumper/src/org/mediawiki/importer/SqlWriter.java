@@ -41,6 +41,11 @@ public abstract class SqlWriter implements DumpWriter {
 	protected static final Integer ONE = new Integer(1);
 	protected static final Integer ZERO = new Integer(0);
 	
+	// FIXME: NOW() returns localtime and will be technically wrong unless
+	// server is set to UTC; however this is pretty much harmless.
+	protected static final SqlLiteral TOUCHED = new SqlLiteral("NOW()+0");
+	protected static final SqlLiteral RANDOM = new SqlLiteral("RAND()");	
+	
 	public SqlWriter(SqlStream output) {
 		stream = output;
 	}
@@ -191,6 +196,8 @@ public abstract class SqlWriter implements DumpWriter {
 		} else if (val instanceof Integer) {
 			return str;
 		} else if (val instanceof Double) {
+			return str;
+		} else if (val instanceof SqlLiteral) {
 			return str;
 		} else {
 			throw new IllegalArgumentException("Unknown type in SQL");
