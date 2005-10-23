@@ -41,9 +41,10 @@ public abstract class SqlWriter implements DumpWriter {
 	protected static final Integer ONE = new Integer(1);
 	protected static final Integer ZERO = new Integer(0);
 	
-	// FIXME: NOW() returns localtime and will be technically wrong unless
-	// server is set to UTC; however this is pretty much harmless.
-	protected static final SqlLiteral TOUCHED = new SqlLiteral("NOW()+0");
+	// UTC_TIMESTAMP() is new in MySQL 4.1 or 5.0, so using this
+	// godawful hack found in documentation comments:
+	protected static final SqlLiteral TOUCHED = new SqlLiteral(
+		"DATE_ADD('1970-01-01', INTERVAL UNIX_TIMESTAMP() SECOND)+0");
 	protected static final SqlLiteral RANDOM = new SqlLiteral("RAND()");	
 	
 	public SqlWriter(SqlStream output) {
