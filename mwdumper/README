@@ -147,9 +147,10 @@ TODO:
 
 
 Change history (abbreviated):
+2005-10-24: Fixed SQL output in non-UTF-8 locales
 2005-10-21: Applied more speedup patches from Folke
 2005-10-11: SQL direct connection, GUI work begins
 2005-10-10: Applied speedup patches from Folke Behrens
 2005-10-05: Use bulk inserts in SQL mode
 2005-09-29: Converted from C# to Java
-2005=08-27: Initial extraction code
+2005-08-27: Initial extraction code

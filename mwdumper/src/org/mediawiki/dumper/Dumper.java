@@ -220,7 +220,7 @@ class Dumper {
 			throw new IllegalArgumentException("Have neither file nor SQL connection. Very confused!");
 		}
 		
-		SqlStream getSqlStream() {
+		SqlStream getSqlStream() throws IOException {
 			if (fileStream != null)
 				return new SqlFileStream(fileStream);
 			if (sqlConnection != null)
