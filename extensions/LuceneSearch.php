@@ -333,7 +333,7 @@ $wgOut->addHTML('<!-- titlens = '. $wgTitle->getNamespace() . '-->');
 	function showHit($result, $terms) {
 		$fname = 'LuceneSearch::showHit';
 		wfProfileIn($fname);
-		global $wgUser, $wgContLang, $wgLSuseold, $wgTitle, $wgOut;
+		global $wgUser, $wgContLang, $wgLSuseold, $wgTitle, $wgOut, $wgDisableSearchContext;
 
 		$t = $result->getTitle();
 		if(is_null($t)) {
@@ -349,15 +349,21 @@ $wgOut->addHTML('<!-- titlens = '. $wgTitle->getNamespace() . '-->');
 
 		$link = $this->mSkin->makeKnownLinkObj($t, '');
 
-		$rev = $wgLSuseold ? new Article($t) : Revision::newFromTitle($t);
-		if ($rev === null) {
-			wfProfileOut( $fname );
-			return "<!--Broken link in search results: ".$t->getDBKey()."-->\n";
-		}
+		if ( !$wgDisableSearchContext ) {
+			$rev = $wgLSuseold ? new Article($t) : Revision::newFromTitle($t);
+			if ($rev === null) {
+				wfProfileOut( $fname );
+				return "<!--Broken link in search results: ".$t->getDBKey()."-->\n";
+			}
 
-		$text = $wgLSuseold ? $rev->getContent(false) : $rev->getText();
-				$size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024), str_word_count($text));
-		$text = $this->removeWiki($text);
+			$text = $wgLSuseold ? $rev->getContent(false) : $rev->getText();
+					$size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024), str_word_count($text));
+			$text = $this->removeWiki($text);
+			$date = $wgContLang->timeanddate($rev->getTimestamp());
+		} else {
+			$text = '';
+			$date = '';
+		}
 
 		$lines = explode("\n", $text);
 
@@ -393,7 +399,8 @@ $wgOut->addHTML('<!-- titlens = '. $wgTitle->getNamespace() . '-->');
 		}
 		wfProfileOut($fname.'-extract');
 		wfProfileOut($fname);
-		$date = $wgContLang->timeanddate($rev->getTimestamp());
+		if (!$wgDisableSearchContext) { $date = $wgContLang->timeanddate($rev->getTimestamp()); }
+		else { $date = ''; }
 		$percent = sprintf('%2.1f%%', $result->getScore() * 100);
 		$score = wfMsg('searchscore', $percent);
 		//$url = $t->getFullURL();
