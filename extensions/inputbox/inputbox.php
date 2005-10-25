@@ -42,14 +42,16 @@ function registerInputboxExtension()
 function renderInputbox($input)
 {
 	$inputbox=new Inputbox();
-	getBoxOption($inputbox->type,$input,"type");
-	getBoxOption($inputbox->width,$input,"width",true);	
-	getBoxOption($inputbox->preload,$input,"preload");
-	getBoxOption($inputbox->editintro,$input,"editintro");
-	getBoxOption($inputbox->defaulttext,$input,"default");	
-	getBoxOption($inputbox->bgcolor,$input,"bgcolor");
-	getBoxOption($inputbox->buttonlabel,$input,"buttonlabel");	
-	getBoxOption($inputbox->searchbuttonlabel,$input,"searchbuttonlabel");		
+	getBoxOption($inputbox->type,$input,'type');
+	getBoxOption($inputbox->width,$input,'width',true);	
+	getBoxOption($inputbox->preload,$input,'preload');
+	getBoxOption($inputbox->editintro,$input,'editintro');
+	getBoxOption($inputbox->defaulttext,$input,'default');	
+	getBoxOption($inputbox->bgcolor,$input,'bgcolor');
+	getBoxOption($inputbox->buttonlabel,$input,'buttonlabel');	
+	getBoxOption($inputbox->searchbuttonlabel,$input,'searchbuttonlabel');		
+	getBoxOption($inputbox->id,$input,'id');	
+	getBoxOption($inputbox->labeltext,$input,'labeltext');	
 	
 	$boxhtml=$inputbox->render();
 	if($boxhtml) {
@@ -76,10 +78,12 @@ class Inputbox {
 	var $defaulttext,$bgcolor,$buttonlabel,$searchbuttonlabel;
 	
 	function render() {
-		if($this->type=="create" || $this->type=="comment") {
+		if($this->type=='create' || $this->type=='comment') {
 			return $this->getCreateForm();		
-		} elseif($this->type=="search") {
-			return $this->getSearchForm();		
+		} elseif($this->type=='search') {
+			return $this->getSearchForm();
+		} elseif($this->type=='search2') {
+			return $this->getSearchForm2();
 		} else {
 			return false;
 		}	
@@ -115,6 +119,30 @@ class Inputbox {
 ENDFORM;
 		return $searchform;
 	}
+
+	function getSearchForm2() {
+		global $wgUser, $wgOut;
+		
+		$sk=$wgUser->getSkin();
+		$searchpath = $sk->escapeSearchLink();		
+		if(!$this->buttonlabel) {
+			$this->buttonlabel = wfMsgHtml( 'tryexact' );
+		}
+
+		$this->labeltext = $wgOut->parse( $this->labeltext, false );
+		
+		$searchform=<<<ENDFORM
+<form action="$searchpath" class="bodySearch" id="bodySearch{$this->id}"><div class="bodySearchWrap"><label for="bodySearchIput{$this->id}">{$this->labeltext}</label><input type="text" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$this->id}" /><input type="submit" name="go" value="{$this->buttonlabel}" class="bodySearchBtnGo" />
+ENDFORM;
+
+		if ( $this->fulltextbtn )
+			$searchform .= '<input type="submit" name="fulltext" class="bodySearchBtnSearch" value="{$this->searchbuttonlabel}" />';
+
+		$searchform .= '</div></form>';
+
+		return $searchform;
+	}
+
 	
 	function getCreateForm() {
 		global $wgScript;	
