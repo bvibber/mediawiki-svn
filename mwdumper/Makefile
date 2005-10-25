@@ -22,6 +22,7 @@ SOURCES_DUMPER=\
   src/org/apache/commons/compress/bzip2/CRC.java
 
 SOURCES_IMPORT=\
+  src/org/mediawiki/importer/Buffer.java \
   src/org/mediawiki/importer/Contributor.java \
   src/org/mediawiki/importer/DumpWriter.java \
   src/org/mediawiki/importer/ExactListFilter.java \
@@ -36,7 +37,9 @@ SOURCES_IMPORT=\
   src/org/mediawiki/importer/Revision.java \
   src/org/mediawiki/importer/Siteinfo.java \
   src/org/mediawiki/importer/SqlFileStream.java \
+  src/org/mediawiki/importer/SqlLiteral.java \
   src/org/mediawiki/importer/SqlStream.java \
+  src/org/mediawiki/importer/SqlServerStream.java \
   src/org/mediawiki/importer/SqlWriter.java \
   src/org/mediawiki/importer/SqlWriter14.java \
   src/org/mediawiki/importer/SqlWriter15.java \
