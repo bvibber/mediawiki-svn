@@ -130,6 +130,8 @@ ENDFORM;
 		}
 
 		$this->labeltext = $wgOut->parse( $this->labeltext, false );
+		$this->labeltext = str_replace('<p>', '', $this->labeltext);
+		$this->labeltext = str_replace('</p>', '', $this->labeltext);
 		
 		$searchform=<<<ENDFORM
 <form action="$searchpath" class="bodySearch" id="bodySearch{$this->id}"><div class="bodySearchWrap"><label for="bodySearchIput{$this->id}">{$this->labeltext}</label><input type="text" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$this->id}" /><input type="submit" name="go" value="{$this->buttonlabel}" class="bodySearchBtnGo" />
