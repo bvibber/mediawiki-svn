@@ -26,7 +26,6 @@
 package org.mediawiki.importer;
 
 import java.io.IOException;
-import java.util.Random;
 
 
 public class SqlWriter14 extends SqlWriter {
