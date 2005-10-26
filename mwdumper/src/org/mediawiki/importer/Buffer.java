@@ -54,6 +54,15 @@ public final class Buffer {
 			int newsize = buffer.length * 2;
 			if (newsize < capacity)
 				newsize = capacity;
+			/*
+			// Debug!
+			System.err.println("** Growing buffer to " + newsize);
+			try {
+				throw new RuntimeException("foo");
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+			}
+			*/
 			buffer = lastBuffer = new char[newsize];
 			BUFFERS.put(thread, buffer);
 		}

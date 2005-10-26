@@ -147,6 +147,7 @@ TODO:
 
 
 Change history (abbreviated):
+2005-10-25: Switched SqlWriter.sqlEscape back to less memory-hungry StringBuffer
 2005-10-24: Fixed SQL output in non-UTF-8 locales
 2005-10-21: Applied more speedup patches from Folke
 2005-10-11: SQL direct connection, GUI work begins
