@@ -69,16 +69,27 @@ function wfSpecialCrossNamespaceLinks() {
 		 * @var array
 		 */
 		var $namespaces = array(
+			// Nothing should link to NS_MEDIA, [[Media:]] links
+			// are recored in the imagelinks table
+			// NS_MEDIA
+			//
+			// {{deletedpage}} links to Special: and probably some others
+			NS_SPECIAL,
 			NS_MAIN,
+			
 			// Many templates e.g. the deletion template and other
 			// templates that indicate that there's something wrong
 			// with the article link to the talk page.
 			NS_TALK,
+			
 			// Templates like the stub template link to the
 			// project namespace
 			NS_PROJECT,
 			NS_TEMPLATE,
-			NS_CATEGORY
+			
+			// [[Category:]] links are recored in the categorylinks
+			// table, [[:Category:]] links should not exist.
+			//NS_CATEGORY
 		);
 
 		function getName() { return 'CrossNamespaceLinks'; }
