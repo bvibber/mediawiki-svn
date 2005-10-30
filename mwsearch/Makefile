@@ -5,12 +5,15 @@ INSTALL_BINDIR=$(INSTALL_PREFIX)/bin
 INSTALL_ASSEMBLYDIR=$(INSTALL_PREFIX)/lib/mwsearch
 
 CFLAGS=-codepage:utf8
+MCS?=mcs
+MONO?=mono
 
 LIBS=\
   build/log4net.dll \
   build/Lucene.Net.dll \
   build/Nini.dll \
-  build/CookComputing.XmlRpc.dll
+  build/CookComputing.XmlRpc.dll \
+  build/mwdumper.dll
 
 ASSEMBLIES=\
   build/MWSearch.dll \
@@ -169,13 +172,20 @@ build/MWUpdateDaemon.exe.config :
 # MWSearchTool.exe: command-line tool to optimize indexes and such
 SEARCHTOOL_SOURCES=\
   SearchTool/AssemblyInfo.cs \
-  SearchTool/SearchTool.cs
+  SearchTool/SearchTool.cs \
+  SearchTool/SearchImporter.cs
 
 SEARCHTOOL_LIBS=\
-  build/MWSearch.dll
+  build/MWSearch.dll \
+  build/mwdumper.dll \
+  build/IKVM.GNU.Classpath.dll \
+  build/IKVM.Runtime.dll
 
 SEARCHTOOL_REFERENCES=\
   -r:build/MWSearch.dll \
+  -r:build/mwdumper.dll \
+  -r:build/IKVM.GNU.Classpath.dll \
+  -r:build/IKVM.Runtime.dll \
   $(SEARCH_REFERENCES)
 
 build/MWSearchTool.exe : $(SEARCHTOOL_LIBS) $(SEARCHTOOL_SOURCES)
@@ -203,3 +213,12 @@ build/Nini.dll: libs/Nini.dll
 
 build/CookComputing.XmlRpc.dll: libs/CookComputing.XmlRpc.dll
 	cp -p libs/CookComputing.XmlRpc.dll build/
+
+build/IKVM.GNU.Classpath.dll : libs/IKVM.GNU.Classpath.dll
+	cp -p libs/IKVM.GNU.Classpath.dll build/
+
+build/IKVM.Runtime.dll : libs/IKVM.Runtime.dll
+	cp -p libs/IKVM.Runtime.dll build/
+
+build/mwdumper.dll : libs/mwdumper.jar
+	$(MONO) libs/ikvmc.exe -out:$@ -target:library -exclude:libs/mwdumper-no-ikvm.txt libs/mwdumper.jar

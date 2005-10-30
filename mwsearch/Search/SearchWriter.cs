@@ -36,7 +36,7 @@ namespace MediaWiki.Search {
 		
 		public SearchWriter(string dbname) {
 			Init(dbname);
-			OpenForWrite();
+			//OpenForWrite();
 		}
 
 		public void Close() {

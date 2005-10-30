@@ -28,6 +28,8 @@ namespace MediaWiki.Search.SearchTool {
 	
 	using MediaWiki.Search;
 	
+	using org.mediawiki.importer;
+	
 	public class SearchTool {
 		private static Configuration config;
 		
@@ -37,12 +39,17 @@ namespace MediaWiki.Search.SearchTool {
 			string configSection = "Updater";
 			ArrayList databases = new ArrayList();
 			string action = null;
+			string source = null;
 			
 			for (int i = 0; i < args.Length; i++) {
 				if (args[i] == "--daemon") {
 					configSection = "Daemon";
 				} else if (args[i] == "--optimize") {
 					action = "optimize";
+				} else if (args[i].StartsWith("--import")) {
+					string[] bits = args[i].Split(new char[] {'='}, 2);
+					action = "import";
+					source = bits[1];
 				} else if (!args[i].StartsWith("--")) {
 					databases.Add(args[i]);
 				}
@@ -61,17 +68,38 @@ namespace MediaWiki.Search.SearchTool {
 			Configuration.SetIndexSection(configSection);
 			config = Configuration.Open();
 			
-			foreach (string dbname in databases) {
-				try {
-					SearchWriter state = new SearchWriter(dbname);
-					Console.WriteLine("Optimizing " + dbname);
-					state.Optimize();
-				} catch (Exception e) {
-					Console.WriteLine(e);
+			if (action == "optimize") {
+				foreach (string dbname in databases) {
+					try {
+						SearchWriter state = new SearchWriter(dbname);
+						Console.WriteLine("Optimizing " + dbname);
+						state.Optimize();
+					} catch (Exception e) {
+						Console.WriteLine(e);
+					}
 				}
+			} else if (action == "import") {
+				if (databases.Count > 1) {
+					Console.WriteLine("Warning! Only the first database given will be imported (" + databases[0] + ")");
+				}
+				ImportDump(source, (string)databases[0]);
 			}
 			
 			Console.WriteLine("Done!");
+		}
+		
+		static void ImportDump(string dumpfile, string database) {
+			java.io.InputStream input = new java.io.BufferedInputStream(
+				new java.io.FileInputStream(dumpfile));
+
+			SearchWriter state = new SearchWriter(database);
+			state.InitializeIndex();
+			
+			XmlDumpReader reader = new XmlDumpReader(input, new SearchImporter(state));
+			reader.readDump();
+			
+			state.Close();
+			state.Optimize();
 		}
 	}
 }

@@ -16,7 +16,7 @@
       <Entry configuration="Release" build="True" name="Prefix" />
       <Entry configuration="Release" build="False" name="Tests" />
       <Entry configuration="Release" build="True" name="UpdateDaemon" />
-      <Entry configuration="Debug" build="True" name="MWSearchTool" />
+      <Entry configuration="Release" build="True" name="MWSearchTool" />
     </Configuration>
   </Configurations>
   <StartMode startupentry="Search" single="True">

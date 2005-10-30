@@ -19,9 +19,14 @@
   <Contents>
     <File name="./SearchTool.cs" subtype="Code" buildaction="Compile" />
     <File name="./AssemblyInfo.cs" subtype="Code" buildaction="Compile" />
+    <File name="./SearchImporter.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
     <ProjectReference type="Project" localcopy="True" refto="Search" />
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <ProjectReference type="Gac" localcopy="True" refto="mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <ProjectReference type="Assembly" localcopy="True" refto="../libs/IKVM.GNU.Classpath.dll" />
+    <ProjectReference type="Assembly" localcopy="True" refto="../libs/IKVM.Runtime.dll" />
+    <ProjectReference type="Assembly" localcopy="True" refto="../libs/mwdumper.dll" />
   </References>
 </Project>

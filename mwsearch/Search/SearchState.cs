@@ -89,5 +89,11 @@ namespace MediaWiki.Search {
 			log.Info("Creating new index for " + mydbname);
 			new IndexWriter(indexpath, analyzer, true).Close();
 		}
+		
+		public string DatabaseName {
+			get {
+				return mydbname;
+			}
+		}
 	}
 }
