@@ -28,6 +28,8 @@ namespace MediaWiki.Search.SearchTool {
 	
 	using MediaWiki.Search;
 	
+	using java.io;
+	using org.apache.commons.compress.bzip2;
 	using org.mediawiki.importer;
 	
 	public class SearchTool {
@@ -89,8 +91,7 @@ namespace MediaWiki.Search.SearchTool {
 		}
 		
 		static void ImportDump(string dumpfile, string database) {
-			java.io.InputStream input = new java.io.BufferedInputStream(
-				new java.io.FileInputStream(dumpfile));
+			InputStream input = GetImportStream(dumpfile);
 
 			SearchWriter state = new SearchWriter(database);
 			state.InitializeIndex();
@@ -100,6 +101,19 @@ namespace MediaWiki.Search.SearchTool {
 			
 			state.Close();
 			state.Optimize();
+		}
+		
+		static InputStream GetImportStream(string filename) {
+			InputStream stream = new BufferedInputStream(new FileInputStream(filename));
+			if (filename.EndsWith(".bz2")) {
+				int first = stream.read();
+				int second = stream.read();
+				if (first != 'B' || second != 'Z')
+					throw new IOException("Didn't find BZ file signature in .bz2 file");
+				return new CBZip2InputStream(stream);
+			} else {
+				return stream;
+			}
 		}
 	}
 }
