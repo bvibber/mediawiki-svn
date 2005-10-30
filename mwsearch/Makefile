@@ -13,7 +13,9 @@ LIBS=\
   build/Lucene.Net.dll \
   build/Nini.dll \
   build/CookComputing.XmlRpc.dll \
-  build/mwdumper.dll
+  build/mwdumper.dll \
+  build/IKVM.GNU.Classpath.dll \
+  build/IKVM.Runtime.dll
 
 ASSEMBLIES=\
   build/MWSearch.dll \
