@@ -42,7 +42,7 @@ static int contemplate_file(const char *name, struct stat *sb);
 static int samefile(const char *fa, const char *fb);
 static int exclude(const char *name);
 static void addexclude(const char *name);
-static void copy_from_to(int from, int to, const char *srcname, const char *destname, int esize);
+static void copy_from_to(int from, int to, const char *srcname, const char *destname, size_t esize);
 static void discuss_files(void);
 static void send_files(void);
 
