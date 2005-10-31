@@ -464,13 +464,13 @@ static	char *zerobuf;
 		if (bytes + bsize > esize && tflag) {
 			fprintf(stderr, "WARNING: %s: SOURCE FILE IS LARGER THAN EXPECTED SIZE: "
 					"expected %d bytes; read %d "
-					"(destination file will be truncated) (ct4)",
+					"(destination file will be truncated) (ct4)\n",
 					srcname, esize, bytes + bsize);
 			break;
 		}
 		if (bytes + bsize > esize) /* non-fatal if not tar */
 			fprintf(stderr, "WARNING: %s: SOURCE FILE IS LARGER THAN EXPECTED SIZE: "
-					"expected %d bytes; read %d (ct5)", srcname, esize, bytes + bsize);
+					"expected %d bytes; read %d (ct5)\n", srcname, esize, bytes + bsize);
 	
 		if (tflag) {
 			if (write_blocked(buf, bsize, archfile) < 1) {
