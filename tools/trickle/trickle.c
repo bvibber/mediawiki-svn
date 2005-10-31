@@ -25,7 +25,7 @@
 
 const char *progname;
 
-int tflag, uflag, Fflag, qflag, pflag, Pflag, rflag, Zflag;
+int tflag, uflag, Fflag, qflag, pflag, Pflag, rflag, Zflag, Iflag;
 char *rsh = "rsh", *remote, *trickle;
 int archive;
 int blocksleep, filesleep;
@@ -68,6 +68,7 @@ usage(void)
 "\t-r			 copy files to a remote host via rsh\n"
 "\t-z program            use an alternative rsh\n"
 "\t-T trickle            name of trickle on remote host\n"
+"\t-I                    ignore unexpected filesystem errors\n"
 		,progname);
 	exit(8);
 }
@@ -83,7 +84,7 @@ struct	stat	 sb;
 
 	progname = argv[0];
 
-	while ((i = getopt(argc, argv, "T:Zz:rPpqFuts:b:f:x:")) != -1) {
+	while ((i = getopt(argc, argv, "T:Zz:rPpqFuts:b:f:x:I")) != -1) {
 		switch(i) {
 		case 'F':
 			Fflag++;
@@ -126,6 +127,9 @@ struct	stat	 sb;
 			break;
 		case 'T':
 			trickle = optarg;
+			break;
+		case 'I':
+			Iflag++;
 			break;
 		case 'h':
 		default:
@@ -266,14 +270,16 @@ copy_directory(dir, cf)
 	const char *dir;
 	void (*cf)(const char *, const char *);
 {
-	DIR 	*dirp;
+	DIR 	*dirp = NULL;
 struct	dirent	*dp;
 struct	stat	 sb;
 	char	*oldcur;
 
 	if (chdir(dir) < 0) {
 		pfatal("cd1", dir);
-		exit(8);
+		if (!Iflag)
+			exit(8);
+		return;
 	}
 
 	oldcur = curdir;
@@ -281,6 +287,8 @@ struct	stat	 sb;
 
 	if ((dirp = opendir(".")) == NULL) {
 		pfatal("cd2", dir);
+		if (Iflag)
+			goto errout;
 		exit(8);
 	}
 	
@@ -290,6 +298,8 @@ struct	stat	 sb;
 	
 		if (lstat(dp->d_name, &sb) < 0) {
 			pfatal("cd3", dp->d_name);
+			if (Iflag)
+				continue;
 			exit(8);
 		}
 
@@ -318,6 +328,9 @@ struct	stat	 sb;
 				 */
 				if (mkdir(dpath, sb.st_mode) < 0 && errno != EEXIST) {
 					pfatal("cd4", dpath);
+					free(dpath);
+					if (Iflag)
+						continue;
 					exit(8);
 				}
 				free(dpath);
@@ -344,7 +357,9 @@ struct	stat	 sb;
 						progname, curdir, dp->d_name);
 		}
 	}
-	closedir(dirp);
+errout:
+	if (dirp)
+		closedir(dirp);
 
 	chdir("..");
 	free(curdir);
@@ -363,15 +378,24 @@ struct	utimbuf	ut;
 
 	if (lstat(name, &sb) < 0) {
 		pfatal("cf1", name);
+		if (Iflag)
+			return;
 		exit(8);
 	}
 
+	if ((in = open(name, O_RDONLY)) == -1) {
+		pfatal("cf3", name);
+		if (Iflag)
+			return;
+		exit(8);
+	}
 	if (archive) {
 		arch_writeheader(archfile, name);
 	} else {
 		if (uflag && !contemplate_file(outname, &sb)) {
 			if (!qflag) 
 				fprintf(stderr, "fu %s%s\n", curdir ? curdir : "", name);
+			close(in);
 			return;
 		}
 
@@ -379,6 +403,7 @@ struct	utimbuf	ut;
 			if (!qflag)
 				fprintf(stderr, "%s: %s%s and %s are the same file\n",
 					progname, curdir, name, outname);
+			close(in);
 			return;
 		}
 
@@ -388,13 +413,12 @@ struct	utimbuf	ut;
 				fprintf(stderr, "%s: %s exists and I didn't expect it to\n",
 					progname, outname);
 			}
+			close(in);
 			pfatal("cf2", outname);
+			if (Iflag)
+				return;
 			exit(8);
 		}
-	}
-	if ((in = open(name, O_RDONLY)) == -1) {
-		pfatal("cf3", name);
-		exit(8);
 	}
 
 	copy_from_to(in, out, outname);
@@ -447,7 +471,11 @@ static	char *buf;
 	if (bsize == -1) {
 		if (destname)
 			unlink(destname);
-		exit(8);
+		if (!Iflag)
+			exit(8);
+		if (tflag)
+			fprintf(stderr, "WARNING: reading data: %s; DESTINATION FILE IS INCOMPLETE (ct3)\n",
+				strerror(errno));
 	}
 
 	if (archive)
@@ -493,7 +521,9 @@ struct	stat	sa;
 		if (errno == ENOENT)
 			return 1;
 		pfatal("co1", name);
-		exit(8);
+		if (!Iflag)
+			exit(8);
+		return 0;
 	}
 
 	return sa.st_mtime < sb->st_mtime;
@@ -508,14 +538,18 @@ struct	stat	sa, sb;
 		if (errno == ENOENT)
 			return 0;
 		pfatal("sf1", fa);
-		exit(8);
+		if (!Iflag)
+			exit(8);
+		return 0;
 	}
 
 	if (lstat(fb, &sb) < 0) {
 		if (errno == ENOENT)
 			return 0;
 		pfatal("sf2", fb);
-		exit(8);
+		if (!Iflag)
+			exit(8);
+		return 0;
 	}
 
 	return (sa.st_ino == sb.st_ino)

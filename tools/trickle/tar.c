@@ -29,8 +29,10 @@ struct	stat	 sb;
 	int	 sum = 0, i;
 	int	 truncate = 0;
 
-	if (lstat(name, &sb) < 0)
+	if (lstat(name, &sb) < 0) {
 		pfatal("tw1", name);
+		exit(8);
+	}
 
 	/*
 	 * This is a very lax tar header.  It's accepted by Solaris tar
@@ -86,10 +88,14 @@ struct	stat	 sb;
 		       sum += *buf++;
 		snprintf(hdr.tr_chksum, 8, "%06o", sum);
 
-		if (write_blocked(&hdr, sizeof(hdr), file) < 1)
+		if (write_blocked(&hdr, sizeof(hdr), file) < 1) {
 			pfatal("tw2", dest);
-		if (write_blocked(tardata, strlen(tardata), file) < 1)
+			exit(8);
+		}
+		if (write_blocked(tardata, strlen(tardata), file) < 1) {
 			pfatal("tw3", dest);
+			exit(8);
+		}
 	}		
 
 	memset(&hdr, 0, sizeof(hdr));
@@ -117,8 +123,10 @@ struct	stat	 sb;
 	       sum += *buf++;
 	snprintf(hdr.tr_chksum, 8, "%06o", sum);
 
-	if (write_blocked(&hdr, sizeof(hdr), file) < 1)
+	if (write_blocked(&hdr, sizeof(hdr), file) < 1) {
 		pfatal("tw4", dest);
+		exit(8);
+	}
 }
 
 void

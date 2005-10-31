@@ -58,5 +58,4 @@ pfatal(c, e)
 	const char *c, *e;
 {
 	fprintf(stderr, "%s: %s (%s)\n", e, strerror(errno), c);
-	exit(8);
 }
