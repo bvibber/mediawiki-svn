@@ -19,20 +19,15 @@
 int records;
 
 void
-tar_writeheader(file, name)
+tar_writeheader(file, name, sb)
 	FILE *file;
 	const char *name;
+	struct stat *sb;
 {
 struct	tar	 hdr;
-struct	stat	 sb;
 	char	*buf;
 	int	 sum = 0, i;
 	int	 truncate = 0;
-
-	if (lstat(name, &sb) < 0) {
-		pfatal("tw1", name);
-		exit(8);
-	}
 
 	/*
 	 * This is a very lax tar header.  It's accepted by Solaris tar
@@ -107,15 +102,15 @@ struct	stat	 sb;
 	strncpy(hdr.tr_prefix, curdir + 2, min(sizeof(hdr.tr_prefix), max(0, strlen(curdir + 2) - 1)));
 	strncpy(hdr.tr_name, name, sizeof(hdr.tr_name));
 
-	sprintf(hdr.tr_mode, "%07o", (int)(sb.st_mode & 0777));
-	sprintf(hdr.tr_uid, "%07o", (int)sb.st_uid);
-	sprintf(hdr.tr_gid, "%07o", (int)sb.st_gid);
-	sprintf(hdr.tr_size, "%011o", (int)sb.st_size);
-	sprintf(hdr.tr_mtime, "%011o", (int)sb.st_mtime);
+	sprintf(hdr.tr_mode, "%07o", (int)(sb->st_mode & 0777));
+	sprintf(hdr.tr_uid, "%07o", (int)sb->st_uid);
+	sprintf(hdr.tr_gid, "%07o", (int)sb->st_gid);
+	sprintf(hdr.tr_size, "%011o", (int)sb->st_size);
+	sprintf(hdr.tr_mtime, "%011o", (int)sb->st_mtime);
 	memcpy(hdr.tr_magic, TMAGIC, TMAGLEN);
 	memcpy(hdr.tr_version, TVERSION, TVERSLEN);
-	sprintf(hdr.tr_uname, "%d", (int)sb.st_uid);
-	sprintf(hdr.tr_gname, "%d", (int)sb.st_gid);
+	sprintf(hdr.tr_uname, "%d", (int)sb->st_uid);
+	sprintf(hdr.tr_gname, "%d", (int)sb->st_gid);
 	strncpy(hdr.tr_chksum, "        ", 8);
 	hdr.tr_typeflag = REGTYPE;
 	

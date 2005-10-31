@@ -42,11 +42,11 @@ static int contemplate_file(const char *name, struct stat *sb);
 static int samefile(const char *fa, const char *fb);
 static int exclude(const char *name);
 static void addexclude(const char *name);
-static void copy_from_to(int from, int to, const char *destname);
+static void copy_from_to(int from, int to, const char *srcname, const char *destname, int esize);
 static void discuss_files(void);
 static void send_files(void);
 
-static void (*arch_writeheader) (FILE *, const char *name);
+static void (*arch_writeheader) (FILE *, const char *name, struct stat *);
 static void (*arch_writeeof) (FILE *);
 
 void
@@ -389,8 +389,14 @@ struct	utimbuf	ut;
 			return;
 		exit(8);
 	}
+	if (fstat(in, &sb) == -1) {
+		pfatal("cf6", name);
+		if (Iflag)
+			return;
+		exit(8);
+	}
 	if (archive) {
-		arch_writeheader(archfile, name);
+		arch_writeheader(archfile, name, &sb);
 	} else {
 		if (uflag && !contemplate_file(outname, &sb)) {
 			if (!qflag) 
@@ -407,10 +413,12 @@ struct	utimbuf	ut;
 			return;
 		}
 
-		unlink(outname);
+		if (unlink(outname) == -1 && errno != ENOENT)
+			fprintf(stderr, "%s: unlink: %s (copy may fail) (cf7)\n",
+				outname, strerror(errno));
 		if ((out = open(outname, O_WRONLY | O_CREAT | O_EXCL, sb.st_mode)) == -1) {
 			if (errno == EEXIST) {
-				fprintf(stderr, "%s: %s exists and I didn't expect it to\n",
+				fprintf(stderr, "%s: %s exists and I didn't expect it to (cf8)\n",
 					progname, outname);
 			}
 			close(in);
@@ -421,7 +429,7 @@ struct	utimbuf	ut;
 		}
 	}
 
-	copy_from_to(in, out, outname);
+	copy_from_to(in, out, name, outname, sb.st_size);
 
 	if (!archive) {
 		ut.actime = sb.st_atime;
@@ -440,17 +448,30 @@ struct	utimbuf	ut;
 }
 
 void
-copy_from_to(from, to, destname)
+copy_from_to(from, to, srcname, destname, esize)
 	int from, to;
-	const char *destname;
+	const char *destname, *srcname;
+	size_t esize;
 {
 static	char *buf;
+static	char *zerobuf;
 	int bytes = 0, blocks = 0, bsize;
 
 	if (buf == NULL)
 		buf = malloc(blocksize);
 
 	while ((bsize = read(from, buf, blocksize)) > 0) {
+		if (bytes + bsize > esize && tflag) {
+			fprintf(stderr, "WARNING: %s: SOURCE FILE IS LARGER THAN EXPECTED SIZE: "
+					"expected %d bytes; read %d "
+					"(destination file will be truncated) (ct4)",
+					srcname, esize, bytes + bsize);
+			break;
+		}
+		if (bytes + bsize > esize) /* non-fatal if not tar */
+			fprintf(stderr, "WARNING: %s: SOURCE FILE IS LARGER THAN EXPECTED SIZE: "
+					"expected %d bytes; read %d (ct5)", srcname, esize, bytes + bsize);
+	
 		if (tflag) {
 			if (write_blocked(buf, bsize, archfile) < 1) {
 				pfatal("ct1", destname);
@@ -473,9 +494,21 @@ static	char *buf;
 			unlink(destname);
 		if (!Iflag)
 			exit(8);
-		if (tflag)
-			fprintf(stderr, "WARNING: reading data: %s; DESTINATION FILE IS INCOMPLETE (ct3)\n",
-				strerror(errno));
+		if (tflag) {
+			fprintf(stderr, "WARNING: %s: %s; DESTINATION FILE IS INCOMPLETE "
+					"(will be zero-padded) (ct3)\n",
+				srcname, strerror(errno));
+			if (!zerobuf)
+				zerobuf = calloc(1, blocksize);
+			while (bytes < esize) {
+				bytes += blocksize;
+				if (write_blocked(zerobuf, blocksize, archfile)) {
+					pfatal("ct6", destname);
+					exit(8);
+				}
+			}
+		}
+				
 	}
 
 	if (archive)

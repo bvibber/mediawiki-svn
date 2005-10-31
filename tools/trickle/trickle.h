@@ -103,7 +103,8 @@ struct tar {
 	char tr_prefix[155];	/* directory		*/
 };
 
-void tar_writeheader(FILE *file, const char *name);
+struct stat;
+void tar_writeheader(FILE *file, const char *name, struct stat *);
 void tar_writeeof(FILE *file);
 
 #endif
