@@ -41,7 +41,7 @@ namespace MediaWiki.Search {
 	public class Configuration {
 		// static members...
 		private static Configuration instance;
-		private static string configfile = "/etc/mwsearch.conf";
+		private static string configfile = null;
 		
 		/** Which [section] is preferred for GetIndex* */
 		private static string indexSection = "Search";
@@ -64,7 +64,15 @@ namespace MediaWiki.Search {
 		private IConfigSource props;
 
 		private Configuration() {
-			props = new IniConfigSource(configfile);
+			if (configfile == null) {
+				string [] paths = {
+					Path.Combine(System.Environment.GetEnvironmentVariable("HOME"), ".mwsearch.conf"),
+					Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "mwsearch.conf"),
+					"/etc/mwsearch.conf" };
+				OpenProps(paths);
+			} else {
+				props = new IniConfigSource(configfile);
+			}
 			
 			if (GetBoolean("Logging", "debug")) {
 				LogLog.InternalDebugging = true;
@@ -80,6 +88,19 @@ namespace MediaWiki.Search {
 				FileInfo log = new FileInfo(logconfig);
 				XmlConfigurator.ConfigureAndWatch(log);
 			}
+		}
+		
+		private void OpenProps(string[] paths) {
+			foreach (string path in paths) {
+				try {
+					props = new IniConfigSource(path);
+					configfile = path;
+					return;
+				} catch (FileNotFoundException e) {
+					// try the next one
+				}
+			}
+			throw new Exception("Coudln't find a config file.");
 		}
 		
 		public string GetString(string section, string name) {

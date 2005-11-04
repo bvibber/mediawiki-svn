@@ -36,7 +36,6 @@ namespace MediaWiki.Search {
 		
 		public SearchWriter(string dbname) {
 			Init(dbname);
-			//OpenForWrite();
 		}
 
 		public void Close() {
@@ -51,16 +50,13 @@ namespace MediaWiki.Search {
 			}
 		}
 
-		/**
-		 * Open the index for writing if it's not already. This is implicitly
-		 * called when addDocument() is used, so callers don't need to do it.
-		 * 
-		 * We won't actually write to the main index yet; we're actually opening
-		 * an in-memory directory which we'll buffer updates to, and merge them
-		 * in chunks to disk.
-		 * 
-		 * @throws IOException
-		 */
+		/// <summary>
+		///   Open the index for writing if it's not already.
+		/// </summary>
+		/// <remarks>
+		///   This is implicitly called when addDocument() is used,
+		///   so callers don't need to do it.
+		/// </remarks>
 		private void OpenForWrite() {
 			if (writer != null)
 				return;
@@ -69,6 +65,14 @@ namespace MediaWiki.Search {
 			writer = new IndexWriter(indexpath, analyzer, false);
 		}
 		
+		/// <summary>
+		///   Add an article to the search index.
+		/// </summary>
+		/// <remarks>
+		///   If there is a possibility of duplicate entries
+		///   (eg you're updating an existing index), you should
+		///   first use a SearchReader to delete the old entry.
+		/// </remarks>
 		public void AddArticle(Article article) {
 			AddArticle(article, null);
 		}
@@ -89,6 +93,7 @@ namespace MediaWiki.Search {
 			d.Add(new Field("contents", StripWiki(article.Contents), 
 					false, true, true));
 			
+			// Experimental extra metadata fields. Not yet supported by the search daemon.
 			if (metadata != null) {
 				foreach(KeyValue pair in metadata) {
 					d.Add(new Field("metadata." + pair.Key, pair.Value, false, true, true));
@@ -97,6 +102,9 @@ namespace MediaWiki.Search {
 			writer.AddDocument(d);
 		}
 		
+		/// <summary>
+		///   Molest a string to trim out various markup bits.
+		/// </summary>
 		private static string StripWiki(string text) {
 			int i = 0, j, k;
 			i = text.IndexOf("[[Image:");
@@ -139,8 +147,10 @@ namespace MediaWiki.Search {
 			text = Regex.Replace(text, "</?[uU]>", "");
 			return text;
 		}
-	
 		
+		/// <summary>
+		///   Optimize the on-disk Lucene index. This can take a while!
+		/// </summary>
 		public void Optimize() {
 			OpenForWrite();
 			writer.Optimize();

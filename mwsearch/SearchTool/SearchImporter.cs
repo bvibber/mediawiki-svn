@@ -67,11 +67,16 @@ namespace MediaWiki.Search.SearchTool {
 		
 		public void writeEndPage() {
 			if (_revision != null) {
+				// Warning! Beware that toString() and ToString() behave
+				// differently on Java/IKVM objects.
 				Article article = new Article(_writer.DatabaseName,
 					_page.Title.Namespace.toString(),
 					_page.Title.Text,
 					_revision.Text,
 					_revision.Timestamp.toString());
+				
+				// Note this is reliant on the index being clean before
+				// the import starts; if not you might get duplicate entries.
 				_writer.AddArticle(article);
 			}
 			_revision = null;
@@ -79,6 +84,8 @@ namespace MediaWiki.Search.SearchTool {
 		}
 		
 		public void writeRevision(Revision revision) {
+			// We'll only use one revision per page if someone
+			// sends a full dump at us.
 			_revision = revision;
 		}
 	}
