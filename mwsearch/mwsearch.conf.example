@@ -35,19 +35,6 @@ verbose=true
 ;logconfig=/etc/mwupdater.log4net
 
 [Database]
-;protocol=unix
-;host=/var/run/mysqld/mysqld.sock
-
-protocol=socket
-host=localhost
-port=3306
-
-username=wikiuser
-password=somepassword
-tableprefix=
-version=1.4
-
-latin1=entest
 suffix=test
 
 
