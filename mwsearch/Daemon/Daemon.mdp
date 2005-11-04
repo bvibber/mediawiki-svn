@@ -22,6 +22,7 @@
     <File name="./Worker.cs" subtype="Code" buildaction="Compile" />
     <File name="./QueryStringMap.cs" subtype="Code" buildaction="Compile" />
     <File name="./NamespaceFilter.cs" subtype="Code" buildaction="Compile" />
+    <File name="./HttpHandler.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
     <ProjectReference type="Assembly" localcopy="True" refto="../libs/log4net.dll" />

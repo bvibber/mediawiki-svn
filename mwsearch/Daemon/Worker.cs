@@ -47,15 +47,9 @@ namespace MediaWiki.Search.Daemon {
 	 * @author Kate Turner
 	 *
 	 */
-	public class Worker {
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+	public class Worker : HttpHandler {
 		/** The search term after urlencoding */
 		string searchterm;
-		/** Client input stream */
-		StreamReader istrm;
-		/** Client output stream */
-		StreamWriter ostrm;
 		/** What operation we're performing */
 		string what;
 		/** Client-supplied database we should operate on */
@@ -65,7 +59,6 @@ namespace MediaWiki.Search.Daemon {
 		
 		int maxlines = 1000;
 		int maxoffset = 10000;
-		bool headersSent;
 		
 		Configuration config;
 		
@@ -78,73 +71,19 @@ namespace MediaWiki.Search.Daemon {
 		};
 		*/
 
-		public Worker(Stream stream, Configuration config) {
-			istrm = new StreamReader(stream);
-			ostrm = new StreamWriter(stream);
+		public Worker(Stream stream, Configuration config) : base(stream) {
 			this.config = config;
 		}
 		
-		public void Run(object par) {
-			Run();
-		}
-		
-		public void Run() {
-			//using (log4net.NDC.Push(client.Client.RemoteEndPoint)) {
-			headersSent = false;
-			try {
-				Handle();
-				log.Debug("request handled.");
-			} catch (IOException e) {
-				log.Error("net error: " + e.Message);
-			} catch (Exception e) {
-				log.Error(e);
-			} finally {
-				if (!headersSent) {
-					try {
-						SendHeaders(500, "Internal server error");
-					} catch (IOException e) { }
-				}
-				// Make sure the client is closed out.
-				try {  ostrm.Close(); } catch { }
-				try {  istrm.Close(); } catch { }
-			}
-		}
-		
-		private void Handle() {
-			/* Simple HTTP protocol; accepts GET requests only.
-			 * URL path format is /operation/database/searchterm
-			 * The path should be URL-encoded UTF-8 (standard IRI).
-			 * 
-			 * Additional paramters may be specified in a query string:
-			 *   namespaces: comma-separated list of namespace numeric keys to subset results
-			 *   limit: maximum number of results to return
-			 *   offset: number of matches to skip before returning results
-			 * 
-			 * Content-type is text/plain and results are listed.
-			 */
-			string request = ReadInputLine();
-			if (!request.StartsWith("GET ")) {
-				SendOutputLine("HTTP/1.x 400 Error");
-				log.Warn("Bad request: " + request);
-				return;
-			}
-			// Ignore any remaining headers...
-			for (string headerline = ReadInputLine(); !headerline.Equals("");)
-				headerline = ReadInputLine();
-			
-			string[] bits = request.Split(' ');
-			Uri uri = null;
-			try {
-				uri = new Uri("http://localhost:8123" + bits[1]);
-			} catch (UriFormatException e) {
-				SendHeaders(400, "Bad request");
-				log.Warn("Bad URI in request: " + bits[1]);
+		protected override void DoStuff() {
+			if (uri.AbsolutePath == "/robots.txt") {
+				RobotsTxt();
 				return;
 			}
 			
 			string[] paths = uri.AbsolutePath.Split( new char[] { '/' }, 4);
 			if (paths.Length != 4) {
-				SendHeaders(404, "Not found");
+				SendError(404, "Not found", "Not a recognized search path.");
 				log.Warn("Unknown request " + uri.AbsolutePath);
 				return;
 			}
@@ -153,12 +92,13 @@ namespace MediaWiki.Search.Daemon {
 			searchterm = HttpUtility.UrlDecode(paths[3], Encoding.UTF8);
 			
 			log.InfoFormat("query:{0} what:{1} dbname:{2} term:{3}",
-				bits[1], what, dbname, searchterm);
+				rawUri, what, dbname, searchterm);
 			
 			IDictionary query = new QueryStringMap(uri);
 			
 			state = SearchPool.ForWiki(dbname);
 
+			contentType = "text/plain";
 			if (what.Equals("titlematch")) {
 				DoTitleMatches();
 			} else if (what.Equals("titleprefix")) {
@@ -177,17 +117,19 @@ namespace MediaWiki.Search.Daemon {
 			} else if (what.Equals("raw")) {
 				DoRawSearch();
 			} else {
-				SendHeaders(404, "Search type not found");
+				SendError(404, "Not Found",
+				              "Unrecognized search type. Try one of: " +
+				              "titlematch, titleprefix, search, quit, raw.");
 				log.Warn("Unknown request type [" + what + "]; ignoring.");
 			}
 		}
 		
-		private void SendHeaders(int code, string message) {
-			SendOutputLine(String.Format("HTTP/1.1 {0} {1}", code, message));
-			SendOutputLine("Content-Type: text/plain");
-			SendOutputLine("Connection: Close");
-			SendOutputLine("");
-			headersSent = true;
+		private void RobotsTxt() {
+			contentType = "text/plain";
+			SendHeaders(200, "OK");
+			SendOutputLine("# This is a search daemon. Don't spider it.");
+			SendOutputLine("User-Agent: *");
+			SendOutputLine("Disallow: /");
 		}
 		
 		private void DoNormalSearch(int offset, int limit, NamespaceFilter namespaces) {
@@ -241,7 +183,7 @@ namespace MediaWiki.Search.Daemon {
 				// pretty quickly. The bad side is that the total hits
 				// number we return is bogus: it's for all namespaces combined.
 				int matches = 0;
-				string lastMatch = "";
+				//string lastMatch = "";
 				for (int i = 0; i < numhits && i < maxoffset; i++) {
 					Document doc = hits.Doc(i);
 					string pageNamespace = doc.Get("namespace");
@@ -404,17 +346,6 @@ namespace MediaWiki.Search.Daemon {
 
 	        // we got the result!
 	        return d[n,m];
-	    }
-	    
-	    private void SendOutputLine(string sout) {
-	        log.DebugFormat(">>>{0}", sout);
-	        ostrm.WriteLine(sout);
-		}
-	 	
-	    private string ReadInputLine() {
-			string sin = istrm.ReadLine();
-			log.DebugFormat("<<<{0}", sin);
-			return sin;
 	    }
 	
 		void LogRequest(String searchterm, Query query, int numhits, TimeSpan delta) {

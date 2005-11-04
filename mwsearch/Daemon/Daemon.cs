@@ -47,7 +47,7 @@ namespace MediaWiki.Search.Daemon {
 		public static void Main(string[] args) {
 			Console.WriteLine(
 					"MediaWiki Lucene search indexer - runtime search daemon.\n" +
-					"Version 20050517, copyright 2004 Kate Turner.\n"
+					"Version 20051104, copyright 2004 Kate Turner.\n"
 					);
 			int i = 0;
 			while (i < args.Length - 1) {

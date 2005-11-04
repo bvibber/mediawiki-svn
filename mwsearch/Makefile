@@ -124,6 +124,7 @@ build/MWPrefix.dll : $(PREFIX_SOURCES) build/MWSearch.dll
 DAEMON_SOURCES=\
   Daemon/AssemblyInfo.cs \
   Daemon/Daemon.cs \
+  Daemon/HttpHandler.cs \
   Daemon/NamespaceFilter.cs \
   Daemon/QueryStringMap.cs \
   Daemon/Worker.cs
