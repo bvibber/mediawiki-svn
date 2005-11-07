@@ -26,6 +26,7 @@
 namespace MediaWiki.Search.Daemon {
 	using System;
 	using System.Collections;
+	using System.Diagnostics;
 	using System.IO;
 	using System.Net;
 	using System.Net.Sockets;
@@ -63,6 +64,8 @@ namespace MediaWiki.Search.Daemon {
 			Configuration.SetIndexSection("Daemon");
 			config = Configuration.Open();
 			
+			MakeLockFile(config.GetString("Daemon", "lockfile"));
+			
 			log.Info("Binding server to port " + port);
 			
 			try {
@@ -95,5 +98,33 @@ namespace MediaWiki.Search.Daemon {
 			}
 
 		}
+		
+		static void MakeLockFile(string lockfile) {
+			if (lockfile == null || lockfile == "") {
+				string temp = Environment.GetEnvironmentVariable("TEMP");
+				if (temp == null | temp == "")
+					temp = Environment.GetEnvironmentVariable("TMP");
+				if (temp == null | temp == "")
+					temp = "/tmp";
+				lockfile = Path.Combine(temp, "MWDaemon.pid");
+			}
+			
+			if (File.Exists(lockfile)) {
+				StreamReader pidIn = File.OpenText(lockfile);
+				string pid = pidIn.ReadLine();
+				pidIn.Close();
+				
+				Console.Error.WriteLine("Daemon already running! pid {0}", pid);
+				log.FatalFormat("Daemon already running! pid {0}", pid);
+				System.Environment.Exit(-1);
+			} else {
+				int pid = Process.GetCurrentProcess().Id;
+				StreamWriter pidOut = File.CreateText(lockfile);
+				pidOut.Write(pid);
+				pidOut.Close();
+				log.InfoFormat("Saved pid {0} to {1}", pid, lockfile);
+			}
+		}
+		
 	}
 }

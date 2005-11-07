@@ -3,6 +3,7 @@
 INSTALL_PREFIX=/usr/local
 INSTALL_BINDIR=$(INSTALL_PREFIX)/bin
 INSTALL_ASSEMBLYDIR=$(INSTALL_PREFIX)/lib/mwsearch
+INSTALL_INITDIR=/etc/init.d
 
 CFLAGS=-codepage:utf8
 MCS?=mcs
@@ -31,10 +32,13 @@ SCRIPTS=\
   build/MWUpdateDaemon.sh \
   build/MWSearchTool.sh
 
+INITSCRIPTS=\
+  build/mwdaemon.sh
+
 CONFIG=\
   build/MWUpdateDaemon.exe.config
 
-all: $(ASSEMBLIES) $(SCRIPTS) $(CONFIG)
+all: $(ASSEMBLIES) $(SCRIPTS) $(INITSCRIPTS) $(CONFIG)
 
 clean :
 	rm -f build/*.dll build/*.exe build/*.sh build/*.config
@@ -49,6 +53,7 @@ install: all
 	install -m 0755 build/MWDaemon.sh $(INSTALL_BINDIR)/MWDaemon
 	install -m 0755 build/MWUpdateDaemon.sh $(INSTALL_BINDIR)/MWUpdateDaemon
 	install -m 0755 build/MWSearchTool.sh $(INSTALL_BINDIR)/MWSearchTool
+	install -m 0755 build/mwdaemon.sh $(INSTALL_INITDIR)/mwdaemon
 	echo "Don't forget to set up /etc/mwsearch.conf"
 
 uninstall :
@@ -139,7 +144,8 @@ build/MWDaemon.exe : build/MWSearch.dll build/MWPrefix.dll $(DAEMON_SOURCES)
 
 build/MWDaemon.sh :
 	echo "#!/bin/sh" > build/MWDaemon.sh
-	echo "exec mono $(INSTALL_ASSEMBLYDIR)/MWDaemon.exe \$$@" >> build/MWDaemon.sh
+	echo "mono $(INSTALL_ASSEMBLYDIR)/MWDaemon.exe \$$@" >> build/MWDaemon.sh
+	echo "rm -f /tmp/MWDaemon.pid" >> build/MWDaemon.sh
 
 
 # MWUpdateDaemon.exe: database refresher, daemon version
@@ -225,3 +231,7 @@ build/IKVM.Runtime.dll : libs/IKVM.Runtime.dll
 
 build/mwdumper.dll : libs/mwdumper.jar
 	$(MONO) libs/ikvmc.exe -out:$@ -target:library -exclude:libs/mwdumper-no-ikvm.txt libs/mwdumper.jar
+
+
+build/mwdaemon.sh : scripts/mwdaemon.sh.in
+	sed -e "s|/usr/local/bin|$(INSTALL_BINDIR)|" < scripts/mwdaemon.sh.in > $@

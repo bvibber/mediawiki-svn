@@ -1,0 +1,41 @@
+#!/bin/sh
+
+SERVICE_NAME="MWDaemon"
+SERVICE_LOCK="/tmp/MWDaemon.pid"
+
+RUN_SCRIPT="/usr/local/bin/MWDaemon"
+
+case "$1" in
+	start)
+		echo -n "Starting $SERVICE_NAME... "
+		if [ -f $SERVICE_LOCK ]; then
+			echo "Already running on" `cat $SERVICE_LOCK`
+		else
+			nohup $RUN_SCRIPT >/dev/null &
+			sleep 1
+			echo "Done"
+		fi
+		;;
+	stop)
+		echo -n "Shutting down $SERVICE_NAME... "
+		if [ -f $SERVICE_LOCK ]; then
+			kill `cat $SERVICE_LOCK` && sleep 1 && echo "Done"
+		else
+			echo "Not running."
+		fi
+		;;
+	restart)
+		$0 stop
+		sleep 1
+		$0 start
+		;;
+	status)
+		echo -n "Checking for $SERVICE_NAME... "
+		test -f $SERVICE_LOCK && echo Running on `cat $SERVICE_LOCK` || echo "Not running."
+		;;
+	*)
+		echo "Usage: $0 {start|stop|status|restart}"
+		exit 1
+		;;
+esac
+
