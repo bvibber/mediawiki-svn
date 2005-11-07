@@ -100,6 +100,7 @@ namespace MediaWiki.Search.SearchTool {
 			reader.readDump();
 			
 			state.Close();
+			Console.WriteLine("Optimizing...");
 			state.Optimize();
 		}
 		
