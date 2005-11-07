@@ -133,7 +133,7 @@ namespace MediaWiki.Search.Daemon {
 		}
 		
 		private void DoNormalSearch(int offset, int limit, NamespaceFilter namespaces) {
-			string encsearchterm = String.Format("title:({0})^4 {1}", searchterm, searchterm);
+			string encsearchterm = String.Format("title:({0})^4 OR ({1})", searchterm, searchterm);
 			
 			DateTime now = DateTime.UtcNow;
 			Query query;
@@ -146,7 +146,7 @@ namespace MediaWiki.Search.Daemon {
 				string escaped = "";
 				for (int i = 0; i < searchterm.Length; ++i)
 					escaped += "\\" + searchterm[i];
-				encsearchterm = "title:(" + escaped + ")^4 " + escaped;
+				encsearchterm = "title:(" + escaped + ")^4 OR (" + escaped + ")";
 				try {
 					query = state.Parse(encsearchterm); 
 				} catch (Exception e2) {

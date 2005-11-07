@@ -144,7 +144,9 @@ namespace MediaWiki.Search {
 		}
 		
 		public Query Parse(string term) {
-			return QueryParser.Parse(term, "contents", analyzer);
+			QueryParser parser = new QueryParser("contents", analyzer);
+			parser.SetOperator(QueryParser.DEFAULT_OPERATOR_AND);
+			return parser.Parse(term);
 		}
 		
 	}
