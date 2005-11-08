@@ -41,6 +41,7 @@ function registerInputboxExtension()
  */
 function renderInputbox($input)
 {
+	global $wgTitle;
 	$inputbox=new Inputbox();
 	getBoxOption($inputbox->type,$input,'type');
 	getBoxOption($inputbox->width,$input,'width',true);	
@@ -54,6 +55,8 @@ function renderInputbox($input)
 	getBoxOption($inputbox->labeltext,$input,'labeltext');	
 	
 	$boxhtml=$inputbox->render();
+	# Maybe support other useful magic words here
+	$boxhtml=str_replace("{{PAGENAME}}",$wgTitle->getText(),$boxhtml);
 	if($boxhtml) {
 		return $boxhtml;
 	} else {
