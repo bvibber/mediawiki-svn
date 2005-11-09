@@ -1118,8 +1118,6 @@ class wiki2xml
 			$xml = str_replace ( " <" , "<space/><" , $xml ) ;
 		}
 		
-		$xml = str_replace ( ">" , ">\n" , $xml ) ;
-		
 		return $xml ;
 		}
 	
