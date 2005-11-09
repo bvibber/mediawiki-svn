@@ -442,7 +442,7 @@ class wiki2xml
 		$c = $this->w[$a] ;
 		if ( !$force )
 			{
-			if ( $c == '*' || $c == ':' || $c == '#' || $c == ' ' || $c == "\n" ) return false ; # Not a suitable beginning
+			if ( $c == '*' || $c == ':' || $c == '#' || $c == ';' || $c == ' ' || $c == "\n" ) return false ; # Not a suitable beginning
 			if ( $this->nextis ( $a , "{|" , false ) ) return false ; # Table
 			if ( count ( $this->tables ) > 0 && $this->nextis ( $a , "|" , false ) ) return false ; # Table
 			if ( count ( $this->tables ) > 0 && $this->nextis ( $a , "!" , false ) ) return false ; # Table
@@ -506,6 +506,7 @@ class wiki2xml
 		if ( $c == '#' ) $r = "numbered" ;
 		if ( $c == '*' ) $r = "bullet" ;
 		if ( $c == ':' ) $r = "ident" ;
+		if ( $c == ';' ) $r = "def" ;
 		if ( $r != "" ) $r = " type='{$r}'" ;
 		$r = "<list{$r}>" ;
 		return $r ;
@@ -556,6 +557,7 @@ class wiki2xml
 			while ( $this->nextis ( $a , "*" ) ) $cur .= "*" ;
 			while ( $this->nextis ( $a , "#" ) ) $cur .= "#" ;
 			while ( $this->nextis ( $a , ":" ) ) $cur .= ":" ;
+			while ( $this->nextis ( $a , ";" ) ) $cur .= ";" ;
 			} while ( $cur != $lcur ) ;
 
 		$unchanged = false ;
@@ -568,7 +570,28 @@ class wiki2xml
 		$this->skipblanks ( $a ) ;
 		
 		if ( $unchanged ) $xml .= "</listitem><listitem>" ;
-		$this->p_restofline ( $a , $xml ) ;
+		if ( $cur == ";" ) # Definition
+			{
+			$b = $a ;
+			while ( $b < $this->wl && $this->w[$b] != "\n" && $this->w[$b] != ':' ) $b++ ;
+			if ( $b >= $this->wl || $this->w[$b] == "\n" )
+				{
+				$xml .= "<defkey>" ;
+				$this->p_restofline ( $a , $xml ) ;
+				$xml .= "</defkey>" ;
+				}
+			else
+				{
+				$xml .= "<defkey>" ;
+				$this->w[$b] = "\n" ;
+				$this->p_restofline ( $a , $xml ) ;
+				$xml .= "</defkey>" ;
+				$xml .= "<defval>" ;
+				$this->p_restofline ( $a , $xml ) ;
+				$xml .= "</defval>" ;
+				}
+			}
+		else $this->p_restofline ( $a , $xml ) ;
 		return true ;
 		}
 		

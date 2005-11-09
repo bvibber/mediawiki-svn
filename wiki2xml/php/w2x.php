@@ -90,13 +90,12 @@ if ( isset ( $_POST['doit'] ) ) {
 	print "
 <html><head></head><body><form method='post'>
 <h1>Magnus' magic wiki-to-XML converter</h1>
-<p>All written in PHP - so portable, so incredibly slow... (see <a href=\"wiki2xml.php?showsource=true\">the source</a>)</p>
+<p>All written in PHP - so portable, so incredibly slow...</p>
 <p>
 Known issues:
 <ul>
-<li>The \";\" markup doesn't work yet (not implemented); \":\" does, though</li>
 <li>In templates, {{{variables}}} used within &lt;nowiki&gt; tags will be replaced as well (too lazy to strip them)</li>
-<li>HTML comments are removed (instead of converted into an XML tag)</li>
+<li>HTML comments are removed (instead of converted into XML tags)</li>
 </ul>
 </p>
 <h2>Paste wikitext here</h2>
