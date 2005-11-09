@@ -5,6 +5,8 @@
 include ( "wiki2xml.php" ) ;
 include ( "default.php" ) ; # Which will include local.php, if available
 
+set_time_limit ( 0 ) ; # No time limit
+
 class ContentProvider {
 	var $article_cache = array () ;
 	var $first_title = "" ;

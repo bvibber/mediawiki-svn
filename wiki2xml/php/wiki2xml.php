@@ -1007,6 +1007,8 @@ class wiki2xml
 			$b++ ;
 			}
 		
+#		if ( $itables > 0 ) return false ;
+		
 		# Parse cell substring
 		$s = substr ( $this->w , $a , $b - $a ) ;
 		$p = new wiki2xml ;
@@ -1050,7 +1052,8 @@ class wiki2xml
 				
 		# Try the rest of the article as another article
 		$x2 = "" ;
-		if ( !$this->p_article ( $b , $x2 ) )
+		$tcount = count($this->tables) ;
+		if ( !$this->p_article ( $b , $x2 ) || count($this->tables) >= $tcount )
 			{
 			unset ( $this->tables[count($this->tables)-1] ) ;
 			return false ;
