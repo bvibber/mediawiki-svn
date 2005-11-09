@@ -238,9 +238,8 @@ class wiki2xml
 			}
 			
 			# Change source (!)
-			$w = $this->w ;
-			$w1 = substr ( $w , 0 , $a ) ;
-			$w2 = substr ( $w , $b ) ;
+			$w1 = substr ( $this->w , 0 , $a ) ;
+			$w2 = substr ( $this->w , $b ) ;
 			$this->w = $w1 . $between . $w2 ;
 			$this->wl = strlen ( $this->w ) ;
 		} else {
@@ -730,9 +729,39 @@ class wiki2xml
 			$tag = substr ( $tag , 0 , -1 ) ;
 			$selfclosing = true ;
 			}
-		
+
+		# Creating temporary parser
+		$np = new wiki2xml ;
+		$ob = $b ;
+		while ( $this->w[$b] != '>' && $this->w[$b] != '/' ) $b++ ;
+		$np->w = substr ( $this->w , $ob , $b - $ob + 1 ) ;
+		$np->wl = strlen ( $np->w ) ;
+
+		# Replacing templates
+		$c = 0 ;
+		while ( $this->auto_fill_templates && $np->w[$c] != '>' && $c < $np->wl )
+			{
+			if ( $np->nextis ( $c , "{{" , false ) )
+				{
+				$xx = "" ;
+				if ( $np->p_template ( $c , $xx ) ) continue ;
+				else $c++ ;
+				}
+			else $c++ ;
+			}
+
 		# Scan attrs
-		while ( $this->w[$b] != '>' && $this->w[$b] != '/' )
+		$c = 0 ;
+		while ( $np->w[$c] != '>' && $np->w[$c] != '/' )
+			{
+			$attr = "" ;
+			if ( !$np->p_html_attr ( $c , $attr ) ) return false ;
+			$attrs[] = $attr ;
+			$np->skipblanks ( $c ) ;
+			if ( $c >= $np->wl ) return false ;
+			}
+
+/*		while ( $this->w[$b] != '>' && $this->w[$b] != '/' )
 			{
 			$attr = "" ;
 			if ( !$this->p_html_attr ( $b , $attr ) ) return false ;
@@ -740,6 +769,7 @@ class wiki2xml
 			$this->skipblanks ( $b ) ;
 			if ( $b >= $this->wl ) return false ;
 			}
+*/
 		
 		# Is self closing?
 		if ( $this->w[$b] == '/' )
@@ -840,7 +870,7 @@ class wiki2xml
 			}
 		$x .= ">" ;
 		
-		# Creating a temporary new parder to tun the attribute list in
+		# Creating a temporary new parser to run the attribute list in
 		$np = new wiki2xml ;
 		$np->w = $x ;
 		$np->wl = strlen ( $x ) ;
@@ -848,6 +878,22 @@ class wiki2xml
 		# Scanning attribute list
 		$attrs = array () ;
 		$c = 0 ;
+
+		# Replacing templates
+		while ( $this->auto_fill_templates && $np->w[$c] != '>' && $c < $np->wl )
+			{
+			if ( $np->nextis ( $c , "{{" , false ) )
+				{
+				$xx = "" ;
+				if ( $np->p_template ( $c , $xx ) ) continue ;
+				else $c++ ;
+				}
+			else $c++ ;
+			}
+		$c = 0 ;
+		$x = $np->w ;
+			
+		# Seeking attributes
 		while ( $np->w[$c] != '>' )
 			{
 			$attr = "" ;
