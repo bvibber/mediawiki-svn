@@ -72,6 +72,8 @@ if ( isset ( $_POST['doit'] ) ) {
 		$t = microtime_float() ;
 		$articles = explode ( "\n" , $wikitext ) ;
 		foreach ( $articles AS $a ) {
+			$a = trim ( $a ) ;
+			if ( $a == "" ) continue ;
 			$p = new wiki2xml ;
 			$wikitext = $content_provider->get_wiki_text ( $a ) ;
 			$text .= $article_open . $p->parse ( $wikitext ) . "</article>" ;
@@ -90,9 +92,11 @@ if ( isset ( $_POST['doit'] ) ) {
 <h1>Magnus' magic wiki-to-XML converter</h1>
 <p>All written in PHP - so portable, so incredibly slow... (see <a href=\"wiki2xml.php?showsource=true\">the source</a>)</p>
 <p>
-Known bugs:
+Known issues:
 <ul>
 <li>The \";\" markup doesn't work yet (not implemented); \":\" does, though</li>
+<li>In templates, {{{variables}}} used within &lt;nowiki&gt; tags will be replaced as well (too lazy to strip them)</li>
+<li>HTML comments are removed (instead of converted into an XML tag)</li>
 </ul>
 </p>
 <h2>Paste wikitext here</h2>
