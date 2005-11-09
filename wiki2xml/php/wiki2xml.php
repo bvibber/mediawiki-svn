@@ -12,7 +12,7 @@ class wiki2xml
 	var $compensate_markup_errors = false;
 	var $auto_fill_templates = true ; # Will try and replace templates right inline, instead of using <template> tags; requires global $content_provider
 	var $use_space_tag = true ; # Use <space/> instead of spaces before and after tags
-	var $allowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890 +-#:;,%="\'\\' ;
+	var $allowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890 +-#:;.,%="\'\\' ;
 	var $directhtmltags = array (
 		"b" => "xhtml:b",
 		"i" => "xhtml:i",
@@ -22,12 +22,19 @@ class wiki2xml
 		"br" => "xhtml:br",
 		"div" => "xhtml:div",
 		"span" => "xhtml:span",
+		"small" => "xhtml:small",
+		"font" => "xhtml:font",
+		"table" => "xhtml:table",
+		"tr" => "xhtml:tr",
+		"th" => "xhtml:th",
+		"td" => "xhtml:td",
+		"caption" => "xhtml:caption",
 		) ;
 		
 	var $w ; # The wiki text
 	var $wl ; # The wiki text length
 	var $bold_italics ;
-	var $tables ;
+	var $tables = array () ; # List of open tables
 
 	# Some often used functions
 	function fitit ( &$a , &$xml , &$f , $atleastonce , $many )
@@ -679,9 +686,6 @@ class wiki2xml
 
 		$a = $b ;
 		$xml .= $tag_open . $x . $between . $tag_close ;
-#		$xml .= $x ;
-#		$xml .= $between ;
-#		$xml .= "</extension>" ;
 		return true ;
 		}
 	
@@ -806,7 +810,8 @@ class wiki2xml
 				$b++ ;
 				}
 			}
-
+		if ( $name == "" ) return true ;
+		
 		$a = $b ;
 		$xml .= "<attr name='{$name}'>{$value}</attr>" ;
 		return true ;
@@ -847,7 +852,7 @@ class wiki2xml
 			{
 			$attr = "" ;
 			if ( !$np->p_html_attr ( $c , $attr ) ) break ;
-			$attrs[] = $attr ;
+			if ( $attr != "" ) $attrs[] = $attr ;
 			$np->skipblanks ( $c ) ;
 			}		
 		if ( substr ( $x , $c ) != ">" ) return "" ;
@@ -951,7 +956,7 @@ class wiki2xml
 			$b++ ;
 			if ( $c == '|' ) $tag = "tablecell" ;
 			else if ( $c == '!' ) $tag = "tablehead" ;
-			else return false ; # This would indeed be strange!
+			else { $xml .= "<error function='p_table_element'/>" ; return false ; } # This would indeed be strange!
 			$attrs = $this->tryfindparams ( $b ) ;
 			if ( !$this->p_restofcell ( $b , $x ) ) return false ;
 			
@@ -977,27 +982,37 @@ class wiki2xml
 		# Get substring for cell
 		$b = $a ;
 		$sameline = true ;
+		$x = "" ;
+		$itables = 0 ;
 		while ( $b < $this->wl )
 			{
 			$c = $this->w[$b] ;
+			if ( $c == "<" && $this->once ( $b , $x , "html" ) ) continue ; # Up front to catch pre and nowiki
 			if ( $c == "\n" ) { $sameline = false ; }
-			if ( $c == "\n" && $this->nextis ( $b , "\n|" , false ) ) break ;
-			if ( $c == "\n" && $this->nextis ( $b , "\n!" , false ) ) break ;
-			if ( $c == "|" && $sameline && $this->nextis ( $b , "||" , false ) ) break ;
-			if ( $c == "!" && $sameline && $this->nextis ( $b , "!!" , false ) ) break ;
+			if ( $c == "\n" && $this->nextis ( $b , "\n{|" ) ) { $itables++ ; continue ; }
+			if ( $c == "\n" && $itables > 0 && $this->nextis ( $b , "\n|}" ) ) { $itables-- ; continue ; }
+			
+			if ( ( $c == "\n" && $this->nextis ( $b , "\n|" , false ) ) OR 
+				 ( $c == "\n" && $this->nextis ( $b , "\n!" , false ) ) OR
+				 ( $c == "|" && $sameline && $this->nextis ( $b , "||" , false ) ) OR
+				 ( $c == "!" && $sameline && $this->nextis ( $b , "!!" , false ) ) )
+				{
+				if ( $itables == 0 ) break ;
+				$b += 2 ;
+				}
+			
 			if ( $c == "[" && $this->once ( $b , $x , "internal_link" ) ) continue ;
 			if ( $c == "{" && $this->once ( $b , $x , "template_variable" ) ) continue ;
 			if ( $c == "{" && $this->once ( $b , $x , "template" ) ) continue ;
-			if ( $c == "<" && $this->once ( $b , $x , "html" ) ) continue ;
 			$b++ ;
 			}
 		
 		# Parse cell substring
-		$x = substr ( $this->w , $a , $b - $a ) ;
+		$s = substr ( $this->w , $a , $b - $a ) ;
 		$p = new wiki2xml ;
-		$x = $p->parse ( $x ) ;
+		$x = $p->parse ( $s ) ;
 		if ( $x == $this->errormessage ) return false ;
-		
+
 		$a = $b + 1 ;
 		$xml .= $this->strip_single_paragraph ( $x ) ;
 		return true ;
@@ -1009,9 +1024,8 @@ class wiki2xml
 		$b = $a ;
 		if ( !$this->nextis ( $b , "|}" ) ) return false ;
 		$x = "" ;
-		$lt = $this->lasttable() ;
-		if ( $lt->is_row_open ) $x .= "</tablerow>" ;
-		array_pop ( $this->tables ) ;
+		if ( $this->tables[count($this->tables)-1]->is_row_open ) $x .= "</tablerow>" ;
+		unset ( $this->tables[count($this->tables)-1] ) ;
 		$x .= "</table>" ;
 		$xml .= $x ;
 		$a = $b ;
@@ -1032,13 +1046,13 @@ class wiki2xml
 		
 		# Add table to stack
 		$nt->is_row_open = false ;
-		array_push ( $this->tables , $nt ) ;
-		
+		$this->tables[count($this->tables)] = $nt ;
+				
 		# Try the rest of the article as another article
 		$x2 = "" ;
 		if ( !$this->p_article ( $b , $x2 ) )
 			{
-			array_pop ( $this->tables ) ;
+			unset ( $this->tables[count($this->tables)-1] ) ;
 			return false ;
 			}
 		$x2 = $this->strip_single_paragraph ( $x2 ) ;
@@ -1066,9 +1080,8 @@ class wiki2xml
 			if ( $this->p_block_lines ( $b , $x , true ) ) continue ;
 			# The last resort!
 			if ( !$this->compensate_markup_errors ) $xml .= "<error type='general' reason='no matching markup'/>" ;
-			$xml .= htmlspecialchars ( $this->w[$b] ) ; # Used to be : break ;
+			$xml .= htmlspecialchars ( $this->w[$b] ) ;
 			}
-		# if ( $b < $this->wl ) return false ; # Now obsolete, as no break anymore
 		$a = $b ;
 		$xml .= $x ;
 		return true ;
@@ -1089,7 +1102,7 @@ class wiki2xml
 		$this->w = preg_replace( '?<!--.*-->?msU', '', $this->w);
 		
 		# Run the thing!
-		$this->tables = array () ;
+#		$this->tables = array () ;
 		$this->wl = strlen ( $this->w ) ;
 		$xml = "" ;
 		$a = 0 ;
@@ -1104,6 +1117,8 @@ class wiki2xml
 			$xml = str_replace ( "> " , "><space/>" , $xml ) ;
 			$xml = str_replace ( " <" , "<space/><" , $xml ) ;
 		}
+		
+		$xml = str_replace ( ">" , ">\n" , $xml ) ;
 		
 		return $xml ;
 		}
