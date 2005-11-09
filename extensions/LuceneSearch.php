@@ -198,8 +198,7 @@ $wgOut->addHTML('<!-- titlens = '. $wgTitle->getNamespace() . '-->');
 				if ( $wgDisableTextSearch ) {
 					$wgOut->addHTML(wfMsg('searchdisabled'));
 				} else {
-					global $wgLastLuceneHost;
-					$wgOut->addWikiText(wfMsg('lucenefailure', $wgLastLuceneHost));
+					$wgOut->addWikiText(wfMsg('lucenefallback'));
 				}
 				$wgOut->addHTML(wfMsg('googlesearch',
 					htmlspecialchars($q),
@@ -622,21 +621,13 @@ class LuceneSearchSet {
 		$fname = 'LuceneSearchSet::newFromQuery';
 		wfProfileIn( $fname );
 
-		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc, $wgLastLuceneHost;
-
-		if( is_array( $wgLuceneHost ) ) {
-			$pick = mt_rand( 0, count( $wgLuceneHost ) - 1 );
-			$host = $wgLuceneHost[$pick];
-		} else {
-			$host = $wgLuceneHost;
-		}
-		$wgLastLuceneHost = $host;
+		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc;
 
 		global $wgUseLatin1, $wgContLang, $wgInputEncoding;
 		$enctext = rawurlencode( trim( $wgUseLatin1
 			? $wgContLang->iconv( $wgInputEncoding, 'utf-8', $query )
 			: $query ) );
-		$searchUrl = "http://$host:$wgLucenePort/$method/$wgDBname/$enctext?" .
+		$searchPath = "/$method/$wgDBname/$enctext?" .
 			wfArrayToCGI( array(
 				'namespaces' => implode( ',', $namespaces ),
 				'offset'     => $offset,
@@ -644,11 +635,11 @@ class LuceneSearchSet {
 			) );
 
 		global $wgOut;
-		$wgOut->addHtml( "<!-- querying $searchUrl -->\n" );
+		$wgOut->addHtml( "<!-- querying $searchPath -->\n" );
 
 		// Cache results for fifteen minutes; they'll be read again
 		// on reloads and paging.
-		$key = $wgDBname.':lucene:' . md5( $searchUrl );
+		$key = $wgDBname.':lucene:' . md5( $searchPath );
 		$expiry = 60 * 15;
 		$resultSet = $wgMemc->get( $key );
 		if( is_object( $resultSet ) ) {
@@ -657,17 +648,40 @@ class LuceneSearchSet {
 			return $resultSet;
 		}
 
-		wfDebug( "Fetching search data from $searchUrl\n" );
-		wfProfileIn( $fname.'-contact-'.$host );
-		$inputLines = explode( "\n", trim( wfGetHTTP( $searchUrl ) ) );
-		wfProfileOut( $fname.'-contact-'.$host );
-		//$inputLines = @file( $searchUrl );
+		if( is_array( $wgLuceneHost ) ) {
+			$hosts = $wgLuceneHost;
+		} else {
+			$hosts = array( $wgLuceneHost );
+		}
+		$remaining = count( $hosts );
+		$pick = mt_rand( 0, count( $hosts ) - 1 );
+		$data = false;
 
-		if( $inputLines === false || $inputLines === array('') ) {
+		while( $data === false && $remaining-- > 0 ) {
+			// Start at a random position in the list, and rotate through
+			// until we find a host that works or run out of hosts.
+			$pick = ($pick + 1) % count( $hosts );
+			$host = $hosts[$pick];
+			$searchUrl = "http://$host:$wgLucenePort$searchPath";
+			
+			wfDebug( "Fetching search data from $searchUrl\n" );
+			wfSuppressWarnings();
+			wfProfileIn( $fname.'-contact-'.$host );
+			$data = wfGetHTTP( $searchUrl );
+			wfProfileOut( $fname.'-contact-'.$host );
+			wfRestoreWarnings();
+			
+			if( $data === false ) {
+				wfDebug( "Failed on $searchUrl!\n" );
+			}
+		}
+
+		if( $data === false || $data === '' ) {
 			// Network error or server error
 			wfProfileOut( $fname );
 			return false;
 		} else {
+			$inputLines = explode( "\n", trim( $data ) );
 			$resultLines = array_map( 'trim', $inputLines );
 		}
 
@@ -786,7 +800,10 @@ $wgMessageCache->addMessage('lucenepowersearchtext', "
 Search in namespaces:\n
 $1\n
 Search for $3 $9");
-$wgMessageCache->addMessage("lucenefailure", "Internal error: no valid response from search server ($1)\n");
+$wgMessageCache->addMessage( "lucenefallback",
+"There was a problem with the wiki search.
+This is probably temporary; try again in a few moments,
+or you can search the wiki through an external search service:\n");
 
 } # End of extension function
 } # End of invocation guard
