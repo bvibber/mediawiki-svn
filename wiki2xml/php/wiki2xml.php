@@ -1090,7 +1090,7 @@ class wiki2xml
 	# The only function to be called directly from outside the class
 	function parse ( &$wiki )
 		{
-		$this->w = trim ( $wiki ) ;
+		$this->w = rtrim ( $wiki ) ;
 		
 		# Fix line endings
 		$cc = count_chars ( $wiki , 0 ) ;
