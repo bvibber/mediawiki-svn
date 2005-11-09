@@ -3,7 +3,7 @@
 # Released under GPL
 
 include ( "wiki2xml.php" ) ;
-include ( "local.php" ) ;
+include ( "default.php" ) ; # Which will include local.php, if available
 
 class ContentProvider {
 	var $article_cache = array () ;
@@ -20,7 +20,8 @@ class ContentProvider {
 		
 		# Retrieve it
 		$url = "http://" . $xmlg["site_base_url"] . "/index.php?action=raw&title=" . urlencode ( $title ) ;
-		$s = file_get_contents ( $url ) ;
+				
+		$s = @file_get_contents ( $url ) ;
 		if ( $do_cache ) $this->article_cache[$title] = $s ;
 		return $s ;
 	}

@@ -12,7 +12,7 @@ class wiki2xml
 	var $compensate_markup_errors = false;
 	var $auto_fill_templates = true ; # Will try and replace templates right inline, instead of using <template> tags; requires global $content_provider
 	var $use_space_tag = true ; # Use <space/> instead of spaces before and after tags
-	var $allowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890 #:;,%="\'\\' ;
+	var $allowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890 +-#:;,%="\'\\' ;
 	var $directhtmltags = array (
 		"b" => "xhtml:b",
 		"i" => "xhtml:i",
@@ -416,6 +416,7 @@ class wiki2xml
 			if ( $c == "[" && $this->once ( $b , $x , "external_link" ) ) continue ;
 			if ( $c == "{" && $this->once ( $b , $x , "template_variable" ) ) continue ;
 			if ( $c == "{" && $this->once ( $b , $x , "template" ) ) continue ;
+			if ( $c == "{" && $this->p_table ( $b , $x ) ) continue ;
 			if ( $c == "<" && $this->once ( $b , $x , "html" ) ) continue ;
 			if ( $c == "'" && $this->once ( $b , $x , "bold" ) ) { $override = true ; break ; }
 			if ( $c == "'" && $this->once ( $b , $x , "italics" ) ) { $override = true ; break ; }
