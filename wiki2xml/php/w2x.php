@@ -57,7 +57,7 @@ if ( isset ( $_POST['doit'] ) ) {
 	
 	$content_provider = new ContentProvider ;
 	$xmlg["site_base_url"] = $_POST['site'] ;
-	$xmlg["namespace_template"] = $_POST['template'] ;
+#	$xmlg["namespace_template"] = $_POST['template'] ;
 
 	header('Content-type: text/xml; charset=utf-8');
 	print "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
@@ -75,6 +75,7 @@ if ( isset ( $_POST['doit'] ) ) {
 			$a = trim ( $a ) ;
 			if ( $a == "" ) continue ;
 			$p = new wiki2xml ;
+			if ( !isset ( $_POST['resolvetemplates'] ) ) $p->auto_fill_templates = false ;
 			$wikitext = $content_provider->get_wiki_text ( $a ) ;
 			$text .= $article_open . $p->parse ( $wikitext ) . "</article>" ;
 		}
@@ -105,7 +106,7 @@ This is
 <INPUT checked type='radio' name='whatsthis' value='articlelist'>a list of articles
 <br/>
 Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/>/index.php<br/>
-Template namespace name : <input type='text' name='template' value='".$xmlg["namespace_template"]."'/><br/>
+<input type='checkbox' name='resolvetemplates' value='1' checked>Automatically resolve templates</input><br/>
 <input type='submit' name='doit' value='Convert'/>
 </form></body></html>" ;
 }
