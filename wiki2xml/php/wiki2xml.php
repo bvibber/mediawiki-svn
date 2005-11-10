@@ -730,46 +730,10 @@ class wiki2xml
 			$selfclosing = true ;
 			}
 
-		# Creating temporary parser
-		$np = new wiki2xml ;
+		# Parsing arrtibutes
 		$ob = $b ;
 		while ( $this->w[$b] != '>' && $this->w[$b] != '/' ) $b++ ;
-		$np->w = substr ( $this->w , $ob , $b - $ob + 1 ) ;
-		$np->wl = strlen ( $np->w ) ;
-
-		# Replacing templates
-		$c = 0 ;
-		while ( $this->auto_fill_templates && $np->w[$c] != '>' && $c < $np->wl )
-			{
-			if ( $np->nextis ( $c , "{{" , false ) )
-				{
-				$xx = "" ;
-				if ( $np->p_template ( $c , $xx ) ) continue ;
-				else $c++ ;
-				}
-			else $c++ ;
-			}
-
-		# Scan attrs
-		$c = 0 ;
-		while ( $np->w[$c] != '>' && $np->w[$c] != '/' )
-			{
-			$attr = "" ;
-			if ( !$np->p_html_attr ( $c , $attr ) ) return false ;
-			$attrs[] = $attr ;
-			$np->skipblanks ( $c ) ;
-			if ( $c >= $np->wl ) return false ;
-			}
-
-/*		while ( $this->w[$b] != '>' && $this->w[$b] != '/' )
-			{
-			$attr = "" ;
-			if ( !$this->p_html_attr ( $b , $attr ) ) return false ;
-			$attrs[] = $attr ;
-			$this->skipblanks ( $b ) ;
-			if ( $b >= $this->wl ) return false ;
-			}
-*/
+		$attrs = $this->preparse_attributes ( substr ( $this->w , $ob , $b - $ob + 1 ) ) ;
 		
 		# Is self closing?
 		if ( $this->w[$b] == '/' )
@@ -791,6 +755,45 @@ class wiki2xml
 			}
 		return true ;
 		}
+
+	# This function replaces templates and separates HTML attributes.
+	# It is used for both HTML tags and wiki tables
+	function preparse_attributes ( $x )
+		{
+		# Creating a temporary new parser to run the attribute list in
+		$np = new wiki2xml ;
+		$np->w = $x ;
+		$np->wl = strlen ( $x ) ;
+
+		# Replacing templates
+		$c = 0 ;
+		while ( $this->auto_fill_templates && $np->w[$c] != '>' && $np->w[$c] != '/' && $c < $np->wl )
+			{
+			if ( $np->nextis ( $c , "{{" , false ) )
+				{
+				$xx = "" ;
+				if ( $np->p_template ( $c , $xx ) ) continue ;
+				else $c++ ;
+				}
+			else $c++ ;
+			}
+
+		$attrs = array () ;
+		$c = 0 ;
+			
+		# Seeking attributes
+		while ( $np->w[$c] != '>' )
+			{
+			$attr = "" ;
+			if ( !$np->p_html_attr ( $c , $attr ) ) break ;
+			if ( $attr != "" ) $attrs[] = $attr ;
+			$np->skipblanks ( $c ) ;
+			}		
+		if ( substr ( $np->w , $c ) != ">" ) return "" ;
+
+		return $attrs ;
+		}
+
 		
 	# This function scans a single HTML tag attribute and returns it as <attr name='key'>value</attr>
 	function p_html_attr ( &$a , &$xml )
@@ -856,7 +859,7 @@ class wiki2xml
 		$xml .= "<hr/>" ;
 		return true ;
 		}
-
+	
 	# TABLE
 	# Scans the rest of the line as HTML attributes and returns the usual <attrs><attr> string
 	function scanattributes ( &$a )
@@ -870,38 +873,7 @@ class wiki2xml
 			}
 		$x .= ">" ;
 		
-		# Creating a temporary new parser to run the attribute list in
-		$np = new wiki2xml ;
-		$np->w = $x ;
-		$np->wl = strlen ( $x ) ;
-
-		# Scanning attribute list
-		$attrs = array () ;
-		$c = 0 ;
-
-		# Replacing templates
-		while ( $this->auto_fill_templates && $np->w[$c] != '>' && $c < $np->wl )
-			{
-			if ( $np->nextis ( $c , "{{" , false ) )
-				{
-				$xx = "" ;
-				if ( $np->p_template ( $c , $xx ) ) continue ;
-				else $c++ ;
-				}
-			else $c++ ;
-			}
-		$c = 0 ;
-		$x = $np->w ;
-			
-		# Seeking attributes
-		while ( $np->w[$c] != '>' )
-			{
-			$attr = "" ;
-			if ( !$np->p_html_attr ( $c , $attr ) ) break ;
-			if ( $attr != "" ) $attrs[] = $attr ;
-			$np->skipblanks ( $c ) ;
-			}		
-		if ( substr ( $x , $c ) != ">" ) return "" ;
+		$attrs = $this->preparse_attributes ( $x ) ;
 		
 		$ret = "" ;
 		if ( count ( $attrs ) > 0 )
