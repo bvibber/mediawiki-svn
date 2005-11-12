@@ -600,10 +600,10 @@ class OAIRepo {
 			$order = 'up_timestamp';
 		}
 		if( $from ) {
-			$where[] = 'up_timestamp >= ' . $this->_db->timestamp( $from );
+			$where[] = 'up_timestamp >= \'' . $this->_db->timestamp( $from ).'\'';
 		}
 		if( $until ) {
-			$where[] = 'up_timestamp <= ' . $this->_db->timestamp( $until );
+			$where[] = 'up_timestamp <= \'' . $this->_db->timestamp( $until ).'\'';
 		}
 		if( !empty( $where ) ) {
 			$sql .= ' WHERE ' . implode( ' AND ', $where );
