@@ -134,6 +134,7 @@ class ScanSet {
 			}
 			.scanset_image {
 				clear: both;
+				text-align: center;
 			}
 			.scanset_next_right {
 				float: right;
@@ -286,8 +287,10 @@ class ScanSet {
 				  "type=\"image/tiff\" src=\"$url\">" .
 				"</object></div>";
 		} else {
-			$this->text .= "<img width=\"{$this->width}\" height=\"{$this->height}\" " .
-				"src=\"$url\" />\n</div>";
+			$this->text .= 
+				"<a href=\"$url\">" .
+				"<img width=\"{$this->width}\" height=\"{$this->height}\" src=\"$url\" />\n" .
+				"</a></div>";
 		}
 		return true;
 	}
@@ -389,8 +392,8 @@ class ScanSet {
 			'scanset_missing_index_file' => 'ScanSet: Index file $1 not found',
 			'scanset_index_file_error' => 'ScanSet: Error in index file format at line $1',
 			'scanset_invalid_volume' => 'ScanSet: Invalid volume',
-			'scanset_next' => 'Next >',
-			'scanset_prev' => '< Prev',
+			'scanset_next' => 'Next &gt;',
+			'scanset_prev' => '&lt; Prev',
 		));
 	}
 }
