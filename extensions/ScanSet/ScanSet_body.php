@@ -77,7 +77,7 @@ class ScanSet {
 		
 		if ( isset( $this->attributes['vol'] ) ) $this->vol = $this->attributes['vol'];
 		if ( isset( $this->attributes['page'] ) ) $this->page = $this->attributes['page'];
-		if ( isset( $this->attributes['type'] ) ) $this->type = strtolower( $this->attributes['type'] );
+		if ( isset( $this->attributes['type'] ) ) $this->type = $this->attributes['type'];
 		if ( isset( $this->attributes['width'] ) ) $this->width = intval( $this->attributes['width'] );
 		if ( isset( $this->attributes['height'] ) ) $this->height = intval( $this->attributes['height'] );
 
@@ -159,7 +159,7 @@ class ScanSet {
 
 		$text = "<div class='scanset_index'><ul>\n";
 		while ( ( $file = readdir( $dir ) ) !== false ) {
-			if ( strtolower( substr( $file, -$extLength ) ) == $ext ) {
+			if ( substr( $file, -$extLength ) == $ext ) {
 				$text .= $this->getPageLinkLI( false, $file, $file, $file ) . "\n";
 				++$numFiles;
 			}
@@ -279,7 +279,7 @@ class ScanSet {
 		$url .= '/' . rawurlencode( $this->page ) . '.' . rawurlencode( $this->type );
 		
 		$this->text .= "<div class='scanset_image'>\n";
-		if ( $this->type == 'tif' ) {
+		if ( strtolower( $this->type ) == 'tif' ) {
 			$this->text .= "<object width=\"{$this->width}\" height=\"{$this->height}\" " .
 				  "classid=\"CLSID:106E49CF-797A-11D2-81A2-00E02C015623\">" .
 				"<param name=\"src\" value=\"$url\">" .
