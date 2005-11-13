@@ -7,6 +7,8 @@ if (!defined('MEDIAWIKI')) die();
  * Special:AdvancedRandom/Template:Delete to get a random speedy deletion
  * candidate.
  *
+ * Note: This is neat, but way too expensive to run on any serious site
+ *
  * @package MediaWiki
  * @subpackage Extensions
  *
