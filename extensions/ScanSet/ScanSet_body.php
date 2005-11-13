@@ -31,38 +31,15 @@ class ScanSet {
 	}
 
 	function execute() {
-		global $wgRequest;
+		global $wgRequest, $wgHooks;
 
 		// Depends on parameters
 		$this->parser->disableCache();
 
-		$this->text = '<style>/*<![CDATA[*/ ' .
-			'.scanset_vollist { '.
-				'border-color: #cccccc;' .
-				'border-width: thin;' .
-				'border-style: solid;' .
-				'float: left;' .
-			'} ' .
-			'.scanset_pagelist { '.
-				'border-color: #cccccc;' .
-				'border-width: thin;' .
-				'border-style: solid;' .
-				'float: left;' .	
-			'} ' .
-			'.scanset_index { '.
-				'float: left;' .
-			'} ' .
-			'.scanset_image { '.
-				'clear: both;' .
-			'} ' .
-			'.scanset_next_right { ' .
-				'float: right;' .
-			'} ' .
-			'.scanset_next_left { ' .
-				'float: left;' .
-			'} ' .
-			'/*]]>*/</style>';
+		// Add style to the head
+		$wgHooks['SkinTemplateSetupPageCss'][] = array( &$this, 'getCss' );
 
+		$this->text = '';
 
 		$this->indexText = '';
 		$this->currentVolDir = false;
@@ -132,6 +109,40 @@ class ScanSet {
 		}
 
 		return $text;
+	}
+
+	function getCss( &$css ) {
+		if ( $css === false ) {
+			$css = '';
+		}
+		$css .= '
+			/*<![CDATA[*/ 
+			.scanset_vollist { 
+				border-color: #cccccc;
+				border-width: thin;
+				border-style: solid;
+				float: left;
+			} 
+			.scanset_pagelist {
+				border-color: #cccccc;
+				border-width: thin;
+				border-style: solid;
+				float: left;
+			}
+			.scanset_index {
+				float: left;
+			}
+			.scanset_image {
+				clear: both;
+			}
+			.scanset_next_right {
+				float: right;
+			}
+			.scanset_next_left {
+				float: left;
+			}
+			/*]]>*/';
+		return true;
 	}
 
 	function doDirIndex() {
