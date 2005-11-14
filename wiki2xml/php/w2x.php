@@ -6,7 +6,7 @@ include ( "wiki2xml.php" ) ;
 include ( "default.php" ) ; # Which will include local.php, if available
 include ( "content_provider.php" ) ;
 
-set_time_limit ( 0 ) ; # No time limit
+@set_time_limit ( 0 ) ; # No time limit
 
 ## TIMER FUNCTION
 

@@ -228,8 +228,8 @@ class wiki2xml
 		if ( $this->auto_fill_templates ) { # Do not generate <template> sections, but rather replace the template call with the template text
 			# Get template text
 			global $content_provider ;
-			$target = array_pop ( explode ( ">" , $target , 2 ) ) ;
-			$target = array_shift ( explode ( "<" , $target , 2 ) ) ;
+			$target = array_pop ( @explode ( ">" , $target , 2 ) ) ;
+			$target = array_shift ( @explode ( "<" , $target , 2 ) ) ;
 			$between = $content_provider->get_template_text ( $target ) ;
 			
 			# Replacing template variables. ATTENTION: Template variables within <nowiki> sections of templates will be replaced as well!
