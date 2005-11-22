@@ -19,11 +19,8 @@ If strange XML errors are encountered under Java 1.4, try 1.5:
 USAGE:
 
 Sample command line for a direct database import:
-  java -server -jar mwdumper.jar --format=sql:1.5 pages_full.xml.bz2 |
+  java -jar mwdumper.jar --format=sql:1.5 pages_full.xml.bz2 |
     mysql -u <username> -p <databasename>
-
-(The -server option may significantly increase performance on some
-versions of Sun's JVM for large files.)
 
 You can also do complex filtering to produce multiple output files:
   java -jar mwdumper.jar \
@@ -50,7 +47,7 @@ Internal decompression of 7-zip .7z files is not yet supported; you can
 pipe such files through p7zip's 7za:
 
   7za e -so pages_full.xml.7z |
-    java -server -jar mwdumper --format=sql:1.5 |
+    java -jar mwdumper --format=sql:1.5 |
     mysql -u <username> -p <databasename>
 
 Defaults if no parameters are given:
@@ -118,7 +115,11 @@ PERFORMANCE TIPS:
 
 To speed up importing into a database, you might try:
 
-* Increase the innodb_log_file_size. The default is as little as 5mb, but
+* Java's -server option may significantly increase performance on some
+  versions of Sun's JVM for large files. (Not all installations will
+  have this available.)
+
+* Increase MySQL's innodb_log_file_size. The default is as little as 5mb, but
   you can improve performance dramatically by increasing this to reduce
   the number of disk writes. (See the my-huge.cnf sample config.)
 
