@@ -104,9 +104,9 @@ class Inputbox {
 		}
 		
 		$searchform=<<<ENDFORM
-<table border="0" width="100%">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
 <tr>
-<td align="center" bgcolor="{$this->bgcolor}" cellspacing="0">
+<td align="center" bgcolor="{$this->bgcolor}">
 <form name="searchbox" action="$searchpath" class="searchbox">
 	<input class="searchboxInput" name="search" type="text"
 	value="{$this->defaulttext}" size="{$this->width}"/><br />
@@ -165,7 +165,7 @@ ENDFORM;
 			}
 		}		
 		$createform=<<<ENDFORM
-<table border="0" width="100%" cellspacing="0">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
 <tr>
 <td align="center" bgcolor="{$this->bgcolor}">
 <form name="createbox" action="$action" method="get" class="createbox">
