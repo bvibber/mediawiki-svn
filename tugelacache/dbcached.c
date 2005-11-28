@@ -1194,6 +1194,9 @@ void sync_handler(int fd, short which, void *arg)
 {
     struct timeval t;
 
+    if (settings.synctimer==0)
+	return;
+
     evtimer_del(&syncevent);
     evtimer_set(&syncevent, sync_handler, 0);
     t.tv_sec = settings.synctimer;
