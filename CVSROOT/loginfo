@@ -27,6 +27,7 @@
 
 ALL /usr/bin/perl $CVSROOT/CVSROOT/ciabot_cvs.pl %{,,,s} $USER
 
+# sitewide syncmail doesn't include a charset header in outgoing mail...
 #DEFAULT /cvsroot/sitedocs/CVSROOT/cvstools/syncmail -u %{sVv} mediawiki-cvs@wikimedia.org
 
 # use our local copy with headers customized for UTF-8:
