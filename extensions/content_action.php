@@ -1,6 +1,6 @@
 <?php
 /**
- * An extension that demonstrated how to use the SkinTemplateContentActions
+ * An extension that demonstrates how to use the SkinTemplateContentActions
  * hook to add a new content action
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
@@ -27,7 +27,7 @@ function wfAddActionContentHook( &$content_actions ) {
 	
 	$action = $wgRequest->getText( 'action' );
 
-	if ($wgTitle->getNamespace() != NS_SPECIAL) {
+	if ( $wgTitle->getNamespace() != NS_SPECIAL ) {
 		$content_actions['myact'] = array(
 			'class' => $action == 'myact' ? 'selected' : false,
 			'text' => wfMsg( 'myact' ),
@@ -43,7 +43,7 @@ function wfAddactActionHook( $action, &$wgArticle ) {
 	
 	$title = $wgArticle->getTitle(); 
 	
-	if ($action == 'myact')
+	if ( $action == 'myact' )
 		$wgOut->addHTML( 'The page name is ' . $title->getText() . ' and you are ' . $wgArticle->getUserText() );
 
 	return false;
