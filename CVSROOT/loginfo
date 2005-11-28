@@ -26,4 +26,7 @@
 #DEFAULT (echo ""; id; echo %{sVv}; date; cat) >> $CVSROOT/CVSROOT/commitlog
 
 ALL /usr/bin/perl $CVSROOT/CVSROOT/ciabot_cvs.pl %{,,,s} $USER
+
+# DEFAULT /cvsroot/sitedocs/CVSROOT/cvstools/syncmail -u %{sVv} mediawiki-cvs@wikimedia.org
+# use our local copy with headers customized:
 DEFAULT /usr/bin/python /cvsroot/wikipedia/CVSROOT/syncmail -u %{sVv} mediawiki-cvs@wikimedia.org
