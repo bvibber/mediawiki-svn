@@ -27,6 +27,8 @@
 
 ALL /usr/bin/perl $CVSROOT/CVSROOT/ciabot_cvs.pl %{,,,s} $USER
 
-# DEFAULT /cvsroot/sitedocs/CVSROOT/cvstools/syncmail -u %{sVv} mediawiki-cvs@wikimedia.org
+DEFAULT /cvsroot/sitedocs/CVSROOT/cvstools/syncmail -u %{sVv} mediawiki-cvs@wikimedia.org
+
 # use our local copy with headers customized for UTF-8:
-DEFAULT /cvsroot/wikipedia/CVSROOT/syncmail -u %{sVv} mediawiki-cvs@wikimedia.org
+# BROKEN, DISABLED
+#DEFAULT /cvsroot/wikipedia/CVSROOT/syncmail -u %{sVv} mediawiki-cvs@wikimedia.org
