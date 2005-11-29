@@ -185,6 +185,18 @@ class Namespace {
 		return $this->hasParent();	
 	}
 
+	/*
+	 * Check if the given namespace is not a talk page
+	 * @return bool
+	 */
+	function isMain( $index ) {
+		return !$this->isTalk();
+	}
+	
+	function isSpecial() {
+		return($this->getIndex()<NS_MAIN);
+	}
+
 	function isSearchedByDefault() {
 		return $this->isSearchedByDefault;		
 	}
@@ -288,7 +300,7 @@ class Namespace {
 		$ns=$this->getDefaultName();
 		return strtr($ns, '_',' ');
 	}
-	        
+
 	/**
          * Returns the namespace index for a given name or synonym,
          * if valid
@@ -316,7 +328,7 @@ class Namespace {
          */	
 	function getDefaultNameForName ( $name ) {
                 global $wgNamespaces;
-                $index=$this->getIndexForName($name);
+                $index=Namespace::getIndexForName($name);
                 if(!is_null($index)) {
                         return $wgNamespaces[$index]->getDefaultName();
                 } else {
@@ -555,13 +567,27 @@ class Namespace {
 
 				# Duplicate names
 				foreach($wgNamespaces as $exns) {
-					foreach($exns->names as $exname) {
+					if($exns->getIndex()!=$index) {
+						foreach($exns->names as $exname) {
+							if($exname == $name) {
+								$rv[NS_RESULT] = NS_NAME_ISSUES;
+								$rv[NS_DUPLICATE_NAMES][]=$name;
+							}
+						}
+					}
+				}
+
+				# Check if we're not creating duplicate names
+				# by modifying an existing namespace
+				if($operation==NS_NAME_MODIFY) {
+					foreach($this->names as $exname) {
 						if($exname == $name) {
 							$rv[NS_RESULT] = NS_NAME_ISSUES;
 							$rv[NS_DUPLICATE_NAMES][]=$name;
 						}
 					}
 				}
+
 				# Interwiki
 				if(Title::getInterwikiLink( $name)) {
 					$rv[NS_RESULT]=NS_NAME_ISSUES;
@@ -729,8 +755,10 @@ class Namespace {
 			# If this was just a test for a new
 			# namespace, reset the index to NULL so
 			# it will be created for real
-			# if save() is called on the same object.			
-			$this->setIndex(NULL);
+			# if save() is called on the same object.
+			if($testSave) {
+				$this->setIndex(NULL);
+			}
 		} else {
 			$rv[NS_RESULT]=NS_MODIFIED;
 		}

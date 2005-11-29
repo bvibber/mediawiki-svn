@@ -796,7 +796,6 @@ du kan blive blokeret fra at lægge op hvis du misbruger systemet.",
 "copyrightpage" => "{{ns:project}}:Ophavsret",
 "copyrightpagename" => "{{SITENAME}} ophavsret",
 "uploadedfiles"	=> "Filer som er lagt op",
-"ignorewarning"	=> "Ignorér advarslen og gem filen alligevel.",
 "minlength"		=> "Navnet på filen skal være på mindst tre bogstaver.",
 'illegalfilename'	=> 'Filnavnet "$1" indeholder tegn, der ikke er tilladte i sidetitler. Omdøb filen og prøv at lægge den op igen.',
 "badfilename"	=> "Navnet på filen er blevet ændret til \"$1\".",
@@ -1137,7 +1136,7 @@ på siden.",
 "undeletebtn" => "Gendan!",
 "undeletedarticle" => "gendannede \"$1\"",
 'undeletedrevisions' => "$1 versioner gendannet",
-"undeletedtext"   => "Artiklen [[$1]] er blevet gendannet med succes.
+"undeletedtext"   => "Artiklen [[:$1|$1]] er blevet gendannet med succes.
 Se [[{{ns:project}}:Sletningslog]] for en fortegnelse over nylige
 sletninger og gendannelser.",
 

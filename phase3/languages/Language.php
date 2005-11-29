@@ -89,6 +89,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	'fancysig' 		=> 0,
 	'externaleditor' 	=> 0,
 	'externaldiff' 		=> 0,
+	'showjumplinks'		=> 1,
+	'numberheadings'	=> 0,
 );
 
 /* private */ $wgQuickbarSettingsEn = array(
@@ -115,14 +117,24 @@ if( defined( 'MEDIAWIKI' ) ) {
 	MW_MATH_MATHML => 'mw_math_mathml'
 );
 
-# Whether to use user or default setting in Language::date()
-
-/* private */ $wgDateFormatsEn = array(
-	'No preference',
-	'16:12, January 15, 2001',
-	'16:12, 15 January 2001',
-	'16:12, 2001 January 15',
-	'ISO 8601' => '2001-01-15 16:12:34'
+/**
+ * Whether to use user or default setting in Language::date()
+ *
+ * NOTE: the array string values are no longer important!
+ * The actual date format functions are now called for the selection in
+ * Special:Preferences, and the 'datedefault' message for MW_DATE_DEFAULT.
+ *
+ * The array keys make up the set of formats which this language allows
+ * the user to select. It's exposed via Language::getDateFormats().
+ *
+ * @access private
+ */
+$wgDateFormatsEn = array(
+	MW_DATE_DEFAULT => 'No preference',
+	MW_DATE_DMY => '16:12, 15 January 2001',
+	MW_DATE_MDY => '16:12, January 15, 2001',
+	MW_DATE_YMD => '16:12, 2001 January 15',
+	MW_DATE_ISO => '2001-01-15 16:12:34'
 );
 
 /* private */ $wgUserTogglesEn = array(
@@ -151,6 +163,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	'fancysig',
 	'externaleditor',
 	'externaldiff',
+	'showjumplinks',
 );
 
 /* private */ $wgBookstoreListEn = array(
@@ -196,7 +209,7 @@ $wgLanguageNamesEn =& $wgLanguageNames;
 #
 /* private */ $wgMagicWordsEn = array(
 #   ID                                 CASE  SYNONYMS
-	MAG_REDIRECT             => array( 0,    '#redirect'              ),
+	MAG_REDIRECT             => array( 0,    '#REDIRECT'              ),
 	MAG_NOTOC                => array( 0,    '__NOTOC__'              ),
 	MAG_FORCETOC             => array( 0,    '__FORCETOC__'           ),
 	MAG_TOC                  => array( 0,    '__TOC__'                ),
@@ -215,6 +228,9 @@ $wgLanguageNamesEn =& $wgLanguageNames;
 	MAG_PAGENAME             => array( 1,    'PAGENAME'               ),
 	MAG_PAGENAMEE            => array( 1,    'PAGENAMEE'              ),
 	MAG_NAMESPACE            => array( 1,    'NAMESPACE'              ),
+	MAG_NAMESPACEE           => array( 1,    'NAMESPACEE'             ),
+	MAG_FULLPAGENAME         => array( 1,    'FULLPAGENAME'           ),
+	MAG_FULLPAGENAMEE        => array( 1,    'FULLPAGENAMEE'          ),
 	MAG_MSG                  => array( 0,    'MSG:'                   ),
 	MAG_SUBST                => array( 0,    'SUBST:'                 ),
 	MAG_MSGNW                => array( 0,    'MSGNW:'                 ),
@@ -242,6 +258,12 @@ $wgLanguageNamesEn =& $wgLanguageNames;
 	MAG_CURRENTDOW           => array( 1,    'CURRENTDOW'             ),
 	MAG_REVISIONID           => array( 1,    'REVISIONID'             ),
 	MAG_PLURAL               => array( 0,    'PLURAL:'                ),
+	MAG_FULLURL              => array( 0,    'FULLURL:'               ),
+	MAG_FULLURLE             => array( 0,    'FULLURLE:'              ),
+	MAG_LCFIRST		 => array( 0,    'LCFIRST:'               ),
+	MAG_UCFIRST		 => array( 0,    'UCFIRST:'               ),
+	MAG_LC			 => array( 0,    'LC:'                    ),
+	MAG_UC			 => array( 0,    'UC:'                    ),
 );
 
 #-------------------------------------------------------------------
@@ -255,10 +277,6 @@ $wgLanguageNamesEn =& $wgLanguageNames;
 global $wgRightsText;
 
 /* private */ $wgAllMessagesEn = array(
-
-# The navigation toolbar, int: is used here to make sure that the appropriate
-# messages are automatically pulled from the user-selected language file.
-
 /*
 The sidebar for MonoBook is generated from this message, lines that do not
 begin with * or ** are discarded, furthermore lines that do begin with ** and
@@ -283,7 +301,7 @@ parent class in order maintain consistency across languages.
 ',
 
 # User preference toggles
-'tog-underline' => 'Underline links',
+'tog-underline' => 'Underline links:',
 'tog-highlightbroken' => 'Format broken links <a href="" class="new">like this</a> (alternative: like this<a href="" class="internal">?</a>).',
 'tog-justify'	=> 'Justify paragraphs',
 'tog-hideminor' => 'Hide minor edits in recent changes',
@@ -301,14 +319,15 @@ parent class in order maintain consistency across languages.
 'tog-previewontop' => 'Show preview before edit box',
 'tog-previewonfirst' => 'Show preview on first edit',
 'tog-nocache' => 'Disable page caching',
-'tog-enotifwatchlistpages' 	=> 'Send me an email on page changes',
-'tog-enotifusertalkpages' 	=> 'Send me an email when my user talk page is changed',
-'tog-enotifminoredits' 		=> 'Send me an email also for minor edits of pages',
+'tog-enotifwatchlistpages' 	=> 'Email me on page changes',
+'tog-enotifusertalkpages' 	=> 'Email me when my user talk page is changed',
+'tog-enotifminoredits' 		=> 'Email me also for minor edits of pages',
 'tog-enotifrevealaddr' 		=> 'Reveal my email address in notification mails',
 'tog-shownumberswatching' 	=> 'Show the number of watching users',
 'tog-fancysig' => 'Raw signatures (without automatic link)',
 'tog-externaleditor' => 'Use external editor by default',
 'tog-externaldiff' => 'Use external diff by default',
+'tog-showjumplinks' => 'Enable "jump to" accessibility links',
 
 'underline-always' => 'Always',
 'underline-never' => 'Never',
@@ -350,6 +369,7 @@ parent class in order maintain consistency across languages.
 'dec' => 'Dec',
 # Bits of text used by many pages:
 #
+'categories1' => 'Category',
 'categories' => 'Categories',
 'category' => 'category',
 'category_header' => 'Articles in category "$1"',
@@ -443,6 +463,7 @@ parent class in order maintain consistency across languages.
 'viewtalkpage' => 'View discussion',
 'otherlanguages' => 'In other languages',
 'redirectedfrom' => '(Redirected from $1)',
+'redirectpagesub' => 'Redirect page',
 'lastmodified'	=> 'This page was last modified $1.',
 'viewcount'		=> 'This page has been accessed $1 times.',
 'copyright'	=> 'Content is available under $1.',
@@ -450,6 +471,9 @@ parent class in order maintain consistency across languages.
 'printsubtitle' => '(From {{SERVER}})',
 'protectedpage' => 'Protected page',
 'administrators' => 'Project:Administrators',
+'jumpto' => 'Jump to:',
+'jumptonavigation' => 'navigation',
+'jumptosearch' => 'search',
 
 'sysoptitle'	=> 'Sysop access required',
 'sysoptext'		=> 'The action you have requested can only be
@@ -469,6 +493,9 @@ See $1.',
 'versionrequiredtext' => 'Version $1 of MediaWiki is required to use this page. See [[Special:Version]]',
 
 'nbytes'		=> '$1 bytes',
+'ncategories'		=> '$1 categories',
+'nrevisions'		=> '$1 revisions',
+'widthheight'		=> '$1x$2',
 'ok'			=> 'OK',
 'sitetitle'		=> '{{SITENAME}}',
 'pagetitle'		=> '$1 - {{SITENAME}}',
@@ -602,10 +629,13 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'badretype'		=> 'The passwords you entered do not match.',
 'userexists'	=> 'The user name you entered is already in use. Please choose a different name.',
 'youremail'		=> 'Email *',
+'username'		=> 'Username: ',
+'uid'			=> 'User ID: ',
 'yourrealname'		=> 'Real name *',
-'yourlanguage'	=> 'Language',
+'yourlanguage'	=> 'Language:',
 'yourvariant'  => 'Variant',
-'yournick'		=> 'Nickname',
+'yournick'		=> 'Nickname:',
+'badsig'		=> 'Invalid raw signature; check HTML tags.',
 'email'			=> 'Email',
 'emailforlost'		=> "Fields marked with superscripts are optional.  Storing an email address enables people to contact you through the website without you having to reveal your
 email address to them, and it can be used to send you a new password if you forget it.<br /><br />Your real name, if you choose to provide it, will be used for giving you attribution for your work.",
@@ -645,8 +675,7 @@ to confirm that the account is actually yours.",
 'emailauthenticated'        => 'Your email address was authenticated on $1.',
 'emailnotauthenticated'     => 'Your email address is <strong>not yet authenticated</strong>. No email
 will be sent for any of the following features.',
-'noemailprefs'              => '<strong>No email address has been specified</strong>, the following
-features will not work.',
+'noemailprefs'              => '<strong>Specify an email address for these features to work.</strong>',
 'emailconfirmlink' => 'Confirm your e-mail address',
 'invalidemailaddress'	=> 'The email address cannot be accepted as it appears to have an invalid
 format. Please enter a well-formatted address or empty that field.',
@@ -710,18 +739,23 @@ Your IP address is $3. Please include this address in any queries you make.
 To create the page, start typing in the box below
 (see the [[Project:Help|help page]] for more info).
 If you are here by mistake, just click your browser's '''back''' button.",
+'newarticletextanon' => '{{int:newarticletext}}',
 'talkpagetext' => '<!-- MediaWiki:talkpagetext -->',
 'anontalkpagetext' => "----''This is the discussion page for an anonymous user who has not created an account yet or who does not use it. We therefore have to use the numerical [[IP address]] to identify him/her. Such an IP address can be shared by several users. If you are an anonymous user and feel that irrelevant comments have been directed at you, please [[Special:Userlogin|create an account or log in]] to avoid future confusion with other anonymous users.'' ",
-'noarticletext' => '(There is currently no text in this page)',
+'noarticletext' => 'There is currently no text in this page, you can [[{{ns:special}}:Search/{{PAGENAME}}|search for this page title]] in other pages or [{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} edit this page].',
+'noarticletextanon' => '{{int:noarticletext}}',
 'clearyourcache' => "'''Note:''' After saving, you may have to bypass your browser's cache to see the changes. '''Mozilla / Firefox / Safari:''' hold down ''Shift'' while clicking ''Reload'', or press ''Ctrl-Shift-R'' (''Cmd-Shift-R'' on Apple Mac); '''IE:''' hold ''Ctrl'' while clicking ''Refresh'', or press ''Ctrl-F5''; '''Konqueror:''': simply click the ''Reload'' button, or press ''F5''; '''Opera''' users may need to completely clear their cache in ''Tools&rarr;Preferences''.",
 'usercssjsyoucanpreview' => "<strong>Tip:</strong> Use the 'Show preview' button to test your new CSS/JS before saving.",
 'usercsspreview' => "'''Remember that you are only previewing your user CSS, it has not yet been saved!'''",
 'userjspreview' => "'''Remember that you are only testing/previewing your user JavaScript, it has not yet been saved!'''",
 'updated'		=> '(Updated)',
 'note'			=> '<strong>Note:</strong> ',
-'previewnote'	=> 'Remember that this is only a preview, and has not yet been saved!',
+'previewnote'	=> '<strong>This is only a preview; changes have not yet been saved!</strong>',
+'session_fail_preview' => '<strong>Sorry! We could not process your edit due to a loss of session data. 
+Please try again. If it still doesn\'t work, try logging out and logging back in.</strong>',
 'previewconflict' => 'This preview reflects the text in the upper
 text editing area as it will appear if you choose to save.',
+'importing'		=> "Importing $1",
 'editing'		=> "Editing $1",
 'editingsection'		=> "Editing $1 (section)",
 'editingcomment'		=> "Editing $1 (comment)",
@@ -854,16 +888,14 @@ $2 List redirects &nbsp; Search for $3 $9",
 'preferences'	=> 'Preferences',
 'prefsnologin' => 'Not logged in',
 'prefsnologintext'	=> "You must be [[Special:Userlogin|logged in]] to set user preferences.",
-'prefslogintext' => "You are logged in as \"$1\".
-Your internal ID number is $2.
-
-See [[Project:User preferences help]] for help deciphering the options.",
 'prefsreset'	=> 'Preferences have been reset from storage.',
 'qbsettings'	=> 'Quickbar',
 'changepassword' => 'Change password',
 'skin'			=> 'Skin',
 'math'			=> 'Math',
 'dateformat'		=> 'Date format',
+'datedefault'		=> 'No preference',
+'datetime'		=> 'Date and time',
 'math_failure'		=> 'Failed to parse',
 'math_unknown_error'	=> 'unknown error',
 'math_unknown_function'	=> 'unknown function ',
@@ -873,23 +905,23 @@ See [[Project:User preferences help]] for help deciphering the options.",
 'math_bad_tmpdir'	=> 'Can\'t write to or create math temp directory',
 'math_bad_output'	=> 'Can\'t write to or create math output directory',
 'math_notexvc'	=> 'Missing texvc executable; please see math/README to configure.',
-'prefs-personal' => 'User data',
-'prefs-rc' => 'Recent changes & stubs',
+'prefs-personal' => 'User profile',
+'prefs-rc' => 'Recent changes',
 'prefs-misc' => 'Misc',
 'saveprefs'		=> 'Save',
 'resetprefs'	=> 'Reset',
-'oldpassword'	=> 'Old password',
-'newpassword'	=> 'New password',
-'retypenew'		=> 'Retype new password',
+'oldpassword'	=> 'Old password:',
+'newpassword'	=> 'New password:',
+'retypenew'		=> 'Retype new password:',
 'textboxsize'	=> 'Editing',
-'rows'			=> 'Rows',
-'columns'		=> 'Columns',
+'rows'			=> 'Rows:',
+'columns'		=> 'Columns:',
 'searchresultshead' => 'Search',
-'resultsperpage' => 'Hits per page',
-'contextlines'	=> 'Lines per hit',
-'contextchars'	=> 'Context per line',
-'stubthreshold' => 'Threshold for stub display',
-'recentchangescount' => 'Titles in recent changes',
+'resultsperpage' => 'Hits per page:',
+'contextlines'	=> 'Lines per hit:',
+'contextchars'	=> 'Context per line:',
+'stubthreshold' => 'Threshold for stub display:',
+'recentchangescount' => 'Titles in recent changes:',
 'savedprefs'	=> 'Your preferences have been saved.',
 'timezonelegend' => 'Time zone',
 'timezonetext'	=> 'The number of hours your local time differs from server time (UTC).',
@@ -897,7 +929,7 @@ See [[Project:User preferences help]] for help deciphering the options.",
 'timezoneoffset' => 'Offset¹',
 'servertime'	=> 'Server time',
 'guesstimezone' => 'Fill in from browser',
-'emailflag'		=> 'Disable e-mail from other users',
+'allowemail'		=> 'Enable email from other users',
 'defaultns'		=> 'Search in these namespaces by default:',
 'default'		=> 'default',
 'files'			=> 'Files',
@@ -1019,7 +1051,7 @@ To include the image in a page, use a link in the form
 'copyrightpage' => "Project:Copyrights",
 'copyrightpagename' => "{{SITENAME}} copyright",
 'uploadedfiles'	=> 'Uploaded files',
-'ignorewarning'	=> 'Ignore warning and save file anyway.',
+'ignorewarnings'	=> 'Ignore any warnings',
 'minlength'		=> 'File names must be at least three letters.',
 'illegalfilename'	=> 'The filename "$1" contains characters that are not allowed in page titles. Please rename the file and try uploading it again.',
 'badfilename'	=> 'File name has been changed to "$1".',
@@ -1045,7 +1077,7 @@ created and by whom, and anything else you may know about it. If this is an imag
 'sourcefilename' => 'Source filename',
 'destfilename' => 'Destination filename',
 
-'license' => 'Licensing',	
+'license' => 'Licensing',
 'nolicense' => 'None selected',
 
 # Image list
@@ -1079,6 +1111,16 @@ this old version, (rev) = revert to this old version.
 'noimage-linktext'       => 'upload it',
 'uploadnewversion' => '[$1 Upload a new version of this file]',
 
+# Mime search
+#
+'mimesearch' => 'MIME search',
+'mimetype' => 'MIME type: ',
+'download' => 'download',
+
+# Unwatchedpages
+#
+'unwatchedpages' => 'Unwatched pages',
+
 # Statistics
 #
 'statistics'	=> 'Statistics',
@@ -1106,6 +1148,7 @@ That comes to '''$5''' average edits per page, and '''$6''' views per edit.",
 'disambiguationstext'	=> "The following pages link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br />A page is treated as disambiguation if it is linked from $1.<br />Links from other namespaces are <i>not</i> listed here.",
 'doubleredirects'	=> 'Double redirects',
 'doubleredirectstext'	=> "Each row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" target page, which the first redirect should point to.",
+'doubleredirectsarrow'	=> '→',
 'brokenredirects'	=> 'Broken Redirects',
 'brokenredirectstext'	=> 'The following redirects link to a non-existing pages.',
 'selflinks'		=> 'Pages with Self Links',
@@ -1121,7 +1164,6 @@ That comes to '''$5''' average edits per page, and '''$6''' views per edit.",
 # Miscellaneous special pages
 #
 'orphans'		=> 'Orphaned pages',
-'geo'		=> 'GEO coordinates',
 'validate'		=> 'Validate page',
 'lonelypages'	=> 'Orphaned pages',
 'uncategorizedpages'	=> 'Uncategorized pages',
@@ -1130,8 +1172,13 @@ That comes to '''$5''' average edits per page, and '''$6''' views per edit.",
 'unusedimages'	=> 'Unused files',
 'popularpages'	=> 'Popular pages',
 'nviews'		=> '$1 views',
+'wantedcategories' => 'Wanted categories',
 'wantedpages'	=> 'Wanted pages',
 'mostlinked'	=> 'Most linked to pages',
+'mostlinkedcategories' => 'Most linked to categories',
+'mostcategories' => 'Articles with the most categories',
+'mostimages'	=> 'Most linked to images',
+'mostrevisions' => 'Articles with the most revisions',
 'nlinks'		=> '$1 links',
 'allpages'		=> 'All pages',
 'prefixindex'   => 'Prefix index',
@@ -1186,6 +1233,7 @@ You can narrow down the view by selecting a log type, the user name, or the affe
 'allpagesprev'		=> 'Previous',
 'allpagesnext'		=> 'Next',
 'allpagessubmit'	=> 'Go',
+'allpagesprefix'	=> 'Display pages with prefix:',
 
 # E this user
 #
@@ -1363,7 +1411,7 @@ before deletion. The actual text of these deleted revisions is only available to
 'undeletebtn' => 'Restore!',
 'undeletedarticle' => "restored \"[[$1]]\"",
 'undeletedrevisions' => "$1 revisions restored",
-'undeletedtext'   => "[[$1]] has been successfully restored.
+'undeletedtext'   => "[[:$1|$1]] has been successfully restored.
 See [[Special:Log/delete]] for a record of recent deletions and restorations.",
 
 # Namespace form on various pages
@@ -1537,6 +1585,9 @@ Type the name of the user in the box and press the button to make the user an ad
 'val_validated' => 'Validation done.',
 'val_article_lists' => 'List of validated articles',
 'val_page_validation_statistics' => 'Page validation statistics for $1',
+'val_max_topics' => 'Maximum number of $1 topics reached',
+'val_no_topics_defined' => 'No topics defined',
+'val_no_topics_defined_text' => 'You have no topics defined which can be rated. Go to [[Special:Validate]], and have an administrator run the "Manage" function to add at least one topic and point range.',
 
 # Move page
 #
@@ -1583,8 +1634,8 @@ title. Please merge them manually.'''",
 'movetalk'		=> 'Move "talk" page as well, if applicable.',
 'talkpagemoved' => 'The corresponding talk page was also moved.',
 'talkpagenotmoved' => 'The corresponding talk page was <strong>not</strong> moved.',
-'1movedto2'		=> '$1 moved to $2',
-'1movedto2_redir' => '$1 moved to $2 over redirect',
+'1movedto2'		=> '[[$1]] moved to [[$2]]',
+'1movedto2_redir' => '[[$1]] moved to [[$2]] over redirect',
 'movelogpage' => 'Move log',
 'movelogpagetext' => 'Below is a list of page moved.',
 'movereason'	=> 'Reason',
@@ -1606,12 +1657,11 @@ set of pages wrapped in some XML. In the future, this may then be imported into 
 wiki running MediaWiki software, although there is no support for this feature in the
 current version.
 
-To export article pages, enter the titles in the text box below, one title per line, and
+To export pages, enter the titles in the text box below, one title per line, and
 select whether you want the current version as well as all old versions, with the page
 history lines, or just the current version with the info about the last edit.
 
-In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/Train]] for the
-article [[Train]].
+In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{Mediawiki:mainpage}}]] for the page {{Mediawiki:mainpage}}.
 ',
 'exportcuronly'	=> 'Include only the current revision, not the full history',
 
@@ -1640,6 +1690,8 @@ article [[Train]].
 'importsuccess'	=> 'Import succeeded!',
 'importhistoryconflict' => 'Conflicting history revision exists (may have imported this page before)',
 'importnosources' => 'No transwiki import sources have been defined and direct history uploads are disabled.',
+'importnofile' => 'No import file was uploaded.',
+'importuploaderror' => 'Upload of import file failed; perhaps the file is bigger than the allowed upload size.',
 
 # Keyboard access keys for power users
 'accesskey-search' => 'f',
@@ -1938,7 +1990,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');
 'exif-compression-1' => 'Uncompressed',
 'exif-compression-6' => 'JPEG',
 
-'exif-photometricinterpretation-1' => 'RGB',
+'exif-photometricinterpretation-2' => 'RGB',
 'exif-photometricinterpretation-6' => 'YCbCr',
 
 'exif-orientation-1' => 'Normal', // 0th row: top; 0th column: left
@@ -2208,6 +2260,13 @@ Please confirm that really want to recreate this article.',
 
 'unit-pixel' => 'px',
 
+# HTML dump
+'redirectingto' => 'Redirecting to [[$1]]...',
+
+# action=purge
+'confirm_purge' => "Clear the cache of this page?\n\n$1",
+'confirm_purge_button' => 'OK',
+
 );
 
 /* a fake language converter */
@@ -2410,23 +2469,34 @@ class Language {
 	 * all children.
 	 *
 	 *<code>
-	 * function timeanddate([...], $format = '0') {
+	 * function timeanddate([...], $format = true) {
 	 * 	$datePreference = $this->dateFormat($format);
 	 * [...]
 	 *</code>
 	 *
-	 * @param mixed $format
+	 * @param mixed $usePrefs: if true, the user's preference is used
+	 *                         if false, the site/language default is used
+	 *                         if int/string, assumed to be a format.
 	 * @return string
 	 */
-	function dateFormat( $format ) {
-		global $wgUser;
+	function dateFormat( $usePrefs = true ) {
+		global $wgUser, $wgAmericanDates;
 
-		if ( !$wgUser->isLoggedIn() || $format === false ) {
-			$options = $this->getDefaultUserOptions();
-			return (string)$options['date'];
+		if( is_bool( $usePrefs ) ) {
+			if( $usePrefs ) {
+				$datePreference = $wgUser->getOption( 'date' );
+			} else {
+				$options = $this->getDefaultUserOptions();
+				$datePreference = (string)$options['date'];
+			}
 		} else {
-			return $wgUser->getOption( 'date' );
+			$datePreference = (string)$usePrefs;
 		}
+
+		if( $datePreference == MW_DATE_DEFAULT || $datePreference == '' ) {
+			return $wgAmericanDates ? MW_DATE_MDY : MW_DATE_DMY;
+		}
+		return $datePreference;
 	}
 
 	/**
@@ -2435,30 +2505,26 @@ class Language {
 	 *               date('YmdHis') format with wfTimestamp(TS_MW,$ts)
 	 * @param bool   $adj whether to adjust the time output according to the
 	 *               user configured offset ($timecorrection)
-	 * @param mixed  $format what format to return, if it's false output the
-	 *               default one.
+	 * @param mixed  $format true to use user's date format preference
 	 * @param string $timecorrection the time offset as returned by
 	 *               validateTimeZone() in Special:Preferences
 	 * @return string
 	 */
 	function date( $ts, $adj = false, $format = true, $timecorrection = false ) {
-		global $wgAmericanDates, $wgUser;
+		global $wgUser;
 
 		if ( $adj ) { $ts = $this->userAdjust( $ts, $timecorrection ); }
 
-		$datePreference = $this->dateFormat($format);
+		$datePreference = $this->dateFormat( $format );
 
-		if ($datePreference == '0'
-		    || $datePreference == '' ) {$datePreference = $wgAmericanDates ? '0' : '2';}
-
-		$month = $this->getMonthName( substr( $ts, 4, 2 ) );
-		$day = $this->formatNum( 0 + substr( $ts, 6, 2 ) );
+		$month = $this->formatMonth( substr( $ts, 4, 2 ), $datePreference );
+		$day = $this->formatDay( substr( $ts, 6, 2 ), $datePreference );
 		$year = $this->formatNum( substr( $ts, 0, 4 ), true );
 
 		switch( $datePreference ) {
-			case '2': return "$day $month $year";
-			case '3': return "$year $month $day";
-			case 'ISO 8601': return substr($ts, 0, 4). '-' . substr($ts, 4, 2). '-' .substr($ts, 6, 2);
+			case MW_DATE_DMY: return "$day $month $year";
+			case MW_DATE_YMD: return "$year $month $day";
+			case MW_DATE_ISO: return substr($ts, 0, 4). '-' . substr($ts, 4, 2). '-' .substr($ts, 6, 2);
 			default: return "$month $day, $year";
 		}
 	}
@@ -2469,26 +2535,63 @@ class Language {
 	*               date('YmdHis') format with wfTimestamp(TS_MW,$ts)
 	* @param bool   $adj whether to adjust the time output according to the
 	*               user configured offset ($timecorrection)
-	* @param mixed  $format what format to return, if it's false output the
-	*               default one (default true)
+	* @param mixed  $format true to use user's date format preference
 	* @param string $timecorrection the time offset as returned by
 	*               validateTimeZone() in Special:Preferences
 	* @return string
 	*/
 	function time( $ts, $adj = false, $format = true, $timecorrection = false ) {
-		global $wgUser, $wgAmericanDates;
+		global $wgUser;
 
 		if ( $adj ) { $ts = $this->userAdjust( $ts, $timecorrection ); }
-		$datePreference = $this->dateFormat($format);
+		$datePreference = $this->dateFormat( $format );
+		
+		$sep = ($datePreference == MW_DATE_ISO)
+			? ':'
+			: $this->timeSeparator( $format );
+		
+		$t = substr( $ts, 8, 2 ) . $sep . substr( $ts, 10, 2 );
 
-		if ($datePreference == '0') {$datePreference = $wgAmericanDates ? '0' : '2';}
-
-		$t = substr( $ts, 8, 2 ) . ':' . substr( $ts, 10, 2 );
-
-		if ( $datePreference === 'ISO 8601' ) {
-			$t .= ':' . substr( $ts, 12, 2 );
+		if ( $datePreference == MW_DATE_ISO ) {
+			$t .= $sep . substr( $ts, 12, 2 );
 		}
-		return $this->formatNum( $t );
+		return $t;
+	}
+	
+	/**
+	 * Default separator character between hours, minutes, and seconds.
+	 * Will be used by Language::time() for non-ISO formats.
+	 * (ISO will always use a colon.)
+	 * @return string
+	 */
+	function timeSeparator( $format ) {
+		return ':';
+	}
+	
+	/**
+	 * String to insert between the time and the date in a combined
+	 * string. Should include any relevant whitespace.
+	 * @return string
+	 */
+	function timeDateSeparator( $format ) {
+		return ', ';
+	}
+	
+	/**
+	 * Return true if the time should display before the date.
+	 * @return bool
+	 * @access private
+	 */
+	function timeBeforeDate() {
+		return true;
+	}
+
+	function formatMonth( $month, $format ) {
+		return $this->getMonthName( $month );
+	}
+	
+	function formatDay( $day, $format ) {
+		return $this->formatNum( 0 + $day );
 	}
 
 	/**
@@ -2497,22 +2600,25 @@ class Language {
 	*               date('YmdHis') format with wfTimestamp(TS_MW,$ts)
 	* @param bool   $adj whether to adjust the time output according to the
 	*               user configured offset ($timecorrection)
-	* @param mixed  $format what format to return, if it's false output the
-	*               default one (default true)
+	* @param mixed  $format true to use user's date format preference
 	* @param string $timecorrection the time offset as returned by
 	*               validateTimeZone() in Special:Preferences
 	* @return string
 	*/
 	function timeanddate( $ts, $adj = false, $format = true, $timecorrection = false) {
-		global $wgUser, $wgAmericanDates;
+		global $wgUser;
 
 		$datePreference = $this->dateFormat($format);
-
 		switch ( $datePreference ) {
-			case 'ISO 8601': return $this->date( $ts, $adj, $datePreference, $timecorrection ) . ' ' .
-				$this->time( $ts, $adj, $datePreference, $timecorrection );
-			default: return $this->time( $ts, $adj, $datePreference, $timecorrection ) . ', ' .
-				$this->date( $ts, $adj, $datePreference, $timecorrection );
+			case MW_DATE_ISO: return $this->date( $ts, $adj, $format, $timecorrection ) . ' ' .
+				$this->time( $ts, $adj, $format, $timecorrection );
+			default:
+				$time = $this->time( $ts, $adj, $format, $timecorrection );
+				$sep = $this->timeDateSeparator( $datePreference );
+				$date = $this->date( $ts, $adj, $format, $timecorrection );
+				return $this->timeBeforeDate( $datePreference )
+					? $time . $sep . $date
+					: $date . $sep . $time;
 		}
 	}
 
@@ -2536,8 +2642,16 @@ class Language {
 		return ucfirst( $string );
 	}
 
+	function uc( $str ) {
+		return strtoupper( $str );
+	}
+
 	function lcfirst( $s ) {
 		return strtolower( $s{0} ). substr( $s, 1 );
+	}
+
+	function lc( $str ) {
+		return strtolower( $str );
 	}
 
 	function checkTitleEncoding( $s ) {
@@ -2660,6 +2774,9 @@ class Language {
 	# Fill a MagicWord object with data from here
 	function getMagic( &$mw ) {
 		$raw = $this->getMagicWords();
+
+		wfRunHooks( 'LanguageGetMagic', array( &$raw ) );
+		
 		if( !isset( $raw[$mw->mId] ) ) {
 			# Fall back to English if local list is incomplete
 			$raw =& Language::getMagicWords();
@@ -2789,7 +2906,7 @@ class Language {
 	 *
 	 * Example: {{plural:{{NUMBEROFARTICLES}}|article|articles}} 
 	 *
-	 * @param string $count
+	 * @param integer $count
 	 * @param string $wordform1
 	 * @param string $wordform2
 	 * @param string $wordform3 (optional)

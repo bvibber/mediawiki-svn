@@ -27,84 +27,93 @@ header( "Content-type: text/html; charset=utf-8" );
 <html>
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<meta name="robots" content="noindex,nofollow">
 	<title>MediaWiki installation</title>
 	<style type="text/css">
-	#credit {
-		float: right;
-		width: 200px;
-		font-size: 0.7em;
-		background-color: #eee;
-		color: black;
-		border: solid 1px #444;
-		padding: 8px;
-		margin-left: 8px;
-	}
 
-	dl.setup dd {
-		margin-left: 0;
-	}
-	dl.setup dd label.column {
-		clear: left;
-		font-weight: bold;
-		width: 12em;
-		float: left;
-		text-align: right;
-		padding-right: 1em;
-	}
-	dl.setup dt {
-		clear: left;
-		font-size: 0.8em;
-		margin-left: 10em;
-		/* margin-right: 200px; */
-		margin-bottom: 2em;
-	}
-	.error {
-		color: red;
-	}
-	ul.plain {
-		list-style: none;
-		clear: both;
-		margin-left: 12em;
-	}
+		@import "../skins/monobook/main.css"; 
+
+		.env-check {
+			font-size: 90%;
+			margin: 1em 0 1em 2.5em;
+		}
+
+		.config-section {
+			margin-top: 2em;
+		}
+
+		.config-section label.column {
+			clear: left;
+			font-weight: bold;
+			width: 13em;
+			float: left;
+			text-align: right;
+			padding-right: 1em;
+			padding-top: .2em;
+		}
+
+		.config-input {
+			clear: left;
+			zoom: 100%; /* IE hack */
+		}
+
+		.config-section .config-desc {
+			clear: left;
+			margin: 0 0 2em 18em;
+			padding-top: 1em;
+			font-size: 85%;
+		}
+
+		.iput-text, .iput-password {
+			width: 14em;
+			margin-right: 1em;
+		}
+
+		.error {
+			color: red;
+			background-color: #fff;
+			font-weight: bold;
+			left: 1em;
+			font-size: 100%;
+		}
+
+		.error-top {
+			color: red;
+			background-color: #FFF0F0;
+			border: 2px solid	 red;
+			font-size: 130%;
+			font-weight: bold;
+			padding: 1em 1.5em;
+			margin: 2em 0 1em;
+		}
+
+		ul.plain {
+			list-style-type: none;
+			list-style-image: none;
+			float: left;
+			margin: 0;
+			padding: 0;
+		}
+
+		.btn-install {
+			font-weight: bold;
+			font-size: 110%;
+			padding: .2em .3em;
+		}
+
+		.license {
+			font-size: 85%;
+			padding-top: 3em;
+		}
+
 	</style>
 </head>
 
 <body>
+<div id="globalWrapper">
+<div id="column-content">
+<div id="content">
+<div id="bodyContent">
 
-<div id="credit">
- <center>
-  <a href="http://www.mediawiki.org/">
-   <img src="../skins/common/images/mediawiki.png" width="135" height="135" alt="" border="0" />
-  </a>
- </center>
-
- <p><strong><a href="http://www.mediawiki.org/">MediaWiki</a></strong> is
- Copyright (C) 2001-2005 by Magnus Manske, Brion Vibber, Lee Daniel Crocker,
- Tim Starling, Erik M&ouml;ller, Gabriel Wicke and others.</p>
-
- <ul>
-  <li><a href="../README">Readme</a></li>
-  <li><a href="../RELEASE-NOTES">Release notes</a></li>
-  <li><a href="../docs/">doc/</a></li>
-  <li><a href="http://meta.wikipedia.org/wiki/MediaWiki_User's_Guide">User's Guide</a></li>
- </ul>
-
- <p>This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.</p>
-
- <p>This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.</p>
-
- <p>You should have received <a href="../COPYING">a copy of the GNU General Public License</a>
- along with this program; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
- or <a href="http://www.gnu.org/copyleft/gpl.html">read it online</a></p>
-</div>
 
 <?php
 
@@ -114,7 +123,7 @@ header( "Content-type: text/html; charset=utf-8" );
 # As a dirty hack, we'll try to set up the include path first.
 #
 $IP = dirname( dirname( __FILE__ ) );
-$sep = (DIRECTORY_SEPARATOR == "\\") ? ";" : ":";
+$sep = PATH_SEPARATOR;
 ini_set( "include_path", ".$sep$IP$sep$IP/includes$sep$IP/languages" );
 
 define( "MEDIAWIKI", true );
@@ -127,17 +136,14 @@ require_once( "includes/Namespace.php" );
 
 <h1>MediaWiki <?php print $wgVersion ?> installation</h1>
 
-
 <?php
 
 /* Check for existing configurations and bug out! */
 
 if( file_exists( "../LocalSettings.php" ) ) {
-	dieout( "<h2>Wiki is configured.</h2>
+	dieout( "	<p><strong>Setup has completed, <a href='../index.php'>your wiki</a> is configured.</strong></p>
 
-	<p>Already configured... <a href='../index.php'>return to the wiki</a>.</p>
-
-	<p>(You should probably remove this directory for added security.)</p>" );
+	<p>Please delete the /config directory for extra security.</p></div></div></div></div>" );
 }
 
 if( file_exists( "./LocalSettings.php" ) ) {
@@ -178,10 +184,9 @@ class ConfigData {
 
 ?>
 
-<p><em>Please include all of the lines below when reporting installation problems.</em></p>
-
 <h2>Checking environment...</h2>
-<ul>
+<p><em>Please include all of the lines below when reporting installation problems.</em></p>
+<ul class="env-check">
 <?php
 $endl = "
 ";
@@ -190,15 +195,17 @@ $conf = new ConfigData;
 
 install_version_checks();
 
-print "<li>PHP " . phpversion() . ": ok</li>\n";
+print "<li>PHP " . phpversion() . " installed</li>\n";
 
 if( ini_get( "register_globals" ) ) {
 	?>
-	<li><b class='error'>Warning:</b> <strong>PHP's
-	<tt><a href="http://php.net/register_globals">register_globals</a></tt>
-	option is enabled.</strong> MediaWiki will work correctly, but this setting
-	increases your exposure to potential security vulnerabilities in PHP-based
-	software running on your server. <strong>You should disable it if you are able.</strong></li>
+	<li>
+		<div style="font-size:110%">
+		<strong class="error">Warning:</strong>
+		<strong>PHP's	<tt><a href="http://php.net/register_globals">register_globals</a></tt>	option is enabled. Disable it if you can.</strong>
+		</div>
+		MediaWiki will work, but your server is more exposed to PHP-based security vulnerabilities.
+	</li>
 	<?php
 }
 
@@ -220,8 +227,16 @@ if( ini_get( "magic_quotes_sybase" ) ) {
 	<?php
 }
 
+if( ini_get( "mbstring.func_overload" ) ) {
+	$fatal = true;
+	?><li class='error'><strong>Fatal: <a href='http://www.php.net/manual/en/ref.mbstring.php#mbstring.overload'>mbstring.func_overload</a> is active!</strong>
+	This option causes errors and may corrupt data unpredictably;
+	you cannot install or use MediaWiki unless this option is disabled.
+	<?php
+}
+
 if( $fatal ) {
-	dieout( "</ul><p>Cannot install wiki.</p>" );
+	dieout( "</ul><p>Cannot install Mediawiki.</p>" );
 }
 
 if( ini_get( "safe_mode" ) ) {
@@ -309,8 +324,8 @@ if (!$conf->turck && !$conf->eaccel) {
 }
 
 $conf->diff3 = false;
-$diff3locations = array("/usr/bin", "/opt/csw/bin", "/usr/gnu/bin", "/usr/sfw/bin") + explode(":", getenv("PATH"));
-$diff3names = array("gdiff3", "diff3");
+$diff3locations = array("/usr/bin", "/opt/csw/bin", "/usr/gnu/bin", "/usr/sfw/bin") + explode($sep, getenv("PATH"));
+$diff3names = array("gdiff3", "diff3", "diff3.exe");
 
 $diff3versioninfo = array('$1 --version 2>&1', 'diff3 (GNU diffutils)');
 foreach ($diff3locations as $loc) {
@@ -360,6 +375,7 @@ print "<li>Installation directory: <tt>" . htmlspecialchars( $conf->IP ) . "</tt
 $conf->ScriptPath = preg_replace( '{^(.*)/config.*$}', '$1', $_SERVER["PHP_SELF"] ); # was SCRIPT_NAME
 print "<li>Script URI path: <tt>" . htmlspecialchars( $conf->ScriptPath ) . "</tt></li>\n";
 
+print "<li style='font-weight:bold;color:green;font-size:110%'>Environment checked. You can install MediaWiki.</li>\n";
 	$conf->posted = ($_SERVER["REQUEST_METHOD"] == "POST");
 
 	$conf->Sitename = ucfirst( importPost( "Sitename", "" ) );
@@ -374,6 +390,7 @@ print "<li>Script URI path: <tt>" . htmlspecialchars( $conf->ScriptPath ) . "</t
 	$conf->DBpassword = importPost( "DBpassword" );
 	$conf->DBpassword2 = importPost( "DBpassword2" );
 	$conf->DBprefix = importPost( "DBprefix" );
+	$conf->DBmysql5 = (importPost( "DBmysql5" ) == "true") ? "true" : "false";
 	$conf->RootPW = importPost( "RootPW" );
 	$conf->LanguageCode = importPost( "LanguageCode", "en" );
 	$conf->SysopName = importPost( "SysopName", "WikiSysop" );
@@ -384,7 +401,7 @@ print "<li>Script URI path: <tt>" . htmlspecialchars( $conf->ScriptPath ) . "</t
 $errs = array();
 
 if( $conf->Sitename == "" || $conf->Sitename == "MediaWiki" || $conf->Sitename == "Mediawiki" ) {
-	$errs["Sitename"] = "Must not be blank or \"MediaWiki\".";
+	$errs["Sitename"] = "Must not be blank or \"MediaWiki\"";
 }
 if( $conf->DBuser == "" ) {
 	$errs["DBuser"] = "Must not be blank";
@@ -562,6 +579,14 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			 	<a href='http://dev.mysql.com/doc/mysql/en/old-client.html'
 			 	>http://dev.mysql.com/doc/mysql/en/old-client.html</a> for help.</b>";
 		}
+		if( $wgDBmysql5 ) {
+			if( $mysqlNewAuth ) {
+				print "; enabling MySQL 4.1/5.0 charset mode";
+			} else {
+				print "; <b class='error'>MySQL 4.1/5.0 charset mode enabled,
+					but older version detected; will likely fail.</b>";
+			}
+		}
 		print "</li>\n";
 
 		if ($conf->DBtype == 'mysql') {
@@ -619,7 +644,13 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			# FIXME: Check for errors
 			print "<li>Creating tables...";
 			if ($conf->DBtype == 'mysql') {
-				dbsource( "../maintenance/tables.sql", $wgDatabase );
+				if( $wgDBmysql5 ) {
+					print " using MySQL 5 table defs...";
+					dbsource( "../maintenance/mysql5/tables.sql", $wgDatabase );
+				} else {
+					print " using MySQL 4 table defs...";
+					dbsource( "../maintenance/tables.sql", $wgDatabase );
+				}
 				dbsource( "../maintenance/interwiki.sql", $wgDatabase );
 			} else {
 				dbsource( "../maintenance/oracle/tables.sql", $wgDatabase );
@@ -716,7 +747,7 @@ if( count( $errs ) ) {
 	/* Display options form */
 
 	if( $conf->posted ) {
-		echo "<p class='error'>Something's not quite right yet; make sure everything below is filled out correctly.</p>\n";
+		echo "<p class='error-top'>Something's not quite right yet; make sure everything below is filled out correctly.</p>\n";
 	}
 ?>
 
@@ -725,34 +756,28 @@ if( count( $errs ) ) {
 
 <h2>Site config</h2>
 
-<dl class="setup">
-	<dd>
+<div class="config-section">
+	<div class="config-input">
 		<?php
-		aField( $conf, "Sitename", "Site name:" );
+		aField( $conf, "Sitename", "Wiki name:" );
 		?>
-	</dd>
-	<dt>
-		Your site name should be a relatively short word. It'll appear as the namespace
-		name for 'meta' pages as well as throughout the user interface. Good site names
-		are things like "<a href="http://www.wikipedia.org/">Wikipedia</a>" and
-		"<a href="http://openfacts.berlios.de/">OpenFacts</a>"; avoid punctuation,
-		which may cause problems.
-	</dt>
+	</div>
+	<p class="config-desc">
+		Preferably a short word without punctuation, i.e. "Wikipedia".<br>
+		Will appear as the namespace name for "meta" pages, and throughout the interface.
+	</p>
 
-	<dd>
+	<div class="config-input">
 		<?php
-		aField( $conf, "EmergencyContact", "Contact e-mail" );
+		aField( $conf, "EmergencyContact", "Contact e-mail:" );
 		?>
-	</dd>
-	<dt>
-		This will be used as the return address for password reminders and
-		may be displayed in some error conditions so visitors can get in
-		touch with you. It is also be used as the default sender address of e-mail
-		notifications (enotifs).
-	</dt>
+	</div>
+	<p class="config-desc">
+		Displayed to users in some error messages, used as the return address for password reminders, and used as the default sender address of e-mail notifications.
+	</p>
 
-	<dd>
-		<label class='column' for="LanguageCode">Language</label>
+	<div class="config-input">
+		<label class='column' for="LanguageCode">Language:</label>
 		<select id="LanguageCode" name="LanguageCode">
 
 		<?php
@@ -763,28 +788,25 @@ if( count( $errs ) ) {
 			}
 		?>
 		</select>
-	</dd>
-	<dt>
-		You may select the language for the user interface of the wiki...
-		Some localizations are less complete than others. Unicode (UTF-8 encoding)
-		is used for all localizations.
-	</dt>
+	</div>
+	<p class="config-desc">
+		Select the language for your wiki's interface. Some localizations aren't fully complete. Unicode (UTF-8) used for all localizations.
+	</p>
 
-	<dd>
-		<label class='column'>Copyright/license metadata</label>
-		<div>Select one:</div>
+	<div class="config-input">
+		<label class='column'>Copyright/license:</label>
 
 		<ul class="plain">
-		<li><?php aField( $conf, "License", "no license metadata", "radio", "none" ); ?></li>
+		<li><?php aField( $conf, "License", "No license metadata", "radio", "none" ); ?></li>
 		<li><?php aField( $conf, "License", "GNU Free Documentation License 1.2 (Wikipedia-compatible)", "radio", "gfdl" ); ?></li>
 		<li><?php
-			aField( $conf, "License", "a Creative Commons license...", "radio", "cc" );
+			aField( $conf, "License", "A Creative Commons license - ", "radio", "cc" );
 			$partner = "MediaWiki";
 			$exit = urlencode( "$wgServer{$conf->ScriptPath}/config/index.php?License=cc&RightsUrl=[license_url]&RightsText=[license_name]&RightsCode=[license_code]&RightsIcon=[license_button]" );
 			$icon = urlencode( "$wgServer$wgUploadPath/wiki.png" );
 			$ccApp = htmlspecialchars( "http://creativecommons.org/license/?partner=$partner&exit_url=$exit&partner_icon_url=$icon" );
-			print "<a href=\"$ccApp\">choose</a>";
-			?> (link will wipe out any other data in this form!)
+			print "<a href=\"$ccApp\" target='_blank'>choose</a>";
+			?>
 		<?php if( $conf->License == "cc" ) { ?>
 			<ul>
 				<li><?php aField( $conf, "RightsIcon", "<img src=\"" . htmlspecialchars( $conf->RightsIcon ) . "\" alt='icon' />", "hidden" ); ?></li>
@@ -795,37 +817,31 @@ if( count( $errs ) ) {
 		<?php } ?>
 			</li>
 		</ul>
-	</dd>
-	<dt>
-		MediaWiki can include a basic license notice, icon, and machine-readable
-		copyright metadata if your wiki's content is to be licensed under
-		the GNU FDL or a Creative Commons license. If you're not sure, leave
-		it at "none".
-	</dt>
+	</div>
+	<p class="config-desc">
+		A notice, icon, and machine-readable copyright metadata will be displayed for the license you pick.
+	</p>
 
 
-	<dd>
-		<?php aField( $conf, "SysopName", "Sysop account name:", "" ) ?>
-	</dd>
-	<dd>
-		<?php aField( $conf, "SysopPass", "password:", "password" ) ?>
-	</dd>
-	<dd>
-		<?php aField( $conf, "SysopPass2", "again:", "password" ) ?>
-	</dd>
-	<dt>
-		A sysop user account can lock or delete pages, block problematic IP
-		addresses from editing, and other maintenance tasks. If creating a new
-		wiki database, a sysop account will be created with the given name
-		and password.
-	</dt>
+	<div class="config-input">
+		<?php aField( $conf, "SysopName", "Admin username:" ) ?>
+	</div>
+	<div class="config-input">
+		<?php aField( $conf, "SysopPass", "Password:", "password" ) ?>
+	</div>
+	<div class="config-input">
+		<?php aField( $conf, "SysopPass2", "Password confirm:", "password" ) ?>
+	</div>
+	<p class="config-desc">
+		An admin can lock/delete pages, block users from editing, and other maintenance tasks.<br>
+		A new account will be added only when creating a new wiki database.
+	</p>
 
-	<dd>
-		<label class='column'>Shared memory caching</label>
-		<div>Select one:</div>
+	<div class="config-input">
+		<label class='column'>Shared memory caching:</label>
 
 		<ul class="plain">
-		<li><?php aField( $conf, "Shm", "no caching", "radio", "none" ); ?></li>
+		<li><?php aField( $conf, "Shm", "No caching", "radio", "none" ); ?></li>
 		<?php
 			if ( $conf->turck ) {
 				echo "<li>";
@@ -841,55 +857,50 @@ if( count( $errs ) ) {
 			}
 		?>
 		<li><?php aField( $conf, "Shm", "Memcached", "radio", "memcached" ); ?></li>
-		<li><?php aField( $conf, "MCServers", "Memcached servers", "" ) ?></li>
 		</ul>
-	</dd>
-	<dt>
+		<div style="clear:left"><?php aField( $conf, "MCServers", "Memcached servers:", "text" ) ?></div>
+	</div>
+	<p class="config-desc">
 		Using a shared memory system such as Turck MMCache, eAccelerator, or Memcached will speed
 		up MediaWiki significantly. Memcached is the best solution but needs to be
 		installed. Specify the server addresses and ports in a comma-separted list. Only
 		use Turck shared memory if the wiki will be running on a single Apache server.
-	</dl>
+	</p>
+</div>
 
 <h2>E-mail, e-mail notification and authentication setup</h2>
 
-<dl class="setup">
-	<dd>
-		<label class='column'>E-mail (general)</label>
-		<div>Select one:</div>
-
+<div class="config-section">
+	<div class="config-input">
+		<label class='column'>E-mail (general):</label>
 		<ul class="plain">
-		<li><?php aField( $conf, "Email", "enabled", "radio", "email_enabled" ); ?></li>
-		<li><?php aField( $conf, "Email", "disabled", "radio", "email_disabled" ); ?></li>
+		<li><?php aField( $conf, "Email", "Enabled", "radio", "email_enabled" ); ?></li>
+		<li><?php aField( $conf, "Email", "Disabled", "radio", "email_disabled" ); ?></li>
 		</ul>
-	</dd>
-	<dt>
+	</div>
+	<p class="config-desc">
 		Use this to disable all e-mail functions (send a password reminder, user-to-user e-mail and e-mail notification),
 		if sending e-mails on your server doesn't work.
-	</dt>
-	<dd>
-		<label class='column'>User-to-user e-mail</label>
-		<div>Select one:</div>
-
+	</p>
+	<div class="config-input">
+		<label class='column'>User-to-user e-mail:</label>
 		<ul class="plain">
-		<li><?php aField( $conf, "Emailuser", "enabled", "radio", "emailuser_enabled" ); ?></li>
-		<li><?php aField( $conf, "Emailuser", "disabled", "radio", "emailuser_disabled" ); ?></li>
+		<li><?php aField( $conf, "Emailuser", "Enabled", "radio", "emailuser_enabled" ); ?></li>
+		<li><?php aField( $conf, "Emailuser", "Disabled", "radio", "emailuser_disabled" ); ?></li>
 		</ul>
-	</dd>
-	<dt>
+	</div>
+	<p class="config-desc">
 		Use this to disable only the user-to-user e-mail function (EmailUser).
-	</dt>
-	<dd>
-		<label class='column'>E-mail notification</label>
-		<div>Select one:</div>
-
+	</p>
+	<div class="config-input">
+		<label class='column'>E-mail notification:</label>
 		<ul class="plain">
-		<li><?php aField( $conf, "Enotif", "disabled", "radio", "enotif_disabled" ); ?></li>
-		<li><?php aField( $conf, "Enotif", "enabled for changes of watch-listed and user_talk pages (recommended for small wikis; perhaps not suited for large wikis)", "radio", "enotif_allpages" ); ?></li>
-		<li><?php aField( $conf, "Enotif", "enabled for changes of user_talk pages only (suited for small and large wikis)", "radio", "enotif_usertalk" ); ?></li>
+		<li><?php aField( $conf, "Enotif", "Disabled", "radio", "enotif_disabled" ); ?></li>
+		<li><?php aField( $conf, "Enotif", "Enabled for user_talk changes only", "radio", "enotif_usertalk" ); ?></li>
+		<li><?php aField( $conf, "Enotif", "Enabled for user_talk and watch list changes (not recommended for large wikis)", "radio", "enotif_allpages" ); ?></li>
 		</ul>
-	</dd>
-	<dt>
+	</div>
+	<div class="config-desc">
 		<p>
 		E-mail notification sends a notification e-mail to a user, when the user_talk page is changed
                 and/or when watch-listed pages are changed, depending on the above settings.
@@ -900,18 +911,16 @@ if( count( $errs ) ) {
 		The user options are not shown on the preference page, if e-mail notification is disabled.</p>
 
 		<p>There are additional options for fine tuning in /includes/DefaultSettings.php .</p>
-	</dt>
+	</div>
 
-	<dd>
-		<label class='column'>E-mail address authentication</label>
-		<div>Select one:</div>
-
+	<div class="config-input">
+		<label class='column'>E-mail authentication:</label>
 		<ul class="plain">
-		<li><?php aField( $conf, "Eauthent", "disabled", "radio", "eauthent_disabled" ); ?></li>
-		<li><?php aField( $conf, "Eauthent", "enabled", "radio", "eauthent_enabled" ); ?></li>
+		<li><?php aField( $conf, "Eauthent", "Disabled", "radio", "eauthent_disabled" ); ?></li>
+		<li><?php aField( $conf, "Eauthent", "Enabled", "radio", "eauthent_enabled" ); ?></li>
 		</ul>
-	</dd>
-	<dt>
+	</div>
+	<div class="config-desc">
 		<p>E-mail address authentication uses a scheme to authenticate e-mail addresses of the users. The user who initially enters or changes his/her stored e-mail address
 		gets a link with a token mailed to that address. The stored e-mail address is authenticated at the moment the user comes back to the wiki via the link.</p>
 
@@ -920,83 +929,94 @@ if( count( $errs ) ) {
 
 		<p>If the option is enabled, only authenticated e-mail addresses can receive EmailUser mails and/or
 		e-mail notification mails.</p>
-	</dt>
+	</div>
 
-	</dl>
+</div>
 
 <h2>Database config</h2>
 
-<dl class="setup">
-	<dd>
-		<label class='column'>Database type</label>
-		<div>Select the database server software:</div>
+<div class="config-section">
+<div class="config-input">
+		<label class='column'>Database type:</label>
 		<ul class='plain'>
-		<?php
-			aField( $conf, "DBtype", "MySQL", "radio", "mysql");
-			aField( $conf, "DBtype", "Oracle", "radio", "oracle" );
-		?>
+			<li><?php aField( $conf, "DBtype", "MySQL", "radio", "mysql"); ?></li>
+			<li><?php aField( $conf, "DBtype", "Oracle", "radio", "oracle" ); ?></li>
 		</ul>
-	</dd>
+	</div>
 
-	<dd><?php
-		aField( $conf, "DBserver", "SQL server host" );
-	?></dd>
-	<dt>
+	<div class="config-input" style="clear:left"><?php
+		aField( $conf, "DBserver", "SQL server host:" );
+	?></div>
+	<p class="config-desc">
 		If your database server isn't on your web server, enter the name
 		or IP address here.  MySQL only.
-	</dt>
+	</p>
 
-	<dd><?php
-		aField( $conf, "DBname", "Database name" );
-	?></dd>
-	<dt>
+	<div class="config-input"><?php
+		aField( $conf, "DBname", "Database name:" );
+	?></div>
+	<div class="config-desc">
 		If using Oracle, set this to your connection identifier.
-	</dt>
-	<dd><?php
-		aField( $conf, "DBuser", "DB username" );
-	?></dd>
-	<dd><?php
-		aField( $conf, "DBpassword", "DB password", "password" );
-	?></dd>
-	<dd><?php
-		aField( $conf, "DBpassword2", "again", "password" );
-	?></dd>
-	<dt>
+	</div>
+	<div class="config-input"><?php
+		aField( $conf, "DBuser", "DB username:" );
+	?></div>
+	<div class="config-input"><?php
+		aField( $conf, "DBpassword", "DB password:", "password" );
+	?></div>
+	<div class="config-input"><?php
+		aField( $conf, "DBpassword2", "DB password confirm:", "password" );
+	?></div>
+	<p class="config-desc">
 		If you only have a single user account and database available,
 		enter those here. If you have database root access (see below)
 		you can specify new accounts/databases to be created.
-	</dt>
+	</p>
 
-	<dd><?php
-		aField( $conf, "DBprefix", "Database table prefix" );
-	?></dd>
-	<dt>
+	<div class="config-input"><?php
+		aField( $conf, "DBprefix", "Database table prefix:" );
+	?></div>
+	<div class="config-desc">
 		<p>If you need to share one database between multiple wikis, or
 		MediaWiki and another web application, you may choose to
 		add a prefix to all the table names to avoid conflicts.</p>
 
 		<p>Avoid exotic characters; something like <tt>mw_</tt> is good.</p>
-	</dt>
+	</div>
+	
+	<div class="config-input"><label class="column">Database charset</label>
+		<div>Select one:</div>
+		<ul class="plain">
+		<li><?php aField( $conf, "DBmysql5", "Backwards-compatible UTF-8", "radio", "false" ); ?></li>
+		<li><?php aField( $conf, "DBmysql5", "Experimental MySQL 4.1/5.0 UTF-8", "radio", "true" ); ?></li>
+		</ul>
+	</div>
+	<p class="config-desc">
+		<b>EXPERIMENTAL:</b> You can enable explicit Unicode charset support
+		for MySQL 4.1 and 5.0 servers. This is not well tested and may
+		cause things to break. <b>If upgrading an older installation, leave
+		in backwards-compatible mode.</b>
+	</p>
 
-	<dd>
+	<div class="config-input">
 		<?php
-		aField( $conf, "RootPW", "DB root password", "password" );
+		aField( $conf, "RootPW", "DB root password:", "password" );
 		?>
-	</dd>
-	<dt>
+	</div>
+	<p class="config-desc">
 		You will only need this if the database and/or user account
 		above don't already exist.
 		Do <em>not</em> type in your machine's root password! MySQL
 		has its own "root" user with a separate password. (It might
 		even be blank, depending on your configuration.)
-	</dt>
+	</p>
 
-	<dd>
+	<div class="config-input" style="padding:2em 0 3em">
 		<label class='column'>&nbsp;</label>
-		<input type="submit" value="Install!" />
-	</dd>
-</dl>
+		<input type="submit" value="Install MediaWiki!" class="btn-install" />
+	</div>
 
+</div>
 
 </form>
 
@@ -1110,7 +1130,7 @@ function writeLocalSettings( $conf ) {
 		$slconf['RightsIcon'] = $conf->RightsIcon;
 	}
 
-	$sep = (DIRECTORY_SEPARATOR == "\\") ? ";" : ":";
+	$sep = PATH_SEPARATOR;
 	$localsettings = "
 # This file was automatically generated by the MediaWiki installer.
 # If you make manual changes, please keep track in case you need to
@@ -1174,6 +1194,9 @@ if ( \$wgCommandLineMode ) {
 \$wgDBpassword       = \"{$slconf['DBpassword']}\";
 \$wgDBprefix         = \"{$slconf['DBprefix']}\";
 \$wgDBtype           = \"{$slconf['DBtype']}\";
+
+# Experimental charset support for MySQL 4.1/5.0.
+\$wgDBmysql5 = {$conf->DBmysql5};
 
 ## Shared memory settings
 \$wgMainCacheType = $cacheType;
@@ -1250,7 +1273,10 @@ function importRequest( $name, $default = "" ) {
 	return importVar( $_REQUEST, $name, $default );
 }
 
-function aField( &$conf, $field, $text, $type = "", $value = "" ) {
+$radioCount = 0;
+
+function aField( &$conf, $field, $text, $type = "text", $value = "" ) {
+	global $radioCount; 
 	if( $type != "" ) {
 		$xtype = "type=\"$type\"";
 	} else {
@@ -1259,6 +1285,10 @@ function aField( &$conf, $field, $text, $type = "", $value = "" ) {
 
 	if(!(isset($id)) or ($id == "") ) $id = $field;
 	$nolabel = ($type == "radio") || ($type == "hidden");
+	
+	if ($type == 'radio')
+		$id .= $radioCount++;
+	
 	if( $nolabel ) {
 		echo "\t\t<label>";
 	} else {
@@ -1270,7 +1300,7 @@ function aField( &$conf, $field, $text, $type = "", $value = "" ) {
 	} else {
 		$checked = "";
 	}
-	echo "\t\t<input $xtype name=\"$field\" id=\"$id\" $checked value=\"";
+	echo "\t\t<input $xtype name=\"$field\" id=\"$id\" class=\"iput-$type\" $checked value=\"";
 	if( $type == "radio" ) {
 		echo htmlspecialchars( $value );
 	} else {
@@ -1322,13 +1352,14 @@ function locate_executable($loc, $names, $versioninfo = false) {
 		$names = array($names);
 
 	foreach ($names as $name) {
-		if (file_exists("$loc/$name")) {
+		$command = "$loc".DIRECTORY_SEPARATOR."$name";
+		if (file_exists($command)) {
 			if (!$versioninfo)
-				return "$loc/$name";
+				return $command;
 
-			$file = str_replace('$1', "$loc/$name", $versioninfo[0]);
+			$file = str_replace('$1', $command, $versioninfo[0]);
 			if (strstr(`$file`, $versioninfo[1]) !== false)
-				return "$loc/$name";
+				return $command;
 		}
 	}
 	return false;
@@ -1387,6 +1418,49 @@ function testMemcachedServer( $server ) {
 	return $errstr;
 }
 ?>
+
+	<div class="license">
+	<hr>
+	<p>This program is free software; you can redistribute it and/or modify
+	 it under the terms of the GNU General Public License as published by
+	 the Free Software Foundation; either version 2 of the License, or
+	 (at your option) any later version.</p>
+
+	 <p>This program is distributed in the hope that it will be useful,
+	 but WITHOUT ANY WARRANTY; without even the implied warranty of
+	 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	 GNU General Public License for more details.</p>
+
+	 <p>You should have received <a href="../COPYING">a copy of the GNU General Public License</a>
+	 along with this program; if not, write to the Free Software
+	 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+	 or <a href="http://www.gnu.org/copyleft/gpl.html">read it online</a></p>
+	</div>
+
+</div></div></div>
+
+
+<div id="column-one">
+	<div class="portlet" id="p-logo">
+	  <a style="background-image: url(../skins/common/images/mediawiki.png);"
+	    href="http://www.mediawiki.org/"
+	    title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class='portlet'><div class='pBody'>
+		<ul>
+			<li><strong><a href="http://www.mediawiki.org/">MediaWiki home</a></strong></li>
+			<li><a href="../README">Readme</a></li>
+			<li><a href="../RELEASE-NOTES">Release notes</a></li>
+			<li><a href="../docs/">Documentation</a></li>
+			<li><a href="http://meta.wikipedia.org/wiki/MediaWiki_User's_Guide">User's Guide</a></li>
+			<li><a href="http://meta.wikimedia.org/wiki/MediaWiki_FAQ">FAQ</a></li>
+		</ul>
+		<p style="font-size:90%;margin-top:1em">MediaWiki is Copyright &copy; 2001-2005 by Magnus Manske, Brion Vibber, Lee Daniel Crocker, Tim Starling, Erik M&ouml;ller, Gabriel Wicke and others.</p>
+	</div></div>
+</div>
+
+</div>
 
 </body>
 </html>

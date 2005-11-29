@@ -50,7 +50,7 @@ require_once( 'LanguageUtf8.php' );
 );
 
 $wgMagicWordsIs = array(
-	MAG_REDIRECT             => array( 0,    '#redirect', '#tilvísun', '#TILVÍSUN' ), // MagicWord::initRegex() sucks
+	MAG_REDIRECT             => array( 0, '#tilvísun', '#TILVÍSUN', '#redirect' ), // MagicWord::initRegex() sucks
 ) + $wgMagicWordsEn;
 
 #-------------------------------------------------------------------
@@ -216,6 +216,7 @@ the list of currently operational bans and blocks.",
 'currentrevisionlink' => "núverandi útgáfa",
 'databaseerror' => "Gagnagrunnsvilla",
 'dateformat' => "Tímasnið",
+'datedefault' => 'Sjálfgefið',
 'deadendpages' => "Botnlangar",
 'debug' => "Aflúsa",
 'dec' => "des",
@@ -295,7 +296,6 @@ upplýsingar um hana.",
 'history_short' => "Breytingaskrá",
 'historywarning' => "Athugið: Síðan sem þú ert um það bil að eyða á sér&nbsp;",
 'hr_tip' => "Lárétt lína (notist sparlega)",
-'ignorewarning' => "Hunsa viðvörun og vista þessa útgáfu.",
 'ilsubmit' => "Leita",
 'image_sample' => "Sýnishorn.jpeg",
 'image_tip' => "Setja inn mynd",
@@ -624,8 +624,6 @@ You might want to check the following regular expression for patterns that are c
 'undelete_short' => "Endurvekja $1 breyting(u/ar)",
 'undeletearticle' => "Endurvekja eydda síðu",
 'undeletebtn' => "Endurvekja!",
-'undeletedtext' => "[[$1]] has been successfully restored.
-See [[Wikipedia:Deletion_log]] for a record of recent deletions and restorations.",
 'undeletepage' => "Skoða og endurvekja síður",
 'undeletepagetext' => "Eftirfarandi síðum hefur verið eitt en eru þó enn í gagnagrunninum og geta verið endurvaknar. Athugið að síður þessar eru reglulega fjarlægðar endanlega úr gagnagrunninum.",
 'undeleterevisions' => "$1 breyting(ar)",

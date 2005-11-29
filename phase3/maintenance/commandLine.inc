@@ -76,7 +76,7 @@ for( $arg = reset( $argv ); $arg !== false; $arg = next( $argv ) ) {
 $wgCommandLineMode = true;
 # Turn off output buffering if it's on
 @ob_end_flush();
-$sep = strchr( $include_path = ini_get( "include_path" ), ";" ) ? ";" : ":";
+$sep = PATH_SEPARATOR;
 
 if (!isset( $wgUseNormalUser ) ) {
 	$wgUseNormalUser = false;
@@ -126,7 +126,10 @@ if ( file_exists( '/home/wikipedia/common/langlist' ) ) {
 	require_once( "$IP/includes/Defines.php" );
 	require_once( "$IP/CommonSettings.php" );
 
-	if ( !$wgUseNormalUser ) {
+	if ( $wgUseRootUser ) {
+		$wgDBuser = $wgDBadminuser = "root";
+		$wgDBpassword = $wgDBadminpassword = trim(`mysql_root_pass`);
+	} elseif ( !$wgUseNormalUser ) {
 		$wgDBuser = $wgDBadminuser = "wikiadmin";
 		$wgDBpassword = $wgDBadminpassword = trim(`wikiadmin_pass`);
 	}
@@ -163,6 +166,11 @@ if ( empty( $wgUseNormalUser ) && isset( $wgDBadminuser ) && $wgDBservers ) {
 		$wgDBservers[$i]['user'] = $wgDBuser;
 		$wgDBservers[$i]['password'] = $wgDBpassword;
 	}
+}
+
+if ( defined( 'MW_CMDLINE_CALLBACK' ) ) {
+	$fn = MW_CMDLINE_CALLBACK;
+	$fn();
 }
 
 ini_set( 'memory_limit', -1 );

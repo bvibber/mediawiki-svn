@@ -415,7 +415,7 @@ class Linker {
 					 $wopt = User::getDefaultOption( 'thumbsize' );
 				}
 				
-				$width = $wgThumbLimits[$wopt];
+				$width = min( $img->getWidth(), $wgThumbLimits[$wopt] );
 			}
 			
 			return $prefix.$this->makeThumbLinkObj( $img, $label, $alt, $align, $width, $height, $framed, $manual_thumb ).$postfix;
@@ -531,7 +531,11 @@ class Linker {
 		$textalign = $wgContLang->isRTL() ? ' style="text-align:right"' : '';
 
 		$s = "<div class=\"thumb t{$align}\"><div style=\"width:{$oboxwidth}px;\">";
-		if ( $thumbUrl == '' ) {
+		if( $thumbUrl == '' ) {
+			// Couldn't generate thumbnail? Scale the image client-side.
+			$thumbUrl = $url;
+		}
+		if( !$img->exists() ) {
 			$s .= $this->makeBrokenImageLinkObj( $img->getTitle() );
 			$zoomicon = '';
 		} else {
@@ -584,7 +588,7 @@ class Linker {
 	}
 	
 	/** @todo document */
-	function makeMediaLink( $name, $url, $alt = '' ) {
+	function makeMediaLink( $name, /* wtf?! */ $url, $alt = '' ) {
 		$nt = Title::makeTitleSafe( NS_IMAGE, $name );
 		return $this->makeMediaLinkObj( $nt, $alt );
 	}
@@ -716,7 +720,7 @@ class Linker {
 				$thelink = $this->makeMediaLink( $submatch[1], "", $text );
 			} else {
 				# Other kind of link
-				if( preg_match( wfMsgForContent( "linktrail" ), $match[4], $submatch ) ) {
+				if( preg_match( $wgContLang->linkTrail(), $match[4], $submatch ) ) {
 					$trail = $submatch[1];
 				} else {
 					$trail = "";
@@ -726,6 +730,8 @@ class Linker {
 					$match[1] = substr($match[1], 1);
 				$thelink = $this->makeLink( $match[1], $text, "", $trail );
 			}
+			# Quote backreferences, then run preg_replace
+			$thelink = strtr( $thelink, array( "\\" => "\\\\", '$' => "\\$" ) );
 			$comment = preg_replace( $linkRegexp, $thelink, $comment, 1 );
 		}
 		wfProfileOut( $fname );

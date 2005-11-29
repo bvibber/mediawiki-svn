@@ -653,7 +653,6 @@ Alle Tieden sünd UTC.
 'copyrightpage'     => '{{ns:4}}:Copyright',
 'copyrightpagename' => '{{SITENAME}} Copyright',
 'uploadedfiles'         => 'Hoochladene Datein',
-'ignorewarning'         => 'Warnen ignoreern un Datei liekers spiekern.',
 'minlength'             => 'Bilddatein möten tominnst dree Bookstaven hebben.',
 'badfilename'           => 'De Bildnaam is in „$1“ ännert worrn.',
 'badfiletype'           => '„.$1“ is keen anratenswert Dateiformat.',
@@ -890,7 +889,7 @@ Naam schreven worrn is, warrt de weerholten Versionen as ole Versionen vun disse
 'undeleterevision'      => 'Löschte Version vun de $1',
 'undeletebtn'           => 'Weerholen!',
 'undeletedarticle'      => '„$1“ weerholt',
-'undeletedtext'         => 'De Siet [[$1]] is mit Spood weerholt worrn.',
+'undeletedtext'         => 'De Siet [[:$1|$1]] is mit Spood weerholt worrn.',
 
 # Bidreeg
 #
@@ -1284,14 +1283,12 @@ class LanguageNds extends LanguageUtf8 {
 		return $wgSkinNamesNds;
 	}
 
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) . '. ' .
-		$this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
-		  ' ' .
-		  substr( $ts, 0, 4 );
-		return $d;
+	function formatMonth( $month, $format ) {
+		return $this->getMonthAbbreviation( $month );
+	}
+	
+	function formatDay( $day, $format ) {
+		return parent::formatDay( $day, $format ) . '.';
 	}
 
 	function getMessage( $key ) {

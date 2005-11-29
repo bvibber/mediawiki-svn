@@ -374,7 +374,6 @@ Vergeet neet dat net als met andere pagina's op Wikipedia anderen de ge-uploade 
 "copyrightpage" => "Wikipedia:Auteursrechten",
 "copyrightpagename" => "Wikipedia auteursrechten",
 "uploadedfiles" => "Ge-uploade bestanden",
-"ignorewarning" => "Negeer de waarschuwing en sla het bestand op.",
 "minlength"  => "De naam van het bestand moet uit ten minste drie tekens bestaan.",
 "badfilename" => "De naam van het bestand is gewijzigd in \"$1\".",
 "badfiletype" => "\".$1\" is geen aanbevolen afbeeldings bestandsformaat.",
@@ -535,7 +534,7 @@ Indien u een pagina wenst te verwijderen van uw volgliest klik dan op \"Van volg
 "undeleterevision" => "Verwijderde versie van $1",
 "undeletebtn" => "Terugplaatsen!",
 "undeletedarticle" => "\"$1\" is teruggeplaatst.",
-"undeletedtext" =>"Het artikel [[$1]] is teruggeplaatst. Zie [[Wikipedia:Logboek verwijderde pagina's]] voor een liest van de meest recente verwijderingen en terugplaatsingen.",
+"undeletedtext" =>"Het artikel [[:$1|$1]] is teruggeplaatst. Zie [[Wikipedia:Logboek verwijderde pagina's]] voor een liest van de meest recente verwijderingen en terugplaatsingen.",
 
 # Contributions
 # Bijdragen
@@ -883,20 +882,19 @@ class LanguageLi extends LanguageUtf8 {
 		global $wgSkinNamesLi;
 		return $wgSkinNamesLi;
 	}
-
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) . " " .
-		$this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) . " " .
-		substr( $ts, 0, 4 );
-		return $d;
+	
+	function timeBeforeDate( $format ) {
+		return false;
 	}
-
-	function timeanddate( $ts, $adj = false ) {
-		return $this->date( $ts, $adj ) . " " . $this->time( $ts, $adj );
+	
+	function timeDateSeparator( $format ) {
+		return ' ';
 	}
-
+	
+	function formatMonth( $month, $format ) {
+		return $this->getMonthAbbreviation( $month );
+	}
+	
 	function getMessage( $key ) {
 		global $wgAllMessagesLi;
 		if( isset( $wgAllMessagesLi[$key] ) ) {

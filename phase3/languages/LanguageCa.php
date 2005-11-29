@@ -460,7 +460,6 @@ carregat més recentement. Totes les hores són les del servidor (UTC).
 "copyrightpage" => "{{ns:4}}:Copyrights",
 "copyrightpagename" => "{{ns:4}} copyright",
 "uploadedfiles"	=> "Arxius carregats",
-"ignorewarning"	=> "Ignora l'advertència i desa l'arxiu de totes maneres.",
 "minlength"		=> "Els noms de les imatges han de tenir un mínim de tres lletres.",
 "badfilename"	=> "El nom de la imatge s'ha canviat a \"$1\".",
 "badfiletype"	=> "\".$1\" no és un format recomanat d'imatge.",
@@ -673,7 +672,7 @@ revisió actual del la pàgina \"viva\" no serà substituïda automàticament.",
 "undeleterevision" => "Revisió esborrada al $1",
 "undeletebtn" => "Restaura!",
 "undeletedarticle" => "restaurat \"$1\"",
-"undeletedtext"   => "L'article [[$1]] ha estat restaurat amb èxit.
+"undeletedtext"   => "L'article [[:$1|$1]] ha estat restaurat amb èxit.
 Vegeu [[{{ns:4}}:Registre_d'esborrats]] per un llistat d'esborrats i restauracions recents.",
 
 # Contributions
@@ -821,32 +820,8 @@ class LanguageCa extends LanguageUtf8 {
 		return $wgSkinNamesCa;
 	}
 
-
-	function shortdate( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) . " " .$this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) . ", " .
-		  substr( $ts, 0, 4 );
-		return $d;
-	}
-
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) . " de " .$this->getMonthName( substr( $ts, 4, 2 ) ) . ", " .
-		  substr( $ts, 0, 4 );
-		return $d;
-	}
-
-	function time( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$t = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
-		return $t;
-	}
-
-	function timeanddate( $ts, $adj = false ) {
-		return $this->time( $ts, $adj ) . " " . $this->shortdate( $ts, $adj );
+	function formatMonth( $month, $format ) {
+		return $this->getMonthAbbreviation( $month );
 	}
 
 	function getMessage( $key ) {

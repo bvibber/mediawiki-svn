@@ -50,8 +50,6 @@ class User {
 	 * @static
 	 */
 	function newFromName( $name ) {
-		$u = new User();
-
 		# Force usernames to capital
 		global $wgContLang;
 		$name = $wgContLang->ucfirst( $name );
@@ -71,6 +69,7 @@ class User {
 			return null;
 		}
 
+		$u = new User();
 		$u->setName( $canonicalName );
 		$u->setId( $u->idFromName( $canonicalName ) );
 		return $u;
@@ -160,12 +159,19 @@ class User {
 	/**
 	 * does the string match an anonymous IPv4 address?
 	 *
+	 * Note: We match \d{1,3}\.\d{1,3}\.\d{1,3}\.xxx as an anonymous IP
+	 * address because the usemod software would "cloak" anonymous IP
+	 * addresses like this, if we allowed accounts like this to be created
+	 * new users could get the old edits of these anonymous users.
+	 *
+	 * @bug 3631
+	 *
 	 * @static
 	 * @param string $name Nickname of a user
 	 * @return bool
 	 */
 	function isIP( $name ) {
-		return preg_match("/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/",$name);
+		return preg_match("/^\d{1,3}\.\d{1,3}\.\d{1,3}\.(?:xxx|\d{1,3})$/",$name);
 		/*return preg_match("/^
 			(?:[01]?\d{1,2}|2(:?[0-4]\d|5[0-5]))\.
 			(?:[01]?\d{1,2}|2(:?[0-4]\d|5[0-5]))\.
@@ -195,6 +201,14 @@ class User {
 		|| strlen( $name ) > $wgMaxNameChars
 		|| $name != $wgContLang->ucfirst( $name ) )
 			return false;
+		
+		// Ensure that the name can't be misresolved as a different title,
+		// such as with extra namespace keys at the start.
+		$parsed = Title::newFromText( $name );
+		if( is_null( $parsed )
+			|| $parsed->getNamespace()
+			|| strcmp( $name, $parsed->getPrefixedText() ) )
+			return false;
 		else
 			return true;
 	}
@@ -212,7 +226,11 @@ class User {
 	}
 
 	/**
-	 * does the string match roughly an email address ?
+	 * Does the string match roughly an email address ?
+	 *
+	 * There used to be a regular expression here, it got removed because it
+	 * rejected valid addresses. Actually just check if there is '@' somewhere
+	 * in the given address.
 	 *
 	 * @todo Check for RFC 2822 compilance
 	 * @bug 959
@@ -222,8 +240,6 @@ class User {
 	 * @return bool
 	 */
 	function isValidEmailAddr ( $addr ) {
-		# There used to be a regular expression here, it got removed because it
-		# rejected valid addresses.
 		return ( trim( $addr ) != '' ) &&
 			(false !== strpos( $addr, '@' ) );
 	}
@@ -273,7 +289,7 @@ class User {
 		$fname = 'User::loadDefaults' . $n;
 		wfProfileIn( $fname );
 
-		global $wgContLang, $wgIP, $wgDBname;
+		global $wgContLang, $wgDBname;
 		global $wgNamespaces;
 
 		$this->mId = 0;
@@ -422,6 +438,10 @@ class User {
 				}
 			}
 		}
+
+		# Extensions
+		wfRunHooks( 'GetBlockedStatus', array( &$this ) );
+
 		wfProfileOut( $fname );
 	}
 
@@ -1016,7 +1036,6 @@ class User {
 
 	/**
 	 * Check if a user is sysop
-	 * Die with backtrace. Use User:isAllowed() instead.
 	 * @deprecated
 	 */
 	function isSysop() {
@@ -1447,6 +1466,13 @@ class User {
 		# Check if this IP address is already blocked
 		$ipblock = Block::newFromDB( wfGetIP() );
 		if ( $ipblock->isValid() ) {
+			# If the user is already blocked. Then check if the autoblock would
+			# excede the user block. If it would excede, then do nothing, else
+			# prolong block time
+			if ($userblock->mExpiry &&
+				($userblock->mExpiry < Block::getAutoblockExpiry($ipblock->mTimestamp))) {
+				return;
+			}
 			# Just update the timestamp
 			$ipblock->updateTimestamp();
 			return;
@@ -1485,7 +1511,7 @@ class User {
 		$confstr =        $this->getOption( 'math' );
 		$confstr .= '!' . $this->getOption( 'stubthreshold' );
 		$confstr .= '!' . $this->getOption( 'date' );
-		$confstr .= '!' . $this->getOption( 'numberheadings' );
+		$confstr .= '!' . ($this->getOption( 'numberheadings' ) ? '1' : '');
 		$confstr .= '!' . $this->getOption( 'language' );
 		$confstr .= '!' . $this->getOption( 'thumbsize' );
 		// add in language specific options, if any
@@ -1497,7 +1523,7 @@ class User {
 	}
 
 	function isAllowedToCreateAccount() {
-		return $this->isAllowed( 'createaccount' );
+		return $this->isAllowed( 'createaccount' ) && !$this->isBlocked();
 	}
 
 	/**

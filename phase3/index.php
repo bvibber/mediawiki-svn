@@ -3,11 +3,14 @@
  * Main wiki script; see docs/design.txt
  * @package MediaWiki
  */
-
 $wgRequestTime = microtime();
 
 unset( $IP );
 @ini_set( 'allow_url_fopen', 0 ); # For security...
+
+if ( isset( $_REQUEST['GLOBALS'] ) ) {
+	die( '<a href="http://www.hardened-php.net/index.76.html">$GLOBALS overwrite vulnerability</a>');
+}
 
 # Valid web server entry point, enable includes.
 # Please don't move this line to includes/Defines.php. This line essentially defines
@@ -20,18 +23,17 @@ if( !file_exists( 'LocalSettings.php' ) ) {
 	$IP = "." ;
 	require_once( 'includes/DefaultSettings.php' ); # used for printing the version
 ?>
-<!DOCTYPE html PUBLIC "-//W3C/DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
 	<head>
 		<title>MediaWiki <?php echo $wgVersion ?></title>
 		<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-
 		<style type='text/css' media='screen, projection'>
 			html, body {
 				color: #000;
 				background-color: #fff;
-				font-family: serif;
-				text-align:center;
+				font-family: sans-serif;
+				text-align: center;
 			}
 
 			h1 {
@@ -48,7 +50,7 @@ if( !file_exists( 'LocalSettings.php' ) ) {
 		if ( file_exists( 'config/LocalSettings.php' ) ) {
 			echo( "To complete the installation, move <tt>config/LocalSettings.php</tt> to the parent directory." );
 		} else {
-			echo( "You'll have to <a href='config/index.php' title='setup'>set the wiki up</a> first!" );
+			echo( "Please <a href='config/index.php' title='setup'>setup the wiki</a> first." );
 		}
 		?>
 
@@ -83,7 +85,7 @@ if ( '' == $title && 'delete' != $action ) {
 	/* check variant links so that interwiki links don't have to worry about
 	   the possible different language variants
 	*/
-	if( !is_null($wgTitle) && $wgTitle->getArticleID() == 0 )
+	if( count($wgContLang->getVariants()) > 1 && !is_null($wgTitle) && $wgTitle->getArticleID() == 0 )
 		$wgContLang->findVariantLink( $title, $wgTitle );
 
 }
@@ -91,6 +93,13 @@ wfProfileOut( 'main-misc-setup' );
 
 # Debug statement for user levels
 // print_r($wgUser);
+
+$search = $wgRequest->getText( 'search' );
+if( !is_null( $search ) && $search !== '' ) {
+	// Compatibility with old search URLs which didn't use Special:Search
+	// Do this above the read whitelist check for security...
+	$wgTitle = Title::makeTitle( NS_SPECIAL, 'Search' );
+}
 
 # If the user is not logged in, the Namespace:title of the article must be in
 # the Read array in order for the user to see it. (We have to check here to
@@ -102,10 +111,6 @@ if ( !is_null( $wgTitle ) && !$wgTitle->userCanRead() ) {
 }
 
 wfProfileIn( 'main-action' );
-$search = $wgRequest->getText( 'search' );
-if( $wgDisableInternalSearch && !is_null( $search ) && $search !== '' ) {
-	$wgTitle = Title::makeTitle( NS_SPECIAL, 'Search' );
-}
 
 if( !$wgDisableInternalSearch && !is_null( $search ) && $search !== '' ) {
 	require_once( 'includes/SpecialSearch.php' );
@@ -186,6 +191,7 @@ if( !$wgDisableInternalSearch && !is_null( $search ) && $search !== '' ) {
 			case 'validate':
 			case 'render':
 			case 'deletetrackback':
+			case 'purge':
 				$wgArticle->$action();
 				break;
 			case 'print':
@@ -246,12 +252,6 @@ if( !$wgDisableInternalSearch && !is_null( $search ) && $search !== '' ) {
 				require_once( 'includes/RawPage.php' );
 				$raw = new RawPage( $wgArticle );
 				$raw->view();
-				break;
-			case 'purge':
-				wfPurgeSquidServers(array($wgTitle->getInternalURL()));
-				$wgOut->setSquidMaxage( $wgSquidMaxage );
-				$wgTitle->invalidateCache();
-				$wgArticle->view();
 				break;
 			default:
 				if (wfRunHooks('UnknownAction', array($action, $wgArticle))) {

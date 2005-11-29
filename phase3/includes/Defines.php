@@ -79,7 +79,7 @@ define( 'MW_MATH_MATHML', 5 );
 $wgAvailableRights = array('read', 'edit', 'move', 'delete', 'undelete',
 'protect', 'block', 'userrights', 'createaccount', 'upload',
 'rollback', 'patrol', 'editinterface', 'siteadmin', 'bot', 'validate', 
-'import', 'importupload', 'renameuser' );
+'import', 'importupload', 'namespaces' );
 
 /**#@+
  * Cache type
@@ -97,7 +97,6 @@ define( 'CACHE_ACCEL', 3 );      // eAccelerator or Turck, whichever is availabl
  * Media types. 
  * This defines constants for the value returned by Image::getMediaType()
  */
-
 define( 'MEDIATYPE_UNKNOWN',    'UNKNOWN' );     // unknown format
 define( 'MEDIATYPE_BITMAP',     'BITMAP' );      // some bitmap image or image source (like psd, etc). Can't scale up.
 define( 'MEDIATYPE_DRAWING',    'DRAWING' );     // some vector drawing (SVG, WMF, PS, ...) or image source (oo-draw, etc). Can scale up.
@@ -113,7 +112,6 @@ define( 'MEDIATYPE_ARCHIVE',    'ARCHIVE' );     // archive file (zip, tar, etc)
 /**#@+
  * Antivirus result codes, for use in $wgAntivirusSetup. 
  */
-
 define( 'AV_NO_VIRUS', 0 );  #scan ok, no virus found
 define( 'AV_VIRUS_FOUND', 1 );  #virus found!
 define( 'AV_SCAN_ABORTED', -1 );  #scan aborted, the file is probably imune
@@ -141,6 +139,7 @@ define('NS_DUPLICATE_NAMES',4);
 define('NS_INTERWIKI_NAMES',5);
 define('NS_PREFIX_NAMES',6);
 define('NS_LINKED_NAMES',7);
+/**#@-*/
 
 /**#@+
  * Namespace changes success codes
@@ -152,5 +151,23 @@ define('NS_MISSING',4);
 define('NS_IDENTICAL',5);
 define('NS_DELETED',6);
 define('NS_PROTECTED',7);
+/**#@-*/
+
+/**#@+
+ * Valid namespace names character class
+ */
+define('NS_CHAR','[ _0-9A-Za-z\x80-\xff]');
+
+
+/**#@+
+ * Date format selectors; used in user preference storage and by
+ * Language::date() and co.
+ */
+define( 'MW_DATE_DEFAULT', '0' );
+define( 'MW_DATE_MDY', '1' );
+define( 'MW_DATE_DMY', '2' );
+define( 'MW_DATE_YMD', '3' );
+define( 'MW_DATE_ISO', 'ISO 8601' );
+/**#@-*/
 
 ?>

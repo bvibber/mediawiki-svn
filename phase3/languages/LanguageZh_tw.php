@@ -497,7 +497,6 @@ MySQL返回錯誤 \"<tt>$3: $4</tt>\"。",
 "copyrightpage" => "維基百科:版權信息",
 "copyrightpagename" => "維基百科版權",
 "uploadedfiles"	=> "已上載文件",
-"ignorewarning"	=> "忽略警告並保存文件。",
 "minlength"		=> "圖像名字必須至少有三個字母。",
 "badfilename"	=> "圖像名已被改為\"$1\"。",
 "badfiletype"	=> "\".$1\"不是所推薦的圖像文件格式。",
@@ -705,7 +704,7 @@ MySQL返回錯誤 \"<tt>$3: $4</tt>\"。",
 "undeleterevision" => "刪除$1時的版本",
 "undeletebtn" => "恢復！",
 "undeletedarticle" => "已經恢復“$1”",
-"undeletedtext"   => "[[$1]]已經被成功復原。
+"undeletedtext"   => "[[:$1|$1]]已經被成功復原。
 有關維基百科最近的刪除與復原，參見[[維基百科:刪除紀錄]]",
 
 # Contributions

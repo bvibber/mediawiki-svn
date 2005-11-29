@@ -745,6 +745,7 @@ Féach ar [[{{ns:4}}:Cabhair do sainroghanna úsáideora]] chun cabhair a fháil
 "skin"	  => "Craiceann",
 "math"	  => "Ag aistriú na matamaitice",
 "dateformat"    => "Formáid dáta",
+'datedefault' => 'Is cuma liom',
 "math_failure"      => "Theip anailís an fhoirmle",
 "math_unknown_error"    => "earráid anaithnid",
 "math_unknown_function" => "foirmle anaithnid ",
@@ -926,7 +927,6 @@ Is am an freastalaí (UTC) iad na hamanna atá anseo thíos.
 "copyrightpage" => "{{ns:4}}:Cóipchearta",
 "copyrightpagename" => "Cóipcheart Vicipéide",
 "uploadedfiles" => "Comhaid uaslódáilte",
-"ignorewarning" => "Scaoil tharat an rabhadh agus sábháil an comhad ar aon chaoi.",
 "minlength"     => "Caithfidh trí litreacha ar a laghad bheith ann sa comhadainm.",
 'illegalfilename'       => 'Tá litreacha san comhadainm  "$1" nach ceadaítear in ainm leathanaigh. Athainmnigh
 an comhad agus déan athiarracht, más é do thoil é.',
@@ -1262,7 +1262,7 @@ leathanaigh go huathoibríoch.",
 "undeleterevision" => "Leagan scriosta den dáta $1",
 "undeletebtn" => "Díscrios!",
 "undeletedarticle" => "Díscriosadh \"$1\" ar ais",
-"undeletedtext"   => "Díscriosadh an alt [[$1]] go rathúil.
+"undeletedtext"   => "Díscriosadh an alt [[:$1|$1]] go rathúil.
 Féach ar [[{{ns:4}}:Cuntas_scriosaidh]] chun cuntas de scriosaidh agus athchóirithe deireanacha a fháil.",
 
 
@@ -2125,7 +2125,7 @@ class LanguageGa extends LanguageUtf8 {
 	# Convert day names
 	# Invoked with {{GRAMMAR:transformation|word}}
 	function convertGrammar( $word, $what ) {
-		switch ( $case ) {
+		switch ( $what ) {
 		case 'ainmlae':
 			switch ($word) {
 			case 'an Domhnach':

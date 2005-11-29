@@ -510,7 +510,6 @@ Alla tider visas efter serverns tid (UTC).
 "copyrightpage"         => "Wikipedia:copyright",
 "copyrightpagename"     => "Wikipedia copyright",
 "uploadedfiles"         => "Uppladdade filer",
-"ignorewarning"         => "Ignorera varning och spara fil.",
 "minlength"             => "Namnet på bildfilen ska vara minst tre bokstäver",
 "badfilename"           => "Bildnamn har blivit ändrat till \"$1\".",
 "badfiletype"           => "\".$1\" är inte ett rekomenderat bildformat.",
@@ -709,7 +708,7 @@ hamna i den äldre versionshanteraren och den senaste versionen av sidan kommer 
 "undeleterevision"      => "Tog bort version $1",
 "undeletebtn"           => "Återställd!",
 "undeletedarticle"      => "återställd \"$1\"",
-"undeletedtext"         => "Artikeln [[$1]] har blivit återställd
+"undeletedtext"         => "Artikeln [[:$1|$1]] har blivit återställd
 Se [[Wikipedia:Borttagningslogg]] för en lista över nyligen gjorda borttagningar och återställningar",
 
 // Contributions
@@ -910,26 +909,21 @@ class LanguageSv extends LanguageUtf8 {
 		return $wgSkinNamesSv;
 	}
 
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) . " " .
-		$this->getMonthName( substr( $ts, 4, 2 ) ) . " " .
-		substr( $ts, 0, 4 );
-		return $d;
-	}
-
 	// "." is used as the character to separate the
 	// hours from the minutes in the date output
-	function time( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$t = substr( $ts, 8, 2 ) . "." . substr( $ts, 10, 2 );
-		return $t;
+	function timeSeparator() {
+		return '.';
 	}
 
-	function timeanddate( $ts, $adj = false ) {
-		return $this->date( $ts, $adj ) . " kl." . $this->time( $ts, $adj );
+	function timeanddate( $ts, $adj = false, $format = false, $timecorrection = false ) {
+		$format = $this->dateFormat( $format );
+		if( $format == MW_DATE_ISO ) {
+			return parent::timeanddate( $ts, $adj, $format, $timecorrection );
+		} else {
+			return $this->date( $ts, $adj, $format, $timecorrection ) .
+				" kl." .
+				$this->time( $ts, $adj, $format, $timecorrection );
+		}
 	}
 
 	function getMessage( $key ) {

@@ -12,7 +12,7 @@ class SearchEngine {
 	var $limit = 10;
 	var $offset = 0;
 	var $searchTerms = array();
-	var $namespaces = array( 0 );
+	var $namespaces = array( NS_MAIN );
 	var $showRedirects = false;
 
 	/**
@@ -77,6 +77,18 @@ class SearchEngine {
 		# Now try all upper case
 		#
 		$title = Title::newFromText( strtoupper( $term ) );
+		if ( $title->exists() ) {
+			return $title;
+		}
+		
+		# Now try Word-Caps-Breaking-At-Word-Breaks, for hyphenated names etc
+		$title = Title::newFromText( preg_replace_callback(
+			'/\b([\w\x80-\xff]+)\b/',
+			create_function( '$matches', '
+				global $wgContLang;
+				return $wgContLang->ucfirst($matches[1]);
+				' ),
+			$term ) );
 		if ( $title->exists() ) {
 			return $title;
 		}

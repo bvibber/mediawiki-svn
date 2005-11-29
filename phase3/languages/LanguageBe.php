@@ -88,7 +88,7 @@ require_once('LanguageUtf8.php');
 	MAG_NOCONTENTCONVERT	=> array( 0,	'__NOCONTENTCONVERT__', '__NOCC__', '__БЕЗ_КАНВЭРТАЦЫІ_ТЭКСТУ__'),
 	MAG_CURRENTWEEK		=> array( 1,	'CURRENTWEEK', 'БЯГУЧЫ_ТЫДЗЕНЬ'),
 	MAG_CURRENTDOW		=> array( 1,	'CURRENTDOW', 'БЯГУЧЫ_ДЗЕНЬ_ТЫДНЯ'),
-);
+) + $wgMagicWordsEn;
 
 /* private */ $wgAllMessagesBe = array(
 # Belarusian Cyrillic alphabet:
@@ -243,7 +243,6 @@ public domain or similar free resource.<br />
 'history_short' => 'Гісторыя',
 'historywarning' => 'Папярэджаньне: у старонкі, якую Вы зьбіраецеся выдаліць, ёсьць гісторыя:',
 'hr_tip' => 'Гарызантальная лінія (не выкарыстоўвайце часта)',
-'ignorewarning' => 'Праігнараваць папярэджаньне і захаваць файл.',
 'illegalfilename' => 'Назва файла «$1» зьмяшчае сымбалі, якія нельга выкарыстоўваць у назвах старонак. Калі ласка, зьмяніце назву файла і паспрабуйце загрузіць яго зноў.',
 'ilsubmit' => 'Шукаць',
 'image_sample' => 'Прыклад.jpg',
@@ -554,24 +553,26 @@ class LanguageBe extends LanguageUtf8 {
 		global $wgMagicWordsBe;
 		return $wgMagicWordsBe;
 	}
+	
+	function getDateFormats() {
+		return $wgDateFormatsBe = array(
+			MW_DATE_DEFAULT => MW_DATE_DEFAULT,
+			'16:12, 15.01.2001' => '16:12, 15.01.2001',
+			MW_DATE_ISO => MW_DATE_ISO
+		);
+	}
 
 	// The date and time format
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); } # Adjust based on the timezone setting.
-		// 20050310001506 => 10.03.2005
-		$date = (substr( $ts, 6, 2 )) . '.' . substr( $ts, 4, 2 ) . '.' . substr( $ts, 0, 4 );
-		return $date;
-	}
-
-	function time( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-		// 20050310001506 => 00:15
-		$time = substr( $ts, 8, 2 ) . ':' . substr( $ts, 10, 2 );
-		return $time;
-	}
-
-	function timeanddate( $ts, $adj = false ) {
-		return $this->time( $ts, $adj ) . ', ' .$this->date( $ts, $adj );
+	function date( $ts, $adj = false, $format = true, $timecorrection = false ) {
+		$datePreference = $this->dateFormat( $format );
+		if( $datePreference == MW_DATE_ISO ) {
+			return parent::date( $ts, $adj, $datePreference, $timecorrection );
+		} else {
+			if ( $adj ) { $ts = $this->userAdjust( $ts, $timecorrection ); } # Adjust based on the timezone setting.
+			// 20050310001506 => 10.03.2005
+			$date = (substr( $ts, 6, 2 )) . '.' . substr( $ts, 4, 2 ) . '.' . substr( $ts, 0, 4 );
+			return $date;
+		}
 	}
 
 	function getMessage( $key ) {
@@ -583,8 +584,22 @@ class LanguageBe extends LanguageUtf8 {
 		}
 	}
 
-	function formatNum( $number ) {
-		return strtr($number, '.,', ',.' );
+	function formatNum( $number, $year = false ) {
+		return $year ? $number : strtr($this->commafy($number), '.,', ',.' );
+	}
+
+	function convertPlural( $count, $wordform1, $wordform2, $wordform3) {
+		if ($count > 10 && floor(($count % 100) / 10) == 1) {
+			return $wordform3;
+		} else {
+			switch ($count % 10) {
+				case 1: return $wordform1;
+				case 2:
+				case 3:
+				case 4: return $wordform2;
+				default: return $wordform3;
+			}
+		}
 	}
 }
 ?>

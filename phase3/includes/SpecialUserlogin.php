@@ -163,7 +163,7 @@ class LoginForm {
 		global $wgUser, $wgOut;
 		global $wgUseLatin1, $wgEnableSorbs, $wgProxyWhitelist;
 		global $wgMemc, $wgAccountCreationThrottle, $wgDBname;
-		global $wgAuth;
+		global $wgAuth, $wgMinimalPasswordLength;
 
 		// If the user passes an invalid domain, something is fishy
 		if( !$wgAuth->validDomain( $this->mDomain ) ) {
@@ -267,9 +267,7 @@ class LoginForm {
 		global $wgAuth;
 		$wgAuth->initUser( $u );
 
-		if ( $this->mRemember ) { $r = 1; }
-		else { $r = 0; }
-		$u->setOption( 'rememberpassword', $r );
+		$u->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
 		
 		return $u;
 	}

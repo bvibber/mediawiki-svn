@@ -570,6 +570,7 @@ Teie sisemine ID-number on $2.",
 "skin"			=> "Nahk",
 "math"			=> "Valemite näitamine",
 "dateformat"            => "Kuupäeva formaat",
+'datedefault' => 'Eelistus puudub',
 "math_failure"		=> "Arusaamatu süntaks",
 "math_unknown_error"	=> "Tundmatu viga",
 "math_unknown_function"	=> "Tundmatu funktsioon ",
@@ -669,7 +670,6 @@ Kellaajad on märgitud serveri ajaarvamise järele (UTC).
 "copyrightpage" => "{{ns:4}}:Autoriõigused",
 "copyrightpagename" => "{{SITENAME}} ja autoriõigused",
 "uploadedfiles"	=> "Üleslaetud failid",
-"ignorewarning"	=> "Ignoreeri hoiatust ja salvesta sellest hoolimata.",
 "minlength"		=> "Pildi nimi peab sisaldama vähemalt kolme tähte.",
 "badfilename"	=> "Pildi nimi on muudetud. Uus nimi on \"$1\".",
 "badfiletype"	=> "\".$1\" ei ole soovitatav formaat.",
@@ -866,7 +866,7 @@ versioonid varasema ajaloona. Kehtivat versiooni automaatselt välja ei vahetata
 "undeleterevision" => "Kustutatud versioon seisuga $1",
 "undeletebtn" => "Taasta!",
 "undeletedarticle" => "\"$1\" taastatud",
-"undeletedtext"   => "Artikkel [[$1]] on taastatud.
+"undeletedtext"   => "Artikkel [[:$1|$1]] on taastatud.
 Viimaste kustutamiste ja taastamiste logi on esitatud lehel [[{{ns:4}}:Kustutatud_leheküljed]].",
 
 # Contributions
@@ -1112,9 +1112,9 @@ class LanguageEt extends LanguageUtf8 {
 			$t = substr( $ts, 8, 2 ) . ':' . substr( $ts, 10, 2 );
 			$t .= ':' . substr( $ts, 12, 2 );
 		} else {
-			$t = substr( $ts, 8, 2 ) . '&#46;' . substr( $ts, 10, 2 );
+			$t = substr( $ts, 8, 2 ) . '.' . substr( $ts, 10, 2 );
 		}
-		return $this->formatNum( $t );
+		return $t;
 	}
 
 

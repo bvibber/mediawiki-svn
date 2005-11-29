@@ -23,13 +23,13 @@ if( !isset($options['output']) ) { $options['output']='wiki'; }
 /** Print a usage message*/
 function usage() {
 print <<<END
-Usage: php transstat.php [--help] [--output:csv|text|wiki] [--noredundant]
+Usage: php transstat.php [--help] [--output:csv|text|wiki]
          --help : this helpful message
        --output : select an output engine one of:
                     * 'csv'  : Comma Separated Values.
-                    * 'wiki' : MediaWiki syntax.
+                    * 'wiki' : MediaWiki syntax (default).
                     * 'text' : Text with tabs.
-	              Default output is 'wiki'
+
 END;
 }
 

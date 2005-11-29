@@ -212,21 +212,16 @@ class Skin extends Linker {
 
 	# get the user/site-specific stylesheet, SkinPHPTal called from RawPage.php (settings are cached that way)
 	function getUserStylesheet() {
-		global $wgOut, $wgStylePath, $wgContLang, $wgUser, $wgRequest, $wgTitle, $wgAllowUserCss;
+		global $wgOut, $wgStylePath, $wgRequest, $wgContLang, $wgSquidMaxage;
 		$sheet = $this->getStylesheet();
 		$action = $wgRequest->getText('action');
 		$s = "@import \"$wgStylePath/$sheet\";\n";
 		if($wgContLang->isRTL()) $s .= "@import \"$wgStylePath/common/common_rtl.css\";\n";
-		if( $wgAllowUserCss && $wgUser->isLoggedIn() ) { # logged in
-			if($wgTitle->isCssSubpage() && $this->userCanPreview( $action ) ) {
-				$s .= $wgRequest->getText('wpTextbox1');
-			} else {
-				$userpage = $wgUser->getUserPage();
-				$s.= '@import "'.$this->makeUrl(
-					$userpage->getPrefixedText().'/'.$this->getSkinName().'.css',
-					'action=raw&ctype=text/css').'";'."\n";
-			}
-		}
+
+		$query = "action=raw&ctype=text/css&smaxage=$wgSquidMaxage";
+		$s .= '@import "' . $this->makeNSUrl( 'Common.css', $query, NS_MEDIAWIKI ) . "\";\n" .
+			'@import "'.$this->makeNSUrl( ucfirst( $this->getSkinName() . '.css' ), $query, NS_MEDIAWIKI ) . "\";\n";
+
 		$s .= $this->doGetUserStyles();
 		return $s."\n";
 	}
@@ -253,10 +248,20 @@ class Skin extends Linker {
 	 * Some styles that are set by user through the user settings interface.
 	 */
 	function doGetUserStyles() {
-		global $wgUser, $wgContLang, $wgNamespaces;
+		global $wgUser, $wgContLang, $wgUser, $wgRequest, $wgTitle, $wgAllowUserCss;
 
-		$csspage = $wgNamespaces[NS_MEDIAWIKI]->getDefaultName() . ':' . $this->getSkinName() . '.css';
-		$s = '@import "'.$this->makeUrl($csspage, 'action=raw&ctype=text/css')."\";\n";
+		$s = '';
+		
+		if( $wgAllowUserCss && $wgUser->isLoggedIn() ) { # logged in
+			if($wgTitle->isCssSubpage() && $this->userCanPreview( $action ) ) {
+				$s .= $wgRequest->getText('wpTextbox1');
+			} else {
+				$userpage = $wgUser->getUserPage();
+				$s.= '@import "'.$this->makeUrl(
+					$userpage->getPrefixedText().'/'.$this->getSkinName().'.css',
+					'action=raw&ctype=text/css').'";'."\n";
+			}
+		}
 
 		return $s . $this->reallyDoGetUserStyles();
 	}
@@ -416,17 +421,21 @@ END;
 
 	function getCategoryLinks () {
 		global $wgOut, $wgTitle, $wgParser;
-		global $wgUseCategoryMagic, $wgUseCategoryBrowser, $wgLang;
+		global $wgUseCategoryMagic, $wgUseCategoryBrowser, $wgContLang;
 
 		if( !$wgUseCategoryMagic ) return '' ;
 		if( count( $wgOut->mCategoryLinks ) == 0 ) return '';
 
-		# Taken out so that they will be displayed in previews -- TS
-		#if( !$wgOut->isArticle() ) return '';
-
-		$t = implode ( ' | ' , $wgOut->mCategoryLinks ) ;
+		// Use Unicode bidi embedding override characters,
+		// to make sure links don't smash each other up in ugly ways.
+		// FIXME: should we use 'dir=emded' or something on links instead?
+		$embed = $wgContLang->isRTL() ? '&#x202b;' : '&#x202a;';
+		$pop = '&#x202c;';
+		$t = $embed . implode ( "$pop | $embed" , $wgOut->mCategoryLinks ) . $pop;
+		
+		$msg = count( $wgOut->mCategoryLinks ) === 1 ? 'categories1' : 'categories';
 		$s = $this->makeKnownLinkObj( Title::makeTitle( NS_SPECIAL, 'Categories' ),
-			wfMsg( 'categories' ), 'article=' . urlencode( $wgTitle->getPrefixedDBkey() ) )
+			wfMsg( $msg ), 'article=' . urlencode( $wgTitle->getPrefixedDBkey() ) )
 			. ': ' . $t;
 
 		# optional 'dmoz-like' category browser. Will be shown under the list
@@ -646,7 +655,7 @@ END;
 	}
 
 	function nameAndLogin() {
-		global $wgUser, $wgTitle, $wgLang, $wgContLang, $wgShowIPinHeader, $wgIP, $wgNamespaces;
+		global $wgUser, $wgTitle, $wgLang, $wgContLang, $wgShowIPinHeader, $wgNamespaces;
 
 		$li = $wgContLang->specialPage( 'Userlogin' );
 		$lo = $wgContLang->specialPage( 'Userlogout' );
@@ -1270,8 +1279,7 @@ END;
 	# If url string starts with http, consider as external URL, else
 	# internal
 	/*static*/ function makeInternalOrExternalUrl( $name ) {
-		global $wgUrlProtocols;
-		if ( preg_match( '/^(?:' . $wgUrlProtocols . ')/', $name ) ) {
+		if ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $name ) ) {
 			return $name;
 		} else {
 			return $this->makeUrl( $name );
@@ -1295,6 +1303,18 @@ END;
 		);
 	}
 
+	/**
+	 * Make URL details where the article exists (or at least it's convenient to think so)
+	 */
+	function makeKnownUrlDetails( $name, $urlaction='' ) {
+		$title = Title::newFromText( $name );
+		$this->checkTitle($title, $name);
+		return array(
+			'href' => $title->getLocalURL( $urlaction ),
+			'exists' => true
+		);
+	}
+
 	# make sure we have some title to operate on
 	/*static*/ function checkTitle ( &$title, &$name ) {
 		if(!is_object($title)) {
@@ -1312,7 +1332,10 @@ END;
 	 * @access private
 	 */
 	function buildSidebar() {
+		global $wgTitle, $action;
+
 		$fname = 'SkinTemplate::buildSidebar';
+		$pageurl = $wgTitle->getLocalURL();
 		wfProfileIn( $fname );
 
 		$bar = array();
@@ -1333,10 +1356,12 @@ END;
 						$text = $line[1];
 					if (wfEmptyMsg($line[0], $link))
 						$link = $line[0];
+					$href = $this->makeInternalOrExternalUrl( $link );
 					$bar[$heading][] = array(
 						'text' => $text,
-						'href' => $this->makeInternalOrExternalUrl( $link ),
+						'href' => $href,
 						'id' => 'n-' . strtr($line[1], ' ', '-'),
+						'active' => $pageurl == $href
 					);
 				} else { continue; }
 			}

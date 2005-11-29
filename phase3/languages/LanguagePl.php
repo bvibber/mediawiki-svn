@@ -10,13 +10,33 @@ require_once("LanguageUtf8.php");
 # Yucky hardcoding hack as polish grammar need tweaking :o)
 switch( $wgMetaNamespace ) {
 case 'Wikipedia':
-	$wgMetaTalkNamespace = 'Dyskusja_Wikipedii'; break;
+        $wgMetaTalkNamespace = 'Dyskusja_Wikipedii';
+        $wgMetaUserNamespace = 'Wikipedysta';
+    $wgMetaUserTalkNamespace = 'Dyskusja_Wikipedysty'; break;
 case 'Wikisłownik':
-	$wgMetaTalkNamespace = 'Wikidyskusja'; break;
+        $wgMetaTalkNamespace = 'Wikidyskusja';
+        $wgMetaUserNamespace = 'Wikipedysta';
+    $wgMetaUserTalkNamespace = 'Dyskusja_Wikipedysty'; break;
 case 'Wikicytaty':
-	$wgMetaTalkNamespace = 'Dyskusja_Wikicytatów'; break;
+        $wgMetaTalkNamespace = 'Dyskusja_Wikicytatów';
+        $wgMetaUserNamespace = 'Wikipedysta';
+    $wgMetaUserTalkNamespace = 'Dyskusja_Wikipedysty'; break;
+case 'Wikiźródła':
+        $wgMetaTalkNamespace = 'Dyskusja_Wikiźródeł';
+        $wgMetaUserNamespace = 'Wikiskryba';
+    $wgMetaUserTalkNamespace = 'Dyskusja_Wikiskryby'; break;
+case 'Wikibooks':
+        $wgMetaTalkNamespace = 'Dyskusja_Wikibooks';
+        $wgMetaUserNamespace = 'Wikipedysta';
+    $wgMetaUserTalkNamespace = 'Dyskusja_Wikipedysty'; break;
+case 'Wikinews':
+        $wgMetaTalkNamespace = 'Dyskusja_Wikinews';
+        $wgMetaUserNamespace = 'Wikireporter';
+    $wgMetaUserTalkNamespace = 'Dyskusja_Wikireportera'; break;
 default:
-	$wgMetaTalkNamespace = 'Dyskusja_'.$wgMetaNamespace;
+        $wgMetaTalkNamespace = 'Dyskusja_'.$wgMetaNamespace;
+        $wgMetaUserNamespace = 'Użytkownik';
+    $wgMetaUserTalkNamespace = 'Dyskusja_użytkownika'; break;
 }
 
 /* private */ $wgNamespaceNamesPl = array(
@@ -24,8 +44,8 @@ default:
 	NS_SPECIAL          => "Specjalna",
 	NS_MAIN             => "",
 	NS_TALK             => "Dyskusja",
-	NS_USER             => "Wikipedysta",
-	NS_USER_TALK        => "Dyskusja_Wikipedysty",
+	NS_USER             => $wgMetaUserNamespace,
+	NS_USER_TALK        => $wgMetaUserTalkNamespace,
 	NS_PROJECT          => $wgMetaNamespace,
 	NS_PROJECT_TALK     => $wgMetaTalkNamespace,   // see above
 	NS_IMAGE            => "Grafika",
@@ -556,7 +576,6 @@ Wszystkie czasy odnoszą się do strefy czasu uniwersalnego (UTC).
 "copyrightpage" => "{{ns:4}}:Prawa_autorskie",
 "copyrightpagename" => "prawami autorskimi Wikipedii",
 "uploadedfiles" => "Przesłane pliki",
-"ignorewarning" => "Zignoruj ostrzeżenie i prześlij plik.",
 "minlength" => "Nazwa obrazku musi mieć co najmniej trzy litery.",
 "badfilename" => "Nazwę obrazku zmieniona na \"$1\".",
 "badfiletype" => "\".$1\" nie jest zalecanym formatem pliku.",
@@ -808,7 +827,7 @@ pozostanie bez zmian.",
 "undeleterevision" => "Skasowano wersję z $1",
 "undeletebtn" => "Odtwórz!",
 "undeletedarticle" => "odtworzono \"$1\"",
-"undeletedtext" => "Pomyślnie odtworzono stronę [[$1]].
+"undeletedtext" => "Pomyślnie odtworzono stronę [[:$1|$1]].
 Zobacz [[{{ns:4}}:Usunięte]], jeśli chcesz przejrzeć rejestr ostatnio
 skasowanych i odtworzonych stron.",
 
@@ -953,14 +972,9 @@ class LanguagePl extends LanguageUtf8 {
 		global $wgMonthNamesGenEn;
 		return wfMsg( $wgMonthNamesGenEn[$key-1] );
 	}
-
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) .
-		  " " . $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
-		  " " . substr( $ts, 0, 4 );
-		return $d;
+	
+	function formatMonth( $month, $format ) {
+		return $this->getMonthAbbreviation( $month );
 	}
 
 	function getMessage( $key ) {

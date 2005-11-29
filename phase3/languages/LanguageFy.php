@@ -42,9 +42,9 @@ if($wgMetaNamespace === FALSE)
 
 /* private */ $wgDateFormatsFy = array(
 	'Gjin foarkar',
-	'16:12, jan 15, 2001',
-	'16:12, 15 jan 2001',
-	'16:12, 2001 jan 15',
+	'16.12, jan 15, 2001',
+	'16.12, 15 jan 2001',
+	'16.12, 2001 jan 15',
 	'ISO 8601' => '2001-01-15 16:12:34'
 );
 
@@ -440,6 +440,7 @@ Jo Wiki-nûmer is $2.
 "skin"			=> "Side-oansjen",
 "math"			=> "Formules",
 "dateformat"		=> "Datum",
+'datedefault' => 'Gjin foarkar',
 "math_failure"		=> "Untsjutbere formule",
 "math_unknown_error"	=> "Unbekinde fout",
 "math_unknown_function"	=> "Unbekinde funksje",
@@ -541,7 +542,6 @@ meitsje fan it systeem..",
 "copyrightpage" 	=> "{{ns:project}}:Auteursrjocht",
 "copyrightpagename" => "{{SITENAME}} auteursrjocht",
 "uploadedfiles"	=> "Oanbeane bestannen",
-"ignorewarning"	=> "Sjoch oer de warskôging hinne en lis bestân dochs fêst.",
 "minlength"		=> "Ofbyldnammen moatte trije letters of mear wêze.",
 "badfilename"	=> "De ôfbyldnamme is feroare nei \"$1\".",
 "badfiletype"	=> "\".$1\" is net yn in oanrette bestânsfoarm.",
@@ -786,7 +786,7 @@ troch de lêste ferzje út dy weromsette skiednis ferfangen.",
 "undeleterevision" => "Wiske side, sa't dy $1 wie.",
 "undeletebtn" 	=> "Weromset!",
 "undeletedarticle" => "\"$1\" weromset",
-"undeletedtext"   => "It weromsette fan side [[$1]] is slagge.
+"undeletedtext"   => "It weromsette fan side [[:$1|$1]] is slagge.
 (List fan resint [[{{ns:project}}:wisk-loch|wiske of weromsette siden]].",
 
 # Contributions
@@ -948,36 +948,67 @@ class LanguageFy extends LanguageUtf8 {
 		return $wgDateFormatsFy;
 	}
 
-	function date( $ts, $adj = false ) {
+	/**
+	 * @access public
+	 * @param mixed  $ts the time format which needs to be turned into a
+	 *               date('YmdHis') format with wfTimestamp(TS_MW,$ts)
+	 * @param bool   $adj whether to adjust the time output according to the
+	 *               user configured offset ($timecorrection)
+	 * @param bool   $format true to use user's date format preference
+	 * @param string $timecorrection the time offset as returned by
+	 *               validateTimeZone() in Special:Preferences
+	 * @return string
+	 */
+	function date( $ts, $adj = false, $format = true, $timecorrection = false ) {
 		global $wgUser;
 
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
+		if ( $adj ) { $ts = $this->userAdjust( $ts, $timecorrection ); }
 
-		switch ( $wgUser->getOption( 'date' ) ) {
-			# jan 8, 2001
-			case '0': case '1': return $d = $this->getMonthAbbreviation( substr( $ts, 4, 2 ) )
-				. ' ' . (0 + substr( $ts, 6, 2 )) . ', ' . substr( $ts, 0, 4 );
-			# 8 jannewaris 2001
-			case '2': return (0 + substr( $ts, 6, 2 )) . ' ' .
-				$this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) . ' ' .
-				substr( $ts, 0, 4 );
-			case 'ISO 8601': return substr($ts, 0, 4). '-' . substr($ts, 4, 2). '-' .substr($ts, 6, 2);
-			# 2001 jannewaris 8
-			default: return substr( $ts, 0, 4 ) . ' ' .
-				$this->getMonthAbbreviation( substr( $ts, 4, 2 ) )
-				. ' ' . (0 + substr( $ts, 6, 2 ));
+		$datePreference = $this->dateFormat( $format );
+
+		$month = $this->getMonthAbbreviation( substr( $ts, 4, 2 ) );
+		$day = $this->formatNum( 0 + substr( $ts, 6, 2 ) );
+		$year = $this->formatNum( substr( $ts, 0, 4 ), true );
+
+		switch( $datePreference ) {
+			case MW_DATE_DMY: return "$day $month $year";
+			case MW_DATE_YMD: return "$year $month $day";
+			case MW_DATE_ISO: return substr($ts, 0, 4). '-' . substr($ts, 4, 2). '-' .substr($ts, 6, 2);
+			default: return "$month $day, $year";
 		}
 	}
 
-	function timeanddate( $ts, $adj = false ) {
+	/**
+	* @access public
+	* @param mixed  $ts the time format which needs to be turned into a
+	*               date('YmdHis') format with wfTimestamp(TS_MW,$ts)
+	* @param bool   $adj whether to adjust the time output according to the
+	*               user configured offset ($timecorrection)
+	* @param bool   $format true to use user's date format preference
+	* @param string $timecorrection the time offset as returned by
+	*               validateTimeZone() in Special:Preferences
+	* @return string
+	*/
+	function time( $ts, $adj = false, $format = true, $timecorrection = false ) {
 		global $wgUser;
 
-		switch ( $wgUser->getOption( 'date' ) ) {
-			case 'ISO 8601': return $this->date( $ts, $adj ) . ' ' . $this->time( $ts, $adj );
-			default: return $this->time( $ts, $adj ) . ', ' . $this->date( $ts, $adj );
-		}
-	}
+		if ( $adj ) { $ts = $this->userAdjust( $ts, $timecorrection ); }
+		$datePreference = $this->dateFormat( $format );
 
+		if ( $datePreference == MW_DATE_ISO ) {
+			$sep = ':';
+		} else {
+			$sep = '.';
+		}
+		
+		$t = substr( $ts, 8, 2 ) . $sep . substr( $ts, 10, 2 );
+
+		if ( $datePreference == MW_DATE_ISO ) {
+			$t .= $sep . substr( $ts, 12, 2 );
+		}
+		return $this->formatNum( $t );
+	}
+	
 	function getMessage( $key ) {
 		global $wgAllMessagesFy;
 		if( isset( $wgAllMessagesFy[$key] ) ) {

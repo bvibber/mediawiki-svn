@@ -105,7 +105,9 @@ class Article {
 			}
 			wfProfileOut( $fname );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
-			return wfMsg( 'noarticletext' );
+			
+			$ret = wfMsg( $wgUser->isLoggedIn() ? 'noarticletext' : 'noarticletextanon' );
+			return "<div class='noarticletext'>$ret</div>";
 		} else {
 			$this->loadContent( $noredir );
 			# check if we're displaying a [[User talk:x.x.x.x]] anonymous talk page
@@ -140,7 +142,8 @@ class Article {
 	/**
 		This function accepts a title string as parameter
 		($preload). If this string is non-empty, it attempts
-		to fetch the current revision text.
+		to fetch the current revision text. It respects
+		<includeonly>.
 	*/
 	function getPreloadedText($preload) {
 		if($preload) {
@@ -148,7 +151,9 @@ class Article {
 			if(isset($preloadTitle) && $preloadTitle->userCanRead()) {
 			$rev=Revision::newFromTitle($preloadTitle);
 			if($rev) {
-				return $rev->getText();
+				$text=$rev->getText();
+				$text=preg_replace('/<\/?includeonly>/i','',$text);
+				return $text;
 				}
 			}
 		}
@@ -223,16 +228,6 @@ class Article {
 		$rv=trim($rv);
 		return $rv;
 
-	}
-
-	/**
-	 * Return an array of the columns of the "cur"-table
-	 */
-	function getContentFields() {
-		return $wgArticleContentFields = array(
-		  'old_text','old_flags',
-		  'rev_timestamp','rev_user', 'rev_user_text', 'rev_comment','page_counter',
-		  'page_namespace', 'page_title', 'page_restrictions','page_touched','page_is_redirect' );
 	}
 
 	/**
@@ -429,15 +424,17 @@ class Article {
 						return false;
 					}
 				}
-				$redirData = $this->pageDataFromTitle( $dbr, $rt );
-				if( $redirData ) {
-					$redirRev = Revision::newFromId( $redirData->page_latest );
-					if( !is_null( $redirRev ) ) {
-						$this->mRedirectedFrom = $this->mTitle->getPrefixedText();
-						$this->mTitle = $rt;
-						$data = $redirData;
-						$this->loadPageData( $data );
-						$revision = $redirRev;
+				if( $rt->getInterwiki() == '' ) {
+					$redirData = $this->pageDataFromTitle( $dbr, $rt );
+					if( $redirData ) {
+						$redirRev = Revision::newFromId( $redirData->page_latest );
+						if( !is_null( $redirRev ) ) {
+							$this->mRedirectedFrom = $this->mTitle->getPrefixedText();
+							$this->mTitle = $rt;
+							$data = $redirData;
+							$this->loadPageData( $data );
+							$revision = $redirRev;
+						}
 					}
 				}
 			}
@@ -679,7 +676,7 @@ class Article {
 	 * the given title.
 	*/
 	function view()	{
-		global $wgUser, $wgOut, $wgRequest, $wgOnlySysopsCanPatrol, $wgLang;
+		global $wgUser, $wgOut, $wgRequest, $wgOnlySysopsCanPatrol, $wgLang, $wgContLang;
 		global $wgLinkCache, $IP, $wgEnableParserCache, $wgStylePath, $wgUseRCPatrol;
 		global $wgEnotif, $wgParser, $wgParserCache, $wgUseTrackbacks;
 		$sk = $wgUser->getSkin();
@@ -701,7 +698,7 @@ class Article {
 			require_once( 'DifferenceEngine.php' );
 			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 
-			$de = new DifferenceEngine( $oldid, $diff, $rcid );
+			$de = new DifferenceEngine( $this->mTitle, $oldid, $diff, $rcid );
 			// DifferenceEngine directly fetched the revision:
 			$this->mRevIdFetched = $de->mNewid;
 			$de->showDiffPage();
@@ -757,15 +754,22 @@ class Article {
 				$this->setOldSubtitle( isset($this->mOldId) ? $this->mOldId : $oldid );
 				$wgOut->setRobotpolicy( 'noindex,follow' );
 			}
+			$wasRedirected = false;
 			if ( '' != $this->mRedirectedFrom ) {
-				$sk = $wgUser->getSkin();
-				$redir = $sk->makeKnownLink( $this->mRedirectedFrom, '',
-				  'redirect=no' );
-				$s = wfMsg( 'redirectedfrom', $redir );
-				$wgOut->setSubtitle( $s );
-
-				# Can't cache redirects
-				$pcache = false;
+				if ( wfRunHooks( 'ArticleViewRedirect', array( &$this ) ) ) {
+					$sk = $wgUser->getSkin();
+					$redir = $sk->makeKnownLink( $this->mRedirectedFrom, '', 'redirect=no' );
+					$s = wfMsg( 'redirectedfrom', $redir );
+					$wgOut->setSubtitle( $s );
+					
+					// Check the parser cache again, for the target page
+					if( $pcache ) {
+						if( $wgOut->tryParserCache( $this, $wgUser ) ) {
+							$outputDone = true;
+						}
+					}
+					$wasRedirected = true;
+				}
 			} elseif ( !empty( $rdfrom ) ) {
 				global $wgRedirectSources;
 				if( $wgRedirectSources && preg_match( $wgRedirectSources, $rdfrom ) ) {
@@ -773,9 +777,11 @@ class Article {
 					$redir = $sk->makeExternalLink( $rdfrom, $rdfrom );
 					$s = wfMsg( 'redirectedfrom', $redir );
 					$wgOut->setSubtitle( $s );
+					$wasRedirected = true;
 				}
 			}
-
+		}
+		if( !$outputDone ) {
 			# wrap user css and user js in pre and don't parse
 			# XXX: use $this->mTitle->usCssJsSubpage() when php is fixed/ a workaround is found
 			if (
@@ -786,12 +792,16 @@ class Article {
 				$wgOut->addHTML( '<pre>'.htmlspecialchars($this->mContent)."\n</pre>" );
 			} else if ( $rt = Title::newFromRedirect( $text ) ) {
 				# Display redirect
-				$imageUrl = $wgStylePath.'/common/images/redirect.png';
+				$imageDir = $wgContLang->isRTL() ? 'rtl' : 'ltr';
+				$imageUrl = $wgStylePath.'/common/images/redirect' . $imageDir . '.png';
+				if( !$wasRedirected ) {
+					$wgOut->setSubtitle( wfMsgHtml( 'redirectpagesub' ) );
+				}
 				$targetUrl = $rt->escapeLocalURL();
 				$titleText = htmlspecialchars( $rt->getPrefixedText() );
 				$link = $sk->makeLinkObj( $rt );
 
-				$wgOut->addHTML( '<img valign="center" src="'.$imageUrl.'" alt="#REDIRECT" />' .
+				$wgOut->addHTML( '<img src="'.$imageUrl.'" alt="#REDIRECT" />' .
 				  '<span class="redirectText">'.$link.'</span>' );
 
 				$parseout = $wgParser->parse($text, $this->mTitle, ParserOptions::newFromUser($wgUser));
@@ -800,6 +810,7 @@ class Article {
 				$skin = $wgUser->getSkin();
 			} else if ( $pcache ) {
 				# Display content and save to parser cache
+				$wgOut->setRevisionId( $this->getRevIdFetched() );
 				$wgOut->addPrimaryWikiText( $text, $this );
 			} else {
 				# Display content, don't attempt to save to parser cache
@@ -808,6 +819,7 @@ class Article {
 				if( !$this->isCurrent() ) {
 					$oldEditSectionSetting = $wgOut->mParserOptions->setEditSection( false );
 				}
+				$wgOut->setRevisionId( $this->getRevIdFetched() );
 				$wgOut->addWikiText( $text );
 
 				if( !$this->isCurrent() ) {
@@ -913,6 +925,38 @@ class Article {
 		$wgOut->setArticleBodyOnly(true);
 		$this->view();
 	}
+	
+	function purge() {
+		global $wgUser, $wgRequest, $wgOut, $wgUseSquid;
+
+		if ( $wgUser->isLoggedIn() || $wgRequest->wasPosted() ) {
+			// Invalidate the cache
+			$this->mTitle->invalidateCache();
+
+			if ( $wgUseSquid ) {
+				// Commit the transaction before the purge is sent
+				$dbw = wfGetDB( DB_MASTER );
+				$dbw->immediateCommit();
+
+				// Send purge
+				$update = SquidUpdate::newSimplePurge( $this->mTitle );
+				$update->doUpdate();
+			}
+			$this->view();
+		} else {
+			$msg = $wgOut->parse( wfMsg( 'confirm_purge' ) );
+			$action = $this->mTitle->escapeLocalURL( 'action=purge' );
+			$button = htmlspecialchars( wfMsg( 'confirm_purge_button' ) );
+			$msg = str_replace( '$1', 
+				"<form method=\"post\" action=\"$action\">\n" .
+				"<input type=\"submit\" name=\"submit\" value=\"$button\" />\n" .
+				"</form>\n", $msg );
+
+			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+			$wgOut->setRobotpolicy( 'noindex,nofollow' );
+			$wgOut->addHTML( $msg );
+		}
+	}
 
 	/**
 	 * Insert a new empty page record for this article.
@@ -942,6 +986,7 @@ class Article {
 			'page_random'       => wfRandom(),
 			'page_touched'      => $dbw->timestamp(),
 			'page_latest'       => 0, # Fill this in shortly...
+			'page_len'          => 0, # Fill this in shortly...
 		), $fname );
 		$newid = $dbw->insertId();
 
@@ -1104,7 +1149,7 @@ class Article {
 		$this->editUpdates( $text, $summary, $isminor, $now );
 
 		$oldid = 0; # new article
-		$this->showArticle( $text, wfMsg( 'newarticle' ), false, $isminor, $now, $summary, $oldid );
+		$this->showArticle( $text, wfMsg( 'newarticle' ), false, $isminor, $now, $summary, $oldid, $revisionId );
 
 		wfRunHooks( 'ArticleSaveComplete', array( &$this, &$wgUser, $text,
 			$summary, $isminor,
@@ -1116,6 +1161,9 @@ class Article {
 		$this->replaceSection( $section, $text, $summary, $edittime );
 	}
 
+	/**
+	 * @return string Complete article text, or null if error
+	 */
 	function replaceSection($section, $text, $summary = '', $edittime = NULL) {
 		$fname = 'Article::replaceSection';
 		wfProfileIn( $fname );
@@ -1126,6 +1174,11 @@ class Article {
 			} else {
 				$dbw =& wfGetDB( DB_MASTER );
 				$rev = Revision::loadFromTimestamp( $dbw, $this->mTitle, $edittime );
+			}
+			if( is_null( $rev ) ) {
+				wfDebug( "Article::replaceSection asked for bogus section (page: " .
+					$this->getId() . "; section: $section; edittime: $edittime)\n" );
+				return null;
 			}
 			$oldtext = $rev->getText();
 
@@ -1345,7 +1398,7 @@ class Article {
 				@unlink($cm->fileCacheName());
 			}
 
-			$this->showArticle( $text, wfMsg( 'updated' ), $sectionanchor, $isminor, $now, $summary, $lastRevision );
+			$this->showArticle( $text, wfMsg( 'updated' ), $sectionanchor, $isminor, $now, $summary, $lastRevision, $revisionId );
 		}
 		wfRunHooks( 'ArticleSaveComplete',
 			array( &$this, &$wgUser, $text,
@@ -1359,7 +1412,7 @@ class Article {
 	 * After we've either updated or inserted the article, update
 	 * the link tables and redirect to the new page.
 	 */
-	function showArticle( $text, $subtitle , $sectionanchor = '', $me2, $now, $summary, $oldid ) {
+	function showArticle( $text, $subtitle , $sectionanchor = '', $me2, $now, $summary, $oldid, $newid ) {
 		global $wgUseDumbLinkUpdate, $wgAntiLockFlags, $wgOut, $wgUser, $wgLinkCache, $wgEnotif;
 		global $wgUseEnotif;
 
@@ -1376,14 +1429,11 @@ class Article {
 			}
 		}
 
-		# Parse the text and replace links with placeholders
+		# Parse the text and save it to the parser cache
 		$wgOut = new OutputPage();
-
-		# Pass the current title along in case we're creating a wiki page
-		# which is different than the currently displayed one (e.g. image
-		# pages created on file uploads); otherwise, link updates will
-		# go wrong.
-		$wgOut->addWikiTextWithTitle( $text, $this->mTitle );
+		$wgOut->setParserOptions( ParserOptions::newFromUser( $wgUser ) );
+		$wgOut->setRevisionId( $newid );
+		$wgOut->addPrimaryWikiText( $text, $this );
 
 		if ( !$wgUseDumbLinkUpdate ) {
 			# Move the current links back to the second register
@@ -1647,7 +1697,7 @@ class Article {
 			$formaction = $this->mTitle->escapeLocalURL( 'action=protect' . $par );
 		}
 
-		$confirm = htmlspecialchars( wfMsg( 'confirm' ) );
+		$confirm = htmlspecialchars( wfMsg( 'protectpage' ) );
 		$token = htmlspecialchars( $wgUser->editToken() );
 
 		$wgOut->addHTML( "
@@ -1823,7 +1873,7 @@ class Article {
 
 		$formaction = $this->mTitle->escapeLocalURL( 'action=delete' . $par );
 
-		$confirm = htmlspecialchars( wfMsg( 'confirm' ) );
+		$confirm = htmlspecialchars( wfMsg( 'deletepage' ) );
 		$delcom = htmlspecialchars( wfMsg( 'deletecomment' ) );
 		$token = htmlspecialchars( $wgUser->editToken() );
 
@@ -2131,19 +2181,20 @@ class Article {
 		global $wgDeferredUpdateList, $wgDBname, $wgMemc;
 		global $wgMessageCache, $wgUser, $wgUseEnotif;
 
-		wfSeedRandom();
-		if ( 0 == mt_rand( 0, 999 ) ) {
-			# Periodically flush old entries from the recentchanges table.
-			global $wgRCMaxAge;
-			$dbw =& wfGetDB( DB_MASTER );
-			$cutoff = $dbw->timestamp( time() - $wgRCMaxAge );
-			$recentchanges = $dbw->tableName( 'recentchanges' );
-			$sql = "DELETE FROM $recentchanges WHERE rc_timestamp < '{$cutoff}'";
-			//$dbw->query( $sql ); // HACK: disabled for now, slowness
-
-			// re-enabled for commit of unrelated live changes -- TS
-			$dbw->query( $sql );
+		if ( wfRunHooks( 'ArticleEditUpdatesDeleteFromRecentchanges', array( &$this ) ) ) {
+			wfSeedRandom();
+			if ( 0 == mt_rand( 0, 999 ) ) {
+				# Periodically flush old entries from the recentchanges table.
+				global $wgRCMaxAge;
+				
+				$dbw =& wfGetDB( DB_MASTER );
+				$cutoff = $dbw->timestamp( time() - $wgRCMaxAge );
+				$recentchanges = $dbw->tableName( 'recentchanges' );
+				$sql = "DELETE FROM $recentchanges WHERE rc_timestamp < '{$cutoff}'";
+				$dbw->query( $sql );
+			}
 		}
+
 		$id = $this->getID();
 		$title = $this->mTitle->getPrefixedDBkey();
 		$shortTitle = $this->mTitle->getDBkey();
@@ -2397,8 +2448,14 @@ class Article {
 		}
 	}
 
-	function onArticleDelete($title_obj) {
-		$title_obj->touchLinks();
+	function onArticleDelete( $title ) {
+		global $wgMessageCache;
+		
+		$title->touchLinks();
+		
+		if( $title->getNamespace() == NS_MEDIAWIKI) {
+			$wgMessageCache->replace( $title->getDBkey(), false );
+		}
 	}
 
 	function onArticleEdit($title_obj) {
@@ -2415,7 +2472,7 @@ class Article {
 	 * @access public
 	 */
 	function info() {
-		global $wgLang, $wgOut, $wgAllowPageInfo;
+		global $wgLang, $wgOut, $wgAllowPageInfo, $wgUser;
 		$fname = 'Article::info';
 
 		if ( !$wgAllowPageInfo ) {
@@ -2431,7 +2488,7 @@ class Article {
 		# first, see if the page exists at all.
 		$exists = $page->getArticleId() != 0;
 		if( !$exists ) {
-			$wgOut->addHTML( wfMsg('noarticletext') );
+			$wgOut->addHTML( wfMsg( $wgUser->isLoggedIn() ? 'noarticletext' : 'noarticletextanon' ) );
 		} else {
 			$dbr =& $this->getDB( DB_SLAVE );
 			$wl_clause = array(

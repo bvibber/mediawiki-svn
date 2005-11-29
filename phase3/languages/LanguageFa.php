@@ -604,7 +604,6 @@ you may be blocked from uploading if you abuse the system.",
 "copyrightpage" => "ویکی‌پدیا:حق_تکثیر",
 "copyrightpagename" => "حق تکثیر ویکی‌پدیا",
 "uploadedfiles"	=> "پرونده‌های بارشده",
-"ignorewarning"	=> "هشدار نادیده گرفته شود و پرونده به‌هرحال ذخیره شود.",
 "minlength"		=> "نام پرونده باید حداقل سه‌حرفی باشد.",
 "badfilename"	=> "نام پرونده به «$1» تغییر کرد.",
 "badfiletype"	=> "قالب پرونده‌ای «‎.$1» برای پرونده‌های تصویری توصیه نمی‌شود.",
@@ -840,7 +839,7 @@ by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled bac
 "undeleterevision" => "حذف نسخه‌ی به تاریخ $1",
 "undeletebtn" => "احیا شود!",
 "undeletedarticle" => "«$1» احیا شد",
-"undeletedtext"   => "مقاله‌ی [[$1]] با موفقیت احیا شد.
+"undeletedtext"   => "مقاله‌ی [[:$1|$1]] با موفقیت احیا شد.
 برای سوابق حذف‌ها و احیاهای اخیر به [[ویکی‌پدیا:سیاهه‌ی_حذف]] مراجعه کنید.",
 
 # Contributions

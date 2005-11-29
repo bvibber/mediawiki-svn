@@ -6,6 +6,7 @@
  * @subpackage SpecialPage
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
+ * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
@@ -35,8 +36,7 @@ class SpecialVersion {
 	function execute() {
 		global $wgOut;
 		
-		$wgOut->setRobotpolicy( 'index,follow' );
-		$wgOut->addWikiText( $this->MediaWikiCredits() . $this->extensionCredits() );
+		$wgOut->addWikiText( $this->MediaWikiCredits() . $this->extensionCredits() . $this->wgHooks() );
 		$wgOut->addHTML( $this->IPInfo() );
 	}
 
@@ -84,10 +84,10 @@ class SpecialVersion {
 		$extensionTypes = array(
 			'specialpage' => 'Special pages',
 			'parserhook' => 'Parser hooks',
+			'variable' => 'Variables',
 			'other' => 'Other',
 		);
-		
-		wfRunHooks( 'ExtensionTypes', array( &$extensionTypes ) );
+		wfRunHooks( 'SpecialVersionExtensionTypes', array( &$extensionTypes ) );
 		
 		$out = "\n* Extensions:\n";
 		foreach ( $extensionTypes as $type => $text ) {
@@ -137,11 +137,20 @@ class SpecialVersion {
 		if ( isset( $author ) )
 			$ret .= ' by ' . $this->langObj->listToText( (array)$author );
 
-		return "$ret\n";
+		return htmlspecialchars( $ret ) . "\n";
+	}
+
+	function wgHooks() {
+		global $wgHooks;
+
+		$ret = "* Hooks:\n";
+		foreach ($wgHooks as $hook => $hooks)
+			$ret .= "** $hook: " . $this->langObj->listToText( $hooks ) . "\n";
+
+		return $ret;
 	}
 
 	function IPInfo() {
-		
 		$ip =  str_replace( '--', ' - - ', htmlspecialchars( wfGetIP() ) );
 		return "<!-- visited from $ip -->\n";
 	}

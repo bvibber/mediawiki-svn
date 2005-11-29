@@ -183,7 +183,7 @@ und das [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Benutzerhandbuc
 "deletethispage" => "Diese Seite löschen",
 "undelete_short" => "Wiederherstellen",
 "undelete_short1" => "Wiederherstellen",
-"protect" => "Schützen",
+"protect" => "schützen",
 "protectthispage" => "Artikel schützen",
 "unprotect" => "Freigeben",
 "unprotectthispage" => "Schutz aufheben",
@@ -229,6 +229,7 @@ und das [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Benutzerhandbuc
 "thisisdeleted" => "Ansehen oder wiederherstellen von $1?",
 "restorelink" => "$1 gelöschte Bearbeitungsvorgänge",
 "feedlinks" => "Feed:",
+'permalink'     => 'Permanentlink',
 
 # Kurzworte für jeden Namespace, u.a. von MonoBook verwendet
 'nstab-main' => 'Artikel',
@@ -398,16 +399,16 @@ Funktionen sind zur Zeit deshalb nicht möglich.',
 "savearticle"	=> "Artikel speichern",
 "preview"	=> "Vorschau",
 "showpreview"	=> "Vorschau zeigen",
-"showdiff"	=> "&Auml;nderungen zeigen",
+"showdiff"	=> "Änderungen zeigen",
 "blockedtitle"	=> "Benutzer ist blockiert",
 "blockedtext"	=> "Ihr Benutzername oder Ihre IP-Adresse wurde von $1 blockiert.
 Als Grund wurde angegeben:<br />$2<p>Bitte kontaktieren Sie den Administrator, um über die Blockierung zu sprechen.",
-"whitelistedittitle" => "Zum Bearbeiten ist es erforderlich angemeldet zu sein",
-"whitelistedittext" => "Sie müssen sich [[Spezial:Userlogin|hier anmelden]] um Artikel bearbeiten zu können.",
-"whitelistreadtitle" => "Zum Lesen ist es erforderlich angemeldet zu sein",
-"whitelistreadtext" => "Sie müssen sich [[Spezial:Userlogin|hier anmelden]] um Artikel lesen zu können.",
-"whitelistacctitle" => "Sie sind nicht berechtigt einen Account zu erzeugen",
-"whitelistacctext" => "Um in diesem Wiki Accounts anlegen zu dürfen müssen Sie sich [[Spezial:Userlogin|hier anmelden]] und die nötigen Berechtigungen haben.",
+"whitelistedittitle" => "Zum Bearbeiten ist es erforderlich, angemeldet zu sein",
+"whitelistedittext" => "Sie müssen sich [[Spezial:Userlogin|hier anmelden]], um Artikel bearbeiten zu können.",
+"whitelistreadtitle" => "Zum Lesen ist es erforderlich, angemeldet zu sein",
+"whitelistreadtext" => "Sie müssen sich [[Spezial:Userlogin|hier anmelden]], um Artikel lesen zu können.",
+"whitelistacctitle" => "Sie sind nicht berechtigt, einen Account zu erzeugen.",
+"whitelistacctext" => "Um in diesem Wiki Accounts anlegen zu dürfen, müssen Sie sich [[Spezial:Userlogin|hier anmelden]] und die nötigen Berechtigungen haben.",
 "loginreqtitle"	=> "Anmeldung erforderlich",
 'loginreqlink' => 'anmelden',
 "loginreqpagetext"	=> "Sie müssen sich $1, um andere Seiten betrachten zu können.",
@@ -636,7 +637,6 @@ Alle Zeiten sind UTC.
 "copyrightpage" => "Project:Copyright",
 "copyrightpagename" => "{{SITENAME}} copyright",
 "uploadedfiles"	=> "Hochgeladene Dateien",
-"ignorewarning"	=> "Warnung ignorieren und Datei trotzdem speichern.",
 "minlength"		=> "Bilddateien müssen mindestens drei Buchstaben haben.",
 "badfilename"	=> "Der Bildname wurde in \"$1\" geändert.",
 "badfiletype"	=> "\".$1\" ist kein empfohlenes Dateiformat.",
@@ -725,7 +725,6 @@ Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
 "nviews"		=> "$1 Abfragen",
 "wantedpages"	=> "Gewünschte Seiten",
 "nlinks"		=> "$1 Verweise",
-"allpages"		=> "Alle Artikel",
 "randompage"	=> "Zufälliger Artikel",
 "shortpages"	=> "Kurze Artikel",
 "longpages"		=> "Lange Artikel",
@@ -743,6 +742,28 @@ Davon haben <b>$2</b> Administrator-Rechte (siehe $3).",
 "booksources"	=> "Buchhandlungen",
 "booksourcetext" => "Dies ist eine Liste mit Links zu Internetseiten, die neue und gebrauchte Bücher verkaufen. Dort kann es auch weitere Informationen über die Bücher geben, die Sie interessieren. {{SITENAME}} ist mit keinem dieser Anbieter geschäftlich verbunden.",
 "alphaindexline" => "$1 bis $2",
+'newimages'	=> 'Neue Dateien',
+'mimesearch'	=> 'Suche nach MIME-Typ',
+'mimetype'	=> 'MIME-Typ: ',
+'download'	=> 'Herunterladen',
+'mostlinked'	=> 'Meistverlinke Seiten',
+'uncategorizedpages'	=> 'Nicht kategorisierte Artikel',
+'uncategorizedcategories'	=> 'Nicht kategorisierte Kategorien',
+'unusedcategories' => 'Verwaiste Kategorien',
+
+# Special:Allpages
+'allpages'	=> 'Alle Artikel',
+'prefixindex'	=> 'Alle Artikel (mit Präfix)',
+'nextpage'	=> "Nächste Seite ($1)",
+'allpagesfrom'	=> 'Seiten anzeigen ab:',
+'allpagesprefix'	=> 'Seiten anzeigen mit Präfix:',
+'allarticles'	=> 'Alle Artikel',
+'allnonarticles'	=> 'Alle Nicht-Artikel',
+'allinnamespace'	=> "Alle Seiten im Namensraum: $1",
+'allnotinnamespace'	=> "Alle Seiten (ohne Namensraum: $1)",
+'allpagesprev'	=> 'Vorherige',
+'allpagesnext'	=> 'Nächste',
+'allpagessubmit'	=> 'Zeige',
 
 # Email this user
 #
@@ -891,7 +912,7 @@ dieses Artikels erscheinen.",
 "undeleterevision" => "Gelöschte Version vom $1",
 "undeletebtn" => "Wiederherstellen!",
 "undeletedarticle" => "\"$1\" wiederhergestellt",
-"undeletedtext"   => "Der Artikel [[$1]] wurde erfolgreich wiederhergestellt.",
+"undeletedtext"   => "Der Artikel [[:$1|$1]] wurde erfolgreich wiederhergestellt.",
 
 # Contributions
 #
@@ -953,6 +974,23 @@ Bitte tragen Sie den Grund für die Blockade ein.",
 "lockdbsuccesstext" => "Die {{SITENAME}}-Datenbank wurde gesperrt.
 <br />Bitte geben Sie die Datenbank wieder frei, sobald die Wartung abgeschlossen ist.",
 "unlockdbsuccesstext" => "Die {{SITENAME}}-Datenbank wurde freigegeben.",
+
+# User levels special page
+#
+'userrights' => 'Benutzerrechtsverwaltung',
+
+'userrights-lookup-user' => 'Verwalte Gruppenzugehörigkeit',
+'userrights-user-editname' => 'Benutzername: ',
+'editusergroup' => 'Bearbeite Benutzerrechte',
+
+# user groups editing
+#
+'userrights-editusergroup' => 'Bearbeite Gruppenzugehörigkeit des Benutzers',
+'saveusergroups' => 'Speichere Gruppenzugehörigkeit',
+'userrights-groupsmember' => 'Mitglied von: ',
+'userrights-groupsavailable' => 'Verfügbare Gruppen: ',
+'userrights-groupshelp' => 'Wähle die Gruppen, aus denen der Benutzer entfernt oder zu denen er hinzugefügt werden soll.
+Nicht selektierte Gruppen werden nicht geändert. Eine Selektion kann mit Strg + Linksklick (bzw. Ctrl + Linksklick) entfernt werden.',
 
 # Move page
 #
@@ -1068,7 +1106,7 @@ Diskussions-Seite nicht, da schon eine mit dem neuen Titel existiert. Bitte glei
 "rfcurl"		=> "http://www.faqs.org/rfcs/rfc$1.html",
 "siteuser" => "{{SITENAME}}-Benutzer $1",
 "siteusers" => "{{SITENAME}}-Benutzer $1",
-'watch' => 'Beobachten',
+'watch' => 'beobachten',
 'unwatch' => 'nicht mehr beobachten',
 'move' => "verschieben",
 'edit' => 'bearbeiten',
@@ -1209,15 +1247,13 @@ class LanguageDe extends LanguageUtf8 {
 		global $wgSkinNamesDe;
 		return $wgSkinNamesDe;
 	}
-
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) . ". " .
-		$this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
-		  " " .
-		  substr( $ts, 0, 4 );
-		return $d;
+	
+	function formatMonth( $month, $format ) {
+		return $this->getMonthAbbreviation( $month );
+	}
+	
+	function formatDay( $day, $format ) {
+		return parent::formatDay( $day, $format ) . '.';
 	}
 
 	function getMessage( $key ) {

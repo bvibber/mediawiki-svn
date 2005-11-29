@@ -41,8 +41,13 @@ $wgSpecialPages = array(
 	'Uncategorizedcategories'=> new SpecialPage( 'Uncategorizedcategories' ),
 	'Unusedcategories'	=> new SpecialPage( 'Unusedcategories' ),
 	'Unusedimages'      => new SpecialPage( 'Unusedimages' ),
-	'Wantedpages'	=> new SpecialPage( 'Wantedpages' ),
+	'Wantedpages'	=> new IncludableSpecialPage( 'Wantedpages' ),
+	'Wantedcategories' => new SpecialPage( 'Wantedcategories' ),
 	'Mostlinked'	=> new SpecialPage( 'Mostlinked' ),
+	'Mostlinkedcategories' => new SpecialPage( 'Mostlinkedcategories' ),
+	'Mostcategories' => new SpecialPage( 'Mostcategories' ),
+	'Mostimages' => new SpecialPage( 'Mostimages' ),
+	'Mostrevisions' => new SpecialPage( 'Mostrevisions' ),
 	'Shortpages'	=> new SpecialPage( 'Shortpages' ),
 	'Longpages'		=> new SpecialPage( 'Longpages' ),
 	'Newpages'		=> new IncludableSpecialPage( 'Newpages' ),
@@ -69,8 +74,9 @@ $wgSpecialPages = array(
 	"Import"		=> new SpecialPage( "Import", 'import' ),
 	'Lockdb'		=> new SpecialPage( 'Lockdb', 'siteadmin' ),
 	'Unlockdb'		=> new SpecialPage( 'Unlockdb', 'siteadmin' ),
-	'Namespaces'		=> new SpecialPage( 'Namespaces', 'namespaces' ),	
+	'Namespaces'		=> new SpecialPage( 'Namespaces', 'namespaces'),	
 	'Userrights'	=> new SpecialPage( 'Userrights', 'userrights' ),
+	'MIMEsearch'    => new SpecialPage( 'MIMEsearch' ),
 );
 
 if ( $wgUseValidation )
@@ -81,12 +87,15 @@ if( !$wgDisableCounters ) {
 }
 
 if( !$wgDisableInternalSearch ) {
-	$wgSpecialPages['Search'] = new UnlistedSpecialPage( 'Search' );
+	$wgSpecialPages['Search'] = new SpecialPage( 'Search' );
 }
 
 if( $wgEmailAuthentication ) {
 	$wgSpecialPages['Confirmemail'] = new UnlistedSpecialPage( 'Confirmemail' );
 }
+
+if ( $wgEnableUnwatchedpages )
+	 $wgSpecialPages['Unwatchedpages'] = new SpecialPage( 'Unwatchedpages' );
 
 /**
  * Parent special page class, also static functions for handling the special
@@ -175,20 +184,17 @@ class SpecialPage
 	 */
 	function getRedirect( $name ) {
 		global $wgUser;
-		switch ( $name ) {
-			case 'Mypage':
-				return Title::makeTitle( NS_USER, $wgUser->getName() );
-			case 'Mytalk':
-				return Title::makeTitle( NS_USER_TALK, $wgUser->getName() );
-			case 'Mycontributions':
-				return Title::makeTitle( NS_SPECIAL, 'Contributions/' . $wgUser->getName() );
-			case 'Listadmins':
-				return Title::makeTitle( NS_SPECIAL, 'Listusers/sysop' ); # @bug 2832
-			case 'Randompage':
-				return Title::makeTitle( NS_SPECIAL, 'Random' );
-			default:
-				return NULL;
-		}
+
+		$redirects = array(
+			'Mypage' => Title::makeTitle( NS_USER, $wgUser->getName() ),
+			'Mytalk' => Title::makeTitle( NS_USER_TALK, $wgUser->getName() ),
+			'Mycontributions' => Title::makeTitle( NS_SPECIAL, 'Contributions/' . $wgUser->getName() ),
+			'Listadmins' => Title::makeTitle( NS_SPECIAL, 'Listusers/sysop' ), # @bug 2832
+			'Randompage' => Title::makeTitle( NS_SPECIAL, 'Random' )
+		);
+		wfRunHooks( 'SpecialPageGetRedirect', array( &$redirects ) );
+
+		return isset( $redirects[$name] ) ? $redirects[$name] : null;
 	}
 
 	/**
@@ -251,8 +257,9 @@ class SpecialPage
 					$retVal = $redir;
 				} else {
 					$wgOut->setArticleRelated( false );
-					$wgOut->setRobotpolicy( "noindex,follow" );
-					$wgOut->errorpage( "nosuchspecialpage", "nospecialpagetext" );
+					$wgOut->setRobotpolicy( 'noindex,follow' );
+					$wgOut->setStatusCode( 404 );
+					$wgOut->errorpage( 'nosuchspecialpage', 'nospecialpagetext' );
 					$retVal = false;
 				}
 			}
@@ -333,14 +340,29 @@ class SpecialPage
 		}
 	}
 
-	# Accessor functions, see the descriptions of the associated variables above
+	/**#@+
+	  * Accessor
+	  *
+	  * @deprecated
+	  */
 	function getName() { return $this->mName; }
 	function getRestriction() { return $this->mRestriction; }
-	function isListed() { return $this->mListed; }
 	function getFile() { return $this->mFile; }
-	function including( $x = NULL ) { return wfSetVar( $this->mIncluding, $x ); }
+	function isListed() { return $this->mListed; }
+	/**#@-*/
+	
+	/**#@+
+	  * Accessor and mutator
+	  */
+	function name( $x = NULL ) { return wfSetVar( $this->mName, $x ); }
+	function restrictions( $x = NULL) { return wfSetVar( $this->mRestrictions, $x ); }
+	function listed( $x = NULL) { return wfSetVar( $this->mListed, $x ); }
+	function func( $x = NULL) { return wfSetVar( $this->mFunction, $x ); }
+	function file( $x = NULL) { return wfSetVar( $this->mFile, $x ); }
 	function includable( $x = NULL ) { return wfSetVar( $this->mIncludable, $x ); }
-
+	function including( $x = NULL ) { return wfSetVar( $this->mIncluding, $x ); }
+	/**#@-*/
+	
 	/**
 	 * Checks if the given user (identified by an object) can execute this
 	 * special page (as defined by $mRestriction)
@@ -390,10 +412,21 @@ class SpecialPage
 			if(!function_exists($func) and $this->mFile) {
 				require_once( $this->mFile );
 			}
+			$this->outputHeader();
 			$func( $par, $this );
 		} else {
 			$this->displayRestrictionError();
 		}
+	}
+
+	function outputHeader() {
+		global $wgOut, $wgContLang;
+
+		$msg = $wgContLang->lc( $this->name() ) . '-summary';
+		$out = wfMsg( $msg );
+		if ( ! wfEmptyMsg( $msg, $out ) and  $out !== '' and ! $this->including() )
+			$wgOut->addWikiText( $out );
+
 	}
 
 	# Returns the name that goes in the <h1> in the special page itself, and also the name that

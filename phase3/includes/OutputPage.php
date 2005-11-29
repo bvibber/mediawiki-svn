@@ -20,7 +20,7 @@ class OutputPage {
 	var $mHeaders, $mCookies, $mMetatags, $mKeywords;
 	var $mLinktags, $mPagetitle, $mBodytext, $mDebugtext;
 	var $mHTMLtitle, $mRobotpolicy, $mIsarticle, $mPrintable;
-	var $mSubtitle, $mRedirect;
+	var $mSubtitle, $mRedirect, $mStatusCode;
 	var $mLastModified, $mETag, $mCategoryLinks;
 	var $mScripts, $mLinkColours;
 
@@ -55,12 +55,14 @@ class OutputPage {
 		$this->mSquidMaxage = 0;
 		$this->mScripts = '';
 		$this->mETag = false;
+		$this->mRevisionId = null;
 	}
 
 	function addHeader( $name, $val ) { array_push( $this->mHeaders, $name.': '.$val ) ; }
 	function addCookie( $name, $val ) { array_push( $this->mCookies, array( $name, $val ) ); }
 	function redirect( $url, $responsecode = '302' ) { $this->mRedirect = $url; $this->mRedirectCode = $responsecode; }
-
+	function setStatusCode( $statusCode ) { $this->mStatusCode = $statusCode; }
+	
 	# To add an http-equiv meta tag, precede the name with "http:"
 	function addMeta( $name, $val ) { array_push( $this->mMetatags, array( $name, $val ) ); }
 	function addKeyword( $text ) { array_push( $this->mKeywords, $text ); }
@@ -234,6 +236,17 @@ class OutputPage {
 	function setParserOptions( $options ) {
 		return wfSetVar( $this->mParserOptions, $options );
 	}
+	
+	/**
+	 * Set the revision ID which will be seen by the wiki text parser
+	 * for things such as embedded {{REVISIONID}} variable use.
+	 * @param mixed $revid an integer, or NULL
+	 * @return mixed previous value
+	 */
+	function setRevisionId( $revid ) {
+		$val = is_null( $revid ) ? null : intval( $revid );
+		return wfSetVar( $this->mRevisionId, $val );
+	}
 
 	/**
 	 * Convert wikitext to HTML and add it to the buffer
@@ -251,7 +264,8 @@ class OutputPage {
 
 	function addWikiTextTitle($text, &$title, $linestart) {
 		global $wgParser, $wgUseTidy;
-		$parserOutput = $wgParser->parse( $text, $title, $this->mParserOptions, $linestart );
+		$parserOutput = $wgParser->parse( $text, $title, $this->mParserOptions,
+			$linestart, true, $this->mRevisionId );
 		$this->mLanguageLinks += $parserOutput->getLanguageLinks();
 		$this->mCategoryLinks += $parserOutput->getCategoryLinks();
 		if ( $parserOutput->getCacheTime() == -1 ) {
@@ -265,9 +279,10 @@ class OutputPage {
 	 * Saves the text into the parser cache if possible
 	 */
 	function addPrimaryWikiText( $text, $cacheArticle ) {
-		global $wgParser, $wgParserCache, $wgUser, $wgTitle, $wgUseTidy;
+		global $wgParser, $wgParserCache, $wgUser, $wgUseTidy;
 
-		$parserOutput = $wgParser->parse( $text, $wgTitle, $this->mParserOptions, true );
+		$parserOutput = $wgParser->parse( $text, $cacheArticle->mTitle,
+			$this->mParserOptions, true, true, $this->mRevisionId );
 
 		$text = $parserOutput->getText();
 
@@ -442,7 +457,60 @@ class OutputPage {
 			wfProfileOut( $fname );
 			return;
 		}
+		elseif ( $this->mStatusCode )
+		{
+			$statusMessage = array(
+				100 => 'Continue',
+				101 => 'Switching Protocols',
+				102 => 'Processing',
+				200 => 'OK',
+				201 => 'Created',
+				202 => 'Accepted',
+				203 => 'Non-Authoritative Information',
+				204 => 'No Content',
+				205 => 'Reset Content',
+				206 => 'Partial Content',
+				207 => 'Multi-Status',
+				300 => 'Multiple Choices',
+				301 => 'Moved Permanently',
+				302 => 'Found',
+				303 => 'See Other',
+				304 => 'Not Modified',
+				305 => 'Use Proxy',
+				307 => 'Temporary Redirect',
+				400 => 'Bad Request',
+				401 => 'Unauthorized',
+				402 => 'Payment Required',
+				403 => 'Forbidden',
+				404 => 'Not Found',
+				405 => 'Method Not Allowed',
+				406 => 'Not Acceptable',
+				407 => 'Proxy Authentication Required',
+				408 => 'Request Timeout',
+				409 => 'Conflict',
+				410 => 'Gone',
+				411 => 'Length Required',
+				412 => 'Precondition Failed',
+				413 => 'Request Entity Too Large',
+				414 => 'Request-URI Too Large',
+				415 => 'Unsupported Media Type',
+				416 => 'Request Range Not Satisfiable',
+				417 => 'Expectation Failed',
+				422 => 'Unprocessable Entity',
+				423 => 'Locked',
+				424 => 'Failed Dependency',
+				500 => 'Internal Server Error',
+				501 => 'Not Implemented',
+				502 => 'Bad Gateway',
+				503 => 'Service Unavailable',
+				504 => 'Gateway Timeout',
+				505 => 'HTTP Version Not Supported',
+				507 => 'Insufficient Storage'
+			);
 
+			if ( $statusMessage[$this->mStatusCode] )
+				header( 'HTTP/1.1 ' . $this->mStatusCode . ' ' . $statusMessage[$this->mStatusCode] );
+		}
 
 		# Buffer output; final headers may depend on later processing
 		ob_start();
@@ -505,32 +573,13 @@ class OutputPage {
 	/**
 	 * Returns a HTML comment with the elapsed time since request.
 	 * This method has no side effects.
+	 * Use wfReportTime() instead.
 	 * @return string
+	 * @deprecated
 	 */
 	function reportTime() {
-		global $wgRequestTime;
-
-		$now = wfTime();
-		list( $usec, $sec ) = explode( ' ', $wgRequestTime );
-		$start = (float)$sec + (float)$usec;
-		$elapsed = $now - $start;
-
-		# Use real server name if available, so we know which machine
-		# in a server farm generated the current page.
-		if ( function_exists( 'posix_uname' ) ) {
-			$uname = @posix_uname();
-		} else {
-			$uname = false;
-		}
-		if( is_array( $uname ) && isset( $uname['nodename'] ) ) {
-			$hostname = $uname['nodename'];
-		} else {
-			# This may be a virtual server.
-			$hostname = $_SERVER['SERVER_NAME'];
-		}
-		$com = sprintf( "<!-- Served by %s in %01.2f secs. -->",
-		  $hostname, $elapsed );
-		return $com;
+		$time = wfReportTime();
+		return $time;
 	}
 
 	/**
@@ -706,7 +755,7 @@ class OutputPage {
 
 		if( is_string( $source ) ) {
 			if( strcmp( $source, '' ) == 0 ) {
-				$source = wfMsg( 'noarticletext' );
+				$source = wfMsg( $wgUser->isLoggedIn() ? 'noarticletext' : 'noarticletextanon' );
 			}
 			$rows = $wgUser->getOption( 'rows' );
 			$cols = $wgUser->getOption( 'cols' );

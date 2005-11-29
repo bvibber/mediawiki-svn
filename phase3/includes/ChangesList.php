@@ -19,6 +19,15 @@ class ChangesList {
 		$this->skin =& $skin;
 		$this->preCacheMessages();
 	}
+	
+	function newFromUser( &$user ) {
+		$sk =& $user->getSkin();
+		if ( $user->getOption('usenewrc') ) {
+			return new EnhancedChangesList( $sk );
+		} else {
+			return new OldChangesList( $sk );
+		}
+	}
 
 	/**
 	 * As we use the same small set of messages in various methods and that
@@ -144,7 +153,7 @@ class ChangesList {
 	}
 
 
-	function insertMove(&$s) {
+	function insertMove( &$s, $rc ) {
 		# Diff
 		$s .= '(' . $this->message['diff'] . ') (';
 		# Hist
@@ -152,7 +161,7 @@ class ChangesList {
 			') . . ';
 
 		# "[[x]] moved to [[y]]"
-		$msg = ( $rc_type == RC_MOVE ) ? '1movedto2' : '1movedto2_redir';
+		$msg = ( $rc->mAttribs['rc_type'] == RC_MOVE ) ? '1movedto2' : '1movedto2_redir';
 		$s .= wfMsg( $msg, $this->skin->makeKnownLinkObj( $rc->getTitle(), '', 'redirect=no' ),
 			$this->skin->makeKnownLinkObj( $rc->getMovedToTitle(), '' ) );
 	}
@@ -260,7 +269,7 @@ class ChangesList {
 	function insertUserTalkLink(&$s, &$rc) {
 		# User talk link
 		global $wgNamespaces;
-		$talkname = $wgNamespaces[NS_TALK]->getDefaultName(); # use the shorter name
+		$talkname = $wgNamespaces[NS_TALK]->getDefaultName();
 		$userTalkPage =& Title::makeTitle( NS_USER_TALK, $rc->mAttribs['rc_user_text'] );
 		$userTalkLink= $this->skin->makeLinkObj( $userTalkPage, htmlspecialchars( $talkname ) );
 		$s .= $userTalkLink;
@@ -314,7 +323,7 @@ class OldChangesList extends ChangesList {
 
 		// moved pages
 		if ( $rc_type == RC_MOVE || $rc_type == RC_MOVE_OVER_REDIRECT ) {
-			$this->insertMove($s);
+			$this->insertMove( $s, $rc );
 		// log entries
 		} elseif( $rc_namespace == NS_SPECIAL && preg_match( '!^Log/(.*)$!', $rc_title, $matches ) ) {
 			$this->insertLog($s, $rc->getTitle(), $matches[1]);
@@ -359,7 +368,7 @@ class EnhancedChangesList extends ChangesList {
 	 * Format a line for enhanced recentchange (aka with javascript and block of lines).
 	 */
 	function recentChangesLine( &$baseRC, $watched = false ) {
-		global $wgTitle, $wgLang, $wgContLang, $wgUser, $wgNamespaces,
+		global $wgTitle, $wgLang, $wgContLang, $wgUser,
 			$wgUseRCPatrol, $wgOnlySysopsCanPatrol, $wgSysopUserBans;
 
 		# Create a specialised object
@@ -418,16 +427,17 @@ class EnhancedChangesList extends ChangesList {
 		} else {
 			$rcIdQuery = '';
 		}
-		$query = $curIdEq."&diff=$rc_this_oldid&oldid=$rc_last_oldid";
+		$querycur = $curIdEq."&diff=0&oldid=$rc_this_oldid";
+		$querydiff = $curIdEq."&diff=$rc_this_oldid&oldid=$rc_last_oldid";
 		$aprops = ' tabindex="'.$baseRC->counter.'"';
-		$curLink = $this->skin->makeKnownLinkObj( $rc->getTitle(), $this->message['cur'], $query, '' ,'' , $aprops );
+		$curLink = $this->skin->makeKnownLinkObj( $rc->getTitle(), $this->message['cur'], $querycur, '' ,'' , $aprops );
 		if( $rc_type == RC_NEW || $rc_type == RC_LOG || $rc_type == RC_MOVE || $rc_type == RC_MOVE_OVER_REDIRECT ) {
 			if( $rc_type != RC_NEW ) {
 				$curLink = $this->message['cur'];
 			}
 			$diffLink = $this->message['diff'];
 		} else {
-			$diffLink = $this->skin->makeKnownLinkObj( $rc->getTitle(), $this->message['diff'], $query . $rcIdQuery, '' ,'' , $aprops );
+			$diffLink = $this->skin->makeKnownLinkObj( $rc->getTitle(), $this->message['diff'], $querydiff, '' ,'' , $aprops );
 		}
 
 		# Make "last" link
@@ -585,8 +595,8 @@ class EnhancedChangesList extends ChangesList {
 			$r .= '&nbsp;</tt>' ;
 
 			$o = '' ;
-			if ( $rc_last_oldid != 0 ) {
-				$o = 'oldid='.$rc_last_oldid ;
+			if ( $rc_this_oldid != 0 ) {
+				$o = 'oldid='.$rc_this_oldid ;
 			}
 			if ( $rc_type == RC_LOG ) {
 				$link = $rcObj->timestamp;

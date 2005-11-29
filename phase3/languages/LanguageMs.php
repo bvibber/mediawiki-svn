@@ -18,10 +18,14 @@
 	NS_PROJECT_TALK   => "Perbualan_Wikipedia",#Wikipedia_talk
 	NS_IMAGE          => "Imej",#Image
 	NS_IMAGE_TALK     => "Imej_Perbualan",#Image_talk
-	NS_MEDIAWIKI      => "MediaWiki",
-	NS_MEDIAWIKI_TALK => "MediaWiki_Perbualan",
-	NS_TEMPLATE       => "Template",
-	NS_TEMPLATE_TALK  => "Template_talk"
+	NS_MEDIAWIKI      => "MediaWiki",#MediaWiki
+	NS_MEDIAWIKI_TALK => "MediaWiki_Perbualan",#MediaWiki_talk
+	NS_TEMPLATE       => "Templat",#Template
+	NS_TEMPLATE_TALK  => "Perbualan_Templat",#Template_talk
+	NS_CATEGORY       => "Kategori",#Category
+	NS_CATEGORY_TALK  => "Perbualan_Kategori",#Category_talk
+	NS_HELP           => "Bantuan",#Help
+	NS_HELP_TALK      => "Perbualan_Bantuan" #Help_talk
 
 ) + $wgNamespaceNamesEn;
 
@@ -482,7 +486,6 @@ Semua waktu yang ditunjukkan adalah waktu pelayan (UTC).
 "copyrightpage" => "Wikipedia:Hak cipta",
 "copyrightpagename" => "Hak cipta Wikipedia",
 "uploadedfiles"	=> "Fail yang telah dimuatnaik", #"Uploaded files",
-"ignorewarning"	=> "Abaikan amaran dan simpan fail sahaja", #"Ignore warning and save file anyway.",
 "minlength"		=> "Nama imej mesti sekurang-kurangnya tiga huruf.", #"Image names must be at least three letters.",
 "badfilename"	=> "Nama imej telah ditukar kepada \"$1\".", #"Image name has been changed to \"$1\".",
 "badfiletype"	=> "\".$1\" ialah fail format imej yg tidak di sarankan.",
@@ -698,7 +701,7 @@ dan revisi terkini bagi halaman baru tidak akan digantikan secara automatik.", #
 "undeleterevision" => "Revisi yang telah dikeluarkan seperti $1", #"Deleted revision as of $1",
 "undeletebtn" => "Masukkan semula!", #"Restore!",
 "undeletedarticle" => "telah dimasukkan", #"restored \"$1\"",
-"undeletedtext"   => "Halaman [[$1]] telah berjaya dimasukkan semula.
+"undeletedtext"   => "Halaman [[:$1|$1]] telah berjaya dimasukkan semula.
 Lihat [[Wikipedia:Log_penghapusan]] untuk rekod terkini penghapusan dan kemasukan semula halaman.",
 
 # Contributions

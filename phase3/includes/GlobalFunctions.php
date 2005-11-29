@@ -178,15 +178,18 @@ function wfDebug( $text, $logonly = false ) {
 /**
  * Send a line to a supplementary debug log file, if configured, or main debug log if not.
  * $wgDebugLogGroups[$logGroup] should be set to a filename to send to a separate log.
+ *
  * @param string $logGroup
  * @param string $text
+ * @param bool $public Whether to log the event in the public log if no private
+ *                     log file is specified, (default true)
  */
-function wfDebugLog( $logGroup, $text ) {
+function wfDebugLog( $logGroup, $text, $public = true ) {
 	global $wgDebugLogGroups, $wgDBname;
 	if( $text{strlen( $text ) - 1} != "\n" ) $text .= "\n";
 	if( isset( $wgDebugLogGroups[$logGroup] ) ) {
 		@error_log( "$wgDBname: $text", 3, $wgDebugLogGroups[$logGroup] );
-	} else {
+	} else if ( $public === true ) {
 		wfDebug( $text, true );
 	}
 }
@@ -198,7 +201,8 @@ function wfDebugLog( $logGroup, $text ) {
 function wfLogDBError( $text ) {
 	global $wgDBerrorLog;
 	if ( $wgDBerrorLog ) {
-		$text = date('D M j G:i:s T Y') . "\t".$text;
+		$host = trim(`hostname`);
+		$text = date('D M j G:i:s T Y') . "\t$host\t".$text;
 		error_log( $text, 3, $wgDBerrorLog );
 	}
 }
@@ -284,6 +288,15 @@ function wfMsg( $key ) {
 }
 
 /**
+ * Same as above except doesn't transform the message
+ */
+function wfMsgNoTrans( $key ) {
+	$args = func_get_args();
+	array_shift( $args );
+	return wfMsgReal( $key, $args, true, false );
+}
+
+/**
  * Get a message from anywhere, for the current global language
  * set with $wgLanguageCode.
  * 
@@ -317,6 +330,20 @@ function wfMsgForContent( $key ) {
 }
 
 /**
+ * Same as above except doesn't transform the message
+ */
+function wfMsgForContentNoTrans( $key ) {
+	global $wgForceUIMsgAsContentMsg;
+	$args = func_get_args();
+	array_shift( $args );
+	$forcontent = true;
+	if( is_array( $wgForceUIMsgAsContentMsg ) &&
+		in_array( $key, $wgForceUIMsgAsContentMsg ) )
+		$forcontent = false;
+	return wfMsgReal( $key, $args, true, $forcontent, false );
+}
+
+/**
  * Get a message from the language file, for the UI elements
  */
 function wfMsgNoDB( $key ) {
@@ -343,11 +370,11 @@ function wfMsgNoDBForContent( $key ) {
 /**
  * Really get a message
  */
-function wfMsgReal( $key, $args, $useDB, $forContent=false ) {
+function wfMsgReal( $key, $args, $useDB, $forContent=false, $transform = true ) {
 	$fname = 'wfMsgReal';
 	wfProfileIn( $fname );
 
-	$message = wfMsgGetKey( $key, $useDB, $forContent );
+	$message = wfMsgGetKey( $key, $useDB, $forContent, $transform );
 	$message = wfMsgReplaceArgs( $message, $args );
 	wfProfileOut( $fname );
 	return $message;
@@ -361,12 +388,17 @@ function wfMsgReal( $key, $args, $useDB, $forContent=false ) {
  * @return string
  * @access private
  */
-function wfMsgGetKey( $key, $useDB, $forContent = false ) {
+function wfMsgGetKey( $key, $useDB, $forContent = false, $transform = true ) {
 	global $wgParser, $wgMsgParserOptions;
 	global $wgContLang, $wgLanguageCode;
 	global $wgMessageCache, $wgLang;
 
+	if ( is_object( $wgMessageCache ) )
+		$transstat = $wgMessageCache->getTransform();
+	
 	if( is_object( $wgMessageCache ) ) {
+		if ( ! $transform )
+			$wgMessageCache->disableTransform();
 		$message = $wgMessageCache->get( $key, $useDB, $forContent );
 	} else {
 		if( $forContent ) {
@@ -385,10 +417,14 @@ function wfMsgGetKey( $key, $useDB, $forContent = false ) {
 		wfRestoreWarnings();
 		if($message === false)
 			$message = Language::getMessage($key);
-		if(strstr($message, '{{' ) !== false) {
+		if ( $transform && strstr( $message, '{{' ) !== false ) {
 			$message = $wgParser->transformMsg($message, $wgMsgParserOptions);
 		}
 	}
+
+	if ( is_object( $wgMessageCache ) && ! $transform )
+		$wgMessageCache->setTransform( $transstat );
+	
 	return $message;
 }
 
@@ -401,16 +437,21 @@ function wfMsgGetKey( $key, $useDB, $forContent = false ) {
  * @access private
  */
 function wfMsgReplaceArgs( $message, $args ) {
-	static $replacementKeys = array( '$1', '$2', '$3', '$4', '$5', '$6', '$7', '$8', '$9' );
-
 	# Fix windows line-endings
 	# Some messages are split with explode("\n", $msg)
 	$message = str_replace( "\r", '', $message );
 
-	# Replace arguments
-	if( count( $args ) ) {
-		$message = str_replace( $replacementKeys, $args, $message );
+	// Replace arguments
+	if ( count( $args ) )
+		if ( is_array( $args[0] ) )
+			foreach ( $args[0] as $key => $val )
+				$message = str_replace( '$' . $key, $val, $message );
+	else {
+		foreach( $args as $n => $param )
+			$replacementKeys['$' . ($n + 1)] = $param;
+		$message = strtr( $message, $replacementKeys );
 	}
+	
 	return $message;
 }
 
@@ -464,8 +505,8 @@ function wfAbruptExit( $error = false ){
 	if( function_exists( 'debug_backtrace' ) ){ // PHP >= 4.3
 		$bt = debug_backtrace();
 		for($i = 0; $i < count($bt) ; $i++){
-			$file = $bt[$i]['file'];
-			$line = $bt[$i]['line'];
+			$file = isset($bt[$i]['file']) ? $bt[$i]['file'] : "unknown";
+			$line = isset($bt[$i]['line']) ? $bt[$i]['line'] : "unknown";
 			wfDebug("WARNING: Abrupt exit in $file at line $line\n");
 		}
 	} else {
@@ -501,10 +542,42 @@ function wfDebugDieBacktrace( $msg = '' ) {
 		} else {
 			$msg .= "\n<p>Backtrace:</p>\n$backtrace";
 		}
-	 }
-	 echo $msg;
-	 die( -1 );
+	}
+	echo $msg;
+	echo wfReportTime()."\n";
+	die( -1 );
 }
+
+	/**
+	 * Returns a HTML comment with the elapsed time since request.
+	 * This method has no side effects.
+	 * @return string
+	 */
+	function wfReportTime() {
+		global $wgRequestTime;
+
+		$now = wfTime();
+		list( $usec, $sec ) = explode( ' ', $wgRequestTime );
+		$start = (float)$sec + (float)$usec;
+		$elapsed = $now - $start;
+
+		# Use real server name if available, so we know which machine
+		# in a server farm generated the current page.
+		if ( function_exists( 'posix_uname' ) ) {
+			$uname = @posix_uname();
+		} else {
+			$uname = false;
+		}
+		if( is_array( $uname ) && isset( $uname['nodename'] ) ) {
+			$hostname = $uname['nodename'];
+		} else {
+			# This may be a virtual server.
+			$hostname = $_SERVER['SERVER_NAME'];
+		}
+		$com = sprintf( "<!-- Served by %s in %01.2f secs. -->",
+		  $hostname, $elapsed );
+		return $com;
+	}
 
 function wfBacktrace() {
 	global $wgCommandLineMode;
@@ -880,7 +953,7 @@ function wfMerge( $old, $mine, $yours, &$result ){
 	unlink( $mytextName ); unlink( $oldtextName ); unlink( $yourtextName );
 
 	if ( $result === '' && $old !== '' && $conflict == false ) {
-		wfDebug( "Unexpected null result from diff3.\nCommand: $cmd\nOutput: " . `$cmd 2>&1` . "\n" );
+		wfDebug( "Unexpected null result from diff3. Command: $cmd\n" );
 		$conflict = true;
 	}
 	return ! $conflict;
@@ -1094,18 +1167,25 @@ define('TS_DB', 2);
 define('TS_RFC2822', 3);
 
 /**
+ * ISO 8601 format with no timezone: 1986-02-09T20:00:00Z
+ *
+ * This is used by Special:Export 
+ */
+define('TS_ISO_8601', 4);
+
+/**
  * An Exif timestamp (YYYY:MM:DD HH:MM:SS)
  *
  * @link http://exif.org/Exif2-2.PDF The Exif 2.2 spec, see page 28 for the
  *       DateTime tag and page 36 for the DateTimeOriginal and
  *       DateTimeDigitized tags.
  */
-define('TS_EXIF', 4);
+define('TS_EXIF', 5);
 
 /**
  * Oracle format time.
  */
-define('TS_ORACLE', 5);
+define('TS_ORACLE', 6);
 
 /**
  * @param mixed $outputtype A timestamp in one of the supported formats, the
@@ -1136,6 +1216,10 @@ function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
 		# TS_ORACLE
 		$uts = strtotime(preg_replace('/(\d\d)\.(\d\d)\.(\d\d)(\.(\d+))?/', "$1:$2:$3",
 				str_replace("+00:00", "UTC", $ts)));
+	} elseif (preg_match('/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z$/', $ts, $da)) {
+		# TS_ISO_8601
+		$uts=gmmktime((int)$da[4],(int)$da[5],(int)$da[6],
+			(int)$da[2],(int)$da[3],(int)$da[1]);
 	} else {
 		# Bogus value; fall back to the epoch...
 		wfDebug("wfTimestamp() fed bogus time value: $outputtype; $ts\n");
@@ -1150,6 +1234,8 @@ function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
 			return gmdate( 'YmdHis', $uts );
 		case TS_DB:
 			return gmdate( 'Y-m-d H:i:s', $uts );
+		case TS_ISO_8601:
+			return gmdate( 'Y-m-d\TH:i:s\Z', $uts );
 		// This shouldn't ever be used, but is included for completeness
 		case TS_EXIF:
 			return gmdate(  'Y:m:d H:i:s', $uts );
@@ -1274,6 +1360,10 @@ function wfElementClean( $element, $attribs = array(), $contents = '') {
 	return wfElement( $element, $attribs, $contents );
 }
 
+// Shortcuts
+function wfOpenElement( $element ) { return "<$element>"; }
+function wfCloseElement( $element ) { return "</$element>"; }
+
 /**
  * Create a namespace selector
  *
@@ -1282,7 +1372,16 @@ function wfElementClean( $element, $attribs = array(), $contents = '') {
  * @return Html string containing the namespace selector
  */
 function &HTMLnamespaceselector($selected = '', $allnamespaces = null) {
-	$s = "<select name='namespace' class='namespaceselector'>\n";
+	if( $selected !== '' ) {
+		if( is_null( $selected ) ) {
+			// No namespace selected; let exact match work without hitting Main
+			$selected = '';
+		} else {
+			// Let input be numeric strings without breaking the empty match.
+			$selected = intval( $selected );
+		}
+	}
+	$s = "<select name='namespace' class='namespaceselector'>\n\t";
 	$arr = Namespace::getFormattedDefaultNamespaces();
 	if( !is_null($allnamespaces) ) {
 		$arr = array($allnamespaces => wfMsgHtml('namespacesall')) + $arr;
@@ -1362,7 +1461,7 @@ function wfTempDir() {
 function wfMkdirParents( $fullDir, $mode ) {
 	$parts = explode( '/', $fullDir );
 	$path = '';
-	$success = false;
+	
 	foreach ( $parts as $dir ) {
 		$path .= $dir . '/';
 		if ( !is_dir( $path ) ) {
@@ -1437,4 +1536,101 @@ function wfAppendToArrayIfNotDefault( $key, $value, $default, &$changed ) {
 function wfEmptyMsg( $msg, $wfMsgOut ) {
 	return $wfMsgOut === "&lt;$msg&gt;";
 }
+
+/**
+ * Find out whether or not a mixed variable exists in a string
+ *
+ * @param mixed  needle
+ * @param string haystack
+ * @return bool
+ */
+function in_string( $needle, $str ) {
+	return strpos( $str, $needle ) !== false;
+}
+
+/**
+ * Returns a regular expression of url protocols
+ *
+ * @return string
+ */
+function wfUrlProtocols() {
+	global $wgUrlProtocols;
+
+	$x = array();
+	foreach ($wgUrlProtocols as $protocol)
+		$x[] = preg_quote( $protocol, '/' );
+	
+	return implode( '|', $x );
+}
+
+/**
+ * Check if a string is well-formed XML.
+ * Must include the surrounding tag.
+ *
+ * @param string $text
+ * @return bool
+ *
+ * @todo Error position reporting return
+ */
+function wfIsWellFormedXml( $text ) {
+	$parser = xml_parser_create( "UTF-8" );
+	
+	# case folding violates XML standard, turn it off
+	xml_parser_set_option( $parser, XML_OPTION_CASE_FOLDING, false );
+	
+	if( !xml_parse( $parser, $text, true ) ) {
+		$err = xml_error_string( xml_get_error_code( $parser ) );
+		$position = xml_get_current_byte_index( $parser );
+		//$fragment = $this->extractFragment( $html, $position );
+		//$this->mXmlError = "$err at byte $position:\n$fragment";
+		xml_parser_free( $parser );
+		return false;
+	}
+	xml_parser_free( $parser );
+	return true;
+}
+
+/**
+ * Check if a string is a well-formed XML fragment.
+ * Wraps fragment in an <html> bit and doctype, so it can be a fragment
+ * and can use HTML named entities.
+ *
+ * @param string $text
+ * @return bool
+ */
+function wfIsWellFormedXmlFragment( $text ) {
+	$html = 
+		'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" ' .
+		'"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">' .
+		'<html>' .
+		$text .
+		'</html>';
+	return wfIsWellFormedXml( $html );
+}
+
+/**
+ * shell_exec() with time and memory limits mirrored from the PHP configuration,
+ * if supported.
+ */
+function wfShellExec( $cmd )
+{
+	global $IP;
+	
+	if ( php_uname( 's' ) == 'Linux' ) {
+		$time = ini_get( 'max_execution_time' );
+		$mem = ini_get( 'memory_limit' );
+		if( preg_match( '/^([0-9]+)[Mm]$/', trim( $mem ), $m ) ) {
+			$mem = intval( $m[1] * (1024*1024) );
+		}
+		if ( $time > 0 && $mem > 0 ) {
+			$script = "$IP/bin/ulimit.sh";
+			if ( is_executable( $script ) ) {
+				$memKB = intval( $mem / 1024 );
+				$cmd = escapeshellarg( $script ) . " $time $memKB $cmd";
+			}
+		}
+	}
+	return shell_exec( $cmd );
+}
+
 ?>

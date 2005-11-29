@@ -790,7 +790,6 @@ váš uživatelský účet zablokován.",
 'copyrightpage' => '{{ns:4}}:Autorské právo',
 'copyrightpagename' => 'podmínek {{grammar:2sg|{{SITENAME}}}}',
 'uploadedfiles' => 'Načtené soubory',
-'ignorewarning' => 'Ignorovat varování a uložit soubor.',
 'minlength'             => 'Jméno souboru se musí skládat nejméně ze tří písmen.',
 'illegalfilename'       => 'Název souboru "$1" obsahuje znaky, které nejsou povoleny v názvech stránek. Prosím přejmenujte soubor a zkuste jej nahrát znovu.',
 'badfilename'	=> 'Jméno souboru bylo změněno na „$1“.',
@@ -1083,7 +1082,7 @@ Stiskněte tlačítko „zpět“, obnovte stránku, ze které jste přišli a z
 'undeletebtn' => 'Obnovit',
 'undeletedarticle' => 'obnovuje „$1“',
 'undeletedrevisions' => 'Obnoveno $1 verzí',
-'undeletedtext'   => 'Stránka [[$1]] byla úspěšně obnovena. Vizte [[Special:Log/delete|knihu smazaných stránek]] na záznam posledních smazání a obnovení.',
+'undeletedtext'   => 'Stránka [[:$1|$1]] byla úspěšně obnovena. Vizte [[Special:Log/delete|knihu smazaných stránek]] na záznam posledních smazání a obnovení.',
 
 # Namespace form on various pages
 'namespace' => 'Jmenný prostor:',
@@ -1832,14 +1831,12 @@ class LanguageCs extends LanguageUtf8 {
 
 	# Datové a časové funkce možno upřesnit podle jazyka
 	# TODO: Umožnit nastavování formátu data a času.
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) . '. ' .
-		$this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
-		  ' ' .
-		  substr( $ts, 0, 4 );
-		return $d;
+	function formatMonth( $month, $format ) {
+		return intval( $month ) . '.';
+	}
+	
+	function formatDay( $day, $format ) {
+		return intval( $day ) . '.';
 	}
 
 	function getMessage( $key ) {

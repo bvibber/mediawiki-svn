@@ -525,7 +525,6 @@ class Sanitizer {
 	 * @todo Check for unique id attribute :P
 	 */
 	function fixTagAttributes( $text, $element ) {
-		global $wgUrlProtocols;
 		if( trim( $text ) == '' ) {
 			return '';
 		}
@@ -554,11 +553,22 @@ class Sanitizer {
 			
 			# Strip javascript "expression" from stylesheets.
 			# http://msdn.microsoft.com/workshop/author/dhtml/overview/recalc.asp
-			if( $attribute == 'style' && preg_match(
-				'/(expression|tps*:\/\/|url\\s*\().*/is',
-					Sanitizer::decodeCharReferences( $value ) ) ) {
-				# haxx0r
-				continue;
+			if( $attribute == 'style' ) {
+				$stripped = Sanitizer::decodeCharReferences( $value );
+				
+				// Remove any comments; IE gets token splitting wrong
+				$stripped = preg_replace( '!/\\*.*?\\*/!S', ' ', $stripped );
+				$value = htmlspecialchars( $stripped );
+				
+				// ... and continue checks
+				$stripped = preg_replace( '!\\\\([0-9A-Fa-f]{1,6})[ \\n\\r\\t\\f]?!e',
+					'codepointToUtf8(hexdec("$1"))', $stripped );
+				$stripped = str_replace( '\\', '', $stripped );
+				if( preg_match( '/(expression|tps*:\/\/|url\\s*\().*/is',
+						$stripped ) ) {
+					# haxx0r
+					continue;
+				}
 			}
 			
 			# Templates and links may be expanded in later parsing,
@@ -574,7 +584,7 @@ class Sanitizer {
 			
 			# Stupid hack
 			$value = preg_replace_callback(
-				'/(' . $wgUrlProtocols . ')/',
+				'/(' . wfUrlProtocols() . ')/',
 				array( 'Sanitizer', 'armorLinksCallback' ),
 				$value );
 			

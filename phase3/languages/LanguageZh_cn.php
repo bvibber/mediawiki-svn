@@ -498,7 +498,6 @@ MySQL返回错误 \"<tt>$3: $4</tt>\"。",
 "copyrightpage" => "Wikipedia:版权信息",
 "copyrightpagename" => "Wikipedia版权",
 "uploadedfiles"	=> "已上载文件",
-"ignorewarning"	=> "忽略警告并保存文件。",
 "minlength"		=> "图像名字必须至少有三个字母。",
 "badfilename"	=> "图像名已被改为\"$1\"。",
 "badfiletype"	=> "\".$1\"不是所推荐的图像文件格式。",
@@ -708,7 +707,7 @@ Wikipedia与这些公司并没有任何商业关系，因此本表不应该
 "undeleterevision" => "删除$1时的版本",
 "undeletebtn" => "恢复！",
 "undeletedarticle" => "已经恢复“$1”",
-"undeletedtext"   => "[[$1]]已经被成功复原。
+"undeletedtext"   => "[[:$1|$1]]已经被成功复原。
 有关Wikipedia最近的删除与复原，参见[[Wikipedia:删除纪录]]",
 
 # Contributions
@@ -924,6 +923,10 @@ class LanguageZh_cn extends LanguageUtf8 {
 	function getSkinNames() {
 		global $wgSkinNamesZh_cn;
 		return $wgSkinNamesZh_cn;
+	}
+	
+	function getDateFormats() {
+		return false;
 	}
 
 	function date( $ts, $adj = false ) {

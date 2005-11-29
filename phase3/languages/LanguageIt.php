@@ -427,7 +427,6 @@ Tutti i tempi indicati sono calcolati sul fuso orario del server (UTC).
 "copyrightpage" => "Wikipedia:Copyrights",
 "copyrightpagename" => "Wikipedia copyright",
 "uploadedfiles"	=> "Files Caricati in Wikipedia",
-"ignorewarning"	=> "Ignora le avvertenze e salva comunque il file.",
 "minlength"		=> "I nomi dei file immagine debbono essere lunghi almeno tre caratteri, ma è preferibile usare nomi lumghi, purché descrittìvi.",
 "badfilename"	=> "Il nome del file immagine è stato convertito in \"$1\".",
 "badfiletype"	=> "\".$1\" non è un tipo di file raccomandato per le immagini, almeno ai nostri fini.",
@@ -605,7 +604,7 @@ Se una nuova pagina è stata creata con questo stesso nome dopo la cancellazione
 "undeleterevision" => "Cancellata revisione $1",
 "undeletebtn" => "RIPRISTINA!",
 "undeletedarticle" => "Recuperata \"$1\"",
-"undeletedtext"   => "La pagina [[$1]] è stata recuperata.
+"undeletedtext"   => "La pagina [[:$1|$1]] è stata recuperata.
 Vedi [[Wikipedia:Deletion_log]] per un elenco delle pagine cancellate e recuperate di recente.",
 
 # Contributions
@@ -717,14 +716,9 @@ class LanguageIt extends LanguageUtf8 {
 		global $wgQuickbarSettingsIt;
 		return $wgQuickbarSettingsIt;
 	}
-
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
-		  " " . (0 + substr( $ts, 6, 2 )) . ", " .
-		  substr( $ts, 0, 4 );
-		return $d;
+	
+	function formatMonth( $month, $format ) {
+		return $this->getMonthAbbreviation( $month );
 	}
 
 	function getMessage( $key ) {

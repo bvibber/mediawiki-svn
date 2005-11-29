@@ -494,7 +494,6 @@ L'heure indiquée est celle du serveur (UTC).
 "copyrightpage" => "Wikipédia:Copyright",
 "copyrightpagename" => "licence Wikipédia",
 "uploadedfiles" => "Fichiers copiés",
-"ignorewarning" => "Ignorer l'avertissement et copier le fichier quand même.",
 "minlength"  => "Les noms des images doivent comporter au moins trois lettres.",
 "badfilename" => "L'image a été renommée \"$1\".",
 "badfiletype" => "\".$1\" n'est pas un format recommandé pour les fichiers images.",
@@ -708,7 +707,7 @@ les révisions restaurées apparaîtront dans l'historique antérieur et la vers
 "undeleterevision" => "Version effacée ($1)", // Looxix "Deleted revision as of $1",
 "undeletebtn"	=> "Restaurer !", // Looxix "Restore!",
 "undeletedarticle" => "restauré \"$1\"",	// FvdP "restored \"$1\""
-"undeletedtext"   => "L'article [[$1]] a été restauré avec succès.
+"undeletedtext"   => "L'article [[:$1|$1]] a été restauré avec succès.
 Voir [[Wikipedia:Trace des effacements]] pour la liste des suppressions et des restaurations récentes.", // Looxix
 # Contributions
 #
@@ -845,17 +844,16 @@ class LanguageOc extends LanguageUtf8{
 		return $wgSkinNamesOc;
 	}
 
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) . " " .
-		  $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
-		  " " . substr( $ts, 0, 4 );
-		return $d;
+	function formatMonth( $month, $format ) {
+		return $this->getMonthAbbreviation( $month );
 	}
-
-	function timeanddate( $ts, $adj = false ) {
-		return $this->date( $ts, $adj ) . " à " . $this->time( $ts, $adj );
+	
+	function timeBeforeDate( $format ) {
+		return false;
+	}
+	
+	function timeDateSeparator( $format ) {
+		return " à ";
 	}
 
 	function getMessage( $key ) {

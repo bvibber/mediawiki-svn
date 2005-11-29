@@ -9,6 +9,8 @@
 require_once( 'normal/UtfNormal.php' );
 
 $wgTitleInterwikiCache = array();
+$wgTitleCache = array();
+
 define ( 'GAID_FOR_UPDATE', 1 );
 
 # Title::newFromTitle maintains a cache to avoid
@@ -103,6 +105,7 @@ class Title {
 	 * @access public
 	 */
 	function newFromText( $text, $defaultNamespace = NS_MAIN ) {
+		global $wgTitleCache;
 		$fname = 'Title::newFromText';
 		wfProfileIn( $fname );
 
@@ -118,10 +121,9 @@ class Title {
 		 *
 		 * In theory these are value objects and won't get changed...
 		 */
-		static $titleCache = array();
-		if( $defaultNamespace == NS_MAIN && isset( $titleCache[$text] ) ) {
+		if( $defaultNamespace == NS_MAIN && isset( $wgTitleCache[$text] ) ) {
 			wfProfileOut( $fname );
-			return $titleCache[$text];
+			return $wgTitleCache[$text];
 		}
 
 		/**
@@ -135,11 +137,11 @@ class Title {
 
 		if( $t->secureAndSplit() ) {
 			if( $defaultNamespace == NS_MAIN ) {
-				if( count( $titleCache ) >= MW_TITLECACHE_MAX ) {
+				if( count( $wgTitleCache ) >= MW_TITLECACHE_MAX ) {
 					# Avoid memory leaks on mass operations...
-					$titleCache = array();
+					$wgTitleCache = array();
 				}
-				$titleCache[$text] =& $t;
+				$wgTitleCache[$text] =& $t;
 			}
 			wfProfileOut( $fname );
 			return $t;
@@ -612,7 +614,7 @@ class Title {
 	 */
 	function getPrefixedText() {
 		global $wgContLang;
-		if ( empty( $this->mPrefixedText ) ) {
+		if ( empty( $this->mPrefixedText ) ) { // FIXME: bad usage of empty() ?
 			$s = $this->prefix( $this->mTextform );
 			$s = str_replace( '_', ' ', $s );
 			$this->mPrefixedText = $s;
@@ -664,92 +666,33 @@ class Title {
 	 * @access public
 	 */
 	function getFullURL( $query = '' ) {
-		global $wgContLang, $wgServer, $wgScript, $wgMakeDumpLinks, $wgArticlePath, $wgNamespaces;
+		global $wgContLang, $wgServer, $wgNamespaces;
 
 		if ( '' == $this->mInterwiki ) {
-			return $wgServer . $this->getLocalUrl( $query );
-		} elseif ( $wgMakeDumpLinks && $wgContLang->getLanguageName( $this->mInterwiki ) ) {
-			$baseUrl = str_replace( '$1', "../../{$this->mInterwiki}/$1", $wgArticlePath );
-			$baseUrl = str_replace( '$1', $this->getHashedDirectory() . '/$1', $baseUrl );
+			$url = $wgServer . $this->getLocalUrl( $query );
 		} else {
 			$baseUrl = $this->getInterwikiLink( $this->mInterwiki );
-		}
-		$namespace = $wgNamespaces[$this->mNamespace]->getDefaultName();
-		if ( '' != $namespace ) {
-			# Can this actually happen? Interwikis shouldn't be parsed.
-			$namespace .= ':';
-		}
-		$url = str_replace( '$1', $namespace . $this->mUrlform, $baseUrl );
-		if( $query != '' ) {
-			if( false === strpos( $url, '?' ) ) {
-				$url .= '?';
-			} else {
-				$url .= '&';
+
+			$namespace = $wgNamespaces[$this->mNamespace]->getDefaultName();
+			if ( '' != $namespace ) {
+				# Can this actually happen? Interwikis shouldn't be parsed.
+				$namespace .= ':';
 			}
-			$url .= $query;
+			$url = str_replace( '$1', $namespace . $this->mUrlform, $baseUrl );
+			if( $query != '' ) {
+				if( false === strpos( $url, '?' ) ) {
+					$url .= '?';
+				} else {
+					$url .= '&';
+				}
+				$url .= $query;
+			}
+			if ( '' != $this->mFragment ) {
+				$url .= '#' . $this->mFragment;
+			}
 		}
-		if ( '' != $this->mFragment ) {
-			$url .= '#' . $this->mFragment;
-		}
+		wfRunHooks( 'GetFullURL', array( &$this, &$url, $query ) );
 		return $url;
-	}
-
-	/**
-	 * Get a relative directory for putting an HTML version of this article into
-	 */
-	function getHashedDirectory() {
-		global $wgMakeDumpLinks, $wgInputEncoding;
-		$dbkey = $this->getDBkey();
-
-		# Split into characters
-		if ( $wgInputEncoding == 'UTF-8' ) {
-			preg_match_all( '/./us', $dbkey, $m );
-		} else {
-			preg_match_all( '/./s', $dbkey, $m );
-		}
-		$chars = $m[0];
-		$length = count( $chars );
-		$dir = '';
-
-		for ( $i = 0; $i < $wgMakeDumpLinks; $i++ ) {
-			if ( $i ) {
-				$dir .= '/';
-			}
-			if ( $i >= $length ) {
-				$dir .= '_';
-			} elseif ( ord( $chars[$i] ) > 32 ) {
-				$dir .= strtolower( $chars[$i] );
-			} else {
-				$dir .= sprintf( "%02X", ord( $chars[$i] ) );
-			}
-		}
-		return $dir;
-	}
-
-	function getHashedFilename() {
-		$dbkey = $this->getPrefixedDBkey();
-		$mainPage = Title::newMainPage();
-		if ( $mainPage->getPrefixedDBkey() == $dbkey ) {
-			return 'index.html';
-		}
-
-		$dir = $this->getHashedDirectory();
-
-		# Replace illegal charcters for Windows paths with underscores
-		$friendlyName = strtr( $dbkey, '/\\*?"<>|~', '_________' );
-
-		# Work out lower case form. We assume we're on a system with case-insensitive
-		# filenames, so unless the case is of a special form, we have to disambiguate
-		$lowerCase = $this->prefix( ucfirst( strtolower( $this->getDBkey() ) ) );
-
-		# Make it mostly unique
-		if ( $lowerCase != $friendlyName  ) {
-			$friendlyName .= '_' . substr(md5( $dbkey ), 0, 4);
-		}
-		# Handle colon specially by replacing it with tilde
-		# Thus we reduce the number of paths with hashes appended
-		$friendlyName = str_replace( ':', '~', $friendlyName );
-		return "$dir/$friendlyName.html";
 	}
 
 	/**
@@ -761,40 +704,42 @@ class Title {
 	 * @access public
 	 */
 	function getLocalURL( $query = '' ) {
-		global $wgLang, $wgArticlePath, $wgScript, $wgMakeDumpLinks, $wgServer, $action;
+		global $wgArticlePath, $wgScript, $wgServer, $wgRequest;
 
 		if ( $this->isExternal() ) {
-			return $this->getFullURL();
-		}
-
-		$dbkey = wfUrlencode( $this->getPrefixedDBkey() );
-		if ( $wgMakeDumpLinks ) {
-			$url = str_replace( '$1', wfUrlencode( $this->getHashedFilename() ), $wgArticlePath );
-		} elseif ( $query == '' ) {
-			$url = str_replace( '$1', $dbkey, $wgArticlePath );
+			$url = $this->getFullURL();
 		} else {
-			global $wgActionPaths;
-			if( !empty( $wgActionPaths ) &&
-				preg_match( '/^(.*&|)action=([^&]*)(&(.*)|)$/', $query, $matches ) ) {
-				$action = urldecode( $matches[2] );
-				if( isset( $wgActionPaths[$action] ) ) {
-					$query = $matches[1];
-					if( isset( $matches[4] ) ) $query .= $matches[4];
-					$url = str_replace( '$1', $dbkey, $wgActionPaths[$action] );
-					if( $query != '' ) $url .= '?' . $query;
-					return $url;
+			$dbkey = wfUrlencode( $this->getPrefixedDBkey() );
+			if ( $query == '' ) {
+				$url = str_replace( '$1', $dbkey, $wgArticlePath );
+			} else {
+				global $wgActionPaths;
+				$url = false;
+				if( !empty( $wgActionPaths ) &&
+					preg_match( '/^(.*&|)action=([^&]*)(&(.*)|)$/', $query, $matches ) ) 
+				{
+					$action = urldecode( $matches[2] );
+					if( isset( $wgActionPaths[$action] ) ) {
+						$query = $matches[1];
+						if( isset( $matches[4] ) ) $query .= $matches[4];
+						$url = str_replace( '$1', $dbkey, $wgActionPaths[$action] );
+						if( $query != '' ) $url .= '?' . $query;
+					}
+				}
+				if ( $url === false ) {
+					if ( $query == '-' ) {
+						$query = '';
+					}
+					$url = "{$wgScript}?title={$dbkey}&{$query}";
 				}
 			}
-			if ( $query == '-' ) {
-				$query = '';
-			}
-			$url = "{$wgScript}?title={$dbkey}&{$query}";
-		}
 
-		if ($action == 'render')
-			return $wgServer . $url;
-		else
-			return $url;
+			if ($wgRequest->getText('action') == 'render') {
+				$url = $wgServer . $url;
+			}
+		}
+		wfRunHooks( 'GetLocalURL', array( &$this, &$url, $query ) );
+		return $url;
 	}
 
 	/**
@@ -905,13 +850,13 @@ class Title {
 	}
 
  	/**
-	 * Is $wgUser perform $action this page?
+	 * Can $wgUser perform $action this page?
 	 * @param string $action action that permission needs to be checked for
 	 * @return boolean
 	 * @access private
  	 */
 	function userCan($action) {
-		$fname = 'Title::userCanEdit';
+		$fname = 'Title::userCan';
 		wfProfileIn( $fname );
 
 		global $wgUser;
@@ -919,11 +864,14 @@ class Title {
 			wfProfileOut( $fname );
 			return false;
 		}
+		// XXX: This is the code that prevents unprotecting a page in NS_MEDIAWIKI
+		// from taking effect -ævar
 		if( NS_MEDIAWIKI == $this->mNamespace &&
 		    !$wgUser->isAllowed('editinterface') ) {
 			wfProfileOut( $fname );
 			return false;
 		}
+		
 		if( $this->mDbkeyform == '_' ) {
 			# FIXME: Is this necessary? Shouldn't be allowed anyway...
 			wfProfileOut( $fname );
@@ -1669,6 +1617,7 @@ class Title {
 			$u->doUpdate();
 		}
 
+		global $wgUser;
 		wfRunHooks( 'TitleMoveComplete', array( &$this, &$nt, &$wgUser, $pageid, $redirid ) );
 		return true;
 	}
@@ -2051,7 +2000,7 @@ class Title {
 	 * @param Title $title
 	 * @return bool
 	 */
-	function equals( &$title ) {
+	function equals( $title ) {
 		return $this->getInterwiki() == $title->getInterwiki()
 			&& $this->getNamespace() == $title->getNamespace()
 			&& $this->getDbkey() == $title->getDbkey();

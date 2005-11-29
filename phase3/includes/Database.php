@@ -62,6 +62,7 @@ class Database {
 	var $mFlags;
 	var $mTrxLevel = 0;
 	var $mErrorCount = 0;
+	var $mLBInfo = array();
 	/**#@-*/
 
 #------------------------------------------------------------------------------
@@ -128,6 +129,29 @@ class Database {
 	 */
 	function errorCount( $count = NULL ) {
 		return wfSetVar( $this->mErrorCount, $count );
+	}
+
+	/**
+	 * Properties passed down from the server info array of the load balancer
+	 */
+	function getLBInfo( $name = NULL ) {
+		if ( is_null( $name ) ) {
+			return $this->mLBInfo;
+		} else {
+			if ( array_key_exists( $name, $this->mLBInfo ) ) {
+				return $this->mLBInfo[$name];
+			} else {
+				return NULL;
+			}
+		}
+	}
+
+	function setLBInfo( $name, $value = NULL ) {
+		if ( is_null( $value ) ) {
+			$this->mLBInfo = $name;
+		} else {
+			$this->mLBInfo[$name] = $value;
+		}
 	}
 
 	/**#@+
@@ -221,6 +245,8 @@ class Database {
 	 * If the failFunction is set to a non-zero integer, returns success
 	 */
 	function open( $server, $user, $password, $dbName ) {
+		global $wguname;
+		
 		# Test for missing mysql.so
 		# First try to load it
 		if (!@extension_loaded('mysql')) {
@@ -258,7 +284,9 @@ class Database {
 			if ( $this->mConn !== false ) {
 				$success = @/**/mysql_select_db( $dbName, $this->mConn );
 				if ( !$success ) {
-					wfDebug( "Error selecting database \"$dbName\": " . $this->lastError() . "\n" );
+					$error = "Error selecting database $dbname on server {$this->mServer} " .
+						"from client host {$wguname['nodename']}\n";
+					wfDebug( $error );
 				}
 			} else {
 				wfDebug( "DB connection error\n" );
@@ -274,6 +302,14 @@ class Database {
 		if ( !$success ) {
 			$this->reportConnectionError();
 		}
+		
+		global $wgDBmysql5;
+		if( $wgDBmysql5 ) {
+			// Tell the server we're communicating with it in UTF-8.
+			// This may engage various charset conversions.
+			$this->query( 'SET NAMES utf8' );
+		}
+		
 		$this->mOpened = $success;
 		return $success;
 	}
@@ -300,16 +336,21 @@ class Database {
 
 	/**
 	 * @access private
-	 * @param string $msg error message ?
+	 * @param string $error fallback error message, used if none is given by MySQL
 	 */
-	function reportConnectionError() {
+	function reportConnectionError( $error = 'Unknown error' ) {
+		$myError = $this->lastError();
+		if ( $myError ) {
+			$error = $myError;
+		}
+		
 		if ( $this->mFailFunction ) {
 			if ( !is_int( $this->mFailFunction ) ) {
 				$ff = $this->mFailFunction;
-				$ff( $this, $this->lastError() );
+				$ff( $this, $error );
 			}
 		} else {
-			wfEmergencyAbort( $this, $this->lastError() );
+			wfEmergencyAbort( $this, $error );
 		}
 	}
 
@@ -334,7 +375,11 @@ class Database {
 		if ( $wgProfiling ) {
 			# generalizeSQL will probably cut down the query to reasonable
 			# logging size most of the time. The substr is really just a sanity check.
-			$profName = 'query: ' . $fname . ' ' . substr( Database::generalizeSQL( $sql ), 0, 255 ); 
+
+			# Who's been wasting my precious column space? -- TS
+			#$profName = 'query: ' . $fname . ' ' . substr( Database::generalizeSQL( $sql ), 0, 255 ); 
+			$profName = 'query: ' . substr( Database::generalizeSQL( $sql ), 0, 255 ); 
+
 			wfProfileIn( 'Database::query' );
 			wfProfileIn( $profName );
 		}
@@ -343,7 +388,7 @@ class Database {
 
 		# Add a comment for easy SHOW PROCESSLIST interpretation
 		if ( $fname ) {
-			$commentedSql = "/* $fname */ $sql";
+			$commentedSql = preg_replace("/\s/", " /* $fname */ ", $sql, 1);
 		} else {
 			$commentedSql = $sql;
 		}
@@ -718,7 +763,7 @@ class Database {
 			$tailOpts .= ' LOCK IN SHARE MODE';
 		}
 
-		if ( isset( $options['USE INDEX'] ) ) {
+		if ( isset( $options['USE INDEX'] ) && ! is_array( $options['USE INDEX'] ) ) {
 			$useIndex = $this->useIndexClause( $options['USE INDEX'] );
 		} else {
 			$useIndex = '';
@@ -738,7 +783,10 @@ class Database {
 			$options = array( $options );
 		}
 		if( is_array( $table ) ) {
-			$from = ' FROM ' . implode( ',', array_map( array( &$this, 'tableName' ), $table ) );
+			if ( @is_array( $options['USE INDEX'] ) )
+				$from = ' FROM ' . $this->tableNamesWithUseIndex( $table, $options['USE INDEX'] );
+			else
+				$from = ' FROM ' . implode( ',', array_map( array( &$this, 'tableName' ), $table ) );
 		} elseif ($table!='') {
 			$from = ' FROM ' . $this->tableName( $table );
 		} else {
@@ -1128,6 +1176,21 @@ class Database {
 			$retVal[$name] = $this->tableName( $name );
 		}
 		return $retVal;
+	}
+
+	/**
+	 * @access private
+	 */
+	function tableNamesWithUseIndex( $tables, $use_index ) {
+		$ret = array();
+
+		foreach ( $tables as $table )
+			if ( @$use_index[$table] !== null )
+				$ret[] = $this->tableName( $table ) . ' ' . $this->useIndexClause( implode( ',', (array)$use_index[$table] ) );
+			else
+				$ret[] = $this->tableName( $table );
+
+		return implode( ',', $ret );
 	}
 
 	/**
@@ -1688,13 +1751,12 @@ class ResultWrapper {
  */
 function wfEmergencyAbort( &$conn, $error ) {
 	global $wgTitle, $wgUseFileCache, $title, $wgInputEncoding, $wgOutputEncoding;
-	global $wgSitename, $wgServer, $wgMessageCache;
+	global $wgSitename, $wgServer, $wgMessageCache, $wgLogo;
 
 	# I give up, Brion is right. Getting the message cache to work when there is no DB is tricky.
 	# Hard coding strings instead.
 
-	$noconnect = 'Sorry! The wiki is experiencing some technical difficulties, and cannot contact the database server: $1. <br />
-$1';
+	$noconnect = "<h1><img src='$wgLogo' style='float:left;margin-right:1em' alt=''>$wgSitename has a problem</h1><p><strong>Sorry! This site is experiencing technical difficulties.</strong></p><p>Try waiting a few minutes and reloading.</p><p><small>(Can't contact the database server: $1)</small></p>";
 	$mainpage = 'Main Page';
 	$searchdisabled = <<<EOT
 <p style="margin: 1.5em 2em 1em">$wgSitename search is disabled for performance reasons. You can search via Google in the meantime.
@@ -1735,6 +1797,12 @@ border=\"0\" ALT=\"Google\"></A>
 	if ( is_object( $wgMessageCache ) ) {
 		$wgMessageCache->disable();
 	}
+
+	if ( trim( $error ) == '' ) {
+		$error = $this->mServer;
+	}
+
+	wfLogDBError( "Connection error: $error\n" );
 	
 	$msg = wfGetSiteNotice();
 	if($msg == '') {

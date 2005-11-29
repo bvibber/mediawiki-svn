@@ -605,7 +605,6 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi {{SITENAME}} Anda.",
 "copyrightpage" => "Project:Hak_Cipta",
 "copyrightpagename" => "Hak cipta {{SITENAME}}",
 "uploadedfiles" => "File yang telah diunggahkan",
-"ignorewarning" => "Abaikan peringatan dan simpan file",
 "minlength" => "Nama gambar sekurang-kurangnya harus tiga huruf.",
 'illegalfilename' => 'Nama file "$1" mengandung karakter yang tidak diizinkan dalam judul halaman. Silakan ubah nama file tersebut dan cobalah mengunggahkannya kembali.',
 "badfilename" => "Nama gambar telah diubah menjadi \"$1\".",
@@ -833,7 +832,7 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi {{SITENAME}} Anda.",
 "undeletebtn" => "Kembalikan!",
 "undeletedarticle" => "\"$1\" telah dikembalikan",
 'undeletedrevisions' => "$1 revisi telah dikembalikan",
-"undeletedtext" => "Halaman [[$1]] berhasil dikembalikan. Lihat [[Project:Catatan/Penghapusan]] untuk catatan terkini penghapusan dan pengembalian halaman.",
+"undeletedtext" => "Halaman [[:$1|$1]] berhasil dikembalikan. Lihat [[Project:Catatan/Penghapusan]] untuk catatan terkini penghapusan dan pengembalian halaman.",
 
 # Contributions
 #

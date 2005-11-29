@@ -178,7 +178,14 @@ class SkinTemplate extends Skin {
 		$this->username = $wgUser->getName();
 		$userPage = $wgUser->getUserPage();
 		$this->userpage = $userPage->getPrefixedText();
-		$this->userpageUrlDetails = $this->makeUrlDetails($this->userpage);
+
+		if ( $wgUser->isLoggedIn() || $this->showIPinHeader() ) {
+			$this->userpageUrlDetails = $this->makeUrlDetails($this->userpage);
+		} else {
+			# This won't be used in the standard skins, but we define it to preserve the interface
+			# To save time, we check for existence
+			$this->userpageUrlDetails = $this->makeKnownUrlDetails($this->userpage);
+		}
 
 		$this->usercss =  $this->userjs = $this->userjsprev = false;
 		$this->setupUserCss();
@@ -248,9 +255,11 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'dir', $wgContLang->isRTL() ? "rtl" : "ltr" );
 		$tpl->set( 'rtl', $wgContLang->isRTL() );
 		$tpl->set( 'langname', $wgContLang->getLanguageName( $wgContLanguageCode ) );
+		$tpl->set( 'showjumplinks', $wgUser->getOption( 'showjumplinks' ) );
 		$tpl->setRef( 'username', $this->username );
 		$tpl->setRef( 'userpage', $this->userpage);
 		$tpl->setRef( 'userpageurl', $this->userpageUrlDetails['href']);
+		$tpl->set( 'pagecss', $this->setupPageCss() );
 		$tpl->setRef( 'usercss', $this->usercss);
 		$tpl->setRef( 'userjs', $this->userjs);
 		$tpl->setRef( 'userjsprev', $this->userjsprev);
@@ -429,62 +438,80 @@ class SkinTemplate extends Skin {
 	 * @access private
 	 */
 	function buildPersonalUrls() {
+		global $wgTitle, $wgShowIPinHeader, $wgContLang;
+
 		$fname = 'SkinTemplate::buildPersonalUrls';
+		$pageurl = $wgTitle->getLocalURL();
 		wfProfileIn( $fname );
 
 		/* set up the default links for the personal toolbar */
-		global $wgShowIPinHeader;
 		$personal_urls = array();
 		if ($this->loggedin) {
 			$personal_urls['userpage'] = array(
 				'text' => $this->username,
 				'href' => &$this->userpageUrlDetails['href'],
-				'class' => $this->userpageUrlDetails['exists']?false:'new'
+				'class' => $this->userpageUrlDetails['exists']?false:'new',
+				'active' => ( $this->userpageUrlDetails['href'] == $pageurl )
 			);
 			$usertalkUrlDetails = $this->makeTalkUrlDetails($this->userpage);
 			$personal_urls['mytalk'] = array(
 				'text' => wfMsg('mytalk'),
 				'href' => &$usertalkUrlDetails['href'],
-				'class' => $usertalkUrlDetails['exists']?false:'new'
+				'class' => $usertalkUrlDetails['exists']?false:'new',
+				'active' => ( $usertalkUrlDetails['href'] == $pageurl )
 			);
+			$href = $this->makeSpecialUrl('Preferences');
 			$personal_urls['preferences'] = array(
 				'text' => wfMsg('preferences'),
-				'href' => $this->makeSpecialUrl('Preferences')
+				'href' => $this->makeSpecialUrl('Preferences'),
+				'active' => ( $href == $pageurl )
 			);
+			$href = $this->makeSpecialUrl('Watchlist');
 			$personal_urls['watchlist'] = array(
 				'text' => wfMsg('watchlist'),
-				'href' => $this->makeSpecialUrl('Watchlist')
+				'href' => $href,
+				'active' => ( $href == $pageurl )
 			);
+			$href = $this->makeSpecialUrl("Contributions/$this->username");
 			$personal_urls['mycontris'] = array(
 				'text' => wfMsg('mycontris'),
-				'href' => $this->makeSpecialUrl("Contributions/$this->username")
+				'href' => $href
+				# FIXME #  'active' => ( $href == $pageurl . '/' . $this->username )
 			);
 			$personal_urls['logout'] = array(
 				'text' => wfMsg('userlogout'),
-				'href' => $this->makeSpecialUrl('Userlogout','returnto=' . $this->thisurl )
+				'href' => $this->makeSpecialUrl( 'Userlogout',
+					$wgTitle->getNamespace() === NS_SPECIAL && $wgTitle->getText() === 'Preferences' ? '' : "returnto={$this->thisurl}" 
+				)
 			);
 		} else {
 			if( $wgShowIPinHeader && isset(  $_COOKIE[ini_get("session.name")] ) ) {
+				$href = &$this->userpageUrlDetails['href'];
 				$personal_urls['anonuserpage'] = array(
 					'text' => $this->username,
-					'href' => &$this->userpageUrlDetails['href'],
-					'class' => $this->userpageUrlDetails['exists']?false:'new'
+					'href' => $href,
+					'class' => $this->userpageUrlDetails['exists']?false:'new',
+					'active' => ( $pageurl == $href )
 				);
 				$usertalkUrlDetails = $this->makeTalkUrlDetails($this->userpage);
+				$href = &$usertalkUrlDetails['href'];
 				$personal_urls['anontalk'] = array(
 					'text' => wfMsg('anontalk'),
-					'href' => &$usertalkUrlDetails['href'],
-					'class' => $usertalkUrlDetails['exists']?false:'new'
+					'href' => $href,
+					'class' => $usertalkUrlDetails['exists']?false:'new',
+					'active' => ( $pageurl == $href )
 				);
 				$personal_urls['anonlogin'] = array(
 					'text' => wfMsg('userlogin'),
-					'href' => $this->makeSpecialUrl('Userlogin', 'returnto=' . $this->thisurl )
+					'href' => $this->makeSpecialUrl('Userlogin', 'returnto=' . $this->thisurl ),
+					'active' => ( NS_SPECIAL == $wgTitle->getNamespace() && 'Userlogin' == $wgTitle->getDBkey() )
 				);
 			} else {
 
 				$personal_urls['login'] = array(
 					'text' => wfMsg('userlogin'),
-					'href' => $this->makeSpecialUrl('Userlogin', 'returnto=' . $this->thisurl )
+					'href' => $this->makeSpecialUrl('Userlogin', 'returnto=' . $this->thisurl ),
+					'active' => ( NS_SPECIAL == $wgTitle->getNamespace() && 'Userlogin' == $wgTitle->getDBkey() )
 				);
 			}
 		}
@@ -492,6 +519,13 @@ class SkinTemplate extends Skin {
 		return $personal_urls;
 	}
 
+	/**
+	 * Returns true if the IP should be shown in the header
+	 */
+	function showIPinHeader() {
+		global $wgShowIPinHeader;
+		return $wgShowIPinHeader && isset(  $_COOKIE[ini_get("session.name")] );
+	}
 
 	function tabAction( $title, $message, $selected, $query='', $checkEdit=false ) {
 		$classes = array();
@@ -766,7 +800,10 @@ class SkinTemplate extends Skin {
 				$nav_urls['upload'] = array('href' => $this->makeSpecialUrl('Upload'));
 			}
 		} else {
-			$nav_urls['upload'] = false;
+			if ($wgUploadNavigationUrl)
+				$nav_urls['upload'] = array('href' => $wgUploadNavigationUrl );
+			else
+				$nav_urls['upload'] = false;
 		}
 		$nav_urls['specialpages'] = array('href' => $this->makeSpecialUrl('Specialpages'));
 
@@ -774,20 +811,28 @@ class SkinTemplate extends Skin {
 		// A print stylesheet is attached to all pages, but nobody ever
 		// figures that out. :)  Add a link...
 		if( $this->iscontent && ($action == '' || $action == 'view' || $action == 'purge' ) ) {
-			$nav_urls['print'] = array(
-				'text' => wfMsg( 'printableversion' ),
-				'href' => $wgRequest->appendQuery( 'printable=yes' ) );
+			$revid = $wgArticle->getRevIdFetched();
+			if ( !( $revid == 0 )  )
+				$nav_urls['print'] = array(
+					'text' => wfMsg( 'printableversion' ),
+					'href' => $wgRequest->appendQuery( 'printable=yes' )
+				);
 
 			// Also add a "permalink" while we're at it
-			if ( $wgRequest->getInt( 'oldid' ) ) {
+			if ( (int)$oldid ) {
 				$nav_urls['permalink'] = array(
 					'text' => wfMsg( 'permalink' ),
-					'href' => '' );
+					'href' => ''
+				);
 			} else {
-				$nav_urls['permalink'] = array(
-					'text' => wfMsg( 'permalink' ),
-					'href' => $wgTitle->getLocalURL( 'oldid=' . $wgArticle->getRevIdFetched() ) );
+				if ( !( $revid == 0 )  ) 
+					$nav_urls['permalink'] = array(
+						'text' => wfMsg( 'permalink' ),
+						'href' => $wgTitle->getLocalURL( "oldid=$revid" )
+					);
 			}
+			
+			wfRunHooks( 'SkinTemplateBuildNavUrlsNav_urlsAfterPermalink', array( &$this, &$nav_urls, &$oldid, &$revid ) );
 		}
 
 		if( $this->mTitle->getNamespace() != NS_SPECIAL) {
@@ -815,6 +860,10 @@ class SkinTemplate extends Skin {
 			$nav_urls['contributions'] = array(
 				'href' => $this->makeSpecialUrl('Contributions/' . $this->mTitle->getText() )
 			);
+			if ( $wgUser->isAllowed( 'protect' ) )
+				$nav_urls['blockip'] = array(
+					'href' => $this->makeSpecialUrl( 'Blockip/' . $this->mTitle->getText() )
+				);
 		} else {
 			$nav_urls['contributions'] = false;
 		}
@@ -903,7 +952,9 @@ class SkinTemplate extends Skin {
 
 		# If we use the site's dynamic CSS, throw that in, too
 		if ( $wgUseSiteCss ) {
-			$sitecss .= '@import "' . $this->makeNSUrl(ucfirst($this->skinname) . '.css', 'action=raw&ctype=text/css&smaxage=' . $wgSquidMaxage, NS_MEDIAWIKI) . '";' . "\n";
+			$query = "action=raw&ctype=text/css&smaxage=$wgSquidMaxage";		
+			$sitecss .= '@import "' . $this->makeNSUrl('Common.css', $query, NS_MEDIAWIKI) . '";' . "\n";
+			$sitecss .= '@import "' . $this->makeNSUrl(ucfirst($this->skinname) . '.css', $query, NS_MEDIAWIKI) . '";' . "\n";			
 			$sitecss .= '@import "' . $this->makeUrl('-','action=raw&gen=css' . $siteargs) . '";' . "\n";
 		}
 
@@ -934,6 +985,21 @@ class SkinTemplate extends Skin {
 			}
 		}
 		wfProfileOut( $fname );
+	}
+
+	/**
+	 * Code for extensions to hook into to provide per-page CSS, see
+	 * extensions/PageCSS/PageCSS.php for an implementation of this.
+	 *
+	 * @access private
+	 */
+	function setupPageCss() {
+		$fname = 'SkinTemplate::setupPageCss';
+		wfProfileIn( $fname );
+		$out = false;
+		wfRunHooks( 'SkinTemplateSetupPageCss', array( &$out, $this->mTitle->isProtected() ) );
+		wfProfileOut( $fname );
+		return $out;
 	}
 
 	/**

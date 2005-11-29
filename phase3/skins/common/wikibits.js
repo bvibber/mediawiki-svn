@@ -12,17 +12,46 @@ if (clientPC.indexOf('opera')!=-1) {
 }
 
 // add any onload functions in this hook (please don't hard-code any events in the xhtml source)
-function onloadhook () {
+
+var doneOnloadHook;
+
+if ( !window.onloadFuncts )
+  var onloadFuncts = [];
+
+function addOnloadHook( hookFunct )
+{
+  // Allows add-on scripts to add onload functions
+  onloadFuncts[onloadFuncts.length] = hookFunct;
+}
+
+function runOnloadHook()
+  {
     // don't run anything below this for non-dom browsers
-    if(!(document.getElementById && document.getElementsByTagName)) return;
+    if ( doneOnloadHook || !( document.getElementById && document.getElementsByTagName ) )
+      return;
+
     histrowinit();
     unhidetzbutton();
     tabbedprefs();
     akeytt();
-}
-if (window.addEventListener) window.addEventListener("load",onloadhook,false);
-else if (window.attachEvent) window.attachEvent("onload",onloadhook);
+    scrollEditBox();
 
+    // Run any added-on functions
+    for ( var i = 0; i < onloadFuncts.length; i++ )
+      onloadFuncts[i]();
+
+    doneOnloadHook = true;
+}
+
+function hookEvent( hookName, hookFunct )
+{
+  if ( window.addEventListener )
+    addEventListener( hookName, hookFunct, false );
+  else if ( window.attachEvent )
+    attachEvent( "on" + hookName, hookFunct );
+}
+
+hookEvent( "load", runOnloadHook );
 
 // document.write special stylesheet links
 if(typeof stylepath != 'undefined' && typeof skin != 'undefined') {
@@ -108,7 +137,7 @@ function diffcheck() {
 // XXX: needs testing on IE/Mac and safari
 // more comments to follow
 function tabbedprefs() {
-    prefform = document.getElementById('preferences');
+    var prefform = document.getElementById('preferences');
     if(!prefform || !document.createElement) return;
     if(prefform.nodeName.toLowerCase() == 'a') return; // Occasional IE problem
     prefform.className = prefform.className + 'jsprefs';
@@ -116,12 +145,13 @@ function tabbedprefs() {
     children = prefform.childNodes;
     var seci = 0;
     for(i=0;i<children.length;i++) {
-        if(children[i].nodeName.toLowerCase().indexOf('fieldset') != -1) {
+        if(children[i].nodeName.toLowerCase() == 'fieldset') {
             children[i].id = 'prefsection-' + seci;
             children[i].className = 'prefsection';
             if(is_opera || is_khtml) children[i].className = 'prefsection operaprefsection';
             legends = children[i].getElementsByTagName('legend');
             sections[seci] = new Object();
+            legends[0].className = 'mainLegend';
             if(legends[0] && legends[0].firstChild.nodeValue)
                 sections[seci].text = legends[0].firstChild.nodeValue;
             else
@@ -140,13 +170,13 @@ function tabbedprefs() {
         if(i == 0) li.className = 'selected';
         var a =  document.createElement('a');
         a.href = '#' + sections[i].secid;
-        a.onclick = uncoversection;
+        a.onmousedown = a.onclick = uncoversection;
         a.appendChild(document.createTextNode(sections[i].text));
         a.secid = sections[i].secid;
         li.appendChild(a);
         toc.appendChild(li);
     }
-    prefform.insertBefore(toc, children[0]);
+    prefform.parentNode.insertBefore(toc, prefform.parentNode.childNodes[0]);
     document.getElementById('prefsubmit').id = 'prefcontrol';
 }
 function uncoversection() {
@@ -200,7 +230,7 @@ function fetchTimezone() {
 }
 
 function guessTimezone(box) {
-	document.preferences.wpHourDiff.value = fetchTimezone();
+	document.getElementsByName("wpHourDiff")[0].value = fetchTimezone();
 }
 
 function showTocToggle() {
@@ -464,3 +494,20 @@ function considerChangingExpiryFocus() {
 	else
 		field.style.display = 'none';
 }
+
+function scrollEditBox() {
+
+  var editBoxEl = document.getElementById("wpTextbox1");
+  var scrollTopEl = document.getElementById("wpScrolltop");
+  var editFormEl = document.getElementById("editform");
+
+  if ( editBoxEl && scrollTopEl ) {
+
+    if (scrollTopEl.value) editBoxEl.scrollTop = scrollTopEl.value;
+    editFormEl.onsubmit = function() {
+      document.getElementById("wpScrolltop").value = document.getElementById("wpTextbox1").scrollTop;
+    }
+  }
+}
+
+hookEvent( "load", scrollEditBox );

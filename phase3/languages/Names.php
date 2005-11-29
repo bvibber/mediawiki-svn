@@ -29,6 +29,7 @@
 	'bo' => 'བོད་ཡིག',	# Tibetan
 	'br' => 'Brezhoneg',	# Breton
 	'bs' => 'Bosanski',		# Bosnian
+	'bug' => 'ᨅᨔ ᨕᨘᨁᨗ',	# Buginese
 	'ca' => 'Català',	# Catalan
 	'ce' => 'Нохчийн',	# Chechen
 	'ceb' => 'Cebuano',     # Cebuano
@@ -45,7 +46,7 @@
 	'da' => 'Dansk',		# Danish
 	'de' => 'Deutsch',		# German
 	'dk' => 'Dansk', 		# Unused code currently redirecting to Danish, 'da' is correct for the language
-	'dv' => 'ހިބަސް',		# Dhivehi
+	'dv' => 'ދިވެހިބަސް',		# Dhivehi
 	'dz' => 'ཇོང་ཁ',		# Bhutani
 	'ee' => 'Ɛʋɛ',	# Ewe
 	'el' => 'Ελληνικά',	# Greek
@@ -86,6 +87,7 @@
 	'ig' => 'Igbo',			# Igbo
 	'ii' => 'ꆇꉙ',	# Sichuan Yi
 	'ik' => 'Iñupiak',	# Inupiak
+	'ilo' => 'Ilokano',	# Ilokano
 	'io' => 'Ido',			# Ido
 	'is' => 'Íslenska',	# Icelandic
 	'it' => 'Italiano',		# Italian
@@ -109,9 +111,11 @@
 	'kw' => 'Kernewek',		# Cornish
 	'ky' => 'Kırgızca',	# Kirghiz
 	'la' => 'Latina',		# Latin
+	'lad' => 'Ladino',	# Ladino
 	'lb' => 'Lëtzebuergesch',	# Luxemburguish
 	'lg' => 'Luganda',		# Ganda
 	'li' => 'Limburgs',	# Limburgian
+	'lmo' => 'Lumbaart',	# Lombard
 	'ln' => 'Lingala',		# Lingala
 	'lo' => 'ລາວ',# Laotian
 	'lt' => 'Lietuvių',	# Lithuanian
@@ -126,11 +130,12 @@
 	'mo' => 'Молдовеняскэ',	# Moldovan
 	'mr' => 'मराठी',	# Marathi
 	'ms' => 'Bahasa Melayu',	# Malay
-	'mt' => 'bil-Malti',	# Maltese
+	'mt' => 'Malti',	# Maltese
 	'mus' => 'Muscogee',	# Creek, should possibly be Muskogee
 	'my' => 'Myanmasa',		# Burmese
 	'na' => 'Ekakairũ Naoero',		# Nauruan
 	'nah' => 'Nahuatl',		# Nahuatl, en:Wikipedia writes Nahuatlahtolli, while another form is Náhuatl
+	'nap' => 'Nnapulitano',	# Neapolitan
 	'nb' => 'Norsk (bokmål)',		# Norwegian (Bokmal)
 	'nds' => 'Plattdüütsch',	# Low German ''or'' Low Saxon
 	'ne' => 'नेपाली',	# Nepali
@@ -147,6 +152,7 @@
 	'os' => 'Иронау', # Ossetic
 	'pa' => 'ਪੰਜਾਬੀ', # Punjabi
 	'pam' => 'Pampangan',   # Pampanga
+	'pih' => 'Norfuk / Pitkern', # Norfuk/Pitcairn/Norfolk
 	'pi' => 'पािऴ',	# Pali
 	'pl' => 'Polski',		# Polish
 	'ps' => 'پښتو',	# Pashto
@@ -166,7 +172,7 @@
 	'sd' => 'सिनधि',	# Sindhi
 	'se' => 'Sámegiella',	# Northern Sami
 	'sg' => 'Sängö',		# Sango, possible alternative is Sangho
-	'sh' => 'Srpskohrvatski/Српскохрватски', # Serbocroatian
+	'sh' => 'Srpskohrvatski / Српскохрватски', # Serbocroatian
 	'si' => 'සිංහල',	# Sinhalese
 	'simple' => 'Simple English',	# Simple English
 	'sk' => 'Slovenčina',	# Slovak
@@ -200,14 +206,17 @@
 	'tum' => 'chiTumbuka',  # Tumbuka
 	'tw' => 'Twi',			# Twi, (FIXME!)
 	'ty' => 'Reo Mā`ohi',	# Tahitian
+	'udm' => 'Удмурт',	# Udmurt
 	'ug' => 'Oyghurque',	# Uyghur
 	'uk' => 'Українська',	# Ukrainian
 	'ur' => 'اردو',	# Urdu
 	'uz' => 'Ўзбек',	# Uzbek
 	've' => 'Tshivenda',		# Venda
+	'vec' => 'Vèneto',	# Venetian
 	'vi' => 'Tiếng Việt',	# Vietnamese
 	'vo' => 'Volapük',	# Volapük
 	'wa' => 'Walon',		# Walloon
+	'war' => 'Samar-Leyte Visayan', # Waray-Waray
 	'wo' => 'Wollof',		# Wolof
 	'xh' => 'isiXhosa',		# Xhosan
 	'yi' => 'ייִדיש',	# Yiddish

@@ -648,6 +648,7 @@ Pozri [[m:Help:Preferences|Nastavenia]] na vysvetlenie volieb.",
 'skin' => 'Vzhľad',
 'math' => 'Matematika',
 'dateformat' => 'Formát dátumu',
+'datedefault' => 'Default',
 'math_failure' => 'Syntaktická analýza (parsing) neúspešná',
 'math_unknown_error' => 'neznáma chyba',
 'math_unknown_function' => 'neznáma funkcia ',
@@ -832,7 +833,6 @@ Všetky uvedené časy sú časy na servri (UTC).
 'copyrightpage' => "Project:Autorské práva",
 'copyrightpagename' => "{{SITENAME}} copyright",
 'uploadedfiles' => 'Nahrané súbory',
-'ignorewarning' => 'Ignorovať varovanie a súbor napriek tomu uložiť.',
 'minlength' => 'Názvy obrázkov musia obsahovať najmenej tri písmená.',
 'illegalfilename' => 'Názov súboru "$1" obsahuje znaky, ktoré nie sú povolené v názvoch článkov. Prosím premenujte súbor a skúste ho nahrať znovu.',
 'badfilename' => 'Meno obrázka bolo zmenené na "$1".',
@@ -1168,7 +1168,7 @@ nebude automaticky nahradená.',
 'undeletebtn' => 'Obnov!',
 'undeletedarticle' => "obnovený \"[[$1]]\"",
 'undeletedrevisions' => "$1 verzií obnovených",
-'undeletedtext' => "Článok [[$1]] bol úspešne obnovený.
+'undeletedtext' => "Článok [[:$1|$1]] bol úspešne obnovený.
 Pozri [[Special:Log/delete]] - zoznam posledných zmazaní a obnovení.",
 
 # Namespace form on various pages

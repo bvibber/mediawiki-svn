@@ -380,7 +380,6 @@ Te rugăm să vizitezi această legătură: ($2) pentru a descrie fişierul şi 
 'history_short' => "Istoric",
 'historywarning' => "Atenţie! Pagina pe care o ştergi are istorie: ",
 'hr_tip' => "Linie orizontală (foloseşte-o cumpătat)",
-'ignorewarning' => "Ignoră atenţionarea şi salvează.",
 #'illegalfilename' => "Numele fişierului \"$1\" conţine caractere care nu sunt permise în titlurile paginilor. Redenumeşte fişierul şi încearcă să-l trimiţi din nou.",
 'ilsubmit' => "Caută",
 'image_sample' => "Exemplu.jpg",
@@ -895,7 +894,7 @@ drepturile de scriere pentru o adresă IP blocată anterior..",
 'undeletearticle' => "Recuperează articol şters",
 'undeletebtn' => "Recuperează!",
 'undeletedarticle' => "\"$1\" a fost recuperat",
-'undeletedtext' => "Articolul [[$1]] a fost recuperat.
+'undeletedtext' => "Articolul [[:$1|$1]] a fost recuperat.
 Vezi [[Project:Raport_ştergeri]] pentru o listă a ştergerilor şi recuperărilor recente.",
 'undeletehistory' => "Dacă recuperezi pagina, toate versiunile asociate
 vor fi adăugate retroactiv în istorie. Dacă o pagină nouă cu acelaşi nume

@@ -19,6 +19,12 @@ define( 'DB_LAST', -3 );     # Whatever database was used last
 define( 'DB_READ', -1 );
 define( 'DB_WRITE', -2 );
 
+
+# Scale polling time so that under overload conditions, the database server
+# receives a SHOW STATUS query at an average interval of this many microseconds
+define( 'AVG_STATUS_POLL', 2000 );
+
+
 /**
  * Database load balancing object
  *
@@ -30,7 +36,7 @@ class LoadBalancer {
 	/* private */ var $mFailFunction, $mErrorConnection;
 	/* private */ var $mForce, $mReadIndex, $mLastIndex;
 	/* private */ var $mWaitForFile, $mWaitForPos, $mWaitTimeout;
-	/* private */ var $mLaggedSlaveMode;
+	/* private */ var $mLaggedSlaveMode, $mLastError = 'Unknown error';
 
 	function LoadBalancer()
 	{
@@ -198,7 +204,7 @@ class LoadBalancer {
 							  $status['Threads_running'] > $this->mServers[$i]['max threads'] )
 							{
 								# Slave is lagged, wait for a while
-								$sleepTime = 5000 * $status['Threads_connected'];
+								$sleepTime = AVG_STATUS_POLL * $status['Threads_connected'];
 
 								# If we reach the timeout and exit the loop, don't use it
 								$i = false;
@@ -219,6 +225,11 @@ class LoadBalancer {
 					}
 				} while ( count( $loads ) && !$done && $totalElapsed / 1e6 < $wgDBClusterTimeout );
 
+				if ( $totalElapsed / 1e6 >= $wgDBClusterTimeout ) {
+					$this->mErrorConnection = false;
+					$this->mLastError = 'All servers busy';
+				}
+				
 				if ( $i !== false && $this->isOpen( $i ) ) {
 					# Wait for the session master pos for a short time
 					if ( $this->mWaitForFile ) {
@@ -427,7 +438,9 @@ class LoadBalancer {
 		}
 
 		# Create object
-		return new $class( $host, $user, $password, $dbname, 1, $flags );
+		$db = new $class( $host, $user, $password, $dbname, 1, $flags );
+		$db->setLBInfo( $server );
+		return $db;
 	}
 
 	function reportConnectionError( &$conn )
@@ -440,14 +453,23 @@ class LoadBalancer {
 		if ( !$reporting ) {
 			$reporting = true;
 			if ( !is_object( $conn ) ) {
+				// No last connection, probably due to all servers being too busy
 				$conn = new Database;
-			}
-			if ( $this->mFailFunction ) {
-				$conn->failFunction( $this->mFailFunction );
+				if ( $this->mFailFunction ) {
+					$conn->failFunction( $this->mFailFunction );
+					$conn->reportConnectionError( $this->mLastError );
+				} else {
+					// If all servers were busy, mLastError will contain something sensible
+					wfEmergencyAbort( $conn, $this->mLastError );
+				}
 			} else {
-				$conn->failFunction( false );
+				if ( $this->mFailFunction ) {
+					$conn->failFunction( $this->mFailFunction );
+				} else {
+					$conn->failFunction( false );
+				}
+				$conn->reportConnectionError( "{$this->mLastError} ({$conn->mServer})" );
 			}
-			$conn->reportConnectionError();
 			$reporting = false;
 		}
 		wfProfileOut( $fname );
@@ -573,11 +595,13 @@ class LoadBalancer {
 	 * Results are cached for a short time in memcached
 	 */
 	function getLagTimes() {
+		global $wgDBname;
+		
 		$expiry = 5;
 		$requestRate = 10;
 
 		global $wgMemc;
-		$times = $wgMemc->get( 'lag_times' );
+		$times = $wgMemc->get( "$wgDBname:lag_times" );
 		if ( $times ) {
 			# Randomly recache with probability rising over $expiry
 			$elapsed = time() - $times['timestamp'];
@@ -599,7 +623,7 @@ class LoadBalancer {
 
 		# Add a timestamp key so we know when it was cached
 		$times['timestamp'] = time();
-		$wgMemc->set( 'lag_times', $times, $expiry );
+		$wgMemc->set( "$wgDBname:lag_times", $times, $expiry );
 
 		# But don't give the timestamp to the caller
 		unset($times['timestamp']);

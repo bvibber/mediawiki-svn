@@ -457,7 +457,6 @@ Alle tye is bedienertyd (UGT).
 "copyrightpage" => "{{ns:4}}:kopiereg",
 "copyrightpagename" => "{{ns:4}} kopiereg",
 "uploadedfiles"	=> "Gelaaide lêers",
-"ignorewarning"	=> "Ignoreer waarskuwing en stoor lêer.",
 "minlength"		=> "Prentname moet ten minste drie letters lank wees.",
 "badfilename"	=> "Prentnaam is verander na \"$1\".",
 "badfiletype"	=> "\".$1\" is nie 'n aanbevole lêerformaat vir prente nie.",
@@ -633,7 +632,7 @@ As 'n nuwe bladsy met dieselfde naam sedert die skrapping geskep is, sal die her
 "undeleterevision" => "Geskrape weergawes vanaf $1",
 "undeletebtn" => "Herstel!",
 "undeletedarticle" => "het \"$1\" herstel",
-"undeletedtext"   => "Die bladsy [[$1]] is sukselsvol herstel.
+"undeletedtext"   => "Die bladsy [[:$1|$1]] is sukselsvol herstel.
 Kyk na [[{{ns:4}}:Deletion_log]] vir 'n rekord van onlangse skrappings en herstellings.",
 
 # Contributions

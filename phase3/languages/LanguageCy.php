@@ -559,7 +559,6 @@ Pob amser sy'n dangos yw amser y gwasanaethwr (UTC).
 "copyrightpage" => "{{ns:project}}:Hawlfraint",
 "copyrightpagename" => "Hawlfraint {{SITENAME}}",
 "uploadedfiles"	=> "Ffeiliau wedi llwytho i fynu",
-"ignorewarning"	=> "Anwybyddwch y rhybudd, a chadwch y tudalen beth bynnag.",
 "minlength" => "Rhaid enwau lluniau bod o leia tri llythrennau.",
 "badfilename" => "Mae enw'r llun wedi newid i \"$1\".",
 "badfiletype" => "Nid yw \".$1\" yn fformat ffeil lluniau cymeradwy.",
@@ -750,7 +749,7 @@ Gwelwch [[{{ns:project}}:Tudalen amddiffynol]] am mwy o wybodaeth.",
 "undeletebtn" => "Adferiwch!",
 "undeletedarticle" => "wedi adferio \"$1\"",
 
-"undeletedtext" => "Mae'r erthygl [[$1]] wedi cael eu adferio'n llwyddiannus.
+"undeletedtext" => "Mae'r erthygl [[:$1|$1]] wedi cael eu adferio'n llwyddiannus.
 Gwyliwch [[Wicipedia:Log_dileuon]] am record dileuon ac adferion diweddar.",
 
 # Contributions

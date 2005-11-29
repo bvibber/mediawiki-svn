@@ -30,7 +30,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 /**#@+
  * Exif tag type definition
  */
-define('MW_EXIF_BYTE', 1);		# An 8-bit unsigned integer.
+define('MW_EXIF_BYTE', 1);		# An 8-bit (1-byte) unsigned integer.
 define('MW_EXIF_ASCII', 2);		# An 8-bit byte containing one 7-bit ASCII code. The final byte is terminated with NULL.
 define('MW_EXIF_SHORT', 3);		# A 16-bit (2-byte) unsigned integer.
 define('MW_EXIF_LONG', 4);		# A 32-bit (4-byte) unsigned integer.
@@ -81,6 +81,36 @@ class Exif {
 	var $mFormattedExifData;
 	
 	/**#@-*/
+	
+	/**#@+
+	 * @var string
+	 * @access private
+	 */
+	
+	/**
+	 * The file being processed
+	 */
+	var $file;
+
+	/**
+	 * The basename of the file being processed
+	 */
+	var $basename;
+	
+	/**
+	 * The private log to log to
+	 */
+	var $log = 'exif';
+	
+	/**#@-*/
+
+	/**
+	 * The private log to log to
+	 *
+	 * @var string
+	 * @access private
+	 */
+	var $log = 'exif';
 
 	/**
 	 * Constructor
@@ -273,12 +303,24 @@ class Exif {
 			),
 		);
 
+		$this->file = $file;
+		$this->basename = basename( $this->file );
 		$this->makeFlatExifTags();
+		$this->debugFile( $this->basename, __FUNCTION__, true );
 		wfSuppressWarnings();
-		$this->mRawExifData = exif_read_data( $file );
+		$data = exif_read_data( $this->file );
 		wfRestoreWarnings();
+		/**
+		 * exif_read_data() will return false on invalid input, such as
+		 * when somebody uploads a file called something.jpeg
+		 * containing random gibberish.
+		 */
+		$this->mRawExifData = $data ? $data : array();
+		
 		$this->makeFilteredData();
 		$this->makeFormattedData();
+		
+		$this->debugFile( __FUNCTION__, false );
 	}
 	
 	/**#@+
@@ -528,13 +570,30 @@ class Exif {
 			$in = print_r( $in, true ); 
 	 
 		if ( $action === true )
-			wfDebug( "$class::$fname: accepted: '$in' (type: $type)\n");
+			wfDebugLog( $this->log, "$class::$fname: accepted: '$in' (type: $type)\n");
 		elseif ( $action === false ) 
-			wfDebug( "$class::$fname: rejected: '$in' (type: $type)\n");
+			wfDebugLog( $this->log, "$class::$fname: rejected: '$in' (type: $type)\n");
 		elseif ( $action === null )
-			wfDebug( "$class::$fname: input was: '$in' (type: $type)\n");
+			wfDebugLog( $this->log, "$class::$fname: input was: '$in' (type: $type)\n");
 		else
-			wfDebug( "$class::$fname: $action (type: $type; content: '$in')\n");
+			wfDebugLog( $this->log, "$class::$fname: $action (type: $type; content: '$in')\n");
+	}
+
+	/**
+	 * Conviniance function for debugging output
+	 *
+	 * @access private
+	 *
+	 * @param string $basename The name of the file being processed
+	 * @paran string $fname The name of the function calling this function
+	 * @param bool $bool $io Specify whether we're beginning or ending
+	 */
+	function debugFile( $fname, $io ) {
+		$class = ucfirst( __CLASS__ );
+		if ( $io )
+			wfDebugLog( $this->log, "$class::$fname: begin processing: '{$this->basename}'\n" );
+		else
+			wfDebugLog( $this->log, "$class::$fname: end processing: '{$this->basename}'\n" );
 	}
 
 }
@@ -961,9 +1020,11 @@ class FormatExif {
 	 * @return string A wfMsg of "exif-$tag-$val" in lower case
 	 */
 	function msg( $tag, $val, $arg = null ) {
+		global $wgContLang;
+		
 		if ($val === '')
 			$val = 'value';
-		return wfMsg( strtolower( "exif-$tag-$val" ), $arg );
+		return wfMsg( $wgContLang->lc( "exif-$tag-$val" ), $arg );
 	}
 
 	/**

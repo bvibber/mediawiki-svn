@@ -61,7 +61,11 @@ class Image
 	 */
 	function newFromName( $name ) {
 		$title = Title::makeTitleSafe( NS_IMAGE, $name );
-		return new Image( $title );
+		if ( is_object( $title ) ) {
+			return new Image( $title );
+		} else {
+			return NULL;
+		}
 	}
 
 	/** 
@@ -207,7 +211,7 @@ class Image
 	 * Load metadata from the file itself
 	 */
 	function loadFromFile() {
-		global $wgUseSharedUploads, $wgSharedUploadDirectory, $wgLang,
+		global $wgUseSharedUploads, $wgSharedUploadDirectory, $wgContLang,
 		       $wgShowEXIF;
 		$fname = 'Image::loadFromFile';
 		wfProfileIn( $fname );
@@ -223,8 +227,8 @@ class Image
 			# In case we're on a wgCapitalLinks=false wiki, we 
 			# capitalize the first letter of the filename before 
 			# looking it up in the shared repository.
-			$sharedImage = Image::newFromName( $wgLang->ucfirst($this->name) );
-			$this->fileExists = file_exists( $sharedImage->getFullPath(true) );
+			$sharedImage = Image::newFromName( $wgContLang->ucfirst($this->name) );
+			$this->fileExists = $sharedImage && file_exists( $sharedImage->getFullPath(true) );
 			if ( $this->fileExists ) {
 				$this->name = $sharedImage->name;
 				$this->imagePath = $this->getFullPath(true);
@@ -300,7 +304,7 @@ class Image
 	 * Load image metadata from the DB
 	 */
 	function loadFromDB() {
-		global $wgUseSharedUploads, $wgSharedUploadDBname, $wgSharedUploadDBprefix, $wgLang;
+		global $wgUseSharedUploads, $wgSharedUploadDBname, $wgSharedUploadDBprefix, $wgContLang;
 		$fname = 'Image::loadFromDB';
 		wfProfileIn( $fname );
 		
@@ -325,7 +329,7 @@ class Image
 			# In case we're on a wgCapitalLinks=false wiki, we 
 			# capitalize the first letter of the filename before 
 			# looking it up in the shared repository.
-			$name = $wgLang->ucfirst($this->name);
+			$name = $wgContLang->ucfirst($this->name);
 
 			$row = $dbr->selectRow( "`$wgSharedUploadDBname`.{$wgSharedUploadDBprefix}image",
 				array( 
@@ -585,7 +589,10 @@ class Image
 			global $wgSVGConverters, $wgSVGConverter;
 			
 			if ($wgSVGConverter && isset( $wgSVGConverters[$wgSVGConverter])) {
+				wfDebug( "Image::canRender: SVG is ready!\n" );
 				return true;
+			} else {
+				wfDebug( "Image::canRender: SVG renderer missing\n" );
 			}
 		}
 		
@@ -660,7 +667,7 @@ class Image
 	 * This is used to show a warning on the description page of non-safe files.
 	 * It may also be used to disallow direct [[media:...]] links to such files.
 	 *
-	 * Note that this function will always return ture if allowInlineDisplay() 
+	 * Note that this function will always return true if allowInlineDisplay() 
 	 * or isTrustedFile() is true for this file.
 	 */
 	function isSafeFile() {
@@ -682,14 +689,14 @@ class Image
 		return false;
 	}
 	
-	/** Returns true if the file is flagegd as trusted. Files flagged that way
+	/** Returns true if the file is flagged as trusted. Files flagged that way
 	* can be linked to directly, even if that is not allowed for this type of
 	* file normally.
 	*
 	* This is a dummy function right now and always returns false. It could be
 	* implemented to extract a flag from the database. The trusted flag could be
 	* set on upload, if the user has sufficient privileges, to bypass script-
-	* and html-filters. It may even be coupeled with cryptographics signatures
+	* and html-filters. It may even be coupled with cryptographics signatures
 	* or such.
 	*/
 	function isTrustedFile() {
@@ -753,9 +760,8 @@ class Image
 	 * @access private
 	 */
 	function thumbUrl( $width, $subdir='thumb') {
-		global $wgUploadPath, $wgUploadBaseUrl,
-		       $wgSharedUploadPath,$wgSharedUploadDirectory,
-			   $wgSharedThumbnailScriptPath, $wgThumbnailScriptPath;
+		global $wgUploadPath, $wgUploadBaseUrl, $wgSharedUploadPath;
+		global $wgSharedThumbnailScriptPath, $wgThumbnailScriptPath;
 
 		// Generate thumb.php URL if possible
 		$script = false;
@@ -913,6 +919,7 @@ class Image
 	function renderThumb( $width, $useScript = true ) {
 		global $wgUseSquid, $wgInternalServer;
 		global $wgThumbnailScriptPath, $wgSharedThumbnailScriptPath;
+		global $wgSVGMaxSize, $wgMaxImageArea;
 
 		$fname = 'Image::renderThumb';
 		wfProfileIn( $fname );
@@ -934,7 +941,17 @@ class Image
 			return null;
 		}
 
-		global $wgSVGMaxSize;
+		# Don't thumbnail an image so big that it will fill hard drives and send servers into swap
+		# JPEG has the handy property of allowing thumbnailing without full decompression, so we make
+		# an exception for it.
+		if ( $this->getMediaType() == MEDIATYPE_BITMAP && 
+			$this->getMimeType() !== 'image/jpeg' &&
+			$this->width * $this->height > $wgMaxImageArea ) 
+		{
+			wfProfileOut( $fname );
+			return null;
+		}
+
 		$maxsize = $this->mustRender()
 			? max( $this->width, $wgSVGMaxSize )
 			: $this->width - 1;
@@ -1018,8 +1035,10 @@ class Image
 						   wfEscapeShellArg( $this->imagePath ),
 						   wfEscapeShellArg( $thumbPath ) ),
 					$wgSVGConverters[$wgSVGConverter] );
+				wfProfileIn( 'rsvg' );
 				wfDebug( "reallyRenderThumb SVG: $cmd\n" );
-				$conv = shell_exec( $cmd );
+				$conv = wfShellExec( $cmd );
+				wfProfileOut( 'rsvg' );
 			} else {
 				$conv = false;
 			}
@@ -1032,7 +1051,9 @@ class Image
 				wfEscapeShellArg($this->imagePath) . " -resize {$width}x{$height} " .
 				wfEscapeShellArg($thumbPath);				
 			wfDebug("reallyRenderThumb: running ImageMagick: $cmd\n");
-			$conv = shell_exec( $cmd );
+			wfProfileIn( 'convert' );
+			$conv = wfShellExec( $cmd );
+			wfProfileOut( 'convert' );
 		} else {
 			# Use PHP's builtin GD library functions.
 			#
@@ -1189,7 +1210,15 @@ class Image
 		
 		if ( $this->historyLine == 0 ) {// called for the first time, return line from cur 
 			$this->historyRes = $dbr->select( 'image', 
-				array( 'img_size','img_description','img_user','img_user_text','img_timestamp', "'' AS oi_archive_name" ), 
+				array(
+					'img_size',
+					'img_description',
+					'img_user','img_user_text',
+					'img_timestamp', 
+					'img_width',
+					'img_height',
+					"'' AS oi_archive_name"
+				), 
 				array( 'img_name' => $this->title->getDBkey() ),
 				$fname
 			);
@@ -1198,9 +1227,19 @@ class Image
 			}
 		} else if ( $this->historyLine == 1 ) {
 			$this->historyRes = $dbr->select( 'oldimage', 
-				array( 'oi_size AS img_size', 'oi_description AS img_description', 'oi_user AS img_user',
-					'oi_user_text AS img_user_text', 'oi_timestamp AS img_timestamp', 'oi_archive_name'
-				), array( 'oi_name' => $this->title->getDBkey() ), $fname, array( 'ORDER BY' => 'oi_timestamp DESC' ) 
+				array(
+					'oi_size AS img_size',
+					'oi_description AS img_description',
+					'oi_user AS img_user',
+					'oi_user_text AS img_user_text',
+					'oi_timestamp AS img_timestamp',
+					'oi_width as img_width',
+					'oi_height as img_height',
+					'oi_archive_name'
+				),
+				array( 'oi_name' => $this->title->getDBkey() ),
+				$fname,
+				array( 'ORDER BY' => 'oi_timestamp DESC' ) 
 			);
 		}
 		$this->historyLine ++;
@@ -1259,7 +1298,7 @@ class Image
 	/**
 	 * Record an image upload in the upload log and the image table
 	 */
-	function recordUpload( $oldver, $desc, $license = '', $copyStatus = '', $source = '' ) {
+	function recordUpload( $oldver, $desc, $license = '', $copyStatus = '', $source = '', $watch = false ) {
 		global $wgUser, $wgLang, $wgTitle, $wgDeferredUpdateList;
 		global $wgUseCopyrightUpload, $wgUseSquid, $wgPostCommitUpdateList;
 
@@ -1279,17 +1318,17 @@ class Image
 
 		if ( $wgUseCopyrightUpload ) {
 			if ( $license != '' ) {
-				$licensetxt = '== ' . wfMsg( 'license' ) . " ==\n" . '{{' . $license . '}}' . "\n";
+				$licensetxt = '== ' . wfMsgForContent( 'license' ) . " ==\n" . '{{' . $license . '}}' . "\n";
 			}
 			$textdesc = '== ' . wfMsg ( 'filedesc' ) . " ==\n" . $desc . "\n" .
-			  '== ' . wfMsg ( 'filestatus' ) . " ==\n" . $copyStatus . "\n" .
+			  '== ' . wfMsgForContent ( 'filestatus' ) . " ==\n" . $copyStatus . "\n" .
 			  "$licensetxt" .
-			  '== ' . wfMsg ( 'filesource' ) . " ==\n" . $source ;
+			  '== ' . wfMsgForContent ( 'filesource' ) . " ==\n" . $source ;
 		} else {
 			if ( $license != '' ) {
 				$filedesc = $desc == '' ? '' : '== ' . wfMsg ( 'filedesc' ) . " ==\n" . $desc . "\n";
 				 $textdesc = $filedesc . 
-					 '== ' . wfMsg ( 'license' ) . " ==\n" . '{{' . $license . '}}' . "\n";	
+					 '== ' . wfMsgForContent ( 'license' ) . " ==\n" . '{{' . $license . '}}' . "\n";	
 			} else {
 				$textdesc = $desc;
 			}
@@ -1324,20 +1363,14 @@ class Image
 				'img_user' => $wgUser->getID(),
 				'img_user_text' => $wgUser->getName(),
 				'img_metadata' => $this->metadata,
-			), $fname, 'IGNORE' 
+			),
+			$fname,
+			'IGNORE' 
 		);
 		$descTitle = $this->getTitle();
 		$purgeURLs = array();
 
-		if ( $dbw->affectedRows() ) {
-			# Successfully inserted, this is a new image
-			$id = $descTitle->getArticleID();
-
-			if ( $id == 0 ) {
-				$article = new Article( $descTitle );
-				$article->insertNewArticle( $textdesc, $desc, false, false, true );
-			}
-		} else {
+		if( $dbw->affectedRows() == 0 ) {
 			# Collision, this is an update of an image
 			# Insert previous contents into oldimage
 			$dbw->insertSelect( 'oldimage', 'image', 
@@ -1374,12 +1407,27 @@ class Image
 					'img_name' => $this->name
 				), $fname
 			);
+		}
+
+		$article = new Article( $descTitle );
+		$minor = false;
+		$watch = $watch || $wgUser->isWatched( $descTitle );
+		$suppressRC = true; // There's already a log entry, so don't double the RC load
+		
+		if( $descTitle->exists() ) {
+			// TODO: insert a null revision into the page history for this update.
+			if( $watch ) {
+				$wgUser->addWatch( $descTitle );
+			}
 			
 			# Invalidate the cache for the description page
 			$descTitle->invalidateCache();
 			$purgeURLs[] = $descTitle->getInternalURL();
+		} else {
+			// New image; create the description page.
+			$article->insertNewArticle( $textdesc, $desc, $minor, $watch, $suppressRC );
 		}
-
+		
 		# Invalidate cache for all pages using this image
 		$linksTo = $this->getLinksTo();
 		
@@ -1438,20 +1486,21 @@ class Image
 	 *
 	 * @return array
 	 */
-	function retrieveExifData () {
-		if ( $this->getMimeType() !== "image/jpeg" ) return array ();
+	function retrieveExifData() {
+		if ( $this->getMimeType() !== "image/jpeg" ) 
+			return array();
 
 		$exif = new Exif( $this->imagePath );
 		return $exif->getFilteredData();
 	}
 		
-	function getExifData () {
+	function getExifData() {
 		global $wgRequest;
 		if ( $this->metadata === '0' )
 			return array();
 		
 		$purge = $wgRequest->getVal( 'action' ) == 'purge';
-		$ret = unserialize ( $this->metadata );
+		$ret = unserialize( $this->metadata );
 
 		$oldver = isset( $ret['MEDIAWIKI_EXIF_VERSION'] ) ? $ret['MEDIAWIKI_EXIF_VERSION'] : 0;
 		$newver = Exif::version();
@@ -1463,6 +1512,7 @@ class Image
 		if ( isset( $ret['MEDIAWIKI_EXIF_VERSION'] ) )
 			unset( $ret['MEDIAWIKI_EXIF_VERSION'] );
 		$format = new FormatExif( $ret );
+		
 		return $format->getFormattedData();
 	}
 
@@ -1621,9 +1671,6 @@ function wfImageArchiveDir( $fname , $subdir='archive', $shared=false ) {
  *   use different hash settings from the local one.
  */
 function wfGetHashPath ( $dbkey, $fromSharedDirectory = false ) {
-	global $wgHashedSharedUploadDirectory, $wgSharedUploadDirectory;
-	global $wgHashedUploadDirectory;
-	
 	if( Image::isHashed( $fromSharedDirectory ) ) {
 		$hash = md5($dbkey);
 		return '/' . $hash{0} . '/' . substr( $hash, 0, 2 ) . '/';
@@ -1670,7 +1717,7 @@ function wfScaleSVGUnit( $length ) {
 		''   => 1.0, // "User units" pixels by default
 		'%'  => 2.0, // Fake it!
 		);
-	if( preg_match( '/^(\d+)(em|ex|px|pt|pc|cm|mm|in|%|)$/', $length, $matches ) ) {
+	if( preg_match( '/^(\d+(?:\.\d+)?)(em|ex|px|pt|pc|cm|mm|in|%|)$/', $length, $matches ) ) {
 		$length = floatval( $matches[1] );
 		$unit = $matches[2];
 		return round( $length * $unitLength[$unit] );

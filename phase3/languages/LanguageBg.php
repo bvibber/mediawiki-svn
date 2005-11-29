@@ -79,8 +79,8 @@ $wgValidationTypesBg = array (
 	MAG_PAGENAME             => array( 1, 'PAGENAME', 'СТРАНИЦА'              ),
 	MAG_PAGENAMEE            => array( 1, 'PAGENAMEE', 'СТРАНИЦАИ'            ),
 	MAG_NAMESPACE            => array( 1, 'NAMESPACE', 'ИМЕННОПРОСТРАНСТВО'   ),
-	MAG_SUBST                => array( 0, 'SUBST:', 'ЗАМЕСТ:', 'З'            ),
-	MAG_MSGNW                => array( 0, 'MSGNW:', 'СЪОБЩNW:', 'Н'           ),
+	MAG_SUBST                => array( 0, 'SUBST:', 'ЗАМЕСТ:'            ),
+	MAG_MSGNW                => array( 0, 'MSGNW:', 'СЪОБЩNW:'           ),
 	MAG_END                  => array( 0, '__END__', '__КРАЙ__'            ),
 	MAG_IMG_THUMBNAIL        => array( 1, 'thumbnail', 'thumb', 'мини'     ),
 	MAG_IMG_MANUALTHUMB      => array( 1, 'thumbnail=$1', 'thumb=$1', 'мини=$1'),
@@ -833,7 +833,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'copyrightpage' => 'Project:Авторски права',
 'copyrightpagename' => 'авторските права в {{SITENAME}}',
 'uploadedfiles'  => 'Качени файлове',
-'ignorewarning'  => 'Съхраняване на файла въпреки предупрежденията.',
 'minlength'   => 'Имената на файловете трябва да съдържат поне три знака.',
 'illegalfilename' => 'Името на файла „$1“ съдържа знаци, които не са позволени в заглавия на страници. Моля, преименувайте файла и се опитайте да го качите отново.',
 'badfilename' => 'Файлът беше преименуван на „$1“.',
@@ -1146,7 +1145,7 @@ Feedback and further assistance:
 'undeletebtn' => 'Възстановяване!',
 'undeletedarticle' => '„[[$1]]“ беше възстановена',
 'undeletedrevisions' => '$1 версии бяха възстановени',
-'undeletedtext'   => 'Страницата [[$1]] беше успешно възстановена.
+'undeletedtext'   => 'Страницата [[:$1|$1]] беше успешно възстановена.
 Вижте [[Special:Log/delete|дневника на изтриванията]] за запис на последните изтривания и възстановявания.',
 
 # Namespace form on various pages
@@ -2000,9 +1999,27 @@ class LanguageBg extends LanguageUtf8 {
 		return $wgMagicWordsBg;
 	}
 	
-	
+
+	/**
+	 * Translation table for numbers
+	 * @var array
+	 */
+	var $digitTransTable = array(
+		',' => "\xC2\xA0", // @bug 2749
+		'.' => ','
+	);
+
+	/**
+	 * ISO number formatting: 123 456 789,99.
+	 * Avoid tripple grouping by numbers with whole part up to 4 digits.
+	 * @param string $number
+	 * @return string
+	 */
 	function formatNum( $number ) {
-		return str_replace(array('.', ','), array(',', '&nbsp;'), $number);
+		if ( preg_match('/^\d{5}/', $number) ) {
+			$number = $this->commafy($number);
+		}
+		return strtr($number, $this->digitTransTable);
 	}
 }
 ?>

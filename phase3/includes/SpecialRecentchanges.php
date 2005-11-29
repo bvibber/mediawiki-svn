@@ -138,7 +138,7 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	$uid = $wgUser->getID();
 
 	// Perform query
-	$sql2 = "SELECT * FROM $recentchanges " .
+	$sql2 = "SELECT * FROM $recentchanges FORCE INDEX (rc_timestamp) " .
 	  ($uid ? "LEFT OUTER JOIN $watchlist ON wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace " : "") .
 	  "WHERE rc_timestamp > '{$cutoff}' {$hidem} " .
 	  "ORDER BY rc_timestamp DESC";
@@ -150,25 +150,27 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	$batch = new LinkBatch;
 	while( $row = $dbr->fetchObject( $res ) ){
 		$rows[] = $row;
-		// User page link
-		$title = Title::makeTitleSafe( NS_USER, $row->rc_user_text );
-		$batch->addObj( $title );
+		if ( !$feedFormat ) {
+			// User page link
+			$title = Title::makeTitleSafe( NS_USER, $row->rc_user_text );
+			$batch->addObj( $title );
 
-		// User talk
-		$title = Title::makeTitleSafe( NS_USER_TALK, $row->rc_user_text );
-		$batch->addObj( $title );
+			// User talk
+			$title = Title::makeTitleSafe( NS_USER_TALK, $row->rc_user_text );
+			$batch->addObj( $title );
+		}
 
 	}
 	$dbr->freeResult( $res );
-
-	// Run existence checks
-	$batch->execute( $wgLinkCache );
 
 	if( $feedFormat ) {
 		rcOutputFeed( $rows, $feedFormat, $limit, $hideminor, $lastmod );
 	} else {
 
 		# Web output...
+
+		// Run existence checks
+		$batch->execute( $wgLinkCache );
 
 		// Output header
 		if ( !$specialPage->including() ) {
@@ -196,11 +198,7 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 		$sk = $wgUser->getSkin();
 		$wgOut->setSyndicated( true );
 
-		if ( $wgUser->getOption('usenewrc') ) {
-			$list =& new EnhancedChangesList( $sk );
-		} else {
-			$list =& new OldChangesList( $sk );
-		}
+		$list = ChangesList::newFromUser( $wgUser );
 
 		$s = $list->beginRecentChangesList();
 		$counter = 1;
@@ -264,7 +262,7 @@ function rcOutputFeed( $rows, $feedFormat, $limit, $hideminor, $lastmod ) {
 	 * gets it quick too.
 	 */
 	$cachedFeed = false;
-	if( $feedLastmod = $messageMemc->get( $timekey ) ) {
+	if( ( $wgFeedCacheTimeout > 0 ) && ( $feedLastmod = $messageMemc->get( $timekey ) ) ) {
 		/**
 		 * If the cached feed was rendered very recently, we may
 		 * go ahead and use it even if there have been edits made
@@ -490,46 +488,24 @@ function rcNamespaceForm ( $namespace, $invert, $nondefaults ) {
  * Format a diff for the newsfeed
  */
 function rcFormatDiff( $row ) {
+	global $wgFeedDiffCutoff, $wgContLang;
 	$fname = 'rcFormatDiff';
 	wfProfileIn( $fname );
 
 	require_once( 'DifferenceEngine.php' );
-	$comment = '<p>' . htmlspecialchars( $row->rc_comment ) . "</p>\n";
+	$completeText = '<p>' . htmlspecialchars( $row->rc_comment ) . "</p>\n";
 
 	if( $row->rc_namespace >= 0 ) {
-		global $wgContLang;
-
-		#$diff =& new DifferenceEngine( $row->rc_this_oldid, $row->rc_last_oldid, $row->rc_id );
-		#$diff->showDiffPage();
-
-		$titleObj = Title::makeTitle( $row->rc_namespace, $row->rc_title );
-		$dbr =& wfGetDB( DB_SLAVE );
-		$newrev = Revision::newFromTitle( $titleObj, $row->rc_this_oldid );
-		if( $newrev ) {
-			$newtext = $newrev->getText();
-		} else {
-			$diffText = "<p>Can't load revision $row->rc_this_oldid</p>";
-			wfProfileOut( $fname );
-			return $comment . $diffText;
-		}
-
 		if( $row->rc_last_oldid ) {
 			wfProfileIn( "$fname-dodiff" );
-			$oldrev =& Revision::newFromId( $row->rc_last_oldid );
-			if( !$oldrev ) {
-				$diffText = "<p>Can't load old revision $row->rc_last_oldid</p>";
-				wfProfileOut( $fname );
-				return $comment . $diffText;
-			}
-			$oldtext = $oldrev->getText();
 
-			# Old entries may contain illegal characters
-			# which will damage output
-			$oldtext = UtfNormal::cleanUp( $oldtext );
+			$titleObj = Title::makeTitle( $row->rc_namespace, $row->rc_title );
+			$de = new DifferenceEngine( $titleObj, $row->rc_last_oldid, $row->rc_this_oldid );
+			$diffText = $de->getDiff( wfMsg( 'revisionasof', $wgContLang->timeanddate( $row->rc_timestamp ) ),
+				wfMsg( 'currentrev' ) );
 
-			global $wgFeedDiffCutoff;
-			if( strlen( $newtext ) > $wgFeedDiffCutoff ||
-				strlen( $oldtext ) > $wgFeedDiffCutoff ) {
+			if ( strlen( $diffText ) > $wgFeedDiffCutoff ) {
+				// Omit large diffs
 				$diffLink = $titleObj->escapeFullUrl(
 					'diff=' . $row->rc_this_oldid .
 					'&oldid=' . $row->rc_last_oldid );
@@ -538,23 +514,29 @@ function rcFormatDiff( $row ) {
 					'">' .
 					htmlspecialchars( wfMsgForContent( 'difference' ) ) .
 					'</a>';
+			} elseif ( $diffText === false ) {
+				// Error in diff engine, probably a missing revision
+				$diffText = "<p>Can't load revision $row->rc_this_oldid</p>";
 			} else {
-				$diffText = DifferenceEngine::getDiff( $oldtext, $newtext,
-				  wfMsg( 'revisionasof', $wgContLang->timeanddate( $row->rc_timestamp ) ),
-				  wfMsg( 'currentrev' ) );
+				// Diff output fine, clean up any illegal UTF-8
+				$diffText = UtfNormal::cleanUp( $diffText );
 			}
 			wfProfileOut( "$fname-dodiff" );
 		} else {
+			$rev = Revision::newFromId( $row->rc_this_oldid );
+			if( is_null( $rev ) ) {
+				$newtext = '';
+			} else {
+				$newtext = $rev->getText();
+			}
 			$diffText = '<p><b>' . wfMsg( 'newpage' ) . '</b></p>' .
 				'<div>' . nl2br( htmlspecialchars( $newtext ) ) . '</div>';
 		}
-
-		wfProfileOut( $fname );
-		return $comment . $diffText;
+		$completeText .= $diffText;
 	}
 
 	wfProfileOut( $fname );
-	return $comment;
+	return $completeText;
 }
 
 ?>

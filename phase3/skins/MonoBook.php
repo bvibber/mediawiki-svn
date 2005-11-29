@@ -56,7 +56,7 @@ class MonoBookTemplate extends QuickTemplate {
     <meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
     <?php $this->html('headlinks') ?>
     <title><?php $this->text('pagetitle') ?></title>
-    <style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/main.css"; /*]]>*/</style>
+    <style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/main.css?1"; /*]]>*/</style>
     <link rel="stylesheet" type="text/css" <?php if(empty($this->data['printable']) ) { ?>media="print"<?php } ?> href="<?php $this->text('stylepath') ?>/common/commonPrint.css" />
     <!--[if lt IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE50Fixes.css";</style><![endif]-->
     <!--[if IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE55Fixes.css";</style><![endif]-->
@@ -65,6 +65,7 @@ class MonoBookTemplate extends QuickTemplate {
     <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
     <?php if($this->data['jsvarurl'  ]) { ?><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('jsvarurl'  ) ?>"></script><?php } ?>
     <script type="<?php $this->text('jsmimetype') ?>" src="<?php                                   $this->text('stylepath' ) ?>/common/wikibits.js"></script>
+    <?php if($this->data['pagecss'   ]) { ?><style type="text/css"><?php              $this->html('pagecss'   ) ?></style><?php    } ?>
     <?php if($this->data['usercss'   ]) { ?><style type="text/css"><?php              $this->html('usercss'   ) ?></style><?php    } ?>
     <?php if($this->data['userjs'    ]) { ?><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('userjs'    ) ?>"></script><?php } ?>
     <?php if($this->data['userjsprev']) { ?><script type="<?php $this->text('jsmimetype') ?>"><?php      $this->html('userjsprev') ?></script><?php   } ?>
@@ -76,14 +77,15 @@ class MonoBookTemplate extends QuickTemplate {
     <div id="globalWrapper">
       <div id="column-content">
 	<div id="content">
-	  <a name="top" id="contentTop"></a>
+	  <a name="top" id="top"></a>
 	  <?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
 	  <h1 class="firstHeading"><?php $this->text('title') ?></h1>
 	  <div id="bodyContent">
 	    <h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
 	    <div id="contentSub"><?php $this->html('subtitle') ?></div>
-	    <?php if($this->data['undelete']) { ?><div id="contentSub"><?php     $this->html('undelete') ?></div><?php } ?>
+	    <?php if($this->data['undelete']) { ?><div id="contentSub2"><?php     $this->html('undelete') ?></div><?php } ?>
 	    <?php if($this->data['newtalk'] ) { ?><div class="usermessage"><?php $this->html('newtalk')  ?></div><?php } ?>
+	    <?php if($this->data['showjumplinks']) { ?><div id="jump-to-nav"><?php $this->msg('jumpto') ?> <a href="#column-one"><?php $this->msg('jumptonavigation') ?></a>, <a href="#searchInput"><?php $this->msg('jumptosearch') ?></a></div><?php } ?>
 	    <!-- start content -->
 	    <?php $this->html('bodytext') ?>
 	    <?php if($this->data['catlinks']) { ?><div id="catlinks"><?php       $this->html('catlinks') ?></div><?php } ?>
@@ -96,11 +98,11 @@ class MonoBookTemplate extends QuickTemplate {
 	<div id="p-cactions" class="portlet">
 	  <h5><?php $this->msg('views') ?></h5>
 	  <ul>
-	    <?php foreach($this->data['content_actions'] as $key => $action) {
+	    <?php foreach($this->data['content_actions'] as $key => $tab) {
 	       ?><li id="ca-<?php echo htmlspecialchars($key) ?>"
-	       <?php if($action['class']) { ?>class="<?php echo htmlspecialchars($action['class']) ?>"<?php } ?>
-	       ><a href="<?php echo htmlspecialchars($action['href']) ?>"><?php
-	       echo htmlspecialchars($action['text']) ?></a></li><?php
+	       <?php if($tab['class']) { ?>class="<?php echo htmlspecialchars($tab['class']) ?>"<?php } ?>
+	       ><a href="<?php echo htmlspecialchars($tab['href']) ?>"><?php
+	       echo htmlspecialchars($tab['text']) ?></a></li><?php
 	     } ?>
 	  </ul>
 	</div>
@@ -109,7 +111,7 @@ class MonoBookTemplate extends QuickTemplate {
 	  <div class="pBody">
 	    <ul>
 	    <?php foreach($this->data['personal_urls'] as $key => $item) {
-	       ?><li id="pt-<?php echo htmlspecialchars($key) ?>"><a href="<?php
+	       ?><li id="pt-<?php echo htmlspecialchars($key) ?>"<?php if ($item['active']) { ?> class="active"<?php } ?>><a href="<?php
 	       echo htmlspecialchars($item['href']) ?>"<?php
 	       if(!empty($item['class'])) { ?> class="<?php
 	       echo htmlspecialchars($item['class']) ?>"<?php } ?>><?php
@@ -129,9 +131,13 @@ class MonoBookTemplate extends QuickTemplate {
 	  <h5><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo $bar; else echo $out; ?></h5>
 	  <div class='pBody'>
 	    <ul>
-	    <?php foreach($cont as $key => $val) { ?>
-	      <li id="<?php echo htmlspecialchars($val['id']) ?>"><a href="<?php echo htmlspecialchars($val['href']) ?>"><?php echo htmlspecialchars($val['text'])?></a></li>
-	     <?php } ?>
+	    <?php foreach($cont as $key => $val) { 
+				echo '<li id="' . htmlspecialchars($val['id']) . '"';
+				if ( $val['active'] ) echo ' class="active"';
+				echo '>';
+				echo '<a href="' . htmlspecialchars($val['href']) . '">' . htmlspecialchars($val['text']) . '</a>'; 
+				echo '</li>';
+			} ?>
 	    </ul>
 	  </div>
 	</div>
@@ -139,7 +145,7 @@ class MonoBookTemplate extends QuickTemplate {
 	<div id="p-search" class="portlet">
 	  <h5><label for="searchInput"><?php $this->msg('search') ?></label></h5>
 	  <div class="pBody">
-	    <form name="searchform" action="<?php $this->text('searchaction') ?>" id="searchform">
+	    <form action="<?php $this->text('searchaction') ?>" id="searchform"><div>
 	      <input id="searchInput" name="search" type="text"
 	        <?php if($this->haveMsg('accesskey-search')) {
 	          ?>accesskey="<?php $this->msg('accesskey-search') ?>"<?php }
@@ -150,7 +156,7 @@ class MonoBookTemplate extends QuickTemplate {
 	        />&nbsp;<input type='submit' name="fulltext"
 	        class="searchButton"
 	        value="<?php $this->msg('search') ?>" />
-	    </form>
+	    </div></form>
 	  </div>
 	</div>
 	<div class="portlet" id="p-tb">
@@ -171,7 +177,7 @@ class MonoBookTemplate extends QuickTemplate {
 	        ?><span id="feed-<?php echo htmlspecialchars($key) ?>"><a href="<?php
 	        echo htmlspecialchars($feed['href']) ?>"><?php echo htmlspecialchars($feed['text'])?></a>&nbsp;</span>
 	        <?php } ?></li><?php } ?>
-	      <?php foreach( array('contributions', 'emailuser', 'upload', 'specialpages') as $special ) { ?>
+	      <?php foreach( array('contributions', 'blockip', 'emailuser', 'upload', 'specialpages') as $special ) { ?>
 	      <?php if($this->data['nav_urls'][$special]) {?><li id="t-<?php echo $special ?>"><a href="<?php
 	        echo htmlspecialchars($this->data['nav_urls'][$special]['href'])
 	        ?>"><?php $this->msg($special) ?></a></li><?php } ?>
@@ -188,6 +194,7 @@ class MonoBookTemplate extends QuickTemplate {
 		  <?php } elseif ($this->data['nav_urls']['permalink']['href'] === '') { ?>
 		    <li id="t-ispermalink"><?php echo $this->msg('permalink') ?></li>
 		  <?php } ?>
+	      <?php wfRunHooks( 'MonoBookTemplateToolboxEnd', array( &$this ) ); ?>
 	    </ul>
 	  </div>
 	</div>
@@ -221,6 +228,7 @@ class MonoBookTemplate extends QuickTemplate {
 	  <?php if($this->data['tagline']) { ?><li id="f-tagline"><?php echo $this->data['tagline'] ?></li><?php } ?>
 	</ul>
       </div>
+    <script type="text/javascript"> if (window.runOnloadHook) runOnloadHook(); </script>
     </div>
     <?php $this->html('reporttime') ?>
   </body>

@@ -105,6 +105,7 @@ class SpecialSearch {
 		if( is_null( $t ) ) {
 			$editurl = ''; # hrm...
 		} else {
+			wfRunHooks( 'SpecialSearchNogomatch', array( &$t ) );
 			# If the feature is enabled, go straight to the edit page
 			if ( $wgGoToEdit ) {
 				$wgOut->redirect( $t->getFullURL( 'action=edit' ) );
@@ -376,17 +377,23 @@ class SpecialSearch {
 	}
 	
 	function powerSearchBox( $term ) {
+		global $wgNamespaces;
 		$namespaces = '';
-		foreach( SearchEngine::searchableNamespaces() as $ns => $name ) {
-			$checked = in_array( $ns, $this->namespaces )
-				? ' checked="checked"'
-				: '';
-			$name = str_replace( '_', ' ', $name );
-			if( '' == $name ) {
-				$name = wfMsg( 'blanknamespace' );
+		foreach( $wgNamespaces as $ns) {
+			if(!$ns->isSpecial()) {
+				$name=$ns->getDefaultName();
+				$index=$ns->getIndex();
+				$checked = in_array( $ns->getIndex(),
+				$this->namespaces )
+					? ' checked="checked"'
+					: '';
+				$name = str_replace( '_', ' ', $name );
+				if( '' == $name ) {
+					$name = wfMsg( 'blanknamespace' );
+				}
+				$namespaces .= " <label><input type='checkbox' value=\"1\" name=\"" .
+				"ns{$index}\"{$checked} />{$name}</label>\n";
 			}
-			$namespaces .= " <label><input type='checkbox' value=\"1\" name=\"" .
-			  "ns{$ns}\"{$checked} />{$name}</label>\n";
 		}
 		
 		$checked = $this->searchRedirects
@@ -394,8 +401,8 @@ class SpecialSearch {
 			: '';
 		$redirect = "<input type='checkbox' value='1' name=\"redirs\"{$checked} />\n";
 		
-		$searchField = "<input type='text' name=\"search\" value=\"" .
-			htmlspecialchars( $term ) ."\" width=\"80\" />\n";
+		$searchField = '<input type="text" name="search" value="' .
+			htmlspecialchars( $term ) ."\" size=\"16\" />\n";
 		
 		$searchButton = '<input type="submit" name="searchx" value="' .
 		  htmlspecialchars( wfMsg('powersearch') ) . "\" />\n";

@@ -103,11 +103,13 @@ class ImagePage extends Article {
 	 */
 	function makeMetadataTable( $exif ) {
 		$r = "{| class=metadata align=right width=250px\n";
-		$r .= '|+ id=metadata | '. htmlspecialchars( wfMsgHtml( 'metadata' ) ) . "\n";
+		$r .= '|+ id=metadata | '. wfMsg( 'metadata' )  . "\n";
 		foreach( $exif as $k => $v ) {
 			$tag = strtolower( $k );
-			$r .= "! class=$tag |" . wfMsg( "exif-$tag" ) . "\n";
-			$r .= "| class=$tag |" . htmlspecialchars( $v ) . "\n";
+			$msg = wfMsg( "exif-$tag" );
+			
+			$r .= "! class=$tag | $msg\n";
+			$r .= "| class=$tag | $v\n";
 			$r .= "|-\n";
 		}
 		return substr($r, 0, -3) . '|}';
@@ -132,7 +134,7 @@ class ImagePage extends Article {
 		global $wgOut, $wgUser, $wgImageLimits, $wgRequest,
 		       $wgUseImageResize, $wgRepositoryBaseUrl,
 		       $wgUseExternalEditor, $wgServer, $wgFetchCommonsDescriptions;
-		$full_url  = $this->img->getViewURL();
+		$full_url  = $this->img->getURL();
 		$anchoropen = '';
 		$anchorclose = '';
 
@@ -172,20 +174,25 @@ class ImagePage extends Article {
 					if( $wgUseImageResize ) {
 						$thumbnail = $this->img->getThumbnail( $width );
 						if ( $thumbnail == null ) {
-							$url = $full_url;
+							$url = $this->img->getViewURL();
 						} else {
-							$url = $thumbnail->getUrl();
+							$url = $thumbnail->getURL();
 						}
 					} else {
 						# No resize ability? Show the full image, but scale
 						# it down in the browser so it fits on the page.
-						$url = $full_url;
+						$url = $this->img->getViewURL();
 					}
 					$anchoropen  = "<a href=\"{$full_url}\">";
-					$anchorclose = "</a><br />\n$anchoropen{$msg}</a>";
+					$anchorclose = "</a><br />";
+					if( $this->img->mustRender() ) {
+						$showLink = true;
+					} else {
+						$anchorclose .= "\n$anchoropen{$msg}</a>";
+					}
 				} else {
-					$url = $full_url;
-					$showLink = $this->img->mustRender();
+					$url = $this->img->getViewURL();
+					$showLink = true;
 				}
 				$wgOut->addHTML( '<div class="fullImageLink" id="file">' . $anchoropen .
 				     "<img border=\"0\" src=\"{$url}\" width=\"{$width}\" height=\"{$height}\" alt=\"" .
@@ -199,7 +206,7 @@ class ImagePage extends Article {
 					$icon->toHtml() .
 					'</a></div>' );
 				}
-
+				
 				$showLink = true;
 			}
 
@@ -209,7 +216,7 @@ class ImagePage extends Article {
 				$info = wfMsg( 'fileinfo',
 					ceil($this->img->getSize()/1024.0),
 					$this->img->getMimeType() );
-
+	
 				if (!$this->img->isSafeFile()) {
 					$warning = wfMsg( 'mediawarning' );
 					$wgOut->addWikiText( <<<END
@@ -319,12 +326,16 @@ END
 			$s = $list->beginImageHistoryList() .
 				$list->imageHistoryLine( true, wfTimestamp(TS_MW, $line->img_timestamp),
 					$this->mTitle->getDBkey(),  $line->img_user,
-					$line->img_user_text, $line->img_size, $line->img_description );
+					$line->img_user_text, $line->img_size, $line->img_description,
+					$line->img_width, $line->img_height
+				);
 
 			while ( $line = $this->img->nextHistoryLine() ) {
 				$s .= $list->imageHistoryLine( false, $line->img_timestamp,
-			  	$line->oi_archive_name, $line->img_user,
-			  	$line->img_user_text, $line->img_size, $line->img_description );
+			  		$line->oi_archive_name, $line->img_user,
+			  		$line->img_user_text, $line->img_size, $line->img_description,
+					$line->img_width, $line->img_height
+				);
 			}
 			$s .= $list->endImageHistoryList();
 		} else { $s=''; }
@@ -372,7 +383,7 @@ END
 	{
 		global $wgUser, $wgOut, $wgRequest;
 
-		$confirm = $wgRequest->getBool( 'wpConfirmB' );
+		$confirm = $wgRequest->wasPosted();
 		$image = $wgRequest->getVal( 'image' );
 		$oldimage = $wgRequest->getVal( 'oldimage' );
 
@@ -637,7 +648,7 @@ class ImageHistoryList {
 		return $s;
 	}
 
-	function imageHistoryLine( $iscur, $timestamp, $img, $user, $usertext, $size, $description ) {
+	function imageHistoryLine( $iscur, $timestamp, $img, $user, $usertext, $size, $description, $width, $height ) {
 		global $wgUser, $wgLang, $wgContLang, $wgTitle;
 
 		$datetime = $wgLang->timeanddate( $timestamp, true );
@@ -683,10 +694,10 @@ class ImageHistoryList {
 				$usertext );
 		}
 		$nbytes = wfMsg( 'nbytes', $size );
+		$widthheight = wfMsg( 'widthheight', $width, $height );
 		$style = $this->skin->getInternalLinkAttributes( $url, $datetime );
 
-		$s = "<li> ({$dlink}) ({$rlink}) <a href=\"{$url}\"{$style}>{$datetime}</a>"
-		  . " . . {$userlink} ({$nbytes})";
+		$s = "<li> ({$dlink}) ({$rlink}) <a href=\"{$url}\"{$style}>{$datetime}</a> . . {$userlink} . . {$widthheight} ({$nbytes})";
 
 		$s .= $this->skin->commentBlock( $description, $wgTitle );
 		$s .= "</li>\n";

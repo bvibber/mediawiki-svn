@@ -275,7 +275,7 @@ Gelieve na ontvangst opnieuw aan te melden.",
 "preview"  => "Nakijken",
 "showpreview" => "Toon bewerking ter controle",
 "blockedtitle" => "Gebruiker is geblokkeerd",
-"blockedtext" => "Uw gebruikersnaam of IP-adres is door $1 geblokkeerd. De opgegeven reden:<br />$2<p>. Elke computer die verbonden is met het internet krijgt een [[ip-adres]] toegewezen van zijn [[internetprovider]]. In veel gevallen krijgt een gebruiker regelmatig een ander ip-adres toegewezen. Het het door u gebruikte ip-adres is recent gebruikt door u of iemand anders voor bewerkingen die in overtreding zijn van de [[{{ns:4}}:Toch een paar regels|regels]] van {{SITENAME}}.<p>U kunt voor overleg contact opnemen met de [[{{ns:4}}:Systeembeheerders|systeembeheerders]] via [http://wikinl.sol3.info/wikinl_info.html#email wikinl-l-owner@wikipedia.org een formulier].",
+"blockedtext" => "Uw gebruikersnaam of IP-adres is door $1 geblokkeerd. De opgegeven reden:<br />$2<p>. Elke computer die verbonden is met het internet krijgt een [[ip-adres]] toegewezen van zijn [[internetprovider]]. In veel gevallen krijgt een gebruiker regelmatig een ander ip-adres toegewezen. Het het door u gebruikte ip-adres is recent gebruikt door u of iemand anders voor bewerkingen die in overtreding zijn van de [[{{ns:4}}:Toch een paar regels|regels]] van {{SITENAME}}.",
 "whitelistedittitle" => "Aanmelden verplicht",
 "whitelistedittext" => "Om dit artikel te kunnen wijzigen, moet u [[Speciaal:Userlogin|ingelogd]] zijn.",
 "whitelistreadtitle" => "Aanmelden verplicht",
@@ -412,9 +412,7 @@ Een beschrijving van de verschillende opties staat op [[{{ns:4}}:Voorkeuren]].",
 # Recente wijzigingen
 "changes" => "wijzigingen",
 "recentchanges" => "Recente wijzigingen",
-"recentchangestext" => "Deze pagina toont de laatste aanpassingen aan artikelen van {{SITENAME}} NL. <br />
-Ben je hier nieuw? Lees dan ook [[{{ns:4}}:Welkom voor nieuwelingen|Welkom voor nieuwelingen]] -- Wil je een pagina verwijderd hebben? Ga dan naar [[{{ns:4}}:Te verwijderen pagina's|Te verwijderen pagina's]] -- Wil je iets met andere gebruikers overleggen? Ga naar [[{{ns:4}}:Overleg gewenst|Overleg gewenst]] of meld je aan voor de discussielijst [http://mail.wikipedia.org/mailman/listinfo/wikinl-l WikiNL-l] -- Zin in een gezellige babbel? Kom naar de [[{{ns:4}}:De kroeg|De kroeg]] of doe mee op ons nieuwe [http://chat.wikipedia.be Wiki-chatkanaal].<p>
-Om {{SITENAME}} te laten slagen is het erg belangrijk geen materiaal toe te voegen waarop iemand anders auteursrechten heeft, tenzij je daartoe toestemming hebt. De wettelijke gevolgen van inbreuk op de rechten van anderen zouden de hele onderneming grote schade kunnen toebrengen.",
+"recentchangestext" => "Deze pagina toont de laatste aanpassingen aan artikelen van {{SITENAME}}.",
 "rcloaderr"  => "Meest recente wijzigingen laden",
 "rcnote"  => "Hieronder zijn de <strong>$1</strong> laatste wijzigingen gedaan in de laatste <strong>$2</strong> dagen.",
 "rcnotefrom"  => "Veranderingen sinds <b>$2</b> (met een maximum van <b>$1</b> veranderingen).",
@@ -471,7 +469,6 @@ Vergeet niet dat net als met andere pagina's op {{SITENAME}} anderen de ge-uploa
 "copyrightpage" => "{{ns:4}}:Auteursrechten",
 "copyrightpagename" => "{{SITENAME}} NL auteursrechten",
 "uploadedfiles" => "Ge-uploade bestanden",
-"ignorewarning" => "Negeer de waarschuwing en sla het bestand op.",
 "minlength"  => "De naam van het bestand moet uit ten minste drie tekens bestaan.",
 "badfilename" => "De naam van het bestand is gewijzigd in \"$1\".",
 "badfiletype" => "\".$1\" is geen aanbevolen afbeeldings bestandsformaat.",
@@ -660,7 +657,7 @@ op 'Verwijderen' onderaan deze pagina.",
 "undeleterevision" => "Verwijderde versie van $1",
 "undeletebtn" => "Terugplaatsen!",
 "undeletedarticle" => "\"$1\" is teruggeplaatst.",
-"undeletedtext" =>"Het artikel [[$1]] is teruggeplaatst. Zie [[{{ns:4}}:Logboek verwijderde pagina's]] voor een lijst van de meest recente verwijderingen en terugplaatsingen.",
+"undeletedtext" =>"Het artikel [[:$1|$1]] is teruggeplaatst. Zie [[{{ns:4}}:Logboek verwijderde pagina's]] voor een lijst van de meest recente verwijderingen en terugplaatsingen.",
 
 # Contributions
 # Bijdragen
@@ -770,19 +767,18 @@ class LanguageNl extends LanguageUtf8 {
 		return $wgSkinNamesNl;
 	}
 
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) . " " .
-		$this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) . " " .
-		substr( $ts, 0, 4 );
-		return $d;
+	function timeBeforeDate( $format ) {
+		return false;
 	}
-
-	function timeanddate( $ts, $adj = false ) {
-		return $this->date( $ts, $adj ) . " " . $this->time( $ts, $adj );
+	
+	function timeDateSeparator( $format ) {
+		return ' ';
 	}
-
+	
+	function formatMonth( $month, $format ) {
+		return $this->getMonthAbbreviation( $month );
+	}
+	
 	function getMessage( $key ) {
 		global $wgAllMessagesNl;
 		if( isset( $wgAllMessagesNl[$key] ) ) {

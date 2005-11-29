@@ -26,7 +26,7 @@ class BrokenRedirectsPage extends PageQueryPage {
 	function isSyndicated() { return false; }
 
 	function getPageHeader( ) {
-		return '<p>'.wfMsgHtml('brokenredirectstext')."</p><br />\n";
+		return wfMsgWikiHtml('brokenredirectstext')."<br />\n";
 	}
 
 	function getSQL() {
@@ -38,7 +38,7 @@ class BrokenRedirectsPage extends PageQueryPage {
 		                p1.page_title     AS title,
 		                pl_namespace,
 		                pl_title
-		           FROM $pagelinks, $page AS p1
+		           FROM ($pagelinks, $page AS p1)
 		      LEFT JOIN $page AS p2
 		             ON pl_namespace=p2.page_namespace AND pl_title=p2.page_title
 		          WHERE p1.page_is_redirect=1

@@ -517,7 +517,6 @@ subido más recientemente. Todas las horas son del servidor (UTC).
 "copyrightpage" => "{{ns:projec}}:Copyrights",
 "copyrightpagename" => "{{SITENAME}} copyright",
 "uploadedfiles"	=> "Archivos subidos",
-"ignorewarning"	=> "Ignora la advertencia y graba el archivo de todos modos.",
 "minlength"		=> "Los nombres de imágenes deben ser al menos de tres letras.",
 "badfilename"	=> "El nombre de la imagen se ha cambiado a \"$1\".",
 "badfiletype"	=> "\".$1\" no es un formato de imagen recomendado.",
@@ -737,7 +736,7 @@ Si una nueva página con el mismo nombre ha sido creada desde el borrado, las ve
 "undeleterevision" => "Revisión borrada al $1",
 "undeletebtn" => "Restaurar!",
 "undeletedarticle" => "restaurado \"$1\"",
-"undeletedtext"   => "El artículo [[$1]] ha sido restaurado con éxito.
+"undeletedtext"   => "El artículo [[:$1|$1]] ha sido restaurado con éxito.
 Véase [[{{ns:project}}:Registro_de_borrados]] para una lista de borrados y restauraciones recientes.",
 
 # Contributions
@@ -1045,33 +1044,15 @@ class LanguageEs extends LanguageUtf8 {
 		global $wgSkinNamesEs;
 		return $wgSkinNamesEs;
 	}
-
-	function shortdate( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) . " " .$this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) . ", " .
-		  substr( $ts, 0, 4 );
-		return $d;
+	
+	function formatMonth( $month, $format ) {
+		return $this->getMonthAbbreviation( $month );
 	}
-
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) . " de " .$this->getMonthName( substr( $ts, 4, 2 ) ) . ", " .
-		  substr( $ts, 0, 4 );
-		return $d;
+	
+	function timeDateSeparator( $format ) {
+		return ' ';
 	}
-
-	function time( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$t = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
-		return $t;
-	}
-
-	function timeanddate( $ts, $adj = false ) {
-		return $this->time( $ts, $adj ) . " " . $this->shortdate( $ts, $adj );
-	}
+	
 
 	function getMessage( $key ) {
 		global $wgAllMessagesEs;

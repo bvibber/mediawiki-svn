@@ -109,7 +109,7 @@ require_once('LanguageUtf8.php');
 'subcategories' => 'Subkategorioj',
 
 # Tiuj literoj, kiuj aperu kiel parto de la ligilo en formo "[[lingvo]]jn" ktp:
-'linktrail'     => '/^([a-z]+)(.*)\$/sD',
+'linktrail'     => '/^([a-z]+)(.*)$/sD',
 'mainpage'		=> 'Ĉefpaĝo',
 'about'			=> 'Enkonduko',
 'aboutsite'      => 'Pri {{SITENAME}}', #FIXME
@@ -535,7 +535,6 @@ forbarita.",
 'copyrightpage' => '{{ns:4}}:Kopirajto',
 'copyrightpagename' => 'permesilo GFDL uzata por la {{SITENAME}}',
 'uploadedfiles'	=> 'Alŝutitaj dosieroj',
-'ignorewarning'	=> 'Malatentu averton kaj tamen konservu la dosieron.',
 'minlength'		=> 'Dosiernomo devas havi pli ol du literojn.',
 'badfilename'	=> 'Dosiernomo estis ŝanĝita al "$1".',
 'badfiletype'	=> '".$1" estas dosiertipo malrekomendata.',
@@ -759,7 +758,7 @@ versioj aperos antaŭe en la historio, kaj la aktuala versio ne estos anstataŭi
 'undeleterevision' => 'Forigita versio de $1', # ( estas tempo)
 'undeletebtn' => 'Restarigu!',
 'undeletedarticle' => 'restarigis "$1"',
-'undeletedtext'   => 'La artikolo [[$1]] estas sukcese restarigita.
+'undeletedtext'   => 'La artikolo [[:$1|$1]] estas sukcese restarigita.
 Vidu [[{{ns:4}}:Loglibro de forigoj]] por registro de lastatempaj forigoj kaj restarigoj.',
 
 # Contributions
@@ -925,14 +924,12 @@ class LanguageEo extends LanguageUtf8 {
 	}
 
 	# La dato- kaj tempo-funkciojn oni povas precizigi laŭ lingvo
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) . '. ' .
-		$this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
-		  ' ' .
-		  substr( $ts, 0, 4 );
-		return $d;
+	function formatMonth( $month, $format ) {
+		return $this->getMonthAbbreviation( $month );
+	}
+	
+	function formatDay( $day, $format ) {
+		return parent::formatDay( $day, $format ) . '.';
 	}
 
 	function getMessage( $key ) {
@@ -1000,8 +997,8 @@ class LanguageEo extends LanguageUtf8 {
 			return $s;
 		}
 
-		if( preg_match( '/[cghjsu]x/i', $s ) )
-			return $this->iconv( 'x', 'utf-8', $s );
+		//if( preg_match( '/[cghjsu]x/i', $s ) )
+		//	return $this->iconv( 'x', 'utf-8', $s );
 		return $s;
 	}
 
@@ -1019,6 +1016,9 @@ class LanguageEo extends LanguageUtf8 {
 		$wgEditEncoding = '';
 	}
 
+	function formatNum( $number, $year = false ) {
+		return $year ? $number : strtr($this->commafy($number), '.,', ', ' );
+	}
 }
 
 ?>

@@ -538,7 +538,6 @@ Todas as datas mostradas são do servidor (UTC).
 "copyrightpagename" => "Direitos Autorais da {{SITENAME}}",
 
 "uploadedfiles" => "Arquivos carregados",
-"ignorewarning" => "Ignorar aviso e salvar de qualquer forma.",
 "minlength"     => "Os nomes das imagens devem ter ao menos três letras.",
 "badfilename"   => "O nome da imagem mudou para \"$1\".",
 "badfiletype"   => "\".$1\" não está em um formato recomendável.",
@@ -746,7 +745,7 @@ Se uma nova página foi criada com o mesmo nome desde a deleção, as revisões 
 "undeleterevision" => "Revisões deletadas de  $1",
 "undeletebtn" => "Restaurar!",
 "undeletedarticle" => " \"$1\" restaurado",
-"undeletedtext"   => "O artigo [[$1]] foi restaurado com sucesso.
+"undeletedtext"   => "O artigo [[:$1|$1]] foi restaurado com sucesso.
 Veja [[{{ns:4}}:Deletion_log]] for a record of recent deletions and restorations.",
 
 # Contributions

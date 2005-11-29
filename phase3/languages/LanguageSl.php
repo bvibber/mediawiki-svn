@@ -34,9 +34,10 @@ require_once( "LanguageUtf8.php" );
 	NS_IMAGE_TALK     => "Pogovor_k_sliki",
 	NS_MEDIAWIKI      => "MediaWiki",
 	NS_MEDIAWIKI_TALK => "MediaWiki_talk",
-	NS_TEMPLATE       => "Template",
-	NS_TEMPLATE_TALK  => "Template_talk"
-
+	NS_TEMPLATE       => "Predloga",
+	NS_TEMPLATE_TALK  => "Pogovor_k_predlogi",
+	NS_CATEGORY       => "Kategorija",
+	NS_CATEGORY_TALK  => "Pogovor_k_kategoriji"
 ) + $wgNamespaceNamesEn;
 
 /* private */ $wgQuickbarSettingsSl = array(
@@ -476,7 +477,6 @@ Vsi prikazani časi so strežnikov čas (UTC).
 "copyrightpage"         => "Wikipedija:Avtorske pravice",
 "copyrightpagename"     => "Avtorske pravice Wikipedije",
 "uploadedfiles"	        => "Naložene datoteke",
-"ignorewarning"	        => "Zanemari opozorilo in vseeno shrani.",
 "minlength"		=> "Imena slik morajo vsebovati vsaj tri črke.",
 "badfilename"	        => "Slika se je spremenila v \"$1\".",
 "badfiletype"	        => "\".$1\" ni priporočen format datotek slik.",
@@ -667,7 +667,7 @@ Zadnja sprememba od uporabnika [[Uporabnik:$3|$3]] ([[Pogovor z uporabnikom:$3|P
 "undeleterevision" => "Zbrisana različica od $1",
 "undeletebtn" => "Obnovi!",
 "undeletedarticle" => "obnovljen \"$1\"",
-"undeletedtext"   => "Članek [[$1]] se je uspešno obnovil.
+"undeletedtext"   => "Članek [[:$1|$1]] se je uspešno obnovil.
 Glej [[Wikipedija:Dnevnik_brisanja]] za zabeležbe nedavnih brisanj in obnovitev.",
 
 # Contributions

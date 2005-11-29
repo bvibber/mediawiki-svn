@@ -500,7 +500,6 @@ Tote le tempores monstrate es in le fuso horari del servitor (UCT).
 "copyrightpage" => "Wikipedia:Copyright",
 "copyrightpagename" => "Wikipedia e derectos de autor (copyright)",
 "uploadedfiles"	=> "Files cargate",
-"ignorewarning"	=> "Ignorar advertimentos e salvar le file totevia.",
 "minlength"		=> "Le nomines de imagines debe haber al minus tres litteras.",
 "badfilename"	=> "Le nomine del imagine esseva cambiate a \"$1\".",
 "badfiletype"	=> "\".$1\" non es un formato de file de imagine recommendate.",
@@ -709,7 +708,7 @@ non essera automaticamente substituite.",
 "undeleterevision" => "Revision eliminate in $1",
 "undeletebtn" => "Restautar!",
 "undeletedarticle" => "\"$1\" restaurate",
-"undeletedtext"   => "Le articulo [[$1]] ha essite restaurate con successo.
+"undeletedtext"   => "Le articulo [[:$1|$1]] ha essite restaurate con successo.
 Vide [[Wikipedia:Registro_de_eliminationes]] pro un registro de eliminationes e restaurationes recente.",
 
 # Contributions
@@ -857,19 +856,6 @@ class LanguageIa extends LanguageUtf8 {
 	function getSkinNames() {
 		global $wgSkinNamesIa;
 		return $wgSkinNamesIa;
-	}
-
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) .
-		  " " . (0 + substr( $ts, 6, 2 )) . ", " .
-		  substr( $ts, 0, 4 );
-		return $d;
-	}
-
-	function timeanddate( $ts, $adj = false ) {
-		return $this->time( $ts, $adj ) . " " . $this->date( $ts, $adj );
 	}
 
 	function getMessage( $key ) {

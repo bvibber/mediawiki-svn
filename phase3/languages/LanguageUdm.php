@@ -34,8 +34,6 @@ if($wgMetaNamespace === FALSE)
 
 
 /* private */ $wgAllMessagesUdm = array(
-'linktrail'  => '/^((?:[a-zа-яёӝӟӥӧӵ“»])+)(.*)$/sDu',
-'linkprefix' => '/^(.*?)(„|«)$/sDu',
 'article' => 'Статья',
 'createaccount' => 'выль вики-авторлэн регистрациез',
 'edit' => 'тупатыны',

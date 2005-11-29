@@ -43,7 +43,8 @@ class TitleCleanup extends FiveUpgrade {
 	}
 	
 	function cleanup() {
-		$this->runTable( 'page', 'WHERE page_namespace=0',
+		$this->runTable( 'page',
+			'', //'WHERE page_namespace=0',
 			array( &$this, 'processPage' ) );
 	}
 	
@@ -108,6 +109,7 @@ class TitleCleanup extends FiveUpgrade {
 		$display = $current->getPrefixedText();
 		
 		$verified = UtfNormal::cleanUp( $display );
+		
 		$title = Title::newFromText( $verified );
 		
 		if( is_null( $title ) ) {
@@ -177,16 +179,22 @@ class TitleCleanup extends FiveUpgrade {
 		if( is_null( $title ) ) {
 			die( "Something awry; empty title.\n" );
 		}
+		$ns = $title->getNamespace();
 		$dest = $title->getDbKey();
 		if( $this->dryrun ) {
 			$this->log( "DRY RUN: would rename $row->page_id ($row->page_namespace,'$row->page_title') to ($row->page_namespace,'$dest')" );
 		} else {
-			$this->log( "renaming $row->page_id ($row->page_namespace,'$row->page_title') to ($row->page_namespace,'$dest')" );
+			$this->log( "renaming $row->page_id ($row->page_namespace,'$row->page_title') to ($ns,'$dest')" );
 			$dbw =& wfGetDB( DB_MASTER );
 			$dbw->update( 'page',
-				array( 'page_title' => $dest ),
+				array(
+					'page_namespace' => $ns,
+					'page_title' => $dest
+				),
 				array( 'page_id' => $row->page_id ),
 				'cleanupTitles::moveInconsistentPage' );
+			global $wgLinkCache;
+			$wgLinkCache->clear();
 		}
 	}
 	

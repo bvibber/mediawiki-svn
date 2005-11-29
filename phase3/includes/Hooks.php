@@ -37,7 +37,7 @@ if (defined('MEDIAWIKI')) {
 		wfProfileIn( $fname );
 
 		if (!is_array($wgHooks)) {
-			wfDieDebugBacktrace("Global hooks array is not an array!\n");
+			wfDebugDieBacktrace("Global hooks array is not an array!\n");
 			wfProfileOut( $fname );
 			return false;
 		}
@@ -48,12 +48,12 @@ if (defined('MEDIAWIKI')) {
 		}
 		
 		if (!is_array($wgHooks[$event])) {
-			wfDieDebugBacktrace("Hooks array for event '$event' is not an array!\n");
+			wfDebugDieBacktrace("Hooks array for event '$event' is not an array!\n");
 			wfProfileOut( $fname );
 			return false;
 		}
 		
-		foreach ($wgHooks[$event] as $hook) {
+		foreach ($wgHooks[$event] as $index => $hook) {
 			
 			$object = NULL;
 			$method = NULL;
@@ -68,9 +68,9 @@ if (defined('MEDIAWIKI')) {
 			
 			if (is_array($hook)) {
 				if (count($hook) < 1) {
-					wfDieDebugBacktrace("Empty array in hooks for " . $event . "\n");
+					wfDebugDieBacktrace("Empty array in hooks for " . $event . "\n");
 				} else if (is_object($hook[0])) {
-					$object = $hook[0];
+					$object =& $wgHooks[$event][$index][0];
 					if (count($hook) < 2) {
 						$method = "on" . $event;
 					} else {
@@ -87,15 +87,15 @@ if (defined('MEDIAWIKI')) {
 						$have_data = true;
 					}
 				} else {
-					wfDieDebugBacktrace("Unknown datatype in hooks for " . $event . "\n");
+					wfDebugDieBacktrace("Unknown datatype in hooks for " . $event . "\n");
 				}
 			} else if (is_string($hook)) { # functions look like strings, too
 				$func = $hook;
 			} else if (is_object($hook)) {
-				$object = $hook;
+				$object =& $wgHooks[$event][$index];
 				$method = "on" . $event;
 			} else {
-				wfDieDebugBacktrace("Unknown datatype in hooks for " . $event . "\n");
+				wfDebugDieBacktrace("Unknown datatype in hooks for " . $event . "\n");
 			}
 			
 			/* We put the first data element on, if needed. */
@@ -107,14 +107,14 @@ if (defined('MEDIAWIKI')) {
 			}
 			
 			
-			if ( $object ) {
+			if ( isset( $object ) ) {
 				$func = get_class( $object ) . '::' . $method;
 			}
 
 			/* Call the hook. */
 			wfProfileIn( $func );
-			if ($object) {
-				$retval = call_user_func_array(array($object, $method), $hook_args);
+			if( isset( $object ) ) {
+				$retval = call_user_func_array(array(&$object, $method), $hook_args);
 			} else {
 				$retval = call_user_func_array($func, $hook_args);
 			}

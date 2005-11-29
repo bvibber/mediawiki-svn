@@ -28,7 +28,7 @@ require_once( 'includes/SiteConfiguration.php' );
 $wgConf = new SiteConfiguration;
 
 /** MediaWiki version number */
-$wgVersion			= '1.6alpha';
+$wgVersion			= '1.6devel';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -148,9 +148,19 @@ $wgLegalTitleChars = " %!\"$&'()*,\\-.\\/0-9:;=?@A-Z\\\\^_`a-z~\\x80-\\xFF";
 
 
 /**
- * The external URL protocols (regexp)
+ * The external URL protocols
  */
-$wgUrlProtocols = 'http:\/\/|https:\/\/|ftp:\/\/|irc:\/\/|gopher:\/\/|news:|mailto:';
+$wgUrlProtocols = array(
+	'http://',
+	'https://',
+	'ftp://',
+	'irc://',
+	'gopher://',
+	'nntp://', // @bug 3808 RFC 1738
+	'worldwind://',
+	'mailto:',
+	'news:'
+);
 
 /** internal name of virus scanner. This servers as a key to the $wgAntivirusSetup array.
  * Set this to NULL to disable virus scanning. If not null, every file uploaded will be scanned for viruses.
@@ -258,11 +268,6 @@ $wgMimeDetectorCommand= NULL; # use internal mime_content_type function, availab
 $wgTrivialMimeDetection= false;
 
 /**
- * Produce hashed HTML article paths. Used internally, do not set.
- */
-$wgMakeDumpLinks = false;
-
-/**
  * To set 'pretty' URL paths for actions other than
  * plain page views, add to this array. For instance:
  *   'edit' => "$wgScriptPath/edit/$1"
@@ -298,7 +303,7 @@ $wgCacheSharedUploads = true;
 /**
  * Point the upload navigation link to an external URL
  * Useful if you want to use a shared repository by default
- * without disabling local uploads
+ * without disabling local uploads (use $wgEnableUploads = false for that)
  * e.g. $wgUploadNavigationUrl = 'http://commons.wikimedia.org/wiki/Special:Upload';
 */
 $wgUploadNavigationUrl = false;
@@ -451,6 +456,12 @@ $wgSharedDB = null;
 #                   DBO_IGNORE -- ignore errors (not useful in LocalSettings.php)
 #                   DBO_NOBUFFER -- turn off buffering (not useful in LocalSettings.php)
 #
+#   max lag:     (optional) Maximum replication lag before a slave will taken out of rotation
+#   max threads: (optional) Maximum number of running threads
+#
+#   These and any other user-defined properties will be assigned to the mLBInfo member 
+#   variable of the Database object.
+#
 # Leave at false to use the single-server variables above
 $wgDBservers		= false;
 
@@ -478,6 +489,24 @@ $wgDBtransactions	= false;
 $wgDBmysql4			= true;
 
 /**
+ * Set to true to engage MySQL 4.1/5.0 charset-related features;
+ * for now will just cause sending of 'SET NAMES=utf8' on connect.
+ *
+ * WARNING: THIS IS EXPERIMENTAL!
+ *
+ * May break if you're not using the table defs from mysql5/tables.sql.
+ * May break if you're upgrading an existing wiki if set differently.
+ * Broken symptoms likely to include incorrect behavior with page titles,
+ * usernames, comments etc containing non-ASCII characters.
+ * Might also cause failures on the object cache and other things.
+ *
+ * Even correct usage may cause failures with Unicode supplementary
+ * characters (those not in the Basic Multilingual Plane) unless MySQL
+ * has enhanced their Unicode support.
+ */
+$wgDBmysql5			= false;
+
+/**
  * Other wikis on this site, can be administered from a single developer
  * account.
  * Array, interwiki prefix => database name
@@ -499,10 +528,15 @@ $wgLinkCacheMemcached = false; # Not fully tested
  * Memcached-specific settings
  * See docs/memcached.txt
  */
+$wgUseMemCached     = false;
 $wgMemCachedDebug   = false; # Will be set to false in Setup.php, if the server isn't working
 $wgMemCachedServers = array( '127.0.0.1:11000' );
 $wgMemCachedDebug   = false;
 
+/**
+ * Directory for local copy of message cache, for use in addition to memcached
+ */
+$wgLocalMessageCache = false;
 
 
 # Language settings
@@ -579,6 +613,7 @@ $wgDisableLangConversion = false;
 
 # Use article validation feature; turned off by default
 $wgUseValidation = false;
+$wgValidationMaxTopics = 25; # Maximum number of topics
 $wgValidationForAnons = true ;
 
 # Whether to use zhdaemon to perform Chinese text processing
@@ -702,20 +737,19 @@ $wgUseCommaCount = false;
 */
 $wgHitcounterUpdateFreq = 1;
 
-# User rights settings
-#
-#  It's not 100% safe, there could be security hole using that one. Use at your
-# own risks.
-
-$wgWhitelistRead = false;	# Pages anonymous user may see, like: = array ( "Main Page", "Special:Userlogin", "Wikipedia:Help");
-
+# Basic user rights and block settings
 $wgAllowAnonymousMinor = false; # Allow anonymous users to mark changes as 'minor'
-
 $wgSysopUserBans        = true; # Allow sysops to ban logged-in users
 $wgSysopRangeBans		= true; # Allow sysops to ban IP ranges
-
 $wgAutoblockExpiry		= 86400; # Number of seconds before autoblock entries expire
 $wgBlockAllowsUTEdit    = false; # Blocks allow users to edit their own user talk page
+
+# Pages anonymous user may see as an array, e.g.:
+# array ( "Main Page", "Special:Userlogin", "Wikipedia:Help");
+# NOTE: This will only work if $wgGroupPermissions['*']['read'] 
+# is false -- see below. Otherwise, ALL pages are accessible,
+# regardless of this setting.
+$wgWhitelistRead = false;	
 
 /**
  * Permission keys given to users in each group.
@@ -724,6 +758,9 @@ $wgBlockAllowsUTEdit    = false; # Blocks allow users to edit their own user tal
  * combined with the permissions of all groups that a given user is listed
  * in in the user_groups table.
  *
+ * Functionality to make pages inaccessible has not been extensively tested 
+ * for security. Use at your own risk!
+ * 
  * This replaces wgWhitelistAccount and wgWhitelistEdit
  */
 $wgGroupPermissions = array();
@@ -756,10 +793,8 @@ $wgGroupPermissions['sysop']['reupload']        = true;
 $wgGroupPermissions['sysop']['reupload-shared'] = true;
 
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
-// Used by the Special:Renameuser extension
-$wgGroupPermissions['bureaucrat']['renameuser'] = true;
-// read/write access to Special:Namespaces
 $wgGroupPermissions['bureaucrat']['namespaces'] = true;
+
 /**
  * The developer group is deprecated, but can be activated if need be
  * to use the 'lockdb' and 'unlockdb' special pages. Those require
@@ -923,6 +958,15 @@ $wgDisableCookieCheck = false;
 /**  Whether to allow inline image pointing to other websites */
 $wgAllowExternalImages = true;
 
+/** If the above is false, you can specify an exception here. Image URLs 
+  * that start with this string are then rendered, while all others are not.
+  * You can use this to set up a trusted, simple repository of images.
+  *
+  * Example: 
+  * $wgAllowExternalImagesFrom = 'http://127.0.0.1/'; 
+  */
+$wgAllowExternalImagesFrom = '';
+
 /** Disable database-intensive features */
 $wgMiserMode = false;
 /** Disable all query pages if miser mode is on, not just some */
@@ -968,6 +1012,7 @@ $wgDebugSquid = false;
 
 $wgDisableCounters = false;
 $wgDisableTextSearch = false;
+$wgDisableSearchContext = false;
 /**
  * If you've disabled search semi-permanently, this also disables updates to the
  * table. If you ever re-enable, be sure to rebuild the search table.
@@ -1128,6 +1173,12 @@ $wgSVGConverter = 'ImageMagick';
 $wgSVGConverterPath = '';
 /** Don't scale a SVG larger than this unless its native size is larger */
 $wgSVGMaxSize = 1024;
+/** 
+ * Don't thumbnail an image if it will use too much working memory 
+ * Default is 50 MB if decompressed to RGBA form, which corresponds to 
+ * 12.5 million pixels or 3500x3500
+ */
+$wgMaxImageArea = 1.25e7;
 
 /** Set $wgCommandLineMode if it's not set already, to avoid notices */
 if( !isset( $wgCommandLineMode ) ) {
@@ -1320,6 +1371,13 @@ $wgUseSiteCss = true;
 /** Filter for Special:Randompage. Part of a WHERE clause */
 $wgExtraRandompageSQL = false;
 
+/**
+ * Enable the Special:Unwatchedpages special page, turned off by default  since
+ * most would consider this privelaged information as it could be used as a
+ * list of pages to vandalize.
+ */
+$wgEnableUnwatchedpages = false;
+
 /** Allow the "info" action, very inefficient at the moment */
 $wgAllowPageInfo = false;
 
@@ -1338,7 +1396,11 @@ $wgFeedLimit = 50;
 
 /** _Minimum_ timeout for cached Recentchanges feed, in seconds.
  * A cached version will continue to be served out even if changes
- * are made, until this many seconds runs out since the last render. */
+ * are made, until this many seconds runs out since the last render.
+ *
+ * If set to 0, feed caching is disabled. Use this for debugging only;
+ * feed generation can be pretty slow with diffs.
+ */
 $wgFeedCacheTimeout = 60;
 
 /** When generating Recentchanges RSS/Atom feed, diffs will not be generated for

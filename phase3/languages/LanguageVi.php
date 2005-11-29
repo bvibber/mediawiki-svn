@@ -557,6 +557,7 @@ Xem thêm [[{{ns:4}}:Trợ giúp cho Lựa chọn cá nhân]].",
 'skin'              => 'Ngoại hình',
 'math'				=> 'Công thức toán',
 'dateformat'		=> 'Ngày tháng',
+'datedefault' => 'Không lựa chọn',
 'math_failure'		=> 'Lỗi toán',
 'math_unknown_error'	=> 'lỗi chưa rõ',
 'math_unknown_function'	=> 'hàm chưa rõ',
@@ -656,7 +657,6 @@ Sau khi truyền hình lên:
 'copyrightpage' => "{{ns:4}}:Bản quyền",
 'copyrightpagename' => "giấy phép {{SITENAME}}",
 'uploadedfiles' => "Đã tải xong",
-'ignorewarning' => "Cứ lưu tập tin, bỏ qua cảnh báo.",
 'minlength'	=> "Tên phải dài hơn hai chữ.",
 'illegalfilename'	=> 'Tên « $1 » có chứa ký tự không dùng được cho tên trang. Xin hãy đổi tên và tải lại.',
 'badfilename' => 'Đổi thành tên « $1 ».',
@@ -939,7 +939,7 @@ Những sửa đổi đối với trang này và trang thảo luận của nó s
 'undeletebtn' => 'Khôi phục',
 'undeletedarticle' => "đã khôi phục \"$1\"",
 'undeletedrevisions' => "$1 bản được khôi phục",
-'undeletedtext'   => "[[$1]] đã được khôi phục. Xem danh sách các xóa bỏ và khôi phục tại [[Đặc_biệt:Log/delete]].",
+'undeletedtext'   => "[[:$1|$1]] đã được khôi phục. Xem danh sách các xóa bỏ và khôi phục tại [[Đặc_biệt:Log/delete]].",
 
 # Contributions
 'contributions' => 'Đóng góp',
@@ -1559,11 +1559,11 @@ class LanguageVi extends LanguageUtf8 {
 	}
 
 	var $digitTransTable = array(
-		',' => '',
+		',' => '.',
 		'.' => ','
 	);
 
-	function formatNum( $number, $year ) {
+	function formatNum( $number, $year = false ) {
 		return !$year ? strtr($this->commafy($number), $this->digitTransTable ) : $number;
 	}
 

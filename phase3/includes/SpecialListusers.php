@@ -61,12 +61,15 @@ class ListUsersPage extends QueryPage {
 		
 		$batch = new LinkBatch;
 		while ( $row = $db->fetchObject( $res ) ) {
-			$batch->addObj( Title::makeTitleSafe( NS_USER, $row->title ) );
+			$batch->addObj( Title::makeTitleSafe( $row->namespace, $row->title ) );
 		}
 		$batch->execute( $wgLinkCache );
 
 		// Back to start for display
-		$db->dataSeek( $res, 0 );
+		if( $db->numRows( $res ) > 0 ) {
+			// If there are no rows we get an error seeking.
+			$db->dataSeek( $res, 0 );
+		}
 	}
 
 	/**
@@ -107,7 +110,7 @@ class ListUsersPage extends QueryPage {
 		$out .= wfMsgHtml( 'specialloguserlabel' ) . '<input type="text" name="username" /> ';
 
 		// OK button, end of form.
-		$out .= '<input type="submit" /></form>';
+		$out .= '<input type="submit" value="' . wfMsgHtml( 'allpagessubmit' ) . '" /></form>';
 		// congratulations the form is now build
 		return $out;	
 	}
@@ -173,21 +176,8 @@ class ListUsersPage extends QueryPage {
 	}
 
 	function formatResult( $skin, $result ) {
-		global $wgContLang,$wgNamespaces;
-
-		if( is_object( $this->previousResult ) &&
-			(is_null( $result ) || ( $this->previousResult->title != $result->title ) ) ) {
-			// Different username, give back name(group1,group2)
-			$name = $skin->makeLink( $wgNamespaces[$this->previousResult->namespace]->getDefaultName() . ':' . $this->previousResult->title, $this->previousResult->title );
-			$name .= $this->concatGroups ? ' ('.substr($this->concatGroups,0,-1).')' : '';
-			$this->clearGroups();
-		}
-
-		if( is_object( $result ) && $result->type != '') {
-			$group = Group::newFromId( intval( strstr( $result->type, ' ' ) ) );
-			if ( $group ) {
-				$groupName = $group->getExpandedName();
-				$this->appendGroups( $skin->makeLink( wfMsgForContent( 'administrators' ), $groupName ) );
+		global $wgContLang;
+		
 		$userPage = Title::makeTitle( $result->namespace, $result->title );
 		$name = $skin->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) );
 		

@@ -45,6 +45,7 @@ class BackupReader {
 	function handleRevision( $rev ) {
 		$title = $rev->getTitle();
 		if (!$title) {
+			$this->progress( "Got bogus revision with null title!" );
 			return;
 		}
 		$display = $title->getPrefixedText();
@@ -88,12 +89,12 @@ class BackupReader {
 			$filename = 'compress.zlib://' . $filename;
 		}
 		$file = fopen( $filename, 'rt' );
-		$this->importFromHandle( $file );
+		return $this->importFromHandle( $file );
 	}
 
 	function importFromStdin() {
 		$file = fopen( 'php://stdin', 'rt' );
-		$this->importFromHandle( $file );
+		return $this->importFromHandle( $file );
 	}
 
 	function importFromHandle( $handle ) {
@@ -106,8 +107,12 @@ class BackupReader {
 		$this->importCallback =  $importer->setRevisionCallback(
 			array( &$this, 'handleRevision' ) );
 
-		$importer->doImport();
+		return $importer->doImport();
 	}
+}
+
+if( wfReadOnly() ) {
+	die( "Wiki is in read-only mode; you'll need to disable it for import to work.\n" );
 }
 
 $reader = new BackupReader();
@@ -122,9 +127,15 @@ if( isset( $options['dry-run'] ) ) {
 }
 
 if( isset( $args[0] ) ) {
-	$reader->importFromFile( $args[0] );
+	$result = $reader->importFromFile( $args[0] );
 } else {
-	$reader->importFromStdin();
+	$result = $reader->importFromStdin();
+}
+
+if( WikiError::isError( $result ) ) {
+	echo $result->getMessage() . "\n";
+} else {
+	echo "Done!\n";
 }
 
 ?>

@@ -11,8 +11,8 @@
 	NS_TALK           => "Diskusjon",
 	NS_USER           => "Bruker",
 	NS_USER_TALK      => "Brukerdiskusjon",
-	NS_PROJECT        => "Wikipedia",
-	NS_PROJECT_TALK   => "Wikipedia-diskusjon",
+	NS_PROJECT        => $wgMetaNamespace,
+	NS_PROJECT_TALK   => $wgMetaNamespace . "-diskusjon",
 	NS_IMAGE          => "Bilde",
 	NS_IMAGE_TALK     => "Bildediskusjon",
 	NS_MEDIAWIKI      => "MediaWiki",
@@ -536,7 +536,6 @@ opp sist. Alle de viste tidene er tjenerens tid (UTC).
 "copyrightpage" => "Wikipedia:Opphavsrett",
 "copyrightpagename" => "Wikipedia opphavsrett",
 "uploadedfiles"	=> "Filer som er lastet opp",
-"ignorewarning"	=> "Ignorer advarselen og lagre filen likevel.",
 "minlength"		=> "Navnet på filen må bestå av minst tre bokstaver.",
 "badfilename"	=> "Navnet på filen er blitt endret til \"$1\".",
 "badfiletype"	=> "\".$1\" er ikke et av de anbefalte filformatene.",
@@ -797,7 +796,7 @@ på siden.",
 "undeleterevision" => "Slettet versjon fra $1",
 "undeletebtn" => "Gjenopprett!",
 "undeletedarticle" => "gjenopprettet \"$1\"",
-"undeletedtext"   => "Artikkelen [[$1]] er gjenopprettet.
+"undeletedtext"   => "Artikkelen [[:$1|$1]] er gjenopprettet.
 Se [[Wikipedia:Slettingslogg]] for en oversikt over nylige
 slettinger og gjenopprettelser.",
 
@@ -954,26 +953,24 @@ class LanguageNo extends LanguageUtf8 {
 		global $wgSkinNamesNo;
 		return $wgSkinNamesNo;
 	}
-
-
-	function date( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$d = (0 + substr( $ts, 6, 2 )) . ". " .
-		  $this->getMonthAbbreviation( substr( $ts, 4, 2 ) ) . " " .
-		  substr( $ts, 0, 4 );
-		return $d;
+	
+	function formatMonth( $month, $format ) {
+		return $this->getMonthAbbreviation( $month );
 	}
-
-	function time( $ts, $adj = false ) {
-		if ( $adj ) { $ts = $this->userAdjust( $ts ); }
-
-		$t = substr( $ts, 8, 2 ) . ":" . substr( $ts, 10, 2 );
-		return $t;
+	
+	function formatDay( $day, $format ) {
+		return parent::formatDay( $day, $format ) . '.';
 	}
-
-	function timeanddate( $ts, $adj = false ) {
-		return $this->date( $ts, $adj ) . " kl." . $this->time( $ts, $adj );
+	
+	function timeanddate( $ts, $adj = false, $format = false, $timecorrection = false ) {
+		$format = $this->dateFormat( $format );
+		if( $format == MW_DATE_ISO ) {
+			return parent::timeanddate( $ts, $adj, $format, $timecorrection );
+		} else {
+			return $this->date( $ts, $adj, $format, $timecorrection ) .
+				" kl." .
+				$this->time( $ts, $adj, $format, $timecorrection );
+		}
 	}
 
 	function formatNum( $number ) {

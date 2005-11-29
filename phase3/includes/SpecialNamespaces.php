@@ -126,7 +126,7 @@ class NamespaceForm {
 		$namespace_save_changes=wfMsg('namespace_save_changes');
 				
 		$htmlform=<<<END
-<form name="changenamespaces" method="get" action="{$action}">
+<form name="changenamespaces" method="POST" action="{$action}">
 <input type="hidden" name="nsAction" value="changenamespaces">
 <input type="hidden" name="wpEditToken" value="{$token}" />
 END;
@@ -143,7 +143,7 @@ END;
 			
 			# maybe make HTMLnamespaceselector more flexible and use
 			# it instead here
-			if($index>=NS_MAIN) {
+			if(!$ns->isSpecial()) {
 
 				foreach ( $name_array as $arr_index => $arr_name ) {
 					if( $arr_index < NS_MAIN && $arr_name!=$noparent)
@@ -302,7 +302,7 @@ END;
 				$delete = 'N/A';
 			 } else {
 				$nameinput = "<input name=\"ns{$index}Name{$nsi}\" size=\"20\" value=\"{$nsname}\">";
-				$delete = "<input name=\"ns{$index}Delete\" type=\"checkbox\" value=\"{$nsi}\">";
+				$delete = "<input name=\"ns{$index}Delete{$nsi}\" type=\"checkbox\" value=\"1\">";
 			}
 			$htmlform.=
 <<<END
@@ -408,21 +408,69 @@ END;
 	}
 
 	function changeNamespaces() {
-		global $wgOut;
+	
+	global $wgOut, $wgNamespaces, $wgRequest;
+		$newns=array();
+		foreach($wgNamespaces as $ns) {
+			$nsindex=$ns->getIndex();
+			$newns[$nsindex]=new Namespace();
+			$newns[$nsindex]->setIndex($nsindex);			
+			
+			# Canonical names cannot be changed through the UI
+			$newns[$nsindex]->setCanonicalNameIndex(
+				$ns->getCanonicalNameIndex()
+			);
+			$dvar="ns{$nsindex}Default";
+			$dreq=$wgRequest->getIntOrNull($dvar);
+			if(!is_null($dvar)) {
+				$newns[$nsindex]->setDefaultNameIndex($dvar);
+			} else {
+				$newns[$nsindex]->setDefaultNameIndex(
+					$ns->getDefaultNameIndex()
+				);
+			}
+
+			if(!$ns->isSpecial()) {
+				$subvar="ns{$nsindex}Subpages";
+				$searchvar="ns{$nsindex}Search";
+				$hiddenvar="ns{$nsindex}Hidden";
+				$prefixvar="ns{$nsindex}Linkprefix";
+				$parentvar="ns{$nsindex}Parent";
+				$subpages=$wgRequest->getBool($subvar);
+				$searchdefault=$wgRequest->getBool($searchvar);
+				$hidden=$wgRequest->getBool($hiddenvar);
+				$prefix=$wgRequest->getBool($prefixvar);
+				$parent=$wgRequest->getIntOrNull($parentvar);
+				$newns[$nsindex]->setSubpages($subpages);
+				$newns[$nsindex]->setSearchedByDefault($searchdefault);
+				$newns[$nsindex]->setHidden($hidden);
+				$newns[$nsindex]->setTarget($prefix);
+				if(array_key_exists($parent,$wgNamespaces)) {
+					$newns[$nsindex]->setParentIndex($parent);
+				}				
+			}
+
+			foreach($ns->names as $nameindex=>$name) {
+				$var="ns{$nsindex}Name{$nameindex}";
+				if($req=$wgRequest->getText($var)) {
+					$newns[$nsindex]->names[$nameindex]=$req;
+				}
+				$delvar="ns{$nsindex}Delete{$nameindex}";
+				if($wgRequest->getInt($delvar)) {
+					$newns[$nsindex]->removeNameByIndex($nameindex);
+				}
+			}
+
+		}
 		
-		# Use wgNamespaces as basis
-		# Check up to highest name array value from wgNamespaces
-		# + up to 3 default names
-		# do delete last
-		# For each namespace:
-		# clone
-		# testSave
-		#
-		# if all testSave successful
-		# save the ones which are modified
-		#
-		#
-		#$this->showForm();
+		foreach($newns as $nns) {
+			$nrv=$nns->testSave();
+			if($nrv[NS_RESULT]!=NS_NAME_ISSUES) {
+				$this->showForm(wfMsg("namespace_error",$nns->getDefaultName()),$this->nameIssues($nrv));
+				return false;
+			}
+		}
+		$wgOut->addWikiText("Seems OK!");
 		return true;
 	}
 	

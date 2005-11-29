@@ -6,6 +6,7 @@
  * @subpackage SpecialPage
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
+ * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
@@ -77,19 +78,19 @@ class Licenses {
 		$i = $count = 0;
 		$len = strlen( $str );
 		
-		while ($len < $i && $str[$i++] == '*')
+		wfSuppressWarnings();
+		while ($str[$i++] == '*')
 			++$count;
-
+		wfRestoreWarnings();
+	
 		return array( $count, ltrim( $str, '* ' ) );
 	}
 	
 	function stackItem( &$list, $path, $item ) {
 		$position =& $list;
-		if ( $path ) {
-			foreach ( $path as $key ) {
+		if ( $path )
+			foreach( $path as $key )
 				$position =& $position[$key];
-			}
-		}
 		$position[] = $item;
 	}
 
@@ -110,7 +111,7 @@ class Licenses {
 					$this->msg( $val->text ),
 					array(
 						'value' => $val->template,
-						'title' => $val->template
+						'title' => '{{' . $val->template . '}}'
 					),
 					$depth
 				);
