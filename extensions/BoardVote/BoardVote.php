@@ -155,7 +155,7 @@ class BoardVotePage extends SpecialPage {
 		global $wgBoardCandidates, $wgOut;
 		
 		$thisTitle = Title::makeTitle( NS_SPECIAL, "Boardvote" );
-		$action = $thisTitle->getLocalURL( "action=vote" );
+		$action = $thisTitle->escapeLocalURL( "action=vote" );
 		if ( $this->mHasVoted ) {
 			$intro = wfMsg( "boardvote_intro_change" );
 		} else {
