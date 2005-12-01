@@ -26,6 +26,8 @@ $wgNewTables = array(
 	array( 'user_newtalk',  'patch-usernewtalk2.sql' ),
 	array( 'transcache',	'patch-transcache.sql' ),
 	array( 'trackbacks',	'patch-trackbacks.sql' ),
+	array( 'namespace',	'patch-namespace.sql' ),
+	array( 'namespace_names', 'patch-namespace_names.sql' ),
 );
 
 $wgNewFields = array(
@@ -671,6 +673,19 @@ function do_watchlist_null() {
 
 }
 
+function do_namespace_initialization() {
+	global $wgDatabase;
+
+	$res = $wgDatabase->selectField( 'namespace', 'COUNT(*)' );
+	if ( $res == 0 ) {
+		echo "Bootstraping namespace and namespace_names...";
+		require_once 'nsBootstrap.php';
+		echo "done\n";
+	} else {
+		echo "namespace and namespace_names are already populated, skipping\n";
+	}
+}
+
 function do_all_updates() {
 	global $wgNewTables, $wgNewFields, $wgRenamedTables;
 
@@ -718,6 +733,8 @@ function do_all_updates() {
 	//do_image_index_update(); flush();
 
 	do_logging_timestamp_index(); flush();
+
+	do_namespace_initialization(); flush();
 
 	initialiseMessages(); flush();
 }
