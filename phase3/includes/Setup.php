@@ -152,47 +152,7 @@ if ( !$wgDBservers ) {
 $wgLoadBalancer = LoadBalancer::newFromParams( $wgDBservers, false, $wgMasterWaitTimeout );
 $wgLoadBalancer->loadMasterPos();
 
-# Initialize namespaces
-# Default namespaces are those to which any synonyms should *redirect*
-#
-# select namespace.ns_number,namespace_names.ns_name,namespace_names.ns_default fromnamespace, namespace_names where namespace.ns_id=namespace_names.ns_id;
-global $wgNamespaces;
-$dbr =& wfGetDB( DB_SLAVE );
-$res = $dbr->select( 'namespace', array('ns_id','ns_search_default','ns_subpages', 'ns_parent', 'ns_target', 'ns_system', 'ns_hidden'),
-                     array(),
-   		  'Setup', array('ORDER BY'=>'ns_id ASC') );
 
-while( $row = $dbr->fetchObject( $res ) ){	
-	# See Namespace.php for documentation on all namespace
-	# properties which are accessed below.	
-	$id=$row->ns_id;
-	$wgNamespaces[$id]=new Namespace();
-	$wgNamespaces[$id]->setIndex($id);
-	$wgNamespaces[$id]->setSystemType($row->ns_system);
-	$wgNamespaces[$id]->setSearchedByDefault($row->ns_search_default);
-	$wgNamespaces[$id]->setSubpages($row->ns_subpages);
-	$wgNamespaces[$id]->setHidden($row->ns_hidden);
-	$wgNamespaces[$id]->setTarget($row->ns_target);
-	$wgNamespaces[$id]->setParentIndex($row->ns_parent);
-	$res2 = $dbr->select( 'namespace_names', array('ns_name','ns_default,ns_canonical'),
-	                      array('ns_id = '. $row->ns_id),
-			      'Setup', array('order by'=>'ns_default desc,ns_canonical desc,ns_id asc'));
-	
-	# Add the list of valid names
-	while($row2 = $dbr->fetchObject($res2) ) {
-		$nsi=$wgNamespaces[$id]->addName($row2->ns_name);
-		if($row2->ns_default) {
-			$wgNamespaces[$id]->setDefaultNameIndex($nsi);
-		}
-		if($row2->ns_canonical) {
-			$wgNamespaces[$id]->setCanonicalNameIndex($nsi);
-		}
-	}
-}
-$dbr->freeResult( $res );
-#####
-
-wfProfileOut( $fname.'-database' );
 wfProfileIn( $fname.'-language1' );
 
 require_once( "$IP/languages/Language.php" );
@@ -230,6 +190,54 @@ $wgContLang = setupLangObj( $wgContLangClass );
 $wgContLang->initEncoding();
 
 wfProfileOut( $fname.'-language1' );
+
+# Initialize namespaces
+# Default namespaces are those to which any synonyms should *redirect*
+#
+# select namespace.ns_number,namespace_names.ns_name,namespace_names.ns_default fromnamespace, namespace_names where namespace.ns_id=namespace_names.ns_id;
+global $wgNamespaces; // redundant?
+$wgNamespaces = array();
+
+if ( ! defined( 'MEDIAWIKI_INSTALL' ) ) {
+	$dbr =& wfGetDB( DB_SLAVE );
+	$res = $dbr->select( 'namespace',
+		array('ns_id','ns_search_default','ns_subpages', 'ns_parent', 'ns_target', 'ns_system', 'ns_hidden'),
+		array(),
+	   	'Setup',
+		array('ORDER BY'=>'ns_id ASC')
+	);
+	
+	while( $row = $dbr->fetchObject( $res ) ){	
+		# See Namespace.php for documentation on all namespace
+		# properties which are accessed below.	
+		$id=$row->ns_id;
+		$wgNamespaces[$id]=new Namespace();
+		$wgNamespaces[$id]->setIndex($id);
+		$wgNamespaces[$id]->setSystemType($row->ns_system);
+		$wgNamespaces[$id]->setSearchedByDefault($row->ns_search_default);
+		$wgNamespaces[$id]->setSubpages($row->ns_subpages);
+		$wgNamespaces[$id]->setHidden($row->ns_hidden);
+		$wgNamespaces[$id]->setTarget($row->ns_target);
+		$wgNamespaces[$id]->setParentIndex($row->ns_parent);
+		$res2 = $dbr->select( 'namespace_names', array('ns_name','ns_default,ns_canonical'),
+		                      array('ns_id = '. $row->ns_id),
+				      'Setup', array('order by'=>'ns_default desc,ns_canonical desc,ns_id asc'));
+		
+		# Add the list of valid names
+		while($row2 = $dbr->fetchObject($res2) ) {
+			$nsi=$wgNamespaces[$id]->addName($row2->ns_name);
+			if($row2->ns_default) {
+				$wgNamespaces[$id]->setDefaultNameIndex($nsi);
+			}
+			if($row2->ns_canonical) {
+				$wgNamespaces[$id]->setCanonicalNameIndex($nsi);
+			}
+		}
+	}
+	$dbr->freeResult( $res );
+}
+
+wfProfileOut( $fname.'-database' );
 wfProfileIn( $fname.'-User' );
 
 # Skin setup functions
