@@ -302,9 +302,10 @@ class User {
 		$this->mGroups = array();
 		$this->mOptions = User::getDefaultOptions();
 
-		foreach( $wgNamespaces as $ns ) {
-			$this->mOptions['searchNs'.$ns->getIndex()] = $ns->isSearchedByDefault();				
-		}
+		if ( ! defined( 'MEDIAWIKI_INSTALL' ) )
+			foreach( $wgNamespaces as $ns ) {
+				$this->mOptions['searchNs'.$ns->getIndex()] = $ns->isSearchedByDefault();				
+			}
 		unset( $this->mSkin );
 		$this->mDataLoaded = false;
 		$this->mBlockedby = -1; # Unset
