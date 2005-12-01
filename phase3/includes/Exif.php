@@ -105,14 +105,6 @@ class Exif {
 	/**#@-*/
 
 	/**
-	 * The private log to log to
-	 *
-	 * @var string
-	 * @access private
-	 */
-	var $log = 'exif';
-
-	/**
 	 * Constructor
 	 *
 	 * @param string $file
@@ -305,7 +297,9 @@ class Exif {
 
 		$this->file = $file;
 		$this->basename = basename( $this->file );
+		
 		$this->makeFlatExifTags();
+		
 		$this->debugFile( $this->basename, __FUNCTION__, true );
 		wfSuppressWarnings();
 		$data = exif_read_data( $this->file );
@@ -1000,6 +994,23 @@ class FormatExif {
 			case 'Software':
 				$tags[$tag] = $this->msg( $tag, '', $val );
 				break;
+			
+			case 'ExposureTime':
+				// Show the pretty fraction as well as decimal version
+				$tags[$tag] = wfMsg( 'exif-exposuretime-format',
+					$this->formatFraction( $val ), $this->formatNum( $val ) );
+				break;
+			
+			case 'FNumber':
+				$tags[$tag] = wfMsg( 'exif-fnumber-format',
+					$this->formatNum( $val ) );
+				break;
+			
+			case 'FocalLength':
+				$tags[$tag] = wfMsg( 'exif-focallength-format',
+					$this->formatNum( $val ) );
+				break;
+			
 			default:
 				$tags[$tag] = $this->formatNum( $val );
 				break;
@@ -1041,5 +1052,53 @@ class FormatExif {
 			return $m[2] != 0 ? $m[1] / $m[2] : $num;
 		else
 			return $num;
+	}
+	
+	/**
+	 * Format a rational number, reducing fractions
+	 *
+	 * @access private
+	 *
+	 * @param mixed $num The value to format
+	 * @return mixed A floating point number or whatever we were fed
+	 */
+	function formatFraction( $num ) {
+		if ( preg_match( '/^(\d+)\/(\d+)$/', $num, $m ) ) {
+			$numerator = intval( $m[1] );
+			$denominator = intval( $m[2] );
+			$gcd = $this->gcd( $numerator, $denominator );
+			if( $gcd != 0 ) {
+				// 0 shouldn't happen! ;)
+				return $numerator / $gcd . '/' . $denominator / $gcd;
+			}
+		}
+		return $this->formatNum( $num );
+	}
+
+	/**
+	 * Calculate the greatest common divisor of two integers.
+	 *
+	 * @param int $a
+	 * @param int $b
+	 * @return int
+	 * @access private
+	 */
+	function gcd( $a, $b ) {
+		/*
+			// http://en.wikipedia.org/wiki/Euclidean_algorithm
+			// Recursive form would be:
+			if( $b == 0 )
+				return $a;
+			else
+				return gcd( $b, $a % $b );
+		*/
+		while( $b != 0 ) {
+			$remainder = $a % $b;
+			
+			// tail recursion...
+			$a = $b;
+			$b = $remainder;
+		}
+		return $a;
 	}
 }
