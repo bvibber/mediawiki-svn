@@ -55,8 +55,6 @@ if($wgMetaNamespace === FALSE)
 );
 
 $wgNamespaceSynonymsEn = array(
-	NS_MEDIA => array( 'Direct' ),
-	NS_PROJECT => array( 'Project' ),
 	NS_PROJECT_TALK => array( 'Project_talk' ),
 	NS_IMAGE => array( 'Image', 'Sound', 'Video' ),
 	NS_IMAGE_TALK => array( 'Image_talk', 'Sound_talk', 'Video_talk' )
@@ -2320,6 +2318,11 @@ class Language {
 		$this->mConverter = new fakeConverter($this);
 	}
 
+	/**#@+
+	 * Only used for bootstrapping
+	 *
+	 * @deprecated
+	 */
 	function getNamespaceSynonyms() {
 		global $wgNamespaceSynonymsEn;
 		return $wgNamespaceSynonymsEn;
@@ -2388,6 +2391,7 @@ class Language {
 		}
 		return false;
 	}
+	/**#@-*/
 
 	/**
 	 * Exports the default user options as defined in
