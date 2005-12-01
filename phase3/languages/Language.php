@@ -27,13 +27,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 # encapsulates some of the magic-ness.
 #
 
-#if($wgMetaNamespace === FALSE)
-#	$wgMetaNamespace = str_replace( ' ', '_', $wgSitename );
+if($wgMetaNamespace === FALSE)
+	$wgMetaNamespace = str_replace( ' ', '_', $wgSitename );
 
 
 # Default namespace names to be loaded upon installation
 # Change this into an array of arrays aka allnamespaces
-/* private */ $wgInstallNamespaceNamesEn = array(
+/* private */ $wgNamespaceNamesEn = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Special',
 	NS_MAIN	            => '',
@@ -42,8 +42,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	NS_USER_TALK        => 'User_talk',
 	NS_PROJECT          => $wgMetaNamespace,
 	NS_PROJECT_TALK     => $wgMetaNamespace . '_talk',
-	NS_IMAGE            => 'Image',
-	NS_IMAGE_TALK       => 'Image_talk',
+	NS_IMAGE            => 'File',
+	NS_IMAGE_TALK       => 'File_talk',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'MediaWiki_talk',
 	NS_TEMPLATE         => 'Template',
@@ -52,6 +52,14 @@ if( defined( 'MEDIAWIKI' ) ) {
 	NS_HELP_TALK        => 'Help_talk',
 	NS_CATEGORY         => 'Category',
 	NS_CATEGORY_TALK    => 'Category_talk',
+);
+
+$wgNamespaceSynonymsEn = array(
+	NS_MEDIA => array( 'Direct' ),
+	NS_PROJECT => array( 'Project' ),
+	NS_PROJECT_TALK => array( 'Project_talk' ),
+	NS_IMAGE => array( 'Image', 'Sound', 'Video' ),
+	NS_IMAGE_TALK => array( 'Image_talk', 'Sound_talk', 'Video_talk' )
 );
 
 #if(isset($wgExtraNamespaces)) {
@@ -2310,6 +2318,75 @@ class Language {
 			}
 		}
 		$this->mConverter = new fakeConverter($this);
+	}
+
+	function getNamespaceSynonyms() {
+		global $wgNamespaceSynonymsEn;
+		return $wgNamespaceSynonymsEn;
+	}
+
+	function getNamespaces() {
+		global $wgNamespaceNamesEn;
+		return $wgNamespaceNamesEn;
+	}
+
+	/**
+	 * A convenience function that returns the same thing as
+	 * getNamespaces() except with the array values changed to ' '
+	 * where it found '_', useful for producing output to be displayed
+	 * e.g. in <select> forms.
+	 *
+	 * @return array
+	 */
+	function getFormattedNamespaces() {
+		$ns = $this->getNamespaces();
+		foreach($ns as $k => $v) {
+			$ns[$k] = strtr($v, '_', ' ');
+		}
+		return $ns;
+	}
+
+	/**
+	 * Get a namespace value by key
+	 * <code>
+	 * $mw_ns = $wgContLang->getNsText( NS_MEDIAWIKI );
+	 * echo $mw_ns; // prints 'MediaWiki'
+	 * </code>
+	 *
+	 * @param int $index the array key of the namespace to return
+	 * @return mixed, string if the namespace value exists, otherwise false
+	 */
+	function getNsText( $index ) {
+		$ns = $this->getNamespaces();
+		return isset( $ns[$index] ) ? $ns[$index] : false;
+	}
+
+	/**
+	 * A convenience function that returns the same thing as
+	 * getNsText() except with '_' changed to ' ', useful for
+	 * producing output.
+	 *
+	 * @return array
+	 */
+	function getFormattedNsText( $index ) {
+		$ns = $this->getNsText( $index );
+		return strtr($ns, '_', ' ');
+	}
+
+	/**
+	 * Get a namespace key by value, case insensetive.
+	 *
+	 * @param string $text
+	 * @return mixed An integer if $text is a valid value otherwise false
+	 */
+	function getNsIndex( $text ) {
+		$ns = $this->getNamespaces();
+
+		foreach ( $ns as $i => $n ) {
+			if ( strcasecmp( $n, $text ) == 0)
+				return $i;
+		}
+		return false;
 	}
 
 	/**
