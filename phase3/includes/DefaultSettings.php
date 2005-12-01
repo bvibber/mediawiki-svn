@@ -1112,10 +1112,11 @@ $wgUploadSizeWarning = 150 * 1024;
 /** For compatibility with old installations set to false */
 $wgPasswordSalt = true;
 
-/** Which namespaces should support subpages?
- * See Language.php for a list of namespaces.
+/** 
+ * These two are used by the maintanance/nsBootstrap.php script to configure
+ * the initial settings for the wiki, to configure these at runtime use
+ * Special:Namespaces
  */
-/* deprecated 
 $wgNamespacesWithSubpages = array(
 	NS_TALK           => true,
  	NS_USER           => true,
@@ -1131,7 +1132,6 @@ $wgNamespacesWithSubpages = array(
 $wgNamespacesToBeSearchedDefault = array(
 	NS_MAIN           => true,
 );
-*/
 
 /** If set, a bold ugly notice will show up at the top of every page. */
 $wgSiteNotice = '';
