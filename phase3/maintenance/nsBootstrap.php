@@ -49,7 +49,6 @@ class NamespaceBootstrap {
 		$fname = 'NamespaceBootstrap::execute';
 		
 		foreach ( $this->mStdNs as $system => $id ) {
-
 			$subject = $this->getSubject( $id );
 			
 			$this->dbw->insert( 'namespace',
@@ -66,6 +65,23 @@ class NamespaceBootstrap {
 			);
 		}
 
+		foreach ( $this->mExtraNs as $id => $name ) {
+			$subject = $this->getSubject( $id );
+			
+			$this->dbw->insert( 'namespace',
+				array(
+					'ns_id' => $id,
+					'ns_system' => "NS_$id",
+					'ns_subpages' => $this->getSubpages( $id ),
+					'ns_search_default' => $this->getSearch( $id ),
+					'ns_target' => null,
+					'ns_parent' => $subject === $id ? null : $subject,
+					'ns_hidden' => null
+				),
+				$fname
+			);
+		}
+					
 		$nscache = array();
 
 		foreach ( $this->mContLangNs as $ns => $text ) {
