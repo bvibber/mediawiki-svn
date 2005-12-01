@@ -1190,7 +1190,7 @@ class Title {
 		if ( '' != $this->mInterwiki ) {
 			$p = $this->mInterwiki . ':';
 		}
-		if ( 0 != $this->mNamespace ) {
+		if ( 0 != $this->mNamespace && ! defined( 'MEDIAWIKI_INSTALL' ) ) {
 			$p .= $wgNamespaces[$this->mNamespace]->getDefaultName() . ':';
 		}
 		return $p . $name;
