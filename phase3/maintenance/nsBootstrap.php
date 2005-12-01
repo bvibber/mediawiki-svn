@@ -16,7 +16,7 @@ class NamespaceBootstrap {
 	var $mContLangNsSynonyms;
 
 	function NamespaceBootstrap() {
-		global $wgExtraNamespaces, $wgContLang;
+		global $wgExtraNamespaces, $wgContLang, $wgNamespaceSynonymsEn;
 		
 		$this->mStdNs = array(
 			'NS_MEDIA' => NS_MEDIA,
@@ -43,8 +43,13 @@ class NamespaceBootstrap {
 		$this->mExtraNs = isset( $wgExtraNamespaces ) ? $wgExtraNamespaces : array();
 
 		$this->mContLangNs = $wgContLang->getNamespaces();
-		$this->mContLangNsSynonyms = $wgContLang->getNamespaceSynonyms();
-
+		
+		if ( $wgNamespaceSynonymsEn == $wgContLang->getNamespaceSynonyms() && $wgContLang->getCode() !== 'en' )
+			$this->mContLangNsSynonyms = array();
+		else
+			$this->mContLangNsSynonyms = $wgContLang->getNamespaceSynonyms();
+		
+		
 		$this->dbw =& wfGetDB( DB_MASTER );
 	}
 
