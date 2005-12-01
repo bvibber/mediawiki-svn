@@ -665,6 +665,10 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				       'ss_total_views'   => 0,
 				       'ss_total_edits'   => 0,
 				       'ss_good_articles' => 0 ) );
+
+			print "<li>Bootstrapping namespace definitions...";
+			require_once '../maintenance/nsBootstrap.php';
+			
 			# setting up the db user
 			if( $conf->Root ) {
 				print "<li>Granting user permissions...</li>\n";
