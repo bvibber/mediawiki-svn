@@ -1,5 +1,6 @@
 <?php
 require_once 'counter.php';
+define( 'MEDIAWIKI_INSTALL', true ); // for namespaces
 /**
  * Run all updaters.
  *
