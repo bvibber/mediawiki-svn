@@ -55,7 +55,6 @@ if($wgMetaNamespace === FALSE)
 );
 
 $wgNamespaceSynonymsEn = array(
-	NS_PROJECT_TALK => array( 'Project_talk' ),
 	NS_IMAGE => array( 'Image', 'Sound', 'Video' ),
 	NS_IMAGE_TALK => array( 'Image_talk', 'Sound_talk', 'Video_talk' )
 );
