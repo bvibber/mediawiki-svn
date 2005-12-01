@@ -364,12 +364,16 @@ END;
 		$nsname=$wgRequest->getText('nsName');
 		$nstalkname=$wgRequest->getText('nsTalkName');
 		$nscreatetalk=$wgRequest->getBool('nsCreateTalk');
+
+		if(empty($nsname)) {
+			$this->showForm(wfMsg('namespace_name_missing'));
+		}
 		$dbr=&wfGetDB(DB_SLAVE);
 		$ns=new Namespace();
 		$newnameindex=$ns->addName($nsname);
 		if(is_null($newnameindex)) {
 			$this->showForm(wfMsg('namespace_error',$nsname),
-			wfMsg('namespace_name_illegal_characters', Namespace::getInvalidChars()));
+			wfMsg('namespace_name_illegal_characters', NS_CHAR));
 			return false;
 		}
 		$ns->setDefaultNameIndex($newnameindex);
@@ -383,7 +387,7 @@ END;
 			return false;
 		}
 		$newnamespaceindex=$nrv[NS_SAVE_ID];
-		if($nscreatetalk) {
+		if($nscreatetalk && !empty($nstalkname)) {
 			$talkns=new Namespace();
 			$talkns->setParentIndex($newnamespaceindex);
 			$talkns->setSubpages();
@@ -416,10 +420,7 @@ END;
 			$newns[$nsindex]=new Namespace();
 			$newns[$nsindex]->setIndex($nsindex);			
 			
-			# Canonical names cannot be changed through the UI
-			$newns[$nsindex]->setCanonicalNameIndex(
-				$ns->getCanonicalNameIndex()
-			);
+			# Which default name?
 			$dvar="ns{$nsindex}Default";
 			$dreq=$wgRequest->getIntOrNull($dvar);
 			if(!is_null($dvar)) {
@@ -450,15 +451,24 @@ END;
 				}				
 			}
 
+			# TODO: Newnames
 			foreach($ns->names as $nameindex=>$name) {
 				$var="ns{$nsindex}Name{$nameindex}";
 				if($req=$wgRequest->getText($var)) {
+					wfDebug("Name var $var contains $req\n");
 					$newns[$nsindex]->names[$nameindex]=$req;
 				}
 				$delvar="ns{$nsindex}Delete{$nameindex}";
 				if($wgRequest->getInt($delvar)) {
+					wfDebug("$delvar should be deleted.\n");
 					$newns[$nsindex]->removeNameByIndex($nameindex);
 				}
+			}
+
+			# Canonical names cannot be changed through the UI
+			if(!is_null($ns->getCanonicalNameIndex())) {
+				$cindex=$newns[$nsindex]->addName($ns->getCanonicalName());
+				$newns[$nsindex]->setCanonicalNameIndex($cindex);
 			}
 
 		}

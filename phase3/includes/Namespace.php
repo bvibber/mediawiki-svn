@@ -284,16 +284,12 @@ class Namespace {
 	
 	/* static */
 	function isValidName($name) {
-		if(preg_match("/[\-:]/",$name)) {
-			return false;
-		} else {
+		# Consist only of (at least one) valid char(s)
+		if(preg_match("/^".NS_CHAR."+$/",$name)) {
 			return true;
+		} else {
+			return false;
 		}
-	}
-	
-	/* static */
-	function getInvalidChars() {
-		return ': -';
 	}
 	
 	function getFormattedDefaultName() {
@@ -540,7 +536,7 @@ class Namespace {
 				$existsNew=array_key_exists($i, $this->names);
 				if($existsOld && $existsNew) {
 					if(strcasecmp($wgNamespaces[$index]->names[$i],
-					              $this->names[i])!=0) {
+					              $this->names[$i])!=0) {
 							$nameOperations[$this->names[$i]]=NS_NAME_MODIFY;
 					}
 				} elseif($existsOld && !$existsNew) {

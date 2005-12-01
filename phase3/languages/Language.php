@@ -2186,7 +2186,7 @@ will expire at $4.
 'namespace_created'=>'Namespace "$1" was successfully created.',
 'talk_namespace_created'=>'A corresponding talk (discussion) namespace has also been created.',
 'namespace_name_issues'=>'There are issues with the following name(s):',
-'namespace_name_illegal_characters'=>'The namespace name contains illegal characters. The following characters are not allowed in namespace names: \'\'\'$1\'\'\'',
+'namespace_name_illegal_characters'=>'The namespace name contains illegal characters. Only the following characters are allowed in namespace names: \'\'\'$1\'\'\'',
 'namespace_name_missing'=>'You have not entered a namespace name.',
 'namespace_name_dupe'=>'The namespace name is already in use. Please choose a different name.',
 'namespace_name_not_empty'=>'Some pages still refer to this namespace using this name. It canot be deleted or renamed until all links are changed.',
