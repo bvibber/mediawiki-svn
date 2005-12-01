@@ -1,6 +1,11 @@
 <?php
-error_reporting( E_ALL ^ ( E_NOTICE | E_WARNING ) );
-require_once 'commandLine.inc';
+// We can't depend on commandLine.inc because this has to be runnable from the installer
+global $wgLanguageCode;
+$wgContLanguageCode = $wgLanguageCode;
+$wgContLangClass = 'Language' . str_replace( '-', '_', ucfirst( $wgContLanguageCode ) );
+
+$wgContLang = setupLangObj( $wgContLangClass );
+$wgContLang->initEncoding();
 
 class NamespaceBootstrap {
 	var $mStdNs;
@@ -48,6 +53,7 @@ class NamespaceBootstrap {
 
 		$fname = 'NamespaceBootstrap::execute';
 		
+		// namespace table, standard namespaces
 		foreach ( $this->mStdNs as $system => $id ) {
 			$subject = $this->getSubject( $id );
 			
@@ -64,14 +70,15 @@ class NamespaceBootstrap {
 				$fname
 			);
 		}
-
+		
+		// namespace table, extra namespaces
 		foreach ( $this->mExtraNs as $id => $name ) {
 			$subject = $this->getSubject( $id );
 			
 			$this->dbw->insert( 'namespace',
 				array(
 					'ns_id' => $id,
-					'ns_system' => "NS_$id",
+					'ns_system' => null, // extra namespaces are null
 					'ns_subpages' => $this->getSubpages( $id ),
 					'ns_search_default' => $this->getSearch( $id ),
 					'ns_target' => null,
@@ -81,9 +88,13 @@ class NamespaceBootstrap {
 				$fname
 			);
 		}
-					
+
+		// Cache already inserted results so we won't get a case where
+		// we'll do a bogus insert because namespaces haven't been
+		// translated or the translation equals the original.
 		$nscache = array();
 
+		// namespace_names, content language
 		foreach ( $this->mContLangNs as $ns => $text ) {
 			if ( $text === '' || @$nscache[$ns] === $text )
 				continue;
@@ -93,15 +104,16 @@ class NamespaceBootstrap {
 			$this->dbw->insert( 'namespace_names',
 				array(
 					'ns_id' => $ns,
-					'ns_name' => $nscache[$ns],
+					'ns_name' => $text,
 					'ns_default' => 1,
-					'ns_canonical' => $ns < NS_MAIN ? 1 : 0
+					'ns_canonical' => 1
 				),
 				$fname
 			);
 			
 		}
 
+		// namespace_names, English fallbacks
 		foreach ( Language::getNamespaces() as $id => $text ) {
 			if ( @$nscache[$id] === $text || $text === '' )
 				continue;
@@ -119,6 +131,7 @@ class NamespaceBootstrap {
 			);
 		}
 
+		// namespace_names, synonyms 
 		foreach ( $this->mContLangNsSynonyms as $id => $synonyms )
 			foreach ( $synonyms as $synonym ) {
 				if ( $nscache[$id] === $synonym )
@@ -134,7 +147,24 @@ class NamespaceBootstrap {
 					$fname
 				);
 			}
+
+		// namespace_names, Project and Project_talk are special cases, should be canonical
+		foreach ( array( NS_PROJECT => 'Project', NS_PROJECT_TALK => 'Project_talk' ) as $id => $text ) {
+			if ( $nscache[$id] === $text )
+				continue;
+			$this->dbw->insert( 'namespace_names',
+				array(
+					'ns_id' => $id,
+					'ns_name' => $text,
+					'ns_default' => 0,
+					'ns_canonical' => 1
+				),
+				$fname
+			);
+		}
 		
+		// namespace_names, Import extra namespaces specified using
+		// legacy syntax.
 		foreach ( $this->mExtraNs as $id => $name ) {
 			$this->dbw->insert( 'namespace_names',
 				array(
@@ -161,25 +191,9 @@ class NamespaceBootstrap {
 		return @$wgNamespacesToBeSearchedDefault[$ns] ? 1 : 0;
 	}
 
-	/**
-	 * Check if the give namespace is a talk page
-	 * @return bool
-	 */
 	function isTalk( $index ) {
 		return ($index > 0)  // Special namespaces are negative
 			&& ($index % 2); // Talk namespaces are odd-numbered
-	}
-
-	/**
-	 * Get the talk namespace corresponding to the given index
-	 */
-	function getTalk( $index ) {
-		if ( $this->isTalk( $index ) ) {
-			return $index;
-		} else {
-			# FIXME
-			return $index + 1;
-		}
 	}
 
 	function getSubject( $index ) {
