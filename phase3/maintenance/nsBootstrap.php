@@ -14,6 +14,7 @@ class NamespaceBootstrap {
 
 	var $mContLangNs;
 	var $mContLangNsSynonyms;
+	var $mLanguageCode;
 
 	function NamespaceBootstrap() {
 		global $wgExtraNamespaces, $wgContLang, $wgNamespaceSynonymsEn;
@@ -41,10 +42,10 @@ class NamespaceBootstrap {
 		);
 
 		$this->mExtraNs = isset( $wgExtraNamespaces ) ? $wgExtraNamespaces : array();
-
 		$this->mContLangNs = $wgContLang->getNamespaces();
+		$this->mLanguageCode = $wgContLang->getCode();
 		
-		if ( $wgNamespaceSynonymsEn == $wgContLang->getNamespaceSynonyms() && $wgContLang->getCode() !== 'en' )
+		if ( $wgNamespaceSynonymsEn == $wgContLang->getNamespaceSynonyms() && $this->mLanguageCode !== 'en' )
 			$this->mContLangNsSynonyms = array();
 		else
 			$this->mContLangNsSynonyms = $wgContLang->getNamespaceSynonyms();
@@ -99,6 +100,25 @@ class NamespaceBootstrap {
 		// translated or the translation equals the original.
 		$nscache = array();
 
+		// namespace_names, English fallbacks
+		foreach ( Language::getNamespaces() as $id => $text ) {
+			if ( @$nscache[$id] === $text || $text === '' )
+				continue;
+			
+			$nscache[$id] = $text;
+
+			$this->dbw->insert( 'namespace_names',
+				array(
+					'ns_id' => $id,
+					'ns_name' => $text,
+					'ns_default' => $this->mLanguageCode == 'en' || $this->mContLangNs[$id] === $text ? 1 : 0,
+					'ns_canonical' => 1,
+				),
+				$fname
+			);
+		}
+
+
 		// namespace_names, content language
 		foreach ( $this->mContLangNs as $ns => $text ) {
 			if ( $text === '' || @$nscache[$ns] === $text )
@@ -111,29 +131,11 @@ class NamespaceBootstrap {
 					'ns_id' => $ns,
 					'ns_name' => $text,
 					'ns_default' => 1,
-					'ns_canonical' => 1
+					'ns_canonical' => 0
 				),
 				$fname
 			);
 			
-		}
-
-		// namespace_names, English fallbacks
-		foreach ( Language::getNamespaces() as $id => $text ) {
-			if ( @$nscache[$id] === $text || $text === '' )
-				continue;
-			else
-				$nscache[$id] = $text;
-			
-			$this->dbw->insert( 'namespace_names',
-				array(
-					'ns_id' => $id,
-					'ns_name' => $text,
-					'ns_default' => 0,
-					'ns_canonical' => 0,
-				),
-				$fname
-			);
 		}
 
 		// namespace_names, synonyms 
@@ -157,6 +159,7 @@ class NamespaceBootstrap {
 		foreach ( array( NS_PROJECT => 'Project', NS_PROJECT_TALK => 'Project_talk' ) as $id => $text ) {
 			if ( $nscache[$id] === $text )
 				continue;
+			
 			$this->dbw->insert( 'namespace_names',
 				array(
 					'ns_id' => $id,
