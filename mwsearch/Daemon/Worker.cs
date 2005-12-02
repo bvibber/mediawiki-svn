@@ -75,6 +75,7 @@ namespace MediaWiki.Search.Daemon {
 			this.config = config;
 		}
 		
+		
 		protected override void DoStuff() {
 			if (uri.AbsolutePath == "/robots.txt") {
 				RobotsTxt();

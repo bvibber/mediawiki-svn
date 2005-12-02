@@ -44,6 +44,7 @@ namespace MediaWiki.Search.Daemon {
 		private static Configuration config;
 		
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 		
 		public static void Main(string[] args) {
 			Console.WriteLine(
@@ -76,6 +77,11 @@ namespace MediaWiki.Search.Daemon {
 			}
 			sock.Start();
 			
+			int maxWorkers = 10;
+			string max = config.GetString("Daemon", "maxworkers");
+			if (max != null)
+				maxWorkers = int.Parse(max);
+			
 			/*
 			log.Debug("Blah blah debug");
 			log.Info("Blah blah info");
@@ -93,8 +99,13 @@ namespace MediaWiki.Search.Daemon {
 					log.Error("accept() error: " + e.Message);
 					continue;
 				}
-				Worker worker = new Worker(client.GetStream(), config);
-				ThreadPool.QueueUserWorkItem(worker.Run);
+				
+				if (Worker.OpenCount > maxWorkers) {
+					log.Error("too many connections, skipping a request");
+				} else {
+					Worker worker = new Worker(client.GetStream(), config);
+					ThreadPool.QueueUserWorkItem(worker.Run);
+				}
 			}
 
 		}

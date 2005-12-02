@@ -45,6 +45,30 @@ namespace MediaWiki.Search.Daemon {
 			ostrm = new StreamWriter(stream);
 		}
 		
+		private static int _openCount = 0;
+		private static object _countLock = new object();
+		
+		public static int OpenCount {
+			get {
+				lock (_countLock) {
+					return _openCount;
+				}
+			}
+		}
+		
+		private static void _Enter() {
+			lock (_countLock) {
+				_openCount++;
+			}
+		}
+		
+		private static void _Leave() {
+			lock (_countLock) {
+				_openCount--;
+			}
+		}
+		
+		
 		public void Run(object par) {
 			Run();
 		}
@@ -53,6 +77,7 @@ namespace MediaWiki.Search.Daemon {
 			//using (log4net.NDC.Push(client.Client.RemoteEndPoint)) {
 			headersSent = false;
 			try {
+				_Enter();
 				Handle();
 				log.Debug("request handled.");
 			} catch (IOException e) {
@@ -68,6 +93,7 @@ namespace MediaWiki.Search.Daemon {
 				// Make sure the client is closed out.
 				try {  ostrm.Close(); } catch { }
 				try {  istrm.Close(); } catch { }
+				_Leave();
 			}
 		}
 		
