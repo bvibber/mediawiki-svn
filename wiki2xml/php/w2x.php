@@ -23,7 +23,6 @@ if ( isset ( $_POST['doit'] ) ) {
 	
 	$content_provider = new ContentProviderHTTP ;
 	$xmlg["site_base_url"] = $_POST['site'] ;
-#	$xmlg["namespace_template"] = $_POST['template'] ;
 
 	header('Content-type: text/xml; charset=utf-8');
 	print "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
@@ -47,7 +46,7 @@ if ( isset ( $_POST['doit'] ) ) {
 		}
 	}	
 	$t = microtime_float() - $t ;
-# xmlns:xhtml=\"http://www.w3.org/1999/xhtml\"
+
 	print "<articles xmlns:xhtml=\" \" rendertime='{$t} sec'>{$text}</articles>" ;
 } else if ( isset ( $_GET['showsource'] ) ) {
 	header('Content-type: text/plain; charset=utf-8');

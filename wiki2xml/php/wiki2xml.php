@@ -2,9 +2,6 @@
 # Copyright by Magnus Manske (2005)
 # Released under GPL
 
-# TODO :
-# The ";" thingy
-
 class wiki2xml
 	{
 	var $protocols = array ( "http" , "https" , "news" , "ftp" , "irc" , "mailto" ) ;
