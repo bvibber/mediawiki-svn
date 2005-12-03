@@ -14,6 +14,7 @@ $wgExtensionCredits['specialpage'][] = array(
 function wfSiteMatrix() {
 global $IP;
 require_once( $IP.'/includes/SpecialPage.php' );
+require_once( $IP.'/languages/Names.php' );
 
 class SiteMatrixPage extends SpecialPage {
 
@@ -69,14 +70,17 @@ class SiteMatrixPage extends SpecialPage {
 
 		# Header row
 		$s = '<table><tr>';
+		$s .= '<th>Language</th>';
 		foreach ( $names as $name ) {
-			$s .= '<td><strong>' . $name . '</strong></td>';
+			$s .= '<th>' . $name . '</th>';
 		}
 		$s .= "</tr>\n";
 
+		global $wgLanguageNames;
 		# Bulk of table
 		foreach ( $langlist as $lang ) {
-			$s .= "<tr>";
+			$s .= '<tr>';
+			$s .= '<td><strong>' . $wgLanguageNames[$lang] . '</strong></td>';
 			$langhost = str_replace( '_', '-', $lang );
 			foreach ( $names as $site => $name ) {
 				$url = "http://$langhost." . $hosts[$site] . '/';
