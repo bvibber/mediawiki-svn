@@ -5,7 +5,7 @@
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (defined('MEDIAWIKI')) {
 	
-$wgExtensionFunctions[] = "wfSiteMatrix";
+$wgExtensionFunctions[] = 'wfSiteMatrix';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'SiteMatrix',
 	'description' => 'display a list of wikimedia wikis'
@@ -13,12 +13,12 @@ $wgExtensionCredits['specialpage'][] = array(
 
 function wfSiteMatrix() {
 global $IP;
-require_once( "$IP/includes/SpecialPage.php" );
+require_once( $IP.'/includes/SpecialPage.php' );
 
-class SiteMatrixPage extends SpecialPage
-{
+class SiteMatrixPage extends SpecialPage {
+
 	function SiteMatrixPage() {
-		SpecialPage::SpecialPage("SiteMatrix");
+		SpecialPage::SpecialPage('SiteMatrix');
 	}
 
 	function execute( $par ) {
@@ -68,9 +68,9 @@ class SiteMatrixPage extends SpecialPage
 		# Construct the HTML
 
 		# Header row
-		$s = "<table><tr>";
+		$s = '<table><tr>';
 		foreach ( $names as $name ) {
-			$s .= "<td><strong>$name</strong></td>";
+			$s .= '<td><strong>' . $name . '</strong></td>';
 		}
 		$s .= "</tr>\n";
 
@@ -79,13 +79,13 @@ class SiteMatrixPage extends SpecialPage
 			$s .= "<tr>";
 			$langhost = str_replace( '_', '-', $lang );
 			foreach ( $names as $site => $name ) {
-				$url = "http://$langhost." . $hosts[$site] . "/";
+				$url = "http://$langhost." . $hosts[$site] . '/';
 				if ( empty( $matrix[$site][$lang] ) ) {
 					# Non-existent wiki
-					$s .= "<td><a href=\"$url\" class=\"new\">$lang</a></td>";
+					$s .= '<td><a href="' . $url . '" class="new">' . $lang . '</a></td>';
 				} else {
 					# Wiki exists
-					$s .= "<td><a href=\"$url\">$lang</a></td>";
+					$s .= '<td><a href="' . $url . '">' . $lang . '</a></td>';
 				}
 			}
 			$s .= "</tr>\n";
@@ -93,19 +93,19 @@ class SiteMatrixPage extends SpecialPage
 		$s .= "</table>\n";
 
 		# Specials
-		$s .= "<ul>";
+		$s .= '<ul>';
 		foreach ( $specials as $lang ) {
 			$langhost = str_replace( '_', '-', $lang );
-			$s .= "<li><a href=\"http://$langhost.wikipedia.org/\">$lang</a></li>\n";
+			$s .= '<li><a href="http://' . $langhost . '.wikipedia.org/">' . $lang . "</a></li>\n";
 		}
-		$s .= "</ul>";
+		$s .= '</ul>';
 		$wgOut->addHTML( $s );
 	}
 }
 
 SpecialPage::addPage( new SiteMatrixPage );
 global $wgMessageCache;
-$wgMessageCache->addMessage( "sitematrix", "List of Wikimedia wikis" );
+$wgMessageCache->addMessage( 'sitematrix', 'List of Wikimedia wikis' );
 
 } # End of extension function
 } # End of invocation protection
