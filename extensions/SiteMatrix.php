@@ -23,7 +23,7 @@ class SiteMatrixPage extends SpecialPage {
 	}
 
 	function execute( $par ) {
-		global $wgRequest, $wgOut, $wgTitle, $wgLocalDatabases;
+		global $wgOut, $wgLocalDatabases;
 		$this->setHeaders();
 
 		$langlist = array_map( 'trim', file( '/home/wikipedia/common/langlist' ) );
@@ -54,6 +54,7 @@ class SiteMatrixPage extends SpecialPage {
 		foreach( $wgLocalDatabases as $db ) {
 			# Find suffix
 			foreach ( $sites as $site ) {
+				$m = array();
 				if ( preg_match( "/(.*)$site\$/", $db, $m ) ) {
 					$lang =  $m[1];
 					if ( empty( $xLanglist[$lang] ) && $site == 'wiki' ) {
