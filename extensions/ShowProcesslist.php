@@ -18,7 +18,7 @@ class ShowProcesslistPage extends UnlistedSpecialPage {
 	}
 
 	function execute( $par ) {
-		global $wgRequest, $wgOut, $wgTitle, $wgUser;
+		global $wgOut, $wgUser;
 		
 		$this->setHeaders();
 		if ( !$wgUser->isDeveloper() ) {
@@ -33,7 +33,7 @@ class ShowProcesslistPage extends UnlistedSpecialPage {
 		while ( $row = wfFetchObject($res) ) {
 			$output .= '<tr>';
 			$fields = get_object_vars($row);
-			foreach ($fields as $name => $value ) {
+			foreach ($fields as $value ) {
 				$output .= '<td>' . htmlspecialchars( $value ) . '</td>';
 			}
 			$output .= "</tr>\n";
