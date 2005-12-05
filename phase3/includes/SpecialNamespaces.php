@@ -1,103 +1,102 @@
 <?php
 /**
- *
- * @package MediaWiki
- * @subpackage SpecialPage
- */
+*
+* @package MediaWiki
+* @subpackage SpecialPage
+*/
 
 /**
- * Constructor
- */
+* Constructor
+*/
 function wfSpecialNamespaces()
 {
-	global $wgUser, $wgOut, $wgRequest;
+global $wgUser, $wgOut, $wgRequest;
 
-	$action = $wgRequest->getVal( 'action' );
-	$f = new NamespaceForm();
+$action = $wgRequest->getVal( 'action' );
+$f = new NamespaceForm();
 
-	if ( $action == 'submit' && $wgRequest->wasPosted() &&
-		$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
-		if($wgRequest->getText('nsAction')=='addnamespaces') {
-			$f->addNamespaces();
-		} elseif($wgRequest->getText('nsAction')=='changenamespaces') {
-			$f->changeNamespaces();
-		}
-	} elseif($action == 'delete') {
-
-		$f->deleteNamespace();
+if ( $action == 'submit' && $wgRequest->wasPosted() &&
+	$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
+	if($wgRequest->getText('nsAction')=='addnamespaces') {
+		$f->addNamespaces();
+	} elseif($wgRequest->getText('nsAction')=='changenamespaces') {
+		$f->changeNamespaces();
 	}
-	else {
-		$f->showForm();
-	}
+} elseif($action == 'delete') {
+
+	$f->deleteNamespace();
+}
+else {
+	$f->showForm();
+}
 }
 
 /**
- *
- * @package MediaWiki
- * @subpackage SpecialPage
- */
+*
+* @package MediaWiki
+* @subpackage SpecialPage
+*/
 class NamespaceForm {
+
+function showForm( $errorHeader='', $errorBody='' )
+{
+	global $wgOut, $wgUser, $wgLang, $wgNamespaces,$wgTitle;
 	
-	function showForm( $errorHeader='', $errorBody='' )
-	{
-		global $wgOut, $wgUser, $wgLang, $wgNamespaces,$wgTitle;
-		
-		$wgOut->setPagetitle( wfMsg( "namespaces" ) );
+	$wgOut->setPagetitle( wfMsg( "namespaces" ) );
 
-		/* In case of an error, we generally just show what went wrong
-		   and continue displaying the main form */
-		if ( '' != $errorHeader ) {
-			$wgOut->setSubtitle( wfMsg( "transactionerror" ) );
-			$wgOut->addHTML( "<p class='error'>".htmlspecialchars($errorHeader)."</P>");
-			if($errorBody) {
-				$wgOut->addWikiText($errorBody);
-			}
+	/* In case of an error, we generally just show what went wrong
+	   and continue displaying the main form */
+	if ( '' != $errorHeader ) {
+		$wgOut->setSubtitle( wfMsg( "transactionerror" ) );
+		$wgOut->addHTML( "<p class='error'>".htmlspecialchars($errorHeader)."</P>");
+		if($errorBody) {
+			$wgOut->addWikiText($errorBody);
 		}
-		
-		# Standard token to avoid remote form submission exploits
-		$token = $wgUser->editToken();
-             	$action = $wgTitle->escapeLocalURL( "action=submit" );
-		$talksuffix = wfEscapeJsString(wfMsgForContent("talkpagesuffix"));
-		
-		# For the namespace selection box
-		$name_array= Namespace::getFormattedDefaultNamespaces();
-		$noparent=wfMsg('no_parent_namespace');
-		$name_array[key($name_array)-1]=$noparent;
-		# Sort for foreach loops
-		ksort($name_array);
+	}
+	
+	# Standard token to avoid remote form submission exploits
+	$token = $wgUser->editToken();
+			$action = $wgTitle->escapeLocalURL( "action=submit" );
+	$talksuffix = wfEscapeJsString(wfMsgForContent("talkpagesuffix"));
+	
+	# For the namespace selection box
+	$name_array= Namespace::getFormattedDefaultNamespaces();
+	$noparent=wfMsg('no_parent_namespace');
+	$name_array[key($name_array)-1]=$noparent;
+	# Sort for foreach loops
+	ksort($name_array);
 
-		$wgOut->addWikiText( wfMsg( "add_namespaces_header" ) );
-		# Prefill talk namespace field, but only for languages 
-		# where it's not disabled
-		if($talksuffix != '-') {
-			$talkpagejs=
+	$wgOut->addWikiText( wfMsg( "add_namespaces_header" ) );
+	# Prefill talk namespace field, but only for languages 
+	# where it's not disabled
+	if($talksuffix != '-') {
+		$talkpagejs=
 ' onchange="if(!window.document.addnamespaces.nsTalkName.value && window.document.addnamespaces.nsName.value && window.document.addnamespaces.nsCreateTalk.checked) { window.document.addnamespaces.nsTalkName.value=window.document.addnamespaces.nsName.value+\''.$talksuffix.'\'; }"';
 
-		} else {
-			$talkpagejs='';
-		}
+	} else {
+		$talkpagejs='';
+	}
 
-		$addnshtmlform='
-<form name="addnamespaces" method="POST" action="'.$action.'">
+	$addnshtmlform='
+<form name="addnamespaces" method="post" action="'.$action.'">
 <table border="0">
 <tr valign="top"><td>
 '.wfMsg('add_namespace_default_name').'</td>
 <td>
-<input type="hidden" name="nsAction" value="addnamespaces">
-<input type="text" name="nsName" size="20"'.$talkpagejs.'>
+<input type="hidden" name="nsAction" value="addnamespaces" />
+<input type="text" name="nsName" size="20"'.$talkpagejs.' />
 </td>
 </tr>
 <tr valign="top">
 <td>
-'.wfMsg('add_namespace_default_talk').'<br>
+'.wfMsg('add_namespace_default_talk').'<br />
 </td>
-<td>
-<input type="text" name="nsTalkName" size="20">
+<td><input type="text" name="nsTalkName" size="20" />
 </td>
 </tr>
 <tr>
 <td colspan="2">
-<label><input type="checkbox" name="nsCreateTalk" checked>
+<label><input type="checkbox" name="nsCreateTalk" checked />
 '.wfMsg('add_namespace_talk_confirm').'
 </label>
 </td>
@@ -126,8 +125,8 @@ class NamespaceForm {
 		$namespace_save_changes=wfMsg('namespace_save_changes');
 				
 		$htmlform=<<<END
-<form name="changenamespaces" method="POST" action="{$action}">
-<input type="hidden" name="nsAction" value="changenamespaces">
+<form name="changenamespaces" method="post" action="{$action}">
+<input type="hidden" name="nsAction" value="changenamespaces" />
 <input type="hidden" name="wpEditToken" value="{$token}" />
 END;
 		foreach ($wgNamespaces as $ns) {
@@ -158,7 +157,7 @@ END;
 				}
 				$namespaceselect_html=<<<END
 <tr valign="top"><td colspan="2">
-{$namespace_child_of}<br>
+{$namespace_child_of}<br />
 <select name="ns{$index}Parent" size="1">
 {$namespaceselect}
 </select>
@@ -170,7 +169,7 @@ END;
 {$namespace_support_subpages}
 </td>
 <td align="right">
-<input type="checkbox" name="ns{$index}Subpages" {$subpages}>
+<input type="checkbox" name="ns{$index}Subpages" {$subpages} />
 </td>
 </tr>		
 END;
@@ -179,7 +178,7 @@ END;
 {$namespace_search_by_default}
 </td>
 <td  align="right">
-<input type="checkbox" name="ns{$index}Search" {$searchdefault}>
+<input type="checkbox" name="ns{$index}Search" {$searchdefault} />
 </td>
 </tr>			
 END;
@@ -188,7 +187,7 @@ END;
 {$namespace_hide_in_lists}
 </td>
 <td  align="right">
-<input type="checkbox" name="ns{$index}Hidden" {$hidden}>
+<input type="checkbox" name="ns{$index}Hidden" {$hidden} />
 </td>
 </tr>				
 END;
@@ -197,7 +196,7 @@ END;
 {$namespace_default_link_prefix}
 </td>
 <td align="right">
-<input type="text" size="10" name="ns{$index}Linkprefix" value="{$linkprefix}">
+<input type="text" size="10" name="ns{$index}Linkprefix" value="{$linkprefix}" />
 </td>
 </tr>				
 END;
@@ -296,13 +295,13 @@ END;
 			} else {
 				$dc="";
 			}
-			$default = "<input type=\"radio\" name=\"ns{$index}Default\" value=\"{$nsi}\"{$dc}>";
+			$default = "<input type=\"radio\" name=\"ns{$index}Default\" value=\"{$nsi}\"{$dc} />";
 			if (!is_null($ns->getCanonicalNameIndex()) &&$ns->getCanonicalNameIndex()== $nsi) {
 			 	$nameinput = $nsname . '<br/><small>'.wfMsg('canonicalname').'</small>';
 				$delete = 'N/A';
 			 } else {
-				$nameinput = "<input name=\"ns{$index}Name{$nsi}\" size=\"20\" value=\"{$nsname}\">";
-				$delete = "<input name=\"ns{$index}Delete{$nsi}\" type=\"checkbox\" value=\"1\">";
+				$nameinput = "<input name=\"ns{$index}Name{$nsi}\" size=\"20\" value=\"{$nsname}\" />";
+				$delete = "<input name=\"ns{$index}Delete{$nsi}\" type=\"checkbox\" value=\"1\" />";
 			}
 			$htmlform.=
 <<<END
@@ -333,10 +332,10 @@ END;
 <<<END
 <tr valign="top">
 <td width="300">
-<input name="ns{$index}NewName{$i}" size="20" value="">
+<input name="ns{$index}NewName{$i}" size="20" value="" />
 </td>
 <td align="center">
-<input type="radio" name="ns{$index}Default" value="{$i}">
+<input type="radio" name="ns{$index}Default" value="{$i}" />
 </td>
 <td align="center">
 &nbsp;
@@ -345,12 +344,12 @@ END;
 END;
 		}
 		$htmlform .= '</table></td></tr>';	
-		$htmlform .= '<tr><td colspan="2"><hr noshade></td></tr>';
+		$htmlform .= '<tr><td colspan="2"><hr noshade /></td></tr>';
 	}
 	$htmlform.=
 <<<END
 <tr><td>
-<input type="submit" value="{$namespace_save_changes}">
+<input type="submit" value="{$namespace_save_changes}" />
 </td></tr>
 </table>
 </form>
