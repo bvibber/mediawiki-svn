@@ -231,6 +231,20 @@ class Namespace {
 			return null;
 		}
 	}
+
+	/** 
+	  Used when a default name is deleted, to assign a new one
+	  @return int - index to the first non-empty name of this namespace
+			null if there are no non-empty names.
+        */
+	function getNewDefaultNameIndex() {
+		foreach($this->names as $nsi=>$name) {
+			if(!empty($name)) {
+				return $nsi;
+			}
+		}
+		return null;
+	}
 	
 	function setDefaultNameIndex($index) {
 		$this->defaultNameIndex=$index;
@@ -269,10 +283,11 @@ class Namespace {
 		return null;
 	}
 
-	function setName($oldname,$newname) {
-		if(!$this->isValidName($newname)) {
+	function setName($oldname,$newname,$checkvalid=true) {
+		if($checkvalid && !$this->isValidName($newname)) {
 			return NULL;
 		}
+		$newname=strtr($newname, ' ','_');
 		$nsi=$this->getNameIndexForName($oldname);
 		if(!is_null($nsi)) {
 			$this->names[$nsi]=$newname;
@@ -573,17 +588,6 @@ class Namespace {
 					}
 				}
 
-				# Check if we're not creating duplicate names
-				# by modifying an existing namespace
-				if($operation==NS_NAME_MODIFY) {
-					foreach($this->names as $exname) {
-						if($exname == $name) {
-							$rv[NS_RESULT] = NS_NAME_ISSUES;
-							$rv[NS_DUPLICATE_NAMES][]=$name;
-						}
-					}
-				}
-
 				# Interwiki
 				if(Title::getInterwikiLink( $name)) {
 					$rv[NS_RESULT]=NS_NAME_ISSUES;
@@ -664,7 +668,57 @@ class Namespace {
 					array()
 					);
 			}
+		} 
+		foreach($nameOperations as $name=>$operation) {
+			if($operation==NS_NAME_ADD) {
+				$isDefault = ($name==$this->getDefaultName());
+				$isCanonical = ($name==$this->getCanonicalName());
+				if(!$testSave) {
+					$dbm->insert(
+						'namespace_names',
+						array(
+						'ns_id'=>$this->getIndex(),
+						'ns_name'=>$name,
+						'ns_default'=>$isDefault,
+						'ns_canonical'=>$isCanonical
+						),
+						$fname,
+						array()
+					);
+				}
+			} elseif($operation==NS_NAME_MODIFY) {				$oldname = $wgNamespaces[$index]->names[$this->getNameIndexForName($name)];
+				if(!$testSave) {
+					$dbm->update(
+						'namespace_names',
+						array( /* SET */
+						'ns_name'=>$name,
+						),
+						array(
+						'ns_name'=>$oldname),
+					        $fname);
+				}
+			} elseif($operation==NS_NAME_DELETE) {
+				$dbm->delete(
+					'namespace_names',
+					array('ns_name'=>$name),
+					'*');
+			}
+		}
+		if($create) {
+			$rv[NS_RESULT]=NS_CREATED; 
+			
+			# If this was just a test for a new
+			# namespace, reset the index to NULL so
+			# it will be created for real
+			# if save() is called on the same object.
+			if($testSave) {
+				$this->setIndex(NULL);
+			}
 		} else {
+			# Set canonical and default names.
+			# This needs to happen after other name operations
+			# because we can't operate on the new names until
+			# they exist. :-)
 			$oldDefaultName=$wgNamespaces[$index]->getDefaultName();
 			$newDefaultName=$this->getDefaultName();
 
@@ -709,56 +763,14 @@ class Namespace {
 					);					
 				}
 			}
-		}
-		foreach($nameOperations as $name=>$operation) {
-			if($operation==NS_NAME_ADD) {
-				$isDefault = ($name==$this->getDefaultName());
-				$isCanonical = ($name==$this->getCanonicalName());
-				if(!$testSave) {
-					$dbm->insert(
-						'namespace_names',
-						array(
-						'ns_id'=>$this->getIndex(),
-						'ns_name'=>$name,
-						'ns_default'=>$isDefault,
-						'ns_canonical'=>$isCanonical
-						),
-						$fname,
-						array()
-					);
-				}
-			} elseif($operation==NS_NAME_MODIFY) {					$oldname=$wgNamespaces[$this->getNameIndexForName($name)];
-				if(!$testSave) {
-					$dbm->update(
-						'namespace_name',
-						array( /* SET */
-						'ns_name'=>$name,
-						),
-						array(
-						'ns_name'=>$oldname),
-					        $fname);
-				}
-			} elseif($operation==NS_NAME_DELETE) {
-				$dbm->delete(
-					'namespace_names',
-					array('ns_name'=>$name),
-					'*');
-			}
-		}
-		if($create) {
-			$rv[NS_RESULT]=NS_CREATED; 
-			
-			# If this was just a test for a new
-			# namespace, reset the index to NULL so
-			# it will be created for real
-			# if save() is called on the same object.
-			if($testSave) {
-				$this->setIndex(NULL);
-			}
-		} else {
+
 			$rv[NS_RESULT]=NS_MODIFIED;
 		}
 		$rv[NS_SAVE_ID]=$index;
+
+		# Note that it may be desirable to call Namespace::load()
+		# in addition to this since the name (not namespace) indexes in
+		# the database can be different from the one in the array.
 		if(!$testSave) {
 			$wgNamespaces[$index]=$this;
 		}
@@ -828,6 +840,55 @@ class Namespace {
 		$this->names=array();
 		return true;
 	}
+
+	/**
+	* Load or reload namespace definitions from the database
+	* into a global array.
+	*
+	* @static
+	*/
+	function load() {
+
+		global $wgNamespaces;
+		$wgNamespaces = array();
+		$dbr =& wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'namespace',
+			array('ns_id','ns_search_default','ns_subpages', 'ns_parent', 'ns_target', 'ns_system', 'ns_hidden'),
+			array(),
+			'Setup',
+			array('ORDER BY'=>'ns_id ASC')
+		);
+		while( $row = $dbr->fetchObject( $res ) ){	
+			# See Namespace.php for documentation on all namespace
+			# properties which are accessed below.	
+			$id=$row->ns_id;
+			$wgNamespaces[$id]=new Namespace();
+			$wgNamespaces[$id]->setIndex($id);
+			$wgNamespaces[$id]->setSystemType($row->ns_system);
+			$wgNamespaces[$id]->setSearchedByDefault($row->ns_search_default);
+			$wgNamespaces[$id]->setSubpages($row->ns_subpages);
+			$wgNamespaces[$id]->setHidden($row->ns_hidden);
+			$wgNamespaces[$id]->setTarget($row->ns_target);
+			$wgNamespaces[$id]->setParentIndex($row->ns_parent);
+			$res2 = $dbr->select( 'namespace_names', array('ns_name','ns_default,ns_canonical'),
+					array('ns_id = '. $row->ns_id),
+					'Setup', array('order by'=>'ns_default desc,ns_canonical desc,ns_id asc'));
+			
+			# Add the list of valid names
+			while($row2 = $dbr->fetchObject($res2) ) {
+				$nsi=$wgNamespaces[$id]->addName($row2->ns_name);
+				if($row2->ns_default) {
+					$wgNamespaces[$id]->setDefaultNameIndex($nsi);
+				}
+				if($row2->ns_canonical) {
+					$wgNamespaces[$id]->setCanonicalNameIndex($nsi);
+				}
+			}
+		}
+		$dbr->freeResult( $res );
+	}
+
+
 
 }
 		

@@ -2198,7 +2198,7 @@ will expire at $4.
 'namespace_name_prefix'=>'There are pages which contain this name as a "pseudonamespace" in the title. These pages would become invisible if the namespace was created.',
 'namespace_name_interwiki'=>'The name is already used as an Interwiki prefix to link to another wiki site. This Interwiki prefix would become unusable if this name was used.',
 'namespace_name_linked'=>'The namespace name is still linked to from some pages. If it was deleted, these links would be broken.',
-'namespace_error'=>'The namespace "$1" cannot be created.',
+'namespace_error'=>'The namespace "$1" cannot be created or modified.',
 'namespace_delete_error'=>'The namespace "$1" cannot be deleted.',
 'namespace_deleted'=>'The namespace "$1" has been deleted successfully.',
 'namespace_changes_saved'=>'The namespace changes have been saved.',

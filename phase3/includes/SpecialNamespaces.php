@@ -418,8 +418,9 @@ END;
 		foreach($wgNamespaces as $ns) {
 			$nsindex=$ns->getIndex();
 			$newns[$nsindex]=new Namespace();
-			$newns[$nsindex]->setIndex($nsindex);			
-			
+			$newns[$nsindex]->setIndex($nsindex);
+			$newns[$nsindex]->setSystemType($ns->getSystemType());
+
 			if(!$ns->isSpecial()) {
 				$subvar="ns{$nsindex}Subpages";
 				$searchvar="ns{$nsindex}Search";
@@ -429,7 +430,7 @@ END;
 				$subpages=$wgRequest->getBool($subvar);
 				$searchdefault=$wgRequest->getBool($searchvar);
 				$hidden=$wgRequest->getBool($hiddenvar);
-				$prefix=$wgRequest->getBool($prefixvar);
+				$prefix=$wgRequest->getText($prefixvar);
 				$parent=$wgRequest->getIntOrNull($parentvar);
 				$newns[$nsindex]->setSubpages($subpages);
 				$newns[$nsindex]->setSearchedByDefault($searchdefault);
@@ -439,25 +440,10 @@ END;
 					$newns[$nsindex]->setParentIndex($parent);
 				}				
 			}
+			$newns[$nsindex]->names=$ns->names;
 
-			foreach($ns->names as $nameindex=>$name) {
-				$var="ns{$nsindex}Name{$nameindex}";
-				if($req=$wgRequest->getText($var)) {
-					wfDebug("Name var $var contains $req\n");
-					$newns[$nsindex]->names[$nameindex]=$req;
-				}
-				$delvar="ns{$nsindex}Delete{$nameindex}";
-				if($wgRequest->getInt($delvar)) {
-					wfDebug("$delvar should be deleted.\n");
-					$newns[$nsindex]->removeNameByIndex($nameindex);
-				}
-			}
-
-			# Canonical names cannot be changed through the UI
-			if(!is_null($ns->getCanonicalNameIndex())) {
-				$cindex=$newns[$nsindex]->addName($ns->getCanonicalName());
-				$newns[$nsindex]->setCanonicalNameIndex($cindex);
-			}
+			# This can never be changed by the user.
+			$newns[$nsindex]->setCanonicalNameIndex($ns->getCanonicalNameIndex());
 
 			# New names, appended to end
 			for($i=1;$i<=3;$i++) {
@@ -467,22 +453,52 @@ END;
 				}
 			}
 
-			# Which default name? (deleted names?)
-			$dvar="ns{$nsindex}Default";
-			$dreq=$wgRequest->getIntOrNull($dvar);
-			if(!is_null($dreq)) {
-				wfDebug("Default name: $dreq\n");
-				$newns[$nsindex]->setDefaultNameIndex($dreq);
-			} else {
-				$newns[$nsindex]->setDefaultNameIndex(
-					$ns->getDefaultNameIndex()
-				);
-				wfDebug("No default name submitted, using previous one.\n");
+			# Changes and deletions. Do them last since they can
+			# affect index slots of existing names.
+			foreach($ns->names as $nameindex=>$name) {
+				$var="ns{$nsindex}Name{$nameindex}";
+				if($req=$wgRequest->getText($var)) {
+					#wfDebug("Name var $var contains $req\n");
+
+					# Alter name if necessary.
+					if($req!=$name) {
+						
+						# The last parameter means
+						# that we do not check if the
+						# name is valid - this
+						# is done later for all names.
+						$newns[$nsindex]->setName(
+							$name,$req,false
+						);
+
+						#wfDebug("Setting name $nameindex of namespace $nsindex to $req. Old name is $name.\n");
+					}
+				}
+				$delvar="ns{$nsindex}Delete{$nameindex}";
+				if($wgRequest->getInt($delvar)) {
+					#wfDebug("$delvar should be deleted.\n");
+					$newns[$nsindex]->removeNameByIndex($nameindex);
+				}
 			}
 
-
+			$dvar="ns{$nsindex}Default";
+			# Did the user select a default name?
+			$dindex=$wgRequest->getIntOrNull($dvar);
+			# If not, get the old one.
+			if(is_null($dindex)) { $dindex=$ns->getDefaultNameIndex();}
+			# Does the name exist and is it non-empty?
+			if(!is_null($dindex) && array_key_exists($dindex, $newns[$nsindex]->names) && !empty($newns[$nsindex]->names[$dindex]) ) {
+				# Use this default name.
+				$newns[$nsindex]->setDefaultNameIndex($dindex);
+				#wfDebug("Setting index for $nsindex to $dindex!\n");
+			} else {
+				# We have lost our default name, perhaps
+				# it was deleted. Get a new one if
+				# possible.	
+				$newns[$nsindex]->setDefaultNameIndex($newns[$nsindex]->getNewDefaultNameIndex());
+				
+			}
 		}
-		
 		foreach($newns as $nns) {
 			$nrv=$nns->testSave();
 			if($nrv[NS_RESULT]==NS_NAME_ISSUES) {
@@ -491,6 +507,14 @@ END;
 			}
 			$nns->save();
 		}
+	
+		# IMPORTANT: The namespace name indexes are unpredictable when
+		# serialized, so we have to reload the definitions from the
+		# database at this point; otherwise, there could be index
+		# mismatches.
+		Namespace::load();
+
+		# Return to the namespace manager with the changes made.
 		$wgOut->addWikiText(wfMsg("namespace_changes_saved"));
 		$this->showForm();
 		return true;
