@@ -2201,6 +2201,7 @@ will expire at $4.
 'namespace_error'=>'The namespace "$1" cannot be created.',
 'namespace_delete_error'=>'The namespace "$1" cannot be deleted.',
 'namespace_deleted'=>'The namespace "$1" has been deleted successfully.',
+'namespace_changes_saved'=>'The namespace changes have been saved.',
 'talk_namespace_error'=>'The corresponding discussion (talk) namespace "$1" cannot be created. No namespaces have been added.',
 'modify_namespaces_header' => 'Configure namespaces here. System namespaces cannot be deleted.',
 'canonicalname' => 'canonical name',

@@ -420,17 +420,6 @@ END;
 			$newns[$nsindex]=new Namespace();
 			$newns[$nsindex]->setIndex($nsindex);			
 			
-			# Which default name?
-			$dvar="ns{$nsindex}Default";
-			$dreq=$wgRequest->getIntOrNull($dvar);
-			if(!is_null($dvar)) {
-				$newns[$nsindex]->setDefaultNameIndex($dvar);
-			} else {
-				$newns[$nsindex]->setDefaultNameIndex(
-					$ns->getDefaultNameIndex()
-				);
-			}
-
 			if(!$ns->isSpecial()) {
 				$subvar="ns{$nsindex}Subpages";
 				$searchvar="ns{$nsindex}Search";
@@ -451,7 +440,6 @@ END;
 				}				
 			}
 
-			# TODO: Newnames
 			foreach($ns->names as $nameindex=>$name) {
 				$var="ns{$nsindex}Name{$nameindex}";
 				if($req=$wgRequest->getText($var)) {
@@ -471,16 +459,40 @@ END;
 				$newns[$nsindex]->setCanonicalNameIndex($cindex);
 			}
 
+			# New names, appended to end
+			for($i=1;$i<=3;$i++) {
+				$nvar="ns{$nsindex}NewName{$i}";
+				if($nname=$wgRequest->getText($nvar)) {
+					$newns[$nsindex]->addName($nname);
+				}
+			}
+
+			# Which default name? (deleted names?)
+			$dvar="ns{$nsindex}Default";
+			$dreq=$wgRequest->getIntOrNull($dvar);
+			if(!is_null($dreq)) {
+				wfDebug("Default name: $dreq\n");
+				$newns[$nsindex]->setDefaultNameIndex($dreq);
+			} else {
+				$newns[$nsindex]->setDefaultNameIndex(
+					$ns->getDefaultNameIndex()
+				);
+				wfDebug("No default name submitted, using previous one.\n");
+			}
+
+
 		}
 		
 		foreach($newns as $nns) {
 			$nrv=$nns->testSave();
-			if($nrv[NS_RESULT]!=NS_NAME_ISSUES) {
+			if($nrv[NS_RESULT]==NS_NAME_ISSUES) {
 				$this->showForm(wfMsg("namespace_error",$nns->getDefaultName()),$this->nameIssues($nrv));
 				return false;
 			}
+			$nns->save();
 		}
-		$wgOut->addWikiText("Seems OK!");
+		$wgOut->addWikiText(wfMsg("namespace_changes_saved"));
+		$this->showForm();
 		return true;
 	}
 	
