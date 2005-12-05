@@ -1,16 +1,26 @@
+::Servmon:.
+
 Servmon is an automated server monitoring tool used on the Wikimedia servers.
-It's also meant to be usable elsewhere, but may need some tweaking.  Please send
-any changes you make back to me at <keturner@livejournal.com>.
+It's also meant to be usable elsewhere, but may need some tweaking.
+
+Please send any changes you make back to me at <keturner@livejournal.com>.
 
 To use servmon you will need:
-	- Unix.  It's tested on Solaris and RedHat Linux.  Other systems may or may
-	  not work; if you have to make any changes to build it, please let me know.
-	  I am interested in supporting non-Unix systems but do not have access to any.
-	- A C++ compiler.  GCC <2.95 will not work.  GCC 2.95 may work.   Tested with
-	  >= 3.3.
-	- The Boost library (http://www.boost.org/).
-	- SCons (http://www.scons.org/).
-	
+    - Unix. It's tested on Solaris, RedHat Linux and GNU/Debian.
+      Other systems may or may not work; if you have to make any changes
+      to build it, please let me know. I am interested in supporting non-Unix
+      systems but do not have access to any.
+    - A C++ compiler.  GCC <2.95 will not work. GCC 2.95 may work.
+      Tested with >= 3.3.
+    - The Boost library (http://www.boost.org/). Debian users can install it
+      using the packages libboost-dev libboost-thread-dev
+      libboost-regex-dev 
+    - SCons (http://www.scons.org/).
+
+You will also need development headers for at least:
+    libmysql (libmysql15-dev)
+	libsnmp (libsnmp9-dev)
+
 To build:
 	copy buildconfig.sample to buildconfig and edit as needed;
 	run 'scons'

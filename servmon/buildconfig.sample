@@ -22,3 +22,6 @@ ldflags = ''
 # "libboost_signals-gcc-mt-d", set this to the suffix part
 # (i.e. "-gcc-mt-d").
 boostsuffix = ''
+
+libpath = ['/usr/lib/mysql']
+cpppath = []

@@ -3,8 +3,6 @@
 #include "smcfg.hxx"
 #include "smlog.hxx"
 
-#include "bconf/prelude.h"
-
 namespace smcfg {
 
 namespace {
