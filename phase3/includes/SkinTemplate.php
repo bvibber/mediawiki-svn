@@ -883,6 +883,7 @@ class SkinTemplate extends Skin {
 	 * @private
 	 */
 	function getNameSpaceKey () {
+		wfDebug("NS key is ".$this->mTitle->getNamespace()."\n");
 		switch ($this->mTitle->getNamespace()) {
 			case NS_MAIN:
 			case NS_TALK:

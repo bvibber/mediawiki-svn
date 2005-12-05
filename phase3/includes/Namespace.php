@@ -205,9 +205,14 @@ class Namespace {
 		$this->isSearchedByDefault=(bool)$search;
 	}
 	
-	/* todo: support multiple talk pages */
+	/* TODO: support multiple discussion namespaces,
+	   so that things like a Review: namespace
+	   become possible in parallel to normal talk
+	   pages. */
 	function getTalk() {
 		global $wgNamespaces;		
+		/* This behavior is expected by Title.php! */
+		if($this->isTalk()) return $this->getIndex();
 		foreach($wgNamespaces as $ns) {
 			if($ns->hasParent() && $ns->parentIndex==$this->index) {
 				return $ns->index;

@@ -1184,7 +1184,7 @@ class Title {
 	 * @access private
 	 */
 	/* private */ function prefix( $name ) {
-		global $wgContLang, $wgNamespaces;
+		global $wgNamespaces;
 
 		$p = '';
 		if ( '' != $this->mInterwiki ) {
