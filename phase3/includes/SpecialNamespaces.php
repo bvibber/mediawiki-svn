@@ -313,8 +313,7 @@ END;
 	}
 	$htmlform.=
 <<<END
-<tr><td><input type="submit" value="{$namespace_save_changes}" /></td></tr>
-</table>
+<input type="submit" value="{$namespace_save_changes}" />
 </form>
 
 END;
