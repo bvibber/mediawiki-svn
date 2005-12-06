@@ -1,34 +1,31 @@
 <?php
 /**
-*
-* @package MediaWiki
-* @subpackage SpecialPage
-*/
+ *
+ * @package MediaWiki
+ * @subpackage SpecialPage
+ */
 
 /**
-* Constructor
-*/
-function wfSpecialNamespaces()
-{
-global $wgUser, $wgOut, $wgRequest;
+ * Constructor
+ */
+function wfSpecialNamespaces() {
+	global $wgUser, $wgOut, $wgRequest;
 
-$action = $wgRequest->getVal( 'action' );
-$f = new NamespaceForm();
+	$action = $wgRequest->getVal( 'action' );
+	$f = new NamespaceForm();
 
-if ( $action == 'submit' && $wgRequest->wasPosted() &&
-	$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
-	if($wgRequest->getText('nsAction')=='addnamespaces') {
-		$f->addNamespaces();
-	} elseif($wgRequest->getText('nsAction')=='changenamespaces') {
-		$f->changeNamespaces();
+	if ( $action == 'submit' && $wgRequest->wasPosted() &&
+		$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
+		if($wgRequest->getText('nsAction')=='addnamespaces') {
+			$f->addNamespaces();
+		} elseif($wgRequest->getText('nsAction')=='changenamespaces') {
+			$f->changeNamespaces();
+		}
+	} elseif($action == 'delete') {
+		$f->deleteNamespace();
+	} else {
+		$f->showForm();
 	}
-} elseif($action == 'delete') {
-
-	$f->deleteNamespace();
-}
-else {
-	$f->showForm();
-}
 }
 
 /**
@@ -38,8 +35,7 @@ else {
 */
 class NamespaceForm {
 
-function showForm( $errorHeader='', $errorBody='' )
-{
+function showForm( $errorHeader='', $errorBody='' ) {
 	global $wgOut, $wgUser, $wgLang, $wgNamespaces,$wgTitle;
 	
 	$wgOut->setPagetitle( wfMsg( "namespaces" ) );
@@ -56,23 +52,24 @@ function showForm( $errorHeader='', $errorBody='' )
 	
 	# Standard token to avoid remote form submission exploits
 	$token = $wgUser->editToken();
-			$action = $wgTitle->escapeLocalURL( "action=submit" );
+	$action = $wgTitle->escapeLocalURL( "action=submit" );
 	$talksuffix = wfEscapeJsString(wfMsgForContent("talkpagesuffix"));
 	
 	# For the namespace selection box
-	$name_array= Namespace::getFormattedDefaultNamespaces();
-	$noparent=wfMsg('no_parent_namespace');
-	$name_array[key($name_array)-1]=$noparent;
+	$name_array = Namespace::getFormattedDefaultNamespaces();
+	$noparent = wfMsg('no_parent_namespace');
+	$name_array[key($name_array)-1] = $noparent;
+
 	# Sort for foreach loops
 	ksort($name_array);
 
 	$wgOut->addWikiText( wfMsg( "add_namespaces_header" ) );
+
 	# Prefill talk namespace field, but only for languages 
 	# where it's not disabled
 	if($talksuffix != '-') {
 		$talkpagejs=
 ' onchange="if(!window.document.addnamespaces.nsTalkName.value && window.document.addnamespaces.nsName.value && window.document.addnamespaces.nsCreateTalk.checked) { window.document.addnamespaces.nsTalkName.value=window.document.addnamespaces.nsName.value+\''.$talksuffix.'\'; }"';
-
 	} else {
 		$talkpagejs='';
 	}
@@ -109,20 +106,20 @@ function showForm( $errorHeader='', $errorBody='' )
 			
 		$wgOut->addWikiText( wfMsg( "modify_namespaces_header" ) );
 
-		$namespace_child_of=wfMsg('namespace_child_of');
-		$namespace_support_subpages=wfMsg('namespace_support_subpages');
-		$namespace_search_by_default=wfMsg('namespace_search_by_default');
-		$namespace_hide_in_lists=wfMsg('namespace_hide_in_lists');
-		$namespace_default_link_prefix=wfMsg('namespace_default_link_prefix');
-		$namespace_system=wfMsg('namespace_system');		
-		$namespace_properties=wfMsg('namespace_properties');
-		$namespace_slot=wfMsg('namespace_slot');
-		$namespace_names=wfMsg('namespace_names');
-		$namespace_existing_names=wfMsg('namespace_existing_names');
-		$namespace_new_names=wfMsg('namespace_new_names');
-		$namespace_default_name=wfMsg('namespace_default_name');
-		$namespace_delete_name=wfMsg('namespace_delete_name');
-		$namespace_save_changes=wfMsg('namespace_save_changes');
+		$namespace_child_of = wfMsg('namespace_child_of');
+		$namespace_support_subpages = wfMsg('namespace_support_subpages');
+		$namespace_search_by_default = wfMsg('namespace_search_by_default');
+		$namespace_hide_in_lists = wfMsg('namespace_hide_in_lists');
+		$namespace_default_link_prefix = wfMsg('namespace_default_link_prefix');
+		$namespace_system = wfMsg('namespace_system');		
+		$namespace_properties = wfMsg('namespace_properties');
+		$namespace_slot = wfMsg('namespace_slot');
+		$namespace_names = wfMsg('namespace_names');
+		$namespace_existing_names = wfMsg('namespace_existing_names');
+		$namespace_new_names = wfMsg('namespace_new_names');
+		$namespace_default_name = wfMsg('namespace_default_name');
+		$namespace_delete_name = wfMsg('namespace_delete_name');
+		$namespace_save_changes = wfMsg('namespace_save_changes');
 				
 		$htmlform=<<<END
 <form name="changenamespaces" method="post" action="{$action}">
@@ -130,26 +127,25 @@ function showForm( $errorHeader='', $errorBody='' )
 <input type="hidden" name="wpEditToken" value="{$token}" />
 END;
 		foreach ($wgNamespaces as $ns) {
-	
-					
-			$index=$ns->getIndex();
-			$subpages=$ns->allowsSubpages() ? ' checked' : '';
-			$searchdefault=$ns->isSearchedByDefault() ? ' checked' :'';
-			$hidden=$ns->isHidden ? ' checked' : '';
-			$linkprefix=$ns->getTarget();
-			$namespaceselect='';
-			$parentslot=$ns->getParentIndex();
+
+			$index = $ns->getIndex();
+			$subpages = $ns->allowsSubpages() ? ' checked' : '';
+			$searchdefault = $ns->isSearchedByDefault() ? ' checked' :'';
+			$hidden = $ns->isHidden ? ' checked' : '';
+			$linkprefix = $ns->getTarget();
+			$namespaceselect = '';
+			$parentslot = $ns->getParentIndex();
 			
 			# maybe make HTMLnamespaceselector more flexible and use
 			# it instead here
 			if(!$ns->isSpecial()) {
 
 				foreach ( $name_array as $arr_index => $arr_name ) {
-					if( $arr_index < NS_MAIN && $arr_name!=$noparent)
+					if( $arr_index < NS_MAIN && $arr_name!=$noparent )
 						continue;
 					$list_option = ($arr_index == NS_MAIN ? wfMsg ( 'blanknamespace' ) : $arr_name);
 					if(is_null($parentslot)) {
-						$arr_name==$noparent ? $selected = ' selected ' : $selected='';
+						$arr_name == $noparent ? $selected = ' selected ' : $selected='';
 					} else {
 						$arr_index == $parentslot ? $selected = ' selected' : $selected='';
 					}
@@ -216,7 +212,6 @@ END;
 </td>
 </tr>				
 END;
-
 			}
 
 			$systemtype=$ns->getSystemType();
@@ -289,11 +284,11 @@ END;
 </tr>
 END;
 
-		foreach ($ns->names as $nsi=>$nsname) {
-			if (!is_null($ns->getDefaultNameIndex()) && $ns->getDefaultNameIndex() == $nsi) {
-				$dc=" checked";
+		foreach ( $ns->names as $nsi=>$nsname ) {
+			if ( !is_null($ns->getDefaultNameIndex()) && $ns->getDefaultNameIndex() == $nsi ) {
+				$dc=' checked';
 			} else {
-				$dc="";
+				$dc='';
 			}
 			$default = "<input type=\"radio\" name=\"ns{$index}Default\" value=\"{$nsi}\"{$dc} />";
 			if (!is_null($ns->getCanonicalNameIndex()) &&$ns->getCanonicalNameIndex()== $nsi) {
@@ -320,6 +315,7 @@ END;
 
 		}
 		$htmlform.="<tr><th align=\"left\">{$namespace_new_names}</th></tr>";
+
 		# 3 blank namespace fields
 		if(!is_null($ns->names)) {
 			end($ns->names);
@@ -359,10 +355,12 @@ END;
 	}
 
 	function addNamespaces() {
+
 		global $wgOut, $wgUser, $wgLang, $wgRequest;	
-		$nsname=$wgRequest->getText('nsName');
-		$nstalkname=$wgRequest->getText('nsTalkName');
-		$nscreatetalk=$wgRequest->getBool('nsCreateTalk');
+
+		$nsname = $wgRequest->getText('nsName');
+		$nstalkname = $wgRequest->getText('nsTalkName');
+		$nscreatetalk = $wgRequest->getBool('nsCreateTalk');
 
 		if(empty($nsname)) {
 			$this->showForm(wfMsg('namespace_name_missing'));
@@ -401,18 +399,20 @@ END;
 
 		# Save for real.
 		$ns->save();
-		$complete=wfMsg('namespace_created',$nsname);
+		$complete = wfMsg('namespace_created',$nsname);
 		if($nscreatetalk) {
 			$talkns->save();
-			$complete.=' '.wfMsg('talk_namespace_created');
+			$complete .= ' '.wfMsg('talk_namespace_created');
 		}
 		$wgOut->addWikiText($complete);
 		$this->showForm();
 	}
 
+
 	function changeNamespaces() {
 	
-	global $wgOut, $wgNamespaces, $wgRequest;
+		global $wgOut, $wgNamespaces, $wgRequest;
+
 		$newns=array();
 		foreach($wgNamespaces as $ns) {
 			$nsindex=$ns->getIndex();
@@ -439,6 +439,7 @@ END;
 					$newns[$nsindex]->setParentIndex($parent);
 				}				
 			}
+
 			$newns[$nsindex]->names=$ns->names;
 
 			# This can never be changed by the user.
@@ -481,10 +482,15 @@ END;
 			}
 
 			$dvar="ns{$nsindex}Default";
+
 			# Did the user select a default name?
-			$dindex=$wgRequest->getIntOrNull($dvar);
+			$dindex = $wgRequest->getIntOrNull($dvar);
+
 			# If not, get the old one.
-			if(is_null($dindex)) { $dindex=$ns->getDefaultNameIndex();}
+			if(is_null($dindex)) {
+				$dindex=$ns->getDefaultNameIndex();
+			}
+
 			# Does the name exist and is it non-empty?
 			if(!is_null($dindex) && array_key_exists($dindex, $newns[$nsindex]->names) && !empty($newns[$nsindex]->names[$dindex]) ) {
 				# Use this default name.
@@ -498,6 +504,7 @@ END;
 				
 			}
 		}
+
 		foreach($newns as $nns) {
 			$nrv=$nns->testSave();
 			if($nrv[NS_RESULT]==NS_NAME_ISSUES) {
@@ -575,37 +582,41 @@ END;
 	}
 	
 	function deleteNamespace() {
+
 		global $wgOut,$wgRequest,$wgNamespaces;
-		$nsid=$wgRequest->getInt('ns');
+
+		$nsid = $wgRequest->getInt('ns');
+
 		/* There should be no delete links for namespaces which cannot
 		   be deleted, but let's catch two possible problems just in case. */
 		if(!array_key_exists($nsid,$wgNamespaces)) {
-			$this->showForm(wfMsg('namespace_not_deletable'),wfMsg('namespace_not_deletable_missing',$nsid));
+			$this->showForm( wfMsg('namespace_not_deletable'),wfMsg('namespace_not_deletable_missing',$nsid) );
 			return false;
 		} elseif($wgNamespaces[$nsid]->isSystemNamespace()) {
-			$this->showForm(wfMsg('namespace_not_deletable'),wfMsg('namespace_not_deletable_system',$nsid));
+			$this->showForm( wfMsg('namespace_not_deletable'),wfMsg('namespace_not_deletable_system',$nsid) );
 			return false;
 		}
-		$nsdelete=clone($wgNamespaces[$nsid]);
-		$nsdeletename=$nsdelete->getDefaultName();		
-		$drv=$nsdelete->deleteNamespace();
-		if(empty($nsdeletename)) {
+
+		$nsdelete = clone($wgNamespaces[$nsid]);
+		$nsdeletename = $nsdelete->getDefaultName();		
+		$drv = $nsdelete->deleteNamespace();
+
+		if( empty($nsdeletename) ) {
 			# At least show the index
 			$nsdeletename=$nsid;
 		}
-		if($drv[NS_RESULT]==NS_DELETED) {
-			$wgOut->addWikiText(wfMsg("namespace_deleted",$nsdeletename));
+
+		if( $drv[NS_RESULT] == NS_DELETED ) {
+			$wgOut->addWikiText( wfMsg('namespace_deleted',$nsdeletename) );
 			$this->showForm();
 			return true;
-		} elseif($drv[NS_RESULT]==NS_NAME_ISSUES) {
-			$this->showForm(wfMsg('namespace_delete_error',$nsdeletename),$this->nameIssues($drv));
+		} elseif( $drv[NS_RESULT] == NS_NAME_ISSUES ) {
+			$this->showForm( wfMsg('namespace_delete_error',$nsdeletename),$this->nameIssues($drv) );
 			return false;
 		} else {
-			$this->showForm(wfMsg('namespace_delete_error'));
+			$this->showForm( wfMsg('namespace_delete_error') );
 			return false;
 		}
 	}
-
 }
-
 ?>
