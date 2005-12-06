@@ -274,14 +274,14 @@ END;
 			$htmlform .=
 <<<END
 	<tr valign="top">
-		<td width="300">{$nameinput}</td>
+		<td>{$nameinput}</td>
 		<td align="center">{$default}</td>
 		<td align="center">{$delete}</td>
 	</tr>
 END;
 		}
 
-		$htmlform .= '<tr><th align="left">' . $namespace_new_names . '</th></tr>' ;
+		$htmlform .= '<tr><th align="left" colspan="3">' . $namespace_new_names . '</th></tr>' ;
 
 		# 3 blank namespace fields
 		// FIXME cant we just count elements ?
