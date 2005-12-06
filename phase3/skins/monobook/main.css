@@ -1337,6 +1337,18 @@ p.revision_saved {
 	background-color: #f0f0ff;
 }
 
+/* SpecialNamespaces table */
+table.specialnamespaces {
+	border: 1px solid #aaa;
+	margin-bottom: 1em;
+}
+
+div#addnsForm {
+	margin-bottom: 1em;
+	border: 1px solid #aaa;
+	padding: 1.5em 2em;
+	background-color: #f9f9f9;
+}
 
 /* noarticletext */
 div.noarticletext {
@@ -1345,4 +1357,3 @@ div.noarticletext {
 	padding: .2em 1em;
 	color: #000;
 }
-

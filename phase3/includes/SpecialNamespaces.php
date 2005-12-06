@@ -75,36 +75,36 @@ function showForm( $errorHeader='', $errorBody='' ) {
 	}
 
 	$addnshtmlform='
+<div id="addnsForm">
 <form name="addnamespaces" method="post" action="'.$action.'">
-<table border="0">
-<tr valign="top"><td>
-'.wfMsg('add_namespace_default_name').'</td>
-<td>
-<input type="hidden" name="nsAction" value="addnamespaces" />
-<input type="text" name="nsName" size="20"'.$talkpagejs.' />
-</td>
-</tr>
-<tr valign="top">
-<td>
-'.wfMsg('add_namespace_default_talk').'<br />
-</td>
-<td><input type="text" name="nsTalkName" size="20" />
-</td>
-</tr>
-<tr>
-<td colspan="2">
-<label><input type="checkbox" name="nsCreateTalk" checked />
-'.wfMsg('add_namespace_talk_confirm').'
-</label>
-</td>
-</tr>
+<table>
+	<tr valign="top">
+		<td>'.wfMsg('add_namespace_default_name').'</td>
+		<td>
+			<input type="hidden" name="nsAction" value="addnamespaces" />
+			<input type="text" name="nsName" size="20"'.$talkpagejs.' />
+		</td>
+	</tr>
+	<tr valign="top">
+		<td>'.wfMsg('add_namespace_default_talk').'<br /></td>
+		<td><input type="text" name="nsTalkName" size="20" /></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<label>
+			<input type="checkbox" name="nsCreateTalk" checked />'.wfMsg('add_namespace_talk_confirm').'
+		</label>
+		</td>
+	</tr>
 </table>
 <input type="hidden" name="wpEditToken" value="'.$token.'" />
 <input type="submit" value="'.wfMsg('add_namespace_button').'" />
-</form>';
+</form>
+</div>
+';
 		$wgOut->addHTML($addnshtmlform);
 			
-		$wgOut->addWikiText( wfMsg( "modify_namespaces_header" ) );
+		$wgOut->addWikiText( wfMsg( 'modify_namespaces_header' ) );
 
 		// Array of messages to be used
 		$nsMessages = array (
@@ -122,7 +122,7 @@ function showForm( $errorHeader='', $errorBody='' ) {
 		}
 
 		// Initialise the form
-		$htmlform=<<<END
+		$htmlform = <<<END
 <form name="changenamespaces" method="post" action="{$action}">
 <input type="hidden" name="nsAction" value="changenamespaces" />
 <input type="hidden" name="wpEditToken" value="{$token}" />
@@ -160,50 +160,36 @@ END;
 
 				// TODO : fix code below, maybe use HTMLForm ?
 
-				$namespaceselect_html=<<<END
-<tr valign="top"><td colspan="2">
-{$namespace_child_of}<br />
-<select name="ns{$index}Parent" size="1">
-{$namespaceselect}
-</select>
-</td>
+				$namespaceselect_html = <<<END
+<tr valign="top">
+	<td colspan="2">{$namespace_child_of}<br />
+	<select name="ns{$index}Parent" size="1">{$namespaceselect}</select>
+	</td>
 </tr>
 END;
-				$subpages_html=<<<END
-<tr valign="top"><td>
-{$namespace_support_subpages}
-</td>
-<td align="right">
-<input type="checkbox" name="ns{$index}Subpages" {$subpages} />
-</td>
-</tr>		
+				$subpages_html = <<<END
+<tr valign="top">
+	<td>{$namespace_support_subpages}</td>
+	<td align="right"><input type="checkbox" name="ns{$index}Subpages" {$subpages} /></td>
+</tr>
 END;
-				$searchdefault_html=<<<END
-<tr valign="top"><td>
-{$namespace_search_by_default}
-</td>
-<td  align="right">
-<input type="checkbox" name="ns{$index}Search" {$searchdefault} />
-</td>
-</tr>			
+				$searchdefault_html = <<<END
+<tr valign="top">
+	<td>{$namespace_search_by_default}</td>
+	<td  align="right"><input type="checkbox" name="ns{$index}Search" {$searchdefault} /></td>
+</tr>
 END;
-				$hide_html=<<<END
-<tr valign="top"><td>
-{$namespace_hide_in_lists}
-</td>
-<td  align="right">
-<input type="checkbox" name="ns{$index}Hidden" {$hidden} />
-</td>
-</tr>				
+				$hide_html = <<<END
+<tr valign="top">
+	<td>{$namespace_hide_in_lists}</td>
+	<td  align="right"><input type="checkbox" name="ns{$index}Hidden" {$hidden} /></td>
+</tr>
 END;
-				$target_html=<<<END
-<tr valign="top"><td>
-{$namespace_default_link_prefix}
-</td>
-<td align="right">
-<input type="text" size="10" name="ns{$index}Linkprefix" value="{$linkprefix}" />
-</td>
-</tr>				
+				$target_html = <<<END
+<tr valign="top">
+	<td>{$namespace_default_link_prefix}</td>
+	<td align="right"><input type="text" size="10" name="ns{$index}Linkprefix" value="{$linkprefix}" /></td>
+</tr>
 END;
 				$special_html='';
 
@@ -215,12 +201,7 @@ END;
 				$hide_html = '';
 				$target_html = '';
 				$special_namespace = wfMsg('special_namespace');
-				$special_html = <<<END
-<tr valign="top"><td colspan="2">
-<em>{$special_namespace}</em>
-</td>
-</tr>				
-END;
+				$special_html = '<tr valign="top"><td colspan="2"><em>'.$special_namespace.'</em></td></tr>' . "\n";
 			}
 
 
@@ -229,12 +210,9 @@ END;
 			if( $ns->getSystemType() ) {
 				// No delete link ?
 				$systemtype_html = <<<END
-<tr valign="top"><td>
-<b><font color="red">{$namespace_system}</font></b>
-</td>
-<td align="right">
-<b>{$systemtype}</b>
-</td>
+<tr valign="top">
+	<td><b><font color="red">{$namespace_system}</font></b></td>
+	<td align="right"><b>{$systemtype}</b></td>
 </tr>
 END;
 				$deletenamespace_html = '';
@@ -242,32 +220,31 @@ END;
 				// Give out a link to delete the namespace
 				$sk = $wgUser->getSkin();
 				$delete_link = $sk->makeKnownLinkObj( $wgTitle, wfMsg('delete_namespace'), 'action=delete&ns=' . $index );
-				$deletenamespace_html = <<<END
-<tr valign="top"><td colspan="2">
-<b>{$delete_link}</b>
-</td>
-</tr>
-END;
+				$deletenamespace_html = '<tr valign="top"><td colspan="2"><b>'.$delete_link.'</b></td></tr>' . "\n";
 				$systemtype_html='';
 			}
 
 
 			// Yet another table of tables :p
-
 			$htmlform .= <<<END
-<table border="0">
+<table class="specialnamespaces">
 <tr valign="top"><td>
 	<table border="0" style="margin-right:1em;" width="300">
 		<tr><th colspan="2">{$namespace_properties}</th></tr>
 		<tr><td>{$namespace_slot}</td><td align="right">{$index}</td></tr>
-		{$systemtype_html}
-		{$special_html}
-		{$subpages_html}
-		{$searchdefault_html}
-		{$hide_html}
-		{$target_html}
-		{$namespaceselect_html}
-		{$deletenamespace_html}
+END;
+			// Also add html part generated before
+			$htmlform .=
+				  $systemtype_html
+				. $special_html
+				. $subpages_html
+				. $searchdefault_html
+				. $hide_html
+				. $target_html
+				. $namespaceselect_html
+				. $deletenamespace_html
+				;
+$htmlform .= <<<END
 	</table>
 </td><td>
 	<table border="0">
@@ -323,16 +300,23 @@ END;
 		<td align="center"><input type="radio" name="ns{$index}Default" value="{$i}" /></td>
 		<td align="center">&nbsp;</td>
 	</tr>
+
 END;
 		}
-		$htmlform .= '</table></td></tr>';	
-		$htmlform .= '<tr><td colspan="2"><hr noshade /></td></tr>';
+		$htmlform .=
+<<<END
+</table>
+	</td></tr>
+</table>
+
+END;
 	}
 	$htmlform.=
 <<<END
 <tr><td><input type="submit" value="{$namespace_save_changes}" /></td></tr>
 </table>
 </form>
+
 END;
 
 	// Ouput the form

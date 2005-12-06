@@ -373,6 +373,12 @@ table.exif td.spacer {
 	background-color: #f0f0ff;
 }
 
+/* SpecialNamespace */
+table.specialnamespaces {
+	border : 1px solid black;
+}
+
+
 #jump-to-nav {
   display: none;
 }
