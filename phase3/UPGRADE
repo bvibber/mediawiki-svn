@@ -1,3 +1,30 @@
+== IMPORTANT: Upgrading custom namespaces to the new namespace system ==
+
+If you have custom namespaces defined in the $wgExtraNamespaces array you'll
+have to take special precautions when upgrading. You can't run the installer on
+your existing database and expect your old namespace settings (or any settings
+for that matter) to be carried over to your new installation. Rather you'll
+have to:
+
+1. Upgrade your MediaWiki source tree
+2. Place your old LocalSettings.php and AdminSettings.php in the root directory
+3. Run php maintenance/update.php
+
+This should create the `namespace` and `namespace_names` tables and populate
+them with values based on your site language, any custom namespace settings you
+may have, the site name etc.
+
+----
+
+Note: If you really want to make the installar create a fresh LocalSettings.php
+file even though you have custom namespaces defined you could run the
+installer and after the installation has finished copy your old
+$wgExtraNamespaces array from your old LocalSettings.php to your new
+LocalSettings.php, DROP the namespace` and `namespace_names` tables and run
+php maintenance/update.php. Which should populate the two tables properly,
+This is not considered a supported upgrade path however so DO THIS AT YOUR OWN
+RISK.
+
 == The basic theory ==
 
 Generally, within a stable release series (e.g. 1.4.0, 1.4.1, etc) there
