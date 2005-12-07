@@ -15,6 +15,19 @@ $wgHooks['ArticleViewHeader'][] = 'wfStableVersionHeaderHook' ;
 $wgHooks['ArticlePageDataBefore'][] = 'wfStableVersionArticlePageDataBeforeHook' ;
 $wgHooks['ArticlePageDataAfter'][] = 'wfStableVersionArticlePageDataAfterHook' ;
 
+
+$wgMessageCache->addMessages(
+	array(
+		'staticversion_this_is_stable' => 'This is the stable version of this article. You can also look at the <a href="$1">latest draft version</a>.',
+		'staticversion_this_is_draft_no_stable' => 'You are looking at a draft version of this article; there is no stable version of this article yet.',
+		'staticversion_this_is_draft' => 'This is a draft version of this article. You can also look at the <a href="$1">stable version</a>.',
+		'staticversion_reset_stable_version' => 'Click <a href="$1">here</a> to remove this as stable version!',
+		'staticversion_set_stable_version' => 'Click <a href="$1">here</a> to set this as stable version!',
+		'staticversion_set_ok' => 'The stable version has been successfully set.',
+		'staticversion_reset_ok' => 'The stable version has been successfully removed. This article has no stable version right now.'
+	)
+);
+
 # Adds query for stable version
 function wfStableVersionArticlePageDataBeforeHook ( $a , &$b ) {
 	$b[] = "page_stable" ;
