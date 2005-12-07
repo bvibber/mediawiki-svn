@@ -14,6 +14,9 @@ auth/
 BoardVote/
  A tool to run a site wide vote using pgp.
 
+Cache404/
+ A 404-handler for caching MediaWiki pages in the Apache documents area.
+ 
 CharInsert/
 
 ee/
