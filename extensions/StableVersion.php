@@ -15,18 +15,28 @@ $wgHooks['ArticleViewHeader'][] = 'wfStableVersionHeaderHook' ;
 $wgHooks['ArticlePageDataBefore'][] = 'wfStableVersionArticlePageDataBeforeHook' ;
 $wgHooks['ArticlePageDataAfter'][] = 'wfStableVersionArticlePageDataAfterHook' ;
 
-
-$wgMessageCache->addMessages(
-	array(
-		'staticversion_this_is_stable' => 'This is the stable version of this article. You can also look at the <a href="$1">latest draft version</a>.',
-		'staticversion_this_is_draft_no_stable' => 'You are looking at a draft version of this article; there is no stable version of this article yet.',
-		'staticversion_this_is_draft' => 'This is a draft version of this article. You can also look at the <a href="$1">stable version</a>.',
-		'staticversion_reset_stable_version' => 'Click <a href="$1">here</a> to remove this as stable version!',
-		'staticversion_set_stable_version' => 'Click <a href="$1">here</a> to set this as stable version!',
-		'staticversion_set_ok' => 'The stable version has been successfully set.',
-		'staticversion_reset_ok' => 'The stable version has been successfully removed. This article has no stable version right now.'
-	)
-);
+function wfStableVersionAddCache () {
+	global $wgMessageCache , $wgStableVersionAddCache ;
+	if ( $wgStableVersionAddCache ) return ;
+	$wgStableVersionAddCache = true ;
+	$wgMessageCache->addMessages(
+		array(
+			'staticversion_this_is_stable' => 'This is the stable version of this article. You can also look at the <a href="$1">latest draft version</a>.',
+			'staticversion_this_is_draft_no_stable' => 'You are looking at a draft version of this article; there is no stable version of this article yet.',
+			'staticversion_this_is_draft' => 'This is a draft version of this article. You can also look at the <a href="$1">stable version</a>.',
+			'staticversion_reset_stable_version' => 'Click <a href="$1">here</a> to remove this as stable version!',
+			'staticversion_set_stable_version' => 'Click <a href="$1">here</a> to set this as stable version!',
+			'staticversion_set_ok' => 'The stable version has been successfully set.',
+			'staticversion_reset_ok' => 'The stable version has been successfully removed. This article has no stable version right now.',
+			'staticversion_return' => 'Return to <a href="$1">$2</a>',
+			'staticversion_set_log' => '#$1 is now stable version.',
+			'staticversion_reset_log' => 'Stable version has been removed.',
+			'staticversion_log' => 'Stable version management',
+			'staticversionpage' => 'Stable version log',
+#			'staticversionpagetext' => 'Below is a list of page moved.',
+		)
+	);
+}
 
 # Adds query for stable version
 function wfStableVersionArticlePageDataBeforeHook ( $a , &$b ) {
@@ -47,6 +57,7 @@ function wfStableVersionCanChange () {
 # Generates the little header line
 function wfStableVersionHeaderHook ( $a ) {
 	global $wgOut , $wgArticle , $wgTitle ;
+	wfStableVersionAddCache () ;
 	$st = "" ; # Subtitle
 	
 	if ( $wgArticle->getRevIdFetched() == $wgArticle->mStable ) { # This is the stable version
@@ -98,6 +109,7 @@ function wfStableVersion() {
 		*/
 		function execute( $par = null ) {
 			global $wgOut , $wgRequest ;
+			wfStableVersionAddCache () ;
 			$mode = $wgRequest->getText('mode', "") ;
 			if ( $mode != 'set' && $mode != 'reset' ) return ; # Should be error (wrong call)
 			$id = $wgRequest->getText ( 'id', "0" ) ;
@@ -106,9 +118,11 @@ function wfStableVersion() {
 			if ( $mode == 'set' ) { # Set
 				$newstable = $wgRequest->getText ( 'revision', "0" ) ;
 				$out = wfMsg ( 'staticversion_set_ok' ) ;
+				$act = wfMsg ( 'staticversion_set_log' , $newstable ) ;
 			} else { # Reset
 				$newstable = "0" ;
 				$out = wfMsg ( 'staticversion_reset_ok' ) ;
+				$act = wfMsg ( 'staticversion_reset_log' ) ;
 			}
 
 			$conditions = array( 'page_id' => $id );
@@ -120,6 +134,15 @@ function wfStableVersion() {
 				),
 				$conditions,
 				$fname );
+
+			$t = Title::newFromID ( $id ) ;
+			$url = $t->getFullURL ( "&id=" . $id . "&mode=set&revision=" . $newstable ) ;
+			$out = "<p>{$out}</p><p>" . wfMsg ( 'staticversion_return' , $url , $t->getFullText() ) . "</p>" ;
+
+			# Logging (BROKEN!)
+			$log = new LogPage( 'stableversion' );
+			$log->addEntry( wfMsg('staticversion_log') , $t , $act );
+
 
 			$this->setHeaders();
 			$wgOut->addHtml( $out );
