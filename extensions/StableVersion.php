@@ -24,29 +24,26 @@ $wgHooks['LogPageLogHeader'][] = 'wfStableVersionAddLogHeader';
 $wgHooks['LogPageActionText'][] = 'wfStableVersionAddActionText';
 
 function wfStableVersionAddLogType( &$types ) {
-	if ( !in_array( 'stableversion', $types ) )
-		$types[] = 'stableversion';
+	if ( !in_array( 'stablevers', $types ) )
+		$types[] = 'stablevers';
 	return true;
 }
 
 function wfStableVersionAddLogName( &$names ) {
-	$names['stableversion'] = 'stableversion_logpage';
+	$names['stablevers'] = 'stableversion_logpage';
 	return true;
 }
 
 function wfStableVersionAddLogHeader( &$headers ) {
-	$headers['stableversion'] = 'stableversion_logpagetext';
+	$headers['stablevers'] = 'stableversion_logpagetext';
 	return true;
 }
 
 function wfStableVersionAddActionText( &$actions ) {
-	$actions['stableversion/stableversion'] = 'stableversion_logentry';
+	$actions['stablevers/stablevers'] = 'stableversion_logentry';
 	return true;
 }
 # END logging functions
-
-
-
 
 
 # Text adding function
@@ -70,6 +67,8 @@ function wfStableVersionAddCache () {
 			'stableversion_logpagetext' => 'This is a log of changes to stable versions',
 			'stableversion_logentry' => '',
 			'stableversion_log' => 'Revision #$1 is now the stable version.',
+			'stableversion_before_no' => 'There was no stable revision before.',
+			'stableversion_before_yes' => 'The last stable revision was #$1.',
 		)
 	);
 }
@@ -86,8 +85,12 @@ function wfStableVersionArticlePageDataAfterHook ( &$a , $b ) {
 
 # Decides wether a user can set the stable version
 function wfStableVersionCanChange () {
-	global $wgUser ;
 	return true ; # Dummy, everyone can set stable versions
+	global $wgUser ;
+	if ( !$wgUser->isAllowed( 'stableversion' ) ) {
+		$wgOut->permissionRequired( 'stableversion' );
+		return;
+	}
 }
 
 # Generates the little header line
@@ -118,7 +121,6 @@ function wfStableVersionHeaderHook ( $a ) {
 		}
 	}
 
-	if ( $st == "" ) return ;
 	$st = $wgOut->getSubtitle() . "<br/>" . $st ;
 	$wgOut->setSubtitle ( $st ) ;
 }
@@ -146,24 +148,41 @@ function wfStableVersion() {
 		*/
 		function execute( $par = null ) {
 			global $wgOut , $wgRequest ;
+			
+			# Sanity checks
 			$mode = $wgRequest->getText('mode', "") ;
 			if ( $mode != 'set' && $mode != 'reset' ) return ; # Should be error (wrong call)
 			$id = $wgRequest->getText ( 'id', "0" ) ;
 			if ( $id == "0" ) return ; # Should be error (wrong call)
 			if ( !wfStableVersionCanChange() ) return ; # Should be error (not allowed)
-			if ( $mode == 'set' ) { # Set
+
+			# OK, now do business
+			$t = Title::newFromID ( $id ) ;
+
+			if ( $mode == 'set' ) { # Set new version as stable
 				$newstable = $wgRequest->getText ( 'revision', "0" ) ;
 				$out = wfMsg ( 'stableversion_set_ok' ) ;
+				$url = $t->getFullURL ( "oldid=" . $newstable ) ;
 				$act = wfMsg ( 'stableversion_log' , $newstable ) ;
-			} else { # Reset
+			} else { # Reset stable version
 				$newstable = "0" ;
 				$out = wfMsg ( 'stableversion_reset_ok' ) ;
+				$url = $t->getFullURL () ;
 				$act = wfMsg ( 'stableversion_reset_log' ) ;
 			}
+			
+			# Get old stable version
+			$dbr =& wfGetDB( DB_SLAVE );
+			$row = $dbr->selectRow( 'page', array( 'page_stable' ),
+				array( 'page_id' => $id ), $fname );
+			$oldstable = $row->page_stable ;
+			if ( $oldstable == 0 ) $before = wfMsg ( 'stableversion_before_no' ) ;
+			else $before = wfMsg ( 'stableversion_before_yes' , $oldstable ) ;
+			$act .= " " . $before ;
 
 			$conditions = array( 'page_id' => $id );
 			$fname = "SpecialStableVersion:execute" ;
-			$dbw = wfGetDB( DB_MASTER );
+			$dbw =& wfGetDB( DB_MASTER );
 			$dbw->update( 'page',
 				array( /* SET */
 					'page_stable'      => $newstable,
@@ -171,13 +190,12 @@ function wfStableVersion() {
 				$conditions,
 				$fname );
 
-			$t = Title::newFromID ( $id ) ;
-			$url = $t->getFullURL ( "&id=" . $id . "&mode=set&revision=" . $newstable ) ;
 			$out = "<p>{$out}</p><p>" . wfMsg ( 'stableversion_return' , $url , $t->getFullText() ) . "</p>" ;
+			$act = "[[" . $t->getText() . "]] : " . $act ;
 
 			# Logging
-			$log = new LogPage( 'stableversion' );
-			$log->addEntry( 'stableversion', $t , $act );
+			$log = new LogPage( 'stablevers' );
+			$log->addEntry( 'stablevers', $t , $act );
 
 			$this->setHeaders();
 			$wgOut->addHtml( $out );
