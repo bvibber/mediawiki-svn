@@ -555,9 +555,8 @@ class Namespace {
 				$existsOld=array_key_exists($i, $wgNamespaces[$index]->names);
 				$existsNew=array_key_exists($i, $this->names);
 				if($existsOld && $existsNew) {
-					if(strcasecmp($wgNamespaces[$index]->names[$i],
-					              $this->names[$i])!=0) {
-							$nameOperations[$this->names[$i]]=NS_NAME_MODIFY;
+					if(strcasecmp($wgNamespaces[$index]->names[$i], $this->names[$i])!=0) {
+						$nameOperations[$this->names[$i]]=NS_NAME_MODIFY;
 					}
 				} elseif($existsOld && !$existsNew) {
 					$nameOperations[$wgNamespaces[$index]->names[$i]]=NS_NAME_DELETE;
@@ -583,13 +582,10 @@ class Namespace {
 
 				# Duplicate names
 				foreach($wgNamespaces as $exns) {
-					if($exns->getIndex()!=$index) {
-						foreach($exns->names as $exname) {
-							if($exname == $name) {
-								$rv[NS_RESULT] = NS_NAME_ISSUES;
-								$rv[NS_DUPLICATE_NAMES][]=$name;
-							}
-						}
+					$dupes=array_keys($exns->names,$name);
+					if(count($dupes)) {
+						$rv[NS_RESULT] = NS_NAME_ISSUES;
+						$rv[NS_DUPLICATE_NAMES][]=$name;
 					}
 				}
 

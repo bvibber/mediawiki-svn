@@ -2231,6 +2231,8 @@ will expire at $4.
 'namespace_not_deletable_missing'=>'A namespace with the number $1 was not found.',
 'namespace_not_deletable_system'=>'The namespace with the number $1 is a system namespace which is required for the operation of MediaWiki.',
 
+# Other namespace stuff
+'namespace_missing_prefix'=>'Invalid namespace',
 
 # Inputbox extension, may be useful in other contexts as well
 'tryexact' => 'Try exact match',

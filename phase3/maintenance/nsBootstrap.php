@@ -1,4 +1,8 @@
 <?php
+// Purpose: Create entries in the namespace and namespace_names tables,
+// based on the configured language. Take into account existing (deprecated)
+// namespace settings in an update.
+//
 // We can't depend on commandLine.inc because this has to be runnable from the installer
 global $wgLanguageCode;
 $wgContLanguageCode = $wgLanguageCode;

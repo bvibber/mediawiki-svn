@@ -387,13 +387,12 @@ END;
 		}
 
 		// We now have validated stuff, lets save for real.
-
-		// TODO error handling ?
+		// No logic errors should occur beyond this point.
 		$ns->save();
 		$complete = wfMsg( 'namespace_created', $nsname );
 
 		if( $nscreatetalk ) {
-			// TODO error handling ?
+		
 			$talkns->save();
 			$complete .= ' '.wfMsg('talk_namespace_created');
 		}
@@ -498,7 +497,6 @@ END;
 			) {
 				# Use this default name.
 				$newns[$nsindex]->setDefaultNameIndex($dindex);
-				#wfDebug("Setting index for $nsindex to $dindex!\n");
 			} else {
 				# We have lost our default name, perhaps it was deleted.
 				# Get a new one if possible.	

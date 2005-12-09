@@ -1191,7 +1191,11 @@ class Title {
 			$p = $this->mInterwiki . ':';
 		}
 		if ( 0 != $this->mNamespace && ! defined( 'MEDIAWIKI_INSTALL' ) ) {
-			$p .= $wgNamespaces[$this->mNamespace]->getDefaultName() . ':';
+			if(array_key_exists($this->mNamespace,$wgNamespaces)) {
+				$p .= $wgNamespaces[$this->mNamespace]->getDefaultName() . ':';
+			} else {
+				$p = wfMsg('namespace_missing_prefix').'_'.$this->mNamespace.':';
+			}
 		}
 		return $p . $name;
 	}
