@@ -26,6 +26,7 @@ function wfSpecialEval() {
 		array(
 			'eval' => 'Eval',
 			'eval_submit' => 'Evaluate',
+			'eval_escape' => 'Escape output',
 			'eval_out' => 'Output',
 			'eval_code' => 'Code'
 		)
@@ -43,6 +44,7 @@ function wfSpecialEval() {
 			$this->setHeaders();
 
 			$code = isset( $par ) ? $par : $wgRequest->getText( 'code' );
+			$escape = $wgRequest->getBool( 'escape' );
 			
 			$eform = new EvaluateForm( $code );
 
@@ -51,7 +53,7 @@ function wfSpecialEval() {
 			else {
 				$eform->execute();
 				
-				$eout = new EvaluateOutput( $code );
+				$eout = new EvaluateOutput( $code, $escape );
 				$eout->execute();
 			}
 		}
@@ -76,25 +78,38 @@ function wfSpecialEval() {
 					),
 					null
 				) .
-					wfOpenElement( 'label' ) .
-						wfElement( 'textarea',
-							array(
-								'cols' => 40,
-								'rows' => 10,
-								'name' => 'code',
-							),
-							$this->mCode
-						) .
-						' ' .
-						wfElement( 'br', null, '' ) .
-						wfElement( 'input',
-							array(
-								'type' => 'submit',
-								'value' => wfMsgHtml( 'eval_submit' )
-							),
-							''
-						) .
-					wfCloseElement( 'label' ) .
+					wfElement( 'textarea',
+						array(
+							'cols' => 40,
+							'rows' => 10,
+							'name' => 'code',
+						),
+						$this->mCode
+					) .
+					' ' .
+					wfElement( 'br', null, '' ) .
+					wfElement( 'input',
+						array(
+							'type' => 'checkbox',
+							'name' => 'escape',
+							'id' => 'escape'
+						),
+						''
+					) .
+					wfElement( 'label',
+						array(
+							'for' => 'escape'
+						),
+						wfMsg( 'eval_escape' )
+					) .
+					wfElement( 'br', null, '' ) .
+					wfElement( 'input',
+						array(
+							'type' => 'submit',
+							'value' => wfMsg( 'eval_submit' )
+						),
+						''
+					) .
 				wfCloseElement( 'form' )
 			);
 		}
@@ -102,58 +117,54 @@ function wfSpecialEval() {
 	}
 
 	class EvaluateOutput {
-		var $mCode, $mErr;
+		var $mCode, $mEscape;
+		var $mErr;
 		
-		function EvaluateOutput( &$code ) {
+		function EvaluateOutput( &$code, &$escape ) {
 			$this->mCode =& $code;
+			$this->mEscape =& $escape;
 		}
 		
 		function execute() {
-			$this->start();
 			ob_start();
 			eval( $this->mCode );
 
 			$this->mErr = ob_get_clean();
-			$this->err();
+			$this->summary();
 		}
 
-		function start() {
+		function summary() {
 			global $wgOut;
 
-			$wgOut->addHTML(
-				wfElement( 'h2', null, wfMsg( 'eval_out' ) )
-			);
-		}
-
-		function err() {
-			global $wgOut;
-
-			if ( $this->mErr !== '' ) {
-				$wgOut->addHTML(
-					preg_replace( '/^<br \/>/', '', $this->mErr )
-				);
+			if ( $this->mCode !== '' )
 				$this->code();
+			
+			if ( $this->mErr !== '' ) {
+				$this->mErr =  preg_replace( '/^<br \/>/', '', $this->mErr );
+				$wgOut->addHTML( wfElement( 'h2', null, wfMsg( 'eval_out' ) ) );
+				if ( $this->mEscape )
+					$this->mErr =
+						wfOpenElement( 'pre' ) .
+						htmlspecialchars( $this->mErr ) .
+						wfCloseElement( 'pre ' );
+				$wgOut->addHTML( $this->mErr );
 			}
 		}
 
 		function code() {
 			global $wgOut;
 
-			$lines = explode( "\n", $this->mCode );
+			if ( ! class_exists( 'GeSHi' ) )
+				require_once 'geshi/geshi.php';
 
-			if ( count( $lines ) ) {
-				$wgOut->addHTML(
-					wfElement( 'h2', null, wfMsg( 'eval_code' ) ) .
-					wfOpenElement( 'ol' )
-				);
-				
-				foreach ( $lines as $i => $line )
-					$wgOut->addHTML(
-						wfElement( 'li', null, $line )
-					);
-				
-				$wgOut->addHtml( wfCloseElement( 'ol' ) );
-			}
+			$geshi = new Geshi( $this->mCode, 'php' );
+			$geshi->enable_line_numbers( GESHI_NORMAL_LINE_NUMBERS );
+			$geshi->set_header_type( GESHI_HEADER_DIV );
+			
+			$wgOut->addHTML(
+				wfElement( 'h2', null, wfMsg( 'eval_code' ) ) .
+				$geshi->parse_code()
+			);
 		}
 	}
 	
