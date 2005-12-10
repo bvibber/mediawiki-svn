@@ -46,7 +46,7 @@ function wfSpecialEval() {
 			$code = isset( $par ) ? $par : $wgRequest->getText( 'code' );
 			$escape = $wgRequest->getBool( 'escape' );
 			
-			$eform = new EvaluateForm( $code );
+			$eform = new EvaluateForm( $code, $escape );
 
 			if ( trim( $code ) === '' )
 				$eform->execute();
@@ -60,10 +60,11 @@ function wfSpecialEval() {
 	}
 
 	class EvaluateForm {
-		var $mCode;
+		var $mCode, $mEscape;
 		
-		function EvaluateForm( $code ) {
+		function EvaluateForm( $code, $escape ) {
 			$this->mCode =& $code;
+			$this->mEscape =& $escape;
 		}
 		
 		function execute() {
@@ -93,7 +94,7 @@ function wfSpecialEval() {
 							'type' => 'checkbox',
 							'name' => 'escape',
 							'id' => 'escape'
-						),
+						) + ( $this->mEscape ? array( 'checked' => 'checked' ) : array() ),
 						''
 					) .
 					wfElement( 'label',
