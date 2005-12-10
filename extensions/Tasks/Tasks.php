@@ -37,16 +37,65 @@ $wgExtensionCredits['Tasks'][] = array(
 
 $wgExtensionFunctions[] = 'wfTasksExtension' ;
 
+# Misc hooks
 $wgHooks['SkinTemplateTabs'][] = 'wfTasksExtensionTab' ;
 $wgHooks['UnknownAction'][] = 'wfTasksExtensionAction' ;
 $wgHooks['ArticleSaveComplete'][] = 'wfTasksExtensionArticleSaveComplete' ;
+$wgHooks['ArticleDeleteComplete'][] = 'wfTasksExtensionArticleDeleteComplete' ;
+
+
+# BEGIN logging functions
+$wgHooks['LogPageValidTypes'][] = 'wfTasksAddLogType';
+$wgHooks['LogPageLogName'][] = 'wfTasksAddLogName';
+$wgHooks['LogPageLogHeader'][] = 'wfTasksAddLogHeader';
+$wgHooks['LogPageActionText'][] = 'wfTasksAddActionText';
+
+function wfTasksAddLogType( &$types ) {
+	if ( !in_array( 'tasks', $types ) )
+		$types[] = 'tasks';
+	return true;
+}
+
+function wfTasksAddLogName( &$names ) {
+	$names['tasks'] = 'tasks_logpage';
+	return true;
+}
+
+function wfTasksAddLogHeader( &$headers ) {
+	$headers['tasks'] = 'tasks_logpagetext';
+	return true;
+}
+
+function wfTasksAddActionText( &$actions ) {
+	$actions['tasks/tasks'] = 'tasks_logentry';
+	return true;
+}
+# END logging functions
+
+
+
+
+
+#----------------------------------------------------------------
+
+/**
+* Catch article deletion, remove all tasks
+*/
+function wfTasksExtensionArticleDeleteComplete ( &$article , &$user , $reason ) {
+	# return false ; # Uncomment this line to prevent deletion of tasks upon deletion of article
+	wfTasksAddCache() ;
+	$t = $article->getTitle() ;
+
+	$st = new SpecialTasks ;
+	$st->delete_all_tasks ( $t ) ;
+	return false ;
+}
 
 /**
 * Catch article creation, to close "create" tasks
 */
 function wfTasksExtensionArticleSaveComplete ( &$article , &$user , $text , $summary, $isminor, $watchthis, $something ) {
 	wfTasksAddCache() ;
-
 	$t = $article->getTitle() ;
 	$new_id = $t->mArticleID ;
 	$t->mArticleID = -1 ; # Fake non-existing page
@@ -118,6 +167,7 @@ function wfTasksAddCache () {
 			'tasks_assignedto' => "Assigned to $1",
 			'tasks_created_by' => "By $1",
 			'tasks_discussion_page_link' => "Task discussion page",
+			'tasks_closedby' => "(by $1)",
 			
 			'tasks_status_open' => "Open" ,
 			'tasks_status_assigned' => "Assigned" ,
@@ -132,6 +182,15 @@ function wfTasksAddCache () {
 			'tasks_status_bgcol_assigned' => "#FFF380" ,
 			'tasks_status_bgcol_closed' => "#99FF99" ,
 			'tasks_status_bgcol_wontfix' => "#9999FF" ,
+			'tasks_action_open' => "Task \"$1\" opened." ,
+			'tasks_action_assigned' => "Task \"$1\" assigned." ,
+			'tasks_action_closed' => "Task \"$1\" closed." ,
+			'tasks_action_wontfix' => "Won't fix task \"$1\"." ,
+			
+			'tasks_logpage' => "Tasks log" ,
+			'tasks_logpagetext' => 'This is a log of changes to tasks',
+			'tasks_logentry' => 'For "[[$1]]"',
+			
 /*			'stableversion_reset_log' => 'Stable version has been removed.',
 			'stableversion_logpage' => 'Stable version log',
 			'stableversion_logpagetext' => 'This is a log of changes to stable versions',
@@ -235,7 +294,7 @@ function wfTasksExtension() {
 		/**
 		* For a list of tasks, get a single table row
 		*/
-		function get_task_table_row ( &$task , &$title ) {
+		function get_task_table_row ( &$task , &$title , $show_page = false ) {
 			global $wgContLang , $wgUser , $wgTasksNamespace , $wgExtraNamespaces ;
 			$out = "" ;
 			$sk = &$wgUser->getSkin() ;
@@ -251,6 +310,12 @@ function wfTasksExtension() {
 			$out .= "<td valign='top' align='left' nowrap bgcolor='" . wfMsg('tasks_status_bgcol_'.$this->status_types[$status]) . "'>" ;
 			$out .= "<b>" . $ttype . "</b><br/>" ;
 			$out .= wfMsg ( 'tasks_status_' . $this->status_types[$status] ) ;
+			if ( $task->task_user_close != 0 && ( $status == 3 || $status == 4 ) ) {
+				$user_close = new User ;
+				$user_close->setID ( $task->task_user_close ) ;
+				$uct = Title::makeTitleSafe( NS_USER, $user_close->getName() ) ; # Assigned user title
+				$out .= "<br/>" . wfMsg ( 'tasks_closedby' , $sk->makeLink ( $uct->getPrefixedText() , $user_close->getName() ) ) ;				
+			}
 			$out .= "</td>" ;
 			$out .= "<td align='left' valign='top' nowrap>" ;
 			$out .= wfMsg ( 'tasks_created_by' , $sk->makeLink ( $cu->getPrefixedText() , $task->task_user_text ) ) ;
@@ -276,16 +341,16 @@ function wfTasksExtension() {
 					$txt[] = wfMsg ( 'tasks_close' , $url ) ;
 					$url = $sk->makeUrl ( $title->getPrefixedText() , "action=tasks&mode=wontfix&taskid={$tid}" ) ;
 					$txt[] = wfMsg ( 'tasks_wontfix' , $url ) ;
-				} else { # Closed or wontfix
+				} else if ( $this->task_types[$task->task_type] != 'create' ) { # Closed or wontfix, can reopen (maybe)
 					$url = $sk->makeUrl ( $title->getPrefixedText() , "action=tasks&mode=reopen&taskid={$tid}" ) ;
 					$txt[] = wfMsg ( 'tasks_reopen' , $url ) ;
 				}
 				
-				$tdp = $wgExtraNamespaces[$wgTasksNamespace] ;
-				$tdp .= ":{$task->task_id } {$ttype} " . $title->getPrefixedText() ; # Task discussion page
-				
 				if ( count ( $txt ) > 0 )
 					$out .= "<br/>" . implode ( " - " , $txt ) ;
+
+				$tdp = substr ( $title->getPrefixedText() , 0 , 200 ) ;
+				$tdp = $wgExtraNamespaces[$wgTasksNamespace] . ":" . $ttype . ' "' . $tdp . '" (' . $task->task_id . ")" ;				
 				$out .= "<br/>" . $sk->makeLink ( $tdp , wfMsg('tasks_discussion_page_link') ) ;
 			}
 			$out .="</td>" ;
@@ -333,8 +398,20 @@ function wfTasksExtension() {
 					$fname );
 				
 			} else if ( $mode == 'close' || $mode == 'wontfix' || $mode == 'reopen' ) {
+				if ( $mode == 'reopen' ) $mode = "open" ;
+				if ( $mode == 'close' ) $mode = "closed" ;
+				$new_status = $this->get_status_number ( $mode ) ;
+				$this->change_task_status ( $taskid , $new_status ) ;
 			} else return "" ; # Unknown mode
 			return $out ;
+		}
+		
+		function get_status_number ( $mode ) {
+			foreach ( $this->status_types AS $k => $v ) {
+				if ( $v == $mode )
+					return $k ;
+			}
+			return 0 ; # Invalid status
 		}
 		
 		function change_task_status ( $taskid , $new_status ) {
@@ -347,6 +424,9 @@ function wfTasksExtension() {
 			if ( $new_status == 3 || $new_status == 4 ) { # When closing, set closing user ID, and reset assignment
 				$as['task_user_close'] = $wgUser->getID() ;
 				$as['task_user_assigned'] = 0 ;
+			} else if ( $new_status == 1 ) { # Change to "open", no assigned user or closing user
+				$as['task_user_assigned'] = 0 ;
+				$as['task_user_close'] = 0 ;
 			}
 			
 			$dbw =& wfGetDB( DB_MASTER );
@@ -354,8 +434,37 @@ function wfTasksExtension() {
 				$as , # SET
 				$aw , # WHERE
 				$fname );
+
+			# Logging
+			$title = $this->get_title_from_task ( $taskid , $task ) ;
+			$act = wfMsg ( 'tasks_action_' . $this->status_types[$new_status] , $this->task_types[$task->task_type] ) ;
+			$log = new LogPage( 'tasks' );
+			$log->addEntry( 'tasks', $title , $act );
 		}
 		
+		/**
+		* Returns the title object for a task, and the task data through reference
+		*/
+		function get_title_from_task ( $task_id , &$task ) {
+			$dbr =& wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+					/* FROM   */ 'tasks',
+					/* SELECT */ '*',
+					/* WHERE  */ array ( "task_id" => $task_id )
+			);
+			$task = $dbr->fetchObject( $res ) ;
+			$dbr->freeResult($res);
+			if ( $task->task_page_id == 0 ) { # Non-existing page
+				$title = Title::newFromDBkey ( $task->task_page_title ) ;
+			} else { # Existing page
+				$title = Title::newFromID ( $task->task_page_id ) ;
+			}
+			return $title ;
+		}
+		
+		/**
+		* Sets the article ID (on page creation)
+		*/
 		function set_new_article_id ( &$title ) {
 			$fname = "Tasks:set_new_article_id" ;
 			$dbw =& wfGetDB( DB_MASTER );
@@ -363,6 +472,17 @@ function wfTasksExtension() {
 				array ( 'task_page_id' => $title->getArticleID() ) , # SET
 				array ( "task_page_title" => $title->getPrefixedDBkey() ) , # WHERE
 				$fname );
+		}
+
+		/**
+		* Deletes all tasks associated with an article; done on article deletion
+		*/
+		function delete_all_tasks ( &$title ) {
+			$fname = "Tasks:delete_all_tasks" ;
+			$dbw =& wfGetDB( DB_MASTER );
+			$dbw->delete ( 'tasks' ,
+				array ( 'task_page_title' => $title->getPrefixedDBkey() ) ,
+				$fname ) ;
 		}
 		
 		/**
@@ -457,56 +577,6 @@ function wfTasksExtension() {
 
 			$this->setHeaders();
 			$wgOut->addHtml( $out );
-			
-/*			# Sanity checks
-			$mode = $wgRequest->getText('mode', "") ;
-			if ( $mode != 'set' && $mode != 'reset' ) return ; # Should be error (wrong call)
-			$id = $wgRequest->getText ( 'id', "0" ) ;
-			if ( $id == "0" ) return ; # Should be error (wrong call)
-			if ( !wfStableVersionCanChange() ) return ; # Should be error (not allowed)
-
-			# OK, now do business
-			$t = Title::newFromID ( $id ) ;
-
-			if ( $mode == 'set' ) { # Set new version as stable
-				$newstable = $wgRequest->getText ( 'revision', "0" ) ;
-				$out = wfMsg ( 'stableversion_set_ok' ) ;
-				$url = $t->getFullURL ( "oldid=" . $newstable ) ;
-				$act = wfMsg ( 'stableversion_log' , $newstable ) ;
-			} else { # Reset stable version
-				$newstable = "0" ;
-				$out = wfMsg ( 'stableversion_reset_ok' ) ;
-				$url = $t->getFullURL () ;
-				$act = wfMsg ( 'stableversion_reset_log' ) ;
-			}
-			
-			# Get old stable version
-			$dbr =& wfGetDB( DB_SLAVE );
-			$row = $dbr->selectRow( 'page', array( 'page_stable' ),
-				array( 'page_id' => $id ), $fname );
-			$oldstable = $row->page_stable ;
-			if ( $oldstable == 0 ) $before = wfMsg ( 'stableversion_before_no' ) ;
-			else $before = wfMsg ( 'stableversion_before_yes' , $oldstable ) ;
-			$act .= " " . $before ;
-
-			$conditions = array( 'page_id' => $id );
-			$fname = "SpecialStableVersion:execute" ;
-			$dbw =& wfGetDB( DB_MASTER );
-			$dbw->update( 'page',
-				array( # SET
-					'page_stable'      => $newstable,
-				),
-				$conditions,
-				$fname );
-
-			$out = "<p>{$out}</p><p>" . wfMsg ( 'stableversion_return' , $url , $t->getFullText() ) . "</p>" ;
-			$act = "[[" . $t->getText() . "]] : " . $act ;
-
-			# Logging
-			$log = new LogPage( 'stablevers' );
-			$log->addEntry( 'stablevers', $t , $act );
-
-*/
 		}
 	} # end of class
 
