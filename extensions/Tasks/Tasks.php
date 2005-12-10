@@ -8,22 +8,26 @@ To activate, put something like this in your LocalSettings.php:
 
 Also, you need to run the following SQL statement:
 CREATE TABLE `tasks` (
-	`task_id` INT( 8 ) UNSIGNED NOT NULL DEFAULT '0' AUTO_INCREMENT,
-	`task_page_id` INT( 8 ) UNSIGNED NOT NULL DEFAULT '0',
-	`task_page_title` varchar(255) NOT NULL default '',
-  	`task_user_id` INT( 8 ) UNSIGNED NOT NULL DEFAULT '0',
-	`task_user_text` VARCHAR( 255 ) NOT NULL ,
-	`task_user_assigned` INT( 8 ) UNSIGNED NOT NULL DEFAULT '0',
-	`task_status` INT( 4 ) UNSIGNED NOT NULL DEFAULT '0',
-	`task_comment` MEDIUMTEXT NOT NULL ,
-	`task_type` INT( 4 ) UNSIGNED NOT NULL DEFAULT '0',
-	`task_timestamp` VARCHAR( 14 ) BINARY NOT NULL,
-	PRIMARY KEY ( `task_id` ) ,
-	INDEX ( `task_page_id` , `task_status` , `task_type` )
-	) TYPE = innodb;
+  `task_id` int(8) unsigned NOT NULL auto_increment,
+  `task_page_id` int(8) unsigned NOT NULL default '0',
+  `task_page_title` varchar(255) NOT NULL default '',
+  `task_user_id` int(8) unsigned NOT NULL default '0',
+  `task_user_text` varchar(255) NOT NULL default '',
+  `task_user_assigned` int(8) unsigned NOT NULL default '0',
+  `task_status` int(4) unsigned NOT NULL default '0',
+  `task_comment` mediumtext NOT NULL,
+  `task_type` int(4) unsigned NOT NULL default '0',
+  `task_timestamp` varchar(14) binary NOT NULL default '',
+  `task_user_close` int(8) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`task_id`),
+  KEY `task_page_id` (`task_page_id`,`task_status`,`task_type`),
+  KEY `task_page_title` (`task_page_title`)
+) TYPE=InnoDB ;
 */
 
 if (!defined('MEDIAWIKI')) die();
+
+# Integrating into the MediaWiki environment
 
 $wgExtensionCredits['Tasks'][] = array(
         'name' => 'Tasks',
@@ -35,8 +39,36 @@ $wgExtensionFunctions[] = 'wfTasksExtension' ;
 
 $wgHooks['SkinTemplateTabs'][] = 'wfTasksExtensionTab' ;
 $wgHooks['UnknownAction'][] = 'wfTasksExtensionAction' ;
+$wgHooks['ArticleSaveComplete'][] = 'wfTasksExtensionArticleSaveComplete' ;
 
-# Show the tab
+/**
+* Catch article creation, to close "create" tasks
+*/
+function wfTasksExtensionArticleSaveComplete ( &$article , &$user , $text , $summary, $isminor, $watchthis, $something ) {
+	wfTasksAddCache() ;
+
+	$t = $article->getTitle() ;
+	$new_id = $t->mArticleID ;
+	$t->mArticleID = -1 ; # Fake non-existing page
+	
+	$st = new SpecialTasks ;
+	$tasks = $st->get_tasks_for_page ( $t , true ) ;
+	foreach ( $tasks AS $task ) {
+		if ( $st->task_types[$task->task_type] != 'create' ) continue ; # Not a "create" task
+		$status = $st->status_types[$task->task_status] ;
+		if ( $status != 'open' && $status != 'assigned' ) continue ; # Not open
+		$st->change_task_status ( $task->task_id , 3 ) ; # "Closed"
+		$t->mArticleID = $new_id ;
+		$st->set_new_article_id ( $t ) ;
+		return false ; # Nothing more to do
+	}
+	
+	return false ;
+}
+
+/**
+* Show the tab
+*/
 function wfTasksExtensionTab ( &$skin , &$content_actions ) {
 	global $wgTitle , $action ;
 	wfTasksAddCache() ;
@@ -47,21 +79,23 @@ function wfTasksExtensionTab ( &$skin , &$content_actions ) {
 	);
 }
 
-# This is where the action is :-)
+/**
+* This is where the action is :-)
+*/
 function wfTasksExtensionAction ( $action , $article ) {
 	if ( $action != 'tasks' ) return true ;
 	
-#	global $wgOut ;
 	wfTasksAddCache() ;
 	
 	$t = new SpecialTasks ;
 	$t->page_management ( $article->getTitle() ) ;
 	
-#	$wgOut->addHTML ( "YES!" ) ;
 	return false ;
 }
 
-# Text adding function
+/**
+* Text adding function
+*/
 function wfTasksAddCache () {
 	global $wgMessageCache , $wgTasksAddCache ;
 	if ( $wgTasksAddCache ) return ;
@@ -75,8 +109,15 @@ function wfTasksAddCache () {
 			'tasks_ok1' => "New task has been created!<br/>",
 			'tasks_create_header' => "Create a new task",
 			'tasks_existing_header' => "Existing tasks",
-			'tasks_existing_table_header' => "<th>Status</th><th>Type</th><th>Created</th><th>Comment</th><th>Assigned to</th>",
-			'tasks_noone' => "Noone",
+			'tasks_existing_table_header' => "<th>Task</th><th>Created</th><th>Comment</th><th>Assignment/Actions/Page</th>",
+			'tasks_noone' => "noone",
+			'tasks_assign_me' => "<a href=\"$1\">Assign myself</a>",
+			'tasks_close' => "<a href=\"$1\">Close task</a>",
+			'tasks_wontfix' => "<a href=\"$1\">Won't fix</a>",
+			'tasks_reopen' => "<a href=\"$1\">Reopen task</a>",
+			'tasks_assignedto' => "Assigned to $1",
+			'tasks_created_by' => "By $1",
+			'tasks_discussion_page_link' => "Task discussion page",
 			
 			'tasks_status_open' => "Open" ,
 			'tasks_status_assigned' => "Assigned" ,
@@ -87,6 +128,10 @@ function wfTasksAddCache () {
 			'tasks_type_rewrite' => "Rewrite" ,
 			'tasks_type_delete' => "Delete" ,
 			'tasks_type_create' => "Create" ,
+			'tasks_status_bgcol_open' => "#FF9999" ,
+			'tasks_status_bgcol_assigned' => "#FFF380" ,
+			'tasks_status_bgcol_closed' => "#99FF99" ,
+			'tasks_status_bgcol_wontfix' => "#9999FF" ,
 /*			'stableversion_reset_log' => 'Stable version has been removed.',
 			'stableversion_logpage' => 'Stable version log',
 			'stableversion_logpagetext' => 'This is a log of changes to stable versions',
@@ -98,7 +143,9 @@ function wfTasksAddCache () {
 	);
 }
 
-# The special page
+/**
+* The special page
+*/
 function wfTasksExtension() {
 	global $IP, $wgMessageCache;
 	wfTasksAddCache () ;
@@ -131,25 +178,30 @@ function wfTasksExtension() {
 			$this->includable( true );
 		}
 
+		/**
+		* Takes a title and a list of existing tasks, and decides which new tasks can be created.
+		* There's no point in having a dozen "wikify" tasks for a single article, now is there? :-)
+		*/
 		function get_valid_new_tasks ( &$title , &$tasks ) {
 			$exists = $title->exists() ;
-			if ( $exists )
-				$tasks = $this->get_tasks_for_page ( $title->getArticleID() ) ;
+			$tasks = $this->get_tasks_for_page ( $title ) ;
 			$new_tasks = array () ;
-			if ( $exists ) {
-				$tg = array () ;
-				foreach ( $tasks AS $t )
-					$tg[$t->task_type] = 1 ;
-				for ( $a = min ( array_keys ( $this->task_types ) ) ; $a <= max ( array_keys ( $this->task_types ) ) ; $a++ ) {
-					if ( isset ( $tg[$a] ) AND ( $tg[$a]->task_status < 3 ) ) continue ; # Task exists and is not closed
-					$tk = $this->task_types[$a] ;
-					if ( $tk == 'create' && $exists ) continue ; # Can't create an existing article...
-					$new_tasks[$a] = $tk ;
-				}
-			} else $new_tasks[5] = 'create' ; # Hack, should look up number for 'create' instead of using '5'
+			$tg = array () ;
+			foreach ( $tasks AS $t )
+				$tg[$t->task_type] = 1 ;
+			for ( $a = min ( array_keys ( $this->task_types ) ) ; $a <= max ( array_keys ( $this->task_types ) ) ; $a++ ) {
+				if ( !$exists AND $a != 5 ) continue ; # Article does not exits; only valid action: create
+				if ( isset ( $tg[$a] ) AND ( $tg[$a]->task_status < 3 ) ) continue ; # Task exists and is not closed
+				$tk = $this->task_types[$a] ;
+				if ( $tk == 'create' && $exists ) continue ; # Can't create an existing article...
+				$new_tasks[$a] = $tk ;
+			}
 			return $new_tasks ;
 		}
 
+		/**
+		* The form for creating a new task ("tasks" tab)
+		*/
 		function create_from_form ( $title ) {
 			global $wgRequest , $wgUser ;
 			if ( $wgRequest->getText('create_task', "") == "" ) return "" ; # No form
@@ -166,7 +218,7 @@ function wfTasksExtension() {
 				$dbw->insert ( 'tasks',
 					array (
 						'task_page_id' => $title->getArticleID() ,
-						'task_page_title' => $title->getPrefixedText() ,
+						'task_page_title' => $title->getPrefixedDBkey() ,
 						'task_user_id' => $wgUser->getID() ,
 						'task_user_text' => $wgUser->getName() ,
 						'task_user_assigned' =>  '0' , # default
@@ -180,39 +232,74 @@ function wfTasksExtension() {
 			return $out ;
 		}
 		
-		function get_task_table_row ( &$task ) {
-			global $wgContLang , $wgUser ;
+		/**
+		* For a list of tasks, get a single table row
+		*/
+		function get_task_table_row ( &$task , &$title ) {
+			global $wgContLang , $wgUser , $wgTasksNamespace , $wgExtraNamespaces ;
 			$out = "" ;
+			$sk = &$wgUser->getSkin() ;
 			$ct = $wgContLang->timeanddate ( $task->task_timestamp ) ;
-			$cu = Title::makeTitleSafe( NS_USER, $task->task_user_text );
+			$cu = Title::makeTitleSafe( NS_USER, $task->task_user_text ) ;
 			$comment = htmlspecialchars ( $task->task_comment ) ;
 			$comment = str_replace ( "\n" , "<br/>" , $comment ) ;
+			$status = $task->task_status ;
+			$tid = $task->task_id ;
+			$ttype = wfMsg ( 'tasks_type_' . $this->task_types[$task->task_type]) ;
 
 			$out .= "<tr>" ;
-			$out .= "<td valign='top' align='left' nowrap>" ;
-			$out .= wfMsg ( 'tasks_status_' . $this->status_types[$task->task_status] ) ;
+			$out .= "<td valign='top' align='left' nowrap bgcolor='" . wfMsg('tasks_status_bgcol_'.$this->status_types[$status]) . "'>" ;
+			$out .= "<b>" . $ttype . "</b><br/>" ;
+			$out .= wfMsg ( 'tasks_status_' . $this->status_types[$status] ) ;
 			$out .= "</td>" ;
-			$out .= "<th align='left' valign='top' nowrap>" . wfMsg('tasks_type_'.$this->task_types[$task->task_type]) . "</th>" ;
-			$out .= "<td align='left' valign='top' nowrap><a href=\"" . $cu->getFullUrl() . '">' . $cu->getText() . "</a> ({$ct})</td>" ;
-			$out .= "<td>" . $comment . "</td>" ;
 			$out .= "<td align='left' valign='top' nowrap>" ;
+			$out .= wfMsg ( 'tasks_created_by' , $sk->makeLink ( $cu->getPrefixedText() , $task->task_user_text ) ) ;
+			$out .= "<br/>{$ct}</td>" ;
+			$out .= "<td align='left' valign='top'>" . $comment . "</td>" ;
+			$out .= "<td align='left' valign='top'>" ;
 			if ( $task->task_user_assigned == 0 ) { # Noone is assigned this task
-				$out .= wfMsg('tasks_noone') ;
+				$out .= wfMsg('tasks_assignedto',wfMsg('tasks_noone')) ;
 			} else { # Someone is assigned this task
-				
+				$au = new User ; # Assigned user
+				$au->setID ( $task->task_user_assigned ) ;
+				$aut = Title::makeTitleSafe( NS_USER, $au->getName() ) ; # Assigned user title
+				$out .= wfMsg ( 'tasks_assignedto' , $sk->makeLink ( $aut->getPrefixedText() , $au->getName() ) ) ;
 			}
-			if ( $wgUser->isLoggedIn() AND $task->task_status < 3 ) { # Open or assigned, can assign this to myself as a logged-in user
+			if ( $wgUser->isLoggedIn() ) { # Open or assigned, can assign this to myself as a logged-in user
+				$txt = array() ;
+				if ( $task->task_status < 3 ) { # Assign myself
+					$url = $sk->makeUrl ( $title->getPrefixedText() , "action=tasks&mode=assignme&taskid={$tid}" ) ;
+					$txt[] = wfMsg ( 'tasks_assign_me' , $url ) ;
+				}
+				if ( $status < 3 ) { # Open or assigned
+					$url = $sk->makeUrl ( $title->getPrefixedText() , "action=tasks&mode=close&taskid={$tid}" ) ;
+					$txt[] = wfMsg ( 'tasks_close' , $url ) ;
+					$url = $sk->makeUrl ( $title->getPrefixedText() , "action=tasks&mode=wontfix&taskid={$tid}" ) ;
+					$txt[] = wfMsg ( 'tasks_wontfix' , $url ) ;
+				} else { # Closed or wontfix
+					$url = $sk->makeUrl ( $title->getPrefixedText() , "action=tasks&mode=reopen&taskid={$tid}" ) ;
+					$txt[] = wfMsg ( 'tasks_reopen' , $url ) ;
+				}
 				
+				$tdp = $wgExtraNamespaces[$wgTasksNamespace] ;
+				$tdp .= ":{$task->task_id } {$ttype} " . $title->getPrefixedText() ; # Task discussion page
+				
+				if ( count ( $txt ) > 0 )
+					$out .= "<br/>" . implode ( " - " , $txt ) ;
+				$out .= "<br/>" . $sk->makeLink ( $tdp , wfMsg('tasks_discussion_page_link') ) ;
 			}
 			$out .="</td>" ;
 			$out .= "</tr>" ;
 			return $out ;
 		}
 
+		/**
+		* On the "tasks" tab, show the list of existing tasks for that article
+		*/
 		function show_existing_tasks ( &$title , &$tasks ) {
 			$out = "" ;
 			foreach ( $tasks AS $task )
-				$out .= $this->get_task_table_row ( $task ) ;
+				$out .= $this->get_task_table_row ( $task , $title ) ;
 			if ( $out == "" ) return "" ;
 
 			$out = "<h2>" . wfMsg('tasks_existing_header') . "</h2>\n" .
@@ -222,13 +309,75 @@ function wfTasksExtension() {
 			return $out ;
 		}
 		
+		/**
+		* Checks if there's a "mode" set (performs changes on tasks, like assigning or closing them)
+		*/
+		function check_mode ( &$title ) {
+			global $wgUser , $wgRequest ;
+			$mode = $wgRequest->getText('mode', "") ;
+			$taskid = $wgRequest->getText('taskid', "") ;
+			if ( $mode == "" || $taskid == "" ) return "" ; # Not correct
+			if ( !$wgUser->isLoggedIn() ) return ; # Needs to be logged in
+			
+			$out = "" ;
+			$fname = "Tasks:check_mode" ;
+			$dbw =& wfGetDB( DB_MASTER );
+			if ( $mode == 'assignme' ) {
+				$conditions = array ( "task_id" => $taskid ) ;
+				$dbw->update( 'tasks',
+					array( # SET
+						'task_user_assigned' => $wgUser->getID(),
+						'task_status' => 2
+					),
+					$conditions,
+					$fname );
+				
+			} else if ( $mode == 'close' || $mode == 'wontfix' || $mode == 'reopen' ) {
+			} else return "" ; # Unknown mode
+			return $out ;
+		}
+		
+		function change_task_status ( $taskid , $new_status ) {
+			global $wgUser ;
+			$fname = "Tasks:change_task_status" ;
+			
+			$as = array ( 'task_status' => $new_status ) ; # What to chenge
+			$aw = array ( 'task_id' => $taskid ) ; # Where to change it
+			
+			if ( $new_status == 3 || $new_status == 4 ) { # When closing, set closing user ID, and reset assignment
+				$as['task_user_close'] = $wgUser->getID() ;
+				$as['task_user_assigned'] = 0 ;
+			}
+			
+			$dbw =& wfGetDB( DB_MASTER );
+			$dbw->update( 'tasks',
+				$as , # SET
+				$aw , # WHERE
+				$fname );
+		}
+		
+		function set_new_article_id ( &$title ) {
+			$fname = "Tasks:set_new_article_id" ;
+			$dbw =& wfGetDB( DB_MASTER );
+			$dbw->update( 'tasks',
+				array ( 'task_page_id' => $title->getArticleID() ) , # SET
+				array ( "task_page_title" => $title->getPrefixedDBkey() ) , # WHERE
+				$fname );
+		}
+		
+		/**
+		* THIS IS THE MAIN FUNCTION FOR THE TAB-BASED INTERFACE
+		*/
 		function page_management ( $title ) {
 			global $wgOut ;
 			$out = "" ;
 			$tasks = array() ;
 			
 			# Create from form
-			$out = $this->create_from_form ( $title ) ;
+			$out .= $this->create_from_form ( $title ) ;
+			
+			# Check for mode
+			$out .= $this->check_mode ( $title ) ;
 			
 			# Get list of tasks that can be created
 			$new_tasks = $this->get_valid_new_tasks ( $title , $tasks ) ;
@@ -244,7 +393,9 @@ function wfTasksExtension() {
 			$wgOut->addHtml( $out );
 		}
 
-		# Generates a form for creating a new task
+		/**
+		* Generates a form for creating a new task
+		*/
 		function generate_form ( &$new_tasks ) {
 			if ( count ( $new_tasks ) == 0 ) return "" ;
 			$out = "<h2>" . wfMsg('tasks_create_header') . "</h2>\n" ; ;
@@ -270,24 +421,34 @@ function wfTasksExtension() {
 			return $out ;
 		}
 		
-		function get_tasks_for_page ( $id ) {
+		/**
+		* Returns the exisiting tasks for a single page
+		*/
+		function get_tasks_for_page ( &$title , $force_dbtitle = false ) {
 			$dbr =& wfGetDB( DB_SLAVE );
+			$id = $title->getArticleID() ;
+
+			if ( $id == 0 || $force_dbtitle )
+				$conds = array ( 'task_page_title' => $title->getPrefixedDBkey() ) ;
+			else
+				$conds = array ( 'task_page_id' => $id ) ;
 
 			$res = $dbr->select(
 					/* FROM   */ 'tasks',
-					/* SELECT */ '*', #array('tb_id', 'tb_title', 'tb_url', 'tb_ex', 'tb_name'),
-					/* WHERE  */ array('task_page_id' => $id)
+					/* SELECT */ '*',
+					/* WHERE  */ $conds
 			);
 			
 			$ret = array () ;
 			while ( $line = $dbr->fetchObject( $res ) )
-				$ret[] = $line ;
+				$ret[$line->task_timestamp.":".$line->task_id] = $line ;
 			$dbr->freeResult($res);
+			krsort ( $ret ) ;
 			return $ret ;
 		}
 	
 		/**
-		* main()
+		* Special page main function
 		*/
 		function execute( $par = null ) {
 			global $wgOut , $wgRequest ;
