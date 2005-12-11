@@ -121,6 +121,7 @@ function wfTasksAddCache () {
 			'tasks_here' => "here",
 			'tasks_returnto' => "You will be redirected now. If you have not been redirected in a few seconds, click <a href='$1'>here</a>.",
 			'tasks_see_page_tasks' => "(tasks of this page)",
+			'tasks_task_is_assigned' => "(assigned)",
 			
 			'tasks_link_your_assignments' => "open assignments",
 			'tasks_see_your_assignments' => "You currently have $1 open assignments. See your $2.",
@@ -197,10 +198,10 @@ function wfTaskExtensionHeaderHook ( &$article ) {
 	$link1 = $sk->makeLink ( $page_title->getPrefixedText() ) ;
 	$link2 = $sk->makeLink ( $page_title->getPrefixedText() , wfMsg('tasks_here') , "action=tasks" ) ;
 	$subtitle .= wfMsg ( 'tasks_discussion_page_for' , $link1 , $link2 ) ;
-	$subtitle .= "<br/><table border='1' cellspacing='1' cellpadding='2'>" . 
-				"<tr>" . wfMsg('tasks_existing_table_header') . "</tr>" ;
-	$subtitle .= $st->get_task_table_row ( $task , $page_title ) ;
-	$subtitle .= "</table>" ;
+	$subtitle .= "<br/>\n<table border='1' cellspacing='1' cellpadding='2'>\n" . 
+				"<tr>" . wfMsg('tasks_existing_table_header') . "</tr>\n" ;
+	$subtitle .= $st->get_task_table_row ( $task , $page_title , false ) ;
+	$subtitle .= "</table>\n" ;
 	
 	$subtitle = $wgOut->getSubtitle() . "<br/>" . $subtitle ;
 	$wgOut->setSubtitle ( $subtitle ) ;
@@ -238,7 +239,10 @@ function wfTasksExtensionAfterToolbox (&$tpl) {
 				echo $nt->getLocalURL () ;
 				?>"><?php
 				echo $st->get_type_text ( $ttype ) ;
-				?></a></li>
+				?></a><?php
+				if ( $task->task_user_assigned != 0 )
+					echo " " . wfMsg('tasks_task_is_assigned') ;
+				?></li>
 <?php
 		
 	}
@@ -418,13 +422,16 @@ function wfTasksExtension() {
 			$tasks = $this->get_tasks_for_page ( $title ) ;
 			$new_tasks = array () ;
 			$tg = array () ;
-			foreach ( $tasks AS $t )
-				$tg[$t->task_type] = 1 ;
+			
+			foreach ( $tasks AS $t ) { # Assemble types; if multiple of one type, assemble open ones
+				if ( !isset ( $tg[$t->task_type] ) OR $this->is_open ( $t->task_status ) )
+					$tg[$t->task_type] = $t->task_status ;
+			}
+			
 			for ( $a = min ( array_keys ( $this->task_types ) ) ; $a <= max ( array_keys ( $this->task_types ) ) ; $a++ ) {
-				if ( $exists == $this->is_creation_task ( $a ) ) continue ; # Creation task and existance exclude each other
-				if ( isset ( $tg[$a] ) AND $this->is_open ( $tg[$a]->task_status ) ) continue ; # Task exists and is not closed
-				$tk = $this->task_types[$a] ;
-				$new_tasks[$a] = $tk ;
+				if ( $exists == $this->is_creation_task ( $a ) ) continue ; # Creation task and existence exclude each other
+				if ( isset ( $tg[$a] ) AND $this->is_open ( $tg[$a] ) ) continue ;  # Task exists and is not closed
+				$new_tasks[$a] = $this->task_types[$a] ;
 			}
 			return $new_tasks ;
 		}
@@ -532,7 +539,7 @@ function wfTasksExtension() {
 					$txt[] = $sk->makeLink ( $title->getPrefixedText() , wfMsg('tasks_close') , "action=tasks&mode=close&taskid={$tid}{$returnto}" ) ;
 					$txt[] = $sk->makeLink ( $title->getPrefixedText() , wfMsg('tasks_wontfix') , "action=tasks&mode=wontfix&taskid={$tid}{$returnto}" ) ;
 				} else if ( $this->task_types[$task->task_type] != 'create' ) { # Closed or wontfix, can reopen (maybe)
-					$txt[] = $sk->makeUrl ( $title->getPrefixedText() , wfMsg('tasks_reopen') , "action=tasks&mode=reopen&taskid={$tid}{$returnto}" ) ;
+					$txt[] = $sk->makeLink ( $title->getPrefixedText() , wfMsg('tasks_reopen') , "action=tasks&mode=reopen&taskid={$tid}{$returnto}" ) ;
 				}
 				
 				if ( count ( $txt ) > 0 )
