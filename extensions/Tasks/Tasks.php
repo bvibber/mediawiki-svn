@@ -108,9 +108,9 @@ function wfTasksAddCache () {
 			'tasks_noone' => "noone",
 			'tasks_assign_me' => "Assign myself",
 			'tasks_unassign_me' => "Remove my assignment",
-			'tasks_close' => "<a href=\"$1\">Close task</a>",
-			'tasks_wontfix' => "<a href=\"$1\">Won't fix</a>",
-			'tasks_reopen' => "<a href=\"$1\">Reopen task</a>",
+			'tasks_close' => "Close task",
+			'tasks_wontfix' => "Won't fix",
+			'tasks_reopen' => "Reopen task",
 			'tasks_assignedto' => "Assigned to $1",
 			'tasks_created_by' => "Created by $1",
 			'tasks_discussion_page_link' => "Task discussion page",
@@ -119,12 +119,24 @@ function wfTasksAddCache () {
 			'tasks_discussion_page_for' => "This task is for the page \"$1\". The list of all tasks for that page is $2.",
 			'tasks_sidebar_title' => "Open tasks",
 			'tasks_here' => "here",
+			'tasks_returnto' => "You will be redirected now. If you have not been redirected in a few seconds, click <a href='$1'>here</a>.",
+			'tasks_see_page_tasks' => "(tasks of this page)",
 			
-			'tasks_link_your_assignments' => "your assignments",
-			'tasks_see_your_assignments' => "See $1.",
+			'tasks_link_your_assignments' => "open assignments",
+			'tasks_see_your_assignments' => "You currently have $1 open assignments. See your $2.",
 			'tasks_my_assignments' => "Your current assignments",
 			'tasks_table_header_page' => "<th>Page</th>",
-			'tasks_you_have_no_assignments' => "You have currently no assignments",
+			'tasks_you_have_no_assignments' => "You have no open assignments",
+			'tasks_search_form_title' => "Search",
+			'tasks_search_tasks' => "Tasks",
+			'tasks_search_status' => "Status",
+			'tasks_search_no_tasks_chosen_note' => "(No selection here will search all task types.)",
+			'tasks_search_results' => "Search results",
+			'tasks_previous' => "Previous",
+			'tasks_next' => "Next",
+			'tasks_sort' => "Sort",
+			'tasks_ascending' => "Oldest first",
+			'tasks_search_limit' => "10",
 			
 			'tasks_creation_tasks' => "5,6",
 			'tasks_task_types' => "1:cleanup:Cleanup|2:wikify:Wikify|3:rewrite:Rewrite|4:delete:Delete|5:create:Create|6:write:Write",
@@ -410,7 +422,7 @@ function wfTasksExtension() {
 				$tg[$t->task_type] = 1 ;
 			for ( $a = min ( array_keys ( $this->task_types ) ) ; $a <= max ( array_keys ( $this->task_types ) ) ; $a++ ) {
 				if ( $exists == $this->is_creation_task ( $a ) ) continue ; # Creation task and existance exclude each other
-				if ( isset ( $tg[$a] ) AND ( $tg[$a]->task_status < 3 ) ) continue ; # Task exists and is not closed
+				if ( isset ( $tg[$a] ) AND $this->is_open ( $tg[$a]->task_status ) ) continue ; # Task exists and is not closed
 				$tk = $this->task_types[$a] ;
 				$new_tasks[$a] = $tk ;
 			}
@@ -453,7 +465,7 @@ function wfTasksExtension() {
 		/**
 		* For a list of tasks, get a single table row
 		*/
-		function get_task_table_row ( &$task , &$title , $show_page = false ) {
+		function get_task_table_row ( &$task , &$title , $show_page = false , $returnto = "" ) {
 			global $wgContLang , $wgUser , $wgTasksNamespace , $wgExtraNamespaces ;
 			$out = "" ;
 			$sk = &$wgUser->getSkin() ;
@@ -464,11 +476,14 @@ function wfTasksExtension() {
 			$status = $task->task_status ;
 			$tid = $task->task_id ;
 			$ttype = $this->get_type_text ( $this->task_types[$task->task_type] ) ;
+			if ( $returnto != "" ) $returnto = "&returnto=" . urlencode ( $returnto ) ;
 
 			$out .= "<tr>" ;
 			if ( $show_page ) {
-				$out .= "<td>" ;
+				$out .= "<td align='left' valign='top'>" ;
 				$out .= $sk->makeLink ( $title->getPrefixedText() ) ;
+				$out .= "<br/>" ;
+				$out .= $sk->makeLink ( $title->getPrefixedText() , wfMsg('tasks_see_page_tasks') , "action=tasks" ) ;
 				$out .= "</td>" ;
 			}
 			$out .= "<td valign='top' align='left' nowrap bgcolor='" . wfMsg('tasks_status_bgcol_'.$this->status_types[$status]) . "'>" ;
@@ -504,19 +519,20 @@ function wfTasksExtension() {
 				$txt = array() ;
 				if ( $this->is_open ( $status ) ) { # Assignment
 					if ( $wgUser->getID() != $task->task_user_assigned ) { # Assign myself
-						$txt[] = $sk->makeLink ( $title->getPrefixedText() , wfMsg('tasks_assign_me') , "action=tasks&mode=assignme&taskid={$tid}" ) ;
+						$txt[] = $sk->makeLink($title->getPrefixedText(),
+							wfMsg('tasks_assign_me'),
+							"action=tasks&mode=assignme&taskid={$tid}{$returnto}");
 					} else { # Unassign myself
-						$txt[] = $sk->makeLink ( $title->getPrefixedText() , wfMsg('tasks_unassign_me') , "action=tasks&mode=unassignme&taskid={$tid}" ) ;
+						$txt[] = $sk->makeLink($title->getPrefixedText(),
+							wfMsg('tasks_unassign_me'),
+							"action=tasks&mode=unassignme&taskid={$tid}{$returnto}" ) ;
 					}
 				}
 				if ( $this->is_open ( $status ) ) { # Open or assigned
-					$url = $sk->makeUrl ( $title->getPrefixedText() , "action=tasks&mode=close&taskid={$tid}" ) ;
-					$txt[] = wfMsg ( 'tasks_close' , $url ) ;
-					$url = $sk->makeUrl ( $title->getPrefixedText() , "action=tasks&mode=wontfix&taskid={$tid}" ) ;
-					$txt[] = wfMsg ( 'tasks_wontfix' , $url ) ;
+					$txt[] = $sk->makeLink ( $title->getPrefixedText() , wfMsg('tasks_close') , "action=tasks&mode=close&taskid={$tid}{$returnto}" ) ;
+					$txt[] = $sk->makeLink ( $title->getPrefixedText() , wfMsg('tasks_wontfix') , "action=tasks&mode=wontfix&taskid={$tid}{$returnto}" ) ;
 				} else if ( $this->task_types[$task->task_type] != 'create' ) { # Closed or wontfix, can reopen (maybe)
-					$url = $sk->makeUrl ( $title->getPrefixedText() , "action=tasks&mode=reopen&taskid={$tid}" ) ;
-					$txt[] = wfMsg ( 'tasks_reopen' , $url ) ;
+					$txt[] = $sk->makeUrl ( $title->getPrefixedText() , wfMsg('tasks_reopen') , "action=tasks&mode=reopen&taskid={$tid}{$returnto}" ) ;
 				}
 				
 				if ( count ( $txt ) > 0 )
@@ -569,12 +585,14 @@ function wfTasksExtension() {
 			if ( $mode == 'assignme' ||  $mode == 'unassignme' ) {
 				$conditions = array ( "task_id" => $taskid ) ;
 				$user_id = $wgUser->getId() ; # Assign
-				if ( $mode == 'unassignme' ) $user_id = 0 ; # Unassign me; this can be invoked for every user by editing the URL!
+				if ( $mode == 'unassignme' )
+					$user_id = 0 ; # Unassign me; this can be invoked for every user by editing the URL!
+				$do_set = array( # SET
+					'task_user_assigned' => $user_id,
+					'task_status' => $mode == "assignme" ? $this->get_status_number('assigned') : $this->get_status_number('open') ,
+				) ;
 				$dbw->update( 'tasks',
-					array( # SET
-						'task_user_assigned' => $user_id,
-						'task_status' => $this->get_status_number('assigned')
-					),
+					$do_set,
 					$conditions,
 					$fname );
 
@@ -719,7 +737,7 @@ function wfTasksExtension() {
 		function page_management ( $title ) {
 			if ( $title->isTalkPage() ) return ; # No tasks for talk pages, no need to bother the database...
 			
-			global $wgOut , $action ;
+			global $wgOut , $action , $wgRequest ;
 			$out = "" ;
 			$tasks = array() ;
 			$wgOut->setSubtitle ( wfMsg('tasks_title',$title->getPrefixedText()) ) ;
@@ -740,8 +758,15 @@ function wfTasksExtension() {
 			$out .= $this->show_existing_tasks ( $title , $tasks ) ;
 
 			# And ... out!
-			$this->setHeaders();
-			$wgOut->addHtml( $out );
+			$returnto = urldecode ( $wgRequest->getText('returnto', "") ) ;
+			if ( $returnto != "" ) { # Forward to other page
+				$msg = wfMsg ( 'tasks_returnto' , $returnto ) ;
+				$wgOut->addMeta( 'http:Refresh', '0;url=' . $returnto );
+				$wgOut->addHTML ( $msg );
+			} else {
+				$this->setHeaders();
+				$wgOut->addHtml( $out );
+			}
 		}
 
 		/**
@@ -819,15 +844,17 @@ function wfTasksExtension() {
 		* Special page main function
 		*/
 		function execute( $par = null ) {
-			global $wgOut , $wgRequest , $wgUser ;
+			global $wgOut , $wgRequest , $wgUser , $wgTitle ;
+			$fname = "Special::Tasks:execute" ;
 
 			$out = "" ;
 			$mode = $wgRequest->getText('mode', "") ;
 			$skin =& $wgUser->getSkin() ;
+			$dbr =& wfGetDB( DB_SLAVE );
 			
 			# Assignments
 			if ( $wgUser->isLoggedIn() ) {
-				if ( $mode == 'myassignments' ) {
+				if ( $mode == 'myassignments' ) { # Show my assignments
 					$tasks = $this->get_assigned_tasks ( $wgUser->getId() ) ;
 					if ( count ( $tasks ) == 0 ) {
 						$out .= "<p>" . wfMsg('tasks_you_have_no_assignments') . "</p>" ;
@@ -837,18 +864,124 @@ function wfTasksExtension() {
 							"<tr>" . wfMsg('tasks_table_header_page') . wfMsg('tasks_existing_table_header') . "</tr>" ;
 						foreach ( $tasks AS $task ) {
 							$page_title = $this->get_title_from_task ( $task->task_id , &$task ) ;
-							$out .= $this->get_task_table_row ( $task , $page_title , true ) ;
+							$returnto = $wgTitle->getFullURL ( "mode=myassignments" ) ;
+							$out .= $this->get_task_table_row ( $task , $page_title , true , $returnto ) ;
 						}
 						$out.= "</table>" ;
 					}
 				} else { # default
+					$res = $dbr->select(
+							/* FROM   */ 'tasks',
+							/* SELECT */ ' COUNT(task_id) AS num',
+							/* WHERE  */ array ( "task_user_assigned" => $wgUser->getId() ) ,
+							/* FNAME */ $fname
+					);
+					$tasks = array () ;
+					$data = $dbr->fetchObject( $res ) ;
+					$dbr->freeResult($res);
+
 					$link = $skin->makeLink ( "Special:Tasks" , wfMsg('tasks_link_your_assignments') , "mode=myassignments" ) ;
-					$out .= "<p>" . wfMsg ( 'tasks_see_your_assignments' , $link ) . "</p>" ;
+					$out .= "<p>" ;
+					if ( $data->num == 0 )
+						$out .= wfMsg ( 'tasks_you_have_no_assignments' ) . "." ;
+					else
+						$out .= wfMsg ( 'tasks_see_your_assignments' , $data->num , $link ) . "</p>" ;
+				}
+			}
+			
+			# Read former form
+			$task_type = array () ;
+			$status_type = array ( 1 => 1 ) ; # Default : open tasks
+			if ( isset ( $_POST['task_type'] ) )
+				$task_type = $_POST['task_type'] ;
+			if ( isset ( $_POST['status_type'] ) )
+				$status_type = $_POST['status_type'] ;
+			$ascending = $wgRequest->getText('ascending', "") ;
+
+			$out .= "<form method='post' action='" . $wgTitle->getLocalURL() . "'>" ;
+
+			# Search results
+			if ( $wgRequest->getText('doit', "") . $wgRequest->getText('prev', "") . $wgRequest->getText('next', "") != "" ) { # Did we search?
+				$search_tasks = array_keys ( $task_type ) ;
+				if ( count ( $search_tasks ) == 0 )
+					$search_tasks = array_keys ( $this->task_types ) ; # No choice => search all
+				$search_status = array_keys ( $status_type ) ;
+				if ( count ( $search_status ) == 0 )
+					$search_status = array_keys ( $this->status_types ) ; # No choice => search all
+					
+				$limit = wfMsg('tasks_search_limit') ;
+				$offset = $wgRequest->getText('offset', "0") ;
+				if ( $wgRequest->getText('next', "") != "" )
+					$offset += $limit ;
+				if ( $wgRequest->getText('prev', "") != "" && $offset >= $limit )
+					$offset -= $limit ;
+
+				# Search
+				$conds = array (
+					"task_type" => $search_tasks ,
+					"task_status" => $search_status ,
+				) ;
+				$options = array (
+					"LIMIT" => $limit ,
+					"OFFSET" => $offset ,
+					"ORDER BY" => "task_timestamp" . ( $ascending == "1" ? " DESC" : "" ) ,
+				) ;
+				$res = $dbr->select(
+						/* FROM   */ 'tasks',
+						/* SELECT */ '*',
+						/* WHERE  */ $conds ,
+						/* FNAME */ $fname ,
+						/* OPTIONS */$options
+				);
+				$tasks = array () ;
+				while ( $line = $dbr->fetchObject( $res ) )
+					$tasks[] = $line ;
+				$dbr->freeResult($res);
+				
+				if ( count ( $tasks ) > 0 ) {
+					$out .= "<h2>" . wfMsg('tasks_search_results') . "</h2>\n" ;
+					# Last/next form
+					if ( $offset >= $limit )
+						$out .= "<input type='submit' name='prev' value='" . wfMsg('tasks_previous') . "' /> " ;
+					$out .= ($offset+1) . " .. " . ($offset+count($tasks)) . " " ;
+					if ( count ( $tasks ) >= $limit )
+						$out .= "<input type='submit' name='next' value='" . wfMsg('tasks_next') . "' />" ;
+					$out .= "<input type='hidden' name='offset' value='{$offset}' />" ;
+					$out .= "<br/><table border='1' cellspacing='1' cellpadding='2'>" . 
+						"<tr>" . wfMsg('tasks_table_header_page') . wfMsg('tasks_existing_table_header') . "</tr>" ;
+					$returnto = $wgTitle->getFullURL() ;
+					foreach ( $tasks AS $task ) {
+						$page_title = $this->get_title_from_task ( $task->task_id , &$task ) ;
+						$out .= $this->get_task_table_row ( $task , $page_title , true , $returnto ) ;
+					}
+					$out.= "</table>" ;
 				}
 			}
 			
 			# Search form
-			$out .= "<form>" ;
+			$out .= "<h2>" . wfMsg('tasks_search_form_title') . "</h2>" ;
+			$out .= "<table border=0>" ;
+			$out .= "<tr><th align='left'>" . wfMsg('tasks_search_tasks') . "</th>" ;
+			$out .= "<td>" ;
+			foreach ( $this->task_types AS $k => $v ) {
+				$checked = isset ( $task_type[$k] ) ? "checked " : "" ;
+				$out .= "<input type='checkbox' name='task_type[{$k}]' value='1' {$checked}/>" . $this->get_type_text ( $v ) . " " ;
+			}
+			$out .= wfMsg('tasks_search_no_tasks_chosen_note') ;
+			$out .= "</td>" ;
+			$out .= "</tr><tr><th align='left'>" . wfMsg('tasks_search_status') . "</th>" ;
+			$out .= "<td>" ;
+			foreach ( $this->status_types AS $k => $v ) {
+				$checked = isset ( $status_type[$k] ) ? "checked " : "" ;
+				$out .= "<input type='checkbox' name='status_type[{$k}]' value='1' {$checked}/>" . wfMsg('tasks_status_'.$v) . " " ;
+			}
+			$out .= "</td></tr>\n<tr><th>" ;
+			$out .= wfMsg('tasks_sort') . "</th><td>" ;
+			$out .= "<input type='checkbox' name='ascending' value='1'" ;
+			if ( $ascending == "1" ) $out .= "checked" ;
+			$out .= " />" . wfMsg('tasks_ascending') ;
+			$out .= "</td></tr></table>" ;
+			$out .= "<input type='submit' name='doit' value='" . wfMsg('search') . "' />" ;
 			$out .= "</form>" ;
 
 			# and ... out!
