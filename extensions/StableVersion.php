@@ -123,6 +123,7 @@ function wfStableVersionHeaderHook ( $a ) {
 
 	$st = $wgOut->getSubtitle() . "<br/>" . $st ;
 	$wgOut->setSubtitle ( $st ) ;
+	return true ;
 }
 
 # The special page
