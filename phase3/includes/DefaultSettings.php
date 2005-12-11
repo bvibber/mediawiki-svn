@@ -794,6 +794,7 @@ $wgGroupPermissions['sysop']['reupload-shared'] = true;
 
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
 $wgGroupPermissions['bureaucrat']['namespaces'] = true;
+$wgGroupPermissions['bureaucrat']['fix_pseudonamespaces'] = true;
 
 /**
  * The developer group is deprecated, but can be activated if need be

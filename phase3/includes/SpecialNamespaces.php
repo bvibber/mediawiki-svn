@@ -20,6 +20,8 @@ function wfSpecialNamespaces() {
 			$f->addNamespaces();
 		} elseif($wgRequest->getText('nsAction')=='changenamespaces') {
 			$f->changeNamespaces();
+		} elseif($wgRequest->getText('nsAction')=='fixpseudonamespaces') {
+			$f->fixPseudonamespaces();
 		}
 	} elseif($action == 'delete') {
 		$f->deleteNamespace();
@@ -139,24 +141,11 @@ END;
 			$hidden = $ns->isHidden ? ' checked' : '';
 
 			$linkprefix = $ns->getTarget();
-			$parentslot = $ns->getParentIndex();
-			$namespaceselect = '';
-			
+			$parentslot = $ns->getParentIndex();		
 			# maybe make HTMLnamespaceselector more flexible and use
 			# it instead here
 			if( !$ns->isSpecial() ) {
-				foreach ( $name_array as $arr_index => $arr_name ) {
-					if( $arr_index < NS_MAIN && $arr_name!=$noparent )
-						continue;
-					$list_option = ($arr_index == NS_MAIN ? wfMsg ( 'blanknamespace' ) : $arr_name);
-					if(is_null($parentslot)) {
-						$arr_name == $noparent ? $selected = ' selected ' : $selected='';
-					} else {
-						$arr_index == $parentslot ? $selected = ' selected' : $selected='';
-					}
-					$namespaceselect .= "\n<option value='$arr_index'$selected>$list_option</option>";
-				}
-
+				$namespaceselect=$this->getSelector($name_array,$parentslot);
 
 				// TODO : fix code below, maybe use HTMLForm ?
 
@@ -315,13 +304,49 @@ END;
 <<<END
 <input type="submit" value="{$namespace_save_changes}" />
 </form>
-
+<br/>
 END;
+
 
 	// Ouput the form
 	$wgOut->addHTML( $htmlform );
 
+	// Pseudonamespace converter
+	if(in_array( 'fix_pseudonamespaces', $wgUser->getRights())) {
+		$all_name_array = Namespace::getFormattedDefaultNamespaces();
+		$pseudons_select=$this->getSelector($all_name_array);
+		$wgOut->addWikiText( wfMsg( 'fix_pseudonamespaces_header' ) );
+		$phtmlform ='
+<div id="fixPseudoNsForm">
+<form name="fixpseudonamepaces" method="post" action="'.$action.'">
+<input type="hidden" name="nsAction" value="fixpseudonamespaces" />
+<input type="hidden" name="wpEditToken" value="'.$token.'" />
+<table>
+	<tr valign="top">
+		<td>'.wfMsg('pseudonamespace_prefix').'</td>
+		<td>
+			<input type="text" name="nsPrefix" size="20" />
+		</td>
+	</tr>
+	<tr valign="top">
+		<td>'.wfMsg('pseudonamespace_target').'<br /></td>
+		<td><select name="nsConvertTo" size="1">'.$pseudons_select.'</select></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<label>
+			<input type="checkbox" name="nsConvertTalk" checked />'.wfMsg('pseudonamespace_converttalk').'
+		</label>
+		</td>
+	</tr>
+</table>
+<input type="submit" value="'.wfMsg('pseudonamespace_convert').'" />
+</form>
+</div>';
+		$wgOut->addHTML($phtmlform);
 	}
+
+}
 
 	/**
 	 * @todo Document
@@ -630,6 +655,67 @@ END;
 			$this->showForm( wfMsg('namespace_delete_error') );
 			return false;
 		}
+	}
+
+	/**
+	 *  Call Namespace::convertPseudonamespace with the correct
+	 *  parameters and display the results.
+	 */
+	function fixPseudonamespaces() {
+
+		global $wgOut, $wgRequest, $wgUser, $wgNamespaces;
+		if(!in_array( 'fix_pseudonamespaces', $wgUser->getRights())) {
+			$this->showForm( wfMsg('badaccess'), wfMsg('badaccesstext','[['.wfMsg('administrators').']]','fix_pseudonamespaces'));
+			return false;
+		}
+		$prefix=$wgRequest->getText('nsPrefix');
+		$targetid=$wgRequest->getIntOrNull('nsConvertTo');
+		$converttalk = $wgRequest->getBool('nsConvertTalk');
+		if(empty($prefix) || is_null($targetid)) {
+			$this->showForm (wfMsg('pseudonamespace_info_missing'));
+			return false;
+
+		}
+		$rv=Namespace::convertPseudonamespace($prefix,$wgNamespaces[$targetid],$wgNamespaces[NS_MAIN]);
+		if($rv==NS_PSEUDO_NOT_FOUND) {
+			$this->showForm( wfMsg('pseudonamespace_not_found',$prefix));
+			return false;
+		} else {
+			$wgOut->addWikiText(wfMsg('pseudonamespace_converted', $prefix, $wgNamespaces[$targetid]->getDefaultName()));
+		}
+		if($converttalk) {
+			# A pseudonamespace, by definition, exists in the 
+			# main (unprefixed) namespace - therefore its talk
+			# pages are NS_TALK.
+
+			# TODO: Don't assume we _have_ a talk namespace for the
+			# target namespace.
+			$trv=Namespace::convertPseudonamespace($prefix,$wgNamespaces[$wgNamespaces[$targetid]->getTalk()],$wgNamespaces[NS_TALK]);
+			if($trv==NS_PSEUDO_NOT_FOUND) {
+				$wgOut->addWikiText(wfMsg('pseudonamespace_talk_not_found'));
+			} else {
+				$wgOut->addWikiText(wfMsg('pseudonamespace_talk_converted'));
+			}
+		}
+		$this->showForm();
+	}
+
+	function getSelector($name_array,$parentslot=null) {
+		$noparent = wfMsg('no_parent_namespace');		
+		$namespaceselect='';
+		foreach ( $name_array as $arr_index => $arr_name ) {
+			if( $arr_index < NS_MAIN && $arr_name!=$noparent )
+				continue;
+			$list_option = ($arr_index == NS_MAIN ? wfMsg ( 'blanknamespace' ) : $arr_name);
+			if(is_null($parentslot)) {
+				$arr_name == $noparent ? $selected = ' selected ' : $selected='';
+			} else {
+				$arr_index == $parentslot ? $selected = ' selected' : $selected='';
+			}
+			$namespaceselect .= "\n<option value='$arr_index'$selected>$list_option</option>";
+		}
+		return $namespaceselect;
+
 	}
 }
 ?>

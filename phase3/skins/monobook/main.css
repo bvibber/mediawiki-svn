@@ -1349,6 +1349,12 @@ div#addnsForm {
 	padding: 1.5em 2em;
 }
 
+div#fixPseudoNsForm {
+	margin-bottom: 1em;
+	border: 1px solid #aaa;
+	padding: 1.5em 2em;
+}
+
 /* noarticletext */
 div.noarticletext {
 	border: 1px solid #ccc;

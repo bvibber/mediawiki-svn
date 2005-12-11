@@ -154,6 +154,12 @@ define('NS_PROTECTED',7);
 /**#@-*/
 
 /**#@+
+ * Pseudonamespace conversions
+ */
+define('NS_PSEUDO_NOT_FOUND',1);
+define('NS_PSEUDO_CONVERTED',2);
+
+/**#@+
  * Valid namespace names character class
  */
 define('NS_CHAR','[ _0-9A-Za-z\x80-\xff]');

@@ -2195,7 +2195,7 @@ will expire at $4.
 'namespace_name_missing'=>'You have not entered a namespace name.',
 'namespace_name_dupe'=>'The namespace name is already in use. Please choose a different name.',
 'namespace_name_not_empty'=>'Some pages still refer to this namespace using this name. It canot be deleted or renamed until all links are changed.',
-'namespace_name_prefix'=>'There are pages which contain this name as a "pseudonamespace" in the title. These pages would become invisible if the namespace was created.',
+'namespace_name_prefix'=>'There are pages which contain this name as a "pseudonamespace" in the title. These pages would become invisible if the namespace was created. You can fix this manually by creating a temporary namespace name, moving all pages and talk pages there, deleting the redirects, and then renaming the namespace. If there are too many pages, please contact a developer.',
 'namespace_name_interwiki'=>'The name is already used as an Interwiki prefix to link to another wiki site. This Interwiki prefix would become unusable if this name was used.',
 'namespace_name_linked'=>'The namespace name is still linked to from some pages. If it was deleted, these links would be broken.',
 'namespace_error'=>'The namespace "$1" cannot be created or modified.',
@@ -2207,6 +2207,19 @@ will expire at $4.
 'canonicalname' => 'canonical name',
 'namespace_name_header'=>'Namespace name',
 'namespace_issue_header'=>'Problem',
+'fix_pseudonamespaces_header'=>'You can convert "pseudonamespaces" (titles with a consistent prefix like "Cookbook:" which is not a real namespace) into real namespaces here, by providing the prefix and selecting a target namespace. If the namespace does not yet exist, create a temporary name for it above first; you can change it after the conversion.',
+'pseudonamespace_prefix'=>'Pseudonamespace prefix',
+'pseudonamespace_target'=>'Convert into',
+'pseudonamespace_converttalk'=>'Try to convert discussion pages into the associated talk namespace',
+'pseudonamespace_convert'=>'Convert',
+'pseudonamespace_converted'=>'The pseudonamespace "$1" was successfully converted into the real namespace with the default name "$2".',
+'pseudonamespace_talk_converted'=>'The associated discussion pages were also converted.',
+#'pseudonamespace_conversion_error'=>'There was a problem converting the pseudonamespace "$1".',
+#'pseudonamespace_talk_conversion_error'=>'There was a problem converting the talk pages of the pseudonamespace.',
+'pseudonamespace_info_missing'=>'You did not provide a namespace name or target namespace.',
+'pseudonamespace_not_found'=>'No pages with the prefix "$1" were found!',
+'pseudonamespace_talk_not_found'=>'No talk pages associated with this pseudonamespace were found.',
+
 # This is appended via JavaScript to the entered namsepace name
 # as a suggested talkpage name in Special:Namespaces. If set to '-', 
 # it will not be used.

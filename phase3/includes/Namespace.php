@@ -889,7 +889,65 @@ class Namespace {
 		$dbr->freeResult( $res );
 	}
 
+	/**
+	* Convert a "pseudonamespace" (just prefixed titles) into a real
+	* one.
+	*
+	* @param string $prefix - The pseudonamespace prefix string
+	* @param Namespace $target - the target namespace object
+	* @param Namespace $source - the source namespace object (should
+	*  usually be $wgNamespaces[NS_MAIN] or ..[NS_TALK]). This is the
+	*  one we expect the prefixed titles to be stored in.
+	*
+	* Why pass around Namespace objects? This saves us some validation,
+	* since the indexes can be assumed to exist.
+	*
+	* @static
+	*/
+	function convertPseudonamespace($prefix,$target,$source) {
+		$dbm =& wfGetDB(DB_MASTER);
+		$dbs =& wfGetDB(DB_SLAVE);
+		$fname="Namespace::convertPseudonamespace";
+		$table = $dbs->tableName( 'page' );
+		$eprefix     = $dbs->strencode( $prefix );
+		$likeprefix = str_replace( '_', '\\_', $eprefix);
+		$targetid=$target->getIndex();
+		$sourceid=$source->getIndex();
+		
+		$sql = "SELECT page_id AS id,
+		               page_title AS oldtitle,
+		               TRIM(LEADING '$eprefix:' FROM page_title) AS title
+		          FROM {$table}
+		         WHERE page_namespace=$sourceid
+		           AND page_title LIKE '$likeprefix:%'";
+		
+		$result = $dbs->query( $sql, $fname );
+		$set = array();
+		while( $row = $dbs->fetchObject( $result ) ) {
+			$set[] = $row;
+		}
+		$dbs->freeResult( $result );
+		
+		# TODO: Don't run this blindly - check for title dupes first
+		if(!count($set)) {
+			return NS_PSEUDO_NOT_FOUND;
+		} else {
+			foreach($set as $row) {
+				$dbm->update( $table,
+					array(
+						"page_namespace" => $targetid,
+						"page_title"     => $row->title,
+					),
+					array(
+						"page_namespace" => $sourceid,
+						"page_title"     => $row->oldtitle,
+					),
+					$fname );
+			}
+		}
+		return NS_PSEUDO_CONVERTED;
 
+	}
 
 }
 		

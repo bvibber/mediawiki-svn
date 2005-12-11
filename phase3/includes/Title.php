@@ -1194,6 +1194,9 @@ class Title {
 			if(array_key_exists($this->mNamespace,$wgNamespaces)) {
 				$p .= $wgNamespaces[$this->mNamespace]->getDefaultName() . ':';
 			} else {
+				# The database refers to a namespace that 
+				# no longer exists. We're using a pseudo-prefix,
+				# but the page is inaccessible for now.
 				$p = wfMsg('namespace_missing_prefix').'_'.$this->mNamespace.':';
 			}
 		}
