@@ -26,7 +26,6 @@ CREATE TABLE tasks (
 ) TYPE=InnoDB;
 
 Known bugs:
-* setPageTitle in page_management doesn't work for some reason
 * Both the "article" and "tasks" tabs are displayed as active when viewing the "tasks" tab
 * sidebar task list for Monobook only?
 
@@ -45,12 +44,16 @@ $wgExtensionCredits['Tasks'][] = array(
 $wgExtensionFunctions[] = 'wfTasksExtension' ;
 
 # Misc hooks
+$wgHooks['SkinTemplatePreventOtherActiveTabs'][] = 'wfTasksExtensionPreventOtherActiveTabs' ;
 $wgHooks['SkinTemplateTabs'][] = 'wfTasksExtensionTab' ;
 $wgHooks['UnknownAction'][] = 'wfTasksExtensionAction' ;
 $wgHooks['ArticleSaveComplete'][] = 'wfTasksExtensionArticleSaveComplete' ;
 $wgHooks['ArticleDeleteComplete'][] = 'wfTasksExtensionArticleDeleteComplete' ;
 $wgHooks['SpecialMovepageAfterMove'][] = 'wfTasksExtensionAfterMove' ;
 $wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfTasksExtensionAfterToolbox' ;
+$wgHooks['ArticleViewHeader'][] = 'wfTaskExtensionHeaderHook' ;
+$wgHooks['EditPage::showEditForm:initial'][] = 'wfTaskExtensionEditFormInitialHook' ;
+
 
 
 # BEGIN logging functions
@@ -94,7 +97,7 @@ function wfTasksAddCache () {
 	$wgMessageCache->addMessages(
 		array(
 			'tasks_tab' => 'Tasks',
-			'tasks_title' => "Tasks for $1",
+			'tasks_title' => "Tasks for \"$1\"",
 			'tasks_form_new' => "Create new task",
 			'tasks_form_comment' => "Comment",
 			'tasks_error1' => "Task was not created: there is already such a task!<br/>",
@@ -111,8 +114,10 @@ function wfTasksAddCache () {
 			'tasks_created_by' => "Created by $1",
 			'tasks_discussion_page_link' => "Task discussion page",
 			'tasks_closedby' => "Closed by $1",
-			
-			'tasks_sidebar_title' => "Tasks",
+			'tasks_assigned_myself_log' => "Self-assignment of task \"$1\"",
+			'tasks_discussion_page_for' => "This task is for the page \"$1\". The list of all tasks for that page is $2.",
+			'tasks_sidebar_title' => "Open tasks",
+			'tasks_here' => "here",
 			
 			'tasks_task_types' => "1:cleanup:Cleanup|2:wikify:Wikify|3:rewrite:Rewrite|4:delete:Delete|5:create:Create|6:write:Write",
 			'tasks_status_open' => "Open" ,
@@ -138,6 +143,48 @@ function wfTasksAddCache () {
 
 #___________________________________________________________________
 # Hook functions
+
+/**
+* Display header on "Task:" pages (dummy hook for edit pages)
+*/
+function wfTaskExtensionEditFormInitialHook ( &$editPage ) {
+	global $wgArticle ;
+	wfTaskExtensionHeaderHook ( $wgArticle ) ;
+}
+
+/**
+* Display header on "Task:" pages
+*/
+function wfTaskExtensionHeaderHook ( &$article ) {
+	global $wgTasksNamespace , $wgOut , $wgUser ;
+	$title = $article->getTitle() ;
+	$ns = $title->getNamespace() ;
+	if ( $ns != $wgTasksNamespace AND $ns != $wgTasksNamespace+1 ) return ; # Doesn't concern us
+	
+	$subtitle = "" ;
+	$taskid = $title->getText() ;
+	$taskid = explode ( "(" , $taskid ) ;
+	$taskid = explode ( ")" , array_pop ( $taskid ) ) ;
+	$taskid = array_shift ( $taskid ) ;
+	
+	wfTasksAddCache() ;
+	$st = new SpecialTasks ;
+	$task = "" ;
+	$page_title = $st->get_title_from_task ( $taskid , &$task ) ;
+	if ( $task == "" ) return ; # No such task
+
+	$sk =& $wgUser->getSkin() ;
+	$link1 = $sk->makeLink ( $page_title->getPrefixedText() ) ;
+	$link2 = $sk->makeLink ( $page_title->getPrefixedText() , wfMsg('tasks_here') , "action=tasks" ) ;
+	$subtitle .= wfMsg ( 'tasks_discussion_page_for' , $link1 , $link2 ) ;
+	$subtitle .= "<br/><table border='1' cellspacing='1' cellpadding='2'>" . 
+				"<tr>" . wfMsg('tasks_existing_table_header') . "</tr>" ;
+	$subtitle .= $st->get_task_table_row ( $task , $page_title , true ) ;
+	$subtitle .= "</table>" ;
+	
+	$subtitle = $wgOut->getSubtitle() . "<br/>" . $subtitle ;
+	$wgOut->setSubtitle ( $subtitle ) ;
+}
 
 /**
 * Display in sidebar
@@ -219,7 +266,7 @@ function wfTasksExtensionArticleSaveComplete ( &$article , &$user , $text , $sum
 	$tasks = $st->get_tasks_for_page ( $t , true ) ;
 	foreach ( $tasks AS $task ) {
 		if ( !$st->is_creation_task ( $task->task_type ) ) continue ; # Not a "create" task
-		if ( $sk->is_closed ( $task->task_status ) ) continue ; # Not open
+		if ( $st->is_closed ( $task->task_status ) ) continue ; # Not open
 		$st->change_task_status ( $task->task_id , 3 ) ; # "Closed"
 		$t->mArticleID = $new_id ;
 		$st->set_new_article_id ( $t ) ;
@@ -227,6 +274,12 @@ function wfTasksExtensionArticleSaveComplete ( &$article , &$user , $text , $sum
 	}
 	
 	return false ;
+}
+
+# Prevents other tabs shown as active
+function wfTasksExtensionPreventOtherActiveTabs ( &$skin , &$prevent_active_tabs ) {
+	global $action ;
+	$prevent_active_tabs = $action == "tasks" ; ;
 }
 
 /**
@@ -454,8 +507,6 @@ function wfTasksExtension() {
 
 		function get_task_discussion_page ( &$task ) {
 			global $wgExtraNamespaces , $wgTasksNamespace ;
-			#$tdp = substr ( $title->getPrefixedText() , 0 , 200 ) ;
-			#$tdp = $wgExtraNamespaces[$wgTasksNamespace] . ":" . $ttype . ' "' . $tdp . '" (' . $task->task_id . ")" ;
 			$ttype = $this->get_type_text ( $this->task_types[$task->task_type]) ;
 			$tdp = $wgExtraNamespaces[$wgTasksNamespace] . ":" . $ttype . ' (' . $task->task_id . ")" ;
 			return $tdp ;
@@ -480,7 +531,7 @@ function wfTasksExtension() {
 		/**
 		* Checks if there's a "mode" set in the URL of the current page (performs changes on tasks, like assigning or closing them)
 		*/
-		function check_mode ( &$title ) {
+		function check_mode ( $title ) {
 			global $wgUser , $wgRequest ;
 			$mode = $wgRequest->getText('mode', "") ;
 			$taskid = $wgRequest->getText('taskid', "") ;
@@ -499,7 +550,11 @@ function wfTasksExtension() {
 					),
 					$conditions,
 					$fname );
-				
+
+				$title = $this->get_title_from_task ( $taskid , $task ) ;
+				$act = wfMsg ( 'tasks_assigned_myself_log' , $this->get_type_text ( $this->task_types[$task->task_type] ) ) ;
+				$log = new LogPage( 'tasks' );
+				$log->addEntry( 'tasks', $title , $act );
 			} else if ( $mode == 'close' || $mode == 'wontfix' || $mode == 'reopen' ) {
 				if ( $mode == 'reopen' ) $mode = "open" ;
 				if ( $mode == 'close' ) $mode = "closed" ;
@@ -548,7 +603,7 @@ function wfTasksExtension() {
 
 			# Logging
 			$title = $this->get_title_from_task ( $taskid , $task ) ;
-			$act = wfMsg ( 'tasks_action_' . $this->status_types[$new_status] , $this->task_types[$task->task_type] ) ;
+			$act = wfMsg ( 'tasks_action_' . $this->status_types[$new_status] , $this->get_type_text ( $this->task_types[$task->task_type] ) ) ;
 			$log = new LogPage( 'tasks' );
 			$log->addEntry( 'tasks', $title , $act );
 		}
@@ -561,8 +616,9 @@ function wfTasksExtension() {
 			$ret = array () ;
 			foreach ( $tasks AS $task ) {
 				if ( $this->is_open ( $task->task_status ) )
-					$ret[] = $task ;
+					$ret[$this->get_type_text($this->task_types[$task->task_type])] = $task ;
 			}
+			ksort ( $ret ) ;
 			return $ret ;
 		}
 
@@ -570,6 +626,19 @@ function wfTasksExtension() {
 		* Returns the title object for a task, and the task data through reference
 		*/
 		function get_title_from_task ( $task_id , &$task ) {
+			$task = $this->get_task_from_id ( $task_id ) ;
+			if ( $task->task_page_id == 0 ) { # Non-existing page
+				$title = Title::newFromDBkey ( $task->task_page_title ) ;
+			} else { # Existing page
+				$title = Title::newFromID ( $task->task_page_id ) ;
+			}
+			return $title ;
+		}
+		
+		/**
+		* Returns a single task by its ID
+		*/
+		function get_task_from_id ( $task_id ) {
 			$dbr =& wfGetDB( DB_SLAVE );
 			$res = $dbr->select(
 					/* FROM   */ 'tasks',
@@ -578,12 +647,7 @@ function wfTasksExtension() {
 			);
 			$task = $dbr->fetchObject( $res ) ;
 			$dbr->freeResult($res);
-			if ( $task->task_page_id == 0 ) { # Non-existing page
-				$title = Title::newFromDBkey ( $task->task_page_title ) ;
-			} else { # Existing page
-				$title = Title::newFromID ( $task->task_page_id ) ;
-			}
-			return $title ;
+			return $task ;
 		}
 		
 		/**
@@ -631,7 +695,7 @@ function wfTasksExtension() {
 			global $wgOut , $action ;
 			$out = "" ;
 			$tasks = array() ;
-			$wgOut->setPageTitle ( wfMsg('tasks_title',$title->getPrefixedText()) ) ; # Doesn't work for some reason...
+			$wgOut->setSubtitle ( wfMsg('tasks_title',$title->getPrefixedText()) ) ;
 			
 			# Create from form
 			$out .= $this->create_from_form ( $title ) ;
