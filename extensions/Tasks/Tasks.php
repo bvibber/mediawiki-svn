@@ -28,6 +28,7 @@ CREATE TABLE tasks (
 Known bugs:
 * setPageTitle in page_management doesn't work for some reason
 * Both the "article" and "tasks" tabs are displayed as active when viewing the "tasks" tab
+* sidebar task list for Monobook only?
 
 */
 
@@ -49,6 +50,7 @@ $wgHooks['UnknownAction'][] = 'wfTasksExtensionAction' ;
 $wgHooks['ArticleSaveComplete'][] = 'wfTasksExtensionArticleSaveComplete' ;
 $wgHooks['ArticleDeleteComplete'][] = 'wfTasksExtensionArticleDeleteComplete' ;
 $wgHooks['SpecialMovepageAfterMove'][] = 'wfTasksExtensionAfterMove' ;
+$wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfTasksExtensionAfterToolbox' ;
 
 
 # BEGIN logging functions
@@ -80,11 +82,100 @@ function wfTasksAddActionText( &$actions ) {
 # END logging functions
 
 
+#_______________________________________________________________________________
 
+/**
+* Text adding function
+*/
+function wfTasksAddCache () {
+	global $wgMessageCache , $wgTasksAddCache ;
+	if ( $wgTasksAddCache ) return ;
+	$wgTasksAddCache = true ;
+	$wgMessageCache->addMessages(
+		array(
+			'tasks_tab' => 'Tasks',
+			'tasks_title' => "Tasks for $1",
+			'tasks_form_new' => "Create new task",
+			'tasks_form_comment' => "Comment",
+			'tasks_error1' => "Task was not created: there is already such a task!<br/>",
+			'tasks_ok1' => "New task has been created!<br/>",
+			'tasks_create_header' => "Create a new task",
+			'tasks_existing_header' => "Existing tasks",
+			'tasks_existing_table_header' => "<th>Task</th><th>Dates</th><th>Initial comment</th><th>Assignment/Actions/Page</th>",
+			'tasks_noone' => "noone",
+			'tasks_assign_me' => "<a href=\"$1\">Assign myself</a>",
+			'tasks_close' => "<a href=\"$1\">Close task</a>",
+			'tasks_wontfix' => "<a href=\"$1\">Won't fix</a>",
+			'tasks_reopen' => "<a href=\"$1\">Reopen task</a>",
+			'tasks_assignedto' => "Assigned to $1",
+			'tasks_created_by' => "Created by $1",
+			'tasks_discussion_page_link' => "Task discussion page",
+			'tasks_closedby' => "Closed by $1",
+			
+			'tasks_sidebar_title' => "Tasks",
+			
+			'tasks_task_types' => "1:cleanup:Cleanup|2:wikify:Wikify|3:rewrite:Rewrite|4:delete:Delete|5:create:Create|6:write:Write",
+			'tasks_status_open' => "Open" ,
+			'tasks_status_assigned' => "Assigned" ,
+			'tasks_status_closed' => "Closed" ,
+			'tasks_status_wontfix' => "Won't fix" ,
+			'tasks_status_bgcol_open' => "#FF9999" ,
+			'tasks_status_bgcol_assigned' => "#FFF380" ,
+			'tasks_status_bgcol_closed' => "#99FF99" ,
+			'tasks_status_bgcol_wontfix' => "#9999FF" ,
+			'tasks_action_open' => "Task \"$1\" opened." ,
+			'tasks_action_assigned' => "Task \"$1\" assigned." ,
+			'tasks_action_closed' => "Task \"$1\" closed." ,
+			'tasks_action_wontfix' => "Won't fix task \"$1\"." ,
+			
+			'tasks_logpage' => "Tasks log" ,
+			'tasks_logpagetext' => 'This is a log of changes to tasks',
+			'tasks_logentry' => 'For "[[$1]]"',
+		)
+	);
+}
 
 
 #___________________________________________________________________
 # Hook functions
+
+/**
+* Display in sidebar
+*/
+function wfTasksExtensionAfterToolbox (&$tpl) {
+	global $wgTitle ;
+	if ( $wgTitle->isTalkPage() ) return ; # No talk pages please
+	if ( $wgTitle->getNamespace() < 0 ) return ; # No special pages please
+	
+	wfTasksAddCache() ;
+	$st = new SpecialTasks ;
+	$tasks = $st->get_open_task_list ( $wgTitle ) ;
+	if ( count ( $tasks ) == 0 ) return ; # No tasks	
+
+?>
+
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5><?php $tpl->msg('tasks_sidebar_title') ?></h5>
+		<div class="pBody">
+			<ul>
+<?php
+	foreach ( $tasks AS $task ) {
+		$ttype = $st->task_types[$task->task_type] ;
+?>
+			<li id="task_sidebar_<?php echo $ttype ?>">
+			<a href="<?php
+				$nt = Title::newFromText ( $st->get_task_discussion_page ( $task ) ) ;
+				echo $nt->getLocalURL () ;
+				?>"><?php
+				echo $st->get_type_text ( $ttype ) ;
+				?></a></li>
+<?php
+		
+	}
+}
 
 /**
 * Catch page movement, fix internal task_page_title values
@@ -143,7 +234,9 @@ function wfTasksExtensionArticleSaveComplete ( &$article , &$user , $text , $sum
 */
 function wfTasksExtensionTab ( &$skin , &$content_actions ) {
 	global $wgTitle , $action ;
-	if ( $wgTitle->isTalkPage() ) return false ; # No tasks for talk pages, no need to bother the database...
+	if ( $wgTitle->isTalkPage() ) return false ; # No talk pages please
+	if ( $wgTitle->getNamespace() < 0 ) return false ; # No special pages please
+
 	wfTasksAddCache() ;
 	$content_actions['tasks'] = array(
 		'class' => ($action == 'tasks') ? 'selected' : false,
@@ -169,68 +262,6 @@ function wfTasksExtensionAction ( $action , $article ) {
 #_____________________________________________________________________________
 
 /**
-* Text adding function
-*/
-function wfTasksAddCache () {
-	global $wgMessageCache , $wgTasksAddCache ;
-	if ( $wgTasksAddCache ) return ;
-	$wgTasksAddCache = true ;
-	$wgMessageCache->addMessages(
-		array(
-			'tasks_tab' => 'Tasks',
-			'tasks_title' => "Tasks for $1",
-			'tasks_form_new' => "Create new task",
-			'tasks_form_comment' => "Comment",
-			'tasks_error1' => "Task was not created: there is already such a task!<br/>",
-			'tasks_ok1' => "New task has been created!<br/>",
-			'tasks_create_header' => "Create a new task",
-			'tasks_existing_header' => "Existing tasks",
-			'tasks_existing_table_header' => "<th>Task</th><th>Dates</th><th>Initial comment</th><th>Assignment/Actions/Page</th>",
-			'tasks_noone' => "noone",
-			'tasks_assign_me' => "<a href=\"$1\">Assign myself</a>",
-			'tasks_close' => "<a href=\"$1\">Close task</a>",
-			'tasks_wontfix' => "<a href=\"$1\">Won't fix</a>",
-			'tasks_reopen' => "<a href=\"$1\">Reopen task</a>",
-			'tasks_assignedto' => "Assigned to $1",
-			'tasks_created_by' => "Created by $1",
-			'tasks_discussion_page_link' => "Task discussion page",
-			'tasks_closedby' => "Closed by $1",
-			
-			'tasks_status_open' => "Open" ,
-			'tasks_status_assigned' => "Assigned" ,
-			'tasks_status_closed' => "Closed" ,
-			'tasks_status_wontfix' => "Won't fix" ,
-			'tasks_type_cleanup' => "Cleanup" ,
-			'tasks_type_wikify' => "Wikify" ,
-			'tasks_type_rewrite' => "Rewrite" ,
-			'tasks_type_delete' => "Delete" ,
-			'tasks_type_create' => "Create blank page" ,
-			'tasks_type_write' => "Write article" ,
-			'tasks_status_bgcol_open' => "#FF9999" ,
-			'tasks_status_bgcol_assigned' => "#FFF380" ,
-			'tasks_status_bgcol_closed' => "#99FF99" ,
-			'tasks_status_bgcol_wontfix' => "#9999FF" ,
-			'tasks_action_open' => "Task \"$1\" opened." ,
-			'tasks_action_assigned' => "Task \"$1\" assigned." ,
-			'tasks_action_closed' => "Task \"$1\" closed." ,
-			'tasks_action_wontfix' => "Won't fix task \"$1\"." ,
-			
-			'tasks_logpage' => "Tasks log" ,
-			'tasks_logpagetext' => 'This is a log of changes to tasks',
-			'tasks_logentry' => 'For "[[$1]]"',
-			
-/*			'stableversion_reset_log' => 'Stable version has been removed.',
-			'stableversion_logpage' => 'Stable version log',
-			'stableversion_logpagetext' => 'This is a log of changes to stable versions',
-			'stableversion_logentry' => '',
-			'stableversion_log' => 'Revision #$1 is now the stable version.',
-			'stableversion_before_no' => 'There was no stable revision before.',
-			'stableversion_before_yes' => 'The last stable revision was #$1.',*/
-		)
-	);
-}
-
-/**
 * The special page
 */
 function wfTasksExtension() {
@@ -249,14 +280,8 @@ function wfTasksExtension() {
 			3 => 'closed' ,
 			4 => 'wontfix'
 		) ;
-		var $task_types = array (
-			1 => 'cleanup',
-			2 => 'wikify',
-			3 => 'rewrite',
-			4 => 'delete',
-			5 => 'create',
-			6 => 'write',
-		) ;
+		var $task_types ; # e.g., 0 => 'cleanup'
+		var $task_types_text ; # e.g., 'cleanup' => 'Clean up'
 		
 		var $creation_tasks = array ( 5 , 6 ) ;
 	
@@ -266,6 +291,25 @@ function wfTasksExtension() {
 		function SpecialTasks() {
 			SpecialPage::SpecialPage( 'Tasks' );
 			$this->includable( true );
+			$this->update_types () ;
+		}
+		
+		function update_types () {
+			wfTasksAddCache () ;
+			
+			$this->task_types = array () ;
+			$s = explode ( "|" , wfMsg ( 'tasks_task_types' ) ) ;
+			foreach ( $s AS $l ) {
+				$l = explode ( ":" , trim ( $l ) , 3 ) ;
+				if ( count ( $l ) != 3 ) continue ; # Invalid line
+				$this->task_types[trim($l[0])] = trim($l[1]) ;
+				$this->task_types_text[trim($l[1])] = trim($l[2]) ;
+			}
+			
+		}
+		
+		function get_type_text ( $type_key ) {
+			return $this->task_types_text[$type_key] ;
 		}
 
 		function is_creation_task ( &$task_type ) {
@@ -349,7 +393,7 @@ function wfTasksExtension() {
 			$comment = str_replace ( "\n" , "<br/>" , $comment ) ;
 			$status = $task->task_status ;
 			$tid = $task->task_id ;
-			$ttype = wfMsg ( 'tasks_type_' . $this->task_types[$task->task_type]) ;
+			$ttype = $this->get_type_text ( $this->task_types[$task->task_type] ) ;
 
 			$out .= "<tr>" ;
 			$out .= "<td valign='top' align='left' nowrap bgcolor='" . wfMsg('tasks_status_bgcol_'.$this->status_types[$status]) . "'>" ;
@@ -400,13 +444,21 @@ function wfTasksExtension() {
 				if ( count ( $txt ) > 0 )
 					$out .= "<br/>" . implode ( " - " , $txt ) ;
 
-				$tdp = substr ( $title->getPrefixedText() , 0 , 200 ) ;
-				$tdp = $wgExtraNamespaces[$wgTasksNamespace] . ":" . $ttype . ' "' . $tdp . '" (' . $task->task_id . ")" ;				
+				$tdp = $this->get_task_discussion_page ( $task ) ;
 				$out .= "<br/>" . $sk->makeLink ( $tdp , wfMsg('tasks_discussion_page_link') ) ;
 			}
 			$out .="</td>" ;
 			$out .= "</tr>" ;
 			return $out ;
+		}
+
+		function get_task_discussion_page ( &$task ) {
+			global $wgExtraNamespaces , $wgTasksNamespace ;
+			#$tdp = substr ( $title->getPrefixedText() , 0 , 200 ) ;
+			#$tdp = $wgExtraNamespaces[$wgTasksNamespace] . ":" . $ttype . ' "' . $tdp . '" (' . $task->task_id . ")" ;
+			$ttype = $this->get_type_text ( $this->task_types[$task->task_type]) ;
+			$tdp = $wgExtraNamespaces[$wgTasksNamespace] . ":" . $ttype . ' (' . $task->task_id . ")" ;
+			return $tdp ;
 		}
 
 		/**
@@ -501,6 +553,19 @@ function wfTasksExtension() {
 			$log->addEntry( 'tasks', $title , $act );
 		}
 		
+		/**
+		* Returns the list of active tasks for this page, for display in the sidebar
+		*/
+		function get_open_task_list ( &$title ) {
+			$tasks = $this->get_tasks_for_page ( $title ) ;
+			$ret = array () ;
+			foreach ( $tasks AS $task ) {
+				if ( $this->is_open ( $task->task_status ) )
+					$ret[] = $task ;
+			}
+			return $ret ;
+		}
+
 		/**
 		* Returns the title object for a task, and the task data through reference
 		*/
@@ -601,7 +666,7 @@ function wfTasksExtension() {
 			$out .= "<select name='type'>" ;
 			$o = array () ;
 			foreach ( $new_tasks AS $k => $v ) {
-				$o[$v] = "<option value='{$k}'>" . wfMsg ( 'tasks_type_' . $v ) . "</option>" ;
+				$o[$v] = "<option value='{$k}'>" . $this->get_type_text ( $v ) . "</option>" ;
 			}
 			ksort ( $o ) ;
 			$out .= implode ( "" , $o ) ;
