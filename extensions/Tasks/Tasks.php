@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 To activate, put something like this in your LocalSettings.php:
 	$wgTasksNamespace = 200;
@@ -209,8 +209,8 @@ function wfTaskExtensionHeaderHook( &$article ) { # Checked for HTML and MySQL i
 
 	$sk =& $wgUser->getSkin();
 	$returnto = urlencode( $wgTitle->getFullURL() );
-	$link1 = $sk->makeLink( $page_title->getPrefixedText() );
-	$link2 = $sk->makeLink( $page_title->getPrefixedText(), wfMsgHTML( 'tasks_here' ), "action=tasks" );
+	$link1 = $sk->makeLinkObj( $page_title );
+	$link2 = $sk->makeLinkObj( $page_title, wfMsgHTML( 'tasks_here' ), "action=tasks" );
 	$subtitle .= wfMsgHTML( 'tasks_discussion_page_for', $link1, $link2 );
 	$subtitle .= "<br/>\n<table border='1' cellspacing='1' cellpadding='2'>\n" . 
 				"<tr>" . wfTaskExtensionGetTableHeader() . "</tr>\n";
@@ -271,7 +271,7 @@ function wfTasksExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL in
 ?>
 			<li id="task_sidebar_<?php echo $ttype ?>">
 			<a href="<?php
-				$nt = Title::newFromText( $st->get_task_discussion_page( $task ) );
+				$nt = $st->get_task_discussion_page( $task );
 				echo $nt->getLocalURL();
 				?>"><?php
 				echo $st->get_type_text( $ttype );
@@ -597,9 +597,9 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$out .= "<tr>";
 			if( $show_page ) {
 				$out .= "<td align='left' valign='top'>";
-				$out .= $sk->makeLink( $title->getPrefixedText() );
+				$out .= $sk->makeLinkObj( $title );
 				$out .= "<br/>";
-				$out .= $sk->makeLink( $title->getPrefixedText(), wfMsgHTML('tasks_see_page_tasks'), "action=tasks" );
+				$out .= $sk->makeLinkObj( $title, wfMsgHTML('tasks_see_page_tasks'), "action=tasks" );
 				$out .= "</td>";
 			}
 			$out .= "<td valign='top' align='left' nowrap bgcolor='" . wfMsgHTML('tasks_status_bgcol_'.$this->status_types[$status]) . "'>";
@@ -607,7 +607,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$out .= wfMsgHTML( 'tasks_status_' . $this->status_types[$status] );
 			$out .= "</i></td>";
 			$out .= "<td align='left' valign='top' nowrap>";
-			$out .= wfMsgHTML( 'tasks_created_by', $sk->makeLink( $cu->getPrefixedText(), htmlentities( $task->task_user_text ) ) );
+			$out .= wfMsgHTML( 'tasks_created_by', $sk->makeLinkObj( $cu, htmlentities( $task->task_user_text ) ) );
 			$out .= "<br/>{$ct}";
 
 			# Closing information
@@ -615,7 +615,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$user_close = new User;
 				$user_close->setID( $task->task_user_close );
 				$uct = Title::makeTitleSafe( NS_USER, $user_close->getName() ); # Assigned user title
-				$out .= "<br/>" . wfMsgHTML( 'tasks_closedby', $sk->makeLink( $uct->getPrefixedText(), htmlentities( $user_close->getName() ) ) );
+				$out .= "<br/>" . wfMsgHTML( 'tasks_closedby', $sk->makeLinkObj( $uct, htmlentities( $user_close->getName() ) ) );
 				if( $task->task_timestamp_closed != "" ) {
 					$out .= "<br/>" . $wgContLang->timeanddate( $task->task_timestamp_closed ); # Time object from string of digits
 				}
@@ -632,7 +632,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$au = new User(); # Assigned user
 				$au->setID( $task->task_user_assigned );
 				$aut = Title::makeTitleSafe( NS_USER, $au->getName() ); # Assigned user title
-				$out .= wfMsgHTML( 'tasks_assignedto', $sk->makeLink( $aut->getPrefixedText(), htmlentities( $au->getName() ) ) );
+				$out .= wfMsgHTML( 'tasks_assignedto', $sk->makeLinkObj( $aut, htmlentities( $au->getName() ) ) );
 			}
 			if( $wgUser->isLoggedIn() ) {
 				$txt = array();
@@ -640,23 +640,23 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					# Assignment
 					if( $wgUser->getID() != $task->task_user_assigned ) {
 						# Assign myself
-						$txt[] = $sk->makeLink( $title->getPrefixedText(),
+						$txt[] = $sk->makeLinkObj( $title,
 							wfMsgHTML( 'tasks_assign_me' ),
 							"action=tasks&mode=assignme&taskid={$tid}{$returnto}" ); # tid is integer, returnto is safe
 					} else {
 						# Unassign myself
-						$txt[] = $sk->makeLink( $title->getPrefixedText(),
+						$txt[] = $sk->makeLinkObj( $title,
 							wfMsgHTML( 'tasks_unassign_me' ),
 							"action=tasks&mode=unassignme&taskid={$tid}{$returnto}" ); # tid is integer, returnto is safe
 					}
 				}
 				if( $this->is_open( $status ) ) {
 					# Open or assigned
-					$txt[] = $sk->makeLink( $title->getPrefixedText(), wfMsgHTML( 'tasks_close' ), "action=tasks&mode=close&taskid={$tid}{$returnto}" );
-					$txt[] = $sk->makeLink( $title->getPrefixedText(), wfMsgHTML( 'tasks_wontfix' ), "action=tasks&mode=wontfix&taskid={$tid}{$returnto}" );
+					$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_close' ), "action=tasks&mode=close&taskid={$tid}{$returnto}" );
+					$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_wontfix' ), "action=tasks&mode=wontfix&taskid={$tid}{$returnto}" );
 				} else if( $this->get_task_type( $task->task_type ) != 'create' ) {
 					# Closed or wontfix, can reopen (maybe)
-					$txt[] = $sk->makeLink( $title->getPrefixedText(), wfMsgHTML( 'tasks_reopen' ), "action=tasks&mode=reopen&taskid={$tid}{$returnto}" );
+					$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_reopen' ), "action=tasks&mode=reopen&taskid={$tid}{$returnto}" );
 				}
 				
 				if( count( $txt ) > 0 )
@@ -664,17 +664,20 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 
 			}
 			$tdp = $this->get_task_discussion_page( $task );
-			$out .= "<br/>" . $sk->makeLink( $tdp, wfMsgHTML('tasks_discussion_page_link') );
+			$out .= "<br/>" . $sk->makeLinkObj( $tdp, wfMsgHTML('tasks_discussion_page_link') );
 			$out .="</td>";
 			$out .= "</tr>";
 			return $out;
 		}
 
+		/**
+		 * @param Task $task
+		 * @return Title
+		 */
 		function get_task_discussion_page( &$task ) { # Checked for HTML and MySQL insertion attacks
-			global $wgExtraNamespaces, $wgTasksNamespace;
+			global $wgTasksNamespace;
 			$ttype = $this->get_type_text( $this->get_task_type( $task->task_type ) ); # Illegal values will be caught on the way
-			$tdp = $wgExtraNamespaces[$wgTasksNamespace] . ":" . $ttype . ' (' . $task->task_id . ")";
-			return $tdp;
+			return Title::makeTitle( $wgTasksNamespace, $ttype . ' (' . $task->task_id . ")" );
 		}
 
 		/**
@@ -1087,7 +1090,9 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 						$data->num = 0;
 					}
 
-					$link = $skin->makeLink( "Special:Tasks", wfMsgHTML( 'tasks_link_your_assignments' ), "mode=myassignments" );
+					$specialTasks = Title::makeTitle( NS_SPECIAL, 'Tasks' );
+					$link = $skin->makeLinkObj( $specialTasks,
+						wfMsgHTML( 'tasks_link_your_assignments' ), "mode=myassignments" );
 					$out .= "<p>";
 					if( $data->num == 0 ) {
 						$out .= wfMsgHTML( 'tasks_you_have_no_assignments' ) . ".";
