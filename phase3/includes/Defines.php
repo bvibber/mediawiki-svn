@@ -151,6 +151,7 @@ define('NS_MISSING',4);
 define('NS_IDENTICAL',5);
 define('NS_DELETED',6);
 define('NS_PROTECTED',7);
+define('NS_HAS_PAGES',8);
 /**#@-*/
 
 /**#@+
@@ -158,6 +159,9 @@ define('NS_PROTECTED',7);
  */
 define('NS_PSEUDO_NOT_FOUND',1);
 define('NS_PSEUDO_CONVERTED',2);
+define('NS_NON_EMPTY',3);
+define('NS_DUPLICATE_TITLES',4);
+define('NS_DUPLICATE_TITLE_LIST',5);
 
 /**#@+
  * Valid namespace names character class

@@ -218,7 +218,7 @@ class Namespace {
 				return $ns->index;
 			}
 		}
-		return false;
+		return null;
 	}
 	
 	function getTarget() {
@@ -427,10 +427,6 @@ class Namespace {
 	 *   If a namespace name overlaps with an Interwiki
 	 *   prefix, should it be created anyway? Note that
 	 *   you can only override one Interwiki prefix at 
-	 * @param boolean $convertTitlePrefix
-	 *   If a namespace name overlaps with existing page
-	 *   title prefixes (AKA pseudo-namespaces), should
-	 *   these be converted into a real namespace?
 	 *  
 	 * @return array()
 	 *   An array that describes the results of the
@@ -477,7 +473,6 @@ class Namespace {
 	 *
 	 *      NS_PREFIX_NAMES
 	 *      names which are used as hardcoded title prefixes
-	 *      (cf. convertTitlePrefix parameter)
 	 *
 	 *  - For removed or renamed names:
 	 *
@@ -511,9 +506,7 @@ class Namespace {
 	 *           result array.
 	 */
 	function save($overrideInterwiki=false,
-	              $convertTitlePrefix=false,
-		      $testSave=false    
-		      ) {
+		      $testSave=false) {
 	
 		global $wgNamespaces;
 		
@@ -596,11 +589,15 @@ class Namespace {
 				}
 
 				# Pseudo-namespaces (title prefixes)
-				$match = $dbs->addQuotes($name.":%");
+				$likename = str_replace( '_', '\\_', $name);
+				$likename = str_replace( '%', '\\%', $likename);
+				$match = $dbs->addQuotes($likename.":%");
 				$res = $dbs->select(
 					'page',
 					array('page_title'),
-					array('page_title LIKE '.$match),
+					array('page_namespace'=>0,
+					      'page_title LIKE '.$match,
+					      ),
 					$fname,
 					array('LIMIT'=>1)
 				);
@@ -782,8 +779,8 @@ class Namespace {
  	 * A simple shortcut to save() with the right parameters
 	 * to run in test mode. See save() documentation.
 	 */
-	function testSave($overrideInterwiki=false,$convertTitlePrefix=false) {
-		return $this->save($overrideInterwiki,$convertTitlePrefix,true);
+	function testSave($overrideInterwiki=false) {
+		return $this->save($overrideInterwiki,true);
 	}
 	
 	/**
@@ -803,7 +800,9 @@ class Namespace {
 		if($this->isSystemNamespace() && !$deleteSystem) {
 			return array(NS_RESULT=>NS_PROTECTED);
 		}
-
+		if($this->countPages()>0) {
+			return array(NS_RESULT=>NS_HAS_PAGES);
+		}
 		# Remove all names
 		$this->removeAllNames();
 		# Try saving
@@ -898,16 +897,22 @@ class Namespace {
 	* @param Namespace $source - the source namespace object (should
 	*  usually be $wgNamespaces[NS_MAIN] or ..[NS_TALK]). This is the
 	*  one we expect the prefixed titles to be stored in.
+	* @param boolean $merge - Is it acceptable to merge into a namespace
+	*  which does already contain pages? This is potentially irreversible!
 	*
 	* Why pass around Namespace objects? This saves us some validation,
 	* since the indexes can be assumed to exist.
 	*
 	* @static
 	*/
-	function convertPseudonamespace($prefix,$target,$source) {
+	function convertPseudonamespace($prefix,$target,$source,$merge=false) {
 		$dbm =& wfGetDB(DB_MASTER);
 		$dbs =& wfGetDB(DB_SLAVE);
 		$fname="Namespace::convertPseudonamespace";
+		$targetcount=$target->countPages();
+		if(!$merge && $targetcount>0) {
+			return array(NS_RESULT=>NS_NON_EMPTY);
+		}
 		$table = $dbs->tableName( 'page' );
 		$eprefix     = $dbs->strencode( $prefix );
 		$likeprefix = str_replace( '_', '\\_', $eprefix);
@@ -928,10 +933,30 @@ class Namespace {
 		}
 		$dbs->freeResult( $result );
 		
-		# TODO: Don't run this blindly - check for title dupes first
 		if(!count($set)) {
-			return NS_PSEUDO_NOT_FOUND;
+			return array(NS_RESULT=>NS_PSEUDO_NOT_FOUND);
 		} else {
+			# Check duplicates
+			if($targetcount) {
+				$dupeTitles=array();
+				foreach($set as $row) {
+					$pageExists=$dbs->selectField(
+						'page',
+						'count(*)',
+						array('page_title'=>$row->title,
+						      'page_namespace'=>$targetid)
+					);
+					if($pageExists) {
+						$dupeTitles[]=$row->title;
+					}
+				}
+				if(count($dupeTitles)) {
+					return(array(
+						NS_RESULT => NS_DUPLICATE_TITLES,
+						NS_DUPLICATE_TITLE_LIST => $dupeTitles));
+
+				}
+			}		
 			foreach($set as $row) {
 				$dbm->update( $table,
 					array(
@@ -945,8 +970,20 @@ class Namespace {
 					$fname );
 			}
 		}
-		return NS_PSEUDO_CONVERTED;
+		return array(NS_RESULT=>NS_PSEUDO_CONVERTED);
 
+	}
+	/**
+	 * How many pages does this namespace contain?
+	 * @return The number of pages
+	*/
+	function countPages() {
+		$dbs =& wfGetDB(DB_SLAVE);
+		return $dbs->selectField(
+			'page',
+			'count(*)',
+			array('page_namespace'=>$this->getIndex())
+		);		
 	}
 
 }

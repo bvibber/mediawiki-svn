@@ -7,6 +7,8 @@
 
 /**
  * Constructor
+ * Can display the main form or perform addition, changes,
+ * pseudonamespace conversion or deletions.
  */
 function wfSpecialNamespaces() {
 	global $wgUser, $wgRequest;
@@ -37,6 +39,15 @@ function wfSpecialNamespaces() {
 */
 class NamespaceForm {
 
+/**
+*
+* This is the main namespace manager form which gives access to
+* all namespace operations.
+*
+* @param $errorHeader if this is an error page, we need at least a headline
+* @param $errorBody wikitext for extended error descriptions
+*
+*/
 function showForm( $errorHeader='', $errorBody='' ) {
 	global $wgOut, $wgUser, $wgNamespaces,$wgTitle;
 	
@@ -312,11 +323,10 @@ END;
 	$wgOut->addHTML( $htmlform );
 
 	// Pseudonamespace converter
-	if(in_array( 'fix_pseudonamespaces', $wgUser->getRights())) {
-		$all_name_array = Namespace::getFormattedDefaultNamespaces();
-		$pseudons_select=$this->getSelector($all_name_array);
-		$wgOut->addWikiText( wfMsg( 'fix_pseudonamespaces_header' ) );
-		$phtmlform ='
+	$all_name_array = Namespace::getFormattedDefaultNamespaces();
+	$pseudons_select=$this->getSelector($all_name_array);
+	$wgOut->addWikiText( wfMsg( 'fix_pseudonamespaces_header' ) );
+	$phtmlform ='
 <div id="fixPseudoNsForm">
 <form name="fixpseudonamepaces" method="post" action="'.$action.'">
 <input type="hidden" name="nsAction" value="fixpseudonamespaces" />
@@ -338,18 +348,30 @@ END;
 			<input type="checkbox" name="nsConvertTalk" checked />'.wfMsg('pseudonamespace_converttalk').'
 		</label>
 		</td>
-	</tr>
+	</tr>';
+	if(in_array( 'merge_pseudonamespaces', $wgUser->getRights())) {
+	$phtmlform.='
+	<tr>
+		<td colspan="2">
+		<label>
+			<input type="checkbox" name="nsMerge" />'.wfMsg('pseudonamespace_merge').'
+		</label>
+		</td>
+	</tr>';
+	}
+	$phtmlform.='
 </table>
 <input type="submit" value="'.wfMsg('pseudonamespace_convert').'" />
 </form>
 </div>';
-		$wgOut->addHTML($phtmlform);
-	}
+	$wgOut->addHTML($phtmlform);
 
 }
 
 	/**
-	 * @todo Document
+	 * Add a new namespace with a single default name,
+	 * and optionally a talk namespace, also with a 
+	 * defaultname. Uses the request data from the form.
 	*/ 
 	function addNamespaces() {
 
@@ -428,7 +450,13 @@ END;
 	}
 
 	/**
-	 * @todo Document
+	 * Modify, delete or add namespace names, set default names,
+	 * or change namespace properties. Uses the request data from
+	 * the form. Note that we have to create a new namespace object,
+	 * since we do not want to modify the "live" namespace until
+	 * we know that all the requested operations can be performed.
+	 * Nothing will be done unless every transaction can be completed
+	 * successfully.
 	*/
 	function changeNamespaces() {
 	
@@ -557,7 +585,10 @@ END;
 	}
 
 	/**
-	 * @parameter array $result
+	 * Creates a table showing problems with namespace name changes
+	 * or additions, based on result data from the save operation.
+	 *
+	 * @param array Namespace::save result array
 	 * @return string A HTML table with namespaces issues
 	*/
 	function nameIssues( $result ) {
@@ -617,7 +648,25 @@ END;
 	}
 
 	/**
-	 * delete the namespace
+	 * List of titles which exist in a real namespace
+	 * which duplicate page titles in a pseudonamespace.
+	 *
+	 * @return a wiki-formatted list of links
+	*/
+	function pseudoDupes( $prefix, $dupelist ) {
+		$wikilist=wfMsg('pseudonamespace_title_dupes')."\n";
+		foreach($dupelist as $dupe) {	
+			$wikilist.="# [[{$prefix}:{$dupe}|{$dupe}]]\n";
+		}
+		return $wikilist;
+	}
+
+	/**
+	 * Delete the namespace, using form data.
+	 * Checks for many error conditions:
+	 * - Namespace must exist
+	 * - System namespaces cannot be deleted
+	 * - Namespaces which are non-empty cannot be deleted
 	 */
 	function deleteNamespace() {
 
@@ -651,6 +700,10 @@ END;
 		} elseif( $drv[NS_RESULT] == NS_NAME_ISSUES ) {
 			$this->showForm( wfMsg('namespace_delete_error',$nsdeletename),$this->nameIssues($drv) );
 			return false;
+		} elseif ($drv[NS_RESULT] == NS_HAS_PAGES) {
+			/** TODO: link to Special:Allpages/namespace */
+			$this->showForm(wfMsg('namespace_delete_error',$nsdeletename), wfMsg('namespace_delete_not_empty'));
+			return false;
 		} else {
 			$this->showForm( wfMsg('namespace_delete_error') );
 			return false;
@@ -664,7 +717,9 @@ END;
 	function fixPseudonamespaces() {
 
 		global $wgOut, $wgRequest, $wgUser, $wgNamespaces;
-		if(!in_array( 'fix_pseudonamespaces', $wgUser->getRights())) {
+		# Merging into non-empty namespaces is generally prohibited
+		$merge=$wgRequest->getBool('nsMerge');
+		if($merge && !in_array( 'merge_pseudonamespaces', $wgUser->getRights())) {
 			$this->showForm( wfMsg('badaccess'), wfMsg('badaccesstext','[['.wfMsg('administrators').']]','fix_pseudonamespaces'));
 			return false;
 		}
@@ -676,10 +731,23 @@ END;
 			return false;
 
 		}
-		$rv=Namespace::convertPseudonamespace($prefix,$wgNamespaces[$targetid],$wgNamespaces[NS_MAIN]);
-		if($rv==NS_PSEUDO_NOT_FOUND) {
-			$this->showForm( wfMsg('pseudonamespace_not_found',$prefix));
+		$talktargetid=$wgNamespaces[$targetid]->getTalk();
+		if($converttalk && is_null($talktargetid)) {
+			$this->showForm (wfMsg('pseudonamespace_target_talk_not_found'));
 			return false;
+		}
+
+		$rv=Namespace::convertPseudonamespace($prefix,$wgNamespaces[$targetid],$wgNamespaces[NS_MAIN],$merge);
+		if($rv[NS_RESULT]!=NS_PSEUDO_CONVERTED) {
+			if(!($rv[NS_RESULT]==NS_PSEUDO_NOT_FOUND && $converttalk)) {
+				$this->showPseudoError($rv,$targetid,$prefix);
+				return false;
+			} else {
+				# Even if the prefix doesn't exist, we still
+				# want to check for possible talk page content.
+				$wgOut->addWikiText(wfMsg('pseudonamespace_not_found',$prefix));
+				$wgOut->addWikiText(wfMsg('pseudonamespace_trying_talk'));
+			}
 		} else {
 			$wgOut->addWikiText(wfMsg('pseudonamespace_converted', $prefix, $wgNamespaces[$targetid]->getDefaultName()));
 		}
@@ -687,17 +755,32 @@ END;
 			# A pseudonamespace, by definition, exists in the 
 			# main (unprefixed) namespace - therefore its talk
 			# pages are NS_TALK.
-
-			# TODO: Don't assume we _have_ a talk namespace for the
-			# target namespace.
-			$trv=Namespace::convertPseudonamespace($prefix,$wgNamespaces[$wgNamespaces[$targetid]->getTalk()],$wgNamespaces[NS_TALK]);
-			if($trv==NS_PSEUDO_NOT_FOUND) {
-				$wgOut->addWikiText(wfMsg('pseudonamespace_talk_not_found'));
+			$trv=Namespace::convertPseudonamespace($prefix,$wgNamespaces[$talktargetid],$wgNamespaces[NS_TALK],$merge);
+			if($trv[NS_RESULT]!=NS_PSEUDO_CONVERTED) {
+				$this->showPseudoError($trv,$talktargetid,$prefix);
+				return false;
 			} else {
 				$wgOut->addWikiText(wfMsg('pseudonamespace_talk_converted'));
 			}
 		}
 		$this->showForm();
+	}
+	function showPseudoError($rv,$targetid,$prefix) {
+		global $wgNamespaces;
+		$istalk=$wgNamespaces[$targetid]->isTalk();
+		# For messages
+		$talk=$istalk ? 'talk_' : '';
+		if($rv[NS_RESULT]==NS_PSEUDO_NOT_FOUND) {
+			$this->showForm( wfMsg("pseudonamespace_{$talk}not_found",$prefix));
+		} elseif($rv[NS_RESULT]==NS_NON_EMPTY) {
+			$this->showForm(
+			wfMsg("pseudonamespace_{$talk}conversion_error",$prefix),
+			wfMsg("pseudonamespace_cannot_merge"));
+		} elseif($rv[NS_RESULT]==NS_DUPLICATE_TITLES) {
+			$this->showForm(
+			wfMsg("pseudonamespace_{$talk}conversion_error",$prefix),
+				$this->pseudoDupes($wgNamespaces[$targetid]->getDefaultName(),$rv[NS_DUPLICATE_TITLE_LIST]));
+		}
 	}
 
 	function getSelector($name_array,$parentslot=null) {
