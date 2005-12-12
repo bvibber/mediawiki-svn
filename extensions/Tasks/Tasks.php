@@ -170,7 +170,7 @@ function wfTasksAddCache () {
 */
 function wfTaskExtensionEditFormInitialHook ( &$editPage ) {
 	global $wgArticle ;
-	wfTaskExtensionHeaderHook ( $wgArticle ) ;
+	return wfTaskExtensionHeaderHook ( $wgArticle ) ;
 }
 
 /**
@@ -180,7 +180,7 @@ function wfTaskExtensionHeaderHook ( &$article ) {
 	global $wgTasksNamespace , $wgOut , $wgUser ;
 	$title = $article->getTitle() ;
 	$ns = $title->getNamespace() ;
-	if ( $ns != $wgTasksNamespace AND $ns != $wgTasksNamespace+1 ) return ; # Doesn't concern us
+	if ( $ns != $wgTasksNamespace AND $ns != $wgTasksNamespace+1 ) return true ; # Doesn't concern us
 	
 	$subtitle = "" ;
 	$taskid = $title->getText() ;
@@ -192,7 +192,7 @@ function wfTaskExtensionHeaderHook ( &$article ) {
 	$st = new SpecialTasks ;
 	$task = "" ;
 	$page_title = $st->get_title_from_task ( $taskid , &$task ) ;
-	if ( $task == "" ) return ; # No such task
+	if ( $task == "" ) return true ; # No such task
 
 	$sk =& $wgUser->getSkin() ;
 	$link1 = $sk->makeLink ( $page_title->getPrefixedText() ) ;
@@ -205,6 +205,7 @@ function wfTaskExtensionHeaderHook ( &$article ) {
 	
 	$subtitle = $wgOut->getSubtitle() . "<br/>" . $subtitle ;
 	$wgOut->setSubtitle ( $subtitle ) ;
+	return true ;
 }
 
 /**
@@ -545,9 +546,9 @@ function wfTasksExtension() {
 				if ( count ( $txt ) > 0 )
 					$out .= "<br/>" . implode ( " - " , $txt ) ;
 
-				$tdp = $this->get_task_discussion_page ( $task ) ;
-				$out .= "<br/>" . $sk->makeLink ( $tdp , wfMsg('tasks_discussion_page_link') ) ;
 			}
+			$tdp = $this->get_task_discussion_page ( $task ) ;
+			$out .= "<br/>" . $sk->makeLink ( $tdp , wfMsg('tasks_discussion_page_link') ) ;
 			$out .="</td>" ;
 			$out .= "</tr>" ;
 			return $out ;
