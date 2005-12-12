@@ -116,7 +116,7 @@ function wfStableVersionHeaderHook ( $a ) {
 			$url = $sp->getFullURL ( "id=" . $wgArticle->getID() . "&mode=reset" ) ;
 			$st .= wfMsg ( 'stableversion_reset_stable_version' , $url ) ;
 		} else {
-			$url = $sp->getFullURL ( "&id=" . $wgArticle->getID() . "&mode=set&revision=" . $wgArticle->getRevIdFetched() ) ;
+			$url = $sp->getFullURL ( "id=" . $wgArticle->getID() . "&mode=set&revision=" . $wgArticle->getRevIdFetched() ) ;
 			$st .= wfMsg ( 'stableversion_set_stable_version' , $url ) ;
 		}
 	}
@@ -174,6 +174,7 @@ function wfStableVersion() {
 			
 			# Get old stable version
 			$dbr =& wfGetDB( DB_SLAVE );
+			$fname = "SpecialStableVersion:execute" ;
 			$row = $dbr->selectRow( 'page', array( 'page_stable' ),
 				array( 'page_id' => $id ), $fname );
 			$oldstable = $row->page_stable ;
@@ -182,7 +183,6 @@ function wfStableVersion() {
 			$act .= " " . $before ;
 
 			$conditions = array( 'page_id' => $id );
-			$fname = "SpecialStableVersion:execute" ;
 			$dbw =& wfGetDB( DB_MASTER );
 			$dbw->update( 'page',
 				array( /* SET */
