@@ -802,25 +802,31 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$out .= "</tr>";
 			
 			# Transclude comments page, if wanted
-			if ( $wgUser->getOption('show_task_comments') == 1 ) {
-				if ( $this->pagemode == "search" || $this->pagemode == "tasks_of_page" )
-					$out .= $this->transclude_comments ( $tdp , $show_page ? 5 : 4 ) ;
+			if( $wgUser->getOption( 'show_task_comments' ) ) {
+				if( $this->pagemode == "search" || $this->pagemode == "tasks_of_page" ) {
+					$out .= $this->transclude_comments( $tdp, $show_page ? 5 : 4 ) ;
+				}
 			}
 			return $out;
 		}
 
 		/**
 		 * Returns the 
-		*/
-		function transclude_comments ( $title , $col_compensator ) {
-			if ( !$title->exists() ) return "" ; # Nothing to transclude
+		 * @param Title $title of task page to load
+		 * @param int $col_compensator Number of table columns to span
+		 * @return string HTML table row, or empty string
+		 * @access private
+		 */
+		function transclude_comments( $title, $col_compensator ) {
+			if( !$title->exists() ) {
+				# Nothing to transclude
+				return "";
+			}
 			
-			global $wgOut ;
-			$art = new Article ( $title ) ;
-			$ret = $art->getContent ( false ) ;
-			$p = new Parser ;
-			$ret = $p->parse ( $ret , $title , $wgOut->mParserOptions , false ) ;
-			$ret = $ret->getText() ;
+			global $wgOut;
+			$art = new Article( $title );
+			$ret = $art->getContent( false );
+			$ret = $wgOut->parse( $ret );
 			return "<tr><td id='task_transcluded_comment' colspan='" . $col_compensator . "'>{$ret}</td></tr>" ;
 		}
 
