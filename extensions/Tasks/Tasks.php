@@ -210,13 +210,15 @@ function wfTaskExtensionHeaderHook( &$article ) { # Checked for HTML and MySQL i
 	$title = $article->getTitle();
 	$ns = $title->getNamespace();
 	if( $ns != $wgTasksNamespace && $ns != $wgTasksNamespace+1 ) {
-		wfTaskExtensionHeaderSign () ; # Show sign, if any
-		return true; # Doesn't concern us any more
+		// Show sign, if any, then we can leave
+		wfTaskExtensionHeaderSign();
+		return true;
 	}
 	
 	$subtitle = "";
-#	if( preg_match( '/\((\d+)\)/', $title->getText(), $matches ) ) { # Obsolete, new page title format "Task:123", suggested by Rowan Collins
-	if ( is_numeric ( $title->getText() ) ) {
+	
+	if( ctype_digit( $title->getText() ) ) {
+		// Page title format "Task:123", suggested by Rowan Collins
 		$taskid = intval( $title->getText() );
 	} else {
 		// Invalid page title; can't extract the task id
@@ -233,12 +235,12 @@ function wfTaskExtensionHeaderHook( &$article ) { # Checked for HTML and MySQL i
 	}
 
 	$sk =& $wgUser->getSkin();
-	$returnto = $wgTitle->getFullURL() ;
+	$returnto = $wgTitle->getFullURL();
 	$link1 = $sk->makeLinkObj( $page_title );
 	$link2 = $sk->makeLinkObj( $page_title, wfMsgHTML( 'tasks_here' ), "action=tasks" );
 	$subtitle .= "<div id='task_header'>" . wfMsgForContent( 'tasks_discussion_page_for', $link1, $link2 ) . "</div>\n" ;
 	$subtitle .= "<table border='1' cellspacing='1' cellpadding='2' id='task_header_table'>\n" . 
-				"<tr>" . wfTaskExtensionGetTableHeader(false) . "</tr>\n";
+				"<tr>" . wfTaskExtensionGetTableHeader( false ) . "</tr>\n";
 	$subtitle .= $st->get_task_table_row( $task, $page_title, false, $returnto );
 	$subtitle .= "</table>\n";
 	
@@ -250,8 +252,8 @@ function wfTaskExtensionHeaderHook( &$article ) { # Checked for HTML and MySQL i
 /**
  * Display header signs for "notable" tasks
  */
-function wfTaskExtensionHeaderSign () {
-	global $wgTitle, $wgOut ;
+function wfTaskExtensionHeaderSign() {
+	global $wgTitle, $wgOut;
 
 	if( $wgTitle->isTalkPage() ) {
 		# No talk pages please
@@ -263,32 +265,39 @@ function wfTaskExtensionHeaderSign () {
 	}
 
 	wfTasksAddCache();
-	$st = new SpecialTasks;
-	$tasks = $st->get_open_task_list( $wgTitle , true );
+	$st = new SpecialTasks();
+	$tasks = $st->get_open_task_list( $wgTitle, true );
 	if( count( $tasks ) == 0 ) {
 		# No tasks	
 		return;
 	}
 	
-	$out = "" ;
-	$max = 0 ;
-	foreach ( $tasks AS $task ) {
-		$ttype = $st->get_task_type ( $task->task_type ) ;
-		$msg = wfMsgForContent ( 'tasks_sign_' . $ttype ) ;
-		if ( $msg == "" ) continue ; # No sign defined for this
+	$out = "";
+	$max = 0;
+	foreach( $tasks as $task ) {
+		$ttype = $st->get_task_type( $task->task_type );
+		$msg = wfMsgForContent( 'tasks_sign_' . $ttype );
+		if( $msg == "" ) {
+			# No sign defined for this
+			continue;
+		}
 
-		$order = $st->get_task_order ( $ttype ) ;
-		if ( $order > $max ) {
-			$max = $order ;
-			$max_type = $ttype ;
-			$max_task = $task ;
-			$max_msg = $msg ;
+		$order = $st->get_task_order( $ttype );
+		if( $order > $max ) {
+			$max = $order;
+			$max_type = $ttype;
+			$max_task = $task;
+			$max_msg = $msg;
 		}
 	}
 
-	if ( $max == 0 ) return ; # Nothing for you to see here, please move along
+	if( $max == 0 ) {
+		# Nothing for you to see here, please move along
+		return;
+	}
 	
-	$out = "<div id='task_sign'>{$max_msg}</div>" ;
+	// Wiki-safe output
+	$out = $wgOut->parse( "<div id='task_sign'>{$max_msg}</div>" );
 	
 	$subtitle = $wgOut->getSubtitle() . "<br />" . $out;
 	$wgOut->setSubtitle( $subtitle );
@@ -322,7 +331,7 @@ function wfTasksExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL in
 	
 	wfTasksAddCache();
 	$st = new SpecialTasks;
-	$tasks = $st->get_open_task_list( $wgTitle , true );
+	$tasks = $st->get_open_task_list( $wgTitle, true );
 	if( count( $tasks ) == 0 ) {
 		# No tasks	
 		return;
@@ -492,7 +501,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		var $task_types; # e.g., 0 => 'cleanup'
 		var $task_types_text; # e.g., 'cleanup' => 'Clean up'
 		var $creation_tasks; # e.g., ( 1, 2, 3 )
-		var $task_order = array () ; # e.g., 'delete' => 5
+		var $task_order = array(); # e.g., 'delete' => 5
 		var $pagemode = "" ;
 	
 		/**
@@ -506,11 +515,15 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		
 		/**
 		 * Returns the order of the type, or 0 if not defined
-		 * @param $type like 'create' or 'cleanup'
-		*/
-		function get_task_order ( $type ) { # Checked for HTML and MySQL insertion attacks
-			if ( !isset ( $this->task_order[$type] ) ) return 0 ;
-			return $this->task_order[$type] ;
+		 * @param string $type key like 'create' or 'cleanup'
+		 * @return int
+		 */
+		function get_task_order( $type ) { # Checked for HTML and MySQL insertion attacks
+			if( isset( $this->task_order[$type] ) ) {
+				return $this->task_order[$type];
+			} else {
+				return 0;
+			}
 		}
 		
 		function get_task_type( $num ) { # Checked for HTML and MySQL insertion attacks
@@ -562,14 +575,15 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$this->creation_tasks[] = $keyNum;
 			}
 			
-			$this->task_order = array () ;
+			$this->task_order = array();
 			$s = wfMsgForContent( 'tasks_significance_order' );
-			$s = explode ( "<" , $s ) ;
-			$count = 1 ;
-			foreach ( $s AS $line ) {
-				$line = trim ( $line ) ;
-				if ( $line == "" ) continue ;
-				$this->task_order[$line] = $count++ ;
+			$s = explode( "<" , $s );
+			$count = 1;
+			foreach( $s as $line ) {
+				$line = trim( $line );
+				if( $line != "" ) {
+					$this->task_order[$line] = $count++;
+				}
 			}
 		}
 		
@@ -816,9 +830,8 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		 */
 		function get_task_discussion_page( &$task ) { # Checked for HTML and MySQL insertion attacks
 			global $wgTasksNamespace;
-#			$ttype = $this->get_type_text( $this->get_task_type( $task->task_type ) ); # Illegal values will be caught on the way
-#			return Title::makeTitleSafe( $wgTasksNamespace, $ttype . ' (' . $task->task_id . ")" );
-			return Title::makeTitleSafe( $wgTasksNamespace, $task->task_id ); # New format : "Task:123"
+			# Format : "Task:123"
+			return Title::makeTitle( $wgTasksNamespace, strval( $task->task_id ) );
 		}
 
 		/**
@@ -967,9 +980,9 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		 */
 		function get_open_task_list( &$title , $useCache = false ) { # Checked for HTML and MySQL insertion attacks
 			global $wgTaskExtensionTasksCachedTitle , $wgTaskExtensionTasksCache ;
-			if ( $useCache AND $wgTaskExtensionTasksCachedTitle == $title->getPrefixedText() ) {
+			if( $useCache && $wgTaskExtensionTasksCachedTitle == $title->getPrefixedText() ) {
 				# Return the cache, thus skip the query and increase shareholder value
-				return $wgTaskExtensionTasksCache ;
+				return $wgTaskExtensionTasksCache;
 			}
 			$tasks = $this->get_tasks_for_page( $title );
 			$ret = array();
@@ -979,10 +992,10 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				}
 			}
 			ksort( $ret );
-			if ( $useCache ) {
+			if( $useCache ) {
 				# Store results in cache for further use
-				$wgTaskExtensionTasksCache = $ret ;
-				$wgTaskExtensionTasksCachedTitle = $title->getPrefixedText() ;
+				$wgTaskExtensionTasksCache = $ret;
+				$wgTaskExtensionTasksCachedTitle = $title->getPrefixedText();
 			}
 			return $ret;
 		}
