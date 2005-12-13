@@ -104,11 +104,12 @@ function wfTasksAddActionText( &$actions ) { # Checked for HTML and MySQL insert
 * Text adding function
 */
 function wfTasksAddCache() { # Checked for HTML and MySQL insertion attacks
-	global $wgMessageCache, $wgTasksAddCache;
+	global $wgMessageCache, $wgTasksAddCache , $wgUserTogglesEn, $wgDefaultUserOptions;
 	if( $wgTasksAddCache ) {
 		return;
 	}
 	$wgTasksAddCache = true;
+	$wgUserTogglesEn[] = "show_task_comments" ;
 	$wgMessageCache->addMessages(
 		array(
 			'tasks_tab' => 'Tasks',
@@ -181,6 +182,8 @@ function wfTasksAddCache() { # Checked for HTML and MySQL insertion attacks
 			'tasks_logpage' => "Tasks log",
 			'tasks_logpagetext' => 'This is a log of changes to tasks',
 			'tasks_logentry' => 'For "[[$1]]"',
+			
+			'tog-show_task_comments' => 'Transclude task comments page.',
 		)
 	);
 }
@@ -490,6 +493,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		var $task_types_text; # e.g., 'cleanup' => 'Clean up'
 		var $creation_tasks; # e.g., ( 1, 2, 3 )
 		var $task_order = array () ; # e.g., 'delete' => 5
+		var $pagemode = "" ;
 	
 		/**
 		* Constructor
@@ -782,7 +786,28 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$out .= "<br/>" . $sk->makeLinkObj( $tdp, wfMsgHTML('tasks_discussion_page_link') );
 			$out .="</td>";
 			$out .= "</tr>";
+			
+			# Transclude comments page, if wanted
+			if ( $wgUser->getOption('show_task_comments') == 1 ) {
+				if ( $this->pagemode == "search" || $this->pagemode == "tasks_of_page" )
+					$out .= $this->transclude_comments ( $tdp , $show_page ? 5 : 4 ) ;
+			}
 			return $out;
+		}
+
+		/**
+		 * Returns the 
+		*/
+		function transclude_comments ( $title , $col_compensator ) {
+			if ( !$title->exists() ) return "" ; # Nothing to transclude
+			
+			global $wgOut ;
+			$art = new Article ( $title ) ;
+			$ret = $art->getContent ( false ) ;
+			$p = new Parser ;
+			$ret = $p->parse ( $ret , $title , $wgOut->mParserOptions , false ) ;
+			$ret = $ret->getText() ;
+			return "<tr><td id='task_transcluded_comment' colspan='" . $col_compensator . "'>{$ret}</td></tr>" ;
 		}
 
 		/**
@@ -1051,6 +1076,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$out = "";
 			$tasks = array();
 			$wgOut->setSubtitle( wfMsgHTML( 'tasks_title', $title->getPrefixedText() ) );
+			$this->pagemode = 'tasks_of_page' ;
 			
 			# Create from form
 			$out .= $this->create_from_form( $title );
@@ -1272,7 +1298,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 
 			# Search results
 			if( $wgRequest->getVal( 'doit' ) . $wgRequest->getVal( 'prev' ) . $wgRequest->getVal( 'next' ) != "" || $get_task_type > 0 ) {
-				# Did we search?
+				$this->pagemode = "search" ;
 				$search_tasks = array_keys( $task_type );
 				if( count( $task_type ) == 0 ) {
 					# No choice => search all
