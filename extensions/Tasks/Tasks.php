@@ -138,7 +138,14 @@ function wfTasksAddCache() { # Checked for HTML and MySQL insertion attacks
 			'tasks_see_page_tasks' => "(tasks of this page)",
 			'tasks_task_is_assigned' => "(assigned)",
 			'tasks_plain_text_only' => "(plain text only)",
+			'tasks_help_page' => "Tasks",
+			'tasks_help_page_link' => "?",
+			'tasks_help_separator' => "$2 | $1",
+			'tasks_more_like_it' => "more",
+
+			'tasks_task_types' => "1:cleanup:Cleanup|2:wikify:Wikify|3:rewrite:Rewrite|4:delete:Delete|5:create:Create|6:write:Write",
 			'tasks_significance_order' => "rewrite<delete",
+			'tasks_creation_tasks' => "5,6",
 			
 			'tasks_link_your_assignments' => "open assignments",
 			'tasks_see_your_assignments' => "You currently have $1 open assignments. See your $2.",
@@ -156,8 +163,6 @@ function wfTasksAddCache() { # Checked for HTML and MySQL insertion attacks
 			'tasks_ascending' => "Oldest first",
 			'tasks_search_limit' => "10",
 			
-			'tasks_creation_tasks' => "5,6",
-			'tasks_task_types' => "1:cleanup:Cleanup|2:wikify:Wikify|3:rewrite:Rewrite|4:delete:Delete|5:create:Create|6:write:Write",
 			'tasks_status_open' => "Open",
 			'tasks_status_assigned' => "Assigned",
 			'tasks_status_closed' => "Closed",
@@ -170,6 +175,7 @@ function wfTasksAddCache() { # Checked for HTML and MySQL insertion attacks
 			'tasks_action_assigned' => "Task \"$1\" assigned.",
 			'tasks_action_closed' => "Task \"$1\" closed.",
 			'tasks_action_wontfix' => "Won't fix task \"$1\".",
+			
 			'tasks_sign_delete' => "<b>They want it dead! Kaaaaaaaahn!</b>",
 			
 			'tasks_logpage' => "Tasks log",
@@ -227,8 +233,8 @@ function wfTaskExtensionHeaderHook( &$article ) { # Checked for HTML and MySQL i
 	$returnto = $wgTitle->getFullURL() ;
 	$link1 = $sk->makeLinkObj( $page_title );
 	$link2 = $sk->makeLinkObj( $page_title, wfMsgHTML( 'tasks_here' ), "action=tasks" );
-	$subtitle .= wfMsgHTML( 'tasks_discussion_page_for', $link1, $link2 );
-	$subtitle .= "<br />\n<table border='1' cellspacing='1' cellpadding='2' id='task_header_table'>\n" . 
+	$subtitle .= "<div id='task_header'>" . wfMsgForContent( 'tasks_discussion_page_for', $link1, $link2 ) . "</div>\n" ;
+	$subtitle .= "<table border='1' cellspacing='1' cellpadding='2' id='task_header_table'>\n" . 
 				"<tr>" . wfTaskExtensionGetTableHeader(false) . "</tr>\n";
 	$subtitle .= $st->get_task_table_row( $task, $page_title, false, $returnto );
 	$subtitle .= "</table>\n";
@@ -702,7 +708,18 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$out .= "<td valign='top' align='left' nowrap bgcolor='" . wfMsgHTML('tasks_status_bgcol_'.$this->status_types[$status]) . "'>";
 			$out .= "<b>" . $encType . "</b><br/><i>";
 			$out .= wfMsgHTML( 'tasks_status_' . $this->status_types[$status] );
-			$out .= "</i></td>";
+			$out .= "</i><br/>" ;
+			
+			# Additional info
+			$help_title = Title::makeTitleSafe( NS_HELP, wfMsgForContent('tasks_help_page') );
+			$help_title->mFragment = $encType ;
+			$ext1 = $sk->makeLinkObj( $help_title , wfMsgForContent('tasks_help_page_link') );
+			$more_title = Title::makeTitleSafe( NS_SPECIAL, "Tasks"); # This special page
+			$ext2 = $sk->makeLinkObj( $more_title , wfMsgForContent('tasks_more_like_it') , "task_type=".$task->task_type );
+			$out .= wfMsgForContent ( 'tasks_help_separator' , $ext1 , $ext2 ) ;
+			
+			
+			$out .= "</td>";
 			$out .= "<td align='left' valign='top' nowrap>";
 			$out .= wfMsgHTML( 'tasks_created_by', $sk->makeLinkObj( $cu, htmlentities( $task->task_user_text ) ) );
 			$out .= "<br/>{$ct}";
@@ -1238,6 +1255,12 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			}
 			$ascending = $wgRequest->getCheck( 'ascending' );
 			
+			$get_task_type = $wgRequest->getInt( 'task_type' , 0 ) ;
+			if ( count ( $task_type ) == 0 && $get_task_type > 0 ) {
+				$task_type = array() ;
+				$task_type[$get_task_type] = 1 ;
+			}
+			
 			if( !is_array( $status_type ) ) {
 				return;
 			}
@@ -1248,7 +1271,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$out .= "<form method='post' action=\"" . $wgTitle->escapeLocalURL() . "\">";
 
 			# Search results
-			if( $wgRequest->getVal( 'doit' ) . $wgRequest->getVal( 'prev' ) . $wgRequest->getVal( 'next' ) != "" ) {
+			if( $wgRequest->getVal( 'doit' ) . $wgRequest->getVal( 'prev' ) . $wgRequest->getVal( 'next' ) != "" || $get_task_type > 0 ) {
 				# Did we search?
 				$search_tasks = array_keys( $task_type );
 				if( count( $task_type ) == 0 ) {
