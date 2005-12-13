@@ -1,10 +1,10 @@
 <?php
 /*
 To activate, put something like this in your LocalSettings.php:
+	require_once( "extensions/Tasks/Tasks.php" );
 	$wgTasksNamespace = 200;
 	$wgExtraNamespaces[$wgTasksNamespace] = "Task";
 	$wgExtraNamespaces[$wgTasksNamespace+1] = "Task_Talk";
-	include ( "extensions/Tasks.php" );
 
 Also, you need to run the following SQL statement (with respect to your table prefix!):
 CREATE TABLE tasks (
@@ -32,6 +32,13 @@ Known bugs:
 */
 
 if( !defined( 'MEDIAWIKI' ) ) die();
+
+/**
+ * The namespace to use needs to be assigned in $wgExtraNamespaces also.
+ * Task discussion pages will go here...
+ * and... there's a talk namespace also. :P
+ */
+$wgTasksNamespace = null;
 
 # Integrating into the MediaWiki environment
 
@@ -439,44 +446,42 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		}
 		
 		/**
-		* Updates task_types and creation_tasks from wfMsg
-		*/
+		 * Updates task_types and creation_tasks from wfMsg
+		 * @fixme Provide localized display names for user's UI language
+		 */
 		function update_types() { # Checked for HTML and MySQL insertion attacks
 			wfTasksAddCache();
 			
 			$this->task_types = array();
-			$s = wfMsgHTML( 'tasks_task_types' ); # HTML safe
+			$s = wfMsgForContent( 'tasks_task_types' );
 			$s = explode( "|", $s );
-			foreach( $s as $l ) {
-				$l = explode( ":", trim( $l ), 3 );
-				if( count( $l ) != 3 ) {
+			foreach( $s as $line ) {
+				$bits = explode( ":", $line, 3 );
+				if( count( $bits ) != 3 ) {
 					# Invalid line
 					continue;
 				}
-				if( !is_numeric( $l[0] ) ) {
-					# First value needs to be a number
+				$keyNum = intval( $bits[0] );
+				$keyName = trim( $bits[1] );
+				$localName = trim( $bits[2] );
+				if( $keyNum < 1 ) {
+					wfDebug( "SpecialTasks::update_types: expected positive integer for key, got $keyNum\n" );
 					continue;
 				}
-				if( $l[0] < 1 ) {
-					# First value needs to be larger than zero
-					continue;
-				}
-				$this->task_types[trim($l[0])] = trim($l[1]);
-				$this->task_types_text[trim($l[1])] = trim($l[2]);
+				$this->task_types[$keyNum] = $keyName;
+				$this->task_types_text[$keyName] = $localName;
 			}
 			
 			$this->creation_tasks = array();
-			$s = wfMsgHTML( 'tasks_creation_tasks' );
+			$s = wfMsgForContent( 'tasks_creation_tasks' );
 			$s = explode( ",", $s );
-			foreach( $s as $l ) {
-				$l = trim( $l );
-				if( $l == "" ) {
+			foreach( $s as $line ) {
+				$keyNum = intval( $line );
+				if( $keyNum < 1 ) {
+					wfDebug( "SpecialTasks::update_types: expected positive integer for key in tasks_creation_tasks, got $keyNum\n" );
 					continue;
 				}
-				if( !is_numeric( $l ) ) {
-					continue;
-				}
-				$this->creation_tasks[] = trim( $l );
+				$this->creation_tasks[] = $keyNum;
 			}
 			
 		}
@@ -589,7 +594,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$ct = $wgContLang->timeanddate( $task->task_timestamp ); # Time object from string of digits
 			$cu = Title::makeTitleSafe( NS_USER, $task->task_user_text ); # Safe user name
 			$comment = htmlspecialchars( $task->task_comment ); # Safe user comment, no HTML allowed
-			$comment = str_replace( "\n", "<br/>", $comment ); # display newlines as they were in the edit box
+			$comment = nl2br( $comment ); # display newlines as they were in the edit box
 			$status = $task->task_status; # Integer
 			$tid = $task->task_id; # Integer
 			$ttype = $this->get_type_text( $this->get_task_type( $task->task_type ) ); # Will catch illegal types and wfDebug them
@@ -662,8 +667,9 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_reopen' ), "action=tasks&mode=reopen&taskid={$tid}{$returnto}" );
 				}
 				
-				if( count( $txt ) > 0 )
+				if( count( $txt ) > 0 ) {
 					$out .= "<br/>" . implode( " - ", $txt );
+				}
 
 			}
 			$tdp = $this->get_task_discussion_page( $task );
@@ -764,8 +770,10 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		}
 		
 		/**
-		* Returns the number for the status
-		*/
+		 * Returns the number for the status
+		 * @param string $status key
+		 * @return int
+		 */
 		function get_status_number( $status ) { # Checked for HTML and MySQL insertion attacks
 			foreach( $this->status_types as $k => $v ) {
 				if( $v == $status ) {
@@ -853,8 +861,8 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		}
 		
 		/**
-		* Returns a single task by its ID
-		*/
+		 * Returns a single task by its ID
+		 */
 		function get_task_from_id( $task_id ) { # Checked for HTML and MySQL insertion attacks
 			if( !is_numeric( $task_id ) ) {
 				# Paranoia
@@ -872,8 +880,8 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		}
 		
 		/**
-		* Sets the article ID (on page creation)
-		*/
+		 * Sets the article ID (on page creation)
+		 */
 		function set_new_article_id( &$title ) { # Checked for HTML and MySQL insertion attacks
 			$fname = "Tasks:set_new_article_id";
 			$dbw =& wfGetDB( DB_MASTER );
@@ -884,14 +892,15 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		}
 
 		/**
-		* Deletes all tasks associated with an article; done on article deletion
-		*/
-		function delete_all_tasks( &$title ) { # Checked for HTML and MySQL insertion attacks
+		 * Deletes all tasks associated with an article; done on article deletion
+		 * @fixme this is only used on page deletion at the moment; will all conditions be used?
+		 */
+		function delete_all_tasks( $title ) { # Checked for HTML and MySQL insertion attacks
 			$fname = "Tasks:delete_all_tasks";
-			if( $title->getArticleID() == 0 ) {
-				$conds = array( 'task_page_title' => $title->getPrefixedDBkey() );
-			} else {
+			if( $title->exists() ) {
 				$conds = array( 'task_page_id' => $title->getArticleID() );
+			} else {
+				$conds = array( 'task_page_title' => $title->getPrefixedDBkey() );
 			}
 			$dbw =& wfGetDB( DB_MASTER );
 			$dbw->delete( 'tasks',
