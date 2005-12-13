@@ -1,10 +1,15 @@
 <?php
 /*
 To activate, put something like this in your LocalSettings.php:
+	define( 'TASKS_CSS' , 'http://yourhost.com/name/wiki/extensions/Tasks/tasks.css' );
 	require_once( "extensions/Tasks/Tasks.php" );
 	$wgTasksNamespace = 200;
 	$wgExtraNamespaces[$wgTasksNamespace] = "Task";
 	$wgExtraNamespaces[$wgTasksNamespace+1] = "Task_Talk";
+
+The TASKS_CSS define is only needed if you use a 'non-standard' extensions
+directory.
+
 
 Also, you need to run the following SQL statement (with respect to your table prefix!):
 CREATE TABLE tasks (
@@ -25,12 +30,17 @@ CREATE TABLE tasks (
   KEY task_page_title (task_page_title)
 ) TYPE=InnoDB;
 
+
 Known bugs:
 * sidebar task list for Monobook only?
 
 */
 
 if( !defined( 'MEDIAWIKI' ) ) die();
+
+/** Default path to the stylesheet */
+global $wgScriptPath ;
+if( !defined( 'TASKS_CSS' ) ) define('TASKS_CSS', $wgScriptPath.'/extensions/Tasks/tasks.css' );
 
 /**
  * The namespace to use needs to be assigned in $wgExtraNamespaces also.
@@ -418,6 +428,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 	global $IP, $wgMessageCache;
 	wfTasksAddCache();
 
+	// FIXME : i18n
 	$wgMessageCache->addMessage( 'tasks', 'Tasks' );
 
 	require_once "$IP/includes/SpecialPage.php";
@@ -655,7 +666,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$out .= $sk->makeLinkObj( $title, wfMsgHTML('tasks_see_page_tasks'), "action=tasks" );
 				$out .= "</td>";
 			}
-			$out .= "<td valign='top' align='left' nowrap bgcolor='" . wfMsgHTML('tasks_status_bgcol_'.$this->status_types[$status]) . "'>";
+			$out .= "<td valign='top' align='left' nowrap class='tasks_status_bgcol_" . $this->status_types[$status] . "'>";
 			$out .= "<b>" . $encType . "</b><br/><i>";
 			$out .= wfMsgHTML( 'tasks_status_' . $this->status_types[$status] );
 			$out .= "</i><br/>" ;
@@ -1026,6 +1037,12 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			global $wgOut, $action, $wgRequest, $wgUser, $wgTitle;
 			$out = "";
 			$tasks = array();
+			$wgOut->addLink(array(
+				'rel'	=> 'stylesheet',
+				'type'	=> 'text/css',
+				'media'	=> 'screen,projection',
+				'href'	=> TASKS_CSS,
+			));
 			$wgOut->setSubtitle( wfMsgHTML( 'tasks_title', $title->getPrefixedText() ) );
 			$this->pagemode = 'tasks_of_page' ;
 			
@@ -1343,6 +1360,12 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$out .= "</form>";
 
 			# and ... out!
+			$wgOut->addLink(array(
+				'rel'	=> 'stylesheet',
+				'type'	=> 'text/css',
+				'media'	=> 'screen,projection',
+				'href'	=> TASKS_CSS,
+			));
 			$this->setHeaders();
 			$wgOut->addHtml( $out );
 		}
