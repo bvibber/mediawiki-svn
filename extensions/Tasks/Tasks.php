@@ -951,13 +951,17 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 
 		/**
 		 * Returns the title object for a task, and the task data through reference
+		 * If no task can be found, return ''
 		 * @param int $task_id
 		 * @param Task $task warning: out-param
 		 * @return Title
 		 */
 		function get_title_from_task( $task_id, &$task ) { # Checked for HTML and MySQL insertion attacks
 			$task = $this->get_task_from_id( $task_id );
-			if( $task->task_page_id == 0 ) { # Non-existing page
+
+			if( $task == '' ) {
+				return '';
+			} elseif ( $task->task_page_id == 0 ) { # Non-existing page
 				$title = Title::newFromDBkey( $task->task_page_title );
 			} else { # Existing page
 				$title = Title::newFromID( $task->task_page_id );
