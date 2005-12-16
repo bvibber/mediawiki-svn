@@ -281,7 +281,7 @@ Si tu es hic per error, simplemente clicca le button '''Retornar''' de tu naviga
 "previewnote"	=> "Rememora te que isto es solmente un previsualisation, tu modificationes ancora non ha essite salvate!",
 "previewconflict" => "Iste previsualisation reflecte le apparentia final del texto in le area de redaction superior
 si tu opta pro salvar lo.",
-"editing"		=> "Modification de $1",
+"editing"		=> "Modification de",
 "editconflict"	=> "Conflicto de edition: $1",
 "explainconflict" => "Alcuno ha modificate iste pagina post que tu
 ha comenciate a modificar lo.

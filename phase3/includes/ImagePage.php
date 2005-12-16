@@ -54,7 +54,7 @@ class ImagePage extends Article {
 				# Just need to set the right headers
 				$wgOut->setArticleFlag( true );
 				$wgOut->setRobotpolicy( 'index,follow' );
-				$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+				$wgOut->setPageTitleArray( $this->mTitle->getTitleArray() );
 				$wgOut->addMetaTags();
 				$this->viewUpdates();
 			}

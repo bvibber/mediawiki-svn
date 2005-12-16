@@ -488,8 +488,9 @@ class Validation {
 		
 		# Output
 		$title = $article->getTitle();
-		$title = $title->getPrefixedText();
-		$wgOut->setPageTitle( wfMsg( 'val_rev_for', $title ) );
+		$titlearray = $title->getTitleArray();
+		$titlearray['actionprefix']=wfMsg('val_rev_for');
+		$wgOut->setPageTitleArray( $titlearray );
 		foreach( $this->voteCache as $x => $y ) {
 			$ret .= $this->getRevisionForm( $article, $x, $y, $x == $ts );
 			$ret .= "<br/>\n";
@@ -579,7 +580,9 @@ class Validation {
 
 		$sk = $wgUser->getSkin();
 		$title = $article->getTitle();
-		$wgOut->setPageTitle( str_replace( '$1', $title->getPrefixedText(), wfMsg( 'val_validation_of' ) ) );
+		$titlearray = $title->getTitleArray();
+		$titlearray['actionprefix'] = wfMsg('val_validation_of');
+		$wgOut->setPageTitleArray( $titlearray );
 		
 		$data = array();
 		$users = array();
@@ -651,7 +654,9 @@ class Validation {
 		if ( $this->getNoTopicsWarning() ) return "" ;
 
 		$title = $article->getTitle();
-		$wgOut->setPageTitle( wfMsg( 'val_validation_of', $title->getPrefixedText() ) );
+		$titlearray = $title->getTitleArray();
+		$titlearray['actionprefix']=wfMsg('val_validation_of');
+		$wgOut->setPageTitleArray( $titlearray );
 		
 		$offset = $wgRequest->getVal ( "offset" , 0 ) ; 
 		$limit = $wgRequest->getVal ( "limit" , 25 ) ; 

@@ -605,10 +605,55 @@ END;
 	}
 
 	function pageTitle() {
-		global $wgOut, $wgTitle, $wgUser;
 
-		$s = '<h1 class="pagetitle">' . htmlspecialchars( $wgOut->getPageTitle() ) . '</h1>';
+		$s = '<h1 class="pagetitle">' . $this->getFormattedPageTitle() . '</h1>';
 		return $s;
+	}
+
+	/**
+	 * Return a title made of its individual components, formatted
+	 * with proper CSS classifications.
+	 *
+	 * @return The formatted title. Unsafe strings are HTML-escaped.
+	 */		
+	function getFormattedPageTitle() {
+		global $wgOut;
+		$titlearray=$wgOut->getPageTitle();
+		$valid_keys=$wgOut->getValidTitleKeys();
+		foreach($valid_keys as $valid_key) {
+			$varname='title_'.$valid_key;
+			$$varname=null;
+		}
+		foreach($titlearray as $key=>$titlepart) {
+			$varname='title_'.$key;
+			$$varname=$titlepart;
+			if(($key=="namespace" || $key=="namespace2") && !empty($titlepart)) {
+				$$varname.=':';
+				$this->spanText($$varname,'titleNamespace');
+			} elseif($key=="mainpart" || $key=="mainpart2") {
+				$this->spanText($$varname,'titleMainpart');
+			} elseif($key=="actionsuffix") {
+				$$varname=' '.$$varname;
+				$$varname=htmlspecialchars($$varname);
+				$this->spanText($$varname,'titleSuffix');
+			} elseif($key=="actionprefix") {
+				$$varname=$$varname.' ';
+				$$varname=htmlspecialchars($$varname);
+				$this->spanText($$varname,'titlePrefix');
+
+			}			
+		}
+		if(!is_null($title_namespace2)) {
+			# Diff across two pages
+			$pagetitle=$title_namespace.$title_mainpart.', '. $title_namespace2.$title_mainpart2;
+		} else {
+			$pagetitle=$title_actionprefix.$title_namespace.$title_mainpart.$title_actionsuffix;
+		}
+		return $pagetitle;
+	}
+
+	function spanText(&$text, $class) {
+		$text="<span class='$class'>$text</span>";
 	}
 
 	function pageSubtitle() {

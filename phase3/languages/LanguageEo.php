@@ -323,9 +323,9 @@ bonvolu [[Special:Userlogin|kreu konton aŭ ensalutu]].',
 'previewnote'	=> 'Memoru, ke ĉi tio estas nur antaŭrigardo kaj ne jam konservita!',
 'previewconflict' => 'La jena antaŭrigardo montras la tekston el la supra tekstujo,
 kiel ĝi aperos se vi elektos konservi la paĝon.', #FIXME
-'editing'		=> 'Redaktante $1',
-'editingsection'	=> 'Redaktante $1 (sekcion)',
-'editingcomment'	=> 'Redaktante $1 (komenton)',
+'editing'		=> 'Redaktante',
+'editingsection'=>'(sekcion)',
+'editingcomment'=>'(komenton)',
 'editconflict'	=> 'Redakta konflikto: $1',
 'explainconflict' => 'Iu alia ŝanĝis la paĝon post kiam vi ekredaktis.
 La supra tekstujo enhavas la aktualan tekston de la artikolo.

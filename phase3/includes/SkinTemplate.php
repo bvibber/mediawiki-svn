@@ -194,7 +194,12 @@ class SkinTemplate extends Skin {
 		wfProfileOut( "$fname-stuff" );
 
 		wfProfileIn( "$fname-stuff2" );
-		$tpl->set( 'title', $wgOut->getPageTitle() );
+		$titlearray=$wgOut->getPageTitle();
+		# If the skin wants to do custom stuff on the title parts
+		foreach($titlearray as $titlekey=>$titlepart) {
+			$tpl->set('title_'.$titlekey,$titlepart);
+		}
+		$tpl->set('title',$this->getFormattedPageTitle());
 		$tpl->set( 'pagetitle', $wgOut->getHTMLTitle() );
 
 		$tpl->setRef( "thispage", $this->thispage );

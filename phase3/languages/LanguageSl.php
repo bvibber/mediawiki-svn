@@ -274,7 +274,7 @@ Za izdelavo strani, začnite vnašati besedilo v spodnjo škatlo
 "note"			=> "<strong>Opomba:</strong> ",
 "previewnote"	        => "Zapomnite si, da je to le predpregled in stran še ni bila shranjena!",
 "previewconflict"       => "Ta predpregled kaže besedilo v zgornjem predelu urejevanja besedila kakor se bo pojavilo, če se ga odločite shraniti.",
-"editing"		=> "Urejevanje $1",
+"editing"		=> "Urejevanje",
 "editconflict"	        => "Navzkrižje urejevanja: $1",
 "explainconflict"       => "Nekdo je spremenil to stran od takrat, ko ste jo vi začeli urejevati.
 Zgodnji predel besedila vsebuje besedilo strani, ki trenutno obstaja.

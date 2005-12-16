@@ -351,8 +351,8 @@ nie są skierowane do Ciebie, [[Specjalna:Userlogin|utwórz proszę konto i/albo
 "previewconflict" => "Wersja podglądana odnosi się do tekstu
 z górnego pola edycji. Tak będzie wyglądać strona jeśli zdecydujesz się ją zapisać.",
 "editing" => "Edytujesz \"$1\"",
-"editingsection" => "Edytujesz \"$1\" (fragment)",
-"editingcomment" => "Edytujesz \"$1\" (komentarz)",
+"editingsection"=>"(fragment)",
+"editingcomment"=>"(komentarz)",
 "editconflict" => "Konflikt edycji: $1",
 "explainconflict" => "Ktoś zdążył wprowadzić swoją wersję artykułu
 w trakcie Twojej edycji.

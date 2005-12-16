@@ -379,11 +379,11 @@ to confirm that the account is actually yours.', */
 'edithelp' => 'Editatzeko laguntza',
 'edithelppage' => 'Wikipedia:Editatzeko laguntza',
 'editing' => '"$1" editatzen',
-#'editingcomment' => 'Editing $1 (comment)',
+#'editingcomment'=>'(comment)',
 /* 'editingold' => '<strong>WARNING: You are editing an out-of-date
 revision of this page.
 If you save it, any changes made since this revision will be lost.</strong>', */
-#'editingsection' => 'Editing $1 (section)',
+#'editingsection'=>'(section)',
 'editsection' => 'editatu',
 'editthispage' => 'Orria editatu',
 #'editusergroup' => 'Edit User Groups',

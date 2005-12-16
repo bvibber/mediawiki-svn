@@ -13,7 +13,7 @@ class LanguageConverter {
 	var $mVariants, $mVariantFallbacks;
 	var $mTablesLoaded = false;
 	var $mTables;
-	var $mTitleDisplay='';
+	var $mTitleDisplay=array();
 	var $mDoTitleConvert=true, $mDoContentConvert=true;
 	var $mCacheKey;
 	var $mLangObj;
@@ -185,10 +185,12 @@ class LanguageConverter {
      *
      * @param string $text text to be converted
      * @param bool $isTitle whether this conversion is for the article title
+     * @param string $titleKey which part of the title is being converted
+     *
      * @return string converted text
      * @access public
      */
-	function convert( $text , $isTitle=false) {
+	function convert( $text, $isTitle, $titleKey='' ) {
 		global $wgDisableLangConversion;
 		global $wgTitle;
 
@@ -216,11 +218,11 @@ class LanguageConverter {
 
 		if( $isTitle ) {
 			if( !$this->mDoTitleConvert ) {
-				$this->mTitleDisplay = $text;
+				$this->mTitleDisplay[$titleKey] = $text;
 				return $text;
 			}
-			if( !empty($this->mTitleDisplay))
-				return $this->mTitleDisplay;
+			if( array_key_exists($titleKey,$this->mTitleDisplay) && !empty($this->mTitleDisplay[$titleKey]))
+				return $this->mTitleDisplay[$titleKey];
 
 			global $wgRequest;
 			$isredir = $wgRequest->getText( 'redirect', 'yes' );
@@ -229,8 +231,8 @@ class LanguageConverter {
 				return $text;
 			}
 			else {
-				$this->mTitleDisplay = $this->autoConvert($text);
-				return $this->mTitleDisplay;
+				$this->mTitleDisplay[$titleKey] = $this->autoConvert($text);
+				return $this->mTitleDisplay[$titleKey];
 			}
 		}
 
@@ -238,7 +240,7 @@ class LanguageConverter {
 			return $text;
 
 		$plang = $this->getPreferredVariant();
-		$fallback = $this->mVariantFallbacks[$plang];
+		$fallback = array_key_exists($plang, $this->mVariantFallbacks) ? $this->mVariantFallbacks[$plang] : null;
 
 		$tarray = explode($this->mMarkup['begin'], $text);
 		$tfirst = array_shift($tarray);

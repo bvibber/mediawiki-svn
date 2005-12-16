@@ -441,9 +441,9 @@ dat disse Kommentaren nich an di richt sünd, denn [[Special:Userlogin|mell di d
 'note'                          => '<strong>Henwies:</strong> ',
 'previewnote'                   => 'Dit is blots en Vörschau, de Siet is noch nich spiekert!',
 'previewconflict'        => 'Disse Vörschau wiest den Inholt vun dat Textfeld baven; so warrt de Siet utseihn, wenn du nu spiekerst.',
-'editing'                       => 'Ännern vun $1',
-'editingsection'                => 'Ännern vun $1 (Afsatz)',
-'editingcomment'                => 'Ännern vun $1 (Kommentar)',
+'editing'                       => 'Ännern vun',
+'editingsection'=>'(Afsatz)',
+'editingcomment'=>'(Kommentar)',
 'editconflict'            => 'Konflikt bi dat Bearbeiden: $1',
 'explainconflict'        => 'En anner Bruker hett disse Siet ännert, no de Tied dat du anfungen hest, de Siet to bearbeiden.
 Dat Textfeld baven wiest de aktuelle Siet.

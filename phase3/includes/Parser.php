@@ -3674,7 +3674,7 @@ class ParserOutput
 	var $mTitleText; # title text of the chosen language variant
 
 	function ParserOutput( $text = '', $languageLinks = array(), $categoryLinks = array(),
-		$containsOldMagic = false, $titletext = '' )
+		$containsOldMagic = false, $titletext = array() )
 	{
 		$this->mText = $text;
 		$this->mLanguageLinks = $languageLinks;

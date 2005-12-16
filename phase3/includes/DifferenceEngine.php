@@ -120,7 +120,7 @@ CONTROL;
 
 		$wgOut->setArticleFlag( false );
 		if ( ! $this->loadRevisionData() ) {
-			$wgOut->setPagetitle( wfMsg( 'errorpagetitle' ) );
+			$wgOut->setPagetitle( wfMsg( 'errorpagetitle' ));
 			$wgOut->addWikitext( $mtext );
 			wfProfileOut( $fname );
 			return;
@@ -134,9 +134,16 @@ CONTROL;
 		$oldTitle = $this->mOldPage->getPrefixedText();
 		$newTitle = $this->mNewPage->getPrefixedText();
 		if( $oldTitle == $newTitle ) {
-			$wgOut->setPageTitle( $newTitle );
+			$wgOut->setPageTitleArray ( $this->mOldPage->getTitleArray() );
 		} else {
-			$wgOut->setPageTitle( $oldTitle . ', ' . $newTitle );
+			# Diffing across pages - the skin can show the titles
+			# side by side.
+			$wgOut->setPageTitleArray ( array(
+			  'namespace'=>$this->mOldPage->getFormattedNsText(),
+			  'mainpart' =>$this->mOldPage->getText(),
+			  'namespace2'=>$this->mNewPage->getFormattedNsText(),
+			  'mainpart2'=>$this->mNewPage->getText()
+			) );
 		}
 		$wgOut->setSubtitle( wfMsg( 'difference' ) );
 		$wgOut->setRobotpolicy( 'noindex,follow' );
@@ -232,7 +239,7 @@ CONTROL;
 			$t = $this->mTitle->getPrefixedText() . " (Diff: {$this->mOldid}, " .
 			  "{$this->mNewid})";
 			$mtext = wfMsg( 'missingarticle', "<nowiki>$t</nowiki>" );
-			$wgOut->setPagetitle( wfMsg( 'errorpagetitle' ) );
+			$wgOut->setPageTitle( wfMsg( 'errorpagetitle' ) );
 			$wgOut->addWikitext( $mtext );
 			wfProfileOut( $fname );
 			return;

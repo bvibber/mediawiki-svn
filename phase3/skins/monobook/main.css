@@ -248,6 +248,20 @@ span.subpages {
     margin-bottom: .1em;
 }
 
+.titleNamespace {
+    color:#333333;
+    font-size:85%;
+    font-style:italic;
+}
+.titleSuffix {
+    color:#333333;
+    font-size:85%;
+}
+.titlePrefix {
+    color:#333333;
+    font-size:85%;
+}
+
 /* user notification thing */
 .usermessage {
     background-color: #ffce7b;

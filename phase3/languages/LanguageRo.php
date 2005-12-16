@@ -311,7 +311,7 @@ Fiecare rând care conţine legături către prima sau a doua redirijare, ca şi
 'editcurrent' => "Editarea versiunii curente a acestei pagini",
 'edithelp' => "Ajutor pentru editare",
 'edithelppage' => "Project:Cum_să_editezi_o_pagină",
-'editing' => "Editare $1",
+'editing' => "Editare",
 'editingold' => "<strong>ATENŢIE! Editezi o variantă mai veche a acestei pagini! Orice modificări care s-au făcut de la această versiune şi până la cea curentă se vor pierde!</strong>",
 'editsection' => "editează",
 'editthispage' => "Editează pagina",

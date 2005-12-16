@@ -370,9 +370,9 @@ Os ydych yma trwy camgymeriad, cliciwch eich botwm '''nol'''.",
 "note"	=> "<strong>Sylwch:</strong> ",
 "previewnote" => "Cofiwch blaenwelediad ydi hwn, a dydi e ddim wedi cael eu chadw!",
 "previewconflict" => "Mae blaenwelediad hwn yn dangos y testun yn yr ardal golygu uchaf, fel y fydd hi'n edrych os dewyswch chi arbed.",
-"editing" => "Yn golygu $1",
-"editingsection" => "Yn golygu $1 (rhan)",
-"editingcomment" => "Yn golygu $1 (esboniad)",
+"editing" => "Yn golygu",
+"editingsection"=>"(rhan)",
+"editingcomment"=>"(esboniad)",
 "editconflict" => "Croestynnu golygyddol: $1",
 "explainconflict" => "Mae rhywun arall wedi newid y tudalen hon ers i chi dechrau golygu hi. Mae'r ardal testun uchaf yn cynnwys testun y tudalen fel y mae hi rwan. Mae eich newidiadau yn ddangos yn yr ardal testun isaf.
 Fydd rhaid i chi ymsoddi eich newidiadau i mewn i'r testun sydd mewn bod.

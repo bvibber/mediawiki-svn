@@ -326,7 +326,7 @@ Anledning är att:<br />''$2''<p>Ta kontakt med $1 eller en av de andra
 "previewconflict"       => "Den här förhandsvisningen är resultatet av den
 redigerbara texten ovanför,
 så som det kommer att se ut om du väljer att spara.",
-"editing"               => "Redigerar $1",
+"editing"               => "Redigerar",
 "editconflict"          => "Redigeringskonflikt: $1",
 "explainconflict"       => "Någon har ändrat den här sidan efter att du började att redigera den.
 Det översta text blocket innehåller den nuvarande texten.

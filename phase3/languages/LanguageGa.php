@@ -603,7 +603,7 @@ níor sábháladh é go fóill!'''",
 "previewnote"   => "Cuimhnigh nach bhfuil seo ach réamhamharc, agus nach sábháladh é fós!",
 "previewconflict" => "San réamhamharc seo, feachann tú an téacs dé réir an eagarbhosca
 thuas mar a taispeáinfear é má sábháilfear é.",
-"editing"       => "Ag athrú $1",
+"editing"       => "Ag athrú",
 "editconflict"  => "Coimhlint athraithe: $1",
 "explainconflict" => "D'athraigh duine eile an leathanach seo ó shin a thosaigh tú ag athrú é.
 Sa bhosca seo thuas feiceann tú téacs an leathanaigh mar atá sé faoi láthair.

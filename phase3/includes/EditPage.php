@@ -651,22 +651,22 @@ class EditPage {
 
 		# Enabled article-related sidebar, toplinks, etc.
 		$wgOut->setArticleRelated( true );
-
+		$titlearray=$this->mTitle->getTitleArray();
 		if ( $this->isConflict ) {
-			$s = wfMsg( 'editconflict', $this->mTitle->getPrefixedText() );
-			$wgOut->setPageTitle( $s );
+			$titlearray['actionprefix']=wfMsg('editconflict');
+			$wgOut->setPageTitleArray($titlearray);
 			$wgOut->addWikiText( wfMsg( 'explainconflict' ) );
 
 			$this->textbox2 = $this->textbox1;
 			$this->textbox1 = $this->mArticle->getContent( true );
 			$this->edittime = $this->mArticle->getTimestamp();
 		} else {
-
+			$titlearray['actionprefix']=wfMsg('editing');
 			if( $this->section != '' ) {
 				if( $this->section == 'new' ) {
-					$s = wfMsg('editingcomment', $this->mTitle->getPrefixedText() );
+					$titlearray['actionsuffix']= wfMsg('editingcomment');
 				} else {
-					$s = wfMsg('editingsection', $this->mTitle->getPrefixedText() );
+					$titlearray['actionsuffix']=wfMsg('editingsection');
 					if( !$this->preview && !$this->diff ) {
 						preg_match( "/^(=+)(.+)\\1/mi",
 							$this->textbox1,
@@ -676,10 +676,8 @@ class EditPage {
 						}
 					}					
 				}
-			} else {
-				$s = wfMsg( 'editing', $this->mTitle->getPrefixedText() );
-			}
-			$wgOut->setPageTitle( $s );
+			} 
+			$wgOut->setPageTitleArray( $titlearray );
 			if ( !$this->checkUnicodeCompliantBrowser() ) {
 				$this->mArticle->setOldSubtitle();
 				$wgOut->addWikiText( wfMsg( 'nonunicodebrowser') );

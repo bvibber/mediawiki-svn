@@ -26,7 +26,7 @@ function wfSpecialWhatlinkshere($par = NULL) {
 		$wgOut->errorpage( 'notargettitle', 'notargettext' );
 		return;
 	}
-	$wgOut->setPagetitle( $nt->getPrefixedText() );
+	$wgOut->setPagetitle( $nt->getTitleArray() );
 	$wgOut->setSubtitle( wfMsg( 'linklistsub' ) );
 
 	$sk = $wgUser->getSkin();

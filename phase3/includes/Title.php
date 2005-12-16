@@ -551,6 +551,18 @@ class Title {
 		global $wgNamespaces;
 		return $wgNamespaces[$this->mNamespace]->getDefaultName();
 	}
+
+	/**
+	 *
+	 * Get the namespace text with underscores replaced with spaces.
+	 * @return string
+	 * @access public
+	 */
+	function getFormattedNsText() {
+		global $wgNamespaces;
+		return $wgNamespaces[$this->mNamespace]->getFormattedDefaultName();
+	}
+
 	/**
 	 * Get the namespace text of the subject (rather than talk) page
 	 * @return string
@@ -1179,11 +1191,11 @@ class Title {
 	 * Prefix some arbitrary text with the namespace or interwiki prefix
 	 * of this object
 	 *
-	 * @param string $name the text
+	 * @param string $name the text (optional)
 	 * @return string the prefixed text
 	 * @access private
 	 */
-	/* private */ function prefix( $name ) {
+	/* private */ function prefix( $name='' ) {
 		global $wgNamespaces;
 
 		$p = '';
@@ -1201,6 +1213,17 @@ class Title {
 			}
 		}
 		return $p . $name;
+	}
+
+	/** A convenience function that returns the title as an array
+	    consisting of a namespace prefix and the main part, as used
+	    by OutputPage::setPageTitle. 
+	*/
+	function getTitleArray() {
+		return array(
+		  'namespace'=>$this->getFormattedNsText(),
+		  'mainpart'=>$this->getText()
+		);
 	}
 
 	/**

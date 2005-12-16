@@ -761,10 +761,10 @@ Please try again. If it still doesn\'t work, try logging out and logging back in
 'previewconflict' => 'This preview reflects the text in the upper
 text editing area as it will appear if you choose to save.',
 'importing'		=> "Importing $1",
-'editing'		=> "Editing $1",
-'editingsection'		=> "Editing $1 (section)",
-'editingcomment'		=> "Editing $1 (comment)",
-'editconflict'	=> 'Edit conflict: $1',
+'editing'		=> "Editing",
+'editingsection'=>"(section)",
+'editingcomment'=>"(comment)",
+'editconflict'	=> 'Edit conflict:',
 'explainconflict' => "Someone else has changed this page since you
 started editing it.
 The upper text area contains the page text as it currently exists.
@@ -1558,10 +1558,10 @@ Type the name of the user in the box and press the button to make the user an ad
 'val_show_my_ratings' => 'Show my validations',
 'val_revision_number' => 'Revision #$1',
 'val_warning' => '<b>Never, <i>ever</i>, change something here without <i>explicit</i> community consensus!</b>',
-'val_rev_for' => 'Revisions for $1',
+'val_rev_for' => 'Revisions for',
 'val_details_th_user' => 'User $1',
-'val_validation_of' => 'Validation of "$1"',
-'val_revision_of' => 'Revision of $1',
+'val_validation_of' => 'Validation of',
+'val_revision_of' => 'Revision of',
 'val_revision_changes_ok' => 'Your ratings have been stored!',
 'val_rev_stats' => 'See the validation statistics for "$1" <a href="$2">here</a>',
 'val_revision_stats_link' => 'details',
@@ -2305,7 +2305,7 @@ class fakeConverter {
 	function getPreferredVariant() {return $this->mLang->getCode(); }
 	function findVariantLink(&$l, &$n) {}
 	function getExtraHashOptions() {return '';}
-	function getParsedTitle() {return '';}
+	function getParsedTitle() {return array();}
 	function markNoConversion($text) {return $text;}
 	function convertCategoryKey( $key ) {return $key; }
 

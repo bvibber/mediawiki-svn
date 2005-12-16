@@ -696,8 +696,7 @@ class Article {
 
 		if ( !is_null( $diff ) ) {
 			require_once( 'DifferenceEngine.php' );
-			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
-
+			$wgOut->setPageTitleArray($this->mTitle->getTitleArray()); 
 			$de = new DifferenceEngine( $this->mTitle, $oldid, $diff, $rcid );
 			// DifferenceEngine directly fetched the revision:
 			$this->mRevIdFetched = $de->mNewid;
@@ -830,7 +829,7 @@ class Article {
 		/* title may have been set from the cache */
 		$t = $wgOut->getPageTitle();
 		if( empty( $t ) ) {
-			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+			$wgOut->setPageTitleArray( $this->mTitle->getTitleArray() );
 		}
 
 		# If we have been passed an &rcid= parameter, we want to give the user a
@@ -952,7 +951,7 @@ class Article {
 				"<input type=\"submit\" name=\"submit\" value=\"$button\" />\n" .
 				"</form>\n", $msg );
 
-			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+			$wgOut->setPageTitleArray( $this->mTitle->getTitleArray() );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 			$wgOut->addHTML( $msg );
 		}
@@ -1489,7 +1488,7 @@ class Article {
 		if ( !is_null ( $rcid ) )
 		{
 			RecentChange::markPatrolled( $rcid );
-			$wgOut->setPagetitle( wfMsg( 'markedaspatrolled' ) );
+			$wgOut->setPageTitle( wfMsg( 'markedaspatrolled' ) );
 			$wgOut->addWikiText( wfMsg( 'markedaspatrolledtext' ) );
 
 			$rcTitle = Title::makeTitle( NS_SPECIAL, 'Recentchanges' );
@@ -1553,7 +1552,7 @@ class Article {
 
 			wfRunHooks('WatchArticleComplete', array(&$wgUser, &$this));
 
-			$wgOut->setPagetitle( wfMsg( 'addedwatch' ) );
+			$wgOut->setPageTitle(wfMsg( 'addedwatch' ));
 			$wgOut->setRobotpolicy( 'noindex,follow' );
 
 			$link = $this->mTitle->getPrefixedText();
@@ -1588,7 +1587,7 @@ class Article {
 
 			wfRunHooks('UnwatchArticleComplete', array(&$wgUser, &$this));
 
-			$wgOut->setPagetitle( wfMsg( 'removedwatch' ) );
+			$wgOut->setPageTitle( wfMsg( 'removedwatch' ));
 			$wgOut->setRobotpolicy( 'noindex,follow' );
 
 			$link = $this->mTitle->getPrefixedText();
@@ -1689,7 +1688,7 @@ class Article {
 			$protcom = htmlspecialchars( wfMsg( 'unprotectcomment' ) );
 			$formaction = $this->mTitle->escapeLocalURL( 'action=unprotect' . $par );
 		} else {
-			$wgOut->setPageTitle( wfMsg( 'confirmprotect' ) );
+			$wgOut->setPageTitle( wfMsg( 'confirmprotect' ));
 			$wgOut->setSubtitle( wfMsg( 'protectsub', $sub ) );
 			$wgOut->addWikiText( wfMsg( 'confirmprotecttext' ) );
 			$moveonly = htmlspecialchars( wfMsg( 'protectmoveonly' ) );
@@ -1766,7 +1765,7 @@ class Article {
 		}
 
 		# Better double-check that it hasn't been deleted yet!
-		$wgOut->setPagetitle( wfMsg( 'confirmdelete' ) );
+		$wgOut->setPageTitle( wfMsg( 'confirmdelete' ) );
 		if( !$this->mTitle->exists() ) {
 			$wgOut->fatalError( wfMsg( 'cannotdelete' ) );
 			return;
@@ -1914,7 +1913,7 @@ class Article {
 			if ( $this->doDeleteArticle( $reason ) ) {
 				$deleted = $this->mTitle->getPrefixedText();
 
-				$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
+				$wgOut->setPageTitle(wfMsg('actioncomplete'));
 				$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
 				$loglink = '[['.$wgNamespaces[NS_SPECIAL]->getDefaultName().':Log/delete|' . wfMsg( 'deletionlog' ) . ']]';
@@ -2072,7 +2071,7 @@ class Article {
 
 		$from = str_replace( '_', ' ', $wgRequest->getVal( 'from' ) );
 		if( $from != $current->getUserText() ) {
-			$wgOut->setPageTitle( wfMsg('rollbackfailed') );
+			$wgOut->setPageTitle(wfMsg('rollbackfailed'));
 			$wgOut->addWikiText( wfMsg( 'alreadyrolled',
 				htmlspecialchars( $this->mTitle->getPrefixedText()),
 				htmlspecialchars( $from ),
@@ -2123,7 +2122,7 @@ class Article {
 		$target = Revision::newFromId( $s->rev_id );
 		$newcomment = wfMsgForContent( 'revertpage', $target->getUserText(), $from );
 
-		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
+		$wgOut->setPageTitle( wfMsg( 'actioncomplete' ) );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->addHTML( '<h2>' . htmlspecialchars( $newcomment ) . "</h2>\n<hr />\n" );
 
@@ -2482,7 +2481,7 @@ class Article {
 
 		$page = $this->mTitle->getSubjectPage();
 
-		$wgOut->setPagetitle( $page->getPrefixedText() );
+		$wgOut->setPageTitleArray( $page->getTitleArray() );
 		$wgOut->setSubtitle( wfMsg( 'infosubtitle' ));
 
 		# first, see if the page exists at all.

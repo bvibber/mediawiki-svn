@@ -642,9 +642,9 @@ Note que não poderá usar a funcionalidade \"Contactar utilizador\" se não pos
 Por favor tente novamente. Caso continue a não funcionar, tente sair e voltar a se ligar.</strong>',
 'previewconflict' => 'Esta previsão reflete o texto que está na área de edição acima e como ele aparecerá se você escolher salvar.',
 'importing'		=> "Importando $1",
-'editing'               => "Editando $1",
-'editingsection'                => "Editando $1 (secção)",
-'editingcomment'                => "Editando $1 (comentário)",
+'editing'               => "Editando",
+'editingsection'=>"(secção)",
+'editingcomment'=>"(comentário)",
 'editconflict'  => 'Conflito de edição: $1',
 'explainconflict' => "Alguém mudou a página enquanto você a estava editando.<br />
 A área de texto acima mostra o texto original.

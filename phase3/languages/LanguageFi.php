@@ -468,7 +468,7 @@ Sivun lähdekoodi:',
 'note'                => 'Huomautus: ', // TODO: NO WIKI MARKUP
 'previewnote'         => '<strong>Tämä on vasta sivun esikatselu. Sivua ei ole vielä tallennettu!</strong>',
 'previewconflict'     => 'Tämä esikatselu näyttää miltä muokkausalueella oleva teksti näyttää tallennettuna.',
-'editing'             => 'Muokataan sivua $1',
+'editing'             => 'Muokataan sivua',
 'editingsection'      => 'Muokataan osiota sivusta $1',
 'editingcomment'      => 'Muokataan kommenttia sivulla $1',
 'editconflict'        => 'Päällekkäinen muokkaus: $1',

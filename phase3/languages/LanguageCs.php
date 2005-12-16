@@ -505,9 +505,9 @@ okénko. Tento problém mít nebudete, pokud budete klikat jen na modré odkazy.
 'note'			=> '<strong>Poznámka:</strong>&nbsp;', #FIXME: Where does this come from?
 'previewnote'   => 'Pamatujte, že toto je pouze náhled, ne uložení!',
 'previewconflict' => 'Tento náhled ukazuje text tak, jak bude vypadat po uložení stránky.', #FIXME
-'editing'               => 'Editace stránky $1',
-'editingsection'		=> 'Editace stránky $1 (část)',
-'editingcomment'		=> 'Editace stránky $1 (komentář)',
+'editing'               => 'Editace stránky',
+'editingsection'=>'(část)',
+'editingcomment'=>'(komentář)',
 'editconflict'  => 'Editační konflikt: $1',
 'explainconflict' => 'Někdo změnil stránku po započetí vaší editace. Výše vidíte aktuální text článku. Vaše změny jsou uvedeny dole. Musíte sloučit své změny se stávajícím článkem. <b>Pouze</b> výše uvedený text zůstane uchován po kliknutí na „Uložit“. <br />',
 'yourtext'              => 'Váš text',

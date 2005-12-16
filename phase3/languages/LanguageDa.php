@@ -495,9 +495,9 @@ gemt endnu!",
 "previewconflict" => "Denne forhåndsvisning er resultatet af den
 redigérbare tekst ovenfor,
 sådan vil det komme til at se ud hvis du vælger at gemme teksten.",
-"editing"		=> "Redigerer $1",
-"editingsection"	=> "Redigerer $1 (afsnit)",
-"editingcomment"	=> "Redigerer $1 (kommentar)",
+"editing"		=> "Redigerer",
+"editingsection"=>"(afsnit)",
+"editingcomment"=>"(kommentar)",
 "editconflict"	=> "Redigeringskonflikt: $1",
 "explainconflict" => "Nogen har ændret denne side, efter du
 startede på at redigere den.

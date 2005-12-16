@@ -429,9 +429,9 @@ Als Grund wurde angegeben:<br />$2<p>Bitte kontaktieren Sie den Administrator, u
 "note"			=> "<strong>Hinweis:</strong> ",
 "previewnote"	=> "Dies ist nur eine Vorschau, der Artikel wurde noch nicht gespeichert!",
 "previewconflict" => "Diese Vorschau gibt den Inhalt des oberen Textfeldes wieder; so wird der Artikel aussehen, wenn Sie jetzt speichern.",
-"editing"		=> "Bearbeiten von $1",
-"editingsection"	=> "Bearbeiten von $1 (Absatz)",
-"editingcomment"	=> "Bearbeiten von $1 (Kommentar)",
+"editing"		=> "Bearbeiten von",
+"editingsection"=>"(Absatz)",
+"editingcomment"=>"(Kommentar)",
 "editconflict"	=> "Bearbeitungs-Konflikt: $1",
 "explainconflict" => "Jemand anders hat diesen Artikel geändert, nachdem Sie angefangen haben, ihn zu bearbeiten.
 Das obere Textfeld enthält den aktuellen Artikel.

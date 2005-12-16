@@ -346,7 +346,7 @@ to confirm that the account is actually yours.', */
 'editingold' => '<strong>HÎŞYAR: Tu ser revîsyoneke kevn a vê rûpelê dixebitî.
 Eger tu qeyd bikî, hemû guhertinên ji vê revîzyonê piştre winda dibin.
 </strong>',
-'editingsection' => 'Tê guherandin: $1 (beş)',
+'editingsection'=>'(beş)',
 'editsection' => 'biguherîne',
 'editthispage' => 'Vê rûpelê biguherîne',
 #'editusergroup' => 'Edit User Groups',

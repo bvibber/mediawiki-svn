@@ -486,9 +486,9 @@ Vaša IP adresa je $3. Molimo vas da je spomenete u porukama o ovom predmetu.",
 stranica još nije snimljena!",
 "previewconflict"       => "Ovaj pregled odražava stanje u gornjem polju za unos koje će biti sačuvano
 ako pritisnete \"Sačuvaj stranicu\".",
-"editing"		=> "Uređujete $1",
-'editingsection'		=> "Uređujete $1 (odlomak)",
-'editingcomment'		=> "Uređujete $1 (komentar)", 
+"editing"		=> "Uređujete",
+'editingsection'=>"(odlomak)",
+'editingcomment'=>"(komentar)", 
 "editconflict"	        => "Istovremeno uređivanje: $1",
 "explainconflict"       => "Netko je u međuvremenu promijenio stranicu. Gornje polje sadrži sadašnji tekst stranice.
 U donjem polju prikazane su vaše promjene. Morat ćete unijeti vaše promjene u sadašnji tekst. <b>Samo</b> će tekst
