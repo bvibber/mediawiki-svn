@@ -366,7 +366,7 @@ gombját.",
 "previewnote"	=> "Ne felejtsd el, hogy ez csak egy előnézet, és nincs elmentve!",
 "previewconflict" => "Ez az előnézet a felső szerkesztőablakban levő
 szövegnek megfelelő képet mutatja, ahogy az elmentés után kinézne.",
-"editing"		=> "$1 szerkesztés alatt",
+"editing"		=> "Szerkesztés alatt",
 "editingsection"=>"(szakasz)",
 "editingcomment"=>"(üzenet)",
 "editconflict"	=> "Szerkesztési ütközés: $1",

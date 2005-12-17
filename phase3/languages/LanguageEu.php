@@ -378,7 +378,7 @@ to confirm that the account is actually yours.', */
 #'editgroup' => 'Edit Group',
 'edithelp' => 'Editatzeko laguntza',
 'edithelppage' => 'Wikipedia:Editatzeko laguntza',
-'editing' => '"$1" editatzen',
+'editing' => 'Editatzen',
 #'editingcomment'=>'(comment)',
 /* 'editingold' => '<strong>WARNING: You are editing an out-of-date
 revision of this page.

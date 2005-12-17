@@ -329,9 +329,9 @@ jo jo [[Wiki:Userlogin|oanmelde]], dat jo allinnich opmerkings foar josels krije
 "note"		=> "<strong>Opmerking:</strong> ",
 "previewnote"	=> "Tink der om dat dizze side noch net fêstlein is!",
 "previewconflict" => "Dizze side belanget allinich it earste bewurkingsfjild oan.",
-"editing"		=> "Bewurkje \"$1\"",
-"editing"		=> "Bewurkje \"$1\" (seksje)",
-"editing"		=> "Bewurkje \"$1\" (nije opmerking)",
+"editing"		=> "Bewurkje",
+"editingsection"		=> "(seksje)",
+"editingcomment"		=> "(nije opmerking)",
 "editconflict"	=> "Tagelyk bewurke: \"$1\"",
 "explainconflict" => "In oar hat de side feroare sûnt jo begûn binne mei it bewurkjen.
 It earste bewurkingsfjild is hoe't de tekst wilens wurde is.

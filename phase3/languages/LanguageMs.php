@@ -290,7 +290,7 @@ halaman baru.",
 "previewnote"	=> "Ingatan bahawa ini hanyalah paparan, belum disimpan lagi!", #"Remember that this is only a preview, and has not yet been saved!",
 "previewconflict" => "Paparan ini ada kaitan dengan teks pada bahagian atas dan
 akan terpapar apabila anda memilih untuk menyimpannya.",
-"editing"		=> "Menyunting $1", #"Editing",
+"editing"		=> "Menyunting", #"Editing",
 "editingsection"=>"(section)",
 "editingcomment"=>"(comment)",
 "editconflict"	=> "Sunting konflik", #"Edit conflict: $1",
