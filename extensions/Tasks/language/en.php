@@ -35,15 +35,19 @@ $wgMessageCache->addMessages(
 		'tasks_returnto' => "You will be redirected now. If you have not been redirected in a few seconds, click $1.",
 		'tasks_see_page_tasks' => "(tasks of this page)",
 		'tasks_task_is_assigned' => "(assigned)",
-		'tasks_plain_text_only' => "(plain text only)",
+		'tasks_plain_text_only' => "(plain text, 256 chars only)",
 		'tasks_help_page' => "Tasks",
 		'tasks_help_page_link' => "?",
 		'tasks_help_separator' => "$2 | $1",
 		'tasks_more_like_it' => "more",
 
-		'tasks_task_types' => "1:cleanup:Cleanup|2:wikify:Wikify|3:rewrite:Rewrite|4:delete:Delete|5:create:Create|6:write:Write",
+		'tasks_task_types' => "1:cleanup:Cleanup|2:wikify:Wikify|3:rewrite:Rewrite|4:delete:Delete|5:create:Create|6:write:Write|7:check:Check",
 		'tasks_significance_order' => "rewrite<delete",
 		'tasks_creation_tasks' => "5,6",
+		
+		'tasks_event_on_creation' => "check",
+		'tasks_event_on_creation_anon' => "check",
+		'tasks_on_creation_comment' => "Automatic task, generated on article creation",
 		
 		'tasks_link_your_assignments' => "open assignments",
 		'tasks_see_your_assignments' => "You currently have $1 open assignments. See your $2.",
