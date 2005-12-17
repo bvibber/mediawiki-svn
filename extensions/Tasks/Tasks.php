@@ -809,6 +809,11 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_reopen' ), "action=tasks&mode=reopen&taskid={$tid}{$returnto}" );
 				}
 				
+				if ( $wgUser->isSysop() ) {
+					# Delete
+					$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_delete' ), "action=tasks&mode=delete&taskid={$tid}{$returnto}" );
+				}
+				
 				if( count( $txt ) > 0 ) {
 					$out .= "<br/>" . implode( " - ", $txt );
 				}
@@ -900,6 +905,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$fname = "Tasks::check_mode";
 			$dbw =& wfGetDB( DB_MASTER );
 			if( $mode == 'assignme' ||  $mode == 'unassignme' ) {
+				# Assign or unassign an existing used to this task
 				$conditions = array( "task_id" => $taskid );
 				$user_id = $wgUser->getId() ; # Assign
 				if( $mode == 'unassignme' ) {
@@ -923,6 +929,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$log = new LogPage( 'tasks' );
 				$log->addEntry( 'tasks', $title, $act );
 			} elseif( $mode == 'close' || $mode == 'wontfix' || $mode == 'reopen' ) {
+				# Changing task status
 				if( $mode == 'reopen' ) {
 					$mode = "open";
 				}
@@ -931,6 +938,26 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				}
 				$new_status = $this->get_status_number( $mode );
 				$this->change_task_status( $taskid, $new_status );
+			} elseif( $mode == 'delete' ) {
+				# Delete this task; sysops only!
+				if ( $wgUser->isSysop() ) {
+					# OK, deleting
+					$dbw->delete( 'tasks',
+					array ( 'task_id' => $taskid ),
+					$fname );
+					
+					# Log task deletion
+					$act = wfMsgForContent ( 'tasks_action_delete' ) ;
+					$log = new LogPage( 'tasks' );
+					$log->addEntry( 'tasks', $title, $act );
+					$out .= wfMsgForContent ( 'tasks_task_was_deleted' ) ;
+				} else {
+					# No-no!
+					global $wgOut;
+					$wgOut->setPageTitle( wfMsg( 'tasks_no_task_delete_title' ) );
+					$wgOut->addWikiText( wfMsg( 'tasks_no_task_delete_text' ) );
+					return "" ;
+				}				
 			} else {
 				# Unknown mode
 				return "";
