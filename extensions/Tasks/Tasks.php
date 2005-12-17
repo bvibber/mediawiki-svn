@@ -42,6 +42,14 @@ if( !defined( 'MEDIAWIKI' ) ) die();
 global $wgScriptPath ;
 if( !defined( 'TASKS_CSS' ) ) define('TASKS_CSS', $wgScriptPath.'/extensions/Tasks/tasks.css' );
 
+/**@+ Task state constants */
+define( 'MW_TASK_INVALID',  0 );
+define( 'MW_TASK_OPEN',     1 );
+define( 'MW_TASK_ASSIGNED', 2 );
+define( 'MW_TASK_CLOSED',   3 );
+define( 'MW_TASK_WONTFIX',  4 );
+/**@-*/
+
 /**
  * The namespace to use needs to be assigned in $wgExtraNamespaces also.
  * Task discussion pages will go here...
@@ -343,10 +351,20 @@ function wfTasksExtensionArticleDeleteComplete( &$article, &$user, $reason ) { #
 }
 
 /**
-* Catch article creation, to close "create" tasks
-*/
+ * Catch article creation, to close "create" tasks, and optionally
+ * open a default task on new page creation.
+ *
+ * @param Article $article
+ * @param User $user
+ * @param string $text
+ * @param string $summary
+ * @param bool $isminor
+ * @param bool $watchthis
+ * @param mixed $something WHAT THE HELL IS THIS
+ * @return bool true to continue, false to cancel operation <- WHAT THE HELL
+ */
 function wfTasksExtensionArticleSaveComplete( &$article, &$user, $text, $summary, $isminor, $watchthis, $something ) { # Checked for HTML and MySQL insertion attacks
-	global $wgUser ;
+	global $wgUser;
 	wfTasksAddCache();
 	$t = $article->getTitle();
 	if( $t->isTalkPage() ) {
@@ -367,24 +385,26 @@ function wfTasksExtensionArticleSaveComplete( &$article, &$user, $text, $summary
 			# Not open
 			continue;
 		}
-		$st->change_task_status( $task->task_id, 3 ); # Mark as closed
+		$st->change_task_status( $task->task_id, MW_TASK_CLOSED );
 		$st->set_new_article_id( $t );
+		
+		$id = $t->getArticleId();
 		# Nothing more to do
-		break ;
+		break;
 	}
 	
 	# OPTIONALLY create a new task 
-	$on_create = $st->get_task_num ( wfMsg ( 'tasks_event_on_creation' ) ) ;
-	$on_create_anon = $st->get_task_num ( wfMsg ('tasks_event_on_creation_anon' ) ) ;
-	$add_task = 0 ;
-	if ( $wgUser->isAnon() AND $on_create_anon != 0 ) {
-		$add_task = $on_create_anon ;
-	} else if ( $wgUser->isLoggedIn() AND $on_create != 0 ) {
-		$add_task = $on_create ;
+	$on_create = $st->get_task_num( wfMsgForContent( 'tasks_event_on_creation' ) );
+	$on_create_anon = $st->get_task_num( wfMsgForContent( 'tasks_event_on_creation_anon' ) );
+	$add_task = MW_TASK_INVALID;
+	if( $wgUser->isAnon() && $on_create_anon != MW_TASK_INVALID ) {
+		$add_task = $on_create_anon;
+	} elseif( $wgUser->isLoggedIn() && $on_create != MW_TASK_INVALID ) {
+		$add_task = $on_create;
 	}
-	if ( $add_task != 0 ) {
-		$comment = htmlspecialchars ( wfMsgForContent ( 'tasks_on_creation_comment' ) ) ;
-		$st->add_new_task ( $t , $comment , $add_task ) ;
+	if( $add_task != MW_TASK_INVALID ) {
+		$comment = htmlspecialchars( wfMsgForContent( 'tasks_on_creation_comment' ) );
+		$st->add_new_task( $t, $comment, $add_task ) ;
 	}
 	
 	return false;
@@ -454,10 +474,10 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 	class SpecialTasks extends SpecialPage {
 	
 		var $status_types = array(
-			1 => 'open',
-			2 => 'assigned',
-			3 => 'closed',
-			4 => 'wontfix'
+			MW_TASK_OPEN     => 'open',
+			MW_TASK_ASSIGNED => 'assigned',
+			MW_TASK_CLOSED   => 'closed',
+			MW_TASK_WONTFIX  => 'wontfix'
 		);
 		var $task_types; # e.g., 0 => 'cleanup'
 		var $task_types_text; # e.g., 'cleanup' => 'Clean up'
@@ -488,29 +508,29 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		}
 		
 		/**
-		 * Returns the number associated with the text key, or 0
-		 * @param $type text key
+		 * Returns the type constant associated with the text key, or MW_TASK_INVALID
+		 * @param string $type text key
 		 * @return int
-		*/
-		function get_task_num ( $type ) { # Checked for HTML and MySQL insertion attacks
-			$type = trim ( strtolower ( $type ) ) ;
-			foreach ( $this->task_types AS $k => $v ) {
-				if ( $v == $type )
-					return $k ;
+		 */
+		function get_task_num( $type ) { # Checked for HTML and MySQL insertion attacks
+			$key = array_search( trim( strtolower( $type ) ), $this->task_types );
+			if( $key === false ) {
+				wfDebug( "Tasks: get_task_num was passed illegal text key : " . $type . " (out of range)\n" );
+				return MW_TASK_INVALID;
+			} else {
+				return $key;
 			}
-			wfDebug( "Tasks: get_task_num was passed illegal text key : " . $type . " (out of range)\n" );
-			return 0 ; # Not found, returning 0
 		}
 		
 		/**
-		 * Returns the text key
+		 * Returns the text key for a given task type constant
 		 * @param $num numeric key
 		 * @return string
-		*/
+		 */
 		function get_task_type( $num ) { # Checked for HTML and MySQL insertion attacks
 			if( !isset( $this->task_types[$num] ) ) {
-				wfDebug( "Tasks: get_task_type was passed illegal num : " . $type_key . " (out of range)\n" );
-				return 0;
+				wfDebug( "Tasks: get_task_type was passed illegal num : " . $num . " (out of range)\n" );
+				return MW_TASK_INVALID;
 			}
 			return $this->task_types[$num];
 		}
@@ -588,25 +608,38 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			return htmlspecialchars( $this->get_type_text( $type_key ) );
 		}
 
+		/**
+		 * @param int $task_type key
+		 * @return bool
+		 */
 		function is_creation_task( $task_type ) { # Checked for HTML and MySQL insertion attacks
 			return in_array( $task_type, $this->creation_tasks );
 		}
 		
+		/**
+		 * @param int $status key
+		 * @return bool
+		 */
 		function is_open( $status ) { # Checked for HTML and MySQL insertion attacks
-			if( $status == 1 || $status == 2 )
-				return true;
-			return false;
+			return ( $status == MW_TASK_OPEN || $status == MW_TASK_ASSIGNED );
 		}
 
+		/**
+		 * @param int $status key
+		 * @return bool
+		 */
 		function is_closed( $status ) { # Checked for HTML and MySQL insertion attacks
 			return !$this->is_open( $status );
 		}
 		
 		/**
-		* Takes a title and a list of existing tasks, and decides which new tasks can be created.
-		* There's no point in having a dozen "wikify" tasks for a single article, now is there? :-)
-		*/
-		function get_valid_new_tasks( &$title, &$tasks ) { # Checked for HTML and MySQL insertion attacks
+		 * Takes a title and a list of existing tasks, and decides which new tasks can be created.
+		 * There's no point in having a dozen "wikify" tasks for a single article, now is there? :-)
+		 * @param Title $title
+		 * @param array $tasks out-parameter, will receive the set of existing tasks
+		 * @return array set of creatable tasks....?
+		 */
+		function get_valid_new_tasks( $title, &$tasks ) { # Checked for HTML and MySQL insertion attacks
 			$exists = $title->exists();
 			$tasks = $this->get_tasks_for_page( $title );
 			$new_tasks = array();
@@ -619,7 +652,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				}
 			}
 			
-			for( $a = min( array_keys( $this->task_types ) ); $a <= max( array_keys( $this->task_types ) ); $a++ ) {
+			foreach( array_keys( $this->task_types ) as $a ) {
 				if( $exists == $this->is_creation_task( $a ) ) {
 					# Creation task and existence exclude each other
 					continue;
@@ -647,43 +680,25 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			
 			$out = "";
 			$tasks = array();
-			$type = $wgRequest->getInt( 'type', 0 );
-			if( $type == 0 ) {
-				# Invalid type
-				return "";
-			}
+			$type = $wgRequest->getInt( 'type' );
 			
 			$comment = $wgRequest->getText( 'text', "" ); # Not evaluated here; stored in database through safe database function
 			$new_tasks = $this->get_valid_new_tasks( $title, $tasks );
 			if( !isset( $new_tasks[$type] ) ) {
 				# Trying to create a task that isn't available
-				$out .= "<p>" . wfMsgForContent('tasks_error1') . "</p>";
+				$out .= "<p>" . wfMsgHtml('tasks_error1') . "</p>";
 			} else {
-				$this->add_new_task ( $title , $comment , $type ) ;
-/*				# Obsolete, now done through its own function
-				$dbw =& wfGetDB( DB_MASTER );
-				$dbw->insert( 'tasks',
-					array(
-						'task_page_id'       => $title->getArticleID(),
-						'task_page_title'    => $title->getPrefixedDBkey(),
-						'task_user_id'       => $wgUser->getID(),
-						'task_user_text'     => $wgUser->getName(),
-						'task_user_assigned' => 0, # default: No user assigned
-						'task_status'        => $this->get_status_number( 'open' ),
-						'task_comment'       => $comment,
-						'task_type'          => $type,
-						'task_timestamp'     => $dbw->timestamp()
-						) );*/
-				$out .= "<p>" . wfMsgForContent( 'tasks_ok1' ) . "</p>";
+				$this->add_new_task( $title, $comment, $type );
+				$out .= "<p>" . wfMsgHtml( 'tasks_ok1' ) . "</p>";
 			}
 			return $out;
 		}
 		
 		/**
 		 * Adds a new task
-		*/
-		function add_new_task ( $title , $comment , $type ) {
-			global $wgUser ;
+		 */
+		function add_new_task( $title, $comment, $type ) {
+			global $wgUser;
 			$dbw =& wfGetDB( DB_MASTER );
 			$dbw->insert( 'tasks',
 				array(
