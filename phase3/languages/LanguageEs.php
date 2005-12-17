@@ -301,7 +301,7 @@ de edición superior como aparecerá si eliges grabar.",
 "editing"		=> "Editando",
 "editingsection"=>"(sección)",
 "editingcomment"=>"(comentario)",
-"editconflict"	=> "Conflicto de edición: $1",
+"editconflict"	=> "Conflicto de edición:",
 "explainconflict" => "Alguien más ha cambiado esta página desde que empezaste
 a editarla.
 El área de texto superior contiene el texto de la página como existe

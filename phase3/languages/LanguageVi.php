@@ -461,7 +461,7 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 'editing'         => 'Soạn thảo',
 'editingsection'  => '',
 'editingcomment'  => '',
-'editconflict' => 'Sửa đổi mâu thuẫn : $1',
+'editconflict' => 'Sửa đổi mâu thuẫn :',
 'explainconflict' => "<b>Trang này có đã được lưu bởi người khác sau khi bạn bắt đầu sửa. Phía trên là bản vừa được lưu. Phía dưới là sửa đổi của bạn. Bạn phải sửa lại từ bản đã lưu.<br />",
 'yourtext'     => 'Nội dung bạn nhập',
 'storedversion' => 'Phiên bản lưu',

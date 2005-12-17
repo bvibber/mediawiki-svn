@@ -312,7 +312,7 @@ Hvis du ikke vil redigere siden, klikk på '''tilbake''' i nettleseren.",
 "editing"		=> "Redigerer",
 "editingsection"=>"(seksjon)",
 "editingcomment"=>"(kommentar)",
-"editconflict"	=> "Redigeringskonflikt: $1",
+"editconflict"	=> "Redigeringskonflikt:",
 "explainconflict" => "Noen andre har endret teksten siden du begynte å redigere.
 Den øverste boksen inneholder den nåværende tekst.
 Dine endringer vises i den nederste boksen.

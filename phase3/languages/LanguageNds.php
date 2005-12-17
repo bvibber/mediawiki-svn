@@ -444,7 +444,7 @@ dat disse Kommentaren nich an di richt sünd, denn [[Special:Userlogin|mell di d
 'editing'                       => 'Ännern vun',
 'editingsection'=>'(Afsatz)',
 'editingcomment'=>'(Kommentar)',
-'editconflict'            => 'Konflikt bi dat Bearbeiden: $1',
+'editconflict'            => 'Konflikt bi dat Bearbeiden:',
 'explainconflict'        => 'En anner Bruker hett disse Siet ännert, no de Tied dat du anfungen hest, de Siet to bearbeiden.
 Dat Textfeld baven wiest de aktuelle Siet.
 Dat Textfeld nerrn wiest diene Ännern.

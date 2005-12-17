@@ -282,7 +282,7 @@ Si tu es hic per error, simplemente clicca le button '''Retornar''' de tu naviga
 "previewconflict" => "Iste previsualisation reflecte le apparentia final del texto in le area de redaction superior
 si tu opta pro salvar lo.",
 "editing"		=> "Modification de",
-"editconflict"	=> "Conflicto de edition: $1",
+"editconflict"	=> "Conflicto de edition:",
 "explainconflict" => "Alcuno ha modificate iste pagina post que tu
 ha comenciate a modificar lo.
 Le area de texto superior contine le texto del pagina tal como illo existe actualmente.

@@ -373,7 +373,7 @@ to confirm that the account is actually yours.', */
 #'edit-externally' => 'Edit this file using an external application',
 #'edit-externally-help' => 'See the [http://meta.wikimedia.org/wiki/Help:External_editors setup instructions] for more information.',
 #'editcomment' => 'The edit comment was: "<i>$1</i>".',
-#'editconflict' => 'Edit conflict: $1',
+#'editconflict' => 'Edit conflict:',
 #'editcurrent' => 'Edit the current version of this page',
 #'editgroup' => 'Edit Group',
 'edithelp' => 'Editatzeko laguntza',

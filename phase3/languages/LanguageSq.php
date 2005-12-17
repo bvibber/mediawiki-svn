@@ -331,7 +331,7 @@ Të gjitha kohët janë sipas orës së shërbyesit (UTC).
 Çdo rresht ka lidhje tek përcjellimi i parë dhe i dytë, gjithashtu ka edhe rreshtin e parë të tekstit të përcjellimit të dytë, duke dhënë dhe artikullin e "vërtetë", me të cilin përcjellimi i parë duhet të lidhet.',
 'edit' => 'Redaktoni',
 'editcomment' => 'Komenti i redaktimit ishte: "<i>$1</i>".',
-'editconflict' => 'Konflikt redaktimi: $1',
+'editconflict' => 'Konflikt redaktimi:',
 'editcurrent' => 'Redaktoni versionin e tanishëm të kësaj faqeje',
 'editgroup' => 'Grupi Redaktimeve',
 'edithelp' => 'Ndihmë për redaktim',

@@ -353,7 +353,7 @@ z górnego pola edycji. Tak będzie wyglądać strona jeśli zdecydujesz się j�
 "editing" => "Edytujesz \"$1\"",
 "editingsection"=>"(fragment)",
 "editingcomment"=>"(komentarz)",
-"editconflict" => "Konflikt edycji: $1",
+"editconflict" => "Konflikt edycji:",
 "explainconflict" => "Ktoś zdążył wprowadzić swoją wersję artykułu
 w trakcie Twojej edycji.
 Górne pole edycji zawiera tekst strony aktualnie zapisany w bazie danych.

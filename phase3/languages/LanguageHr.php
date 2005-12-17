@@ -489,7 +489,7 @@ ako pritisnete \"Sačuvaj stranicu\".",
 "editing"		=> "Uređujete",
 'editingsection'=>"(odlomak)",
 'editingcomment'=>"(komentar)", 
-"editconflict"	        => "Istovremeno uređivanje: $1",
+"editconflict"	        => "Istovremeno uređivanje:",
 "explainconflict"       => "Netko je u međuvremenu promijenio stranicu. Gornje polje sadrži sadašnji tekst stranice.
 U donjem polju prikazane su vaše promjene. Morat ćete unijeti vaše promjene u sadašnji tekst. <b>Samo</b> će tekst
 u u gornjem polju biti sačuvan kad pritisnete \"Snimi stranicu\".\n",

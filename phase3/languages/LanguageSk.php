@@ -526,7 +526,7 @@ text z horného okna na úpravy tak, ako sa zobrazí potom, keď ho uložíte.',
 'editing' => "Úprava stránky",
 'editingsection'=>"(sekcia)",
 'editingcomment'=>"(diskusia)",
-'editconflict' => 'Konflikt pri úprave: $1',
+'editconflict' => 'Konflikt pri úprave:',
 'explainconflict' => "Niekto iný zmenil túto stránku, medzi tým čo ste ju upravovali vy.
 Horné okno na úpravy obsahuje text stránky tak, ako je momentálne platný.
 Vaše úpravy sú uvedené v dolnom okne na úpravy.

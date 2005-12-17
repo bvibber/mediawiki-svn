@@ -397,7 +397,7 @@ MySQL је вратио грешку "$3: $4".
 'edit-externally' => 'Измените овај фајл користећи спољашњу апликацију',
 'edit-externally-help' => 'Погледајте [http://meta.wikimedia.org/wiki/Help:External_editors упутство за подешавање] за више информација.',
 'editcomment' => 'Коментар измене је: "<i>$1</i>".',
-'editconflict' => 'Сукобљене измене: $1',
+'editconflict' => 'Сукобљене измене:',
 'editcurrent' => 'Измени тренутну верзију ове странице',
 'editgroup' => 'Мењај групу',
 'edithelp' => 'Како се мења страна?',

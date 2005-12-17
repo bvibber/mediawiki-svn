@@ -373,7 +373,7 @@ Os ydych yma trwy camgymeriad, cliciwch eich botwm '''nol'''.",
 "editing" => "Yn golygu",
 "editingsection"=>"(rhan)",
 "editingcomment"=>"(esboniad)",
-"editconflict" => "Croestynnu golygyddol: $1",
+"editconflict" => "Croestynnu golygyddol:",
 "explainconflict" => "Mae rhywun arall wedi newid y tudalen hon ers i chi dechrau golygu hi. Mae'r ardal testun uchaf yn cynnwys testun y tudalen fel y mae hi rwan. Mae eich newidiadau yn ddangos yn yr ardal testun isaf.
 Fydd rhaid i chi ymsoddi eich newidiadau i mewn i'r testun sydd mewn bod.
 <b>Dim ond</b> y testun yn yr ardal testun uchaf fydd yn cael eu cadw pan rydwch yn gwasgu \"Cadw tudalen\".<br />",

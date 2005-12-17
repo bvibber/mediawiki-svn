@@ -293,7 +293,7 @@ akan terpapar apabila anda memilih untuk menyimpannya.",
 "editing"		=> "Menyunting", #"Editing",
 "editingsection"=>"(section)",
 "editingcomment"=>"(comment)",
-"editconflict"	=> "Sunting konflik", #"Edit conflict: $1",
+"editconflict"	=> "Sunting konflik", #"Edit conflict:",
 "explainconflict" => "Orang lain telah mengemaskini halaman ini sejak anda
 mula mengemaskininya.
 Bahagian atas teks mengandungi halaman teks yang terkini.

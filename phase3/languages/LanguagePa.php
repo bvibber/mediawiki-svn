@@ -365,7 +365,7 @@ $1 ਜਾਂ ਕਿਸੇ ਵੀ ਹੋਰ [[{{ns:4}}:ਪ੍ਰਸ਼ਾਸਕ]]
 'note'		=> '<strong>ਧਿਆਨ ਦਿਓ:</strong> ',
 'previewnote'		=> 'ਯਾਦ ਰੱਖੋ ਕਿ ਇਹ ਸਿਰਫ਼ ਇਕ ਝਲਕ ਹੈ, ਅਜੇ ਇਸਨੂੰ ਪੱਕਾ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਹੈ!',
 'editing'		=> 'ਬਦਲ ਰਹੇ ਹਾਂ:',
-'editconflict'	=> 'ਬਦਲਾਵ ਮੱਤਭੇਦ: $1',
+'editconflict'	=> 'ਬਦਲਾਵ ਮੱਤਭੇਦ:',
 'yourdiff'		=> 'ਅੰਤਰ (Differences)',
 
 # History pages

@@ -498,7 +498,7 @@ sådan vil det komme til at se ud hvis du vælger at gemme teksten.",
 "editing"		=> "Redigerer",
 "editingsection"=>"(afsnit)",
 "editingcomment"=>"(kommentar)",
-"editconflict"	=> "Redigeringskonflikt: $1",
+"editconflict"	=> "Redigeringskonflikt:",
 "explainconflict" => "Nogen har ændret denne side, efter du
 startede på at redigere den.
 Den øverste tekstboks indeholder den nuværende tekst.

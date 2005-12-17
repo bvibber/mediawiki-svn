@@ -432,7 +432,7 @@ Als Grund wurde angegeben:<br />$2<p>Bitte kontaktieren Sie den Administrator, u
 "editing"		=> "Bearbeiten von",
 "editingsection"=>"(Absatz)",
 "editingcomment"=>"(Kommentar)",
-"editconflict"	=> "Bearbeitungs-Konflikt: $1",
+"editconflict"	=> "Bearbeitungs-Konflikt:",
 "explainconflict" => "Jemand anders hat diesen Artikel geändert, nachdem Sie angefangen haben, ihn zu bearbeiten.
 Das obere Textfeld enthält den aktuellen Artikel.
 Das untere Textfeld enthält Ihre Änderungen.

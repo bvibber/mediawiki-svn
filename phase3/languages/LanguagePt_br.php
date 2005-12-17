@@ -335,7 +335,7 @@ Se você chegou aqui por engano, apenas clique no botão  '''volta''' do seu nav
 "editing"         => "Editando",
 "editingsection"=>"(seção)",
 "editingcomment"=>"(comentário)",
-"editconflict"  => "Conflito de edição: $1",
+"editconflict"  => "Conflito de edição:",
 "explainconflict" => "Alguém mudou a página enquanto você a estava editando.
 A área de texto acima mostra o texto original.
 Suas mudanças são mostradas na área a baixo.

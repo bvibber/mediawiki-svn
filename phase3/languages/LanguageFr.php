@@ -406,7 +406,7 @@ Veuillez vous identifier dès que vous l\'aurez reçu.',
 'editing'         => 'modification de',
 'editingsection'=>'(section)',
 'editingcomment'=>'(commentaire)',
-'editconflict' => 'Conflit de modification : $1',
+'editconflict' => 'Conflit de modification :',
 'explainconflict' => '<b>Cette page a été sauvegardée après que vous avez commencé à la modifier.
 La zone d\'édition supérieure contient le texte tel qu\'il est enregistré actuellement dans la base de données. Vos modifications apparaissent dans la zone d\'édition inférieure. Vous allez devoir apporter vos modifications au texte existant. Seul le texte de la zone supérieure sera sauvegardé.<br />',
 'yourtext'     => 'Votre texte',

@@ -332,7 +332,7 @@ jo jo [[Wiki:Userlogin|oanmelde]], dat jo allinnich opmerkings foar josels krije
 "editing"		=> "Bewurkje",
 "editingsection"		=> "(seksje)",
 "editingcomment"		=> "(nije opmerking)",
-"editconflict"	=> "Tagelyk bewurke: \"$1\"",
+"editconflict"	=> "Tagelyk bewurke:",
 "explainconflict" => "In oar hat de side feroare sûnt jo begûn binne mei it bewurkjen.
 It earste bewurkingsfjild is hoe't de tekst wilens wurde is.
 Jo feroarings stean yn it twadde fjild.

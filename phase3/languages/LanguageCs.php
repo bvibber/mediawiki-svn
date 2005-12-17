@@ -508,7 +508,7 @@ okénko. Tento problém mít nebudete, pokud budete klikat jen na modré odkazy.
 'editing'               => 'Editace stránky',
 'editingsection'=>'(část)',
 'editingcomment'=>'(komentář)',
-'editconflict'  => 'Editační konflikt: $1',
+'editconflict'  => 'Editační konflikt:',
 'explainconflict' => 'Někdo změnil stránku po započetí vaší editace. Výše vidíte aktuální text článku. Vaše změny jsou uvedeny dole. Musíte sloučit své změny se stávajícím článkem. <b>Pouze</b> výše uvedený text zůstane uchován po kliknutí na „Uložit“. <br />',
 'yourtext'              => 'Váš text',
 'storedversion' => ' Uložená verze',

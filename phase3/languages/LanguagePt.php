@@ -645,7 +645,7 @@ Por favor tente novamente. Caso continue a não funcionar, tente sair e voltar a
 'editing'               => "Editando",
 'editingsection'=>"(secção)",
 'editingcomment'=>"(comentário)",
-'editconflict'  => 'Conflito de edição: $1',
+'editconflict'  => 'Conflito de edição:',
 'explainconflict' => "Alguém mudou a página enquanto você a estava editando.<br />
 A área de texto acima mostra o texto original.
 Suas mudanças são mostradas na área abaixo

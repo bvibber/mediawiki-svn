@@ -196,7 +196,7 @@ public domain or similar free resource.<br />
 'disclaimers' => 'Адмова ад адказнасьці',
 'doubleredirects' => 'Двайныя перанакіраваньні',
 'edit' => 'Рэдагаваць',
-'editconflict' => 'Канфлікт рэдагаваньня: $1',
+'editconflict' => 'Канфлікт рэдагаваньня:',
 'editcurrent' => 'Рэдагаваць бягучую вэрсію гэтага артыкула',
 'editgroup' => 'Рэдагаваць групу',
 'edithelp' => 'Дапамога ў рэдагаваньні',

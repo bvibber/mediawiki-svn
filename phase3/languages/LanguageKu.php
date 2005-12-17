@@ -336,7 +336,7 @@ to confirm that the account is actually yours.', */
 #'edit-externally' => 'Edit this file using an external application',
 #'edit-externally-help' => 'See the [http://meta.wikimedia.org/wiki/Help:External_editors setup instructions] for more information.',
 #'editcomment' => 'The edit comment was: "<i>$1</i>".',
-'editconflict' => 'Têkçûna guherandinan: $1',
+'editconflict' => 'Têkçûna guherandinan:',
 #'editcurrent' => 'Edit the current version of this page',
 #'editgroup' => 'Edit Group',
 'edithelp' => 'Alîkarî ji bo guherandin',

@@ -326,7 +326,7 @@ kiel ĝi aperos se vi elektos konservi la paĝon.', #FIXME
 'editing'		=> 'Redaktante',
 'editingsection'=>'(sekcion)',
 'editingcomment'=>'(komenton)',
-'editconflict'	=> 'Redakta konflikto: $1',
+'editconflict'	=> 'Redakta konflikto:',
 'explainconflict' => 'Iu alia ŝanĝis la paĝon post kiam vi ekredaktis.
 La supra tekstujo enhavas la aktualan tekston de la artikolo.
 Viaj ŝanĝoj estas en la malsupra tekstujo.

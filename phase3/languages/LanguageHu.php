@@ -369,7 +369,7 @@ szövegnek megfelelő képet mutatja, ahogy az elmentés után kinézne.",
 "editing"		=> "Szerkesztés alatt",
 "editingsection"=>"(szakasz)",
 "editingcomment"=>"(üzenet)",
-"editconflict"	=> "Szerkesztési ütközés: $1",
+"editconflict"	=> "Szerkesztési ütközés:",
 "explainconflict" => "Valaki megváltoztatta a lapot azóta,
 mióta szerkeszteni kezdted.
 A felső szövegablak tartalmazza a szöveget, ahogy az jelenleg létezik.

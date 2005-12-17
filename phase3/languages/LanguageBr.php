@@ -406,7 +406,7 @@ Trugarez deoc\'h evit en em zisklêriañ kerkent ha ma vo bet resevet ganeoc\'h.
 'editing'         => 'oc\'h aozañ',
 'editingsection'=>'(rann)',
 'editingcomment'=>'(soñj)',
-'editconflict' => 'tabut kemmañ : $1',
+'editconflict' => 'tabut kemmañ :',
 'explainconflict' => "<b>Enrollet eo bet ar bajenn-mañ war-lerc\'h m\'ho pefe kroget d\'he c\'hemmañ.
 E-krec\'h an takad aozañ emañ an destenn evel m\'emañ enrollet bremañ er bank roadennoù. Ho kemmoù deoc\'h a zeu war wel en takad aozañ traoñ. Ret e vo deoc\'h degas ho kemmoù d\'an destenn zo evit poent. N\'eus nemet an destenn zo en takad krec\'h a vo saveteet.<br />",
 'yourtext'     => 'Ho testenn',

@@ -380,7 +380,7 @@ $1',
 'previewconflict' => 'This preview reflects the text in the upper
 text editing area as it will appear if you choose to save.',
 'editing'	     => '$1 고쳐쓰기',
-'editconflict'	=> '고치기 충돌: $1',
+'editconflict'	=> '고치기 충돌:',
 'explainconflict' => '문서를 고쳐쓰는 동안, 문서가 바뀌었습니다.
 위쪽이 바뀐 현재 문서이고, 아래쪽이 당신이 고쳐쓴 내용입니다.
 당신이 고쳐쓴 내용을 현재 문서에 다시 집어 넣어야 할 것입니다.

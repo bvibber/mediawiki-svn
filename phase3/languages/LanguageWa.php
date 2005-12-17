@@ -464,7 +464,7 @@ do dzeu sereut håyné si vos decidez di clitchî so «schaper».',
 'editing' => 'Candjant',
 'editingsection'=>'(seccion)',
 'editingcomment'=>'(comintaire)',
-'editconflict' => 'Conflit inte deus candjmints: $1',
+'editconflict' => 'Conflit inte deus candjmints:',
 'explainconflict' => 'Ene sakî a candjî l\' pådje do tins ki vos estîz a scrire.
 Li boesse di tecse do dzeur mostere li tecse del pådje come il est 
 pol moumint sol sierveu. Li tecse da vosse est sol boesse di tecse do dzo.
