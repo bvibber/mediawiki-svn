@@ -23,7 +23,8 @@ $wgMessageCache->addMessages(
 		'review_sidebar_you_have_other_reviews_for_this_article' => "You have already reviewed other versions of this article. Your other ratings will be merged into this one where you selected 'no opinion'.",
 		'review_page_link' => "review statistics",
 		'review_sidebar_final' => "For review data of this page view, see its $1",
-		'review_for_page' => "Review for \"$1\"",
+		'review_for_page' => "Review for page \"$1\"",
+		'review_for_user' => "Review for user \"$1\"",
 		'review_error' => "Something's wrong!",
 		'review_no_reviews_for_page' => "There are currently no reviews for \"$1\".",
 		'review_total_statistics' => "Total",
@@ -32,6 +33,11 @@ $wgMessageCache->addMessages(
 		'review_statistic_cell' => "Average: $1 of $2<br/>($4 users, $5 anons)",
 		'review_version_statistic_cell' => "$1 of $2",
 		'review_version_reviews_link' => "<small>(version reviews)</small>",
+		'review_concerns_page' => "This review is about the page \"$1\".",
+		'review_concerns_user' => "This is about reviews by user \"$1\".",
+		'review_user_reviews' => "<small>(reviews by this user)</small>",
+		'review_user_page_list' => "The user reviewed the following pages:",
+		'review_user_details_link' => "(details)",
 	)
 );
 ?>

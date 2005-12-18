@@ -168,7 +168,6 @@ function wfReviewExtensionGetUserRatingsForPage ( &$title , &$user , $revision =
 		# Create the revision array, if necessary
 		if ( !isset ( $ret[$line->val_revision] ) )
 			$ret[$line->val_revision] = array () ;
-
 		# Store the data
 		$ret[$line->val_revision][$line->val_type] = $line ;
 	}
@@ -349,7 +348,7 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 <?php
 	}
 	print "<input type='hidden' name='review_oldid' value='{$revision}'/>" ;
-	print "<div style='text-align:right'><input type='submit' name='save_review' value='" . wfMsgForContent('review_save') . "'/></div>" ;
+	print "<input style='width:100%' type='submit' name='save_review' value='" . wfMsgForContent('review_save') . "'/>" ;
 	print "<div id='review_sidebar_note'>" ;
 	print wfMsgForContent ( 'review_sidebar_explanation' ) ;
 	if ( count ( $ratings ) > 1 ) {
@@ -482,7 +481,7 @@ function wfReviewExtensionFunction () {
 		}
 
 		/**
-		* Returns a HTML table row for the statistics of a revision
+		* Returns a HTML table row for the statistics of a revision. Output heavy!
 		* @param $title The page
 		* @param $revision The revision ID (or -1 for table header, 0 for total statistics)
 		* @param $data The data for this revision
@@ -496,7 +495,7 @@ function wfReviewExtensionFunction () {
 			# Row header
 			$ret = "<tr><th id='review_statistics_table_header' align='left' nowrap>" ;
 			if ( $revision < 0 ) {
-				# Table headers
+				# Table headersconcerns
 				if ( $revision == -1 ) {
 					$ret .= wfMsgForContent ( 'review_statistics_left_corner' ) ;
 				} else {
@@ -513,15 +512,20 @@ function wfReviewExtensionFunction () {
 				$ak = array_keys ( $data ) ;
 				$k = array_shift ( $ak ) ;
 				if ( $data[$k]->val_user == 0 ) {
-					#$user = User::newFromName ( $data[$k]->val_ip ) ;
 					$user = new User ;
 					$user->setName ( $data[$k]->val_ip ) ;
+					$user_reviews = "user_ip=" . $data[$k]->val_ip ;
 				} else {
 					$user = new User ;
 					$user->setID ( $data[$k]->val_user ) ;
 					$user->loadFromDatabase() ;
+					$user_reviews = "user_id=" . $data[$k]->val_user ;
 				}
 				$ret .= $skin->makeLinkObj ( $user->getUserPage() , $user->getName() ) ;
+				$ret .= "<br/>" ;
+				$ret .= $skin->makeLinkObj ( $wgTitle ,
+							wfMsgForContent('review_user_reviews') ,
+							"mode=view_user_reviews&{$user_reviews}" ) ;
 			} else {
 				# Individual revision
 				$page_id = $title->getArticleID() ;
@@ -535,7 +539,7 @@ function wfReviewExtensionFunction () {
 			foreach ( $wgReviewExtensionTopics AS $type => $topic ) {
 				if ( $revision < 0 ) {
 					# Table header row
-					$ret .= "<th id='review_statistics_table_header' nowrap>" ;
+					$ret .= "<th id='review_statistics_table_header'>" ;
 					$ret .= $topic->name ;
 					$ret .= "</th>" ;
 				} else if ( $revision_mode ) {
@@ -594,10 +598,30 @@ function wfReviewExtensionFunction () {
 		}
 
 		/**
+		*/
+		function get_list_of_pages_reviewed_by_user ( $user ) {
+			$conds = array () ;
+			wfReviewExtensionSetUserCondition ( $user , $conds ) ;
+			$dbr =& wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+					/* FROM   */ 'validate',
+					/* SELECT */ 'DISTINCT val_page',
+					/* WHERE  */ $conds,
+					$fname
+			);
+
+			$ret = array() ;
+			while ( $line = $dbr->fetchObject( $res ) ) {
+				$ret[] = $line->val_page ;
+			}
+			return $ret ;			
+		}
+
+		/**
 		* Special page main function
 		*/
 		function execute( $par = null ) {
-			global $wgRequest , $wgOut , $wgUser ;
+			global $wgRequest , $wgOut , $wgUser , $wgTitle ;
 			wfReviewExtensionInitMessages () ;
 
 			$out = "" ;
@@ -605,18 +629,43 @@ function wfReviewExtensionFunction () {
 			$mode = $wgRequest->getText ( 'mode' , "" ) ;
 			$page_id = $wgRequest->getInt ( 'page_id' , 0 ) ;
 			$rev_id = $wgRequest->getInt ( 'rev_id' , 0 ) ;
+			$user_id = $wgRequest->getInt ( 'user_id' , 0 ) ;
+			$user_ip = $wgRequest->getText ( 'user_ip' , "" ) ;
 			$error = false ;
+
+			if ( $user_id != 0 OR $user_ip != "" ) {
+				$theuser = new User ;
+				if ( $user_id == 0 ) {
+					$theuser->setName ( $user_ip ) ;
+				} else {
+					$theuser->setID ( $user_id ) ;
+					$theuser->loadFromDatabase() ;
+				}
+			}
 			
 			if ( $page_id == 0 ) {
-				$title = new Title ;
-				$error = true ;
+				$title = NULL ;
 			} else {
 				$title = Title::newFromID ( $page_id ) ;
 			}
 
-			if ( $error ) {
-				# Do nothing
-			} else if ( $mode == 'view_page_statistics' ) {
+			# Info ahead
+			$o = array () ;
+			if ( $page_id != 0 ) {
+				$link = $skin->makeLinkObj( $title ) ;
+				$o[] = wfMsgForContent ( 'review_concerns_page' , $link ) ;
+			}
+			if ( isset ( $theuser ) ) {
+				$link = $skin->makeLinkObj ( $theuser->getUserPage() , $theuser->getName() ) ;
+				$o[] = wfMsgForContent ( 'review_concerns_user' , $link ) ;
+			}
+			if ( count ( $o ) > 0 ) {
+				$out .= "<ul><li>" . implode ( "</li>\n<li>" , $o ) . "</li></ul>" ;
+			}
+
+			# Modes
+			if ( $mode == 'view_page_statistics' ) {
+				# View statistics for one page
 				$revisions = $this->get_reviewed_revisions ( $title ) ;
 				arsort ( $revisions ) ; # Newest first
 				if ( count ( $revisions ) == 0 ) {
@@ -636,18 +685,63 @@ function wfReviewExtensionFunction () {
 					$out .= $out2 ;
 					$out .= "</table>\n" ;
 				}
+				$page_title = wfMsgForContent ( 'review_for_page' , $title->getPrefixedText() ) ;
 			} else if ( $mode == 'view_version_statistics' ) {
-					$data = array () ;
+				# View statistics for a specific version of a page
+				$data = array () ;
+				$out .= "<table id='review_statistics_table'>\n" ;
+				$out .= $this->get_revision_statistics_row ( $title , -2 , $data ) ;
+				$reviews = $this->get_reviews_for_revision ( $title , $rev_id ) ;
+				$this->analyze_review_data ( $title , $rev_id , $reviews , $data ) ;
+				$out .= $this->get_revision_statistics_row ( $title , 0 , $data ) ; # Statistics for the revision
+				$data = $this->group_data_by_user ( $reviews ) ;
+				foreach ( $data AS $entry ) {
+					$out .= $this->get_revision_statistics_row ( $title , 1 , $entry , true ) ;
+				}
+				$out .= "</table>\n" ;
+				$page_title = wfMsgForContent ( 'review_for_page' , $title->getPrefixedText() ) ;
+			} else if ( $mode == 'view_user_reviews' AND isset ( $theuser ) ) {
+				if ( $page_id != 0 ) {
+					# View the reviews of a user for a specific page
+					$revisions = wfReviewExtensionGetUserRatingsForPage ( $title , $theuser ) ;
+					print count ( $revisions ) ;
+					
+					$statistics = array() ;
 					$out .= "<table id='review_statistics_table'>\n" ;
-					$out .= $this->get_revision_statistics_row ( $title , -2 , $data ) ;
-					$reviews = $this->get_reviews_for_revision ( $title , $rev_id ) ;
-					$this->analyze_review_data ( $title , $rev_id , $reviews , $data ) ;
-					$out .= $this->get_revision_statistics_row ( $title , 0 , $data ) ; # Statistics for the revision
-					$data = $this->group_data_by_user ( $reviews ) ;
-					foreach ( $data AS $entry ) {
-						$out .= $this->get_revision_statistics_row ( $title , 1 , $entry , true ) ;
+					$out .= $this->get_revision_statistics_row ( $title , -1 , $statistics ) ;
+					$out2 = "" ;
+					foreach ( $revisions AS $revision => $reviews ) {
+						$data = $this->analyze_review_data ( $title , $revision , $reviews , $statistics ) ;
+						$out2 .= $this->get_revision_statistics_row ( $title , $revision , $data ) ;
 					}
+					$out .= $this->get_revision_statistics_row ( $title , 0 , $statistics ) ;
+					$out .= $out2 ;
 					$out .= "</table>\n" ;
+
+
+				} else {
+					# View the pages reviewed by a user
+					$data = $this->get_list_of_pages_reviewed_by_user ( $theuser ) ;
+					$out .= "<h2>" . wfMsgForContent ( 'review_user_page_list' ) . "</h2>\n" ;
+					$data2 = array () ;
+					if ( $user_id == 0 )
+						$user_link = "user_ip=".$user_ip ;
+					else
+						$user_link = "user_id=".$user_id ;
+					foreach ( $data AS $pid ) {
+						$t = Title::newFromID ( $pid ) ;
+						$link1 = $skin->makeLinkObj ( $t ) ;
+						$link2 = $skin->makeLinkObj ( $wgTitle ,
+							wfMsgForContent('review_user_details_link') ,
+							"mode=view_user_reviews&" . $user_link . "&page_id={$pid}"
+						) ;
+						$data2[] = $link1 . " " . $link2 ;
+					}
+					asort ( $data2 ) ;
+					if ( count ( $data2 ) > 0 )
+						$out .= "<ol><li>" . implode ( "</li>\n<li>" , $data2 ) . "</li></ul>" ;
+				}
+				$page_title = wfMsgForContent ( 'review_for_user' , $theuser->getName() ) ;
 			} else {
 				$error = true ;
 			}
@@ -656,7 +750,7 @@ function wfReviewExtensionFunction () {
 			if ( $error ) {
 				$wgOut->addHtml( wfMsgForContent ( 'review_error' ) );
 			} else {
-				$wgOut->setPageTitle ( wfMsgForContent ( 'review_for_page' , $title->getPrefixedText() ) ) ;
+				$wgOut->setPageTitle ( $page_title ) ;
 				$wgOut->addHtml( $out );
 			}
 		}
