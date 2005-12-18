@@ -7,6 +7,24 @@ font-size:80%;
 font-size:80%;
 }
 
+#review_statistics_table {
+	border:1px solid black;
+	border-spacing:1px;
+	border-collapse: collapse;
+}
+
+#review_statistics_table_cell {
+	border:1px solid black;
+	padding:2px;
+	text-align:center;
+	font-size:80%;
+}
+
+#review_statistics_table_header {
+	border:1px solid black;
+	padding:2px;
+}
+
 #review_radio_1_of_2 { background-color:#FF0000; }
 #review_radio_2_of_2 { background-color:#00FF00; }
 

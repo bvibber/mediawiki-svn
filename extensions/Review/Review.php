@@ -354,7 +354,7 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 	}
 	print "<br/>" ;
 	$stat_title = Title::makeTitleSafe( NS_SPECIAL, "Review" );
-	$link = $skin->makeLinkObj( $stat_title, wfMsgHTML( 'review_page_link' ), "mode=view&page=".$wgTitle->getArticleID() );
+	$link = $skin->makeLinkObj( $stat_title, wfMsgHTML( 'review_page_link' ), "mode=view_page_statistics&page_id=".$wgTitle->getArticleID() );
 	$out = str_replace ( "$1" , $link , wfMsg ( 'review_sidebar_final' ) ) ;
 	print $out ;
 ?>
@@ -389,9 +389,205 @@ function wfReviewExtensionFunction () {
 		}
 
 		/**
+		* Returns the reviewed revision numbers for the page
+		* @param $title The page title
+		* @return Array[] => val_revision
+		*/
+		function get_reviewed_revisions ( $title ) {
+			$dbr =& wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+					/* FROM   */ 'validate',
+					/* SELECT */ 'DISTINCT val_revision',
+					/* WHERE  */ array ( 'val_page' => $title->getArticleID() ),
+					$fname
+			);
+			$ret = array () ;
+			while ( $line = $dbr->fetchObject( $res ) ) {
+				$ret[] = $line->val_revision ;
+			}
+			return $ret ;
+		}
+
+		/**
+		* Returns all review data for a single revision of a page
+		* @param $title The page
+		* @param $revision The revision ID
+		* @return array of objects with one review each
+		*/
+		function get_reviews_for_revision ( $title , $revision ) {
+			$conds = array (
+				'val_page' => $title->getArticleID() ,
+				'val_revision' => $revision ,
+			) ;
+		
+			# Query
+			$dbr =& wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+					/* FROM   */ 'validate',
+					/* SELECT */ '*',
+					/* WHERE  */ $conds,
+					$fname
+			);
+
+			$ret = array() ;
+			while ( $line = $dbr->fetchObject( $res ) ) {
+				$ret[] = $line ;
+			}
+			return $ret ;
+		}
+
+		/**
+		* Sum up the review data for a single revision and add it to $statistics
+		* @param $title The page
+		* @param $revision The revision ID
+		* @param $reviews The array of reviews
+		* @param $statistics The array of overall statistics
+		* @return Data for this revision, as an array of objects (same nomenclature as for $statistics)
+		*/
+		function analyze_review_data ( $title , $revision , &$reviews , &$statistics ) {
+			global $wgReviewExtensionTopics ;
+
+			# Read data
+			$data = array () ;
+			foreach ( $reviews AS $review ) {
+				$type = $review->val_type ;
+				if ( !isset ( $data[$type] ) ) {
+					# Set dummy values
+					$data[$type] = "" ;
+					$data[$type]->total_count = 0 ;
+					$data[$type]->anon_count = 0 ;
+					$data[$type]->sum = 0 ;
+					$data[$type]->max = $wgReviewExtensionTopics[$type]->range ;
+				}
+				$data[$type]->total_count++ ;
+				if ( $review->val_user == 0 )
+					$data[$type]->anon_count++ ;
+				$data[$type]->sum += $review->val_value ;
+			}
+
+			# Add data to overall statistics
+			foreach ( $data AS $type => $v ) {
+				if ( !isset ( $statistics[$type] ) ) {
+					$statistics[$type] = $v ;
+					continue ;
+				}
+				$statistics[$type]->total_count += $v->total_count ;
+				$statistics[$type]->anon_count += $v->anon_count ;
+				$statistics[$type]->sum += $v->sum ;
+			}
+			return $data ;
+		}
+
+		/**
+		* Returns a HTML table row for the statistics of a revision
+		* @param $title The page
+		* @param $revision The revision ID (or -1 for table header, 0 for total statistics)
+		* @param $data The data for this revision
+		* @return HTML table row
+		*/
+		function get_revision_statistics_row ( $title , $revision , &$data ) {
+			global $wgReviewExtensionTopics , $wgUser ;
+			$skin =& $wgUser->getSkin() ;
+
+			# Row header
+			$ret = "<tr><th id='review_statistics_table_header' align='left'>" ;
+			if ( $revision == -1 ) {
+				# Table headers
+				$ret .= wfMsgForContent ( 'review_statistics_left_corner' ) ;
+			} else if ( $revision == 0 ) {
+				# Total statistics
+				$ret .= wfMsgForContent ( 'review_total_statistics' ) ;
+			} else {
+				# Individual revision
+				$version_link = $skin->makeLinkObj ( $title , wfMsgForContent('review_version_link',$revision) , "oldid={$revision}" ) ;
+				$ret .= $version_link ;
+			}
+			$ret .= "</th>" ;
+
+			foreach ( $wgReviewExtensionTopics AS $type => $topic ) {
+				if ( $revision == -1 ) {
+					# Table header row
+					$ret .= "<th id='review_statistics_table_header'>" ;
+					$ret .= $topic->name ;
+					$ret .= "</th>" ;
+				} else {
+					$ret .= "<td id='review_statistics_table_cell'>" ;
+					if ( $data[$type]->total_count > 0 ) {
+						$average = $data[$type]->sum / $data[$type]->total_count ;
+						$ret .= "<div id='" ;
+						$ret .= "review_radio_" . $average . "_of_" . $data[$type]->max ;
+						$ret .= "'>" ;
+						$ret .= wfMsgForContent ( 'review_statistic_cell' ,
+										$average ,
+										$data[$type]->max ,
+										$data[$type]->total_count ,
+										$data[$type]->total_count - $data[$type]->anon_count ,
+										$data[$type]->anon_count
+						) ;
+						$ret .= "</div>" ;
+					} else {
+						$ret .= "&mdash;" ;
+					}
+					$ret .= "</td>" ;
+				}
+			}
+			$ret .= "</tr>\n" ;
+			return $ret ;
+		}
+
+		/**
 		* Special page main function
 		*/
 		function execute( $par = null ) {
+			global $wgRequest , $wgOut , $wgUser ;
+			wfReviewExtensionInitMessages () ;
+
+			$out = "" ;
+			$skin =& $wgUser->getSkin () ;
+			$mode = $wgRequest->getText ( 'mode' , "" ) ;
+			$page_id = $wgRequest->getInt ( 'page_id' , 0 ) ;
+			$error = false ;
+			
+			if ( $page_id == 0 ) {
+				$title = new Title ;
+				$error = true ;
+			} else {
+				$title = Title::newFromID ( $page_id ) ;
+			}
+
+			if ( $error ) {
+				# Do nothing
+			} else if ( $mode == 'view_page_statistics' ) {
+				$revisions = $this->get_reviewed_revisions ( $title ) ;
+				arsort ( $revisions ) ; # Newest first
+				if ( count ( $revisions ) == 0 ) {
+					$out .= wfMsgForContent ( 'review_no_reviews_for_page' , $skin->makeLinkObj( $title ) ) ;
+				} else {
+					# Load review data for each version separately to avoid memory apocalypse
+					$statistics = array() ;
+					$out .= "<table id='review_statistics_table'>\n" ;
+					$out .= $this->get_revision_statistics_row ( $title , -1 , $statistics ) ;
+					$out2 = "" ;
+					foreach ( $revisions AS $revision ) {
+						$reviews = $this->get_reviews_for_revision ( $title , $revision ) ;
+						$data = $this->analyze_review_data ( $title , $revision , $reviews , $statistics ) ;
+						$out2 .= $this->get_revision_statistics_row ( $title , $revision , $data ) ;
+					}
+					$out .= $this->get_revision_statistics_row ( $title , 0 , $statistics ) ;
+					$out .= $out2 ;
+					$out .= "</table>\n" ;
+				}
+			} else {
+				$error = true ;
+			}
+		
+			$this->setHeaders();
+			if ( $error ) {
+				$wgOut->addHtml( wfMsgForContent ( 'review_error' ) );
+			} else {
+				$wgOut->setPageTitle ( wfMsgForContent ( 'review_for_page' , $title->getPrefixedText() ) ) ;
+				$wgOut->addHtml( $out );
+			}
 		}
 	} # end of class SpecialReview
 
