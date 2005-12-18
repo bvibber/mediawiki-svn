@@ -18,6 +18,8 @@ $wgMessageCache->addMessages(
 		'review_save' => "Store review",
 		'review_your_review' => "Your review of this page/revision:",
 		'review_sidebar_you_have_other_reviews_for_this_article' => "You have already reviewed other versions of this article. Your other ratings will be merged into this one where you selected 'no opinion'.",
+		'review_page_link' => "review statistics",
+		'review_sidebar_final' => "For review data of this page view, see its $1",
 	)
 );
 ?>

@@ -19,7 +19,7 @@ $wgExtensionCredits['Review'][] = array(
         'author' => 'Magnus Manske'
 );
 
-$wgExtensionFunctions[] = 'wfReviewExtension';
+$wgExtensionFunctions[] = 'wfReviewExtensionFunction';
 
 # Hooks
 $wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfReviewExtensionAfterToolbox';
@@ -125,10 +125,10 @@ function wfReviewExtensionGetTopicForm ( $topic ) {
 function wfReviewExtensionSetUserCondition ( &$user , &$conds ) {
 	if ( $user->getID() == 0 ) {
 		# Anon
-		$cond['val_ip'] = $user->getName() ;
+		$conds['val_ip'] = $user->getName() ;
 	} else {
 		# User with account
-		$cond['val_user'] = $user->getID() ;
+		$conds['val_user'] = $user->getID() ;
 	}
 }
 
@@ -209,6 +209,7 @@ function wfReviewExtensionReadLastForm ( &$ratings , $merge_others = true ) {
 	# Read form values
 	$oldrev = $wgRequest->getInt ( 'review_oldid' ) ;
 	$topics = $wgRequest->getArray ( 'review_topic' ) ;
+	$comments = $wgRequest->getArray ( 'review_comment' ) ;
 	
 	# Sort revisions, latest first
 	krsort ( $ratings ) ;
@@ -236,7 +237,7 @@ function wfReviewExtensionReadLastForm ( &$ratings , $merge_others = true ) {
 			$new_data[$key]->val_revision = $oldrev ;
 			$new_data[$key]->val_type = $key ;
 			$new_data[$key]->val_value = $value ;
-			$new_data[$key]->val_comment = "" ; # Dummy
+			$new_data[$key]->val_comment = isset ( $comments[$key] ) ? $comments[$key] : "" ;
 			$new_data[$key]->val_ip = $user_ip ;
 			continue ;
 		}
@@ -272,13 +273,13 @@ function wfReviewExtensionReadLastForm ( &$ratings , $merge_others = true ) {
 	if ( count ( $new_data ) > 0 ) $dbw->begin () ;
 	foreach ( $new_data AS $key => $value ) {
 		$data = array (
-			'val_user' => $wgUser->getID() ,
-			'val_page' => $wgTitle->getArticleID() ,
-			'val_revision' => $oldrev ,
-			'val_type' => $key ,
+			'val_user' => $value->val_user ,
+			'val_page' => $value->val_page ,
+			'val_revision' => $value->val_revision ,
+			'val_type' => $value->val_type ,
 			'val_value' => $value->val_value ,
-			'val_comment' => "" , # Dummy
-			'val_ip' => $user_ip ,
+			'val_comment' => $value->val_comment ,
+			'val_ip' => $value->val_ip ,
 		) ;
 		$dbw->insert ( 'validate' , $data ) ;
 	}
@@ -301,6 +302,7 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 		return ;
 
 	# Initialize
+	$skin =& $wgUser->getSkin() ;
 	$revision = $wgArticle->getRevIdFetched() ;
 	wfReviewExtensionInitMessages () ;
 	$ratings = wfReviewExtensionGetUserRatingsForPage ( $wgTitle , $wgUser ) ;
@@ -350,6 +352,11 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 	if ( count ( $ratings ) > 1 ) {
 		print " " . wfMsgForContent ( 'review_sidebar_you_have_other_reviews_for_this_article' ) ;
 	}
+	print "<br/>" ;
+	$stat_title = Title::makeTitleSafe( NS_SPECIAL, "Review" );
+	$link = $skin->makeLinkObj( $stat_title, wfMsgHTML( 'review_page_link' ), "mode=view&page=".$wgTitle->getArticleID() );
+	$out = str_replace ( "$1" , $link , wfMsg ( 'review_sidebar_final' ) ) ;
+	print $out ;
 ?>
 	</div></form>
 	<ul>
@@ -361,14 +368,14 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 # ____________________________________________________________________
 # Class / Special Page
 
-function wfReviewExtension () {
+function wfReviewExtensionFunction () {
 	global $IP, $wgMessageCache;
 	wfReviewExtensionInitMessages();
 
 	// FIXME : i18n
 	$wgMessageCache->addMessage( 'review', 'Review' );
 
-	require_once "$IP/includes/SpecialPage.php";
+	require_once( "$IP/includes/SpecialPage.php" );
 
 	/**
 	* Constructor
@@ -378,6 +385,7 @@ function wfReviewExtension () {
 		function SpecialReview() {
 			SpecialPage::SpecialPage( 'Review' );
 			$this->includable( true );
+			wfReviewExtensionInitMessages();
 		}
 
 		/**
@@ -385,8 +393,9 @@ function wfReviewExtension () {
 		*/
 		function execute( $par = null ) {
 		}
-	}
+	} # end of class SpecialReview
 
+	SpecialPage::addPage(new SpecialReview);
 }
 
 ?>
