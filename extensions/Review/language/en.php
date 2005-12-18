@@ -11,6 +11,9 @@ $wgMessageCache->addMessages(
 	array(
 		'review_sidebar_title' => "Review",
 		'review_topics' => "
+			# The following is the list of topics and ranges for the review extension.
+			# Each topic is defined by a line of five values, separated by ':' (all other lines are ignored).
+			# The order is: numerical key (>0), name, max range (>1; 2=yes/no), meaning of lowest value (e.g., 'bad'), meaning of highest value (e.g., 'good').
 			1:Quality:5:bad:good
 			2:Ready for 1.0:2:no:yes",
 		'review_topic_page' => "Review topics",
@@ -27,6 +30,8 @@ $wgMessageCache->addMessages(
 		'review_statistics_left_corner' => "Revision",
 		'review_version_link' => "Revision #$1",
 		'review_statistic_cell' => "Average: $1 of $2<br/>($4 users, $5 anons)",
+		'review_version_statistic_cell' => "$1 of $2",
+		'review_version_reviews_link' => "<small>(version reviews)</small>",
 	)
 );
 ?>

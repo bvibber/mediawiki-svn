@@ -75,11 +75,14 @@ function wfReviewExtensionInitMessages () {
 		$v = explode ( ':' , trim ( $v ) ) ;
 		if ( count ( $v ) != 5 ) continue ; # Some other line, ignore it
 		$x = "" ;
-		$x->key = trim ( array_shift ( $v ) ) ;
+		$x->key = (int) trim ( array_shift ( $v ) ) ;
 		$x->name = trim ( array_shift ( $v ) ) ;
 		$x->range = (int) trim ( array_shift ( $v ) ) ;
 		$x->left = trim ( array_shift ( $v ) ) ;
 		$x->right = trim ( array_shift ( $v ) ) ;
+		if ( $x->key == 0 ) continue ; # Paranoia
+		if ( $x->range < 2 ) continue ; # Paranoia
+		if ( $x->name == "" ) continue ; # Paranoia
 		$wgReviewExtensionTopics[$x->key] = $x ;
 	}
 }
@@ -483,42 +486,79 @@ function wfReviewExtensionFunction () {
 		* @param $title The page
 		* @param $revision The revision ID (or -1 for table header, 0 for total statistics)
 		* @param $data The data for this revision
+		* @param $revision_mode Set "true" when viewing an individual revision
 		* @return HTML table row
 		*/
-		function get_revision_statistics_row ( $title , $revision , &$data ) {
-			global $wgReviewExtensionTopics , $wgUser ;
+		function get_revision_statistics_row ( $title , $revision , &$data , $revision_mode = false ) {
+			global $wgReviewExtensionTopics , $wgUser , $wgTitle , $wgRequest ;
 			$skin =& $wgUser->getSkin() ;
 
 			# Row header
-			$ret = "<tr><th id='review_statistics_table_header' align='left'>" ;
-			if ( $revision == -1 ) {
+			$ret = "<tr><th id='review_statistics_table_header' align='left' nowrap>" ;
+			if ( $revision < 0 ) {
 				# Table headers
-				$ret .= wfMsgForContent ( 'review_statistics_left_corner' ) ;
+				if ( $revision == -1 ) {
+					$ret .= wfMsgForContent ( 'review_statistics_left_corner' ) ;
+				} else {
+					$rev_id = $wgRequest->getInt ( 'rev_id' , 0 ) ;
+					$page_id = $title->getArticleID() ;
+					$version_link = $skin->makeLinkObj ( $title , wfMsgForContent('review_version_link',$rev_id) , "oldid={$rev_id}" ) ;
+					$ret .= $version_link ;
+					}
 			} else if ( $revision == 0 ) {
 				# Total statistics
 				$ret .= wfMsgForContent ( 'review_total_statistics' ) ;
+			} else if ( $revision_mode ) {
+				# User
+				$ak = array_keys ( $data ) ;
+				$k = array_shift ( $ak ) ;
+				if ( $data[$k]->val_user == 0 ) {
+					#$user = User::newFromName ( $data[$k]->val_ip ) ;
+					$user = new User ;
+					$user->setName ( $data[$k]->val_ip ) ;
+				} else {
+					$user = new User ;
+					$user->setID ( $data[$k]->val_user ) ;
+					$user->loadFromDatabase() ;
+				}
+				$ret .= $skin->makeLinkObj ( $user->getUserPage() , $user->getName() ) ;
 			} else {
 				# Individual revision
+				$page_id = $title->getArticleID() ;
 				$version_link = $skin->makeLinkObj ( $title , wfMsgForContent('review_version_link',$revision) , "oldid={$revision}" ) ;
-				$ret .= $version_link ;
+				$version_review_link = $skin->makeLinkObj ( $wgTitle , wfMsgForContent('review_version_reviews_link') ,
+							"mode=view_version_statistics&page_id={$page_id}&rev_id={$revision}" ) ;
+				$ret .= $version_link . "<br/>" . $version_review_link ;
 			}
 			$ret .= "</th>" ;
 
 			foreach ( $wgReviewExtensionTopics AS $type => $topic ) {
-				if ( $revision == -1 ) {
+				if ( $revision < 0 ) {
 					# Table header row
-					$ret .= "<th id='review_statistics_table_header'>" ;
+					$ret .= "<th id='review_statistics_table_header' nowrap>" ;
 					$ret .= $topic->name ;
 					$ret .= "</th>" ;
+				} else if ( $revision_mode ) {
+					$ret .= "<td id='review_statistics_table_cell'>" ;
+					if ( isset ( $data[$type] ) ) {
+						$ret .= "<div id='" ;
+						$ret .= "review_radio_" . $data[$type]->val_value . "_of_" . $topic->range ;
+						$ret .= "'>" ;
+						$ret .= wfMsgForContent ( 'review_version_statistic_cell' , $data[$type]->val_value , $topic->range ) ;
+						$ret .= "</div>" ;
+					} else {
+						$ret .= "&mdash;" ;
+					}
+					$ret .= "</td>" ;
 				} else {
 					$ret .= "<td id='review_statistics_table_cell'>" ;
 					if ( $data[$type]->total_count > 0 ) {
 						$average = $data[$type]->sum / $data[$type]->total_count ;
 						$ret .= "<div id='" ;
-						$ret .= "review_radio_" . $average . "_of_" . $data[$type]->max ;
+						$ret .= "review_radio_" . (int) $average . "_of_" . $data[$type]->max ;
 						$ret .= "'>" ;
 						$ret .= wfMsgForContent ( 'review_statistic_cell' ,
-										$average ,
+										sprintf ( "%1.1f" , $average ) ,
 										$data[$type]->max ,
 										$data[$type]->total_count ,
 										$data[$type]->total_count - $data[$type]->anon_count ,
@@ -536,6 +576,24 @@ function wfReviewExtensionFunction () {
 		}
 
 		/**
+		* Groups data *for a single revision* by user
+		* @param $reviews The review data *for a single revision*
+		* @return array[user arbitary key] => ( array[types] => revision data )
+		*/
+		function group_data_by_user ( &$reviews ) {
+			$data = array () ;
+			foreach ( $reviews AS $review ) {
+				$type = $review->val_type ;
+				$user = $review->val_user == 0 ? $review->val_ip : $review->val_user ;
+				if ( !isset ( $data[$user] ) ) {
+					$data[$user] = array () ;
+				}
+				$data[$user][$type] = $review ;
+			}
+			return $data ;
+		}
+
+		/**
 		* Special page main function
 		*/
 		function execute( $par = null ) {
@@ -546,6 +604,7 @@ function wfReviewExtensionFunction () {
 			$skin =& $wgUser->getSkin () ;
 			$mode = $wgRequest->getText ( 'mode' , "" ) ;
 			$page_id = $wgRequest->getInt ( 'page_id' , 0 ) ;
+			$rev_id = $wgRequest->getInt ( 'rev_id' , 0 ) ;
 			$error = false ;
 			
 			if ( $page_id == 0 ) {
@@ -577,6 +636,18 @@ function wfReviewExtensionFunction () {
 					$out .= $out2 ;
 					$out .= "</table>\n" ;
 				}
+			} else if ( $mode == 'view_version_statistics' ) {
+					$data = array () ;
+					$out .= "<table id='review_statistics_table'>\n" ;
+					$out .= $this->get_revision_statistics_row ( $title , -2 , $data ) ;
+					$reviews = $this->get_reviews_for_revision ( $title , $rev_id ) ;
+					$this->analyze_review_data ( $title , $rev_id , $reviews , $data ) ;
+					$out .= $this->get_revision_statistics_row ( $title , 0 , $data ) ; # Statistics for the revision
+					$data = $this->group_data_by_user ( $reviews ) ;
+					foreach ( $data AS $entry ) {
+						$out .= $this->get_revision_statistics_row ( $title , 1 , $entry , true ) ;
+					}
+					$out .= "</table>\n" ;
 			} else {
 				$error = true ;
 			}
