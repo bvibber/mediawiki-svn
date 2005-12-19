@@ -79,7 +79,8 @@ EOT
 		}
 
 		$dbr =& wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'recentchanges', array( '*' ), array( 'rc_ip' => $ip ), $fname );
+		$res = $dbr->select( 'recentchanges', array( '*' ), array( 'rc_ip' => $ip ), $fname, 
+	   		array( 'ORDER BY' => 'rc_timestamp DESC' ) );
 		if ( !$dbr->numRows( $res ) ) {
 			$s =  "No results\n";
 		} else {
