@@ -893,10 +893,14 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$mode = trim( $wgRequest->getVal( 'mode' ) );
 			$taskid = $wgRequest->getInt( 'taskid', 0 );
 
-			# Simple validation
-			if( $mode == '' || $taskid == 0 ) { return ''; }
-			# Needs to be logged in
-			if( !$wgUser->isLoggedIn() ) { return; }
+			if( $mode == '' || $taskid == 0 ) {
+				# Simple validation
+				return '';
+			}
+			if( !$wgUser->isLoggedIn() ) {
+				# Needs to be logged in
+				return '';
+			}
 			
 			$out = '';
 			$fname = 'Tasks::check_mode';
@@ -997,15 +1001,15 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		}
 		
 		/**
-		* Changes the status of a task, performs some associated cleanup, and logs the action
-		*/
+		 * Changes the status of a task, performs some associated cleanup, and logs the action
+		 */
 		function change_task_status( $taskid, $new_status ) { # Checked for HTML and MySQL insertion attacks
 			global $wgUser;
 			$fname = 'Tasks:change_task_status';
 			$dbw =& wfGetDB( DB_MASTER );
 			
-			# Paranoia :
-			if( !is_numeric( $new_status ) or !is_numeric( $taskid ) ) {
+			if( !is_numeric( $new_status ) || !is_numeric( $taskid ) ) {
+				# Paranoia
 				return;
 			}
 
@@ -1043,7 +1047,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		/**
 		 * Returns the list of active tasks for this page, for display in the sidebar
 		 */
-		function get_open_task_list( &$title , $useCache = false ) { # Checked for HTML and MySQL insertion attacks
+		function get_open_task_list( &$title, $useCache = false ) { # Checked for HTML and MySQL insertion attacks
 
 			global $wgTaskExtensionTasksCachedTitle , $wgTaskExtensionTasksCache ;
 
