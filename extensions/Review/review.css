@@ -24,6 +24,11 @@ font-size:80%;
 	padding:2px;
 }
 
+#review_has_been_stored {
+	color:red;
+	font-size:80%;
+}
+
 #review_radio_1_of_2 { background-color:#FF0000; }
 #review_radio_2_of_2 { background-color:#00FF00; }
 

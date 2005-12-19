@@ -5,7 +5,7 @@ To activate, enter
 in your LocalSettings.php
 
 To activate a different CSS stylesheet, enter something like
-	define( 'REVIEW_CSS' , 'http://yourhost.com/name/wiki/extensions/Tasks/tasks.css' );
+	define( 'REVIEW_CSS' , 'http://yourhost.com/name/wiki/my_stylesheets/stylesheet.css' );
 *before* the "include" statement.
 */
 
@@ -196,13 +196,14 @@ function wfReviewExtensionPresetForm ( &$topics , &$ratings ) {
 * Checks for form data, integrates them and stores them in the database
 * @param $ratings Array of ratings for this article from this user, read from database
 * @param $merge_others can be called with "false" to prevent merging with other ratings
+* @return bool : Did it apply form data?
 */
 function wfReviewExtensionReadLastForm ( &$ratings , $merge_others = true ) {
 	global $wgUser, $wgRequest , $wgTitle ;
 	
 	# Was there a form?
 	if ( $wgRequest->getText ( 'save_review' , "" ) == "" )
-		return ;
+		return false ;
 
 	$fname = 'wfReviewExtensionReadLastForm' ;
 	$dbw =& wfGetDB( DB_MASTER );
@@ -286,6 +287,7 @@ function wfReviewExtensionReadLastForm ( &$ratings , $merge_others = true ) {
 		$dbw->insert ( 'validate' , $data ) ;
 	}
 	if ( count ( $new_data ) > 0 ) $dbw->commit() ;
+	return true ;
 }
 
 /**
@@ -293,7 +295,7 @@ function wfReviewExtensionReadLastForm ( &$ratings , $merge_others = true ) {
 * @param $tpl The used template
 */
 function wfReviewExtensionAfterToolbox( &$tpl ) {
-	global $wgTitle, $wgUser , $wgReviewExtensionTopics, $wgArticle, $action;
+	global $wgTitle, $wgUser , $wgReviewExtensionTopics, $wgArticle, $action, $wgRequest;
 
 	# Do we care?
 	if( !wfReviewExtensionDoesNamespaceApply ( $wgTitle->getNamespace() ) )
@@ -304,11 +306,12 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 		return ;
 
 	# Initialize
+	$do_merge = $wgRequest->getBool ( 'do_merge' , false ) ;
 	$skin =& $wgUser->getSkin() ;
 	$revision = $wgArticle->getRevIdFetched() ;
 	wfReviewExtensionInitMessages () ;
 	$ratings = wfReviewExtensionGetUserRatingsForPage ( $wgTitle , $wgUser ) ;
-	wfReviewExtensionReadLastForm ( $ratings ) ;
+	$did_update_review = wfReviewExtensionReadLastForm ( $ratings , $do_merge ) ;
 	if ( !isset ( $ratings[$revision] ) ) # Construct blank dummy, if necessary
 		$ratings[$revision] = array () ;
 	wfReviewExtensionPresetForm ( $wgReviewExtensionTopics , $ratings[$revision] ) ;
@@ -327,6 +330,8 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 		<div class="pBody">
 			<form method='post' id="review_sidebar">
 <?php
+	if ( $did_update_review )
+		print wfMsgForContent ( 'review_has_been_stored' ) . "<br/>" ;
 	print wfMsgForContent ( 'review_your_review' ) . "<br/>" ;
 	foreach( $wgReviewExtensionTopics as $topic ) {
 ?>
@@ -347,7 +352,14 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 ?>
 <?php
 	}
-	print "<input type='hidden' name='review_oldid' value='{$revision}'/>" ;
+	print "<input type='hidden' name='review_oldid' value='{$revision}'/>\n" ;
+	if ( count ( $ratings ) > 1 ) {
+		# "Merge" CHECKBOX
+		print "<div id='review_sidebar_range'><input type='checkbox' checked name='do_merge' value='1'/>" . wfMsgForContent ( 'review_do_merge' ) . "</div>\n";
+	} else {
+		# Hidden field "don't merge"
+		print "<input type='hidden' name='do_merge' value='0'/>\n" ;
+	}
 	print "<input style='width:100%' type='submit' name='save_review' value='" . wfMsgForContent('review_save') . "'/>" ;
 	print "<div id='review_sidebar_note'>" ;
 	print wfMsgForContent ( 'review_sidebar_explanation' ) ;
@@ -704,7 +716,6 @@ function wfReviewExtensionFunction () {
 				if ( $page_id != 0 ) {
 					# View the reviews of a user for a specific page
 					$revisions = wfReviewExtensionGetUserRatingsForPage ( $title , $theuser ) ;
-					print count ( $revisions ) ;
 					
 					$statistics = array() ;
 					$out .= "<table id='review_statistics_table'>\n" ;
