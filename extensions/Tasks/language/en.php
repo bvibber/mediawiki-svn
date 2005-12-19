@@ -79,7 +79,7 @@ $wgMessageCache->addMessages(
 		'tasks_action_closed' => "Task \"$1\" closed.",
 		'tasks_action_wontfix' => "Won't fix task \"$1\".",
 		
-		'tasks_sign_delete' => "<b>They want it dead! Kaaaaaaaahn!</b>",
+		'tasks_sign_delete' => "<b>It has been asked to delete this page!</b>",
 		
 		'tasks_logpage' => "Tasks log",
 		'tasks_logpagetext' => 'This is a log of changes to tasks',
