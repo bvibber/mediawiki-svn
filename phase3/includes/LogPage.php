@@ -41,7 +41,7 @@ class LogPage {
 	  * Constructor
 	  *
 	  * @param string $type One of '', 'block', 'protect', 'rights', 'delete',
-	  *               'upload', 'move'
+	  *               'upload', 'move', 'namespace'
 	  * @param bool $rc Whether to update recent changes as well as the logging table
 	  */
 	function LogPage( $type, $rc = true ) {
@@ -92,7 +92,7 @@ class LogPage {
 	 * @static
 	 */
 	function validTypes() {
-		static $types = array( '', 'block', 'protect', 'rights', 'delete', 'upload', 'move' );
+		static $types = array( '', 'block', 'protect', 'rights', 'delete', 'upload', 'move', 'namespace' );
 		wfRunHooks( 'LogPageValidTypes', array( &$types ) );
 		return $types;
 	}
@@ -115,7 +115,8 @@ class LogPage {
 			'rights'  => 'bureaucratlog',
 			'delete'  => 'dellogpage',
 			'upload'  => 'uploadlogpage',
-			'move'    => 'movelogpage'
+			'move'    => 'movelogpage',
+			'namespace' => 'namespacelogpage',
 		);
 		wfRunHooks( 'LogPageLogName', array( &$typeText ) );
 		
@@ -133,7 +134,8 @@ class LogPage {
 			'rights'  => 'rightslogtext',
 			'delete'  => 'dellogpagetext',
 			'upload'  => 'uploadlogpagetext',
-			'move'    => 'movelogpagetext'
+			'move'    => 'movelogpagetext',
+			'namespace' => 'namespacelogtext',
 		);
 		wfRunHooks( 'LogPageLogHeader', array( &$headerText ) );
 		
@@ -162,7 +164,12 @@ class LogPage {
 			'upload/upload'     => 'uploadedimage',
 			'upload/revert'     => 'uploadedimage',
 			'move/move'         => '1movedto2',
-			'move/move_redir'   => '1movedto2_redir'
+			'move/move_redir'   => '1movedto2_redir',
+
+			'namespace/add'     => 'namespaceaddlog',
+			'namespace/delete'  => 'namespacedeletelog',
+			'namespace/modify'  => 'namespacemodifylog',
+			'namespace/pseudo'  => 'namespacepseudolog',
 		);
 		wfRunHooks( 'LogPageActionText', array( &$actions ) );
 
@@ -206,7 +213,7 @@ class LogPage {
 
 	/**
 	 * Add a log entry
-	 * @param string $action one of '', 'block', 'protect', 'rights', 'delete', 'upload', 'move', 'move_redir'
+	 * @param string $action one of '', 'block', 'protect', 'rights', 'delete', 'upload', 'move', 'move_redir', 'namespace'
 	 * @param object &$target A title object.
 	 * @param string $comment Description associated
 	 * @param array $params Parameters passed later to wfMsg.* functions

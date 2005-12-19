@@ -1369,9 +1369,10 @@ function wfCloseElement( $element ) { return "</$element>"; }
  *
  * @param mixed $selected The namespace which should be selected, default ''
  * @param string $allnamespaces Value of a special item denoting all namespaces. Null to not include (default)
+ * @param bool $includehidden Include hidden namespaces?
  * @return Html string containing the namespace selector
  */
-function &HTMLnamespaceselector($selected = '', $allnamespaces = null) {
+function &HTMLnamespaceselector($selected = '', $allnamespaces = null, $includehidden=false) {
 	if( $selected !== '' ) {
 		if( is_null( $selected ) ) {
 			// No namespace selected; let exact match work without hitting Main
@@ -1382,7 +1383,7 @@ function &HTMLnamespaceselector($selected = '', $allnamespaces = null) {
 		}
 	}
 	$s = "<select name='namespace' class='namespaceselector'>\n\t";
-	$arr = Namespace::getFormattedDefaultNamespaces();
+	$arr = Namespace::getFormattedDefaultNamespaces($includehidden);
 	if( !is_null($allnamespaces) ) {
 		$arr = array($allnamespaces => wfMsgHtml('namespacesall')) + $arr;
 	}

@@ -52,7 +52,9 @@ function namespaceForm ( $namespace = NS_MAIN, $from = '' ) {
 	global $wgContLang, $wgScript;
 	$t = Title::makeTitle( NS_SPECIAL, $this->name );
 
-	$namespaceselect = HTMLnamespaceselector($namespace, null);
+	# Selector needs to include hidden namespace, hence the "true"
+	# parameter
+	$namespaceselect = HTMLnamespaceselector($namespace, null, true);
 
 	$frombox = "<input type='text' size='20' name='from' id='nsfrom' value=\""
 	            . htmlspecialchars ( $from ) . '"/>';

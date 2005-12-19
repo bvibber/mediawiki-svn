@@ -69,7 +69,7 @@ function showForm( $errorHeader='', $errorBody='' ) {
 	$talksuffix = wfEscapeJsString(wfMsgForContent('talkpagesuffix'));
 	
 	# For the namespace selection box
-	$name_array = Namespace::getFormattedDefaultNamespaces();
+	$name_array = Namespace::getFormattedDefaultNamespaces(true);
 	$noparent = wfMsg('no_parent_namespace');
 	$name_array[key($name_array)-1] = $noparent;
 
@@ -323,7 +323,7 @@ END;
 	$wgOut->addHTML( $htmlform );
 
 	// Pseudonamespace converter
-	$all_name_array = Namespace::getFormattedDefaultNamespaces();
+	$all_name_array = Namespace::getFormattedDefaultNamespaces(true);
 	$pseudons_select=$this->getSelector($all_name_array);
 	$wgOut->addWikiText( wfMsg( 'fix_pseudonamespaces_header' ) );
 	$phtmlform ='
@@ -447,6 +447,29 @@ END;
 		// Report success to user
 		$wgOut->addWikiText($complete);
 		$this->showForm();
+
+		$this->logNs('add',$nsname);
+		if($nscreatetalk) {
+			$this->logNs('add',$nstalkname);			
+		}
+	}
+
+	/**
+	 * Convenient access to the logging functions
+	 * @param $action - 'add','delete','modify' or 'pseudo'
+	 * @param $ns - name of the namespace
+	 * @param $tns - for pseudonamespaces, name of the target namespace
+	 */
+	function logNs($action,$ns='',$tns='') {
+                $log = new LogPage( 'namespace' );
+		$dummyTitle = Title::makeTitle( 0, '' );
+		if($action=='pseudo') {
+			$log->addEntry( $action,$dummyTitle,'',array($ns,$tns));
+		} elseif($action=='modify') {
+			$log->addEntry( $action,$dummyTitle,'');
+		} else {
+                	$log->addEntry( $action,$dummyTitle,'',array($ns));
+		}
 	}
 
 	/**
@@ -545,15 +568,18 @@ END;
 			# Does the name exist and is it non-empty?
 			if(
 				!is_null($dindex)
-				&& array_key_exists($dindex, $newns[$nsindex]->names)
+				&& array_key_exists($dindex,
+				$newns[$nsindex]->names)
 				&& !empty($newns[$nsindex]->names[$dindex])
 			) {
 				# Use this default name.
 				$newns[$nsindex]->setDefaultNameIndex($dindex);
 			} else {
-				# We have lost our default name, perhaps it was deleted.
-				# Get a new one if possible.	
-				$newns[$nsindex]->setDefaultNameIndex($newns[$nsindex]->getNewDefaultNameIndex());
+				# We have lost our default name, perhaps it 
+				# was deleted. Get a new one if possible.	
+				$newns[$nsindex]->setDefaultNameIndex(
+				  $newns[$nsindex]->getNewDefaultNameIndex()
+				);
 			}
 		}
 
@@ -562,20 +588,34 @@ END;
 			if( $nrv[NS_RESULT] == NS_NAME_ISSUES ) {
 				$this->showForm(
 					wfMsg(
-						'namespace_error',
-						$nns->getDefaultName()),
-						$this->nameIssues($nrv)
+					  'namespace_error',
+					  $nns->getDefaultName()),
+					  $this->nameIssues($nrv)
 					);
 				return false;
+			} elseif($nrv[NS_RESULT] == NS_MISSING) {
+				$this->showForm(
+				  wfmsg('namespace_has_gone_missing',
+				  $nns->getIndex())
+				);
+				return false;
 			}
+		}
+
+		# Only do anything if everything can be done successfully.
+		foreach($newns as $nns) {
 			$nns->save();
 		}
+
+		# Unfortunately, NS_IDENTICAL does not work consistently
+		# atm, so we can only add a generic log entry.
+		$this->logNs('modify');
 
 		# IMPORTANT: The namespace name indexes are unpredictable when
 		# serialized, so we have to reload the definitions from the
 		# database at this point; otherwise, there could be index
 		# mismatches.
-		Namespace::load();
+		Namespace::load(true);
 
 		# Return to the namespace manager with the changes made.
 		$wgOut->addWikiText( wfMsg('namespace_changes_saved') );
@@ -677,7 +717,7 @@ END;
 		/* There should be no delete links for namespaces which cannot
 		   be deleted, but let's catch two possible problems just in case. */
 		if(!array_key_exists( $nsid, $wgNamespaces) ) {
-			$this->showForm( wfMsg('namespace_not_deletable') , wfMsg('namespace_not_deletable_missing', $nsid) );
+			$this->showForm( wfMsg('namespace_not_deletable') , wfMsg('namespace_has_gone_missing', $nsid) );
 			return false;
 		} elseif( $wgNamespaces[$nsid]->isSystemNamespace() ) {
 			$this->showForm( wfMsg('namespace_not_deletable') , wfMsg('namespace_not_deletable_system', $nsid) );
@@ -696,6 +736,7 @@ END;
 		if( $drv[NS_RESULT] == NS_DELETED ) {
 			$wgOut->addWikiText( wfMsg('namespace_deleted',$nsdeletename) );
 			$this->showForm();
+			$this->logNs('delete',$nsdeletename);
 			return true;
 		} elseif( $drv[NS_RESULT] == NS_NAME_ISSUES ) {
 			$this->showForm( wfMsg('namespace_delete_error',$nsdeletename),$this->nameIssues($drv) );
@@ -750,6 +791,7 @@ END;
 			}
 		} else {
 			$wgOut->addWikiText(wfMsg('pseudonamespace_converted', $prefix, $wgNamespaces[$targetid]->getDefaultName()));
+			$this->logNs('pseudo',$prefix,$wgNamespaces[$targetid]->getDefaultName());
 		}
 		if($converttalk) {
 			# A pseudonamespace, by definition, exists in the 

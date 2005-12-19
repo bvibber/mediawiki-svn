@@ -383,7 +383,7 @@ class UndeleteForm {
 		$undelete =& Title::makeTitle( NS_SPECIAL, 'Undelete' );
 		$wgOut->addHTML( "<ul>\n" );
 		while( $row = $result->fetchObject() ) {
-			$n = ($row->ar_namespace ?
+			$n = ($row->ar_namespace && array_key_exists($row->ar_namespace,$wgNamespaces) ?
 				($wgNamespaces[$row->ar_namespace]->getDefaultName(). ":") : "").
 				$row->ar_title;
 			$link = $sk->makeKnownLinkObj( $undelete,

@@ -107,6 +107,9 @@ class Namespace {
 	$defaultNameIndex,    # Index of the name all other names redirect to?
 	$canonicalNameIndex;  # Index of the name that's valid everywhere
 
+	/** 
+	 * Constructor with reasonable defaults.
+	 */
 	function Namespace() {
 	
 		$this->setIndex(NULL);
@@ -115,26 +118,54 @@ class Namespace {
 		$this->setSubpages(false);
 		$this->setSearchedByDefault(false);
 		$this->setTarget(NULL);
-		$this->setHidden(false);
-	
+		$this->setHidden(false);	
 	}	
+
+	/**
+	 * @return index to the correct $wgNamespaces object
+	 *  or database record for this namespace.
+	 */
 	function getIndex() {
 		return $this->index;
 	}
 
+	/**
+	 * @param $index New index for this namespace. 
+	 *  Generally only used during creation.
+	 */
 	function setIndex($index) {
 		$this->index=$index;
 	}
-	
+
+	/**
+	 * @return String like NS_MAIN for identifying
+	 *  system namespaces (see Defines.php).
+	 */
 	function getSystemType() {
 		return $this->systemType;	
 	}
 	
+	/**
+	 * Set the system type for this namespace.
+	 * @param  string Constant name - needs to exist
+	 *  in Defines.php.
+	 * @return bool depending on success
+	 *
+	 */
 	function setSystemType($type) {
-		// TODO: check for valid types		
-		$this->systemType=(string)$type;
+		$typeString=(string)$type;
+		if(defined($typeString)) {
+			$this->systemType=$typeString;
+			return true;
+		} else {
+			return false;
+		}
 	}
-	
+
+	/**
+	 * Is this a system namsepace?
+	 * @return bool
+	 */
 	function isSystemNamespace() {
 		$sys=$this->getSystemType();
 		return !empty($sys);
@@ -148,23 +179,43 @@ class Namespace {
 	function isMovable() {
 		return $this->isMovable;	
 	}
-	
+
+	/**
+	 * Can pages in this namespace be moved?
+	 * @param bool
+	 */
 	function setMovable($movable=true) {
-		$this->movable=(bool)$movable;
+		$this->isMovable=(bool)$movable;
 	}
-	
+
+	/**
+	 * Are pages from this namespace hidden in lists?
+	 * @return bool
+	 */	
 	function isHidden() {
 		return $this->isHidden;
 	}
 
+	/**
+	 * Should pages from this namespace be hidden in lists?
+	 * @param bool
+	 */
 	function setHidden($hidden=true) {
 		$this->isHidden=(bool)$hidden;	
 	}
 	
+	/**
+	 * @return int Index of the parent namespace to a 
+	 *   child namespace (talk or otherwise), NULL if none
+	 */
 	function getParentIndex() {
 		return $this->parentIndex;
 	}
 
+	/**
+	 * @return int Same as getParentIndex(), but returns
+	 *    this namespace's index if no parent namespace exists.
+	 */
 	function getSubject() {
 		if($this->isTalk()) {
 			return $this->getParentIndex();
@@ -173,42 +224,77 @@ class Namespace {
 		}
 	}
 	
+	/**
+	 * Set parent namespace
+	 * @param int
+	 */
 	function setParentIndex($index) {
 		$this->parentIndex=$index;
 	}
-	
+
+	/**
+	 * Does this namespace have a parent namespace?
+	 * @return bool
+	 */	
 	function hasParent() {
 		return ($this->getParentIndex()!=NULL);
 	}
-	
+
+	/**
+	 * Synonym for hasParent(), but might be logically
+	 * different in the near future, if parent/child
+	 * relationships go beyond talk pages.
+	 * @return bool
+	 */
 	function isTalk() {
 		return $this->hasParent();	
 	}
 
-	/*
+	/**
 	 * Check if the given namespace is not a talk page
 	 * @return bool
 	 */
 	function isMain( $index ) {
 		return !$this->isTalk();
 	}
-	
+
+	/**
+	 * Is this a "special" namespace (Media:, Special:)?
+	 * Special namespaces cannot contain any pages.
+	 * @return bool
+	 */	
 	function isSpecial() {
 		return($this->getIndex()<NS_MAIN);
 	}
 
+	/**
+	 * Is content in this namespace searched by default?
+	 * @return bool
+	 */
 	function isSearchedByDefault() {
 		return $this->isSearchedByDefault;		
 	}
 
+	/**
+	 * Should this namespace be searched by default?
+	 * @param bool
+	 */
 	function setSearchedByDefault($search=true) {
 		$this->isSearchedByDefault=(bool)$search;
 	}
 	
-	/* TODO: support multiple discussion namespaces,
-	   so that things like a Review: namespace
-	   become possible in parallel to normal talk
-	   pages. */
+	/**
+	 Get the index of the discussion namespace associated
+	 with a namespace. If this _is_ a discussion namespace, 
+	 return its index.
+
+	 @return int	 
+
+	 TODO: support multiple discussion namespaces,
+	 so that things like a Review: namespace
+	 become possible in parallel to normal talk
+	 pages. 
+	*/
 	function getTalk() {
 		global $wgNamespaces;		
 		/* This behavior is expected by Title.php! */
@@ -221,14 +307,49 @@ class Namespace {
 		return null;
 	}
 	
+	/**
+	 * Return the default prefix for unprefixed links
+	 * from this namespace.
+	 * @return string
+	 */
 	function getTarget() {
 		return $this->target;	
 	}
-	
+
+	/**
+	 * Set the default prefix for unprefixed links, e.g.
+	 * "User:" (local namespace prefix) or "MeatBall:"
+	 * (InterWiki prefix).
+	 *
+	 * @param string
+	 */
 	function setTarget($target) {
 		$this->target=(string)$target;
 	}
+
+	/**
+	 * Does this namespace allow [[/subpages]]?
+	 * @return bool
+	 */
+	function allowsSubpages() {
+		return $this->allowsSubpages;
 	
+	}
+
+	/**
+	 * Should this namespace allow [[/subpages]]?
+	 * @param bool
+	 */
+	function setSubpages($subpages=true) {
+		$this->allowsSubpages=(bool)$subpages;
+	}	
+
+	/**
+	 * Return the default name for this namespace, if any.
+	 * The default name is the one all others redirect to.
+	 *
+	 * @return string	
+	 */
 	function getDefaultName() {	
 		if(isset($this->defaultNameIndex) && array_key_exists($this->defaultNameIndex,$this->names)) {
 			return $this->names[$this->defaultNameIndex];	
@@ -250,24 +371,33 @@ class Namespace {
 		}
 		return null;
 	}
-	
+
+	/**
+	 * Among the names of this namespace, which one should
+	 * be set as the default name?
+	 * @param int Key to the names array
+	 */	
 	function setDefaultNameIndex($index) {
 		$this->defaultNameIndex=$index;
 	}
 
+	/**
+	 * Among the names of this namespace, which one
+	 * should be "canonical" (i.e. not editable, and
+	 * assumed to exist under this name in other
+	 * wikis)?
+	 * @param int Key to the names array
+	 */
 	function setCanonicalNameIndex($index) {
 		$this->canonicalNameIndex=$index;
 	}
 	
-	function allowsSubpages() {
-		return $this->allowsSubpages;
-	
-	}
-	
-	function setSubpages($subpages=true) {
-		$this->allowsSubpages=(bool)$subpages;
-	}
-	
+	/**
+	 * Add a name to the list of names for this
+	 * namespace.
+	 * @return index of the newly added name,
+	 *  or NULL if hte name is not valid.	
+	 */
 	function addName($name) {
 		$index=count($this->names);
 		if($this->isValidName($name)) {
@@ -278,7 +408,12 @@ class Namespace {
 			return NULL;
 		}
 	}
-	
+
+	/**
+	 * Return the key in the name list for a given
+	 * name.	
+	 * @return int Matching key or NULL
+	 */
 	function getNameIndexForName($findname) {
 		foreach($this->names as $nsi=>$name) {
 			if($name==$findname) {
@@ -288,6 +423,13 @@ class Namespace {
 		return null;
 	}
 
+	/**
+	 * Change a namespace name.
+	 * @param $oldname The old name
+	 * @param $newname The new name
+	 * @param $checkvalid Does the new name have to be
+	 *  valid? (is checked by save() in any case)
+	 */
 	function setName($oldname,$newname,$checkvalid=true) {
 		if($checkvalid && !$this->isValidName($newname)) {
 			return NULL;
@@ -302,7 +444,11 @@ class Namespace {
 		}
 	}
 	
-	/* static */
+	/**
+	 * Is this a valid namespace name? Valid characters
+	 * are defined in the NS_CHAR constant.
+	 * @return bool
+	 */
 	function isValidName($name) {
 		# Consist only of (at least one) valid char(s)
 		if(preg_match("/^".NS_CHAR."+$/",$name)) {
@@ -311,96 +457,49 @@ class Namespace {
 			return false;
 		}
 	}
-	
+
+	/**
+	 * How many pages does this namespace contain?
+	 * @return The number of pages
+	*/
+	function countPages() {
+		$dbs =& wfGetDB(DB_SLAVE);
+		return $dbs->selectField(
+			'page',
+			'count(*)',
+			array('page_namespace'=>$this->getIndex())
+		);		
+	}
+
+	/**
+	 * Get the default name with spaces instead of 
+	 * underscores.
+	 * @return string
+	 */
 	function getFormattedDefaultName() {
 		$ns=$this->getDefaultName();
 		return strtr($ns, '_',' ');
 	}
-
 	/**
-         * Returns the namespace index for a given name or synonym,
-         * if valid
-	 *
-	 * @static
-         */
-        function getIndexForName ( $name ) {
-                global $wgNamespaces;
-                foreach ($wgNamespaces as $ns) {
-                        foreach($ns->names as $synonym) {
-                                if(strcasecmp($synonym,$name)==0) {
-                                        return $ns->getIndex();
-                                }
-                        }
-                }
-                return NULL;
-        }
-	
-        /**
-         * Return the default name for any namespace name
-         * given as a parameter, even if it is the default
-         * name already.
-	 *
-	 * @static
-         */	
-	function getDefaultNameForName ( $name ) {
-                global $wgNamespaces;
-                $index=Namespace::getIndexForName($name);
-                if(!is_null($index)) {
-                        return $wgNamespaces[$index]->getDefaultName();
-                } else {
-                        return null;
-                }
-	}
-	
-	/**
-	 *
-	 * resets array pointer
-	 *
-	 * @param $includeHidden
-	 *
-	 * @static
+	 * @return the key in the names array for the default
+	 * name of this namespace
 	 */
-	function &getDefaultNamespaces($includeHidden=false) {
-		global $wgNamespaces;
-		$dns=array();
-		foreach($wgNamespaces as $ns) {
-			if(!$ns->isHidden()) {
-				$dn=$ns->getDefaultName();
-				if(!is_null($dn)) {
-					$dns[$ns->getIndex()]=$dn;
-				} else {
-					$dns[$ns->getIndex()]='';
-				}
-			}
-		}		
-		return $dns;
-	}
-       
-       /**
-         * A convenience function that returns the same thing as
-         * getDefaultNamespaces() except with the array values changed to ' '
-         * where it found '_', useful for producing output to be displayed
-         * e.g. in <select> forms.
-         *
-	 * @static         
-	 * @param $includeHidden
-	 * @return array
-         */
-        function &getFormattedDefaultNamespaces($includeHidden=false) {
-                $ns = Namespace::getDefaultNamespaces($includeHidden);
-                foreach($ns as $k => $v) {
-                        $ns[$k] = strtr($v, '_', ' ');
-                }
-                return $ns;
-        }
-	
 	function getDefaultNameIndex() {
 		return $this->defaultNameIndex;
 	}
+
+	/**
+	 * @return the key in the names array for the 
+	 * canonical name of this namespace
+	 */
 	function getCanonicalNameIndex() {
 		return $this->canonicalNameIndex;
 	}
 
+	/**
+	 * @return The canonical name associated with
+	 *  this namespace, or NULL
+	 */
 	function getCanonicalName() {
 		if(!is_null($this->getCanonicalNameIndex())) {
 			return $this->names[$this->getCanonicalNameIndex()];
@@ -408,14 +507,36 @@ class Namespace {
 			return null;
 		}
 	}
+
+	/**
+	 * @param int Key to the names array of the name
+	 *  which should be removed.
+	 */
+	function removeNameByIndex($index) {
+		if(array_key_exists($index,$this->names)) {
+			unset($this->names[$index]);
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
+	/**
+	 * Kill them all! Well, all the ones in this namespace
+	 * object. And only if we save().
+	 */
+	function removeAllNames() {
+		$this->names=array();
+		return true;
+	}
+		
 	/**
 	 * Serialize this namespace to the database.
 	 * No part of the operation will be completed
 	 * unless it cannot be fully done.
 	 *
-	 * If the index of the namespace index is NULL,
-	 * a new namespace will be created.
+	 * If the namespace index is NULL, a new namespace 
+	 * will be created.
 	 *
 	 * @param boolean $testSave
 	 *   If this is set to true, no actual changes
@@ -425,8 +546,7 @@ class Namespace {
 	 *   all of them will succeed.
 	 * @param boolean $overrideInterwiki
 	 *   If a namespace name overlaps with an Interwiki
-	 *   prefix, should it be created anyway? Note that
-	 *   you can only override one Interwiki prefix at 
+	 *   prefix, should it be created anyway?
 	 *  
 	 * @return array()
 	 *   An array that describes the results of the
@@ -441,7 +561,6 @@ class Namespace {
 	 *        NS_DUPLICATE_NAMES=>array(names)
 	 *        NS_INTERWIKI_NAMES=>array(names)
 	 *        NS_PREFIX_NAMES=>array(names)
-	 *        NS_LINKED_NAMES=>array(names)
 	 *       )
 	 *
 	 *  NS_RESULT can be:
@@ -474,13 +593,6 @@ class Namespace {
 	 *      NS_PREFIX_NAMES
 	 *      names which are used as hardcoded title prefixes
 	 *
-	 *  - For removed or renamed names:
-	 *
-	 *      NS_LINKED_NAMES
-	 *      names which are still in use (linked to) from some
-	 *      pages -- these links would become invalid if the
-	 *      name was changed or removed.
-	 * 
 	 *  How this function works:
 	 *  ------------------------
 	 *  Check if the namespace has a valid ID (not null)
@@ -516,8 +628,7 @@ class Namespace {
 		 NS_ILLEGAL_NAMES=>array(),
 		 NS_DUPLICATE_NAMES=>array(),
 		 NS_INTERWIKI_NAMES=>array(),
-		 NS_PREFIX_NAMES=>array(),
-		 NS_LINKED_NAMES=>array()
+		 NS_PREFIX_NAMES=>array()
 		);
 		$nameOperations=array();
 		$dbs =& wfGetDB( DB_SLAVE );
@@ -607,38 +718,8 @@ class Namespace {
 				}
 				$dbs->freeResult($res);
 			} 
-			# Check first if the name to be deleted
-			# has not just moved to another slot.
-			elseif($operation==NS_NAME_DELETE
-			&& is_null($this->getNameIndexForName($name))) {
-			
-				# Would any broken links result from deletion?
-				$match=$dbs->addQuotes("%[[$name:%");
-
-				# Query needs to be optimized/simplified,
-				# but will generally be run very rarely.
-				$res = $dbs->select(
-					array('page',     /* FROM */
-						'pagelinks',
-						'revision',
-						'text'),
-					array('DISTINCT page_title',
-						'page_namespace'),
-					array('pl_namespace='.$index,
-						'page_id=pl_from',
-						'rev_id=page_latest',
-						'rev_text_id=old_id',
-						'old_text like '.$match),
-					array('LIMIT'=>1)
-				);
-				if($dbs->numRows($res) > 0) {
-					$rv[NS_RESULT]=NS_NAME_ISSUES;
-					$rv[NS_LINKED_NAMES][]=$name;
-				}
-				$dbs->freeResult($res);
-			}
 		}
-		
+
 		# If there are problems, return the array
 		if($rv[NS_RESULT]==NS_NAME_ISSUES) {
 			return $rv;
@@ -789,6 +870,8 @@ class Namespace {
 	 * This function allows deleting system namespaces if explicitly
 	 * specified; this should however not be possible through the 
 	 * user interface.
+	 *
+	 * @param $deleteSystem bool Override system namespace protection
 	 */
 	function deleteNamespace($deleteSystem=false) {
 		global $wgNamespaces;
@@ -826,30 +909,112 @@ class Namespace {
 		unset($wgNamespaces[$this->getIndex()]);
 		return array(NS_RESULT=>NS_DELETED);
 	}
+
+	/* ---------- all static functions below  ----------- */
+
+	/**
+	 * For _any_ name (among all namespaces), return
+	 * the index of the namespace to which it belongs.
+	 *
+	 * @param string Name to search for
+	 * @return int Index of the namespace associated 
+	 *  with this name (or NULL)
+	 * @static
+         */
+        function getIndexForName ( $name ) {
+                global $wgNamespaces;
+                foreach ($wgNamespaces as $ns) {
+                        foreach($ns->names as $synonym) {
+                                if(strcasecmp($synonym,$name)==0) {
+                                        return $ns->getIndex();
+                                }
+                        }
+                }
+                return NULL;
+        }
 	
-	function removeNameByIndex($index) {
-		if(array_key_exists($index,$this->names)) {
-			unset($this->names[$index]);
-			return true;
-		} else {
-			return false;
-		}
+        /**
+         * Return the default name for any namespace name
+         * given as a parameter, even if it is the default
+         * name already. Searches all namespaces.
+	 *
+	 * @param string Any namespace name
+	 * @return string The name (may be identical)
+	 * @static
+         */	
+	function getDefaultNameForName ( $name ) {
+                global $wgNamespaces;
+                $index=Namespace::getIndexForName($name);
+                if(!is_null($index)) {
+                        return $wgNamespaces[$index]->getDefaultName();
+                } else {
+                        return null;
+                }
 	}
 	
-	function removeAllNames() {
-		$this->names=array();
-		return true;
+	/**
+	 * Return an array of the default names of all
+	 * namespaces. Resets array pointer of $wgNamespaces.
+	 * @param $includeHidden Should hidden namespaces
+	 *  be part of the array?
+	 * @return array
+	 * @static
+	 */
+	function &getDefaultNamespaces($includeHidden=false) {
+		global $wgNamespaces;
+		$dns=array();
+		foreach($wgNamespaces as $ns) {
+			if(!$ns->isHidden() || $includeHidden) {
+				$dn=$ns->getDefaultName();
+				if(!is_null($dn)) {
+					$dns[$ns->getIndex()]=$dn;
+				} else {
+					$dns[$ns->getIndex()]='';
+				}
+			}
+		}		
+		return $dns;
 	}
+       
+       /**
+         * A convenience function that returns the same thing as
+         * getDefaultNamespaces() except with the array values changed to ' '
+         * where it found '_', useful for producing output to be displayed
+         * e.g. in <select> forms.
+         *
+	 * @static
+	 * @param $includeHidden
+	 * @return array
+         */
+        function &getFormattedDefaultNamespaces($includeHidden=false) {
+                $ns = Namespace::getDefaultNamespaces($includeHidden);
+                foreach($ns as $k => $v) {
+                        $ns[$k] = strtr($v, '_', ' ');
+                }
+                return $ns;
+        }
 
 	/**
 	* Load or reload namespace definitions from the database
 	* into a global array.
 	*
+	* @param $purgeCache If definitions exist in memory, should
+	*   they be reloaded anyway?
+	*
 	* @static
 	*/
-	function load() {
+	function load($purgeCache=false) {
 
-		global $wgNamespaces;
+		global $wgNamespaces, $wgMemc, $wgDBname;
+		$key="$wgDBname:namespaces:list";
+		if(!$purgeCache) {
+			$fromMemory = $wgMemc->get($key);
+			if(is_array($fromMemory)) {
+				# Cached definitions found
+				$wgNamespaces=$fromMemory;
+				return true;
+			}
+		}
 		$wgNamespaces = array();
 		$dbr =& wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'namespace',
@@ -863,6 +1028,12 @@ class Namespace {
 			# properties which are accessed below.	
 			$id=$row->ns_id;
 			$wgNamespaces[$id]=new Namespace();
+
+			# Cannot currently be changed through the UI - is
+			# there a need for it to be changeable?
+			$wgNamespaces[$id]->setMovable(
+				$id < NS_MAIN || $id==NS_IMAGE || 
+				$id==NS_CATEGORY ? false : true );
 			$wgNamespaces[$id]->setIndex($id);
 			$wgNamespaces[$id]->setSystemType($row->ns_system);
 			$wgNamespaces[$id]->setSearchedByDefault($row->ns_search_default);
@@ -886,6 +1057,7 @@ class Namespace {
 			}
 		}
 		$dbr->freeResult( $res );
+		$wgMemc->set($key,$wgNamespaces);
 	}
 
 	/**
@@ -972,18 +1144,6 @@ class Namespace {
 		}
 		return array(NS_RESULT=>NS_PSEUDO_CONVERTED);
 
-	}
-	/**
-	 * How many pages does this namespace contain?
-	 * @return The number of pages
-	*/
-	function countPages() {
-		$dbs =& wfGetDB(DB_SLAVE);
-		return $dbs->selectField(
-			'page',
-			'count(*)',
-			array('page_namespace'=>$this->getIndex())
-		);		
 	}
 
 }

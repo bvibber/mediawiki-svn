@@ -2226,6 +2226,14 @@ will expire at $4.
 'pseudonamespace_cannot_merge'=>'The target namespace contains pages. You have not specified that you want to merge into a non-empty namespace, or do not have permission to do so. This action is restricted because it is potentially irreversible.',
 'pseudonamespace_title_dupes'=>'The target namespace already contains pages with the following titles:',
 
+# Namespace logging
+'namespacelogpage'=>'Namespace_log',
+'namespacelogtext'=>'This is a log of all changes made through the namespace manager.',
+'namespaceaddlog'=>'Added namespace "$2"',
+'namespacedeletelog'=>'Deleted namespace "$2"',
+'namespacemodifylog'=>'Modified namespace definitions',
+'namespacepseudolog'=>'Converted pseudonamespace "$2" into real namespace "$3"',
+
 # This is appended via JavaScript to the entered namsepace name
 # as a suggested talkpage name in Special:Namespaces. If set to '-', 
 # it will not be used.
@@ -2247,7 +2255,7 @@ will expire at $4.
 'namespace_delete_name'=>'Delete',
 'namespace_save_changes'=>'Save changes',
 'namespace_not_deletable'=>'The namespace cannot be deleted.',
-'namespace_not_deletable_missing'=>'A namespace with the number $1 was not found.',
+'namespace_has_gone_missing'=>'A namespace with the number $1 was not found.',
 'namespace_not_deletable_system'=>'The namespace with the number $1 is a system namespace which is required for the operation of MediaWiki.',
 
 # Other namespace stuff

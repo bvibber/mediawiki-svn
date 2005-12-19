@@ -125,7 +125,7 @@ class ChangesList {
 			$r .= $this->skin->commentBlock( $rc_comment, $rcObj->getTitle() );
 		}
 
-		if ($rcObj->numberofWatchingusers > 0) {
+		if (isset($rcObj->numberofWatchingusers) && $rcObj->numberofWatchingusers > 0) {
 			$r .= wfMsg('number_of_watching_users_RCview',  $wgContLang->formatNum($rcObj->numberofWatchingusers));
 		}
 
@@ -346,7 +346,7 @@ class OldChangesList extends ChangesList {
 		$this->insertUserRelatedLinks($s,$rc);
 		$this->insertComment($s, $rc);
 
-		if ($rc->numberofWatchingusers > 0) {
+		if (isset($rc->numberofWatchingusers) && $rc->numberofWatchingusers > 0) {
 			$s .= ' ' . wfMsg('number_of_watching_users_RCview',  $wgContLang->formatNum($rc->numberofWatchingusers));
 		}
 
