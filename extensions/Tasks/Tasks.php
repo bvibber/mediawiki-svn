@@ -887,24 +887,28 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		 * @fixme There is no output! Should there be? No error output either.
 		 */
 		function check_mode( $title ) {
+
 			global $wgUser, $wgRequest;
+
 			$mode = trim( $wgRequest->getVal( 'mode' ) );
 			$taskid = $wgRequest->getInt( 'taskid', 0 );
-			if( $mode == '' || $taskid == 0 ) {
-				# Not correct
-				return '';
-			}
-			if( !$wgUser->isLoggedIn() ) {
-				# Needs to be logged in
-				return;
-			}
+
+			# Simple validation
+			if( $mode == '' || $taskid == 0 ) { return ''; }
+			# Needs to be logged in
+			if( !$wgUser->isLoggedIn() ) { return; }
 			
 			$out = '';
 			$fname = 'Tasks::check_mode';
 			$dbw =& wfGetDB( DB_MASTER );
-			if( $mode == 'assignme' ||  $mode == 'unassignme' ) {
-				# Assign or unassign an existing used to this task
-				$conditions = array( "task_id" => $taskid );
+
+			switch( $mode ) {
+
+			case 'assignme':
+			case 'unassignme':
+
+				// Assign or unassign an existing used to this task
+				$conditions = array( 'task_id' => $taskid );
 				$user_id = $wgUser->getId() ; # Assign
 				if( $mode == 'unassignme' ) {
 					# Unassign me; this can be invoked for every user by editing the URL!
@@ -926,7 +930,13 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					$this->get_type_html( $this->get_task_type( $task->task_type ) ) );
 				$log = new LogPage( 'tasks' );
 				$log->addEntry( 'tasks', $title, $act );
-			} elseif( $mode == 'close' || $mode == 'wontfix' || $mode == 'reopen' ) {
+
+				break;
+
+			case 'close':
+			case 'wontfix':
+			case 'reopen':
+
 				# Changing task status
 				if( $mode == 'reopen' ) {
 					$mode = 'open';
@@ -936,7 +946,11 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				}
 				$new_status = $this->get_status_number( $mode );
 				$this->change_task_status( $taskid, $new_status );
-			} elseif( $mode == 'delete' ) {
+
+				break;
+
+			case 'delete':
+
 				# Delete this task; sysops only!
 				if( $wgUser->isAllowed( 'delete' ) ) {
 					# OK, deleting
@@ -955,11 +969,15 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					$wgOut->setPageTitle( wfMsg( 'tasks_no_task_delete_title' ) );
 					$wgOut->addWikiText( wfMsg( 'tasks_no_task_delete_text' ) );
 					return '';
-				}				
-			} else {
+				}
+
+				break;
+
+			default:
 				# Unknown mode
 				return '';
-			}
+			} // end switch()
+
 			return $out;
 		}
 		
@@ -986,17 +1004,15 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$fname = 'Tasks:change_task_status';
 			$dbw =& wfGetDB( DB_MASTER );
 			
-			if( !is_numeric( $new_status ) ) {
-				# Paranoia
+			# Paranoia :
+			if( !is_numeric( $new_status ) or !is_numeric( $taskid ) ) {
 				return;
 			}
-			if( !is_numeric( $taskid ) ) {
-				# Paranoia
-				return;
-			}
-			
-			$as = array( 'task_status' => $new_status ); # What to chenge
-			$aw = array( 'task_id' => $taskid ); # Where to change it
+
+			# What to change:
+			$as = array( 'task_status' => $new_status );
+			# Where to change it:
+			$aw = array( 'task_id' => $taskid );
 			
 			if( $this->is_closed( $new_status ) ) {
 				# When closing, set closing user ID, and reset assignment
@@ -1028,11 +1044,14 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		 * Returns the list of active tasks for this page, for display in the sidebar
 		 */
 		function get_open_task_list( &$title , $useCache = false ) { # Checked for HTML and MySQL insertion attacks
+
 			global $wgTaskExtensionTasksCachedTitle , $wgTaskExtensionTasksCache ;
+
 			if( $useCache && $wgTaskExtensionTasksCachedTitle == $title->getPrefixedText() ) {
 				# Return the cache, thus skip the query and increase shareholder value
 				return $wgTaskExtensionTasksCache;
 			}
+
 			$tasks = $this->get_tasks_for_page( $title );
 			$ret = array();
 			foreach( $tasks as $task ) {
