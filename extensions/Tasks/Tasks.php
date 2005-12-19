@@ -809,8 +809,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_reopen' ), "action=tasks&mode=reopen&taskid={$tid}{$returnto}" );
 				}
 				
-				if ( $wgUser->isSysop() ) {
-					# Delete
+				if( $wgUser->isAllowed( 'delete' ) ) {
 					$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_delete' ), "action=tasks&mode=delete&taskid={$tid}{$returnto}" );
 				}
 				
@@ -888,7 +887,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		 * @return HTML output
 		 * @fixme There is no output! Should there be? No error output either.
 		 */
-		function check_mode( $title ) { # Checked for HTML and MySQL insertion attacks
+		function check_mode( $title ) {
 			global $wgUser, $wgRequest;
 			$mode = trim( $wgRequest->getVal( 'mode' ) );
 			$taskid = $wgRequest->getInt( 'taskid', 0 );
@@ -940,23 +939,23 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$this->change_task_status( $taskid, $new_status );
 			} elseif( $mode == 'delete' ) {
 				# Delete this task; sysops only!
-				if ( $wgUser->isSysop() ) {
+				if( $wgUser->isAllowed( 'delete' ) ) {
 					# OK, deleting
 					$dbw->delete( 'tasks',
-					array ( 'task_id' => $taskid ),
-					$fname );
+						array( 'task_id' => $taskid ),
+						$fname );
 					
 					# Log task deletion
-					$act = wfMsgForContent ( 'tasks_action_delete' ) ;
+					$act = wfMsgForContent( 'tasks_action_delete' );
 					$log = new LogPage( 'tasks' );
 					$log->addEntry( 'tasks', $title, $act );
-					$out .= wfMsgForContent ( 'tasks_task_was_deleted' ) ;
+					$out .= wfMsgHtml( 'tasks_task_was_deleted' );
 				} else {
 					# No-no!
 					global $wgOut;
 					$wgOut->setPageTitle( wfMsg( 'tasks_no_task_delete_title' ) );
 					$wgOut->addWikiText( wfMsg( 'tasks_no_task_delete_text' ) );
-					return "" ;
+					return "";
 				}				
 			} else {
 				# Unknown mode
