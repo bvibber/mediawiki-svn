@@ -27,6 +27,7 @@ $wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfReviewExtensionAfterToolbox';
 # Global variables
 $wgReviewExtensionInitMessages = false ;
 $wgReviewExtensionTopics = array () ;
+$wgReviewFeatureSingleUserMode = false ;
 
 # ______________________________________________________________________________
 # Functions
@@ -92,30 +93,47 @@ function wfReviewExtensionInitMessages () {
 * @param $topic Topic object (one topic only)
 * @return HTML string with radio fields
 */
-function wfReviewExtensionGetTopicForm ( $topic ) {
+function wfReviewExtensionGetTopicForm ( $topic , $fullpage = false ) {
 	# Dummy value
 	if ( !isset ( $topic->value ) )
 		$topic->value = 0 ;
 	
 	$tkey = "review_topic[" . $topic->key . "]" ;
 	$ret = "" ;
+	if ( $fullpage )
+		$ret .= "<td align='center'>" ;
 	$ret .= '<input id="review_radio_no_opinion" type="radio" name="' . $tkey . '" value="0"' ;
 	$ret .= $topic->value == 0 ? " checked" : "" ;
-	$ret .= '/>&nbsp;' ;
+	if ( $fullpage )
+		$ret .= "/></td>" ;
+	else
+		$ret .= '/>&nbsp;' ;
 	if ( $topic->range == 2 ) { # Yes/No
+		if ( $fullpage )
+			$ret .= "<td/><td nowrap>" ;
 		$ret .= '<input type="radio" name="' . $tkey . '" value="1" id="review_radio_1_of_2"' ;
 		$ret .= $topic->value == 1 ? " checked" : "" ;
 		$ret .= '>' . $topic->left . '</input> ' ;
 		$ret .= '<input type="radio" name="' . $tkey . '" value="2" id="review_radio_2_of_2"' ;
 		$ret .= $topic->value == 2 ? " checked" : "" ;
 		$ret .= '>' . $topic->right . '</input>' ;
+		if ( $fullpage )
+			$ret .= "</td><td/><td>" ;
 	} else { # Range
+		if ( $fullpage )
+			$ret .= "<td align='right' nowrap>" . $topic->left . "</td><td nowrap>" ;
 		for ( $a = 1 ; $a <= $topic->range ; $a++ ) {
 			$ret .= '<input type="radio" name="' . $tkey . '" value="' . $a . '"' ;
 			$ret .= " id='review_radio_" . $a . "_of_" . $topic->range . "'" ; # This doesn't show for some weird reason...
 			$ret .= $topic->value == $a ? " checked" : "" ;
 			$ret .= '/>' ;
 		}
+		if ( $fullpage )
+			$ret .= "</td><td nowrap>" . $topic->right . "</td><td width='100%'>" ;
+	}
+	if ( $fullpage ) {
+		$ret .= "<input type='text' style='width:100%' name='review_comment[" . $topic->key . "]' value='" . htmlentities ( $topic->comment ) . "'/>" ;
+		$ret .= "</td>\n" ;
 	}
 	return $ret ;
 }
@@ -185,9 +203,11 @@ function wfReviewExtensionPresetForm ( &$topics , &$ratings ) {
 		if ( isset ( $ratings[$key] ) ) {
 			# User rating exists
 			$topics[$key]->value = $ratings[$key]->val_value ;
+			$topics[$key]->comment = $ratings[$key]->val_comment ;
 		} else {
 			# Dummy value
 			$topics[$key]->value = 0 ;
+			$topics[$key]->comment = "" ;
 		}
 	}
 }
@@ -198,8 +218,8 @@ function wfReviewExtensionPresetForm ( &$topics , &$ratings ) {
 * @param $merge_others can be called with "false" to prevent merging with other ratings
 * @return bool : Did it apply form data?
 */
-function wfReviewExtensionReadLastForm ( &$ratings , $merge_others = true ) {
-	global $wgUser, $wgRequest , $wgTitle ;
+function wfReviewExtensionReadLastForm ( &$ratings , $title , $merge_others = true ) {
+	global $wgUser, $wgRequest ;
 	
 	# Was there a form?
 	if ( $wgRequest->getText ( 'save_review' , "" ) == "" )
@@ -236,7 +256,7 @@ function wfReviewExtensionReadLastForm ( &$ratings , $merge_others = true ) {
 			# Already set a value
 			$new_data[$key] = "" ;
 			$new_data[$key]->val_user = $wgUser->getID() ;
-			$new_data[$key]->val_page = $wgTitle->getArticleID() ;
+			$new_data[$key]->val_page = $title->getArticleID() ;
 			$new_data[$key]->val_revision = $oldrev ;
 			$new_data[$key]->val_type = $key ;
 			$new_data[$key]->val_value = $value ;
@@ -257,7 +277,7 @@ function wfReviewExtensionReadLastForm ( &$ratings , $merge_others = true ) {
 
 		# Delete *all* old ratings from the database
 		$conds = array () ;
-		$conds['val_page'] = $wgTitle->getArticleID() ;
+		$conds['val_page'] = $title->getArticleID() ;
 		wfReviewExtensionSetUserCondition ( $wgUser , $conds ) ;
 		$dbw->delete ( 'validate' , $conds , $fname ) ;
 	} else {
@@ -266,7 +286,7 @@ function wfReviewExtensionReadLastForm ( &$ratings , $merge_others = true ) {
 	
 		# Delete old ratings for this revision from the databasewfReviewExtensionPresetForm
 		$conds = array () ;
-		$conds['val_page'] = $wgTitle->getArticleID() ;
+		$conds['val_page'] = $title->getArticleID() ;
 		$conds['val_revision'] = $oldrev ;
 		wfReviewExtensionSetUserCondition ( $wgUser , $conds ) ;
 		$dbw->delete ( 'validate' , $conds , $fname ) ;
@@ -311,7 +331,7 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 	$revision = $wgArticle->getRevIdFetched() ;
 	wfReviewExtensionInitMessages () ;
 	$ratings = wfReviewExtensionGetUserRatingsForPage ( $wgTitle , $wgUser ) ;
-	$did_update_review = wfReviewExtensionReadLastForm ( $ratings , $do_merge ) ;
+	$did_update_review = wfReviewExtensionReadLastForm ( $ratings , $wgTitle , $do_merge ) ;
 	if ( !isset ( $ratings[$revision] ) ) # Construct blank dummy, if necessary
 		$ratings[$revision] = array () ;
 	wfReviewExtensionPresetForm ( $wgReviewExtensionTopics , $ratings[$revision] ) ;
@@ -477,6 +497,7 @@ function wfReviewExtensionFunction () {
 				if ( $review->val_user == 0 )
 					$data[$type]->anon_count++ ;
 				$data[$type]->sum += $review->val_value ;
+				$data[$type]->comment = $review->val_comment ;
 			}
 
 			# Add data to overall statistics
@@ -501,7 +522,7 @@ function wfReviewExtensionFunction () {
 		* @return HTML table row
 		*/
 		function get_revision_statistics_row ( $title , $revision , &$data , $revision_mode = false ) {
-			global $wgReviewExtensionTopics , $wgUser , $wgTitle , $wgRequest ;
+			global $wgReviewExtensionTopics , $wgUser , $wgTitle , $wgRequest , $wgReviewFeatureSingleUserMode ;
 			$skin =& $wgUser->getSkin() ;
 
 			# Row header
@@ -573,13 +594,21 @@ function wfReviewExtensionFunction () {
 						$ret .= "<div id='" ;
 						$ret .= "review_radio_" . (int) $average . "_of_" . $data[$type]->max ;
 						$ret .= "'>" ;
-						$ret .= wfMsgForContent ( 'review_statistic_cell' ,
-										sprintf ( "%1.1f" , $average ) ,
-										$data[$type]->max ,
-										$data[$type]->total_count ,
-										$data[$type]->total_count - $data[$type]->anon_count ,
-										$data[$type]->anon_count
-						) ;
+						if ( $wgReviewFeatureSingleUserMode && $revision > 0 ) {
+							$ret .= wfMsgForContent ( 'review_version_statistic_cell' ,
+											sprintf ( "%1.1f" , $average ) ,
+											$data[$type]->max
+							) ;
+							$ret .= "<br/>" . htmlentities ( $data[$type]->comment ) ;
+						} else {
+							$ret .= wfMsgForContent ( 'review_statistic_cell' ,
+											sprintf ( "%1.1f" , $average ) ,
+											$data[$type]->max ,
+											$data[$type]->total_count ,
+											$data[$type]->total_count - $data[$type]->anon_count ,
+											$data[$type]->anon_count
+							) ;
+						}
 						$ret .= "</div>" ;
 					} else {
 						$ret .= "&mdash;" ;
@@ -628,6 +657,64 @@ function wfReviewExtensionFunction () {
 			}
 			return $ret ;			
 		}
+		
+		/**
+		*/
+		function review_page  ( $page , $revision ) {
+			global $wgTitle, $wgUser , $wgReviewExtensionTopics, $wgArticle, $action, $wgRequest;
+			$title = Title::newFromID ( $page ) ;
+			
+			# Do we care?
+			if( !wfReviewExtensionDoesNamespaceApply ( $title->getNamespace() ) )
+				return wfMsgForContent ( 'review_wrong_namespace' ) ;
+			if ( $wgUser->isBlocked() )
+				return wfMsgForContent ( 'review_blocked' ) ;
+			
+			# Initialize
+			$out = "" ;
+			$do_merge = $wgRequest->getBool ( 'do_merge' , false ) ;
+			$skin =& $wgUser->getSkin() ;
+			wfReviewExtensionInitMessages () ;
+			$ratings = wfReviewExtensionGetUserRatingsForPage ( $title , $wgUser ) ;
+			$did_update_review = wfReviewExtensionReadLastForm ( $ratings , $title , $do_merge ) ;
+			if ( !isset ( $ratings[$revision] ) ) # Construct blank dummy, if necessary
+				$ratings[$revision] = array () ;
+			wfReviewExtensionPresetForm ( $wgReviewExtensionTopics , $ratings[$revision] ) ;
+			
+			$link = $skin->makeLinkObj( $title , wfMsgForContent('review_version_link',$revision) , "old_id={$revision}" );
+			$out .= "<p>" . $link . "</p>" ;;
+			$out .= "<form method='post' id='review_page_version'>" ;
+			
+			if ( $did_update_review )
+				$out .= wfMsgForContent ( 'review_has_been_stored' ) . "<br/>" ;
+			
+			$out .= wfMsgForContent ( 'review_your_review' ) . "<br/>" ;
+			$out .= "<table border='1' width='100%'>" ;
+			$out .= "<tr><th align='left'>" . wfMsgForContent('review_topic') . "</th><th>" . wfMsgForContent('review_no_opinion') ;
+			$out .= "</th><th colspan='3'>" . wfMsg('review_rating') . "</th><th>" ;
+			$out .= wfMsg('review_comment') . "</th></tr>" ;
+			foreach( $wgReviewExtensionTopics as $topic ) {
+				$topic_title = Title::makeTitleSafe( NS_MEDIAWIKI, wfMsgForContent('review_topic_page').'#'.$topic->name );
+				$link = $skin->makeLinkObj( $topic_title,$topic->name );
+				$out .= "<tr><th align='left' nowrap>{$link}</th>" ;
+				$out .= wfReviewExtensionGetTopicForm ( $topic , true ) . "</tr>" ;
+				
+			}
+			$out .= "</table><p>" ;
+			
+			$out .= "<input type='hidden' name='review_oldid' value='{$revision}'/>\n" ;
+			if ( count ( $ratings ) > 1 ) {
+				# "Merge" CHECKBOX
+				print "<input type='checkbox' checked name='do_merge' value='1'/>" . wfMsgForContent ( 'review_do_merge' ) . " \n";
+			} else {
+				# Hidden field "don't merge"
+				print "<input type='hidden' name='do_merge' value='0'/>\n" ;
+			}
+			$out .= "<input type='submit' name='save_review' value='" . wfMsgForContent('review_save') . "'/>" ;
+
+			$out .= "</p></form>" ;
+			return $out ;
+		}
 
 		/**
 		* Special page main function
@@ -670,6 +757,10 @@ function wfReviewExtensionFunction () {
 			if ( isset ( $theuser ) ) {
 				$link = $skin->makeLinkObj ( $theuser->getUserPage() , $theuser->getName() ) ;
 				$o[] = wfMsgForContent ( 'review_concerns_user' , $link ) ;
+			}
+			if ( $page_id > 0 AND $rev_id > 0 ) {
+				$link = $skin->makeLinkObj( $wgTitle , wfMsgForContent('revision_review_this_page_version_link') , "&mode=review&page_id={$page_id}&rev_id={$rev_id}" ) ;
+				$o[] = $link ;
 			}
 			if ( count ( $o ) > 0 ) {
 				$out .= "<ul><li>" . implode ( "</li>\n<li>" , $o ) . "</li></ul>" ;
@@ -715,6 +806,8 @@ function wfReviewExtensionFunction () {
 			} else if ( $mode == 'view_user_reviews' AND isset ( $theuser ) ) {
 				if ( $page_id != 0 ) {
 					# View the reviews of a user for a specific page
+					global $wgReviewFeatureSingleUserMode ;
+					$wgReviewFeatureSingleUserMode = true ;
 					$revisions = wfReviewExtensionGetUserRatingsForPage ( $title , $theuser ) ;
 					
 					$statistics = array() ;
@@ -728,7 +821,7 @@ function wfReviewExtensionFunction () {
 					$out .= $this->get_revision_statistics_row ( $title , 0 , $statistics ) ;
 					$out .= $out2 ;
 					$out .= "</table>\n" ;
-
+					$wgReviewFeatureSingleUserMode = false ;
 
 				} else {
 					# View the pages reviewed by a user
@@ -753,6 +846,9 @@ function wfReviewExtensionFunction () {
 						$out .= "<ol><li>" . implode ( "</li>\n<li>" , $data2 ) . "</li></ul>" ;
 				}
 				$page_title = wfMsgForContent ( 'review_for_user' , $theuser->getName() ) ;
+			} else if ( $mode == 'review' ) {
+				$out = $this->review_page ( $page_id , $rev_id ) ;
+				$page_title = wfMsgForContent ( 'review_page_review' , $title->getPrefixedText() ) ;
 			} else {
 				$error = true ;
 			}

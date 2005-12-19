@@ -40,6 +40,14 @@ $wgMessageCache->addMessages(
 		'review_user_details_link' => "(details)",
 		'review_do_merge' => "Merge my reviews of other revisions of this page into this one",
 		'review_has_been_stored' => "<font id='review_has_been_stored'>Your review has been stored!</font>",
+		'revision_review_this_page_version_link' => "Review this version of the page.",
+		'review_page_review' => "Review of page \"$1\"",
+		'review_blocked' => "You're blocked, go away.",
+		'review_wrong_namespace' => "Pages in this namespace cannot be reviewed!",
+		'review_topic' => "Topic",
+		'review_no_opinion' => "No opinion",
+		'review_rating' => "Rating",
+		'review_comment' => "Comment",
 	)
 );
 ?>
