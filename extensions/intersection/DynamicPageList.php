@@ -92,6 +92,9 @@ function DynamicPageList( $input ) {
     $bSuppressErrors = false;
     $bShowNamespace = true;
     $bAddFirstCategoryDate = false;
+    
+    $aCategories = array();
+    $aExcludeCategories = array();
 
     $aParams = explode("\n", $input);
 
