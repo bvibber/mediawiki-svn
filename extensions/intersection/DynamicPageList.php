@@ -69,7 +69,6 @@ function wfDynamicPageList() {
 // The callback function for converting the input text to HTML output
 function DynamicPageList( $input ) {
     global $wgUser;
-    global $wgTitle;    
     global $wgLang;
     global $wgContLang;
     global $wgDLPminCategories, $wgDLPmaxCategories,$wgDLPMinResultCount, $wgDLPMaxResultCount;
@@ -97,9 +96,6 @@ function DynamicPageList( $input ) {
     $aParams = explode("\n", $input);
 
     $parser = new Parser();
-    $parser->mTitle = $wgTitle;
-    $parser->mOutputType = OT_MSG;
-    $parser->initialiseVariables();
 
     foreach($aParams as $sParam)
     {
@@ -110,14 +106,14 @@ function DynamicPageList( $input ) {
       $sArg = trim($aParam[1]);
       if ($sType == 'category')
       {
-        $title = Title::newFromText( $parser->replaceVariables($sArg) );
+        $title = Title::newFromText( $parser->transformMsg($sArg, null) );
         if( is_null( $title ) )
           continue;
         $aCategories[] = $title; 
       }
       else if ($sType == 'notcategory')
       {
-        $title = Title::newFromText( $parser->replaceVariables($sArg) );
+        $title = Title::newFromText( $parser->transformMsg($sArg, null) );
         if( is_null( $title ) )
           continue;
         $aExcludeCategories[] = $title; 
