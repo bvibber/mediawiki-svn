@@ -138,7 +138,6 @@ define('NS_ILLEGAL_NAMES',3);
 define('NS_DUPLICATE_NAMES',4);
 define('NS_INTERWIKI_NAMES',5);
 define('NS_PREFIX_NAMES',6);
-define('NS_LINKED_NAMES',7);
 /**#@-*/
 
 /**#@+

@@ -673,14 +673,6 @@ END;
 			.wfMsg('namespace_name_prefix').
 			'</td></tr>';
 		}
-		foreach($result[NS_LINKED_NAMES] as $linkedName) {
-			$htmltable.=
-			'<tr><td>'
-			.$linkedName.
-			'</td><td>'
-			.wfMsg('namespace_name_linked').
-			'</td></tr>';
-		}
 
 		# Close table
 		$htmltable .= '</table>'."\n";
