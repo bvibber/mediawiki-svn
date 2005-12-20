@@ -1,22 +1,40 @@
 <?
+/**
+ * An extension that let your users review article quality.
+ *
+ * @package MediaWiki
+ * @subpackage Extensions
+ * @todo document
+ *
+ * @author Magnus Manke <insertemail@here.please>
+ * @copyright Copyright © 2005, Magnus Manke
+ * @license <Please enter the license here>
+ *
+ */
+
 /*
-To activate, enter
-	include ( "extensions/Review/Review.php" ) ;
-in your LocalSettings.php
+                          README
 
-To activate a different CSS stylesheet, enter something like
-	define( 'REVIEW_CSS' , 'http://yourhost.com/name/wiki/my_stylesheets/stylesheet.css' );
-*before* the "include" statement.
+To activate the extension, you will have to configure your MediaWiki
+installation. In your LocalSettings.php append:
+
+    include ( "extensions/Review/Review.php" ) ;
+
+Optionally, you can activate a different CSS stylesheet using the REVIEW_CSS
+define (it should be done *before* the 'include' statement):
+
+    define( 'REVIEW_CSS' , 'http://yourhost.com/name/wiki/my_stylesheets/stylesheet.css' );
+
+
 */
-
 
 if( !defined( 'MEDIAWIKI' ) ) die();
 if( !defined( 'REVIEW_CSS' ) ) define('REVIEW_CSS', $wgScriptPath.'/extensions/Review/review.css' );
 
 $wgExtensionCredits['Review'][] = array(
-        'name' => 'Review',
-        'description' => 'The resurrected validation feature.',
-        'author' => 'Magnus Manske'
+	'name' => 'Review',
+	'description' => 'The resurrected validation feature.',
+	'author' => 'Magnus Manske'
 );
 
 $wgExtensionFunctions[] = 'wfReviewExtensionFunction';
@@ -321,12 +339,10 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 	global $wgTitle, $wgUser , $wgReviewExtensionTopics, $wgArticle, $action, $wgRequest;
 
 	# Do we care?
-	if( !wfReviewExtensionDoesNamespaceApply ( $wgTitle->getNamespace() ) )
-		return ;
-	if ( $wgUser->isBlocked() )
-		return ;
-	if ( $action != "view" )
-		return ;
+	if(    !wfReviewExtensionDoesNamespaceApply ( $wgTitle->getNamespace() )
+	    or $wgUser->isBlocked()
+	    or ( $action != "view" )
+	) return;
 
 	# Initialize
 	$do_merge = $wgRequest->getBool ( 'do_merge' , false ) ;
@@ -405,6 +421,9 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 # ____________________________________________________________________
 # Class / Special Page
 
+/**
+* @todo document
+*/
 function wfReviewExtensionFunction () {
 	global $IP, $wgMessageCache;
 	wfReviewExtensionInitMessages();
@@ -575,9 +594,7 @@ function wfReviewExtensionFunction () {
 			foreach ( $wgReviewExtensionTopics AS $type => $topic ) {
 				if ( $revision < 0 ) {
 					# Table header row
-					$ret .= "<th id='review_statistics_table_header'>" ;
-					$ret .= $topic->name ;
-					$ret .= "</th>" ;
+					$ret .= "<th id='review_statistics_table_header'>{$topic->name}</th>" ;
 				} else if ( $revision_mode ) {
 					$ret .= "<td id='review_statistics_table_cell'>" ;
 					if ( isset ( $data[$type] ) ) {
@@ -642,7 +659,9 @@ function wfReviewExtensionFunction () {
 		}
 
 		/**
-		*/
+		 * @param $user
+		 * @todo document
+		 */
 		function get_list_of_pages_reviewed_by_user ( $user ) {
 			$conds = array () ;
 			wfReviewExtensionSetUserCondition ( $user , $conds ) ;
@@ -658,11 +677,14 @@ function wfReviewExtensionFunction () {
 			while ( $line = $dbr->fetchObject( $res ) ) {
 				$ret[] = $line->val_page ;
 			}
-			return $ret ;			
+			return $ret ;
 		}
 		
 		/**
-		*/
+		 * @param $page
+		 * @param $revision
+		 * @todo document
+		 */
 		function review_page  ( $page , $revision ) {
 			global $wgTitle, $wgUser , $wgReviewExtensionTopics, $wgArticle, $action, $wgRequest;
 			$title = Title::newFromID ( $page ) ;
@@ -769,6 +791,7 @@ function wfReviewExtensionFunction () {
 				$out .= "<ul><li>" . implode ( "</li>\n<li>" , $o ) . "</li></ul>" ;
 			}
 
+			// FIXME: use private methods!
 			# Modes
 			if ( $mode == 'view_page_statistics' ) {
 				# View statistics for one page
