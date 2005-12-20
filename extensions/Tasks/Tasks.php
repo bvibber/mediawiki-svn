@@ -314,6 +314,7 @@ function wfTasksExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL in
 <?php
 		
 	}
+	return true ;
 }
 
 /**

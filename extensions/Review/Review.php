@@ -395,7 +395,7 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 	</div></form>
 	<ul>
 <?php
-
+	return true ;
 }
 
 
