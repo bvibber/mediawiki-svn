@@ -113,10 +113,10 @@ function wfReviewExtensionGetTopicForm ( $topic , $fullpage = false ) {
 			$ret .= "<td/><td nowrap>" ;
 		$ret .= '<input type="radio" name="' . $tkey . '" value="1" id="review_radio_1_of_2"' ;
 		$ret .= $topic->value == 1 ? " checked" : "" ;
-		$ret .= '>' . $topic->left . '</input> ' ;
+		$ret .= '></input>' . $topic->left . ' ' ;
 		$ret .= '<input type="radio" name="' . $tkey . '" value="2" id="review_radio_2_of_2"' ;
 		$ret .= $topic->value == 2 ? " checked" : "" ;
-		$ret .= '>' . $topic->right . '</input>' ;
+		$ret .= '/>' . $topic->right ;
 		if ( $fullpage )
 			$ret .= "</td><td/><td>" ;
 	} else { # Range
