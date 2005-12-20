@@ -290,23 +290,26 @@ function wfReviewExtensionReadLastForm ( &$ratings , $title , $merge_others = tr
 		$conds['val_revision'] = $oldrev ;
 		wfReviewExtensionSetUserCondition ( $wgUser , $conds ) ;
 		$dbw->delete ( 'validate' , $conds , $fname ) ;
-}
+	}
 
 	# Insert new ratings into the database
-	if ( count ( $new_data ) > 0 ) $dbw->begin () ;
-	foreach ( $new_data AS $key => $value ) {
-		$data = array (
-			'val_user' => $value->val_user ,
-			'val_page' => $value->val_page ,
-			'val_revision' => $value->val_revision ,
-			'val_type' => $value->val_type ,
-			'val_value' => $value->val_value ,
-			'val_comment' => $value->val_comment ,
-			'val_ip' => $value->val_ip ,
-		) ;
-		$dbw->insert ( 'validate' , $data ) ;
+	if ( count ( $new_data ) > 0 ) {
+		$dbw->begin () ;
+		foreach ( $new_data AS $key => $value ) {
+			$data = array (
+				'val_user' => $value->val_user ,
+				'val_page' => $value->val_page ,
+				'val_revision' => $value->val_revision ,
+				'val_type' => $value->val_type ,
+				'val_value' => $value->val_value ,
+				'val_comment' => $value->val_comment ,
+				'val_ip' => $value->val_ip ,
+			) ;
+			$dbw->insert ( 'validate' , $data ) ;
+		}
+		$dbw->commit();
 	}
-	if ( count ( $new_data ) > 0 ) $dbw->commit() ;
+
 	return true ;
 }
 
