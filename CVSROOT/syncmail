@@ -168,7 +168,7 @@ def calculate_diff(entry, contextlines):
                 for c in line.rstrip():
                     if c.isspace():
                         continue
-                    if c < ' ' or c > chr(127):
+                    if c < ' ':
                         lines = BINARY_EXPLANATION_LINES[:]
                         break
             lines.insert(0, '--- NEW FILE: %s ---\n' % file)
