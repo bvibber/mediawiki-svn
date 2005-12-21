@@ -24,6 +24,8 @@ define( 'SV_TYPE_STABLE',     1 );
 define( 'SV_TYPE_STABLE_CANDIDATE', 2 );
 /**@-*/
 
+# Evil variables
+$wgStableVersionCaching = false ;
 
 $wgExtensionCredits['StableVersion'][] = array(
         'name' => 'Stable version',
@@ -36,6 +38,8 @@ $wgExtensionFunctions[] = 'wfStableVersion' ;
 $wgHooks['ArticleViewHeader'][] = 'wfStableVersionHeaderHook' ;
 $wgHooks['ArticlePageDataBefore'][] = 'wfStableVersionArticlePageDataBeforeHook' ;
 $wgHooks['ArticlePageDataAfter'][] = 'wfStableVersionArticlePageDataAfterHook' ;
+$wgHooks['ParserBeforeInternalParse'][] = 'wfStableVersionParseBeforeInternalParseHook' ;
+$wgHooks['ArticleAfterFetchContent'][] = 'wfStableVersionArticleAfterFetchContentHook' ;
 
 # BEGIN logging functions
 $wgHooks['LogPageValidTypes'][] = 'wfStableVersionAddLogType';
@@ -97,7 +101,7 @@ function wfStableVersionArticlePageDataBeforeHook ( &$article , &$fields ) {
 * @param $article The article
 * @param $fields Query result object
 */
-function wfStableVersionArticlePageDataAfterHook ( &$article , $fields ) {
+function wfStableVersionArticlePageDataAfterHook ( &$article , &$fields ) {
 	$dbr =& wfGetDB( DB_SLAVE );
 	$fname = "wfStableVersionArticlePageDataAfterHook" ;
 	$title = $article->getTitle() ;
@@ -117,11 +121,15 @@ function wfStableVersionArticlePageDataAfterHook ( &$article , $fields ) {
 	$article->mLastStable = 0 ;
 	while ( $o = $dbr->fetchObject( $res ) ) {
 		if ( $o->sv_type == SV_TYPE_STABLE ) {
-			# Stable version
-			if ( $o->sv_page_id == $title->getArticleID() )
+			if ( $o->sv_page_id == $title->getArticleID() ) {
+				# This is a stable version, set mark and get cache
 				$article->mIsStable = true ;
-			if ( $article->mLastStable == 0 )
+				$article->mStableCache = $o->sv_cache ;
+			}
+			if ( $article->mLastStable == 0 ) {
+				# The latest stable version
 				$article->mLastStable = $o->sv_page_rev ;
+			}
 		}
 	}
 	$dbr->freeResult( $res );
@@ -183,6 +191,32 @@ function wfStableVersionHeaderHook ( &$article ) {
 	return true ;
 }
 
+
+/**
+* This is a parser hook that will terminate the parsing process after stripping
+*/
+function wfStableVersionParseBeforeInternalParseHook ( &$parser , &$text , &$x ) {
+	global $wgStableVersionTempText , $wgStableVersionTempX , $wgStableVersionCaching ;
+	if ( !$wgStableVersionCaching ) return true ; # Normal parsing, no caching
+	
+	# Stop the parsing process
+	return false ;
+}
+
+/**
+*/
+function wfStableVersionArticleAfterFetchContentHook ( &$article , &$content ) {
+	if ( !isset ( $article->mIsStable ) ) return true ;
+	if ( !isset ( $article->mStableCache ) ) return true ;
+	if ( !$article->mIsStable ) return true ;
+	
+	# This is a stable version and has a cache, so use that
+	$content = $article->mStableCache ;
+	return true ;
+}
+
+
+
 # The special page
 function wfStableVersion() {
 	global $IP, $wgMessageCache;
@@ -199,6 +233,45 @@ function wfStableVersion() {
 		function SpecialStableVersion() {
 			SpecialPage::SpecialPage( 'StableVersion' );
 			$this->includable( true );
+		}
+		
+		
+		function fixNoWiki( &$state ) {
+			if ( !is_array( $state ) ) {
+				return ;
+			}
+	
+			# Surround nowiki content with <nowiki> again
+			for ( $content = end($state['nowiki']); $content !== false; $content = prev( $state['nowiki'] ) ) {
+				$key = key( $state['nowiki'] ) ;
+				$state['nowiki'][$key] = "<nowiki>" . $content . "</nowiki>" ;
+			}
+			
+		}
+
+		/**
+		*/
+		function getCacheText ( &$article ) {
+			global $wgStableVersionCaching , $wgUser ;
+			$title = $article->getTitle() ;
+			$article->loadContent ( true ) ; # FIXME: Do we need the "true" here? For what? Safe redirects??
+			$text = $article->mContent ;
+			
+			$p = new Parser ;
+			$wgStableVersionCaching = true ;
+			$parserOptions = ParserOptions::newFromUser( $wgUser ); # Dummy
+
+			$text = $p->parse ( $text , $title , $parserOptions ) ;
+			$stripState = $p->mStripState ;
+			$wgStableVersionCaching = false ;
+			$text = $p->replaceVariables ( $text , $parse_options ) ;
+		
+			$this->fixNoWiki ( $stripState ) ;
+			$p->mStripState = $stripState ;
+			$text = $p->unstrip( $text, $p->mStripState );
+			$text = $p->unstripNoWiki( $text, $p->mStripState );
+			
+			return $text ;
 		}
 	
 		/**
@@ -229,19 +302,18 @@ function wfStableVersion() {
 				$act = wfMsg ( 'stableversion_reset_log' ) ;
 			}
 			
-			# Get old stable version
-/*			$dbr =& wfGetDB( DB_SLAVE );
-			$fname = "SpecialStableVersion:execute" ;
-			$row = $dbr->selectRow( 'page', array( 'page_stable' ),
-				array( 'page_id' => $id ), $fname );
-			$oldstable = $row->page_stable ;
-*/
+			$article = new Article ( $t ) ;
+
+			# Old stable version
 			$oldstable = isset ( $wgArticle->mLastStable ) ? $wgArticle->mLastStable : 0 ;
 			if ( $oldstable == 0 ) $before = wfMsg ( 'stableversion_before_no' ) ;
 			else $before = wfMsg ( 'stableversion_before_yes' , $oldstable ) ;
 			$act .= " " . $before ;
 			
-			$type = SV_TYPE_STABLE ;
+			$type = SV_TYPE_STABLE ; # FIXME: This should become something else once there are several "types"
+			
+			# Get template-replaced cache
+			$cache = $this->getCacheText ( $article ) ;
 
 			$dbw =& wfGetDB( DB_MASTER );
 			$dbw->begin () ;
@@ -256,7 +328,7 @@ function wfStableVersion() {
 				'sv_type' => $type,
 				'sv_user' => $wgUser->getID(),
 				'sv_date' => "12345678123456" ,
-				'sv_cache' => "",
+				'sv_cache' => $cache,
 			) ;
 			$dbw->insert( 'stableversions',
 				$values ,
