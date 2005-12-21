@@ -71,26 +71,14 @@ function wfStableVersionAddCache () {
 	global $wgMessageCache , $wgStableVersionAddCache ;
 	if ( $wgStableVersionAddCache ) return ;
 	$wgStableVersionAddCache = true ;
-	$wgMessageCache->addMessages(
-		array(
-			'stableversion_this_is_stable' => 'This is the stable version of this article. You can also look at the <a href="$1">latest draft version</a>.',
-			'stableversion_this_is_draft_no_stable' => 'You are looking at a draft version of this article; there is no stable version of this article yet.',
-			'stableversion_this_is_draft' => 'This is a draft version of this article. You can also look at the <a href="$1">stable version</a>.',
-			'stableversion_reset_stable_version' => 'Click <a href="$1">here</a> to remove this as stable version!',
-			'stableversion_set_stable_version' => 'Click <a href="$1">here</a> to set this as stable version!',
-			'stableversion_set_ok' => 'The stable version has been successfully set.',
-			'stableversion_reset_ok' => 'The stable version has been successfully removed. This article has no stable version right now.',
-			'stableversion_return' => 'Return to <a href="$1">$2</a>',
-			
-			'stableversion_reset_log' => 'Stable version has been removed.',
-			'stableversion_logpage' => 'Stable version log',
-			'stableversion_logpagetext' => 'This is a log of changes to stable versions',
-			'stableversion_logentry' => '',
-			'stableversion_log' => 'Revision #$1 is now the stable version.',
-			'stableversion_before_no' => 'There was no stable revision before.',
-			'stableversion_before_yes' => 'The last stable revision was #$1.',
-		)
-	);
+	
+	// Default language is english
+	require_once('language/en.php');
+
+	global $wgLanguageCode;
+	$filename = 'language/' . addslashes($wgLanguageCode) . '.php' ;
+	// inclusion might fail :p
+	include( $filename );
 }
 
 /**
@@ -120,10 +108,11 @@ function wfStableVersionArticlePageDataAfterHook ( &$article , $fields ) {
 	$res = $dbr->select(
 			/* FROM   */ 'stableversions',
 			/* SELECT */ '*',
-			/* WHERE  */ array( 'sv_page_id' => $title->getArticleID() , 'sv_page_rev' => $article->mRevision ) ,
+			/* WHERE  */ array( 'sv_page_id' => $title->getArticleID() ) ,
+			$fname,
 			array ( "ORDER BY" => "sv_page_rev DESC" )
 	);
-	
+
 	$article->mIsStable = false ;
 	$article->mLastStable = 0 ;
 	while ( $o = $dbr->fetchObject( $res ) ) {
@@ -164,8 +153,12 @@ function wfStableVersionHeaderHook ( &$article ) {
 	$st = "" ; # Subtitle
 	
 	if ( $article->mIsStable ) { # This is the stable version
-		$url = $wgTitle->getFullURL () ;
-		$st = wfMsg ( 'stableversion_this_is_stable' , $url ) ;
+		if ( $article->mLatest == $article->mLastStable ) {
+			$st .= wfMsg ( 'stableversion_this_is_stable_and_current' ) ;
+		} else {
+			$url = $wgTitle->getFullURL () ;
+			$st .= wfMsg ( 'stableversion_this_is_stable' , $url ) ;
+		}
 	} else if ( $article->mLastStable == "0" ) { # There is no spoon, er, stable version
 		$st = wfMsg ( 'stableversion_this_is_draft_no_stable' ) ;
 	} else { # This is not the stable version, recommend it
@@ -212,7 +205,7 @@ function wfStableVersion() {
 		* main()
 		*/
 		function execute( $par = null ) {
-			global $wgOut , $wgRequest , $wgUser ;
+			global $wgOut , $wgRequest , $wgUser , $wgArticle ;
 			
 			# Sanity checks
 			$mode = $wgRequest->getText('mode', "") ;
@@ -237,11 +230,13 @@ function wfStableVersion() {
 			}
 			
 			# Get old stable version
-			$dbr =& wfGetDB( DB_SLAVE );
+/*			$dbr =& wfGetDB( DB_SLAVE );
 			$fname = "SpecialStableVersion:execute" ;
 			$row = $dbr->selectRow( 'page', array( 'page_stable' ),
 				array( 'page_id' => $id ), $fname );
 			$oldstable = $row->page_stable ;
+*/
+			$oldstable = isset ( $wgArticle->mLastStable ) ? $wgArticle->mLastStable : 0 ;
 			if ( $oldstable == 0 ) $before = wfMsg ( 'stableversion_before_no' ) ;
 			else $before = wfMsg ( 'stableversion_before_yes' , $oldstable ) ;
 			$act .= " " . $before ;
