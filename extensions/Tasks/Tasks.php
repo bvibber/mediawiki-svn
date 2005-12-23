@@ -420,17 +420,20 @@ function wfTasksExtensionPreventOtherActiveTabs( &$skin, &$prevent_active_tabs )
 }
 
 /**
-* Show the tab
-*/
+ * Show the tab
+ * @param SkinTemplate $skin
+ * @param array $content_actions
+ * @return bool true to continue running other hooks, false to abort operation
+ */
 function wfTasksExtensionTab( &$skin, &$content_actions ) { # Checked for HTML and MySQL insertion attacks
 	global $wgTitle, $action;
 	if( $wgTitle->isTalkPage() ) {
 		# No talk pages please
-		return false;
+		return true;
 	}
 	if( $wgTitle->getNamespace() < 0 ) {
 		# No special pages please
-		return false;
+		return true;
 	}
 
 	wfTasksAddCache();
@@ -439,6 +442,7 @@ function wfTasksExtensionTab( &$skin, &$content_actions ) { # Checked for HTML a
 		'text' => wfMsgHTML('tasks_tab'),
 		'href' => $wgTitle->getLocalUrl( 'action=tasks' )
 	);
+	return true;
 }
 
 /**
