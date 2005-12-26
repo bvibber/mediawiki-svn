@@ -46,8 +46,9 @@ int main(int ac, char **av) {
 		pp=strsep(&p,":");
 		if (strcmp(pp,olddb)) {
 			if (indb) {
-				printf("</db>");
+				printf("</host></db>");
 				inhost=0;
+                                strcpy(oldhost,"");
 			}
 			printf("<db name=\"%s\">\n",pp);
 			strcpy(olddb,pp);
