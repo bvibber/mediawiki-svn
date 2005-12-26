@@ -1,3 +1,13 @@
+/*
+ This is a daemon, that sits on (haha, hardcoded) port 3811,
+ receives profiling events from mediawiki ProfilerSimpleUDP,
+ and places them into BerkeleyDB file. \o/
+
+ Author: Domas Mituzas ( http://dammit.lt/ )
+
+ License: public domain (as if there's something to protect ;-)
+
+*/
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <stdlib.h>
@@ -64,6 +74,7 @@ int main(int ac, char **av) {
 		signal(SIGTERM,die);
 		daemon(1,0);
 	}
+	/* Loop! loop! loop! */
 	while((l=recvfrom(s,&buf,1500,0,NULL,NULL))) {
 		buf[l]=0;	
 		pp=buf;
@@ -82,6 +93,7 @@ int main(int ac, char **av) {
 
 			/* Add new values if exists, put in fresh structure if not */
 			if (db->get(db,NULL,&key,&data,0)==0) {
+				/* Update old stuff */
 				old=data.data;
 				old->pf_count   += incoming.pf_count;
 				old->pf_cpu     += incoming.pf_cpu;
@@ -90,6 +102,7 @@ int main(int ac, char **av) {
 				old->pf_real_sq += incoming.pf_real_sq;
 				db->put(db,NULL,&key,&data,0);	
 			} else {
+				/* Put in fresh data */
 				data.data=&incoming;
 				data.size=sizeof(incoming);
 				db->put(db,NULL,&key,&data,0);
@@ -99,6 +112,7 @@ int main(int ac, char **av) {
 	return(0);
 }
 
+/* Event handling */
 void hup() {
 	db->sync(db,0);
 }
