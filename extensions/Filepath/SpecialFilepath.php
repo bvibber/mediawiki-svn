@@ -42,7 +42,12 @@ function wfSpecialFilepath() {
 			$title = Title::makeTitleSafe( NS_IMAGE, $file );
 			$article = new Article( $title );
 			
-			if ( is_null( $title ) || ! $article->exists() ) {
+			if ( ! is_null( $title ) && ! $article->exists() ) {
+				$wgOut->setStatusCode( 404 );
+				$this->setHeaders();
+				$cform = new FilepathForm( $title );
+				$cform->execute();
+			} else if ( is_null( $title ) ) {
 				$this->setHeaders();
 				$cform = new FilepathForm( $title );
 				$cform->execute();
