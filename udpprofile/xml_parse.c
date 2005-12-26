@@ -2,7 +2,7 @@
    And XML parser using libxml2 that checks whether or not a given xml file is
    valid returns EXIT_SUCCESS on success and EXIT_FAILURE on failure
 
-   Usage: xml_is_valid file.xml
+   Usage: xml_parse file.xml
 
    Author: Ævar Arnfjörð Bjarmason <avarab@gmail.com>
    License: Public domain, the only way to rock baby!
