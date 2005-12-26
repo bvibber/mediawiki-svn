@@ -3,7 +3,7 @@
 
 LDFLAGS+=-ldb
 
-collector: collector.c
+all: collector export
 
 clean:
-	rm collector
+	rm -f collector export
