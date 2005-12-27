@@ -1,8 +1,6 @@
 <?
 /**
 * Run the following SQL on your database prior to use :
-*
-NONO! * ALTER TABLE page ADD page_stable INT( 8 ) UNSIGNED NOT NULL DEFAULT '0' ;
 
 CREATE TABLE stableversions (
   sv_page_id int(8) unsigned NOT NULL default '0',
@@ -14,6 +12,8 @@ CREATE TABLE stableversions (
   KEY sv_page_id (sv_page_id,sv_page_rev,sv_type)
 ) TYPE=InnoDB;
 
+* Some global variables:
+$wgStableVersionThereCanOnlyBeOne // Set this to true is you want to have only a single stable version per article
 */
 
 if (!defined('MEDIAWIKI')) die();
@@ -24,7 +24,10 @@ define( 'SV_TYPE_STABLE',     1 );
 define( 'SV_TYPE_STABLE_CANDIDATE', 2 );
 /**@-*/
 
-# Evil variables
+# Global variables to configure StableVersion
+$wgStableVersionThereCanOnlyBeOne = false ;
+
+# Evil variables, needed internally
 $wgStableVersionCaching = false ;
 
 $wgExtensionCredits['StableVersion'][] = array(
@@ -102,6 +105,8 @@ function wfStableVersionArticlePageDataBeforeHook ( &$article , &$fields ) {
 * @param $fields Query result object
 */
 function wfStableVersionArticlePageDataAfterHook ( &$article , &$fields ) {
+	global $wgRequest ;
+	
 	$dbr =& wfGetDB( DB_SLAVE );
 	$fname = "wfStableVersionArticlePageDataAfterHook" ;
 	$title = $article->getTitle() ;
@@ -117,11 +122,15 @@ function wfStableVersionArticlePageDataAfterHook ( &$article , &$fields ) {
 			array ( "ORDER BY" => "sv_page_rev DESC" )
 	);
 
+	# Trying to figure out the revision number
+	$rev = $wgRequest->getText('oldid', "") ;
+	if ( $rev == "" ) $fields['page_latest'] ;
+	
 	$article->mIsStable = false ;
 	$article->mLastStable = 0 ;
 	while ( $o = $dbr->fetchObject( $res ) ) {
 		if ( $o->sv_type == SV_TYPE_STABLE ) {
-			if ( $o->sv_page_id == $title->getArticleID() ) {
+			if ( $o->sv_page_rev == $rev ) {
 				# This is a stable version, set mark and get cache
 				$article->mIsStable = true ;
 				$article->mStableCache = $o->sv_cache ;
@@ -164,13 +173,13 @@ function wfStableVersionHeaderHook ( &$article ) {
 		if ( $article->mLatest == $article->mLastStable ) {
 			$st .= wfMsg ( 'stableversion_this_is_stable_and_current' ) ;
 		} else {
-			$url = $wgTitle->getFullURL () ;
+			$url = $wgTitle->getLocalURL () ;
 			$st .= wfMsg ( 'stableversion_this_is_stable' , $url ) ;
 		}
 	} else if ( $article->mLastStable == "0" ) { # There is no spoon, er, stable version
 		$st = wfMsg ( 'stableversion_this_is_draft_no_stable' ) ;
 	} else { # This is not the stable version, recommend it
-		$url = $wgTitle->getFullURL ( "oldid=" . $article->mLastStable ) ;
+		$url = $wgTitle->getLocalURL ( "oldid=" . $article->mLastStable ) ;
 		$st = wfMsg ( 'stableversion_this_is_draft' , $url ) ;
 	}
 	
@@ -178,10 +187,10 @@ function wfStableVersionHeaderHook ( &$article ) {
 		$st .= " " ;
 		$sp = Title::newFromText ( "Special:StableVersion" ) ;
 		if ( $article->getRevIdFetched() == $article->mLastStable ) { # This is the stable version - reset?
-			$url = $sp->getFullURL ( "id=" . $article->getID() . "&mode=reset" ) ;
+			$url = $sp->getLocalURL ( "id=" . $article->getID() . "&mode=reset&revision=" . $article->getRevIdFetched() ) ;
 			$st .= wfMsg ( 'stableversion_reset_stable_version' , $url ) ;
 		} else {
-			$url = $sp->getFullURL ( "id=" . $article->getID() . "&mode=set&revision=" . $article->getRevIdFetched() ) ;
+			$url = $sp->getLocalURL ( "id=" . $article->getID() . "&mode=set&revision=" . $article->getRevIdFetched() ) ;
 			$st .= wfMsg ( 'stableversion_set_stable_version' , $url ) ;
 		}
 	}
@@ -279,6 +288,7 @@ function wfStableVersion() {
 		*/
 		function execute( $par = null ) {
 			global $wgOut , $wgRequest , $wgUser , $wgArticle ;
+			global $wgStableVersionThereCanOnlyBeOne ;
 			
 			# Sanity checks
 			$mode = $wgRequest->getText('mode', "") ;
@@ -292,14 +302,18 @@ function wfStableVersion() {
 
 			if ( $mode == 'set' ) { # Set new version as stable
 				$newstable = $wgRequest->getText ( 'revision', "0" ) ;
+				$clearstable = $newstable ;
 				$out = wfMsg ( 'stableversion_set_ok' ) ;
-				$url = $t->getFullURL ( "oldid=" . $newstable ) ;
+				$url = $t->getLocalURL ( "oldid=" . $newstable ) ;
 				$act = wfMsg ( 'stableversion_log' , $newstable ) ;
-			} else { # Reset stable version
+			} else if ( $mode == "reset" ) { # Reset stable version
 				$newstable = "0" ;
+				$clearstable = $wgRequest->getText ( 'revision', "0" ) ;
 				$out = wfMsg ( 'stableversion_reset_ok' ) ;
-				$url = $t->getFullURL () ;
+				$url = $t->getLocalURL () ;
 				$act = wfMsg ( 'stableversion_reset_log' ) ;
+			}
+			else { # FIXME: Should be some error message for wrong mode
 			}
 			
 			$article = new Article ( $t ) ;
@@ -319,7 +333,9 @@ function wfStableVersion() {
 			$dbw->begin () ;
 			
 			# Delete this just in case it was already set
-			$conditions = array ( 'sv_page_id' => $id , 'sv_page_rev' => $newstable ) ;
+			$conditions = array ( 'sv_page_id' => $id ) ;
+			if ( !$wgStableVersionThereCanOnlyBeOne )
+				$conditions['sv_page_rev'] = $clearstable ;
 			$dbw->delete ( 'stableversions' , $conditions , $fname ) ;
 			
 			$values = array (
@@ -330,9 +346,11 @@ function wfStableVersion() {
 				'sv_date' => "12345678123456" ,
 				'sv_cache' => $cache,
 			) ;
-			$dbw->insert( 'stableversions',
-				$values ,
-				$fname );
+			
+			if ( $newstable > 0 )
+				$dbw->insert( 'stableversions',
+					$values ,
+					$fname );
 			$dbw->commit () ;
 
 			$out = "<p>{$out}</p><p>" . wfMsg ( 'stableversion_return' , $url , $t->getFullText() ) . "</p>" ;
