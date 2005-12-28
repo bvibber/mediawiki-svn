@@ -14,7 +14,7 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionFunctions[] = 'wfCssHook';
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Page CSS',
-	'description' => 'A parser hook to add per-page css to pages with the <css> tag',
+	'description' => 'A parser hook to add per-page css to pages with the <nowiki><css></nowiki> tag',
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 $wgCssHookCss = '';
