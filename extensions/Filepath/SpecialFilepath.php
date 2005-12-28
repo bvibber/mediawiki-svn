@@ -45,10 +45,12 @@ function wfSpecialFilepath() {
 			if ( ! is_null( $title ) && ! $article->exists() ) {
 				$wgOut->setStatusCode( 404 );
 				$this->setHeaders();
+				$this->outputHeader();
 				$cform = new FilepathForm( $title );
 				$cform->execute();
 			} else if ( is_null( $title ) ) {
 				$this->setHeaders();
+				$this->outputHeader();
 				$cform = new FilepathForm( $title );
 				$cform->execute();
 			} else {
