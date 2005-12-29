@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * An extension that let your users review article quality.
  *
