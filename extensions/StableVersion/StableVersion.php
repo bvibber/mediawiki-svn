@@ -1,4 +1,4 @@
-<?
+<?php
 /**
 * Run the following SQL on your database prior to use :
 

@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * English language file for the 'StableVErsion' extension
  */

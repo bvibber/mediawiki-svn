@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 This extension will turn a MediaWiki installation into "import-only" mode, at least for the article namespace.
 

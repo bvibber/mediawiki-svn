@@ -1,4 +1,4 @@
-<?
+<?php
 /* Cache404.php -- an extension for doing 404-handler caching
  * Copyright 2004 Evan Prodromou <evan@wikitravel.org>
  *
