@@ -16,6 +16,9 @@ $wgExtensionCredits['other'][] = array(
 
 
 function wfPurge() {
+	wfUsePHP( 5.1 );
+	wfUseMW( '1.6alpha' );
+	
 	class PurgeAction {
 		public function __construct() {
 			global $wgMessageCache, $wgHooks;
