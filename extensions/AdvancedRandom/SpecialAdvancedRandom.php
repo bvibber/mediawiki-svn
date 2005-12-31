@@ -1,5 +1,6 @@
 <?php
-if (!defined('MEDIAWIKI')) die();
+if ( ! defined( 'MEDIAWIKI' ) )
+	die();
 /**
  * Get a random page from the set of pages whos talk or subjectpage links to a
  * given page, can be used like Special:AdvancedRandom/Template:Featured/Talk
@@ -31,23 +32,29 @@ $wgExtensionCredits['specialpage'][] = array(
 	
 
 function wfAdvancedRandom() {
-	global $IP, $wgMessageCache;
-
-	$wgMessageCache->addMessage( 'advancedrandom', 'Advanced random' );
+	wfUsePHP( 5.0 );
+	wfUseMW( '1.6alpha' );
 	
+	global $IP;
+
 	require_once "$IP/includes/SpecialPage.php";
+	
 	class SpecialAdvancedRandom extends SpecialPage {
 		/**
 		 * Constructor
 		 */
-		function SpecialAdvancedRandom() {
+		public function __construct() {
+			global $wgMessageCache;
+
+			$wgMessageCache->addMessage( 'advancedrandom', 'Advanced random' );
+			
 			SpecialPage::SpecialPage( 'AdvancedRandom' );
 		}
 
 		/**
 		 * main()
 		 */
-		function execute( $par = null ) {
+		public function execute( $par = null ) {
 			global $wgOut;
 
 			$fname = 'SpecialAdvancedRandom::execute';
@@ -94,11 +101,9 @@ function wfAdvancedRandom() {
 		/**
 		 * Redirect to a given page
 		 *
-		 * @access private
-		 *
 		 * @param object $title Title object
 		 */
-		function redirect( &$title ) {
+		private static function redirect( Title &$title ) {
 			global $wgOut;
 
 			$wgOut->redirect( $title->getFullUrl() );
@@ -112,7 +117,7 @@ function wfAdvancedRandom() {
 		 * @param string $par
 		 * @return array
 		 */
-		function extractParamaters( $par ) {
+		private static function extractParamaters( $par ) {
 			global $wgContLang;
 
 			wfSuppressWarnings();
