@@ -11,41 +11,73 @@ $wgExtensionFunctions[] = 'wfTidy';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Tidy',
 	'author' => 'Ævar Arnfjörð Bjarmason',
-	'description' => 'Adds a tidy tab on each page allowing for quick viewing of pages with HTML tidy'
+	'description' => 'Adds a tidy or untidy tab (depending on $wgUseTidy) on normal pages allowing for overriding the global HTML tidy setting for a single view'
 );
 
 
 function wfTidy() {
-	global $wgMessageCache, $wgHooks;
-	
-	$wgMessageCache->addMessage( 'tidy', 'Tidy' );
-	
-	$wgHooks['SkinTemplateContentActions'][] = 'wfTidyHook';
-	$wgHooks['UnknownAction'][] = 'wfTidyActionHook';
-}
+	wfUsePHP( 5.1 );
+	wfUseMW( '1.6alpha' );
 
-function wfTidyHook( &$content_actions ) {
-	global $wgRequest, $wgTitle;
-	
-	$action = $wgRequest->getText( 'tidy' );
+	class TidyAction {
+		public function __construct() {
+			global $wgUseTidy, $wgMessageCache, $wgHooks;
 
-	if ( $wgTitle->getNamespace() != NS_SPECIAL ) {
-		$content_actions['tidy'] = array(
-			'class' => $action == 'tidy' ? 'selected' : false,
-			'text' => wfMsg( 'tidy' ),
-			'href' => $wgTitle->getLocalUrl( 'action=tidy' )
-		);
+			$wgMessageCache->addMessages(
+				array(
+					'tidy' => 'Tidy',
+					'untidy' => 'Untidy',
+				)
+			);
+			
+			$wgHooks['SkinTemplateContentActions'][] = array( &$this, 'tidyHook' );
+			$wgHooks['UnknownAction'][] = array( &$this, 'tidyAction' );
+		}
+
+		public function tidyHook( array &$content_actions ) {
+			global $wgRequest, $wgUseTidy, $wgTitle;
+	
+			$action = $wgRequest->getText( 'action' );
+
+			if ( $wgTitle->getNamespace() !== NS_SPECIAL )
+				if ( $action === 'tidy' || $action === 'untidy' )
+					self::setTidy( $content_actions, $action, $action === 'tidy' );
+				else if ( $wgUseTidy )
+					self::setTidy( $content_actions, $action, false );
+				else
+					self::setTidy( $content_actions, $action, true );
+
+			return true;
+		}
+
+		private static function setTidy( array &$content_actions, $action, $tidy ) {
+			global $wgTitle;
+
+			if ( $tidy )
+				$content_actions['tidy'] = array(
+					'class' => $action === 'tidy' ? 'selected' : false,
+					'text' => wfMsg( 'tidy' ),
+					'href' => $wgTitle->getLocalUrl( 'action=tidy' )
+				);
+			else
+				$content_actions['untidy'] = array(
+					'class' => $action === 'untidy' ? 'selected' : false,
+					'text' => wfMsg( 'untidy' ),
+					'href' => $wgTitle->getLocalUrl( 'action=untidy' )
+				);
+		}
+
+		public static function tidyAction( $action, Article &$article ) {
+			global $wgUseTidy;
+			
+			if ( $action === 'tidy' || $action === 'untidy' )
+				$wgUseTidy = $action === 'tidy';
+
+			$article->purge();
+
+			return false;
+		}
 	}
 
-	return true;
-}
-
-function wfTidyActionHook( $action, &$wgArticle ) {
-	global $wgUseTidy;
-	
-	$wgUseTidy = true;
-
-	$wgArticle->purge();
-
-	return false;
+	new PersistentObject( new TidyAction );
 }
