@@ -20,25 +20,31 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 function wfSpecialEval() {
-	global $IP, $wgMessageCache, $wgContLang, $wgContLanguageCode;
-
-	$wgMessageCache->addMessages(
-		array(
-			'eval' => 'Eval',
-			'eval_submit' => 'Evaluate',
-			'eval_escape' => 'Escape output',
-			'eval_out' => 'Output',
-			'eval_code' => 'Code'
-		)
-	);
-
+	wfUsePHP( 5.0 );
+	wfUseMW( '1.6alpha' );
+	
+	global $IP;
+	
 	require_once "$IP/includes/SpecialPage.php";
+	
 	class Evaluate extends SpecialPage {
-		function Evaluate() {
+		public function __construct() {
+			global $wgMessageCache;
+			
+			$wgMessageCache->addMessages(
+				array(
+					'eval' => 'Eval',
+					'eval_submit' => 'Evaluate',
+					'eval_escape' => 'Escape output',
+					'eval_out' => 'Output',
+					'eval_code' => 'Code'
+				)
+			);
+
 			SpecialPage::SpecialPage( 'Eval' );
 		}
 		
-		function execute( $par ) {
+		public function execute( $par ) {
 			global $wgOut, $wgRequest, $wgUseTidy;
 
 			$this->setHeaders();
@@ -60,14 +66,14 @@ function wfSpecialEval() {
 	}
 
 	class EvaluateForm {
-		var $mCode, $mEscape;
+		private $mCode, $mEscape;
 		
-		function EvaluateForm( $code, $escape ) {
+		public function __construct( $code, $escape ) {
 			$this->mCode =& $code;
 			$this->mEscape =& $escape;
 		}
 		
-		function execute() {
+		public function execute() {
 			global $wgOut, $wgTitle;
 
 			$wgOut->addHTML(
@@ -118,15 +124,15 @@ function wfSpecialEval() {
 	}
 
 	class EvaluateOutput {
-		var $mCode, $mEscape;
-		var $mErr;
+		private $mCode, $mEscape;
+		private $mErr;
 		
-		function EvaluateOutput( &$code, &$escape ) {
+		public function __construct( &$code, &$escape ) {
 			$this->mCode =& $code;
 			$this->mEscape =& $escape;
 		}
 		
-		function execute() {
+		public function execute() {
 			ob_start();
 			eval( $this->mCode );
 
@@ -134,7 +140,7 @@ function wfSpecialEval() {
 			$this->summary();
 		}
 
-		function summary() {
+		private function summary() {
 			global $wgOut;
 
 			if ( $this->mCode !== '' )
@@ -152,7 +158,7 @@ function wfSpecialEval() {
 			}
 		}
 
-		function code() {
+		private function code() {
 			global $wgOut;
 
 			if ( ! class_exists( 'GeSHi' ) )
