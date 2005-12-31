@@ -21,21 +21,28 @@ $wgExtensionCredits['other'][] = array(
 );
 
 function wfContributionseditcount() {
-	global $wgMessageCache, $wgHooks;
-	
-	$wgMessageCache->addMessage( 'contributionseditcount', 'This user has $1 edits.' );
+	wfUsePHP( 5.0 );
+	wfUseMW( '1.6alpha' );
 
-	# Run this hook on new account creation
-	$wgHooks['SpecialContributionsBeforeMainOutput'][] = 'wfContributionseditcountHook';
+	class Contributionseditcount {
+		public function __construct() {
+			global $wgMessageCache, $wgHooks;
+
+			$wgMessageCache->addMessage( 'contributionseditcount', 'This user has $1 edits.' );
+
+			$wgHooks['SpecialContributionsBeforeMainOutput'][] = array( &$this, 'hook' );
+		}
+		
+		public function hook( $uid ) {
+			global $wgOut, $wgLang;
+
+			if ( $uid != 0 )
+				$wgOut->addWikiText( wfMsg( 'contributionseditcount', $wgLang->formatNum( User::edits( $uid ) ) ) );
+
+			return true;
+		}
+	}
+
+	new PersistentObject( new Contributionseditcount );
 }
-
-function wfContributionseditcountHook( $uid ) {
-	global $wgOut, $wgLang;
-
-	if ($uid != 0)
-		$wgOut->addWikiText( wfMsg( 'contributionseditcount', $wgLang->formatNum( User::edits( $uid ) ) ) );
-
-	return true;
-}
-
 ?>
