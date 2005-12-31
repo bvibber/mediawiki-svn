@@ -14,3 +14,4 @@ struct pfstats {
 };
 
 void dumpData(FILE *);
+

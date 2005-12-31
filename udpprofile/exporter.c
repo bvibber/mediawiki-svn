@@ -3,4 +3,5 @@
 
 int main(int ac, char **av) {
 dumpData(stdout);
+return(0);
 }

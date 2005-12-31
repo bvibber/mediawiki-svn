@@ -64,7 +64,7 @@ void dumpData(FILE *fd) {
 				"<cputime total=\"%lf\" totalsq=\"%lf\" />\n" \
 				"<realtime total=\"%lf\" totalsq=\"%lf\" />\n" \
 				"</stats></event>\n",
-				key.size - ((void *)p-(void *)key.data),p,
+				(int)(key.size - ((void *)p-(void *)key.data)),p,
 				entry->pf_count, entry->pf_cpu, entry->pf_cpu_sq,
 				entry->pf_real, entry->pf_real_sq);
 
