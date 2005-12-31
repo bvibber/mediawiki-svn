@@ -13,32 +13,26 @@
 #include <unistd.h>
 #include <netinet/in.h>
 #include <db4/db.h>
+#include "collector.h"
 
-int main(int ac, char **av) {
-	DB *db;
+void dumpData(FILE *fd) {
 	DBT key,data;
 	DBC *c;
 	
 	char *p, oldhost[128]="",olddb[128]="",*pp;
 	int indb=0,inhost=0;
 
-	/* Stats variables, not that generic, are they? */
-	struct pfstats {
-		unsigned long pf_count;
-		/* CPU time of event */
-		double pf_cpu;
-		double pf_cpu_sq;
-		double pf_real;
-		double pf_real_sq;
-	} *entry;
+	struct pfstats *entry;
 
 	bzero(&key,sizeof(key));
 	bzero(&data,sizeof(data));
 	
-	db_create(&db,NULL,0);
-	db->open(db,NULL,"stats.db",NULL,DB_BTREE,0,0);
+	if (db==NULL) {
+		db_create(&db,NULL,0);
+		db->open(db,NULL,"stats.db",NULL,DB_BTREE,0,0);
+	}
 	db->cursor(db,NULL,&c,0);
-	printf("<pfdump>\n");
+	fprintf(fd,"<pfdump>\n");
 	while(c->c_get(c, &key, &data, DB_NEXT )==0) {
 		entry=data.data;
 		p=key.data;
@@ -46,11 +40,11 @@ int main(int ac, char **av) {
 		pp=strsep(&p,":");
 		if (strcmp(pp,olddb)) {
 			if (indb) {
-				printf("</host></db>");
+				fprintf(fd,"</host></db>");
 				inhost=0;
                                 strcpy(oldhost,"");
 			}
-			printf("<db name=\"%s\">\n",pp);
+			fprintf(fd,"<db name=\"%s\">\n",pp);
 			strcpy(olddb,pp);
 			indb++;
 		}
@@ -58,13 +52,13 @@ int main(int ac, char **av) {
 		pp=strsep(&p,":");
 		if (strcmp(pp,oldhost)) {
 			if (inhost)
-				printf("</host>\n");
-			printf("<host name=\"%s\">\n",pp);
+				fprintf(fd,"</host>\n");
+			fprintf(fd,"<host name=\"%s\">\n",pp);
 			strcpy(oldhost,pp);
 			inhost++;
 		}
 		/* Get EVENT */
-		printf("<event>\n" \
+		fprintf(fd,"<event>\n" \
 				"<eventname><![CDATA[%.*s]]></eventname>\n" \
 				"<stats count=\"%lu\">\n" \
 				"<cputime total=\"%lf\" totalsq=\"%lf\" />\n" \
@@ -75,7 +69,6 @@ int main(int ac, char **av) {
 				entry->pf_real, entry->pf_real_sq);
 
 	}
-	printf("</host>\n</db>\n</pfdump>\n");
-	return 0;
+	fprintf(fd,"</host>\n</db>\n</pfdump>\n");
 }
 
