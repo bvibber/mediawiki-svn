@@ -11,30 +11,41 @@ $wgExtensionFunctions[] = 'wfPurge';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Purge',
 	'author' => 'Ævar Arnfjörð Bjarmason',
-	'description' => 'Adds a purge tab on each page allowing for quick purging of the cache'
+	'description' => 'Adds a purge tab on all normal pages and bypasses the purge check for anonymous users allowing for quick purging of the cache'
 );
 
 
 function wfPurge() {
-	global $wgMessageCache, $wgHooks;
-	
-	$wgMessageCache->addMessage( 'purge', 'Purge' );
-	
-	$wgHooks['SkinTemplateContentActions'][] = 'wfPurgeHook';
-}
+	class PurgeAction {
+		public function __construct() {
+			global $wgMessageCache, $wgHooks;
+			
+			$wgMessageCache->addMessage( 'purge', 'Purge' );
+			
+			$wgHooks['SkinTemplateContentActions'][] = array( &$this, 'contentHook' );
+			$wgHooks['ArticlePurge'][] = array( &$this, 'purgeHook' );
+		}
+		
+		public static function contentHook( array &$content_actions ) {
+			global $wgRequest, $wgTitle;
 
-function wfPurgeHook( &$content_actions ) {
-	global $wgRequest, $wgTitle;
-	
-	$action = $wgRequest->getText( 'purge' );
+			if ( $wgTitle->getNamespace() !== NS_SPECIAL ) {
+				$action = $wgRequest->getText( 'action' );
+				
+				$content_actions['purge'] = array(
+					'class' => $action === 'purge' ? 'selected' : false,
+					'text' => wfMsg( 'purge' ),
+					'href' => $wgTitle->getLocalUrl( 'action=purge' )
+				);
+			}
 
-	if ( $wgTitle->getNamespace() != NS_SPECIAL ) {
-		$content_actions['purge'] = array(
-			'class' => false,
-			'text' => wfMsg( 'purge' ),
-			'href' => $wgTitle->getLocalUrl( 'action=purge' )
-		);
+			return true;
+		}
+
+		public static function purgeHook( Article &$article ) {
+			return false;
+		}
 	}
 
-	return true;
+	new PersistentObject( new PurgeAction );
 }
