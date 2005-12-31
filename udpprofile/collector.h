@@ -1,3 +1,6 @@
+/* Collector structures and some headers and some data */
+/* $Id$ */
+
 #include <stdio.h>
 #include <db4/db.h>
 

@@ -1,5 +1,9 @@
-#CFLAGS+=-g -Wall -I/sw/include/
-#LDFLAGS+=-ldb -L/sw/lib/
+# Makefile for profile collector package
+# $Id$
+#
+#MacOSX Fink library paths 
+#CFLAGS+=-I/sw/include/
+#LDFLAGS+=-L/sw/lib/
 
 LDFLAGS+=-ldb
 CFLAGS+=-Wall -g
@@ -13,4 +17,4 @@ exporter: export.c collector.h exporter.c
 #export: collector.h export.c
 
 clean:
-	rm -f collector export
+	rm -f collector exporter

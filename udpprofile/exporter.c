@@ -1,3 +1,5 @@
+/* Simply dump database contents */
+/* $Id$ */
 #include <stdio.h>
 #include "collector.h"
 
