@@ -17,26 +17,35 @@ $wgExtensionCredits['parserhook'][] = array(
 	'description' => 'A parser hook to add per-page css to pages with the <nowiki><css></nowiki> tag',
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
-$wgCssHookCss = '';
 
 function wfCssHook() {
-	global $wgParser, $wgHooks;
+	wfUsePHP( 5.1 );
+	wfUseMW( '1.6alpha' );
 	
-	$wgParser->setHook( 'css' , 'wfCssHookParse' );
-	$wgHooks['SkinTemplateSetupPageCss'][] = 'wfCssHookHook';
-}
+	class CssHook {
+		private $mCss;
+		
+		public function __construct() {
+			global $wgParser, $wgHooks;
 
-function wfCssHookParse( $in, $argv ) {
-	global $wgCssHookCss;
+			$wgParser->setHook( 'css' , array( &$this, 'parseHook' ) );
+			
+			$wgHooks['SkinTemplateSetupPageCss'][] = array( &$this, 'hook' );
+		}
 
-	$wgCssHookCss .= trim( $in );
-}
+		public function parseHook( $in, array $argv ) {
+			global $wgCssHookCss;
 
-function wfCssHookHook( &$css ) {
-	global $wgCssHookCss;
-	
-	if ( $wgCssHookCss != '' )
-		$css = "/*<![CDATA[*/\n" . htmlspecialchars( $wgCssHookCss ) . "\n/*]]>*/";
+			$this->mCss .= trim( $in );
+		}
 
-	return false;
+		public function hook( &$css ) {
+			if ( $this->mCss != '' )
+				$css = "/*<![CDATA[*/\n" . htmlspecialchars( $this->mCss ) . "\n/*]]>*/";
+
+			return false;
+		}
+	}
+
+	new PersistentObject( new CssHook );
 }
