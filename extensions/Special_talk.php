@@ -12,37 +12,42 @@ if ( ! defined( 'MEDIAWIKI' ) ) die();
  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
-
+$wgExtensionFunctions[] = 'wfSpecialTalk';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Special talk',
 	'description' => 'Adds a talk tab to Special Pages',
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
-class SpecialTalk {
-	function SpecialTalk() {
-		global $wgHooks;
-		
-		$wgHooks['SkinTemplateBuildContentActionUrlsAfterSpecialPage'][] = array( $this, 'SpecialTalkHook' );
+function wfSpecialTalk() {
+	wfUsePHP( 5.1 );
+	wfUseMW( '1.6alpha' );
+	
+	class SpecialTalk {
+		public function __construct() {
+			global $wgHooks;
+
+			$wgHooks['SkinTemplateBuildContentActionUrlsAfterSpecialPage'][] = array( &$this, 'SpecialTalkHook' );
+		}
+
+		public function SpecialTalkHook( SkinTemplate &$skin_template, array &$content_actions ) {
+			global $wgTitle;
+
+			$title = Title::makeTitle( NS_PROJECT_TALK, $skin_template->mTitle->getText() );
+
+			$content_actions['talk'] = $skin_template->tabAction(
+				$title,
+				// msg
+				'talk',
+				// selected
+				false,
+				// &query=
+				'',
+				// check existance
+				true
+			);
+		}
 	}
 
-	function SpecialTalkHook( &$skin_template, &$content_actions ) {
-		global $wgTitle;
-		
-		$title = Title::makeTitle( NS_PROJECT_TALK, $skin_template->mTitle->getText() );
-		
-		$content_actions['talk'] = $skin_template->tabAction(
-			$title,
-			// msg
-			'talk',
-			// selected
-			false,
-			// &query=
-			'',
-			// check existance
-			true
-		);
-	}
+	new PersistentObject( new SpecialTalk );
 }
-
-new SpecialTalk;
