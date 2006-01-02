@@ -1251,7 +1251,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			;
 
 			// Select possible tasks
-			$out .= '<td valign="top" nowrap><select name="type" size="7" style="width:100%;height:100%">';
+			$out .= '<td valign="top" nowrap><select name="type" size="7" style="width:100%">';
 			$o = array();
 			foreach( $new_tasks as $k => $v ) {
 				$o[$v] = '<option value="' . $k . '">' . $this->get_type_html( $v ) . '</option>';
