@@ -125,8 +125,12 @@ EOT
 
 	function showLog() {
 		global $wgOut, $wgCheckUserLog;
-
-		$wgOut->addHTML( '<ul>' . file_get_contents( $wgCheckUserLog ) . '</ul>' );
+		$output = '';
+		$log = array_reverse( file( $wgCheckUserLog ) );
+		foreach( $log as $log_line ) {
+			$output .= $log_line;
+		}
+		$wgOut->addHTML( '<ul>' . $output . '</ul>' );		
 	}
 
 	function addLogEntry( $entry ) {
