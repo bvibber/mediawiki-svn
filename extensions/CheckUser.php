@@ -126,11 +126,20 @@ EOT
 	function showLog() {
 		global $wgOut, $wgCheckUserLog;
 		$output = '';
-		$log = array_reverse( file( $wgCheckUserLog ) );
-		foreach( $log as $log_line ) {
-			$output .= $log_line;
+		if( file_exists( $wgCheckUserLog ) ) {
+			$log = file( $wgCheckUserLog );
+			if( !!$log ) {
+				$log = array_reverse( $log );
+				foreach( $log as $log_line ) {
+					$output .= $log_line;
+				}
+				$wgOut->addHTML( '<ul>' . $output . '</ul>' );
+			} else {
+				$wgOut->addHTML( '<p>The CheckUser log could not be read.</p>' );
+			}
+		} else {
+			$wgOut->addHTML( '<p>The CheckUser log could not be found.</p>' );
 		}
-		$wgOut->addHTML( '<ul>' . $output . '</ul>' );		
 	}
 
 	function addLogEntry( $entry ) {
