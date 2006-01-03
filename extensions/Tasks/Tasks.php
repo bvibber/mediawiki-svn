@@ -762,7 +762,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			
 			$out .= '</td>';
 			$out .= '<td align="left" valign="top" nowrap>';
-			$out .= wfMsgHTML( 'tasks_created_by', $sk->makeLinkObj( $cu, htmlentities( $task->task_user_text ) ) );
+			$out .= wfMsgHTML( 'tasks_created_by', $sk->makeLinkObj( $cu, htmlspecialchars( $task->task_user_text ) ) );
 			$out .= '<br/>' . $ct ;
 
 			# Closing information
@@ -770,7 +770,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$user_close = new User;
 				$user_close->setID( $task->task_user_close );
 				$uct = Title::makeTitleSafe( NS_USER, $user_close->getName() ); # Assigned user title
-				$out .= '<br/>' . wfMsgHTML( 'tasks_closedby', $sk->makeLinkObj( $uct, htmlentities( $user_close->getName() ) ) );
+				$out .= '<br/>' . wfMsgHTML( 'tasks_closedby', $sk->makeLinkObj( $uct, htmlspecialchars( $user_close->getName() ) ) );
 				if( $task->task_timestamp_closed != "" ) {
 					$out .= '<br/>' . $wgContLang->timeanddate( $task->task_timestamp_closed ); # Time object from string of digits
 				}
@@ -787,7 +787,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$au = new User(); # Assigned user
 				$au->setID( $task->task_user_assigned );
 				$aut = Title::makeTitleSafe( NS_USER, $au->getName() ); # Assigned user title
-				$out .= wfMsgHTML( 'tasks_assignedto', $sk->makeLinkObj( $aut, htmlentities( $au->getName() ) ) );
+				$out .= wfMsgHTML( 'tasks_assignedto', $sk->makeLinkObj( $aut, htmlspecialchars( $au->getName() ) ) );
 			}
 			if( $wgUser->isLoggedIn() ) {
 				$txt = array();
