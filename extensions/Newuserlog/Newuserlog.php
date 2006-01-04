@@ -27,7 +27,7 @@ function wfNewuserlog() {
 			'newuserlogpage' => 'User creation log',
 			'newuserlogpagetext' => 'This is a log of recent user creations',
 			'newuserlogentry' => '',
-			'newuserloglog' => "New user ([[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Block/$1|$4]])"
+			'newuserloglog' => "New user ([[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]])"
 		)
 	);
 
