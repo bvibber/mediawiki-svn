@@ -375,7 +375,7 @@ class MakesysopStewardForm extends UserrightsForm {
 		list( $name, $database ) = $parts;
 		
 		global $wgLocalDatabases;
-		return array_key_exists( $database, $wgLocalDatabases )
+		return array_search( $database, $wgLocalDatabases ) !== false
 			? array( $database, $name )
 			: new WikiError( 'Bogus database suffix "' . wfEscapeWikiText( $database ) . '"' );
 	}
