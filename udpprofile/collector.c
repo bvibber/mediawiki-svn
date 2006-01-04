@@ -27,6 +27,7 @@
 void hup();
 void die();
 void child();
+void truncatedb();
 
 void handleMessage(char *,ssize_t );
 void handleConnection(int);
@@ -70,12 +71,13 @@ int main(int ac, char **av) {
 		fds[1].fd = exp, fds[1].events |= POLLIN;
 
 		db_create(&db,NULL,0);
-		db->open(db,NULL,"stats.db",NULL,DB_BTREE,DB_CREATE,0);
+		db->open(db,NULL,"stats.db",NULL,DB_BTREE,DB_CREATE|DB_TRUNCATE,0);
 		
 		signal(SIGHUP,hup);
 		signal(SIGINT,die);
 		signal(SIGTERM,die);
 		signal(SIGCHLD,child);
+		signal(SIGUSR1,truncatedb);
 		daemon(1,0);
 	}
 	/* Loop! loop! loop! */
@@ -123,10 +125,16 @@ void handleMessage(char *buf,ssize_t l) {
 	while((p=strsep(&pp,"\r\n"))) {
 		if (p[0]=='\0')
 			continue;
+		if (!strcmp("-truncate",p)) {
+			truncatedb();
+			return;
+		}
 		bzero(&incoming,sizeof(incoming));
 		r=sscanf(p,msgformat,(char *)&dbname,(char *)&hostname,
 			&incoming.pf_count,&incoming.pf_cpu,&incoming.pf_cpu_sq,
 			&incoming.pf_real,&incoming.pf_real_sq, (char *)&task);
+		if (r<7)
+			continue;
 		snprintf(keytext,1499,"%s:%s:%s",dbname,hostname,task);
 
 		bzero(&key,sizeof(key));
@@ -191,4 +199,9 @@ void die() {
 void child() {
 	int status;
 	wait(&status);
+}
+
+void truncatedb() {
+	unsigned int count;
+	db->truncate(db,NULL,&count,0);
 }

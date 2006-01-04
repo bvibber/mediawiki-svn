@@ -5,6 +5,8 @@
 
  License: public domain (as if there's something to protect ;-)
 
+ $Id$
+
 */
 #include <sys/types.h>
 #include <stdlib.h>
@@ -70,5 +72,6 @@ void dumpData(FILE *fd) {
 
 	}
 	fprintf(fd,"</host>\n</db>\n</pfdump>\n");
+	c->c_close(c);
 }
 
