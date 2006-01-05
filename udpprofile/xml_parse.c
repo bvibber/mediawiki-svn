@@ -5,7 +5,9 @@
    Usage: xml_parse file.xml
 
    Author: Ævar Arnfjörð Bjarmason <avarab@gmail.com>
-   License: Public domain, the only way to rock baby!
+   License: Public domain
+
+   To compile use: gcc -o xml_parse `xml2-config --cflags` xml_parse.c `xml2-config --libs`
 */
 #include <stdio.h>
 #include <stdlib.h>
