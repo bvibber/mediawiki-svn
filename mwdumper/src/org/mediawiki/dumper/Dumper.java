@@ -59,31 +59,19 @@
 
 package org.mediawiki.dumper;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import org.apache.commons.compress.bzip2.CBZip2InputStream;
-import org.apache.commons.compress.bzip2.CBZip2OutputStream;
 
 import org.mediawiki.importer.*;
 
 
 class Dumper {
-	private static final int IN_BUF_SZ = 1024 * 1024;
-	private static final int OUT_BUF_SZ = 1024 * 1024;
-	
 	public static void main(String[] args) throws IOException {
 		InputStream input = null;
 		OutputWrapper output = null;
@@ -107,14 +95,14 @@ class Dumper {
 					output = openOutputFile(val, param);
 				} else if (opt.equals("format")) {
 					if (output == null)
-						output = openStandardOutput();
+						output = new OutputWrapper(Tools.openStandardOutput());
 					if (sink != null)
 						throw new IllegalArgumentException("Only one format per output allowed.");
 					sink = openOutputSink(output, val, param);
 				} else if (opt.equals("filter")) {
 					if (sink == null) {
 						if (output == null)
-							output = openStandardOutput();
+							output = new OutputWrapper(Tools.openStandardOutput());
 						sink = new XmlDumpWriter(output.getFileStream());
 					}
 					sink = addFilter(sink, val, param);
@@ -128,18 +116,18 @@ class Dumper {
 			} else if (arg.equals("-")) {
 				if (input != null)
 					throw new IllegalArgumentException("Input already set; can't set to stdin");
-				input = new BufferedInputStream(System.in, IN_BUF_SZ);
+				input = Tools.openStandardInput();
 			} else {
 				if (input != null)
 					throw new IllegalArgumentException("Input already set; can't set to " + arg);
-				input = openInputFile(arg);
+				input = Tools.openInputFile(arg);
 			}
 		}
 		
 		if (input == null)
-			input = new BufferedInputStream(System.in, IN_BUF_SZ);
+			input = Tools.openStandardInput();
 		if (output == null)
-			output = openStandardOutput();
+			output = new OutputWrapper(Tools.openStandardOutput());
 		// Finish stacking the last output sink
 		if (sink == null)
 			sink = new XmlDumpWriter(output.getFileStream());
@@ -180,27 +168,7 @@ class Dumper {
 	
 	// ----------------
 	
-	private static InputStream openInputFile(String arg) throws IOException {
-		InputStream infile = new BufferedInputStream(new FileInputStream(arg), IN_BUF_SZ);
-		if (arg.endsWith(".gz"))
-			return new GZIPInputStream(infile);
-		else if (arg.endsWith(".bz2"))
-			return openBZip2Stream(infile);
-		else
-			return infile;
-	}
-
-	private static InputStream openBZip2Stream(InputStream infile) throws IOException {
-		int first = infile.read();
-		int second = infile.read();
-		if (first != 'B' || second != 'Z')
-			throw new IOException("Didn't find BZ file signature in .bz2 file");
-		return new CBZip2InputStream(infile);
-	}
-	
-	// ----------------
-	
-	private static class OutputWrapper {
+	static class OutputWrapper {
 		private OutputStream fileStream = null;
 		private Connection sqlConnection = null;
 		
@@ -231,37 +199,19 @@ class Dumper {
 	
 	static OutputWrapper openOutputFile(String dest, String param) throws IOException {
 		if (dest.equals("stdout"))
-			return openStandardOutput();
+			return new OutputWrapper(Tools.openStandardOutput());
 		else if (dest.equals("file"))
-			return new OutputWrapper(createOutputFile(param));
+			return new OutputWrapper(Tools.createOutputFile(param));
 		else if (dest.equals("gzip"))
-			return new OutputWrapper(new GZIPOutputStream(createOutputFile(param)));
+			return new OutputWrapper(new GZIPOutputStream(Tools.createOutputFile(param)));
 		else if (dest.equals("bzip2"))
-			return new OutputWrapper(createBZip2File(param));
+			return new OutputWrapper(Tools.createBZip2File(param));
 		else if (dest.equals("mysql"))
 			return connectMySql(param);
 		else
 			throw new IllegalArgumentException("Destination sink not implemented: " + dest);
 	}
 
-	private static OutputWrapper openStandardOutput() {
-		return new OutputWrapper(new BufferedOutputStream(System.out, OUT_BUF_SZ));
-	}
-	
-	private static OutputStream createBZip2File(String param) throws IOException, FileNotFoundException {
-		OutputStream outfile = createOutputFile(param);
-		// bzip2 expects a two-byte 'BZ' signature header
-		outfile.write('B');
-		outfile.write('Z');
-		return new CBZip2OutputStream(outfile);
-	}
-
-	private static OutputStream createOutputFile(String param) throws IOException, FileNotFoundException {
-		File file = new File(param);
-		file.createNewFile();
-		return new BufferedOutputStream(new FileOutputStream(file), OUT_BUF_SZ);
-	}
-	
 	private static OutputWrapper connectMySql(String param) throws IOException {
         try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();

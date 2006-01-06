@@ -5,18 +5,19 @@ import javax.swing.JFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 
+import org.mediawiki.dumper.Tools;
 import org.mediawiki.importer.DumpWriter;
+import org.mediawiki.importer.MultiWriter;
 import org.mediawiki.importer.XmlDumpReader;
 import org.mediawiki.importer.XmlDumpWriter;
 
@@ -111,8 +112,8 @@ public class DumperGui extends JFrame {
 
 	void startImport(String inputFile) throws IOException {
 		// TODO work right ;)
-		final BufferedInputStream stream = new BufferedInputStream(new FileInputStream(inputFile));
-		DumpWriter writer = new XmlDumpWriter(System.out);
+		final InputStream stream = Tools.openInputFile(inputFile);
+		DumpWriter writer = new MultiWriter();
 		DumpWriter progress = new GraphicalProgressFilter(writer, 1000, statusLabel);
 		final XmlDumpReader reader = new XmlDumpReader(stream, progress);
 		new Thread() {
@@ -146,6 +147,9 @@ public class DumperGui extends JFrame {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		// Try to workaround Java 1.4 XML parser bug
+		System.setProperty("entityExpansionLimit","2147483647");
+		
 		DumperGui gui = new DumperGui();
 		gui.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		gui.setVisible(true);
@@ -165,9 +169,9 @@ public class DumperGui extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(633, 292);
+		this.setSize(640, 300);
 		this.setContentPane(getJContentPane());
-		this.setTitle("JFrame");
+		this.setTitle("MediaWiki data dump importer");
 	}
 
 	/**
