@@ -81,8 +81,9 @@ function wfSpecialFilelist () {
 				$sql .= " AND img_user='" . $params['user']->getID() . "'" ;
 			}
 			$sql .= ' ORDER BY img_timestamp' ;
-			if ( !$params['latestfirst'] ) $sql .= ' DESC' ;
+			$sql .= ' DESC' ;
 			$sql .= ' LIMIT 1';
+			print $sql ;
 			$res = $this->dbr->query($sql, 'SpecialFilelist::getTimeStamp');
 			$row = $this->dbr->fetchRow($res);
 			if($row!==false) {
@@ -256,7 +257,6 @@ function wfSpecialFilelist () {
 			
 			if ( $params['gallery'] != true ) $p2['gallery'] = $params['gallery'] ? "1" : "0" ;
 			if ( $params['hidebots'] != true ) $p2['hidebots'] = $params['hidebots'] ? "1" : "0" ;
-			if ( $params['latestfirst'] != false ) $p2['latestfirst'] = $params['latestfirst'] ? "1" : "0" ;
 			if ( $params['date'] != "" ) $p2['date'] = $params['date'] ;
 			if ( $params['until'] != "" ) $p2['until'] = $params['until'] ;
 			if ( $params['match'] != "" ) $p2['match'] = $params['match'] ;
@@ -385,7 +385,6 @@ function wfSpecialFilelist () {
 			# Setting a bunch of parameters to passed or default values; also some variables which makes them easier to pass to functions
 			$params['gallery'] = $wgRequest->getBool ( 'gallery' , true ) ;
 			$params['hidebots'] = $wgRequest->getBool ( 'hidebots' , true ) ;
-			$params['latestfirst'] = $wgRequest->getBool ( 'latestfirst' , false ) ;
 			$params['date'] = $wgRequest->getVal ( 'date' , "" ) ;
 			$params['until'] = $wgRequest->getVal ( 'until' , "" ) ;
 			$params['match'] = $wgRequest->getVal ( 'match' , "" ) ;
@@ -393,6 +392,14 @@ function wfSpecialFilelist () {
 			$params['user'] = urldecode ( $wgRequest->getVal ( 'user' , ($par==NULL?"":$par) ) ) ;
 			$params['botsql'] = $this->getHideBotSQL ( $params['hidebots'] ) ;
 			$params['imagetable'] = $this->dbr->tableName('image');
+			
+			# If "until" is set, "date" should be invalid; also, "latestfirst" should be true to force inverted 
+			if ( $params['until'] != "" ) {
+				$params['date'] = "" ;
+				$params['latestfirst'] = true ;
+			} else {
+				$params['latestfirst'] = false ;
+			}
 
 			# Preventing full DB scan for single user; remove this and the following line once the user field has an index
 			$params['user'] = "" ;
