@@ -83,7 +83,6 @@ function wfSpecialFilelist () {
 			$sql .= ' ORDER BY img_timestamp' ;
 			$sql .= ' DESC' ;
 			$sql .= ' LIMIT 1';
-			print $sql ;
 			$res = $this->dbr->query($sql, 'SpecialFilelist::getTimeStamp');
 			$row = $this->dbr->fetchRow($res);
 			if($row!==false) {
