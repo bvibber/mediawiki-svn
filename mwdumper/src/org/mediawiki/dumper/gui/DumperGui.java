@@ -147,9 +147,6 @@ public class DumperGui extends JFrame {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Try to workaround Java 1.4 XML parser bug
-		System.setProperty("entityExpansionLimit","2147483647");
-		
 		DumperGui gui = new DumperGui();
 		gui.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		gui.setVisible(true);
