@@ -33,6 +33,7 @@ public class DumperGui {
 		final XmlDumpReader reader = new XmlDumpReader(stream, progress);
 		new Thread() {
 			public void run() {
+				running = true;
 				gui.start();
 				try {
 					reader.readDump();
@@ -40,12 +41,8 @@ public class DumperGui {
 				} catch(IOException e) {
 					gui.setProgress("FAILED: " + e.getMessage());
 				}
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						running = false;
-						gui.stop();
-					}
-				});
+				running = false;
+				gui.stop();
 			}
 		}.start();
 	}

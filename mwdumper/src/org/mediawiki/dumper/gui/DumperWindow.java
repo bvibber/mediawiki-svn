@@ -9,6 +9,7 @@
 
 package org.mediawiki.dumper.gui;
 
+import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JFileChooser;
@@ -32,12 +33,39 @@ public class DumperWindow extends DumperWindowForm {
 	}
 	
 	public void start() {
-		// todo: set the button up to a stop mode. ;)
-		startButton.setEnabled(false);
+		// disable the other fields...
+		setFieldsEnabled(false);
+		
+		// todo: set the start button up to a stop mode instead of disabling it
 	}
 	
 	public void stop() {
-		startButton.setEnabled(true);
+		setFieldsEnabled(true);
+	}
+	
+	void setFieldsEnabled(boolean val) {
+		final boolean _val = val;
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				Component[] widgets = new Component[] {
+					fileText,
+					browseButton,
+
+					serverText,
+					portText,
+					userText,
+					passwordText,
+					connectButton,
+
+					schema14Radio,
+					schema15Radio,
+					prefixText,
+					startButton };
+				for (int i = 0; i < widgets.length; i++) {
+					widgets[i].setEnabled(_val);
+				}
+			}
+		});
 	}
 	
 	/**
