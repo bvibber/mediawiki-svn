@@ -213,7 +213,7 @@ class Dumper {
 	}
 
 	private static OutputWrapper connectMySql(String param) throws IOException {
-        try {
+		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection conn = DriverManager.getConnection("jdbc:mysql:" + param);
 			return new OutputWrapper(conn);
