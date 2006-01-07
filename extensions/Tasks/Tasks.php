@@ -38,6 +38,8 @@ Known bugs:
 
 if( !defined( 'MEDIAWIKI' ) ) die();
 
+require_once ( "categoryfinder.php" ) ;
+
 /** Default path to the stylesheet */
 global $wgScriptPath ;
 if( !defined( 'TASKS_CSS' ) ) define('TASKS_CSS', $wgScriptPath.'/extensions/Tasks/tasks.css' );
