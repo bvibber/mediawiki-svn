@@ -52,17 +52,19 @@ class CheckUser extends UnlistedSpecialPage
 		global $wgOut, $wgTitle;
 
 		$action = $wgTitle->escapeLocalUrl();
+		$encIp = htmlspecialchars( $ip );
+		$encUser = htmlspecialchars( $user );
 
 		$wgOut->addHTML( <<<EOT
 <form name="checkuser" action="$action" method=post>
 <table border=0 cellpadding=5><tr><td>
 	IP: 
 </td><td>
-	<input type="text" name="ip" value="$ip" width=50 /> <input type="submit" name="subip" value="OK" />
+	<input type="text" name="ip" value="$encIp" width=50 /> <input type="submit" name="subip" value="OK" />
 </td></tr><tr><td>
 	User:
 </td><td>
-	<input type="text" name="user" value="$user" width=50 /> <input type="submit" name="subuser" value="OK" />
+	<input type="text" name="user" value="$encUser" width=50 /> <input type="submit" name="subuser" value="OK" />
 </td></tr></table>
 EOT
 		);
@@ -101,6 +103,12 @@ EOT
 	function doUserRequest( $user ) {
 		global $wgOut, $wgTitle, $wgLang, $wgUser;
 		$fname = 'CheckUser::doUserRequest';
+		
+		$userTitle = Title::newFromText( $user, NS_USER );
+		if( !is_null( $userTitle ) ) {
+			// normalize the username
+			$user = $userTitle->getText();
+		}
 
 		if ( !$this->addLogEntry( $wgLang->timeanddate( wfTimestampNow() ) . ' ' .
 		  $wgUser->getName() . ' got IPs for ' . htmlspecialchars( $user ) ) ) 
