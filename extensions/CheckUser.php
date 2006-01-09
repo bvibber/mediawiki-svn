@@ -13,7 +13,6 @@ $wgCheckUserLog = '/home/wikipedia/logs/checkuser.log';
 function wfCheckUser() {
 global $IP;
 require_once( $IP.'/includes/SpecialPage.php' );
-require_once( $IP.'/includes/ChangesList.php' );
 
 class CheckUser extends UnlistedSpecialPage
 {
@@ -86,6 +85,9 @@ EOT
 		if ( !$dbr->numRows( $res ) ) {
 			$s =  "No results\n";
 		} else {
+			global $IP;
+			require_once( $IP.'/includes/ChangesList.php' );
+			
 			$list = ChangesList::newFromUser( $wgUser );
 			$s = $list->beginRecentChangesList();
 			$counter = 1;
