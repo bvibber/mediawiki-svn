@@ -1,0 +1,86 @@
+USERNAME BLACKLIST EXTENSION
+
+	Version 1.0
+	© 2006 Rob Church
+
+This is free software licensed under the GNU General Public License. Please
+see http://www.gnu.org/copyleft/gpl.html for further details, including the
+full text and terms of the license.
+
+== Overview ==
+
+	1. Introduction
+	2. Installing the Extension
+	3. Editing the Blacklist
+	4. Customising Warning Messages
+	5. Further Reading
+	6. Thanks...
+	
+== 1. Introduction ==
+
+The username blacklist extension is an add-on to the MediaWiki software which
+allows wiki administrators and other users with appropriate permissions to
+maintain a "blacklist" of usernames which cannot be registered. This blacklist
+is checked against and enforced during new account creation.
+
+The blacklist accepts simple text and more powerful regular expressions, for
+matching against particular patterns of usernames.
+
+== 2. Installing the Extension ==
+
+To install the username blacklist extension, first upload/copy the extension 
+file UsernameBlacklist.php into your MediaWiki extensions directory. Then edit
+your LocalSettings.php file and add the following line:
+
+	require_once( 'extensions/UsernameBlacklist.php' );
+	
+Save the file (uploading if applicable) to complete the installation.
+
+== 3. Editing the Blacklist ==
+
+The username blacklist extension looks for a system message named 
+"usernameblacklist" in your wiki. This can usually be edited via the
+MediaWiki:Usernameblacklist page. You will need to create this page, and format
+it as a bulleted list with each blocked username or regular expression as a new
+list item. For example:
+
+* Foo
+* ((B|b)ar
+
+The example above would prevent creation of the user account "Foo", and any
+account where the username contains "Bar" or "bar".
+
+== 4. Customising Warning Messages ==
+
+When a user attempts to create an account with a blacklisted username, they
+receive a warning message. The text of this can be customised via two system
+messages:
+
+* MediaWiki:Blacklistedusername
+	The heading text
+	
+* MediaWiki:Blacklistedusernametext
+	Explanatory text
+	
+== 5. Further Reading ==
+
+As noted above, the extension supports regular expression text matching on
+usernames. I won't go into more detail about this here (and I have given an
+example above), but I'll provide a couple of useful links:
+
+	Wikipedia article on regular expressions:
+	http://en.wikipedia.org/wiki/Regular_expression
+	
+	Brief introduction to regular expressions
+	http://etext.lib.virginia.edu/services/helpsheets/unix/regex.html
+	
+	The 30 minute regex. tutorial:
+	http://codeproject.com/dotnet/RegexTutorial.asp
+	
+== 6. Thanks... ==
+
+	* Avar; whose other extensions provide better reference than the docs.
+	* Tim; who broke the code in HEAD while I was doing this ;-)
+	* To the poster on wikitech-l who inspired it
+
+	All feedback welcome via <robchur@gmail.com>.
