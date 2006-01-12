@@ -70,11 +70,11 @@ EOT
 	}
 
 	function doIPRequest( $ip ) {
-		global $wgUser, $wgOut, $wgLang;
+		global $wgUser, $wgOut, $wgLang, $wgDBname;
 		$fname = 'CheckUser::doIPRequest';
 
 		if ( !$this->addLogEntry( $wgLang->timeanddate( wfTimestampNow() ) . ' ' .
-		  $wgUser->getName() . ' got edits for ' . htmlspecialchars( $ip ) )) 
+		  $wgUser->getName() . ' got edits for ' . htmlspecialchars( $ip ) . ' on ' . $wgDBname )) 
 		{
 			$wgOut->addHTML( '<p>Unable to add log entry</p>' );
 		}
@@ -103,7 +103,7 @@ EOT
 	}
 
 	function doUserRequest( $user ) {
-		global $wgOut, $wgTitle, $wgLang, $wgUser;
+		global $wgOut, $wgTitle, $wgLang, $wgUser, $wgDBname;
 		$fname = 'CheckUser::doUserRequest';
 		
 		$userTitle = Title::newFromText( $user, NS_USER );
@@ -113,7 +113,7 @@ EOT
 		}
 
 		if ( !$this->addLogEntry( $wgLang->timeanddate( wfTimestampNow() ) . ' ' .
-		  $wgUser->getName() . ' got IPs for ' . htmlspecialchars( $user ) ) ) 
+		  $wgUser->getName() . ' got IPs for ' . htmlspecialchars( $user ) . ' on ' . $wgDBname ) ) 
 		{
 			$wgOut->addHTML( '<p>Unable to add log entry</p>' );
 		}
