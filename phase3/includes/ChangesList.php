@@ -368,7 +368,7 @@ class EnhancedChangesList extends ChangesList {
 	 * Format a line for enhanced recentchange (aka with javascript and block of lines).
 	 */
 	function recentChangesLine( &$baseRC, $watched = false ) {
-		global $wgTitle, $wgLang, $wgContLang, $wgUser,
+		global $wgTitle, $wgLang, $wgContLang, $wgUser, $wgNamespaces,
 			$wgUseRCPatrol, $wgOnlySysopsCanPatrol, $wgSysopUserBans;
 
 		# Create a specialised object
