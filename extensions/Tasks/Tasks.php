@@ -688,6 +688,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$out = '';
 			$tasks = array();
 			$type = $wgRequest->getInt( 'type' );
+			$name = $wgRequest->getText( 'username' );
 			
 			$comment = $wgRequest->getText( 'text', '' ); # Not evaluated here; stored in database through safe database function
 			$new_tasks = $this->get_valid_new_tasks( $title, $tasks );
@@ -695,7 +696,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				# Trying to create a task that isn't available
 				$out .= '<p>' . wfMsgHtml('tasks_error1') . '</p>';
 			} else {
-				$this->add_new_task( $title, $comment, $type );
+				$this->add_new_task( $title, $comment, $type, $name );
 				$out .= '<p>' . wfMsgHtml( 'tasks_ok1' ) . '</p>';
 			}
 			return $out;
@@ -704,16 +705,23 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		/**
 		 * Adds a new task
 		 */
-		function add_new_task( $title, $comment, $type ) {
+		function add_new_task( $title, $comment, $type, $name ) {
 			global $wgUser;
 			$dbw =& wfGetDB( DB_MASTER );
+			$user_id = 0;
+			if ( !is_null($name) ) {
+			  $user_id = $wgUser->idFromName($name);
+			  if ( !ctype_digit($user_id) ) {
+			    $user_id = 0; # (int)0 indicates assigned to "no one"
+			  }
+			}
 			$dbw->insert( 'tasks',
 				array(
 					'task_page_id'       => $title->getArticleID(),
 					'task_page_title'    => $title->getPrefixedDBkey(),
 					'task_user_id'       => $wgUser->getID(),
 					'task_user_text'     => $wgUser->getName(),
-					'task_user_assigned' => 0, # default: No user assigned
+					'task_user_assigned' => $user_id,
 					'task_status'        => $this->get_status_number( 'open' ),
 					'task_comment'       => $comment,
 					'task_type'          => $type,
@@ -783,7 +791,14 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$out .= '<td align="left" valign="top">';
 			if( $task->task_user_assigned == 0 ) {
 				# Noone is assigned this task
-				$out .= wfMsgForContent( 'tasks_assignedto', wfMsgHTML( 'tasks_noone' ) );
+				$out .= '<form method="get">' // Added a form in place of old "assign to me" link
+				     . wfMsgHTML( 'tasks_assign_to' ) . ' <input type="text" name="username" />'
+				     . '<input type="hidden" name="action" value="tasks" />'
+				     . '<input type="hidden" name="mode" value="assignto" />'
+				     . '<input type="hidden" name="title" value="'.htmlspecialchars($title->getPrefixedText()).'" />'
+				     . '<input type="hidden" name="taskid" value="'.$tid.'" />'
+				     . '<input type="submit" name="submit" value="' . wfMsgHTML( 'ok' ) . '" />'
+				     . '</form>';
 			} else {
 				# Someone is assigned this task
 				$au = new User(); # Assigned user
@@ -898,6 +913,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			global $wgUser, $wgRequest;
 
 			$mode = trim( $wgRequest->getVal( 'mode' ) );
+			$name = trim( $wgRequest->getVal( 'username' ) );
 			$taskid = $wgRequest->getInt( 'taskid', 0 );
 
 			if( $mode == '' || $taskid == 0 ) {
@@ -915,6 +931,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 
 			switch( $mode ) {
 
+			case 'assignto':
 			case 'assignme':
 			case 'unassignme':
 
@@ -924,6 +941,11 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				if( $mode == 'unassignme' ) {
 					# Unassign me; this can be invoked for every user by editing the URL!
 					$user_id = 0;
+				} else if ( $mode == 'assignto' ) {
+				  $user_id = $wgUser->idFromName($name);
+				  if ( empty($user_id) ) {
+				    break; # break as though "mode" were undefined (no action)
+				  }
 				}
 				$do_set = array( # SET
 					'task_user_assigned' => $user_id, # Coming from $wgUser, so assumed safe
@@ -1264,6 +1286,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 
 			$out .= '</td><td valign="top">'
 			      . '<textarea name="text" rows="4" cols="20" style="width:100%"></textarea><br />'
+			      . wfMsgHTML( 'tasks_assign_to' ) . ' <input type="text" name="username" />'
 			      . '<input type="submit" name="create_task" value="' . wfMsgHTML( 'ok' ) . '" />'
 			      . '</td></tr></table>'
 			      . '</form>'
