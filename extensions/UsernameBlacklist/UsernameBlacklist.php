@@ -13,15 +13,29 @@
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'UsernameBlacklist_Init';
-	$wgExtensionCredits['other'][] = array( 'name' => 'Username blacklist', 'description' => 'provides a regex.-compatible blacklist of usernames', 'author' => 'Rob Church' );
-	
+	$wgExtensionCredits['other'][] = array(
+		'name' => 'Username blacklist',
+		'description' => 'provides a regex.-compatible blacklist of usernames',
+		'author' => 'Rob Church'
+		);
+
+	/**
+	 * Constructor
+	 */	
 	function UsernameBlacklist_Init() {
 		global $wgMessageCache, $wgHooks;
 		$wgHooks['AbortNewAccount'][] = 'UsernameBlacklist_Hook';
+		// FIXME: provide localisation ?
 		$wgMessageCache->addMessage( 'blacklistedusername', 'Blacklisted username' );
 		$wgMessageCache->addMessage( 'blacklistedusernametext', 'The username you have chosen matches the [[MediaWiki:Usernameblacklist|list of blacklisted usernames]].' );
 	}
-	
+
+	/**
+	 * Hooked function used to check the username against a blacklist.
+	 * Bring an error page if there is any match.
+	 *
+	 * @return boolean false if username is blacklisted.
+	 */
 	function UsernameBlacklist_Hook( $user ) {
 		global $wgOut;
 		$username  = $user->getName();
@@ -42,7 +56,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 			return( true );
 		}
 	}
-	
+
+	/**
+	 * Remove occurences of ' ' or '*' at the beginning of a string.
+	 *
+	 * @param string $text A text to trim.
+	 * @return string The trimmed text.
+	 */
 	function UsernameBlacklist_Trim( $text ) {
 		while( ( substr( $text, 0, 1 ) == '*' ) || ( substr( $text, 0, 1 ) == ' ' ) ) {
 			$text = substr( $text, 1, strlen( $text ) - 1 );
