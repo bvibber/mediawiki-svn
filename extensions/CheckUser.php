@@ -80,7 +80,7 @@ EOT
 		}
 
 		$dbr =& wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'recentchanges', array( '*' ), array( 'rc_ip' => $ip ), $fname, 
+		$res = $dbr->select( 'recentchanges', array( '*' ), $this->getIpConds( $dbr, $ip ), $fname, 
 	   		array( 'ORDER BY' => 'rc_timestamp DESC' ) );
 		if ( !$dbr->numRows( $res ) ) {
 			$s =  "No results\n";
@@ -100,6 +100,34 @@ EOT
 		}
 		$wgOut->addHTML( $s );
 		$dbr->freeResult( $res );
+	}
+	
+	/**
+	 * Since we have stuff stored in text format, this only works easily
+	 * for some simple cases, such as /16 and /24.
+	 * @param Database $db
+	 * @param string $ip
+	 * @return array conditions
+	 */
+	function getIpConds( $db, $ip ) {
+		$split = explode( $ip, '/', 2 );
+		// haaaack
+		if( preg_match( '#^(\d+)\.(\d+)\.(\d+)\.(\d+)/(\d+)$#', $ip, $matches ) ) {
+			list( $junk, $a, $b, $c, $d, $bits ) = $matches;
+			if( $bits == 32 ) {
+				$match = "$a.$b.$c.$d";
+			} elseif( $bits == 24 ) {
+				$match = "$a.$b.$c.%";
+			} elseif( $bits == 16 ) {
+				$match = "$a.$b.%";
+			} else {
+				// Other sizes not supported. /8 is too big
+				$match = $ip;
+			}
+			return array( 'rc_ip LIKE ' . $db->addQuotes( $match ) );
+		} else {
+			return array( 'rc_ip' => $ip );
+		}
 	}
 
 	function doUserRequest( $user ) {
