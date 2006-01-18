@@ -870,7 +870,7 @@ CREATE TABLE /*$wgDBprefix*/namespace_names (
   -- The name of this namespace. Spaces are underscores here.
   `ns_name` varchar(200) NOT NULL default '',
   -- Is this the default name to which all others redirect?
-  `ns_default` tinyint(1) NOT NULL default '',
+  `ns_default` tinyint(1) NOT NULL default '0',
   -- Is this the canonical English name which is expected to
   -- exist, and which cannot be deleted? (Mostly for system
   -- namespaces.)
