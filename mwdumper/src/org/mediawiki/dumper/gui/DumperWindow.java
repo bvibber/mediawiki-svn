@@ -23,6 +23,10 @@ import org.mediawiki.importer.DumpWriter;
 public class DumperWindow extends DumperWindowForm {
 	protected DumperGui backend;
 	
+	private static final int STOPPED = 0;
+	private static final int RUNNING = 1;
+	private int mode = STOPPED;
+	
 	/** Creates a new instance of DumperWindow */
 	public DumperWindow(DumperGui backend) {
 		this.backend = backend;
@@ -35,12 +39,14 @@ public class DumperWindow extends DumperWindowForm {
 	public void start() {
 		// disable the other fields...
 		setFieldsEnabled(false);
-		
-		// todo: set the start button up to a stop mode instead of disabling it
+		startButton.setText("Cancel");
+		mode = RUNNING;
 	}
 	
 	public void stop() {
+		startButton.setText("Start import");
 		setFieldsEnabled(true);
+		mode = STOPPED;
 	}
 	
 	void setFieldsEnabled(boolean val) {
@@ -59,8 +65,7 @@ public class DumperWindow extends DumperWindowForm {
 
 					schema14Radio,
 					schema15Radio,
-					prefixText,
-					startButton };
+					prefixText };
 				for (int i = 0; i < widgets.length; i++) {
 					widgets[i].setEnabled(_val);
 				}
@@ -99,11 +104,15 @@ public class DumperWindow extends DumperWindowForm {
 	}
 	
 	protected void onStartButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		try {
-			backend.startImport(fileText.getText());
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		if (mode == RUNNING) {
+			backend.abort();
+		} else {
+			try {
+				backend.startImport(fileText.getText());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 

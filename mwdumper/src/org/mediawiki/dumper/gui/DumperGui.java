@@ -24,17 +24,19 @@ import org.mediawiki.importer.XmlDumpWriter;
 public class DumperGui {
 	private DumperWindow gui;
 	private boolean running = false;
+	XmlDumpReader reader;
 
 	void startImport(String inputFile) throws IOException {
 		// TODO work right ;)
 		final InputStream stream = Tools.openInputFile(inputFile);
 		DumpWriter writer = new MultiWriter();
 		DumpWriter progress = gui.getProgressWriter(writer, 1000);
-		final XmlDumpReader reader = new XmlDumpReader(stream, progress);
+		reader = new XmlDumpReader(stream, progress);
 		new Thread() {
 			public void run() {
 				running = true;
 				gui.start();
+				gui.setProgress("Starting import...");
 				try {
 					reader.readDump();
 					stream.close();
@@ -42,9 +44,16 @@ public class DumperGui {
 					gui.setProgress("FAILED: " + e.getMessage());
 				}
 				running = false;
+				reader = null;
 				gui.stop();
 			}
 		}.start();
+	}
+	
+	void abort() {
+		// Request an abort!
+		gui.setProgress("Aborting import...");
+		reader.abort();
 	}
 
 	/**

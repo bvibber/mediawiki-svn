@@ -55,6 +55,8 @@ public class XmlDumpReader  extends DefaultHandler {
 	Revision rev;
 	int nskey;
 	
+	boolean abortFlag;
+	
 	/**
 	 * Initialize a processor for a MediaWiki XML dump stream.
 	 * Events are sent to a single DumpWriter output sink, but you
@@ -87,6 +89,15 @@ public class XmlDumpReader  extends DefaultHandler {
 			throw new IOException(e.getMessage());
 		}
 		writer.close();
+	}
+	
+	/**
+	 * Request that the dump processing be aborted.
+	 * At the next element, an exception will be thrown to stop the XML parser.
+	 * @fixme Is setting a bool thread-safe? It should be atomic...
+	 */
+	public void abort() {
+		abortFlag = true;
 	}
 	
 	// --------------------------
@@ -130,6 +141,8 @@ public class XmlDumpReader  extends DefaultHandler {
 		// if and when character data arrives -- at that point we
 		// have a length.
 		len = 0;
+		if (abortFlag)
+			throw new SAXException("XmlDumpReader set abort flag.");
 		try {
 			qName = (String)startElements.get(qName);
 			if (qName == null)
