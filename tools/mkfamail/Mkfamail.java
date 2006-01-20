@@ -1,5 +1,5 @@
 /*
- * Copyright 2004, 2005 Kate Turner
+ * Copyright 2004-2006 Kate Turner
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal
@@ -69,7 +69,7 @@ public class Mkfamail {
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setUseCaches(false);
 			conn.setRequestProperty("User-Agent",
-					"Wikipedia-Daily-Article-Generator/NA (contact: kate.turner@gmail.com)");
+					"Wikipedia-Daily-Article-Generator/NA (contact: lithiana@livejournal.com)");
 			conn.connect();
 			int i = conn.getResponseCode();
 			if (i != 200) {
@@ -91,7 +91,7 @@ public class Mkfamail {
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		contText = "";
 		
-		System.out.println("Daily Article message generator (revision B).  Please wait...\n");
+		System.out.println("Daily Article message generator (revision C).  Please wait...\n");
 		String when;
 		SimpleDateFormat d = new SimpleDateFormat("MMMM d, yyyy");
 		d.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -183,7 +183,7 @@ public class Mkfamail {
 		// only want lines starting "* [[date]] text..."
 		pat = Pattern.compile("\\n(\\*\\s*\\[\\[(\\d|[a-zA-Z])+\\]\\][^\\n]*)");
 		mat = pat.matcher(text);
-		List lines = new ArrayList();
+		List<String> lines = new ArrayList<String>();
 		while (mat.find()) {
 			lines.add(mat.group(1));
 		}
@@ -275,6 +275,7 @@ public class Mkfamail {
 		}
 		return s;
 	}*/
+	
 	static String htmlentities[][] = {
 			{"nbsp", "160"},
 			{"iexcl", "161"},
@@ -372,25 +373,16 @@ public class Mkfamail {
 			{"yacute", "253"},
 			{"thorn", "254"},
 			{"yuml", "255"},
-			{"ouml", "246"},
-			{"divide", "247"},
-			{"oslash", "248"},
-			{"ugrave", "249"},
-			{"uacute", "250"},
-			{"ucirc", "251"},
-			{"uuml", "252"},
-			{"yacute", "253"},
-			{"thorn", "254"},
-			{"yuml", "255"},
-			{"quot", "34"},
-			{"amp", "38"},
-			{"lt", "60"},
-			{"gt", "62"},
 			{"OElig", "338"},
 			{"oelig", "339"},
+			{"quot", "34"},
 			{"Scaron", "352"},
 			{"scaron", "353"},
 			{"Yuml", "376"},
+			{"amp", "38"},
+			{"fnof", "402"},
+			{"lt", "60"},
+			{"gt", "62"},
 			{"circ", "710"},
 			{"tilde", "732"},
 			{"ensp", "8194"},
@@ -410,71 +402,18 @@ public class Mkfamail {
 			{"bdquo", "8222"},
 			{"dagger", "8224"},
 			{"Dagger", "8225"},
-			{"permil", "8240"},
-			{"lsaquo", "8249"},
-			{"rsaquo", "8250"},
-			{"euro", "8364"},
-			{"fnof", "402"},
-			{"Alpha", "913"},
-			{"Beta", "914"},
-			{"Gamma", "915"},
-			{"Delta", "916"},
-			{"Epsilon", "917"},
-			{"Zeta", "918"},
-			{"Eta", "919"},
-			{"Theta", "920"},
-			{"Iota", "921"},
-			{"Kappa", "922"},
-			{"Lambda", "923"},
-			{"Mu", "924"},
-			{"Nu", "925"},
-			{"Xi", "926"},
-			{"Omicron", "927"},
-			{"Pi", "928"},
-			{"Rho", "929"},
-			{"Sigma", "931"},
-			{"Tau", "932"},
-			{"Upsilon", "933"},
-			{"Phi", "934"},
-			{"Chi", "935"},
-			{"Psi", "936"},
-			{"Omega", "937"},
-			{"alpha", "945"},
-			{"beta", "946"},
-			{"gamma", "947"},
-			{"delta", "948"},
-			{"epsilon", "949"},
-			{"zeta", "950"},
-			{"eta", "951"},
-			{"theta", "952"},
-			{"iota", "953"},
-			{"kappa", "954"},
-			{"lambda", "955"},
-			{"mu", "956"},
-			{"nu", "957"},
-			{"xi", "958"},
-			{"omicron", "959"},
-			{"pi", "960"},
-			{"rho", "961"},
-			{"sigmaf", "962"},
-			{"sigma", "963"},
-			{"tau", "964"},
-			{"upsilon", "965"},
-			{"phi", "966"},
-			{"chi", "967"},
-			{"psi", "968"},
-			{"omega", "969"},
-			{"thetasym", "977"},
-			{"upsih", "978"},
-			{"piv", "982"},
 			{"bull", "8226"},
 			{"hellip", "8230"},
+			{"permil", "8240"},
 			{"prime", "8242"},
 			{"Prime", "8243"},
+			{"lsaquo", "8249"},
+			{"rsaquo", "8250"},
 			{"oline", "8254"},
 			{"frasl", "8260"},
-			{"weierp", "8472"},
+			{"euro", "8364"},
 			{"image", "8465"},
+			{"weierp", "8472"},
 			{"real", "8476"},
 			{"trade", "8482"},
 			{"alefsym", "8501"},
@@ -533,13 +472,64 @@ public class Mkfamail {
 			{"rfloor", "8971"},
 			{"lang", "9001"},
 			{"rang", "9002"},
+			{"Alpha", "913"},
+			{"Beta", "914"},
+			{"Gamma", "915"},
+			{"Delta", "916"},
+			{"Epsilon", "917"},
+			{"Zeta", "918"},
+			{"Eta", "919"},
+			{"Theta", "920"},
+			{"Iota", "921"},
+			{"Kappa", "922"},
+			{"Lambda", "923"},
+			{"Mu", "924"},
+			{"Nu", "925"},
+			{"Xi", "926"},
+			{"Omicron", "927"},
+			{"Pi", "928"},
+			{"Rho", "929"},
+			{"Sigma", "931"},
+			{"Tau", "932"},
+			{"Upsilon", "933"},
+			{"Phi", "934"},
+			{"Chi", "935"},
+			{"Psi", "936"},
+			{"Omega", "937"},
+			{"alpha", "945"},
+			{"beta", "946"},
+			{"gamma", "947"},
+			{"delta", "948"},
+			{"epsilon", "949"},
+			{"zeta", "950"},
+			{"eta", "951"},
+			{"theta", "952"},
+			{"iota", "953"},
+			{"kappa", "954"},
+			{"lambda", "955"},
+			{"mu", "956"},
+			{"nu", "957"},
+			{"xi", "958"},
+			{"omicron", "959"},
+			{"pi", "960"},
+			{"rho", "961"},
+			{"sigmaf", "962"},
+			{"sigma", "963"},
+			{"tau", "964"},
+			{"upsilon", "965"},
+			{"phi", "966"},
+			{"chi", "967"},
 			{"loz", "9674"},
+			{"psi", "968"},
+			{"omega", "969"},
+			{"thetasym", "977"},
+			{"upsih", "978"},
+			{"piv", "982"},
 			{"spades", "9824"},
 			{"clubs", "9827"},
 			{"hearts", "9829"},
 			{"diams", "9830"},
 	};
-	
 
 	public static String HTMLDecode(String s) {
 		int i = 0, j;
