@@ -52,7 +52,9 @@ function renderInputbox($input)
 	getBoxOption($inputbox->buttonlabel,$input,'buttonlabel');	
 	getBoxOption($inputbox->searchbuttonlabel,$input,'searchbuttonlabel');		
 	getBoxOption($inputbox->id,$input,'id');	
-	getBoxOption($inputbox->labeltext,$input,'labeltext');	
+	getBoxOption($inputbox->labeltext,$input,'labeltext');
+	getBoxOption( $inputbox->br, $input, 'break' );
+	$inputbox->lineBreak();
 	
 	$boxhtml=$inputbox->render();
 	# Maybe support other useful magic words here
@@ -77,7 +79,7 @@ function getBoxOption(&$value,&$input,$name,$isNumber=false) {
 }
 
 class Inputbox {
-	var $type,$width,$preload,$editintro;
+	var $type,$width,$preload,$editintro, $br;
 	var $defaulttext,$bgcolor,$buttonlabel,$searchbuttonlabel;
 	
 	function render() {
@@ -109,7 +111,7 @@ class Inputbox {
 <td align="center" bgcolor="{$this->bgcolor}">
 <form name="searchbox" action="$searchpath" class="searchbox">
 	<input class="searchboxInput" name="search" type="text"
-	value="{$this->defaulttext}" size="{$this->width}"/><br />
+	value="{$this->defaulttext}" size="{$this->width}"/>{$this->br}	
 	<input type='submit' name="go" class="searchboxGoButton"
 	value="{$this->buttonlabel}"
 	/>&nbsp;<input type='submit' name="fulltext"
@@ -174,7 +176,7 @@ ENDFORM;
 	<input type="hidden" name="editintro" value="{$this->editintro}" />	
 	{$comment}
 	<input class="createboxInput" name="title" type="text"
-	value="{$this->defaulttext}" size="{$this->width}"/><br />		
+	value="{$this->defaulttext}" size="{$this->width}"/>{$this->br}	
 	<input type='submit' name="create" class="createboxButton"
 	value="{$this->buttonlabel}"/>	
 </form>
@@ -183,6 +185,12 @@ ENDFORM;
 </table>
 ENDFORM;
 		return $createform;
+	}
+
+	function lineBreak() {
+		# Should we be inserting a <br /> tag?
+		$cond = ( strtolower( $this->br ) == "no" );
+		$this->br = $cond ? '' : '<br />';
 	}
 	
 }
