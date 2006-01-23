@@ -3,6 +3,7 @@ PRODUCT=utfnormal
 VERSION=0.0.1
 
 CXX?=g++
+CFLAGS?=-O2 -fPIC
 
 # For Linux
 SHARED = -shared
@@ -16,7 +17,7 @@ DISTFILES=Makefile \
 
 
 php_$(PRODUCT).so : $(PRODUCT).cpp $(PRODUCT)_wrap.cpp
-	$(CXX) -O2 `php-config --includes` -licuuc $(SHARED) -o php_$(PRODUCT).so $(PRODUCT).cpp $(PRODUCT)_wrap.cpp
+	$(CXX) $(CFLAGS) `php-config --includes` -licuuc $(SHARED) -o php_$(PRODUCT).so $(PRODUCT).cpp $(PRODUCT)_wrap.cpp
 
 $(PRODUCT)_wrap.cpp : $(PRODUCT).i
 	swig -Wall -php4 -c++ $(PRODUCT).i
