@@ -20,6 +20,7 @@
 			<classpath>
 				<!-- used for tests, not at runtime... -->
 				<pathelement path="libs/junit.jar" />
+				<pathelement path="libs/swing-layout-1.0.jar" />
 			</classpath>
 		</javac>
 	</target>
@@ -32,6 +33,11 @@
 			<fileset dir="bin" includes="org/mediawiki/importer/*.class" />
 			<fileset dir="bin" includes="org/mediawiki/dumper/*.class" />
 			<fileset dir="bin" includes="org/apache/commons/compress/bzip2/*.class" />
+			
+			<!-- Some silly libraries -->
+			<zipfileset src="libs/xml-apis.jar" />
+			<zipfileset src="libs/xercesImpl.jar" />
+			<zipfileset src="libs/swing-layout-1.0.jar" />
 		</jar>
 	</target>
 	
