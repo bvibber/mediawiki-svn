@@ -16,6 +16,16 @@ CREATE TABLE stableversions (
 $wgStableVersionThereCanOnlyBeOne // Set this to true is you want to have only a single stable version per article
 */
 
+
+
+
+# ATTENTION BRION!
+# wfStableVersionCanChange() always returns true for testing
+# The "Older/newer revision" mess does not seem to be related to this extension
+
+
+
+
 if( !defined( 'MEDIAWIKI' ) ) die();
 
 /**@+ Version type constants */
@@ -92,46 +102,59 @@ function wfStableVersionAddCache() {
 }
 
 /**
- * Adds query for stable version
+ * Adds query for stable version (OBSOLETE?)
  * @param $article (not used)
  * @param $fields Fields for query
  */
 function wfStableVersionArticlePageDataBeforeHook( &$article, &$fields ) {
 	return true;
-#	$fields[] = "page_stable";
-#	$fields[] = "page_stable_cache";
 }
 
 /**
- * Adds new variables "mStable" and "mStableCache" to the article
+ * Hook function to be run right after article data was read
  * @param $article The article
  * @param $fields Query result object
  */
 function wfStableVersionArticlePageDataAfterHook( &$article, &$fields ) {
 	global $wgRequest;
 	
-	$dbr =& wfGetDB( DB_SLAVE );
 	$fname = "wfStableVersionArticlePageDataAfterHook";
-	$title = $article->getTitle();
 	
 	# No stable versions of a non-existing article
-	if( !$title->exists() ) {
+	if( !$article->exists() ) {
 		return;
 	}
 
+	wfProfileIn( $fname );
+
+	# Trying to figure out the revision number
+	$rev = $wgRequest->getInt( 'oldid', $fields->page_latest );
+	
+	# Run the query
+	wfStableVersionSetArticleVersionStatusAndCache( $article, $rev );
+	
+	wfProfileOut( $fname );
+	return true;
+	}
+
+/**
+ * Adds new variables "mStable" and "mStableCache" to the article
+ * @param $article The article
+ * @param $rev The revision number
+*/ 
+function wfStableVersionSetArticleVersionStatusAndCache( &$article, $rev ) {
+	$fname = "wfStableVersionSetArticleVersionStatusAndCache";
+	wfProfileIn( $fname );
+	
+	$dbr =& wfGetDB( DB_SLAVE );
 	$res = $dbr->select(
 			/* FROM   */ 'stableversions',
 			/* SELECT */ '*',
-			/* WHERE  */ array( 'sv_page_id' => $title->getArticleID() ),
+			/* WHERE  */ array( 'sv_page_id' => $article->getID() ),
 			$fname,
 			array( "ORDER BY" => "sv_page_rev DESC" )
 	);
 
-	# Trying to figure out the revision number
-	$rev = $wgRequest->getText( 'oldid', "" );
-	if( $rev == "" ) {
-		$fields['page_latest'];
-	}
 	
 	$article->mIsStable = false;
 	$article->mLastStable = 0;
@@ -149,8 +172,7 @@ function wfStableVersionArticlePageDataAfterHook( &$article, &$fields ) {
 		}
 	}
 	$dbr->freeResult( $res );
-
-	return true;
+	wfProfileOut( $fname );
 }
 
 /**
@@ -292,7 +314,7 @@ function wfStableVersion() {
 			$text = $p->parse( $text, $title, $parserOptions );
 			$stripState = $p->mStripState;
 			$wgStableVersionCaching = false;
-			$text = $p->replaceVariables( $text, $parse_options );
+			$text = $p->replaceVariables( $text, $parserOptions );
 		
 			$this->fixNoWiki( $stripState );
 			$p->mStripState = $stripState;
@@ -303,19 +325,19 @@ function wfStableVersion() {
 		}
 	
 		/**
-		 * main()
+		 * execute()
 		 */
 		function execute( $par = null ) {
-			global $wgOut, $wgRequest, $wgUser, $wgArticle;
-			global $wgStableVersionThereCanOnlyBeOne;
+			global $wgOut, $wgRequest, $wgArticle;
+			$fname = "SpecialStableVersion::execute";
 			
 			# Sanity checks
 			$mode = $wgRequest->getText( 'mode', "" );
 			if( $mode != 'set' && $mode != 'reset' ) {
-				# Should be error(wrong call)
+				# Should be error(wrong mode)
 				return;
 			}
-			$id = $wgRequest->getText( 'id', "0" );
+			$id = $wgRequest->getInt( 'id', 0 );
 			if( $id == "0" ) {
 				# Should be error(wrong call)
 				return;
@@ -326,11 +348,12 @@ function wfStableVersion() {
 			}
 
 			# OK, now do business
+			wfProfileIn( $fname );
 			$t = Title::newFromID( $id );
 
 			if( $mode == 'set' ) {
 				# Set new version as stable
-				$newstable = $wgRequest->getText( 'revision', "0" );
+				$newstable = $wgRequest->getInt( 'revision', 0 );
 				$clearstable = $newstable;
 				$out = wfMsg( 'stableversion_set_ok' );
 				$url = $t->getLocalURL( "oldid=" . $newstable );
@@ -338,12 +361,10 @@ function wfStableVersion() {
 			} elseif( $mode == "reset" ) {
 				# Reset stable version
 				$newstable = "0";
-				$clearstable = $wgRequest->getText( 'revision', "0" );
+				$clearstable = $wgRequest->getInt( 'revision', 0 );
 				$out = wfMsg( 'stableversion_reset_ok' );
 				$url = $t->getLocalURL();
 				$act = wfMsg( 'stableversion_reset_log' );
-			} else {
-				# FIXME: Should be some error message for wrong mode
 			}
 			
 			$article = new Article( $t );
@@ -362,6 +383,35 @@ function wfStableVersion() {
 			# Get template-replaced cache
 			$cache = $this->getCacheText( $article );
 
+			$this->updateDatabase( $id, $clearstable, $newstable, $type, $cache );
+
+			$out = "<p>{$out}</p><p>" . wfMsg( 'stableversion_return', $url, $t->getFullText() ) . "</p>";
+			$act = "[[" . $t->getText() . "]] : " . $act;
+
+			# Logging
+			$log = new LogPage( 'stablevers' );
+			$log->addEntry( 'stablevers', $t, $act );
+
+			$this->setHeaders();
+			$wgOut->addHtml( $out );
+			wfProfileOut( $fname );
+		}
+
+
+		/**
+		 * This runs the database queries for execute()
+		 * @param id Article ID
+		 * @param clearstable Revision ID of the revision to be removed as stable
+		 * @param newstable The revision to become a (the) new stable version
+		 * @param type The stable revision type (not used so far)
+		 * @param cache The revision text to cache
+		 */
+		function updateDatabase( $id, $clearstable, $newstable, $type, $cache ) {
+			global $wgStableVersionThereCanOnlyBeOne, $wgUser;
+
+			$fname = "SpecialStableVersion::updateDatabase";
+			wfProfileIn( $fname );
+			
 			$dbw =& wfGetDB( DB_MASTER );
 			$dbw->begin();
 			
@@ -377,7 +427,7 @@ function wfStableVersion() {
 				'sv_page_rev' => $newstable,
 				'sv_type'     => $type,
 				'sv_user'     => $wgUser->getID(),
-				'sv_date'     => "12345678123456" ,
+				'sv_date'     => wfTimestamp( TS_MW ) ,
 				'sv_cache'    => $cache,
 			);
 			
@@ -387,17 +437,10 @@ function wfStableVersion() {
 					$fname );
 			}
 			$dbw->commit();
-
-			$out = "<p>{$out}</p><p>" . wfMsg( 'stableversion_return', $url, $t->getFullText() ) . "</p>";
-			$act = "[[" . $t->getText() . "]] : " . $act;
-
-			# Logging
-			$log = new LogPage( 'stablevers' );
-			$log->addEntry( 'stablevers', $t, $act );
-
-			$this->setHeaders();
-			$wgOut->addHtml( $out );
+			wfProfileOut( $fname );
 		}
+
+
 	} # end of class
 
 	SpecialPage::addPage( new SpecialStableVersion );
