@@ -38,6 +38,7 @@
 			<zipfileset src="libs/xml-apis.jar" />
 			<zipfileset src="libs/xercesImpl.jar" />
 			<zipfileset src="libs/swing-layout-1.0.jar" />
+			<zipfileset src="libs/mysql-connector-java-3.1.11-bin.jar" />
 		</jar>
 	</target>
 	
