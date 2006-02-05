@@ -1,30 +1,48 @@
 package org.mediawiki.dumper.gui;
 
-import javax.swing.JPanel;
+import java.sql.SQLException;
 import javax.swing.JFrame;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.SwingUtilities;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 import org.mediawiki.dumper.Tools;
 import org.mediawiki.importer.DumpWriter;
 import org.mediawiki.importer.MultiWriter;
 import org.mediawiki.importer.XmlDumpReader;
-import org.mediawiki.importer.XmlDumpWriter;
 
 public class DumperGui {
 	private DumperWindow gui;
 	private boolean running = false;
 	XmlDumpReader reader;
+	Connection conn;
+	
+	void connect(String host, String port, String username, String password) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+		} catch (ClassNotFoundException ex) {
+			ex.printStackTrace();
+		} catch (InstantiationException ex) {
+			ex.printStackTrace();
+		} catch (IllegalAccessException ex) {
+			ex.printStackTrace();
+		}
+		try {
+			// fixme is there escaping? is this a url? fucking java bullshit
+			conn = DriverManager.getConnection(
+					"jdbc:mysql://" + host +
+					":" + port +
+					// "/" + dbname +
+					"?user=" + username + 
+					"&password" + password);
+			gui.connectionSucceeded();
+		} catch (SQLException ex) {
+			conn = null;
+			ex.printStackTrace();
+			gui.connectionFailed();
+		}
+	}
 
 	void startImport(String inputFile) throws IOException {
 		// TODO work right ;)

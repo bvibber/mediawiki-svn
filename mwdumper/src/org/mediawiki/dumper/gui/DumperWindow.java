@@ -10,9 +10,9 @@
 package org.mediawiki.dumper.gui;
 
 import java.awt.Component;
+import java.awt.FileDialog;
 import java.io.File;
 import java.io.IOException;
-import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import org.mediawiki.importer.DumpWriter;
 
@@ -73,6 +73,14 @@ public class DumperWindow extends DumperWindowForm {
 		});
 	}
 	
+	void connectionSucceeded() {
+		setProgress("Connected to server!");
+	}
+	
+	void connectionFailed() {
+		
+	}
+	
 	/**
 	 * Set the progress bar text asynchronously, eg from a background thread
 	 */
@@ -88,19 +96,29 @@ public class DumperWindow extends DumperWindowForm {
 	/* -- event handlers -- */
 	
 	protected void onBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		JFileChooser chooser = new JFileChooser();
-		chooser.showOpenDialog(this);
-		File selection = chooser.getSelectedFile();
-		try {
-			fileText.setText(selection.getCanonicalPath());
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		/*
+		 * Note: I'm using the AWT FileDialog because JFileChooser is a piece
+		 * of total crap that doesn't make any attempt to fit in with platform
+		 * standards.
+		 */
+		FileDialog chooser = new FileDialog(this, "Select dump file");
+		chooser.setVisible(true);
+		String selection = chooser.getFile();
+		if (selection != null) {
+			try {
+				fileText.setText(new File(selection).getCanonicalPath());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 
 	protected void onConnectButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		System.out.println("Connect!");
+		backend.connect(serverText.getText(),
+				portText.getText(),
+				userText.getText(),
+				passwordText.getText());
 	}
 	
 	protected void onStartButtonActionPerformed(java.awt.event.ActionEvent evt) {
