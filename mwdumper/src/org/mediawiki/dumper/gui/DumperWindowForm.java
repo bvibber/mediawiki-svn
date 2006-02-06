@@ -65,7 +65,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
         filePanel.setLayout(filePanelLayout);
         filePanelLayout.setHorizontalGroup(
             filePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, filePanelLayout.createSequentialGroup()
+            .add(filePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(fileText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -74,7 +74,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
         );
         filePanelLayout.setVerticalGroup(
             filePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, filePanelLayout.createSequentialGroup()
+            .add(filePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(filePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(fileText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -108,7 +108,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
         databasePanel.setLayout(databasePanelLayout);
         databasePanelLayout.setHorizontalGroup(
             databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, databasePanelLayout.createSequentialGroup()
+            .add(databasePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(serverLabel)
@@ -126,7 +126,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
         );
         databasePanelLayout.setVerticalGroup(
             databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, databasePanelLayout.createSequentialGroup()
+            .add(databasePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(serverLabel)
@@ -166,27 +166,27 @@ public class DumperWindowForm extends javax.swing.JFrame {
         schemaPanel.setLayout(schemaPanelLayout);
         schemaPanelLayout.setHorizontalGroup(
             schemaPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, schemaPanelLayout.createSequentialGroup()
+            .add(schemaPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(schemaPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, schemaPanelLayout.createSequentialGroup()
+                    .add(schemaPanelLayout.createSequentialGroup()
                         .add(prefixLabel)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(prefixText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                         .addContainerGap(54, Short.MAX_VALUE))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, schemaPanelLayout.createSequentialGroup()
+                    .add(schemaPanelLayout.createSequentialGroup()
                         .add(schema15Radio)
                         .addContainerGap(54, Short.MAX_VALUE))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, schemaPanelLayout.createSequentialGroup()
+                    .add(schemaPanelLayout.createSequentialGroup()
                         .add(schema14Radio)
                         .addContainerGap(127, Short.MAX_VALUE))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, schemaPanelLayout.createSequentialGroup()
+                    .add(schemaPanelLayout.createSequentialGroup()
                         .add(schemaLabel)
                         .addContainerGap(80, Short.MAX_VALUE))))
         );
         schemaPanelLayout.setVerticalGroup(
             schemaPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, schemaPanelLayout.createSequentialGroup()
+            .add(schemaPanelLayout.createSequentialGroup()
                 .add(26, 26, 26)
                 .add(schemaLabel)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -203,6 +203,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
         progressLabel.setText("Select a file...");
 
         startButton.setText("Start import");
+        startButton.setEnabled(false);
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
@@ -213,7 +214,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
         progressPanel.setLayout(progressPanelLayout);
         progressPanelLayout.setHorizontalGroup(
             progressPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, progressPanelLayout.createSequentialGroup()
+            .add(progressPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(progressLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 383, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -222,7 +223,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, progressPanelLayout.createSequentialGroup()
+            .add(progressPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(progressPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(progressLabel)
@@ -251,8 +252,8 @@ public class DumperWindowForm extends javax.swing.JFrame {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, progressPanel)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, filePanel)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, progressPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, filePanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                         .add(databasePanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 14, Short.MAX_VALUE)
@@ -261,7 +262,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(filePanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(22, 22, 22)
@@ -269,7 +270,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
                     .add(databasePanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(schemaPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(progressPanel)
+                .add(progressPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pack();

@@ -9,7 +9,8 @@ import java.sql.DriverManager;
 
 import org.mediawiki.dumper.Tools;
 import org.mediawiki.importer.DumpWriter;
-import org.mediawiki.importer.MultiWriter;
+import org.mediawiki.importer.SqlServerStream;
+import org.mediawiki.importer.SqlWriter15;
 import org.mediawiki.importer.XmlDumpReader;
 
 public class DumperGui {
@@ -17,6 +18,10 @@ public class DumperGui {
 	private boolean running = false;
 	XmlDumpReader reader;
 	Connection conn;
+	
+	public boolean isConnected() {
+		return (conn != null);
+	}
 	
 	void connect(String host, String port, String username, String password) {
 		try {
@@ -30,12 +35,14 @@ public class DumperGui {
 		}
 		try {
 			// fixme is there escaping? is this a url? fucking java bullshit
-			conn = DriverManager.getConnection(
+			String url = 
 					"jdbc:mysql://" + host +
 					":" + port +
-					// "/" + dbname +
+					"/" + // dbname +
 					"?user=" + username + 
-					"&password" + password);
+					"&password=" + password;
+			System.err.println("Connecting to " + url);
+			conn = DriverManager.getConnection(url);
 			gui.connectionSucceeded();
 		} catch (SQLException ex) {
 			conn = null;
@@ -43,11 +50,23 @@ public class DumperGui {
 			gui.connectionFailed();
 		}
 	}
+	
+	void disconnect() {
+		try {
+			conn.close();
+			conn = null;
+			gui.connectionClosed();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
 
 	void startImport(String inputFile) throws IOException {
 		// TODO work right ;)
 		final InputStream stream = Tools.openInputFile(inputFile);
-		DumpWriter writer = new MultiWriter();
+		//DumpWriter writer = new MultiWriter();
+		SqlServerStream sqlStream = new SqlServerStream(conn);
+		DumpWriter writer = new SqlWriter15(sqlStream);
 		DumpWriter progress = gui.getProgressWriter(writer, 1000);
 		reader = new XmlDumpReader(stream, progress);
 		new Thread() {

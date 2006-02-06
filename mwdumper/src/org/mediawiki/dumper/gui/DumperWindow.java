@@ -13,6 +13,7 @@ import java.awt.Component;
 import java.awt.FileDialog;
 import java.io.File;
 import java.io.IOException;
+import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import org.mediawiki.importer.DumpWriter;
 
@@ -73,12 +74,39 @@ public class DumperWindow extends DumperWindowForm {
 		});
 	}
 	
+	void setDatabaseFieldsEnabled(boolean val) {
+		final boolean _val = val;
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				Component[] widgets = new Component[] {
+					serverText,
+					portText,
+					userText,
+					passwordText};
+				for (int i = 0; i < widgets.length; i++) {
+					widgets[i].setEnabled(_val);
+				}
+				startButton.setEnabled(!_val);
+			}
+		});
+	}
+	
 	void connectionSucceeded() {
 		setProgress("Connected to server!");
+		setDatabaseFieldsEnabled(false);
+		connectButton.setText("Disconnect");
 	}
 	
 	void connectionFailed() {
-		
+		setProgress("Connection failed. :(");
+		setDatabaseFieldsEnabled(true);
+		connectButton.setText("Connect");
+	}
+	
+	void connectionClosed() {
+		setProgress("Connection closed.");
+		setDatabaseFieldsEnabled(true);
+		connectButton.setText("Connect");
 	}
 	
 	/**
@@ -96,26 +124,59 @@ public class DumperWindow extends DumperWindowForm {
 	/* -- event handlers -- */
 	
 	protected void onBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		/*
-		 * Note: I'm using the AWT FileDialog because JFileChooser is a piece
-		 * of total crap that doesn't make any attempt to fit in with platform
-		 * standards.
-		 */
-		FileDialog chooser = new FileDialog(this, "Select dump file");
-		chooser.setVisible(true);
-		String selection = chooser.getFile();
+		File selection = chooseFile("Select dump file");
 		if (selection != null) {
 			try {
-				fileText.setText(new File(selection).getCanonicalPath());
+				fileText.setText(selection.getCanonicalPath());
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
 	}
+	
+	File chooseFile(String message) {
+		String os = System.getProperty("os.name");
+		boolean swingSucks = (os.equals("Mac OS X") || os.startsWith("Win"));
+		if (swingSucks)
+			return chooseFileAwt(message);
+		else
+			return chooseFileSwing(message);
+	}
+	
+	/*
+	 * Note: I'm using the AWT FileDialog for Mac OS X and Windows because
+	 * JFileChooser is a piece of total crap that doesn't make any attempt
+	 * to fit in with platform UI standards. On the Mac it doesn't even
+	 * show mounted volumes properly!
+	 */
+	File chooseFileAwt(String message) {
+		FileDialog chooser = new FileDialog(this, message);
+		chooser.setVisible(true);
+		String filename = chooser.getFile();
+		if (filename == null) {
+			return null;
+		} else {
+			return new File(chooser.getDirectory(), filename);
+		}
+	}
+	
+	/**
+	 * Sadly, the AWT file chooser is some crappy Motif thing on Unix.
+	 * The Swing file chooser actually is less hideous there.
+	 */
+	File chooseFileSwing(String message) {
+		JFileChooser chooser = new JFileChooser();
+		chooser.setDialogTitle(message);
+		chooser.showOpenDialog(this);
+		return chooser.getSelectedFile();
+	}
 
 	protected void onConnectButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		backend.connect(serverText.getText(),
+		if (backend.isConnected())
+			backend.disconnect();
+		else
+			backend.connect(serverText.getText(),
 				portText.getText(),
 				userText.getText(),
 				passwordText.getText());
