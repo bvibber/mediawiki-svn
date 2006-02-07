@@ -190,6 +190,10 @@ public class DumperGui {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		// Set up some prettification if we're on Mac OS X
+		System.setProperty("apple.laf.useScreenMenuBar", "true");
+		System.setProperty("com.apple.mrj.application.apple.menu.about.name", "MediaWiki Import");
+		
 		DumperGui manager = new DumperGui();
 	}
 	

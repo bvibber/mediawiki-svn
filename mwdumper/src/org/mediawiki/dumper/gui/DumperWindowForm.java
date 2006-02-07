@@ -51,11 +51,12 @@ public class DumperWindowForm extends javax.swing.JFrame {
         progressPanel = new javax.swing.JPanel();
         progressLabel = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
-        maniMenuBar = new javax.swing.JMenuBar();
+        mainMenuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         quitItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MediaWiki data dump importer");
         fileText.setText("(no dump file selected)");
 
         browseButton.setText("Browse...");
@@ -277,9 +278,9 @@ public class DumperWindowForm extends javax.swing.JFrame {
 
         fileMenu.add(quitItem);
 
-        maniMenuBar.add(fileMenu);
+        mainMenuBar.add(fileMenu);
 
-        setJMenuBar(maniMenuBar);
+        setJMenuBar(mainMenuBar);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -353,7 +354,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
     protected javax.swing.JMenu fileMenu;
     protected javax.swing.JPanel filePanel;
     protected javax.swing.JTextField fileText;
-    protected javax.swing.JMenuBar maniMenuBar;
+    protected javax.swing.JMenuBar mainMenuBar;
     protected javax.swing.JLabel passwordLabel;
     protected javax.swing.JPasswordField passwordText;
     protected javax.swing.JLabel portLabel;
