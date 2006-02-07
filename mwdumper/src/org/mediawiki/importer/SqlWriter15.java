@@ -37,6 +37,10 @@ public class SqlWriter15 extends SqlWriter {
 		super(output);
 	}
 	
+	public SqlWriter15(SqlStream output, String prefix) {
+		super(output, prefix);
+	}
+	
 	public void writeEndWiki() throws IOException {
 		flushInsertBuffers();
 		super.writeEndWiki();

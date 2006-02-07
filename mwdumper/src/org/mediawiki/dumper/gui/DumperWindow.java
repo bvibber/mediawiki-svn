@@ -31,6 +31,8 @@ public class DumperWindow extends DumperWindowForm {
 	public DumperWindow(DumperGui aBackend) {
 		super();
 		backend = aBackend;
+		
+		// For some reason the Netbeans GUI editor doesn't offer these events
 		dbnameText.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				backend.setDbname(dbnameText.getText());
@@ -42,6 +44,20 @@ public class DumperWindow extends DumperWindowForm {
 				backend.setDbname(dbnameText.getText());
 			}
 		});
+		
+		prefixText.getDocument().addDocumentListener(new DocumentListener() {
+			public void changedUpdate(DocumentEvent e) {
+				backend.setPrefix(prefixText.getText());
+			}
+			public void insertUpdate(DocumentEvent e) {
+				backend.setPrefix(prefixText.getText());
+			}
+			public void removeUpdate(DocumentEvent e) {
+				backend.setPrefix(prefixText.getText());
+			}
+		});
+		
+		showFields();
 	}
 	
 	public DumpWriter getProgressWriter(DumpWriter sink, int interval) {
@@ -80,6 +96,7 @@ public class DumperWindow extends DumperWindowForm {
 	
 	void showSchemaFields() {
 		enableFields(new Component[] {
+				schemaLabel,
 				schema14Radio,
 				schema15Radio,
 				prefixLabel,
@@ -164,6 +181,8 @@ public class DumperWindow extends DumperWindowForm {
 	}
 
 	protected void onDbnameTextActionPerformed(java.awt.event.ActionEvent evt) {
+		// This gets called if you hit enter in the field while the import
+		// button is still disabled. Check the db again...
 		backend.setDbname(dbnameText.getText());
 	}
 	

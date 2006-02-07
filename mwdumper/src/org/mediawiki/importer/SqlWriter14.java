@@ -36,6 +36,10 @@ public class SqlWriter14 extends SqlWriter {
 		super(output);
 	}
 	
+	public SqlWriter14(SqlStream output, String prefix) {
+		super(output, prefix);
+	}
+	
 	public void writeStartPage(Page page) {
 		currentPage = page;
 		lastRevision = null;

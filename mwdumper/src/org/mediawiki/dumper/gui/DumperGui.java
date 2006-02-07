@@ -11,6 +11,7 @@ import java.sql.Statement;
 import org.mediawiki.dumper.Tools;
 import org.mediawiki.importer.DumpWriter;
 import org.mediawiki.importer.SqlServerStream;
+import org.mediawiki.importer.SqlWriter14;
 import org.mediawiki.importer.SqlWriter15;
 import org.mediawiki.importer.XmlDumpReader;
 
@@ -96,6 +97,11 @@ public class DumperGui {
 		checkSchema();
 	}
 	
+	void setPrefix(String prefix) {
+		this.prefix = prefix;
+		checkSchema();
+	}
+	
 	void checkSchema() {
 		schemaReady = false;
 		if (connected) {
@@ -141,8 +147,7 @@ public class DumperGui {
 		final InputStream stream = Tools.openInputFile(inputFile);
 		//DumpWriter writer = new MultiWriter();
 		conn.setCatalog(dbname);
-		SqlServerStream sqlStream = new SqlServerStream(conn);
-		DumpWriter writer = new SqlWriter15(sqlStream);
+		DumpWriter writer = openWriter();
 		DumpWriter progress = gui.getProgressWriter(writer, 1000);
 		reader = new XmlDumpReader(stream, progress);
 		new Thread() {
@@ -161,6 +166,14 @@ public class DumperGui {
 				gui.showFields();
 			}
 		}.start();
+	}
+	
+	DumpWriter openWriter() {
+		SqlServerStream sqlStream = new SqlServerStream(conn);
+		if (schema.equals("1.4"))
+			return new SqlWriter14(sqlStream, prefix);
+		else
+			return new SqlWriter15(sqlStream, prefix);
 	}
 	
 	void abort() {

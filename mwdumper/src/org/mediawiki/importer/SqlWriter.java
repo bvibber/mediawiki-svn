@@ -37,6 +37,7 @@ import java.util.TimeZone;
 
 public abstract class SqlWriter implements DumpWriter {
 	private SqlStream stream;
+	private String tablePrefix = "";
 	
 	protected static final Integer ONE = new Integer(1);
 	protected static final Integer ZERO = new Integer(0);
@@ -49,6 +50,11 @@ public abstract class SqlWriter implements DumpWriter {
 	
 	public SqlWriter(SqlStream output) {
 		stream = output;
+	}
+	
+	public SqlWriter(SqlStream output, String prefix) {
+		stream = output;
+		tablePrefix = prefix;
 	}
 	
 	public void close() throws IOException {
@@ -133,9 +139,9 @@ public abstract class SqlWriter implements DumpWriter {
 		stream.writeStatement(sql);
 	}
 	
-	private static void appendInsertStatement(StringBuffer sql, String table, Object[][] row) {
+	private void appendInsertStatement(StringBuffer sql, String table, Object[][] row) {
 		sql.append("INSERT INTO ");
-		//sql.append(tablePrefix);
+		sql.append(tablePrefix);
 		sql.append(table);
 		sql.append(" (");
 		
@@ -164,7 +170,7 @@ public abstract class SqlWriter implements DumpWriter {
 		StringBuffer sql = new StringBuffer(65536);
 		synchronized (sql) { //only for StringBuffer
 		sql.append("UPDATE ");
-		//sql.append(tablePrefix);
+		sql.append(tablePrefix);
 		sql.append(table);
 		sql.append(" SET ");
 		
