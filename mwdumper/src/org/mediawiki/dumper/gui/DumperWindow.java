@@ -13,8 +13,11 @@ import java.awt.Component;
 import java.awt.FileDialog;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import org.mediawiki.importer.DumpWriter;
 
 /**
@@ -24,89 +27,77 @@ import org.mediawiki.importer.DumpWriter;
 public class DumperWindow extends DumperWindowForm {
 	protected DumperGui backend;
 	
-	private static final int STOPPED = 0;
-	private static final int RUNNING = 1;
-	private int mode = STOPPED;
-	
 	/** Creates a new instance of DumperWindow */
-	public DumperWindow(DumperGui backend) {
-		this.backend = backend;
+	public DumperWindow(DumperGui aBackend) {
+		super();
+		backend = aBackend;
+		dbnameText.getDocument().addDocumentListener(new DocumentListener() {
+			public void changedUpdate(DocumentEvent e) {
+				backend.setDbname(dbnameText.getText());
+			}
+			public void insertUpdate(DocumentEvent e) {
+				backend.setDbname(dbnameText.getText());
+			}
+			public void removeUpdate(DocumentEvent e) {
+				backend.setDbname(dbnameText.getText());
+			}
+		});
 	}
 	
 	public DumpWriter getProgressWriter(DumpWriter sink, int interval) {
 		return new GraphicalProgressFilter(sink, interval, progressLabel);
 	}
 	
-	public void start() {
-		// disable the other fields...
-		setFieldsEnabled(false);
-		startButton.setText("Cancel");
-		mode = RUNNING;
+	/**
+	 * Update all the fields' enabled flags and button names.
+	 */
+	public void showFields() {
+		showBrowseFields();
+		showDatabaseFields();
+		showSchemaFields();
+		showImportFields();
 	}
 	
-	public void stop() {
-		startButton.setText("Start import");
-		setFieldsEnabled(true);
-		mode = STOPPED;
+	void showBrowseFields() {
+		enableFields(new Component[] { fileText, browseButton },
+				!backend.running);
 	}
 	
-	void setFieldsEnabled(boolean val) {
-		final boolean _val = val;
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				Component[] widgets = new Component[] {
-					fileText,
-					browseButton,
-
-					serverText,
-					portText,
-					userText,
-					passwordText,
-					connectButton,
-
-					schema14Radio,
-					schema15Radio,
-					prefixText };
-				for (int i = 0; i < widgets.length; i++) {
-					widgets[i].setEnabled(_val);
-				}
-			}
-		});
+	void showDatabaseFields() {
+		enableFields(new Component[] {
+				serverLabel,
+				serverText,
+				portLabel,
+				portText,
+				userLabel,
+				userText,
+				passwordLabel,
+				passwordText},
+			!backend.running && !backend.connected);
+		connectButton.setEnabled(!backend.running);
+		connectButton.setText(backend.connected ? "Disconnect" : "Connect");
 	}
 	
-	void setDatabaseFieldsEnabled(boolean val) {
-		final boolean _val = val;
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				Component[] widgets = new Component[] {
-					serverText,
-					portText,
-					userText,
-					passwordText};
-				for (int i = 0; i < widgets.length; i++) {
-					widgets[i].setEnabled(_val);
-				}
-				startButton.setEnabled(!_val);
-			}
-		});
+	void showSchemaFields() {
+		enableFields(new Component[] {
+				schema14Radio,
+				schema15Radio,
+				prefixLabel,
+				prefixText,
+				dbnameLabel,
+				dbnameText},
+			!backend.running && backend.connected);
 	}
 	
-	void connectionSucceeded() {
-		setProgress("Connected to server!");
-		setDatabaseFieldsEnabled(false);
-		connectButton.setText("Disconnect");
+	void showImportFields() {
+		startButton.setEnabled(backend.connected && backend.schemaReady);
+		startButton.setText(backend.running ? "Cancel" : "Start import");
 	}
 	
-	void connectionFailed() {
-		setProgress("Connection failed. :(");
-		setDatabaseFieldsEnabled(true);
-		connectButton.setText("Connect");
-	}
-	
-	void connectionClosed() {
-		setProgress("Connection closed.");
-		setDatabaseFieldsEnabled(true);
-		connectButton.setText("Connect");
+	void enableFields(Component[] widgets, boolean val) {
+		for (int i = 0; i < widgets.length; i++) {
+			widgets[i].setEnabled(val);
+		}
 	}
 	
 	/**
@@ -119,6 +110,14 @@ public class DumperWindow extends DumperWindowForm {
 				progressLabel.setText(_text);
 			}
 		});
+	}
+	
+	public void setDatabaseStatus(String text) {
+		dbStatusLabel.setText(text);
+	}
+	
+	public void setSchemaStatus(String text) {
+		schemaStatusLabel.setText(text);
 	}
 	
 	/* -- event handlers -- */
@@ -134,6 +133,41 @@ public class DumperWindow extends DumperWindowForm {
 			}
 		}
 	}
+	protected void onConnectButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		if (backend.connected)
+			backend.disconnect();
+		else
+			backend.connect(serverText.getText(),
+				portText.getText(),
+				userText.getText(),
+				passwordText.getText());
+	}
+	
+	protected void onStartButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		if (backend.running) {
+			backend.abort();
+		} else {
+			try {
+				backend.startImport(fileText.getText());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
+
+	protected void onQuitItemActionPerformed(java.awt.event.ActionEvent evt) {
+		System.exit(0);
+	}
+
+	protected void onDbnameTextActionPerformed(java.awt.event.ActionEvent evt) {
+		backend.setDbname(dbnameText.getText());
+	}
+	
+	/* ---- more random crap ---- */
 	
 	File chooseFile(String message) {
 		String os = System.getProperty("os.name");
@@ -172,31 +206,4 @@ public class DumperWindow extends DumperWindowForm {
 		return chooser.getSelectedFile();
 	}
 
-	protected void onConnectButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if (backend.isConnected())
-			backend.disconnect();
-		else
-			backend.connect(serverText.getText(),
-				portText.getText(),
-				userText.getText(),
-				passwordText.getText());
-	}
-	
-	protected void onStartButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if (mode == RUNNING) {
-			backend.abort();
-		} else {
-			try {
-				backend.startImport(fileText.getText());
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-	}
-
-	protected void onQuitItemActionPerformed(java.awt.event.ActionEvent evt) {
-		System.exit(0);
-	}                                        
-	
 }

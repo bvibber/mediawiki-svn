@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Statement;
 
 import org.mediawiki.dumper.Tools;
 import org.mediawiki.importer.DumpWriter;
@@ -15,15 +16,31 @@ import org.mediawiki.importer.XmlDumpReader;
 
 public class DumperGui {
 	private DumperWindow gui;
-	private boolean running = false;
+	
+	// status
+	public boolean running = false;
+	public boolean connected = false;
+	public boolean schemaReady = false;
+	
+	// other goodies
+	String host = "localhost";
+	String port = "3306";
+	String username = "root";
+	String password = "";
+	
+	String schema = "1.5";
+	String dbname = "wikidb";
+	String prefix = "";
+	
 	XmlDumpReader reader;
 	Connection conn;
 	
-	public boolean isConnected() {
-		return (conn != null);
-	}
-	
 	void connect(String host, String port, String username, String password) {
+		assert !connected;
+		assert conn == null;
+		assert !running;
+		assert !schemaReady;
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (ClassNotFoundException ex) {
@@ -33,6 +50,7 @@ public class DumperGui {
 		} catch (IllegalAccessException ex) {
 			ex.printStackTrace();
 		}
+		gui.setDatabaseStatus("Connecting...");
 		try {
 			// fixme is there escaping? is this a url? fucking java bullshit
 			String url = 
@@ -43,28 +61,86 @@ public class DumperGui {
 					"&password=" + password;
 			System.err.println("Connecting to " + url);
 			conn = DriverManager.getConnection(url);
-			gui.connectionSucceeded();
+			connected = true;
+			gui.setDatabaseStatus("Connected.");
+			gui.showFields();
+			checkSchema();
 		} catch (SQLException ex) {
-			conn = null;
+			gui.setDatabaseStatus("Failed to connect.");
 			ex.printStackTrace();
-			gui.connectionFailed();
 		}
+		
+		assert (connected == (conn != null));
 	}
 	
 	void disconnect() {
+		assert connected;
+		assert conn != null;
+		assert !running;
 		try {
 			conn.close();
 			conn = null;
-			gui.connectionClosed();
+			connected = false;
+			gui.setDatabaseStatus("Disconnected.");
+			gui.showFields();
+			checkSchema();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
+		assert !connected;
+		assert conn == null;
+	}
+	
+	void setDbname(String dbname) {
+		this.dbname = dbname;
+		checkSchema();
+	}
+	
+	void checkSchema() {
+		schemaReady = false;
+		if (connected) {
+			gui.setSchemaStatus("Checking...");
+			try {
+				conn.setCatalog(dbname);
+				String[] tables = testTables();
+				for (int i = 0; i < tables.length; i++) {
+					Statement sql = conn.createStatement();
+					sql.execute("SELECT 1 FROM " + tables[i] + " LIMIT 0");
+				}
+				schemaReady = true;
+				gui.setSchemaStatus("Ready");
+			} catch (SQLException e) {
+				gui.setSchemaStatus("Error: " + e.getMessage());
+			}
+		} else {
+			gui.setSchemaStatus("Not connected.");
+		}
+		gui.showFields();
+		assert !(schemaReady && !connected) : "Schema can't be ready if disconnected.";
+	}
+	
+	String[] testTables() {
+		if (schema.equals("1.4"))
+			return new String[] {
+				prefix + "cur",
+				prefix + "old"};
+		else
+			return new String[] {
+				prefix + "page",
+				prefix + "revision",
+				prefix + "text"};
 	}
 
-	void startImport(String inputFile) throws IOException {
+	void startImport(String inputFile) throws IOException, SQLException {
+		assert connected;
+		assert conn != null;
+		assert schemaReady;
+		assert !running;
+		
 		// TODO work right ;)
 		final InputStream stream = Tools.openInputFile(inputFile);
 		//DumpWriter writer = new MultiWriter();
+		conn.setCatalog(dbname);
 		SqlServerStream sqlStream = new SqlServerStream(conn);
 		DumpWriter writer = new SqlWriter15(sqlStream);
 		DumpWriter progress = gui.getProgressWriter(writer, 1000);
@@ -72,7 +148,7 @@ public class DumperGui {
 		new Thread() {
 			public void run() {
 				running = true;
-				gui.start();
+				gui.showFields();
 				gui.setProgress("Starting import...");
 				try {
 					reader.readDump();
@@ -82,7 +158,7 @@ public class DumperGui {
 				}
 				running = false;
 				reader = null;
-				gui.stop();
+				gui.showFields();
 			}
 		}.start();
 	}
