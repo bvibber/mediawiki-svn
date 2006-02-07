@@ -59,7 +59,10 @@ public class DumperGui {
 					":" + port +
 					"/" + // dbname +
 					"?user=" + username + 
-					"&password=" + password;
+					"&password=" + password +
+					"&useUnicode=true" +
+					"&characterEncoding=UTF-8" +
+					"&jdbcCompliantTruncation=false";
 			System.err.println("Connecting to " + url);
 			conn = DriverManager.getConnection(url);
 			connected = true;
@@ -159,6 +162,7 @@ public class DumperGui {
 					reader.readDump();
 					stream.close();
 				} catch(IOException e) {
+					e.printStackTrace();
 					gui.setProgress("FAILED: " + e.getMessage());
 				}
 				running = false;
