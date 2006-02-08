@@ -55,16 +55,23 @@ class CheckUser extends UnlistedSpecialPage
 		$encUser = htmlspecialchars( $user );
 
 		$wgOut->addHTML( <<<EOT
+<table border=0 cellpadding=5>
 <form name="checkuser" action="$action" method=post>
-<table border=0 cellpadding=5><tr><td>
+<tr><td>
 	IP: 
 </td><td>
 	<input type="text" name="ip" value="$encIp" width=50 /> <input type="submit" name="subip" value="OK" />
-</td></tr><tr><td>
+</td></tr>
+</form>
+
+<form name="checkuser" action="$action" method=post>
+<tr><td>
 	User:
 </td><td>
 	<input type="text" name="user" value="$encUser" width=50 /> <input type="submit" name="subuser" value="OK" />
-</td></tr></table>
+</td></tr>
+</form>
+</table>
 EOT
 		);
 	}
@@ -110,7 +117,6 @@ EOT
 	 * @return array conditions
 	 */
 	function getIpConds( $db, $ip ) {
-		$split = explode( $ip, '/', 2 );
 		// haaaack
 		if( preg_match( '#^(\d+)\.(\d+)\.(\d+)\.(\d+)/(\d+)$#', $ip, $matches ) ) {
 			list( $junk, $a, $b, $c, $d, $bits ) = $matches;
