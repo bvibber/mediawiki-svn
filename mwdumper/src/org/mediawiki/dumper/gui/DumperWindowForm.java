@@ -167,12 +167,22 @@ public class DumperWindowForm extends javax.swing.JFrame {
         schema14Radio.setText("1.4 (cur, old)");
         schema14Radio.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         schema14Radio.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        schema14Radio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                schema14RadioActionPerformed(evt);
+            }
+        });
 
         schemaRadios.add(schema15Radio);
         schema15Radio.setSelected(true);
         schema15Radio.setText("1.5 (page, revision, text)");
         schema15Radio.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         schema15Radio.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        schema15Radio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                schema15RadioActionPerformed(evt);
+            }
+        });
 
         prefixLabel.setText("Table prefix");
 
@@ -313,6 +323,14 @@ public class DumperWindowForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+	private void schema15RadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schema15RadioActionPerformed
+		onSchema15RadioActionPerformed(evt); // i hate you, netbeans gui editor
+	}//GEN-LAST:event_schema15RadioActionPerformed
+
+	private void schema14RadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schema14RadioActionPerformed
+		onSchema14RadioActionPerformed(evt); // i hate you, netbeans gui editor
+	}//GEN-LAST:event_schema14RadioActionPerformed
+
 	private void dbnameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbnameTextActionPerformed
 		onDbnameTextActionPerformed(evt); // i hate you, netbeans gui editor
 	}//GEN-LAST:event_dbnameTextActionPerformed
@@ -394,6 +412,14 @@ public class DumperWindowForm extends javax.swing.JFrame {
 	}                                        
 
 	protected void onDbnameTextActionPerformed(java.awt.event.ActionEvent evt) {
+// TODO add your handling code here:
+	}
+
+	protected void onSchema14RadioActionPerformed(java.awt.event.ActionEvent evt) {
+// TODO add your handling code here:
+	}
+
+	protected void onSchema15RadioActionPerformed(java.awt.event.ActionEvent evt) {
 // TODO add your handling code here:
 	}
 

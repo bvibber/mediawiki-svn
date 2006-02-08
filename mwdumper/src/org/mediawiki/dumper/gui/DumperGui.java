@@ -105,6 +105,11 @@ public class DumperGui {
 		checkSchema();
 	}
 	
+	void setSchema(String schema) {
+		this.schema = schema;
+		checkSchema();
+	}
+	
 	void checkSchema() {
 		schemaReady = false;
 		if (connected) {

@@ -186,6 +186,14 @@ public class DumperWindow extends DumperWindowForm {
 		backend.setDbname(dbnameText.getText());
 	}
 	
+	protected void onSchema14RadioActionPerformed(java.awt.event.ActionEvent evt) {
+		backend.setSchema("1.4");
+	}
+
+	protected void onSchema15RadioActionPerformed(java.awt.event.ActionEvent evt) {
+		backend.setSchema("1.5");
+	}
+	
 	/* ---- more random crap ---- */
 	
 	File chooseFile(String message) {
