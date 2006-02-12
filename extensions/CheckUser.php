@@ -95,7 +95,14 @@ EOT
 			global $IP;
 			require_once( $IP.'/includes/ChangesList.php' );
 			
-			$list = ChangesList::newFromUser( $wgUser );
+			if ( in_array('newfromuser',get_class_methods('ChangesList')) ) {
+				// MW >= 1.6
+				$list = ChangesList::newFromUser( $wgUser );
+			} else {
+				// MW < 1.6
+				$sk =& $wgUser->getSkin();
+				$list = new ChangesList( $sk );
+			}
 			$s = $list->beginRecentChangesList();
 			$counter = 1;
 			while ( ($row = $dbr->fetchObject( $res ) ) != false ) {
@@ -170,6 +177,9 @@ EOT
 	function showLog() {
 		global $wgOut, $wgCheckUserLog;
 		$output = '';
+		if ( $wgCheckUserLog === false ) {
+			return;
+		}
 		if( file_exists( $wgCheckUserLog ) ) {
 			$log = file( $wgCheckUserLog );
 			if( !!$log ) {
@@ -188,6 +198,10 @@ EOT
 
 	function addLogEntry( $entry ) {
 		global $wgUser, $wgCheckUserLog;
+		if ( $wgCheckUserLog === false ) {
+			// No log required, this is not an error
+			return true;
+		}
 
 		$f = fopen( $wgCheckUserLog, 'a' );
 		if ( !$f ) {
