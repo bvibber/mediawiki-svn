@@ -22,14 +22,16 @@
  * @subpackage Extensions
  */
 if (defined('MEDIAWIKI')) {
+	require_once('GlobalFunctions.php');
 	if (!defined('RDFAPI_INCLUDE_DIR')) {
 		wfDebugDieBacktrace("MwRdf: you must install RAP (RDF API for PHP) " .
 							"and define 'RDFAPI_INCLUDE_DIR' in LocalSettings.php");
 	}
 	require_once(RDFAPI_INCLUDE_DIR . "RdfAPI.php");
 	require_once(RDFAPI_INCLUDE_DIR . PACKAGE_VOCABULARY);
-
-	define('MWRDF_VERSION', '0.3');
+	require_once('SpecialPage.php');
+	
+	define('MWRDF_VERSION', '0.4');
 	define('MWRDF_XML_TYPE_PREFS',
 		   "application/rdf+xml,text/xml;q=0.7," .
 		   "application/xml;q=0.5,text/rdf;q=0.1");
@@ -72,13 +74,14 @@ if (defined('MEDIAWIKI')) {
 								  'ntriples' => MwRdfOutputNtriples);
 
 	$wgRdfNamespaces = array('cc' => CC_NS);
-
+	$wgRdfCacheExpiry = 86400;
+	
 	/* Config end */
 
 	$wgExtensionFunctions[] = 'setupMwRdf';
 
 	function setupMwRdf() {
-		global $wgParser, $wgMessageCache, $wgRequest, $wgOut;
+		global $wgParser, $wgMessageCache, $wgRequest, $wgOut, $wgHooks;
 
 		$wgMessageCache->addMessages(array('rdf' => 'Rdf',
 										   'rdf-inpage' => "Embedded In-page Turtle",
@@ -128,7 +131,8 @@ if (defined('MEDIAWIKI')) {
 		if (isset($title) && mb_strlen($title) > 0) {
 			$nt =& Title::newFromText($title);
 
-			if ($action == 'view' &&
+			if (isset($nt) &&
+				$action == 'view' &&
 				$nt->getNamespace() != NS_SPECIAL)
 			{
 				$rdft =& Title::makeTitle(NS_SPECIAL, "Rdf");
@@ -139,6 +143,13 @@ if (defined('MEDIAWIKI')) {
 				$wgOut->addMetadataLink($linkdata);
 			}
 		}
+
+		# We set some hooks for invalidating the cache
+		
+		$wgHooks['ArticleSave'][] = 'MwRdfOnArticleSave';
+		$wgHooks['ArticleSaveComplete'][] = 'MwRdfOnArticleSaveComplete';
+		$wgHooks['TitleMoveComplete'][] = 'MwRdfOnTitleMoveComplete';
+		$wgHooks['ArticleDeleteComplete'][] = 'MwRdfOnArticleDeleteComplete';
 	}
 
 	function wfSpecialRdf($par) {
@@ -283,8 +294,9 @@ if (defined('MEDIAWIKI')) {
 		}
 
 		$fullModel = ModelFactory::getDefaultModel();
+		$title = $article->mTitle;
 
-		$uri = $article->mTitle->getFullURL();
+		$uri = $title->getFullURL();
 		$fullModel->setBaseURI($uri);
 
 		foreach ($modelnames as $modelname) {
@@ -296,11 +308,19 @@ if (defined('MEDIAWIKI')) {
 									" for model '$modelname'.");
 			}
 
-			$model = $modelfunc($article);
-			if ($model != null) {
+			# Check the cache...
+			
+			$model = MwRdfGetCache($title, $modelname);
+			
+			# If it's not there, regenerate.
+			
+			if (!isset($model) || !$model) {
+				$model = $modelfunc($article);
+				MwRdfSetCache($title, $modelname, $model);
+			}
+				
+			if (isset($model)) {
 				$fullModel->addModel($model);
-				# free the memory
-				$model->close();
 			}
 		}
 
@@ -366,7 +386,7 @@ if (defined('MEDIAWIKI')) {
 			$parser = new N3Parser();
 			$parser->baseURI = $article->mTitle->getFullURL();
 
-			$prefixes = array_merge($default_prefixes, MwRdfNamespacePrefixes(), $wgRdfNamespaces);
+			$prefixes = array_merge($default_prefixes, $wgRdfNamespaces, MwRdfNamespacePrefixes());
 
 			$prelude = "";
 
@@ -383,7 +403,7 @@ if (defined('MEDIAWIKI')) {
 										  $RDFS_comment,
 										  MwRdfLiteral("Error parsing in-page RDF: "
 													   . $parser->errors[0] .
-													   "\n code here: \n '" . $rdf . "'", null,
+													   "\n code here: \n '" . $prelude . $rdf . "'" , null,													   
 													   "en")));
 			}
 		}
@@ -664,20 +684,26 @@ if (defined('MEDIAWIKI')) {
 		# Find prefixed links
 		preg_match_all("/\[\[([^|\]]+:[^|\]]+)(\|.*)?\]\]/", $text, $matches);
 
-		foreach ($matches[1] as $linktext) {
-			$iwlink = Title::newFromText($linktext);
-			$pfx = $iwlink->getInterwiki();
-			if (mb_strlen($pfx) > 0) {
-				$iwr = MwRdfTitleResource($iwlink);
-				# XXX: Wikitravel uses some 4+ prefixes for sister site links
-				if ($wgContLang->getLanguageName($pfx) && mb_strlen($pfx) < 4) {
-					$model->add(new Statement($tr, $DCTERM['hasVersion'], $iwr));
-					$model->add(new Statement($iwr, $DCMES['language'],
-											  MwRdfLanguage($pfx)));
-				} else {
-					# XXX: Express the "sister site" relationship better
-					$model->add(new Statement($tr, $RDFS_seeAlso,
-											  $iwr));
+		# XXX: this fails for Category: namespace; why?
+		
+		if (isset($matches)) {
+			foreach ($matches[1] as $linktext) {
+				$iwlink = Title::newFromText($linktext);
+				if (isset($iwlink)) {
+					$pfx = $iwlink->getInterwiki();
+					if (mb_strlen($pfx) > 0) {
+						$iwr = MwRdfTitleResource($iwlink);
+						# XXX: Wikitravel uses some 4+ prefixes for sister site links
+						if ($wgContLang->getLanguageName($pfx) && mb_strlen($pfx) < 4) {
+							$model->add(new Statement($tr, $DCTERM['hasVersion'], $iwr));
+							$model->add(new Statement($iwr, $DCMES['language'],
+													  MwRdfLanguage($pfx)));
+						} else {
+							# XXX: Express the "sister site" relationship better
+							$model->add(new Statement($tr, $RDFS_seeAlso,
+													  $iwr));
+						}
+					}
 				}
 			}
 		}
@@ -844,15 +870,131 @@ if (defined('MEDIAWIKI')) {
 			$prefixes = array();
 			$spaces = $wgLang->getNamespaces();
 			foreach ($spaces as $code => $text) {
-				$prefix = str_replace(' ', '_', $text);
-				# XXX: figure out a less sneaky way to do this
-				# XXX: won't work if article title isn't at the end of the URL
-				$title = Title::makeTitle($code, '');
-				$uri = $title->getFullURL();
-				$prefixes[$prefix] = $uri;
+				$prefix = urlencode(str_replace(' ', '_', $text));
+				# FIXME: this is a hack
+				if (strpos($prefix, '%') === false) {
+					# XXX: figure out a less sneaky way to do this
+					# XXX: won't work if article title isn't at the end of the URL
+					$title = Title::makeTitle($code, '');
+					$uri = $title->getFullURL();
+					$prefixes[$prefix] = $uri;
+				}
 			}
 		}
 		return $prefixes;
+	}
+	
+	function MwRdfGetCache($title, $modelname) {
+		global $wgMemc;
+		if (!isset($wgMemc)) {
+			return false;
+		} else {
+			$ntrip = $wgMemc->get(MwRdfCacheKey($title, $modelname));
+			if (isset($ntrip) && $ntrip) {
+				return MwRdfNTriplesToModel($ntrip);
+			} else {
+				return null;
+			}
+		}
+	}
+	
+	function MwRdfClearCache($title, $modelname) {
+		global $wgMemc;
+		if (!isset($wgMemc)) {
+			return false;
+		} else {
+			return $wgMemc->delete(MwRdfCacheKey($title, $modelname));
+		}
+	}
+
+	function MwRdfClearCacheAll($title) {
+		global $wgRdfModelFunctions;
+		$nt = $title;
+		foreach (array_keys($wgRdfModelFunctions) as $modelname) {
+			MwRdfClearCache($nt, $modelname);
+		}
+	}
+	
+	function MwRdfSetCache($title, $modelname, $model) {
+		global $wgMemc, $wgRdfCacheExpiry; 
+		if (!isset($wgMemc)) {
+			return false;
+		} else {
+			return $wgMemc->set(MwRdfCacheKey($title, $modelname), 
+								MwRdfModelToNTriples($model),
+								$wgRdfCacheExpiry);
+		}
+	}
+
+	function MwRdfCacheKey($title, $modelname) {
+		if (!isset($title)) {
+			return null;
+		} else {
+			global $wgDBname;
+			$dbkey = $title->getDBkey();
+			$ns = $title->getNamespace();
+			return "$wgDBname:rdf:$ns:$dbkey:$modelname";
+		}
+	}
+	
+	# Before saving, we clear the cache for articles this article links to
+	
+	function MwRdfOnArticleSave($article, $dc1, $dc2, $dc3, $dc4, $dc5, $dc6) {
+		$id = $article->mTitle->getArticleID();
+		if ($id != 0) {
+			$dbr =& wfGetDB(DB_SLAVE);
+			$res = $dbr->select(array('cur', 'links'),
+								array('cur_namespace', 'cur_title'),
+								array('cur_id = l_to',
+									  'l_from = ' . $id),
+								'MwRdfOnArticleSave',
+								array('ORDER BY' => 'cur_namespace, cur_title'));
+			while ($res && $row = $dbr->fetchObject($res)) {
+				$lt = Title::makeTitle($row->cur_namespace, $row->cur_title);
+				MwRdfClearCache($lt, 'linksto');
+			}
+		}
+	    return true;
+	}
+
+	# Clear the cache when the article is saved
+	
+	function MwRdfOnArticleSaveComplete($article, $dc1, $dc2, $dc3, $dc4, $dc5, $dc6) {
+	   MwRdfClearCacheAll($article->mTitle);
+	    return true;
+	}
+
+	# Clear the cache when an article is moved
+	
+	function MwRdfOnTitleMoveComplete($oldt, $newt, $user, $oldid, $newid) {
+	   MwRdfClearCacheAll($newt);		
+	   MwRdfClearCacheAll($oldt);
+	    return true;
+	}
+
+	# Clear the cache when an article is deleted
+	
+	function MwRdfOnArticleDeleteComplete($article, $user, $reason) {
+		MwRdfClearCacheAll($article->mTitle);
+	    return true;
+	}
+	
+	function MwRdfNTriplesToModel($ntrip) {
+		require_once(RDFAPI_INCLUDE_DIR.PACKAGE_SYNTAX_N3);
+		$parser = new N3Parser();
+		$model = $parser->parse2model($ntrip);
+		return $model;
+	}
+
+	function MwRdfModelToNTriples($model) {
+		# Make sure serializer is loaded
+		if (!isset($model) || $model->size() == 0) {
+			return '';
+		} else {
+			require_once(RDFAPI_INCLUDE_DIR . PACKAGE_SYNTAX_N3);
+			$ser = new NTripleSerializer();
+			return $ser->serialize($model);
+		}
 	}
 }
 

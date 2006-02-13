@@ -1,7 +1,7 @@
 MediaWiki RDF extension
 
-version 0.3
-16 November 2005
+version 0.4
+24 January 2006
 
 This is the README file for the RDF extension for MediaWiki
 software. The extension is only useful if you've got a MediaWiki
@@ -19,7 +19,7 @@ problems.
 
 == License ==
 
-Copyright 2005 Evan Prodromou <evan@wikitravel.org>
+Copyright 2005, 2006 Evan Prodromou <evan@wikitravel.org>.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -255,7 +255,8 @@ $wgRdfModelFunctions -- an associative array mapping model names to
 $wgRdfOutputFunctions -- A map of output format to functions that
 		      generate that output. You can add new output
 		      formats by adding to this array.
-		      
+$wgRdfCacheExpiry -- time in seconds to expire cached items
+
 == Extending ==
 
 You can add new RDF models to the framework by creating a model
@@ -300,7 +301,7 @@ These are some future directions I'd like to see things go:
 
 * Store statements in DB: statements could be stored in the database
   when the page is saved and retrieved when needed. This would make it
-  to do extended queries based on information about *all* pages.
+  possible to do extended queries based on information about *all* pages.
 * Performance: there wasn't much performance tuning and there are
   probably way too many DB hits and reads and such.
 * Semantic tuning: I'd like to make sure that the statements in the
