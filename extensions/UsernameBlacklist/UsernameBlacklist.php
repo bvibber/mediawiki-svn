@@ -25,7 +25,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 	function UsernameBlacklist_Init() {
 		global $wgMessageCache, $wgHooks;
 		$wgHooks['AbortNewAccount'][] = 'UsernameBlacklist_Hook';
-		// FIXME: provide localisation ?
 		$wgMessageCache->addMessage( 'blacklistedusername', 'Blacklisted username' );
 		$wgMessageCache->addMessage( 'blacklistedusernametext', 'The username you have chosen matches the [[MediaWiki:Usernameblacklist|list of blacklisted usernames]].' );
 	}
