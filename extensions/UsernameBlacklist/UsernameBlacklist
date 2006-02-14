@@ -45,7 +45,7 @@ it as a bulleted list with each blocked username or regular expression as a new
 list item. For example:
 
 * Foo
-* ((B|b)ar
+* ((B|b)ar)
 
 The example above would prevent creation of the user account "Foo", and any
 account where the username contains "Bar" or "bar".
