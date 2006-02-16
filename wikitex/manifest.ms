@@ -28,47 +28,35 @@ Module
 .RS
 .TS
 l l .
+wikitex-audit.in.sh	Security auditor
+wikitex-audit-read.tex	Audit reading from parent directories
+wikitex-audit-shell.tex	Audit LaTeX execution
+wikitex-audit-write.tex	Audit writing to parent directories
+wikitex-decruft.in.sh	Clean cache directory of unused cruft
 wikitex.inc.php	Parser header
+wikitex.in.cron	Crontab template
+wikitex.in.sudoers	Sodoers' template
 wikitex.php	Parser
 wikitex.sh	Shell interface
 .TE
 .RE
 .NH
-Templates
+Templates (template/)
 .RS
 .TS
 l l .
-wikitex.abc.inc.abc	abc2ly
-wikitex.batik.inc.svg	Batik toolkit
-wikitex.chem.inc.tex	XyMTeX
-wikitex.chess.inc.tex	Skak
-wikitex.circo.inc.dot	Graphviz circo
-wikitex.error.inc.tex	Generic error
-wikitex.fdp.inc.dot	Graphviz fdp
-wikitex.feyn.inc.tex	Feynman diagrams
-wikitex.go.inc.sgf	Go, sgf2tex
-wikitex.graph.inc.dot	Graphviz dot
-wikitex.greek.inc.tex	Ibycus
-wikitex.ling.inc.tex	AVM, Parsetree
-wikitex.math.inc.tex	AMS-LaTeX
-wikitex.music.inc.tex	Lilypond
-wikitex.neato.inc.dot	Graphviz neato
-wikitex.plot.inc.p	Gnuplot
-wikitex.ppch.inc.tex	PPCH-TeX
-wikitex.schem.inc.svg	gEDA-gschem
-wikitex.svg.inc.svg	SVG
-wikitex.teng.inc.tex	Tengwar
-wikitex.tipa.inc.tex	TIPA
-wikitex.twopi.inc.dot	Graphviz twopi
-.TE
-.RE
-.NH
-Miscellenea
-.RS
-.TS
-l l .
-wikitex.schem.scm	gschem conversion
-xvfb	Xvfb script (Batik toolkit)
+chem.tex	XyMTeX
+chess.tex	Skak
+feyn.tex	Feynman diagrams
+go.sgf	Go
+graph.dot	Graphviz
+greek.tex	Ibycus
+amsmath.tex	AMS-LaTeX
+music.tex	Lilypond
+plot.p	Gnuplot
+svg.svg	SVG
+teng.tex	Tengwar
+tipa.tex	TIPA
 .TE
 .RE
 .bp

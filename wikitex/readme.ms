@@ -5,7 +5,12 @@ WikiTeX %VERSION% README
 .AU
 Peter Danenberg <pcd at wikitex dot org>
 .AB
+.PP
+THIS PRODUCT IS IN BETA, AND AS SUCH SHOULD NOT BE DEPLOYED IN A PRODUCTION ENVIRONMENT.
+.PP
 Covers installation and expansion of the WikiTeX system.
+.PP
+NOTICE: Failure to implement all security measures in section 3.2 may expose your system to loss or mischief.
 .AE
 .XS 1
 1. Introduction
@@ -23,21 +28,37 @@ Covers installation and expansion of the WikiTeX system.
 3. Installation
 .XA 2
 	3.1. Prerequisites
-.XA 2
-	3.2. Installation
 .XA 3
-	3.2.1. Batik, gschem
+	3.2. Security
+.XA 3
+		3.2.1. Makefile
+.XA 3
+		3.2.2. Unprivileged User
+.XA 3
+		3.2.3. Disk Quota
 .XA 4
-4. Hacking
+		3.2.4. Cron
 .XA 4
-	4.1. Getting Started
+		3.2.5. Sudo
 .XA 4
-	4.2. Extending WikiTeX
+		3.2.6. Per Package
 .XA 5
-5. Help
+			3.2.6.1. LaTeX
 .XA 5
-6. Colophon
+		3.2.7. Audit
+.XA 5
+	3.3. Installation
 .XA 6
+4. Hacking
+.XA 6
+	4.1. Getting Started
+.XA 6
+	4.2. Extending WikiTeX
+.XA 6
+5. Help
+.XA 7
+6. Colophon
+.XA 8
 7. Copyright
 .XE
 .PX
@@ -58,15 +79,15 @@ Acquisition
 CVS
 .RS
 .PP
-WikiTeX can be CVS'ed from MediaWiki's facility at SourceForge:*
+WikiTeX can be CVSed from MediaWiki's facility at SourceForge:*
+.FS *
+For actual development snapshots see Subversion below.
+.FE
 .RE
 .LD
 \%cvs -d:pserver:anonymous@cvs.sf.net:/cvsroot/wikipedia \\
 co wikitex
 .DE
-.FS *
-For actual development snapshots see Subversion below.
-.FE
 .NH 2
 FTP
 .RS
@@ -89,9 +110,10 @@ Subversion
 .PP
 Use your Subversion client (http://subversion\:.tigris.org) to get the latest development snapshot:
 .LD
-svn co http://svn.wikitex.org/wikitex/trunk wikitex
+svn co http://svn.wikitex.org/wikitex/branches/1.1 \\
+wikitex
 .DE
-or visit http://svn.wikitex.org/wikitex to browse the codebase via web.
+or visit http://wikitex.org/viewcvs/wikitex to browse the codebase via web.
 .RE
 .RE
 .NH 1
@@ -113,20 +135,146 @@ ImageMagick (imagemagick.org)
 dvipng (dvipng.sf.net)
 .RE
 .LP
-Lilypond (lilypond.org), Gnuplot (gnuplot.info), Graphviz (graphviz.org) and gschem (geda.seul.org) are required for music, plot, graph and schem; and as many of the packages under \(sc3.2.5 (see below) whose classes you would like to support.
+Lilypond (lilypond.org), Gnuplot (gnuplot.info), and Graphviz (graphviz.org) are required for music, plot, and graph; and as many of the packages under \(sc3.3.5 (see below) whose classes you would like to support.
+.RE
+.NH 2
+Security
+.RS
 .PP
-At least LaTeX and ImageMagick are standard Linux fare; and you may find some optional packages pre-installed, too.
+WikiTeX requires preparation to mitigate risk; failure to prepare in whole or in part may expose your system to loss and mischief.
+.NH 3
+Makefile
+.RS
+.PP
+We've gathered all the editable parameters into one place; edit \(oqMakefile\(cq and run:
+.QP
+make
+.LP
+every time you've made changes.
+.RE
+.NH 3
+Unprivileged User
+.RS
+.PP
+WikiTeX runs as the unprivileged user \(oqwikitex\(cq to restrict access to the local file-system.  You must protect sensitive world-writable and -readable resources, however.
+.LP
+Create the user wikitex:
+.QP
+useradd -M -s /sbin/nologin wikitex
+.RE
+.NH 3
+Disk Quota
+.RS
+.PP
+To prevent runaway scripts or DoS attacks from usurping storage, institute disk quotas.  See:
+.QP
+\%http://www.tldp.org/HOWTO/Quota.html
+.LP
+for details.
+.nr i 0 1
+.IP \n+i.
+Edit /etc/fstab and, next to "defaults," add "usrquota" for the partition on which WikiTeX runs (hereafter /part); e.g.:
+.LD
+/part /home reiserfs defaults,usrquota 1 1
+.DE
+.IP \n+i.
+Remount /part:
+.IP
+.RS
+mount -o remount /part
+.RE
+.IP \n+i.
+Update quota data:
+.IP
+.RS
+quotacheck -vguma
+.RE
+.IP \n+i.
+Turn on quotas:
+.IP
+.RS
+quotaon -av
+.RE
+.IP \n+i.
+Implement quotas for user wikitex:
+.IP
+.RS
+edquota -u wikitex
+.RE
+.IP
+The following values will give WikiTeX one hundred megabytes and ten thousand files to play with (edit the values with asterisks):
+.RE
+.LD
+Filesystem  blocks  soft  hard*   inodes  soft  hard*
+/part       186     0     100000  30      0     10000
+.DE
+.NH 3
+Cron
+.RS
+.PP
+To prevent legitimate files from exceeding the disk quota, set up a crontab to purge unused files.
+.PP
+Determine your webserver's user (consult \(oqhttpd.conf\(cq for Apache), and execute:
+.RS
+.LD
+crontab -u <apache-user> wikitex.cron
+.DE
+.RE
+from extensions/wikitex.
+.RE
+.NH 3
+Sudo
+.RS
+.PP
+You will need sudo version 1.6.8 or above (verify by \(oqsudo -V\(cq), with support for NOEXEC compiled in.  Issue:
+.QP
+cat wikitex.sudoers >> /etc/sudoers
+.LP
+and then:
+.QP
+visudo -c
+.LP
+If there are parse errors, run \(oqvisudo\(cq and correct any mistakes.
+.RE
+.NH 3
+Per Package
+.RS
+.PP
+Following are package-specific security measures.
+.NH 4
+LaTeX
+.RS
+.PP
+Edit \(oqtexmf.cnf\(cq, modifying the following variables:
+.QP
+shell_escape = f
+.br
+openout_any = p
+.br
+openin_any = p
+.RE
+.RE
+.NH 3
+Audit
+.RS
+.PP
+\(oqwikitex-audit.sh\(cq has been provided to assess the integrity of an installation; as root, run:
+.QP
+\&./wikitex-audit.sh
+.LP
+until you satisfy it.
+.RE
 .RE
 .NH 2
 Installation
 .RS
 .PP
-Verify or install the essential prerequisites per \(sc3.1 above; then, working from MediaWiki's base installation directory, perform the following:
+Satisfy the prerequisites per \(sc3.1 and \(sc3.2 above; then, working from MediaWiki's base directory, perform the following:
 .nr i 0 1
 .IP \n+i.
 Create /extensions/wikitex and copy thither the distribution.
 .IP \n+i.
-Add the following line to /LocalSettings.php before the terminal '?>':
+Add the following line to /LocalSettings.php before the terminal \(oq?>\(cq:
 .QP
 include\ \%'./extensions/wikitex/wikitex.php';
 .IP \n+i.
@@ -153,73 +301,19 @@ c c c c
 l l l l .
 Class	Package	Author	URL
 _
-abc	abc2ly	Han-Wen Nienhuys	lilypond.org
 amsmath	AMS-LaTeX	Amer. Math. Soc.	ams.org
-batik	SVG Java	Apache	apache.org
 chem	XyMTeX	Shinsaku Fujita	kit.ac.jp
 chess	Skak	Torben Hoffmann	ctan.org
-circo	Graphviz	Emden Gansner	research.att.com
-fdp	Graphviz	Emden Gansner	research.att.com
 feyn	Feynman	Michael Levine	ctan.org
 go	Go	Daniel Bump	stanford.edu
 graph	Graphviz	Emden Gansner	research.att.com
 greek	Ibycus	Pierre MacKay	tug.org
-ling	AVM	Christopher Manning	stanford.edu
-	Parsetree	Eirik Hektoen	essex.ac.uk
 music	Lilypond	Han-Wen Nienhuys	lilypond.org
-neato	Graphviz	Emden Gansner	research.att.com
 plot	Gnuplot	Nikos Drakos	gnuplot.info
-ppch	PPCH-TeX	Hans Hagen	pragma-ade.com
 svg	SVG lite	ImageMagick	imagemagick.org
-schem	gschem	Ales Hvezda	seul.org
 teng	Tengwar	Ivan Derzhanski	quettar.org
 tipa	TIPA	Rei Fukui	ctan.org
-twopi	Graphviz	Emden Gansner	research.att.com
 .TE
-.RS
-.IP \n+i.
-Lastly, ensure that your server's $PATH variable includes /usr/bin and /usr/local/bin, or wherever your binaries are installed.
-.NH 3
-Batik, gschem
-.RS
-.PP
-Batik and gschem require a framebuffer which, whether or not WikiTeX runs on a headless server, is best accomplished using a virtual framebuffer such as Xvfb.*
-.FS *
-VNC has been used to similar ends, but with added overhead and vulnerability.
-.FE
-.PP
-Xvfb is included with Xorg and XFree86, but may not be installed by default on some Linux distros; consult the xvfb script which came with WikiTeX.
-.nr i 0 1
-.IP \n+i.
-Verify xvfb for path-correctness.
-.IP \n+i.
-Start Xvfb manually by issuing:
-.RS
-.QP
-\&./xvfb start
-.LP
-or at boot-time:
-.RS
-.nr j 0 1
-.af j a
-.IP \n+j.
-Copy xvfb to /etc/init.d
-.IP \n+j.
-Link xvfb to rc.d:
-.RE
-.LP
-ln\ -s\ /etc/init.d/xvfb\ /etc/rc2.d/S98xvfb
-.RE
-.IP \n+i.
-Add the following to apachectl or equivalent:
-.QP
-.RS
-\%DISPLAY=localhost:1.0
-.br
-\%export DISPLAY
-.RE
-.RE
-.RE
 .RE
 .NH 1
 Hacking WikiTeX
@@ -230,7 +324,7 @@ Getting Started
 .PP
 Join the WikiTeX-l mailing list, where you can communicate with other users and developers:
 .QP
-http://lists.wikitex.org/wikitex-l
+\%http://lists.wikitex.org/listinfo/wikitex-l
 .LP
 and familiarize yourself with Subversion (http://subversion.tigris.org), our collaborative development tool.
 .RE
@@ -241,25 +335,19 @@ Extending WikiTeX
 Adding novel packages to WikiTeX can be achieved in several discrete steps; after you have downloaded and installed the package:
 .nr i 0 1
 .IP \n+i.
-Devise a class name for the package, and add a template to /extensions/wikitex in this form:
+Devise a class name for the package, and add a template to /extensions/wikitex/template in this form:
 .RS
 .QP
-wikitex.<classname>.inc.<ext>
+<classname>.<ext>
 .RE
 .IP
 The template should expose said package to the renderer; see the current templates for examples.
 .IP \n+i.
-Unless the class requires non-standard processing (confer Lilypond's midi), skip to step three; else, add a new function in wikitex.sh under <class>.
+If the class requires non-standard (extra-LaTeX) processing, add a new function in wikitex.sh under <class>.
 .IP
 Consult wikitex.sh for examples.
 .IP \n+i.
-Lastly, if the package contains undesirable or insecure directives, add them to:
-.RS
-.QP
-\%objRend::strPost()::arrBlack[<class>]
-.LP
-in wikitex.php; the which see for details.
-.RE
+Lastly, add a hook to \(oqwikitex.php\(cq and an element\(->hook mapping to \(oqwikitex.inc.php\(cq.
 .RE
 .RE
 .NH 1

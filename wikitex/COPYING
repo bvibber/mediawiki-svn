@@ -7,7 +7,7 @@
 
 
 
-                   WikiTeX 1.0.5 LICENSE
+                 WikiTeX 1.1 BETA 1 LICENSE
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -61,7 +61,7 @@ Definitions
 
 
 
-                        16 June 2005
+                      12 February 2006
 
 
 
@@ -127,7 +127,7 @@ Permissions for Redistribution of the Standard Version
 
 
 
-                        16 June 2005
+                      12 February 2006
 
 
 
@@ -193,7 +193,7 @@ Package
 
 
 
-                        16 June 2005
+                      12 February 2006
 
 
 
@@ -259,7 +259,7 @@ Permissions for Inclusion of the Package in Aggregate Works
 
 
 
-                        16 June 2005
+                      12 February 2006
 
 
 
@@ -325,7 +325,7 @@ Acceptance of License and Disclaimer of Warranty
 
 
 
-                        16 June 2005
+                      12 February 2006
 
 
 
@@ -391,7 +391,7 @@ Acceptance of License and Disclaimer of Warranty
 
 
 
-                        16 June 2005
+                      12 February 2006
 
 
 
@@ -401,7 +401,7 @@ Acceptance of License and Disclaimer of Warranty
 
 
 WikiTeX: expansible LaTeX module for MediaWiki
-Copyright (C) 2004-5  Peter Danenberg
+Copyright (C) 2004-6  Peter Danenberg
 
      WikiTeX is licensed under the Artistic License 2.0;  to
 view a copy of this license, see COPYING or visit:
@@ -457,6 +457,6 @@ view a copy of this license, see COPYING or visit:
 
 
 
-                        16 June 2005
+                      12 February 2006
 
 

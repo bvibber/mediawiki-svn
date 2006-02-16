@@ -7,7 +7,7 @@
 
 
 
-                    WikiTeX 1.0.5 THANKS
+                 WikiTeX 1.1 BETA 1 THANKS
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -18,19 +18,23 @@ problems,  suggesting  various  improvements  or  submitting
 actual code.  Here is a list of these people; help  us  keep
 it complete and exempt of errors:
 
-Tomasz Wegrzanowski         impetus                 beer.com
+Tomasz Wegrzanowski        impetus                  beer.com
 Brion Vibber               security             leuksman.com
-Erik Moeller                  press         humanist.de/erik
-Phil Boswell                   docs        User:Phil_Boswell
+Erik Moeller               press            humanist.de/erik
+Phil Boswell               docs            User:Phil_Boswell
 Grendlekhan                packages         User:Grendlekhan
 Johannes Berg              security          sipsolutions.de
 Alexander Schremmer        security          alexanderweb.de
-Massoud Ghyam-khah          support                  usc.edu
-Hugo Looyestijn             testing               phys.uu.nl
-Michel Hardy-Vallee         testing                mcgill.ca
-Jonathan Pennington         testing          oregonstate.edu
-Ales Hvezda                  Scheme                 seul.org
-Forrest Oliphant            testing            folktunes.org
+Massoud Ghyam-khah         support                   usc.edu
+Hugo Looyestijn            testing                phys.uu.nl
+Michel Hardy-Vallee        testing                 mcgill.ca
+Jonathan Pennington        testing           oregonstate.edu
+Ales Hvezda                Scheme                   seul.org
+Forrest Oliphant           testing             folktunes.org
+Carlo Vanini               TikiWiki             tikiwiki.org
+Salvatore Ingala           Windows              katamail.com
+Harold Martin              testing                  cocoadev
+Gregor Rosenauer           docs                    gmail.com
 
 
 
@@ -57,11 +61,7 @@ Forrest Oliphant            testing            folktunes.org
 
 
 
-
-
-
-
-                        16 June 2005
+                      12 February 2006
 
 
 
@@ -71,7 +71,7 @@ Forrest Oliphant            testing            folktunes.org
 
 
 WikiTeX: expansible LaTeX module for MediaWiki
-Copyright (C) 2004-5  Peter Danenberg
+Copyright (C) 2004-6  Peter Danenberg
 
      WikiTeX  is licensed under the Artistic License 2.0; to
 view a copy of this license, see COPYING or visit:
@@ -127,6 +127,6 @@ view a copy of this license, see COPYING or visit:
 
 
 
-                        16 June 2005
+                      12 February 2006
 
 

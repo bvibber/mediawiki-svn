@@ -1,0 +1,22 @@
+# WikiTeX commands
+Cmnd_Alias  WT_EXEC = %LILYPOND%,\
+                      %TEX%,\
+                      %LATEX%,\
+                      %DOT%,\
+                      %DVIPNG%,\
+                      %GNUPLOT%,\
+                      %MOGRIFY%,
+                      %CONVERT%,\
+                      %SGF2DG%
+
+# Apache's user
+User_Alias  WT_HTTPD = %APACHE%
+
+# WikiTeX host
+Host_Alias  WT_HOST = %HOST%
+
+# WikiTeX unprivileged user
+Runas_Alias  WT_USER = %WIKITEX%
+
+# WikiTeX rule
+WT_HTTPD  WT_HOST = (WT_USER) NOPASSWD: NOEXEC: WT_EXEC

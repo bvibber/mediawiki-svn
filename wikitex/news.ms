@@ -4,22 +4,25 @@ WikiTeX %VERSION% NEWS
 .AU
 Peter Danenberg <pcd at wikitex dot org>
 .SH
-Thu Jun 16 01:49:59 PDT 2005	Peter Danenberg
+Sun Feb 12 16:21:57 PST 2006    Peter Danenberg
 .RS
 .PP
-Repleted Graphviz with <twopi>, <circo> and <fdp>; three interesting, but sparsely documented, graph-utilities.
+WikiTeX's security model has been reimplemented from the ground up:  We've doffed our dependence on blacklists, and instead rely on a combination of ulimit, quotas, sudo; and the native facilites of LaTeX and LilyPond for forbidding script execution and directory ascent.
+.PP
+In addition, the \(oqsrc\(cq and \(oqdata\(cq parameters allow you to reference uploads directly in your script; examples:
+.RS
+.LD
+<svg src="tiger.svg"></svg>
+.DE
 .RE
-.SH
-Mon Jun 13 19:44:31 PDT 2005	Peter Danenberg
+to hide ugly code; or to plot data:
 .RS
-.PP
-Added support for abc2ly, an abc to Lilypond converter,*
-.FS *
-\%http://www.gre.ac.uk/~c.walshaw/abc2mtex/abc.txt
-.FE
-under <abc>.
-.PP
-<graph> and <neato> are now capable of rendering links, and their source has been relegated to '[source]'.
+.LD
+<plot data="plot.dat">plot "plot.dat" using 1:3</plot>
+.DE
+.RE
+Files thus sourced forgo processing by the template.
+.RE
 .RE
 .SH
 Thu Mar 10 01:26:39 PST 2005	Peter Danenberg
@@ -115,9 +118,9 @@ what we're looking  for,  however,  rather  than  look-ahead
 left-to-right parsing; i.e. top-down recursive descent.)
 .PP
 If  WikiTeX'  sum scope, on the other hand, resembles a
-glue-script with regular-expression grinding,**
-.FS **
-Raymond,  Eric  Steven.  The Art of Unix Programming (catb.org/~esr/writings/taoup), chap. 14, sec. "Perl".
+glue-script with regular-expression grinding,*
+.FS *
+Raymond,  Eric  Steven.   The Art of Unix Programming (faqs.org/docs/artu).
 .FE
 we might not need  to  look  past  Perl; PHP, in any case, just passes as
 lexer/parser: but we'd like something more robust and, above

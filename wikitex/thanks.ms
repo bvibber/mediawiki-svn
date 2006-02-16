@@ -7,7 +7,7 @@ Peter Danenberg <pcd at wikitex dot org>
 WikiTeX was originally written by Peter Danenberg.  Many people further contributed to WikiTeX by reporting problems, suggesting various improvements or submitting actual code.  Here is a list of these people; help us keep it complete and exempt of errors:
 .TS
 expand;
-l r r.
+l l r.
 Tomasz Wegrzanowski	impetus	beer.com
 Brion Vibber	security	leuksman.com
 Erik Moeller	press	humanist.de/erik
@@ -21,5 +21,9 @@ Michel Hardy-Vallee	testing	mcgill.ca
 Jonathan Pennington	testing	oregonstate.edu
 Ales Hvezda	Scheme	seul.org
 Forrest Oliphant	testing	folktunes.org
+Carlo Vanini	TikiWiki	tikiwiki.org
+Salvatore Ingala	Windows	katamail.com
+Harold Martin	testing	cocoadev
+Gregor Rosenauer	docs	gmail.com
 .TE
 .bp

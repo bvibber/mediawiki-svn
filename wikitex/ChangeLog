@@ -1,14 +1,40 @@
-2005-06-16  Peter Danenberg  <pcd at wikitex dot org>
+2006-02-12  Peter Danenberg  <pcd at wikitex dot org>
 
-	* wikitex.sh: fixed recursion in <graph>; added <twopi>,
-	<circo>, <fdp>
+	* wikitex-audit.in.sh: added security
+	auditor.
 
-2005-06-13  Peter Danenberg  <pcd at wikitex dot org>
+	* wikitex-decruft.in.sh: added decrufter
+	of cache directory.
 
-	* wikitex.php: fixed spurious <pre>'s by trimming
-	bash output
+	* wikitex-audit-shell.tex: added LaTeX-shell-
+	execution-audit.
 
-	* wikitex.sh: added <abc>, <neato>
+	* wikitex-audit-read.tex: added LaTeX-directory-
+	ascent-read-audit.
+
+	* wikitex-audit-write.tex: added LaTeX-directory-
+	ascent-write-audit.
+
+2006-02-10  Peter Danenberg  <pcd at wikitex dot org>
+
+	* wikitex.php: refactored; Doxygenated; added
+	ability to source files; specify arbitrary properties
+	to templates.
+
+	* wikitex.sh: re-added svg (ImageMagick lite);
+	requires yet fixed size.
+
+2006-02-09  Peter Danenberg  <pcd at wikitex dot org>
+
+	* template: directory to house templates.
+
+	* wikitex.inc.php: removed schem, ppch, ling
+
+	* wikitex.php: removed blacklists (rely upon sudo,
+	ulimit, quota, texmf.cnf)
+
+	* wikitex.sh: added sudo, ulimit; update for
+	lilypond-2.6; update for sgf2dg; sed fix
 
 2005-03-10  Peter Danenberg  <pcd at wikitex dot org>
 

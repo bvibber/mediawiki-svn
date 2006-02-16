@@ -1,0 +1,3 @@
+MAILTO=%MAILTO%
+# At midnight, clean up WikiTeX cruft.
+0 0 * * *      %DECRUFT% 2>&1
