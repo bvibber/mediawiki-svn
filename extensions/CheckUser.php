@@ -93,9 +93,10 @@ EOT
 			$s =  "No results\n";
 		} else {
 			global $IP;
+			require_once( $IP.'/includes/RecentChange.php' );
 			require_once( $IP.'/includes/ChangesList.php' );
 			
-			if ( in_array('newfromuser',get_class_methods('ChangesList')) ) {
+			if ( in_array( 'newfromuser', array_map( 'strtolower', get_class_methods( 'ChangesList' ) ) ) ) {
 				// MW >= 1.6
 				$list = ChangesList::newFromUser( $wgUser );
 			} else {
