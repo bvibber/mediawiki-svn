@@ -12,6 +12,8 @@
 
 if( defined( 'MEDIAWIKI' ) ) {
 
+	require_once( 'UserMailer.php' );
+	
 	$wgExtensionFunctions[]  = 'NewUserNotif_Init';
 	$wgExtensionCredits['other'][] = array(
 		'name' => 'New user notification',
@@ -21,6 +23,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	
 	$wgNewUserNotifSender    = $wgPasswordSender;
 	$wgNewUserNotifTargets[] = 1; # TODO: Support usernames instead of/in addition to IDs
+	$wgNewUserNotifEmailTargets = array();
 	
 	/** Initialise the extension */
 	function NewUserNotif_Init() {
@@ -32,8 +35,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 	
 	/** Send the notifications where possible */
 	function NewUserNotif_Hook() {
-		global $wgUser, $wgContLang, $wgSitename, $wgNewUserNotifSender, $wgNewUserNotifTargets;
-		$timestamp = $wgContLang->timeAndDate( date( 'YmdHis' ), false, false ) . ' (' . date( 'T' ) . ')';
+		global $wgUser, $wgSitename, $wgNewUserNotifSender, $wgNewUserNotifTargets;
+		
+		# Do external emails first
+		NewUserNotif_EmailExternal();
+		
 		foreach( $wgNewUserNotifTargets as $target ) {
 			$recipient = new User();
 			$recipient->setId( $target );
@@ -42,14 +48,32 @@ if( defined( 'MEDIAWIKI' ) ) {
 			# TODO: The target might not exist
 			if( $recipient->isEmailConfirmed() ) {
 				$subject = wfMsg( 'newusernotifsubj', $wgSitename );
-				$message = wfMsg( 'newusernotifbody', $recipient->getName(), $wgUser->getName(), $wgSitename, $timestamp );
-				if( $err = $recipient->sendMail( $subject, $message, $wgNewUserNotifSender ) !== true ) {
-					wfDebug( "Couldn't send account creation notification for " . $wgUser->getName() . " to " . $recipient->getName() . "; " . $err->getMessage() . "\n" ); 
-				}
-			} else {
-				wfDebug( "Couldn't send account creation notification for " . $wgUser->getName() . " to " . $recipient->getName() . "; user can't receive email.\n" );
+				$message = NewUserNotif_MakeEmail( $recipient->getName() );
+				$recipient->sendMail( $subject, $message, $wgNewUserNotifSender );
 			}
 		}
+	}
+	
+	/** Send a notification email to the external addresses */
+	function NewUserNotif_EmailExternal(  ) {
+		global $wgSitename, $wgNewUserNotifEmailTargets;
+		$sender = new MailAddress( $wgNewUserNotifSender, $wgSitename );
+		
+		foreach( $wgNewUserNotifEmailTargets as $target ) {
+			$recipient = new MailAddress( $target );
+			$subject   = wfMsg( 'newusernotifsubj', $wgSitename );
+			$message   = NewUserNotif_MakeEmail( $target );
+			userMailer( $recipient, $sender, $subject, $message );
+		}
+		
+	}
+	
+	/** Make the notification email */
+	function NewUserNotif_MakeEmail( $recipient ) {
+		global $wgUser, $wgContLang, $wgSitename;
+		$timestamp = $wgContLang->timeAndDate( date( 'YmdHis' ), false, false ) . ' (' . date( 'T' ) . ')';
+		$message   = wfMsg( 'newusernotifbody', $recipient, $wgUser->getName(), $wgSitename, $timestamp );
+		return( $message );
 	}
 
 } else {

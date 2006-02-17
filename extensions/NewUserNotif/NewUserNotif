@@ -1,6 +1,6 @@
 NEW USER EMAIL NOTIFICATION EXTENSION
 
-	Version 1.0
+	Version 1.1
 	© 2006 Rob Church
 
 This is free software licensed under the GNU General Public License. Please
@@ -52,7 +52,7 @@ MediaWiki:Newusernotifbody
 
 == 4. Further configuration ==
 
-The behaviour of the extension can be tweaked using a couple of configuration
+The behaviour of the extension can be tweaked using three configuration
 variables. To override the defaults for these, set them in LocalSettings.php
 underneath the call to the extension file.
 
@@ -68,21 +68,28 @@ $wgNewUserNotifTargets
 	for a notification to be generated at all. A user's ID can be found by
 	accessing Special:Preferences when logged in, or by checking the user_id
 	field in the users table.
+	
+$wgNewUserNotifEmailTargets
+	Array containing email addresses to which a notification should also be sent
+	Defaults to no additional addresses
 
 == 5. Notes ==
 
 * On wikis where email address authentication is present and active(1), then
   no email is sent unless the recipient's email address is validated.
 
-* If an email cannot be sent, the error and reason are logged in the debug log
-  file, if one is configured(2), so check this for errors when troubleshooting.
-
 (1) => MediaWiki 1.6 and later
-(2) => See http://www.mediawiki.org/wiki/Help:$wgDebugLogFile for information
 
 == 6. Thanks... ==
 
 	* Aculver from #mediawiki, who requested the extension in the first place
 	* Avar, for providing an invaluable tip regarding formatting timestamps
+	* RedACE from #mediawiki, who requested the external email addresses feature
 
 	All feedback welcome via <robchur@gmail.com>.
+	
+== 7. Change Log ==
+
+Version 1.1
+17/02/2006
+	Added external email addresses feature
