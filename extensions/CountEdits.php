@@ -22,6 +22,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		global $wgMessageCache;
 		
 		$wgMessageCache->addMessage( 'countedits', 'Count edits' );
+		$wgMessageCache->addMessage( 'countedits-warning', 'Warning: Do not judge a book by it\'s cover. Do not judge a contributor by their edit count.' );
 		$wgMessageCache->addMessage( 'countedits-username', 'Username' );
 		$wgMessageCache->addMessage( 'countedits-ok', 'OK' );
 		$wgMessageCache->addMessage( 'countedits-nosuchuser', 'There is no user with the name $1' );
@@ -104,11 +105,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 		
 		function showResults( $count ) {
 			global $wgOut;
-			$wgOut->addHTML( '<h2>' . wfMsg( 'countedits-resultheader', $this->target ) . '</h2>' );
-			$wgOut->addHTML( '<p><strong>' . wfMsg( 'countedits-resulttext', $this->target, $count ) . '</strong></p>' );
+			$wgOut->addHTML( '<h2>' . wfMsgHtml( 'countedits-resultheader', $this->target ) . '</h2>' );
+			$wgOut->addHTML( '<p><strong>' . wfMsgHtml( 'countedits-resulttext', $this->target, $count ) . '</strong></p>' );
 			$wgOut->addHTML( '<ul>' );
 			foreach( $this->MakeUserLinks( $this->target ) as $link ) { $wgOut->addHTML( '<li>' . $link . '</li>' ); }
 			$wgOut->addHTML( '</ul>' );
+			$wgOut->addHTML( '<p>' . wfMsgHtml( 'countedits-warning' ) . '</p>' );
 		}
 
 	}
