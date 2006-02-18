@@ -345,6 +345,8 @@ $wgOut->addHTML('<!-- titlens = '. $wgTitle->getNamespace() . '-->');
 		$contextchars = $wgUser->getOption('contextchars');
 		if ('' == $contextchars)
 			$contextchars = 50;
+		if ( intval($contextchars) > 5000 )
+			$contextchars = 5000;
 
 		$link = $this->mSkin->makeKnownLinkObj($t, '');
 
