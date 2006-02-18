@@ -80,8 +80,9 @@ class SiteMatrixPage extends SpecialPage {
 		global $wgLanguageNames;
 		# Bulk of table
 		foreach ( $langlist as $lang ) {
+			$anchor = strtolower( '<a id="' . htmlspecialchars( $lang ) . '" name="' . htmlspecialchars( $lang ) . '"></a>' );
 			$s .= '<tr>';
-			$s .= '<td><strong>' . $wgLanguageNames[$lang] . '</strong></td>';
+			$s .= '<td>' . $anchor . '<strong>' . $wgLanguageNames[$lang] . '</strong></td>';
 			$langhost = str_replace( '_', '-', $lang );
 			foreach ( $names as $site => $name ) {
 				$url = "http://$langhost." . $hosts[$site] . '/';
