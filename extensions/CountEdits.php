@@ -73,6 +73,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 				$target = $wgRequest->getText( 'target' );
 				$this->target = $target ? $target : '';
 			}
+			$this->target = urlencode( $this->target );
 		}
 		
 		function makeForm() {
