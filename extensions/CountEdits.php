@@ -58,7 +58,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 					if( $id ) {
 						$this->showResults( $this->countEditsReal( $id, false ) );
 					} else {
-						$wgOut->addHTML( '<p>' . wfMsg( 'countedits-nosuchuser', $this->target ) . '</p>' );
+						$wgOut->addHTML( '<p>' . wfMsg( 'countedits-nosuchuser', htmlspecialchars( $this->target ) ) . '</p>' );
 					}
 				}
 			}
@@ -73,14 +73,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 				$target = $wgRequest->getText( 'target' );
 				$this->target = $target ? $target : '';
 			}
-			$this->target = urlencode( $this->target );
 		}
 		
 		function makeForm() {
 			global $wgTitle;
 			$form  = '<form method="post" action="'. $wgTitle->getLocalUrl() . '">';
 			$form .= '<p><strong>' . wfMsgHtml( 'countedits-username' ) .': </strong>';
-			$form .= '<input type="text" name="target" size="25" value="' . $this->target . '" /> ';
+			$form .= '<input type="text" name="target" size="25" value="' . htmlspecialchars( $this->target ) . '" /> ';
 			$form .= '<input type="submit" name="countedits" value="' . wfMsgHtml( 'countedits-ok' ) . '" />';
 			$form .= '</p></form>';
 			return( $form );
@@ -98,8 +97,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 		function makeUserLinks( $user ) {
 			global $wgUser;
 			$skin = $wgUser->getSkin();
-			$page = $skin->makeKnownLinkObj( Title::makeTitle( NS_USER, $user ), wfMsgHtml( 'countedits-userpage' ) );
-			$talk = $skin->makeKnownLinkObj( Title::makeTitle( NS_USER_TALK, $user ), wfMsgHtml( 'countedits-usertalk' ) );
+			$page = $skin->makeLinkObj( Title::makeTitle( NS_USER, $user ), wfMsgHtml( 'countedits-userpage' ) );
+			$talk = $skin->makeLinkObj( Title::makeTitle( NS_USER_TALK, $user ), wfMsgHtml( 'countedits-usertalk' ) );
 			$cont = $skin->makeKnownLinkObj( Title::makeTitle( NS_SPECIAL, 'Contributions' ), wfMsgHtml( 'countedits-contribs' ), 'target=' . $user );
 			return( array( 'page' => $page, 'talk' => $talk, 'cont' => $cont ) );
 		}
