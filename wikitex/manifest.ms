@@ -28,15 +28,17 @@ Module
 .RS
 .TS
 l l .
+main.in.php	Driver
 wikitex-audit.in.sh	Security auditor
 wikitex-audit-read.tex	Audit reading from parent directories
 wikitex-audit-shell.tex	Audit LaTeX execution
 wikitex-audit-write.tex	Audit writing to parent directories
 wikitex-decruft.in.sh	Clean cache directory of unused cruft
-wikitex.inc.php	Parser header
+WikitexConstants.in.php	Parser header
 wikitex.in.cron	Crontab template
 wikitex.in.sudoers	Sodoers' template
-wikitex.php	Parser
+wikitex.in.ini	phpDocumentor cruft
+Wikitex.in.php	Parser
 wikitex.sh	Shell interface
 .TE
 .RE
@@ -45,18 +47,21 @@ Templates (template/)
 .RS
 .TS
 l l .
+amsmath.tex	AMS-LaTeX
 chem.tex	XyMTeX
 chess.tex	Skak
-feyn.tex	Feynman diagrams
+circo.dot	Graphviz circo
+fdp.dot	Graphviz fdp
+feyn.tex	feynMF
 go.sgf	Go
-graph.dot	Graphviz
+graph.dot	Graphviz dot
 greek.tex	Ibycus
-amsmath.tex	AMS-LaTeX
-music.tex	Lilypond
+ipa.tex	TIPA
+music.ly	Lilypond
 plot.p	Gnuplot
 svg.svg	SVG
 teng.tex	Tengwar
-tipa.tex	TIPA
+twopi.dot	Graphviz twopi
 .TE
 .RE
 .bp

@@ -30,5 +30,5 @@ declare -ar HASHES=($(find . -maxdepth 1 ! -name '*\.*' -printf '%f '));
 
 for (( i = ${#HASHES[*]}; --i >= 0; )); do
     OUT=$(mysql ${username} ${password} -D "${DATABASE}" -e "SELECT DISTINCT NULL FROM \`objectcache\` WHERE \`value\` LIKE '%${HASHES[${i}]}%' LIMIT 1;";)
-    [[ ${?} -eq 0 && -z "${OUT}" ]] && rm -fr "${HASHES[${i}]}"*
+    [[ ${?} -eq 0 && -z "${OUT}" ]] && rm -frv "${HASHES[${i}]}"*
 done

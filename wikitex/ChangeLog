@@ -1,3 +1,27 @@
+2006-02-19  Peter Danenberg  <pcd at wikitex dot org>
+
+	* template/amsmath.tex: removed
+	reference to concrete math fonts.
+	
+	* wikitex.sh: sundry Graphviz plus feynmf.
+
+	* wikitex-audit.in.sh: brought in sundry
+	Graphviz progs and metapost.
+
+	* template/feyn.tex: updated for feynmf.
+
+	* Wikitex.in.php: Added ability to source
+	external articles as well as uploaded files.
+
+2006-02-17  Peter Danenberg  <pcd at wikitex dot org>
+
+	* WikitexConstants.in.php: added
+
+	* Wikitex.in.php: added; refactored for
+	Java-esqueliness
+
+	* wikitex.sh: links returned to graphviz
+
 2006-02-12  Peter Danenberg  <pcd at wikitex dot org>
 
 	* wikitex-audit.in.sh: added security

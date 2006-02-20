@@ -23,16 +23,26 @@ MOGRIFY = /usr/local/bin/mogrify
 CONVERT = /usr/local/bin/convert
 
 # Optional programs
-# Full path to LilyPond:
+# Full path to LilyPond (music):
 LILYPOND = /usr/local/bin/lilypond
-# Full path to Gnuplot:
+# Full path to Gnuplot (graph):
 GNUPLOT = /usr/local/bin/gnuplot
-# Full path to Graphviz' dot:
+# Full path to Graphviz' dot (graph):
 DOT = /usr/local/bin/dot
-# Full path to sgf2dg:
+# Full path to Graphviz' neato (graph):
+NEATO = /usr/local/bin/neato
+# Full path to Graphviz' fdp (graph):
+FDP = /usr/local/bin/fdp
+# Full path to Graphviz' twopi (graph):
+TWOPI = /usr/local/bin/twopi
+# Full path to Graphviz' circo (graph):
+CIRCO = /usr/local/bin/circo
+# Full path to sgf2dg (go):
 SGF2DG = /usr/bin/sgf2dg
-# Full path to TeX:
+# Full path to TeX (go):
 TEX = /usr/bin/tex
+# Full path to MetaPost (feyn):
+METAPOST = /usr/bin/mpost
 
 # Quota
 # Partition on which disk quota resides
@@ -60,15 +70,15 @@ HOST = localhost
 
 # End of editable parameters
 
-VERSION = 1.1 BETA 1
+VERSION = 1.1 BETA 3
 SED = sed -e "s@\%VERSION\%@${VERSION}@g;"
 GROFF = copying.inc.ms | groff -t -ms -Tascii - | col -bx >
-SUDO = -e "s@\%APACHE\%@${APACHE}@g; s@\%WIKITEX\%@${WIKITEX}@g; s@\%HOST\%@${HOST}@g;s@\%LATEX\%@${LATEX}@g; s@\%DVIPNG\%@${DVIPNG}@g; s@\%MOGRIFY\%@${MOGRIFY}@g; s@\%CONVERT\%@${CONVERT}@g; s@\%LILYPOND\%@${LILYPOND}@g; s@\%GNUPLOT\%@${GNUPLOT}@g; s@\%DOT\%@${DOT}@g; s@\%SGF2DG\%@${SGF2DG}@g; s@\%TEX\%@${TEX}@g;"
+SUDO = -e "s@\%APACHE\%@${APACHE}@g; s@\%WIKITEX\%@${WIKITEX}@g; s@\%HOST\%@${HOST}@g;s@\%LATEX\%@${LATEX}@g; s@\%DVIPNG\%@${DVIPNG}@g; s@\%MOGRIFY\%@${MOGRIFY}@g; s@\%CONVERT\%@${CONVERT}@g; s@\%LILYPOND\%@${LILYPOND}@g; s@\%GNUPLOT\%@${GNUPLOT}@g; s@\%DOT\%@${DOT}@g; s@\%NEATO\%@${NEATO}@g; s@\%FDP\%@${FDP}@g; s@\%TWOPI\%@${TWOPI}@g; s@\%CIRCO\%@${CIRCO}@g; s@\%SGF2DG\%@${SGF2DG}@g; s@\%TEX\%@${TEX}@g; s@\%METAPOST\%@${METAPOST}@g;"
 CRON = -e "s@\%DECRUFT\%@${DECRUFT}@g; s@\%DATABASE\%@${DATABASE}@g; s@\%DBUSER\%@${DBUSER}@g; s@\%DBPASS\%@${DBPASS}@g;"
 QUOTA = -e "s@\%PARTITION\%@${PARTITION}@g;"
 AUDIT = ${SUDO} ${CRON} ${QUOTA}
 EXEC = chmod a+x
-DOCS = README NEWS COPYING MANIFEST THANKS Doxyfile
+DOCS = README NEWS COPYING MANIFEST THANKS Wikitex.php WikitexConstants.php main.php wikitex.ini
 PROGS = wikitex.sudoers wikitex.cron wikitex-decruft.sh wikitex-audit.sh
 
 all: ${DOCS} ${PROGS}
@@ -88,8 +98,20 @@ MANIFEST: manifest.ms
 THANKS: thanks.ms
 	${SED} ${?} ${GROFF} ${@}
 
-Doxyfile: Doxyfile.in
+Wikitex.php: Wikitex.in.php
 	${SED} ${?} > ${@}
+
+WikitexConstants.php: WikitexConstants.in.php
+	${SED} ${?} > ${@}
+
+main.php: main.in.php
+	${SED} ${?} > ${@}
+
+wikitex.ini: wikitex.in.ini
+	${SED} ${?} > ${@}
+
+docs:
+	phpdoc -c wikitex
 
 # Forced to forgo ${?} in the following,
 # as a change in Makefile can trigger
@@ -112,9 +134,9 @@ wikitex-audit.sh: wikitex-audit.in.sh
 	${EXEC} ${@}
 
 clean-docs:
-	rm -frv ${DOCS} html
+	rm -frv ${DOCS}
 
 clean-progs:
 	rm -frv ${PROGS}
 
-clean: clean-docs clean-progs
+clean: clean-progs

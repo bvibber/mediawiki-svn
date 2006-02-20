@@ -1,13 +1,22 @@
-# WikiTeX commands
+# WikiTeX commands requiring EXEC
+# LilpPond needs to run gs when converting to png
+# dvipng needs to interact with kpathsea
 Cmnd_Alias  WT_EXEC = %LILYPOND%,\
-                      %TEX%,\
-                      %LATEX%,\
-                      %DOT%,\
-                      %DVIPNG%,\
-                      %GNUPLOT%,\
-                      %MOGRIFY%,
-                      %CONVERT%,\
-                      %SGF2DG%
+                      %DVIPNG%     
+
+# WikiTeX commands requiring NOEXEC
+Cmnd_Alias  WT_NOEXEC = %TEX%,\
+                        %LATEX%,\
+                        %METAPOST%,\
+                        %DOT%,\
+                        %NEATO%,\
+                        %FDP%,\
+                        %TWOPI%,\
+                        %CIRCO%,\
+                        %GNUPLOT%,\
+                        %MOGRIFY%,\
+                        %CONVERT%,\
+                        %SGF2DG%
 
 # Apache's user
 User_Alias  WT_HTTPD = %APACHE%
@@ -19,4 +28,4 @@ Host_Alias  WT_HOST = %HOST%
 Runas_Alias  WT_USER = %WIKITEX%
 
 # WikiTeX rule
-WT_HTTPD  WT_HOST = (WT_USER) NOPASSWD: NOEXEC: WT_EXEC
+WT_HTTPD  WT_HOST = (WT_USER) NOPASSWD: WT_EXEC, NOEXEC: WT_NOEXEC

@@ -7,7 +7,7 @@
 
 
 
-                 WikiTeX 1.1 BETA 1 README
+                 WikiTeX 1.1 BETA 3 README
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -27,7 +27,7 @@
 
 
 
-12 February 2006
+19 February 2006
 
 
 
@@ -73,7 +73,7 @@
 
 
 
-                 WikiTeX 1.1 BETA 1 README
+                 WikiTeX 1.1 BETA 3 README
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -127,7 +127,7 @@
 
 
 
-                      12 February 2006
+                      19 February 2006
 
 
 
@@ -175,25 +175,25 @@
                In  a nutshell, WikiTeX requires a successful
           installation of:
 
-               o    LaTeX (latex-project.org)
+               o    PHP 5.1.0+ (php.net)
 
-               o    MediaWiki (wikipedia.sf.net)
+               o    MediaWiki 1.6alpha1+ (wikipedia.sf.net)
+
+               o    LaTeX (latex-project.org)
 
                o    ImageMagick (imagemagick.org)
 
                o    dvipng (dvipng.sf.net)
 
-          Lilypond (lilypond.org),  Gnuplot  (gnuplot.info),
-          and   Graphviz  (graphviz.org)  are  required  for
-          music, plot, and graph; and as many of  the  pack-
-          ages  under  3.3.5  (see  below) whose classes you
+               As of writing, WikiTeX requires the CVS  ver-
+          sion of MediaWiki; to get it, issue:
 -----------
   * For  actual  development snapshots see Subver-
 sion below.
 
 
 
-                      12 February 2006
+                      19 February 2006
 
 
 
@@ -202,17 +202,25 @@ sion below.
                              -3-
 
 
-          would like to support.
+     cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/wikipedia\
+     co -P phase3
+
+
+               Lilypond    (lilypond.org),   Gnuplot   (gnu-
+          plot.info),  and   Graphviz   (graphviz.org)   are
+          required  for  music, plot, and graph; and as many
+          of the packages  under  3.3.5  (see  below)  whose
+          classes you would like to support.
 
      3.2.  Security
 
-               WikiTeX  requires  preparation  to   mitigate
-          risk;  failure  to prepare in whole or in part may
+               WikiTeX   requires  preparation  to  mitigate
+          risk; failure to prepare in whole or in  part  may
           expose your system to loss and mischief.
 
           3.2.1.  Makefile
 
-                    We've gathered all the editable  parame-
+                    We've  gathered all the editable parame-
                ters into one place; edit `Makefile' and run:
 
                     make
@@ -221,10 +229,10 @@ sion below.
 
           3.2.2.  Unprivileged User
 
-                    WikiTeX runs as  the  unprivileged  user
-               `wikitex'  to  restrict  access  to the local
-               file-system.   You  must  protect   sensitive
-               world-writable  and -readable resources, how-
+                    WikiTeX  runs  as  the unprivileged user
+               `wikitex' to restrict  access  to  the  local
+               file-system.    You  must  protect  sensitive
+               world-writable and -readable resources,  how-
                ever.
 
                Create the user wikitex:
@@ -233,7 +241,7 @@ sion below.
 
           3.2.3.  Disk Quota
 
-                    To   prevent   runaway  scripts  or  DoS
+                    To  prevent  runaway  scripts   or   DoS
                attacks from usurping storage, institute disk
                quotas.  See:
 
@@ -243,23 +251,15 @@ sion below.
 
                1.   Edit /etc/fstab and, next to "defaults,"
                     add  "usrquota"  for  the  partition  on
-                    which WikiTeX  runs  (hereafter  /part);
+                    which  WikiTeX  runs  (hereafter /part);
                     e.g.:
 
                     /part /home reiserfs defaults,usrquota 1 1
 
 
-               2.   Remount /part:
-
-                         mount -o remount /part
-
-               3.   Update quota data:
 
 
-
-
-
-                      12 February 2006
+                      19 February 2006
 
 
 
@@ -267,6 +267,12 @@ sion below.
 
                              -4-
 
+
+               2.   Remount /part:
+
+                         mount -o remount /part
+
+               3.   Update quota data:
 
                          quotacheck -vguma
 
@@ -278,8 +284,8 @@ sion below.
 
                          edquota -u wikitex
 
-                    The  following  values will give WikiTeX
-                    one hundred megabytes and  ten  thousand
+                    The following values will  give  WikiTeX
+                    one  hundred  megabytes and ten thousand
                     files to play with (edit the values with
                     asterisks):
 
@@ -302,9 +308,10 @@ sion below.
 
           3.2.5.  Sudo
 
-                    You  will  need  sudo  version  1.6.8 or
+                    You will  need  sudo  version  1.6.8  or
                above (verify by `sudo -V'), with support for
-               NOEXEC compiled in.  Issue:
+               NOEXEC compiled in.  Remove any WikiTeX cruft
+               from /etc/sudoers, and issue:
 
                     cat wikitex.sudoers >> /etc/sudoers
 
@@ -315,17 +322,10 @@ sion below.
                If there are parse errors, run  `visudo'  and
                correct any mistakes.
 
-          3.2.6.  Per Package
-
-                    Following  are package-specific security
-               measures.
 
 
 
-
-
-
-                      12 February 2006
+                      19 February 2006
 
 
 
@@ -333,6 +333,11 @@ sion below.
 
                              -5-
 
+
+          3.2.6.  Per Package
+
+                    Following  are package-specific security
+               measures.
 
                3.2.6.1.  LaTeX
 
@@ -355,9 +360,12 @@ sion below.
 
      3.3.  Installation
 
-               Satisfy  the  prerequisites  per  3.1 and 3.2
-          above; then, working from MediaWiki's base  direc-
-          tory, perform the following:
+               NOTE:  DON'T  CONTINUE UNTIL wikitex-audit.sh
+          EXECUTES SANS FATAL ERRORS.
+
+               Fulfill the security guidelines per 3.2,  and
+          install  MediaWiki  (see  3.1); then, working from
+          MediaWiki's base directory, perform the following:
 
           1.   Create  /extensions/wikitex  and copy thither
                the distribution.
@@ -365,7 +373,7 @@ sion below.
           2.   Add the following line to  /LocalSettings.php
                before the terminal `?>':
 
-               include './extensions/wikitex/wikitex.php';
+               include './extensions/wikitex/Wikitex.php';
 
           3.   Render /extensions/wikitex/tmp  scribable  to
                the web server:*
@@ -377,21 +385,13 @@ sion below.
 
                     php_flag engine off
 
-               from .htaccess in the same directory; disable
-               CGI, if necessary.
-
-          5.   Install  as  many  of  the following packages
-               whose classes you would like to  support,  or
-               add your own (see Expanding WikiTeX):
-
-
 -----------
   * Consult your server config for the appropriate
 user and group id.
 
 
 
-                      12 February 2006
+                      19 February 2006
 
 
 
@@ -400,12 +400,19 @@ user and group id.
                              -6-
 
 
+               from .htaccess in the same directory; disable
+               CGI, if necessary.
+
+          5.   Install  as  many  of  the following packages
+               whose classes you would like to  support,  or
+               add your own (see Expanding WikiTeX):
+
       Class    Package        Author              URL
      --------------------------------------------------------
      amsmath  AMS-LaTeX  Amer. Math. Soc.   ams.org
      chem     XyMTeX     Shinsaku Fujita    kit.ac.jp
      chess    Skak       Torben Hoffmann    ctan.org
-     feyn     Feynman    Michael Levine     ctan.org
+     feyn     FenyMF     Thorsten Ohl       ctan.org
      go       Go         Daniel Bump        stanford.edu
      graph    Graphviz   Emden Gansner      research.att.com
      greek    Ibycus     Pierre MacKay      tug.org
@@ -413,8 +420,14 @@ user and group id.
      plot     Gnuplot    Nikos Drakos       gnuplot.info
      svg      SVG lite   ImageMagick        imagemagick.org
      teng     Tengwar    Ivan Derzhanski    quettar.org
-     tipa     TIPA       Rei Fukui          ctan.org
+     ipa      TIPA       Rei Fukui          ctan.org
 
+
+          6.   (Optional) If you would like your users to be
+               able to source uploaded  files,  specify  the
+               following in LocalSettings.php:
+
+                    $wgStrictFileExtensions = false;
 
 4.  Hacking WikiTeX
 
@@ -441,6 +454,18 @@ user and group id.
 
                     <classname>.<ext>
 
+
+
+
+                      19 February 2006
+
+
+
+
+
+                             -7-
+
+
                The  template  should  expose said package to
                the renderer; see the current  templates  for
                examples.
@@ -453,18 +478,6 @@ user and group id.
 
           3.   Lastly,  add  a  hook to `wikitex.php' and an
                element->hook mapping to `wikitex.inc.php'.
-
-
-
-
-                      12 February 2006
-
-
-
-
-
-                             -7-
-
 
 5.  Getting Help
 
@@ -510,20 +523,7 @@ user and group id.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                      12 February 2006
+                      19 February 2006
 
 
 
@@ -589,6 +589,6 @@ view a copy of this license, see COPYING or visit:
 
 
 
-                      12 February 2006
+                      19 February 2006
 
 

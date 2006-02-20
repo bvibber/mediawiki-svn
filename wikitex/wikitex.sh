@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# wikitex.sh: shell interface to wikitex.php
+# Assumes that $PWD is the base wiki dir.
+# Usage: FILE MODULE OUTPATH
+#
 # WikiTeX: expansible LaTeX module for MediaWiki
 # Copyright (C) 2004-6  Peter Danenberg
 #
@@ -7,9 +11,6 @@
 #
 #      http://dev.perl.org/perl6/rfc/346.html
 #
-# wikitex.sh: shell interface to wikitex.php
-# Assumes that $PWD is the base wiki dir.
-# Usage: FILE MODULE OUTPATH
 
 declare -ri ARGS=3
 declare -ri E_ARGS=2
@@ -21,6 +22,8 @@ declare -r OUT="${3}"
 declare -r EXT='.png'
 declare -r CHE='.cache'
 declare -r MID='.midi'
+declare -r MAP='.map'
+declare -r EPS='.eps'
 declare -r SUDO='wikitex'
 declare -r ERR='<span class="errwikitex">WikiTeX: %s reported a failure, namely:</span><pre>Error code: %d\n%s</pre>\n'
 declare -ra LIMIT=(\
@@ -111,6 +114,19 @@ function wt_generic() {
     wt_anch
 }
 
+function wt_graph_map() {
+    wt_sudo "${1} -Tpng -o ${HASH}${EXT} ${HASH}"
+    wt_sudo "${1} -Tcmap -o ${HASH}${MAP} ${HASH}"
+    STR=$(printf '<map name="%s">%s</map>' "${HASH}" "$(<"${HASH}${MAP}")")
+    STR="${STR}"$(printf '<img src="%s" alt="%s" usemap="#%s"/>' "${OUT}${HASH}${EXT}" "${MOD}" "${HASH}")
+    STR="${STR}"$(printf '<a href="%s">[source]</a>' "${OUT}${HASH}")
+    wt_out "${HASH}${MAP}"
+}
+
+function circo() {
+    wt_graph_map "circo"
+}
+
 function go() {
     wt_sudo "sgf2dg -twoColumn ${HASH}"
     wt_sudo "tex --interaction=nonstopmode ${HASH}"
@@ -119,10 +135,21 @@ function go() {
     wt_anch
 }
 
-function graph() {
-    wt_sudo "dot -Tpng -o ${HASH}${EXT} ${HASH}"
-    wt_img "${OUT}${HASH}${EXT}"
+function fdp() {
+    wt_graph_map "fdp"
+}
+
+function feyn() {
+    wt_sudo "latex ${HASH}"
+    wt_sudo "mpost fmftempl.mp"
+    wt_sudo "latex ${HASH}"
+    wt_dvipng
+    for i in ${HASH}*${EXT}; do wt_img "${OUT}${i}"; done
     wt_anch
+}
+
+function graph() {
+    wt_graph_map "dot"
 }
 
 function music() {
@@ -135,6 +162,10 @@ function music() {
         STR="$STR"$(printf '<a href="%s">[listen]</a>' "${OUT}${HASH}${MID}")
         wt_out "${HASH}${MID}"
     fi
+}
+
+function neato() {
+    wt_graph_map "neato"
 }
 
 function plot() {
@@ -150,6 +181,10 @@ function svg() {
     wt_trim "${HASH}${EXT}"
     wt_img "${OUT}${HASH}${EXT}"
     wt_anch
+}
+
+function twopi() {
+    wt_graph_map "twopi"
 }
 
 # Check for module-specific functions; otherwise resort to generic.

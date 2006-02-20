@@ -126,15 +126,27 @@ Prerequisites
 In a nutshell, WikiTeX requires a successful installation of:
 .RS
 .IP \(bu
-LaTeX (latex-project.org)
+PHP 5.1.0+ (php.net)
 .IP \(bu
-MediaWiki (wikipedia.sf.net)
+MediaWiki 1.6alpha1+ (wikipedia.sf.net)
+.IP \(bu
+LaTeX (latex-project.org)
 .IP \(bu
 ImageMagick (imagemagick.org)
 .IP \(bu
 dvipng (dvipng.sf.net)
 .RE
-.LP
+.PP
+As of writing, WikiTeX requires the CVS version of MediaWiki; to get it, issue:
+.RE
+.KS
+.LD
+cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/wikipedia\\
+co -P phase3
+.DE
+.KE
+.RS
+.PP
 Lilypond (lilypond.org), Gnuplot (gnuplot.info), and Graphviz (graphviz.org) are required for music, plot, and graph; and as many of the packages under \(sc3.3.5 (see below) whose classes you would like to support.
 .RE
 .NH 2
@@ -226,7 +238,7 @@ from extensions/wikitex.
 Sudo
 .RS
 .PP
-You will need sudo version 1.6.8 or above (verify by \(oqsudo -V\(cq), with support for NOEXEC compiled in.  Issue:
+You will need sudo version 1.6.8 or above (verify by \(oqsudo -V\(cq), with support for NOEXEC compiled in.  Remove any WikiTeX cruft from /etc/sudoers, and issue:
 .QP
 cat wikitex.sudoers >> /etc/sudoers
 .LP
@@ -269,14 +281,16 @@ until you satisfy it.
 Installation
 .RS
 .PP
-Satisfy the prerequisites per \(sc3.1 and \(sc3.2 above; then, working from MediaWiki's base directory, perform the following:
+NOTE: DON'T CONTINUE UNTIL wikitex-audit.sh EXECUTES SANS FATAL ERRORS.
+.PP
+Fulfill the security guidelines per \(sc3.2, and install MediaWiki (see 3.1); then, working from MediaWiki's base directory, perform the following:
 .nr i 0 1
 .IP \n+i.
 Create /extensions/wikitex and copy thither the distribution.
 .IP \n+i.
 Add the following line to /LocalSettings.php before the terminal \(oq?>\(cq:
 .QP
-include\ \%'./extensions/wikitex/wikitex.php';
+include\ \%'./extensions/wikitex/Wikitex.php';
 .IP \n+i.
 Render /extensions/wikitex/tmp scribable to the web server:*
 .FS *
@@ -304,7 +318,7 @@ _
 amsmath	AMS-LaTeX	Amer. Math. Soc.	ams.org
 chem	XyMTeX	Shinsaku Fujita	kit.ac.jp
 chess	Skak	Torben Hoffmann	ctan.org
-feyn	Feynman	Michael Levine	ctan.org
+feyn	FenyMF	Thorsten Ohl	ctan.org
 go	Go	Daniel Bump	stanford.edu
 graph	Graphviz	Emden Gansner	research.att.com
 greek	Ibycus	Pierre MacKay	tug.org
@@ -312,8 +326,16 @@ music	Lilypond	Han-Wen Nienhuys	lilypond.org
 plot	Gnuplot	Nikos Drakos	gnuplot.info
 svg	SVG lite	ImageMagick	imagemagick.org
 teng	Tengwar	Ivan Derzhanski	quettar.org
-tipa	TIPA	Rei Fukui	ctan.org
+ipa	TIPA	Rei Fukui	ctan.org
 .TE
+.RS
+.IP \n+i.
+(Optional) If you would like your users to be able to source uploaded files, specify the following in LocalSettings.php:
+.RS
+.QP
+$wgStrictFileExtensions = false;
+.RE
+.RE
 .RE
 .NH 1
 Hacking WikiTeX

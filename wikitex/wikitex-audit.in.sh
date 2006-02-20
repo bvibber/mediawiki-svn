@@ -20,8 +20,13 @@ declare -r CONVERT=%CONVERT%
 declare -r LILYPOND=%LILYPOND%
 declare -r GNUPLOT=%GNUPLOT%
 declare -r DOT=%DOT%
+declare -r NEATO=%NEATO%,
+declare -r FDP=%FDP%,
+declare -r TWOPI=%TWOPI%,
+declare -r CIRCO=%CIRCO%,
 declare -r SGF2DG=%SGF2DG%
 declare -r TEX=%TEX%
+declare -r METAPOST=%METAPOST%
 
 declare -r PARTITION=%PARTITION%
 
@@ -44,7 +49,7 @@ declare -ri FATAL=1
 
 declare -ra OUTCOMES=('success' 'FAILURE')
 
-declare -ra TESTS=('root' 'user' 'nologin' 'usrquota' 'quotaed' 'blocks' 'files' 'crontab' 'decruft' 'latex' 'shell_escape' 'openout_any' 'openin_any' 'latex\ execute' 'latex\ read' 'latex\ write' 'dvipng' 'mogrify' 'convert' 'lilypond' 'gnuplot' 'gnuplot\ execute' 'dot' 'sgf2dg' 'tex')
+declare -ra TESTS=('root' 'user' 'nologin' 'usrquota' 'quotaed' 'blocks' 'files' 'crontab' 'decruft' 'latex' 'shell_escape' 'openout_any' 'openin_any' 'latex\ execute' 'latex\ read' 'latex\ write' 'dvipng' 'mogrify' 'convert' 'lilypond' 'gnuplot' 'gnuplot\ execute' 'dot' 'neato' 'fdp' 'twopi' 'circo' 'sgf2dg' 'tex' 'metapost')
 
 declare -ra DICTA=(
     "You\ must\ be\ root\ to\ continue."
@@ -70,8 +75,13 @@ declare -ra DICTA=(
     "${APACHE}\ cannot\ execute\ gnuplot\ as\ ${WIKITEX}."
     "Gnuplot\ appears\ to\ be\ able\ to\ execute\ commands."
     "${APACHE}\ cannot\ execute\ dot\ as\ ${WIKITEX}."
+    "${APACHE}\ cannot\ execute\ neato\ as\ ${WIKITEX}."
+    "${APACHE}\ cannot\ execute\ fdp\ as\ ${WIKITEX}."
+    "${APACHE}\ cannot\ execute\ twopi\ as\ ${WIKITEX}."
+    "${APACHE}\ cannot\ execute\ circo\ as\ ${WIKITEX}."
     "${APACHE}\ cannot\ execute\ sgf2dg\ as\ ${WIKITEX}."
     "${APACHE}\ cannot\ execute\ tex\ as\ ${WIKITEX}."
+    "${APACHE}\ cannot\ execute\ metapost\ as\ ${WIKITEX}."
 )
 
 declare -ar TERMS=(
@@ -148,9 +158,19 @@ au_run sudo -u "${APACHE}" sudo -u "${WIKITEX}" gnuplot -V || status=${FAIL} && 
 
 au_run sudo -u "${APACHE}" sudo -u "${WIKITEX}" dot -V || status=${FAIL} && (( test++ ))
 
+au_run sudo -u "${APACHE}" sudo -u "${WIKITEX}" neato -V || status=${FAIL} && (( test++ ))
+
+au_run sudo -u "${APACHE}" sudo -u "${WIKITEX}" fdp -V || status=${FAIL} && (( test++ ))
+
+au_run sudo -u "${APACHE}" sudo -u "${WIKITEX}" twopi -V || status=${FAIL} && (( test++ ))
+
+au_run sudo -u "${APACHE}" sudo -u "${WIKITEX}" circo -V || status=${FAIL} && (( test++ ))
+
 au_run sudo -u "${APACHE}" sudo -u "${WIKITEX}" sgf2dg -v || status=${FAIL} && (( test++ ))
 
 au_run sudo -u "${APACHE}" sudo -u "${WIKITEX}" tex -v || status=${FAIL} && (( test++ ))
+
+au_run sudo -u "${APACHE}" sudo -u "${WIKITEX}" metapost -v || status=${FAIL} && (( test++ ))
 
 echo "${TERMS[${status}]}"
 exit ${status}

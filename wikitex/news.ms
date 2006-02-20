@@ -4,6 +4,14 @@ WikiTeX %VERSION% NEWS
 .AU
 Peter Danenberg <pcd at wikitex dot org>
 .SH
+Sun Feb 19 17:34:41 PST 2006
+.RS
+.PP
+Added five layout properties for <graph>, corresponding to the suite of Graphviz utilities: dot (default), neato, fdp, twopi and circo.
+.PP
+<feyn> has been updated to accomodate Thorsten Ohl's powerf feynMF package.
+.RE
+.SH
 Sun Feb 12 16:21:57 PST 2006    Peter Danenberg
 .RS
 .PP
@@ -22,7 +30,6 @@ to hide ugly code; or to plot data:
 .DE
 .RE
 Files thus sourced forgo processing by the template.
-.RE
 .RE
 .SH
 Thu Mar 10 01:26:39 PST 2005	Peter Danenberg

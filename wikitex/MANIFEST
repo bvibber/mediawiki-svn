@@ -7,7 +7,7 @@
 
 
 
-                WikiTeX 1.1 BETA 1 MANIFEST
+                WikiTeX 1.1 BETA 3 MANIFEST
 
           Peter Danenberg <pcd at wikitex dot org>
 
@@ -31,43 +31,109 @@
 
 2.  Module
 
+     main.in.php               Driver
      wikitex-audit.in.sh       Security auditor
      wikitex-audit-read.tex    Audit reading from parent directories
      wikitex-audit-shell.tex   Audit LaTeX execution
      wikitex-audit-write.tex   Audit writing to parent directories
      wikitex-decruft.in.sh     Clean cache directory of unused cruft
-     wikitex.inc.php           Parser header
+     WikitexConstants.in.php   Parser header
      wikitex.in.cron           Crontab template
      wikitex.in.sudoers        Sodoers' template
-     wikitex.php               Parser
+     wikitex.in.ini            phpDocumentor cruft
+     Wikitex.in.php            Parser
      wikitex.sh                Shell interface
 
 
 3.  Templates (template/)
 
+     amsmath.tex   AMS-LaTeX
      chem.tex      XyMTeX
      chess.tex     Skak
-     feyn.tex      Feynman diagrams
+     circo.dot     Graphviz circo
+     fdp.dot       Graphviz fdp
+     feyn.tex      feynMF
      go.sgf        Go
-     graph.dot     Graphviz
+     graph.dot     Graphviz dot
      greek.tex     Ibycus
-     amsmath.tex   AMS-LaTeX
-     music.tex     Lilypond
-     plot.p        Gnuplot
-     svg.svg       SVG
-     teng.tex      Tengwar
-     tipa.tex      TIPA
+     ipa.tex       TIPA
 
 
 
 
-                      12 February 2006
+                      19 February 2006
 
 
 
 
 
                              -2-
+
+
+     music.ly      Lilypond
+     plot.p        Gnuplot
+     svg.svg       SVG
+     teng.tex      Tengwar
+     twopi.dot     Graphviz twopi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      19 February 2006
+
+
+
+
+
+                             -3-
 
 
 WikiTeX: expansible LaTeX module for MediaWiki
@@ -127,6 +193,6 @@ view a copy of this license, see COPYING or visit:
 
 
 
-                      12 February 2006
+                      19 February 2006
 
 
