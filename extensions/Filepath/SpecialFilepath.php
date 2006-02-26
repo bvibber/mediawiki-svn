@@ -23,6 +23,7 @@ function wfSpecialFilepath() {
 	$wgMessageCache->addMessages(
 		array(
 			'filepath' => 'File path',
+			'filepath_instructions' => "Enter the name of an image to be redirected to the actual location of the image file",
 			'filepath_page' => 'File: ',
 			'filepath_submit' => 'Path',
 		)
