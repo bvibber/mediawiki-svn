@@ -70,7 +70,7 @@ function wfSpecialFilepath() {
 		
 		function execute() {
 			global $wgOut, $wgTitle;
-
+			$wgOut->addWikiTexT( 'filepath_instructions' );
 			$wgOut->addHTML(
 				wfElement( 'form',
 					array(
