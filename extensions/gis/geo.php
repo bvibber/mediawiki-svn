@@ -51,7 +51,7 @@ function wfGeoExtension () {
  *
  *  Return markup, but also a pointer to Map sources
  */
-function parse_geo ( $text ) {
+function parse_geo ( $text, $params, &$parser ) {
 
 	$geo = new geo_param( $text );
 
@@ -63,10 +63,8 @@ function parse_geo ( $text ) {
 	global $wgOut;
 	$wgOut->addMeta( "geo.position", $geo->latdeg.";".$geo->londeg );
 
-	# FIXME: obtain title
 	if ( !isset( $geo->title ) || $geo->title == "") {
-		global $wgTitle;
-		$geo->title = $wgTitle->getDBkey();
+		$geo->title = $parser->mTitle->getDBkey();
 	}
 	$geo->title = str_replace(' ', '_', $geo->title );
 	if ($geo->title != "" && $geo->title != " ") {

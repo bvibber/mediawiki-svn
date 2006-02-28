@@ -5,6 +5,8 @@
 
 
 $wgHooks['ParserBeforeTidy'][] = 'citation_hooker' ;
+$wgHooks['ParserClearState'][] = 'citation_clear_state';
+
 $wgExtensionFunctions[] = "wfCitation";
 
 function wfCitation () {
@@ -30,6 +32,13 @@ function citation_hooker ( $parser , $text ) {
 	$ret = "<hr/><ol>" . $ret . "</ol>" ;
 	
 	$text .= $ret ;
+}
+
+function citation_clear_state() {
+	global $wgCitationCache, $wgCitationCounter, $wgCitationRunning;
+	$wgCitationCache = array () ;
+	$wgCitationCounter = 1 ;
+	$wgCitationRunning = false ;
 }
 
 function parse_citation ( $text , $params , $parser ) {
@@ -74,10 +83,9 @@ function parse_citation ( $text , $params , $parser ) {
 	if ( $href != "" ) $ret .= " [{$href}]" ;
 	
 	// Adding to footer list or showing inline
-	global $wgTitle , $wgOut ;
-	$p = new Parser ;
+	$localParser = new Parser ;
 	$wgCitationRunning = true ;
-	$ret = $p->parse ( $ret , $wgTitle , $wgOut->mParserOptions, false ) ;
+	$ret = $localParser->parse ( $ret , $parser->mTitle , $parser->mOptions, false ) ;
 	$wgCitationRunning = false ;
 	$ret = $ret->getText();
 

@@ -22,8 +22,7 @@ function wfSeealso () {
 		$wgParser->setHook ( $l , 'parse_seealso' ) ;
 }
 
-function parse_seealso ( $text ) {
-	global $wgOut , $wgTitle ;
+function parse_seealso ( $text, $params, &$parser ) {
 	$a = explode ( "\n" , $text ) ;
 	$ret = "== " . trim ( wfMsg ( "seealso" ) ) . " ==\n" ;
 	foreach ( $a AS $x ) {
@@ -32,7 +31,7 @@ function parse_seealso ( $text ) {
 		$ret .= "* [[" . $x . "]]\n" ;
 	}
 	$p = new Parser ;
-	$ret = $p->parse ( $ret , $wgTitle , $wgOut->mParserOptions, false ) ;
+	$ret = $p->parse ( $ret , $parser->mTitle , $parser->mOptions, false ) ;
 	$ret = $ret->getText();
 	return $ret ;
 }

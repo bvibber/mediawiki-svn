@@ -39,9 +39,8 @@ function registerInputboxExtension()
 /**
  * Renders an inputbox based on information provided by $input.
  */
-function renderInputbox($input)
+function renderInputbox($input, $params, &$parser)
 {
-	global $wgTitle;
 	$inputbox=new Inputbox();
 	getBoxOption($inputbox->type,$input,'type');
 	getBoxOption($inputbox->width,$input,'width',true);	
@@ -58,7 +57,7 @@ function renderInputbox($input)
 	
 	$boxhtml=$inputbox->render();
 	# Maybe support other useful magic words here
-	$boxhtml=str_replace("{{PAGENAME}}",$wgTitle->getText(),$boxhtml);
+	$boxhtml=str_replace("{{PAGENAME}}",$parser->mTitle->getText(),$boxhtml);
 	if($boxhtml) {
 		return $boxhtml;
 	} else {

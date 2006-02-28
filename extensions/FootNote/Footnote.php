@@ -70,19 +70,18 @@ function insert_endnotes( $parser , $text ) {
 	$footnoteCount = 1 ;
 }
 
-function parse_footnote( $text ) {
+function parse_footnote( $text, $params, &$parser ) {
 	$ret = "" ;
 
 	global $footnoteNotes , $footnoteCount, $footnoteRecursionGuard ;
-
-	global $wgTitle , $wgOut, $footnoteParserObj;
+	global $footnoteParserObj;
 
 	if( !isset( $footnoteParserObj )) {
 		$footnoteParserObj = new Parser ;
 	}
 
 	$footnoteRecursionGuard = true;
-	$ret = $footnoteParserObj->parse( $text , $wgTitle , $wgOut->mParserOptions, false ) ;
+	$ret = $footnoteParserObj->parse( $text , $parser->mTitle , $parser->mOptions, false ) ;
 	$ret = $ret->getText();
 	$footnoteRecursionGuard = false;
 
