@@ -42,10 +42,11 @@ $wgLuceneDisableSuggestions = false;
 $wgLuceneDisableTitleMatches = false;
 
 # Not a valid entry point, skip unless MEDIAWIKI is defined
-require_once('SearchEngine.php');
-require_once('Article.php');
+if (!defined('MEDIAWIKI')) {
+	die( "This file is part of MediaWiki, it is not a valid entry point\n" );
+}
+	
 
-if (defined('MEDIAWIKI')) {
 $wgExtensionFunctions[] = 'wfLuceneSearch';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'LuceneSearch',
@@ -63,6 +64,7 @@ function wfLuceneSearch() {
 
 global $IP;
 require_once( $IP.'/includes/SpecialPage.php');
+require_once($IP.'/includes/SearchEngine.php');
 
 class LuceneSearch extends SpecialPage
 {
@@ -115,7 +117,7 @@ class LuceneSearch extends SpecialPage
 		$fname = 'LuceneSearch::execute';
 		wfProfileIn( $fname );
 		$this->setHeaders();
-$wgOut->addHTML('<!-- titlens = '. $wgTitle->getNamespace() . '-->');
+		$wgOut->addHTML('<!-- titlens = '. $wgTitle->getNamespace() . '-->');
 
 		foreach(SearchEngine::searchableNamespaces() as $ns => $name)
 			if ($wgRequest->getCheck('ns' . $ns))
@@ -789,24 +791,25 @@ class LuceneSearchSet {
 
 global $wgMessageCache;
 SpecialPage::addPage(new LuceneSearch);
-$wgMessageCache->addMessage('searchnumber', "<strong>Results $1-$2 of $3</strong>");
-$wgMessageCache->addMessage('searchprev', "&#x00AB; <span style='font-size: small'>Prev</span>");
-$wgMessageCache->addMessage('searchnext', "<span style='font-size: small'>Next</span> &#x00BB;");
-$wgMessageCache->addMessage('searchscore', "Relevancy: $1");
-$wgMessageCache->addMessage('searchsize', "$1KB ($2 words)");
-$wgMessageCache->addMessage('searchdidyoumean', "Did you mean: \"<a href=\"$1\">$2</a>\"?");
-$wgMessageCache->addMessage('searchnoresults', "Sorry, there were no exact matches to your query.");
-$wgMessageCache->addMessage('searchnearmatches', "<b>These pages have similar titles to your query:</b>\n");
-$wgMessageCache->addMessage('searchnearmatch', "<li>$1</li>\n");
-$wgMessageCache->addMessage('lucenepowersearchtext', "
+$wgMessageCache->addMessages(array(
+	'searchnumber'          => "<strong>Results $1-$2 of $3</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prev</span>",
+	'searchnext'            => "<span style='font-size: small'>Next</span> &#x00BB;",
+	'searchscore'           => "Relevancy: $1",
+	'searchsize'            => "$1KB ($2 words)",
+	'searchdidyoumean'      => "Did you mean: \"<a href=\"$1\">$2</a>\"?",
+	'searchnoresults'       => "Sorry, there were no exact matches to your query.",
+	'searchnearmatches'     => "<b>These pages have similar titles to your query:</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext', "
 Search in namespaces:\n
 $1\n
-Search for $3 $9");
-$wgMessageCache->addMessage( "lucenefallback",
+Search for $3 $9",
+	'lucenefallback'        =>
 "There was a problem with the wiki search.
 This is probably temporary; try again in a few moments,
-or you can search the wiki through an external search service:\n");
+or you can search the wiki through an external search service:\n"
+));
 
 } # End of extension function
-} # End of invocation guard
 ?>
