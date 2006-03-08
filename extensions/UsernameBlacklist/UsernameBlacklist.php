@@ -44,7 +44,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			foreach( $list as $item ) {
 				$item = UsernameBlacklist_Trim( $item );
 				if( $item ) {
-					$regex = '/' . UsernameBlacklist_Trim( $item ) . '/';
+					$regex = '/' . $item . '/';
 					if( preg_match( $regex, $username ) > 0 ) {
 						$rt_title = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
 						$wgOut->errorPage( 'blacklistedusername', 'blacklistedusernametext' );
