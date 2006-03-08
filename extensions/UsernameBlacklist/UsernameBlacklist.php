@@ -42,12 +42,15 @@ if( defined( 'MEDIAWIKI' ) ) {
 		if( $blacklist != '&lt;usernameblacklist&gt;' ) {
 			$list = explode( "\n", $blacklist );
 			foreach( $list as $item ) {
-				$regex = '/' . UsernameBlacklist_Trim( $item ) . '/';
-				if( preg_match( $regex, $username ) > 0 ) {
-					$rt_title = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
-					$wgOut->errorPage( 'blacklistedusername', 'blacklistedusernametext' );
-					$wgOut->returnToMain( false, $rt_title->getPrefixedText() );
-					return( false );
+				$item = UsernameBlacklist_Trim( $item );
+				if( $item ) {
+					$regex = '/' . UsernameBlacklist_Trim( $item ) . '/';
+					if( preg_match( $regex, $username ) > 0 ) {
+						$rt_title = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
+						$wgOut->errorPage( 'blacklistedusername', 'blacklistedusernametext' );
+						$wgOut->returnToMain( false, $rt_title->getPrefixedText() );
+						return( false );
+					}
 				}
 			}
 			return( true );
@@ -57,7 +60,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	}
 
 	/**
-	 * Remove occurences of ' ' or '*' at the beginning of a string.
+	 * Remove occurences of ' ' or '*' at the beginning of a string
+	 * and check for commented lines
 	 *
 	 * @param string $text A text to trim.
 	 * @return string The trimmed text.
@@ -66,7 +70,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		while( ( substr( $text, 0, 1 ) == '*' ) || ( substr( $text, 0, 1 ) == ' ' ) ) {
 			$text = substr( $text, 1, strlen( $text ) - 1 );
 		}
-		return( $text );
+		return( substr( $text, 0, 1 ) == '#' ? false : $text );
 	}	
 	
 } else {

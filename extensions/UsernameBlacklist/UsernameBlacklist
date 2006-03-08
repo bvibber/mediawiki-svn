@@ -51,6 +51,9 @@ list item. For example:
 The example above would prevent creation of the user account "Foo", and any
 account where the username contains "Bar" or "bar".
 
+You can comment out lines with #; this is useful for adding explanation as to
+what a complicated regular expression will block, or for providing reasons.
+
 == 4. Customising Warning Messages ==
 
 When a user attempts to create an account with a blacklisted username, they
@@ -82,7 +85,7 @@ example above), but I'll provide a couple of useful links:
 
 1.1
 	Make extension compatible with MediaWiki 1.5.8
-
+	Allow commenting out lines in the blacklist with #
 	
 == 7. Thanks... ==
 
