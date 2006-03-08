@@ -39,7 +39,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		global $wgOut;
 		$username  = $user->getName();
 		$blacklist = wfMsg( 'usernameblacklist' );
-		if( !wfEmptyMsg( 'usernameblacklist', $blacklist ) ) {
+		if( $blacklist != '&lt;usernameblacklist&gt;' ) {
 			$list = explode( "\n", $blacklist );
 			foreach( $list as $item ) {
 				$regex = '/' . UsernameBlacklist_Trim( $item ) . '/';

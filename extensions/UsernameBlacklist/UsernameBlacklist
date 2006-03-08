@@ -1,6 +1,6 @@
 USERNAME BLACKLIST EXTENSION
 
-	Version 1.0
+	Version 1.1
 	© 2006 Rob Church
 
 This is free software licensed under the GNU General Public License. Please
@@ -14,7 +14,8 @@ full text and terms of the license.
 	3. Editing the Blacklist
 	4. Customising Warning Messages
 	5. Further Reading
-	6. Thanks...
+	6. Change Log
+	7. Thanks...
 	
 == 1. Introduction ==
 
@@ -76,8 +77,14 @@ example above), but I'll provide a couple of useful links:
 	
 	The 30 minute regex. tutorial:
 	http://codeproject.com/dotnet/RegexTutorial.asp
+
+== 6. Change Log ==
+
+1.1
+	Make extension compatible with MediaWiki 1.5.8
+
 	
-== 6. Thanks... ==
+== 7. Thanks... ==
 
 	* Avar; whose other extensions provide better reference than the docs.
 	* Tim; who broke the code in HEAD while I was doing this ;-)
