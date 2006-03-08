@@ -10,12 +10,13 @@ full text and terms of the license.
 == Overview ==
 
 	1. Introduction
-	2. Installing the Extension
-	3. Editing the Blacklist
-	4. Customising Warning Messages
-	5. Further Reading
-	6. Change Log
-	7. Thanks...
+	2. Requirements
+	3. Installing the Extension
+	4. Editing the Blacklist
+	5. Customising Warning Messages
+	6. Further Reading
+	7. Change Log
+	8. Thanks...
 	
 == 1. Introduction ==
 
@@ -27,7 +28,13 @@ is checked against and enforced during new account creation.
 The blacklist accepts simple text and more powerful regular expressions, for
 matching against particular patterns of usernames.
 
-== 2. Installing the Extension ==
+== 2. Requirements ==
+
+The username blacklist extension requires MediaWiki 1.5.8 or above. Users of
+MediaWiki 1.5.0 - 1.5.7 can patch SpecialUserlogin.php with the diff. provided at
+http://robchurch.pastebin.com/591360 to add the hook required if desired.
+
+== 3. Installing the Extension ==
 
 To install the username blacklist extension, first upload/copy the extension 
 file UsernameBlacklist.php into your MediaWiki extensions directory. Then edit
@@ -37,7 +44,7 @@ your LocalSettings.php file and add the following line:
 	
 Save the file (uploading if applicable) to complete the installation.
 
-== 3. Editing the Blacklist ==
+== 4. Editing the Blacklist ==
 
 The username blacklist extension looks for a system message named 
 "usernameblacklist" in your wiki. This can usually be edited via the
@@ -54,7 +61,7 @@ account where the username contains "Bar" or "bar".
 You can comment out lines with #; this is useful for adding explanation as to
 what a complicated regular expression will block, or for providing reasons.
 
-== 4. Customising Warning Messages ==
+== 5. Customising Warning Messages ==
 
 When a user attempts to create an account with a blacklisted username, they
 receive a warning message. The text of this can be customised via two system
@@ -66,7 +73,7 @@ messages:
 * MediaWiki:Blacklistedusernametext
 	Explanatory text
 	
-== 5. Further Reading ==
+== 6. Further Reading ==
 
 As noted above, the extension supports regular expression text matching on
 usernames. I won't go into more detail about this here (and I have given an
@@ -81,16 +88,15 @@ example above), but I'll provide a couple of useful links:
 	The 30 minute regex. tutorial:
 	http://codeproject.com/dotnet/RegexTutorial.asp
 
-== 6. Change Log ==
+== 7. Change Log ==
 
 1.1
 	Make extension compatible with MediaWiki 1.5.8
 	Allow commenting out lines in the blacklist with #
 	
-== 7. Thanks... ==
+== 8. Thanks... ==
 
-	* Avar; whose other extensions provide better reference than the docs.
-	* Tim; who broke the code in HEAD while I was doing this ;-)
-	* To the poster on wikitech-l who inspired it
+	* Avar; whose other extensions provide better reference than the docs
+	* To the poster on mediawiki-l who inspired it
 
 	All feedback welcome via <robchur@gmail.com>.
