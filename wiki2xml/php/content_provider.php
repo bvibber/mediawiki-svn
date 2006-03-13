@@ -12,6 +12,22 @@ class ContentProviderHTTP extends ContentProvider {
 	var $article_cache = array () ;
 	var $first_title = "" ;
 	
+	function get_namespace_id ( $text ) {
+		$text = strtoupper ( $text ) ;
+		$text = explode ( ":" , $text , 2 ) ;
+		if ( count ( $text ) != 2 ) return 0 ;
+		$text = trim ( array_shift ( $text ) ) ;
+		if ( $text == "" ) return 0 ;		
+		$ns = 0 ;
+		
+		if ( strlen ( $text ) < 4 ) return -9 ; # Hackish, for interlanguage link
+		
+		# Horrible manual hack, for now
+		if ( $text == "IMAGE" || $text == "BILD" ) $ns = 6 ;
+		
+		return $ns ;
+	}
+	
 	function get_wiki_text ( $title , $do_cache = false ) {
 		global $xmlg ;
 		$title = trim ( $title ) ;

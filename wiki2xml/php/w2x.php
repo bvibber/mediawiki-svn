@@ -18,21 +18,18 @@ function microtime_float()
 
 ## MAIN PROGRAM
 
-if ( isset ( $_POST['doit'] ) ) {
+if ( isset ( $_POST['doit'] ) ) { # Process
 	$wikitext = stripslashes ( $_POST['text'] ) ;
 	
 	$content_provider = new ContentProviderHTTP ;
 	$xmlg["site_base_url"] = $_POST['site'] ;
 
-	header('Content-type: text/xml; charset=utf-8');
-	print "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
-
 	$t = microtime_float() ;
-	$text = "" ;
+	$xml = "" ;
 	$article_open = '<article>' ;
 	if ( $_POST['whatsthis'] == "wikitext" ) {
 		$p = new wiki2xml ;
-		$text = $article_open . $p->parse ( $wikitext ) . "</article>" ;
+		$xml = $article_open . $p->parse ( $wikitext ) . "</article>" ;
 	} else {
 		$t = microtime_float() ;
 		$articles = explode ( "\n" , $wikitext ) ;
@@ -42,16 +39,30 @@ if ( isset ( $_POST['doit'] ) ) {
 			$p = new wiki2xml ;
 			if ( !isset ( $_POST['resolvetemplates'] ) ) $p->auto_fill_templates = false ;
 			$wikitext = $content_provider->get_wiki_text ( $a ) ;
-			$text .= $article_open . $p->parse ( $wikitext ) . "</article>" ;
+			$xml .= $article_open . $p->parse ( $wikitext ) . "</article>" ;
 		}
 	}	
 	$t = microtime_float() - $t ;
+	
+	# Output format
+	$format = $_POST['output_format'] ;
+	if ( $format == "xml" ) {
+		header('Content-type: text/xml; charset=utf-8');
+		print "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
+		print "<articles xmlns:xhtml=\" \" rendertime='{$t} sec'>{$xml}</articles>" ;
+	} else if ( $format == "text" ) {
+		require_once ( "./xml2txt.php" ) ;
 
-	print "<articles xmlns:xhtml=\" \" rendertime='{$t} sec'>{$text}</articles>" ;
-} else if ( isset ( $_GET['showsource'] ) ) {
-	header('Content-type: text/plain; charset=utf-8');
-	print file_get_contents ( "wiki2xml.php" ) ;
-} else {
+		$x2t = new xml2php ;
+		$tree = $x2t->scanString ( $xml ) ;
+		$out = $tree->parse ( $tree ) ;
+
+		$out = str_replace ( "\n" , "<br/>" , $out ) ;
+		header('Content-type: text/html; charset=utf-8');
+		print $out ;
+	}
+	
+} else { # Show the form
 	header('Content-type: text/html; charset=utf-8');
 	print "
 <html><head></head><body><form method='post'>
@@ -70,9 +81,15 @@ This is
 <INPUT type='radio' name='whatsthis' value='wikitext'>raw wikitext 
 <INPUT checked type='radio' name='whatsthis' value='articlelist'>a list of articles
 <br/>
+
 Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/>/index.php<br/>
 <input type='checkbox' name='resolvetemplates' value='1' checked>Automatically resolve templates</input><br/>
-<input type='submit' name='doit' value='Convert'/>
+
+Output : 
+<INPUT checked type='radio' name='output_format' value='xml'>XML 
+<INPUT type='radio' name='output_format' value='text'>Plain text 
+
+<br/><input type='submit' name='doit' value='Convert'/>
 </form></body></html>" ;
 }
 
