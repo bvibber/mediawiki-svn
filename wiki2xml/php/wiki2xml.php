@@ -941,7 +941,7 @@ class wiki2xml
 		$a = $b + 1 ;
 		return $ret ;
 		}
-
+	
 	function p_table_element ( &$a , &$xml , $newline = false )
 		{
 		$b = $a ;
@@ -955,6 +955,7 @@ class wiki2xml
 			$attrs = $this->scanattributes ( $b ) ;
 			if ( $this->tables[count($this->tables)-1]->is_row_open ) $x .= "</tablerow>" ;
 			else $this->tables[count($this->tables)-1]->is_row_open = true ;
+			$this->tables[count($this->tables)-1]->had_row = true ;
 			$x .= "<tablerow>{$attrs}" ;
 			}
 		else if ( $newline && $this->nextis ( $b , "|+" ) ) # Table caption
@@ -973,14 +974,17 @@ class wiki2xml
 			else if ( $c == '!' ) $tag = "tablehead" ;
 			else { $xml .= "<error function='p_table_element'/>" ; return false ; } # This would indeed be strange!
 			$attrs = $this->tryfindparams ( $b ) ;
+			$this->skipblanks ( $b ) ;
 			if ( !$this->p_restofcell ( $b , $x ) ) return false ;
 			
 			if ( substr ( $x , 0 , 1 ) == "|" ) # Crude fix to compensate for MediaWiki "tolerant" parsing
 				$x = substr ( $x , 1 ) ;
 			$x = "<{$tag}>{$attrs}{$x}</{$tag}>" ;
+			$this->tables[count($this->tables)-1]->had_cell = true ;
 			if ( !$lt->is_row_open )
 				{
 				$this->tables[count($this->tables)-1]->is_row_open = true ;
+				$this->tables[count($this->tables)-1]->had_row = true ;
 				$x = "<tablerow>{$x}" ;
 				}
 			}
@@ -1040,6 +1044,8 @@ class wiki2xml
 		if ( count ( $this->tables ) == 0 ) return false ;
 		$b = $a ;
 		if ( !$this->nextis ( $b , "|}" ) ) return false ;
+		if ( !$this->tables[count($this->tables)-1]->had_row ) return false ; # Table but no row was used
+		if ( !$this->tables[count($this->tables)-1]->had_cell ) return false ; # Table but no cell was used
 		$x = "" ;
 		if ( $this->tables[count($this->tables)-1]->is_row_open ) $x .= "</tablerow>" ;
 		unset ( $this->tables[count($this->tables)-1] ) ;
@@ -1056,15 +1062,36 @@ class wiki2xml
 		if ( !$this->nextis ( $b , "{|" ) ) return false ;
 		
 		$this->is_row_open = false ;
+
+		# Add table to stack
+		$nt->is_row_open = false ;
+		$nt->had_row = false ;
+		$nt->had_cell = false ;
+		$this->tables[count($this->tables)] = $nt ;
 		
 		$x = "<table>" ;
 		$x .= $this->scanattributes ( $b ) ;
 		while ( $this->nextis ( $b , "\n" ) ) ;
 		
-		# Add table to stack
-		$nt->is_row_open = false ;
-		$this->tables[count($this->tables)] = $nt ;
-				
+		while ( !$this->p_table_close ( $b , $x ) )
+			{
+			if ( $b >= $this->wl )
+				{
+				unset ( $this->tables[count($this->tables)-1] ) ;
+				return false ;
+				}
+			if ( $this->p_table_open ( $b , $x ) ) continue ;
+			if ( !$this->p_table_element ( $b , $x , true ) ) # No |} and no table element
+				{
+				unset ( $this->tables[count($this->tables)-1] ) ;
+				return false ;
+				}
+			}
+		$a = $b ;
+		$xml .= $x ;
+		return true ;
+/*		
+		
 		# Try the rest of the article as another article
 		$x2 = "" ;
 		$tcount = count($this->tables) ;
@@ -1077,7 +1104,7 @@ class wiki2xml
 		
 		$a = $b ;
 		$xml .= $x . $x2 ;
-		return true ;
+		return true ;*/
 		}
 	
 	#-----------------------------------
