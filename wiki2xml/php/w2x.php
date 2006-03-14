@@ -7,6 +7,7 @@ include ( "default.php" ) ; # Which will include local.php, if available
 include ( "content_provider.php" ) ;
 
 @set_time_limit ( 0 ) ; # No time limit
+ini_set('user_agent','MSIE 4\.0b2;'); # Fake user agent
 
 ## TIMER FUNCTION
 

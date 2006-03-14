@@ -957,6 +957,8 @@ class wiki2xml
 			else $this->tables[count($this->tables)-1]->is_row_open = true ;
 			$this->tables[count($this->tables)-1]->had_row = true ;
 			$x .= "<tablerow>{$attrs}" ;
+			$y = "" ;
+			$this->p_restofcell ( $b , $y ) ;
 			}
 		else if ( $newline && $this->nextis ( $b , "|+" ) ) # Table caption
 			{
@@ -970,9 +972,9 @@ class wiki2xml
 			{
 			$c = $this->w[$b] ;
 			$b++ ;
+			$tag = "error" ;
 			if ( $c == '|' ) $tag = "tablecell" ;
 			else if ( $c == '!' ) $tag = "tablehead" ;
-			else { $xml .= "<error function='p_table_element'/>" ; return false ; } # This would indeed be strange!
 			$attrs = $this->tryfindparams ( $b ) ;
 			$this->skipblanks ( $b ) ;
 			if ( !$this->p_restofcell ( $b , $x ) ) return false ;
@@ -1090,21 +1092,6 @@ class wiki2xml
 		$a = $b ;
 		$xml .= $x ;
 		return true ;
-/*		
-		
-		# Try the rest of the article as another article
-		$x2 = "" ;
-		$tcount = count($this->tables) ;
-		if ( !$this->p_article ( $b , $x2 ) || count($this->tables) >= $tcount )
-			{
-			unset ( $this->tables[count($this->tables)-1] ) ;
-			return false ;
-			}
-		$x2 = $this->strip_single_paragraph ( $x2 ) ;
-		
-		$a = $b ;
-		$xml .= $x . $x2 ;
-		return true ;*/
 		}
 	
 	#-----------------------------------

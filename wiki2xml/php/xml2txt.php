@@ -83,7 +83,7 @@ class element {
 				} else if ( $ns == -9 ) { # Adding newline to interlanguage link
 					$link = "\m" . $link ;
 				} else if ( $ns == -8 ) { # Adding newline to category link
-					if ( $link_text == "!" ) $link = "" ;
+					if ( $link_text == "!" || $link_text == '*' ) $link = "" ;
 					else $link = " ({$link})" ;
 					$link = "\m" . $this->link_target . $link . "\n" ;
 				} else {
@@ -94,8 +94,10 @@ class element {
 			$ret .= $link ;
 		} else if ( $tag == "LIST" ) {
 			$type = strtolower ( $this->attrs['TYPE'] ) ;
+			$k = '*' ; # Dummy
 			if ( $type == 'bullet' ) $k = "*" ;
-			if ( $type == 'numbered' ) $k = "1" ;
+			else if ( $type == 'numbered' ) $k = "1" ;
+			else if ( $type == 'ident' ) $k = ">" ;
 			array_push ( $tree->list , $k ) ;
 			$ret .= $this->sub_parse ( $tree ) ;
 			array_pop ( $tree->list ) ;
@@ -103,6 +105,7 @@ class element {
 			$r = "" ;
 			foreach ( $tree->list AS $k => $l ) {
 				if ( $l == '*' ) $r .= '-' ;
+				else if ( $l == '>' ) $r .= '<dd/>' ;
 				else {
 					$r .= $l . "." ;
 				}
@@ -111,14 +114,15 @@ class element {
 			$ret .= $this->sub_parse ( $tree ) ;
 			if ( $tag == "LISTITEM" ) {
 				$x = array_pop ( $tree->list ) ;
-				if ( $x == "*" ) array_push ( $tree->list , $x ) ; # Keep bullet
+				if ( $x == "*" || $x == ">" ) array_push ( $tree->list , $x ) ; # Keep bullet
 				else array_push ( $tree->list , $x + 1 ) ; # Increase last counter
 			}
 		} else {
 			$ret .= $this->sub_parse ( $tree ) ;
-			if ( $tag == "XHTML:B" || $tag == "XHTML:STRONG" || $tag == "BOLD" ) $ret = $tree->bold . $ret . $tree->bold ;
+			if ( $tag == "TABLEHEAD" || $tag == "XHTML:B" || $tag == "XHTML:STRONG" || $tag == "BOLD" ) $ret = $tree->bold . $ret . $tree->bold ;
 			else if ( $tag == "XHTML:I" || $tag == "XHTML:EM" || $tag == "ITALICS" ) $ret = $tree->italics . $ret . $tree->italics ;
 			else if ( $tag == "XHTML:U" ) $ret = $tree->underline . $ret . $tree->underline ;
+			if ( $tag == "TABLEHEAD" ) $ret = "\n" . $ret ;
 		}
 
 		$tree->iter-- ; # Unnecessary, since not really used
