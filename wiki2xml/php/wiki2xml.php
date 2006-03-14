@@ -229,10 +229,11 @@ class wiki2xml
 			$target = array_shift ( @explode ( "<" , $target , 2 ) ) ;
 			$between = $content_provider->get_template_text ( $target ) ;
 			
+			# Replacing <noinclude> stuff
+			$between = preg_replace( '?<noinclude>.*</noinclude>?msU', '', $between);
+			
 			# Replacing template variables. ATTENTION: Template variables within <nowiki> sections of templates will be replaced as well!
-			foreach ( $variables AS $vk => $vv ) {
-				$between = str_replace ( '{{{'.$vk.'}}}' , $vv , $between ) ;
-			}
+			$this->replace_template_variables ( $between , $variables ) ;
 			
 			# Change source (!)
 			$w1 = substr ( $this->w , 0 , $a ) ;
@@ -245,6 +246,27 @@ class wiki2xml
 		}
 		return true ;
 		}
+	
+	function replace_template_variables ( &$text , &$variables ) {
+		for ( $a = 0 ; $a+3 < strlen ( $text ) ; $a++ ) {
+			if ( $text[$a] != '{' ) continue ;
+			if ( $text[$a+1] != '{' || $text[$a+2] != '{' || $text[$a+3] == '{' ) continue ;
+			$arr = explode ( "}}}" , substr ( $text , $a+3 ) , 2 ) ;
+			if ( count ( $arr ) != 2 ) continue ;
+			$s = array_shift ( $arr ) ;
+			$rest = array_shift ( $arr ) ;
+			
+			# Determine variable and default value, and replace
+			$v = explode ( "|" , $s , 2 ) ;
+			if ( count ( $v ) == 1 ) $v[] = "" ;
+			$k = array_shift ( $v ) ;
+			$v = array_pop ( $v ) ;
+			if ( isset ( $variables[$k] ) ) $r = $variables[$k] ;
+			else $r = $v ;
+			$text = substr ( $text , 0 , $a ) . $r . $rest ;
+			$a += strlen ( $r ) ;
+		}
+	}
 		
 	function p_template_variable ( &$a , &$xml )
 		{

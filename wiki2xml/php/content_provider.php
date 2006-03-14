@@ -38,6 +38,7 @@ class ContentProviderHTTP extends ContentProvider {
 	function get_wiki_text ( $title , $do_cache = false ) {
 		global $xmlg ;
 		$title = trim ( $title ) ;
+		print "Retrieving " . $title . "<br/>" ; flush () ;
 		if ( $title == "" ) return "" ; # Just in case...
 		if ( isset ( $this->article_cache[$title] ) ) # Already in the cache
 			return $this->article_cache[$title] ;
