@@ -229,8 +229,10 @@ class wiki2xml
 			$target = array_shift ( @explode ( "<" , $target , 2 ) ) ;
 			$between = $content_provider->get_template_text ( $target ) ;
 			
-			# Replacing <noinclude> stuff
+			# Removing <noinclude> stuff
 			$between = preg_replace( '?<noinclude>.*</noinclude>?msU', '', $between);
+			#$between = str_replace ( "<include>" , "" , $between ) ;
+			#$between = str_replace ( "</include>" , "" , $between ) ;
 			
 			# Replacing template variables. ATTENTION: Template variables within <nowiki> sections of templates will be replaced as well!
 			$this->replace_template_variables ( $between , $variables ) ;
@@ -251,20 +253,34 @@ class wiki2xml
 		for ( $a = 0 ; $a+3 < strlen ( $text ) ; $a++ ) {
 			if ( $text[$a] != '{' ) continue ;
 			if ( $text[$a+1] != '{' || $text[$a+2] != '{' || $text[$a+3] == '{' ) continue ;
-			$arr = explode ( "}}}" , substr ( $text , $a+3 ) , 2 ) ;
-			if ( count ( $arr ) != 2 ) continue ;
-			$s = array_shift ( $arr ) ;
-			$rest = array_shift ( $arr ) ;
 			
-			# Determine variable and default value, and replace
-			$v = explode ( "|" , $s , 2 ) ;
-			if ( count ( $v ) == 1 ) $v[] = "" ;
-			$k = array_shift ( $v ) ;
-			$v = array_pop ( $v ) ;
-			if ( isset ( $variables[$k] ) ) $r = $variables[$k] ;
-			else $r = $v ;
-			$text = substr ( $text , 0 , $a ) . $r . $rest ;
-			$a += strlen ( $r ) ;
+			for ( $b = $a ; $b < strlen ( $text ) AND $text[$b] != '|' AND substr ( $text , $b , 3 ) != '}}}' ; $b++ ) ;
+			if ( $b == strlen ( $text ) ) return ; # No more drama
+			
+			$left = substr ( $text , 0 , $a ) ;
+			$key = trim ( substr ( $text , $a + 3 , $b - $a - 3 ) ) ;
+			$value = "" ;
+			if ( $text[$b] == '|' ) {
+				$right = substr ( $text , $b + 1 ) ;
+				$this->replace_template_variables ( $right , $variables ) ;
+				for ( $b = 0 ; $b < strlen ( $right ) AND substr ( $right , $b , 3 ) != '}}}' ; $b++ ) ;
+				if ( $b == strlen ( $right ) ) continue ; # Wasn't a variable - no "}}}"
+
+				if ( isset ( $variables[$key] ) )
+					$value = $variables[$key] ;
+				else
+					$value = substr ( $right , 0 , $b ) ;
+				
+				$right = substr ( $right , $b + 3 ) ;
+			} else {
+				$right = substr ( $text , $b + 3 ) ;
+				$this->replace_template_variables ( $right , $variables ) ;
+				if ( isset ( $variables[$key] ) )
+					$value = $variables[$key] ;
+			}
+			
+			$text = $left . $value . $right ;
+			return ; # Test of $text was replaced recursively
 		}
 	}
 		

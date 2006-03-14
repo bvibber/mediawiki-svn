@@ -38,7 +38,7 @@ class ContentProviderHTTP extends ContentProvider {
 	function get_wiki_text ( $title , $do_cache = false ) {
 		global $xmlg ;
 		$title = trim ( $title ) ;
-		print "Retrieving " . $title . "<br/>" ; flush () ;
+#		print "Retrieving " . $title . "<br/>" ; flush () ;
 		if ( $title == "" ) return "" ; # Just in case...
 		if ( isset ( $this->article_cache[$title] ) ) # Already in the cache
 			return $this->article_cache[$title] ;
@@ -49,6 +49,10 @@ class ContentProviderHTTP extends ContentProvider {
 		$url = "http://" . $xmlg["site_base_url"] . "/index.php?action=raw&title=" . urlencode ( $title ) ;
 				
 		$s = @file_get_contents ( $url ) ;
+		
+		$comp = '<!DOCTYPE html PUBLIC "-//W3C//DTD' ;
+		if ( substr ( $s , 0 , strlen ( $comp ) ) == $comp ) $s = "" ; # Catching wrong title error
+		
 		if ( $do_cache ) $this->article_cache[$title] = $s ;
 		return $s ;
 	}
