@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This class converts an XML string to a tree structure
+ * based on the "element" class that must be defined outside
+ * prior to including this file
+*/
 
 $ancStack = array (); // the stack with ancestral elements
 
@@ -30,9 +35,8 @@ function wgXMLendElement($parser, $name) {
 /** @todo document */
 function wgXMLcharacterData($parser, $data) {
 	global $ancStack;
-	$data = trim($data); // Don't add blank lines, they're no use...
 	// add to parent if parent exists
-	if ($ancStack && $data != "") {
+	if ($ancStack && trim ( $data ) != "") {
 		array_push($ancStack[count($ancStack) - 1]->children, $data);
 	}
 }

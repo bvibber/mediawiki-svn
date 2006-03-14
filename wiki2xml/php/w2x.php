@@ -55,7 +55,15 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 
 		$x2t = new xml2php ;
 		$tree = $x2t->scanString ( $xml ) ;
-		$out = $tree->parse ( $tree ) ;
+		if ( isset ( $_POST['plaintext_markup'] ) ) {
+			$tree->bold = '*' ;
+			$tree->italics = '/' ;
+			$tree->underline = '_' ;
+		}
+		if ( isset ( $_POST['plaintext_prelink'] ) ) {
+			$tree->pre_link = "&rarr;" ;
+		}
+		$out = trim ( $tree->parse ( $tree ) ) ;
 
 		$out = str_replace ( "\n" , "<br/>" , $out ) ;
 		header('Content-type: text/html; charset=utf-8');
@@ -88,6 +96,10 @@ Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/
 Output : 
 <INPUT checked type='radio' name='output_format' value='xml'>XML 
 <INPUT type='radio' name='output_format' value='text'>Plain text 
+
+<br/>Plain text :
+ <input type='checkbox' name='plaintext_markup' value='1' checked>Use *_/ markup</input>
+ <input type='checkbox' name='plaintext_prelink' value='1' checked>Put &rarr; before internal links</input>
 
 <br/><input type='submit' name='doit' value='Convert'/>
 </form></body></html>" ;

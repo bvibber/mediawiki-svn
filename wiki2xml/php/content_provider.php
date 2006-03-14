@@ -4,14 +4,12 @@
 class ContentProvider {
 	function get_wiki_text ( $title , $do_cache = false ) {} # dummy
 	function get_template_text ( $title ) {} # dummy
-}
 
-
-# Access through HTTP protocol
-class ContentProviderHTTP extends ContentProvider {
-	var $article_cache = array () ;
-	var $first_title = "" ;
-	
+	/**
+	 * Gets the numeric namespace
+	 * "-8" = category link
+	 * "-9" = interlanguage link
+	 */
 	function get_namespace_id ( $text ) {
 		$text = strtoupper ( $text ) ;
 		$text = explode ( ":" , $text , 2 ) ;
@@ -20,6 +18,7 @@ class ContentProviderHTTP extends ContentProvider {
 		if ( $text == "" ) return 0 ;		
 		$ns = 0 ;
 		
+		if ( $text == "CATEGORY" || $text == "KATEGORIE" ) return -8 ; # Hackish, for category link
 		if ( strlen ( $text ) < 4 ) return -9 ; # Hackish, for interlanguage link
 		
 		# Horrible manual hack, for now
@@ -27,6 +26,14 @@ class ContentProviderHTTP extends ContentProvider {
 		
 		return $ns ;
 	}
+	
+}
+
+
+# Access through HTTP protocol
+class ContentProviderHTTP extends ContentProvider {
+	var $article_cache = array () ;
+	var $first_title = "" ;
 	
 	function get_wiki_text ( $title , $do_cache = false ) {
 		global $xmlg ;
