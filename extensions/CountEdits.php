@@ -17,6 +17,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efCountEdits';
 	$wgExtensionCredits['other'][] = array( 'name' => 'Count edits', 'description' => 'a simple special page to count user edits', 'author' => 'Rob Church' );
+	$wgCountEditsTopTen = true;
 
 	function efCountEdits() {
 		global $wgMessageCache;
@@ -31,6 +32,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgMessageCache->addMessage( 'countedits-userpage', 'User page' );
 		$wgMessageCache->addMessage( 'countedits-usertalk', 'Talk page' );
 		$wgMessageCache->addMessage( 'countedits-contribs', 'Contributions' );
+		$wgMessageCache->addMessage( 'countedits-mostactive', 'Top ten contributors' );
 		
 		SpecialPage::addPage( new CountEdits() );
 		return( true );
@@ -62,6 +64,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 					}
 				}
 			}
+			$this->showTopTen( $wgOut );
 			return( true );
 		}
 		
@@ -111,6 +114,38 @@ if( defined( 'MEDIAWIKI' ) ) {
 			foreach( $this->MakeUserLinks( $this->target ) as $link ) { $wgOut->addHTML( '<li>' . $link . '</li>' ); }
 			$wgOut->addHTML( '</ul>' );
 			$wgOut->addHTML( '<p>' . wfMsgHtml( 'countedits-warning' ) . '</p>' );
+		}
+		
+		function showTopTen( &$out ) {
+			global $wgCountEditsTopTen;
+			if( $wgCountEditsTopTen ) {
+				$out->addHTML( '<h2>' . wfMsgHtml( 'countedits-mostactive' ) . '</h2>' );
+				$out->addHTML( $this->getTopTen() );
+			}
+		}
+		
+		function getTopTen() {
+			global $wgUser, $wgLang;
+			$skin = $wgUser->getSkin();
+			$out  = '<ul>';
+			$dbr  =& wfGetDB( DB_SLAVE );
+			$rev  = $dbr->tableName( 'revision' );
+			# We fetch 11, even though we want 10, because we *don't* want MediaWiki default (and we might get it)
+			$sql  = "SELECT COUNT(*) AS count, rev_user_text FROM $rev GROUP BY rev_user_text ORDER BY count DESC LIMIT 0,11";
+			$res  = $dbr->query( $sql );
+			while( $row = $dbr->fetchObject( $res ) ) {
+				if( $row->rev_user_text != 'MediaWiki default' ) {
+					$upt  = Title::makeTitle( NS_USER, $row->rev_user_text );
+					$cpt  = Title::makeTitle( NS_SPECIAL, 'Contributions/' . $row->rev_user_text );
+					$upl  = $skin->makeLinkObj( $upt, $upt->getText() );
+					$tpl  = $skin->makeLinkObj( $upt->getTalkPage(), $wgLang->getNsText( NS_TALK ) );
+					$cpl  = $skin->makeKnownLinkObj( $cpt, wfMsgHtml( 'contribslink' ) );
+					$uec  = $row->count;
+					$out .= "<li>$upl ($tpl|$cpl) [$uec]</li>";
+				}
+			}
+			$out .= '</ul>';
+			return( $out == '<ul></ul>' ? '' : $out );
 		}
 
 	}
