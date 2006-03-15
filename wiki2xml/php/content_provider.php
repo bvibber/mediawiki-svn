@@ -2,6 +2,8 @@
 
 # Abstract base class
 class ContentProvider {
+	var $load_time = 0 ; # Time to load text and templates, to judge actual parsing speed
+	
 	function get_wiki_text ( $title , $do_cache = false ) {} # dummy
 	function get_template_text ( $title ) {} # dummy
 
@@ -38,7 +40,6 @@ class ContentProviderHTTP extends ContentProvider {
 	function get_wiki_text ( $title , $do_cache = false ) {
 		global $xmlg ;
 		$title = trim ( $title ) ;
-#		print "Retrieving " . $title . "<br/>" ; flush () ;
 		if ( $title == "" ) return "" ; # Just in case...
 		if ( isset ( $this->article_cache[$title] ) ) # Already in the cache
 			return $this->article_cache[$title] ;
@@ -47,8 +48,12 @@ class ContentProviderHTTP extends ContentProvider {
 		
 		# Retrieve it
 		$url = "http://" . $xmlg["site_base_url"] . "/index.php?action=raw&title=" . urlencode ( $title ) ;
-				
+		
+#		print "Retrieving " . $title . "<br/>" ; flush () ;
+		$t1 = microtime_float() ;
 		$s = @file_get_contents ( $url ) ;
+		$this->load_time += microtime_float() - $t1 ;
+#		print "Retrieved " . $title . " in {$t1} sec.<br/>" ; flush () ;
 		
 		$comp = '<!DOCTYPE html PUBLIC "-//W3C//DTD' ;
 		if ( substr ( $s , 0 , strlen ( $comp ) ) == $comp ) $s = "" ; # Catching wrong title error

@@ -44,13 +44,16 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		}
 	}	
 	$t = microtime_float() - $t ;
+	$tt = $t ;
+	$lt = $content_provider->load_time ;
+	$t -= $lt ;
 	
 	# Output format
 	$format = $_POST['output_format'] ;
 	if ( $format == "xml" ) {
 		header('Content-type: text/xml; charset=utf-8');
 		print "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
-		print "<articles xmlns:xhtml=\" \" rendertime='{$t} sec'>{$xml}</articles>" ;
+		print "<articles xmlns:xhtml=\" \" loadtime='{$lt} sec' rendertime='{$t} sec' totaltime='{$tt} sec'>{$xml}</articles>" ;
 	} else if ( $format == "text" ) {
 		require_once ( "./xml2txt.php" ) ;
 

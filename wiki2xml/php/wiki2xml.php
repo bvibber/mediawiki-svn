@@ -519,8 +519,8 @@ class wiki2xml
 	function p_preline ( &$a , &$xml )
 		{
 		if ( $a >= $this->wl ) return false ; # Already at the end of the text
-		$c = $this->w[$a] ;
-		if ( $c != ' ' ) return false ; # Not a preline
+		if ( $this->w[$a]!= ' ' ) return false ; # Not a preline
+
 		$this->bold_italics = "" ;
 		$this->skipblanks ( $a ) ;
 		return $this->once ( $a , $xml , "restofline" ) ;
@@ -946,14 +946,22 @@ class wiki2xml
 		if ( $c == "{" && $this->nextis ( $a , "{|" , false ) )
 			return $this->p_table_open ( $a , $xml ) ;
 		
-		if ( $c != "|" && $c != "!" ) return false ; # No possible table markup
+#		print "p_table for " . htmlentities ( substr ( $this->w , $a ) ) . "<br/><br/>" ; flush () ;
 		
 		if ( count ( $this->tables ) == 0 ) return false ; # No tables open, nothing to do
 		
-		if ( $c == "|" && $this->nextis ( $a , "|}" , false ) ) return $this->p_table_close ( $a , $xml ) ;
+		# Compatability for table cell lines starting with blanks; *evil MediaWiki parser!*
+		$b = $a ;
+		$this->skipblanks ( $b ) ;
+		if ( $b >= $this->wl ) return false ;
+		$c = $this->w[$b] ;
+		
+		if ( $c != "|" && $c != "!" ) return false ; # No possible table markup
+		
+		if ( $c == "|" && $this->nextis ( $b , "|}" , false ) ) return $this->p_table_close ( $b , $xml ) ;
 		
 		#if ( $this->nextis ( $a , "|" , false ) || $this->nextis ( $a , "!" , false ) )
-		return $this->p_table_element ( $a , $xml , true ) ;
+		return $this->p_table_element ( $b , $xml , true ) ;
 		}
 		
 	function lasttable ()
@@ -982,9 +990,11 @@ class wiki2xml
 	
 	function p_table_element ( &$a , &$xml , $newline = false )
 		{
+#		print "p_table_element for " . htmlentities ( substr ( $this->w , $a ) ) . "<br/><br/>" ; flush () ;
 		$b = $a ;
+		$this->skipblanks ( $b ) ; # Compatability for table cells starting with blanks; *evil MediaWiki parser!*
+		if ( $b >= $this->wl ) return false ; # End of the game
 		$x = "" ;
-		$lt = $this->lasttable() ;
 		if ( $newline && $this->nextis ( $b , "|-" ) ) # Table row
 			{
 			$this->skipblanks ( $b , "-" ) ;
@@ -1021,7 +1031,7 @@ class wiki2xml
 				$x = substr ( $x , 1 ) ;
 			$x = "<{$tag}>{$attrs}{$x}</{$tag}>" ;
 			$this->tables[count($this->tables)-1]->had_cell = true ;
-			if ( !$lt->is_row_open )
+			if ( !$this->tables[count($this->tables)-1]->is_row_open )
 				{
 				$this->tables[count($this->tables)-1]->is_row_open = true ;
 				$this->tables[count($this->tables)-1]->had_row = true ;
@@ -1053,13 +1063,15 @@ class wiki2xml
 			
 			if ( ( $c == "\n" && $this->nextis ( $b , "\n|" , false ) ) OR 
 				 ( $c == "\n" && $this->nextis ( $b , "\n!" , false ) ) OR
+				 ( $c == "\n" && $this->nextis ( $b , "\n |" , false ) ) OR # MediaWiki parser madness compensator
+				 ( $c == "\n" && $this->nextis ( $b , "\n !" , false ) ) OR # MediaWiki parser madness compensator
 				 ( $c == "|" && $sameline && $this->nextis ( $b , "||" , false ) ) OR
 				 ( $c == "!" && $sameline && $this->nextis ( $b , "!!" , false ) ) )
 				{
 				if ( $itables == 0 ) break ;
 				$b += 2 ;
 				}
-			
+
 			if ( $c == "[" && $this->once ( $b , $x , "internal_link" ) ) continue ;
 			if ( $c == "{" && $this->once ( $b , $x , "template_variable" ) ) continue ;
 			if ( $c == "{" && $this->once ( $b , $x , "template" ) ) continue ;
