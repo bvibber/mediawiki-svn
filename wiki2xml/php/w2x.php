@@ -30,7 +30,7 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	$article_open = '<article>' ;
 	if ( $_POST['whatsthis'] == "wikitext" ) {
 		$p = new wiki2xml ;
-		$xml = $article_open . $p->parse ( $wikitext ) . "</article>" ;
+		$xml = '<article>' . $p->parse ( $wikitext ) . "</article>" ;
 	} else {
 		$t = microtime_float() ;
 		$articles = explode ( "\n" , $wikitext ) ;
@@ -40,20 +40,23 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 			$p = new wiki2xml ;
 			if ( !isset ( $_POST['resolvetemplates'] ) ) $p->auto_fill_templates = false ;
 			$wikitext = $content_provider->get_wiki_text ( $a ) ;
-			$xml .= $article_open . $p->parse ( $wikitext ) . "</article>" ;
+			$title = urlencode ( str_replace ( "_" , " " , $a ) ) ;
+			$xml .= "<article title=\"{$title}\">" . $p->parse ( $wikitext ) . "</article>" ;
 		}
-	}	
+	}
 	$t = microtime_float() - $t ;
 	$tt = $t ;
 	$lt = $content_provider->load_time ;
 	$t -= $lt ;
+	
+	$xml = "<articles xmlns:xhtml=\" \" loadtime='{$lt} sec' rendertime='{$t} sec' totaltime='{$tt} sec'>\n{$xml}\n</articles>" ;
 	
 	# Output format
 	$format = $_POST['output_format'] ;
 	if ( $format == "xml" ) {
 		header('Content-type: text/xml; charset=utf-8');
 		print "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
-		print "<articles xmlns:xhtml=\" \" loadtime='{$lt} sec' rendertime='{$t} sec' totaltime='{$tt} sec'>{$xml}</articles>" ;
+		print $xml ;
 	} else if ( $format == "text" ) {
 		require_once ( "./xml2txt.php" ) ;
 
@@ -72,6 +75,20 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		$out = str_replace ( "\n" , "<br/>" , $out ) ;
 		header('Content-type: text/html; charset=utf-8');
 		print $out ;
+	} else if ( $format == "docbook_xml" ) {
+		require_once ( "./xml2docbook_xml.php" ) ;
+
+		$x2t = new xml2php ;
+		$tree = $x2t->scanString ( $xml ) ;
+		$out = trim ( $tree->parse ( $tree ) ) ;
+
+/*		header('Content-type: text/xml; charset=utf-8');
+		print "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
+		print '<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">' ;
+		print $out ;
+		*/
+		header('Content-type: text/html; charset=utf-8');
+		print str_replace ( "\n" , "<br/>" , htmlentities ( $out ) ) ;
 	}
 	
 } else { # Show the form
@@ -100,6 +117,7 @@ Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/
 Output : 
 <INPUT checked type='radio' name='output_format' value='xml'>XML 
 <INPUT type='radio' name='output_format' value='text'>Plain text 
+<INPUT type='radio' name='output_format' value='docbook_xml'>DocBook XML 
 
 <br/>Plain text :
  <input type='checkbox' name='plaintext_markup' value='1' checked>Use *_/ markup</input>
