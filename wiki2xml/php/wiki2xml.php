@@ -396,7 +396,7 @@ class wiki2xml
 			$b-- ;
 			}
 		$a = $b ;
-		if ( $mark ) $xml .= "<link type='external' url='{$x}'/>" ;
+		if ( $mark ) $xml .= "<link type='external' href='{$x}'/>" ;
 		else $xml .= $x ;
 		return true ;
 		}
@@ -767,13 +767,14 @@ class wiki2xml
 
 		# Parsing arrtibutes
 		$ob = $b ;
-		while ( $this->w[$b] != '>' && $this->w[$b] != '/' ) $b++ ;
+		while ( $b < $this->wl && $this->w[$b] != '>' && $this->w[$b] != '/' ) $b++ ;
 		$attrs = $this->preparse_attributes ( substr ( $this->w , $ob , $b - $ob + 1 ) ) ;
 		
 		# Is self closing?
 		if ( $this->w[$b] == '/' )
 			{
 			$b++ ;
+			$this->skipblanks ( $b ) ;
 			$selfclosing = true ;
 			}
 		
@@ -817,14 +818,14 @@ class wiki2xml
 		$c = 0 ;
 			
 		# Seeking attributes
-		while ( $np->w[$c] != '>' )
+		while ( $np->w[$c] != '>' && $np->w[$c] != '/' )
 			{
 			$attr = "" ;
 			if ( !$np->p_html_attr ( $c , $attr ) ) break ;
 			if ( $attr != "" ) $attrs[] = $attr ;
 			$np->skipblanks ( $c ) ;
 			}		
-		if ( substr ( $np->w , $c ) != ">" ) return "" ;
+		if ( substr ( $np->w , $c ) != ">" AND substr ( $np->w , $c ) != "/" ) return array() ;
 
 		return $attrs ;
 		}
