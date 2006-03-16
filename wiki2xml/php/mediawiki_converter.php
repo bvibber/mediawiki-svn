@@ -4,8 +4,29 @@ require_once ( "filter_named_entities.php" ) ; # PHP4 and early PHP5 bug workaro
 require_once ( "wiki2xml.php" ) ;
 require_once ( "content_provider.php" ) ;
 
+# A funtion to remove directories and subdirectories
+# Modified from php.net
+function SureRemoveDir($dir) {
+   if(!$dh = @opendir($dir)) return;
+   while (($obj = readdir($dh))) {
+     if($obj=='.' || $obj=='..') continue;
+     if (!@unlink($dir.'/'.$obj)) {
+         SureRemoveDir($dir.'/'.$obj);
+     }
+   }
+   @closedir ( $dh ) ;
+   @rmdir($dir) ;
+}
+
+/**
+ * The main converter class
+ */
 class MediaWikiConverter {
-	function article2xml ( $title , &$text , $params ) {
+
+	/**
+	 * Converts a single article in MediaWiki format to XML
+	 */
+	function article2xml ( $title , &$text , $params = array () ) {
 		$title = urlencode ( str_replace ( "_" , " " , $title ) ) ;
 		$p = new wiki2xml ;
 		$p->auto_fill_templates = $params['resolvetemplates'] ;
@@ -16,7 +37,10 @@ class MediaWikiConverter {
 		return $xml ;
 	}
 	
-	function articles2text ( &$xml , $params ) {
+	/**
+	 * Converts XML to plain text
+	 */
+	function articles2text ( &$xml , $params = array () ) {
 		require_once ( "./xml2txt.php" ) ;
 
 		$x2t = new xml2php ;
@@ -32,12 +56,16 @@ class MediaWikiConverter {
 		return trim ( $tree->parse ( $tree ) ) ;
 	}
 	
-	function articles2docbook_xml ( &$xml , $xmlg ) {
+	/**
+	 * Converts XML to DocBook XML
+	 */
+	function articles2docbook_xml ( &$xml , $params = array () ) {
 		require_once ( "./xml2docbook_xml.php" ) ;
 
 		$x2t = new xml2php ;
 		$tree = $x2t->scanString ( $xml ) ;
 
+		# Chosing DTD; parameter-given or default
 		$dtd = "" ;
 		if ( isset ( $params['docbook']['dtd'] ) )
 			$dtd = $params['docbook']['dtd'] ;
@@ -49,6 +77,40 @@ class MediaWikiConverter {
 		$out .= trim ( $tree->parse ( $tree ) ) ;
 
 		return $out ;
+	}
+	
+	/**
+	 * Converts XML to PDF via DocBook
+	 * Requires special parameters in local.php to be set (see sample_local.php)
+	 * Uses articles2docbook_xml
+	 */
+	function articles2docbook_pdf ( &$xml , $params = array () ) {
+		$docbook_xml = $this->articles2docbook_xml ( $xml , $params ) ;
+		
+		# Create temporary directory
+		$temp_dir = "MWC" ;
+		$temp_dir .= substr ( mt_rand() , 0 , 4 ) ;
+		$temp_dir = tempnam ( $params['docbook']['temp_dir'], $temp_dir ) ;
+		$project = basename ( $temp_dir ) ;
+		unlink ( $temp_dir ) ; # It is currently a file, so...
+		mkdir ( $temp_dir ) ;
+		
+		# Write XML file
+		$xml_file = $temp_dir . "/" . $project . ".xml" ;
+		$handle = fopen ( $xml_file , 'wb' ) ;
+		fwrite ( $handle , utf8_encode ( $docbook_xml ) ) ;
+		fclose ( $handle ) ;
+		
+		# Call converter
+		$command = str_replace ( "%1" , $project , $params['docbook']['command_pdf'] ) ;
+		exec ( $command ) ;
+		
+		# Cleanup xml file
+		SureRemoveDir ( $temp_dir ) ;
+		
+		# Return pdf filename
+		$ret = $params['docbook']['out_dir'] . '/' . $project . '/pdf/' . $project . '.pdf' ;
+		return $ret ;
 	}
 }
 

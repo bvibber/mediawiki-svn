@@ -65,10 +65,29 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		$out = $converter->articles2docbook_xml ( $xml , $xmlg ) ;
 		header('Content-type: text/xml; charset=utf-8');
 		print $out ;
+	} else if ( $format == "docbook_pdf" ) {
+		$filename = $converter->articles2docbook_pdf ( $xml , $xmlg ) ;
+		$fp = fopen($filename, 'rb');
+		header('Content-type: application/pdf');
+		header("Content-Length: " . filesize($filename));
+		fpassthru($fp);
+		fclose ( $fp ) ;
+		
+		# Cleanup
+		$pdf_dir = dirname ( dirname ( $filename ) ) ;
+		SureRemoveDir ( $pdf_dir ) ;
+		@rmdir ( $pdf_dir ) ;
 	}
 	
 } else { # Show the form
 	header('Content-type: text/html; charset=utf-8');
+	
+	$optional = array () ;
+	if ( isset ( $xmlg['docbook']['command_pdf'] ) ) {
+		$optional[] = "<INPUT type='radio' name='output_format' value='docbook_pdf'>DocBook PDF" ;
+	}
+	$optional = "<br/>" . implode ( "<br/>" , $optional ) ;
+	
 	print "
 <html><head></head><body><form method='post'>
 <h1>Magnus' magic wiki-to-XML converter</h1>
@@ -82,6 +101,8 @@ Known issues:
 </p>
 <h2>Paste wikitext here</h2>
 <textarea rows='20' cols='80' style='width:100%' name='text'></textarea><br/>
+<table border='0'><tr>
+<td>
 This is
 <INPUT type='radio' name='whatsthis' value='wikitext'>raw wikitext 
 <INPUT checked type='radio' name='whatsthis' value='articlelist'>a list of articles
@@ -89,17 +110,15 @@ This is
 
 Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/>/index.php<br/>
 <input type='checkbox' name='resolvetemplates' value='1' checked>Automatically resolve templates</input><br/>
-
-Output : 
-<INPUT checked type='radio' name='output_format' value='xml'>XML 
-<INPUT type='radio' name='output_format' value='text'>Plain text 
-<INPUT type='radio' name='output_format' value='docbook_xml'>DocBook XML 
-
-<br/>Plain text :
+<br/><input type='submit' name='doit' value='Convert'/>
+</td><td valign='top'>
+<b>Output</b>
+<br/><INPUT checked type='radio' name='output_format' value='xml'>XML 
+<br/><INPUT type='radio' name='output_format' value='text'>Plain text 
  <input type='checkbox' name='plaintext_markup' value='1' checked>Use *_/ markup</input>
  <input type='checkbox' name='plaintext_prelink' value='1' checked>Put &rarr; before internal links</input>
-
-<br/><input type='submit' name='doit' value='Convert'/>
+<br/><INPUT type='radio' name='output_format' value='docbook_xml'>DocBook XML 
+{$optional}
 </form></body></html>" ;
 }
 
