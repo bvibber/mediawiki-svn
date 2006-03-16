@@ -96,7 +96,7 @@ class element {
 			$header = "" ;
 			if ( isset ( $this->attrs["TITLE"] ) ) {
 				$title = $this->attrs["TITLE"] ;
-				$header .= "<title>" . $title . "</title>\n" ;
+				$ret .= "<title>" . $title . "</title>\n" ;
 			}
 			if ( $header != "" ) {
 				$ret .= "<artheader>\n" . $header . "</artheader>\n";
@@ -104,6 +104,8 @@ class element {
 		} else if ( $tag == 'HEADING' ) {
 			$level = $tree->sect_counter ;
 			$wanted = $this->attrs["LEVEL"] ;
+			if ( $wanted < $level ) $wanted = $level - 1 ;
+			else if ( $wanted > $level ) $wanted = $level + 1 ;
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			if ( $level >= $wanted ) {
 				$ret .= $this->close_last ( "sect{$wanted}" , $tree ) ;
@@ -121,8 +123,8 @@ class element {
 		} else if ( $tag == 'LIST' ) {
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			$list_type = strtolower ( $this->attrs['TYPE'] ) ;
-			if ( $list_type == 'bullet' ) $ret .= '<itemizedlist mark="opencircle">' ;
-			if ( $list_type == 'numbered' ) $ret .= '<orderedlist numeration="arabic">' ;
+			if ( $list_type == 'bullet' || $list_type == 'ident' ) $ret .= '<itemizedlist mark="opencircle">' ;
+			else if ( $list_type == 'numbered' ) $ret .= '<orderedlist numeration="arabic">' ;
 		} else if ( $tag == 'LISTITEM' ) {
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			$ret .= "<listitem>\n" ;
@@ -148,8 +150,8 @@ class element {
 			$ret .= "</book>";
 		} else if ( $tag == 'LIST' ) {
 			$ret .= $this->close_last ( "para" , $tree ) ;
-			if ( $list_type == 'bullet' ) $ret .= "</itemizedlist>\n" ;
-			if ( $list_type == 'numbered' ) $ret .= "</orderedlist>\n" ;
+			if ( $list_type == 'bullet' || $list_type == 'ident' ) $ret .= "</itemizedlist>\n" ;
+			else if ( $list_type == 'numbered' ) $ret .= "</orderedlist>\n" ;
 		} else if ( $tag == 'LISTITEM' ) {
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			$ret .= "</listitem>\n" ;

@@ -1,11 +1,9 @@
-<?
+<?php
 # Copyright by Magnus Manske (2005)
 # Released under GPL
 
-require ( "filter_named_entities.php" ) ; # PHP4 and early PHP5 bug workaround
-require ( "wiki2xml.php" ) ;
-include ( "default.php" ) ; # Which will include local.php, if available
-require ( "content_provider.php" ) ;
+include_once ( "default.php" ) ; # Which will include local.php, if available
+require_once ( "mediawiki_converter.php" ) ;
 
 @set_time_limit ( 0 ) ; # No time limit
 ini_set('user_agent','MSIE 4\.0b2;'); # Fake user agent
@@ -16,7 +14,7 @@ function microtime_float()
 {
    list($usec, $sec) = explode(" ", microtime());
    return ((float)$usec + (float)$sec);
-} 
+}
 
 ## MAIN PROGRAM
 
@@ -24,25 +22,23 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	$wikitext = stripslashes ( $_POST['text'] ) ;
 	
 	$content_provider = new ContentProviderHTTP ;
+	$converter = new MediaWikiConverter ;
+	
 	$xmlg["site_base_url"] = $_POST['site'] ;
-
+	$xmlg["resolvetemplates"] = isset ( $_POST['resolvetemplates'] ) ;
+	
 	$t = microtime_float() ;
 	$xml = "" ;
-	$article_open = '<article>' ;
 	if ( $_POST['whatsthis'] == "wikitext" ) {
-		$p = new wiki2xml ;
-		$xml = '<article>' . $p->parse ( $wikitext ) . "</article>" ;
+		$xml = $converter->article2xml ( "" , $wikitext , $xmlg ) ;
 	} else {
 		$t = microtime_float() ;
 		$articles = explode ( "\n" , $wikitext ) ;
 		foreach ( $articles AS $a ) {
 			$a = trim ( $a ) ;
 			if ( $a == "" ) continue ;
-			$p = new wiki2xml ;
-			if ( !isset ( $_POST['resolvetemplates'] ) ) $p->auto_fill_templates = false ;
 			$wikitext = $content_provider->get_wiki_text ( $a ) ;
-			$title = urlencode ( str_replace ( "_" , " " , $a ) ) ;
-			$xml .= "<article title=\"{$title}\">" . $p->parse ( $wikitext ) . "</article>" ;
+			$xml .= $converter->article2xml ( $a , $wikitext , $xmlg ) ;
 		}
 	}
 	$t = microtime_float() - $t ;
@@ -59,33 +55,15 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		print "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
 		print $xml ;
 	} else if ( $format == "text" ) {
-		require_once ( "./xml2txt.php" ) ;
-
-		$x2t = new xml2php ;
-		$tree = $x2t->scanString ( $xml ) ;
-		if ( isset ( $_POST['plaintext_markup'] ) ) {
-			$tree->bold = '*' ;
-			$tree->italics = '/' ;
-			$tree->underline = '_' ;
-		}
-		if ( isset ( $_POST['plaintext_prelink'] ) ) {
-			$tree->pre_link = "&rarr;" ;
-		}
-		$out = trim ( $tree->parse ( $tree ) ) ;
-
+		$xmlg['plaintext_markup'] = isset ( $_POST['plaintext_markup'] ) ;
+		$xmlg['plaintext_prelink'] = isset ( $_POST['plaintext_prelink'] )  ;
+		$out = $converter->articles2text ( $xml , $xmlg ) ;
 		$out = str_replace ( "\n" , "<br/>" , $out ) ;
 		header('Content-type: text/html; charset=utf-8');
 		print $out ;
 	} else if ( $format == "docbook_xml" ) {
-		require_once ( "./xml2docbook_xml.php" ) ;
-
-		$x2t = new xml2php ;
-		$tree = $x2t->scanString ( $xml ) ;
-		$out = trim ( $tree->parse ( $tree ) ) ;
-
+		$out = $converter->articles2docbook_xml ( $xml , $xmlg ) ;
 		header('Content-type: text/xml; charset=utf-8');
-		print "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
-		print '<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">' ;
 		print $out ;
 	}
 	
