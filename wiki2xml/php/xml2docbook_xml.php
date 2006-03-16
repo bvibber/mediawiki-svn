@@ -49,6 +49,7 @@ class element {
 		$temp = "" ;
 		$s = html_entity_decode ( $s ) ;
 		filter_named_entities ( $s ) ;
+		$s = str_replace ( "&" , "&amp;" , $s ) ;
 		return $s ;
 	}
 	
