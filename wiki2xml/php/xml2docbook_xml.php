@@ -17,9 +17,8 @@ class element {
 	
 	# Variables only used by $tree root
 	var $list = array () ;
-	var $iter = 1 ;
 	var $opentags = array () ;
-	var $sect_counter = 0 ;
+	var $sections = array () ;
 	
 	/**
 	 * Parse the children ... why won't anybody think of the children?
@@ -44,18 +43,24 @@ class element {
 		return $ret . $this->add_temp_text ( $temp ) ;
 	}
 	
-	function add_temp_text ( &$temp ) {
-		$s = $temp ;
-		$temp = "" ;
+	function fix_text ( $s ) {
 		$s = html_entity_decode ( $s ) ;
 		filter_named_entities ( $s ) ;
 		$s = str_replace ( "&" , "&amp;" , $s ) ;
 		return $s ;
 	}
 	
+	function add_temp_text ( &$temp ) {
+		$s = $temp ;
+		$temp = "" ;
+		return $this->fix_text ( $s ) ;
+	}
+	
 	function ensure_new ( $tag , &$tree , $opttag = "" ) {
-		foreach ( $tree->opentags AS $o ) {
-			if ( $o == $tag ) return "" ; # Already open
+		if ( $opttag == "" ) { # Catching special case (currently, <section>)
+			foreach ( $tree->opentags AS $o ) {
+				if ( $o == $tag ) return "" ; # Already open
+			}
 		}
 		array_push ( $tree->opentags , $tag ) ;
 		if ( $opttag == "" ) return "<{$tag}>\n" ;
@@ -76,6 +81,58 @@ class element {
 		}
 	}
 	
+	function handle_link ( &$tree ) {
+		global $content_provider ;
+		$ret = "" ;
+		$sub = $this->sub_parse ( $tree ) ;
+		$link = "" ;
+		if ( isset ( $this->attrs['TYPE'] ) AND strtolower ( $this->attrs['TYPE'] ) == 'external' ) {
+			#if ( $sub != "" ) $link .= $sub . " " ;
+			#    <ulink url="http://www.ora.com/catalog/tex/"><citetitle>Making TeXWork</citetitle></ulink>
+			$href = $this->attrs['HREF'] ;
+			if ( trim ( $sub ) == "" ) {
+				$sub = $href ;
+				$sub = explode ( '://' , $sub , 2 ) ;
+				$sub = explode ( '/' , array_pop ( $sub ) , 2 ) ;
+				$sub = array_shift ( $sub ) ;
+			}
+			$link = "<ulink url=\"{$href}\"><citetitle>{$sub}</citetitle></ulink>" ;
+			#$link .= '[' . $this->attrs['HREF'] . ']' ;
+		} else {
+			if ( count ( $this->link_parts ) > 0 ) $link = array_pop ( $this->link_parts ) ;
+			$link_text = $link ;
+			if ( $link == "" ) $link = $this->link_target ;
+			$link .= $this->link_trail ;
+			
+			$ns = $content_provider->get_namespace_id ( $this->link_target ) ;
+			
+			
+			if ( $ns == 6 ) { # Surround image text with newlines
+				$nstext = explode ( ":" , $this->link_target , 2 ) ;
+				$nstext = array_shift ( $nstext ) ;
+				$link = "(" . $nstext . ":" . $link . ")" ;
+			} else if ( $ns == -9 ) { # Adding space to interlanguage link
+				$sub = $this->link_target ;
+				$nstext = explode ( ":" , $sub , 2 ) ;
+				$name = array_pop ( $nstext ) ;
+				$nstext = array_shift ( $nstext ) ;
+
+				$href = "http://{$nstext}.wikipedia.org/wiki/" . urlencode ( $name ) ;
+				$link = "<ulink url=\"{$href}\"><citetitle>{$sub}</citetitle></ulink>" ;
+
+				#$link = $link . " " ;
+			} else if ( $ns == -8 ) { # Adding newline to category link
+				if ( $link_text == "!" || $link_text == '*' ) $link = "" ;
+				else $link = " ({$link})" ;
+				$link = "" . $this->link_target . $link . "" ;
+			} else {
+				$link = "<literal>{$link}</literal>" ;
+			}
+		}
+		$ret .= $link ;
+		return $this->fix_text ( $ret ) ;
+	}
+	
 	/* 
 	 * Parse the tag
 	 */
@@ -83,14 +140,12 @@ class element {
 		global $content_provider ;
 		$ret = '';
 		$tag = $this->name ;
-		$is_root = ( $tree->iter == 1 ) ;
-		$tree->iter++ ;
 		$close_emphasis = false ;
 		
 		if ( $tag == 'SPACE' ) {
 			return ' ' ; # Speedup
 		} else if ( $tag == 'ARTICLES' ) {
-			$ret .= "<book>\n";
+			# dummy, to prevent default action to be called
 		} else if ( $tag == 'ARTICLE' ) {
 			$ret .= "<article>\n";
 			$header = "" ;
@@ -101,21 +156,28 @@ class element {
 			if ( $header != "" ) {
 				$ret .= "<artheader>\n" . $header . "</artheader>\n";
 			}
+		} else if ( $tag == 'LINK' ) {
+			return $this->handle_link ( $tree ) ; # Shortcut
 		} else if ( $tag == 'HEADING' ) {
-			$level = $tree->sect_counter ;
+			$level = count ( $tree->sections ) ;
 			$wanted = $this->attrs["LEVEL"] ;
-			if ( $wanted < $level ) $wanted = $level - 1 ;
-			else if ( $wanted > $level ) $wanted = $level + 1 ;
 			$ret .= $this->close_last ( "para" , $tree ) ;
-			if ( $level >= $wanted ) {
-				$ret .= $this->close_last ( "sect{$wanted}" , $tree ) ;
-				$level = $wanted - 1 ;
+			while ( $level >= $wanted ) {
+				$x = array_pop ( $tree->sections ) ;
+				if ( $x == 1 ) {
+					$ret .= $this->close_last ( "section" , $tree ) ;
+				}
+				$level-- ;
 			}
 			while ( $level < $wanted ) {
 				$level++ ;
-				$ret .= $this->ensure_new ( "sect{$level}" , $tree ) ;
+				if ( $level < $wanted ) {
+					array_push ( $tree->sections , 0 ) ;
+				} else {
+					$ret .= $this->ensure_new ( "section" , $tree , "<section>" ) ;
+					array_push ( $tree->sections , 1 ) ;
+				}
 			}
-			$tree->sect_counter = $wanted ;
 			$ret .= "<title>" ;
 		} else if ( $tag == 'PARAGRAPH' ) {
 			$ret .= $this->close_last ( "para" , $tree ) ;
@@ -137,18 +199,14 @@ class element {
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 			$ret .= '<emphasis>' ;
 			$close_emphasis = true ;
-		} else { # Normal text
+		} else { # Default : normal text
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 		}
 		
 		# Get the sub-items
 		$ret .= $this->sub_parse ( $tree ) ;
 		
-		$tree->iter-- ; # Unnecessary, since not really used
-		
-		if ( $tag == 'ARTICLES' ) {
-			$ret .= "</book>";
-		} else if ( $tag == 'LIST' ) {
+		if ( $tag == 'LIST' ) {
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			if ( $list_type == 'bullet' || $list_type == 'ident' ) $ret .= "</itemizedlist>\n" ;
 			else if ( $list_type == 'numbered' ) $ret .= "</orderedlist>\n" ;
@@ -160,7 +218,7 @@ class element {
 		} else if ( $tag == 'HEADING' ) {
 			$ret .= "</title>\n" ;
 		} else if ( $tag == 'ARTICLE' ) {
-			$ret .= $this->close_last ( "sect1" , $tree ) ;
+			$ret .= $this->close_last ( "section" , $tree ) ;
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			$ret .= "</article>";
 		}
@@ -169,21 +227,6 @@ class element {
 	}
 }
 
-require_once ( "./xml2tree.php" ) ;
+require_once ( "./xml2tree.php" ) ; # Uses the "element" class defined above
 
-
-
-//_______________________________________________________________
-/*
-$infile = "Biology.xml" ;
-$xml = @file_get_contents ( $infile ) ;
-
-print htmlentities ( $xml ) . "<hr>" ;
-
-$x2t = new xml2php ;
-$tree = $x2t->scanString ( $xml ) ;
-
-$odt = new xml2odt ;
-$odt->parse ( $tree ) ;
-*/
 ?>

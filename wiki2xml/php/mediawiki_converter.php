@@ -59,7 +59,7 @@ class MediaWikiConverter {
 	/**
 	 * Converts XML to DocBook XML
 	 */
-	function articles2docbook_xml ( &$xml , $params = array () ) {
+	function articles2docbook_xml ( &$xml , $params = array () , $use_gpl = false ) {
 		require_once ( "./xml2docbook_xml.php" ) ;
 
 		$x2t = new xml2php ;
@@ -72,9 +72,16 @@ class MediaWikiConverter {
 		if ( $dtd == "" ) $dtd = 'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd' ;
 
 		$out = "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
-		$out .= '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "' . $dtd . '">' ;
-		$out .= "\n\n" ;
+		$out .= '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "' . $dtd . '"' ;
+		if ( $use_gpl ) {
+			$out .= "\n[<!ENTITY gpl SYSTEM \"gpl.xml\">]\n" ;
+		}
+		$out .= ">\n\n<book>\n" ;
 		$out .= trim ( $tree->parse ( $tree ) ) ;
+		if ( $use_gpl ) {
+			$out .= "\n&gpl;\n" ;
+		}
+		$out .= "\n</book>\n" ;
 
 		return $out ;
 	}
@@ -85,7 +92,7 @@ class MediaWikiConverter {
 	 * Uses articles2docbook_xml
 	 */
 	function articles2docbook_pdf ( &$xml , $params = array () ) {
-		$docbook_xml = $this->articles2docbook_xml ( $xml , $params ) ;
+		$docbook_xml = $this->articles2docbook_xml ( $xml , $params , true ) ;
 		
 		# Create temporary directory
 		$temp_dir = "MWC" ;
@@ -100,6 +107,7 @@ class MediaWikiConverter {
 		$handle = fopen ( $xml_file , 'wb' ) ;
 		fwrite ( $handle , utf8_encode ( $docbook_xml ) ) ;
 		fclose ( $handle ) ;
+		copy ( "./gpl.xml" , $temp_dir . "/gpl.xml" ) ;
 		
 		# Call converter
 		$command = str_replace ( "%1" , $project , $params['docbook']['command_pdf'] ) ;
