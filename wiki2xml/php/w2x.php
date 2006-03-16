@@ -2,9 +2,10 @@
 # Copyright by Magnus Manske (2005)
 # Released under GPL
 
-include ( "wiki2xml.php" ) ;
+require ( "filter_named_entities.php" ) ; # PHP4 and early PHP5 bug workaround
+require ( "wiki2xml.php" ) ;
 include ( "default.php" ) ; # Which will include local.php, if available
-include ( "content_provider.php" ) ;
+require ( "content_provider.php" ) ;
 
 @set_time_limit ( 0 ) ; # No time limit
 ini_set('user_agent','MSIE 4\.0b2;'); # Fake user agent
@@ -82,13 +83,10 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		$tree = $x2t->scanString ( $xml ) ;
 		$out = trim ( $tree->parse ( $tree ) ) ;
 
-/*		header('Content-type: text/xml; charset=utf-8');
+		header('Content-type: text/xml; charset=utf-8');
 		print "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
 		print '<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">' ;
 		print $out ;
-		*/
-		header('Content-type: text/html; charset=utf-8');
-		print str_replace ( "\n" , "<br/>" , htmlentities ( $out ) ) ;
 	}
 	
 } else { # Show the form

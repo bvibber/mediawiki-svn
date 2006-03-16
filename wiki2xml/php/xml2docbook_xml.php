@@ -26,10 +26,12 @@ class element {
 	 */
 	function sub_parse(& $tree) {
 		$ret = '' ;
+		$temp = "" ;
 		foreach ($this->children as $key => $child) {
 			if (is_string($child)) {
-				$ret .= $child ;
+				$temp .= $child ;
 			} elseif ($child->name != 'ATTRS') {
+				$ret .= $this->add_temp_text ( $temp )  ;
 				$sub = $child->parse ( $tree ) ;
 				if ( $this->name == 'LINK' ) {
 					if ( $child->name == 'TARGET' ) $this->link_target = $sub ;
@@ -39,7 +41,15 @@ class element {
 				$ret .= $sub ;
 			}
 		}
-		return $ret ;
+		return $ret . $this->add_temp_text ( $temp ) ;
+	}
+	
+	function add_temp_text ( &$temp ) {
+		$s = $temp ;
+		$temp = "" ;
+		$s = html_entity_decode ( $s ) ;
+		filter_named_entities ( $s ) ;
+		return $s ;
 	}
 	
 	function ensure_new ( $tag , &$tree , $opttag = "" ) {
