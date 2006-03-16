@@ -417,7 +417,8 @@ class wiki2xml
 	# Heading
 	function p_heading ( &$a , &$xml )
 		{
-		if ( !$this->nextis ( $a , "==" , false ) ) return false ;
+		if ( $a >= $this->wl || $this->w[$a] != '=' ) return false ;
+#		print htmlentities ( substr ( $this->w , $a , 30 ) ) . "<br/>" ;
 		$b = $a ;
 		$level = 0 ;
 		$h = "" ;
@@ -436,7 +437,7 @@ class wiki2xml
 		$x = trim ( substr ( $x , 0 , -$level ) ) ;
 		$level -= 1 ;
 		$a = $b ;
-		$xml .= "<heading level='{$level}'>{$x}</heading>" ;
+		$xml .= "<heading level='" . ($level+1) . "'>{$x}</heading>" ;
 		return true ;
 		}
 	
@@ -487,7 +488,7 @@ class wiki2xml
 			if ( $this->nextis ( $a , "{|" , false ) ) return false ; # Table
 			if ( count ( $this->tables ) > 0 && $this->nextis ( $a , "|" , false ) ) return false ; # Table
 			if ( count ( $this->tables ) > 0 && $this->nextis ( $a , "!" , false ) ) return false ; # Table
-			if ( $this->nextis ( $a , "==" , false ) ) return false ; # Heading
+			if ( $this->nextis ( $a , "=" , false ) ) return false ; # Heading
 			if ( $this->nextis ( $a , "----" , false ) ) return false ; # <hr>
 			}
 		$this->bold_italics = "" ;
