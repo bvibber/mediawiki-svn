@@ -2349,7 +2349,7 @@ class Parser
 			# Check for NS: (namespace expansion)
 			$mwNs = MagicWord::get( MAG_NS );
 			if ( $mwNs->matchStartAndRemove( $part1 ) ) {
-				if ( intval( $part1 ) ) {
+				if( $part1=='0' || ( intval( $part1 ) && array_key_exists(intval($part1),$wgNamespaces) ) ) {
 					$text = $linestart . $wgNamespaces[intval( $part1 )]->getDefaultName( );
 					$found = true;
 				} else {

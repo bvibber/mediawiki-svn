@@ -18,7 +18,7 @@ function wfSpecialWatchlist( $par ) {
 	global $wgUser, $wgOut, $wgLang, $wgTitle, $wgMemc, $wgRequest, $wgContLang;
 	global $wgUseWatchlistCache, $wgWLCacheTimeout, $wgDBname;
 	global $wgRCShowWatchingUsers, $wgEnotifWatchlist, $wgShowUpdatedMarker;
-	global $wgEnotifWatchlist, $wgFilterRobotsWL;
+	global $wgEnotifWatchlist, $wgFilterRobotsWL, $wgNamespaces;
 	$fname = 'wfSpecialWatchlist';
 
 	$wgOut->setPagetitle( wfMsg( 'watchlist' ) );
@@ -164,7 +164,7 @@ function wfSpecialWatchlist( $par ) {
 
 		// TODO: Display a TOC
 		foreach($list as $ns => $titles) {
-			if (Namespace::isTalk($ns))
+			if ($wgNamespaces[$ns]->isTalk())
 				continue;
 			if ($ns != NS_MAIN)
 				$wgOut->addHTML( '<h2>' . $wgContLang->getFormattedNsText( $ns ) . '</h2>' );
