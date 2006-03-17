@@ -799,6 +799,7 @@ class wiki2xml
 		# Parsing arrtibutes
 		$ob = $b ;
 		while ( $b < $this->wl && $this->w[$b] != '>' && $this->w[$b] != '/' ) $b++ ;
+		if ( $b >= $this->wl ) return false ;
 		$attrs = $this->preparse_attributes ( substr ( $this->w , $ob , $b - $ob + 1 ) ) ;
 		
 		# Is self closing?
@@ -835,7 +836,7 @@ class wiki2xml
 
 		# Replacing templates
 		$c = 0 ;
-		while ( /*$this->auto_fill_templates != 'none' && */$np->w[$c] != '>' && $np->w[$c] != '/' && $c < $np->wl )
+		while ( $c < $np->wl && $np->w[$c] != '>' && $np->w[$c] != '/' )
 			{
 			if ( $np->nextis ( $c , "{{" , false ) )
 				{

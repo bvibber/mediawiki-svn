@@ -86,7 +86,7 @@ class element {
 		$sub = $this->sub_parse ( $tree ) ;
 		$link = "" ;
 		if ( isset ( $this->attrs['TYPE'] ) AND strtolower ( $this->attrs['TYPE'] ) == 'external' ) {
-			$href = $this->attrs['HREF'] ;
+			$href = htmlentities ( $this->attrs['HREF'] ) ;
 			if ( trim ( $sub ) == "" ) {
 				$sub = $href ;
 				$sub = explode ( '://' , $sub , 2 ) ;

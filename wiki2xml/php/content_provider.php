@@ -70,7 +70,7 @@ class ContentProvider {
 			$lang = array_shift ( $parts ) ;
 			$url = "http://upload.wikimedia.org/wikipedia/{$lang}/{$i}" ;
 			$url2 = "http://upload.wikimedia.org/wikipedia/commons/{$i}" ;
-			$h = fopen ( $url , "r" ) ;
+			$h = @fopen ( $url , "r" ) ;
 			if ( $h === false ) $url = $url2 ;
 			else fclose ( $h ) ;
 #			if ( !file_exists ( $url ) ) $url = $url2 ;
