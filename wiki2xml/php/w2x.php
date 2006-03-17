@@ -27,6 +27,7 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	$xmlg["site_base_url"] = $_POST['site'] ;
 	$xmlg["resolvetemplates"] = $_POST['use_templates'] ;
 	$xmlg['templates'] = explode ( "\n" , $_POST['templates'] ) ;
+	$xmlg['add_gfdl'] = isset ( $_POST['add_gfdl'] ) ;
 	
 	$t = microtime_float() ;
 	$xml = "" ;
@@ -66,13 +67,21 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		$out = $converter->articles2docbook_xml ( $xml , $xmlg ) ;
 		header('Content-type: text/xml; charset=utf-8');
 		print $out ;
-	} else if ( $format == "docbook_pdf" ) {
-		$filename = $converter->articles2docbook_pdf ( $xml , $xmlg ) ;
-		$fp = fopen($filename, 'rb');
-		header('Content-type: application/pdf');
-		header("Content-Length: " . filesize($filename));
-		fpassthru($fp);
-		fclose ( $fp ) ;
+	} else if ( $format == "docbook_pdf" || $format == "docbook_html" ) {
+		$filetype = substr ( $format , 8 ) ;
+		$filename = $converter->articles2docbook_pdf ( $xml , $xmlg , strtoupper ( $filetype ) ) ;
+		
+		if ( file_exists ( $filename ) ) {
+			$fp = fopen($filename, 'rb');
+			if ( $format == "docbook_pdf" ) {
+				header('Content-type: application/pdf');
+				header("Content-Length: " . filesize($filename));
+			} else if ( $format == "docbook_pdf" ) {
+				header('Content-type: text/html');
+			}
+			fpassthru($fp);
+			fclose ( $fp ) ;
+		}
 		
 		# Cleanup
 		$pdf_dir = dirname ( dirname ( $filename ) ) ;
@@ -87,11 +96,14 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	if ( isset ( $xmlg['docbook']['command_pdf'] ) ) {
 		$optional[] = "<INPUT type='radio' name='output_format' value='docbook_pdf'>DocBook PDF" ;
 	}
+	if ( isset ( $xmlg['docbook']['command_html'] ) ) {
+		$optional[] = "<INPUT type='radio' name='output_format' value='docbook_html'>DocBook HTML" ;
+	}
 	$optional = "<br/>" . implode ( "<br/>" , $optional ) ;
 	
 	print "
 <html><head></head><body><form method='post'>
-<h1>Magnus' magic wiki-to-XML converter</h1>
+<h1>Magnus' magic MediaWiki-to-XML-to-stuff converter</h1>
 <p>All written in PHP - so portable, so incredibly slow...</p>
 <p>
 Known issues:
@@ -118,6 +130,7 @@ This is
 <br/>
 
 Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/>/index.php<br/>
+<input type='checkbox' name='add_gfdl' value='1' checked>Include GFDL (for some output formats)</input><br/>
 <br/><input type='submit' name='doit' value='Convert'/>
 </td><td valign='top'>
 <b>Output</b>

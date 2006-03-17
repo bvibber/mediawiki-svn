@@ -9,6 +9,7 @@ $xmlg["site_base_url"] = "127.0.0.1/phase3" ;
 
 $xmlg["docbook"] = array (
 	"command_pdf" => "C:/docbook/bat/docbook_pdf.bat %1" ,
+	"command_html" => "C:/docbook/bat/docbook_html.bat %1" ,
 	"temp_dir" => "C:/docbook/repository" ,
 	"out_dir" => "C:/docbook/output" ,
 	"dtd" => "file:/c:/docbook/dtd/docbookx.dtd"

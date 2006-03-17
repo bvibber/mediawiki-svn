@@ -64,7 +64,7 @@ class MediaWikiConverter {
 	/**
 	 * Converts XML to DocBook XML
 	 */
-	function articles2docbook_xml ( &$xml , $params = array () , $use_gpl = false ) {
+	function articles2docbook_xml ( &$xml , $params = array () , $use_gfdl = false ) {
 		require_once ( "./xml2docbook_xml.php" ) ;
 
 		$x2t = new xml2php ;
@@ -78,13 +78,13 @@ class MediaWikiConverter {
 
 		$out = "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
 		$out .= '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "' . $dtd . '"' ;
-		if ( $use_gpl ) {
-			$out .= "\n[<!ENTITY gpl SYSTEM \"gpl.xml\">]\n" ;
+		if ( $use_gfdl ) {
+			$out .= "\n[<!ENTITY gfdl SYSTEM \"gfdl.xml\">]\n" ;
 		}
 		$out .= ">\n\n<book>\n" ;
 		$out .= trim ( $tree->parse ( $tree ) ) ;
-		if ( $use_gpl ) {
-			$out .= "\n&gpl;\n" ;
+		if ( $use_gfdl ) {
+			$out .= "\n&gfdl;\n" ;
 		}
 		$out .= "\n</book>\n" ;
 
@@ -97,7 +97,7 @@ class MediaWikiConverter {
 	 * Uses articles2docbook_xml
 	 */
 	function articles2docbook_pdf ( &$xml , $params = array () , $mode = "PDF" ) {
-		$docbook_xml = $this->articles2docbook_xml ( $xml , $params , true ) ;
+		$docbook_xml = $this->articles2docbook_xml ( $xml , $params , $params['add_gfdl'] ) ;
 		
 		# Create temporary directory
 		$temp_dir = "MWC" ;
@@ -112,11 +112,17 @@ class MediaWikiConverter {
 		$handle = fopen ( $xml_file , 'wb' ) ;
 		fwrite ( $handle , utf8_encode ( $docbook_xml ) ) ;
 		fclose ( $handle ) ;
-		copy ( "./gpl.xml" , $temp_dir . "/gpl.xml" ) ;
+		if ( $params['add_gfdl'] ) {
+			copy ( "./gfdl.xml" , $temp_dir . "/gfdl.xml" ) ;
+		}
 		
 		# Call converter
 		if ( $mode == "PDF" ) {
 			$command = str_replace ( "%1" , $project , $params['docbook']['command_pdf'] ) ;
+			$out_subdir = 'pdf' ;
+		} else if ( $mode == "HTML" ) {
+			$command = str_replace ( "%1" , $project , $params['docbook']['command_html'] ) ;
+			$out_subdir = 'html' ;
 		}
 		exec ( $command ) ;
 		
@@ -124,15 +130,14 @@ class MediaWikiConverter {
 		SureRemoveDir ( $temp_dir ) ;
 		
 		# Check if everything is OK
-		$pdf_filename = $params['docbook']['out_dir'] . '/' . $project . '/pdf/' . $project . '.pdf' ;
-		if ( !file_exists ( $pdf_filename ) ) {
+		$output_filename = $params['docbook']['out_dir'] . '/' . $project . '/' . $out_subdir . '/' . $project . '.' . $out_subdir ;
+		if ( !file_exists ( $output_filename ) ) {
 			header('Content-type: text/html; charset=utf-8');
-			print "ERROR : PDF was not created: Docbook PDF creator has failed!" ;
-			exit ;
+			print "ERROR : Document was not created: Docbook creator has failed!" ;
 		}
 		
 		# Return pdf filename
-		return $pdf_filename ;
+		return $output_filename ;
 	}
 }
 
