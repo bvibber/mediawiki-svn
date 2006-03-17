@@ -149,7 +149,13 @@ class element {
 				else $link = " ({$link})" ;
 				$link = "" . $this->link_target . $link . "" ;
 			} else {
-				$link = "<literal>{$link}</literal>" ;
+				if ( $content_provider->is_an_article ( $this->link_target ) ) {
+					$lt = urlencode ( trim ( $this->link_target ) ) ;
+					$lt = str_replace ( "+" , "_" , $lt ) ;
+					$link = "<link linkend='{$lt}'>{$link}</link>" ;
+				} else {
+					#$link = "<link linkend='{$lt}'>{$link}</link>" ;
+				}
 			}
 		}
 		return $link ;
@@ -169,15 +175,10 @@ class element {
 		} else if ( $tag == 'ARTICLES' ) {
 			# dummy, to prevent default action to be called
 		} else if ( $tag == 'ARTICLE' ) {
-			$ret .= "<article>\n";
-			$header = "" ;
-			if ( isset ( $this->attrs["TITLE"] ) ) {
-				$title = $this->attrs["TITLE"] ;
-				$ret .= "<title>" . $title . "</title>\n" ;
-			}
-			if ( $header != "" ) {
-				$ret .= "<artheader>\n" . $header . "</artheader>\n";
-			}
+			$title = isset ( $this->attrs["TITLE"] ) ? $this->attrs["TITLE"] : "Untiteled" ;
+			$id = str_replace ( "+" , "_" , $title ) ;
+			$ret .= "<article id='{$id}'>\n";
+			$ret .= "<title>" . urldecode ( $title ) . "</title>\n" ;
 		} else if ( $tag == 'LINK' ) {
 			return $this->handle_link ( $tree ) ; # Shortcut
 		} else if ( $tag == 'HEADING' ) {

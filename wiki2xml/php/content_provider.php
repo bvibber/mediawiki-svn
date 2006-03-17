@@ -3,9 +3,19 @@
 # Abstract base class
 class ContentProvider {
 	var $load_time = 0 ; # Time to load text and templates, to judge actual parsing speed
+	var $article_list = array () ;
 	
 	function get_wiki_text ( $title , $do_cache = false ) {} # dummy
 	function get_template_text ( $title ) {} # dummy
+	
+	function add_article ( $title ) {
+		$this->article_list[] = urlencode ( trim ( $title ) ) ;
+	}
+	
+	function is_an_article ( $title ) {
+		$title = urlencode ( trim ( $title ) ) ;
+		return in_array ( $title , $this->article_list ) ;
+	}
 
 	/**
 	 * Gets the numeric namespace
@@ -60,7 +70,10 @@ class ContentProvider {
 			$lang = array_shift ( $parts ) ;
 			$url = "http://upload.wikimedia.org/wikipedia/{$lang}/{$i}" ;
 			$url2 = "http://upload.wikimedia.org/wikipedia/commons/{$i}" ;
-			if ( !file_exists ( $url ) ) $url = $url2 ;
+			$h = fopen ( $url , "r" ) ;
+			if ( $h === false ) $url = $url2 ;
+			else fclose ( $h ) ;
+#			if ( !file_exists ( $url ) ) $url = $url2 ;
 		} else {
 			$url = "http://{$site}/images/{$i}" ;
 		}
@@ -87,11 +100,17 @@ class ContentProviderHTTP extends ContentProvider {
 		# Retrieve it
 		$url = "http://" . $xmlg["site_base_url"] . "/index.php?action=raw&title=" . urlencode ( $title ) ;
 		
-#		print "Retrieving " . $title . "<br/>" ; flush () ;
 		$t1 = microtime_float() ;
 		$s = @file_get_contents ( $url ) ;
+		if ( strtoupper ( substr ( $s , 0 , 9 ) ) == "#REDIRECT" ) {
+			$t2 = explode ( "[[" , $s , 2 ) ;
+			$t2 = array_pop ( $t2 ) ;
+			$t2 = explode ( "]]" , $t2 , 2 ) ;
+			$t2 = array_shift ( $t2 ) ;
+			$url = "http://" . $xmlg["site_base_url"] . "/index.php?action=raw&title=" . urlencode ( $t2 ) ;
+			$s = @file_get_contents ( $url ) ;
+		}
 		$this->load_time += microtime_float() - $t1 ;
-#		print "Retrieved " . $title . " in {$t1} sec.<br/>" ; flush () ;
 		
 		$comp = '<!DOCTYPE html PUBLIC "-//W3C//DTD' ;
 		if ( substr ( $s , 0 , strlen ( $comp ) ) == $comp ) $s = "" ; # Catching wrong title error

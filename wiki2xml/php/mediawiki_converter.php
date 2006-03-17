@@ -27,7 +27,9 @@ class MediaWikiConverter {
 	 * Converts a single article in MediaWiki format to XML
 	 */
 	function article2xml ( $title , &$text , $params = array () ) {
-		$title = urlencode ( str_replace ( "_" , " " , $title ) ) ;
+		global $content_provider ;
+		$ot = $title ;
+		$title = urlencode ( $title ) ;
 		$p = new wiki2xml ;
 		$p->auto_fill_templates = $params['resolvetemplates'] ;
 		$p->template_list = array () ; ;
@@ -36,7 +38,10 @@ class MediaWikiConverter {
 			if ( $x != "" ) $p->template_list[] = $x ;
 		}
 		$xml = '<article' ;
-		if ( $title != "" ) $xml .= " title='{$title}'" ;
+		if ( $title != "" ) {
+			$xml .= " title='{$title}'" ;
+			$content_provider->add_article ( urldecode ( $ot ) ) ;
+		}
 		$xml .= '>' ;
 		$xml .= $p->parse ( $text ) . "</article>" ;
 		return $xml ;

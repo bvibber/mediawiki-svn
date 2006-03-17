@@ -256,8 +256,8 @@ class wiki2xml
 			
 			# Removing <noinclude> stuff
 			$between = preg_replace( '?<noinclude>.*</noinclude>?msU', '', $between);
-			#$between = str_replace ( "<include>" , "" , $between ) ;
-			#$between = str_replace ( "</include>" , "" , $between ) ;
+			$between = str_replace ( "<include>" , "" , $between ) ;
+			$between = str_replace ( "</include>" , "" , $between ) ;
 			
 			# Replacing template variables. ATTENTION: Template variables within <nowiki> sections of templates will be replaced as well!
 			$this->replace_template_variables ( $between , $variables ) ;
@@ -288,8 +288,12 @@ class wiki2xml
 			if ( $text[$b] == '|' ) {
 				$right = substr ( $text , $b + 1 ) ;
 				$this->replace_template_variables ( $right , $variables ) ;
-				for ( $b = 0 ; $b < strlen ( $right ) AND substr ( $right , $b , 3 ) != '}}}' ; $b++ ) ;
-				if ( $b == strlen ( $right ) ) continue ; # Wasn't a variable - no "}}}"
+				$count = 0 ; # $count belongs to an ugly hack to fix {{PAGENAME}} and the like in template variables default values
+				for ( $b = 0 ; $b < strlen ( $right ) AND ( substr ( $right , $b , 3 ) != '}}}' OR $count > 0 ) ; $b++ ) {
+					if ( $right[$b] == '{' ) $count++ ;
+					else if ( $right[$b] == '}' ) $count-- ;
+				}
+				if ( $b >= strlen ( $right ) ) continue ; # Wasn't a variable - no "}}}"
 
 				if ( isset ( $variables[$key] ) )
 					$value = $variables[$key] ;
