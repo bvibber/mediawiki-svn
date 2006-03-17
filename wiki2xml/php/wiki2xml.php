@@ -7,7 +7,7 @@ class wiki2xml
 	var $protocols = array ( "http" , "https" , "news" , "ftp" , "irc" , "mailto" ) ;
 	var $errormessage = "ERROR!" ;
 	var $compensate_markup_errors = false;
-	var $auto_fill_templates = true ; # Will try and replace templates right inline, instead of using <template> tags; requires global $content_provider
+	var $auto_fill_templates = 'all' ; # Will try and replace templates right inline, instead of using <template> tags; requires global $content_provider
 	var $use_space_tag = true ; # Use <space/> instead of spaces before and after tags
 	var $allowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890 +-#:;.,%="\'\\' ;
 	var $directhtmltags = array (
@@ -213,6 +213,7 @@ class wiki2xml
 	# Template and template variable, utilizing parts of the internal link methods
 	function p_template ( &$a , &$xml )
 		{
+		global $content_provider ;
 		$x = "" ;
 		$b = $a ;
 		if ( !$this->nextis ( $b , "{{" ) ) return false ;
@@ -238,11 +239,19 @@ class wiki2xml
 			$vcount++ ;
 			}
 		
-		if ( $this->auto_fill_templates ) { # Do not generate <template> sections, but rather replace the template call with the template text
+		$target = array_pop ( @explode ( ">" , $target , 2 ) ) ;
+		$target = array_shift ( @explode ( "<" , $target , 2 ) ) ;
+		if ( $this->auto_fill_templates == 'all' ) $replace_template = true ;
+		else if ( $this->auto_fill_templates == 'none' ) $replace_template = false ;
+		else {
+			$found = in_array ( ucfirst ( $target ) , $this->template_list ) ;
+			if ( $found AND $this->auto_fill_templates == 'these' ) $replace_template = true ;
+			else if ( !$found AND $this->auto_fill_templates == 'notthese' ) $replace_template = true ;
+			else $replace_template = false ;
+		}
+		
+		if ( $replace_template ) { # Do not generate <template> sections, but rather replace the template call with the template text
 			# Get template text
-			global $content_provider ;
-			$target = array_pop ( @explode ( ">" , $target , 2 ) ) ;
-			$target = array_shift ( @explode ( "<" , $target , 2 ) ) ;
 			$between = "\n" . trim ( $content_provider->get_template_text ( $target ) ) ;
 			
 			# Removing <noinclude> stuff
@@ -822,7 +831,7 @@ class wiki2xml
 
 		# Replacing templates
 		$c = 0 ;
-		while ( $this->auto_fill_templates && $np->w[$c] != '>' && $np->w[$c] != '/' && $c < $np->wl )
+		while ( /*$this->auto_fill_templates != 'none' && */$np->w[$c] != '>' && $np->w[$c] != '/' && $c < $np->wl )
 			{
 			if ( $np->nextis ( $c , "{{" , false ) )
 				{

@@ -25,7 +25,8 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	$converter = new MediaWikiConverter ;
 	
 	$xmlg["site_base_url"] = $_POST['site'] ;
-	$xmlg["resolvetemplates"] = isset ( $_POST['resolvetemplates'] ) ;
+	$xmlg["resolvetemplates"] = $_POST['use_templates'] ;
+	$xmlg['templates'] = explode ( "\n" , $_POST['templates'] ) ;
 	
 	$t = microtime_float() ;
 	$xml = "" ;
@@ -99,17 +100,24 @@ Known issues:
 <li>HTML comments are removed (instead of converted into XML tags)</li>
 </ul>
 </p>
-<h2>Paste wikitext here</h2>
-<textarea rows='20' cols='80' style='width:100%' name='text'></textarea><br/>
+<h2>Paste article list or wikitext here</h2>
+<table border='0' width='100%'><tr>
+<td valign='top'><textarea rows='20' cols='80' style='width:100%' name='text'></textarea></td>
+<td width='200px' valign='top' nowrap>
+<INPUT checked type='radio' name='use_templates' value='all'>Use all templates<br/>
+<INPUT type='radio' name='use_templates' value='none'>Do not use templates<br/>
+<INPUT type='radio' name='use_templates' value='these'>Use these templates<br/>
+<INPUT type='radio' name='use_templates' value='notthese'>Use all but these templates
+<textarea rows='15' cols='30' style='width:100%' name='templates'></textarea>
+</td></tr></table>
 <table border='0'><tr>
-<td>
+<td valign='top'>
 This is
 <INPUT type='radio' name='whatsthis' value='wikitext'>raw wikitext 
 <INPUT checked type='radio' name='whatsthis' value='articlelist'>a list of articles
 <br/>
 
 Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/>/index.php<br/>
-<input type='checkbox' name='resolvetemplates' value='1' checked>Automatically resolve templates</input><br/>
 <br/><input type='submit' name='doit' value='Convert'/>
 </td><td valign='top'>
 <b>Output</b>
@@ -121,5 +129,7 @@ Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/
 {$optional}
 </form></body></html>" ;
 }
+
+#<input type='checkbox' name='resolvetemplates' value='1' checked>Automatically resolve templates</input><br/>
 
 ?>

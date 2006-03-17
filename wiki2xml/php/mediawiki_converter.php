@@ -30,6 +30,11 @@ class MediaWikiConverter {
 		$title = urlencode ( str_replace ( "_" , " " , $title ) ) ;
 		$p = new wiki2xml ;
 		$p->auto_fill_templates = $params['resolvetemplates'] ;
+		$p->template_list = array () ; ;
+		foreach ( $params['templates'] AS $x ) {
+			$x = trim ( ucfirst ( $x ) ) ;
+			if ( $x != "" ) $p->template_list[] = $x ;
+		}
 		$xml = '<article' ;
 		if ( $title != "" ) $xml .= " title='{$title}'" ;
 		$xml .= '>' ;
@@ -91,7 +96,7 @@ class MediaWikiConverter {
 	 * Requires special parameters in local.php to be set (see sample_local.php)
 	 * Uses articles2docbook_xml
 	 */
-	function articles2docbook_pdf ( &$xml , $params = array () ) {
+	function articles2docbook_pdf ( &$xml , $params = array () , $mode = "PDF" ) {
 		$docbook_xml = $this->articles2docbook_xml ( $xml , $params , true ) ;
 		
 		# Create temporary directory
@@ -110,7 +115,9 @@ class MediaWikiConverter {
 		copy ( "./gpl.xml" , $temp_dir . "/gpl.xml" ) ;
 		
 		# Call converter
-		$command = str_replace ( "%1" , $project , $params['docbook']['command_pdf'] ) ;
+		if ( $mode == "PDF" ) {
+			$command = str_replace ( "%1" , $project , $params['docbook']['command_pdf'] ) ;
+		}
 		exec ( $command ) ;
 		
 		# Cleanup xml file

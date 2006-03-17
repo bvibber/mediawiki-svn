@@ -49,12 +49,22 @@ class ContentProvider {
 		
 	
 	function get_image_url ( $name ) {
+		global $xmlg ;
+		$site = $xmlg['site_base_url'] ;
+		$parts = explode ( ".wikipedia.org/" , $site ) ;
 		$i = utf8_encode ( $name ) ;
 		$i = str_replace ( " " , "_" , $i ) ;
 		$m = md5 ( $i ) ;
 		$i = substr ( $m , 0 , 1 ) . "/" . substr ( $m , 0 , 2 ) . "/" . urlencode ( $i ) ;
-		$fn2 = "http://upload.wikimedia.org/wikipedia/commons/{$i}" ;
-		return $fn2 ;
+		if ( count ($parts ) > 1 ) {
+			$lang = array_shift ( $parts ) ;
+			$url = "http://upload.wikimedia.org/wikipedia/{$lang}/{$i}" ;
+			$url2 = "http://upload.wikimedia.org/wikipedia/commons/{$i}" ;
+			if ( !file_exists ( $url ) ) $url = $url2 ;
+		} else {
+			$url = "http://{$site}/images/{$i}" ;
+		}
+		return $url ;
 	}
 	
 }

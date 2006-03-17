@@ -107,7 +107,7 @@ class element {
 			$ns = $content_provider->get_namespace_id ( $this->link_target ) ;
 			
 			
-			if ( $ns == 6 ) { # Surround image text with newlines
+			if ( $ns == 6 ) { # Image
 				$nstext = explode ( ":" , $this->link_target , 2 ) ;
 				$target = array_pop ( $nstext ) ;
 				$nstext = array_shift ( $nstext ) ;
@@ -130,18 +130,13 @@ class element {
 				$link = "<inlinemediaobject>\n<imageobject>\n<imagedata" ;
 				$link .= " fileref=\"{$href}\"" ;
 				if ( $align != '' ) $link .= " align='{$align}'" ;
-				if ( $width != '' ) $link .= " width='$width'  height='$width' scalefit='1'" ;
+				if ( $width != '' ) $link .= " width='$width'  depth='$width' scalefit='1'" ;
 				$link .= "/>\n</imageobject>\n" ;
 				$link .= "<textobject>\n" ;
 				$link .= "<phrase>{$text}</phrase>\n" ;
 				$link .= "</textobject>\n" ;
 				$link .= "</inlinemediaobject>\n" ;
-				
-				
-				
-#				$link = $this->fix_text ( $link ) ;
-#				$link = "(" . $nstext . ":" . $link . ")" ;
-			} else if ( $ns == -9 ) { # Adding space to interlanguage link
+			} else if ( $ns == -9 ) { # Interlanguage link
 				$sub = $this->link_target ;
 				$nstext = explode ( ":" , $sub , 2 ) ;
 				$name = array_pop ( $nstext ) ;
@@ -149,7 +144,7 @@ class element {
 
 				$href = "http://{$nstext}.wikipedia.org/wiki/" . urlencode ( $name ) ;
 				$link = "<ulink url=\"{$href}\"><citetitle>{$sub}</citetitle></ulink>" ;
-			} else if ( $ns == -8 ) { # Adding newline to category link
+			} else if ( $ns == -8 ) { # Category link
 				if ( $link_text == "!" || $link_text == '*' ) $link = "" ;
 				else $link = " ({$link})" ;
 				$link = "" . $this->link_target . $link . "" ;
@@ -206,31 +201,31 @@ class element {
 				}
 			}
 			$ret .= "<title>" ;
-		} else if ( $tag == 'PARAGRAPH' ) {
+		} else if ( $tag == 'PARAGRAPH' || $tag == 'XHTML:P' ) { # Paragraph
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
-		} else if ( $tag == 'LIST' ) {
+		} else if ( $tag == 'LIST' ) { # List
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			$list_type = strtolower ( $this->attrs['TYPE'] ) ;
 			if ( $list_type == 'bullet' || $list_type == 'ident' ) $ret .= '<itemizedlist mark="opencircle">' ;
 			else if ( $list_type == 'numbered' ) $ret .= '<orderedlist numeration="arabic">' ;
-		} else if ( $tag == 'LISTITEM' ) {
+		} else if ( $tag == 'LISTITEM' ) { # List item
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			$ret .= "<listitem>\n" ;
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
-		} else if ( $tag == 'BOLD' || $tag == 'XHTML:STRONG' || $tag == 'XHTML:B' ) {
+		} else if ( $tag == 'BOLD' || $tag == 'XHTML:STRONG' || $tag == 'XHTML:B' ) { # <b> or '''
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 			$ret .= '<emphasis role="bold">' ;
 			$close_tag = "emphasis" ;
-		} else if ( $tag == 'ITALICS' || $tag == 'XHTML:EM' || $tag == 'XHTML:I' ) {
+		} else if ( $tag == 'ITALICS' || $tag == 'XHTML:EM' || $tag == 'XHTML:I' ) { # <i> or ''
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 			$ret .= '<emphasis>' ;
 			$close_tag = "emphasis" ;
-		} else if ( $tag == 'XHTML:SUB' ) {
+		} else if ( $tag == 'XHTML:SUB' ) { # <sub>
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 			$ret .= '<subscript>' ;
 			$close_tag = "subscript" ;
-		} else if ( $tag == 'XHTML:SUP' ) {
+		} else if ( $tag == 'XHTML:SUP' ) { # <sup>
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 			$ret .= '<superscript>' ;
 			$close_tag = "superscript" ;
@@ -239,7 +234,9 @@ class element {
 		}
 		
 		# Get the sub-items
-		$ret .= $this->sub_parse ( $tree ) ;
+		if ( $tag != 'MAGIC_VARIABLE' && $tag != 'TEMPLATE' ) {
+			$ret .= $this->sub_parse ( $tree ) ;
+		}
 		
 		if ( $tag == 'LIST' ) {
 			$ret .= $this->close_last ( "para" , $tree ) ;
