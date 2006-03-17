@@ -20,6 +20,8 @@ class wiki2xml
 		"div" => "xhtml:div",
 		"span" => "xhtml:span",
 		"small" => "xhtml:small",
+		"sub" => "xhtml:sub",
+		"sup" => "xhtml:sup",
 		"font" => "xhtml:font",
 		"table" => "xhtml:table",
 		"tr" => "xhtml:tr",
@@ -193,6 +195,20 @@ class wiki2xml
 		$a = $b ;
 		return true ;
 		}
+
+	function p_magic_variable ( &$a , &$xml )
+		{
+		$x = "" ;
+		$b = $a ;
+		if ( !$this->nextis ( $b , "__" ) ) return false ;
+		$varname = "" ;
+		for ( $c = $b ; $c < $this->wl && $this->w[$c] != '_' ; $c++ )
+			$varname .= $this->w[$c] ;
+		if ( !$this->nextis ( $c , "__" ) ) return false ;
+		$xml .= "<magic_variable>{$varname}</magic_variable>" ;
+		$a = $c ;
+		return true ;
+		}
 		
 	# Template and template variable, utilizing parts of the internal link methods
 	function p_template ( &$a , &$xml )
@@ -227,7 +243,7 @@ class wiki2xml
 			global $content_provider ;
 			$target = array_pop ( @explode ( ">" , $target , 2 ) ) ;
 			$target = array_shift ( @explode ( "<" , $target , 2 ) ) ;
-			$between = $content_provider->get_template_text ( $target ) ;
+			$between = "\n" . trim ( $content_provider->get_template_text ( $target ) ) ;
 			
 			# Removing <noinclude> stuff
 			$between = preg_replace( '?<noinclude>.*</noinclude>?msU', '', $between);
@@ -454,6 +470,7 @@ class wiki2xml
 			if ( $c == "\n" ) { $b++ ; break ; }
 			foreach ( $closeit AS $z )
 				if ( $this->nextis ( $b , $z , false ) ) break ;
+			if ( $c == "_" && $this->once ( $b , $x , "magic_variable" ) ) continue ;
 			if ( $c == "[" && $this->once ( $b , $x , "internal_link" ) ) continue ;
 			if ( $c == "[" && $this->once ( $b , $x , "external_link" ) ) continue ;
 			if ( $c == "{" && $this->once ( $b , $x , "template_variable" ) ) continue ;
@@ -772,6 +789,7 @@ class wiki2xml
 		$attrs = $this->preparse_attributes ( substr ( $this->w , $ob , $b - $ob + 1 ) ) ;
 		
 		# Is self closing?
+		if ( $tag == 'br' ) $selfclosing = true ; # Always regard <br> as <br/>
 		if ( $this->w[$b] == '/' )
 			{
 			$b++ ;

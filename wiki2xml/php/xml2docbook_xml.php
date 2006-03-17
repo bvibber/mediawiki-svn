@@ -47,7 +47,7 @@ class element {
 		$s = html_entity_decode ( $s ) ;
 		filter_named_entities ( $s ) ;
 		$s = str_replace ( "&" , "&amp;" , $s ) ;
-		return $s ;
+		return utf8_decode ( $s ) ;
 	}
 	
 	function add_temp_text ( &$temp ) {
@@ -83,12 +83,9 @@ class element {
 	
 	function handle_link ( &$tree ) {
 		global $content_provider ;
-		$ret = "" ;
 		$sub = $this->sub_parse ( $tree ) ;
 		$link = "" ;
 		if ( isset ( $this->attrs['TYPE'] ) AND strtolower ( $this->attrs['TYPE'] ) == 'external' ) {
-			#if ( $sub != "" ) $link .= $sub . " " ;
-			#    <ulink url="http://www.ora.com/catalog/tex/"><citetitle>Making TeXWork</citetitle></ulink>
 			$href = $this->attrs['HREF'] ;
 			if ( trim ( $sub ) == "" ) {
 				$sub = $href ;
@@ -96,10 +93,13 @@ class element {
 				$sub = explode ( '/' , array_pop ( $sub ) , 2 ) ;
 				$sub = array_shift ( $sub ) ;
 			}
+			$sub = $this->fix_text ( $sub ) ;
 			$link = "<ulink url=\"{$href}\"><citetitle>{$sub}</citetitle></ulink>" ;
-			#$link .= '[' . $this->attrs['HREF'] . ']' ;
 		} else {
-			if ( count ( $this->link_parts ) > 0 ) $link = array_pop ( $this->link_parts ) ;
+			if ( count ( $this->link_parts ) > 0 ) {
+				$link = array_pop ( $this->link_parts ) ;
+				array_push ( $this->link_parts , $link ) ; # Compensating array_pop
+			}
 			$link_text = $link ;
 			if ( $link == "" ) $link = $this->link_target ;
 			$link .= $this->link_trail ;
@@ -109,8 +109,38 @@ class element {
 			
 			if ( $ns == 6 ) { # Surround image text with newlines
 				$nstext = explode ( ":" , $this->link_target , 2 ) ;
+				$target = array_pop ( $nstext ) ;
 				$nstext = array_shift ( $nstext ) ;
-				$link = "(" . $nstext . ":" . $link . ")" ;
+				
+				$text = array_pop ( $this->link_parts ) ;
+				$is_thumb = false ;
+				$align = '' ;
+				$width = '' ;
+				foreach ( $this->link_parts AS $s ) {
+					$s = trim ( $s ) ;
+					if ( $s == 'thumb' ) {
+						$is_thumb = true ;
+						if ( $align == '' ) $align = 'right' ;
+						if ( $width == '' ) $width = '200px' ;
+					}
+				}
+				
+				$href = $content_provider->get_image_url ( $target ) ;
+				
+				$link = "<inlinemediaobject>\n<imageobject>\n<imagedata" ;
+				$link .= " fileref=\"{$href}\"" ;
+				if ( $align != '' ) $link .= " align='{$align}'" ;
+				if ( $width != '' ) $link .= " width='$width'  height='$width' scalefit='1'" ;
+				$link .= "/>\n</imageobject>\n" ;
+				$link .= "<textobject>\n" ;
+				$link .= "<phrase>{$text}</phrase>\n" ;
+				$link .= "</textobject>\n" ;
+				$link .= "</inlinemediaobject>\n" ;
+				
+				
+				
+#				$link = $this->fix_text ( $link ) ;
+#				$link = "(" . $nstext . ":" . $link . ")" ;
 			} else if ( $ns == -9 ) { # Adding space to interlanguage link
 				$sub = $this->link_target ;
 				$nstext = explode ( ":" , $sub , 2 ) ;
@@ -119,8 +149,6 @@ class element {
 
 				$href = "http://{$nstext}.wikipedia.org/wiki/" . urlencode ( $name ) ;
 				$link = "<ulink url=\"{$href}\"><citetitle>{$sub}</citetitle></ulink>" ;
-
-				#$link = $link . " " ;
 			} else if ( $ns == -8 ) { # Adding newline to category link
 				if ( $link_text == "!" || $link_text == '*' ) $link = "" ;
 				else $link = " ({$link})" ;
@@ -129,8 +157,7 @@ class element {
 				$link = "<literal>{$link}</literal>" ;
 			}
 		}
-		$ret .= $link ;
-		return $this->fix_text ( $ret ) ;
+		return $link ;
 	}
 	
 	/* 
@@ -140,7 +167,7 @@ class element {
 		global $content_provider ;
 		$ret = '';
 		$tag = $this->name ;
-		$close_emphasis = false ;
+		$close_tag = "" ;
 		
 		if ( $tag == 'SPACE' ) {
 			return ' ' ; # Speedup
@@ -194,11 +221,19 @@ class element {
 		} else if ( $tag == 'BOLD' || $tag == 'XHTML:STRONG' || $tag == 'XHTML:B' ) {
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 			$ret .= '<emphasis role="bold">' ;
-			$close_emphasis = true ;
+			$close_tag = "emphasis" ;
 		} else if ( $tag == 'ITALICS' || $tag == 'XHTML:EM' || $tag == 'XHTML:I' ) {
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 			$ret .= '<emphasis>' ;
-			$close_emphasis = true ;
+			$close_tag = "emphasis" ;
+		} else if ( $tag == 'XHTML:SUB' ) {
+			$ret .= $this->ensure_new ( "para" , $tree ) ;
+			$ret .= '<subscript>' ;
+			$close_tag = "subscript" ;
+		} else if ( $tag == 'XHTML:SUP' ) {
+			$ret .= $this->ensure_new ( "para" , $tree ) ;
+			$ret .= '<superscript>' ;
+			$close_tag = "superscript" ;
 		} else { # Default : normal text
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 		}
@@ -213,8 +248,8 @@ class element {
 		} else if ( $tag == 'LISTITEM' ) {
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			$ret .= "</listitem>\n" ;
-		} else if ( $close_emphasis ) {
-			$ret .= '</emphasis>' ;
+		} else if ( $close_tag != "" ) {
+			$ret .= "</{$close_tag}>" ;
 		} else if ( $tag == 'HEADING' ) {
 			$ret .= "</title>\n" ;
 		} else if ( $tag == 'ARTICLE' ) {

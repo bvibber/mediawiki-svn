@@ -28,6 +28,34 @@ class ContentProvider {
 		
 		return $ns ;
 	}
+
+	function copyimagefromwiki ( $lang , $imagename , $localtarget = "" )
+		{
+		if ( $localtarget == "" ) $localtarget = $imagename ;
+		$i = $imagename ;
+		$i = utf8_encode ( $i ) ;
+		$i = str_replace ( " " , "_" , $i ) ;
+		print $i . " : " ;
+		$m = md5 ( $i ) ;
+		print $m ;
+		$i = substr ( $m , 0 , 1 ) . "/" . substr ( $m , 0 , 2 ) . "/" . urlencode ( $i ) ;
+		$fn1 = "http://upload.wikimedia.org/wikipedia/{$lang}/{$i}" ;
+		$fn2 = "http://upload.wikimedia.org/wikipedia/commons/{$i}" ;
+		print "<br/>" ;
+		if ( @copy ( $fn1 , $localtarget ) ) return true ; # Trying language
+		if ( @copy ( $fn2 , $localtarget ) ) return true ; # Trying commons
+		return false ; # No such image
+		}
+		
+	
+	function get_image_url ( $name ) {
+		$i = utf8_encode ( $name ) ;
+		$i = str_replace ( " " , "_" , $i ) ;
+		$m = md5 ( $i ) ;
+		$i = substr ( $m , 0 , 1 ) . "/" . substr ( $m , 0 , 2 ) . "/" . urlencode ( $i ) ;
+		$fn2 = "http://upload.wikimedia.org/wikipedia/commons/{$i}" ;
+		return $fn2 ;
+	}
 	
 }
 

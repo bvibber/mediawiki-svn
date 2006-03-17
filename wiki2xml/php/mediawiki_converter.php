@@ -116,9 +116,16 @@ class MediaWikiConverter {
 		# Cleanup xml file
 		SureRemoveDir ( $temp_dir ) ;
 		
+		# Check if everything is OK
+		$pdf_filename = $params['docbook']['out_dir'] . '/' . $project . '/pdf/' . $project . '.pdf' ;
+		if ( !file_exists ( $pdf_filename ) ) {
+			header('Content-type: text/html; charset=utf-8');
+			print "ERROR : PDF was not created: Docbook PDF creator has failed!" ;
+			exit ;
+		}
+		
 		# Return pdf filename
-		$ret = $params['docbook']['out_dir'] . '/' . $project . '/pdf/' . $project . '.pdf' ;
-		return $ret ;
+		return $pdf_filename ;
 	}
 }
 
