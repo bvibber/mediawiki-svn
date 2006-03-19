@@ -141,7 +141,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 					$tpl  = $skin->makeLinkObj( $upt->getTalkPage(), $wgLang->getNsText( NS_TALK ) );
 					$cpl  = $skin->makeKnownLinkObj( $cpt, wfMsgHtml( 'contribslink' ) );
 					$uec  = $row->count;
-					$out .= "<li>$upl ($tpl|$cpl) [$uec]</li>";
+					$out .= "<li>$upl ($tpl | $cpl) [$uec]</li>";
 				}
 			}
 			$out .= '</ul>';
