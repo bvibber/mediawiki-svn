@@ -176,24 +176,30 @@ EOT
 	}
 
 	function showLog() {
-		global $wgOut, $wgCheckUserLog;
-		$output = '';
-		if ( $wgCheckUserLog === false ) {
+		global $wgCheckUserLog;
+		
+		if( $wgCheckUserLog === false || !file_exists( $wgCheckUserLog ) ) {
+			# No log
 			return;
-		}
-		if( file_exists( $wgCheckUserLog ) ) {
-			$log = file( $wgCheckUserLog );
-			if( !!$log ) {
-				$log = array_reverse( $log );
-				foreach( $log as $log_line ) {
-					$output .= $log_line;
-				}
-				$wgOut->addHTML( '<ul>' . $output . '</ul>' );
-			} else {
-				$wgOut->addHTML( '<p>The CheckUser log could not be read.</p>' );
-			}
 		} else {
-			$wgOut->addHTML( '<p>The CheckUser log could not be found.</p>' );
+			global $wgRequest, $wgOut;
+			if( $wgRequest->getVal( 'log' ) == 1 ) {
+				# Show the log
+				$log = file( $wgCheckUserLog );
+				if( !!$log ) {
+					$log = array_reverse( $log );
+					$output = implode( "\n", $log );
+					$wgOut->addHTML( "<ul>$output</ul>" );
+				} else {
+					$wgOut->addHTML( "<p>The log contains no items.</p>" );
+				}
+			} else {
+				# Hide the log, show a link
+				global $wgTitle, $wgUser;
+				$skin = $wgUser->getSkin();
+				$link = $skin->makeKnownLinkObj( $wgTitle, 'Show log', 'log=1' );
+				$wgOut->addHTML( "<p>$link</p>" );
+			}
 		}
 	}
 
