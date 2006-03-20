@@ -230,6 +230,20 @@ class element {
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 			$ret .= '<superscript>' ;
 			$close_tag = "superscript" ;
+		} else if ( $tag == 'XHTML:SUP' ) { # <sup>
+			$ret .= $this->ensure_new ( "para" , $tree ) ;
+			$ret .= '<superscript>' ;
+			$close_tag = "superscript" ;
+		} else if ( $tag == 'PRELINE' OR $tag == 'XHTML:PRE' ) { # <pre>
+			$ret .= $this->ensure_new ( "para" , $tree ) ;
+			$ret .= '<programlisting>' ;
+			$close_tag = "programlisting" ;
+#		} else if ( substr ( $tag , 0 , 6 ) == 'XHTML:' ) { # Other HTML
+#			$close_tag = strtolower ( substr ( $tag , 6 ) ) ;
+#			$ret .= "<" . $close_tag ;
+#			foreach ( $this->attrs AS $k => $v )
+#				$ret .= " " . strtolower ( $k ) . "='{$v}'" ;
+#			$ret .= ">" ;
 		} else { # Default : normal text
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 		}

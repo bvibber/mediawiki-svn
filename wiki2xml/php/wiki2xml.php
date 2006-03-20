@@ -27,6 +27,7 @@ class wiki2xml
 		"tr" => "xhtml:tr",
 		"th" => "xhtml:th",
 		"td" => "xhtml:td",
+		"pre" => "xhtml:pre",
 		"caption" => "xhtml:caption",
 		) ;
 		
@@ -554,7 +555,12 @@ class wiki2xml
 
 		$this->bold_italics = "" ;
 		$this->skipblanks ( $a ) ;
-		return $this->once ( $a , $xml , "restofline" ) ;
+		$x = "" ;
+		$ret = $this->once ( $a , $x , "restofline" ) ;
+		if ( $ret ) {
+			$xml .= "<preline>" . $x . "</preline>" ; 
+		}
+		return $ret ;
 		}
 
 	# Parses a block of lines each starting with ' '
@@ -564,7 +570,7 @@ class wiki2xml
 		$b = $a ;
 		if ( !$this->onceormore ( $b , $x , "preline" ) ) return false ;
 		$this->many ( $b , $x , "blankline" ) ;	
-		$xml .= "<pre>{$x}</pre>" ;
+		$xml .= "<preblock>{$x}</preblock>" ;
 		$a = $b ;
 		return true ;
 		}
@@ -692,12 +698,12 @@ class wiki2xml
 		
 		if ( isset ( $this->directhtmltags[$tag] ) )
 			{
-			$tag_open = "<" . $this->directhtmltags[$tag] . ">" ;
+			$tag_open = "<" . $this->directhtmltags[$tag] ;#. ">" ;
 			$tag_close = "</" . $this->directhtmltags[$tag] . ">" ;
 			}
 		else
 			{
-			$tag_open = "<extension name='{$tag}'>" ;
+			$tag_open = "<extension name='{$tag}'" ;# . ">" ;
 			$tag_close = "</extension>" ;
 			}
 		
@@ -705,7 +711,7 @@ class wiki2xml
 		if ( $selfclosing )
 			{
 			$a = $b ;
-			$xml .= $tag_open . $x . $tag_close ;
+			$xml .= $tag_open . $x . ">" . $tag_close ;
 			return true ;
 			}
 		
@@ -750,7 +756,7 @@ class wiki2xml
 		else $between = htmlspecialchars ( $between ) ; # No wiki parsing in here
 
 		$a = $b ;
-		$xml .= $tag_open . $x . $between . $tag_close ;
+		$xml .= $tag_open . $x . ">" . $between . $tag_close ;
 		return true ;
 		}
 	
@@ -818,9 +824,10 @@ class wiki2xml
 		$a = $b + 1 ;
 		if ( count ( $attrs ) > 0 )
 			{
-			$xml .= "<attrs>" ;
-			$xml .= implode ( "" , $attrs ) ;
-			$xml .= "</attrs>" ;
+			$xml = " " . implode ( " " , $attrs ) ;
+#			$xml .= "<attrs>" ;
+#			$xml .= implode ( "" , $attrs ) ;
+#			$xml .= "</attrs>" ;
 			}
 		return true ;
 		}
@@ -915,7 +922,8 @@ class wiki2xml
 		if ( $name == "" ) return true ;
 		
 		$a = $b ;
-		$xml .= "<attr name='{$name}'>{$value}</attr>" ;
+		$xml = "{$name}='{$value}'" ;
+		#$xml .= "<attr name='{$name}'>{$value}</attr>" ;
 		return true ;
 		}
 	
