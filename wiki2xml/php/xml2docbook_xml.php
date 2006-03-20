@@ -47,6 +47,8 @@ class element {
 		$s = html_entity_decode ( $s ) ;
 		filter_named_entities ( $s ) ;
 		$s = str_replace ( "&" , "&amp;" , $s ) ;
+		$s = str_replace ( "<" , "&lt;" , $s ) ;
+		$s = str_replace ( ">" , "&gt;" , $s ) ;
 		return utf8_decode ( $s ) ;
 	}
 	
@@ -54,6 +56,10 @@ class element {
 		$s = $temp ;
 		$temp = "" ;
 		return $this->fix_text ( $s ) ;
+	}
+	
+	function add_new ( $tag , &$tree ) {
+		return $this->ensure_new ( $tag , $tree , "<{$tag}>\n" ) ;
 	}
 	
 	function ensure_new ( $tag , &$tree , $opttag = "" ) {
@@ -74,7 +80,7 @@ class element {
 		}
 		if ( !$found ) return "" ; # Already closed
 		$ret = "\n" ;
-		while ( 1 ) {
+		while ( count ( $tree->opentags ) > 0 ) {
 			$o = array_pop ( $tree->opentags ) ;
 			$ret .= "</{$o}>\n" ;
 			if ( $o == $tag ) return $ret ;
@@ -83,7 +89,9 @@ class element {
 	
 	function handle_link ( &$tree ) {
 		global $content_provider ;
+		$ot = $tree->opentags ;
 		$sub = $this->sub_parse ( $tree ) ;
+		$tree->opentags = $ot ;
 		$link = "" ;
 		if ( isset ( $this->attrs['TYPE'] ) AND strtolower ( $this->attrs['TYPE'] ) == 'external' ) {
 			$href = htmlentities ( $this->attrs['HREF'] ) ;
@@ -161,10 +169,34 @@ class element {
 		return $link ;
 	}
 	
+	function make_tgroup ( &$tree ) {
+		$num_rows = 0 ;
+		$max_num_cols = 0 ;
+		$caption = "" ;
+		foreach ($this->children AS $key1 => $row) {
+			if (is_string($row)) continue ;
+			elseif ($row->name == 'TABLECAPTION') {
+				$caption .= $row->parse ( $tree , "DOCAPTION" ) ;
+				continue ;
+			} elseif ($row->name != 'TABLEROW') continue ;
+			$num_rows++ ;
+			$num_cols = 0 ;
+			foreach ( $row->children AS $key2 => $col ) {
+				if (is_string($col)) continue ;
+				if ($col->name != 'TABLECELL' && $col->name != 'TABLEHEAD') continue ;
+				if ( isset ( $col->attrs['COLSPAN'] ) ) $num_cols += $col->attrs['COLSPAN'] ;
+				else $num_cols++ ;
+			}
+			if ( $num_cols > $max_num_cols )
+				$max_num_cols = $num_cols ;
+		}
+		return "<title>{$caption}</title><tgroup cols='{$max_num_cols}'>" ;
+	}
+	
 	/* 
 	 * Parse the tag
 	 */
-	function parse ( &$tree ) {
+	function parse ( &$tree , $param = "" ) {
 		global $content_provider ;
 		$ret = '';
 		$tag = $this->name ;
@@ -214,6 +246,22 @@ class element {
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			$ret .= "<listitem>\n" ;
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
+			
+		} else if ( $tag == 'TABLE' ) { # Table
+			$ret .= $this->add_new ( "table" , $tree ) ;
+#			$ret .= "<title></title>" ;
+			$ret .= $this->make_tgroup ( $tree ) ;
+			$ret .= "<tbody>" ;
+		} else if ( $tag == 'TABLEROW' ) { # Tablerow
+			$ret .= $this->add_new ( "row" , $tree ) ;
+		} else if ( $tag == 'TABLEHEAD' ) { # Tablehead !!!!!
+			$ret .= $this->add_new ( "entry" , $tree ) ;
+		} else if ( $tag == 'TABLECELL' ) { # Tablecell
+			$ret .= $this->add_new ( "entry" , $tree ) ;
+		} else if ( $tag == 'TABLECAPTION' ) { # Tablecaption
+			if ( $param != "DOCAPTION" ) return "" ;
+#			$ret .= $this->add_new ( "title" , $tree ) ;
+			
 		} else if ( $tag == 'BOLD' || $tag == 'XHTML:STRONG' || $tag == 'XHTML:B' ) { # <b> or '''
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 			$ret .= '<emphasis role="bold">' ;
@@ -264,9 +312,23 @@ class element {
 			$ret .= "</{$close_tag}>" ;
 		} else if ( $tag == 'HEADING' ) {
 			$ret .= "</title>\n" ;
+			
+		} else if ( $tag == 'TABLE' ) { # Table
+			$ret .= "</tbody>" ;
+			$ret .= "</tgroup>" ;
+			$ret .= $this->close_last ( "table" , $tree ) ;
+		} else if ( $tag == 'TABLEROW' ) { # Tablerow
+			$ret .= $this->close_last ( "row" , $tree ) ;
+		} else if ( $tag == 'TABLEHEAD' ) { # Tablehead !!!!
+			$ret .= $this->close_last ( "entry" , $tree ) ;
+		} else if ( $tag == 'TABLECELL' ) { # Tablecell
+			$ret .= $this->close_last ( "entry" , $tree ) ;
+		} else if ( $tag == 'TABLECAPTION' ) { # Tablecaption
+#			$ret .= $this->close_last ( "title" , $tree ) ;
+
 		} else if ( $tag == 'ARTICLE' ) {
 			$ret .= $this->close_last ( "section" , $tree ) ;
-			$ret .= $this->close_last ( "para" , $tree ) ;
+#			$ret .= $this->close_last ( "para" , $tree ) ;
 			$ret .= "</article>";
 		}
 		

@@ -122,8 +122,7 @@ class wiki2xml
 			if ( $closeit != "}}" && $c == "\n" ) return false ;
 			if ( $c == "|" ) break ;
 			if ( $this->nextis ( $b , $closeit , false ) ) break ;
-			if ( !$istarget )
-				{
+			if ( !$istarget ) {
 				if ( $c == "[" && $this->once ( $b , $x , "internal_link" ) ) continue ;
 				if ( $c == "[" && $this->once ( $b , $x , "external_link" ) ) continue ;
 				if ( $this->once ( $b , $x , "external_freelink" ) ) continue ;
@@ -132,17 +131,20 @@ class wiki2xml
 				if ( $c == "<" && $this->once ( $b , $x , "html" ) ) continue ;
 				if ( $c == "'" && $this->p_bold ( $b , $x , "internal_link_text2" , $closeit ) ) { break ; }
 				if ( $c == "'" && $this->p_italics ( $b , $x , "internal_link_text2" , $closeit ) ) { break ; }
-				}
-			else
-				{
+			} else {
 				if ( $c == "{" && $this->once ( $b , $x , "template" ) ) continue ;
-				}
-			#if ( !$this->nextchar ( $b , $x ) ) return false ;
+			}
 			$x .= htmlspecialchars ( $c ) ;
 			$b++ ;
 			if ( $b >= $this->wl ) return false ;
 			}
-			
+		
+		if ( $closeit == "}}" && !$istarget ) {
+			$xml .= substr ( $this->w , $a , $b - $a - 1 ) ;
+			$a = $b ;
+			return true ;
+		}
+		
 		$x = trim ( str_replace ( "\n" , "" , $x ) ) ;
 		if ( $mark )
 			{
@@ -229,12 +231,13 @@ class wiki2xml
 			$l1 = strlen ( $x ) ;
 			if ( !$this->p_internal_link_text ( $b , $x , false , "}}" ) ) return false ;
 			$v = substr ( $x , $l1 ) ;
-			$v = str_replace ( "<part>" , "" , $v ) ;
-			$v = str_replace ( "</part>" , "" , $v ) ;
+#			$v = str_replace ( "<part>" , "" , $v ) ;
+#			$v = str_replace ( "</part>" , "" , $v ) ;
 			$v = explode ( "=" , $v ) ;
 			if ( count ( $v ) < 2 ) $vk = $vcount ;
-			else $vk = array_shift ( $v ) ;
+			else $vk = trim ( array_shift ( $v ) ) ;
 			$vv = array_shift ( $v ) ;
+#			print "<pre>" . htmlentities ( $vk . " : " . $vv ) . "</pre>" ;
 			$variables[$vk] = $vv ;
 			if ( !isset ( $variables[$vcount] ) ) $variables[$vcount] = $vv ;
 			$vcount++ ;
@@ -253,7 +256,10 @@ class wiki2xml
 		
 		if ( $replace_template ) { # Do not generate <template> sections, but rather replace the template call with the template text
 			# Get template text
-			$between = "\n" . trim ( $content_provider->get_template_text ( $target ) ) ;
+			$between = trim ( $content_provider->get_template_text ( $target ) ) ;
+			
+			if ( $a > 0 && explode ( "\n" , $between , 2 ) > 1 ) # Multi-lined templates get leading newline
+				$between = "\n" . $between ;
 			
 			# Removing <noinclude> stuff
 			$between = preg_replace( '?<noinclude>.*</noinclude>?msU', '', $between);
@@ -884,6 +890,16 @@ class wiki2xml
 		if ( $b >= $this->wl ) return false ;
 		$name = trim ( strtolower ( $name ) ) ;
 		
+		# Trying to catch illegal names ????????????????
+		$n2 = "" ;
+		for ( $q = 0 ; $q < strlen ( $name ) ; $q++ ) {
+			if ( $name[$q] == '_' OR ( $name[$q] >= 'a' AND $name[$q] <= 'z' ) )
+				$n2 .= $name[$q] ;
+		}
+		$name = trim ( $n2 ) ;
+		if ( $name == '' ) return false ;
+		
+		# Determining value
 		$value = "" ;
 		if ( $this->w[$b] == "=" )
 			{
@@ -955,9 +971,9 @@ class wiki2xml
 		$ret = "" ;
 		if ( count ( $attrs ) > 0 )
 			{
-			$ret .= "<attrs>" ;
-			$ret .= implode ( "" , $attrs ) ;
-			$ret .= "</attrs>" ;
+			#$ret .= "<attrs>" ;
+			$ret .= " " . implode ( " " , $attrs ) ;
+			#$ret .= "</attrs>" ;
 			}
 		return $ret ;
 		}
@@ -1046,7 +1062,7 @@ class wiki2xml
 			if ( $this->tables[count($this->tables)-1]->is_row_open ) $x .= "</tablerow>" ;
 			else $this->tables[count($this->tables)-1]->is_row_open = true ;
 			$this->tables[count($this->tables)-1]->had_row = true ;
-			$x .= "<tablerow>{$attrs}" ;
+			$x .= "<tablerow{$attrs}>" ;
 			$y = "" ;
 			$this->p_restofcell ( $b , $y ) ;
 			}
@@ -1055,8 +1071,9 @@ class wiki2xml
 			$this->skipblanks ( $b ) ;
 			if ( $this->tables[count($this->tables)-1]->is_row_open ) $x .= "</tablerow>" ;
 			$this->tables[count($this->tables)-1]->is_row_open = false ;
-			if ( !$this->p_restofcell ( $b , $x ) ) return false ;
-			$x = "<tablecaption>{$x}</tablecaption>" ;
+			$y = "" ;
+			if ( !$this->p_restofcell ( $b , $y ) ) return false ;
+			$x .= "<tablecaption>{$y}</tablecaption>" ;
 			}
 		else # TD or TH
 			{
@@ -1071,7 +1088,7 @@ class wiki2xml
 			
 			if ( substr ( $x , 0 , 1 ) == "|" ) # Crude fix to compensate for MediaWiki "tolerant" parsing
 				$x = substr ( $x , 1 ) ;
-			$x = "<{$tag}>{$attrs}{$x}</{$tag}>" ;
+			$x = "<{$tag}{$attrs}>{$x}</{$tag}>" ;
 			$this->tables[count($this->tables)-1]->had_cell = true ;
 			if ( !$this->tables[count($this->tables)-1]->is_row_open )
 				{
@@ -1163,8 +1180,8 @@ class wiki2xml
 		$nt->had_cell = false ;
 		$this->tables[count($this->tables)] = $nt ;
 		
-		$x = "<table>" ;
-		$x .= $this->scanattributes ( $b ) ;
+		$x = "<table" ;
+		$x .= $this->scanattributes ( $b ) . ">" ;
 		while ( $this->nextis ( $b , "\n" ) ) ;
 		
 		while ( !$this->p_table_close ( $b , $x ) )
@@ -1241,6 +1258,7 @@ class wiki2xml
 			$xml = str_replace ( "> " , "><space/>" , $xml ) ;
 			$xml = str_replace ( " <" , "<space/><" , $xml ) ;
 		}
+		$xml = str_replace ( '<tablerow></tablerow>' , '' , $xml ) ;
 		
 		return $xml ;
 		}
