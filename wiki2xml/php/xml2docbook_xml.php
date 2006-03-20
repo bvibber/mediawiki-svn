@@ -253,7 +253,9 @@ class element {
 			$ret .= $this->make_tgroup ( $tree ) ;
 			$ret .= "<tbody>" ;
 		} else if ( $tag == 'TABLEROW' ) { # Tablerow
+			$retl_before = strlen ( $ret ) ;
 			$ret .= $this->add_new ( "row" , $tree ) ;
+			$retl_after = strlen ( trim ( $ret ) ) ;
 		} else if ( $tag == 'TABLEHEAD' ) { # Tablehead !!!!!
 			$ret .= $this->add_new ( "entry" , $tree ) ;
 		} else if ( $tag == 'TABLECELL' ) { # Tablecell
@@ -318,7 +320,10 @@ class element {
 			$ret .= "</tgroup>" ;
 			$ret .= $this->close_last ( "table" , $tree ) ;
 		} else if ( $tag == 'TABLEROW' ) { # Tablerow
-			$ret .= $this->close_last ( "row" , $tree ) ;
+			if ( strlen ( trim ( $ret ) ) == $retl_after ) {
+				$ret = substr ( $ret , 0 , $retl_before ) ;
+				$this->close_last ( "row" , $tree ) ;
+			} else $ret .= $this->close_last ( "row" , $tree ) ;
 		} else if ( $tag == 'TABLEHEAD' ) { # Tablehead !!!!
 			$ret .= $this->close_last ( "entry" , $tree ) ;
 		} else if ( $tag == 'TABLECELL' ) { # Tablecell
