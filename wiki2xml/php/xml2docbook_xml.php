@@ -328,7 +328,7 @@ class element {
 
 		} else if ( $tag == 'ARTICLE' ) {
 			$ret .= $this->close_last ( "section" , $tree ) ;
-#			$ret .= $this->close_last ( "para" , $tree ) ;
+			$ret .= $this->close_last ( "para" , $tree ) ;
 			$ret .= "</article>";
 		}
 		

@@ -258,8 +258,8 @@ class wiki2xml
 			# Get template text
 			$between = trim ( $content_provider->get_template_text ( $target ) ) ;
 			
-			if ( $a > 0 && explode ( "\n" , $between , 2 ) > 1 ) # Multi-lined templates get leading newline
-				$between = "\n" . $between ;
+#			if ( $a > 0 && explode ( "\n" , $between , 2 ) > 1 ) # Multi-lined templates get leading newline
+#				$between = "\n" . $between ;
 			
 			# Removing <noinclude> stuff
 			$between = preg_replace( '?<noinclude>.*</noinclude>?msU', '', $between);
@@ -409,6 +409,7 @@ class wiki2xml
 		{
 		$protocol = "" ;
 		$b = $a ;
+		while ( $this->w[$b] == "{" && $this->once ( $b , $x , "template" ) ) $b = $a ;
 		foreach ( $this->protocols AS $p )
 			{
 			if ( $this->nextis ( $b , $p . "://" ) )
@@ -421,6 +422,7 @@ class wiki2xml
 		$x = "{$protocol}://" ;
 		while ( $b < $this->wl )
 			{
+			if ( $this->w[$b] == "{" && $this->once ( $b , $x , "template" ) ) continue ;
 			if ( $this->w[$b] == "\n" || $this->w[$b] == " " ) break ;
 			if ( !$mark && $this->w[$b] == "]" ) break ;
 			$x .= htmlspecialchars ( $this->w[$b] ) ;

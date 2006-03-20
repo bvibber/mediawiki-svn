@@ -125,6 +125,9 @@ class ContentProviderHTTP extends ContentProvider {
 		# Check for fix variables
 		if ( $title == "PAGENAME" ) return $this->first_title ;
 		if ( $title == "PAGENAMEE" ) return urlencode ( $this->first_title ) ;
+		if ( $title == "SERVER" ) return "http://" . array_shift ( explode ( "/" , $xmlg["site_base_url"] , 2 ) ) ;
+		if ( strtolower ( substr ( $title , 0 , 9 ) ) == "localurl:" )
+			return "/" . array_pop ( explode ( "/" , $xmlg["site_base_url"] , 2 ) ) . "/index.php?title=" . urlencode ( substr ( $title , 9 ) ) ;
 		
 		$title = trim ( $title ) ;
 		if ( count ( explode ( ":" , $title , 2 ) ) == 1 ) # Does the template title contain a ":"?
