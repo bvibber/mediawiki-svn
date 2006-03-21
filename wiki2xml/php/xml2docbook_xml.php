@@ -31,7 +31,7 @@ class element {
 				$temp .= $child ;
 			} elseif ($child->name != 'ATTRS') {
 				$ret .= $this->add_temp_text ( $temp )  ;
-				$sub = $child->parse ( $tree ) ;
+				$sub = $child->parse ( $tree , "" , $this ) ;
 				if ( $this->name == 'LINK' ) {
 					if ( $child->name == 'TARGET' ) $this->link_target = $sub ;
 					else if ( $child->name == 'PART' ) $this->link_parts[] = $sub ;
@@ -196,7 +196,7 @@ class element {
 		foreach ($this->children AS $key1 => $row) {
 			if (is_string($row)) continue ;
 			elseif ($row->name == 'TABLECAPTION') {
-				$caption .= $row->parse ( $tree , "DOCAPTION" ) ;
+				$caption .= $row->parse ( $tree , "DOCAPTION" , $this ) ;
 				continue ;
 			} elseif ($row->name != 'TABLEROW') continue ;
 			$num_rows++ ;
@@ -213,14 +213,58 @@ class element {
 		return "<title>{$caption}</title><tgroup cols='{$max_num_cols}'>" ;
 	}
 	
+	function top_tag ( &$tree ) {
+		if ( count ( $tree->opentags ) == 0 ) return "" ;
+		$x = array_pop ( $tree->opentags ) ;
+		array_push ( $tree->opentags , $x ) ;
+		return $x ;
+	}
+	
+	function convert_xhtml_tags ( &$oldtag , &$tree , &$ret ) {
+		if ( substr ( $oldtag , 0 , 6 ) != 'XHTML:' )
+			return false ;
+
+		$tag = substr ( $oldtag , 6 ) ;
+		if ( $tag == 'UL' || $tag == 'OL' ) {
+			$ot = $tree->opentags ;
+			$r = "" ;
+			$found = false ;
+			while ( count ( $ot ) > 0 ) {
+				$x = array_pop ( $ot ) ;
+				$r .= "</{$x}>\n" ;
+				$found = true ;
+				if ( $x == 'para' ) break ;
+#				if ( $x == 'listitem' ) break ;
+				$found = false ;
+			}
+			if ( !$found ) return false ;
+			$tree->opentags = $ot ;
+			if ( $tag == 'UL' ) $this->attrs['TYPE'] = "bullet" ;
+			if ( $tag == 'OL' ) $this->attrs['TYPE'] = "numbered" ;
+			$oldtag = 'LIST' ;
+			$ret .= $r ;
+			return true ;
+		} else if ( $tag == 'LI' ) {
+#			$tt = $this->top_tag ( $tree ) ;
+#			print $tt . "<br/>" ;
+#			if ( $tt != 'itemizedlist' && $tt != 'orderedlist' ) return false ;
+			$oldtag = 'LISTITEM' ;
+		}
+		
+		return false ; # No match
+	}
+	
 	/* 
 	 * Parse the tag
 	 */
-	function parse ( &$tree , $param = "" ) {
+	function parse ( &$tree , $param = "" , $root = "" ) {
 		global $content_provider ;
 		$ret = '';
 		$tag = $this->name ;
 		$close_tag = "" ;
+		
+		# Pre-fixing XHTML to wiki tags
+		$xhtml_conversion = $this->convert_xhtml_tags ( $tag , $tree , $ret ) ;
 		
 		if ( $tag == 'SPACE' ) {
 			return ' ' ; # Speedup
@@ -310,12 +354,6 @@ class element {
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 			$ret .= '<programlisting>' ;
 			$close_tag = "programlisting" ;
-#		} else if ( substr ( $tag , 0 , 6 ) == 'XHTML:' ) { # Other HTML
-#			$close_tag = strtolower ( substr ( $tag , 6 ) ) ;
-#			$ret .= "<" . $close_tag ;
-#			foreach ( $this->attrs AS $k => $v )
-#				$ret .= " " . strtolower ( $k ) . "='{$v}'" ;
-#			$ret .= ">" ;
 		} else { # Default : normal text
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 		}
@@ -325,10 +363,13 @@ class element {
 			$ret .= $this->sub_parse ( $tree ) ;
 		}
 		
+		# Close tags
 		if ( $tag == 'LIST' ) {
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			if ( $list_type == 'bullet' || $list_type == 'ident' ) $ret .= "</itemizedlist>\n" ;
 			else if ( $list_type == 'numbered' ) $ret .= "</orderedlist>\n" ;
+			if ( $xhtml_conversion )
+				$ret .= $this->ensure_new ( "para" , $tree ) ;
 		} else if ( $tag == 'LISTITEM' ) {
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			$ret .= "</listitem>\n" ;

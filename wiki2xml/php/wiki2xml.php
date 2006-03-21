@@ -296,7 +296,6 @@ class wiki2xml
 		$b = $a + 3 ;
 
 		# Name
-		$this->skipblanks ( $b ) ;
 		$start = $b ;
 		$count = 0 ;
 		while ( $b < strlen ( $text ) && ( $text[$b] != '|' || $count > 0 ) && ( substr ( $text , $b , 3 ) != '}}}' || $count > 0 ) ) {

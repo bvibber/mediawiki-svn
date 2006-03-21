@@ -105,13 +105,6 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 <html><head></head><body><form method='post'>
 <h1>Magnus' magic MediaWiki-to-XML-to-stuff converter</h1>
 <p>All written in PHP - so portable, so incredibly slow...</p>
-<p>
-Known issues:
-<ul>
-<li>In templates, {{{variables}}} used within &lt;nowiki&gt; tags will be replaced as well (too lazy to strip them)</li>
-<li>HTML comments are removed (instead of converted into XML tags)</li>
-</ul>
-</p>
 <h2>Paste article list or wikitext here</h2>
 <table border='0' width='100%'><tr>
 <td valign='top'><textarea rows='20' cols='80' style='width:100%' name='text'></textarea></td>
@@ -140,7 +133,15 @@ Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/
  <input type='checkbox' name='plaintext_prelink' value='1' checked>Put &rarr; before internal links</input>
 <br/><INPUT type='radio' name='output_format' value='docbook_xml'>DocBook XML 
 {$optional}
-</form></body></html>" ;
+</form>
+<p>
+Known issues:
+<ul>
+<li>In templates, {{{variables}}} used within &lt;nowiki&gt; tags will be replaced as well (too lazy to strip them)</li>
+<li>HTML comments are removed (instead of converted into XML tags)</li>
+</ul>
+</p>
+</body></html>" ;
 }
 
 #<input type='checkbox' name='resolvetemplates' value='1' checked>Automatically resolve templates</input><br/>
