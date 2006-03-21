@@ -138,7 +138,7 @@ class element {
 				$link = "<inlinemediaobject>\n<imageobject>\n<imagedata" ;
 				$link .= " fileref=\"{$href}\"" ;
 				if ( $align != '' ) $link .= " align='{$align}'" ;
-				if ( $width != '' ) $link .= " width='$width'  depth='$width' scalefit='1'" ;
+				if ( $width != '' ) $link .= " width='$width' depth='$width' scalefit='1'" ;
 				$link .= "/>\n</imageobject>\n" ;
 				$link .= "<textobject>\n" ;
 				$link .= "<phrase>{$text}</phrase>\n" ;

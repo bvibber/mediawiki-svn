@@ -99,6 +99,7 @@ class ContentProviderHTTP extends ContentProvider {
 		
 		# Retrieve it
 		$url = "http://" . $xmlg["site_base_url"] . "/index.php?action=raw&title=" . urlencode ( $title ) ;
+#		print "Loading from web : {$url}<br/>" ;
 		
 		$t1 = microtime_float() ;
 		$s = @file_get_contents ( $url ) ;
