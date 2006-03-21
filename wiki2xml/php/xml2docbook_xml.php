@@ -90,7 +90,7 @@ class element {
 	function handle_extensions ( &$tree ) {
 		global $content_provider ;
 		$sub = "" ;
-		$name = strtolower ( $this->attrs['NAME'] ) ;
+		$name = strtolower ( $this->attrs['EXTENSION_NAME'] ) ;
 		$ot = $tree->opentags ;
 		$tree->opentags = array () ;
 		if ( $name == 'ref' )

@@ -725,7 +725,7 @@ class wiki2xml
 			}
 		else
 			{
-			$tag_open = "<extension name='{$tag}'" ;
+			$tag_open = "<extension extension_name='{$tag}'" ;
 			$tag_close = "</extension>" ;
 			}
 		
@@ -849,9 +849,6 @@ class wiki2xml
 		if ( count ( $attrs ) > 0 )
 			{
 			$xml = " " . implode ( " " , $attrs ) ;
-#			$xml .= "<attrs>" ;
-#			$xml .= implode ( "" , $attrs ) ;
-#			$xml .= "</attrs>" ;
 			}
 		return true ;
 		}
@@ -908,13 +905,14 @@ class wiki2xml
 		if ( $b >= $this->wl ) return false ;
 		$name = trim ( strtolower ( $name ) ) ;
 		
-		# Trying to catch illegal names ????????????????
+		# Trying to catch illegal names; should be replaced with regexp
 		$n2 = "" ;
 		for ( $q = 0 ; $q < strlen ( $name ) ; $q++ ) {
 			if ( $name[$q] == '_' OR ( $name[$q] >= 'a' AND $name[$q] <= 'z' ) )
 				$n2 .= $name[$q] ;
 		}
 		$name = trim ( $n2 ) ;
+		if ( $name == 'extension_name' ) return false ; # Not allowed, because used internally
 		if ( $name == '' ) return false ;
 		
 		# Determining value
