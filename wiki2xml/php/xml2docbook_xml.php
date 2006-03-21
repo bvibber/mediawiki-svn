@@ -86,6 +86,26 @@ class element {
 			if ( $o == $tag ) return $ret ;
 		}
 	}
+
+	function handle_extensions ( &$tree ) {
+		global $content_provider ;
+		$sub = "" ;
+		$name = strtolower ( $this->attrs['NAME'] ) ;
+		$ot = $tree->opentags ;
+		$tree->opentags = array () ;
+		if ( $name == 'ref' )
+			$sub .= $this->ensure_new ( 'para' , $tree ) ;
+		$sub .= $this->sub_parse ( $tree ) ;
+		while ( count ( $tree->opentags ) > 0 )
+			$sub .= "</" . array_pop ( $tree->opentags ) . ">\n" ;
+		$tree->opentags = $ot ;
+		if ( $name == 'ref' ) {
+			$ret = '<footnote>' . $sub . '</footnote>' ;
+		} else {
+			$ret = $sub ;
+		}
+		return $ret ;
+	}
 	
 	function handle_link ( &$tree ) {
 		global $content_provider ;
@@ -213,6 +233,8 @@ class element {
 			$ret .= "<title>" . urldecode ( $title ) . "</title>\n" ;
 		} else if ( $tag == 'LINK' ) {
 			return $this->handle_link ( $tree ) ; # Shortcut
+		} else if ( $tag == 'EXTENSION' ) {
+			return $this->handle_extensions ( $tree ) ; # Shortcut
 		} else if ( $tag == 'HEADING' ) {
 			$level = count ( $tree->sections ) ;
 			$wanted = $this->attrs["LEVEL"] ;
