@@ -133,6 +133,7 @@ Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/
  <input type='checkbox' name='plaintext_prelink' value='1' checked>Put &rarr; before internal links</input>
 <br/><INPUT type='radio' name='output_format' value='docbook_xml'>DocBook XML 
 {$optional}
+</tr></table>
 </form>
 <p>
 Known issues:
