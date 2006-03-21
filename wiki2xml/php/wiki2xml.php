@@ -30,6 +30,9 @@ class wiki2xml
 		"pre" => "xhtml:pre",
 		"caption" => "xhtml:caption",
 		"cite" => "xhtml:cite",
+		"ul" => "xhtml:ul",
+		"ol" => "xhtml:ol",
+		"li" => "xhtml:li",
 		) ;
 		
 	var $w ; # The wiki text
@@ -232,13 +235,10 @@ class wiki2xml
 			$l1 = strlen ( $x ) ;
 			if ( !$this->p_internal_link_text ( $b , $x , false , "}}" ) ) return false ;
 			$v = substr ( $x , $l1 ) ;
-#			$v = str_replace ( "<part>" , "" , $v ) ;
-#			$v = str_replace ( "</part>" , "" , $v ) ;
 			$v = explode ( "=" , $v ) ;
 			if ( count ( $v ) < 2 ) $vk = $vcount ;
 			else $vk = trim ( array_shift ( $v ) ) ;
 			$vv = array_shift ( $v ) ;
-#			print "<pre>" . htmlentities ( $vk . " : " . $vv ) . "</pre>" ;
 			$variables[$vk] = $vv ;
 			if ( !isset ( $variables[$vcount] ) ) $variables[$vcount] = $vv ;
 			$vcount++ ;
@@ -269,10 +269,6 @@ class wiki2xml
 			$between = str_replace ( "<includeonly>" , "" , $between ) ;
 			$between = str_replace ( "</includeonly>" , "" , $between ) ;
 			
-#			print "<h3>{$target}</h3>" ;
-#			print "<pre>" . htmlentities ( $between ) . "</pre><hr/>" ;
-#			flush () ;
-			
 			# Replacing template variables. ATTENTION: Template variables within <nowiki> sections of templates will be replaced as well!
 			$this->replace_template_variables ( $between , $variables ) ;
 			
@@ -292,56 +288,13 @@ class wiki2xml
 		for ( $a = 0 ; $a+3 < strlen ( $text ) ; $a++ ) {
 			if ( $text[$a] != '{' ) continue ;
 			while ( $this->p_template_replace_single_variable ( $text , $a , $variables ) ) ;
-/*			if ( $text[$a+1] != '{' || $text[$a+2] != '{' || $text[$a+3] == '{' ) continue ;
-			
-			for ( $b = $a ; $b < strlen ( $text ) AND $text[$b] != '|' AND substr ( $text , $b , 3 ) != '}}}' ; $b++ ) {
-				if ( substr ( $text , $b , 3 ) == '{{{' ) {
-					$t1 = substr ( $text , 0 , $b ) ;
-					$t2 = substr ( $text , $b ) ;
-					$this->replace_template_variables ( $t2 , $variables ) ;
-					$text = $t1 . $t2 ;
-				}
-			}
-			if ( $b == strlen ( $text ) ) return ; # No more drama
-			
-			$left = substr ( $text , 0 , $a ) ;
-			$key = trim ( substr ( $text , $a + 3 , $b - $a - 3 ) ) ;
-			$value = "" ;
-			if ( $text[$b] == '|' ) {
-				$right = substr ( $text , $b + 1 ) ;
-				$this->replace_template_variables ( $right , $variables ) ;
-				$count = 0 ; # $count belongs to an ugly hack to fix {{PAGENAME}} and the like in template variables default values
-				for ( $b = 0 ; $b < strlen ( $right ) AND ( substr ( $right , $b , 3 ) != '}}}' OR $count > 0 ) ; $b++ ) {
-					if ( $right[$b] == '{' ) $count++ ;
-					else if ( $right[$b] == '}' ) $count-- ;
-				}
-				if ( $b >= strlen ( $right ) ) continue ; # Wasn't a variable - no "}}}"
-
-				if ( isset ( $variables[$key] ) )
-					$value = $variables[$key] ;
-				else
-					$value = substr ( $right , 0 , $b ) ;
-				
-				$right = substr ( $right , $b + 3 ) ;
-			} else {
-				$right = substr ( $text , $b + 3 ) ;
-				$this->replace_template_variables ( $right , $variables ) ;
-				if ( isset ( $variables[$key] ) )
-					$value = $variables[$key] ;
-			}
-			
-			$text = $left . $value . $right ;
-			return ; # Test of $text was replaced recursively*/
 		}
-#		print "done!<br/>" ; flush () ;
 	}
 	
 	function p_template_replace_single_variable ( &$text , $a , &$variables ) {
 		if ( substr ( $text , $a , 3 ) != '{{{' ) return false ;
 		$b = $a + 3 ;
 
-#		print "Replacing... <pre>" . substr ( $text , $a , 30 )  . "</pre><br/>" ; flush () ;
-		
 		# Name
 		$this->skipblanks ( $b ) ;
 		$start = $b ;
@@ -359,7 +312,6 @@ class wiki2xml
 		$value = "" ;
 		if ( $text[$b] == '|' ) {
 			$b++ ;
-#			print "Default : <pre>" . substr ( $text , $b , 15 ) . "</pre><br/>" ;
 			$start = $b ;
 			$count = 0 ;
 			while ( $b < strlen ( $text ) && ( substr ( $text , $b , 3 ) != '}}}' || $count > 0 ) ) {
@@ -370,7 +322,6 @@ class wiki2xml
 			}
 			if ( $b >= strlen ( $text ) ) return false ;
 			$value = trim ( substr ( $text , $start , $b - $start ) ) ;#$start - $b - 1 ) ) ;
-#			print "Using default value : <pre>" . $value . "</pre><br/>" ;
 		}
 		
 		// Replace
@@ -379,9 +330,6 @@ class wiki2xml
 			$value = $variables[$name] ;
 		}
 		$text = substr ( $text , 0 , $a ) . $value . substr ( $text , $b ) ;
-#		print "Replaced {$name} with {$value}<br/>" ;
-#		print "<pre>" . htmlentities ( $text ) . "</pre><hr/>" ;
-#		flush () ;
 		
 		return true ;
 	}
@@ -773,12 +721,12 @@ class wiki2xml
 		
 		if ( isset ( $this->directhtmltags[$tag] ) )
 			{
-			$tag_open = "<" . $this->directhtmltags[$tag] ;#. ">" ;
+			$tag_open = "<" . $this->directhtmltags[$tag] ;
 			$tag_close = "</" . $this->directhtmltags[$tag] . ">" ;
 			}
 		else
 			{
-			$tag_open = "<extension name='{$tag}'" ;# . ">" ;
+			$tag_open = "<extension name='{$tag}'" ;
 			$tag_close = "</extension>" ;
 			}
 		
@@ -803,6 +751,8 @@ class wiki2xml
 			$last = $b ;
 			if ( !$this->p_html_tag ( $b , $x2 , $tag2 , $closing , $selfclosing ) )
 				{
+				if ( $this->w[$b] == '{' && $this->p_template ( $b , $x ) ) # Template, doesn't alter $b or $x
+					continue ;
 				$b++ ;
 				continue ;
 				}
