@@ -48,7 +48,7 @@ class element {
 	 * Parse the tag
 	 */
 	function parse ( &$tree ) {
-		global $content_provider ;
+		global $content_provider , $wiki2xml_authors ;
 		$ret = '';
 		$tag = $this->name ;
 		$is_root = ( $tree->iter == 1 ) ;
@@ -60,6 +60,12 @@ class element {
 		else if ( $tag == 'TABLECELL' ) $ret .= "\n";
 		else if ( $tag == 'TABLECAPTION' ) $ret .= "\n";
 		else if ( $tag == 'TEMPLATE' ) return "" ; # Ignore unresolved template
+		else if ( $tag == 'AUTHOR' ) { # Catch author for display later
+			$author = $this->sub_parse ( $tree ) ;
+			if ( !in_array ( $author , $wiki2xml_authors ) )
+				$wiki2xml_authors[] = $author ;
+			return "" ;
+		}
 
 		if ( $tag == "LINK" ) {
 			$sub = $this->sub_parse ( $tree ) ;

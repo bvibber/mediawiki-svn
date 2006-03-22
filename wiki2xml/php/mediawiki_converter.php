@@ -58,8 +58,10 @@ class MediaWikiConverter {
 	 * Converts XML to plain text
 	 */
 	function articles2text ( &$xml , $params = array () ) {
+		global $wiki2xml_authors ;
 		require_once ( "./xml2txt.php" ) ;
 
+		$wiki2xml_authors = array () ;
 		$x2t = new xml2php ;
 		$tree = $x2t->scanString ( $xml ) ;
 		if ( $params['plaintext_markup'] ) {
@@ -70,7 +72,17 @@ class MediaWikiConverter {
 		if ( $params['plaintext_prelink'] ) {
 			$tree->pre_link = "&rarr;" ;
 		}
-		return trim ( $tree->parse ( $tree ) ) ;
+		
+		$text = trim ( $tree->parse ( $tree ) ) ;
+		
+		$authors = "" ;
+		if ( count ( $wiki2xml_authors ) > 0 ) {
+			asort ( $wiki2xml_authors ) ;
+			$authors = "\n--------------------\nTHE ABOVE TEXT IS LICENSED UNDER THE GFDL. CONTRIBUTORS INCLUDE:\n\n" .
+						implode ( ", " , $wiki2xml_authors ) ;
+		}
+		
+		return $text . $authors ;
 	}
 	
 	/**
