@@ -24,6 +24,7 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	$content_provider = new ContentProviderHTTP ;
 	$converter = new MediaWikiConverter ;
 	
+	$xmlg["book_title"] = $_POST['document_title'] ;
 	$xmlg["site_base_url"] = $_POST['site'] ;
 	$xmlg["resolvetemplates"] = $_POST['use_templates'] ;
 	$xmlg['templates'] = explode ( "\n" , $_POST['templates'] ) ;
@@ -126,9 +127,10 @@ This is
 <br/>
 
 Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/>/index.php<br/>
+Title : <input type='text' name='document_title' value='' size=40/><br/>
 <input type='checkbox' name='add_gfdl' value='1' checked>Include GFDL (for some output formats)</input><br/>
-<br/><input type='submit' name='doit' value='Convert'/>
-</td><td valign='top'>
+<input type='submit' name='doit' value='Convert'/>
+</td><td valign='top' style='border-left:1px black solid'>
 <b>Output</b>
 <br/><INPUT checked type='radio' name='output_format' value='xml'>XML 
 <br/><INPUT type='radio' name='output_format' value='text'>Plain text 
