@@ -1123,11 +1123,14 @@ class wiki2xml
 		else if ( $newline && $this->nextis ( $b , "|+" ) ) # Table caption
 			{
 			$this->skipblanks ( $b ) ;
+			$attrs = $this->tryfindparams ( $b ) ;
+			$this->skipblanks ( $b ) ;
 			if ( $this->tables[count($this->tables)-1]->is_row_open ) $x .= "</tablerow>" ;
 			$this->tables[count($this->tables)-1]->is_row_open = false ;
+
 			$y = "" ;
 			if ( !$this->p_restofcell ( $b , $y ) ) return false ;
-			$x .= "<tablecaption>{$y}</tablecaption>" ;
+			$x .= "<tablecaption{$attrs}>{$y}</tablecaption>" ;
 			}
 		else # TD or TH
 			{
