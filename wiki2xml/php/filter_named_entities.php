@@ -260,6 +260,7 @@ $html_named_entities_mapping = array (
 "clubs"=>9827,
 "hearts"=>9829,
 "diams"=>9830,
+"32"=>32,
 );
 
 function utf8_chr($code)

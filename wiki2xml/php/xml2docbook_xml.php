@@ -113,7 +113,7 @@ class element {
 		$sub = $this->sub_parse ( $tree ) ;
 		$tree->opentags = $ot ;
 		$link = "" ;
-		if ( isset ( $this->attrs['TYPE'] ) AND strtolower ( $this->attrs['TYPE'] ) == 'external' ) {
+		if ( isset ( $this->attrs['TYPE'] ) AND strtolower ( $this->attrs['TYPE'] ) == 'external' ) { # External link
 			$href = htmlentities ( $this->attrs['HREF'] ) ;
 			if ( trim ( $sub ) == "" ) {
 				$sub = $href ;
@@ -123,7 +123,7 @@ class element {
 			}
 			$sub = $this->fix_text ( $sub ) ;
 			$link = "<ulink url=\"{$href}\"><citetitle>{$sub}</citetitle></ulink>" ;
-		} else {
+		} else { # Internal link
 			if ( count ( $this->link_parts ) > 0 ) {
 				$link = array_pop ( $this->link_parts ) ;
 				array_push ( $this->link_parts , $link ) ; # Compensating array_pop
@@ -155,15 +155,22 @@ class element {
 				
 				$href = $content_provider->get_image_url ( $target ) ;
 				
-				$link = "<inlinemediaobject>\n<imageobject>\n<imagedata" ;
+				$link = "<mediaobject>\n<imageobject>\n<imagedata" ;
 				$link .= " fileref=\"{$href}\"" ;
-				if ( $align != '' ) $link .= " align='{$align}'" ;
-				if ( $width != '' ) $link .= " width='$width' depth='$width' scalefit='1'" ;
+#				if ( $align != '' ) $link .= " align='{$align}'" ; # Deactivated until DocBook supports floating images; meanwhile:
+				if ( $align == 'center' ) $link .= " align='{$align}'" ;
+				if ( $width != '' ) $link .= " width='$width' scalefit='1'" ; # depth='$width' 
 				$link .= "/>\n</imageobject>\n" ;
 				$link .= "<textobject>\n" ;
 				$link .= "<phrase>{$text}</phrase>\n" ;
 				$link .= "</textobject>\n" ;
-				$link .= "</inlinemediaobject>\n" ;
+				if ( $is_thumb ) {
+					$link .= "<caption>\n" ;
+					if ( substr ( $text , 0 , 5 ) == '<para' ) $link .= $text ; # Para-noia!
+					else $link .= "<para>{$text}</para>\n" ;
+					$link .= "</caption>\n" ;
+				}
+				$link .= "</mediaobject>\n" ;
 			} else if ( $ns == -9 ) { # Interlanguage link
 				$sub = $this->link_target ;
 				$nstext = explode ( ":" , $sub , 2 ) ;
@@ -312,7 +319,8 @@ class element {
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			$ret .= "<listitem>\n" ;
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
-			
+		
+		
 		} else if ( $tag == 'TABLE' ) { # Table
 			$ret .= $this->add_new ( "table" , $tree ) ;
 #			$ret .= "<title></title>" ;
@@ -322,13 +330,15 @@ class element {
 			$retl_before = strlen ( $ret ) ;
 			$ret .= $this->add_new ( "row" , $tree ) ;
 			$retl_after = strlen ( trim ( $ret ) ) ;
-		} else if ( $tag == 'TABLEHEAD' ) { # Tablehead !!!!!
+		} else if ( $tag == 'TABLEHEAD' ) { # Tablehead
 			$ret .= $this->add_new ( "entry" , $tree ) ;
 		} else if ( $tag == 'TABLECELL' ) { # Tablecell
+			$old_ret = $ret ;
 			$ret .= $this->add_new ( "entry" , $tree ) ;
 		} else if ( $tag == 'TABLECAPTION' ) { # Tablecaption
 			if ( $param != "DOCAPTION" ) return "" ;
 #			$ret .= $this->add_new ( "title" , $tree ) ;
+		
 			
 		} else if ( $tag == 'BOLD' || $tag == 'XHTML:STRONG' || $tag == 'XHTML:B' ) { # <b> or '''
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
@@ -358,10 +368,16 @@ class element {
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 		}
 		
+		
+		
 		# Get the sub-items
+		$length_between = strlen ( $ret ) ;
 		if ( $tag != 'MAGIC_VARIABLE' && $tag != 'TEMPLATE' ) {
 			$ret .= $this->sub_parse ( $tree ) ;
 		}
+		$length_between = strlen ( $ret ) - $length_between ;
+		
+		
 		
 		# Close tags
 		if ( $tag == 'LIST' ) {
@@ -377,7 +393,8 @@ class element {
 			$ret .= "</{$close_tag}>" ;
 		} else if ( $tag == 'HEADING' ) {
 			$ret .= "</title>\n" ;
-			
+		
+		
 		} else if ( $tag == 'TABLE' ) { # Table
 			$ret .= "</tbody>" ;
 			$ret .= "</tgroup>" ;
@@ -391,8 +408,10 @@ class element {
 			$ret .= $this->close_last ( "entry" , $tree ) ;
 		} else if ( $tag == 'TABLECELL' ) { # Tablecell
 			$ret .= $this->close_last ( "entry" , $tree ) ;
+#			if ( $length_between == 0 ) $ret = $old_ret ;
 		} else if ( $tag == 'TABLECAPTION' ) { # Tablecaption
 #			$ret .= $this->close_last ( "title" , $tree ) ;
+
 
 		} else if ( $tag == 'ARTICLE' ) {
 			$ret .= $this->close_last ( "section" , $tree ) ;

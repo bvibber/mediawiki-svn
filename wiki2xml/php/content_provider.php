@@ -60,6 +60,7 @@ class ContentProvider {
 	
 	function get_image_url ( $name ) {
 		global $xmlg ;
+		$name = ucfirst ( $name ) ;
 		$site = $xmlg['site_base_url'] ;
 		$parts = explode ( ".wikipedia.org/" , $site ) ;
 		$i = utf8_encode ( $name ) ;

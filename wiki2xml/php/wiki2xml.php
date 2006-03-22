@@ -23,6 +23,7 @@ class wiki2xml
 		"sub" => "xhtml:sub",
 		"sup" => "xhtml:sup",
 		"font" => "xhtml:font",
+		"center" => "xhtml:center",
 		"table" => "xhtml:table",
 		"tr" => "xhtml:tr",
 		"th" => "xhtml:th",
@@ -796,10 +797,14 @@ class wiki2xml
 	 * Converts the lines within a <gallery> to wiki tables
 	 */
 	function gallery2wiki ( &$text ) {
-		$lines = explode ( "\n" , $text ) ;
+		$lines = explode ( "\n" , trim ( $text ) ) ;
 		$text = "{| style='border-collapse: collapse; border: 1px solid grey;'\n" ;
 		$cnt = 0 ;
 		foreach ( $lines AS $line ) {
+			if ( $cnt >= 4 ) {
+				$cnt = 0 ;
+				$text .= "|--\n" ;
+			}
 			$a = explode ( "|" , $line , 2 ) ;
 			if ( count ( $a ) == 1 ) { # Generate caption from file name
 				$b = $a[0] ;
@@ -813,10 +818,6 @@ class wiki2xml
 			$caption = array_pop ( $a ) ;
 			$text .= "|valign=top align=left|[[{$link}|thumb|center|]]<br/>{$caption}\n" ;
 			$cnt++ ;
-			if ( $cnt >= 4 ) {
-				$cnt = 0 ;
-				$text .= "|--\n" ;
-			}
 		}
 		$text .= "|}\n" ;
 	}
