@@ -89,8 +89,10 @@ class MediaWikiConverter {
 	 * Converts XML to DocBook XML
 	 */
 	function articles2docbook_xml ( &$xml , $params = array () , $use_gfdl = false ) {
+		global $wiki2xml_authors ;
 		require_once ( "./xml2docbook_xml.php" ) ;
 
+		$wiki2xml_authors = array () ;
 		$x2t = new xml2php ;
 		$tree = $x2t->scanString ( $xml ) ;
 
@@ -106,10 +108,40 @@ class MediaWikiConverter {
 			$out .= "\n[<!ENTITY gfdl SYSTEM \"gfdl.xml\">]\n" ;
 		}
 		$out .= ">\n\n<book>\n" ;
-		$out .= trim ( $tree->parse ( $tree ) ) ;
+		$out2 = trim ( $tree->parse ( $tree ) ) ;
+		
+		$out .= "<bookinfo>" ;
+		$out .= "<title>" . $params['book_title'] . "</title>" ;
+		if ( count ( $wiki2xml_authors ) > 0 ) {
+			asort ( $wiki2xml_authors ) ;
+			$out .= "<authorgroup>" ;
+			foreach ( $wiki2xml_authors AS $author ) {
+				$out .= "<author><othername>{$author}</othername></author>" ;
+			}
+			$out .= "</authorgroup>" ;
+		}
+		$out .= "<legalnotice><para>" ;
+		$out .= "Permission to use, copy, modify and distribute this document under the GNU Free Documentation License (GFDL)." ;
+		$out .= "</para></legalnotice>" ;
+		$out .= "</bookinfo>" ;
+		
+		$out .= $out2 ;
+/*		
+		if ( count ( $wiki2xml_authors ) > 0 ) {
+			asort ( $wiki2xml_authors ) ;
+			$out .= "<appendix>" ;
+			$out .= "<title>List of contributors</title>" ;
+			$out .= "<para>All text in this document is licensed under the GFDL. The following is a list of contributors (anonymous editors are not listed).</para>" ;
+			$out .= "<para>" ;
+			$out .= implode ( ", " , $wiki2xml_authors ) ;
+			$out .= "</para>" ;
+			$out .= "</appendix>" ;
+		}
+*/
 		if ( $use_gfdl ) {
 			$out .= "\n&gfdl;\n" ;
 		}
+		
 		$out .= "\n</book>\n" ;
 
 		return $out ;

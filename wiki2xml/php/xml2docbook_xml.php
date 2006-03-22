@@ -277,6 +277,11 @@ class element {
 			return ' ' ; # Speedup
 		} else if ( $tag == 'ARTICLES' ) {
 			# dummy, to prevent default action to be called
+		} else if ( $tag == 'AUTHORS' ) {
+			# dummy, to prevent default action to be called
+		} else if ( $tag == 'AUTHOR' ) {
+			add_author ( $this->sub_parse ( $tree ) ) ;
+			return "" ;
 		} else if ( $tag == 'ARTICLE' ) {
 			$title = isset ( $this->attrs["TITLE"] ) ? $this->attrs["TITLE"] : "Untiteled" ;
 			$id = str_replace ( "+" , "_" , $title ) ;
