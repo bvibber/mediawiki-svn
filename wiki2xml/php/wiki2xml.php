@@ -767,6 +767,12 @@ class wiki2xml
 		$between = substr ( $this->w , $begin , $last - $begin ) ;
 		if ( $tag != "pre" && $tag != "nowiki" && $tag != "math" ) 
 			{
+			if ( $tag == 'gallery' ) {
+				$this->gallery2wiki ( $between ) ;
+				$tag_open = "" ;
+				$tag_close = "" ;
+			}
+			
 			# Parse the part in between the tags
 			$subparser = new wiki2xml ;
 			$between2 = $subparser->parse ( $between ) ;
@@ -780,9 +786,40 @@ class wiki2xml
 		else $between = htmlspecialchars ( $between ) ; # No wiki parsing in here
 
 		$a = $b ;
-		$xml .= $tag_open . $x . ">" . $between . $tag_close ;
+		if ( $tag_open != "" ) $xml .= $tag_open . $x . ">" ;
+		$xml .= $between ;
+		if ( $tag_close != "" ) $xml .= $tag_close ;
 		return true ;
 		}
+	
+	/**
+	 * Converts the lines within a <gallery> to wiki tables
+	 */
+	function gallery2wiki ( &$text ) {
+		$lines = explode ( "\n" , $text ) ;
+		$text = "{| style='border-collapse: collapse; border: 1px solid grey;'\n" ;
+		$cnt = 0 ;
+		foreach ( $lines AS $line ) {
+			$a = explode ( "|" , $line , 2 ) ;
+			if ( count ( $a ) == 1 ) { # Generate caption from file name
+				$b = $a[0] ;
+				$b = explode ( ":" , $b , 2 ) ;
+				$b = array_pop ( $b ) ;
+				$b = explode ( "." , $b ) ;
+				array_pop ( $b ) ;
+				$a[] = implode ( "." , $b ) ;
+			}
+			$link = array_shift ( $a ) ;
+			$caption = array_pop ( $a ) ;
+			$text .= "|valign=top align=left|[[{$link}|thumb|center|]]<br/>{$caption}\n" ;
+			$cnt++ ;
+			if ( $cnt >= 4 ) {
+				$cnt = 0 ;
+				$text .= "|--\n" ;
+			}
+		}
+		$text .= "|}\n" ;
+	}
 	
 	function strip_single_paragraph ( $s )
 		{
