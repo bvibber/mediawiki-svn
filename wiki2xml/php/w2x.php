@@ -32,14 +32,17 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	$t = microtime_float() ;
 	$xml = "" ;
 	if ( $_POST['whatsthis'] == "wikitext" ) {
+		$wiki2xml_authors = array () ;
 		$xml = $converter->article2xml ( "" , $wikitext , $xmlg ) ;
 	} else {
 		$t = microtime_float() ;
 		$articles = explode ( "\n" , $wikitext ) ;
 		foreach ( $articles AS $a ) {
+			$wiki2xml_authors = array () ;
 			$a = trim ( $a ) ;
 			if ( $a == "" ) continue ;
 			$wikitext = $content_provider->get_wiki_text ( $a ) ;
+			add_authors ( $content_provider->authors ) ;
 			$xml .= $converter->article2xml ( $a , $wikitext , $xmlg ) ;
 		}
 	}

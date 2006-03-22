@@ -27,7 +27,7 @@ class MediaWikiConverter {
 	 * Converts a single article in MediaWiki format to XML
 	 */
 	function article2xml ( $title , &$text , $params = array () ) {
-		global $content_provider ;
+		global $content_provider , $wiki2xml_authors ;
 		$ot = $title ;
 		$title = urlencode ( $title ) ;
 		$p = new wiki2xml ;
@@ -43,7 +43,14 @@ class MediaWikiConverter {
 			$content_provider->add_article ( urldecode ( $ot ) ) ;
 		}
 		$xml .= '>' ;
-		$xml .= $p->parse ( $text ) . "</article>" ;
+		$xml .= $p->parse ( $text ) ;
+		if ( count ( $wiki2xml_authors ) > 0 ) {
+			$xml .= "<authors>" ;
+			foreach ( $wiki2xml_authors AS $author )
+				$xml .= "<author>{$author}</author>" ;
+			$xml .= "</authors>" ;
+		}
+		$xml .= "</article>" ;
 		return $xml ;
 	}
 	

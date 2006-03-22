@@ -2,6 +2,8 @@
 # Copyright by Magnus Manske (2005)
 # Released under GPL
 
+$wiki2xml_authors = array () ;
+
 class wiki2xml
 	{
 	var $protocols = array ( "http" , "https" , "news" , "ftp" , "irc" , "mailto" ) ;
@@ -259,6 +261,7 @@ class wiki2xml
 		if ( $replace_template ) { # Do not generate <template> sections, but rather replace the template call with the template text
 			# Get template text
 			$between = trim ( $content_provider->get_template_text ( $target ) ) ;
+			add_authors ( $content_provider->authors ) ;
 			
 #			if ( $a > 0 && explode ( "\n" , $between , 2 ) > 1 ) # Multi-lined templates get leading newline
 #				$between = "\n" . $between ;

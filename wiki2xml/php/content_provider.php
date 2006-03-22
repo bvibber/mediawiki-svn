@@ -4,6 +4,7 @@
 class ContentProvider {
 	var $load_time = 0 ; # Time to load text and templates, to judge actual parsing speed
 	var $article_list = array () ;
+	var $authors = array () ;
 	
 	function get_wiki_text ( $title , $do_cache = false ) {} # dummy
 	function get_template_text ( $title ) {} # dummy
@@ -88,9 +89,48 @@ class ContentProvider {
 class ContentProviderHTTP extends ContentProvider {
 	var $article_cache = array () ;
 	var $first_title = "" ;
+	var $load_error ;
+	
+	function between_tag ( $tag , &$text ) {
+		$a = explode ( "<{$tag}" , $text , 2 ) ;
+		if ( count ( $a ) == 1 ) return "" ;
+		$a = explode ( ">" , array_pop ( $a ) , 2 ) ;
+		$a = explode ( "</{$tag}>" , array_pop ( $a ) , 2 ) ;
+		return array_shift ( $a ) ;
+	}
+	
+	function do_get_contents ( $title ) {
+		global $xmlg ;
+		$use_se = false ;
+		if ( isset ( $xmlg["use_special_export"] ) && $xmlg["use_special_export"] == 1 ) $use_se = true ;
+		
+		if ( $use_se ) {
+			$url = "http://" . $xmlg["site_base_url"] . "/index.php?listauthors=1&title=Special:Export/" . urlencode ( $title ) ;
+		} else {
+			$url = "http://" . $xmlg["site_base_url"] . "/index.php?action=raw&title=" . urlencode ( $title ) ;
+		}
+		$s = @file_get_contents ( $url ) ;
+
+		if ( $use_se ) {
+			$text = $this->between_tag ( "text" , $s ) ;
+			$this->authors = array () ;
+			$authors = $this->between_tag ( "contributors" , $s ) ;
+			$authors = explode ( "</contributor><contributor>" , $authors ) ;
+			foreach ( $authors AS $author ) {
+				
+				$id = $this->between_tag ( "id" , $author ) ;
+				if ( $id == '0' || $id == '' ) continue ; # Skipping IPs and (possibly) broken entries
+				$name = $this->between_tag ( "username" , $author ) ;
+				$this->authors[] = $name ;
+			}
+			$s = $text ;
+		}
+		return $s ;
+	}
 	
 	function get_wiki_text ( $title , $do_cache = false ) {
 		global $xmlg ;
+		$load_error = false ;
 		$title = trim ( $title ) ;
 		if ( $title == "" ) return "" ; # Just in case...
 		if ( isset ( $this->article_cache[$title] ) ) # Already in the cache
@@ -99,18 +139,14 @@ class ContentProviderHTTP extends ContentProvider {
 		if ( $this->first_title == "" ) $this->first_title = $title ;
 		
 		# Retrieve it
-		$url = "http://" . $xmlg["site_base_url"] . "/index.php?action=raw&title=" . urlencode ( $title ) ;
-#		print "Loading from web : {$url}<br/>" ;
-		
 		$t1 = microtime_float() ;
-		$s = @file_get_contents ( $url ) ;
+		$s = $this->do_get_contents ( $title ) ;
 		if ( strtoupper ( substr ( $s , 0 , 9 ) ) == "#REDIRECT" ) {
 			$t2 = explode ( "[[" , $s , 2 ) ;
 			$t2 = array_pop ( $t2 ) ;
 			$t2 = explode ( "]]" , $t2 , 2 ) ;
 			$t2 = array_shift ( $t2 ) ;
-			$url = "http://" . $xmlg["site_base_url"] . "/index.php?action=raw&title=" . urlencode ( $t2 ) ;
-			$s = @file_get_contents ( $url ) ;
+			$s = $this->do_get_contents ( $t2 ) ;
 		}
 		$this->load_time += microtime_float() - $t1 ;
 		
