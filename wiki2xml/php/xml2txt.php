@@ -78,7 +78,8 @@ class element {
 				
 				if ( $ns == 6 ) { # Surround image text with newlines
 					$nstext = explode ( ":" , $this->link_target , 2 ) ;
-					$nstext = array_shift ( $nstext ) ;
+					$nstext = "" ;
+#					array_shift ( $nstext ) ;
 					$link = "\m(" . $nstext . ":" . $link . ")\n" ;
 				} else if ( $ns == -9 ) { # Adding newline to interlanguage link
 					$link = "\m" . $link ;
@@ -118,6 +119,9 @@ class element {
 				else array_push ( $tree->list , $x + 1 ) ; # Increase last counter
 			}
 		} else {
+			if ( $tag == "ARTICLE" && isset ( $this->attrs["TITLE"] ) ) {
+				$ret .= strtoupper ( urldecode ( $this->attrs["TITLE"] ) ) . "\n" ;
+			}
 			$ret .= $this->sub_parse ( $tree ) ;
 			if ( $tag == "TABLEHEAD" || $tag == "XHTML:B" || $tag == "XHTML:STRONG" || $tag == "BOLD" ) $ret = $tree->bold . $ret . $tree->bold ;
 			else if ( $tag == "XHTML:I" || $tag == "XHTML:EM" || $tag == "ITALICS" ) $ret = $tree->italics . $ret . $tree->italics ;
