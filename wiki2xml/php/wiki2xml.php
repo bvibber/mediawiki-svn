@@ -1,4 +1,4 @@
-<?
+<?php
 # Copyright by Magnus Manske (2005)
 # Released under GPL
 
