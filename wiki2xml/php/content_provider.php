@@ -64,6 +64,7 @@ class ContentProvider {
 		$name = ucfirst ( $name ) ;
 		$site = $xmlg['site_base_url'] ;
 		$parts = explode ( ".wikipedia.org/" , $site ) ;
+		$parts2 = explode ( ".wikibooks.org/" , $site ) ;
 		$i = utf8_encode ( $name ) ;
 		$i = str_replace ( " " , "_" , $i ) ;
 		$m = md5 ( $i ) ;
@@ -75,7 +76,13 @@ class ContentProvider {
 			$h = @fopen ( $url , "r" ) ;
 			if ( $h === false ) $url = $url2 ;
 			else fclose ( $h ) ;
-#			if ( !file_exists ( $url ) ) $url = $url2 ;
+		} else if ( count ($parts2 ) > 1 ) {
+			$lang = array_shift ( $parts2 ) ;
+			$url = "http://upload.wikimedia.org/wikibooks/{$lang}/{$i}" ;
+			$url2 = "http://upload.wikimedia.org/wikipedia/commons/{$i}" ;
+			$h = @fopen ( $url , "r" ) ;
+			if ( $h === false ) $url = $url2 ;
+			else fclose ( $h ) ;
 		} else {
 			$url = "http://{$site}/images/{$i}" ;
 		}
@@ -94,8 +101,10 @@ class ContentProviderHTTP extends ContentProvider {
 	function between_tag ( $tag , &$text ) {
 		$a = explode ( "<{$tag}" , $text , 2 ) ;
 		if ( count ( $a ) == 1 ) return "" ;
-		$a = explode ( ">" , array_pop ( $a ) , 2 ) ;
+		$a = explode ( ">" , " " . array_pop ( $a ) , 2 ) ;
+		if ( count ( $a ) == 1 ) return "" ;
 		$a = explode ( "</{$tag}>" , array_pop ( $a ) , 2 ) ;
+		if ( count ( $a ) == 1 ) return "" ;
 		return array_shift ( $a ) ;
 	}
 	
@@ -112,12 +121,11 @@ class ContentProviderHTTP extends ContentProvider {
 		$s = @file_get_contents ( $url ) ;
 
 		if ( $use_se ) {
-			$text = $this->between_tag ( "text" , $s ) ;
+			$text = html_entity_decode ( $this->between_tag ( "text" , $s ) ) ;
 			$this->authors = array () ;
 			$authors = $this->between_tag ( "contributors" , $s ) ;
 			$authors = explode ( "</contributor><contributor>" , $authors ) ;
 			foreach ( $authors AS $author ) {
-				
 				$id = $this->between_tag ( "id" , $author ) ;
 				if ( $id == '0' || $id == '' ) continue ; # Skipping IPs and (possibly) broken entries
 				$name = $this->between_tag ( "username" , $author ) ;

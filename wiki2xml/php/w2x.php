@@ -42,9 +42,13 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 			$wiki2xml_authors = array () ;
 			$a = trim ( $a ) ;
 			if ( $a == "" ) continue ;
-			$wikitext = $content_provider->get_wiki_text ( $a ) ;
+			$a = explode ( '|' , $a ) ;
+			if ( count ( $a ) == 1 ) $a[] = $a[0] ;
+			$title_page = trim ( array_shift ( $a ) ) ;
+			$title_name = trim ( array_pop ( $a ) ) ;
+			$wikitext = $content_provider->get_wiki_text ( $title_page ) ;
 			add_authors ( $content_provider->authors ) ;
-			$xml .= $converter->article2xml ( $a , $wikitext , $xmlg ) ;
+			$xml .= $converter->article2xml ( $title_name , $wikitext , $xmlg ) ;
 		}
 	}
 	$t = microtime_float() - $t ;
@@ -108,7 +112,7 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	print "
 <html><head></head><body><form method='post'>
 <h1>Magnus' magic MediaWiki-to-XML-to-stuff converter</h1>
-<p>All written in PHP - so portable, so incredibly slow...</p>
+<p>All written in PHP - so portable, <s>so incredibly slow...</s> <i>about as fast as the original MediaWiki parser!</i></p>
 <h2>Paste article list or wikitext here</h2>
 <table border='0' width='100%'><tr>
 <td valign='top'><textarea rows='20' cols='80' style='width:100%' name='text'></textarea></td>

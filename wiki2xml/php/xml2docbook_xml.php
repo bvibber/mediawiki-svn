@@ -73,7 +73,7 @@ class element {
 		else return $opttag ;
 	}
 	
-	function close_last ( $tag , &$tree ) {
+	function close_last ( $tag , &$tree , $all = false ) {
 		$found = false ;
 		foreach ( $tree->opentags AS $o ) {
 			if ( $o == $tag ) $found = true ;
@@ -83,7 +83,10 @@ class element {
 		while ( count ( $tree->opentags ) > 0 ) {
 			$o = array_pop ( $tree->opentags ) ;
 			$ret .= "</{$o}>\n" ;
-			if ( $o == $tag ) return $ret ;
+			if ( $o == $tag ) {
+				if ( $all ) return $ret . $this->close_last ( $tag , $tree , true ) ;
+				else return $ret ;
+			}
 		}
 	}
 
@@ -103,6 +106,19 @@ class element {
 			$ret = '<footnote>' . $sub . '</footnote>' ;
 		} else {
 			$ret = $sub ;
+		}
+		return $ret ;
+	}
+	
+	function internal_id ( $title ) {
+		#return urlencode ( $title ) ;
+		$ret = "" ;
+		for ( $a = 0 ; $a < strlen ( $title ) ; $a++ ) {
+			if ( ( $title[$a] >= 'A' && $title[$a] <= 'Z' ) ||
+				 ( $title[$a] >= 'a' && $title[$a] <= 'z' ) ||
+				 ( $title[$a] >= '0' && $title[$a] <= '9' ) )
+				$ret .= $title[$a] ;
+			else $ret .= "_" ;
 		}
 		return $ret ;
 	}
@@ -177,7 +193,7 @@ class element {
 				$name = array_pop ( $nstext ) ;
 				$nstext = array_shift ( $nstext ) ;
 
-				$href = "http://{$nstext}.wikipedia.org/wiki/" . urlencode ( $name ) ;
+				$href = "http://{$nstext}.wikipedia.org/wiki/" . htmlentities ( $name ) ;
 				$link = "<ulink url=\"{$href}\"><citetitle>{$sub}</citetitle></ulink>" ;
 			} else if ( $ns == -8 ) { # Category link
 				if ( $link_text == "!" || $link_text == '*' ) $link = "" ;
@@ -185,7 +201,7 @@ class element {
 				$link = "" . $this->link_target . $link . "" ;
 			} else {
 				if ( $content_provider->is_an_article ( $this->link_target ) ) {
-					$lt = urlencode ( trim ( $this->link_target ) ) ;
+					$lt = $this->internal_id ( trim ( $this->link_target ) ) ;
 					$lt = str_replace ( "+" , "_" , $lt ) ;
 					$link = "<link linkend='{$lt}'>{$link}</link>" ;
 				} else {
@@ -284,7 +300,7 @@ class element {
 			return "" ;
 		} else if ( $tag == 'ARTICLE' ) {
 			$title = isset ( $this->attrs["TITLE"] ) ? $this->attrs["TITLE"] : "Untiteled" ;
-			$id = str_replace ( "+" , "_" , $title ) ;
+			$id = $this->internal_id ( $title ) ;
 			$ret .= "<article id='{$id}'>\n";
 			$ret .= "<title>" . urldecode ( $title ) . "</title>\n" ;
 		} else if ( $tag == 'LINK' ) {
@@ -318,7 +334,7 @@ class element {
 		} else if ( $tag == 'LIST' ) { # List
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			$list_type = strtolower ( $this->attrs['TYPE'] ) ;
-			if ( $list_type == 'bullet' || $list_type == 'ident' ) $ret .= '<itemizedlist mark="opencircle">' ;
+			if ( $list_type == 'bullet' || $list_type == 'ident' || $list_type == 'def' ) $ret .= '<itemizedlist mark="opencircle">' ;
 			else if ( $list_type == 'numbered' ) $ret .= '<orderedlist numeration="arabic">' ;
 		} else if ( $tag == 'LISTITEM' ) { # List item
 			$ret .= $this->close_last ( "para" , $tree ) ;
@@ -353,6 +369,10 @@ class element {
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 			$ret .= '<emphasis>' ;
 			$close_tag = "emphasis" ;
+		} else if ( $tag == 'XHTML:TT' ) { # <tt>
+			$ret .= $this->ensure_new ( "para" , $tree ) ;
+			$ret .= '<literal>' ;
+			$close_tag = "literal" ;
 		} else if ( $tag == 'XHTML:SUB' ) { # <sub>
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 			$ret .= '<subscript>' ;
@@ -369,6 +389,9 @@ class element {
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 			$ret .= '<programlisting>' ;
 			$close_tag = "programlisting" ;
+		} else if ( $tag == 'DEFVAL' ) {
+			$ret .= $this->ensure_new ( "para" , $tree ) ;
+			$ret .= " : " ;
 		} else { # Default : normal text
 			$ret .= $this->ensure_new ( "para" , $tree ) ;
 		}
@@ -387,7 +410,7 @@ class element {
 		# Close tags
 		if ( $tag == 'LIST' ) {
 			$ret .= $this->close_last ( "para" , $tree ) ;
-			if ( $list_type == 'bullet' || $list_type == 'ident' ) $ret .= "</itemizedlist>\n" ;
+			if ( $list_type == 'bullet' || $list_type == 'ident' || $list_type == 'def' ) $ret .= "</itemizedlist>\n" ;
 			else if ( $list_type == 'numbered' ) $ret .= "</orderedlist>\n" ;
 			if ( $xhtml_conversion )
 				$ret .= $this->ensure_new ( "para" , $tree ) ;
@@ -419,7 +442,7 @@ class element {
 
 
 		} else if ( $tag == 'ARTICLE' ) {
-			$ret .= $this->close_last ( "section" , $tree ) ;
+			$ret .= $this->close_last ( "section" , $tree , true ) ;
 			$ret .= $this->close_last ( "para" , $tree ) ;
 			$ret .= "</article>";
 		}

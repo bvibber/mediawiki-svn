@@ -6,6 +6,7 @@ $wiki2xml_authors = array () ;
 
 class wiki2xml
 	{
+	var $cnt = 0 ; # For debugging purposes
 	var $protocols = array ( "http" , "https" , "news" , "ftp" , "irc" , "mailto" ) ;
 	var $errormessage = "ERROR!" ;
 	var $compensate_markup_errors = false;
@@ -36,19 +37,28 @@ class wiki2xml
 		"ul" => "xhtml:ul",
 		"ol" => "xhtml:ol",
 		"li" => "xhtml:li",
+		"tt" => "xhtml:tt",
 		) ;
 		
 	var $w ; # The wiki text
 	var $wl ; # The wiki text length
 	var $bold_italics ;
 	var $tables = array () ; # List of open tables
+	var $profile = array () ;
 
 	# Some often used functions
-	function fitit ( &$a , &$xml , &$f , $atleastonce , $many )
+	
+	/**
+	 * Matches a function to the current text (default:once)
+	*/
+	function once ( &$a , &$xml , $f , $atleastonce = true , $many = false )
 		{
 		$f = "p_{$f}" ;
 		$cnt = 0 ;
+#		print $f . " : " . htmlentities ( substr ( $this->w , $a , 20 ) ) . "<br/>" ; flush () ;
+#		if ( !isset ( $this->profile[$f] ) ) $this->profile[$f] = 0 ; # PROFILING
 		do {
+#			$this->profile[$f]++ ; # PROFILING
 			$matched = $this->$f ( $a , $xml ) ;
 			if ( $matched && $many ) $again = true ;
 			else $again = false ;
@@ -59,21 +69,11 @@ class wiki2xml
 		return false ;
 		}
 
-	function once ( &$a , &$xml , $f )
-		{
-		return $this->fitit ( $a , $xml , $f , true , false ) ;
-		}
-		
 	function onceormore ( &$a , &$xml , $f )
 		{
-		return $this->fitit ( $a , $xml , $f , true , true ) ;
+		return $this->once ( $a , $xml , $f , true , true ) ;
 		}
 
-	function many ( &$a , &$xml , $f )
-		{
-		return $this->fitit ( $a , $xml , $f , false , true ) ;
-		}
-	
 	function nextis ( &$a , $t , $movecounter = true )
 		{
 		if ( substr ( $this->w , $a , strlen ( $t ) ) != $t ) return false ;
@@ -88,7 +88,7 @@ class wiki2xml
 		$a++ ;
 		return true ;
 		}
-		
+
 	function ischaracter ( $c )
 		{
 		if ( $c >= 'A' && $c <= 'Z' ) return true ;
@@ -123,21 +123,24 @@ class wiki2xml
 		$b = $a ;
 		$x = "" ;
 		if ( $b >= $this->wl ) return false ;
+		$closeit1 = $closeit[0] ;
 		while ( 1 )
 			{
 			$c = $this->w[$b] ;
 			if ( $closeit != "}}" && $c == "\n" ) return false ;
 			if ( $c == "|" ) break ;
-			if ( $this->nextis ( $b , $closeit , false ) ) break ;
+			if ( $c == $closeit1 && $this->nextis ( $b , $closeit , false ) ) break ;
 			if ( !$istarget ) {
 				if ( $c == "[" && $this->once ( $b , $x , "internal_link" ) ) continue ;
 				if ( $c == "[" && $this->once ( $b , $x , "external_link" ) ) continue ;
-				if ( $this->once ( $b , $x , "external_freelink" ) ) continue ;
 				if ( $c == "{" && $this->once ( $b , $x , "template_variable" ) ) continue ;
 				if ( $c == "{" && $this->once ( $b , $x , "template" ) ) continue ;
 				if ( $c == "<" && $this->once ( $b , $x , "html" ) ) continue ;
 				if ( $c == "'" && $this->p_bold ( $b , $x , "internal_link_text2" , $closeit ) ) { break ; }
 				if ( $c == "'" && $this->p_italics ( $b , $x , "internal_link_text2" , $closeit ) ) { break ; }
+				if ( $b + 10 < $this->wl && 
+						( $this->w[$a+5] == '/' && $this->w[$a+7] == '/' ) &&
+						$this->once ( $b , $x , "external_freelink" ) ) continue ;
 			} else {
 				if ( $c == "{" && $this->once ( $b , $x , "template" ) ) continue ;
 			}
@@ -171,7 +174,9 @@ class wiki2xml
 		while ( 1 )
 			{
 			$c = "" ;
+			
 			if ( !$this->nextchar ( $b , $c ) ) break ;
+			
 			if ( $this->ischaracter ( $c ) )
 				{
 				$x .= $c ;
@@ -424,9 +429,11 @@ class wiki2xml
 	# External link
 	function p_external_freelink ( &$a , &$xml , $mark = true )
 		{
+		if ( $this->wl <= $a + 10 ) return false ; # Can't have an URL shorter than that
+		if ( $this->w[$a+5] != '/' && $this->w[$a+7] != '/' ) return false ; # Shortcut for protocols 3-6 chars length
 		$protocol = "" ;
 		$b = $a ;
-		while ( $this->w[$b] == "{" && $this->once ( $b , $x , "template" ) ) $b = $a ;
+#		while ( $this->w[$b] == "{" && $this->once ( $b , $x , "template" ) ) $b = $a ;
 		foreach ( $this->protocols AS $p )
 			{
 			if ( $this->nextis ( $b , $p . "://" ) )
@@ -462,6 +469,10 @@ class wiki2xml
 		$b = $a ;
 		if ( !$this->nextis ( $b , "[" ) ) return false ;
 		$url = "" ;
+		$c = $b ;
+		$x = "" ;
+		while ( $this->w[$c] == "{" && $this->once ( $c , $x , "template" ) ) $c = $b ;
+		$x = "" ;
 		if ( !$this->p_external_freelink ( $b , $url , false ) ) return false ;
 		$this->skipblanks ( $b ) ;
 		if ( !$this->scanplaintext ( $b , $x , array ( "]" ) , array ( "\n" ) ) ) return false ;
@@ -474,7 +485,6 @@ class wiki2xml
 	function p_heading ( &$a , &$xml )
 		{
 		if ( $a >= $this->wl || $this->w[$a] != '=' ) return false ;
-#		print htmlentities ( substr ( $this->w , $a , 30 ) ) . "<br/>" ;
 		$b = $a ;
 		$level = 0 ;
 		$h = "" ;
@@ -519,7 +529,9 @@ class wiki2xml
 			if ( $c == "<" && $this->once ( $b , $x , "html" ) ) continue ;
 			if ( $c == "'" && $this->once ( $b , $x , "bold" ) ) { $override = true ; break ; }
 			if ( $c == "'" && $this->once ( $b , $x , "italics" ) ) { $override = true ; break ; }
-			if ( $this->once ( $b , $x , "external_freelink" ) ) continue ;
+			if ( $b + 10 < $this->wl && 
+					( $this->w[$a+5] == '/' && $this->w[$a+7] == '/' ) &&
+					$this->once ( $b , $x , "external_freelink" ) ) continue ;
 			
 			# Just an ordinary character
 			$x .= htmlspecialchars ( $c ) ;
@@ -564,7 +576,7 @@ class wiki2xml
 		$b = $a ;
 		if ( !$this->p_line ( $b , $x , $force ) ) return false ;
 		while ( $this->p_line ( $b , $x , false ) ) ;
-		$this->many ( $b , $x , "blankline" ) ;	
+		while ( $this->p_blankline ( $b , $x ) ) ; # Skip coming blank lines
 		$xml .= "<paragraph>{$x}</paragraph>" ;
 		$a = $b ;
 		return true ;
@@ -594,8 +606,8 @@ class wiki2xml
 		{
 		$x = "" ;
 		$b = $a ;
-		if ( !$this->onceormore ( $b , $x , "preline" ) ) return false ;
-		$this->many ( $b , $x , "blankline" ) ;	
+		if ( !$this->once ( $b , $x , "preline" , true , true ) ) return false ;
+		$this->once ( $b , $x , "blankline" , false , true ) ;	
 		$xml .= "<preblock>{$x}</preblock>" ;
 		$a = $b ;
 		return true ;
@@ -1279,12 +1291,18 @@ class wiki2xml
 			if ( $this->onceormore ( $b , $x , "table" ) ) continue ;
 			if ( $this->onceormore ( $b , $x , "blankline" ) ) continue ;
 			if ( $this->p_block_lines ( $b , $x , true ) ) continue ;
-			# The last resort!
+			# The last resort! It should never come to this!
 			if ( !$this->compensate_markup_errors ) $xml .= "<error type='general' reason='no matching markup'/>" ;
 			$xml .= htmlspecialchars ( $this->w[$b] ) ;
+			$b++ ;
 			}
 		$a = $b ;
 		$xml .= $x ;
+		
+#		asort ( $this->profile ) ;
+#		$p = "" ;
+#		foreach ( $this->profile AS $k => $v ) $p .= "<p>{$k} : {$v}</p>" ;
+#		$xml = "<debug>{$this->cnt}{$p}</debug>" . $xml ;
 		return true ;
 		}
 	
