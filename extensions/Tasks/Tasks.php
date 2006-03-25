@@ -180,7 +180,7 @@ function wfTaskExtensionHeaderHook( &$article ) { # Checked for HTML and MySQL i
 	wfTasksAddCache();
 	$st = new SpecialTasks();
 	$task = '';
-	$page_title = $st->get_title_from_task( $taskid, &$task );
+	$page_title = $st->get_title_from_task( $taskid, $task );
 	if( $task == '' ) {
 		# No such task
 		return true;
