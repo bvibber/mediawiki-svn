@@ -74,21 +74,32 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	} else if ( $format == "odt" ) {
 		$out = $converter->articles2odt ( $xml , $xmlg ) ;
 		
-		$dir = $xmlg['odt_template_dir'] ;
-		$out_file = tempnam("/tmp", "ODT");
+		$cwd = getcwd() ;
+		$template_file = $cwd . '/template.odt' ;
+
+		$dir_file = tempnam("/tmp", "ODD");
+		$dir = $dir_file . "-DIR" ;
 		
+		if ( isset ( $xmlg["zip_odt_path"] ) ) # Windows strange bug workaround
+			chdir ( $xmlg["zip_odt_path"] ) ;
+
+		# Unzip template
+		$cmd = $xmlg['unzip_odt'] ;
+		$cmd = str_replace ( '$1' , escapeshellarg ( $template_file ) , $cmd ) ;
+		$cmd = str_replace ( '$2' , escapeshellarg ( $dir ) , $cmd ) ;
+		exec ( $cmd ) ;
+
 		# Create ODT structure
 		$handle = fopen ( $dir . "/content.xml" , "w" ) ;
 		fwrite ( $handle , $out ) ;
 		fclose ( $handle ) ;
 
-		
+		# Generate temporary ODT file
+		$out_file = tempnam("/tmp", "ODT");
 		$cmd = $xmlg['zip_odt'] ;
 		$cmd = str_replace ( '$1' , escapeshellarg ( $out_file ) , $cmd ) ;
 		$cmd = str_replace ( '$2' , escapeshellarg ( $dir . "/*" ) , $cmd ) ;
 		@unlink ( $out_file ) ;
-		if ( isset ( $xmlg["zip_odt_path"] ) ) # Windows strange bug workaround
-			chdir ( $xmlg["zip_odt_path"] ) ;
 		exec ( $cmd ) ;
 		
 		if ( 1 ) { # Return ODT file
@@ -99,10 +110,17 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 			fpassthru ( $handle ) ;
 			fclose ( $handle ) ;
 			@unlink ( $out_file ) ;
+
 		} else { # Return XML
 			header('Content-type: text/xml; charset=utf-8');
 			print str_replace ( ">" , ">\n" , $out ) ;
 		}
+
+		# Cleanup
+		SureRemoveDir ( $dir ) ;
+		@rmdir ( $dir ) ;
+		@unlink ( $dir_file ) ;
+		chdir ( $cwd ) ;
 	} else if ( $format == "docbook_xml" ) {
 		$out = $converter->articles2docbook_xml ( $xml , $xmlg ) ;
 		header('Content-type: text/xml; charset=utf-8');

@@ -4,6 +4,7 @@ class TextStyle {
 	var $name = "" ;
 	var $bold = false ;
 	var $italics = false ;
+	var $underline = false ;
 	var $count = 0 ;
 }
 
@@ -62,6 +63,7 @@ class XML2ODT {
 		foreach ( $this->textstyles AS $k => $ts ) {
 			if ( $ts->bold != $find->bold ) continue ;
 			if ( $ts->italics != $find->italics ) continue ;
+			if ( $ts->underline != $find->underline ) continue ;
 			$this->textstyles[$k]->count++ ;
 			return $ts ;
 		}
@@ -84,6 +86,9 @@ class XML2ODT {
 			$ret .= '<style:text-properties' ;
 			if ( $ts->italics ) $ret .= ' fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"' ;
 			if ( $ts->bold ) $ret .= ' fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"' ;
+			if ( $ts->underline ) {
+				$ret .= ' style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color"' ;
+			}
 			$ret .= '/>' ;
 			$ret .= '</style:style>' ;
 		}
@@ -180,6 +185,21 @@ class element {
 		$xml2odt->tags[] = $tag ;
 		return $n ;
 	}
+	
+	function pop_tag () {
+		global $xml2odt ;
+		if ( count ( $xml2odt->tags ) == 0 ) return "" ;
+		$x = array_pop ( $xml2odt->tags ) ;
+		return "</{$x}>" ;
+	}
+	
+	function top_tag () {
+		global $xml2odt ;
+		if ( count ( $xml2odt->tags ) == 0 ) return "" ;
+		$x = array_pop ( $xml2odt->tags ) ;
+		$xml2odt->tags[] = $x ;
+		return $x ;
+	}
 
 
 	function parse ( &$tree ) {
@@ -197,18 +217,29 @@ class element {
 			$xml2odt->textstyle_current->bold = true ;
 			$xml2odt->textstyle_current = $xml2odt->get_text_style ( $xml2odt->textstyle_current ) ;
 			$ret .= $this->push_tag ( "text:span" , "text:style-name=\"" . $xml2odt->textstyle_current->name . "\"" ) ;
+		} else if ( $tag == "XHTML:U" ) {
+			$xml2odt->textstyle_current->underline = true ;
+			$xml2odt->textstyle_current = $xml2odt->get_text_style ( $xml2odt->textstyle_current ) ;
+			$ret .= $this->push_tag ( "text:span" , "text:style-name=\"" . $xml2odt->textstyle_current->name . "\"" ) ;
 		} else if ( $tag == "ITALICS" || $tag == "XHTML:I" || $tag == "XHTML:EM" ) {
 			$xml2odt->textstyle_current->italics = true ;
 			$xml2odt->textstyle_current = $xml2odt->get_text_style ( $xml2odt->textstyle_current ) ;
 			$ret .= $this->push_tag ( "text:span" , "text:style-name=\"" . $xml2odt->textstyle_current->name . "\"" ) ;
 		} else if ( $tag == "PARAGRAPH" || $tag == "XHTML:P" ) {
-			$ret .= $this->push_tag ( "text:p" , 'text:style-name="Standard"' ) ;
-		} else if ( $tag == "LIST" ) {
+			if ( $this->top_tag() != "text:p" )
+				$ret .= $this->push_tag ( "text:p" , 'text:style-name="Standard"' ) ;
+		} else if ( $tag == "LIST" || $tag == "XHTML:OL" || $tag == "XHTML:UL" ) {
+			$is_list = true ;
 			$ret .= $xml2odt->ensure_list_closed () ;
-			$type = strtolower ( $this->attrs['TYPE'] ) ;
-			if ( $type == 'numbered' ) $xml2odt->listcode .= "#" ;
+			if ( $this->top_tag() == "text:p" ) {
+				$reopen_p = true ;
+				$ret .= $this->pop_tag () ;
+			}
+			if ( $tag == "LIST" ) $type = strtolower ( $this->attrs['TYPE'] ) ;
+			else $type = "" ;
+			if ( $type == 'numbered' || $tag == 'XHTML:OL' ) $xml2odt->listcode .= "#" ;
 			else $xml2odt->listcode .= "*" ;
-		} else if ( $tag == "LISTITEM" ) {
+		} else if ( $tag == "LISTITEM" || $tag == "XHTML:LI" ) {
 			$ret .= $xml2odt->ensure_list_open () ;
 			$tag_count = count ( $xml2odt->tags ) ;
 			$p = $xml2odt->list_item_name[strlen($xml2odt->listcode)] ;
@@ -227,9 +258,13 @@ class element {
 			$ret .= "</{$x}>" ;
 		}
 
-		if ( $tag == "LIST" ) {
+		if ( isset ( $is_list ) ) {
 			$ret .= $xml2odt->ensure_list_closed () ;
 			$xml2odt->listcode = substr ( $xml2odt->listcode , 0 , strlen ( $xml2odt->listcode ) - 1 ) ;
+		}
+		
+		if ( isset ( $reopen_p ) ) {
+			$ret .= $this->push_tag ( "text:p" , 'text:style-name="Standard"' ) ;
 		}
 		
 		return $ret ;

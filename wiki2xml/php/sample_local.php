@@ -16,12 +16,12 @@ $xmlg["docbook"] = array (
 	"dtd" => "file:/c:/docbook/dtd/docbookx.dtd"
 ) ;
 
-# Uncomment the following to use Special:Export and (potentially) automatic authors list
+### Uncomment the following to use Special:Export and (potentially) automatic authors list; a little slower, though
 #$xmlg["use_special_export"] = 1 ;
 
-# Uncomment and localize the following to offer ODT export
-#$xmlg["zip_odt_path"] = "C:\\Program Files\\7-Zip" ;
-#$xmlg["zip_odt"] = '7z.exe  a -r -tzip $1 $2' ;
-#$xmlg["odt_template_dir"] = 'E:\\Program Files\\Apache Group\\Apache2\\htdocs\\wiki2xml\\php\\temp' ; # An unzipped blank ODT file
+### Uncomment and localize the following to offer ODT export
+#$xmlg["zip_odt_path"] = "E:\\Program Files\\7-Zip" ; # Path to the zip/unzip programs; can be omitted if in default execuatable path
+#$xmlg["zip_odt"] = '7z.exe  a -r -tzip $1 $2' ; # Command to zip directory $1 to file $2
+#$xmlg["unzip_odt"] = '7z.exe x $1 -o$2' ; # Command to unzip file $1 to directory $2
 
 ?>
