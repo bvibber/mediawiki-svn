@@ -16,4 +16,12 @@ $xmlg["docbook"] = array (
 	"dtd" => "file:/c:/docbook/dtd/docbookx.dtd"
 ) ;
 
+# Uncomment the following to use Special:Export and (potentially) automatic authors list
+#$xmlg["use_special_export"] = 1 ;
+
+# Uncomment and localize the following to offer ODT export
+#$xmlg["zip_odt_path"] = "C:\\Program Files\\7-Zip" ;
+#$xmlg["zip_odt"] = '7z.exe  a -r -tzip $1 $2' ;
+#$xmlg["odt_template_dir"] = 'E:\\Program Files\\Apache Group\\Apache2\\htdocs\\wiki2xml\\php\\temp' ; # An unzipped blank ODT file
+
 ?>

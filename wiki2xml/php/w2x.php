@@ -71,6 +71,38 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		$out = str_replace ( "\n" , "<br/>" , $out ) ;
 		header('Content-type: text/html; charset=utf-8');
 		print $out ;
+	} else if ( $format == "odt" ) {
+		$out = $converter->articles2odt ( $xml , $xmlg ) ;
+		
+		$dir = $xmlg['odt_template_dir'] ;
+		$out_file = tempnam("/tmp", "ODT");
+		
+		# Create ODT structure
+		$handle = fopen ( $dir . "/content.xml" , "w" ) ;
+		fwrite ( $handle , $out ) ;
+		fclose ( $handle ) ;
+
+		
+		$cmd = $xmlg['zip_odt'] ;
+		$cmd = str_replace ( '$1' , escapeshellarg ( $out_file ) , $cmd ) ;
+		$cmd = str_replace ( '$2' , escapeshellarg ( $dir . "/*" ) , $cmd ) ;
+		@unlink ( $out_file ) ;
+		if ( isset ( $xmlg["zip_odt_path"] ) ) # Windows strange bug workaround
+			chdir ( $xmlg["zip_odt_path"] ) ;
+		exec ( $cmd ) ;
+		
+		if ( 1 ) { # Return ODT file
+			$filename = $xmlg["book_title"] ;
+			header('Content-type: application/vnd.oasis.opendocument.text; charset=utf-8');
+			header('Content-Disposition: inline; filename="'.$filename.'"');
+			$handle = fopen($out_file, 'rb');
+			fpassthru ( $handle ) ;
+			fclose ( $handle ) ;
+			@unlink ( $out_file ) ;
+		} else { # Return XML
+			header('Content-type: text/xml; charset=utf-8');
+			print str_replace ( ">" , ">\n" , $out ) ;
+		}
 	} else if ( $format == "docbook_xml" ) {
 		$out = $converter->articles2docbook_xml ( $xml , $xmlg ) ;
 		header('Content-type: text/xml; charset=utf-8');
@@ -106,6 +138,9 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	}
 	if ( isset ( $xmlg['docbook']['command_html'] ) ) {
 		$optional[] = "<INPUT type='radio' name='output_format' value='docbook_html'>DocBook HTML" ;
+	}
+	if ( isset ( $xmlg['zip_odt'] ) ) {
+		$optional[] = "<INPUT type='radio' name='output_format' value='odt'>OpenOffice ODT" ;
 	}
 	$optional = "<br/>" . implode ( "<br/>" , $optional ) ;
 	

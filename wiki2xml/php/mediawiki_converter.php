@@ -1,6 +1,7 @@
 <?php
 
 require_once ( "filter_named_entities.php" ) ; # PHP4 and early PHP5 bug workaround
+require_once ( "global_functions.php" ) ;
 require_once ( "wiki2xml.php" ) ;
 require_once ( "content_provider.php" ) ;
 
@@ -84,7 +85,31 @@ class MediaWikiConverter {
 		
 		return $text . $authors ;
 	}
-	
+
+	/**
+	 * Converts XML to ODT XML
+	 */
+	function articles2odt ( &$xml , $params = array () , $use_gfdl = false ) {
+		global $wiki2xml_authors , $xml2odt ;
+		require_once ( "./xml2odt.php" ) ;
+		
+		# XML text to tree
+		$xml2odt = new XML2ODT ;
+		$wiki2xml_authors = array () ;
+		$x2t = new xml2php ;
+		$tree = $x2t->scanString ( $xml ) ;
+
+		# Tree to ODT
+		$out = "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
+		$body = $tree->parse ( $tree ) ;
+		$out .= $xml2odt->get_odt_start () ;
+		$out .= '<office:body><office:text>' ;
+		$out .= $body ;
+		$out .= '</office:text></office:body>' ;
+		$out .= "</office:document-content>" ;
+		return $out ;
+		}
+
 	/**
 	 * Converts XML to DocBook XML
 	 */
