@@ -945,7 +945,11 @@ class wiki2xml
 			{
 			$attr = "" ;
 			if ( !$np->p_html_attr ( $c , $attr ) ) break ;
-			if ( $attr != "" ) $attrs[] = $attr ;
+			if ( $attr != "" ) {
+				$key = array_shift ( explode ( "=" , $attr , 2 ) ) ;
+				if ( !isset ( $attrs[$key] ) && substr ( $attr , -3 , 3 ) != '=""' )
+					$attrs[$key] = $attr ;
+			}
 			$np->skipblanks ( $c ) ;
 			}		
 		if ( substr ( $np->w , $c ) != ">" AND substr ( $np->w , $c ) != "/" ) return array() ;

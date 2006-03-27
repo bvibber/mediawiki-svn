@@ -172,15 +172,19 @@ class XML2ODT {
 		
 		# Text styles
 		foreach ( $this->textstyles AS $ts ) {
-			if ( $ts->count == 0 ) continue ; # Skip, style never used
-			$ret .= '<style:style style:name="' . $ts->name . '" style:family="text">' ;
-			$ret .= '<style:text-properties' ;
-			if ( $ts->italics ) $ret .= ' fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"' ;
-			if ( $ts->bold ) $ret .= ' fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"' ;
-			if ( $ts->underline ) {
-				$ret .= ' style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color"' ;
+			if ( $ts->count == 0 ) {
+				$ret .= '<style:style style:name="' . $ts->name . '" style:family="paragraph">' ;
+				$ret .= '<style:paragraph-properties fo:text-align="justify" style:justify-single-word="false"/>' ;
+			} else {
+				$ret .= '<style:style style:name="' . $ts->name . '" style:family="text">' ;
+				$ret .= '<style:text-properties' ;
+				if ( $ts->italics ) $ret .= ' fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"' ;
+				if ( $ts->bold ) $ret .= ' fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"' ;
+				if ( $ts->underline ) {
+					$ret .= ' style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color"' ;
+				}
+				$ret .= '/>' ;
 			}
-			$ret .= '/>' ;
 			$ret .= '</style:style>' ;
 		}
 		
@@ -455,6 +459,14 @@ class element {
 		# Open tag
 		if ( $tag == "SPACE" ) {
 			return " " ;
+		} else if ( $tag == "ARTICLE" ) {
+			if ( isset ( $this->attrs['TITLE'] ) ) {
+				$title = $this->attrs['TITLE'] ;
+				$ret .= '<text:h text:style-name="Heading_20_1" text:outline-level="1">' ;
+				$ret .= urldecode ( $title ) ;
+				$ret .= '</text:h>' ;
+			}
+			
 		} else if ( $tag == "HEADING" || substr ( $tag , 0 , 7 ) == "XHTML:H" ) {
 			if ( $tag == "HEADING" ) $level = $this->attrs['LEVEL'] ;
 			else $level = substr ( $tag , 7 , 1 ) ;
@@ -473,7 +485,7 @@ class element {
 			$ret .= $this->push_tag ( "text:span" , "text:style-name=\"" . $xml2odt->textstyle_current->name . "\"" ) ;
 		} else if ( $tag == "PARAGRAPH" || $tag == "XHTML:P" ) {
 			if ( $this->top_tag() != "text:p" )
-				$ret .= $this->push_tag ( "text:p" , 'text:style-name="Standard"' ) ;
+				$ret .= $this->push_tag ( "text:p" , 'text:style-name="T0"' ) ;
 		} else if ( $tag == "LIST" || $tag == "XHTML:OL" || $tag == "XHTML:UL" ) {
 			$is_list = true ;
 			$ret .= $xml2odt->ensure_list_closed () ;
@@ -543,7 +555,7 @@ class element {
 		}
 		
 		if ( isset ( $reopen_p ) ) {
-			$ret .= $this->push_tag ( "text:p" , 'text:style-name="Standard"' ) ;
+			$ret .= $this->push_tag ( "text:p" , 'text:style-name="T0"' ) ;
 		}
 
 		return $ret ;
