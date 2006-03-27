@@ -71,23 +71,30 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		$out = str_replace ( "\n" , "<br/>" , $out ) ;
 		header('Content-type: text/html; charset=utf-8');
 		print $out ;
-	} else if ( $format == "odt" ) {
-		$out = $converter->articles2odt ( $xml , $xmlg ) ;
-		
+	} else if ( $format == "odt" || $format == "odt_xml" ) {
 		$cwd = getcwd() ;
 		$template_file = $cwd . '/template.odt' ;
 
 		$dir_file = tempnam($xmlg["temp_dir"], "ODD");
 		$dir = $dir_file . "-DIR" ;
-		
+		$xmlg['image_destination'] = $dir . "/Pictures" ;
+
+		$zipdir = $cwd ;
 		if ( isset ( $xmlg["zip_odt_path"] ) ) # Windows strange bug workaround
-			chdir ( $xmlg["zip_odt_path"] ) ;
+			$zipdir = $xmlg["zip_odt_path"] ;
+		
+		chdir ( $zipdir ) ;
 
 		# Unzip template
 		$cmd = $xmlg['unzip_odt'] ;
 		$cmd = str_replace ( '$1' , escapeshellarg ( $template_file ) , $cmd ) ;
 		$cmd = str_replace ( '$2' , escapeshellarg ( $dir ) , $cmd ) ;
 		exec ( $cmd ) ;
+
+		# Convert XML to ODT
+		chdir ( $cwd ) ;
+		$out = $converter->articles2odt ( $xml , $xmlg ) ;
+		chdir ( $zipdir ) ;
 
 		# Create ODT structure
 		$handle = fopen ( $dir . "/content.xml" , "w" ) ;
@@ -102,7 +109,7 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		@unlink ( $out_file ) ;
 		exec ( $cmd ) ;
 		
-		if ( 1 ) { # Return ODT file
+		if ( $format == "odt" ) { # Return ODT file
 			$filename = $xmlg["book_title"] ;
 			header('Content-type: application/vnd.oasis.opendocument.text; charset=utf-8');
 			header('Content-Disposition: inline; filename="'.$filename.'"');
@@ -157,6 +164,7 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		$optional[] = "<INPUT type='radio' name='output_format' value='docbook_html'>DocBook HTML" ;
 	}
 	if ( isset ( $xmlg['zip_odt'] ) ) {
+		$optional[] = "<INPUT type='radio' name='output_format' value='odt_xml'>OpenOffice XML" ;
 		$optional[] = "<INPUT type='radio' name='output_format' value='odt'>OpenOffice ODT" ;
 	}
 	$optional = "<br/>" . implode ( "<br/>" , $optional ) ;

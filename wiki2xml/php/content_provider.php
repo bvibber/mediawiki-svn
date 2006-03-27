@@ -40,25 +40,20 @@ class ContentProvider {
 		return $ns ;
 	}
 
-	function copyimagefromwiki ( $lang , $imagename , $localtarget = "" )
-		{
-		if ( $localtarget == "" ) $localtarget = $imagename ;
-		$i = $imagename ;
-		$i = utf8_encode ( $i ) ;
-		$i = str_replace ( " " , "_" , $i ) ;
-		print $i . " : " ;
-		$m = md5 ( $i ) ;
-		print $m ;
-		$i = substr ( $m , 0 , 1 ) . "/" . substr ( $m , 0 , 2 ) . "/" . urlencode ( $i ) ;
-		$fn1 = "http://upload.wikimedia.org/wikipedia/{$lang}/{$i}" ;
-		$fn2 = "http://upload.wikimedia.org/wikipedia/commons/{$i}" ;
-		print "<br/>" ;
-		if ( @copy ( $fn1 , $localtarget ) ) return true ; # Trying language
-		if ( @copy ( $fn2 , $localtarget ) ) return true ; # Trying commons
-		return false ; # No such image
+	function copyimagefromwiki ( $name , $url = "" ) {
+		global $xmlg ;
+		$dir = $xmlg['image_destination'] ;
+		if ( $url == "" )
+			$url = $this->get_image_url ( name ) ;
+		$fname = urlencode ( $name ) ;
+		$target = $dir . "/" . $fname ;
+		if ( !file_exists ( $target ) ) {
+			@mkdir ( $dir ) ;
+			@copy ( $url , $target ) ;
 		}
-		
-	
+		return $fname ;
+	}
+
 	function get_image_url ( $name ) {
 		global $xmlg ;
 		$name = ucfirst ( $name ) ;
