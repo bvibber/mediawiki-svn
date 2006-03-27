@@ -7,6 +7,7 @@
 
 $xmlg["site_base_url"] = "127.0.0.1/phase3" ;
 $xmlg["use_special_export"] = 1 ;
+$xmlg["temp_dir"] = "C:/windows/temp" ; # Directory for temporary files
 
 $xmlg["docbook"] = array (
 	"command_pdf" => "C:/docbook/bat/docbook_pdf.bat %1" ,

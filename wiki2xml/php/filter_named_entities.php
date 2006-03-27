@@ -275,7 +275,8 @@ function filter_named_entities(&$content) {
   global $html_named_entities_mapping;
   foreach($html_named_entities_mapping as $name => $value) {
     $content=str_replace('&'.$name.';',utf8_chr ( $value ),$content);
-  }  
+  } 
+  $content=str_replace('í','i',$content); # Ugly hack
 }
 
 ?>

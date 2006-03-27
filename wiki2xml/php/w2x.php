@@ -77,7 +77,7 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		$cwd = getcwd() ;
 		$template_file = $cwd . '/template.odt' ;
 
-		$dir_file = tempnam("/tmp", "ODD");
+		$dir_file = tempnam($xmlg["temp_dir"], "ODD");
 		$dir = $dir_file . "-DIR" ;
 		
 		if ( isset ( $xmlg["zip_odt_path"] ) ) # Windows strange bug workaround
@@ -95,7 +95,7 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		fclose ( $handle ) ;
 
 		# Generate temporary ODT file
-		$out_file = tempnam("/tmp", "ODT");
+		$out_file = tempnam($xmlg["temp_dir"], "ODT");
 		$cmd = $xmlg['zip_odt'] ;
 		$cmd = str_replace ( '$1' , escapeshellarg ( $out_file ) , $cmd ) ;
 		$cmd = str_replace ( '$2' , escapeshellarg ( $dir . "/*" ) , $cmd ) ;
@@ -109,8 +109,6 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 			$handle = fopen($out_file, 'rb');
 			fpassthru ( $handle ) ;
 			fclose ( $handle ) ;
-			@unlink ( $out_file ) ;
-
 		} else { # Return XML
 			header('Content-type: text/xml; charset=utf-8');
 			print str_replace ( ">" , ">\n" , $out ) ;
@@ -120,6 +118,7 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		SureRemoveDir ( $dir ) ;
 		@rmdir ( $dir ) ;
 		@unlink ( $dir_file ) ;
+		@unlink ( $out_file ) ;
 		chdir ( $cwd ) ;
 	} else if ( $format == "docbook_xml" ) {
 		$out = $converter->articles2docbook_xml ( $xml , $xmlg ) ;
