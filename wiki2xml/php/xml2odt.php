@@ -396,6 +396,9 @@ class element {
 		# Open tag
 		if ( $tag == "SPACE" ) {
 			return " " ;
+		} else if ( $tag == "HEADING" ) {
+			$level = $this->attrs['LEVEL'] ;
+			$ret .= $this->push_tag ( "text:h" , "text:level=\"" . $level . "\"" ) ;
 		} else if ( $tag == "BOLD" || $tag == "XHTML:B" || $tag == "XHTML:STRONG" ) {
 			$xml2odt->textstyle_current->bold = true ;
 			$xml2odt->textstyle_current = $xml2odt->get_text_style ( $xml2odt->textstyle_current ) ;
