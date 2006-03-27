@@ -38,6 +38,15 @@ class wiki2xml
 		"ol" => "xhtml:ol",
 		"li" => "xhtml:li",
 		"tt" => "xhtml:tt",
+		"h1" => "xhtml:h1",
+		"h2" => "xhtml:h2",
+		"h3" => "xhtml:h3",
+		"h4" => "xhtml:h4",
+		"h5" => "xhtml:h5",
+		"h6" => "xhtml:h6",
+		"h7" => "xhtml:h7",
+		"h8" => "xhtml:h8",
+		"h9" => "xhtml:h9",
 		) ;
 		
 	var $w ; # The wiki text

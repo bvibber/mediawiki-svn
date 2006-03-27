@@ -18,6 +18,13 @@ class XML2ODT {
 	var $list_item_name = array () ;
 	var $image_counter = 0 ;
 	var $image_frames = array () ;
+	var $table_counter = 0 ;
+	var $open_tables = array () ;
+	var $table_styles = array () ;
+	var $col_styles = array () ;
+	var $cell_styles = array () ;
+	var $col_counter = array () ;
+	var $row_counter = array () ;
 	
 	function XML2ODT () {
 		$this->textstyle_current = new TextStyle ;
@@ -53,6 +60,63 @@ class XML2ODT {
 		$o->align = $align ;
 		$this->image_frames[$i] = $o ;
 		return $i ;
+	}
+	
+	function get_table_style ( &$tag ) {
+		$this->table_counter++ ;
+		$ret = "Table" . $this->table_counter ;
+		$this->open_tables[] = $ret ;
+		$o->name = $ret ;
+		$o->cols = 0 ;
+		$this->table_styles[$ret] = $o ;
+		$this->col_counter[$ret] = 0 ;
+		$this->row_counter[$ret] = 0 ;
+		return $ret ;
+	}
+	
+	function get_top_table_name () {
+		$x = array_pop ( $this->open_tables ) ;
+		$this->open_tables[] = $x ;
+		return $x ;
+	}
+	
+	function get_column_style () {
+		$t = $this->get_top_table_name () ;
+		$cn = $t . "." . chr ( 65 + $this->col_counter[$t] ) ;
+		$cc = $cn . $this->row_counter[$t] ;
+		$this->col_counter[$t]++ ;
+		if ( !isset ( $this->col_styles[$cn] ) ) {
+			$this->table_styles[$t]->cols = $this->col_counter[$t] ;
+			$o->name = $cn ;
+			$this->col_styles[$cn] = $o ;
+		}
+		return $cc ;
+	}
+	
+	function reset_column () {
+		$t = $this->get_top_table_name () ;
+		$this->col_counter[$t] = 0 ;
+		$this->row_counter[$t]++ ;
+	}
+	
+	function get_table_styles () {
+		$ret = "" ;
+		
+		# Tables
+		foreach ( $this->table_styles AS $ts ) {
+			$ret .= '<style:style style:name="' . $ts->name . '" style:family="table">' .
+					'<style:table-properties style:width="auto" table:align="margins"/>' .
+					'</style:style>' ;
+		}
+		
+		# Columns
+		foreach ( $this->col_styles AS $cs ) {
+			$ret .= '<style:style style:name="' . $cs->name . '" style:family="table-column">' .
+					'<style:table-column-properties style:column-width="auto" style:rel-column-width="1*"/>' .
+					'</style:style>' ;
+		}
+		
+		return $ret ;
 	}
 	
 	function ensure_list_open () {
@@ -158,6 +222,7 @@ class XML2ODT {
 		}
 		
 		$ret .= $this->get_image_frames () ;
+		$ret .= $this->get_table_styles () ;
 		
 		$ret .= '</office:automatic-styles>' ;
 		
@@ -340,7 +405,6 @@ class element {
 				$height = ( $i_height * $width ) / $i_width ;
 				$width .= "cm" ;
 				$height .= "cm" ;
-#				print "{$i_width}x{$i_height} : {$width}x{$height}<br/>" ;
 				
 				$fr = $xml2odt->get_image_frame ( $align ) ;
 				$link = '<draw:frame draw:style-name="' . $fr . '" draw:name="Figure'.
@@ -374,15 +438,10 @@ class element {
 					if ( count ( $this->link_parts ) == 0 ) $text = $this->link_target ;
 					else $text = array_pop ( $this->link_parts ) ;
 					$link = '<text:a xlink:type="simple" xlink:href="' . $href . '">' . $text . '</text:a>' ;
-#					$link = "INTERNER LINK" ;
-					#$link = "<link linkend='{$lt}'>{$link}</link>" ;
 				}
 			}
 		}
 		return $link ;
-
-
-#		return "LINK" ;
 	}
 
 	function parse ( &$tree ) {
@@ -396,8 +455,9 @@ class element {
 		# Open tag
 		if ( $tag == "SPACE" ) {
 			return " " ;
-		} else if ( $tag == "HEADING" ) {
-			$level = $this->attrs['LEVEL'] ;
+		} else if ( $tag == "HEADING" || substr ( $tag , 0 , 7 ) == "XHTML:H" ) {
+			if ( $tag == "HEADING" ) $level = $this->attrs['LEVEL'] ;
+			else $level = substr ( $tag , 7 , 1 ) ;
 			$ret .= $this->push_tag ( "text:h" , 'text:style-name="Heading_20_' . $level . '" text:outline-level="' . $level . '"' ) ;
 		} else if ( $tag == "BOLD" || $tag == "XHTML:B" || $tag == "XHTML:STRONG" ) {
 			$xml2odt->textstyle_current->bold = true ;
@@ -433,6 +493,27 @@ class element {
 			$p = $xml2odt->list_item_name[strlen($xml2odt->listcode)] ;
 			$ret .= $this->push_tag ( "text:list-item" ) ;
 			$ret .= $this->push_tag ( "text:p" , 'text:style-name="' . $p . '"' ) ;
+			
+		} else if ( $tag == "TABLE" ) {
+			if ( $this->top_tag() == "text:p" ) {
+				$reopen_p = true ;
+				$ret .= $this->pop_tag () ;
+			}
+			$name = $xml2odt->get_table_style ( $this ) ;
+			$ret .= $this->push_tag ( "table:table" , 'table:style-name="' . $name . '"' ) ;
+			$other_ret = $ret ;
+			$ret = "" ;
+		} else if ( $tag == "TABLEROW" ) {
+			$xml2odt->reset_column () ;
+			$ret .= $this->push_tag ( "table:table-row" ) ;
+		} else if ( $tag == "TABLECELL" || $tag == "TABLEHEAD" ) {
+			$name = $xml2odt->get_column_style () ;
+			$ret .= $this->push_tag ( "table:table-cell" , 'table:style_name="' . $name . '" office:value-type="string"' ) ;
+			if ( $tag == "TABLEHEAD" ) $name = "Table_20_Heading" ;
+			else $name = "Table_20_Contents" ;
+			$ret .= $this->push_tag ( "text:p" , 'text:style-name="' . $name . '"' ) ;
+		} else if ( $tag == "TABLECAPTION" ) {
+			return "" ; # Skipping caption
 		}
 
 		# Children
@@ -449,6 +530,16 @@ class element {
 		if ( isset ( $is_list ) ) {
 			$ret .= $xml2odt->ensure_list_closed () ;
 			$xml2odt->listcode = substr ( $xml2odt->listcode , 0 , strlen ( $xml2odt->listcode ) - 1 ) ;
+		}
+		
+		if ( $tag == "TABLE" ) {
+			$t = $xml2odt->get_top_table_name () ;
+			for ( $a = 0 ; $a < $xml2odt->table_styles[$t]->cols ; $a++ ) {
+				$name = $t . "." . chr ( 65 + $a ) ;
+				$other_ret .= '<table:table-column table:style-name="' . $name . '" table:number-columns-repeated="1"/>' ;
+			}
+			$ret = $other_ret . $ret ;
+			array_pop ( $xml2odt->open_tables ) ;
 		}
 		
 		if ( isset ( $reopen_p ) ) {
