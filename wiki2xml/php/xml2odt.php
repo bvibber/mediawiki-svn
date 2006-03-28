@@ -362,6 +362,7 @@ class element {
 				$sub = array_shift ( $sub ) ;
 			}
 			$sub = $this->fix_text ( $sub ) ;
+			$sub = str_replace ( "&" , "&amp;" , $sub ) ;
 			$link = '<text:a xlink:type="simple" xlink:href="' . $href . '/">' . $sub . '</text:a>' ;
 		} else { # Internal link
 			$link = "LINK" ;
