@@ -5,6 +5,7 @@ class ContentProvider {
 	var $load_time = 0 ; # Time to load text and templates, to judge actual parsing speed
 	var $article_list = array () ;
 	var $authors = array () ;
+	var $block_file_download = false ;
 	
 	function get_wiki_text ( $title , $do_cache = false ) {} # dummy
 	function get_template_text ( $title ) {} # dummy
@@ -33,6 +34,7 @@ class ContentProvider {
 		
 		if ( $text == "CATEGORY" || $text == "KATEGORIE" ) return -8 ; # Hackish, for category link
 		if ( strlen ( $text ) < 4 ) return -9 ; # Hackish, for interlanguage link
+		if ( $text == "SIMPLE" ) return -9 ;
 		
 		# Horrible manual hack, for now
 		if ( $text == "IMAGE" || $text == "BILD" ) $ns = 6 ;
@@ -47,7 +49,7 @@ class ContentProvider {
 			$url = $this->get_image_url ( name ) ;
 		$fname = urlencode ( $name ) ;
 		$target = $dir . "/" . $fname ;
-		if ( !file_exists ( $target ) ) {
+		if ( !file_exists ( $target ) && !$this->block_file_download ) {
 			@mkdir ( $dir ) ;
 			@copy ( $url , $target ) ;
 		}

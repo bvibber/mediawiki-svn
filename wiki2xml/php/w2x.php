@@ -29,6 +29,8 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	$xmlg["resolvetemplates"] = $_POST['use_templates'] ;
 	$xmlg['templates'] = explode ( "\n" , $_POST['templates'] ) ;
 	$xmlg['add_gfdl'] = isset ( $_POST['add_gfdl'] ) ;
+	$xmlg['keep_interlanguage'] = isset ( $_POST['keep_interlanguage'] ) ;
+	$xmlg['keep_categories'] = isset ( $_POST['keep_categories'] ) ;
 	
 	$t = microtime_float() ;
 	$xml = "" ;
@@ -93,6 +95,7 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 
 		# Convert XML to ODT
 		chdir ( $cwd ) ;
+		if ( $format == "odt_xml" ) $content_provider->block_file_download = true ;
 		$out = $converter->articles2odt ( $xml , $xmlg ) ;
 		chdir ( $zipdir ) ;
 
@@ -193,6 +196,8 @@ This is
 Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/>/index.php<br/>
 Title : <input type='text' name='document_title' value='' size=40/><br/>
 <input type='checkbox' name='add_gfdl' value='1' checked>Include GFDL (for some output formats)</input><br/>
+<input type='checkbox' name='keep_categories' value='1' checked>Keep categories</input><br/>
+<input type='checkbox' name='keep_interlanguage' value='1' checked>Keep interlanguage links</input><br/>
 <input type='submit' name='doit' value='Convert'/>
 </td><td valign='top' style='border-left:1px black solid'>
 <b>Output</b>

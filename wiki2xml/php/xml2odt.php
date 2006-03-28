@@ -51,7 +51,12 @@ class XML2ODT {
 			$name = $f->name ;
 			$align = $f->align ;
 			$ret .= '<style:style style:name="' . $name . '" style:family="graphic" style:parent-style-name="Graphics">' .
-			'<style:graphic-properties style:run-through="foreground" style:wrap="parallel" style:number-wrapped-paragraphs="no-limit" ' .
+			'<style:graphic-properties ' . 
+			' fo:margin-left="' . $f->left .
+			'" fo:margin-right="' . $f->right .
+			'" fo:margin-top="' . $f->top .
+			'" fo:margin-bottom="' . $f->bottom .
+			'" style:run-through="foreground" style:wrap="parallel" style:number-wrapped-paragraphs="no-limit" ' .
 			'style:wrap-contour="false" style:vertical-pos="top" style:vertical-rel="paragraph" style:horizontal-pos="' . 
 			$align . '" style:horizontal-rel="paragraph" ' .
 			'style:mirror="none" fo:clip="rect(0cm 0cm 0cm 0cm)" draw:luminance="0%" draw:contrast="0%" draw:red="0%" draw:green="0%" draw:blue="0%" ' .
@@ -60,10 +65,14 @@ class XML2ODT {
 		return $ret ;
 	}
 	
-	function get_image_frame ( $align ) {
+	function get_image_frame ( $align , $margin = false ) {
 		$i = "fr" . $this->image_counter ;
 		$o->name = $i ;
 		$o->align = $align ;
+		$o->left = $margin && $align == 'right' ? '0.1cm' : '0cm' ;
+		$o->right = $margin && $align == 'left' ? '0.1cm' : '0cm' ;
+		$o->top = '0cm' ;
+		$o->bottom = $margin ? '0.1cm' : '0cm' ;
 		$this->image_frames[$i] = $o ;
 		return $i ;
 	}
@@ -372,7 +381,7 @@ class element {
 				$target = array_pop ( $nstext ) ;
 				$nstext = array_shift ( $nstext ) ;
 				
-				$text = array_pop ( $this->link_parts ) ;
+				$text = array_pop ( $this->link_parts ) . $this->link_trail ;
 				
 				$href = $content_provider->get_image_url ( $target ) ;
 				$xml2odt->image_counter++ ;
@@ -382,9 +391,6 @@ class element {
 
 				# Dimensions
 				list($i_width, $i_height, $i_type, $i_attr) = @getimagesize($image_file_full);
-#				$arr = getimagesize($image_file_full);
-#				$i_width = $arr[0] ;
-#				$i_height = $arr[1] ;
 				if ( $i_width <= 0 ) { # Paranoia
 					$i_width = 100 ;
 					$i_height = 100 ;
@@ -416,14 +422,32 @@ class element {
 				$width .= "cm" ;
 				$height .= "cm" ;
 				
+				$link = "" ;
 				$fr = $xml2odt->get_image_frame ( $align ) ;
-				$link = '<draw:frame draw:style-name="' . $fr . '" draw:name="Figure'.
-						$xml2odt->image_counter .
+				$image_counter = $xml2odt->image_counter ;
+				if ( $is_thumb && $text != "" ) {
+					$ofr = $xml2odt->get_image_frame ( $align , true ) ;
+					$link .= '<draw:frame draw:style-name="' .
+								$ofr .
+								'" draw:name="Frame' .
+								$xml2odt->image_counter . 
+								'" text:anchor-type="paragraph" svg:width="'.
+								$width .
+								'" draw:z-index="0">' ;
+					$link .= '<draw:text-box fo:min-height="' . $height . '">' ;
+					$link .= '<text:p text:style-name="Illustration">' ;
+				}
+				$link .= '<draw:frame draw:style-name="' . $fr . '" draw:name="Figure'.
+						$image_counter .
 						'" text:anchor-type="paragraph" svg:width="' . $width . '" svg:height="' . $height . '" draw:z-index="0">' .
 						'<draw:image xlink:href="' . $image_file . 
 						'" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/>' .
 						'</draw:frame>' ;
-				
+				if ( $is_thumb && $text != "" ) {
+					$link .= $text ;
+					$link .= '</text:p></draw:text-box></draw:frame>' ;
+				}
+			
 			} else if ( $ns == -9 ) { # Interlanguage link
 				$sub = $this->link_target ;
 				$nstext = explode ( ":" , $sub , 2 ) ;
@@ -432,11 +456,13 @@ class element {
 				$sub = utf8_encode ( $sub ) ;
 				$href = "http://{$nstext}.wikipedia.org/wiki/" . urlencode ( $name ) ;
 				$link = '<text:a xlink:type="simple" xlink:href="' . $href . '/">' . $sub . '</text:a>' ;
+				if ( !$xmlg['keep_interlanguage'] ) $link = "" ; # No interlanguage links?
 			} else if ( $ns == -8 ) { # Category link
 				if ( $link_text == "!" || $link_text == '*' ) $link = "" ;
 				else if ( $link_text != $this->link_target ) $link = " ({$link_text})" ;
 				else $link = "" ;
 				$link = "" . $this->link_target . $link . "" ;
+				if ( !$xmlg['keep_categories'] ) $link = "" ; # No category links?
 			} else {
 				if ( $content_provider->is_an_article ( $this->link_target ) ) {
 					$link = "SEITEN-INTERNER LINK" ;
@@ -447,6 +473,7 @@ class element {
 					$href = $xml2odt->get_url ( $this->link_target ) ;
 					if ( count ( $this->link_parts ) == 0 ) $text = $this->link_target ;
 					else $text = array_pop ( $this->link_parts ) ;
+					$text .= $this->link_trail ;
 					$link = '<text:a xlink:type="simple" xlink:href="' . $href . '">' . $text . '</text:a>' ;
 				}
 			}
@@ -500,7 +527,7 @@ class element {
 
 		# Open tag
 		if ( $tag == "SPACE" ) {
-			return " " ;
+			return '<text:s/>' ;
 		} else if ( $tag == "ARTICLE" ) {
 			if ( isset ( $this->attrs['TITLE'] ) ) {
 				$title = $this->attrs['TITLE'] ;
@@ -540,6 +567,7 @@ class element {
 			if ( $tag == "LIST" ) $type = strtolower ( $this->attrs['TYPE'] ) ;
 			else $type = "" ;
 			if ( $type == 'numbered' || $tag == 'XHTML:OL' ) $xml2odt->listcode .= "#" ;
+			if ( $type == 'ident' ) $xml2odt->listcode .= " " ;
 			else $xml2odt->listcode .= "*" ;
 		} else if ( $tag == "LINK" ) {
 			return $this->handle_link ( $tree ) ;
