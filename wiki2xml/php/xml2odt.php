@@ -25,6 +25,7 @@ class XML2ODT {
 	var $cell_styles = array () ;
 	var $col_counter = array () ;
 	var $row_counter = array () ;
+	var $footnote_counter = 0 ;
 	
 	function XML2ODT () {
 		$this->textstyle_current = new TextStyle ;
@@ -37,6 +38,11 @@ class XML2ODT {
 		global $xmlg ;
 		$url = "http://" . $xmlg["site_base_url"] . "/index.php?title=" . urlencode ( $title ) ;
 		return $url ;
+	}
+	
+	function get_footnote_id () {
+		$this->footnote_counter++ ;
+		return $this->footnote_counter ;
 	}
 	
 	function get_image_frames () {
@@ -448,6 +454,42 @@ class element {
 		return $link ;
 	}
 
+	function handle_extensions ( &$tree ) {
+		global $content_provider , $xml2odt ;
+		$ret = "" ;
+		$name = strtolower ( $this->attrs['EXTENSION_NAME'] ) ;
+#		$ot = $tree->opentags ;
+#		$tree->opentags = array () ;
+		$sub = $this->sub_parse ( $tree ) ;
+		
+		if ( $name == "ref" ) {
+			$id = $xml2odt->get_footnote_id () ;
+			$ret .= '<text:note text:id="ftn' . $id .
+					'" text:note-class="footnote"><text:note-citation>' . 
+					$id . 
+					'</text:note-citation><text:note-body><text:p text:style-name="Footnote">' .
+					$sub . 
+					'</text:p></text:note-body></text:note>' ;
+		} else { # Unhandeled extension
+			$ret = $sub ;
+		}
+
+/*
+		if ( $name == 'ref' )
+			$sub .= $this->ensure_new ( 'para' , $tree ) ;
+		$sub .= $this->sub_parse ( $tree ) ;
+		while ( count ( $tree->opentags ) > 0 )
+			$sub .= "</" . array_pop ( $tree->opentags ) . ">\n" ;
+		$tree->opentags = $ot ;
+		if ( $name == 'ref' ) {
+			$ret = '<footnote>' . $sub . '</footnote>' ;
+		} else {
+			$ret = $sub ;
+		}
+*/
+		return $ret ;
+	}
+
 	function parse ( &$tree ) {
 		global $xml2odt ;
 		$ret = '';
@@ -467,6 +509,8 @@ class element {
 				$ret .= '</text:h>' ;
 			}
 			
+		} else if ( $tag == "EXTENSION" ) {
+			return $this->handle_extensions ( $tree ) ;
 		} else if ( $tag == "HEADING" || substr ( $tag , 0 , 7 ) == "XHTML:H" ) {
 			if ( $tag == "HEADING" ) $level = $this->attrs['LEVEL'] ;
 			else $level = substr ( $tag , 7 , 1 ) ;
