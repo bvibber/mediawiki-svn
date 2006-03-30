@@ -26,6 +26,7 @@ class XML2ODT {
 	var $col_counter = array () ;
 	var $row_counter = array () ;
 	var $footnote_counter = 0 ;
+	var $article_counter = 0 ;
 	
 	function XML2ODT () {
 		$this->textstyle_current = new TextStyle ;
@@ -184,6 +185,14 @@ class XML2ODT {
 
 	function get_styles_xml () {
 		$ret = '<office:automatic-styles>' ;
+
+		# Default styles
+		$ret .= '<style:style style:name="PHR" style:family="paragraph" style:parent-style-name="Standard">' .
+				'<style:paragraph-properties fo:padding="0.074cm" fo:border-left="none" fo:border-right="none" fo:border-top="none" fo:border-bottom="0.002cm solid #000000" style:join-border="false"/>' .
+				'</style:style>' .
+				'<style:style style:name="PAGEBREAK" style:family="paragraph" style:parent-style-name="Standard">' .
+				'<style:paragraph-properties fo:break-before="page"/>' .
+				'</style:style>' ;
 		
 		# Text styles
 		foreach ( $this->textstyles AS $ts ) {
@@ -313,6 +322,9 @@ class element {
 		$s = str_replace ( ">" , "&gt;" , $s ) ;
 		return utf8_decode ( $s ) ;*/
 		filter_named_entities ( $s ) ;
+		$s = str_replace ( "&" , "&amp;" , $s ) ;
+		$s = str_replace ( "<" , "&lt;" , $s ) ;
+		$s = str_replace ( ">" , "&gt;" , $s ) ;
 		return $s ;
 	}
 
@@ -362,7 +374,6 @@ class element {
 				$sub = array_shift ( $sub ) ;
 			}
 			$sub = $this->fix_text ( $sub ) ;
-			$sub = str_replace ( "&" , "&amp;" , $sub ) ;
 			$link = '<text:a xlink:type="simple" xlink:href="' . $href . '/">' . $sub . '</text:a>' ;
 		} else { # Internal link
 			$link = "LINK" ;
@@ -530,6 +541,10 @@ class element {
 		if ( $tag == "SPACE" ) {
 			return '<text:s/>' ;
 		} else if ( $tag == "ARTICLE" ) {
+			if ( $xml2odt->article_counter > 0 ) {
+				$ret .= '<text:p text:style-name="PAGEBREAK"/>' ;
+			}
+			$xml2odt->article_counter++ ;
 			if ( isset ( $this->attrs['TITLE'] ) ) {
 				$title = $this->attrs['TITLE'] ;
 				$ret .= '<text:h text:style-name="Heading_20_1" text:outline-level="1">' ;
@@ -537,6 +552,14 @@ class element {
 				$ret .= '</text:h>' ;
 			}
 			
+		} else if ( $tag == "TEMPLATE" ) {
+			return "" ;
+		} else if ( $tag == "TEMPLATEVAR" ) {
+			return "" ;
+		} else if ( $tag == "MAGIC_VARIABLE" ) {
+			return "" ;
+		} else if ( $tag == "HR" ) {
+			return '<text:p text:style-name="PHR"/>' ;
 		} else if ( $tag == "EXTENSION" ) {
 			return $this->handle_extensions ( $tree ) ;
 		} else if ( $tag == "HEADING" || substr ( $tag , 0 , 7 ) == "XHTML:H" ) {
