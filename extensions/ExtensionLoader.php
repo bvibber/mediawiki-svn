@@ -32,7 +32,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @return bool True on success, False on failure
  */
 function wfExtensionLoader() {
-	// Stuff might break without all of them
+	// Stuff might break without all of the globals
 	extract( $GLOBALS, EXTR_REFS );
 	
 	$extensions = func_get_args();
