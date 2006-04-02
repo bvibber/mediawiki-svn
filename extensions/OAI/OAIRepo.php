@@ -47,6 +47,14 @@ function oaiSetupRepo() {
 	global $IP;
 	require_once( "$IP/includes/SpecialPage.php" );
 
+if( !function_exists( 'wfTimestamp2ISO8601' ) ) {
+	// Back compat; gone in 1.6
+	function wfTimestamp2ISO8601( $ts ) {
+		#2003-08-05T18:30:02Z
+		return preg_replace( '/^(....)(..)(..)(..)(..)(..)$/', '$1-$2-$3T$4:$5:$6Z', $ts );
+	}
+}
+
 class OAIRepository extends UnlistedSpecialPage {
 	function OAIRepository() {
 		UnlistedSpecialPage::UnlistedSpecialPage( 'OAIRepository' );
@@ -841,6 +849,7 @@ class WikiOAIRecord extends OAIRecord {
 
 function oaiUpdatePage( $id, $action ) {
 	$dbw =& wfGetDB( DB_MASTER );
+	#$dbw->immediateBegin();
 	$dbw->replace( 'updates',
 		array( 'up_page' ),
 		array( 'up_page'      => $id,
@@ -848,6 +857,7 @@ function oaiUpdatePage( $id, $action ) {
 		       'up_timestamp' => $dbw->timestamp(),
 		       'up_sequence'  => null ), # FIXME
 		'oaiUpdatePage' );
+	#$dbw->commit();
 }
 
 function oaiUpdateSave( $article, $user, $text, $summary, $isminor, $iswatch, $section ) {

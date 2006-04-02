@@ -25,8 +25,8 @@ CREATE TABLE /*$wgDBprefix*/updates (
 -- New deletions can be kept track of as the happen through
 -- updates from the extension hooks.
 --
-INSERT INTO /*$wgDBprefix*/updates (up_page, up_action, up_timestamp)
-SELECT cur_id, IF(cur_is_new, 'create', 'modify'), cur_timestamp
-FROM /*$wgDBprefix*/cur
-ORDER BY cur_timestamp;
+--INSERT INTO /*$wgDBprefix*/updates (up_page, up_action, up_timestamp)
+--SELECT cur_id, IF(cur_is_new, 'create', 'modify'), cur_timestamp
+--FROM /*$wgDBprefix*/cur
+--ORDER BY cur_timestamp;
 
