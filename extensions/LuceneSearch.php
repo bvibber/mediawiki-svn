@@ -801,7 +801,7 @@ $wgMessageCache->addMessages(array(
 	'searchnoresults'       => "Sorry, there were no exact matches to your query.",
 	'searchnearmatches'     => "<b>These pages have similar titles to your query:</b>\n",
 	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext', "
+	'lucenepowersearchtext' => "
 Search in namespaces:\n
 $1\n
 Search for $3 $9",
