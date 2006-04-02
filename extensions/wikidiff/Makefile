@@ -4,7 +4,7 @@ VERSION=0.0.1
 CXX?=g++
 
 # For Linux
-SHARED = -shared
+SHARED = -shared -fPIC
 
 # For Mac OS X
 # SHARED = -bundle
