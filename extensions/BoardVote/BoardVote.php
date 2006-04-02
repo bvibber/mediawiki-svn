@@ -69,6 +69,9 @@ class BoardVotePage extends SpecialPage {
 			$this->mFinished = false;
 		//}
 
+		global $wgOut;
+		$wgOut->addWikiText( 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2005/En the elections page for results] soon.' );
+
 		if ( $this->mAction == "list" ) {
 			$this->displayList();
 		} elseif ( $this->mAction == "dump" ) {
@@ -78,6 +81,7 @@ class BoardVotePage extends SpecialPage {
 		} elseif ( $this->mAction == "unstrike" ) {
 			$this->strike( $this->mId, true );
 		} elseif( $this->mAction == "vote" && !$this->mFinished ) {
+			return;
 			if ( !$wgUser->getID() ) {
 				$this->notLoggedIn();
 			} else {
@@ -102,7 +106,7 @@ class BoardVotePage extends SpecialPage {
 
 	function hasVoted( &$user ) {
 		global $wgDBname;
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr =& wfGetDB( DB_MASTER ); //$dbr =& wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow( "`{$this->mDBname}`.log", array( "1" ), 
 		  array( "log_user_key" => $this->mUserKey ), "BoardVotePage::getUserVote" );
 		if ( $row === false ) {
@@ -262,7 +266,7 @@ class BoardVotePage extends SpecialPage {
 	function getQualifications( &$user ) {
 		global $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgVersion;
 		
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr =& wfGetDB( DB_MASTER ); //$dbr =& wfGetDB( DB_SLAVE );
 
 		# Count contributions before $wgBoardVoteCountDate
 		
@@ -314,7 +318,7 @@ class BoardVotePage extends SpecialPage {
 
 		$userRights = $wgUser->getRights();
 		$admin = $this->isAdmin();
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr =& wfGetDB( DB_MASTER ); //$dbr =& wfGetDB( DB_SLAVE );
 		$log = $dbr->tableName( "`{$this->mDBname}`.log" );
 
 		$sql = "SELECT * FROM $log ORDER BY log_user_key";
@@ -405,7 +409,7 @@ class BoardVotePage extends SpecialPage {
 
 	function dump() {
 		global $wgOut, $wgOutputEncoding, $wgLang, $wgUser;
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr =& wfGetDB( DB_MASTER ); //$dbr =& wfGetDB( DB_SLAVE );
 		$log = $dbr->tableName( "`{$this->mDBname}`.log" );
 
 		$sql = "SELECT log_record FROM $log WHERE log_current=1 AND log_strike=0";
@@ -459,7 +463,7 @@ $wgMessageCache->addMessages( array(
 
 "boardvote"               => "Wikimedia Board of Trustees election",
 "boardvote_entry"         => 
-"* [[Special:Boardvote/vote|Vote]]
+"<!--* [[Special:Boardvote/vote|Vote]]-->
 * [[Special:Boardvote/list|List votes to date]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]",
 "boardvote_intro"         => "
