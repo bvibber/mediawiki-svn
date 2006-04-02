@@ -148,7 +148,8 @@ function wfSpecialCrossNamespaceLinksHook( &$QueryPages ) {
 	$QueryPages[] = array(
 		'CrossNamespaceLinksPage',
 		'CrossNamespaceLinks',
-		false
+		// Would probably be slow on large wikis -ævar
+		//false
 	);
 
 	return true;
