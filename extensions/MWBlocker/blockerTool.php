@@ -19,7 +19,7 @@ function showStatus() {
 	echo $ret . "\n";
 }
 
-switch( $argv[0] ) {
+switch( $argv[count($argv)-1] ) {
 case "status":
 	showStatus();
 	break;
