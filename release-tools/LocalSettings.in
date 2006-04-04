@@ -1,0 +1,51 @@
+<?php
+
+if( defined( 'MW_INSTALL_PATH' ) ) {
+	$IP = MW_INSTALL_PATH;
+} else {
+	$IP = dirname( __FILE__ );
+}
+
+$path = array( $IP, "$IP/includes", "$IP/languages" );
+set_include_path( implode( PATH_SEPARATOR, $path ) );
+
+require_once( "includes/DefaultSettings.php" );
+
+if ( $wgCommandLineMode ) {
+	if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
+		die( "This script must be run from the command line\\n" );
+	}
+}
+
+$wgSitename         = "TestWiki";
+
+$wgScriptPath	    = "/w";
+$wgScript           = "$wgScriptPath/index.php";
+$wgRedirectScript   = "$wgScriptPath/redirect.php";
+
+$wgArticlePath      = "$wgScript/$1";
+
+$wgStylePath        = "$wgScriptPath/skins";
+$wgStyleDirectory   = "$IP/skins";
+$wgLogo             = "$wgStylePath/common/images/wiki.png";
+
+$wgUploadPath       = "$wgScriptPath/images";
+$wgUploadDirectory  = "$IP/images";
+
+$wgDBserver         = "localhost";
+$wgDBname           = "%(dbname)s";
+$wgDBuser           = "%(dbuser)s";
+$wgDBpassword       = "%(dbpassword)s";
+$wgDBprefix         = "";
+$wgDBtype           = "mysql";
+
+$wgDBmysql5 = false;
+
+$wgLocalInterwiki   = $wgSitename;
+
+$wgLanguageCode = "en";
+
+$configdate = gmdate( 'YmdHis', @filemtime( __FILE__ ) );
+$wgCacheEpoch = max( $wgCacheEpoch, $configdate );
+
+?>

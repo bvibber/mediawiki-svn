@@ -1,0 +1,11 @@
+== upgradeTest.py ==
+
+Checks out MediaWiki branches from 1.2 on up, to test upgrading from a fresh
+database at each schema level.
+
+Doesn't test all possible scenarios, but should catch gross regressions.
+
+Currently a bit hacking. Requires SVN, PHP, MySQL on localhost, root w/ blank
+password, and available space for databases 'uptest12'...'uptest15' etc.
+
+WILL EAT ANY SUCH NAMED DATABASES YOU HAVE. BEWARE.
