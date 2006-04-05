@@ -1,0 +1,129 @@
+= MediaWiki release notes =
+
+Security reminder: MediaWiki does not require PHP's register_globals
+setting since version 1.2.0. If you have it on, turn it *off* if you can.
+
+== MediaWiki 1.6.0 ==
+
+April 5, 2006
+
+MediaWiki is now using a "continuous integration" development model with
+quarterly snapshot releases. The latest development code is always kept
+"ready to run", and in fact runs our own sites on Wikipedia.
+
+Release branches will continue to receive security updates for about a year
+from first release, but nonessential bugfixes and feature development happen
+will be made on the development trunk and appear in the next quarterly release.
+
+Those wishing to use the latest code instead of a branch release can obtain
+it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
+
+
+=== What's new in 1.6 ===
+
+User interface:
+* The account creation form has been separated from the user login form.
+* Page protection/unprotection uses a new, expanded form
+
+Templates:
+* Categories and "what links here" now update as expected when adding or
+  removing links in a template.
+* Template parameters can now have default values, as {{{name|default value}}}
+
+Uploads:
+* Optional support for rasterizing SVG images to PNG for inline dislay
+
+Feeds:
+* Feed generation upgraded to Atom 1.0
+* Diffs in RSS and Atom feeds are now colored for improved readability.
+
+Database:
+* MySQL 3.23.x support dropped; 4.0 or later required
+* Experimental support for Unicode mode of MySQL 4.1/5.0 (moderately tested)
+* Experimental Oracle support (not well tested!)
+
+Anti-spam extension support:
+* Spam blacklist extension now has support for automated cleanup:
+  http://meta.wikimedia.org/wiki/SpamBlacklist_extension
+* Support for a captcha extension to restrict automated spam edits:
+  http://meta.wikimedia.org/wiki/ConfirmEdit_extension
+
+Numerous bug fixes and other behind-the-scenes changes have been made;
+see the file HISTORY for a complete change list.
+
+
+== Compatibility ==
+
+Older PHP 4.2 and 4.1 releases are no longer supported; PHP 4 users must
+upgrade to 4.3 or later.
+
+MediaWiki 1.6 is the last major version to support PHP 4; future versions
+will require PHP 5.
+
+MySQL 3.23.x is longer supported; some older hosts may need to upgrade.
+At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.
+
+
+== Upgrading ==
+
+Several changes to the database have been made from 1.5; these are relatively
+minor but do require that the update process be run before the new code will
+work properly:
+
+* A new "templatelinks" table tracks template inclusions.
+* A new "externallinks" table tracks URL links; this can be used by a
+  mass spam-cleanup tool in the SpamBlacklist extension.
+* A new "jobs" table stores a queue of pages to update in the background; this
+  is used to update links in including pages when templates are edited.
+
+To ensure that these tables are filled with data, run refreshLinks.php after
+the upgrade.
+
+
+If you are upgrading from MediaWiki 1.4.x or earlier, some major database
+changes are made, and there is a slightly higher chance that things could
+break. Don't forget to always back up your database before upgrading!
+
+See the file UPGRADE for more detailed upgrade instructions.
+
+
+
+=== Caveats ===
+
+Some output, particularly involving user-supplied inline HTML, may not
+produce 100% valid or well-formed XHTML output. Testers are welcome to
+set $wgMimeType = "application/xhtml+xml"; to test for remaining problem
+cases, but this is not recommended on live sites. (This must be set for
+MathML to display properly in Mozilla.)
+
+
+For notes on 1.5.x and older releases, see HISTORY.
+
+
+=== Online documentation ===
+
+Documentation for both end-users and site administrators is currently being
+built up on Meta-Wikipedia, and is covered under the GNU Free Documentation
+License:
+
+  http://www.mediawiki.org/wiki/Documentation
+
+
+=== Mailing list ===
+
+A MediaWiki-l mailing list has been set up distinct from the Wikipedia
+wikitech-l list:
+
+  http://mail.wikimedia.org/mailman/listinfo/mediawiki-l
+
+A low-traffic announcements-only list is also available:
+
+  http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce
+
+It's highly recommended that you sign up for one of these lists if you're
+going to run a public MediaWiki, so you can be notified of security fixes.
+
+
+=== IRC help ===
+
+There's usually someone online in #mediawiki on irc.freenode.net
