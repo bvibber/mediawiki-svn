@@ -9,7 +9,7 @@ class wiki2xml
 	var $cnt = 0 ; # For debugging purposes
 	var $protocols = array ( "http" , "https" , "news" , "ftp" , "irc" , "mailto" ) ;
 	var $errormessage = "ERROR!" ;
-	var $compensate_markup_errors = false;
+	var $compensate_markup_errors = true;
 	var $auto_fill_templates = 'all' ; # Will try and replace templates right inline, instead of using <template> tags; requires global $content_provider
 	var $use_space_tag = true ; # Use <space/> instead of spaces before and after tags
 	var $allowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890 +-#:;.,%="\'\\' ;
@@ -890,7 +890,14 @@ class wiki2xml
 
 		# Parsing arrtibutes
 		$ob = $b ;
-		while ( $b < $this->wl && $this->w[$b] != '>' && $this->w[$b] != '/' ) $b++ ;
+		$q = "" ;
+		while ( $q != "" || ( $b < $this->wl && $this->w[$b] != '>' && $this->w[$b] != '/' ) ) {
+			if ( $this->w[$b] == '"' || $this->w[$b] == "'" ) {
+				if ( $q == "" ) $q = $this->w[$b] ;
+				else if ( $this->w[$b] == $q ) $q = "" ;
+			}
+			$b++ ;
+		}
 		if ( $b >= $this->wl ) return false ;
 		$attrs = $this->preparse_attributes ( substr ( $this->w , $ob , $b - $ob + 1 ) ) ;
 		
@@ -924,17 +931,26 @@ class wiki2xml
 		$np->w = $x ;
 		$np->wl = strlen ( $x ) ;
 
-		# Replacing templates
+		# Replacing templates, and '<' and '>' in parameters
 		$c = 0 ;
-		while ( $c < $np->wl && $np->w[$c] != '>' && $np->w[$c] != '/' )
+		$q = "" ;
+		while ( $q != "" || ( $c < $np->wl && $np->w[$c] != '>' && $np->w[$c] != '/' ) )
 			{
-			if ( $np->nextis ( $c , "{{" , false ) )
-				{
+			$y = $np->w[$c] ;
+			if ( $np->nextis ( $c , "{{" , false ) ) {
 				$xx = "" ;
 				if ( $np->p_template ( $c , $xx ) ) continue ;
 				else $c++ ;
-				}
-			else $c++ ;
+			} else if ( $y == "'" || $y == '"' ) {
+				if ( $q == "" ) $q = $y ;
+				else if ( $y == $q ) $q = "" ;
+				$c++ ;
+			} else if ( $q != "" && ( $y == '<' || $y == '>' ) ) {
+				$y = htmlentities ( $y ) ;
+				$np->w = substr ( $np->w , 0 , $c ) . $y . substr ( $np->w , $c + 1 ) ;
+				$np->wl += strlen ( $y ) - 1 ;
+			} else $c++ ;
+			if ( $c >= $np->wl ) return array () ;
 			}
 
 		$attrs = array () ;
@@ -947,10 +963,13 @@ class wiki2xml
 			if ( !$np->p_html_attr ( $c , $attr ) ) break ;
 			if ( $attr != "" ) {
 				$key = array_shift ( explode ( "=" , $attr , 2 ) ) ;
-				if ( !isset ( $attrs[$key] ) && substr ( $attr , -3 , 3 ) != '=""' )
+				if ( !isset ( $attrs[$key] ) && substr ( $attr , -3 , 3 ) != '=""' ) {
 					$attrs[$key] = $attr ;
+#					print $attr . "<br>\n" ;
+				}
 			}
 			$np->skipblanks ( $c ) ;
+			if ( $c >= $np->wl ) return array () ;
 			}		
 		if ( substr ( $np->w , $c ) != ">" AND substr ( $np->w , $c ) != "/" ) return array() ;
 
@@ -1020,7 +1039,9 @@ class wiki2xml
 		if ( $name == "" ) return true ;
 		
 		$a = $b ;
-		$xml = "{$name}='{$value}'" ;
+		if ( $q == "'" ) $q = "'" ;
+		else $q = '"' ;
+		$xml = "{$name}={$q}{$value}{$q}" ;
 		#$xml .= "<attr name='{$name}'>{$value}</attr>" ;
 		return true ;
 		}

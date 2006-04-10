@@ -73,6 +73,15 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		$out = str_replace ( "\n" , "<br/>" , $out ) ;
 		header('Content-type: text/html; charset=utf-8');
 		print $out ;
+	} else if ( $format == "xhtml" ) {
+		# Header hack for IE
+		if ( stristr($_SERVER["HTTP_ACCEPT"],"application/xhtml+xml") ) {
+		  header("Content-type: application/xhtml+xml");
+		} else {
+		  header("Content-type: text/html");
+		}
+#		header("Content-type: application/xhtml+xml");
+		echo $converter->articles2xhtml ( $xml , $xmlg ) ;
 	} else if ( $format == "odt" || $format == "odt_xml" ) {
 		$cwd = getcwd() ;
 		$template_file = $cwd . '/template.odt' ;
@@ -205,6 +214,7 @@ Title : <input type='text' name='document_title' value='' size=40/><br/>
 <br/><INPUT type='radio' name='output_format' value='text'>Plain text 
  <input type='checkbox' name='plaintext_markup' value='1' checked>Use *_/ markup</input>
  <input type='checkbox' name='plaintext_prelink' value='1' checked>Put &rarr; before internal links</input>
+<br/><INPUT type='radio' name='output_format' value='xhtml'>XHTML 
 <br/><INPUT type='radio' name='output_format' value='docbook_xml'>DocBook XML 
 {$optional}
 </tr></table>

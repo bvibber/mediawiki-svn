@@ -87,6 +87,40 @@ class MediaWikiConverter {
 	}
 
 	/**
+	 * Converts XML to XHTML
+	 */
+	function articles2xhtml ( &$xml , $params = array () ) {
+		global $xml2xhtml ;
+		require_once ( "./xml2xhtml.php" ) ;
+		$lang = "EN" ; # Dummy
+
+		$ret = "" ;
+		$ret .= '<?xml version="1.0" encoding="UTF-8" ?>' ;
+		$ret .= '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//' . $lang . '" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' ;
+		$ret .= '<html xmlns="http://www.w3.org/1999/xhtml">' ;
+		$ret .= '<head>' ;
+		#$ret .= '<link rel="stylesheet" type="text/css" media="screen,projection" href="http://de.wikipedia.org/skins-1.5/monobook/main.css" />' ;
+		#$ret .= '<link rel="stylesheet" type="text/css" media="print" href="http://en.wikipedia.org/skins-1.5/common/commonPrint.css" />' ;
+		$ret .= '<link rel="stylesheet" type="text/css" href="href://' ;
+		$ret .= $params["site_base_url"] . 'index.php?title=MediaWiki:Common.css&amp;action=raw" />' ;
+		#$ret .= '<link rel="stylesheet" type="text/css" href="href://' ;
+		#$ret .= $params["site_base_url"] . 'index.php?title=MediaWiki:Monobook.css&amp;action=raw" />' ;
+		$ret .= '<title></title>' ;
+		$ret .= '</head>' ;
+		$ret .= '<body>' ;
+
+		convert_xml_xhtml ( $xml ) ;
+		$ret .= $xml2xhtml->s ;
+		
+#		$xml2xhtml = new XML2XHTML ;
+#		$ret .= $xml2xhtml->scan_xml ( $xml ) ;
+		
+		$ret .= '</body>' ;
+		$ret .= '</html>' ;
+		return $ret ;
+	}
+
+	/**
 	 * Converts XML to ODT XML
 	 */
 	function articles2odt ( &$xml , $params = array () , $use_gfdl = false ) {
