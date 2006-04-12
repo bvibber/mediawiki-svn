@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
-<project name="compress" default="jar">
+<project name="mwdumper" default="jar">
 	<target name="bindir">
 		<mkdir dir="bin" />
 		<mkdir dir="bin/org" />
 		<mkdir dir="bin/org/mediawiki" />
 		<mkdir dir="bin/org/mediawiki/dumper" />
+		<mkdir dir="bin/org/mediawiki/dumper/gui" />
 		<mkdir dir="bin/org/mediawiki/importer" />
 		<mkdir dir="bin/org/apache" />
 		<mkdir dir="bin/org/apache/commons" />
@@ -32,6 +33,7 @@
 			</manifest>
 			<fileset dir="bin" includes="org/mediawiki/importer/*.class" />
 			<fileset dir="bin" includes="org/mediawiki/dumper/*.class" />
+			<fileset dir="bin" includes="org/mediawiki/dumper/gui/*.class" />
 			<fileset dir="bin" includes="org/apache/commons/compress/bzip2/*.class" />
 			
 			<!-- Some silly libraries -->
