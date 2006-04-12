@@ -49,5 +49,6 @@ function wfSpecialTalk() {
 		}
 	}
 
-	new PersistentObject( new SpecialTalk );
+	// Establish a singleton.
+	new SpecialTalk;
 }

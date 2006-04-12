@@ -79,5 +79,6 @@ function wfTidy() {
 		}
 	}
 
-	new PersistentObject( new TidyAction );
+	// Establish a singleton.
+	new TidyAction;
 }

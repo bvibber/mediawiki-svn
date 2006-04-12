@@ -50,5 +50,6 @@ function wfPurge() {
 		}
 	}
 
-	new PersistentObject( new PurgeAction );
+	// Establish a singleton.
+	new PurgeAction;
 }

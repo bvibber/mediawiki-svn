@@ -34,5 +34,6 @@ function wfHTTPRedirect() {
 		}
 	}
 
-	new PersistentObject( new HTTPRedirect );
+	// Establish a singleton.
+	new HTTPRedirect;
 }

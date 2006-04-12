@@ -47,5 +47,6 @@ function wfCssHook() {
 		}
 	}
 
-	new PersistentObject( new CssHook );
+	// Establish a singleton.
+	new CssHook;
 }

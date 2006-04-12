@@ -43,6 +43,7 @@ function wfContributionseditcount() {
 		}
 	}
 
-	new PersistentObject( new Contributionseditcount );
+	// Establish a singleton.
+	new Contributionseditcount;
 }
 ?>
