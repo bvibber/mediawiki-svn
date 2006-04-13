@@ -1,14 +1,11 @@
 <?php
 
-if( !function_exists( 'domxml_open_mem' ) ) {
-	die( 'Install the domxml module...' );
-	#dl( 'domxml.so' );
-	#dl( '/usr/lib/php/extensions/no-debug-non-zts-20020429/domxml.so' );
+if( !class_exists( 'DOMAttr' ) ) {
+	die( 'Requires PHP 5 with the DOM module enabled...' );
 }
 
-$options = array( 'dry-run' );
 require_once( 'commandLine.inc' );
-#require_once( 'extensions/OAI/OAIHarvest.php' );
+//require_once( "$IP/extensions/OAI/OAIHarvest.php" );
 
 
 /**
@@ -19,7 +16,7 @@ require_once( 'commandLine.inc' );
 $harvester = new OAIHarvester( $oaiSourceRepository );
 
 $dbr =& wfGetDB( DB_SLAVE );
-$highest = $dbr->selectField( 'cur', 'MAX(cur_timestamp)' );
+$highest = $dbr->selectField( 'revision', 'MAX(rev_timestamp)' ); // FIXME!
 if( $highest ) {
 	$lastUpdate = wfTimestamp( TS_MW, $highest );
 } else {
@@ -27,18 +24,27 @@ if( $highest ) {
 	$lastUpdate = '19700101000000';
 }
 
-$callback = 'showUpdates';
-function showUpdates( $record ) {
-	global $options;
-	$record->dump();
-	if( !isset( $options['dry-run'] ) ) {
+
+if( isset( $options['debug'] ) ) {
+	$callback = 'debugUpdates';
+	function debugUpdates( $record ) {
+		$record->dump();
+		var_dump( $record );
+	}
+} elseif( isset( $options['dry-run'] ) ) {
+	$callback = 'showUpdates';
+	function showUpdates( $record ) {
+		$record->dump();
+	}
+} else {
+	$callback = 'applyUpdates';
+	function applyUpdates( $record ) {
+		$record->dump();
 		$record->apply();
 	}
 }
 
+
 $result = $harvester->listUpdates( $lastUpdate, $callback );
-if( OAIError::isError( $result ) ) {
-	die( $result->toString() );
-}
 
 ?>

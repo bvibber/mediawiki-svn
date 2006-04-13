@@ -38,7 +38,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 # Need shared code...
-require_once( 'OAIRepo.php' );
+require_once( 'OAIFunctions.php' );
 require_once( 'maintenance/refreshLinks.inc' );
 
 global $oaiSourceRepository;
@@ -88,7 +88,7 @@ class OAIHarvester {
 			}
 			$xml = $this->callRepo( $params );
 			
-			$doc = new DOMDocument();
+			$doc = new DOMDocument( '1.0', 'utf-8' );
 			if( !$doc->loadXML( $xml ) )
 				throw new OAIError( "Invalid XML returned from OAI repository." );
 	
@@ -99,15 +99,15 @@ class OAIHarvester {
 				return $errors;
 			
 			$resultSet = $xp->query( '/oai:OAI-PMH/oai:ListRecords/oai:record' );
-			foreach( $resultSet->nodeset as $node ) {
+			foreach( $resultSet as $node ) {
 				$record = OAIUpdateRecord::newFromNode( $node );
 				call_user_func( $callback, $record );
 				unset( $record );
 			}
 			
 			$tokenSet = $xp->query( '/oai:OAI-PMH/oai:ListRecords/oai:resumptionToken' );
-			$token = ( $tokenSet && isset( $tokenSet->nodeset[0] ) )
-				? $tokenSet->nodeset[0]->get_content()
+			$token = ( $tokenSet->length )
+				? $tokenSet->item( 0 )->textContent
 				: false;
 
 			unset( $tokenSet );
@@ -130,7 +130,7 @@ class OAIHarvester {
 		if( !$errors )
 			throw new OAIError( "Doesn't seem to be an OAI document...?" );
 		
-		if( !count( $errors->nodeset ) )
+		if( $errors->length == 0 )
 			return;
 		
 		throw new OAIError(
@@ -318,6 +318,7 @@ class OAIUpdateRecord {
 	function apply() {
 		if( $this->isDeleted() ) {
 			$this->doDelete();
+			return;
 		}
 		
 		$title = $this->getTitle();
@@ -351,7 +352,7 @@ class OAIUpdateRecord {
 		
 		$title = $this->getTitle();
 		$pageId = $this->getArticleId();
-		$timestamp = $this->getTimestamp( $revision['timestamp'] );
+		$timestamp = $this->getTimestamp( $data['timestamp'] );
 		
 		$dbw = wfGetDB( DB_WRITE );
 		$dbw->begin();
@@ -361,16 +362,16 @@ class OAIUpdateRecord {
 		
 		// Insert a revision
 		$revision = new Revision( array(
-			'id'         => intval( $revision['id'] ),
+			'id'         => isset( $data['id'] ) ? intval( $data['id'] ) : null,
 			'page'       => $pageId,
-			'user'       => intval( @$revision['contributor']['id'] ),
-			'user_text'  => isset( $revision['contributor']['username'] )
-			                       ? $revision['contributor']['username']
-			                       : $revision['contributor']['ip'],
-			'minor_edit' => isset( $revision['minor'] ) ? 1 : 0,
+			'user'       => intval( @$data['contributor']['id'] ),
+			'user_text'  => isset( $data['contributor']['username'] )
+			                       ? strval( $data['contributor']['username'] )
+			                       : strval( $data['contributor']['ip'] ),
+			'minor_edit' => isset( $data['minor'] ) ? 1 : 0,
 			'timestamp'  => $timestamp,
-			'comment'    => strval( @$revision['comment'] ),
-			'text'       => $revision['text'],
+			'comment'    => strval( @$data['comment'] ),
+			'text'       => strval( $data['text'] ),
 		) );
 		$revId = $revision->insertOn( $dbw );
 		echo "UPDATING to rev $revId\n";
@@ -379,8 +380,6 @@ class OAIUpdateRecord {
 		$article->updateRevisionOn( $dbw, $revision );
 		
 		$dbw->commit();
-		
-		return $id;
 	}
 	
 	/**
@@ -389,6 +388,8 @@ class OAIUpdateRecord {
 	 * @return Article
 	 */
 	function prepareArticle( $db, $pageId, $title ) {
+		$fname = 'OAIUpdateRecord::prepareArticle';
+		
 		$article = new Article( $title );
 		$foundId = $article->getId();
 		
@@ -400,23 +401,37 @@ class OAIUpdateRecord {
 			$this->hideConflictingPage( $db, $foundId, $title );
 		}
 		
-		// FIXME: prefer to use Article::insertOn here, but it doesn't provide
-		// currently for overriding the page ID.
-		echo "INSERTING page record\n";
-		$db->insert( 'page', array(
-			'page_id'           => $pageId,
-			'page_namespace'    => $title->getNamespace(),
-			'page_title'        => $title->getDBkey(),
-			'page_counter'      => 0,
-			'page_restrictions' => '', # fixme?
-			'page_is_redirect'  => 0, # Will set this shortly...
-			'page_is_new'       => 1,
-			'page_random'       => wfRandom(),
-			'page_touched'      => $db->timestamp(),
-			'page_latest'       => 0, # Fill this in shortly...
-			'page_len'          => 0, # Fill this in shortly...
-		), 'OAIUpdateRecord::prepareArticle' );
-		
+		// Check to see if the page exists under a different title
+		$foundTitle = Title::newFromId( $pageId );
+		if( $foundTitle ) {
+			// Rename it...
+			echo "RENAMING page record\n";
+			$db->update( 'page',
+				array(
+					'page_namespace' => $title->getNamespace(),
+					'page_title'     => $title->getDbkey() ),
+				array( 'page_id' => $pageId ),
+				$fname );
+		} else {
+			// FIXME: prefer to use Article::insertOn here, but it doesn't provide
+			// currently for overriding the page ID.
+			echo "INSERTING page record\n";
+			$db->insert( 'page', array(
+				'page_id'           => $pageId,
+				'page_namespace'    => $title->getNamespace(),
+				'page_title'        => $title->getDBkey(),
+				'page_counter'      => 0,
+				'page_restrictions' => '', # fixme?
+				'page_is_redirect'  => 0, # Will set this shortly...
+				'page_is_new'       => 1,
+				'page_random'       => wfRandom(),
+				'page_touched'      => $db->timestamp(),
+				'page_latest'       => 0, # Fill this in shortly...
+				'page_len'          => 0, # Fill this in shortly...
+			), $fname );
+		}
+
+		$title->resetArticleID( -1 );
 		return new Article( $title );
 	}
 	
@@ -457,9 +472,9 @@ class OAIUpdateRecord {
 			'img_size'        => IntVal( $upload['size'] ),
 			'img_description' => $upload['comment'],
 			'img_user'        => IntVal( @$upload['contributor']['id'] ),
-			'img_user_text'   => isset( $revision['contributor']['username'] )
-								   ? strval( $revision['contributor']['username'] )
-								   : strval( $revision['contributor']['ip'] ),
+			'img_user_text'   => isset( $upload['contributor']['username'] )
+								   ? strval( $upload['contributor']['username'] )
+								   : strval( $upload['contributor']['ip'] ),
 			'img_timestamp'   => $dbw->timestamp( $this->getTimestamp( $upload['timestamp'] ) ) );
 		
 		$dbw->begin();
@@ -476,8 +491,8 @@ class OAIUpdateRecord {
 	 * @throws OAIError
 	 */
 	function downloadUpload( $upload ) {
-		global $wgDisableUploads;
-		if( $wgDisableUploads ) {
+		global $wgEnableUploads;
+		if( !$wgEnableUploads ) {
 			echo "Uploads disabled locally: NOT fetching URL '" .
 				$upload['src'] . "'.\n";
 			return;
@@ -531,10 +546,14 @@ class OAIUpdateRecord {
 		$dbw->begin();
 		
 		$title = Title::newFromId( $this->getArticleId() );
-		$article = new Article( $title );
-		
-		echo "DELETING\n";
-		$article->doDeleteArticle( 'deleted from parent repository' );
+		if( $title ) {
+			$article = new Article( $title );
+			
+			echo "DELETING\n";
+			$article->doDeleteArticle( 'deleted from parent repository' );
+		} else {
+			echo "DELETING (not present)\n";
+		}
 		
 		$dbw->commit();
 		
@@ -623,22 +642,24 @@ class OAIUpdateRecord {
 	 */
 	function grabPage( $page ) {
 		$data = array();
-		foreach( $node->childNodes as $node ) {
-			switch( $element = $node->nodeName ) {
-			case 'title':
-			case 'id':
-			case 'restrictions':
-				$data[$element] = $node->textContent;
-				break;
-			case 'revision':
-				$data['revisions'][] = OAIUpdateRecord::grabRevision( $node );
-				break;
-			case 'upload':
-				$data['uploads'][] = OAIUpdateRecord::grabUpload( $node );
-				break;
-			default:
-				//throw new OAIError( "Unexpected page element <$element>" );
-				echo "Unexpected page element <$element>\n";
+		foreach( $page->childNodes as $node ) {
+			if( $node->nodeType == XML_ELEMENT_NODE ) {
+				switch( $element = $node->nodeName ) {
+				case 'title':
+				case 'id':
+				case 'restrictions':
+					$data[$element] = $node->textContent;
+					break;
+				case 'revision':
+					$data['revisions'][] = OAIUpdateRecord::grabRevision( $node );
+					break;
+				case 'upload':
+					$data['uploads'][] = OAIUpdateRecord::grabUpload( $node );
+					break;
+				default:
+					//throw new OAIError( "Unexpected page element <$element>" );
+					echo "Unexpected page element <$element>\n";
+				}
 			}
 		}
 		return $data;
@@ -697,8 +718,8 @@ function oaiNodeMap( $parent, $map ) {
 	}
 	
 	foreach( $parent->childNodes as $node ) {
-		if( $parent->nodeType == XML_ELEMENT_NODE ) {
-			$name = $parent->nodeName;
+		if( $node->nodeType == XML_ELEMENT_NODE ) {
+			$name = $node->nodeName;
 			if( isset( $callMap[$name] ) ) {
 				$data[$name] = call_user_func( $callMap[$name], $node );
 			} elseif( isset( $textMap[$name] ) ) {
@@ -709,6 +730,8 @@ function oaiNodeMap( $parent, $map ) {
 			}
 		}
 	}
+	
+	return $data;
 }
 
 /**
@@ -722,8 +745,8 @@ function oaiNextElement( $startNode, $element = null ) {
 	for( $node = $startNode;
 		 $node;
 		 $node = $node->nextSibling )
-		if( $node->node_type() == XML_ELEMENT_NODE
-		 && ( is_null( $element ) || $node->node_name() == $element ) )
+		if( $node->nodeType == XML_ELEMENT_NODE
+		 && ( is_null( $element ) || $node->nodeName == $element ) )
 			return $node;
 	
 	return new OAIError(

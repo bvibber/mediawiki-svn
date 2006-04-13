@@ -45,6 +45,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 function oaiSetupRepo() {
 	global $IP;
+	require_once( "$IP/extensions/OAI/OAIFunctions.php" );
 	require_once( "$IP/includes/SpecialPage.php" );
 
 if( !function_exists( 'wfTimestamp2ISO8601' ) ) {
@@ -118,22 +119,6 @@ class OAIRepository extends UnlistedSpecialPage {
 	302 -- failover server?
 	503 - service unavailable, include a Retry-After!
 */
-
-/**
- * @return string
- */
-function oaiDatestamp( $timestamp, $granularity = 'YYYY-MM-DDThh:mm:ssZ' ) {
-	$formats = array(
-		'YYYY-MM-DD'           => '$1-$2-$3',
-		'YYYY-MM-DDThh:mm:ssZ' => '$1-$2-$3T$4:$5:$6Z' );
-	if( !isset( $formats[$granularity] ) ) {
-		wfDebugDieBacktrace( 'oaiFormatDate given illegal output format' );
-	}
-	return preg_replace(
-		'/^(....)(..)(..)(..)(..)(..)$/',
-		$formats[$granularity],
-		wfTimestamp( TS_MW, $timestamp ) );
-}
 
 /**
  * @param string $element
