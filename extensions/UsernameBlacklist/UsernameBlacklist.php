@@ -13,11 +13,7 @@
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'UsernameBlacklist_Init';
-	$wgExtensionCredits['other'][] = array(
-		'name' => 'Username blacklist',
-		'description' => 'provides a regex.-compatible blacklist of usernames',
-		'author' => 'Rob Church'
-		);
+	$wgExtensionCredits['other'][] = array( 'name' => 'Username Blacklist', 'author' => 'Rob Church', 'url' => 'http://meta.wikimedia.org/wiki/Username_Blacklist' );
 
 	/**
 	 * Constructor
