@@ -54,6 +54,7 @@ function renderInputbox($input, $params, &$parser)
 	getBoxOption($inputbox->labeltext,$input,'labeltext');
 	getBoxOption( $inputbox->br, $input, 'break' );
 	$inputbox->lineBreak();
+	$inputbox->checkWidth();
 	
 	$boxhtml=$inputbox->render();
 	# Maybe support other useful magic words here
@@ -190,6 +191,14 @@ ENDFORM;
 		# Should we be inserting a <br /> tag?
 		$cond = ( strtolower( $this->br ) == "no" );
 		$this->br = $cond ? '' : '<br />';
+	}
+	
+	/**
+	 * If the width is not supplied, set it to 50
+	 */
+	function checkWidth() {
+		if( !$this->width || trim( $this->width ) == '' )
+			$this->width = 50;
 	}
 	
 }
