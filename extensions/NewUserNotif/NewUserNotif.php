@@ -15,11 +15,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	require_once( 'UserMailer.php' );
 	
 	$wgExtensionFunctions[]  = 'NewUserNotif_Init';
-	$wgExtensionCredits['other'][] = array(
-		'name' => 'New user notification',
-		'description' => 'provides customisable email notification of new user creation',
-		'author' => 'Rob Church'
-		);
+	$wgExtensionCredits['other'][] = array( 'name' => 'New User Email Notification', 'author' => 'Rob Church', 'url' => 'http://meta.wikimedia.org/wiki/New_User_Email_Notification' );
 	
 	$wgNewUserNotifSender    = $wgPasswordSender;
 	$wgNewUserNotifTargets[] = 1; # TODO: Support usernames instead of/in addition to IDs
