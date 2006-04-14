@@ -37,7 +37,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$this->setHeaders();
 			$wgOut->addWikiText( wfMsg( 'newest50-header' ) );
 			$dbr =& wfGetDB( DB_SLAVE );
-			$res = $dbr->query( "SELECT page_namespace, page_title, page_touched FROM page ORDER BY page_id DESC LIMIT 0,50" );
+			$res = $dbr->query( "SELECT page_namespace, page_title FROM page ORDER BY page_id DESC LIMIT 0,50" );
 			$count = $dbr->numRows( $res );
 			if( $count > 0 ) {
 				# Make list
@@ -53,13 +53,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 		}
 		
 		function makeListItem( $row ) {
-			global $wgUser, $wgLang;
+			global $wgUser;
 			$title = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
 			if( !is_null( $title ) ) {
 				$skin = $wgUser->getSkin();
 				$link = $skin->makeKnownLinkObj( $title );
-				$lastEdit = wfMsgHtml( 'newest50-lastedit', $wgLang->timeAndDate( $row->page_touched ) );
-				return( "<li>{$link} ({$lastEdit})</li>\n" );
+				return( "<li>{$link}</li>\n" );
 			} else {
 				return( "<!-- Invalid title " . htmlspecialchars( $row->page_title ) . " in namespace " . htmlspecialchars( $row->page_namespace ) . " -->\n" );
 			}
