@@ -26,8 +26,18 @@ function wfNewuserlog() {
 		array(
 			'newuserlogpage' => 'User creation log',
 			'newuserlogpagetext' => 'This is a log of recent user creations',
+			
+			// Compatibility entries.
+			// Old code stored Special:Userlogin as the target, not very helpful.
 			'newuserlogentry' => '',
-			'newuserloglog' => "New user ([[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]])"
+			'newuserloglog' => "New user ([[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]])",
+			
+			// Self-login
+			'newuserlog-create-entry' => 'New user',
+			'newuserlog-create-text' => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]",
+			
+			// Created account for someone else with 'by mail' button
+			'newuserlog-create2-entry' => 'created account for $1',
 		)
 	);
 
@@ -41,15 +51,28 @@ function wfNewuserlog() {
 	$wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
 }
 
-function wfNewuserlogHook() {
-	global $wgUser, $wgTitle, $wgContLang;
-
+function wfNewuserlogHook( $user ) {
+	global $wgUser, $wgContLang;
+	
+	if( is_null( $user ) ) {
+		// Compatibility with old versions which didn't pass the parameter
+		$user = $wgUser;
+	}
+	
 	$talk = $wgContLang->getFormattedNsText( NS_TALK );
 	$contribs = wfMsgForContent( 'contribslink' );
 	$block = wfMsgForContent( 'blocklink' );
+	$message = wfMsgForContent( 'newuserlog-create-text',
+		$user->getName(), $talk, $contribs, $block );
+	
+	if( $user->getName() == $wgUser->getName() ) {
+		$action = 'create';
+	} else {
+		$action = 'create2';
+	}
 	
 	$log = new LogPage( 'newusers' );
-	$log->addEntry( 'newusers', $wgTitle, wfMsgForContent( 'newuserloglog', $wgUser->getName(), $talk, $contribs, $block ) );
+	$log->addEntry( $action, $user->getUserPage(), $message );
 	
 	return true;
 }
@@ -72,6 +95,8 @@ function wfNewuserlogAddLogHeader( &$headers ) {
 
 function wfNewuserlogAddActionText( &$actions ) {
 	$actions['newusers/newusers'] = 'newuserlogentry';
+	$actions['newusers/create']   = 'newuserlog-create-entry';
+	$actions['newusers/create2']  = 'newuserlog-create2-entry';
 	return true;
 }
 ?>
