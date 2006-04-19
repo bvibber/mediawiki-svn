@@ -268,10 +268,10 @@ discutir el bloqueo.",
 "previewnote"	=> "Recuerda que esto es sólo una previsualización, y ¡no ha sido grabada todavía!",
 "previewconflict" => "Esta previsualización refleja el texto en el área
 de edición superior como aparecerá si eliges grabar.",
-"editing"		=> "Editando $1",
-"editingsection"	=> "Editando $1 (sección)",
-"editingcomment"	=> "Editando $1 (comentario)",
-"editconflict"	=> "Conflicto de edición: $1",
+"editing"		=> "Editando",
+"editingsection"=>"(sección)",
+"editingcomment"=>"(comentario)",
+"editconflict"	=> "Conflicto de edición:",
 "explainconflict" => "Alguien más ha cambiado esta página desde que empezaste
 a editarla.
 El área de texto superior contiene el texto de la página como existe

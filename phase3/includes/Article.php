@@ -764,8 +764,7 @@ class Article {
 
 		if ( !is_null( $diff ) ) {
 			require_once( 'DifferenceEngine.php' );
-			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
-
+			$wgOut->setPageTitleArray($this->mTitle->getTitleArray()); 
 			$de = new DifferenceEngine( $this->mTitle, $oldid, $diff, $rcid );
 			// DifferenceEngine directly fetched the revision:
 			$this->mRevIdFetched = $de->mNewid;
@@ -927,7 +926,7 @@ class Article {
 		/* title may have been set from the cache */
 		$t = $wgOut->getPageTitle();
 		if( empty( $t ) ) {
-			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+			$wgOut->setPageTitleArray( $this->mTitle->getTitleArray() );
 		}
 		
 		# check if we're displaying a [[User talk:x.x.x.x]] anonymous talk page
@@ -1037,7 +1036,7 @@ class Article {
 				"<input type=\"submit\" name=\"submit\" value=\"$button\" />\n" .
 				"</form>\n", $msg );
 
-			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+			$wgOut->setPageTitleArray( $this->mTitle->getTitleArray() );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 			$wgOut->addHTML( $msg );
 		}
@@ -1570,7 +1569,7 @@ class Article {
 				require_once( 'RecentChange.php' );
 				RecentChange::markPatrolled( $rcid );
 				wfRunHooks( 'MarkPatrolledComplete', array( &$rcid, &$wgUser, false ) );
-				$wgOut->setPagetitle( wfMsg( 'markedaspatrolled' ) );
+				$wgOut->setPageTitle( wfMsg( 'markedaspatrolled' ) );
 				$wgOut->addWikiText( wfMsg( 'markedaspatrolledtext' ) );
 			}
 			$rcTitle = Title::makeTitle( NS_SPECIAL, 'Recentchanges' );
@@ -1599,7 +1598,7 @@ class Article {
 		}
 		
 		if( $this->doWatch() ) {
-			$wgOut->setPagetitle( wfMsg( 'addedwatch' ) );
+			$wgOut->setPageTitle(wfMsg( 'addedwatch' ));
 			$wgOut->setRobotpolicy( 'noindex,follow' );
 
 			$link = $this->mTitle->getPrefixedText();
@@ -1647,7 +1646,7 @@ class Article {
 		}
 		
 		if( $this->doUnwatch() ) {
-			$wgOut->setPagetitle( wfMsg( 'removedwatch' ) );
+			$wgOut->setPageTitle( wfMsg( 'removedwatch' ));
 			$wgOut->setRobotpolicy( 'noindex,follow' );
 
 			$link = $this->mTitle->getPrefixedText();
@@ -1811,7 +1810,7 @@ class Article {
 			return;
 		}
 
-		$wgOut->setPagetitle( wfMsg( 'confirmdelete' ) );
+		$wgOut->setPageTitle( wfMsg( 'confirmdelete' ) );
 		
 		# Better double-check that it hasn't been deleted yet!
 		$dbw =& wfGetDB( DB_MASTER );
@@ -1994,7 +1993,7 @@ class Article {
 	 * Perform a deletion and output success or failure messages
 	 */
 	function doDelete( $reason ) {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgNamespaces;
 		$fname = 'Article::doDelete';
 		wfDebug( $fname."\n" );
 
@@ -2002,10 +2001,10 @@ class Article {
 			if ( $this->doDeleteArticle( $reason ) ) {
 				$deleted = $this->mTitle->getPrefixedText();
 
-				$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
+				$wgOut->setPageTitle(wfMsg('actioncomplete'));
 				$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
-				$loglink = '[[Special:Log/delete|' . wfMsg( 'deletionlog' ) . ']]';
+				$loglink = '[['.$wgNamespaces[NS_SPECIAL]->getDefaultName().':Log/delete|' . wfMsg( 'deletionlog' ) . ']]';
 				$text = wfMsg( 'deletedtext', $deleted, $loglink );
 
 				$wgOut->addWikiText( $text );
@@ -2168,7 +2167,7 @@ class Article {
 
 		$from = str_replace( '_', ' ', $wgRequest->getVal( 'from' ) );
 		if( $from != $current->getUserText() ) {
-			$wgOut->setPageTitle( wfMsg('rollbackfailed') );
+			$wgOut->setPageTitle(wfMsg('rollbackfailed'));
 			$wgOut->addWikiText( wfMsg( 'alreadyrolled',
 				htmlspecialchars( $this->mTitle->getPrefixedText()),
 				htmlspecialchars( $from ),
@@ -2640,7 +2639,7 @@ class Article {
 
 		$page = $this->mTitle->getSubjectPage();
 
-		$wgOut->setPagetitle( $page->getPrefixedText() );
+		$wgOut->setPageTitleArray( $page->getTitleArray() );
 		$wgOut->setSubtitle( wfMsg( 'infosubtitle' ));
 
 		# first, see if the page exists at all.

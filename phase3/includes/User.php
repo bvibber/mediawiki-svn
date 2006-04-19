@@ -315,8 +315,8 @@ class User {
 		$fname = 'User::loadDefaults' . $n;
 		wfProfileIn( $fname );
 
-		global $wgCookiePrefix;
-		global $wgNamespacesToBeSearchedDefault;
+		global $wgContLang, $wgCookiePrefix;
+		global $wgNamespaces;
 
 		$this->mId = 0;
 		$this->mNewtalk = -1;
@@ -328,9 +328,10 @@ class User {
 		$this->mGroups = array();
 		$this->mOptions = User::getDefaultOptions();
 
-		foreach( $wgNamespacesToBeSearchedDefault as $nsnum => $val ) {
-			$this->mOptions['searchNs'.$nsnum] = $val;
-		}
+		if ( ! defined( 'MEDIAWIKI_INSTALL' ) )
+			foreach( $wgNamespaces as $ns ) {
+				$this->mOptions['searchNs'.$ns->getIndex()] = $ns->isSearchedByDefault();				
+			}
 		unset( $this->mSkin );
 		$this->mDataLoaded = false;
 		$this->mBlockedby = -1; # Unset

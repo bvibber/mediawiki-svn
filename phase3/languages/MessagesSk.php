@@ -417,10 +417,10 @@ Vaša IP adresa je $3. Prosíme zahrňte túto adresu do každého vášho prík
 'previewnote' => 'Nezabudnite, toto je len náhľad vami upravovaného článku. Článok ešte nie je uložený!',
 'previewconflict' => 'Tento náhľad upraveného článku zobrazuje
 text z horného okna na úpravy tak, ako sa zobrazí potom, keď ho uložíte.',
-'editing' => "Úprava stránky $1",
-'editingsection' => "Úprava stránky $1 (sekcia)",
-'editingcomment' => "Úprava stránky $1 (diskusia)",
-'editconflict' => 'Konflikt pri úprave: $1',
+'editing' => "Úprava stránky",
+'editingsection'=>"(sekcia)",
+'editingcomment'=>"(diskusia)",
+'editconflict' => 'Konflikt pri úprave:',
 'explainconflict' => "Niekto iný zmenil túto stránku, medzi tým čo ste ju upravovali vy.
 Horné okno na úpravy obsahuje text stránky tak, ako je momentálne platný.
 Vaše úpravy sú uvedené v dolnom okne na úpravy.

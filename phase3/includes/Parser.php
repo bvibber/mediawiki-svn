@@ -79,8 +79,7 @@ define( 'EXT_IMAGE_REGEX',
  *
  * settings:
  *  $wgUseTex*, $wgUseDynamicDates*, $wgInterwikiMagic*,
- *  $wgNamespacesWithSubpages, $wgAllowExternalImages*,
- *  $wgLocaltimezone, $wgAllowSpecialInclusion*
+ *  $wgAllowExternalImages*, $wgLocaltimezone, $wgAllowSpecialInclusion*
  *
  *  * only within ParserOptions
  * </pre>
@@ -1345,7 +1344,7 @@ class Parser
 	 * @private
 	 */
 	function replaceInternalLinks( $s ) {
-		global $wgContLang;
+		global $wgContLang, $wgNamespaces;
 		static $fname = 'Parser::replaceInternalLinks' ;
 
 		wfProfileIn( $fname );
@@ -1373,8 +1372,9 @@ class Parser
 		# e.g. in the case of 'The Arab al[[Razi]]', 'al' will be matched
 		$e2 = wfMsgForContent( 'linkprefix' );
 
+		# Should foo[[bar]] be rendered as [[bar|foobar]]?
+		# This is dependent on the content language.
 		$useLinkPrefixExtension = $wgContLang->linkPrefixExtension();
-
 		if( is_null( $this->mTitle ) ) {
 			wfDebugDieBacktrace( 'nooo' );
 		}
@@ -1399,6 +1399,28 @@ class Parser
 		# Loop for each link
 		for ($k = 0; isset( $a[$k] ); $k++) {
 			$line = $a[$k];
+			
+			$targetprefix=$wgNamespaces[$this->mTitle->getNamespace()]->target;
+			if ( $targetprefix ) {
+				# FIXME: BREAKS LINKS WITH COLONS like [[:DOOBIE:BARI]]
+				#	
+				# Replace links without a prefix or those with a
+				# prefix which is neither a valid namespace name
+				# nor a valid InterWiki link with the desired
+				# default prefix (see Namespace.php).
+				if( preg_match('/^[^:]+\]\]/',$line) ||
+				(preg_match('/^(.+?):.*?\]\]/',$line,$nsmatch) &&
+				is_null(Namespace::getIndexForName($nsmatch[1])) && !Title::getInterwikiLink($nsmatch[1]))
+				) {
+					# If not already a piped link, hide the
+					# namespace prefix.
+					$line=preg_replace('/^([^|]*)\]\]/','$1|$1]]',$line);
+					
+					# Now add the default prefix.
+					$line=$targetprefix . ':' . $line;
+				}
+			
+			}
 			if ( $useLinkPrefixExtension ) {
 				wfProfileIn( $fname.'-prefixhandling' );
 				if ( preg_match( $e2, $s, $m ) ) {
@@ -1696,8 +1718,8 @@ class Parser
 	 */
 	function areSubpagesAllowed() {
 		# Some namespaces don't allow subpages
-		global $wgNamespacesWithSubpages;
-		return !empty($wgNamespacesWithSubpages[$this->mTitle->getNamespace()]);
+		global $wgNamespaces;
+		return $wgNamespaces[$this->mTitle->getNamespace()]->allowsSubpages();
 	}
 
 	/**
@@ -2058,7 +2080,7 @@ class Parser
 	 * @private
 	 */
 	function getVariableValue( $index ) {
-		global $wgContLang, $wgSitename, $wgServer, $wgServerName, $wgScriptPath;
+		global $wgContLang, $wgSitename, $wgServer, $wgServerName, $wgScriptPath, $wgNamespaces;
 
 		/**
 		 * Some of these require message or data lookups and can be
@@ -2120,9 +2142,9 @@ class Parser
 			case MAG_REVISIONID:
 				return $this->mRevisionId;
 			case MAG_NAMESPACE:
-				return $wgContLang->getNsText( $this->mTitle->getNamespace() );
+				return $wgNamespaces[$this->mTitle->getNamespace()]->getDefaultName(); 
 			case MAG_NAMESPACEE:
-				return wfUrlencode( $wgContLang->getNsText( $this->mTitle->getNamespace() ) );
+				return wfUrlencode($wgNamespaces[$this->mTitle->getNamespace()]->getDefaultName());
 			case MAG_TALKSPACE:
 				return $this->mTitle->canTalk() ? $this->mTitle->getTalkNsText() : '';
 			case MAG_TALKSPACEE:
@@ -2469,7 +2491,7 @@ class Parser
 	 * @private
 	 */
 	function braceSubstitution( $piece ) {
-		global $wgContLang, $wgAllowDisplayTitle, $action;
+		global $wgContLang, $wgAllowDisplayTitle, $wgNamespaces;
 		$fname = 'Parser::braceSubstitution';
 		wfProfileIn( $fname );
 
@@ -2555,12 +2577,12 @@ class Parser
 			$mwNs = MagicWord::get( MAG_NS );
 			if ( $mwNs->matchStartAndRemove( $part1 ) ) {
 				if ( intval( $part1 ) || $part1 == "0" ) {
-					$text = $linestart . $wgContLang->getNsText( intval( $part1 ) );
+					$text = $linestart . $wgNamespaces[intval( $part1 )]->getDefaultName();
 					$found = true;
 				} else {
-					$index = Namespace::getCanonicalIndex( strtolower( $part1 ) );
-					if ( !is_null( $index ) ) {
-						$text = $linestart . $wgContLang->getNsText( $index );
+					$defaultnameforname = Namespace::getDefaultNameForName( $part1 );
+					if ( !is_null( $defaultnameforname ) ) {
+						$text = $linestart . $defaultnameforname;
 						$found = true;
 					}
 				}
@@ -3008,7 +3030,7 @@ class Parser
 	 * @private
 	 */
 	function formatHeadings( $text, $isMain=true ) {
-		global $wgMaxTocLevel, $wgContLang;
+		global $wgMaxTocLevel, $wgContLang, $wgLinkHolders, $wgInterwikiLinkHolders;
 
 		$doNumberHeadings = $this->mOptions->getNumberHeadings();
 		$doShowToc = true;
@@ -3419,7 +3441,7 @@ class Parser
 	 * @private
 	 */
 	function pstPass2( $text, &$user ) {
-		global $wgContLang, $wgLocaltimezone;
+		global $wgContLang, $wgLocaltimezone, $wgNamespaces;
 
 		/* Note: This is the timestamp saved as hardcoded wikitext to
 		 * the database, we use $wgContLang here in order to give
@@ -3454,13 +3476,12 @@ class Parser
 		$tc = "[$wgLegalTitleChars]";
 		$np = str_replace( array( '(', ')' ), array( '', '' ), $tc ); # No parens
 
-		$namespacechar = '[ _0-9A-Za-z\x80-\xff]'; # Namespaces can use non-ascii!
 		$conpat = "/^({$np}+) \\(({$tc}+)\\)$/";
 
 		$p1 = "/\[\[({$np}+) \\(({$np}+)\\)\\|]]/";		# [[page (context)|]]
 		$p2 = "/\[\[\\|({$tc}+)]]/";					# [[|page]]
-		$p3 = "/\[\[(:*$namespacechar+):({$np}+)\\|]]/";		# [[namespace:page|]] and [[:namespace:page|]]
-		$p4 = "/\[\[(:*$namespacechar+):({$np}+) \\(({$np}+)\\)\\|]]/"; # [[ns:page (cont)|]] and [[:ns:page (cont)|]]
+		$p3 = "/\[\[(:*".NS_CHAR."+):({$np}+)\\|]]/";		# [[namespace:page|]] and [[:namespace:page|]]
+		$p4 = "/\[\[(:*".NS_CHAR."+):({$np}+) \\(({$np}+)\\)\\|]]/"; # [[ns:page (cont)|]] and [[:ns:page (cont)|]]
 		$context = '';
 		$t = $this->mTitle->getText();
 		if ( preg_match( $conpat, $t, $m ) ) {
@@ -4038,7 +4059,7 @@ class ParserOutput
 		$mSubtitle;			# Additional subtitle
 
 	function ParserOutput( $text = '', $languageLinks = array(), $categoryLinks = array(),
-		$containsOldMagic = false, $titletext = '' )
+		$containsOldMagic = false, $titletext = array() )
 	{
 		$this->mText = $text;
 		$this->mLanguageLinks = $languageLinks;

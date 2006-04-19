@@ -16,7 +16,7 @@ function wfSpecialAllpages( $par=NULL, $specialPage ) {
 	$from = $wgRequest->getVal( 'from' );
 	$namespace = $wgRequest->getInt( 'namespace' );
 
-	$namespaces = $wgContLang->getNamespaces();
+	$namespaces = Namespace::getDefaultNamespaces();
 
 	$indexPage = new SpecialAllpages();
 
@@ -53,7 +53,9 @@ function namespaceForm ( $namespace = NS_MAIN, $from = '' ) {
 	global $wgScript;
 	$t = Title::makeTitle( NS_SPECIAL, $this->name );
 
-	$namespaceselect = HTMLnamespaceselector($namespace, null);
+	# Selector needs to include hidden namespace, hence the "true"
+	# parameter
+	$namespaceselect = HTMLnamespaceselector($namespace, null, true);
 
 	$frombox = "<input type='text' size='20' name='from' id='nsfrom' value=\""
 	            . htmlspecialchars ( $from ) . '"/>';
@@ -250,7 +252,6 @@ function showChunk( $namespace = NS_MAIN, $from, $including = false ) {
 	$n = 0;
 	$out = '<table style="background: inherit;" border="0" width="100%">';
 
-	$namespaces = $wgContLang->getFormattedNamespaces();
 	while( ($n < $this->maxPerPage) && ($s = $dbr->fetchObject( $res )) ) {
 		$t = Title::makeTitle( $s->page_namespace, $s->page_title );
 		if( $t ) {

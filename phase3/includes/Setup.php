@@ -197,6 +197,14 @@ $wgContLang = setupLangObj( $wgContLangClass );
 $wgContLang->initEncoding();
 
 wfProfileOut( $fname.'-language1' );
+
+if ( !defined( 'MEDIAWIKI_INSTALL' ) ) {
+	# Load namespace definitions from the database
+	Namespace::load();
+} else {
+	$wgNamespaces=array();
+}
+
 wfProfileIn( $fname.'-User' );
 
 # Skin setup functions

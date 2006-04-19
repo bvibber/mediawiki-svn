@@ -192,7 +192,7 @@ class element {
 		$skin = $wgUser->getSkin();
 		$ot = $title; # Original title
 		if (count(explode(':', $title)) == 1)
-			$title = $wgLang->getNsText(NS_TEMPLATE).":".$title;
+			$title = $wgNamespaces[NS_TEMPLATE]->getDefaultName().":".$title;
 		$nt = Title :: newFromText($title);
 		$id = $nt->getArticleID();
 		if ($id == 0) {

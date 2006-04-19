@@ -360,9 +360,9 @@ class Title {
 	 * @return string the prefixed form of the title
 	 */
 	/* static */ function makeName( $ns, $title ) {
-		global $wgContLang;
+		global $wgContLang, $wgNamespaces;
 
-		$n = $wgContLang->getNsText( $ns );
+		$n = $wgNamespaces[$ns]->getDefaultName();
 		return $n == '' ? $title : "$n:$title";
 	}
 
@@ -591,17 +591,33 @@ class Title {
 	 * @access public
 	 */
 	function getNsText() {
-		global $wgContLang;
-		return $wgContLang->getNsText( $this->mNamespace );
+		global $wgNamespaces;
+		return $wgNamespaces[$this->mNamespace]->getDefaultName();
+	}
+
+	/**
+	 * Get the namespace text with underscores replaced with spaces.
+	 * @return string
+	 * @access public
+	 */
+	function getFormattedNsText() {
+		global $wgNamespaces;
+		return $wgNamespaces[$this->mNamespace]->getFormattedDefaultName();
 	}
 	/**
 	 * Get the namespace text of the subject (rather than talk) page
 	 * @return string
 	 * @access public
+	 * @fixme kill this method, it's useless. SkinTemplate misuses it
 	 */
 	function getSubjectNsText() {
-		global $wgContLang;
-		return $wgContLang->getNsText( Namespace::getSubject( $this->mNamespace ) );
+		global $wgNamespaces;
+		$subject = $wgNamespaces[$this->mNamespace]->getSubject();
+		if( array_key_exists( $subject, $wgNamespaces ) ) {
+			return $wgNamespaces[$subject]->getDefaultName();
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -744,7 +760,7 @@ class Title {
 	 * @access public
 	 */
 	function getFullURL( $query = '' ) {
-		global $wgContLang, $wgServer, $wgRequest;
+		global $wgContLang, $wgServer, $wgRequest, $wgNamespaces;
 
 		if ( '' == $this->mInterwiki ) {
 			$url = $this->getLocalUrl( $query );
@@ -757,7 +773,7 @@ class Title {
 		} else {
 			$baseUrl = $this->getInterwikiLink( $this->mInterwiki );
 
-			$namespace = $wgContLang->getNsText( $this->mNamespace );
+			$namespace = $wgNamespaces[$this->mNamespace]->getDefaultName();
 			if ( '' != $namespace ) {
 				# Can this actually happen? Interwikis shouldn't be parsed.
 				$namespace .= ':';
@@ -1081,7 +1097,8 @@ class Title {
 	 * @access public
 	 */
 	function isMovable() {
-		return Namespace::isMovable( $this->getNamespace() )
+		global $wgNamespaces;
+		return $wgNamespaces[$this->getNamespace()]->isMovable()
 			&& $this->getInterwiki() == '';
 	}
 
@@ -1134,7 +1151,8 @@ class Title {
 	 * @access public
 	 */
 	function isTalkPage() {
-		return Namespace::isTalk( $this->getNamespace() );
+		global $wgNamespaces;
+		return $wgNamespaces[$this->getNamespace()]->isTalk();
 	}
 
 	/**
@@ -1335,21 +1353,39 @@ class Title {
 	 * Prefix some arbitrary text with the namespace or interwiki prefix
 	 * of this object
 	 *
-	 * @param string $name the text
+	 * @param string $name the text (optional)
 	 * @return string the prefixed text
 	 * @access private
 	 */
-	/* private */ function prefix( $name ) {
-		global $wgContLang;
+	/* private */ function prefix( $name='' ) {
+		global $wgNamespaces;
 
 		$p = '';
 		if ( '' != $this->mInterwiki ) {
 			$p = $this->mInterwiki . ':';
 		}
-		if ( 0 != $this->mNamespace ) {
-			$p .= $wgContLang->getNsText( $this->mNamespace ) . ':';
+		if ( 0 != $this->mNamespace && ! defined( 'MEDIAWIKI_INSTALL' ) ) {
+			if(array_key_exists($this->mNamespace,$wgNamespaces)) {
+				$p .= $wgNamespaces[$this->mNamespace]->getDefaultName() . ':';
+			} else {
+				# The database refers to a namespace that 
+				# no longer exists. We're using a pseudo-prefix,
+				# but the page is inaccessible for now.
+				$p = wfMsg('namespace_missing_prefix').'_'.$this->mNamespace.':';
+			}
 		}
 		return $p . $name;
+	}
+
+	/** A convenience function that returns the title as an array
+	    consisting of a namespace prefix and the main part, as used
+	    by OutputPage::setPageTitle. 
+	*/
+	function getTitleArray() {
+		return array(
+		  'namespace'=>$this->getFormattedNsText(),
+		  'mainpart'=>$this->getText()
+		);
 	}
 
 	/**
@@ -1364,7 +1400,8 @@ class Title {
 	 * @access private
 	 */
 	/* private */ function secureAndSplit() {
-		global $wgContLang, $wgLocalInterwiki, $wgCapitalLinks;
+		global $wgContLang, $wgLocalInterwiki, $wgCapitalLinks,
+		       $wgNamepaces;
 		$fname = 'Title::secureAndSplit';
 
 		# Initialisation
@@ -1404,14 +1441,10 @@ class Title {
 		$firstPass = true;
 		do {
 			if ( preg_match( "/^(.+?)_*:_*(.*)$/S", $t, $m ) ) {
-				$p = $m[1];
-				$lowerNs = strtolower( $p );
-				if ( $ns = Namespace::getCanonicalIndex( $lowerNs ) ) {
-					# Canonical namespace
-					$t = $m[2];
-					$this->mNamespace = $ns;
-				} elseif ( $ns = $wgContLang->getNsIndex( $lowerNs )) {
-					# Ordinary namespace
+				$p = $m[1]; # Prefix before :
+				$ns = Namespace::getIndexForName( $p );
+				if ( !is_null($ns) ) {
+					# Valid namespace name
 					$t = $m[2];
 					$this->mNamespace = $ns;
 				} elseif( $this->getInterwikiLink( $p ) ) {
@@ -1532,7 +1565,8 @@ class Title {
 	 * @access public
 	 */
 	function getTalkPage() {
-		return Title::makeTitle( Namespace::getTalk( $this->getNamespace() ), $this->getDBkey() );
+		global $wgNamespaces;
+		return Title::makeTitle( $wgNamespaces[$this->getNamespace()]->getTalk(), $this->getDBkey() );
 	}
 
 	/**
@@ -1543,7 +1577,8 @@ class Title {
 	 * @access public
 	 */
 	function getSubjectPage() {
-		return Title::makeTitle( Namespace::getSubject( $this->getNamespace() ), $this->getDBkey() );
+		global $wgNamespaces;
+		return Title::makeTitle( $wgNamespaces[$this->getNamespace()]->getSubject(),  $this->getDBkey() );
 	}
 
 	/**
@@ -2047,9 +2082,11 @@ class Title {
 	 * @access public
 	 */
 	function getParentCategories() {
-		global $wgContLang;
+		global $wgContLang, $wgNamespaces;
 
 		$titlekey = $this->getArticleId();
+		$sk =& $wgUser->getSkin();
+		$parents = array();
 		$dbr =& wfGetDB( DB_SLAVE );
 		$categorylinks = $dbr->tableName( 'categorylinks' );
 
@@ -2063,8 +2100,7 @@ class Title {
 
 		if($dbr->numRows($res) > 0) {
 			while ( $x = $dbr->fetchObject ( $res ) )
-				//$data[] = Title::newFromText($wgContLang->getNSText ( NS_CATEGORY ).':'.$x->cl_to);
-				$data[$wgContLang->getNSText ( NS_CATEGORY ).':'.$x->cl_to] = $this->getFullText();
+				$data[$wgNamespaces[NS_CATEGORY]->getDefaultName().':'.$x->cl_to] = $this->getFullText();
 			$dbr->freeResult ( $res ) ;
 		} else {
 			$data = '';

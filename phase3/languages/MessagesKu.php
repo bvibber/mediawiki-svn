@@ -111,7 +111,7 @@ Navnîşana te ya IP $3 ye. Ji kerema xwe eger pirsên te hebe vê navnîşanê 
 'disambiguations' => 'Rûpelên cudakirinê',
 'disclaimers' => 'Ferexetname',
 'edit' => 'Biguherîne',
-'editconflict' => 'Têkçûna guherandinan: $1',
+'editconflict' => 'Têkçûna guherandinan:',
 'edithelp' => 'Alîkarî ji bo guherandin',
 'edithelppage' => '{{ns:project}}:Rûpeleke_çawa_biguherînim',
 'editing' => 'Biguherîne: "$1"',
@@ -119,7 +119,7 @@ Navnîşana te ya IP $3 ye. Ji kerema xwe eger pirsên te hebe vê navnîşanê 
 'editingold' => '<strong>HÎŞYAR: Tu ser revîsyoneke kevn a vê rûpelê dixebitî.
 Eger tu qeyd bikî, hemû guhertinên ji vê revîzyonê piştre winda dibin.
 </strong>',
-'editingsection' => 'Tê guherandin: $1 (beş)',
+'editingsection'=>'(beş)',
 'editsection' => 'biguherîne',
 'editthispage' => 'Vê rûpelê biguherîne',
 'emailforlost' => '* Nivîsandina navnîşana te \'\'ne mecbûrî\'\' ye. Lê eger tu navnîşana xwe binîvîsî, mirov dikare e-mailekê ji te re bişîne bêyî ku navnîşana te zanibe. Her wiha, eger tu şîfreya xwe ji bîr bikî, {{SITENAME}} dikare şîfreya te bişîne ji vê navnîşana te re.',

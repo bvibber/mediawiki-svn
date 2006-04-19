@@ -1,5 +1,6 @@
 <?php
 require_once 'counter.php';
+define( 'MEDIAWIKI_INSTALL', true ); // for namespaces
 /**
  * Run all updaters.
  *
@@ -29,7 +30,7 @@ if( !isset( $options['quick'] ) ) {
 		print_c($i, --$i);
 		sleep(1);
 	}
-	echo "\n";
+	die();
 }
 
 if ( isset( $options['doshared'] ) ) {

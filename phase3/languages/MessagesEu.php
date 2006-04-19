@@ -28,7 +28,7 @@
 'deletethispage' => 'Orria ezabatu',
 'edithelp' => 'Editatzeko laguntza',
 'edithelppage' => '{{ns:project}}:Editatzeko laguntza',
-'editing' => '"$1" editatzen',
+'editing' => 'Editatzen',
 'editsection' => 'editatu',
 'editthispage' => 'Orria editatu',
 'go' => 'Joan',

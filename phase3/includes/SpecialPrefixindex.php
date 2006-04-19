@@ -18,7 +18,7 @@ function wfSpecialPrefixIndex( $par=NULL, $specialPage ) {
 	$from = $wgRequest->getVal( 'from' );
 	$namespace = $wgRequest->getInt( 'namespace' );
 
-	$namespaces = $wgContLang->getNamespaces();
+	$namespaces = Namespace::getDefaultNamespaces();
 
 	$indexPage = new SpecialPrefixIndex();
 

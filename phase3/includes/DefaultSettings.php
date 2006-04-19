@@ -861,11 +861,10 @@ $wgGroupPermissions['sysop']['rollback']        = true;
 $wgGroupPermissions['sysop']['upload']          = true;
 $wgGroupPermissions['sysop']['reupload']        = true;
 $wgGroupPermissions['sysop']['reupload-shared'] = true;
-$wgGroupPermissions['sysop']['unwatchedpages']	= true;
-$wgGroupPermissions['sysop']['autoconfirmed']   = true;
 
-// Permission to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
+$wgGroupPermissions['bureaucrat']['namespaces'] = true;
+$wgGroupPermissions['bureaucrat']['merge_pseudonamespaces'] = true;
 
 // Experimental permissions, not ready for production use
 //$wgGroupPermissions['sysop']['deleterevision'] = true;
@@ -1230,8 +1229,10 @@ $wgUploadSizeWarning = 150 * 1024;
 /** For compatibility with old installations set to false */
 $wgPasswordSalt = true;
 
-/** Which namespaces should support subpages?
- * See Language.php for a list of namespaces.
+/** 
+ * These two are used by the maintanance/nsBootstrap.php script to configure
+ * the initial settings for the wiki, to configure these at runtime use
+ * Special:Namespaces
  */
 $wgNamespacesWithSubpages = array(
 	NS_TALK           => true,

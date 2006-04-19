@@ -165,8 +165,8 @@ CREATE TABLE /*$wgDBprefix*/page (
   page_id int(8) unsigned NOT NULL auto_increment,
   
   -- A page name is broken into a namespace and a title.
-  -- The namespace keys are UI-language-independent constants,
-  -- defined in includes/Defines.php
+  -- The namespace keys are defined in the namespace table (system
+  -- namespace constants are also defined in includes/Defines.php).
   page_namespace int NOT NULL,
   
   -- The rest of the title, as text.
@@ -922,6 +922,50 @@ CREATE TABLE /*$wgDBprefix*/trackbacks (
 
 	INDEX (tb_page)
 ) TYPE=InnoDB;
+
+CREATE TABLE /*$wgDBprefix*/namespace (
+  -- This ID appears in all tables where this namespace is referenced.
+  -- Note that the constants for system namespaces are currently 
+  -- hardcoded (Defines.php), and special namespaces start at -2.
+  `ns_id` int(8) NOT NULL default '0',
+  -- If this is a system namespace, this field contains the constant
+  -- name identifying it (e.g. 'NS_MAIN', 'NS_CATEGORY').
+  `ns_system` varchar(80) default '',
+  -- Should this namespace allow subpages ([[Foo/Bar]])?
+  `ns_subpages` tinyint(1) NOT NULL default '0',
+  -- Should pages in this namespace be included in a full-text search
+  -- by default?
+  `ns_search_default` tinyint(1) NOT NULL default '0',
+  -- If not empty, unprefixed links from this namespace (e.g. [[Foo]])
+  -- will be treated as if they had this prefix. This could be a
+  -- namespace prefix, a language prefix, or an interwiki prefix.
+  `ns_target` varchar(200) default NULL,
+  -- If this is a discussion namespace, this field refers to its subject
+  -- namespace.
+  `ns_parent` int(8) default NULL,
+  -- Should this namespace be hidden by default from namespace selectors?
+  -- [[Special:Allpages]] and [[Special:Namaespaces]] are excepted
+  -- from this.
+  `ns_hidden` tinyint(1) default NULL,
+  PRIMARY KEY  (`ns_id`)
+) ENGINE=InnoDB;
+
+CREATE TABLE /*$wgDBprefix*/namespace_names (
+  -- A reference to the namespace to which this name belongs.
+  -- Any namespace can have multiple names, so this is not
+  -- a primary key.
+  `ns_id` int(8) NOT NULL default '0',
+  -- The name of this namespace. Spaces are underscores here.
+  `ns_name` varchar(200) NOT NULL default '',
+  -- Is this the default name to which all others redirect?
+  `ns_default` tinyint(1) NOT NULL default '',
+  -- Is this the canonical English name which is expected to
+  -- exist, and which cannot be deleted? (Mostly for system
+  -- namespaces.)
+  `ns_canonical` tinyint(1) default NULL,
+  UNIQUE INDEX ns_name (ns_name),
+  INDEX ns_id (ns_id)
+) ENGINE=InnoDB;
 
 
 -- Jobs performed by parallel apache threads or a command-line daemon

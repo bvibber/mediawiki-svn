@@ -71,6 +71,7 @@ class DifferenceEngine {
 
 	function showDiffPage() {
 		global $wgUser, $wgOut, $wgContLang, $wgUseExternalEditor, $wgUseRCPatrol;
+		global $wgNamespaces;
 		$fname = 'DifferenceEngine::showDiffPage';
 		wfProfileIn( $fname );
 
@@ -83,7 +84,7 @@ class DifferenceEngine {
 			header ( "Content-type: application/x-external-editor; charset=".$wgInputEncoding );
 			$url1=$this->mTitle->getFullURL("action=raw&oldid=".$this->mOldid);
 			$url2=$this->mTitle->getFullURL("action=raw&oldid=".$this->mNewid);
-			$special=$wgLang->getNsText(NS_SPECIAL);
+			$special=$wgNamespaces[NS_SPECIAL]->getDefaultName();
 			$control=<<<CONTROL
 [Process]
 Type=Diff text
@@ -132,9 +133,16 @@ CONTROL;
 		$oldTitle = $this->mOldPage->getPrefixedText();
 		$newTitle = $this->mNewPage->getPrefixedText();
 		if( $oldTitle == $newTitle ) {
-			$wgOut->setPageTitle( $newTitle );
+			$wgOut->setPageTitleArray ( $this->mOldPage->getTitleArray() );
 		} else {
-			$wgOut->setPageTitle( $oldTitle . ', ' . $newTitle );
+			# Diffing across pages - the skin can show the titles
+			# side by side.
+			$wgOut->setPageTitleArray ( array(
+			  'namespace'=>$this->mOldPage->getFormattedNsText(),
+			  'mainpart' =>$this->mOldPage->getText(),
+			  'namespace2'=>$this->mNewPage->getFormattedNsText(),
+			  'mainpart2'=>$this->mNewPage->getText()
+			) );
 		}
 		$wgOut->setSubtitle( wfMsg( 'difference' ) );
 		$wgOut->setRobotpolicy( 'noindex,follow' );
@@ -147,7 +155,7 @@ CONTROL;
 		}
 
 		$sk = $wgUser->getSkin();
-		$talk = $wgContLang->getNsText( NS_TALK );
+		$talk = $wgNamespaces[NS_TALK]->getDefaultName();
 		$contribs = wfMsg( 'contribslink' );
 
 		if ( $this->mNewRev->isCurrent() && $wgUser->isAllowed('rollback') ) {
@@ -219,7 +227,7 @@ CONTROL;
 			$t = $this->mTitle->getPrefixedText() . " (Diff: {$this->mOldid}, " .
 			  "{$this->mNewid})";
 			$mtext = wfMsg( 'missingarticle', "<nowiki>$t</nowiki>" );
-			$wgOut->setPagetitle( wfMsg( 'errorpagetitle' ) );
+			$wgOut->setPageTitle( wfMsg( 'errorpagetitle' ) );
 			$wgOut->addWikitext( $mtext );
 			wfProfileOut( $fname );
 			return;

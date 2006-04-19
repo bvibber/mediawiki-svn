@@ -22,9 +22,17 @@ if( defined( 'MEDIAWIKI' ) ) {
 # Language-specific text
 #--------------------------------------------------------------------------
 
+# The names of the namespaces can be set here, but the numbers
+# are magical, so don't change or move them!  The Namespace class
+# encapsulates some of the magic-ness.
+#
+
 if($wgMetaNamespace === FALSE)
 	$wgMetaNamespace = str_replace( ' ', '_', $wgSitename );
 
+
+# Default namespace names to be loaded upon installation
+# Change this into an array of arrays aka allnamespaces
 /* private */ $wgNamespaceNamesEn = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Special',
@@ -34,8 +42,8 @@ if($wgMetaNamespace === FALSE)
 	NS_USER_TALK        => 'User_talk',
 	NS_PROJECT          => $wgMetaNamespace,
 	NS_PROJECT_TALK     => $wgMetaNamespace . '_talk',
-	NS_IMAGE            => 'Image',
-	NS_IMAGE_TALK       => 'Image_talk',
+	NS_IMAGE            => 'File',
+	NS_IMAGE_TALK       => 'File_talk',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'MediaWiki_talk',
 	NS_TEMPLATE         => 'Template',
@@ -46,9 +54,14 @@ if($wgMetaNamespace === FALSE)
 	NS_CATEGORY_TALK    => 'Category_talk',
 );
 
-if(isset($wgExtraNamespaces)) {
-	$wgNamespaceNamesEn=$wgNamespaceNamesEn+$wgExtraNamespaces;
-}
+$wgNamespaceSynonymsEn = array(
+	NS_IMAGE => array( 'Image', 'Sound', 'Video' ),
+	NS_IMAGE_TALK => array( 'Image_talk', 'Sound_talk', 'Video_talk' )
+);
+
+#if(isset($wgExtraNamespaces)) {
+#	$wgNamespaceNamesEn=$wgNamespaceNamesEn+$wgExtraNamespaces;
+#}
 
 /* private */ $wgDefaultUserOptionsEn = array(
 	'quickbar' 		=> 1,
@@ -295,7 +308,7 @@ class fakeConverter {
 	function getPreferredVariant() {return $this->mLang->getCode(); }
 	function findVariantLink(&$l, &$n) {}
 	function getExtraHashOptions() {return '';}
-	function getParsedTitle() {return '';}
+	function getParsedTitle() {return array();}
 	function markNoConversion($text) {return $text;}
 	function convertCategoryKey( $key ) {return $key; }
 
@@ -329,30 +342,16 @@ class Language {
 		$this->mConverter = new fakeConverter($this);
 	}
 
-	/**
-	 * Exports the default user options as defined in
-	 * $wgDefaultUserOptionsEn, user preferences can override some of these
-	 * depending on what's in (Local|Default)Settings.php and some defines.
+	/**#@+
+	 * Only used for bootstrapping
 	 *
-	 * @return array
+	 * @deprecated
 	 */
-	function getDefaultUserOptions() {
-		global $wgDefaultUserOptionsEn ;
-		return $wgDefaultUserOptionsEn ;
+	function getNamespaceSynonyms() {
+		global $wgNamespaceSynonymsEn;
+		return $wgNamespaceSynonymsEn;
 	}
 
-	/**
-	 * Exports $wgBookstoreListEn
-	 * @return array
-	 */
-	function getBookstoreList() {
-		global $wgBookstoreListEn ;
-		return $wgBookstoreListEn ;
-	}
-
-	/**
-	 * @return array
-	 */
 	function getNamespaces() {
 		global $wgNamespaceNamesEn;
 		return $wgNamespaceNamesEn;
@@ -416,9 +415,31 @@ class Language {
 		}
 		return false;
 	}
+	/**#@-*/
 
 	/**
-	 * short names for language variants used for language conversion links.
+	 * Exports the default user options as defined in
+	 * $wgDefaultUserOptionsEn, user preferences can override some of these
+	 * depending on what's in (Local|Default)Settings.php and some defines.
+	 *
+	 * @return array
+	 */
+	function getDefaultUserOptions() {
+		global $wgDefaultUserOptionsEn ;
+		return $wgDefaultUserOptionsEn ;
+	}
+
+	/**
+	 * Exports $wgBookstoreListEn
+	 * @return array
+	 */
+	function getBookstoreList() {
+		global $wgBookstoreListEn ;
+		return $wgBookstoreListEn ;
+	}
+
+	/**
+	 * short names for language variants used for language conversion links. 
 	 *
 	 * @param string $code
 	 * @return string
@@ -428,7 +449,8 @@ class Language {
 	}
 
 	function specialPage( $name ) {
-		return $this->getNsText(NS_SPECIAL) . ':' . $name;
+		global $wgNamespaces;
+		return $wgNamespaces[NS_SPECIAL]->getDefaultName() . ':' . $name;
 	}
 
 	function getQuickbarSettings() {

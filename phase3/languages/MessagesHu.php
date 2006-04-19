@@ -280,10 +280,10 @@ gombját.",
 "previewnote"	=> "Ne felejtsd el, hogy ez csak egy előnézet, és nincs elmentve!",
 "previewconflict" => "Ez az előnézet a felső szerkesztőablakban levő
 szövegnek megfelelő képet mutatja, ahogy az elmentés után kinézne.",
-"editing"		=> "$1 szerkesztés alatt",
-"editingsection"	=> "$1 szerkesztés alatt (szakasz)",
-"editingcomment"	=> "$1 szerkesztés alatt (üzenet)",
-"editconflict"	=> "Szerkesztési ütközés: $1",
+"editing"		=> "Szerkesztés alatt",
+"editingsection"=>"(szakasz)",
+"editingcomment"=>"(üzenet)",
+"editconflict"	=> "Szerkesztési ütközés:",
 "explainconflict" => "Valaki megváltoztatta a lapot azóta,
 mióta szerkeszteni kezdted.
 A felső szövegablak tartalmazza a szöveget, ahogy az jelenleg létezik.

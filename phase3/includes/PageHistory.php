@@ -66,7 +66,7 @@ class PageHistory {
 		/*
 		 * Setup page variables.
 		 */
-		$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+		$wgOut->setPageTitleArray( $this->mTitle->getTitleArray() );
 		$wgOut->setSubtitle( wfMsg( 'revhistory' ) );
 		$wgOut->setArticleFlag( false );
 		$wgOut->setArticleRelated( true );

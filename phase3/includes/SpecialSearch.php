@@ -240,7 +240,7 @@ class SpecialSearch {
 	 */
 	function userNamespaces( &$user ) {
 		$arr = array();
-		foreach( SearchEngine::searchableNamespaces() as $ns => $name ) {
+		foreach( Namespace::getDefaultNamespaces() as $ns => $name ) {
 			if( $user->getOption( 'searchNs' . $ns ) ) {
 				$arr[] = $ns;
 			}
@@ -258,7 +258,7 @@ class SpecialSearch {
 	 */
 	function powerSearch( &$request ) {
 		$arr = array();
-		foreach( SearchEngine::searchableNamespaces() as $ns => $name ) {
+		foreach( Namespace::getDefaultNamespaces() as $ns => $name ) {
 			if( $request->getCheck( 'ns' . $ns ) ) {
 				$arr[] = $ns;
 			}
@@ -376,17 +376,23 @@ class SpecialSearch {
 	}
 
 	function powerSearchBox( $term ) {
+		global $wgNamespaces;
 		$namespaces = '';
-		foreach( SearchEngine::searchableNamespaces() as $ns => $name ) {
-			$checked = in_array( $ns, $this->namespaces )
-				? ' checked="checked"'
-				: '';
-			$name = str_replace( '_', ' ', $name );
-			if( '' == $name ) {
-				$name = wfMsg( 'blanknamespace' );
+		foreach( $wgNamespaces as $ns) {
+			if(!$ns->isSpecial()) {
+				$name=$ns->getDefaultName();
+				$index=$ns->getIndex();
+				$checked = in_array( $ns->getIndex(),
+				$this->namespaces )
+					? ' checked="checked"'
+					: '';
+				$name = str_replace( '_', ' ', $name );
+				if( '' == $name ) {
+					$name = wfMsg( 'blanknamespace' );
+				}
+				$namespaces .= " <label><input type='checkbox' value=\"1\" name=\"" .
+				"ns{$index}\"{$checked} />{$name}</label>\n";
 			}
-			$namespaces .= " <label><input type='checkbox' value=\"1\" name=\"" .
-			  "ns{$ns}\"{$checked} />{$name}</label>\n";
 		}
 
 		$checked = $this->searchRedirects

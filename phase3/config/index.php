@@ -689,7 +689,11 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				       'ss_total_views'   => 0,
 				       'ss_total_edits'   => 0,
 				       'ss_good_articles' => 0 ) );
-					   
+			
+			print "<li>Bootstrapping namespace definitions...";
+			require_once '../maintenance/nsBootstrap.inc';
+			NamespaceBootstrap::install();
+			
 			# Set up the "regular user" account *if we can, and if we need to*
 			if( $conf->Root ) {
 				# See if we need to
