@@ -762,6 +762,20 @@ function do_templatelinks_update() {
 	echo "Done. Please run maintenance/refreshLinks.php for a more thorough templatelinks update.\n";
 }
 
+function do_namespace_initialization() {
+	global $wgDatabase;
+
+	$res = $wgDatabase->selectField( 'namespace', 'COUNT(*)' );
+	if ( $res == 0 ) {
+		echo "Bootstraping namespace and namespace_names...";
+		require_once 'nsBootstrap.inc';
+		NamespaceBootstrap::setup();
+		echo "done\n";
+	} else {
+		echo "namespace and namespace_names are already populated, skipping\n";
+	}
+}
+
 function do_all_updates( $doShared = false ) {
 	global $wgNewTables, $wgNewFields, $wgRenamedTables, $wgSharedDB, $wgDatabase;
 
@@ -819,7 +833,7 @@ function do_all_updates( $doShared = false ) {
 
 	do_logging_timestamp_index(); flush();
 
-	do_page_random_update(); flush();
+	do_namespace_initialization(); flush();
 
 	initialiseMessages(); flush();
 }

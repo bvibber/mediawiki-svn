@@ -1409,6 +1409,23 @@ p.revision_saved {
 	background-color: #f0f0ff;
 }
 
+/* SpecialNamespaces table */
+table.specialnamespaces {
+	border: 1px solid #aaa;
+	margin-bottom: 1em;
+}
+
+div#addnsForm {
+	margin-bottom: 1em;
+	border: 1px solid #aaa;
+	padding: 1.5em 2em;
+}
+
+div#fixPseudoNsForm {
+	margin-bottom: 1em;
+	border: 1px solid #aaa;
+	padding: 1.5em 2em;
+}
 
 /* noarticletext */
 div.noarticletext {

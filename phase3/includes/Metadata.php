@@ -71,7 +71,7 @@ function wfCreativeCommonsRdf($article) {
  * @access private
  */
 function rdfSetup() {
-	global $wgOut, $_SERVER;
+	global $wgOut, $wgRdfMimeType, $_SERVER;
 
 	$rdftype = wfNegotiateType(wfAcceptToPrefs($_SERVER['HTTP_ACCEPT']), wfAcceptToPrefs(RDF_TYPE_PREFS));
 
@@ -271,7 +271,7 @@ function dcUrl($name, $url) {
  * @access private
  */
 function dcPerson($name, $id, $user_name='', $user_real_name='') {
-	global $wgContLang;
+	global $wgContLang, $wgNamespaces;
 
 	if ($id == 0) {
 		dcElement($name, wfMsg('anonymous'));
@@ -282,7 +282,7 @@ function dcPerson($name, $id, $user_name='', $user_real_name='') {
 		if( empty( $user_name ) ) {
 			$user_name = User::whoIs($id);
 		}
-		dcPageOrString($name, $wgContLang->getNsText(NS_USER) . ':' . $user_name, wfMsg('siteuser', $user_name));
+		dcPageOrString($name, $wgNamespaces[NS_USER]->getDefaultName() . ':' . $user_name, wfMsg('siteuser', $user_name));
 	}
 }
 

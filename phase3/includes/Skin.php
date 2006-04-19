@@ -391,7 +391,7 @@ END;
 	}
 
 	function getBodyOptions() {
-		global $wgUser, $wgTitle, $wgOut, $wgRequest;
+		global $wgUser, $wgTitle, $wgNamespaceBackgrounds, $wgOut, $wgRequest;
 
 		extract( $wgRequest->getValues( 'oldid', 'redirect', 'diff' ) );
 
@@ -705,9 +705,9 @@ END;
 	}
 
 	function subPageSubtitle() {
-		global $wgOut,$wgTitle,$wgNamespacesWithSubpages;
+		global $wgOut,$wgTitle,$wgNamespaces;
 		$subpages = '';
-		if($wgOut->isArticle() && !empty($wgNamespacesWithSubpages[$wgTitle->getNamespace()])) {
+		if($wgOut->isArticle() && $wgNamespaces[$wgTitle->getNamespace()]->allowsSubpages()) {
 			$ptext=$wgTitle->getPrefixedText();
 			if(preg_match('/\//',$ptext)) {
 				$links = explode('/',$ptext);
@@ -734,7 +734,7 @@ END;
 	}
 
 	function nameAndLogin() {
-		global $wgUser, $wgTitle, $wgLang, $wgContLang, $wgShowIPinHeader;
+		global $wgUser, $wgTitle, $wgLang, $wgContLang, $wgShowIPinHeader, $wgNamespaces;
 
 		$li = $wgContLang->specialPage( 'Userlogin' );
 		$lo = $wgContLang->specialPage( 'Userlogout' );
@@ -745,7 +745,7 @@ END;
 				$n = wfGetIP();
 
 				$tl = $this->makeKnownLinkObj( $wgUser->getTalkPage(),
-				  $wgLang->getNsText( NS_TALK ) );
+				  $wgNamespaces[NS_TALK]->getDefaultName() );
 
 				$s .= $n . ' ('.$tl.')';
 			} else {
@@ -764,7 +764,7 @@ END;
 			$n = $wgUser->getName();
 			$rt = $wgTitle->getPrefixedURL();
 			$tl = $this->makeKnownLinkObj( $wgUser->getTalkPage(),
-			  $wgLang->getNsText( NS_TALK ) );
+			  $wgNamespaces[NS_TALK]->getDefaultName() );
 
 			$tl = " ({$tl})";
 

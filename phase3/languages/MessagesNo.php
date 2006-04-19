@@ -265,10 +265,10 @@ Hvis du ikke vil redigere siden, klikk på '''tilbake''' i nettleseren.",
 "note"			=> "<strong>Note:</strong> ",
 "previewnote"	=> "Husk at dette kun er en forhåndsvisning og at teksten ikke er lagret!",
 "previewconflict" => "Slik vil teksten i redigeringsvinduet se ut hvis du lagrer den",
-"editing"		=> "Redigerer $1",
-"editingsection"	=> "Redigerer $1 (seksjon)",
-"editingcomment"	=> "Redigerer $1 (kommentar)",
-"editconflict"	=> "Redigeringskonflikt: $1",
+"editing"		=> "Redigerer",
+"editingsection"=>"(seksjon)",
+"editingcomment"=>"(kommentar)",
+"editconflict"	=> "Redigeringskonflikt:",
 "explainconflict" => "Noen andre har endret teksten siden du begynte å redigere.
 Den øverste boksen inneholder den nåværende tekst.
 Dine endringer vises i den nederste boksen.

@@ -15,8 +15,8 @@ function wfSpecialRandompage( $par = NS_MAIN ) {
 	$fname = 'wfSpecialRandompage';
 
 	# Determine the namespace to get a random page from.
-	$namespace = $wgContLang->getNsIndex($par);
-	if ($namespace === false || $namespace < NS_MAIN) {
+	$namespace = Namespace::getIndexForName($par);
+	if ($namespace === null || $namespace < NS_MAIN) {
 		$namespace = NS_MAIN;
 	}
 

@@ -37,7 +37,7 @@ class OutputPage {
 	function OutputPage() {
 		$this->mHeaders = $this->mMetatags =
 		$this->mKeywords = $this->mLinktags = array();
-		$this->mHTMLtitle = $this->mPagetitle = $this->mBodytext =
+		$this->mHTMLtitle = $this->mBodytext =
 		$this->mRedirect = $this->mLastModified =
 		$this->mSubtitle = $this->mDebugtext = $this->mRobotpolicy =
 		$this->mOnloadHandler = $this->mPageLinkTitle = '';
@@ -158,20 +158,111 @@ class OutputPage {
 
 	function setRobotpolicy( $str ) { $this->mRobotpolicy = $str; }
 	function setHTMLTitle( $name ) {$this->mHTMLtitle = $name; }
-	function setPageTitle( $name ) {
+
+	/**
+	 * A convenience function for pages where only the main
+	 * part of the title array is set (e.g. special, error pages) 
+	 * 
+	 * @param string The text to be set as the main part.
+	 */
+	function setPageTitle ( $text ) {
+		$this->setPageTitleArray(array('mainpart'=>$text));
+	}
+
+	/**
+	 *
+	 * The "page title" is the part which appears as a header
+	 * above the content in most skins. The skin can decide
+	 * in which way it wants to render the individual components
+	 * of the title.
+	 *
+	 * @param $titlearray The title parts as an array with these keys:
+	 *
+	 *   mainpart = Unprefixed page name or full page title (required)
+	 *   namespace = "User:", "Foo:" etc.
+	 *   actionprefix = "Editing" etc.
+	 *   actionsuffix = "(section)", "(comment)" etc.
+	 *
+	 *   For diffs across two pages:
+	 *   namespace2 = Second namespace
+	 *   mainpart2 = Second unprefixed page title
+	 *
+	 * @return bool Has the title been set successfully?
+	 *
+	 */
+	function setPageTitleArray( $titlearray ) {
 		global $action, $wgContLang;
-		$name = $wgContLang->convert($name, true);
-		$this->mPagetitle = $name;
-		if(!empty($action)) {
-			$taction =  $this->getPageTitleActionText();
-			if( !empty( $taction ) ) {
-				$name .= ' - '.$taction;
-			}
+
+		if( !array_key_exists( "mainpart", $titlearray ) ) {
+			return false;
 		}
 
-		$this->setHTMLTitle( wfMsg( 'pagetitle', $name ) );
+		# This is for the languages which require title conversion,
+		# see e.g. languages/LanguageConverter.php
+		foreach($titlearray as $i=>$titlepart) {
+			$titlearray[$i]=$wgContLang->convert($titlearray[$i], true, $titlepart);
+		}
+		$this->mPagetitle = $titlearray;
+		
+		# What's this for?
+/*		if(!empty($action)) {
+			$taction =  $this->getPageTitleActionText();
+			if( !empty( $taction ) ) {
+				$tohtml .= ' - '.$taction;
+			}
+		}	*/
+
+		# If HTML title is null, getHTMLTitle will generate
+		# it from the title array.
+		$this->setHTMLTitle( NULL );
+		return true;
 	}
-	function getHTMLTitle() { return $this->mHTMLtitle; }
+
+	function getValidTitleKeys() {
+		return array(
+			'mainpart',
+			'namespace',
+			'namespace2',
+			'mainpart2',
+			'actionprefix',
+			'actionsuffix'
+		);
+	}
+
+	/**
+	 * If a specific HTML title is set, return it.
+	 * Otherwise generate it from the individual
+	 * title components.*
+	 */
+	function getHTMLTitle() { 
+		if(!is_null($this->mHTMLtitle)) {
+			return $this->mHTMLtitle; 
+		}
+		$titlearray=$this->getPageTitle();
+		$valid_keys=$this->getValidTitleKeys();
+		foreach($valid_keys as $valid_key) {
+			$varname='title_'.$valid_key;
+			$$varname=null;
+		}
+		foreach($titlearray as $key=>$titlepart) {
+			$varname='title_'.$key;
+			$$varname=$titlepart;
+			if(($key=="namespace" || $key=="namespace2") && !empty($titlepart)) {
+				$$varname.=':';
+			} elseif($key=="actionsuffix") {
+				$$varname=' '.$$varname;
+			} elseif($key=="actionprefix") {
+				$$varname=$$varname.' ';
+			}			
+		}
+		if(!is_null($title_namespace2)) {
+			# Diff across two pages
+			$pagetitle=$title_namespace.$title_mainpart.', '. $title_namespace2.$title_mainpart2;
+		} else {
+			$pagetitle=$title_actionprefix.$title_namespace.$title_mainpart.$title_actionsuffix;
+		}
+		return wfMsg('pagetitle',$pagetitle);
+  	}
 	function getPageTitle() { return $this->mPagetitle; }
 	function setSubtitle( $str ) { $this->mSubtitle = /*$this->parse(*/$str/*)*/; } // @bug 2514
 	function getSubtitle() { return $this->mSubtitle; }
@@ -247,12 +338,7 @@ class OutputPage {
 	function getHTML() { return $this->mBodytext; }
 	function debug( $text ) { $this->mDebugtext .= $text; }
 
-	/* @deprecated */
 	function setParserOptions( $options ) {
-		return $this->ParserOptions( $options );
-	}
-
-	function ParserOptions( $options = null ) {
 		return wfSetVar( $this->mParserOptions, $options );
 	}
 
@@ -282,7 +368,7 @@ class OutputPage {
 	}
 
 	function addWikiTextTitle($text, &$title, $linestart) {
-		global $wgParser;
+		global $wgParser, $wgUseTidy;
 		$parserOutput = $wgParser->parse( $text, $title, $this->mParserOptions,
 			$linestart, true, $this->mRevisionId );
 		$this->addParserOutput( $parserOutput );
@@ -356,8 +442,7 @@ class OutputPage {
 	 */
 	function parse( $text, $linestart = true ) {
 		global $wgParser, $wgTitle;
-		$parserOutput = $wgParser->parse( $text, $wgTitle, $this->mParserOptions,
-			$linestart, true, $this->mRevisionId );
+		$parserOutput = $wgParser->parse( $text, $wgTitle, $this->mParserOptions, $linestart );
 		return $parserOutput->getText();
 	}
 
@@ -379,7 +464,7 @@ class OutputPage {
 			$this->addHTML( $text );
 			$t = $parserOutput->getTitleText();
 			if( !empty( $t ) ) {
-				$this->setPageTitle( $t );
+				$this->setPageTitleArray($t);
  			}
 			return true;
 		} else {
@@ -750,7 +835,7 @@ class OutputPage {
 	}
 
 	function loginToUse() {
-		global $wgUser, $wgTitle, $wgContLang;
+		global $wgUser, $wgTitle, $wgContLang, $wgNamespaces;
 
 		$this->setPageTitle( wfMsg( 'loginreqtitle' ) );
 		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
@@ -766,7 +851,7 @@ class OutputPage {
 		# We put a comment in the .html file so a Sysop can diagnose the page the
 		# user can't see.
 		$this->addHTML( "\n<!--" .
-						$wgContLang->getNsText( $wgTitle->getNamespace() ) .
+						$wgNamespaces[$wgTitle->getNamespace()]->getDefaultName() .
 						':' .
 						$wgTitle->getDBkey() . '-->' );
 		$this->returnToMain();		# Flip back to the main page after 10 seconds.

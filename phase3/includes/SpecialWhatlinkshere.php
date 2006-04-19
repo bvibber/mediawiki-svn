@@ -54,7 +54,7 @@ class WhatLinksHerePage {
 		}
 		$this->selfTitle = Title::makeTitleSafe( NS_SPECIAL,
 			'Whatlinkshere/' . $this->target->getPrefixedDBkey() );
-		$wgOut->setPagetitle( $this->target->getPrefixedText() );
+		$wgOut->setPagetitle( $this->target->getTitleArray() );
 		$wgOut->setSubtitle( wfMsg( 'linklistsub' ) );
 
 		$isredir = ' (' . wfMsg( 'isredirect' ) . ")\n";

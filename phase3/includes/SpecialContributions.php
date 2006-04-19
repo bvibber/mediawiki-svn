@@ -152,7 +152,7 @@ class contribs_finder {
  * @param	$par	String: (optional) user name of the user for which to show the contributions
  */
 function wfSpecialContributions( $par = null ) {
-	global $wgUser, $wgOut, $wgLang, $wgRequest;
+	global $wgUser, $wgOut, $wgLang, $wgRequest, $wgNamespaces;
 	$fname = 'wfSpecialContributions';
 
 	$target = isset($par) ? $par : $wgRequest->getVal( 'target' );
@@ -296,7 +296,7 @@ function contributionsSub( $nt ) {
 	$talk = $nt->getTalkPage();
 	if( $talk ) {
 		# Talk page link	
-		$tools[] = $sk->makeLinkObj( $talk, $wgLang->getNsText( NS_TALK ) );
+		$tools[] = $sk->makeLinkObj( $talk, $wgNamespaces[NS_TALK]->getDefaultName() );
 		if( ( $id != 0 && $wgSysopUserBans ) || ( $id == 0 && User::isIP( $nt->getText() ) ) ) {
 			# Block link
 			if( $wgUser->isAllowed( 'block' ) )

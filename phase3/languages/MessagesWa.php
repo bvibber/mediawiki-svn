@@ -419,10 +419,10 @@ sol boton \'\'\'En erî\'\'\' di vosse betchteu waibe po rivni al pådje di dvan
 'previewnote' => '<strong>Èn rovyîz nén ki c\' est djusse on prévoeyaedje, li pådje n\' est nén co schapêye!</strong>',
 'previewconflict' => 'Ci prévoeyaedje ci mostere kimint kel tecse del boesse di tecse
 do dzeu sereut håyné si vos decidez di clitchî so «schaper».',
-'editing' => 'Candjant $1',
-'editingsection' => 'Candjant $1 (seccion)',
-'editingcomment' => 'Candjant $1 (comintaire)',
-'editconflict' => 'Conflit inte deus candjmints: $1',
+'editing' => 'Candjant',
+'editingsection'=>'(seccion)',
+'editingcomment'=>'(comintaire)',
+'editconflict' => 'Conflit inte deus candjmints:',
 'explainconflict' => 'Ene sakî a candjî l\' pådje do tins ki vos estîz a scrire.
 Li boesse di tecse do dzeur mostere li tecse del pådje come il est
 pol moumint sol sierveu. Li tecse da vosse est sol boesse di tecse do dzo.

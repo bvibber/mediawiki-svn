@@ -134,8 +134,8 @@ class SkinTemplate extends Skin {
 	 */
 	function outputPage( &$out ) {
 		global $wgTitle, $wgArticle, $wgUser, $wgLang, $wgContLang, $wgOut;
-		global $wgScript, $wgStylePath, $wgContLanguageCode;
-		global $wgMimeType, $wgJsMimeType, $wgOutputEncoding, $wgRequest;
+		global $wgScript, $wgStylePath, $wgLanguageCode, $wgContLanguageCode, $wgUseNewInterlanguage;
+		global $wgMimeType, $wgJsMimeType, $wgOutputEncoding, $wgUseDatabaseMessages, $wgRequest;
 		global $wgDisableCounters, $wgLogo, $action, $wgFeedClasses, $wgHideInterlanguageLinks;
 		global $wgMaxCredits, $wgShowCreditsIfMax;
 		global $wgPageShowWatchingUsers;
@@ -185,7 +185,12 @@ class SkinTemplate extends Skin {
 		wfProfileOut( "$fname-stuff" );
 
 		wfProfileIn( "$fname-stuff2" );
-		$tpl->set( 'title', $wgOut->getPageTitle() );
+		$titlearray=$wgOut->getPageTitle();
+		# If the skin wants to do custom stuff on the title parts
+		foreach($titlearray as $titlekey=>$titlepart) {
+			$tpl->set('title_'.$titlekey,$titlepart);
+		}
+		$tpl->set('title',$this->getFormattedPageTitle());
 		$tpl->set( 'pagetitle', $wgOut->getHTMLTitle() );
 		$tpl->set( 'displaytitle', $wgOut->mPageLinkTitle );
 

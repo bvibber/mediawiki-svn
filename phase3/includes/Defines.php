@@ -30,6 +30,7 @@ define('NS_SPECIAL', -1);
  * DO NOT Change integer values as they are most probably hardcoded everywhere
  * see bug #696 which talked about that.
  */
+ 
 define('NS_MAIN', 0);
 define('NS_TALK', 1);
 define('NS_USER', 2);
@@ -93,6 +94,7 @@ $wgAvailableRights = array(
 	'unwatchedpages',
 	'upload',
 	'userrights',
+	'namespaces'
 );
 
 /**#@+
@@ -141,6 +143,46 @@ define( 'ALF_PRELOAD_EXISTENCE', 2 );
 define( 'ALF_NO_LINK_LOCK', 4 );
 define( 'ALF_NO_BLOCK_LOCK', 8 );
 /**#@-*/
+
+/**#@+
+ * Namespace changes result codes
+ * See Namespace.php
+ */
+define('NS_RESULT',1);
+define('NS_SAVE_ID',2);
+define('NS_ILLEGAL_NAMES',3);
+define('NS_DUPLICATE_NAMES',4);
+define('NS_INTERWIKI_NAMES',5);
+define('NS_PREFIX_NAMES',6);
+/**#@-*/
+
+/**#@+
+ * Namespace changes success codes
+ */
+define('NS_MODIFIED',1);
+define('NS_CREATED',2);
+define('NS_NAME_ISSUES',3);
+define('NS_MISSING',4);
+define('NS_IDENTICAL',5);
+define('NS_DELETED',6);
+define('NS_PROTECTED',7);
+define('NS_HAS_PAGES',8);
+/**#@-*/
+
+/**#@+
+ * Pseudonamespace conversions
+ */
+define('NS_PSEUDO_NOT_FOUND',1);
+define('NS_PSEUDO_CONVERTED',2);
+define('NS_NON_EMPTY',3);
+define('NS_DUPLICATE_TITLES',4);
+define('NS_DUPLICATE_TITLE_LIST',5);
+
+/**#@+
+ * Valid namespace names character class
+ */
+define('NS_CHAR','[ _0-9A-Za-z\x80-\xff]');
+
 
 /**#@+
  * Date format selectors; used in user preference storage and by

@@ -1861,14 +1861,16 @@ function wfGetSVGsize( $filename ) {
  * @return bool
  */
 function wfIsBadImage( $name ) {
-	global $wgContLang;
+	global $wgNamespaces;
 	static $titleList = false;
 	if ( $titleList === false ) {
 		$titleList = array();
 
 		$lines = explode("\n", wfMsgForContent( 'bad_image_list' ));
 		foreach ( $lines as $line ) {
-			if ( preg_match( '/^\*\s*\[{2}:(' . $wgContLang->getNsText( NS_IMAGE ) . ':.*?)\]{2}/', $line, $m ) ) {
+			if ( preg_match( '/^\*\s*\[{2}:(' .
+				preg_quote( $wgNamespaces[NS_IMAGE]->getDefaultName(), '/' ) .
+				':.*?)\]{2}/', $line, $m ) ) {
 				$t = Title::newFromText( $m[1] );
 				$titleList[$t->getDBkey()] = 1;
 			}

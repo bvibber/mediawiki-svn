@@ -36,6 +36,7 @@ require_once( "$IP/includes/Hooks.php" );
 require_once( "$IP/maintenance/parserTestsParserHook.php" );
 require_once( "$IP/maintenance/parserTestsStaticParserHook.php" );
 require_once( "$IP/maintenance/parserTestsParserTime.php" );
+require_once( "$IP/maintenance/nsBootstrap.inc" );
 
 /**
  * @package MediaWiki
@@ -326,7 +327,10 @@ class ParserTest {
 		$GLOBALS['wgLoadBalancer']->loadMasterPos();
 		$GLOBALS['wgMessageCache']->initialise( new BagOStuff(), false, 0, $GLOBALS['wgDBname'] );
 		$this->setupDatabase();
-
+		
+		global $wgNamespaces;
+		$wgNamespaces[NS_MAIN]->setSubpages( preg_match('/\\bsubpage\\b/i', $opts) );
+		
 		global $wgUser;
 		$wgUser = new User();
 	}
@@ -342,7 +346,8 @@ class ParserTest {
 			'recentchanges',
 			'watchlist', 'math', 'searchindex',
 			'interwiki', 'querycache',
-			'objectcache', 'job'
+			'objectcache', 'job',
+			'namespace', 'namespace_names'
 		);
 
 		// FIXME manually adding additional table for the tasks extension
@@ -446,6 +451,9 @@ class ParserTest {
 				'img_major_mime'  => "image",
 				'img_minor_mime'  => "jpeg",
 				) );
+
+			$nb = new NamespaceBootstrap();
+			$nb->initialize();
 
 			$setupDB = true;
 		}

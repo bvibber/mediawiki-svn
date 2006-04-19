@@ -359,7 +359,7 @@ class UndeleteForm {
 	}
 
 	/* private */ function showList() {
-		global $wgLang, $wgContLang, $wgUser, $wgOut;
+		global $wgLang, $wgContLang, $wgUser, $wgOut, $wgNamespaces;
 		$fname = "UndeleteForm::showList";
 
 		# List undeletable articles
@@ -376,8 +376,8 @@ class UndeleteForm {
 		$undelete =& Title::makeTitle( NS_SPECIAL, 'Undelete' );
 		$wgOut->addHTML( "<ul>\n" );
 		while( $row = $result->fetchObject() ) {
-			$n = ($row->ar_namespace ?
-				($wgContLang->getNsText( $row->ar_namespace ) . ":") : "").
+			$n = ($row->ar_namespace && array_key_exists($row->ar_namespace,$wgNamespaces) ?
+				($wgNamespaces[$row->ar_namespace]->getDefaultName(). ":") : "").
 				$row->ar_title;
 			$link = $sk->makeKnownLinkObj( $undelete,
 				htmlspecialchars( $n ), "target=" . urlencode( $n ) );

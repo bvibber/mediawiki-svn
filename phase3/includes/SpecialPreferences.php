@@ -86,7 +86,7 @@ class PreferencesForm {
 		# Note: namespaces don't necessarily have consecutive keys
 		$this->mSearchNs = array();
 		if ( $this->mPosted ) {
-			$namespaces = $wgContLang->getNamespaces();
+			$namespaces = Namespace::getDefaultNamespaces();
 			foreach ( $namespaces as $i => $namespace ) {
 				if ( $i >= 0 ) {
 					$this->mSearchNs[$i] = $request->getCheck( "wpNs$i" ) ? 1 : 0;
@@ -351,7 +351,7 @@ class PreferencesForm {
 		$this->mNick = $wgUser->getOption( 'nickname' );
 
 		$this->mQuickbar = $wgUser->getOption( 'quickbar' );
-		$this->mSkin = Skin::normalizeKey( $wgUser->getOption( 'skin' ) );
+		$this->mSkin = $wgUser->getOption( 'skin' );
 		$this->mMath = $wgUser->getOption( 'math' );
 		$this->mDate = $wgUser->getOption( 'date' );
 		$this->mRows = $wgUser->getOption( 'rows' );
@@ -374,7 +374,7 @@ class PreferencesForm {
 			$this->mToggles[$tname] = $wgUser->getOption( $tname );
 		}
 
-		$namespaces = $wgContLang->getNamespaces();
+		$namespaces = Namespace::getDefaultNamespaces();
 		foreach ( $namespaces as $i => $namespace ) {
 			if ( $i >= NS_MAIN ) {
 				$this->mSearchNs[$i] = $wgUser->getOption( 'searchNs'.$i );
@@ -389,7 +389,7 @@ class PreferencesForm {
 		global $wgContLang;
 
 		# Determine namespace checkboxes
-		$namespaces = $wgContLang->getNamespaces();
+		$namespaces = Namespace::getDefaultNamespaces();
 		$r1 = null;
 
 		foreach ( $namespaces as $i => $name ) {

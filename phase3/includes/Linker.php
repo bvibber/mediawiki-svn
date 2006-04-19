@@ -879,7 +879,7 @@ class Linker {
 		$fname = 'Linker::formatComment';
 		wfProfileIn( $fname );
 
-		global $wgContLang;
+		global $wgContLang, $wgNamespaces;
 		$comment = str_replace( "\n", " ", $comment );
 		$comment = htmlspecialchars( $comment );
 
@@ -912,7 +912,7 @@ class Linker {
 
 		# format regular and media links - all other wiki formatting
 		# is ignored
-		$medians = $wgContLang->getNsText( NS_MEDIA ) . ':';
+		$medians = $wgNamespaces[NS_MEDIA]->getDefaultName() . ':';
 		while(preg_match('/\[\[(.*?)(\|(.*?))*\]\](.*)$/',$comment,$match)) {
 			# Handle link renaming [[foo|text]] will show link as "text"
 			if( "" != $match[3] ) {

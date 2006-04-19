@@ -54,7 +54,9 @@ class EditPage {
 	 *  and set $wgMetadataWhitelist to the *full* title of the template whitelist
 	 */
 	function extractMetaDataFromArticle () {
-		global $wgUseMetadataEdit , $wgMetadataWhitelist , $wgLang ;
+		global $wgUseMetadataEdit , $wgMetadataWhitelist , $wgLang,
+		       $wgNamespaces ;
+
 		$this->mMetaData = '' ;
 		if ( !$wgUseMetadataEdit ) return ;
 		if ( $wgMetadataWhitelist == '' ) return ;
@@ -65,7 +67,7 @@ class EditPage {
 
 		# Categories and language links
 		$t = explode ( "\n" , $t ) ;
-		$catlow = strtolower ( $wgLang->getNsText ( NS_CATEGORY ) ) ;
+		$catlow = strtolower ( $wgNamespaces[NS_CATEGORY]->getDefaultName()) ;
 		$cat = $ll = array() ;
 		foreach ( $t AS $key => $x )
 		{
@@ -468,7 +470,7 @@ class EditPage {
 	 * @return bool false if output is done, true if the rest of the form should be displayed
 	 */
 	function attemptSave() {
-		global $wgSpamRegex, $wgFilterCallback, $wgUser, $wgOut;
+		global $wgSpamRegex, $wgFilterCallback, $wgUser, $wgOut, $wgNamespaces;
 		global $wgMaxArticleSize;
 
 		$fname = 'EditPage::attemptSave';
@@ -721,7 +723,7 @@ class EditPage {
 	 *                      near the top, for captchas and the like.
 	 */
 	function showEditForm( $formCallback=null ) {
-		global $wgOut, $wgUser, $wgLang, $wgContLang, $wgMaxArticleSize;
+		global $wgOut, $wgUser, $wgLang, $wgContLang, $wgNamespaces, $wgMaxArticleSize;
 
 		$fname = 'EditPage::showEditForm';
 		wfProfileIn( $fname );
@@ -734,22 +736,23 @@ class EditPage {
 
 		# Enabled article-related sidebar, toplinks, etc.
 		$wgOut->setArticleRelated( true );
+		$titlearray = $this->mTitle->getTitleArray();
 
 		if ( $this->isConflict ) {
-			$s = wfMsg( 'editconflict', $this->mTitle->getPrefixedText() );
-			$wgOut->setPageTitle( $s );
+			$titlearray['actionprefix'] = wfMsg( 'editconflict' );
+			$wgOut->setPageTitleArray( $titlearray );
 			$wgOut->addWikiText( wfMsg( 'explainconflict' ) );
 
 			$this->textbox2 = $this->textbox1;
 			$this->textbox1 = $this->mArticle->getContent();
 			$this->edittime = $this->mArticle->getTimestamp();
 		} else {
-
+			$titlearray['actionprefix'] = wfMsg( 'editing' );
 			if( $this->section != '' ) {
 				if( $this->section == 'new' ) {
-					$s = wfMsg('editingcomment', $this->mTitle->getPrefixedText() );
+					$titlearray['actionsuffix'] = wfMsg( 'editingcomment' );
 				} else {
-					$s = wfMsg('editingsection', $this->mTitle->getPrefixedText() );
+					$titlearray['actionsuffix'] = wfMsg('editingsection');
 					if( !$this->preview && !$this->diff ) {
 						preg_match( "/^(=+)(.+)\\1/mi",
 							$this->textbox1,
@@ -759,10 +762,8 @@ class EditPage {
 						}
 					}
 				}
-			} else {
-				$s = wfMsg( 'editing', $this->mTitle->getPrefixedText() );
 			}
-			$wgOut->setPageTitle( $s );
+			$wgOut->setPageTitleArray( $titlearray );
 
 			if ( $this->missingComment ) {
 				$wgOut->addWikiText( wfMsg( 'missingcommenttext' ) );
@@ -843,6 +844,16 @@ class EditPage {
 			htmlspecialchars( wfMsg( 'newwindow' ) );
 
 		global $wgRightsText;
+		
+		# If we're editing in a namespace where all unprefixed links point to
+		# a target (see Namespace.php), we add some info to the edit screen.
+		$nstarget='';
+		if($wgNamespaces[$this->mTitle->getNamespace()]->getTarget()) {
+			$nstarget="<div id=\"editpage-nstarget\">\n" .
+				wfMsg("nstarget",$wgNamespaces[$wgTitle->getNamespace()]->getTarget()) .
+				"\n</div>";
+		}
+
 		$copywarn = "<div id=\"editpage-copywarn\">\n" .
 			wfMsg( $wgRightsText ? 'copyrightwarning' : 'copyrightwarning2',
 				'[[' . wfMsgForContent( 'copyrightpage' ) . ']]',
@@ -1235,7 +1246,7 @@ END
 	 * @todo document
 	 */
 	function getPreviewText() {
-		global $wgOut, $wgUser, $wgTitle, $wgParser;
+		global $wgOut, $wgUser, $wgTitle, $wgParser, $wgAllowDiffPreview, $wgEnableDiffPreviewPreference;
 
 		$fname = 'EditPage::getPreviewText';
 		wfProfileIn( $fname );
@@ -1438,7 +1449,7 @@ END
 	 * The necessary JavaScript code can be found in style/wikibits.js.
 	 */
 	function getEditToolbar() {
-		global $wgStylePath, $wgContLang, $wgJsMimeType;
+		global $wgStylePath, $wgContLang, $wgJsMimeType, $wgNamespaces;
 
 		/**
 		 * toolarray an array of arrays which each include the filename of
@@ -1488,14 +1499,14 @@ END
 					'key'	=>	'H'
 				),
 			array(	'image'=>'button_image.png',
-					'open'	=>	'[['.$wgContLang->getNsText(NS_IMAGE).":",
+					'open'	=>	'[['.$wgNamespaces[NS_IMAGE]->getDefaultName().":",
 					'close'	=>	']]',
 					'sample'=>	wfMsg('image_sample'),
 					'tip'	=>	wfMsg('image_tip'),
 					'key'	=>	'D'
 				),
 			array(	'image'	=>'button_media.png',
-					'open'	=>	'[['.$wgContLang->getNsText(NS_MEDIA).':',
+					'open'	=>	'[['.$wgNamespaces[NS_MEDIA]->getDefaultName().':',
 					'close'	=>	']]',
 					'sample'=>	wfMsg('media_sample'),
 					'tip'	=>	wfMsg('media_tip'),

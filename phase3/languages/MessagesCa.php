@@ -217,8 +217,8 @@ La raó és la que segueix:<br />$2<p>Podeu contactar amb l'administrador per di
 "previewnote"	=> "Recordeu que això només és una previsualització, i encara no s'ha gravat!",
 "previewconflict" => "Aquesta previsualització reflexa el text a l'ària
 d'edició superior tal i com apareixerà si escolliu gravar.",
-"editing"		=> "S'està editant $1",
-"editconflict"	=> "Conflicte d'edició: $1",
+"editing"		=> "S'està editant",
+"editconflict"	=> "Conflicte d'edició:",
 "explainconflict" => "Algú més ha canviat aquesta pàgina des que l'heu editada.
 L'ària de text superior conté el text de la pàgina com existeix actualment. Els vostres canvis es mostren a l'ària de text inferior.
 Haureu d'incorporar els vostres canvis en el text existent.

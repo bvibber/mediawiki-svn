@@ -56,7 +56,7 @@ class ImagePage extends Article {
 				# Just need to set the right headers
 				$wgOut->setArticleFlag( true );
 				$wgOut->setRobotpolicy( 'index,follow' );
-				$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+				$wgOut->setPageTitleArray( $this->mTitle->getTitleArray() );
 				$this->viewUpdates();
 			}
 
@@ -96,12 +96,12 @@ class ImagePage extends Article {
 	 * @return string
 	 */
 	function showTOC( $metadata ) {
-		global $wgLang;
+		global $wgLang, $wgNamespaces;
 		$r = '<ul id="filetoc">
-			<li><a href="#file">' . $wgLang->getNsText( NS_IMAGE ) . '</a></li>
-			<li><a href="#filehistory">' . wfMsgHtml( 'imghistory' ) . '</a></li>
-			<li><a href="#filelinks">' . wfMsgHtml( 'imagelinks' ) . '</a></li>' .
+			<li><a href="#file">' . $wgNamespaces[NS_IMAGE]->getDefaultName() . '</a></li>' .
 			($metadata ? '<li><a href="#metadata">' . wfMsgHtml( 'metadata' ) . '</a></li>' : '') . '
+			<li><a href="#filehistory">' . wfMsgHtml( 'imghistory' ) . '</a></li>
+			<li><a href="#filelinks">' . wfMsgHtml( 'imagelinks' ) . '</a></li>
 		</ul>';
 		return $r;
 	}

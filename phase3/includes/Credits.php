@@ -169,10 +169,10 @@ function getContributorCredits($article, $cnt, $showIfMax) {
  *
  */
 function creditLink($user_name, $link_text = '') {
-	global $wgUser, $wgContLang;
+	global $wgUser, $wgContLang, $wgNamespaces;
 	$skin = $wgUser->getSkin();
-	return $skin->makeLink($wgContLang->getNsText(NS_USER) . ':' . $user_name,
-			       htmlspecialchars( (empty($link_text)) ? $user_name : $link_text ));
+	return $skin->makeLink($wgNamespaces[NS_USER]->getDefaultName() . ':' . $user_name,
+		htmlspecialchars( (empty($link_text)) ? $user_name : $link_text ));
 }
 
 /**

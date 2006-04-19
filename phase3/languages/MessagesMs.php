@@ -250,10 +250,10 @@ halaman baru.",
 "previewnote"	=> "Ingatan bahawa ini hanyalah paparan, belum disimpan lagi!", #"Remember that this is only a preview, and has not yet been saved!",
 "previewconflict" => "Paparan ini ada kaitan dengan teks pada bahagian atas dan
 akan terpapar apabila anda memilih untuk menyimpannya.",
-"editing"		=> "Menyunting $1", #"Editing $1",
-"editingsection"	=> "Menyunting $1 (section)",
-"editingcomment"	=> "Menyunting $1 (comment)",
-"editconflict"	=> "Sunting konflik", #"Edit conflict: $1",
+"editing"		=> "Menyunting", #"Editing",
+"editingsection"=>"(section)",
+"editingcomment"=>"(comment)",
+"editconflict"	=> "Sunting konflik", #"Edit conflict:",
 "explainconflict" => "Orang lain telah mengemaskini halaman ini sejak anda
 mula mengemaskininya.
 Bahagian atas teks mengandungi halaman teks yang terkini.

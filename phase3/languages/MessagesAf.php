@@ -228,8 +228,8 @@ Indien jy per ongeluk hier is, gebruik jou blaaier se '''terug''' knop.",
 "note"			=> "<strong>Nota:</strong> ",
 "previewnote"	=> "Onthou dat dit slegs 'n voorskou is en nog nie gestoor is nie!",
 "previewconflict" => "Hierdie voorskou reflekteer die teks in die boonste invoerboks soos dit sal lyk as jy dit stoor.",
-"editing"		=> "Besig om $1 te wysig",
-"editconflict"	=> "Wysigingskonflik: $1",
+"editing"		=> "Besig om te wysig",
+"editconflict"	=> "Wysigingskonflik:",
 "explainconflict" => "Iemand anders het hierdie bladsy gewysig sedert jy dit begin verander het.
 Die boonste invoerboks het die teks wat tans bestaan.
 Jou wysigings word in die onderste invoerboks gewys.

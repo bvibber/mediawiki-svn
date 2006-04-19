@@ -155,23 +155,6 @@ class SearchEngine {
 	function setNamespaces( $namespaces ) {
 		$this->namespaces = $namespaces;
 	}
-
-	/**
-	 * Make a list of searchable namespaces and their canonical names.
-	 * @return array
-	 * @access public
-	 */
-	function searchableNamespaces() {
-		global $wgContLang;
-		$arr = array();
-		foreach( $wgContLang->getNamespaces() as $ns => $name ) {
-			if( $ns >= NS_MAIN ) {
-				$arr[$ns] = $name;
-			}
-		}
-		return $arr;
-	}
-
 	/**
 	 * Return a 'cleaned up' search string
 	 *
