@@ -1,0 +1,185 @@
+= MediaWiki release notes =
+
+Security reminder: MediaWiki does not require PHP's register_globals
+setting since version 1.2.0. If you have it on, turn it *off* if you can.
+
+== MediaWiki 1.7 ==
+
+THIS IS NOT A RELEASE YET.
+
+MediaWiki is now using a "continuous integration" development model with
+quarterly snapshot releases. The latest development code is always kept
+"ready to run", and in fact runs our own sites on Wikipedia.
+
+Release branches will continue to receive security updates for about a year
+from first release, but nonessential bugfixes and feature development happen
+will be made on the development trunk and appear in the next quarterly release.
+
+Those wishing to use the latest code instead of a branch release can obtain
+it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
+
+== Changes since 1.6 ==
+
+* (bug 5458) Fix double-URL encoding in block log link in contribs and contribs
+  link in block log
+* (bug 5462) Bogus missing patch warning in updater
+* (bug 5461) Use of deprecated "showhideminor" in Special:Recentchangeslinked
+* PHP warning when allow_call_time_pass_reference is off
+* Update to Finnish localization
+* (bug 5467) Link to page histories in watchlist edit mode
+* Further additions to Hebrew localisation
+* (bug 5476) Invalid xhtml in German localization
+* (bug 5479) Id translation for preferences tabs caption
+* (bug 5493) Id translation for special pages
+* Added skinname and style path parameters to CBT version of MonoBook
+* Include subversion revision number in Special:Version if available
+* (bug 5344) Fix regression that broke slashes in extension tag parameters
+* Improve Special:Log performance on big log sets
+* (bug 5507) Changed mediawiki:logouttext from plain to wikitext
+* (bug 4760) Prevent creation of entries in protection log when protection levels haven't changed
+* (bug 861) Show page protection/unprotection events in histories
+* (bug 5499) Don't clear the tag strip state when asked not to clear state.
+  Fixes regression with use of <ref> in a template breaking <nowiki> etc.
+* Minor improvements to English language files
+* Display the anon talk page info message on anon talk pages again
+  (moved outside the parser cache)
+* Optional {{DISPLAYTITLE|title with markup}} magic word
+  Deactivated by default, set "$wgAllowDisplayTitle = true" in LocalSettings.php to activate
+* Cleaned SpecialContributions a bit
+* Added a table to track interlanguage links
+* (bug 5544) Fix redirect arrow in Special:Listredirects for right-to-left languages
+* Replace "doubleredirectsarrow" with a content language check that picks the appropriate arrow
+* (bug 5537) Add stub language file for Samogitian (bat-smg); inherits Lithuanian (lt)
+* Don't force edit summaries when a user is editing their own user/talk page
+* (bug 5510) Warning produced when using {{SUBPAGENAME}} in some namespaces
+* (bug 385) Installer support for PostgreSQL, fixes for PG compatibility
+* PersistentObject removed; it doesn't do anything and was broken besides.
+  All extensions using it have been corrected.
+* Propagate ISBN number for Booksources in LanguageNo.php
+* (bug 5548) Improvements to Indonesian localisation [patch: Ivan Lanin]
+* Add TALKSPACE, SUBJECTSPACE, TALKPAGENAME, SUBJECTPAGENAME (and encoded forms for all)
+  magic words
+* (bug 5403) Fix Special:Newpages RSS/Atom feeds
+* Reject malformed addresses in X-Forwarded-For entries
+* (bug 3359) Add hooks on completion of file upload
+* (bug 5559) Improve detection of ImageMagick [patch: Greg Turnquist]
+* (bug 5475) New pages feeds ignore "limit" argument
+* (bug 5184) CSS misapplied to elements in Special:Allmessages due to conflicting
+  anchor identifiers
+* (bug 5519) Allow sidebar cache to be disabled; disable it by default.
+* Maintenance script to import the contents of a text file into a wiki page
+* Add $wgReservedUsernames configuration directive to block account creation/use
+* (bug 5576) Remove debugging hack in session check
+* (bug 5426) Lowercase treatment of titles in rights log leads to broken links
+  on Special:Log
+* Minor improvements to French localisation files
+* (bug 5181) Update "nogomatch" for Slovak
+* (bug 5594) Id translation up to # Login and logout pages section
+* (bug 5536) Use content language for editing help link
+* Improvements to German localisation files
+* (bug 5570) Problems using <special page>/parameter link form for long titles
+* (bug 3884) Add $user parameter to AddNewUser hook, call it for by-email 
+  registrations as well as self-registrations.
+* (bug 4327) Report age of cached data sets in query pages
+* (bug 4662) Fix Safari check in wikibits.js
+* (bug 4663) Edit toolbar enabled in compatible versions of Safari
+* (bug 5572) Edit toolbar enabled in compatible versions of Konqueror (3.5+)
+* (bug 5235) Edit toolbar tooltips no longer show JavaScript junk in Opera
+* Edit toolbar now works in pure XHTML mode (application/xhtml+xml)
+* Add watchlist clear function to allow quick purging of all items
+* (bug 5625) Additional namespace translations for Welsh
+* Add meta tag and JavaScript variables to cached special pages which provides
+  the timestamp of the last update, in YYYYMMDDHHMMSS format.
+* (bug 5628) More translations for MessagesHr.php
+* (bug 5595) Localisation for Bosnian language (bs)
+* (bug 2910) Default view preferences for watchlists
+* Add "hide bot edits from the watchlist" user preference
+* (bug 5250) Introduce Special:Unusedtemplates
+* Add user preference setting for an extended watchlist, showing all recent 
+  edits up to a certain edit, and not just the latest edit..
+* Made MessageRo.php more general
+* (bug 5640) Indonesian localisation improvements
+* (bug 5592) Actions are logged with the default language for the
+   wiki, not the language of the user performing the operation.
+* (bug 5644) Error in LanguageBs.php file
+* (bug 5646) Compare for identical types in wfElement()
+* (bug 5472) Language::userAdjust()->minDiff not initialized on else condition
+* (bug 5386) LanguageMk.php: updated namespaces translations
+* (bug 5422) Stub for Romani (rmy) language which extends ro
+* Fix linktrail for LanguageSr
+
+== Compatibility ==
+
+Older PHP 4.2 and 4.1 releases are no longer supported; PHP 4 users must
+upgrade to 4.3 or later.
+
+MediaWiki 1.6 is the last major version to support PHP 4; future versions
+will require PHP 5.
+
+MySQL 3.23.x is longer supported; some older hosts may need to upgrade.
+At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.
+
+
+== Upgrading ==
+
+Several changes to the database have been made from 1.5; these are relatively
+minor but do require that the update process be run before the new code will
+work properly:
+
+* A new "templatelinks" table tracks template inclusions.
+* A new "externallinks" table tracks URL links; this can be used by a
+  mass spam-cleanup tool in the SpamBlacklist extension.
+* A new "jobs" table stores a queue of pages to update in the background; this
+  is used to update links in including pages when templates are edited.
+
+To ensure that these tables are filled with data, run refreshLinks.php after
+the upgrade.
+
+
+If you are upgrading from MediaWiki 1.4.x or earlier, some major database
+changes are made, and there is a slightly higher chance that things could
+break. Don't forget to always back up your database before upgrading!
+
+See the file UPGRADE for more detailed upgrade instructions.
+
+
+
+=== Caveats ===
+
+Some output, particularly involving user-supplied inline HTML, may not
+produce 100% valid or well-formed XHTML output. Testers are welcome to
+set $wgMimeType = "application/xhtml+xml"; to test for remaining problem
+cases, but this is not recommended on live sites. (This must be set for
+MathML to display properly in Mozilla.)
+
+
+For notes on 1.5.x and older releases, see HISTORY.
+
+
+=== Online documentation ===
+
+Documentation for both end-users and site administrators is currently being
+built up on Meta-Wikipedia, and is covered under the GNU Free Documentation
+License:
+
+  http://www.mediawiki.org/wiki/Documentation
+
+
+=== Mailing list ===
+
+A MediaWiki-l mailing list has been set up distinct from the Wikipedia
+wikitech-l list:
+
+  http://mail.wikimedia.org/mailman/listinfo/mediawiki-l
+
+A low-traffic announcements-only list is also available:
+
+  http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce
+
+It's highly recommended that you sign up for one of these lists if you're
+going to run a public MediaWiki, so you can be notified of security fixes.
+
+
+=== IRC help ===
+
+There's usually someone online in #mediawiki on irc.freenode.net
