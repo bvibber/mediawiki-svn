@@ -16,22 +16,15 @@ require_once( "$IP/includes/Setup.php" );
 
 $db =& wfGetDB( DB_SLAVE );
 $bqp = new BotQueryProcessor( $db );
+$bqp->execute();
+$bqp->output();
 
-switch ( $wgRequest->getText('what') ) {
-	case 'yurik':
-		list( $type, $text ) = $bqp->yurik();
-		break;
-	case 'history':
-		list( $type, $text ) = $bqp->history();
-		break;
-	default:
-		die( 'Invalid query string' );
-}
-header( "Content-Type: $type" );
-echo $text;
+
 
 class BotQueryProcessor {
 	var $mimeTypes = array(
+		'txt' => 'text/plain',
+		'dbg' => 'text/plain',
 		'tsv' => 'text/tab-separated-values',
 		'json' => 'application/json',
 		'xml' => 'text/xml',
@@ -39,32 +32,77 @@ class BotQueryProcessor {
 	);
 
 	function BotQueryProcessor( $db ) {
+		global $wgRequest;
+
 		$this->db = $db;
+		$this->format = $this->parseFormat( $wgRequest->getText('format') );
+		$this->linkBatch = $this->parseTitles( $wgRequest->getText('titles') );
+		$this->properties = $this->parseProperties( $wgRequest->getText('properties'));
+
+		$this->data = array();
 	}
 
-	function getFormat() {
-		global $wgRequest;
-		
-		switch ( $wgRequest->getText('format') ) {
+	function output() {
+		$mime = $this->mimeTypes[$this->format];
+		header( "Content-Type: $mime; charset=utf-8;" );
+
+		switch ( $this->format ) {
+			case 'txt':
+				print_r($this->data);
+				break;
+			case 'dbg':
+				var_export($this->data);
+				break;
+			case 'xml':
+				echo '<?xml version="1.0" encoding="utf-8"?>';
+				recXmlPrint( "yurik", $this->data );
+				break;
 			case 'php':
-			case '':
-				return 'php';
+				echo serialize( $this->data );
+				break;
 			case 'json':
 				if ( !function_exists( 'json_encode' ) ) {
-					die( 'JSON format not supported' );
+					require_once 'json.php';
+					$json = new Services_JSON();
+					echo $json->encode( $this->data );
+				} else {
+					echo json_encode( $this->data );
 				}
+				break;
+			default:
+				die( 'Internal bug - unrecognised format' );
+		}
+	}
+
+	function parseFormat( $format ) {
+		switch ( $format ) {
+			case 'php':
+				return 'php';
+			case 'json':
 				return 'json';
 			case 'xml':
 				return 'xml';
 			case 'tsv':
-				return 'tsv';
+				die( 'TSV support is not yet implemented' );
+			case '':
+			case 'txt':
+			case 'text':
+				return 'txt';
+			case 'dbg':
+			case 'phpcode':
+				return 'dbg';
 			default:
 				die( 'Unrecognised format' );
 		}
 	}
-	
-	function getLinkBatch( $titles ) {
+
+	function parseTitles( $titles ) {
 		global $wgUser;
+
+		if ( $titles === '' ) {
+			return null;
+		}
+
 		$titles = explode( '|', $titles );
 		if ( $wgUser->isBot() ) {
 			if ( count( $titles ) > 1000 ) {
@@ -85,50 +123,108 @@ class BotQueryProcessor {
 		return $linkBatch;
 	}
 
-	function cleanTsv( $text ) {
-		return str_replace( "\t", '        ', $text );
+	function parseProperties( $properties ) {
+		global $wgUser;
+
+		if ( $properties == '' ) {
+			die( 'Error, must specify one or more valid properties in the "properties" parameter' );
+		}
+		return explode( '|', $properties );
 	}
 
-	function yurik() {
-		global $wgRequest;
-		$fname = 'BotQueryProcessor::yurik';
 
-		$format = $this->getFormat();
+	function execute() {
+		$fname = 'BotQueryProcessor';
 
-		$titles = $wgRequest->getText('titles');
-		$disambigString = $wgRequest->getText('disambigs');
-		if ( $titles == '' ) {
-			die( 'Error, must specify one or more valid titles in the "titles" parameter' );
-		}
-		$linkBatch = $this->getLinkBatch( $titles );
-		if ( $disambigString ) {
-			$disambigs = $this->getLinkBatch( $disambigString );
-		} else {
-			$disambigs = false;
+		$knownProperties = array( 'siteinfo', 'sitenamespaces', 'langlinks', 'templates', 'links', 'history', 'barehistory' );
+		$unknownProperties = array_diff( $this->properties, $knownProperties);
+		if( $unknownProperties ) {
+			die( "Unrecognised property " . implode(',', $unknownProperties) .
+				".\nCurrently supported properties: " . implode(',', $knownProperties));
 		}
 
-		$mainWhere = $linkBatch->constructSet( 'page', $this->db );
+		// basic site information
+		if ( $this->processProp('siteinfo') ) {
+			$this->genMetaSiteInfo( $this->data['meta'] );
+		}
+		// the list of localized namespaces defined for this site
+		if ( $this->processProp('sitenamespaces') ) {
+			$this->genMetaNamespaceInfo( $this->data['meta'] );
+		}
 
-		if ( !$mainWhere ) {
+		if ( $this->linkBatch === null ) {
+			return;   // No titles were given, skip any page generation
+		}
+
+		// Query page table
+		// This call initializes *PageIds member variables
+		// We stop if no pages need to be processed
+		if( $this->genPageInfo( $this->data['pages'], $fname )) {
 			return;
 		}
 
-		$data = array();
-		$redirects = array();
-		$nonexistentPages = $linkBatch->data;
+		// gather interlanguage links
+		if ( $this->processProp('langlinks') ) {
+			$this->genPageLangLinks( $this->data['pages'], $fname );
+		}
 
-		// Query page table
-		$res = $this->db->select( 'page', 
-			array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect' ), 
-			$mainWhere, $fname );
+		// gather templates
+		if ( $this->processProp('templates') ) {
+			$this->genPageTemplates( $this->data['pages'], $fname );
+		}
+
+		// gather regular links to other pages
+		if ( $this->processProp('links') ) {
+			$this->genPageLinks( $this->data['pages'], $fname );
+		}
+
+		// gather revision history
+		if ( $this->processProp('history') || $this->processProp('barehistory') ) {
+			$this->genPageHistory( $this->data['pages'], $fname, $this->processProp('history') );
+		}
+	}
+
+	function genMetaSiteInfo( &$data ) {
+		global $wgSitename, $wgVersion, $wgCapitalLinks;
+		$data['sitename']  = $wgSitename;
+		$data['generator'] = "MediaWiki $wgVersion";
+		$data['case']      = $wgCapitalLinks ? 'first-letter' : 'case-sensitive'; // "case-insensitive" option is reserved for future
+
+		$mainPage = Title::newFromText( wfMsgForContent( 'mainpage' ) );
+		$data['mainpage']  = $mainPage->getText();
+		$data['base']      = $mainPage->getFullUrl();
+	}
+
+	function genMetaNamespaceInfo( &$data ) {
+		global $wgContLang;
+		$data['namespaces']['_element'] = 'ns';
+		foreach( $wgContLang->getFormattedNamespaces() as $ns => $title ) {
+			$data['namespaces'][$ns] = array( "id"=>$ns, "_content" => $title );
+		}
+	}
+
+	function genPageInfo( &$data, $fname ) {
+		// Create a list of pages to query
+		$where = $this->linkBatch->constructSet( 'page', $this->db );
+		if ( !$where ) {
+			return True;   // Nothing to do
+		}
+
+		$res = $this->db->select( 'page',
+			array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect' ),
+			$where,
+			$fname . '::genPageInfo' );
+
+		$redirects = array();
+		$nonexistentPages = $this->linkBatch->data;
+
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
-			$data[$row->page_id] = array( 
-				'title' => $title->getPrefixedDBkey(),
+			$data[$row->page_id] = array(
+				'title' => $title->getPrefixedText(),
 				'id' => $row->page_id,
-				'langlinks' => array()
 			);
-			
+
 			// Strike out link
 			unset( $nonexistentPages[$row->page_namespace][$row->page_title] );
 
@@ -138,194 +234,219 @@ class BotQueryProcessor {
 		}
 		$this->db->freeResult( $res );
 
-		// Determine "redirected to" field
-		if ( $redirects ) {
-			$res = $this->db->select( 'pagelinks', array( 'pl_from', 'pl_namespace', 'pl_title' ), 
-				'pl_from IN (' . implode( ',', $redirects ) . ')', $fname );
-			$redirectTargets = array();
-			while ( $row = $this->db->fetchObject( $res ) ) {
-				$title = Title::makeTitle( $row->pl_namespace, $row->pl_title );
-				$data[$row->pl_from]['redirect'] = $title->getPrefixedDBkey();
-			}
-			$this->db->freeResult( $res );
-		}
+		// This list can later be used to filter other tables by page Id
+		$this->allPageIds = array_keys( $data );
+		$this->inAllPageIds = $this->db->makeList( $this->allPageIds );
+		$this->inRealPageIds = $this->db->makeList( array_diff_key($this->allPageIds, $redirects) );
 
-		// Determine disambiguation status
-		if ( $disambigs ) {
-			$where = array( 
-				$disambigs->constructSet( 'tl', $this->db ), 
-				'tl_from IN (' . $this->db->makeList( array_keys( $data ) ) . ')'
-			);
-
-			if ( $where ) {
-				$res = $this->db->select( 'templatelinks', array( 'tl_from' ), $where, $fname );
-				while ( $row = $this->db->fetchObject( $res ) ) {
-					$data[$row->tl_from]['disambig'] = true;
-				}
-				$this->db->freeResult( $res );
-			}
-		}
+		// Must not alter $data[] until generating Page Ids
+		$data['_element'] = 'page';
 
 		// Add records for non-existent page titles
 		$i = -1;
 		foreach ( $nonexistentPages as $namespace => $stuff ) {
 			foreach ( $stuff as $dbk => $arbitrary ) {
 				$title = Title::makeTitle( $namespace, $dbk );
-				$data[$i--] = array( 
-					'title' => $title->getPrefixedDBkey(),
+				$data[$i--] = array(
+					'title' => $title->getPrefixedText(),
 					'id' => 0
 				);
 			}
 		}
 
-		// Fetch interlanguage links
-		$res = $this->db->select( 
-			array( 'page', 'langlinks' ), 
-			array( 'page_id', 'page_namespace', 'page_title', 'll_lang', 'll_title' ),
-			array( 'page_id=ll_from', $mainWhere ),
-			$fname,
-			array( 'ORDER BY' => 'page_namespace,page_title' )
-		);
-
-		$lastId = 0;
-		while ( $row = $this->db->fetchObject( $res ) ) {
-			$data[$row->page_id]['langlinks'][$row->ll_lang] = $row->ll_title;
-		}
-		$this->db->freeResult( $res );
-
-		// Format result
-		$result = array_values( $data );
-		switch ( $wgRequest->getText('format') ) {
-			case 'tsv':
-				$s = "Title\tID\tRedirects to\tDisambig?\tLanguage links...\n";
-				foreach ( $result as $record ) {
-					$redirect = isset( $record['redirect'] ) ? $record['redirect'] : '';
-					$disambig = isset( $record['disambig'] ) ? 'y' : '';
-					$s .= "{$record['title']}\t{$record['id']}\t$redirect\t$disambig";
-					foreach ( $record['langlinks'] as $lang => $title ) {
-						$s .= "\t$lang:$title";
-					}
-					$s .= "\n";
-				}
-				return array( $this->mimeTypes['tsv'], $s );
-			case 'json':
-				return array( $this->mimeTypes['json'], json_encode( $result ) );
-			case 'xml':
-				$s = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<yurik>\n";
-				foreach ( $result as $record ) {
-					$s .= "<page>\n";
-					$s .= '<title>' . htmlspecialchars( $record['title'] ) . "</title>\n" .
-						"<id>{$record['id']}</id>\n";
-					if ( isset( $record['redirect'] ) ) {
-						$s .= '<redirect>' . htmlspecialchars( $record['redirect'] ) . "</redirect>\n";
-					}
-					if ( isset( $record['disambig'] ) ) {
-						$s .= "<disambig/>\n";
-					}
-					if ( !empty( $record['langlinks'] ) ) {
-						$s .= "<langlinks>\n";
-						foreach ( $record['langlinks'] as $lang => $title ) {
-							$s .= '<link lang="' . htmlspecialchars( $lang ) . '">' . htmlspecialchars( $title ) . "</link>\n";
-						}
-					}
-					$s .= "</page>\n";
-				}
-				$s .= '</yurik>';
-				return array( $this->mimeTypes['xml'], $s );
-			default:
-				return array( $this->mimeTypes['php'], serialize( $result ) );
+		// Process redirects
+		if( $redirects ) {
+			$res = $this->db->select(
+				'pagelinks',
+				array( 'pl_from', 'pl_namespace', 'pl_title' ),
+				'pl_from IN (' . implode( ',', $redirects ) . ')',
+				$fname . '::genPageRedirects' );
+			$redirectTargets = array();
+			while ( $row = $this->db->fetchObject( $res ) ) {
+				$data[$row->pl_from]['redirect'] = $this->getLinkInfo( $row->pl_namespace, $row->pl_title );
+			}
+			$this->db->freeResult( $res );
 		}
 	}
 
-	function history() {
-		global $wgRequest, $wgUser;
-		$fname = 'BotQueryProcessor::history';
-
-		// Validate parameters
-		$title = Title::newFromText( $wgRequest->getText('title') );
-		if ( is_null( $title ) ) {
-			die( 'Error, must specify a valid title in the "title" parameter' );
+	function genPageLangLinks( &$data, $fname ) {
+		$res = $this->db->select(
+			array( 'langlinks' ),
+			array( 'll_from', 'll_lang', 'll_title' ),
+			"ll_from IN ({$this->inRealPageIds})",
+			$fname . '::genPageLangLinks' );
+		while ( $row = $this->db->fetchObject( $res ) ) {
+			$this->addPageSubElement( $row->ll_from, 'langlinks', 'll', array('lang' => $row->ll_lang, '_content' => $row->ll_title));
 		}
-		$format = $this->getFormat();
+		$this->db->freeResult( $res );
+	}
+
+	function genPageTemplates( &$data, $fname ) {
+		$res = $this->db->select(
+			'templatelinks',
+			array( 'tl_from', 'tl_namespace', 'tl_title' ),
+			"tl_from IN ({$this->inRealPageIds})",
+			$fname . '::genPageTemplates' );
+		while ( $row = $this->db->fetchObject( $res ) ) {
+			$this->addPageSubElement( $row->tl_from, 'templates', 'tl', $this->getLinkInfo( $row->tl_namespace, $row->tl_title ));
+		}
+		$this->db->freeResult( $res );
+	}
+
+	function genPageLinks( &$data, $fname ) {
+		$res = $this->db->select(
+			'pagelinks',
+			array( 'pl_from', 'pl_namespace', 'pl_title' ),
+			"pl_from IN ({$this->inRealPageIds})",
+			$fname . '::genPageLinks' );
+		while ( $row = $this->db->fetchObject( $res ) ) {
+			$this->addPageSubElement( $row->pl_from, 'links', 'l', $this->getLinkInfo( $row->pl_namespace, $row->pl_title ));
+		}
+		$this->db->freeResult( $res );
+	}
+
+	function genPageHistory( &$data, $fname, $includeComments ) {
+		global $wgRequest;
+
+		// select *:  rev_page, rev_text_id, rev_comment, rev_user, rev_user_text, rev_timestamp, rev_minor_edit, rev_deleted
+		$fields = array('rev_timestamp','rev_user','rev_user_text','rev_minor_edit');
+		if( $includeComments ) {
+			$fields[] = 'rev_comment';
+		}
 
 		$conds = array(
-			'page_namespace' => $title->getNamespace(),
-			'page_title' => $title->getDBkey(),
-			'page_id=rev_page',
 			'rev_deleted' => 0,
 		);
-		
-		$start = $wgRequest->getText( 'start' );
+
+		$start = $wgRequest->getText( 'rvstart' );
 		if ( $start != '' ) {
-			if ( preg_match( '/^[0-9]{14}$/', $start ) ) {
-				$conds[] = 'rev_timestamp >= ' . $this->db->addQuotes( $start );
-			} else {
-				die( 'Error, start must be a 14-character numeric timestamp, e.g. 20060409000000' );
-			}
+			$conds[] = 'rev_timestamp <= ' . $this->prepareTimestamp($start);
 		}
 		
-		$end = $wgRequest->getText( 'end' );
+		$end = $wgRequest->getText( 'rvend' );
 		if ( $end != '' ) {
-			if ( preg_match( '/^[0-9]{14}$/', $end ) ) {
-				$conds[] = 'rev_timestamp <= ' . $this->db->addQuotes( $end );
-			} else {
-				die( 'Error, end must be a 14-character numeric timestamp, e.g. 20060409000000' );
-			}
+			$conds[] = 'rev_timestamp <= ' . $this->prepareTimestamp($end);
 		}
 
-		$limit = $wgRequest->getInt( 'limit', 50 );
+		$limit = $wgRequest->getInt( 'rvlimit', 50 );
 		$options = array(
 			'LIMIT' => $limit,
 			'ORDER BY' => 'rev_timestamp DESC'
 		);
 
-		// Do the query
-		$data = array();
-		$res = $this->db->select( array( 'page', 'revision' ), 'revision.*', $conds, $fname, $options );
-		
-		// Format the result
-		switch ( $format ) {
-			case 'tsv':
-				$s = '';
-				$first = true;
-				while ( $row = $this->db->fetchObject( $res ) ) {
-					$fields = get_object_vars( $row );
-					if ( $first ) {
-						// Header row
-						$s .= implode( "\t", array_keys( $fields ) ) . "\n";
-						$first = false;
-					}
-					$s .= implode( "\t", array_map( array( 'BotQueryProcessor', 'cleanTsv' ), 
-						$fields ) ) . "\n";
-				}
-				break;
-			case 'json':
-				$data = array();
-				while ( $row = $this->db->fetchObject( $res ) ) {
-					$data[] = $row;
-				}
-				$s = json_encode( $data );
-				break;
-			case 'xml':
-				$s = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<history>\n";
-				while ( $row = $this->db->fetchObject( $res ) ) {
-					$s .= "<revision>\n";
-					$fields = get_object_vars( $row );
-					foreach ( $fields as $name => $value ) {
-						$s .= "<$name>" . htmlspecialchars( $value ) . "</$name>\n";
-					}
-					$s .= "</revision>\n";
-				}
-				break;
-			default:
-				$format = 'php';
-				$data = array();
-				while ( $row = $this->db->fetchObject( $res ) ) {
-					$data[] = $row;
-				}
-				$s = serialize( $data );
+		if( $limit * count($this->allPageIds) > 20000 ) {
+			die( "limit multiplied by number of requested titles must be <= 20000" );
 		}
-		return array( $this->mimeTypes[$format], $s );
+
+		foreach( $this->allPageIds as $pageId ) {
+			$conds['rev_page'] = $pageId;
+			$res = $this->db->select( 'revision', $fields, $conds, $fname . '::genPageHistory', $options );
+			while ( $row = $this->db->fetchObject( $res ) ) {
+				$vals = array(
+					'timestamp' => wfTimestamp( TS_ISO_8601, $row->rev_timestamp ),
+					'user' => $row->rev_user_text
+					);
+				if( !$row->rev_user ) {
+					$vals['anon'] = '';
+				}
+				if( $row->rev_minor_edit ) {
+					$vals['minor'] = '';
+				}
+				$vals['_content'] = $includeComments ? $row->rev_comment : '';
+				$this->addPageSubElement( $pageId, 'revisions', 'rv', $vals);
+			}
+			$this->db->freeResult( $res );
+		}
+	}
+
+	function getTitleInfo( $title ) {
+		$data = array();
+		if( $title->getNamespace() != NS_MAIN ) {
+			$data['ns'] = $title->getNamespace();
+		}
+		if( $title->isExternal() ) {
+			$data['iw'] = $title->getInterwiki();
+		}
+		$data['_content'] = $title->getPrefixedText();
+
+		return $data;
+	}
+
+	function getLinkInfo( $ns, $title ) {
+		return $this->getTitleInfo( Title::makeTitle( $ns, $title ));
+	}
+
+	function addPageSubElement( $pageId, $mainElem, $itemElem, $params ) {
+		$data = & $this->data['pages'][$pageId][$mainElem];
+		$data['_element'] = $itemElem;
+		$data[] = $params;
+	}
+
+	function processProp( $property ) {
+		return in_array( $property, $this->properties );
+	}
+
+	function prepareTimestamp( $value ) {
+		if ( preg_match( '/^[0-9]{14}$/', $value ) ) {
+			return $this->db->addQuotes( $value );
+		} else {
+			die( 'Error, rvstart and rvend parameters must be a 14-character numeric timestamp, e.g. 20060409000000' );
+		}
+	}
+}
+
+/**
+* This method takes an array and converts it into an xml.
+* There are several noteworthy cases:
+*
+*  If array contains a key "_element", then the code assumes that ALL other keys are not important and replaces them with the value['_element'].
+*	Example:	name="root",  value = array( "_element"=>"page", "x", "y", "z") creates <root>  <page>x</page>  <page>y</page>  <page>z</page> </root>
+*
+*  If any of the array's element key is "_content", then the code treats all other key->value pairs as attributes, and the value['_content'] as the element's content.
+*	Example:	name="root",  value = array( "_content"=>"text", "lang"=>"en", "id"=>10)   creates  <root lang="en" id="10">text</root>
+*
+* If neither key is found, all keys become element names, and values become element content.
+* The method is recursive, so the same rules apply to any sub-arrays.
+*/
+function recXmlPrint( $elemName, &$elemValue, $indent = -2) {
+	$indstr = "";
+	if( !is_null($indent) ) {
+		$indent += 2;
+		$indstr = "\n" . str_repeat(" ", $indent);
+	}
+
+	switch( gettype($elemValue) ) {
+		case 'array':
+			if( array_key_exists('_content', $elemValue) ) {
+				$subElemContent = $elemValue['_content'];
+				unset( $elemValue['_content'] );
+				if( gettype( $subElemContent ) === 'array' ) {
+					echo $indstr . wfElement( $elemName, $elemValue, null );
+					recXmlPrint( $elemName, $subElemValue, $indent );
+					echo $indstr . "</$elemName>";
+				} else {
+					echo $indstr . wfElement( $elemName, $elemValue, $subElemContent );
+				}
+			} else {
+				echo $indstr . wfElement( $elemName, null, null );
+				if( array_key_exists('_element', $elemValue) ) {
+					$subElemName = $elemValue['_element'];
+					foreach( $elemValue as $subElemId => $subElemValue ) {
+						if( $subElemId !== '_element' ) {
+							recXmlPrint( $subElemName, $subElemValue, $indent );
+						}
+					}
+				} else {
+					foreach( $elemValue as $subElemName => $subElemValue ) {
+						recXmlPrint( $subElemName, $subElemValue, $indent );
+					}
+				}
+				echo $indstr . "</$elemName>";
+			}
+			break;
+		default:
+			echo $indstr . wfElement( $elemName, null, $elemValue );
+			break;
 	}
 }
 
