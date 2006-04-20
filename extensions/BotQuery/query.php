@@ -460,7 +460,8 @@ class BotQueryProcessor {
 			."\n"
 			."  The code is maintained by Yurik. You can leave your comments at http://en.wikipedia.org/wiki/User_talk:Yurik\n"
 			."\n"
-			."Version: \n"
+			."Version:\n"
+			.'  $Id$'
 			;
 
 		die(1);
