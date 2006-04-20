@@ -32,8 +32,10 @@ if ( isset( $_REQUEST['GLOBALS'] ) ) {
 define( 'MW_NO_OUTPUT_BUFFER', true );
 $wgNoOutputBuffer = true;
 
-require_once( '../../includes/Defines.php' );
-require_once( '../../LocalSettings.php' );
+$IP = dirname( realpath( __FILE__ ) ) . '/../..';
+chdir( $IP );
+require_once( "$IP/includes/Defines.php" );
+require_once( "$IP/LocalSettings.php" );
 require_once( "$IP/includes/Setup.php" );
 
 $db =& wfGetDB( DB_SLAVE );
