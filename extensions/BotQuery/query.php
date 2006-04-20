@@ -407,9 +407,12 @@ class BotQueryProcessor {
 		}
 		$props .= "  (*) These properties return information about the whole site\n";
 
+		// This will prevent any code injection attacks
 		$message = htmlspecialchars($message);
 
-		die( "\n   ------ Error: $message ------\n\n"
+		header( "Content-Type: text/plain; charset=utf-8;" );
+
+		echo "\n   ------ Error: $message ------\n\n"
 			."Usage:\n"
 			."  query.php ? format=a & properties=b|c|d & titles=e|f|g & rvstart=timestamp & rvend=timestamp & rvlimit=num\n"
 			."\n"
@@ -438,7 +441,9 @@ class BotQueryProcessor {
 			."  It was later completelly rewritten by Yuri to allow for modular properties, meta information, and various formatting options.\n"
 			."\n"
 			."  The code is maintained by Yurik. You can leave your comments at http://en.wikipedia.org/wiki/User_talk:Yurik\n"
-			);
+			;
+
+		die(1);
 	}
 }
 
