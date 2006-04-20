@@ -65,21 +65,21 @@ class BotQueryProcessor {
 
 	/**
 	* Properties generators - each property points to an array of the following parameters:
-	*     0) True/False - does this property work on individual pages?  (False for site's metadata)
+	*     0) true/false - does this property work on individual pages?  (false for site's metadata)
 	*     1) Function to call
 	*     2) property description
 	*/
 	var $propGenerators = array(
 
 		// Site-wide Generators
-		'siteinfo'       => array( False, "genMetaSiteInfo", "basic site information" ),
-		'sitenamespaces' => array( False, "genMetaNamespaceInfo", "list of localized namespaces" ),
+		'siteinfo'       => array( false, "genMetaSiteInfo", "basic site information" ),
+		'sitenamespaces' => array( false, "genMetaNamespaceInfo", "list of localized namespaces" ),
 
 		// Page-specific Generators
-		'langlinks'      => array( True, "genPageLangLinks", "interlanguage links" ),
-		'templates'      => array( True, "genPageTemplates", "template names" ),
-		'links'          => array( True, "genPageLinks", "regular links to other pages" ),
-		'revisions'      => array( True, "genPageHistory", "revision history (see Notes)" ),
+		'langlinks'      => array( true, "genPageLangLinks", "interlanguage links" ),
+		'templates'      => array( true, "genPageTemplates", "template names" ),
+		'links'          => array( true, "genPageLinks", "regular links to other pages" ),
+		'revisions'      => array( true, "genPageHistory", "revision history (see Notes)" ),
 	);
 
 	function BotQueryProcessor( $db ) {
@@ -95,7 +95,7 @@ class BotQueryProcessor {
 
 	function execute() {
 		// Process metadata generators
-		$this->callGenerators( False );
+		$this->callGenerators( false );
 
 		// Query page table and initialize page ids.
 		if ( $this->linkBatch === null || $this->genPageInfo()) {
@@ -103,7 +103,7 @@ class BotQueryProcessor {
 		}
 
 		// Process page-related generators
-		$this->callGenerators( True );
+		$this->callGenerators( true );
 	}
 
 	function callGenerators( $callPageGenerators ) {
@@ -183,7 +183,7 @@ class BotQueryProcessor {
 		// Create a list of pages to query
 		$where = $this->linkBatch->constructSet( 'page', $this->db );
 		if ( !$where ) {
-			return True;   // Nothing to do
+			return true;   // Nothing to do
 		}
 
 		$res = $this->db->select( 'page',
@@ -400,11 +400,14 @@ class BotQueryProcessor {
 		foreach( $this->outputGenerators as $format => $generator ) {
 			$formats .= sprintf( "  %-20s - %s\n", $format, $generator[2]);
 		}
+
 		$props = "";
 		foreach( $this->propGenerators as $property => $generator ) {
 			$props .= sprintf( "  %-20s - %s\n", $generator[0] ? $property : $property." (*)", $generator[2]);
 		}
 		$props .= "  (*) These properties return information about the whole site\n";
+
+		$message = htmlspecialchars($message);
 
 		die( "\n   ------ Error: $message ------\n\n"
 			."Usage:\n"
