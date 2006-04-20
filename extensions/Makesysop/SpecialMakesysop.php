@@ -26,6 +26,18 @@ $wgGroupPermissions['bureaucrat']['userrights'] = false;
 
 $wgAvailableRights[] = 'makesysop';
 
+/**
+ * Quick hack for clusters with multiple master servers; if an alternate
+ * is listed for the requested database, a connection to it will be opened
+ * instead of to the current wiki's regular master server.
+ *
+ * Requires that the other server be accessible by network, with the same
+ * username/password as the primary.
+ *
+ * eg $wgAlternateMaster['enwiki'] = 'ariel';
+ */
+$wgAlternateMaster = array();
+
 function wfSetupMakesysop() {
 	require_once( 'SpecialPage.php' );
 	require_once( 'SpecialUserrights.php' );
@@ -391,10 +403,22 @@ class MakesysopStewardForm extends UserrightsForm {
 		if( $database == '' ) {
 			$db =& wfGetDB( DB_MASTER );
 		} else {
-			global $wgDBserver, $wgDBuser, $wgDBpassword;
-			$db =& new Database( $wgDBserver, $wgDBuser, $wgDBpassword, $database );
+			global $wgDBuser, $wgDBpassword;
+			$server = $this->getMaster( $database );
+			$db =& new Database( $server, $wgDBuser, $wgDBpassword, $database );
 		}
 		return $db;
+	}
+	
+	/**
+	 * Return the master server to connect to for the requested database.
+	 */
+	function getMaster( $database ) {
+		global $wgDBserver, $wgAlternateMaster;
+		if( isset( $wgAlternateMaster[$database] ) ) {
+			return $wgAlternateMaster[$database];
+		}
+		return $wgDBserver;
 	}
 	
 	function getUserId( $database, $name ) {
