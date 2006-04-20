@@ -511,7 +511,7 @@ function printParsableCode( &$data ) {
 	var_export($data);
 }
 function printPHP( &$data ) {
-	serialize( $data );
+	echo serialize($data);
 }
 function printJSON( &$data ) {
 	if ( !function_exists( 'json_encode' ) ) {
