@@ -46,20 +46,26 @@ $bqp->output();
 class BotQueryProcessor {
 	var $classname = 'BotQueryProcessor';
 
-	var $mimeTypes = array(
-		'xml' => 'text/xml',
-		'txt' => 'text/plain',
-		'json' => 'application/json',
-		'php' => 'application/vnd.php.serialized',
-		'dbg' => 'text/plain',
-//		'tsv' => 'text/tab-separated-values',
+	/**
+	* Output generators - each format name points to an array of the following parameters:
+	*     0) mime type 
+	*     1) Function to call
+	*     2) Format description
+	*/
+	var $outputGenerators = array(
+		'xml' => array( 'text/xml', 'printXML', 'XML format' ),
+		'txt' => array( 'application/x-wiki-botquery-print_r', 'printHumanReadable', 'Pretty-printed human readable format' ),
+		'json' => array( 'application/json', 'printJSON', 'JSON format' ),
+		'php' => array( 'application/vnd.php.serialized', 'printPHP', 'PHP serialized format' ),
+		'dbg' => array( 'application/x-wiki-botquery-var_export', 'printParsableCode', 'PHP source code format' ),
+//		'tsv' => array( 'text/tab-separated-values', 'print', '' ),
 	);
 
 	/**
 	* Properties generators - each property points to an array of the following parameters:
-	*     1) True/False - does this property work on individual pages?  (False for site's metadata)
-	*     2) Function to call
-	*     3) property description
+	*     0) True/False - does this property work on individual pages?  (False for site's metadata)
+	*     1) Function to call
+	*     2) property description
 	*/
 	var $propGenerators = array(
 
@@ -78,24 +84,24 @@ class BotQueryProcessor {
 		global $wgRequest;
 
 		$this->db = $db;
-		$this->format = $this->parseFormat( $wgRequest->getText('format') );
-		$this->linkBatch = $this->parseTitles( $wgRequest->getText('titles') );
-		$this->properties = $this->parseProperties( $wgRequest->getText('properties'));
+		$this->format = $this->parseFormat( $wgRequest->getVal('format') );
+		$this->linkBatch = $this->parseTitles( $wgRequest->getVal('titles') );
+		$this->properties = $this->parseProperties( $wgRequest->getVal('properties'));
 
 		$this->data = array();
 	}
 
 	function execute() {
 		// Process metadata generators
-		$this->callGenerators( False, 'meta' );
+		$this->callGenerators( False );
 
 		// Query page table and initialize page ids.
 		if ( $this->linkBatch === null || $this->genPageInfo()) {
 			return;   // No titles were given, skip any page generation
 		}
 
-		// Process only page-related generators
-		$this->callGenerators( True, $this->data['pages'] );
+		// Process page-related generators
+		$this->callGenerators( True );
 	}
 
 	function callGenerators( $callPageGenerators ) {
@@ -107,35 +113,9 @@ class BotQueryProcessor {
 	}
 
 	function output() {
-		$mime = $this->mimeTypes[$this->format];
+		list( $mime, $printer ) = $this->outputGenerators[$this->format];		
 		header( "Content-Type: $mime; charset=utf-8;" );
-
-		switch ( $this->format ) {
-			case 'txt':
-				print_r($this->data);
-				break;
-			case 'dbg':
-				var_export($this->data);
-				break;
-			case 'xml':
-				echo '<?xml version="1.0" encoding="utf-8"?>';
-				recXmlPrint( "yurik", $this->data );
-				break;
-			case 'php':
-				echo serialize( $this->data );
-				break;
-			case 'json':
-				if ( !function_exists( 'json_encode' ) ) {
-					require_once 'json.php';
-					$json = new Services_JSON();
-					echo $json->encode( $this->data );
-				} else {
-					echo json_encode( $this->data );
-				}
-				break;
-			default:
-				die( 'Internal bug - unrecognised format' );
-		}
+		$printer( $this->data );
 	}
 
 
@@ -143,7 +123,7 @@ class BotQueryProcessor {
 	// ************************************* INPUT PARSERS *************************************
 	//
 	function parseFormat( $format ) {
-		if( array_key_exists($format, $this->mimeTypes) ) {
+		if( array_key_exists($format, $this->outputGenerators) ) {
 			return $format;
 		} else {
 			$this->dieUsage( "Unrecognised format '$format'" );
@@ -187,7 +167,7 @@ class BotQueryProcessor {
 		$propList = explode( '|', $properties );
 		$unknownProperties = array_diff( $propList, array_keys( $this->propGenerators ));
 		if( $unknownProperties ) {
-			$this->dieUsage( "Unrecognised property " . implode(',', $unknownProperties) );
+			$this->dieUsage( "Unrecognised propert" . (count($unknownProperties)>1?"ies ":"y ") . implode(', ', $unknownProperties) );
 		}
 
 		return $propList;
@@ -275,7 +255,7 @@ class BotQueryProcessor {
 		$this->data['meta']['case']	  = $wgCapitalLinks ? 'first-letter' : 'case-sensitive'; // "case-insensitive" option is reserved for future
 
 		$mainPage = Title::newFromText( wfMsgForContent( 'mainpage' ) );
-		$this->data['meta']['mainpage']  = $mainPage->getText();
+		$this->data['meta']['mainpage']  = $mainPage->getVal();
 		$this->data['meta']['base']	  = $mainPage->getFullUrl();
 	}
 
@@ -326,7 +306,7 @@ class BotQueryProcessor {
 	function genPageHistory() {
 		global $wgRequest;
 
-		$includeComments = 0 === strcasecmp( 'true', $wgRequest->getText('rvcomments') );
+		$includeComments = $wgRequest->getCheck('rvcomments');
 
 		// select *:  rev_page, rev_text_id, rev_comment, rev_user, rev_user_text, rev_timestamp, rev_minor_edit, rev_deleted
 		$fields = array('rev_timestamp','rev_user','rev_user_text','rev_minor_edit');
@@ -338,12 +318,12 @@ class BotQueryProcessor {
 			'rev_deleted' => 0,
 		);
 
-		$start = $wgRequest->getText( 'rvstart' );
+		$start = $wgRequest->getVal( 'rvstart' );
 		if ( $start != '' ) {
 			$conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($start);
 		}
 
-		$end = $wgRequest->getText( 'rvend' );
+		$end = $wgRequest->getVal( 'rvend' );
 		if ( $end != '' ) {
 			$conds[] = 'rev_timestamp <= ' . $this->prepareTimestamp($end);
 		}
@@ -414,6 +394,10 @@ class BotQueryProcessor {
 	}
 
 	function dieUsage( $message ) {
+		$formats = "";
+		foreach( $this->outputGenerators as $format => $generator ) {
+			$formats .= sprintf( "  %-20s - %s\n", $format, $generator[2]);
+		}
 		$props = "";
 		foreach( $this->propGenerators as $property => $generator ) {
 			$props .= sprintf( "  %-20s - %s\n", $generator[0] ? $property : $property." (*)", $generator[2]);
@@ -429,7 +413,7 @@ class BotQueryProcessor {
 			."  This query will return a list of all links and templates used on the User:Yurik\n"
 			."\n"
 			."Supported Formats:\n"
-			."  " . implode(', ', array_keys( $this->mimeTypes )) . "\n"
+			.$formats
 			."\n"
 			."Supported Properties:\n"
 			.$props
@@ -438,10 +422,10 @@ class BotQueryProcessor {
 			."  - spaces above are just for ease of reading\n"
 			."  - properties and format are the only required parameters\n"
 			."  - revisions property supports additional parameters:\n"
-			."      rvstart, rvend - limits revisions by start and/or end time. The timestamp format is 14 characters.\n"
-			."                       example: '20060409000000' (year month date hour minute second)\n"
-			."      rvlimit        - the number of revisions per title to return. Default is 50.\n"
-			."      rvcomments     - (true/false) - if true, includes the revision comment in the output. Default is false.\n"
+			."      rvstart, rvend   - limits revisions by start and/or end time. The timestamp format is 14 characters.\n"
+			."                         example: '20060409000000' (year month date hour minute second)\n"
+			."      rvlimit          - the number of revisions per title to return. Default is 50.\n"
+			."      rvcomments       - if present, includes the revision comment in the output\n"
 			."\n"
 			."Credits:\n"
 			."  This extension came as the result of IRC discussion between Yuri Astrakhan (en:Yurik), Tim Starling (en:Tim Starling), and Daniel Kinzler(de:Duesentrieb)\n"
@@ -450,6 +434,32 @@ class BotQueryProcessor {
 			."\n"
 			."  The code is maintained by Yurik. You can leave your comments at http://en.wikipedia.org/wiki/User_talk:Yurik\n"
 			);
+	}
+}
+
+//
+// ************************************* Print Methods *************************************
+//
+function printXML( &$data ) {
+	echo '<?xml version="1.0" encoding="utf-8"?>';
+	recXmlPrint( "yurik", $data );
+}
+function printHumanReadable( &$data ) {
+	print_r($data);
+}
+function printParsableCode( &$data ) {
+	var_export($data);
+}
+function printPHP( &$data ) {
+	serialize( $data );
+}
+function printJSON( &$data ) {
+	if ( !function_exists( 'json_encode' ) ) {
+		require_once 'json.php';
+		$json = new Services_JSON();
+		echo $json->encode( $data );
+	} else {
+		echo json_encode( $data );
 	}
 }
 
