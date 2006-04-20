@@ -414,6 +414,8 @@ class BotQueryProcessor {
 	}
 
 	function dieUsage( $message ) {
+		global $wgUser;
+
 		$formats = "";
 		foreach( $this->outputGenerators as $format => $generator ) {
 			$formats .= sprintf( "  %-20s - %s\n", $format, $generator[2]);
@@ -460,9 +462,11 @@ class BotQueryProcessor {
 			."\n"
 			."  The code is maintained by Yurik. You can leave your comments at http://en.wikipedia.org/wiki/User_talk:Yurik\n"
 			."\n"
+			."User Status:\n"
+			."  You are " . ($wgUser->isAnon() ? 'an anonymous' : 'a logged-in') . ' ' . ($wgUser->isBot() ? 'bot' : 'user') . ' ' . $wgUser->getName() . "\n"
+			."\n"
 			."Version:\n"
-			.'  $Id$'
-			;
+			.'  $Id$';
 
 		die(1);
 	}
