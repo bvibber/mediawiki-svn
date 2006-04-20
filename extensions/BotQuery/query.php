@@ -55,7 +55,7 @@ class BotQueryProcessor {
 	*     2) Format description
 	*/
 	var $outputGenerators = array(
-		'xml' => array( 'text/xml', 'printXML', 'XML format' ),
+		'xml' => array( 'text/xml', 'printXML', 'XML format with optional indentation (see Notes)' ),
 		'txt' => array( 'application/x-wiki-botquery-print_r', 'printHumanReadable', 'Pretty-printed human readable format' ),
 		'json' => array( 'application/json', 'printJSON', 'JSON format' ),
 		'php' => array( 'application/vnd.php.serialized', 'printPHP', 'PHP serialized format' ),
@@ -74,6 +74,7 @@ class BotQueryProcessor {
 		// Site-wide Generators
 		'siteinfo'       => array( false, "genMetaSiteInfo", "basic site information" ),
 		'sitenamespaces' => array( false, "genMetaNamespaceInfo", "list of localized namespaces" ),
+		'userinfo'       => array( false, "genMetaUserInfo", "user information" ),
 
 		// Page-specific Generators
 		'langlinks'      => array( true, "genPageLangLinks", "interlanguage links" ),
@@ -256,21 +257,41 @@ class BotQueryProcessor {
 
 	function genMetaSiteInfo() {
 		global $wgSitename, $wgVersion, $wgCapitalLinks;
-		$this->data['meta']['sitename']  = $wgSitename;
-		$this->data['meta']['generator'] = "MediaWiki $wgVersion";
-		$this->data['meta']['case']	  = $wgCapitalLinks ? 'first-letter' : 'case-sensitive'; // "case-insensitive" option is reserved for future
-
+		$meta = array();
 		$mainPage = Title::newFromText( wfMsgForContent( 'mainpage' ) );
-		$this->data['meta']['mainpage']  = $mainPage->getText();
-		$this->data['meta']['base']	  = $mainPage->getFullUrl();
+
+		$meta['mainpage'] = $mainPage->getText();
+		$meta['base']     = $mainPage->getFullUrl();
+		$meta['sitename'] = $wgSitename;
+		$meta['generator']= "MediaWiki $wgVersion";
+		$meta['case']     = $wgCapitalLinks ? 'first-letter' : 'case-sensitive'; // "case-insensitive" option is reserved for future
+
+		$this->data['meta']['site'] = $meta;
 	}
 
 	function genMetaNamespaceInfo() {
 		global $wgContLang;
-		$this->data['meta']['namespaces']['_element'] = 'ns';
+		$meta = array();
+		$meta['_element'] = 'ns';
 		foreach( $wgContLang->getFormattedNamespaces() as $ns => $title ) {
-			$this->data['meta']['namespaces'][$ns] = array( "id"=>$ns, "_content" => $title );
+			$meta[$ns] = array( "id"=>$ns, "_content" => $title );
 		}
+		$this->data['meta']['namespaces'] = $meta;
+	}
+
+	function genMetaUserInfo() {
+		global $wgUser;
+		
+		$meta = array();
+		$meta['name'] = $wgUser->getName();
+		if( $wgUser->isAnon() ) $meta['anonymous'] = '';
+		if( $wgUser->isBot() ) $meta['bot'] = '';
+		if( $wgUser->isBlocked() ) $meta[' blocked'] = '';
+		$meta['groups'] = $wgUser->getGroups();
+		$meta['groups']['_element'] = 'g';
+		$meta['rights'] = $wgUser->getRights();
+		$meta['rights']['_element'] = 'r';
+		$this->data['meta']['user'] = $meta;
 	}
 
 	function genPageLangLinks() {
@@ -434,11 +455,14 @@ class BotQueryProcessor {
 
 		echo "\n   ------ Error: $message ------\n\n"
 			."Usage:\n"
-			."  query.php ? format=a & properties=b|c|d & titles=e|f|g & rvstart=timestamp & rvend=timestamp & rvlimit=num\n"
+			."  query.php ? format=a & properties=b|c|d & titles=e|f|g & ...\n"
 			."\n"
-			."Example:\n"
+			."Examples:\n"
 			."    query.php?format=xml&properties=links|templates&titles=User:Yurik\n"
 			."  This query will return a list of all links and templates used on the User:Yurik\n"
+			."\n"
+			."    query.php?format=xml&properties=revisions&titles=Main_Page&rvlimit=100&rvstart=20060401000000&rvcomments\n"
+			."  Get a list of 100 last revisions of the main page with comments, but only if it happened after midnight April 1st 2006\n"
 			."\n"
 			."Supported Formats:\n"
 			.$formats
@@ -447,13 +471,13 @@ class BotQueryProcessor {
 			.$props
 			."\n"
 			."Notes:\n"
-			."  - spaces above are just for ease of reading\n"
-			."  - properties and format are the only required parameters\n"
-			."  - revisions property supports additional parameters:\n"
-			."      rvstart, rvend   - limits revisions by start and/or end time. The timestamp format is 14 characters.\n"
+			."  - format and either properties and/or titles must be specified\n"
+			."  - revisions property supports optional parameters:\n"
+			."      rvstart, rvend   - limits revisions by start and/or end time. The value must be 14 characters.\n"
 			."                         example: '20060409000000' (year month date hour minute second)\n"
 			."      rvlimit          - the number of revisions per title to return. Default is 50.\n"
 			."      rvcomments       - if present, includes the revision comment in the output\n"
+			."  - xml will be pretty-printed if an optional 'xmlindent' parameter is present\s"
 			."\n"
 			."Credits:\n"
 			."  This extension came as the result of IRC discussion between Yuri Astrakhan (en:Yurik), Tim Starling (en:Tim Starling), and Daniel Kinzler(de:Duesentrieb)\n"
@@ -476,8 +500,9 @@ class BotQueryProcessor {
 // ************************************* Print Methods *************************************
 //
 function printXML( &$data ) {
+	global $wgRequest;
 	echo '<?xml version="1.0" encoding="utf-8"?>';
-	recXmlPrint( "yurik", $data );
+	recXmlPrint( "yurik", $data, $wgRequest->getCheck('xmlindent') ? -2 : null );
 }
 function printHumanReadable( &$data ) {
 	print_r($data);
