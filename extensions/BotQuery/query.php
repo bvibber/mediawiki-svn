@@ -98,8 +98,12 @@ class BotQueryProcessor {
 		$this->callGenerators( false );
 
 		// Query page table and initialize page ids.
-		if ( $this->linkBatch === null || $this->genPageInfo()) {
-			return;   // No titles were given, skip any page generation
+		if( !$this->genPageInfo() ) {
+			if( $this->data ) {
+				return;   // No titles were given, skip any page generation
+			} else {
+				$this->dieUsage( 'Nothing to do' );
+			}
 		}
 
 		// Process page-related generators
@@ -180,10 +184,13 @@ class BotQueryProcessor {
 	// ************************************* GENERATORS *************************************
 	//
 	function genPageInfo() {
+		if ( !$this->linkBatch ) {
+			return false;   // Nothing to do
+		}
 		// Create a list of pages to query
 		$where = $this->linkBatch->constructSet( 'page', $this->db );
 		if ( !$where ) {
-			return true;   // Nothing to do
+			return false;   // Nothing to do
 		}
 
 		$redirects = array();
@@ -213,9 +220,8 @@ class BotQueryProcessor {
 
 		// This list can later be used to filter other tables by page Id
 		$this->allPageIds = array_keys( $this->data['pages'] );
-		$this->inAllPageIds = $this->db->makeList( $this->allPageIds );
-		$this->inRealPageIds = $this->db->makeList( array_diff_key($this->allPageIds, $redirects) );
-
+		$this->realPageIds = array_diff_key($this->allPageIds, $redirects);
+		
 		// Must not alter $this->data['pages'][] until done generating Page Ids
 		$this->data['pages']['_element'] = 'page';
 
@@ -231,11 +237,6 @@ class BotQueryProcessor {
 			}
 		}
 		
-		// All pages do not exist, prevent further processing
-		if( count($this->allPageIds) === 0 ) {
-			return true;
-		}
-
 		// Process redirects
 		if( $redirects ) {
 			$res = $this->db->select(
@@ -249,6 +250,8 @@ class BotQueryProcessor {
 			}
 			$this->db->freeResult( $res );
 		}
+		
+		return true; // success
 	}
 
 	function genMetaSiteInfo() {
@@ -258,7 +261,7 @@ class BotQueryProcessor {
 		$this->data['meta']['case']	  = $wgCapitalLinks ? 'first-letter' : 'case-sensitive'; // "case-insensitive" option is reserved for future
 
 		$mainPage = Title::newFromText( wfMsgForContent( 'mainpage' ) );
-		$this->data['meta']['mainpage']  = $mainPage->getVal();
+		$this->data['meta']['mainpage']  = $mainPage->getText();
 		$this->data['meta']['base']	  = $mainPage->getFullUrl();
 	}
 
@@ -271,10 +274,13 @@ class BotQueryProcessor {
 	}
 
 	function genPageLangLinks() {
+		if( !$this->realPageIds ) {
+			return;
+		}		
 		$res = $this->db->select(
 			array( 'langlinks' ),
 			array( 'll_from', 'll_lang', 'll_title' ),
-			"ll_from IN ({$this->inRealPageIds})",
+			"ll_from IN (" . $this->db->makeList($this->realPageIds) . ")",
 			$this->classname . '::genPageLangLinks' );
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			$this->addPageSubElement( $row->ll_from, 'langlinks', 'll', array('lang' => $row->ll_lang, '_content' => $row->ll_title));
@@ -283,10 +289,13 @@ class BotQueryProcessor {
 	}
 
 	function genPageTemplates() {
+		if( !$this->realPageIds ) {
+			return;
+		}
 		$res = $this->db->select(
 			'templatelinks',
 			array( 'tl_from', 'tl_namespace', 'tl_title' ),
-			"tl_from IN ({$this->inRealPageIds})",
+			"tl_from IN (" . $this->db->makeList($this->realPageIds) . ")",
 			$this->classname . '::genPageTemplates' );
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			$this->addPageSubElement( $row->tl_from, 'templates', 'tl', $this->getLinkInfo( $row->tl_namespace, $row->tl_title ));
@@ -295,10 +304,13 @@ class BotQueryProcessor {
 	}
 
 	function genPageLinks() {
+		if( !$this->realPageIds ) {
+			return;
+		}
 		$res = $this->db->select(
 			'pagelinks',
 			array( 'pl_from', 'pl_namespace', 'pl_title' ),
-			"pl_from IN ({$this->inRealPageIds})",
+			"pl_from IN (" . $this->db->makeList($this->realPageIds) . ")",
 			$this->classname . '::genPageLinks' );
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			$this->addPageSubElement( $row->pl_from, 'links', 'l', $this->getLinkInfo( $row->pl_namespace, $row->pl_title ));
@@ -308,6 +320,10 @@ class BotQueryProcessor {
 
 	function genPageHistory() {
 		global $wgRequest;
+
+		if( !$this->allPageIds ) {
+			return;
+		}
 
 		$includeComments = $wgRequest->getCheck('rvcomments');
 
@@ -443,6 +459,8 @@ class BotQueryProcessor {
 			."  It was later completelly rewritten by Yuri to allow for modular properties, meta information, and various formatting options.\n"
 			."\n"
 			."  The code is maintained by Yurik. You can leave your comments at http://en.wikipedia.org/wiki/User_talk:Yurik\n"
+			."\n"
+			."Version: \n"
 			;
 
 		die(1);
