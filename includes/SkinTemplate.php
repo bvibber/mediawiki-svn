@@ -141,6 +141,7 @@ class SkinTemplate extends Skin {
 		global $wgPageShowWatchingUsers;
 		global $wgUseTrackbacks;
 		global $wgDBname;
+                global $wgInterlanguageTitles, $wgLanguageCode;
 
 		$fname = 'SkinTemplate::outputPage';
 		wfProfileIn( $fname );
@@ -188,6 +189,7 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'title', $wgOut->getPageTitle() );
 		$tpl->set( 'pagetitle', $wgOut->getHTMLTitle() );
 		$tpl->set( 'displaytitle', $wgOut->mPageLinkTitle );
+                $tpl->set( 'localtitle', $this->getLocalizedTitle() );
 
 		$tpl->setRef( "thispage", $this->thispage );
 		$subpagestr = $this->subPageSubtitle();

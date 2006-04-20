@@ -1944,6 +1944,11 @@ $wgAjaxExportList = array( 'wfSajaxSearch' );
 $wgAllowDisplayTitle = false ;
 
 /**
+ * EXPERIMENTAL: Show translated titles based on interlanguage-links
+ */
+$wgInterlanguageTitles = false ;
+
+/**
  * Array of usernames which may not be registered or logged in from
  * Maintenance scripts can still use these
  */

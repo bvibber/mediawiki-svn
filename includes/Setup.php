@@ -252,6 +252,11 @@ if( $wgLangClass == $wgContLangClass ) {
 	$wgLang = setupLangObj( $wgLangClass );
 }
 
+#if the user language is the same as the content language, disable interlanguage-titles
+if ( $wgInterlanguageTitles && $wgLanguageCode == $wgContLanguageCode ) {
+    $wgInterlanguageTitles= false;
+}
+
 wfProfileOut( $fname.'-language2' );
 wfProfileIn( $fname.'-MessageCache' );
 

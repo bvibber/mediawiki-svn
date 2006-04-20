@@ -64,7 +64,7 @@ class CategoryPage extends Article {
 	 * @access private
 	 */
 	function doCategoryMagic( $from = '', $until = '' ) {
-		global $wgContLang,$wgUser, $wgCategoryMagicGallery, $wgCategoryPagingLimit;
+		global $wgContLang,$wgUser, $wgCategoryMagicGallery, $wgCategoryPagingLimit, $wgInterlanguageTitles, $wgLanguageCode;
 		$fname = 'CategoryPage::doCategoryMagic';
 		wfProfileIn( $fname );
 
@@ -89,17 +89,31 @@ class CategoryPage extends Article {
 			$flip = false;
 		}
 		$limit = $wgCategoryPagingLimit;
-		$res = $dbr->select(
-			array( 'page', 'categorylinks' ),
-			array( 'page_title', 'page_namespace', 'page_len', 'cl_sortkey' ),
-			array( $pageCondition,
-			       'cl_from          =  page_id',
-			       'cl_to'           => $this->mTitle->getDBKey()),
-			       #'page_is_redirect' => 0),
-			#+ $pageCondition,
-			$fname,
-			array( 'ORDER BY' => $flip ? 'cl_sortkey DESC' : 'cl_sortkey',
-			       'LIMIT'    => $limit + 1 ) );
+		
+		if ( $wgInterlanguageTitles ) {
+			$sql= 'SELECT page_title, page_namespace, page_len, cl_sortkey, ll_title
+			       FROM ' . $dbr->tableName( 'page' ) . '
+			       INNER JOIN ' . $dbr->tableName( 'categorylinks' ) . ' ON cl_from =  page_id
+			       LEFT JOIN ' . $dbr->tableName( 'langlinks' ) . ' ON ll_from = page_id AND ll_lang = ' . $dbr->addQuotes( $wgLanguageCode ) . '
+			       WHERE cl_to = ' . $dbr->addQuotes( $this->mTitle->getDBKey() ) . '
+			       ' . /* AND page_is_redirect = 0 */ '
+			       ORDER BY ' . ( $flip ? 'cl_sortkey DESC' : 'cl_sortkey' ) . '
+			       LIMIT ' . ( $limit + 1 ) . '
+			       ';
+				      
+			$res = $dbr->query( $sql, $fname );
+		} else {
+			$res = $dbr->select( array( 'page', 'categorylinks' ),
+					     array( 'page_title', 'page_namespace', 'page_len', 'cl_sortkey' ),
+					     array( $pageCondition,
+						    'cl_from	  =  page_id',
+						    'cl_to'	   => $this->mTitle->getDBKey()),
+						    #'page_is_redirect' => 0),
+					     #+ $pageCondition,
+					     $fname,
+					     array( 'ORDER BY' => $flip ? 'cl_sortkey DESC' : 'cl_sortkey',
+						    'LIMIT'    => $limit + 1 ) );
+		}
 
 		$sk =& $wgUser->getSkin();
 		$r = "<br style=\"clear:both;\"/>\n";
@@ -112,12 +126,18 @@ class CategoryPage extends Article {
 				$nextPage = $x->cl_sortkey;
 				break;
 			}
-
+			
 			$title = Title::makeTitle( $x->page_namespace, $x->page_title );
-
+			
+			if ( $wgInterlanguageTitles && ! is_null( $x->ll_title ) ) {
+				$localTitleHTML = ' <i>[' . $wgContLang->convertHtml( $x->ll_title ) . ']</i>';
+			} else {
+				$localTitleHTML = '';
+			}
+			
 			if( $title->getNamespace() == NS_CATEGORY ) {
 				// Subcategory; strip the 'Category' namespace from the link text.
-				array_push( $children, $sk->makeKnownLinkObj( $title, $wgContLang->convertHtml( $title->getText() ) ) );
+				array_push( $children, $sk->makeKnownLinkObj( $title, $wgContLang->convertHtml( $title->getText() ) ) . $localTitleHTML );
 
 				// If there's a link from Category:A to Category:B, the sortkey of the resulting
 				// entry in the categorylinks table is Category:A, not A, which it SHOULD be.
@@ -139,16 +159,16 @@ class CategoryPage extends Article {
 				}
 			} else {
 				// Page in this category
-				array_push( $articles, $sk->makeSizeLinkObj( $x->page_len, $title, $wgContLang->convert( $title->getPrefixedText() ) ) ) ;
+				array_push( $articles, $sk->makeSizeLinkObj( $x->page_len, $title, $wgContLang->convert( $title->getPrefixedText() ) ) . $localTitleHTML ) ;
 				array_push( $articles_start_char, $wgContLang->convert( $wgContLang->firstChar( $x->cl_sortkey ) ) );
 			}
 		}
 		$dbr->freeResult( $res );
 
 		if( $flip ) {
-			$children            = array_reverse( $children );
+			$children	    = array_reverse( $children );
 			$children_start_char = array_reverse( $children_start_char );
-			$articles            = array_reverse( $articles );
+			$articles	    = array_reverse( $articles );
 			$articles_start_char = array_reverse( $articles_start_char );
 		}
 
@@ -157,7 +177,7 @@ class CategoryPage extends Article {
 		} elseif( $nextPage != '' || $from != '' ) {
 			$r .= $this->pagingLinks( $this->mTitle, $from, $nextPage, $limit );
 		}
-
+		
 		# Don't show subcategories section if there are none.
 		if( count( $children ) > 0 ) {
 			# Showing subcategories

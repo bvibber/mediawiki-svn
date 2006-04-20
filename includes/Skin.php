@@ -684,9 +684,33 @@ END;
 		return $s;
 	}
 
+	function getLocalizedTitle() {
+		global $wgOut, $wgInterlanguageTitles, $wgLanguageCode;
+		
+		$localTitle = '';
+		
+		if ( $wgInterlanguageTitles ) {
+		    $langlinks = $wgOut->getLanguageLinks();
+		    
+		    foreach ( $langlinks as $link ) {
+			list( $lang, $title ) = explode( ':', $link, 2 );
+			
+			if ( $lang == $wgLanguageCode ) {
+				$localTitle = $title;
+                                break;
+			}
+		    }
+		    
+		    if ( $localTitle != '' ) $localTitle =  ' <i>[' . $localTitle . ']</i>';
+		}
+		
+		return $localTitle;
+	}
+	
 	function pageTitle() {
-		global $wgOut;
-		$s = '<h1 class="pagetitle">' . htmlspecialchars( $wgOut->getPageTitle() ) . '</h1>';
+		global $wgOut, $wgInterlanguageTitles, $wgLanguageCode;
+		
+		$s = '<h1 class="pagetitle">' . htmlspecialchars( $wgOut->getPageTitle() ) . htmlspecialchars( $this->getLocalizedTitle() ) . '</h1>';
 		return $s;
 	}
 
@@ -892,7 +916,7 @@ END;
 			}
 		}
 
-	        if (isset($wgMaxCredits) && $wgMaxCredits != 0) {
+		if (isset($wgMaxCredits) && $wgMaxCredits != 0) {
 		    require_once('Credits.php');
 		    $s .= ' ' . getCredits($wgArticle, $wgMaxCredits, $wgShowCreditsIfMax);
 		} else {
@@ -1088,7 +1112,7 @@ END;
 			return '';
 		} else {
 			return $this->makeKnownLink( wfMsgForContent( 'disclaimerpage' ),
-			                             $disclaimers );
+						     $disclaimers );
 		}
 	}
 
