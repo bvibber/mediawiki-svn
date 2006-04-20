@@ -186,19 +186,20 @@ class BotQueryProcessor {
 			return true;   // Nothing to do
 		}
 
-		$res = $this->db->select( 'page',
-			array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect' ),
-			$where,
-			$this->classname . '::genPageInfo' );
-
 		$redirects = array();
 		$nonexistentPages = $this->linkBatch->data;
 		$this->data['pages'] = array();
+
+		$res = $this->db->select( 'page',
+			array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_latest' ),
+			$where,
+			$this->classname . '::genPageInfo' );
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 			$this->data['pages'][$row->page_id] = array(
 				'title' => $title->getPrefixedText(),
 				'id' => $row->page_id,
+				'revid' => $row->page_latest,
 			);
 
 			// Strike out link
@@ -311,7 +312,7 @@ class BotQueryProcessor {
 		$includeComments = $wgRequest->getCheck('rvcomments');
 
 		// select *:  rev_page, rev_text_id, rev_comment, rev_user, rev_user_text, rev_timestamp, rev_minor_edit, rev_deleted
-		$fields = array('rev_timestamp','rev_user','rev_user_text','rev_minor_edit');
+		$fields = array('rev_id','rev_timestamp','rev_user','rev_user_text','rev_minor_edit');
 		if( $includeComments ) {
 			$fields[] = 'rev_comment';
 		}
@@ -345,8 +346,9 @@ class BotQueryProcessor {
 			$res = $this->db->select( 'revision', $fields, $conds, $this->classname . '::genPageHistory', $options );
 			while ( $row = $this->db->fetchObject( $res ) ) {
 				$vals = array(
+					'revid' => $row->rev_id,
 					'timestamp' => wfTimestamp( TS_ISO_8601, $row->rev_timestamp ),
-					'user' => $row->rev_user_text
+					'user' => $row->rev_user_text,
 					);
 				if( !$row->rev_user ) {
 					$vals['anon'] = '';
