@@ -41,22 +41,22 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgHooks['LogPageLogHeader'][] = 'efMakeBotAddLogHeader';
 		$wgHooks['LogPageActionText'][] = 'efMakeBotAddActionText';
 		# Basic messages
-		$wgMessageCache->addMessage( 'makebot', 'Grant or revoke bot flag' );
-		$wgMessageCache->addMessage( 'makebot-header', "'''A local bureaucrat can use this page to grant or revoke a [[Help:Bot|bot flag]] to another user account.'''<br />This should be done in accordance with applicable policies." );
+		$wgMessageCache->addMessage( 'makebot', 'Grant or revoke bot status' );
+		$wgMessageCache->addMessage( 'makebot-header', "'''A local bureaucrat can use this page to grant or revoke [[Help:Bot|bot status]] to another user account.'''<br />Bot status hides a user's edits from [[Special:Recentchanges|recent changes]] and similar lists, and is useful for flagging users who make automated edits. This should be done in accordance with applicable policies." );
 		$wgMessageCache->addMessage( 'makebot-username', 'Username:' );
 		$wgMessageCache->addMessage( 'makebot-search', 'Go' );
-		$wgMessageCache->addMessage( 'makebot-isbot', '[[User:$1|$1]] has a bot flag.' );
-		$wgMessageCache->addMessage( 'makebot-notbot', '[[User:$1|$1]] does not have a bot flag.' );
-		$wgMessageCache->addMessage( 'makebot-privileged', '[[User:$1|$1]] has [[Special:Listadmins|administrator or bureaucrat privileges]], and cannot be granted a bot flag.' );
-		$wgMessageCache->addMessage( 'makebot-grant', 'Grant flag' );
-		$wgMessageCache->addMessage( 'makebot-revoke', 'Revoke flag' );
-		$wgMessageCache->addMessage( 'makebot-granted', '[[User:$1|$1]] now has a bot flag.' );
-		$wgMessageCache->addMessage( 'makebot-revoked', '[[User:$1|$1]] no longer has a bot flag.' );
+		$wgMessageCache->addMessage( 'makebot-isbot', '[[User:$1|$1]] has bot status.' );
+		$wgMessageCache->addMessage( 'makebot-notbot', '[[User:$1|$1]] does not have bot status.' );
+		$wgMessageCache->addMessage( 'makebot-privileged', '[[User:$1|$1]] has [[Special:Listadmins|administrator or bureaucrat privileges]], and cannot be granted bot status.' );
+		$wgMessageCache->addMessage( 'makebot-grant', 'Grant' );
+		$wgMessageCache->addMessage( 'makebot-revoke', 'Revoke' );
+		$wgMessageCache->addMessage( 'makebot-granted', '[[User:$1|$1]] now has bot status.' );
+		$wgMessageCache->addMessage( 'makebot-revoked', '[[User:$1|$1]] no longer has bot status.' );
 		# Audit trail messages
 		$wgMessageCache->addMessage( 'makebot-logpage', 'Bot status log' );
 		$wgMessageCache->addMessage( 'makebot-logpagetext', 'This is a log of changes to users\' [[Help:Bot|bot]] status.' );
-		$wgMessageCache->addMessage( 'makebot-logentrygrant', 'granted bot flag to [[$1]]' );
-		$wgMessageCache->addMessage( 'makebot-logentryrevoke', 'removed bot flag from [[$1]]' );
+		$wgMessageCache->addMessage( 'makebot-logentrygrant', 'granted bot status to [[$1]]' );
+		$wgMessageCache->addMessage( 'makebot-logentryrevoke', 'removed bot status from [[$1]]' );
 		# Register page		
 		SpecialPage::addPage( new MakeBot() );
 	}
