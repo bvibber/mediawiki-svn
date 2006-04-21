@@ -15,6 +15,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	require_once( 'SpecialPage.php' );
 	require_once( 'LogPage.php' );
+	require_once( 'SpecialLog.php' );
 	$wgExtensionFunctions[] = 'efMakeBot';
 	$wgAvailableRights[] = 'makebot';
 	$wgExtensionCredits['specialpage'][] = array( 'name' => 'MakeBot', 'author' => 'Rob Church' );
@@ -40,7 +41,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgHooks['LogPageLogHeader'][] = 'efMakeBotAddLogHeader';
 		$wgHooks['LogPageActionText'][] = 'efMakeBotAddActionText';
 		# Basic messages
-		$wgMessageCache->addMessage( 'makebot', 'Grant/revoke bot flag' );
+		$wgMessageCache->addMessage( 'makebot', 'Grant or revoke bot flag' );
 		$wgMessageCache->addMessage( 'makebot-header', "'''A local bureaucrat can use this page to grant or revoke a [[Help:Bot|bot flag]] to another user account.'''<br />This should be done in accordance with applicable policies." );
 		$wgMessageCache->addMessage( 'makebot-username', 'Username:' );
 		$wgMessageCache->addMessage( 'makebot-search', 'Go' );
@@ -55,7 +56,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgMessageCache->addMessage( 'makebot-logpage', 'Bot status log' );
 		$wgMessageCache->addMessage( 'makebot-logpagetext', 'This is a log of changes to users\' [[Help:Bot|bot]] status.' );
 		$wgMessageCache->addMessage( 'makebot-logentrygrant', 'granted bot flag to [[$1]]' );
-		$wgMessageCache->addMessage( 'makebot-logentryrevoke', 'revoked bot flag of [[$1]]' );
+		$wgMessageCache->addMessage( 'makebot-logentryrevoke', 'removed bot flag from [[$1]]' );
 		# Register page		
 		SpecialPage::addPage( new MakeBot() );
 	}
@@ -116,7 +117,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 					$user->loadFromDatabase();
 					# Valid username, check existence
 					if( $user->getID() ) {
-						if( $wgRequest->getVal( 'dosearch' ) ) {
+						if( $wgRequest->getVal( 'dosearch' ) || !$wgRequest->wasPosted() ) {
 							# Exists, check botness
 							if( in_array( 'bot', $user->mGroups ) ) {
 								# Has a bot flag
@@ -144,6 +145,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 							$this->addLogItem( 'revoke', $wgUser, $user );
 							$wgOut->addWikiText( wfMsg( 'makebot-revoked', $user->getName() ) );
 						}
+						# Show log entries
+						$this->showLogEntries( $user );
 					} else {
 						# Doesn't exist
 						$wgOut->addWikiText( wfMsg( 'nosuchusershort', htmlspecialchars( $this->target ) ) );
@@ -205,6 +208,18 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$log = new LogPage( 'makebot' );
 			$targetPage = $target->getUserPage();
 			$log->addEntry( $type, $targetPage, '' );
+		}
+		
+		/**
+		 * Show the bot status log entries for the specified user
+		 * @param $user User to show the log for
+		 */
+		function showLogEntries( &$user ) {
+			global $wgOut;
+			$title = $user->getUserPage();
+			$wgOut->addHtml( wfElement( 'h2', NULL, htmlspecialchars( LogPage::logName( 'makebot' ) ) ) );
+			$logViewer = new LogViewer( new LogReader( new FauxRequest( array( 'page' => $title->getPrefixedText(), 'type' => 'makebot' ) ) ) );
+			$logViewer->showList( $wgOut );
 		}
 	
 	}
