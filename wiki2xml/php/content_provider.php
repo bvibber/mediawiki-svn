@@ -86,6 +86,10 @@ class ContentProvider {
 		return $url ;
 	}
 	
+	function do_show_images () {
+		return true ;
+	}
+
 }
 
 
@@ -162,23 +166,106 @@ class ContentProviderHTTP extends ContentProvider {
 		return $s ;
 	}
 	
-	function get_template_text ( $title ) {
+	function get_local_url ( $title ) {
+		return "/" . array_pop ( explode ( "/" , $this->get_var ( 'site_base_url' ) , 2 ) ) . "/index.php?title=" . urlencode ( $title ) ;
+	}
+	
+	function get_server_url () {
+		return "http://" . array_shift ( explode ( "/" , $this->get_var ( 'site_base_url' ) , 2 ) ) ;
+	}
+	
+	function get_full_url ( $title ) {
+		return $this->get_server_url () . $this->get_local_url ( $title ) ;
+	}
+	
+	function get_namespace_template () {
+		return $this->get_var ( 'namespace_template' ) ;
+	}
+	
+	function get_var ( $var ) {
 		global $xmlg ;
-		
+		if ( !isset ( $xmlg[$var] ) ) return false ;
+		return $xmlg[$var] ;
+	}
+	
+	function get_template_text ( $title ) {
 		# Check for fix variables
 		if ( $title == "PAGENAME" ) return $this->first_title ;
 		if ( $title == "PAGENAMEE" ) return urlencode ( $this->first_title ) ;
-		if ( $title == "SERVER" ) return "http://" . array_shift ( explode ( "/" , $xmlg["site_base_url"] , 2 ) ) ;
+		if ( $title == "SERVER" ) return $this->get_server_url () ;
 		if ( strtolower ( substr ( $title , 0 , 9 ) ) == "localurl:" )
-			return "/" . array_pop ( explode ( "/" , $xmlg["site_base_url"] , 2 ) ) . "/index.php?title=" . urlencode ( substr ( $title , 9 ) ) ;
+			return $this->get_local_url ( substr ( $title , 9 ) ) ;
 		
 		$title = trim ( $title ) ;
 		if ( count ( explode ( ":" , $title , 2 ) ) == 1 ) # Does the template title contain a ":"?
-			$title = $xmlg["namespace_template"] . ":" . $title ;
+			$title =  $this->get_namespace_template() . ":" . $title ;
 		else if ( substr ( $title , 0 , 1 ) == ":" ) # Main namespace
 			$title = substr ( $title , 1 ) ;
 		return $this->get_wiki_text ( $title , true ) ; # Cache template texts
 	}
+	
+	function get_internal_link ( $target , $text ) {
+		return $text ; # Dummy
+	}
+}
+
+
+
+
+# Access through text file structure
+class ContentProviderTextFile extends ContentProviderHTTP {
+	var $file_ending = ".txt" ;
+
+	function do_get_contents ( $title ) {
+		return $this->get_page_text ( $title ) ;
+	}
+
+	/**
+	 Called from outside
+	 Could probably remained unchanged from HTTP class, but this is shorter
+	 */
+	function get_wiki_text ( $title , $do_cache = false ) {
+		$title = trim ( $title ) ;
+		if ( $title == "" ) return "" ; # Just in case...
+		if ( $this->first_title == "" ) {
+			$this->first_title = $title ;
+		}
+		$text = $this->get_page_text ( $title ) ;
+		return $text ;
+	}
+	
+	function get_file_location ( $ns , $title ) {
+		return get_file_location_global ( $this->basedir , $ns , $title , false ) ;
+	}
+	
+	function get_page_text ( $page , $allow_redirect = true ) {
+		$filename = $this->get_file_location ( 0 , $page ) ;
+		$filename = $filename->fullname . $this->file_ending ;
+		if ( !file_exists ( $filename ) ) return "" ;
+		$text = trim ( file_get_contents ( $filename ) ) ;
+	
+		# REDIRECT?
+		if ( $allow_redirect && strtoupper ( substr ( $text , 0 , 9 ) ) == "#REDIRECT" ) {
+			$text = substr ( $text , 9 ) ;
+			$text = array_shift ( explode ( "\n" , $text , 2 ) ) ;
+			$text = str_replace ( "[[" , "" , $text ) ;
+			$text = str_replace ( "]]" , "" , $text ) ;
+			$text = ucfirst ( trim ( $text ) ) ;
+			$text = $this->get_page_text ( $text , false ) ;
+		}
+		return $text ;
+	}
+
+	function get_internal_link ( $target , $text ) {
+		$file = $this->get_file_location ( 0 , $target ) ;
+		if ( !file_exists ( $file->fullname.$this->file_ending ) ) return $text ;
+		else return "<a href='browse_texts.php?title=" . urlencode ( $target ) . "'>{$text}</a>" ;
+	}
+	
+	function do_show_images () {
+		return false ;
+	}
+
 }
 
 ?>

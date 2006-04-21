@@ -25,4 +25,9 @@ $xmlg["docbook"] = array (
 #$xmlg["zip_odt"] = '7z.exe  a -r -tzip $1 $2' ; # Command to zip directory $1 to file $2
 #$xmlg["unzip_odt"] = '7z.exe x $1 -o$2' ; # Command to unzip file $1 to directory $2
 
+
+
+# If you want to do text-file browsing, run "xmldump2files.php" once (see settings there), then set this:
+$base_text_dir = "C:/dewiki-20060327-pages-articles" ;
+
 ?>

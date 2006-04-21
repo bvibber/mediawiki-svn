@@ -206,13 +206,16 @@ class XML2XHTML {
 
 	# LINKS
 	function make_internal_link ( &$o ) {
-		global $content_provider , $xmlg ;
+		global $content_provider ;
 		$text = $o->text ;
 		if ( $text == "" ) $text = $o->target ;
 		$text .= $o->trail ;
 		$ns = $content_provider->get_namespace_id ( $o->target ) ;
 		
 		if ( $ns == 6 ) { # Image
+			if ( !$content_provider->do_show_images () ) {
+				return ;
+			}
 			$nstext = explode ( ":" , $o->target , 2 ) ;
 			$target = array_pop ( $nstext ) ;
 			$href = $content_provider->get_image_url ( $target ) ;
@@ -250,7 +253,7 @@ class XML2XHTML {
 			}
 			
 			$s = "" ;
-			$image_page = 'http://' . $xmlg["site_base_url"] . '/index.php?title=' . urlencode ( $o->target ) ;
+			$image_page = $content_provider->get_full_url ( $o->target ) ;
 			if ( $is_thumb ) $s .= '<div class="thumb tright"><div style="' . $divwidth . '">' ;
 			else if ( $align != '' ) $s .= "<div style='float:{$align}{$divwidth}'>" ;
 			$s .= '<a href="' . $image_page . '" title="' . $text . '" class="internal">' ;
@@ -271,11 +274,11 @@ class XML2XHTML {
 			$this->add ( $s ) ;
 
 		} else if ( $ns == -8 ) { # Category link
-			if ( !$xmlg['keep_categories'] ) return ;
+			if ( !$content_provider->get_var ( 'keep_categories' ) ) return ;
 		} else if ( $ns == -9 ) { # Interlanguage link
-			if ( !$xmlg['keep_interlanguage'] ) return ;
+			if ( !$content_provider->get_var ( 'keep_interlanguage' ) ) return ;
 		} else { # Internal link
-			$this->add ( $text ) ; # For now
+			$this->add ( $content_provider->get_internal_link ( $o->target , $text ) ) ; # For now
 		}
 	}
 	
@@ -415,6 +418,13 @@ class XML2XHTML {
 	function tag_xhtml_th ( $open , &$attrs ) { $this->tag_tablehead ( $open , $attrs ) ; }
 	function tag_xhtml_caption ( $open , &$attrs ) { $this->tag_tablecaption ( $open , $attrs ) ; }
 
+	function tag_article ( $open , &$attrs ) {
+		if ( !$open ) return ;
+		if ( !isset ( $attrs['TITLE'] ) ) return ;
+		$this->add_tag ( "h1" ) ;
+		$this->add ( urldecode ( $attrs['TITLE'] ) ) ;
+		$this->close_tag ( "h1" ) ;
+	}
 
 
 }

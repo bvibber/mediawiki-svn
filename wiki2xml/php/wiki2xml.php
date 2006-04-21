@@ -241,6 +241,7 @@ class wiki2xml
 		$x = "" ;
 		$b = $a ;
 		if ( !$this->nextis ( $b , "{{" ) ) return false ;
+#		if ( $this->nextis ( $b , "{" , false ) ) return false ; # Template names may not start with "{"
 		if ( !$this->p_internal_link_target ( $b , $x , "}}" ) ) return false ;
 		$target = $x ;
 		$variables = array () ;
@@ -421,6 +422,7 @@ class wiki2xml
 		$x = "" ;
 		while ( $b < $this->wl )
 			{
+			if ( $this->w[$b] == "{" && $this->once ( $b , $x , "template" ) ) continue ;
 			foreach ( $goodstop AS $s )
 				if ( $this->nextis ( $b , $s , false ) ) break 2 ;
 			foreach ( $badstop AS $s )

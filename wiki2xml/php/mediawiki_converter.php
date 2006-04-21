@@ -105,7 +105,9 @@ class MediaWikiConverter {
 		$ret .= $params["site_base_url"] . 'index.php?title=MediaWiki:Common.css&amp;action=raw" />' ;
 		#$ret .= '<link rel="stylesheet" type="text/css" href="href://' ;
 		#$ret .= $params["site_base_url"] . 'index.php?title=MediaWiki:Monobook.css&amp;action=raw" />' ;
-		$ret .= '<title></title>' ;
+		$ret .= '<title>' ;
+		if ( isset ( $params['page_title'] ) ) $ret .= $params['page_title'] ;
+		$ret .= '</title>' ;
 		$ret .= '</head>' ;
 		$ret .= '<body>' ;
 
