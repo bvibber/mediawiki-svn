@@ -14,6 +14,7 @@
 if( defined( 'MEDIAWIKI' ) ) {
 
 	require_once( 'SpecialPage.php' );
+	require_once( 'LogPage.php' );
 	$wgExtensionFunctions[] = 'efMakeBot';
 	$wgAvailableRights[] = 'makebot';
 	$wgExtensionCredits['specialpage'][] = array( 'name' => 'MakeBot', 'author' => 'Rob Church' );
@@ -32,8 +33,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 * Populate the message cache and register the special page
 	 */
 	function efMakeBot() {
-		global $wgMessageCache;
-		# TODO: Messages
+		global $wgHooks, $wgMessageCache;
+		# Hooks for auditing
+		$wgHooks['LogPageValidTypes'][] = 'efMakeBotAddLogType';
+		$wgHooks['LogPageLogName'][] = 'efMakeBotAddLogName';
+		$wgHooks['LogPageLogHeader'][] = 'efMakeBotAddLogHeader';
+		$wgHooks['LogPageActionText'][] = 'efMakeBotAddActionText';
+		# Basic messages
 		$wgMessageCache->addMessage( 'makebot', 'Grant/revoke bot flag' );
 		$wgMessageCache->addMessage( 'makebot-header', "'''A local bureaucrat can use this page to grant or revoke a [[Help:Bot|bot flag]] to another user account.'''<br />This should be done in accordance with applicable policies." );
 		$wgMessageCache->addMessage( 'makebot-username', 'Username:' );
@@ -45,7 +51,39 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgMessageCache->addMessage( 'makebot-revoke', 'Revoke flag' );
 		$wgMessageCache->addMessage( 'makebot-granted', '[[User:$1|$1]] now has a bot flag.' );
 		$wgMessageCache->addMessage( 'makebot-revoked', '[[User:$1|$1]] no longer has a bot flag.' );
+		# Audit trail messages
+		$wgMessageCache->addMessage( 'makebot-logpage', 'Bot flag allocation' );
+		$wgMessageCache->addMessage( 'makebot-logpagetext', 'This is a log of granting and revocation of the bot flag.' );
+		$wgMessageCache->addMessage( 'makebot-logentrygrant', 'granted bot flag to [[$1]]' );
+		$wgMessageCache->addMessage( 'makebot-logentryrevoke', 'revoked bot flag of [[$1]]' );
+		# Register page		
 		SpecialPage::addPage( new MakeBot() );
+	}
+	
+	/**
+	 * Audit trail functions
+	 */
+	
+	function efMakeBotAddLogType( &$types ) {
+		if ( !in_array( 'makebot', $types ) )
+			$types[] = 'makebot';
+		return( true );
+	}
+	
+	function efMakeBotAddLogName( &$names ) {
+		$names['makebot'] = 'makebot-logpage';
+		return( true );
+	}
+	
+	function efMakeBotAddLogHeader( &$headers ) {
+		$headers['makebot'] = 'makebot-logpagetext';
+		return( true );
+	}
+	
+	function efMakeBotAddActionText( &$actions ) {
+		$actions['makebot/grant'] = 'makebot-logentrygrant';
+		$actions['makebot/revoke'] = 'makebot-logentryrevoke';
+		return( true );
 	}
 	
 	class MakeBot extends SpecialPage {
@@ -95,21 +133,24 @@ if( defined( 'MEDIAWIKI' ) ) {
 									$wgOut->addHtml( $this->makeGrantForm( false, true ) );
 								}
 							}
-						} elseif( $wgRequest->getVal( 'grant' ) && $wgUser->matchEditToken( $wgRequest->getText( 'token' ), 'makebot' ) ) {
+						} elseif( $wgRequest->getVal( 'grant' ) && $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'token' ), 'makebot' ) ) {
 							# Grant the flag
 							$user->addGroup( 'bot' );
+							$this->addLogItem( 'grant', $wgUser, $user );
 							$wgOut->addWikiText( wfMsg( 'makebot-granted', $user->getName() ) );
-						} elseif( $wgRequest->getVal( 'revoke' ) && $wgUser->matchEditToken( $wgRequest->getText( 'token' ), 'makebot' ) ) {
+						} elseif( $wgRequest->getVal( 'revoke' ) && $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'token' ), 'makebot' ) ) {
 							# Revoke the flag
 							$user->removeGroup( 'bot' );
+							$this->addLogItem( 'revoke', $wgUser, $user );
 							$wgOut->addWikiText( wfMsg( 'makebot-revoked', $user->getName() ) );
 						}
 					} else {
 						# Doesn't exist
-						$wgOut->addHtml( wfMsgHtml( 'nosuchusershort', htmlspecialchars( $this->target ) ) );
+						$wgOut->addWikiText( wfMsg( 'nosuchusershort', htmlspecialchars( $this->target ) ) );
 					}
 				} else {
 					# Invalid username
+					$wgOut->addWikiText( wfMsg( 'noname' ) );
 				}
 			}
 			
@@ -152,6 +193,18 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$form .= wfElement( 'input', array( 'type' => 'hidden', 'name' => 'token', 'value' => $wgUser->editToken( 'makebot' ) ), '' );
 			$form .= wfCloseElement( 'form' );
 			return( $form );
+		}
+	
+		/**
+		 * Add logging entries for the specified action
+		 * @param $type Either grant or revoke
+		 * @param $initiator User performing the action
+		 * @param $target User receiving the action
+		 */
+		function addLogItem( $type, &$initiator, &$target ) {
+			$log = new LogPage( 'makebot' );
+			$targetPage = $target->getUserPage();
+			$log->addEntry( $type, $targetPage, '' );
 		}
 	
 	}
