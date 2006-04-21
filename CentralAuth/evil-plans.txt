@@ -233,3 +233,15 @@ First-stage migration can be tested offline to get some statistics.
 Get the UI messages ready with some time before this goes live; we'll want
 translations in the various languages ready to go.
 
+
+== Permissions ==
+
+Group memberships (hence on-wiki permissions) remain local; a sysop in
+one place is not necessarily in another.
+
+We will have to make some changes to the way we handle the restricted
+wikis however: the simplest thing would be to add a group on those wikis
+for approved users, and shift the permissions over from 'user' to 'private'
+or whatever. Then add some handy way for local sysops to privatise people,
+rather than the cumbersome 'account by email'.
+
