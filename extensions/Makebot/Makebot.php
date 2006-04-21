@@ -167,7 +167,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 */
 		function makeSearchForm() {
 			$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
-			$form  = wfElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->escapeLocalUrl ), NULL );
+			$form  = wfElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->escapeLocalUrl() ), NULL );
 			$form .= wfElement( 'label', array( 'for' => 'username' ), wfMsgHtml( 'makebot-username' ) ) . ' ';
 			$form .= wfElement( 'input', array( 'type' => 'text', 'name' => 'username', 'id' => 'username', 'value' => htmlspecialchars( $this->target ) ), '' ) . ' ';
 			$form .= wfElement( 'input', array( 'type' => 'submit', 'name' => 'dosearch', 'value' => wfMsgHtml( 'makebot-search' ) ), '' );
@@ -185,7 +185,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			global $wgUser;
 			$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
 			# Start the table
-			$form  = wfElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->escapeLocalUrl ), NULL );
+			$form  = wfElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->escapeLocalUrl() ), NULL );
 			$form .= wfElement( 'table', NULL, NULL ) . wfElement( 'tr', NULL, NULL );
 			# Grant/revoke buttons
 			$form .= wfElement( 'td', array( 'align' => 'right' ), wfMsgHtml( 'makebot-change' ) );
