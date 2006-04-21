@@ -193,6 +193,7 @@ class ContentProviderHTTP extends ContentProvider {
 		if ( $title == "PAGENAME" ) return $this->first_title ;
 		if ( $title == "PAGENAMEE" ) return urlencode ( $this->first_title ) ;
 		if ( $title == "SERVER" ) return $this->get_server_url () ;
+		if ( $title == "CURRENTDAYNAME" ) return date ( "l" ) ;
 		if ( strtolower ( substr ( $title , 0 , 9 ) ) == "localurl:" )
 			return $this->get_local_url ( substr ( $title , 9 ) ) ;
 		
@@ -222,7 +223,7 @@ class ContentProviderTextFile extends ContentProviderHTTP {
 
 	/**
 	 Called from outside
-	 Could probably remained unchanged from HTTP class, but this is shorter
+	 Could probably remained unchanged from HTTP class, but this is shorter, and caching is irrelevant for text files (disk cache)
 	 */
 	function get_wiki_text ( $title , $do_cache = false ) {
 		$title = trim ( $title ) ;

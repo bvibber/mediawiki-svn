@@ -777,7 +777,7 @@ class wiki2xml
 			$last = $b ;
 			if ( !$this->p_html_tag ( $b , $x2 , $tag2 , $closing , $selfclosing ) )
 				{
-				if ( $this->w[$b] == '{' && $this->p_template ( $b , $x ) ) # Template, doesn't alter $b or $x
+				if ( $tag != "nowiki" && $this->w[$b] == '{' && $this->p_template ( $b , $x ) ) # Template, doesn't alter $b or $x
 					continue ;
 				$b++ ;
 				continue ;
@@ -967,7 +967,6 @@ class wiki2xml
 				$key = array_shift ( explode ( "=" , $attr , 2 ) ) ;
 				if ( !isset ( $attrs[$key] ) && substr ( $attr , -3 , 3 ) != '=""' ) {
 					$attrs[$key] = $attr ;
-#					print $attr . "<br>\n" ;
 				}
 			}
 			$np->skipblanks ( $c ) ;
