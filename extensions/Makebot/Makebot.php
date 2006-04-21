@@ -48,8 +48,10 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgMessageCache->addMessage( 'makebot-isbot', '[[User:$1|$1]] has bot status.' );
 		$wgMessageCache->addMessage( 'makebot-notbot', '[[User:$1|$1]] does not have bot status.' );
 		$wgMessageCache->addMessage( 'makebot-privileged', '[[User:$1|$1]] has [[Special:Listadmins|administrator or bureaucrat privileges]], and cannot be granted bot status.' );
+		$wgMessageCache->addMessage( 'makebot-change', 'Change status:' );
 		$wgMessageCache->addMessage( 'makebot-grant', 'Grant' );
 		$wgMessageCache->addMessage( 'makebot-revoke', 'Revoke' );
+		$wgMessageCache->addMessage( 'makebot-comment', 'Comment:' );
 		$wgMessageCache->addMessage( 'makebot-granted', '[[User:$1|$1]] now has bot status.' );
 		$wgMessageCache->addMessage( 'makebot-revoked', '[[User:$1|$1]] no longer has bot status.' );
 		# Audit trail messages
@@ -137,12 +139,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 						} elseif( $wgRequest->getVal( 'grant' ) && $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'token' ), 'makebot' ) ) {
 							# Grant the flag
 							$user->addGroup( 'bot' );
-							$this->addLogItem( 'grant', $wgUser, $user );
+							$this->addLogItem( 'grant', $user, trim( $wgRequest->getText( 'comment' ) ) );
 							$wgOut->addWikiText( wfMsg( 'makebot-granted', $user->getName() ) );
 						} elseif( $wgRequest->getVal( 'revoke' ) && $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'token' ), 'makebot' ) ) {
 							# Revoke the flag
 							$user->removeGroup( 'bot' );
-							$this->addLogItem( 'revoke', $wgUser, $user );
+							$this->addLogItem( 'revoke', $user, trim( $wgRequest->getText( 'comment' ) ) );
 							$wgOut->addWikiText( wfMsg( 'makebot-revoked', $user->getName() ) );
 						}
 						# Show log entries
@@ -182,14 +184,27 @@ if( defined( 'MEDIAWIKI' ) ) {
 		function makeGrantForm( $grant, $revoke ) {
 			global $wgUser;
 			$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
+			# Start the table
 			$form  = wfElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->escapeLocalUrl ), NULL );
-			# Add the buttons
+			$form .= wfElement( 'table', NULL, NULL ) . wfElement( 'tr', NULL, NULL );
+			# Grant/revoke buttons
+			$form .= wfElement( 'td', array( 'align' => 'right' ), wfMsgHtml( 'makebot-change' ) );
+			$form .= wfElement( 'td', NULL, NULL );
 			foreach( explode( ' ', 'grant revoke' ) as $button ) {
 				$attribs = array( 'type' => 'submit', 'name' => $button, 'value' => wfMsgHtml( 'makebot-' . $button ) );
 				if( $$button )
 					$attribs['disabled'] = 'disabled';
 				$form .= wfElement( 'input', $attribs, '' );
 			}
+			$form .= wfCloseElement( 'td' ) . wfCloseElement( 'tr' );
+			# Comment field
+			$form .= wfElement( 'td', array( 'align' => 'right' ), NULL );
+			$form .= wfElement( 'label', array( 'for' => 'comment' ), wfMsgHtml( 'makebot-comment' ) );
+			$form .= wfElement( 'td', NULL, NULL );
+			$form .= wfElement( 'input', array( 'type' => 'text', 'name' => 'comment', 'id' => 'comment', 'size' => 45 ), '' );
+			$form .= wfCloseElement( 'td' ) . wfCloseElement( 'tr' );
+			# End table
+			$form .= wfCloseElement( 'table' );
 			# Username
 			$form .= wfElement( 'input', array( 'type' => 'hidden', 'name' => 'username', 'value' => $this->target ), '' );
 			# Edit token
@@ -201,13 +216,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 		/**
 		 * Add logging entries for the specified action
 		 * @param $type Either grant or revoke
-		 * @param $initiator User performing the action
 		 * @param $target User receiving the action
+		 * @param $comment Comment for the log item
 		 */
-		function addLogItem( $type, &$initiator, &$target ) {
+		function addLogItem( $type, &$target, $comment = '' ) {
 			$log = new LogPage( 'makebot' );
 			$targetPage = $target->getUserPage();
-			$log->addEntry( $type, $targetPage, '' );
+			$log->addEntry( $type, $targetPage, $comment );
 		}
 		
 		/**
