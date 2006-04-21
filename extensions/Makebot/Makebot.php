@@ -110,6 +110,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 */
 		function execute( $par ) {
 			global $wgRequest, $wgOut, $wgMakeBotPrivileged, $wgUser;
+			
+			if( !$wgUser->isAllowed( 'makebot' ) ) {
+				$wgOut->permissionRequired( 'makebot' );
+				return;
+			}
+			
 			$this->setHeaders();
 			$this->target = $wgRequest->getText( 'username', '' );
 			
