@@ -52,8 +52,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgMessageCache->addMessage( 'makebot-granted', '[[User:$1|$1]] now has a bot flag.' );
 		$wgMessageCache->addMessage( 'makebot-revoked', '[[User:$1|$1]] no longer has a bot flag.' );
 		# Audit trail messages
-		$wgMessageCache->addMessage( 'makebot-logpage', 'Bot flag allocation' );
-		$wgMessageCache->addMessage( 'makebot-logpagetext', 'This is a log of granting and revocation of the bot flag.' );
+		$wgMessageCache->addMessage( 'makebot-logpage', 'Bot status log' );
+		$wgMessageCache->addMessage( 'makebot-logpagetext', 'This is a log of changes to users\' [[Help:Bot|bot]] status.' );
 		$wgMessageCache->addMessage( 'makebot-logentrygrant', 'granted bot flag to [[$1]]' );
 		$wgMessageCache->addMessage( 'makebot-logentryrevoke', 'revoked bot flag of [[$1]]' );
 		# Register page		
