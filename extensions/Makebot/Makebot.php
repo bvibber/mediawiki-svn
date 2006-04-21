@@ -16,6 +16,10 @@ if( defined( 'MEDIAWIKI' ) ) {
 	require_once( 'SpecialPage.php' );
 	require_once( 'LogPage.php' );
 	require_once( 'SpecialLog.php' );
+	
+	define( 'MW_MAKEBOT_GRANT', 1 );
+	define( 'MW_MAKEBOT_REVOKE', 2 );
+	
 	$wgExtensionFunctions[] = 'efMakeBot';
 	$wgAvailableRights[] = 'makebot';
 	$wgExtensionCredits['specialpage'][] = array( 'name' => 'MakeBot', 'author' => 'Rob Church' );
@@ -70,23 +74,23 @@ if( defined( 'MEDIAWIKI' ) ) {
 	function efMakeBotAddLogType( &$types ) {
 		if ( !in_array( 'makebot', $types ) )
 			$types[] = 'makebot';
-		return( true );
+		return true;
 	}
 	
 	function efMakeBotAddLogName( &$names ) {
 		$names['makebot'] = 'makebot-logpage';
-		return( true );
+		return true;
 	}
 	
 	function efMakeBotAddLogHeader( &$headers ) {
 		$headers['makebot'] = 'makebot-logpagetext';
-		return( true );
+		return true;
 	}
 	
 	function efMakeBotAddActionText( &$actions ) {
 		$actions['makebot/grant'] = 'makebot-logentrygrant';
 		$actions['makebot/revoke'] = 'makebot-logentryrevoke';
-		return( true );
+		return true;
 	}
 	
 	class MakeBot extends SpecialPage {
@@ -119,12 +123,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 					$user->loadFromDatabase();
 					# Valid username, check existence
 					if( $user->getID() ) {
-						if( $wgRequest->getVal( 'dosearch' ) || !$wgRequest->wasPosted() ) {
+						if( $wgRequest->getCheck( 'dosearch' ) || !$wgRequest->wasPosted() || !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ), 'makebot' ) ) {
 							# Exists, check botness
 							if( in_array( 'bot', $user->mGroups ) ) {
 								# Has a bot flag
 								$wgOut->addWikiText( wfMsg( 'makebot-isbot', $user->getName() ) );
-								$wgOut->addHtml( $this->makeGrantForm( true, false ) );
+								$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_REVOKE ) );
 							} else {
 								# Not a bot; check other privs
 								if( !$wgMakeBotPrivileged && ( in_array( 'sysop', $user->mGroups ) || in_array( 'bureaucrat', $user->mGroups ) ) ) {
@@ -133,15 +137,15 @@ if( defined( 'MEDIAWIKI' ) ) {
 								} else {
 									# Can proceed to promotion
 									$wgOut->addWikiText( wfMsg( 'makebot-notbot', $user->getName() ) );
-									$wgOut->addHtml( $this->makeGrantForm( false, true ) );
+									$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_GRANT ) );
 								}
 							}
-						} elseif( $wgRequest->getVal( 'grant' ) && $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'token' ), 'makebot' ) ) {
+						} elseif( $wgRequest->getCheck( 'grant' ) ) {
 							# Grant the flag
 							$user->addGroup( 'bot' );
 							$this->addLogItem( 'grant', $user, trim( $wgRequest->getText( 'comment' ) ) );
 							$wgOut->addWikiText( wfMsg( 'makebot-granted', $user->getName() ) );
-						} elseif( $wgRequest->getVal( 'revoke' ) && $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'token' ), 'makebot' ) ) {
+						} elseif( $wgRequest->getCheck( 'revoke' ) ) {
 							# Revoke the flag
 							$user->removeGroup( 'bot' );
 							$this->addLogItem( 'revoke', $user, trim( $wgRequest->getText( 'comment' ) ) );
@@ -167,50 +171,58 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 */
 		function makeSearchForm() {
 			$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
-			$form  = wfElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->escapeLocalUrl() ), NULL );
-			$form .= wfElement( 'label', array( 'for' => 'username' ), wfMsgHtml( 'makebot-username' ) ) . ' ';
-			$form .= wfElement( 'input', array( 'type' => 'text', 'name' => 'username', 'id' => 'username', 'value' => htmlspecialchars( $this->target ) ), '' ) . ' ';
-			$form .= wfElement( 'input', array( 'type' => 'submit', 'name' => 'dosearch', 'value' => wfMsgHtml( 'makebot-search' ) ), '' );
+			$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl() ) );
+			$form .= wfElement( 'label', array( 'for' => 'username' ), wfMsg( 'makebot-username' ) ) . ' ';
+			$form .= wfElement( 'input', array( 'type' => 'text', 'name' => 'username', 'id' => 'username', 'value' => $this->target ) ) . ' ';
+			$form .= wfElement( 'input', array( 'type' => 'submit', 'name' => 'dosearch', 'value' => wfMsg( 'makebot-search' ) ) );
 			$form .= wfCloseElement( 'form' );
-			return( $form );
+			return $form;
 		}
 		
 		/**
 		 * Produce a form to allow granting or revocation of the flag
-		 * @param $grant Enable grant button
-		 * @param $revoke Enable revoke button
+		 * @param $type Either MW_MAKEBOT_GRANT or MW_MAKEBOT_REVOKE
+		 *				where the trailing name refers to what's enabled
 		 * @return string
 		 */
-		function makeGrantForm( $grant, $revoke ) {
+		function makeGrantForm( $type ) {
 			global $wgUser;
 			$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
+			if( $type == MW_MAKEBOT_GRANT ) {
+				$grant = true;
+				$revoke = false;
+			} else {
+				$grant = false;
+				$revoke = true;
+			}
+		
 			# Start the table
-			$form  = wfElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->escapeLocalUrl() ), NULL );
-			$form .= wfElement( 'table', NULL, NULL ) . wfElement( 'tr', NULL, NULL );
+			$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl() ) );
+			$form .= wfOpenElement( 'table' ) . wfOpenElement( 'tr' );
 			# Grant/revoke buttons
-			$form .= wfElement( 'td', array( 'align' => 'right' ), wfMsgHtml( 'makebot-change' ) );
-			$form .= wfElement( 'td', NULL, NULL );
-			foreach( explode( ' ', 'grant revoke' ) as $button ) {
-				$attribs = array( 'type' => 'submit', 'name' => $button, 'value' => wfMsgHtml( 'makebot-' . $button ) );
-				if( $$button )
+			$form .= wfElement( 'td', array( 'align' => 'right' ), wfMsg( 'makebot-change' ) );
+			$form .= wfOpenElement( 'td' );
+			foreach( array( 'grant', 'revoke' ) as $button ) {
+				$attribs = array( 'type' => 'submit', 'name' => $button, 'value' => wfMsg( 'makebot-' . $button ) );
+				if( !$$button )
 					$attribs['disabled'] = 'disabled';
-				$form .= wfElement( 'input', $attribs, '' );
+				$form .= wfElement( 'input', $attribs );
 			}
 			$form .= wfCloseElement( 'td' ) . wfCloseElement( 'tr' );
 			# Comment field
-			$form .= wfElement( 'td', array( 'align' => 'right' ), NULL );
-			$form .= wfElement( 'label', array( 'for' => 'comment' ), wfMsgHtml( 'makebot-comment' ) );
-			$form .= wfElement( 'td', NULL, NULL );
-			$form .= wfElement( 'input', array( 'type' => 'text', 'name' => 'comment', 'id' => 'comment', 'size' => 45 ), '' );
+			$form .= wfOpenElement( 'td', array( 'align' => 'right' ) );
+			$form .= wfElement( 'label', array( 'for' => 'comment' ), wfMsg( 'makebot-comment' ) );
+			$form .= wfOpenElement( 'td' );
+			$form .= wfElement( 'input', array( 'type' => 'text', 'name' => 'comment', 'id' => 'comment', 'size' => 45 ) );
 			$form .= wfCloseElement( 'td' ) . wfCloseElement( 'tr' );
 			# End table
 			$form .= wfCloseElement( 'table' );
 			# Username
-			$form .= wfElement( 'input', array( 'type' => 'hidden', 'name' => 'username', 'value' => $this->target ), '' );
+			$form .= wfElement( 'input', array( 'type' => 'hidden', 'name' => 'username', 'value' => $this->target ) );
 			# Edit token
-			$form .= wfElement( 'input', array( 'type' => 'hidden', 'name' => 'token', 'value' => $wgUser->editToken( 'makebot' ) ), '' );
+			$form .= wfElement( 'input', array( 'type' => 'hidden', 'name' => 'token', 'value' => $wgUser->editToken( 'makebot' ) ) );
 			$form .= wfCloseElement( 'form' );
-			return( $form );
+			return $form;
 		}
 	
 		/**
