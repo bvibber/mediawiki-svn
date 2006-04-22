@@ -17,7 +17,7 @@ require_once( $IP.'/includes/SpecialPage.php' );
 class CheckUser extends UnlistedSpecialPage
 {
 	function CheckUser() {
-		UnlistedSpecialPage::UnlistedSpecialPage('CheckUser');
+		SpecialPage::SpecialPage('CheckUser', 'checkuser');
 	}
 
 	function execute( $par ) {
