@@ -129,36 +129,36 @@ if( defined( 'MEDIAWIKI' ) ) {
 					$user->loadFromDatabase();
 					# Valid username, check existence
 					if( $user->getID() ) {
-						if( $wgRequest->getCheck( 'dosearch' ) || !$wgRequest->wasPosted() || !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ), 'makebot' ) ) {
-							# Exists, check botness
-							if( in_array( 'bot', $user->mGroups ) ) {
-								# Has a bot flag
-								$wgOut->addWikiText( wfMsg( 'makebot-isbot', $user->getName() ) );
-								$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_REVOKE ) );
-							} else {
-								# Not a bot; check other privs
-								if( !$wgMakeBotPrivileged && ( in_array( 'sysop', $user->mGroups ) || in_array( 'bureaucrat', $user->mGroups ) ) ) {
-									# Account is privileged and can't be given a bot flag
-									$wgOut->addWikiText( wfMsg( 'makebot-privileged', $user->getName() ) );
+						# Exists; check current privileges
+						if( $this->canBecomeBot( $user ) ) {	
+							if( $wgRequest->getCheck( 'dosearch' ) || !$wgRequest->wasPosted() || !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ), 'makebot' ) ) {
+								# Exists, check botness
+								if( in_array( 'bot', $user->mGroups ) ) {
+									# Has a bot flag
+									$wgOut->addWikiText( wfMsg( 'makebot-isbot', $user->getName() ) );
+									$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_REVOKE ) );
 								} else {
-									# Can proceed to promotion
-									$wgOut->addWikiText( wfMsg( 'makebot-notbot', $user->getName() ) );
+									# Not a bot; show the grant form
+									# Not a bot; check other privs
 									$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_GRANT ) );
 								}
+							} elseif( $wgRequest->getCheck( 'grant' ) ) {
+								# Grant the flag
+								$user->addGroup( 'bot' );
+								$this->addLogItem( 'grant', $user, trim( $wgRequest->getText( 'comment' ) ) );
+								$wgOut->addWikiText( wfMsg( 'makebot-granted', $user->getName() ) );
+							} elseif( $wgRequest->getCheck( 'revoke' ) ) {
+								# Revoke the flag
+								$user->removeGroup( 'bot' );
+								$this->addLogItem( 'revoke', $user, trim( $wgRequest->getText( 'comment' ) ) );
+								$wgOut->addWikiText( wfMsg( 'makebot-revoked', $user->getName() ) );
 							}
-						} elseif( $wgRequest->getCheck( 'grant' ) ) {
-							# Grant the flag
-							$user->addGroup( 'bot' );
-							$this->addLogItem( 'grant', $user, trim( $wgRequest->getText( 'comment' ) ) );
-							$wgOut->addWikiText( wfMsg( 'makebot-granted', $user->getName() ) );
-						} elseif( $wgRequest->getCheck( 'revoke' ) ) {
-							# Revoke the flag
-							$user->removeGroup( 'bot' );
-							$this->addLogItem( 'revoke', $user, trim( $wgRequest->getText( 'comment' ) ) );
-							$wgOut->addWikiText( wfMsg( 'makebot-revoked', $user->getName() ) );
+							# Show log entries
+							$this->showLogEntries( $user );
+						} else {
+							# User account is privileged and can't be given a bot flag
+							$wgOut->addWikiText( wfMsg( 'makebot-privileged', $user->getName() ) );
 						}
-						# Show log entries
-						$this->showLogEntries( $user );
 					} else {
 						# Doesn't exist
 						$wgOut->addWikiText( wfMsg( 'nosuchusershort', htmlspecialchars( $this->target ) ) );
@@ -253,6 +253,20 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$wgOut->addHtml( wfElement( 'h2', NULL, htmlspecialchars( LogPage::logName( 'makebot' ) ) ) );
 			$logViewer = new LogViewer( new LogReader( new FauxRequest( array( 'page' => $title->getPrefixedText(), 'type' => 'makebot' ) ) ) );
 			$logViewer->showList( $wgOut );
+		}
+
+		/**
+		 * Can the specified user be given a bot flag
+		 * Check existing privileges and configuration
+		 * @param $user User to check
+		 * @return bool True if permitted
+		 */
+		function canBecomeBot( &$user ) {
+			global $wgMakeBotPrivileged;
+			$user->loadFromDatabase();
+			return $wgMakeBotPrivileged ||
+					( !in_array( 'sysop', $user->mGroups ) &&
+					  !in_array( 'bureaucrat', $user->mGroups ) );
 		}
 	
 	}
