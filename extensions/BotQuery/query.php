@@ -78,7 +78,7 @@ class BotQueryProcessor {
 			)),
 		'txt' => array( 'printHumanReadable', 'application/x-wiki-botquery-print_r', null, array(
 			"Human-readable format using print_r() (http://www.php.net/print_r)",
-			"Example: query.php?what=info&format=html",
+			"Example: query.php?what=info&format=txt",
 			)),
 		'json'=> array( 'printJSON', 'application/json', null, array(
 			"JSON format (http://en.wikipedia.org/wiki/JSON)",
@@ -170,6 +170,7 @@ class BotQueryProcessor {
 		global $wgRequest;
 
 		$this->data = array();
+		$this->requestsize = 0;
 		$this->db = $db;
 		$this->format = 'html'; // set it here because if parseFormat fails, it should still output something
 		$this->format = $this->parseFormat( $wgRequest->getVal('format', 'html') );
@@ -223,7 +224,8 @@ class BotQueryProcessor {
 		// Log request - userid (non-identifiable), status, what is asked, request size, additional parameters
 		//
 		$userIdentity = md5( $wgUser->getName() ) . "-" . ($wgUser->isAnon() ? "anon" : ($wgUser->isBot() ? "bot" : "usr"));
-		$what = implode( '|', $this->properties );
+		$what = $wgRequest->getVal('what');
+		$format = $wgRequest->getVal('format');
 		$params = mergeParameters( $this->propGenerators );
 		$params = array_merge( $params, mergeParameters( $this->outputGenerators ));
 		$params = array_unique($params);
@@ -235,7 +237,7 @@ class BotQueryProcessor {
 			}
 		}
 		$paramStr = implode( '&', $paramVals );
-		$msg = "$userIdentity\t{$this->format}\t$what\t{$this->requestsize}\t$paramStr";
+		$msg = "$userIdentity\t$format\t$what\t{$this->requestsize}\t$paramStr";
 		wfDebugLog( 'query', $msg );
 	}
 
@@ -275,7 +277,6 @@ class BotQueryProcessor {
 		global $wgUser, $wgRequest;
 		
 		$where = array();
-		$this->requestsize = 0;
 		
 		//
 		// List of titles
@@ -840,6 +841,11 @@ class BotQueryProcessor {
 				"",
 				"",
 				"*------ Error: $message ($errorcode) ------*",
+				"",
+				"Summary:",
+				"  This API provides a way for your applications to query data directly from the MediaWiki servers.",
+				"  One or more pieces of information about the site and/or a given list of pages can be retrieved.",
+				"  Information may be returned in either a machine (xml, json, php) or a human readable (html, dbg) format.",
 				"",
 				"Usage:",
 				"  query.php ? format=a & what=b|c|d & titles=e|f|g & ...",
