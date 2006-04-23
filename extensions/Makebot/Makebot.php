@@ -106,7 +106,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		
 		/**
 		 * Main execution function
-		 * @param $par Parameters passed to the page (will be ignored for now)
+		 * @param $par Parameters passed to the page
 		 */
 		function execute( $par ) {
 			global $wgRequest, $wgOut, $wgMakeBotPrivileged, $wgUser;
@@ -117,8 +117,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 			}
 			
 			$this->setHeaders();
-			$this->target = $wgRequest->getText( 'username', '' );
-			
+
+			$this->target = $par
+							? $par
+							: $wgRequest->getText( 'username', '' );
+
 			$wgOut->addWikiText( wfMsg( 'makebot-header' ) );
 			$wgOut->addHtml( $this->makeSearchForm() );
 			
