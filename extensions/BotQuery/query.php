@@ -55,11 +55,36 @@ class BotQueryProcessor {
 	*     2) Format description
 	*/
 	var $outputGenerators = array(
-		'xml' => array( 'text/xml', 'printXML', 'XML format with optional indentation (see Notes)' ),
-		'txt' => array( 'application/x-wiki-botquery-print_r', 'printHumanReadable', 'Pretty-printed human readable format' ),
-		'json' => array( 'application/json', 'printJSON', 'JSON format' ),
-		'php' => array( 'application/vnd.php.serialized', 'printPHP', 'PHP serialized format' ),
-		'dbg' => array( 'application/x-wiki-botquery-var_export', 'printParsableCode', 'PHP source code format' ),
+		'xml' => array( 'text/xml', 'printXML', array(
+			"XML format",
+			"Optional indentation can be enabled by supplying 'xmlindent' parameter.",
+			"Errors will return this usage screen, unless 'nousage' parameter is given.",
+			"Internet Explorer is known to have many issues with text/xml output.",
+			"Please use other browsers or switch to html format while debuging.",
+			"Example: query.php?what=info&format=xml",
+			)),
+		'html'=> array( 'text/html', 'printHTML', array(
+			"HTML format",
+			"The data is presented as an indented syntax-highlighted XML format.",
+			"Errors will return this usage screen, unless 'nousage' parameter is given.",
+			"Example: query.php?what=info&format=html",
+			)),
+		'txt' => array( 'application/x-wiki-botquery-print_r', 'printHumanReadable', array(
+			"Human-readable format using print_r() (http://www.php.net/print_r)",
+			"Example: query.php?what=info&format=html",
+			)),
+		'json'=> array( 'application/json', 'printJSON', array(
+			"JSON format (http://en.wikipedia.org/wiki/JSON)",
+			"Example: query.php?what=info&format=json",
+			)),
+		'php' => array( 'application/vnd.php.serialized', 'printPHP', array(
+			"PHP serialized format using serialize() (http://www.php.net/serialize)",
+			"Example: query.php?what=info&format=php",
+			)),
+		'dbg' => array( 'application/x-wiki-botquery-var_export', 'printParsableCode', array(
+			"PHP source code format using var_export() (http://www.php.net/var_export)",
+			"Example: query.php?what=info&format=dbg",
+			)),
 //		'tsv' => array( 'text/tab-separated-values', 'print', '' ),
 	);
 
@@ -72,26 +97,75 @@ class BotQueryProcessor {
 	var $propGenerators = array(
 
 		// Site-wide Generators
-		'siteinfo'       => array( false, "genMetaSiteInfo", "basic site information" ),
-		'sitenamespaces' => array( false, "genMetaNamespaceInfo", "list of localized namespaces" ),
-		'userinfo'       => array( false, "genMetaUserInfo", "user information" ),
-		'dblredirects'   => array( false, "genMetaDoubleRedirects", "list of double-redirect pages" ),
+		'info'           => array( false, "genMetaSiteInfo", array(
+			"General site information",
+			"Example: query.php?what=info",
+			)),
+		'namespaces' => array( false, "genMetaNamespaceInfo", array(
+			"List of localized namespace names",
+			"Example: query.php?what=namespaces",
+			)),
+		'userinfo'       => array( false, "genMetaUserInfo", array(
+			"Information about current user",
+			"Example: query.php?what=userinfo",
+			)),
+		'dblredirects'   => array( false, "genMetaDoubleRedirects", array(
+			"List of double-redirect pages",
+			"THIS QUERY IS CURRENTLY DISABLED DUE TO PERFORMANCE REASONS",
+			"Example: query.php?what=dblredirects",
+			)),
 
 		// Page-specific Generators
-		'langlinks'      => array( true, "genPageLangLinks", "interlanguage links" ),
-		'templates'      => array( true, "genPageTemplates", "template names" ),
-		'links'          => array( true, "genPageLinks", "regular links to other pages" ),
-		'backlinks'      => array( true, "genPageBackLinks", "returns pages that link here" ),
-		'revisions'      => array( true, "genPageHistory", "revision history (see Notes)" ),
+		'links'          => array( true, "genPageLinks", array(
+			"List of regular page links",
+			"Example: query.php?what=links&titles=MediaWiki|Wikipedia",
+			)),
+		'langlinks'      => array( true, "genPageLangLinks", array(
+			"Inter-language links",
+			"Example: query.php?what=langlinks&titles=MediaWiki|Wikipedia",
+			)),
+		'templates'      => array( true, "genPageTemplates", array(
+			"List of used templates",
+			"Example: query.php?what=templates&titles=Main%20Page",
+			)),
+		'backlinks'      => array( true, "genPageBackLinks", array(
+			"What pages link to this page(s)",
+			"Parameters supported:",
+			"blfilter   - Of all given pages, which should be queried:",
+			"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
+			"bllimit    - how many total links to return",
+			"bloffset   - when too many results are found, use this to page",
+			"Example: query.php?what=backlinks&titles=Main%20Page&bllimit=10",
+			)),
+		'embeddedin'     => array( true, "genPageEmbeddedIn", array(
+			"What pages include this page(s) as template(s)",
+			"Parameters supported:",
+			"eifilter   - Of all given pages, which should be queried:",
+			"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
+			"eilimit    - how many total links to return",
+			"eioffset   - when too many results are found, use this to page",
+			"Example:",
+			"  Page 1: query.php?what=embeddedin&titles=Template:Stub&eilimit=10",
+			"  Page 2: query.php?what=embeddedin&titles=Template:Stub&eilimit=10&eioffset=10",
+			)),
+		'revisions'      => array( true, "genPageHistory", array(
+			"Revision history - Lists edits performed to the given pages",
+			"Parameters supported:",
+			"rvcomments - if specified, the result will include summary strings",
+			"rvlimit    - how many links to return *for each title*",
+			"rvoffset   - when too many results are found, use this to page",
+			"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments",
+			)),
 	);
 
 	function BotQueryProcessor( $db ) {
 		global $wgRequest;
 
-		$this->db = $db;
-		$this->format = $this->parseFormat( $wgRequest->getVal('format') );
-		$this->properties = $this->parseProperties( $wgRequest->getVal('properties'));
 		$this->data = array();
+		$this->db = $db;
+		$this->format = 'html'; // set it here because if parseFormat fails, it should still output something
+		$this->format = $this->parseFormat( $wgRequest->getVal('format', 'html') );
+		$this->properties = $this->parseProperties( $wgRequest->getVal('what'));
 		
 		// Neither one of these variables is referenced directly!
 		// Meta generators may append titles or pageids to these varibales.
@@ -119,22 +193,26 @@ class BotQueryProcessor {
 		
 		// Report empty query
 		if( !$this->data ) {
-			$this->dieUsage( 'Nothing to do' );
+			$this->dieUsage( 'Nothing to do', 'emptyresult' );
 		}
 	}
 
 	function callGenerators( $callPageGenerators ) {
-		foreach( $this->propGenerators as $property => $generator ) {
+		foreach( $this->propGenerators as $property => &$generator ) {
 			if( $generator[0] === $callPageGenerators && in_array( $property, $this->properties )) {
 				$this->{$generator[1]}();
 			}
 		}
 	}
 
-	function output() {
+	function output($isError = false) {
 		list( $mime, $printer ) = $this->outputGenerators[$this->format];		
 		header( "Content-Type: $mime; charset=utf-8;" );
-		$printer( $this->data );
+		if( !$isError ) {
+			$printer( $this->data );
+		} else {
+			$printer( $this->data['query'] );
+		}
 	}
 
 
@@ -145,7 +223,7 @@ class BotQueryProcessor {
 		if( array_key_exists($format, $this->outputGenerators) ) {
 			return $format;
 		} else {
-			$this->dieUsage( "Unrecognised format '$format'" );
+			$this->dieUsage( "Unrecognised format '$format'", 'badformat' );
 		}
 	}
 
@@ -153,13 +231,13 @@ class BotQueryProcessor {
 		global $wgUser;
 
 		if ( $properties == '' ) {
-			$this->dieUsage( 'No properties given' );
+			$this->dieUsage( 'No properties given', 'noproperties' );
 		}
 
 		$propList = explode( '|', $properties );
 		$unknownProperties = array_diff( $propList, array_keys( $this->propGenerators ));
 		if( $unknownProperties ) {
-			$this->dieUsage( "Unrecognised propert" . (count($unknownProperties)>1?"ies ":"y ") . implode(', ', $unknownProperties) );
+			$this->dieUsage( "Unrecognised propert" . (count($unknownProperties)>1?"ies ":"y ") . implode(', ', $unknownProperties), 'unknownproperty' );
 		}
 
 		return $propList;
@@ -185,15 +263,15 @@ class BotQueryProcessor {
 			foreach ( $titles as $titleString ) {
 				$titleObj = Title::newFromText( $titleString );
 				if ( !$titleObj ) {
-					$this->dieUsage("bad title $titleString" );
+					$this->dieUsage( "bad title $titleString", 'pi_invalidtitle' );
 				}
 				if ( !$titleObj->userCanRead() ) {
-					$this->dieUsage("No read permission for $titleString" );
+					$this->dieUsage( "No read permission for $titleString", 'pi_titleaccessdenied' );
 				}
 				$linkBatch->addObj( $titleObj );
 			}
 			if ( $linkBatch->isEmpty() ) {
-				$this->dieUsage("no titles could be found" );
+				$this->dieUsage( "no titles could be found", 'pi_novalidtitles' );
 			}
 			// Create a list of pages to query
 			$where[] = $linkBatch->constructSet( 'page', $this->db );
@@ -215,7 +293,7 @@ class BotQueryProcessor {
 			$pageids = array_unique($pageids);
 			sort( $pageids, SORT_NUMERIC );
 			if( $pageids[0] <= 0 ) {
-				$this->dieUsage("pageids contains a bad id" );
+				$this->dieUsage( "pageids contains a bad id", 'pi_badpageid' );
 			}
 			$where['page_id'] = $pageids;
 			$requestsize += count($pageids);
@@ -231,11 +309,11 @@ class BotQueryProcessor {
 		//
 		if( $wgUser->isBot() ) {
 			if ( $requestsize > 1000 ) {
-				$this->dieUsage( 'Bots may not request over 1000 pages' );
+				$this->dieUsage( 'Bots may not request over 1000 pages', 'pi_botquerytoobig' );
 			}
 		} else {
 			if( $requestsize > 20 ) {
-				$this->dieUsage( 'Users may not request over 20 pages' );
+				$this->dieUsage( 'Users may not request over 20 pages', 'pi_userquerytoobig' );
 			}
 		}
 		
@@ -249,8 +327,6 @@ class BotQueryProcessor {
 		//
 		// Query page information with the given lists of titles & pageIDs
 		//
-		//$this->existingLinkBatch = new LinkBatch;
-		//$this->nonRedirLinkBatch = new LinkBatch;
 		$redirects = array();
 		$res = $this->db->select( 'page',
 			array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_latest' ),
@@ -260,7 +336,7 @@ class BotQueryProcessor {
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 			if ( !$title->userCanRead() ) {
 				$this->db->freeResult( $res );
-				$this->dieUsage("No read permission for $titleString" );
+				$this->dieUsage( "No read permission for $titleString", 'pi_pageidaccessdenied' );
 			}
 			$data = &$this->data['pages'][$row->page_id];
 			$data['_obj']  = $title;
@@ -268,12 +344,9 @@ class BotQueryProcessor {
 			$data['title'] = $title->getPrefixedText();
 			$data['id']    = $row->page_id;
 			$data['revid'] = $row->page_latest;
-			//$this->existingLinkBatch->add( $title->getNamespace(), $title->getDBkey() );
 			if ( $row->page_is_redirect ) {
 				$data['redirect'] = '';
 				$redirects[] = $row->page_id;
-			} else {
-				//$this->nonRedirLinkBatch->add( $title->getNamespace(), $title->getDBkey() );
 			}
 
 			// Strike out link
@@ -304,21 +377,19 @@ class BotQueryProcessor {
 		//
 		// Add entries for non-existent page titles
 		//
-//		$this->allLinkBatch = $this->existingLinkBatch;	// make a copy that will include nonexisting items as well
 		$i = -1;
-		foreach( $nonexistentPages as $namespace => $stuff ) {
-			foreach( $stuff as $dbk => $arbitrary ) {
+		foreach( $nonexistentPages as $namespace => &$stuff ) {
+			foreach( $stuff as $dbk => &$arbitrary ) {
 				$title = Title::makeTitle( $namespace, $dbk );
 				// Must do this check even for non-existent pages, as some generators can give related information
 				if ( !$title->userCanRead() ) {
-					$this->dieUsage("No read permission for $titleString" );
+					$this->dieUsage( "No read permission for $titleString", 'pi_nopageaccessdenied' );
 				}
 				$data = &$this->data['pages'][$i--];
 				$data['_obj']    = $title;
 				$data['title']   = $title->getPrefixedText();
 				$data['ns']      = $title->getNamespace();
 				$data['id']      = 0;
-				//$this->allLinkBatch->add( $title->getNamespace(), $title->getDBkey() );
 			}
 		}
 		
@@ -378,10 +449,10 @@ class BotQueryProcessor {
 	function genMetaDoubleRedirects() {
 		global $wgRequest, $wgUser;
 
-		$this->dieUsage( "DoubleRedirect generator is disabled until caching is implemented" );
+		$this->dieUsage( "DoubleRedirect generator is disabled until caching is implemented", 'dr_disabled' );
 		
 		if( !$wgUser->isBot() ) {
-			$this->dieUsage( "Only bots are allowed to query for double-redirects" );
+			$this->dieUsage( "Only bots are allowed to query for double-redirects", 'dr_notbot' );
 		}
 
 		extract( $this->db->tableNames( 'page', 'pagelinks' ) );
@@ -466,14 +537,42 @@ class BotQueryProcessor {
 	}
 
 	function genPageBackLinks() {
+		$this->genPageBackLinksHelper( 'backlinks' );
+	}
+	
+	function genPageEmbeddedIn() {
+		$this->genPageBackLinksHelper( 'embeddedin' );
+	}
+	
+	/**
+	* Generate backlinks for either links, templates, or both
+	* $type - either 'template' or 'page'
+	*/
+	function genPageBackLinksHelper( $type ) {
 		global $wgRequest;
 
-		$offset = $wgRequest->getInt( 'bloffset', 0 );
-		$limit = $wgRequest->getInt( 'bllimit', 50 );
-		$blfilter = $wgRequest->getVal( 'blfilter', 'existing' );
+		switch( $type ) {
+			case 'embeddedin' :
+				$columnPrefix = 'tl';	// database column name prefix
+				$code = 'ei';			// 
+				$linktbl = $this->db->tableName( 'templatelinks' );
+				break;
+			case 'backlinks' :
+				$columnPrefix = 'pl';
+				$code = 'bl';
+				$linktbl = $this->db->tableName( 'pagelinks' );
+				break;
+			default :
+				die("unknown type");
+		}
+		$pagetbl = $this->db->tableName( 'page' );
+		
+		$offset = $wgRequest->getInt( "{$code}offset", 0 );
+		$limit = $wgRequest->getInt( "{$code}limit", 50 ) + 1;
+		$filter = $wgRequest->getVal( "{$code}filter", 'existing' );
 
 		$nonredir = $existing = $all = false;
-		switch( $blfilter ) {
+		switch( $filter ) {
 			case 'all' :
 				$all = true;
 				// fallthrough
@@ -484,11 +583,11 @@ class BotQueryProcessor {
 				$nonredir = true;
 				break;
 			default:
-				$this->dieUsage( "Backlink filter '$blfilter' is not one of allowed: 'all', 'existing' [default], and 'nonredirects'" );
+				$this->dieUsage( "{$code}filter '$filter' is not one of the allowed: 'all', 'existing' [default], and 'nonredirects'", "{$code}_badfilter" );
 		}
 
 		$linkBatch = new LinkBatch;
-		foreach( $this->data['pages'] as $key => $page ) {
+		foreach( $this->data['pages'] as $key => &$page ) {
 			if(( $key < 0 && $all && array_key_exists('_obj', $page) ) ||
 			   ( $key > 0 && ($existing || ($nonredir && !array_key_exists('redirect', $page))) )) {
 
@@ -497,55 +596,47 @@ class BotQueryProcessor {
 		}
 		
 		if( $linkBatch->isEmpty() ) {
+			$this->addStatusMessage( $type, 'emptyrequest' );
 			return; // Nothing to do
 		}
-
-		$allowedBLTypes = array( 'all', 'templates', 'links' );
-		$type = $wgRequest->getVal( 'bltype', 'all' );
-		if( array_key_exists( $type, $allowedBLTypes )) {
-			$this->dieUsage( "Backlink type '$type' is not one of allowed: " . implode(', ', $allowedBLTypes) );
-		}
-		if( $type === 'all' || $type === 'template' ) {
-			$this->genPageBackLinksHelper( 'template', 'tl', $offset, $limit, $linkBatch );
-		}
-		if( $type === 'all' || $type === 'links' ) {
-			$this->genPageBackLinksHelper( 'page', 'pl', $offset, $limit, $linkBatch );
-		}
-	}
-	/**
-	* Generate backlinks for either links, templates, or both
-	*/
-	function genPageBackLinksHelper( $type, $code, $offset, $limit, &$linkBatch ) {
 		
-		$page = $this->db->tableName( 'page' );
-		$linktbl = $this->db->tableName( $type . 'links' );
-
 		$sql = "SELECT"
 			." pfrom.page_id from_id, pfrom.page_namespace from_namespace, pfrom.page_title from_title,"
-			." pto.page_id to_id, {$code}_namespace to_namespace, {$code}_title to_title"
+			." pto.page_id to_id, {$columnPrefix}_namespace to_namespace, {$columnPrefix}_title to_title"
 		." FROM"
 			." ("
-				  ." $linktbl INNER JOIN $page pfrom ON {$code}_from = pfrom.page_id"
+				  ." $linktbl INNER JOIN $pagetbl pfrom ON {$columnPrefix}_from = pfrom.page_id"
 			." )"
-			." LEFT JOIN $page pto ON {$code}_namespace = pto.page_namespace AND {$code}_title = pto.page_title"
+			." LEFT JOIN $pagetbl pto ON {$columnPrefix}_namespace = pto.page_namespace AND {$columnPrefix}_title = pto.page_title"
 		." WHERE"
-			." " . $linkBatch->constructSet( $code, $this->db )
+			." " . $linkBatch->constructSet( $columnPrefix, $this->db )
 		." ORDER BY"
-			." {$code}_namespace, {$code}_title"
+			." {$columnPrefix}_namespace, {$columnPrefix}_title"
 		." LIMIT $limit"
 		. ( $offset > 0 ? " OFFSET $offset" : "" );
 
+		$count = 0;
 		$res = $this->db->query( $sql, $this->classname . "::genPageBackLinks_{$code}" );
 		while ( $row = $this->db->fetchObject( $res ) ) {
+			if( ++$count >= $limit ) {
+				// We've reached the one extra which shows that there are
+				// additional pages to be had. Stop here...
+				break;
+			}
 			$pageId = $row->to_id;
 			if( $pageId === null ) {
 				$pageId = $this->lookupInvalidPageId( $row->to_namespace, $row->to_title );
 			}
 			$values = $this->getLinkInfo( $row->from_namespace, $row->from_title, $row->from_id );
-			$values['type'] = $type;
-			$this->addPageSubElement( $pageId, 'backlinks', 'bl', $values );
+			$this->addPageSubElement( $pageId, $type, $code, $values );
 		}
 		$this->db->freeResult( $res );
+
+		if( $count < $limit ) {
+			$this->addStatusMessage( $type, 'done' );
+		} else {
+			$this->addStatusMessage( $type, 'havemore' );
+		}
 	}
 	
 	function genPageHistory() {
@@ -584,7 +675,7 @@ class BotQueryProcessor {
 		);
 
 		if( $limit * count($this->existingPageIds) > 20000 ) {
-			$this->dieUsage( "rvlimit multiplied by number of requested titles must be less than 20000" );
+			$this->dieUsage( "rvlimit multiplied by number of requested titles must be less than 20000", 'rv_querytoobig' );
 		}
 
 		foreach( $this->existingPageIds as $pageId ) {
@@ -621,7 +712,7 @@ class BotQueryProcessor {
 	function lookupInvalidPageId( $ns, &$dbkey ) {
 		// TODO: optimize.
 		$ns = intval($ns);
-		foreach( $this->data['pages'] as $id => $page ) {
+		foreach( $this->data['pages'] as $id => &$page ) {
 			if( $id < 0 && array_key_exists( '_obj', $page )) {
 				$title = &$page['_obj'];
 				if( $title->getNamespace() === $ns && $title->getDBkey() === $dbkey ) {
@@ -679,95 +770,166 @@ class BotQueryProcessor {
 		if ( preg_match( '/^[0-9]{14}$/', $value ) ) {
 			return $this->db->addQuotes( $value );
 		} else {
-			$this->dieUsage( 'Incorrect timestamp format' );
+			$this->dieUsage( 'Incorrect timestamp format', 'badtimestamp' );
 		}
 	}
 	
 	/**
-	* Recursivelly removes any elements from the array that begin with an '_'.
-	* The content element '*' is the only special element that is left.
-	* Use this method when the entire data object gets sent to the user.
+	* NOTE: This function must not be called after calling header()
+	* Creates a human-readable usage information message
 	*/
-	function sanitizeOutputData( &$data ) {
-		foreach( $data as $key => $value ) {
-			if( $key[0] === '_' ) {
-				unset( $data[$key] );
-			} elseif ( is_array( $value )) {
-				sanitizeOutputData( $value );
+	function dieUsage( $message, $errorcode ) {
+		global $wgUser, $wgRequest;
+
+		$this->addStatusMessage( 'error', $errorcode );
+		if( !$wgRequest->getCheck('nousage') && 
+				($this->format === 'xml' || $this->format === 'html' )) {
+				
+			$indentSize = 12;
+			$indstr = str_repeat(" ", $indentSize+7);
+			
+			$formats = "";
+			foreach( $this->outputGenerators as $format => &$generator ) {
+				$formats .= sprintf( "  %-{$indentSize}s - %s\n", 
+					$format,
+					mergeDescriptionStrings($generator[2], $indstr));
 			}
+
+			$props = "\n  *These properties apply to the entire site*\n";
+			foreach( $this->propGenerators as $property => &$generator ) {
+				if( !$generator[0] ) {
+					$props .= sprintf( "  %-{$indentSize}s - %s\n", $property, 
+								mergeDescriptionStrings($generator[2], $indstr));
+				}
+			}
+			$props .= "\n  *These properties apply to the specified pages*\n";
+			foreach( $this->propGenerators as $property => &$generator ) {
+				if( $generator[0] ) {
+					$props .= sprintf( "  %-{$indentSize}s - %s\n", $property, 
+								mergeDescriptionStrings($generator[2], $indstr));
+				}
+			}
+
+			// No need to html-escape $message - it gets done as part of the xml/html generation
+			$msg = array(
+				"",
+				"",
+				"*------ Error: $message ($errorcode) ------*",
+				"",
+				"Usage:",
+				"  query.php ? format=a & what=b|c|d & titles=e|f|g & ...",
+				"",
+				"Common parameters:",
+				"    format     - How should the output be formatted. See formats section.",
+				"    properties - What information the server should return. See properties section",
+				"    titles     - A list of titles, separated by the pipe '|' symbol.",
+				"    pageids    - A list of page ids, separated by the pipe '|' symbol.",
+				"",
+				"Examples:",
+				"    query.php?format=xml&what=links|templates&titles=User:Yurik",
+				"  This query will return a list of all links and templates used on the User:Yurik",
+				"",
+				"    query.php?format=xml&what=revisions&titles=Main_Page&rvlimit=100&rvstart=20060401000000&rvcomments",
+				"  Get a list of 100 last revisions of the main page with comments, but only if it happened after midnight April 1st 2006",
+				"",
+				"Supported Formats:",
+				$formats,
+				"",
+				"Supported Properties:",
+				$props,
+				"",
+				"Notes:",
+				"  Some properties may add status information to the 'query' element.",
+				"",
+				"Credits:",
+				"  This extension came as the result of IRC discussion between Yuri Astrakhan (en:Yurik), Tim Starling (en:Tim Starling), and Daniel Kinzler(de:Duesentrieb)",
+				"  The extension was first implemented by Tim to provide interlanguage links and history.",
+				"  It was later completelly rewritten by Yuri to allow for modular properties, meta information, and various formatting options.",
+				"",
+				"  The code is maintained by Yuri Astrakhan (FirstnameLastname@gmail.com)",
+				"  You can also leave your comments and suggestions at http://en.wikipedia.org/wiki/User_talk:Yurik",
+				"",
+				"User Status:",
+				"  You are " . ($wgUser->isAnon() ? "an anonymous" : "a logged-in") . " " . ($wgUser->isBot() ? "bot" : "user") . " " . $wgUser->getName(),
+				"",
+				"Version:",
+				'  $Id$',
+				"",
+				);
+		
+			$this->addStatusMessage( 'usage', implode("\n", $msg), true );
 		}
+		$this->output(true);
+		die(0);
 	}
 	
-	function dieUsage( $message ) {
-		global $wgUser;
-
-		$formats = "";
-		foreach( $this->outputGenerators as $format => $generator ) {
-			$formats .= sprintf( "  %-20s - %s\n", $format, $generator[2]);
+	function addStatusMessage( $module, $value, $preserveXmlSpacing = false ) {
+		if( !array_key_exists( 'query', $this->data )) {
+			$this->data['query'] = array();
 		}
-
-		$props = "";
-		foreach( $this->propGenerators as $property => $generator ) {
-			$props .= sprintf( "  %-20s - %s\n", $generator[0] ? $property : $property." (*)", $generator[2]);
+		if( !array_key_exists( $module, $this->data['query'] )) {
+			$this->data['query'][$module] = array();
 		}
-		$props .= "  (*) These properties return information about the whole site\n";
-
-		// This will prevent any code injection attacks
-		$message = htmlspecialchars($message);
-
-		header( "Content-Type: text/plain; charset=utf-8;" );
-
-		echo "\n   ------ Error: $message ------\n\n"
-			."Usage:\n"
-			."  query.php ? format=a & properties=b|c|d & titles=e|f|g & ...\n"
-			."\n"
-			."Examples:\n"
-			."    query.php?format=xml&properties=links|templates&titles=User:Yurik\n"
-			."  This query will return a list of all links and templates used on the User:Yurik\n"
-			."\n"
-			."    query.php?format=xml&properties=revisions&titles=Main_Page&rvlimit=100&rvstart=20060401000000&rvcomments\n"
-			."  Get a list of 100 last revisions of the main page with comments, but only if it happened after midnight April 1st 2006\n"
-			."\n"
-			."Supported Formats:\n"
-			.$formats
-			."\n"
-			."Supported Properties:\n"
-			.$props
-			."\n"
-			."Notes:\n"
-			."  - format and either properties and/or titles must be specified\n"
-			."  - xml will be pretty-printed if an optional 'xmlindent' parameter is given\n"
-			."  - revisions property supports optional parameters:\n"
-			."      rvstart, rvend   - limits revisions by start and/or end time. The value must be 14 characters.\n"
-			."                         example: '20060409000000' (year month date hour minute second)\n"
-			."      rvlimit          - the number of revisions per title to return. Default is 50.\n"
-			."      rvcomments       - if present, includes the revision comment in the output\n"
-			."\n"
-			."Credits:\n"
-			."  This extension came as the result of IRC discussion between Yuri Astrakhan (en:Yurik), Tim Starling (en:Tim Starling), and Daniel Kinzler(de:Duesentrieb)\n"
-			."  The extension was first implemented by Tim to provide interlanguage links and history.\n"
-			."  It was later completelly rewritten by Yuri to allow for modular properties, meta information, and various formatting options.\n"
-			."\n"
-			."  The code is maintained by Yurik. You can leave your comments at http://en.wikipedia.org/wiki/User_talk:Yurik\n"
-			."\n"
-			."User Status:\n"
-			."  You are " . ($wgUser->isAnon() ? 'an anonymous' : 'a logged-in') . ' ' . ($wgUser->isBot() ? 'bot' : 'user') . ' ' . $wgUser->getName() . "\n"
-			."\n"
-			."Version:\n"
-			.'  $Id$';
-
-		die(1);
+		
+		$element = &$this->data['query'][$module];
+		if( is_array($value) ) {
+			array_merge( $element, $value );
+		} else {
+			if( array_key_exists( '*', $element )) {
+				$element['*'] .= $value;
+			} else {
+				$element['*'] = $value;
+			}
+			if( $preserveXmlSpacing ) {
+				$element['xml:space'] = 'preserve';
+			}
+		}
 	}
 }
 
 //
 // ************************************* Print Methods *************************************
 //
+function printHTML( &$data ) {
+	global $wgRequest;
+?>
+<html>
+<head>
+	<title>MediaWiki Query Interface</title>
+</head>
+<body>
+	<br/>
+	<small>
+	This page is being rendered in HTML format, which might not be suitable for your application.<br/>
+	See <a href="query.php">query.php</a> for more information.<br/>
+	</small>
+<pre><?php
+	recXmlPrint( 'htmlprinter', 'yurik', $data, -2 );
+?></pre>
+</body>
+<?php
+}
+function htmlprinter( $text ) {
+	// encode all tags as safe blue strings
+	$text = ereg_replace( '\<([^>]+)\>', '<font color=blue>&lt;\1&gt;</font>', $text );
+	// identify URLs
+	$text = ereg_replace("[a-zA-Z]+://[^ ()<\n]+", '<a href="\\0">\\0</a>', $text);
+	// identify requests to query.php
+	$text = ereg_replace("query\\.php\\?[^ ()<\n]+", '<a href="\\0">\\0</a>', $text);
+	// make strings inside * bold
+	$text = ereg_replace("\\*[^<>\n]+\\*", '<b>\\0</b>', $text);
+	echo $text;
+}
+
 function printXML( &$data ) {
 	global $wgRequest;
 	echo '<?xml version="1.0" encoding="utf-8"?>';
-	recXmlPrint( "yurik", $data, $wgRequest->getCheck('xmlindent') ? -2 : null );
+	recXmlPrint( 'echoprinter', 'yurik', $data, $wgRequest->getCheck('xmlindent') ? -2 : null );
 }
+function echoprinter( $text ) {
+	echo $text;
+}
+
 function printHumanReadable( &$data ) {
 	sanitizeOutputData($data);
 	print_r($data);
@@ -792,6 +954,21 @@ function printJSON( &$data ) {
 }
 
 /**
+* Recursivelly removes any elements from the array that begin with an '_'.
+* The content element '*' is the only special element that is left.
+* Use this method when the entire data object gets sent to the user.
+*/
+function sanitizeOutputData( &$data ) {
+	foreach( $data as $key => &$value ) {
+		if( $key[0] === '_' ) {
+			unset( $data[$key] );
+		} elseif ( is_array( $value )) {
+			sanitizeOutputData( $value );
+		}
+	}
+}
+
+/**
 * This method takes an array and converts it into an xml.
 * There are several noteworthy cases:
 *
@@ -804,7 +981,7 @@ function printJSON( &$data ) {
 * If neither key is found, all keys become element names, and values become element content.
 * The method is recursive, so the same rules apply to any sub-arrays.
 */
-function recXmlPrint( $elemName, &$elemValue, $indent = -2) {
+function recXmlPrint( $printer, $elemName, &$elemValue, $indent = -2 ) {
 	$indstr = "";
 	if( !is_null($indent) ) {
 		$indent += 2;
@@ -817,36 +994,43 @@ function recXmlPrint( $elemName, &$elemValue, $indent = -2) {
 				$subElemContent = $elemValue['*'];
 				unset( $elemValue['*'] );
 				if( gettype( $subElemContent ) === 'array' ) {
-					echo $indstr . wfElement( $elemName, $elemValue, null );
-					recXmlPrint( $elemName, $subElemValue, $indent );
-					echo $indstr . "</$elemName>";
+					$printer( $indstr . wfElement( $elemName, $elemValue, null ));
+					recXmlPrint( $printer, $elemName, $subElemValue, $indent );
+					$printer( $indstr . "</$elemName>" );
 				} else {
-					echo $indstr . wfElement( $elemName, $elemValue, $subElemContent );
+					$printer( $indstr . wfElement( $elemName, $elemValue, $subElemContent ));
 				}
 			} else {
-				echo $indstr . wfElement( $elemName, null, null );
+				$printer( $indstr . wfElement( $elemName, null, null ));
 				if( array_key_exists('_element', $elemValue) ) {
 					$subElemName = $elemValue['_element'];
-					foreach( $elemValue as $subElemId => $subElemValue ) {
+					foreach( $elemValue as $subElemId => &$subElemValue ) {
 						if( $subElemId !== '_element' ) {
-							recXmlPrint( $subElemName, $subElemValue, $indent );
+							recXmlPrint( $printer, $subElemName, $subElemValue, $indent );
 						}
 					}
 				} else {
-					foreach( $elemValue as $subElemName => $subElemValue ) {
-						recXmlPrint( $subElemName, $subElemValue, $indent );
+					foreach( $elemValue as $subElemName => &$subElemValue ) {
+						recXmlPrint( $printer, $subElemName, $subElemValue, $indent );
 					}
 				}
-				echo $indstr . "</$elemName>";
+				$printer( $indstr . "</$elemName>" );
 			}
 			break;
 		case 'object':
 			// ignore
 			break;
 		default:
-			echo $indstr . wfElement( $elemName, null, $elemValue );
+			$printer( $indstr . wfElement( $elemName, null, $elemValue ));
 			break;
 	}
+}
+
+function mergeDescriptionStrings( $value, $indstr ) {
+	if( is_array($value) ) {
+		$value = implode( "\n", $value );
+	}
+	return str_replace("\n", "\n$indstr", $value);
 }
 
 ?>
