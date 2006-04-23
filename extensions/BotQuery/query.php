@@ -38,11 +38,17 @@ require_once( "$IP/includes/Defines.php" );
 require_once( "$IP/LocalSettings.php" );
 require_once( "$IP/includes/Setup.php" );
 
+define( 'GEN_FUNCTION', 0 );
+define( 'GEN_MIME',     1 );
+define( 'GEN_ISMETA',   1 );
+define( 'GEN_PARAMS',   2 );
+define( 'GEN_DESC',     3 );
+
 $db =& wfGetDB( DB_SLAVE );
 $bqp = new BotQueryProcessor( $db );
 $bqp->execute();
 $bqp->output();
-
+	
 
 
 class BotQueryProcessor {
@@ -50,12 +56,13 @@ class BotQueryProcessor {
 
 	/**
 	* Output generators - each format name points to an array of the following parameters:
-	*     0) mime type 
-	*     1) Function to call
-	*     2) Format description
+	*     0) Function to call
+	*     1) mime type 
+	*     2) array of accepted parameters
+	*     3) Format description
 	*/
 	var $outputGenerators = array(
-		'xml' => array( 'text/xml', 'printXML', array(
+		'xml' => array( 'printXML', 'text/xml', array('xmlindent','nousage'), array(
 			"XML format",
 			"Optional indentation can be enabled by supplying 'xmlindent' parameter.",
 			"Errors will return this usage screen, unless 'nousage' parameter is given.",
@@ -63,72 +70,73 @@ class BotQueryProcessor {
 			"Please use other browsers or switch to html format while debuging.",
 			"Example: query.php?what=info&format=xml",
 			)),
-		'html'=> array( 'text/html', 'printHTML', array(
+		'html'=> array( 'printHTML', 'text/html', array('nousage'), array(
 			"HTML format",
 			"The data is presented as an indented syntax-highlighted XML format.",
 			"Errors will return this usage screen, unless 'nousage' parameter is given.",
 			"Example: query.php?what=info&format=html",
 			)),
-		'txt' => array( 'application/x-wiki-botquery-print_r', 'printHumanReadable', array(
+		'txt' => array( 'printHumanReadable', 'application/x-wiki-botquery-print_r', null, array(
 			"Human-readable format using print_r() (http://www.php.net/print_r)",
 			"Example: query.php?what=info&format=html",
 			)),
-		'json'=> array( 'application/json', 'printJSON', array(
+		'json'=> array( 'printJSON', 'application/json', null, array(
 			"JSON format (http://en.wikipedia.org/wiki/JSON)",
 			"Example: query.php?what=info&format=json",
 			)),
-		'php' => array( 'application/vnd.php.serialized', 'printPHP', array(
+		'php' => array( 'printPHP', 'application/vnd.php.serialized', null, array(
 			"PHP serialized format using serialize() (http://www.php.net/serialize)",
 			"Example: query.php?what=info&format=php",
 			)),
-		'dbg' => array( 'application/x-wiki-botquery-var_export', 'printParsableCode', array(
+		'dbg' => array( 'printParsableCode', 'application/x-wiki-botquery-var_export', null, array(
 			"PHP source code format using var_export() (http://www.php.net/var_export)",
 			"Example: query.php?what=info&format=dbg",
 			)),
-//		'tsv' => array( 'text/tab-separated-values', 'print', '' ),
+//		'tsv' => array( 'print', 'text/tab-separated-values', null, '' ),
 	);
 
 	/**
 	* Properties generators - each property points to an array of the following parameters:
-	*     0) true/false - does this property work on individual pages?  (false for site's metadata)
-	*     1) Function to call
-	*     2) property description
+	*     0) Function to call
+	*     1) true/false - does this property work on individual pages?  (false for site's metadata)
+	*     2) array of accepted parameters
+	*     3) Format description
 	*/
 	var $propGenerators = array(
 
 		// Site-wide Generators
-		'info'           => array( false, "genMetaSiteInfo", array(
+		'info'           => array( "genMetaSiteInfo", true, null, array(
 			"General site information",
 			"Example: query.php?what=info",
 			)),
-		'namespaces' => array( false, "genMetaNamespaceInfo", array(
+		'namespaces' => array( "genMetaNamespaceInfo", true, null, array(
 			"List of localized namespace names",
 			"Example: query.php?what=namespaces",
 			)),
-		'userinfo'       => array( false, "genMetaUserInfo", array(
+		'userinfo'       => array( "genMetaUserInfo", true, null, array(
 			"Information about current user",
 			"Example: query.php?what=userinfo",
 			)),
-		'dblredirects'   => array( false, "genMetaDoubleRedirects", array(
+		'dblredirects'   => array( "genMetaDoubleRedirects", true, null, array(
 			"List of double-redirect pages",
 			"THIS QUERY IS CURRENTLY DISABLED DUE TO PERFORMANCE REASONS",
 			"Example: query.php?what=dblredirects",
 			)),
 
 		// Page-specific Generators
-		'links'          => array( true, "genPageLinks", array(
+		'links'          => array( "genPageLinks", false, null, array(
 			"List of regular page links",
 			"Example: query.php?what=links&titles=MediaWiki|Wikipedia",
 			)),
-		'langlinks'      => array( true, "genPageLangLinks", array(
+		'langlinks'      => array( "genPageLangLinks", false, null, array(
 			"Inter-language links",
 			"Example: query.php?what=langlinks&titles=MediaWiki|Wikipedia",
 			)),
-		'templates'      => array( true, "genPageTemplates", array(
+		'templates'      => array( "genPageTemplates", false, null, array(
 			"List of used templates",
 			"Example: query.php?what=templates&titles=Main%20Page",
 			)),
-		'backlinks'      => array( true, "genPageBackLinks", array(
+		'backlinks'      => array( "genPageBackLinks", false, array('blfilter','bllimit','bloffset'), array(
 			"What pages link to this page(s)",
 			"Parameters supported:",
 			"blfilter   - Of all given pages, which should be queried:",
@@ -137,7 +145,7 @@ class BotQueryProcessor {
 			"bloffset   - when too many results are found, use this to page",
 			"Example: query.php?what=backlinks&titles=Main%20Page&bllimit=10",
 			)),
-		'embeddedin'     => array( true, "genPageEmbeddedIn", array(
+		'embeddedin'     => array( "genPageEmbeddedIn", false, array('eifilter','eilimit','eioffset'), array(
 			"What pages include this page(s) as template(s)",
 			"Parameters supported:",
 			"eifilter   - Of all given pages, which should be queried:",
@@ -148,7 +156,7 @@ class BotQueryProcessor {
 			"  Page 1: query.php?what=embeddedin&titles=Template:Stub&eilimit=10",
 			"  Page 2: query.php?what=embeddedin&titles=Template:Stub&eilimit=10&eioffset=10",
 			)),
-		'revisions'      => array( true, "genPageHistory", array(
+		'revisions'      => array( "genPageHistory", false, array('rvcomments','rvlimit','rvoffset'), array(
 			"Revision history - Lists edits performed to the given pages",
 			"Parameters supported:",
 			"rvcomments - if specified, the result will include summary strings",
@@ -177,12 +185,12 @@ class BotQueryProcessor {
 	function execute() {
 	
 		// Process metadata generators
-		$this->callGenerators( false );
+		$this->callGenerators( true );
 
 		// Query page table and initialize page ids.
 		if( $this->genPageInfo() ) {
 			// Process page-related generators
-			$this->callGenerators( true );
+			$this->callGenerators( false );
 		}
 		
 		// Report empty query
@@ -191,22 +199,44 @@ class BotQueryProcessor {
 		}
 	}
 
-	function callGenerators( $callPageGenerators ) {
+	function callGenerators( $callMetaGenerators ) {
 		foreach( $this->propGenerators as $property => &$generator ) {
-			if( $generator[0] === $callPageGenerators && in_array( $property, $this->properties )) {
-				$this->{$generator[1]}();
+			if( $generator[GEN_ISMETA] === $callMetaGenerators && in_array( $property, $this->properties )) {
+				$this->{$generator[GEN_FUNCTION]}();
 			}
 		}
 	}
 
 	function output($isError = false) {
-		list( $mime, $printer ) = $this->outputGenerators[$this->format];		
+		global $wgRequest, $wgUser;
+		
+		$printer = $this->outputGenerators[$this->format][GEN_FUNCTION];
+		$mime = $this->outputGenerators[$this->format][GEN_MIME];
 		header( "Content-Type: $mime; charset=utf-8;" );
 		if( !$isError ) {
 			$printer( $this->data );
 		} else {
 			$printer( $this->data['query'] );
 		}
+		
+		//
+		// Log request - userid (non-identifiable), status, what is asked, request size, additional parameters
+		//
+		$userIdentity = md5( $wgUser->getName() ) . "-" . ($wgUser->isAnon() ? "anon" : ($wgUser->isBot() ? "bot" : "usr"));
+		$what = implode( '|', $this->properties );
+		$params = mergeParameters( $this->propGenerators );
+		$params = array_merge( $params, mergeParameters( $this->outputGenerators ));
+		$params = array_unique($params);
+		$paramVals = array();
+		foreach( $params as $param ) {
+			$val = $wgRequest->getVal($param);
+			if( $val !== null ) {
+				$paramVals[] = "$param=$val";
+			}
+		}
+		$paramStr = implode( '&', $paramVals );
+		$msg = "$userIdentity\t{$this->format}\t$what\t{$this->requestsize}\t$paramStr";
+		wfDebugLog( 'query', $msg );
 	}
 
 
@@ -245,7 +275,7 @@ class BotQueryProcessor {
 		global $wgUser, $wgRequest;
 		
 		$where = array();
-		$requestsize = 0;
+		$this->requestsize = 0;
 		
 		//
 		// List of titles
@@ -269,7 +299,7 @@ class BotQueryProcessor {
 			}
 			// Create a list of pages to query
 			$where[] = $linkBatch->constructSet( 'page', $this->db );
-			$requestsize += $linkBatch->getSize();
+			$this->requestsize += $linkBatch->getSize();
 			
 			// we don't need the batch any more, data can be destroyed
 			$nonexistentPages = &$linkBatch->data;
@@ -290,11 +320,11 @@ class BotQueryProcessor {
 				$this->dieUsage( "pageids contains a bad id", 'pi_badpageid' );
 			}
 			$where['page_id'] = $pageids;
-			$requestsize += count($pageids);
+			$this->requestsize += count($pageids);
 		}
 
 		// Do we have anything to do?
-		if( $requestsize == 0 ) {
+		if( $this->requestsize == 0 ) {
 			return false;	// Nothing to do for any of the page generators
 		}
 		
@@ -302,11 +332,11 @@ class BotQueryProcessor {
 		// User restrictions
 		//
 		if( $wgUser->isBot() ) {
-			if ( $requestsize > 1000 ) {
+			if ( $this->requestsize > 1000 ) {
 				$this->dieUsage( 'Bots may not request over 1000 pages', 'pi_botquerytoobig' );
 			}
 		} else {
-			if( $requestsize > 20 ) {
+			if( $this->requestsize > 20 ) {
 				$this->dieUsage( 'Users may not request over 20 pages', 'pi_userquerytoobig' );
 			}
 		}
@@ -395,7 +425,7 @@ class BotQueryProcessor {
 			// If the user requested links, redirect links will be populated.
 			// Otherwise, we have to do it manually here by calling links generator with a custom list of IDs
 			if( !in_array( 'links', $this->properties )) {
-				$this->{$this->propGenerators['links'][1]}( $redirects );
+				$this->{$this->propGenerators['links'][GEN_FUNCTION]}( $redirects );
 			}
 		}
 
@@ -787,21 +817,21 @@ class BotQueryProcessor {
 			foreach( $this->outputGenerators as $format => &$generator ) {
 				$formats .= sprintf( "  %-{$indentSize}s - %s\n", 
 					$format,
-					mergeDescriptionStrings($generator[2], $indstr));
+					mergeDescriptionStrings($generator[GEN_DESC], $indstr));
 			}
 
 			$props = "\n  *These properties apply to the entire site*\n";
 			foreach( $this->propGenerators as $property => &$generator ) {
-				if( !$generator[0] ) {
+				if( $generator[GEN_ISMETA] ) {
 					$props .= sprintf( "  %-{$indentSize}s - %s\n", $property, 
-								mergeDescriptionStrings($generator[2], $indstr));
+								mergeDescriptionStrings($generator[GEN_DESC], $indstr));
 				}
 			}
 			$props .= "\n  *These properties apply to the specified pages*\n";
 			foreach( $this->propGenerators as $property => &$generator ) {
-				if( $generator[0] ) {
+				if( !$generator[GEN_ISMETA] ) {
 					$props .= sprintf( "  %-{$indentSize}s - %s\n", $property, 
-								mergeDescriptionStrings($generator[2], $indstr));
+								mergeDescriptionStrings($generator[GEN_DESC], $indstr));
 				}
 			}
 
@@ -816,7 +846,7 @@ class BotQueryProcessor {
 				"",
 				"Common parameters:",
 				"    format     - How should the output be formatted. See formats section.",
-				"    what    - What information the server should return. See properties section.",
+				"    what       - What information the server should return. See properties section.",
 				"    titles     - A list of titles, separated by the pipe '|' symbol.",
 				"    pageids    - A list of page ids, separated by the pipe '|' symbol.",
 				"",
@@ -894,10 +924,16 @@ function printHTML( &$data ) {
 </head>
 <body>
 	<br/>
+<?php
+	if( !array_key_exists('usage', $data) ) {
+?>
 	<small>
 	This page is being rendered in HTML format, which might not be suitable for your application.<br/>
 	See <a href="query.php">query.php</a> for more information.<br/>
 	</small>
+<?php
+	}
+?>
 <pre><?php
 	recXmlPrint( 'htmlprinter', 'yurik', $data, -2 );
 ?></pre>
@@ -1021,11 +1057,25 @@ function recXmlPrint( $printer, $elemName, &$elemValue, $indent = -2 ) {
 	}
 }
 
-function mergeDescriptionStrings( $value, $indstr ) {
+function mergeDescriptionStrings( &$value, $indstr ) {
 	if( is_array($value) ) {
 		$value = implode( "\n", $value );
 	}
 	return str_replace("\n", "\n$indstr", $value);
 }
 
+function mergeParameters( &$generators ) {
+	$params = array();
+	foreach( $generators as $property => &$generator ) {
+		$value = &$generator[GEN_PARAMS];
+		if( $value !== null ) {
+			if( is_array($value) ) {
+				$params = array_merge( $params, $value );
+			} else {
+				$params[] = $value;
+			}
+		}
+	}
+	return $params;
+}
 ?>
