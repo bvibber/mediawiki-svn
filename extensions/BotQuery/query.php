@@ -176,9 +176,6 @@ class BotQueryProcessor {
 
 	function execute() {
 	
-		// Enforce result consistency
-		$this->db->begin( $this->classname );
-	
 		// Process metadata generators
 		$this->callGenerators( false );
 
@@ -187,9 +184,6 @@ class BotQueryProcessor {
 			// Process page-related generators
 			$this->callGenerators( true );
 		}
-		
-		// Complete transaction
-		$this->db->commit( $this->classname );
 		
 		// Report empty query
 		if( !$this->data ) {
