@@ -317,7 +317,8 @@ class BotQueryProcessor {
 		if( array_key_exists('pages', $this->data) ) {
 			die( "internal error - 'pages' should not yet exist" );
 		}
-				
+		$this->data['pages'] = array();
+
 		//
 		// Query page information with the given lists of titles & pageIDs
 		//
@@ -815,7 +816,7 @@ class BotQueryProcessor {
 				"",
 				"Common parameters:",
 				"    format     - How should the output be formatted. See formats section.",
-				"    properties - What information the server should return. See properties section",
+				"    what    - What information the server should return. See properties section.",
 				"    titles     - A list of titles, separated by the pipe '|' symbol.",
 				"    pageids    - A list of page ids, separated by the pipe '|' symbol.",
 				"",
