@@ -108,7 +108,12 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 5422) Stub for Romani (rmy) language which extends ro
 * Fix linktrail for LanguageSr
 * (bug 5664) Fix Bosnian linktrail
-
+* (bug 3825) Namespace filtering on Special:Newpages
+* (bug 1922) When Special:Wantedpages is cached, mark links to pages
+  which have since been created
+* (bug 5659) Change grammar hacks for Bosnian Wikimedia namespaces.
+  This sort of special casing should be removed and fixed properly.
+* Remove useless whitespace from Special:Brokenredirects header
 
 == Compatibility ==
 

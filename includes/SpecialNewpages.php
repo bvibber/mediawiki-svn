@@ -106,6 +106,47 @@ class NewPagesPage extends QueryPage {
 		}
 		return parent::feedItemDesc( $row );
 	}
+	
+	/**
+	 * Show a namespace selection form for filtering
+	 *
+	 * @return string
+	 */	
+	function getPageHeader() {
+		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
+		$form  = wfOpenElement( 'form', array(
+			'method' => 'post',
+			'action' => $thisTitle->getLocalUrl() ) );
+		$form .= wfElement( 'label', array( 'for' => 'namespace' ),
+			wfMsg( 'namespace' ) ) . ' ';
+		$form .= HtmlNamespaceSelector( $this->namespace );
+		# Preserve the offset and limit
+		$form .= wfElement( 'input', array(
+			'type' => 'hidden',
+			'name' => 'offset',
+			'value' => $this->offset ) );
+		$form .= wfElement( 'input', array(
+			'type' => 'hidden',
+			'name' => 'limit',
+			'value' => $this->limit ) );
+		$form .= wfElement( 'input', array(
+			'type' => 'submit',
+			'name' => 'submit',
+			'id' => 'submit',
+			'value' => wfMsg( 'allpagessubmit' ) ) );
+		$form .= wfCloseElement( 'form' );
+		return( $form );
+	}
+	
+	/**
+	 * Link parameters
+	 *
+	 * @return array
+	 */
+	function linkParameters() {
+		return( array( 'namespace' => $this->namespace ) );
+	}
+	
 }
 
 /**
@@ -136,7 +177,11 @@ function wfSpecialNewpages($par, $specialPage) {
 				}
 			}
 		}
+	} else {
+		if( $ns = $wgRequest->getInt( 'namespace', 0 ) )
+			$namespace = $ns;
 	}
+	
 	if ( ! isset( $shownavigation ) )
 		$shownavigation = ! $specialPage->including();
 
