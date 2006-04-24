@@ -23,8 +23,8 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	
 	$content_provider = new ContentProviderHTTP ;
 	$converter = new MediaWikiConverter ;
-	
-	$xmlg["book_title"] = $_POST['document_title'] ;
+
+	$xmlg["book_title"] = $_POST['document_title'] || 'document';
 	$xmlg["site_base_url"] = $_POST['site'] ;
 	$xmlg["resolvetemplates"] = $_POST['use_templates'] ;
 	$xmlg['templates'] = explode ( "\n" , $_POST['templates'] ) ;
@@ -110,6 +110,7 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 
 		# Create ODT structure
 		$handle = fopen ( $dir . "/content.xml" , "w" ) ;
+/* Old code
 		fwrite ( $handle , $out ) ;
 		fclose ( $handle ) ;
 
@@ -138,7 +139,41 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		@rmdir ( $dir ) ;
 		@unlink ( $dir_file ) ;
 		@unlink ( $out_file ) ;
-		chdir ( $cwd ) ;
+		chdir ( $cwd ) ;*/
+		
+		if ($handle) {
+			fwrite ( $handle , $out ) ;
+			# Generate temporary ODT file
+			$out_file = tempnam($dir, "ODT");
+			$cmd = $xmlg['zip_odt'] ;
+			$cmd = str_replace ( '$1' , escapeshellarg ( $out_file ) , $cmd ) ;
+			$cmd = str_replace ( '$2' , escapeshellarg ( $dir . "/" ) , $cmd ) ;
+			@unlink ( $out_file ) ;
+			exec ( $cmd ) ;
+		
+			if ( $format == "odt" ) { # Return ODT file
+				$filename = $xmlg["book_title"] ;
+				if (!preg_match('/\.[a-zA-Z]{3}$/',$filename)) { $filename .= '.odt'; }
+				if (!preg_match('/\.[a-zA-Z]{3}$/',$out_file)) { $out_file .= '.zip'; }
+				header('Content-type: application/vnd.oasis.opendocument.text; charset=utf-8');
+				header('Content-Disposition: inline; filename="'.$filename.'"');
+				# XXX TODO: error handling here
+				$handle = fopen($out_file, 'rb');
+				fpassthru ( $handle ) ;
+				fclose ( $handle ) ;
+			} else { # Return XML
+				header('Content-type: text/xml; charset=utf-8');
+				print str_replace ( ">" , ">\n" , $out ) ;
+			}
+
+			# Cleanup
+			SureRemoveDir ( $dir ) ;
+			@rmdir ( $dir ) ;
+			@unlink ( $dir_file ) ;
+			@unlink ( $out_file ) ;
+			chdir ( $cwd ) ;
+		}	# error occured
+
 	} else if ( $format == "docbook_xml" ) {
 		$out = $converter->articles2docbook_xml ( $xml , $xmlg ) ;
 		header('Content-type: text/xml; charset=utf-8');
