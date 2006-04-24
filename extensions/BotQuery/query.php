@@ -109,13 +109,23 @@ class BotQueryProcessor {
 			"General site information",
 			"Example: query.php?what=info",
 			)),
-		'namespaces' => array( "genMetaNamespaceInfo", true, null, array(
+		'namespaces'     => array( "genMetaNamespaceInfo", true, null, array(
 			"List of localized namespace names",
 			"Example: query.php?what=namespaces",
 			)),
 		'userinfo'       => array( "genMetaUserInfo", true, null, array(
 			"Information about current user",
 			"Example: query.php?what=userinfo",
+			)),
+		'recentchanges'  => array( "genMetaRecentChanges", true, array( 'rcfrom','rclimit','rchide' ), array(
+			"Adds recently changed articles to the output list.",
+			"Parameters supported:",
+			"rcfrom     - Timestamp of the first entry to start from. The list order reverses.",
+			"rclimit    - how many total links to return.",
+			"             Smaller size is possible if pages changes multiple times.",
+			"rchide     - Which entries to ignore 'minor','bots','anons','liu' (loged-in users).",
+			"             Cannot specify both anons and liu.",
+			"Example: query.php?what=recentchanges&rchide=liu|bots",
 			)),
 		'dblredirects'   => array( "genMetaDoubleRedirects", true, null, array(
 			"List of double-redirect pages",
@@ -174,8 +184,8 @@ class BotQueryProcessor {
 		$this->db = $db;
 		$this->format = 'html'; // set it here because if parseFormat fails, it should still output something
 		$this->format = $this->parseFormat( $wgRequest->getVal('format', 'html') );
-		$this->properties = $this->parseProperties( $wgRequest->getVal('what'));
-		
+		$this->properties = $this->parseMultiValue( 'what', null, array_keys( $this->propGenerators ) );
+
 		// Neither one of these variables is referenced directly!
 		// Meta generators may append titles or pageids to these varibales.
 		// Do not modify this values directly - use the AddRaw() method
@@ -252,23 +262,20 @@ class BotQueryProcessor {
 			$this->dieUsage( "Unrecognised format '$format'", 'badformat' );
 		}
 	}
+	
+	function parseMultiValue( $valueName, $defaultValue, $allowedValues ) {
+		global $wgRequest;
 
-	function parseProperties( $properties ) {
-		global $wgUser;
-
-		if ( $properties == '' ) {
-			$this->dieUsage( 'No properties given', 'noproperties' );
+		$values = $wgRequest->getVal($valueName, $defaultValue);		
+		$valuesList = explode( '|', $values );
+		$unknownValues = array_diff( $valuesList, $allowedValues);
+		if( $unknownValues ) {
+			$this->dieUsage("Unrecognised value" . (count($unknownValues)>1?"s '":" '") . implode("', '", $unknownValues) . "' for parameter '$valueName'",
+							"unknown_$valueName" );
 		}
 
-		$propList = explode( '|', $properties );
-		$unknownProperties = array_diff( $propList, array_keys( $this->propGenerators ));
-		if( $unknownProperties ) {
-			$this->dieUsage( "Unrecognised propert" . (count($unknownProperties)>1?"ies ":"y ") . implode(', ', $unknownProperties), 'unknownproperty' );
-		}
-
-		return $propList;
+		return $valuesList;
 	}
-
 
 	//
 	// ************************************* GENERATORS *************************************
@@ -472,6 +479,69 @@ class BotQueryProcessor {
 		$this->data['meta']['user'] = $meta;
 	}
 
+	function genMetaRecentChanges() {
+		global $wgRequest;
+		
+		# Get last modified date, for client caching
+		$from = $wgRequest->getVal( 'rcfrom' );
+		$limit = $wgRequest->getInt( 'rclimit', 20 );
+		$hide = $this->parseMultiValue( 'rchide', '', array('','minor','bots','anons','liu') );
+
+		# It makes no sense to hide both anons and logged-in users
+		# Where this occurs, force anons to be shown
+		if( in_array('anons', $hide) && in_array('liu', $hide) ) {
+			$this->dieUsage( "Both 'anons' and 'liu' cannot be given for 'rchide' parameter", 'rc_badrchide' );
+		}
+
+		$conds = array();
+		
+		if ( $from != '' ) {
+			$conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($from);
+		}
+
+		if ( $limit < 1 || $limit > 5000 ) {
+			$this->dieUsage( "Invalid rclimit value '$limit' - must be between 1 and 5000", 'rc_badrclimit' );
+		}
+
+		foreach( $hide as &$elem ) {
+			switch( $elem ) {
+				case '': // nothing
+					break;
+				case 'minor':
+					$conds[] = 'rc_minor = 0';
+					break;
+				case 'bots':
+					$conds[] = 'rc_bot = 0';
+					break;
+				case 'anons':
+					$conds[] = 'rc_user != 0';
+					break;
+				case 'liu':
+					$conds[] = 'rc_user = 0';
+					break;
+				default:
+					die( "Internal error - Unknown hide param '$elem'" );
+			}
+		}	
+
+		$options = array( 'USE INDEX' => 'rc_timestamp', 'LIMIT' => $limit );
+		$options['ORDER BY'] = 'rc_timestamp' . ( $from != '' ? '' : ' DESC' );
+
+		$res = $this->db->select(
+			'recentchanges',
+			'rc_cur_id',
+			$conds,
+			$this->classname . '::genMetaRecentChanges',
+			$options
+			);
+		while ( $row = $this->db->fetchObject( $res ) ) {
+			if( $row->rc_cur_id != 0 ) {
+				$this->addRaw( 'pageids', $row->rc_cur_id );
+			}
+		}
+		$this->db->freeResult( $res );
+	}
+	
 	function genMetaDoubleRedirects() {
 		global $wgRequest, $wgUser;
 
