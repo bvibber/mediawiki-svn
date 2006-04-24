@@ -110,39 +110,9 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 
 		# Create ODT structure
 		$handle = fopen ( $dir . "/content.xml" , "w" ) ;
-/* Old code
-		fwrite ( $handle , $out ) ;
-		fclose ( $handle ) ;
-
-		# Generate temporary ODT file
-		$out_file = tempnam($xmlg["temp_dir"], "ODT");
-		$cmd = $xmlg['zip_odt'] ;
-		$cmd = str_replace ( '$1' , escapeshellarg ( $out_file ) , $cmd ) ;
-		$cmd = str_replace ( '$2' , escapeshellarg ( $dir . "/*" ) , $cmd ) ;
-		@unlink ( $out_file ) ;
-		exec ( $cmd ) ;
-		
-		if ( $format == "odt" ) { # Return ODT file
-			$filename = $xmlg["book_title"] ;
-			header('Content-type: application/vnd.oasis.opendocument.text; charset=utf-8');
-			header('Content-Disposition: inline; filename="'.$filename.'"');
-			$handle = fopen($out_file, 'rb');
-			fpassthru ( $handle ) ;
-			fclose ( $handle ) ;
-		} else { # Return XML
-			header('Content-type: text/xml; charset=utf-8');
-			print str_replace ( ">" , ">\n" , $out ) ;
-		}
-
-		# Cleanup
-		SureRemoveDir ( $dir ) ;
-		@rmdir ( $dir ) ;
-		@unlink ( $dir_file ) ;
-		@unlink ( $out_file ) ;
-		chdir ( $cwd ) ;*/
-		
 		if ($handle) {
 			fwrite ( $handle , $out ) ;
+			fclose ( $handle ) ;
 			# Generate temporary ODT file
 			$out_file = tempnam($dir, "ODT");
 			$cmd = $xmlg['zip_odt'] ;

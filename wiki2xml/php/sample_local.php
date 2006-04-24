@@ -22,7 +22,7 @@ $xmlg["docbook"] = array (
 
 ### Uncomment and localize the following to offer ODT export
 #$xmlg["zip_odt_path"] = "E:\\Program Files\\7-Zip" ; # Path to the zip/unzip programs; can be omitted if in default execuatable path
-#$xmlg["zip_odt"] = '7z.exe  a -r -tzip $1 $2' ; # Command to zip directory $1 to file $2
+#$xmlg["zip_odt"] = '7z.exe  a -r -tzip $1 $2*' ; # Command to zip directory $1 to file $2; NOTE THE '*' AFTER '$2' FOR WINDOWS ONLY!
 #$xmlg["unzip_odt"] = '7z.exe x $1 -o$2' ; # Command to unzip file $1 to directory $2
 
 
