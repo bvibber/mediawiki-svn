@@ -173,7 +173,7 @@ On login:
       else if no such user:
         -> INVALID STATE
   else:
-    * coreAuth::atemptAuth($name, $hashedPass)
+    * coreAuth::attemptAuth($name, $hashedPass)
       if passed:
         -> create local account
         -> coreAuth::attachLocal($name, $dbname)
@@ -202,6 +202,10 @@ On registration request:
         -> coreAuth::attachLocal($name, $dbname)
         -> update local lock state, email, email confirmation
         -> successful login.
+
+See the diagramms made using dia ( http://www.gnome.org/projects/dia ):
+  - login.dia
+  - registration.dia
 
 == Edge implementation ==
 

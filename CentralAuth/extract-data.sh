@@ -1,4 +1,9 @@
 #!/bin/bash
+#
+# Script to extract user data from the databases to csv files
+# It takes a bit more than one hour to extract the data.
+#
+# Author: Brion Vibber
 
 cluster=`cat /etc/cluster`
 for db in `cat /home/wikipedia/common/$cluster.dblist`
