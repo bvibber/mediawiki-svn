@@ -27,6 +27,7 @@
 	</target>
 
 	<target name="jar" depends="compile">
+		<mkdir dir="build" />
 		<jar jarfile="build/mwdumper.jar" compress="true">
 			<manifest>
 				<attribute name="Main-Class" value="org.mediawiki.dumper.Dumper" />

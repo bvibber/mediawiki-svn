@@ -28,6 +28,7 @@ SOURCES_IMPORT=\
   src/org/mediawiki/importer/ExactListFilter.java \
   src/org/mediawiki/importer/LatestFilter.java \
   src/org/mediawiki/importer/ListFilter.java \
+  src/org/mediawiki/importer/RevisionListFilter.java \
   src/org/mediawiki/importer/MultiWriter.java \
   src/org/mediawiki/importer/NamespaceFilter.java \
   src/org/mediawiki/importer/NamespaceSet.java \

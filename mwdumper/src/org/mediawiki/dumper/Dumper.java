@@ -253,6 +253,8 @@ class Dumper {
 			return new ListFilter(sink, param);
 		else if (filter.equals("exactlist"))
 			return new ExactListFilter(sink, param);
+		else if (filter.equals("revlist"))
+			return new RevisionListFilter(sink, param);
 		else
 			throw new IllegalArgumentException("Filter unknown: " + filter);
 	}

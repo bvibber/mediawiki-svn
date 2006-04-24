@@ -96,6 +96,8 @@ Filter actions:
       ignored. Talk and subject pages of given titles are both matched.
   --filter=exactlist:<list-filename>
       As above, but does not try to match associated talk/subject pages.
+  --filter=revlist:<list-filename>
+      Includes only the revisions specified by ID in the given file. 
   --filter=namespace:[!]<NS_KEY,NS_OTHERKEY,100,...>
       Includes only pages in (or not in, with "!") the given namespaces.
       You can use the NS_* constant names or the raw numeric keys.
