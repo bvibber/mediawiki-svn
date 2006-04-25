@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * Extension to provide a global "bad username" list
@@ -6,68 +6,116 @@
  * @author Rob Church <robchur@gmail.com>
  * @package MediaWiki
  * @subpackage Extensions
- * @copyright  2006 Rob Church
+ * @copyright © 2006 Rob Church
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0
  */
 
 if( defined( 'MEDIAWIKI' ) ) {
 
-	$wgExtensionFunctions[] = 'UsernameBlacklist_Init';
+	$wgExtensionFunctions[] = 'efUsernameBlacklistSetup';
 	$wgExtensionCredits['other'][] = array( 'name' => 'Username Blacklist', 'author' => 'Rob Church', 'url' => 'http://meta.wikimedia.org/wiki/Username_Blacklist' );
 
+	$wgAvailableRights[] = 'uboverride';
+	$wgGroupPermissions['sysop']['uboverride'] = true;
+
 	/**
-	 * Constructor
-	 */	
-	function UsernameBlacklist_Init() {
+	 * Register the extension
+	 */
+	function efUsernameBlacklistSetup() {
 		global $wgMessageCache, $wgHooks;
-		$wgHooks['AbortNewAccount'][] = 'UsernameBlacklist_Hook';
+		$wgHooks['AbortNewAccount'][] = 'efUsernameBlacklist';
 		$wgMessageCache->addMessage( 'blacklistedusername', 'Blacklisted username' );
-		$wgMessageCache->addMessage( 'blacklistedusernametext', 'The username you have chosen matches the [[MediaWiki:Usernameblacklist|list of blacklisted usernames]].' );
+		$wgMessageCache->addMessage( 'blacklistedusernametext', 'The username you have chosen matches the [[MediaWiki:Usernameblacklist|list of blacklisted usernames]]. Please choose another.' );
 	}
 
 	/**
-	 * Hooked function used to check the username against a blacklist.
-	 * Bring an error page if there is any match.
-	 *
-	 * @return boolean false if username is blacklisted.
+	 * Perform the check
+	 * @param $user User to be checked
+	 * @return bool
 	 */
-	function UsernameBlacklist_Hook( $user ) {
-		global $wgOut;
-		$username  = $user->getName();
-		$blacklist = wfMsg( 'usernameblacklist' );
-		if( $blacklist != '&lt;usernameblacklist&gt;' ) {
-			$list = explode( "\n", $blacklist );
-			foreach( $list as $item ) {
-				$item = UsernameBlacklist_Trim( $item );
-				if( $item ) {
-					$regex = '/' . $item . '/';
-					if( preg_match( $regex, $username ) > 0 ) {
-						$rt_title = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
-						$wgOut->errorPage( 'blacklistedusername', 'blacklistedusernametext' );
-						$wgOut->returnToMain( false, $rt_title->getPrefixedText() );
-						return( false );
-					}
-				}
-			}
-			return( true );
+	function efUsernameBlacklist( &$user ) {
+		global $wgUser;
+		$blackList =& UsernameBlacklist::fetch();
+		if( $blackList->match( $user->getName() ) && !$wgUser->isAllowed( 'uboverride' ) ) {
+			global $wgOut;
+			$returnTitle = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
+			$wgOut->errorPage( 'blacklistedusername', 'blacklistedusernametext' );
+			$wgOut->returnToMain( false, $returnTitle->getPrefixedText() );
+			return false;
 		} else {
-			return( true );
+			return true;
 		}
 	}
-
-	/**
-	 * Remove occurences of ' ' or '*' at the beginning of a string
-	 * and check for commented lines
-	 *
-	 * @param string $text A text to trim.
-	 * @return string The trimmed text.
-	 */
-	function UsernameBlacklist_Trim( $text ) {
-		while( ( substr( $text, 0, 1 ) == '*' ) || ( substr( $text, 0, 1 ) == ' ' ) ) {
-			$text = substr( $text, 1, strlen( $text ) - 1 );
+	
+	class UsernameBlacklist {
+		
+		var $regex;		
+		
+		/**
+		 * Trim leading spaces and asterisks from the text
+		 * @param $text Text to trim
+		 * @return string
+		 */
+		function transform( $text ) {
+			return trim( $text, ' *' );
 		}
-		return( substr( $text, 0, 1 ) == '#' ? false : $text );
-	}	
+		
+		/**
+		 * Is the supplied text a comment?
+		 * @param $text Text to check
+		 * @return bool
+		 */
+		function isComment( $text ) {
+			return substr( $this->transform( $text ), 0, 1 ) == '#';
+		}
+		
+		/**
+		 * Return a regular expression representing the blacklist
+		 * @return string
+		 */
+		function buildBlacklist() {
+			$blacklist = wfMsg( 'usernameblacklist' );
+			if( $blacklist != '&lt;usernameblacklist&gt;' ) {
+				$lines = explode( "\n", $blacklist );
+				foreach( $lines as $line ) {
+					if( !$this->isComment( $line ) )
+						$groups[] = $this->transform( $line );
+				}
+				return count( $groups ) ? '/(' . implode( '|', $groups ) . ')/' : false;
+			} else {
+				return false;
+			}
+		}
+		
+		/**
+		 * Match a username against the blacklist
+		 * @param $username Username to check
+		 * @return bool
+		 */
+		function match( $username ) {
+			return $this->regex ? preg_match( $this->regex, $username ) : false;
+		}
+		
+		/**
+		 * Constructor
+		 * Prepare the regular expression
+		 */
+		function UsernameBlacklist() {
+			$this->regex = $this->buildBlacklist();
+		}
+
+		/**
+		 * Fetch an instance of the blacklist class
+		 * @return UsernameBlacklist
+		 */
+		function fetch() {
+			static $blackList = false;
+			if( !$blackList )
+				$blackList = new UsernameBlacklist();
+			return $blackList;
+		}
+		
+	}
 	
 } else {
 	die( 'This file is an extension to the MediaWiki package, and cannot be executed separately.' );

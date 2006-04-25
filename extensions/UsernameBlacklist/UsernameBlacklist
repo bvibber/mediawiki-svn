@@ -1,6 +1,6 @@
 USERNAME BLACKLIST EXTENSION
 
-	Version 1.1
+	Version 1.2
 	© 2006 Rob Church
 
 This is free software licensed under the GNU General Public License. Please
@@ -24,6 +24,10 @@ The username blacklist extension is an add-on to the MediaWiki software which
 allows wiki administrators and other users with appropriate permissions to
 maintain a "blacklist" of usernames which cannot be registered. This blacklist
 is checked against and enforced during new account creation.
+
+Privileged users are permitted to override the blacklist when creating accounts
+manually. By default, this permission is available to sysops, but can be restricted
+further or removed to prevent any override.
 
 The blacklist accepts simple text and more powerful regular expressions, for
 matching against particular patterns of usernames.
@@ -91,6 +95,9 @@ example above), but I'll provide a couple of useful links:
 1.1
 	Make extension compatible with MediaWiki 1.5.8
 	Allow commenting out lines in the blacklist with #
+1.2
+	Use a class based code structure and rewrite some code to scrape up milliseconds
+	Allow users with the "uboverride" permission to pass the blacklist (manual acct. creation)
 	
 == 8. Thanks... ==
 
