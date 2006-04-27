@@ -269,4 +269,64 @@ class ContentProviderTextFile extends ContentProviderHTTP {
 
 }
 
+# Access through text file structure
+class ContentProviderMySQL extends ContentProviderHTTP {
+
+	function do_get_contents ( $title ) {
+		return $this->get_page_text ( $title ) ;
+	}
+
+	/**
+	 Called from outside
+	 */
+	function get_wiki_text ( $title , $do_cache = false ) {
+		$title = trim ( $title ) ;
+		if ( $title == "" ) return "" ; # Just in case...
+		if ( $this->first_title == "" ) {
+			$this->first_title = $title ;
+		}
+		$text = $this->get_page_text ( $title ) ;
+		return $text ;
+	}
+	
+	function get_file_location ( $ns , $title ) {
+		return get_file_location_global ( $this->basedir , $ns , $title , false ) ;
+	}
+	
+	function get_page_text ( $page , $allow_redirect = true ) {
+		/*
+		$filename = $this->get_file_location ( 0 , $page ) ;
+		$filename = $filename->fullname . $this->file_ending ;
+		if ( !file_exists ( $filename ) ) return "" ;
+		$text = trim ( file_get_contents ( $filename ) ) ;
+		*/
+		
+		$title = Title::newFromText ( $page ) ;
+		$article = new Article ( $title ) ;
+		$text = $article->getContent () ;
+	
+		# REDIRECT?
+		if ( $allow_redirect && strtoupper ( substr ( $text , 0 , 9 ) ) == "#REDIRECT" ) {
+			$text = substr ( $text , 9 ) ;
+			$text = array_shift ( explode ( "\n" , $text , 2 ) ) ;
+			$text = str_replace ( "[[" , "" , $text ) ;
+			$text = str_replace ( "]]" , "" , $text ) ;
+			$text = ucfirst ( trim ( $text ) ) ;
+			$text = $this->get_page_text ( $text , false ) ;
+		}
+		return $text ;
+	}
+
+	function get_internal_link ( $target , $text ) {
+		$file = $this->get_file_location ( 0 , $target ) ;
+		if ( !file_exists ( $file->fullname.$this->file_ending ) ) return $text ;
+		else return "<a href='browse_texts.php?title=" . urlencode ( $target ) . "'>{$text}</a>" ;
+	}
+	
+	function do_show_images () {
+		return false ;
+	}
+
+}
+
 ?>

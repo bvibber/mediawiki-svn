@@ -22,6 +22,7 @@ class wiki2xml
 		"br" => "xhtml:br",
 		"div" => "xhtml:div",
 		"span" => "xhtml:span",
+		"big" => "xhtml:big",
 		"small" => "xhtml:small",
 		"sub" => "xhtml:sub",
 		"sup" => "xhtml:sup",

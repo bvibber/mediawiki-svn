@@ -50,7 +50,7 @@ function wfWiki2XMLExtension() { # Checked for HTML and MySQL insertion attacks
 		function execute( $par = null ) { # Checked for HTML and MySQL insertion attacks
 			global $wgOut, $wgRequest, $wgUser, $wgTitle, $IP;
 			$fname = 'Special::Tasks:execute';
-			global $xmlg , $html_named_entities_mapping_mine;
+			global $xmlg , $html_named_entities_mapping_mine, $content_provider;
 			include_once ( "default.php" ) ; 
 			$xmlg['sourcedir'] = $IP.'/extensions/wiki2xml' ;
 			include_once ( "w2x.php" ) ;

@@ -19,7 +19,7 @@ function microtime_float()
    return ((float)$usec + (float)$sec);
 }
 
-function get_form () {
+function get_form ( $as_extension = false ) {
 	global $xmlg ;
 	$optional = array () ;
 	if ( isset ( $xmlg['docbook']['command_pdf'] ) ) {
@@ -34,7 +34,8 @@ function get_form () {
 	}
 	$optional = "<br/>" . implode ( "<br/>" , $optional ) ;
 	
-
+	if ( $as_extension ) $site = "<input type='hidden' name='site' value=''/>" ;
+	else $site = "Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/>/index.php<br/>" ;
 
 return "<form method='post'>
 <h2>Paste article list or wikitext here</h2>
@@ -54,7 +55,7 @@ This is
 <INPUT checked type='radio' name='whatsthis' value='articlelist'>a list of articles
 <br/>
 
-Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/>/index.php<br/>
+{$site}
 Title : <input type='text' name='document_title' value='' size=40/><br/>
 <input type='checkbox' name='add_gfdl' value='1' checked>Include GFDL (for some output formats)</input><br/>
 <input type='checkbox' name='keep_categories' value='1' checked>Keep categories</input><br/>
@@ -85,7 +86,11 @@ Known issues:
 if ( isset ( $_POST['doit'] ) ) { # Process
 	$wikitext = stripslashes ( $_POST['text'] ) ;
 	
-	$content_provider = new ContentProviderHTTP ;
+	if( !defined( 'MEDIAWIKI' ) ) { # Stand-alone
+		$content_provider = new ContentProviderHTTP ;
+	} else { # MediaWiki extension
+		$content_provider = new ContentProviderMySQL ;
+	}
 	$converter = new MediaWikiConverter ;
 
 	$xmlg["book_title"] = $_POST['document_title'] || 'document';
@@ -245,7 +250,7 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		print get_form () ;
 		print "</body></html>" ;
 	} else { # MediaWiki extension
-		$out = get_form () ;
+		$out = get_form ( true ) ;
 	}
 	
 }
