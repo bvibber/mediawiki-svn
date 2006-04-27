@@ -60,7 +60,7 @@ class MediaWikiConverter {
 	 */
 	function articles2text ( &$xml , $params = array () ) {
 		global $wiki2xml_authors ;
-		require_once ( "./xml2txt.php" ) ;
+		require_once ( "xml2txt.php" ) ;
 
 		$wiki2xml_authors = array () ;
 		$x2t = new xml2php ;
@@ -91,7 +91,7 @@ class MediaWikiConverter {
 	 */
 	function articles2xhtml ( &$xml , $params = array () ) {
 		global $xml2xhtml ;
-		require_once ( "./xml2xhtml.php" ) ;
+		require_once ( "xml2xhtml.php" ) ;
 		$lang = "EN" ; # Dummy
 
 		$ret = "" ;
@@ -127,7 +127,7 @@ class MediaWikiConverter {
 	 */
 	function articles2odt ( &$xml , $params = array () , $use_gfdl = false ) {
 		global $wiki2xml_authors , $xml2odt ;
-		require_once ( "./xml2odt.php" ) ;
+		require_once ( "xml2odt.php" ) ;
 		
 		# XML text to tree
 		$xml2odt = new XML2ODT ;
@@ -151,7 +151,7 @@ class MediaWikiConverter {
 	 */
 	function articles2docbook_xml ( &$xml , $params = array () , $use_gfdl = false ) {
 		global $wiki2xml_authors ;
-		require_once ( "./xml2docbook_xml.php" ) ;
+		require_once ( "xml2docbook_xml.php" ) ;
 
 		$wiki2xml_authors = array () ;
 		$x2t = new xml2php ;
@@ -214,6 +214,7 @@ class MediaWikiConverter {
 	 * Uses articles2docbook_xml
 	 */
 	function articles2docbook_pdf ( &$xml , $params = array () , $mode = "PDF" ) {
+		global $xmlg ;
 		$docbook_xml = $this->articles2docbook_xml ( $xml , $params , $params['add_gfdl'] ) ;
 		
 		# Create temporary directory
@@ -230,7 +231,7 @@ class MediaWikiConverter {
 		fwrite ( $handle , utf8_encode ( $docbook_xml ) ) ;
 		fclose ( $handle ) ;
 		if ( $params['add_gfdl'] ) {
-			copy ( "./gfdl.xml" , $temp_dir . "/gfdl.xml" ) ;
+			copy ( $xmlg['sourcedir'] . "/gfdl.xml" , $temp_dir . "/gfdl.xml" ) ;
 		}
 		
 		# Call converter

@@ -658,6 +658,6 @@ class element {
 	}
 }
 
-require_once ( "./xml2tree.php" ) ; # Uses the "element" class defined above
+require_once ( "xml2tree.php" ) ; # Uses the "element" class defined above
 
 ?>

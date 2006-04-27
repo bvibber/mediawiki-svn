@@ -2,7 +2,10 @@
 # Copyright by Magnus Manske (2005)
 # Released under GPL
 
-include_once ( "default.php" ) ; # Which will include local.php, if available
+if( !defined( 'MEDIAWIKI' ) ) { # Stand-alone
+	include_once ( "default.php" ) ; # Which will include local.php, if available
+}
+
 require_once ( "mediawiki_converter.php" ) ;
 
 @set_time_limit ( 0 ) ; # No time limit
@@ -14,6 +17,67 @@ function microtime_float()
 {
    list($usec, $sec) = explode(" ", microtime());
    return ((float)$usec + (float)$sec);
+}
+
+function get_form () {
+	global $xmlg ;
+	$optional = array () ;
+	if ( isset ( $xmlg['docbook']['command_pdf'] ) ) {
+		$optional[] = "<INPUT type='radio' name='output_format' value='docbook_pdf'>DocBook PDF" ;
+	}
+	if ( isset ( $xmlg['docbook']['command_html'] ) ) {
+		$optional[] = "<INPUT type='radio' name='output_format' value='docbook_html'>DocBook HTML" ;
+	}
+	if ( isset ( $xmlg['zip_odt'] ) ) {
+		$optional[] = "<INPUT type='radio' name='output_format' value='odt_xml'>OpenOffice XML" ;
+		$optional[] = "<INPUT type='radio' name='output_format' value='odt'>OpenOffice ODT" ;
+	}
+	$optional = "<br/>" . implode ( "<br/>" , $optional ) ;
+	
+
+
+return "<form method='post'>
+<h2>Paste article list or wikitext here</h2>
+<table border='0' width='100%'><tr>
+<td valign='top'><textarea rows='20' cols='80' style='width:100%' name='text'></textarea></td>
+<td width='200px' valign='top' nowrap>
+<INPUT checked type='radio' name='use_templates' value='all'>Use all templates<br/>
+<INPUT type='radio' name='use_templates' value='none'>Do not use templates<br/>
+<INPUT type='radio' name='use_templates' value='these'>Use these templates<br/>
+<INPUT type='radio' name='use_templates' value='notthese'>Use all but these templates<br/>
+<textarea rows='15' cols='30' style='width:100%' name='templates'></textarea>
+</td></tr></table>
+<table border='0'><tr>
+<td valign='top'>
+This is
+<INPUT type='radio' name='whatsthis' value='wikitext'>raw wikitext 
+<INPUT checked type='radio' name='whatsthis' value='articlelist'>a list of articles
+<br/>
+
+Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/>/index.php<br/>
+Title : <input type='text' name='document_title' value='' size=40/><br/>
+<input type='checkbox' name='add_gfdl' value='1' checked>Include GFDL (for some output formats)</input><br/>
+<input type='checkbox' name='keep_categories' value='1' checked>Keep categories</input><br/>
+<input type='checkbox' name='keep_interlanguage' value='1' checked>Keep interlanguage links</input><br/>
+<input type='submit' name='doit' value='Convert'/>
+</td><td valign='top' style='border-left:1px black solid'>
+<b>Output</b>
+<br/><INPUT checked type='radio' name='output_format' value='xml'>XML 
+<br/><INPUT type='radio' name='output_format' value='text'>Plain text 
+ <input type='checkbox' name='plaintext_markup' value='1' checked>Use *_/ markup</input>
+ <input type='checkbox' name='plaintext_prelink' value='1' checked>Put &rarr; before internal links</input>
+<br/><INPUT type='radio' name='output_format' value='xhtml'>XHTML 
+<br/><INPUT type='radio' name='output_format' value='docbook_xml'>DocBook XML 
+{$optional}
+</tr></table>
+</form>
+<p>
+Known issues:
+<ul>
+<li>In templates, {{{variables}}} used within &lt;nowiki&gt; tags will be replaced as well (too lazy to strip them)</li>
+<li>HTML comments are removed (instead of converted into XML tags)</li>
+</ul>
+</p>" ;
 }
 
 ## MAIN PROGRAM
@@ -83,7 +147,8 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 #		header("Content-type: application/xhtml+xml");
 		echo $converter->articles2xhtml ( $xml , $xmlg ) ;
 	} else if ( $format == "odt" || $format == "odt_xml" ) {
-		$cwd = getcwd() ;
+		if ( $xmlg['sourcedir'] == '.' ) $cwd = getcwd() ;
+		else $cwd = $xmlg['sourcedir'] ;
 		$template_file = $cwd . '/template.odt' ;
 
 		$dir_file = tempnam($xmlg["temp_dir"], "ODD");
@@ -169,69 +234,20 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 		SureRemoveDir ( $pdf_dir ) ;
 		@rmdir ( $pdf_dir ) ;
 	}
-	
+	exit ;
 } else { # Show the form
-	header('Content-type: text/html; charset=utf-8');
-	
-	$optional = array () ;
-	if ( isset ( $xmlg['docbook']['command_pdf'] ) ) {
-		$optional[] = "<INPUT type='radio' name='output_format' value='docbook_pdf'>DocBook PDF" ;
-	}
-	if ( isset ( $xmlg['docbook']['command_html'] ) ) {
-		$optional[] = "<INPUT type='radio' name='output_format' value='docbook_html'>DocBook HTML" ;
-	}
-	if ( isset ( $xmlg['zip_odt'] ) ) {
-		$optional[] = "<INPUT type='radio' name='output_format' value='odt_xml'>OpenOffice XML" ;
-		$optional[] = "<INPUT type='radio' name='output_format' value='odt'>OpenOffice ODT" ;
-	}
-	$optional = "<br/>" . implode ( "<br/>" , $optional ) ;
-	
-	print "
-<html><head></head><body><form method='post'>
+	if( !defined( 'MEDIAWIKI' ) ) { # Stand-alone
+		header('Content-type: text/html; charset=utf-8');
+		print "
+<html><head></head><body>
 <h1>Magnus' magic MediaWiki-to-XML-to-stuff converter</h1>
-<p>All written in PHP - so portable, <s>so incredibly slow...</s> <i>about as fast as the original MediaWiki parser!</i></p>
-<h2>Paste article list or wikitext here</h2>
-<table border='0' width='100%'><tr>
-<td valign='top'><textarea rows='20' cols='80' style='width:100%' name='text'></textarea></td>
-<td width='200px' valign='top' nowrap>
-<INPUT checked type='radio' name='use_templates' value='all'>Use all templates<br/>
-<INPUT type='radio' name='use_templates' value='none'>Do not use templates<br/>
-<INPUT type='radio' name='use_templates' value='these'>Use these templates<br/>
-<INPUT type='radio' name='use_templates' value='notthese'>Use all but these templates
-<textarea rows='15' cols='30' style='width:100%' name='templates'></textarea>
-</td></tr></table>
-<table border='0'><tr>
-<td valign='top'>
-This is
-<INPUT type='radio' name='whatsthis' value='wikitext'>raw wikitext 
-<INPUT checked type='radio' name='whatsthis' value='articlelist'>a list of articles
-<br/>
-
-Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/>/index.php<br/>
-Title : <input type='text' name='document_title' value='' size=40/><br/>
-<input type='checkbox' name='add_gfdl' value='1' checked>Include GFDL (for some output formats)</input><br/>
-<input type='checkbox' name='keep_categories' value='1' checked>Keep categories</input><br/>
-<input type='checkbox' name='keep_interlanguage' value='1' checked>Keep interlanguage links</input><br/>
-<input type='submit' name='doit' value='Convert'/>
-</td><td valign='top' style='border-left:1px black solid'>
-<b>Output</b>
-<br/><INPUT checked type='radio' name='output_format' value='xml'>XML 
-<br/><INPUT type='radio' name='output_format' value='text'>Plain text 
- <input type='checkbox' name='plaintext_markup' value='1' checked>Use *_/ markup</input>
- <input type='checkbox' name='plaintext_prelink' value='1' checked>Put &rarr; before internal links</input>
-<br/><INPUT type='radio' name='output_format' value='xhtml'>XHTML 
-<br/><INPUT type='radio' name='output_format' value='docbook_xml'>DocBook XML 
-{$optional}
-</tr></table>
-</form>
-<p>
-Known issues:
-<ul>
-<li>In templates, {{{variables}}} used within &lt;nowiki&gt; tags will be replaced as well (too lazy to strip them)</li>
-<li>HTML comments are removed (instead of converted into XML tags)</li>
-</ul>
-</p>
-</body></html>" ;
+<p>All written in PHP - so portable, <s>so incredibly slow...</s> <i>about as fast as the original MediaWiki parser!</i></p>" ;
+		print get_form () ;
+		print "</body></html>" ;
+	} else { # MediaWiki extension
+		$out = get_form () ;
+	}
+	
 }
 
 #<input type='checkbox' name='resolvetemplates' value='1' checked>Automatically resolve templates</input><br/>

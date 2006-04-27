@@ -147,7 +147,7 @@ class element {
 	}
 }
 
-require_once ( "./xml2tree.php" ) ;
+require_once ( "xml2tree.php" ) ;
 
 
 

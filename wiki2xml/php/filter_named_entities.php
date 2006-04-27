@@ -5,7 +5,7 @@
  * which do not replace some entities correctly
 */
 
-$html_named_entities_mapping = array (
+$html_named_entities_mapping_mine = array (
                                  // Obtained with:
                                  // less /usr/share/xml/entities/xhtml/*.ent|grep '^<!ENTITY'|sed -e 's/^<\!ENTITY[ \t]*\([A-Za-z0-9]*\)[ \t]*"&#\([0-9]*\);".*$/"\1"=>\2,/' > /home/dom/data/2005/04/entities-table
 "nbsp"=>160,
@@ -272,8 +272,8 @@ function utf8_chr($code)
 }
 
 function filter_named_entities(&$content) {
-  global $html_named_entities_mapping;
-  foreach($html_named_entities_mapping as $name => $value) {
+  global $html_named_entities_mapping_mine;
+  foreach($html_named_entities_mapping_mine as $name => $value) {
     $content=str_replace('&'.$name.';',utf8_chr ( $value ),$content);
   } 
   $content=str_replace('í','i',$content); # Ugly hack
