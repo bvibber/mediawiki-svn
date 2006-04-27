@@ -136,6 +136,34 @@ class XML2XHTML {
 	
 	
 	
+	function tag_extension ( $open , &$attrs ) {
+		if( !defined( 'MEDIAWIKI' ) ) return ; # Only as MediaWiki extension
+	
+	
+		if ( $open ) {
+			$this->extension_name = $attrs['EXTENSION_NAME'] ;
+			$this->extension_attrs = $attrs ;
+			unset ( $this->extension_attrs['EXTENSION_NAME'] ) ;
+			$this->extension_text_before = $this->s ;
+			$this->s = "" ;
+		} else {
+			$extension_text = trim ( $this->s ) ;
+			$this->s = $this->extension_text_before ;
+			$this->extension_text_before = "" ;
+			
+			global $wgParser , $wgTitle ;
+			if ( !isset ( $wgParser ) ) return ; # Paranoia
+			if ( !isset ( $wgParser->mTagHooks[$this->extension_name] ) ) return ; # Extension has no handler
+			
+			if ( $extension_text == "" ) $extension_text = "<{$this->extension_name}/>" ;
+			else $extension_text = "<{$this->extension_name}>{$extension_text}</{$this->extension_name}>" ;
+			$options = new ParserOptions ;
+			$s = $wgParser->parse ( $extension_text , $wgTitle , $options , false ) ;
+			$this->add ( $s->getText() ) ;
+		}
+	}
+	
+	
 	function tag_paragraph ( $open , &$attrs ) {
 		if ( !isset ( $attrs['align'] ) ) $attrs['align'] = 'justify' ;
 		if ( $open ) $this->add_tag ( "p" , $attrs ) ;
