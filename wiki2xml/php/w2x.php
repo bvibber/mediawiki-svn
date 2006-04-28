@@ -1,5 +1,5 @@
 <?php
-# Copyright by Magnus Manske (2005)
+# Copyright by Magnus Manske (2005 - 2006)
 # Released under GPL
 
 if( !defined( 'MEDIAWIKI' ) ) { # Stand-alone

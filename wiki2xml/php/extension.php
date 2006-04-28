@@ -19,6 +19,14 @@ $wgExtensionCredits['Wiki2XML'][] = array(
 
 $wgExtensionFunctions[] = 'wfWiki2XMLExtension';
 
+# for Special::Version:
+$wgExtensionCredits['parserhook'][] = array(
+        'name' => 'wiki2xml extension',
+        'author' => 'Magnus Manske et al.',
+        'url' => 'http://en.wikipedia.org/wiki/User:Magnus_Manske',
+        'version' => 'v0.02',
+);
+
 
 #_____________________________________________________________________________
 

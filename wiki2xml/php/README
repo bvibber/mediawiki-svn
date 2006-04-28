@@ -53,6 +53,19 @@ Open the following in your browser:
 
 It should present you with a form with a textarea and several buttons.
 
+=head1 EXTENSION
+
+To enable this as extension, put all files in the C<< php >> directory into a
+C<< wiki2xml >> subdirectory of your MediaWiki extensions directory.
+
+Then add
+
+        require_once ("extensions/wiki2xml/extension.php");
+
+to your C<< LocalSettings.php >>. The extension can then be accessed as
+C<< [[Special:Wiki2XML]] >>.
+
+
 =head1 TROUBLESHOOTING
 
 If you get errors like the following:

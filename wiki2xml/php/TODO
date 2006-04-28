@@ -1,0 +1,4 @@
+* Articles with '_' result in 'Main_Page' instead of 'Main Page' as headline
+* Sublists, and numbered lists are wrong
+* the ODT output could use a more strict separation between template and
+  generated XML

@@ -145,7 +145,7 @@ class XML2ODT {
 		$this->list_list[] = $o ;
 		while ( count ( $this->list_item_name ) <= $o->depth ) $this->list_item_name[] = "" ;
 		$this->list_item_name[$o->depth] = 'PL' . $o->number ;
-		return '<text:list text:style-name="L' . $o->number . '">' ;
+		return '<text:list text:style-name="List_20_' . $o->number . '">' ;
 	}
 	
 	function ensure_list_closed () {
@@ -215,7 +215,7 @@ class XML2ODT {
 		# List styles
 		$cm = 0.3 ;
 		foreach ( $this->list_list AS $list ) {
-			$l = "L" . $list->number ;
+			$l = "List_20_" . $list->number ;
 			$p = "PL" . $list->number ;
 			$ret .= '<style:style style:name="'.$p.'" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="'.$l.'">' ;
 			if ( $list->depth > 1 ) {
@@ -239,7 +239,7 @@ class XML2ODT {
 				} else  {
 					$ret .= '<text:list-level-style-bullet text:level="' .
 							$depth . 
-							'" text:style-name="Bullet_20_Symbols" style:num-suffix="." text:bullet-char="*">' .
+							'" text:style-name="Bullet_20_Symbols" style:num-suffix="." text:bullet-char="">' .
 							'<style:list-level-properties text:space-before="' .
 							$off . 'cm" text:min-label-width="' . $cm . 'cm"/>' .
 							'<style:text-properties style:font-name="StarSymbol"/>' .
