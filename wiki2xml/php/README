@@ -1,5 +1,7 @@
 =pod
 
+=head1 INTRODUCTION
+
 You can read this document better with:
 
 	perldoc README
@@ -24,10 +26,10 @@ Copy the subdirectory C<< ./php/ >> to your server's C<< wiki/ >>
 directory as a subdirectory named C<< w2x >>:
 
 	htdocs
-		\- wiki
-			\- w2x				<-- here
-				\- w2x.php
-				\- wiki2xml.php		etc
+        \- wiki
+            \- w2x                <-- here
+                \- w2x.php
+                \- wiki2xml.php        etc
 
 =head2 Configuration
 
@@ -38,12 +40,18 @@ and then edit it to match your configuration.
 
 On a Unix/Linux server the following can be used as a starting point:
 
-	$xmlg["temp_dir"] = "/tmp"; 			# Directory for temporary files
+	# Directory for temporary files:
+	$xmlg["temp_dir"] = "/tmp";
 
-	#$xmlg["zip_odt_path"] = ""; 			# Path to the zip/unzip programs; can be omitted
-							# if in default execuatable path
-	$xmlg["zip_odt"] = 'zip -r9 $1 $2';		# Command to zip directory $1 to file $2
-	$xmlg["unzip_odt"] = 'unzip -x $1 -d $2'; 	# Command to unzip file $1 to directory $2
+ 	# Path to the zip/unzip programs; can be omitted if in default
+	# executable path:
+	#$xmlg["zip_odt_path"] = "";
+
+	# Command to zip directory $1 to file $2:
+	$xmlg["zip_odt"] = 'zip -r9 $1 $2';
+
+	# Command to unzip file $1 to directory $2:
+	$xmlg["unzip_odt"] = 'unzip -x $1 -d $2';
  
 =head1 USAGE
 
