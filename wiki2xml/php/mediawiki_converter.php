@@ -1,6 +1,8 @@
 <?php
 
-require_once ( "filter_named_entities.php" ) ; # PHP4 and early PHP5 bug workaround
+# PHP4 and early PHP5 bug workaround:
+require_once ( "filter_named_entities.php" ) ;
+
 require_once ( "global_functions.php" ) ;
 require_once ( "wiki2xml.php" ) ;
 require_once ( "content_provider.php" ) ;

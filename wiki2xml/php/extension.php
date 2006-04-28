@@ -1,10 +1,11 @@
 <?php
 /*
-To enable this extension, put all files in this directory into a "wiki2xml" subdirectory of your MediaWiki extensions directory
+To enable this extension, put all files in this directory into a "wiki2xml"
+subdirectory of your MediaWiki extensions directory.
 Also, add
 	require_once ( "extensions/wiki2xml/extension.php" ) ;
 to your LocalSettings.php
-The extension can then be accessed as [[Special:Wiki2XML]]
+The extension will then be accessed as [[Special:Wiki2XML]].
 */
 
 if( !defined( 'MEDIAWIKI' ) ) die();
@@ -31,8 +32,8 @@ $wgExtensionCredits['parserhook'][] = array(
 #_____________________________________________________________________________
 
 /**
-* The special page
-*/
+ * The special page
+ */
 function wfWiki2XMLExtension() { # Checked for HTML and MySQL insertion attacks
 	global $IP, $wgMessageCache;
 #	wfTasksAddCache();
