@@ -54,7 +54,8 @@ if ( $format =="xml" ) {
 } else {
 	# XHTML
 	if ( stristr($_SERVER["HTTP_ACCEPT"],"application/xhtml+xml") ) {
-		header("Content-type: text/html; charset=utf-8"); # Skipping the "strict" part ;-)
+		# Skipping the "strict" part ;-)
+		header("Content-type: text/html; charset=utf-8");
 #		header("Content-type: application/xhtml+xml");
 	} else {
 		# Header hack for IE
