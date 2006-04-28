@@ -93,7 +93,7 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	}
 	$converter = new MediaWikiConverter ;
 
-	$xmlg["book_title"] = $_POST['document_title'] || 'document';
+	$xmlg["book_title"] = $_POST['document_title'];
 	$xmlg["site_base_url"] = $_POST['site'] ;
 	$xmlg["resolvetemplates"] = $_POST['use_templates'] ;
 	$xmlg['templates'] = explode ( "\n" , $_POST['templates'] ) ;
@@ -109,6 +109,9 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	} else {
 		$t = microtime_float() ;
 		$articles = explode ( "\n" , $wikitext ) ;
+		if ($xmlg["book_title"] == '') {
+			$xmlg["book_title"] = $articles[0];
+		}
 		foreach ( $articles AS $a ) {
 			$wiki2xml_authors = array () ;
 			$a = trim ( $a ) ;
@@ -184,10 +187,20 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 			fwrite ( $handle , $out ) ;
 			fclose ( $handle ) ;
 			# Generate temporary ODT file
-			$out_file = tempnam($dir, "ODT");
+			$out_file = tempnam('', "ODT");
 			$cmd = $xmlg['zip_odt'] ;
 			$cmd = str_replace ( '$1' , escapeshellarg ( $out_file ) , $cmd ) ;
-			$cmd = str_replace ( '$2' , escapeshellarg ( $dir . "/" ) , $cmd ) ;
+			
+			if ( $xmlg['is_windows'] ) {
+				$cmd = str_replace ( '$2' , escapeshellarg ( $dir . "/" ) , $cmd ) ;
+			} else {
+				$cmd = str_replace ( '$2' , escapeshellarg ( './' ) , $cmd ) ;
+				# linux/unix zip needs to be in the directory, otherwise it will
+				# include needless parts into the directory structure
+				chdir ($dir);
+				# remove the output if it for some reason already exists
+			}
+			
 			@unlink ( $out_file ) ;
 			exec ( $cmd ) ;
 		

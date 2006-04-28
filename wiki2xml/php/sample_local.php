@@ -17,6 +17,9 @@ $xmlg["docbook"] = array (
 	"dtd" => "file:/c:/docbook/dtd/docbookx.dtd"
 ) ;
 
+# On Windows, set
+# $xmlg['is_windows'] = true ;
+
 ### Uncomment the following to use Special:Export and (potentially) automatic authors list; a little slower, though
 #$xmlg["use_special_export"] = 1 ;
 
