@@ -226,6 +226,8 @@ class Dumper {
 	static DumpWriter openOutputSink(OutputWrapper output, String format, String param) throws IOException {
 		if (format.equals("xml"))
 			return new XmlDumpWriter(output.getFileStream());
+		else if (format.equals("sphinx"))
+			return new SphinxWriter(output.getFileStream());
 		else if (format.equals("sql")) {
 			SqlStream sqlStream = output.getSqlStream();
 			if (param.equals("1.4"))

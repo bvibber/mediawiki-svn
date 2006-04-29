@@ -16,6 +16,7 @@ CFLAGS?=-O2
 SOURCES_DUMPER=\
   src/org/mediawiki/dumper/Dumper.java \
   src/org/mediawiki/dumper/ProgressFilter.java \
+  src/org/mediawiki/dumper/Tools.java \
   src/org/apache/commons/compress/bzip2/BZip2Constants.java \
   src/org/apache/commons/compress/bzip2/CBZip2InputStream.java \
   src/org/apache/commons/compress/bzip2/CBZip2OutputStream.java \
@@ -37,6 +38,7 @@ SOURCES_IMPORT=\
   src/org/mediawiki/importer/PageFilter.java \
   src/org/mediawiki/importer/Revision.java \
   src/org/mediawiki/importer/Siteinfo.java \
+  src/org/mediawiki/importer/Sphinx.java \
   src/org/mediawiki/importer/SqlFileStream.java \
   src/org/mediawiki/importer/SqlLiteral.java \
   src/org/mediawiki/importer/SqlStream.java \
