@@ -5,7 +5,7 @@
 Summary: The Squid proxy caching server.
 Name: squid
 Version: 2.5.STABLE12
-Release: 1wm
+Release: 3wm
 Epoch: 7
 License: GPL
 Group: System Environment/Daemons
@@ -169,6 +169,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_datadir}/squid/icons
 %config(noreplace) %{_datadir}/squid/errors
+%config(noreplace) /etc/squid/errors
 %{_sbindir}/squid
 %{_sbindir}/squidclient
 %config(noreplace) /etc/squid/icons
@@ -302,10 +303,16 @@ fi
 chgrp squid /var/cache/samba/winbindd_privileged > /dev/null 2>& 1 || true
 
 %changelog
+* Tue Feb 2 2006 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE12-3.WM
+- Built for FC4
+
 * Sun Oct 30 2005 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE12-1.WM
 - Upgrade upstream to 2.5.STABLE12
 - Include a cron job that checks whether squid should be running and restarts
   it if it isn't
+
+* Fri Oct 28 2005 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE12RC1-1noepoll.WM
+- Build without epoll, to compare memory leaking behaviour
 
 * Mon Oct 17 2005 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE12RC1-1.WM
 - Adapted FC3 RPM to Wikimedia needs
