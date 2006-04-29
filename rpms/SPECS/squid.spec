@@ -41,7 +41,7 @@ Patch253: squid-2.5.STABLE13-nomanglerequestheaders.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Prereq: /sbin/chkconfig logrotate shadow-utils
 Requires: bash >= 2.0
-BuildPrereq: openjade linuxdoc-tools openssl-devel automake15 autoconf213
+BuildPrereq: openjade linuxdoc-tools openssl-devel automake15 autoconf213 subversion
 Obsoletes: squid-novm
 
 %description
