@@ -1,0 +1,2 @@
+# Rotate logs every 10 minutes
+*/10 * * * *	root	/usr/sbin/logrotate -f /etc/logrotate.d/squid >/dev/null 2>&1

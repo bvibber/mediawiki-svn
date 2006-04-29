@@ -1,0 +1,35 @@
+/var/log/squid/access.log {
+    size=10M
+    rotate 5
+    nocompress
+    missingok
+    postrotate
+        /usr/sbin/squid -k rotate
+    endscript
+}
+/var/log/squid/cache.log {
+    weekly
+    rotate 5
+    copytruncate
+    compress
+    notifempty
+    missingok
+    postrotate
+        /usr/sbin/squid -k rotate
+    endscript
+}
+
+/var/log/squid/store.log {
+    weekly
+    rotate 5
+    copytruncate
+    compress
+    notifempty
+    missingok
+# This script asks squid to rotate its logs on its own.
+# Restarting squid is a long process and it is not worth
+# doing it just to rotate logs
+    postrotate
+      /usr/sbin/squid -k rotate
+    endscript
+}
