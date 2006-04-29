@@ -5,7 +5,7 @@
 Summary: The Squid proxy caching server.
 Name: squid
 Version: 2.5.STABLE13
-Release: 1wm
+Release: 4wm
 Epoch: 7
 License: GPL
 Group: System Environment/Daemons
@@ -31,6 +31,7 @@ Patch203: squid-2.5.STABLE7-build.patch
 Patch204: squid-2.5.STABLE4-perlpath.patch
 Patch205: squid-2.5.STABLE5-pipe.patch
 #Patch206: squid-2.5.STABLE11-libbind.patch
+Patch207: squid-2.5.STABLE13-htcp.patch
 
 # Wikimedia patches
 Patch251: squid-htcp-clr.diff
@@ -66,6 +67,7 @@ lookup program (dnsserver), a program for retrieving FTP data
 %patch204 -p1 -b .perlpath
 %patch205 -p1 -b .pipe
 #%patch206 -p1 -b .libbind
+%patch207 -p0 -b .htcp
 %patch251 -p0 -b .htcpclr
 %patch252 -p1 -b .errors
 
@@ -106,7 +108,7 @@ lookup program (dnsserver), a program for retrieving FTP data
    --enable-carp \
    --datadir=%{_datadir}
 
-export CFLAGS="-fPIE -Os -g -pipe -fsigned-char" ; export LDFLAGS=-pie ;
+export CFLAGS="-fPIE -Os -g -pipe -fsigned-char -DPURIFY=1" ; export LDFLAGS=-pie ;
 make %{?_smp_mflags}
 
 mkdir faq
@@ -302,6 +304,12 @@ fi
 chgrp squid /var/cache/samba/winbindd_privileged > /dev/null 2>& 1 || true
 
 %changelog
+* Thu Apr 27 2006 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE13-4.WM
+- New production build with HTCP memleak fix
+
+* Wed Apr 26 2006 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE13-3.WM
+- Experimental build with AIO and an alternative malloc lib
+
 * Wed Apr 26 2006 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE13-1.WM
 - New upstream version 2.5.STABLE13 which hopefully fixes the grave memleak
 
