@@ -4,8 +4,8 @@
 
 Summary: The Squid proxy caching server.
 Name: squid
-Version: 2.5.STABLE12
-Release: 3wm
+Version: 2.5.STABLE13
+Release: 1wm
 Epoch: 7
 License: GPL
 Group: System Environment/Daemons
@@ -101,7 +101,6 @@ lookup program (dnsserver), a program for retrieving FTP data
    --enable-htcp \
    --enable-time-hack \
    --with-maxfd=8192 \
-   --with-pthreads \
    --disable-icmp \
    --enable-cache-digests \
    --enable-carp \
@@ -303,6 +302,9 @@ fi
 chgrp squid /var/cache/samba/winbindd_privileged > /dev/null 2>& 1 || true
 
 %changelog
+* Wed Apr 26 2006 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE13-1.WM
+- New upstream version 2.5.STABLE13 which hopefully fixes the grave memleak
+
 * Tue Feb 2 2006 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE12-3.WM
 - Built for FC4
 
