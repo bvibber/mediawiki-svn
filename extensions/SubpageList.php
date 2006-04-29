@@ -13,7 +13,7 @@
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efSubpageListSetup';
-	$wgExtensionCredits['parser'][] = array( 'name' => 'Subpage List', 'author' => 'Rob Church' );
+	$wgExtensionCredits['parserhook'][] = array( 'name' => 'Subpage List', 'author' => 'Rob Church' );
 
 	function efSubpageListSetup() {
 		global $wgParser;
