@@ -1,25 +1,25 @@
 <?php
 /**
- * Bot Query extension for MediaWiki 1.7+
- *
- * Copyright (C) 2006 Yuri Astrakhan <FirstnameLastname@gmail.com>
- * Uses bits from the original query.php code written by Tim Starling.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
- * http://www.gnu.org/copyleft/gpl.html
- */
+* Bot Query extension for MediaWiki 1.7+
+*
+* Copyright (C) 2006 Yuri Astrakhan <FirstnameLastname@gmail.com>
+* Uses bits from the original query.php code written by Tim Starling.
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License along
+* with this program; if not, write to the Free Software Foundation, Inc.,
+* 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+* http://www.gnu.org/copyleft/gpl.html
+*/
 
 
 define( 'MEDIAWIKI', true );
@@ -42,7 +42,8 @@ define( 'GEN_FUNCTION', 0 );
 define( 'GEN_MIME',     1 );
 define( 'GEN_ISMETA',   1 );
 define( 'GEN_PARAMS',   2 );
-define( 'GEN_DESC',     3 );
+define( 'GEN_DEFAULTS', 3 );
+define( 'GEN_DESC',     4 );
 
 $db =& wfGetDB( DB_SLAVE );
 $bqp = new BotQueryProcessor( $db );
@@ -59,10 +60,14 @@ class BotQueryProcessor {
 	*     0) Function to call
 	*     1) mime type 
 	*     2) array of accepted parameters
-	*     3) Format description
+	*     3) array of default parameter values
+	*     4) Format description
 	*/
 	var $outputGenerators = array(
-		'xml' => array( 'printXML', 'text/xml', array('xmlindent','nousage'), array(
+		'xml' => array( 'printXML', 'text/xml',
+			array('xmlindent', 'nousage'), 
+			array(null, null), 
+			array(
 			"XML format",
 			"Optional indentation can be enabled by supplying 'xmlindent' parameter.",
 			"Errors will return this usage screen, unless 'nousage' parameter is given.",
@@ -70,29 +75,32 @@ class BotQueryProcessor {
 			"Please use other browsers or switch to html format while debuging.",
 			"Example: query.php?what=info&format=xml",
 			)),
-		'html'=> array( 'printHTML', 'text/html', array('nousage'), array(
+		'html'=> array( 'printHTML', 'text/html',
+			array('nousage'),
+			array(null),
+			array(
 			"HTML format",
 			"The data is presented as an indented syntax-highlighted XML format.",
 			"Errors will return this usage screen, unless 'nousage' parameter is given.",
 			"Example: query.php?what=info&format=html",
 			)),
-		'txt' => array( 'printHumanReadable', 'application/x-wiki-botquery-print_r', null, array(
+		'txt' => array( 'printHumanReadable', 'application/x-wiki-botquery-print_r', null, null, array(
 			"Human-readable format using print_r() (http://www.php.net/print_r)",
 			"Example: query.php?what=info&format=txt",
 			)),
-		'json'=> array( 'printJSON', 'application/json', null, array(
+		'json'=> array( 'printJSON', 'application/json', null, null, array(
 			"JSON format (http://en.wikipedia.org/wiki/JSON)",
 			"Example: query.php?what=info&format=json",
 			)),
-		'php' => array( 'printPHP', 'application/vnd.php.serialized', null, array(
+		'php' => array( 'printPHP', 'application/vnd.php.serialized', null, null, array(
 			"PHP serialized format using serialize() (http://www.php.net/serialize)",
 			"Example: query.php?what=info&format=php",
 			)),
-		'dbg' => array( 'printParsableCode', 'application/x-wiki-botquery-var_export', null, array(
+		'dbg' => array( 'printParsableCode', 'application/x-wiki-botquery-var_export', null, null, array(
 			"PHP source code format using var_export() (http://www.php.net/var_export)",
 			"Example: query.php?what=info&format=dbg",
 			)),
-//		'tsv' => array( 'print', 'text/tab-separated-values', null, '' ),
+//		'tsv' => array( 'print', 'text/tab-separated-values', null, null, '' ),
 	);
 
 	/**
@@ -100,53 +108,73 @@ class BotQueryProcessor {
 	*     0) Function to call
 	*     1) true/false - does this property work on individual pages?  (false for site's metadata)
 	*     2) array of accepted parameters
-	*     3) Format description
+	*     3) array of default parameter values
+	*     4) Format description
 	*/
 	var $propGenerators = array(
 
 		// Site-wide Generators
-		'info'           => array( "genMetaSiteInfo", true, null, array(
+		'info'           => array( "genMetaSiteInfo", true, null, null, array(
 			"General site information",
 			"Example: query.php?what=info",
 			)),
-		'namespaces'     => array( "genMetaNamespaceInfo", true, null, array(
+		'namespaces'     => array( "genMetaNamespaceInfo", true, null, null, array(
 			"List of localized namespace names",
 			"Example: query.php?what=namespaces",
 			)),
-		'userinfo'       => array( "genMetaUserInfo", true, null, array(
+		'userinfo'       => array( "genMetaUserInfo", true, null, null, array(
 			"Information about current user",
 			"Example: query.php?what=userinfo",
 			)),
-		'recentchanges'  => array( "genMetaRecentChanges", true, array( 'rcfrom','rclimit','rchide' ), array(
+		'recentchanges'  => array( "genMetaRecentChanges", true,
+			array( 'rcfrom', 'rclimit', 'rchide' ),
+			array( null, 50, array(null, 'minor', 'bots', 'anons', 'liu') ),
+			array(
 			"Adds recently changed articles to the output list.",
 			"Parameters supported:",
 			"rcfrom     - Timestamp of the first entry to start from. The list order reverses.",
 			"rclimit    - how many total links to return.",
 			"             Smaller size is possible if pages changes multiple times.",
-			"rchide     - Which entries to ignore 'minor','bots','anons','liu' (loged-in users).",
+			"rchide     - Which entries to ignore 'minor', 'bots', 'anons', 'liu' (loged-in users).",
 			"             Cannot specify both anons and liu.",
 			"Example: query.php?what=recentchanges&rchide=liu|bots",
 			)),
-		'dblredirects'   => array( "genMetaDoubleRedirects", true, null, array(
+		'users'          => array( "genUserPages", true,
+			array( 'usfrom', 'uslimit' ),
+			array( null, 50 ),
+			array(
+			"Adds user pages to the output list.",
+			"Parameters supported:",
+			"usfrom     - Start user listing from...",
+			"uslimit    - how many total links to return.",
+			"Example: query.php?what=users&usfrom=Y",
+			)),
+		'dblredirects'   => array( "genMetaDoubleRedirects", true,
+			array('dfoffset', 'drlimit'),
+			array(null, 50),
+			array(
 			"List of double-redirect pages",
 			"THIS QUERY IS CURRENTLY DISABLED DUE TO PERFORMANCE REASONS",
 			"Example: query.php?what=dblredirects",
 			)),
 
 		// Page-specific Generators
-		'links'          => array( "genPageLinks", false, null, array(
+		'links'          => array( "genPageLinks", false, null, null, array(
 			"List of regular page links",
 			"Example: query.php?what=links&titles=MediaWiki|Wikipedia",
 			)),
-		'langlinks'      => array( "genPageLangLinks", false, null, array(
+		'langlinks'      => array( "genPageLangLinks", false, null, null, array(
 			"Inter-language links",
 			"Example: query.php?what=langlinks&titles=MediaWiki|Wikipedia",
 			)),
-		'templates'      => array( "genPageTemplates", false, null, array(
+		'templates'      => array( "genPageTemplates", false, null, null, array(
 			"List of used templates",
 			"Example: query.php?what=templates&titles=Main%20Page",
 			)),
-		'backlinks'      => array( "genPageBackLinks", false, array('blfilter','bllimit','bloffset'), array(
+		'backlinks'      => array( "genPageBackLinksHelper", false,
+			array('blfilter', 'bllimit', 'bloffset'),
+			array(array('existing', 'nonredirects', 'all'), 50, null),
+			array(
 			"What pages link to this page(s)",
 			"Parameters supported:",
 			"blfilter   - Of all given pages, which should be queried:",
@@ -155,7 +183,10 @@ class BotQueryProcessor {
 			"bloffset   - when too many results are found, use this to page",
 			"Example: query.php?what=backlinks&titles=Main%20Page&bllimit=10",
 			)),
-		'embeddedin'     => array( "genPageEmbeddedIn", false, array('eifilter','eilimit','eioffset'), array(
+		'embeddedin'     => array( "genPageBackLinksHelper", false, 
+			array('eifilter', 'eilimit', 'eioffset'), 
+			array(array('existing', 'nonredirects', 'all'), 50, null),
+			array(
 			"What pages include this page(s) as template(s)",
 			"Parameters supported:",
 			"eifilter   - Of all given pages, which should be queried:",
@@ -166,12 +197,28 @@ class BotQueryProcessor {
 			"  Page 1: query.php?what=embeddedin&titles=Template:Stub&eilimit=10",
 			"  Page 2: query.php?what=embeddedin&titles=Template:Stub&eilimit=10&eioffset=10",
 			)),
-		'revisions'      => array( "genPageHistory", false, array('rvcomments','rvlimit','rvoffset'), array(
+		'imagelinks'     => array( "genPageBackLinksHelper", false, 
+			array('ilfilter', 'illimit', 'iloffset'), 
+			array(array('existing', 'nonredirects', 'all'), 50, null),
+			array(
+			"What pages use this image(s)",
+			"ilfilter   - Of all given images, which should be queried:",
+			"  'nonredirects', 'existing' (default), or 'all' (including non-existant)",
+			"illimit    - how many total links to return",
+			"iloffset   - when too many results are found, use this to page",
+			"Example: query.php?what=imagelinks&titles=image:test.jpg&illimit=10",
+			)),
+		'revisions'      => array( "genPageHistory", false,
+			array('rvcomments', 'rvlimit', 'rvoffset', 'rvstart', 'rvend'),
+			array(null, 50, null, null, null),
+			array(
 			"Revision history - Lists edits performed to the given pages",
 			"Parameters supported:",
 			"rvcomments - if specified, the result will include summary strings",
 			"rvlimit    - how many links to return *for each title*",
 			"rvoffset   - when too many results are found, use this to page",
+			"rvstart    - timestamp of the earliest entry",
+			"rvend      - timestamp of the latest entry",
 			"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments",
 			)),
 	);
@@ -182,9 +229,12 @@ class BotQueryProcessor {
 		$this->data = array();
 		$this->requestsize = 0;
 		$this->db = $db;
-		$this->format = 'html'; // set it here because if parseFormat fails, it should still output something
+
+		$this->format = 'html'; // set it here because if parseFormat fails, the usage output rilies on this variable
 		$this->format = $this->parseFormat( $wgRequest->getVal('format', 'html') );
-		$this->properties = $this->parseMultiValue( 'what', null, array_keys( $this->propGenerators ) );
+
+		$allProperties = array_merge(array(null), array_keys( $this->propGenerators ));
+		$this->properties = $this->parseMultiValue( 'what', $allProperties );
 
 		// Neither one of these variables is referenced directly!
 		// Meta generators may append titles or pageids to these varibales.
@@ -213,7 +263,7 @@ class BotQueryProcessor {
 	function callGenerators( $callMetaGenerators ) {
 		foreach( $this->propGenerators as $property => &$generator ) {
 			if( $generator[GEN_ISMETA] === $callMetaGenerators && in_array( $property, $this->properties )) {
-				$this->{$generator[GEN_FUNCTION]}();
+				$this->{$generator[GEN_FUNCTION]}($property, $generator);
 			}
 		}
 	}
@@ -263,10 +313,10 @@ class BotQueryProcessor {
 		}
 	}
 	
-	function parseMultiValue( $valueName, $defaultValue, $allowedValues ) {
+	function parseMultiValue( $valueName, $allowedValues ) {
 		global $wgRequest;
 
-		$values = $wgRequest->getVal($valueName, $defaultValue);		
+		$values = $wgRequest->getVal($valueName, $allowedValues[0]);		
 		$valuesList = explode( '|', $values );
 		$unknownValues = array_diff( $valuesList, $allowedValues);
 		if( $unknownValues ) {
@@ -339,15 +389,7 @@ class BotQueryProcessor {
 		//
 		// User restrictions
 		//
-		if( $wgUser->isBot() ) {
-			if ( $this->requestsize > 1000 ) {
-				$this->dieUsage( 'Bots may not request over 1000 pages', 'pi_botquerytoobig' );
-			}
-		} else {
-			if( $this->requestsize > 20 ) {
-				$this->dieUsage( 'Users may not request over 20 pages', 'pi_userquerytoobig' );
-			}
-		}
+		$this->validateLimit( 'pi_botquerytoobig', $this->requestsize, 50, 1000 );
 		
 		//
 		// Make sure that this->data['pages'] is empty
@@ -440,7 +482,7 @@ class BotQueryProcessor {
 		return true; // success
 	}
 
-	function genMetaSiteInfo() {
+	function genMetaSiteInfo(&$prop, &$genInfo) {
 		global $wgSitename, $wgVersion, $wgCapitalLinks;
 		$meta = array();
 		$mainPage = Title::newFromText( wfMsgForContent( 'mainpage' ) );
@@ -454,7 +496,7 @@ class BotQueryProcessor {
 		$this->data['meta']['site'] = $meta;
 	}
 
-	function genMetaNamespaceInfo() {
+	function genMetaNamespaceInfo(&$prop, &$genInfo) {
 		global $wgContLang;
 		$meta = array();
 		$meta['_element'] = 'ns';
@@ -464,7 +506,7 @@ class BotQueryProcessor {
 		$this->data['meta']['namespaces'] = $meta;
 	}
 
-	function genMetaUserInfo() {
+	function genMetaUserInfo(&$prop, &$genInfo) {
 		global $wgUser;
 		
 		$meta = array();
@@ -479,31 +521,21 @@ class BotQueryProcessor {
 		$this->data['meta']['user'] = $meta;
 	}
 
-	function genMetaRecentChanges() {
-		global $wgRequest;
+	function genMetaRecentChanges(&$prop, &$genInfo) {
 		
-		# Get last modified date, for client caching
-		$from = $wgRequest->getVal( 'rcfrom' );
-		$limit = $wgRequest->getInt( 'rclimit', 20 );
-		$hide = $this->parseMultiValue( 'rchide', '', array('','minor','bots','anons','liu') );
-
+		extract( $this->getParams( $prop, $genInfo ));		
 		# It makes no sense to hide both anons and logged-in users
-		# Where this occurs, force anons to be shown
-		if( in_array('anons', $hide) && in_array('liu', $hide) ) {
+		if( in_array('anons', $rchide) && in_array('liu', $rchide) ) {
 			$this->dieUsage( "Both 'anons' and 'liu' cannot be given for 'rchide' parameter", 'rc_badrchide' );
 		}
+		$this->validateLimit( 'rc_badrclimit', $rclimit, 100, 5000 );
 
-		$conds = array();
-		
-		if ( $from != '' ) {
-			$conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($from);
+		$conds = array();		
+		if ( $rcfrom != '' ) {
+			$conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($rcfrom);
 		}
 
-		if ( $limit < 1 || $limit > 5000 ) {
-			$this->dieUsage( "Invalid rclimit value '$limit' - must be between 1 and 5000", 'rc_badrclimit' );
-		}
-
-		foreach( $hide as &$elem ) {
+		foreach( $rchide as &$elem ) {
 			switch( $elem ) {
 				case '': // nothing
 					break;
@@ -524,8 +556,8 @@ class BotQueryProcessor {
 			}
 		}	
 
-		$options = array( 'USE INDEX' => 'rc_timestamp', 'LIMIT' => $limit );
-		$options['ORDER BY'] = 'rc_timestamp' . ( $from != '' ? '' : ' DESC' );
+		$options = array( 'USE INDEX' => 'rc_timestamp', 'LIMIT' => $rclimit );
+		$options['ORDER BY'] = 'rc_timestamp' . ( $rcfrom != '' ? '' : ' DESC' );
 
 		$res = $this->db->select(
 			'recentchanges',
@@ -542,8 +574,31 @@ class BotQueryProcessor {
 		$this->db->freeResult( $res );
 	}
 	
-	function genMetaDoubleRedirects() {
-		global $wgRequest, $wgUser;
+	function genUserPages(&$prop, &$genInfo) {
+		global $wgContLang;
+		
+		extract( $this->getParams( $prop, $genInfo ));
+
+		$res = $this->db->select(
+			'user',
+			'user_name',
+			"user_name >= '$usfrom'",
+			$this->classname . '::genUserPages',
+			array( 'ORDER BY' => 'user_name', 'LIMIT' => $uslimit )
+			);
+		
+		$userNS = $wgContLang->getNsText(NS_USER);
+		if( !$userNS ) $userNS = 'User';
+		$userNS .= ':';
+		
+		while ( $row = $this->db->fetchObject( $res ) ) {
+			$this->addRaw( 'titles', $userNS . $row->user_name );
+		}
+		$this->db->freeResult( $res );
+	}
+	
+	function genMetaDoubleRedirects(&$prop, &$genInfo) {
+		global $wgUser;
 
 		$this->dieUsage( "DoubleRedirect generator is disabled until caching is implemented", 'dr_disabled' );
 		
@@ -551,25 +606,24 @@ class BotQueryProcessor {
 			$this->dieUsage( "Only bots are allowed to query for double-redirects", 'dr_notbot' );
 		}
 
+		extract( $this->getParams( $prop, $genInfo ));
 		extract( $this->db->tableNames( 'page', 'pagelinks' ) );
 		
-			$offset = $wgRequest->getInt( 'droffset', 0 );
-		$limit = $wgRequest->getInt( 'drlimit', 50 );
 		$sql = "SELECT " .
-			 " pa.page_id id_a," .
-			 " pb.page_id id_b," .
-			 " pc.page_id id_c" .
+			" pa.page_id id_a," .
+			" pb.page_id id_b," .
+			" pc.page_id id_c" .
 			" FROM $pagelinks AS la, $pagelinks AS lb, $page AS pa, $page AS pb, $page AS pc" .
 			" WHERE pa.page_is_redirect=1 AND pb.page_is_redirect=1" .
-			 " AND la.pl_from=pa.page_id" .
-			 " AND la.pl_namespace=pb.page_namespace" .
-			 " AND la.pl_title=pb.page_title" .
-			 " AND lb.pl_from=pb.page_id" .
-			 " AND lb.pl_namespace=pc.page_namespace" .
-			 " AND lb.pl_title=pc.page_title" .
-			 " LIMIT $limit";
-		if( $offset > 0 ) {
-			$sql .= " OFFSET $offset";
+			" AND la.pl_from=pa.page_id" .
+			" AND la.pl_namespace=pb.page_namespace" .
+			" AND la.pl_title=pb.page_title" .
+			" AND lb.pl_from=pb.page_id" .
+			" AND lb.pl_namespace=pc.page_namespace" .
+			" AND lb.pl_title=pc.page_title" .
+			" LIMIT $drlimit";
+		if( isset($droffset) ) {
+			$sql .= " OFFSET $droffset";
 		}
 
 		// Add found page ids to the list of requested ids - they will be auto-populated later
@@ -581,7 +635,7 @@ class BotQueryProcessor {
 		$this->db->freeResult( $res );
 	}
 
-	function genPageLangLinks() {
+	function genPageLangLinks(&$prop, &$genInfo) {
 		if( !$this->nonRedirPageIds ) {
 			return;
 		}		
@@ -596,7 +650,7 @@ class BotQueryProcessor {
 		$this->db->freeResult( $res );
 	}
 
-	function genPageTemplates() {
+	function genPageTemplates(&$prop, &$genInfo) {
 		if( !$this->nonRedirPageIds ) {
 			return;
 		}
@@ -630,24 +684,15 @@ class BotQueryProcessor {
 			$this->addPageSubElement( $row->pl_from, 'links', 'l', $this->getLinkInfo( $row->pl_namespace, $row->pl_title ));
 		}
 		$this->db->freeResult( $res );
-	}
-
-	function genPageBackLinks() {
-		$this->genPageBackLinksHelper( 'backlinks' );
-	}
-	
-	function genPageEmbeddedIn() {
-		$this->genPageBackLinksHelper( 'embeddedin' );
-	}
+	}	
 	
 	/**
 	* Generate backlinks for either links, templates, or both
 	* $type - either 'template' or 'page'
 	*/
-	function genPageBackLinksHelper( $type ) {
-		global $wgRequest;
-
-		switch( $type ) {
+	function genPageBackLinksHelper(&$prop, &$genInfo) {
+		$isImage = false;
+		switch( $prop ) {
 			case 'embeddedin' :
 				$columnPrefix = 'tl';	// database column name prefix
 				$code = 'ei';			// 
@@ -658,14 +703,26 @@ class BotQueryProcessor {
 				$code = 'bl';
 				$linktbl = $this->db->tableName( 'pagelinks' );
 				break;
+			case 'imagelinks' :
+				$columnPrefix = 'il';
+				$code = 'il';
+				$linktbl = $this->db->tableName( 'imagelinks' );
+				$isImage = true;
+				break;
 			default :
 				die("unknown type");
 		}
 		$pagetbl = $this->db->tableName( 'page' );
-		
-		$offset = $wgRequest->getInt( "{$code}offset", 0 );
-		$limit = $wgRequest->getInt( "{$code}limit", 50 ) + 1;
-		$filter = $wgRequest->getVal( "{$code}filter", 'existing' );
+
+		$parameters = $this->getParams( $prop, $genInfo );		
+		$offset = $parameters["{$code}offset"];
+		$limit  = $parameters["{$code}limit"] + 1;
+		$filter = $parameters["{$code}filter"];
+		if( count($filter) != 1 ) {
+			$this->dieUsage( "{$code}filter must either be 'all', 'existing', or 'nonredirects'", "{$code}_badmultifilter" );
+		} else {
+			$filter = $filter[0];
+		}
 
 		$nonredir = $existing = $all = false;
 		switch( $filter ) {
@@ -684,32 +741,59 @@ class BotQueryProcessor {
 
 		$linkBatch = new LinkBatch;
 		foreach( $this->data['pages'] as $key => &$page ) {
-			if(( $key < 0 && $all && array_key_exists('_obj', $page) ) ||
-			   ( $key > 0 && ($existing || ($nonredir && !array_key_exists('redirect', $page))) )) {
-
+			if( (
+				( $key < 0 && $all && array_key_exists('_obj', $page) ) ||
+				( $key > 0 && ($existing || ($nonredir && !array_key_exists('redirect', $page))) )
+				)
+			&&
+				( !$isImage || $page['ns'] == NS_IMAGE )	// when doing image links search, only allow NS_IMAGE
+			) {
 				$linkBatch->addObj( $page['_obj'] );
 			}
 		}
 		
 		if( $linkBatch->isEmpty() ) {
-			$this->addStatusMessage( $type, 'emptyrequest' );
+			$this->addStatusMessage( $prop, 'emptyrequest' );
 			return; // Nothing to do
+		}
+
+		if( $isImage ) {
+			$where = "{$columnPrefix}_to IN (";
+			$firstTitle = true;
+			foreach( $linkBatch->data[NS_IMAGE] as $dbkey => $nothing ) {
+				if ( $firstTitle ) {
+					$firstTitle = false;
+				} else {
+					$where .= ',';
+				}
+				$where .= $this->db->addQuotes( $dbkey );
+			}
+			$where .= ')';
+		} else {
+			$where = $linkBatch->constructSet( $columnPrefix, $this->db );
 		}
 		
 		$sql = "SELECT"
-			." pfrom.page_id from_id, pfrom.page_namespace from_namespace, pfrom.page_title from_title,"
-			." pto.page_id to_id, {$columnPrefix}_namespace to_namespace, {$columnPrefix}_title to_title"
+			." pfrom.page_id from_id, pfrom.page_namespace from_namespace,"
+			." pfrom.page_title from_title, pto.page_id to_id,"
+			.($isImage ?
+				" {$columnPrefix}_to to_title" :
+				" {$columnPrefix}_namespace to_namespace, {$columnPrefix}_title to_title" )
 		." FROM"
 			." ("
-				  ." $linktbl INNER JOIN $pagetbl pfrom ON {$columnPrefix}_from = pfrom.page_id"
+				." $linktbl INNER JOIN $pagetbl pfrom ON {$columnPrefix}_from = pfrom.page_id"
 			." )"
-			." LEFT JOIN $pagetbl pto ON {$columnPrefix}_namespace = pto.page_namespace AND {$columnPrefix}_title = pto.page_title"
-		." WHERE"
-			." " . $linkBatch->constructSet( $columnPrefix, $this->db )
+			." LEFT JOIN $pagetbl pto ON"
+			.($isImage ?
+				" {$columnPrefix}_to = pto.page_title" : 
+				" {$columnPrefix}_title = pto.page_title AND {$columnPrefix}_namespace = pto.page_namespace")
+		." WHERE $where"
 		." ORDER BY"
-			." {$columnPrefix}_namespace, {$columnPrefix}_title"
+			.($isImage ?
+				" {$columnPrefix}_to" : 
+				" {$columnPrefix}_namespace, {$columnPrefix}_title")
 		." LIMIT $limit"
-		. ( $offset > 0 ? " OFFSET $offset" : "" );
+		. ( isset($offset) ? " OFFSET $offset" : "" );
 
 		$count = 0;
 		$res = $this->db->query( $sql, $this->classname . "::genPageBackLinks_{$code}" );
@@ -721,56 +805,48 @@ class BotQueryProcessor {
 			}
 			$pageId = $row->to_id;
 			if( $pageId === null ) {
-				$pageId = $this->lookupInvalidPageId( $row->to_namespace, $row->to_title );
+				$pageId = $this->lookupInvalidPageId( 
+					$isImage ? NS_IMAGE : $row->to_namespace,
+					$row->to_title );
 			}
 			$values = $this->getLinkInfo( $row->from_namespace, $row->from_title, $row->from_id );
-			$this->addPageSubElement( $pageId, $type, $code, $values );
+			$this->addPageSubElement( $pageId, $prop, $code, $values );
 		}
 		$this->db->freeResult( $res );
 
 		if( $count < $limit ) {
-			$this->addStatusMessage( $type, 'done' );
+			$this->addStatusMessage( $prop, 'done' );
 		} else {
-			$this->addStatusMessage( $type, 'havemore' );
+			$this->addStatusMessage( $prop, 'havemore' );
 		}
 	}
 	
-	function genPageHistory() {
-		global $wgRequest;
-
+	function genPageHistory(&$prop, &$genInfo) {
 		if( !$this->existingPageIds ) {
 			return;
 		}
-
-		$includeComments = $wgRequest->getCheck('rvcomments');
+		extract( $this->getParams( $prop, $genInfo ));
 
 		// select *:  rev_page, rev_text_id, rev_comment, rev_user, rev_user_text, rev_timestamp, rev_minor_edit, rev_deleted
-		$fields = array('rev_id','rev_timestamp','rev_user','rev_user_text','rev_minor_edit');
-		if( $includeComments ) {
+		$fields = array('rev_id', 'rev_timestamp', 'rev_user', 'rev_user_text', 'rev_minor_edit');
+		if( isset($rvcomments) ) {
 			$fields[] = 'rev_comment';
 		}
-
-		$conds = array(
-			'rev_deleted' => 0,
-		);
-
-		$start = $wgRequest->getVal( 'rvstart' );
-		if ( $start != '' ) {
-			$conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($start);
+		$conds = array( 'rev_deleted' => 0 );
+		if ( isset($rvstart) ) {
+			$conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($rvstart);
 		}
-
-		$end = $wgRequest->getVal( 'rvend' );
-		if ( $end != '' ) {
-			$conds[] = 'rev_timestamp <= ' . $this->prepareTimestamp($end);
+		if ( isset($rvend) ) {
+			$conds[] = 'rev_timestamp <= ' . $this->prepareTimestamp($rvend);
 		}
-
-		$limit = $wgRequest->getInt( 'rvlimit', 50 );
 		$options = array(
-			'LIMIT' => $limit,
+			'LIMIT' => $rvlimit,
 			'ORDER BY' => 'rev_timestamp DESC'
 		);
-
-		if( $limit * count($this->existingPageIds) > 20000 ) {
+		if( isset($rvoffset) ) {
+			$options['OFFSET'] = $rvoffset;
+		}
+		if( $rvlimit * count($this->existingPageIds) > 20000 ) {
 			$this->dieUsage( "rvlimit multiplied by number of requested titles must be less than 20000", 'rv_querytoobig' );
 		}
 
@@ -789,7 +865,7 @@ class BotQueryProcessor {
 				if( $row->rev_minor_edit ) {
 					$vals['minor'] = '';
 				}
-				$vals['*'] = $includeComments ? $row->rev_comment : '';
+				$vals['*'] = $rvcomments ? $row->rev_comment : '';
 				$this->addPageSubElement( $pageId, 'revisions', 'rv', $vals);
 			}
 			$this->db->freeResult( $res );
@@ -800,6 +876,39 @@ class BotQueryProcessor {
 	// ************************************* UTILITIES *************************************
 	//
 	
+	/**
+	* From two parameter arrays, makes an array of the values provided by the user.
+	*/
+	function getParams( &$property, &$generator ) {
+		global $wgRequest;
+		
+		$paramNames = &$generator[GEN_PARAMS];
+		$paramDefaults = &$generator[GEN_DEFAULTS];
+		if( count($paramNames) !== count($paramDefaults) ) {
+			die("Internal error: '$property' param count mismatch");
+		}
+		$results = array();
+		for( $i = 0; $i < count($paramNames); $i++ ) {
+			$param = &$paramNames[$i];
+			$dflt = &$paramDefaults[$i];
+			switch( gettype($dflt) ) {
+				case 'NULL':
+				case 'string':
+					$result = $wgRequest->getVal( $param, $dflt );
+					break;
+				case 'integer':
+					$result = $wgRequest->getInt( $param, $dflt );
+					break;
+				case 'array':
+					$result = $this->parseMultiValue( $param, $dflt );
+					break;
+				default:
+					die('Internal error: unprocessed type ' . gettype($dflt));
+			}
+			$results[$param] = $result;
+		}
+		return $results;
+	}
 	
 	/**
 	* Lookup of the page id by ns:title in the data array. Very slow - lookup by id if possible.
@@ -986,6 +1095,24 @@ class BotQueryProcessor {
 			}
 		}
 	}
+	
+	function validateLimit( $varname, &$value, $max, $botMax = false, $min = 1 ) {
+		global $wgUser;
+		if( !$botMax ) $botMax = $max;
+		
+		if ( $value < $min ) {
+			$this->dieUsage( "Minimum cannot be less than $min", $varname );
+		}
+		if( $wgUser->isBot() ) {
+			if ( $value > $botMax ) {
+				$this->dieUsage( "Bots may not request over $botMax pages", $varname );
+			}
+		} else {
+			if( $this->requestsize > $max ) {
+				$this->dieUsage( "Users may not request over $max pages", $varname );
+			}
+		}
+	}
 }
 
 //
@@ -1036,7 +1163,6 @@ function printXML( &$data ) {
 function echoprinter( $text ) {
 	echo $text;
 }
-
 function printHumanReadable( &$data ) {
 	sanitizeOutputData($data);
 	print_r($data);
@@ -1154,4 +1280,5 @@ function mergeParameters( &$generators ) {
 	}
 	return $params;
 }
+
 ?>
