@@ -622,9 +622,9 @@ class BotQueryProcessor {
 			" AND lb.pl_from=pb.page_id" .
 			" AND lb.pl_namespace=pc.page_namespace" .
 			" AND lb.pl_title=pc.page_title" .
-			" LIMIT $drlimit";
+			" LIMIT " . intval( $drlimit );
 		if( $droffset !== 0 ) {
-			$sql .= " OFFSET $droffset";
+			$sql .= " OFFSET " . intval( $droffset );
 		}
 
 		// Add found page ids to the list of requested ids - they will be auto-populated later
@@ -793,8 +793,8 @@ class BotQueryProcessor {
 			.($isImage ?
 				" {$columnPrefix}_to" : 
 				" {$columnPrefix}_namespace, {$columnPrefix}_title")
-		." LIMIT $limit"
-		. ( $offset !== 0 ? " OFFSET $offset" : "" );
+		." LIMIT " . intval( $limit )
+		. ( $offset !== 0 ? " OFFSET " . intval($offset) : "" );
 
 		$count = 0;
 		$res = $this->db->query( $sql, $this->classname . "::genPageBackLinks_{$code}" );
