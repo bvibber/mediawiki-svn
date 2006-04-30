@@ -532,7 +532,7 @@ class BotQueryProcessor {
 
 		$conds = array();		
 		if ( $rcfrom != '' ) {
-			$conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($rcfrom);
+			$conds[] = 'rc_timestamp >= ' . $this->prepareTimestamp($rcfrom);
 		}
 
 		foreach( $rchide as &$elem ) {
