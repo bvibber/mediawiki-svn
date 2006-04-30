@@ -30,11 +30,15 @@ if( defined( 'MEDIAWIKI' ) ) {
 	}
 	
 	/** Send the notifications where possible */
-	function NewUserNotif_Hook() {
+	function NewUserNotif_Hook( $user = NULL ) {
 		global $wgUser, $wgSitename, $wgNewUserNotifSender, $wgNewUserNotifTargets;
 		
+		# Some backwards-compatible fiddling
+		if( is_null( $user ) )
+			$user =& $wgUser;
+		
 		# Do external emails first
-		NewUserNotif_EmailExternal();
+		NewUserNotif_EmailExternal( $user );
 		
 		foreach( $wgNewUserNotifTargets as $target ) {
 			$recipient = new User();
@@ -44,31 +48,30 @@ if( defined( 'MEDIAWIKI' ) ) {
 			# TODO: The target might not exist
 			if( $recipient->isEmailConfirmed() ) {
 				$subject = wfMsg( 'newusernotifsubj', $wgSitename );
-				$message = NewUserNotif_MakeEmail( $recipient->getName() );
+				$message = NewUserNotif_MakeEmail( $user, $recipient->getName() );
 				$recipient->sendMail( $subject, $message, $wgNewUserNotifSender );
 			}
 		}
 	}
 	
 	/** Send a notification email to the external addresses */
-	function NewUserNotif_EmailExternal(  ) {
+	function NewUserNotif_EmailExternal( &$user ) {
 		global $wgSitename, $wgNewUserNotifEmailTargets;
 		$sender = new MailAddress( $wgNewUserNotifSender, $wgSitename );
 		
 		foreach( $wgNewUserNotifEmailTargets as $target ) {
 			$recipient = new MailAddress( $target );
 			$subject   = wfMsg( 'newusernotifsubj', $wgSitename );
-			$message   = NewUserNotif_MakeEmail( $target );
+			$message   = NewUserNotif_MakeEmail( $user, $target );
 			userMailer( $recipient, $sender, $subject, $message );
 		}
-		
 	}
 	
 	/** Make the notification email */
-	function NewUserNotif_MakeEmail( $recipient ) {
-		global $wgUser, $wgContLang, $wgSitename;
-		$timestamp = $wgContLang->timeAndDate( date( 'YmdHis' ), false, false ) . ' (' . date( 'T' ) . ')';
-		$message   = wfMsg( 'newusernotifbody', $recipient, $wgUser->getName(), $wgSitename, $timestamp );
+	function NewUserNotif_MakeEmail( &$user, $recipient ) {
+		global $wgContLang, $wgSitename;
+		$timestamp = $wgContLang->timeAndDate( wfTimestampNow() );
+		$message   = wfMsg( 'newusernotifbody', $recipient, $user->getName(), $wgSitename, $timestamp );
 		return( $message );
 	}
 
