@@ -150,8 +150,8 @@ class BotQueryProcessor {
 			"Example: query.php?what=users&usfrom=Y",
 			)),
 		'dblredirects'   => array( "genMetaDoubleRedirects", true,
-			array('dfoffset', 'drlimit'),
-			array(0, 50),
+			array( 'dfoffset', 'drlimit' ),
+			array( 0, 50 ),
 			array(
 			"List of double-redirect pages",
 			"THIS QUERY IS CURRENTLY DISABLED DUE TO PERFORMANCE REASONS",
@@ -172,8 +172,8 @@ class BotQueryProcessor {
 			"Example: query.php?what=templates&titles=Main%20Page",
 			)),
 		'backlinks'      => array( "genPageBackLinksHelper", false,
-			array('blfilter', 'bllimit', 'bloffset'),
-			array(array('existing', 'nonredirects', 'all'), 50, 0),
+			array( 'blfilter', 'bllimit', 'bloffset' ),
+			array( array('existing', 'nonredirects', 'all'), 50, 0 ),
 			array(
 			"What pages link to this page(s)",
 			"Parameters supported:",
@@ -185,7 +185,7 @@ class BotQueryProcessor {
 			)),
 		'embeddedin'     => array( "genPageBackLinksHelper", false, 
 			array('eifilter', 'eilimit', 'eioffset'), 
-			array(array('existing', 'nonredirects', 'all'), 50, 0),
+			array( array('existing', 'nonredirects', 'all'), 50, 0 ),
 			array(
 			"What pages include this page(s) as template(s)",
 			"Parameters supported:",
@@ -198,8 +198,8 @@ class BotQueryProcessor {
 			"  Page 2: query.php?what=embeddedin&titles=Template:Stub&eilimit=10&eioffset=10",
 			)),
 		'imagelinks'     => array( "genPageBackLinksHelper", false, 
-			array('ilfilter', 'illimit', 'iloffset'), 
-			array(array('existing', 'nonredirects', 'all'), 50, 0),
+			array( 'ilfilter', 'illimit', 'iloffset' ),
+			array( array('existing', 'nonredirects', 'all'), 50, 0 ),
 			array(
 			"What pages use this image(s)",
 			"ilfilter   - Of all given images, which should be queried:",
@@ -209,8 +209,8 @@ class BotQueryProcessor {
 			"Example: query.php?what=imagelinks&titles=image:test.jpg&illimit=10",
 			)),
 		'revisions'      => array( "genPageHistory", false,
-			array('rvcomments', 'rvlimit', 'rvoffset', 'rvstart', 'rvend'),
-			array(null, 50, 0, null, null),
+			array( 'rvcomments', 'rvlimit', 'rvoffset', 'rvstart', 'rvend' ),
+			array( null, 50, 0, null, null ),
 			array(
 			"Revision history - Lists edits performed to the given pages",
 			"Parameters supported:",
@@ -582,7 +582,7 @@ class BotQueryProcessor {
 		$res = $this->db->select(
 			'user',
 			'user_name',
-			"user_name >= '$usfrom'",
+			"user_name >= " . $this->db->addQuotes($usfrom),
 			$this->classname . '::genUserPages',
 			array( 'ORDER BY' => 'user_name', 'LIMIT' => $uslimit )
 			);
@@ -622,7 +622,7 @@ class BotQueryProcessor {
 			" AND lb.pl_namespace=pc.page_namespace" .
 			" AND lb.pl_title=pc.page_title" .
 			" LIMIT $drlimit";
-		if( isset($droffset) ) {
+		if( $droffset !== 0 ) {
 			$sql .= " OFFSET $droffset";
 		}
 
@@ -793,7 +793,7 @@ class BotQueryProcessor {
 				" {$columnPrefix}_to" : 
 				" {$columnPrefix}_namespace, {$columnPrefix}_title")
 		." LIMIT $limit"
-		. ( isset($offset) ? " OFFSET $offset" : "" );
+		. ( $offset !== 0 ? " OFFSET $offset" : "" );
 
 		$count = 0;
 		$res = $this->db->query( $sql, $this->classname . "::genPageBackLinks_{$code}" );
@@ -842,7 +842,7 @@ class BotQueryProcessor {
 			'LIMIT' => $rvlimit,
 			'ORDER BY' => 'rev_timestamp DESC'
 		);
-		if( isset($rvoffset) ) {
+		if( $rvoffset !== 0 ) {
 			$options['OFFSET'] = $rvoffset;
 		}
 		if( $rvlimit * count($this->existingPageIds) > 20000 ) {
