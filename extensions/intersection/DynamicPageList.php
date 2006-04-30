@@ -98,7 +98,8 @@ function DynamicPageList( $input ) {
 
     $aParams = explode("\n", $input);
 
-    $parser = new Parser();
+    $parser = new Parser;
+    $poptions = new ParserOptions;
 
     foreach($aParams as $sParam)
     {
@@ -109,14 +110,14 @@ function DynamicPageList( $input ) {
       $sArg = trim($aParam[1]);
       if ($sType == 'category')
       {
-        $title = Title::newFromText( $parser->transformMsg($sArg, null) );
+        $title = Title::newFromText( $parser->transformMsg($sArg, $poptions) );
         if( is_null( $title ) )
           continue;
         $aCategories[] = $title; 
       }
       else if ($sType == 'notcategory')
       {
-        $title = Title::newFromText( $parser->transformMsg($sArg, null) );
+        $title = Title::newFromText( $parser->transformMsg($sArg, $poptions) );
         if( is_null( $title ) )
           continue;
         $aExcludeCategories[] = $title; 
