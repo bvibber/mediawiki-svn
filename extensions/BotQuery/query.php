@@ -404,7 +404,7 @@ class BotQueryProcessor {
 		//
 		$redirects = array();
 		$res = $this->db->select( 'page',
-			array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_latest' ),
+			array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_touched', 'page_latest' ),
 			$this->db->makeList( $where, LIST_OR ),
 			$this->classname . '::genPageInfo' );
 		while( $row = $this->db->fetchObject( $res ) ) {
@@ -414,11 +414,12 @@ class BotQueryProcessor {
 				$this->dieUsage( "No read permission for $titleString", 'pi_pageidaccessdenied' );
 			}
 			$data = &$this->data['pages'][$row->page_id];
-			$data['_obj']  = $title;
-			$data['ns']    = $title->getNamespace();
-			$data['title'] = $title->getPrefixedText();
-			$data['id']    = $row->page_id;
-			$data['revid'] = $row->page_latest;
+			$data['_obj']    = $title;
+			$data['ns']      = $title->getNamespace();
+			$data['title']   = $title->getPrefixedText();
+			$data['id']      = $row->page_id;
+			$data['touched'] = $row->page_touched;
+			$data['revid']   = $row->page_latest;
 			if ( $row->page_is_redirect ) {
 				$data['redirect'] = '';
 				$redirects[] = $row->page_id;
