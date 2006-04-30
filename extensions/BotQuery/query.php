@@ -151,7 +151,7 @@ class BotQueryProcessor {
 			)),
 		'dblredirects'   => array( "genMetaDoubleRedirects", true,
 			array('dfoffset', 'drlimit'),
-			array(null, 50),
+			array(0, 50),
 			array(
 			"List of double-redirect pages",
 			"THIS QUERY IS CURRENTLY DISABLED DUE TO PERFORMANCE REASONS",
@@ -173,7 +173,7 @@ class BotQueryProcessor {
 			)),
 		'backlinks'      => array( "genPageBackLinksHelper", false,
 			array('blfilter', 'bllimit', 'bloffset'),
-			array(array('existing', 'nonredirects', 'all'), 50, null),
+			array(array('existing', 'nonredirects', 'all'), 50, 0),
 			array(
 			"What pages link to this page(s)",
 			"Parameters supported:",
@@ -185,7 +185,7 @@ class BotQueryProcessor {
 			)),
 		'embeddedin'     => array( "genPageBackLinksHelper", false, 
 			array('eifilter', 'eilimit', 'eioffset'), 
-			array(array('existing', 'nonredirects', 'all'), 50, null),
+			array(array('existing', 'nonredirects', 'all'), 50, 0),
 			array(
 			"What pages include this page(s) as template(s)",
 			"Parameters supported:",
@@ -199,7 +199,7 @@ class BotQueryProcessor {
 			)),
 		'imagelinks'     => array( "genPageBackLinksHelper", false, 
 			array('ilfilter', 'illimit', 'iloffset'), 
-			array(array('existing', 'nonredirects', 'all'), 50, null),
+			array(array('existing', 'nonredirects', 'all'), 50, 0),
 			array(
 			"What pages use this image(s)",
 			"ilfilter   - Of all given images, which should be queried:",
@@ -210,7 +210,7 @@ class BotQueryProcessor {
 			)),
 		'revisions'      => array( "genPageHistory", false,
 			array('rvcomments', 'rvlimit', 'rvoffset', 'rvstart', 'rvend'),
-			array(null, 50, null, null, null),
+			array(null, 50, 0, null, null),
 			array(
 			"Revision history - Lists edits performed to the given pages",
 			"Parameters supported:",
@@ -596,7 +596,7 @@ class BotQueryProcessor {
 		}
 		$this->db->freeResult( $res );
 	}
-	
+
 	function genMetaDoubleRedirects(&$prop, &$genInfo) {
 		global $wgUser;
 
@@ -827,7 +827,6 @@ class BotQueryProcessor {
 		}
 		extract( $this->getParams( $prop, $genInfo ));
 
-		// select *:  rev_page, rev_text_id, rev_comment, rev_user, rev_user_text, rev_timestamp, rev_minor_edit, rev_deleted
 		$fields = array('rev_id', 'rev_timestamp', 'rev_user', 'rev_user_text', 'rev_minor_edit');
 		if( isset($rvcomments) ) {
 			$fields[] = 'rev_comment';
