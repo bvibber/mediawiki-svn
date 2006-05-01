@@ -37,6 +37,16 @@ function get_form ( $as_extension = false ) {
 	if ( $as_extension ) $site = "<input type='hidden' name='site' value=''/>" ;
 	else $site = "Site : http://<input type='text' name='site' value='".$xmlg["site_base_url"]."'/>/index.php<br/>" ;
 
+	$additional = array() ;
+	if ( $xmlg['allow_get'] ) {
+		$additional[] = "This page can be called with parameters: w2x.php?doit=1&whatsthis=articlelist&site=en.wikipedia.org/w&output_format=odt&text=Biochemistry" ;
+		$additional[] = "For additional parameters, see <a href='README'>here</a>" ;
+	}
+	
+	$additional = "<div style='text-align:center; border-top:1px solid black;width:100%;font-size:12px'>" .
+					implode ( "<br/>" , $additional ) .
+					"</div>" ;
+
 return "<form method='post'>
 <h2>Paste article list or wikitext here</h2>
 <table border='0' width='100%'><tr>
@@ -77,7 +87,7 @@ Known issues:
 <ul>
 <li>In templates, {{{variables}}} used within &lt;nowiki&gt; tags will be replaced as well (too lazy to strip them)</li>
 <li>HTML comments are removed (instead of converted into XML tags)</li>
-</ul>
+</ul>{$additional}
 </p>" ;
 }
 
@@ -112,7 +122,7 @@ if ( get_param('doit',false) ) { # Process
 
 	$xmlg["book_title"] = get_param('document_title');
 	$xmlg["site_base_url"] = get_param('site') ;
-	$xmlg["resolvetemplates"] = get_param('use_templates') ;
+	$xmlg["resolvetemplates"] = get_param('use_templates','all') ;
 	$xmlg['templates'] = explode ( "\n" , get_param('templates','') ) ;
 	$xmlg['add_gfdl'] = get_param('add_gfdl',false) ;
 	$xmlg['keep_interlanguage'] = get_param('keep_interlanguage',false) ;
