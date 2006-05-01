@@ -7,76 +7,155 @@
  * @package MediaWiki
  * @subpackage Extensions
  * @copyright © 2006 Rob Church
- * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0
+ * @licence GNU General Public Licence 2.0 or later
  */
 
 if( defined( 'MEDIAWIKI' ) ) {
 
 	require_once( 'UserMailer.php' );
-	
-	$wgExtensionFunctions[]  = 'NewUserNotif_Init';
+
+	$wgExtensionFunctions[] = 'efNewUserNotifSetup';
 	$wgExtensionCredits['other'][] = array( 'name' => 'New User Email Notification', 'author' => 'Rob Church', 'url' => 'http://meta.wikimedia.org/wiki/New_User_Email_Notification' );
-	
-	$wgNewUserNotifSender    = $wgPasswordSender;
-	$wgNewUserNotifTargets[] = 1; # TODO: Support usernames instead of/in addition to IDs
+
+	$wgNewUserNotifSender = $wgPasswordSender;
+	$wgNewUserNotifTargets[] = 1;
 	$wgNewUserNotifEmailTargets = array();
-	
-	/** Initialise the extension */
-	function NewUserNotif_Init() {
+
+	function efNewUserNotifSetup() {
 		global $wgHooks, $wgMessageCache;
-		$wgHooks['AddNewAccount'][] = 'NewUserNotif_Hook';
+		$wgHooks['AddNewAccount'][] = 'efNewUserNotif';
 		$wgMessageCache->addMessage( 'newusernotifsubj', 'New User Notification for $1' );
 		$wgMessageCache->addMessage( 'newusernotifbody', "Hello $1,\n\nA new user account, $2, has been created on $3 at $4." );
 	}
 	
-	/** Send the notifications where possible */
-	function NewUserNotif_Hook( $user = NULL ) {
-		global $wgUser, $wgSitename, $wgNewUserNotifSender, $wgNewUserNotifTargets;
-		
-		# Some backwards-compatible fiddling
+	function efNewUserNotif( $user = NULL ) {
+		global $wgUser;
+		# Backwards-compatible fiddling
 		if( is_null( $user ) )
 			$user =& $wgUser;
-		
-		# Do external emails first
-		NewUserNotif_EmailExternal( $user );
-		
-		foreach( $wgNewUserNotifTargets as $target ) {
-			$recipient = new User();
-			$recipient->setId( $target );
-			$recipient->loadFromDatabase();
+		$notifier = new NewUserNotifier();
+		$notifier->execute( $user );
+	}
 	
-			# TODO: The target might not exist
-			if( $recipient->isEmailConfirmed() ) {
-				$subject = wfMsg( 'newusernotifsubj', $wgSitename );
-				$message = NewUserNotif_MakeEmail( $user, $recipient->getName() );
-				$recipient->sendMail( $subject, $message, $wgNewUserNotifSender );
+	class NewUserNotifier {
+		
+		var $sender;
+		var $user;
+		
+		/**
+		 * Constructor
+		 * Set up the sender
+		 */
+		function NewUserNotifier() {
+			global $wgNewUserNotifSender;
+			$this->sender = $wgNewUserNotifSender;
+		}
+
+		/**
+		 * Format an email address in a backwards-compatible fashion
+		 * 1.6 introduced a wrapper for it, but this isn't helpful for 1.5 installs
+		 *
+		 * @param $address Email address
+		 * @return mixed
+		 */		
+		function mailAddress( $address ) {
+			return class_exists( 'MailAddress' ) ? new MailAddress( $address ) : $address;
+		}
+		
+		/**
+		 * Send all email notifications
+		 *
+		 * @param $user User that was created
+		 */
+		function execute( &$user ) {
+			$this->user =& $user;
+			$this->sendExternalMails();
+			$this->sendInternalMails();
+		}
+		
+		/**
+		 * Return the subject for notification emails
+		 *
+		 * @return string
+		 */
+		function makeSubject() {
+			global $wgSitename;
+			static $subject = false;
+			if( !$subject )
+				$subject = wfMsgForContent( 'newusernotifsubj', $wgSitename );
+			return $subject;
+		}
+		
+		/**
+		 * Return the text of a notification email
+		 *
+		 * @param $recipient Name of the recipient
+		 * @param $user User that was created
+		 */
+		function makeMessage( $recipient, &$user ) {
+			global $wgSitename;
+			return wfMsgForContent( 'newusernotifbody', $recipient, $user->getName(), $wgSitename, $this->makeTimestamp() );
+		}
+		
+		/**
+		 * Return an appropriate timestamp
+		 *
+		 * @param $lang Language object
+		 * @return string
+		 */
+		function makeTimestamp() {
+			global $wgContLang;
+			return $wgContLang->timeAndDate( wfTimestampNow() );
+		}
+		
+		/**
+		 * Send email to external addresses
+		 */
+		function sendExternalMails() {
+			global $wgNewUserNotifEmailTargets, $wgContLang;
+			foreach( $wgNewUserNotifEmailTargets as $target ) {
+				$message = $this->makeMessage( $target, $this->user );
+				userMailer( $this->mailAddress( $target ), $this->mailAddress( $this->sender ), $this->makeSubject(), $message );
 			}
 		}
-	}
-	
-	/** Send a notification email to the external addresses */
-	function NewUserNotif_EmailExternal( &$user ) {
-		global $wgSitename, $wgNewUserNotifEmailTargets;
-		$sender = new MailAddress( $wgNewUserNotifSender, $wgSitename );
 		
-		foreach( $wgNewUserNotifEmailTargets as $target ) {
-			$recipient = new MailAddress( $target );
-			$subject   = wfMsg( 'newusernotifsubj', $wgSitename );
-			$message   = NewUserNotif_MakeEmail( $user, $target );
-			userMailer( $recipient, $sender, $subject, $message );
+		/**
+		 * Send email to users
+		 */
+		function sendInternalMails() {
+			global $wgNewUserNotifTargets;
+			foreach( $wgNewUserNotifTargets as $userSpec ) {
+				if( $user =& $this->makeUser( $userSpec ) ) {
+					$message = $this->makeMessage( $user->getName(), $this->user );
+					if( $user->isEmailConfirmed() )
+						$user->sendMail( $this->makeSubject(), $message, $this->sender );
+				}
+			}
 		}
-	}
-	
-	/** Make the notification email */
-	function NewUserNotif_MakeEmail( &$user, $recipient ) {
-		global $wgContLang, $wgSitename;
-		$timestamp = $wgContLang->timeAndDate( wfTimestampNow() );
-		$message   = wfMsg( 'newusernotifbody', $recipient, $user->getName(), $wgSitename, $timestamp );
-		return( $message );
+		
+		/**
+		 * Initialise a user from an identifier or a username
+		 *
+		 * @param $spec User identifier or name
+		 * @return mixed
+		 */
+		function makeUser( $spec ) {
+			$name = is_integer( $spec ) ? User::whoIs( $spec ) : $spec;
+			$user = User::newFromName( $name );
+			if( is_object( $user ) ) {
+				$user->loadFromDatabase();
+				if( $user->getId() > 0 )
+					return $user;
+			}
+			return false;
+		}
+		
 	}
 
 } else {
-	die( 'This file is an extension to the MediaWiki package, and cannot be executed separately.' );
+	echo( "This is an extension to the MediaWiki package and cannot be run standalone.\n" );
+	die( -1 );
 }
+
 
 ?>

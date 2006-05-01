@@ -1,9 +1,9 @@
 NEW USER EMAIL NOTIFICATION EXTENSION
 
-	Version 1.2
+	Version 1.3
 	© 2006 Rob Church
 
-This is free software licensed under the GNU General Public License. Please
+This is free software licenced under the GNU General Public Licence. Please
 see http://www.gnu.org/copyleft/gpl.html for further details, including the
 full text and terms of the license.
 
@@ -61,13 +61,10 @@ $wgNewUserNotifSender
 	Defaults to the value of $wgPasswordSender
 
 $wgNewUserNotifTargets
-	Array containing the user IDs of those who should receive a notification
+	Array containing the usernames or identifiers of those who should receive
+	a notification email
+	
 	Defaults to the first user (usually the wiki's primary administrator)
-
-	Note: When overriding this variable, include at least one ID value in order
-	for a notification to be generated at all. A user's ID can be found by
-	accessing Special:Preferences when logged in, or by checking the user_id
-	field in the users table.
 	
 $wgNewUserNotifEmailTargets
 	Array containing email addresses to which a notification should also be sent
@@ -98,3 +95,9 @@ Version 1.2
 30/04/2006
 	Update to work with new hook format in MediaWiki 1.7
 	Fix date/time handling
+	
+Version 1.3
+01/05/2006
+	Rewrite for performance and code cleanliness
+	Fix backwards-compatibility with MediaWiki 1.5
+	Support usernames as values for $wgNewUserNotifTargets
