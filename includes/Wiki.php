@@ -219,7 +219,15 @@ class MediaWiki {
 					}
 				}
 				if( is_object( $target ) ) {
-					/* Rewrite environment to redirected article */
+
+					# Redirect with anchor are always hard redirects:
+					if( $target->mFragment ) {
+						$dest = $target->getLocalURL( 'lrfrom=' . $wgTitle->getPartialURL() . '#' . $target->mFragment ) ;
+						global $wgOut;
+						$wgOut->redirect( $dest );
+					}
+
+					# No anchor: we just rewrite environment to redirected article
 					$rarticle = $this->articleFromTitle($target);
 					$rarticle->loadPageData($rarticle->pageDataFromTitle($dbr,$target));
 					if ($rarticle->mTitle->mArticleID) {

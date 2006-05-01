@@ -755,7 +755,10 @@ class Article {
 
 		$diff = $wgRequest->getVal( 'diff' );
 		$rcid = $wgRequest->getVal( 'rcid' );
+		# External redirects:
 		$rdfrom = $wgRequest->getVal( 'rdfrom' );
+		# Local redirects (for anchors):
+		$lrfrom = $wgRequest->getVal( 'lrfrom' );
 
 		$wgOut->setArticleFlag( true );
 		$wgOut->setRobotpolicy( 'index,follow' );
@@ -825,6 +828,13 @@ class Article {
 				$wgOut->setSubtitle( $s );
 				$wasRedirected = true;
 			}
+		} elseif ( !empty( $lrfrom ) ) {
+				$t = Title::newFromText( $lrfrom );
+				$sk = $wgUser->getSkin();
+				$redir = $sk->makeLink( $lrfrom, $lrfrom );
+				$s = wfMsg( 'redirectedfrom', $redir );
+				$wgOut->setSubtitle( $s );
+				$wasRedirected = true;
 		}
 		
 		$outputDone = false;
