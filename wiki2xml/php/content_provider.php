@@ -117,7 +117,14 @@ class ContentProviderHTTP extends ContentProvider {
 		if ( $use_se ) {
 			$url = "http://" . $xmlg["site_base_url"] . "/index.php?listauthors=1&title=Special:Export/" . urlencode ( $title ) ;
 		} else {
-			$url = "http://" . $xmlg["site_base_url"] . "/index.php?action=raw&title=" . urlencode ( $title ) ;
+			if ( $xmlg["use_toolserver_url"] ) {
+#				$url = "http://" . $xmlg["site_base_url"] . "/index.php?action=raw&title=" . urlencode ( $title ) ;
+				$u = urlencode ( $title ) ;
+				$site = array_shift ( explode ( "/" , $xmlg["site_base_url"] ) ) ;
+				$url = "http://tools.wikimedia.de/~daniel/WikiSense/WikiProxy.php?wiki={$site}&title={$u}&rev=0&go=Fetch" ;
+			} else {
+				$url = "http://" . $xmlg["site_base_url"] . "/index.php?action=raw&title=" . urlencode ( $title ) ;
+			}
 		}
 		$s = @file_get_contents ( $url ) ;
 

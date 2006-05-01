@@ -81,10 +81,27 @@ Known issues:
 </p>" ;
 }
 
+function get_param ( $s , $default = NULL ) {
+	global $xmlg ;
+	if ( $xmlg['allow_get'] ) {
+		if ( isset ( $_REQUEST[$s] ) ) {
+			return $_REQUEST[$s] ;
+		} else {
+			return $default ;
+		}
+	} else {
+		if ( isset ( $_POST[$s] ) ) {
+			return $_POST[$s] ;
+		} else {
+			return $default ;
+		}
+	}
+}
+
 ## MAIN PROGRAM
 
-if ( isset ( $_POST['doit'] ) ) { # Process
-	$wikitext = stripslashes ( $_POST['text'] ) ;
+if ( get_param('doit',false) ) { # Process
+	$wikitext = stripslashes ( get_param('text') ) ;
 	
 	if( !defined( 'MEDIAWIKI' ) ) { # Stand-alone
 		$content_provider = new ContentProviderHTTP ;
@@ -93,17 +110,17 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	}
 	$converter = new MediaWikiConverter ;
 
-	$xmlg["book_title"] = $_POST['document_title'];
-	$xmlg["site_base_url"] = $_POST['site'] ;
-	$xmlg["resolvetemplates"] = $_POST['use_templates'] ;
-	$xmlg['templates'] = explode ( "\n" , $_POST['templates'] ) ;
-	$xmlg['add_gfdl'] = isset ( $_POST['add_gfdl'] ) ;
-	$xmlg['keep_interlanguage'] = isset ( $_POST['keep_interlanguage'] ) ;
-	$xmlg['keep_categories'] = isset ( $_POST['keep_categories'] ) ;
+	$xmlg["book_title"] = get_param('document_title');
+	$xmlg["site_base_url"] = get_param('site') ;
+	$xmlg["resolvetemplates"] = get_param('use_templates') ;
+	$xmlg['templates'] = explode ( "\n" , get_param('templates','') ) ;
+	$xmlg['add_gfdl'] = get_param('add_gfdl',false) ;
+	$xmlg['keep_interlanguage'] = get_param('keep_interlanguage',false) ;
+	$xmlg['keep_categories'] = get_param('keep_categories',false) ;
 	
 	$t = microtime_float() ;
 	$xml = "" ;
-	if ( $_POST['whatsthis'] == "wikitext" ) {
+	if ( get_param('whatsthis') == "wikitext" ) {
 		$wiki2xml_authors = array () ;
 		$xml = $converter->article2xml ( "" , $wikitext , $xmlg ) ;
 	} else {
@@ -133,14 +150,14 @@ if ( isset ( $_POST['doit'] ) ) { # Process
 	$xml = "<articles xmlns:xhtml=\" \" loadtime='{$lt} sec' rendertime='{$t} sec' totaltime='{$tt} sec'>\n{$xml}\n</articles>" ;
 	
 	# Output format
-	$format = $_POST['output_format'] ;
+	$format = get_param('output_format') ;
 	if ( $format == "xml" ) {
 		header('Content-type: text/xml; charset=utf-8');
 		print "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
 		print $xml ;
 	} else if ( $format == "text" ) {
-		$xmlg['plaintext_markup'] = isset ( $_POST['plaintext_markup'] ) ;
-		$xmlg['plaintext_prelink'] = isset ( $_POST['plaintext_prelink'] )  ;
+		$xmlg['plaintext_markup'] = get_param('plaintext_markup',false) ;
+		$xmlg['plaintext_prelink'] = get_param('plaintext_prelink',false)  ;
 		$out = $converter->articles2text ( $xml , $xmlg ) ;
 		$out = str_replace ( "\n" , "<br/>" , $out ) ;
 		header('Content-type: text/html; charset=utf-8');

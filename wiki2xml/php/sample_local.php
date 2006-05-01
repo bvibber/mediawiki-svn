@@ -21,6 +21,31 @@ $xmlg["docbook"] = array (
 	"dtd" => "file:/c:/docbook/dtd/docbookx.dtd"
 ) ;
 
+/* To allow parameters passed as URL parameter ($_GET), set
+$xmlg['allow_get'] = true ;
+
+Parameters:
+doit=1
+text=lines_of_text_or_titles
+whatsthis=wikitext/articlelist
+site=en.wikipedia.org/w
+output_format=xml/text/xhtml/docbook_xml/odt_xml/odt
+
+Optional:
+use_templates=all/none/these/notthese
+templates=lines_of_templates
+document_title=
+add_gfdl=1
+keep_categories=1
+keep_interlanguage=1
+*/
+
+
+
+# To use the toolserver text access, set
+# $xmlg["use_toolserver_url"] = true ;
+# $xmlg["use_special_export"] = false ;
+
 # On Windows, set
 # $xmlg['is_windows'] = true ;
 
@@ -44,6 +69,6 @@ $xmlg["docbook"] = array (
 
 # If you want to do text-file browsing, run "xmldump2files.php" once
 # (see settings there), then set this:
-$base_text_dir = "C:/dewiki-20060327-pages-articles" ;
+# $base_text_dir = "C:/dewiki-20060327-pages-articles" ;
 
 ?>
