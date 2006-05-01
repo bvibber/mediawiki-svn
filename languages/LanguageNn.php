@@ -154,7 +154,6 @@ class LanguageNn extends LanguageUtf8 {
 	}
 
 	function time($ts, $adj = false, $format = true) {
-		global $wgUser;
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); } # Adjust based on the timezone setting.
 
 		$format = $this->dateFormat($format);
@@ -204,13 +203,11 @@ class LanguageNn extends LanguageUtf8 {
 
 	}
 
-	var $digitTransTable = array(
-		',' => "\xc2\xa0",
-		'.' => ','
-	);
-
-	function formatNum( $number, $year = false ) {
-		return $year ? $number : strtr($this->commafy($number), $this->digitTransTable);
+	function separatorTransformTable() {
+		return array(
+			',' => "\xc2\xa0",
+			'.' => ','
+		);
 	}
 
 	function getMessage( $key ) {

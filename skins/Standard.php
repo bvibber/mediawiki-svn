@@ -52,7 +52,7 @@ class SkinStandard extends Skin {
 	 *
 	 */
 	function doGetUserStyles() {
-		global $wgUser, $wgOut, $wgStylePath;
+		global $wgStylePath;
 
 		$s = parent::doGetUserStyles();
 		$qb = $this->qbSetting();
@@ -90,7 +90,7 @@ class SkinStandard extends Skin {
 	}
 
 	function doAfterContent() {
-		global $wgUser, $wgOut, $wgContLang;
+		global $wgContLang;
 		$fname =  'SkinStandard::doAfterContent';
 		wfProfileIn( $fname );
 		wfProfileIn( $fname.'-1' );

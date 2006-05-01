@@ -211,10 +211,8 @@ parent class in order maintain consistency across languages.
 'redirectedfrom' => '(Redirected from $1)',
 'redirectpagesub' => 'Redirect page',
 'lastmodified'	=> 'This page was last modified $1.',
-'viewcount'		=> 'This page has been accessed $1 times.',
+'viewcount'		=> 'This page has been accessed {{plural:$1|one time|$1 times}}.',
 'copyright'	=> 'Content is available under $1.',
-'poweredby'	=> '{{SITENAME}} is powered by [http://www.mediawiki.org/ MediaWiki], an open source wiki engine.',
-'printsubtitle' => '(From {{SERVER}})',
 'protectedpage' => 'Protected page',
 'administrators' => 'Project:Administrators',
 'jumpto' => 'Jump to:',
@@ -342,6 +340,8 @@ a number of reasons why this may be so, please see
 [[Project:Protected page]].
 
 You can view and copy the source of this page:',
+'protectedinterface' => 'This page provides interface text for the software, and is locked to prevent abuse.',
+'editinginterface' => "'''Warning:''' You are editing a page which is used to provide interface text for the software. Changes to this page will affect the appearance of the user interface for other users.",
 'sqlhidden' => '(SQL query hidden)',
 
 # Login and logout pages
@@ -361,7 +361,6 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'yourname'		=> 'Username',
 'yourpassword'	=> 'Password',
 'yourpasswordagain' => 'Retype password',
-'newusersonly'	=> ' (new users only)',
 'remembermypassword' => 'Remember me',
 'yourdomainname'       => 'Your domain',
 'externaldberror'      => 'There was either an external authentication database error or you are not allowed to update your external account.',
@@ -433,6 +432,8 @@ will be sent for any of the following features.',
 'emailconfirmlink' => 'Confirm your e-mail address',
 'invalidemailaddress'	=> 'The e-mail address cannot be accepted as it appears to have an invalid
 format. Please enter a well-formatted address or empty that field.',
+'accountcreated' => 'Account created',
+'accountcreatedtext' => 'The user account for $1 has been created.',
 
 # Edit page toolbar
 'bold_sample'=>'Bold text',
@@ -479,7 +480,7 @@ Note that you may not use the "e-mail this user" feature unless you have a valid
 
 Your IP address is $3. Please include this address in any queries you make.',
 'whitelistedittitle' => 'Login required to edit',
-'whitelistedittext' => 'You have to [[Special:Userlogin|login]] to edit pages.',
+'whitelistedittext' => 'You have to $1 to edit pages.',
 'whitelistreadtitle' => 'Login required to read',
 'whitelistreadtext' => 'You have to [[Special:Userlogin|login]] to read pages.',
 'whitelistacctitle' => 'You are not allowed to create an account',
@@ -487,7 +488,7 @@ Your IP address is $3. Please include this address in any queries you make.',
 'confirmedittitle' => 'E-mail confirmation required to edit',
 'confirmedittext' => 'You must confirm your e-mail address before editing pages. Please set and validate your e-mail address through your [[Special:Preferences|user preferences]].',
 'loginreqtitle'	=> 'Login Required',
-'loginreqlink' => 'login',
+'loginreqlink' => 'log in',
 'loginreqpagetext'	=> 'You must $1 to view other pages.',
 'accmailtitle' => 'Password sent.',
 'accmailtext' => 'The password for "$1" has been sent to $2.',
@@ -788,8 +789,7 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'recentchanges' => 'Recent changes',
 'recentchanges-url' => 'Special:Recentchanges',
 'recentchangestext' => 'Track the most recent changes to the wiki on this page.',
-'rcloaderr'		=> 'Loading recent changes',
-'rcnote'		=> "Below are the last <strong>$1</strong> changes in last <strong>$2</strong> days.",
+'rcnote'		=> "Below are the last <strong>$1</strong> changes in the last <strong>$2</strong> days, as of $3.",
 'rcnotefrom'	=> "Below are the changes since <b>$2</b> (up to <b>$1</b> shown).",
 'rclistfrom'	=> "Show new changes starting from $1",
 'rcshowhideminor' => '$1 minor edits',
@@ -799,15 +799,10 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'rcshowhidepatr' => '$1 patrolled edits',
 'rcshowhidemine' => '$1 my edits',
 'rclinks'		=> "Show last $1 changes in last $2 days<br />$3",
-'rchide'		=> "in $4 form; $1 minor edits; $2 secondary namespaces; $3 multiple edits.",
-'rcliu'			=> "; $1 edits from logged in users",
 'diff'			=> 'diff',
 'hist'			=> 'hist',
 'hide'			=> 'Hide',
 'show'			=> 'Show',
-'tableform'		=> 'table',
-'listform'		=> 'list',
-'nchanges'		=> "$1 changes",
 'minoreditletter' => 'm',
 'newpageletter' => 'N',
 'sectionlink' => '→',
@@ -820,7 +815,6 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 #
 'upload'		=> 'Upload file',
 'uploadbtn'		=> 'Upload file',
-'uploadlink'	=> 'Upload images',
 'reupload'		=> 'Re-upload',
 'reuploaddesc'	=> 'Return to the upload form.',
 'uploadnologin' => 'Not logged in',
@@ -872,6 +866,7 @@ created and by whom, and anything else you may know about it. If this is an imag
 'uploadvirus' => 'The file contains a virus! Details: $1',
 'sourcefilename' => 'Source filename',
 'destfilename' => 'Destination filename',
+'filewasdeleted' => 'A file of this name has been previously uploaded and subsequently deleted. You should check the $1 before proceeding to upload it again.',
 
 'license' => 'Licensing',
 'nolicense' => 'None selected',
@@ -926,6 +921,9 @@ this old version, (rev) = revert to this old version.
 'unusedtemplatestext' => 'This page lists all pages in the template namespace which are not included in another page. Remember to check for other links to the templates before deleting them.',
 'unusedtemplateswlh' => 'other links',
 
+# Random redirect
+'randomredirect' => 'Random redirect',
+
 # Statistics
 #
 'statistics'	=> 'Statistics',
@@ -960,7 +958,6 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 
 # Miscellaneous special pages
 #
-'orphans'		=> 'Orphaned pages',
 'lonelypages'	=> 'Orphaned pages',
 'uncategorizedpages'	=> 'Uncategorized pages',
 'uncategorizedcategories'	=> 'Uncategorized categories',
@@ -987,10 +984,8 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'specialpages'	=> 'Special pages',
 'spheading'		=> 'Special pages for all users',
 'restrictedpheading'	=> 'Restricted special pages',
-'protectpage'	=> 'Protect page',
 'recentchangeslinked' => 'Related changes',
 'rclsub'		=> "(to pages linked from \"$1\")",
-'debug'			=> 'Debug',
 'newpages'		=> 'New pages',
 'ancientpages'		=> 'Oldest pages',
 'intl'		=> 'Interlanguage links',
@@ -1348,9 +1343,9 @@ Type the name of the user in the box and press the button to make the user an ad
 'makesysopfail'		=> "<b>User \"$1\" could not be made into a sysop. (Did you enter the name correctly?)</b>",
 'setbureaucratflag' => 'Set bureaucrat flag',
 'setstewardflag'    => 'Set steward flag',
-'bureaucratlog'		=> 'Bureaucrat_log',
+'rightslog'		=> 'User rights log',
 'rightslogtext'		=> 'This is a log of changes to user rights.',
-'bureaucratlogentry'	=> 'changed group membership for $1 from $2 to $3',
+'rightslogentry'	=> 'changed group membership for $1 from $2 to $3',
 'rights'			=> 'Rights:',
 'set_user_rights'	=> 'Set user rights',
 'user_rights_set'	=> "<b>User rights for \"$1\" updated</b>",
@@ -1359,6 +1354,7 @@ Type the name of the user in the box and press the button to make the user an ad
 'already_sysop'     => 'This user is already an administrator',
 'already_bureaucrat' => 'This user is already a bureaucrat',
 'already_steward'   => 'This user is already a steward',
+'rightsnone' 		=> '(none)',
 
 # Move page
 #
@@ -1441,9 +1437,9 @@ In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{Media
 'allmessagesname' => 'Name',
 'allmessagesdefault' => 'Default text',
 'allmessagescurrent' => 'Current text',
-'allmessagestext'	=> 'This is a list of system messages available in the MediaWiki: namespace.',
+'allmessagestext'	=> 'This is a list of system messages available in the MediaWiki namespace.',
 'allmessagesnotsupportedUI' => 'Your current interface language <b>$1</b> is not supported by Special:Allmessages at this site.',
-'allmessagesnotsupportedDB' => 'Special:Allmessages cannot be used because wgUseDatabaseMessages is off.',
+'allmessagesnotsupportedDB' => '\'\'\'Special:Allmessages\'\'\' cannot be used because \'\'\'$wgUseDatabaseMessages\'\'\' is switched off.',
 'allmessagesfilter' => 'Message name filter:',
 'allmessagesmodified' => 'Show only modified',
 
@@ -2023,6 +2019,9 @@ Please confirm that really want to recreate this article.',
 
 # DISPLAYTITLE
 'displaytitle' => '(Link to this page as [[$1]])',
+
+# Separator for categories in page lists
+'catseparator' => '|',
 
 );
 

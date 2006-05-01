@@ -771,10 +771,13 @@ class Title {
 				}
 				$url .= $query;
 			}
-			if ( '' != $this->mFragment ) {
-				$url .= '#' . $this->mFragment;
-			}
 		}
+
+		# Finally, add the fragment.
+		if ( '' != $this->mFragment ) {
+			$url .= '#' . $this->mFragment;
+		}
+
 		wfRunHooks( 'GetFullURL', array( &$this, &$url, $query ) );
 		return $url;
 	}
@@ -1517,6 +1520,11 @@ class Title {
 			return false;
 		}
 
+		// Any remaining initial :s are illegal.
+		if ( $t !== '' && ':' == $t{0} ) {
+			return false;
+		}
+		
 		# Fill fields
 		$this->mDbkeyform = $t;
 		$this->mUrlform = wfUrlencode( $t );

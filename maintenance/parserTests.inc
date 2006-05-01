@@ -44,13 +44,13 @@ require_once( "$IP/maintenance/parserTestsParserTime.php" );
 class ParserTest {
 	/**
 	 * boolean $color whereas output should be colorized
-	 * @access private
+	 * @private
 	 */
 	var $color;
 
 	/**
 	 * boolean $lightcolor whereas output should use light colors
-	 * @access private
+	 * @private
 	 */
 	var $lightcolor;
 
@@ -58,7 +58,7 @@ class ParserTest {
 	 * Sets terminal colorization and diff/quick modes depending on OS and
 	 * command-line options (--color and --quick).
 	 *
-	 * @access public
+	 * @public
 	 */
 	function ParserTest() {
 		global $options;
@@ -96,7 +96,7 @@ class ParserTest {
 
 	/**
 	 * Remove last character if it is a newline
-	 * @access private
+	 * @private
 	 */
 	function chomp($s) {
 		if (substr($s, -1) === "\n") {
@@ -117,12 +117,12 @@ class ParserTest {
 	 *
 	 * @param string $filename
 	 * @return bool True if passed all tests, false if any tests failed.
-	 * @access public
+	 * @public
 	 */
 	function runTestsFromFile( $filename ) {
 		$infile = fopen( $filename, 'rt' );
 		if( !$infile ) {
-			wfDie( "Couldn't open parserTests.txt\n" );
+			wfDie( "Couldn't open $filename\n" );
 		}
 
 		$data = array();
@@ -278,7 +278,7 @@ class ParserTest {
 	 * Set up the global variables for a consistent environment for each test.
 	 * Ideally this should replace the global configuration entirely.
 	 *
-	 * @access private
+	 * @private
 	 */
 	function setupGlobals($opts = '') {
 		# Save the prefixed / quoted table names for later use when we make the temporaries.
@@ -290,6 +290,14 @@ class ParserTest {
 		if( !isset( $this->uploadDir ) ) {
 			$this->uploadDir = $this->setupUploadDir();
 		}
+		
+		if( preg_match( '/language=([a-z]+(?:_[a-z]+)?)/', $opts, $m ) ) {
+			$lang = $m[1];
+		} else {
+			$lang = 'en';
+		}
+		$langClass = 'Language' . str_replace( '-', '_', ucfirst( $lang ) );
+		$langObj = setupLangObj( $langClass );
 
 		$settings = array(
 			'wgServer' => 'http://localhost',
@@ -302,13 +310,13 @@ class ParserTest {
 			'wgStyleSheetPath' => '/skins',
 			'wgSitename' => 'MediaWiki',
 			'wgServerName' => 'Britney Spears',
-			'wgLanguageCode' => 'en',
-			'wgContLanguageCode' => 'en',
+			'wgLanguageCode' => $lang,
+			'wgContLanguageCode' => $lang,
 			'wgDBprefix' => 'parsertest_',
 			'wgDefaultUserOptions' => array(),
 
-			'wgLang' => new LanguageUtf8(),
-			'wgContLang' => new LanguageUtf8(),
+			'wgLang' => $langObj,
+			'wgContLang' => $langObj,
 			'wgNamespacesWithSubpages' => array( 0 => preg_match('/\\bsubpage\\b/i', $opts)),
 			'wgMaxTocLevel' => 999,
 			'wgCapitalLinks' => true,
@@ -361,7 +369,7 @@ class ParserTest {
 	 * Currently this will only be done once per run, and any changes to
 	 * the db will be visible to later tests in the run.
 	 *
-	 * @access private
+	 * @private
 	 */
 	function setupDatabase() {
 		static $setupDB = false;
@@ -455,7 +463,7 @@ class ParserTest {
 	 * Create a dummy uploads directory which will contain a couple
 	 * of files in order to pass existence tests.
 	 * @return string The directory
-	 * @access private
+	 * @private
 	 */
 	function setupUploadDir() {
 		global $IP;
@@ -480,7 +488,7 @@ class ParserTest {
 	 * Restore default values and perform any necessary clean-up
 	 * after each test runs.
 	 *
-	 * @access private
+	 * @private
 	 */
 	function teardownGlobals() {
 		foreach( $this->savedGlobals as $var => $val ) {
@@ -494,7 +502,7 @@ class ParserTest {
 
 	/**
 	 * Remove the dummy uploads directory
-	 * @access private
+	 * @private
 	 */
 	function teardownUploadDir( $dir ) {
 		unlink( "$dir/3/3a/Foobar.jpg" );
@@ -514,7 +522,7 @@ class ParserTest {
 
 	/**
 	 * "Running test $desc..."
-	 * @access private
+	 * @private
 	 */
 	function showTesting( $desc ) {
 		print "Running test $desc... ";
@@ -525,7 +533,7 @@ class ParserTest {
 	 *
 	 * @param string $desc The test name
 	 * @return bool
-	 * @access private
+	 * @private
 	 */
 	function showSuccess( $desc ) {
 		if( !$this->quiet ) {
@@ -542,7 +550,7 @@ class ParserTest {
 	 * @param string $result Expected HTML output
 	 * @param string $html Actual HTML output
 	 * @return bool
-	 * @access private
+	 * @private
 	 */
 	function showFailure( $desc, $result, $html ) {
 		if( $this->quiet ) {
@@ -569,7 +577,7 @@ class ParserTest {
 	 * @param string $inFileTail Tailing for the input file name
 	 * @param string $outFileTail Tailing for the output file name
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function quickDiff( $input, $output, $inFileTail='expected', $outFileTail='actual' ) {
 		$prefix = wfTempDir() . "/mwParser-" . mt_rand();
@@ -592,7 +600,7 @@ class ParserTest {
 	 *
 	 * @param string $data
 	 * @param string $filename
-	 * @access private
+	 * @private
 	 */
 	function dumpToFile( $data, $filename ) {
 		$file = fopen( $filename, "wt" );
@@ -606,7 +614,7 @@ class ParserTest {
 	 *
 	 * @param string $color Semicolon-separated list of attribute/color codes
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function termColor( $color ) {
 		if($this->lightcolor) {
@@ -621,7 +629,7 @@ class ParserTest {
 	 * or empty string if color output is disabled.
 	 *
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function termReset() {
 		return $this->color ? "\x1b[0m" : '';
@@ -633,7 +641,7 @@ class ParserTest {
 	 *
 	 * @param string $text
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function colorDiff( $text ) {
 		return preg_replace(
@@ -649,7 +657,7 @@ class ParserTest {
 	 * @param string $text the article text
 	 * @param int $line the input line number, for reporting errors
 	 * @static
-	 * @access private
+	 * @private
 	 */
 	function addArticle($name, $text, $line) {
 		$this->setupGlobals();
@@ -675,7 +683,7 @@ class ParserTest {
 	 * @param string $text the text to tidy
 	 * @return string
 	 * @static
-	 * @access private
+	 * @private
 	 */
 	function tidy( $text ) {
 		global $wgUseTidy;

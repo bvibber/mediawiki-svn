@@ -541,7 +541,6 @@ class Database {
 	 * @return string executable SQL
 	 */
 	function fillPrepared( $preparedQuery, $args ) {
-		$n = 0;
 		reset( $args );
 		$this->preparedArgs =& $args;
 		return preg_replace_callback( '/(\\\\[?!&]|[?!&])/',
@@ -1386,7 +1385,12 @@ class Database {
 	 * $offset integer the SQL offset (default false)
 	 */
 	function limitResult($sql, $limit, $offset=false) {
-		return " $sql LIMIT ".((is_numeric($offset) && $offset != 0)?"{$offset},":"")."{$limit} ";
+		if( !is_numeric($limit) ) {
+			wfDie( "Invalid non-numeric limit passed to limitResult()\n" );
+		}
+		return " $sql LIMIT "
+				. ( (is_numeric($offset) && $offset != 0) ? "{$offset}," : "" )
+				. "{$limit} ";
 	}
 	function limitResultForUpdate($sql, $num) {
 		return $this->limitResult($sql, $num, 0);

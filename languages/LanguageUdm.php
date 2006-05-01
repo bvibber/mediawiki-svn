@@ -16,7 +16,7 @@ require_once( "LanguageRu.php" );
 	NS_USER             => 'Викиавтор',
 	NS_USER_TALK        => 'Викиавтор_сярысь_вераськон',
 	NS_PROJECT          => $wgMetaNamespace,
-	NS_PROJECT_TALK     => $wgMetaNamespace+'_сярысь_вераськон',
+	NS_PROJECT_TALK     => $wgMetaNamespace . '_сярысь_вераськон',
 	NS_IMAGE            => 'Суред',
 	NS_IMAGE_TALK       => 'Суред_сярысь_вераськон',
 	NS_MEDIAWIKI        => 'MediaWiki',
@@ -36,6 +36,7 @@ if (!$wgCachedMessageArrays) {
 
 class LanguageUdm extends LanguageRu {
 	function LanguageUdm() {
+		# FIXME are the globals really used?
 		global $wgNamespaceNamesUdm, $wgMetaNamespace;
 		LanguageUtf8::LanguageUtf8();
 	}
@@ -69,8 +70,8 @@ class LanguageUdm extends LanguageRu {
 		return "windows-1251";
 	}
 
-	function formatNum( $number, $year = false ) {
-		return !$year ? strtr($number, '.,', ', ' ) : $number;
+	function separatorTransformTable() {
+		return array(',' => ' ', '.' => ',' );
 	}
 
 }

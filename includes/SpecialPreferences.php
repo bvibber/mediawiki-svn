@@ -781,7 +781,7 @@ class PreferencesForm {
 		if ($dateopts) {
 			$wgOut->addHTML( "<fieldset>\n<legend>" . wfMsg( 'dateformat' ) . "</legend>\n" );
 			$idCnt = 0;
-			$epoch = '20010115161234';
+			$epoch = '20010408091234';
 			foreach($dateopts as $key => $option) {
 				if( $key == MW_DATE_DEFAULT ) {
 					$formatted = wfMsgHtml( 'datedefault' );
@@ -855,7 +855,7 @@ class PreferencesForm {
 
 		$wgOut->addHTML( '<label for="wpWatchlistDays">' . wfMsgHtml( 'prefs-watchlist-days' ) . '</label> ' );
 		$wgOut->addHTML( '<input type="text" name="wpWatchlistDays" id="wpWatchlistDays" value="' . $this->mWatchlistDays . '" size="3" />' );
-		$wgOut->addHTML( '<p></p>' ); # Spacing
+		$wgOut->addHTML( '<br /><br />' ); # Spacing
 		$wgOut->addHTML( $this->getToggles( array( 'watchlisthideown', 'watchlisthidebots', 'extendwatchlist' ) ) );
 		$wgOut->addHTML( '<label for="wpWatchlistEdits">' . wfMsgHtml( 'prefs-watchlist-edits' ) . '</label> ' );
 		$wgOut->addHTML( '<input type="text" name="wpWatchlistEdits" id="wpWatchlistEdits" value="' . $this->mWatchlistEdits . '" size="3" />' );

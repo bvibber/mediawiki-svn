@@ -799,12 +799,18 @@ class EditPage {
 		}
 			
 		if( $this->mTitle->isProtected( 'edit' ) ) {
-			if( $this->mTitle->isSemiProtected() ) {
+			# Is the protection due to the namespace, e.g. interface text?
+			if( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
+				# Yes; remind the user
+				$notice = wfMsg( 'editinginterface' );
+			} elseif( $this->mTitle->isSemiProtected() ) {
+				# No; semi protected
 				$notice = wfMsg( 'semiprotectedpagewarning' );
 				if( wfEmptyMsg( 'semiprotectedpagewarning', $notice ) || $notice == '-' ) {
 					$notice = '';
 				}
 			} else {
+				# No; regular protection
 				$notice = wfMsg( 'protectedpagewarning' );
 			}
 			$wgOut->addWikiText( $notice );
@@ -1307,13 +1313,16 @@ END
 	 * @todo document
 	 */
 	function userNotLoggedInPage() {
-		global $wgOut;
-
+		global $wgUser, $wgOut;
+		$skin = $wgUser->getSkin();
+		$loginTitle = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
+		$loginLink = $skin->makeKnownLinkObj( $loginTitle, wfMsgHtml( 'loginreqlink' ), 'returnto=' . $this->mTitle->getPrefixedText() );
+	
 		$wgOut->setPageTitle( wfMsg( 'whitelistedittitle' ) );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
-
-		$wgOut->addWikiText( wfMsg( 'whitelistedittext' ) );
+		
+		$wgOut->addHtml( wfMsgWikiHtml( 'whitelistedittext', $loginLink ) );
 		$wgOut->returnToMain( false );
 	}
 

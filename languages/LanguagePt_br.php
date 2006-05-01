@@ -33,19 +33,9 @@ require_once( 'LanguagePt.php' );
 
 ) + $wgNamespaceNamesPt;
 
-/* private */ $wgQuickbarSettingsPt_br = array(
-	"Nada", "Fixado �  esquerda", "Fixado �  direita", "Flutuando �  Esquerda"
-);
-
 /* private */ $wgSkinNamesPt_br = array(
 	'standard' => "Padrão",
-	'nostalgia' => "Nostalgia",
-	'cologneblue' => "Azul Colonial"
 ) + $wgSkinNamesPt;
-
-/* private */ $wgDateFormatsPt_br = array(
-#	"Sem preferência",
-);
 
 if (!$wgCachedMessageArrays) {
 	require_once('MessagesPt_br.php');
@@ -60,6 +50,13 @@ class LanguagePt_br extends LanguagePt {
 			 return parent::getMessage( $key );
 		}
 	}
+
+	function getSkinNames() {
+		global $wgSkinNamesPt_br;
+		return $wgSkinNamesPt_br;
+	}
+
+
 }
 
 ?>

@@ -1943,6 +1943,7 @@ class Parser
 					'<td|<th|<div|<\\/div|<hr|<\\/pre|<\\/p|'.$this->mUniqPrefix.'-pre|<\\/li|<\\/ul)/iS', $t );
 				if ( $openmatch or $closematch ) {
 					$paragraphStack = false;
+					# TODO bug 5718: paragraph closed
 					$output .= $this->closeParagraph();
 					if ( $preOpenMatch and !$preCloseMatch ) {
 						$this->mInPre = true;
@@ -2147,6 +2148,8 @@ class Parser
 				return $varCache[$index] = $wgContLang->formatNum( wfNumberOfArticles() );
 			case MAG_NUMBEROFFILES:
 				return $varCache[$index] = $wgContLang->formatNum( wfNumberOfFiles() );
+			case MAG_NUMBEROFUSERS:
+				return $varCache[$index] = $wgContLang->formatNum( wfNumberOfUsers() );
 			case MAG_SITENAME:
 				return $wgSitename;
 			case MAG_SERVER:
@@ -2469,7 +2472,7 @@ class Parser
 	 * @private
 	 */
 	function braceSubstitution( $piece ) {
-		global $wgContLang, $wgAllowDisplayTitle, $action;
+		global $wgContLang, $wgLang, $wgAllowDisplayTitle, $action;
 		$fname = 'Parser::braceSubstitution';
 		wfProfileIn( $fname );
 
@@ -2621,11 +2624,12 @@ class Parser
 			}
 		}
 
+		$lang = $this->mOptions->getInterfaceMessage() ? $wgLang : $wgContLang;
 		# GRAMMAR
 		if ( !$found && $argc == 1 ) {
 			$mwGrammar =& MagicWord::get( MAG_GRAMMAR );
 			if ( $mwGrammar->matchStartAndRemove( $part1 ) ) {
-				$text = $linestart . $wgContLang->convertGrammar( $args[0], $part1 );
+				$text = $linestart . $lang->convertGrammar( $args[0], $part1 );
 				$found = true;
 			}
 		}
@@ -2635,7 +2639,7 @@ class Parser
 			$mwPluralForm =& MagicWord::get( MAG_PLURAL );
 			if ( $mwPluralForm->matchStartAndRemove( $part1 ) ) {
 				if ($argc==2) {$args[2]=$args[1];}
-				$text = $linestart . $wgContLang->convertPlural( $part1, $args[0], $args[1], $args[2]);
+				$text = $linestart . $lang->convertPlural( $part1, $args[0], $args[1], $args[2]);
 				$found = true;
 			}
 		}
@@ -2660,6 +2664,39 @@ class Parser
 			}
 		}		
 
+		# NUMBEROFUSERS, NUMBEROFARTICLES, and NUMBEROFFILES
+		if( !$found ) {
+			$mwWordsToCheck = array( MAG_NUMBEROFUSERS => 'wfNumberOfUsers', MAG_NUMBEROFARTICLES => 'wfNumberOfArticles', MAG_NUMBEROFFILES => 'wfNumberOfFiles' );
+			foreach( $mwWordsToCheck as $word => $func ) {
+				$mwCurrentWord =& MagicWord::get( $word );
+				if( $mwCurrentWord->matchStartAndRemove( $part1 ) ) {
+					$mwRawSuffix =& MagicWord::get( MAG_RAWSUFFIX );
+					if( $mwRawSuffix->match( $args[0] ) ) {
+						# Raw and unformatted
+						$text = $linestart . call_user_func( $func );
+					} else {
+						# Formatted according to the content default
+						$text = $linestart . $wgContLang->formatNum( call_user_func( $func ) );
+					}
+					$found = true;
+				}
+			}
+		}
+		
+			/*$mwNumUsers =& MagicWord::get( MAG_NUMBEROFUSERS );
+			if( $mwNumUsers->matchStartAndRemove( $part1 ) ) {
+				$mwRawSuffix =& MagicWord::get( MAG_RAWSUFFIX );
+				if( $mwRawSuffix->match( $args[0] ) ) {
+					# Raw and unformatted
+					$text = $linestart . wfNumberOfUsers();
+				} else {
+					# Default; formatted form
+					$text = $linestart . $wgContLang->formatNum( wfNumberOfUsers() );
+				}
+				$found = true;
+			}
+		}*/
+
 		# Extensions
 		if ( !$found && substr( $part1, 0, 1 ) == '#' ) {
 			$colonPos = strpos( $part1, ':' );
@@ -2670,6 +2707,11 @@ class Parser
 					$funcArgs = array_merge( array( &$this, trim( substr( $part1, $colonPos + 1 ) ) ), $funcArgs );
 					$result = call_user_func_array( $this->mFunctionHooks[$function], $funcArgs );
 					$found = true;
+
+					// The text is usually already parsed, doesn't need triple-brace tags expanded, etc.
+					//$noargs = true;
+					//$noparse = true;
+					
 					if ( is_array( $result ) ) {
 						$text = $linestart . $result[0];
 						unset( $result[0] );
@@ -2778,7 +2820,9 @@ class Parser
 		if ( $nowiki && $found && $this->mOutputType == OT_HTML ) {
 			$text = wfEscapeWikiText( $text );
 		} elseif ( ($this->mOutputType == OT_HTML || $this->mOutputType == OT_WIKI) && $found ) {
-			if ( !$noargs ) {
+			if ( $noargs ) {
+				$assocArgs = array();
+			} else {
 				# Clean up argument array
 				$assocArgs = array();
 				$index = 1;
@@ -3106,7 +3150,9 @@ class Parser
 					# Increase TOC level
 					$toclevel++;
 					$sublevelCount[$toclevel] = 0;
-					$toc .= $sk->tocIndent();
+					if( $toclevel<$wgMaxTocLevel ) {
+						$toc .= $sk->tocIndent();
+					}
 				}
 				elseif ( $level < $prevlevel && $toclevel > 1 ) {
 					# Decrease TOC level, find level to jump to
@@ -3128,12 +3174,15 @@ class Parser
 							}
 						}
 					}
-
-					$toc .= $sk->tocUnindent( $prevtoclevel - $toclevel );
+					if( $toclevel<$wgMaxTocLevel ) {
+						$toc .= $sk->tocUnindent( $prevtoclevel - $toclevel );
+					}
 				}
 				else {
 					# No change in level, end TOC line
-					$toc .= $sk->tocLineEnd();
+					if( $toclevel<$wgMaxTocLevel ) {
+						$toc .= $sk->tocLineEnd();
+					}
 				}
 
 				$levelCount[$toclevel] = $level;
@@ -3213,7 +3262,9 @@ class Parser
 		}
 
 		if( $doShowToc ) {
-			$toc .= $sk->tocUnindent( $toclevel - 1 );
+			if( $toclevel<$wgMaxTocLevel ) {
+				$toc .= $sk->tocUnindent( $toclevel - 1 );
+			}
 			$toc = $sk->tocList( $toc );
 		}
 
@@ -3408,7 +3459,7 @@ class Parser
 		);
 		$text = str_replace( array_keys( $pairs ), array_values( $pairs ), $text );
 		$text = $this->strip( $text, $stripState, true );
-		$text = $this->pstPass2( $text, $user );
+		$text = $this->pstPass2( $text, $stripState, $user );
 		$text = $this->unstrip( $text, $stripState );
 		$text = $this->unstripNoWiki( $text, $stripState );
 		return $text;
@@ -3418,13 +3469,13 @@ class Parser
 	 * Pre-save transform helper function
 	 * @private
 	 */
-	function pstPass2( $text, &$user ) {
+	function pstPass2( $text, &$stripState, &$user ) {
 		global $wgContLang, $wgLocaltimezone;
 
 		/* Note: This is the timestamp saved as hardcoded wikitext to
 		 * the database, we use $wgContLang here in order to give
-		 * everyone the same signiture and use the default one rather
-		 * than the one selected in each users preferences.
+		 * everyone the same signature and use the default one rather
+		 * than the one selected in each user's preferences.
 		 */
 		if ( isset( $wgLocaltimezone ) ) {
 			$oldtz = getenv( 'TZ' );
@@ -3440,6 +3491,9 @@ class Parser
 		# Because mOutputType is OT_WIKI, this will only process {{subst:xxx}} type tags
 		$text = $this->replaceVariables( $text );
 		
+		# Strip out <nowiki> etc. added via replaceVariables
+		$text = $this->strip( $text, $stripState );
+	
 		# Signatures
 		$sigText = $this->getUserSig( $user );
 		$text = strtr( $text, array(
@@ -3503,7 +3557,7 @@ class Parser
 			# Sig. might contain markup; validate this
 			if( $this->validateSig( $nickname ) !== false ) {
 				# Validated; clean up (if needed) and return it
-				return( $this->cleanSig( $nickname ) );
+				return $this->cleanSig( $nickname, true );
 			} else {
 				# Failed to validate; fall back to the default
 				$nickname = $username;
@@ -3533,9 +3587,13 @@ class Parser
 	 * 2) Substitute all transclusions
 	 *
 	 * @param string $text
+	 * @param $parsing Whether we're cleaning (preferences save) or parsing
 	 * @return string Signature text
 	 */
-	function cleanSig( $text ) {
+	function cleanSig( $text, $parsing = false ) {
+		global $wgTitle;
+		$this->startExternalParse( $wgTitle, new ParserOptions(), $parsing ? OT_WIKI : OT_MSG );
+	
 		$substWord = MagicWord::get( MAG_SUBST );
 		$substRegex = '/\{\{(?!(?:' . $substWord->getBaseRegex() . '))/x' . $substWord->getRegexCase();
 		$substText = '{{' . $substWord->getSynonym( 0 );
@@ -3543,7 +3601,8 @@ class Parser
 		$text = preg_replace( $substRegex, $substText, $text );
 		$text = preg_replace( '/~{3,5}/', '', $text );
 		$text = $this->replaceVariables( $text );
-	
+		
+		$this->clearState();	
 		return $text;
 	}
 	
@@ -4134,7 +4193,8 @@ class ParserOptions
 	var $mEditSection;               # Create "edit section" links
 	var $mNumberHeadings;            # Automatically number headings
 	var $mAllowSpecialInclusion;     # Allow inclusion of special pages
-	var $mTidy;	        	 # Ask for tidy cleanup
+	var $mTidy;                      # Ask for tidy cleanup
+	var $mInterfaceMessage;          # Which lang to call for PLURAL and GRAMMAR
 
 	function getUseTeX()                        { return $this->mUseTeX; }
 	function getUseDynamicDates()               { return $this->mUseDynamicDates; }
@@ -4146,7 +4206,8 @@ class ParserOptions
 	function getEditSection()                   { return $this->mEditSection; }
 	function getNumberHeadings()                { return $this->mNumberHeadings; }
 	function getAllowSpecialInclusion()         { return $this->mAllowSpecialInclusion; }
-	function getTidy()		            { return $this->mTidy; }
+	function getTidy()                          { return $this->mTidy; }
+	function getInterfaceMessage()              { return $this->mInterfaceMessage; }
 
 	function setUseTeX( $x )                    { return wfSetVar( $this->mUseTeX, $x ); }
 	function setUseDynamicDates( $x )           { return wfSetVar( $this->mUseDynamicDates, $x ); }
@@ -4157,8 +4218,9 @@ class ParserOptions
 	function setEditSection( $x )               { return wfSetVar( $this->mEditSection, $x ); }
 	function setNumberHeadings( $x )            { return wfSetVar( $this->mNumberHeadings, $x ); }
 	function setAllowSpecialInclusion( $x )     { return wfSetVar( $this->mAllowSpecialInclusion, $x ); }
-	function setTidy( $x )			    { return wfSetVar( $this->mTidy, $x); }
+	function setTidy( $x )                      { return wfSetVar( $this->mTidy, $x); }
 	function setSkin( &$x ) { $this->mSkin =& $x; }
+	function setInterfaceMessage( $x )          { return wfSetVar( $this->mInterfaceMessage, $x); }
 
 	function ParserOptions() {
 		global $wgUser;
@@ -4201,6 +4263,7 @@ class ParserOptions
 		$this->mNumberHeadings = $user->getOption( 'numberheadings' );
 		$this->mAllowSpecialInclusion = $wgAllowSpecialInclusion;
 		$this->mTidy = false;
+		$this->mInterfaceMessage = false;
 		wfProfileOut( $fname );
 	}
 }
@@ -4236,6 +4299,18 @@ function wfNumberOfFiles() {
 	wfProfileOut( $fname );
 
 	return $numImages;
+}
+
+/**
+ * Return the number of user accounts
+ * @return integer
+ */
+function wfNumberOfUsers() {
+	wfProfileIn( 'wfNumberOfUsers' );
+	$dbr =& wfGetDB( DB_SLAVE );
+	$count = $dbr->selectField( 'site_stats', 'ss_users', array(), 'wfNumberOfUsers' );
+	wfProfileOut( 'wfNumberOfUsers' );
+	return (int)$count;
 }
 
 /**

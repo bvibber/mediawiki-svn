@@ -25,7 +25,7 @@ function wfSpecialUserlogin() {
  * @subpackage SpecialPage
  */
 class LoginForm {
-	var $mName, $mPassword, $mRetype, $mReturnto, $mCookieCheck, $mPosted;
+	var $mName, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
 	var $mAction, $mCreateaccount, $mCreateaccountMail, $mMailmypassword;
 	var $mLoginattempt, $mRemember, $mEmail, $mDomain;
 
@@ -42,7 +42,7 @@ class LoginForm {
 		$this->mPassword = $request->getText( 'wpPassword' );
 		$this->mRetype = $request->getText( 'wpRetype' );
 		$this->mDomain = $request->getText( 'wpDomain' );
-		$this->mReturnto = $request->getVal( 'returnto' );
+		$this->mReturnTo = $request->getVal( 'returnto' );
 		$this->mCookieCheck = $request->getVal( 'wpCookieCheck' );
 		$this->mPosted = $request->wasPosted();
 		$this->mCreateaccount = $request->getCheck( 'wpCreateaccount' );
@@ -71,8 +71,8 @@ class LoginForm {
 		$wgAuth->setDomain( $this->mDomain );
 
 		# When switching accounts, it sucks to get automatically logged out
-		if( $this->mReturnto == $wgLang->specialPage( 'Userlogout' ) ) {
-			$this->mReturnto = '';
+		if( $this->mReturnTo == $wgLang->specialPage( 'Userlogout' ) ) {
+			$this->mReturnTo = '';
 		}
 	}
 
@@ -135,27 +135,40 @@ class LoginForm {
 	 */
 	function addNewAccount() {
 		global $wgUser, $wgEmailAuthentication;
-
+		
+		# Create the account and abort if there's a problem doing so
 		$u = $this->addNewAccountInternal();
-
-		if ($u == NULL) {
+		if( $u == NULL )
 			return;
-		}
-
-		$wgUser = $u;
-		$wgUser->setCookies();
-
-		$wgUser->saveSettings();
-		if( $wgEmailAuthentication && $wgUser->isValidEmailAddr( $wgUser->getEmail() ) ) {
-			$wgUser->sendConfirmationMail();
-		}
-
-		wfRunHooks( 'AddNewAccount', array( $u ) );
-
-		if( $this->hasSessionCookie() ) {
-			return $this->successfulLogin( wfMsg( 'welcomecreation', $wgUser->getName() ), false );
+			
+		# Save user settings and send out an email authentication message if needed
+		$u->saveSettings();
+		if( $wgEmailAuthentication && User::isValidEmailAddr( $u->getEmail() ) )
+			$u->sendConfirmationMail();
+			
+		# If not logged in, assume the new account as the current one and set session cookies
+		# then show a "welcome" message or a "need cookies" message as needed
+		if( $wgUser->isAnon() ) {
+			$wgUser = $u;
+			$wgUser->setCookies();
+			wfRunHooks( 'AddNewAccount', array( $wgUser ) );
+			if( $this->hasSessionCookie() ) {
+				return $this->successfulLogin( wfMsg( 'welcomecreation', $wgUser->getName() ), false );
+			} else {
+				return $this->cookieRedirectCheck( 'new' );
+			}
 		} else {
-			return $this->cookieRedirectCheck( 'new' );
+			# Confirm that the account was created
+			global $wgOut;
+			$skin = $wgUser->getSkin();
+			$self = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
+			$wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
+			$wgOut->setArticleRelated( false );
+			$wgOut->setRobotPolicy( 'noindex,nofollow' );
+			$wgOut->addHtml( wfMsgWikiHtml( 'accountcreatedtext', $u->getName() ) );
+			$wgOut->returnToMain( $self->getPrefixedText() );
+			wfRunHooks( 'AddNewAccount', array( $u ) );
+			return true;
 		}
 	}
 
@@ -421,7 +434,11 @@ class LoginForm {
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->addWikiText( $msg );
-		$wgOut->returnToMain( $auto );
+		if ( !empty( $this->mReturnTo ) ) {
+			$wgOut->returnToMain( $auto, $this->mReturnTo );
+		} else {
+			$wgOut->returnToMain( $auto );
+		}
 	}
 
 	/** */
@@ -471,8 +488,8 @@ class LoginForm {
 			$linkmsg = 'nologin';
 		}
 
-		if ( !empty( $this->mReturnto ) ) {
-			$returnto = '&returnto=' . wfUrlencode( $this->mReturnto );
+		if ( !empty( $this->mReturnTo ) ) {
+			$returnto = '&returnto=' . wfUrlencode( $this->mReturnTo );
 			$q .= $returnto;
 			$linkq .= $returnto;
 		}

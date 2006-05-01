@@ -92,17 +92,12 @@ class LanguageFr extends LanguageUtf8 {
 		return " à ";
 	}
 
-	var $digitTransTable = array(
-		',' => "\xc2\xa0", // @bug 2749
-		'.' => ','
-	);
-
-	function formatNum( $number, $year = false ) {
-		return !$year ? strtr($number, $this->digitTransTable ) : $number;
+	function separatorTransformTable() {
+		return array(',' => "\xc2\xa0", '.' => ',' );
 	}
 
 	function getMessage( $key ) {
-		global $wgAllMessagesFr, $wgAllMessagesEn;
+		global $wgAllMessagesFr;
 		if( isset( $wgAllMessagesFr[$key] ) ) {
 			return $wgAllMessagesFr[$key];
 		} else {

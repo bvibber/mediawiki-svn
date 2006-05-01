@@ -166,7 +166,7 @@ class LanguageRu extends LanguageUtf8 {
 		# matter if they are wrong sometimes. Just add a special case for your site name if necessary.
 
 		#join and array_slice instead mb_substr
-
+		$ar = array();
 		preg_match_all( '/./us', $word, $ar );
 		if (!preg_match("/[a-zA-Z_]/us", $word))
 			switch ( $case ) {
@@ -217,22 +217,24 @@ class LanguageRu extends LanguageUtf8 {
 		}
 	}
 
-	/**
+	/*
 	 * Russian numeric format is "12 345,67" but "1234,56"
 	 */
-	function formatNum( $number, $year = false ) {
-		if ($year) {
-			return $number;
-		}
-		else {
-			//not strtr because of 2-byte unicode nbsp char
-			$commafied_number = str_replace('.', ',', str_replace(',', ' ', $this->commafy($number)));
-			return ($number<10000) ? str_replace(' ', '', $commafied_number) : $commafied_number;
-		}
 
+	function commafy($_) {
+		if (!preg_match('/^\d{1,4}$/',$_)) {
+			return strrev((string)preg_replace('/(\d{3})(?=\d)(?!\d*\.)/','$1,',strrev($_)));
+		} else {
+			return $_;
+		}
+	}
 
+	function separatorTransformTable() {
+		return array(
+			',' => "\xc2\xa0",
+			'.' => ','
+		);
 	}
 
 }
-
 ?>

@@ -31,18 +31,20 @@ if (!$wgCachedMessageArrays) {
 
 
 class LanguageHi extends LanguageUtf8 {
-	var $digitTransTable = array(
-		"0" => "०",
-		"1" => "१",
-		"2" => "२",
-		"3" => "३",
-		"4" => "४",
-		"5" => "५",
-		"6" => "६",
-		"7" => "७",
-		"8" => "८",
-		"9" => "९"
-	);
+	function digitTransformTable() {
+		return array(
+			"0" => "०",
+			"1" => "१",
+			"2" => "२",
+			"3" => "३",
+			"4" => "४",
+			"5" => "५",
+			"6" => "६",
+			"7" => "७",
+			"8" => "८",
+			"9" => "९"
+		);
+	}
 
 	function getNamespaces() {
 		global $wgNamespaceNamesHi;
@@ -55,15 +57,6 @@ class LanguageHi extends LanguageUtf8 {
 			return $wgAllMessagesHi[$key];
 		else
 			return parent::getMessage($key);
-	}
-
-	function formatNum( $number ) {
-		global $wgTranslateNumerals;
-		if( $wgTranslateNumerals ) {
-			return strtr( $number, $this->digitTransTable );
-		} else {
-			return $number;
-		}
 	}
 
 }

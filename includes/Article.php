@@ -337,7 +337,8 @@ class Article {
 					# TODO
 				}
 			}
-			$lastid = $oldid;
+			# unused:
+			# $lastid = $oldid;
 		}
 		if ( !$oldid ) {
 			$oldid = 0;
@@ -353,8 +354,6 @@ class Article {
 
 		# Query variables :P
 		$oldid = $this->getOldID();
-
-		$fname = 'Article::loadContent';
 
 		# Pre-fill content with error message so that if something
 		# fails we'll have something telling us what we intended.
@@ -691,7 +690,7 @@ class Article {
 	}
 
 	/**
-	 * @todo Document
+	 * @todo Document, fixme $offset never used.
 	 * @param $limit Integer: default 0.
 	 * @param $offset Integer: default 0.
 	 */
@@ -908,6 +907,7 @@ class Article {
 					$wgOut->setSubtitle( wfMsgHtml( 'redirectpagesub' ) );
 				}
 				$targetUrl = $rt->escapeLocalURL();
+				# fixme unused $titleText :
 				$titleText = htmlspecialchars( $rt->getPrefixedText() );
 				$link = $sk->makeLinkObj( $rt );
 
@@ -1282,10 +1282,6 @@ class Article {
 		wfProfileOut( $fname );
 	}
 
-	function getTextOfLastEditWithSectionReplacedOrAdded($section, $text, $summary = '', $edittime = NULL) {
-		$this->replaceSection( $section, $text, $summary, $edittime );
-	}
-
 	/**
 	 * @return string Complete article text, or null if error
 	 */
@@ -1404,7 +1400,6 @@ class Article {
 		}
 
 		$isminor = $minor && $wgUser->isAllowed('minoredit');
-		$redir = (int)$this->isRedirect( $text );
 
 		$text = $this->preSaveTransform( $text );
 		$dbw =& wfGetDB( DB_MASTER );
@@ -1538,6 +1533,7 @@ class Article {
 	/**
 	 * After we've either updated or inserted the article, update
 	 * the link tables and redirect to the new page.
+	 * @todo FIXME some function arguments never used
 	 */
 	function showArticle( $text, $subtitle , $sectionanchor = '', $me2, $now, $summary, $oldid ) {
 		global $wgOut;
@@ -2493,6 +2489,7 @@ class Article {
 			'comment'    => $comment,
 			'minor_edit' => $minor ? 1 : 0,
 			) );
+		# fixme : $revisionId never used
 		$revisionId = $revision->insertOn( $dbw );
 		$this->updateRevisionOn( $dbw, $revision );
 		$dbw->commit();

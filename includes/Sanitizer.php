@@ -59,7 +59,7 @@ define( 'MW_ATTRIBS_REGEX',
 /**
  * List of all named character entities defined in HTML 4.01
  * http://www.w3.org/TR/html4/sgml/entities.html
- * @access private
+ * @private
  */
 global $wgHtmlEntities;
 $wgHtmlEntities = array(
@@ -321,7 +321,7 @@ class Sanitizer {
 	/**
 	 * Cleans up HTML, removes dangerous tags and attributes, and
 	 * removes HTML comments
-	 * @access private
+	 * @private
 	 * @param string $text
 	 * @param callback $processCallback to do any variable or parameter replacements in HTML attribute values
 	 * @param array $args for the processing callback
@@ -338,7 +338,7 @@ class Sanitizer {
 				'h2', 'h3', 'h4', 'h5', 'h6', 'cite', 'code', 'em', 's',
 				'strike', 'strong', 'tt', 'var', 'div', 'center',
 				'blockquote', 'ol', 'ul', 'dl', 'table', 'caption', 'pre',
-				'ruby', 'rt' , 'rb' , 'rp', 'p', 'span'
+				'ruby', 'rt' , 'rb' , 'rp', 'p', 'span', 'u'
 			);
 			$htmlsingle = array(
 				'br', 'hr', 'li', 'dt', 'dd'
@@ -365,7 +365,6 @@ class Sanitizer {
 
 		# Remove HTML comments
 		$text = Sanitizer::removeHTMLcomments( $text );
-
 		$bits = explode( '<', $text );
 		$text = array_shift( $bits );
 		if(!$wgUseTidy) {
@@ -401,9 +400,16 @@ class Sanitizer {
 						} else if ( in_array( $t, $tagstack ) &&
 						! in_array ( $t , $htmlnest ) ) {
 							$badtag = 1 ;
+						# Is it a self closed htmlpair ? (bug 5487)
+						} else if( $brace == '/>' &&
+						in_array($t, $htmlpairs) ) {
+							$badtag = 1;
 						} elseif( in_array( $t, $htmlsingleonly ) ) {
 							# Hack to force empty tag for uncloseable elements
 							$brace = '/>';
+						} else if( in_array( $t, $htmlsingle ) ) {
+							# Hack to not close $htmlsingle tags
+							$brace = NULL;
 						} else {
 							if ( $t == 'table' ) {
 								array_push( $tablestack, $tagstack );
@@ -463,7 +469,7 @@ class Sanitizer {
 	 * and followed by a newline (ignoring spaces), trim leading and
 	 * trailing spaces and one of the newlines.
 	 *
-	 * @access private
+	 * @private
 	 * @param string $text
 	 * @return string
 	 */
@@ -633,7 +639,7 @@ class Sanitizer {
 	 * Regex replace callback for armoring links against further processing.
 	 * @param array $matches
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function armorLinksCallback( $matches ) {
 		return str_replace( ':', '&#58;', $matches[1] );
@@ -677,7 +683,7 @@ class Sanitizer {
 	 *
 	 * @param array $set
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function getTagAttributeCallback( $set ) {
 		if( isset( $set[6] ) ) {
@@ -711,7 +717,7 @@ class Sanitizer {
 	 *
 	 * @param string $text
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function normalizeAttributeValue( $text ) {
 		return str_replace( '"', '&quot;',
@@ -733,7 +739,7 @@ class Sanitizer {
 	 *
 	 * @param string $text
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function normalizeCharReferences( $text ) {
 		return preg_replace_callback(
@@ -818,7 +824,7 @@ class Sanitizer {
 	 *
 	 * @param string $text
 	 * @return string
-	 * @access public
+	 * @public
 	 */
 	function decodeCharReferences( $text ) {
 		return preg_replace_callback(
@@ -850,7 +856,7 @@ class Sanitizer {
 	 * character reference, otherwise U+FFFD REPLACEMENT CHARACTER.
 	 * @param int $codepoint
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function decodeChar( $codepoint ) {
 		if( Sanitizer::validateCodepoint( $codepoint ) ) {

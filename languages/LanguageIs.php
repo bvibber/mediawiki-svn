@@ -103,7 +103,6 @@ class LanguageIs extends LanguageUtf8 {
 	}
 
 	function date( $ts, $adj = false, $format = true) {
-		global $wgUser;
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); } # Adjust based on the timezone setting.
 		$format = $this->dateFormat($format);
 
@@ -158,8 +157,8 @@ class LanguageIs extends LanguageUtf8 {
 	 * The Icelandic number style uses dots where English would use commas
 	 * and commas where English would use dots, e.g. 201.511,17 not 201,511.17
 	 */
-	function formatNum( $number, $year = false ) {
-		return $year ? $number : strtr($this->commafy($number), '.,', ',.' );
+	function separatorTransformTable() {
+		return array(',' => '.', '.' => ',' );
 	}
 
 	function linkPrefixExtension() {

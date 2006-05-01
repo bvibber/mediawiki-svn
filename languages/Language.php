@@ -228,6 +228,7 @@ $wgLanguageNamesEn =& $wgLanguageNames;
 	MAG_CURRENTTIME          => array( 1,    'CURRENTTIME'            ),
 	MAG_NUMBEROFARTICLES     => array( 1,    'NUMBEROFARTICLES'       ),
 	MAG_NUMBEROFFILES        => array( 1,    'NUMBEROFFILES'          ),
+	MAG_NUMBEROFUSERS		 => array( 1, 	 'NUMBEROFUSERS'		  ),
 	MAG_PAGENAME             => array( 1,    'PAGENAME'               ),
 	MAG_PAGENAMEE            => array( 1,    'PAGENAMEE'              ),
 	MAG_NAMESPACE            => array( 1,    'NAMESPACE'              ),
@@ -279,6 +280,7 @@ $wgLanguageNamesEn =& $wgLanguageNames;
 	MAG_UC                   => array( 0,    'UC:'                    ),
 	MAG_RAW                  => array( 0,    'RAW:'                   ),
 	MAG_DISPLAYTITLE         => array( 1,    'DISPLAYTITLE'           ),
+	MAG_RAWSUFFIX			 => array( 1,	 'R'					  ),
 );
 
 if (!$wgCachedMessageArrays) {
@@ -526,7 +528,11 @@ class Language {
 		$hrDiff  = 0;
 
 		if ( $tz === '' ) {
-			$hrDiff = isset( $wgLocalTZoffset ) ? $wgLocalTZoffset : 0;
+			# Global offset in minutes.
+			if( isset($wgLocalTZoffset) ) {
+				$hrDiff = $wgLocalTZoffset % 60;
+				$minDiff = $wgLocalTZoffset - ($hrDiff * 60);
+			}
 		} elseif ( strpos( $tz, ':' ) !== false ) {
 			$tzArray = explode( ':', $tz );
 			$hrDiff = intval($tzArray[0]);
@@ -641,10 +647,14 @@ class Language {
 			? ':'
 			: $this->timeSeparator( $format );
 
-		$t = substr( $ts, 8, 2 ) . $sep . substr( $ts, 10, 2 );
+		$hh = $this->formatNum( substr( $ts, 8, 2 ), true );
+		$mm = $this->formatNum( substr( $ts, 10, 2 ), true );
+		$ss = $this->formatNum( substr( $ts, 12, 2 ), true );
+
+		$t = $hh . $sep . $mm;
 
 		if ( $datePreference == MW_DATE_ISO ) {
-			$t .= $sep . substr( $ts, 12, 2 );
+			$t .= $sep . $ss;
 		}
 		return $t;
 	}
@@ -682,7 +692,7 @@ class Language {
 	}
 
 	function formatDay( $day, $format ) {
-		return $this->formatNum( 0 + $day );
+		return $this->formatNum( 0 + $day, true );
 	}
 
 	/**
@@ -891,10 +901,7 @@ class Language {
 		return "<em>$text</em>";
 	}
 
-	/**
-	 * This function enables formatting of numbers, it should only come
-	 * into effect when the $wgTranslateNumerals variable is TRUE.
-	 *
+	 /**
 	 * Normally we output all numbers in plain en_US style, that is
 	 * 293,291.235 for twohundredninetythreethousand-twohundredninetyone
 	 * point twohundredthirtyfive. However this is not sutable for all
@@ -915,11 +922,23 @@ class Language {
 	 * @public
 	 * @param mixed $number the string to be formatted, should be an integer or
 	 *        a floating point number.
-	 * @param bool $year are we being passed a year? (turns off commafication)
-	 * @return mixed whatever we're fed if it's a year, a string otherwise.
+	 * @param bool $nocommafy Set to true for special numbers like dates
+	 * @return string
 	 */
-	function formatNum( $number, $year = false ) {
-		return $year ? $number : $this->commafy($number);
+	function formatNum( $number, $nocommafy = false ) {
+		global $wgTranslateNumerals;
+		if (!$nocommafy) {
+			$number = $this->commafy($number);
+			$s = $this->separatorTransformTable();
+			if (!is_null($s)) { $number = strtr($number, $s); }
+		}
+
+		if ($wgTranslateNumerals) {
+			$s = $this->digitTransformTable();
+			if (!is_null($s)) { $number = strtr($number, $s); }
+		}
+
+		return $number;
 	}
 
 	/**
@@ -931,6 +950,15 @@ class Language {
 	function commafy($_) {
 		return strrev((string)preg_replace('/(\d{3})(?=\d)(?!\d*\.)/','$1,',strrev($_)));
 	}
+
+	function digitTransformTable() {
+		return null;
+	}
+
+	function separatorTransformTable() {
+		return null;
+	}
+
 
 	/**
 	 * For the credit list in includes/Credits.php (action=credits)

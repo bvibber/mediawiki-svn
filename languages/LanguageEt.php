@@ -39,11 +39,11 @@ $wgNamespaceNamesEt = array(
 
 
 /* private */ $wgDateFormatsEt = array(
-        'Eelistus puudub',
-        '15.01.2001, kell 16.12',
-        '15. jaanuar 2001, kell 16.12',
-        '15. I 2005, kell 16.12',
-        'ISO 8601' => '2001-01-15 16:12:34'
+	'Eelistus puudub',
+	'15.01.2001, kell 16.12',
+	'15. jaanuar 2001, kell 16.12',
+	'15. I 2005, kell 16.12',
+	'ISO 8601' => '2001-01-15 16:12:34'
 );
 
 
@@ -151,8 +151,8 @@ class LanguageEt extends LanguageUtf8 {
 	 * Estonian numeric formatting is 123 456,78.
 	 * Notice that the space is non-breaking.
 	 */
-	function formatNum( $number, $year = false ) {
-		return $year ? $number : strtr($this->commafy($number), '.,', ", " );
+	function separatorTransformTable() {
+		return array(',' => "\xc2\xa0", '.' => ',' );
 	}
 
 	/**
@@ -182,7 +182,7 @@ class LanguageEt extends LanguageUtf8 {
 	 * @return string
 	 */
 	function date( $ts, $adj = false, $format = true, $timecorrection = false ) {
-		global $wgAmericanDates, $wgUser;
+		global $wgAmericanDates;
 
 		if ( $adj ) { $ts = $this->userAdjust( $ts, $timecorrection ); }
 

@@ -87,14 +87,8 @@ class LanguageFy extends LanguageUtf8 {
 		return $wgSkinNamesFy;
 	}
 
-
-	var $digitTransTable = array(
-		',' => '.',
-		'.' => ','
-	);
-
-	function formatNum( $number, $year = false ) {
-		return !$year ? strtr($this->commafy($number), $this->digitTransTable ) : $number;
+	function separatorTransformTable() {
+		return array(',' => '.', '.' => ',' );
 	}
 
 	function getDateFormats() {
@@ -114,7 +108,6 @@ class LanguageFy extends LanguageUtf8 {
 	 * @return string
 	 */
 	function date( $ts, $adj = false, $format = true, $timecorrection = false ) {
-		global $wgUser;
 
 		if ( $adj ) { $ts = $this->userAdjust( $ts, $timecorrection ); }
 

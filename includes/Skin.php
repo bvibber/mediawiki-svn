@@ -330,6 +330,7 @@ class Skin extends Linker {
 
 	/**
 	 * Some styles that are set by user through the user settings interface.
+	 * @todo undefined variables (bug #4940)
 	 */
 	function doGetUserStyles() {
 		global $wgUser, $wgUser, $wgRequest, $wgTitle, $wgAllowUserCss;
@@ -337,6 +338,7 @@ class Skin extends Linker {
 		$s = '';
 
 		if( $wgAllowUserCss && $wgUser->isLoggedIn() ) { # logged in
+			# FIXME: $action undefined, bug #4940
 			if($wgTitle->isCssSubpage() && $this->userCanPreview( $action ) ) {
 				$s .= $wgRequest->getText('wpTextbox1');
 			} else {
@@ -502,12 +504,15 @@ END;
 
 		if( count( $wgOut->mCategoryLinks ) == 0 ) return '';
 
+		# Separator
+		$sep = wfMsgHtml( 'catseparator' );
+
 		// Use Unicode bidi embedding override characters,
 		// to make sure links don't smash each other up in ugly ways.
 		$dir = $wgContLang->isRTL() ? 'rtl' : 'ltr';
 		$embed = "<span dir='$dir'>";
 		$pop = '</span>';
-		$t = $embed . implode ( "$pop | $embed" , $wgOut->mCategoryLinks ) . $pop;
+		$t = $embed . implode ( "{$pop} {$sep} {$embed}" , $wgOut->mCategoryLinks ) . $pop;
 
 		$msg = count( $wgOut->mCategoryLinks ) === 1 ? 'categories1' : 'categories';
 		$s = $this->makeKnownLinkObj( Title::makeTitle( NS_SPECIAL, 'Categories' ),
@@ -912,7 +917,7 @@ END;
 		if ( !$wgDisableCounters ) {
 			$count = $wgLang->formatNum( $wgArticle->getCount() );
 			if ( $count ) {
-				$s = wfMsg( 'viewcount', $count );
+				$s = wfMsgExt( 'viewcount', array( 'parseinline' ), $count );
 			}
 		}
 

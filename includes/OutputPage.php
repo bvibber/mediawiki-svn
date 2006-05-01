@@ -352,12 +352,14 @@ class OutputPage {
 	}
 
 	/**
-	 * Parse wikitext and return the HTML. This is for special pages that add the text later
+	 * Parse wikitext and return the HTML.
 	 */
-	function parse( $text, $linestart = true ) {
+	function parse( $text, $linestart = true, $interface = false ) {
 		global $wgParser, $wgTitle;
+		if ( $interface) { $this->mParserOptions->setInterfaceMessage(true); }
 		$parserOutput = $wgParser->parse( $text, $wgTitle, $this->mParserOptions,
 			$linestart, true, $this->mRevisionId );
+		if ( $interface) { $this->mParserOptions->setInterfaceMessage(false); }
 		return $parserOutput->getText();
 	}
 
@@ -445,7 +447,7 @@ class OutputPage {
 				# We do want clients to cache if they can, but they *must* check for updates
 				# on revisiting the page.
 				wfDebug( "** private caching; {$this->mLastModified} **\n", false );
-				header( "Expires: -1" );
+				header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', 0 ) . ' GMT' );
 				header( "Cache-Control: private, must-revalidate, max-age=0" );
 			}
 			if($this->mLastModified) header( "Last-modified: {$this->mLastModified}" );
@@ -454,7 +456,7 @@ class OutputPage {
 
 			# In general, the absence of a last modified header should be enough to prevent
 			# the client from using its cache. We send a few other things just to make sure.
-			header( 'Expires: -1' );
+			header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', 0 ) . ' GMT' );
 			header( 'Cache-Control: no-cache, no-store, max-age=0, must-revalidate' );
 			header( 'Pragma: no-cache' );
 		}
@@ -632,7 +634,7 @@ class OutputPage {
 	 * Produce a "user is blocked" page
 	 */
 	function blockedPage() {
-		global $wgUser, $wgContLang;
+		global $wgUser, $wgContLang, $wgTitle;
 
 		$this->setPageTitle( wfMsg( 'blockedtitle' ) );
 		$this->setRobotpolicy( 'noindex,nofollow' );
@@ -650,7 +652,10 @@ class OutputPage {
 		$link = '[[' . $wgContLang->getNsText( NS_USER ) . ":{$name}|{$name}]]";
 
 		$this->addWikiText( wfMsg( 'blockedtext', $link, $reason, $ip, $name ) );
-		$this->returnToMain( false );
+		
+		# Don't auto-return to special pages
+		$return = $wgTitle->getNamespace() > -1 ? $wgTitle->getPrefixedText() : NULL;	
+		$this->returnToMain( false, $return );
 	}
 
 	/**
@@ -812,7 +817,14 @@ class OutputPage {
 			$skin = $wgUser->getSkin();
 			$this->setPageTitle( wfMsg( 'viewsource' ) );
 			$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
-			$this->addWikiText( wfMsg( 'protectedtext' ) );
+			
+			# Determine if protection is due to the page being a system message
+			# and show an appropriate explanation
+			if( $wgTitle->getNamespace() == NS_MEDIAWIKI && !$wgUser->isAllowed( 'editinterface' ) ) {
+				$this->addWikiText( wfMsg( 'protectedinterface' ) );
+			} else {
+				$this->addWikiText( wfMsg( 'protectedtext' ) );
+			}
 		} else {
 			$this->setPageTitle( wfMsg( 'readonly' ) );
 			if ( $wgReadOnly ) {
@@ -834,7 +846,8 @@ class OutputPage {
 			}
 			$rows = $wgUser->getOption( 'rows' );
 			$cols = $wgUser->getOption( 'cols' );
-			$text = "\n<textarea cols='$cols' rows='$rows' readonly='readonly'>" .
+			
+			$text = "\n<textarea name='wpTextbox1' id='wpTextbox1' cols='$cols' rows='$rows' readonly='readonly'>" .
 				htmlspecialchars( $source ) . "\n</textarea>";
 			$this->addHTML( $text );
 		}

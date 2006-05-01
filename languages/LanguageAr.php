@@ -15,8 +15,8 @@ require_once('LanguageUtf8.php');
 	NS_TALK             => 'نقاش',
 	NS_USER             => 'مستخدم',
 	NS_USER_TALK        => 'نقاش_المستخدم',
-	NS_PROJECT          => 'ويكيبيديا',
-	NS_PROJECT_TALK     => 'نقاش_ويكيبيديا',
+	NS_PROJECT          => $wgMetaNamespace,
+	NS_PROJECT_TALK     => 'نقاش' . '_' . $wgMetaNamespace,
 	NS_IMAGE            => 'صورة',
 	NS_IMAGE_TALK       => 'نقاش_الصورة',
 	NS_MEDIAWIKI        => 'ميدياويكي',
@@ -97,20 +97,22 @@ if (!$wgCachedMessageArrays) {
 }
 
 class LanguageAr extends LanguageUtf8 {
-	var $digitTransTable = array(
-		'0' => '٠',
-		'1' => '١',
-		'2' => '٢',
-		'3' => '٣',
-		'4' => '٤',
-		'5' => '٥',
-		'6' => '٦',
-		'7' => '٧',
-		'8' => '٨',
-		'9' => '٩',
-		'.' => '٫',
-		',' => '٬'
-	);
+	function digitTransformTable() {
+		return array(
+			'0' => '٠',
+			'1' => '١',
+			'2' => '٢',
+			'3' => '٣',
+			'4' => '٤',
+			'5' => '٥',
+			'6' => '٦',
+			'7' => '٧',
+			'8' => '٨',
+			'9' => '٩',
+			'.' => '٫', // wrong table?
+			',' => '٬'
+		);
+	}
 
 	function getNamespaces() {
 		global $wgNamespaceNamesAr;
@@ -159,14 +161,5 @@ class LanguageAr extends LanguageUtf8 {
 		}
 	}
 
-	function formatNum( $number ) {
-		global $wgTranslateNumerals;
-		if( $wgTranslateNumerals ) {
-			return strtr( $number, $this->digitTransTable );
-		} else {
-			return $number;
-		}
-	}
 }
-
 ?>

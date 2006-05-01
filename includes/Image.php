@@ -95,10 +95,9 @@ class Image
 	 * Get the memcached keys
 	 * Returns an array, first element is the local cache key, second is the shared cache key, if there is one
 	 */
-	function getCacheKeys( $shared = false ) {
+	function getCacheKeys( ) {
 		global $wgDBname, $wgUseSharedUploads, $wgSharedUploadDBname, $wgCacheSharedUploads;
 
-		$foundCached = false;
 		$hashedName = md5($this->name);
 		$keys = array( "$wgDBname:Image:$hashedName" );
 		if ( $wgUseSharedUploads && $wgSharedUploadDBname && $wgCacheSharedUploads ) {
@@ -1640,6 +1639,17 @@ class Image
 	 */
 	function isLocal() {
 		return !$this->fromSharedDirectory;
+	}
+	
+	/**
+	 * Was this image ever deleted from the wiki?
+	 *
+	 * @return bool
+	 */
+	function wasDeleted() {
+		$dbw =& wfGetDB( DB_MASTER );
+		$del = $dbw->selectField( 'archive', 'COUNT(*) AS count', array( 'ar_namespace' => NS_IMAGE, 'ar_title' => $this->title->getDBkey() ), 'Image::wasDeleted' );
+		return $del > 0;
 	}
 
 } //class
