@@ -43,6 +43,20 @@ function get_form ( $as_extension = false ) {
 		$additional[] = "For additional parameters, see <a href='README'>here</a>" ;
 	}
 	
+	# Plain text translation options
+	$a = array (
+		'en' => 'English',
+		'de' => 'German',
+		'fr' => 'French',
+		'es' => 'Spanish',
+		'it' => 'Italian',
+	) ;
+	asort ( $a ) ;
+	$tttlo = "" ;
+	foreach ( $a AS $b => $c ) {
+		$tttlo .= "<option value='{$b}'>{$c}</option>" ;
+	}
+	
 	$additional = "<div style='text-align:center; border-top:1px solid black;width:100%;font-size:12px'>" .
 					implode ( "<br/>" , $additional ) .
 					"</div>" ;
@@ -77,6 +91,8 @@ Title : <input type='text' name='document_title' value='' size=40/><br/>
 <br/><INPUT type='radio' name='output_format' value='text'>Plain text 
  <input type='checkbox' name='plaintext_markup' value='1' checked>Use *_/ markup</input>
  <input type='checkbox' name='plaintext_prelink' value='1' checked>Put &rarr; before internal links</input>
+<br/><INPUT type='radio' name='output_format' value='translated_text'>Plain text, google-translated to
+ <select name='translated_text_target_language'>{$tttlo}</select> (works only for wikipedia/wikibooks)
 <br/><INPUT type='radio' name='output_format' value='xhtml'>XHTML 
 <br/><INPUT type='radio' name='output_format' value='docbook_xml'>DocBook XML 
 {$optional}
@@ -172,6 +188,24 @@ if ( get_param('doit',false) ) { # Process
 		$out = str_replace ( "\n" , "<br/>" , $out ) ;
 		header('Content-type: text/html; charset=utf-8');
 		print $out ;
+	} else if ( $format == "translated_text" ) {
+		$xmlg['plaintext_markup'] = false ;
+		$xmlg['plaintext_prelink'] = false ;
+		$out = $converter->articles2text ( $xml , $xmlg ) ;
+		#$out = str_replace ( "\n" , "<br/>" , $out ) ;
+		#header('Content-type: text/html; charset=utf-8');
+		#print $out ;
+		$out = explode ( "\n" , $out ) ;
+		array_shift ( $out ) ;
+		$out = trim ( implode ( "\n" , $out ) ) ;
+		$source_language = array_shift ( explode ( '.' , $xmlg["site_base_url"] ) ) ;
+		$target_language = get_param ( 'translated_text_target_language' , 'en' ) ;
+		$langpair = urlencode ( "{$source_language}|{$target_language}" ) ;
+		$url = "http://www.google.com/translate_t?langpair={$langpair}&text=" . urlencode ( utf8_decode ( $out ) ) ;
+		echo file_get_contents ( $url ) ;
+
+
+
 	} else if ( $format == "xhtml" ) {
 		# Header hack for IE
 		if ( stristr($_SERVER["HTTP_ACCEPT"],"application/xhtml+xml") ) {
