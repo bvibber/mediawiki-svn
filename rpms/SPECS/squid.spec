@@ -20,7 +20,7 @@ Source6: squid.cron
 Source98: perl-requires-squid.sh
 
 # Upstream patches
-Patch100: squid-2.5.STABLE12-epoll.patch
+Patch100: squid-2.5.STABLE13-epoll.patch
 
 # Local patches
 # Putting upstream patches first lowers the chances that we'll need to modify
@@ -41,7 +41,7 @@ Patch253: squid-2.5.STABLE13-nomanglerequestheaders.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Prereq: /sbin/chkconfig logrotate shadow-utils
 Requires: bash >= 2.0
-BuildPrereq: openjade linuxdoc-tools openssl-devel automake15 autoconf213 subversion
+BuildPrereq: openjade linuxdoc-tools openssl-devel automake15 autoconf213 wget gcc
 Obsoletes: squid-novm
 
 %description
@@ -75,7 +75,7 @@ lookup program (dnsserver), a program for retrieving FTP data
 
 # Fetch the Wikimedia error page from SVN
 cp -a errors/English errors/Wikimedia
-svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/errorpage errors/Wikimedia/
+wget -qO errors/Wikimedia/error.html http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/errorpage/error.html
 for page in ERR_ZERO_SIZE_OBJECT ERR_CANNOT_FORWARD
 do
 	cp -f errors/Wikimedia/error.html errors/Wikimedia/$page

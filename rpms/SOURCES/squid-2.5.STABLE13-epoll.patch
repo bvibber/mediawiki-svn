@@ -1,5 +1,5 @@
 This patch is generated from the epoll-2_5 branch of s2_5 in squid
-Tue Oct 11 02:13:36 2005 GMT
+Wed Apr 19 08:51:05 2006 GMT
 See http://devel.squid-cache.org/
 
 Index: squid/acconfig.h
@@ -19,9 +19,9 @@ diff -u squid/acconfig.h:1.13.2.4 squid/acconfig.h:1.13.2.4.10.1
  
  #endif /* __CONFIGURE_H__ */
 Index: squid/configure.in
-diff -u squid/configure.in:1.42.2.78 squid/configure.in:1.42.2.59.4.9
---- squid/configure.in:1.42.2.78	Wed Sep 28 19:13:47 2005
-+++ squid/configure.in	Sun Oct  9 18:06:23 2005
+diff -u squid/configure.in:1.42.2.82 squid/configure.in:1.42.2.59.4.10
+--- squid/configure.in:1.42.2.82	Mon Mar 13 19:16:32 2006
++++ squid/configure.in	Thu Mar 16 15:59:04 2006
 @@ -706,6 +706,26 @@
    esac
  ])
@@ -165,10 +165,10 @@ diff -u squid/src/Makefile.am:1.13.2.11 squid/src/Makefile.am:1.13.2.9.10.3
  	@XTRA_LIBS@
  
 Index: squid/src/client_side.c
-diff -u squid/src/client_side.c:1.47.2.70 squid/src/client_side.c:1.47.2.59.2.6
---- squid/src/client_side.c:1.47.2.70	Thu Sep 15 19:13:25 2005
-+++ squid/src/client_side.c	Sun Oct  9 18:06:24 2005
-@@ -2955,10 +2955,35 @@
+diff -u squid/src/client_side.c:1.47.2.76 squid/src/client_side.c:1.47.2.59.2.7
+--- squid/src/client_side.c:1.47.2.76	Fri Mar 10 19:16:31 2006
++++ squid/src/client_side.c	Thu Mar 16 15:59:12 2006
+@@ -2963,10 +2963,35 @@
  {
      fde *F = &fd_table[fd];
      ConnStateData *conn = data;
@@ -207,7 +207,7 @@ diff -u squid/src/client_side.c:1.47.2.70 squid/src/client_side.c:1.47.2.59.2.6
  }
  
  static void
-@@ -3360,6 +3385,15 @@
+@@ -3368,6 +3393,15 @@
  	conn->body.size_left -= size;
  	/* Move any remaining data */
  	conn->in.offset -= size;
@@ -257,9 +257,9 @@ diff -u squid/src/comm.c:1.18.6.6 squid/src/comm.c:1.18.6.5.4.4
  void
  comm_add_close_handler(int fd, PF * handler, void *data)
 Index: squid/src/comm_select.c
-diff -u squid/src/comm_select.c:1.8.6.6 squid/src/comm_select.c:1.8.6.6.22.5
+diff -u squid/src/comm_select.c:1.8.6.6 squid/src/comm_select.c:1.8.6.6.22.6
 --- squid/src/comm_select.c:1.8.6.6	Sun May 11 19:14:21 2003
-+++ squid/src/comm_select.c	Mon Oct 10 00:54:21 2005
++++ squid/src/comm_select.c	Tue Jan 10 10:14:03 2006
 @@ -36,6 +36,8 @@
  
  static int MAX_POLL_TIME = 1000;	/* see also comm_quick_poll_required() */
@@ -319,7 +319,7 @@ diff -u squid/src/comm_select.c:1.8.6.6 squid/src/comm_select.c:1.8.6.6.22.5
  commIncomingStats(StoreEntry * sentry)
  {
      StatCounters *f = &statCounter;
-@@ -1106,6 +1072,443 @@
+@@ -1106,6 +1072,442 @@
      }
  }
  
@@ -375,7 +375,7 @@ diff -u squid/src/comm_select.c:1.8.6.6 squid/src/comm_select.c:1.8.6.6.22.5
 +
 +	    /* If the fd is still meant to be backed off, add it to the start of
 +	       the list and continue */
-+	    if(commDeferRead(fd) != 0) {
++	    if(commDeferRead(fd) == 1) {
 +		backoff_fds[j++]=fd;
 +		continue;
 +	    }
@@ -667,9 +667,8 @@ diff -u squid/src/comm_select.c:1.8.6.6 squid/src/comm_select.c:1.8.6.6.22.5
 +		      ,fd,cevents->events,F->epoll_state,F->read_handler,F->write_handler);
 +	    if (cevents->events & (EPOLLIN|EPOLLHUP|EPOLLERR)) {
 +		if((hdl = F->read_handler) != NULL) {
-+
 +		    // If the descriptor is meant to be deferred, don't handle
-+		    if(commDeferRead(fd)!=0) {
++		    if(commDeferRead(fd) == 1) {
 +			if(!(F->epoll_backoff)) {
 +			    debug(5, 1) ("comm_epoll(): WARNING defer handler for fd=%d (desc=%s) does not call commDeferFD() - backing off manually\n",fd,F->desc);
 +			    commEpollBackoff(fd);
@@ -764,10 +763,10 @@ diff -u squid/src/comm_select.c:1.8.6.6 squid/src/comm_select.c:1.8.6.6.22.5
  void
  comm_quick_poll_required(void)
 Index: squid/src/enums.h
-diff -u squid/src/enums.h:1.29.2.17 squid/src/enums.h:1.29.2.14.8.3
---- squid/src/enums.h:1.29.2.17	Tue Sep 20 17:59:13 2005
-+++ squid/src/enums.h	Sun Oct  9 18:06:24 2005
-@@ -509,7 +509,8 @@
+diff -u squid/src/enums.h:1.29.2.18 squid/src/enums.h:1.29.2.14.8.4
+--- squid/src/enums.h:1.29.2.18	Fri Nov 11 19:13:48 2005
++++ squid/src/enums.h	Thu Mar 16 15:59:12 2006
+@@ -510,7 +510,8 @@
      ENTRY_NEGCACHED,
      ENTRY_VALIDATED,
      ENTRY_BAD_LENGTH,
@@ -794,10 +793,25 @@ diff -u squid/src/fd.c:1.7.12.1 squid/src/fd.c:1.7.12.1.16.1
      fdUpdateBiggest(fd, 0);
      Number_FD--;
 Index: squid/src/forward.c
-diff -u squid/src/forward.c:1.13.6.15 squid/src/forward.c:1.13.6.13.4.6
---- squid/src/forward.c:1.13.6.15	Thu Sep  1 19:13:43 2005
-+++ squid/src/forward.c	Sun Oct  9 18:06:24 2005
-@@ -685,6 +685,8 @@
+diff -u squid/src/forward.c:1.13.6.16 squid/src/forward.c:1.13.6.13.4.8
+--- squid/src/forward.c:1.13.6.16	Fri Mar 10 19:16:31 2006
++++ squid/src/forward.c	Thu Mar 16 15:59:12 2006
+@@ -672,8 +672,13 @@
+ 	(void) 0;
+     else {
+ 	int i = delayMostBytesWanted(mem, INT_MAX);
+-	if (0 == i)
++	if (0 == i) {
++#if HAVE_EPOLL
++	    mem->serverfd=fd;
++	    commDeferFD(fd);
++#endif
+ 	    return 1;
++	}
+ 	/* was: rc = -(rc != INT_MAX); */
+ 	else if (INT_MAX == i)
+ 	    rc = 0;
+@@ -681,6 +686,8 @@
  	    rc = -1;
      }
  #endif
@@ -806,7 +820,7 @@ diff -u squid/src/forward.c:1.13.6.15 squid/src/forward.c:1.13.6.13.4.6
      if (EBIT_TEST(e->flags, ENTRY_FWD_HDR_WAIT))
  	return rc;
      if (EBIT_TEST(e->flags, RELEASE_REQUEST)) {
-@@ -693,11 +695,23 @@
+@@ -689,11 +696,23 @@
  	 * is disk clients pending on a too large object being fetched and a
  	 * few other corner cases.
  	 */
@@ -848,9 +862,9 @@ diff -u squid/src/main.c:1.28.6.25 squid/src/main.c:1.28.6.19.2.5
  #else
  	switch (comm_select(loop_delay)) {
 Index: squid/src/protos.h
-diff -u squid/src/protos.h:1.41.6.33 squid/src/protos.h:1.41.6.22.4.8
---- squid/src/protos.h:1.41.6.33	Thu Sep 15 19:13:25 2005
-+++ squid/src/protos.h	Sun Oct  9 18:06:25 2005
+diff -u squid/src/protos.h:1.41.6.34 squid/src/protos.h:1.41.6.22.4.9
+--- squid/src/protos.h:1.41.6.34	Sat Feb 25 19:13:57 2006
++++ squid/src/protos.h	Thu Mar 16 15:59:15 2006
 @@ -159,6 +159,10 @@
  extern int comm_openex(int, int, struct in_addr, u_short, int, unsigned char TOS, const char *);
  extern u_short comm_local_port(int fd);
@@ -874,9 +888,9 @@ diff -u squid/src/protos.h:1.41.6.33 squid/src/protos.h:1.41.6.22.4.8
  #else
  extern int comm_select(int);
 Index: squid/src/squid.h
-diff -u squid/src/squid.h:1.13.6.8 squid/src/squid.h:1.13.6.7.10.2
---- squid/src/squid.h:1.13.6.8	Fri Mar 25 19:15:58 2005
-+++ squid/src/squid.h	Mon Mar 28 18:27:26 2005
+diff -u squid/src/squid.h:1.13.6.9 squid/src/squid.h:1.13.6.7.10.3
+--- squid/src/squid.h:1.13.6.9	Fri Mar 10 19:16:31 2006
++++ squid/src/squid.h	Thu Mar 16 15:59:15 2006
 @@ -252,6 +252,10 @@
  #endif /* HAVE_POLL_H */
  #endif /* HAVE_POLL */
@@ -888,6 +902,31 @@ diff -u squid/src/squid.h:1.13.6.8 squid/src/squid.h:1.13.6.7.10.2
  #if defined(HAVE_STDARG_H)
  #include <stdarg.h>
  #define HAVE_STDARGS		/* let's hope that works everywhere (mj) */
+Index: squid/src/ssl.c
+diff -u squid/src/ssl.c:1.13.6.13 squid/src/ssl.c:1.13.6.7.10.6
+--- squid/src/ssl.c:1.13.6.13	Fri Mar 10 19:16:31 2006
++++ squid/src/ssl.c	Thu Mar 16 15:59:15 2006
+@@ -132,14 +132,18 @@
+ 
+ #if DELAY_POOLS
+ static int
+-sslDeferServerRead(int fdnotused, void *data)
++sslDeferServerRead(int fd, void *data)
+ {
+     SslStateData *s = data;
+     int i = delayBytesWanted(s->delay_id, 0, INT_MAX);
+     if (i == INT_MAX)
+ 	return 0;
+-    if (i == 0)
++    if (i == 0) {
++#if HAVE_EPOLL
++      commDeferFD(fd);
++#endif
+ 	return 1;
++    }
+     return -1;
+ }
+ #endif
 Index: squid/src/stat.c
 diff -u squid/src/stat.c:1.13.6.14 squid/src/stat.c:1.13.6.11.4.3
 --- squid/src/stat.c:1.13.6.14	Tue Mar 29 18:17:46 2005
@@ -902,9 +941,9 @@ diff -u squid/src/stat.c:1.13.6.14 squid/src/stat.c:1.13.6.11.4.3
  #else
      storeAppendPrintf(sentry, "syscalls.selects = %f/sec\n", XAVG(syscalls.selects));
 Index: squid/src/store_client.c
-diff -u squid/src/store_client.c:1.9.6.4 squid/src/store_client.c:1.9.6.2.18.5
+diff -u squid/src/store_client.c:1.9.6.4 squid/src/store_client.c:1.9.6.2.18.6
 --- squid/src/store_client.c:1.9.6.4	Tue Apr 19 19:18:33 2005
-+++ squid/src/store_client.c	Mon Apr 25 13:59:39 2005
++++ squid/src/store_client.c	Tue Apr 18 19:32:37 2006
 @@ -201,6 +201,12 @@
      sc->copy_buf = buf;
      sc->copy_size = size;
@@ -927,7 +966,7 @@ diff -u squid/src/store_client.c:1.9.6.4 squid/src/store_client.c:1.9.6.2.18.5
 +	   memory, re-poll the fd */
 +	if ( (EBIT_TEST(e->flags, ENTRY_DEFER_READ)) && 
 +		(storeLowestMemReaderOffset(e) == mem->inmem_hi) ) {
-+	    debug(20, 1) ("storeClientCopy3: %s - clearing ENTRY_DEFER_READ\n",e->mem_obj->url);
++	    debug(20, 3) ("storeClientCopy3: %s - clearing ENTRY_DEFER_READ\n",e->mem_obj->url);
 +	    /* Clear the flag and re-poll the fd */
 +	    EBIT_CLR(e->flags, ENTRY_DEFER_READ);
 +#if HAVE_EPOLL
@@ -972,10 +1011,10 @@ diff -u squid/src/store_swapout.c:1.11.2.10 squid/src/store_swapout.c:1.11.2.1.3
  }
  
 Index: squid/src/structs.h
-diff -u squid/src/structs.h:1.48.2.43 squid/src/structs.h:1.48.2.34.2.7
---- squid/src/structs.h:1.48.2.43	Sat Sep  3 19:13:28 2005
-+++ squid/src/structs.h	Sun Oct  9 18:06:25 2005
-@@ -788,6 +788,10 @@
+diff -u squid/src/structs.h:1.48.2.46 squid/src/structs.h:1.48.2.34.2.8
+--- squid/src/structs.h:1.48.2.46	Fri Mar 10 19:16:31 2006
++++ squid/src/structs.h	Thu Mar 16 15:59:15 2006
+@@ -789,6 +789,10 @@
      squid_off_t bytes_read;
      squid_off_t bytes_written;
      int uses;			/* ie # req's over persistent conn */
@@ -986,7 +1025,7 @@ diff -u squid/src/structs.h:1.48.2.43 squid/src/structs.h:1.48.2.34.2.7
      struct _fde_disk {
  	DWCB *wrt_handle;
  	void *wrt_handle_data;
-@@ -1108,6 +1112,10 @@
+@@ -1115,6 +1119,10 @@
  	char *buf;
  	size_t offset;
  	size_t size;
@@ -997,7 +1036,7 @@ diff -u squid/src/structs.h:1.48.2.43 squid/src/structs.h:1.48.2.34.2.7
      } in;
      struct {
  	squid_off_t size_left;	/* How much body left to process */
-@@ -1498,6 +1506,10 @@
+@@ -1505,6 +1513,10 @@
      mem_hdr data_hdr;
      squid_off_t inmem_hi;
      squid_off_t inmem_lo;
@@ -1008,7 +1047,7 @@ diff -u squid/src/structs.h:1.48.2.43 squid/src/structs.h:1.48.2.34.2.7
      dlink_list clients;
      int nclients;
      struct {
-@@ -1858,7 +1870,7 @@
+@@ -1864,7 +1876,7 @@
  	    int recvfroms;
  	    int sendtos;
  	} sock;
