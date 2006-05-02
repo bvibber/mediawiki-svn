@@ -884,9 +884,9 @@ class Parser
 			$df =& DateFormatter::getInstance();
 			$text = $df->reformat( $this->mOptions->getDateFormat(), $text );
 		}
-		$text = $this->doAllQuotes( $text );
 		$text = $this->replaceInternalLinks( $text );
 		$text = $this->replaceExternalLinks( $text );
+		$text = $this->doAllQuotes( $text );
 
 		# replaceInternalLinks may sometimes leave behind
 		# absolute URLs, which have to be masked to hide them from replaceExternalLinks
