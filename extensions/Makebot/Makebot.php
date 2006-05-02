@@ -22,7 +22,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	
 	$wgExtensionFunctions[] = 'efMakeBot';
 	$wgAvailableRights[] = 'makebot';
-	$wgExtensionCredits['specialpage'][] = array( 'name' => 'MakeBot', 'author' => 'Rob Church' );
+	$wgExtensionCredits['specialpage'][] = array( 'name' => 'MakeBot', 'url' => 'http://meta.wikimedia.org/wiki/MakeBot', 'author' => 'Rob Church' );
 	
 	/**
 	 * Determines who can use the extension; as a default, bureaucrats are permitted
