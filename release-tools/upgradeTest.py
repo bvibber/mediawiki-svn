@@ -108,6 +108,7 @@ def testUpgrade(dbname, branch):
 	
 	dropDatabase(dbname)
 
+testUpgrade("uptest16", "branches/REL1_6")
 testUpgrade("uptest15", "branches/REL1_5")
 testUpgrade("uptest14", "branches/REL1_4")
 testUpgrade("uptest13", "branches/REL1_3")
