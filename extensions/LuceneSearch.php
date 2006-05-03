@@ -240,8 +240,12 @@ class LuceneSearch extends SpecialPage
 			$wgOut->addHTML($nmtext);
 
 			if( !$results->hasResults() ) {
-				$o = wfMsg('searchnoresults');
-				$wgOut->addHTML($o);
+				# Pass search terms back in a few different formats
+				# $1: Plain search terms
+				# $2: Search terms with s/ /_/
+				# $3: URL-encoded search terms
+				$tmsg = array( htmlspecialchars( $q ), str_replace( ' ', '_', $q ), wfUrlEncode( $q ) );
+				$wgOut->addHtml( wfMsgWikiHtml( 'searchnoresults', $tmsg[0], $tmsg[1], $tmsg[2] ) );
 			} else {
 				#$showresults = min($limit, count($results)-$numresults);
 				$i = $offset;
