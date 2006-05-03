@@ -231,10 +231,14 @@ class BotQueryProcessor {
 			)),
 	);
 
+	/**
+	* Object Constructor, uses a database connection as a parameter
+	*/
 	function BotQueryProcessor( $db ) {
 		global $wgRequest;
 
 		$this->data = array();
+		$this->pageIdByText = array();	// reverse page ID lookup
 		$this->requestsize = 0;
 		$this->db = $db;
 
@@ -251,6 +255,7 @@ class BotQueryProcessor {
 		// Do not modify this values directly - use the AddRaw() method
 		$this->titles = null;
 		$this->pageids = null;
+		$this->normalizedTitles = array();
 	}
 
 	function execute() {
@@ -307,7 +312,16 @@ class BotQueryProcessor {
 			}
 		}
 		$paramStr = implode( '&', $paramVals );
-		$msg = "$userIdentity\t$format\t$what\t{$this->requestsize}\t$paramStr";
+		$perfVals = array();
+		if( array_key_exists('query', $this->data) ) {
+			foreach( $this->data['query'] as $module => $values ) {
+				if( is_array( $values ) && array_key_exists('time', $values) ) {
+					$perfVals[] = "$module={$values['time']}";
+				}
+			}
+		}
+		$perfStr = implode( '&', $perfVals );
+		$msg = "$userIdentity\t$format\t$what\t{$this->requestsize}\t$paramStr\t$perfStr";
 		wfDebugLog( 'query', $msg );
 	}
 
@@ -361,6 +375,13 @@ class BotQueryProcessor {
 					$this->dieUsage( "No read permission for $titleString", 'pi_titleaccessdenied' );
 				}
 				$linkBatch->addObj( $titleObj );
+				
+				// Make sure we remember the original title that was given to us
+				// This way the caller can correlate new titles with the originally requested if they change namespaces, etc
+				if( $titleString !== $titleObj->getPrefixedText() ) {
+					$this->normalizedTitles[$titleString] = &$titleObj;
+				}
+				
 			}
 			if ( $linkBatch->isEmpty() ) {
 				$this->dieUsage( "no titles could be found", 'pi_novalidtitles' );
@@ -426,6 +447,7 @@ class BotQueryProcessor {
 				$this->dieUsage( "No read permission for $titleString", 'pi_pageidaccessdenied' );
 			}
 			$data = &$this->data['pages'][$row->page_id];
+			$this->pageIdByText[$title->getPrefixedText()] = $row->page_id;
 			$data['_obj']    = $title;
 			$data['ns']      = $title->getNamespace();
 			$data['title']   = $title->getPrefixedText();
@@ -436,12 +458,12 @@ class BotQueryProcessor {
 				$data['redirect'] = '';
 				$redirects[] = $row->page_id;
 			}
-
+			
 			// Strike out link
 			unset( $nonexistentPages[$row->page_namespace][$row->page_title] );
 		}
 		$this->db->freeResult( $res );
-
+		
 		//
 		// At this point we assume that this->data['pages'] contains ONLY valid existing entries.
 		// Create lists that can later be used to filter other tables by page Id or other useful query strings
@@ -473,11 +495,13 @@ class BotQueryProcessor {
 				if ( !$title->userCanRead() ) {
 					$this->dieUsage( "No read permission for $titleString", 'pi_nopageaccessdenied' );
 				}
-				$data = &$this->data['pages'][$i--];
+				$data = &$this->data['pages'][$i];
+				$this->pageIdByText[$title->getPrefixedText()] = $i;
 				$data['_obj']    = $title;
 				$data['title']   = $title->getPrefixedText();
 				$data['ns']      = $title->getNamespace();
 				$data['id']      = 0;
+				$i--;
 			}
 		}
 		
@@ -494,6 +518,16 @@ class BotQueryProcessor {
 			}
 		}
 
+		//
+		// When normalized title differs from what was given, append the given title(s)
+		//
+		foreach( $this->normalizedTitles as $givenTitle => &$title ) {
+			$pageId = $this->pageIdByText[$title->getPrefixedText()];
+			$data = &$this->data['pages'][$pageId]['rawTitles'];
+			$data['_element'] = 'title';
+			$data[] = $givenTitle;
+		}
+		
 		return true; // success
 	}
 
@@ -983,15 +1017,9 @@ class BotQueryProcessor {
 	* This method will die if no such title is found
 	*/	
 	function lookupInvalidPageId( $ns, &$dbkey ) {
-		// TODO: optimize.
-		$ns = intval($ns);
-		foreach( $this->data['pages'] as $id => &$page ) {
-			if( $id < 0 && array_key_exists( '_obj', $page )) {
-				$title = &$page['_obj'];
-				if( $title->getNamespace() === $ns && $title->getDBkey() === $dbkey ) {
-					return $id;
-				}
-			}
+		$prefixedText = Title::makeTitle( $ns, $dbkey )->getPrefixedText();
+		if( array_key_exists( $prefixedText, $this->pageIdByText )) {
+			return $this->pageIdByText[$prefixedText];
 		}
 		die( "internal error - '$ns:$dbkey' not found" );
 	}
@@ -1169,17 +1197,12 @@ class BotQueryProcessor {
 	}
 	
 	function startProfiling() {
-		if( $this->enableProfiling ) {
-			$this->startTime = wfTime();
-		}
+		$this->startTime = wfTime();
 	}
 	function endProfiling( $module ) {
-		if( $this->enableProfiling ) {
-			$timeDelta = wfTime() - $this->startTime;
-			unset($this->startTime);
-			$this->addStatusMessage( $module, 
-				array( 'time' => sprintf( "%1.2fms", $timeDelta * 1000.0 ) ));
-		}
+		$timeDelta = wfTime() - $this->startTime;
+		unset($this->startTime);
+		$this->addStatusMessage( $module, array( 'time' => sprintf( "%1.2fms", $timeDelta * 1000.0 ) ));
 	}
 	
 	function validateLimit( $varname, &$value, $max, $botMax = false, $min = 1 ) {
