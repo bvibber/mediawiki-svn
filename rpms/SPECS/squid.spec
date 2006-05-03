@@ -5,7 +5,7 @@
 Summary: The Squid proxy caching server.
 Name: squid
 Version: 2.5.STABLE13
-Release: 6wm
+Release: 7wm
 Epoch: 7
 License: GPL
 Group: System Environment/Daemons
@@ -37,6 +37,7 @@ Patch207: squid-2.5.STABLE13-htcp.patch
 Patch251: squid-htcp-clr.diff
 Patch252: squid-2.5.STABLE13-errors.patch
 Patch253: squid-2.5.STABLE13-nomanglerequestheaders.patch
+Patch254: squid-2.5.STABLE13-htcp2.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Prereq: /sbin/chkconfig logrotate shadow-utils
@@ -72,6 +73,7 @@ lookup program (dnsserver), a program for retrieving FTP data
 %patch251 -p0 -b .htcpclr
 %patch252 -p0 -b .errors
 %patch253 -p0 -b .nomanglerequestheaders
+%patch254 -p0 -b .htcp2
 
 # Fetch the Wikimedia error page from SVN
 cp -a errors/English errors/Wikimedia
@@ -228,6 +230,17 @@ fi
 chgrp squid /var/cache/samba/winbindd_privileged > /dev/null 2>& 1 || true
 
 %changelog
+* Wed May 3 2006 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE13-7.WM
+- Include a fix by Tim Starling that removes all dynamic malloc() style
+  calls in htcp.c, and hopefully fixes the high user CPU problems and
+  related SYN cookies problem
+- Update the epoll patch
+- Change the cron squid restart script to do a pidof on '(squid)'
+  which seems to be more reliable and fixes a bug where cron
+  keeps trying to start an already running squid
+- wget is sufficient for fetching a current file from SVN
+- Include gcc in the build dependencies
+
 * Sat Apr 29 2006 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE13-6.WM
 - Change handling of Wikimedia error pages; fetch the latest ones from
   Wikimedia SVN during prep. Instead of modifying the English error pages,
