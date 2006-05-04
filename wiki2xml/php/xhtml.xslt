@@ -97,9 +97,16 @@
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:text disable-output-escaping="yes">&lt;a href="http://yourhost/wiki/</xsl:text>
-			<xsl:apply-templates/>
+			<xsl:apply-templates select="target"/>
 			<xsl:text disable-output-escaping="yes">"&gt;</xsl:text>
-			<xsl:apply-templates/>
+			<xsl:choose>
+				<xsl:when test="child::part">
+					<xsl:apply-templates select="part"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:apply-templates select="target"/>
+				</xsl:otherwise>
+			</xsl:choose>
 			<xsl:text disable-output-escaping="yes">&lt;/a&gt;</xsl:text>
 		</xsl:otherwise>
 	</xsl:choose>
