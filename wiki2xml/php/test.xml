@@ -25,8 +25,9 @@ number of articles:<space/><xhtml:div class='noarticletext'>There is currently n
 And unordered:</paragraph>
 <list type='bullet'>
 	<listitem>yeah 1</listitem>
-	<listitem><link type='external' href='http://localhost/'>yeah 2</link></listitem>
-	<listitem>yeah 3</listitem></list>
+	<listitem><link type='external' href='http://www.google.com/'>Google</link></listitem>
+	<listitem>yeah 3</listitem>
+</list>
 <paragraph>
 	<link><target>Tobedoom</target></link>
 </paragraph>

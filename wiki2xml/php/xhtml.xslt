@@ -89,9 +89,10 @@
 
 <xsl:template match="link">
 	<xsl:choose>
-		<xsl:when test="@type = external">
+		<xsl:when test="@type='external'" >
 			<xsl:text disable-output-escaping="yes">&lt;a href="</xsl:text><xsl:value-of select="@href" />
 			<xsl:text disable-output-escaping="yes">"&gt;</xsl:text>
+			<xsl:value-of select="."/>
 			<xsl:text disable-output-escaping="yes">&lt;/a&gt;</xsl:text>
 		</xsl:when>
 		<xsl:otherwise>
@@ -111,8 +112,5 @@
 <xsl:template match="part">
 <xsl:apply-templates/>
 </xsl:template>
-
-
-
 
 </xsl:stylesheet>
