@@ -40,10 +40,21 @@
 	<title><xsl:value-of select="@title" /></title>
 	<style type="text/css" media="screen,projection">@import "http://en.wikipedia.org/w/skins-1.5/monobook/main.css";</style>
 </head>
-<body>
-	<h1><xsl:value-of select="@title" /></h1>
-	<xsl:apply-templates />
-	</body></html>
+<body class="ns-0 ltr">
+<div id="globalWrapper">
+	<div id="column-content">
+		<div id="content">
+		<h1 class="firstHeading"><xsl:value-of select="@title" /></h1>
+			<div id="bodyContent">
+			<h3 id="siteSub">Generated with xhtml.xslt</h3>
+			<div id="contentSub"></div>
+			</div>
+		<xsl:apply-templates />
+		</div>
+	</div>
+</div>
+</body>
+</html>
 </xsl:template>
 
 <xsl:template match="paragraph">
