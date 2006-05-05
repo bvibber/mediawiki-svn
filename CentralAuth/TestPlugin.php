@@ -4,6 +4,39 @@
  * The sleep madness take you!
  */
 
+/*
+
+CREATE TABLE globaluser (
+  -- Internal unique ID for the authentication server
+  gu_id int auto_increment,
+  
+  -- Username. [Could change... or not? How to best handle renames...]
+  gu_name varchar(255) binary,
+  
+  -- Registered email address, may be empty.
+  gu_email varchar(255) binary,
+  
+  -- Timestamp when the address was confirmed as belonging to the user.
+  -- NULL if not confirmed.
+  gu_email_authenticated char(14) binary,
+  
+  -- Salt and hashed password
+  gu_salt char(16), -- or should this be an int? usually the old user_id
+  gu_password char(32),
+  
+  -- If true, this account cannot be used to log in on any wiki.
+  gu_locked tinyint,
+  
+  -- If true, this account should be hidden from most public user lists.
+  -- Used for "deleting" accounts without breaking referential integrity.
+  gu_hidden tinyint,
+  
+  primary key (gu_id),
+  unique key (gu_name)
+) CHARSET=latin1;
+
+*/
+
 $wgCentralAuthDatabase = 'authtest';
 
 class CentralAuthUser {
@@ -24,40 +57,59 @@ class CentralAuthUser {
 	}
 	
 	/**
-	 * @param string $password
-	 * @return bool
+	 * Check if the current username is defined and attached on this wiki yet
+	 * @param $dbname Local database key to look up
+	 * @return ("attached", "unattached", "no local user")
 	 */
-	public function authenticate( $password ) {
-		global $wgDBname;
+	function isAttached( $dbname ) {
 		$fname = __CLASS__ . '::' . __FUNCTION__;
 		
-		// First check that this wiki is attached
-		$res = $this->db->safeQuery(
-			"SELECT gu_id, gu_salt, gu_password, lu_database
-			FROM authtest.globaluser
-			LEFT JOIN authtest.localuser
-			ON gu_name=lu_name AND lu_dbname=?
-			WHERE gu_name=?",
-			$wgDBname,
-			$this->mName );
-		$row = $this->db->fetchObject( $res );
-		$this->db->freeResult( $res );
+		$row = $this->db->selectRow( 'localuser',
+			array( 'lu_attached' ),
+			array( 'lu_name' => $this->mName, 'lu_database' => $dbname ),
+			$fname );
 		
 		if( !$row ) {
-			// this shouldn't happen :)
-			throw new ImpossibleError( 'Global account vanished while we were looking at it' );
+			return "no local user";
+		}
+		
+		if( $row->lu_attached ) {
+			return "attached";
+		} else {
+			return "unattached";
+		}
+	}
+	
+	/**
+	 * Attempt to authenticate the global user account with the given password
+	 * @param string $password
+	 * @return ("ok", "no user", "locked", "bad password")
+	 */
+	public function authenticate( $password ) {
+		$fname = __CLASS__ . '::' . __FUNCTION__;
+		
+		$row = $this->db->selectRow( 'globaluser',
+			array( 'gu_salt', 'gu_password', 'gu_disabled' ),
+			array( 'gu_name' => $this->mName ),
+			$fname );
+		
+		if( !$row ) {
+			return "no user";
 		}
 		
 		$isAttached = !is_null( $row->lu_database );
 		$salt = $row->gu_salt;
 		$crypt = $row->gu_password;
+		$locked = $row->gu_locked;
 		
-		if( $isAttached ) {
-			return $this->matchHash( $password, $salt, $crypt );
-		} elseif( $wgCentralAuthAllowUnattachedLogin ) {
-			throw new UnimplementedError( 'unattached login not implemented' );
+		if( $locked ) {
+			return "locked";
+		}
+		
+		if( $this->matchHash( $password, $salt, $crypt ) ) {
+			return "ok";
 		} else {
-			throw new UnimplementedError( 'login-time conflict resolver not implemented' );
+			return "bad password";
 		}
 	}
 	
