@@ -24,9 +24,10 @@ if( defined( 'MEDIAWIKI' ) ) {
 	function efDisableSpecialPages() {
 		global $wgSpecialPages, $wgDisabledSpecialPages;
 		$whitelist = array( 'Search', 'Userlogin', 'Userlogout' );
-		foreach( $wgDisabledSpecialPages as $page )
-			if( !array_search( $page, $whitelist ) && isset( $wgSpecialPages[ $page ] ) )
+		foreach( $wgDisabledSpecialPages as $page ) {
+			if( !array_search( $page, $whitelist ) && isset( $wgSpecialPages[ $page ] ) ) {
 				SpecialPage::removePage( $page );
+			}
 		}
 	}
 	
