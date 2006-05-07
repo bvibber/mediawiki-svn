@@ -182,38 +182,38 @@ class BotQueryProcessor {
 			"Example: query.php?what=templates&titles=Main%20Page",
 			)),
 		'backlinks'      => array( "genPageBackLinksHelper", false,
-			array( 'blfilter', 'bllimit', 'blfromid' ),
-			array( array('existing', 'nonredirects', 'all'), 50, 0 ),
+			array( 'blfilter', 'bllimit', 'blcontfrom' ),
+			array( array('existing', 'nonredirects', 'all'), 50, null ),
 			array(
 			"What pages link to this page(s)",
 			"Parameters supported:",
 			"blfilter   - Of all given pages, which should be queried:",
 			"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
 			"bllimit    - how many total links to return",
-			"blfromid   - page id to start from. Use the 'next' value from previous queries.",
+			"blcontfrom - from which point to continue. Use the 'next' value from previous queries.",
 			"Example: query.php?what=backlinks&titles=Main%20Page&bllimit=10",
 			)),
 		'embeddedin'     => array( "genPageBackLinksHelper", false, 
-			array( 'eifilter', 'eilimit', 'eifromid' ), 
-			array( array('existing', 'nonredirects', 'all'), 50, 0 ),
+			array( 'eifilter', 'eilimit', 'eicontfrom' ), 
+			array( array('existing', 'nonredirects', 'all'), 50, null ),
 			array(
 			"What pages include this page(s) as template(s)",
 			"Parameters supported:",
 			"eifilter   - Of all given pages, which should be queried:",
 			"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
 			"eilimit    - how many total links to return",
-			"eifromid   - page id to start from. Use the 'next' value from previous queries.",
+			"eicontfrom - from which point to continue. Use the 'next' value from previous queries.",
 			"Example: query.php?what=embeddedin&titles=Template:Stub&eilimit=10",
 			)),
 		'imagelinks'     => array( "genPageBackLinksHelper", false, 
-			array( 'ilfilter', 'illimit', 'ilfromid' ),
-			array( array('existing', 'nonredirects', 'all'), 50, 0 ),
+			array( 'ilfilter', 'illimit', 'ilcontfrom' ),
+			array( array('existing', 'nonredirects', 'all'), 50, null ),
 			array(
 			"What pages use this image(s)",
 			"ilfilter   - Of all given images, which should be queried:",
 			"  'nonredirects', 'existing' (default), or 'all' (including non-existant)",
 			"illimit    - how many total links to return",
-			"ilfromid   - page id to start from. Use the 'next' value from previous queries.",
+			"ilcontfrom - from which point to continue. Use the 'next' value from previous queries.",
 			"Example: query.php?what=imagelinks&titles=image:test.jpg&illimit=10",
 			)),
 		'revisions'      => array( "genPageHistory", false,
@@ -236,6 +236,8 @@ class BotQueryProcessor {
 	*/
 	function BotQueryProcessor( $db ) {
 		global $wgRequest;
+
+		$this->totalStartTime = wfTime();
 
 		$this->data = array();
 		$this->pageIdByText = array();	// reverse page ID lookup
@@ -285,6 +287,10 @@ class BotQueryProcessor {
 
 	function output($isError = false) {
 		global $wgRequest, $wgUser;
+
+		// hack: pretend that profiling was started at the begining of the class execution.
+		$this->startTime = $this->totalStartTime;
+		$this->endProfiling( 'total' );
 		
 		$printer = $this->outputGenerators[$this->format][GEN_FUNCTION];
 		$mime = $this->outputGenerators[$this->format][GEN_MIME];
@@ -790,31 +796,36 @@ class BotQueryProcessor {
 	* $type - either 'template' or 'page'
 	*/
 	function genPageBackLinksHelper(&$prop, &$genInfo) {
+		//
+		// Determine what is being asked
+		//		
 		$isImage = false;
 		switch( $prop ) {
 			case 'embeddedin' :
-				$columnPrefix = 'tl';	// database column name prefix
+				$prefix = 'tl';	// database column name prefix
 				$code = 'ei';			// 
-				$linktbl = $this->db->tableName( 'templatelinks' );
+				$linktbl = 'templatelinks';
 				break;
 			case 'backlinks' :
-				$columnPrefix = 'pl';
+				$prefix = 'pl';
 				$code = 'bl';
-				$linktbl = $this->db->tableName( 'pagelinks' );
+				$linktbl = 'pagelinks';
 				break;
 			case 'imagelinks' :
-				$columnPrefix = 'il';
+				$prefix = 'il';
 				$code = 'il';
-				$linktbl = $this->db->tableName( 'imagelinks' );
+				$linktbl = 'imagelinks';
 				$isImage = true;
 				break;
 			default :
 				die("unknown type");
 		}
-		$pagetbl = $this->db->tableName( 'page' );
 
+		//
+		// Parse and validate parameters
+		//
 		$parameters = $this->getParams( $prop, $genInfo );		
-		$fromid = intval($parameters["{$code}fromid"]);
+		$contFrom = $parameters["{$code}contfrom"];
 		$limit  = intval($parameters["{$code}limit"]) + 1;
 		$filter = $parameters["{$code}filter"];
 		if( count($filter) != 1 ) {
@@ -823,6 +834,28 @@ class BotQueryProcessor {
 			$filter = $filter[0];
 		}
 
+		//
+		// Prase contFrom - will be in the format    ns|db_key|page_id - determine how to continue
+		//
+		if( $contFrom ) {
+			$contFromList = explode( '|', $contFrom );
+			$contFromValid = count($contFromList) === 3;
+			if( $contFromValid ) {
+				$fromNs = intval($contFromList[0]);
+				$fromTitle = $contFromList[1];
+				$contFromValid = (($fromNs !== 0 || $contFromList[0] === '0') && count($fromTitle) > 0);
+			}
+			if( $contFromValid ) {
+				$fromPageId = intval($contFromList[2]);
+				$contFromValid = ($fromPageId > 0);
+			}
+			if( !$contFromValid ) {
+				$this->dieUsage( "{$code}contfrom is invalid. You should pass the original value retured by the previous query", "{$code}_badcontfrom" );
+			}
+		}
+		//
+		// Parse page type filtering
+		//
 		$nonredir = $existing = $all = false;
 		switch( $filter ) {
 			case 'all' :
@@ -838,6 +871,9 @@ class BotQueryProcessor {
 				$this->dieUsage( "{$code}filter '$filter' is not one of the allowed: 'all', 'existing' [default], and 'nonredirects'", "{$code}_badfilter" );
 		}
 
+		//
+		// Make a list of pages to query
+		//
 		$linkBatch = new LinkBatch;
 		foreach( $this->data['pages'] as $key => &$page ) {
 			if( (
@@ -847,7 +883,15 @@ class BotQueryProcessor {
 			&&
 				( !$isImage || $page['ns'] == NS_IMAGE )	// when doing image links search, only allow NS_IMAGE
 			) {
-				$linkBatch->addObj( $page['_obj'] );
+				$title = $page['_obj'];
+				// remove any items already processed by previous queries
+				if( $contFrom ) {
+					if( $title->getNamespace() < $fromNs ||
+						($title->getNamespace() === $fromNs && $title->getDBkey() < $fromTitle)) {
+						continue;
+					}
+				}
+				$linkBatch->addObj( $title );
 			}
 		}
 		
@@ -856,68 +900,62 @@ class BotQueryProcessor {
 			return; // Nothing to do
 		}
 		
-		$where = '';
-		if( $fromid > 0 ) {
-			$where .= "(pfrom.page_id >= $fromid) AND ";
-		}
+		//
+		// Create query parameters
+		//
+		$columns = array( "{$prefix}_from from_id", 'page_namespace from_namespace', 'page_title from_title' );
+		$where = array( "{$prefix}_from = page_id" );
 		if( $isImage ) {
-			$where .= "({$columnPrefix}_to IN (";
-			$firstTitle = true;
-			foreach( $linkBatch->data[NS_IMAGE] as $dbkey => $nothing ) {
-				if ( $firstTitle ) {
-					$firstTitle = false;
-				} else {
-					$where .= ',';
-				}
-				$where .= $this->db->addQuotes( $dbkey );
+			$columns[] = "{$prefix}_to to_title";
+			$where["{$prefix}_to"] = array_keys($linkBatch->data[NS_IMAGE]);
+			$orderBy   = "{$prefix}_to, {$prefix}_from";
+			if( $contFrom ) {
+				$where[] = "(({$prefix}_to > " . $this->db->addQuotes( $fromTitle ) ." ) OR "
+						  ."({$prefix}_to = " . $this->db->addQuotes( $fromTitle ) ." AND {$prefix}_from >= $fromPageId))"; 
 			}
-			$where .= '))';
 		} else {
-			$where .= $linkBatch->constructSet( $columnPrefix, $this->db );
+			$columns[] = "{$prefix}_namespace to_namespace";
+			$columns[] = "{$prefix}_title to_title";
+			$where[]   = $linkBatch->constructSet( $prefix, $this->db );
+			$orderBy   = "{$prefix}_namespace, {$prefix}_title, {$prefix}_from";
+			if( $contFrom ) {
+				$where[] = 	 "({$prefix}_namespace > " . $fromNs ." OR "
+							."({$prefix}_namespace = " . $fromNs ." AND "
+								."({$prefix}_title > " . $this->db->addQuotes( $fromTitle ) ." OR "
+								."({$prefix}_title = " . $this->db->addQuotes( $fromTitle ) ." AND "
+									."{$prefix}_from >= $fromPageId))))"; 
+			}
 		}
+		$options = array( 'ORDER BY' => $orderBy, 'LIMIT' => $limit );
 		
-		$sql = "SELECT"
-			." pfrom.page_id from_id, pfrom.page_namespace from_namespace,"
-			." pfrom.page_title from_title, pto.page_id to_id,"
-			.($isImage ?
-				" {$columnPrefix}_to to_title" :
-				" {$columnPrefix}_namespace to_namespace, {$columnPrefix}_title to_title" )
-		." FROM"
-			." ("
-				." $linktbl INNER JOIN $pagetbl pfrom ON {$columnPrefix}_from = pfrom.page_id"
-			." )"
-			." LEFT JOIN $pagetbl pto ON"
-			.($isImage ?
-				" {$columnPrefix}_to = pto.page_title" : 
-				" {$columnPrefix}_title = pto.page_title AND {$columnPrefix}_namespace = pto.page_namespace")
-		." WHERE $where"
-		." ORDER BY pfrom.page_id";
-		
-		$sql = $this->db->limitResult( $sql, $limit );
+		//
+		// Execute
+		//
+		$this->startProfiling();
+		$res = $this->db->select(
+			array( $linktbl, 'page' ),
+			$columns,
+			$where,
+			$this->classname . "::genPageBackLinks_{$code}",
+			$options );
+		$this->endProfiling($prop);
 
 		$count = 0;
-		$this->startProfiling();
-		$res = $this->db->query( $sql, $this->classname . "::genPageBackLinks_{$code}" );
-		$this->endProfiling($prop);
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			if( ++$count >= $limit ) {
 				// We've reached the one extra which shows that there are
 				// additional pages to be had. Stop here...
 				break;
 			}
-			$pageId = $row->to_id;
-			if( $pageId === null ) {
-				$pageId = $this->lookupInvalidPageId( 
-					$isImage ? NS_IMAGE : $row->to_namespace,
-					$row->to_title );
-			}
+			$pageId = $this->lookupPageIdByTitle( ($isImage ? NS_IMAGE : $row->to_namespace), $row->to_title );
 			$values = $this->getLinkInfo( $row->from_namespace, $row->from_title, $row->from_id );
 			$this->addPageSubElement( $pageId, $prop, $code, $values );
 		}
 		if( $count < $limit || !$row ) {
 			$this->addStatusMessage( $prop, array('next' => 0) );
 		} else {
-			$this->addStatusMessage( $prop, array('next' => $row->from_id) );
+			$this->addStatusMessage( $prop, 
+				array('next' => ($isImage ? NS_IMAGE : $row->to_namespace) ."|{$row->to_title}|{$row->from_id}") );
 		}
 		$this->db->freeResult( $res );
 	}
@@ -1013,10 +1051,9 @@ class BotQueryProcessor {
 	}
 	
 	/**
-	* Lookup of the page id by ns:title in the data array. Very slow - lookup by id if possible.
-	* This method will die if no such title is found
-	*/	
-	function lookupInvalidPageId( $ns, &$dbkey ) {
+	* Lookup of the page id by ns:title in the data array, and will die if no such title is found
+	*/
+	function lookupPageIdByTitle( $ns, &$dbkey ) {
 		$prefixedText = Title::makeTitle( $ns, $dbkey )->getPrefixedText();
 		if( array_key_exists( $prefixedText, $this->pageIdByText )) {
 			return $this->pageIdByText[$prefixedText];
