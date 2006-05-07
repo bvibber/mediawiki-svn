@@ -803,7 +803,7 @@ class BotQueryProcessor {
 		switch( $prop ) {
 			case 'embeddedin' :
 				$prefix = 'tl';	// database column name prefix
-				$code = 'ei';			// 
+				$code = 'ei';
 				$linktbl = 'templatelinks';
 				break;
 			case 'backlinks' :
@@ -911,7 +911,7 @@ class BotQueryProcessor {
 			$orderBy   = "{$prefix}_to, {$prefix}_from";
 			if( $contFrom ) {
 				$where[] = "(({$prefix}_to > " . $this->db->addQuotes( $fromTitle ) ." ) OR "
-						  ."({$prefix}_to = " . $this->db->addQuotes( $fromTitle ) ." AND {$prefix}_from >= $fromPageId))"; 
+						  ."({$prefix}_to = " . $this->db->addQuotes( $fromTitle ) ." AND {$prefix}_from >= " . intval($fromPageId) . "))"; 
 			}
 		} else {
 			$columns[] = "{$prefix}_namespace to_namespace";
@@ -919,11 +919,11 @@ class BotQueryProcessor {
 			$where[]   = $linkBatch->constructSet( $prefix, $this->db );
 			$orderBy   = "{$prefix}_namespace, {$prefix}_title, {$prefix}_from";
 			if( $contFrom ) {
-				$where[] = 	 "({$prefix}_namespace > " . $fromNs ." OR "
-							."({$prefix}_namespace = " . $fromNs ." AND "
+				$where[] = 	 "({$prefix}_namespace > " . intval($fromNs) ." OR "
+							."({$prefix}_namespace = " . intval($fromNs) ." AND "
 								."({$prefix}_title > " . $this->db->addQuotes( $fromTitle ) ." OR "
 								."({$prefix}_title = " . $this->db->addQuotes( $fromTitle ) ." AND "
-									."{$prefix}_from >= $fromPageId))))"; 
+									."{$prefix}_from >= " . intval($fromPageId) . "))))"; 
 			}
 		}
 		$options = array( 'ORDER BY' => $orderBy, 'LIMIT' => $limit );
