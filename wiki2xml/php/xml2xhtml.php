@@ -139,7 +139,6 @@ class XML2XHTML {
 	function tag_extension ( $open , &$attrs ) {
 		if( !defined( 'MEDIAWIKI' ) ) return ; # Only as MediaWiki extension
 	
-	
 		if ( $open ) {
 			$this->extension_name = $attrs['EXTENSION_NAME'] ;
 			$this->extension_attrs = $attrs ;
@@ -158,6 +157,7 @@ class XML2XHTML {
 			if ( $extension_text == "" ) $extension_text = "<{$this->extension_name}/>" ;
 			else $extension_text = "<{$this->extension_name}>{$extension_text}</{$this->extension_name}>" ;
 			$options = new ParserOptions ;
+
 			$s = $wgParser->parse ( $extension_text , $wgTitle , $options , false ) ;
 			$this->add ( $s->getText() ) ;
 		}

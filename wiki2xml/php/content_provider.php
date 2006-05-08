@@ -19,12 +19,14 @@ class ContentProvider {
 		return in_array ( $title , $this->article_list ) ;
 	}
 
-	/**
-	 * Gets the numeric namespace
-	 * "-8" = category link
-	 * "-9" = interlanguage link
-	 */
-	function get_namespace_id ( $text ) {
+ 	/**
+	 * XXX TODO: why are some negative?
+ 	 * Gets the numeric namespace
+	 * "6"  = images
+ 	 * "-8" = category link
+ 	 * "-9" = interlanguage link
+	 * "11" = templates
+ 	 */	function get_namespace_id ( $text ) {
 		$text = strtoupper ( $text ) ;
 		$text = explode ( ":" , $text , 2 ) ;
 		if ( count ( $text ) != 2 ) return 0 ;
@@ -38,6 +40,7 @@ class ContentProvider {
 		
 		# Horrible manual hack, for now
 		if ( $text == "IMAGE" || $text == "BILD" ) $ns = 6 ;
+		if ( $text == "TEMPLATE" || $text == "VORLAGE" ) $ns = 11 ;
 		
 		return $ns ;
 	}
@@ -276,7 +279,8 @@ class ContentProviderTextFile extends ContentProviderHTTP {
 
 }
 
-# Access through text file structure
+# Access through MySQL interface
+# (Used via the extension via Special::wiki2XML)
 class ContentProviderMySQL extends ContentProviderHTTP {
 
 	function do_get_contents ( $title ) {
@@ -301,15 +305,13 @@ class ContentProviderMySQL extends ContentProviderHTTP {
 	}
 	
 	function get_page_text ( $page , $allow_redirect = true ) {
-		/*
-		$filename = $this->get_file_location ( 0 , $page ) ;
-		$filename = $filename->fullname . $this->file_ending ;
-		if ( !file_exists ( $filename ) ) return "" ;
-		$text = trim ( file_get_contents ( $filename ) ) ;
-		*/
-		
 		$title = Title::newFromText ( $page ) ;
 		$article = new Article ( $title ) ;
+
+		# article does not exist?
+		if (!$article->exists()) {
+			return "";
+		}
 		$text = $article->getContent () ;
 	
 		# REDIRECT?

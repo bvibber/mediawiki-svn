@@ -20,6 +20,7 @@ class wiki2xml
 		"s" => "xhtml:s",
 		"p" => "xhtml:p",
 		"br" => "xhtml:br",
+		"em" => "xhtml:em",
 		"div" => "xhtml:div",
 		"span" => "xhtml:span",
 		"big" => "xhtml:big",
@@ -289,7 +290,9 @@ class wiki2xml
 			$between = str_replace ( "<includeonly>" , "" , $between ) ;
 			$between = str_replace ( "</includeonly>" , "" , $between ) ;
 			
-			# Replacing template variables. ATTENTION: Template variables within <nowiki> sections of templates will be replaced as well!
+			# Replacing template variables.
+			# ATTENTION: Template variables within <nowiki> sections of templates will be replaced as well!
+			
 			$this->replace_template_variables ( $between , $variables ) ;
 			
 			# Change source (!)
@@ -739,11 +742,13 @@ class wiki2xml
 	function p_html ( &$a , &$xml )
 		{
 		if ( !$this->nextis ( $a , "<" , false ) ) return false ;
+		
 		$b = $a ;
 		$x = "" ;
 		$tag = "" ;
 		$closing = false ;
 		$selfclosing = false ;
+		
 		if ( !$this->p_html_tag ( $b , $x , $tag , $closing , $selfclosing ) ) return false ;
 		
 		if ( isset ( $this->directhtmltags[$tag] ) )
@@ -793,6 +798,7 @@ class wiki2xml
 
 		# What happens in between?
 		$between = substr ( $this->w , $begin , $last - $begin ) ;
+		
 		if ( $tag != "pre" && $tag != "nowiki" && $tag != "math" ) 
 			{
 			if ( $tag == 'gallery' ) {
@@ -891,7 +897,7 @@ class wiki2xml
 			$selfclosing = true ;
 			}
 
-		# Parsing arrtibutes
+		# Parsing attributes
 		$ob = $b ;
 		$q = "" ;
 		while ( $q != "" || ( $b < $this->wl && $this->w[$b] != '>' && $this->w[$b] != '/' ) ) {

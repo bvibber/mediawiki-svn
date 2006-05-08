@@ -124,6 +124,22 @@ function get_param ( $s , $default = NULL ) {
 	}
 }
 
+# add one article to the stack of to-be-converted articles
+function push_article ( &$aArticles, $article ) {
+
+	# convert _ to ' '
+	$a = trim( $article ); 
+	if ( $a != "" ) {
+		$aArticles[] = preg_replace( '/_/', ' ', $a ); 
+		}
+
+}
+
+# remove one article from the stack of to-be-converted articles
+function pop_article ( $aArticles ) {
+	return array_pop ( $aArticles ) ;
+}
+
 ## MAIN PROGRAM
 
 if ( get_param('doit',false) ) { # Process
@@ -143,6 +159,9 @@ if ( get_param('doit',false) ) { # Process
 	$xmlg['add_gfdl'] = get_param('add_gfdl',false) ;
 	$xmlg['keep_interlanguage'] = get_param('keep_interlanguage',false) ;
 	$xmlg['keep_categories'] = get_param('keep_categories',false) ;
+
+	# the article list
+	$aArticles = array () ;
 	
 	$t = microtime_float() ;
 	$xml = "" ;
@@ -150,28 +169,33 @@ if ( get_param('doit',false) ) { # Process
 		$wiki2xml_authors = array () ;
 		$xml = $converter->article2xml ( "" , $wikitext , $xmlg ) ;
 	} else {
-		$t = microtime_float() ;
-		$articles = explode ( "\n" , $wikitext ) ;
-		if ($xmlg["book_title"] == '') {
-			$xmlg["book_title"] = $articles[0];
+		foreach ( explode ( "\n" , $wikitext ) AS $a ) {
+			push_article( &$aArticles, $a );
 		}
-		foreach ( $articles AS $a ) {
+
+		# set the first article name as the default title
+		if ($xmlg["book_title"] == '') {
+			$xmlg["book_title"] = $aArticles[0];
+		}
+		# as long as we have articles to convert (this might change in between!)
+		while ( $a = array_shift( $aArticles ) ) {
 			$wiki2xml_authors = array () ;
-			$a = trim ( $a ) ;
-			if ( $a == "" ) continue ;
+
+			# Article page|Article name
 			$a = explode ( '|' , $a ) ;
 			if ( count ( $a ) == 1 ) $a[] = $a[0] ;
 			$title_page = trim ( array_shift ( $a ) ) ;
 			$title_name = trim ( array_pop ( $a ) ) ;
+			
 			$wikitext = $content_provider->get_wiki_text ( $title_page ) ;
 			add_authors ( $content_provider->authors ) ;
-			$xml .= $converter->article2xml ( $title_name , $wikitext , $xmlg ) ;
+			$xml .= $converter->article2xml ( $title_name , $wikitext , $xmlg, &$aArticles ) ;
 		}
 	}
 	$t = microtime_float() - $t ;
-	$tt = $t ;
-	$lt = $content_provider->load_time ;
-	$t -= $lt ;
+	$tt = round( $t, 3 ) ;
+	$lt = round( $content_provider->load_time, 3 ) ;
+	$t = round( $t - $lt, 3) ;
 	
 	$xml = "<articles xmlns:xhtml=\" \" loadtime='{$lt} sec' rendertime='{$t} sec' totaltime='{$tt} sec'>\n{$xml}\n</articles>" ;
 	
