@@ -9,10 +9,6 @@
 # SEMRELHIER and SEMTYPEHIER contain information about the relations between
 # semantic types and relation types, using RB as the code for "broader than"
 # and RN for "narrower than".
-
-# Todo for GEMET:
-# - deal with homonyms (esp. when merging data), avoid duplicate page titles in the same language (use addMeaning)
-# - fix mixup bug caused by usage of "+1" with $self->getMaxId
 #
 # Todo for UMLS:
 # SyntransCollection
