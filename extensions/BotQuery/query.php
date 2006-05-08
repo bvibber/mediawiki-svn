@@ -159,27 +159,26 @@ class BotQueryProcessor {
 			"uslimit    - how many total links to return.",
 			"Example: query.php?what=users&usfrom=Y",
 			)),
-		'dblredirects'   => array( "genMetaDoubleRedirects", true,
-			array( 'dfoffset', 'drlimit' ),
-			array( 0, 50 ),
-			array(
-			"List of double-redirect pages",
-			"THIS QUERY IS CURRENTLY DISABLED DUE TO PERFORMANCE REASONS",
-			"Example: query.php?what=dblredirects",
-			)),
 
+		//
 		// Page-specific Generators
-		'links'          => array( "genPageLinks", false, null, null, array(
+		//
+		'redirects'      => array( "genRedirectInfo", false, null, null, array(
+			"For all given redirects, provides additional information such as pageIds and double-redirection",
+			"Example: query.php?what=redirects&titles=Main_page",
+			"         query.php?what=recentchanges|redirects  (Which of the recent changes are redirects?)",
+			)),
+		'links'          => array( "genPageLinksHelper", false, null, null, array(
 			"List of regular page links",
 			"Example: query.php?what=links&titles=MediaWiki|Wikipedia",
 			)),
-		'langlinks'      => array( "genPageLangLinks", false, null, null, array(
+		'langlinks'      => array( "genPageLinksHelper", false, null, null, array(
 			"Inter-language links",
 			"Example: query.php?what=langlinks&titles=MediaWiki|Wikipedia",
 			)),
-		'templates'      => array( "genPageTemplates", false, null, null, array(
+		'templates'      => array( "genPageLinksHelper", false, null, null, array(
 			"List of used templates",
-			"Example: query.php?what=templates&titles=Main%20Page",
+			"Example: query.php?what=templates&titles=Main_Page",
 			)),
 		'backlinks'      => array( "genPageBackLinksHelper", false,
 			array( 'blfilter', 'bllimit', 'blcontfrom' ),
@@ -387,7 +386,6 @@ class BotQueryProcessor {
 				if( $titleString !== $titleObj->getPrefixedText() ) {
 					$this->normalizedTitles[$titleString] = &$titleObj;
 				}
-				
 			}
 			if ( $linkBatch->isEmpty() ) {
 				$this->dieUsage( "no titles could be found", 'pi_novalidtitles' );
@@ -439,7 +437,7 @@ class BotQueryProcessor {
 		//
 		// Query page information with the given lists of titles & pageIDs
 		//
-		$redirects = array();
+		$this->redirectPageIds = array();
 		$this->startProfiling();
 		$res = $this->db->select( 'page',
 			array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_touched', 'page_latest' ),
@@ -462,7 +460,7 @@ class BotQueryProcessor {
 			$data['revid']   = $row->page_latest;
 			if ( $row->page_is_redirect ) {
 				$data['redirect'] = '';
-				$redirects[] = $row->page_id;
+				$this->redirectPageIds[] = $row->page_id;
 			}
 			
 			// Strike out link
@@ -475,7 +473,7 @@ class BotQueryProcessor {
 		// Create lists that can later be used to filter other tables by page Id or other useful query strings
 		//
 		$this->existingPageIds = array_keys( $this->data['pages'] );
-		$this->nonRedirPageIds = array_diff_key($this->existingPageIds, $redirects);
+		$this->nonRedirPageIds = array_diff($this->existingPageIds, $this->redirectPageIds);
 		
 		//
 		// Create records for non-existent page IDs
@@ -512,16 +510,10 @@ class BotQueryProcessor {
 		}
 		
 		//
-		// Process redirects
+		// Mark redirects as such. More information can be given with  'redirects' property
 		//
-		if( $redirects ) {
-			// If the user requested links, redirect links will be populated.
-			// Otherwise, we have to do it manually here by calling links generator with a custom list of IDs
-			$prop = 'links';
-			if( !in_array( $prop, $this->properties )) {
-				$generator = $this->propGenerators[$prop];
-				$this->{$generator[GEN_FUNCTION]}( $prop, $generator, $redirects );
-			}
+		foreach( $this->redirectPageIds as $pageid ) {
+			$this->data['pages'][$pageid]['redirect'] = '';
 		}
 
 		//
@@ -537,6 +529,9 @@ class BotQueryProcessor {
 		return true; // success
 	}
 
+	//
+	// ************************************* META GENERATORS *************************************
+	//
 	function genMetaSiteInfo(&$prop, &$genInfo) {
 		global $wgSitename, $wgVersion, $wgCapitalLinks;
 		$meta = array();
@@ -671,8 +666,8 @@ class BotQueryProcessor {
 
 		$this->startProfiling();
 		$res = $this->db->select(
-			array( 'page' ),
-			array( 'page_title' ),
+			'page',
+			'page_title',
 			array( 'page_namespace=' . $this->db->addQuotes($apnamespace) . ' AND page_title>=' . $this->db->addQuotes($apfrom) ),
 			$this->classname . '::genMetaAllPages',
 			array( 'FORCE INDEX' => 'name_title', 'LIMIT' => $aplimit+1, 'ORDER BY' => 'page_title' ));
@@ -696,131 +691,110 @@ class BotQueryProcessor {
 		$this->db->freeResult( $res );
 	}
 
-	function genMetaDoubleRedirects(&$prop, &$genInfo) {
-		global $wgUser;
-
-		$this->dieUsage( "DoubleRedirect generator is disabled until caching is implemented", 'dr_disabled' );
-		
-		if( !$wgUser->isBot() ) {
-			$this->dieUsage( "Only bots are allowed to query for double-redirects", 'dr_notbot' );
-		}
-
-		extract( $this->getParams( $prop, $genInfo ));
-		extract( $this->db->tableNames( 'page', 'pagelinks' ) );
-		
-		$sql = "SELECT " .
-			" pa.page_id id_a," .
-			" pb.page_id id_b," .
-			" pc.page_id id_c" .
-			" FROM $pagelinks AS la, $pagelinks AS lb, $page AS pa, $page AS pb, $page AS pc" .
-			" WHERE pa.page_is_redirect=1 AND pb.page_is_redirect=1" .
-			" AND la.pl_from=pa.page_id" .
-			" AND la.pl_namespace=pb.page_namespace" .
-			" AND la.pl_title=pb.page_title" .
-			" AND lb.pl_from=pb.page_id" .
-			" AND lb.pl_namespace=pc.page_namespace" .
-			" AND lb.pl_title=pc.page_title";
-			
-		$sql = $this->db->limitResult( $sql, $drlimit, $droffset );
-
-		// Add found page ids to the list of requested ids - they will be auto-populated later
-		$this->startProfiling();
-		$res = $this->db->query( $sql, $this->classname . '::genMetaDoubleRedirects' );
-		$this->endProfiling($prop);
-		while ( $row = $this->db->fetchObject( $res ) ) {
-			$this->addRaw( 'pageids', $row->id_a .'|'. $row->id_b .'|'. $row->id_c );
-			$this->data['pages'][$row->id_a]['dblredirect'] = $row->id_c;
-		}
-		$this->db->freeResult( $res );
-	}
-
-	function genPageLangLinks(&$prop, &$genInfo) {
-		if( !$this->nonRedirPageIds ) {
-			return;
-		}		
-		$this->startProfiling();
-		$res = $this->db->select(
-			array( 'langlinks' ),
-			array( 'll_from', 'll_lang', 'll_title' ),
-			array( 'll_from' => $this->nonRedirPageIds ),
-			$this->classname . '::genPageLangLinks' );
-		$this->endProfiling($prop);
-		while ( $row = $this->db->fetchObject( $res ) ) {
-			$this->addPageSubElement( $row->ll_from, 'langlinks', 'll', array('lang' => $row->ll_lang, '*' => $row->ll_title));
-		}
-		$this->db->freeResult( $res );
-	}
-
-	function genPageTemplates(&$prop, &$genInfo) {
-		if( !$this->nonRedirPageIds ) {
-			return;
-		}
-		$this->startProfiling();
-		$res = $this->db->select(
-			'templatelinks',
-			array( 'tl_from', 'tl_namespace', 'tl_title' ),
-			array( 'tl_from' => $this->nonRedirPageIds ),
-			$this->classname . '::genPageTemplates' );
-		$this->endProfiling($prop);
-		while ( $row = $this->db->fetchObject( $res ) ) {
-			$this->addPageSubElement( $row->tl_from, 'templates', 'tl', $this->getLinkInfo( $row->tl_namespace, $row->tl_title ));
-		}
-		$this->db->freeResult( $res );
-	}
+	//
+	// ************************************* PAGE INFO GENERATORS *************************************
+	//
 
 	/**
-	* Generates list of links for all pages. Optionally it can be called to populate only a subset of pages by given ids.
+	* Populate redirect data. Redirects may be one of the following:
+	*     Redir to nonexisting, Existing page, or Existing redirect.
+	*     Existing redirect may point to yet another nonexisting or existing page( which in turn may also be a redirect)
 	*/
-	function genPageLinks(&$prop, &$genInfo, $pageIdsList = null ) {
-		if( $pageIdsList === null ) {
-			$pageIdsList = $this->nonRedirPageIds;
-		}
-		if( !$pageIdsList ) {
+	function genRedirectInfo(&$prop, &$genInfo) {
+		if( empty( $this->redirectPageIds ) ) {
 			return;
 		}
+		extract( $this->db->tableNames( 'page', 'pagelinks' ) );
+
+		//
+		// Two part query:
+		//     first part finds all the redirect, who's targets are regular existing pages
+		//     second part finds targets that either do not exist or are redirects themselves.
+		//
+		$sql = 'SELECT '
+			. 'la.pl_from a_id,'
+			. 'la.pl_namespace b_namespace, la.pl_title b_title, pb.page_id b_id, pb.page_is_redirect b_is_redirect, '
+			. 'null c_namespace, null c_title, null c_id, null c_is_redirect '
+			. "FROM $pagelinks AS la, $page AS pb "
+			. ' WHERE ' . $this->db->makeList( array( 
+				'la.pl_from' => $this->redirectPageIds,
+				'la.pl_namespace = pb.page_namespace',
+				'la.pl_title = pb.page_title',
+				'pb.page_is_redirect' => 0
+				), LIST_AND )
+		. ' UNION SELECT '
+			. 'la.pl_from a_id,'
+			. 'la.pl_namespace b_namespace, la.pl_title b_title, pb.page_id b_id, pb.page_is_redirect b_is_redirect,'
+			. 'lb.pl_namespace c_namespace, lb.pl_title c_title, pc.page_id c_id, pc.page_is_redirect c_is_redirect '
+			. 'FROM '
+			. "(($pagelinks AS la LEFT JOIN $page AS pb ON la.pl_namespace = pb.page_namespace AND la.pl_title = pb.page_title) LEFT JOIN "
+			. "$pagelinks AS lb ON pb.page_id = lb.pl_from) LEFT JOIN "
+			. "$page AS pc ON lb.pl_namespace = pc.page_namespace AND lb.pl_title = pc.page_title "
+			. ' WHERE ' . $this->db->makeList( array(
+				'la.pl_from' => $this->redirectPageIds,
+				"pb.page_is_redirect IS NULL OR pb.page_is_redirect = '1'"
+				), LIST_AND );
+
 		$this->startProfiling();
-		$res = $this->db->select(
-			'pagelinks',
-			array( 'pl_from', 'pl_namespace', 'pl_title' ),
-			array( 'pl_from' => $pageIdsList ),
-			$this->classname . '::genPageLinks' );
-		$this->endProfiling($prop);
+		$res = $this->db->query( $sql, $this->classname . '::genRedirectInfo' );
+		$this->endProfiling('redirects');
 		while ( $row = $this->db->fetchObject( $res ) ) {
-			$this->addPageSubElement( $row->pl_from, 'links', 'l', $this->getLinkInfo( $row->pl_namespace, $row->pl_title ));
+			$this->addPageSubElement( $row->a_id, 'redirect', 'to', $this->getLinkInfo( $row->b_namespace, $row->b_title, $row->b_id, $row->b_is_redirect ), false);
+			if( $row->b_is_redirect ) {
+				$this->addPageSubElement( $row->a_id, 'redirect', 'dblredirectto', $this->getLinkInfo( $row->c_namespace, $row->c_title, $row->c_id, $row->c_is_redirect ), false);
+			}
 		}
 		$this->db->freeResult( $res );
-	}	
+	}
+
+	var $genPageLinksSettings = array(	// database column name prefix, output element name
+		'links' 	=> array( 'prefix' => 'pl', 'code' => 'l',  'linktbl' => 'pagelinks', 'langlinks' => false ),
+		'langlinks' => array( 'prefix' => 'll', 'code' => 'll', 'linktbl' => 'langlinks', 'langlinks' => true ),
+		'templates' => array( 'prefix' => 'tl', 'code' => 'tl', 'linktbl' => 'templatelinks', 'langlinks' => false ));
+
+	/**
+	* Generates list of links/langlinks/templates for all non-redirect pages.
+	*/
+	function genPageLinksHelper(&$prop, &$genInfo) {
+		if( empty($this->nonRedirPageIds) ) {
+			return;
+		}
+		extract( $this->genPageLinksSettings[$prop] );
+		
+		$this->startProfiling();
+		$res = $this->db->select(
+			$linktbl,
+			array( 	"{$prefix}_from from_id",
+					($langlinks ? 'll_lang' : "{$prefix}_namespace to_namespace"),
+					"{$prefix}_title to_title" ),
+			array( "{$prefix}_from" => $this->nonRedirPageIds ),
+			$this->classname . "::genPageLinks_{$code}" );
+		$this->endProfiling($prop);
+
+		while ( $row = $this->db->fetchObject( $res ) ) {
+			if( $langlinks ) {
+				$values = array('lang' => $row->ll_lang, '*' => $row->to_title);
+			} else {
+				$values = $this->getLinkInfo( $row->to_namespace, $row->to_title );
+			}
+			$this->addPageSubElement( $row->from_id, $prop, $code, $values);
+		}
+		$this->db->freeResult( $res );
+	}
 	
+	var $genPageBackLinksSettings = array(	// database column name prefix, output element name
+		'embeddedin' => array( 'prefix' => 'tl', 'code' => 'ei', 'linktbl' => 'templatelinks', 'isImage' => false ),
+		'backlinks' => array( 'prefix' => 'pl', 'code' => 'bl', 'linktbl' => 'pagelinks', 'isImage' => false ),
+		'imagelinks' => array( 'prefix' => 'il', 'code' => 'il', 'linktbl' => 'imagelinks', 'isImage' => true ));
+
 	/**
 	* Generate backlinks for either links, templates, or both
 	* $type - either 'template' or 'page'
 	*/
 	function genPageBackLinksHelper(&$prop, &$genInfo) {
-		//
-		// Determine what is being asked
-		//		
-		$isImage = false;
-		switch( $prop ) {
-			case 'embeddedin' :
-				$prefix = 'tl';	// database column name prefix
-				$code = 'ei';
-				$linktbl = 'templatelinks';
-				break;
-			case 'backlinks' :
-				$prefix = 'pl';
-				$code = 'bl';
-				$linktbl = 'pagelinks';
-				break;
-			case 'imagelinks' :
-				$prefix = 'il';
-				$code = 'il';
-				$linktbl = 'imagelinks';
-				$isImage = true;
-				break;
-			default :
-				die("unknown type");
-		}
 
+		extract( $this->genPageBackLinksSettings[$prop] );
+		
 		//
 		// Parse and validate parameters
 		//
@@ -833,7 +807,6 @@ class BotQueryProcessor {
 		} else {
 			$filter = $filter[0];
 		}
-
 		//
 		// Prase contFrom - will be in the format    ns|db_key|page_id - determine how to continue
 		//
@@ -870,7 +843,6 @@ class BotQueryProcessor {
 			default:
 				$this->dieUsage( "{$code}filter '$filter' is not one of the allowed: 'all', 'existing' [default], and 'nonredirects'", "{$code}_badfilter" );
 		}
-
 		//
 		// Make a list of pages to query
 		//
@@ -894,12 +866,10 @@ class BotQueryProcessor {
 				$linkBatch->addObj( $title );
 			}
 		}
-		
 		if( $linkBatch->isEmpty() ) {
 			$this->addStatusMessage( $prop, array('error'=>'emptyrequest') );
 			return; // Nothing to do
 		}
-		
 		//
 		// Create query parameters
 		//
@@ -927,7 +897,6 @@ class BotQueryProcessor {
 			}
 		}
 		$options = array( 'ORDER BY' => $orderBy, 'LIMIT' => $limit );
-		
 		//
 		// Execute
 		//
@@ -961,7 +930,7 @@ class BotQueryProcessor {
 	}
 	
 	function genPageHistory(&$prop, &$genInfo) {
-		if( !$this->existingPageIds ) {
+		if( empty( $this->existingPageIds ) ) {
 			return;
 		}
 		extract( $this->getParams( $prop, $genInfo ));
@@ -1078,7 +1047,15 @@ class BotQueryProcessor {
 		return $val;
 	}
 	
-	function getTitleInfo( $title, $id = 0 ) {
+	function getLinkInfo( $ns, $title, $id = -1, $isRedirect = false ) {
+		return $this->getTitleInfo( Title::makeTitle( $ns, $title ), $id, $isRedirect );
+	}
+
+	/**
+	* Creates an element    <$title ns='xx' iw='xx' id='xx'>Prefixed Title</$title>
+	* All attributes are optional.
+	*/
+	function getTitleInfo( $title, $id = -1, $isRedirect = false ) {
 		$data = array();
 		if( $title->getNamespace() != NS_MAIN ) {
 			$data['ns'] = $title->getNamespace();
@@ -1086,22 +1063,31 @@ class BotQueryProcessor {
 		if( $title->isExternal() ) {
 			$data['iw'] = $title->getInterwiki();
 		}
-		if( $id !== 0 ) {
+		if( $id === null ) {
+			$id = 0;
+		}
+		if( $id >= 0 ) {
 			$data['id'] = $id;
+		}
+		if( $isRedirect ) {
+			$data['redirect'] = 'true';
 		}
 		$data['*'] = $title->getPrefixedText();
 
 		return $data;
 	}
 
-	function getLinkInfo( $ns, $title, $id = 0 ) {
-		return $this->getTitleInfo( Title::makeTitle( $ns, $title ));
-	}
-
-	function addPageSubElement( $pageId, $mainElem, $itemElem, $params ) {
+	function addPageSubElement( $pageId, $mainElem, $itemElem, $params, $multiItems = true ) {
 		$data = & $this->data['pages'][$pageId][$mainElem];
-		$data['_element'] = $itemElem;
-		$data[] = $params;
+		if( $multiItems ) {
+			$data['_element'] = $itemElem;
+			$data[] = $params;
+		} else {
+			if( !empty($data) && (array_key_exists( $itemElem, $data ) || array_key_exists( '_element', $data ))) {
+				die("Internal error: multiple calls to addPageSubElement($itemElem)");
+			}
+			$data[$itemElem] = $params;
+		}
 	}
 
 	function prepareTimestamp( $value ) {
