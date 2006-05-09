@@ -5,7 +5,7 @@
 Summary: The Squid proxy caching server.
 Name: squid
 Version: 2.5.STABLE13
-Release: 7wm
+Release: 8wm
 Epoch: 7
 License: GPL
 Group: System Environment/Daemons
@@ -38,6 +38,7 @@ Patch251: squid-htcp-clr.diff
 Patch252: squid-2.5.STABLE13-errors.patch
 Patch253: squid-2.5.STABLE13-nomanglerequestheaders.patch
 Patch254: squid-2.5.STABLE13-htcp2.patch
+Patch255: squid-2.5.STABLE13-diskload.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Prereq: /sbin/chkconfig logrotate shadow-utils
@@ -74,6 +75,7 @@ lookup program (dnsserver), a program for retrieving FTP data
 %patch252 -p0 -b .errors
 %patch253 -p0 -b .nomanglerequestheaders
 %patch254 -p0 -b .htcp2
+%patch255 -p0
 
 # Fetch the Wikimedia error page from SVN
 cp -a errors/English errors/Wikimedia
@@ -230,6 +232,10 @@ fi
 chgrp squid /var/cache/samba/winbindd_privileged > /dev/null 2>& 1 || true
 
 %changelog
+* Tue May 9 2006 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE13-8.WM
+- Include the HIT conversion into MISS during heavy disk I/O patch by
+  Adrian Chadd
+
 * Wed May 3 2006 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE13-7.WM
 - Include a fix by Tim Starling that removes all dynamic malloc() style
   calls in htcp.c, and hopefully fixes the high user CPU problems and
