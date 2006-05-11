@@ -97,6 +97,8 @@ if len(sys.argv) < 2:
 	restricted("No parameters to shell.")
 if sys.argv[1] != "-c":
 	restricted("Expected -c option to shell.")
+if len(sys.argv) < 3:
+	restricted("Missing argument for -c option.")
 if len(sys.argv) > 3:
 	restricted("Too many args to shell.")
 
