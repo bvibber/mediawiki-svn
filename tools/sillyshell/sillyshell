@@ -23,7 +23,9 @@ def filterArgs(command):
 	cSingle = "'"
 	cDouble = '"'
 	cBackslash = "\\"
-	cVerboten = ("|", "&", "(", ")", ";")
+	cVerboten = ("|", "&", "(", ")", ";", "`", "$", "<", ">")
+	cQuotedVerboten = ("$", "`")
+	cQuotable = ('"', "\\", "$", "`")
 	cWhitespace = (" ", "\t", "\n")
 	
 	(sPlain, sWhitespace,
@@ -67,7 +69,7 @@ def filterArgs(command):
 			state = sPlain
 		elif state == sQuotedBackslash:
 			assert build is not None
-			if c not in (cDouble, cBackslash):
+			if c not in cQuotable:
 				build.append(cBackslash)
 			build.append(c)
 			state = sDouble
@@ -75,6 +77,8 @@ def filterArgs(command):
 			assert build is not None
 			if c == cDouble: state = sPlain
 			elif c == cBackslash: state = sQuotedBackslash
+			elif c in cQuotedVerboten:
+				raise ArgError("Forbidden character in restricted shell.")
 			else: build.append(c)
 		elif state == sSingle:
 			assert build is not None
