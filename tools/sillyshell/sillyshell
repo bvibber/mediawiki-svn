@@ -73,8 +73,8 @@ def filterArgs(command):
 			state = sDouble
 		elif state == sDouble:
 			assert build is not None
-			if c == '"': state = sPlain
-			elif c == "\\": state = sQuotedBackslash
+			if c == cDouble: state = sPlain
+			elif c == cBackslash: state = sQuotedBackslash
 			else: build.append(c)
 		elif state == sSingle:
 			assert build is not None
