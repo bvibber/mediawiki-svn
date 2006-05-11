@@ -1,0 +1,118 @@
+#!/usr/bin/python
+
+conf = {
+	#"admin": "brion@pobox.com",
+	"admin": "root@localhost", # customize me
+	"commands": {
+		"svnserve": "/usr/local/bin/svnserve"
+	},
+}
+
+import os
+import sys
+
+def restricted(message):
+	print "ERROR: %s" % message
+	print "This is a restricted shell. If you need to use a full login,"
+	print "contact the system administrator at %s." % conf["admin"]
+	sys.exit(-1)
+
+class ArgError(Exception): pass
+
+def filterArgs(command):
+	cSingle = "'"
+	cDouble = '"'
+	cBackslash = "\\"
+	cVerboten = ("|", "&", "(", ")", ";")
+	cWhitespace = (" ", "\t", "\n")
+	
+	(sPlain, sWhitespace,
+	 sBackslash, sQuotedBackslash,
+	 sDouble, sSingle) = range(0, 6)
+	
+	args = []
+	state = sWhitespace
+	build = None
+	
+	for c in command:
+		if state == sWhitespace:
+			assert build is None
+			
+			if c in cWhitespace: continue
+			else: build = []
+			
+			if c == cBackslash: state = sBackslash
+			elif c == cDouble: state = sDouble
+			elif c == cSingle: state = sSingle
+			elif c in cVerboten:
+				raise ArgError("Forbidden character in restricted shell.")
+			else:
+				build.append(c)
+				state = sPlain
+		elif state == sPlain:
+			assert build is not None
+			if c in cWhitespace:
+				args.append("".join(build))
+				build = None
+				state = sWhitespace
+			elif c == cBackslash: state = sBackslash
+			elif c == cDouble: state = sDouble
+			elif c == cSingle: state = sSingle
+			elif c in cVerboten:
+				raise ArgError("Forbidden character in restricted shell.")
+			else: build.append(c)
+		elif state == sBackslash:
+			assert build is not None
+			build.append(c)
+			state = sPlain
+		elif state == sQuotedBackslash:
+			assert build is not None
+			if c not in (cDouble, cBackslash):
+				build.append(cBackslash)
+			build.append(c)
+			state = sDouble
+		elif state == sDouble:
+			assert build is not None
+			if c == '"': state = sPlain
+			elif c == "\\": state = sQuotedBackslash
+			else: build.append(c)
+		elif state == sSingle:
+			assert build is not None
+			if c == cSingle: state = sPlain
+			else: build.append(c)
+	if state == sWhitespace:
+		pass
+	elif state == sPlain:
+		args.append("".join(build))
+	else:
+		raise ArgError("Invalid command line quoting.")
+	return args
+
+# No interactive shells! Only accept piped commands.
+if sys.stdin.isatty():
+	restricted("Interactive shell forbidden.")
+
+# Take commands in the form <shell> -c "command"
+if len(sys.argv) < 2:
+	restricted("No parameters to shell.")
+if sys.argv[1] != "-c":
+	restricted("Expected -c option to shell.")
+if len(sys.argv) > 3:
+	restricted("Too many args to shell.")
+
+try:
+	args = filterArgs(sys.argv[2])
+except ArgError:
+	restricted("Invalid quoting.")
+
+if len(args) < 1:
+	restricted("Empty command line.")
+
+command = args[0]
+if command in conf["commands"]:
+	safeCommand = conf["commands"][command]
+	args[0] = safeCommand
+else:
+	restricted("Command not allowed.")
+
+os.execv(safeCommand, args)

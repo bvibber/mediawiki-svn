@@ -1,0 +1,10 @@
+A quick silly restricted shell to allow running Subversion over ssh without
+a full login shell allowed.
+
+Not audited for full security; use with caution and only where casual
+friendly limitations are sufficient.
+
+Requires Python of some recentish vintage.
+
+-- brion vibber (brion @ pobox.com)
+2006-05-10
