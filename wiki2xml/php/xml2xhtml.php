@@ -492,7 +492,26 @@ function convert_xml_xhtml ( &$xml ) {
 	$xml_parser_handle = xml_parser_create();
 	xml_set_element_handler($xml_parser_handle, "XML2XHTML_START", "XML2XHTML_END");
 	xml_set_character_data_handler($xml_parser_handle, "XML2XHTML_DATA"); 
-	xml_parse($xml_parser_handle, $xml) ; #, feof($parse_handle)
+	
+	
+	if ( is_array ( $xml ) ) {
+		xml_parse($xml_parser_handle, xml_articles_header() , false) ;
+		
+		while ( $x = xml_shift ( $xml ) ) {
+			xml_parse($xml_parser_handle, $x, false) ;
+		}
+
+
+		xml_parse($xml_parser_handle, '</articles>', true)  ;
+	} else {
+		
+		xml_parse($xml_parser_handle, xml_articles_header(), false ) ;
+		xml_parse($xml_parser_handle, $xml) ;
+		xml_parse($xml_parser_handle, '</articles>' ) ;
+	}
+
+
+
 	
 #	if (!($parse_handle = fopen($xml_filename, 'r'))) {
 #		die("FEHLER: Datei $xml_filename nicht gefunden.");

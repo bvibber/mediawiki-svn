@@ -9,6 +9,9 @@ $xmlg['is_windows'] = false ;
 $xmlg['allow_get'] = false ;
 $xmlg["use_toolserver_url"] = false ;
 
+$xmlg["allow_xml_temp_files"] = true ;
+$xmlg["use_xml_temp_files"] = false ;
+
 @include ( "local.php" ) ;
 
 ?>

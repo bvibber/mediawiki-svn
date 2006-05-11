@@ -74,10 +74,10 @@ return "<form method='post'>
 </td></tr></table>
 <table border='0'><tr>
 <td valign='top'>
-This is
-<INPUT type='radio' name='whatsthis' value='wikitext'>raw wikitext 
-<INPUT checked type='radio' name='whatsthis' value='articlelist'>a list of articles
-<br/>
+This is<br/>
+<INPUT type='radio' name='whatsthis' value='wikitext'>raw wikitext <br/>
+<INPUT checked type='radio' name='whatsthis' value='articlelist'>a list of articles<br/>
+<INPUT type='radio' name='whatsthis' value='listpagename'>the name of an article with a list of pages<br/>
 
 {$site}
 Title : <input type='text' name='document_title' value='' size=40/><br/>
@@ -135,6 +135,60 @@ function push_article ( &$aArticles, $article ) {
 
 }
 
+# Append XML, or links to XML temporary files
+function append_to_xml ( &$xml , $new_xml ) {
+	global $xmlg ;
+	if ( $xmlg["use_xml_temp_files"] ) { # Use temp files
+		if ( !is_array ( $xml ) ) $xml = array () ;
+		
+		do {
+			$tmp_file_name = tempnam ( $xmlg["temp_dir"] , "XMLTMP" ) ;
+			$tmp_file = fopen($tmp_file_name, 'wb') ;
+		} while ( $tmp_file === false ) ;
+		fwrite ( $tmp_file , $new_xml ) ;
+		fclose ( $tmp_file ) ;
+		
+		$xml[] = $tmp_file_name ;
+	} else { # Do not use temp files
+		$xml .= $new_xml ;
+	}
+}
+
+# Returns the next article XML, or false
+function xml_shift ( &$xml ) {
+	if ( !is_array ( $xml ) ) { # Do not use temp files
+		if ( $xml != '' ) {
+			$x = $xml ;
+			$xml = array () ;
+			return $x ;
+		}
+		return false ;
+	} else { # Use temp files
+		if ( count ( $xml ) == 0 ) return false ;
+		$x = array_shift ( $xml ) ;
+		$ret = file_get_contents ( $x ) ;
+		unlink ( $x ) ;
+		return $ret ;
+	}
+}
+
+# Free temporary XML files, if any
+# Should not be necessary if xml_shift was used
+function xml_cleanup ( &$xml ) {
+	global $xmlg ;
+	if ( !$xmlg["use_xml_temp_files"] ) return ; # not using temp files
+	if ( !is_array ( $xml ) ) return false ;
+	foreach ( $xml AS $x ) {
+		unlink ( $x ) ;
+	}
+	$xml = array () ;
+}
+
+function xml_articles_header() {
+	global $xmlg ;
+	return $xmlg['xml_articles_header'] ;
+}
+
 ## MAIN PROGRAM
 
 if ( get_param('doit',false) ) { # Process
@@ -160,10 +214,39 @@ if ( get_param('doit',false) ) { # Process
 	
 	$t = microtime_float() ;
 	$xml = "" ;
-	if ( get_param('whatsthis') == "wikitext" ) {
+	
+	$format = get_param('output_format') ;
+	$whatsthis = get_param('whatsthis') ;
+	
+	# Catch listnamepage
+	if ( $whatsthis == "listpagename" ) {
+		$listpage = trim ( array_shift ( explode ( "\n" , $wikitext ) ) ) ;
+		$wikitext = $content_provider->get_wiki_text ( $listpage ) ;
+		$lines = explode ( "\n" , $wikitext ) ;
+		$wikitext = array () ;
+		foreach ( $lines AS $l ) {
+			$l1 = substr ( $l , 0 , 1 ) ;
+			if ( $l1 != '*' && $l1 != '#' && $l1 != ':' ) continue ;
+			$l = explode ( '[[' , $l , 2 ) ;
+			$l = trim ( array_shift ( explode ( ']]' , array_pop ( $l ) , 2 ) ) ) ;
+			if ( $l == '' ) continue ;
+			$wikitext[] = $l ;
+		}
+		$wikitext = implode ( "\n" , $wikitext ) ;
+		$whatsthis = 'articlelist' ;
+	}
+	
+	# QUICK HACK! NEEDS TO WORK!
+	if ( $format == "odt" || $format == "odt_xml" || $format == "docbook_pdf" || $format == "docbook_html" || $format == "docbook_xml" ) {
+		$xmlg["allow_xml_temp_files"] = false ;
+	}
+
+	if ( $whatsthis == "wikitext" ) {
 		$wiki2xml_authors = array () ;
 		$xml = $converter->article2xml ( "" , $wikitext , $xmlg ) ;
 	} else {
+		if ( $xmlg['allow_xml_temp_files'] ) $xmlg['use_xml_temp_files'] = true ;
+		
 		foreach ( explode ( "\n" , $wikitext ) AS $a ) {
 			push_article( &$aArticles, $a );
 		}
@@ -184,7 +267,8 @@ if ( get_param('doit',false) ) { # Process
 			
 			$wikitext = $content_provider->get_wiki_text ( $title_page ) ;
 			add_authors ( $content_provider->authors ) ;
-			$xml .= $converter->article2xml ( $title_name , $wikitext , $xmlg, &$aArticles ) ;
+			append_to_xml ( $xml , $converter->article2xml ( $title_name , $wikitext , $xmlg, &$aArticles ) ) ;
+			#$xml .= $converter->article2xml ( $title_name , $wikitext , $xmlg, &$aArticles ) ;
 		}
 	}
 	$t = microtime_float() - $t ;
@@ -192,14 +276,15 @@ if ( get_param('doit',false) ) { # Process
 	$lt = round( $content_provider->load_time, 3 ) ;
 	$t = round( $t - $lt, 3) ;
 	
-	$xml = "<articles xmlns:xhtml=\" \" loadtime='{$lt} sec' rendertime='{$t} sec' totaltime='{$tt} sec'>\n{$xml}\n</articles>" ;
-	
+	$xmlg['xml_articles_header'] = "<articles xmlns:xhtml=\" \" loadtime='{$lt} sec' rendertime='{$t} sec' totaltime='{$tt} sec'>" ;
+
 	# Output format
-	$format = get_param('output_format') ;
 	if ( $format == "xml" ) {
 		header('Content-type: text/xml; charset=utf-8');
 		print "<?xml version='1.0' encoding='UTF-8' ?>\n" ;
-		print $xml ;
+		print xml_articles_header() ;
+		while ( $x = xml_shift ( $xml ) ) print $x ;
+		print "</articles>" ;
 	} else if ( $format == "text" ) {
 		$xmlg['plaintext_markup'] = get_param('plaintext_markup',false) ;
 		$xmlg['plaintext_prelink'] = get_param('plaintext_prelink',false)  ;
@@ -332,6 +417,7 @@ if ( get_param('doit',false) ) { # Process
 		SureRemoveDir ( $pdf_dir ) ;
 		@rmdir ( $pdf_dir ) ;
 	}
+	xml_cleanup ( $xml ) ;
 	exit ;
 } else { # Show the form
 	if( !defined( 'MEDIAWIKI' ) ) { # Stand-alone

@@ -79,10 +79,22 @@ class xml2php {
 		$xml_parser = xml_parser_create();
 		xml_set_element_handler($xml_parser, 'wgXMLstartElement', 'wgXMLendElement');
 		xml_set_character_data_handler($xml_parser, 'wgXMLcharacterData');
+		
+		if ( is_array ( $input ) ) {
+			xml_parse($xml_parser, xml_articles_header() , false) ;
+			while ( $x = xml_shift ( $input ) ) {
+				xml_parse($xml_parser, $x, false) ;
+			}
 
-		if (!xml_parse($xml_parser, $input, true)) {
-			die(sprintf("XML error: %s at line %d", xml_error_string(xml_get_error_code($xml_parser)), xml_get_current_line_number($xml_parser)));
+			xml_parse($xml_parser, '</articles>', true)  ;
+		} else {
+			xml_parse($xml_parser, xml_articles_header() , false) ;
+			if (!xml_parse($xml_parser, $input, false)) {
+				die(sprintf("XML error: %s at line %d", xml_error_string(xml_get_error_code($xml_parser)), xml_get_current_line_number($xml_parser)));
+			}
+			xml_parse($xml_parser, '</articles>', true)  ;
 		}
+		
 		xml_parser_free($xml_parser);
 
 		// return the remaining root element we copied in the beginning
