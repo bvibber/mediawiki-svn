@@ -2,3 +2,6 @@
 * Sublists, and numbered lists are wrong
 * the ODT output could use a more strict separation between template and
   generated XML
+* support for <div style="..."> where "..." is text-align, font-size,
+  border, etc
+  

@@ -135,11 +135,6 @@ function push_article ( &$aArticles, $article ) {
 
 }
 
-# remove one article from the stack of to-be-converted articles
-function pop_article ( $aArticles ) {
-	return array_pop ( $aArticles ) ;
-}
-
 ## MAIN PROGRAM
 
 if ( get_param('doit',false) ) { # Process
