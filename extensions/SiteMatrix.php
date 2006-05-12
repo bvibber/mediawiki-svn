@@ -51,7 +51,12 @@ class SiteMatrixPage extends SpecialPage {
 		# Special wikis that should point to wikiPedia, not wikiMedia
 		$wikipediaSpecial = array(
 			'aa', 'bat_smg', 'closed_zh_tw', 'dk', 'fiu_vro', 'map_bms', 'nds_nl',
-			'roa_rup', 'sep11', 'zh_min_nan', 'zh_yue',
+			'roa_rup', 'sep11', 'sources', 'species', 'test', 'zh_min_nan', 'zh_yue',
+		);
+
+		# Some internal databases for other domains.
+		$hidden = array(
+			'foundation', 'mediawiki',
 		);
 		
 		# Tabulate the matrix
@@ -107,10 +112,18 @@ class SiteMatrixPage extends SpecialPage {
 		# Specials
 		$s .= '<ul>';
 		foreach ( $specials as $lang ) {
+
+			# Skip "hidden" databases:
+			if( in_array($lang, $hidden) ) {
+				continue;
+			}
+
 			$langhost = str_replace( '_', '-', $lang );
+
+			# Handle special wikipedia projects:
 			if( in_array($lang, $wikipediaSpecial) ) {
 				$domain = '.wikipedia.org';
-			} else {
+			} else{
 				$domain = '.wikimedia.org';
 			}
 			$s .= '<li><a href="http://' . $langhost . $domain . '/">' . $lang . "</a></li>\n";
