@@ -47,6 +47,12 @@ class SiteMatrixPage extends SpecialPage {
 			'wikisource' => 'wikisource.org',
 			'wikiquote' => 'wikiquote.org',
 		);
+
+		# Special wikis that should point to wikiPedia, not wikiMedia
+		$wikipediaSpecial = array(
+			'aa', 'bat_smg', 'closed_zh_tw', 'dk', 'fiu_vro', 'map_bms', 'nds_nl',
+			'roa_rup', 'sep11', 'zh_min_nan', 'zh_yue',
+		);
 		
 		# Tabulate the matrix
 		$specials = array();
@@ -102,7 +108,12 @@ class SiteMatrixPage extends SpecialPage {
 		$s .= '<ul>';
 		foreach ( $specials as $lang ) {
 			$langhost = str_replace( '_', '-', $lang );
-			$s .= '<li><a href="http://' . $langhost . '.wikipedia.org/">' . $lang . "</a></li>\n";
+			if( in_array($lang, $wikipediaSpecial) ) {
+				$domain = '.wikipedia.org';
+			} else {
+				$domain = '.wikimedia.org';
+			}
+			$s .= '<li><a href="http://' . $langhost . $domain . '/">' . $lang . "</a></li>\n";
 		}
 		$s .= '</ul>';
 		$wgOut->addHTML( $s );
