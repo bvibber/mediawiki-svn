@@ -32,9 +32,8 @@ stream, too, but I'll have to dive deeper into Bzip2 to figure that out.
 
 
 I've hacked together this Python prototype which basically replicates
-the basic compression functionality of pbzip2, using local threads. It
-seems to use about the same CPU time as pbzip2, but more real time,
-possibly due to the extra locking in Python threading.
+the basic compression functionality of pbzip2, using local threads;
+performance looks pretty similar for two threads.
 
 Will next try a simple TCP interface to run the compression on multiple
 machines on the LAN, and do some tests to see if it's feasible to speed

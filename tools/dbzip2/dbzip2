@@ -32,7 +32,7 @@ class Compressor(object):
 		self.maxQueued = 2
 		self.readCount = 0
 		self.writeCount = 0
-		self.verbosity = 2
+		self.verbosity = 0
 		self.threadLock = thread.allocate_lock()
 	
 	def debug(self, level, text):
@@ -47,7 +47,7 @@ class Compressor(object):
 	
 	def sleep(self):
 		"""Wait a short time when out of data."""
-		time.sleep(0.1)
+		time.sleep(0.01)
 	
 	def lock(self):
 		self.threadLock.acquire()
