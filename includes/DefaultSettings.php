@@ -703,6 +703,7 @@ $wgDebugLogFile         = '';
 $wgDebugRedirects		= false;
 $wgDebugRawPage         = false; # Avoid overlapping debug entries by leaving out CSS
 
+$wgDebugSanitizer       = false;
 $wgDebugComments        = false;
 $wgReadOnly             = null;
 $wgLogQueries           = false;

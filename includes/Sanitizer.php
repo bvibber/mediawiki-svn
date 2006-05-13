@@ -328,7 +328,7 @@ class Sanitizer {
 	 * @return string
 	 */
 	function removeHTMLtags( $text, $processCallback = null, $args = array() ) {
-		global $wgUseTidy, $wgUserHtml;
+		global $wgUseTidy, $wgUserHtml, $wgDebugSanitizer;
 		$fname = 'Parser::removeHTMLtags';
 		wfProfileIn( $fname );
 
@@ -375,8 +375,10 @@ class Sanitizer {
 		$bits = explode( '<', $text );
 		$text = array_shift( $bits );
 		if(!$wgUseTidy) {
+			if($wgDebugSanitizer) { wfDebug("\nSanitizer: BEGIN removeHTMLtags without tidy\n\n"); }
 			$tagstack = array(); $tablestack = array();
 			foreach ( $bits as $x ) {
+				if($wgDebugSanitizer) { wfDebug("Sanitizer: NEW BIT: '$x'\n"); }
 				$prev = error_reporting( E_ALL & ~( E_NOTICE | E_WARNING ) );
 				preg_match( '/^(\\/?)(\\w+)([^>]*?)(\\/{0,1}>)([^<]*)$/',
 				$x, $regs );
@@ -387,13 +389,17 @@ class Sanitizer {
 				if ( in_array( $t = strtolower( $t ), $htmlelements ) ) {
 					# Check our stack
 					if ( $slash ) {
+						if($wgDebugSanitizer) { wfDebug("Sanitizer: slash: $t\n"); }
 						# Closing a tag...
 						if( in_array( $t, $htmlsingleonly ) ) {
+							if($wgDebugSanitizer) { wfDebug("Sanitizer: htmlsingleonly: $t\n"); }
 							$badtag = 1;
 						} elseif ( ( $ot = @array_pop( $tagstack ) ) != $t ) {
+							if($wgDebugSanitizer) { wfDebug("Sanitizer: diff: $t != $ot\n"); }
 							@array_push( $tagstack, $ot );
 							# <li> can be nested in <ul> or <ol>, skip those cases:
 							if(!(in_array($ot, $htmllist) && in_array($t, $listtags) )) {
+								if($wgDebugSanitizer) { wfDebug("Sanitizer: $t FUN  => badtag\n"); }
 								$badtag = 1;
 							}
 						} else {
@@ -403,21 +409,27 @@ class Sanitizer {
 							$newparams = '';
 						}
 					} else {
+						if($wgDebugSanitizer) { wfDebug("Sanitizer: $t NO slash\n"); }
 						# Keep track for later
 						if ( in_array( $t, $tabletags ) &&
 						! in_array( 'table', $tagstack ) ) {
+							if($wgDebugSanitizer) { wfDebug("Sanitizer: $t out of table? => badtag\n"); }
 							$badtag = 1;
 						} else if ( in_array( $t, $tagstack ) &&
 						! in_array ( $t , $htmlnest ) ) {
+							if($wgDebugSanitizer) { wfDebug("Sanitizer: $t not a nest  => badtag\n"); }
 							$badtag = 1 ;
 						# Is it a self closed htmlpair ? (bug 5487)
 						} else if( $brace == '/>' &&
 						in_array($t, $htmlpairs) ) {
+							if($wgDebugSanitizer) { wfDebug("Sanitizer: $t not a self closed pair  => badtag\n"); }
 							$badtag = 1;
 						} elseif( in_array( $t, $htmlsingleonly ) ) {
+							if($wgDebugSanitizer) { wfDebug("Sanitizer: $t htmlsingleonly close forced\n"); }
 							# Hack to force empty tag for uncloseable elements
 							$brace = '/>';
 						} else if( in_array( $t, $htmlsingle ) ) {
+							if($wgDebugSanitizer) { wfDebug("Sanitizer: $t htmlsingle noclose forced\n"); }
 							# Hack to not close $htmlsingle tags
 							$brace = NULL;
 						} else {
@@ -440,16 +452,28 @@ class Sanitizer {
 					if ( ! $badtag ) {
 						$rest = str_replace( '>', '&gt;', $rest );
 						$close = ( $brace == '/>' ) ? ' /' : '';
-						$text .= "<$slash$t$newparams$close>$rest";
+						$toadd = "<$slash$t$newparams$close>$rest";
+						if($wgDebugSanitizer) { wfDebug("Sanitizer: RESULT: '$toadd'\n"); }
+						$text .= $toadd;
 						continue;
 					}
 				}
+				if($wgDebugSanitizer) { wfDebug("Sanitizer: RESULT: escaping '$x'\n"); }
 				$text .= '&lt;' . str_replace( '>', '&gt;', $x);
 			}
-			# Close off any remaining tags
-			while ( is_array( $tagstack ) && ($t = array_pop( $tagstack )) ) {
-				$text .= "</$t>\n";
-				if ( $t == 'table' ) { $tagstack = array_pop( $tablestack ); }
+
+			if( is_array( $tagstack ) ) {	
+				if($wgDebugSanitizer) { wfDebug("Sanitizer: start closing remaining tags:\n");}
+				# Close off any remaining tags
+				while ( is_array( $tagstack ) && ($t = array_pop( $tagstack )) ) {
+					if($wgDebugSanitizer) { wfDebug("Sanitizer: closing $t\n");}
+					$text .= "</$t>\n";
+					if ( $t == 'table' ) { $tagstack = array_pop( $tablestack ); }
+				}
+				if($wgDebugSanitizer) {
+					wfDebug("Sanitizer: closed all remainingtags.\n");
+					wfDebug("\nSanitizer: END OF removeHTMLtags without tidy\n");
+				}
 			}
 		} else {
 			# this might be possible using tidy itself
