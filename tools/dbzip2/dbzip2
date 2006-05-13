@@ -20,7 +20,6 @@
 # TODO:
 # Remote compressors
 # Use a thread pool?
-# Selectable number of threads
 # Selectable remote threads
 # Selectable block size
 # Handle remote failures gracefully
@@ -28,30 +27,38 @@
 # Accept file input/output, behavior like bzip2
 
 import bz2
+import getopt
 import sys
 import thread
 import time
 
 class Compressor(object):
-	def __init__(self, inputStream, outputStream):
-		self.inputStream = inputStream
-		self.outputStream = outputStream
+	def __init__(self, args):
+		self.inputStream = sys.stdin
+		self.outputStream = sys.stdout
 		self.blockSize = 900000 # 900k default blocksize
 		self.queue = []
 		self.done = False
-		self.maxQueued = 2
+		self.threads = 1
 		self.readCount = 0
 		self.writeCount = 0
 		self.verbosity = 0
 		self.threadLock = thread.allocate_lock()
+		self.processArgs(args)
+	
+	def processArgs(self, args):
+		(options, remainder) = getopt.getopt(args, "vp:")
+		for (opt, val) in options:
+			if opt == "-v":
+				self.verbosity += 1
+			elif opt == "-p":
+				self.threads = int(val)
 	
 	def debug(self, level, text):
 		if self.verbosity >= level:
 			sys.stderr.write(text + "\n")
 	
 	def run(self):
-		#thread.start_new_thread(self.writerThread, ())
-		#self.readerThread()
 		thread.start_new_thread(self.readerThread, ())
 		self.writerThread()
 	
@@ -93,7 +100,7 @@ class Compressor(object):
 	
 	def ready(self):
 		"""Check if we've gone over the limit of waiting connections."""
-		return len(self.queue) < self.maxQueued
+		return len(self.queue) < self.threads
 
 	def dispatch(self, block):
 		"""Queue a block of data for remote compression."""
@@ -184,5 +191,5 @@ class RemoteCompressor(object):
 		return bz2.compress(self.input)
 
 if __name__ == "__main__":
-	compressor = Compressor(sys.stdin, sys.stdout)
+	compressor = Compressor(sys.argv[1:])
 	compressor.run()
