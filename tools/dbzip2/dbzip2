@@ -37,13 +37,18 @@ class Compressor(object):
 		self.inputStream = sys.stdin
 		self.outputStream = sys.stdout
 		self.blockSize = 900000 # 900k default blocksize
-		self.queue = []
-		self.done = False
 		self.threads = 1
+		self.verbosity = 0
+		
 		self.readCount = 0
 		self.writeCount = 0
-		self.verbosity = 0
+		self.bytesRead = 0L
+		self.bytesWritten = 0L
+		
+		self.queue = []
+		self.done = False
 		self.threadLock = thread.allocate_lock()
+		
 		self.processArgs(args)
 	
 	def processArgs(self, args):
@@ -75,7 +80,7 @@ class Compressor(object):
 	
 	def readerThread(self):
 		"""Producer thread: run through the file handing out blocks."""
-		self.debug(1, "readerThread: starting!")
+		self.debug(2, "readerThread: starting!")
 		block = self.nextBlock()
 		while block:
 			while not self.ready():
@@ -84,17 +89,17 @@ class Compressor(object):
 			
 			self.lock()
 			self.readCount += 1
-			self.debug(1, "readerThread: dispatching block %d" % self.readCount)
+			self.debug(2, "readerThread: dispatching block %d" % self.readCount)
 			self.dispatch(block)
 			self.unlock()
 			
 			block = self.nextBlock()
 		self.done = True
-		self.debug(1, "readerThread: done; read %d blocks" % self.readCount)
-		# FIXME: we're not _totally_ done until it's processed.
+		self.debug(2, "readerThread: done; read %d blocks" % self.readCount)
 	
 	def nextBlock(self):
 		buffer = self.inputStream.read(self.blockSize)
+		self.bytesRead += len(buffer)
 		self.debug(3, "nextBlock: %d" % len(buffer))
 		return buffer
 	
@@ -114,7 +119,8 @@ class Compressor(object):
 		"""Consumer thread: as we receive compressed blocks from the
 		distributed compressors, write them to the output file.
 		Currently only writes blocks in order."""
-		self.debug(1, "writerThread: starting")
+		self.debug(2, "writerThread: starting")
+		startTime = time.time()
 		while not (self.done and self.writeCount == self.readCount):
 			self.lock()
 			buffer = self.dequeue()
@@ -122,12 +128,17 @@ class Compressor(object):
 			
 			if buffer:
 				self.writeCount += 1
-				self.debug(1, "writerThread: writing block %d" % self.writeCount)
+				self.debug(2, "writerThread: writing block %d" % self.writeCount)
 				self.writeBuffer(buffer)
 			else:
-				self.debug(3, "writerThread: sleeping")
+				self.debug(4, "writerThread: sleeping")
 				self.sleep()
-		self.debug(1, "writerThread: done; wrote %d blocks" % self.writeCount)
+		delta = time.time() - startTime
+		megabyte = 1024.0 * 1024.0
+		rateIn = (float(self.bytesRead) / megabyte) / delta
+		rateOut = (float(self.bytesWritten) / megabyte) / delta
+		self.debug(1, "Wrote %d blocks in %0.1f seconds (%0.3f MB/s in, %0.3f MB/s out)" % (
+			self.writeCount, delta, rateIn, rateOut))
 	
 	def dequeue(self):
 		"""Fetch the next completed block for writing."""
@@ -140,9 +151,10 @@ class Compressor(object):
 	def writeBuffer(self, buffer):
 		"""Write a buffer to the file. Currently requires that buffers
 		be processed in streaming order."""
-		self.debug(1, "writeBuffer: writing block %d" % buffer.index)
+		self.debug(3, "writeBuffer: writing block %d" % buffer.index)
 		assert buffer.contents is not None
 		assert buffer.index == self.writeCount
+		self.bytesWritten += len(buffer.contents)
 		self.outputStream.write(buffer.contents)
 	
 	
