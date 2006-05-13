@@ -1,0 +1,56 @@
+Compression with bzip2 is hideously slow. This doesn't really become apparent
+until you've got a 350 gigabyte XML data dump to compress and it literally
+can take days.
+
+I came across a "Parallel BZIP2" utility on the net, which claims linear
+speedup of bzip2 compression on SMP systems. In a quick test on my dual-core
+G5 box I found it gave a 52% speedup over the straight single-threaded bzip2
+when set for two processors; so there might be some potential here.
+
+This pbzip2 utility exploits two properties of bzip2:
+# Compression is done on largish blocks, making it very convenient to pass
+those blocks out to threads for simultaneous processing.
+# When uncompressing, the bzip2 utility will combine multiple concatenated
+compressed streams into a single output file.
+
+
+While the bzip2 scheme works on blocks, usually the data stream has one
+header marker and runs through to the end. pbzip2 just calls into libbz2's
+high-level functions to create a complete self-contained compressed stream
+for each block. This has a tiny overhead in extra header bytes, but is
+pretty negligible.
+
+The main downside is that other programs capable of reading bzip2 streams
+might not read the whole file; both PHP's compress.bzip2:// streams and
+the Apache Java thingy I'm using in mwdumper stop at the end of the first
+block.
+
+
+That can probably be worked around, though, if this works well enough.
+It might be possible to stitch the blocks back together into a single
+stream, too, but I'll have to dive deeper into Bzip2 to figure that out.
+
+
+I've hacked together this Python prototype which basically replicates
+the basic compression functionality of pbzip2, using local threads. It
+seems to use about the same CPU time as pbzip2, but more real time,
+possibly due to the extra locking in Python threading.
+
+Will next try a simple TCP interface to run the compression on multiple
+machines on the LAN, and do some tests to see if it's feasible to speed
+up streaming block compression with several helper boxes.
+
+
+If this is promising, I also will want to look at 7zip, see if something
+similar can be done there.
+
+-- brion vibber (brion @ pobox.com / brion @ wikimedia.org)
+
+
+== References ==
+
+Parallel BZIP2:
+* http://compression.ca/pbzip2/
+
+Copy of distcc protocol documentation, for inspiration/nicking:
+* http://www.opensource.apple.com/darwinsource/DevToolsNov2005/distcc-39/distcc_dist/doc/protocol-1.txt

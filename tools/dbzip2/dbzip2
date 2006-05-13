@@ -1,0 +1,178 @@
+#!/usr/bin/python
+
+# In progress proof of concept for distributed parallel bzip2 compression.
+# Breaks incoming data stream into blocks, sends them out for separate
+# compression on multiple threads.
+#
+# Currently running bzip2 chunks in local threads, will try moving to
+# remotable network daemons distcc-style. It might or might not be worth
+# it depending on the overhead of slinging around all the data.
+#
+# Like pbzip2 the output files will work with the regular 'bzip2' tool
+# but may not work with other programs because each chunk is its own
+# separate stream. Other tools tend to end at the first stream's end.
+# it might be possible to combine the streams in some way, should
+# investigate.
+#
+# Brion Vibber <brion@pobox.com>
+# 2006-05-12
+
+import bz2
+import sys
+import thread
+import time
+
+class Compressor(object):
+	def __init__(self, inputStream, outputStream):
+		self.inputStream = inputStream
+		self.outputStream = outputStream
+		self.blockSize = 900000 # 900k default blocksize
+		self.queue = []
+		self.done = False
+		self.maxQueued = 2
+		self.readCount = 0
+		self.writeCount = 0
+		self.verbosity = 2
+		self.threadLock = thread.allocate_lock()
+	
+	def debug(self, level, text):
+		if self.verbosity >= level:
+			sys.stderr.write(text + "\n")
+	
+	def run(self):
+		#thread.start_new_thread(self.writerThread, ())
+		#self.readerThread()
+		thread.start_new_thread(self.readerThread, ())
+		self.writerThread()
+	
+	def sleep(self):
+		"""Wait a short time when out of data."""
+		time.sleep(0.1)
+	
+	def lock(self):
+		self.threadLock.acquire()
+		assert self.threadLock.locked()
+	
+	def unlock(self):
+		self.threadLock.release()
+	
+	def readerThread(self):
+		"""Producer thread: run through the file handing out blocks."""
+		self.debug(1, "readerThread: starting!")
+		block = self.nextBlock()
+		while block:
+			while not self.ready():
+				self.debug(4, "readerThread: full at %d; waiting" % len(self.queue))
+				self.sleep()
+			
+			self.lock()
+			self.readCount += 1
+			self.debug(1, "readerThread: dispatching block %d" % self.readCount)
+			self.dispatch(block)
+			self.unlock()
+			
+			block = self.nextBlock()
+		self.done = True
+		self.debug(1, "readerThread: done; read %d blocks" % self.readCount)
+		# FIXME: we're not _totally_ done until it's processed.
+	
+	def nextBlock(self):
+		buffer = self.inputStream.read(self.blockSize)
+		self.debug(3, "nextBlock: %d" % len(buffer))
+		return buffer
+	
+	def ready(self):
+		"""Check if we've gone over the limit of waiting connections."""
+		return len(self.queue) < self.maxQueued
+
+	def dispatch(self, block):
+		"""Queue a block of data for remote compression."""
+		assert self.threadLock.locked()
+		buffer = QueuedBuffer(self.readCount)
+		self.queue.append(buffer)
+		thread.start_new_thread(self.remoteThread, (block, buffer))
+	
+	
+	def writerThread(self):
+		"""Consumer thread: as we receive compressed blocks from the
+		distributed compressors, write them to the output file.
+		Currently only writes blocks in order."""
+		self.debug(1, "writerThread: starting")
+		while not (self.done and self.writeCount == self.readCount):
+			self.lock()
+			buffer = self.dequeue()
+			self.unlock()
+			
+			if buffer:
+				self.writeCount += 1
+				self.debug(1, "writerThread: writing block %d" % self.writeCount)
+				self.writeBuffer(buffer)
+			else:
+				self.debug(3, "writerThread: sleeping")
+				self.sleep()
+		self.debug(1, "writerThread: done; wrote %d blocks" % self.writeCount)
+	
+	def dequeue(self):
+		"""Fetch the next completed block for writing."""
+		assert self.threadLock.locked()
+		if len(self.queue) and self.queue[0].ready():
+			return self.queue.pop(0)
+		else:
+			return None
+	
+	def writeBuffer(self, buffer):
+		"""Write a buffer to the file. Currently requires that buffers
+		be processed in streaming order."""
+		self.debug(1, "writeBuffer: writing block %d" % buffer.index)
+		assert buffer.contents is not None
+		assert buffer.index == self.writeCount
+		self.outputStream.write(buffer.contents)
+	
+	
+	def remoteThread(self, block, buffer):
+		"""Worker thread: send a block to a foreign server and receive data."""
+		stream = RemoteCompressor()
+		stream.send(block)
+		data = stream.receive()
+		self.debug(4, "remoteThread: got data!")
+		buffer.set(data)
+		# After it's been fulfilled, the writer thread will dequeue and write it.
+
+
+class QueuedBuffer(object):
+	"""Placeholder for received compressed buffer items."""
+	
+	def __init__(self, index):
+		"""Initialize an empty placeholder, no data yet."""
+		self.contents = None
+		self.index = index
+	
+	def ready(self):
+		return self.contents is not None
+	
+	def set(self, data):
+		"""Store data and declare that we're ready to be flushed out."""
+		assert self.contents is None
+		assert data is not None
+		self.contents = data
+
+
+class RemoteCompressor(object):
+	"""For initial testing, we just compress locally."""
+	
+	def __init__(self):
+		"""FIXME: need a method for selecting a server, somewhere."""
+		self.input = None
+	
+	def send(self, block):
+		"""Send a block of uncompressed data to the remote site."""
+		self.input = block
+	
+	def receive(self):
+		"""Wait for the remote site to compress, and return its work."""
+		assert self.input is not None
+		return bz2.compress(self.input)
+
+if __name__ == "__main__":
+	compressor = Compressor(sys.stdin, sys.stdout)
+	compressor.run()
