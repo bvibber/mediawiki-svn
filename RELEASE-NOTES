@@ -121,7 +121,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Remove useless whitespace from Special:Brokenredirects header
 * Treat "allmessagesnotsupporteddb" as wikitext when echoing; change default
   text
-* (bug 5497) regeression in HTML normalization in 1.6 (unclosed <li>,<dd>,<dt>)
+* (bug 5497) Regression in HTML normalization in 1.6 (unclosed <li>,<dd>,<dt>)
 * (bug 5709) Allow customisation of separator for categories
 * (bug 5684) Introduce Special:Randomredirect
 * (bug 5611) Add a name attribute to the text box containing source text in
@@ -176,9 +176,80 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 5723) Don't count pages linked to from the MediaWiki namespace as "wanted"
 * (bug 5696) Add a third parameter, $3, to "rcnote", passing the current time
   formatted according to the current user's settings
-* (bug 218) Redirects do not support named anchors
 * (bug 5780) Thousands and decimal separators for Norwegian
 * Updated initStats maintenance script
+* (bug 5767) Fix date formats in Vietnamese locale
+* (bug 361) URL in URL, they were almost fixed. Now they are.
+* (bug 4876) Add __NEWSECTIONLINK__ magic word to force the "new section" link/tab to
+  show up on specific pages on demand
+* Bidi-aid on list pages
+* (bug 5782) Allow entries in the bad image list to use canonical namespace names
+* (bug 5789) Treat "loginreqpagetext" as wikitext
+* Sanitizer: now handles nested <li> in <ul> or <ol>
+* (bug 5796) We require MySQL >=4.0.14
+* Add 'EmailConfirmed' hook
+* New findhooks.php script to find undocumented hooks.
+* Silently ignore errors on profiling table update.
+* (bug 5801) Correct handling of underscores in Special:Listusers
+* Clean up Special:Listusers; add an "(all)" label to the group selection box
+* (bug 5812) Use appropriate link colour in Special:Mostlinked
+* (bug 5802) {{CURRENTMONTHNAME}} variable broken in Vietnamese locale
+* (bug 5817) Appropriate handling for Special:Recentchangeslinked where the target
+  page doesn't exist
+* Special:Randompage now additionally accepts English namespace name as parameter
+* (bug 2981) Really fixed linktrail for Tamil (ta)
+* Disallow substituting Special pages when included into a page
+* (bug 5587) Clean up the languages from references to the Groups special page
+* Added new group-X and group-X-member messages
+* Rewritten removeUnusedAccounts to be more efficient, print names of inactive
+  accounts
+* Redirect Special:Userlist to Special:Listusers
+* Introduce $wgAllowTitlesInSVG, which allows the <title> attribute in uploaded files
+  bearing the image/svg MIME type. Disabled by default due to the vast majority of
+  web servers being hideously misconfigured. See DefaultSettings.php for more details.
+* Changed default LocalSettings.php to append the previous include path when setting it
+* (bug 5837) Use "members" for the value descriptor in Special:Categories,
+  Special:Wantedcategories and Special:Mostlinkedcategories.
+* (bug 3309) Allow comments when undeleting pages
+* Clean up Special:Undelete a bit
+* (bug 5805) messages nbytes, ncategories can now use {{plural:}}
+* Clean up Special:Imagelist a bit
+* (bug 5838) Namespace names for Nds-NL
+* (bug 5749) Added Tyvan language files
+* (bug 5791) Fix SQL syntax in Special:BrokenRedirects, was causing incorrect data to show
+* (bug 5839) Prevent access to Special:Confirmemail for logged-out users
+* (bug 5853) Update for Portuguese messages (pt)
+* (bug 5851) Use Cyrillic for Kirghiz language name
+* (bug 5841) Allow the 'EditFilter' hook to return a non-fatal error message
+* (bug 5846) Link to individual group description pages in Special:Listusers
+* (bug 5857) Update for German localisation (de)
+* (bug 5858) Update for Russian language (ru)
+* (bug 5860) Update for Indonesian language (id)
+* (bug 1120) Update for Czech language (Cs)
+* Added many missing formatNum calls
+* Added grammar function to Belarusian (be)
+* (bug 5819) Add 'PersonalUrls' hook
+* (bug 5862) Update of Belarusian language (be)
+* (bug 5886) Update for Portuguese messages (pt)
+* (bug 5586) <gallery> treated text as links
+* (bug 5878) Update for Indonesian language (id)
+* (bug 5697) Update for Malay language (ms)
+* (bug 5890) Update for German language (de)
+* (bug 5889) Name for Sindhi language should appear as سنڌي
+* --force-normal parameter on dump scripts to force check for ICU extension
+* (bug 5895) Update for Dutch language (nl)
+* (bug 5891) Linktrail for Polish language (pl)
+* User::isBureaucrat , User::isDeveloper , User::isSysop deprecated in
+  v1.6 now die with a backtrace. They will be removed in v1.8
+* dumpTextPass now skips goes to database for entries that were blank in the
+  previous dump, as this may indicate a broken dump.
+* dumpTextPass progress includes percentage of items prefetched
+* dumpTextPass can now use 7zip files for prefetch
+* (bug 5915) Update to Indonesian localisation (id)
+* (bug 5913) Update for German localisation (de)
+* (bug 5905) Plural support for Bosnian localisation (bs)
+* Groups which won't hit the rate limiter now configurable with
+  $wgRateLimitsExcludedGroups
 
 == Compatibility ==
 
@@ -188,7 +259,7 @@ upgrade to 4.3 or later.
 MediaWiki 1.6 is the last major version to support PHP 4; future versions
 will require PHP 5.
 
-MySQL 3.23.x is longer supported; some older hosts may need to upgrade.
+MySQL 3.23.x is no longer supported; some older hosts may need to upgrade.
 At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.
 
 

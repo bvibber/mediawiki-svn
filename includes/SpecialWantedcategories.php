@@ -59,7 +59,7 @@ class WantedCategoriesPage extends QueryPage {
 	}
 
 	function formatResult( $skin, $result ) {
-		global $wgContLang;
+		global $wgLang, $wgContLang;
 
 		$nt = Title::makeTitle( $result->namespace, $result->title );
 		$text = $wgContLang->convert( $nt->getText() );
@@ -68,8 +68,8 @@ class WantedCategoriesPage extends QueryPage {
 			$skin->makeLinkObj( $nt, htmlspecialchars( $text ) ) :
 			$skin->makeBrokenLinkObj( $nt, htmlspecialchars( $text ) );
 
-		$nlinks = wfMsg( 'nlinks', $result->value );
-		return "$plink ($nlinks)";
+		$nlinks = wfMsg( 'members', $wgLang->formatNum( $result->value ) );
+		return wfSpecialList($plink, $nlinks);
 	}
 }
 

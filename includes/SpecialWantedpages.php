@@ -71,7 +71,7 @@ class WantedPagesPage extends QueryPage {
 
 
 	function formatResult( $skin, $result ) {
-		global $wgContLang;
+		global $wgLang;
 
 		$title = Title::makeTitleSafe( $result->namespace, $result->title );
 
@@ -91,10 +91,11 @@ class WantedPagesPage extends QueryPage {
 		
 		# Make a link to "what links here" if it's required
 		$wlhLink = $this->nlinks
-					? " (" . $this->makeWlhLink( $title, $skin, wfMsgHtml( 'nlinks', $result->value ) ) . ")"
-					: "";
+					? $this->makeWlhLink( $title, $skin, wfMsgHtml( 'nlinks',
+							$wgLang->formatNum( $result->value ) ) )
+					: null;
 					
-		return "{$pageLink}{$wlhLink}";
+		return wfSpecialList($pageLink, $wlhLink);
 	}
 	
 	/**
@@ -106,7 +107,7 @@ class WantedPagesPage extends QueryPage {
 	 */
 	function makeWlhLink( &$title, &$skin, $text ) {
 		$wlhTitle = Title::makeTitle( NS_SPECIAL, 'Whatlinkshere' );
-		return $skin->makeKnownLinkObj( $wlhTitle, $text, 'target=' . $title->getPrefixedUrl() );		
+		return $skin->makeKnownLinkObj( $wlhTitle, $text, 'target=' . $title->getPrefixedUrl() );
 	}
 	
 }

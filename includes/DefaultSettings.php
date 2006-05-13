@@ -1,7 +1,7 @@
 <?php
 /**
  *
- *                 DO NOT EVER EDIT THIS FILE!
+ *                 NEVER EDIT THIS FILE
  *
  *
  * To customize your installation, edit "LocalSettings.php". If you make
@@ -857,7 +857,9 @@ $wgGroupPermissions['sysop']['importupload']    = true;
 $wgGroupPermissions['sysop']['move']            = true;
 $wgGroupPermissions['sysop']['patrol']          = true;
 $wgGroupPermissions['sysop']['protect']         = true;
+$wgGroupPermissions['sysop']['proxyunbannable'] = true;
 $wgGroupPermissions['sysop']['rollback']        = true;
+$wgGroupPermissions['sysop']['trackback']       = true;
 $wgGroupPermissions['sysop']['upload']          = true;
 $wgGroupPermissions['sysop']['reupload']        = true;
 $wgGroupPermissions['sysop']['reupload-shared'] = true;
@@ -1829,6 +1831,11 @@ $wgRateLimits = array(
 $wgRateLimitLog = null;
 
 /**
+ * Array of groups which should never trigger the rate limiter
+ */
+$wgRateLimitsExcludedGroups = array( 'sysop', 'bureaucrat' );
+
+/**
  * On Special:Unusedimages, consider images "used", if they are put
  * into a category. Default (false) is not to count those as used.
  */
@@ -1955,5 +1962,14 @@ $wgInterlanguageTitles = false ;
  * Maintenance scripts can still use these
  */
 $wgReservedUsernames = array( 'MediaWiki default', 'Conversion script' );
+
+/**
+ * MediaWiki will reject HTMLesque tags in uploaded files due to idiotic browsers which can't
+ * perform basic stuff like MIME detection and which are vulnerable to further idiots uploading
+ * crap files as images. When this directive is on, <title> will be allowed in files with
+ * an "image/svg" MIME type. You should leave this disabled if your web server is misconfigured
+ * and doesn't send appropriate MIME types for SVG images.
+ */
+$wgAllowTitlesInSVG = false;
 
 ?>

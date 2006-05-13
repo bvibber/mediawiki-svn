@@ -236,7 +236,7 @@ See $1.',
 'versionrequired' => 'Version $1 of MediaWiki required',
 'versionrequiredtext' => 'Version $1 of MediaWiki is required to use this page. See [[Special:Version]]',
 
-'nbytes'		=> '$1 bytes',
+'nbytes'		=> '$1 {{PLURAL:$1|byte|bytes}}',
 'ncategories'		=> '$1 categories',
 'nrevisions'		=> '$1 revisions',
 'widthheight'		=> '$1x$2',
@@ -729,38 +729,11 @@ $2 List redirects &nbsp; Search for $3 $9",
 'default'		=> 'default',
 'files'			=> 'Files',
 
-# User levels special page
-#
-
-# switching pan
-'groups-lookup-group' => 'Manage group rights',
-'groups-group-edit' => 'Existing groups:',
-'editgroup' => 'Edit Group',
-'addgroup' => 'Add Group',
-
+# User rights
 'userrights-lookup-user' => 'Manage user groups',
 'userrights-user-editname' => 'Enter a username:',
 'editusergroup' => 'Edit User Groups',
 
-# group editing
-'groups-editgroup'          => 'Edit group',
-'groups-addgroup'           => 'Add group',
-'groups-editgroup-preamble' => 'If the name or description starts with a colon, the
-remainder will be treated as a message name, and hence the text will be localised
-using the MediaWiki namespace',
-'groups-editgroup-name'     => 'Group name:',
-'groups-editgroup-description' => 'Group description (max 255 characters):<br />',
-'savegroup'                 => 'Save Group',
-'groups-tableheader'        => 'ID || Name || Description || Rights',
-'groups-existing'           => 'Existing groups',
-'groups-noname'             => 'Please specify a valid group name',
-'groups-already-exists'     => 'A group of that name already exists',
-'addgrouplogentry'          => 'Added group $2',
-'changegrouplogentry'       => 'Changed group $2',
-'renamegrouplogentry'       => 'Renamed group $2 to $3',
-
-# user groups editing
-#
 'userrights-editusergroup' => 'Edit user groups',
 'saveusergroups' => 'Save User Groups',
 'userrights-groupsmember' => 'Member of:',
@@ -769,19 +742,22 @@ using the MediaWiki namespace',
 Unselected groups will not be changed. You can deselect a group with CTRL + Left Click',
 'userrights-logcomment' => 'Changed group membership from $1 to $2',
 
-# Default group names and descriptions
-#
-'group-anon-name'       => 'Anonymous',
-'group-anon-desc'       => 'Anonymous users',
-'group-loggedin-name'   => 'User',
-'group-loggedin-desc'   => 'General logged in users',
-'group-admin-name'      => 'Administrator',
-'group-admin-desc'      => 'Trusted users able to block users and delete articles',
-'group-bureaucrat-name' => 'Bureaucrat',
-'group-bureaucrat-desc' => 'The bureaucrat group is able to make sysops',
-'group-steward-name'    => 'Steward',
-'group-steward-desc'    => 'Full access',
+# Groups
+'group'                   => 'Group:',
+'group-bot'               => 'Bots',
+'group-sysop'             => 'Sysops',
+'group-bureaucrat'        => 'Bureaucrats',
+'group-steward'           => 'Stewards',
+'group-all'               => '(all)',
 
+'group-bot-member'        => 'Bot',
+'group-sysop-member'      => 'Sysop',
+'group-bureaucrat-member' => 'Bureaucrat',
+'group-steward-member'    => 'Steward',
+
+'grouppage-bot' => 'Project:Bots',
+'grouppage-sysop' => 'Project:Administrators',
+'grouppage-bureaucrat' => 'Project:Bureaucrats',
 
 # Recent changes
 #
@@ -874,11 +850,11 @@ created and by whom, and anything else you may know about it. If this is an imag
 # Image list
 #
 'imagelist'		=> 'File list',
-'imagelisttext'	=> "Below is a list of $1 files sorted $2.",
+'imagelisttext'	=> 'Below is a list of <strong>$1</strong> files sorted <strong>$2</strong>.',
 'imagelistforuser' => "This shows only images uploaded by $1.",
 'getimagelist'	=> 'fetching file list',
 'ilsubmit'		=> 'Search',
-'showlast'		=> "Show last $1 files sorted $2.",
+'showlast'		=> 'Show last $1 files sorted $2.',
 'byname'		=> 'by name',
 'bydate'		=> 'by date',
 'bysize'		=> 'by size',
@@ -973,6 +949,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'mostimages'	=> 'Most linked to images',
 'mostrevisions' => 'Articles with the most revisions',
 'nlinks'		=> '$1 links',
+'members'		=> '$1 members',
 'allpages'		=> 'All pages',
 'prefixindex'   => 'Prefix index',
 'randompage'	=> 'Random page',
@@ -1072,7 +1049,7 @@ Future changes to this page and its associated Talk page will be listed there,
 and the page will appear '''bolded''' in the [[Special:Recentchanges|list of recent changes]] to
 make it easier to pick out.
 
-<p>If you want to remove the page from your watchlist later, click \"Unwatch\" in the sidebar.",
+If you want to remove the page from your watchlist later, click \"Unwatch\" in the sidebar.",
 'removedwatch'		=> 'Removed from watchlist',
 'removedwatchtext' 	=> "The page \"[[:$1]]\" has been removed from your watchlist.",
 'watch' => 'Watch',
@@ -1169,7 +1146,7 @@ by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled bac
 Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]).",
 #   only shown if there is an edit comment
 'editcomment' => "The edit comment was: \"<i>$1</i>\".",
-'revertpage'	=> "Reverted edits by [[Special:Contributions/$2|$2]] ([[User_talk:$2|$2]]); changed back to last version by [[User:$1|$1]]",
+'revertpage'	=> "Reverted edits by [[Special:Contributions/$2|$2]] ([[User_talk:$2|Talk]]); changed back to last version by [[User:$1|$1]]",
 'sessionfailure' => 'There seems to be a problem with your login session;
 this action has been canceled as a precaution against session hijacking.
 Please hit "back" and reload the page you came from, then try again.',
@@ -1207,6 +1184,10 @@ page protection levels. Here are the current settings for the page <strong>$1</s
 'viewdeletedpage' => 'View deleted pages',
 'undeletepagetext' => 'The following pages have been deleted but are still in the archive and
 can be restored. The archive may be periodically cleaned out.',
+'undeleteextrahelp' => "To restore the entire page, leave all checkboxes deselected and
+click '''''Restore'''''. To perform a selective restoration, check the boxes corresponding to the
+revisions to be restored, and click '''''Restore'''''. Clicking '''''Reset''''' will clear the
+comment field and all checkboxes.",
 'undeletearticle' => 'Restore deleted page',
 'undeleterevisions' => "$1 revisions archived",
 'undeletehistory' => 'If you restore the page, all revisions will be restored to the history.
@@ -1217,7 +1198,9 @@ will not be automatically replaced.',
 shown in the summary below, along with details of the users who had edited this page
 before deletion. The actual text of these deleted revisions is only available to administrators.',
 'undeleterevision' => "Deleted revision as of $1",
-'undeletebtn' => 'Restore!',
+'undeletebtn' => 'Restore',
+'undeletereset' => 'Reset',
+'undeletecomment' => 'Comment:',
 'undeletedarticle' => "restored \"[[$1]]\"",
 'undeletedrevisions' => "$1 revisions restored",
 'undeletedtext'   => "[[:$1|$1]] has been successfully restored.
@@ -1511,7 +1494,6 @@ In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{Media
 'subcategorycount1' => "There is $1 subcategory to this category.",
 'categoryarticlecount' => "There are $1 articles in this category.",
 'categoryarticlecount1' => "There is $1 article in this category.",
-'usenewcategorypage' => "1\n\nSet first character to \"0\" to disable the new category page layout.",
 'listingcontinuesabbrev' => " cont.",
 'spambot_username' => 'MediaWiki spam cleanup',
 'spam_reverting' => 'Reverting to last version not containing links to $1',
@@ -1954,6 +1936,7 @@ link in your browser to confirm that your e-mail address is valid.",
 'confirmemail_sent' => 'Confirmation e-mail sent.',
 'confirmemail_sendfailed' => 'Could not send confirmation mail. Check address for invalid characters.',
 'confirmemail_invalid' => 'Invalid confirmation code. The code may have expired.',
+'confirmemail_needlogin' => 'You need to $1 to confirm your email address.',
 'confirmemail_success' => 'Your e-mail address has been confirmed. You may now log in and enjoy the wiki.',
 'confirmemail_loggedin' => 'Your e-mail address has now been confirmed.',
 'confirmemail_error' => 'Something went wrong saving your confirmation.',
@@ -2021,6 +2004,7 @@ Please confirm that really want to recreate this article.',
 'displaytitle' => '(Link to this page as [[$1]])',
 
 # Separator for categories in page lists
+# Please don't localise this
 'catseparator' => '|',
 
 );

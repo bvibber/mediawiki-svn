@@ -15,7 +15,7 @@ require_once( 'HttpFunctions.php' );
  * changes in an incompatible way, so the parser cache
  * can automatically discard old data.
  */
-define( 'MW_PARSER_VERSION', '1.6.0' );
+define( 'MW_PARSER_VERSION', '1.6.1' );
 
 /**
  * Variable substitution O(N^2) attack
@@ -1235,7 +1235,7 @@ class Parser
 					preg_match( '/^('.EXT_LINK_URL_CLASS.'+)(.*)$/s', $bits[$i + 1], $m )) 
 				{
 					# add protocol, arg
-					$url .= $bits[$i] . $bits[$i + 1]; # protocol, url as arg to previous link
+					$url .= $bits[$i] . $m[1]; # protocol, url as arg to previous link
 					$i += 2;
 					$trail = $m[2];
 				}
@@ -2682,20 +2682,6 @@ class Parser
 				}
 			}
 		}
-		
-			/*$mwNumUsers =& MagicWord::get( MAG_NUMBEROFUSERS );
-			if( $mwNumUsers->matchStartAndRemove( $part1 ) ) {
-				$mwRawSuffix =& MagicWord::get( MAG_RAWSUFFIX );
-				if( $mwRawSuffix->match( $args[0] ) ) {
-					# Raw and unformatted
-					$text = $linestart . wfNumberOfUsers();
-				} else {
-					# Default; formatted form
-					$text = $linestart . $wgContLang->formatNum( wfNumberOfUsers() );
-				}
-				$found = true;
-			}
-		}*/
 
 		# Extensions
 		if ( !$found && substr( $part1, 0, 1 ) == '#' ) {
@@ -2767,8 +2753,7 @@ class Parser
 					# Check for excessive inclusion
 					$dbk = $title->getPrefixedDBkey();
 					if ( $this->incrementIncludeCount( $dbk ) ) {
-						if ( $title->getNamespace() == NS_SPECIAL && $this->mOptions->getAllowSpecialInclusion() ) {
-							# Capture special page output
+						if ( $title->getNamespace() == NS_SPECIAL && $this->mOptions->getAllowSpecialInclusion() && $this->mOutputType != OT_WIKI ) {
 							$text = SpecialPage::capturePath( $title );
 							if ( is_string( $text ) ) {
 								$found = true;
@@ -3083,6 +3068,12 @@ class Parser
 		if( $numMatches < 4 ) {
 			$doShowToc = false;
 		}
+
+		# Allow user to stipulate that a page should have a "new section"
+		# link added via __NEWSECTIONLINK__
+		$mw =& MagicWord::get( MAG_NEWSECTIONLINK );
+		if( $mw->matchAndRemove( $text ) )
+			$this->mOutput->setNewSection( true );
 
 		# if the string __TOC__ (not case-sensitive) occurs in the HTML,
 		# override above conditions and always show TOC at that place
@@ -3946,7 +3937,11 @@ class Parser
 			$html = $pout->getText();
 
 			$ig->add( new Image( $nt ), $html );
-			$this->mOutput->addImage( $nt->getDBkey() );
+
+			# Only add real images (bug #5586)
+			if ( $nt->getNamespace() == NS_IMAGE ) {
+				$this->mOutput->addImage( $nt->getDBkey() );
+			}
 		}
 		return $ig->toHTML();
 	}
@@ -4094,7 +4089,8 @@ class ParserOutput
 		$mImages,           # DB keys of the images used, in the array key only
 		$mExternalLinks,    # External link URLs, in the key only
 		$mHTMLtitle,		# Display HTML title
-		$mSubtitle;			# Additional subtitle
+		$mSubtitle,			# Additional subtitle
+		$mNewSection;		# Show a new section link?
 
 	function ParserOutput( $text = '', $languageLinks = array(), $categoryLinks = array(),
 		$containsOldMagic = false, $titletext = '' )
@@ -4112,6 +4108,7 @@ class ParserOutput
 		$this->mExternalLinks = array();
 		$this->mHTMLtitle = "" ;
 		$this->mSubtitle = "" ;
+		$this->mNewSection = false;
 	}
 
 	function getText()                   { return $this->mText; }
@@ -4137,6 +4134,13 @@ class ParserOutput
 	function addImage( $name )           { $this->mImages[$name] = 1; }
 	function addLanguageLink( $t )       { $this->mLanguageLinks[] = $t; }
 	function addExternalLink( $url )     { $this->mExternalLinks[$url] = 1; }
+	
+	function setNewSection( $value ) {
+		$this->mNewSection = (bool)$value;
+	}
+	function getNewSection() {
+		return (bool)$this->mNewSection;
+	}
 
 	function addLink( $title, $id ) {
 		$ns = $title->getNamespace();

@@ -183,10 +183,8 @@
 'redirectedfrom' => '(Redireccionado de <b>$1</b> para <b>{{PAGENAME}}</b>.)',
 'redirectpagesub' => 'Página de redireccionamento',
 'lastmodified'  => 'Esta página foi modificada pela última vez a $1.',
-'viewcount'             => 'Esta página foi acedida $1 vezes.',
+'viewcount'             => 'Esta página foi acedida {{plural:$1|uma vez|$1 vezes}}.',
 'copyright'     => 'Conteúdo disponível sob $1.',
-'poweredby'     => "{{SITENAME}} is powered by [http://www.mediawiki.org/ MediaWiki], an open source wiki engine.",
-'printsubtitle' => "(De {{SERVER}})",
 'protectedpage' => 'Página protegida',
 'administrators' => "Project:Administradores",
 'jumpto' => 'Ir para:',
@@ -207,7 +205,7 @@ executada por utilizadores com direitos de "desenvolvedor".<br />Veja $1.',
 'versionrequired' => 'Necessária versão $1 do MediaWiki',
 'versionrequiredtext' => 'Esta página requer a versão $1 do MediaWiki para ser utilizada. Consulte [[Special:Version]]',
 
-'nbytes'                => '$1 bytes',
+'nbytes'                => '$1 {{PLURAL:$1|byte|bytes}}',
 'ncategories'           => '$1 categorias',
 'nrevisions'            => '$1 revisões',
 'ok'                    => 'OK',
@@ -303,6 +301,7 @@ devido a tornar a base de dados lenta demais a ponto de impossibilitar a wiki.',
 Function: $1<br />
 Query: $2",
 'viewsource' => 'Ver fonte',
+'viewsourcefor' => 'para $1',
 'protectedtext' => "Esta página foi protegida para não permitir edições; existem inúmeros motivos para
 ocorrer esta situação, por favor consulte [[Project:Protected page]].
 
@@ -326,7 +325,6 @@ A sua conta foi criada. Não se esqueça de personalizar as suas [[Special:Prefe
 'yourname'              => 'Seu nome de utilizador',
 'yourpassword'  => 'Palavra-chave',
 'yourpasswordagain' => 'Reintroduza a sua palavra-chave',
-'newusersonly'  => ' (somente novos utilizadores)',
 'remembermypassword' => 'Lembrar a minha palavra-chave entre sessões.',
 'yourdomainname'       => 'Seu domínio',
 'externaldberror'      => 'Ocorreu um erro externo à base de dados durante a autenticação, ou não lhe é permitido actualizar a sua conta externa.',
@@ -392,6 +390,8 @@ de modo a confirmar que a conta é mesmo sua.",
 'noemailprefs'              => '<strong>Nenhum endereço de correio electrónico foi especificado</strong>, as seguintes funcionalidades não irão funcionar.',
 'emailconfirmlink' => 'Confirme o seu endereço de correio electrónico',
 'invalidemailaddress'   => 'O endereço de correio electrónico não pode ser aceite devido a possuír um formato inválido. Por favor introduza um endereço bem formatado ou esvazie o campo.',
+'accountcreated' => 'Conta criada',
+'accountcreatedtext' => 'A conta de utilizador para $1 foi criada.',
 
 # Edit page toolbar
 #
@@ -635,38 +635,12 @@ Note que os índices do conteúdo da {{SITENAME}} destes sites podem estar desac
 'default'               => 'padrão',
 'files'                 => 'Ficheiros',
 
-# User levels special page
-#
-
-# switching pan
-'groups-lookup-group' => 'Gerir privilégios de grupo',
-'groups-group-edit' => 'Grupos existentes:',
-'editgroup' => 'Editar Grupo',
-'addgroup' => 'Adicionar Grupo',
+# User rights
 
 'userrights-lookup-user' => 'Gerir grupos de utilizadores',
 'userrights-user-editname' => 'Intruduza um nome de utilizador:',
 'editusergroup' => 'Editar Grupos de Utilizadores',
 
-# group editing
-'groups-editgroup'          => 'Editar grupo',
-'groups-addgroup'           => 'Adicionar grupo',
-'groups-editgroup-preamble' => 'Caso o nome ou a descrição comece com dois pontos, o
-restante será tratado como o nome de uma mensagem de sistema, e como resultado o texto será localizado
-utilizando o domínio MediaWiki',
-'groups-editgroup-name'     => 'Nome do grupo:',
-'groups-editgroup-description' => 'Descrição do grupo (máximo de 255 caracteres):<br />',
-'savegroup'                 => 'Salvar Grupo',
-'groups-tableheader'        => 'ID || Nome || Descrição || Direitos',
-'groups-existing'           => 'Grupos existentes',
-'groups-noname'             => 'Por favor especifique um nome válido',
-'groups-already-exists'     => 'Um grupo com esse nome já existe',
-'addgrouplogentry'          => 'Adicionado grupo $2',
-'changegrouplogentry'       => 'Alterado grupo $2',
-'renamegrouplogentry'       => 'Alterado o nome do grupo $2 para $3',
-
-# user groups editing
-#
 'userrights-editusergroup' => 'Editar grupos do utilizador',
 'saveusergroups' => 'Salvar Grupos do Utilizador',
 'userrights-groupsmember' => 'Membro de:',
@@ -675,18 +649,22 @@ utilizando o domínio MediaWiki',
 Grupos não seleccionados, não serão alterados. Pode seleccionar ou remover a selecção a um grupo com CTRL + Click esquerdo',
 'userrights-logcomment' => 'Alterado membro do grupo de $1 para $2',
 
-# Default group names and descriptions
-#
-'group-anon-name'       => 'Anónimos',
-'group-anon-desc'       => 'Utilizadores anónimos',
-'group-loggedin-name'   => 'Utilizador',
-'group-loggedin-desc'   => 'Utilizadores autentificados',
-'group-admin-name'      => 'Administrador',
-'group-admin-desc'      => 'Utilizadores de confiança capazes de bloquear utilizadores e eliminar artigos',
-'group-bureaucrat-name' => 'Burocrata',
-'group-bureaucrat-desc' => 'O grupo dos burocratas é capaz de nomear administradores',
-'group-steward-name'    => 'Steward',
-'group-steward-desc'    => 'Acesso total',
+# Groups
+'group'                   => 'Grupo:',
+'group-bot'               => 'Robôs',
+'group-sysop'             => 'Administradores',
+'group-bureaucrat'        => 'Burocratas',
+'group-steward'           => 'Stewards',
+'group-all'               => '(todos)',
+
+'group-bot-member'        => 'Robô',
+'group-sysop-member'      => 'Administrador',
+'group-bureaucrat-member' => 'Burocrata',
+'group-steward-member'    => 'Steward',
+
+'grouppage-bot' => 'Project:Robôs',
+'grouppage-sysop' => 'Project:Administradores',
+'grouppage-bureaucrat' => 'Project:Burocratas',
 
 # Recent changes
 #
@@ -694,8 +672,7 @@ Grupos não seleccionados, não serão alterados. Pode seleccionar ou remover a 
 'recentchanges' => 'Mudanças recentes',
 'recentchanges-url' => 'Special:Recentchanges',
 'recentchangestext' => 'Veja as mais novas mudanças na {{SITENAME}} nesta página.',
-'rcloaderr'             => 'Carregando mudanças recentes',
-'rcnote'                => "Abaixo estão as últimas <strong>$1</strong> alterações nos últimos <strong>$2</strong> dias.",
+'rcnote'                => "Abaixo estão as últimas <strong>$1</strong> alterações nos últimos <strong>$2</strong> dias, desde $3.",
 'rcnotefrom'    => "Abaixo estão as mudanças desde <b>$2</b> (mostradas até <b>$1</b>).",
 'rclistfrom'    => "Mostrar as novas alterações a partir de $1",
 'rcshowhideminor' => '$1 edições menores',
@@ -705,15 +682,10 @@ Grupos não seleccionados, não serão alterados. Pode seleccionar ou remover a 
 'rcshowhidepatr' => '$1 edições verificadas',
 'rcshowhidemine' => '$1 as minhas edições',
 'rclinks'               => "Mostrar as últimas $1 mudanças nos últimos $2 dias<br />$3",
-'rchide'                => "em forma $4; $1 edições menores; $2 domínios secundários; $3 edições múltiplas.",
-'rcliu'                 => "; $1 edições de utilizadores autentificados",
 'diff'                  => 'dif',
 'hist'                  => 'hist',
 'hide'                  => 'Esconder',
 'show'                  => 'Mostrar',
-'tableform'             => 'tabela',
-'listform'              => 'lista',
-'nchanges'              => "$1 mudanças",
 'minoreditletter' => 'm',
 'newpageletter' => 'N',
 'sectionlink' => '→',
@@ -726,7 +698,6 @@ Grupos não seleccionados, não serão alterados. Pode seleccionar ou remover a 
 #
 'upload'                => 'Carregar ficheiro',
 'uploadbtn'             => 'Carregar ficheiro',
-'uploadlink'    => 'Carregar imagens',
 'reupload'              => 'Recarregar',
 'reuploaddesc'  => 'Voltar ao formulário de carregamento.',
 'uploadnologin' => 'Não autentificado',
@@ -781,6 +752,7 @@ Por favor siga este endereço: $2 para a página de descrição e preencha a inf
 'uploadvirus' => 'O ficheiro contém vírus! Detalhes: $1',
 'sourcefilename' => 'Nome do ficheiro de origem',
 'destfilename' => 'Nome do ficheiro de destino',
+'filewasdeleted' => 'Um ficheiro com este nome foi anteriormente carregado e subsequentemente eliminado. Deveria verificar o $1 antes de proceder ao carregamento novamente.',
 
 'license' => 'Licença',
 'nolicense' => 'Nenhuma seleccionada',
@@ -788,11 +760,11 @@ Por favor siga este endereço: $2 para a página de descrição e preencha a inf
 # Image list
 #
 'imagelist'             => 'Lista de ficheiros',
-'imagelisttext' => "Segue-se uma lista de $1 ficheiros organizados $2.",
+'imagelisttext' => 'Segue-se uma lista de <strong>$1</strong> ficheiros organizados <strong>$2</strong>.',
 'imagelistforuser' => "Esta lista apenas mostra imagens carregadas por $1.",
 'getimagelist'  => 'carregando lista de ficheiros',
 'ilsubmit'              => 'Procurar',
-'showlast'              => "Mostrar os $1 ficheiros organizados $2.",
+'showlast'              => 'Mostrar últimos $1 ficheiros organizados $2.',
 'byname'                => 'por nome',
 'bydate'                => 'por data',
 'bysize'                => 'por tamanho',
@@ -822,6 +794,14 @@ Por favor siga este endereço: $2 para a página de descrição e preencha a inf
 
 # List redirects
 'listredirects' => 'Listar redireccionamentos',
+
+# Unused templates
+'unusedtemplates' => 'Predefinições não utilizadas',
+'unusedtemplatestext' => 'Esta página lista todas as páginas no domínio predefinição que não estão incluídas numa outra página. Lembre-se de verificar por outras ligações nas predefinições antes de as apagar.',
+'unusedtemplateswlh' => 'outras ligações',
+
+# Random redirect
+'randomredirect' => 'Redireccionamento aleatório',
 
 # Statistics
 #
@@ -864,7 +844,6 @@ Destes, '''$2''' (ou '''$4''') são administradores (consulte $3).",
 
 # Miscellaneous special pages
 #
-'orphans'               => 'Páginas órfãs',
 'lonelypages'   => 'Páginas órfãs',
 'uncategorizedpages'    => 'Páginas não categorizadas',
 'uncategorizedcategories'       => 'Categorias não categorizadas',
@@ -879,6 +858,7 @@ Destes, '''$2''' (ou '''$4''') são administradores (consulte $3).",
 'mostimages'    => 'Imagens com mais afluentes',
 'mostrevisions' => 'Artigos com mais revisões',
 'nlinks'                => '$1 links',
+'members'		=> '$1 membros',
 'allpages'              => 'Todas as páginas',
 'prefixindex'   => 'Índice de prefixo',
 'randompage'    => 'Página aleatória',
@@ -890,10 +870,8 @@ Destes, '''$2''' (ou '''$4''') são administradores (consulte $3).",
 'specialpages'  => 'Páginas especiais',
 'spheading'             => 'Páginas especiais para todos os utilizadores',
 'restrictedpheading'    => 'Páginas especiais restritas',
-'protectpage'   => 'Proteger página',
 'recentchangeslinked' => 'Alterações relacionadas',
 'rclsub'                => "(para páginas linkadas de \"$1\")",
-'debug'                 => 'Debug',
 'newpages'              => 'Páginas novas',
 'ancientpages'          => 'Páginas mais antigas',
 'intl'          => 'Ligações interlínguas',
@@ -968,7 +946,7 @@ para que o destinatário lhe possa responder.',
 'watchnologintext'      => 'Deve estar [[Special:Userlogin|autentificado]] para modificar a sua lista de artigos vigiados.',
 'addedwatch'            => 'Adicionado à lista',
 'addedwatchtext'        => "A página \"$1\" foi adicionada à sua [[Special:Watchlist|lista de artigos vigiados]].
-Modificações futuras neste artigo e páginas de discussão associadas serão listadas lá e a página aparecerá a <b>negrito</b> na [[Especial:Recentchanges|lista de mudanças recentes]], para que possa encontrá-la com maior facilidade.
+Modificações futuras neste artigo e páginas de discussão associadas serão listadas lá e a página aparecerá a '''negrito''' na [[Especial:Recentchanges|lista de mudanças recentes]], para que possa encontrá-la com maior facilidade.
 
 Se desejar remover o artigo da sua lista de artigos vigiados, clique em \"Desinteressar-se\" na barra lateral ou de topo.",
 'removedwatch'          => 'Removida da lista de artigos vigiados',
@@ -1099,13 +1077,19 @@ os níveis de protecção desta página. Estas são as configurações actuais p
 'undeletepage' => 'Ver e restaurar páginas eliminadas',
 'viewdeletedpage' => 'Ver páginas eliminadas',
 'undeletepagetext' => 'As páginas seguintes foram eliminadas mas ainda permanecem na base de dados e podem ser restauradas. O arquivo pode ser limpo periodicamente.',
+'undeleteextrahelp' => "Para restaurar a página inteira, deixe todas as caixas de selecção desseleccionadas e
+clique em '''''Restaurar'''''. Para efectuar uma restauração selectiva, seleccione as caixas correspondentes às
+revisões a serem restauradas, e clique em '''''Restaurar'''''. Clicar em '''''Limpar''''' irá limpar o
+campo de comentário e todas as caixas de selecção.",
 'undeletearticle' => 'Restaurar artigo eliminado',
 'undeleterevisions' => "$1 revisões arquivadas",
 'undeletehistory' => 'Se restaurar uma página, todas as revisões serão restauradas para o histórico.
 Se uma nova página foi criada com o mesmo nome desde a eliminação, as revisões restauradas aparecerão primeiro no histórico e a página actual não será automaticamente trocada.',
 'undeletehistorynoadmin' => 'Este artigo foi eliminado. O motivo para a eliminação é apresentado no súmario abaixo, junto dos detalhes do utilizador que editou esta página antes de eliminar. O texto actual destas revisões eliminadas encontra-se agora apenas disponível para administradores.',
 'undeleterevision' => "Revisões eliminadas de $1",
-'undeletebtn' => 'Restaurar!',
+'undeletebtn' => 'Restaurar',
+'undeletereset' => 'Limpar',
+'undeletecomment' => 'Comentário:',
 'undeletedarticle' => "restaurado \"[[$1]]\"",
 'undeletedrevisions' => "$1 revisões restauradas",
 'undeletedtext'   => "O artigo [[:$1|$1]] foi restaurado com sucesso.
@@ -1213,9 +1197,9 @@ Introduza o nome do utilizador na caixa e clique no botão para tornar o utiliza
 'makesysopfail'         => "<b>Não foi possível tornar o utilizador \"$1\" num administrador. (Introduziu o nome correctamente?)</b>",
 'setbureaucratflag' => 'Atribuir flag de burocrata',
 'setstewardflag'    => 'Atribuir flag de steward',
-'bureaucratlog'         => 'Registo de acções burocráticas',
-'rightslogtext'         => 'Este é um registo de mudanças nos direitos dos utilizadores.',
-'bureaucratlogentry'    => "Alterado grupo do membro de $1 de $2 para $3",
+'rightslog'         => 'Registo de direitos de utilizador',
+'rightslogtext'     => 'Este é um registo de mudanças nos direitos dos utilizadores.',
+'rightslogentry'    => "Alterado grupo do membro de $1 de $2 para $3",
 'rights'                        => 'Direitos:',
 'set_user_rights'       => 'Definir direitos de utilizador',
 'user_rights_set'       => "<b>Direitos de utilizador para \"$1\" actualizados</b>",
@@ -1224,7 +1208,7 @@ Introduza o nome do utilizador na caixa e clique no botão para tornar o utiliza
 'already_sysop'     => 'Este utilizador já é um administrador',
 'already_bureaucrat' => 'Este utilizador já é um burocrata',
 'already_steward'   => 'Este utilizador já é um steward',
-
+'rightsnone'            => '(nenhum)',
 # Move page
 #
 'movepage'              => 'Mover página',
@@ -1321,6 +1305,7 @@ Se desejar pode utilizar uma ligação, por exemplo [[{{ns:Special}}:Export/{{Me
 'accesskey-preview' => 'p',
 'accesskey-diff' => 'v',
 'accesskey-compareselectedversions' => 'v',
+'accesskey-watch' => 'w',
 
 # tooltip help for some actions, most are in Monobook.js
 'tooltip-search' => 'Pesquisar na {{SITENAME}} [alt-f]',
@@ -1361,7 +1346,6 @@ Se desejar pode utilizar uma ligação, por exemplo [[{{ns:Special}}:Export/{{Me
 'subcategorycount1' => "Existe $1 subcategoria nesta categoria.",
 'categoryarticlecount' => "Existem $1 artigos nesta categoria.",
 'categoryarticlecount1' => "Existe $1 artigo nesta categoria.",
-'usenewcategorypage' => "1\n\nColoque o primeiro caracter como \"0\" para desactivar o novo layout das páginas de categoria.",
 'listingcontinuesabbrev' => " cont.",
 'spambot_username' => 'MediaWiki limpeza de spam',
 'spam_reverting' => 'Revertendo para a última versão não contendo hiperligações para $1',
@@ -1713,6 +1697,7 @@ for minimizada. Outros serão escondidos por defeito.
 'confirmemail_sent' => 'E-mail de confirmação enviado.',
 'confirmemail_sendfailed' => 'Não foi possível enviar o email de confirmação. Por favor verifique o seu endereço de e-mail.',
 'confirmemail_invalid' => 'Código de confirmação inválido. O código poderá ter expirado.',
+'confirmemail_needlogin' => 'Precisa de $1 para confirmar o seu endereço de correio electrónico.',
 'confirmemail_success' => 'O seu endereço de e-mail foi confirmado. Pode agora se ligar.',
 'confirmemail_loggedin' => 'O seu endereço de e-mail foi agora confirmado.',
 'confirmemail_error' => 'Alguma coisa correu mal ao guardar a sua confirmação.',
@@ -1764,6 +1749,16 @@ Por favor confirme que realmente deseja recriar este artigo.',
 
 'youhavenewmessagesmulti' => "Tem novas mensagens em $1",
 'newtalkseperator' => ',_',
+'searchcontaining' => "Pesquisar por artigos contendo ''$1''.",
+'searchnamed' => "Pesquisar por artigos intitulados de ''$1''.",
+'articletitles' => "Artigos começandor com ''$1''",
+'hideresults' => 'Esconder resultados',
+
+# DISPLAYTITLE
+'displaytitle' => '(Ligar a esta página como [[$1]])',
+
+# Separator for categories in page lists
+'catseparator' => '|',
 );
 
 

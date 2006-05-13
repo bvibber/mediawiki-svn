@@ -200,23 +200,23 @@
 
 למידע נוסף, ראו [[{{ns:special}}:Version]].',
 
-"nbytes"              => "$1 בתים",
-"ncategories"         => "$1 קטגוריות",
-"nrevisions"          => "$1 גרסאות",
+"nbytes"              => "{{plural:$1|בית אחד|$1 בתים}}",
+"ncategories"         => "{{plural:$1|קטגוריה אחת|$1 קטגוריות}}",
+"nrevisions"          => "{{plural:$1|גרסה אחת|$1 גרסאות}}",
 "widthheight"         => "$1x$2",
 "ok"                  => "אישור",
 "sitetitle"           => "{{SITENAME}}",
-"pagetitle"           => "$1 - {{SITENAME}}",
+"pagetitle"           => "$1 – {{SITENAME}}",
 "sitesubtitle"        => "",
 "retrievedfrom"       => '<br /><span style="font-size: smaller;">מקור: $1</span>',
-"youhavenewmessages"  => "יש לך $1 ($2).",
+"youhavenewmessages"  => "יש לכם $1 ($2).",
 "newmessageslink"     => "הודעות חדשות",
-"newmessagesdifflink" => "השווה לגרסה שלפני האחרונה",
+"newmessagesdifflink" => "השוואה לגרסה הקודמת",
 "editsection"         => "עריכה",
 "editsectionhint"     => "עריכת פסקה: $1",
 "toc"                 => "תוכן עניינים",
-"showtoc"             => "הראו",
-"hidetoc"             => "הסתירו",
+"showtoc"             => "הראה",
+"hidetoc"             => "הסתר",
 "thisisdeleted"       => "הציגו או שחזרו $1?",
 "viewdeleted"         => "הציגו $1?",
 "restorelink1"        => "גרסה מחוקה אחת",
@@ -325,7 +325,7 @@
 באפשרותכם לצפות בטקסט המקור של הדף, ואף להעתיקו:",
 "protectedinterface"   => "דף זה הוא אחד מסדרת דפים המספקים הודעות מערכת לתוכנה, ונעול לעריכה למפעילי מערכת בלבד כדי למנוע השחתות של ההודעות.",
 "editinginterface"     => "'''אזהרה:''' דף זה הוא אחד מסדרת דפים המספקים הודעות מערכת לתוכנה. שינויים בדף זה ישנו את הודעת המערכת לכל המשתמשים האחרים.",
-"sqlhidden"            => "(שאילת ה־SQL מוסתרת)",
+"sqlhidden"            => "(שאילתת ה־SQL מוסתרת)",
 
 # Login and logout pages
 "logouttitle"        => "יציאה מהחשבון",
@@ -668,33 +668,10 @@ $3 $9",
 "default"               => "ברירת מחדל",
 "files"                 => "קבצים",
 
-# User levels special page
-## Switching pan
-"groups-lookup-group" => "נהלו הרשאות קבוצה",
-"groups-group-edit"   => "קבוצות קיימות:",
-"editgroup"           => "ערוך קבוצה",
-"addgroup"            => "הוסף קבוצה",
-
-"userrights-lookup-user"   => "נהלו קבוצות משתמש",
-"userrights-user-editname" => "הכניסו שם משתמש:",
-"editusergroup"            => "ערכו קבוצות משתמשים",
-
-## Group editing
-"groups-editgroup"             => "ערכו קבוצה",
-"groups-addgroup"              => "הוסיפו קבוצה",
-"groups-editgroup-preamble"    => 'אם השם או התיאור מתחיל בנקודתיים, הוא ייחשב לשם של הודעה, ולכן הטקסט נלקח מההודעה בשם זה שמופיע במרחב השם "{{ns:mediawiki}}"',
-"groups-editgroup-name"        => "שם קבוצה:",
-"groups-editgroup-description" => "תיאור קבוצה (מקסימום 255 תווים):<br />",
-"savegroup"                    => "שמרו קבוצה",
-"groups-tableheader"           => "זיהוי || שם || תיאור || הרשאות",
-"groups-existing"              => "קבוצות קיימות",
-"groups-noname"                => "נא להקיש שם קבוצה חוקי",
-"groups-already-exists"        => "קבוצה בשם זה כבר קיימת",
-"addgrouplogentry"             => "קבוצה $2 נוספה",
-"changegrouplogentry"          => "קבוצה $2 שונתה",
-"renamegrouplogentry"          => "שם הקבוצה $2 שונה ל־$3",
-
-## User groups editing
+# User rights
+"userrights-lookup-user"     => "נהלו קבוצות משתמש",
+"userrights-user-editname"   => "הכניסו שם משתמש:",
+"editusergroup"              => "ערכו קבוצות משתמשים",
 "userrights-editusergroup"   => "ערכו קבוצות משתמש",
 "saveusergroups"             => "שמור קבוצות משתמש",
 "userrights-groupsmember"    => "חבר בקבוצות:",
@@ -703,24 +680,29 @@ $3 $9",
 קבוצות שלא נבחרו לא ישתנו. באפשרותכם לבטל בחירה של קבוצה באמצעות לחיצה על הכפתור השמאלי של העכבר ועל Ctrl מעליה.",
 "userrights-logcomment"      => 'שינה את ההרשאות מההרשאות $1 להרשאות $2',
 
-## Default group names and descriptions
-"group-anon-name"       => "אנונימי",
-"group-anon-desc"       => "משתמשים אנונימיים",
-"group-loggedin-name"   => "משתמש",
-"group-loggedin-desc"   => "משתמשים רשומים כלליים",
-"group-admin-name"      => "מפעיל מערכת",
-"group-admin-desc"      => "משתמשים בעלי הרשאות לחסימת משתמשים אחרים ולמחיקת דפים",
-"group-bureaucrat-name" => "בירוקרט",
-"group-bureaucrat-desc" => "קבוצת הבירוקרטים יכולה למנות מפעילי מערכת",
-"group-steward-name"    => "דייל",
-"group-steward-desc"    => "גישה מלאה",
+# Groups
+"group"            => "קבוצה:",
+"group-bot"        => "בוטים",
+"group-sysop"      => "מפעילי מערכת",
+"group-bureaucrat" => "ביורוקרטים",
+"group-steward"    => "דיילים",
+"group-all"        => "(הכול)",
+
+"group-bot-member"        => "בוט",
+"group-sysop-member"      => "מפעיל מערכת",
+"group-bureaucrat-member" => "ביורוקרט",
+"group-steward-member"    => "דייל",
+
+"grouppage-bot"        => "{{ns:project}}:בוט",
+"grouppage-sysop"      => "{{ns:project}}:מפעיל מערכת",
+"grouppage-bureaucrat" => "{{ns:project}}:ביורוקרט",
 
 # Recent changes
 "changes"                           => "שינויים",
 "recentchanges"                     => "שינויים אחרונים",
 "recentchanges-url"                 => "{{ns:special}}:Recentchanges",
 "recentchangestext"                 => "עקבו אחרי השינויים האחרונים באתר בדף זה.",
-"rcnote"                            => "להלן <b>$1</b> השינויים האחרונים שבוצעו ב־$2 הימים האחרונים:",
+"rcnote"                            => "להלן <b>$1</b> השינויים האחרונים שבוצעו ב־$2 הימים האחרונים, עד התאריך <b>$3</b>:",
 "rcnotefrom"                        => "להלן <b>$1</b> השינויים האחרונים שבוצעו החל מתאריך <b>$2</b>:",
 "rclistfrom"                        => "הצג שינויים חדשים החל מ־$1",
 "rcshowhideminor"                   => "$1 שינויים משניים",
@@ -799,7 +781,7 @@ $3 $9",
 
 # Image list
 "imagelist"                 => "רשימת תמונות",
-"imagelisttext"             => "להלן רשימה של $1 תמונות, ממוינות $2:",
+"imagelisttext"             => "להלן רשימה של <strong>$1</strong> תמונות, ממוינות <strong>$2</strong>:",
 "getimagelist"              => "מושך את רשימת התמונות",
 "ilsubmit"                  => "חיפוש",
 "showlast"                  => "הצג $1 תמונות אחרונות ממוינות $2",
@@ -895,6 +877,7 @@ $3 $9",
 "mostimages"              => "התמונות המקושרות ביותר",
 "mostrevisions"           => "הדפים בעלי מספר העריכות הגבוה ביותר",
 "nlinks"                  => "$1 קישורים",
+"members"                 => "$1 ערכים",
 "allpages"                => "כל הדפים",
 "prefixindex"             => "רשימת הדפים המתחילים ב…",
 "randompage"              => "דף אקראי",
@@ -1100,6 +1083,7 @@ $NEWPAGE
 "undeletepage"           => "צפו ושחזרו דפים מחוקים",
 "viewdeletedpage"        => "הצג דפים שנמחקו",
 "undeletepagetext"       => "הדפים שלהלן נמחקו, אך הם עדיין בארכיון וניתן לשחזר אותם. הארכיון מנוקה מעת לעת.",
+"undeleteextrahelp"      => 'לשיחזור הדף כולו, אל תסמנו אף תיבת סימון ולחצו על "שיחזור". לשיחזור של גרסאות מסוימות בלבד, סמנו את תיבות הסימון של הגרסאות הללו, ולחצו על "שיחזור". לחיצה על "איפוס" תנקה את התקציר, ואת כל תיבות הסימון.',
 "undeletearticle"        => "שחזרו דף מחוק",
 "undeleterevisions"      => "$1 גרסאות נשמרו בארכיון",
 "undeletehistory"        => "אם תשחזרו את הדף, כל הגרסאות תשוחזרנה להיסטוריית השינויים שלו.
@@ -1107,7 +1091,9 @@ $NEWPAGE
 אם כבר יש דף חדש באותו השם, הגרסאות והשינויים יופיעו רק בדף ההיסטוריה שלו, והגרסה הנוכחית של הדף לא תוחלף אוטומטית.",
 "undeletehistorynoadmin" => "דף זה נמחק. הסיבה למחיקה מוצגת בתקציר מטה, ביחד עם פרטים על המשתמשים שערכו את הדף לפני מחיקתו. הטקסט של גרסאות אלו זמין רק למפעילי מערכת.",
 "undeleterevision"       => "נמחקו גרסאות החל מ־$1.",
-"undeletebtn"            => "שחזר!",
+"undeletebtn"            => "שיחזור",
+"undeletereset"          => "איפוס",
+"undeletecomment"        => "תקציר:",
 "undeletedarticle"       => "שיחזר את [[:$1]]",
 "undeletedrevisions"     => "שיחזר $1 גרסאות",
 "undeletedtext"          => "הדף [[:$1]] שוחזר בהצלחה.
@@ -1220,11 +1206,11 @@ $NEWPAGE
 "makesysopsubmit"    => "הפוך משתמש זה למפעיל מערכת",
 "makesysopok"        => '\'\'\'המשתמש "$1" הוא עכשיו מפעיל מערכת.\'\'\'',
 "makesysopfail"      => '\'\'\'לא ניתן היה למנות את המשתמש "$1" למפעיל מערכת.\'\'\' (האם הקלדתם נכונה את שם המשתמש?)',
-"setbureaucratflag"  => "הפוך משתמש זה לבירוקרט.",
+"setbureaucratflag"  => "הפוך משתמש זה לביורוקרט.",
 "setstewardflag"     => "הפוך משתמש זה לדייל",
-"bureaucratlog"      => "יומן_תפקידים",
+"rightslog"          => "יומן_תפקידים",
 "rightslogtext"      => "זהו יומן השינויים בתפקידי המשתמשים.",
-"bureaucratlogentry" => 'שינה את ההרשאות של "$1" מההרשאות $2 להרשאות $3',
+"rightslogentry"     => 'שינה את ההרשאות של "$1" מההרשאות $2 להרשאות $3',
 "rights"             => "הרשאות:",
 "set_user_rights"    => "קבע הרשאות משתמש",
 "user_rights_set"    => '\'\'\'הרשאות המשתמש "$1" עודכנו.\'\'\'',
@@ -1233,6 +1219,7 @@ $NEWPAGE
 "already_sysop"      => "משתמש זה הוא כבר מפעיל מערכת",
 "already_bureaucrat" => "משתמש זה הוא כבר ביורוקרט",
 "already_steward"    => "משתמש זה הוא כבר דייל",
+"rightsnone"         => "(ללא הרשאות)",
 
 # Move page
 "movepage"                => "העברת דף",
@@ -1369,9 +1356,6 @@ $NEWPAGE
 "subcategorycount1"      => "בקטגוריה זו קטגורית משנה אחת.",
 "categoryarticlecount"   => "ישנם $1 דפים בקטגוריה זו.",
 "categoryarticlecount1"  => "ישנו דף אחד בקטגוריה זו.",
-"usenewcategorypage"     => '1
-
-הגדירו את התו הראשון ל־"0" כדי לבטל את פריסת דף הקטגוריה החדשה.',
 "listingcontinuesabbrev" => " (המשך)",
 "spambot_username"       => "MediaWiki spam cleanup",
 "spam_reverting"         => "שיחזור לגרסה אחרונה שלא כוללת קישורים ל־$1",
@@ -1530,6 +1514,7 @@ ta["ca-nstab-category"]     = ["c", "צפו בדף הקטגוריה"];',
 "confirmemail_sent"       => 'הדוא"ל עם קוד האישור נשלח.',
 "confirmemail_sendfailed" => 'שליחת הדוא"ל עם קוד האישור לא הצליחה. בדקו שאין תווים שגויים בכתובת.',
 "confirmemail_invalid"    => "קוד האישור שגוי. ייתכן שפג תוקפו.",
+"confirmemail_needlogin"  => 'עליכם לבצע $1 כדי לאמת את כתובת הדוא"ל שלכם.',
 "confirmemail_success"    => 'כתובת הדוא"ל שלכם אושרה. כעת באפשרותכם להיכנס לחשבון שלכם וליהנות מהאתר.',
 "confirmemail_loggedin"   => 'כתובת הדוא"ל שלכם אושרה כעת.',
 "confirmemail_error"      => "שגיאה בשמירת קוד האישור.",
@@ -1591,7 +1576,6 @@ $1",
 
 # DISPLAYTITLE
 "displaytitle" => "(קשרו לדף זה בשם [[$1]])",
-
 );
 
 

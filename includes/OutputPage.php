@@ -29,6 +29,8 @@ class OutputPage {
 	var $mShowFeedLinks = false;
 	var $mEnableClientCache = true;
 	var $mArticleBodyOnly = false;
+	
+	var $mNewSectionLink = false;
 
 	/**
 	 * Constructor
@@ -52,6 +54,7 @@ class OutputPage {
 		$this->mScripts = '';
 		$this->mETag = false;
 		$this->mRevisionId = null;
+		$this->mNewSectionLink = false;
 	}
 
 	function addHeader( $name, $val ) { array_push( $this->mHeaders, $name.': '.$val ); }
@@ -89,16 +92,18 @@ class OutputPage {
 	 */
 	function checkLastModified ( $timestamp ) {
 		global $wgCachePages, $wgCacheEpoch, $wgUser;
+		$fname = 'OutputPage::checkLastModified';
+
 		if ( !$timestamp || $timestamp == '19700101000000' ) {
-			wfDebug( "CACHE DISABLED, NO TIMESTAMP\n" );
+			wfDebug( "$fname: CACHE DISABLED, NO TIMESTAMP\n" );
 			return;
 		}
 		if( !$wgCachePages ) {
-			wfDebug( "CACHE DISABLED\n", false );
+			wfDebug( "$fname: CACHE DISABLED\n", false );
 			return;
 		}
 		if( $wgUser->getOption( 'nocache' ) ) {
-			wfDebug( "USER DISABLED CACHE\n", false );
+			wfDebug( "$fname: USER DISABLED CACHE\n", false );
 			return;
 		}
 
@@ -112,23 +117,23 @@ class OutputPage {
 			$modsince = preg_replace( '/;.*$/', '', $_SERVER["HTTP_IF_MODIFIED_SINCE"] );
 			$modsinceTime = strtotime( $modsince );
 			$ismodsince = wfTimestamp( TS_MW, $modsinceTime ? $modsinceTime : 1 );
-			wfDebug( "-- client send If-Modified-Since: " . $modsince . "\n", false );
-			wfDebug( "--  we might send Last-Modified : $lastmod\n", false );
+			wfDebug( "$fname: -- client send If-Modified-Since: " . $modsince . "\n", false );
+			wfDebug( "$fname: --  we might send Last-Modified : $lastmod\n", false );
 			if( ($ismodsince >= $timestamp ) && $wgUser->validateCache( $ismodsince ) && $ismodsince >= $wgCacheEpoch ) {
 				# Make sure you're in a place you can leave when you call us!
 				header( "HTTP/1.0 304 Not Modified" );
 				$this->mLastModified = $lastmod;
 				$this->sendCacheControl();
-				wfDebug( "CACHED client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp ; site $wgCacheEpoch\n", false );
+				wfDebug( "$fname: CACHED client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp ; site $wgCacheEpoch\n", false );
 				$this->disable();
 				@ob_end_clean(); // Don't output compressed blob
 				return true;
 			} else {
-				wfDebug( "READY  client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp ; site $wgCacheEpoch\n", false );
+				wfDebug( "$fname: READY  client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp ; site $wgCacheEpoch\n", false );
 				$this->mLastModified = $lastmod;
 			}
 		} else {
-			wfDebug( "client did not send If-Modified-Since header\n", false );
+			wfDebug( "$fname: client did not send If-Modified-Since header\n", false );
 			$this->mLastModified = $lastmod;
 		}
 	}
@@ -291,6 +296,7 @@ class OutputPage {
 	function addParserOutputNoText( &$parserOutput ) {
 		$this->mLanguageLinks += $parserOutput->getLanguageLinks();
 		$this->addCategoryLinks( $parserOutput->getCategories() );
+		$this->mNewSectionLink = $parserOutput->getNewSection();
 		$this->addKeywords( $parserOutput );
 		if ( $parserOutput->getCacheTime() == -1 ) {
 			$this->enableClientCache( false );
@@ -376,6 +382,7 @@ class OutputPage {
 			$this->mLanguageLinks += $parserOutput->getLanguageLinks();
 			$this->addCategoryLinks( $parserOutput->getCategories() );
 			$this->addKeywords( $parserOutput );
+			$this->mNewSectionLink = $parserOutput->getNewSection();
 			$text = $parserOutput->getText();
 			wfRunHooks( 'OutputPageBeforeHTML', array( &$this, &$text ) );
 			$this->addHTML( $text );
@@ -413,6 +420,7 @@ class OutputPage {
 
 	function sendCacheControl() {
 		global $wgUseSquid, $wgUseESI, $wgSquidMaxage;
+		$fname = 'OutputPage::sendCacheControl';
 
 		if ($this->mETag)
 			header("ETag: $this->mETag");
@@ -428,7 +436,7 @@ class OutputPage {
 					# We'll purge the proxy cache explicitly, but require end user agents
 					# to revalidate against the proxy on each visit.
 					# Surrogate-Control controls our Squid, Cache-Control downstream caches
-					wfDebug( "** proxy caching with ESI; {$this->mLastModified} **\n", false );
+					wfDebug( "$fname: proxy caching with ESI; {$this->mLastModified} **\n", false );
 					# start with a shorter timeout for initial testing
 					# header( 'Surrogate-Control: max-age=2678400+2678400, content="ESI/1.0"');
 					header( 'Surrogate-Control: max-age='.$wgSquidMaxage.'+'.$this->mSquidMaxage.', content="ESI/1.0"');
@@ -438,7 +446,7 @@ class OutputPage {
 					# to revalidate against the proxy on each visit.
 					# IMPORTANT! The Squid needs to replace the Cache-Control header with
 					# Cache-Control: s-maxage=0, must-revalidate, max-age=0
-					wfDebug( "** local proxy caching; {$this->mLastModified} **\n", false );
+					wfDebug( "$fname: local proxy caching; {$this->mLastModified} **\n", false );
 					# start with a shorter timeout for initial testing
 					# header( "Cache-Control: s-maxage=2678400, must-revalidate, max-age=0" );
 					header( 'Cache-Control: s-maxage='.$this->mSquidMaxage.', must-revalidate, max-age=0' );
@@ -446,13 +454,13 @@ class OutputPage {
 			} else {
 				# We do want clients to cache if they can, but they *must* check for updates
 				# on revisiting the page.
-				wfDebug( "** private caching; {$this->mLastModified} **\n", false );
+				wfDebug( "$fname: private caching; {$this->mLastModified} **\n", false );
 				header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', 0 ) . ' GMT' );
 				header( "Cache-Control: private, must-revalidate, max-age=0" );
 			}
 			if($this->mLastModified) header( "Last-modified: {$this->mLastModified}" );
 		} else {
-			wfDebug( "** no caching **\n", false );
+			wfDebug( "$fname: no caching **\n", false );
 
 			# In general, the absence of a last modified header should be enough to prevent
 			# the client from using its cache. We send a few other things just to make sure.
@@ -754,27 +762,24 @@ class OutputPage {
 		$this->returnToMain();
 	}
 
+	/**
+	 * Produce the stock "please login to use the wiki" page
+	 */
 	function loginToUse() {
 		global $wgUser, $wgTitle, $wgContLang;
-
+		$skin = $wgUser->getSkin();
+		
 		$this->setPageTitle( wfMsg( 'loginreqtitle' ) );
-		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
-		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setHtmlTitle( wfMsg( 'errorpagetitle' ) );
+		$this->setRobotPolicy( 'noindex,nofollow' );
 		$this->setArticleFlag( false );
-		$this->mBodytext = '';
-		$loginpage = Title::makeTitle(NS_SPECIAL, 'Userlogin');
-		$sk = $wgUser->getSkin();
-		$loginlink = $sk->makeKnownLinkObj($loginpage, wfMsg('loginreqlink'),
-			'returnto=' . htmlspecialchars($wgTitle->getPrefixedDBkey()));
-		$this->addHTML( wfMsgHtml( 'loginreqpagetext', $loginlink ) );
-
-		# We put a comment in the .html file so a Sysop can diagnose the page the
-		# user can't see.
-		$this->addHTML( "\n<!--" .
-						$wgContLang->getNsText( $wgTitle->getNamespace() ) .
-						':' .
-						$wgTitle->getDBkey() . '-->' );
-		$this->returnToMain();		# Flip back to the main page after 10 seconds.
+		
+		$loginTitle = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
+		$loginLink = $skin->makeKnownLinkObj( $loginTitle, wfMsgHtml( 'loginreqlink' ), 'returnto=' . $wgTitle->getPrefixedUrl() );
+		$this->addHtml( wfMsgWikiHtml( 'loginreqpagetext', $loginLink ) );
+		$this->addHtml( "\n<!--" . $wgTitle->getPrefixedUrl() . "-->" );
+		
+		$this->returnToMain();
 	}
 
 	function databaseError( $fname, $sql, $error, $errno ) {
@@ -1041,6 +1046,15 @@ class OutputPage {
 		wfHttpError( 500, 'Internal Server Error',
 			'Sorry, the server has encountered an internal error. ' .
 			'Please wait a moment and hit "refresh" to submit the request again.' );
+	}
+	
+	/**
+	 * Show an "add new section" link?
+	 *
+	 * @return bool True if the parser output instructs us to add one
+	 */
+	function showNewSectionLink() {
+		return $this->mNewSectionLink;
 	}
 
 }

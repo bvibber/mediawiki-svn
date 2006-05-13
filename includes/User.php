@@ -449,7 +449,8 @@ class User {
 		}
 
 		# Proxy blocking
-		if ( !$this->isSysop() && !in_array( $ip, $wgProxyWhitelist ) ) {
+		# FIXME ? proxyunbannable is to deprecate the old isSysop()
+		if ( !$this->isAllowed('proxyunbannable') && !in_array( $ip, $wgProxyWhitelist ) ) {
 
 			# Local list
 			if ( wfIsLocallyBlockedProxy( $ip ) ) {
@@ -524,15 +525,17 @@ class User {
 	 * @public
 	 */
 	function pingLimiter( $action='edit' ) {
-		global $wgRateLimits;
+		global $wgRateLimits, $wgRateLimitsExcludedGroups;
 		if( !isset( $wgRateLimits[$action] ) ) {
 			return false;
 		}
-		if( $this->isAllowed( 'delete' ) ) {
-			// goddam cabal
-			return false;
+		
+		# Some groups shouldn't trigger the ping limiter, ever
+		foreach( $this->getGroups() as $group ) {
+			if( array_search( $group, $wgRateLimitsExcludedGroups ) !== false )
+				return false;
 		}
-
+		
 		global $wgMemc, $wgDBname, $wgRateLimitLog;
 		$fname = 'User::pingLimiter';
 		wfProfileIn( $fname );
@@ -1171,21 +1174,30 @@ class User {
 	}
 
 	/**
-	 * Check if a user is sysop
+	 * Deprecated in 1.6, die in 1.7, to be removed in 1.8
 	 * @deprecated
 	 */
 	function isSysop() {
-		return $this->isAllowed( 'protect' );
+		wfDebugDieBacktrace( "Call to deprecated (v1.7) User::isSysop() method\n" );
+		#return $this->isAllowed( 'protect' );
 	}
 
-	/** @deprecated */
+	/**
+	 * Deprecated in 1.6, die in 1.7, to be removed in 1.8
+	 * @deprecated
+	 */
 	function isDeveloper() {
-		return $this->isAllowed( 'siteadmin' );
+		wfDebugDieBacktrace( "Call to deprecated (v1.7) User::isDeveloper() method\n" );
+		#return $this->isAllowed( 'siteadmin' );
 	}
 
-	/** @deprecated */
+	/**
+	 * Deprecated in 1.6, die in 1.7, to be removed in 1.8
+	 * @deprecated
+	 */
 	function isBureaucrat() {
-		return $this->isAllowed( 'makesysop' );
+		wfDebugDieBacktrace( "Call to deprecated (v1.7) User::isBureaucrat() method\n" );
+		#return $this->isAllowed( 'makesysop' );
 	}
 
 	/**
@@ -1850,13 +1862,18 @@ class User {
 	function isEmailConfirmed() {
 		global $wgEmailAuthentication;
 		$this->loadFromDatabase();
-		if( $this->isAnon() )
-			return false;
-		if( !$this->isValidEmailAddr( $this->mEmail ) )
-			return false;
-		if( $wgEmailAuthentication && !$this->getEmailAuthenticationTimestamp() )
-			return false;
-		return true;
+		$confirmed = true;
+		if( wfRunHooks( 'EmailConfirmed', array( &$this, &$confirmed ) ) ) {
+			if( $this->isAnon() )
+				return false;
+			if( !$this->isValidEmailAddr( $this->mEmail ) )
+				return false;
+			if( $wgEmailAuthentication && !$this->getEmailAuthenticationTimestamp() )
+				return false;
+			return true;
+		} else {
+			return $confirmed;
+		}
 	}
 
 	/**
@@ -1878,11 +1895,11 @@ class User {
 
 	/**
 	 * @param string $group key name
-	 * @return string localized descriptive name, if provided
+	 * @return string localized descriptive name for group, if provided
 	 * @static
 	 */
 	function getGroupName( $group ) {
-		$key = "group-$group-name";
+		$key = "group-$group";
 		$name = wfMsg( $key );
 		if( $name == '' || $name == "&lt;$key&gt;" ) {
 			return $group;
@@ -1890,6 +1907,22 @@ class User {
 			return $name;
 		}
 	}
+
+	/**
+	 * @param string $group key name
+	 * @return string localized descriptive name for member of a group, if provided
+	 * @static
+	 */
+	function getGroupMember( $group ) {
+		$key = "group-$group-member";
+		$name = wfMsg( $key );
+		if( $name == '' || $name == "&lt;$key&gt;" ) {
+			return $group;
+		} else {
+			return $name;
+		}
+	}
+
 
 	/**
 	 * Return the set of defined explicit groups.
@@ -1903,6 +1936,24 @@ class User {
 			array_keys( $wgGroupPermissions ),
 			array( '*', 'user', 'autoconfirmed' ) );
 	}
+	
+	/**
+	 * Get the title of a page describing a particular group
+	 *
+	 * @param $group Name of the group
+	 * @return mixed
+	 */
+	function getGroupPage( $group ) {
+		$page = wfMsgForContent( 'grouppage-' . $group );
+		if( !wfEmptyMsg( 'grouppage-' . $group, $page ) ) {
+			$title = Title::newFromText( $page );
+			if( is_object( $title ) )
+				return $title;
+		}
+		return false;
+	}
+	
+	
 }
 
 ?>

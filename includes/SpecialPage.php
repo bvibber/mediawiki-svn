@@ -188,7 +188,8 @@ class SpecialPage
 			'Mytalk' => Title::makeTitle( NS_USER_TALK, $wgUser->getName() ),
 			'Mycontributions' => Title::makeTitle( NS_SPECIAL, 'Contributions/' . $wgUser->getName() ),
 			'Listadmins' => Title::makeTitle( NS_SPECIAL, 'Listusers/sysop' ), # @bug 2832
-			'Randompage' => Title::makeTitle( NS_SPECIAL, 'Random' )
+			'Randompage' => Title::makeTitle( NS_SPECIAL, 'Random' ),
+			'Userlist' => Title::makeTitle( NS_SPECIAL, 'Listusers' )
 		);
 		wfRunHooks( 'SpecialPageGetRedirect', array( &$redirects ) );
 
@@ -275,14 +276,16 @@ class SpecialPage
 			} else {
 				$redir = SpecialPage::getRedirect( $name );
 				if ( isset( $redir ) ) {
+					if( $par )
+						$redir = Title::makeTitle( $redir->getNamespace(), $redir->getText() . '/' . $par );
 					$params = SpecialPage::getRedirectParams( $name );
 					if( $params ) {
 						$url = $redir->getFullUrl( $params );
-					} elseif( $par ) {
-						$url = $redir->getFullUrl() . '/' . $par;
 					} else {
 						$url = $redir->getFullUrl();
 					}
+					$wgOut->redirect( $url );
+					$retVal = $redir;
 					$wgOut->redirect( $url );
 					$retVal = $redir;
 				} else {
@@ -297,11 +300,12 @@ class SpecialPage
 			if ( $including && !$page->includable() ) {
 				wfProfileOut( $fname );
 				return false;
-			}
-			if($par !== NULL) {
-				$wgTitle = Title::makeTitle( NS_SPECIAL, $name );
-			} else {
-				$wgTitle = $title;
+			} elseif ( !$including ) {
+				if($par !== NULL) {
+					$wgTitle = Title::makeTitle( NS_SPECIAL, $name );
+				} else {
+					$wgTitle = $title;
+				}
 			}
 			$page->including( $including );
 

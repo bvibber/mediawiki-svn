@@ -75,8 +75,10 @@ class NewPagesPage extends QueryPage {
 		global $wgLang, $wgContLang, $wgUser, $wgUseRCPatrol;
 		$u = $result->user;
 		$ut = $result->user_text;
+		$dirmark = $wgContLang->getDirMark(); // To keep text in correct order
 
-		$length = wfMsgHtml( 'nbytes', htmlspecialchars( $wgLang->formatNum( $result->length ) ) );
+		$length = wfMsgExt( 'nbytes', array('parsemag', 'escape'),
+			$wgLang->formatNum( $result->length ) );
 		$d = $wgLang->timeanddate( $result->timestamp, true );
 
 		# Since there is no diff link, we need to give users a way to
@@ -88,10 +90,12 @@ class NewPagesPage extends QueryPage {
 			$link = $skin->makeKnownLink( $ns . ':' . $result->title, '' );
 		}
 
-		$userTools = $skin->userLink( $u, $ut ) . $skin->userToolLinks( $u, $ut );
+		$userLink = $skin->userLink( $u, $ut );
+		$userTools = $skin->userToolLinks( $u, $ut );
 
-		$s = "{$d} {$link} ({$length}) . . {$userTools}";
-		$s .= $skin->commentBlock( $result->comment );
+		$s = "{$d} {$dirmark}{$link} {$dirmark}({$length}) . . " .
+			"{$dirmark}{$userLink}{$dirmark}{$userTools}";
+		$s .= $dirmark . $skin->commentBlock( $result->comment );
 		return $s;
 	}
 

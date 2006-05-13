@@ -113,7 +113,7 @@
 	'ku' => 'Kurdî / كوردي',	# Kurdish
 	'kv' => 'Коми', 	# Komi, cyrillic is common script but also written in latin script
 	'kw' => 'Kernewek',		# Cornish
-	'ky' => 'Kırgızca',	# Kirghiz
+	'ky' => 'Кыргызча',	# Kirghiz
 	'la' => 'Latina',		# Latin
 	'lad' => 'Ladino',	# Ladino
 	'lb' => 'Lëtzebuergesch',	# Luxemburguish
@@ -181,7 +181,7 @@
 	'sc' => 'Sardu',		# Sardinian
 	'scn' => 'Sicilianu',	# Sicilian
 	'sco' => 'Scots',       # Scots
-	'sd' => 'सिनधि',	# Sindhi
+	'sd' => 'سنڌي',	# Sindhi
 	'se' => 'Sámegiella',	# Northern Sami
 	'sg' => 'Sängö',		# Sango, possible alternative is Sangho
 	'sh' => 'Srpskohrvatski / Српскохрватски', # Serbocroatian
@@ -223,6 +223,7 @@
 	'tum' => 'chiTumbuka',  # Tumbuka
 	'tw' => 'Twi',			# Twi, (FIXME!)
 	'ty' => 'Reo Mā`ohi',	# Tahitian
+	'tyv' => 'Тыва дыл',	# Tyvan
 	'udm' => 'Удмурт',	# Udmurt
 	'ug' => 'Oyghurque',	# Uyghur
 	'uk' => 'Українська',	# Ukrainian

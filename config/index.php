@@ -592,8 +592,8 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 
 		print "<li>Connected to $myver";
 		if ($conf->DBtype == 'mysql') {
-			if( version_compare( $myver, "4.0.0" ) < 0 ) {
-				die( " -- mysql 4.0 or later required. Aborting." );
+			if( version_compare( $myver, "4.0.14" ) < 0 ) {
+				die( " -- mysql 4.0.14 or later required. Aborting." );
 			}
 			$mysqlNewAuth   = version_compare( $myver, "4.1.0", "ge" );
 			if( $mysqlNewAuth && $mysqlOldClient ) {
@@ -1182,7 +1182,7 @@ if( defined( 'MW_INSTALL_PATH' ) ) {
 }
 
 \$path = array( \$IP, \"\$IP/includes\", \"\$IP/languages\" );
-set_include_path( implode( PATH_SEPARATOR, \$path ) );
+set_include_path( implode( PATH_SEPARATOR, \$path ) . PATH_SEPARATOR . get_include_path() );
 
 require_once( \"includes/DefaultSettings.php\" );
 

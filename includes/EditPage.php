@@ -30,6 +30,7 @@ class EditPage {
 	var $missingSummary = false;
 	var $allowBlankSummary = false;
 	var $autoSumm = '';
+	var $hookError = '';
 
 	# Form values
 	var $save = false, $preview = false, $diff = false;
@@ -492,11 +493,16 @@ class EditPage {
 			wfProfileOut( "$fname-checks" );
 			return false;
 		}
-		if ( !wfRunHooks( 'EditFilter', array( &$this, $this->textbox1, $this->section ) ) ) {
-			# Error messages or other handling should be performed by the filter function
+		if ( !wfRunHooks( 'EditFilter', array( $this, $this->textbox1, $this->section, &$this->hookError ) ) ) {
+			# Error messages etc. could be handled within the hook...
 			wfProfileOut( $fname );
 			wfProfileOut( "$fname-checks" );
 			return false;
+		} elseif( $this->hookError != '' ) {
+			# ...or the hook could be expecting us to produce an error
+			wfProfileOut( "$fname-checks " );
+			wfProfileOut( $fname );
+			return true;
 		}
 		if ( $wgUser->isBlockedFrom( $this->mTitle, false ) ) {
 			# Check block state against master, thus 'false'.
@@ -770,6 +776,10 @@ class EditPage {
 			
 			if( $this->missingSummary ) {
 				$wgOut->addWikiText( wfMsg( 'missingsummary' ) );
+			}
+			
+			if( !$this->hookError == '' ) {
+				$wgOut->addWikiText( $this->hookError );
 			}
 
 			if ( !$this->checkUnicodeCompliantBrowser() ) {
@@ -1302,7 +1312,7 @@ END
 	}
 
 	/**
-	 * @todo document
+	 * Call the stock "user is blocked" page
 	 */
 	function blockedIPpage() {
 		global $wgOut;
@@ -1310,20 +1320,21 @@ END
 	}
 
 	/**
-	 * @todo document
+	 * Produce the stock "please login to edit pages" page
 	 */
 	function userNotLoggedInPage() {
 		global $wgUser, $wgOut;
 		$skin = $wgUser->getSkin();
+		
 		$loginTitle = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
-		$loginLink = $skin->makeKnownLinkObj( $loginTitle, wfMsgHtml( 'loginreqlink' ), 'returnto=' . $this->mTitle->getPrefixedText() );
+		$loginLink = $skin->makeKnownLinkObj( $loginTitle, wfMsgHtml( 'loginreqlink' ), 'returnto=' . $this->mTitle->getPrefixedUrl() );
 	
 		$wgOut->setPageTitle( wfMsg( 'whitelistedittitle' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		
 		$wgOut->addHtml( wfMsgWikiHtml( 'whitelistedittext', $loginLink ) );
-		$wgOut->returnToMain( false );
+		$wgOut->returnToMain( false, $this->mTitle->getPrefixedUrl() );
 	}
 
 	/**
@@ -1332,30 +1343,32 @@ END
 	 * allowed to edit.
 	 */
 	function userNotConfirmedPage() {
-
 		global $wgOut;
 
 		$wgOut->setPageTitle( wfMsg( 'confirmedittitle' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
+		
 		$wgOut->addWikiText( wfMsg( 'confirmedittext' ) );
 		$wgOut->returnToMain( false );
 	}
 
 	/**
-	 * @todo document
+	 * Produce the stock "your edit contains spam" page
+	 *
+	 * @param $match Text which triggered one or more filters
 	 */
-	function spamPage ( $match = false )
-	{
+	function spamPage( $match = false ) {
 		global $wgOut;
+
 		$wgOut->setPageTitle( wfMsg( 'spamprotectiontitle' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 
 		$wgOut->addWikiText( wfMsg( 'spamprotectiontext' ) );
-		if ( $match ) {
+		if ( $match )
 			$wgOut->addWikiText( wfMsg( 'spamprotectionmatch', "<nowiki>{$match}</nowiki>" ) );
-		}
+			
 		$wgOut->returnToMain( false );
 	}
 

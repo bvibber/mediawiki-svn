@@ -297,6 +297,23 @@ $user: the user _doing_ the block (not the one being blocked)
 $block: the Block object that was saved
 $user: the user who did the block (not the one being blocked)
 
+'EditFilter': Perform checks on an edit
+$editor: Edit form (see includes/EditPage.php)
+$text: Contents of the edit box
+$section: Section being edited
+&$error: Error message to return
+
+Return false to halt editing; you'll need to handle error messages, etc. yourself.
+Alternatively, modifying $error and returning true will cause the contents of $error
+to be echoed at the top of the edit form as wikitext. Return true without altering
+$error to allow the edit to proceed.
+
+'EmailConfirmed': When checking that the user's email address is "confirmed"
+$user: User being checked
+$confirmed: Whether or not the email address is confirmed
+This runs before the other checks, such as anonymity and the real check; return
+true to allow those checks to occur, and false if checking is done.
+
 'EmailUser': before sending email from one user to another
 $to: address of receiving user
 $from: address of sending user
@@ -354,6 +371,12 @@ $text: the text that will be displayed, in HTML (string)
   A parser extension which depends on user options should install
   this hook and append its values to the key.
 $hash: reference to a hash key string which can be modified
+
+'PersonalUrls': Alter the user-specific navigation links (e.g. "my page,
+my talk page, my contributions" etc).
+
+&$personal_urls: Array of link specifiers (see SkinTemplate.php)
+$title: Title object representing the current page
 
 'TitleMoveComplete': after moving an article (title)
 $old: old title
@@ -418,6 +441,10 @@ $article: article object to be watched
 $user: user that watched
 $article: article object watched
 
+'UnwatchArticleComplete': after a watch is removed from an article
+$user: user that watched
+$article: article object that was watched
+
 'CategoryPageView': before viewing a categorypage in CategoryPage::view
 $catpage: CategoryPage instance
 
@@ -428,4 +455,5 @@ $catpage: CategoryPage instance
 $content_actions: The array of content actions
 
 
-More hooks might be available but undocumented.
+More hooks might be available but undocumented, you can execute
+./maintenance/findhooks.php to find hidden one.
