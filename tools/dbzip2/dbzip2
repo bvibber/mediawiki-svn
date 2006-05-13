@@ -17,6 +17,16 @@
 # Brion Vibber <brion@pobox.com>
 # 2006-05-12
 
+# TODO:
+# Remote compressors
+# Use a thread pool?
+# Selectable number of threads
+# Selectable remote threads
+# Selectable block size
+# Handle remote failures gracefully
+# Merge blocks to single, more compatible stream
+# Accept file input/output, behavior like bzip2
+
 import bz2
 import sys
 import thread
