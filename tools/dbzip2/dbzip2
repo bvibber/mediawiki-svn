@@ -18,8 +18,6 @@
 # 2006-05-12
 
 # TODO:
-# Use a thread pool?
-# Selectable remote threads
 # Selectable block size
 # Handle remote failures gracefully
 # Merge blocks to single, more compatible stream
@@ -34,24 +32,30 @@ import sys
 import thread
 import time
 
+from thread import start_new_thread
+
 import DistBits
 
 class Compressor(object):
 	def __init__(self, args):
 		self.inputStream = sys.stdin
 		self.outputStream = sys.stdout
+		
 		self.blockSize = 900000 # 900k default blocksize
-		self.threads = 1
+		self.threads = 1 # Number of local threads to start.
+		self.remotes = []
 		self.verbosity = 0
 		
-		self.readCount = 0
-		self.writeCount = 0
+		self.blocksRead = 0
+		self.blocksCompressed = 0
+		self.blocksWritten = 0
 		self.bytesRead = 0L
 		self.bytesWritten = 0L
 		
-		self.remotes = []
+		self.compressors = []
+		self.inputQueue = [] # blocks to be compressed
+		self.outputQueue = [] # buffers to be written
 		
-		self.queue = []
 		self.done = False
 		self.threadLock = thread.allocate_lock()
 		
@@ -79,7 +83,18 @@ class Compressor(object):
 			sys.stderr.write(text + "\n")
 	
 	def run(self):
-		thread.start_new_thread(self.readerThread, ())
+		"""Start up the threads and goooo!"""
+		for i in range(0, self.threads):
+			self.compressors.append(LocalCompressor())
+		for addr in self.remotes:
+			self.compressors.append(RemoteCompressor(addr))
+		assert len(self.compressors) >= 1
+		
+		start_new_thread(self.readerThread, ())
+		
+		for compressor in self.compressors:
+			start_new_thread(self.compressorThread, (compressor,))
+		
 		self.writerThread()
 	
 	def sleep(self):
@@ -99,18 +114,18 @@ class Compressor(object):
 		block = self.nextBlock()
 		while block:
 			while not self.ready():
-				self.debug(4, "readerThread: full at %d; waiting" % len(self.queue))
+				self.debug(4, "readerThread: full at %d; waiting" % len(self.inputQueue))
 				self.sleep()
 			
 			self.lock()
-			self.readCount += 1
-			self.debug(2, "readerThread: dispatching block %d" % self.readCount)
+			self.blocksRead += 1
+			self.debug(2, "readerThread: dispatching block %d" % self.blocksRead)
 			self.dispatch(block)
 			self.unlock()
 			
 			block = self.nextBlock()
 		self.done = True
-		self.debug(2, "readerThread: done; read %d blocks" % self.readCount)
+		self.debug(2, "readerThread: done; read %d blocks" % self.blocksRead)
 	
 	def nextBlock(self):
 		buffer = self.inputStream.read(self.blockSize)
@@ -119,15 +134,34 @@ class Compressor(object):
 		return buffer
 	
 	def ready(self):
-		"""Check if we've gone over the limit of waiting connections."""
-		return len(self.queue) < self.threads
+		"""Check if we have some free compressors. No sense filling up RAM."""
+		return len(self.inputQueue) < len(self.compressors)
+	
+	
+	# Queue management
 
 	def dispatch(self, block):
 		"""Queue a block of data for remote compression."""
 		assert self.threadLock.locked()
-		buffer = QueuedBuffer(self.readCount)
-		self.queue.append(buffer)
-		thread.start_new_thread(self.remoteThread, (block, buffer))
+		buffer = QueuedBuffer(self.blocksRead, block)
+		self.inputQueue.append(buffer) # To the compressor threads
+		self.outputQueue.append(buffer) # To the writer thread, in order!
+	
+	def dequeueInput(self):
+		"""Fetch the next available block for compression."""
+		assert self.threadLock.locked()
+		if len(self.inputQueue):
+			return self.inputQueue.pop(0)
+		else:
+			return None
+	
+	def dequeueOutput(self):
+		"""Fetch the next completed block for writing."""
+		assert self.threadLock.locked()
+		if len(self.outputQueue) and self.outputQueue[0].ready():
+			return self.outputQueue.pop(0)
+		else:
+			return None
 	
 	
 	def writerThread(self):
@@ -136,77 +170,94 @@ class Compressor(object):
 		Currently only writes blocks in order."""
 		self.debug(2, "writerThread: starting")
 		startTime = time.time()
-		while not (self.done and self.writeCount == self.readCount):
+		while not (self.done and self.blocksWritten == self.blocksRead):
 			self.lock()
-			buffer = self.dequeue()
+			buffer = self.dequeueOutput()
 			self.unlock()
 			
 			if buffer:
-				self.writeCount += 1
-				self.debug(2, "writerThread: writing block %d" % self.writeCount)
+				self.debug(4, "writerThread: wtf")
 				self.writeBuffer(buffer)
 			else:
 				self.debug(4, "writerThread: sleeping")
 				self.sleep()
+		
 		delta = time.time() - startTime
 		megabyte = 1024.0 * 1024.0
 		rateIn = (float(self.bytesRead) / megabyte) / delta
 		rateOut = (float(self.bytesWritten) / megabyte) / delta
 		self.debug(1, "Wrote %d blocks in %0.1f seconds (%0.3f MB/s in, %0.3f MB/s out)" % (
-			self.writeCount, delta, rateIn, rateOut))
-	
-	def dequeue(self):
-		"""Fetch the next completed block for writing."""
-		assert self.threadLock.locked()
-		if len(self.queue) and self.queue[0].ready():
-			return self.queue.pop(0)
-		else:
-			return None
+			self.blocksWritten, delta, rateIn, rateOut))
 	
 	def writeBuffer(self, buffer):
 		"""Write a buffer to the file. Currently requires that buffers
 		be processed in streaming order."""
-		self.debug(3, "writeBuffer: writing block %d" % buffer.index)
-		assert buffer.contents is not None
-		assert buffer.index == self.writeCount
-		self.bytesWritten += len(buffer.contents)
-		self.outputStream.write(buffer.contents)
+		self.blocksWritten += 1
+		self.bytesWritten += len(buffer.output)
+		self.debug(2, "writeBuffer: writing block %d (%d blocks, %d bytes)" %
+			(buffer.index, self.blocksWritten, self.bytesWritten))
+		
+		assert buffer.output is not None
+		assert buffer.index == self.blocksWritten
+		self.outputStream.write(buffer.output)
 	
 	
-	def remoteThread(self, block, buffer):
+	def compressorThread(self, compressor):
 		"""Worker thread: send a block to a foreign server and receive data."""
-		compressor = self.pickCompressor()
-		data = compressor.compress(block)
-		self.debug(4, "remoteThread: got data!")
-		buffer.set(data)
-		# After it's been fulfilled, the writer thread will dequeue and write it.
-	
-	def pickCompressor(self):
-		numRemotes = len(self.remotes)
-		if numRemotes:
-			index = random.randint(0, numRemotes - 1)
-			return RemoteCompressor(self.remotes[index])
-		else:
-			# Need to take a local...
-			return LocalCompressor()
+		self.debug(3, "compressorThread: Started")
+		blocksCompressed = 0
+		bytesRead = 0L
+		bytesWritten = 0L
+		startTime = time.time()
+		
+		while not (self.done and self.blocksCompressed == self.blocksRead):
+			self.lock()
+			buffer = self.dequeueInput()
+			self.unlock()
+			if buffer:
+				self.debug(4, "compressorThread: compressing")
+				data = compressor.compress(buffer.input)
+				
+				self.lock()
+				buffer.set(data)
+				
+				self.blocksCompressed += 1
+				blocksCompressed += 1
+				bytesRead += len(buffer.input)
+				bytesWritten += len(buffer.output)
+				
+				self.debug(4, "compressorThread: compressed %d blocks" % self.blocksCompressed)
+				self.unlock()
+			else:
+				self.debug(4, "compressorThread: no input, sleeping")
+				self.sleep()
+		compressor.close()
+		
+		delta = time.time() - startTime
+		megabyte = 1024.0 * 1024.0
+		rateIn = (float(bytesRead) / megabyte) / delta
+		rateOut = (float(bytesWritten) / megabyte) / delta
+		self.debug(1, "%s: processed %d blocks in %0.1f seconds (%0.3f MB/s in, %0.3f MB/s out)" % (
+			compressor, blocksCompressed, delta, rateIn, rateOut))
 
 
 class QueuedBuffer(object):
 	"""Placeholder for received compressed buffer items."""
 	
-	def __init__(self, index):
+	def __init__(self, index, input):
 		"""Initialize an empty placeholder, no data yet."""
-		self.contents = None
 		self.index = index
+		self.input = input
+		self.output = None
 	
 	def ready(self):
-		return self.contents is not None
+		return self.output is not None
 	
 	def set(self, data):
 		"""Store data and declare that we're ready to be flushed out."""
-		assert self.contents is None
+		assert self.output is None
 		assert data is not None
-		self.contents = data
+		self.output = data
 
 
 class LocalCompressor(object):
@@ -220,10 +271,14 @@ class LocalCompressor(object):
 	
 	def close(self):
 		pass
+	
+	def __str__(self):
+		return "local thread"
 
 class RemoteCompressor(object):
 	def __init__(self, address):
 		"""Address is a (host, port) tuple."""
+		self.address = address
 		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.socket.connect(address)
 		self.connection = DistBits.Connection(self.socket)
@@ -245,6 +300,9 @@ class RemoteCompressor(object):
 		self.connection.close()
 		self.socket.close()
 		self.connection = None
+	
+	def __str__(self):
+		return self.address[0] + ":" + str(self.address[1])
 
 if __name__ == "__main__":
 	compressor = Compressor(sys.argv[1:])
