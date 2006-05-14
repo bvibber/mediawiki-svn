@@ -1,0 +1,65 @@
+#!/usr/bin/python
+
+import bz2
+import getopt
+import struct
+import sys
+import thread
+import time
+
+import DistBits
+from SocketServer import BaseRequestHandler, ForkingTCPServer
+
+class CompressorHandler(BaseRequestHandler):
+	def debug(self, level, text):
+		print text
+	
+	def setup(self):
+		self.connection = DistBits.Connection(self.request)
+		self.version = None
+		self.algo = None
+	
+	def handle(self):
+		self.debug(2, "Opened connection")
+		
+		handlers = {
+			"COMP": self.handleComp,
+			"ALGO": self.handleAlgo,
+			"HUGE": self.handleHuge,
+			"CLOS": self.handleClos }
+		(atom, data) = self.connection.receive()
+		while atom:
+			if atom:
+				self.debug(3, "Received %s atom, %d bytes." % (atom, len(data)))
+				assert atom in handlers
+				handlers[atom](data)
+			else:
+				self.debug(3, "End of connection.")
+			(atom, data) = self.connection.receive()
+	
+	def handleComp(self, data):
+		assert self.version is None
+		assert len(data) == 4
+		self.version = struct.unpack(">l", data)[0]
+		assert self.version == 1
+	
+	def handleAlgo(self, data):
+		assert self.version is not None
+		assert data == "bzip2"
+		self.algo = data
+	
+	def handleHuge(self, data):
+		assert self.version is not None
+		self.connection.send("SMAL", self.compress(data))
+	
+	def handleClos(self, data):
+		self.connection.close()
+	
+	def compress(self, data):
+		assert self.algo == "bzip2"
+		return bz2.compress(data)
+
+if __name__ == "__main__":
+	port = 12345
+	server = ForkingTCPServer(("", port), CompressorHandler)
+	server.serve_forever()

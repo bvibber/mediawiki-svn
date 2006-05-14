@@ -18,7 +18,6 @@
 # 2006-05-12
 
 # TODO:
-# Remote compressors
 # Use a thread pool?
 # Selectable remote threads
 # Selectable block size
@@ -28,9 +27,14 @@
 
 import bz2
 import getopt
+import random
+import socket
+import struct
 import sys
 import thread
 import time
+
+import DistBits
 
 class Compressor(object):
 	def __init__(self, args):
@@ -45,6 +49,8 @@ class Compressor(object):
 		self.bytesRead = 0L
 		self.bytesWritten = 0L
 		
+		self.remotes = []
+		
 		self.queue = []
 		self.done = False
 		self.threadLock = thread.allocate_lock()
@@ -52,12 +58,21 @@ class Compressor(object):
 		self.processArgs(args)
 	
 	def processArgs(self, args):
-		(options, remainder) = getopt.getopt(args, "vp:")
+		(options, remainder) = getopt.getopt(args, "vp:r:")
 		for (opt, val) in options:
 			if opt == "-v":
 				self.verbosity += 1
 			elif opt == "-p":
 				self.threads = int(val)
+			elif opt == "-r":
+				self.remotes.append(self.splitHost(val))
+	
+	def splitHost(self, val):
+		if ":" in val:
+			(host, port) = val.split(":")
+			return (host, int(port))
+		else:
+			return (val, 12345)
 	
 	def debug(self, level, text):
 		if self.verbosity >= level:
@@ -160,12 +175,20 @@ class Compressor(object):
 	
 	def remoteThread(self, block, buffer):
 		"""Worker thread: send a block to a foreign server and receive data."""
-		stream = RemoteCompressor()
-		stream.send(block)
-		data = stream.receive()
+		compressor = self.pickCompressor()
+		data = compressor.compress(block)
 		self.debug(4, "remoteThread: got data!")
 		buffer.set(data)
 		# After it's been fulfilled, the writer thread will dequeue and write it.
+	
+	def pickCompressor(self):
+		numRemotes = len(self.remotes)
+		if numRemotes:
+			index = random.randint(0, numRemotes - 1)
+			return RemoteCompressor(self.remotes[index])
+		else:
+			# Need to take a local...
+			return LocalCompressor()
 
 
 class QueuedBuffer(object):
@@ -186,21 +209,42 @@ class QueuedBuffer(object):
 		self.contents = data
 
 
-class RemoteCompressor(object):
+class LocalCompressor(object):
 	"""For initial testing, we just compress locally."""
 	
-	def __init__(self):
-		"""FIXME: need a method for selecting a server, somewhere."""
-		self.input = None
+	def algo(self, algo):
+		assert algo == "bzip2"
 	
-	def send(self, block):
-		"""Send a block of uncompressed data to the remote site."""
-		self.input = block
+	def compress(self, block):
+		return bz2.compress(block)
 	
-	def receive(self):
-		"""Wait for the remote site to compress, and return its work."""
-		assert self.input is not None
-		return bz2.compress(self.input)
+	def close(self):
+		pass
+
+class RemoteCompressor(object):
+	def __init__(self, address):
+		"""Address is a (host, port) tuple."""
+		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		self.socket.connect(address)
+		self.connection = DistBits.Connection(self.socket)
+		self.connection.send("COMP", struct.pack(">l", 1))
+		self.connection.send("ALGO", "bzip2")
+	
+	def compress(self, data):
+		self.connection.send("HUGE", data)
+		(atom, retdata) = self.connection.receive()
+		if atom == "SMAL":
+			return retdata
+		elif atom == "EROR":
+			raise Exception(data)
+		else:
+			raise Exception("Unknown return atom type")
+	
+	def close(self):
+		self.connection.send("CLOS")
+		self.connection.close()
+		self.socket.close()
+		self.connection = None
 
 if __name__ == "__main__":
 	compressor = Compressor(sys.argv[1:])
